@@ -1,70 +1,16 @@
-# Book Structure Guide for LLM
+Filename format: `XX-YY-ZZ-title.md`
 
-## Purpose
-This document defines the structure of book content files based on their filenames, ensuring that the LLM generates text with the appropriate level of granularity. The filename dictates the section level, controlling headers and content scope.
+Rules:
+- `XX-00-00` → `#` (H1) **Introduction**
+  - No subheaders.
+  - Short overview, may include blockquotes.
 
-## File Naming Convention
-Each file follows this format:
+- `XX-YY-00` → `##` (H2) **Subsection**
+  - No subheaders.
+  - Short overview of key concepts, may include examples.
 
-```
-XX-YY-ZZ-title.md
-```
-Where:
-- `XX` represents the top-level section.
-- `YY` represents a subsection.
-- `ZZ` represents a detailed lesson (if applicable).
+- `XX-YY-ZZ` (ZZ ≠ 00) → `###` (H3) **Lesson**
+  - Include subheaders (`####`, `#####`, etc.)
+  - Full structured lesson with comprehensive explanations, examples, and practice problems.
 
-## Content Generation Rules
-
-### **XX-00-00-title.md**
-- Uses `#` (H1) as the only header.
-- Provides an **introduction** to the section with a paragraph or a few.
-- Can include **blockquotes** or other engaging elements.
-- **No additional headers** should be used.
-
-**Example:**
-
-```
-# Introduction to Algebra
-
-Algebra is the foundation of modern mathematics...
-
-> “Mathematics is the language with which God wrote the universe.” – Galileo
-```
-
-### **XX-YY-00-title.md**
-- Uses `##` (H2) as the only header.
-- Introduces a **subsection** with an overview or key concepts.
-- Can include text, examples, or figures.
-- **No additional headers affecting TOC.**
-
-**Example:**
-
-```
-## Solving Linear Equations
-
-Linear equations are a fundamental part of algebra...
-```
-
-### **XX-YY-ZZ-title.md** (where ZZ ≠ 00)
-- Uses `###` (H3) as the **main header**.
-- Provides a **complete lesson**, expanding on the topic.
-- Can use **further subheaders** (`####`, `#####`, etc.) as needed.
-- Includes structured explanations, examples, exercises, and details.
-
-**Example:**
-
-```
-### Solving One-Variable Equations
-
-#### Step 1: Isolating the Variable
-
-To solve an equation, start by...
-```
-
-## Summary
-- `XX-00-00`: **Introduction** – `#` only, no additional headers.
-- `XX-YY-00`: **Subsection** – `##` only, no deeper headers.
-- `XX-YY-ZZ`: **Full Lesson** – `###` with subheaders as needed.
-
-This ensures a structured flow, consistent table of contents, and logical book progression.
+Strictly follow these header levels to maintain TOC structure.
