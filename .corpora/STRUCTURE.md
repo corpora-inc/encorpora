@@ -1,13 +1,15 @@
 Filename format: `XX-YY-ZZ-title.md`
 
 Rules:
-- `XX-00-00` → `#` (H1) **Introduction**
+- `XX-00-00` → `#` (H1) **Section**
   - No subheaders.
   - Short overview, may include blockquotes.
+  - Not a full lesson, just the introduction and a brief explanation.
 
 - `XX-YY-00` → `##` (H2) **Subsection**
   - No subheaders.
-  - Short overview of key concepts, may include examples.
+  - Short overview of key concepts
+  - Not a full lesson, just the subheader and a brief explanation.
 
 - `XX-YY-ZZ` (ZZ ≠ 00) → `###` (H3) **Lesson**
   - Include subheaders (`####`, `#####`, etc.)
