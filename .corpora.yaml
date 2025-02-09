@@ -1,3 +1,4 @@
-id: 05ef4ca2-fc7d-4294-91c4-0b20c2f8b41c
-name: basic-mathematics
-url: https://github.com/skyl/basic-mathematics
+name: skyl/corpora
+server:
+  base_url: http://corpora-app:8877
+url: https://github.com/corpora-inc/basic-mathematics
