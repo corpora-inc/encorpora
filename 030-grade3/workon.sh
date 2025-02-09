@@ -2,12 +2,12 @@
 
 # Define the list of filenames
 files=(
-    "00-00-00-introduction.md"
-    "01-00-00-numbers-and-operations.md"
-    "01-01-00-place-value.md"
-    "01-01-01-reading-writing-numbers.md"
-    "01-01-02-expanded-form.md"
-    "01-01-03-comparing-ordering-numbers.md"
+    # "00-00-00-introduction.md"
+    # "01-00-00-numbers-and-operations.md"
+    # "01-01-00-place-value.md"
+    # "01-01-01-reading-writing-numbers.md"
+    # "01-01-02-expanded-form.md"
+    # "01-01-03-comparing-ordering-numbers.md"
     "01-02-00-addition-subtraction.md"
     "01-02-01-two-digit-addition.md"
     "01-02-02-two-digit-subtraction.md"

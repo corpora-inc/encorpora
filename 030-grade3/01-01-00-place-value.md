@@ -4,7 +4,7 @@ Place value is a fundamental concept in mathematics that helps us understand the
 
 **Understanding Place Value**
 
-In the base-10 system, each digit in a number has a value that depends on its position or 'place.' Starting from the right, the first place is the 'ones,' the second is the 'tens,' the third is the 'hundreds,' and so on. For example, in the number 345, the digit 5 is in the 'ones' place, 4 is in the 'tens' place, and 3 is in the 'hundreds' place. This means that the number represents $$3 \times 100 + 4 \times 10 + 5 \times 1$$.
+In the base-10 system, each digit in a number has a value that depends on its position or 'place.' Starting from the right, the first place is the 'ones,' the second is the 'tens,' the third is the 'hundreds,' and so on. For example, in the number 345, the digit 5 is in the 'ones' place, 4 is in the 'tens' place, and 3 is in the 'hundreds' place. This means that the number represents $3 \times 100 + 4 \times 10 + 5 \times 1$.
 
 **Historical Context**
 
