@@ -6,6 +6,7 @@
 
 ## Math Formatting
 - Always use `$$` for LaTeX display math and `$` for inline math.
+  - NEVER use `\[` and `\]` or `\(` and `\)` for math.
 - Prefer full display math format where applicable:
 
   ```

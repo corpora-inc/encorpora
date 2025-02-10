@@ -22,10 +22,10 @@ To write a number in expanded form:
 
 Consider the number 2,581. To express it in expanded form, follow these steps:
 
-- The digit 2 is in the thousand's place: $$2 	imes 1000 = 2000$$
-- The digit 5 is in the hundred's place: $$5 	imes 100 = 500$$
-- The digit 8 is in the ten's place: $$8 	imes 10 = 80$$
-- The digit 1 is in the one's place: $$1 	imes 1 = 1$$
+- The digit 2 is in the thousand's place: $2 \times 1000 = 2000$
+- The digit 5 is in the hundred's place: $5 \times 100 = 500$
+- The digit 8 is in the ten's place: $8 \times 10 = 80$
+- The digit 1 is in the one's place: $1 \times 1 = 1$
 
 Combine these values to write the expanded form:
 
@@ -36,10 +36,10 @@ $$
 #### Practice Problems
 
 1. Write the number 3,746 in expanded form.
-2. Convert the expanded form $$400 + 30 + 2$$ into standard form.
+2. Convert the expanded form $400 + 30 + 2$ into standard form.
 3. Express the number 5,082 in expanded form.
 4. Write the expanded form for the number 6,109.
-5. Given the expanded form $$7,000 + 500 + 60 + 9$$, write it in standard form.
+5. Given the expanded form $7,000 + 500 + 60 + 9$, write it in standard form.
 
 #### Real-World Application
 

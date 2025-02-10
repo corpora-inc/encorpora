@@ -1,2 +1,4 @@
 pandoc -s *.md -o output.pdf --pdf-engine=xelatex --toc \
-    -V mainfont="DejaVu Serif" -V geometry:margin=1in
+    --include-in-header=custom_headings.tex \
+    -V geometry:margin=1in \
+    --toc-depth=3
