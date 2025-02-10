@@ -1,0 +1,4 @@
+name: corpora-inc/basic-mathematics
+server:
+  base_url: http://corpora-app:8877
+url: https://github.com/corpora-inc/basic-mathematics

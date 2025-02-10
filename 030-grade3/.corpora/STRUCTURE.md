@@ -1,27 +1,51 @@
-#!/bin/bash
+Filename format: `XX-YY-ZZ-title.md`
 
-# Define the list of filenames
-files=(
-    # "00-00-00-introduction.md"
-    # "01-00-00-numbers-and-operations.md"
-    # "01-01-00-place-value.md"
-    # "01-01-01-reading-writing-numbers.md"
-    # "01-01-02-expanded-form.md"
-    # "01-01-03-comparing-ordering-numbers.md"
-    # "01-02-00-addition-subtraction.md"
-    # "01-02-01-two-digit-addition.md"
-    # "01-02-02-two-digit-subtraction.md"
-    # "01-02-03-three-digit-addition.md"
-    # "01-02-04-three-digit-subtraction.md"
-    # "01-03-00-multiplication.md"
-    # "01-03-01-multiplication-as-repeated-addition.md"
-    # "01-03-02-multiplication-facts-0-5.md"
-    # "01-03-03-multiplication-facts-6-10.md"
-    # "01-03-04-word-problems.md"
-    # "01-03-05-properties-of-multiplication.md"
-    # "01-04-00-division.md"
-    # "01-04-01-division-as-sharing.md"
-    # "01-04-02-division-facts-0-5.md"
+Look carefully at the filename to determine the correct header level and what you should return.
+
+For Intro files, use only the single header of the correct level. Only if ZZ not equal to 00, you should return a full lesson with subheaders.
+
+Rules:
+- `XX-00-00` → `#` (H1) **Section Intro**
+  - Only one header - `#`.
+  - No subheaders.
+  - Short overview, may include blockquotes.
+  - Not a full lesson, just the introduction and a brief explanation.
+
+- `XX-YY-00` → `##` (H2) **Subsection Intro**
+  - Only one header - `##`.
+  - No subheaders.
+  - Short overview of key concepts
+  - Not a full lesson, just the subheader and a brief explanation.
+
+- `XX-YY-ZZ` (ZZ ≠ 00) → `###` (H3) **Lesson**
+  - Start from `###`
+  - Include subheaders (`####`, `#####`, etc.)
+  - Full structured lesson with comprehensive explanations, examples, and practice problems.
+
+Strictly follow these header levels to maintain TOC structure.
+
+This book has:
+
+    "00-00-00-introduction.md"
+    "01-00-00-numbers-and-operations.md"
+    "01-01-00-place-value.md"
+    "01-01-01-reading-writing-numbers.md"
+    "01-01-02-expanded-form.md"
+    "01-01-03-comparing-ordering-numbers.md"
+    "01-02-00-addition-subtraction.md"
+    "01-02-01-two-digit-addition.md"
+    "01-02-02-two-digit-subtraction.md"
+    "01-02-03-three-digit-addition.md"
+    "01-02-04-three-digit-subtraction.md"
+    "01-03-00-multiplication.md"
+    "01-03-01-multiplication-as-repeated-addition.md"
+    "01-03-02-multiplication-facts-0-5.md"
+    "01-03-03-multiplication-facts-6-10.md"
+    "01-03-04-word-problems.md"
+    "01-03-05-properties-of-multiplication.md"
+    "01-04-00-division.md"
+    "01-04-01-division-as-sharing.md"
+    "01-04-02-division-facts-0-5.md"
     "01-04-03-division-facts-6-10.md"
     "01-04-04-remainders.md"
     "01-04-05-multiplication-division-relationship.md"
@@ -105,9 +129,5 @@ files=(
     "07-03-00-final-test.md"
     "07-03-01-practice-test.md"
     "07-03-02-real-test.md"
-)
 
-# Loop through files and run `corpora workon`
-for file in "${files[@]}"; do
-    corpora workon "$file"
-done
+Try to provide unique insight and be specific for each lesson knowing that the student is in grade 3 and that other lessons may cover similar topics. Don't try to cover everything in one lesson or be redundant. Try to delve deep into the specific topic at hand and not be too general.

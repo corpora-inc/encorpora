@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 # Define the list of filenames
 files=(
     # "00-00-00-introduction.md"
@@ -22,27 +24,27 @@ files=(
     # "01-04-00-division.md"
     # "01-04-01-division-as-sharing.md"
     # "01-04-02-division-facts-0-5.md"
-    "01-04-03-division-facts-6-10.md"
-    "01-04-04-remainders.md"
-    "01-04-05-multiplication-division-relationship.md"
-    "02-00-00-fractions.md"
-    "02-01-00-understanding-fractions.md"
-    "02-01-01-naming-fractions.md"
-    "02-01-02-comparing-fractions.md"
-    "02-01-03-equivalent-fractions.md"
-    "02-02-00-fractions-on-a-number-line.md"
-    "02-02-01-placing-fractions.md"
-    "02-02-02-fractions-between-whole-numbers.md"
-    "02-02-03-graphing-fractions.md"
-    "02-03-00-adding-subtracting-fractions.md"
-    "02-03-01-like-denominators.md"
-    "02-03-02-mixed-numbers.md"
-    "02-03-03-fraction-word-problems.md"
-    "03-00-00-measurement-data.md"
-    "03-01-00-length.md"
-    "03-01-01-inches-and-feet.md"
-    "03-01-02-centimeters-and-meters.md"
-    "03-01-03-length-conversion.md"
+    # "01-04-03-division-facts-6-10.md"
+    # "01-04-04-remainders.md"
+    # "01-04-05-multiplication-division-relationship.md"
+    # "02-00-00-fractions.md"
+    # "02-01-00-understanding-fractions.md"
+    # "02-01-01-naming-fractions.md"
+    # "02-01-02-comparing-fractions.md"
+    # "02-01-03-equivalent-fractions.md"
+    # "02-02-00-fractions-on-a-number-line.md"
+    # "02-02-01-placing-fractions.md"
+    # "02-02-02-fractions-between-whole-numbers.md"
+    # "02-02-03-graphing-fractions.md"
+    # "02-03-00-adding-subtracting-fractions.md"
+    # "02-03-01-like-denominators.md"
+    # "02-03-02-mixed-numbers.md"
+    # "02-03-03-fraction-word-problems.md"
+    # "03-00-00-measurement-data.md"
+    # "03-01-00-length.md"
+    # "03-01-01-inches-and-feet.md"
+    # "03-01-02-centimeters-and-meters.md"
+    # "03-01-03-length-conversion.md"
     "03-02-00-weight-and-mass.md"
     "03-02-01-ounces-and-pounds.md"
     "03-02-02-grams-and-kilograms.md"
@@ -109,5 +111,5 @@ files=(
 
 # Loop through files and run `corpora workon`
 for file in "${files[@]}"; do
-    corpora workon "$file"
+    corpora infer "$file" --check ./build.sh
 done
