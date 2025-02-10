@@ -25,3 +25,5 @@
 - Content should be well-structured for seamless conversion through Pandoc into LaTeX.
 
 Follow these guidelines strictly to maintain high-quality, structured, and engaging content.
+
+Don't end with a trite conclusion on the lesson sections - end with practice questions.
