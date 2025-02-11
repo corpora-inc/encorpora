@@ -50,6 +50,11 @@ The quotient of \(12 \div 4\) is \(3\).
 - Ensure uniform formatting across all files for seamless Pandoc → LaTeX conversion.
 - Content should be **concise, structured, and formatted for test practice.**
 
+## Output diversity
+- **Vary the types of questions** (multiple choice, fill-in-the-blank, etc.).
+- You will see some questions from the context that are in the other files. Try to **avoid duplication** as much as possible.
+- DO NOT overuse "B" as the correct answer. **Mix up the correct answers**.
+
 ## **Strict Rules**
 🚨 **STRICTLY FOLLOW THESE RULES:**
 - **ONE HEADER (`#`) PER FILE – NO SUBHEADERS.**

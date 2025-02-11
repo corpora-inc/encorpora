@@ -5,8 +5,8 @@ set -e
 # Define the list of filenames
 files=(
     # "0000-introduction.md"
-    "0001-linear-equations.md"
-    "0002-quadratic-equations.md"
+    # "0001-linear-equations.md"
+    # "0002-quadratic-equations.md"
     "0003-polynomial-functions.md"
     "0004-rational-equations.md"
     "0005-exponential-logarithmic-functions.md"
@@ -80,6 +80,9 @@ files=(
 # Loop through files and create them
 for file in "${files[@]}"; do
     corpora infer "$file" --check ./build.sh
+    git add .
+    git commit -m "Add $file"
+    corpora sync --noinput
 done
 
 echo "All College Algebra CLEP practice files have been created."
