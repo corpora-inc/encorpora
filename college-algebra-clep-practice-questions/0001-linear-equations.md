@@ -1,4 +1,4 @@
-# Linear Equations CLEP Practice Questions
+# Linear Equations
 
 1. Solve for $x$ in the equation $2x + 5 = 17$.
     - a) $5$
@@ -24,7 +24,7 @@
     - c) $4$
     - d) $5$
 
-5. Find $x$ in the equation $rac{1}{2}x - 3 = 4$.
+5. Find $x$ in the equation $\frac{1}{2}x - 3 = 4$.
     - a) $10$
     - b) $12$
     - c) $14$
