@@ -4,7 +4,7 @@ set -e
 
 # Define the list of filenames
 files=(
-    "0000-introduction.md"
+    # "0000-introduction.md"
     "0001-linear-equations.md"
     "0002-quadratic-equations.md"
     "0003-polynomial-functions.md"

@@ -2,9 +2,11 @@
 
 ## **General Structure**
 - Each file should begin with a **single H1 header (`#`)** matching the filename topic.
+  - Use a concise, descriptive title for the H1 header. For example, `Polynomial Equations` or `Systems of Equations` you don't have to include "CLEP Practice Questions" in the header or over-specify the topic.
 - **No subheaders** beyond the main title.
 - The content consists **only of practice problems**—no solutions, no lessons, no explanations.
 - The questions should match **the exact format of real CLEP College Algebra test questions**.
+- Give a ton of practice problems—**the more, the better**. Make them varied and challenging.
 
 ## **Math Formatting (Critical)**
 - **PREFER** display math:
@@ -55,4 +57,3 @@ The quotient of \(12 \div 4\) is \(3\).
 - **NO explanations or solutions.**
 - **PREFER DISPLAY MATH (`$$ ... $$`).**
 - **STRICTLY USE `$` AND `$$` FOR MATH—NOTHING ELSE.**
-
