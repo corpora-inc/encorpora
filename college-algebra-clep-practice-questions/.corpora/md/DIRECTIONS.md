@@ -39,6 +39,20 @@ The quotient of \(12 \div 4\) is \(3\).
 \]
 ```
 
+### Trouble shooting
+
+DO NOT USE:
+
+$$\begin{align*} ... \end{align*}$$
+
+This will result in `amsmath Error: Erroneous nesting of equation structures`
+
+Instead, use:
+
+$$
+\begin{aligned} ... \end{aligned}
+$$
+
 ## **Content & Formatting Rules**
 - **NO introductions, NO explanations, NO subheaders**—just questions.
 - **Each file should only contain a list of CLEP-style practice problems.**

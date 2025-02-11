@@ -61,7 +61,9 @@
 
 11. Which quadratic equation has roots $-3$ and $4$?
 
-   - A) $x^2 + x - 12 = 0$
-   - B) $x^2 - x - 12 = 0$
-   - C) $x^2 - x + 12 = 0$
-   - D) $x^2 + x + 12 = 0$
+>   - A) $x^2 + x - 12 = 0$
+>   - B) $x^2 - x - 12 = 0$
+>   - C) $x^2 - x + 12 = 0$
+>   - D) $x^2 + x + 12 = 0$
+
+12. Solve the quadratic equation: $x^2 - 4x - 5 = 0$
