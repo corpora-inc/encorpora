@@ -53,6 +53,8 @@ $$
 \begin{aligned} ... \end{aligned}
 $$
 
+Use **plain ASCII characters**. For example, in $\frac{1}{2}$, use `\f` - don't mistakenly use the unicode form-feed control sequence (U+000C). This may result in `status: ExitStatus(unix_wait_status(11008)), stdout: "", stderr: "Error producing PDF.\n! Missing $ inserted.`
+
 ## **Content & Formatting Rules**
 - **NO introductions, NO explanations, NO subheaders**—just questions.
 - **Each file should only contain a list of CLEP-style practice problems.**
