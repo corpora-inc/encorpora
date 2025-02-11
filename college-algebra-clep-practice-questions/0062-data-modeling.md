@@ -44,4 +44,4 @@
    - C. 20
    - D. 25
 
-15. **A distribution function is given as $D(x) = rac{5}{x + 2}$ for $x > 0$. Evaluate this function when $x = 3$.**
+15. **A distribution function is given as $D(x) = \frac{5}{x + 2}$ for $x > 0$. Evaluate this function when $x = 3$.**
