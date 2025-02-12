@@ -15,6 +15,7 @@
 4. Solve the equation:  
    $$ \frac{1}{x} + \frac{1}{x + 2} = \frac{3}{4} $$
 
+
 5. The equation $\frac{4x}{x + 5} = 2$ is equivalent to which of the following? Select the correct form.  
    - A) $4x = 2x + 10$  
    - B) $4x = 2x - 10$  
