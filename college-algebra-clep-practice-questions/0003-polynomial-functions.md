@@ -16,6 +16,7 @@
 
 4. If $g(x) = 2x^3 - 5x^2 + 4x - 8$, what is $g(-1)$?
 
+
 5. Which polynomial is factorable?
    - A) $x^2 + 4x + 7$
    - B) $x^2 - 9$
