@@ -1,4 +1,4 @@
-name: corpora-inc/basic-mathematics
+name: corpora-inc/books
 server:
   base_url: http://corpora-app:8877
-url: https://github.com/corpora-inc/basic-mathematics
+url: https://github.com/corpora-inc/books
