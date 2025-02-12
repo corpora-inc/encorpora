@@ -1,10 +1,8 @@
 # Books
 
-Welcome to Corpora Inc's repository of books. This collection serves as a broad and versatile resource intended to enhance educational experiences across various subjects and grade levels. 
+Welcome to Corpora Inc's repository of books. This collection serves as a broad and versatile resource intended to enhance educational experiences across various subjects and grade levels.
 
-## Contribution
-
-Contributions from educators and developers are welcome. Please check the contribution guidelines in the respective directories.
+Contributions are welcome.
 
 ## Contact
 
