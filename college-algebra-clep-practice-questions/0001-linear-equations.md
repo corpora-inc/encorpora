@@ -39,7 +39,7 @@
 7. Solve for $x$: $x + 2 = 3(x - 4)$.
     - a) $3$
     - b) $4$
-    - c) $5$
+    - c) $7$
     - d) $6$
 
 8. A number is 3 more than twice another number. If their sum is 45, what is the smaller number?
