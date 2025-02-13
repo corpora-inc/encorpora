@@ -1,4 +1,4 @@
-name: world-history-overview
+name: complete-overview-of-world-history
 server:
   base_url: http://corpora-app:8877
 url: https://github.com/corpora-inc/books
