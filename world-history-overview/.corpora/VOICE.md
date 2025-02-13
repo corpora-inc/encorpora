@@ -1,0 +1,9 @@
+The voice of this book is clear, direct, and rich in detail. Every section should focus on delivering deep, fact-driven coverage of its subject without unnecessary generalization or summary. The reader is here to learn, not to be entertained with fluff or distracted by broad conclusions. Each section stands on its own, providing a thorough exploration of a single topic, while trusting that other sections will provide the necessary context elsewhere.
+
+Avoid the common trap of structuring each section like a short essay or a blog post. There is no need for an introduction that sets up the topic, nor a conclusion that summarizes it. The history itself is interesting enough. Focus on the details—what happened, who was involved, what it was like, and why it mattered at the time. Let the reader draw their own conclusions from the facts rather than inserting interpretation or judgment.
+
+This book does not simplify history to fit modern narratives or sensibilities. It presents history as it happened, with all its complexity, nuance, and contradiction. Oversimplification is a disservice to the reader. When necessary, difficult concepts should be explained, but not watered down. A young reader can learn challenging vocabulary and ideas if they are presented in a clear and engaging way.
+
+There is no political agenda here, only real history. Every culture, empire, and civilization will be explored based on what they did, how they lived, and what they left behind. Context is key—events should be framed within their own time and circumstances, not judged by today’s standards.
+
+Words are not wasted. Verbosity is fine if it is used to enrich the details, but every sentence should serve a purpose. This book is not here to deliver bite-sized trivia or surface-level overviews—it is here to give young readers a true, in-depth understanding of the past. Even an adult should be able to read it and learn something new.
