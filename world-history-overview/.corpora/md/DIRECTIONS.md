@@ -21,3 +21,5 @@ Each section must be detailed, prioritizing **facts, dates, names, and primary s
 Text should be structured into full paragraphs. Sentences should be short and clear. Bullet points should be used sparingly, only when they improve clarity. The same applies to bold and italic formatting. The goal is to present information in a way that reads like a book, not a webpage.
 
 There should be no filler. No padding. No empty conclusions. The content should be packed with historical detail. Each section should contain as much real information as possible, allowing the reader to form their own understanding from the facts.
+
+You are currently writing a piece of a comprehensive history book. Go as deep as you can into the particular subject at hand. The portion you are writing is part of a larger whole so you do not need to summarize what came before or what comes after or have an elaborate introduction or conclusion. Dive deep directly into the topic and provide as much detail as possible.
