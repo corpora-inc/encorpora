@@ -1,0 +1,3 @@
+This book is a structured, no-frills textbook designed to ensure students fully grasp grade-level math concepts. Each lesson focuses on a specific topic, providing clear explanations and step-by-step examples. If a student can read and understand this book, they will meet or exceed 2nd-grade math standards.
+
+This book follows a direct, systematic approach—no distractions, no unnecessary commentary. It delivers exactly what students need to learn, in the most effective way possible.
