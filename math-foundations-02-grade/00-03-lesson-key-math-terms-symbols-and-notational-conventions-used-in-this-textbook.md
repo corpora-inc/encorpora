@@ -1,4 +1,4 @@
-\newpage
+
 ## Key Math Terms, Symbols, and Notational Conventions Used in This Textbook
 
 In this lesson, you will learn about the math words, symbols, and ways of writing that you will see in this book. Knowing these helps you follow and solve problems step by step.

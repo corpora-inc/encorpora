@@ -1,4 +1,4 @@
-\newpage
+
 ## Strategies for Reading and Interpreting Picture Graphs Accurately
 
 Picture graphs use simple pictures or symbols to show data. Each picture represents a certain number as given in the key. This lesson explains how to read these graphs step by step.
@@ -54,8 +54,6 @@ Below is a bar graph that looks like a picture graph. In a real picture graph, t
 \end{axis}
 \end{tikzpicture}
 \end{center}
-
-*Figure: Class Pets Picture Graph (Label: fig-pets-picture-graph)*
 
 ### How to Use the Picture Graph
 

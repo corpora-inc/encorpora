@@ -4,12 +4,11 @@
 - Follow the **STRUCTURE** guidelines to determine the correct header level based on the filename.
 - **Do NOT** insert unnecessary headers like `"Introduction to X"`—just start with the content.
 
-Start every file with a `\newpage` command to ensure each lesson starts on a new page.
-
 ## Header Structure (STRICTLY ENFORCED)
 The filename **determines the header level**. **Follow these rules exactly**:
 
 - `XX-00-title.md` → `#` (H1) Unit Intro
+  - Start with a `\newpage` command.
   - **Only one header** (`#`).
     - Choose a natural unit title from the given filename.
   - **No subheaders**.
@@ -49,6 +48,7 @@ Make this look like a beautiful lesson book with complete explanations and examp
 - **NO lesson-ending summaries**
 - **PREFER DISPLAY MATH (`$$ ... $$`)**
 - **STRICTLY USE `$` AND `$$` FOR MATH. NOTHING ELSE.**
+- DO NOT USE EMOJIS! No emojis.
 
 You can use latex as the markdown will be passed through pandoc.
 
@@ -213,4 +213,8 @@ coordinates {
 
 Use plots liberally to explain concepts visually. Make sure to include a caption and label for each plot. Make the plots professional and well-formatted.
 
-You can also use markdown tables and creative ASCII art to explain things visually. Be creative to make the lessons come alive.
+Do not mention TikZ or LaTeX in the lesson content. Remember the audience is students. They don't need to know about the underlying technology.
+
+You can also use markdown tables and creative ASCII art to explain things visually. Be creative to make the lessons come alive. Be extremely verbose and detailed in your explanations. Formally define everything.
+
+Use examples that really make sense in real life!

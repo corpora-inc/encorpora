@@ -1,3 +1,5 @@
+set -e
+
 pandoc -s *.md -o second-grade-math.pdf --pdf-engine=xelatex --toc \
     --include-in-header=custom_headings.tex \
     --include-before-body=custom_cover.tex \

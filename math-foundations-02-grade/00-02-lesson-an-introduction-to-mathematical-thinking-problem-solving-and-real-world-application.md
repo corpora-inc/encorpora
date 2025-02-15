@@ -1,4 +1,4 @@
-\newpage
+
 ## An Introduction to Mathematical Thinking, Problem Solving, and Real-World Application
 
 Mathematical thinking is the way we use numbers and ideas to understand the world. This lesson shows how to look at problems, make a plan, and use math to solve them. You will learn how to break problems into smaller parts and see how math makes everyday tasks simpler.
@@ -57,8 +57,6 @@ $$
 **Step 4: Check Your Work**
 
 Count the apples again in your mind to be sure there are 7 in total.
-
----
 
 This example shows the step-by-step process to solve a problem and how math makes it easy to get the correct answer.
 

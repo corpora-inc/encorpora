@@ -1,4 +1,4 @@
-\newpage
+
 ## Techniques for Organizing Information Using Charts and Tables
 
 Organizing information helps us understand data better. In this lesson, we learn two methods: using tables and using charts.
@@ -59,8 +59,6 @@ Below is an example of a bar graph that shows favorite fruits count:
 \end{axis}
 \end{tikzpicture}
 \end{center}
-
-*Figure: Class Favorite Fruits (Label: fig-bar-favorite-fruits)*
 
 ### Organizing Information Step by Step
 

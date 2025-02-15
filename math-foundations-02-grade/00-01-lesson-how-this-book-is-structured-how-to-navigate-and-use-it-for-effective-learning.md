@@ -1,4 +1,3 @@
-\newpage
 ## How This Book is Structured
 
 This book is designed to help you learn math in a clear and organized way. It is divided into units, and each unit is made up of lessons that focus on specific math ideas. The book is organized so that you can gradually learn new concepts by following simple steps.
@@ -10,3 +9,4 @@ The book uses clear examples that show exactly how to solve math problems. Every
 To use this book well, start by reading each lesson completely. Focus on understanding each step. If something seems confusing, review that part again or ask for help from your teacher. Staying organized by keeping track of the lessons you have completed will also help you learn faster.
 
 Regular review is very important. As you review, you will notice that ideas become clearer and you can solve problems more easily. Remember, learning math is a process, and each step builds on the one before it. By following this book carefully, you will improve your math skills and become more confident in solving problems.
+

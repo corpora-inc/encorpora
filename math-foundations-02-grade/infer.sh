@@ -11,8 +11,8 @@ files=(
 
 # "01-00-unit-intro-using-tables-graphs-and-charts-to-organize-and-interpret-data.md"
 # "01-01-lesson-understanding-what-data-is-and-how-it-informs-our-daily-decisions.md"
-"01-02-lesson-exploring-different-types-of-data-categorical-versus-numerical-and-their-applications.md"
-"01-03-lesson-methods-for-collecting-data-through-surveys-and-experiments-in-the-classroom.md"
+# "01-02-lesson-exploring-different-types-of-data-categorical-versus-numerical-and-their-applications.md"
+# "01-03-lesson-methods-for-collecting-data-through-surveys-and-experiments-in-the-classroom.md"
 "01-04-lesson-techniques-for-organizing-information-using-charts-and-tables.md"
 "01-05-lesson-how-to-create-picture-graphs-with-real-world-examples-and-interpret-them.md"
 "01-06-lesson-strategies-for-reading-and-interpreting-picture-graphs-accurately.md"

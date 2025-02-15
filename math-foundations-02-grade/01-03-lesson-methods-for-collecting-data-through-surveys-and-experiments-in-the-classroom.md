@@ -1,4 +1,4 @@
-\newpage
+
 ## Methods for Collecting Data Through Surveys and Experiments in the Classroom
 
 Data collection means gathering information. In this lesson, we learn two ways to collect data: surveys and experiments.
@@ -57,8 +57,6 @@ Below is a bar graph that shows the survey results.
 \end{axis}
 \end{tikzpicture}
 \end{center}
-
-*Figure: Favorite School Subjects Survey (Label: fig-bar-favorite-subjects)*
 
 ### Collecting and Using Data
 

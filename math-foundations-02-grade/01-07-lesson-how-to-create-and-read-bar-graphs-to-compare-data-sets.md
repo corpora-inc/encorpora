@@ -1,4 +1,4 @@
-\newpage
+
 ## How to Create and Read Bar Graphs to Compare Data Sets
 
 Bar graphs are pictures made of rectangles. Each rectangle shows a number. This lesson explains how to make a bar graph and how to read one.
@@ -52,7 +52,6 @@ Below is a bar graph showing how many students like each fruit.
 \addplot[fill=blue!50] coordinates {(Apple,8) (Banana,5) (Orange,7)};
 \end{axis}
 \end{tikzpicture}
-\caption{Bar graph showing the count of favorite fruits.}
 \label{fig-bar-graph-fruits}
 \end{figure}
 

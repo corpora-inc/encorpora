@@ -1,5 +1,5 @@
-\newpage
-## Exploring Certain Versus Impossible Events and What They Mean
+
+## Certain Events and Impossible Events
 
 This lesson explains two types of events: certain events and impossible events. We will learn the difference between events that always happen and events that can never happen.
 

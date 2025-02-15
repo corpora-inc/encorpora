@@ -1,5 +1,5 @@
-\newpage
-## Exploring Different Types of Data: Categorical vs Numerical and Their Applications
+
+## Exploring Different Types of Data: Categorical vs Numerical
 
 Data comes in different types. In this lesson, we learn about two main types: categorical data and numerical data.
 
@@ -50,8 +50,6 @@ Below is a bar graph that shows a count of favorite fruits. The fruits are the c
 \end{axis}
 \end{tikzpicture}
 \end{center}
-
-*Figure: Favorite Fruits Count (Label: fig-bar-favorite-fruits-count)*
 
 ### Summary
 

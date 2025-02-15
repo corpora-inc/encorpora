@@ -1,35 +1,21 @@
 \newpage
 ## Comparing and Contrasting Information from Multiple Graph Types
 
-Graphs help us see information in different ways. In this lesson, we will learn how to compare and contrast data from different graph types. We will look at what each graph shows and why it might be a good choice for the data.
+Graphs help us see information in different forms. In this lesson, we learn to compare two graph types: bar graphs and line plots. Each graph works best for different kinds of data.
 
 ### What Are Graphs?
 
-A graph is a picture that shows numbers and facts. Some common graphs are:
+A graph is a picture that shows numbers and facts in a clear way.
+Some common graph types are:
 
-- **Bar Graphs**: These show data with bars. They are good for comparing items.
-- **Line Plots**: These use points connected by lines. They show changes over time.
-- **Picture Graphs**: These use pictures or icons to represent data.
+- **Bar Graphs**: These show data with separate bars. They are good for comparing different groups at one moment in time.
+- **Line Plots**: These connect points with lines. They are useful for showing changes over time.
 
-Each graph type organizes data in its own clear way.
+Each graph organizes information in its own clear way.
 
-### How to Compare Graphs
+### When to Use a Bar Graph
 
-Compare graphs by looking at these points:
-
-1. **Data Accuracy**: Check if the graph shows the correct numbers.
-2. **Clarity**: See if the graph is easy to read. Look at labels and colors.
-3. **Best Use**: Decide which graph is best for the type of data you have.
-
-> A clear graph makes data easier to understand.
-
-### Example: Class Favorite Fruits
-
-Imagine you have data about favorite fruits in your class. You can show the data with different graphs.
-
-#### 1. Bar Graph
-
-A bar graph shows each fruit with a bar whose height shows the count.
+A bar graph is best when you have different groups or categories. For example, imagine you want to show how many apples, bananas, and oranges were sold at a fruit stand today.
 
 \vspace*{2em}
 \begin{center}
@@ -39,10 +25,10 @@ A bar graph shows each fruit with a bar whose height shows the count.
     bar width=20pt,
     symbolic x coords={Apple,Banana,Orange},
     xtick=data,
-    xlabel={Fruit},
+    xlabel={Fruit Type},
     ylabel={Count},
     ymin=0,
-    title={Class Favorite Fruits},
+    title={Fruits Sold Today},
     nodes near coords,
     nodes near coords align={vertical},
     enlarge x limits=0.25,
@@ -50,55 +36,61 @@ A bar graph shows each fruit with a bar whose height shows the count.
     title style={font=\Large\bfseries},
     tick label style={font=\large}
 ]
-\addplot[fill=blue!50] coordinates {(Apple,8) (Banana,5) (Orange,7)};
+\addplot[fill=blue!50] coordinates {(Apple,15) (Banana,10) (Orange,12)};
 \end{axis}
 \end{tikzpicture}
 \end{center}
+\label{fig-fruits-sold-today}
 
-This bar graph makes it clear which fruit has the highest count.
+In this graph, you can easily see which fruit sold the most.
 
-#### 2. Line Plot
+### When to Use a Line Plot
 
-A line plot can show the same data if you want to see a trend. In this case, each fruit can be a point on the line.
+A line plot is useful for showing a trend or change over time. For example, if you want to see how many students visited the school library each day during the week.
+
+Let's look at a line plot that shows library visits from Monday to Friday.
 
 \vspace*{2em}
 \begin{center}
 \begin{tikzpicture}
 \begin{axis}[
-    xlabel={Fruit (ordered by count)},
-    ylabel={Count},
-    title={Fruit Count Trend},
-    xtick={1,2,3},
-    xticklabels={Apple,Banana,Orange},
+    xlabel={Day of the Week},
+    ylabel={Number of Visitors},
+    xtick={1,2,3,4,5},
+    xticklabels={Mon,Tue,Wed,Thu,Fri},
+    xmin=0.5, xmax=5.5,
     ymin=0,
+    title={Library Visitors Over a Week},
     label style={font=\large},
     title style={font=\Large\bfseries},
     tick label style={font=\large}
 ]
-\addplot[smooth, mark=*, blue] coordinates {(1,8) (2,5) (3,7)};
+\addplot[smooth, mark=*, blue] coordinates {(1,20) (2,25) (3,30) (4,28) (5,35)};
 \end{axis}
 \end{tikzpicture}
 \end{center}
+\label{fig-library-visitors}
 
-The line plot connects points. It is good for showing trends but may not show exact counts as clearly as the bar graph.
+In this graph, you can see how the number of visitors changes each day. It shows a clear trend over time.
 
 ### Comparing the Two Graphs
 
-- **Bar Graph**: Each fruit is shown with a separate bar. It is easy to see which fruit is the most or least favorite.
-- **Line Plot**: The points form a line. This shows a trend, but the exact number might be less obvious.
+- **Bar Graph**: Best for comparing different categories at one moment in time. It shows clear differences between groups.
+- **Line Plot**: Best for tracking changes over time. It shows trends and patterns clearly.
 
-When you compare graphs, ask:
+When you compare graphs, look at these points:
 
-- Which graph makes the differences easier to see?
-- Which graph helps you understand the change or trend?
+1. Read the labels and title to know what is shown.
+2. Notice how the graph displays data: bars for separate groups vs. points connected by lines for trends.
+3. Choose the graph that fits your data best.
+
+> A clear graph makes information easier to understand.
 
 ### Steps to Compare Graphs
 
-1. Look at both graphs carefully.
+1. Look at each graph carefully.
 2. Check the labels on the axes.
-3. Note how each data point is shown.
-4. Decide which graph shows the information more clearly.
+3. Notice how the data is shown.
+4. Decide which graph makes the information easiest to read.
 
-> Comparing graphs helps you choose the best way to show your data.
-
-This lesson shows that different graph types can tell the same story in different ways. Use the graph type that makes the data easiest to understand.
+This lesson shows that choosing the right graph helps tell the story of your data more clearly. Use bar graphs for clear category comparisons and line plots to see trends over time.

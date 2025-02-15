@@ -1,17 +1,13 @@
-\newpage
+
 ## Understanding What Data Is and How It Informs Our Daily Decisions
 
 ### What Is Data?
 
 Data is information that we collect. It can be numbers, words, or facts. For example, a list of temperatures or scores in a game are pieces of data.
 
----
-
 ### Why Is Data Important?
 
 Data helps us see patterns and make choices. When you know the numbers, you can decide what to do next. For example, knowing the weather helps you choose what to wear.
-
----
 
 ### How We Use Data
 
@@ -21,8 +17,6 @@ There are clear steps to use data:
 2. Organize the data into a table or list.
 3. Create a graph to show the data in pictures.
 4. Look at the graph or table to decide what comes next.
-
----
 
 ### Organizing Data in a Table
 
@@ -55,8 +49,6 @@ A graph helps us see changes quickly. For example, a line graph of temperature m
 \end{tikzpicture}
 \end{center}
 \vspace*{2em}
-
----
 
 ### How Data Guides Decisions
 
@@ -101,3 +93,5 @@ Below is a table summarizing the decisions based on temperature:
 | Morning 2 (67)           | No jacket needed   |
 | Morning 3 (63)           | Wear a jacket      |
 | Morning 4 (70)           | No jacket needed   |
+
+---
