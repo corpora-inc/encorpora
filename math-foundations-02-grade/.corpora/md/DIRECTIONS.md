@@ -35,10 +35,11 @@ The filename **determines the header level**. **Follow these rules exactly**:
 - **Do NOT** end with a conclusion.
 - Use **lists, bold, italics**, and **examples** for clarity.
 - Use **blockquotes** (`>`) for key insights or definitions.
-- Use a new line before and after blockquotes, lists, and displayed math.
+- **ALWAYS**: Use a **new line** before and after blockquotes, bullet lists, ordered lists, unordered lists and displayed math.
+- Use blank lines liberally to separate paragraphs, sections, and markdown elements.
 - Do not over-use bullets, lists, bold, italics, or other formatting. Limit them to key points only.
 - Write complete paragraphs where it makes sense.
-- use `---` (horizontal rule) to separate parts within a lesson.
+- Use a blank line after headers and subheaders.
 
 Make this look like a beautiful lesson book with complete explanations and examples and complete paragraphs. Prefer display math where possible.
 
@@ -48,3 +49,153 @@ Make this look like a beautiful lesson book with complete explanations and examp
 - **NO lesson-ending summaries**
 - **PREFER DISPLAY MATH (`$$ ... $$`)**
 - **STRICTLY USE `$` AND `$$` FOR MATH. NOTHING ELSE.**
+
+You can use latex as the markdown will be passed through pandoc.
+
+We have `\usepackage{pgfplots}` in the LaTeX template, so you can use `tikzpicture` environments to create graphs.
+
+The following examples are known to compile:
+
+```markdown
+\vspace*{2em}
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[
+    xlabel={$x$},
+    ylabel={$f(x)$},
+    title={Line Plot: $f(x)=\sin(x)$}
+]
+\addplot [domain=0:6.28, samples=100, color=blue] {sin(deg(x))};
+\end{axis}
+\end{tikzpicture}
+\end{center}
+
+\vspace*{2em}
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[
+    ybar,
+    symbolic x coords={Category A, Category B, Category C},
+    xtick=data,
+    ylabel={Value},
+    title={Bar Graph Example},
+    nodes near coords,
+    enlarge x limits=0.25
+]
+\addplot coordinates {(Category A,10) (Category B,15) (Category C,7)};
+\end{axis}
+\end{tikzpicture}
+\end{center}
+
+\vspace*{2em}
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[
+    xlabel={X Value},
+    ylabel={Y Value},
+    title={Scatter Plot Example},
+    only marks,
+    mark=*,
+    scatter/classes={
+      a={mark=square*,blue},
+      b={mark=triangle*,red}
+    }
+]
+\addplot[scatter, only marks, scatter src=explicit symbolic]
+coordinates {
+    (1,2) [a]
+    (2,3) [b]
+    (3,1) [a]
+    (4,4) [b]
+};
+\end{axis}
+\end{tikzpicture}
+\end{center}
+
+\vspace*{2em}
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[
+    view={60}{30},
+    xlabel={$x$},
+    ylabel={$y$},
+    zlabel={$z$},
+    title={3D Plot Example}
+]
+\addplot3[
+    mesh,
+    domain=0:6.28,
+    domain y=0:6.28,
+    samples=20,
+    samples y=20
+]
+{sin(deg(x))*cos(deg(y))};
+\end{axis}
+\end{tikzpicture}
+\end{center}
+
+\vspace*{2em}
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[
+    view={60}{30},
+    xlabel={$x$},
+    ylabel={$y$},
+    zlabel={$z$},
+    title={Surface Plot: $z = \sin(x)\cos(y)$}
+]
+\addplot3[
+    surf,
+    domain=0:6.28,
+    domain y=0:6.28,
+    samples=30,
+    samples y=30
+]
+{sin(deg(x))*cos(deg(y))};
+\end{axis}
+\end{tikzpicture}
+\end{center}
+
+\vspace*{2em}
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[
+    xlabel={$x$},
+    ylabel={$y$},
+    title={Parametric Plot Example: Circle},
+    axis equal
+]
+\addplot [
+    domain=0:360,
+    samples=100,
+    color=blue,
+    variable=\t
+]({cos(\t)}, {sin(\t)});
+\end{axis}
+\end{tikzpicture}
+\end{center}
+
+
+\vspace*{2em}
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[
+    xlabel={X-axis Label},
+    ylabel={Y-axis Label},
+    title={Customized Plot Example},
+    legend pos=outer north east,
+    grid=both,
+    minor grid style={gray!25},
+    major grid style={gray!50}
+]
+\addplot [smooth, mark=*, blue] {x^2};
+\addplot [smooth, mark=square*, red] {x^2 + 2};
+\legend{Function 1, Function 2}
+\end{axis}
+\end{tikzpicture}
+\end{center}
+```
+
+Use plots liberally to explain concepts visually. Make sure to include a caption and label for each plot. Make the plots professional and well-formatted.
+
+You can also use markdown tables and creative ASCII art to explain things visually. Be creative to make the lessons come alive.

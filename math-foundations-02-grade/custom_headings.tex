@@ -20,18 +20,18 @@
 \usepackage{setspace}
 \setstretch{1.25}
 
-% Increase font sizes for section headings to be more child-friendly
-\usepackage{sectsty}
-\sectionfont{\fontsize{16}{20}\selectfont\bfseries}
-\subsectionfont{\fontsize{14}{18}\selectfont\bfseries}
-\subsubsectionfont{\fontsize{12}{16}\selectfont\bfseries}
-% Level 4 and 5 headers are already set up in your file
+% % Increase font sizes for section headings to be more child-friendly
+% \usepackage{sectsty}
+% \sectionfont{\fontsize{16}{20}\selectfont\bfseries}
+% \subsectionfont{\fontsize{14}{18}\selectfont\bfseries}
+% \subsubsectionfont{\fontsize{12}{16}\selectfont\bfseries}
+% % Level 4 and 5 headers are already set up in your file
 
-% Adjust spacing before and after section titles (if desired)
-\usepackage{titlesec}
-\titlespacing*{\section}{0pt}{2.5ex plus 1ex minus .2ex}{2ex plus .2ex}
-\titlespacing*{\subsection}{0pt}{2.0ex plus 1ex minus .2ex}{1.5ex plus .2ex}
-\titlespacing*{\subsubsection}{0pt}{1.5ex plus 1ex minus .2ex}{1.2ex plus .2ex}
+% % Adjust spacing before and after section titles (if desired)
+% \usepackage{titlesec}
+% \titlespacing*{\section}{0pt}{2.5ex plus 1ex minus .2ex}{2ex plus .2ex}
+% \titlespacing*{\subsection}{0pt}{2.0ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+% \titlespacing*{\subsubsection}{0pt}{1.5ex plus 1ex minus .2ex}{1.2ex plus .2ex}
 
 % % Use fancyhdr to create a simple, larger header and footer (optional)
 % \usepackage{fancyhdr}
@@ -77,3 +77,13 @@
   {\centering\rule{0.6\linewidth}{0.4pt}\par}%
   \vspace*{1em}%
 }
+
+% Plots
+\usepackage{pgfplots}
+\pgfplotsset{width=10cm,compat=1.9}
+\usepgfplotslibrary{statistics}
+
+% \newenvironment{centeredtikz}
+%   {\par\vspace{2em}\begin{center}\begin{tikzpicture}}
+%   {\end{tikzpicture}\end{center}\par\vspace{2em}}
+

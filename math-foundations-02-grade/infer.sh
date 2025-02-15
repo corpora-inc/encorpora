@@ -9,8 +9,8 @@ files=(
 # "00-02-lesson-an-introduction-to-mathematical-thinking-problem-solving-and-real-world-application.md"
 # "00-03-lesson-key-math-terms-symbols-and-notational-conventions-used-in-this-textbook.md"
 
-"01-00-unit-intro-using-tables-graphs-and-charts-to-organize-and-interpret-data.md"
-"01-01-lesson-understanding-what-data-is-and-how-it-informs-our-daily-decisions.md"
+# "01-00-unit-intro-using-tables-graphs-and-charts-to-organize-and-interpret-data.md"
+# "01-01-lesson-understanding-what-data-is-and-how-it-informs-our-daily-decisions.md"
 "01-02-lesson-exploring-different-types-of-data-categorical-versus-numerical-and-their-applications.md"
 "01-03-lesson-methods-for-collecting-data-through-surveys-and-experiments-in-the-classroom.md"
 "01-04-lesson-techniques-for-organizing-information-using-charts-and-tables.md"
