@@ -4,9 +4,9 @@ The make-a-ten strategy helps us add numbers by first making a sum of 10. This m
 
 ### What Is the Make-a-Ten Strategy?
 
-This strategy means we look for a pair of numbers that add up to 10. Once we make a 10, we add the rest of the number. 
+This strategy means we look for a pair of numbers that add up to 10. Once we make a 10, we add the rest of the number.
 
-For example, with $8 + 6$, we see that $8$ needs $2$ to make $10$. We can break $6$ into $2 + 4$. Then, we add $8 + 2 = 10$, and finally add $4$ for a total of $14$.
+For example, with $8 + 6$, we see that $8$ needs $2$ to make $10$. We can break $6$ into $2 + 4$. Then, we add
 
 $$
 8 + 6 = (8 + 2) + 4 = 10 + 4 = 14
@@ -73,7 +73,8 @@ Below is a number line that shows how the make-a-ten strategy works. First, move
 \end{tikzpicture}
 \end{center}
 
-*Figure 1: Using the make-a-ten strategy for $7 + 5$*
+\vspace*{1em}
+Figure 1: Making 10 for the addition problem $7 + 5$.
 
 ### Practice in Your Mind
 
