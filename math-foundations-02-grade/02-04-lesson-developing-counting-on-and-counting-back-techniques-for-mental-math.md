@@ -1,4 +1,3 @@
-
 ## Developing Counting On and Counting Back Techniques for Mental Math
 
 Counting on and counting back are strategies that help you solve math problems quickly in your head. In this lesson, we will learn how to add by counting on and subtract by counting back.
@@ -34,8 +33,6 @@ Below is a visual number line showing this idea:
 \end{tikzpicture}
 \end{center}
 
-*Figure 1: Using counting on to find $$5 + 3$$. (Label: fig-counting-on)*
-
 ### Counting Back
 
 Counting back means starting at a number and moving backwards to subtract a smaller number. This method is useful when subtracting mentally.
@@ -67,8 +64,6 @@ Below is a visual number line showing this idea:
 \end{tikzpicture}
 \end{center}
 
-*Figure 2: Using counting back to calculate $$8 - 3$$. (Label: fig-counting-back)*
-
 ### Step-by-Step Approach
 
 1. Identify the starting number.
@@ -86,27 +81,3 @@ Counting on and counting back can be used when:
 - Subtracting items, like figuring out how many toys are left after giving some away.
 
 By practicing these strategies, you can improve your mental math skills and become quicker at solving everyday problems.
-
-\vspace*{2em}
-\begin{center}
-\begin{tikzpicture}
-\begin{axis}[
-    xlabel={Number Line}, ylabel={}, hide y axis,
-    xmin=0, xmax=10,
-    xtick={0,1,2,3,4,5,6,7,8,9,10},
-    title={Counting On and Counting Back}
-]
-% Mark the starting point and movements for addition and subtraction
-\addplot[only marks, mark=*, red] coordinates {(5,0)};
-\node at (axis cs:5,0.5) {$5$};
-\addplot[only marks, mark=*, red] coordinates {(8,0)};
-\node at (axis cs:8,0.5) {$8$};
-\addplot[only marks, mark=*, blue] coordinates {(8,0)};
-\node at (axis cs:8,-0.5) {$8$};
-\addplot[only marks, mark=*, blue] coordinates {(5,0)};
-\node at (axis cs:5,-0.5) {$5$};
-\end{axis}
-\end{tikzpicture}
-\end{center}
-
-*Figure 3: Combined display of counting on from $5$ to $8$ and counting back from $8$ to $5$. (Label: fig-combined)*

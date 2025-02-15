@@ -8,7 +8,6 @@
 The filename **determines the header level**. **Follow these rules exactly**:
 
 - `XX-00-title.md` → `#` (H1) Unit Intro
-  - Start with a `\newpage` command.
   - **Only one header** (`#`).
     - Choose a natural unit title from the given filename.
   - **No subheaders**.
@@ -34,8 +33,8 @@ The filename **determines the header level**. **Follow these rules exactly**:
 - **Do NOT** end with a conclusion.
 - Use **lists, bold, italics**, and **examples** for clarity.
 - Use **blockquotes** (`>`) for key insights or definitions.
-- **ALWAYS**: Use a **new line** before and after blockquotes, bullet lists, ordered lists, unordered lists and displayed math.
-- Use blank lines liberally to separate paragraphs, sections, and markdown elements.
+- **ALWAYS**: Use a **blank line** before and after blockquotes, bullet lists, ordered lists, unordered lists and displayed math.
+- Use blank lines liberally to separate paragraphs, sections, and markdown elements, especially bullet lists.
 - Do not over-use bullets, lists, bold, italics, or other formatting. Limit them to key points only.
 - Write complete paragraphs where it makes sense.
 - Use a blank line after headers and subheaders.
@@ -52,11 +51,82 @@ Make this look like a beautiful lesson book with complete explanations and examp
 
 You can use latex as the markdown will be passed through pandoc.
 
+For addition with carrying you can use something like this:
+
+$$
+\begin{array}{r}
+47 \\
++38 \\
+\hline
+\end{array}
+$$
+
+You can continue:
+
+$$
+\begin{array}{r@{}r@{}r}
+   1 &   & \\[0.5em]
+   4 & 7 & \\[0.5em]
+ + 3 & 8 & \\[0.5em]
+   \hline
+     & 5 & \\
+\end{array}
+$$
+
+For borrowing with subtraction you can use a format like this:
+
+$$
+\begin{array}{r@{\hspace{1mm}}r}
+  4 & 7 \\
+-\,3 & 8 \\
+\hline
+& \\
+\end{array}
+\quad\Longrightarrow\quad
+\begin{array}{r@{\hspace{1mm}}r}
+  3 & 17 \\
+-\,3 & 8 \\
+\hline
+  0 & 9 \\
+\end{array}
+$$
+
+Make it look perfect! Go step by step!
+
 We have `\usepackage{pgfplots}` in the LaTeX template, so you can use `tikzpicture` environments to create graphs.
 
 The following examples are known to compile:
 
 ```markdown
+<!-- Number line -->
+\vspace*{2em}
+\begin{center}
+\begin{tikzpicture}
+\draw[->] (0,0) -- (6,0) node[right] {Number Line};
+\foreach \x in {0,...,6}
+    \draw (\x,0.1) -- (\x,-0.1) node[below] {\x};
+\draw[thick, red, ->] (5,0) -- (2,0);
+\node at (3.5,-0.5) {$-3$};
+\end{tikzpicture}
+\end{center}
+
+<!-- Scale a number line to FIT on the page using 2 per tick -->
+\vspace*{2em}
+\begin{center}
+\begin{tikzpicture}[x=0.5cm]
+  % Draw a number line from 8 to 18
+  \draw[->] (8,0) -- (18,0) node[right] {Number Line};
+  % Place ticks every 2 units
+  \foreach \x in {8,10,12,14,16,18}
+      \draw (\x,0.1) -- (\x,-0.1) node[below] {\x};
+  % Draw a double-arrow showing the jump from 17 to 9 (subtracting 8)
+  \draw[<-, thick, red] (9,0.5) -- (17,0.5);
+  % Add a label above the arrow
+  \node at (13,0.8) {\small 17 - 8 = 9};
+\end{tikzpicture}
+\end{center}
+\vspace*{2em}
+
 <!-- Line Plot -->
 \vspace*{2em}
 \begin{center}
@@ -211,10 +281,16 @@ coordinates {
 \end{center}
 ```
 
-Use plots liberally to explain concepts visually. Make sure to include a caption and label for each plot. Make the plots professional and well-formatted.
+Use plots liberally to explain concepts visually. Make the plots professional and well-formatted. Caption and label inside the plots but do not try to put figure labels or captions in the markdown. For a number line, use 10 to 12 total ticks and center the problem in the middle of the number line. For example if the problem is 14+4, the number line should go from 11 to 21.
 
 Do not mention TikZ or LaTeX in the lesson content. Remember the audience is students. They don't need to know about the underlying technology.
 
 You can also use markdown tables and creative ASCII art to explain things visually. Be creative to make the lessons come alive. Be extremely verbose and detailed in your explanations. Formally define everything.
 
 Use examples that really make sense in real life!
+
+You will be given context from the rest of the book. Do not repeat things that are already covered. Build on the existing knowledge.
+
+Remember above all that you are writing a small piece of the greatest math lesson book for second graders. Do not include context references that don't fit into the book.
+
+**DO NOT DESCRIBE THE MINUTIAE OF THE FORMATTING IN THE LESSON CONTENT. RETURN A PERFECT LESSON**

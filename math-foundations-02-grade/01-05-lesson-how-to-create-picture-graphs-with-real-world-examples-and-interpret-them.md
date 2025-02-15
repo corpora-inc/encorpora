@@ -1,4 +1,4 @@
-\newpage
+
 ## How to Create Picture Graphs with Real World Examples and Interpret Them
 
 A picture graph uses simple symbols to show data. Each symbol stands for one or more items. This lesson explains how to create and read a picture graph step by step.

@@ -1,109 +1,142 @@
-
 ## Understanding Subtraction through the Unknown Addend Approach
 
-Subtraction can sometimes be easier to understand when we think about it as finding a missing addend. In other words, instead of thinking only about taking away, we can ask: "What must be added to this number to reach another number?"
+Subtraction can be made easier by finding the missing number that makes an addition true.
 
-When we have a subtraction problem like
+When we see a subtraction problem like:
 
-$$a - b = c,$$
+$$
+ a - b = c
+$$
 
-we can see it as an addition problem:
+This means:
 
-$$b + c = a.$$ 
+- The first number, $a$, is the starting number.
+- The second number, $b$, is the number you take away.
+- The answer, $c$, is what is left.
 
-This idea is called the unknown addend approach because we are finding the unknown number that, when added to the subtrahend, gives the minuend.
+We can also think of this as an addition problem:
 
-> Subtraction is the reverse of addition.
+$$
+ b + c = a
+$$
 
-### Step-by-Step Process
+Here, $a$, $b$, and $c$ are symbols. They stand for numbers. In our words:
 
-1. **Identify the parts**: 
-   - The first number is called the minuend ($a$).
-   - The second number is the subtrahend ($b$).
-   - The result (or difference) is $c$.
+- The starting number minus the number you take away equals the answer.
+- Or, the number you take away plus the answer makes the starting number.
 
-2. **Reframe the subtraction as an addition**: 
-   Rewrite the subtraction equation $$a - b = c$$ as an addition equation:
-   
-   $$b + c = a.$$ 
+### How to Solve Using the Unknown Addend Approach
 
-3. **Solve by finding the unknown number**: 
-   Determine the number that, when added to $b$, equals $a$.
+1. Look at the first number. This is your starting number.
+2. Look at the second number. This is the number you take away.
+3. Ask: What number do I add to the second number to make the first number?
 
-### Example 1: Solving 10 - 3 = ?
+### Example 1: Solving 13 - 5 = ?
 
-Let's use the unknown addend approach for the problem:
+We start with the problem:
 
-$$10 - 3 = ?$$
+$$
+ 13 - 5 = ?
+$$
 
-Here, $a = 10$ and $b = 3$. We ask: What number must be added to 3 to get 10?
+This tells us:
 
-Write the addition equation:
+- 13 is the starting number.
+- 5 is the number you take away.
 
-$$3 + ? = 10.$$ 
+We ask: What do we add to 5 to get 13?
 
-Subtract 3 from 10 to find the missing number:
+Rewrite it as:
 
-$$ ? = 10 - 3 = 7.$$ 
+$$
+ 5 + ? = 13
+$$
 
-Thus, 10 - 3 = 7.
+The missing number is:
 
-Below is a number line that shows this process:
+$$
+ ? = 13 - 5 = 8
+$$
 
-\vspace*{2em}
-\begin{figure}[ht]
-\centering
-\begin{tikzpicture}
-\draw[->] (0,0) -- (12,0) node[right] {Number Line};
-\foreach \x in {0,...,12}
-    \draw (\x,0.1) -- (\x,-0.1) node[below] {\x};
-\draw[thick, red, ->] (3,0) -- (10,0);
-\node at (6.5,0.5) {+7};
-\end{tikzpicture}
-\caption{Number line showing the unknown addend approach for 10 - 3 = 7}
-\label{fig:unknown-addend-numberline1}
-\end{figure}
+So, 13 - 5 = 8.
 
-### Example 2: Finding the Missing Number
-
-Consider the subtraction problem with a missing number:
-
-$$15 - ? = 9.$$ 
-
-In this case, we need to find the number that was subtracted from 15 to give 9. Using the unknown addend method, we ask: What number must be added to 9 to get 15?
-
-Write the addition equation:
-
-$$9 + ? = 15.$$ 
-
-Subtract 9 from 15:
-
-$$ ? = 15 - 9 = 6.$$ 
-
-So, the missing number is 6. This shows that 15 - 6 = 9.
-
-The following diagram illustrates this process on a number line:
+Below is a number line that shows this process. The arrow starts at 5 and ends at 13, showing the addition of 8:
 
 \vspace*{2em}
-\begin{figure}[ht]
-\centering
+\begin{center}
 \begin{tikzpicture}
-\draw[->] (0,0) -- (16,0) node[right] {Number Line};
-\foreach \x in {0,...,16}
-    \draw (\x,0.1) -- (\x,-0.1) node[below] {\x};
-\draw[thick, blue, ->] (9,0) -- (15,0);
-\node at (12,0.5) {+6};
+    \draw[->] (0,0) -- (16,0) node[right] {Number Line};
+    \foreach \x in {0,...,16}
+        \draw (\x,0.1) -- (\x,-0.1) node[below] {\x};
+    \draw[thick, red, ->] (5,0.5) -- (13,0.5);
+    \node at (9,1) {+8};
 \end{tikzpicture}
-\caption{Number line showing the unknown addend approach for 15 - 6 = 9}
-\label{fig:unknown-addend-numberline2}
-\end{figure}
+\end{center}
 
-### Summary of the Process
+### Example 2: Solving 18 - ? = 14
 
-Using the unknown addend approach involves these clear steps:
+Now, look at this problem:
 
-- Rewrite the subtraction problem as an addition problem.
-- Identify the known numbers and the unknown addend.
-- Solve the addition problem to find the missing number.
+$$
+ 18 - ? = 14
+$$
 
-This method helps to see subtraction as the reverse of addition and makes problems easier to understand.
+Here:
+
+- 18 is the starting number.
+- 14 is the number left.
+
+We ask: What number must be added to 14 to get 18?
+
+Write it like this:
+
+$$
+ 14 + ? = 18
+$$
+
+The missing number is:
+
+$$
+ ? = 18 - 14 = 4
+$$
+
+So, 18 - 4 = 14.
+
+This number line shows the process. The arrow begins at 14 and ends at 18:
+
+\vspace*{2em}
+\begin{center}
+\begin{tikzpicture}
+    \draw[->] (10,0) -- (21,0) node[right] {Number Line};
+    \foreach \x in {10,...,20}
+        \draw (\x,0.1) -- (\x,-0.1) node[below] {\x};
+    \draw[thick, blue, ->] (14,0.5) -- (18,0.5);
+    \node at (16,1) {+4};
+\end{tikzpicture}
+\end{center}
+
+### Recap
+
+We learned that subtraction can be seen as finding the missing addend. In the equation:
+
+$$
+ a - b = c
+$$
+
+- $a$ is the starting number.
+- $b$ is the number you take away.
+- $c$ is the answer (what is left).
+
+We can also write it as:
+
+$$
+ b + c = a
+$$
+
+This idea helps us think of subtraction as the reverse of addition.
+
+Remember:
+
+- Look at the starting number.
+- See how much you take away.
+- Find the missing number that makes the addition true.

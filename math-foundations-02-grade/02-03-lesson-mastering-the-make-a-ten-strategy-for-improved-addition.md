@@ -62,6 +62,7 @@ Below is a number line that shows how the make-a-ten strategy works. First, move
 \vspace*{2em}
 \begin{center}
 \begin{tikzpicture}
+\node at (6,1.5) {\Large\bfseries Addition on a Number Line};
 \draw[->] (0,0) -- (12,0) node[right] {Number Line};
 \foreach \x in {0,...,12}
     \draw (\x,0.1) -- (\x,-0.1) node[below] {\x};
@@ -72,9 +73,7 @@ Below is a number line that shows how the make-a-ten strategy works. First, move
 \node at (11,0.5) {+2};
 \end{tikzpicture}
 \end{center}
-
 \vspace*{1em}
-Figure 1: Making 10 for the addition problem $7 + 5$.
 
 ### Practice in Your Mind
 

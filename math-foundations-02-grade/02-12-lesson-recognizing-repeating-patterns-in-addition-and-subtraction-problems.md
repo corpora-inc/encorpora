@@ -85,9 +85,9 @@ We can also use a number line to see subtraction. Imagine a number line where we
   \foreach \x in {5,6,7,8,9,10,11,12,13,14,15,16}
       \draw (\x,0.1) -- (\x,-0.1) node[below] {\x};
   % Mark jumps of -3 starting at 15
-  \draw[red, thick, <-] (15,0.5) -- (12,0.5);
-  \draw[red, thick, <-] (12,0.5) -- (9,0.5);
-  \draw[red, thick, <-] (9,0.5) -- (6,0.5);
+  \draw[red, thick, <-] (12,0.5) -- (15,0.5);
+  \draw[red, thick, <-] (9,0.5) -- (12,0.5);
+  \draw[red, thick, <-] (6,0.5) -- (9,0.5);
 \end{tikzpicture}
 \end{center}
 \vspace*{2em}

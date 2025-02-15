@@ -1,6 +1,6 @@
 ## How to Use Doubles and Near-Doubles to Boost Addition Skills
 
-Doubles are pairs of the same number added together. They are easy to remember. For example, 
+Doubles are pairs of the same number added together. They are easy to remember. For example,
 
 $$ 4 + 4 = 8 $$
 
@@ -39,25 +39,36 @@ Another example:
 ### Step-by-Step Method
 
 1. Identify if the problem is a double or near-double.
-2. If it is a double, simply add the two same numbers. 
+2. If it is a double, simply add the two same numbers.
 3. If it is a near-double, find the double, then adjust by adding or subtracting 1.
 
 ### Visual Example
 
-Below is a simple diagram to help you see the process for near-doubles:
+Below is a revised diagram to help you see the process for near-doubles:
 
 \vspace*{2em}
 \begin{center}
-\begin{tikzpicture}
-\draw[->] (0,0) -- (4,0) node[right] {Number Line};
-\draw[thick] (1,0) -- (3,0);
-\node[below] at (1,0) {Double start};
-\node[below] at (3,0) {Double result};
-\draw[->, red, thick] (3,0) -- (3.8,0) node[right] {Add 1};
+\begin{tikzpicture}[scale=1,>=stealth]
+    % Draw the number line from 0 to 10
+    \draw[->] (0,0) -- (10,0) node[right] {Number Line};
+
+    % Draw tick marks
+    \foreach \x in {0,...,10} {
+        \draw (\x,0.1) -- (\x,-0.1) node[below] {\x};
+    }
+
+    % Highlight points: double start at 3, double result at 6
+    \draw[thick, blue] (3,0) circle (3pt) node[above] {(3)};
+    \draw[thick, blue] (6,0) circle (3pt) node[above] {(6)};
+
+    % Show near-double process: arrow from 6 to 7
+    \draw[->, red, thick] (6,0) -- (7,0) node[midway,above] {+1};
+    \draw[thick, red] (7,0) circle (3pt) node[above] {(7)};
 \end{tikzpicture}
 \end{center}
+\vspace*{2em}
 
-This shows how you start with the double and then move one step to get the near-double result.
+This diagram shows how you start with the double (3 + 3 = 6) and then add 1 to move to the near-double result.
 
 ### Practice Together
 

@@ -1,4 +1,4 @@
-\newpage
+
 ## Introducing the Concepts of Likely Versus Unlikely Outcomes with Examples
 
 This lesson explains what it means for an outcome to be likely or unlikely. We will learn which events happen often and which happen only a little.

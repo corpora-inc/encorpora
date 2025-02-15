@@ -1,4 +1,4 @@
-\newpage
+
 ## Comparing and Contrasting Information from Multiple Graph Types
 
 Graphs help us see information in different forms. In this lesson, we learn to compare two graph types: bar graphs and line plots. Each graph works best for different kinds of data.

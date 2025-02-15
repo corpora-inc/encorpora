@@ -1,4 +1,4 @@
-\newpage
+
 ## Methods for Creating and Interpreting Line Plots to Display Data
 
 A line plot is a graph that shows a trend or change over time by connecting data points with a line. This type of plot is useful for tracking how things change, such as the price of eggs over a week.

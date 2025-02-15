@@ -1,4 +1,3 @@
-\newpage
 # Using Tables, Graphs, and Charts to Organize and Interpret Data
 
 This unit introduces ways to display information using tables, graphs, and charts. You will learn how to arrange data in neat formats and understand what the data tells you.

@@ -1,4 +1,4 @@
-\newpage
+
 # Welcome to Second Grade Mathematics
 
 Welcome to second grade mathematics. In this unit, we will introduce the main topics you will learn and explain why they are important. This unit gives you a roadmap to help you understand the big ideas in math and shows you how these ideas work in everyday life.

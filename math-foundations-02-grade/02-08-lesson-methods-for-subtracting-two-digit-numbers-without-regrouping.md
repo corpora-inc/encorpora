@@ -57,24 +57,13 @@ A number line can help you see subtraction in action. For instance, with $65 - 3
 - Count back $30$ from $65$ to land on $35$.
 - Then count back $2$ more to reach $33$.
 
-\vspace*{2em}
-\begin{center}
-\begin{tikzpicture}
-\draw[->] (30,0) -- (70,0) node[right] {Number Line};
-\foreach \x in {30,35,40,45,50,55,60,65,70}
-    \draw (\x,0.1) -- (\x,-0.1) node[below] {\x};
-\draw[thick, red, ->] (65,0) -- (33,0);
-\node at (49,0.8) {$-32$};
-\end{tikzpicture}
-\end{center}
-
 ### Steps to Subtract Without Regrouping
 
-> In subtraction without regrouping:
->
-> - Write the numbers one under the other.
-> - Make sure the top digit in each column is not smaller than the bottom digit.
-> - Subtract the ones place.
-> - Subtract the tens place.
+In subtraction without regrouping:
+
+- Write the numbers one under the other.
+- Make sure the top digit in each column is not smaller than the bottom digit.
+- Subtract the ones place.
+- Subtract the tens place.
 
 Follow these steps to solve such problems quickly and accurately.

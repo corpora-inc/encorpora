@@ -106,7 +106,7 @@ For Michael's problem (10 - 4):
   \foreach \x in {6,7,8,9,10} {
     \draw (\x,0.2) -- (\x,-0.2) node[below] {\x};
   }
-  \draw[thick, red, <-] (10,0.4) -- (6,0.4);
+  \draw[thick, red, <-, >=stealth] (6,0.4) -- (10,0.4);
 \end{tikzpicture}
 \end{center}
 

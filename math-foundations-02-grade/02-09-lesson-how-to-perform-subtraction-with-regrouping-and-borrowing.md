@@ -51,14 +51,19 @@ The following number line shows how we subtract 8 from 17 in the ones place:
 
 \vspace*{2em}
 \begin{center}
-\begin{tikzpicture}
-\draw[->] (0,0) -- (12,0) node[right] {Number Line};
-\foreach \x in {0,...,12}
-    \draw (\x,0.1) -- (\x,-0.1) node[below] {\x};
-\draw[thick, red, ->] (8,0) -- (17,0);
-\node at (12.5, -0.5) {Subtract 8 from 17};
+\begin{tikzpicture}[x=0.5cm]
+  % Draw a number line from 8 to 18
+  \draw[->] (8,0) -- (18,0) node[right] {Number Line};
+  % Place ticks every 2 units
+  \foreach \x in {8,10,12,14,16,18}
+      \draw (\x,0.1) -- (\x,-0.1) node[below] {\x};
+  % Draw a double-arrow showing the jump from 17 to 9 (subtracting 8)
+  \draw[<-, thick, red] (9,0.5) -- (17,0.5);
+  % Add a label above the arrow
+  \node at (13,0.8) {\small 17 - 8 = 9};
 \end{tikzpicture}
 \end{center}
 \vspace*{2em}
+
 
 Using this method, you can borrow and subtract numbers step by step. Practice with different problems to become more confident with subtraction with regrouping and borrowing.

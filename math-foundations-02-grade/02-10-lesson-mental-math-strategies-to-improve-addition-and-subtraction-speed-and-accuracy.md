@@ -1,4 +1,4 @@
-## Mental Math Strategies to Improve Addition and Subtraction Speed and Accuracy
+## Mental Math Strategies to Improve Speed and Accuracy
 
 Mental math means solving problems in your head quickly and correctly. In this lesson, you will learn different ways to think about numbers easily. We will use step-by-step examples to show you how to add and subtract faster.
 
@@ -9,12 +9,6 @@ When you add two numbers, start from the larger number and count on. This is cal
 Example: Find $7 + 4$.
 
 Step 1: Start at 7 on the number line.
-
-$$
-\begin{array}{ccccccccccc}
- & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 \\
-\end{array}
-$$
 
 Step 2: Count four numbers forward from 7.
 
@@ -29,12 +23,6 @@ When you subtract, you can count back. This helps you find the answer faster.
 Example: Find $12 - 3$.
 
 Step 1: Start at 12 on the number line.
-
-$$
-\begin{array}{ccccccccccc}
- & 9 & 10 & 11 & 12 & 13 & 14 & 15 & 16 & 17 & 18 \\
-\end{array}
-$$
 
 Step 2: Count back three steps from 12.
 
@@ -68,17 +56,46 @@ So, $15-7=8$.
 
 > Breaking numbers apart makes it easier to see the smaller steps of a problem.
 
+### Strategy 4: Compensation Strategy
+
+Sometimes it's easier to adjust the numbers to round figures and then compensate. For example, to compute $9 + 7$:
+- Think of 9 as 10, so $10 + 7 = 17$.
+- Since you added one too many, subtract 1: $17 - 1 = 16$.
+
+This “round and adjust” method can speed up your calculations!
+
+### Strategy 5: Friendly Numbers and Doubling
+
+If you recognize doubles, you can use them to your advantage. For example:
+- You know that $6 + 6 = 12$.
+- So, if you need to compute $6 + 7$, it’s just one more than 12, which is $12 + 1 = 13$.
+
+This works well for numbers that are close to doubles.
+
+### Strategy 6: Inverse Operations for Checking
+
+After solving a problem, use the opposite operation to check your answer. For instance:
+- If you calculate $15 - 7 = 8$, check by adding: $8 + 7$ should equal 15.
+- This helps ensure you didn't make a mistake.
+
+These strategies, along with counting on, counting back, and breaking numbers apart, give you multiple tools to solve addition and subtraction problems quickly and accurately!
+
 ### Using a Number Line to Visualize Problems
 
 A number line is a great tool to see the steps in your head. Look at the number line and move along it.
 
 For example, let’s use a number line for $9+3$.
 
-$$
-\begin{array}{cccccccccccc}
- & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15 & 16 & 17 \\
-\end{array}
-$$
+\vspace*{2em}
+\begin{center}
+\begin{tikzpicture}
+\draw[->] (0,0) -- (15,0) node[right] {Number Line};
+\foreach \x in {0,...,15}
+    \draw (\x,0.1) -- (\x,-0.1) node[below] {\x};
+\draw[thick, red, ->] (9,0) -- (12,0);
+\node at (10.5,-0.5) {$+3$};
+\end{tikzpicture}
+\end{center}
 
 Start at 9 and move three steps to the right to reach 12. So, $9+3=12$.
 

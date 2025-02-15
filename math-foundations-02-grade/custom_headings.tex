@@ -18,7 +18,7 @@
 
 % Increase overall line spacing for a more open, readable layout
 \usepackage{setspace}
-\setstretch{1.2}
+% \setstretch{1.2}
 
 % % Increase font sizes for section headings to be more child-friendly
 % \usepackage{sectsty}
@@ -42,8 +42,8 @@
 % \renewcommand{\headrulewidth}{0pt}
 
 % Optionally adjust list spacing for clarity
-\usepackage{enumitem}
-\setlist{itemsep=1ex, topsep=1ex}
+% \usepackage{enumitem}
+% \setlist{itemsep=1ex, topsep=1ex}
 
 
 % ---- Custom styling for block quotes ----
@@ -98,4 +98,10 @@
 % ]
 % \newcommand{\emoji}[1]{{\emojifont #1}}
 
-
+% \documentclass[twoside]{article}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot[LE,RO]{\thepage} % left footer on even pages, right footer on odd pages
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
