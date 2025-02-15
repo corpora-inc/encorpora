@@ -1,5 +1,5 @@
 \newpage
-## Exploring Different Types of Data: Categorical vs Numerical
+## Exploring Different Types of Data: Categorical vs Numerical and Their Applications
 
 Data comes in different types. In this lesson, we learn about two main types: categorical data and numerical data.
 
@@ -21,20 +21,19 @@ Numerical data uses numbers. We can do math with these numbers. Examples include
 
 > Numerical data tells us how many, how much, or how long.
 
-For instance, the ages of students (7, 8, 9) are numerical data.
+For instance, the ages of students ($7$, $8$, $9$) are numerical data.
 
 ### Visual Example of Categorical Data
 
 Below is a bar graph that shows a count of favorite fruits. The fruits are the categories and the count is numerical.
 
-\begin{figure}[ht]
-\centering
 \vspace*{2em}
+\begin{center}
 \begin{tikzpicture}
 \begin{axis}[
     ybar,
     bar width=20pt,
-    symbolic x coords={Apple, Banana, Orange},
+    symbolic x coords={Apple,Banana,Orange},
     xtick=data,
     xlabel={Fruit Type},
     ylabel={Count},
@@ -50,10 +49,9 @@ Below is a bar graph that shows a count of favorite fruits. The fruits are the c
 \addplot[fill=blue!50] coordinates {(Apple,8) (Banana,5) (Orange,7)};
 \end{axis}
 \end{tikzpicture}
-\label{fig-bar-favorite-fruits-count}
-\end{figure}
+\end{center}
 
-
+*Figure: Favorite Fruits Count (Label: fig-bar-favorite-fruits-count)*
 
 ### Summary
 
