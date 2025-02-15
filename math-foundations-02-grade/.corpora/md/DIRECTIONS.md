@@ -57,6 +57,7 @@ We have `\usepackage{pgfplots}` in the LaTeX template, so you can use `tikzpictu
 The following examples are known to compile:
 
 ```markdown
+<!-- Line Plot -->
 \vspace*{2em}
 \begin{center}
 \begin{tikzpicture}
@@ -70,23 +71,34 @@ The following examples are known to compile:
 \end{tikzpicture}
 \end{center}
 
+<!-- Bar Plot -->
+\begin{figure}[ht]
+\centering
 \vspace*{2em}
-\begin{center}
 \begin{tikzpicture}
 \begin{axis}[
     ybar,
-    symbolic x coords={Category A, Category B, Category C},
+    bar width=20pt,
+    symbolic x coords={Apple, Banana, Orange},
     xtick=data,
-    ylabel={Value},
-    title={Bar Graph Example},
+    xlabel={Fruit Type},
+    ylabel={Count},
+    ymin=0,
+    title={Favorite Fruits Count},
     nodes near coords,
-    enlarge x limits=0.25
+    nodes near coords align={vertical},
+    enlarge x limits=0.25,
+    label style={font=\large},
+    title style={font=\Large\bfseries},
+    tick label style={font=\large},
 ]
-\addplot coordinates {(Category A,10) (Category B,15) (Category C,7)};
+\addplot[fill=blue!50] coordinates {(Apple,8) (Banana,5) (Orange,7)};
 \end{axis}
 \end{tikzpicture}
-\end{center}
+\label{fig-bar-favorite-fruits-count}
+\end{figure}
 
+<!-- Scatter Plot -->
 \vspace*{2em}
 \begin{center}
 \begin{tikzpicture}
@@ -112,6 +124,7 @@ coordinates {
 \end{tikzpicture}
 \end{center}
 
+<!-- 3D Plot -->
 \vspace*{2em}
 \begin{center}
 \begin{tikzpicture}
@@ -134,6 +147,7 @@ coordinates {
 \end{tikzpicture}
 \end{center}
 
+<!-- 3D Surface Plot -->
 \vspace*{2em}
 \begin{center}
 \begin{tikzpicture}
@@ -156,6 +170,7 @@ coordinates {
 \end{tikzpicture}
 \end{center}
 
+<!-- Parametric Plot -->
 \vspace*{2em}
 \begin{center}
 \begin{tikzpicture}
@@ -175,7 +190,7 @@ coordinates {
 \end{tikzpicture}
 \end{center}
 
-
+<!-- Customized Plot -->
 \vspace*{2em}
 \begin{center}
 \begin{tikzpicture}
