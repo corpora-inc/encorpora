@@ -1,56 +1,81 @@
+\newpage
 ## Key Math Terms, Symbols, and Notational Conventions Used in This Textbook
 
-### Introduction
-In this lesson, you will learn about the key math terms, symbols, and notational conventions that you will encounter in this textbook. Understanding these will help you follow lessons and solve problems more easily.
+In this lesson, you will learn about the math words, symbols, and ways of writing that you will see in this book. Knowing these helps you follow and solve problems step by step.
 
 ### Key Math Terms
-- **Number**: A symbol or word used to represent a quantity.
-- **Addition**: The process of finding the total or sum by combining two or more numbers.
-- **Subtraction**: The process of finding the difference by taking one number away from another.
-- **Multiplication**: The process of finding the total when combining equal groups.
-- **Division**: The process of splitting into equal parts or groups.
+
+- **Number**: A symbol or word that shows how many things there are. For example, 1, 2, and 3.
+
+- **Addition**: Putting numbers together to find a total.
+
+- **Subtraction**: Taking one number away from another to find the difference.
+
+- **Multiplication**: Adding equal groups quickly. This means you add the same number several times.
+
+- **Division**: Splitting a number into equal parts or groups.
+
+- **Equals**: A word or symbol that means both sides are the same.
 
 ### Important Math Symbols
-- **Plus Sign (+)**: Used in addition to show numbers being added. 
-  
-  Example: $3 + 2 = 5$
-  
-- **Minus Sign (−)**: Used in subtraction to show numbers being subtracted.
-  
-  Example: $5 - 2 = 3$
-  
-- **Multiplication Sign (× or \*)**: Used in multiplication to show numbers being multiplied.
-  
-  Example: $4 \times 3 = 12$ or $4 * 3 = 12$
-  
-- **Division Sign (÷ or /)**: Used in division to show numbers being divided.
-  
-  Example: $12 ÷ 4 = 3$ or $12 / 4 = 3$
 
-- **Equals Sign (=)**: Shows that two amounts are the same. 
-  
-  Example: $7 = 7$
+- **Plus Sign (+)**: Used for addition.
+
+  Example:
+  $$
+  3 + 2 = 5
+  $$
+
+- **Minus Sign (−)**: Used for subtraction.
+
+  Example:
+  $$
+  5 - 2 = 3
+  $$
+
+- **Multiplication Sign $\times$**: Used for multiplication.
+
+  Example:
+  $$
+  4 \times 3 = 12
+  $$
+
+- **Division Sign (÷ or /)**: Used for division.
+
+  Example:
+  $$
+  12 ÷ 4 = 3
+  $$
+  or
+  $$
+  12 / 4 = 3
+  $$
+
+- **Equals Sign (=)**: Shows that the numbers on each side have the same value.
+
+  Example:
+  $$
+  3 + 2 = 5
+  $$
 
 ### Notational Conventions
-- **Writing Numbers**: Use digits to write numbers (e.g., 1, 2, 3).
-- **Operations**: Use symbols to show math operations (e.g., $+$, $−$, $×$, $÷$).
-- **Order of Operations**: The order in which math operations are performed can change the result:
-  1. Parentheses
-  2. Multiplication and Division (from left to right)
-  3. Addition and Subtraction (from left to right)
 
-### Example Problem
-Let's look at a simple problem using these terms and symbols:
+- **Writing Numbers**: We use digits like 1, 2, 3, etc., to show amounts.
 
-**Problem**: What is $2 + 3 × 4 - 5$?
+- **Using Symbols for Operations**: Write $+$ for addition, $-$ for subtraction, $\times$ or * for multiplication, and $÷$ or / for division.
 
-**Solution**:
-1. According to the order of operations, do the multiplication first: $3 × 4 = 12$.
-2. Replace and do the next operation from left to right: $2 + 12 = 14$.
-3. Finally, subtract: $14 - 5 = 9$.
+- **Order of Operations** (Simple for Grade 2):
+  - When numbers are added or subtracted, work from left to right.
+  - In many problems, multiplication or division is done by grouping numbers together before adding or subtracting.
 
-**Answer**: $2 + 3 × 4 - 5 = 9$
+### More Things You Will See
 
-Now you have seen how to use key math terms, symbols, and notations. Understanding these basics is essential to learning and solving math problems effectively. 
+- **Equal Parts**: When you split a number into groups that are the same, each group has equal parts.
 
-Let's continue this journey through second grade math!
+- **Grouping**: Putting numbers together to add them or multiply them easily.
+
+- **Word Problems**: You will see stories or questions that use these words and symbols to ask questions about everyday situations.
+
+> Learning these math words, symbols, and ways of writing will help you understand every math lesson in this book.
+
+Review these terms and examples often. They are the tools you need to start your math journey.

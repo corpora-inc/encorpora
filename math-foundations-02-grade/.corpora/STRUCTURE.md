@@ -8,15 +8,17 @@ Each file is either a **unit introduction** or a **full lesson**, determined by 
 - **`XX-00-title.md` → `#` (H1) Unit Intro**
   - Use a single `#` header.
   - No subheaders.
+  - Choose a nice, natural, clean title from the filename.
   - Provide a **what/why/how** overview:
     - **What** the unit is about.
     - **Why** it matters.
     - **How** it applies in real life.
   - Introduce key concepts without explaining them in full.
+  - Use a blockquote of a famous quote for inspiration.
 
 - **`XX-YY-title.md` → `##` (H2) Lesson**
   - Start from `##` (H2).
-  - Use subheaders (`###`, `####`, etc.) as needed.
+  - Use subheaders (`###`, `####`, ...) as needed.
   - Provide a **detailed, in-depth** explanation of the concept.
   - Include **multiple methods, step-by-step examples, and applications**.
   - Make the lesson **meaty**—cover the topic thoroughly with different approaches.
