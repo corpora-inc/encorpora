@@ -6,4 +6,4 @@ Understanding these concepts is fundamental because algebra is the cornerstone o
 
 By learning how to manipulate and interpret algebraic expressions, you will gain problem-solving skills that are applicable in various fields. This unit builds the foundation for more advanced topics and practical applications in college-level mathematics.
 
-> "Pure mathematics is, in its way, the poetry of logical ideas." – Albert Einstein
+> "Algebra is the intellectual instrument which has been created for rendering clear the quantitative aspects of the world." – Alfred North Whitehead

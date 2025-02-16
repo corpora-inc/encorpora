@@ -41,19 +41,22 @@ $$
 and we know that $x = 3$. We can evaluate the expression by substituting $x$ with $3$:
 
 1. Substitute:
-   $$
-   2(3) + 7
-   $$
+
+$$
+2(3) + 7
+$$
 
 2. Multiply:
-   $$
-   6 + 7
-   $$
+
+$$
+6 + 7
+$$
 
 3. Add:
-   $$
-   13
-   $$
+
+$$
+13
+$$
 
 So, when $x = 3$, the expression $2x + 7$ equals $13$.
 

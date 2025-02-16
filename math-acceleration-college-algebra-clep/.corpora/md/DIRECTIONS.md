@@ -30,6 +30,23 @@ The filename **determines the header level**. **Follow these rules exactly**:
 - **ALWAYS** use `$ ... $` for inline math.
 - **Backticks** (e.g., `` `12 ÷ 4 = 3` ``) are acceptable only for non-LaTeX math notation.
 
+- Put all display math on a **new line** by itself with no indentation. Like this:
+
+3. Even with a bullet or number, we like the math on a new line with no indentation like this:
+
+$$
+a^2 + b^2 = c^2
+$$
+
+We **DO NOT** like this:
+
+3. This is bad because it has indentation:
+
+    $$
+    a^2 + b^2 = c^2
+    $$
+
+
 ## Content & Formatting Rules
 - **Do NOT** end with a conclusion.
 - Use **lists, bold, italics**, and **examples** for clarity.
