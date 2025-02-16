@@ -13,6 +13,7 @@ Use a clear, direct, and structured tone suitable for an 8-year-old student. Exp
 - If you are going to use advanced vocabulary, you must clearly define it in simple terms.
 - If you are going to use symbols, you must explain them in simple terms.
 - Use diverse examples, don't repeat the same examples.
+    - Use fun stuff: money, motorcycles, buildings, video games, sports - capitalist and competitive. Be CREATIVE!
 - Don't try to put display math into sentences with commas and periods. Design the content so that the math can stand alone.
 
 This is a lesson book, not a workbook—focus on guided examples, not practice problems.

@@ -16,7 +16,8 @@ This unit introduces ways to display information using tables, graphs, and chart
 
 By learning these skills, you will be able to look at everyday information—like weather, class votes, or sports scores—and understand it clearly.
 
-\vspace*{2em}
+\newpage
+\vspace{2em}
 \begin{center}
 \begin{tikzpicture}
 \begin{axis}[

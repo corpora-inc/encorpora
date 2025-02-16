@@ -35,10 +35,9 @@ files=(
 # "02-10-lesson-mental-math-strategies-to-improve-addition-and-subtraction-speed-and-accuracy.md"
 # "02-11-lesson-solving-real-world-word-problems-using-addition-and-subtraction-techniques.md"
 # "02-12-lesson-recognizing-repeating-patterns-in-addition-and-subtraction-problems.md"
-"02-13-lesson-an-introduction-to-balancing-equations-and-finding-missing-numbers.md"
-# "02-14-lesson-using-number-lines-to-solve-addition-and-subtraction-problems.md"
-# "02-15-lesson-developing-skills-to-find-10-more-and-10-less-than-a-given-number.md"
-# "02-16-lesson-challenge-problems-for-addition-and-subtraction-for-advanced-learners.md"
+# "02-13-lesson-an-introduction-to-balancing-equations-and-finding-missing-numbers.md"
+"02-14-lesson-developing-skills-to-find-10-more-and-10-less-than-a-given-number.md"
+"02-15-lesson-challenge-problems-for-addition-and-subtraction-for-advanced-learners.md"
 
 # "03-00-unit-intro-measuring-lengths-and-distances-using-standard-units.md"
 # "03-01-lesson-understanding-standard-versus-non-standard-units-of-measurement-and-why-they-matter.md"
