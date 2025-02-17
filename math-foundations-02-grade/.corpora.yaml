@@ -1,0 +1,4 @@
+name: math-foundations-02-grade
+server:
+  base_url: http://corpora-app:8877
+url: https://github.com/corpora-inc/books
