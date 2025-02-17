@@ -6,6 +6,7 @@
    - B) $x = 2$, $x = 3$
    - C) $x = -2$, $x = -3$
    - D) $x = -1$, $x = -6$
+   - E) None of the above
 
 2. Solve for $x$:
    $$2x^2 + 3x - 5 = 0$$
@@ -13,12 +14,14 @@
    - B) $x = \frac{1}{2}$, $x = -5$
    - C) $x = -1$, $x = \frac{5}{2}$
    - D) $x = \frac{-3 \pm \sqrt{41}}{4}$
+   - E) None of the above
 
 3. Which of the following represents the vertex form of the quadratic function $f(x) = x^2 + 4x + 4$?
    - A) $f(x) = (x + 2)^2$
    - B) $f(x) = (x - 2)^2$
    - C) $f(x) = (x + 4)^2$
    - D) $f(x) = (x - 4)^2$
+   - E) None of the above
 
 4. Determine the axis of symmetry for the quadratic equation:
    $$y = 3x^2 - 12x + 7$$
@@ -26,12 +29,14 @@
    - B) $x = -2$
    - C) $x = 3$
    - D) $x = -3$
+   - E) None of the above
 
 5. If the roots of the quadratic equation $ax^2 + bx + c = 0$ are real and equal, which of the following statements is true?
    - A) $b^2 - 4ac > 0$
    - B) $b^2 - 4ac = 0$
    - C) $b^2 - 4ac < 0$
    - D) The roots are complex numbers.
+   - E) None of the above
 
 6. Find the maximum or minimum value of the quadratic function
    $$f(x) = -2x^2 + 4x + 1$$
@@ -39,6 +44,7 @@
    - B) Maximum at $x = 1$
    - C) Minimum at $x = -2$
    - D) Minimum at $x = 2$
+   - E) None of the above
 
 7. Solve the equation by completing the square:
    $$x^2 + 6x + 8 = 0$$
@@ -46,6 +52,7 @@
    - B) $x = -1$, $x = -7$
    - C) $x = 3$, $x = -9$
    - D) $x = 2$, $x = -8$
+   - E) None of the above
 
 8. The roots of the quadratic equation $3x^2 + kx - 9 = 0$ are $\frac{1}{2}$ and $3$. Find the value of $k$.
 
@@ -65,5 +72,6 @@
 >   - B) $x^2 - x - 12 = 0$
 >   - C) $x^2 - x + 12 = 0$
 >   - D) $x^2 + x + 12 = 0$
+>   - E) None of the above
 
 12. Solve the quadratic equation: $x^2 - 4x - 5 = 0$
