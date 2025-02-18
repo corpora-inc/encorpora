@@ -63,8 +63,8 @@ Make this look like a beautiful lesson book with complete explanations and examp
 - **STRICTLY FOLLOW HEADER STRUCTURE BASED ON FILENAME.**
 - **NO extra headers like "Introduction to X"**
 - **NO lesson-ending summaries**
-- **PREFER DISPLAY MATH (`$$ ... $$`)**
 - **STRICTLY USE `$` AND `$$` FOR MATH. NOTHING ELSE.**
+- PREFER DISPLAY MATH (`$$ ... $$`) for equations and formulas. Use INLINE MATH (`$ ... $`) for short math terms or symbols within sentences.
 - DO NOT USE EMOJIS! No emojis.
 
 You can use LaTeX as the markdown will be passed through pandoc.

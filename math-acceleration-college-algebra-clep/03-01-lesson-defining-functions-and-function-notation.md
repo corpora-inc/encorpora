@@ -2,8 +2,6 @@
 
 A function is a rule that assigns each input exactly one output. In algebra, functions provide a systematic way to relate two quantities where one depends on the other.
 
-> “Pure mathematics is, in its way, the poetry of logical ideas.” – Albert Einstein
-
 ### What Is a Function?
 
 A function associates every element in a set (called the domain) with one unique element in another set (called the range). When you input a value into a function, you get exactly one corresponding output.

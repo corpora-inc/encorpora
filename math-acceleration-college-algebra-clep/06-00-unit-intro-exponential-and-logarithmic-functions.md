@@ -11,4 +11,4 @@ Understanding these functions is important because they provide the tools to des
 
 Throughout this unit, you will explore their properties, learn to graph them, and apply various techniques to solve related equations. The concepts you develop here will serve as a foundation for more advanced topics in algebra and calculus.
 
-> "Pure mathematics is, in its way, the poetry of logical ideas." – Albert Einstein
+> Exponential functions burst forth like wild crescendos in nature’s symphony, while logarithms serve as the gentle interpreters that reveal the measured rhythm behind the chaos.

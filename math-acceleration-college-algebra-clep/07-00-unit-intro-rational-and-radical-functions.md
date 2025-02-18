@@ -8,4 +8,4 @@ Radical functions, on the other hand, include expressions with roots. Mastering 
 
 These concepts matter because they bridge abstract mathematics and real-world modeling. Whether you are calculating rates in physics, optimizing design parameters in engineering, or analyzing trends in economics, a clear grasp of rational and radical functions is indispensable.
 
-> "Mathematics is the language with which God has written the universe." - Galileo Galilei
+> Rational functions reveal the elegant balance between finite divisions and infinite limits, while radical functions unearth the hidden roots of complexity, together crafting a story of balance and transformation in mathematics.

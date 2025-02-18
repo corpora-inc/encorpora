@@ -12,4 +12,4 @@ This content is important because functions are used to model real-life situatio
 
 You will learn through clear explanations and step-by-step examples that illustrate how functions work and how their graphs are constructed. These skills will prepare you for more advanced topics and applications in math and related disciplines.
 
-> “Pure mathematics is, in its way, the poetry of logical ideas.” – Albert Einstein
+> Functions are the invisible threads of a mathematical narrative; when traced on a graph, they unveil the hidden architecture of relationships.
