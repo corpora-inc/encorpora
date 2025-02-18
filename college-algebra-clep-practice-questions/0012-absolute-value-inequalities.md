@@ -70,20 +70,6 @@
     - D. $x < 8$
     - E. None of the above
 
-11. **Find the solution set for:** $|x - 4| = 0$
-    - A. $x = 4$
-    - B. $x = 0$
-    - C. $x = -4$
-    - D. No solution
-    - E. None of the above
-
-12. **Solve for x:** $|3x - 2| = 7$
-    - A. $x = 3$
-    - B. $x = -5$
-    - C. $x = \frac{3}{2}$ or $x = -\frac{5}{3}$
-    - D. $x = 5$
-    - E. None of the above
-
 13. **Which x satisfies $|x + 1| \leq 4$?**
     - A. $x \geq 3$
     - B. $x \leq 5$
