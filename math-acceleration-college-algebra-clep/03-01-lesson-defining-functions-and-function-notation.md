@@ -2,6 +2,8 @@
 
 A function is a rule that assigns each input exactly one output. In algebra, functions provide a systematic way to relate two quantities where one depends on the other.
 
+> “Pure mathematics is, in its way, the poetry of logical ideas.” – Albert Einstein
+
 ### What Is a Function?
 
 A function associates every element in a set (called the domain) with one unique element in another set (called the range). When you input a value into a function, you get exactly one corresponding output.
@@ -21,40 +23,44 @@ then $f(x)$ indicates the output when $x$ is used as input. Here:
 
 ### Evaluating a Function
 
-To evaluate a function, substitute a specific number for the variable and simplify. For instance, using the function
+To evaluate a function, substitute a specific number for the variable and simplify.
+
+**Example**
 
 $$
-f(x) = 2x + 3,
+f(x) = 2x + 3
 $$
 
-evaluate $f(4)$ as follows:
+Evaluate $f(4)$ as follows:
 
 1. Replace $x$ with 4:
 
-   $$
-f(4) = 2(4) + 3.
-   $$
+$$
+f(4) = 2(4) + 3
+$$
 
 2. Multiply $2$ by $4$ to get 8:
 
-   $$
-f(4) = 8 + 3.
-   $$
+$$
+f(4) = 8 + 3
+$$
 
 3. Add 8 and 3:
 
-   $$
-f(4) = 11.
-   $$
+$$
+f(4) = 11
+$$
 
 Thus, $f(4) = 11$.
 
 ### Real-World Application
 
-Functions are useful in many real-world scenarios. Consider a simple cost function for producing items:
+Functions are useful in many real-world scenarios. Consider a simple cost function for producing items.
+
+**Example**
 
 $$
-C(x) = 50 + 10x,
+C(x) = 50 + 10x
 $$
 
 where:
@@ -66,7 +72,7 @@ where:
 If a company produces 7 units, the total cost is computed as:
 
 $$
-C(7) = 50 + 10(7) = 50 + 70 = 120.
+C(7) = 50 + 10(7) = 50 + 70 = 120
 $$
 
 This model helps businesses predict costs based on production levels.
@@ -79,23 +85,16 @@ This model helps businesses predict costs based on production levels.
 
 Understanding functions and their notation is fundamental to solving equations, modeling real-life situations, and preparing for advanced topics in algebra.
 
-### Visual Example
+### Input-Output Table Example
 
-Below is a number line diagram to illustrate evaluating a function with a linear rule. Consider the function $f(x)=2x+3$ and focus on the input $x=4$.
+To clearly see how inputs map to outputs, consider the following table that lists several values of $x$ and their corresponding $f(x)$ values for the function $f(x) = 2x + 3$:
 
-\vspace*{2em}
-\begin{center}
-\begin{tikzpicture}[x=0.5cm]
-  % Draw a number line from 0 to 12
-  \draw[->] (0,0) -- (12,0) node[right] {Number Line};
-  % Place ticks every 1 unit
-  \foreach \x in {0,1,...,12}
-      \draw (\x,0.1) -- (\x,-0.1) node[below] {\x};
-  % Mark the input value x=4 and its corresponding output f(4)=11
-  \draw[thick, blue, ->] (4,0.5) -- (11,0.5);
-  \node at (7.5,1) {$f(4)=11$};
-\end{tikzpicture}
-\end{center}
-\vspace*{2em}
+| $x$ | $f(x)$ |
+|-----|-------------|
+| 0   | 3           |
+| 1   | 5           |
+| 2   | 7           |
+| 3   | 9           |
+| 4   | 11          |
 
-This visual connects the input value of 4 with the output value of 11, reinforcing the idea that each input is paired with one unique output.
+This table shows how each input value of $x$ produces exactly one output value $f(x)$, illustrating the function's definition.
