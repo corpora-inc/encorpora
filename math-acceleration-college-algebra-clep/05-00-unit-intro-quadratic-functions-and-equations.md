@@ -10,6 +10,6 @@ In this unit, you will learn to:
 - Identify and interpret the vertex, axis of symmetry, and intercepts of a quadratic function's graph.
 - Apply multiple methods to solve quadratic equations, ensuring a flexible approach to problem solving.
 
-> "Pure mathematics is, in its way, the poetry of logical ideas." - Albert Einstein
+> A quadratic equation is like a graceful arch bridging two realms—each solution a turning point in the tale of symmetry.
 
 Approach this unit step by step. The concepts introduced here will not only help you excel on the CLEP exam but also equip you with the problem-solving skills needed for real-world applications.

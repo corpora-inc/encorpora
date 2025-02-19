@@ -8,8 +8,8 @@ $$
 
 leads to two separate cases when $c \geq 0$:
 
-1. $$ ax + b = c $$
-2. $$ ax + b = -c $$
+1. $ax + b = c$
+2. $ax + b = -c$
 
 If $c < 0$, there is no solution because an absolute value cannot equal a negative number.
 
@@ -21,25 +21,25 @@ $$
 |x - 3| = 5
 $$
 
-We set up two cases:
+We set up two cases. Solve each case separately to find the solutions:
 
-1. $$ x - 3 = 5 $$
+Case 1:
 
-   Solve for $x$:
-   
-   $$
-   x = 5 + 3 = 8
-   $$
+$$x - 3 = 5$$
 
-2. $$ x - 3 = -5 $$
+$$
+x = 5 + 3 = 8
+$$
 
-   Solve for $x$:
-   
-   $$
-   x = -5 + 3 = -2
-   $$
+Case 2:
 
-Thus, the equation $$|x-3|=5$$ has two solutions: $$x=8$$ and $$x=-2$$.
+$$x - 3 = -5$$
+
+$$
+x = -5 + 3 = -2
+$$
+
+Thus, the equation $|x-3|=5$ has two solutions: $x=8$ and $x=-2$.
 
 ### Another Example with a Coefficient
 
@@ -83,7 +83,7 @@ $$
 3x = -5 + 4 = -1 \quad\Rightarrow\quad x = -\frac{1}{3}
 $$
 
-The solutions are $$x = 3$$ and $$x = -\frac{1}{3}$$.
+The solutions are $x = 3$ and $x = -\frac{1}{3}$.
 
 ### Real-World Application Example
 

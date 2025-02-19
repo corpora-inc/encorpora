@@ -49,7 +49,7 @@ $$
 
 **Solution:**
 
-1. Identify like terms: $$3x$$ and $$2x$$ are like terms, and $$-4$$ is a constant.
+1. Identify like terms: $3x$ and $2x$ are like terms, and $-4$ is a constant.
 2. Combine the like terms:
 
 $$
@@ -86,7 +86,7 @@ $$
 
 **Step 2: Identify and Group Like Terms**
 
-Group the $$x$$ terms and the constants:
+Group the $x$ terms and the constants:
 
 $$
 (6x - 5x - x) + (8 + 6)
@@ -94,7 +94,7 @@ $$
 
 **Step 3: Combine Like Terms**
 
-Combine the coefficients of $$x$$:
+Combine the coefficients of $x$:
 
 $$
 6x - 5x - x = 0x
@@ -114,6 +114,6 @@ $$
 
 ### Real-World Application
 
-In budgeting or financial calculations, expressions often need simplifying to consolidate like expenses or incomes, making the equation easier to interpret and solve. For instance, if $$3x$$ represents three months of an expense and $$2x$$ represents two months of the same expense, combining these helps calculate a total expense for five months.
+In budgeting or financial calculations, expressions often need simplifying to consolidate like expenses or incomes, making the equation easier to interpret and solve. For instance, if $3x$ represents three months of an expense and $2x$ represents two months of the same expense, combining these helps calculate a total expense for five months.
 
 By mastering the process of simplifying expressions and combining like terms, you deepen your algebra skills, paving the way for solving equations more effectively.

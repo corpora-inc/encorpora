@@ -8,4 +8,5 @@ Why: Mastering these topics is essential not only for advancing in algebra but a
 
 How: We will explore methods step by step, including isolating variables, applying arithmetic operations, and visualizing solution sets on number lines and coordinate planes. Real-world examples will illustrate how these concepts form the basis for more complex models.
 
-> "Pure mathematics is, in its way, the poetry of logical ideas." — Albert Einstein
+> In every equation and every symbol, there lies the whisper of nature’s grand design.
+
