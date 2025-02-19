@@ -9,17 +9,15 @@ There are two main forms of absolute value inequalities:
 
 > Absolute value inequalities can often be rewritten as compound inequalities or as two separate inequalities.
 
-------------------------------
+### 1. Solving Inequalities of the Form $|ax+b| < c$
 
-### 1. Solving Inequalities of the Form $$|ax+b| < c$$
-
-When you have an inequality such as $$|ax+b| < c$$, you can rewrite it as a compound inequality:
+When you have an inequality such as $|ax+b| < c$, you can rewrite it as a compound inequality:
 
 $$
 -c < ax+b < c
 $$
 
-**Example 1: Solve $$|2x-3| < 5$$**
+**Example 1: Solve $|2x-3| < 5$**
 
 Step 1: Rewrite the inequality:
 
@@ -47,19 +45,18 @@ The solution is all $x$ such that $x$ is between $-1$ and $4$.
 
 **Graphical Representation:**
 
-A number line would show open circles at $-1$ and $4$, with the segment between these values highlighted.
+On a number line, you would show an open circle at $-1$ and an open circle at $4$ with all points in between shaded.
 
-------------------------------
 
 ### 2. Solving Inequalities of the Form $$|ax+b| > c$$
 
-For an inequality like $$|ax+b| > c$$, the expression inside the absolute value must be greater than $c$ units away from zero. This creates two separate conditions:
+For an inequality like $|ax + b| > c$, the expression inside the absolute value must be greater than $c$ units away from zero. This creates two separate conditions:
 
 $$
 ax+b < -c \quad \text{or} \quad ax+b > c
 $$
 
-**Example 2: Solve $$|x+4| \ge 7$$**
+**Example 2: Solve $|x+4| \ge 7$**
 
 Step 1: Break the inequality into two cases. Note that when we have a "greater than or equal to" inequality, equality is included:
 
@@ -89,13 +86,12 @@ $$
 \end{aligned}
 $$
 
-The solution is all $x$ such that $$x \le -11 \quad \text{or} \quad x \ge 3.$$ 
+The solution is all $x$ such that $$x \le -11 \quad \text{or} \quad x \ge 3.$$
 
 **Graphical Representation:**
 
 A number line would show a closed circle at $-11$ with all points to the left shaded, and another closed circle at $3$ with all points to the right shaded.
 
-------------------------------
 
 ### 3. Real-World Application
 
@@ -119,23 +115,26 @@ $$
 
 This indicates that any measurement between $9.5$ mm and $10.5$ mm is acceptable.
 
-------------------------------
-
 ### 4. Special Considerations
 
 - If $c$ is negative in an inequality such as $$|ax+b| < c$$ or $$|ax+b| \le c$$, there is no solution because absolute value is always non-negative.
 
 - When dealing with $$|ax+b| \ge c$$ and $c$ is negative, the inequality is always true, since the absolute value is always greater than or equal to any negative number.
 
-------------------------------
 
 ### 5. Summary of Steps
 
 - **Isolate the Absolute Value:** Make sure the absolute value expression is alone on one side of the inequality.
-- **Determine the Form:** Identify whether the inequality is of the form $$|ax+b| < c$$ or $$|ax+b| > c$$.
-- **Rewrite Appropriately:** For $$<$$, rewrite as a compound inequality. For $$>$$, split into two separate inequalities.
-- **Solve the Resulting Inequalities:** Solve for the variable in each resulting inequality.
+- **Determine the Form:** Identify whether the inequality is of the form
 
-------------------------------
+$$|ax+b| < c$$
+
+or
+
+$$|ax+b| > c$$
+
+
+- **Rewrite Appropriately:** For $<$, rewrite as a compound inequality. For $>$, split into two separate inequalities.
+- **Solve the Resulting Inequalities:** Solve for the variable in each resulting inequality.
 
 By following these steps, you can solve a wide range of inequalities involving absolute values. This technique is applicable in various contexts, including error tolerance in engineering and quality control in manufacturing.
