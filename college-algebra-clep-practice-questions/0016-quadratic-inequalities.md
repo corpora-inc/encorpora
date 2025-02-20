@@ -25,8 +25,8 @@
    - D. $x < -1$
 
 5. **Determine the values of $x$ that satisfy $x^2 - 9x + 14 \ge 0$.**
-   - A. $(\-infty, 2] \cup [7, \infty)$
-   - B. $(\-infty, 2) \cup (7, \infty)$
+   - A. $(-\infty, 2] \cup [7, \infty)$
+   - B. $(-\infty, 2) \cup (7, \infty)$
    - C. $[2, 7]$
    - D. $(2, 7)$
 
@@ -85,7 +85,7 @@
     - D. $x > 0$
 
 15. **Solve $x^2 - 5x + 6 \ge 0$.**
-    - A. $(\-infty, 2] \cup [3, \infty)$
+    - A. $(- \infty, 2] \cup [3, \infty)$
     - B. $x < -2 \text{ or } x > 3$
     - C. $[2, 3]$
     - D. $x < 3 \text{ and } x < 5$
