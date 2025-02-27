@@ -94,10 +94,21 @@ $$
 
 3. Combine like terms:
 
-- $x^3$ terms: $4x^3 - 2x^3 = 2x^3$
-- $x^2$ terms: $-x^2 - 3x^2 = -4x^2$
-- $x$ terms: $6x + 4x = 10x$
-- Constant terms: $-5 - 2 = -7$
+    **$x^3$ terms:**
+
+    $$4x^3 - 2x^3 = 2x^3$$
+
+    **$x^2$ terms:**
+
+    $$-x^2 - 3x^2 = -4x^2$$
+
+    **$x$ terms:**
+
+    $$6x + 4x = 10x$$
+
+    **Constant terms:**
+
+    $$-5 - 2 = -7$$
 
 4. Write the final result:
 

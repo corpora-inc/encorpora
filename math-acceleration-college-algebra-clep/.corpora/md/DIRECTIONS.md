@@ -65,6 +65,8 @@ Make this look like a beautiful lesson book with complete explanations and examp
 - **NO lesson-ending summaries**
 - **STRICTLY USE `$` AND `$$` FOR MATH. NOTHING ELSE.**
 - PREFER DISPLAY MATH (`$$ ... $$`) for equations and formulas. Use INLINE MATH (`$ ... $`) for short math terms or symbols within sentences.
+- DO NOT put sentence punctuation into display math, design the lesson so that the sentence ends before the math starts.
+- DO NOT indent display math, put it on a new line by itself.
 - DO NOT USE EMOJIS! No emojis.
 
 You can use LaTeX as the markdown will be passed through pandoc.

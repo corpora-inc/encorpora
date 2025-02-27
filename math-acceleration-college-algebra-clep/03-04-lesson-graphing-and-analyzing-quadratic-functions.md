@@ -104,10 +104,10 @@ Below is an example of a graphical representation:
   ]
     \addplot [smooth, blue, thick] {x^2-4*x+3};
     \addplot[only marks, mark=*] coordinates {(2,-1) (0,3) (1,0) (3,0)};
-    \node at (axis cs:2,-1) [anchor=south east] {\((2,-1)\)};
+    \node at (axis cs:2.5,-2) [anchor=south east] {\((2,-1)\)};
     \node at (axis cs:0,3) [anchor=south east] {\((0,3)\)};
-    \node at (axis cs:1,0) [anchor=north] {\((1,0)\)};
-    \node at (axis cs:3,0) [anchor=north] {\((3,0)\)};
+    \node at (axis cs:0.5,-0.5) [anchor=north] {\((1,0)\)};
+    \node at (axis cs:3,-0.5) [anchor=north] {\((3,0)\)};
   \end{axis}
 \end{tikzpicture}
 \end{center}
@@ -179,9 +179,9 @@ Below is a graphical representation:
     \addplot [smooth, red, thick] {-2*(x-1)^2+8};
     \addplot[only marks, mark=*] coordinates {(1,8) (0,6) (-1,0) (3,0)};
     \node at (axis cs:1,8) [anchor=south west] {\((1,8)\)};
-    \node at (axis cs:0,6) [anchor=south east] {\((0,6)\)};
-    \node at (axis cs:-1,0) [anchor=north] {\((-1,0)\)};
-    \node at (axis cs:3,0) [anchor=north] {\((3,0)\)};
+    \node at (axis cs:-0.5,6) [anchor=south east] {\((0,6)\)};
+    \node at (axis cs:-1.5,1) [anchor=north] {\((-1,0)\)};
+    \node at (axis cs:3.5,1) [anchor=north] {\((3,0)\)};
   \end{axis}
 \end{tikzpicture}
 \end{center}
