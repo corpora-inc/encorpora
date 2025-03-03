@@ -19,6 +19,7 @@ The Judgment implies that while there is potential for success, one must act wit
 \end{center}
 
 > **Before Completion (Not Yet Across):** Success is indicated because the yielding (soft) element attains the central (middle) balance. The small fox, about to cross (nearly crossing/almost across), wets its tail (soaks its tail), with no benefit (gains no advantage). The interplay of firm and yielding (firm and soft) is not yet settled (stabilized). Though unfavorable, achievement (merit) still arises; the time (moment) is not ripe, and thus completion remains unrealized.
+
 The Tuàn Zhuàn expands upon the notion that the current balance between firmness and yielding is in flux. Despite apparent setbacks, there is still forward motion toward eventual success. The cautionary note is that conditions are not yet fully aligned for perfect completion.
 
 
