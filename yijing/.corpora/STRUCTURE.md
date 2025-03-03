@@ -1,48 +1,101 @@
 **STRUCTURE.md**
 
-Each hexagram is represented by exactly seven files, using the following naming convention:
+We organize each hexagram into seven files: one main file for the hexagram itself (which includes a six-digit binary notation in its filename) and six files for the changing lines (which do not include binary). All files are named according to the following rules:
 
-```
-NN-00-hexagram-XX-title.md
-NN-01-hexagram-XX-changing-line-1.md
-NN-02-hexagram-XX-changing-line-2.md
-NN-03-hexagram-XX-changing-line-3.md
-NN-04-hexagram-XX-changing-line-4.md
-NN-05-hexagram-XX-changing-line-5.md
-NN-06-hexagram-XX-changing-line-6.md
-```
+1. **Main Hexagram File (includes binary)**
 
-- **NN**: Two-digit identifier for the hexagram number (e.g., “01” for hexagram 1, “02” for hexagram 2, …, “64” for hexagram 64).
-- **XX**: Also the hexagram number, ensuring clarity in the file name.
-- In each file, the “00” file (e.g., `01-00-hexagram-01-qian-the-creative.md`) is the core text for the hexagram and must begin with a top-level header (`#`). This file includes the full traditional Chinese texts and multiple literal English translations for the following layers:
-  - Zhou Yi core text
-  - Ten Wings commentaries
-  - Wang Bi’s commentary
-  - Later editorial traditions (Song dynasty onward)
-- The files labeled “01” through “06” (e.g., `01-01-hexagram-01-changing-line-1.md`, etc.) are dedicated to the individual changing lines. Each of these files must begin with a secondary header (`##`). Within these files, organize the content into four sections—one for each traditional layer (Zhou Yi, Ten Wings, Wang Bi, and later editorial traditions)—each section starting with a tertiary header (`###`).
+   ```
+   NN-00-hexagram-XX-pinyin-english-bbbbbb.md
+   ```
+   - **NN**: Two-digit identifier for the hexagram (e.g., `64` for Hexagram 64).
+   - **XX**: The same hexagram number again, ensuring clarity (e.g., `64-wei-ji-before-completion`).
+   - **pinyin**: The pinyin romanization of the Chinese name (e.g., `wei-ji`).
+   - **english**: A short descriptive English title (e.g., `before-completion`).
+   - **bbbbbb**: Six-digit binary representation of the hexagram's lines, **from the bottom line first to the top line last**.
 
-**Example for Hexagram 1 (Qian – The Creative):**
+   **Content Requirements:**
+   - Begin with a top-level header (`#`), using this format:
+     ```
+     # NN - (Chinese Characters) (pinyin) (English Title)
+     ```
+     For instance:
+     ```
+     # 64 - 未濟 (wei ji) Before Completion
+     ```
+   - After the header, include the LaTeX command for the hexagram diagram, for example:
+     ```
+     \hexagram{0}{1}{0}{1}{0}{1}
+     ```
+   - Provide the full Chinese text and multiple literal English translations for:
+     - Zhou Yi core text
+     - Ten Wings commentaries
+     - Wang Bi commentary
+     - Later editorial traditions (Song dynasty onward)
+   - Give a concise and detailed summary, focusing on clarifying key terms and context that follow directly from the traditional texts.
 
-```
-01-00-hexagram-01-qian-the-creative.md   → begins with `#`
-01-01-hexagram-01-changing-line-1.md       → begins with `##`
-01-02-hexagram-01-changing-line-2.md       → begins with `##`
-01-03-hexagram-01-changing-line-3.md       → begins with `##`
-01-04-hexagram-01-changing-line-4.md       → begins with `##`
-01-05-hexagram-01-changing-line-5.md       → begins with `##`
-01-06-hexagram-01-changing-line-6.md       → begins with `##`
-```
+2. **Changing-Line Files (no binary in the filename)**
 
-**Example for Hexagram 2 (Kun – The Receptive):**
+   ```
+   NN-01-hexagram-XX-changing-line-1.md
+   NN-02-hexagram-XX-changing-line-2.md
+   NN-03-hexagram-XX-changing-line-3.md
+   NN-04-hexagram-XX-changing-line-4.md
+   NN-05-hexagram-XX-changing-line-5.md
+   NN-06-hexagram-XX-changing-line-6.md
+   ```
+   **Content Requirements:**
+   - Begin with a secondary header (`##`), for example:
+     ```
+     ## Changing Line 1
+     ```
+   - Divide the file into four sections, each starting with a tertiary header (`###`):
+     1. **Zhou Yi** (core text)
+     2. **Ten Wings**
+     3. **Wang Bi**
+     4. **Later Editorial Traditions**
+   - Provide the full Chinese text and multiple literal English translations specifically for that changing line.
+   - Focus on the line in question and explicate in as much detail as possible. Other files will have the general hexagram information and the other changing lines.
 
-```
-02-00-hexagram-02-kun-the-receptive.md
-02-01-hexagram-02-changing-line-1.md
-02-02-hexagram-02-changing-line-2.md
-02-03-hexagram-02-changing-line-3.md
-02-04-hexagram-02-changing-line-4.md
-02-05-hexagram-02-changing-line-5.md
-02-06-hexagram-02-changing-line-6.md
-```
+**Example**
+For Hexagram 64 (wei ji – before completion) with binary `010101`:
 
-This structure ensures consistency across the book and enables pandoc+LaTeX to automatically generate a precise Table of Contents. Each hexagram’s core file begins with a single top-level header (`#`), and every changing line file begins with a secondary header (`##`), with further subdivision into the four required traditional layers (each starting with `###`). This strict organization guarantees that every section is self-contained and deeply focused on its specific content.
+- Main Hexagram File:
+  ```
+  64-00-hexagram-64-wei-ji-before-completion-010101.md
+  ```
+  Inside the file:
+  ```markdown
+  # 64 - 未濟 (wei ji) Before Completion
+
+  \hexagram{0}{1}{0}{1}{0}{1}
+
+  Full Chinese text + multiple literal translations for: Zhou Yi, Ten Wings, Wang Bi, Later Editorial Traditions
+  ```
+
+- Changing-Line Files:
+  ```
+  64-01-hexagram-64-changing-line-1.md
+  64-02-hexagram-64-changing-line-2.md
+  64-03-hexagram-64-changing-line-3.md
+  64-04-hexagram-64-changing-line-4.md
+  64-05-hexagram-64-changing-line-5.md
+  64-06-hexagram-64-changing-line-6.md
+  ```
+  Each starts with:
+  ```markdown
+  ## Changing Line X
+
+  ### Zhou Yi
+  [Full Chinese text + literal translations]
+
+  ### Ten Wings
+  [Full Chinese text + commentary]
+
+  ### Wang Bi
+  [Full Chinese text + commentary]
+
+  ### Later Editorial Traditions
+  [Full Chinese text + commentary]
+  ```
+
+By following this naming convention and file structure, pandoc+LaTeX will generate a coherent Table of Contents, and each file remains narrowly focused on its specific scope: the main hexagram file for the entire hexagram and its layers, and each changing-line file for the single line's traditional texts and translations.

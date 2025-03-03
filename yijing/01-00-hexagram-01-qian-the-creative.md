@@ -1,5 +1,5 @@
 # Test
 
-\hexagram{1}{0}{1}{1}{0}{1}
+\hexagram{1}{1}{1}{1}{1}{1}
 
 Foobar baz.
