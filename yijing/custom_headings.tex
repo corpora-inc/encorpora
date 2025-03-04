@@ -34,6 +34,7 @@
 
 \renewenvironment{quote}
   {%
+
     \begin{samepage}%
     \begin{mdframed}[
       backgroundcolor=gray!10,
@@ -41,14 +42,17 @@
       innerleftmargin=18pt,
       innerrightmargin=18pt,
       innertopmargin=15pt,
-      innerbottommargin=15pt,
+      innerbottommargin=12pt,
       skipabove=20pt,
       skipbelow=20pt
     ]%
+    \begin{center}
   }
   {%
+\end{center}
     \end{mdframed}%
     \end{samepage}%
+
   }
 
 
@@ -95,6 +99,42 @@
         \draw (0,\y) -- (1.5,\y);
         \draw (2.5,\y) -- (4,\y);
       \fi
+    }
+  \end{tikzpicture}%
+  \vspace{2em}
+\end{center}
+}
+
+\newcommand{\consultation}[6]{%
+\begin{center}
+  \begin{tikzpicture}[scale=0.8]
+    \def\hexone{#1}%
+    \def\hextwo{#2}%
+    \def\hexthree{#3}%
+    \def\hexfour{#4}%
+    \def\hexfive{#5}%
+    \def\hexsix{#6}%
+    % Loop from top (line 6) to bottom (line 1)
+    \foreach \i/\val in {6/\hexsix,5/\hexfive,4/\hexfour,3/\hexthree,2/\hextwo,1/\hexone} {%
+      \pgfmathparse{-(7-\i)*0.7}%
+      \let\y\pgfmathresult
+      \ifnum\val=7
+         % Unchanging Yang: Solid line
+         \draw (0,\y) -- (4,\y);
+      \else\ifnum\val=8
+         % Unchanging Yin: Broken line
+         \draw (0,\y) -- (1.5,\y);
+         \draw (2.5,\y) -- (4,\y);
+      \else\ifnum\val=6
+         % Changing Yin: Broken line with "O"
+         \draw (0,\y) -- (1.5,\y);
+         \draw (2.5,\y) -- (4,\y);
+         \node at (2,\y) {\Large O};
+      \else\ifnum\val=9
+         % Changing Yang: Solid line with "X"
+         \draw (0,\y) -- (4,\y);
+         \node at (2,\y) {\Large X};
+      \fi\fi\fi\fi
     }
   \end{tikzpicture}%
   \vspace{2em}
