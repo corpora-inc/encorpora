@@ -1,98 +1,23 @@
-# 1 乾
+Below is a minimalist, Chinese‐only rendering of the complete canonical Zhou Yi (King Wen sequence) from 1 to 64. For any hexagram whose changing‐line text is identical to the main judgment, the line text is omitted.
 
-\hexagram{1}{1}{1}{1}{1}{1}
+---
 
-\begin{center}
-{\Huge 乾，元亨利贞\par}
-\end{center}
-\vspace{1em}
-
-> The Creative: prime success, advantageous to be steadfast.
-
-\vspace{1em}
-
-\begin{center}
-{\Large 初九：潜龙勿用 \par}
-\end{center}
-
-> The dragon lies hidden. It is not yet time to act.
-
-\vspace{1em}
-
-\begin{center}
-{\Large 九二：见龙在田，利见大人 \par}
-\end{center}
-
-> The dragon appears in the field. It is beneficial to see a great person.
-
-\vspace{1em}
-
-\begin{center}
-{\Large 九三：君子终日乾乾，夕惕若厉，不可大意 \par}
-\end{center}
-
-> The superior person is always alert and cautious, and evening brings apprehension. He must not be careless.
-
-\vspace{1em}
-
-\begin{center}
-{\Large 九四：或跃在渊，无咎 \par}
-\end{center}
-
-> Leaping into the abyss brings no blame.
-
-\vspace{1em}
-
-\begin{center}
-{\Large 九五：飞龙在天，利见大人 \par}
-\end{center}
-
-> The flying dragon soars in the sky. It is beneficial to see a great person.
-
-\vspace{1em}
-
-\begin{center}
-{\Large 上九：亢龙有悔 \par}
-\end{center}
-
-> The dragon rises to great heights but regrets it.
-
-
-<!-- 初九：潜龙勿用
-
+# 1. 乾
+乾，元亨利贞
+初九：潜龙勿用
 九二：见龙在田，利见大人
-
 九三：君子终日乾乾，夕惕若厉，不可大意
-
 九四：或跃在渊，无咎
-
 九五：飞龙在天，利见大人
-
-上九：亢龙有悔 -->
+上九：亢龙有悔
 
 # 2. 坤
-
-<!-- 坤，元亨，利牝马之贞 -->
-
-\begin{center}
-{\Huge 坤，元亨，利牝马之贞\par}
-\end{center}
-\vspace{1em}
-
-> The Receptive: Success. It is advantageous to maintain the constancy (chastity) of the female horse.
-
-\vspace{1em}
-
+坤，元亨，利牝马之贞
 初六：履霜，坚冰至
-
 六二：直，方，大，不习无不利
-
 六三：含章可贞；或从王事，无成有终
-
 六四：括囊，无咎，无誉
-
 九五：黄裳，元吉
-
 上六：龙战于野，其血玄黄
 
 # 3. 屯
@@ -114,27 +39,13 @@
 上九：击蒙，不利为寇，利御寇
 
 # 5. 需
-
 需，亨，利贞。勿用有攸往
-
-> Need (Waiting), success, advantageous to be steadfast. Do not use it when there is a place to go.
-
-\vspace{1.5em}
-
-\begin{center}
-
 初九：需于郊，利用恒，无咎
-
 九二：需于沙，小有言，终吉
-
 九三：需于泥，致寇至，往吝
-
 六四：需于血，出自穴
-
 九五：需于酒食，贞吉
-
 上六：入于穴，有不速之客三人来，敬之终吉
-\end{center}
 
 # 6. 讼
 讼，亨，利诉讼
@@ -492,7 +403,8 @@
 上九：以箕子之羹，用拯马革
 
 # 46. 升
-升，元亨
+
+升，元亨，用見大人，勿恤，南征吉。
 初九：曰升曰征，吉
 九二：元亨，无咎
 九三：升虚邑，亨
@@ -509,48 +421,14 @@
 九五：劓刖，困于赤绂，乃徐有说，利用祭祀
 上九：困于葛藟，于臲，曰喪，于大吉
 
-<!-- # 48. 井
+# 48. 井
 井，改井不利，汲井有时
 初九：井泥不食，旧井无禽
 九二：井谷射鲋，瓮敝，亦孔大吉
 九三：井渫不食，凶
 六四：井收，其汲自井，贞吉
 九五：井井，颓其瓶，凶
-上九：井溢，凶 -->
-
-# 48. 井
-
-\begin{center}
-{\Huge 井，改井不利，汲井有时\par}
-\end{center}
-\vspace{1em}
-
-> The Well: Changing the well is disadvantageous; drawing water in its proper time brings benefit.
-
-\vspace{1.5em}
-
-\begin{center}
-{\Large 初九：井泥不食，旧井无禽 \par}
-\end{center}
-
-> 1: The well's mud is not eaten; the old well has no birds.
-
-\vspace{1.5em}
-
-
-\begin{center}
-{\Large 九二：井谷射鲋，瓮敝，亦孔大吉 \par}
-
-{\Large 九三：井渫不食，凶 \par}
-
-{\Large 六四：井收，其汲自井，贞吉 \par}
-
-{\Large 九五：井井，颓其瓶，凶 \par}
-
-{\Large 上九：井溢，凶}
-\end{center}
-
-
+上九：井溢，凶
 
 # 49. 革
 革，己日乃革，元亨，利贞
@@ -682,7 +560,7 @@
 上九：往得疑疾，凶
 
 # 64. 未济
-未济，亨
+未濟，亨。小狐汔尾，濡其腊，無攸利。
 初九：济于泥，险且夬，入于坎，凶
 九二：妇丧其茀，勿逐，七日得
 九三：济于赤石，得朋，利涉大川
