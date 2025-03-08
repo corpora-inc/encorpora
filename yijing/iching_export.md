@@ -1874,7 +1874,7 @@
 ## Judgment
 
 \begin{center}
-{\Large 复，行入無疾，朋來無哇，反复其道，七日來复，利有於往。}
+{\Large 復，亨。出入無疾，朋來無咎。反復其道，七日來復，利有攸往。}
 \end{center}
 
 > Return. Going out and entering without affliction, friends come without blame, returning to its path, seven days come return, beneficial to have somewhere to go.
@@ -3899,7 +3899,7 @@
 ## Judgment
 
 \begin{center}
-{\Large 革，已日乃夏，元亨利貞，悔亡。}
+{\Large 革，己日乃孚，元亨利貞，悔亡。}
 \end{center}
 
 > Revolution. When the day is done, then there is trust. Great success, beneficial for correctness, regret vanishes.
@@ -3939,10 +3939,10 @@
 ## Line 4
 
 \begin{center}
-{\Large 革言三就，有孚。}
+{\Large 悔亡，有孚改命，吉。}
 \end{center}
 
-> Reform the words three times, there will be trust.
+> Regret vanishes. With trust, changing the mandate brings good fortune.
 
 
 

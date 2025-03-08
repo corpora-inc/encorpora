@@ -4,7 +4,7 @@ from django.db import models
 class Hexagram(models.Model):
     number = models.PositiveIntegerField(unique=True)
     chinese_name = models.CharField(max_length=20)
-    english_name = models.CharField(max_length=20, blank=True)
+    english_name = models.CharField(max_length=64, blank=True)
     pinyin = models.CharField(max_length=20, blank=True)
     binary = models.CharField(
         max_length=6, help_text="Binary representation of the hexagram", unique=True
