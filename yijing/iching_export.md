@@ -1,6 +1,6 @@
 
 
-# 1 乾 (qián)
+# 1 乾 (qián) - The Creative
 
 \hexagram{1}{1}{1}{1}{1}{1}
 
@@ -81,7 +81,7 @@
 
 
 
-# 2 坤 (kūn)
+# 2 坤 (kūn) - The Receptive
 
 \hexagram{0}{0}{0}{0}{0}{0}
 
@@ -162,7 +162,7 @@
 
 
 
-# 3 屯 (zhūn)
+# 3 屯 (zhūn) - Difficulty at the Beginning
 
 \hexagram{1}{0}{0}{0}{1}{0}
 
@@ -243,7 +243,7 @@
 
 
 
-# 4 蒙 (méng)
+# 4 蒙 (méng) - Youthful Folly
 
 \hexagram{0}{1}{0}{0}{0}{1}
 
@@ -324,7 +324,7 @@
 
 
 
-# 5 需 (xū)
+# 5 需 (xū) - Waiting (Nourishment)
 
 \hexagram{1}{1}{1}{0}{1}{0}
 
@@ -405,7 +405,7 @@
 
 
 
-# 6 訟 (sòng)
+# 6 訟 (sòng) - Conflict
 
 \hexagram{0}{1}{0}{1}{1}{1}
 
@@ -486,7 +486,7 @@
 
 
 
-# 7 師 (shī)
+# 7 師 (shī) - The Army
 
 \hexagram{0}{1}{0}{0}{0}{0}
 
@@ -567,7 +567,7 @@
 
 
 
-# 8 比 (bǐ)
+# 8 比 (bǐ) - Holding Together (Union)
 
 \hexagram{0}{0}{0}{0}{1}{0}
 
@@ -648,7 +648,7 @@
 
 
 
-# 9 小畜 (xiǎo chù)
+# 9 小畜 (xiǎo chù) - The Taming Power of the Small
 
 \hexagram{1}{1}{1}{0}{1}{1}
 
@@ -729,7 +729,7 @@
 
 
 
-# 10 履 (lǚ)
+# 10 履 (lǚ) - Treading (Conduct)
 
 \hexagram{1}{1}{0}{1}{1}{1}
 
@@ -810,7 +810,7 @@
 
 
 
-# 11 泰 (tài)
+# 11 泰 (tài) - Peace
 
 \hexagram{1}{1}{1}{0}{0}{0}
 
@@ -891,7 +891,7 @@
 
 
 
-# 12 否 (pǐ)
+# 12 否 (pǐ) - Standstill (Stagnation)
 
 \hexagram{0}{0}{0}{1}{1}{1}
 
@@ -972,7 +972,7 @@
 
 
 
-# 13 同人 (tóng rén)
+# 13 同人 (tóng rén) - Fellowship
 
 \hexagram{1}{0}{1}{1}{1}{1}
 
@@ -1053,7 +1053,7 @@
 
 
 
-# 14 大有 (dà yǒu)
+# 14 大有 (dà yǒu) - Possession in Great Measure
 
 \hexagram{1}{1}{1}{1}{0}{1}
 
@@ -1134,7 +1134,7 @@
 
 
 
-# 15 謙 (qiān)
+# 15 謙 (qiān) - Modesty
 
 \hexagram{0}{0}{1}{0}{0}{0}
 
@@ -1205,17 +1205,17 @@
 ## Line 6
 
 \begin{center}
-{\Large 鳴謙，利用行師，征邑國。}
+{\Large 利有攸往，利涉大川}
 \end{center}
 
-> Ming Qian, beneficial to march an army, to attack cities and states.
+> Resounding modesty. Beneficial to have somewhere to go, beneficial to cross the great river
 
 
 
 
 
 
-# 16 豫 (yù)
+# 16 豫 (yù) - Enthusiasm
 
 \hexagram{0}{0}{0}{1}{0}{0}
 
@@ -1296,7 +1296,7 @@
 
 
 
-# 17 隨 (suí)
+# 17 隨 (suí) - Following
 
 \hexagram{1}{0}{0}{1}{1}{0}
 
@@ -1377,7 +1377,7 @@
 
 
 
-# 18 蠱 (gǔ)
+# 18 蠱 (gǔ) - Work on the Decayed (Decay)
 
 \hexagram{0}{1}{1}{0}{0}{1}
 
@@ -1458,7 +1458,7 @@
 
 
 
-# 19 臨 (lín)
+# 19 臨 (lín) - Approach
 
 \hexagram{1}{1}{0}{0}{0}{0}
 
@@ -1539,7 +1539,7 @@
 
 
 
-# 20 觀 (guān)
+# 20 觀 (guān) - Contemplation (View)
 
 \hexagram{0}{0}{0}{0}{1}{1}
 
@@ -1620,7 +1620,7 @@
 
 
 
-# 21 噬嗑 (shì kè)
+# 21 噬嗑 (shì kè) - Biting Through
 
 \hexagram{1}{0}{0}{1}{0}{1}
 
@@ -1701,7 +1701,7 @@
 
 
 
-# 22 賁 (bì)
+# 22 賁 (bì) - Grace
 
 \hexagram{1}{0}{1}{0}{0}{1}
 
@@ -1782,7 +1782,7 @@
 
 
 
-# 23 剝 (bō)
+# 23 剝 (bō) - Splitting Apart
 
 \hexagram{0}{0}{0}{0}{0}{1}
 
@@ -1863,7 +1863,7 @@
 
 
 
-# 24 復 (fù)
+# 24 復 (fù) - Return (The Turning Point)
 
 \hexagram{1}{0}{0}{0}{0}{0}
 
@@ -1944,7 +1944,7 @@
 
 
 
-# 25 無妄 (wú wàng)
+# 25 無妄 (wú wàng) - Innocence (The Unexpected)
 
 \hexagram{1}{0}{0}{1}{1}{1}
 
@@ -2025,7 +2025,7 @@
 
 
 
-# 26 大畜 (dà chù)
+# 26 大畜 (dà chù) - The Taming Power of the Great
 
 \hexagram{1}{1}{1}{0}{0}{1}
 
@@ -2106,7 +2106,7 @@
 
 
 
-# 27 頤 (yí)
+# 27 頤 (yí) - The Corners of the Mouth (Providing Nourishment)
 
 \hexagram{1}{0}{0}{0}{0}{1}
 
@@ -2187,7 +2187,7 @@
 
 
 
-# 28 大過 (dà guò)
+# 28 大過 (dà guò) - Preponderance of the Great
 
 \hexagram{0}{1}{1}{1}{1}{0}
 
@@ -2268,7 +2268,7 @@
 
 
 
-# 29 坎 (kǎn)
+# 29 坎 (kǎn) - The Abysmal (Water)
 
 \hexagram{0}{1}{0}{0}{1}{0}
 
@@ -2349,7 +2349,7 @@
 
 
 
-# 30 離 (lí)
+# 30 離 (lí) - The Clinging (Fire)
 
 \hexagram{1}{0}{1}{1}{0}{1}
 
@@ -2430,7 +2430,7 @@
 
 
 
-# 31 咸 (xián)
+# 31 咸 (xián) - Influence (Wooing)
 
 \hexagram{0}{0}{1}{1}{1}{0}
 
@@ -2511,7 +2511,7 @@
 
 
 
-# 32 恆 (héng)
+# 32 恆 (héng) - Duration
 
 \hexagram{0}{1}{1}{1}{0}{0}
 
@@ -2592,7 +2592,7 @@
 
 
 
-# 33 遯 (dùn)
+# 33 遯 (dùn) - Retreat
 
 \hexagram{0}{0}{1}{1}{1}{1}
 
@@ -2673,7 +2673,7 @@
 
 
 
-# 34 大壯 (dà zhuàng)
+# 34 大壯 (dà zhuàng) - The Power of the Great
 
 \hexagram{1}{1}{1}{1}{0}{0}
 
@@ -2754,7 +2754,7 @@
 
 
 
-# 35 晉 (jìn)
+# 35 晉 (jìn) - Progress
 
 \hexagram{0}{0}{0}{1}{0}{1}
 
@@ -2835,7 +2835,7 @@
 
 
 
-# 36 明夷 (míng yí)
+# 36 明夷 (míng yí) - Darkening of the Light
 
 \hexagram{1}{0}{1}{0}{0}{0}
 
@@ -2916,7 +2916,7 @@
 
 
 
-# 37 家人 (jiā rén)
+# 37 家人 (jiā rén) - The Family (The Clan)
 
 \hexagram{1}{0}{1}{0}{1}{1}
 
@@ -2997,7 +2997,7 @@
 
 
 
-# 38 睽 (kuí)
+# 38 睽 (kuí) - Opposition
 
 \hexagram{1}{1}{0}{1}{0}{1}
 
@@ -3078,7 +3078,7 @@
 
 
 
-# 39 蹇 (jiǎn)
+# 39 蹇 (jiǎn) - Obstruction
 
 \hexagram{0}{0}{1}{0}{1}{0}
 
@@ -3159,7 +3159,7 @@
 
 
 
-# 40 解 (xiè)
+# 40 解 (xiè) - Deliverance
 
 \hexagram{0}{1}{0}{1}{0}{0}
 
@@ -3240,7 +3240,7 @@
 
 
 
-# 41 損 (sǔn)
+# 41 損 (sǔn) - Decrease
 
 \hexagram{1}{1}{0}{0}{0}{1}
 
@@ -3321,7 +3321,7 @@
 
 
 
-# 42 益 (yì)
+# 42 益 (yì) - Increase
 
 \hexagram{1}{0}{0}{0}{1}{1}
 
@@ -3402,7 +3402,7 @@
 
 
 
-# 43 夬 (guài)
+# 43 夬 (guài) - Breakthrough
 
 \hexagram{1}{1}{1}{1}{1}{0}
 
@@ -3483,7 +3483,7 @@
 
 
 
-# 44 姤 (gòu)
+# 44 姤 (gòu) - Coming to Meet
 
 \hexagram{0}{1}{1}{1}{1}{1}
 
@@ -3564,7 +3564,7 @@
 
 
 
-# 45 萃 (cuì)
+# 45 萃 (cuì) - Gathering Together (Massing)
 
 \hexagram{0}{0}{0}{1}{1}{0}
 
@@ -3645,7 +3645,7 @@
 
 
 
-# 46 升 (shēng)
+# 46 升 (shēng) - Pushing Upward
 
 \hexagram{0}{1}{1}{0}{0}{0}
 
@@ -3726,7 +3726,7 @@
 
 
 
-# 47 困 (kùn)
+# 47 困 (kùn) - Oppression (Exhaustion)
 
 \hexagram{0}{1}{0}{1}{1}{0}
 
@@ -3807,7 +3807,7 @@
 
 
 
-# 48 井 (jǐng)
+# 48 井 (jǐng) - The Well
 
 \hexagram{0}{1}{1}{0}{1}{0}
 
@@ -3888,7 +3888,7 @@
 
 
 
-# 49 革 (gé)
+# 49 革 (gé) - Revolution (Molting)
 
 \hexagram{1}{0}{1}{1}{1}{0}
 
@@ -3969,7 +3969,7 @@
 
 
 
-# 50 鼎 (dǐng)
+# 50 鼎 (dǐng) - The Cauldron
 
 \hexagram{0}{1}{1}{1}{0}{1}
 
@@ -4050,7 +4050,7 @@
 
 
 
-# 51 震 (zhèn)
+# 51 震 (zhèn) - The Arousing (Shock, Thunder)
 
 \hexagram{1}{0}{0}{1}{0}{0}
 
@@ -4131,7 +4131,7 @@
 
 
 
-# 52 艮 (gèn)
+# 52 艮 (gèn) - Keeping Still, Mountain
 
 \hexagram{0}{0}{1}{0}{0}{1}
 
@@ -4212,7 +4212,7 @@
 
 
 
-# 53 漸 (jiàn)
+# 53 漸 (jiàn) - Development (Gradual Progress)
 
 \hexagram{0}{0}{1}{0}{1}{1}
 
@@ -4293,7 +4293,7 @@
 
 
 
-# 54 返妹 (guī mèi)
+# 54 返妹 (guī mèi) - The Marrying Maiden
 
 \hexagram{1}{1}{0}{1}{0}{0}
 
@@ -4374,7 +4374,7 @@
 
 
 
-# 55 豐 (fēng)
+# 55 豐 (fēng) - Abundance (Fullness)
 
 \hexagram{1}{0}{1}{1}{0}{0}
 
@@ -4455,7 +4455,7 @@
 
 
 
-# 56 旅 (lǚ)
+# 56 旅 (lǚ) - The Wanderer
 
 \hexagram{0}{0}{1}{1}{0}{1}
 
@@ -4536,7 +4536,7 @@
 
 
 
-# 57 巽 (xùn)
+# 57 巽 (xùn) - The Gentle (The Penetrating, Wind)
 
 \hexagram{0}{1}{1}{0}{1}{1}
 
@@ -4617,7 +4617,7 @@
 
 
 
-# 58 兌 (duì)
+# 58 兌 (duì) - The Joyous (Lake)
 
 \hexagram{1}{1}{0}{1}{1}{0}
 
@@ -4698,7 +4698,7 @@
 
 
 
-# 59 渙 (huàn)
+# 59 渙 (huàn) - Dispersion (Dissolution)
 
 \hexagram{0}{1}{0}{0}{1}{1}
 
@@ -4779,7 +4779,7 @@
 
 
 
-# 60 節 (jié)
+# 60 節 (jié) - Limitation
 
 \hexagram{1}{1}{0}{0}{1}{0}
 
@@ -4860,7 +4860,7 @@
 
 
 
-# 61 中孚 (zhōng fú)
+# 61 中孚 (zhōng fú) - Inner Truth
 
 \hexagram{1}{1}{0}{0}{1}{1}
 
@@ -4941,7 +4941,7 @@
 
 
 
-# 62 小過 (xiǎo guò)
+# 62 小過 (xiǎo guò) - Preponderance of the Small
 
 \hexagram{0}{0}{1}{1}{0}{0}
 
@@ -5022,7 +5022,7 @@
 
 
 
-# 63 既濟 (jì jì)
+# 63 既濟 (jì jì) - After Completion
 
 \hexagram{1}{0}{1}{0}{1}{0}
 
@@ -5103,7 +5103,7 @@
 
 
 
-# 64 未濟 (wèi jì)
+# 64 未濟 (wèi jì) - Before Completion
 
 \hexagram{0}{1}{0}{1}{0}{1}
 
