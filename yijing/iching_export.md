@@ -1,6 +1,6 @@
 
 
-# 1 乾 (qián) - The Creative
+# 1 乾 (Qián) - The Creative
 
 \hexagram{1}{1}{1}{1}{1}{1}
 
@@ -11,10 +11,10 @@
 ## Judgment
 
 \begin{center}
-{\Large 乾，元亨利貞。}
+{\Large 元亨利貞}
 \end{center}
 
-> The Creative: Greatly penetrating, advantageous for determination.
+> First, offered, abundant, fated
 
 
 
@@ -24,47 +24,47 @@
 {\Large 潛龍勿用}
 \end{center}
 
-> Hidden dragon, do not act.
+> Dragon lies hidden, bide your time
 
 
 
 ## Line 2
 
 \begin{center}
-{\Large 見龍在田，利見大人。}
+{\Large 見龍在田，利見大人}
 \end{center}
 
-> See dragon in the field, advantageous to meet the great man.
+> Dragon emerges in the field, keen to meet the great one
 
 
 
 ## Line 3
 
 \begin{center}
-{\Large 君子終日乾乾，夕惕若，厲，無咎。}
+{\Large 君子終日乾乾，夕惕若，厲无咎}
 \end{center}
 
-> The noble one is constantly active throughout the day, vigilant in the evening as if facing danger, yet there is no blame.
+> The noble one toils all day, alert at dusk, danger but no blame
 
 
 
 ## Line 4
 
 \begin{center}
-{\Large 或躍在淵，無咎。}
+{\Large 或躍在淵，无咎}
 \end{center}
 
-> Perhaps leaping in the abyss, no blame.
+> Perchance a leap into the abyss, no blame
 
 
 
 ## Line 5
 
 \begin{center}
-{\Large 飛龍在天，利見大人。}
+{\Large 飛龍在天，利見大人}
 \end{center}
 
-> Flying dragon in the sky, it is beneficial to see a great person.
+> Dragon soars in the heavens, profit in meeting the great one
 
 
 
@@ -74,14 +74,14 @@
 {\Large 亢龍有悔}
 \end{center}
 
-> The dragon in the highest position has regrets.
+> Dragon overreaches, regret follows
 
 
 
 
 
 
-# 2 坤 (kūn) - The Receptive
+# 2 坤 (Kūn) - The Receptive
 
 \hexagram{0}{0}{0}{0}{0}{0}
 
@@ -92,50 +92,50 @@
 ## Judgment
 
 \begin{center}
-{\Large 坤，元亨，利牝馬之貞。君子有攸往，先迷後得主，利。西南得朋，東北喪朋。安貞吉。}
+{\Large 元亨，利牝馬之貞。君子有攸往，先迷後得主，利。西南得朋，東北喪朋。安貞吉。}
 \end{center}
 
-> The Receptive, supreme prosperity, beneficial for the perseverance of the mare. The gentleman has somewhere to go; first he is lost, then he finds a master, beneficial. In the southwest he gains friends, in the northeast he loses friends. Peaceful perseverance is auspicious.
+> Primal offering, bounty in the mare&#x27;s divinity. The superior person has a destination, initially lost then obtaining guidance, advantage. Southwest to obtain friendship; northeast to lose friends. Peaceful divination auspicious.
 
 
 
 ## Line 1
 
 \begin{center}
-{\Large 履霜，堅冰至。}
+{\Large 履霜堅冰至}
 \end{center}
 
-> Tread on frost, hard ice will come.
+> Stepping on frost, firm ice draws near.
 
 
 
 ## Line 2
 
 \begin{center}
-{\Large 直方大，不習，無不利。}
+{\Large 直方大，不習无不利}
 \end{center}
 
-> Upright, square, great, not accustomed, nothing not beneficial.
+> Straight, square, grand. Untrained, yet nothing cuts against gain.
 
 
 
 ## Line 3
 
 \begin{center}
-{\Large 含章可貞，或從王事，無成有終}
+{\Large 含章可貞，或從王事，无成有終}
 \end{center}
 
-> Containing beauty can be verified. Perhaps following the king&#x27;s affairs, there is no achievement but there is an end.
+> Harboring beauty suits destiny’s way. Perhaps aiding royal deeds—no triumph, yet a close.
 
 
 
 ## Line 4
 
 \begin{center}
-{\Large 括囊，無咎無譽。}
+{\Large 括囊无咎无譽}
 \end{center}
 
-> Enclose the bag, no blame, no praise.
+> Sack sealed tight. No fault, no praise.
 
 
 
@@ -145,24 +145,24 @@
 {\Large 黃裳元吉}
 \end{center}
 
-> Yellow robes, primal auspiciousness.
+> Yellow skirts herald first fortune.
 
 
 
 ## Line 6
 
 \begin{center}
-{\Large 龍戰于野，其血玄黃。}
+{\Large 龍戰於野，其血玄黃}
 \end{center}
 
-> The dragon battles in the fields, its blood dark and yellow.
+> Dragons war in the wilds. Blood runs black and yellow.
 
 
 
 
 
 
-# 3 屯 (zhūn) - Difficulty at the Beginning
+# 3 屯 (Zhūn) - Difficulty at the Beginning
 
 \hexagram{1}{0}{0}{0}{1}{0}
 
@@ -173,77 +173,77 @@
 ## Judgment
 
 \begin{center}
-{\Large 屯，元亨利貞，勿用有於往，利建侯。}
+{\Large 元亨利貞，勿用有攸往，利建侯}
 \end{center}
 
-> Difficulty at the Beginning, great success, beneficial for perseverance, do not use for going forward, beneficial for establishing a lord.
+> Primal offering, bounty fated. Don’t push out—profit in raising a chief.
 
 
 
 ## Line 1
 
 \begin{center}
-{\Large 磐桓，利居貞，利建侯。}
+{\Large 磐桓，利居貞，利建侯}
 \end{center}
 
-> Lingering, beneficial to dwell in steadfastness, beneficial to establish a lord.
+> Rock steady. Profit in home’s fate. Edge to lift a chief.
 
 
 
 ## Line 2
 
 \begin{center}
-{\Large 屯如邅如，乘馬班如，匪寇婚媾，女子貞不字，十年乃字。}
+{\Large 屯如邅如，乘馬班如，匪寇婚媾，女子貞不字，十年乃字}
 \end{center}
 
-> Tun like sar like, riding a horse in disarray, not robbers but marriage alliance, the maiden&#x27;s chastity does not lead to marriage, after ten years she will marry.
+> Stumbling, circling. Riders mass. Not bandits—suitors hunt. Woman’s way barren—ten years, then yield.
 
 
 
 ## Line 3
 
 \begin{center}
-{\Large 即鹿無虞，惟入于林中，君子幾不如舍，往吝。}
+{\Large 即鹿无虞，惟入于林中，君子幾不如舍，往吝}
 \end{center}
 
-> Immediately pursue deer without a forester, only enter into the forest, a gentleman should perhaps not abandon it, going leads to regret.
+> Chasing deer, no scout. Deep in the woods alone. The superior balks—pushing on bites.
 
 
 
 ## Line 4
 
 \begin{center}
-{\Large 乘馬班如，求婚媾，往吉，無不利。}
+{\Large 乘馬班如，求婚媾，往吉，无不利}
 \end{center}
 
-> Mounting a horse, it goes slowly; seeking a marriage alliance, going forward is auspicious, nothing is unfavorable.
+> Riders mass, chasing vows. Going lucky—sharp gain all around.
 
 
 
 ## Line 5
 
 \begin{center}
-{\Large 屯其膏，小貞吉，大貞凶。}
+{\Large 屯其膏，小貞吉，大貞凶}
 \end{center}
 
-> Tun its fat, small determination auspicious, great determination ominous.
+> Gather what is most vital. Small inspiration auspicious, grand aspiration ominous.
 
 
 
 ## Line 6
 
 \begin{center}
-{\Large 乘馬班如，泣血漣如。}
+{\Large 乘馬班如，泣血漣如}
 \end{center}
 
-> Mounting the horse, it hesitates; weeping blood, it ripples.
+> Riding in formation, tears of blood rippling.
 
 
 
 
 
 
-# 4 蒙 (méng) - Youthful Folly
+# 4 蒙 (Méng) - Youthful Folly
 
 \hexagram{0}{1}{0}{0}{0}{1}
 
@@ -254,77 +254,77 @@
 ## Judgment
 
 \begin{center}
-{\Large 蒙，亨。匪我求童蒙，童蒙求我。初筮告，再三瀆，瀆則不告。利貞。}
+{\Large 亨。匪我求童蒙，童蒙求我。初筮告，再三瀆，瀆則不告。利貞。}
 \end{center}
 
-> Youthful Folly, success. It is not I who seek the young and foolish, it is the young and foolish who seek me. At first divination, I tell; if asked repeatedly, it is disrespectful, and I do not tell. It is beneficial to be correct.
+> Pervasive. Not I seeking youthful folly, youthful folly seeks me. First divination speaks, repeated thrice profanes, profaning then no speech. Beneficial steadfastness.
 
 
 
 ## Line 1
 
 \begin{center}
-{\Large 發蒙，利用刑人，用說桎梏，以往吝。}
+{\Large 發蒙，利用刑人，用說桎梏，以往吝}
 \end{center}
 
-> Unveiling ignorance, beneficial to punish people, to use to remove shackles, going leads to regret.
+> Unveiling folly, beneficial to punish, to remove shackles, going brings regret
 
 
 
 ## Line 2
 
 \begin{center}
-{\Large 包蒙吉，納婦吉，子克家。}
+{\Large 包蒙吉，納婦吉，子克家}
 \end{center}
 
-> Enveloping the ignorant is auspicious, taking a wife is auspicious, the son overcomes the household.
+> Embracing folly fortunate, accepting a wife fortunate, the son masters the house
 
 
 
 ## Line 3
 
 \begin{center}
-{\Large 勿用取女，見金夫，不有躬，無攸利。}
+{\Large 勿用取女，見金夫，不有躬，无攸利}
 \end{center}
 
-> Do not take a wife. See a metal husband. Do not have yourself. There is no benefit.
+> Do not take the woman, seeing a man of gold, lacking self, no benefit anywhere
 
 
 
 ## Line 4
 
 \begin{center}
-{\Large 困蒙，吝。}
+{\Large 困蒙，吝}
 \end{center}
 
-> Trapped in ignorance, leading to regret.
+> Trapped in folly, regret
 
 
 
 ## Line 5
 
 \begin{center}
-{\Large 童蒙，吉。}
+{\Large 童蒙，吉}
 \end{center}
 
-> Childlike ignorance, auspicious.
+> Youthful folly, fortune
 
 
 
 ## Line 6
 
 \begin{center}
-{\Large 擊蒙，不利為寇，利御寇。}
+{\Large 擊蒙，不利為寇，利御寇}
 \end{center}
 
-> Strike the ignorant; it is not beneficial to attack, it is beneficial to defend against attack.
+> Striking folly, not beneficial to be a robber, beneficial to repel robbers
 
 
 
 
 
 
-# 5 需 (xū) - Waiting (Nourishment)
+# 5 需 (Xū) - Waiting
 
 \hexagram{1}{1}{1}{0}{1}{0}
 
@@ -335,50 +335,50 @@
 ## Judgment
 
 \begin{center}
-{\Large 需，有存，光行，貞吉，利涉大川。}
+{\Large 有孚，光亨，貞吉，利涉大川}
 \end{center}
 
-> Waiting, there is trust, light and progress, steadfastness is auspicious, beneficial to ford the great river.
+> With trust, radiant and pervasive, steadfast fortune, beneficial to cross great rivers
 
 
 
 ## Line 1
 
 \begin{center}
-{\Large 需于郊，利用恆，無咎。}
+{\Large 需于郊，利用恆，无咎}
 \end{center}
 
-> Awaiting at the outskirts, beneficial to perseverance, no blame.
+> Waiting in the outskirts, beneficial to persist, no blame
 
 
 
 ## Line 2
 
 \begin{center}
-{\Large 需于沙，小有言，終吉。}
+{\Large 需于沙，小有言，終吉}
 \end{center}
 
-> Waiting at the sand, there are minor words, ultimately auspicious.
+> Waiting on the sand, slight words arise, ultimately fortunate
 
 
 
 ## Line 3
 
 \begin{center}
-{\Large 需于泥，致寇至。}
+{\Large 需于泥，致寇至}
 \end{center}
 
-> Awaiting in the mud, it brings bandits to arrive.
+> Waiting in the mud, inviting robbers to come
 
 
 
 ## Line 4
 
 \begin{center}
-{\Large 需于血，出自穴。}
+{\Large 需于血，出自穴}
 \end{center}
 
-> Need at the blood, coming out from the cave.
+> Waiting in blood, emerging from the cave
 
 
 
@@ -388,24 +388,24 @@
 {\Large 需于酒食，貞吉}
 \end{center}
 
-> Waiting upon wine and food, determination auspicious
+> Waiting with wine and food, steadfast fortune
 
 
 
 ## Line 6
 
 \begin{center}
-{\Large 入于穴，有不速之客三人來，敬之終吉。}
+{\Large 入于穴，有不速之客三人來，敬之終吉}
 \end{center}
 
-> Enter the cave, there are three uninvited guests coming, respect them and it will ultimately be auspicious.
+> Entering the cave, three uninvited guests arrive, honor them and fortune follows
 
 
 
 
 
 
-# 6 訟 (sòng) - Conflict
+# 6 訟 (Sòng) - Contention
 
 \hexagram{0}{1}{0}{1}{1}{1}
 
@@ -416,50 +416,50 @@
 ## Judgment
 
 \begin{center}
-{\Large 訴，有突窘惑，中吉，終凶。利見大人，不利涉大川。}
+{\Large 有孚窒惕，中吉，終凶。利見大人，不利涉大川。}
 \end{center}
 
-> Conflict, having sincerity, obstruction, and apprehension; in the middle, good fortune, in the end, misfortune. It is beneficial to see a great person, not beneficial to ford the great river.
+> With trust obstructed, cautious, midway fortunate, ending ominous. Beneficial to meet the great person, not beneficial to cross great rivers.
 
 
 
 ## Line 1
 
 \begin{center}
-{\Large 不永所事，小有言，終吉。}
+{\Large 不永所事，小有言，終吉}
 \end{center}
 
-> Not long in its affair, there are small words, ultimately auspicious.
+> Not prolonging the matter, slight words arise, ultimately fortunate
 
 
 
 ## Line 2
 
 \begin{center}
-{\Large 不克訟，歸而逋，其邑人三百戶，無眚。}
+{\Large 不克訟，歸而逋，其邑人三百戶，无眚}
 \end{center}
 
-> Unable to litigate, return and flee, his townsfolk three hundred households, no harm.
+> Unable to contend, returning in flight, the village of three hundred households, no calamity
 
 
 
 ## Line 3
 
 \begin{center}
-{\Large 食舊德，貞厲，終吉，或從王事，無成}
+{\Large 食舊德，貞厲，終吉，或從王事，无成}
 \end{center}
 
-> Eating old virtue, determination is dangerous, ultimately auspicious, or following the king&#x27;s affairs, no achievement
+> Living off old virtue, steadfast danger, ultimately fortunate, perhaps following the king’s affairs, no completion
 
 
 
 ## Line 4
 
 \begin{center}
-{\Large 訟，元吉。}
+{\Large 不克訟，復即命渝，安貞吉}
 \end{center}
 
-> Litigation, great success.
+> Unable to contend, returning to accept the mandate’s change, peaceful steadfastness fortunate
 
 
 
@@ -469,7 +469,7 @@
 {\Large 訟元吉}
 \end{center}
 
-> Litigation, great fortune.
+> Contention, primary fortune
 
 
 
@@ -479,14 +479,14 @@
 {\Large 或錫之鞶帶，終朝三褫之}
 \end{center}
 
-> Perhaps he is awarded a leather belt, but by the end of the morning it is taken away three times.
+> Perhaps granted a ceremonial belt, by day’s end thrice stripped away
 
 
 
 
 
 
-# 7 師 (shī) - The Army
+# 7 師 (Shī) - The Army
 
 \hexagram{0}{1}{0}{0}{0}{0}
 
@@ -497,77 +497,77 @@
 ## Judgment
 
 \begin{center}
-{\Large 師，貞，丈人吉，無咎。}
+{\Large 貞丈人吉，无咎}
 \end{center}
 
-> The Army: When correct, the elderly man is auspicious, without fault.
+> Steadfast, the seasoned one fortunate, no blame
 
 
 
 ## Line 1
 
 \begin{center}
-{\Large 師出以律，否臧凶。}
+{\Large 師出以律，否臧凶}
 \end{center}
 
-> The army goes forth with order; if it is not good, there will be misfortune.
+> The army marches with discipline, lacking order ominous
 
 
 
 ## Line 2
 
 \begin{center}
-{\Large 在師中吉，無咎，王三錫命。}
+{\Large 在師中吉，无咎，王三錫命}
 \end{center}
 
-> In the army, auspicious, no blame, the king thrice bestows commands.
+> Amid the army fortunate, no blame, the king thrice bestows a mandate
 
 
 
 ## Line 3
 
 \begin{center}
-{\Large 師或輿尸，凶}
+{\Large 師或輿屍，凶}
 \end{center}
 
-> The army may carry the dead, ominous.
+> The army perhaps carries corpses, ominous
 
 
 
 ## Line 4
 
 \begin{center}
-{\Large 師左次，無咎。}
+{\Large 師左次，无咎}
 \end{center}
 
-> The army camps on the left, no blame.
+> The army camps on the left, no blame
 
 
 
 ## Line 5
 
 \begin{center}
-{\Large 田有禽，利執言，無咎，長子帥師，弟子輿尸，貞凶。}
+{\Large 田有禽，利執言，无咎，長子帥師，弟子輿屍，貞凶}
 \end{center}
 
-> There are captives in the field. It is beneficial to execute the orders. There is no blame. The eldest son leads the army, the younger son carries the corpse. Determination leads to misfortune.
+> Game in the field, beneficial to seize and speak, no blame, the eldest son leads the army, the younger carries corpses, steadfast ominous
 
 
 
 ## Line 6
 
 \begin{center}
-{\Large 大君有命，開國承家，小人勿用。}
+{\Large 大君有命，開國承家，小人勿用}
 \end{center}
 
-> The great ruler has a command, to establish a state and inherit a family, the small man should not be used.
+> The great ruler issues a mandate, founding states and sustaining houses, petty ones not to be used
 
 
 
 
 
 
-# 8 比 (bǐ) - Holding Together (Union)
+# 8 比 (Bǐ) - Union
 
 \hexagram{0}{0}{0}{0}{1}{0}
 
@@ -578,30 +578,30 @@
 ## Judgment
 
 \begin{center}
-{\Large 比，吉。原筮元永貞，無咎。不寧方來，後夫凶。}
+{\Large 吉。原筮元永貞，无咎。不寧方來，後夫凶。}
 \end{center}
 
-> Holding Together, auspicious. Originally, divination is greatly and eternally correct, without fault. When unrest comes, the later person is in danger.
+> Fortune. Original divination: primary, enduring steadfastness, no blame. Unsettled regions come, the latecomer ominous.
 
 
 
 ## Line 1
 
 \begin{center}
-{\Large 有孚比之，無咎。有孚盈缶，終來有他吉。}
+{\Large 有孚比之，无咎。有孚盈缶，終來有他吉}
 \end{center}
 
-> There is sincerity in following, no blame. There is sincerity filling the earthenware jar, in the end, there will be other good fortune.
+> With trust uniting, no blame. With trust filling the jar, ultimately other fortune arrives
 
 
 
 ## Line 2
 
 \begin{center}
-{\Large 比之自內，貞吉。}
+{\Large 比之自內，貞吉}
 \end{center}
 
-> Compare from within, determination auspicious.
+> Uniting from within, steadfast fortune
 
 
 
@@ -611,7 +611,7 @@
 {\Large 比之匪人}
 \end{center}
 
-> They compare to the wrong person.
+> Uniting with the wrong ones
 
 
 
@@ -621,34 +621,34 @@
 {\Large 外比之，貞吉}
 \end{center}
 
-> Externally allied, determined auspicious.
+> Uniting outwardly, steadfast fortune
 
 
 
 ## Line 5
 
 \begin{center}
-{\Large 顯比，王用三驅，失前禽，邑人不誡，吉。}
+{\Large 顯比，王用三驅，失前禽，邑人不誡，吉}
 \end{center}
 
-> Manifest union, the king uses three drives, loses the first game, the people of the town are not warned, auspicious.
+> Manifest union, the king uses three drives, losing game ahead, the village unalarmed, fortune
 
 
 
 ## Line 6
 
 \begin{center}
-{\Large 比之無首，凶。}
+{\Large 比之无首，凶}
 \end{center}
 
-> When comparing, there is no leader, ominous.
+> Union without a head, ominous
 
 
 
 
 
 
-# 9 小畜 (xiǎo chù) - The Taming Power of the Small
+# 9 小畜 (Xiǎo Chù) - Small Taming
 
 \hexagram{1}{1}{1}{0}{1}{1}
 
@@ -659,77 +659,77 @@
 ## Judgment
 
 \begin{center}
-{\Large 小畜，行，密雲不雨，自我西郊。}
+{\Large 亨。密雲不雨，自我西郊。}
 \end{center}
 
-> The Taming Power of the Small, success. Dense clouds do not rain, from our western suburb.
+> Pervasive. Dense clouds, no rain, from our western outskirts.
 
 
 
 ## Line 1
 
 \begin{center}
-{\Large 復自道，何其咎，吉。}
+{\Large 復自道，何其咎，吉}
 \end{center}
 
-> Return by the path, what blame could there be? Auspicious.
+> Returning by the path, what blame is there, fortune
 
 
 
 ## Line 2
 
 \begin{center}
-{\Large 小有言，終吉。}
+{\Large 牽復，吉}
 \end{center}
 
-> There is a small matter to discuss, ultimately auspicious.
+> Pulled back, fortune
 
 
 
 ## Line 3
 
 \begin{center}
-{\Large 輿說輻，夫妻反目。}
+{\Large 輿說輻，夫妻反目}
 \end{center}
 
-> The cart&#x27;s spokes are loosened, husband and wife turn against each other.
+> The cart loses its spokes, husband and wife turn against each other
 
 
 
 ## Line 4
 
 \begin{center}
-{\Large 或躍在淵，無咎。}
+{\Large 有孚，血去惕出，无咎}
 \end{center}
 
-> Sometimes leaping in the abyss, no blame.
+> With trust, blood departs, caution lifts, no blame
 
 
 
 ## Line 5
 
 \begin{center}
-{\Large 有孚攣如，富以其鄰。}
+{\Large 有孚攣如，富以其鄰}
 \end{center}
 
-> With sincerity binding, enrich with its neighbors.
+> With trust binding tightly, wealth shared with neighbors
 
 
 
 ## Line 6
 
 \begin{center}
-{\Large 小人用壯，君子用罔，貞厲，羝羊觸藩，羸其角。}
+{\Large 既雨既處，尚德載，婦貞厲，月幾望，君子征凶}
 \end{center}
 
-> The small man uses strength, the gentleman uses the net; determination is dangerous. The ram butts the fence, weakening its horns.
+> Rain falls and settles, virtue still bears, the woman steadfast in danger, moon nearly full, the noble one advancing ominous
 
 
 
 
 
 
-# 10 履 (lǚ) - Treading (Conduct)
+# 10 履 (Lǚ) - Treading
 
 \hexagram{1}{1}{0}{1}{1}{1}
 
@@ -740,77 +740,77 @@
 ## Judgment
 
 \begin{center}
-{\Large 履，履虎尾，不咥人，亨。}
+{\Large 履虎尾，不咥人，亨}
 \end{center}
 
-> Treading, treading the tiger&#x27;s tail, it does not bite, there is success.
+> Treading the tiger’s tail, it does not bite, pervasive
 
 
 
 ## Line 1
 
 \begin{center}
-{\Large 素足往，无恶。}
+{\Large 素履，往无咎}
 \end{center}
 
-> Plain treading forward, no harm.
+> Plain treading, going without blame
 
 
 
 ## Line 2
 
 \begin{center}
-{\Large 履道坦坦，幽人貞吉。}
+{\Large 履道坦坦，幽人貞吉}
 \end{center}
 
-> Treading the path smooth and level, the recluse&#x27;s integrity is auspicious.
+> Treading a smooth path, the secluded one steadfast and fortunate
 
 
 
 ## Line 3
 
 \begin{center}
-{\Large 眇能視，跛能履，履虎尾，咥人，凶。武人為于大君。}
+{\Large 眇能視，跛能履，履虎尾，咥人凶，武人為于大君}
 \end{center}
 
-> The blind can see, the lame can walk, treading on a tiger&#x27;s tail, the tiger bites, misfortune. The warrior acts for the great lord.
+> One-eyed yet seeing, lame yet treading, treading the tiger’s tail, it bites—ominous, the warrior acts for the great ruler
 
 
 
 ## Line 4
 
 \begin{center}
-{\Large 履虎尾，慈慈，终吉。}
+{\Large 履虎尾，愬愬，終吉}
 \end{center}
 
-> Tread on the tiger&#x27;s tail, apprehensive, ultimately auspicious.
+> Treading the tiger’s tail, trembling, ultimately fortunate
 
 
 
 ## Line 5
 
 \begin{center}
-{\Large 女如操车，用敬得中后人。}
+{\Large 夬履，貞厲}
 \end{center}
 
-> A woman driving a cart, using respect to obtain the support of the people behind.
+> Resolute treading, steadfast danger
 
 
 
 ## Line 6
 
 \begin{center}
-{\Large 履道泰}
+{\Large 視履考祥，其旋元吉}
 \end{center}
 
-> Treading the path of peace
+> Observing treading, examining omens, returning brings primary fortune
 
 
 
 
 
 
-# 11 泰 (tài) - Peace
+# 11 泰 (Tài) - Peace
 
 \hexagram{1}{1}{1}{0}{0}{0}
 
@@ -821,60 +821,60 @@
 ## Judgment
 
 \begin{center}
-{\Large 泰，小往大來，吉亨。}
+{\Large 小往大來，吉亨}
 \end{center}
 
-> Peace, small goes and great comes, auspicious and harmonious.
+> The small departs, the great arrives, fortune pervasive
 
 
 
 ## Line 1
 
 \begin{center}
-{\Large 拔茅茹，以其彙，征吉。}
+{\Large 拔茅茹，以其彙，征吉}
 \end{center}
 
-> Pull out the rushes, with their roots, going forward is auspicious.
+> Pulling up thatch with its roots, together advancing fortunate
 
 
 
 ## Line 2
 
 \begin{center}
-{\Large 包荒，用馮河，不遐遺，朋亡，得尚于中行。}
+{\Large 包荒，用馮河，不遐遺，朋亡，得尚于中行}
 \end{center}
 
-> Encompass the wilderness, use to ford the river, not abandon from afar, friends gone, obtain favor in the middle way.
+> Embracing the wild, crossing the river boldly, not neglecting the distant, companions lost, gaining favor in the middle path
 
 
 
 ## Line 3
 
 \begin{center}
-{\Large 無平不陂，無往不復，艱貞無咎，勿恤其孚，于食有福。}
+{\Large 无平不陂，无往不復，艱貞无咎，勿恤其孚，于食有福}
 \end{center}
 
-> There is no level without a slope, no going without returning. With perseverance in difficulty, there is no blame. Do not worry about your trust; in food, there will be blessings.
+> No level without slope, no going without return, steadfast in hardship no blame, do not mourn its trust, in sustenance lies blessing
 
 
 
 ## Line 4
 
 \begin{center}
-{\Large 翹翹，不富以其鄰，不戒以奚。}
+{\Large 翩翩，不富以其鄰，不戒以孚}
 \end{center}
 
-> Flutter flutter, not rich with its neighbors, not warned by trust.
+> Fluttering down, not wealthy yet with neighbors, not wary yet with trust
 
 
 
 ## Line 5
 
 \begin{center}
-{\Large 帝乙歸妹，以祉元吉。}
+{\Large 帝乙歸妹，以祉元吉}
 \end{center}
 
-> Di Yi marries off his daughter, with blessings, great fortune.
+> Emperor Yi marries off his sister, with blessings primary fortune
 
 
 
@@ -884,14 +884,14 @@
 {\Large 城復于隍，勿用師，自邑告命，貞吝}
 \end{center}
 
-> The city returns to the moat, do not use troops, from the city proclaim the command, determination leads to regret
+> The city wall falls into the moat, do not wield the army, from the village comes the mandate, steadfast regret
 
 
 
 
 
 
-# 12 否 (pǐ) - Standstill (Stagnation)
+# 12 否 (Pǐ) - Obstruction
 
 \hexagram{0}{0}{0}{1}{1}{1}
 
@@ -902,30 +902,30 @@
 ## Judgment
 
 \begin{center}
-{\Large 否，否之匪人，不利君子貞，大往小來。}
+{\Large 否之匪人，不利君子貞，大往小來}
 \end{center}
 
-> Standstill. Standstill&#x27;s not for people. Not beneficial for the noble to be correct. Great goes, small comes.
+> Obstruction by the wrong ones, not beneficial to the noble one’s steadfastness, the great departs, the small arrives
 
 
 
 ## Line 1
 
 \begin{center}
-{\Large 拔茅茹，以其彙，貞吉亨。}
+{\Large 拔茅茹，以其彙，貞吉亨}
 \end{center}
 
-> Pull out the rushes, together with their roots, divination auspicious, harmonious.
+> Pulling up thatch with its roots, together steadfast fortune pervasive
 
 
 
 ## Line 2
 
 \begin{center}
-{\Large 包承，小人吉，大人否亨。}
+{\Large 包承，小人吉，大人否亨}
 \end{center}
 
-> Embrace and receive, the small person is fortunate, the great person is obstructed and prosperous.
+> Embracing submission, the petty one fortunate, the great one obstructed yet pervasive
 
 
 
@@ -935,44 +935,44 @@
 {\Large 包羞}
 \end{center}
 
-> Wrapped in shame
+> Embracing shame
 
 
 
 ## Line 4
 
 \begin{center}
-{\Large 有命無咎，疇離祉}
+{\Large 有命无咎，畴離祉}
 \end{center}
 
-> There is an order without blame; who can leave blessings behind?
+> With a mandate no blame, companions part with blessings
 
 
 
 ## Line 5
 
 \begin{center}
-{\Large 休否，大人吉，其亡其亡，繫于苞桑。}
+{\Large 休否，大人吉，其亡其亡，繫于苞桑}
 \end{center}
 
-> Rest from obstruction, good fortune for the great man. Its gone, its gone, tied to a mulberry tree.
+> Resting from obstruction, the great one fortunate, ‘it’s gone, it’s gone,’ tied to a mulberry bush
 
 
 
 ## Line 6
 
 \begin{center}
-{\Large 傾否，先否後喜。}
+{\Large 傾否，先否後喜}
 \end{center}
 
-> Overturn obstruction, first obstruction then joy.
+> Overturning obstruction, first obstructed then joy
 
 
 
 
 
 
-# 13 同人 (tóng rén) - Fellowship
+# 13 同人 (Tóng Rén) - Fellowship
 
 \hexagram{1}{0}{1}{1}{1}{1}
 
@@ -983,77 +983,77 @@
 ## Judgment
 
 \begin{center}
-{\Large 同人，同人于野，匮。利涉大川，利君子貞。}
+{\Large 同人于野，亨。利涉大川，利君子貞。}
 \end{center}
 
-> Fellowship. Fellowship with people in the wild, good fortune. It is beneficial to cross the great river, beneficial for a superior person to be steadfast.
+> Fellowship in the open, pervasive. Beneficial to cross great rivers, beneficial to the noble one’s steadfastness.
 
 
 
 ## Line 1
 
 \begin{center}
-{\Large 同人于門，無咎。}
+{\Large 同人于門，无咎}
 \end{center}
 
-> Fellowship at the gate, no blame.
+> Fellowship at the gate, no blame
 
 
 
 ## Line 2
 
 \begin{center}
-{\Large 同人于宗，吝。}
+{\Large 同人于宗，吝}
 \end{center}
 
-> Same people at the clan, difficulty.
+> Fellowship within the clan, regret
 
 
 
 ## Line 3
 
 \begin{center}
-{\Large 伏戎于莽，升其高陵，三歲不興。}
+{\Large 伏戎于莽，升其高陵，三歲不興}
 \end{center}
 
-> Hide troops in the thicket, ascend to the high hill, for three years not rising.
+> Hiding warriors in the thickets, ascending the high ridge, three years without rising
 
 
 
 ## Line 4
 
 \begin{center}
-{\Large 乘其墉，弗克攻，吉。}
+{\Large 乘其墉，弗克攻，吉}
 \end{center}
 
-> Ride on its wall, unable to attack, auspicious.
+> Mounting the wall, unable to attack, fortune
 
 
 
 ## Line 5
 
 \begin{center}
-{\Large 同人先號咷而後笑，大師克相遇。}
+{\Large 同人先號咷而後笑，大師克相遇}
 \end{center}
 
-> Same people first wail then laugh, great army able to meet.
+> Fellowship first wails then laughs, the great army prevails in meeting
 
 
 
 ## Line 6
 
 \begin{center}
-{\Large 同人于郊，無悔。}
+{\Large 同人于郊，无悔}
 \end{center}
 
-> Fellowship with men in the suburbs, no regrets.
+> Fellowship in the outskirts, no regret
 
 
 
 
 
 
-# 14 大有 (dà yǒu) - Possession in Great Measure
+# 14 大有 (Dà Yǒu) - Great Possession
 
 \hexagram{1}{1}{1}{1}{0}{1}
 
@@ -1064,30 +1064,30 @@
 ## Judgment
 
 \begin{center}
-{\Large 大有，元亨。}
+{\Large 元亨}
 \end{center}
 
-> Possession in Great Measure, prime auspiciousness.
+> Primary, pervasive
 
 
 
 ## Line 1
 
 \begin{center}
-{\Large 無交害，匪咎，艱則無咎。}
+{\Large 无交害，匪咎，艱則无咎}
 \end{center}
 
-> No harmful interaction, not a fault, if difficult then no fault.
+> No mingling with harm, not blame, hardship then no blame
 
 
 
 ## Line 2
 
 \begin{center}
-{\Large 大車以載，有攸往，無咎。}
+{\Large 大車以載，有攸往，无咎}
 \end{center}
 
-> The great wagon is used to carry; there is somewhere to go, no blame.
+> A great cart to load, with a direction to go, no blame
 
 
 
@@ -1097,44 +1097,44 @@
 {\Large 公用亨于天子，小人弗克}
 \end{center}
 
-> The Duke uses offerings to the Son of Heaven; the small man cannot.
+> The duke prospers with the emperor, the petty one cannot
 
 
 
 ## Line 4
 
 \begin{center}
-{\Large 匪其彭，無咎。}
+{\Large 匪其彭，无咎}
 \end{center}
 
-> Not its Peng, no blame.
+> Not its abundance, no blame
 
 
 
 ## Line 5
 
 \begin{center}
-{\Large 厥孚交如，威如，吉。}
+{\Large 厥孚交如，威如，吉}
 \end{center}
 
-> His sincerity is like that of a merchant, like that of awe, auspicious.
+> His trust binds firmly, majestic, fortune
 
 
 
 ## Line 6
 
 \begin{center}
-{\Large 自天祐之，吉無不利}
+{\Large 自天祐之，吉无不利}
 \end{center}
 
-> From heaven it is blessed, auspicious, nothing is not beneficial.
+> Blessed from heaven, fortune without disadvantage
 
 
 
 
 
 
-# 15 謙 (qiān) - Modesty
+# 15 謙 (Qiān) - Humility
 
 \hexagram{0}{0}{1}{0}{0}{0}
 
@@ -1145,10 +1145,10 @@
 ## Judgment
 
 \begin{center}
-{\Large 謙，亨，君子有終。}
+{\Large 亨。君子有終。}
 \end{center}
 
-> Modesty brings success. The superior man has an end.
+> Pervasive. The noble one reaches completion.
 
 
 
@@ -1158,7 +1158,7 @@
 {\Large 謙謙君子，用涉大川，吉}
 \end{center}
 
-> The humble gentleman uses this to cross the great river, auspicious.
+> Humble upon humble, the noble one crosses great rivers, fortune
 
 
 
@@ -1168,54 +1168,54 @@
 {\Large 鳴謙，貞吉}
 \end{center}
 
-> Singing humility, determination auspicious
+> Resounding humility, steadfast fortune
 
 
 
 ## Line 3
 
 \begin{center}
-{\Large 勞謙，君子有終，吉。}
+{\Large 勞謙，君子有終，吉}
 \end{center}
 
-> Toil in humility, the noble one has an end, auspicious.
+> Toiling in humility, the noble one reaches completion, fortune
 
 
 
 ## Line 4
 
 \begin{center}
-{\Large 無不利，撝謙。}
+{\Large 无不利，撝謙}
 \end{center}
 
-> No harm, humility.
+> No disadvantage, wielding humility
 
 
 
 ## Line 5
 
 \begin{center}
-{\Large 不富以其鄰，利用侵伐，無不利。}
+{\Large 不富以其鄰，利用侵伐，无不利}
 \end{center}
 
-> Not rich by its neighbors, advantageous to invade and attack, no disadvantage.
+> Not wealthy yet with neighbors, beneficial to invade and strike, no disadvantage
 
 
 
 ## Line 6
 
 \begin{center}
-{\Large 利有攸往，利涉大川}
+{\Large 鳴謙，利用行師，征邑國}
 \end{center}
 
-> Resounding modesty. Beneficial to have somewhere to go, beneficial to cross the great river
+> Resounding humility, beneficial to deploy the army, conquering village and state
 
 
 
 
 
 
-# 16 豫 (yù) - Enthusiasm
+# 16 豫 (Yù) - Enthusiasm
 
 \hexagram{0}{0}{0}{1}{0}{0}
 
@@ -1226,70 +1226,70 @@
 ## Judgment
 
 \begin{center}
-{\Large 袁，利建侯行帅。}
+{\Large 利建侯行師}
 \end{center}
 
-> Enthusiasm, beneficial for establishing a lord and leading an army.
+> Beneficial to establish a lord and deploy the army
 
 
 
 ## Line 1
 
 \begin{center}
-{\Large 鳴豫，凶。}
+{\Large 鳴豫，凶}
 \end{center}
 
-> Ming Yu, ominous.
+> Boasting enthusiasm, ominous
 
 
 
 ## Line 2
 
 \begin{center}
-{\Large 介于石，不終日，貞吉。}
+{\Large 介于石，不終日，貞吉}
 \end{center}
 
-> Intervene with stone, not completing the day, determination auspicious.
+> Firm as stone, not lasting the day, steadfast fortune
 
 
 
 ## Line 3
 
 \begin{center}
-{\Large 盱豫悔，遲有悔。}
+{\Large 盱豫，悔，遲有悔}
 \end{center}
 
-> Regret in the delight of excess; delay brings regret.
+> Gazing upward in enthusiasm, regret, delay brings regret
 
 
 
 ## Line 4
 
 \begin{center}
-{\Large 由豫，大有得，勿疑，朋盍簪。}
+{\Large 由豫，大有得，勿疑，朋盍簪}
 \end{center}
 
-> From enjoyment, there is great gain. Do not doubt, friends will gather like hairpins.
+> Through enthusiasm, great gains, do not doubt, companions gather like hairpins
 
 
 
 ## Line 5
 
 \begin{center}
-{\Large 由豫，大有得，勿疑，朋盍簪。}
+{\Large 貞疾，恆不死}
 \end{center}
 
-> From pleasure, great gain, do not doubt, friends will gather like hairpins.
+> Steadfast in illness, persisting without death
 
 
 
 ## Line 6
 
 \begin{center}
-{\Large 冥豫，成有渝，無咎。}
+{\Large 冥豫，成有渝，无咎}
 \end{center}
 
-> Dark pleasure, achieving change, no blame.
+> Dark enthusiasm, completion with change, no blame
 
 
 
