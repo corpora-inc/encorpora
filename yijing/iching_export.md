@@ -662,7 +662,7 @@
 {\Large 亨。密雲不雨，自我西郊。}
 \end{center}
 
-> Pervasive. Dense clouds, no rain, from our western outskirts.
+> Offering flows. Dense clouds, no rain, from our western edge.
 
 
 
@@ -672,7 +672,7 @@
 {\Large 復自道，何其咎，吉}
 \end{center}
 
-> Returning by the path, what blame is there, fortune
+> Return by the path. What fault lies here? Good fortune.
 
 
 
@@ -682,7 +682,7 @@
 {\Large 牽復，吉}
 \end{center}
 
-> Pulled back, fortune
+> Pulled back. Fortune follows.
 
 
 
@@ -692,7 +692,7 @@
 {\Large 輿說輻，夫妻反目}
 \end{center}
 
-> The cart loses its spokes, husband and wife turn against each other
+> Cart sheds its spokes. Man and wife lock eyes in strife.
 
 
 
@@ -702,7 +702,7 @@
 {\Large 有孚，血去惕出，无咎}
 \end{center}
 
-> With trust, blood departs, caution lifts, no blame
+> Faith holds. Blood fades, fear lifts. No fault.
 
 
 
@@ -712,7 +712,7 @@
 {\Large 有孚攣如，富以其鄰}
 \end{center}
 
-> With trust binding tightly, wealth shared with neighbors
+> Faith binds tight. Wealth spreads to the neighbor.
 
 
 
@@ -722,7 +722,7 @@
 {\Large 既雨既處，尚德載，婦貞厲，月幾望，君子征凶}
 \end{center}
 
-> Rain falls and settles, virtue still bears, the woman steadfast in danger, moon nearly full, the noble one advancing ominous
+> Rain falls, then rests. Virtue bears high. Woman’s way perilous. Moon nears full. The superior marches to ruin.
 
 
 
@@ -1067,7 +1067,7 @@
 {\Large 元亨}
 \end{center}
 
-> Primary, pervasive
+> Primal offering, bounty flows.
 
 
 
@@ -1077,7 +1077,7 @@
 {\Large 无交害，匪咎，艱則无咎}
 \end{center}
 
-> No mingling with harm, not blame, hardship then no blame
+> No mingling harm. Not at fault. Hardship keeps it clean.
 
 
 
@@ -1087,7 +1087,7 @@
 {\Large 大車以載，有攸往，无咎}
 \end{center}
 
-> A great cart to load, with a direction to go, no blame
+> Great cart loaded. Somewhere to go, no fault.
 
 
 
@@ -1097,7 +1097,7 @@
 {\Large 公用亨于天子，小人弗克}
 \end{center}
 
-> The duke prospers with the emperor, the petty one cannot
+> Duke offers to the Son of Heaven. Small folk can’t match.
 
 
 
@@ -1107,7 +1107,7 @@
 {\Large 匪其彭，无咎}
 \end{center}
 
-> Not its abundance, no blame
+> Not their excess. No fault.
 
 
 
@@ -1117,7 +1117,7 @@
 {\Large 厥孚交如，威如，吉}
 \end{center}
 
-> His trust binds firmly, majestic, fortune
+> Trust binds tight, awe strikes. Lucky break.
 
 
 
@@ -1127,7 +1127,7 @@
 {\Large 自天祐之，吉无不利}
 \end{center}
 
-> Blessed from heaven, fortune without disadvantage
+> Heaven’s aid rains down. Lucky, all edges sharp.
 
 
 
@@ -2754,7 +2754,7 @@
 
 
 
-# 35 晉 (jìn) - Progress
+# 35 晉 (Jìn) - Advancing
 
 \hexagram{0}{0}{0}{1}{0}{1}
 
@@ -2765,70 +2765,70 @@
 ## Judgment
 
 \begin{center}
-{\Large 晉，康侯用錫馬藤茂，晚日三接。}
+{\Large 康侯用錫馬蕃庶，晝日三接}
 \end{center}
 
-> Progress. The Marquis of Kang uses abundant horses as gifts. During the day, there are three meetings.
+> The sturdy lord gains horses in droves. Thrice met in daylight.
 
 
 
 ## Line 1
 
 \begin{center}
-{\Large 晉如摧如，貞吉，罔孚，裕無咎。}
+{\Large 晉如摧如，貞吉。罔孚，裕无咎}
 \end{center}
 
-> Advance like destruction, determined auspicious, no trust, abundant without fault.
+> Advancing, then crushed. Fated good. Trust lacks—abide, no fault.
 
 
 
 ## Line 2
 
 \begin{center}
-{\Large 晉如愁如，貞吉，受茲介福，于其王母。}
+{\Large 晉如愁如，貞吉。受茲介福，于其王母}
 \end{center}
 
-> Advancing like being worried, determination auspicious, receiving great blessings, from their royal mother.
+> Advancing, then anxious. Divination auspicious. Great blessing received from the king’s mother.
 
 
 
 ## Line 3
 
 \begin{center}
-{\Large 晉如鼫鼠，貞厲。}
+{\Large 眾允，悔亡}
 \end{center}
 
-> Advancing like a field mouse, determination is dangerous.
+> All agree. Regret fades.
 
 
 
 ## Line 4
 
 \begin{center}
-{\Large 晉如鼫鼠，貞厲。}
+{\Large 晉如鼫鼠，貞厲}
 \end{center}
 
-> Advance like a field mouse, determination leads to danger.
+> Advancing like a field rat. Way perilous.
 
 
 
 ## Line 5
 
 \begin{center}
-{\Large 悔亡，失得勿恤，往吉無不利。}
+{\Large 悔亡，失得勿恤，往吉，无不利}
 \end{center}
 
-> Regrets are gone; do not worry about losses or gains. Going forward will be auspicious and without harm.
+> Regret fades. Loss or gain—don’t fret. Go forward, good fortune. All yields bounty.
 
 
 
 ## Line 6
 
 \begin{center}
-{\Large 晉其角，維用伐邑，厲吉無咎，貞吝。}
+{\Large 晉其角，維用伐邑，厲吉无咎，貞吝}
 \end{center}
 
-> Advance its horn, only use it to attack the city, danger but auspicious without fault, determination leads to regret.
+> Advancing by the horns. Strike the town alone. Peril turns good, no fault. Aspiration stings.
 
 
 
@@ -3402,7 +3402,7 @@
 
 
 
-# 43 夬 (guài) - Breakthrough
+# 43 夬 (Guài) - Breakthrough
 
 \hexagram{1}{1}{1}{1}{1}{0}
 
@@ -3413,77 +3413,77 @@
 ## Judgment
 
 \begin{center}
-{\Large 夬，揚于王庭，孚號有厲，告自邑，不利即戎，利有攸往。}
+{\Large 揚于王庭，孚號有厲，告自邑，不利即戎，利有攸往}
 \end{center}
 
-> Breakthrough, raised at the royal court, trust in shouting has danger, announce from the town, not beneficial to engage in military action, beneficial to have somewhere to go.
+> Raised in the king’s court. Trust cries peril. Speak from the town—war brings no harvest. Going forth yields gain.
 
 
 
 ## Line 1
 
 \begin{center}
-{\Large 壯于前趾，去不勝為咎}
+{\Large 壯于前趾，往不勝為咎}
 \end{center}
 
-> Robust at the front toes, going will not succeed and will be a fault.
+> Strength in the forefoot. Going fails—fault follows.
 
 
 
 ## Line 2
 
 \begin{center}
-{\Large 惕號，莫夜有戎，勿恤。}
+{\Large 惕號，莫夜有戎，无咎}
 \end{center}
 
-> Alert and cry out, there is conflict at night, do not worry.
+> Wary cry. Night brings arms. No fault.
 
 
 
 ## Line 3
 
 \begin{center}
-{\Large 壯于頄，有凶，君子夬夬獨行，遇雨若濡，有慍無咎。}
+{\Large 壯于頰，有凶，君子夬夬，獨行遇雨，若濡有慍，无咎}
 \end{center}
 
-> Robust at the cheekbone, there is calamity. The gentleman decisively acts alone, encountering rain as if soaked, with resentment but no blame.
+> Strength in the cheeks. Ruin looms. The superior breaks through alone. Meeting rain, soaked and vexed—no fault.
 
 
 
 ## Line 4
 
 \begin{center}
-{\Large 臀無膚，其行次且，牽羊悔亡，聞言不信。}
+{\Large 臀无膚，其行次且，牽羊悔亡，聞言不信}
 \end{center}
 
-> The buttocks have no skin, their movement is slow and halting, leading the sheep regret vanishes, hearing words they do not believe.
+> Buttocks bare of skin. Steps drag slow. Lead the sheep—regret fades. Words heard, not trusted.
 
 
 
 ## Line 5
 
 \begin{center}
-{\Large 壯于頄，有凶，君子夬夬獨行，遇雨若濡，有慍無咎。}
+{\Large 莧陸夬夬，中行无咎}
 \end{center}
 
-> Robust at the cheeks, there is danger. The gentleman decisively goes alone, encountering rain as if getting wet, there is resentment but no blame.
+> Purslane breaks through. Middle path, no fault.
 
 
 
 ## Line 6
 
 \begin{center}
-{\Large 無號，終有凶。}
+{\Large 无號，終有凶}
 \end{center}
 
-> No crying out, in the end there is calamity.
+> No cry. End brings ruin.
 
 
 
 
 
 
-# 44 姤 (gòu) - Coming to Meet
+# 44 姤 (Gòu) - Encounter
 
 \hexagram{0}{1}{1}{1}{1}{1}
 
@@ -3494,70 +3494,70 @@
 ## Judgment
 
 \begin{center}
-{\Large 姑，女壯，勿用取女。}
+{\Large 女壯，勿用取女}
 \end{center}
 
-> Coming to Meet. The woman is strong. Do not use to take a wife.
+> Woman strong. Don’t take her in marriage.
 
 
 
 ## Line 1
 
 \begin{center}
-{\Large 繫于金柅，貞吉，有攸往見凶，羸豕孚蹢躅}
+{\Large 繫于金柅，貞吉，有攸往，見凶，羸豕孚蹢躅}
 \end{center}
 
-> Tied to a metal brake, determination auspicious, if there is going, see danger, emaciated pig truly stumbles
+> Bound to the bronze brake. Fated good. Venture out, face ruin. Lean sow stammers in faith.
 
 
 
 ## Line 2
 
 \begin{center}
-{\Large 包有魚，無咎，不利賓。}
+{\Large 庖有魚，无咎，不利賓}
 \end{center}
 
-> Containing fish, no blame, not beneficial for guests.
+> Kitchen holds fish. No fault. Guests gain nothing.
 
 
 
 ## Line 3
 
 \begin{center}
-{\Large 臀無膚，其行次且，厲，無大咎。}
+{\Large 臀无膚，其行次且，厲，无大咎}
 \end{center}
 
-> The buttocks have no skin, his walking is hesitant and slow, dangerous, but there is no great blame.
+> Buttocks bare of skin. Steps falter hard. Peril, but no great fault.
 
 
 
 ## Line 4
 
 \begin{center}
-{\Large 包無魚，起凶。}
+{\Large 庖无魚，起凶}
 \end{center}
 
-> The bundle has no fish, arising leads to misfortune.
+> Kitchen lacks fish. Trouble stirs.
 
 
 
 ## Line 5
 
 \begin{center}
-{\Large 以杏包瓜，含章，有雲自天。}
+{\Large 以杞包瓜，含章，有隕自天}
 \end{center}
 
-> With a willow wrapping the melon, containing radiance, there is a falling star from heaven.
+> Willow wraps the melon. Beauty held within. A fall comes from heaven.
 
 
 
 ## Line 6
 
 \begin{center}
-{\Large 姤其角，吝，無咎。}
+{\Large 姤其角，吝，无咎}
 \end{center}
 
-> Meet at the horns, there is difficulty, no blame.
+> Encounter at the horns. Regret bites. No fault.
 
 
 
@@ -4698,7 +4698,7 @@
 
 
 
-# 59 渙 (huàn) - Dispersion (Dissolution)
+# 59 渙 (Huàn) - Dispersion
 
 \hexagram{0}{1}{0}{0}{1}{1}
 
@@ -4709,70 +4709,70 @@
 ## Judgment
 
 \begin{center}
-{\Large 清，行，王假有廟，利涉大川，利貞。}
+{\Large 亨，王假有廟，利涉大川，利貞}
 \end{center}
 
-> Dispersion, proceed. The king visits the ancestral temple. It is beneficial to ford the great river. It is beneficial to be steadfast.
+> Offering succeeds, the king approaches the temple. Advantage in crossing great rivers. Bounty divined.
 
 
 
 ## Line 1
 
 \begin{center}
-{\Large 用拯馬壯，吉。}
+{\Large 用拯馬壯吉}
 \end{center}
 
-> Use rescuing horse strength, auspicious.
+> Employ a strong horse for rescue. Fortune follows.
 
 
 
 ## Line 2
 
 \begin{center}
-{\Large 渙奔其機，悔亡。}
+{\Large 渙奔其機，悔亡}
 \end{center}
 
-> Dispersing, rushing to its opportunity, regret vanishes.
+> Dispersion hastens to the mechanism. Regret departs.
 
 
 
 ## Line 3
 
 \begin{center}
-{\Large 渙其躬，無悔。}
+{\Large 渙其躬，无悔}
 \end{center}
 
-> Disperse his person, no regret.
+> Dispersion of the self. No regret remains.
 
 
 
 ## Line 4
 
 \begin{center}
-{\Large 渙其群，元吉，渙有丘，匪夷所思。}
+{\Large 渙其群，元吉，渙有丘，匪夷所思}
 \end{center}
 
-> Disperse its group, great fortune, disperse with a hill, not what ordinary people would think.
+> Dispersion of the group, primal fortune. Dispersion forms hills, beyond ordinary conception.
 
 
 
 ## Line 5
 
 \begin{center}
-{\Large 渙汗其大號，渙王居，無咎。}
+{\Large 渙汗其大號，渙王居，无咎}
 \end{center}
 
-> Disperse the sweat of its great proclamation, disperse the king&#x27;s residence, no blame.
+> Dispersion of sweat, a great proclamation resounds. The king’s dwelling disperses—no fault.
 
 
 
 ## Line 6
 
 \begin{center}
-{\Large 渙其血，去逖出，無咎。}
+{\Large 渙其血，去逖出，无咎}
 \end{center}
 
-> Disperse its blood, go far away, no blame.
+> Dispersion of blood, danger withdraws afar. No fault.
 
 
 
@@ -4860,7 +4860,7 @@
 
 
 
-# 61 中孚 (zhōng fú) - Inner Truth
+# 61 中孚 (Zhōng Fú) - Inner Truth
 
 \hexagram{1}{1}{0}{0}{1}{1}
 
@@ -4871,70 +4871,70 @@
 ## Judgment
 
 \begin{center}
-{\Large 中孚，豚魚吉，利涉大川，利貞。}
+{\Large 豚魚吉，利涉大川，利貞}
 \end{center}
 
-> Inner Truth. Pig and fish are auspicious. It is beneficial to ford the great river. It is beneficial to be upright.
+> Piglets and fish bring luck. Gain crossing great rivers. Bounty fated.
 
 
 
 ## Line 1
 
 \begin{center}
-{\Large 虞吉，有他不燕。}
+{\Large 虞吉，有他勿用}
 \end{center}
 
-> Fishing is auspicious. If there is something else, it will not be peaceful.
+> Caution pays off. Other paths—don’t chase.
 
 
 
 ## Line 2
 
 \begin{center}
-{\Large 鳴鶴在陰，其子和之，我有好爵，吾與爾靡之。}
+{\Large 鳴鶴在陰，其子和之，我有好爵，吾與爾靡之}
 \end{center}
 
-> The crane calls in the shade, its young responds to it. I have a fine wine, I will share it with you.
+> Crane calls in shadow, its young echo. I hold fine rank—share it with you.
 
 
 
 ## Line 3
 
 \begin{center}
-{\Large 得敵，或鼓或罷，或泣或歌。}
+{\Large 得敵，或鼓或罷，或泣或歌}
 \end{center}
 
-> Gain an enemy, sometimes drumming, sometimes stopping, sometimes weeping, sometimes singing.
+> Facing foes. Drums pound, then stop. Tears fall, then songs rise.
 
 
 
 ## Line 4
 
 \begin{center}
-{\Large 月幾望，馬匹亡，無咎。}
+{\Large 月幾望，馬匹亡，无咎}
 \end{center}
 
-> The moon is nearly full, horses are lost, no blame.
+> Moon nears full, horse pair lost. No fault.
 
 
 
 ## Line 5
 
 \begin{center}
-{\Large 有孚攣如，無咎。}
+{\Large 有孚攣如，无咎}
 \end{center}
 
-> With sincerity, as if bound, there is no blame.
+> Trust ties tight. No fault.
 
 
 
 ## Line 6
 
 \begin{center}
-{\Large 翰音登于天，貞凶。}
+{\Large 翰音登于天，貞凶}
 \end{center}
 
-> The sound of wings ascends to heaven, determination leads to misfortune.
+> Cock’s cry climbs the sky. Aspiration turns dark.
 
 
 
