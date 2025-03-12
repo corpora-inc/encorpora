@@ -12,6 +12,7 @@ class Hexagram(models.Model):
     judgment_zh = models.TextField(help_text="Judgment in Chinese")
     judgment_en = models.TextField(help_text="Judgment in English", blank=True)
     judgment_es = models.TextField(help_text="Judgment in Spanish", blank=True)
+    judgment_pinyin = models.TextField(help_text="Judgment in Pinyin", blank=True)
 
     def __str__(self):
         return f"{self.number} - {self.chinese_name}"
@@ -23,6 +24,7 @@ class Line(models.Model):
     )
     line_number = models.PositiveIntegerField(help_text="Line number, e.g., 1 for 初九")
     text_zh = models.TextField(help_text="Original Chinese text for the line")
+    text_pinyin = models.TextField(help_text="Pinyin for the line", blank=True)
     text_en = models.TextField(help_text="English translation for the line", blank=True)
     text_es = models.TextField(help_text="Spanish translation for the line", blank=True)
 
