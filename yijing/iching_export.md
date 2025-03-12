@@ -254,10 +254,10 @@
 ## Judgment
 
 \begin{center}
-{\Large 亨。匪我求童蒙，童蒙求我。初筮告，再三瀆，瀆則不告。利貞。}
+{\Large 亨。匪我求童蒙，童蒙求我。初筮告，再三瀆，瀆則不告。利貞}
 \end{center}
 
-> Pervasive. Not I seeking youthful folly, youthful folly seeks me. First divination speaks, repeated thrice profanes, profaning then no speech. Beneficial steadfastness.
+> Offering succeeds. I don’t seek the youthful fool, the youthful fool seeks me. The first oracle speaks—thrice repeated profanes, profaned it won’t speak. Bounty divined.
 
 
 
@@ -267,7 +267,7 @@
 {\Large 發蒙，利用刑人，用說桎梏，以往吝}
 \end{center}
 
-> Unveiling folly, beneficial to punish, to remove shackles, going brings regret
+> Unveiling folly, advantage in punishing others, removing shackles—going forth brings regret.
 
 
 
@@ -277,7 +277,7 @@
 {\Large 包蒙吉，納婦吉，子克家}
 \end{center}
 
-> Embracing folly fortunate, accepting a wife fortunate, the son masters the house
+> Embracing folly—fortunate. Accepting a wife—fortunate. The son masters the household.
 
 
 
@@ -287,7 +287,7 @@
 {\Large 勿用取女，見金夫，不有躬，无攸利}
 \end{center}
 
-> Do not take the woman, seeing a man of gold, lacking self, no benefit anywhere
+> Don’t take this woman—she sees a man of wealth, lacks self—no advantage anywhere.
 
 
 
@@ -297,7 +297,7 @@
 {\Large 困蒙，吝}
 \end{center}
 
-> Trapped in folly, regret
+> Trapped in folly—regret.
 
 
 
@@ -307,7 +307,7 @@
 {\Large 童蒙，吉}
 \end{center}
 
-> Youthful folly, fortune
+> Childlike folly—fortunate.
 
 
 
@@ -317,7 +317,7 @@
 {\Large 擊蒙，不利為寇，利御寇}
 \end{center}
 
-> Striking folly, not beneficial to be a robber, beneficial to repel robbers
+> Striking folly—unfavorable as a bandit, advantage in repelling bandits.
 
 
 
@@ -500,7 +500,7 @@
 {\Large 貞丈人吉，无咎}
 \end{center}
 
-> Steadfast, the seasoned one fortunate, no blame
+> Fate favors the seasoned leader—fortunate, no fault.
 
 
 
@@ -510,7 +510,7 @@
 {\Large 師出以律，否臧凶}
 \end{center}
 
-> The army marches with discipline, lacking order ominous
+> The army marches with discipline—lacking this, ominous.
 
 
 
@@ -520,7 +520,7 @@
 {\Large 在師中吉，无咎，王三錫命}
 \end{center}
 
-> Amid the army fortunate, no blame, the king thrice bestows a mandate
+> Within the army’s center—fortunate, no fault. The king thrice bestows command.
 
 
 
@@ -530,7 +530,7 @@
 {\Large 師或輿屍，凶}
 \end{center}
 
-> The army perhaps carries corpses, ominous
+> The army perhaps carries corpses—ominous.
 
 
 
@@ -540,7 +540,7 @@
 {\Large 師左次，无咎}
 \end{center}
 
-> The army camps on the left, no blame
+> The army camps on the left—no fault.
 
 
 
@@ -550,7 +550,7 @@
 {\Large 田有禽，利執言，无咎，長子帥師，弟子輿屍，貞凶}
 \end{center}
 
-> Game in the field, beneficial to seize and speak, no blame, the eldest son leads the army, the younger carries corpses, steadfast ominous
+> Game in the fields, advantage in seizing words—no fault. The eldest son leads the army, the younger hauls corpses—fate ominous.
 
 
 
@@ -560,7 +560,7 @@
 {\Large 大君有命，開國承家，小人勿用}
 \end{center}
 
-> The great ruler issues a mandate, founding states and sustaining houses, petty ones not to be used
+> The great ruler issues a mandate, founding states, sustaining houses—don’t employ the small folk.
 
 
 
@@ -1539,7 +1539,7 @@
 
 
 
-# 20 觀 (guān) - Contemplation (View)
+# 20 觀 (Guān) - Observation
 
 \hexagram{0}{0}{0}{0}{1}{1}
 
@@ -1550,20 +1550,20 @@
 ## Judgment
 
 \begin{center}
-{\Large 觀，盥而不薦，有孚顒若。}
+{\Large 盥而不薦，有孚顒若，利貞}
 \end{center}
 
-> Contemplation: wash but do not offer, have sincerity and look up.
+> Ablution, not yet offering. Trust shines forth. Bounty divined.
 
 
 
 ## Line 1
 
 \begin{center}
-{\Large 童觀，小人無咎，君子吝。}
+{\Large 童觀，小人无咎，君子吝}
 \end{center}
 
-> Child-like observation, the small person has no blame, the noble person has regret.
+> Child’s observation. No fault for the small folk, regret for the superior.
 
 
 
@@ -1573,17 +1573,17 @@
 {\Large 窺觀，利女貞}
 \end{center}
 
-> Peeping at the view, beneficial for a woman&#x27;s divination
+> Peering observation. Advantage in a woman’s fate.
 
 
 
 ## Line 3
 
 \begin{center}
-{\Large 觀我生進退}
+{\Large 觀我生，進退}
 \end{center}
 
-> Observe my life advancing and retreating.
+> Observing my life, advancing or retreating.
 
 
 
@@ -1593,27 +1593,27 @@
 {\Large 觀國之光，利用賓于王}
 \end{center}
 
-> Observe the light of the state, advantageous to be a guest of the king.
+> Observing the kingdom’s radiance. Advantage in serving the king.
 
 
 
 ## Line 5
 
 \begin{center}
-{\Large 觀我生，君子無咎。}
+{\Large 觀我生，君子无咎}
 \end{center}
 
-> Observe my life, the gentleman has no blame.
+> Observing my life, the superior finds no fault.
 
 
 
 ## Line 6
 
 \begin{center}
-{\Large 觀其生，君子無咎。}
+{\Large 觀其生，君子无咎}
 \end{center}
 
-> Observe their life, the noble person has no blame.
+> Observing their life, the superior finds no fault.
 
 
 
@@ -1944,81 +1944,81 @@
 
 
 
-# 25 無妄 (wú wàng) - Innocence (The Unexpected)
+# 25 无妄 (Wú Wàng) - Innocence
 
 \hexagram{1}{0}{0}{1}{1}{1}
 
 \begin{center}
-{\Huge 無妄}
+{\Huge 无妄}
 \end{center}
 
 ## Judgment
 
 \begin{center}
-{\Large 無妄，元行利貞，其得正有睜，不利有於往。}
+{\Large 元亨利貞，其匪正有眚，不利有攸往}
 \end{center}
 
-> Innocence, the originative, beneficial, and correct. Its not being correct brings calamity. Not beneficial to have somewhere to go.
+> Primal offering succeeds, bounty divined. If not upright, flaws arise—unfavorable to venture forth.
 
 
 
 ## Line 1
 
 \begin{center}
-{\Large 無妄往，吉。}
+{\Large 无妄往，吉}
 \end{center}
 
-> Going without delusion, auspicious.
+> Innocence ventures forth—fortunate.
 
 
 
 ## Line 2
 
 \begin{center}
-{\Large 不耕獲，不菑畬，則利有攸往。}
+{\Large 不耕穫，不菑畬，則利有攸往}
 \end{center}
 
-> Do not plow and harvest, do not clear and plant, then it is beneficial to have somewhere to go.
+> No tilling for harvest, no clearing for fields, then advantage in venturing forth.
 
 
 
 ## Line 3
 
 \begin{center}
-{\Large 無妄之災，或繫之牛，行人之得，邑人之災。}
+{\Large 无妄之災，或繫之牛，行人之得，邑人之災}
 \end{center}
 
-> There is a disaster of innocence. Someone may tie up a cow, the traveler&#x27;s gain, the townsfolk&#x27;s disaster.
+> Innocence meets calamity—perhaps a tethered cow. A traveler gains, a villager loses.
 
 
 
 ## Line 4
 
 \begin{center}
-{\Large 可貞，無咎。}
+{\Large 可貞，无咎}
 \end{center}
 
-> May be correct, no blame.
+> Fate holds firm—no fault.
 
 
 
 ## Line 5
 
 \begin{center}
-{\Large 無妄之災，或繫之牛，行人之得，邑人之災。}
+{\Large 无妄之疾，勿藥有喜}
 \end{center}
 
-> The disaster of No Delusion. Perhaps the cow is tethered. The traveler&#x27;s gain, the townspeople&#x27;s disaster.
+> Innocence’s ailment—don’t medicate, joy comes.
 
 
 
 ## Line 6
 
 \begin{center}
-{\Large 無妄行，有眚，無攸利。}
+{\Large 无妄，行有眚，无攸利}
 \end{center}
 
-> Going without cause, there will be calamity, no advantage.
+> Innocence acts, flaws arise—no advantage anywhere.
 
 
 
@@ -2268,7 +2268,7 @@
 
 
 
-# 29 坎 (kǎn) - The Abysmal (Water)
+# 29 坎 (Kǎn) - The Abyss
 
 \hexagram{0}{1}{0}{0}{1}{0}
 
@@ -2279,70 +2279,70 @@
 ## Judgment
 
 \begin{center}
-{\Large 坎，習坎，有孚，維心亨，行有尚。}
+{\Large 習坎，有孚，維心亨，行有尚}
 \end{center}
 
-> The Abysmal, repeatedly abysmal, with sincerity, the heart is penetrating, action brings esteem.
+> Mastering the abyss, trust endures. The heart succeeds, action gains honor.
 
 
 
 ## Line 1
 
 \begin{center}
-{\Large 習坎，入于坎窞，凶。}
+{\Large 習坎入坎，窞，凶}
 \end{center}
 
-> Habitually trapped, entering into a pit, dangerous.
+> Mastering the abyss, entering the abyss—pitfall, ominous.
 
 
 
 ## Line 2
 
 \begin{center}
-{\Large 習坎，求小得}
+{\Large 坎有險，求小得}
 \end{center}
 
-> Practice the pit, seek small gains
+> The abyss holds peril. Seeking small gains succeeds.
 
 
 
 ## Line 3
 
 \begin{center}
-{\Large 來之坎坎，險且枕，入于坎窞，勿用。}
+{\Large 來之坎坎，險且枕，入于坎窞，勿用}
 \end{center}
 
-> Coming to the pitfall, danger and peril, entering into the abyss, do not use.
+> Coming through abyss upon abyss, peril and resting place. Entering the pit—don’t act.
 
 
 
 ## Line 4
 
 \begin{center}
-{\Large 樽酒簋貳，用缶，納約自牖，終無咎}
+{\Large 樽酒簋貳，用缶，納約自牖，終无咎}
 \end{center}
 
-> With wine in the jug and food in the vessel, using a pottery jar, taking in offerings through the window, in the end there will be no harm.
+> A flask of wine, two bowls, using an earthen jar. Pledges enter through the window—ultimately no fault.
 
 
 
 ## Line 5
 
 \begin{center}
-{\Large 坎不盈，祗既平，無咎。}
+{\Large 坎不盈，祗既平，无咎}
 \end{center}
 
-> The abyss does not overflow, only when it is level, there is no fault.
+> The abyss not full, the ridge now level—no fault.
 
 
 
 ## Line 6
 
 \begin{center}
-{\Large 繫用徽纆，寘于叢棘，三歲不得，凶。}
+{\Large 繫用徽纆，寘于叢棘，三歲不得，凶}
 \end{center}
 
-> Bound with ropes of twisted hemp, placed among thorns, for three years cannot be retrieved, misfortune.
+> Bound with cords and ropes, placed amid thorns. Three years without release—ominous.
 
 
 
@@ -2592,7 +2592,7 @@
 
 
 
-# 33 遯 (dùn) - Retreat
+# 33 遯 (Dùn) - Retreat
 
 \hexagram{0}{0}{1}{1}{1}{1}
 
@@ -2603,10 +2603,10 @@
 ## Judgment
 
 \begin{center}
-{\Large 遯，亨，小利貞。}
+{\Large 遯，亨，小利貞}
 \end{center}
 
-> Retreat. Prosperous. Small gain in being upright.
+> Retreat, offering succeeds. Small bounty divined.
 
 
 
@@ -2616,57 +2616,57 @@
 {\Large 遯尾，厲，勿用有攸往}
 \end{center}
 
-> Flee the tail, perilous, do not use to have anywhere to go
+> Retreat at the tail—danger, don’t venture forth.
 
 
 
 ## Line 2
 
 \begin{center}
-{\Large 執之用黃牛之革，莫之勝說。}
+{\Large 執之用黃牛之革，莫之勝說}
 \end{center}
 
-> Hold it with the leather of a yellow ox; no one can undo it.
+> Hold it with yellow oxhide—none can break free.
 
 
 
 ## Line 3
 
 \begin{center}
-{\Large 繫遯，有疾厲，畜臣妾吉。}
+{\Large 係遯，有疾厲，畜臣妾吉}
 \end{center}
 
-> Tied to retreat, there is sickness and danger, keeping servants auspicious.
+> Tied retreat, illness and danger. Raising servants and concubines—fortunate.
 
 
 
 ## Line 4
 
 \begin{center}
-{\Large 好遯，君子吉，小人否。}
+{\Large 好遯，君子吉，小人否}
 \end{center}
 
-> Good retreat, auspicious for the gentleman, unfavorable for the petty person.
+> Willing retreat—the superior finds fortune, the small folk do not.
 
 
 
 ## Line 5
 
 \begin{center}
-{\Large 嘉遯，貞吉。}
+{\Large 嘉遯，貞吉}
 \end{center}
 
-> Fine retreat, determination auspicious.
+> Praiseworthy retreat, fate fortunate.
 
 
 
 ## Line 6
 
 \begin{center}
-{\Large 肥遯，無不利。}
+{\Large 肥遯，无不利}
 \end{center}
 
-> Fat escape, no disadvantage.
+> Abundant retreat—no lack of advantage.
 
 
 
@@ -3240,7 +3240,7 @@
 
 
 
-# 41 損 (sǔn) - Decrease
+# 41 損 (Sǔn) - Decrease
 
 \hexagram{1}{1}{0}{0}{0}{1}
 
@@ -3251,77 +3251,77 @@
 ## Judgment
 
 \begin{center}
-{\Large 損，有孚，元吉，無咎，可貞，利有攸往，曷之用二簋，可用享。}
+{\Large 有孚，元吉，无咎，可貞，利有攸往，曷之用二簋，可用享}
 \end{center}
 
-> Decrease, with sincerity, great fortune, no blame, perseverance is favorable, it is beneficial to have somewhere to go, what is the use of two sacrificial vessels, they can be used for offering.
+> Trust endures, primal fortune, no fault. Fate holds firm, advantage in venturing forth. Why use two bowls? They suffice for the offering.
 
 
 
 ## Line 1
 
 \begin{center}
-{\Large 已事遄往，無咎，酌損之。}
+{\Large 已事遄往，无咎，酌損之}
 \end{center}
 
-> Having finished the task, hasten away, no blame, moderate the loss.
+> Finish affairs and hasten forth—no fault. Measure the decrease.
 
 
 
 ## Line 2
 
 \begin{center}
-{\Large 利貞，征凶，弗損益之。}
+{\Large 利貞，征凶，弗損益之}
 \end{center}
 
-> It is beneficial to be correct. To go on an expedition is harmful. Do not diminish, but increase it.
+> Bounty divined, advancing ominous. Don’t decrease to increase it.
 
 
 
 ## Line 3
 
 \begin{center}
-{\Large 三人行則損一人，一人行則得其友。}
+{\Large 三人行則損一人，一人行則得其友}
 \end{center}
 
-> If three people travel together, one is diminished; if one person travels, he gains a friend.
+> Three travel, one is lost. One travels, finding a friend.
 
 
 
 ## Line 4
 
 \begin{center}
-{\Large 損其疾，使遄有喜，無咎。}
+{\Large 損其疾，使遄有喜，无咎}
 \end{center}
 
-> Reduce its illness, causing swift joy, no blame.
+> Decrease the ailment, hastening brings joy—no fault.
 
 
 
 ## Line 5
 
 \begin{center}
-{\Large 或益之十朋之龟，不可违，元吉。}
+{\Large 或益之十朋之龜，弗克違，元吉}
 \end{center}
 
-> Or benefit him with ten friends&#x27; tortoise shells, cannot be disobeyed, great fortune.
+> Perhaps increased by ten friends’ tortoises, none can resist—primal fortune.
 
 
 
 ## Line 6
 
 \begin{center}
-{\Large 弗損益之，無咎，貞吉，利有攸往，得臣無家。}
+{\Large 弗損益之，无咎，貞吉，利有攸往，得臣无家}
 \end{center}
 
-> Do not damage but benefit it, no blame, determination auspicious, beneficial to have somewhere to go, obtain a minister without a home.
+> Don’t decrease to increase it—no fault. Fate fortunate, advantage in venturing forth, gaining vassals without a household.
 
 
 
 
 
 
-# 42 益 (yì) - Increase
+# 42 益 (Yì) - Increase
 
 \hexagram{1}{0}{0}{0}{1}{1}
 
@@ -3332,70 +3332,70 @@
 ## Judgment
 
 \begin{center}
-{\Large 益，利有旧往，利涉大川。}
+{\Large 利有攸往，利涉大川}
 \end{center}
 
-> Increase, beneficial to have somewhere to go, beneficial to ford the great river.
+> Advantage in venturing forth, advantage in crossing great rivers.
 
 
 
 ## Line 1
 
 \begin{center}
-{\Large 利用為大作，元吉，無殊。}
+{\Large 利用為大作，元吉，无咎}
 \end{center}
 
-> Utilize for great work, original good fortune, no blame.
+> Advantage in undertaking great works—primal fortune, no fault.
 
 
 
 ## Line 2
 
 \begin{center}
-{\Large 或益之十朋之龜，弗克違，永貞吉，王用亨于帝，吉。}
+{\Large 或益之十朋之龜，弗克違，永貞吉，王用享于帝，吉}
 \end{center}
 
-> Someone benefits him with ten cowries of turtle shells, he cannot refuse, forever correct is auspicious, the king uses it to offer sacrifices to the supreme deity, auspicious.
+> Perhaps increased by ten friends’ tortoises, none can resist—lasting fate fortunate. The king offers to the Emperor—fortunate.
 
 
 
 ## Line 3
 
 \begin{center}
-{\Large 益之用凶事，無咎，有孚中行，告公用圭。}
+{\Large 益之用凶事，无咎，有孚中行，告公用圭}
 \end{center}
 
-> Benefit used in ominous affairs, no blame, having sincerity in the middle path, inform the duke using a jade tablet.
+> Increase through ominous affairs—no fault. Trust in the central path, informing the duke with a jade tablet.
 
 
 
 ## Line 4
 
 \begin{center}
-{\Large 中行告公從，利用為依遷國。}
+{\Large 中行告公從，利用為依遷國}
 \end{center}
 
-> In the middle path, inform the duke and follow. It is beneficial to use this as a basis for moving the state.
+> The central path informs the duke, he follows—advantage in relying on this to shift the state.
 
 
 
 ## Line 5
 
 \begin{center}
-{\Large 有孚惠心，勿問元吉，有孚惠我德。}
+{\Large 有孚惠心，勿問元吉，有孚惠我德}
 \end{center}
 
-> With sincerity and a benevolent heart, do not ask; it is greatly auspicious. With sincerity, it benefits my virtue.
+> Trust with a generous heart—don’t ask, primal fortune. Trust enhances my virtue.
 
 
 
 ## Line 6
 
 \begin{center}
-{\Large 莫益之，或擊之，立心勿恆，凶。}
+{\Large 莫益之，或擊之，立心勿恆，凶}
 \end{center}
 
-> No one benefits him, or strikes him; if he sets his heart without constancy, there will be misfortune.
+> None increase him, some strike him. A heart unsteady—ominous.
 
 
 
@@ -3726,7 +3726,7 @@
 
 
 
-# 47 困 (kùn) - Oppression (Exhaustion)
+# 47 困 (Kùn) - Confinement
 
 \hexagram{0}{1}{0}{1}{1}{0}
 
@@ -3737,70 +3737,70 @@
 ## Judgment
 
 \begin{center}
-{\Large 困，和，貞，大人吉，無效，有言不信。}
+{\Large 困，亨，貞，大人吉，无咎，有言不信}
 \end{center}
 
-> Oppression: harmony, uprightness, the great man is fortunate, no fault, there are words but no trust.
+> Incarceration, offering. Spirit lifts the great—fortunate, no fault. Empty words, don’t trust them.
 
 
 
 ## Line 1
 
 \begin{center}
-{\Large 臀困于株木，入于幽谷，三歲不覿。}
+{\Large 臀困于株木，入于幽谷，三歲不覿}
 \end{center}
 
-> Buttocks trapped by tree stumps, entering into a dark valley, for three years not seen.
+> Buttocks trapped by a stump, entering a dark valley—three years unseen.
 
 
 
 ## Line 2
 
 \begin{center}
-{\Large 困于酒食，朱紱方來，利用享祀，征凶，無咎。}
+{\Large 困于酒食，朱紱方來，利用享祀，征凶，无咎}
 \end{center}
 
-> Trapped by wine and food, red sash is coming, advantageous for offerings, to campaign is ominous, no blame.
+> Trapped by wine and food, a vermilion sash arrives. Advantage in offerings and rites, advancing ominous—no fault.
 
 
 
 ## Line 3
 
 \begin{center}
-{\Large 困于石，據于蒺藜，入于其宮，不見其妻，凶。}
+{\Large 困于石，據于蒺藜，入于其宮，不見其妻，凶}
 \end{center}
 
-> Trapped by stone, leaning on thorns, entering his palace, not seeing his wife, ominous.
+> Trapped by stone, clinging to thorns. Entering his house, not seeing his wife—ominous.
 
 
 
 ## Line 4
 
 \begin{center}
-{\Large 來徐徐，困于金車，吝，有終。}
+{\Large 來徐徐，困于金車，吝，有終}
 \end{center}
 
-> Come slowly, trapped by a golden chariot, there is regret, but there is an end.
+> Coming slowly, trapped by a golden chariot—regret, yet an end comes.
 
 
 
 ## Line 5
 
 \begin{center}
-{\Large 來徐徐，困于金車，吝，有終。}
+{\Large 劓刖，困于赤紱，乃徐有說，利用祭祀}
 \end{center}
 
-> Come slowly, trapped by the metal carriage, there is regret, but there will be an end.
+> Nose cut, feet severed, trapped by a red sash—then slowly released. Advantage in sacrifices.
 
 
 
 ## Line 6
 
 \begin{center}
-{\Large 困于葛藟，于臲卼，曰動悔有悔，征吉。}
+{\Large 困于葛藟，于臲卼，曰動悔有悔，征吉}
 \end{center}
 
-> Trapped by clinging vines, at the brink of falling, it is said, &#x27;If you move, there will be regret; if there is regret, then go forth. It will be auspicious.&#x27;
+> Trapped by vines, on a shaky perch. Saying ‘move and regret,’ yet regret—advancing fortunate.
 
 
 
@@ -4732,7 +4732,7 @@
 {\Large 渙奔其機，悔亡}
 \end{center}
 
-> Dispersion hastens to the mechanism. Regret departs.
+> Disperse! Run towards opportunity and regret disappears
 
 
 
@@ -4941,7 +4941,7 @@
 
 
 
-# 62 小過 (xiǎo guò) - Preponderance of the Small
+# 62 小過 (Xiǎo Guò) - Small Excess
 
 \hexagram{0}{0}{1}{1}{0}{0}
 
@@ -4952,10 +4952,10 @@
 ## Judgment
 
 \begin{center}
-{\Large 小過，亨，利貞，可小事，不可大事，飛鳥遺之音，不宜上宜下，大吉。}
+{\Large 亨，利貞，可小事，不可大事業，小過有飛行，利順，不利逆}
 \end{center}
 
-> Preponderance of the Small: prosperous, advantageous to be correct, suitable for small affairs, not suitable for great affairs. The sound of a flying bird passes by, not favorable to go up but favorable to go down, greatly auspicious.
+> Offering succeeds, bounty divined. Small matters feasible, great works not. Small excess takes flight—advantage in yielding, not in resisting.
 
 
 
@@ -4965,64 +4965,64 @@
 {\Large 飛鳥以凶}
 \end{center}
 
-> The flying bird brings misfortune.
+> Flying bird brings misfortune.
 
 
 
 ## Line 2
 
 \begin{center}
-{\Large 過其祖，遇其婆，不及其君，遇其臣，無哉。}
+{\Large 過其祖，遇其妣，不及其君，遇其臣，无咎}
 \end{center}
 
-> He passes his ancestors, meets his grandmother, does not reach his lord, meets his servant, no blame.
+> Passing the grandfather, meeting the grandmother. Not reaching the lord, meeting the vassal—no fault.
 
 
 
 ## Line 3
 
 \begin{center}
-{\Large 弗過防之，從或戕之，凶。}
+{\Large 弗過防之，從或戕之，凶}
 \end{center}
 
-> Do not pass, guard against it. If followed, someone may harm you. Misfortune.
+> Not exceeding caution, following may harm—ominous.
 
 
 
 ## Line 4
 
 \begin{center}
-{\Large 無咎，弗過遇之，往厲必戒，勿用永貞}
+{\Large 无咎，弗過遇之，往厲必戒，勿用永貞}
 \end{center}
 
-> No blame. If not exceeding, meet it. Going forward, danger must be guarded against. Do not use for long-term correctness.
+> No fault, not exceeding but meeting it. Going forward risks danger, must guard—don’t rely on lasting fate.
 
 
 
 ## Line 5
 
 \begin{center}
-{\Large 非過遇之，飛鳥離之，凶，是謂災眾。}
+{\Large 密雲不雨，自我西郊，公弋取彼在穴}
 \end{center}
 
-> Not encounter pass it, flying bird leave it,凶, this is called disaster calamity.
+> Dense clouds, no rain, from my western outskirts. The duke shoots, taking that one in the cave.
 
 
 
 ## Line 6
 
 \begin{center}
-{\Large 弗遇過之，飛鳥離之，凶，是謂災眚。}
+{\Large 弗遇過之，飛鳥離之，凶，是謂災眚}
 \end{center}
 
-> Does not meet it yet passes it, the flying bird leaves it, ominous, this is called disaster and calamity.
+> Not meeting but exceeding it, the flying bird departs—ominous, this is called calamity and flaw.
 
 
 
 
 
 
-# 63 既濟 (jì jì) - After Completion
+# 63 既濟 (Jì Jì) - After Completion
 
 \hexagram{1}{0}{1}{0}{1}{0}
 
@@ -5033,70 +5033,70 @@
 ## Judgment
 
 \begin{center}
-{\Large 既濟，亨小，利貞，初吉終亂。}
+{\Large 亨小利貞，初吉終亂}
 \end{center}
 
-> After Completion, small success, beneficial for divination, beginning with good fortune, ending in disorder.
+> Offering succeeds in small matters, bounty divined. Begins fortunate, ends in disorder.
 
 
 
 ## Line 1
 
 \begin{center}
-{\Large 曳其輪，濡其尾，無咎。}
+{\Large 曳其輪，濡其尾，无咎}
 \end{center}
 
-> Drag its wheel, wet its tail, no blame.
+> Dragging its wheels, wetting its tail—no fault.
 
 
 
 ## Line 2
 
 \begin{center}
-{\Large 曳其輪，濡其尾，無咎。}
+{\Large 婦喪其茀，勿逐，七日得}
 \end{center}
 
-> Drag its wheel, wet its tail, no blame.
+> A woman loses her veil—don’t chase, regained in seven days.
 
 
 
 ## Line 3
 
 \begin{center}
-{\Large 高宗伐鬼方，三年克之，小人勿用。}
+{\Large 高宗伐鬼方，三年克之，小人勿用}
 \end{center}
 
-> The High Ancestor attacked the Gui Fang, after three years he conquered them, do not use petty people.
+> Gaozong attacks the Ghost Region, conquering in three years—don’t employ the small folk.
 
 
 
 ## Line 4
 
 \begin{center}
-{\Large 繻有衣袽，終日戒。}
+{\Large 縟有衣袽，終日戒}
 \end{center}
 
-> The hem of the garment has a lining; be vigilant all day.
+> Fine robes turn to rags, guard all day.
 
 
 
 ## Line 5
 
 \begin{center}
-{\Large 東鄰殺牛，不如西鄰之禴祭，實受其福。}
+{\Large 東鄰殺牛，不如西鄰之禴祭，實受其福}
 \end{center}
 
-> The eastern neighbor slaughters an ox, not as good as the western neighbor&#x27;s modest sacrifice; truly receives its blessing.
+> East neighbor slaughters an ox,不如 west neighbor’s simple rite—truly receiving blessings.
 
 
 
 ## Line 6
 
 \begin{center}
-{\Large 濡其首，厲。}
+{\Large 濡其首，厲}
 \end{center}
 
-> Soaks his head, danger.
+> Wetting its head—danger.
 
 
 
