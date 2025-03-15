@@ -335,10 +335,10 @@
 ## Judgment
 
 \begin{center}
-{\Large 有孚，光亨，貞吉，利涉大川}
+{\Large 有孚，元亨，貞吉，利涉大川}
 \end{center}
 
-> With trust, radiant and pervasive, steadfast fortune, beneficial to cross great rivers
+> Trust binds. Primal offering, fated good. Bounty in crossing great rivers.
 
 
 
@@ -348,7 +348,7 @@
 {\Large 需于郊，利用恆，无咎}
 \end{center}
 
-> Waiting in the outskirts, beneficial to persist, no blame
+> Waiting at the edge. Gain in holding fast. No fault.
 
 
 
@@ -358,7 +358,7 @@
 {\Large 需于沙，小有言，終吉}
 \end{center}
 
-> Waiting on the sand, slight words arise, ultimately fortunate
+> Waiting on sand. Small words rise. Good end.
 
 
 
@@ -368,7 +368,7 @@
 {\Large 需于泥，致寇至}
 \end{center}
 
-> Waiting in the mud, inviting robbers to come
+> Waiting in mud. Bandits draw near.
 
 
 
@@ -378,7 +378,7 @@
 {\Large 需于血，出自穴}
 \end{center}
 
-> Waiting in blood, emerging from the cave
+> Waiting in blood. Emerging from the pit.
 
 
 
@@ -388,7 +388,7 @@
 {\Large 需于酒食，貞吉}
 \end{center}
 
-> Waiting with wine and food, steadfast fortune
+> Waiting with wine and meat. Divination auspicious.
 
 
 
@@ -398,7 +398,7 @@
 {\Large 入于穴，有不速之客三人來，敬之終吉}
 \end{center}
 
-> Entering the cave, three uninvited guests arrive, honor them and fortune follows
+> Entering the pit. Three unbidden guests arrive. Honor them—good end.
 
 
 
@@ -1296,7 +1296,7 @@
 
 
 
-# 17 隨 (suí) - Following
+# 17 隨 (Suí) - Following
 
 \hexagram{1}{0}{0}{1}{1}{0}
 
@@ -1307,40 +1307,40 @@
 ## Judgment
 
 \begin{center}
-{\Large 隨，元亨利貞，無咎。}
+{\Large 元亨利貞，无咎}
 \end{center}
 
-> Following: great success, beneficial to be correct, no blame.
+> Primal offering, harvest fated. No fault.
 
 
 
 ## Line 1
 
 \begin{center}
-{\Large 官有渝，貞吉，出門交有功。}
+{\Large 官有渝，貞吉，出門交有功}
 \end{center}
 
-> The official has a change, the determination is auspicious, going out the door and interacting brings achievement.
+> Office shifts. Divination good. Step out, join—success.
 
 
 
 ## Line 2
 
 \begin{center}
-{\Large 繫小子，失丈夫。}
+{\Large 繫小子，失丈夫}
 \end{center}
 
-> Bind the young, lose the mature.
+> Tied to the young. Lose the grown.
 
 
 
 ## Line 3
 
 \begin{center}
-{\Large 繼夫子，失小子，隨有求得，利居貞。}
+{\Large 繫丈夫，失小子，隨有求得，利居貞}
 \end{center}
 
-> Follow the husband, lose the child, following there is seeking and gaining, beneficial to reside in integrity.
+> Tied to the grown. Lose the young. Following gains what’s sought. Bounty in dwelling’s way.
 
 
 
@@ -1350,27 +1350,27 @@
 {\Large 隨有獲，貞凶，有孚在道，以明，何咎}
 \end{center}
 
-> Following there is gain, but determination brings misfortune. There is sincerity in the way, through clarity, what blame?
+> Following takes hold. Fate darkens. Trust on the path, with clarity—no fault.
 
 
 
 ## Line 5
 
 \begin{center}
-{\Large 九五：孚于嘉，吉。}
+{\Large 孚于嘉，吉}
 \end{center}
 
-> Nine in the fifth place: Trust in the good, auspicious.
+> Trust in the fine. Good fortune.
 
 
 
 ## Line 6
 
 \begin{center}
-{\Large 隨，元亨利貞，無咎。}
+{\Large 拘繫之，乃從維之，王用亨于西山}
 \end{center}
 
-> Follow: great and penetrating, beneficial for perseverance, no blame.
+> Bound tight, then held fast. The king offers at West Mountain.
 
 
 
@@ -1458,7 +1458,7 @@
 
 
 
-# 19 臨 (lín) - Approach
+# 19 臨 (Lín) - Nearing
 
 \hexagram{1}{1}{0}{0}{0}{0}
 
@@ -1469,70 +1469,70 @@
 ## Judgment
 
 \begin{center}
-{\Large 臨，元行利貞，至于八月有凶。}
+{\Large 元亨利貞，至于八月有凶}
 \end{center}
 
-> Approach. Primal action benefits divination. Upon reaching the eighth month, there is calamity.
+> Primal offering. Harvest. Fated order. Eighth month brings danger.
 
 
 
 ## Line 1
 
 \begin{center}
-{\Large 咸臨，貞吉。}
+{\Large 咸臨，貞吉}
 \end{center}
 
-> Salty approach, determination auspicious.
+> All approach. Divination good.
 
 
 
 ## Line 2
 
 \begin{center}
-{\Large 咸臣吉無不利}
+{\Large 咸臨，吉，无不利}
 \end{center}
 
-> Salty servant, auspicious, no harm.
+> All approach. Good fortune. Nothing lacks benefit.
 
 
 
 ## Line 3
 
 \begin{center}
-{\Large 甘臨，無攸利，既憂之，無咎。}
+{\Large 甘臨，无攸利，既憂之，无咎}
 \end{center}
 
-> Sweet approach, no advantage. Having worried about it, no blame.
+> Willing approach. No benefit. Worry clears fault.
 
 
 
 ## Line 4
 
 \begin{center}
-{\Large 至臨，無咎。}
+{\Large 至臨，无咎}
 \end{center}
 
-> Arrive at the approach, no blame.
+> Utmost approach. No fault.
 
 
 
 ## Line 5
 
 \begin{center}
-{\Large 知臨，大君之宜，吉。}
+{\Large 知臨，大君之宜，吉}
 \end{center}
 
-> Know approach, appropriate for the great lord, auspicious.
+> Know the approach. Fit for the great ruler. Good fortune.
 
 
 
 ## Line 6
 
 \begin{center}
-{\Large 敦臨，吉無咎。}
+{\Large 敦臨，吉，无咎}
 \end{center}
 
-> Dun Lin, auspicious without fault.
+> Earnest approach. Good fortune. No fault.
 
 
 
@@ -1620,7 +1620,7 @@
 
 
 
-# 21 噬嗑 (shì kè) - Biting Through
+# 21 噬嗑 (Shì Kè) - Biting Through
 
 \hexagram{1}{0}{0}{1}{0}{1}
 
@@ -1631,60 +1631,60 @@
 ## Judgment
 
 \begin{center}
-{\Large 噬喑，安，利用獄。}
+{\Large 亨，利於用獄}
 \end{center}
 
-> Biting Through, peace, beneficial to use punishment.
+> Offering flows. Benefit in using justice.
 
 
 
 ## Line 1
 
 \begin{center}
-{\Large 屨校滅趾，無咎。}
+{\Large 屨校滅趾，无咎}
 \end{center}
 
-> The shoe&#x27;s strap breaks, damaging the toe, no blame.
+> Sandals in stocks. Toes crushed. No fault.
 
 
 
 ## Line 2
 
 \begin{center}
-{\Large 噬膚滅鼻，無咎。}
+{\Large 噬膚滅鼻，无咎}
 \end{center}
 
-> Bite the skin, destroy the nose, no blame.
+> Bite the flesh. Nose crushed. No fault.
 
 
 
 ## Line 3
 
 \begin{center}
-{\Large 噬臘肉遇毒，小吝，無咎。}
+{\Large 噬臘肉遇毒，小吝，无咎}
 \end{center}
 
-> Bites into dried meat and encounters poison, slight regret, no blame.
+> Bite dried meat. Meet poison. Small regret. No fault.
 
 
 
 ## Line 4
 
 \begin{center}
-{\Large 噬乾胏，得金矢，利艱貞，吉。}
+{\Large 噬乾胏，得金矢，利艱貞，吉}
 \end{center}
 
-> Biting into dried meat, obtaining a golden arrow, beneficial to persevere in difficulty, auspicious.
+> Bite tough meat. Gain gold arrow. Benefit in hard divination. Good fortune.
 
 
 
 ## Line 5
 
 \begin{center}
-{\Large 噬乾肉，得黃金，貞厲，無咎。}
+{\Large 噬乾肉，得黃金，貞厲，无咎}
 \end{center}
 
-> Biting dry meat, obtain yellow gold, determination dangerous, no blame.
+> Bite dry meat. Gain yellow gold. Divination warns. No fault.
 
 
 
@@ -1694,7 +1694,7 @@
 {\Large 何校滅耳，凶}
 \end{center}
 
-> What shackles destroy the ears, ominous
+> Neck in stocks. Ears crushed. Danger.
 
 
 
@@ -2187,7 +2187,7 @@
 
 
 
-# 28 大過 (dà guò) - Preponderance of the Great
+# 28 大過 (Dà Guò) - Great Exceeding
 
 \hexagram{0}{1}{1}{1}{1}{0}
 
@@ -2198,30 +2198,30 @@
 ## Judgment
 
 \begin{center}
-{\Large 大過，檀樘，利有琈往，行。}
+{\Large 棟撓，利有攸往，亨}
 \end{center}
 
-> Preponderance of the Great. The ridgepole sags. It is beneficial to have somewhere to go. There is progress.
+> Ridgepole sags. Benefit in having somewhere to go. Offering flows.
 
 
 
 ## Line 1
 
 \begin{center}
-{\Large 留用白莫，无殊。}
+{\Large 藉用白茅，无咎}
 \end{center}
 
-> Use white茅, no blame.
+> Use white grass for the mat. No fault.
 
 
 
 ## Line 2
 
 \begin{center}
-{\Large 枯楊生稊，老夫得其女妻，無不利。}
+{\Large 枯楊生稊，老夫得其女妻，无不利}
 \end{center}
 
-> The withered poplar grows shoots; an old man gets a young wife, no harm.
+> Withered poplar sprouts shoots. Old man gets young wife. Nothing lacks benefit.
 
 
 
@@ -2231,37 +2231,37 @@
 {\Large 棟橈，凶}
 \end{center}
 
-> The ridgepole is warped, danger.
+> Ridgepole bends. Danger.
 
 
 
 ## Line 4
 
 \begin{center}
-{\Large 棟隆，吉，有它吝。}
+{\Large 棟隆，吉；有它吝}
 \end{center}
 
-> The ridgepole is raised up, auspicious, but there are other concerns.
+> Ridgepole raised. Good fortune. Something else brings regret.
 
 
 
 ## Line 5
 
 \begin{center}
-{\Large 棟隆，吉，有它吝。}
+{\Large 枯楊生華，老婦得士夫，无咎无譽}
 \end{center}
 
-> The ridgepole is strong, auspicious, but there is another cause for concern.
+> Withered poplar bears flowers. Old woman gets young husband. No fault, no praise.
 
 
 
 ## Line 6
 
 \begin{center}
-{\Large 過涉滅頂，凶，無咎。}
+{\Large 過涉滅頂，凶，无咎}
 \end{center}
 
-> Overstepping, drowning the top, ominous, no blame.
+> Wade through, head submerged. Danger, but no fault.
 
 
 
@@ -2430,7 +2430,7 @@
 
 
 
-# 31 咸 (xián) - Influence (Wooing)
+# 31 咸 (Xián) - All
 
 \hexagram{0}{0}{1}{1}{1}{0}
 
@@ -2441,10 +2441,10 @@
 ## Judgment
 
 \begin{center}
-{\Large 咸，行，利貞，取女吉。}
+{\Large 咸，亨，利貞，取女吉}
 \end{center}
 
-> Influence, progress, beneficial for perseverance, taking a wife is auspicious.
+> All. Offering flows. Benefit in fated order. Taking a wife auspicious.
 
 
 
@@ -2454,57 +2454,57 @@
 {\Large 咸其拇}
 \end{center}
 
-> Salty its big toe
+> All in the big toe.
 
 
 
 ## Line 2
 
 \begin{center}
-{\Large 咸其腓，凶，居吉。}
+{\Large 咸其腓，凶，居吉}
 \end{center}
 
-> Sense the calf, dangerous, staying at home is auspicious.
+> All in the calf. Danger. Dwelling auspicious.
 
 
 
 ## Line 3
 
 \begin{center}
-{\Large 咸其股，執其隨，往吝。}
+{\Large 咸其股，執其隨，往吝}
 \end{center}
 
-> He feels it in his thigh, grasps his following, going leads to regret.
+> All in the thigh. Holding to following. Going regret.
 
 
 
 ## Line 4
 
 \begin{center}
-{\Large 貞吉悔亡，憧憧往來，朋從爾思}
+{\Large 貞吉，悔亡，憧憧往來，朋從爾思}
 \end{center}
 
-> Determination is auspicious and regret vanishes. Anxiously going and coming, friends follow your thoughts.
+> Divination auspicious. Regret gone. Restless coming and going. Friends follow your thoughts.
 
 
 
 ## Line 5
 
 \begin{center}
-{\Large 貞吉悔亡，憧憧往來，朋從爾思}
+{\Large 咸其脢，无悔}
 \end{center}
 
-> Unchanging good fortune, regret vanishes, restlessly going and coming, friends follow your thoughts
+> All in the back. No regret.
 
 
 
 ## Line 6
 
 \begin{center}
-{\Large 咸其輔頰舌}
+{\Large 咸其輔，頰，舌}
 \end{center}
 
-> Salivating at the cheeks and tongue
+> All in the jaws, cheeks, tongue.
 
 
 
@@ -2997,7 +2997,7 @@
 
 
 
-# 38 睽 (kuí) - Opposition
+# 38 睽 (Kuí) - Estrangement
 
 \hexagram{1}{1}{0}{1}{0}{1}
 
@@ -3008,70 +3008,70 @@
 ## Judgment
 
 \begin{center}
-{\Large 眼，小事吉。}
+{\Large 睽，小事吉}
 \end{center}
 
-> Opposition, small matters are auspicious.
+> Estrangement. Small matters auspicious.
 
 
 
 ## Line 1
 
 \begin{center}
-{\Large 悔亡，喪馬勿逐，自復，見惡人，無咎。}
+{\Large 悔亡，喪馬勿逐，自復，見惡人，无咎}
 \end{center}
 
-> Regret vanishes. Losing a horse, do not pursue it, it will return on its own. Seeing an evil person, there is no harm.
+> Regret gone. Lost horse, do not chase. It returns. See bad people. No fault.
 
 
 
 ## Line 2
 
 \begin{center}
-{\Large 遇主于巷，無咎。}
+{\Large 遇主于巷，无咎}
 \end{center}
 
-> Meet the lord in the alley, no blame.
+> Meet the master in the alley. No fault.
 
 
 
 ## Line 3
 
 \begin{center}
-{\Large 見輿曳，其牛掣，其人天且劓，無初有終。}
+{\Large 見輿曳，其牛掣，其人天且劓，无初有終}
 \end{center}
 
-> See the cart dragged, its oxen pulled back, the man with a mutilated nose and cut-off ears, no beginning but an end.
+> See cart dragged. Its ox held back. Its man branded and cut. No start, but an end.
 
 
 
 ## Line 4
 
 \begin{center}
-{\Large 睽孤遇元夫，交孚，厲無咎。}
+{\Large 睽孤，遇元夫，交孚，厲无咎}
 \end{center}
 
-> Alienated and alone, meeting the great husband, exchanging trust, danger but no blame.
+> Estranged alone. Meet primal man. Exchange trust. Danger, no fault.
 
 
 
 ## Line 5
 
 \begin{center}
-{\Large 睽孤遇元夫，交孚，厲無咎。}
+{\Large 悔亡，厥宗噬膚，往何咎}
 \end{center}
 
-> Strangers meet the original husband, exchange trust, danger without blame.
+> Regret gone. His clan bites flesh. Go, what fault?
 
 
 
 ## Line 6
 
 \begin{center}
-{\Large 睽孤見豕負塗，載鬼一車，先張之弧，後說之弧，匪寇婚媾，往遇雨則吉。}
+{\Large 睽孤，見豕負塗，載鬼一車，先張之弧，後說之弧，匪寇婚媾，往遇雨則吉}
 \end{center}
 
-> Estranged and solitary, seeing a pig carrying mud, a cart loaded with a ghost, first drawing the bow, then releasing the bow, not bandits but marriage alliance, going to meet rain is auspicious.
+> Estranged alone. See pig coated in mud. Cart carries ghosts. First draw the bow, then release the bow. Not bandits, but marriage kin. Go, meet rain, then auspicious.
 
 
 
@@ -3159,7 +3159,7 @@
 
 
 
-# 40 解 (xiè) - Deliverance
+# 40 解 (Xiè) - Release
 
 \hexagram{0}{1}{0}{1}{0}{0}
 
@@ -3170,70 +3170,70 @@
 ## Judgment
 
 \begin{center}
-{\Large 解，利西南，无所往，其来复吉，有往往，早吉。}
+{\Large 解，利西南，无所往，其來復吉，有攸往，夙吉}
 \end{center}
 
-> Deliverance, benefit the southwest, nowhere to go, its coming back auspicious, if there is going, early auspicious.
+> Release. Benefit in the southwest. No place to go, its return auspicious. There is a place to go, early auspicious.
 
 
 
 ## Line 1
 
 \begin{center}
-{\Large 無咎}
+{\Large 无咎}
 \end{center}
 
-> No blame.
+> No fault.
 
 
 
 ## Line 2
 
 \begin{center}
-{\Large 田獲三狐，得黃矢，貞吉。}
+{\Large 田獲三狐，得黃矢，貞吉}
 \end{center}
 
-> Hunt and capture three foxes, obtain yellow arrows, upright auspicious.
+> Hunt gains three foxes. Get yellow arrow. Divination auspicious.
 
 
 
 ## Line 3
 
 \begin{center}
-{\Large 負且乘，致寇至，貞吝。}
+{\Large 負且乘，致寇至，貞吝}
 \end{center}
 
-> Carrying and riding, bringing bandits to arrive, determination brings disgrace.
+> Carry and ride. Bring robbers to arrive. Divination regret.
 
 
 
 ## Line 4
 
 \begin{center}
-{\Large 解而拇，朋至斯孚。}
+{\Large 解而拇，朋至斯孚}
 \end{center}
 
-> Release the big toe, friends arrive and then there is trust.
+> Release the big toe. Friends arrive, then trust.
 
 
 
 ## Line 5
 
 \begin{center}
-{\Large 解而拇，朋至斯孚。}
+{\Large 君子維有解，吉，有孚于小人}
 \end{center}
 
-> Release the big toe, and friends will come, thus gaining trust.
+> Noble one only has release. Auspicious. There is trust in small people.
 
 
 
 ## Line 6
 
 \begin{center}
-{\Large 公用射隼于高墉之上，獲之，無不利。}
+{\Large 公用射隼于高墉之上，獲之，无不利}
 \end{center}
 
-> The duke uses an arrow to shoot a hawk from atop a high wall, capturing it, with no disadvantage.
+> Duke uses shooting falcon on high wall above. Captures it. Nothing lacks benefit.
 
 
 
@@ -4212,7 +4212,7 @@
 
 
 
-# 53 漸 (jiàn) - Development (Gradual Progress)
+# 53 漸 (Jiàn) - Gradual Advance
 
 \hexagram{0}{0}{1}{0}{1}{1}
 
@@ -4223,101 +4223,101 @@
 ## Judgment
 
 \begin{center}
-{\Large 漢文判文：漢文判文}
+{\Large 漸，女歸吉，利貞}
 \end{center}
 
-> English judgment: English judgment
+> Gradual Advance. Woman returns auspicious. Benefit in fated order.
 
 
 
 ## Line 1
 
 \begin{center}
-{\Large 鴻漸于干，小子厲，有言，無咎。}
+{\Large 鴻漸于干，小子厲，有言，无咎}
 \end{center}
 
-> The wild goose gradually advances to the bank. The young man is in danger. There are words, but no blame.
+> Wild goose gradually advances to the shore. Small child in danger. There is talk. No fault.
 
 
 
 ## Line 2
 
 \begin{center}
-{\Large 鵝漲於磐，飲食奢奢，吉。}
+{\Large 鴻漸于磐，飲食衎衎，吉}
 \end{center}
 
-> The wild goose advances to the rocks, drinking and eating harmoniously, auspicious.
+> Wild goose gradually advances to the rock. Drinking and eating happily. Auspicious.
 
 
 
 ## Line 3
 
 \begin{center}
-{\Large 鴻漸于陸，夫征不復，婦孕不育，凶，利御寇。}
+{\Large 鴻漸于陸，夫征不復，婦孕不育，凶，利禦寇}
 \end{center}
 
-> The wild goose advances to the land. The husband goes on a campaign and does not return. The wife is pregnant but does not give birth. This is ominous. It is beneficial to ward off invaders.
+> Wild goose gradually advances to the land. Husband goes out, does not return. Wife pregnant, does not give birth. Danger. Benefit in resisting robbers.
 
 
 
 ## Line 4
 
 \begin{center}
-{\Large 鴻漸于木，或得其桷，無咎。}
+{\Large 鴻漸于木，或得其桷，无咎}
 \end{center}
 
-> The wild goose gradually advances to the tree; perhaps it finds a perch, no blame.
+> Wild goose gradually advances to the tree. Perhaps gets its perch. No fault.
 
 
 
 ## Line 5
 
 \begin{center}
-{\Large 鴻漸于陵，婦三歲不孕，終莫之勝，吉。}
+{\Large 鴻漸于陵，婦三歲不孕，終莫之勝，吉}
 \end{center}
 
-> The wild goose gradually ascends the hill. The woman is barren for three years, yet in the end, no one can overcome her. Auspicious.
+> Wild goose gradually advances to the hill. Wife for three years does not conceive. In the end, nothing overcomes it. Auspicious.
 
 
 
 ## Line 6
 
 \begin{center}
-{\Large 鴻漸于陸，其羽可用為儀，吉。}
+{\Large 鴻漸于陸，羽可用為儀，吉}
 \end{center}
 
-> The wild goose advances to the land; its feathers can be used as ornaments, auspicious.
+> Wild goose gradually advances to the land. Feathers can be used for ceremony. Auspicious.
 
 
 
 
 
 
-# 54 返妹 (guī mèi) - The Marrying Maiden
+# 54 歸妹 (Guī Mèi) - Returning Maiden
 
 \hexagram{1}{1}{0}{1}{0}{0}
 
 \begin{center}
-{\Huge 返妹}
+{\Huge 歸妹}
 \end{center}
 
 ## Judgment
 
 \begin{center}
-{\Large 返妹，征凶，無理利。}
+{\Large 歸妹，征凶，无攸利}
 \end{center}
 
-> The Marrying Maiden, going on an expedition is ominous, there is no benefit.
+> Returning Maiden. Journey brings danger. No benefit accrues.
 
 
 
 ## Line 1
 
 \begin{center}
-{\Large 歸妹以娣，跛能履，征吉。}
+{\Large 歸妹以娣，跛能履，征吉}
 \end{center}
 
-> The younger sister is used as a concubine. The lame can walk. To go forth is auspicious.
+> Returning Maiden as younger sister. The lame can walk. Going auspicious.
 
 
 
@@ -4327,47 +4327,47 @@
 {\Large 眇能視，利幽人之貞}
 \end{center}
 
-> The blind can see, it is beneficial for the reclusive person&#x27;s integrity.
+> Dim-sighted can see. Seclusion’s divination beneficial.
 
 
 
 ## Line 3
 
 \begin{center}
-{\Large 歸妹以須，反歸以娣。}
+{\Large 歸妹以須，反歸以娣}
 \end{center}
 
-> The younger sister returns with her hair up, but returns home with her younger sister.
+> Returning Maiden with beard. Returns instead as younger sister.
 
 
 
 ## Line 4
 
 \begin{center}
-{\Large 歸妹愆期，遲歸有時。}
+{\Large 歸妹愆期，遲歸有時}
 \end{center}
 
-> The younger sister&#x27;s marriage is delayed, but she will return home in due time.
+> Returning Maiden delays. Late return has its time.
 
 
 
 ## Line 5
 
 \begin{center}
-{\Large 帝乙歸妹，其君之袂不如其娣之袂良，月幾望，吉。}
+{\Large 帝乙歸妹，其君之袂，不如其娣之袂良，月幾望，吉}
 \end{center}
 
-> Emperor Yi married off his younger sister. The sleeves of her lord are not as good as the sleeves of her younger sister. The moon is nearly full. Auspicious.
+> Emperor Yi returns the maiden. Her lord’s sleeve not as proper as her younger sister’s sleeve. Moon nearly full. Auspicious.
 
 
 
 ## Line 6
 
 \begin{center}
-{\Large 女承筐無實，士刲羊無血，無攸利。}
+{\Large 女承筐无實，士刲羊无血，无攸利}
 \end{center}
 
-> The woman carries a basket without contents, the man slaughters a sheep without blood, no benefit.
+> Woman carries basket without substance. Man cuts sheep without blood. No benefit accrues.
 
 
 
@@ -4536,7 +4536,7 @@
 
 
 
-# 57 巽 (xùn) - The Gentle (The Penetrating, Wind)
+# 57 巽 (Xùn) - Penetrating Wind
 
 \hexagram{0}{1}{1}{0}{1}{1}
 
@@ -4547,70 +4547,70 @@
 ## Judgment
 
 \begin{center}
-{\Large 己，小行，利有於往，利見大人。}
+{\Large 巽，小亨，利有攸往，利見大人}
 \end{center}
 
-> The Gentle, small progress, beneficial to have a direction to go, beneficial to see the great person.
+> Penetrating Wind. Slight passage. Advantage in a destined going. Advantage in beholding the great one.
 
 
 
 ## Line 1
 
 \begin{center}
-{\Large 進退，利武人之貞。}
+{\Large 進退，利武人之貞}
 \end{center}
 
-> Advance and retreat, beneficial for the determination of a warrior.
+> Push forward, pull back. Advantage in the warrior’s fixed fate.
 
 
 
 ## Line 2
 
 \begin{center}
-{\Large 巽在床下，用史巫紛若，吉，無咎。}
+{\Large 巽在床下，用史巫紛若，吉，无咎}
 \end{center}
 
-> Submissive at the bed&#x27;s base, using diviners and shamans in confusion, auspicious, no blame.
+> Penetrating Wind beneath the bed. Employ scribes and spirit-talkers in profusion. Fortunate. No blame.
 
 
 
 ## Line 3
 
 \begin{center}
-{\Large 頻巽，吝。}
+{\Large 頻巽，吝}
 \end{center}
 
-> Repeatedly yielding, there is regret.
+> Repeated penetrating wind. Stinting regret.
 
 
 
 ## Line 4
 
 \begin{center}
-{\Large 悔亡，田獲三品。}
+{\Large 悔亡，田獲三品}
 \end{center}
 
-> Regret gone, hunting gains three kinds.
+> Remorse vanishes. The hunt takes three grades.
 
 
 
 ## Line 5
 
 \begin{center}
-{\Large 貞吉悔亡，無不利，無初有終，先庚三日，後庚三日，吉。}
+{\Large 貞吉，悔亡，无不利，无初有終，先庚三日，後庚三日，吉}
 \end{center}
 
-> Correct and auspicious, regrets vanish, nothing is not beneficial, no beginning but an end, three days before Geng, three days after Geng, auspicious.
+> Divined fortune. Remorse vanishes. Nothing without advantage. No beginning, yet an ending. Three days before geng, three days after geng. Fortunate.
 
 
 
 ## Line 6
 
 \begin{center}
-{\Large 巽在床下，喪其資斧，貞凶。}
+{\Large 巽在床下，喪其資斧，貞凶}
 \end{center}
 
-> Submissive at the foot of the bed, losing one&#x27;s resources and axe, determination leads to misfortune.
+> Penetrating Wind beneath the bed. Losing one’s wealth-axe. Divined peril.
 
 
 
@@ -5103,7 +5103,7 @@
 
 
 
-# 64 未濟 (wèi jì) - Before Completion
+# 64 未濟 (Wèi Jì) - Not Yet Crossed
 
 \hexagram{0}{1}{0}{1}{0}{1}
 
@@ -5114,70 +5114,70 @@
 ## Judgment
 
 \begin{center}
-{\Large 未濟，亨，小狐汔濟，濡其尾，無攸利。}
+{\Large 未濟，亨，小狐汔濟，濡其尾，无攸利}
 \end{center}
 
-> Before Completion, there is success. The small fox almost completes the crossing but wets its tail; there is no advantage.
+> Not Yet Crossed. Passage opens. Little fox nearly crosses, wets its tail. No gain anywhere.
 
 
 
 ## Line 1
 
 \begin{center}
-{\Large 濡其尾，吝。}
+{\Large 濡其尾，吝}
 \end{center}
 
-> Soak its tail, difficult.
+> Wets its tail. Regret stings.
 
 
 
 ## Line 2
 
 \begin{center}
-{\Large 曳其輪，貞吉。}
+{\Large 曳其輪，貞吉}
 \end{center}
 
-> Drag its wheel, determination auspicious.
+> Drags its wheel. Divined fortune holds.
 
 
 
 ## Line 3
 
 \begin{center}
-{\Large 未濟，征凶，利涉大川。}
+{\Large 未濟，征凶，利涉大川}
 \end{center}
 
-> Not yet across, to go on an expedition is ominous, it is beneficial to ford the great river.
+> Not Yet Crossed. Journey perils. Advantage crossing great river.
 
 
 
 ## Line 4
 
 \begin{center}
-{\Large 爱其背，无恶。}
+{\Large 貞吉，悔亡，震用伐鬼方，三年有賞于大國}
 \end{center}
 
-> Cherish its back, no harm.
+> Divined fortune holds. Regret fades. Thunder strikes to cut Ghost Land. Three years bring reward from great realm.
 
 
 
 ## Line 5
 
 \begin{center}
-{\Large 貞吉無悔，君子之光有孚，吉。}
+{\Large 貞吉，无悔，君子之光，有孚，吉}
 \end{center}
 
-> Determined auspicious without regret, the light of the noble person has sincerity, auspicious.
+> Divined fortune holds. No regret lingers. Noble one’s radiance shines. Trust stands. Fortune flows.
 
 
 
 ## Line 6
 
 \begin{center}
-{\Large 有孚于飲酒，無咎，濡其首，有孚失是。}
+{\Large 有孚于飲酒，无咎，濡其首，有孚失是}
 \end{center}
 
-> There is sincerity in drinking wine, no blame, wetting his head, there is sincerity in losing this.
+> Trust in drinking wine. No blame falls. Wets its head. Trust loses this.
 
 
 
