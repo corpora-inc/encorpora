@@ -1,0 +1,147 @@
+% Chinese text
+\usepackage{fontspec}
+\usepackage{xeCJK}
+% Set an English (Latin) font
+\setmainfont{TeX Gyre Pagella}  % or another font you have installed
+% Use a Chinese-capable font that shows up in your fc-list output
+\setCJKmainfont{AR PL UMing CN}
+
+% ---- add headings for #### and ##### ----
+
+\usepackage{titlesec}
+
+% Define formatting for \paragraph (level 4 heading)
+\titleformat{\paragraph}
+  {\normalfont\normalsize\bfseries}{\theparagraph}{1em}{}
+\titlespacing*{\paragraph}
+  {0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+
+% Define formatting for \subparagraph (level 5 heading)
+\titleformat{\subparagraph}
+  {\normalfont\normalsize\bfseries\itshape}{\thesubparagraph}{1em}{}
+\titlespacing*{\subparagraph}
+  {0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+
+% ---- more spacing for young learners ----
+
+% Increase overall line spacing for a more open, readable layout
+% \usepackage{setspace}
+
+% ---- Custom styling for block quotes ----
+\usepackage{mdframed}
+\usepackage{xcolor}
+% \usepackage{needspace}
+
+\renewenvironment{quote}
+  {%
+
+    \begin{samepage}%
+    \begin{mdframed}[
+      backgroundcolor=gray!10,
+      linecolor=gray!50,
+      innerleftmargin=18pt,
+      innerrightmargin=18pt,
+      innertopmargin=15pt,
+      innerbottommargin=12pt,
+      skipabove=20pt,
+      skipbelow=20pt
+    ]%
+    \begin{center}
+  }
+  {%
+\end{center}
+    \end{mdframed}%
+    \end{samepage}%
+  }
+
+
+\newcommand{\myhrule}{%
+  \par\vspace*{1em}%
+  {\centering\rule{0.6\linewidth}{0.4pt}\par}%
+  \vspace*{1em}%
+}
+
+% Plots
+\usepackage{pgfplots}
+\pgfplotsset{width=10cm,compat=1.9}
+\usepgfplotslibrary{statistics}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot[LE,RO]{\thepage} % left footer on even pages, right footer on odd pages
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\usepackage{tikz}
+\usepackage{pgfmath}
+\usepackage{ifthen}
+
+\newcommand{\hexagram}[6]{%
+\begin{center}
+  \begin{tikzpicture}[scale=0.8]
+  \def\hexone{#1}%
+  \def\hextwo{#2}%
+  \def\hexthree{#3}%
+  \def\hexfour{#4}%
+  \def\hexfive{#5}%
+  \def\hexsix{#6}%
+
+    % Loop over line index (from top: 6 to bottom: 1) with associated value
+    \foreach \i/\val in {6/\hexsix,5/\hexfive,4/\hexfour,3/\hexthree,2/\hextwo,1/\hexone} {
+      \pgfmathparse{-(7-\i)*0.7}%
+      \let\y\pgfmathresult
+      \ifnum\val=1
+        % Yang: Solid line
+        \draw (0,\y) -- (4,\y);
+      \else
+        % Yin: Broken line (two segments)
+        \draw (0,\y) -- (1.5,\y);
+        \draw (2.5,\y) -- (4,\y);
+      \fi
+    }
+  \end{tikzpicture}%
+  \vspace{2em}
+\end{center}
+}
+
+\newcommand{\consultation}[6]{%
+\begin{center}
+  \begin{tikzpicture}[scale=0.8]
+    \def\hexone{#1}%
+    \def\hextwo{#2}%
+    \def\hexthree{#3}%
+    \def\hexfour{#4}%
+    \def\hexfive{#5}%
+    \def\hexsix{#6}%
+    % Loop from top (line 6) to bottom (line 1)
+    \foreach \i/\val in {6/\hexsix,5/\hexfive,4/\hexfour,3/\hexthree,2/\hextwo,1/\hexone} {%
+      \pgfmathparse{-(7-\i)*0.7}%
+      \let\y\pgfmathresult
+      \ifnum\val=7
+         % Unchanging Yang: Solid line
+         \draw (0,\y) -- (4,\y);
+      \else\ifnum\val=8
+         % Unchanging Yin: Broken line
+         \draw (0,\y) -- (1.5,\y);
+         \draw (2.5,\y) -- (4,\y);
+      \else\ifnum\val=6
+         % Changing Yin: Broken line with "O"
+         \draw (0,\y) -- (1.5,\y);
+         \draw (2.5,\y) -- (4,\y);
+         \node at (2,\y) {\Large O};
+      \else\ifnum\val=9
+         % Changing Yang: Solid line with "X"
+         \draw (0,\y) -- (4,\y);
+         \node at (2,\y) {\Large X};
+      \fi\fi\fi\fi
+    }
+  \end{tikzpicture}%
+  \vspace{2em}
+\end{center}
+}
+
+
+\usepackage{enumitem}
+% \setlist{itemsep=1ex, topsep=1ex}
+% \setlist[itemize]{leftmargin=10pt, itemsep=10pt}
+\setlist[itemize]{leftmargin=10pt, itemsep=10pt, topsep=10pt, parsep=10pt}

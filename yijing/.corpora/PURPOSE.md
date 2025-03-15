@@ -1,0 +1,3 @@
+This book is a faithful, minimalist presentation of the I Ching as found in the received Zhou Yi. Our goal is to offer a single, concise version that stays as close as possible to the original oracle, preserving its terse, unadorned language. When a hexagram’s changing lines have no additional text, they will remain blank—just as in the classic tradition.
+
+We eschew multiple layers of commentary or variant renderings in favor of a clean, literal translation that reflects the inner layer of the Zhou Yi. This work is designed for both scholars and reflective readers who wish to engage directly with the original text, exactly as it was handed down.
