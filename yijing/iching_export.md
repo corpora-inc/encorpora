@@ -34,7 +34,7 @@
 {\Large 見龍在田，利見大人}
 \end{center}
 
-> Dragon emerges in the field, keen to meet the great one
+> Dragon emerges in the field, it is beneficial to meet the great one
 
 
 
@@ -64,7 +64,7 @@
 {\Large 飛龍在天，利見大人}
 \end{center}
 
-> Dragon soars in the heavens, profit in meeting the great one
+> Dragon soars in the heavens, it is beneficial to meet the great one
 
 
 
@@ -95,7 +95,7 @@
 {\Large 元亨，利牝馬之貞。君子有攸往，先迷後得主，利。西南得朋，東北喪朋。安貞吉。}
 \end{center}
 
-> Primal offering, bounty in the mare&#x27;s divinity. The superior person has a destination, initially lost then obtaining guidance, advantage. Southwest to obtain friendship; northeast to lose friends. Peaceful divination auspicious.
+> Primal offering, beneficial is the mare’s steadfastness. The superior man has a destination, initially lost then obtaining guidance, beneficial. Southwest gains friends, northeast loses friends. Peaceful divination is auspicious.
 
 
 
@@ -115,7 +115,7 @@
 {\Large 直方大，不習无不利}
 \end{center}
 
-> Straight, square, grand. Untrained, yet nothing cuts against gain.
+> Straight, square, great; unpracticed, yet all is beneficial
 
 
 
@@ -145,7 +145,7 @@
 {\Large 黃裳元吉}
 \end{center}
 
-> Yellow skirts herald first fortune.
+> Yellow skirts, primal auspiciousness
 
 
 
@@ -176,7 +176,7 @@
 {\Large 元亨利貞，勿用有攸往，利建侯}
 \end{center}
 
-> Primal offering, bounty fated. Don’t push out—profit in raising a chief.
+> Primal offering, bounty is fated. Do not act to advance, beneficial to establish a chief.
 
 
 
@@ -186,7 +186,7 @@
 {\Large 磐桓，利居貞，利建侯}
 \end{center}
 
-> Rock steady. Profit in home’s fate. Edge to lift a chief.
+> Rock steady. Profit in home’s fate. Benefit in lifting a chief
 
 
 
@@ -196,7 +196,7 @@
 {\Large 屯如邅如，乘馬班如，匪寇婚媾，女子貞不字，十年乃字}
 \end{center}
 
-> Stumbling, circling. Riders mass. Not bandits—suitors hunt. Woman’s way barren—ten years, then yield.
+> Difficulty and circling, horses in formation. Not bandits but seeking marriage. The woman, as divined, bears not; after ten years, she bears
 
 
 
@@ -206,7 +206,7 @@
 {\Large 即鹿无虞，惟入于林中，君子幾不如舍，往吝}
 \end{center}
 
-> Chasing deer, no scout. Deep in the woods alone. The superior balks—pushing on bites.
+> Approaching deer without a forester, only entering the forest. The noble one nearly better to abandon; advancing brings regret
 
 
 
@@ -216,7 +216,7 @@
 {\Large 乘馬班如，求婚媾，往吉，无不利}
 \end{center}
 
-> Riders mass, chasing vows. Going lucky—sharp gain all around.
+> Horses in formation, seeking marriage. Advancing is auspicious, all is beneficial
 
 
 
@@ -257,7 +257,7 @@
 {\Large 亨。匪我求童蒙，童蒙求我。初筮告，再三瀆，瀆則不告。利貞}
 \end{center}
 
-> Offering succeeds. I don’t seek the youthful fool, the youthful fool seeks me. The first oracle speaks—thrice repeated profanes, profaned it won’t speak. Bounty divined.
+> Offering. Not I seek the youthful fool, the youthful fool seeks me. The first divination speaks—repeated thrice profanes, profaned it won’t speak. Bounty is fated.
 
 
 
@@ -317,7 +317,7 @@
 {\Large 擊蒙，不利為寇，利御寇}
 \end{center}
 
-> Striking folly—unfavorable as a bandit, advantage in repelling bandits.
+> Striking folly, not beneficial to be a bandit, beneficial to repel bandits
 
 
 
@@ -419,7 +419,7 @@
 {\Large 有孚窒惕，中吉，終凶。利見大人，不利涉大川。}
 \end{center}
 
-> With trust obstructed, cautious, midway fortunate, ending ominous. Beneficial to meet the great person, not beneficial to cross great rivers.
+> Having trust obstructed, cautious, midway fortunate, ending ominous. Beneficial to meet the great person, not beneficial to cross great rivers.
 
 
 
@@ -469,7 +469,7 @@
 {\Large 訟元吉}
 \end{center}
 
-> Contention, primary fortune
+> Contention, primal auspiciousness
 
 
 
@@ -581,7 +581,7 @@
 {\Large 吉。原筮元永貞，无咎。不寧方來，後夫凶。}
 \end{center}
 
-> Fortune. Original divination: primary, enduring steadfastness, no blame. Unsettled regions come, the latecomer ominous.
+> Auspicious. Original divination: primal, enduring divination, no blame. Unsettled regions come, the latecomer ominous.
 
 
 
@@ -601,7 +601,7 @@
 {\Large 比之自內，貞吉}
 \end{center}
 
-> Uniting from within, steadfast fortune
+> Uniting from within, auspicious divination
 
 
 
@@ -621,7 +621,7 @@
 {\Large 外比之，貞吉}
 \end{center}
 
-> Uniting outwardly, steadfast fortune
+> Uniting outwardly, auspicious divination
 
 
 
@@ -662,7 +662,7 @@
 {\Large 亨。密雲不雨，自我西郊。}
 \end{center}
 
-> Offering flows. Dense clouds, no rain, from our western edge.
+> Offering. Dense clouds, not raining, from our western outskirts.
 
 
 
@@ -672,7 +672,7 @@
 {\Large 復自道，何其咎，吉}
 \end{center}
 
-> Return by the path. What fault lies here? Good fortune.
+> Return by the path, what fault is there? Auspicious
 
 
 
@@ -692,7 +692,7 @@
 {\Large 輿說輻，夫妻反目}
 \end{center}
 
-> Cart sheds its spokes. Man and wife lock eyes in strife.
+> The cart releases its spokes, husband and wife turn against each other
 
 
 
