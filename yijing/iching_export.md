@@ -793,7 +793,7 @@
 {\Large 夬履，貞厲}
 \end{center}
 
-> Resolute treading, steadfast danger
+> Resolute treading, danger is destined
 
 
 
