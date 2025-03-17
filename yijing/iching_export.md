@@ -743,7 +743,7 @@
 {\Large 履虎尾，不咥人，亨}
 \end{center}
 
-> Treading the tiger’s tail, it does not bite, pervasive
+> Treading the tiger’s tail, it does not bite, offering.
 
 
 
@@ -763,7 +763,7 @@
 {\Large 履道坦坦，幽人貞吉}
 \end{center}
 
-> Treading a smooth path, the secluded one steadfast and fortunate
+> Treading a smooth path, the secluded one, auspicious divination
 
 
 
@@ -783,7 +783,7 @@
 {\Large 履虎尾，愬愬，終吉}
 \end{center}
 
-> Treading the tiger’s tail, trembling, ultimately fortunate
+> Treading the tiger’s tail, trembling, ultimately auspicious
 
 
 
@@ -803,7 +803,7 @@
 {\Large 視履考祥，其旋元吉}
 \end{center}
 
-> Observing treading, examining omens, returning brings primary fortune
+> Observing treading, examining omens, its return brings primal auspiciousness
 
 
 
