@@ -824,7 +824,7 @@
 {\Large 小往大來，吉亨}
 \end{center}
 
-> The small departs, the great arrives, fortune pervasive
+> The small departs, the great arrives, auspicious offering.
 
 
 
@@ -834,7 +834,7 @@
 {\Large 拔茅茹，以其彙，征吉}
 \end{center}
 
-> Pulling up thatch with its roots, together advancing fortunate
+> Pulling up thatch with its roots, together advancing is auspicious
 
 
 
@@ -854,7 +854,7 @@
 {\Large 无平不陂，无往不復，艱貞无咎，勿恤其孚，于食有福}
 \end{center}
 
-> No level without slope, no going without return, steadfast in hardship no blame, do not mourn its trust, in sustenance lies blessing
+> No level without slope, no going without return, hardship is destined, no blame, do not mourn its trust, in sustenance lies blessing
 
 
 
@@ -884,7 +884,7 @@
 {\Large 城復于隍，勿用師，自邑告命，貞吝}
 \end{center}
 
-> The city wall falls into the moat, do not wield the army, from the village comes the mandate, steadfast regret
+> The city wall falls into the moat, do not wield the army, from the village comes the mandate, regret is destined
 
 
 
@@ -905,17 +905,17 @@
 {\Large 否之匪人，不利君子貞，大往小來}
 \end{center}
 
-> Obstruction by the wrong ones, not beneficial to the noble one’s steadfastness, the great departs, the small arrives
+> Obstruction by the wrong ones, not beneficial to the noble one’s fate, the great departs, the small arrives
 
 
 
 ## Line 1
 
 \begin{center}
-{\Large 拔茅茹，以其彙，貞吉亨}
+{\Large 拔茅茹，以其彙，吉}
 \end{center}
 
-> Pulling up thatch with its roots, together steadfast fortune pervasive
+> Pulling up thatch with its roots, together, auspicious
 
 
 
@@ -925,7 +925,7 @@
 {\Large 包承，小人吉，大人否亨}
 \end{center}
 
-> Embracing submission, the petty one fortunate, the great one obstructed yet pervasive
+> Embracing submission, the petty one auspicious, the great one obstructed, sacrifice
 
 
 
@@ -986,7 +986,7 @@
 {\Large 同人于野，亨。利涉大川，利君子貞。}
 \end{center}
 
-> Fellowship in the open, pervasive. Beneficial to cross great rivers, beneficial to the noble one’s steadfastness.
+> Fellowship in the open, offering. Beneficial to cross great rivers, beneficial to the noble one’s fate.
 
 
 
@@ -1026,7 +1026,7 @@
 {\Large 乘其墉，弗克攻，吉}
 \end{center}
 
-> Mounting the wall, unable to attack, fortune
+> Mounting the wall, unable to attack, auspicious
 
 
 
@@ -1077,7 +1077,7 @@
 {\Large 无交害，匪咎，艱則无咎}
 \end{center}
 
-> No mingling harm. Not at fault. Hardship keeps it clean.
+> No mingling with harm, not at fault, hardship ensures no blame
 
 
 
@@ -1097,7 +1097,7 @@
 {\Large 公用亨于天子，小人弗克}
 \end{center}
 
-> Duke offers to the Son of Heaven. Small folk can’t match.
+> The duke offers to the Son of Heaven, the small folk cannot
 
 
 
@@ -1117,7 +1117,7 @@
 {\Large 厥孚交如，威如，吉}
 \end{center}
 
-> Trust binds tight, awe strikes. Lucky break.
+> His trust binds, awe inspires, auspicious
 
 
 
@@ -1148,7 +1148,7 @@
 {\Large 亨。君子有終。}
 \end{center}
 
-> Pervasive. The noble one reaches completion.
+> Offering. The noble one has completion.
 
 
 
@@ -1158,7 +1158,7 @@
 {\Large 謙謙君子，用涉大川，吉}
 \end{center}
 
-> Humble upon humble, the noble one crosses great rivers, fortune
+> Humble upon humble, the noble one crosses great rivers, auspicious
 
 
 
@@ -1168,7 +1168,7 @@
 {\Large 鳴謙，貞吉}
 \end{center}
 
-> Resounding humility, steadfast fortune
+> Resounding humility, auspicious fate
 
 
 
@@ -1178,7 +1178,7 @@
 {\Large 勞謙，君子有終，吉}
 \end{center}
 
-> Toiling in humility, the noble one reaches completion, fortune
+> Toiling in humility, the noble one has completion, auspicious
 
 
 

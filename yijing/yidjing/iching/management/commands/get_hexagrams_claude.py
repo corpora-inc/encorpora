@@ -13,7 +13,7 @@ client = Anthropic(api_key=api_key)
 
 # Pydantic models for function responses
 class HexagramData(BaseModel):
-    chinese_name: str
+    name_zh: str
     pinyin: str
     english_name: str
     binary: str
@@ -44,7 +44,7 @@ class Command(BaseCommand):
                     "input_schema": {
                         "type": "object",
                         "properties": {
-                            "chinese_name": {"type": "string"},
+                            "name_zh": {"type": "string"},
                             "pinyin": {"type": "string"},
                             "english_name": {"type": "string"},
                             "binary": {"type": "string"},
@@ -52,7 +52,7 @@ class Command(BaseCommand):
                             "judgment_en": {"type": "string"},
                         },
                         "required": [
-                            "chinese_name",
+                            "name_zh",
                             "pinyin",
                             "english_name",
                             "binary",
@@ -85,7 +85,7 @@ class Command(BaseCommand):
             hexagram_obj, _ = Hexagram.objects.update_or_create(
                 number=number,
                 defaults={
-                    "chinese_name": hex_data.chinese_name,
+                    "name_zh": hex_data.name_zh,
                     "pinyin": hex_data.pinyin,
                     "english_name": hex_data.english_name,
                     "binary": hex_data.binary,

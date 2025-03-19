@@ -3,7 +3,7 @@ from django.db import models
 
 class Hexagram(models.Model):
     number = models.PositiveIntegerField(unique=True)
-    chinese_name = models.CharField(max_length=20)
+    name_zh = models.CharField(max_length=20)
     english_name = models.CharField(max_length=64, blank=True)
     pinyin = models.CharField(max_length=20, blank=True)
     binary = models.CharField(
@@ -15,7 +15,7 @@ class Hexagram(models.Model):
     judgment_pinyin = models.TextField(help_text="Judgment in Pinyin", blank=True)
 
     def __str__(self):
-        return f"{self.number} - {self.chinese_name}"
+        return f"{self.number} - {self.name_zh}"
 
 
 class Line(models.Model):
@@ -32,6 +32,7 @@ class Line(models.Model):
         return f"Hexagram {self.hexagram.number}, Line {self.line_number}"
 
     class Meta:
+        ordering = ["hexagram", "line_number"]
         unique_together = ("hexagram", "line_number")
 
 
