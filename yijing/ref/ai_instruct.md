@@ -6,8 +6,6 @@ Big Idea: We’re reconstructing a hypothetical Zhou-era Zhou Yi (c. 1046–771 
 
 Corpus Title: "Ancient Yìjīng in Modern Languages Unglossed"
 
-We draw orthographic inspiration from the Mawangdui Silk Texts (c. 168 BCE), an early Han manuscript found in Changsha, Hunan, which uses archaic characters like 无 (instead of 無) for "no." It’s not a direct copy—Mawangdui tweaks the sequence and phrasing—but a nod to pre-Han forms.
-
 Historical Roots:
 
 Shang Oracle Bones (c. 1600–1046 BCE): The Yijing’s divinatory ancestor. Inscriptions on ox scapulae and turtle shells from Yin (near modern Anyang, Henan) show a ritual world of yes/no questions to ancestors and spirits—e.g., "Will the harvest yield?" or "Is war fated?" Key terms like 貞 (divination, destiny, inspiration, fate) and 利 (abundance, benefit, harvest) trace here. Examples: "Crack-making on day ji-si, divining: Will it rain?" (Heji 12345).
@@ -19,8 +17,6 @@ Received Zhou Yi: The canonical text, standardized by the early Han (c. 202 BCE)
 Chinese Text Approach:
 
 Fidelity: Use the received Zhou Yi text—e.g., Hexagram 1: "元亨利貞" Hexagram 3: "元亨利貞，勿用有攸往，利建侯." No rewording.
-
-Archaic Characters: Swap in Mawangdui-style forms—e.g., 无 for 無 in "无咎" (no fault)—to hint at pre-Han orthography. Don’t invent—stick to attested variants.
 
 Sequence: King Wen order (1: 乾, 2: 坤, ..., 64: 未濟), not Mawangdui’s alternate (e.g., 1: 乾, 2: 鍵).
 
