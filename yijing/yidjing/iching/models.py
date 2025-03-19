@@ -17,6 +17,9 @@ class Hexagram(models.Model):
     def __str__(self):
         return f"{self.number} - {self.name_zh}"
 
+    class Meta:
+        ordering = ["number"]
+
 
 class Line(models.Model):
     hexagram = models.ForeignKey(
