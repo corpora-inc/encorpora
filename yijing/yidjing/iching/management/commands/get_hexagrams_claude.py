@@ -15,7 +15,7 @@ client = Anthropic(api_key=api_key)
 class HexagramData(BaseModel):
     name_zh: str
     pinyin: str
-    english_name: str
+    name_en: str
     binary: str
     judgment_zh: str
     judgment_en: str
@@ -46,7 +46,7 @@ class Command(BaseCommand):
                         "properties": {
                             "name_zh": {"type": "string"},
                             "pinyin": {"type": "string"},
-                            "english_name": {"type": "string"},
+                            "name_en": {"type": "string"},
                             "binary": {"type": "string"},
                             "judgment_zh": {"type": "string"},
                             "judgment_en": {"type": "string"},
@@ -54,7 +54,7 @@ class Command(BaseCommand):
                         "required": [
                             "name_zh",
                             "pinyin",
-                            "english_name",
+                            "name_en",
                             "binary",
                             "judgment_zh",
                             "judgment_en",
@@ -87,7 +87,7 @@ class Command(BaseCommand):
                 defaults={
                     "name_zh": hex_data.name_zh,
                     "pinyin": hex_data.pinyin,
-                    "english_name": hex_data.english_name,
+                    "name_en": hex_data.name_en,
                     "binary": hex_data.binary,
                     "judgment_zh": hex_data.judgment_zh,
                     "judgment_en": hex_data.judgment_en,

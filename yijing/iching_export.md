@@ -6,6 +6,8 @@
 
 \begin{center}
 {\Huge 乾}
+
+Qián
 \end{center}
 
 ## Judgment
@@ -87,6 +89,8 @@
 
 \begin{center}
 {\Huge 坤}
+
+Kūn
 \end{center}
 
 ## Judgment
@@ -168,6 +172,8 @@
 
 \begin{center}
 {\Huge 屯}
+
+Zhūn
 \end{center}
 
 ## Judgment
@@ -249,6 +255,8 @@
 
 \begin{center}
 {\Huge 蒙}
+
+Méng
 \end{center}
 
 ## Judgment
@@ -330,6 +338,8 @@
 
 \begin{center}
 {\Huge 需}
+
+Xū
 \end{center}
 
 ## Judgment
@@ -411,6 +421,8 @@
 
 \begin{center}
 {\Huge 訟}
+
+Sòng
 \end{center}
 
 ## Judgment
@@ -492,6 +504,8 @@
 
 \begin{center}
 {\Huge 師}
+
+Shī
 \end{center}
 
 ## Judgment
@@ -573,6 +587,8 @@
 
 \begin{center}
 {\Huge 比}
+
+Bǐ
 \end{center}
 
 ## Judgment
@@ -654,6 +670,8 @@
 
 \begin{center}
 {\Huge 小畜}
+
+Xiǎo Chù
 \end{center}
 
 ## Judgment
@@ -735,6 +753,8 @@
 
 \begin{center}
 {\Huge 履}
+
+Lǚ
 \end{center}
 
 ## Judgment
@@ -816,6 +836,8 @@
 
 \begin{center}
 {\Huge 泰}
+
+Tài
 \end{center}
 
 ## Judgment
@@ -897,6 +919,8 @@
 
 \begin{center}
 {\Huge 否}
+
+Pǐ
 \end{center}
 
 ## Judgment
@@ -978,6 +1002,8 @@
 
 \begin{center}
 {\Huge 同人}
+
+Tóng Rén
 \end{center}
 
 ## Judgment
@@ -1059,6 +1085,8 @@
 
 \begin{center}
 {\Huge 大有}
+
+Dà Yǒu
 \end{center}
 
 ## Judgment
@@ -1140,6 +1168,8 @@
 
 \begin{center}
 {\Huge 謙}
+
+Qiān
 \end{center}
 
 ## Judgment
@@ -1221,6 +1251,8 @@
 
 \begin{center}
 {\Huge 豫}
+
+Yù
 \end{center}
 
 ## Judgment
@@ -1302,6 +1334,8 @@
 
 \begin{center}
 {\Huge 隨}
+
+Suí
 \end{center}
 
 ## Judgment
@@ -1383,6 +1417,8 @@
 
 \begin{center}
 {\Huge 蠱}
+
+gǔ
 \end{center}
 
 ## Judgment
@@ -1464,6 +1500,8 @@
 
 \begin{center}
 {\Huge 臨}
+
+Lín
 \end{center}
 
 ## Judgment
@@ -1545,6 +1583,8 @@
 
 \begin{center}
 {\Huge 觀}
+
+Guān
 \end{center}
 
 ## Judgment
@@ -1626,6 +1666,8 @@
 
 \begin{center}
 {\Huge 噬嗑}
+
+Shì Kè
 \end{center}
 
 ## Judgment
@@ -1707,6 +1749,8 @@
 
 \begin{center}
 {\Huge 賁}
+
+bì
 \end{center}
 
 ## Judgment
@@ -1788,6 +1832,8 @@
 
 \begin{center}
 {\Huge 剝}
+
+bō
 \end{center}
 
 ## Judgment
@@ -1869,6 +1915,8 @@
 
 \begin{center}
 {\Huge 復}
+
+fù
 \end{center}
 
 ## Judgment
@@ -1950,6 +1998,8 @@
 
 \begin{center}
 {\Huge 无妄}
+
+Wú Wàng
 \end{center}
 
 ## Judgment
@@ -2031,6 +2081,8 @@
 
 \begin{center}
 {\Huge 大畜}
+
+dà chù
 \end{center}
 
 ## Judgment
@@ -2112,6 +2164,8 @@
 
 \begin{center}
 {\Huge 頤}
+
+yí
 \end{center}
 
 ## Judgment
@@ -2193,6 +2247,8 @@
 
 \begin{center}
 {\Huge 大過}
+
+Dà Guò
 \end{center}
 
 ## Judgment
@@ -2274,6 +2330,8 @@
 
 \begin{center}
 {\Huge 坎}
+
+Kǎn
 \end{center}
 
 ## Judgment
@@ -2355,6 +2413,8 @@
 
 \begin{center}
 {\Huge 離}
+
+lí
 \end{center}
 
 ## Judgment
@@ -2436,6 +2496,8 @@
 
 \begin{center}
 {\Huge 咸}
+
+Xián
 \end{center}
 
 ## Judgment
@@ -2517,6 +2579,8 @@
 
 \begin{center}
 {\Huge 恆}
+
+héng
 \end{center}
 
 ## Judgment
@@ -2598,6 +2662,8 @@
 
 \begin{center}
 {\Huge 遯}
+
+Dùn
 \end{center}
 
 ## Judgment
@@ -2679,6 +2745,8 @@
 
 \begin{center}
 {\Huge 大壯}
+
+dà zhuàng
 \end{center}
 
 ## Judgment
@@ -2760,6 +2828,8 @@
 
 \begin{center}
 {\Huge 晉}
+
+Jìn
 \end{center}
 
 ## Judgment
@@ -2841,6 +2911,8 @@
 
 \begin{center}
 {\Huge 明夷}
+
+míng yí
 \end{center}
 
 ## Judgment
@@ -2922,6 +2994,8 @@
 
 \begin{center}
 {\Huge 家人}
+
+jiā rén
 \end{center}
 
 ## Judgment
@@ -3003,6 +3077,8 @@
 
 \begin{center}
 {\Huge 睽}
+
+Kuí
 \end{center}
 
 ## Judgment
@@ -3084,6 +3160,8 @@
 
 \begin{center}
 {\Huge 蹇}
+
+jiǎn
 \end{center}
 
 ## Judgment
@@ -3165,6 +3243,8 @@
 
 \begin{center}
 {\Huge 解}
+
+Xiè
 \end{center}
 
 ## Judgment
@@ -3246,6 +3326,8 @@
 
 \begin{center}
 {\Huge 損}
+
+Sǔn
 \end{center}
 
 ## Judgment
@@ -3327,6 +3409,8 @@
 
 \begin{center}
 {\Huge 益}
+
+Yì
 \end{center}
 
 ## Judgment
@@ -3408,6 +3492,8 @@
 
 \begin{center}
 {\Huge 夬}
+
+Guài
 \end{center}
 
 ## Judgment
@@ -3489,6 +3575,8 @@
 
 \begin{center}
 {\Huge 姤}
+
+Gòu
 \end{center}
 
 ## Judgment
@@ -3570,6 +3658,8 @@
 
 \begin{center}
 {\Huge 萃}
+
+cuì
 \end{center}
 
 ## Judgment
@@ -3651,6 +3741,8 @@
 
 \begin{center}
 {\Huge 升}
+
+shēng
 \end{center}
 
 ## Judgment
@@ -3732,6 +3824,8 @@
 
 \begin{center}
 {\Huge 困}
+
+Kùn
 \end{center}
 
 ## Judgment
@@ -3813,6 +3907,8 @@
 
 \begin{center}
 {\Huge 井}
+
+jǐng
 \end{center}
 
 ## Judgment
@@ -3894,6 +3990,8 @@
 
 \begin{center}
 {\Huge 革}
+
+gé
 \end{center}
 
 ## Judgment
@@ -3975,6 +4073,8 @@
 
 \begin{center}
 {\Huge 鼎}
+
+dǐng
 \end{center}
 
 ## Judgment
@@ -4056,6 +4156,8 @@
 
 \begin{center}
 {\Huge 震}
+
+zhèn
 \end{center}
 
 ## Judgment
@@ -4137,6 +4239,8 @@
 
 \begin{center}
 {\Huge 艮}
+
+gèn
 \end{center}
 
 ## Judgment
@@ -4218,6 +4322,8 @@
 
 \begin{center}
 {\Huge 漸}
+
+Jiàn
 \end{center}
 
 ## Judgment
@@ -4299,6 +4405,8 @@
 
 \begin{center}
 {\Huge 歸妹}
+
+Guī Mèi
 \end{center}
 
 ## Judgment
@@ -4380,6 +4488,8 @@
 
 \begin{center}
 {\Huge 豐}
+
+fēng
 \end{center}
 
 ## Judgment
@@ -4461,6 +4571,8 @@
 
 \begin{center}
 {\Huge 旅}
+
+lǚ
 \end{center}
 
 ## Judgment
@@ -4542,6 +4654,8 @@
 
 \begin{center}
 {\Huge 巽}
+
+Xùn
 \end{center}
 
 ## Judgment
@@ -4623,6 +4737,8 @@
 
 \begin{center}
 {\Huge 兌}
+
+duì
 \end{center}
 
 ## Judgment
@@ -4704,6 +4820,8 @@
 
 \begin{center}
 {\Huge 渙}
+
+Huàn
 \end{center}
 
 ## Judgment
@@ -4785,6 +4903,8 @@
 
 \begin{center}
 {\Huge 節}
+
+jié
 \end{center}
 
 ## Judgment
@@ -4866,6 +4986,8 @@
 
 \begin{center}
 {\Huge 中孚}
+
+Zhōng Fú
 \end{center}
 
 ## Judgment
@@ -4947,6 +5069,8 @@
 
 \begin{center}
 {\Huge 小過}
+
+Xiǎo Guò
 \end{center}
 
 ## Judgment
@@ -5028,6 +5152,8 @@
 
 \begin{center}
 {\Huge 既濟}
+
+Jì Jì
 \end{center}
 
 ## Judgment
@@ -5109,6 +5235,8 @@
 
 \begin{center}
 {\Huge 未濟}
+
+Wèi Jì
 \end{center}
 
 ## Judgment
