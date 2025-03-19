@@ -9,7 +9,7 @@ class LineInline(admin.TabularInline):
 
 @admin.register(Hexagram)
 class HexagramAdmin(admin.ModelAdmin):
-    list_display = ("number", "chinese_name", "pinyin")
+    list_display = ("number", "name_zh", "pinyin")
     inlines = [LineInline]
 
 

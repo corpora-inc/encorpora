@@ -6,6 +6,8 @@
 
 \begin{center}
 {\Huge 乾}
+
+Qián
 \end{center}
 
 ## Judgment
@@ -34,7 +36,7 @@
 {\Large 見龍在田，利見大人}
 \end{center}
 
-> Dragon emerges in the field, keen to meet the great one
+> Dragon emerges in the field, it is beneficial to meet the great one
 
 
 
@@ -64,7 +66,7 @@
 {\Large 飛龍在天，利見大人}
 \end{center}
 
-> Dragon soars in the heavens, profit in meeting the great one
+> Dragon soars in the heavens, it is beneficial to meet the great one
 
 
 
@@ -87,6 +89,8 @@
 
 \begin{center}
 {\Huge 坤}
+
+Kūn
 \end{center}
 
 ## Judgment
@@ -95,7 +99,7 @@
 {\Large 元亨，利牝馬之貞。君子有攸往，先迷後得主，利。西南得朋，東北喪朋。安貞吉。}
 \end{center}
 
-> Primal offering, bounty in the mare&#x27;s divinity. The superior person has a destination, initially lost then obtaining guidance, advantage. Southwest to obtain friendship; northeast to lose friends. Peaceful divination auspicious.
+> Primal offering, beneficial is the mare’s steadfastness. The superior man has a destination, initially lost then obtaining guidance, beneficial. Southwest gains friends, northeast loses friends. Peaceful divination is auspicious.
 
 
 
@@ -115,7 +119,7 @@
 {\Large 直方大，不習无不利}
 \end{center}
 
-> Straight, square, grand. Untrained, yet nothing cuts against gain.
+> Straight, square, great; unpracticed, yet all is beneficial
 
 
 
@@ -145,7 +149,7 @@
 {\Large 黃裳元吉}
 \end{center}
 
-> Yellow skirts herald first fortune.
+> Yellow skirts, primal auspiciousness
 
 
 
@@ -168,6 +172,8 @@
 
 \begin{center}
 {\Huge 屯}
+
+Zhūn
 \end{center}
 
 ## Judgment
@@ -176,7 +182,7 @@
 {\Large 元亨利貞，勿用有攸往，利建侯}
 \end{center}
 
-> Primal offering, bounty fated. Don’t push out—profit in raising a chief.
+> Primal offering, bounty is fated. Do not act to advance, beneficial to establish a chief.
 
 
 
@@ -186,7 +192,7 @@
 {\Large 磐桓，利居貞，利建侯}
 \end{center}
 
-> Rock steady. Profit in home’s fate. Edge to lift a chief.
+> Rock steady. Profit in home’s fate. Benefit in lifting a chief
 
 
 
@@ -196,7 +202,7 @@
 {\Large 屯如邅如，乘馬班如，匪寇婚媾，女子貞不字，十年乃字}
 \end{center}
 
-> Stumbling, circling. Riders mass. Not bandits—suitors hunt. Woman’s way barren—ten years, then yield.
+> Difficulty and circling, horses in formation. Not bandits but seeking marriage. The woman, as divined, bears not; after ten years, she bears
 
 
 
@@ -206,7 +212,7 @@
 {\Large 即鹿无虞，惟入于林中，君子幾不如舍，往吝}
 \end{center}
 
-> Chasing deer, no scout. Deep in the woods alone. The superior balks—pushing on bites.
+> Approaching deer without a forester, only entering the forest. The noble one nearly better to abandon; advancing brings regret
 
 
 
@@ -216,7 +222,7 @@
 {\Large 乘馬班如，求婚媾，往吉，无不利}
 \end{center}
 
-> Riders mass, chasing vows. Going lucky—sharp gain all around.
+> Horses in formation, seeking marriage. Advancing is auspicious, all is beneficial
 
 
 
@@ -249,6 +255,8 @@
 
 \begin{center}
 {\Huge 蒙}
+
+Méng
 \end{center}
 
 ## Judgment
@@ -257,7 +265,7 @@
 {\Large 亨。匪我求童蒙，童蒙求我。初筮告，再三瀆，瀆則不告。利貞}
 \end{center}
 
-> Offering succeeds. I don’t seek the youthful fool, the youthful fool seeks me. The first oracle speaks—thrice repeated profanes, profaned it won’t speak. Bounty divined.
+> Offering. Not I seek the youthful fool, the youthful fool seeks me. The first divination speaks—repeated thrice profanes, profaned it won’t speak. Bounty is fated.
 
 
 
@@ -317,7 +325,7 @@
 {\Large 擊蒙，不利為寇，利御寇}
 \end{center}
 
-> Striking folly—unfavorable as a bandit, advantage in repelling bandits.
+> Striking folly, not beneficial to be a bandit, beneficial to repel bandits
 
 
 
@@ -330,6 +338,8 @@
 
 \begin{center}
 {\Huge 需}
+
+Xū
 \end{center}
 
 ## Judgment
@@ -411,6 +421,8 @@
 
 \begin{center}
 {\Huge 訟}
+
+Sòng
 \end{center}
 
 ## Judgment
@@ -419,7 +431,7 @@
 {\Large 有孚窒惕，中吉，終凶。利見大人，不利涉大川。}
 \end{center}
 
-> With trust obstructed, cautious, midway fortunate, ending ominous. Beneficial to meet the great person, not beneficial to cross great rivers.
+> Having trust obstructed, cautious, midway fortunate, ending ominous. Beneficial to meet the great person, not beneficial to cross great rivers.
 
 
 
@@ -469,7 +481,7 @@
 {\Large 訟元吉}
 \end{center}
 
-> Contention, primary fortune
+> Contention, primal auspiciousness
 
 
 
@@ -492,6 +504,8 @@
 
 \begin{center}
 {\Huge 師}
+
+Shī
 \end{center}
 
 ## Judgment
@@ -573,6 +587,8 @@
 
 \begin{center}
 {\Huge 比}
+
+Bǐ
 \end{center}
 
 ## Judgment
@@ -581,7 +597,7 @@
 {\Large 吉。原筮元永貞，无咎。不寧方來，後夫凶。}
 \end{center}
 
-> Fortune. Original divination: primary, enduring steadfastness, no blame. Unsettled regions come, the latecomer ominous.
+> Auspicious. Original divination: primal, enduring divination, no blame. Unsettled regions come, the latecomer ominous.
 
 
 
@@ -601,7 +617,7 @@
 {\Large 比之自內，貞吉}
 \end{center}
 
-> Uniting from within, steadfast fortune
+> Uniting from within, auspicious divination
 
 
 
@@ -621,7 +637,7 @@
 {\Large 外比之，貞吉}
 \end{center}
 
-> Uniting outwardly, steadfast fortune
+> Uniting outwardly, auspicious divination
 
 
 
@@ -654,6 +670,8 @@
 
 \begin{center}
 {\Huge 小畜}
+
+Xiǎo Chù
 \end{center}
 
 ## Judgment
@@ -662,7 +680,7 @@
 {\Large 亨。密雲不雨，自我西郊。}
 \end{center}
 
-> Offering flows. Dense clouds, no rain, from our western edge.
+> Offering. Dense clouds, not raining, from our western outskirts.
 
 
 
@@ -672,7 +690,7 @@
 {\Large 復自道，何其咎，吉}
 \end{center}
 
-> Return by the path. What fault lies here? Good fortune.
+> Return by the path, what fault is there? Auspicious
 
 
 
@@ -692,7 +710,7 @@
 {\Large 輿說輻，夫妻反目}
 \end{center}
 
-> Cart sheds its spokes. Man and wife lock eyes in strife.
+> The cart releases its spokes, husband and wife turn against each other
 
 
 
@@ -735,6 +753,8 @@
 
 \begin{center}
 {\Huge 履}
+
+Lǚ
 \end{center}
 
 ## Judgment
@@ -743,7 +763,7 @@
 {\Large 履虎尾，不咥人，亨}
 \end{center}
 
-> Treading the tiger’s tail, it does not bite, pervasive
+> Treading the tiger’s tail, it does not bite, offering.
 
 
 
@@ -763,7 +783,7 @@
 {\Large 履道坦坦，幽人貞吉}
 \end{center}
 
-> Treading a smooth path, the secluded one steadfast and fortunate
+> Treading a smooth path, the secluded one, auspicious divination
 
 
 
@@ -783,7 +803,7 @@
 {\Large 履虎尾，愬愬，終吉}
 \end{center}
 
-> Treading the tiger’s tail, trembling, ultimately fortunate
+> Treading the tiger’s tail, trembling, ultimately auspicious
 
 
 
@@ -793,7 +813,7 @@
 {\Large 夬履，貞厲}
 \end{center}
 
-> Resolute treading, steadfast danger
+> Resolute treading, danger is destined
 
 
 
@@ -803,7 +823,7 @@
 {\Large 視履考祥，其旋元吉}
 \end{center}
 
-> Observing treading, examining omens, returning brings primary fortune
+> Observing treading, examining omens, its return brings primal auspiciousness
 
 
 
@@ -816,6 +836,8 @@
 
 \begin{center}
 {\Huge 泰}
+
+Tài
 \end{center}
 
 ## Judgment
@@ -824,7 +846,7 @@
 {\Large 小往大來，吉亨}
 \end{center}
 
-> The small departs, the great arrives, fortune pervasive
+> The small departs, the great arrives, auspicious offering.
 
 
 
@@ -834,7 +856,7 @@
 {\Large 拔茅茹，以其彙，征吉}
 \end{center}
 
-> Pulling up thatch with its roots, together advancing fortunate
+> Pulling up thatch with its roots, together advancing is auspicious
 
 
 
@@ -854,7 +876,7 @@
 {\Large 无平不陂，无往不復，艱貞无咎，勿恤其孚，于食有福}
 \end{center}
 
-> No level without slope, no going without return, steadfast in hardship no blame, do not mourn its trust, in sustenance lies blessing
+> No level without slope, no going without return, hardship is destined, no blame, do not mourn its trust, in sustenance lies blessing
 
 
 
@@ -884,7 +906,7 @@
 {\Large 城復于隍，勿用師，自邑告命，貞吝}
 \end{center}
 
-> The city wall falls into the moat, do not wield the army, from the village comes the mandate, steadfast regret
+> The city wall falls into the moat, do not wield the army, from the village comes the mandate, regret is destined
 
 
 
@@ -897,6 +919,8 @@
 
 \begin{center}
 {\Huge 否}
+
+Pǐ
 \end{center}
 
 ## Judgment
@@ -905,17 +929,17 @@
 {\Large 否之匪人，不利君子貞，大往小來}
 \end{center}
 
-> Obstruction by the wrong ones, not beneficial to the noble one’s steadfastness, the great departs, the small arrives
+> Obstruction by the wrong ones, not beneficial to the noble one’s fate, the great departs, the small arrives
 
 
 
 ## Line 1
 
 \begin{center}
-{\Large 拔茅茹，以其彙，貞吉亨}
+{\Large 拔茅茹，以其彙，吉}
 \end{center}
 
-> Pulling up thatch with its roots, together steadfast fortune pervasive
+> Pulling up thatch with its roots, together, auspicious
 
 
 
@@ -925,7 +949,7 @@
 {\Large 包承，小人吉，大人否亨}
 \end{center}
 
-> Embracing submission, the petty one fortunate, the great one obstructed yet pervasive
+> Embracing submission, the petty one auspicious, the great one obstructed, sacrifice
 
 
 
@@ -978,6 +1002,8 @@
 
 \begin{center}
 {\Huge 同人}
+
+Tóng Rén
 \end{center}
 
 ## Judgment
@@ -986,7 +1012,7 @@
 {\Large 同人于野，亨。利涉大川，利君子貞。}
 \end{center}
 
-> Fellowship in the open, pervasive. Beneficial to cross great rivers, beneficial to the noble one’s steadfastness.
+> Fellowship in the open, offering. Beneficial to cross great rivers, beneficial to the noble one’s fate.
 
 
 
@@ -1026,7 +1052,7 @@
 {\Large 乘其墉，弗克攻，吉}
 \end{center}
 
-> Mounting the wall, unable to attack, fortune
+> Mounting the wall, unable to attack, auspicious
 
 
 
@@ -1059,6 +1085,8 @@
 
 \begin{center}
 {\Huge 大有}
+
+Dà Yǒu
 \end{center}
 
 ## Judgment
@@ -1077,7 +1105,7 @@
 {\Large 无交害，匪咎，艱則无咎}
 \end{center}
 
-> No mingling harm. Not at fault. Hardship keeps it clean.
+> No mingling with harm, not at fault, hardship ensures no blame
 
 
 
@@ -1097,7 +1125,7 @@
 {\Large 公用亨于天子，小人弗克}
 \end{center}
 
-> Duke offers to the Son of Heaven. Small folk can’t match.
+> The duke offers to the Son of Heaven, the small folk cannot
 
 
 
@@ -1117,7 +1145,7 @@
 {\Large 厥孚交如，威如，吉}
 \end{center}
 
-> Trust binds tight, awe strikes. Lucky break.
+> His trust binds, awe inspires, auspicious
 
 
 
@@ -1140,6 +1168,8 @@
 
 \begin{center}
 {\Huge 謙}
+
+Qiān
 \end{center}
 
 ## Judgment
@@ -1148,7 +1178,7 @@
 {\Large 亨。君子有終。}
 \end{center}
 
-> Pervasive. The noble one reaches completion.
+> Offering. The noble one has completion.
 
 
 
@@ -1158,7 +1188,7 @@
 {\Large 謙謙君子，用涉大川，吉}
 \end{center}
 
-> Humble upon humble, the noble one crosses great rivers, fortune
+> Humble upon humble, the noble one crosses great rivers, auspicious
 
 
 
@@ -1168,7 +1198,7 @@
 {\Large 鳴謙，貞吉}
 \end{center}
 
-> Resounding humility, steadfast fortune
+> Resounding humility, auspicious fate
 
 
 
@@ -1178,7 +1208,7 @@
 {\Large 勞謙，君子有終，吉}
 \end{center}
 
-> Toiling in humility, the noble one reaches completion, fortune
+> Toiling in humility, the noble one has completion, auspicious
 
 
 
@@ -1221,6 +1251,8 @@
 
 \begin{center}
 {\Huge 豫}
+
+Yù
 \end{center}
 
 ## Judgment
@@ -1302,6 +1334,8 @@
 
 \begin{center}
 {\Huge 隨}
+
+Suí
 \end{center}
 
 ## Judgment
@@ -1383,6 +1417,8 @@
 
 \begin{center}
 {\Huge 蠱}
+
+gǔ
 \end{center}
 
 ## Judgment
@@ -1464,6 +1500,8 @@
 
 \begin{center}
 {\Huge 臨}
+
+Lín
 \end{center}
 
 ## Judgment
@@ -1545,6 +1583,8 @@
 
 \begin{center}
 {\Huge 觀}
+
+Guān
 \end{center}
 
 ## Judgment
@@ -1626,6 +1666,8 @@
 
 \begin{center}
 {\Huge 噬嗑}
+
+Shì Kè
 \end{center}
 
 ## Judgment
@@ -1707,6 +1749,8 @@
 
 \begin{center}
 {\Huge 賁}
+
+bì
 \end{center}
 
 ## Judgment
@@ -1788,6 +1832,8 @@
 
 \begin{center}
 {\Huge 剝}
+
+bō
 \end{center}
 
 ## Judgment
@@ -1869,6 +1915,8 @@
 
 \begin{center}
 {\Huge 復}
+
+fù
 \end{center}
 
 ## Judgment
@@ -1950,6 +1998,8 @@
 
 \begin{center}
 {\Huge 无妄}
+
+Wú Wàng
 \end{center}
 
 ## Judgment
@@ -2031,6 +2081,8 @@
 
 \begin{center}
 {\Huge 大畜}
+
+dà chù
 \end{center}
 
 ## Judgment
@@ -2112,6 +2164,8 @@
 
 \begin{center}
 {\Huge 頤}
+
+yí
 \end{center}
 
 ## Judgment
@@ -2193,6 +2247,8 @@
 
 \begin{center}
 {\Huge 大過}
+
+Dà Guò
 \end{center}
 
 ## Judgment
@@ -2274,6 +2330,8 @@
 
 \begin{center}
 {\Huge 坎}
+
+Kǎn
 \end{center}
 
 ## Judgment
@@ -2355,6 +2413,8 @@
 
 \begin{center}
 {\Huge 離}
+
+lí
 \end{center}
 
 ## Judgment
@@ -2436,6 +2496,8 @@
 
 \begin{center}
 {\Huge 咸}
+
+Xián
 \end{center}
 
 ## Judgment
@@ -2517,6 +2579,8 @@
 
 \begin{center}
 {\Huge 恆}
+
+héng
 \end{center}
 
 ## Judgment
@@ -2598,6 +2662,8 @@
 
 \begin{center}
 {\Huge 遯}
+
+Dùn
 \end{center}
 
 ## Judgment
@@ -2679,6 +2745,8 @@
 
 \begin{center}
 {\Huge 大壯}
+
+dà zhuàng
 \end{center}
 
 ## Judgment
@@ -2760,6 +2828,8 @@
 
 \begin{center}
 {\Huge 晉}
+
+Jìn
 \end{center}
 
 ## Judgment
@@ -2841,6 +2911,8 @@
 
 \begin{center}
 {\Huge 明夷}
+
+míng yí
 \end{center}
 
 ## Judgment
@@ -2922,6 +2994,8 @@
 
 \begin{center}
 {\Huge 家人}
+
+jiā rén
 \end{center}
 
 ## Judgment
@@ -3003,6 +3077,8 @@
 
 \begin{center}
 {\Huge 睽}
+
+Kuí
 \end{center}
 
 ## Judgment
@@ -3084,6 +3160,8 @@
 
 \begin{center}
 {\Huge 蹇}
+
+jiǎn
 \end{center}
 
 ## Judgment
@@ -3165,6 +3243,8 @@
 
 \begin{center}
 {\Huge 解}
+
+Xiè
 \end{center}
 
 ## Judgment
@@ -3246,6 +3326,8 @@
 
 \begin{center}
 {\Huge 損}
+
+Sǔn
 \end{center}
 
 ## Judgment
@@ -3327,6 +3409,8 @@
 
 \begin{center}
 {\Huge 益}
+
+Yì
 \end{center}
 
 ## Judgment
@@ -3408,6 +3492,8 @@
 
 \begin{center}
 {\Huge 夬}
+
+Guài
 \end{center}
 
 ## Judgment
@@ -3489,6 +3575,8 @@
 
 \begin{center}
 {\Huge 姤}
+
+Gòu
 \end{center}
 
 ## Judgment
@@ -3570,6 +3658,8 @@
 
 \begin{center}
 {\Huge 萃}
+
+cuì
 \end{center}
 
 ## Judgment
@@ -3651,6 +3741,8 @@
 
 \begin{center}
 {\Huge 升}
+
+shēng
 \end{center}
 
 ## Judgment
@@ -3732,6 +3824,8 @@
 
 \begin{center}
 {\Huge 困}
+
+Kùn
 \end{center}
 
 ## Judgment
@@ -3813,6 +3907,8 @@
 
 \begin{center}
 {\Huge 井}
+
+jǐng
 \end{center}
 
 ## Judgment
@@ -3894,6 +3990,8 @@
 
 \begin{center}
 {\Huge 革}
+
+gé
 \end{center}
 
 ## Judgment
@@ -3975,6 +4073,8 @@
 
 \begin{center}
 {\Huge 鼎}
+
+dǐng
 \end{center}
 
 ## Judgment
@@ -4056,6 +4156,8 @@
 
 \begin{center}
 {\Huge 震}
+
+zhèn
 \end{center}
 
 ## Judgment
@@ -4137,6 +4239,8 @@
 
 \begin{center}
 {\Huge 艮}
+
+gèn
 \end{center}
 
 ## Judgment
@@ -4218,6 +4322,8 @@
 
 \begin{center}
 {\Huge 漸}
+
+Jiàn
 \end{center}
 
 ## Judgment
@@ -4299,6 +4405,8 @@
 
 \begin{center}
 {\Huge 歸妹}
+
+Guī Mèi
 \end{center}
 
 ## Judgment
@@ -4380,6 +4488,8 @@
 
 \begin{center}
 {\Huge 豐}
+
+fēng
 \end{center}
 
 ## Judgment
@@ -4461,6 +4571,8 @@
 
 \begin{center}
 {\Huge 旅}
+
+lǚ
 \end{center}
 
 ## Judgment
@@ -4542,6 +4654,8 @@
 
 \begin{center}
 {\Huge 巽}
+
+Xùn
 \end{center}
 
 ## Judgment
@@ -4623,6 +4737,8 @@
 
 \begin{center}
 {\Huge 兌}
+
+duì
 \end{center}
 
 ## Judgment
@@ -4704,6 +4820,8 @@
 
 \begin{center}
 {\Huge 渙}
+
+Huàn
 \end{center}
 
 ## Judgment
@@ -4785,6 +4903,8 @@
 
 \begin{center}
 {\Huge 節}
+
+jié
 \end{center}
 
 ## Judgment
@@ -4866,6 +4986,8 @@
 
 \begin{center}
 {\Huge 中孚}
+
+Zhōng Fú
 \end{center}
 
 ## Judgment
@@ -4947,6 +5069,8 @@
 
 \begin{center}
 {\Huge 小過}
+
+Xiǎo Guò
 \end{center}
 
 ## Judgment
@@ -5028,6 +5152,8 @@
 
 \begin{center}
 {\Huge 既濟}
+
+Jì Jì
 \end{center}
 
 ## Judgment
@@ -5109,6 +5235,8 @@
 
 \begin{center}
 {\Huge 未濟}
+
+Wèi Jì
 \end{center}
 
 ## Judgment
