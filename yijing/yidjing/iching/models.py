@@ -60,3 +60,17 @@ class Consultation(models.Model):
         if self.changing_hexagram:
             return f"{self.primary_hexagram} -> {self.changing_hexagram}"
         return f"{self.primary_hexagram}"
+
+
+class Character(models.Model):
+    character = models.CharField(max_length=1, unique=True)
+    pinyin = models.CharField(max_length=10, blank=True)
+    etymology = models.TextField(
+        blank=True, help_text="Full historical breakdown in English"
+    )
+
+    class Meta:
+        ordering = ["character"]
+
+    def __str__(self):
+        return self.character
