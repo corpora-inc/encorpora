@@ -1,5 +1,10 @@
 from django.contrib import admin
-from .models import Hexagram, Line, Consultation
+from .models import Hexagram, Line, Consultation, Character
+
+
+@admin.register(Character)
+class CharacterAdmin(admin.ModelAdmin):
+    list_display = ("character", "pinyin", "etymology")
 
 
 class LineInline(admin.TabularInline):
