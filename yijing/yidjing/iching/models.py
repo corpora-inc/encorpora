@@ -74,3 +74,44 @@ class Character(models.Model):
 
     def __str__(self):
         return self.character
+
+
+class Phrase(models.Model):
+    """
+    A chinese phrase.
+    """
+
+    phrase = models.CharField(max_length=255, unique=True)
+
+    class Meta:
+        ordering = ["phrase"]
+
+    def __str__(self):
+        return self.phrase
+
+    def best_translation(self, language):
+        """
+        Return the best translation for the given language.
+        """
+        return self.translations.filter(language=language).first()
+
+
+class Translation(models.Model):
+    """
+    A translation of a phrase.
+    """
+
+    phrase = models.ForeignKey(
+        Phrase,
+        related_name="translations",
+        on_delete=models.CASCADE,
+    )
+    language = models.CharField(max_length=2)
+    translation = models.TextField()
+    score = models.PositiveIntegerField(default=0)
+
+    class Meta:
+        ordering = ["phrase", "language", "-score"]
+
+    def __str__(self):
+        return f"{self.phrase} ({self.language})"
