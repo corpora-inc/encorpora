@@ -35,20 +35,24 @@ class Command(BaseCommand):
     help = "Populate Phrase and Translation models with Zhouyi data and ancient-intent English translations using xAI."
 
     def handle(self, *args, **kwargs):
-        # Gather all Character etymologies for context
-        characters = Character.objects.all()
-        etymology_context = "\n".join(
-            f"Character: {char.character}\nEtymology: {char.etymology}"
-            for char in characters
-        )
         total_phrases = Hexagram.objects.count() + Line.objects.count()
         self.stdout.write(f"Processing {total_phrases} phrases...")
+        idx = 0
 
         # Process Hexagram judgments
-        for idx, hexagram in enumerate(Hexagram.objects.all(), 1):
+        for hexagram in Hexagram.objects.all():
+            idx += 1
             phrase_text = hexagram.judgment_zh
             self.stdout.write(
                 f"[{idx}/{total_phrases}] Processing phrase '{phrase_text}'..."
+            )
+
+            # Get etymologies only for characters in this phrase
+            phrase_chars = set(phrase_text)
+            characters = Character.objects.filter(character__in=phrase_chars)
+            etymology_context = "\n".join(
+                f"Character: {char.character}\nEtymology: {char.etymology}"
+                for char in characters
             )
 
             try:
@@ -59,14 +63,14 @@ class Command(BaseCommand):
                             "You are an expert in Chinese linguistics, paleography, and Zhouyi translation. "
                             "Translate the given Chinese phrase from the Zhouyi (I Ching) into modern English, "
                             "drawing directly from its ancient Zhou-era intent (c. 1046–771 BCE). "
-                            "Use the provided etymologies of all characters in the phrase to inform the translation. "
+                            "Use the provided etymologies of the characters in the phrase to inform the translation. "
                             "Aim for a literal yet natural rendering—short, punchy, and vivid, like Hemingway. "
                             "Capture the primal, ritual-divinatory core (oracle bones, bronze vessels), "
                             "stripping away Han Confucian moralism, Song metaphysics, and Western glosses (e.g., no 'success' or 'virtue'). "
                             "Focus on raw meaning: 元 as 'primal/first,' 亨 as 'offering,' 利 as 'bounty/harvest,' 貞 as 'divination/fate.' "
                             "Take imagery liberties if it fits (e.g., 'riders mass' for 乘馬班如). "
                             "Provide only the best single translation—no alternatives, no explanation. "
-                            "Context: All character etymologies follow.\n\n"
+                            "Context: Character etymologies for this phrase follow.\n\n"
                             + etymology_context
                         ),
                     },
@@ -119,6 +123,14 @@ class Command(BaseCommand):
                 f"[{idx}/{total_phrases}] Processing phrase '{phrase_text}'..."
             )
 
+            # Get etymologies only for characters in this phrase
+            phrase_chars = set(phrase_text)
+            characters = Character.objects.filter(character__in=phrase_chars)
+            etymology_context = "\n".join(
+                f"Character: {char.character}\nEtymology: {char.etymology}"
+                for char in characters
+            )
+
             try:
                 message_dicts = [
                     {
@@ -127,14 +139,14 @@ class Command(BaseCommand):
                             "You are an expert in Chinese linguistics, paleography, and Zhouyi translation. "
                             "Translate the given Chinese phrase from the Zhouyi (I Ching) into modern English, "
                             "drawing directly from its ancient Zhou-era intent (c. 1046–771 BCE). "
-                            "Use the provided etymologies of all characters in the phrase to inform the translation. "
+                            "Use the provided etymologies of the characters in the phrase to inform the translation. "
                             "Aim for a literal yet natural rendering—short, punchy, and vivid, like Hemingway. "
                             "Capture the primal, ritual-divinatory core (oracle bones, bronze vessels), "
                             "stripping away Han Confucian moralism, Song metaphysics, and Western glosses (e.g., no 'success' or 'virtue'). "
                             "Focus on raw meaning: 元 as 'primal/first,' 亨 as 'offering,' 利 as 'bounty/harvest,' 貞 as 'divination/fate.' "
                             "Take imagery liberties if it fits (e.g., 'riders mass' for 乘馬班如). "
                             "Provide only the best single translation—no alternatives, no explanation. "
-                            "Context: All character etymologies follow.\n\n"
+                            "Context: Character etymologies for this phrase follow.\n\n"
                             + etymology_context
                         ),
                     },

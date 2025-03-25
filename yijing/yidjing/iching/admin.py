@@ -1,5 +1,15 @@
 from django.contrib import admin
-from .models import Hexagram, Line, Consultation, Character
+from .models import Hexagram, Line, Consultation, Character, Phrase, Translation
+
+
+@admin.register(Translation)
+class Translation(admin.ModelAdmin):
+    list_display = ("phrase", "translation")
+
+
+@admin.register(Phrase)
+class PhraseAdmin(admin.ModelAdmin):
+    list_display = ("phrase",)
 
 
 @admin.register(Character)
