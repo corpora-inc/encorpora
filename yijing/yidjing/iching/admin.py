@@ -5,11 +5,14 @@ from .models import Hexagram, Line, Consultation, Character, Phrase, Translation
 @admin.register(Translation)
 class Translation(admin.ModelAdmin):
     list_display = ("phrase", "translation")
+    autocomplete_fields = ("phrase",)
+    search_fields = ("phrase__phrase", "translation")
 
 
 @admin.register(Phrase)
 class PhraseAdmin(admin.ModelAdmin):
     list_display = ("phrase",)
+    search_fields = ("phrase",)
 
 
 @admin.register(Character)

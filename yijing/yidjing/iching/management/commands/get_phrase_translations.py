@@ -106,7 +106,7 @@ class Command(BaseCommand):
                 Translation.objects.update_or_create(
                     phrase=phrase_obj,
                     language="en",
-                    defaults={"translation": trans_data.translation, "score": 10},
+                    defaults={"translation": trans_data.translation, "score": 0},
                 )
                 self.stdout.write(
                     f"Translated '{phrase_text}' to '{trans_data.translation}'"
