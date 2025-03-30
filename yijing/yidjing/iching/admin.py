@@ -18,6 +18,7 @@ class PhraseAdmin(admin.ModelAdmin):
 @admin.register(Character)
 class CharacterAdmin(admin.ModelAdmin):
     list_display = ("character", "pinyin", "etymology")
+    search_fields = ("character", "pinyin", "etymology")
 
 
 class LineInline(admin.TabularInline):
@@ -27,7 +28,20 @@ class LineInline(admin.TabularInline):
 
 @admin.register(Hexagram)
 class HexagramAdmin(admin.ModelAdmin):
-    list_display = ("number", "name_zh", "pinyin")
+    list_display = ("number", "name_zh", "name_pinyin")
+    search_fields = (
+        "name_zh",
+        "name_pinyin",
+        "name_en",
+        "judgment_zh",
+        "judgment_en",
+        "judgment_pinyin",
+        "judgment_es",
+        "lines__text_zh",
+        "lines__text_en",
+        "lines__text_pinyin",
+        "lines__text_es",
+    )
     inlines = [LineInline]
 
 

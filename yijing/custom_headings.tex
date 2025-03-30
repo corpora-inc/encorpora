@@ -22,6 +22,25 @@
 \titlespacing*{\subparagraph}
   {0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
 
+
+% Center section headings
+\titleformat{\section}
+  {\normalfont\Large\bfseries\centering} % Format: centered, bold, large
+  {\thesection} % Label (section number)
+  {1em} % Space between number and title
+  {} % Title text
+
+% Center subsection headings (optional)
+\titleformat{\subsection}
+  {\normalfont\large\bfseries\centering} % Format: centered, bold, slightly smaller
+  {\thesubsection} % Label (subsection number)
+  {1em} % Space between number and title
+  {} % Title text
+
+% Adjust spacing if needed (optional)
+\titlespacing*{\section}{0pt}{1.5em}{1em} % Left, before, after spacing
+\titlespacing*{\subsection}{0pt}{1.5em}{1em}
+
 % ---- more spacing for young learners ----
 
 % Increase overall line spacing for a more open, readable layout
