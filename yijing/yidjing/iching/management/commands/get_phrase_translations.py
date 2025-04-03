@@ -25,14 +25,16 @@ tool_definition_translation = {
     "type": "function",
     "function": {
         "name": "store_translation",
-        "description": "Return the best modern English translation for the given Chinese phrase based on ancient intent.",
+        "description": "Return a modern English translation of the given "
+        "Zhouyi Chinese phrase, rooted in its ancient Zhou-era intent "
+        "(c. 1046-771 BCE).",
         "parameters": translation_schema,
     },
 }
 
 
 class Command(BaseCommand):
-    help = "Populate Phrase and Translation models with Zhouyi data and ancient-intent English translations using xAI."
+    help = "Populate Phrase and Translation models with Zhouyi ancient intent English translations"
 
     def handle(self, *args, **kwargs):
         total_phrases = Hexagram.objects.count() + Line.objects.count()
@@ -60,17 +62,13 @@ class Command(BaseCommand):
                     {
                         "role": "system",
                         "content": (
-                            "You are an expert in Chinese linguistics, paleography, and Zhouyi translation. "
-                            "Translate the given Chinese phrase from the Zhouyi (I Ching) into modern English, "
-                            "drawing directly from its ancient Zhou-era intent (c. 1046–771 BCE). "
-                            "Use the provided etymologies of the characters in the phrase to inform the translation. "
-                            "Aim for a literal yet natural rendering—short, punchy, and vivid, like Hemingway. "
-                            "Capture the primal, ritual-divinatory core (oracle bones, bronze vessels), "
-                            "stripping away Han Confucian moralism, Song metaphysics, and Western glosses (e.g., no 'success' or 'virtue'). "
-                            "Focus on raw meaning: 元 as 'primal/first,' 亨 as 'offering,' 利 as 'bounty/harvest,' 貞 as 'divination/fate.' "
-                            "Take imagery liberties if it fits (e.g., 'riders mass' for 乘馬班如). "
-                            "Provide only the best single translation—no alternatives, no explanation. "
-                            "Context: Character etymologies for this phrase follow.\n\n"
+                            "You are a master of Chinese linguistics, paleography, and Zhouyi translation. "
+                            "Translate the given Zhouyi (I Ching) phrase into modern English, channeling its ancient Zhou-era intent (c. 1046-771 BCE). "
+                            "Lean hard on the provided character etymologies to dig out raw, primal meanings—think oracle bones, bronze vessels, ancestral whispers. "
+                            "Let the context and etymology steer each character's meaning—don't lock anything in; feel the nuance shift across the book. "
+                            "Tap the ritual-divinatory heartbeat—shamans casting fates, not scribes moralizing. "
+                            "Give one bold translation, no fluff, no notes. "
+                            "Context: Character etymologies follow.\n\n"
                             + etymology_context
                         ),
                     },
@@ -136,17 +134,16 @@ class Command(BaseCommand):
                     {
                         "role": "system",
                         "content": (
-                            "You are an expert in Chinese linguistics, paleography, and Zhouyi translation. "
-                            "Translate the given Chinese phrase from the Zhouyi (I Ching) into modern English, "
-                            "drawing directly from its ancient Zhou-era intent (c. 1046–771 BCE). "
-                            "Use the provided etymologies of the characters in the phrase to inform the translation. "
-                            "Aim for a literal yet natural rendering—short, punchy, and vivid, like Hemingway. "
-                            "Capture the primal, ritual-divinatory core (oracle bones, bronze vessels), "
-                            "stripping away Han Confucian moralism, Song metaphysics, and Western glosses (e.g., no 'success' or 'virtue'). "
-                            "Focus on raw meaning: 元 as 'primal/first,' 亨 as 'offering,' 利 as 'bounty/harvest,' 貞 as 'divination/fate.' "
-                            "Take imagery liberties if it fits (e.g., 'riders mass' for 乘馬班如). "
-                            "Provide only the best single translation—no alternatives, no explanation. "
-                            "Context: Character etymologies for this phrase follow.\n\n"
+                            "You are a master of Chinese linguistics, paleography, and Zhouyi translation. "
+                            "Translate the given Zhouyi (I Ching) phrase into modern English, channeling its ancient Zhou-era intent (c. 1046–771 BCE). "
+                            "Lean hard on the provided character etymologies to dig out raw, primal meanings—think oracle bones, bronze vessels, ancestral whispers. "
+                            "Make it vivid and punchy—short bursts like Hemingway, but flow naturally if the phrase demands it. "
+                            "Ditch Han Confucian polish (no 'virtue' or 'gentleman'), Song metaphysics, and Western sugarcoating (no unearned 'success' or 'happiness'). "
+                            "Let the context and etymology steer each character's meaning—don't lock anything in; feel the nuance shift across the book. "
+                            "Tap the ritual-divinatory heartbeat—shamans casting fates, not scribes moralizing. "
+                            "Make the translation literal and direct. Punchy. "
+                            "Give one bold translation, no fluff, no notes. "
+                            "Context: Character etymologies follow.\n\n"
                             + etymology_context
                         ),
                     },
@@ -182,7 +179,8 @@ class Command(BaseCommand):
                 Translation.objects.update_or_create(
                     phrase=phrase_obj,
                     language="en",
-                    defaults={"translation": trans_data.translation, "score": 10},
+                    style="ancient",
+                    defaults={"translation": trans_data.translation, "score": 0},
                 )
                 self.stdout.write(
                     f"Translated '{phrase_text}' to '{trans_data.translation}'"

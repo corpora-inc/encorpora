@@ -96,6 +96,15 @@ class Phrase(models.Model):
         return self.translations.filter(language=language).first()
 
 
+STYLES = (
+    ("ancient", "Ancient"),
+    ("wilhelm", "Wilhelm"),
+    # ("modern", "Modern"),
+    # ("poetic", "Poetic"),
+    # ("interpretive", "Interpretive"),
+)
+
+
 class Translation(models.Model):
     """
     A translation of a phrase.
@@ -107,11 +116,16 @@ class Translation(models.Model):
         on_delete=models.CASCADE,
     )
     language = models.CharField(max_length=2)
+    style = models.CharField(max_length=10, choices=STYLES, default="ancient")
+    attribution = models.CharField(
+        max_length=255, blank=True, help_text="Attribution for the translation"
+    )
     translation = models.TextField()
     score = models.PositiveIntegerField(default=0)
 
     class Meta:
         ordering = ["phrase", "language", "-score"]
+        unique_together = ("phrase", "language", "style")
 
     def __str__(self):
         return f"{self.phrase} ({self.language})"
