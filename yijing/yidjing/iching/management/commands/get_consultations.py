@@ -26,14 +26,14 @@ tool_definition_interpretation = {
     "type": "function",
     "function": {
         "name": "store_interpretation",
-        "description": "Return a thoughtful, imaginative interpretation of the given I Ching consultation based on its Chinese and English texts.",
+        "description": "Return a thoughtful, symbol-rich interpretation of the given I Ching consultation based on its Chinese and English texts.",
         "parameters": interpretation_schema,
     },
 }
 
 
 class Command(BaseCommand):
-    help = "Populate Consultation and ConsultationInterpretation models for all 4096 I Ching readings with thoughtful, creative interpretations"
+    help = "Populate Consultation and ConsultationInterpretation models for all 4096 I Ching readings with thoughtful, symbol-rich interpretations"
 
     def handle(self, *args, **kwargs):
         # Generate all 4096 permutations (666666 to 999999)
@@ -59,17 +59,17 @@ class Command(BaseCommand):
             en_text = "\n".join(consultation.get_text("en"))
             context = f"Chinese Text:\n{zh_text}\n\nEnglish Text:\n{en_text}"
 
-            # Generate thoughtful, creative interpretation with Grok 2
             try:
                 message_dicts = [
                     {
                         "role": "system",
                         "content": (
-                            "You are a seasoned I Ching diviner, rooted in its ancient Zhou-era wisdom (c. 1046-771 BCE). "
-                            "Interpret the given I Ching consultation based on its Chinese and English texts with thoughtfulness and imagination. "
-                            "Stay close to the texts, reflecting on the primary hexagram's judgment, the changing lines (if any), and the secondary hexagram's judgment (if present). "
-                            "Draw from the raw meanings—oracle bones, bronze inscriptions, shamanic insights—and offer a clear, practical reading that guides the seeker. "
-                            "Let the symbols inspire a narrative of fate, nature, or human experience, but keep it grounded and serious, avoiding exaggeration or mockery. "
+                            "You are a seasoned I Ching diviner, steeped in its ancient Zhou-era wisdom (c. 1046-771 BCE). "
+                            "Interpret the given I Ching consultation with depth and precision, rooted in its Chinese and English texts. "
+                            "Focus tightly on the primary hexagram's judgment, each changing line (if any), and the secondary hexagram's judgment (if present). "
+                            "Draw out the raw, specific symbolism—oracle bones, bronze inscriptions, shamanic insights—reflecting what these meant in Zhou times (e.g., yellow as earth’s authority, dragons as primal forces). "
+                            "Offer a clear, practical reading that guides the seeker through fate, nature, or human experience, enriched with restrained creative insight into the symbols’ ancient weight. "
+                            "Stay serious and text-grounded, avoiding vague platitudes (e.g., 'true nature') or mockery—think like a Zhou diviner giving real counsel. "
                             "Use the store_interpretation tool to return the interpretation as a single, cohesive text—no notes, no extra commentary. "
                             "Context: The consultation's Chinese and English texts follow.\n\n"
                             + context
@@ -77,7 +77,7 @@ class Command(BaseCommand):
                     },
                     {
                         "role": "user",
-                        "content": "Provide a thoughtful, text-based interpretation of this I Ching consultation, using the store_interpretation tool.",
+                        "content": "Provide a thoughtful, symbol-specific interpretation of this I Ching consultation, using the store_interpretation tool.",
                     },
                 ]
                 response = client.chat.completions.create(
@@ -88,8 +88,8 @@ class Command(BaseCommand):
                         "type": "function",
                         "function": {"name": "store_interpretation"},
                     },
-                    temperature=0.8,  # Slightly lower for less wildness, still creative
-                    max_tokens=2000,  # Still allows rich responses
+                    temperature=0.7,  # Balanced creativity
+                    max_tokens=3000,  # Room for depth
                 )
                 message = response.choices[0].message
                 if message.tool_calls:
