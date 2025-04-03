@@ -1,5 +1,19 @@
 from django.contrib import admin
-from .models import Hexagram, Line, Consultation, Character, Phrase, Translation
+from .models import (
+    Hexagram,
+    Line,
+    Consultation,
+    Character,
+    Phrase,
+    Translation,
+    ConsultationInterpretation,
+)
+
+
+@admin.register(ConsultationInterpretation)
+class ConsultationInterpretationAdmin(admin.ModelAdmin):
+    list_display = ("consultation", "attribution")
+    search_fields = ("consultation__compact_representation", "attribution")
 
 
 @admin.register(Translation)
@@ -47,4 +61,4 @@ class HexagramAdmin(admin.ModelAdmin):
 
 @admin.register(Consultation)
 class ConsultationAdmin(admin.ModelAdmin):
-    list_display = ("primary_hexagram", "changing_hexagram")
+    list_display = ("compact_representation",)

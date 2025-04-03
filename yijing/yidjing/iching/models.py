@@ -40,26 +40,93 @@ class Line(models.Model):
 
 
 class Consultation(models.Model):
-    primary_hexagram = models.ForeignKey(
-        Hexagram, related_name="consultations_as_primary", on_delete=models.CASCADE
-    )
-    changing_hexagram = models.ForeignKey(
-        Hexagram,
-        related_name="consultations_as_transformed",
-        on_delete=models.CASCADE,
-        null=True,
-        blank=True,
-    )
     compact_representation = models.CharField(
         max_length=6,
+        unique=True,
         help_text="Compact representation of the consultation, e.g., 678967",
     )
 
     def __str__(self):
-        # return f"Consultation: {self.primary_hexagram} -> {self.changing_hexagram}"
-        if self.changing_hexagram:
-            return f"{self.primary_hexagram} -> {self.changing_hexagram}"
-        return f"{self.primary_hexagram}"
+        return self.compact_representation
+
+    def get_primary_hexagram(self):
+        """
+        Return the primary hexagram for this consultation.
+        """
+        binary = ""
+        for line in self.compact_representation:
+            if line == "6" or line == "8":
+                binary += "0"
+            elif line == "7" or line == "9":
+                binary += "1"
+        return Hexagram.objects.get(binary=binary)
+
+    def get_secondary_hexagram(self):
+        """
+        Return the secondary hexagram for this consultation.
+        """
+        binary = ""
+        if (
+            "6" not in self.compact_representation
+            and "9" not in self.compact_representation
+        ):
+            return None
+        for line in self.compact_representation:
+            if line == "6" or line == "7":
+                binary += "1"
+            elif line == "8" or line == "9":
+                binary += "0"
+        return Hexagram.objects.get(binary=binary)
+
+    def get_changing_lines(self):
+        if (
+            "6" not in self.compact_representation
+            and "9" not in self.compact_representation
+        ):
+            return []
+        changing_lines = []
+        for i, line in enumerate(self.compact_representation):
+            if line == "6" or line == "9":
+                changing_lines.append(int(i) + 1)
+        # print(f"Changing lines: {changing_lines}")
+        return self.get_primary_hexagram().lines.filter(line_number__in=changing_lines)
+
+    def get_text(self, language):
+        """
+        Return the text for this consultation in the specified language.
+        """
+        primary = self.get_primary_hexagram()
+        secondary = self.get_secondary_hexagram()
+        changing_lines = self.get_changing_lines()
+
+        resp = [
+            f"Hexagram {primary.number}",
+            getattr(primary, f"name_{language}"),
+            getattr(primary, f"judgment_{language}"),
+        ]
+        if secondary:
+            resp.append(f"Changing lines: {changing_lines}")
+            resp.extend([getattr(line, f"text_{language}") for line in changing_lines])
+            resp.append(f"Changing to Hexagram {secondary.number}")
+            resp.append(getattr(secondary, f"judgment_{language}"))
+        return resp
+
+
+class ConsultationInterpretation(models.Model):
+    consultation = models.ForeignKey(
+        Consultation, related_name="interpretations", on_delete=models.CASCADE
+    )
+    text = models.TextField(
+        help_text="Interpretation text for the consultation",
+    )
+    attribution = models.CharField(
+        max_length=255,
+        blank=True,
+        help_text="Attribution for the interpretation",
+    )
+
+    def __str__(self):
+        return f"{self.consultation} - {self.attribution}"
 
 
 class Character(models.Model):
@@ -125,7 +192,7 @@ class Translation(models.Model):
 
     class Meta:
         ordering = ["phrase", "language", "-score"]
-        unique_together = ("phrase", "language", "style")
+        unique_together = ("phrase", "language", "style", "attribution")
 
     def __str__(self):
         return f"{self.phrase} ({self.language})"
