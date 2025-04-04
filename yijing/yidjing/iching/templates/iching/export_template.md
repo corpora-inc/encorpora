@@ -9,26 +9,28 @@
 {% endspaceless %}
 
 \begin{center}
-{\Huge {{ hex.name_zh }}} \\
+{\fontsize{50}{58}\selectfont {{ hex.name_zh }}} \\
 \vspace{0.33cm}
 {{ hex.name_pinyin }} \\
 \vspace{0.33cm}
 {{ hex.name_en }}
-\vspace{0.33cm}
 \end{center}
+
+\vspace{0.66cm}
 
 ## Judgment
 
 \begin{minipage}{\textwidth}
 \begin{center}
 {\Large {{ hex.judgment_zh }}} \\
-\vspace{0.5cm}
+\vspace{0.33cm}
 {{ hex.judgment_pinyin }} \\
-\vspace{0.5cm}
+\vspace{0.33cm}
 {{ hex.judgment_en }}
 \end{center}
 \end{minipage}
 
+\vspace{0.66cm}
 
 {% for line in hex.lines.all %}
 
@@ -37,13 +39,14 @@
 \begin{minipage}{\textwidth}
 \begin{center}
 {\Large {{ line.text_zh }}} \\
-\vspace{0.5cm}
+\vspace{0.33cm}
 {{ line.text_pinyin }} \\
-\vspace{0.5cm}
+\vspace{0.33cm}
 {{ line.text_en }}
 \end{center}
 \end{minipage}
 
+\vspace{0.66cm}
 
 {% endfor %}
 

@@ -27,7 +27,7 @@
 \titleformat{\section}
   {\normalfont\Large\bfseries\centering} % Format: centered, bold, large
   {\thesection} % Label (section number)
-  {1em} % Space between number and title
+  {2em} % Space between number and title
   {} % Title text
 
 % Center subsection headings (optional)
@@ -38,8 +38,8 @@
   {} % Title text
 
 % Adjust spacing if needed (optional)
-\titlespacing*{\section}{0pt}{1.5em}{1em} % Left, before, after spacing
-\titlespacing*{\subsection}{0pt}{1.5em}{1em}
+\titlespacing*{\section}{0pt}{1em}{1em} % Left, before, after spacing
+\titlespacing*{\subsection}{0pt}{1em}{1em}
 
 % ---- more spacing for young learners ----
 
@@ -97,7 +97,7 @@
 
 \newcommand{\hexagram}[6]{%
 \begin{center}
-  \begin{tikzpicture}[scale=0.8]
+  \begin{tikzpicture}[scale=0.77]
   \def\hexone{#1}%
   \def\hextwo{#2}%
   \def\hexthree{#3}%
@@ -119,7 +119,7 @@
       \fi
     }
   \end{tikzpicture}%
-  \vspace{2em}
+  % \vspace{1em}
 \end{center}
 }
 
