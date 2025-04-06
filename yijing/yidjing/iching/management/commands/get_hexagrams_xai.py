@@ -18,7 +18,7 @@ completion_model = "grok-2-latest"
 # Pydantic models for structured responses
 class HexagramData(BaseModel):
     name_zh: str
-    name_pinyin: str
+    pinyin: str
     name_en: str
     binary: str
     judgment_zh: str
@@ -103,7 +103,7 @@ class Command(BaseCommand):
                 number=number,
                 defaults={
                     "name_zh": hex_data.name_zh,
-                    "name_pinyin": hex_data.name_pinyin,
+                    "pinyin": hex_data.pinyin,
                     "name_en": hex_data.name_en,
                     "binary": hex_data.binary,
                     "judgment_zh": hex_data.judgment_zh,

@@ -22,7 +22,7 @@ completion_model = "o3-mini"
 # Pydantic models for function responses
 class HexagramData(BaseModel):
     name_zh: str
-    name_pinyin: str
+    pinyin: str
     name_en: str
     binary: str
     judgment_zh: str
@@ -60,7 +60,7 @@ class Command(BaseCommand):
                         "type": "object",
                         "properties": {
                             "name_zh": {"type": "string"},
-                            "name_pinyin": {"type": "string"},
+                            "pinyin": {"type": "string"},
                             "name_en": {"type": "string"},
                             "binary": {"type": "string"},
                             "judgment_zh": {"type": "string"},
@@ -68,7 +68,7 @@ class Command(BaseCommand):
                         },
                         "required": [
                             "name_zh",
-                            "name_pinyin",
+                            "pinyin",
                             "name_en",
                             "binary",
                             "judgment_zh",
@@ -97,7 +97,7 @@ class Command(BaseCommand):
                 number=number,
                 defaults={
                     "name_zh": hex_data.name_zh,
-                    "name_pinyin": hex_data.name_pinyin,
+                    "pinyin": hex_data.pinyin,
                     "name_en": hex_data.name_en,
                     "binary": hex_data.binary,
                     "judgment_zh": hex_data.judgment_zh,
