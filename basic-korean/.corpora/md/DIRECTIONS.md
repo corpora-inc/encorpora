@@ -7,37 +7,42 @@
 
 ## Content Format
 
-- Maximize **Hangul** with paired **romanization** and **English translation**.
-- Prefer **tables** and **examples** over long paragraphs.
+- This book is for **English-speaking beginners** learning Korean from scratch.
+- Always include **Hangul**, along with **romanization** and **English translation**.
+- Use **English for explanations**, and **Hangul in all examples and vocabulary**.
+- Use **tables** and **inline examples** over long paragraphs.
 
 ### Preferred Formats
 
 #### Vocabulary Table
 
-| Hangul | Romanization | English |
-|--------|--------------|---------|
-| 학교   | hakgyo        | school  |
-| 친구   | chingu        | friend  |
+| Korean (Hangul) | Romanization | English |
+|-----------------|--------------|---------|
+| 학교            | hakgyo       | school  |
+| 친구            | chingu       | friend  |
 
 #### Dialogue Table
 
-| Speaker | Korean           | Romanization      | English         |
-|---------|------------------|-------------------|-----------------|
-| Alice   | 안녕하세요?       | annyeonghaseyo?   | Hello           |
-| Bob     | 네, 안녕하세요.   | ne, annyeonghaseyo | Yes, hello      |
+| Speaker | Korean (Hangul)    | Romanization      | English      |
+|---------|--------------------|-------------------|--------------|
+| Alice   | 안녕하세요?         | annyeonghaseyo?   | Hello        |
+| Bob     | 네, 안녕하세요.     | ne, annyeonghaseyo | Yes, hello   |
 
 #### Grammar Example
 
-Brief explanation, then examples:
+Explain in English, then give paired examples:
 
 - 저는 학생이에요.
   *jeoneun haksaeng-ieyo* — I am a student.
 
+- 이 책은 좋아요.
+  *i chaek-eun joayo* — This book is good.
+
 ## Style Guide
 
-- Do **not** include intros, conclusions, or summaries.
-- Do **not** explain what the file is or repeat prior material.
-- Keep a **neutral, instructional tone**.
-- Each file is part of a larger book — not a standalone article.
+- Do **not** include intros or summaries.
+- Do **not** repeat prior content or reference other files.
+- Maintain a **clear, educational tone**, not conversational or blog-like.
+- Each file is one part of a larger book.
 
-The goal: **structured, immersive Hangul exposure** with clean, readable formatting.
+The goal is to **build Hangul fluency through structured exposure**, while making the material accessible and readable for native English learners.
