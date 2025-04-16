@@ -7,7 +7,16 @@ from .models import (
     Phrase,
     Translation,
     ConsultationInterpretation,
+    Explanation,
 )
+
+
+@admin.register(Explanation)
+class ExplanationAdmin(admin.ModelAdmin):
+    list_display = ("phrase", "language", "attribution")
+    search_fields = ("phrase__phrase", "language", "attribution")
+    list_filter = ("language",)
+    autocomplete_fields = ("phrase",)
 
 
 @admin.register(ConsultationInterpretation)
@@ -18,7 +27,7 @@ class ConsultationInterpretationAdmin(admin.ModelAdmin):
 
 @admin.register(Translation)
 class Translation(admin.ModelAdmin):
-    list_display = ("phrase", "translation")
+    list_display = ("phrase", "translation", "language", "style", "attribution")
     autocomplete_fields = ("phrase",)
     search_fields = ("phrase__phrase", "translation")
 

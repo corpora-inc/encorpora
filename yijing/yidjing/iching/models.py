@@ -164,6 +164,30 @@ class Phrase(models.Model):
         return self.translations.filter(language=language).first()
 
 
+class Explanation(models.Model):
+    """
+    A detailed explanation of a phrase.
+    """
+
+    phrase = models.ForeignKey(
+        Phrase,
+        related_name="explanations",
+        on_delete=models.CASCADE,
+    )
+    language = models.CharField(max_length=2)
+    text = models.TextField()
+    attribution = models.CharField(
+        max_length=255, blank=True, help_text="Attribution for the explanation"
+    )
+
+    class Meta:
+        ordering = ["phrase", "language"]
+        unique_together = ("phrase", "language", "attribution")
+
+    def __str__(self):
+        return f"{self.phrase} ({self.language})"
+
+
 STYLES = (
     ("ancient", "Ancient"),
     ("wilhelm", "Wilhelm"),
