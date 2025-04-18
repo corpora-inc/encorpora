@@ -43,7 +43,7 @@
     - d) $6$
 
 8. A number is 3 more than twice another number. If their sum is 45, what is the smaller number?
-    - a) $14$
+    - a) $11\frac{1}{4}$
     - b) $15$
     - c) $16$
     - d) $17$
