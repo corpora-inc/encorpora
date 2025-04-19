@@ -7,11 +7,13 @@ Return the same file with the following changes:
 1. Add detailed explanations of concepts and methods.
 2. Be generous with vertical space.
 3. Give intuition about the concepts to help the reader understand and remember.
+
+Proofread and return the file to be a part of the greatest College Algebra course ever.
 "
 
 # Define the list of filenames
 files=(
-"01-00-unit-intro-foundational-algebraic-concepts.md"
+# "01-00-unit-intro-foundational-algebraic-concepts.md"
 "01-01-lesson-understanding-variables-and-algebraic-expressions.md"
 "01-02-lesson-operations-on-numbers-and-algebraic-terms.md"
 "01-03-lesson-simplifying-expressions-and-combining-like-terms.md"
@@ -100,7 +102,7 @@ files=(
 
 # Loop through files and run `corpora workon`
 for file in "${files[@]}"; do
-    corpora infer "$file" --check ./build.sh --instructions $INSTRUCTIONS
+    corpora infer "$file" --check ./build.sh --instructions "$INSTRUCTIONS"
     git add "$file"
     git commit -m "Infer $file" --no-gpg-sign
     corpora sync --noinput
