@@ -1,18 +1,29 @@
 # Systems of Equations and Matrix Methods
 
+![2D plot of two lines $y=m_1x+b_1$ and $y=m_2x+b_2$ intersecting, illustrating systems of equations.](images/plot_1_09-00-unit-intro-systems-of-equations-and-matrix-methods.md.png)
 
-![A 2D plot showing two linear equations and their intersection point, illustrating the concept of systems of linear equations.](images/plot_1_09-00-unit-intro-systems-of-equations-and-matrix-methods.md.png)
+This unit introduces systems of equations and the matrix methods used to solve them.
 
+Systems of equations consist of two or more equations that share common variables. They represent situations where multiple conditions must be satisfied at the same time. Each equation acts as a condition or constraint, and the solution is the set of values that satisfy every constraint simultaneously.
 
+There are several methods to solve systems:
 
-This unit introduces systems of equations and the matrix methods used to solve them. The unit covers:
+- **Substitution Method:** Solve one of the equations for one variable, and substitute this expression into the other equation. This reduces the system to one equation with one variable, making it easier to solve.
 
-- What systems of linear equations are and how they can be represented.
-- Methods for solving systems, including substitution, elimination, and matrix operations.
-- The use of matrices, determinants, and inverse matrices in solving complex systems.
+- **Elimination Method:** Add or subtract the equations to cancel out one of the variables. This method simplifies the system, allowing you to solve for the remaining variable directly.
 
-Understanding these concepts is important because systems of equations appear frequently in real-world scenarios. Fields such as engineering, economics, and computer science use these methods to model relationships and solve problems involving multiple variables. Learning these methods equips you with a toolkit for analytical reasoning and problem-solving in varied applications.
+- **Matrix Methods:** Write the system in matrix form and use techniques such as Gaussian elimination, determinants, or inverse matrices. Matrix methods are especially useful when dealing with systems that have many equations and variables.
 
-In this unit, you will learn how to translate real-world problems into systems of equations and apply systematic approaches to find solutions. The matrix methods section will provide a structured way to handle larger sets of equations efficiently.
+Understanding these techniques is important because systems of equations frequently model real-world problems. For example, in engineering, systems of equations are used to analyze forces acting on structures. In economics, they are applied to determine market equilibriums where supply equals demand. Learning these methods equips you with a toolkit to approach complex scenarios and solve problems systematically.
+
+Matrix methods introduce key concepts such as:
+
+- **Matrices:** Rectangular arrays of numbers that represent the coefficients of a system.
+
+- **Determinants:** Values computed from a matrix that indicate whether a unique solution exists for the system. A non-zero determinant means the system has a unique solution.
+
+- **Inverse Matrices:** The matrix that, when multiplied by the original matrix, yields the identity matrix. If the inverse exists, it offers a direct method to solve the system.
+
+In this unit, you will learn how to convert real-world problems into systems of equations and apply these systematic approaches to find solutions quickly and accurately. The detailed methods covered here will help you work through both simple and complex systems, making the process efficient and logical.
 
 > "The formulation of a problem is often more essential than its solution." – Albert Einstein

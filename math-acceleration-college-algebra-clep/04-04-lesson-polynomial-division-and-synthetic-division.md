@@ -1,207 +1,279 @@
 ## Polynomial Division and Synthetic Division
 
+![Plot showing $f(x)=(x-1)Q(x)+R$.](images/plot_1_04-04-lesson-polynomial-division-and-synthetic-division.md.png)
 
-![This plot visualizes the polynomial division identity by comparing the original polynomial f(x) with its reconstructed form using synthetic division results: f(x) = (x-1)*Q(x) + R.](images/plot_1_04-04-lesson-polynomial-division-and-synthetic-division.md.png)
-
-
-
-Polynomial division is a method for dividing a polynomial by another polynomial of a lower degree. It is similar to the long division algorithm used with numbers. In many cases, synthetic division provides a shortcut when dividing by a linear factor of the form $x - c$.
+Polynomial division is the process of dividing one polynomial (the dividend) by another (the divisor), similar to the long division of numbers. This technique is crucial for simplifying complex rational expressions and solving polynomial equations. Synthetic division, a shortcut method, is used when dividing by a linear factor of the form $x-c$, making calculations faster and less error-prone.
 
 ### Polynomial Long Division
 
-Polynomial long division follows these steps:
+The long division method in algebra follows these steps:
 
-1. Divide the first term of the dividend by the first term of the divisor. This gives the first term of the quotient.
+1. Divide the first term of the dividend by the first term of the divisor to determine the first term of the quotient.
+2. Multiply the entire divisor by this quotient term.
+3. Subtract the resulting product from the dividend to form a new sub-dividend.
+4. Bring down the next term from the dividend and repeat the process until every term has been handled.
 
-2. Multiply the entire divisor by that term and subtract the result from the dividend.
-
-3. Bring down the next term from the original dividend to form a new sub-dividend.
-
-4. Repeat the process until all terms have been brought down. The final answer has a quotient and, if not divisible exactly, a remainder.
+This process mirrors numerical long division and helps build intuition by breaking a complex problem into smaller, manageable steps.
 
 #### Step-by-Step Example of Long Division
 
-Divide $$2x^3 - 3x^2 + 4x - 5$$ by $$x - 1$$.
-
-1. Divide the leading term: $$\frac{2x^3}{x} = 2x^2$$. Write $$2x^2$$ above the division bar.
-
-2. Multiply $$2x^2$$ by the divisor $$x - 1$$ to get $$2x^3 - 2x^2$$.
-
-3. Subtract this product from the original polynomial:
+We want to divide
 
 $$
-\begin{array}{r@{}r@{}r@{}r}
-      & 2x^3 & -3x^2 & +4x - 5 \\
--\, ( & 2x^3 & -2x^2 & ) \\
-\hline
-      & 0    & -x^2 & +4x - 5 \\
-\end{array}
+2x^3 - 3x^2 + 4x - 5
 $$
 
-4. Bring down the next term. The new polynomial is $$-x^2 + 4x$$.
-
-5. Divide $$-x^2$$ by $$x$$ to get $$-x$$. Write this above the bar next to $$2x^2$$.
-
-6. Multiply $$-x$$ by $$x - 1$$ to obtain $$-x^2 + x$$.
-
-7. Subtract this product from the current polynomial:
+by
 
 $$
-\begin{array}{r@{}r@{}r}
-      & -x^2 & +4x \\
--\, ( & -x^2 & + x ) \\
-\hline
-      & 0    & +3x \\
-\end{array}
+x - 1.
 $$
 
-8. Bring down the remaining term, $$-5$$, to get $$3x - 5$$.
+1. **Divide the leading term:**
 
-9. Divide $$3x$$ by $$x$$ to get $$3$$ and place it in the quotient.
+   Divide $2x^3$ by $x$ to obtain $2x^2$. Write $2x^2$ above the division bar.
 
-10. Multiply $$3$$ by the divisor $$x - 1$$ to get $$3x - 3$$.
+2. **Multiply:**
 
-11. Subtract this from $$3x -5$$:
+   Multiply $2x^2$ by the divisor $(x-1)$:
+
+   $$
+   2x^2 \cdot (x-1) = 2x^3 - 2x^2.
+   $$
+
+3. **Subtract:**
+
+   Subtract the result from the dividend:
+
+   $$
+   \begin{array}{r@{}r@{}r@{}r}
+         & 2x^3 & -3x^2 & +4x - 5 \\
+   -\,( & 2x^3 & -2x^2 & ) \\
+   \hline
+         & 0    & -x^2 & +4x - 5 
+   \end{array}
+   $$
+
+4. **Bring down:**
+
+   Bring down the next term so that the new sub-dividend is $-x^2+4x$.
+
+5. **Divide:**
+
+   Divide $-x^2$ by $x$ to get $-x$. Write $-x$ in the quotient next to $2x^2$.
+
+6. **Multiply:**
+
+   Multiply $-x$ by $(x-1)$:
+
+   $$
+   -x(x-1) = -x^2 + x.
+   $$
+
+7. **Subtract:**
+
+   Subtract this product from the sub-dividend:
+
+   $$
+   \begin{array}{r@{}r@{}r}
+         & -x^2 & +4x \\
+   -\,( & -x^2 & + x ) \\
+   \hline
+         & 0    & +3x 
+   \end{array}
+   $$
+
+8. **Bring down the next term:**
+
+   Bring down the remaining term $-5$, forming $3x - 5$.
+
+9. **Divide:**
+
+   Divide $3x$ by $x$ to obtain $3$. Write this in the quotient.
+
+10. **Multiply:**
+
+    Multiply $3$ by $(x-1)$:
+
+    $$
+    3(x-1)= 3x - 3.
+    $$
+
+11. **Subtract:**
+
+    Subtract this from $3x-5$:
+
+    $$
+    \begin{array}{r@{}r}
+         & 3x - 5 \\
+    -\,( & 3x - 3 ) \\
+    \hline
+         & -2 
+    \end{array}
+    $$
+
+The quotient is $2x^2 - x + 3$ and the remainder is $-2$. Thus, the division result is written as:
 
 $$
-\begin{array}{r@{}r}
-      & 3x - 5 \\
--\, ( & 3x - 3 ) \\
-\hline
-      & -2 \\
-\end{array}
-$$
-
-The quotient is $$2x^2 - x + 3$$ and the remainder is $$-2$$. We can express the result as:
-
-$$
-\frac{2x^3 - 3x^2 + 4x - 5}{x - 1} = 2x^2 - x + 3 - \frac{2}{x - 1}
+\frac{2x^3 - 3x^2 + 4x - 5}{x - 1} = 2x^2 - x + 3 - \frac{2}{x-1}.
 $$
 
 ### Synthetic Division
 
-Synthetic division is a shortcut method used when dividing by a linear factor of the form $$x - c$$. Only the coefficients of the polynomial are used in synthetic division.
+Synthetic division offers a simplified process when dividing by a linear factor, $x-c$. It uses only the coefficients, making the division quicker and more straightforward. The steps are as follows:
 
-The steps for synthetic division are:
+1. **Identify $c$:**
 
-1. Identify $$c$$ from the divisor $$x - c$$.
+   From the divisor $x-c$, identify $c$.
 
-2. Write the coefficients of the dividend in order. If any power is missing, use 0 as its coefficient.
+2. **Write the coefficients:**
 
-3. Bring down the first coefficient to the bottom row.
+   List the coefficients of the dividend in descending order. Insert a $0$ for any missing term.
 
-4. Multiply this number by $$c$$ and write the result under the second coefficient.
+3. **Bring Down:**
 
-5. Add the second coefficient and the product, writing the result in the bottom row.
+   Bring down the first coefficient to the bottom row.
 
-6. Continue the process for all coefficients. The final number in the bottom row is the remainder.
+4. **Multiply and Add:**
+
+   Multiply the number just written by $c$. Write the product under the next coefficient. Add this product to the coefficient and write the result in the bottom row.
+
+5. **Repeat:**
+
+   Continue this process until all coefficients have been processed. The final number in the bottom row is the remainder.
+
+This method minimizes the steps and reduces error when the divisor is of the form $x-c$.
 
 #### Step-by-Step Example of Synthetic Division
 
-We will use synthetic division on the same problem: Divide $$2x^3 - 3x^2 + 4x - 5$$ by $$x - 1$$. Here, $$c = 1$$.
-
-1. Write the coefficients: 2, -3, 4, -5.
-
-2. Set up the synthetic division:
+Divide
 
 $$
-\begin{array}{c|cccc}
-  1 & 2 & -3 & 4 & -5 \\
-    &   &    &   &    \\
-\hline
-    &   &    &   &    \\
-\end{array}
+2x^3 - 3x^2 + 4x - 5
 $$
 
-3. Bring down the first coefficient (2):
+by
 
 $$
-\begin{array}{c|cccc}
-  1 & 2 & -3 & 4 & -5 \\
-    &   &    &   &    \\
-\hline
-    & 2 &    &   &    \\
-\end{array}
+x-1,
 $$
 
-4. Multiply 2 by $$c=1$$ to get 2. Write this under the second coefficient:
+with $c = 1$.
+
+1. **List the coefficients:**
+
+   The coefficients are: $2$, $-3$, $4$, $-5$.
+
+2. **Set up synthetic division:**
+
+   $$
+   \begin{array}{c|cccc}
+     1 & 2 & -3 & 4 & -5 \\
+       &   &    &   &    \\
+   \hline
+       &   &    &   &    
+   \end{array}
+   $$
+
+3. **Bring down the first coefficient:**
+
+   $$
+   \begin{array}{c|cccc}
+     1 & 2 & -3 & 4 & -5 \\
+       &   &    &   &    \\
+   \hline
+       & 2 &    &   &    
+   \end{array}
+   $$
+
+4. **Multiply and write below:**
+
+   Multiply $2$ by $1$ to get $2$. Write this under the second coefficient:
+
+   $$
+   \begin{array}{c|cccc}
+     1 & 2 & -3 & 4 & -5 \\
+       &   & 2  &   &    \\
+   \hline
+       & 2 &    &   &    
+   \end{array}
+   $$
+
+5. **Add:**
+
+   Add $-3$ and $2$ to get $-1$:
+
+   $$
+   \begin{array}{c|cccc}
+     1 & 2 & -3 & 4 & -5 \\
+       &   & 2  &   &    \\
+   \hline
+       & 2 & -1 &   &    
+   \end{array}
+   $$
+
+6. **Multiply:**
+
+   Multiply $-1$ by $1$ to obtain $-1$. Write this underneath the third coefficient:
+
+   $$
+   \begin{array}{c|cccc}
+     1 & 2 & -3 & 4 & -5 \\
+       &   & 2  & -1 &    \\
+   \hline
+       & 2 & -1 &   &    
+   \end{array}
+   $$
+
+7. **Add:**
+
+   Add $4$ and $-1$ to get $3$:
+
+   $$
+   \begin{array}{c|cccc}
+     1 & 2 & -3 & 4 & -5 \\
+       &   & 2  & -1 &    \\
+   \hline
+       & 2 & -1 & 3 &    
+   \end{array}
+   $$
+
+8. **Multiply:**
+
+   Multiply $3$ by $1$ to get $3$. Write the result under the fourth coefficient:
+
+   $$
+   \begin{array}{c|cccc}
+     1 & 2 & -3 & 4 & -5 \\
+       &   & 2  & -1 & 3  \\
+   \hline
+       & 2 & -1 & 3 &    
+   \end{array}
+   $$
+
+9. **Add:**
+
+   Add $-5$ and $3$ to obtain $-2$:
+
+   $$
+   \begin{array}{c|cccc}
+     1 & 2 & -3 & 4 & -5 \\
+       &   & 2  & -1 & 3  \\
+   \hline
+       & 2 & -1 & 3 & -2 
+   \end{array}
+   $$
+
+The bottom row, except for the last number, represents the coefficients of the quotient, and the last number is the remainder. Therefore, the quotient is $2x^2 - x + 3$ and the remainder is $-2$. We express the final answer as:
 
 $$
-\begin{array}{c|cccc}
-  1 & 2 & -3 & 4 & -5 \\
-    &   & 2  &   &    \\
-\hline
-    & 2 &    &   &    \\
-\end{array}
-$$
-
-5. Add the second coefficient and 2: $$-3 + 2 = -1$$.
-
-$$
-\begin{array}{c|cccc}
-  1 & 2 & -3 & 4 & -5 \\
-    &   & 2  &   &    \\
-\hline
-    & 2 & -1 &   &    \\
-\end{array}
-$$
-
-6. Multiply $$-1$$ by 1 to get $$-1$$ and write it under the third coefficient:
-
-$$
-\begin{array}{c|cccc}
-  1 & 2 & -3 & 4 & -5 \\
-    &   & 2  & -1 &    \\
-\hline
-    & 2 & -1 &   &    \\
-\end{array}
-$$
-
-7. Add the third coefficient and $$-1$$: $$4 + (-1) = 3$$.
-
-$$
-\begin{array}{c|cccc}
-  1 & 2 & -3 & 4 & -5 \\
-    &   & 2  & -1 &    \\
-\hline
-    & 2 & -1 & 3 &    \\
-\end{array}
-$$
-
-8. Multiply 3 by 1 to get 3. Write it under the fourth coefficient:
-
-$$
-\begin{array}{c|cccc}
-  1 & 2 & -3 & 4 & -5 \\
-    &   & 2  & -1 & 3  \\
-\hline
-    & 2 & -1 & 3 &    \\
-\end{array}
-$$
-
-9. Add the fourth coefficient and 3: $$-5 + 3 = -2$$.
-
-$$
-\begin{array}{c|cccc}
-  1 & 2 & -3 & 4 & -5 \\
-    &   & 2  & -1 & 3  \\
-\hline
-    & 2 & -1 & 3 & -2 \\
-\end{array}
-$$
-
-The bottom row (except the last number) represents the coefficients of the quotient polynomial, and the last number is the remainder. The quotient is $$2x^2 - x + 3$$ and the remainder is $$-2$$.
-
-We write the final answer as:
-
-$$
-\frac{2x^3 - 3x^2 + 4x - 5}{x - 1} = 2x^2 - x + 3 - \frac{2}{x - 1}
+\frac{2x^3 - 3x^2 + 4x - 5}{x-1} = 2x^2 - x + 3 - \frac{2}{x-1}.
 $$
 
 ### Applications and Key Points
 
-> Polynomial division is essential in algebra for simplifying complex rational expressions and solving higher degree equations. Synthetic division speeds up the process when the divisor is linear.
+> Polynomial division is essential for simplifying algebraic expressions and solving higher degree polynomial equations. These methods are widely used in fields like engineering, economics, and statistics.
 
-Both methods are valuable. Use long division for any divisor and synthetic division when applicable.
+Synthetic division is especially useful when the divisor is linear, as it streamlines the process and minimizes calculations.
 
-Understanding these techniques is vital in many fields including engineering, economics, and statistics, where modeling and simplifying polynomial functions are necessary.
+Understanding both long division and synthetic division builds a strong foundation for advanced algebra topics and real-world problem solving.

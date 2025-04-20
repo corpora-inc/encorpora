@@ -4,7 +4,7 @@ set -e
 
 # Define the list of filenames
 files=(
-"01-08-lesson-real-number-classifications-and-properties.md"
+"01-08-lesson-real-number-classifications-and-properties-rational-irrational.md"
 "03-06-lesson-domain-and-range-of-functions.md"
 "03-07-lesson-algebra-of-functions-sums-products-and-quotients.md"
 "05-06-lesson-solving-and-graphing-quadratic-inequalities.md"

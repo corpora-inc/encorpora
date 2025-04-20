@@ -52,8 +52,6 @@ This methodical approach ensures that expressions are reduced to their simplest 
 
 ### Example 1: Simplify a Basic Expression
 
-![Graph showing that $3x+2x-4$ simplifies to $5x-4$.](images/plot_1_01-03-lesson-simplifying-expressions-and-combining-like-terms.md.png)
-
 Simplify the expression:
 
 $$
