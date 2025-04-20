@@ -2,16 +2,20 @@
 
 set -e
 
-INSTRUCTIONS="
+INSTRUCTIONS=$(
+  cat <<'EOF'
 Return the same file with the following changes:
 1. Add detailed explanations of concepts and methods.
 2. Clean up vertical white space:
-    Be generous with vertical space following conventional markdown linting guidelines.
-    Separate markdown features with a single blank line. Do not use more than one blank line.
+   Be generous with vertical space following conventional markdown linting guidelines.
+   Separate markdown features with a single blank line. Do not use more than one blank line.
 3. Give intuition about the concepts to help the reader understand and remember.
 4. Make figure descriptions (image alt text) *more concise and clear* with proper inline math.
-   inline-latex can be used eg $f(x)=x^2$. Make the descriptions extremely concise.
-5. Ensure correct math formatting. Replace usage of `\(` and `\)` with `$` for inline math. Replace usage of `\[` and `\]` with `$$` for block math.
+   Inline LaTeX should be used, e.g. $f(x)=x^2$, in the descriptions.
+   DO NOT CHANGE THE PATHS TO THE IMAGES.
+5. Ensure correct math formatting. Replace usage of \(
+   and \) with $ for inline math. Replace usage of \[
+   and \] with $$ for block math.
 
 The focus is on teaching the College Algebra material in a way that is engaging and easy to understand.
 
@@ -21,10 +25,11 @@ Expand on anything that is not clear or could be better explained.
 If a section is already clear and well explained, do not change it.
 If a section is confusing or makes no sense, you can rewrite it completely.
 
-Proofread and return the file to be a part of the greatest College Algebra course ever.
+Proofread and return the file to be part of the greatest College Algebra course ever.
 
 If the file is already perfect, return it unchanged.
-"
+EOF
+)
 
 # Define the list of filenames
 files=(
@@ -123,7 +128,7 @@ files=(
 # Loop through files and run `corpora workon`
 for file in "${files[@]}"; do
     corpora infer "$file" --check ./build.sh --instructions "$INSTRUCTIONS"
-    git add "$file"
-    git commit -m "Infer $file" --no-gpg-sign
-    corpora sync --noinput
+    # git add "$file"
+    # git commit -m "Infer $file" --no-gpg-sign
+    # corpora sync --noinput
 done
