@@ -15,7 +15,8 @@ $$
 Understanding and applying the distributive property is crucial for simplifying expressions, solving equations, and making real-world calculations more manageable.
 
 ### What Is the Distributive Property?
-![A 2D area model plot that visually demonstrates the distributive property by partitioning a rectangle representing a(b+c) into two smaller rectangles representing ab and ac.](images/plot_1_01-04-lesson-the-distributive-property-and-its-applications.md.png)
+
+![A 2D area model plot that visually demonstrates the distributive property by partitioning a rectangle representing a(b+c) into two smaller rectangles representing ab and ac.](images/distributive-property.png)
 
 The distributive property lets you eliminate parentheses by multiplying the term outside by each term inside them. It works with both numbers and variables. For example, in the expression
 
@@ -93,7 +94,7 @@ $$
 
 The distributive property is not only a tool for solving algebraic expressions; it is also practical in everyday situations. Here are two examples:
 
-1. **Financial Calculations:** 
+1. **Financial Calculations:**
    Suppose you are buying several items that each cost a base price plus an additional tax. If the base price is represented by $p$ and tax by $t$, then buying $n$ items can be calculated as:
 
    $$

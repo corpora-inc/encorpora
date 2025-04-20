@@ -17,13 +17,14 @@ Return the same file with the following changes:
    and \) with $ for inline math. Replace usage of \[
    and \] with $$ for block math.
 
-Remove special characters like `π`, `∛` and `≤` and use proper LaTeX math formatting. For example, replace `π` with `\pi`, `∛` with `\sqrt[3]{}`, and `≤` with `\leq`.
+Remove special characters such as `π`, `∛`, `⁻`, `∘`, and `≤` and replace with proper LaTeX math formatting.
 
 The focus is on teaching the College Algebra material in a way that is engaging and easy to understand.
 
 Remove anything that does not contribute to the student's mastery of Algebra for the College Algebra CLEP exam.
 
-Expand on anything that is not clear or could be better explained.
+Expand on anything that is not clear or could be better explained. Explain fully!
+
 If a section is already clear and well explained, do not change it.
 If a section is confusing or makes no sense, you can rewrite it completely.
 
@@ -35,10 +36,10 @@ EOF
 
 # Define the list of filenames
 files=(
-"01-00-unit-intro-foundational-algebraic-concepts.md"
-"01-01-lesson-understanding-variables-and-algebraic-expressions.md"
-"01-02-lesson-operations-on-numbers-and-algebraic-terms.md"
-"01-03-lesson-simplifying-expressions-and-combining-like-terms.md"
+# "01-00-unit-intro-foundational-algebraic-concepts.md"
+# "01-01-lesson-understanding-variables-and-algebraic-expressions.md"
+# "01-02-lesson-operations-on-numbers-and-algebraic-terms.md"
+# "01-03-lesson-simplifying-expressions-and-combining-like-terms.md"
 "01-04-lesson-the-distributive-property-and-its-applications.md"
 "01-05-lesson-evaluating-algebraic-expressions.md"
 "01-06-lesson-solving-basic-linear-equations.md"
