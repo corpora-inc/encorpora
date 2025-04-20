@@ -6,7 +6,7 @@ This lesson explains how to simplify algebraic expressions by combining like ter
 
 > Like terms are terms that contain the same variable(s) raised to the same power. Only the coefficients (the numbers in front) may be different.
 
-For example, in the expression $$3x + 5x$$ both terms are like terms because they each contain the variable $$x$$ raised to the first power. When the terms are combined, the result is $$8x$$.
+For example, in the expression $3x + 5x$ both terms are like terms because they each contain the variable $x$ raised to the first power. When the terms are combined, the result is $8x$.
 
 ### Step-by-Step Process for Simplification
 

@@ -1,4 +1,4 @@
-## 12-02-lesson-mixed-problem-solving-techniques
+## Mixed Problem Solving Techniques
 
 This lesson covers a variety of strategies for solving algebraic problems that do not follow one single template. In many real-world scenarios, problems may combine different types of equations and require multiple problem-solving techniques. Understanding how to identify the type of problem and applying a structured approach can simplify even the most complex tasks.
 

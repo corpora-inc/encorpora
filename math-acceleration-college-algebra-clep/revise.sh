@@ -9,7 +9,8 @@ Return the same file with the following changes:
     Be generous with vertical space following conventional markdown linting guidelines.
     Separate markdown features with a single blank line. Do not use more than one blank line.
 3. Give intuition about the concepts to help the reader understand and remember.
-4. Make figure descriptions (image alt text) concise and clear with proper inline math. inline-latex can be used eg $f(x)=x^2$.
+4. Make figure descriptions (image alt text) *more concise and clear* with proper inline math.
+   inline-latex can be used eg $f(x)=x^2$. Make the descriptions extremely concise.
 5. Ensure correct math formatting. Replace usage of `\(` and `\)` with `$` for inline math. Replace usage of `\[` and `\]` with `$$` for block math.
 
 The focus is on teaching the College Algebra material in a way that is engaging and easy to understand.
@@ -17,6 +18,8 @@ The focus is on teaching the College Algebra material in a way that is engaging 
 Remove anything that does not contribute to the student's mastery of Algebra for the College Algebra CLEP exam.
 
 Expand on anything that is not clear or could be better explained.
+If a section is already clear and well explained, do not change it.
+If a section is confusing or makes no sense, you can rewrite it completely.
 
 Proofread and return the file to be a part of the greatest College Algebra course ever.
 
