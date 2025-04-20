@@ -59,6 +59,14 @@ SKIP_FILES = [
     "08-03-lesson-introduction-to-conic-sections-and-standard-equations.md",
 ]
 
+ONLY_FILES = [
+    "01-08-lesson-real-number-classifications-and-properties.md",
+    "03-06-lesson-domain-and-range-of-functions.md",
+    "03-07-lesson-algebra-of-functions-sums-products-and-quotients.md",
+    "05-06-lesson-solving-and-graphing-quadratic-inequalities.md",
+    "10-06-lesson-factorials-and-binomial-theorem.md",
+]
+
 PLOT_SYSTEM_MESSAGE = (
     "Analyze the provided markdown content to identify 0-3 key mathematical concepts that would benefit from a visual plot. "
     "If there are already figures or plots, do not add more. Return an empty list. "
@@ -259,7 +267,10 @@ def main():
     os.makedirs(output_dir, exist_ok=True)
     print(f"Starting processing in {markdown_dir}, output dir: {output_dir}")
 
-    for file_name in sorted(os.listdir(markdown_dir)):
+    files_to_process = ONLY_FILES if ONLY_FILES else sorted(os.listdir(markdown_dir))
+
+    for file_name in files_to_process:
+        print(f"\n\nProcessing file: {file_name}")
         if file_name in SKIP_FILES:
             print(f"Skipping {file_name}")
             continue

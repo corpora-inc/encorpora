@@ -4,6 +4,11 @@ In this lesson, we explore how to combine functions using basic algebraic operat
 
 ### Sums of Functions
 
+
+![Plot showing individual functions f(x)=2x+3 and g(x)=x-1 along with their sum function (f+g)(x)=3x+2.](images/plot_1_03-07-lesson-algebra-of-functions-sums-products-and-quotients.md.png)
+
+
+
 When adding two functions, the sum function is defined as:
 
 $$
@@ -27,6 +32,11 @@ $$
 $$
 
 ### Products of Functions
+
+
+![Plot of the product of functions f(x)=2x+3 and g(x)=x-1, showing (f*g)(x)=2x^2+x-3.](images/plot_2_03-07-lesson-algebra-of-functions-sums-products-and-quotients.md.png)
+
+
 
 The product of two functions is given by multiplying the functions together:
 
@@ -61,6 +71,11 @@ $$
 $$
 
 ### Quotients of Functions
+
+
+![Plot of the quotient of functions f(x)=2x+3 and g(x)=x-1, showing (f/g)(x)= (2x+3)/(x-1) with discontinuity at x=1.](images/plot_3_03-07-lesson-algebra-of-functions-sums-products-and-quotients.md.png)
+
+
 
 The quotient of two functions is defined by dividing one function by the other:
 

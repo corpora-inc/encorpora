@@ -22,6 +22,11 @@ To find the domain of a function:
 
 #### Example 1: Rational Function
 
+
+![2D line plot of the rational function f(x)=1/(x-3) illustrating its behavior and the domain restriction (x=3 excluded).](images/plot_1_03-06-lesson-domain-and-range-of-functions.md.png)
+
+
+
 Consider the function:
 
 $$
@@ -119,6 +124,11 @@ When graphing a function, it is helpful to visually represent the domain and ran
 > Visualizing functions on a graph aids in comprehending the domain and range by clearly showing the behavior of the function.
 
 ### Real-World Application: Modeling Temperature
+
+
+![2D line plot of the temperature model T(t)=10sin(π/12 t)+20 showing temperature variations over a 24-hour period.](images/plot_2_03-06-lesson-domain-and-range-of-functions.md.png)
+
+
 
 Imagine a function that represents the temperature $T$ (in degrees Celsius) over a day:
 

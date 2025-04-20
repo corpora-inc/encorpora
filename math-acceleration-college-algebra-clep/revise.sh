@@ -10,6 +10,7 @@ Return the same file with the following changes:
     Separate markdown features with a single blank line. Do not use more than one blank line.
 3. Give intuition about the concepts to help the reader understand and remember.
 4. Make figure descriptions (image alt text) concise and clear with proper inline math. inline-latex can be used eg $f(x)=x^2$.
+5. Ensure correct math formatting. Replace usage of `\(` and `\)` with `$` for inline math. Replace usage of `\[` and `\]` with `$$` for block math.
 
 The focus is on teaching the College Algebra material in a way that is engaging and easy to understand.
 
