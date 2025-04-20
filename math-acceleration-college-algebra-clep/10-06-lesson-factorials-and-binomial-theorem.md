@@ -33,9 +33,9 @@ This means there are 120 different ways to arrange 5 distinct items in order.
 
 #### Visualizing Factorial Growth
 
-Factorials grow very rapidly as $n$ increases. The growth can be visualized in a plot where the horizontal axis represents $n$ and the vertical axis represents $n!$. 
+Factorials grow very rapidly as $n$ increases. The growth can be visualized in a plot where the horizontal axis represents $n$ and the vertical axis represents $n!$.
 
-![A 2D line plot showing the rapid growth of the factorial function for $n$ from 1 to 10.](images/plot_factorial_growth.png)
+![](images/factorial_growth.png)
 
 This plot illustrates how even small increases in $n$ lead to massive increases in $n!$, emphasizing why factorials are so powerful in counting problems.
 

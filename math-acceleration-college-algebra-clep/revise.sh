@@ -17,6 +17,8 @@ Return the same file with the following changes:
    and \) with $ for inline math. Replace usage of \[
    and \] with $$ for block math.
 
+Remove special characters like `π`, `∛` and `≤` and use proper LaTeX math formatting. For example, replace `π` with `\pi`, `∛` with `\sqrt[3]{}`, and `≤` with `\leq`.
+
 The focus is on teaching the College Algebra material in a way that is engaging and easy to understand.
 
 Remove anything that does not contribute to the student's mastery of Algebra for the College Algebra CLEP exam.
