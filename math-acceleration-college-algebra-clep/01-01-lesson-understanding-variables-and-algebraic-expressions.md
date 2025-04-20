@@ -168,6 +168,7 @@ This reduction clarifies the structure of the expression, making future manipula
 
 
 ### Real-World Application: Business Revenue
+![A plot depicting the business revenue model R=5n+10, highlighting the revenue when 8 notebooks are sold.](images/plot_2_01-01-lesson-understanding-variables-and-algebraic-expressions.md.png)
 
 Algebraic expressions are not mere abstractions; they serve as powerful tools to model real-life scenarios.
 
@@ -212,6 +213,7 @@ Hence, the total cost amounts to $100.
 
 
 ### Visualizing Variables with a Number Line
+![A plot of the linear function f(x)=x+5, with a highlighted point at x=2 to illustrate substitution into an algebraic expression.](images/plot_1_01-01-lesson-understanding-variables-and-algebraic-expressions.md.png)
 
 Visual representations can solidify understanding. Consider the expression $x + 5$. Here, the result changes depending on the value of $x$.  
 

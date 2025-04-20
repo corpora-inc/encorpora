@@ -11,6 +11,7 @@ Linear equations are equations that have the variable to the first power and no 
 3. **Verify the Solution:** Substitute the value back into the original equation to confirm the answer.
 
 ### Example 1: Solve $2x + 3 = 11$
+![This plot visualizes the linear equation 2x + 3 = 11 by plotting the line y = 2x + 3, a horizontal line at y = 11, and marking the intersection point (4, 11) as the solution.](images/plot_1_01-06-lesson-solving-basic-linear-equations.md.png)
 
 Step 1. **Subtract 3 from both sides:**
 
@@ -47,6 +48,7 @@ $$
 Since both sides equal 11, the solution $x = 4$ is correct.
 
 ### Example 2: Real-World Application
+![This plot represents the real-world application of the linear equation 5x - 7 = 18 by plotting the line y = 5x - 7, a horizontal line at y = 18, and highlighting the intersection point (5, 18) as the solution.](images/plot_2_01-06-lesson-solving-basic-linear-equations.md.png)
 
 Suppose a manufacturer finds that the total cost for producing a specific number of widgets is given by the equation
 

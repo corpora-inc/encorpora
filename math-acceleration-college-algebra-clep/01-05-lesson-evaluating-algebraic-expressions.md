@@ -11,6 +11,7 @@ Evaluating an algebraic expression means substituting values for variables and s
 3. Apply the order of operations: parentheses, exponents, multiplication and division, addition and subtraction (PEMDAS).
 
 ### Example 1: Basic Linear Expression
+![A 2D line plot of the linear expression y = 2x + 3, highlighting the evaluated point when x = 4.](images/plot_1_01-05-lesson-evaluating-algebraic-expressions.md.png)
 
 Consider the expression:
 
@@ -79,6 +80,7 @@ $$
 The evaluated result is $42$ when $y = 5$.
 
 ### Example 3: Quadratic Expression
+![A 2D line plot of the quadratic expression y = 3a^2 - 2a + 5, highlighting the evaluated point when a = -1.](images/plot_2_01-05-lesson-evaluating-algebraic-expressions.md.png)
 
 Sometimes, expressions include exponents. Consider:
 

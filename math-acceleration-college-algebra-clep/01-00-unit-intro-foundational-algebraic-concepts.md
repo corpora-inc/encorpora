@@ -1,4 +1,5 @@
 # Foundational Algebraic Concepts
+![A clear 2D line plot of the linear function y = 2x + 1, illustrating a foundational algebraic equation.](images/plot_1_01-00-unit-intro-foundational-algebraic-concepts.md.png)
 
 This unit introduces the essential ideas of algebra. Here, you will learn about variables, expressions, and basic operations that form the language of algebra. We will explore how to create and simplify expressions, solve simple equations, and understand the relationships between numbers and symbols.
 

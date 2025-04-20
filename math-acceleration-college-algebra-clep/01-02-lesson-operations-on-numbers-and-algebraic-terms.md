@@ -34,6 +34,8 @@ $$
 3x + 4x = (3+4)x = 7x
 $$
 
+![Line plot demonstrating combining like terms where f(x)=3x, g(x)=4x and their sum is 7x.](images/plot_1_01-02-lesson-operations-on-numbers-and-algebraic-terms.md.png)
+
 Here both terms contain the variable $x$, so they can be added directly.
 
 **Example 1: Combining Like Terms with a Constant**
@@ -149,3 +151,5 @@ This simple algebraic operation models how adjustments to regular income and bon
 5. Divide by operating separately on coefficients and using exponent subtraction.
 
 Understanding these operations lays a solid foundation for solving more complex algebraic problems and is crucial for success on the College Algebra CLEP exam.
+
+![2x times 5x yields 10x^2](images/plot_2_01-02-lesson-operations-on-numbers-and-algebraic-terms.md.png)

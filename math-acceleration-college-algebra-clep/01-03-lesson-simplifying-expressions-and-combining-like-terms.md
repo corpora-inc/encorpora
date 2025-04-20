@@ -40,6 +40,7 @@ $$
 $$
 
 ### Example 1: Simplify a Basic Expression
+![This plot illustrates that the function defined by 3x + 2x - 4 is equivalent to the simplified function 5x - 4 by plotting both on the same graph.](images/plot_1_01-03-lesson-simplifying-expressions-and-combining-like-terms.md.png)
 
 Simplify the expression:
 

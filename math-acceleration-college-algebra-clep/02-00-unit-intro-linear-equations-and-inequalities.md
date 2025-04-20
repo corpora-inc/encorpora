@@ -1,4 +1,6 @@
 # Linear Equations and Inequalities
+![2D plot showing the solution region for the inequality x + 2y <= 6 with the boundary line.](images/plot_2_02-00-unit-intro-linear-equations-and-inequalities.md.png)
+![2D line plot of the linear equation y = -0.5x + 3.](images/plot_1_02-00-unit-intro-linear-equations-and-inequalities.md.png)
 
 This unit introduces the fundamental concepts of linear equations and inequalities. In this unit, you will learn what linear equations and inequalities are, why they are crucial in algebra, and how they apply to real-life situations such as financial planning, engineering design, and data analysis.
 
@@ -9,4 +11,3 @@ Why: Mastering these topics is essential not only for advancing in algebra but a
 How: We will explore methods step by step, including isolating variables, applying arithmetic operations, and visualizing solution sets on number lines and coordinate planes. Real-world examples will illustrate how these concepts form the basis for more complex models.
 
 > In every equation and every symbol, there lies the whisper of nature’s grand design.
-

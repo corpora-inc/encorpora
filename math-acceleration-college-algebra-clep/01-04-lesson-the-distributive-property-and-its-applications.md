@@ -15,6 +15,7 @@ $$
 Understanding and applying the distributive property is crucial for simplifying expressions, solving equations, and making real-world calculations more manageable.
 
 ### What Is the Distributive Property?
+![A 2D area model plot that visually demonstrates the distributive property by partitioning a rectangle representing a(b+c) into two smaller rectangles representing ab and ac.](images/plot_1_01-04-lesson-the-distributive-property-and-its-applications.md.png)
 
 The distributive property lets you eliminate parentheses by multiplying the term outside by each term inside them. It works with both numbers and variables. For example, in the expression
 

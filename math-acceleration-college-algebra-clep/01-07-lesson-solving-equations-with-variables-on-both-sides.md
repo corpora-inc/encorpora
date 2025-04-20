@@ -19,6 +19,7 @@ This lesson focuses on solving linear equations that have variables on both side
    - Divide or multiply to solve for the variable.
 
 ### Example 1: Basic Equation
+![A 2D line plot showing the two linear functions 3x+5 and 5x-7 along with their intersection at (6,23), demonstrating the solution of the equation with variables on both sides.](images/plot_1_01-07-lesson-solving-equations-with-variables-on-both-sides.md.png)
 
 Solve the equation:
 
@@ -69,6 +70,7 @@ x = 6
 $$
 
 ### Example 2: Equation Involving Parentheses
+![A 2D line plot displaying the linear functions 2(x-4) and x+2 with their intersection at (10,12), illustrating the process of solving an equation involving parentheses.](images/plot_2_01-07-lesson-solving-equations-with-variables-on-both-sides.md.png)
 
 Consider a scenario where a small business calculates its monthly profit. The equation could be set up as:
 

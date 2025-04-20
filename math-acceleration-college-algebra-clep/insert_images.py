@@ -5,8 +5,20 @@ from corpora_ai.provider_loader import load_llm_provider
 import matplotlib.pyplot as plt
 import numpy as np
 import sympy as sp
-
 from pydantic import BaseModel
+
+SKIP_FILES = [
+    "01-00-unit-intro-foundational-algebraic-concepts.md",
+    "01-01-lesson-understanding-variables-and-algebraic-expressions.md",
+    "01-02-lesson-operations-on-numbers-and-algebraic-terms.md",
+    "01-03-lesson-simplifying-expressions-and-combining-like-terms.md",
+    "01-04-lesson-the-distributive-property-and-its-applications.md",
+    "01-05-lesson-evaluating-algebraic-expressions.md",
+    "01-06-lesson-solving-basic-linear-equations.md",
+    "01-07-lesson-solving-equations-with-variables-on-both-sides.md",
+    "02-00-unit-intro-linear-equations-and-inequalities.md",
+]
+
 
 PLOT_SYSTEM_MESSAGE = (
     "Analyze the provided markdown content to identify 0-3 key mathematical concepts that would benefit from a visual plot. "
@@ -36,6 +48,7 @@ class PlotsSchema(BaseModel):
 
 
 def generate_plots(content: str, corpus_id: str) -> PlotsSchema:
+    print(f"Generating plots for corpus_id: {corpus_id}")
     llm = load_llm_provider()
     messages = [
         ChatCompletionTextMessage(
@@ -47,65 +60,91 @@ def generate_plots(content: str, corpus_id: str) -> PlotsSchema:
             text=content,
         ),
     ]
-    return llm.get_data_completion(messages, PlotsSchema)
+    plots = llm.get_data_completion(messages, PlotsSchema)
+    print(f"Generated {len(plots.plots)} plots")
+    return plots
 
 
-def insert_image_markdown(content: str, plot: dict, image_path: str) -> str:
-    pattern = re.compile(plot["insert_after"])
+def insert_image_markdown(content: str, plot: PlotSchema, image_path: str) -> str:
+    print(f"Inserting image: {image_path} after pattern: {plot.insert_after}")
+    pattern = re.compile(plot.insert_after)
     lines = content.splitlines()
+    inserted = False
     for i, line in enumerate(lines):
         if pattern.search(line):
-            lines.insert(i + 1, f"![{plot['description']}]({image_path})")
+            lines.insert(i + 1, f"![{plot.description}]({image_path})")
+            print(f"Inserted at line {i + 1}: ![{plot.description}]({image_path})")
+            inserted = True
             break
+    if not inserted:
+        print(f"Warning: No match for pattern {plot.insert_after}, appending image")
+        lines.append(f"![{plot.description}]({image_path})")
     return "\n".join(lines)
 
 
 def process_markdown_file(file_path: str, corpus_id: str, output_dir: str):
+    print(f"Processing file: {file_path}")
     with open(file_path, "r", encoding="utf-8") as f:
         content = f.read()
 
-    plots: PlotsSchema = generate_plots(content, corpus_id)
-    if not plots:
-        print(f"No plots needed for {file_path}.")
+    plots = generate_plots(content, corpus_id)
+    if not plots.plots:
+        print(f"No plots needed for {file_path}")
         return
 
     updated_content = content
     for i, plot in enumerate(plots.plots, 1):
         pycode = plot.code
+        expected_image_name = f"plot_{i}.png"
         image_path = os.path.join(
             output_dir, f"plot_{i}_{os.path.basename(file_path)}.png"
         )
+        print(
+            f"Executing plot code, expecting: {expected_image_name}, saving to: {image_path}"
+        )
         exec(pycode, {"np": np, "plt": plt, "sp": sp})
 
-        if not os.path.exists(image_path):
-            # this is always where we go - we have plot_1.png, plot_2.png, etc.
+        if os.path.exists(expected_image_name):
+            print(f"Found {expected_image_name}, moving to {image_path}")
+            os.makedirs(os.path.dirname(image_path), exist_ok=True)
+            os.rename(expected_image_name, image_path)
+        else:
+            print(f"Error: {expected_image_name} not found")
             continue
 
-        # with open(image_path, "rb") as f:
-        #     png_bytes = f.read()
         relative_image_path = os.path.relpath(image_path, os.path.dirname(file_path))
         updated_content = insert_image_markdown(
             updated_content, plot, relative_image_path
         )
-        os.remove(image_path)
+        print(f"Updated content with image: {relative_image_path}")
 
+    print(f"Writing updated content to {file_path}")
     with open(file_path, "w", encoding="utf-8") as f:
         f.write(updated_content)
 
+    # run ./build.sh to build the book - if it fails, send the error output
+    # back to the command and try again. We still have the original "content"
+    # and the updated "content" ... but the book needs to build!
+
 
 def main():
-    corpus_id = "ca-clep-100"  # Replace with your corpus ID
+    corpus_id = "college-algebra-clep"
     markdown_dir = (
         "/workspace/test-corpora/books/math-acceleration-college-algebra-clep"
     )
     output_dir = os.path.join(markdown_dir, "images")
     os.makedirs(output_dir, exist_ok=True)
+    print(f"Starting processing in {markdown_dir}, output dir: {output_dir}")
 
-    for file_name in os.listdir(markdown_dir):
+    for file_name in sorted(os.listdir(markdown_dir)):
+        if file_name in SKIP_FILES:
+            print(f"Skipping {file_name}")
+            continue
+
         if file_name.endswith(".md"):
-            print(f"Processing {file_name}...")
             file_path = os.path.join(markdown_dir, file_name)
             process_markdown_file(file_path, corpus_id, output_dir)
+            print(f"Finished processing {file_name}\n\n")
 
 
 if __name__ == "__main__":
