@@ -44,6 +44,8 @@ $$
 The solution is all $x$ such that $x$ is between $-1$ and $4$.
 
 **Graphical Representation:**
+![A number line plot visualizing the solution of the inequality |x+4| ≥ 7 showing closed circles at x = -11 and x = 3 with arrows indicating the intervals extending to negative and positive infinity, respectively.](images/plot_2_02-04-lesson-solving-inequalities-with-absolute-values.md.png)
+![A number line plot illustrating the solution of the inequality |2x-3| < 5 with open circles at x = -1 and x = 4 and the solution segment highlighted between them.](images/plot_1_02-04-lesson-solving-inequalities-with-absolute-values.md.png)
 
 On a number line, you would show an open circle at $-1$ and an open circle at $4$ with all points in between shaded.
 

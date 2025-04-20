@@ -35,6 +35,8 @@ The process of solving these equations is about isolating the variable on one si
    - Substitute the solution back into the original equation to verify it satisfies the equation.
 
 ### Example 1: Solving 3x + 5 = 20
+![2D line plot depicting the linear equation y = 3x + 5 and the horizontal line y = 20, illustrating their point of intersection.](images/plot_1_02-01-lesson-solving-linear-equations-with-single-variable.md.png)
+![2D line plot showing the graph of y = 3x + 5 and the horizontal line y = 20 with their intersection point.](images/plot_1_02-01-lesson-solving-linear-equations-with-single-variable.md.png)
 
 We start with:
 
@@ -73,6 +75,8 @@ $$
 Since both sides are equal, the solution $x = 5$ is verified.
 
 ### Example 2: Solving -4x + 2 = 10
+![2D line plot that shows the graph of y = -4x + 2 along with the constant line y = 10, marking their intersection point.](images/plot_2_02-01-lesson-solving-linear-equations-with-single-variable.md.png)
+![2D line plot that illustrates the equation y = -4x + 2 along with the constant line y = 10, marking their intersection.](images/plot_2_02-01-lesson-solving-linear-equations-with-single-variable.md.png)
 
 Start with the equation:
 
@@ -111,6 +115,8 @@ $$
 The equation balances, so the solution is correct.
 
 ### Real-World Application Example
+![2D line plot for the real-world application equation showing y = 20x + 15 and the horizontal line y = 95, highlighting their intersection which represents the solution point.](images/plot_3_02-01-lesson-solving-linear-equations-with-single-variable.md.png)
+![2D line plot for the real-world application equation, showing y = 20x + 15 and the horizontal line y = 95, highlighting the solution point.](images/plot_3_02-01-lesson-solving-linear-equations-with-single-variable.md.png)
 
 Imagine you are buying concert tickets which cost a fixed price per ticket. Suppose you know that if you buy a certain number of tickets, plus a fixed booking fee, the total cost is given by the equation:
 

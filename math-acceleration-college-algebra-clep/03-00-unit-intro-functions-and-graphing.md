@@ -13,3 +13,5 @@ This content is important because functions are used to model real-life situatio
 You will learn through clear explanations and step-by-step examples that illustrate how functions work and how their graphs are constructed. These skills will prepare you for more advanced topics and applications in math and related disciplines.
 
 > Functions are the invisible threads of a mathematical narrative; when traced on a graph, they unveil the hidden architecture of relationships.
+
+![A 2D line plot showcasing a quadratic function and a linear function to visualize the concept of functions and their graphs.](images/plot_1_03-00-unit-intro-functions-and-graphing.md.png)

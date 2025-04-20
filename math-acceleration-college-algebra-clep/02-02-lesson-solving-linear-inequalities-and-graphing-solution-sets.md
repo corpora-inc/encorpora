@@ -104,3 +104,5 @@ On a number line, plot a closed circle at -3 (since -3 is included) and shade th
 > Graphing solution sets involves marking the boundary (using open or closed circles) and shading the region where the inequality holds.
 
 These methods are used in many real-life situations, such as budgeting (finding acceptable ranges for expenses) or engineering (establishing safety limits). Understanding how to manipulate and graph inequalities provides a solid foundation for more complex algebraic problems.
+![A number line graph for the inequality x > 4 showing an open circle at 4 and a red arrow extending to the right.](images/plot_1_02-02-lesson-solving-linear-inequalities-and-graphing-solution-sets.md.png)
+![A number line graph for the inequality x ≥ -3 showing a closed circle at -3 and a red arrow extending to the right.](images/plot_2_02-02-lesson-solving-linear-inequalities-and-graphing-solution-sets.md.png)

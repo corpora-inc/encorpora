@@ -14,6 +14,7 @@ leads to two separate cases when $c \geq 0$:
 If $c < 0$, there is no solution because an absolute value cannot equal a negative number.
 
 ### Step-by-Step Example
+![2D line plot of the function y=|x-3| with the horizontal line y=5 and marked intersection points at x=-2 and x=8.](images/plot_1_02-03-lesson-solving-equations-with-absolute-value.md.png)
 
 Consider the equation:
 
@@ -42,6 +43,7 @@ $$
 Thus, the equation $|x-3|=5$ has two solutions: $x=8$ and $x=-2$.
 
 ### Another Example with a Coefficient
+![2D line plot of the function y=|3x-4| with the horizontal line y=5 and markers at the intersection points where x=3 and x=-1/3.](images/plot_2_02-03-lesson-solving-equations-with-absolute-value.md.png)
 
 Solve the equation:
 

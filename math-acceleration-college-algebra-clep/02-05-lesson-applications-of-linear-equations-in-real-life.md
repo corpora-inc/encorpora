@@ -14,6 +14,7 @@ where:
 We now present three clear examples.
 
 ### Example 1: Modeling a Cell Phone Plan
+![2D line plot showing the cost of a cell phone plan as a function of minutes used, highlighting the point for 100 minutes.](images/plot_1_02-05-lesson-applications-of-linear-equations-in-real-life.md.png)
 
 Consider a cell phone plan with a fixed monthly fee and a cost per minute of call time. Suppose the plan charges a $20 monthly fee and $0.15 for each minute used. The total monthly cost $C$ can be modeled by the equation:
 
@@ -38,6 +39,7 @@ $$
 Thus, the monthly cost is $35. This equation helps in planning usage or comparing different plans.
 
 ### Example 2: Calculating Distance Traveled at Constant Speed
+![2D line plot depicting the distance traveled over time for a constant speed of 60 mph, with an emphasis on the 3.5-hour mark.](images/plot_2_02-05-lesson-applications-of-linear-equations-in-real-life.md.png)
 
 When an object moves at a constant speed, the distance $d$ traveled is a linear function of time $t$. The relationship can be written as:
 
@@ -62,6 +64,7 @@ $$
 The car travels 210 miles. This linear model can be useful in planning trips or estimating travel time.
 
 ### Example 3: Temperature Conversion from Celsius to Fahrenheit
+![2D line plot illustrating the linear relationship between degrees Celsius and Fahrenheit, with a highlighted conversion at 25°C.](images/plot_3_02-05-lesson-applications-of-linear-equations-in-real-life.md.png)
 
 Temperature conversion between Celsius ($C$) and Fahrenheit ($F$) is a real-life application of a linear equation. The conversion formula is:
 
