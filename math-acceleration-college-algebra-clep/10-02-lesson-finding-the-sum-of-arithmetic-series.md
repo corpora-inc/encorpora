@@ -1,5 +1,10 @@
 ## Finding the Sum of Arithmetic Series
 
+
+![This plot visualizes an arithmetic sequence with first term 3 and common difference 4, showing how the terms progress as the term index increases.](images/plot_1_10-02-lesson-finding-the-sum-of-arithmetic-series.md.png)
+
+
+
 An arithmetic series is the sum of the terms in an arithmetic sequence. In an arithmetic sequence, each term increases or decreases by a constant value called the common difference ($d$). The formulas for finding the sum of the first $n$ terms of an arithmetic sequence are key tools in algebra.
 
 ### Key Formulas

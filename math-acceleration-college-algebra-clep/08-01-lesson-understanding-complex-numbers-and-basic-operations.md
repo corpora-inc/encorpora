@@ -16,6 +16,11 @@ This lesson explains how to perform basic operations with complex numbers includ
 
 ### Addition and Subtraction
 
+
+![A 2D plot visualizing the addition of two complex numbers (3+4i and 2-5i) using vector arrows in the complex plane.](images/plot_1_08-01-lesson-understanding-complex-numbers-and-basic-operations.md.png)
+
+
+
 When adding or subtracting complex numbers, combine the real parts and the imaginary parts separately.
 
 For example, consider
@@ -59,6 +64,11 @@ $$
 So, the result is $2-2i$.
 
 ### Multiplication
+
+
+![A 2D plot illustrating the multiplication of two complex numbers (1+2i and 3+4i) shown as vectors in the complex plane, highlighting the rotation and scaling effect.](images/plot_2_08-01-lesson-understanding-complex-numbers-and-basic-operations.md.png)
+
+
 
 To multiply complex numbers, use the distributive property (FOIL method) and the rule $i^2=-1$.
 

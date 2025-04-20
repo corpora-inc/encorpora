@@ -60,6 +60,11 @@ Regular practice under timed conditions builds speed and helps simulate the exam
 
 ### Example Timed Practice Plan
 
+
+![A bar chart displaying the time allocation for different sections of the exam: solving easy questions, moderately challenging questions, and review.](images/plot_2_12-04-lesson-strategies-for-test-taking-and-timed-practice.md.png)
+
+
+
 Imagine the exam has 30 questions available in 60 minutes. Here is a potential time plan:
 
 1. **First 40 Minutes:** Focus on solving easier problems. For 20 questions, this means you spend about 2 minutes per question.
@@ -79,3 +84,6 @@ This breakdown can be adjusted based on the number and difficulty of questions.
 - **Prepare Mentally:** Visualize your process during study sessions to build confidence that transfers to the test environment.
 
 By incorporating these strategies into your practice sessions, you will build a strong framework for test-taking and achieve a balanced approach to time management. Consistent practice and self-reflection on your pacing are key to exam success.
+
+
+![A 2D line plot showing the cumulative time spent as more questions are solved at a constant rate of 2.4 minutes per question.](images/plot_1_12-04-lesson-strategies-for-test-taking-and-timed-practice.md.png)

@@ -140,6 +140,11 @@ The solutions are $x = -2$ and $x = -4$.
 
 ### Real-World Application
 
+
+![A 2D plot of the quadratic function 2x² - 4x - 6 showing its curve and marking its real roots computed using the quadratic formula.](images/plot_1_05-02-lesson-solving-quadratic-equations-using-the-quadratic-formula.md.png)
+
+
+
 Quadratic equations appear in various real-life contexts. For example, when modeling the trajectory of a ball in sports, the height of the ball over time can be represented by a quadratic equation. The coefficients may relate to factors such as initial speed and gravity, while the quadratic formula helps predict the times when the ball reaches a specific height.
 
 Understanding the quadratic formula provides a reliable method to solve these equations and analyze the motion of objects in fields like physics and engineering.

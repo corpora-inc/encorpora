@@ -29,6 +29,11 @@ To find the inverse of a function, follow these steps:
 
 ##### Example: Find the Inverse of $f(x)=2x+3$
 
+
+![Plot of the linear function f(x)=2x+3 and its inverse f⁻¹(x)=(x-3)/2 with the identity line y=x.](images/plot_1_03-05-lesson-inverse-functions-and-composite-functions.md.png)
+
+
+
 Step 1: Write the function using $y$:
 
 $$
@@ -73,6 +78,11 @@ $$
 It is important to note that function composition is not necessarily commutative; in general, $f(g(x))\neq g(f(x))$.
 
 #### Example: Composing Two Functions
+
+
+![Plot comparing the composite functions (f∘g)(x)=3x+1 and (g∘f)(x)=3x-3 to illustrate that function composition is not commutative.](images/plot_2_03-05-lesson-inverse-functions-and-composite-functions.md.png)
+
+
 
 Consider the functions:
 

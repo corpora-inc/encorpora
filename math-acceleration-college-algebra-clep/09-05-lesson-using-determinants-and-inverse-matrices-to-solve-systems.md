@@ -158,6 +158,11 @@ $$
 
 #### Example: Using the Inverse Matrix Method
 
+
+![Plot illustrating the intersection of the lines represented by the equations 3x + 2y = 5 and 4x - y = 6 (Inverse Matrix Method example).](images/plot_2_09-05-lesson-using-determinants-and-inverse-matrices-to-solve-systems.md.png)
+
+
+
 Solve the system:
 
 $$
@@ -230,3 +235,6 @@ Thus, the solution is $x = \frac{17}{11}$ and $y = \frac{2}{11}$.
 Both methods are effective for systems where the coefficient matrix has a non-zero determinant. Use Cramer\'s Rule for smaller systems or when you need a quick calculation of individual variables and the inverse matrix method when you want to find the whole solution vector at once.
 
 Ensure that when applying these methods, you always check that the determinant is not zero, which confirms that the system has a unique solution.
+
+
+![Plot illustrating the intersection of the lines represented by the equations 2x + 3y = 8 and 4x - y = 2 (Cramer's Rule example).](images/plot_1_09-05-lesson-using-determinants-and-inverse-matrices-to-solve-systems.md.png)

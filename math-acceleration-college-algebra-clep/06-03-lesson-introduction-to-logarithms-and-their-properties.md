@@ -126,6 +126,11 @@ $$
 
 ### Real-World Application: Financial Growth
 
+
+![This plot visualizes exponential growth using the formula P(t)=P0*e^(rt) and highlights the doubling time T, computed as ln(2)/r.](images/plot_1_06-03-lesson-introduction-to-logarithms-and-their-properties.md.png)
+
+
+
 In financial calculations, logarithms are used to determine the time needed for an investment to grow. For example, if an investment doubles in value and the growth is exponential, the time can be calculated using the logarithmic form of the growth equation. 
 
 Let the growth formula be:

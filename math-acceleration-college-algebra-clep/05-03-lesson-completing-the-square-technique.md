@@ -144,6 +144,11 @@ $$
 
 ### Real-World Application
 
+
+![A 2D line plot of the quadratic function f(x)=x^2+6x+5 from Example 1 with its vertex and roots highlighted.](images/plot_1_05-03-lesson-completing-the-square-technique.md.png)
+
+
+
 Completing the square is not only a technique for finding the roots of quadratic equations. It also helps in rewriting quadratic functions into vertex form, which is important when analyzing the maximum or minimum values in financial calculations, engineering designs, and physics problems. For instance, determining the optimal profit or cost often requires identifying the vertex of a parabola, which is clearly seen when the quadratic function is expressed as a perfect square.
 
 > Completing the square transforms a quadratic into a form that directly reveals its vertex, and thus provides insights into the function’s behavior.

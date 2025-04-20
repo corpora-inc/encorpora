@@ -4,6 +4,11 @@ In this lesson, you will learn how to graph four important types of conic sectio
 
 ### Parabolas
 
+
+![A high-quality 2D plot of the parabola y = 2x^2 - 4x + 1, highlighting its vertex and axis of symmetry.](images/plot_1_08-04-lesson-graphing-parabolas-circles-ellipses-and-hyperbolas.md.png)
+
+
+
 A parabola is a U-shaped curve that can open up, down, left, or right. The standard equation for a parabola can be written as:
 
 - **Vertical Parabola:** $y = ax^2 + bx + c$
@@ -33,6 +38,11 @@ A parabola is a U-shaped curve that can open up, down, left, or right. The stand
    - Sketch the curve passing through these points, ensuring symmetry around the axis.
 
 ### Circles
+
+
+![A high-quality 2D plot of a circle with center (2, -3) and radius 5.](images/plot_2_08-04-lesson-graphing-parabolas-circles-ellipses-and-hyperbolas.md.png)
+
+
 
 A circle is the set of all points equidistant from a fixed center point. The standard form equation of a circle is:
 $$ (x - h)^2 + (y - k)^2 = r^2 $$ where $(h, k)$ is the center, and $r$ is the radius.
@@ -74,6 +84,11 @@ where $(h, k)$ is the center, and $a$ and $b$ are the semi-major and semi-minor 
    - Draw an oval shape stretching through the axes lengths.
 
 ### Hyperbolas
+
+
+![A high-quality 2D plot of the hyperbola (x-4)^2/16 - (y+1)^2/9 = 1 along with its asymptotes.](images/plot_3_08-04-lesson-graphing-parabolas-circles-ellipses-and-hyperbolas.md.png)
+
+
 
 Hyperbolas look like two mirrored curves and have a central axis between them. The equations of hyperbolas are:
 

@@ -20,6 +20,11 @@ Here, $q$ represents the number of units produced and $AC(q)$ is the average cos
 
 #### Example: Analyzing an Average Cost Function
 
+
+![A 2D line plot showing the behavior of the average cost function AC(q) = 1000/q + 5 as production quantity increases.](images/plot_1_07-05-lesson-real-world-applications-of-rational-and-radical-functions.md.png)
+
+
+
 1. Begin with the function:
 
    $$
@@ -55,6 +60,11 @@ $$
 Here, $L$ is the length of the pendulum and $g$ is the acceleration due to gravity (approximately 9.8 m/s$^2$). This equation shows that the period grows with the square root of the length.
 
 #### Example: Calculating the Period of a Pendulum
+
+
+![A 2D line plot illustrating the relationship between the pendulum length and its period computed by T = 2π√(L/g).](images/plot_2_07-05-lesson-real-world-applications-of-rational-and-radical-functions.md.png)
+
+
 
 1. Write the pendulum period formula:
 

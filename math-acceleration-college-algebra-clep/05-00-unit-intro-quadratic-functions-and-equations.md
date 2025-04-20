@@ -1,5 +1,10 @@
 # Quadratic Functions and Equations
 
+
+![This plot displays a quadratic function along with its vertex and vertical axis of symmetry, highlighting key features of quadratic equations.](images/plot_1_05-00-unit-intro-quadratic-functions-and-equations.md.png)
+
+
+
 This unit covers quadratic functions and equations, focusing on key ideas such as the standard form, vertex, axis of symmetry, and the methods used to solve quadratic equations. You will be introduced to various techniques including factoring, using the quadratic formula, and completing the square. Through a clear and structured approach, this unit will show you how quadratic relationships appear in practical scenarios like projectile motion, profit optimization, and design geometry.
 
 Quadratic functions are essential in understanding patterns and making predictions in numerous fields such as physics, engineering, and economics. By learning to analyze and solve these equations, you build a strong foundation for more advanced algebraic concepts.

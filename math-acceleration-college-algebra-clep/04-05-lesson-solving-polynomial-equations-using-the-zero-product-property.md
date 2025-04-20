@@ -4,6 +4,11 @@ The zero product property is a key tool for solving polynomial equations that ha
 
 ### Key Concept: The Zero Product Property
 
+
+![Plot of the function f(x) = (x-3)(x+5) showing zeros at x = -5 and x = 3, illustrating the zero product property.](images/plot_1_04-05-lesson-solving-polynomial-equations-using-the-zero-product-property.md.png)
+
+
+
 The zero product property states that if a product of factors equals zero, then at least one of the factors must be zero. In mathematical terms, if
 
 $$

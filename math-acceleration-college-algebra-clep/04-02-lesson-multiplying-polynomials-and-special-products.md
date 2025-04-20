@@ -4,6 +4,11 @@ In this lesson, we will learn how to multiply polynomials and recognize special 
 
 ### Multiplying Polynomials
 
+
+![Plot of the polynomial product (2x+3)(x+4) expanded to $2x^2+11x+12$](images/plot_1_04-02-lesson-multiplying-polynomials-and-special-products.md.png)
+
+
+
 To multiply two polynomials, apply the distributive property. Multiply each term in the first polynomial by each term in the second polynomial, then combine like terms.
 
 For example, consider the multiplication of two binomials:
@@ -91,6 +96,11 @@ Recognizing special products can simplify calculations. Some of the most common 
 > $$
 
 #### Example 1: Square of a Binomial
+
+
+![Plot of the square of a binomial (3x+5)^2, showing its quadratic behavior.](images/plot_2_04-02-lesson-multiplying-polynomials-and-special-products.md.png)
+
+
 
 Expand $$(3x + 5)^2$$ using the square of a binomial formula.
 

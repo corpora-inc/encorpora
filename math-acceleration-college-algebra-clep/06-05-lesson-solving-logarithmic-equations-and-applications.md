@@ -14,6 +14,11 @@ In solving logarithmic equations:
 
 ### Example 1: Single Logarithm Equation
 
+
+![Plot of y = log2(x-3) with horizontal line y=4, highlighting the intersection at x = 19.](images/plot_1_06-05-lesson-solving-logarithmic-equations-and-applications.md.png)
+
+
+
 Solve the equation
 
 $$
@@ -51,6 +56,11 @@ $$
 Since $x = 19$ satisfies this condition, it is the valid solution.
 
 ### Example 2: Combining Logarithms
+
+
+![Plot of y = log((2x+1)(x-2)) and y = log(3x-3) for x > 2, marking their intersection corresponding to the solution of the equation.](images/plot_2_06-05-lesson-solving-logarithmic-equations-and-applications.md.png)
+
+
 
 Solve the equation
 

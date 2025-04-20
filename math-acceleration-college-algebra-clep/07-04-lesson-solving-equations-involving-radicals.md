@@ -9,6 +9,11 @@ Radical equations include variables under a square root (or other radical). When
 
 ### Example 1: Solving $$\sqrt{2x+1} = x-1$$
 
+
+![Plot of the functions y = sqrt(2x+1) and y = x-1 for Example 1 showing the intersection point at x = 4.](images/plot_1_07-04-lesson-solving-equations-involving-radicals.md.png)
+
+
+
 1. Determine the domain. Since the square root must be nonnegative, we require:
 
 $$
@@ -52,6 +57,11 @@ The solutions are $$x=0$$ and $$x=4$$. Given the domain $$x \ge 1$$, we reject $
 5. Thus, the valid solution is $$x=4$$.
 
 ### Example 2: Solving $$\sqrt{x+3} + x = 3$$
+
+
+![Plot of the functions y = sqrt(x+3) and y = 3-x for Example 2, illustrating their intersection at x = 1.](images/plot_2_07-04-lesson-solving-equations-involving-radicals.md.png)
+
+
 
 1. Isolate the square root:
 
@@ -100,6 +110,11 @@ $$\sqrt{1+3} + 1 = 2 + 1 = 3,$$
 which is valid. Thus, the solution is $$x=1$$.
 
 ### Example 3: Solving $$\sqrt{5x+3} = x+1$$
+
+
+![Plot of the functions y = sqrt(5x+3) and y = x+1 for Example 3, highlighting the intersection points obtained using the quadratic formula.](images/plot_3_07-04-lesson-solving-equations-involving-radicals.md.png)
+
+
 
 This example introduces the quadratic formula in the checking step.
 

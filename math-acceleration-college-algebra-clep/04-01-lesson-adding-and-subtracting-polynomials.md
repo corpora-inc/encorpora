@@ -23,6 +23,11 @@ $$
 
 ### Example 1: Adding Polynomials
 
+
+![2D line plot showing the graphs of two polynomials and their sum.](images/plot_1_04-01-lesson-adding-and-subtracting-polynomials.md.png)
+
+
+
 **Problem:** Add the polynomials
 
 $$
@@ -59,6 +64,11 @@ $$
 $$
 
 ### Example 2: Subtracting Polynomials
+
+
+![2D line plot displaying two cubic polynomials and their difference.](images/plot_2_04-01-lesson-adding-and-subtracting-polynomials.md.png)
+
+
 
 **Problem:** Subtract the polynomial
 

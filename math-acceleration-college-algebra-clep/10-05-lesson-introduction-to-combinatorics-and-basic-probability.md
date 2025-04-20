@@ -18,6 +18,11 @@ For example, if you have 3 shirts and 2 pairs of pants, the number of outfits is
 
 #### Factorial
 
+
+![A 2D line plot showing the rapid growth of the factorial function for n from 1 to 10.](images/plot_1_10-05-lesson-introduction-to-combinatorics-and-basic-probability.md.png)
+
+
+
 A factorial, written as $n!$, is the product of all positive integers up to $n$. For example,
 
 $$
@@ -69,6 +74,11 @@ $$
 This value ranges from 0 to 1, where 0 means the event will not occur and 1 means the event will always occur.
 
 #### Example: Rolling a Die
+
+
+![A bar chart displaying the uniform probability distribution of outcomes for a fair 6-sided die, with even and odd outcomes distinguished by color.](images/plot_2_10-05-lesson-introduction-to-combinatorics-and-basic-probability.md.png)
+
+
 
 Consider a fair 6-sided die. To find the probability of rolling an even number, follow these steps:
 

@@ -1,5 +1,10 @@
 # Systems of Equations and Matrix Methods
 
+
+![A 2D plot showing two linear equations and their intersection point, illustrating the concept of systems of linear equations.](images/plot_1_09-00-unit-intro-systems-of-equations-and-matrix-methods.md.png)
+
+
+
 This unit introduces systems of equations and the matrix methods used to solve them. The unit covers:
 
 - What systems of linear equations are and how they can be represented.

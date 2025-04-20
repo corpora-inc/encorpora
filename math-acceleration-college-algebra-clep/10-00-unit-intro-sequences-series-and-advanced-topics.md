@@ -1,5 +1,15 @@
 # Sequences, Series, and Advanced Topics
 
+
+![A 2D line plot displaying a geometric sequence a_n = 2*(0.8)^(n-1) and its corresponding partial sums for n from 1 to 20.](images/plot_2_10-00-unit-intro-sequences-series-and-advanced-topics.md.png)
+
+
+
+
+![A 2D line plot showing the arithmetic sequence a_n = 2 + 3(n-1) for n from 1 to 20.](images/plot_1_10-00-unit-intro-sequences-series-and-advanced-topics.md.png)
+
+
+
 This unit introduces sequences and series, exploring both arithmetic and geometric patterns along with advanced topics. It explains how to identify these patterns, derive formulas for their sums, and apply these concepts to real-world scenarios in finance, engineering, and scientific analysis.
 
 Understanding sequences and series is crucial because they provide a methodical approach to describe patterns and solve problems that involve repetition and accumulation. The concepts learned in this unit will help learners model real-world situations such as computing interest, analyzing population growth, and understanding hierarchical structures in data.

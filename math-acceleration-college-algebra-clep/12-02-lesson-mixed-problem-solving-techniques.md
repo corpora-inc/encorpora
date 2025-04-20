@@ -14,6 +14,11 @@ A careful review of the problem helps select the most efficient strategy.
 
 ### Example 1: Solving a Complex Linear Equation
 
+
+![Plot comparing two linear functions representing both sides of the equation 3(2x-3)+4 = 2(x+7) with their intersection point.](images/plot_1_12-02-lesson-mixed-problem-solving-techniques.md.png)
+
+
+
 In this example, we will solve a linear equation that requires distribution and combining like terms.
 
 Consider the equation:
@@ -57,6 +62,11 @@ The solution to the equation is $x = \frac{19}{4}$.
 > The key in mixed problem solving is breaking the problem into manageable steps and verifying each operation.
 
 ### Example 2: Real-World Quadratic Problem
+
+
+![Plot of the quadratic function f(w)=w^2+3w-54 showing its roots, corresponding to the dimensions in the garden area problem.](images/plot_2_12-02-lesson-mixed-problem-solving-techniques.md.png)
+
+
 
 Sometimes, mixed problems involve quadratic equations derived from real-life situations. Consider a problem based on area:
 

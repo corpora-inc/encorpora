@@ -4,6 +4,11 @@ Composite and inverse functions are powerful tools in algebra that allow you to 
 
 ### Understanding Composite Functions
 
+
+![A 2D line plot showing g(x) = x^2 and its composite f(g(x)) = 2x^2 + 3 for a range of x values.](images/plot_1_11-04-lesson-solving-problems-using-composite-and-inverse-functions.md.png)
+
+
+
 A composite function is formed when one function is applied to the result of another. If you have two functions, $f(x)$ and $g(x)$, the composite function $f(g(x))$ means you first apply $g$ to $x$ and then apply $f$ to the result.
 
 For example, let
@@ -37,6 +42,11 @@ $$
 So, $(f \circ g)(2) = 11$.
 
 ### Understanding Inverse Functions
+
+
+![A 2D line plot displaying the function h(x) = 3x+1 and its inverse h⁻¹(x) = (x-1)/3, along with the reflection line y=x.](images/plot_2_11-04-lesson-solving-problems-using-composite-and-inverse-functions.md.png)
+
+
 
 An inverse function reverses the effects of the original function. If $f(x)$ is a function, its inverse, denoted $f^{-1}(x)$, returns the value that was used as input for $f$.
 

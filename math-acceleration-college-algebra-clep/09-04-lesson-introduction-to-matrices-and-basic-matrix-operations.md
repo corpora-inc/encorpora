@@ -53,6 +53,11 @@ $$
 
 ### Matrix Multiplication
 
+
+![This plot visualizes matrix multiplication by displaying matrices D, E, and their product as heatmaps.](images/plot_1_09-04-lesson-introduction-to-matrices-and-basic-matrix-operations.md.png)
+
+
+
 Matrix multiplication is defined when the number of columns in the first matrix matches the number of rows in the second matrix. The element in the $i$th row and $j$th column of the product is the dot product of the $i$th row of the first matrix and the $j$th column of the second matrix.
 
 For example, let

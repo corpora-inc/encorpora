@@ -4,7 +4,17 @@ This unit introduces rational and radical functions, focusing on their definitio
 
 Understanding rational functions involves examining expressions that are ratios of two polynomials. You will learn to recognize when these functions have restrictions due to division by zero and how to interpret asymptotic behavior as the input grows large or approaches a point of undefined behavior.
 
+
+![Plot of a rational function f(x)=1/(x-2) demonstrating vertical and horizontal asymptotes.](images/plot_1_07-00-unit-intro-rational-and-radical-functions.md.png)
+
+
+
 Radical functions, on the other hand, include expressions with roots. Mastering these functions will help you understand operations with radicals, determine valid input values based on even or odd roots, and graph the resulting curves. This understanding is foundational for solving practical problems in science, engineering, and finance.
+
+
+![Plot of the radical function f(x)=√x highlighting its domain and increasing behavior.](images/plot_2_07-00-unit-intro-rational-and-radical-functions.md.png)
+
+
 
 These concepts matter because they bridge abstract mathematics and real-world modeling. Whether you are calculating rates in physics, optimizing design parameters in engineering, or analyzing trends in economics, a clear grasp of rational and radical functions is indispensable.
 

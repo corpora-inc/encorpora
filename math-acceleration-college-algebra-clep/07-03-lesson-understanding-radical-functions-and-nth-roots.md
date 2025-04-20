@@ -24,6 +24,11 @@ $$
 
 ### Step-by-Step Example: Analyzing a Radical Function
 
+
+![A 2D line plot of the function f(x)=√(2x-4) for x ≥ 2, visualizing the domain and behavior of the square root radical function.](images/plot_1_07-03-lesson-understanding-radical-functions-and-nth-roots.md.png)
+
+
+
 Consider the function
 
 $$
@@ -120,3 +125,7 @@ $$
 - Understanding the domain and behavior of these functions is crucial when they are used to model real-world situations.
 
 This lesson has presented the fundamental ideas behind radical functions and nth roots with clear, step-by-step examples. Mastery of these concepts will assist you in analyzing more advanced functions and solving problems that incorporate radical expressions.
+
+
+![A 2D line plot of the function g(x)=∛(x-3) over a wide range of x values, illustrating the behavior of the cube root function with an odd index.](images/plot_2_07-03-lesson-understanding-radical-functions-and-nth-roots.md.png)
+

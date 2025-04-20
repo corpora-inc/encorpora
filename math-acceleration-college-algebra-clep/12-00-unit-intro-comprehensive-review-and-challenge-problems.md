@@ -1,5 +1,10 @@
 # Comprehensive Review and Challenge Problems
 
+
+![A plot of the quadratic function f(x) = x^2 illustrating the topic of working with functions and graph transformations.](images/plot_1_12-00-unit-intro-comprehensive-review-and-challenge-problems.md.png)
+
+
+
 This unit brings together all the algebra concepts you have mastered throughout the course. It is designed to review key topics and provide challenge problems that offer an opportunity to apply your skills in complex, real-world scenarios.
 
 What: This unit covers a broad range of algebraic topics, including solving equations, working with functions, graphing, and transforming expressions. You will revisit fundamental ideas while facing advanced problems that require a synthesis of multiple skills.

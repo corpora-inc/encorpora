@@ -20,6 +20,11 @@ Quadratic equations are equations of the form $$ax^2 + bx + c = 0$$. When the qu
 
 ### Example 1: A Simple Quadratic
 
+
+![2D plot of the quadratic function x^2+5x+6 showing its curve and zeros.](images/plot_1_05-01-lesson-solving-quadratic-equations-by-factoring.md.png)
+
+
+
 Consider the quadratic equation:
 
 $$

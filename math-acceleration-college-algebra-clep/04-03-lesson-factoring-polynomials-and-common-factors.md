@@ -18,6 +18,11 @@ A common factor is a number, variable, or expression that divides each term of a
 
 ### Example 1: Factoring a Basic Polynomial
 
+
+![2D line plot showing the polynomial f(x)=6x^3+9x^2 and its roots, which demonstrate the factoring into 3x^2(2x+3).](images/plot_1_04-03-lesson-factoring-polynomials-and-common-factors.md.png)
+
+
+
 Factor the polynomial:
 
 $$

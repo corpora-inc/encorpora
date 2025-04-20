@@ -70,6 +70,11 @@ $$
 
 ### Example 2
 
+
+![2D line plot of the rational function f(x) = (x+3)/(x-1) showing the vertical asymptote at x = 1 and a removable discontinuity (hole) at x = 3.](images/plot_1_07-01-lesson-simplifying-rational-expressions-and-identifying-domain-restrictions.md.png)
+
+
+
 Simplify the expression:
 
 $$

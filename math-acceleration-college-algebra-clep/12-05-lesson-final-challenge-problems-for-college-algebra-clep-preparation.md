@@ -3,6 +3,11 @@
 This lesson presents a series of comprehensive challenge problems that cover various topics from college algebra. Each problem is broken down into clear, methodical steps. These examples will reinforce your understanding and prepare you for the College Algebra CLEP exam.
 
 ### Problem 1: Solving a Quadratic Equation
+
+
+![Plot of the quadratic function f(x)=2x^2-3x-5 with its roots marked at x=-1 and x=5/2.](images/plot_1_12-05-lesson-final-challenge-problems-for-college-algebra-clep-preparation.md.png)
+
+
 Solve the quadratic equation:
 
 $$
@@ -52,6 +57,11 @@ x = \frac{3 - 7}{4} = \frac{-4}{4} = -1
 $$
 
 ### Problem 2: Solving a Rational Equation
+
+
+![Plot of the rational function f(x)=2/x+3/(x+1) showing its behavior and asymptotes at x=0 and x=-1.](images/plot_2_12-05-lesson-final-challenge-problems-for-college-algebra-clep-preparation.md.png)
+
+
 Solve the rational equation:
 
 $$

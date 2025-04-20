@@ -57,6 +57,11 @@ y = a(x - h)^2 + k,
 
 ### Example 1
 
+
+![A 2D plot of the quadratic function y = 2(x-3)^2+1 showing the vertex and axis of symmetry.](images/plot_1_05-04-lesson-graphing-quadratic-functions-using-vertex-form.md.png)
+
+
+
 Graph the quadratic function
 
 $$
@@ -99,6 +104,11 @@ These points \((4, 3)\) and \((2, 3)\) lie symmetrically on either side of the v
 Draw a smooth curve opening upward through \((3, 1)\), \((4, 3)\), and \((2, 3)\).
 
 ### Example 2
+
+
+![A 2D plot of the quadratic function y = -1/2(x+2)^2+4 displaying the vertex and axis of symmetry.](images/plot_2_05-04-lesson-graphing-quadratic-functions-using-vertex-form.md.png)
+
+
 
 Graph the quadratic function
 

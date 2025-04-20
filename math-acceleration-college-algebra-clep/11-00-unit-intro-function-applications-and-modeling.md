@@ -1,5 +1,10 @@
 # Function Applications and Modeling
 
+
+![A 2D line plot showcasing a function f(x) = 2x + 1 and its inverse, f⁻¹(x), along with the identity line for reference.](images/plot_1_11-00-unit-intro-function-applications-and-modeling.md.png)
+
+
+
 In this unit, we explore the use of functions to model real-world situations and solve applied problems. We introduce various methods to construct functions that represent everyday scenarios in fields such as finance, engineering, and science.
 
 This unit covers:

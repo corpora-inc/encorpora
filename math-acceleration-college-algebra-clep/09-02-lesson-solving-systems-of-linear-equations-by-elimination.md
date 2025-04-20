@@ -20,6 +20,11 @@ $$
 
 ### Example 1: A Simple Case
 
+
+![A 2D line plot showing the two lines from Example 1 of the elimination method and their intersection point.](images/plot_1_09-02-lesson-solving-systems-of-linear-equations-by-elimination.md.png)
+
+
+
 Consider the system:
 
 $$

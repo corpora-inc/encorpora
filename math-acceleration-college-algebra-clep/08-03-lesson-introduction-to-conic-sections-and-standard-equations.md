@@ -17,6 +17,11 @@ Each conic section has a standard form equation that makes it easier to identify
 
 #### Circle
 
+
+![A 2D line plot of a circle with center (3,-2) and radius 2, illustrating the standard form of a circle's equation.](images/plot_1_08-03-lesson-introduction-to-conic-sections-and-standard-equations.md.png)
+
+
+
 The standard equation of a circle centered at $(h,k)$ with radius $r$ is given by:
 
 $$
@@ -57,6 +62,11 @@ $$
 This represents a circle with center $(3,-2)$ and radius $2$.
 
 #### Parabola
+
+
+![A 2D line plot of a horizontal parabola with vertex (-1,4), derived from converting a quadratic equation into standard form.](images/plot_2_08-03-lesson-introduction-to-conic-sections-and-standard-equations.md.png)
+
+
 
 A vertical parabola has a standard equation of the form:
 

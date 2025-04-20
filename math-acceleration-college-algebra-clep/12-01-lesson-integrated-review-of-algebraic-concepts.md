@@ -78,6 +78,11 @@ Factoring techniques assist in many types of design and engineering problems whe
 
 ### 4. Functions and Graph Interpretation
 
+
+![A 2D plot of the linear function f(x) = 2x - 1, highlighting key points for x=0 and x=2.](images/plot_1_12-01-lesson-integrated-review-of-algebraic-concepts.md.png)
+
+
+
 A function expresses the relationship between two quantities. Consider the linear function:
 
 $$

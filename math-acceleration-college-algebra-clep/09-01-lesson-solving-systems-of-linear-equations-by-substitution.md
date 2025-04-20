@@ -92,6 +92,11 @@ Since both equations are true, the solution is correct.
 
 ### Summary Example
 
+
+![A plot showing two lines corresponding to the equations x + y = 6 and x - y = 2, and their intersection point (4,2), which visually represents the solution to the system.](images/plot_1_09-01-lesson-solving-systems-of-linear-equations-by-substitution.md.png)
+
+
+
 Let’s review the complete process with our example:
 
 1. Start with the system:

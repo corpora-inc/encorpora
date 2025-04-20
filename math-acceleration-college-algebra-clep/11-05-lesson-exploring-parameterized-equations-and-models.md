@@ -28,6 +28,11 @@ In this form, $(x_0, y_0)$ is a point on the line and $a$, $b$ determine its dir
 
 ### Example 1: Converting Parametric Equations to Slope-Intercept Form
 
+
+![This plot visualizes a parametric line (x = 1 + 2t, y = 3 - t) and its corresponding slope-intercept form (y = -0.5x + 7/2), demonstrating the conversion process.](images/plot_1_11-05-lesson-exploring-parameterized-equations-and-models.md.png)
+
+
+
 Suppose a line is given in parametric form:
 
 $$
@@ -63,6 +68,11 @@ $$
 This shows how the parameter $t$ helps define the line, and eliminating it yields a more familiar equation.
 
 ### Example 2: A Real-World Parameterized Model
+
+
+![This plot compares two cost models showing how changes in the parameter k affect the overall cost function C(n) = C0 + k*n.](images/plot_2_11-05-lesson-exploring-parameterized-equations-and-models.md.png)
+
+
 
 Consider a scenario in which a company models its cost $C$ based on the number of units produced $n$. The cost includes a fixed cost and a variable cost per unit, represented by the parameter $k$:
 

@@ -1,5 +1,10 @@
 ## Polynomial Division and Synthetic Division
 
+
+![This plot visualizes the polynomial division identity by comparing the original polynomial f(x) with its reconstructed form using synthetic division results: f(x) = (x-1)*Q(x) + R.](images/plot_1_04-04-lesson-polynomial-division-and-synthetic-division.md.png)
+
+
+
 Polynomial division is a method for dividing a polynomial by another polynomial of a lower degree. It is similar to the long division algorithm used with numbers. In many cases, synthetic division provides a shortcut when dividing by a linear factor of the form $x - c$.
 
 ### Polynomial Long Division

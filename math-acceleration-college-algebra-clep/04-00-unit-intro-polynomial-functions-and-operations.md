@@ -1,5 +1,10 @@
 # Polynomial Functions and Operations
 
+
+![2D line plot of a sample cubic polynomial function illustrating typical behavior of polynomial functions.](images/plot_1_04-00-unit-intro-polynomial-functions-and-operations.md.png)
+
+
+
 This unit introduces polynomial functions and the operations associated with them. In this unit, you will learn what polynomial functions are, why they are crucial in understanding algebraic relationships, and how to perform operations with them.
 
 Polynomials are expressions that consist of variables raised to nonnegative integer exponents, combined using addition, subtraction, and multiplication. They serve as the foundation for many algebraic concepts and are essential for modeling real-world situations, including financial calculations, engineering designs, and even sports analytics.

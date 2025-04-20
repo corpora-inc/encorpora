@@ -50,6 +50,11 @@ Thus, the sum of the series is $80$.
 
 ### Sum of an Infinite Geometric Series
 
+
+![This plot shows the convergence of an infinite geometric series with a=5 and r=0.6 by comparing partial sums to the limiting sum.](images/plot_1_10-03-lesson-sum-of-geometric-series-and-tests-for-convergence.md.png)
+
+
+
 An infinite geometric series continues without end. It is written as:
 
 $$
@@ -79,6 +84,11 @@ $$
 So, the sum of the infinite series is $12.5$.
 
 ### Tests for Convergence of Geometric Series
+
+
+![This plot demonstrates the divergence of a geometric series with a=3 and r=1.2 by plotting its partial sums, which increase without bound.](images/plot_2_10-03-lesson-sum-of-geometric-series-and-tests-for-convergence.md.png)
+
+
 
 A geometric series converges if and only if the absolute value of the common ratio is less than 1:
 

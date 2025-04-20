@@ -55,6 +55,11 @@ Thus, $f(4) = 11$.
 
 ### Real-World Application
 
+
+![2D line plot of the cost function C(x)=50+10x illustrating the fixed and variable cost components.](images/plot_2_03-01-lesson-defining-functions-and-function-notation.md.png)
+
+
+
 Functions are useful in many real-world scenarios. Consider a simple cost function for producing items.
 
 **Example**
@@ -86,6 +91,11 @@ This model helps businesses predict costs based on production levels.
 Understanding functions and their notation is fundamental to solving equations, modeling real-life situations, and preparing for advanced topics in algebra.
 
 ### Input-Output Table Example
+
+
+![2D line plot of the linear function f(x)=2x+3 showing its slope and intercept.](images/plot_1_03-01-lesson-defining-functions-and-function-notation.md.png)
+
+
 
 To clearly see how inputs map to outputs, consider the following table that lists several values of $x$ and their corresponding $f(x)$ values for the function $f(x) = 2x + 3$:
 

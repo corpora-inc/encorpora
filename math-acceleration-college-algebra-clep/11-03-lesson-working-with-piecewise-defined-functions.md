@@ -64,6 +64,11 @@ Graphing a piecewise function involves plotting each piece only over its specifi
 - **Plot each function segment.** Only show the graph over the interval defined. Use open circles to indicate that an endpoint is not included, and closed circles when it is included.
 
 #### Example 2: Sketching the Graph
+
+
+![This plot visualizes the piecewise-defined function f(x) with segments: x^2 for x<0, 2x+1 for 0<=x<=3, and 10 for x>3.](images/plot_1_11-03-lesson-working-with-piecewise-defined-functions.md.png)
+
+
 For the function
 
 $$

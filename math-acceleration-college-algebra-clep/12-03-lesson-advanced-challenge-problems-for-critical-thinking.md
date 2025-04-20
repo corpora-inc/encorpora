@@ -78,6 +78,11 @@ The value $x = \frac{6}{5}$ is valid because it does not equal 1 or -2.
 
 ### Example 2: An Absolute Value Equation
 
+
+![Plot showing the intersection of the functions |2x-3| and x+5 from Example 2.](images/plot_1_12-03-lesson-advanced-challenge-problems-for-critical-thinking.md.png)
+
+
+
 Solve the equation:
 
 $$
@@ -157,6 +162,11 @@ Thus, $x = -\frac{2}{3}$ is valid.
 ---
 
 ### Example 3: Function Composition Leading to a Quadratic Equation
+
+
+![Plot of the composed function f(g(x)) from Example 3, highlighting its roots at x=3 and x=4.](images/plot_2_12-03-lesson-advanced-challenge-problems-for-critical-thinking.md.png)
+
+
 
 Let
 

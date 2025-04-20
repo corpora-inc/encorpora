@@ -1,5 +1,10 @@
 ## Analyzing the Discriminant and Nature of Roots
 
+
+![A plot comparing three quadratic functions corresponding to different discriminant values (D > 0, D = 0, and D < 0) to visually illustrate how the discriminant affects the roots of a quadratic equation.](images/plot_1_05-05-lesson-analyzing-the-discriminant-and-nature-of-roots.md.png)
+
+
+
 A quadratic equation is commonly written in the form
 
 $$

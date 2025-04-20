@@ -21,6 +21,11 @@ where $a$ and $b$ are positive constants and $f(x)$ is an expression involving t
 
 ### Example 1: Solving a Basic Exponential Equation
 
+
+![Plot showing the exponential function 2^x and the horizontal line y=7, illustrating their intersection point.](images/plot_1_06-04-lesson-solving-exponential-equations-using-logarithms.md.png)
+
+
+
 Solve the equation:
 
 $$
@@ -54,6 +59,11 @@ $$
 This is the exact solution. For a numerical approximation, you may calculate the values of $\ln(7)$ and $\ln(2)$.
 
 ### Example 2: Solving a More Involved Equation
+
+
+![Plot showing the exponential function 5^(2x-1) with the horizontal line y=20, highlighting the intersection point.](images/plot_2_06-04-lesson-solving-exponential-equations-using-logarithms.md.png)
+
+
 
 Consider the equation:
 
