@@ -47,19 +47,20 @@ $$
 
 1. Align the polynomials so that like terms are vertically matched:
 
-$$
-\begin{array}{rcrcr}
-  3x^2 &+& 5x &-& 4 \\
-+\;2x^2 &-& 3x &+& 7 \\
-\end{array}
-$$
+
+|       |        |       |      |
+|-------|--------|-------|------|
+|       | $3x^2$ | $+5x$ | $-4$ |
+| **+** | $2x^2$ | $-3x$ | $+7$ |
+| **=** | $5x^2$ | $+2x$ | $+3$ |
+
 
 2. Combine the like terms by adding their coefficients:
 
    - $x^2$ terms: $3x^2 + 2x^2 = 5x^2$
-   
+
    - $x$ terms: $5x + (-3x) = 2x$
-   
+
    - Constants: $-4 + 7 = 3$
 
 3. Write the final polynomial:
@@ -105,11 +106,11 @@ $$
 3. Combine like terms:
 
    - $x^3$ terms: $4x^3 - 2x^3 = 2x^3$
-   
+
    - $x^2$ terms: $-x^2 - 3x^2 = -4x^2$
-   
+
    - $x$ terms: $6x + 4x = 10x$
-   
+
    - Constants: $-5 - 2 = -7$
 
 4. The simplified result is:

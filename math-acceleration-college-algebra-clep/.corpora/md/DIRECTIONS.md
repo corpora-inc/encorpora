@@ -51,49 +51,7 @@ Make this look like a beautiful lesson book with complete explanations and examp
 - PREFER DISPLAY MATH (`$$ ... $$`) for equations and formulas. Use INLINE MATH (`$ ... $`) for short math terms or symbols within sentences.
 - DO NOT USE EMOJIS! No emojis.
 
-You can use LaTeX as the markdown will be passed through pandoc.
-
-For addition with carrying you can use something like this:
-
-$$
-\begin{array}{r}
-47 \\
-+38 \\
-\hline
-\end{array}
-$$
-
-You can continue:
-
-$$
-\begin{array}{r@{}r@{}r}
-   1 &   & \\[0.5em]
-   4 & 7 & \\[0.5em]
- + 3 & 8 & \\[0.5em]
-   \hline
-     & 5 & \\
-\end{array}
-$$
-
-For borrowing with subtraction you can use a format like this:
-
-$$
-\begin{array}{r@{\hspace{1mm}}r}
-  4 & 7 \\
--\,3 & 8 \\
-\hline
-& \\
-\end{array}
-\quad\Longrightarrow\quad
-\begin{array}{r@{\hspace{1mm}}r}
-  3 & 17 \\
--\,3 & 8 \\
-\hline
-  0 & 9 \\
-\end{array}
-$$
-
-Make it look perfect! Go step by step!
+You can use LaTeX as the markdown will be passed through pandoc. Do not use `\begin{array}` as epub rendering can not handle this.
 
 We have `\usepackage{pgfplots}` in the LaTeX template, so you can use `tikzpicture` environments to create graphs.
 
