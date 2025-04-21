@@ -71,6 +71,8 @@ pandoc \
   --to=epub3 \
   --mathml \
   --css=epub.css \
+  --epub-embed-font=fonts/STIXTwoText-Regular.ttf \
+  --epub-embed-font=fonts/STIXTwoMath-Regular.ttf \
   --output="$OUTPUT_EPUB" \
   --toc \
   --lua-filter=hrule.lua \
