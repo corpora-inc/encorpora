@@ -14,9 +14,9 @@ $$
 
 This property is essential for simplifying expressions, solving equations, and handling real-world calculations, as it breaks down complex expressions into more manageable pieces.
 
-### What Is the Distributive Property?
-
 ![2D area model showing $a(b+c)$ split into two parts $ab$ and $ac$.](images/distributive-property.png)
+
+### What Is the Distributive Property?
 
 The distributive property eliminates the need for parentheses by multiplying the term outside every term inside. It applies uniformly to both numbers and variables. For instance, in the expression
 

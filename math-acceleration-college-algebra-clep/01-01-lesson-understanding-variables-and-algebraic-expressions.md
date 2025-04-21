@@ -46,13 +46,7 @@ To fully understand an algebraic expression, it is useful to break it down into 
 
 Evaluating an algebraic expression involves substituting specific numbers for the variables and then performing the arithmetic operations following the order of operations.
 
-Consider the expression
-
-$$
-2x + 7
-$$
-
-and suppose we are given $x = 3$. We evaluate the expression as follows:
+Consider the expression $2x + 7$ and suppose we are given $x = 3$. We evaluate the expression as follows:
 
 1. **Substitute the value of $x$:**
 
@@ -160,12 +154,7 @@ Visual aids can help clarify abstract concepts. Consider the expression $x + 5$.
 
 Below is a number line where starting from $x = 2$, adding $5$ shifts the value 5 units to the right, landing on $7$:
 
-$$
-\begin{array}{ccccccccccc}
--1 & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 \\
- &  &  & \uparrow &  &  & \uparrow &  &  &  &
-\end{array}
-$$
+![Number line illustrating $f(x)=x+5$ with a highlighted point at $x=2$.](images/number-line-plot.png)
 
 In the diagram, the arrow indicates the movement from $2$ to $7$, reinforcing that the expression adjusts the starting number by a fixed amount.
 
