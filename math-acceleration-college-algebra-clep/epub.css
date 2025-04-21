@@ -1,0 +1,17 @@
+/* epub.css */
+@namespace epub "http://www.idpf.org/2007/ops";
+
+/* center all display math */
+math {
+    display: block;
+    margin: 1em auto;
+    text-align: center;
+}
+
+/* choose a MathML‑friendly font */
+mrow,
+mi,
+mn,
+mo {
+    font-family: STIXGeneral, serif;
+}

@@ -66,9 +66,11 @@ pandoc -s $INPUT_FILES -o $OUTPUT_PDF \
 #   $INPUT_FILES
 
 #   --from=markdown-raw_tex-tex_math_dollars-tex_math_double_backslash \
-echo "Building EPUB with *pure* raw TeX + MathJax (no parsing)…"
+echo "Building EPUB"
 pandoc \
   --to=epub3 \
+  --mathml \
+  --css=epub.css \
   --output="$OUTPUT_EPUB" \
   --toc \
   --lua-filter=hrule.lua \

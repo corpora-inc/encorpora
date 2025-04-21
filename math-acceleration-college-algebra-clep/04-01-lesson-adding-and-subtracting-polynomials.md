@@ -94,7 +94,7 @@ In other words, compute $S(x) - R(x)$.
 1. Write the subtraction by distributing the negative sign to the entire $R(x)$:
 
 $$
-4x^3 - x^2 + 6x - 5 \; - \; \Bigl(2x^3 + 3x^2 - 4x + 2\Bigr)
+4x^3 - x^2 + 6x - 5 \; - \; \bigl(2x^3 + 3x^2 - 4x + 2\bigr)
 $$
 
 2. Remove the parentheses, ensuring the negative sign changes every term inside:
