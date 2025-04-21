@@ -20,41 +20,28 @@ LANG="en-US"
 PUBLISHER="Corpora Inc"
 DATE=$(date +%Y-%m-%d)
 
-# Normal PDF (for screen reading)
-echo "Building normal PDF..."
-pandoc -s $INPUT_FILES -o $OUTPUT_PDF \
-    --pdf-engine=xelatex \
-    --toc \
-    --include-in-header=custom_headings.tex \
-    --include-before-body=custom_cover.tex \
-    --lua-filter=hrule.lua \
-    -V documentclass=book \
-    -V geometry:margin=1in \
-    --toc-depth=2
-
-# # EPUB (for ebook platforms)
-# echo "Building EPUB with MathML support..."
-# pandoc -s $INPUT_FILES -o $OUTPUT_EPUB \
+# # Normal PDF (for screen reading)
+# echo "Building normal PDF..."
+# pandoc -s $INPUT_FILES -o $OUTPUT_PDF \
+#     --pdf-engine=xelatex \
 #     --toc \
+#     --include-in-header=custom_headings.tex \
+#     --include-before-body=custom_cover.tex \
 #     --lua-filter=hrule.lua \
-#     --mathjax="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" \
-#     --metadata title="$TITLE" \
-#     --metadata author="$AUTHOR" \
-#     --metadata lang="$LANG" \
-#     --metadata date="$DATE" \
-#     --metadata publisher="$PUBLISHER" \
-#     --metadata isbn="$ISBN" \
-#     --epub-cover-image="$COVER_IMAGE" \
+#     -V documentclass=book \
+#     -V geometry:margin=1in \
 #     --toc-depth=2
 
-# echo "Building EPUB with raw TeX + MathJax in EPUB 3..."
+# echo "Building EPUB"
 # pandoc \
-#   --from=markdown+raw_tex \
 #   --to=epub3 \
+#   --mathml \
+#   --css=epub.css \
+#   --epub-embed-font=fonts/STIXTwoText-Regular.ttf \
+#   --epub-embed-font=fonts/STIXTwoMath-Regular.ttf \
 #   --output="$OUTPUT_EPUB" \
 #   --toc \
 #   --lua-filter=hrule.lua \
-#   --mathjax="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" \
 #   --metadata title="$TITLE" \
 #   --metadata author="$AUTHOR" \
 #   --metadata lang="$LANG" \
@@ -65,15 +52,12 @@ pandoc -s $INPUT_FILES -o $OUTPUT_PDF \
 #   --toc-depth=2 \
 #   $INPUT_FILES
 
-#   --from=markdown-raw_tex-tex_math_dollars-tex_math_double_backslash \
-echo "Building EPUB"
+echo "Building EPUB with math→SVG filter…"
 pandoc \
   --to=epub3 \
-  --mathml \
-  --css=epub.css \
-  --epub-embed-font=fonts/STIXTwoText-Regular.ttf \
-  --epub-embed-font=fonts/STIXTwoMath-Regular.ttf \
-  --output="$OUTPUT_EPUB" \
+  --lua-filter=math2svg.lua \
+  --css=epub-svg.css \
+  --output="svg-$OUTPUT_EPUB" \
   --toc \
   --lua-filter=hrule.lua \
   --metadata title="$TITLE" \
@@ -86,18 +70,17 @@ pandoc \
   --toc-depth=2 \
   $INPUT_FILES
 
+# # Print PDF (for print-on-demand)
+# echo "Building print-ready PDF..."
+# pandoc -s $INPUT_FILES -o $OUTPUT_PRINT_PDF \
+#     --pdf-engine=xelatex \
+#     --toc \
+#     --include-in-header=custom_headings.tex \
+#     --include-before-body=custom_cover.tex \
+#     --lua-filter=hrule.lua \
+#     -V documentclass=book \
+#     -V geometry:top=0.75in,bottom=0.75in,inner=0.75in,outer=0.5in \
+#     -V fontsize=11pt \
+#     --toc-depth=2
 
-# Print PDF (for print-on-demand)
-echo "Building print-ready PDF..."
-pandoc -s $INPUT_FILES -o $OUTPUT_PRINT_PDF \
-    --pdf-engine=xelatex \
-    --toc \
-    --include-in-header=custom_headings.tex \
-    --include-before-body=custom_cover.tex \
-    --lua-filter=hrule.lua \
-    -V documentclass=book \
-    -V geometry:top=0.75in,bottom=0.75in,inner=0.75in,outer=0.5in \
-    -V fontsize=11pt \
-    --toc-depth=2
-
-echo "All formats built successfully!"
+# echo "All formats built successfully!"
