@@ -65,14 +65,13 @@ pandoc -s $INPUT_FILES -o $OUTPUT_PDF \
 #   --toc-depth=2 \
 #   $INPUT_FILES
 
+#   --from=markdown-raw_tex-tex_math_dollars-tex_math_double_backslash \
 echo "Building EPUB with *pure* raw TeX + MathJax (no parsing)…"
 pandoc \
-  --from=markdown-raw_tex-tex_math_dollars-tex_math_double_backslash \
   --to=epub3 \
   --output="$OUTPUT_EPUB" \
   --toc \
   --lua-filter=hrule.lua \
-  --mathjax="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" \
   --metadata title="$TITLE" \
   --metadata author="$AUTHOR" \
   --metadata lang="$LANG" \
