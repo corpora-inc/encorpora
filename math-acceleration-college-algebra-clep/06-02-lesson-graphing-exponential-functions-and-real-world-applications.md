@@ -3,45 +3,48 @@
 Exponential functions have the form
 
 $$
-y = a \cdot b^x
+ y = a \cdot b^x
 $$
 
-where $a$ is the initial value and $b$ is the base. When $b > 1$, the function represents growth. When $0 < b < 1$, it represents decay.
+where $a$ is the initial value and $b$ is the base. When $b > 1$, the function represents growth because the output increases as $x$ increases. When $0 < b < 1$, it represents decay since the output decreases as $x$ increases.
 
 ### Understanding the Exponential Function
 
-Exponential functions appear in many real-life situations such as population growth, compound interest, and radioactive decay. The key characteristics of these functions include:
+Exponential functions are common in real-life applications such as population growth, compound interest, and radioactive decay. They are characterized by a constant proportional change, meaning that the rate of change is always a fixed percentage of the current value. This concept is key in understanding how small changes can compound over time.
 
-- **Constant proportional change:** The rate of change is proportional to the current value.
-- **Y-intercept at $a$:** When $x=0$, $y=a$.
-- **Smooth, continuous curve:** The graph never touches the horizontal axis, but approaches it for decay functions.
+Key features include:
+
+- **Constant proportional change:** The change in $y$ is always a fixed percentage of the current value, so the function grows or decays at a rate proportional to its size.
+- **Y-intercept at $a$:** When $x = 0$, we have $y = a$, which sets the baseline value of the function.
+- **Smooth, continuous curve:** The graph is smooth with no breaks; even in decay, the curve approaches the horizontal axis ($y = 0$) but never touches it.
 
 For example, consider the function
 
 $$
-y = 2^x
+ y = 2^x
 $$
 
-This function models exponential growth.
+This function models exponential growth since the output doubles as $x$ increases by 1.
 
 ### Graphing an Exponential Function
 
-To graph an exponential function like $y = 2^x$, follow these steps:
+Graphing an exponential function involves a systematic process. Let’s consider $y = 2^x$ and explain each step in detail.
 
-1. **Plot the Y-intercept:** When $x = 0$, compute $y = 2^0 = 1$. Place the point $(0,1)$.
-2. **Choose additional values of $x$:** For example, if $x = 1$, then $y = 2^1 = 2$. If $x = -1$, then $y = 2^{-1} = 1/2$.
-3. **Plot the computed points:** Plot points for $x = -2$, $-1$, $0$, $1$, $2$. They might be $( -2, 1/4)$, $(-1, 1/2)$, $(0,1)$, $(1,2)$, $(2,4)$.
-4. **Draw a smooth curve:** Connect the points in a smooth increasing curve for a growth function.
+1. **Plot the Y-intercept:** Evaluate the function at $x = 0$. Since $2^0 = 1$, the point is $(0, 1)$. This is the starting point and represents the initial value of the function.
+2. **Choose additional values of $x$:** Select simple values of $x$ to see how $y$ changes. For $x = 1$, we get $y = 2^1 = 2$, and for $x = -1$, we have $y = 2^{-1} = \frac{1}{2}$. These points illustrate the rapid increase when $x$ is positive and the gradual approach towards zero when $x$ is negative.
+3. **Plot the computed points:** Commonly, you might select points at $x = -2$, $-1$, $0$, $1$, and $2$. This would give approximate points: $(-2, \frac{1}{4})$, $(-1, \frac{1}{2})$, $(0, 1)$, $(1, 2)$, and $(2, 4)$. Plotting several points helps form an accurate picture of the curve.
+4. **Draw a smooth curve:** Connect the points with a smooth, continuous line. The curve will rise steeply for positive $x$ and fall off gradually towards the horizontal axis for negative $x$.
 
 The following graph shows the plot of $y = 2^x$:
 
 \vspace*{2em}
+
 \begin{center}
 \begin{tikzpicture}
 \begin{axis}[
-    xlabel={\(x\)},
-    ylabel={\(y\)},
-    title={Graph of \(y=2^x\)},
+    xlabel={$x$},
+    ylabel={$y$},
+    title={Graph of $y=2^x$},
     grid=both,
     width=10cm,
     height=8cm,
@@ -52,69 +55,105 @@ The following graph shows the plot of $y = 2^x$:
 \end{axis}
 \end{tikzpicture}
 \end{center}
+
 \vspace*{2em}
+
+This graph illustrates how the value of $y$ changes with $x$. Notice the exponential increase as $x$ becomes positive and the tendency to approach zero as $x$ becomes negative.
 
 ### Real World Applications
 
-Exponential functions are used to model many natural and financial processes.
+Exponential functions are vital in modeling and solving problems across various fields. Below are several real-world examples:
 
 #### 1. Population Growth
 
-A population growing at a constant rate can be modeled by
+A growing population can be modeled using the formula
 
 $$
-P(t) = P_0 \cdot e^{rt}
+ P(t) = P_0 \cdot e^{rt}
 $$
 
-where $P_0$ is the initial population, $r$ is the growth rate, and $t$ is time. For example, if a population doubles every 5 years, a growth model can be derived using the exponential equation.
+In this model, $P_0$ represents the initial population, $r$ is the constant growth rate, and $t$ denotes time. If a population doubles every few years, the exponential model captures the quick compound increase in numbers.
 
 #### 2. Compound Interest
 
-The formula for compound interest is
+Compound interest grows an investment over time by applying interest to both the initial principal and the accumulated interest. The compound interest formula is
 
 $$
-A = P \cdot \left(1 + \frac{r}{n}\right)^{nt}
+ A = P \cdot \left(1 + \frac{r}{n}\right)^{nt}
 $$
 
-where $P$ is the principal, $r$ is the annual interest rate, $n$ is the number of times interest is compounded per year, and $t$ is the time in years. This formula is essential in finance for understanding how investments grow over time.
+Here, $P$ is the principal (initial amount), $r$ is the annual interest rate, $n$ is the number of times interest is compounded per year, and $t$ is the number of years. The exponential aspect is seen in how the sum grows multiplicatively with each compounding period.
 
 #### 3. Radioactive Decay
 
-Radioactive decay follows an exponential decay law. The amount of a substance remaining after time $t$ is given by:
+Radioactive decay follows an exponential model where a substance decreases over time. The decay is modeled by the equation
 
 $$
-N(t) = N_0 \cdot e^{-\lambda t}
+ N(t) = N_0 \cdot e^{-\lambda t}
 $$
 
-where $N_0$ is the initial amount and $\lambda$ is the decay constant. This model is widely used in physics and engineering.
+In this equation, $N_0$ represents the initial quantity, and $\lambda$ is the decay constant. Even though the decay is continuous, the substance never completely reaches zero, a property highlighted by the asymptotic behavior of the function.
 
 ### Step-by-Step Example: Graphing a Compound Interest Function
 
-Consider a savings account with an initial deposit of $1000$, an annual interest rate of 5% compounded annually. The model is
+Consider a savings account with an initial deposit of $1000$ and an annual interest rate of 5% compounded annually. The account balance over time is modeled by
 
 $$
-A(t) = 1000 \cdot \left(1.05\right)^t
+ A(t) = 1000 \cdot (1.05)^t
 $$
 
-Follow these steps to graph the function:
+Detailed steps to graph this function are as follows:
 
-1. **Identify the Y-intercept:** When $t = 0$, $A(0) = 1000 \cdot 1.05^0 = 1000$.
+1. **Identify the Y-intercept:**
+   
+   Evaluate the function at $t = 0$. Since $1.05^0 = 1$, we have:
+
+   $$
+   A(0) = 1000 \cdot 1 = 1000
+   $$
+
+   This point is the starting balance.
+
 2. **Compute key points:**
-   - For $t = 1$, $A(1) = 1000 \cdot 1.05 = 1050$.
-   - For $t = 2$, $A(2) = 1000 \cdot 1.05^2 \approx 1102.50$.
-   - For $t = 3$, $A(3) \approx 1157.63$.
-3. **Plot the points on a coordinate plane:** Use $t$ as the horizontal axis and $A(t)$ as the vertical axis.
-4. **Draw the curve:** Connect the dots to form the exponential growth curve.
 
-A graph of the compound interest function might look like this:
+   - For $t = 1$:
+     
+     $$
+     A(1) = 1000 \cdot 1.05 = 1050
+     $$
+
+   - For $t = 2$:
+     
+     $$
+     A(2) = 1000 \cdot 1.05^2 \approx 1102.50
+     $$
+
+   - For $t = 3$:
+     
+     $$
+     A(3) \approx 1157.63
+     $$
+
+   These points reflect how the investment grows over time with interest compounding continuously.
+
+3. **Plot the points on a coordinate plane:**
+
+   Use $t$ on the horizontal axis and $A(t)$ on the vertical axis. Mark the points accurately to represent the increasing trend.
+
+4. **Draw the curve:**
+
+   Connect the plotted points with a smooth curve to form the exponential growth graph. The curve's steepness demonstrates the accelerating growth due to compound interest.
+
+The graph of the compound interest function is shown below:
 
 \vspace*{2em}
+
 \begin{center}
 \begin{tikzpicture}
 \begin{axis}[
-    xlabel={\(t\) (years)},
-    ylabel={\(A(t)\)},
-    title={Compound Interest: \(A(t)=1000\cdot1.05^t\)},
+    xlabel={$t$ (years)},
+    ylabel={$A(t)$},
+    title={Compound Interest: $A(t)=1000\cdot1.05^t$},
     grid=both,
     width=10cm,
     height=8cm,
@@ -125,6 +164,7 @@ A graph of the compound interest function might look like this:
 \end{axis}
 \end{tikzpicture}
 \end{center}
+
 \vspace*{2em}
 
-These examples illustrate how exponential functions can be graphed and applied to real-world problems. By understanding the behavior of these functions, you can analyze growth and decay models in various contexts.
+Through these examples, we see that exponential functions provide a powerful tool for modeling growth and decay. They capture the essence of processes that change at rates proportional to their current size. Understanding these models is critical for analyzing various phenomena in finance, population studies, natural sciences, and engineering.

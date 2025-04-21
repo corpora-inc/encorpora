@@ -1,22 +1,28 @@
 ## Graphical Interpretation of Systems of Equations
 
-A system of equations is a set of two or more equations with the same variables. In the graphical approach, each equation is represented by a graph. The solution to the system is the point where the graphs intersect. If they cross at one point, there is one unique solution; if they do not intersect, there is no solution; and if they lie on top of each other, there are infinitely many solutions.
+A system of equations is a set of two or more equations that share the same variables. In the graphical approach, each equation is represented by a line on a coordinate plane. The solution to the system is the point (or points) where the graphs intersect. If they cross at exactly one point, there is a unique solution; if they never meet, there is no solution; and if they lie exactly on top of each other, there are infinitely many solutions.
 
 ### Key Concepts
 
-- **Line Equation:** A linear equation in slope-intercept form is written as $$ y = mx + b $$, where $$ m $$ is the slope and $$ b $$ is the $$ y $$-intercept.
+- **Line Equation:** A linear equation in slope-intercept form is written as
+$$
+y = mx + b,
+$$
+where $m$ is the slope and $b$ is the $y$-intercept. This format clearly shows how fast the line rises or falls and where it starts on the $y$-axis.
 
-- **Slope:** The rate at which a line rises or falls, calculated as the change in $$ y $$ divided by the change in $$ x $$. 
+- **Slope:** The slope represents the steepness of the line. It is calculated as the change in $y$ divided by the change in $x$. A positive slope means the line rises as $x$ increases, while a negative slope means it falls. This concept helps you predict the behavior of the graph.
 
-- **Y-Intercept:** The point where the graph crosses the $$ y $$-axis.
+- **Y-Intercept:** The $y$-intercept is the point where the line crosses the $y$-axis (when $x=0$). It indicates the starting value of the function.
 
 ### Graphing Each Equation
 
-Each equation in the system is graphed by:
+To graph each equation in a system, follow these steps:
 
-1. Identifying the $$ y $$-intercept, where $$ x=0 $$.
-2. Using the slope to find a second point by moving right (or left) on the $$ x $$-axis and up (or down) accordingly.
-3. Drawing a straight line through these points.
+1. **Find the $y$-Intercept:** Set $x=0$ to determine where the line crosses the $y$-axis.
+
+2. **Determine the Slope:** Use the slope to calculate a second point. For example, if $m=2$, then for every increase of $1$ in $x$, the value of $y$ increases by $2$.
+
+3. **Draw the Line:** Plot the $y$-intercept and the additional point, then draw a straight line through them. This line represents all solutions to that equation.
 
 ### Example 1: Unique Solution
 
@@ -29,21 +35,27 @@ $$
 \end{aligned}
 $$
 
-**Step 1:** Graph $$ y = 2x + 1 $$
+**Step 1:** Graph the equation
+$$
+y = 2x + 1.
+$$
 
-- The $$ y $$-intercept is $$ (0,1) $$. 
-- The slope is $$ 2 $$, meaning for every increase of 1 in $$ x $$, $$ y $$ increases by 2.
-- A second point can be found by letting $$ x=1 $$: $$ y = 2(1)+1 = 3 $$, so the point is $$ (1,3) $$. 
+- The $y$-intercept is at $(0,1)$.
+- The slope is $2$, meaning that for every increase of $1$ in $x$, $y$ increases by $2$.
+- Choosing $x=1$, we calculate $y = 2(1) + 1 = 3$, so a second point is $(1,3)$.
 
-**Step 2:** Graph $$ y = -x + 4 $$
+**Step 2:** Graph the equation
+$$
+y = -x + 4.
+$$
 
-- The $$ y $$-intercept is $$ (0,4) $$. 
-- The slope is $$ -1 $$, meaning for every increase of 1 in $$ x $$, $$ y $$ decreases by 1.
-- For $$ x=1 $$: $$ y = -1 + 4 = 3 $$, so the point is $$ (1,3) $$. 
+- The $y$-intercept is at $(0,4)$.
+- The slope is $-1$, meaning that for every increase of $1$ in $x$, $y$ decreases by $1$.
+- Choosing $x=1$, we find $y = -1 + 4 = 3$, so another point is $(1,3)$.
 
 **Step 3:** Identify the Intersection
 
-Notice that both lines pass through the point $$ (1,3) $$. This point is the unique solution to the system.
+Both lines pass through the point $(1,3)$, which is the unique solution to the system. This shows that the two equations have exactly one solution in common.
 
 Below is a graphical illustration:
 
@@ -54,13 +66,13 @@ Below is a graphical illustration:
   \draw[->] (-2,0) -- (5,0) node[right] {$x$};
   \draw[->] (0,-1) -- (0,6) node[above] {$y$};
   
-  % Draw tick marks on x-axis
+  % Draw tick marks on the x-axis
   \foreach \x in {-2,-1,0,1,2,3,4,5}
-      \draw (\x,0.1) -- (\x,-0.1) node[below] {\small \x};
+      \draw (\x,0.1) -- (\x,-0.1) node[below] {\small $\x$};
 
-  % Draw tick marks on y-axis
+  % Draw tick marks on the y-axis
   \foreach \y in {0,1,2,3,4,5,6}
-      \draw (0.1,\y) -- (-0.1,\y) node[left] {\small \y};
+      \draw (0.1,\y) -- (-0.1,\y) node[left] {\small $\y$};
 
   % Plot y = 2x + 1
   \draw[domain=-1:3.5, smooth, variable=\x, blue, thick] plot ({\x}, {2*\x+1});
@@ -68,15 +80,17 @@ Below is a graphical illustration:
 
   % Plot y = -x + 4
   \draw[domain=-1:4.5, smooth, variable=\x, red, thick] plot ({\x}, {-\x+4});
-  \node[red, above left] at (0.5, {-0.5+4}) {$y=-x+4$};
+  \node[red, above left] at (0.5, { -0.5+4}) {$y=-x+4$};
 
-  % Mark intersection point
+  % Mark the intersection point
   \filldraw [black] (1,3) circle (2pt);
   \node[below right] at (1,3) {$(1,3)$};
 
 \end{tikzpicture}
 \end{center}
 \vspace*{2em}
+
+This example reinforces that when the graphs of two linear equations intersect at a single point, that point is the unique solution satisfying both equations.
 
 ### Example 2: No Solution (Parallel Lines)
 
@@ -89,11 +103,11 @@ $$
 \end{aligned}
 $$
 
-Both equations have the same slope ($$3$$) but different $$ y $$-intercepts. This means the lines are parallel and do not intersect, so there is no solution.
+Both equations have the same slope ($3$) but different $y$-intercepts. This means the lines are parallel and they never meet. The lack of an intersection indicates that the system has no solution.
 
 ### Example 3: Infinitely Many Solutions (Coincident Lines)
 
-For the system:
+Consider the system:
 
 $$
 \begin{aligned}
@@ -102,16 +116,21 @@ $$
 \end{aligned}
 $$
 
-The second equation simplifies to $$ y = -2x + 5 $$. Both equations are identical, meaning the lines coincide completely. This system has infinitely many solutions.
+The second equation simplifies to
+$$
+y = -2x + 5.
+$$
+
+Since both equations are identical, every point on the line is a solution. This is an example of coincident lines, meaning the system has infinitely many solutions.
 
 ### Real-World Application
 
-In real-world scenarios, systems of equations can model situations where two different relationships must hold simultaneously. For example:
+Systems of equations are practical tools for modeling situations where multiple conditions must be true at the same time. For example:
 
-- In business, supply and demand equations intersect at the equilibrium price.
-- In engineering, different force equations intersect to balance a structure.
-- In sports analytics, player performance metrics may be represented by linear trends where their intersection indicates a point of balance.
+- In business, the intersection of supply and demand curves determines the equilibrium price and quantity.
+- In engineering, intersections of force equations help in analyzing structural balance.
+- In sports analytics, intersecting performance trends can indicate a point of balance in player statistics.
 
-Graphical analysis allows you to visually interpret these scenarios and understand the nature of the solutions.
+Graphical analysis builds intuition by visually demonstrating how different relationships interact. Understanding these intersections is crucial for solving real-world problems and mastering the College Algebra CLEP exam material.
 
-By mastering graphical interpretation, you gain an intuitive understanding of where and how systems of equations provide solutions in both academic problems and real-life applications.
+By mastering the graphical interpretation of systems of equations, you enhance your ability to visualize and solve problems that involve multiple constraints, paving the way for success in both academic and practical applications.

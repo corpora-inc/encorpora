@@ -1,41 +1,52 @@
 ## Lesson: Solving Linear Inequalities and Graphing Solution Sets
 
-Linear inequalities are similar to linear equations but use inequality symbols ($>$, $<$, $\ge$, $\le$) instead of an equal sign. The solution is a set of values that make the inequality true. In addition, when multiplying or dividing both sides of an inequality by a negative number, the inequality symbol must be flipped.
+Linear inequalities are like linear equations but use inequality symbols ($>$, $<$, $\ge$, $\le$) instead of an equal sign. This means the solution is a set of values that satisfy the inequality. One important rule is that when you multiply or divide both sides of an inequality by a negative number, you must flip the direction of the inequality.
+
+This lesson will explain the key steps and concepts to solve a linear inequality and graph its solution set on a number line. By understanding these steps, you can correctly decide and visualize the range of possible solutions. These ideas are useful in real-world applications, for example in budgeting to determine acceptable ranges for expenses or setting safety limits in engineering designs.
 
 ### Steps to Solve a Linear Inequality
 
 1. Isolate the term with the variable on one side.
-2. Perform arithmetic operations (addition, subtraction, multiplication, or division) on both sides. 
-3. When multiplying or dividing by a negative number, reverse the inequality symbol.
-4. Express the solution in inequality form and graph it on a number line.
+2. Perform arithmetic operations (addition, subtraction, multiplication, or division) on both sides.
+3. If you multiply or divide by a negative number, reverse the inequality symbol.
+4. Write the solution in inequality form and represent the solution on a number line.
 
 ### Example 1: Solve $$2x - 5 > 3$$
 
-1. Add 5 to both sides:
+We start by solving for $x$ step by step.
+
+1. Add 5 to both sides to move the constant term:
 
 $$
 2x - 5 + 5 > 3 + 5
 $$
 
+This simplifies to:
+
 $$
 2x > 8
 $$
 
-2. Divide by 2:
+2. Divide both sides by 2 to isolate $x$:
 
 $$
 \frac{2x}{2} > \frac{8}{2}
 $$
 
+Thus, we have:
+
 $$
 x > 4
 $$
 
-The solution is all numbers greater than 4.
+The solution means any number greater than $4$ will satisfy the inequality.
 
 #### Graphing the Solution
 
-On a number line, plot an open circle at 4 (since 4 is not included) and shade the line to the right.
+To graph the inequality $x > 4$ on a number line:
+
+- Draw an open circle at $x = 4$ to show that $4$ is not included in the solution.
+- Shade the region to the right of $4$ to represent all numbers greater than $4$.
 
 \vspace*{2em}
 \begin{center}
@@ -55,31 +66,40 @@ On a number line, plot an open circle at 4 (since 4 is not included) and shade t
 
 ### Example 2: Solve $$-3x + 7 \le 16$$
 
-1. Subtract 7 from both sides:
+We now solve a slightly different inequality.
+
+1. Subtract 7 from both sides to isolate the term with $x$:
 
 $$
 -3x + 7 - 7 \le 16 - 7
 $$
 
+Which simplifies to:
+
 $$
 -3x \le 9
 $$
 
-2. Divide by -3 and flip the inequality symbol:
+2. Divide both sides by $-3$. Remember to flip the inequality since you are dividing by a negative number:
 
 $$
 \frac{-3x}{-3} \ge \frac{9}{-3}
 $$
 
+This gives us:
+
 $$
 x \ge -3
 $$
 
-The solution is all numbers greater than or equal to -3.
+The inequality $x \ge -3$ means all numbers that are greater than or equal to $-3$ are solutions.
 
 #### Graphing the Solution
 
-On a number line, plot a closed circle at -3 (since -3 is included) and shade the line to the right.
+To graph $x \ge -3$ on a number line:
+
+- Draw a closed circle at $x = -3$ because $-3$ is included.
+- Shade the region to the right of $-3$ to show all numbers that are greater than or equal to $-3$.
 
 \vspace*{2em}
 \begin{center}
@@ -101,6 +121,10 @@ On a number line, plot a closed circle at -3 (since -3 is included) and shade th
 
 > When multiplying or dividing an inequality by a negative number, always reverse the inequality symbol.
 
-> Graphing solution sets involves marking the boundary (using open or closed circles) and shading the region where the inequality holds.
+> Graphing solution sets requires marking the boundary correctly—using open circles for values not included and closed circles for values that are included—and shading the area that satisfies the inequality.
 
-These methods are used in many real-life situations, such as budgeting (finding acceptable ranges for expenses) or engineering (establishing safety limits). Understanding how to manipulate and graph inequalities provides a solid foundation for more complex algebraic problems.
+These methods are essential in various practical situations, such as determining acceptable ranges in budgeting or ensuring safety in engineering designs.
+
+![Number line for $x>4$ with open circle at 4 and red arrow indicating $x>4$.](images/plot_1_02-02-lesson-solving-linear-inequalities-and-graphing-solution-sets.md.png)
+
+![Number line for $x\ge-3$ with closed circle at -3 and red arrow indicating $x\ge-3$.](images/plot_2_02-02-lesson-solving-linear-inequalities-and-graphing-solution-sets.md.png)

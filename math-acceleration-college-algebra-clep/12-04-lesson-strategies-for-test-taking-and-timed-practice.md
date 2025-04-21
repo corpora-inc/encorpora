@@ -1,81 +1,103 @@
 ## Strategies for Test Taking and Timed Practice
 
-This lesson focuses on developing effective strategies for managing time and stress during tests. We explore a systematic approach to pacing, careful reading, and decision-making, which are essential for success on the College Algebra CLEP exam. 
+This lesson focuses on developing effective strategies for managing time and stress during tests. We explore methods for pacing, careful reading, and systematic decision-making that are essential for success on the College Algebra CLEP exam.
 
 ### Understanding the Test Format
 
-Before entering the exam, it is important to be familiar with its structure. Knowing the number of problems, the time allotted, and the types of questions can help you plan your approach. 
+Before the exam, it is important to understand its structure. Knowing the number of problems, the total time available, and the types of questions (multiple-choice, free response, etc.) allows you to allocate your time wisely. This understanding helps you avoid surprises and allows you to plan a methodical approach during the test.
 
 > Effective preparation begins with understanding the test format and knowing what to expect.
 
 ### Time Management Techniques
 
-A major component of test success is managing your time efficiently. Here are some key strategies:
+Good time management is vital. We break down the process into clear steps:
 
 - **Calculate Time per Question:**
-  Determine the average time you have for each question. For example, if you have 60 minutes for 25 questions, compute:
+  First, determine the average time allocated per question. For example, if you have 60 minutes for 25 questions, calculate
 
-$$
-\text{Time per question} = \frac{60}{25} = 2.4 \text{ minutes}
-$$
+  $$
+  \text{Time per question} = \frac{60}{25} = 2.4 \text{ minutes}
+  $$
+
+  This average guides you in pacing yourself so that you do not spend too much time on any single problem.
 
 - **Keep a Steady Pace:**
-  Monitor your progress at regular intervals. For instance, if you have completed 10 questions in 20 minutes, check if you are on pace to finish on time.
+  Throughout the exam, check your progress. For example, if you have completed 10 questions in 20 minutes, compare this pace to the average time per question to verify that you will finish comfortably.
 
 - **Plan for Review:**
-  Allocate the last few minutes for reviewing answers and catching any mistakes.
+  Reserve the last few minutes to review your answers. This extra time can help you identify and correct simple errors or misread questions.
+
+These techniques are designed to reduce stress and help you remain focused throughout the exam.
 
 ### Reading Questions Thoroughly
 
-It is essential to read each question carefully. Key tips include:
+It is essential to read each question carefully. This ensures you do not miss crucial instructions or keywords. Consider these strategies:
 
 - **Highlight Key Terms:**
-  Identify words that define the problem, such as "solve", "simplify", or "evaluate".
+  Underline or mentally note important words such as "solve", "simplify", or "evaluate". These words direct you to the specific action needed.
 
 - **Break Down the Problem:**
-  Divide the question into smaller parts to overcome any misunderstandings.
+  If a question is complex, divide it into smaller, sequential steps. This division can clarify the problem and allow for a systematic solution approach.
+
+Detailed reading minimizes errors and solidifies your understanding of the problem.
 
 ### Elimination Techniques
 
-When facing multiple-choice questions, eliminate options that are clearly incorrect. Strategies include:
+Multiple-choice questions can sometimes include clearly incorrect options. Use these strategies to narrow your choices:
 
 - **Rule Out Extremes:**
-  Look for answers that appear unreasonable based on problem context.
+  Remove answers that are either unreasonably high or low based on the context of the problem. Extreme values often indicate incorrect computation or misinterpretation.
 
 - **Compare Similar Answers:**
-  If two options are close, double-check your calculations for subtle differences.
+  When options appear similar, recheck your calculations carefully. Small numerical differences require precise work and careful comparison.
+
+Utilizing elimination strategies streamlines your decision-making process and increases your chances of selecting the correct answer.
 
 ### Practice Under Timed Conditions
 
-Regular practice under timed conditions builds speed and helps simulate the exam environment. Consider the following approaches:
+Regular practice under timed conditions is key to developing exam endurance and speed:
 
 - **Use a Timer:**
-  Work on practice problems while keeping track of time. This builds an understanding of how long you spend on each problem.
+  Solve practice problems with a timer set. This practice familiarizes you with the amount of time spent on each problem and sharpens your pacing techniques.
 
 - **Set Incremental Goals:**
-  For example, aim to complete a set of problems within a specified time to build pacing discipline.
+  Break your practice sessions into smaller time increments. For example, target completing a batch of problems within a set time to simulate different parts of the exam.
 
 - **Reflect on Practice Sessions:**
-  Analyze your performance. Ask yourself what slowed you down and how you can improve.
+  After each session, take a moment to identify any delays or difficulties. Analyzing your performance helps you adjust strategies for future tests.
+
+Timed practice builds comfort with the exam pressure and teaches you how to maintain focus over the entire duration of the test.
 
 ### Example Timed Practice Plan
 
-Imagine the exam has 30 questions available in 60 minutes. Here is a potential time plan:
+![Bar chart: Time allocation for exam sections with $E$ for easy, $M$ for moderate, and $R$ for review.](images/plot_2_12-04-lesson-strategies-for-test-taking-and-timed-practice.md.png)
 
-1. **First 40 Minutes:** Focus on solving easier problems. For 20 questions, this means you spend about 2 minutes per question.
+Imagine an exam with 30 questions over 60 minutes. A possible strategy is as follows:
 
-2. **Next 15 Minutes:** Work on moderately challenging questions. If there are 5 questions, dedicate roughly 3 minutes each.
+1. **First 40 Minutes:**
+   Focus on the easier problems. For example, if there are 20 easy questions, allocate about 2 minutes per question to work through them quickly and accurately.
 
-3. **Last 5 Minutes:** Quickly review your answers and check for any simple errors.
+2. **Next 15 Minutes:**
+   Address moderately challenging questions. If there are 5 questions here, plan to spend roughly 3 minutes per question. This slightly longer time allows you to think through more complex problems.
 
-This breakdown can be adjusted based on the number and difficulty of questions.
+3. **Last 5 Minutes:**
+   Use this short period to review your answers and ensure no simple mistakes were made. A quick review can catch errors that may have been overlooked during the initial solving process.
+
+This plan can be adjusted depending on the exam’s format and the difficulty of the problems.
 
 ### Additional Tips for Success
 
-- **Stay Calm:** A relaxed mind increases efficiency. Take brief deep breaths if you feel overwhelmed.
+Maintaining a clear mind and adapting strategies during the test are vital. Additional suggestions include:
 
-- **Skip and Return:** If a question takes too long, skip it and move on. Return later if time allows.
+- **Stay Calm:**
+  Stress can impede clear thinking. If you feel overwhelmed, pause for a brief moment and take deep breaths to regain focus.
 
-- **Prepare Mentally:** Visualize your process during study sessions to build confidence that transfers to the test environment.
+- **Skip and Return:**
+  If a question is consuming too much time, mark it and move on to ensure you answer the easier questions first. Return to the skipped question if time permits.
 
-By incorporating these strategies into your practice sessions, you will build a strong framework for test-taking and achieve a balanced approach to time management. Consistent practice and self-reflection on your pacing are key to exam success.
+- **Prepare Mentally:**
+  Visualization techniques can be very helpful. Imagine yourself successfully working through problems with clarity and precision. This mental rehearsal improves confidence and test performance.
+
+By incorporating these detailed strategies into your practice routine, you create a strong framework for exam success. Understanding the test format and timing, along with regular, focused practice, helps build both speed and accuracy.
+
+![Line plot: Cumulative time with a constant pace of $2.4$ minutes per question.](images/plot_1_12-04-lesson-strategies-for-test-taking-and-timed-practice.md.png)
