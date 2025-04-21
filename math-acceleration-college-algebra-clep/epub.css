@@ -1,24 +1,35 @@
 /* epub.css */
-@namespace epub "http://www.idpf.org/2007/ops";
 
-/* epub.css */
-/* center display math only */
+/* register your embedded fonts as before… */
+@font-face {
+    font-family: 'STIXTwoMath';
+    src: url('fonts/STIXTwoMath-Regular.ttf') format('truetype');
+}
+
+/* apply your math font */
+math {
+    font-family: 'STIXTwoMath', serif !important;
+}
+
+/* absolutely force display‑math centering */
 math[display="block"] {
-    display: block;
-    margin: 1em auto;
-    text-align: center;
+    display: block !important;
+    margin: 1em auto !important;
+    text-align: center !important;
 }
 
-/* leave inline math alone */
+/* absolutely force inline‑math to stay inline */
 math[display="inline"] {
-    display: inline;
-    margin: 0;
+    display: inline !important;
+    white-space: nowrap !important;
+    vertical-align: baseline !important;
+    margin: 0 !important;
 }
 
-/* choose a MathML‑friendly font */
-mrow,
+/* fallback for all MathML subelements */
 mi,
 mn,
-mo {
-    font-family: STIXGeneral, serif;
+mo,
+mrow {
+    white-space: normal !important;
 }
