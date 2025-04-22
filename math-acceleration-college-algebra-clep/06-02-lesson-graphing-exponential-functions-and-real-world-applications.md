@@ -37,26 +37,7 @@ Graphing an exponential function involves a systematic process. Let’s consider
 
 The following graph shows the plot of $y = 2^x$:
 
-\vspace*{2em}
-
-\begin{center}
-\begin{tikzpicture}
-\begin{axis}[
-    xlabel={$x$},
-    ylabel={$y$},
-    title={Graph of $y=2^x$},
-    grid=both,
-    width=10cm,
-    height=8cm,
-    domain=-3:3,
-    samples=50
-]
-\addplot[blue] {2^x};
-\end{axis}
-\end{tikzpicture}
-\end{center}
-
-\vspace*{2em}
+<!-- tikzpicture -->
 
 This graph illustrates how the value of $y$ changes with $x$. Notice the exponential increase as $x$ becomes positive and the tendency to approach zero as $x$ becomes negative.
 
@@ -105,7 +86,7 @@ $$
 Detailed steps to graph this function are as follows:
 
 1. **Identify the Y-intercept:**
-   
+
    Evaluate the function at $t = 0$. Since $1.05^0 = 1$, we have:
 
    $$
@@ -117,19 +98,19 @@ Detailed steps to graph this function are as follows:
 2. **Compute key points:**
 
    - For $t = 1$:
-     
+
      $$
      A(1) = 1000 \cdot 1.05 = 1050
      $$
 
    - For $t = 2$:
-     
+
      $$
      A(2) = 1000 \cdot 1.05^2 \approx 1102.50
      $$
 
    - For $t = 3$:
-     
+
      $$
      A(3) \approx 1157.63
      $$
@@ -146,25 +127,6 @@ Detailed steps to graph this function are as follows:
 
 The graph of the compound interest function is shown below:
 
-\vspace*{2em}
-
-\begin{center}
-\begin{tikzpicture}
-\begin{axis}[
-    xlabel={$t$ (years)},
-    ylabel={$A(t)$},
-    title={Compound Interest: $A(t)=1000\cdot1.05^t$},
-    grid=both,
-    width=10cm,
-    height=8cm,
-    domain=0:5,
-    samples=50
-]
-\addplot[red] {1000*1.05^x};
-\end{axis}
-\end{tikzpicture}
-\end{center}
-
-\vspace*{2em}
+<!-- tikzpicture -->
 
 Through these examples, we see that exponential functions provide a powerful tool for modeling growth and decay. They capture the essence of processes that change at rates proportional to their current size. Understanding these models is critical for analyzing various phenomena in finance, population studies, natural sciences, and engineering.

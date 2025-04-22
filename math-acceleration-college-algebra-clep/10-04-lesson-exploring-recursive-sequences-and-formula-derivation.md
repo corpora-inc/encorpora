@@ -133,24 +133,7 @@ This formula allows you to compute the account balance after any number of years
 
 A visual representation can help solidify your understanding of how these sequences progress. Consider the following plot of the arithmetic sequence from Example 1:
 
-\vspace*{2em}
-\begin{center}
-\begin{tikzpicture}[x=0.7cm, y=0.5cm]
-  \draw[->] (0,0) -- (10,0) node[right] {Term Index};
-  \draw[->] (0,0) -- (0,20) node[above] {Sequence Value};
-  \foreach \n in {1,2,3,4,5,6,7,8,9} {
-    \draw (\n,0.2) -- (\n,-0.2) node[below] {\n};
-  }
-  \foreach \y in {3,7,11,15} {
-    \draw (-0.2,\y) -- (0.2,\y);
-  }
-  \fill (1,3) circle (2pt);
-  \fill (2,7) circle (2pt);
-  \fill (3,11) circle (2pt);
-  \fill (4,15) circle (2pt);
-\end{tikzpicture}
-\end{center}
-\vspace*{2em}
+<!-- tikzpicture -->
 
 This plot clearly illustrates how the arithmetic sequence grows by a constant amount with each term. Visual aids like this help build intuition for how sequences progress.
 

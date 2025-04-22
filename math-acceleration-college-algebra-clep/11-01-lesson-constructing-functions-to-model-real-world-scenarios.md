@@ -52,19 +52,11 @@ This function indicates that when no pizzas are made ($x=0$), the cost is just $
 
 #### Visualizing the Linear Model
 
-The graph of the function $C(x)=50+10x$ is a straight line with a slope of $10$ and a y-intercept of $50$. The slope indicates how steep the line is – a slope of $10$ means that for every unit increase in $x$, the cost increases by $10$ dollars. The y-intercept of $50$ is the starting cost. 
+The graph of the function $C(x)=50+10x$ is a straight line with a slope of $10$ and a y-intercept of $50$. The slope indicates how steep the line is – a slope of $10$ means that for every unit increase in $x$, the cost increases by $10$ dollars. The y-intercept of $50$ is the starting cost.
 
 Consider the following sketch of a number line representing the number of pizzas:
 
-\vspace*{2em}
-\begin{center}
-\begin{tikzpicture}[x=0.5cm]
-  \draw[->] (0,0) -- (12,0) node[right]{Number of Pizzas};
-  \foreach \x in {0,2,4,6,8,10,12}
-      \draw (\x,0.1) -- (\x,-0.1) node[below]{\x};
-\end{tikzpicture}
-\end{center}
-\vspace*{2em}
+<!-- tikzpicture -->
 
 This number line helps you visualize how the function works over a small range of $x$ values.
 

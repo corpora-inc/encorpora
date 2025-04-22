@@ -59,36 +59,7 @@ Both lines pass through the point $(1,3)$, which is the unique solution to the s
 
 Below is a graphical illustration:
 
-\vspace*{2em}
-\begin{center}
-\begin{tikzpicture}[scale=0.8]
-  % Draw axes
-  \draw[->] (-2,0) -- (5,0) node[right] {$x$};
-  \draw[->] (0,-1) -- (0,6) node[above] {$y$};
-  
-  % Draw tick marks on the x-axis
-  \foreach \x in {-2,-1,0,1,2,3,4,5}
-      \draw (\x,0.1) -- (\x,-0.1) node[below] {\small $\x$};
-
-  % Draw tick marks on the y-axis
-  \foreach \y in {0,1,2,3,4,5,6}
-      \draw (0.1,\y) -- (-0.1,\y) node[left] {\small $\y$};
-
-  % Plot y = 2x + 1
-  \draw[domain=-1:3.5, smooth, variable=\x, blue, thick] plot ({\x}, {2*\x+1});
-  \node[blue, above] at (3.2, {2*3.2+1}) {$y=2x+1$};
-
-  % Plot y = -x + 4
-  \draw[domain=-1:4.5, smooth, variable=\x, red, thick] plot ({\x}, {-\x+4});
-  \node[red, above left] at (0.5, { -0.5+4}) {$y=-x+4$};
-
-  % Mark the intersection point
-  \filldraw [black] (1,3) circle (2pt);
-  \node[below right] at (1,3) {$(1,3)$};
-
-\end{tikzpicture}
-\end{center}
-\vspace*{2em}
+<!-- tikzpicture -->
 
 This example reinforces that when the graphs of two linear equations intersect at a single point, that point is the unique solution satisfying both equations.
 

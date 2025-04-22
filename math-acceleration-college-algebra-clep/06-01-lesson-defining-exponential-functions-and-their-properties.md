@@ -48,7 +48,7 @@ Exponential functions have several important characteristics:
 
 - **Y-intercept:**
 
-  At $x=0$, the function crosses the $y$-axis at $(0,a)$ because $$f(0)=a.$$ 
+  At $x=0$, the function crosses the $y$-axis at $(0,a)$ because $$f(0)=a.$$
 
 - **Asymptote:**
 
@@ -136,27 +136,7 @@ The graph increases rapidly for positive $x$ and approaches zero for negative $x
 
 Below is a graphical representation of this exponential growth function:
 
-\vspace*{2em}
-\begin{center}
-\begin{tikzpicture}[x=0.8cm, y=0.5cm]
-
-  \draw[->] (-4,0) -- (4,0) node[right] {$x$};
-
-  \draw[->] (0,0) -- (0,8) node[above] {$f(x)$};
-
-  \fill (0,2) circle (2pt) node[right] {$(0,2)$};
-
-  \fill (1,6) circle (2pt) node[right] {$(1,6)$};
-
-  \fill (-1,0.67) circle (2pt) node[below left] {$(-1,\frac{2}{3})$};
-
-  \draw[domain=-2:2, smooth, variable=\x, red] plot ({\x},{2*3^(\x)});
-
-  \draw[dashed] (-4,0) -- (4,0);
-
-\end{tikzpicture}
-\end{center}
-\vspace*{2em}
+<!-- tikzpicture -->
 
 ### Real-World Applications
 

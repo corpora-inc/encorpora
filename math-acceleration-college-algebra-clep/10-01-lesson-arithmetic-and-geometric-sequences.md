@@ -100,19 +100,7 @@ These simple checks can help quickly classify the type of sequence you are deali
 
 Below is a diagram that represents the progression of an arithmetic sequence on a number line. Each term is evenly spaced, illustrating the constant increment between numbers.
 
-\vspace*{2em}
-\begin{center}
-\begin{tikzpicture}[x=0.6cm]
-  % Draw a number line from 0 to 20
-  \draw[->] (0,0) -- (20,0) node[right] {Number Line};
-  \foreach \x in {0,4,8,12,16,20}
-      \draw (\x,0.15) -- (\x,-0.15) node[below] {\x};
-  % Mark terms of the arithmetic sequence: 3, 7, 11, 15, 19
-  \foreach \x in {3,7,11,15,19}
-      \draw[fill=red] (\x,0) circle (2pt);
-\end{tikzpicture}
-\end{center}
-\vspace*{2em}
+<!-- tikzpicture -->
 
 The diagram visually communicates the regular spacing found in arithmetic sequences. In geometric sequences, similar visualization would show uneven spacing due to the multiplication factor, which can be illustrated using charts or logarithmic scales when necessary.
 

@@ -11,56 +11,7 @@ from pydantic import BaseModel
 LLM_PROVIVDER = "openai"
 
 
-SKIP_FILES = [
-    # "01-00-unit-intro-foundational-algebraic-concepts.md",
-    # "01-01-lesson-understanding-variables-and-algebraic-expressions.md",
-    # "01-02-lesson-operations-on-numbers-and-algebraic-terms.md",
-    # "01-03-lesson-simplifying-expressions-and-combining-like-terms.md",
-    # "01-04-lesson-the-distributive-property-and-its-applications.md",
-    # "01-05-lesson-evaluating-algebraic-expressions.md",
-    # "01-06-lesson-solving-basic-linear-equations.md",
-    # "01-07-lesson-solving-equations-with-variables-on-both-sides.md",
-    # "02-00-unit-intro-linear-equations-and-inequalities.md",
-    # "02-01-lesson-solving-linear-equations-with-single-variable.md",
-    # "02-02-lesson-solving-linear-inequalities-and-graphing-solution-sets.md",
-    # "02-03-lesson-solving-equations-with-absolute-value.md",
-    # "02-04-lesson-solving-inequalities-with-absolute-values.md",
-    # "02-05-lesson-applications-of-linear-equations-in-real-life.md",
-    # "03-00-unit-intro-functions-and-graphing.md",
-    # "03-01-lesson-defining-functions-and-function-notation.md",
-    # "03-02-lesson-graphing-linear-functions-and-understanding-slope.md",
-    # "03-03-lesson-function-transformations-and-shifts.md",
-    # "03-04-lesson-graphing-and-analyzing-quadratic-functions.md",
-    # "03-05-lesson-inverse-functions-and-composite-functions.md",
-    # "04-00-unit-intro-polynomial-functions-and-operations.md",
-    # "04-01-lesson-adding-and-subtracting-polynomials.md",
-    # "04-02-lesson-multiplying-polynomials-and-special-products.md",
-    # "04-03-lesson-factoring-polynomials-and-common-factors.md",
-    # "04-04-lesson-polynomial-division-and-synthetic-division.md",
-    # "04-05-lesson-solving-polynomial-equations-using-the-zero-product-property.md",
-    # "05-00-unit-intro-quadratic-functions-and-equations.md",
-    # "05-01-lesson-solving-quadratic-equations-by-factoring.md",
-    # "05-02-lesson-solving-quadratic-equations-using-the-quadratic-formula.md",
-    # "05-03-lesson-completing-the-square-technique.md",
-    # "05-04-lesson-graphing-quadratic-functions-using-vertex-form.md",
-    # "05-05-lesson-analyzing-the-discriminant-and-nature-of-roots.md",
-    # "06-00-unit-intro-exponential-and-logarithmic-functions.md",
-    # "06-01-lesson-defining-exponential-functions-and-their-properties.md",
-    # "06-02-lesson-graphing-exponential-functions-and-real-world-applications.md",
-    # "06-03-lesson-introduction-to-logarithms-and-their-properties.md",
-    # "06-04-lesson-solving-exponential-equations-using-logarithms.md",
-    # "06-05-lesson-solving-logarithmic-equations-and-applications.md",
-    # "07-00-unit-intro-rational-and-radical-functions.md",
-    # "07-01-lesson-simplifying-rational-expressions-and-identifying-domain-restrictions.md",
-    # "07-02-lesson-graphing-rational-functions-and-understanding-asymptotes.md",
-    # "07-03-lesson-understanding-radical-functions-and-nth-roots.md",
-    # "07-04-lesson-solving-equations-involving-radicals.md",
-    # "07-05-lesson-real-world-applications-of-rational-and-radical-functions.md",
-    # "08-00-unit-intro-complex-numbers-and-conic-sections.md",
-    # "08-01-lesson-understanding-complex-numbers-and-basic-operations.md",
-    # "08-02-lesson-representing-complex-numbers-on-the-complex-plane.md",
-    # "08-03-lesson-introduction-to-conic-sections-and-standard-equations.md",
-]
+SKIP_FILES = []
 
 ONLY_FILES = [
     # "01-08-lesson-real-number-classifications-and-properties-rational-irrational.md",
@@ -142,7 +93,7 @@ ONLY_FILES = [
 PLOT_SYSTEM_MESSAGE = (
     "Analyze the provided markdown content to identify 0-7 key mathematical concepts that would benefit from a visual plot. "
     # "If there are already figures or plots, do not add more. Return an empty list. "
-    "If there is a tikzpicture, insert an image after the tikzpicture. "
+    "If there is a tikzpicture, insert an image after the final \\vspace after the tikzpicture. "
     "For each concept, generate a concise Python code snippet that: "
     "- Uses np for NumPy, plt for Matplotlib, sp for SymPy (already imported). "
     "- Creates a high-quality plot (e.g., 2D line, 3D surface, histogram) with labels, title, and grid. "
@@ -151,7 +102,7 @@ PLOT_SYSTEM_MESSAGE = (
     "- Does NOT include import statements. "
     "Return a JSON list of objects, each with: "
     "- 'code': the Python code snippet (string). "
-    "- 'description': a brief description of the plot (string). "
+    "- 'description': a brief description of the plot (string). Can use inline LaTeX $x+3$ notation. "
     "- 'insert_after': a regex pattern to match the markdown line after which to insert the image (string). "
     "If no plots are needed, return an empty list. Do not make redundant plots. "
     "Return only the JSON list, no explanations."

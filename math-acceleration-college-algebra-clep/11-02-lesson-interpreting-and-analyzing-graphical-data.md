@@ -94,25 +94,7 @@ Consider a bar graph that shows the number of products sold by three different s
 
 Below is an example of a simple line graph representing the function $f(x)=2x+1$. This function can model a steady increase in a quantity over time.
 
-\vspace*{2em}
-\begin{center}
-\begin{tikzpicture}
-\begin{axis}[
-    xlabel={$x$},
-    ylabel={$f(x)$},
-    xmin=0, xmax=10,
-    ymin=0, ymax=25,
-    xtick={0,2,4,6,8,10},
-    ytick={0,5,10,15,20,25},
-    grid=both,
-    width=10cm,
-    height=6cm
-]
-\addplot [domain=0:10, samples=100, color=blue, thick] {2*x+1};
-\end{axis}
-\end{tikzpicture}
-\end{center}
-\vspace*{2em}
+<!-- tikzpicture -->
 
 **Analyzing the Graph:**
 

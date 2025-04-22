@@ -26,24 +26,7 @@ This requirement guarantees that the expression inside the square root is zero o
 
 Below is a plot of the hyperbola's right branch, using the domain $x \in [2,6]$. The plot confirms that the square root is defined only for values where $|x| \ge 2$.
 
-\vspace*{2em}
-\begin{center}
-\begin{tikzpicture}[scale=0.8]
-\begin{axis}[
-    xlabel={$x$},
-    ylabel={$y$},
-    title={Hyperbola: $\frac{x^2}{4} - y^2 = 1$},
-    domain=2:6,
-    samples=100,
-    axis lines=middle,
-    enlargelimits=true
-]
-\addplot [blue, thick] {sqrt(x*x/4 - 1)};
-\addplot [blue, thick] {-sqrt(x*x/4 - 1)};
-\end{axis}
-\end{tikzpicture}
-\end{center}
-\vspace*{2em}
+<!-- tikzpicture -->
 
 ### 2. Parabolic Reflectors in Satellite Dishes
 
@@ -97,22 +80,6 @@ This equation determines the curvature of the dish. Choosing the correct curvatu
 
 Below is a sample plot of the parabola $y = \frac{1}{8}x^2$ for $x \in [-8,8]$, which helps visualize the reflector’s curvature.
 
-\vspace*{2em}
-\begin{center}
-\begin{tikzpicture}
-\begin{axis}[
-    xlabel={$x$},
-    ylabel={$y$},
-    title={Parabola: $y = \frac{1}{8}x^2$},
-    domain=-8:8,
-    samples=100,
-    axis lines=middle,
-    enlargelimits=true
-]
-\addplot [red, thick] {x*x/8};
-\end{axis}
-\end{tikzpicture}
-\end{center}
-\vspace*{2em}
+<!-- tikzpicture -->
 
 These examples illustrate how conic sections are applied in various real-world scenarios. In engineering, careful attention to the domain and behavior of functions ensures that mathematical models accurately describe physical structures, whether for optimizing signal paths or analyzing orbital mechanics. Understanding these applications deepens the connection between algebraic techniques and practical problem solving in technology, physics, and architecture.

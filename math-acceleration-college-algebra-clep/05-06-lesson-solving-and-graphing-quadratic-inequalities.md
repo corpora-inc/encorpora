@@ -90,25 +90,7 @@ Since we are looking for values where the expression is less than zero, the solu
 
 Below is a number line that represents the solution interval. The open circles at $x = 2$ and $x = 3$ indicate that these endpoints are not included in the solution.
 
-\vspace*{2em}
-\begin{center}
-\begin{tikzpicture}[x=0.6cm]
-  % Draw the number line
-  \draw[->] (0,0) -- (12,0) node[right] {Number Line};
-  
-  % Place ticks at integer values from 0 to 12
-  \foreach \x in {0,2,...,12}
-    \draw (\x,0.1) -- (\x,-0.1) node[below] {\x};
-  
-  % Mark the critical points with open circles
-  \draw[thick] (4,0) circle (0.2cm);
-  \draw[thick] (6,0) circle (0.2cm);
-  
-  % Shade the region between the critical points
-  \draw[thick, red] (4,0) -- (6,0);
-\end{tikzpicture}
-\end{center}
-\vspace*{2em}
+<!-- tikzpicture -->
 
 Note: In the diagram, the points $x = 4$ and $x = 6$ correspond to the actual critical points $x = 2$ and $x = 3$ after applying a scale factor. Adjust the scale appropriately during presentations.
 
