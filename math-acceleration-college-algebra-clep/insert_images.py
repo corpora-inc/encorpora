@@ -8,6 +8,9 @@ import numpy as np
 import sympy as sp
 from pydantic import BaseModel
 
+LLM_PROVIVDER = "openai"
+
+
 SKIP_FILES = [
     # "01-00-unit-intro-foundational-algebraic-concepts.md",
     # "01-01-lesson-understanding-variables-and-algebraic-expressions.md",
@@ -65,12 +68,81 @@ ONLY_FILES = [
     # "03-07-lesson-algebra-of-functions-sums-products-and-quotients.md",
     # "05-06-lesson-solving-and-graphing-quadratic-inequalities.md",
     # "10-06-lesson-factorials-and-binomial-theorem.md",
-    "07-02-lesson-graphing-rational-functions-and-understanding-asymptotes.md",
+    # "07-02-lesson-graphing-rational-functions-and-understanding-asymptotes.md",
+    # $ grep -r tikzpic *.md
+    # 01-08-lesson-real-number-classifications-and-properties-rational-irrational.md:\begin{tikzpicture}[x=0.5cm]
+    # 01-08-lesson-real-number-classifications-and-properties-rational-irrational.md:\end{tikzpicture}
+    # 02-02-lesson-solving-linear-inequalities-and-graphing-solution-sets.md:\begin{tikzpicture}[x=0.5cm]
+    # 02-02-lesson-solving-linear-inequalities-and-graphing-solution-sets.md:\end{tikzpicture}
+    # 02-02-lesson-solving-linear-inequalities-and-graphing-solution-sets.md:\begin{tikzpicture}[x=0.5cm]
+    # 02-02-lesson-solving-linear-inequalities-and-graphing-solution-sets.md:\end{tikzpicture}
+    # 03-02-lesson-graphing-linear-functions-and-understanding-slope.md:\begin{tikzpicture}
+    # 03-02-lesson-graphing-linear-functions-and-understanding-slope.md:\end{tikzpicture}
+    # 03-02-lesson-graphing-linear-functions-and-understanding-slope.md:\begin{tikzpicture}
+    # 03-02-lesson-graphing-linear-functions-and-understanding-slope.md:\end{tikzpicture}
+    # 03-03-lesson-function-transformations-and-shifts.md:\begin{tikzpicture}
+    # 03-03-lesson-function-transformations-and-shifts.md:\end{tikzpicture}
+    # 03-03-lesson-function-transformations-and-shifts.md:\begin{tikzpicture}
+    # 03-03-lesson-function-transformations-and-shifts.md:\end{tikzpicture}
+    # 03-03-lesson-function-transformations-and-shifts.md:\begin{tikzpicture}
+    # 03-03-lesson-function-transformations-and-shifts.md:\end{tikzpicture}
+    # 03-03-lesson-function-transformations-and-shifts.md:\begin{tikzpicture}
+    # 03-03-lesson-function-transformations-and-shifts.md:\end{tikzpicture}
+    # 03-03-lesson-function-transformations-and-shifts.md:\begin{tikzpicture}
+    # 03-03-lesson-function-transformations-and-shifts.md:\end{tikzpicture}
+    # 03-03-lesson-function-transformations-and-shifts.md:\begin{tikzpicture}
+    # 03-03-lesson-function-transformations-and-shifts.md:\end{tikzpicture}
+    # 03-03-lesson-function-transformations-and-shifts.md:\begin{tikzpicture}
+    # 03-03-lesson-function-transformations-and-shifts.md:\end{tikzpicture}
+    # 03-04-lesson-graphing-and-analyzing-quadratic-functions.md:\begin{tikzpicture}[scale=0.8]
+    # 03-04-lesson-graphing-and-analyzing-quadratic-functions.md:\end{tikzpicture}
+    # 03-04-lesson-graphing-and-analyzing-quadratic-functions.md:\begin{tikzpicture}[scale=0.8]
+    # 03-04-lesson-graphing-and-analyzing-quadratic-functions.md:\end{tikzpicture}
+    # 05-06-lesson-solving-and-graphing-quadratic-inequalities.md:\begin{tikzpicture}[x=0.6cm]
+    # 05-06-lesson-solving-and-graphing-quadratic-inequalities.md:\end{tikzpicture}
+    # 06-01-lesson-defining-exponential-functions-and-their-properties.md:\begin{tikzpicture}[x=0.8cm, y=0.5cm]
+    # 06-01-lesson-defining-exponential-functions-and-their-properties.md:\end{tikzpicture}
+    # 06-02-lesson-graphing-exponential-functions-and-real-world-applications.md:\begin{tikzpicture}
+    # 06-02-lesson-graphing-exponential-functions-and-real-world-applications.md:\end{tikzpicture}
+    # 06-02-lesson-graphing-exponential-functions-and-real-world-applications.md:\begin{tikzpicture}
+    # 06-02-lesson-graphing-exponential-functions-and-real-world-applications.md:\end{tikzpicture}
+    # 08-02-lesson-representing-complex-numbers-on-the-complex-plane.md:\begin{tikzpicture}[scale=0.6]
+    # 08-02-lesson-representing-complex-numbers-on-the-complex-plane.md:\end{tikzpicture}
+    # 08-05-lesson-applications-of-conic-sections-in-science-and-engineering.md:\begin{tikzpicture}[scale=0.8]
+    # 08-05-lesson-applications-of-conic-sections-in-science-and-engineering.md:\end{tikzpicture}
+    # 08-05-lesson-applications-of-conic-sections-in-science-and-engineering.md:\begin{tikzpicture}
+    # 08-05-lesson-applications-of-conic-sections-in-science-and-engineering.md:\end{tikzpicture}
+    # 09-03-lesson-graphical-interpretation-of-systems-of-equations.md:\begin{tikzpicture}[scale=0.8]
+    # 09-03-lesson-graphical-interpretation-of-systems-of-equations.md:\end{tikzpicture}
+    # 10-01-lesson-arithmetic-and-geometric-sequences.md:\begin{tikzpicture}[x=0.6cm]
+    # 10-01-lesson-arithmetic-and-geometric-sequences.md:\end{tikzpicture}
+    # 10-04-lesson-exploring-recursive-sequences-and-formula-derivation.md:\begin{tikzpicture}[x=0.7cm, y=0.5cm]
+    # 10-04-lesson-exploring-recursive-sequences-and-formula-derivation.md:\end{tikzpicture}
+    # 11-01-lesson-constructing-functions-to-model-real-world-scenarios.md:\begin{tikzpicture}[x=0.5cm]
+    # 11-01-lesson-constructing-functions-to-model-real-world-scenarios.md:\end{tikzpicture}
+    # 11-02-lesson-interpreting-and-analyzing-graphical-data.md:\begin{tikzpicture}
+    # 11-02-lesson-interpreting-and-analyzing-graphical-data.md:\end{tikzpicture}
+    "01-08-lesson-real-number-classifications-and-properties-rational-irrational.md",
+    "02-02-lesson-solving-linear-inequalities-and-graphing-solution-sets.md",
+    "03-02-lesson-graphing-linear-functions-and-understanding-slope.md",
+    "03-03-lesson-function-transformations-and-shifts.md",
+    "03-04-lesson-graphing-and-analyzing-quadratic-functions.md",
+    "05-06-lesson-solving-and-graphing-quadratic-inequalities.md",
+    "06-01-lesson-defining-exponential-functions-and-their-properties.md",
+    "06-02-lesson-graphing-exponential-functions-and-real-world-applications.md",
+    "08-02-lesson-representing-complex-numbers-on-the-complex-plane.md",
+    "08-05-lesson-applications-of-conic-sections-in-science-and-engineering.md",
+    "09-03-lesson-graphical-interpretation-of-systems-of-equations.md",
+    "10-01-lesson-arithmetic-and-geometric-sequences.md",
+    "10-04-lesson-exploring-recursive-sequences-and-formula-derivation.md",
+    "11-01-lesson-constructing-functions-to-model-real-world-scenarios.md",
+    "11-02-lesson-interpreting-and-analyzing-graphical-data.md",
 ]
 
 PLOT_SYSTEM_MESSAGE = (
-    "Analyze the provided markdown content to identify 0-3 key mathematical concepts that would benefit from a visual plot. "
-    "If there are already figures or plots, do not add more. Return an empty list. "
+    "Analyze the provided markdown content to identify 0-7 key mathematical concepts that would benefit from a visual plot. "
+    # "If there are already figures or plots, do not add more. Return an empty list. "
+    "If there is a tikzpicture, insert an image after the tikzpicture. "
     "For each concept, generate a concise Python code snippet that: "
     "- Uses np for NumPy, plt for Matplotlib, sp for SymPy (already imported). "
     "- Creates a high-quality plot (e.g., 2D line, 3D surface, histogram) with labels, title, and grid. "
@@ -114,7 +186,7 @@ class FixBuildSchema(BaseModel):
 
 def generate_plots(content: str, corpus_id: str) -> PlotsSchema:
     print(f"Generating plots for corpus_id: {corpus_id}")
-    llm = load_llm_provider()
+    llm = load_llm_provider(LLM_PROVIVDER)
     messages = [
         ChatCompletionTextMessage(
             role="system",
@@ -134,7 +206,7 @@ def fix_build_error(
     original_content: str, updated_content: str, error_output: str, corpus_id: str
 ) -> str:
     print(f"Fixing build error for corpus_id: {corpus_id}")
-    llm = load_llm_provider()
+    llm = load_llm_provider(LLM_PROVIVDER)
     messages = [
         ChatCompletionTextMessage(
             role="system",

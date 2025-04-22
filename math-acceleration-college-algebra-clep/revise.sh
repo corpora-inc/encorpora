@@ -34,13 +34,36 @@ set -e
 # EOF
 # )
 
+# INSTRUCTIONS=$(
+#   cat <<'EOF'
+# Make sure everything is correct and fill out with more verbose explanations for each step and maybe some intuition so a newb can learn how to do this and can follow easily each step.
+
+# Be verbose and explain everything in detail.
+
+# DO NOT USE `\begin{array}` or other macros that don't work with epub.
+# EOF
+# )
+
 INSTRUCTIONS=$(
   cat <<'EOF'
-Make sure everything is correct and fill out with more verbose explanations for each step and maybe some intuition so a newb can learn how to do this and can follow easily each step.
+Don't mention over and over things like:
 
-Be verbose and explain everything in detail.
+"Understanding these ideas builds a strong foundation that will help you tackle more complex topics in college-level mathematics and real-world applications. By mastering these fundamentals, you develop a systematic approach to problem-solving, making it easier to analyze and solve challenges in areas like economics, engineering design, and sports statistics."
 
-DO NOT USE `\begin{array}` or other macros that don't work with epub.
+Instead, focus on the math and the concepts. Focus on fitting more math and concise examples and explanations and definitions into the same space.
+
+Don't _tell_ the reader what this is good for. Show with examples. Don't add generic AI-filler fluff. Remove it.
+
+Use creative and thought-provoking examples that are different that others in the context. Make more imaginative examples that are unlikely to be repeated in the book.
+
+Less AI blather, more math. More examples. Concise drills.
+
+Don't tell the reader about finance, science, engineering and data analytics - show with examples.
+
+Fast, hard-hitting, concise examples.
+
+Some examples will need to be stated very slowly with simple steps. But, some you can show several in a compact way, especially after you have established the pattern.
+
 EOF
 )
 
