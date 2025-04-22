@@ -61,9 +61,19 @@ Below is a graphical illustration:
 
 <!-- tikzpicture -->
 
+
+![Plot of the two lines y=2x+1 and y=-x+4 showing their unique intersection at (1,3).](images/plot_1_09-03-lesson-graphical-interpretation-of-systems-of-equations.md.png)
+
+
+
 This example reinforces that when the graphs of two linear equations intersect at a single point, that point is the unique solution satisfying both equations.
 
 ### Example 2: No Solution (Parallel Lines)
+
+
+![Plot of parallel lines y=3x-2 and y=3x+1 illustrating no intersection (no solution).](images/plot_2_09-03-lesson-graphical-interpretation-of-systems-of-equations.md.png)
+
+
 
 Consider the system:
 
@@ -77,6 +87,11 @@ $$
 Both equations have the same slope ($3$) but different $y$-intercepts. This means the lines are parallel and they never meet. The lack of an intersection indicates that the system has no solution.
 
 ### Example 3: Infinitely Many Solutions (Coincident Lines)
+
+
+![Plot of coincident lines y=-2x+5 plotted twice to show infinitely many solutions.](images/plot_3_09-03-lesson-graphical-interpretation-of-systems-of-equations.md.png)
+
+
 
 Consider the system:
 

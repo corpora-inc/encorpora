@@ -28,6 +28,16 @@ Below is a plot of the hyperbola's right branch, using the domain $x \in [2,6]$.
 
 <!-- tikzpicture -->
 
+
+![Plot of the parabola $y = 1/8 x^2$ for $x \in [−8, 8]$, illustrating the curvature of a parabolic reflector.](images/plot_2_08-05-lesson-applications-of-conic-sections-in-science-and-engineering.md.png)
+
+
+
+
+![Plot of the right branch of the hyperbola $x^2/4 - y^2 = 1$ over $x \in [2, 6]$, showing the upper and lower curves.](images/plot_1_08-05-lesson-applications-of-conic-sections-in-science-and-engineering.md.png)
+
+
+
 ### 2. Parabolic Reflectors in Satellite Dishes
 
 Parabolas are essential in focusing light and radio waves. A parabola with a vertical orientation is expressed as

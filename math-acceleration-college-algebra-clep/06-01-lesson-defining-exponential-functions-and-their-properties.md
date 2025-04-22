@@ -118,6 +118,11 @@ f(3)=5\cdot \left(\frac{1}{2}\right)^3=5\cdot \frac{1}{8}=\frac{5}{8}.
 
    This rapid decrease illustrates exponential decay, similar to processes seen in radioactive decay or asset depreciation.
 
+
+![Plot of the exponential decay function f(x)=5·(1/2)^x with key points and asymptote](images/plot_2_06-01-lesson-defining-exponential-functions-and-their-properties.md.png)
+
+
+
 ### Graphing Exponential Functions
 
 Visualizing an exponential function helps build intuition. Consider the function
@@ -137,6 +142,11 @@ The graph increases rapidly for positive $x$ and approaches zero for negative $x
 Below is a graphical representation of this exponential growth function:
 
 <!-- tikzpicture -->
+
+
+![Plot of the exponential growth function f(x)=2·3^x with key points and asymptote](images/plot_1_06-01-lesson-defining-exponential-functions-and-their-properties.md.png)
+
+
 
 ### Real-World Applications
 

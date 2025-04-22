@@ -92,6 +92,11 @@ Below is a number line that represents the solution interval. The open circles a
 
 <!-- tikzpicture -->
 
+
+![Plot of the quadratic function x^2 - 5x + 6 with the region where the function is negative (solution interval) shaded.](images/plot_1_05-06-lesson-solving-and-graphing-quadratic-inequalities.md.png)
+
+
+
 Note: In the diagram, the points $x = 4$ and $x = 6$ correspond to the actual critical points $x = 2$ and $x = 3$ after applying a scale factor. Adjust the scale appropriately during presentations.
 
 ### Example 2: Solving a Quadratic Inequality with a $\geq$ Condition
@@ -141,6 +146,11 @@ Because the inequality is non-strict ($\leq$), include the endpoints in the solu
 **Graphing the Solution:**
 
 The number line for this inequality shows closed circles at
+
+
+![Plot of the quadratic function -2x^2 + 4x + 1 with the region where the function is non-negative (solution interval) shaded.](images/plot_2_05-06-lesson-solving-and-graphing-quadratic-inequalities.md.png)
+
+
 
 $$
 x = 1 - \frac{\sqrt{6}}{2} \quad \text{and} \quad x = 1 + \frac{\sqrt{6}}{2},

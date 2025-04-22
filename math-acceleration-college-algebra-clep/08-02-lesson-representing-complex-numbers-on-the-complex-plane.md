@@ -61,6 +61,16 @@ The diagram below illustrates the complex plane with labeled axes and marks the 
 
 <!-- tikzpicture -->
 
+
+![Plot of the complex number -2-5i on the complex plane showing the point and its modulus.](images/plot_2_08-02-lesson-representing-complex-numbers-on-the-complex-plane.md.png)
+
+
+
+
+![Plot of the complex number 3+4i on the complex plane showing the point and its modulus.](images/plot_1_08-02-lesson-representing-complex-numbers-on-the-complex-plane.md.png)
+
+
+
 This diagram not only shows the point $$3+4i$$ but also reinforces the idea that its modulus, the distance from the origin, is 5 units. Observing the distance visually helps to cement the concept and provides a bridge between numerical calculations and spatial reasoning.
 
 ### Summary of Steps

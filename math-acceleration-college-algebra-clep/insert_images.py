@@ -73,11 +73,12 @@ ONLY_FILES = [
     # 11-01-lesson-constructing-functions-to-model-real-world-scenarios.md:\end{tikzpicture}
     # 11-02-lesson-interpreting-and-analyzing-graphical-data.md:\begin{tikzpicture}
     # 11-02-lesson-interpreting-and-analyzing-graphical-data.md:\end{tikzpicture}
-    "01-08-lesson-real-number-classifications-and-properties-rational-irrational.md",
-    "02-02-lesson-solving-linear-inequalities-and-graphing-solution-sets.md",
-    "03-02-lesson-graphing-linear-functions-and-understanding-slope.md",
-    "03-03-lesson-function-transformations-and-shifts.md",
-    "03-04-lesson-graphing-and-analyzing-quadratic-functions.md",
+    #
+    # "01-08-lesson-real-number-classifications-and-properties-rational-irrational.md",
+    # "02-02-lesson-solving-linear-inequalities-and-graphing-solution-sets.md",
+    # "03-02-lesson-graphing-linear-functions-and-understanding-slope.md",
+    # "03-03-lesson-function-transformations-and-shifts.md",
+    # "03-04-lesson-graphing-and-analyzing-quadratic-functions.md",
     "05-06-lesson-solving-and-graphing-quadratic-inequalities.md",
     "06-01-lesson-defining-exponential-functions-and-their-properties.md",
     "06-02-lesson-graphing-exponential-functions-and-real-world-applications.md",
@@ -102,7 +103,7 @@ PLOT_SYSTEM_MESSAGE = (
     "- Does NOT include import statements. "
     "Return a JSON list of objects, each with: "
     "- 'code': the Python code snippet (string). "
-    "- 'description': a brief description of the plot (string). Can use inline LaTeX $x+3$ notation. "
+    "- 'description': a brief description of the plot (string). "
     "- 'insert_after': a regex pattern to match the markdown line after which to insert the image (string). "
     "If no plots are needed, return an empty list. Do not make redundant plots. "
     "Return only the JSON list, no explanations."

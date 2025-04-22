@@ -52,6 +52,16 @@ A simple diagram of the line is shown below:
 
 <!-- tikzpicture -->
 
+
+![Plot of the linear function y = -1/2x + 4 highlighting the y-intercept (0,4) and the point (2,3).](images/plot_2_03-02-lesson-graphing-linear-functions-and-understanding-slope.md.png)
+
+
+
+
+![Plot of the linear function y = 2x + 3 highlighting the y-intercept (0,3) and the point (1,5).](images/plot_1_03-02-lesson-graphing-linear-functions-and-understanding-slope.md.png)
+
+
+
 This diagram visually shows the line rising two units for every single unit it moves to the right.
 
 ### Example 2: Graphing $y = -\frac{1}{2}x + 4$

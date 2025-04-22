@@ -47,6 +47,11 @@ The corresponding equation of the line is:
 
 $$
 C = 3x + 2
+
+
+![Line graph of C=3x+2 showing cost versus number of items, with a highlighted point at x=5.](images/plot_1_11-02-lesson-interpreting-and-analyzing-graphical-data.md.png)
+
+
 $$
 
 **Step-by-Step Analysis:**
@@ -78,6 +83,11 @@ Thus, the total cost for 5 items is $17.
 
 Consider a bar graph that shows the number of products sold by three different stores: Store A, Store B, and Store C. The heights of the bars correspond to 8, 12, and 5 respectively.
 
+
+![Bar chart of products sold by Store A, Store B, and Store C.](images/plot_2_11-02-lesson-interpreting-and-analyzing-graphical-data.md.png)
+
+
+
 **Step-by-Step Analysis:**
 
 1. **Identify Categories and Values:**
@@ -93,6 +103,11 @@ Consider a bar graph that shows the number of products sold by three different s
 ### Visualizing a Line Graph
 
 Below is an example of a simple line graph representing the function $f(x)=2x+1$. This function can model a steady increase in a quantity over time.
+
+
+![Simple line graph of the function f(x)=2x+1 showing a constant slope.](images/plot_3_11-02-lesson-interpreting-and-analyzing-graphical-data.md.png)
+
+
 
 <!-- tikzpicture -->
 

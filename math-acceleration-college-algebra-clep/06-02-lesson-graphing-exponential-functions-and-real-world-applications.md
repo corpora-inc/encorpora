@@ -39,6 +39,11 @@ The following graph shows the plot of $y = 2^x$:
 
 <!-- tikzpicture -->
 
+
+![Graph of the exponential function y = 2^x with key points highlighted.](images/plot_1_06-02-lesson-graphing-exponential-functions-and-real-world-applications.md.png)
+
+
+
 This graph illustrates how the value of $y$ changes with $x$. Notice the exponential increase as $x$ becomes positive and the tendency to approach zero as $x$ becomes negative.
 
 ### Real World Applications
@@ -130,3 +135,11 @@ The graph of the compound interest function is shown below:
 <!-- tikzpicture -->
 
 Through these examples, we see that exponential functions provide a powerful tool for modeling growth and decay. They capture the essence of processes that change at rates proportional to their current size. Understanding these models is critical for analyzing various phenomena in finance, population studies, natural sciences, and engineering.
+
+
+![Exponential population growth curve for $P0 = 100$ and $r = 0.3$](images/plot_2_06-02-lesson-graphing-exponential-functions-and-real-world-applications.md.png)
+
+
+
+![Radioactive decay curve for $N0 = 100$ and $\lambda = 0.5$](images/plot_3_06-02-lesson-graphing-exponential-functions-and-real-world-applications.md.png)
+

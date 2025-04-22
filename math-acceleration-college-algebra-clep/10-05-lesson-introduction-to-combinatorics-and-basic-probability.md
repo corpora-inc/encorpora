@@ -26,7 +26,7 @@ $$
 n! = n \times (n-1) \times \cdots \times 2 \times 1
 $$
 
-For instance, 
+For instance,
 
 $$
 5! = 5 \times 4 \times 3 \times 2 \times 1 = 120
@@ -82,8 +82,8 @@ This concept is crucial for risk assessment, decision making, and understanding 
 
 Consider a fair 6-sided die. To find the probability of rolling an even number, follow these steps:
 
-1. List the total outcomes: \(\{1, 2, 3, 4, 5, 6\}\) (6 outcomes).
-2. Identify the favorable outcomes: \(\{2, 4, 6\}\) (3 outcomes).
+1. List the total outcomes: ${1, 2, 3, 4, 5, 6}$ (6 outcomes).
+2. Identify the favorable outcomes: ${2, 4, 6}$ (3 outcomes).
 3. Apply the probability formula:
 
 $$

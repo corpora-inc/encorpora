@@ -58,6 +58,11 @@ Consider the following sketch of a number line representing the number of pizzas
 
 <!-- tikzpicture -->
 
+
+![Plot of the cost function C(x)=50+10x for number of pizzas.](images/plot_1_11-01-lesson-constructing-functions-to-model-real-world-scenarios.md.png)
+
+
+
 This number line helps you visualize how the function works over a small range of $x$ values.
 
 ### Example 2: Distance Traveled at a Constant Speed
@@ -93,3 +98,7 @@ Including these factors gives your function greater precision and enhances its a
 By following these structured steps—identifying the independent variable, determining constants and rates, and constructing the mathematical relationship—you can create functions that effectively model a wide range of real-world scenarios. This systematic approach is essential for fields such as finance, engineering, and science, where precise predictions and analyses are needed.
 
 Practice applying these steps using different scenarios to build a strong understanding of how functions work. This will boost your confidence and solidify your skill in constructing mathematical models for real-life problems.
+
+
+![Plot of the distance function d(t)=60t over time.](images/plot_2_11-01-lesson-constructing-functions-to-model-real-world-scenarios.md.png)
+

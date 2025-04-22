@@ -8,7 +8,7 @@ Algebra is fundamental because it provides the tools to model and solve problems
 
 The concepts covered here include:
 
-- **Variables:** Symbols that represent unknown or changing values. 
+- **Variables:** Symbols that represent unknown or changing values.
 - **Expressions:** Combinations of numbers, variables, and operations, such as addition or multiplication, that represent a value.
 - **Basic Operations:** Techniques for adding, subtracting, multiplying, and dividing, which are used to simplify expressions and solve equations.
 

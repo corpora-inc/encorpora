@@ -43,7 +43,9 @@ shifts the parabola upward by 3 units. This means every point on $f(x)$ is moved
 
 Below is a graph comparing $f(x)=x^2$ (blue) and $g(x)=x^2+3$ (red):
 
-<!-- tikzpicture -->
+
+![Plot showing vertical shift of f(x)=x^2 upwards by 3 units to obtain g(x)=x^2+3.](images/plot_1_03-03-lesson-function-transformations-and-shifts.md.png)
+
 
 **Horizontal Shifts:**
 
@@ -59,7 +61,8 @@ shifts the graph to the right by 2 units. This means every point on $f(x)$ is mo
 
 Below is a graph comparing $f(x)=x^2$ (blue) and $g(x)=(x-2)^2$ (red):
 
-<!-- tikzpicture -->
+![Plot showing horizontal shift of f(x)=x^2 to the right by 2 units, yielding g(x)=(x-2)^2.](images/plot_2_03-03-lesson-function-transformations-and-shifts.md.png)
+
 
 ### 3. Reflections
 
@@ -75,7 +78,12 @@ reflects the graph downward, meaning every point on $f(x)$ is mirrored across th
 
 Below is a graph comparing $f(x)=\sqrt{x}$ (blue) and $g(x)=-\sqrt{x}$ (red):
 
-<!-- tikzpicture -->
+
+![Reflection of $f(x)=\sqrt{x}$ over the horizontal axis to form $g(x)=-\sqrt{x}$, demonstrating a vertical reflection.](images/plot_3_03-03-lesson-function-transformations-and-shifts.md.png)
+
+
+
+
 
 ### 4. Stretching and Compressing
 
@@ -93,7 +101,10 @@ stretches the parabola vertically by a factor of 2, meaning every $y$-value is d
 
 Below is a graph comparing $f(x)=x^2$ (blue) and $g(x)=2x^2$ (red):
 
-<!-- tikzpicture -->
+![Plot showing vertical stretching of f(x)=x^2 by a factor of 2 to form g(x)=2x^2.](images/plot_4_03-03-lesson-function-transformations-and-shifts.md.png)
+
+
+
 
 **Horizontal Stretch/Compression:**
 
@@ -109,7 +120,8 @@ results in a horizontal stretch that makes the parabola wider, as each $x$-value
 
 Below is a graph comparing $f(x)=x^2$ (blue) and $g(x)=(0.5x)^2$ (red):
 
-<!-- tikzpicture -->
+![Plot illustrating horizontal stretching of f(x)=x^2 where g(x)=(0.5x)^2 appears wider.](images/plot_5_03-03-lesson-function-transformations-and-shifts.md.png)
+
 
 ### 5. Combining Transformations: Step-by-Step Example
 
@@ -141,7 +153,10 @@ This example combines several transformations in one function. Follow these step
 
 Below is a graph comparing $f(x)=x^2$ (blue) and the transformed function $g(x)=-2(x+3)^2+4$ (red):
 
-<!-- tikzpicture -->
+
+![Plot comparing f(x)=x^2 with a combined transformation g(x)=-2(x+3)^2+4, showing shift, reflection, stretch, and vertical shift.](images/plot_6_03-03-lesson-function-transformations-and-shifts.md.png)
+
+
 
 ### 6. Real-World Application
 
@@ -149,7 +164,8 @@ Function transformations have practical applications in many fields. In finance,
 
 Below is a conceptual graph where a profit model is shifted to account for a two-month delay in the market:
 
-<!-- tikzpicture -->
+![Plot demonstrating a profit model and its horizontal shift representing a two-month market delay.](images/plot_7_03-03-lesson-function-transformations-and-shifts.md.png)
+
 
 This graph clearly demonstrates how a horizontal shift can represent a delay or adjustment in timing, such as a shift in market response.
 
@@ -162,4 +178,3 @@ To solidify your understanding, consider these guided examples. Work through the
 - With $f(x)=\frac{1}{x}$, graph $k(x)=\frac{-1}{2(x+1)}+3$, noting both reflection and scaling effects.
 
 Each of these examples reinforces the connection between the algebraic modifications and their corresponding graphical changes. By mastering function transformations, you build a strong foundation for analyzing and modeling real-world scenarios using algebra.
-

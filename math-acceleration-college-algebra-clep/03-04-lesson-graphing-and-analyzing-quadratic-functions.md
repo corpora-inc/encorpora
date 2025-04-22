@@ -108,6 +108,11 @@ x^2-4x+3=0.
 
 Below is a graphical representation of the function $f(x)=x^2-4x+3$:
 
+
+![Plot of the quadratic function f(x)=x^2-4x+3 showing its vertex, intercepts, and axis of symmetry.](images/plot_1_03-04-lesson-graphing-and-analyzing-quadratic-functions.md.png)
+
+
+
 <!-- tikzpicture -->
 
 ### Example 2: Analyzing $f(x)=-2(x-1)^2+8$
@@ -155,6 +160,11 @@ x-1=\pm 2.
 > Analyzing the quadratic function in vertex form can offer quick insights. For instance, the vertex immediately shows the maximum profit in an economic model or the peak height in a projectile motion problem.
 
 Below is a graphical representation of the function $f(x)=-2(x-1)^2+8$:
+
+
+![Plot of the quadratic function f(x)=-2(x-1)^2+8 highlighting its vertex, intercepts, and the downward opening shape.](images/plot_2_03-04-lesson-graphing-and-analyzing-quadratic-functions.md.png)
+
+
 
 <!-- tikzpicture -->
 
