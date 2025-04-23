@@ -88,7 +88,7 @@ class HangulSyllable(models.Model):
 
 class Word(models.Model):
     """
-    A Korean word or lexeme.
+    A Korean word or lexeme, with corpus-derived frequency and POS tagging.
     """
 
     text_korean = models.CharField(
@@ -96,15 +96,13 @@ class Word(models.Model):
         unique=True,
         help_text="The headword in Korean script.",
     )
-    romanization = models.CharField(
-        max_length=100,
-        help_text="Revised Romanization of the word.",
-    )
-    pronunciation = models.CharField(
-        max_length=100,
+    # POS tag from corpus (e.g., JKS, VCP, NNB, etc.)
+    raw_pos_tag = models.CharField(
+        max_length=10,
         blank=True,
-        help_text="Pronunciation guide (e.g. IPA).",
+        help_text="Morphological POS tag from source corpus (e.g. JKS, VCP).",
     )
+    # Optional coarse POS category for UI or mapping
     noun = "N"
     verb = "V"
     adjective = "ADJ"
@@ -120,12 +118,30 @@ class Word(models.Model):
     part_of_speech = models.CharField(
         max_length=5,
         choices=pos_choices,
-        help_text="Part of speech.",
+        blank=True,
+        help_text="Coarse POS category (N, V, ADJ, ADV, P).",
     )
+
+    # Corpus-derived counts
     frequency_rank = models.PositiveIntegerField(
         null=True,
         blank=True,
-        help_text="Frequency rank in a reference corpus (1 = most frequent).",
+        help_text="Rank in corpus by descending frequency (1 = most frequent).",
+    )
+    frequency_count = models.BigIntegerField(
+        null=True,
+        blank=True,
+        help_text="Raw occurrence count in corpus.",
+    )
+    count_adjust = models.FloatField(
+        null=True,
+        blank=True,
+        help_text="Adjusted count (e.g. normalized by document length).",
+    )
+    log_frequency = models.FloatField(
+        null=True,
+        blank=True,
+        help_text="Log10 of adjusted count or raw count.",
     )
 
     class Meta:
@@ -158,7 +174,7 @@ class Definition(models.Model):
         help_text="Definition language.",
     )
     text = models.TextField(
-        help_text="The definition text.",
+        help_text="The definition or translation text.",
     )
 
     class Meta:
