@@ -1,8 +1,10 @@
 // src/App.tsx
 import { useState, useEffect, useCallback } from "react";
 import { invoke } from "@tauri-apps/api/core";
-import { Button } from "@/components/ui/button"; // adjust your import path
+import { Button } from "@/components/ui/button";
 import { speakKO, speakEN } from "./util/speak";
+
+import "./index.css";
 
 const HISTORY_KEY = "korean_sentence_history";
 
@@ -83,42 +85,45 @@ export default function App() {
 
   return (
     <div className="h-screen w-screen flex items-center justify-center bg-gray-50">
-      <div className="max-w-md w-full bg-white rounded-lg shadow p-6 space-y-6">
+      <div className="max-w-md w-full bg-white rounded-lg shadow p-6">
         {curr ? (
           <>
-            <div className="space-y-2 text-center">
-              <h1 className="text-5xl font-bold">{curr.text_korean}</h1>
-              {curr.romanization && (
-                <p className="text-xl text-gray-500">{curr.romanization}</p>
-              )}
-              <div className="h-48 bg-gray-100 rounded flex items-center justify-center">
-                {curr.imageUrl ? (
+            <div className="text-center">
+              <div className="">
+                <h1 className="text-5xl font-bold">{curr.text_korean}</h1>
+                <Button onClick={() => speakKO(curr.text_korean)} variant="outline">
+                  Speak Korean
+                </Button>
+
+                {curr.romanization && (
+                  <p className="text-xl text-gray-500">{curr.romanization}</p>
+                )}
+              </div>
+              {curr.imageUrl && (
+                <div className="m-10 h-48 bg-gray-100 rounded flex items-center justify-center">
+
                   <img
                     src={curr.imageUrl}
                     alt="illustration"
                     className="max-h-full"
                   />
-                ) : (
-                  <span className="text-gray-400">[Image]</span>
-                )}
+
+                </div>
+              )}
+              <div className="">
+                <p className="text-lg text-gray-700">{curr.text_english}</p>
+                <Button onClick={() => speakEN(curr.text_english)} variant="outline">
+                  Speak English
+                </Button>
               </div>
-              <p className="text-lg text-gray-700">{curr.text_english}</p>
             </div>
 
-            <div className="flex justify-center space-x-4">
-              <Button onClick={() => speakKO(curr.text_korean)} variant="outline">
-                Speak Korean
-              </Button>
-              <Button onClick={() => speakEN(curr.text_english)} variant="outline">
-                Speak English
-              </Button>
-            </div>
           </>
         ) : (
           <p className="text-center">Loading…</p>
         )}
 
-        <div className="flex justify-between">
+        <div className="flex justify-between mt-10">
           <Button onClick={handlePrev} disabled={index <= 0 || loading}>
             Prev
           </Button>
@@ -130,6 +135,6 @@ export default function App() {
           </Button>
         </div>
       </div>
-    </div>
+    </div >
   );
 }
