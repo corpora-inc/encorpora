@@ -48,7 +48,7 @@ Exponential functions have several important characteristics:
 
 - **Y-intercept:**
 
-  At $x=0$, the function crosses the $y$-axis at $(0,a)$ because $$f(0)=a.$$ 
+  At $x=0$, the function crosses the $y$-axis at $(0,a)$ because $$f(0)=a.$$
 
 - **Asymptote:**
 
@@ -118,6 +118,11 @@ f(3)=5\cdot \left(\frac{1}{2}\right)^3=5\cdot \frac{1}{8}=\frac{5}{8}.
 
    This rapid decrease illustrates exponential decay, similar to processes seen in radioactive decay or asset depreciation.
 
+
+![Plot of the exponential decay function f(x)=5·(1/2)^x with key points and asymptote](images/plot_2_06-01-lesson-defining-exponential-functions-and-their-properties.md.png)
+
+
+
 ### Graphing Exponential Functions
 
 Visualizing an exponential function helps build intuition. Consider the function
@@ -136,27 +141,12 @@ The graph increases rapidly for positive $x$ and approaches zero for negative $x
 
 Below is a graphical representation of this exponential growth function:
 
-\vspace*{2em}
-\begin{center}
-\begin{tikzpicture}[x=0.8cm, y=0.5cm]
+<!-- tikzpicture -->
 
-  \draw[->] (-4,0) -- (4,0) node[right] {$x$};
 
-  \draw[->] (0,0) -- (0,8) node[above] {$f(x)$};
+![Plot of the exponential growth function f(x)=2·3^x with key points and asymptote](images/plot_1_06-01-lesson-defining-exponential-functions-and-their-properties.md.png)
 
-  \fill (0,2) circle (2pt) node[right] {$(0,2)$};
 
-  \fill (1,6) circle (2pt) node[right] {$(1,6)$};
-
-  \fill (-1,0.67) circle (2pt) node[below left] {$(-1,\frac{2}{3})$};
-
-  \draw[domain=-2:2, smooth, variable=\x, red] plot ({\x},{2*3^(\x)});
-
-  \draw[dashed] (-4,0) -- (4,0);
-
-\end{tikzpicture}
-\end{center}
-\vspace*{2em}
 
 ### Real-World Applications
 

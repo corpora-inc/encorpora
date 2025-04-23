@@ -59,29 +59,17 @@ This result shows that even if the number is in a different quadrant (here the t
 
 The diagram below illustrates the complex plane with labeled axes and marks the point representing $$ 3 + 4i $$. This visual aid is designed to center the number line to display both positive and negative values clearly.
 
-\vspace*{2em}
-\begin{center}
-\begin{tikzpicture}[scale=0.6]
-  % Draw axes
-  \draw[->] (-7,0) -- (7,0) node[right] {Real};
-  \draw[->] (0,-7) -- (0,7) node[above] {Imaginary};
+<!-- tikzpicture -->
 
-  % Draw ticks on Real axis
-  \foreach \x in {-6,-4,-2,0,2,4,6} {
-    \draw (\x,0.15) -- (\x,-0.15) node[below] {\small \x};
-  }
 
-  % Draw ticks on Imaginary axis
-  \foreach \y in {-6,-4,-2,0,2,4,6} {
-    \draw (0.15,\y) -- (-0.15,\y) node[left] {\small \y};
-  }
+![Plot of the complex number -2-5i on the complex plane showing the point and its modulus.](images/plot_2_08-02-lesson-representing-complex-numbers-on-the-complex-plane.md.png)
 
-  % Plot the point 3+4i
-  \fill[blue] (3,4) circle (3pt);
-  \draw (3,4) node[above right] {$$3+4i$$};
-\end{tikzpicture}
-\end{center}
-\vspace*{2em}
+
+
+
+![Plot of the complex number 3+4i on the complex plane showing the point and its modulus.](images/plot_1_08-02-lesson-representing-complex-numbers-on-the-complex-plane.md.png)
+
+
 
 This diagram not only shows the point $$3+4i$$ but also reinforces the idea that its modulus, the distance from the origin, is 5 units. Observing the distance visually helps to cement the concept and provides a bridge between numerical calculations and spatial reasoning.
 

@@ -50,25 +50,17 @@ This method makes it easy to graph any linear function quickly and accurately.
 
 A simple diagram of the line is shown below:
 
-\vspace*{2em}
-\begin{center}
-\begin{tikzpicture}
-\begin{axis}[
-    xlabel={$x$},
-    ylabel={$y$},
-    xmin=-2, xmax=4,
-    ymin=0, ymax=7,
-    axis lines=middle,
-    xtick={-2,-1,0,1,2,3,4},
-    ytick={0,1,2,3,4,5,6,7},
-    width=200pt,
-    height=200pt
-]
-\addplot [domain=-1:3, samples=100, color=blue] {2*x + 3};
-\end{axis}
-\end{tikzpicture}
-\end{center}
-\vspace*{2em}
+<!-- tikzpicture -->
+
+
+![Plot of the linear function y = -1/2x + 4 highlighting the y-intercept (0,4) and the point (2,3).](images/plot_2_03-02-lesson-graphing-linear-functions-and-understanding-slope.md.png)
+
+
+
+
+![Plot of the linear function y = 2x + 3 highlighting the y-intercept (0,3) and the point (1,5).](images/plot_1_03-02-lesson-graphing-linear-functions-and-understanding-slope.md.png)
+
+
 
 This diagram visually shows the line rising two units for every single unit it moves to the right.
 
@@ -85,25 +77,7 @@ This diagram visually shows the line rising two units for every single unit it m
 
 A visual representation is shown below:
 
-\vspace*{2em}
-\begin{center}
-\begin{tikzpicture}
-\begin{axis}[
-    xlabel={$x$},
-    ylabel={$y$},
-    xmin=-2, xmax=6,
-    ymin=0, ymax=6,
-    axis lines=middle,
-    xtick={-2,-1,0,1,2,3,4,5,6},
-    ytick={0,1,2,3,4,5,6},
-    width=200pt,
-    height=200pt
-]
-\addplot [domain=-1:5, samples=100, color=red] {-0.5*x + 4};
-\end{axis}
-\end{tikzpicture}
-\end{center}
-\vspace*{2em}
+<!-- tikzpicture -->
 
 This diagram clearly demonstrates how a negative slope causes the line to decline as $x$ increases.
 

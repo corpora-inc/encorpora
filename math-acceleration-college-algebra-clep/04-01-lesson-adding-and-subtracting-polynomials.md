@@ -47,19 +47,20 @@ $$
 
 1. Align the polynomials so that like terms are vertically matched:
 
-$$
-\begin{array}{rcrcr}
-  3x^2 &+& 5x &-& 4 \\
-+\;2x^2 &-& 3x &+& 7 \\
-\end{array}
-$$
+
+|       |        |       |      |
+|-------|--------|-------|------|
+|       | $3x^2$ | $+5x$ | $-4$ |
+| **+** | $2x^2$ | $-3x$ | $+7$ |
+| **=** | $5x^2$ | $+2x$ | $+3$ |
+
 
 2. Combine the like terms by adding their coefficients:
 
    - $x^2$ terms: $3x^2 + 2x^2 = 5x^2$
-   
+
    - $x$ terms: $5x + (-3x) = 2x$
-   
+
    - Constants: $-4 + 7 = 3$
 
 3. Write the final polynomial:
@@ -93,7 +94,7 @@ In other words, compute $S(x) - R(x)$.
 1. Write the subtraction by distributing the negative sign to the entire $R(x)$:
 
 $$
-4x^3 - x^2 + 6x - 5 \; - \; \Bigl(2x^3 + 3x^2 - 4x + 2\Bigr)
+4x^3 - x^2 + 6x - 5 \; - \; \bigl(2x^3 + 3x^2 - 4x + 2\bigr)
 $$
 
 2. Remove the parentheses, ensuring the negative sign changes every term inside:
@@ -105,11 +106,11 @@ $$
 3. Combine like terms:
 
    - $x^3$ terms: $4x^3 - 2x^3 = 2x^3$
-   
+
    - $x^2$ terms: $-x^2 - 3x^2 = -4x^2$
-   
+
    - $x$ terms: $6x + 4x = 10x$
-   
+
    - Constants: $-5 - 2 = -7$
 
 4. The simplified result is:

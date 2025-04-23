@@ -48,21 +48,8 @@ To graph the inequality $x > 4$ on a number line:
 - Draw an open circle at $x = 4$ to show that $4$ is not included in the solution.
 - Shade the region to the right of $4$ to represent all numbers greater than $4$.
 
-\vspace*{2em}
-\begin{center}
-\begin{tikzpicture}[x=0.5cm]
-  % Draw number line from 2 to 10
-  \draw[->] (2,0) -- (10,0) node[right] {Number Line};
-  % Ticks every 1 unit
-  \foreach \x in {2,3,4,5,6,7,8,9,10}
-      \draw (\x,0.1) -- (\x,-0.1) node[below] {\x};
-  % Open circle at 4
-  \draw[fill=white, thick] (4,0) circle (0.2);
-  % Shade region to the right of 4
-  \draw[very thick, red, ->] (4.2,0) -- (9.8,0);
-\end{tikzpicture}
-\end{center}
-\vspace*{2em}
+![Plot of the solution x > 4 on a number line with an open circle at 4 and a red arrow indicating the solution region.](images/plot_1_02-02-lesson-solving-linear-inequalities-and-graphing-solution-sets.md.png)
+
 
 ### Example 2: Solve $$-3x + 7 \le 16$$
 
@@ -101,21 +88,8 @@ To graph $x \ge -3$ on a number line:
 - Draw a closed circle at $x = -3$ because $-3$ is included.
 - Shade the region to the right of $-3$ to show all numbers that are greater than or equal to $-3$.
 
-\vspace*{2em}
-\begin{center}
-\begin{tikzpicture}[x=0.5cm]
-  % Draw number line from -6 to 4
-  \draw[->] (-6,0) -- (4,0) node[right] {Number Line};
-  % Ticks every 1 unit
-  \foreach \x in {-6,-5,-4,-3,-2,-1,0,1,2,3,4}
-      \draw (\x,0.1) -- (\x,-0.1) node[below] {\x};
-  % Closed circle at -3
-  \draw[fill=black] (-3,0) circle (0.2);
-  % Shade region to the right of -3
-  \draw[very thick, red, ->] (-2.8,0) -- (3.8,0);
-\end{tikzpicture}
-\end{center}
-\vspace*{2em}
+![Plot of the solution $x \ge -3$ on a number line with a closed circle at -3 and a red arrow indicating the solution region.](images/plot_2_02-02-lesson-solving-linear-inequalities-and-graphing-solution-sets.md.png)
+
 
 ### Key Points to Remember
 

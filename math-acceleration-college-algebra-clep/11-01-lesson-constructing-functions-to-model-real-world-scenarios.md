@@ -52,19 +52,16 @@ This function indicates that when no pizzas are made ($x=0$), the cost is just $
 
 #### Visualizing the Linear Model
 
-The graph of the function $C(x)=50+10x$ is a straight line with a slope of $10$ and a y-intercept of $50$. The slope indicates how steep the line is – a slope of $10$ means that for every unit increase in $x$, the cost increases by $10$ dollars. The y-intercept of $50$ is the starting cost. 
+The graph of the function $C(x)=50+10x$ is a straight line with a slope of $10$ and a y-intercept of $50$. The slope indicates how steep the line is – a slope of $10$ means that for every unit increase in $x$, the cost increases by $10$ dollars. The y-intercept of $50$ is the starting cost.
 
 Consider the following sketch of a number line representing the number of pizzas:
 
-\vspace*{2em}
-\begin{center}
-\begin{tikzpicture}[x=0.5cm]
-  \draw[->] (0,0) -- (12,0) node[right]{Number of Pizzas};
-  \foreach \x in {0,2,4,6,8,10,12}
-      \draw (\x,0.1) -- (\x,-0.1) node[below]{\x};
-\end{tikzpicture}
-\end{center}
-\vspace*{2em}
+<!-- tikzpicture -->
+
+
+![Plot of the cost function C(x)=50+10x for number of pizzas.](images/plot_1_11-01-lesson-constructing-functions-to-model-real-world-scenarios.md.png)
+
+
 
 This number line helps you visualize how the function works over a small range of $x$ values.
 
@@ -101,3 +98,7 @@ Including these factors gives your function greater precision and enhances its a
 By following these structured steps—identifying the independent variable, determining constants and rates, and constructing the mathematical relationship—you can create functions that effectively model a wide range of real-world scenarios. This systematic approach is essential for fields such as finance, engineering, and science, where precise predictions and analyses are needed.
 
 Practice applying these steps using different scenarios to build a strong understanding of how functions work. This will boost your confidence and solidify your skill in constructing mathematical models for real-life problems.
+
+
+![Plot of the distance function d(t)=60t over time.](images/plot_2_11-01-lesson-constructing-functions-to-model-real-world-scenarios.md.png)
+

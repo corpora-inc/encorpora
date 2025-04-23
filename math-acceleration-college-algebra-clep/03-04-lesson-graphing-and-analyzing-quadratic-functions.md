@@ -108,33 +108,12 @@ x^2-4x+3=0.
 
 Below is a graphical representation of the function $f(x)=x^2-4x+3$:
 
-\vspace*{2em}
-\begin{center}
-\begin{tikzpicture}[scale=0.8]
-  \begin{axis}[
-      xlabel={$x$},
-      ylabel={$f(x)$},
-      axis lines=middle,
-      xmin=-1, xmax=5,
-      ymin=-3, ymax=5,
-      xtick={-1,0,1,2,3,4,5},
-      ytick={-3,-2,-1,0,1,2,3,4,5},
-      grid=both,
-      width=10cm,
-      height=8cm,
-      samples=100,
-      domain=-1:5,
-  ]
-    \addplot [smooth, blue, thick] {x^2-4*x+3};
-    \addplot[only marks, mark=*] coordinates {(2,-1) (0,3) (1,0) (3,0)};
-    \node at (axis cs:2,-1) [anchor=south east] {$(2,-1)$};
-    \node at (axis cs:0,3) [anchor=south east] {$(0,3)$};
-    \node at (axis cs:1,0) [anchor=north] {$(1,0)$};
-    \node at (axis cs:3,0) [anchor=north] {$(3,0)$};
-  \end{axis}
-\end{tikzpicture}
-\end{center}
-\vspace*{2em}
+
+![Plot of the quadratic function f(x)=x^2-4x+3 showing its vertex, intercepts, and axis of symmetry.](images/plot_1_03-04-lesson-graphing-and-analyzing-quadratic-functions.md.png)
+
+
+
+<!-- tikzpicture -->
 
 ### Example 2: Analyzing $f(x)=-2(x-1)^2+8$
 
@@ -182,33 +161,12 @@ x-1=\pm 2.
 
 Below is a graphical representation of the function $f(x)=-2(x-1)^2+8$:
 
-\vspace*{2em}
-\begin{center}
-\begin{tikzpicture}[scale=0.8]
-  \begin{axis}[
-      xlabel={$x$},
-      ylabel={$f(x)$},
-      axis lines=middle,
-      xmin=-3, xmax=5,
-      ymin=-3, ymax=10,
-      xtick={-3,-2,-1,0,1,2,3,4,5},
-      ytick={-3,-2,-1,0,1,2,3,4,5,6,7,8,9,10},
-      grid=both,
-      width=10cm,
-      height=8cm,
-      samples=100,
-      domain=-3:5,
-  ]
-    \addplot [smooth, red, thick] {-2*(x-1)^2+8};
-    \addplot[only marks, mark=*] coordinates {(1,8) (0,6) (-1,0) (3,0)};
-    \node at (axis cs:1,8) [anchor=south west] {$(1,8)$};
-    \node at (axis cs:0,6) [anchor=south east] {$(0,6)$};
-    \node at (axis cs:-1,0) [anchor=north] {$(-1,0)$};
-    \node at (axis cs:3,0) [anchor=north] {$(3,0)$};
-  \end{axis}
-\end{tikzpicture}
-\end{center}
-\vspace*{2em}
+
+![Plot of the quadratic function f(x)=-2(x-1)^2+8 highlighting its vertex, intercepts, and the downward opening shape.](images/plot_2_03-04-lesson-graphing-and-analyzing-quadratic-functions.md.png)
+
+
+
+<!-- tikzpicture -->
 
 ### Real-World Applications
 

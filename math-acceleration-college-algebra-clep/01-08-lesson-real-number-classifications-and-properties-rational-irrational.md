@@ -104,20 +104,9 @@ Many real-world applications depend on these properties and classifications. For
 
 Below is a number line that helps visualize different classifications, with a focus on rational numbers:
 
-\vspace*{2em}
-\begin{center}
-\begin{tikzpicture}[x=0.5cm]
-  % Draw number line from -10 to 10
-  \draw[->] (-10,0) -- (10,0) node[right] {Number Line};
-  % Place ticks on the number line
-  \foreach \x in {-10,-8,-6,-4,-2,0,2,4,6,8,10}
-      \draw (\x,0.15) -- (\x,-0.15) node[below] {\x};
-  % Highlight a rational number example, e.g., -8/5 or -1.6
-  \filldraw[red] (-1.6,0) circle (3pt);
-  \node at (-1.6,-0.8) {\small $-\frac{8}{5}$};
-\end{tikzpicture}
-\end{center}
-\vspace*{2em}
+![A 2D line plot showing a number line from -10 to 10 with a highlighted point at -8/5](images/plot_1_01-08-lesson-real-number-classifications-and-properties-rational-irrational.md.png)
+
+
 
 This visualization helps confirm that every point on this line, including our example, has a clear classification in the system of real numbers.
 

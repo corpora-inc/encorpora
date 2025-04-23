@@ -70,6 +70,11 @@ Suppose you have a geometric sequence with an initial term of $2$ and a common r
 
 Thus, the 5th term in this geometric sequence is $162$.
 
+
+![Line plot of the geometric sequence with a1=2 and r=3 for n from 1 to 10](images/plot_2_10-01-lesson-arithmetic-and-geometric-sequences.md.png)
+
+
+
 This example shows the rapid growth associated with geometric sequences due to repeated multiplication by a constant ratio.
 
 #### Real-World Application: Population Growth
@@ -100,19 +105,12 @@ These simple checks can help quickly classify the type of sequence you are deali
 
 Below is a diagram that represents the progression of an arithmetic sequence on a number line. Each term is evenly spaced, illustrating the constant increment between numbers.
 
-\vspace*{2em}
-\begin{center}
-\begin{tikzpicture}[x=0.6cm]
-  % Draw a number line from 0 to 20
-  \draw[->] (0,0) -- (20,0) node[right] {Number Line};
-  \foreach \x in {0,4,8,12,16,20}
-      \draw (\x,0.15) -- (\x,-0.15) node[below] {\x};
-  % Mark terms of the arithmetic sequence: 3, 7, 11, 15, 19
-  \foreach \x in {3,7,11,15,19}
-      \draw[fill=red] (\x,0) circle (2pt);
-\end{tikzpicture}
-\end{center}
-\vspace*{2em}
+<!-- tikzpicture -->
+
+
+![Line plot of the arithmetic sequence with a1=3 and d=4 for n from 1 to 10](images/plot_1_10-01-lesson-arithmetic-and-geometric-sequences.md.png)
+
+
 
 The diagram visually communicates the regular spacing found in arithmetic sequences. In geometric sequences, similar visualization would show uneven spacing due to the multiplication factor, which can be illustrated using charts or logarithmic scales when necessary.
 

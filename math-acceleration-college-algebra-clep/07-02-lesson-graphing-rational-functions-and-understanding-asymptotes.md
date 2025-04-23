@@ -104,18 +104,18 @@ $$
 
 - **Step 2:** Perform polynomial long division of $x^2 + 2x + 1$ by $x - 1$:
 
-$$
-\begin{array}{r@{}r@{}r}
-   & x + 3 & \text{ (Quotient)} \\
-x - 1 & \overline{)\, x^2 + 2x + 1} & \text{(Dividend)} \\
-   & x^2 - x & \text{(Multiply } x \times (x-1) \text{)} \\
-\cline{2-3}
-   & \quad 3x + 1 & \\
-   & \quad 3x - 3 & \text{(Multiply } 3 \times (x-1) \text{)} \\
-\cline{2-3}
-   & \quad\quad 4 & \text{(Remainder)} 
-\end{array}
-$$
+   1. Divide the leading term: $x^2 / x = x$.
+   2. Multiply: $x(x - 1) = x^2 - x$.
+   3. Subtract: $(x^2 + 2x + 1) - (x^2 - x) = 3x + 1$.
+   4. Divide again: $3x / x = 3$.
+   5. Multiply: $3(x - 1) = 3x - 3$.
+   6. Subtract: $(3x + 1) - (3x - 3) = 4$.
+   7. The remainder is $4$.
+   8. The quotient is $x + 3$.
+   9. The function can be expressed as $R(x) = x + 3 + \frac{4}{x - 1}$.
+   10. As $x \to \pm\infty$, the term $\frac{4}{x - 1}$ approaches $0$.
+   11. Thus, the function approaches $x + 3$.
+   12. The oblique asymptote is $y = x + 3$.
 
 - **Step 3:** The quotient $x + 3$ is taken as the oblique asymptote.
 
@@ -154,6 +154,21 @@ Understanding asymptotes helps predict long-term behavior and identify limits, e
 
 ### 7. Visualizing the Concept
 
+
+![2D line plot of the function f(x)=(x^2+2x+1)/(x-1), illustrating the oblique asymptote y = x+3 after performing polynomial division.](images/plot_3_07-02-lesson-graphing-rational-functions-and-understanding-asymptotes.md.png)
+
+
+
+
+![2D line plot of the function f(x)=(x^2-1)/(x-1), highlighting the hole at x=1 where the discontinuity is removable.](images/plot_2_07-02-lesson-graphing-rational-functions-and-understanding-asymptotes.md.png)
+
+
+
+
+![2D line plot of the rational function R(x)=2x/(x-3), showing its vertical asymptote at x=3 and horizontal asymptote at y=2.](images/plot_1_07-02-lesson-graphing-rational-functions-and-understanding-asymptotes.md.png)
+
+
+
 Below is an example plot of the function
 
 $$
@@ -161,32 +176,6 @@ R(x) = \frac{2x}{x - 3}
 $$
 
 with its vertical asymptote at $x=3$ and horizontal asymptote at $y=2$. This visual representation enhances understanding by showing how the graph behaves near the asymptotes and how it approaches these lines as $x$ moves further from the center.
-
-\vspace*{2em}
-\begin{center}
-\begin{tikzpicture}
-    \begin{axis}[
-        xlabel={$x$},
-        ylabel={$R(x)$},
-        xmin=-10, xmax=10,
-        ymin=-10, ymax=10,
-        axis lines=middle,
-        samples=100,
-        domain=-10:10,
-        clip=false
-    ]
-    \addplot[blue, thick, domain=-10:2.9] { (2*x)/(x-3) };
-    \addplot[blue, thick, domain=3.1:10] { (2*x)/(x-3) };
-
-    % Draw vertical asymptote
-    \addplot[dashed, red] coordinates {(3,-10) (3,10)};
-    % Draw horizontal asymptote
-    \addplot[dashed, red] coordinates {(-10,2) (10,2)};
-    \end{axis}
-\end{tikzpicture}
-\end{center}
-
-*Figure Description:* Plot of $R(x)=\frac{2x}{x-3}$ with a vertical asymptote at $x=3$ and a horizontal asymptote at $y=2$.
 
 Use similar steps for other rational functions to reveal their behavior and approach. Each graph will show how the function behaves near its discontinuities and how it stabilizes when $x$ is very large or very small.
 

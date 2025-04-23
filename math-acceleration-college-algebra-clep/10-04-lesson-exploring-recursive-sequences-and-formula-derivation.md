@@ -74,6 +74,11 @@ This explicit formula allows you to compute any term without repeating all previ
 
 ### Example 2: A Geometric Sequence
 
+
+![Plot of the geometric sequence a_n = 2 * 3^(n-1) for n from 1 to 10 (log scale)](images/plot_2_10-04-lesson-exploring-recursive-sequences-and-formula-derivation.md.png)
+
+
+
 Now consider a sequence defined by:
 
 $$
@@ -111,6 +116,11 @@ This form quickly provides the value for any term in the sequence.
 
 ### Real-World Application
 
+
+![Plot of compound interest growth B_n = P*(1+r)^(n-1) for P=1000 and r=0.05 over 10 years](images/plot_3_10-04-lesson-exploring-recursive-sequences-and-formula-derivation.md.png)
+
+
+
 Recursive sequences and their explicit formulas appear in many practical scenarios. A common example is in finance:
 
 - **Compound Interest:** Suppose you deposit an amount of money in a bank account that earns a fixed interest rate. The account balance each year can be modeled recursively, with each term representing the balance after one compounding period.
@@ -133,24 +143,12 @@ This formula allows you to compute the account balance after any number of years
 
 A visual representation can help solidify your understanding of how these sequences progress. Consider the following plot of the arithmetic sequence from Example 1:
 
-\vspace*{2em}
-\begin{center}
-\begin{tikzpicture}[x=0.7cm, y=0.5cm]
-  \draw[->] (0,0) -- (10,0) node[right] {Term Index};
-  \draw[->] (0,0) -- (0,20) node[above] {Sequence Value};
-  \foreach \n in {1,2,3,4,5,6,7,8,9} {
-    \draw (\n,0.2) -- (\n,-0.2) node[below] {\n};
-  }
-  \foreach \y in {3,7,11,15} {
-    \draw (-0.2,\y) -- (0.2,\y);
-  }
-  \fill (1,3) circle (2pt);
-  \fill (2,7) circle (2pt);
-  \fill (3,11) circle (2pt);
-  \fill (4,15) circle (2pt);
-\end{tikzpicture}
-\end{center}
-\vspace*{2em}
+<!-- tikzpicture -->
+
+
+![Plot of the arithmetic sequence a_n = 3 + 4(n-1) for n from 1 to 10](images/plot_1_10-04-lesson-exploring-recursive-sequences-and-formula-derivation.md.png)
+
+
 
 This plot clearly illustrates how the arithmetic sequence grows by a constant amount with each term. Visual aids like this help build intuition for how sequences progress.
 
