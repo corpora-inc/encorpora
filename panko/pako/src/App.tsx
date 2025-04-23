@@ -1,9 +1,7 @@
-// src/App.tsx
 import { useState, useEffect, useCallback } from "react";
 import { invoke } from "@tauri-apps/api/core";
 import { Button } from "@/components/ui/button";
 import { speakKO, speakEN } from "./util/speak";
-
 import "./index.css";
 
 const HISTORY_KEY = "korean_sentence_history";
@@ -11,16 +9,14 @@ const HISTORY_KEY = "korean_sentence_history";
 export type Sentence = {
   text_korean: string;
   text_english: string;
-  romanization?: string; // placeholder for future
-  imageUrl?: string;     // placeholder for future
 };
 
 export default function App() {
   const [history, setHistory] = useState<Sentence[]>([]);
-  const [index, setIndex] = useState<number>(-1);
+  const [index, setIndex] = useState(-1);
   const [loading, setLoading] = useState(false);
 
-  // Load history from localStorage on mount
+  // Load from localStorage or fetch first
   useEffect(() => {
     const raw = localStorage.getItem(HISTORY_KEY);
     if (raw) {
@@ -31,110 +27,105 @@ export default function App() {
           setIndex(arr.length - 1);
           return;
         }
-      } catch {
-        /* ignore */
-      }
+      } catch { }
     }
-    // otherwise fetch one
-    handleRandom();
+    fetchRandom();
   }, []);
 
-  // Persist history whenever it changes
+  // Persist history
   useEffect(() => {
-    if (history.length) {
-      localStorage.setItem(HISTORY_KEY, JSON.stringify(history));
-    }
+    localStorage.setItem(HISTORY_KEY, JSON.stringify(history));
   }, [history]);
 
-  const fetchRandom = useCallback(async (): Promise<Sentence> => {
-    const s = await invoke<Sentence>("get_random_sentence");
-    return s;
-  }, []);
-
-  const handleRandom = useCallback(async () => {
+  const fetchRandom = useCallback(async () => {
     setLoading(true);
     try {
-      const s = await fetchRandom();
+      const s = await invoke<Sentence>("get_random_sentence");
       setHistory((h) => [...h.slice(0, index + 1), s]);
       setIndex((i) => i + 1);
-      // speakKO(s.text_korean);
-    } catch (e) {
-      console.error(e);
     } finally {
       setLoading(false);
     }
-  }, [fetchRandom, index]);
-
-  const handleNext = () => {
-    if (index < history.length - 1) {
-      setIndex(index + 1);
-      // speak(history[index + 1].text_korean);
-    } else {
-      handleRandom();
-    }
-  };
+  }, [index]);
 
   const handlePrev = () => {
-    if (index > 0) {
-      setIndex(index - 1);
-      // speak(history[index - 1].text_korean);
-    }
+    if (index > 0) setIndex(index - 1);
+  };
+  const handleNext = () => {
+    if (index < history.length - 1) setIndex(index + 1);
+    else fetchRandom();
   };
 
   const curr = history[index];
 
   return (
-    <div className="h-screen w-screen flex items-center justify-center bg-gray-50">
-      <div className="max-w-md w-full bg-white rounded-lg shadow p-6">
-        {curr ? (
-          <>
-            <div className="text-center">
-              <div className="">
-                <h1 className="text-5xl font-bold">{curr.text_korean}</h1>
-                <Button onClick={() => speakKO(curr.text_korean)} variant="outline">
-                  Speak Korean
-                </Button>
+    <div className="h-full w-full flex items-center justify-center bg-gray-50">
+      <div className="flex flex-col h-full w-full max-w-md bg-white rounded-lg shadow-lg overflow-hidden">
+        {/* Top third: Hangul */}
+        <div className="flex-none h-1/3 flex flex-col items-center justify-center p-4">
+          {curr ? (
+            <>
+              <p className="text-6xl font-extrabold text-center">
+                {curr.text_korean}
+              </p>
+              <Button
+                onClick={() => speakKO(curr.text_korean)}
+                className="mt-4 px-8 py-4 text-xl"
+                variant="outline"
+              >
+                Speak Korean
+              </Button>
+            </>
+          ) : (
+            <p>Loading…</p>
+          )}
+        </div>
 
-                {curr.romanization && (
-                  <p className="text-xl text-gray-500">{curr.romanization}</p>
-                )}
-              </div>
-              {curr.imageUrl && (
-                <div className="m-10 h-48 bg-gray-100 rounded flex items-center justify-center">
+        {/* Middle third: English */}
+        <div className="flex-1 flex flex-col items-center justify-center px-4">
+          {curr && (
+            <>
+              <p className="text-2xl text-gray-700 text-center mb-4">
+                {curr.text_english}
+              </p>
+              <Button
+                onClick={() => speakEN(curr.text_english)}
+                className="px-8 py-4 text-xl"
+                variant="outline"
+              >
+                Speak English
+              </Button>
+            </>
+          )}
+        </div>
 
-                  <img
-                    src={curr.imageUrl}
-                    alt="illustration"
-                    className="max-h-full"
-                  />
-
-                </div>
-              )}
-              <div className="">
-                <p className="text-lg text-gray-700">{curr.text_english}</p>
-                <Button onClick={() => speakEN(curr.text_english)} variant="outline">
-                  Speak English
-                </Button>
-              </div>
-            </div>
-
-          </>
-        ) : (
-          <p className="text-center">Loading…</p>
-        )}
-
-        <div className="flex justify-between mt-10">
-          <Button onClick={handlePrev} disabled={index <= 0 || loading}>
-            Prev
-          </Button>
-          <Button onClick={handleNext} disabled={loading}>
-            Next
-          </Button>
-          <Button onClick={handleRandom} disabled={loading}>
-            Random
-          </Button>
+        {/* Bottom nav */}
+        <div className="flex-none bg-gray-100 border-t">
+          <div className="flex justify-between items-center p-4">
+            <Button
+              onClick={handlePrev}
+              disabled={index <= 0}
+              className="px-8 py-4 text-xl"
+            >
+              Prev
+            </Button>
+            <Button
+              onClick={fetchRandom}
+              disabled={loading}
+              className="px-8 py-4 text-xl"
+            >
+              Random
+            </Button>
+            <Button
+              onClick={handleNext}
+              disabled={loading}
+              className="px-8 py-4 text-xl"
+            >
+              Next
+            </Button>
+          </div>
         </div>
       </div>
-    </div >
+    </div>
   );
 }
