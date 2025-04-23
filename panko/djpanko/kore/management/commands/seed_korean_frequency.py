@@ -1,14 +1,16 @@
+# https://raw.githubusercontent.com/jinseo0904/korean_frequency/refs/heads/main/final_word_frequency/adult_frequency_counts_final.csv
 import csv
+import math
 import os
+
 from django.core.management.base import BaseCommand
 from kore.models import Word
 
 
 class Command(BaseCommand):
     help = (
-        "Seed Word table from adult_frequency_counts_final.csv, "
-        "populating text_korean, raw_pos_tag, frequency_rank, "
-        "frequency_count, count_adjust and log_frequency."
+        "Seed & merge Word frequency data from a corpus CSV, handling "
+        "duplicates, accumulating counts, and preserving best ranks."
     )
 
     def add_arguments(self, parser):
@@ -19,51 +21,69 @@ class Command(BaseCommand):
             help="Path to the frequency CSV file.",
         )
 
-    def handle(self, *args, **opts):
-        csv_path = opts["path"]
+    def handle(self, *args, **options):
+        csv_path = options["path"]
         if not os.path.exists(csv_path):
-            return self.stderr.write(f"File not found: {csv_path}")
+            self.stderr.write(f"File not found: {csv_path}")
+            return
 
-        with open(csv_path, newline="", encoding="utf-8") as f:
-            reader = csv.DictReader(f)
-            count = 0
+        # Pre-count for progress reporting (exclude header)
+        with open(csv_path, encoding="utf-8") as fp:
+            total_rows = sum(1 for _ in fp) - 1
+        processed = 0
+
+        with open(csv_path, newline="", encoding="utf-8") as fp:
+            reader = csv.DictReader(fp)
             for idx, row in enumerate(reader, start=1):
-                word = row.get("WORD")
-                if not word:
-                    self.stderr.write("No word found in row, skipping...")
+                text = row.get("WORD")
+                if not text:
+                    self.stderr.write("No WORD field in row, skipping...")
                     continue
 
                 # Parse CSV columns
-                raw_pos = row.get("POS_TAG", "")
+                raw_pos = row.get("POS_TAG", "").strip()
                 count = int(row.get("COUNT", 0))
                 count_adj = float(row.get("COUNT_ADJUST", 0.0))
-                log_freq = float(row.get("LOG10", count_adj or count))
 
-                word, created = Word.objects.update_or_create(
-                    text_korean=word,
-                    defaults={
-                        "raw_pos_tag": raw_pos,
-                        "frequency_rank": idx,
-                        "frequency_count": count,
-                        "count_adjust": count_adj,
-                        "log_frequency": log_freq,
-                    },
+                # Retrieve or create the Word
+                word_obj, _ = Word.objects.get_or_create(text_korean=text)
+
+                # 1. Merge POS tags
+                existing_tags = (
+                    set(word_obj.raw_pos_tag.split(","))
+                    if word_obj.raw_pos_tag
+                    else set()
                 )
-                # if created:
-                #     self.stdout.write(
-                #         self.style.SUCCESS(f"✔ Created word: {word.text_korean}")
-                #     )
-                # else:
-                #     self.stdout.write(
-                #         self.style.WARNING(f"⚠️  Updated word: {word.text_korean}")
-                #     )
+                if raw_pos:
+                    existing_tags.add(raw_pos)
+                word_obj.raw_pos_tag = ",".join(sorted(existing_tags))
 
-                if idx % 100 == 0:
-                    self.stdout.write(self.style.SUCCESS(f"✔ Processed {idx} words..."))
+                # 2. Accumulate counts
+                word_obj.frequency_count = (word_obj.frequency_count or 0) + count
+                word_obj.count_adjust = (word_obj.count_adjust or 0.0) + count_adj
+                word_obj.log_frequency = math.log10(word_obj.count_adjust + 1)
+
+                # 3. Preserve best (lowest) rank
+                word_obj.frequency_rank = (
+                    min(word_obj.frequency_rank, idx)
+                    if word_obj.frequency_rank
+                    else idx
+                )
+
+                word_obj.save()
+                processed += 1
+
+                # Progress feedback
+                if processed % 1000 == 0:
+                    self.stdout.write(
+                        self.style.SUCCESS(
+                            f"Processed {processed}/{total_rows} rows..."
+                        )
+                    )
 
         total = Word.objects.count()
         self.stdout.write(
             self.style.SUCCESS(
-                f"✔ Seeded {total} words from {os.path.basename(csv_path)}"
+                f"✔ Completed: seeded {total} words (processed {processed}/{total_rows})."
             )
         )
