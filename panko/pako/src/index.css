@@ -1,0 +1,13 @@
+/* src/index.css */
+
+/* 1) Import all of Tailwind’s layers in the correct order */
+@import "tailwindcss";
+
+/* 2) Simple global reset so we get full-height layout & no scrollbars */
+html,
+body,
+#root {
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+}
