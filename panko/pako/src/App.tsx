@@ -28,8 +28,9 @@ export default function App() {
           return;
         }
       } catch { }
+    } else {
+      fetchRandom();
     }
-    fetchRandom();
   }, []);
 
   // Persist history
@@ -60,17 +61,18 @@ export default function App() {
 
   return (
     <div className="h-full w-full flex items-center justify-center bg-gray-50">
-      <div className="flex flex-col h-full w-full max-w-md bg-white rounded-lg shadow-lg overflow-hidden">
+      <div className="flex flex-col h-full w-full bg-white rounded-lg shadow-lg overflow-hidden">
         {/* Top third: Hangul */}
         <div className="flex-none h-1/3 flex flex-col items-center justify-center p-4">
           {curr ? (
             <>
-              <p className="text-6xl font-extrabold text-center">
+              <p className="text-6xl font-extrabold text-center mt-10 p-4">
                 {curr.text_korean}
               </p>
               <Button
                 onClick={() => speakKO(curr.text_korean)}
-                className="mt-4 px-8 py-4 text-xl"
+                className="mt-8"
+                size="lg"
                 variant="outline"
               >
                 Speak Korean
@@ -82,16 +84,17 @@ export default function App() {
         </div>
 
         {/* Middle third: English */}
-        <div className="flex-1 flex flex-col items-center justify-center px-4">
+        <div className="flex-1 flex flex-col items-center justify-center px-12">
           {curr && (
             <>
-              <p className="text-2xl text-gray-700 text-center mb-4">
+              <p className="text-2xl text-gray-700 text-center">
                 {curr.text_english}
               </p>
               <Button
                 onClick={() => speakEN(curr.text_english)}
-                className="px-8 py-4 text-xl"
+                className="mt-8"
                 variant="outline"
+                size="lg"
               >
                 Speak English
               </Button>
@@ -106,6 +109,7 @@ export default function App() {
               onClick={handlePrev}
               disabled={index <= 0}
               className="px-8 py-4 text-xl"
+              variant="outline"
             >
               Prev
             </Button>
@@ -113,6 +117,7 @@ export default function App() {
               onClick={fetchRandom}
               disabled={loading}
               className="px-8 py-4 text-xl"
+              variant="outline"
             >
               Random
             </Button>
@@ -120,6 +125,7 @@ export default function App() {
               onClick={handleNext}
               disabled={loading}
               className="px-8 py-4 text-xl"
+              variant="outline"
             >
               Next
             </Button>

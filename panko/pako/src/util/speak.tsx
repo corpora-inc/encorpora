@@ -132,19 +132,30 @@ function createVoiceTTS(langPrefix: string) {
     refreshVoices();
 
     return function speak(text: string) {
+        console.log(`[TTS:${langPrefix}] speaking: ${text}`);
         if (candidateVoices.length === 0) {
             console.warn(`[TTS:${langPrefix}] No voices found for ${langPrefix}`);
             return;
         }
 
-        // Pick a random voice from the shortlist
-        const v = candidateVoices[
+        // // Pick a random voice from the shortlist
+        // const v = candidateVoices[
+        //     Math.floor(Math.random() * candidateVoices.length)
+        // ];
+
+        // pick Yuna for ko-KR and pick a random one for en-US
+        const v = candidateVoices.find((v) => v.name === "Yuna") ||
+            candidateVoices.find((v) => v.name === "Samantha") ||
+            // candidateVoices.find((v) => v.name === "Kathy") ||
+            // candidateVoices.find((v) => v.name === "Shelley") ||
+            candidateVoices[
             Math.floor(Math.random() * candidateVoices.length)
-        ];
+            ];
 
         const utter = new SpeechSynthesisUtterance(text);
         utter.voice = v;
         utter.lang = v.lang;
+        utter.rate = 0.5;
         console.log(`[TTS:${langPrefix}] speaking with ${v.name}`);
         speechSynthesis.speak(utter);
     };
