@@ -61,9 +61,9 @@ export default function App() {
 
   return (
     <div className="h-full w-full flex items-center justify-center bg-gray-50">
-      <div className="flex flex-col h-full w-full bg-white rounded-lg shadow-lg overflow-hidden">
+      <div className="flex flex-col h-full w-full bg-white rounded-lg shadow-lg overflow-scroll">
         {/* Top third: Hangul */}
-        <div className="flex-none h-1/3 flex flex-col items-center justify-center p-4">
+        <div className="flex-1 flex flex-col items-center justify-center px-4">
           {curr ? (
             <>
               <p className="text-6xl font-extrabold text-center mt-10 p-4">
