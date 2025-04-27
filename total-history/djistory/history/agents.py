@@ -267,7 +267,6 @@ class HistoricalAgent:
                 f"Do not include introductions, summaries, conclusions, or mention the course name in the description. "
                 f"Use multiple paragraphs if needed for clarity. "
                 f"Include related topics as a list of {{name: string, type: 'theme' | 'period' | 'place' | 'person' | 'event' | 'document'}} objects, suggesting any relevant types (e.g., {{name: 'American Revolution', type: 'event'}}). "
-                f"For Periods, use descriptive historical names with years in parentheses (e.g., 'Colonial Era (1607-1754)', 'Reconstruction (1865-1877)'), not 'Period X: YYYY-YYYY'. "
                 f"Return structured JSON using function call/tools, containing only raw facts."
             ),
             "period": (
@@ -286,6 +285,8 @@ class HistoricalAgent:
                 f"Use multiple paragraphs if needed for clarity. "
                 f"Include related topics as a list of {{name: string, type: 'theme' | 'period' | 'place' | 'person' | 'event' | 'document'}} objects, suggesting any relevant types. "
                 f"For Periods, use descriptive historical names with years in parentheses (e.g., 'Colonial Era (1607-1754)', 'Reconstruction (1865-1877)'), not 'Period X: YYYY-YYYY'. "
+                f"For Places, use specific, US-relevant locations tied to the place (e.g., 'Charleston' for Southern history, 'Atlanta' for Civil War, not 'Southern United States' or 'Americas'). "
+                f"For Events, use significant historical occurrences (e.g., 'Invention of the Cotton Gin', not 'Cotton Gin'); for inventions, prefer 'document' or 'theme' types unless the invention marks a distinct event (e.g., {{name: 'Cotton Gin', type: 'document'}}). "
                 f"Return structured JSON using function call/tools, containing only raw facts."
             ),
             "person": (
@@ -293,8 +294,10 @@ class HistoricalAgent:
                 f"You are writing a snippet in a larger corpus. Provide only concise, fact-dense biographical details about the Person '{self.topic}', covering their contributions, roles, and exam-relevant details. "
                 f"Do not include introductions, summaries, conclusions, or mention the course name in the description. "
                 f"Use multiple paragraphs if needed for clarity. "
-                f"Include birth_date, death_date (ISO format), and related topics as a list of {{name: string, type: 'theme' | 'period' | 'place' | 'person' | 'event' | 'document'}} objects, suggesting any relevant types. "
+                f"Include birth_date, death_date in timezone-aware ISO format (e.g., '1732-02-22T00:00:00Z'), and related topics as a list of {{name: string, type: 'theme' | 'period' | 'place' | 'person' | 'event' | 'document'}} objects, suggesting any relevant types. "
                 f"For Periods, use descriptive historical names with years in parentheses (e.g., 'Colonial Era (1607-1754)', 'Reconstruction (1865-1877)'), not 'Period X: YYYY-YYYY'. "
+                f"For Places, use specific, US-relevant locations tied to the person (e.g., 'Mount Vernon' for George Washington, not 'Southern United States' or 'Americas'). "
+                f"For Events, use significant historical occurrences (e.g., 'Invention of the Cotton Gin', not 'Cotton Gin'); for inventions, prefer 'document' or 'theme' types unless the invention marks a distinct event (e.g., {{name: 'Cotton Gin', type: 'document'}}). "
                 f"Return structured JSON using function call/tools, containing only raw facts."
             ),
             "event": (
@@ -302,8 +305,10 @@ class HistoricalAgent:
                 f"You are writing a snippet in a larger corpus. Provide only concise, fact-dense details about the Event '{self.topic}', covering causes, outcomes, and exam-relevant details. "
                 f"Do not include introductions, summaries, conclusions, or mention the course name in the description. "
                 f"Use multiple paragraphs if needed for clarity. "
-                f"Include start_date, end_date (ISO format), and related topics as a list of {{name: string, type: 'theme' | 'period' | 'place' | 'person' | 'event' | 'document'}} objects, suggesting any relevant types. "
+                f"Include start_date, end_date in timezone-aware ISO format (e.g., '1861-04-12T00:00:00Z'), and related topics as a list of {{name: string, type: 'theme' | 'period' | 'place' | 'person' | 'event' | 'document'}} objects, suggesting any relevant types. "
                 f"For Periods, use descriptive historical names with years in parentheses (e.g., 'Colonial Era (1607-1754)', 'Reconstruction (1865-1877)'), not 'Period X: YYYY-YYYY'. "
+                f"For Places, use specific, US-relevant locations tied to the event (e.g., 'Gettysburg' for the Civil War, not 'Southern United States' or 'Americas'). "
+                f"For Events, use significant historical occurrences (e.g., 'Invention of the Cotton Gin', not 'Cotton Gin'); for inventions, prefer 'document' or 'theme' types unless the invention marks a distinct event (e.g., {{name: 'Cotton Gin', type: 'document'}}). "
                 f"Return structured JSON using function call/tools, containing only raw facts."
             ),
             "document": (
@@ -311,8 +316,10 @@ class HistoricalAgent:
                 f"You are writing a snippet in a larger corpus. Provide only concise, fact-dense details about the Document '{self.topic}', covering its content, significance, and exam-relevant details. "
                 f"Do not include introductions, summaries, conclusions, or mention the course name in the description. "
                 f"Use multiple paragraphs if needed for clarity. "
-                f"Include publication_date, author, parent_name (if applicable), and related topics as a list of {{name: string, type: 'theme' | 'period' | 'place' | 'person' | 'event' | 'document'}} objects, suggesting any relevant types. "
+                f"Include publication_date in timezone-aware ISO format (e.g., '1776-07-04T00:00:00Z'), author, parent_name (if applicable), and related topics as a list of {{name: string, type: 'theme' | 'period' | 'place' | 'person' | 'event' | 'document'}} objects, suggesting any relevant types. "
                 f"For Periods, use descriptive historical names with years in parentheses (e.g., 'Colonial Era (1607-1754)', 'Reconstruction (1865-1877)'), not 'Period X: YYYY-YYYY'. "
+                f"For Places, use specific, US-relevant locations tied to the document (e.g., 'Philadelphia' for the Declaration of Independence, not 'Southern United States' or 'Americas'). "
+                f"For Events, use significant historical occurrences (e.g., 'Invention of the Cotton Gin', not 'Cotton Gin'); for inventions, prefer 'document' or 'theme' types unless the invention marks a distinct event (e.g., {{name: 'Cotton Gin', type: 'document'}}). "
                 f"Return structured JSON using function call/tools, containing only raw facts."
             ),
         }
@@ -369,152 +376,55 @@ class HistoricalAgent:
             "event": service.save_event,
             "document": service.save_document,
         }
-        related_names = {
-            "theme": lambda e: e.theme_names,
-            "period": lambda e: e.theme_names,
-            "place": lambda e: e.period_names + e.theme_names,
-            "person": lambda e: e.place_names + e.period_names + e.theme_names,
-            "event": lambda e: e.place_names
-            + e.person_names
-            + e.period_names
-            + e.theme_names
-            + e.related_event_names,
-            "document": lambda e: (
-                ([e.parent_name] if e.parent_name else [])
-                + e.event_names
-                + e.person_names
-                + e.place_names
-                + e.period_names
-                + e.theme_names
-            ),
-        }
         new_topics = save_methods[self.model_type](response.entry, self.course)
-        # Convert related names to RelatedTopic objects
-        related_from_entry = related_names[self.model_type](response.entry)
+        # Convert related names to RelatedTopic objects, ensuring correct types
         entry_topics = []
-        if related_from_entry:
-            if self.model_type == "theme":
-                entry_topics.extend(
-                    [
-                        RelatedTopic(name=name, type=ModelType.theme)
-                        for name in related_from_entry
-                    ]
-                )
-            elif self.model_type == "period":
-                entry_topics.extend(
-                    [
-                        RelatedTopic(name=name, type=ModelType.theme)
-                        for name in related_from_entry
-                    ]
-                )
-            elif self.model_type == "place":
-                entry_topics.extend(
-                    [
-                        RelatedTopic(name=name, type=ModelType.period)
-                        for name in related_from_entry[
-                            : len(response.entry.period_names)
-                        ]
-                    ]
-                )
-                entry_topics.extend(
-                    [
-                        RelatedTopic(name=name, type=ModelType.theme)
-                        for name in related_from_entry[
-                            len(response.entry.period_names) :
-                        ]
-                    ]
-                )
-            elif self.model_type == "person":
-                entry_topics.extend(
-                    [
-                        RelatedTopic(name=name, type=ModelType.place)
-                        for name in response.entry.place_names
-                    ]
-                )
-                entry_topics.extend(
-                    [
-                        RelatedTopic(name=name, type=ModelType.period)
-                        for name in response.entry.period_names
-                    ]
-                )
-                entry_topics.extend(
-                    [
-                        RelatedTopic(name=name, type=ModelType.theme)
-                        for name in response.entry.theme_names
-                    ]
-                )
-            elif self.model_type == "event":
-                entry_topics.extend(
-                    [
-                        RelatedTopic(name=name, type=ModelType.place)
-                        for name in response.entry.place_names
-                    ]
-                )
-                entry_topics.extend(
-                    [
-                        RelatedTopic(name=name, type=ModelType.person)
-                        for name in response.entry.person_names
-                    ]
-                )
-                entry_topics.extend(
-                    [
-                        RelatedTopic(name=name, type=ModelType.period)
-                        for name in response.entry.period_names
-                    ]
-                )
-                entry_topics.extend(
-                    [
-                        RelatedTopic(name=name, type=ModelType.theme)
-                        for name in response.entry.theme_names
-                    ]
-                )
-                entry_topics.extend(
-                    [
-                        RelatedTopic(name=name, type=ModelType.event)
-                        for name in response.entry.related_event_names
-                    ]
-                )
-            elif self.model_type == "document":
-                start = 0
-                if response.entry.parent_name:
-                    entry_topics.extend(
-                        [
-                            RelatedTopic(
-                                name=response.entry.parent_name, type=ModelType.document
-                            )
-                        ]
+        if self.model_type == "theme":
+            for name in response.entry.theme_names:
+                entry_topics.append(RelatedTopic(name=name, type=ModelType.theme))
+        elif self.model_type == "period":
+            for name in response.entry.theme_names:
+                entry_topics.append(RelatedTopic(name=name, type=ModelType.theme))
+        elif self.model_type == "place":
+            for name in response.entry.period_names:
+                entry_topics.append(RelatedTopic(name=name, type=ModelType.period))
+            for name in response.entry.theme_names:
+                entry_topics.append(RelatedTopic(name=name, type=ModelType.theme))
+        elif self.model_type == "person":
+            for name in response.entry.place_names:
+                entry_topics.append(RelatedTopic(name=name, type=ModelType.place))
+            for name in response.entry.period_names:
+                entry_topics.append(RelatedTopic(name=name, type=ModelType.period))
+            for name in response.entry.theme_names:
+                entry_topics.append(RelatedTopic(name=name, type=ModelType.theme))
+        elif self.model_type == "event":
+            for name in response.entry.place_names:
+                entry_topics.append(RelatedTopic(name=name, type=ModelType.place))
+            for name in response.entry.person_names:
+                entry_topics.append(RelatedTopic(name=name, type=ModelType.person))
+            for name in response.entry.period_names:
+                entry_topics.append(RelatedTopic(name=name, type=ModelType.period))
+            for name in response.entry.theme_names:
+                entry_topics.append(RelatedTopic(name=name, type=ModelType.theme))
+            for name in response.entry.related_event_names:
+                entry_topics.append(RelatedTopic(name=name, type=ModelType.event))
+        elif self.model_type == "document":
+            if response.entry.parent_name:
+                entry_topics.append(
+                    RelatedTopic(
+                        name=response.entry.parent_name, type=ModelType.document
                     )
-                    start += 1
-                entry_topics.extend(
-                    [
-                        RelatedTopic(name=name, type=ModelType.event)
-                        for name in response.entry.event_names
-                    ]
                 )
-                entry_topics.extend(
-                    [
-                        RelatedTopic(name=name, type=ModelType.person)
-                        for name in response.entry.person_names
-                    ]
-                )
-                entry_topics.extend(
-                    [
-                        RelatedTopic(name=name, type=ModelType.place)
-                        for name in response.entry.place_names
-                    ]
-                )
-                entry_topics.extend(
-                    [
-                        RelatedTopic(name=name, type=ModelType.period)
-                        for name in response.entry.period_names
-                    ]
-                )
-                entry_topics.extend(
-                    [
-                        RelatedTopic(name=name, type=ModelType.theme)
-                        for name in response.entry.theme_names
-                    ]
-                )
+            for name in response.entry.event_names:
+                entry_topics.append(RelatedTopic(name=name, type=ModelType.event))
+            for name in response.entry.person_names:
+                entry_topics.append(RelatedTopic(name=name, type=ModelType.person))
+            for name in response.entry.place_names:
+                entry_topics.append(RelatedTopic(name=name, type=ModelType.place))
+            for name in response.entry.period_names:
+                entry_topics.append(RelatedTopic(name=name, type=ModelType.period))
+            for name in response.entry.theme_names:
+                entry_topics.append(RelatedTopic(name=name, type=ModelType.theme))
         # Combine with LLM-suggested related topics and include new_topics
         all_topics = (
             entry_topics
