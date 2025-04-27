@@ -1,11 +1,18 @@
 from django.core.management.base import BaseCommand
 
-from history.agents import (
+from history.agents.courses import (
     DescribeCourseAgent,
     CourseNameInput,
+)
+from history.agents.periods import (
     DescribePeriodAgent,
     PlanPeriodsAgent,
     DescribePeriodInput,
+)
+from history.agents.themes import (
+    PlanThemesAgent,
+    DescribeThemeAgent,
+    DescribeThemeInput,
 )
 
 
@@ -44,6 +51,21 @@ class Command(BaseCommand):
             self.stdout.write(
                 self.style.MIGRATE_HEADING(
                     f"Period description: {period_data.description}"
+                )
+            )
+
+        pta = PlanThemesAgent()
+        themes = pta.run(input=course)
+        self.stdout.write(self.style.MIGRATE_HEADING(f"Generated themes: {themes}"))
+
+        dta = DescribeThemeAgent()
+        for theme in themes.list:
+            theme_data = dta.run(
+                input=DescribeThemeInput(**theme.model_dump(), course=course)
+            )
+            self.stdout.write(
+                self.style.MIGRATE_HEADING(
+                    f"Theme description: {theme_data.description}"
                 )
             )
 

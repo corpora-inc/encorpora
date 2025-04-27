@@ -1,6 +1,6 @@
 # history/admin.py
 from django.contrib import admin
-from .models import Course, Period
+from .models import Course, Period, Theme
 
 
 @admin.register(Course)
@@ -36,3 +36,8 @@ class PeriodAdmin(admin.ModelAdmin):
 
     def get_queryset(self, request):
         return super().get_queryset(request)
+
+
+@admin.register(Theme)
+class ThemeAdmin(admin.ModelAdmin):
+    list_display = ("name", "course")

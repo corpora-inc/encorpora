@@ -32,3 +32,21 @@ class Period(models.Model):
             models.Index(fields=["start_date", "end_date"]),
         ]
         ordering = ["start_date", "name"]
+
+
+class Theme(models.Model):
+    name = models.CharField(max_length=255)
+    description = models.TextField(blank=True)
+    course = models.ForeignKey(
+        Course,
+        null=True,
+        blank=True,
+        on_delete=models.CASCADE,
+        related_name="themes",
+    )
+
+    class Meta:
+        unique_together = ("name", "course")
+
+    def __str__(self):
+        return self.name
