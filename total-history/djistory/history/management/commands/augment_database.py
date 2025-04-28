@@ -1,5 +1,9 @@
 from django.core.management.base import BaseCommand
 
+from django.db.models import Q
+
+from history.models import Who
+
 from history.agents.courses import (
     DescribeCourseAgent,
     CourseNameInput,
@@ -13,6 +17,13 @@ from history.agents.themes import (
     PlanThemesAgent,
     DescribeThemeAgent,
     DescribeThemeInput,
+)
+
+from history.agents.whos import (
+    PlanWhosInput,
+    PlanWhosAgent,
+    DescribeWhoInput,
+    DescribeWhoAgent,
 )
 
 
@@ -67,6 +78,41 @@ class Command(BaseCommand):
                 self.style.MIGRATE_HEADING(
                     f"Theme description: {theme_data.description}"
                 )
+            )
+
+        plan_who_agent = PlanWhosAgent()
+        whos = plan_who_agent.run(
+            input=PlanWhosInput(
+                course=course.name,
+            )
+        )
+        self.stdout.write(
+            self.style.SUCCESS(
+                f"Generated whos for {course.name}:\n" f"{whos.list_of_names[:3]}"
+            )
+        )
+
+        describe_who_agent = DescribeWhoAgent()
+
+        # only the ones in the course that have no description or no start_date
+        data_whos = Who.objects.filter(
+            Q(description="") | Q(start_date=None),
+            course__name=course.name,
+        ).values_list("name", flat=True)
+        for who in data_whos:
+            self.stdout.write(
+                self.style.MIGRATE_HEADING(
+                    f"Generating description for {who} in {course.name}"
+                )
+            )
+            who_data = describe_who_agent.run(
+                input=DescribeWhoInput(
+                    name=who,
+                    course=course,
+                )
+            )
+            self.stdout.write(
+                self.style.MIGRATE_HEADING(f"Who description: {who_data.description}")
             )
 
         self.stdout.write(
