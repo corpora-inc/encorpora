@@ -78,3 +78,23 @@ class Who(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class When(models.Model):
+    name = models.CharField(max_length=255)
+    description = models.TextField(blank=True)
+    start_date = models.DateField(null=True, blank=True)
+    end_date = models.DateField(null=True, blank=True)
+    course = models.ForeignKey(
+        Course,
+        null=True,
+        blank=True,
+        on_delete=models.CASCADE,
+        related_name="whens",
+    )
+
+    class Meta:
+        unique_together = ("name", "course")
+
+    def __str__(self):
+        return self.name

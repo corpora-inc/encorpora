@@ -18,12 +18,17 @@ from history.agents.themes import (
     DescribeThemeAgent,
     DescribeThemeInput,
 )
-
 from history.agents.whos import (
     PlanWhosInput,
     PlanWhosAgent,
     DescribeWhoInput,
     DescribeWhoAgent,
+)
+from history.agents.whens import (
+    PlanWhensInput,
+    PlanWhensAgent,
+    DescribeWhenInput,
+    DescribeWhenAgent,
 )
 
 
@@ -113,6 +118,35 @@ class Command(BaseCommand):
             )
             self.stdout.write(
                 self.style.MIGRATE_HEADING(f"Who description: {who_data.description}")
+            )
+
+        plan_when_agent = PlanWhensAgent()
+        whens = plan_when_agent.run(
+            input=PlanWhensInput(
+                course=course.name,
+            )
+        )
+        self.stdout.write(
+            self.style.SUCCESS(
+                f"Generated whens for {course.name}:\n" f"{whens.list_event_names[:3]}"
+            )
+        )
+
+        describe_when_agent = DescribeWhenAgent()
+        for event in whens.list_event_names:
+            self.stdout.write(
+                self.style.MIGRATE_HEADING(
+                    f"Generating description for {event} in {course.name}"
+                )
+            )
+            when_data = describe_when_agent.run(
+                input=DescribeWhenInput(
+                    name=event,
+                    course=course.name,
+                )
+            )
+            self.stdout.write(
+                self.style.MIGRATE_HEADING(f"When description: {when_data.description}")
             )
 
         self.stdout.write(

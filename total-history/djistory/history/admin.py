@@ -1,6 +1,6 @@
 # history/admin.py
 from django.contrib import admin
-from .models import Course, Period, Theme, Who
+from .models import Course, Period, Theme, Who, When
 
 
 @admin.register(Course)
@@ -45,5 +45,11 @@ class ThemeAdmin(admin.ModelAdmin):
 
 @admin.register(Who)
 class WhoAdmin(admin.ModelAdmin):
+    list_display = ("name", "course")
+    search_fields = ["name", "description"]
+
+
+@admin.register(When)
+class WhenAdmin(admin.ModelAdmin):
     list_display = ("name", "course")
     search_fields = ["name", "description"]
