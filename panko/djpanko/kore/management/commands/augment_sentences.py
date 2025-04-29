@@ -37,13 +37,13 @@ class Command(BaseCommand):
         parser.add_argument(
             "--sents-per-stem",
             type=int,
-            default=3,
+            default=7,
             help="Number of sentences to generate per stem.",
         )
         parser.add_argument(
             "--iterations",
             type=int,
-            default=100,
+            default=500,
             help="How many batches to run.",
         )
 
