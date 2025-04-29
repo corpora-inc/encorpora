@@ -192,6 +192,21 @@ class Sentence(models.Model):
     A bilingual example sentence with links to vocabulary words.
     """
 
+    cefr_level = models.CharField(
+        max_length=2,
+        choices=[
+            ("A1", "A1"),
+            ("A2", "A2"),
+            ("B1", "B1"),
+            ("B2", "B2"),
+            ("C1", "C1"),
+            ("C2", "C2"),
+        ],
+        help_text="CEFR level of the sentence.",
+        default="",
+        blank=True,
+    )
+
     text_korean = models.TextField(
         help_text="Example sentence in Korean.",
     )

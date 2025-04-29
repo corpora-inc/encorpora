@@ -34,6 +34,7 @@ class DefinitionAdmin(admin.ModelAdmin):
 @admin.register(Sentence)
 class SentenceAdmin(admin.ModelAdmin):
     list_display = ("text_korean", "text_english")
+    list_filter = ("cefr_level",)
     search_fields = ("text_korean", "text_english")
     ordering = ("id",)
     list_per_page = 20

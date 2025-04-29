@@ -1,5 +1,6 @@
 # kore/management/commands/augment_sentences.py
 import json
+from typing import Literal
 
 from django.core.management.base import BaseCommand
 from django.db import transaction
@@ -16,6 +17,7 @@ class SentenceEntry(BaseModel):
     text_korean: str
     text_english: str
     word_list: List[str]
+    cefr_level: Literal["A1", "A2", "B1", "B2", "C1", "C2"]
 
 
 class SentenceResponse(BaseModel):
@@ -78,7 +80,10 @@ class Command(BaseCommand):
                         "You are a Korean teacher. "
                         "Given a JSON object with keys 'stems' and 'sents_per_stem', "
                         "return a JSON matching schema SentenceResponse. "
-                        "A1-A2 level sentences should be simple and clear. "
+                        "Produce sentences of various levels A1-C2, mostly A1-A2. "
+                        "Make many extremely simple sentences for A1. As simple as you can imagine. "
+                        "For A1 level, also include words and phrases that are not complete sentences. "
+                        "Return the cefr_level in the response using the JSON tool. "
                         "For each stem, produce 'sents_per_stem' unique Korean sentences "
                         "that include the stem, each with a fluent English translation "
                         "and list of which stems are used."
@@ -104,7 +109,10 @@ class Command(BaseCommand):
                 for entry in response.entries:
                     sentence_obj, _ = Sentence.objects.get_or_create(
                         text_korean=entry.text_korean,
-                        defaults={"text_english": entry.text_english},
+                        defaults={
+                            "text_english": entry.text_english,
+                            "cefr_level": entry.cefr_level,
+                        },
                     )
                     for stem in entry.word_list:
                         try:
