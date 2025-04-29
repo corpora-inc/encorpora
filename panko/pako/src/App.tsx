@@ -2,6 +2,11 @@ import { useState, useEffect, useCallback } from "react";
 import { invoke } from "@tauri-apps/api/core";
 import { Button } from "@/components/ui/button";
 import { speakKO, speakEN } from "./util/speak";
+import {
+  ChevronLeft as ChevronLeftIcon,
+  RefreshCw as RefreshIcon,
+  ChevronRight as ChevronRightIcon,
+} from "lucide-react";
 import "./index.css";
 
 const HISTORY_KEY = "korean_sentence_history";
@@ -27,10 +32,11 @@ export default function App() {
           setIndex(arr.length - 1);
           return;
         }
-      } catch { }
-    } else {
-      fetchRandom();
+      } catch {
+        // fall through
+      }
     }
+    fetchRandom();
   }, []);
 
   // Persist history
@@ -49,13 +55,14 @@ export default function App() {
     }
   }, [index]);
 
-  const handlePrev = () => {
+  const handlePrev = useCallback(() => {
     if (index > 0) setIndex(index - 1);
-  };
-  const handleNext = () => {
+  }, [index]);
+
+  const handleNext = useCallback(() => {
     if (index < history.length - 1) setIndex(index + 1);
     else fetchRandom();
-  };
+  }, [index, history.length, fetchRandom]);
 
   const curr = history[index];
 
@@ -108,26 +115,31 @@ export default function App() {
             <Button
               onClick={handlePrev}
               disabled={index <= 0}
-              className="px-8 py-4 text-xl"
+              className="p-2"
               variant="outline"
+              aria-label="Previous sentence"
             >
-              Prev
+              <ChevronLeftIcon className="w-6 h-6" />
             </Button>
+
             <Button
               onClick={fetchRandom}
               disabled={loading}
-              className="px-8 py-4 text-xl"
+              className="p-2"
               variant="outline"
+              aria-label="Random sentence"
             >
-              Random
+              <RefreshIcon className="w-6 h-6" />
             </Button>
+
             <Button
               onClick={handleNext}
               disabled={loading}
-              className="px-8 py-4 text-xl"
+              className="p-2"
               variant="outline"
+              aria-label="Next sentence"
             >
-              Next
+              <ChevronRightIcon className="w-6 h-6" />
             </Button>
           </div>
         </div>

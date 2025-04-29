@@ -41,10 +41,22 @@ fn get_random_sentence(app: AppHandle) -> Result<Sentence, String> {
     }
 }
 
+#[tauri::command]
+async fn speak(text: String, lang: Option<String>) -> Result<(), String> {
+  // Create the cross-platform TTS engine
+  let mut engine = tts::Tts::default().map_err(|e| e.to_string())?;
+  engine
+    .set_language(lang.as_deref().unwrap_or("en-US"))
+    .map_err(|e| e.to_string())?;
+  // false = don't block until finished
+  engine.speak(text, false).map_err(|e| e.to_string())?;
+  Ok(())
+}
+
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
     tauri::Builder::default()
-        .invoke_handler(tauri::generate_handler![get_random_sentence])
+        .invoke_handler(tauri::generate_handler![get_random_sentence, speak])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }
