@@ -61,7 +61,7 @@ function createVoiceTTS(langPrefix: string) {
                 `[TTS:${langPrefix}] falling back to native invoke('speak')`
             );
             try {
-                await invoke("speak", { text, lang: langPrefix });
+                await invoke("plugin:tts|speak", { text });
             } catch (err) {
                 console.error("Native TTS invocation failed", err);
             }
