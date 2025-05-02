@@ -16,6 +16,7 @@ You do not need to excessively reference the course name or unit name.
 The reader will already know where they are.
 ALWAYS add blank lines between markdown features.
 For example, ALWAYS add a blank line before enumerated lists and bullet lists.
+Seriously, ALWAYS add a blank line before enumerated lists and bullet lists.
 You may use `$` for inline math and `$$` display math, if needed.
 DO NOT use ANY special unicode characters like `≠`, `α`, `≈`,
 instead use inline or display math with LaTeX such as `\neq`, `\alpha`, `\approx`.
@@ -175,7 +176,8 @@ def get_lesson_plan(
             ChatCompletionTextMessage(
                 role="user",
                 text=(
-                    f"Generate the summary and exercise names for the lesson: {lesson_name} in {unit_name} in {course_name} using the JSON tool."
+                    "Generate the summary and exercise names for the lesson: "
+                    f"{lesson_name} in {unit_name} in {course_name} using the JSON tool."
                 ),
             ),
         ],
@@ -193,12 +195,12 @@ def get_lesson_content(
                 text=(
                     f"You are an expert curriculum planner and content writer for the course: `{lesson_request.course_name}`. "
                     f"You are now working on the unit: `{lesson_request.unit_name}`. "
-                    f"You are now working on the lesson: {lesson_request.lesson_name}."
+                    f"You are now working on the lesson: {lesson_request.lesson_name}. "
                     "You return a complete, comprehensive, verbose lesson in markdown format. "
                     "You are writing a lesson for a larger curriculum. "
                     "So, you do not need excessive introduction or conclusion. "
                     f"For markdown, follow the instructions: {MARKDOWN_CONTENT_INSTRUCTIONS} "
-                    f"You start the markdown from `### {lesson_request.lesson_name}` with 3 `#`s. "
+                    f"You start the markdown from `## {lesson_request.lesson_name}` with 2 `#`s. "
                     "Write the lesson in a way that is easy to understand for the target audience "
                     "which is implied by the course name and unit name. "
                 ),
@@ -207,7 +209,7 @@ def get_lesson_content(
                 role="user",
                 text=(
                     "Generate a complete lesson in markdown format for a lesson in "
-                    f"{lesson_request.unit_name} in {lesson_request.course_name} using the JSON tool."
+                    f"{lesson_request.unit_name} in {lesson_request.course_name} using the JSON tool. "
                     f"The summary of the lesson is:\n\n```{lesson_request.lesson_summary}```\n\n"
                     f"Use the JSON tool to return the complete markdown lesson content."
                 ),
@@ -227,11 +229,11 @@ def get_exercise_content(
                 text=(
                     f"You are an expert curriculum planner and content writer for the course: `{exercise_request.course_name}`. "
                     f"You are now working on the unit: `{exercise_request.unit_name}`. "
-                    f"You are now working on the lesson: {exercise_request.lesson_name}."
+                    f"You are now working on the lesson: {exercise_request.lesson_name}. "
                     "You return a complete, comprehensive, verbose exercise in markdown format. "
                     f"For markdown, follow the instructions: {MARKDOWN_CONTENT_INSTRUCTIONS} "
-                    f"You start the markdown from `#### {exercise_request.exercise_name}` with 4 `#`s. "
-                    "Write the exercise in a way that is easy to understand for the target audience"
+                    f"You start the markdown from `### {exercise_request.exercise_name}` with 3 `#`s. "
+                    "Write the exercise in a way that is easy to understand for the target audience "
                     "which is implied by the course name and unit name. "
                 ),
             ),
@@ -239,11 +241,49 @@ def get_exercise_content(
                 role="user",
                 text=(
                     "Generate a complete exercise in markdown format for a lesson in "
-                    f"{exercise_request.unit_name} in {exercise_request.course_name} using the JSON tool."
+                    f"{exercise_request.unit_name} in {exercise_request.course_name} using the JSON tool. "
                     f"The name of the exercise is: {exercise_request.exercise_name}"
                     f"Use the JSON tool to return the complete markdown exercise content."
                 ),
             ),
         ],
         ExerciseContentResponse,
+    )
+
+
+def get_study_content(
+    lesson_request: LessonContentRequest,
+) -> LessonContentResponse:
+    return llm.get_data_completion(
+        [
+            ChatCompletionTextMessage(
+                role="system",
+                text=(
+                    f"You are an expert at testing for the course: `{lesson_request.course_name}`. "
+                    f"You are now working on the lesson: {lesson_request.lesson_name}, "
+                    f"within the unit: `{lesson_request.unit_name}`. "
+                    "You return exactly what the student needs to know from the lesson to dominate the exam for the course. "
+                    f"Return markdown, following the instructions: {MARKDOWN_CONTENT_INSTRUCTIONS} "
+                    f"You start the markdown from `## {lesson_request.lesson_name}` with 2 `#`s. "
+                    "Write the study guide in a way that is easy to understand for the target audience "
+                    "which is implied by the course name and unit name. "
+                ),
+            ),
+            ChatCompletionTextMessage(
+                role="user",
+                text=(
+                    "Generate a complete study guide in markdown format for a lesson in "
+                    f"{lesson_request.unit_name} in {lesson_request.course_name} using the JSON tool. "
+                    f"The summary of the lesson is:\n\n```{lesson_request.lesson_summary}```\n\n"
+                    "Return the exact information that the student needs "
+                    "to know from the lesson to dominate the exam. "
+                    f"Follow the instructions:\n\n{MARKDOWN_CONTENT_INSTRUCTIONS}\n\n"
+                    "Be concise with a fact-dense format that is easy to read. "
+                    "Do not mention `This study guide` - jump straight into the content. "
+                    "There is no need for introduction or conclusion - "
+                    "just the content the student needs to know for the test."
+                ),
+            ),
+        ],
+        LessonContentResponse,
     )

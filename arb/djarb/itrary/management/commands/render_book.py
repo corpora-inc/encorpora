@@ -38,12 +38,19 @@ class Command(BaseCommand):
             default="",
             help="ISBN metadata (optional)",
         )
+        parser.add_argument(
+            "--template",
+            type=str,
+            default="book.md",
+            help="Template to use for rendering the book",
+        )
 
     def handle(self, *args: Any, **options: Any) -> None:
         course_name: str = options["course_name"]
         out_dir = Path(options["output_dir"])
         cover_image = options["cover_image"]
         isbn = options["isbn"]
+        template_name = options["template"]
 
         # 1) Fetch the course
         try:
@@ -57,7 +64,7 @@ class Command(BaseCommand):
         # 2) Render Markdown
         md_filename = f"{course_name.replace(' ', '-').lower()}.md"
         md_path = out_dir / md_filename
-        rendered = render_to_string("book.md", {"course": course})
+        rendered = render_to_string(template_name, {"course": course})
         md_path.write_text(rendered, encoding="utf-8")
         self.stdout.write(f"✅ Markdown written to {md_path}")
 

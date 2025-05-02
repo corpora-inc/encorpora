@@ -25,6 +25,7 @@ class Lesson(models.Model):
     number = models.FloatField(null=True, blank=True)
     summary = models.TextField(blank=True)
     markdown = models.TextField(blank=True)
+    study_markdown = models.TextField(blank=True)
 
     def __str__(self):
         return self.name
