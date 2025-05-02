@@ -1,30 +1,5 @@
 /* epub.css */
 
-/* register your embedded fonts as before… */
-@font-face {
-    font-family: 'STIXTwoMath';
-    src: url('fonts/STIXTwoMath-Regular.ttf') format('truetype');
-}
-
-/* apply your math font */
-math {
-    font-family: 'STIXTwoMath', serif !important;
-}
-
-/* absolutely force display‑math centering */
-math[display="block"] {
-    display: block !important;
-    margin: 1em auto !important;
-    text-align: center !important;
-}
-
-/* absolutely force inline‑math to stay inline */
-math[display="inline"] {
-    display: inline !important;
-    white-space: nowrap !important;
-    vertical-align: baseline !important;
-    margin: 0 !important;
-}
 
 /* fallback for all MathML subelements */
 mi,
@@ -39,13 +14,13 @@ blockquote {
     /* light background and left border */
     /* background: #f9f9f9; */
     border-left: 4px solid #909090;
-    margin: 1.5em 0;
-    padding: 0.75em 1em;
+    margin: 0.5em 0;
+    padding: 1em;
 }
 
 /* center all tables on the page */
 table {
     margin: 1.5em auto !important;
     /* optional: if you want the caption centered too */
-    text-align: center !important;
+    /* text-align: center !important; */
 }
