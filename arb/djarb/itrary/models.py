@@ -22,7 +22,9 @@ class Unit(models.Model):
 class Lesson(models.Model):
     unit = models.ForeignKey(Unit, on_delete=models.CASCADE, related_name="lessons")
     name = models.CharField(max_length=255)
+    number = models.FloatField(null=True, blank=True)
     summary = models.TextField(blank=True)
+    markdown = models.TextField(blank=True)
 
     def __str__(self):
         return self.name
@@ -34,6 +36,7 @@ class Exercise(models.Model):
     )
     name = models.CharField(max_length=255)
     summary = models.TextField(blank=True)
+    markdown = models.TextField(blank=True)
 
     def __str__(self):
         return self.name

@@ -24,7 +24,7 @@ class LessonAdmin(admin.ModelAdmin):
     list_display = ("name", "unit")
     search_fields = ("name",)
     ordering = ("name",)
-    list_filter = ("unit",)
+    list_filter = ("unit__course",)
     autocomplete_fields = ("unit",)
 
 
@@ -33,5 +33,5 @@ class ExerciseAdmin(admin.ModelAdmin):
     list_display = ("name", "lesson")
     search_fields = ("name",)
     ordering = ("name",)
-    list_filter = ("lesson",)
+    list_filter = ("lesson__unit__course",)
     autocomplete_fields = ("lesson",)
