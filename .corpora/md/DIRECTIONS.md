@@ -22,7 +22,7 @@ The filename **determines the header level**. **Follow these rules exactly**:
   - **Not a full lesson**—just a high-level explanation of key concepts.
   - No practice problems.
 
-- `XX-YY-ZZ-title.md` (where ZZ ≠ 00) → `###` (H3) **Lesson**
+- `XX-YY-ZZ-title.md` (where ZZ $\neq$ 00) → `###` (H3) **Lesson**
   - **Use `###` (H3) as the main title**.
   - **Include subheaders (`####`, `#####`, etc.)** as needed.
   - **Full structured lesson** with explanations, examples, and practice problems.

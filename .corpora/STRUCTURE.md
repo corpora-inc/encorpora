@@ -17,7 +17,7 @@ Rules:
   - Short overview of key concepts
   - Not a full lesson, just the subheader and a brief explanation.
 
-- `XX-YY-ZZ` (ZZ ≠ 00) → `###` (H3) **Lesson**
+- `XX-YY-ZZ` (ZZ $\neq$ 00) → `###` (H3) **Lesson**
   - Start from `###`
   - Include subheaders (`####`, `#####`, etc.)
   - Full structured lesson with comprehensive explanations, examples, and practice problems.

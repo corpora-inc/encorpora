@@ -9,6 +9,19 @@ from itrary.models import Exercise, Lesson, Unit
 
 llm = load_llm_provider("xai")
 
+MARKDOWN_CONTENT_INSTRUCTIONS = """
+You are writing as part of a larger curriculum.
+So, you do not need excessive introduction or conclusion.
+You do not need to excessively reference the course name or unit name.
+The reader will already know where they are.
+Add blank lines between markdown features.
+For example, always add a blank line before enumerated lists and bullet points.
+You may use `$` for inline math and `$$` display math, if needed.
+DO NOT use ANY special unicode characters like `≠`, `α`, `≈`,
+instead use inline or display math with LaTeX such as `\neq`, `\alpha`, `\approx`.
+The content will be added to a book that uses pandoc to convert to pdf and other formats.
+"""
+
 
 class CoursePlanUnit(BaseModel):
     name: str
@@ -184,11 +197,10 @@ def get_lesson_content(
                     "You return a complete, comprehensive, verbose lesson in markdown format. "
                     "You are writing a lesson for a larger curriculum. "
                     "So, you do not need excessive introduction or conclusion. "
+                    f"For markdown, follow the instructions: {MARKDOWN_CONTENT_INSTRUCTIONS} "
                     f"You start the markdown from `### {lesson_request.lesson_name}` with 3 `#`s. "
                     "Write the lesson in a way that is easy to understand for the target audience "
                     "which is implied by the course name and unit name. "
-                    "You may use `$` for inline math and `$$` display math, if needed. "
-                    "The lesson will be added to a book that uses pandoc to convert to pdf and other formats."
                 ),
             ),
             ChatCompletionTextMessage(
@@ -217,13 +229,10 @@ def get_exercise_content(
                     f"You are now working on the unit: `{exercise_request.unit_name}`. "
                     f"You are now working on the lesson: {exercise_request.lesson_name}."
                     "You return a complete, comprehensive, verbose exercise in markdown format. "
-                    "You are writing a lesson for a larger curriculum. "
-                    "So, you do not need excessive introduction or conclusion. "
+                    f"For markdown, follow the instructions: {MARKDOWN_CONTENT_INSTRUCTIONS} "
                     f"You start the markdown from `#### {exercise_request.exercise_name}` with 4 `#`s. "
                     "Write the exercise in a way that is easy to understand for the target audience"
                     "which is implied by the course name and unit name. "
-                    "You may use `$` for inline math and `$$` display math, if needed. "
-                    "The exercise will be added to a book that uses pandoc to convert to pdf and other formats."
                 ),
             ),
             ChatCompletionTextMessage(

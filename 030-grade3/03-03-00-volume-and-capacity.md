@@ -18,6 +18,7 @@ Understanding volume and capacity is essential in daily life, from cooking to fi
 
 1. If a measuring cup can hold up to 250 milliliters, how many such cups are needed to fill a liter jug?
 2. Calculate the volume of a box with dimensions 4 cm by 5 cm by 6 cm.
-3. Which container has a greater capacity: one that holds 2 liters or another that holds 1.5 gallons? (Note: 1 gallon ≈ 3.785 liters)
+3. Which container has a greater capacity: one that holds 2 liters or another that holds 1.5 gallons? (Note: 1 gallon $\approx$
+ 3.785 liters)
 4. How many 250 ml bottles can be filled from a 5-liter water tank?
 5. A swimming pool is being filled with water at a rate of 500 liters per hour. How long will it take to fill the pool if its capacity is 3000 liters?

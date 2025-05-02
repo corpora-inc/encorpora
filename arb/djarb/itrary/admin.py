@@ -22,7 +22,7 @@ class UnitAdmin(admin.ModelAdmin):
 @admin.register(Lesson)
 class LessonAdmin(admin.ModelAdmin):
     list_display = ("name", "unit")
-    search_fields = ("name",)
+    search_fields = ("name", "summary", "markdown")
     ordering = ("name",)
     list_filter = ("unit__course",)
     autocomplete_fields = ("unit",)
@@ -31,7 +31,7 @@ class LessonAdmin(admin.ModelAdmin):
 @admin.register(Exercise)
 class ExerciseAdmin(admin.ModelAdmin):
     list_display = ("name", "lesson")
-    search_fields = ("name",)
+    search_fields = ("name", "markdown")
     ordering = ("name",)
     list_filter = ("lesson__unit__course",)
     autocomplete_fields = ("lesson",)

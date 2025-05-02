@@ -18,7 +18,7 @@ Reglas:
   - Breve introducción a los conceptos clave.
   - No es una lección completa, solo una breve explicación del tema.
 
-- `XX-YY-ZZ` (ZZ ≠ 00) → `###` (H3) **Lección**
+- `XX-YY-ZZ` (ZZ != 00) → `###` (H3) **Lección**
   - Comienza con `###`.
   - Incluye subencabezados (`####`, `#####`, etc.).
   - Lección estructurada con explicaciones completas, ejemplos y ejercicios prácticos.
