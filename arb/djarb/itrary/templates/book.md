@@ -1,3 +1,5 @@
+{% autoescape off %}
+
 {{ course.summary }}
 
 {% for unit in course.units.all|dictsort:"number" %}
@@ -21,3 +23,5 @@
 {% endfor %}
 
 {% endfor %}
+
+{% endautoescape %}

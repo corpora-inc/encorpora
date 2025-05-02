@@ -39,19 +39,21 @@ class Command(BaseCommand):
         parser.add_argument(
             "--template",
             type=str,
-            default="book.md",
+            default="book",
             help="Template to use for rendering the book",
         )
 
     def handle(self, *args: Any, **options: Any) -> None:
         course_name: str = options["course_name"]
-        course_slug = course_name.replace(' ', '-').lower()
+        course_slug = course_name.replace(" ", "-").lower()
         out_dir = Path(options["output_dir"] or f"./book-output/{course_slug}")
         out_dir.mkdir(parents=True, exist_ok=True)
         resources_dir = Path(f"./book-resources/{course_slug}")
         cover_image = resources_dir / "cover.png"
         isbn = options["isbn"]
         template_name = options["template"]
+
+        full_stem = "-".join([course_slug, template_name])
 
         # 1) Fetch the course
         try:
@@ -63,9 +65,9 @@ class Command(BaseCommand):
             return
 
         # 2) Render Markdown
-        md_filename = f"{course_slug}.md"
+        md_filename = f"{full_stem}.md"
         md_path = out_dir / md_filename
-        rendered = render_to_string(template_name, {"course": course})
+        rendered = render_to_string(f"{template_name}.md", {"course": course})
         md_path.write_text(rendered, encoding="utf-8")
         self.stdout.write(f"✅ Markdown written to {md_path}")
 
@@ -89,7 +91,7 @@ class Command(BaseCommand):
         jobs: List[Dict[str, Any]] = [
             {
                 "name": "pdf",
-                "outfile": out_dir / f"{md_path.stem}.pdf",
+                "outfile": out_dir / f"{full_stem}.pdf",
                 "args": [
                     "--pdf-engine=xelatex",
                     "--toc",
@@ -105,7 +107,7 @@ class Command(BaseCommand):
             },
             {
                 "name": "epub",
-                "outfile": out_dir / f"{md_path.stem}.epub",
+                "outfile": out_dir / f"{full_stem}.epub",
                 "args": [
                     "--to=epub3",
                     "--mathml",
@@ -127,7 +129,7 @@ class Command(BaseCommand):
             },
             {
                 "name": "print-pdf",
-                "outfile": out_dir / f"{md_path.stem}-print.pdf",
+                "outfile": out_dir / f"{full_stem}-print.pdf",
                 "args": [
                     "--pdf-engine=xelatex",
                     "--toc",
