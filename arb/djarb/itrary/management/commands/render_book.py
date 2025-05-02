@@ -1,5 +1,3 @@
-# itrary/management/commands/export_course_md.py
-
 import subprocess
 from pathlib import Path
 from typing import Any, Dict, List
@@ -23,15 +21,15 @@ class Command(BaseCommand):
         parser.add_argument(
             "--output-dir",
             type=str,
-            default=".",
+            default="",
             help="Directory to write outputs into",
         )
-        parser.add_argument(
-            "--cover-image",
-            type=str,
-            default="cover.png",
-            help="Path to cover image (for EPUB and PDFs)",
-        )
+        # parser.add_argument(
+        #     "--cover-image",
+        #     type=str,
+        #     default="cover.png",
+        #     help="Path to cover image (for EPUB and PDFs)",
+        # )
         parser.add_argument(
             "--isbn",
             type=str,
@@ -47,8 +45,11 @@ class Command(BaseCommand):
 
     def handle(self, *args: Any, **options: Any) -> None:
         course_name: str = options["course_name"]
-        out_dir = Path(options["output_dir"])
-        cover_image = options["cover_image"]
+        course_slug = course_name.replace(' ', '-').lower()
+        out_dir = Path(options["output_dir"] or f"./book-output/{course_slug}")
+        out_dir.mkdir(parents=True, exist_ok=True)
+        resources_dir = Path(f"./book-resources/{course_slug}")
+        cover_image = resources_dir / "cover.png"
         isbn = options["isbn"]
         template_name = options["template"]
 
@@ -62,7 +63,7 @@ class Command(BaseCommand):
             return
 
         # 2) Render Markdown
-        md_filename = f"{course_name.replace(' ', '-').lower()}.md"
+        md_filename = f"{course_slug}.md"
         md_path = out_dir / md_filename
         rendered = render_to_string(template_name, {"course": course})
         md_path.write_text(rendered, encoding="utf-8")
@@ -92,9 +93,9 @@ class Command(BaseCommand):
                 "args": [
                     "--pdf-engine=xelatex",
                     "--toc",
-                    "--include-in-header=custom_headings.tex",
-                    "--include-before-body=custom_cover.tex",
-                    "--lua-filter=hrule.lua",
+                    f"--include-in-header={resources_dir}/custom_headings.tex",
+                    f"--include-before-body={resources_dir}/custom_cover.tex",
+                    f"--lua-filter={resources_dir}/hrule.lua",
                     "-V",
                     "documentclass=book",
                     "-V",
@@ -108,12 +109,12 @@ class Command(BaseCommand):
                 "args": [
                     "--to=epub3",
                     "--mathml",
-                    "--css=epub.css",
+                    f"--css={resources_dir}/epub.css",
                     # "--epub-embed-font=fonts/STIXTwoText-Regular.ttf",
                     # "--epub-embed-font=fonts/STIXTwoMath-Regular.ttf",
                     f"--epub-cover-image={cover_image}",
                     "--toc",
-                    "--lua-filter=hrule.lua",
+                    f"--lua-filter={resources_dir}/hrule.lua",
                     "--toc-depth=2",
                     # metadata flags:
                     f"--metadata=title:{meta['title']}",
@@ -130,9 +131,9 @@ class Command(BaseCommand):
                 "args": [
                     "--pdf-engine=xelatex",
                     "--toc",
-                    "--include-in-header=custom_headings.tex",
-                    "--include-before-body=custom_cover.tex",
-                    "--lua-filter=hrule.lua",
+                    f"--include-in-header={resources_dir}/custom_headings.tex",
+                    f"--include-before-body={resources_dir}/custom_cover.tex",
+                    f"--lua-filter={resources_dir}/hrule.lua",
                     "-V",
                     "documentclass=book",
                     "-V",
