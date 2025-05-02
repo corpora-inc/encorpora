@@ -14,8 +14,8 @@ You are writing as part of a larger curriculum.
 So, you do not need excessive introduction or conclusion.
 You do not need to excessively reference the course name or unit name.
 The reader will already know where they are.
-Add blank lines between markdown features.
-For example, always add a blank line before enumerated lists and bullet points.
+ALWAYS add blank lines between markdown features.
+For example, ALWAYS add a blank line before enumerated lists and bullet lists.
 You may use `$` for inline math and `$$` display math, if needed.
 DO NOT use ANY special unicode characters like `≠`, `α`, `≈`,
 instead use inline or display math with LaTeX such as `\neq`, `\alpha`, `\approx`.
