@@ -24,12 +24,12 @@ class Command(BaseCommand):
             default="",
             help="Directory to write outputs into",
         )
-        # parser.add_argument(
-        #     "--cover-image",
-        #     type=str,
-        #     default="cover.png",
-        #     help="Path to cover image (for EPUB and PDFs)",
-        # )
+        parser.add_argument(
+            "--cover-image",
+            type=str,
+            default="cover.png",
+            help="Path to cover image (for EPUB and PDFs)",
+        )
         parser.add_argument(
             "--isbn",
             type=str,
@@ -49,9 +49,9 @@ class Command(BaseCommand):
         out_dir = Path(options["output_dir"] or f"./book-output/{course_slug}")
         out_dir.mkdir(parents=True, exist_ok=True)
         resources_dir = Path(f"./book-resources/{course_slug}")
-        cover_image = resources_dir / "cover.png"
         isbn = options["isbn"]
         template_name = options["template"]
+        cover_image = resources_dir / options["cover_image"]
 
         full_stem = "-".join([course_slug, template_name])
 
