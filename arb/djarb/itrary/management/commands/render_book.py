@@ -103,6 +103,8 @@ class Command(BaseCommand):
                     "-V",
                     "geometry:margin=1in",
                     "--toc-depth=2",
+                    # "-V",
+                    # "titlepage",
                 ],
             },
             {

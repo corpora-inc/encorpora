@@ -10,7 +10,6 @@
 
 {% for lesson in unit.lessons.all|dictsort:"number" %}
 
-\newpage
 {{ lesson.markdown }}
 
 {% for exercise in lesson.exercises.all %}
