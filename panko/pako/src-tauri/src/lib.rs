@@ -24,6 +24,7 @@ fn get_random_sentence(app: AppHandle) -> Result<Sentence, String> {
         .prepare(
             "SELECT text_korean, text_english
              FROM kore_sentence
+             WHERE cefr_level = 'A1'
              ORDER BY RANDOM()
              LIMIT 1",
         )
@@ -40,9 +41,11 @@ fn get_random_sentence(app: AppHandle) -> Result<Sentence, String> {
     }
 }
 
+#[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
     tauri::Builder::default()
         .invoke_handler(tauri::generate_handler![get_random_sentence])
+        .plugin(tauri_plugin_tts::init())
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }

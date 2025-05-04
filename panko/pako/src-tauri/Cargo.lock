@@ -1969,6 +1969,7 @@ version = "0.33.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "947e6816f7825b2b45027c2c32e7085da9934defa535de4a6a46b10a4d5257fa"
 dependencies = [
+ "cc",
  "pkg-config",
  "vcpkg",
 ]
@@ -2456,6 +2457,7 @@ dependencies = [
  "tauri",
  "tauri-build",
  "tauri-plugin-opener",
+ "tauri-plugin-tts",
 ]
 
 [[package]]
@@ -3733,6 +3735,18 @@ dependencies = [
  "url",
  "windows 0.60.0",
  "zbus",
+]
+
+[[package]]
+name = "tauri-plugin-tts"
+version = "0.2.0"
+source = "git+https://github.com/httpjamesm/tauri-plugin-tts.git#90360c9665a1c1337ed658fcdeccc87053cb1dda"
+dependencies = [
+ "serde",
+ "tauri",
+ "tauri-build",
+ "tauri-plugin",
+ "thiserror 2.0.12",
 ]
 
 [[package]]
