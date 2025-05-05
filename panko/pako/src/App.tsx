@@ -102,12 +102,12 @@ export default function App() {
             <p>Loading…</p>
           ) : curr ? (
             <>
-              <p className="text-6xl font-extrabold text-center mt-10 p-4">
+              <p className="text-6xl font-extrabold text-center mt-6 p-3">
                 {curr.text_korean}
               </p>
               <Button
                 onClick={() => speakKO(curr.text_korean)}
-                className="mt-8"
+                className="m-3"
                 size="lg"
                 variant="outline"
               >
@@ -128,7 +128,7 @@ export default function App() {
               </p>
               <Button
                 onClick={() => speakEN(curr.text_english)}
-                className="mt-8"
+                className="m-3"
                 variant="outline"
                 size="lg"
               >

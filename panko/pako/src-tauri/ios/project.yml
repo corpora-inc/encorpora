@@ -93,3 +93,7 @@ targets:
           - $(SRCROOT)/Externals/x86_64/${CONFIGURATION}/libapp.a
           - $(SRCROOT)/Externals/arm64/${CONFIGURATION}/libapp.a
           - $(SRCROOT)/Externals/arm64-sim/${CONFIGURATION}/libapp.a
+    postBuildScripts:
+      - script: rm -f "${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app/libapp.a"
+        name: Remove libapp.a from Bundle
+        basedOnDependencyAnalysis: false
