@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>method</key>
+  <string>app-store-connect</string>
+  <key>signingStyle</key>
+  <string>manual</string>
+  <key>teamID</key>
+  <string>F9AV5HKF6N</string>
+  <key>provisioningProfiles</key>
+  <dict>
+    <key>com.pako.app</key>
+    <string>4d5c5e29-f71e-4053-a7b6-fc1d5874d97a</string>
+  </dict>
+</dict>
+</plist>

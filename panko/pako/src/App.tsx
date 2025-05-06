@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useRef } from "react";
 import { invoke } from "@tauri-apps/api/core";
 import { Button } from "@/components/ui/button";
 import { speakKO, speakEN } from "./util/speak";
@@ -18,51 +18,78 @@ export type Sentence = {
 
 export default function App() {
   const [history, setHistory] = useState<Sentence[]>([]);
-  const [index, setIndex] = useState(-1);
-  const [loading, setLoading] = useState(false);
+  const [index, setIndex] = useState<number>(-1);
+  const [loading, setLoading] = useState<boolean>(true);
 
-  // Load from localStorage or fetch first
+  // keep a ref to the "current" index for async use
+  const indexRef = useRef<number>(index);
   useEffect(() => {
-    const raw = localStorage.getItem(HISTORY_KEY);
-    if (raw) {
+    indexRef.current = index;
+  }, [index]);
+
+  // Single initial load: try storage, else fetch one
+  useEffect(() => {
+    (async () => {
       try {
-        const arr: Sentence[] = JSON.parse(raw);
-        if (arr.length) {
-          setHistory(arr);
-          setIndex(arr.length - 1);
-          return;
+        const raw = localStorage.getItem(HISTORY_KEY);
+        if (raw) {
+          try {
+            const arr: Sentence[] = JSON.parse(raw);
+            if (arr.length) {
+              setHistory(arr);
+              setIndex(arr.length - 1);
+              return;
+            }
+          } catch {
+            // invalid JSON → fall back
+          }
         }
-      } catch {
-        // fall through
+        // no valid history → fetch one
+        const s = await invoke<Sentence>("get_random_sentence");
+        setHistory([s]);
+        setIndex(0);
+      } finally {
+        setLoading(false);
       }
-    }
-    fetchRandom();
+    })();
   }, []);
 
-  // Persist history
+  // Persist every time history changes
   useEffect(() => {
-    localStorage.setItem(HISTORY_KEY, JSON.stringify(history));
+    if (history.length) {
+      localStorage.setItem(HISTORY_KEY, JSON.stringify(history));
+    }
   }, [history]);
 
-  const fetchRandom = useCallback(async () => {
+  // Always-fresh fetcher
+  const fetchRandomSentence = async () => {
     setLoading(true);
     try {
       const s = await invoke<Sentence>("get_random_sentence");
-      setHistory((h) => [...h.slice(0, index + 1), s]);
-      setIndex((i) => i + 1);
+      setHistory((prev) => {
+        // drop any "future" entries if user navigated back
+        const truncated = prev.slice(0, indexRef.current + 1);
+        return [...truncated, s];
+      });
+      // move to new last
+      setIndex((_) => indexRef.current + 1);
     } finally {
       setLoading(false);
     }
-  }, [index]);
+  };
 
-  const handlePrev = useCallback(() => {
-    if (index > 0) setIndex(index - 1);
-  }, [index]);
-
-  const handleNext = useCallback(() => {
-    if (index < history.length - 1) setIndex(index + 1);
-    else fetchRandom();
-  }, [index, history.length, fetchRandom]);
+  const handlePrev = () => {
+    if (index > 0) {
+      setIndex((i) => i - 1);
+    }
+  };
+  const handleNext = () => {
+    if (index < history.length - 1) {
+      setIndex((i) => i + 1);
+    } else {
+      fetchRandomSentence();
+    }
+  };
 
   const curr = history[index];
 
@@ -71,14 +98,16 @@ export default function App() {
       <div className="flex flex-col h-full w-full bg-white rounded-lg shadow-lg overflow-scroll">
         {/* Top third: Hangul */}
         <div className="flex-1 flex flex-col items-center justify-center px-4">
-          {curr ? (
+          {loading ? (
+            <p>Loading…</p>
+          ) : curr ? (
             <>
-              <p className="text-6xl font-extrabold text-center mt-10 p-4">
+              <p className="text-6xl font-extrabold text-center mt-6 p-3">
                 {curr.text_korean}
               </p>
               <Button
                 onClick={() => speakKO(curr.text_korean)}
-                className="mt-8"
+                className="m-3"
                 size="lg"
                 variant="outline"
               >
@@ -86,20 +115,20 @@ export default function App() {
               </Button>
             </>
           ) : (
-            <p>Loading…</p>
+            <p>No sentence available.</p>
           )}
         </div>
 
         {/* Middle third: English */}
         <div className="flex-1 flex flex-col items-center justify-center px-12">
-          {curr && (
+          {curr && !loading && (
             <>
               <p className="text-2xl text-gray-700 text-center">
                 {curr.text_english}
               </p>
               <Button
                 onClick={() => speakEN(curr.text_english)}
-                className="mt-8"
+                className="m-3"
                 variant="outline"
                 size="lg"
               >
@@ -114,7 +143,7 @@ export default function App() {
           <div className="flex justify-between items-center p-4">
             <Button
               onClick={handlePrev}
-              disabled={index <= 0}
+              disabled={loading || index <= 0}
               className="p-2"
               variant="outline"
               aria-label="Previous sentence"
@@ -123,7 +152,7 @@ export default function App() {
             </Button>
 
             <Button
-              onClick={fetchRandom}
+              onClick={fetchRandomSentence}
               disabled={loading}
               className="p-2"
               variant="outline"
