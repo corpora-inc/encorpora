@@ -18,30 +18,17 @@ class Command(BaseCommand):
 
     def add_arguments(self, parser):
         parser.add_argument(
-            "course_name",
-            type=str,
-            help="Course/book name (e.g., 'Georgia State History')",
-        )
-        parser.add_argument(
-            "--input-dir",
+            "--config-path",
             type=str,
             default=None,
             help="Book-specific subdirectory in book-inputs (e.g., 'georgia-state-history')",
         )
 
     def handle(self, *args, **options):
-        course_name = options["course_name"]
-        input_dir = options["input_dir"]
-
-        # Load book configuration from YAML
-        config = load_book_config(input_dir)
-        if input_dir and not config:
-            self.stderr.write(
-                f"Warning: No config.yaml found in book-inputs/{input_dir}. Using default config."
-            )
+        config = load_book_config(options["config_path"])
 
         # Set course title from config if available, fallback to course_name
-        course_title = config.title if config and config.title else course_name
+        course_title = config.title
 
         # Create or update course
         course, _ = Course.objects.get_or_create(name=course_title)
@@ -73,9 +60,10 @@ class Command(BaseCommand):
                 lesson_obj.number = i
                 lesson_obj.save()
 
+                self.stdout.write(f"Lesson: {lesson_obj.name}\n")
+                lesson_plan = get_lesson_plan(unit.name, lesson.name, config=config)
+
                 if not lesson_obj.summary:
-                    self.stdout.write(f"Lesson: {lesson_obj.name}\n")
-                    lesson_plan = get_lesson_plan(unit.name, lesson.name, config=config)
                     lesson_obj.summary = lesson_plan.summary
                     self.stdout.write(f"Summary: {lesson_obj.summary}\n")
                     lesson_obj.save()
@@ -86,7 +74,7 @@ class Command(BaseCommand):
                     self.stdout.write(f"Lesson content: {lesson_obj.name}\n")
                     lesson_content = get_lesson_content(
                         LessonContentRequest(
-                            course_name=course_name,
+                            course_name=config.title,
                             unit_name=unit.name,
                             lesson_name=lesson.name,
                             lesson_summary=lesson_obj.summary,
@@ -109,7 +97,7 @@ class Command(BaseCommand):
                         self.stdout.write(f"Exercise content: {exercise.name}\n")
                         exercise_content = get_exercise_content(
                             ExerciseContentRequest(
-                                course_name=course_name,
+                                course_name=config.title,
                                 unit_name=unit.name,
                                 lesson_name=lesson.name,
                                 exercise_name=exercise.name,
