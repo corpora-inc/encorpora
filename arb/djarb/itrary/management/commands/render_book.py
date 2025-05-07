@@ -48,7 +48,7 @@ class Command(BaseCommand):
         course_slug = course_name.replace(" ", "-").lower()
         out_dir = Path(options["output_dir"] or f"./book-output/{course_slug}")
         out_dir.mkdir(parents=True, exist_ok=True)
-        resources_dir = Path(f"./book-resources/{course_slug}")
+        resources_dir = Path(f"./book-input/{course_slug}")
         isbn = options["isbn"]
         template_name = options["template"]
         cover_image = resources_dir / options["cover_image"]

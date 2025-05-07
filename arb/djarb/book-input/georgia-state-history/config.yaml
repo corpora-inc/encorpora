@@ -1,0 +1,15 @@
+# book-input/georgia-state-history/config.yaml
+title: Georgia State History
+subtitle: An Elementary Journey Through the Peach State
+author: Skylar Saveland
+publisher: Corpora Inc
+isbn: ""
+image_instructions: |
+  Produce colored-pencil illustrations with visible cross-hatching in a fun, engaging, artistic style.
+  Scenes should depict history as accurately as possible as this is for a textbook.
+# llm_instructions: |
+#   Write in a vivid, storytelling tone tailored for elementary students,
+#   making historical events exciting and relatable.
+#   Focus on key figures (e.g., James Oglethorpe), events (e.g., founding of Savannah),
+#   and cultural aspects (e.g., Native American history).
+#   Avoid complex jargon and use simple, engaging language.
