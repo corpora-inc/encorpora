@@ -66,6 +66,6 @@ Convert the following numbers to all three forms (standard, word, and expanded):
 
 #### Application
 
-Understanding how to represent and interpret numbers up to 10,000 is essential in everyday tasks such as reading population data, budgeting finances, and measuring distances. Mastery of these skills enhances accuracy in both academic contexts and real-world applications, leading to better decision-making.
+Understanding how to represent and interpret numbers is essential in everyday tasks such as reading data, budgeting, and measuring distances. Mastery of these skills enhances accuracy in both academic contexts and real-world applications, leading to better decision-making.
 
 Recognizing and working with numbers is a crucial skill developed over time. Explore datasets or interactive applications that highlight these concepts to enrich your learning experience.
