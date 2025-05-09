@@ -11,7 +11,7 @@ from corpora_ai.provider_loader import load_llm_provider
 from itrary.models import Course
 from itrary.utils import load_book_config
 
-llm = load_llm_provider("xai")
+llm = load_llm_provider("openai")
 
 
 class Command(BaseCommand):
@@ -85,166 +85,140 @@ class Command(BaseCommand):
         md_path.write_text(rendered, encoding="utf-8")
         self.stdout.write(f"✅ Initial markdown written to {md_path}")
 
-        with open(md_path, "r") as f:
-            content = f.read()
+        content = md_path.read_text(encoding="utf-8")
 
-        # Find image tokens and generate images
+        # Find image tokens and generate or reuse images
         image_tokens = re.findall(r"\{\{IMAGE: (.*?)\}\}", content)
-        skipped_captions = []
-        for alt_text in set(image_tokens):
-            slugified_alt_text = slugify(alt_text)
+        skipped_captions: List[str] = []
 
-            # TODO: also check if png exists ... should be able to mix formats
-            # Check if the image already exists
-            image_path = images_dir / f"{slugified_alt_text}.jpg"
-            if image_path.exists():
+        for alt_text in set(image_tokens):
+            slugified = slugify(alt_text)
+
+            # Check for existing image with any supported extension
+            existing_ext = None
+            for ext in ("png", "jpg", "jpeg"):
+                if (images_dir / f"{slugified}.{ext}").exists():
+                    existing_ext = ext
+                    break
+
+            token_pattern = f"{{{{IMAGE: {alt_text}}}}}"
+            if existing_ext:
                 self.stdout.write(
-                    f"Image already exists for: {alt_text}. Skipping generation."
+                    f"Image already exists for '{alt_text}' ({existing_ext}); skipping generation."
                 )
                 content = content.replace(
-                    f"{{{{IMAGE: {alt_text}}}}}",
-                    f"\n![{alt_text}](images/{slugified_alt_text}.jpg)\n",
+                    token_pattern,
+                    f"\n![{alt_text}](images/{slugified}.{existing_ext})\n",
                 )
                 continue
 
-            # Find the image token position
-            token = f"{{IMAGE: {alt_text}}}"
-            print(f"Token: {token}")
-
-            try:
-                token_index = content.index(token)
-            except Exception:
-                import IPython
-
-                IPython.embed()
-
-            # Get the content before the token
-            before_token = content[:token_index]
-
-            # Find the last header (e.g., #, ##, ###) before the token
-            header_pattern = r"^(#{1,6})\s+(.+)$"  # Matches # Header, ## Header, etc.
-            headers = []
-            for line in before_token.splitlines():
-                match = re.match(header_pattern, line, re.MULTILINE)
-                if match:
-                    headers.append(
-                        match.group(2).strip()
-                    )  # Capture the header text (without #)
-
-            # Use the last header as context (or empty if none found)
+            # Determine context header for prompt
+            token_index = content.find(token_pattern)
+            before = content[:token_index]
+            header_pattern = r"^(#{1,6})\s+(.+)$"
+            headers = [
+                m.group(2).strip()
+                for line in before.splitlines()
+                if (m := re.match(header_pattern, line))
+            ]
             context = headers[-1] if headers else ""
 
-            # Build the prompt
-            image_prompt = (
+            # Build the image prompt
+            prompt_parts = []
+            if context:
+                prompt_parts.append(f"Context:\n{config.title}\n{context}\n")
+            prompt_parts.append(
                 f"Image Instructions:\n{config.image_instructions}\n"
                 f"The image caption is:\n`{alt_text}`\n\n"
                 "Generate an image that matches the caption using the instructions."
             )
-            if context:
-                image_prompt = f"Context:\n{config.title}\n{context}\n\n{image_prompt}"
+            image_prompt = "\n".join(prompt_parts)
             self.stdout.write(f"PROMPT:\n{image_prompt}")
 
             try:
-                generated_images = llm.get_image(image_prompt)
+                generated = llm.get_image(image_prompt)
             except Exception as e:
                 self.stderr.write(f"❌ Error generating image for '{alt_text}': {e}")
                 skipped_captions.append(alt_text)
-                content = content.replace(f"{{{{IMAGE: {alt_text}}}}}", "")
+                content = content.replace(token_pattern, "")
                 continue
 
-            if not generated_images:
+            if not generated:
                 self.stdout.write(
-                    f"⚠️ No images generated for: {alt_text}. Removing token."
+                    f"⚠️ No images generated for '{alt_text}'; removing token."
                 )
                 skipped_captions.append(alt_text)
-                content = content.replace(f"{{{{IMAGE: {alt_text}}}}}", "")
+                content = content.replace(token_pattern, "")
                 continue
 
-            if len(generated_images) > 1:
+            if len(generated) > 1:
                 self.stdout.write(
-                    f"Warning: Multiple images generated for '{alt_text}', using first one"
+                    f"⚠️ Multiple images for '{alt_text}'; using first one."
                 )
 
-            # Use the first image
-            generated_image = generated_images[0]
-            image_format = generated_image.format
-            if image_format not in {"png", "jpg", "jpeg"}:
+            img = generated[0]
+            fmt = img.format.lower()
+            if fmt not in {"png", "jpg", "jpeg"}:
                 self.stdout.write(
-                    f"⚠️ Unsupported image format '{image_format}' for: {alt_text}. Removing token."
+                    f"⚠️ Unsupported format '{fmt}' for '{alt_text}'; removing token."
                 )
                 skipped_captions.append(alt_text)
-                content = content.replace(f"{{{{IMAGE: {alt_text}}}}}", "")
+                content = content.replace(token_pattern, "")
                 continue
 
-            image_path = images_dir / f"{slugified_alt_text}.{image_format}"
-
-            # Save image
-            with open(image_path, "wb") as f:
-                f.write(generated_image.data)
-
-            # Replace token with markdown image
+            image_path = images_dir / f"{slugified}.{fmt}"
+            image_path.write_bytes(img.data)
             content = content.replace(
-                f"{{{{IMAGE: {alt_text}}}}}",
-                f"\n![{alt_text}](images/{slugified_alt_text}.{image_format})\n",
+                token_pattern,
+                f"\n![{alt_text}](images/{slugified}.{fmt})\n",
             )
 
-        # Save processed markdown
-        processed_md_filename = f"{full_stem}-processed.md"
-        processed_md_path = out_dir / processed_md_filename
-        processed_md_path.write_text(content, encoding="utf-8")
-        self.stdout.write(
-            f"✅ Processed markdown with images written to {processed_md_path}"
-        )
+        # Write processed markdown
+        proc_md = out_dir / f"{full_stem}-processed.md"
+        proc_md.write_text(content, encoding="utf-8")
+        self.stdout.write(f"✅ Processed markdown with images written to {proc_md}")
 
-        # Log skipped captions
         if skipped_captions:
-            self.stdout.write(
-                f"\n⚠️ Skipped {len(skipped_captions)} captions due to no images generated:"
-            )
-            for caption in skipped_captions:
-                self.stdout.write(f"- {caption}")
+            self.stdout.write(f"\n⚠️ Skipped {len(skipped_captions)} captions:")
+            for c in skipped_captions:
+                self.stdout.write(f"- {c}")
 
-        # Render custom_cover.tex
-        cover_template = "custom_cover.tex"
-        cover_context = {
+        # Render cover and metadata
+        cover_ctx = {
             "title": config.title,
             "subtitle": config.subtitle,
             "author": config.author or "Skylar Saveland",
             "publisher": config.publisher or "Corpora Inc",
             "cover_path": cover_image_name,
         }
-        rendered_cover = render_to_string(cover_template, cover_context)
-        cover_path = out_dir / "custom_cover.tex"
-        cover_path.write_text(rendered_cover, encoding="utf-8")
-        self.stdout.write(f"✅ Rendered cover template to {cover_path}")
+        (out_dir / "custom_cover.tex").write_text(
+            render_to_string("custom_cover.tex", cover_ctx), encoding="utf-8"
+        )
+        self.stdout.write("✅ Rendered cover template")
 
-        # Metadata
+        from datetime import date
+
         meta: Dict[str, str] = {
             "title": config.title,
             "author": config.author or "The Encorpora Team",
             "lang": "en-US",
-            "date": "",
+            "date": date.today().isoformat(),
             "publisher": config.publisher or "Corpora Inc",
             "isbn": config.isbn or "",
         }
-        from datetime import date
 
-        meta["date"] = meta["date"] or date.today().isoformat()
-
-        # cp everything from common dir to output dir
+        # Copy common files and cover image
         for item in common_dir.iterdir():
             if item.is_file():
-                dest_path = out_dir / item.name
-                dest_path.write_bytes(item.read_bytes())
-                self.stdout.write(f"✅ Copied {item} to {dest_path}")
+                dest = out_dir / item.name
+                dest.write_bytes(item.read_bytes())
+                self.stdout.write(f"✅ Copied {item.name}")
 
-        # Copy cover image to output directory
-        cover_image_dest: Path = out_dir / cover_image_name
-        cover_image_dest.write_bytes(cover_image_path.read_bytes())
-        self.stdout.write(f"✅ Copied cover image to {cover_image_dest}")
+        (out_dir / cover_image_name).write_bytes(cover_image_path.read_bytes())
+        self.stdout.write("✅ Copied cover image")
 
-        # Define pandoc jobs
-        jobs: List[Dict[str, Any]] = [
+        # Define and run pandoc jobs
+        jobs = [
             {
                 "name": "pdf",
                 "outfile": f"{full_stem}.pdf",
@@ -300,20 +274,9 @@ class Command(BaseCommand):
             },
         ]
 
-        # Run pandoc jobs
         for job in jobs:
-            cmd = [
-                "pandoc",
-                "-s",
-                str(processed_md_filename),
-                "-o",
-                str(job["outfile"]),
-            ] + job["args"]
             self.stdout.write(f"→ Building {job['name']} → {job['outfile']}")
-            try:
-                subprocess.run(cmd, check=True, cwd=out_dir)
-            except subprocess.CalledProcessError as e:
-                self.stderr.write(f"❌ pandoc {job['name']} failed: {e}")
-                return
+            cmd = ["pandoc", "-s", proc_md.name, "-o", job["outfile"]] + job["args"]
+            subprocess.run(cmd, check=True, cwd=out_dir)
 
         self.stdout.write("🎉 All formats built successfully!")
