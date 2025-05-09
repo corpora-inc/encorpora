@@ -1,10 +1,10 @@
 ## Place Value
 
-Place value is a fundamental concept in mathematics that helps us understand the value of digits in numbers based on their position. This concept is vital because it forms the basis of our number system, which is known as the base-10 or decimal system.
+Place value is a concept where a numbers value is not only determined by which number but its position. This concept is vital forms the basis of our number system, the base-10 or decimal system.
 
 **Understanding Place Value**
 
-In the base-10 system, each digit in a number has a value that depends on its position or 'place.' Starting from the right, the first place is the 'ones,' the second is the 'tens,' the third is the 'hundreds,' and so on. For example, in the number 345, the digit 5 is in the 'ones' place, 4 is in the 'tens' place, and 3 is in the 'hundreds' place. This means that the number represents $3 \times 100 + 4 \times 10 + 5 \times 1$.
+In the base-10 system, each digit in a number has a value that depends on its position or 'place.' Starting from the right, the first place is the 'ones,' the second is the 'tens,' the third is the 'hundreds,' and so on. For example, in the number 345, the digit 5 is in the 'ones' place, 4 is in the 'tens' place, and 3 is in the 'hundreds' place. This means that the number represents $(3 \times 100) + (4 \times 10) + (5 \times 1)$.
 
 **Historical Context**
 
@@ -30,7 +30,7 @@ While the base-10 system is widely used today, it is not the only possible syste
 
 Understanding place value is crucial because:
 
-- It helps in comprehending the size and scale of numbers.
+- It helps in comprehending the size, scale of numbers and orders of magnitude.
 - It simplifies arithmetic operations like addition, subtraction, multiplication, and division.
 - It is foundational for understanding more complex mathematical concepts, such as algebra and calculus.
 
@@ -39,4 +39,4 @@ Understanding place value is crucial because:
 - **Currency and Finance:** Place value helps us understand money, as different positions of a number in currency units denote vastly different wealth amounts.
 - **Measurements:** Place value assists in accurately reading and writing measurements in various units of distance, weight, or time.
 
-The history and development of place value benefited many aspects of daily life and technology and continue to be an essential part of education and mathematics today. Understanding how numbers work, not just what they are, allows for greater numeric literacy and problem-solving skills.
+The history and development of place value benefited many aspects of daily life and technology and continue to be an essential part of education and mathematics today. Understanding how numbers work allows for greater numeric literacy and problem-solving skills.
