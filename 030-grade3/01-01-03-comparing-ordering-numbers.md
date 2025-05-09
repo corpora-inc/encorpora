@@ -2,7 +2,7 @@
 
 #### Understanding the Basics
 
-When we compare numbers, we determine which number is greater, lesser, or if they are equal. This is an essential skill as it helps us make decisions based on numerical values. For example, knowing that 20 is less than 50 can help you understand that 20 candies are fewer than 50 candies.
+Comparing numbers is an essential skill as it helps us make decisions based on numerical values.
 
 #### Symbols Used in Comparison
 
