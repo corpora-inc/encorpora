@@ -6,6 +6,6 @@ Numbers are more than mere symbols; they have a fascinating history. The earlies
 
 > "Mathematics is not about numbers, equations, computations, or algorithms: it is about understanding." — William Paul Thurston
 
-Operations allow us to solve real-world problems efficiently. For instance, ancient Egyptians used basic arithmetic to construct the pyramids, demonstrating an early application of mathematical principles to engineering.
+Operations allow us to solve real-world problems efficiently. For instance, ancient Egyptians used basic arithmetic to help with construction, demonstrating an early application of mathematical principles to engineering.
 
-In this section, we will explore how numbers and operations function as the building blocks of mathematics. From tracking the growth of a garden over time to computing the trajectory of a space probe, they are essential tools in a child's journey into mathematics. Understanding how they work enables us to not only solve problems but also to appreciate the underlying order and patterns in the natural and man-made world.
+In this section, we will explore how numbers and operations function as the building blocks of our world. From tracking the growth of a garden over time to computing the trajectory of a space probe, they are essential tools in a child's journey into mathematics. Understanding how numbers work enables us to not only solve problems but also to appreciate the underlying order and patterns in the natural and man-made world.
