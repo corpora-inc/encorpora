@@ -43,6 +43,10 @@ class Command(BaseCommand):
                         unit_name=lesson.unit.name,
                         lesson_name=lesson.name,
                         lesson_summary=lesson.summary,
+                        # TODO: won't work - ;/
+                        # maybe make a different request for the study markdown
+                        # or just delete this file.
+                        lessons=lessons,
                     )
                 )
                 self.stdout.write(f"Lesson:\n\n{lesson_content.markdown[:100]}\n")

@@ -12,7 +12,7 @@ class CourseAdmin(admin.ModelAdmin):
 
 @admin.register(Unit)
 class UnitAdmin(admin.ModelAdmin):
-    list_display = ("name", "course")
+    list_display = ("name", "course", "number")
     search_fields = ("name",)
     ordering = ("name",)
     list_filter = ("course",)
@@ -23,7 +23,7 @@ class UnitAdmin(admin.ModelAdmin):
 class LessonAdmin(admin.ModelAdmin):
     list_display = ("name", "unit")
     search_fields = ("name", "summary", "markdown", "study_markdown")
-    ordering = ("name",)
+    ordering = ("unit", "number")
     list_filter = ("unit__course",)
     autocomplete_fields = ("unit",)
 
