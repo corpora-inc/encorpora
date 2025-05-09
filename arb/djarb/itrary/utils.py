@@ -8,13 +8,13 @@ import yaml
 class BookConfig(BaseModel):
     title: str
     subtitle: str
-    author: Optional[str] = "Skylar Saveland"
+    author: Optional[str] = "The Encorpora Team"
     publisher: Optional[str] = "Corpora Inc"
     units: Optional[int] = 8
     lessons_per_unit: Optional[int] = 6
-    # images_per_lesson: Optional[int] = 2
+    max_images_per_lesson: Optional[int] = 2
     exercises_per_lesson: Optional[int] = 3
-    isbn: Optional[str] = None
+    isbn: Optional[str] = ""
     image_instructions: Optional[str] = None
     llm_instructions: Optional[str] = None
 
@@ -29,7 +29,6 @@ def load_book_config(config_path: str) -> BookConfig:
     Returns:
         BookConfig: Validated configuration object.
     """
-
     try:
         with open(config_path, "r") as f:
             config_data = yaml.safe_load(f)
@@ -48,16 +47,13 @@ def dump_book_config(config: BookConfig) -> str:
     Returns:
         str: Formatted YAML string.
     """
-    # Convert Pydantic model to dict, excluding None values for cleaner output
     config_dict = config.model_dump(exclude_none=True)
-
-    # Serialize to YAML with custom formatting
     return yaml.dump(
         config_dict,
-        default_flow_style=False,  # Block style for readability
-        indent=2,  # 2-space indentation
-        sort_keys=False,  # Preserve field order
-        allow_unicode=True,  # Support Unicode characters
+        default_flow_style=False,
+        indent=2,
+        sort_keys=False,
+        allow_unicode=True,
     )
 
 
@@ -66,11 +62,11 @@ def save_image(data: bytes, out_path: Union[str, Path]) -> Path:
     Write raw image bytes to disk.
 
     Args:
-      data: The image's binary content.
-      out_path: Filepath where to save (including extension).
+        data: The image's binary content.
+        out_path: Filepath where to save (including extension).
 
     Returns:
-      The Path to the written file.
+        Path: The Path to the written file.
     """
     path = Path(out_path)
     path.parent.mkdir(parents=True, exist_ok=True)

@@ -18,14 +18,14 @@ class Command(BaseCommand):
 
     def add_arguments(self, parser):
         parser.add_argument(
-            "--config-path",
+            "--config",
             type=str,
             default=None,
-            help="Book-specific subdirectory in book-inputs (e.g., 'georgia-state-history')",
+            help="Path to config YAML (e.g., 'book-input/georgia-state-history/config.yaml')",
         )
 
     def handle(self, *args, **options):
-        config = load_book_config(options["config_path"])
+        config = load_book_config(options["config"])
 
         # Set course title from config if available, fallback to course_name
         course_title = config.title
@@ -52,12 +52,12 @@ class Command(BaseCommand):
             self.stdout.write(f"Unit: {unit_obj.name}\n")
             self.stdout.write(f"Summary: {unit_obj.summary}\n")
 
-            for i, lesson in enumerate(unit_plan.lessons):
+            for lesson in unit_plan.lessons:
                 lesson_obj, _ = Lesson.objects.get_or_create(
                     unit=unit_obj,
                     name=lesson.name,
                 )
-                lesson_obj.number = i
+                lesson_obj.number = lesson.number
                 lesson_obj.save()
 
                 self.stdout.write(f"Lesson: {lesson_obj.name}\n")
@@ -93,7 +93,7 @@ class Command(BaseCommand):
                         lesson=lesson_obj,
                         name=exercise.name,
                     )
-                    if not (ex.summary and ex.markdown):
+                    if not ex.summary or not ex.markdown:
                         self.stdout.write(f"Exercise content: {exercise.name}\n")
                         exercise_content = get_exercise_content(
                             ExerciseContentRequest(
@@ -112,5 +112,5 @@ class Command(BaseCommand):
                         ex.save()
                     else:
                         self.stdout.write(
-                            f"Skipping exercise content:\n{ex.name}\nd{ex.summary[:100]}\n{ex.markdown[:100]}\n\n"
+                            f"Skipping exercise content:\n{ex.name}\n{ex.summary[:100]}\n{ex.markdown[:100]}\n\n"
                         )

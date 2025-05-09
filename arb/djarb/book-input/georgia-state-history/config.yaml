@@ -3,16 +3,24 @@ title: Georgia State History
 subtitle: An Elementary Journey Through the Peach State
 author: Skylar Saveland
 publisher: Corpora Inc
-# units: 10
-# lessons_per_unit: 6
-# exercises_per_lesson: 1
+units: 10
+lessons_per_unit: 6
+exercises_per_lesson: 2
+max_images_per_lesson: 2
 isbn: ""
 image_instructions: |
-  Produce colored-pencil illustrations with visible cross-hatching in a fun, engaging, artistic style.
-  Scenes should depict history as accurately as possible as this is for a textbook.
-# llm_instructions: |
-#   Write in a vivid, storytelling tone tailored for elementary students,
-#   making historical events exciting and relatable.
-#   Focus on key figures (e.g., James Oglethorpe), events (e.g., founding of Savannah),
-#   and cultural aspects (e.g., Native American history).
-#   Avoid complex jargon and use simple, engaging language.
+  Create a professional colored pencil illustration with visible cross-hatching, designed to engage elementary students while maintaining historical accuracy. The illustration should vividly depict the scene or figure described in the caption, ensuring details (e.g., clothing, architecture, landscapes) reflect the historical period accurately. Avoid modern or anachronistic elements unless specified in the caption.
+llm_instructions: |
+  Write content for an elementary-level history textbook as a seamless, engaging narrative that flows like a standalone book. Avoid self-referential phrases such as "In this lesson," "In this unit," or "This chapter." Dive directly into the content, using vivid, story-driven prose tailored for young readers (ages 8-15) without complex jargon or moralizing language.
+
+  Maintain a neutral, fact-dense tone, presenting historical events (e.g., Revolutionary War, slavery, Trail of Tears) objectively. Focus on economic, social, and political contexts, avoiding glorification (e.g., heroic framings of patriots), demonization (e.g., British, slaveholders), or trite/emotional narratives (e.g., oversimplified views of slavery or Native American issues). Provide balanced perspectives, letting facts speak for themselves. For example:
+  - Instead of "Heroic patriots fought for freedom," write "Colonists, frustrated by British taxes and lack of representation, rebelled in the Revolutionary War."
+  - Instead of "Slavery was a cruel injustice," write "Slavery in Georgia relied on forced labor to grow cotton and rice, shaping the economy while causing significant human suffering."
+
+  Insert image tags (`{{IMAGE: caption}}`) sparingly, only for significant historical scenes, people, or places that enhance understanding (e.g., "James Oglethorpe founding Savannah in 1733," "Cherokee village along the Chattahoochee River in 1700"). Limit to no more than 2 images per lesson. Captions must be concise, verbose, and publication-quality, describing the scene without style directives (e.g., no "black-and-white," "sketch") or separate captions. Avoid controversial, offensive, or irrelevant images, such as:
+  - Violent or disturbing scenes (e.g., Ku Klux Klan, battles with gore).
+  - Classroom activities, student drawings, or meta-educational scenes.
+  - Maps, diagrams, or abstract illustrations.
+  Ensure captions are consistent and suitable as figure captions in the final book.
+
+  For exercises, focus on activities that reinforce historical understanding through analysis or creativity (e.g., comparing primary sources, writing a diary entry from a historical figure's perspective). Avoid exercises requiring images or overly simplistic tasks.

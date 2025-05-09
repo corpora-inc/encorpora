@@ -5,6 +5,7 @@ from typing import Any, Dict, List
 
 from django.core.management.base import BaseCommand
 from django.template.loader import render_to_string
+from django.utils.text import slugify
 
 from corpora_ai.provider_loader import load_llm_provider
 from itrary.models import Course
@@ -45,7 +46,7 @@ class Command(BaseCommand):
     def handle(self, *args: Any, **options: Any) -> None:
         config_path = options["config"]
         config = load_book_config(config_path)
-        course_slug = config.title.replace(" ", "-").lower()
+        course_slug = slugify(config.title)
         out_dir = Path(options["output_dir"] or f"book-output/{course_slug}")
         out_dir.mkdir(parents=True, exist_ok=True)
         images_dir = out_dir / "images"
@@ -64,6 +65,10 @@ class Command(BaseCommand):
         if not cover_image_path.exists():
             self.stderr.write(f"❌ Cover image not found: {cover_image_path}")
             return
+
+        # Copy cover image to output directory
+        cover_image_dest: Path = out_dir / cover_image_name
+        cover_image_dest.write_bytes(cover_image_path.read_bytes())
 
         # Fetch the course
         try:
@@ -90,26 +95,69 @@ class Command(BaseCommand):
 
         # Find image tokens and generate images
         image_tokens = re.findall(r"\{\{IMAGE: (.*?)\}\}", content)
-        for alt_text in set(image_tokens):  # Avoid duplicates
-            slugified_alt_text = alt_text.replace(" ", "-").lower()
+        skipped_captions = []
+        for alt_text in set(image_tokens):
+            slugified_alt_text = slugify(alt_text)
 
-            # Generate image
-            image_prompt = f"{config.image_instructions or 'Create a high-quality illustration'}: {alt_text}. "
-            # Extract context (preceding paragraph)
-            context = ""
-            token_index = content.index(f"{{IMAGE: {alt_text}}}")
-            before_token = content[:token_index].split("\n")
-            for line in reversed(before_token):
-                if line.strip() and not line.startswith("#"):
-                    context = line.strip()
-                    break
+            # Check if the image already exists
+            image_path = images_dir / f"{slugified_alt_text}.jpg"
+            if image_path.exists():
+                self.stdout.write(
+                    f"Image already exists for: {alt_text}. Skipping generation."
+                )
+                content = content.replace(
+                    f"{{{{IMAGE: {alt_text}}}}}",
+                    f"\n![{alt_text}](images/{slugified_alt_text}.jpg)\n",
+                )
+                continue
+
+            # Find the image token position
+            token = f"{{IMAGE: {alt_text}}}"
+            print(f"Token: {token}")
+
+            try:
+                token_index = content.index(token)
+            except Exception:
+                import IPython
+
+                IPython.embed()
+
+            # Get the content before the token
+            before_token = content[:token_index]
+
+            # Find the last header (e.g., #, ##, ###) before the token
+            header_pattern = r"^(#{1,6})\s+(.+)$"  # Matches # Header, ## Header, etc.
+            headers = []
+            for line in before_token.splitlines():
+                match = re.match(header_pattern, line, re.MULTILINE)
+                if match:
+                    headers.append(
+                        match.group(2).strip()
+                    )  # Capture the header text (without #)
+
+            # Use the last header as context (or empty if none found)
+            context = headers[-1] if headers else ""
+
+            # Build the prompt
+            image_prompt = f"Image Instructions:\n{config.image_instructions}\n\nThe image caption is:\n`{alt_text}`\n\nGenerate an image that matches the caption using the instructions."
             if context:
-                image_prompt += f"Context: {context}"
+                image_prompt = f"Context:\n{context}\n\n{image_prompt}"
+            self.stdout.write(f"PROMPT:\n{image_prompt}")
 
-            self.stdout.write(f"Generating image: {alt_text}")
-            generated_images = llm.get_image(image_prompt)
+            try:
+                generated_images = llm.get_image(image_prompt)
+            except Exception as e:
+                self.stderr.write(f"❌ Error generating image for '{alt_text}': {e}")
+                skipped_captions.append(alt_text)
+                content = content.replace(f"{{{{IMAGE: {alt_text}}}}}", "")
+                continue
+
             if not generated_images:
-                self.stderr.write(f"❌ No images generated for: {alt_text}")
+                self.stdout.write(
+                    f"⚠️ No images generated for: {alt_text}. Removing token."
+                )
+                skipped_captions.append(alt_text)
+                content = content.replace(f"{{{{IMAGE: {alt_text}}}}}", "")
                 continue
             if len(generated_images) > 1:
                 self.stdout.write(
@@ -118,21 +166,24 @@ class Command(BaseCommand):
 
             # Use the first image
             generated_image = generated_images[0]
-            image_format = (
-                generated_image.format or "png"
-            )  # Default to png if format is None
-            image_path = images_dir / f"{slugified_alt_text}.{image_format}"
-            if image_path.exists():
-                self.stdout.write(f"Skipping existing image: {image_path}")
+            image_format = generated_image.format
+            if image_format not in {"png", "jpg", "jpeg"}:
+                self.stdout.write(
+                    f"⚠️ Unsupported image format '{image_format}' for: {alt_text}. Removing token."
+                )
+                skipped_captions.append(alt_text)
+                content = content.replace(f"{{{{IMAGE: {alt_text}}}}}", "")
                 continue
+
+            image_path = images_dir / f"{slugified_alt_text}.{image_format}"
 
             # Save image
             with open(image_path, "wb") as f:
                 f.write(generated_image.data)
 
-            # Replace token with markdown image (relative to markdown file)
+            # Replace token with markdown image
             content = content.replace(
-                f"{{IMAGE: {alt_text}}}",
+                f"{{{{IMAGE: {alt_text}}}}}",
                 f"\n![{alt_text}](images/{slugified_alt_text}.{image_format})\n",
             )
 
@@ -142,14 +193,22 @@ class Command(BaseCommand):
             f"✅ Processed markdown with images written to {processed_md_path}"
         )
 
+        # Log skipped captions
+        if skipped_captions:
+            self.stdout.write(
+                f"\n⚠️ Skipped {len(skipped_captions)} captions due to no images generated:"
+            )
+            for caption in skipped_captions:
+                self.stdout.write(f"- {caption}")
+
         # Render custom_cover.tex
-        cover_template = "templates/custom_cover.tex"
+        cover_template = "custom_cover.tex"
         cover_context = {
             "title": config.title,
             "subtitle": config.subtitle,
             "author": config.author or "Skylar Saveland",
             "publisher": config.publisher or "Corpora Inc",
-            "cover_path": cover_image_name,  # Relative to book-output/<course-slug>/
+            "cover_path": cover_image_name,
         }
         rendered_cover = render_to_string(cover_template, cover_context)
         cover_path = out_dir / "custom_cover.tex"
@@ -169,17 +228,24 @@ class Command(BaseCommand):
 
         meta["date"] = meta["date"] or date.today().isoformat()
 
+        # cp everything from common dir to output dir
+        for item in common_dir.iterdir():
+            if item.is_file():
+                dest_path = out_dir / item.name
+                dest_path.write_bytes(item.read_bytes())
+                self.stdout.write(f"✅ Copied {item} to {dest_path}")
+
         # Define pandoc jobs
         jobs: List[Dict[str, Any]] = [
             {
                 "name": "pdf",
-                "outfile": out_dir / f"{full_stem}.pdf",
+                "outfile": f"{full_stem}.pdf",
                 "args": [
                     "--pdf-engine=xelatex",
                     "--toc",
-                    f"--include-in-header={common_dir / 'custom_headings.tex'}",
-                    f"--include-before-body={cover_path}",
-                    f"--lua-filter={common_dir / 'hrule.lua'}",
+                    "--include-in-header=custom_headings.tex",
+                    "--include-before-body=custom_cover.tex",
+                    "--lua-filter=hrule.lua",
                     "-V",
                     "documentclass=book",
                     "-V",
@@ -189,14 +255,14 @@ class Command(BaseCommand):
             },
             {
                 "name": "epub",
-                "outfile": out_dir / f"{full_stem}.epub",
+                "outfile": f"{full_stem}.epub",
                 "args": [
                     "--to=epub3",
                     "--mathml",
-                    f"--css={common_dir / 'epub.css'}",
-                    f"--epub-cover-image={cover_image_path}",
+                    "--css=epub.css",
+                    f"--epub-cover-image={cover_image_name}",
                     "--toc",
-                    f"--lua-filter={common_dir / 'hrule.lua'}",
+                    "--lua-filter=hrule.lua",
                     "--toc-depth=2",
                     f"--metadata=title:{meta['title']}",
                     f"--metadata=author:{meta['author']}",
@@ -208,13 +274,13 @@ class Command(BaseCommand):
             },
             {
                 "name": "print-pdf",
-                "outfile": out_dir / f"{full_stem}-print.pdf",
+                "outfile": f"{full_stem}-print.pdf",
                 "args": [
                     "--pdf-engine=xelatex",
                     "--toc",
-                    f"--include-in-header={common_dir / 'custom_headings.tex'}",
-                    f"--include-before-body={cover_path}",
-                    f"--lua-filter={common_dir / 'hrule.lua'}",
+                    "--include-in-header=custom_headings.tex",
+                    "--include-before-body=custom_cover.tex",
+                    "--lua-filter=hrule.lua",
                     "-V",
                     "documentclass=book",
                     "-V",
@@ -231,13 +297,13 @@ class Command(BaseCommand):
             cmd = [
                 "pandoc",
                 "-s",
-                str(processed_md_path),
+                str(processed_md_filename),
                 "-o",
                 str(job["outfile"]),
             ] + job["args"]
-            self.stdout.write(f"→ Building {job['name']} → {job['outfile'].name}")
+            self.stdout.write(f"→ Building {job['name']} → {job['outfile']}")
             try:
-                subprocess.run(cmd, check=True)
+                subprocess.run(cmd, check=True, cwd=out_dir)
             except subprocess.CalledProcessError as e:
                 self.stderr.write(f"❌ pandoc {job['name']} failed: {e}")
                 return

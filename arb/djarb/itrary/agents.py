@@ -12,21 +12,19 @@ llm = load_llm_provider("xai")
 
 
 MARKDOWN_CONTENT_INSTRUCTIONS = """
-You are writing content for a book within a larger curriculum.
-Avoid excessive introductions or conclusions,
-and do not repeatedly reference the course or unit name,
-as the reader knows their context.
-Jump straight into the content.
+You are writing a specific section of a larger book, such as a lesson, exercise, or study guide. Write as a seamless, standalone narrative, diving directly into the content without referencing the course, unit, lesson, or curriculum structure (e.g., avoid "In this lesson," "In this unit," "This chapter"). The reader already knows their context, so avoid introductions or conclusions that restate the context.
 
 Follow these markdown formatting rules:
 - Add a blank line before and after lists (bullet or numbered).
 - Use `$` for inline math and `$$` for display math.
-- Avoid special Unicode characters (e.g., ≠, α, ≈).
-  Instead, use LaTeX in math mode, if needed (e.g., `$\neq$`, `$\alpha$`, `$\approx$`).
-- Insert image placeholders where visuals enhance the content,
-  using the format `{{IMAGE: descriptive alt text}}` on its own line,
-  surrounded by blank lines. The alt text should be a concise, engaging caption
-  suitable for display as figure text in the final textbook.
+- Avoid special Unicode characters (e.g., ≠, α, ≈) unless in LaTeX math mode (e.g., `$\neq$`, `$\alpha$`, `$\approx$`).
+- Insert image placeholders only where visuals significantly enhance understanding or engagement, using the format `{{IMAGE: publication-quality caption}}` on its own line, surrounded by blank lines. The caption must be:
+  - Concise, descriptive, and suitable as a figure caption in the final book.
+  - Free of style directives (e.g., no "black-and-white," "sketch") or separate captions (e.g., no "Caption: ...").
+  - Simple and consistent, using plain text or LaTeX for math-related captions when appropriate.
+  - Example for history: "Savannah's first square in 1733."
+  - Example for math: "Graph of $y = x^2$ showing a parabola."
+  - Example for literature: "Heathcliff wandering the moors at dusk."
 
 The content will be processed by pandoc to generate PDF, EPUB, and other formats, so ensure compatibility.
 """
@@ -85,29 +83,25 @@ class ExerciseContentResponse(BaseModel):
 
 
 def get_course_plan(config: BookConfig) -> CoursePlanResponse:
-    title = config.title
-    current_units = Unit.objects.filter(course__name=title).values_list(
+    current_units = Unit.objects.filter(course__name=config.title).values_list(
         "name", flat=True
     )
 
     system_prompt = (
         "You are an expert curriculum planner for the course:\n\n"
-        f"{title}\n"
-        f"{config.subtitle}\n\n"
-        "You specialize in returning a list of unit names for the course. "
-        f"You break up the course into {config.units} units. "
-        "DO NOT number the units *in* the names, eg `Unit 1: Foo`. "
+        f"```\n{config.title}\n{config.subtitle}\n```\n\n"
+        f"Course configuration: {config.units} units\n\n"
+        "You specialize in creating a list of unit names for the course, breaking it into {config.units} units. "
+        "Do not number the units in the names (e.g., avoid 'Unit 1: Foo'). "
         "We already have the following units: "
-        f"{', '.join(current_units) if current_units else "NO CURRENT UNITS"}. "
-        "You are going to construct the perfect, complete list of units for the course. "
-        "Use the units we already have with the exact same name, if we have any. "
-        "If we have no units, return a complete list of units of the course. "
-        "Your output will be a summary of the course and the complete list of units. "
-        "Return a nice stand-alone, understandable title as the name for each unit and "
-        "use the JSON tool to return the number of the unit for ordering as well."
+        f"{', '.join(current_units) if current_units else 'NO CURRENT UNITS'}. "
+        "Construct the complete list of units for the course, reusing existing unit names exactly if present. "
+        "If no units exist, create a full list. "
+        "Provide a concise summary of the course and the list of units. "
+        "Return standalone, understandable titles for each unit and use the JSON tool to include the unit number for ordering."
     )
-    if config and config.llm_instructions:
-        system_prompt += f"\nAdditional instructions: {config.llm_instructions}"
+    if config.llm_instructions:
+        system_prompt += f"\nAdditional instructions:\n\n{config.llm_instructions}"
 
     return llm.get_data_completion(
         [
@@ -126,33 +120,27 @@ def get_course_plan(config: BookConfig) -> CoursePlanResponse:
     )
 
 
-def get_unit_plan(
-    unit_name: str,
-    config: BookConfig,
-) -> UnitPlanResponse:
-    current_lessons = Lesson.objects.filter(
-        unit__name=unit_name,
-    ).values_list("name", flat=True)
+def get_unit_plan(unit_name: str, config: BookConfig) -> UnitPlanResponse:
+    current_lessons = Lesson.objects.filter(unit__name=unit_name).values_list(
+        "name", flat=True
+    )
 
     system_prompt = (
-        f"You are an expert curriculum planner for the course:\n\n"
-        f"```\n{config.title}\n{config.subtitle}\n```"
-        f"You are now working on the unit: `{unit_name}`."
-        "Use the JSON tool to fill in a summary of the unit along with a list of lessons. "
-        "You specialize in returning a list of lesson names for the unit. "
+        "You are an expert curriculum planner for the course:\n\n"
+        f"```\n{config.title}\n{config.subtitle}\n```\n\n"
+        f"Unit configuration: {config.lessons_per_unit} lessons\n\n"
+        f"You are working on the unit: `{unit_name}`. "
+        "Use the JSON tool to provide a summary of the unit and a list of lessons. "
+        f"Break the unit into {config.lessons_per_unit} lessons. "
         "We already have the following lessons: "
-        f"\n\n`{'\n- '.join(current_lessons)}`\n\n"
-        "You are going to construct the perfect, complete list of lessons for the unit. "
-        f"You break up the unit into {config.lessons_per_unit} lessons. "
-        "Use the lessons we already have with the exact same name, if we have any. "
-        "If we have no lessons, return a complete list of lessons for the unit. "
-        "DO NOT number the lessons *in* the names, eg `Lesson 1: Foo`. "
-        "Return a nice stand-alone, understandable title as the name of each lesson. "
-        "Use the JSON tool format to return the number of each lesson for ordering. "
-        "Your output will be a summary of the unit and the complete list of lessons. "
+        f"{', '.join(current_lessons) if current_lessons else 'NO CURRENT LESSONS'}. "
+        "Construct the complete list of lessons for the unit, reusing existing lesson names exactly if present. "
+        "If no lessons exist, create a full list. "
+        "Do not number the lessons in the names (e.g., avoid 'Lesson 1: Foo'). "
+        "Return standalone, understandable titles for each lesson and use the JSON tool to include the lesson number for ordering."
     )
-    if config and config.llm_instructions:
-        system_prompt += f"\nAdditional instructions: {config.llm_instructions}"
+    if config.llm_instructions:
+        system_prompt += f"\nAdditional instructions:\n\n{config.llm_instructions}"
 
     return llm.get_data_completion(
         [
@@ -180,23 +168,20 @@ def get_lesson_plan(
 
     system_prompt = (
         "You are an expert curriculum planner for the course:\n\n"
-        f"```\n{config.title}\n{config.subtitle}\n```"
-        f"You are now working on the unit: `{unit_name}`.\n"
-        f"You are now working on the lesson: `{lesson_name}`.\n\n"
-        "Use the JSON tool to fill in a summary of the lesson along with a list of exercises. "
-        "You specialize in returning a list of exercise names for the lesson. "
+        f"```\n{config.title}\n{config.subtitle}\n```\n\n"
+        f"Lesson configuration: {config.exercises_per_lesson} exercises\n\n"
+        f"You are working on the unit: `{unit_name}` and the lesson: `{lesson_name}`. "
+        "Use the JSON tool to provide a summary of the lesson and a list of exercises. "
+        f"Create {config.exercises_per_lesson} exercises for the lesson. "
         "We already have the following exercises: "
         f"{', '.join(current_exercises) if current_exercises else 'NO CURRENT EXERCISES'}. "
-        "You are going to construct the perfect, "
-        f"complete list of {config.exercises_per_lesson} exercises for the lesson. "
-        "Use the exercises we already have with the exact same name, if we have any. "
-        "If we have no exercises, return a complete list of exercises for the lesson. "
-        "DO NOT number the exercises *in* the names, eg `Exercise 1: Foo`. "
-        "Return a nice stand-alone, understandable title as the name of each exercise. "
-        "Your output will be a summary of the lesson and the complete list of exercises."
+        "Construct the complete list of exercises, reusing existing exercise names exactly if present. "
+        "If no exercises exist, create a full list. "
+        "Do not number the exercises in the names (e.g., avoid 'Exercise 1: Foo'). "
+        "Return standalone, understandable titles for each exercise and use the JSON tool to include the exercise details."
     )
     if config.llm_instructions:
-        system_prompt += f"\nAdditional instructions: {config.llm_instructions}"
+        system_prompt += f"\nAdditional instructions:\n\n{config.llm_instructions}"
 
     return llm.get_data_completion(
         [
@@ -207,9 +192,8 @@ def get_lesson_plan(
             ChatCompletionTextMessage(
                 role="user",
                 text=(
-                    "Generate the lesson summary and exercise names "
-                    f"for the lesson: {lesson_name} in `Unit: {unit_name}` "
-                    f"in `Course: {config.title}` using the JSON tool."
+                    f"Generate the lesson summary and exercise names for the lesson: {lesson_name} "
+                    f"in unit: {unit_name} in course: {config.title} using the JSON tool."
                 ),
             ),
         ],
@@ -222,20 +206,17 @@ def get_lesson_content(
 ) -> LessonContentResponse:
     system_prompt = (
         "You are an expert curriculum planner and content writer for the course:\n\n"
-        f"```\n{config.title}\n{config.subtitle}\n```"
-        f"You are now working on the unit: `{lesson_request.unit_name}`.\n"
-        f"You are now working on the lesson: `{lesson_request.lesson_name}`.\n\n"
-        "You return a complete, comprehensive, verbose lesson in markdown format. "
-        "You are writing a lesson for a larger curriculum, so avoid excessive introductions or conclusions. "
-        f"For markdown, follow the instructions:\n\n{MARKDOWN_CONTENT_INSTRUCTIONS}\n\n"
-        f"Add images, where appropriate, using the format `{{IMAGE: descriptive alt text}}`. "
-        "Only add images where they will enhance the content, don't force too many images."
-        f"You start the markdown from `## {lesson_request.lesson_name}` with 2 `#`s. "
-        "Write the lesson in a way that is easy to understand for the target audience, "
-        "which is implied by the course title and subtitle."
+        f"```\n{config.title}\n{config.subtitle}\n```\n\n"
+        f"You are writing the lesson: `{lesson_request.lesson_name}` in the unit: `{lesson_request.unit_name}`. "
+        "Generate a complete, comprehensive lesson in markdown format, adhering to the following instructions:\n\n"
+        f"{MARKDOWN_CONTENT_INSTRUCTIONS}\n"
+        f"- Produce no more than {config.max_images_per_lesson} images. "
+        "Feel free to use 0 images if the content is better without them. "
+        f"Start the markdown with `## {lesson_request.lesson_name}` using 2 `#`s. "
+        "Write for the target audience implied by the course title and subtitle, ensuring clarity and engagement."
     )
     if config.llm_instructions:
-        system_prompt += f"\nAdditional instructions: {config.llm_instructions}"
+        system_prompt += f"\nAdditional instructions:\n\n{config.llm_instructions}"
 
     return llm.get_data_completion(
         [
@@ -247,7 +228,7 @@ def get_lesson_content(
                 role="user",
                 text=(
                     f"Generate a complete lesson in markdown format for the lesson: {lesson_request.lesson_name} "
-                    f"in {lesson_request.unit_name} in {config.title} using the JSON tool. "
+                    f"in unit: {lesson_request.unit_name} in course: {config.title} using the JSON tool. "
                     f"The summary of the lesson is:\n\n```{lesson_request.lesson_summary}```\n\n"
                     f"Use the JSON tool to return the complete markdown lesson content."
                 ),
@@ -263,17 +244,18 @@ def get_exercise_content(
     system_prompt = (
         "You are an expert curriculum planner and content writer for the course:\n\n"
         f"```\n{config.title}\n{config.subtitle}\n```\n\n"
-        f"You are now working on the exercise: `{exercise_request.exercise_name}` "
-        f"within the lesson: `{exercise_request.lesson_name}` "
-        f"within the unit: `{exercise_request.unit_name}`.\n\n"
-        "You return a complete, comprehensive, verbose exercise in markdown format. "
-        f"For markdown, follow the instructions:\n\n{MARKDOWN_CONTENT_INSTRUCTIONS}\n"
-        f"You start the markdown from `### {exercise_request.exercise_name}` with 3 `#`s. "
-        "Write the exercise in a way that is easy to understand for the target audience, "
-        "which is implied by the course title and subtitle."
+        f"You are writing the exercise: `{exercise_request.exercise_name}` "
+        f"in the lesson: `{exercise_request.lesson_name}` "
+        f"in the unit: `{exercise_request.unit_name}`. "
+        "Generate a complete, comprehensive exercise in markdown format, adhering to the following instructions:\n\n"
+        f"{MARKDOWN_CONTENT_INSTRUCTIONS}\n"
+        f"- Produce no more than {config.max_images_per_lesson} images. "
+        "Feel free to use 0 images if the content is better without them. "
+        f"Start the markdown with `### {exercise_request.exercise_name}` using 3 `#`s. "
+        "Write for the target audience implied by the course title and subtitle, ensuring clarity and engagement. "
     )
     if config.llm_instructions:
-        system_prompt += f"\nAdditional instructions: {config.llm_instructions}"
+        system_prompt += f"\nAdditional instructions:\n\n{config.llm_instructions}"
 
     return llm.get_data_completion(
         [
@@ -285,7 +267,8 @@ def get_exercise_content(
                 role="user",
                 text=(
                     f"Generate a complete exercise in markdown format for the exercise: {exercise_request.exercise_name} "
-                    f"in {exercise_request.lesson_name} in {exercise_request.unit_name} in {config.title} using the JSON tool. "
+                    f"in lesson: {exercise_request.lesson_name} in unit: {exercise_request.unit_name} "
+                    f"in course: {config.title} using the JSON tool. "
                     f"Use the JSON tool to return the complete markdown exercise content."
                 ),
             ),
@@ -300,19 +283,18 @@ def get_study_content(
     system_prompt = (
         "You are an expert at creating study guides for the course:\n\n"
         f"```\n{config.title}\n{config.subtitle}\n```\n\n"
-        f"You are now working on the lesson: `{lesson_request.lesson_name}` "
-        f"within the unit: `{lesson_request.unit_name}`. "
-        "You return a concise, fact-dense study guide in markdown format, "
-        "containing exactly what the student needs to know from the lesson to excel in the course. "
-        f"For markdown, follow the instructions:\n\n{MARKDOWN_CONTENT_INSTRUCTIONS}\n"
-        f"You start the markdown from `## {lesson_request.lesson_name}` with 2 `#`s. "
-        "Write the study guide in a way that is easy to understand for the target audience, "
-        "which is implied by the course title and subtitle. "
-        "Avoid mentioning 'This study guide' and jump straight into the content, "
-        "with no introduction or conclusion."
+        f"You are writing a study guide for the lesson: `{lesson_request.lesson_name}` "
+        f"in the unit: `{lesson_request.unit_name}`. "
+        "Generate a concise, fact-dense study guide in markdown format, containing only the essential information "
+        "students need to excel in the course, adhering to the following instructions:\n\n"
+        f"{MARKDOWN_CONTENT_INSTRUCTIONS}\n"
+        f"- Produce no more than {config.max_images_per_lesson} images. "
+        "Feel free to use 0 images if the content is better without them. "
+        f"Start the markdown with `## {lesson_request.lesson_name}` using 2 `#`s. "
+        "Write for the target audience implied by the course title and subtitle, ensuring clarity and focus. "
     )
     if config.llm_instructions:
-        system_prompt += f"\nAdditional instructions: {config.llm_instructions}"
+        system_prompt += f"\nAdditional instructions:\n\n{config.llm_instructions}"
 
     return llm.get_data_completion(
         [
@@ -324,7 +306,7 @@ def get_study_content(
                 role="user",
                 text=(
                     f"Generate a complete study guide in markdown format for the lesson: {lesson_request.lesson_name} "
-                    f"in {lesson_request.unit_name} in {config.title} using the JSON tool. "
+                    f"in unit: {lesson_request.unit_name} in course: {config.title} using the JSON tool. "
                     f"The summary of the lesson is:\n\n```{lesson_request.lesson_summary}```\n\n"
                     f"Use the JSON tool to return the complete markdown study guide content."
                 ),
