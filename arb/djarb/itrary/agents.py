@@ -30,6 +30,15 @@ The content will be processed by pandoc to generate PDF, EPUB, and other formats
 """
 
 
+def no_repetitions(lessons: List[str]) -> str:
+    return (
+        "You don't need to cover anything that would be covered in the other lessons: "
+        f"{', '.join(lessons)}. "
+        "Instead of covering boilerplate content that would be covered in the other lessons, "
+        "focus on going extremely deep into the unique content of this lesson. "
+    )
+
+
 class CoursePlanUnit(BaseModel):
     name: str
     number: float
@@ -62,6 +71,7 @@ class LessonPlanResponse(BaseModel):
 class LessonContentRequest(BaseModel):
     course_name: str
     unit_name: str
+    lessons: List[UnitPlanLesson]
     lesson_name: str
     lesson_summary: str
 
@@ -202,12 +212,20 @@ def get_lesson_plan(
 
 
 def get_lesson_content(
-    lesson_request: LessonContentRequest, config: BookConfig
+    lesson_request: LessonContentRequest,
+    config: BookConfig,
 ) -> LessonContentResponse:
+    other_lessons = [
+        lesson.name
+        for lesson in lesson_request.lessons
+        if lesson.name != lesson_request.lesson_name
+    ]
+
     system_prompt = (
         "You are an expert curriculum planner and content writer for the course:\n\n"
         f"```\n{config.title}\n{config.subtitle}\n```\n\n"
         f"You are writing the lesson: `{lesson_request.lesson_name}` in the unit: `{lesson_request.unit_name}`. "
+        f"{no_repetitions(other_lessons)}"
         "Generate a complete, comprehensive lesson in markdown format, adhering to the following instructions:\n\n"
         f"{MARKDOWN_CONTENT_INSTRUCTIONS}\n"
         f"- Produce no more than {config.max_images_per_lesson} images. "
@@ -278,13 +296,20 @@ def get_exercise_content(
 
 
 def get_study_content(
-    lesson_request: LessonContentRequest, config: BookConfig
+    lesson_request: LessonContentRequest,
+    config: BookConfig,
 ) -> LessonContentResponse:
+    other_lessons = [
+        lesson.name
+        for lesson in lesson_request.lessons
+        if lesson.name != lesson_request.lesson_name
+    ]
     system_prompt = (
         "You are an expert at creating study guides for the course:\n\n"
         f"```\n{config.title}\n{config.subtitle}\n```\n\n"
         f"You are writing a study guide for the lesson: `{lesson_request.lesson_name}` "
         f"in the unit: `{lesson_request.unit_name}`. "
+        f"{no_repetitions(other_lessons)}"
         "Generate a concise, fact-dense study guide in markdown format, containing only the essential information "
         "students need to excel in the course, adhering to the following instructions:\n\n"
         f"{MARKDOWN_CONTENT_INSTRUCTIONS}\n"

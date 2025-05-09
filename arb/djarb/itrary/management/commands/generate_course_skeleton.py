@@ -78,6 +78,7 @@ class Command(BaseCommand):
                             unit_name=unit.name,
                             lesson_name=lesson.name,
                             lesson_summary=lesson_obj.summary,
+                            lessons=unit_plan.lessons,
                         ),
                         config=config,
                     )

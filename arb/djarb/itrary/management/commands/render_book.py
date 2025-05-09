@@ -62,13 +62,11 @@ class Command(BaseCommand):
             if (input_dir / cover_image_name).exists()
             else common_dir / cover_image_name
         )
+        print(f"Cover image path: {cover_image_path}")
+
         if not cover_image_path.exists():
             self.stderr.write(f"❌ Cover image not found: {cover_image_path}")
             return
-
-        # Copy cover image to output directory
-        cover_image_dest: Path = out_dir / cover_image_name
-        cover_image_dest.write_bytes(cover_image_path.read_bytes())
 
         # Fetch the course
         try:
@@ -87,9 +85,6 @@ class Command(BaseCommand):
         md_path.write_text(rendered, encoding="utf-8")
         self.stdout.write(f"✅ Initial markdown written to {md_path}")
 
-        # Process markdown for images
-        processed_md_filename = f"{full_stem}-processed.md"
-        processed_md_path = out_dir / processed_md_filename
         with open(md_path, "r") as f:
             content = f.read()
 
@@ -99,6 +94,7 @@ class Command(BaseCommand):
         for alt_text in set(image_tokens):
             slugified_alt_text = slugify(alt_text)
 
+            # TODO: also check if png exists ... should be able to mix formats
             # Check if the image already exists
             image_path = images_dir / f"{slugified_alt_text}.jpg"
             if image_path.exists():
@@ -139,9 +135,13 @@ class Command(BaseCommand):
             context = headers[-1] if headers else ""
 
             # Build the prompt
-            image_prompt = f"Image Instructions:\n{config.image_instructions}\n\nThe image caption is:\n`{alt_text}`\n\nGenerate an image that matches the caption using the instructions."
+            image_prompt = (
+                f"Image Instructions:\n{config.image_instructions}\n"
+                f"The image caption is:\n`{alt_text}`\n\n"
+                "Generate an image that matches the caption using the instructions."
+            )
             if context:
-                image_prompt = f"Context:\n{context}\n\n{image_prompt}"
+                image_prompt = f"Context:\n{config.title}\n{context}\n\n{image_prompt}"
             self.stdout.write(f"PROMPT:\n{image_prompt}")
 
             try:
@@ -159,6 +159,7 @@ class Command(BaseCommand):
                 skipped_captions.append(alt_text)
                 content = content.replace(f"{{{{IMAGE: {alt_text}}}}}", "")
                 continue
+
             if len(generated_images) > 1:
                 self.stdout.write(
                     f"Warning: Multiple images generated for '{alt_text}', using first one"
@@ -188,6 +189,8 @@ class Command(BaseCommand):
             )
 
         # Save processed markdown
+        processed_md_filename = f"{full_stem}-processed.md"
+        processed_md_path = out_dir / processed_md_filename
         processed_md_path.write_text(content, encoding="utf-8")
         self.stdout.write(
             f"✅ Processed markdown with images written to {processed_md_path}"
@@ -218,7 +221,7 @@ class Command(BaseCommand):
         # Metadata
         meta: Dict[str, str] = {
             "title": config.title,
-            "author": config.author or "Skylar Saveland",
+            "author": config.author or "The Encorpora Team",
             "lang": "en-US",
             "date": "",
             "publisher": config.publisher or "Corpora Inc",
@@ -234,6 +237,11 @@ class Command(BaseCommand):
                 dest_path = out_dir / item.name
                 dest_path.write_bytes(item.read_bytes())
                 self.stdout.write(f"✅ Copied {item} to {dest_path}")
+
+        # Copy cover image to output directory
+        cover_image_dest: Path = out_dir / cover_image_name
+        cover_image_dest.write_bytes(cover_image_path.read_bytes())
+        self.stdout.write(f"✅ Copied cover image to {cover_image_dest}")
 
         # Define pandoc jobs
         jobs: List[Dict[str, Any]] = [
