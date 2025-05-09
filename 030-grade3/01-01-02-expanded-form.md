@@ -2,13 +2,13 @@
 
 #### Introduction to Expanded Form
 
-Expanded form is a way of breaking down a number to show the value of each digit. It helps us to understand the role of each place value in forming the entire number. For example, the number 345 can be expressed in expanded form as:
+Expanded form is a way of breaking down a number to show the value of each digit. It helps us to understand the role of place value in forming the entire number. For example, the number 345 can be expressed in expanded form as:
 
 $$
 300 + 40 + 5
 $$
 
-This format makes it clear that the 3 represents three hundred, the 4 represents forty, and the 5 represents five.
+This format makes place values clearer for learners.
 
 #### How to Write Numbers in Expanded Form
 
@@ -43,10 +43,10 @@ $$
 
 #### Real-World Application
 
-Understanding expanded form is crucial for learning how to manipulate numbers in math problems effectively. In real life, this concept is particularly useful in financial contexts, such as:
+Understanding expanded form is crucial for learning how to manipulate numbers in math problems effectively. In real life, this concept is particularly useful in financing, such as:
 
 - **Accounting and Finance:** Breaking down amounts helps in understanding the distribution of figures in budgets and invoices.
-- **Measurements:** In scientific contexts, scientific notation—which is a form of expanded form—is used to express large numbers concisely.
+- **Measurements:** Scientific notation—which is a form of expanded form—is used to express extremely large numbers concisely.
 
 #### Historical Insight
 
