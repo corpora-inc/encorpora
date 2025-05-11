@@ -10,7 +10,7 @@ from itrary.utils import load_book_config
 
 llm = load_llm_provider("openai")
 
-DEDUPLICATION_INSTRUCTIONS = """
+INSTRUCTIONS = """
 You number 1 job is to **Remove excessive duplication from the unit.**
 Make a cohesive arc where the lessons are connected but facts and stories are not repeated.
 Where you find excessive duplication, you have options:
@@ -34,6 +34,20 @@ You may add additional images `{{IMAGE: publication caption}}` to make the mater
 Return the same unit with these specific improvements.
 """
 
+INSTRUCTIONS = """
+Keep everything exactly the same except for the following:
+
+- Expand on the disparate facts and stories as much as you can to make the lessons more cohesive.
+- The lesson should never devolve into a laundry list of random facts. Tie the lesson together or reorganize if it doesn't flow.
+- Blockquotes should not be consecutive, they should be interspersed logically with the text.
+
+Keep everything close to the original, even returning the exact same markdown, if nothing needs to be changed.
+
+Do not change the image captions.
+
+You are making a final editorial pass to make to book publication-quality with subtle improvements.
+"""
+
 
 class Command(BaseCommand):
     help = "Edit a course unit by unit"
@@ -48,7 +62,7 @@ class Command(BaseCommand):
         parser.add_argument(
             "--instructions",
             type=str,
-            default=DEDUPLICATION_INSTRUCTIONS,
+            default=INSTRUCTIONS,
             help="Instructions for the LLM to generate study markdown",
         )
 
