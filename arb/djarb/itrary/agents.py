@@ -3,12 +3,21 @@ from typing import List
 
 
 from corpora_ai.provider_loader import load_llm_provider
-from corpora_ai.llm_interface import ChatCompletionTextMessage
+from corpora_ai.llm_interface import ChatCompletionTextMessage, LLMBaseInterface
 
-from itrary.models import Exercise, Lesson, Unit
+from itrary.models import (
+    Exercise,
+    Lesson,
+    NewUnitMarkdownModel,
+    Unit,
+    UnitMarkdownModel,
+)
 from itrary.utils import BookConfig
 
-llm = load_llm_provider("xai")
+# TODO: hrm .. this required XAI_API_KEY to be set ..
+# I guess we want to always pass in the llm provider to the agent?
+# llm = load_llm_provider("xai")
+llm = load_llm_provider("openai")
 
 
 MARKDOWN_CONTENT_INSTRUCTIONS = """
@@ -100,8 +109,8 @@ def get_course_plan(config: BookConfig) -> CoursePlanResponse:
     system_prompt = (
         "You are an expert curriculum planner for the course:\n\n"
         f"```\n{config.title}\n{config.subtitle}\n```\n\n"
-        f"Course configuration: {config.units} units\n\n"
-        "You specialize in creating a list of unit names for the course, breaking it into {config.units} units. "
+        f"The purpose of the course is: {config.purpose}\n\n"
+        f"You specialize in creating a list of unit names for the course, breaking it into {config.units} units. "
         "Do not number the units in the names (e.g., avoid 'Unit 1: Foo'). "
         "We already have the following units: "
         f"{', '.join(current_units) if current_units else 'NO CURRENT UNITS'}. "
@@ -338,4 +347,107 @@ def get_study_content(
             ),
         ],
         LessonContentResponse,
+    )
+
+
+def edit_unit(
+    unit_name: str,
+    instructions: str,
+    config: BookConfig,
+    llm: LLMBaseInterface = llm,
+) -> None:
+    """
+    Feed the entire unit into a large model, apply the instructions,
+    make the changes. This is a destructive operation. Back up the database.
+    """
+    unit = Unit.objects.get(name=unit_name)
+
+    unit_markdown_model = unit.get_full_markdown()
+    unit_markdown = unit_markdown_model.model_dump_json(exclude_none=True)
+
+    system_prompt = (
+        "You are editing an entire unit of a book:\n\n"
+        f"```\n{config.title}\n{config.subtitle}\n```\n\n"
+        f"You are working on the unit: `{unit_name}`.\n\n"
+        f"Here is the current draft of the unit:\n\n"
+        f"```\n{unit_markdown}\n```\n\n"
+        f"You job is return the entire unit, the markdown content of "
+        "the Lessons and Exercises, **almost entirely the same**, "
+        "in the same format as the input, using the JSON tool. "
+        f"You will follow the mardown formatting rules:\n\n"
+        f"```\n{MARKDOWN_CONTENT_INSTRUCTIONS}\n```\n\n"
+        "You will make changes to the content of the lessons and exercises "
+        "according to the following instructions:\n\n"
+        f"```\n{instructions}\n```"
+    )
+    new_unit_markdown = llm.get_data_completion(
+        [
+            ChatCompletionTextMessage(
+                role="system",
+                text=system_prompt,
+            ),
+            ChatCompletionTextMessage(
+                role="user",
+                text=(
+                    f"Edit the unit: {unit_name} using the JSON tool to return "
+                    "the lessons and exercises markdown content. "
+                    "Your job is not to dramatically change the content, "
+                    "but to make and editorial pass on the content. "
+                    "You are making the following changes:\n\n"
+                    f"{instructions}"
+                    "Return the edited lessons and exercises markdown content in the same format as the input, "
+                    "using the JSON tool."
+                ),
+            ),
+        ],
+        UnitMarkdownModel,
+    )
+    unit.rewrite_full_markdown(new_unit_markdown)
+    # don't really need to pass it back but might as well?
+    return unit_markdown_model
+
+
+def get_unit(
+    unit_name: str,
+    config: BookConfig,
+) -> NewUnitMarkdownModel:
+    """
+    Use a large model to get the lesson and exercise
+    markdown content for the whole unit.
+    """
+    # unit = Unit.objects.get(name=unit_name)
+    # all_units = [unit.name for unit in Unit.objects.filter(course__name=config.title)]
+
+    # TODO: max_images_per_lesson or we just put that in llm_instructions?
+    system_prompt = (
+        "You are an expert curriculum planner and content writer for the course:\n\n"
+        f"```\n{config.title}\n{config.subtitle}\n```\n\n"
+        f"With the purpose: {config.purpose}\n\n"
+        f"You are working on the SPECIFIC UNIT: `{unit_name}`. "
+        f"Follow the markdown formatting rules:\n\n"
+        f"```\n{MARKDOWN_CONTENT_INSTRUCTIONS}\n```\n\n"
+        f"Break the unit, `{unit_name}`, into {config.lessons_per_unit} lessons. "
+        "Generate a complete, comprehensive, verbose unit - including lessons and exercises - "
+        "using the JSON tool. "
+        "Lessons have name, number, and markdown. Exercises have name and markdown. "
+    )
+
+    if config.llm_instructions:
+        system_prompt += f"\nFollow the instructions:\n\n{config.llm_instructions}"
+
+    return llm.get_data_completion(
+        [
+            ChatCompletionTextMessage(
+                role="system",
+                text=system_prompt,
+            ),
+            ChatCompletionTextMessage(
+                role="user",
+                text=(
+                    f"Generate the complete unit content for the unit: {unit_name} "
+                    f"in course: {config.title} using the JSON tool."
+                ),
+            ),
+        ],
+        NewUnitMarkdownModel,
     )

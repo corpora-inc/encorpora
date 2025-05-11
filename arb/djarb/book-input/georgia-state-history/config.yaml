@@ -1,11 +1,13 @@
 title: Georgia State History
 subtitle: An Elementary Journey Through the Peach State
+purpose: |
+  This textbook is designed to provide elementary students with a comprehensive understanding of Georgia's history, culture, and geography. It aims to engage young learners with interactive lessons, vivid illustrations, and hands-on activities that foster a deep appreciation for the state's rich heritage.
 author: The Encorpora Team
 publisher: Corpora Inc
-units: 7
-lessons_per_unit: 5
+units: 9
+lessons_per_unit: 3
 exercises_per_lesson: 1
-max_images_per_lesson: 1
+max_images_per_lesson: 3
 isbn: ""
 image_instructions: |
   Create an impressive colored pencil illustration for the textbook with cross-hatching reminiscent of the style of Albrecht Dürer (but color), while maintaining historical and scientific accuracy for the subject matter. This is for a history textbook for the state of Georgia in the US. Be scientifically precise. This is not the former-USSR Georgia, this is not India. The illustration should depict the scene or figure described in the caption, ensuring details (e.g., clothing, architecture, landscapes) reflect the historical period accurately and scientifically. Do not take the caption too literally. Think about what would be realistic and historically accurate. Avoid modern or anachronistic elements unless specified in the caption. Do NOT include any text in the image.
@@ -14,24 +16,23 @@ llm_instructions: |
 
   Maintain a neutral, fact-dense tone, presenting historical events objectively. Focus on economic, social, and political contexts, avoiding glorification, demonization, or trite/emotional narratives. Provide balanced perspectives, letting facts speak for themselves.
 
-  Insert image tags (`{{IMAGE: caption}}`) sparingly, only for significant historical scenes, people, or places that enhance understanding and imagination - with historical accuracy. Captions must be concise, verbose, and publication-quality, describing the scene without style directives (e.g., no "black-and-white," "sketch") or separate captions. Avoid controversial, offensive, or irrelevant images, such as:
+  Insert image tags (`{{IMAGE: caption}}`) for historical scenes, people, or places that enhance understanding and imagination - with historical accuracy. Captions must be concise, verbose, and publication-quality, describing the scene without style directives (e.g., no "black-and-white," "sketch") or separate captions. Avoid controversial, offensive, or irrelevant images, such as:
   - Violent or disturbing scenes (e.g., Ku Klux Klan, battles with gore).
   - Classroom activities, student drawings, or meta-educational scenes.
   - Maps, diagrams, or abstract illustrations.
   Ensure captions are consistent and suitable as figure captions in the final book.
 
-  For exercises, focus on activities that reinforce historical understanding through analysis or creativity (e.g., comparing primary sources, writing a diary entry from a historical figure's perspective). Avoid exercises requiring images or overly simplistic tasks.
+  Be creative in thinking up diverse exercises.
 
-  Go deep into topics without using common boilerplate. Give interesting facts on unexpected topics: geology, geography, demographics, economics, daily life, music, art, culture, botany, native plants, invasive plants, food, clothing, shelter. How did people do things? How did people survive? What was life _really_ like? Impress even a super-aspergers genius who knows everything. Historical accuracy is important above all else. Report what you know. But, don't pretend to know everything. Present debates and controversies in a neutral way with an open mind. Tell what you know and how you know it.
+  Go deep into topics without using common boilerplate. Give interesting facts on unexpected topics: geology, geography, demographics, economics, daily life, music, art, culture, botany, native/invasive plants, food, clothing, shelter. How did people do things? How did people survive? What was life _really_ like? Impress even a super-aspergers genius who knows everything. Historical accuracy is important above all else. Report what you know. But, don't pretend to know everything. Present debates and controversies in a neutral way with an open mind. Tell what you know and how you know it.
 
   ---
 
-  Write each lesson as part of a larger, seamless textbook.
+  Write each lesson as part of a larger, seamless unit that is part of a larger, seamless textbook.
   • Avoid self-references (“In this lesson…”) and pep-talk intros; dive right into the content.
   • Use plain, straightforward language—concise sentences, neutral, fact-dense tone.
   • Focus on economic, social, and political contexts—no glorification, demonization, or emotional moralizing.
-  • Insert `{{IMAGE: caption}}` sparingly (max {{max_images_per_lesson}}), only for truly illuminating scenes or figures.
-  • Exercises must be tightly focused: one per lesson, analytical or creative, never generic.
+  • Insert `{{IMAGE: caption}}` for illuminating scenes and figures.
 
   **Core deep-dive checklist (cover AT LEAST three)**:
   - Geology / geography: bedrock, rivers, soils, climate.
@@ -40,12 +41,11 @@ llm_instructions: |
   - Material culture: tools, clothing, shelter, native & invasive plants.
   - Arts & beliefs: music, storytelling, rituals, visual symbols.
 
-  **Wild-card challenge**:
-  After you've hit the checklist, **surprise us** with one truly unexpected insight—an obscure micro-topic or quirky local fact (e.g. “Why did 18th-century Savannah gardeners import daffodils?” or “How did early Georgians harvest wild rice along the Ocmulgee?”).
+  After you've hit the checklist, **surprise us** with one truly unexpected insight—an obscure micro-topic or quirky local fact.
 
   **Balance your two audiences**:
   - **State standards**: include all foundational topics required for an elementary Georgia curriculum.
-  - **Isaac the genius**: sneak in at least one advanced tidbit or scholarly debate—present it neutrally so that even a know-it-all comes away learning something new.
+  - **Isaac the genius**: sneak in advanced tidbits and scholarly debate—present it neutrally so that even a know-it-all comes away learning something new.
 
   **Accuracy above all**:
   Report only what's supported by evidence. When in doubt, note it as a scholarly debate (“Some argue X based on Y, while others cite Z…”).

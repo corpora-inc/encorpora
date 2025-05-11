@@ -8,6 +8,7 @@ import yaml
 class BookConfig(BaseModel):
     title: str
     subtitle: str
+    purpose: Optional[str] = "Provide a comprehensive curriculum"
     author: Optional[str] = "The Encorpora Team"
     publisher: Optional[str] = "Corpora Inc"
     units: Optional[int] = 8

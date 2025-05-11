@@ -1,5 +1,39 @@
 from django.db import models
 
+from pydantic import BaseModel
+from typing import List
+
+
+class ExercisePydanticModel(BaseModel):
+    markdown: str
+
+
+class LessonMarkdownModel(BaseModel):
+    markdown: str
+    exercises: List[ExercisePydanticModel]
+
+
+class UnitMarkdownModel(BaseModel):
+    name: str
+    lessons: List[LessonMarkdownModel]
+
+
+class NewExerciseMarkdownModel(BaseModel):
+    name: str
+    markdown: str
+
+
+class NewLessonMarkdownModel(BaseModel):
+    name: str
+    markdown: str
+    number: float
+    exercises: List[NewExerciseMarkdownModel]
+
+
+class NewUnitMarkdownModel(BaseModel):
+    name: str
+    lessons: List[NewLessonMarkdownModel]
+
 
 class Course(models.Model):
     name = models.CharField(max_length=255)
@@ -15,8 +49,50 @@ class Unit(models.Model):
     number = models.FloatField(null=True, blank=True)
     summary = models.TextField(blank=True)
 
+    class Meta:
+        unique_together = ("course", "name")
+        ordering = ["number"]
+
     def __str__(self):
         return self.name
+
+    def get_full_markdown(self) -> UnitMarkdownModel:
+        lessons = []
+        for lesson in self.lessons.all():
+            lesson_data = LessonMarkdownModel(
+                markdown=lesson.markdown,
+                exercises=[
+                    ExercisePydanticModel(markdown=exercise.markdown)
+                    for exercise in lesson.exercises.all()
+                ],
+            )
+            lessons.append(lesson_data)
+        return UnitMarkdownModel(name=self.name, lessons=lessons)
+
+    def rewrite_full_markdown(self, unit: UnitMarkdownModel) -> None:
+        for i, lesson in enumerate(self.lessons.all()):
+            lesson_data = unit.lessons[i]
+            lesson.markdown = lesson_data.markdown
+            lesson.save()
+            for j, exercise in enumerate(lesson.exercises.all()):
+                exercise_data = lesson_data.exercises[j]
+                exercise.markdown = exercise_data.markdown
+                exercise.save()
+
+    def create_full_markdown(self, unit: NewUnitMarkdownModel) -> None:
+        for lesson_data in unit.lessons:
+            lesson = Lesson.objects.create(
+                unit=self,
+                name=lesson_data.name,
+                number=lesson_data.number,
+                markdown=lesson_data.markdown,
+            )
+            for exercise_data in lesson_data.exercises:
+                Exercise.objects.create(
+                    lesson=lesson,
+                    name=exercise_data.name,
+                    markdown=exercise_data.markdown,
+                )
 
 
 class Lesson(models.Model):
@@ -26,6 +102,10 @@ class Lesson(models.Model):
     summary = models.TextField(blank=True)
     markdown = models.TextField(blank=True)
     study_markdown = models.TextField(blank=True)
+
+    class Meta:
+        unique_together = ("unit", "name")
+        ordering = ["number"]
 
     def __str__(self):
         return self.name
@@ -38,6 +118,9 @@ class Exercise(models.Model):
     name = models.CharField(max_length=255)
     summary = models.TextField(blank=True)
     markdown = models.TextField(blank=True)
+
+    class Meta:
+        unique_together = ("lesson", "name")
 
     def __str__(self):
         return self.name
