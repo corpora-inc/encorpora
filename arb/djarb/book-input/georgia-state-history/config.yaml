@@ -1,11 +1,11 @@
 title: Georgia State History
-subtitle: An Elementary Journey Through the Peach State
+subtitle: Journey Through Time and Space
 purpose: |
-  This textbook is designed to provide elementary students with a comprehensive understanding of Georgia's history, culture, and geography. It aims to engage young learners with interactive lessons, vivid illustrations, and hands-on activities that foster a deep appreciation for the state's rich heritage.
+  A profound deep dive into the history of Georgia disguised as a basic elementary school textbook. This textbook is designed to provide elementary students with a comprehensive understanding of Georgia's history, culture, and geography. It aims to engage young learners with interactive lessons, vivid illustrations, and hands-on activities that foster a deep appreciation for the state's rich heritage. It does so by using dense, interesting facts and a neutral, fact-based tone to present historical events objectively. The textbook focuses on economic, social, cultural, and political contexts, avoiding glorification, demonization, or trite/emotional narratives. It provides balanced perspectives, letting facts speak for themselves. The book can fulfill the requirements of the state curriculum while also providing advanced tidbits and scholarly debate for more knowledgeable readers. It covers a wide range of topics, including geology, geography, demographics, economics, daily life, music, art, culture, botany, food, clothing, and shelter.
 author: The Encorpora Team
 publisher: Corpora Inc
 units: 9
-lessons_per_unit: 3
+lessons_per_unit: 5
 exercises_per_lesson: 1
 max_images_per_lesson: 3
 isbn: ""
@@ -24,7 +24,7 @@ llm_instructions: |
 
   Be creative in thinking up diverse exercises.
 
-  Go deep into topics without using common boilerplate. Give interesting facts on unexpected topics: geology, geography, demographics, economics, daily life, music, art, culture, botany, native/invasive plants, food, clothing, shelter. How did people do things? How did people survive? What was life _really_ like? Impress even a super-aspergers genius who knows everything. Historical accuracy is important above all else. Report what you know. But, don't pretend to know everything. Present debates and controversies in a neutral way with an open mind. Tell what you know and how you know it.
+  Go deep into topics without using common boilerplate. Give interesting facts on unexpected topics. For example: geology, geography, demographics, economics, daily life, music, art, culture, botany, food, clothing, shelter. But not just these topics, be creative. How did people do things? How did people survive? What was life _really_ like? Impress even a super-asperger's genius who knows everything. Historical accuracy is important above all else. Report what you know. But, don't pretend to know everything. Present debates and controversies in a neutral way with an open mind. Tell what you know and how you know it. Go deep rather than wide and shallow.
 
   ---
 

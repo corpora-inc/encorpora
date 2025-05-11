@@ -1,9 +1,11 @@
 from django.core.management.base import BaseCommand
 
+from corpora_ai.provider_loader import load_llm_provider
 from itrary.models import Course, Unit, Lesson, Exercise
 from itrary.agents import (
     ExerciseContentRequest,
     LessonContentRequest,
+    edit_unit,
     get_course_plan,
     get_unit_plan,
     get_lesson_plan,
@@ -11,6 +13,21 @@ from itrary.agents import (
     get_exercise_content,
 )
 from itrary.utils import load_book_config  # Utility to load YAML (to be defined)
+
+openai = load_llm_provider("openai")
+
+
+DEDUPLICATION_INSTRUCTIONS = (
+    "The lessons in the unit were written independently so they contain duplication. "
+    "Your main job is to find and remove excess duplication. "
+    "Instead of repeating the same facts in similar ways, "
+    "EXPAND on the facts and stories to make the lessons in the unit more cohesive so they flow together. "
+    "DO NOT lose any of the facts or stories. "
+    "DO NOT lose the scholarly debates or the fun facts. "
+    "Keep all of the images and their captions exactly. "
+    "You may add markdown features like bold, italics, and blockquotes to make key points stand out. "
+    "You are doing a final editorial pass to make to book publication-quality with subtle improvements."
+)
 
 
 class Command(BaseCommand):
@@ -38,6 +55,7 @@ class Command(BaseCommand):
 
         self.stdout.write(f"Course: {course_title}\n")
         self.stdout.write(f"Summary: {course.summary}\n")
+        self.stdout.write(f"Units: {course_plan.units}\n")
 
         for unit in course_plan.units:
             unit_obj, _ = Unit.objects.get_or_create(
@@ -115,3 +133,18 @@ class Command(BaseCommand):
                         self.stdout.write(
                             f"Skipping exercise content:\n{ex.name}\n{ex.summary[:100]}\n{ex.markdown[:100]}\n\n"
                         )
+
+            self.stdout.write(f"Editing unit: {unit_obj.name}\n")
+            unit_obj.refresh_from_db()
+            self.stdout.write(
+                f"{[len(lesson.markdown) for lesson in unit_obj.lessons.all()]}\n"
+            )
+            edit_unit(
+                unit_obj.name,
+                DEDUPLICATION_INSTRUCTIONS,
+                config=config,
+                llm=openai,
+            )
+            self.stdout.write(
+                f"{[len(lesson.markdown) for lesson in unit_obj.lessons.all()]}\n"
+            )

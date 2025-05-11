@@ -16,8 +16,8 @@ from itrary.utils import BookConfig
 
 # TODO: hrm .. this required XAI_API_KEY to be set ..
 # I guess we want to always pass in the llm provider to the agent?
-# llm = load_llm_provider("xai")
-llm = load_llm_provider("openai")
+llm = load_llm_provider("xai")
+openai = load_llm_provider("openai")
 
 
 MARKDOWN_CONTENT_INSTRUCTIONS = """
@@ -99,6 +99,60 @@ class ExerciseContentRequest(BaseModel):
 class ExerciseContentResponse(BaseModel):
     summary: str
     markdown: str
+
+
+class CourseOutlineExercise(BaseModel):
+    name: str
+
+
+class CourseOutlineLesson(BaseModel):
+    name: str
+    number: float
+    summary: str
+    exercises: List[CourseOutlineExercise]
+
+
+class CourseOutlineUnit(BaseModel):
+    name: str
+    number: float
+    summary: str
+    lessons: List[CourseOutlineLesson]
+
+
+class CourseOutlineResponse(BaseModel):
+    summary: str
+    units: List[CourseOutlineUnit]
+
+
+def get_course_outline(config: BookConfig) -> CourseOutlineResponse:
+    """Get Complete Course Outline with Lessons and summaries"""
+    return llm.get_data_completion(
+        [
+            ChatCompletionTextMessage(
+                role="system",
+                text=(
+                    "You are an expert curriculum planner for the course:\n\n"
+                    f"```\n{config.title}\n{config.subtitle}\n```\n\n"
+                    f"The purpose of the course is: {config.purpose}\n\n"
+                    "You are going to generate a complete course outline with lessons and summaries. "
+                    f"You will break the course into {config.units} units. "
+                    f"You will break each unit into {config.lessons_per_unit} lessons. "
+                    f"Each lesson will have {config.exercises_per_lesson} exercises. "
+                    "Generate a complete course outline with names, lesson summaries and exercises. "
+                    "Do NOT number the units, lessons, or exercises in the names (e.g., avoid 'Unit 1: Foo'). "
+                    "Use the JSON tool to return the complete course outline."
+                ),
+            ),
+            ChatCompletionTextMessage(
+                role="user",
+                text=(
+                    f"Generate the complete course outline for the course: {config.title} "
+                    f"using the JSON tool."
+                ),
+            ),
+        ],
+        CourseOutlineResponse,
+    )
 
 
 def get_course_plan(config: BookConfig) -> CoursePlanResponse:
@@ -409,6 +463,7 @@ def edit_unit(
 
 def get_unit(
     unit_name: str,
+    course_outline: CourseOutlineResponse,
     config: BookConfig,
 ) -> NewUnitMarkdownModel:
     """
@@ -418,18 +473,31 @@ def get_unit(
     # unit = Unit.objects.get(name=unit_name)
     # all_units = [unit.name for unit in Unit.objects.filter(course__name=config.title)]
 
+    unit = next((unit for unit in course_outline.units if unit.name == unit_name), None)
+    if unit is None:
+        raise ValueError(f"Unit {unit_name} not found in course outline.")
+
     # TODO: max_images_per_lesson or we just put that in llm_instructions?
     system_prompt = (
         "You are an expert curriculum planner and content writer for the course:\n\n"
         f"```\n{config.title}\n{config.subtitle}\n```\n\n"
         f"With the purpose: {config.purpose}\n\n"
+        f"The units are: {', '.join([unit.name for unit in course_outline.units])}\n\n"
         f"You are working on the SPECIFIC UNIT: `{unit_name}`. "
+        f"The outline of the unit is:\n\n"
+        f"```\n{unit.model_dump_json(indent=2)}\n```\n\n"
         f"Follow the markdown formatting rules:\n\n"
         f"```\n{MARKDOWN_CONTENT_INSTRUCTIONS}\n```\n\n"
-        f"Break the unit, `{unit_name}`, into {config.lessons_per_unit} lessons. "
-        "Generate a complete, comprehensive, verbose unit - including lessons and exercises - "
-        "using the JSON tool. "
-        "Lessons have name, number, and markdown. Exercises have name and markdown. "
+        f"Return the markdown content of the unit, including all lessons and exercises. "
+        "Return the exact same names of lessons and exercises as in the outline. "
+        "Start the lesson.markdown with `## {lesson.name}` using 2 `#`s. "
+        "Start the exercise.markdown with `### {exercise.name}` using 3 `#`s. "
+        f"Add up to {config.max_images_per_lesson} images per lesson. "
+        "You are writing the full markdown content using rich markdown features. "
+        "Use bold, italics, and blockquotes to make key points stand out. "
+        "Generate a complete, comprehensive, verbose unit using the JSON tool. "
+        "Write for the target audience implied by the course title and subtitle, "
+        "ensuring clarity and engagement."
     )
 
     if config.llm_instructions:

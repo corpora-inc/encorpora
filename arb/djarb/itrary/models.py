@@ -9,6 +9,7 @@ class ExercisePydanticModel(BaseModel):
 
 
 class LessonMarkdownModel(BaseModel):
+    name: str
     markdown: str
     exercises: List[ExercisePydanticModel]
 
@@ -69,15 +70,18 @@ class Unit(models.Model):
             lessons.append(lesson_data)
         return UnitMarkdownModel(name=self.name, lessons=lessons)
 
-    def rewrite_full_markdown(self, unit: UnitMarkdownModel) -> None:
-        for i, lesson in enumerate(self.lessons.all()):
-            lesson_data = unit.lessons[i]
-            lesson.markdown = lesson_data.markdown
-            lesson.save()
-            for j, exercise in enumerate(lesson.exercises.all()):
-                exercise_data = lesson_data.exercises[j]
-                exercise.markdown = exercise_data.markdown
-                exercise.save()
+    def rewrite_full_markdown(self, unit: NewUnitMarkdownModel) -> None:
+        for lesson in unit.lessons:
+            lesson_obj = Lesson.objects.get(unit=self, name=lesson.name)
+            lesson_obj.markdown = lesson.markdown
+            lesson_obj.save()
+            for exercise in lesson.exercises:
+                exercise_obj = Exercise.objects.get(
+                    lesson=lesson_obj,
+                    name=exercise.name,
+                )
+                exercise_obj.markdown = exercise.markdown
+                exercise_obj.save()
 
     def create_full_markdown(self, unit: NewUnitMarkdownModel) -> None:
         for lesson_data in unit.lessons:

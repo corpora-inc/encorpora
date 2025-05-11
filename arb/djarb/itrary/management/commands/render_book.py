@@ -102,6 +102,7 @@ class Command(BaseCommand):
                     break
 
             token_pattern = f"{{{{IMAGE: {alt_text}}}}}"
+
             if existing_ext:
                 self.stdout.write(
                     f"Image already exists for '{alt_text}' ({existing_ext}); skipping generation."
@@ -111,6 +112,11 @@ class Command(BaseCommand):
                     f"\n![{alt_text}](images/{slugified}.{existing_ext})\n",
                 )
                 continue
+
+            #
+            content = content.replace(token_pattern, "")
+            continue
+            #
 
             # Determine context header for prompt
             token_index = content.find(token_pattern)
