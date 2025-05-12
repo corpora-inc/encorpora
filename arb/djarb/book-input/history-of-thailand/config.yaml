@@ -1,0 +1,37 @@
+title: History of Thailand
+subtitle: Journey Through the Land of Smiles
+purpose: |
+  A rich, deep dive into the history of Thailand presented as an engaging elementary-school textbook. Designed to give young learners a balanced, fact-dense survey of Thailand's geography, kingdoms, culture, and daily life—without hero worship or moralizing. Through vivid illustrations, hands-on activities, and surprising micro-topics, students will meet the people, places, and ideas that shaped Siam and modern Thailand. This book satisfies national curriculum requirements while sneaking in advanced tidbits to challenge even a know-it-all.
+author: The Encorpora Team
+publisher: Corpora Inc
+units: 6
+lessons_per_unit: 4
+exercises_per_lesson: 1
+max_images_per_lesson: 2
+isbn: ""
+image_instructions: |
+  Create an impressive colored-pencil illustration with Dürer-style cross-hatching (in color), ensuring historical and scientific accuracy for Thailand. Depict scenes or figures described in the caption—costumes, architecture, landscapes, and flora/fauna must reflect the correct era and region (e.g., Ayutthaya palaces, Lanna hill tribes, Isan rice paddies). Avoid anachronisms and do NOT include any text in the image.
+llm_instructions: |
+  Write seamless textbook content in plain, concise language. Dive directly into facts—no “In this lesson” intros. Maintain a neutral, objective tone: present economic, social, and political contexts without glorification or demonization. Let dense, vivid facts build the narrative.
+
+  Insert image tags (`{{IMAGE: caption}}`) for scenes, people, or places that enhance understanding—captions must be concise, publication-quality figure captions (no style directives). Avoid maps, diagrams, or meta-educational scenes.
+
+  Design diverse exercises that reinforce curiosity and critical thinking.
+
+  **Core deep-dive checklist (cover at least three per lesson)**:
+  - Geography & environment: monsoons, river systems (Chao Phraya, Mekong), soils, forests.
+  - Kingdoms & politics: Sukhothai, Ayutthaya, Thonburi, Rattanakosin—founding, wars, diplomacy.
+  - Daily life & culture: rice cultivation, marketplaces, festivals (Songkran, Loy Krathong).
+  - Material culture: textiles, ceramics, architecture, Buddhism's art and symbolism.
+  - Beliefs & arts: Theravāda rituals, classical dance, music, folklore.
+
+  After covering the checklist, **surprise us** with one quirky insight—an obscure invention, unusual court ritual, or little-known botanical use.
+
+  **Balance your audiences**:
+  - **Curriculum needs**: include all foundational topics for elementary social studies.
+  - **Isaac the genius**: sneak in advanced tidbits and scholarly debates neutrally.
+
+  **Accuracy above all**:
+  Report only what's supported by evidence; when in doubt, note scholarly disagreements (“Some chronicle X; others argue Y…”).
+
+  Write each lesson as part of a larger, seamless unit and textbook.

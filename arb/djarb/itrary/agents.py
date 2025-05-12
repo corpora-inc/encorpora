@@ -24,16 +24,20 @@ MARKDOWN_CONTENT_INSTRUCTIONS = """
 You are writing a specific section of a larger book, such as a lesson, exercise, or study guide. Write as a seamless, standalone narrative, diving directly into the content without referencing the course, unit, lesson, or curriculum structure (e.g., avoid "In this lesson," "In this unit," "This chapter"). The reader already knows their context, so avoid introductions or conclusions that restate the context.
 
 Follow these markdown formatting rules:
+
 - Add a blank line before and after lists (bullet or numbered).
 - Use `$` for inline math and `$$` for display math.
 - Avoid special Unicode characters (e.g., ≠, α, ≈) unless in LaTeX math mode (e.g., `$\neq$`, `$\alpha$`, `$\approx$`).
 - Insert image placeholders only where visuals significantly enhance understanding or engagement, using the format `{{IMAGE: publication-quality caption}}` on its own line, surrounded by blank lines. The caption must be:
+
   - Concise, descriptive, and suitable as a figure caption in the final book.
   - Free of style directives (e.g., no "black-and-white," "sketch") or separate captions (e.g., no "Caption: ...").
   - Simple and consistent, using plain text or LaTeX for math-related captions when appropriate.
   - Example for history: "Savannah's first square in 1733."
   - Example for math: "Graph of $y = x^2$ showing a parabola."
   - Example for literature: "Heathcliff wandering the moors at dusk."
+
+Do not add `---`.
 
 The content will be processed by pandoc to generate PDF, EPUB, and other formats, so ensure compatibility.
 """
@@ -422,16 +426,19 @@ def edit_unit(
     system_prompt = (
         "You are editing an entire unit of a book:\n\n"
         f"```\n{config.title}\n{config.subtitle}\n```\n\n"
+        f"The purpose of the course is: {config.purpose}\n\n"
+        f"You follow the general instructions for the book:\n\n"
+        f"```\n{config.llm_instructions}\n```\n\n"
         f"You are working on the unit: `{unit_name}`.\n\n"
         f"Here is the current draft of the unit:\n\n"
         f"```\n{unit_markdown}\n```\n\n"
         f"You job is return the entire unit, the markdown content of "
-        "the Lessons and Exercises, **almost entirely the same**, "
+        "the Lessons and Exercises, **almost exactly the same**, "
         "in the same format as the input, using the JSON tool. "
         f"You will follow the mardown formatting rules:\n\n"
         f"```\n{MARKDOWN_CONTENT_INSTRUCTIONS}\n```\n\n"
-        "You will make changes to the content of the lessons and exercises "
-        "according to the following instructions:\n\n"
+        "You will make changes to the content of the lessons and exercises in the unit "
+        "according to the following specific instructions:\n\n"
         f"```\n{instructions}\n```"
     )
     new_unit_markdown = llm.get_data_completion(
@@ -489,9 +496,9 @@ def get_unit(
         f"Follow the markdown formatting rules:\n\n"
         f"```\n{MARKDOWN_CONTENT_INSTRUCTIONS}\n```\n\n"
         f"Return the markdown content of the unit, including all lessons and exercises. "
-        "Return the exact same names of lessons and exercises as in the outline. "
-        "Start the lesson.markdown with `## {lesson.name}` using 2 `#`s. "
-        "Start the exercise.markdown with `### {exercise.name}` using 3 `#`s. "
+        "Return the EXACT SAME NAMES of the lessons and exercises as they are in the outline. "
+        "Start each lesson.markdown with `## {lesson.name}` using 2 `#`s. "
+        "Start each exercise.markdown with `### {exercise.name}` using 3 `#`s. "
         f"Add up to {config.max_images_per_lesson} images per lesson. "
         "You are writing the full markdown content using rich markdown features. "
         "Use bold, italics, and blockquotes to make key points stand out. "

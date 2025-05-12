@@ -5,6 +5,7 @@ from typing import List
 
 
 class ExercisePydanticModel(BaseModel):
+    name: str
     markdown: str
 
 
@@ -60,10 +61,15 @@ class Unit(models.Model):
     def get_full_markdown(self) -> UnitMarkdownModel:
         lessons = []
         for lesson in self.lessons.all():
+            lesson: Lesson
             lesson_data = LessonMarkdownModel(
+                name=lesson.name,
                 markdown=lesson.markdown,
                 exercises=[
-                    ExercisePydanticModel(markdown=exercise.markdown)
+                    ExercisePydanticModel(
+                        name=exercise.name,
+                        markdown=exercise.markdown,
+                    )
                     for exercise in lesson.exercises.all()
                 ],
             )
@@ -76,7 +82,7 @@ class Unit(models.Model):
             lesson_obj.markdown = lesson.markdown
             lesson_obj.save()
             for exercise in lesson.exercises:
-                exercise_obj = Exercise.objects.get(
+                exercise_obj, _ = Exercise.objects.get_or_create(
                     lesson=lesson_obj,
                     name=exercise.name,
                 )

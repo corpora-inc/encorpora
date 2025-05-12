@@ -66,32 +66,3 @@ class Command(BaseCommand):
             )
 
             unit.rewrite_full_markdown(unit_markdown)
-
-        # course_plan = get_course_plan(config=config)
-        # course.summary = course_plan.summary
-        # course.save()
-
-        # self.stdout.write(f"Course: {course_title}\n")
-        # self.stdout.write(f"Summary: {course.summary}\n")
-
-        # self.stdout.write("Generating units...\n")
-        # # create all units
-        # for unit in course_plan.units:
-        #     unit_obj, _ = Unit.objects.get_or_create(
-        #         course=course,
-        #         name=unit.name,
-        #         number=unit.number,
-        #     )
-        #     self.stdout.write(f"Unit: {unit_obj.name}\n")
-
-        # self.stdout.write("Generating unit content...\n")
-        # for unit in course.units.all():
-        #     unit: Unit
-        #     self.stdout.write(f"Unit: {unit.name}\n")
-        #     unit_md = get_unit(unit_obj, config=config)
-        #     self.stdout.write(
-        #         f"Unit Markdown: {[less.name for less in unit_md.lessons]}\n"
-        #     )
-        #     unit.create_full_markdown(unit_md)
-
-        # self.stdout.write("Course generation complete.\n")

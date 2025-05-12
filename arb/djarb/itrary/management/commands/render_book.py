@@ -113,10 +113,10 @@ class Command(BaseCommand):
                 )
                 continue
 
-            #
-            content = content.replace(token_pattern, "")
-            continue
-            #
+            # #
+            # content = content.replace(token_pattern, "")
+            # continue
+            # #
 
             # Determine context header for prompt
             token_index = content.find(token_pattern)
@@ -236,8 +236,10 @@ class Command(BaseCommand):
                     "--lua-filter=hrule.lua",
                     "-V",
                     "documentclass=book",
-                    "-V",
-                    "geometry:margin=1in",
+                    # TODO: everything via header file?
+                    # "-V classoption=oneside",
+                    # "-V papersize=6in,9in",
+                    # "-V fontsize=11pt",
                     "--toc-depth=2",
                 ],
             },
@@ -258,24 +260,6 @@ class Command(BaseCommand):
                     f"--metadata=date:{meta['date']}",
                     f"--metadata=publisher:{meta['publisher']}",
                     f"--metadata=isbn:{meta['isbn']}",
-                ],
-            },
-            {
-                "name": "print-pdf",
-                "outfile": f"{full_stem}-print.pdf",
-                "args": [
-                    "--pdf-engine=xelatex",
-                    "--toc",
-                    "--include-in-header=custom_headings.tex",
-                    "--include-before-body=custom_cover.tex",
-                    "--lua-filter=hrule.lua",
-                    "-V",
-                    "documentclass=book",
-                    "-V",
-                    "geometry:top=0.75in,bottom=0.75in,inner=0.75in,outer=0.5in",
-                    "-V",
-                    "fontsize=11pt",
-                    "--toc-depth=2",
                 ],
             },
         ]

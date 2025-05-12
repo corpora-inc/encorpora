@@ -7,7 +7,6 @@ from .models import Course, Unit, Lesson, Exercise
 class CourseAdmin(admin.ModelAdmin):
     list_display = ("name",)
     search_fields = ("name",)
-    ordering = ("name",)
 
 
 @admin.register(Unit)
