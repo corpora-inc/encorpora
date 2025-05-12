@@ -1,158 +1,163 @@
-% ---- add headings for #### and ##### ----
+% Custom LaTeX Preamble: Organized and Commented
+% ---------------------------------------------
+% Document Layout and Geometry
+% ---------------------------------------------
+% Set paper size and margins for 6" x 9" layout suitable for elementary textbooks
+\usepackage[paperwidth=6in,paperheight=9in,
+            margin=0.75in,heightrounded]{geometry}
 
+% ==== Table of Contents formatting ====
+% \usepackage[titles]{tocloft}
+
+% % Reduce the size of “Contents”
+% \renewcommand{\cfttoctitlefont}{\large\bfseries}       % use \large instead of default \Huge
+% \renewcommand{\cftaftertoctitle}{\vskip 0.5em}        % small gap after title
+
+% % Fine-tune spacing around the title
+% \setlength{\cftbeforetoctitleskip}{0pt}               % no extra space above “Contents”
+% \setlength{\cftaftertoctitleskip}{0pt}              % minimal space before the first entry
+
+% % Optionally tighten the ToC itself
+% \setlength{\cftparskip}{0pt}                          % no extra space between items
+% \setlength{\cftbeforesecskip}{0pt}                    % no extra space before section entries
+% ==== Shrink and tighten the ToC title ====
+
+% % 1) Change the “Contents” title to a more modest size
+% \makeatletter
+% \renewcommand\contentsname{\large\bfseries Contents}
+% % 2) Reduce the vertical gap above and below that title
+% \renewcommand{\tocheadstart}{\vspace*{-1.5em}}   % Pulls title up
+% \renewcommand{\tocheadend}{\vspace*{-0.5em}}     % Closes gap before entries
+% \makeatother
+
+% % 3) Ensure space before first ToC entry is minimal
+% \setlength{\parskip}{0pt}
+% \setlength{\parindent}{0pt}
+
+% ==== Force format for \section*{Contents} ====
 \usepackage{titlesec}
 
-% Define formatting for \paragraph (level 4 heading)
+% % Override \section* style (affects Contents)
+% \titleformat{\section}[block]
+%   {\normalfont\Large\bfseries}  % smaller than default \Huge
+%   {}{0pt}{}                     % no number, no separation
+% \titlespacing*{\section}
+%   {0pt}{0pt}{0.5em}             % {left}{before}{after}
+
+% % Now when \tableofcontents calls \section*{Contents}, it will be Compact.
+
+% ==== Remove the “Contents” title entirely ====
+% \makeatletter
+% \renewcommand\tableofcontents{%
+%   % no \chapter* call here, just print the TOC entries
+%   \begingroup
+%     \setlength{\parskip}{0pt}%
+%     \setlength{\parindent}{0pt}%
+%     \@starttoc{toc}%
+%   \endgroup
+% }
+% \makeatother
+
+% ==== Redefine \tableofcontents with a small “Contents” header ====
+\makeatletter
+\renewcommand\tableofcontents{%
+  % \cleardoublepage                          % start on a fresh page (book class)
+  \begingroup
+    \setlength{\parskip}{0pt}%              % no extra space between entries
+    \setlength{\parindent}{0pt}%            % no indentation
+    {\Large \bfseries Contents\par}
+    \vspace{1em}
+    \@starttoc{toc}%                        % now dump the actual ToC
+  \endgroup
+}
+\makeatother
+
+
+
+
+% ---------------------------------------------
+% Section and Heading Formatting (Levels 4 & 5)
+% ---------------------------------------------
+% Provide custom
+%   #### \paragraph
+%   ##### \subparagraph
+% headings using titlesec
+\usepackage{titlesec}
+
+% Level 4: \paragraph
 \titleformat{\paragraph}
   {\normalfont\normalsize\bfseries}{\theparagraph}{1em}{}
 \titlespacing*{\paragraph}
   {0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
 
-% Define formatting for \subparagraph (level 5 heading)
+% Level 5: \subparagraph
 \titleformat{\subparagraph}
   {\normalfont\normalsize\bfseries\itshape}{\thesubparagraph}{1em}{}
 \titlespacing*{\subparagraph}
   {0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
 
-% ---- more spacing for young learners ----
-
-% Increase overall line spacing for a more open, readable layout
+% ---------------------------------------------
+% Line Spacing and Readability
+% ---------------------------------------------
+% Increase line spacing for young learners (uncomment to activate)
 \usepackage{setspace}
 % \setstretch{1.2}
 
-% % Increase font sizes for section headings to be more child-friendly
-% \usepackage{sectsty}
-% \sectionfont{\fontsize{16}{20}\selectfont\bfseries}
-% \subsectionfont{\fontsize{14}{18}\selectfont\bfseries}
-% \subsubsectionfont{\fontsize{12}{16}\selectfont\bfseries}
-% % Level 4 and 5 headers are already set up in your file
+% ---------------------------------------------
+% Header and Footer Styling
+% ---------------------------------------------
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}                     % Clear header/footer
+\fancyfoot[LE,RO]{\thepage}   % Page numbers: left on even, right on odd
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
 
-% % Adjust spacing before and after section titles (if desired)
-% \usepackage{titlesec}
-% \titlespacing*{\section}{0pt}{2.5ex plus 1ex minus .2ex}{2ex plus .2ex}
-% \titlespacing*{\subsection}{0pt}{2.0ex plus 1ex minus .2ex}{1.5ex plus .2ex}
-% \titlespacing*{\subsubsection}{0pt}{1.5ex plus 1ex minus .2ex}{1.2ex plus .2ex}
-
-% % Use fancyhdr to create a simple, larger header and footer (optional)
-% \usepackage{fancyhdr}
-% \pagestyle{fancy}
-% \fancyhf{}
-% \fancyhead[C]{\fontsize{12}{14}\selectfont Second Grade Mathematics}
-% \fancyfoot[C]{\fontsize{12}{14}\selectfont \thepage}
-% \renewcommand{\headrulewidth}{0pt}
-
-% Optionally adjust list spacing for clarity
-
-% \usepackage{enumitem}
-% % \setlist{itemsep=1ex, topsep=1ex}
-% \setlist[itemize,enumerate]{leftmargin=0pt, labelsep=0.5em}
-
-
-% ---- Custom styling for block quotes ----
-\usepackage{mdframed}
-\usepackage{xcolor}
-
-\renewenvironment{quote}
-  {\begin{mdframed}[backgroundcolor=gray!10, linecolor=gray!50, leftline=true, topline=false, bottomline=false, rightline=false, innerleftmargin=10pt, innerrightmargin=10pt, innertopmargin=10pt, innerbottommargin=10pt, skipabove=10pt, skipbelow=10pt]}
-  {\end{mdframed}}
-
-% % Add extra vertical space before and after horizontal rules
-% \let\oldhrule\hrule
-% \renewcommand{\hrule}{\par\vspace{1em}\oldhrule\par\vspace{1em}}
-% \makeatletter
-% \let\oldhrule\hrule
-% \renewcommand{\hrule}{\par\addvspace{1em}\oldhrule\addvspace{1em}\par}
-% \makeatother
-
-% \newcommand{\myhrule}{\par\vspace*{1em}\hrule\vspace*{1em}\par}
-
-% \usepackage{etoolbox}
-% \makeatletter
-% \let\oldhrule\hrule
-% \AtBeginDocument{%
-%   \renewcommand{\hrule}{\par\addvspace{1em}\oldhrule\addvspace{1em}\par}%
-% }
-% \makeatother
-
+% ---------------------------------------------
+% Customized Horizontal Rules
+% ---------------------------------------------
+% Create a thinner, centered horizontal rule
 \newcommand{\myhrule}{%
   \par\vspace*{1em}%
   {\centering\rule{0.6\linewidth}{0.4pt}\par}%
   \vspace*{1em}%
 }
 
-% Plots
+% ---------------------------------------------
+% List and Bullet Customization
+% ---------------------------------------------
+\makeatletter
+% Level 2 bullet: small open bullet
+\renewcommand\labelitemii{\textopenbullet}
+% Level 3 bullet: circle
+\renewcommand\labelitemiii{\circ}
+\makeatother
+
+% Optionally tweak list spacing (uncomment and adjust)
+% \usepackage{enumitem}
+% \setlist[itemize,enumerate]{leftmargin=0pt,labelsep=0.5em}
+
+% ---------------------------------------------
+% Block Quote Styling
+% ---------------------------------------------
+\usepackage{mdframed}
+\usepackage{xcolor}
+\renewenvironment{quote}
+  {\begin{mdframed}[backgroundcolor=gray!10,linecolor=gray!50,
+                     leftline=true,topline=false,bottomline=false,
+                     rightline=false,innerleftmargin=10pt,innerrightmargin=10pt,
+                     innertopmargin=10pt,innerbottommargin=10pt,
+                     skipabove=10pt,skipbelow=10pt]}
+  {\end{mdframed}}
+
+% ---------------------------------------------
+% Plotting and Graphics
+% ---------------------------------------------
 \usepackage{pgfplots}
 \pgfplotsset{width=10cm,compat=1.9}
 \usepgfplotslibrary{statistics}
 
+% Optionally define a centered TikZ environment
 % \newenvironment{centeredtikz}
 %   {\par\vspace{2em}\begin{center}\begin{tikzpicture}}
 %   {\end{tikzpicture}\end{center}\par\vspace{2em}}
-
-% Fing emojis!!
-% \usepackage{fontspec}
-% \setmainfont{DejaVu Serif} % or your preferred main font
-% \newfontfamily\emojifont{NotoColorEmoji}[
-%   Renderer=Harfbuzz,
-%   Path = /usr/share/fonts/truetype/noto/,
-%   Extension = .ttf,
-%   Scale = MatchLowercase
-% ]
-% \newcommand{\emoji}[1]{{\emojifont #1}}
-
-% \documentclass[twoside]{article}
-\usepackage{fancyhdr}
-\pagestyle{fancy}
-\fancyhf{} % clear all header and footer fields
-\fancyfoot[LE,RO]{\thepage} % left footer on even pages, right footer on odd pages
-\renewcommand{\headrulewidth}{0pt}
-\renewcommand{\footrulewidth}{0pt}
-
-
-\makeatletter
-% Level 1: big open circle
-% \renewcommand\labelitemi{$\bigcirc$}
-% Level 2: normal open circle
-% \renewcommand\labelitemii{$\odot$}
-\renewcommand\labelitemii{$\textopenbullet$}
-% Level 3: circled dot
-\renewcommand\labelitemiii{$\circ$}
-\makeatother
-
-
-
-% \makeatletter
-% \renewcommand\labelitemiii{$\circ$}
-% \makeatother
-
-
-% % in custom_headings.tex
-
-% % make bullets better especially at level 3
-% \usepackage{enumitem}  % easy list tweaking
-% \usepackage{pifont}    % for dingbat symbols
-
-% % redefine bullets for itemize levels 1–3:
-% \renewcommand\labelitemi{\textbullet}     % ●
-% \renewcommand\labelitemii{\textopenbullet} % ◦
-% \renewcommand\labelitemiii{\ding{109}}    % ○
-
-% % tighten up spacing and restore default indent
-% \setlist[itemize,1]{label=\labelitemi, leftmargin=*, itemsep=0.5\baselineskip}
-% \setlist[itemize,2]{label=\labelitemii, leftmargin=*, itemsep=0.3\baselineskip}
-% \setlist[itemize,3]{label=\labelitemiii, leftmargin=*, itemsep=0.2\baselineskip}
-
-% % Define Pandoc’s \tightlist if not already defined
-% \providecommand{\tightlist}{%
-%   \setlength{\itemsep}{0pt}%
-%   \setlength{\parskip}{0pt}%
-% }
-
-% \usepackage{geometry}
-
-
-\usepackage[paperwidth=6in, paperheight=9in,
-            margin=0.75in, heightrounded]{geometry}
-% \setmainfont{Palatino}     % or any XeLaTeX-compatible font
-% \setsansfont{Helvetica}
-% \setmonofont{Inconsolata}

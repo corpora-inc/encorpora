@@ -1,7 +1,6 @@
 from pydantic import BaseModel
 from typing import List
 
-
 from corpora_ai.provider_loader import load_llm_provider
 from corpora_ai.llm_interface import ChatCompletionTextMessage, LLMBaseInterface
 
@@ -525,4 +524,67 @@ def get_unit(
             ),
         ],
         NewUnitMarkdownModel,
+    )
+
+
+class UnitIntroResponse(BaseModel):
+    intro_markdown: str
+
+
+def get_unit_intro(
+    unit: Unit,
+    config: BookConfig,
+    llm: LLMBaseInterface = llm,
+) -> UnitIntroResponse:
+    """
+    Use a large model to get the lesson and exercise
+    markdown content for the whole unit.
+    """
+    unit_markdown = unit.get_full_markdown()
+    units = ", ".join(
+        [unit.name for unit in Unit.objects.filter(course__name=config.title)]
+    )
+
+    return llm.get_data_completion(
+        [
+            ChatCompletionTextMessage(
+                role="system",
+                text=(
+                    "You are an expert curriculum planner and content writer for the course:\n\n"
+                    f"```\n{config.title}\n{config.subtitle}\n```\n\n"
+                    f"With the purpose: {config.purpose}\n\n"
+                    f"The units are: {units}\n\n"
+                    f"You are working on the SPECIFIC UNIT: `{unit.name}`. "
+                    f"The lessons and exercises in full are:\n\n"
+                    f"```\n{unit_markdown.model_dump_json(indent=2)}\n```\n\n"
+                    "You are going to write an INTRODUCTION to the unit in markdown. "
+                    f"Follow the general markdown formatting rules:\n\n"
+                    f"```\n{MARKDOWN_CONTENT_INSTRUCTIONS}\n```\n\n"
+                    "In addition, for the unit introduction specifically, "
+                    "DO NOT USE ANY headers. "
+                    "DO NOT USE ANY IMAGE tags. "
+                    "Use bold, italics, blockquotes, and bullets to make key points stand out. "
+                    "For the introduction, "
+                    "we need to give an overview of the prequisite knowledge and GENERAL CONTEXT "
+                    "that the students need to have to begin the unit. "
+                    "Give a complete, verbose, introduction for the unit, "
+                    "including where it fits into the course: "
+                    "where it comes from and where it leads to. "
+                    "Give SPECIFIC background information that puts the unit into context "
+                    "and prepares the reader for the content of the unit. "
+                    "You are writing a verbose, comprehensive introduction "
+                    "but, you still make it concise and fact-dense. "
+                    "Do not waste words with fluffy boilerplate or formulaic filler. "
+                    "Write for the target audience implied by the course title and subtitle."
+                ),
+            ),
+            ChatCompletionTextMessage(
+                role="user",
+                text=(
+                    f"Generate the comprehensive, publication-quality introdution for the unit: {unit.name} "
+                    f"in course: {config.title} using the JSON tool."
+                ),
+            ),
+        ],
+        UnitIntroResponse,
     )

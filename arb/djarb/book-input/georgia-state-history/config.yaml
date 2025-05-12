@@ -11,6 +11,7 @@ max_images_per_lesson: 3
 isbn: ""
 image_instructions: |
   Create an impressive colored pencil illustration for the textbook with cross-hatching reminiscent of the style of Albrecht Dürer (but color), while maintaining historical and scientific accuracy for the subject matter. This is for a history textbook for the state of Georgia in the US. Be scientifically precise. This is not the former-USSR Georgia, this is not India. The illustration should depict the scene or figure described in the caption, ensuring details (e.g., clothing, architecture, landscapes) reflect the historical period accurately and scientifically. Do not take the caption too literally. Think about what would be realistic and historically accurate. Avoid modern or anachronistic elements unless specified in the caption. Do NOT include any text in the image.
+  Historical accuracy is paramount - this is for a textbook.
 llm_instructions: |
   Write content for a textbook as part of a book. You are writing a small piece of a larger work. Avoid self-referential phrases such as "In this lesson," "In this unit," or "This chapter." Dive directly into the content. Use plain, straight-forward language. Don't waste words. You right interesting facts and let the reader build their own narrative. Use a neutral, fact-based tone. Avoid emotional language or subjective interpretations. Focus on the facts and let them speak for themselves. Use clear, concise sentences.
 

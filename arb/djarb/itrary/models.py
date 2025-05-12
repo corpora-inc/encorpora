@@ -50,6 +50,7 @@ class Unit(models.Model):
     name = models.CharField(max_length=255)
     number = models.FloatField(null=True, blank=True)
     summary = models.TextField(blank=True)
+    intro_markdown = models.TextField(blank=True)
 
     class Meta:
         unique_together = ("course", "name")

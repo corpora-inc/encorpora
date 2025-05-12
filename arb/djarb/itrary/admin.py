@@ -13,7 +13,6 @@ class CourseAdmin(admin.ModelAdmin):
 class UnitAdmin(admin.ModelAdmin):
     list_display = ("name", "course", "number")
     search_fields = ("name",)
-    ordering = ("name",)
     list_filter = ("course",)
     autocomplete_fields = ("course",)
 
