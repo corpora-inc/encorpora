@@ -4,7 +4,6 @@ Generate unit intros for a course using an LLM.
 
 from django.core.management.base import BaseCommand
 
-from corpora_ai.provider_loader import load_llm_provider
 from itrary.models import Course, Unit
 from itrary.agents import (
     UnitIntroResponse,
@@ -12,7 +11,7 @@ from itrary.agents import (
 )
 from itrary.utils import load_book_config  # Utility to load YAML (to be defined)
 
-openai = load_llm_provider("openai")
+# openai = load_llm_provider("openai")
 
 
 class Command(BaseCommand):
@@ -39,7 +38,7 @@ class Command(BaseCommand):
             response: UnitIntroResponse = get_unit_intro(
                 unit,
                 config=config,
-                llm=openai,
+                # llm=openai,
             )
 
             unit.intro_markdown = response.intro_markdown

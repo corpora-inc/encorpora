@@ -1,0 +1,44 @@
+title: History of Venezuela
+subtitle: A Journey Through Time and Space
+purpose: |
+  A rich, deep dive into the history of Venezuela presented as an engaging elementary-school textbook. Designed to give young learners a balanced, fact-dense survey of Venezuela’s geography, indigenous cultures, colonial legacies, and modern transformations—without hero worship or moralizing. Through vivid illustrations, hands-on activities, and surprising micro-topics, students will meet the people, places, and ideas that shaped the Llanos, the Orinoco basin, and the Bolivarian Republic. This book satisfies national curriculum requirements while sneaking in advanced tidbits to challenge even a know-it-all.
+author: The Encorpora Team
+publisher: Corpora Inc
+units: 6
+lessons_per_unit: 4
+exercises_per_lesson: 1
+max_images_per_lesson: 2
+isbn: ""
+image_instructions: |
+  Create an impressive colored-pencil illustration with Dürer-style cross-hatching (in color), ensuring historical and scientific accuracy for Venezuela. Depict scenes or figures described in the caption—ecosystems, architecture, costumes, and flora/fauna must reflect the correct era and region.
+  Physical accuracy: ensure all mechanical and anatomical relationships are plausible.
+  Avoid anachronisms and do NOT include any text in the image.
+llm_instructions: |
+  Write seamless textbook content in plain, concise language. Dive directly into facts—no "In this lesson", "In this unit" intros. Maintain a neutral, objective tone: present economic, social, and political contexts without glorification or demonization. Let dense, vivid facts build the narrative.
+
+  Insert image tags (`{{IMAGE: caption}}`) for scenes, people, or places that enhance understanding—captions must be concise, publication-quality figure captions (no style directives). Avoid maps, diagrams, or meta-educational scenes.
+
+  Design diverse exercises that reinforce curiosity and critical thinking.
+
+  **Core deep-dive checklist**:
+
+  This checklist is not exhaustive - be creative! But ensure you cover:
+
+  - Geography & environment: Orinoco River system, Andes mountains, Caribbean coast, Llanos savannas, tepuis and waterfalls.
+  - Indigenous & colonial history: Cumanagoto, Yanomami, Guajiro; Spanish conquest, colonial administration, missionary routes.
+  - Independence & politics: Simón Bolívar's campaigns, Gran Colombia, Federal War, 20th-century republics, oil economy, Bolivarian Movement.
+  - Daily life & culture: arepa and hallaca traditions, carnival celebrations, Venezuelan music (joropo, gaitas), marketplaces.
+  - Material culture: colonial churches, Hacienda architecture, petroleum infrastructure, artisanal crafts (ceramics, textiles).
+  - Beliefs & arts: indigenous cosmologies, Catholic festivals, modern visual arts, literary figures (Rómulo Gallegos).
+
+  After covering the checklist, **surprise us** with an insight — an obscure invention, unique ritual, little-known botanical use, or any other seemingly trivial fact that will make students say, "Wow, interesting!"
+  Be creative to tie the facts to the topic of the lesson, unit, course.
+
+  **Balance your audiences**:
+  - **Curriculum needs**: include all foundational topics for elementary social studies.
+  - **Isaac the genius**: sneak in advanced tidbits and scholarly debates neutrally.
+
+  **Accuracy above all**:
+  Report only what's supported by evidence; when in doubt, note scholarly disagreements (“Some sources credit X; others argue Y…”).
+
+  Write each lesson as part of a larger, seamless unit and textbook.

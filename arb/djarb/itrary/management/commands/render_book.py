@@ -42,6 +42,12 @@ class Command(BaseCommand):
             default="book",
             help="Template to use for rendering the book (e.g., 'book', 'study_guide')",
         )
+        parser.add_argument(
+            "--no-generate",
+            action="store_true",
+            default=False,
+            help="Skip image generation and use existing images if available",
+        )
 
     def handle(self, *args: Any, **options: Any) -> None:
         config_path = options["config"]
@@ -113,7 +119,10 @@ class Command(BaseCommand):
                 )
                 continue
 
-            # #
+            if options["no_generate"]:
+                self.stdout.write(f"Image generation disabled; skipping '{alt_text}'.")
+                content = content.replace(token_pattern, "")
+                continue
             # content = content.replace(token_pattern, "")
             # continue
             # #
@@ -193,7 +202,7 @@ class Command(BaseCommand):
         cover_ctx = {
             "title": config.title,
             "subtitle": config.subtitle,
-            "author": config.author or "Skylar Saveland",
+            "author": config.author or "The Encorpora Team",
             "publisher": config.publisher or "Corpora Inc",
             "cover_path": cover_image_name,
         }
@@ -268,5 +277,4 @@ class Command(BaseCommand):
             self.stdout.write(f"→ Building {job['name']} → {job['outfile']}")
             cmd = ["pandoc", "-s", proc_md.name, "-o", job["outfile"]] + job["args"]
             subprocess.run(cmd, check=True, cwd=out_dir)
-
         self.stdout.write("🎉 All formats built successfully!")

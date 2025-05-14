@@ -3,6 +3,7 @@ from typing import Union
 from typing import Optional
 from pydantic import BaseModel
 import yaml
+from PyPDF2 import PdfReader, PdfWriter
 
 
 class BookConfig(BaseModel):
@@ -73,3 +74,12 @@ def save_image(data: bytes, out_path: Union[str, Path]) -> Path:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_bytes(data)
     return path
+
+
+def make_demo_pdf(src_pdf: Path, dst_pdf: Path, max_pages: int = 20) -> None:
+    reader = PdfReader(str(src_pdf))
+    writer = PdfWriter()
+    for p in range(min(max_pages, len(reader.pages))):
+        writer.add_page(reader.pages[p])
+    with dst_pdf.open("wb") as f:
+        writer.write(f)
