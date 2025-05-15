@@ -1,0 +1,39 @@
+title: AP US History
+subtitle: The Most Concise Guide to Master the Exam
+purpose: |
+  A comprehensive, concise guide to mastering the AP US History exam.
+  This book is designed to provide students with a clear
+  overview of key historical events, themes, and concepts that are
+  essential for success on the exam.
+  The content is structured to facilitate understanding and retention,
+  with a focus on critical thinking and analysis.
+author: The Encorpora Team
+publisher: Corpora Inc
+units: 9
+lessons_per_unit: 3
+exercises_per_lesson: 0
+max_images_per_lesson: 1
+isbn: ""
+image_instructions: |
+  Create an impressive colored-pencil illustration with Dürer-style cross-hatching (in color),
+  ensuring historical and scientific accuracy for the United States.
+  Depict scenes or figures described in the caption—ecosystems, architecture,
+  costumes, and flora/fauna must reflect the correct era and region.
+  Physical accuracy: ensure all mechanical and anatomical relationships are plausible.
+  Avoid anachronisms and do NOT include any text in the image.
+llm_instructions: |
+  Write seamless textbook content in plain, concise language.
+  Dive directly into facts — no "In this lesson", "In this unit" intros.
+  Maintain a neutral, objective tone: present economic, social, and political contexts
+  without glorification or demonization. Let dense, vivid facts build the narrative.
+
+  Insert image tags (`{{IMAGE: caption}}`) for scenes, people,
+  or places that enhance understanding - captions must be concise,
+  publication-quality figure captions (no style directives).
+  Avoid maps, diagrams, or meta-educational scenes.
+  The images can be somewhat abstract or fantastical to help the reader
+  remember the content of the lesson.
+
+  Be as CONCISE as possible, and avoid unnecessary repetition.
+  This book is for a student drilling before the exam.
+  Give the reader what they need to know in the most efficient way possible.

@@ -1,0 +1,52 @@
+title: Georgia State History
+subtitle: Journey Through Time and Space
+purpose: |
+  A profound deep dive into the history of Georgia disguised as a basic elementary school textbook. This textbook is designed to provide elementary students with a comprehensive understanding of Georgia's history, culture, and geography. It aims to engage young learners with interactive lessons, vivid illustrations, and hands-on activities that foster a deep appreciation for the state's rich heritage. It does so by using dense, interesting facts and a neutral, fact-based tone to present historical events objectively. The textbook focuses on economic, social, cultural, and political contexts, avoiding glorification, demonization, or trite/emotional narratives. It provides balanced perspectives, letting facts speak for themselves. The book can fulfill the requirements of the state curriculum while also providing advanced tidbits and scholarly debate for more knowledgeable readers. It covers a wide range of topics, including geology, geography, demographics, economics, daily life, music, art, culture, botany, food, clothing, and shelter.
+author: The Encorpora Team
+publisher: Corpora Inc
+units: 9
+lessons_per_unit: 5
+exercises_per_lesson: 1
+max_images_per_lesson: 3
+isbn: ""
+image_instructions: |
+  Create an impressive colored pencil illustration for the textbook with cross-hatching reminiscent of the style of Albrecht Dürer (but color), while maintaining historical and scientific accuracy for the subject matter. This is for a history textbook for the state of Georgia in the US. Be scientifically precise. This is not the former-USSR Georgia, this is not India. The illustration should depict the scene or figure described in the caption, ensuring details (e.g., clothing, architecture, landscapes) reflect the historical period accurately and scientifically. Do not take the caption too literally. Think about what would be realistic and historically accurate. Avoid modern or anachronistic elements unless specified in the caption. Do NOT include any text in the image.
+  Historical accuracy is paramount - this is for a textbook.
+llm_instructions: |
+  Write content for a textbook as part of a book. You are writing a small piece of a larger work. Avoid self-referential phrases such as "In this lesson," "In this unit," or "This chapter." Dive directly into the content. Use plain, straight-forward language. Don't waste words. You right interesting facts and let the reader build their own narrative. Use a neutral, fact-based tone. Avoid emotional language or subjective interpretations. Focus on the facts and let them speak for themselves. Use clear, concise sentences.
+
+  Maintain a neutral, fact-dense tone, presenting historical events objectively. Focus on economic, social, and political contexts, avoiding glorification, demonization, or trite/emotional narratives. Provide balanced perspectives, letting facts speak for themselves.
+
+  Insert image tags (`{{IMAGE: caption}}`) for historical scenes, people, or places that enhance understanding and imagination - with historical accuracy. Captions must be concise, verbose, and publication-quality, describing the scene without style directives (e.g., no "black-and-white," "sketch") or separate captions. Avoid controversial, offensive, or irrelevant images, such as:
+  - Violent or disturbing scenes (e.g., Ku Klux Klan, battles with gore).
+  - Classroom activities, student drawings, or meta-educational scenes.
+  - Maps, diagrams, or abstract illustrations.
+  Ensure captions are consistent and suitable as figure captions in the final book.
+
+  Be creative in thinking up diverse exercises.
+
+  Go deep into topics without using common boilerplate. Give interesting facts on unexpected topics. For example: geology, geography, demographics, economics, daily life, music, art, culture, botany, food, clothing, shelter. But not just these topics, be creative. How did people do things? How did people survive? What was life _really_ like? Impress even a super-asperger's genius who knows everything. Historical accuracy is important above all else. Report what you know. But, don't pretend to know everything. Present debates and controversies in a neutral way with an open mind. Tell what you know and how you know it. Go deep rather than wide and shallow.
+
+  ---
+
+  Write each lesson as part of a larger, seamless unit that is part of a larger, seamless textbook.
+  • Avoid self-references (“In this lesson…”) and pep-talk intros; dive right into the content.
+  • Use plain, straightforward language—concise sentences, neutral, fact-dense tone.
+  • Focus on economic, social, and political contexts—no glorification, demonization, or emotional moralizing.
+  • Insert `{{IMAGE: caption}}` for illuminating scenes and figures.
+
+  **Core deep-dive checklist (cover AT LEAST three)**:
+  - Geology / geography: bedrock, rivers, soils, climate.
+  - Demographics / daily life: population, settlement patterns, household routines.
+  - Local economy: trade goods, labor systems, craft production.
+  - Material culture: tools, clothing, shelter, native & invasive plants.
+  - Arts & beliefs: music, storytelling, rituals, visual symbols.
+
+  After you've hit the checklist, **surprise us** with one truly unexpected insight—an obscure micro-topic or quirky local fact.
+
+  **Balance your two audiences**:
+  - **State standards**: include all foundational topics required for an elementary Georgia curriculum.
+  - **Isaac the genius**: sneak in advanced tidbits and scholarly debate—present it neutrally so that even a know-it-all comes away learning something new.
+
+  **Accuracy above all**:
+  Report only what's supported by evidence. When in doubt, note it as a scholarly debate (“Some argue X based on Y, while others cite Z…”).

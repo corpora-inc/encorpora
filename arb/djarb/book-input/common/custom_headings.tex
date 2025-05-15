@@ -1,0 +1,163 @@
+% Custom LaTeX Preamble: Organized and Commented
+% ---------------------------------------------
+% Document Layout and Geometry
+% ---------------------------------------------
+% Set paper size and margins for 6" x 9" layout suitable for elementary textbooks
+\usepackage[paperwidth=6in,paperheight=9in,
+            margin=0.75in,heightrounded]{geometry}
+
+% ==== Table of Contents formatting ====
+% \usepackage[titles]{tocloft}
+
+% % Reduce the size of “Contents”
+% \renewcommand{\cfttoctitlefont}{\large\bfseries}       % use \large instead of default \Huge
+% \renewcommand{\cftaftertoctitle}{\vskip 0.5em}        % small gap after title
+
+% % Fine-tune spacing around the title
+% \setlength{\cftbeforetoctitleskip}{0pt}               % no extra space above “Contents”
+% \setlength{\cftaftertoctitleskip}{0pt}              % minimal space before the first entry
+
+% % Optionally tighten the ToC itself
+% \setlength{\cftparskip}{0pt}                          % no extra space between items
+% \setlength{\cftbeforesecskip}{0pt}                    % no extra space before section entries
+% ==== Shrink and tighten the ToC title ====
+
+% % 1) Change the “Contents” title to a more modest size
+% \makeatletter
+% \renewcommand\contentsname{\large\bfseries Contents}
+% % 2) Reduce the vertical gap above and below that title
+% \renewcommand{\tocheadstart}{\vspace*{-1.5em}}   % Pulls title up
+% \renewcommand{\tocheadend}{\vspace*{-0.5em}}     % Closes gap before entries
+% \makeatother
+
+% % 3) Ensure space before first ToC entry is minimal
+% \setlength{\parskip}{0pt}
+% \setlength{\parindent}{0pt}
+
+% ==== Force format for \section*{Contents} ====
+\usepackage{titlesec}
+
+% % Override \section* style (affects Contents)
+% \titleformat{\section}[block]
+%   {\normalfont\Large\bfseries}  % smaller than default \Huge
+%   {}{0pt}{}                     % no number, no separation
+% \titlespacing*{\section}
+%   {0pt}{0pt}{0.5em}             % {left}{before}{after}
+
+% % Now when \tableofcontents calls \section*{Contents}, it will be Compact.
+
+% ==== Remove the “Contents” title entirely ====
+% \makeatletter
+% \renewcommand\tableofcontents{%
+%   % no \chapter* call here, just print the TOC entries
+%   \begingroup
+%     \setlength{\parskip}{0pt}%
+%     \setlength{\parindent}{0pt}%
+%     \@starttoc{toc}%
+%   \endgroup
+% }
+% \makeatother
+
+% ==== Redefine \tableofcontents with a small “Contents” header ====
+\makeatletter
+\renewcommand\tableofcontents{%
+  % \cleardoublepage                          % start on a fresh page (book class)
+  \begingroup
+    \setlength{\parskip}{0pt}%              % no extra space between entries
+    \setlength{\parindent}{0pt}%            % no indentation
+    {\Large \bfseries Contents\par}
+    \vspace{1em}
+    \@starttoc{toc}%                        % now dump the actual ToC
+  \endgroup
+}
+\makeatother
+
+
+
+
+% ---------------------------------------------
+% Section and Heading Formatting (Levels 4 & 5)
+% ---------------------------------------------
+% Provide custom
+%   #### \paragraph
+%   ##### \subparagraph
+% headings using titlesec
+\usepackage{titlesec}
+
+% Level 4: \paragraph
+\titleformat{\paragraph}
+  {\normalfont\normalsize\bfseries}{\theparagraph}{1em}{}
+\titlespacing*{\paragraph}
+  {0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+
+% Level 5: \subparagraph
+\titleformat{\subparagraph}
+  {\normalfont\normalsize\bfseries\itshape}{\thesubparagraph}{1em}{}
+\titlespacing*{\subparagraph}
+  {0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+
+% ---------------------------------------------
+% Line Spacing and Readability
+% ---------------------------------------------
+% Increase line spacing for young learners (uncomment to activate)
+\usepackage{setspace}
+% \setstretch{1.2}
+
+% ---------------------------------------------
+% Header and Footer Styling
+% ---------------------------------------------
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}                     % Clear header/footer
+\fancyfoot[LE,RO]{\thepage}   % Page numbers: left on even, right on odd
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% ---------------------------------------------
+% Customized Horizontal Rules
+% ---------------------------------------------
+% Create a thinner, centered horizontal rule
+\newcommand{\myhrule}{%
+  \par\vspace*{1em}%
+  {\centering\rule{0.6\linewidth}{0.4pt}\par}%
+  \vspace*{1em}%
+}
+
+% ---------------------------------------------
+% List and Bullet Customization
+% ---------------------------------------------
+\makeatletter
+% Level 2 bullet: small open bullet
+\renewcommand\labelitemii{\textopenbullet}
+% Level 3 bullet: circle
+\renewcommand\labelitemiii{\circ}
+\makeatother
+
+% Optionally tweak list spacing (uncomment and adjust)
+% \usepackage{enumitem}
+% \setlist[itemize,enumerate]{leftmargin=0pt,labelsep=0.5em}
+
+% ---------------------------------------------
+% Block Quote Styling
+% ---------------------------------------------
+\usepackage{mdframed}
+\usepackage{xcolor}
+\renewenvironment{quote}
+  {\begin{mdframed}[backgroundcolor=gray!10,linecolor=gray!50,
+                     leftline=true,topline=false,bottomline=false,
+                     rightline=false,innerleftmargin=10pt,innerrightmargin=10pt,
+                     innertopmargin=10pt,innerbottommargin=10pt,
+                     skipabove=10pt,skipbelow=10pt]}
+  {\end{mdframed}}
+
+% ---------------------------------------------
+% Plotting and Graphics
+% ---------------------------------------------
+\usepackage{pgfplots}
+\pgfplotsset{width=10cm,compat=1.9}
+\usepgfplotslibrary{statistics}
+
+% Optionally define a centered TikZ environment
+% \newenvironment{centeredtikz}
+%   {\par\vspace{2em}\begin{center}\begin{tikzpicture}}
+%   {\end{tikzpicture}\end{center}\par\vspace{2em}}
