@@ -1,0 +1,56 @@
+/* fallback for all MathML subelements */
+mi,
+mn,
+mo,
+mrow {
+    white-space: normal !important;
+}
+
+/* handsome quote blocks */
+blockquote {
+    /* light background and left border */
+    /* background: #f9f9f9; */
+    border-left: 4px solid #909090;
+    margin: 0.5em 0;
+    padding: 0 1em;
+}
+
+/* center all tables on the page */
+table {
+    margin: 1.5em auto !important;
+    /* optional: if you want the caption centered too */
+    /* text-align: center !important; */
+}
+
+/* reset body gutters */
+body {
+    margin: 0 !important;
+    padding: 0.5em !important;
+    box-sizing: border-box !important;
+}
+
+/* force images to scale and center */
+img,
+svg {
+    display: block !important;
+    max-width: 100% !important;
+    height: auto !important;
+    margin: 1em auto !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+}
+
+/* if you wrap images in <figure> */
+figure {
+    display: block !important;
+    margin: 1em auto !important;
+    padding: 0 !important;
+    text-align: center !important;
+}
+
+/* optional: center captions */
+figcaption {
+    margin-top: 0.5em !important;
+    font-size: 0.9em !important;
+    text-align: center !important;
+}

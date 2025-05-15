@@ -1,1 +1,4 @@
 book-output/
+output/
+data/
+*.sqlite3
