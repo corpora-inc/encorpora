@@ -24,12 +24,24 @@
   "bundle": {
     "active": true,
     "targets": "all",
+    "resources": [
+      "../../dja/db.sqlite3"
+    ],
     "icon": [
       "icons/32x32.png",
       "icons/128x128.png",
       "icons/128x128@2x.png",
       "icons/icon.icns",
       "icons/icon.ico"
-    ]
+    ],
+    "iOS": {
+      "minimumSystemVersion": "14.0",
+      "developmentTeam": "F9AV5HKF6N",
+      "template": "ios/project.yml"
+    },
+    "macOS": {
+      "entitlements": "macos-entitlements.plist",
+      "signingIdentity": "3rd Party Mac Developer Application: Corpora Inc (F9AV5HKF6N)"
+    }
   }
 }
