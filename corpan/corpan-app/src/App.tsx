@@ -168,7 +168,10 @@ export default function App() {
             className="flex flex-col items-center bg-gray-50 border rounded-lg p-4 shadow min-h-[140px]"
           >
             <div className="text-xs text-gray-500 mb-1">{LANGUAGE_NAMES[code] || code}</div>
-            <div className="text-xl text-center font-bold">
+            <div className={"text-xl text-center font-bold"}
+              dir={code === "ar" ? "rtl" : "ltr"}
+            >
+
               {textByLang[code] || <span className="opacity-50">—</span>}
             </div>
             <Button

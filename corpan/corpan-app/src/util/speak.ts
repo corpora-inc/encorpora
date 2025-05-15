@@ -3,7 +3,9 @@ import { invoke } from "@tauri-apps/api/core";
 
 // static map of language codes to names
 const LANGUAGE_NAMES: Record<string, string> = {
-    "en": "Ava",
+    // was working but then stopped?
+    // "en": "Ava",
+    "en": "Daniel",
     "es": "Mónica",
     "zh": "Meijia",
     "ar": "Majed",
