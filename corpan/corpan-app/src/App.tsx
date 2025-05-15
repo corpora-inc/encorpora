@@ -1,20 +1,16 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { invoke } from "@tauri-apps/api/core";
 import { Button } from "@/components/ui/button";
-import {
-  ChevronLeft as ChevronLeftIcon,
-  RefreshCw as RefreshIcon,
-  ChevronRight as ChevronRightIcon,
-} from "lucide-react";
+import { DndContext, closestCenter, PointerSensor, useSensor, useSensors } from "@dnd-kit/core";
+import { SortableContext, verticalListSortingStrategy, arrayMove, useSortable } from "@dnd-kit/sortable";
+import { CSS } from "@dnd-kit/utilities";
 import "./index.css";
 
-// Types matching backend (adjust as needed)
-export type TranslationOut = {
-  language_code: string;
-  text: string;
-};
+// import "@/util/speak";
+import { createVoiceTTS } from "./util/speak";
 
-export type EntryOut = {
+type TranslationOut = { language_code: string; text: string; };
+type EntryOut = {
   entry_id: number;
   en_text: string;
   level: string;
@@ -22,10 +18,8 @@ export type EntryOut = {
   translations: TranslationOut[];
 };
 
-// Supported UI languages (add/remove as needed)
 const LANGUAGE_NAMES: Record<string, string> = {
   en: "English",
-  ko: "Korean",
   "ko-polite": "Korean (Polite)",
   es: "Spanish",
   fr: "French",
@@ -38,204 +32,162 @@ const LANGUAGE_NAMES: Record<string, string> = {
   it: "Italian",
   hi: "Hindi",
 };
+const ALL_LANGUAGE_CODES = Object.keys(LANGUAGE_NAMES);
 
-const HISTORY_KEY = "corpan_entry_history";
+const LANG_PREF_KEY = "corpan_lang_prefs";
+
+// Sortable item for DnD
+function LangChip({ code, active, ...props }: { code: string; active?: boolean;[k: string]: any }) {
+  const { attributes, listeners, setNodeRef, transform, transition, isDragging } = useSortable({ id: code });
+  return (
+    <div
+      ref={setNodeRef}
+      style={{
+        transform: CSS.Transform.toString(transform),
+        transition,
+        opacity: isDragging ? 0.5 : 1,
+        background: active ? "#eef" : "#f8f8f8",
+        border: "1px solid #bbb",
+        borderRadius: 8,
+        padding: "0.5em 1em",
+        margin: "0 4px",
+        cursor: "grab",
+        fontWeight: 500,
+        display: "inline-block",
+      }}
+      {...attributes}
+      {...listeners}
+      {...props}
+    >
+      {LANGUAGE_NAMES[code] || code}
+    </div>
+  );
+}
 
 export default function App() {
+  // State: ordered language codes to display
+  const [selectedLangs, setSelectedLangs] = useState<string[]>(() => {
+    const raw = localStorage.getItem(LANG_PREF_KEY);
+    // cheap way to clear.
+    // localStorage.removeItem(LANG_PREF_KEY); // Remove from localStorage to avoid confusion
+    return raw ? JSON.parse(raw) : ["en", "es", "pt-BR", "fr", "it", "ko-polite"];
+  });
+  // All entries in history (as before)
   const [history, setHistory] = useState<EntryOut[]>([]);
-  const [index, setIndex] = useState<number>(-1);
-  const [loading, setLoading] = useState<boolean>(true);
+  const [index, setIndex] = useState(-1);
+  const [loading, setLoading] = useState(true);
 
-  // User state: which translation to display as "target" language?
-  const [targetLang, setTargetLang] = useState<string>("ko-polite");
+  // Sensors for DnD
+  const sensors = useSensors(useSensor(PointerSensor));
 
-  // (Optional) Level/domain filtering state could go here
-
-  // Refs for async updates
-  const indexRef = useRef<number>(index);
-  useEffect(() => { indexRef.current = index; }, [index]);
-
-  // Initial load: try history, else fetch
+  // Persist language prefs
   useEffect(() => {
-    (async () => {
-      try {
-        const raw = localStorage.getItem(HISTORY_KEY);
-        if (raw) {
-          try {
-            const arr: EntryOut[] = JSON.parse(raw);
-            if (arr.length) {
-              setHistory(arr);
-              setIndex(arr.length - 1);
-              return;
-            }
-          } catch { /* invalid JSON, fallback */ }
-        }
-        // Otherwise, fetch one
-        const entry = await fetchRandomEntry(targetLang);
-        setHistory([entry]);
-        setIndex(0);
-      } finally {
-        setLoading(false);
-      }
-    })();
+    localStorage.setItem(LANG_PREF_KEY, JSON.stringify(selectedLangs));
+  }, [selectedLangs]);
+
+  // Load one entry on start
+  useEffect(() => {
+    fetchNewEntry();
     // eslint-disable-next-line
   }, []);
 
-  // Persist history to localStorage
-  useEffect(() => {
-    if (history.length) {
-      localStorage.setItem(HISTORY_KEY, JSON.stringify(history));
-    }
-  }, [history]);
-
-  // --- Backend fetcher ---
-  async function fetchRandomEntry(lang: string): Promise<EntryOut> {
-    // You can add filters here (level, domain, etc)
-    return await invoke<EntryOut>("get_random_entry_with_translations", {
-      level: undefined,         // e.g., "A1"
-      domain: undefined,        // e.g., "health"
-      languageCodes: [lang, "en"], // fetch at least these two
+  // Fetch new entry in the selected languages
+  async function fetchNewEntry() {
+    setLoading(true);
+    const entry = await invoke<EntryOut>("get_random_entry_with_translations", {
+      languageCodes: selectedLangs,
     });
+    setHistory(prev => {
+      const next = [...prev, entry];
+      setIndex(next.length - 1);
+      return next;
+    });
+
+    setLoading(false);
   }
 
-  // Load a new random entry and append to history
-  const fetchNew = async () => {
-    setLoading(true);
-    try {
-      const entry = await fetchRandomEntry(targetLang);
-      setHistory(prev => {
-        const truncated = prev.slice(0, indexRef.current + 1);
-        return [...truncated, entry];
-      });
-      setIndex(_ => indexRef.current + 1);
-    } finally {
-      setLoading(false);
+  // Multi-select language toggling
+  function toggleLang(code: string) {
+    setSelectedLangs(prev =>
+      prev.includes(code) ? prev.filter(c => c !== code) : [...prev, code]
+    );
+  }
+
+  // Drag-and-drop reorder handler
+  function handleDragEnd(event: any) {
+    const { active, over } = event;
+    if (active.id !== over.id) {
+      const oldIndex = selectedLangs.indexOf(active.id);
+      const newIndex = selectedLangs.indexOf(over.id);
+      setSelectedLangs(arrayMove(selectedLangs, oldIndex, newIndex));
     }
-  };
+  }
 
-  // Navigation
-  const handlePrev = () => { if (index > 0) setIndex(i => i - 1); };
-  const handleNext = () => {
-    if (index < history.length - 1) {
-      setIndex(i => i + 1);
-    } else {
-      fetchNew();
-    }
-  };
-
-  // User switches target language
-  const handleTargetLangChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setTargetLang(e.target.value);
-    // Optionally, fetch new entry in that language immediately
-    fetchNew();
-  };
-
-  // Current card
+  // Current entry to display
   const curr = history[index];
 
-  // Pull translation for selected language (fallback: show all)
-  const selectedTranslation = curr?.translations.find(
-    t => t.language_code === targetLang
-  );
+  // Map: language_code → text
+  const textByLang: Record<string, string> = {};
+  curr?.translations.forEach(t => { textByLang[t.language_code] = t.text; });
+  textByLang["en"] = curr?.en_text || "";
 
   return (
-    <div className="h-full w-full flex items-center justify-center bg-gray-50">
-      <div className="flex flex-col h-full w-full max-w-2xl mx-auto bg-white rounded-lg shadow-lg overflow-scroll">
-        {/* Top: Language selector */}
-        <div className="flex flex-row items-center justify-center gap-3 p-4">
-          <label className="text-sm">Language:</label>
-          <select
-            value={targetLang}
-            onChange={handleTargetLangChange}
-            className="border rounded p-2 bg-white"
-          >
-            {Object.entries(LANGUAGE_NAMES).map(([code, label]) => (
-              <option key={code} value={code}>{label}</option>
-            ))}
-          </select>
-        </div>
-
-        {/* Main content */}
-        <div className="flex-1 flex flex-col items-center justify-center px-4">
-          {loading ? (
-            <p>Loading…</p>
-          ) : curr ? (
-            <>
-              {/* Target language */}
-              <p className="text-5xl font-extrabold text-center mt-6 p-3 min-h-[3rem]">
-                {selectedTranslation ? selectedTranslation.text : "(No translation available)"}
-              </p>
-              <div className="flex flex-row gap-2 mb-4">
-                {/* TTS buttons or similar for selected language could go here */}
-              </div>
-              {/* English (always) */}
-              <p className="text-lg text-gray-700 text-center">
-                <span className="font-semibold">English:</span> {curr.en_text}
-              </p>
-              {/* Level / Domains */}
-              <div className="text-sm mt-2 text-gray-500 text-center">
-                <span className="px-2 py-1 bg-blue-50 rounded mr-2">{curr.level}</span>
-                {curr.domains.map(domain => (
-                  <span
-                    key={domain}
-                    className="px-2 py-1 bg-gray-100 rounded mx-1"
-                  >
-                    {domain}
-                  </span>
-                ))}
-              </div>
-              {/* All translations */}
-              <details className="mt-4">
-                <summary className="cursor-pointer text-sm text-gray-500">Show all translations</summary>
-                <ul className="mt-2 grid grid-cols-2 gap-2">
-                  {curr.translations.map(t => (
-                    <li key={t.language_code}>
-                      <span className="font-semibold">{LANGUAGE_NAMES[t.language_code] || t.language_code}:</span>{" "}
-                      {t.text}
-                    </li>
-                  ))}
-                </ul>
-              </details>
-            </>
-          ) : (
-            <p>No entry available.</p>
-          )}
-        </div>
-
-        {/* Bottom nav */}
-        <div className="flex-none bg-gray-100 border-t">
-          <div className="flex justify-between items-center p-4">
-            <Button
-              onClick={handlePrev}
-              disabled={loading || index <= 0}
-              className="p-2"
-              variant="outline"
-              aria-label="Previous entry"
-            >
-              <ChevronLeftIcon className="w-6 h-6" />
-            </Button>
-
-            <Button
-              onClick={fetchNew}
-              disabled={loading}
-              className="p-2"
-              variant="outline"
-              aria-label="Random entry"
-            >
-              <RefreshIcon className="w-6 h-6" />
-            </Button>
-
-            <Button
-              onClick={handleNext}
-              disabled={loading}
-              className="p-2"
-              variant="outline"
-              aria-label="Next entry"
-            >
-              <ChevronRightIcon className="w-6 h-6" />
-            </Button>
+    <div className="p-4 w-full max-w-4xl mx-auto">
+      {/* Language selector: checkboxes and DnD chips */}
+      <div className="mb-4 flex flex-wrap items-center gap-2">
+        <span className="mr-2 font-semibold text-sm">Languages:</span>
+        {ALL_LANGUAGE_CODES.map(code => (
+          <label key={code} className="flex items-center mr-2">
+            <input
+              type="checkbox"
+              checked={selectedLangs.includes(code)}
+              onChange={() => toggleLang(code)}
+              className="mr-1"
+            />
+            <span>{LANGUAGE_NAMES[code]}</span>
+          </label>
+        ))}
+      </div>
+      {/* Drag to reorder */}
+      <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
+        <SortableContext items={selectedLangs} strategy={verticalListSortingStrategy}>
+          <div className="flex flex-row gap-4 mb-4 overflow-x-auto">
+            {selectedLangs.map(code => {
+              if (LANGUAGE_NAMES[code] === undefined) return null;
+              return <LangChip key={code} code={code} active />
+            })}
           </div>
-        </div>
+        </SortableContext>
+      </DndContext>
+
+      {/* Sentence columns */}
+      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-4">
+        {selectedLangs.filter(code => LANGUAGE_NAMES[code] !== undefined).map(code => (
+          <div
+            key={code}
+            className="flex flex-col items-center bg-gray-50 border rounded-lg p-4 shadow min-h-[140px]"
+          >
+            <div className="text-xs text-gray-500 mb-1">{LANGUAGE_NAMES[code] || code}</div>
+            <div className="text-xl text-center font-bold">
+              {textByLang[code] || <span className="opacity-50">—</span>}
+            </div>
+            <Button
+              onClick={() => {
+                // get text in code before `-`
+                const langPrefix = code.split("-")[0];
+                const tts = createVoiceTTS(langPrefix);
+                tts(textByLang[code]);
+              }}
+              className="mt-2"
+              variant="outline"
+            >Speak</Button>
+          </div>
+        ))}
+      </div>
+
+      {/* Controls */}
+      <div className="mt-6 flex justify-center gap-4">
+        <Button onClick={fetchNewEntry} disabled={loading}>Next</Button>
       </div>
     </div>
   );
