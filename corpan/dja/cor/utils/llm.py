@@ -96,6 +96,7 @@ def get_english_sentences(word: str, count: int = 50) -> List[Entry]:
             defaults={"level": item.level.upper().strip()},
         )
         if item.domains:
+            print(f"{item.level}\nDomains: {item.domains}\n{item.en_text.strip()}")
             entry.domains.set(Domain.objects.filter(code__in=item.domains))
 
         entries.append(entry)
