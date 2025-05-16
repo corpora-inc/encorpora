@@ -8,6 +8,8 @@ import {
     RefreshCw as RefreshIcon,
     ChevronRight as ChevronRightIcon,
 } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+
 
 // --- Language & Domain Names ---
 const LANGUAGE_NAMES: Record<string, string> = {
@@ -147,41 +149,50 @@ export function MainExperience() {
                         paddingBottom: `${NAV_HEIGHT}px`,
                     }}
                 >
-                    <div className="w-full max-w-4xl mx-auto flex flex-col items-center gap-y-3">
+                    <div className="w-full max-w-4xl mx-auto flex flex-col items-center gap-y-1">
                         {loading ? (
                             <div className="w-full text-center text-lg text-gray-400 py-20">Loading…</div>
                         ) : !curr ? (
                             <div className="w-full text-center text-lg text-gray-400 py-20">No sentence found.</div>
                         ) : (
-                            languages.map((code) => (
-                                <div
+                            languages.map((code, idx) => (
+                                <motion.div
                                     key={code}
+                                    initial={{ opacity: 0, y: 16, scale: 0.98 }}
+                                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                                    exit={{ opacity: 0, y: 8, scale: 0.98 }}
+                                    transition={{ duration: 0.28, delay: idx * 0.04, ease: "easeOut" }}
                                     className="w-full flex flex-col items-center mb-6"
                                 >
-                                    <div className="text-xs text-gray-400 mb-1">{LANGUAGE_NAMES[code] || code}</div>
                                     <div
-                                        className="text-center text-2xl md:text-3xl lg:text-4xl"
-                                        style={{
-                                            wordBreak: "break-word",
-                                            maxWidth: "80vw",
-                                            lineHeight: 1.15,
-                                        }}
-                                        dir={code === "ar" ? "rtl" : "ltr"}
+                                        key={code}
+                                        className="w-full flex flex-col items-center mb-5"
                                     >
-                                        {textByLang[code] || <span className="opacity-30">—</span>}
+                                        <div className="text-xs text-gray-400 mb-1">{LANGUAGE_NAMES[code] || code}</div>
+                                        <div
+                                            className="text-center text-2xl md:text-3xl lg:text-4xl"
+                                            style={{
+                                                wordBreak: "break-word",
+                                                maxWidth: "80vw",
+                                                lineHeight: 1.15,
+                                            }}
+                                            dir={code === "ar" ? "rtl" : "ltr"}
+                                        >
+                                            {textByLang[code] || <span className="opacity-30">—</span>}
+                                        </div>
+                                        <Button
+                                            onClick={() => {
+                                                const langPrefix = code.split("-")[0];
+                                                createVoiceTTS(langPrefix)(textByLang[code]);
+                                            }}
+                                            className="mt-2"
+                                            size="sm"
+                                            variant="outline"
+                                        >
+                                            Speak
+                                        </Button>
                                     </div>
-                                    <Button
-                                        onClick={() => {
-                                            const langPrefix = code.split("-")[0];
-                                            createVoiceTTS(langPrefix)(textByLang[code]);
-                                        }}
-                                        className="mt-2"
-                                        size="sm"
-                                        variant="outline"
-                                    >
-                                        Speak
-                                    </Button>
-                                </div>
+                                </motion.div>
                             ))
                         )}
                     </div>
