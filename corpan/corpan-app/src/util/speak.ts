@@ -178,7 +178,7 @@ export function createVoiceTTS(langPrefix: string) {
             const utter = new SpeechSynthesisUtterance(text);
             utter.voice = voice;
             utter.lang = voice.lang;
-            utter.rate = 0.55;
+            utter.rate = 0.7;
             console.log(`[TTS:${langPrefix}] speaking with ${voice.name}`);
             speechSynthesis.speak(utter);
         } else {
