@@ -1,4 +1,5 @@
 import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { LanguageSelectOrder } from "./LanguageSelectOrder";
 
 export function SettingsModal({
     open,
@@ -11,7 +12,7 @@ export function SettingsModal({
         <Dialog open={open} onOpenChange={onClose}>
             <DialogContent>
                 <h2 className="text-xl font-semibold mb-2">Settings</h2>
-                <p className="text-gray-500">Hello, settings will go here.</p>
+                <LanguageSelectOrder />
             </DialogContent>
         </Dialog>
     );

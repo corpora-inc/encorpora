@@ -10,13 +10,24 @@ import {
     ChevronRight as ChevronRightIcon,
 } from "lucide-react";
 import { motion } from "framer-motion";
+// import { LANGUAGE_NAMES } from "./LanguageSelectOrder";
 
-// --- Language & Domain Names ---
 const LANGUAGE_NAMES: Record<string, string> = {
-    en: "English", "ko-polite": "Korean (Polite)", es: "Spanish", fr: "French", de: "German",
-    "pt-BR": "Portuguese (BR)", ja: "Japanese", "zh-Hans": "Chinese (Simplified)",
-    ar: "Arabic", ru: "Russian", it: "Italian", hi: "Hindi",
+    en: "English",
+    "ko-polite": "Korean (Polite)",
+    es: "Spanish",
+    fr: "French",
+    de: "German",
+    "pt-BR": "Portuguese (BR)",
+    ja: "Japanese",
+    "zh-Hans": "Chinese (Simplified)",
+    ar: "Arabic",
+    ru: "Russian",
+    it: "Italian",
+    hi: "Hindi",
 };
+
+
 const DOMAIN_NAMES: Record<string, string> = {
     travel: "Travel", business: "Business", education: "Education", social: "Social",
     health: "Health", housing: "Housing", numbers: "Numbers", civic: "Civic",
