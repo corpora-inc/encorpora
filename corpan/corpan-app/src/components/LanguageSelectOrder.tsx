@@ -43,8 +43,9 @@ function LangChip({
             `}
             style={{ minWidth: 0 }}
             {...props}
+            {...dragHandleProps}
         >
-            <span {...dragHandleProps} className="mr-1 cursor-grab text-gray-400">
+            <span className="mr-1 text-gray-400">
                 <GripVertical size={16} />
             </span>
             <span className="flex-1 truncate">{LANGUAGE_NAMES[code] || code}</span>
