@@ -5,13 +5,16 @@ import { invoke } from "@tauri-apps/api/core";
 const LANGUAGE_NAMES: Record<string, string> = {
     // was working but then stopped?
     // "en": "Ava",
-    "en": "Daniel",
+    // "en": "Daniel",
+    "en": "Tessa",
+    // "en": "Karen",
     "es": "Mónica",
     "zh": "Meijia",
     "ar": "Majed",
     "ru": "Milena",
     // "it": "Rocko",
-    "fr": "Thomas",
+    // "fr": "Thomas",
+    "fr": "Amélie",
     "ja": "Kyoko",
     "it": "Alice",
     "de": "Anna",
@@ -124,16 +127,14 @@ export function createVoiceTTS(langPrefix: string) {
                 typeof v.lang === "string" && v.lang.startsWith(langPrefix)
             );
 
-        const premium = all.filter(
-            (v) => v.localService || /Neural|Enhanced|Premium/i.test(v.name)
-        );
+        // const premium = all.filter(
+        //     (v) => v.localService || /Neural|Enhanced|Premium/i.test(v.name)
+        // );
 
-        candidateVoices = premium.length > 0 ? premium : all;
+        // candidateVoices = premium.length > 0 ? premium : all;
 
-        console.log(
-            `[TTS:${langPrefix}] candidate voices:`,
-            candidateVoices.map((v) => `${v.name} (${v.lang})`)
-        );
+        candidateVoices = all;
+        console.log(`[TTS:${langPrefix}] candidate voices:`, candidateVoices);
     }
 
     // Only wire up the Web Speech listeners if it's supported
@@ -158,6 +159,7 @@ export function createVoiceTTS(langPrefix: string) {
             //     ];
 
             // if in LANGUAGE_NAMES, use that
+            // candidateVoices = candidateVoices.reverse();
             let voice = candidateVoices.find((v) =>
                 v.name === LANGUAGE_NAMES[langPrefix]
             );
@@ -176,7 +178,7 @@ export function createVoiceTTS(langPrefix: string) {
             const utter = new SpeechSynthesisUtterance(text);
             utter.voice = voice;
             utter.lang = voice.lang;
-            utter.rate = 0.5;
+            utter.rate = 0.55;
             console.log(`[TTS:${langPrefix}] speaking with ${voice.name}`);
             speechSynthesis.speak(utter);
         } else {
