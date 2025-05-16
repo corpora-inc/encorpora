@@ -39,23 +39,26 @@ function LangChip({
             className={`
                 flex items-center gap-1 px-3 py-1 rounded-lg border bg-white shadow-sm
                 ${isDragging ? "opacity-60 border-blue-400 shadow-lg" : ""}
-                cursor-grab select-none mb-1
+                select-none mb-1
             `}
             style={{ minWidth: 0 }}
             {...props}
-            {...dragHandleProps}
+
         >
-            <span className="mr-1 text-gray-400">
+            <span className="mr-1 text-gray-400 cursor-grab " {...dragHandleProps}>
                 <GripVertical size={16} />
             </span>
-            <span className="flex-1 truncate">{LANGUAGE_NAMES[code] || code}</span>
+            <span className="flex-1 truncate cursor-grab" {...dragHandleProps}>{LANGUAGE_NAMES[code] || code}</span>
             {onRemove && (
                 <button
                     type="button"
-                    className="ml-2 p-0.5 text-gray-300 hover:text-red-400"
+                    className="ml-2 p-0.5 text-gray-300 hover:text-red-400 z-1000"
                     aria-label="Remove language"
                     tabIndex={0}
-                    onClick={onRemove}
+                    onClick={() => {
+                        // console.log("Removing language:", code);
+                        onRemove()
+                    }}
                 >
                     <X size={15} />
                 </button>
@@ -87,6 +90,9 @@ export function LanguageSelectOrder() {
     };
 
     const handleRemove = (code: string) => {
+        // console.log("Removing language:", code);
+        // console.log("Current languages:", languages);
+        // console.log(languages.length)
         if (languages.length <= 1) return; // Don't allow removing last
         setLanguages(languages.filter(c => c !== code));
     };
@@ -112,7 +118,7 @@ export function LanguageSelectOrder() {
                             <SortableLangChip
                                 key={code}
                                 code={code}
-                                onRemove={languages.length > 1 ? () => handleRemove(code) : undefined}
+                                onRemove={() => handleRemove(code)}
                             />
                         ))}
                     </div>

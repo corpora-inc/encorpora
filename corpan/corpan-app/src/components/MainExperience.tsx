@@ -105,13 +105,13 @@ export function MainExperience() {
             )}
             {/* Scrollable Translations */}
             <div
-                className="w-full flex-1 overflow-y-auto"
+                className="flex-1 w-full flex flex-col items-center justify-center min-h-0 overflow-y-auto px-2"
                 style={{
-                    paddingTop: "7vh",
+                    paddingTop: "10vh",
                     paddingBottom: `${NAV_HEIGHT}px`,
                 }}
             >
-                <div className="w-full max-w-4xl mx-auto flex flex-col items-center gap-y-1">
+                <div className="w-full max-w-4xl flex flex-col items-center gap-y-1">
                     {loading ? (
                         <div className="w-full text-center text-lg text-gray-400 py-20">Loading…</div>
                     ) : !curr ? (
