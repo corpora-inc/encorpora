@@ -7,7 +7,6 @@ mod db;
 
 use rusqlite::params_from_iter;
 use serde::Serialize;
-use std::collections::HashMap;
 use tauri::{command, AppHandle};
 
 /// Return type for each translation
