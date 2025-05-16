@@ -102,7 +102,8 @@ export default function App() {
             <p>Loading…</p>
           ) : curr ? (
             <>
-              <p className="text-6xl font-extrabold text-center mt-6 p-3">
+              {/* <p className="text-6xl font-extrabold text-center mt-6 p-3"> */}
+              <p className="text-6xl md:text-7xl lg:text-8xl xl:text-[6rem] font-extrabold text-center mt-6 p-3">
                 {curr.text_korean}
               </p>
               <Button
@@ -123,7 +124,8 @@ export default function App() {
         <div className="flex-1 flex flex-col items-center justify-center px-12">
           {curr && !loading && (
             <>
-              <p className="text-2xl text-gray-700 text-center">
+              {/* <p className="text-2xl text-gray-700 text-center"> */}
+              <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-gray-700 text-center">
                 {curr.text_english}
               </p>
               <Button
