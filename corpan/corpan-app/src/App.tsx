@@ -14,7 +14,7 @@ export default function App() {
       <MainExperience />
 
       {/* FAB: settings */}
-      <div className="fixed bottom-6 right-6 z-50">
+      <div className="fixed top-5 right-5 z-50">
         <Button
           variant="default"
           size="icon"
