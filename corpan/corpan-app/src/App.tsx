@@ -9,25 +9,24 @@ export default function App() {
   const [showSettings, setShowSettings] = useState(false);
 
   return (
-    <div className="min-h-screen w-full flex flex-col bg-gray-50 relative">
-      {/* Top nav / header with settings gear */}
-      <header className="w-full flex items-center justify-end px-4 py-2">
+    <div className="min-h-screen w-full bg-gray-50 relative">
+      {/* Main sentence experience */}
+      <MainExperience />
+
+      {/* FAB: settings */}
+      <div className="fixed bottom-6 right-6 z-50">
         <Button
-          variant="ghost"
+          variant="default"
           size="icon"
+          className="rounded-full shadow-lg bg-white border border-gray-200 hover:bg-gray-100 transition"
           aria-label="Settings"
           onClick={() => setShowSettings(true)}
         >
-          <SettingsIcon className="w-6 h-6" />
+          <SettingsIcon className="w-6 h-6 text-gray-600" />
         </Button>
-      </header>
+      </div>
 
-      {/* Main sentence experience (scrollable, below header, above nav) */}
-      <main className="flex-1 flex flex-col items-center justify-center px-2 py-4 overflow-y-auto w-full">
-        <MainExperience />
-      </main>
-
-      {/* Settings modal (hidden by default) */}
+      {/* Settings modal */}
       <SettingsModal open={showSettings} onClose={() => setShowSettings(false)} />
     </div>
   );
