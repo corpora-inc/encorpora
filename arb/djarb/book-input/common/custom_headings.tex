@@ -1,72 +1,43 @@
-% Custom LaTeX Preamble: Organized and Commented
-% ---------------------------------------------
-% Document Layout and Geometry
-% ---------------------------------------------
-% Set paper size and margins for 6" x 9" layout suitable for elementary textbooks
-\usepackage[paperwidth=6in,paperheight=9in,
-            margin=0.75in,heightrounded]{geometry}
+\usepackage[
+  paperwidth=6in,
+  paperheight=9in,
+  left=0.75in,
+  right=0.75in,
+  top=0.6in,
+  bottom=1.0in,   % You can adjust this as needed
+  heightrounded
+]{geometry}
 
-% ==== Table of Contents formatting ====
-% \usepackage[titles]{tocloft}
+\raggedbottom
 
-% % Reduce the size of “Contents”
-% \renewcommand{\cfttoctitlefont}{\large\bfseries}       % use \large instead of default \Huge
-% \renewcommand{\cftaftertoctitle}{\vskip 0.5em}        % small gap after title
+% Switching to memoir
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1em}
+% \chapterstyle{section}
+% \chapterstyle{default}
+% \chapterstyle{plain}
+\renewcommand{\chapnamefont}{}
+\renewcommand{\printchaptername}{}
+\renewcommand{\chapnumfont}{}
+\renewcommand{\printchapternum}{}
+\setlength{\beforechapskip}{0em}
+\setlength{\afterchapskip}{2em}
+\setsecnumdepth{none}
 
-% % Fine-tune spacing around the title
-% \setlength{\cftbeforetoctitleskip}{0pt}               % no extra space above “Contents”
-% \setlength{\cftaftertoctitleskip}{0pt}              % minimal space before the first entry
-
-% % Optionally tighten the ToC itself
-% \setlength{\cftparskip}{0pt}                          % no extra space between items
-% \setlength{\cftbeforesecskip}{0pt}                    % no extra space before section entries
-% ==== Shrink and tighten the ToC title ====
-
-% % 1) Change the “Contents” title to a more modest size
-% \makeatletter
-% \renewcommand\contentsname{\large\bfseries Contents}
-% % 2) Reduce the vertical gap above and below that title
-% \renewcommand{\tocheadstart}{\vspace*{-1.5em}}   % Pulls title up
-% \renewcommand{\tocheadend}{\vspace*{-0.5em}}     % Closes gap before entries
-% \makeatother
-
-% % 3) Ensure space before first ToC entry is minimal
-% \setlength{\parskip}{0pt}
-% \setlength{\parindent}{0pt}
 
 % ==== Force format for \section*{Contents} ====
 \usepackage{titlesec}
-
-% % Override \section* style (affects Contents)
-% \titleformat{\section}[block]
-%   {\normalfont\Large\bfseries}  % smaller than default \Huge
-%   {}{0pt}{}                     % no number, no separation
-% \titlespacing*{\section}
-%   {0pt}{0pt}{0.5em}             % {left}{before}{after}
-
-% % Now when \tableofcontents calls \section*{Contents}, it will be Compact.
-
-% ==== Remove the “Contents” title entirely ====
-% \makeatletter
-% \renewcommand\tableofcontents{%
-%   % no \chapter* call here, just print the TOC entries
-%   \begingroup
-%     \setlength{\parskip}{0pt}%
-%     \setlength{\parindent}{0pt}%
-%     \@starttoc{toc}%
-%   \endgroup
-% }
-% \makeatother
 
 % ==== Redefine \tableofcontents with a small “Contents” header ====
 \makeatletter
 \renewcommand\tableofcontents{%
   % \cleardoublepage                          % start on a fresh page (book class)
   \begingroup
-    \setlength{\parskip}{0pt}%              % no extra space between entries
+    \setlength{\parskip}{1pt}%              % no extra space between entries
     \setlength{\parindent}{0pt}%            % no indentation
-    {\Large \bfseries Contents\par}
-    \vspace{1em}
+    \vspace{5em}                        % space before the title
+    {\LARGE \bfseries Contents\par}
+    \vspace{2em}
     \@starttoc{toc}%                        % now dump the actual ToC
   \endgroup
 }
@@ -74,15 +45,6 @@
 
 
 
-
-% ---------------------------------------------
-% Section and Heading Formatting (Levels 4 & 5)
-% ---------------------------------------------
-% Provide custom
-%   #### \paragraph
-%   ##### \subparagraph
-% headings using titlesec
-\usepackage{titlesec}
 
 % Level 4: \paragraph
 \titleformat{\paragraph}
@@ -100,7 +62,7 @@
 % Line Spacing and Readability
 % ---------------------------------------------
 % Increase line spacing for young learners (uncomment to activate)
-\usepackage{setspace}
+% \usepackage{setspace}
 % \setstretch{1.2}
 
 % ---------------------------------------------
@@ -142,13 +104,36 @@
 % ---------------------------------------------
 \usepackage{mdframed}
 \usepackage{xcolor}
+% \renewenvironment{quote}
+%   {\begin{mdframed}[
+%       backgroundcolor=gray!10,
+%       linecolor=gray!40,
+%       leftline=true,
+%       rightline=true,
+%       topline=false,
+%       bottomline=false,
+%       innerleftmargin=1.5em,
+%       innerrightmargin=1.5em,
+%       innertopmargin=1em,
+%       innerbottommargin=1em,
+%       linewidth=0.5pt,
+%       skipabove=1em,
+%       skipbelow=1em
+%     ]}
+%   {\end{mdframed}}
+
 \renewenvironment{quote}
   {\begin{mdframed}[backgroundcolor=gray!10,linecolor=gray!50,
-                     leftline=true,topline=false,bottomline=false,
-                     rightline=false,innerleftmargin=10pt,innerrightmargin=10pt,
-                     innertopmargin=10pt,innerbottommargin=10pt,
-                     skipabove=10pt,skipbelow=10pt]}
+                    leftline=true,rightline=false,topline=false,bottomline=false,
+                    innerleftmargin=1em,innerrightmargin=1em,innertopmargin=1em,innerbottommargin=1em]}
   {\end{mdframed}}
+
+
+
+\usepackage{caption}
+\captionsetup[figure]{labelformat=empty}
+\captionsetup[table]{labelformat=empty}
+
 
 % ---------------------------------------------
 % Plotting and Graphics
