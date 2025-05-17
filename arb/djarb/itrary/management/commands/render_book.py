@@ -49,6 +49,13 @@ class Command(BaseCommand):
             help="Skip image generation and use existing images if available",
         )
 
+        parser.add_argument(
+            "--no-cover",
+            action="store_true",
+            default=False,
+            help="Skip cover generation",
+        )
+
     def handle(self, *args: Any, **options: Any) -> None:
         config_path = options["config"]
         config = load_book_config(config_path)
@@ -58,6 +65,7 @@ class Command(BaseCommand):
         images_dir = out_dir / "images"
         images_dir.mkdir(exist_ok=True)
         template_name = options["template"]
+        show_cover = not options["no_cover"]
 
         # Input paths
         input_dir = Path(config_path).parent
@@ -205,6 +213,7 @@ class Command(BaseCommand):
             "author": config.author or "The Encorpora Team",
             "publisher": config.publisher or "Corpora Inc",
             "cover_path": cover_image_name,
+            "show_cover": show_cover,
         }
         (out_dir / "custom_cover.tex").write_text(
             render_to_string("custom_cover.tex", cover_ctx), encoding="utf-8"
@@ -240,11 +249,15 @@ class Command(BaseCommand):
                 "args": [
                     "--pdf-engine=xelatex",
                     "--toc",
+                    "-V",
+                    "toc-title=",
                     "--include-in-header=custom_headings.tex",
                     "--include-before-body=custom_cover.tex",
                     "--lua-filter=hrule.lua",
                     "-V",
-                    "documentclass=book",
+                    "documentclass=memoir",
+                    # "documentclass=book",
+                    # "-V classoption=openany",
                     # TODO: everything via header file?
                     # "-V classoption=oneside",
                     # "-V papersize=6in,9in",

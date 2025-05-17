@@ -1,3 +1,4 @@
+{% if show_cover %}
 % turn off page number
 \thispagestyle{empty}
 % temporarily set all margins to zero
@@ -9,15 +10,30 @@
 \restoregeometry
 % advance to the next page
 \newpage
+{% endif %}
 
-\begin{titlepage}
-    \centering
-    \vspace*{1in}
-    {\Huge\bfseries {{title}} \par}
-    {\Large {{subtitle}} \par}
-    \vspace{1in}
-    {\Large {{author}} \par}
-    {\Large {{publisher}} \par}
-    \vfill
-    {\large \today\par}
-\end{titlepage}
+% \begin{titlepage}
+%     \centering
+%     \vspace*{1in}
+%     {\Huge\bfseries {{title}} \par}
+%     {\Large {{subtitle}} \par}
+%     \vspace{1in}
+%     {\Large {{author}} \par}
+%     {\Large {{publisher}} \par}
+%     \vfill
+%     {\large \today\par}
+% \end{titlepage}
+
+\clearpage
+\vspace*{1.5in}
+\begin{center}
+  {\Huge\bfseries {{title}}} \\[2em]
+  {\Large\itshape {{subtitle}}} \\[4em]
+  \vspace{1.5in}
+  {\large {{author}}} \\[1em]
+  {\large {{publisher}}} \\[1em]
+  \vfill
+  {\large \today\par}
+\end{center}
+\clearpage
+

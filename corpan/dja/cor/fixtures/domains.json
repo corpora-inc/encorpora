@@ -1,0 +1,106 @@
+[
+    {
+        "model": "cor.domain",
+        "fields": {
+            "code": "everyday",
+            "name": "Everyday Life",
+            "description": "Daily routines, home, habits, family"
+        }
+    },
+    {
+        "model": "cor.domain",
+        "fields": {
+            "code": "travel",
+            "name": "Travel",
+            "description": "Directions, transport, cities, airports"
+        }
+    },
+    {
+        "model": "cor.domain",
+        "fields": {
+            "code": "business",
+            "name": "Business",
+            "description": "Office, jobs, meetings, shopping"
+        }
+    },
+    {
+        "model": "cor.domain",
+        "fields": {
+            "code": "health",
+            "name": "Health",
+            "description": "Body, illness, hospitals, doctors"
+        }
+    },
+    {
+        "model": "cor.domain",
+        "fields": {
+            "code": "education",
+            "name": "Education",
+            "description": "School, learning, books, teachers"
+        }
+    },
+    {
+        "model": "cor.domain",
+        "fields": {
+            "code": "social",
+            "name": "Social",
+            "description": "Friends, emotions, politeness, greetings"
+        }
+    },
+    {
+        "model": "cor.domain",
+        "fields": {
+            "code": "housing",
+            "name": "Housing",
+            "description": "Rooms, buildings, addresses, furniture"
+        }
+    },
+    {
+        "model": "cor.domain",
+        "fields": {
+            "code": "environment",
+            "name": "Environment",
+            "description": "Weather, seasons, nature, animals"
+        }
+    },
+    {
+        "model": "cor.domain",
+        "fields": {
+            "code": "emergency",
+            "name": "Emergency",
+            "description": "Safety, danger, warnings, alerts"
+        }
+    },
+    {
+        "model": "cor.domain",
+        "fields": {
+            "code": "civic",
+            "name": "Civic & Legal",
+            "description": "Forms, services, laws, rights"
+        }
+    },
+    {
+        "model": "cor.domain",
+        "fields": {
+            "code": "numbers",
+            "name": "Numbers & Time",
+            "description": "Prices, dates, time, counting"
+        }
+    },
+    {
+        "model": "cor.domain",
+        "fields": {
+            "code": "technology",
+            "name": "Technology",
+            "description": "Phones, computers, digital life"
+        }
+    },
+    {
+        "model": "cor.domain",
+        "fields": {
+            "code": "culture",
+            "name": "Culture & Arts",
+            "description": "Traditions, music, media, holidays"
+        }
+    }
+]

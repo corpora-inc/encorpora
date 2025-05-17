@@ -1,0 +1,86 @@
+[
+    {
+        "model": "cor.language",
+        "fields": {
+            "code": "en",
+            "name": "English"
+        }
+    },
+    {
+        "model": "cor.language",
+        "fields": {
+            "code": "es",
+            "name": "Spanish"
+        }
+    },
+    {
+        "model": "cor.language",
+        "fields": {
+            "code": "fr",
+            "name": "French"
+        }
+    },
+    {
+        "model": "cor.language",
+        "fields": {
+            "code": "de",
+            "name": "German"
+        }
+    },
+    {
+        "model": "cor.language",
+        "fields": {
+            "code": "pt-BR",
+            "name": "Portuguese (Brazilian)"
+        }
+    },
+    {
+        "model": "cor.language",
+        "fields": {
+            "code": "it",
+            "name": "Italian"
+        }
+    },
+    {
+        "model": "cor.language",
+        "fields": {
+            "code": "ru",
+            "name": "Russian"
+        }
+    },
+    {
+        "model": "cor.language",
+        "fields": {
+            "code": "zh-Hans",
+            "name": "Chinese (Simplified)"
+        }
+    },
+    {
+        "model": "cor.language",
+        "fields": {
+            "code": "ja",
+            "name": "Japanese"
+        }
+    },
+    {
+        "model": "cor.language",
+        "fields": {
+            "code": "ko-polite",
+            "name": "Korean (Polite)"
+        }
+    },
+    {
+        "model": "cor.language",
+        "fields": {
+            "code": "ar",
+            "name": "Arabic (Standard)"
+        }
+    },
+    {
+        "model": "cor.language",
+        "fields": {
+            "code": "hi",
+            "name": "Hindi"
+        }
+    }
+]
