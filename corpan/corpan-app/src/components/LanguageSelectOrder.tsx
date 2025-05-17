@@ -109,8 +109,20 @@ export function LanguageSelectOrder() {
             <div className="mb-2 font-semibold text-sm">Selected Languages</div>
             <DndContext
                 sensors={sensors}
-                collisionDetection={closestCenter} // Use the proper collision detection
-                onDragEnd={handleDragEnd}
+                collisionDetection={closestCenter}
+                onDragStart={() => {
+                    const el = document.querySelector('#settings-modal-content') as HTMLElement;
+                    if (el) el.style.overflow = 'hidden';
+                }}
+                onDragEnd={event => {
+                    handleDragEnd(event);
+                    const el = document.querySelector('#settings-modal-content') as HTMLElement;
+                    if (el) el.style.overflow = '';
+                }}
+                onDragCancel={() => {
+                    const el = document.querySelector('#settings-modal-content') as HTMLElement;
+                    if (el) el.style.overflow = '';
+                }}
             >
                 <SortableContext items={languages} strategy={verticalListSortingStrategy}>
                     <div className="flex flex-col gap-1">
@@ -124,31 +136,35 @@ export function LanguageSelectOrder() {
                     </div>
                 </SortableContext>
             </DndContext>
-            {available.length > 0 && (
-                <div className="mt-4">
-                    <div className="mb-2 text-xs text-gray-500">Add more languages</div>
-                    <div className="flex flex-wrap gap-2">
-                        {available.map(code => (
-                            <Button
-                                key={code}
-                                variant="outline"
-                                size="sm"
-                                className="rounded-full text-xs p-3"
-                                onClick={() => handleAdd(code)}
-                            >
-                                <Plus size={15} />
-                                <span className="mr-1">
-                                    {LANGUAGE_NAMES[code] || code}
-                                </span>
-                            </Button>
-                        ))}
+            {
+                available.length > 0 && (
+                    <div className="mt-4">
+                        <div className="mb-2 text-xs text-gray-500">Add more languages</div>
+                        <div className="flex flex-wrap gap-2">
+                            {available.map(code => (
+                                <Button
+                                    key={code}
+                                    variant="outline"
+                                    size="sm"
+                                    className="rounded-full text-xs p-3"
+                                    onClick={() => handleAdd(code)}
+                                >
+                                    <Plus size={15} />
+                                    <span className="mr-1">
+                                        {LANGUAGE_NAMES[code] || code}
+                                    </span>
+                                </Button>
+                            ))}
+                        </div>
                     </div>
-                </div>
-            )}
-            {languages.length === 1 && (
-                <div className="mt-3 text-xs text-red-400">At least one language required.</div>
-            )}
-        </div>
+                )
+            }
+            {
+                languages.length === 1 && (
+                    <div className="mt-3 text-xs text-red-400">At least one language required.</div>
+                )
+            }
+        </div >
     );
 }
 

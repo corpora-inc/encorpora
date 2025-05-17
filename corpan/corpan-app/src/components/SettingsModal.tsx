@@ -20,6 +20,7 @@ export function SettingsModal({ open, onClose }: { open: boolean; onClose: () =>
                     paddingBottom: "3rem",
                     paddingTop: "3rem",
                 }}
+                id="settings-modal-content"
             >
                 <DialogTitle>Settings</DialogTitle>
                 <DialogDescription>Adjust to your preferences</DialogDescription>
