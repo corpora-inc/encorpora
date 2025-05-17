@@ -19,6 +19,8 @@ type SettingsState = {
     levels: string[];
     setLevels: (levels: string[]) => void;
     reset: () => void;
+    rate: number;
+    setRate: (rate: number) => void;
 };
 
 // Persist to localStorage, so settings stick between runs.
@@ -37,6 +39,8 @@ export const useSettingsStore = create<SettingsState>()(
                     domains: [...ALL_DOMAINS],
                     levels: ["A1"],
                 }),
+            rate: 0.7,
+            setRate: (rate) => set({ rate }),
         }),
         { name: "corpan-settings" }
     )

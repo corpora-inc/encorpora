@@ -30,44 +30,72 @@ struct EntryOut {
 #[command]
 fn get_random_entry_with_translations(
     app: AppHandle,
-    level: Option<String>,               // e.g. "A1"
-    domain: Option<String>,              // e.g. "health"
-    language_codes: Option<Vec<String>>, // Only return these translations
+    levels: Option<Vec<String>>,  // plural now
+    domains: Option<Vec<String>>, // plural now
+    language_codes: Option<Vec<String>>,
 ) -> Result<EntryOut, String> {
     let conn = db::open_connection(&app)?;
 
-    // -- Build WHERE clauses
     let mut where_clauses = vec![];
     let mut params: Vec<Box<dyn rusqlite::ToSql>> = vec![];
 
-    if let Some(lv) = &level {
-        where_clauses.push("e.level = ?");
-        params.push(Box::new(lv));
+    // Handle levels
+    if let Some(ref lv_vec) = levels {
+        if !lv_vec.is_empty() {
+            let q = format!("e.level IN ({})", vec!["?"; lv_vec.len()].join(","));
+            where_clauses.push(q);
+            for lv in lv_vec {
+                params.push(Box::new(lv.clone()));
+            }
+        }
     }
 
-    if let Some(dom) = &domain {
-        // Join with entry_domains and domains
-        where_clauses.push("d.code = ?");
-        params.push(Box::new(dom));
+    // Handle domains (join only if domains specified)
+    let (domain_join, domain_where) = if let Some(ref dom_vec) = domains {
+        if !dom_vec.is_empty() {
+            // Only entries that have at least one domain in dom_vec
+            let q = format!("d.code IN ({})", vec!["?"; dom_vec.len()].join(","));
+            // This join is required to filter for domain codes
+            (
+                "INNER JOIN cor_entry_domains ced ON ced.entry_id = e.id
+                 INNER JOIN cor_domain d ON d.id = ced.domain_id",
+                Some(q),
+            )
+        } else {
+            ("", None)
+        }
+    } else {
+        ("", None)
+    };
+
+    // Add domain filter (if present) to where_clauses
+    if let Some(q) = domain_where {
+        where_clauses.push(q);
+        if let Some(dom_vec) = &domains {
+            for dom in dom_vec {
+                params.push(Box::new(dom.clone()));
+            }
+        }
     }
 
-    // -- Build query with optional domain join
+    let where_str = if where_clauses.is_empty() {
+        "".to_string()
+    } else {
+        format!("WHERE {}", where_clauses.join(" AND "))
+    };
+
     let sql = format!(
-        "SELECT e.id, e.en_text, e.level, group_concat(d.code) AS domains
+        "SELECT e.id, e.en_text, e.level, group_concat(DISTINCT d2.code) AS domains
          FROM cor_entry e
-         LEFT JOIN cor_entry_domains ced ON ced.entry_id = e.id
-         LEFT JOIN cor_domain d ON d.id = ced.domain_id
+         LEFT JOIN cor_entry_domains ced2 ON ced2.entry_id = e.id
+         LEFT JOIN cor_domain d2 ON d2.id = ced2.domain_id
          {domain_join}
          {where}
          GROUP BY e.id
          ORDER BY RANDOM()
          LIMIT 1",
-         domain_join = if domain.is_some() { "LEFT JOIN cor_entry_domains ced2 ON ced2.entry_id = e.id LEFT JOIN domain d2 ON d2.id = ced2.domain_id" } else { "" },
-         where = if !where_clauses.is_empty() {
-             format!("WHERE {}", where_clauses.join(" AND "))
-         } else {
-             "".to_string()
-         }
+         domain_join = domain_join,
+         where = where_str
     );
 
     let mut stmt = conn.prepare(&sql).map_err(|e| e.to_string())?;
@@ -86,7 +114,7 @@ fn get_random_entry_with_translations(
     let domain_str: Option<String> = row.get(3).ok();
 
     // Domains as vec
-    let domains = domain_str
+    let domains_vec = domain_str
         .unwrap_or_default()
         .split(',')
         .filter(|s| !s.is_empty())
@@ -111,7 +139,6 @@ fn get_random_entry_with_translations(
         })
         .map_err(|e| e.to_string())?;
 
-    // Optionally filter by languages
     let allowed_langs: Option<std::collections::HashSet<String>> =
         language_codes.map(|v| v.into_iter().collect());
 
@@ -133,7 +160,7 @@ fn get_random_entry_with_translations(
         entry_id,
         en_text,
         level,
-        domains,
+        domains: domains_vec,
         translations,
     })
 }

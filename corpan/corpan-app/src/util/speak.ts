@@ -1,5 +1,6 @@
 import { invoke } from "@tauri-apps/api/core";
 
+export const BROWSER_TTS = "speechSynthesis" in window
 
 // static map of language codes to names
 const LANGUAGE_NAMES: Record<string, string> = {
@@ -143,7 +144,7 @@ export function createVoiceTTS(langPrefix: string) {
         refreshVoices();
     }
 
-    return async function speak(text: string) {
+    return async function speak(text: string, rate: number = 0.7) {
         console.log(`[TTS:${langPrefix}] speaking: ${text}`);
 
         // If Web Speech is available and we have voices, use it
@@ -178,7 +179,7 @@ export function createVoiceTTS(langPrefix: string) {
             const utter = new SpeechSynthesisUtterance(text);
             utter.voice = voice;
             utter.lang = voice.lang;
-            utter.rate = 0.7;
+            utter.rate = rate;
             console.log(`[TTS:${langPrefix}] speaking with ${voice.name}`);
             speechSynthesis.speak(utter);
         } else {

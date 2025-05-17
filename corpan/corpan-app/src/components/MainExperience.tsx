@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useRef } from "react";
 import { invoke } from "@tauri-apps/api/core";
 import { Button } from "@/components/ui/button";
 import { useSettingsStore } from "@/store/settings";
@@ -8,6 +8,12 @@ import {
     ChevronLeft as ChevronLeftIcon,
     RefreshCw as RefreshIcon,
     ChevronRight as ChevronRightIcon,
+    // SpeakerIcon,
+    Speaker,
+    // AudioWaveformIcon,
+    AudioLines,
+    Ear,
+    // FileAudio,
 } from "lucide-react";
 import { motion } from "framer-motion";
 // import { LANGUAGE_NAMES } from "./LanguageSelectOrder";
@@ -35,28 +41,26 @@ const DOMAIN_NAMES: Record<string, string> = {
     culture: "Culture", everyday: "Everyday",
 };
 
-const NAV_HEIGHT = 108; // px - enough for nav+level+domains+margin
+// const NAV_HEIGHT = 108; // px - enough for nav+level+domains+margin
 
 export function MainExperience() {
     const languages = useSettingsStore((s) => s.languages);
     const domains = useSettingsStore((s) => s.domains);
     const levels = useSettingsStore((s) => s.levels);
+    const rate = useSettingsStore((s) => s.rate);
 
     const history = useHistoryStore((s) => s.history);
     const index = useHistoryStore((s) => s.index);
     const pushEntry = useHistoryStore((s) => s.pushEntry);
     const setIndex = useHistoryStore((s) => s.setIndex);
 
-    const [loading, setLoading] = useState(false);
-
     // Fetch a random entry with all languages, push to history
     const fetchRandomEntry = async () => {
-        setLoading(true);
+        setIndex(history.length - 1); // set index to the end of history
         try {
             const entry = await invoke<EntryOut>("get_random_entry_with_translations", { domains, levels });
             pushEntry(entry); // updates both history and index
         } finally {
-            setLoading(false);
         }
     };
 
@@ -65,6 +69,48 @@ export function MainExperience() {
         if (history.length === 0) fetchRandomEntry();
         // eslint-disable-next-line
     }, []);
+
+    const scrollRef = useRef<HTMLDivElement>(null);
+
+    useLayoutEffect(() => {
+        requestAnimationFrame(() => {
+            if (scrollRef.current) {
+                scrollRef.current.scrollTo({ top: -10000, behavior: "smooth" });
+            }
+        });
+    }, [index]);
+
+
+    // useLayoutEffect(() => {
+    //     console.log("Index changed:", index, scrollRef.current);
+    //     if (scrollRef.current) {
+    //         console.log("Scrolling", scrollRef.current.scrollHeight);
+    //         // scrollRef.current.scrollTo({ top: -5000, behavior: "smooth" });
+    //         console.log("from", scrollRef.current.scrollTop);
+    //         scrollRef.current.scrollTo({ top: 0, behavior: "smooth" });
+    //         console.log("to", scrollRef.current.scrollTop);
+    //         // scrollRef.current.
+    //         // scrollRef.current.scrollHeight = 0;
+    //         scrollRef.current.scrollTop = 0;
+    //     }
+
+    // }, [index]);
+
+    // const firstSentenceRef = useRef<HTMLDivElement | null>(null);
+
+
+    // useLayoutEffect(() => {
+    //     // Always try to scroll the first sentence into view
+    //     if (firstSentenceRef.current) {
+    //         console.log("Scrolling to first sentence:", firstSentenceRef.current);
+    //         firstSentenceRef.current.scrollIntoView({
+    //             behavior: "smooth", // Or "auto" if you want instant
+    //             block: "end",
+    //             // inline: "start", // Or "nearest" if you want to avoid scrolling
+    //         });
+    //     }
+    // }, [index]);
+
 
     const curr = history[index] || null;
     const textByLang: Record<string, string> = {};
@@ -104,29 +150,37 @@ export function MainExperience() {
                 </div>
             )}
             {/* Scrollable Translations */}
-            <div
-                className="flex-1 w-full flex flex-col items-center justify-center min-h-0 overflow-y-auto px-2"
-                style={{
-                    paddingTop: "10vh",
-                    paddingBottom: `${NAV_HEIGHT}px`,
-                }}
-            >
-                <div className="w-full max-w-4xl flex flex-col items-center gap-y-1">
-                    {loading ? (
-                        <div className="w-full text-center text-lg text-gray-400 py-20">Loading…</div>
-                    ) : !curr ? (
-                        <div className="w-full text-center text-lg text-gray-400 py-20">No sentence found.</div>
-                    ) : (
-                        languages.map((code, idx) => (
+            <div className="flex-1 w-full flex flex-col min-h-0">
+                <div
+                    ref={scrollRef}
+                    className="flex-1 flex flex-col items-center justify-center overflow-y-auto min-h-0 px-2"
+                    style={{
+                        // Remove max-h-full! It’s not needed.
+                        paddingTop: "0vh",
+                        paddingBottom: 0,
+                    }}
+                >
+                    <div
+                        key={index}
+
+                        className="w-full max-w-4xl flex flex-col items-center gap-y-7 pb-36 pt-15"
+                    >
+
+                        {languages.map((code, idx) => (
                             <motion.div
-                                key={code}
+                                // key={code}
+                                key={idx}
                                 initial={{ opacity: 0, y: 16, scale: 0.98 }}
                                 animate={{ opacity: 1, y: 0, scale: 1 }}
                                 exit={{ opacity: 0, y: 8, scale: 0.98 }}
                                 transition={{ duration: 0.28, delay: idx * 0.04, ease: "easeOut" }}
-                                className="w-full flex flex-col items-center mb-5"
+                                className="w-full flex flex-col items-center"
+                            // ref={idx === 0 ? firstSentenceRef : null}
                             >
-                                <div className="text-xs text-gray-400 mb-1">{LANGUAGE_NAMES[code] || code}</div>
+                                <div
+                                    key={idx}
+                                    // ref={idx === 0 ? firstSentenceRef : null}
+                                    className="text-xs text-gray-400 mb-1" > {LANGUAGE_NAMES[code] || code}</div>
                                 <div
                                     className="text-center text-xl md:text-2xl lg:text-3xl"
                                     style={{
@@ -145,31 +199,39 @@ export function MainExperience() {
                                     <Button
                                         onClick={() => {
                                             const langPrefix = code.split("-")[0];
-                                            createVoiceTTS(langPrefix)(textByLang[code]);
+                                            createVoiceTTS(langPrefix)(
+                                                textByLang[code],
+                                                rate,
+                                            );
                                         }}
                                         className="mt-2"
                                         size="sm"
                                         variant="outline"
                                     >
-                                        Speak
+                                        <Speaker className="w-4 h-4" />
+                                        {/* <AudioWaveformIcon className="w-4 h-4" /> */}
+                                        <AudioLines className="w-4 h-4" />
+                                        {/* <FileAudio className="w-4 h-4" /> */}
+                                        <Ear className="w-4 h-4" />
+
                                     </Button>
                                 </motion.div>
                             </motion.div>
-                        ))
-                    )}
+                        ))}
+                    </div>
                 </div>
-            </div>
+            </div >
 
             {/* Floating Nav + Level/Domains */}
-            <div
+            < div
                 className="fixed bottom-0 left-0 w-full flex justify-center pb-6 z-50 pointer-events-none"
-                style={{ background: "transparent" }}
+                style={{ background: "transparent" }
+                }
             >
                 <div className="flex flex-col gap-1 pointer-events-auto rounded-2xl shadow-2xl bg-white/95 px-8 py-3 border border-gray-200 items-center min-w-[270px]">
                     <div className="flex justify-center items-center gap-5">
                         <Button
                             onClick={handlePrev}
-                            disabled={loading || index <= 0}
                             variant="ghost"
                             size="icon"
                             aria-label="Previous sentence"
@@ -178,7 +240,6 @@ export function MainExperience() {
                         </Button>
                         <Button
                             onClick={fetchRandomEntry}
-                            disabled={loading}
                             variant="outline"
                             size="icon"
                             aria-label="Random sentence"
@@ -187,7 +248,6 @@ export function MainExperience() {
                         </Button>
                         <Button
                             onClick={handleNext}
-                            disabled={loading}
                             variant="ghost"
                             size="icon"
                             aria-label="Next sentence"
@@ -199,7 +259,7 @@ export function MainExperience() {
                         {index + 1}/{history.length}
                     </span>
                 </div>
-            </div>
-        </div>
+            </div >
+        </div >
     );
 }
