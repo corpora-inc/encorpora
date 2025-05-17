@@ -24,7 +24,7 @@ export function RateAdjuster() {
     }
 
     return (
-        <div className="mt-6 w-full">
+        <div className="mt-1 w-full">
             <div className="mb-2 font-semibold text-sm">Speech Rate</div>
             <div className="flex gap-2 mb-3">
                 {BUTTONS.map(btn => (
