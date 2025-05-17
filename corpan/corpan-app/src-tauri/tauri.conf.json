@@ -36,7 +36,8 @@
     ],
     "iOS": {
       "minimumSystemVersion": "14.0",
-      "developmentTeam": "F9AV5HKF6N"
+      "developmentTeam": "F9AV5HKF6N",
+      "template": "ios/template.yml"
     },
     "macOS": {
       "signingIdentity": "3rd Party Mac Developer Application: Corpora Inc (F9AV5HKF6N)"
