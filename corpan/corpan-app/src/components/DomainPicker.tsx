@@ -1,21 +1,7 @@
-import { useSettingsStore, ALL_DOMAINS } from "@/store/settings";
 import { Button } from "@/components/ui/button";
+import { useSettingsStore, ALL_DOMAINS } from "@/store/settings";
+import { DOMAIN_NAMES } from "@/store/constants";
 
-const DOMAIN_NAMES: Record<string, string> = {
-    travel: "Travel",
-    business: "Business",
-    education: "Education",
-    social: "Social",
-    health: "Health",
-    housing: "Housing",
-    numbers: "Numbers",
-    civic: "Civic",
-    technology: "Technology",
-    environment: "Environment",
-    emergency: "Emergency",
-    culture: "Culture",
-    everyday: "Everyday",
-};
 
 export function DomainPicker() {
     const domains = useSettingsStore((s) => s.domains);

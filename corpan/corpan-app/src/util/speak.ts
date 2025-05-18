@@ -3,7 +3,7 @@ import { invoke } from "@tauri-apps/api/core";
 export const BROWSER_TTS = "speechSynthesis" in window
 
 // static map of language codes to names
-const LANGUAGE_NAMES: Record<string, string> = {
+const SPEAKER_MAP: Record<string, string> = {
     // was working but then stopped?
     // "en": "Ava",
     // "en": "Daniel",
@@ -159,14 +159,14 @@ export function createVoiceTTS(langPrefix: string) {
             //     Math.floor(Math.random() * candidateVoices.length)
             //     ];
 
-            // if in LANGUAGE_NAMES, use that
+            // if in SPEAKER_MAP, use that
             // candidateVoices = candidateVoices.reverse();
             let voice = candidateVoices.find((v) =>
-                v.name === LANGUAGE_NAMES[langPrefix]
+                v.name === SPEAKER_MAP[langPrefix]
             );
             if (!voice) {
                 console.warn(
-                    `[TTS:${langPrefix}] no voice found for ${LANGUAGE_NAMES[langPrefix]}`
+                    `[TTS:${langPrefix}] no voice found for ${SPEAKER_MAP[langPrefix]}`
                 );
                 voice =
                     candidateVoices.find((v) => v.name === "Yuna") ||

@@ -1,45 +1,20 @@
 import { useEffect, useLayoutEffect, useRef } from "react";
 import { invoke } from "@tauri-apps/api/core";
-import { Button } from "@/components/ui/button";
-import { useSettingsStore } from "@/store/settings";
-import { useHistoryStore, EntryOut } from "@/store/history";
-import { createVoiceTTS } from "@/util/speak";
 import {
     ChevronLeft as ChevronLeftIcon,
     RefreshCw as RefreshIcon,
     ChevronRight as ChevronRightIcon,
-    // SpeakerIcon,
     Speaker,
-    // AudioWaveformIcon,
     AudioLines,
     Ear,
-    // FileAudio,
 } from "lucide-react";
 import { motion } from "framer-motion";
-// import { LANGUAGE_NAMES } from "./LanguageSelectOrder";
 
-const LANGUAGE_NAMES: Record<string, string> = {
-    en: "English",
-    "ko-polite": "Korean (Polite)",
-    es: "Spanish",
-    fr: "French",
-    de: "German",
-    "pt-BR": "Portuguese (BR)",
-    ja: "Japanese",
-    "zh-Hans": "Chinese (Simplified)",
-    ar: "Arabic",
-    ru: "Russian",
-    it: "Italian",
-    hi: "Hindi",
-};
-
-
-const DOMAIN_NAMES: Record<string, string> = {
-    travel: "Travel", business: "Business", education: "Education", social: "Social",
-    health: "Health", housing: "Housing", numbers: "Numbers", civic: "Civic",
-    technology: "Technology", environment: "Environment", emergency: "Emergency",
-    culture: "Culture", everyday: "Everyday",
-};
+import { Button } from "@/components/ui/button";
+import { useSettingsStore } from "@/store/settings";
+import { useHistoryStore, EntryOut } from "@/store/history";
+import { createVoiceTTS } from "@/util/speak";
+import { DOMAIN_NAMES, LANGUAGE_NAMES } from "@/store/constants";
 
 // Lame but OK
 function getPlatformPadding() {
@@ -70,10 +45,8 @@ export function MainExperience() {
         }
     };
 
-    // --- On mount: load if empty
     useEffect(() => {
         if (history.length === 0) fetchRandomEntry();
-        // eslint-disable-next-line
     }, []);
 
     const scrollRef = useRef<HTMLDivElement>(null);
@@ -81,10 +54,9 @@ export function MainExperience() {
     useLayoutEffect(() => {
         setTimeout(() => {
             if (scrollRef.current) {
-                // scrollRef.current.scrollTo({ top: -20000, behavior: "smooth" });
                 scrollRef.current.scrollTo({ top: 0, behavior: "smooth" });
             }
-        }, 30);
+        }, 27);
     }, [index]);
 
     const curr = history[index] || null;
@@ -101,9 +73,7 @@ export function MainExperience() {
         else fetchRandomEntry();
     };
 
-    // --- MAIN RENDER ---
     return (
-        // <div className="relative h-screen w-full flex flex-col items-center justify-center">
         <div className="flex flex-col flex-1 min-h-0 w-full items-center relative">
 
             {curr && (
@@ -126,10 +96,9 @@ export function MainExperience() {
                     </div>
                 </div>
             )}
+
             {/* Scrollable Translations */}
-            {/* <div className="flex-1 w-full flex flex-col min-h-0"> */}
             <div
-                // className="flex-1 w-full overflow-y-auto min-h-0 px-2 pt-16 pb-[135px]"
                 className="flex-1 w-full overflow-y-auto min-h-0 px-2 pt-16 flex flex-col"
                 ref={scrollRef}
                 style={{
@@ -139,26 +108,22 @@ export function MainExperience() {
 
                 <div
                     key={index}
-                    // className="w-full max-w-4xl flex flex-col items-center gap-y-7 pb-36 pt-15"
-                    // className="w-full max-w-4xl mx-auto flex flex-col items-center gap-y-7"
                     className="w-full max-w-4xl mx-auto flex flex-col items-center gap-y-7 my-auto"
                 >
 
                     {languages.map((code, idx) => (
                         <motion.div
-                            // key={code}
                             key={idx}
                             initial={{ opacity: 0, y: 16, scale: 0.98 }}
                             animate={{ opacity: 1, y: 0, scale: 1 }}
                             exit={{ opacity: 0, y: 8, scale: 0.98 }}
                             transition={{ duration: 0.28, delay: idx * 0.04, ease: "easeOut" }}
                             className="w-full flex flex-col items-center"
-                        // ref={idx === 0 ? firstSentenceRef : null}
                         >
                             <div
                                 key={idx}
-                                // ref={idx === 0 ? firstSentenceRef : null}
-                                className="text-xs text-gray-400 mb-1" > {LANGUAGE_NAMES[code] || code}</div>
+                                className="text-xs text-gray-400 mb-1"
+                            >{LANGUAGE_NAMES[code] || code}</div>
                             <div
                                 className="text-center text-xl md:text-2xl lg:text-3xl"
                                 style={{
@@ -187,11 +152,8 @@ export function MainExperience() {
                                     variant="outline"
                                 >
                                     <Speaker className="w-4 h-4" />
-                                    {/* <AudioWaveformIcon className="w-4 h-4" /> */}
                                     <AudioLines className="w-4 h-4" />
-                                    {/* <FileAudio className="w-4 h-4" /> */}
                                     <Ear className="w-4 h-4" />
-
                                 </Button>
                             </motion.div>
                         </motion.div>
@@ -205,31 +167,31 @@ export function MainExperience() {
                 style={{ background: "transparent" }
                 }
             >
-                <div className="flex flex-col gap-1 pointer-events-auto rounded-2xl shadow-2xl bg-white/95 px-8 py-3 border border-gray-200 items-center min-w-[270px]">
-                    <div className="flex justify-center items-center gap-5">
+                <div className="flex flex-col gap-1 pointer-events-auto rounded-2xl shadow-2xl bg-white/95 px-8 py-3 border border-gray-200 items-center min-w-[280px]">
+                    <div className="flex justify-center items-center gap-8">
                         <Button
                             onClick={handlePrev}
                             variant="ghost"
-                            size="icon"
+                            size="lg"
                             aria-label="Previous sentence"
                         >
-                            <ChevronLeftIcon className="w-7 h-7" />
+                            <ChevronLeftIcon />
                         </Button>
                         <Button
                             onClick={fetchRandomEntry}
                             variant="outline"
-                            size="icon"
+                            size="lg"
                             aria-label="Random sentence"
                         >
-                            <RefreshIcon className="w-7 h-7" />
+                            <RefreshIcon />
                         </Button>
                         <Button
                             onClick={handleNext}
                             variant="ghost"
-                            size="icon"
+                            size="lg"
                             aria-label="Next sentence"
                         >
-                            <ChevronRightIcon className="w-7 h-7" />
+                            <ChevronRightIcon />
                         </Button>
                     </div>
                     <span className="text-xs text-gray-400 mt-1">

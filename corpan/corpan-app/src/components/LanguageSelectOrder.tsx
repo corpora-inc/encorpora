@@ -10,20 +10,8 @@ import { CSS } from "@dnd-kit/utilities";
 import { Button } from "@/components/ui/button";
 import { GripVertical, Plus, X } from "lucide-react";
 
-const LANGUAGE_NAMES: Record<string, string> = {
-    en: "English",
-    "ko-polite": "Korean (Polite)",
-    es: "Spanish",
-    fr: "French",
-    de: "German",
-    "pt-BR": "Portuguese (BR)",
-    ja: "Japanese",
-    "zh-Hans": "Chinese (Simplified)",
-    ar: "Arabic",
-    ru: "Russian",
-    it: "Italian",
-    hi: "Hindi",
-};
+import { LANGUAGE_NAMES } from "@/store/constants";
+
 
 function LangChip({
     code, onRemove, isDragging, dragHandleProps, ...props

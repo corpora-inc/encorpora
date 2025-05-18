@@ -1,18 +1,23 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
+import {
+    TRANSLATIONS,
+    TranslationKey,
+} from "./translations";
 
-// All supported languages and domains, for convenience
 export const ALL_LANGUAGES = [
     "en", "ko-polite", "es", "fr", "de", "pt-BR", "ja", "zh-Hans", "ar", "ru", "it", "hi",
 ];
+
 export const ALL_LEVELS = ["A1", "A2", "B1"];
+
 export const ALL_DOMAINS = [
     "travel", "business", "education", "social", "health", "housing", "numbers",
     "civic", "technology", "environment", "emergency", "culture", "everyday",
 ];
 
 type SettingsState = {
-    languages: string[]; // ordered list
+    languages: string[];
     setLanguages: (codes: string[]) => void;
     domains: string[];
     setDomains: (domains: string[]) => void;
@@ -21,15 +26,17 @@ type SettingsState = {
     reset: () => void;
     rate: number;
     setRate: (rate: number) => void;
+
+    topLang: () => string;
+    t: (key: TranslationKey) => string;
 };
 
-// Persist to localStorage, so settings stick between runs.
 export const useSettingsStore = create<SettingsState>()(
     persist(
-        (set) => ({
+        (set, get) => ({
             languages: ["en", "es", "pt-BR", "fr", "it", "ko-polite"],
             setLanguages: (codes) => set({ languages: codes }),
-            domains: [...ALL_DOMAINS], // default: all
+            domains: [...ALL_DOMAINS],
             setDomains: (domains) => set({ domains }),
             levels: ["A1"],
             setLevels: (levels) => set({ levels }),
@@ -41,6 +48,16 @@ export const useSettingsStore = create<SettingsState>()(
                 }),
             rate: 0.7,
             setRate: (rate) => set({ rate }),
+
+            topLang: () => get().languages[0],
+
+            t: (key) => {
+                const lang = get().languages[0];
+                const base = lang.split("-")[0] as keyof typeof TRANSLATIONS;
+                return TRANSLATIONS[lang as keyof typeof TRANSLATIONS]?.[key]
+                    ?? TRANSLATIONS[base]?.[key]
+                    ?? TRANSLATIONS.en[key];
+            },
         }),
         { name: "corpan-settings" }
     )
