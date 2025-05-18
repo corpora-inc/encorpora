@@ -105,7 +105,7 @@ export function LanguageSelectOrder() {
         <div className="w-full">
             <div className="mb-3 font-semibold text-sm"
                 dir={dir()}
-            >{t("Selected languages")}</div>
+            >{t("Selected Languages")}</div>
             <DndContext
                 sensors={sensors}
                 collisionDetection={closestCenter}
@@ -138,7 +138,7 @@ export function LanguageSelectOrder() {
             </DndContext>
             {
                 available.length > 0 && (
-                    <div className="mt-4">
+                    <div className="mt-4" dir={dir()}>
                         <div className="mb-2 text-xs text-gray-500"
                             dir={dir()}
                         >{t("Add more languages")}</div>

@@ -5,6 +5,9 @@ export function LevelsPicker() {
     const levels = useSettingsStore((s) => s.levels);
     const setLevels = useSettingsStore((s) => s.setLevels);
 
+    const dir = useSettingsStore((s) => s.dir());
+    const t = useSettingsStore((s) => s.t);
+
     const allActive = levels.length === 0 || levels.length === ALL_LEVELS.length;
 
     function toggleLevel(code: string) {
@@ -23,18 +26,18 @@ export function LevelsPicker() {
     }
 
     return (
-        <div className="w-full mt-6">
-            <div className="mb-2 font-semibold text-sm">Levels</div>
-            <div className="flex gap-2 mb-3">
+        <div className="w-full mt-3">
+            <div className="mb-2 font-semibold text-sm" dir={dir}>{t("Levels")}</div>
+            <div className="flex gap-2 mb-3" dir={dir}>
                 <Button
                     size="sm"
                     variant={allActive ? "default" : "outline"}
                     onClick={handleSelectAll}
                 >
-                    Select all
+                    {t("Select all")}
                 </Button>
             </div>
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-2" dir={dir}>
                 {ALL_LEVELS.map((code) => {
                     const selected = allActive || levels.includes(code);
                     return (
@@ -56,12 +59,10 @@ export function LevelsPicker() {
                     );
                 })}
             </div>
-            <div className="mt-2 text-xs text-gray-400">
+            <div className="mt-2 text-xs text-gray-400" dir={dir}>
                 {allActive
-                    ? "All levels included."
-                    : levels.length === 0
-                        ? "No levels selected (all will be included)."
-                        : `${levels.length} selected.`}
+                    ? t("All levels included.")
+                    : `${levels.length} ${t("selected")}.`}
             </div>
         </div>
     );

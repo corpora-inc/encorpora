@@ -1,11 +1,13 @@
 import { Button } from "@/components/ui/button";
 import { useSettingsStore, ALL_DOMAINS } from "@/store/settings";
-import { DOMAIN_NAMES } from "@/store/constants";
+import { TranslationKey } from "@/store/translations";
 
 
 export function DomainPicker() {
     const domains = useSettingsStore((s) => s.domains);
     const setDomains = useSettingsStore((s) => s.setDomains);
+    const dir = useSettingsStore((s) => s.dir());
+    const t = useSettingsStore((s) => s.t);
 
     const allActive = domains.length === 0 || domains.length === ALL_DOMAINS.length;
 
@@ -27,18 +29,18 @@ export function DomainPicker() {
 
 
     return (
-        <div className="w-full mt-6">
-            <div className="mb-2 font-semibold text-sm">Domains</div>
-            <div className="flex gap-2 mb-3">
+        <div className="w-full mt-3">
+            <div className="mb-2 font-semibold text-sm" dir={dir}>{t("Domains")}</div>
+            <div className="flex gap-2 mb-3" dir={dir}>
                 <Button
                     size="sm"
                     variant={allActive ? "default" : "outline"}
                     onClick={handleSelectAll}
                 >
-                    Select all
+                    {t("Select all")}
                 </Button>
             </div>
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-2" dir={dir}>
                 {ALL_DOMAINS.map((code) => {
                     const selected = allActive || domains.includes(code);
                     return (
@@ -54,18 +56,18 @@ export function DomainPicker() {
                             `}
                             aria-pressed={selected}
                             onClick={() => toggleDomain(code)}
+                            dir={dir}
                         >
-                            {DOMAIN_NAMES[code] || code}
+                            {/* {DOMAIN_NAMES[code] || code} */}
+                            {t(code as TranslationKey)}
                         </Button>
                     );
                 })}
             </div>
-            <div className="mt-2 text-xs text-gray-400">
+            <div className="mt-2 text-xs text-gray-400" dir={dir}>
                 {allActive
-                    ? "All domains included."
-                    : domains.length === 0
-                        ? "No domains selected (all will be included)."
-                        : `${domains.length} selected.`}
+                    ? t("All domains included.")
+                    : `${domains.length} ${t("selected")}.`}
             </div>
         </div>
     );

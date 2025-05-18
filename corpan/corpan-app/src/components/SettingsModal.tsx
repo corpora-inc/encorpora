@@ -3,12 +3,18 @@ import { LanguageSelectOrder } from "./LanguageSelectOrder";
 import { DomainPicker } from "./DomainPicker";
 import { LevelsPicker } from "./LevelsPicker";
 import { RateAdjuster } from "./RateAdjuster";
+import { useSettingsStore } from "@/store/settings";
 
 // Use the built-in modal with correct sizing
 export function SettingsModal({ open, onClose }: { open: boolean; onClose: () => void }) {
+
+    const dir = useSettingsStore((s) => s.dir);
+    const t = useSettingsStore((s) => s.t);
+    const topLang = useSettingsStore((s) => s.topLang());
+    console.log("new topLang", topLang);
+
     return (
         <Dialog open={open} onOpenChange={onClose}>
-            {/* <DialogContent className="max-w-full w-[100vw] sm:w-[90vw] max-h-[100vh] h-[100vh] sm:h-auto overflow-y-auto p-4 sm:p-8 rounded-none sm:rounded-xl bg-white"> */}
             <DialogContent
                 className="
                     max-w-full w-[100vw] sm:w-[90vw]
@@ -16,14 +22,17 @@ export function SettingsModal({ open, onClose }: { open: boolean; onClose: () =>
                     overflow-y-auto rounded-none sm:rounded-xl bg-white
                 "
                 style={{
-                    // paddingBottom: `calc(3rem + env(safe-area-inset-bottom))`
-                    paddingBottom: "3rem",
-                    paddingTop: "3rem",
+                    paddingBottom: "3.5rem",
+                    paddingTop: "3.5rem",
                 }}
                 id="settings-modal-content"
             >
-                <DialogTitle>Settings</DialogTitle>
-                <DialogDescription>Adjust to your preferences</DialogDescription>
+                <DialogTitle dir={dir()}>
+                    {t("Settings")}
+                </DialogTitle>
+                <DialogDescription dir={dir()}>
+                    {t("Adjust to your preferences")}
+                </DialogDescription>
                 <RateAdjuster />
                 <LanguageSelectOrder />
                 <LevelsPicker />

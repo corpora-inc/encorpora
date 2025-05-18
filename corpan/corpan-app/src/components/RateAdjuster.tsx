@@ -3,7 +3,7 @@ import { Slider } from "@/components/ui/slider";
 import { Button } from "@/components/ui/button";
 import { useMemo } from "react";
 import { BROWSER_TTS } from "@/util/speak";
-
+import { TranslationKey } from "@/store/translations";
 
 const BUTTONS = [
     { label: "Slow", value: 0.5 },
@@ -15,6 +15,10 @@ export function RateAdjuster() {
     const rate = useSettingsStore(s => s.rate);
     const setRate = useSettingsStore(s => s.setRate);
 
+    const t = useSettingsStore(s => s.t);
+    const speech_rate = useSettingsStore(s => s.t("Speech Rate"));
+    const dir = useSettingsStore(s => s.dir());
+
     // Keep slider and rate in sync
     const sliderValue = useMemo(() => [rate], [rate]);
 
@@ -25,8 +29,8 @@ export function RateAdjuster() {
 
     return (
         <div className="mt-1 w-full">
-            <div className="mb-2 font-semibold text-sm">Speech Rate</div>
-            <div className="flex gap-2 mb-3">
+            <div className="mb-3 font-semibold text-sm" dir={dir}>{speech_rate}</div>
+            <div className="flex gap-2 mb-3" dir={dir}>
                 {BUTTONS.map(btn => (
                     <Button
                         key={btn.label}
@@ -35,11 +39,12 @@ export function RateAdjuster() {
                         className="rounded-full text-xs px-4 py-1"
                         onClick={() => setRate(btn.value)}
                     >
-                        {btn.label}
+                        {/* {btn.label} */}
+                        {t(btn.label as TranslationKey)}
                     </Button>
                 ))}
             </div>
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-4" dir={dir}>
                 <span className="text-xs text-gray-500 min-w-[45px]">0.01</span>
                 <Slider
                     value={sliderValue}
@@ -48,15 +53,16 @@ export function RateAdjuster() {
                     step={0.005}
                     className="flex-1"
                     onValueChange={([v]) => setRate(Number(v.toFixed(3)))}
+                    dir={dir}
                 />
                 <span className="text-xs text-gray-500 min-w-[45px] text-right">1.5</span>
             </div>
-            <div className="mt-1 text-xs text-gray-400 text-center">
+            <div className="mt-1 text-xs text-gray-400 text-center" dir={dir}>
                 {rate === 1.0
-                    ? "Normal"
+                    ? t("Normal")
                     : rate < 1.0
-                        ? `Slower (${rate.toFixed(2)}x)`
-                        : `Faster (${rate.toFixed(2)}x)`
+                        ? `${t("Slower")} (${rate.toFixed(2)}x)`
+                        : `${t("Faster")} (${rate.toFixed(2)}x)`
                 }
             </div>
         </div>
