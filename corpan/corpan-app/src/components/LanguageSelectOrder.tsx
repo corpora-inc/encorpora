@@ -1,5 +1,7 @@
 import { useSettingsStore, ALL_LANGUAGES } from "@/store/settings";
-import { DndContext, PointerSensor, useSensors, useSensor, closestCenter } from "@dnd-kit/core";
+import {
+    DndContext, PointerSensor, useSensors, useSensor, closestCenter,
+} from "@dnd-kit/core";
 import {
     SortableContext,
     useSortable,
@@ -9,44 +11,48 @@ import {
 import { CSS } from "@dnd-kit/utilities";
 import { Button } from "@/components/ui/button";
 import { GripVertical, Plus, X } from "lucide-react";
-
-import { LANGUAGE_NAMES } from "@/store/constants";
+import { TranslationKey } from "@/store/translations";
 
 
 function LangChip({
-    code, onRemove, isDragging, dragHandleProps, ...props
+    code, onRemove, isDragging, isTop, dragHandleProps, ...props
 }: {
     code: string;
     onRemove?: () => void;
     isDragging?: boolean;
+    isTop?: boolean;
     dragHandleProps?: any;
     [k: string]: any;
 }) {
+    const t = useSettingsStore(s => s.t);
+    const dir = useSettingsStore(s => s.dir);
     return (
         <div
             className={`
                 flex items-center gap-1 px-3 py-1 rounded-lg border bg-white shadow-sm
+                ${isTop ? "bg-purple-50 border-purple-300" : ""}
                 ${isDragging ? "opacity-60 border-blue-400 shadow-lg" : ""}
                 select-none mb-1
             `}
             style={{ minWidth: 0 }}
             {...props}
-
         >
             <span className="mr-1 text-gray-400 cursor-grab " {...dragHandleProps}>
                 <GripVertical size={16} />
             </span>
-            <span className="flex-1 truncate cursor-grab" {...dragHandleProps}>{LANGUAGE_NAMES[code] || code}</span>
+            <span className="flex-1 truncate cursor-grab" {...dragHandleProps}
+                dir={dir()}
+            >
+                {/* {LANGUAGE_NAMES[code] || code} */}
+                {t(code as TranslationKey)}
+            </span>
             {onRemove && (
                 <button
                     type="button"
                     className="ml-2 p-0.5 text-gray-300 hover:text-red-400 z-1000"
                     aria-label="Remove language"
                     tabIndex={0}
-                    onClick={() => {
-                        // console.log("Removing language:", code);
-                        onRemove()
-                    }}
+                    onClick={onRemove}
                 >
                     <X size={15} />
                 </button>
@@ -58,6 +64,7 @@ function LangChip({
 export function LanguageSelectOrder() {
     const languages = useSettingsStore(s => s.languages);
     const setLanguages = useSettingsStore(s => s.setLanguages);
+    const dir = useSettingsStore(s => s.dir);
 
     // DnD-kit
     const sensors = useSensors(useSensor(PointerSensor));
@@ -92,9 +99,13 @@ export function LanguageSelectOrder() {
     // Find unselected languages
     const available = ALL_LANGUAGES.filter(c => !languages.includes(c));
 
+    const t = useSettingsStore(s => s.t);
+
     return (
         <div className="w-full">
-            <div className="mb-2 font-semibold text-sm">Selected Languages</div>
+            <div className="mb-3 font-semibold text-sm"
+                dir={dir()}
+            >{t("Selected languages")}</div>
             <DndContext
                 sensors={sensors}
                 collisionDetection={closestCenter}
@@ -114,11 +125,12 @@ export function LanguageSelectOrder() {
             >
                 <SortableContext items={languages} strategy={verticalListSortingStrategy}>
                     <div className="flex flex-col gap-1">
-                        {languages.map((code) => (
+                        {languages.map((code, i) => (
                             <SortableLangChip
                                 key={code}
                                 code={code}
                                 onRemove={() => handleRemove(code)}
+                                isTop={i === 0}
                             />
                         ))}
                     </div>
@@ -127,7 +139,9 @@ export function LanguageSelectOrder() {
             {
                 available.length > 0 && (
                     <div className="mt-4">
-                        <div className="mb-2 text-xs text-gray-500">Add more languages</div>
+                        <div className="mb-2 text-xs text-gray-500"
+                            dir={dir()}
+                        >{t("Add more languages")}</div>
                         <div className="flex flex-wrap gap-2">
                             {available.map(code => (
                                 <Button
@@ -138,8 +152,10 @@ export function LanguageSelectOrder() {
                                     onClick={() => handleAdd(code)}
                                 >
                                     <Plus size={15} />
-                                    <span className="mr-1">
-                                        {LANGUAGE_NAMES[code] || code}
+                                    <span className="mr-1"
+                                        dir={dir()}
+                                    >
+                                        {t(code as TranslationKey)}
                                     </span>
                                 </Button>
                             ))}
@@ -157,7 +173,7 @@ export function LanguageSelectOrder() {
 }
 
 // --- Sortable chip wrapper ---
-function SortableLangChip({ code, onRemove }: { code: string; onRemove?: () => void }) {
+function SortableLangChip({ code, onRemove, isTop }: { code: string; onRemove?: () => void; isTop?: boolean }) {
     const { attributes, listeners, setNodeRef, transform, transition, isDragging } = useSortable({ id: code });
     return (
         <div
@@ -172,6 +188,7 @@ function SortableLangChip({ code, onRemove }: { code: string; onRemove?: () => v
                 code={code}
                 onRemove={onRemove}
                 isDragging={isDragging}
+                isTop={isTop}
                 dragHandleProps={listeners} {...attributes} />
         </div>
     );

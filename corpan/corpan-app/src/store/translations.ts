@@ -25,6 +25,9 @@ export const TRANSLATIONS = {
         "emergency": "Emergency",
         "culture": "Culture",
         "everyday": "Everyday",
+        // UI
+        "Add more languages": "Add more languages",
+        "Selected languages": "Selected languages",
     },
     "ko-polite": {
         "en": "영어",
@@ -52,6 +55,9 @@ export const TRANSLATIONS = {
         "emergency": "비상",
         "culture": "문화",
         "everyday": "일상",
+        // UI Elements
+        "Add more languages": "언어 추가",
+        "Selected languages": "선택된 언어",
     },
     "es": {
         "en": "Inglés",
@@ -79,6 +85,9 @@ export const TRANSLATIONS = {
         "emergency": "Emergencia",
         "culture": "Cultura",
         "everyday": "Cotidiano",
+        // UI
+        "Add more languages": "Agregar más idiomas",
+        "Selected languages": "Idiomas seleccionados",
     },
     "fr": {
         "en": "Anglais",
@@ -106,6 +115,9 @@ export const TRANSLATIONS = {
         "emergency": "Urgence",
         "culture": "Culture",
         "everyday": "Quotidien",
+        // UI
+        "Add more languages": "Ajouter plus de langues",
+        "Selected languages": "Langues sélectionnées",
     },
     "de": {
         "en": "Englisch",
@@ -133,6 +145,9 @@ export const TRANSLATIONS = {
         "emergency": "Notfall",
         "culture": "Kultur",
         "everyday": "Alltag",
+        // UI
+        "Add more languages": "Weitere Sprachen hinzufügen",
+        "Selected languages": "Ausgewählte Sprachen",
     },
     "pt-BR": {
         "en": "Inglês",
@@ -160,6 +175,9 @@ export const TRANSLATIONS = {
         "emergency": "Emergência",
         "culture": "Cultura",
         "everyday": "Cotidiano",
+        // UI
+        "Add more languages": "Adicionar mais idiomas",
+        "Selected languages": "Idiomas selecionados",
     },
     "ja": {
         "en": "英語",
@@ -187,6 +205,9 @@ export const TRANSLATIONS = {
         "emergency": "緊急",
         "culture": "文化",
         "everyday": "日常",
+        // UI
+        "Add more languages": "言語を追加",
+        "Selected languages": "選択された言語",
     },
     "zh-Hans": {
         "en": "英语",
@@ -214,6 +235,9 @@ export const TRANSLATIONS = {
         "emergency": "紧急",
         "culture": "文化",
         "everyday": "日常",
+        // UI
+        "Add more languages": "添加更多语言",
+        "Selected languages": "选择的语言",
     },
     "ar": {
         "en": "الإنجليزية",
@@ -241,6 +265,9 @@ export const TRANSLATIONS = {
         "emergency": "طوارئ",
         "culture": "ثقافة",
         "everyday": "يومي",
+        // UI
+        "Add more languages": "إضافة المزيد من اللغات",
+        "Selected languages": "اللغات المختارة",
     },
     "ru": {
         "en": "Английский",
@@ -268,6 +295,9 @@ export const TRANSLATIONS = {
         "emergency": "Чрезвычайная ситуация",
         "culture": "Культура",
         "everyday": "Повседневный",
+        // UI
+        "Add more languages": "Добавить больше языков",
+        "Selected languages": "Выбранные языки",
     },
     "it": {
         "en": "Inglese",
@@ -295,6 +325,9 @@ export const TRANSLATIONS = {
         "emergency": "Emergenza",
         "culture": "Cultura",
         "everyday": "Quotidiano",
+        // UI
+        "Add more languages": "Aggiungi più lingue",
+        "Selected languages": "Lingue selezionate",
     },
     "hi": {
         "en": "अंग्रेज़ी",
@@ -322,6 +355,9 @@ export const TRANSLATIONS = {
         "emergency": "आपातकालीन",
         "culture": "संस्कृति",
         "everyday": "प्रतिदिन",
+        // UI
+        "Add more languages": "अधिक भाषाएँ जोड़ें",
+        "Selected languages": "चयनित भाषाएँ",
     },
 } as const;
 

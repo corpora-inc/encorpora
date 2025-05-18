@@ -4,6 +4,7 @@ import {
     TRANSLATIONS,
     TranslationKey,
 } from "./translations";
+import { RTL_LANGUAGES } from "./constants";
 
 export const ALL_LANGUAGES = [
     "en", "ko-polite", "es", "fr", "de", "pt-BR", "ja", "zh-Hans", "ar", "ru", "it", "hi",
@@ -29,6 +30,7 @@ type SettingsState = {
 
     topLang: () => string;
     t: (key: TranslationKey) => string;
+    dir: () => "ltr" | "rtl";
 };
 
 export const useSettingsStore = create<SettingsState>()(
@@ -57,6 +59,11 @@ export const useSettingsStore = create<SettingsState>()(
                 return TRANSLATIONS[lang as keyof typeof TRANSLATIONS]?.[key]
                     ?? TRANSLATIONS[base]?.[key]
                     ?? TRANSLATIONS.en[key];
+            },
+            dir: () => {
+                const lang = get().languages[0];
+                const base = lang.split("-")[0];
+                return RTL_LANGUAGES.includes(base as any) ? "rtl" : "ltr";
             },
         }),
         { name: "corpan-settings" }
