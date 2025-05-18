@@ -20,7 +20,7 @@ body,
 #root,
 #app {
     width: 100vw;
-    height: 100vh;
+    height: 100dvh;
     min-width: 0;
     min-height: 0;
     margin: 0;

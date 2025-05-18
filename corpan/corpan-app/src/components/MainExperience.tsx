@@ -41,7 +41,13 @@ const DOMAIN_NAMES: Record<string, string> = {
     culture: "Culture", everyday: "Everyday",
 };
 
-// const NAV_HEIGHT = 108; // px - enough for nav+level+domains+margin
+// Lame but OK
+function getPlatformPadding() {
+    if (/iPhone|iPad|iPod|iOS/i.test(navigator.userAgent)) {
+        return 240;
+    }
+    return 135;
+}
 
 export function MainExperience() {
     const languages = useSettingsStore((s) => s.languages);
@@ -73,44 +79,13 @@ export function MainExperience() {
     const scrollRef = useRef<HTMLDivElement>(null);
 
     useLayoutEffect(() => {
-        requestAnimationFrame(() => {
+        setTimeout(() => {
             if (scrollRef.current) {
-                scrollRef.current.scrollTo({ top: -10000, behavior: "smooth" });
+                // scrollRef.current.scrollTo({ top: -20000, behavior: "smooth" });
+                scrollRef.current.scrollTo({ top: 0, behavior: "smooth" });
             }
-        });
+        }, 30);
     }, [index]);
-
-
-    // useLayoutEffect(() => {
-    //     console.log("Index changed:", index, scrollRef.current);
-    //     if (scrollRef.current) {
-    //         console.log("Scrolling", scrollRef.current.scrollHeight);
-    //         // scrollRef.current.scrollTo({ top: -5000, behavior: "smooth" });
-    //         console.log("from", scrollRef.current.scrollTop);
-    //         scrollRef.current.scrollTo({ top: 0, behavior: "smooth" });
-    //         console.log("to", scrollRef.current.scrollTop);
-    //         // scrollRef.current.
-    //         // scrollRef.current.scrollHeight = 0;
-    //         scrollRef.current.scrollTop = 0;
-    //     }
-
-    // }, [index]);
-
-    // const firstSentenceRef = useRef<HTMLDivElement | null>(null);
-
-
-    // useLayoutEffect(() => {
-    //     // Always try to scroll the first sentence into view
-    //     if (firstSentenceRef.current) {
-    //         console.log("Scrolling to first sentence:", firstSentenceRef.current);
-    //         firstSentenceRef.current.scrollIntoView({
-    //             behavior: "smooth", // Or "auto" if you want instant
-    //             block: "end",
-    //             // inline: "start", // Or "nearest" if you want to avoid scrolling
-    //         });
-    //     }
-    // }, [index]);
-
 
     const curr = history[index] || null;
     const textByLang: Record<string, string> = {};
@@ -128,7 +103,9 @@ export function MainExperience() {
 
     // --- MAIN RENDER ---
     return (
-        <div className="relative h-screen w-full flex flex-col items-center justify-center">
+        // <div className="relative h-screen w-full flex flex-col items-center justify-center">
+        <div className="flex flex-col flex-1 min-h-0 w-full items-center relative">
+
             {curr && (
                 <div
                     className="fixed top-5 left-5 z-50 pointer-events-none"
@@ -150,77 +127,77 @@ export function MainExperience() {
                 </div>
             )}
             {/* Scrollable Translations */}
-            <div className="flex-1 w-full flex flex-col min-h-0">
+            {/* <div className="flex-1 w-full flex flex-col min-h-0"> */}
+            <div
+                // className="flex-1 w-full overflow-y-auto min-h-0 px-2 pt-16 pb-[135px]"
+                className="flex-1 w-full overflow-y-auto min-h-0 px-2 pt-16 flex flex-col"
+                ref={scrollRef}
+                style={{
+                    paddingBottom: `${getPlatformPadding()}px`,
+                }}
+            >
+
                 <div
-                    ref={scrollRef}
-                    className="flex-1 flex flex-col items-center justify-center overflow-y-auto min-h-0 px-2"
-                    style={{
-                        // Remove max-h-full! It’s not needed.
-                        paddingTop: "0vh",
-                        paddingBottom: 0,
-                    }}
+                    key={index}
+                    // className="w-full max-w-4xl flex flex-col items-center gap-y-7 pb-36 pt-15"
+                    // className="w-full max-w-4xl mx-auto flex flex-col items-center gap-y-7"
+                    className="w-full max-w-4xl mx-auto flex flex-col items-center gap-y-7 my-auto"
                 >
-                    <div
-                        key={index}
 
-                        className="w-full max-w-4xl flex flex-col items-center gap-y-7 pb-36 pt-15"
-                    >
-
-                        {languages.map((code, idx) => (
-                            <motion.div
-                                // key={code}
+                    {languages.map((code, idx) => (
+                        <motion.div
+                            // key={code}
+                            key={idx}
+                            initial={{ opacity: 0, y: 16, scale: 0.98 }}
+                            animate={{ opacity: 1, y: 0, scale: 1 }}
+                            exit={{ opacity: 0, y: 8, scale: 0.98 }}
+                            transition={{ duration: 0.28, delay: idx * 0.04, ease: "easeOut" }}
+                            className="w-full flex flex-col items-center"
+                        // ref={idx === 0 ? firstSentenceRef : null}
+                        >
+                            <div
                                 key={idx}
-                                initial={{ opacity: 0, y: 16, scale: 0.98 }}
-                                animate={{ opacity: 1, y: 0, scale: 1 }}
-                                exit={{ opacity: 0, y: 8, scale: 0.98 }}
-                                transition={{ duration: 0.28, delay: idx * 0.04, ease: "easeOut" }}
-                                className="w-full flex flex-col items-center"
-                            // ref={idx === 0 ? firstSentenceRef : null}
+                                // ref={idx === 0 ? firstSentenceRef : null}
+                                className="text-xs text-gray-400 mb-1" > {LANGUAGE_NAMES[code] || code}</div>
+                            <div
+                                className="text-center text-xl md:text-2xl lg:text-3xl"
+                                style={{
+                                    wordBreak: "break-word",
+                                    maxWidth: "80vw",
+                                    lineHeight: 1.15,
+                                }}
+                                dir={code === "ar" ? "rtl" : "ltr"}
                             >
-                                <div
-                                    key={idx}
-                                    // ref={idx === 0 ? firstSentenceRef : null}
-                                    className="text-xs text-gray-400 mb-1" > {LANGUAGE_NAMES[code] || code}</div>
-                                <div
-                                    className="text-center text-xl md:text-2xl lg:text-3xl"
-                                    style={{
-                                        wordBreak: "break-word",
-                                        maxWidth: "80vw",
-                                        lineHeight: 1.15,
+                                {textByLang[code] || <span className="opacity-30">—</span>}
+                            </div>
+                            <motion.div
+                                whileTap={{ scale: 0.95 }}
+                                transition={{ type: "spring", stiffness: 300, damping: 17 }}
+                            >
+                                <Button
+                                    onClick={() => {
+                                        const langPrefix = code.split("-")[0];
+                                        createVoiceTTS(langPrefix)(
+                                            textByLang[code],
+                                            rate,
+                                        );
                                     }}
-                                    dir={code === "ar" ? "rtl" : "ltr"}
+                                    className="mt-2"
+                                    size="sm"
+                                    variant="outline"
                                 >
-                                    {textByLang[code] || <span className="opacity-30">—</span>}
-                                </div>
-                                <motion.div
-                                    whileTap={{ scale: 0.95 }}
-                                    transition={{ type: "spring", stiffness: 300, damping: 17 }}
-                                >
-                                    <Button
-                                        onClick={() => {
-                                            const langPrefix = code.split("-")[0];
-                                            createVoiceTTS(langPrefix)(
-                                                textByLang[code],
-                                                rate,
-                                            );
-                                        }}
-                                        className="mt-2"
-                                        size="sm"
-                                        variant="outline"
-                                    >
-                                        <Speaker className="w-4 h-4" />
-                                        {/* <AudioWaveformIcon className="w-4 h-4" /> */}
-                                        <AudioLines className="w-4 h-4" />
-                                        {/* <FileAudio className="w-4 h-4" /> */}
-                                        <Ear className="w-4 h-4" />
+                                    <Speaker className="w-4 h-4" />
+                                    {/* <AudioWaveformIcon className="w-4 h-4" /> */}
+                                    <AudioLines className="w-4 h-4" />
+                                    {/* <FileAudio className="w-4 h-4" /> */}
+                                    <Ear className="w-4 h-4" />
 
-                                    </Button>
-                                </motion.div>
+                                </Button>
                             </motion.div>
-                        ))}
-                    </div>
+                        </motion.div>
+                    ))}
                 </div>
-            </div >
+            </div>
 
             {/* Floating Nav + Level/Domains */}
             < div
@@ -259,7 +236,7 @@ export function MainExperience() {
                         {index + 1}/{history.length}
                     </span>
                 </div>
-            </div >
-        </div >
+            </div>
+        </div>
     );
 }

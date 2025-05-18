@@ -9,7 +9,9 @@ export default function App() {
   const [showSettings, setShowSettings] = useState(false);
 
   return (
-    <div className="min-h-screen w-full bg-gray-50 relative">
+    // <div className="min-h-screen w-full bg-gray-50 relative">
+    <div className="flex flex-col min-h-0 h-screen w-full relative">
+
       {/* Main sentence experience */}
       <MainExperience />
 
