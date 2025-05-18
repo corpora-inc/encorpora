@@ -14,7 +14,7 @@ import { Button } from "@/components/ui/button";
 import { useSettingsStore } from "@/store/settings";
 import { useHistoryStore, EntryOut } from "@/store/history";
 import { createVoiceTTS } from "@/util/speak";
-import { DOMAIN_NAMES, LANGUAGE_NAMES } from "@/store/constants";
+import { TranslationKey } from "@/store/translations";
 
 // Lame but OK
 function getPlatformPadding() {
@@ -29,6 +29,7 @@ export function MainExperience() {
     const domains = useSettingsStore((s) => s.domains);
     const levels = useSettingsStore((s) => s.levels);
     const rate = useSettingsStore((s) => s.rate);
+    const t = useSettingsStore((s) => s.t);
 
     const history = useHistoryStore((s) => s.history);
     const index = useHistoryStore((s) => s.index);
@@ -90,7 +91,7 @@ export function MainExperience() {
                                 key={d}
                                 className="px-2 py-0.5 rounded-full border border-gray-200 bg-gray-50 text-xs"
                             >
-                                {DOMAIN_NAMES[d] || d}
+                                {t(d as TranslationKey) || d}
                             </span>
                         ))}
                     </div>
@@ -123,7 +124,7 @@ export function MainExperience() {
                             <div
                                 key={idx}
                                 className="text-xs text-gray-400 mb-1"
-                            >{LANGUAGE_NAMES[code] || code}</div>
+                            >{t(code as TranslationKey) || code}</div>
                             <div
                                 className="text-center text-xl md:text-2xl lg:text-3xl"
                                 style={{

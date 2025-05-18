@@ -14,6 +14,8 @@ export const LANGUAGE_NAMES: Record<string, string> = {
     hi: "Hindi",
 };
 
+export const RTL_LANGUAGES = ["ar", "he", "fa", "ur"];
+
 export const DOMAIN_NAMES: Record<string, string> = {
     travel: "Travel",
     business: "Business",
