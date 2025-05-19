@@ -57,7 +57,11 @@ export function OnboardingWelcome() {
     const dir = RTL_LANGUAGES.includes(current.code.split('-')[0]) ? "rtl" : "ltr";
 
     return (
-        <div className="flex flex-col items-center px-6 pb-6 w-full gap-y-7">
+        // <div className="flex flex-col items-center px-6 pb-6 w-full gap-y-7">
+        <div className="flex flex-col flex-1 w-full h-full items-center justify-center px-6 pb-6 gap-y-7
+            md:max-h-[730px] md:justify-center"
+            style={{ minHeight: 0 }}
+        >
             {/* Animated welcome word */}
             <div
                 className="flex flex-col items-center justify-center w-full"

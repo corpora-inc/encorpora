@@ -1,7 +1,7 @@
+// ScrollIndicatorWrapper.tsx
 import { useRef, useState, useEffect } from "react";
 import { ChevronDown, ChevronUp } from "lucide-react";
 
-// Reusable wrapper: place this around your scrolling area
 export function ScrollIndicatorWrapper({ children, className = "" }: {
     children: React.ReactNode;
     className?: string;
@@ -10,20 +10,18 @@ export function ScrollIndicatorWrapper({ children, className = "" }: {
     const [atTop, setAtTop] = useState(true);
     const [atBottom, setAtBottom] = useState(false);
 
-    // Update on scroll and on mount/content change
     const update = () => {
         const node = ref.current;
         if (!node) return;
         setAtTop(node.scrollTop <= 0);
-        setAtBottom(node.scrollTop + node.clientHeight >= node.scrollHeight - 100);
+        setAtBottom(node.scrollTop + node.clientHeight >= node.scrollHeight - 125);
     };
 
     useEffect(() => {
-        update(); // On mount
+        update();
         const node = ref.current;
         if (!node) return;
         node.addEventListener("scroll", update);
-        // Also re-check if size/content changes
         window.addEventListener("resize", update);
         return () => {
             node.removeEventListener("scroll", update);
@@ -31,42 +29,35 @@ export function ScrollIndicatorWrapper({ children, className = "" }: {
         };
     }, []);
 
-    // scroll to the top on mount
     useEffect(() => {
         const node = ref.current;
         if (node) {
-            console.log("Scrolling to top");
             setTimeout(() => {
-                node.scrollTo({ top: -10000, behavior: "smooth" });
+                node.scrollTo({ top: 0, behavior: "auto" });
             }, 30);
         }
     }, []);
 
     return (
-        <div className="relative w-full h-full flex-1">
-            {/* Top fade/arrow */}
+        <div className="relative flex-1 min-h-0 w-full h-full">
             {!atTop && (
                 <div className="absolute top-0 left-0 w-full flex justify-center pointer-events-none z-10">
                     <div className="h-10 w-full flex items-center justify-center">
-                        <ChevronUp
-                            size={64}
-                            className="text-gray-300" style={{ opacity: 0.8 }} />
+                        <ChevronUp size={48} className="text-gray-300" style={{ opacity: 0.8 }} />
                     </div>
                 </div>
             )}
-            {/* Bottom fade/arrow */}
             {!atBottom && (
                 <div className="absolute bottom-0 left-0 w-full flex justify-center pointer-events-none z-10">
                     <div className="h-10 w-full flex items-center justify-center">
-                        <ChevronDown size={64}
-                            className="text-gray-300" style={{ opacity: 0.8 }} />
+                        <ChevronDown size={48} className="text-gray-300" style={{ opacity: 0.8 }} />
                     </div>
                 </div>
             )}
             <div
                 ref={ref}
-                className={`overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-transparent w-full h-full ${className}`}
-                style={{ minHeight: 0, maxHeight: "100%" }}
+                className={`overflow-y-auto flex-1 min-h-0 w-full h-full ${className}`}
+                style={{ maxHeight: "100%" }}
             >
                 {children}
             </div>

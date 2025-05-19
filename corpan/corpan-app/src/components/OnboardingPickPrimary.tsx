@@ -1,10 +1,10 @@
+// OnboardingPickPrimary.tsx
 import { useSettingsStore, ALL_LANGUAGES } from "@/store/settings";
 import { TRANSLATIONS } from "@/store/translations";
 import { ArrowRightCircle } from "lucide-react";
-import { ScrollIndicatorWrapper } from "./ScrollIndicatorWrapper"; // Correct import!
+import { ScrollIndicatorWrapper } from "./ScrollIndicatorWrapper";
 
 export function OnboardingPickPrimary() {
-    // const step =
     const setStep = useSettingsStore(s => s.setOnboardingStep);
     const setLanguages = useSettingsStore(s => s.setLanguages);
 
@@ -13,18 +13,12 @@ export function OnboardingPickPrimary() {
         setStep(2);
     };
 
-
     return (
-        <div className="flex flex-col h-full w-full mb-1">
-            <ScrollIndicatorWrapper
-                className="flex-1 min-h-0 flex flex-col justify-center"
-            >
-                {/* Content: auto-centered when not scrolling */}
+        <div className="flex flex-col flex-1 min-h-0 h-full w-full mb-4">
+            <ScrollIndicatorWrapper className="flex-1 min-h-0 flex flex-col justify-center">
                 <div
                     className="w-full max-w-xl flex flex-col gap-2 items-center mx-auto"
-                    style={{
-                        padding: 24,
-                    }}
+                    style={{ padding: 24 }}
                 >
                     {ALL_LANGUAGES.map((code) => {
                         const label =
