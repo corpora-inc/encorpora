@@ -88,7 +88,7 @@ export function OnboardingTTSInstructions() {
                     }}
                     dir={dir()}
                 >
-                    {t("How to set up TTS on")}
+                    {t("How to set up TTS on") + " " + platform.name}
                     <ExternalLink className="ml-1 inline" size={18} />
                 </a>
             </div>
