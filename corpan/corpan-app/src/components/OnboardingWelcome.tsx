@@ -4,72 +4,114 @@ import { RTL_LANGUAGES } from "@/store/constants";
 import { ArrowRightCircle } from "lucide-react";
 import { useEffect, useState } from "react";
 
-const CYCLE_INTERVAL_MS = 2000; // How fast the center word cycles
+const DISPLAY_DURATION = 2200; // ms before fade starts
+const FADE_DURATION = 2000;     // ms fade in/out
+
+const HIGHLIGHT_COLORS = [
+    "#ac6df6", // purple
+    "#ff7edb", // pink
+    "#6df6c1", // teal
+    "#f6d96d", // gold
+    "#f66d6d", // coral
+];
+function getRandomColor() {
+    return HIGHLIGHT_COLORS[Math.floor(Math.random() * HIGHLIGHT_COLORS.length)];
+}
+
 
 export function OnboardingWelcome() {
     const setStep = useSettingsStore(s => s.setOnboardingStep);
+    const [shadowColor, setShadowColor] = useState(HIGHLIGHT_COLORS[0]);
 
-    // Build a flat array of {code, word} objects for easier use
+
     const welcomes = ALL_LANGUAGES.map(code => ({
         code,
         word: TRANSLATIONS[code as keyof typeof TRANSLATIONS]?.["welcome" as keyof typeof TRANSLATIONS["en"]] || code
     }));
 
     const [idx, setIdx] = useState(0);
+    const [fading, setFading] = useState(false);
 
-    // Cycle through welcomes
     useEffect(() => {
-        const timer = setInterval(() => {
+        let fadeTimeout: ReturnType<typeof setTimeout>;
+        let nextTimeout: ReturnType<typeof setTimeout>;
+
+        fadeTimeout = setTimeout(() => setFading(true), DISPLAY_DURATION);
+
+        nextTimeout = setTimeout(() => {
             setIdx(i => (i + 1) % welcomes.length);
-        }, CYCLE_INTERVAL_MS);
-        return () => clearInterval(timer);
-    }, [welcomes.length]);
+            setFading(false);
+        }, DISPLAY_DURATION + FADE_DURATION);
+
+        return () => {
+            clearTimeout(fadeTimeout);
+            clearTimeout(nextTimeout);
+        };
+    }, [idx, welcomes.length]);
+
+    const current = welcomes[idx];
+    const dir = RTL_LANGUAGES.includes(current.code.split('-')[0]) ? "rtl" : "ltr";
+
+
+    useEffect(() => {
+        setShadowColor(getRandomColor());
+    }, [idx]);
 
     return (
-        <div className="flex flex-col items-center justify-center min-h-screen w-full bg-white relative p-10 gap-y-8"
-
-        >
-            {/* Centered, animated welcome */}
+        <div className="flex flex-col items-center justify-center min-h-screen w-full bg-white relative p-10 gap-y-7">
+            {/* Animated welcome word */}
             <div
-                className="flex flex-col items-center justify-center"
-                // style={{ minHeight: "128px" }}
-                style={{ maxWidth: 600 }}
+                className="flex flex-col items-center justify-center w-full"
+                style={{ maxWidth: 600, minHeight: 60, position: "relative" }}
             >
                 <span
-                    className="text-4xl font-bold text-gray-800 transition-all duration-500 text-center"
-                    style={{ letterSpacing: 1 }}
-                    lang={welcomes[idx].code}
-                    dir={RTL_LANGUAGES.includes(welcomes[idx].code.split('-')[0]) ? "rtl" : "ltr"}
+                    className="absolute w-full text-5xl font-bold text-gray-800 text-center pointer-events-none"
+                    style={{
+                        opacity: fading ? 0 : 1,
+                        transition: `opacity ${FADE_DURATION}ms`,
+                        letterSpacing: 1,
+                        willChange: "opacity",
+                        display: "block",
+                    }}
+                    lang={current.code}
+                    dir={dir}
                 >
-                    {welcomes[idx].word}
+                    {current.word}
                 </span>
+
             </div>
-            {/* Small faded welcomes in a line underneath */}
-            <div className="flex flex-wrap gap-3 justify-center items-center"
+            {/* Inline faded welcomes */}
+            <div
+                className="flex flex-wrap gap-3 justify-center items-center"
                 style={{ maxWidth: 600 }}
             >
-                {welcomes.map((w, i) => (
-                    <span
-                        key={w.code}
-                        className={`text-lg font-medium transition-opacity duration-500`}
-                        style={{
-                            // padding: "0 0.1em",
-                            margin: "0 0.2em",
-                            opacity: i === idx ? 1 : 0.35,
-                            // fontWeight: i === idx ? 700 : 400,
-                            fontWeight: 500,
-                            textShadow: i === idx
-                                ? "0 2px 16px #ac6df688, 0 0px 2px #3339"
-                                : undefined,
-                            letterSpacing: 0.5,
-                            // transitionDuration: "0.5s",
+                {welcomes.map((w, i) => {
+                    const isActive = i === idx;
+                    return (
+                        <span
+                            key={w.code}
+                            className="text-lg font-medium"
+                            style={{
+                                margin: "0 0.2em",
+                                opacity: isActive ? (fading ? 0.2 : 1) : 0.35,
+                                fontWeight: 500,
+                                color: isActive ? "#222" : "#999",
+                                textShadow: isActive
+                                    ? fading
+                                        ? "0 2px 24px #fff0, 0 0px 2px #3330"
+                                        : `${`0 2px 24px ${shadowColor}88, 0 0px 2px #3339`}`
+                                    : "none",
+                                letterSpacing: 0.5,
+                                transition: `opacity ${FADE_DURATION}ms, color ${FADE_DURATION}ms, text-shadow ${FADE_DURATION}ms`,
+                                filter: isActive ? "brightness(1.12)" : "none",
+                            }}
+                            lang={w.code}
+                        >
+                            {w.word}
+                        </span>
+                    );
+                })}
 
-                        }}
-                        lang={w.code}
-                    >
-                        {w.word}
-                    </span>
-                ))}
             </div>
             {/* Center button */}
             <button
@@ -83,11 +125,11 @@ export function OnboardingWelcome() {
                 "
                 style={{
                     boxShadow: "0 8px 64px 0 #0003",
-                    width: 90, height: 90,
+                    width: 72, height: 72,
                 }}
                 onClick={() => setStep(1)}
             >
-                <ArrowRightCircle size={40} />
+                <ArrowRightCircle size={36} />
             </button>
         </div>
     );

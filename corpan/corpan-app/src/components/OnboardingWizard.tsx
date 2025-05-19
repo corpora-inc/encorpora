@@ -1,7 +1,7 @@
 import { useSettingsStore } from "@/store/settings";
 import { OnboardingWelcome } from "./OnboardingWelcome";
 import { OnboardingPickPrimary } from "./OnboardingPickPrimary";
-// import { OnboardingPickLearning } from "./OnboardingPickLearning";
+import { OnboardingPickLearning } from "./OnboardingPickLearning";
 // import { OnboardingFinish } from "./OnboardingFinish";
 
 export function OnboardingWizard() {
@@ -12,8 +12,8 @@ export function OnboardingWizard() {
             return <OnboardingWelcome />;
         case 1:
             return <OnboardingPickPrimary />;
-        // case 2:
-        //     return <OnboardingPickLearning />;
+        case 2:
+            return <OnboardingPickLearning />;
         // case 3:
         //     return <OnboardingFinish />;
         default:

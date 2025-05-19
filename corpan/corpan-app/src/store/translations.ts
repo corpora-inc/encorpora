@@ -44,6 +44,9 @@ export const TRANSLATIONS = {
         "All domains included.": "All domains included.",
         // Onboarding
         "welcome": "Welcome",
+        "make primary language": "Make English my primary language",
+        "can change later": "Don't worry, you can always change this later.",
+        "Pick the languages you want to learn": "Pick the languages you want to learn",
     },
     "ko-polite": {
         "en": "영어",
@@ -90,6 +93,10 @@ export const TRANSLATIONS = {
         "All domains included.": "모든 도메인 포함됨.",
         // Onboarding
         "welcome": "환영합니다",
+        // "make Korean my primary language"
+        "make primary language": "한국어를 기본 언어로 설정하기",
+        "can change later": "언제든지 변경할 수 있으니 걱정하지 마세요.",
+        "Pick the languages you want to learn": "배우고 싶은 언어를 선택하세요",
     },
     "es": {
         "en": "Inglés",
@@ -136,6 +143,9 @@ export const TRANSLATIONS = {
         "All domains included.": "Todos los dominios incluidos.",
         // Onboarding
         "welcome": "Bienvenido",
+        "make primary language": "Hacer que el español sea mi idioma principal",
+        "can change later": "No te preocupes, puedes cambiarlo más tarde.",
+        "Pick the languages you want to learn": "Elige los idiomas que quieres aprender",
     },
     "fr": {
         "en": "Anglais",
@@ -182,6 +192,9 @@ export const TRANSLATIONS = {
         "All domains included.": "Tous les domaines inclus.",
         // Onboarding
         "welcome": "Bienvenue",
+        "make primary language": "Définir le français comme langue principale",
+        "can change later": "Pas d'inquiétude, vous pourrez toujours changer plus tard.",
+        "Pick the languages you want to learn": "Choisissez les langues que vous souhaitez apprendre",
     },
     "de": {
         "en": "Englisch",
@@ -228,6 +241,9 @@ export const TRANSLATIONS = {
         "All domains included.": "Alle Bereiche enthalten.",
         // Onboarding
         "welcome": "Willkommen",
+        "make primary language": "Deutsch als meine Hauptsprache festlegen",
+        "can change later": "Keine Sorge, du kannst das später jederzeit ändern.",
+        "Pick the languages you want to learn": "Wählen Sie die Sprachen, die Sie lernen möchten",
     },
     "pt-BR": {
         "en": "Inglês",
@@ -274,6 +290,9 @@ export const TRANSLATIONS = {
         "All domains included.": "Todos os domínios incluídos.",
         // Onboarding
         "welcome": "Bem-vindo",
+        "make primary language": "Tornar o português meu idioma principal",
+        "can change later": "Não se preocupe, você pode mudar isso depois.",
+        "Pick the languages you want to learn": "Escolha os idiomas que você deseja aprender",
     },
     "ja": {
         "en": "英語",
@@ -320,6 +339,9 @@ export const TRANSLATIONS = {
         "All domains included.": "すべてのドメインが含まれています。",
         // Onboarding
         "welcome": "ようこそ",
+        "make primary language": "日本語をメイン言語にする",
+        "can change later": "後でいつでも変更できますのでご安心ください。",
+        "Pick the languages you want to learn": "学びたい言語を選択してください",
     },
     "zh-Hans": {
         "en": "英语",
@@ -366,6 +388,9 @@ export const TRANSLATIONS = {
         "All domains included.": "所有领域均已包含。",
         // Onboarding
         "welcome": "欢迎",
+        "make primary language": "将简体中文设为我的主要语言",
+        "can change later": "不用担心，之后随时可以更改。",
+        "Pick the languages you want to learn": "选择您想学习的语言",
     },
     "ar": {
         "en": "الإنجليزية",
@@ -412,6 +437,9 @@ export const TRANSLATIONS = {
         "All domains included.": "جميع المجالات مشمولة.",
         // Onboarding
         "welcome": "أهلا بك",
+        "make primary language": "اجعل العربية هي لغتي الرئيسية",
+        "can change later": "لا تقلق، يمكنك تغيير ذلك لاحقًا.",
+        "Pick the languages you want to learn": "اختر اللغات التي تريد تعلمها",
     },
     "ru": {
         "en": "Английский",
@@ -458,6 +486,9 @@ export const TRANSLATIONS = {
         "All domains included.": "Все домены включены.",
         // Onboarding
         "welcome": "Добро пожаловать",
+        "make primary language": "Сделать русский основным языком",
+        "can change later": "Не переживайте, вы всегда сможете изменить это позже.",
+        "Pick the languages you want to learn": "Выберите языки, которые хотите изучать",
     },
     "it": {
         "en": "Inglese",
@@ -504,6 +535,9 @@ export const TRANSLATIONS = {
         "All domains included.": "Tutti i domini inclusi.",
         // Onboarding
         "welcome": "Benvenuto",
+        "make primary language": "Rendi l'italiano la mia lingua principale",
+        "can change later": "Non preoccuparti, potrai sempre cambiarlo in seguito.",
+        "Pick the languages you want to learn": "Scegli le lingue che vuoi imparare",
     },
     "hi": {
         "en": "अंग्रेज़ी",
@@ -550,6 +584,9 @@ export const TRANSLATIONS = {
         "All domains included.": "सभी डोमेन शामिल हैं।",
         // Onboarding
         "welcome": "स्वागत है",
+        "make primary language": "हिंदी को मेरी मुख्य भाषा बनाएं",
+        "can change later": "चिंता न करें, आप इसे बाद में बदल सकते हैं।",
+        "Pick the languages you want to learn": "आप कौन सी भाषाएँ सीखना चाहते हैं, चुनें",
     },
 } as const;
 
