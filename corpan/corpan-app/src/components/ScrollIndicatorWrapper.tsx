@@ -14,7 +14,7 @@ export function ScrollIndicatorWrapper({ children, className = "" }: {
         const node = ref.current;
         if (!node) return;
         setAtTop(node.scrollTop <= 0);
-        setAtBottom(node.scrollTop + node.clientHeight >= node.scrollHeight - 200);
+        setAtBottom(node.scrollTop + node.clientHeight >= node.scrollHeight - 50);
     };
 
     useEffect(() => {

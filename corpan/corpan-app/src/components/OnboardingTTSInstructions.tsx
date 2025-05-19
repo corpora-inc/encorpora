@@ -73,15 +73,16 @@ export function OnboardingTTSInstructions() {
                     <ArrowRightCircle size={30} />
                 </button>
             </div>
-            <div className="flex-1 w-full flex flex-col items-center justify-center px-20 pb-6">
+            <div className="flex-1 w-full flex flex-col items-center justify-center px-16 pb-6">
                 <div className="text-lg text-gray-800 text-center mb-5 select-none" dir={dir()}>
                     {t("If audio sounds poor, go to your device's TTS settings and install high-quality voices.")}
                 </div>
-                <a
-                    href={platform.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-purple-700 font-semibold hover:underline transition text-base"
+                <button
+                    // href={platform.link}
+                    // target="_blank"
+                    // rel="noopener noreferrer"
+                    className="mt-3 px-8 py-4 bg-purple-700 hover:bg-purple-800 text-white rounded-2xl font-semibold text-lg shadow-lg flex items-center gap-3 transition"
+                    // className="flex items-center gap-2 text-purple-700 font-semibold hover:underline transition text-base"
                     onClick={() => {
                         console.log("Opening TTS setup link:", platform.link);
                         openUrl(platform.link)
@@ -89,8 +90,8 @@ export function OnboardingTTSInstructions() {
                     dir={dir()}
                 >
                     {t("How to set up TTS on") + " " + platform.name}
-                    <ExternalLink className="ml-1 inline" size={18} />
-                </a>
+                    <ExternalLink size={22} />
+                </button>
             </div>
         </div>
     );

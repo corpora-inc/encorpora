@@ -1,4 +1,3 @@
-// OnboardingPickPrimary.tsx
 import { useSettingsStore, ALL_LANGUAGES } from "@/store/settings";
 import { TRANSLATIONS } from "@/store/translations";
 import { ArrowRightCircle } from "lucide-react";
@@ -15,10 +14,16 @@ export function OnboardingPickPrimary() {
 
     return (
         <div className="flex flex-col flex-1 min-h-0 h-full w-full mb-4">
-            <ScrollIndicatorWrapper className="flex-1 min-h-0 flex flex-col justify-center">
+            <ScrollIndicatorWrapper className="flex-1 min-h-0">
+                {/* The fix: Remove centering! */}
                 <div
-                    className="w-full max-w-xl flex flex-col gap-2 items-center mx-auto"
-                    style={{ padding: 24 }}
+                    className="w-full max-w-xl flex flex-col gap-2 items-stretch mx-auto"
+                    style={{
+                        padding: 24,
+                        flexGrow: 0,    // DO NOT GROW (prevents double scroll)
+                        flexShrink: 1,  // Shrink if needed
+                        minHeight: 0,   // Allow to shrink for scroll
+                    }}
                 >
                     {ALL_LANGUAGES.map((code) => {
                         const label =
