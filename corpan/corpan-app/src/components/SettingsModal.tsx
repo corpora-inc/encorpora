@@ -20,13 +20,14 @@ export function SettingsModal({ open, onClose }: { open: boolean; onClose: () =>
         <Dialog open={open} onOpenChange={onClose}>
             <DialogContent
                 className="
-                    max-w-full w-[100vw] sm:w-[90vw]
-                    max-h-[100dvh] h-[100dvh] sm:h-auto
-                    overflow-y-auto rounded-none sm:rounded-xl bg-white
+                    max-w-full w-[100vw] sm:max-w-[100vw] md:max-w-[90vw] lg:max-w-[75vw] xl:max-w-[60vw]
+                    max-h-[100dvh] h-[100dvh] md:h-auto md:max-h-[95dvh]
+                    overflow-y-auto rounded-none bg-white
+                    md:rounded-lg
                 "
                 style={{
-                    paddingBottom: "3.5rem",
-                    paddingTop: "3.5rem",
+                    paddingBottom: "2rem",
+                    paddingTop: "3rem",
                 }}
                 id="settings-modal-content"
             >

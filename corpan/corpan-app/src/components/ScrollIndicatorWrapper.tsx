@@ -14,7 +14,7 @@ export function ScrollIndicatorWrapper({ children, className = "" }: {
         const node = ref.current;
         if (!node) return;
         setAtTop(node.scrollTop <= 0);
-        setAtBottom(node.scrollTop + node.clientHeight >= node.scrollHeight - 125);
+        setAtBottom(node.scrollTop + node.clientHeight >= node.scrollHeight - 200);
     };
 
     useEffect(() => {
@@ -33,7 +33,7 @@ export function ScrollIndicatorWrapper({ children, className = "" }: {
         const node = ref.current;
         if (node) {
             setTimeout(() => {
-                node.scrollTo({ top: 0, behavior: "auto" });
+                node.scrollTo({ top: -300, behavior: "smooth" });
             }, 30);
         }
     }, []);
