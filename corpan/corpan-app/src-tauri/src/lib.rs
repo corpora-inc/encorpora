@@ -8,6 +8,7 @@ mod db;
 use rusqlite::params_from_iter;
 use serde::Serialize;
 use tauri::{command, AppHandle};
+use tauri_plugin_opener;
 
 /// Return type for each translation
 #[derive(Serialize)]
@@ -170,6 +171,7 @@ pub fn run() {
     tauri::Builder::default()
         .invoke_handler(tauri::generate_handler![get_random_entry_with_translations])
         .plugin(tauri_plugin_tts::init())
+        .plugin(tauri_plugin_opener::init())
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }

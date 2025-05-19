@@ -12,7 +12,7 @@ export function WizardShell({ children }: { children: React.ReactNode }) {
                     w-full h-screen flex flex-col items-center justify-center bg-white transition-all
                     rounded-none shadow-none
                     md:rounded-xl md:shadow-2xl
-                    md:max-w-xl md:max-h-[700px] md:h-auto
+                    md:max-w-xl md:max-h-[830px] md:h-auto
                     px-2
                 `}
                 style={{

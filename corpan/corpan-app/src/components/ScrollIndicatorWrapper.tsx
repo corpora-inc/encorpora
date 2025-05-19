@@ -15,7 +15,7 @@ export function ScrollIndicatorWrapper({ children, className = "" }: {
         const node = ref.current;
         if (!node) return;
         setAtTop(node.scrollTop <= 0);
-        setAtBottom(node.scrollTop + node.clientHeight >= node.scrollHeight - 2);
+        setAtBottom(node.scrollTop + node.clientHeight >= node.scrollHeight - 100);
     };
 
     useEffect(() => {
@@ -29,6 +29,17 @@ export function ScrollIndicatorWrapper({ children, className = "" }: {
             node.removeEventListener("scroll", update);
             window.removeEventListener("resize", update);
         };
+    }, []);
+
+    // scroll to the top on mount
+    useEffect(() => {
+        const node = ref.current;
+        if (node) {
+            console.log("Scrolling to top");
+            setTimeout(() => {
+                node.scrollTo({ top: -10000, behavior: "smooth" });
+            }, 30);
+        }
     }, []);
 
     return (

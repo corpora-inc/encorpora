@@ -4,6 +4,7 @@ import { DomainPicker } from "./DomainPicker";
 import { LevelsPicker } from "./LevelsPicker";
 import { RateAdjuster } from "./RateAdjuster";
 import { useSettingsStore } from "@/store/settings";
+import { Button } from "./ui/button";
 
 // Use the built-in modal with correct sizing
 export function SettingsModal({ open, onClose }: { open: boolean; onClose: () => void }) {
@@ -11,6 +12,8 @@ export function SettingsModal({ open, onClose }: { open: boolean; onClose: () =>
     const dir = useSettingsStore((s) => s.dir);
     const t = useSettingsStore((s) => s.t);
     const topLang = useSettingsStore((s) => s.topLang());
+    const setOnboarded = useSettingsStore((s) => s.setOnboarded);
+    const setOnboardingStep = useSettingsStore((s) => s.setOnboardingStep);
     console.log("new topLang", topLang);
 
     return (
@@ -37,6 +40,15 @@ export function SettingsModal({ open, onClose }: { open: boolean; onClose: () =>
                 <LanguageSelectOrder />
                 <LevelsPicker />
                 <DomainPicker />
+                <Button
+                    onClick={() => {
+                        setOnboarded(false);
+                        setOnboardingStep(0);
+                        onClose();
+                    }}
+                >
+                    {t("reonboard")}
+                </Button>
             </DialogContent>
         </Dialog>
     );

@@ -1,9 +1,10 @@
 import { useSettingsStore, ALL_LANGUAGES } from "@/store/settings";
 import { TRANSLATIONS } from "@/store/translations";
 import { ArrowRightCircle } from "lucide-react";
-import { ScrollIndicatorWrapper } from "./ScrollIndicatorWrapper"; // make sure this is the right import path
+import { ScrollIndicatorWrapper } from "./ScrollIndicatorWrapper"; // Correct import!
 
 export function OnboardingPickPrimary() {
+    // const step =
     const setStep = useSettingsStore(s => s.setOnboardingStep);
     const setLanguages = useSettingsStore(s => s.setLanguages);
 
@@ -12,17 +13,17 @@ export function OnboardingPickPrimary() {
         setStep(2);
     };
 
+
     return (
-        <div className="flex flex-col w-full flex-1 h-full items-center justify-center my-auto">
-            <ScrollIndicatorWrapper>
+        <div className="flex flex-col h-full w-full mb-1">
+            <ScrollIndicatorWrapper
+                className="flex-1 min-h-0 flex flex-col justify-center"
+            >
+                {/* Content: auto-centered when not scrolling */}
                 <div
-                    className="
-                        w-full max-w-xl flex flex-col gap-2 items-center
-                        p-6
-                    "
+                    className="w-full max-w-xl flex flex-col gap-2 items-center mx-auto"
                     style={{
-                        paddingTop: 16,
-                        paddingBottom: 16,
+                        padding: 24,
                     }}
                 >
                     {ALL_LANGUAGES.map((code) => {
