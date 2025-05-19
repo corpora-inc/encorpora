@@ -1,8 +1,8 @@
 import { useSettingsStore, ALL_LANGUAGES } from "@/store/settings";
-import { ArrowRightCircle, CheckCircle2 } from "lucide-react";
+import { ArrowRightCircle, ArrowLeftCircle, CheckCircle2 } from "lucide-react";
+import { useEffect, useRef } from "react";
 
 export function OnboardingPickLearning() {
-    // Get all helpers from store
     const setStep = useSettingsStore(s => s.setOnboardingStep);
     const languages = useSettingsStore(s => s.languages);
     const setLanguages = useSettingsStore(s => s.setLanguages);
@@ -11,11 +11,8 @@ export function OnboardingPickLearning() {
 
     const primary = languages[0];
     const learning = languages.slice(1);
-
-    // Choices: all except primary
     const choices = ALL_LANGUAGES.filter(code => code !== primary);
 
-    // Selection toggling (add/remove from learning languages)
     const toggleLearning = (code: string) => {
         let selected = learning.includes(code)
             ? learning.filter(c => c !== code)
@@ -25,41 +22,68 @@ export function OnboardingPickLearning() {
 
     const canProceed = learning.length > 0;
 
+    const containerRef = useRef<HTMLDivElement>(null);
+    const onboardingStep = useSettingsStore(s => s.onboardingStep);
+
+    useEffect(() => {
+        // console.log("Onboarding step changed:", onboardingStep, "scrolling to top");
+        // console.log(containerRef.current);
+        if (containerRef.current) {
+            // console.log("FML");
+            const curr = containerRef.current;
+            setTimeout(() => {
+                curr.scrollTo({ top: -1000, behavior: "smooth" });
+            }, 30);
+        }
+    }, [onboardingStep]); // Or pass nothing if you want to scroll on mount
+
+
     return (
-        <div className="flex flex-col items-center justify-center min-h-screen w-full bg-white overflow-y-auto p-1">
+        <div
+            ref={containerRef}
+            className="flex flex-col items-center justify-center min-h-screen w-full bg-white overflow-y-auto p-1"
+        >
             <div
                 className="w-full max-w-xl flex flex-col gap-4 items-center justify-center px-2"
                 style={{
                     paddingTop: 32,
                     paddingBottom: 32,
-                    position: "relative"
                 }}
             >
-                {/* Proceed Arrow (top right, absolute, only shows when something selected) */}
-                {canProceed && (
+                {/* Header row with Back and Next */}
+                <div className="w-full flex flex-row items-center justify-between mb-4">
                     <button
-                        className="absolute right-0 -top-4 bg-black hover:bg-gray-900 text-white rounded-full p-4 shadow-lg transition"
-                        // aria-label={t("Continue")}
-                        onClick={() => setStep(3)}
+                        className="flex items-center justify-center bg-gray-200 hover:bg-gray-300 text-gray-700 rounded-full p-3 shadow transition"
+                        onClick={() => setStep(1)}
+                        // aria-label={t("Back")}
                         tabIndex={0}
                     >
-                        <ArrowRightCircle size={32} />
+                        <ArrowLeftCircle size={30} />
                     </button>
-                )}
-                {/* Localized CTA */}
-                <div
-                    className="w-full text-center mb-1 text-2xl font-semibold text-gray-800 select-none"
-                    style={{ letterSpacing: 0.5 }}
-                    dir={dir()}
-                >
-                    {t("Pick the languages you want to learn")}
+                    <div
+                        className="flex-1 text-center text-2xl font-semibold text-gray-800 select-none"
+                        style={{ letterSpacing: 0.5 }}
+                        dir={dir()}
+                    >
+                        {t("Pick the languages you want to learn")}
+                    </div>
+                    <button
+                        className={`flex items-center justify-center rounded-full p-3 shadow transition
+                            ${canProceed
+                                ? "bg-black hover:bg-gray-900 text-white"
+                                : "bg-gray-200 text-gray-400 cursor-not-allowed"
+                            }`}
+                        onClick={() => canProceed && setStep(3)}
+                        // aria-label={t("Continue")}
+                        disabled={!canProceed}
+                        tabIndex={0}
+                    >
+                        <ArrowRightCircle size={30} />
+                    </button>
                 </div>
                 {/* Language Options */}
                 {choices.map((code) => {
-                    // Prefer label in UI lang, fallback to self-name, fallback to code
-                    const label =
-                        t(code as any) ||
-                        code;
+                    const label = t(code as any) || code;
                     const selected = learning.includes(code);
                     return (
                         <button
