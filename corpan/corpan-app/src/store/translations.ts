@@ -42,6 +42,8 @@ export const TRANSLATIONS = {
         "selected": "selected",
         "Domains": "Domains",
         "All domains included.": "All domains included.",
+        // Onboarding
+        "welcome": "Welcome",
     },
     "ko-polite": {
         "en": "영어",
@@ -86,6 +88,8 @@ export const TRANSLATIONS = {
         "selected": "선택됨",
         "Domains": "도메인",
         "All domains included.": "모든 도메인 포함됨.",
+        // Onboarding
+        "welcome": "환영합니다",
     },
     "es": {
         "en": "Inglés",
@@ -130,6 +134,8 @@ export const TRANSLATIONS = {
         "selected": "seleccionado",
         "Domains": "Dominios",
         "All domains included.": "Todos los dominios incluidos.",
+        // Onboarding
+        "welcome": "Bienvenido",
     },
     "fr": {
         "en": "Anglais",
@@ -174,6 +180,8 @@ export const TRANSLATIONS = {
         "selected": "sélectionné",
         "Domains": "Domaines",
         "All domains included.": "Tous les domaines inclus.",
+        // Onboarding
+        "welcome": "Bienvenue",
     },
     "de": {
         "en": "Englisch",
@@ -218,6 +226,8 @@ export const TRANSLATIONS = {
         "selected": "ausgewählt",
         "Domains": "Bereiche",
         "All domains included.": "Alle Bereiche enthalten.",
+        // Onboarding
+        "welcome": "Willkommen",
     },
     "pt-BR": {
         "en": "Inglês",
@@ -262,6 +272,8 @@ export const TRANSLATIONS = {
         "selected": "selecionado",
         "Domains": "Domínios",
         "All domains included.": "Todos os domínios incluídos.",
+        // Onboarding
+        "welcome": "Bem-vindo",
     },
     "ja": {
         "en": "英語",
@@ -306,6 +318,8 @@ export const TRANSLATIONS = {
         "selected": "選択された",
         "Domains": "ドメイン",
         "All domains included.": "すべてのドメインが含まれています。",
+        // Onboarding
+        "welcome": "ようこそ",
     },
     "zh-Hans": {
         "en": "英语",
@@ -350,6 +364,8 @@ export const TRANSLATIONS = {
         "selected": "已选择",
         "Domains": "领域",
         "All domains included.": "所有领域均已包含。",
+        // Onboarding
+        "welcome": "欢迎",
     },
     "ar": {
         "en": "الإنجليزية",
@@ -394,6 +410,8 @@ export const TRANSLATIONS = {
         "selected": "المحدد",
         "Domains": "المجالات",
         "All domains included.": "جميع المجالات مشمولة.",
+        // Onboarding
+        "welcome": "أهلا بك",
     },
     "ru": {
         "en": "Английский",
@@ -438,6 +456,8 @@ export const TRANSLATIONS = {
         "selected": "выбрано",
         "Domains": "Домены",
         "All domains included.": "Все домены включены.",
+        // Onboarding
+        "welcome": "Добро пожаловать",
     },
     "it": {
         "en": "Inglese",
@@ -482,6 +502,8 @@ export const TRANSLATIONS = {
         "selected": "selezionato",
         "Domains": "Domini",
         "All domains included.": "Tutti i domini inclusi.",
+        // Onboarding
+        "welcome": "Benvenuto",
     },
     "hi": {
         "en": "अंग्रेज़ी",
@@ -526,6 +548,8 @@ export const TRANSLATIONS = {
         "selected": "चयनित",
         "Domains": "डोमेन",
         "All domains included.": "सभी डोमेन शामिल हैं।",
+        // Onboarding
+        "welcome": "स्वागत है",
     },
 } as const;
 

@@ -31,6 +31,12 @@ type SettingsState = {
     topLang: () => string;
     t: (key: TranslationKey) => string;
     dir: () => "ltr" | "rtl";
+
+    onboarded: boolean;
+    setOnboarded: (b: boolean) => void;
+    resetOnboarding: () => void;
+    onboardingStep: number;
+    setOnboardingStep: (n: number) => void;
 };
 
 export const useSettingsStore = create<SettingsState>()(
@@ -65,6 +71,15 @@ export const useSettingsStore = create<SettingsState>()(
                 const base = lang.split("-")[0];
                 return RTL_LANGUAGES.includes(base as any) ? "rtl" : "ltr";
             },
+            onboarded: false,
+            setOnboarded: (b) => set({ onboarded: b }),
+            resetOnboarding: () =>
+                set({
+                    onboarded: false,
+                    languages: [],
+                }),
+            onboardingStep: 0,
+            setOnboardingStep: (n) => set({ onboardingStep: n }),
         }),
         { name: "corpan-settings" }
     )
