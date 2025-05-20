@@ -59,7 +59,7 @@ export function OnboardingTTSInstructions() {
                     <ArrowLeftCircle size={30} />
                 </button>
                 <div
-                    className="flex-1 text-center text-lg font-semibold text-gray-800 select-none"
+                    className="flex-1 text-center text-lg font-semibold text-gray-800 select-none px-2"
                     style={{ letterSpacing: 0.5 }}
                     dir={dir()}
                 >
@@ -73,25 +73,32 @@ export function OnboardingTTSInstructions() {
                     <ArrowRightCircle size={30} />
                 </button>
             </div>
-            <div className="flex-1 w-full flex flex-col items-center justify-center px-16 pb-6">
-                <div className="text-lg text-gray-800 text-center mb-5 select-none" dir={dir()}>
+            <div className="flex-1 w-full flex flex-col items-center justify-center px-6 pb-16">
+                <div className="text-lg text-gray-800 text-center select-none" dir={dir()}>
                     {t("If audio sounds poor, go to your device's TTS settings and install high-quality voices.")}
                 </div>
                 <button
-                    // href={platform.link}
-                    // target="_blank"
-                    // rel="noopener noreferrer"
-                    className="mt-3 px-8 py-4 bg-purple-700 hover:bg-purple-800 text-white rounded-2xl font-semibold text-lg shadow-lg flex items-center gap-3 transition"
-                    // className="flex items-center gap-2 text-purple-700 font-semibold hover:underline transition text-base"
-                    onClick={() => {
-                        console.log("Opening TTS setup link:", platform.link);
-                        openUrl(platform.link)
-                    }}
+                    className="
+                    mt-5
+                    px-5 py-4
+                    bg-white
+                    border-2 border-purple-700
+                    hover:bg-purple-50
+                    text-purple-700
+                    hover:text-purple-800
+                    rounded-2xl font-semibold text-lg shadow-lg
+                    flex items-center gap-1 transition justify-center
+                    "
+                    // style={{ border: "2px solid red" }}
+                    onClick={() => openUrl(platform.link)}
                     dir={dir()}
                 >
                     {t("How to set up TTS on") + " " + platform.name}
-                    <ExternalLink size={22} />
+                    <ExternalLink
+                        style={{ width: 22, height: 22, minWidth: 22, minHeight: 22 }}
+                        size={22} />
                 </button>
+
             </div>
         </div>
     );

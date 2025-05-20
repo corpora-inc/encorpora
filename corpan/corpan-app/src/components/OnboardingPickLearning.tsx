@@ -34,7 +34,7 @@ export function OnboardingPickLearning() {
                     <ArrowLeftCircle size={30} />
                 </button>
                 <div
-                    className="flex-1 text-center text-lg font-semibold text-gray-800 select-none"
+                    className="flex-1 text-center text-lg font-semibold text-gray-800 select-none px-2"
                     style={{ letterSpacing: 0.5 }}
                     dir={dir()}
                 >

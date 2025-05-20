@@ -32,7 +32,7 @@ export function OnboardingFinish() {
                     <ArrowLeftCircle size={30} />
                 </button>
                 <div
-                    className="flex-1 text-center text-lg font-semibold text-gray-800 select-none"
+                    className="flex-1 text-center text-lg font-semibold text-gray-800 select-none px-2"
                     style={{ letterSpacing: 0.5 }}
                     dir={dir()}
                 >
@@ -48,12 +48,22 @@ export function OnboardingFinish() {
             </div>
             {/* Content */}
             <div className="flex flex-1 flex-col items-center justify-center px-6 pb-10 w-full">
-                <div className="w-full max-w-xl flex flex-col gap-8 items-center mx-auto text-center">
-                    <div className="text-lg text-gray-700 mb-2" dir={dir()}>
+                <div className="w-full max-w-xl flex flex-col items-center mx-auto text-center">
+                    <div className="text-lg text-gray-700" dir={dir()}>
                         {t("welcome_body")}
                     </div>
                     <button
-                        className="mt-3 px-8 py-4 bg-purple-700 hover:bg-purple-800 text-white rounded-2xl font-semibold text-lg shadow-lg flex items-center gap-3 transition"
+                        // className="mt-3 px-8 py-4 bg-purple-700 hover:bg-purple-800 text-white rounded-2xl font-semibold text-lg shadow-lg flex items-center gap-3 transition"
+                        className="
+                        mt-5 px-5 py-4
+                        bg-white
+                        border-2 border-purple-700
+                        hover:bg-purple-50
+                        text-purple-700
+                        hover:text-purple-800
+                        rounded-2xl font-semibold text-lg shadow-lg
+                        flex items-center gap-3 transition justify-center
+                        "
                         onClick={handleVisit}
                         dir={dir()}
                     >
