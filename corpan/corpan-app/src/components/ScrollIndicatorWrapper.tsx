@@ -1,12 +1,13 @@
-// ScrollIndicatorWrapper.tsx
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect, forwardRef } from "react";
 import { ChevronDown, ChevronUp } from "lucide-react";
 
-export function ScrollIndicatorWrapper({ children, className = "" }: {
+export const ScrollIndicatorWrapper = forwardRef<HTMLDivElement, {
     children: React.ReactNode;
     className?: string;
-}) {
-    const ref = useRef<HTMLDivElement>(null);
+}>(({ children, className = "" }, refOuter) => {
+    const innerRef = useRef<HTMLDivElement>(null);
+    // Use the outer ref if provided, else fallback to innerRef
+    const ref = (refOuter && typeof refOuter !== "function" ? refOuter : innerRef) as React.RefObject<HTMLDivElement>;
     const [atTop, setAtTop] = useState(true);
     const [atBottom, setAtBottom] = useState(false);
 
@@ -27,7 +28,7 @@ export function ScrollIndicatorWrapper({ children, className = "" }: {
             node.removeEventListener("scroll", update);
             window.removeEventListener("resize", update);
         };
-    }, []);
+    }, [ref]);
 
     useEffect(() => {
         const node = ref.current;
@@ -36,7 +37,7 @@ export function ScrollIndicatorWrapper({ children, className = "" }: {
                 node.scrollTo({ top: -300, behavior: "smooth" });
             }, 30);
         }
-    }, []);
+    }, [ref]);
 
     return (
         <div className="relative flex-1 min-h-0 w-full h-full">
@@ -63,4 +64,5 @@ export function ScrollIndicatorWrapper({ children, className = "" }: {
             </div>
         </div>
     );
-}
+});
+ScrollIndicatorWrapper.displayName = "ScrollIndicatorWrapper";

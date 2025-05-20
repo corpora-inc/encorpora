@@ -2,6 +2,8 @@ import { useSettingsStore, ALL_LANGUAGES } from "@/store/settings";
 import { TRANSLATIONS } from "@/store/translations";
 import { ArrowRightCircle } from "lucide-react";
 import { ScrollIndicatorWrapper } from "./ScrollIndicatorWrapper";
+import { useRef, useState, useEffect } from "react";
+
 
 export function OnboardingPickPrimary() {
     const setStep = useSettingsStore(s => s.setOnboardingStep);
@@ -12,17 +14,41 @@ export function OnboardingPickPrimary() {
         setStep(2);
     };
 
+    const wrapperRef = useRef<HTMLDivElement>(null);
+    const containerRef = useRef<HTMLDivElement>(null);
+    const [offset, setOffset] = useState(0);
+
+    useEffect(() => {
+        const updateOffset = () => {
+            const wrapper = wrapperRef.current;
+            const container = containerRef.current;
+            if (!wrapper || !container) return;
+            const containerHeight = container.clientHeight;
+            const contentHeight = wrapper.scrollHeight;
+            // Only center if content fits without scroll
+            if (contentHeight < containerHeight) {
+                setOffset((containerHeight - contentHeight) / 2);
+            } else {
+                setOffset(0);
+            }
+        };
+        updateOffset();
+        window.addEventListener("resize", updateOffset);
+        return () => window.removeEventListener("resize", updateOffset);
+    }, [ALL_LANGUAGES.length]);
+
     return (
-        <div className="flex flex-col flex-1 min-h-0 h-full w-full mb-4">
-            <ScrollIndicatorWrapper className="flex-1 min-h-0">
-                {/* The fix: Remove centering! */}
+        <div className="flex flex-col flex-1 min-h-0 h-full w-full">
+            <ScrollIndicatorWrapper className="flex-1 min-h-0" ref={containerRef}>
                 <div
-                    className="w-full max-w-xl flex flex-col gap-2 items-stretch mx-auto"
+                    ref={wrapperRef}
+                    className={`
+                        w-full max-w-xl flex flex-col gap-2 items-stretch mx-auto
+                    `}
                     style={{
-                        padding: 24,
-                        flexGrow: 0,    // DO NOT GROW (prevents double scroll)
-                        flexShrink: 1,  // Shrink if needed
-                        minHeight: 0,   // Allow to shrink for scroll
+                        minHeight: 0,
+                        transform: `translateY(${offset}px)`,
+                        transition: "transform 0.35s cubic-bezier(.4,1.4,.5,1)",
                     }}
                 >
                     {ALL_LANGUAGES.map((code) => {
