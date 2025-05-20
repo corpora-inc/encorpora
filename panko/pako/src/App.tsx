@@ -6,8 +6,18 @@ import {
   ChevronLeft as ChevronLeftIcon,
   RefreshCw as RefreshIcon,
   ChevronRight as ChevronRightIcon,
+  Info,
 } from "lucide-react";
 import "./index.css";
+import {
+  Drawer,
+  DrawerContent,
+  DrawerDescription,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from "@/components/ui/drawer";
+import About from "./components/About";
 
 const HISTORY_KEY = "korean_sentence_history";
 
@@ -95,6 +105,20 @@ export default function App() {
 
   return (
     <div className="h-full w-full flex items-center justify-center bg-gray-50">
+      <Drawer>
+        <DrawerTrigger asChild>
+          <div>
+            <Info className="absolute top-3 right-3   w-6 h-6 text-gray-500" />
+          </div>
+        </DrawerTrigger>
+        <DrawerContent>
+          <DrawerHeader>
+            <DrawerTitle className="font-bold text-2xl">About Pako</DrawerTitle>
+            <DrawerDescription>Learn Korean or 영어를 배우다</DrawerDescription>
+          </DrawerHeader>
+          <About />
+        </DrawerContent>
+      </Drawer>
       <div className="flex flex-col h-full w-full bg-white rounded-lg shadow-lg overflow-scroll">
         {/* Top third: Hangul */}
         <div className="flex-1 flex flex-col items-center justify-center px-4">
