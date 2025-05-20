@@ -55,6 +55,7 @@ export const TRANSLATIONS = {
         "welcome_visit": "Visit encorpora.io",
         "link_copied": "Link copied! Open in your browser:",
         "reonboard": "Restart onboarding",
+        "test_tts": "Test your TTS settings by clicking the buttons below:",
     },
     "ko-polite": {
         "en": "영어",
@@ -113,6 +114,7 @@ export const TRANSLATIONS = {
         "welcome_visit": "encorpora.io 방문하기",
         "link_copied": "링크가 복사되었습니다! 브라우저에서 열어보세요:",
         "reonboard": "온보딩 재시작",
+        "test_tts": "아래 버튼을 눌러 TTS 설정을 테스트해보세요.",
     },
     "es": {
         "en": "Inglés",
@@ -170,6 +172,7 @@ export const TRANSLATIONS = {
         "welcome_visit": "Visita encorpora.io",
         "link_copied": "¡Enlace copiado! Ábrelo en tu navegador:",
         "reonboard": "Reiniciar onboarding",
+        "test_tts": "Prueba la configuración de TTS haciendo clic en los botones de abajo:",
     },
     "fr": {
         "en": "Anglais",
@@ -227,6 +230,7 @@ export const TRANSLATIONS = {
         "welcome_visit": "Visitez encorpora.io",
         "link_copied": "Lien copié ! Ouvrez-le dans votre navigateur :",
         "reonboard": "Redémarrer l'onboarding",
+        "test_tts": "Testez vos paramètres TTS en cliquant sur les boutons ci-dessous :",
     },
     "de": {
         "en": "Englisch",
@@ -284,6 +288,7 @@ export const TRANSLATIONS = {
         "welcome_visit": "Besuchen Sie encorpora.io",
         "link_copied": "Link kopiert! Im Browser öffnen:",
         "reonboard": "Onboarding neu starten",
+        "test_tts": "Testen Sie Ihre TTS-Einstellungen, indem Sie auf die Schaltflächen unten klicken:",
     },
     "pt-BR": {
         "en": "Inglês",
@@ -341,6 +346,7 @@ export const TRANSLATIONS = {
         "welcome_visit": "Visite encorpora.io",
         "link_copied": "Link copiado! Abra no seu navegador:",
         "reonboard": "Reiniciar onboarding",
+        "test_tts": "Teste suas configurações de TTS clicando nos botões abaixo:",
     },
     "ja": {
         "en": "英語",
@@ -398,6 +404,7 @@ export const TRANSLATIONS = {
         "welcome_visit": "encorpora.io を訪問",
         "link_copied": "リンクをコピーしました！ブラウザで開いてください：",
         "reonboard": "オンボーディングを再起動",
+        "test_tts": "以下のボタンをクリックしてTTS設定をテストしてください：",
     },
     "zh-Hans": {
         "en": "英语",
@@ -455,6 +462,7 @@ export const TRANSLATIONS = {
         "welcome_visit": "访问 encorpora.io",
         "link_copied": "链接已复制！请在浏览器中打开：",
         "reonboard": "重新开始引导",
+        "test_tts": "通过点击下面的按钮测试您的TTS设置：",
     },
     "ar": {
         "en": "الإنجليزية",
@@ -512,6 +520,7 @@ export const TRANSLATIONS = {
         "welcome_visit": "قم بزيارة encorpora.io",
         "link_copied": "تم نسخ الرابط! افتحه في متصفحك:",
         "reonboard": "إعادة بدء الإعداد",
+        "test_tts": "اختبر إعدادات تحويل النص إلى كلام الخاصة بك من خلال النقر على الأزرار أدناه:",
     },
     "ru": {
         "en": "Английский",
@@ -569,6 +578,7 @@ export const TRANSLATIONS = {
         "welcome_visit": "Посетите encorpora.io",
         "link_copied": "Ссылка скопирована! Откройте в браузере:",
         "reonboard": "Перезапустить обучение",
+        "test_tts": "Проверьте настройки TTS, нажав на кнопки ниже:",
     },
     "it": {
         "en": "Inglese",
@@ -626,6 +636,7 @@ export const TRANSLATIONS = {
         "welcome_visit": "Visita encorpora.io",
         "link_copied": "Link copiato! Apri nel browser:",
         "reonboard": "Riavvia onboarding",
+        "test_tts": "Testa le tue impostazioni TTS facendo clic sui pulsanti qui sotto:",
     },
     "hi": {
         "en": "अंग्रेज़ी",
@@ -683,6 +694,7 @@ export const TRANSLATIONS = {
         "welcome_visit": "encorpora.io पर जाएँ",
         "link_copied": "लिंक कॉपी हो गया! अपने ब्राउज़र में खोलें:",
         "reonboard": "ऑनबोर्डिंग को फिर से शुरू करें",
+        "test_tts": "नीचे दिए गए बटन पर क्लिक करके अपने TTS सेटिंग्स का परीक्षण करें:",
     },
 } as const;
 

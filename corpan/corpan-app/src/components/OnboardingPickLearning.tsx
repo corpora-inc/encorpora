@@ -77,7 +77,7 @@ export function OnboardingPickLearning() {
                                     focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-400
                                     hover:bg-gray-50 hover:border-purple-400
                                     transition
-                                    text-left
+                                    ${dir() === "rtl" ? 'text-right' : 'text-left'}
                                     break-words
                                     select-text
                                     ${selected ? "border-purple-500 bg-purple-50" : ""}
@@ -89,6 +89,7 @@ export function OnboardingPickLearning() {
                                     lineHeight: 1.25,
                                     // margin: "0 auto",
                                 }}
+                                dir={dir()}
                             >
                                 <span className="flex-1">{label}</span>
                                 {selected ? (

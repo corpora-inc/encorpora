@@ -1,27 +1,43 @@
 import { useSettingsStore } from "@/store/settings";
 import { openUrl } from "@tauri-apps/plugin-opener";
-import { ArrowRightCircle, ArrowLeftCircle, ExternalLink } from "lucide-react";
+import { ArrowRightCircle, ArrowLeftCircle, ExternalLink, Volume2 } from "lucide-react";
 import { useMemo } from "react";
+import { createVoiceTTS } from "@/util/speak"; // must exist: (text, lang) => void
 
-// Detect platform (very simple logic for demo; you can tune this!)
+// Language samples, extend as needed
+const SAMPLES: Record<string, string> = {
+    en: "Hello! This is what English sounds like.",
+    es: "¡Hola! Así suena el español.",
+    fr: "Bonjour ! Voici à quoi ressemble le français.",
+    de: "Hallo! So klingt Deutsch.",
+    it: "Ciao! Ecco come suona l'italiano.",
+    ru: "Здравствуйте! Вот как звучит русский язык.",
+    ko: "안녕하세요! 이것이 한국어의 소리예요.",
+    ja: "こんにちは！これが日本語の音です。",
+    zh: "你好！这就是中文的发音。",
+    pt: "Olá! É assim que soa o português.",
+    tr: "Merhaba! Türkçe böyle duyulur.",
+    ar: "مرحبًا! هكذا تبدو اللغة العربية.",
+    hi: "नमस्ते! यह हिंदी की आवाज़ है।",
+};
+
 function getPlatformInfo() {
     const ua = navigator.userAgent;
     if (/android/i.test(ua)) {
         return {
             name: "Android",
-            link: "https://support.google.com/accessibility/android/answer/6006983?hl=en", // Official TTS setup
+            link: "https://support.google.com/accessibility/android/answer/6006983?hl=en",
         };
     }
     if (/iPad|iPhone|iPod/.test(ua)) {
         return {
             name: "iOS",
-            link: "https://support.apple.com/en-us/HT207180", // Apple TTS (VoiceOver/Speak)
+            link: "https://support.apple.com/en-us/HT207180",
         };
     }
     if (/macintosh|mac os/i.test(ua)) {
         return {
             name: "macOS",
-            // link: "https://support.apple.com/guide/mac-help/change-the-voice-your-mac-uses-to-speak-text-mchlp2290/15.0/mac/15.0"
             link: "https://support.apple.com/guide/mac-help/use-text-to-speech-mh27448/mac",
         };
     }
@@ -33,7 +49,7 @@ function getPlatformInfo() {
     }
     return {
         name: "your device",
-        link: "https://en.wikipedia.org/wiki/Speech_synthesis#Personal_computers", // Fallback
+        link: "https://en.wikipedia.org/wiki/Speech_synthesis#Personal_computers",
     };
 }
 
@@ -41,15 +57,24 @@ export function OnboardingTTSInstructions() {
     const setStep = useSettingsStore(s => s.setOnboardingStep);
     const t = useSettingsStore(s => s.t);
     const dir = useSettingsStore(s => s.dir);
-
     const platform = useMemo(() => getPlatformInfo(), []);
+    const languages = useSettingsStore(s => s.languages);
 
-    // Single translation string: Keep it short, to the point.
-    // Example English: "If the audio quality is poor, configure text-to-speech (TTS) voices in your device settings."
-    // (You might have "TTS voices" as a translation variable if you want a truly short translation set.)
+    // Fallback to English sample if not found
+    const getSample = (code: string) =>
+        SAMPLES[code] || SAMPLES[code.split("-")[0]] || SAMPLES["en"];
+
+    const speak = (text: string, lang: string) => {
+        try {
+            createVoiceTTS(lang.split('-')[0])(text);
+        } catch (e) {
+            alert("Unable to speak. TTS error.");
+        }
+    };
 
     return (
         <div className="flex flex-col h-full w-full">
+            {/* Header nav */}
             <div className="w-full max-w-xl mx-auto flex flex-row items-center justify-between py-5 px-2">
                 <button
                     className="flex items-center justify-center bg-gray-200 hover:bg-gray-300 text-gray-700 rounded-full p-3 shadow transition"
@@ -73,13 +98,48 @@ export function OnboardingTTSInstructions() {
                     <ArrowRightCircle size={30} />
                 </button>
             </div>
-            <div className="flex-1 w-full flex flex-col items-center justify-center px-6 pb-16">
-                <div className="text-lg text-gray-800 text-center select-none" dir={dir()}>
-                    {t("If audio sounds poor, go to your device's TTS settings and install high-quality voices.")}
+            <div className="flex-1 w-full flex flex-col items-center justify-center px-6 pb-10 gap-8">
+                <div className="flex flex-col gap-8 max-w-lg">
+                    <div className="text-lg text-gray-800 text-center select-none" dir={dir()}>
+                        {/* Test your TTS settings by clicking the buttons below. */}
+                        {t("test_tts")}
+                    </div>
+                    {/* SAMPLE TTS BUTTONS */}
+                    <div className="w-full flex flex-wrap justify-center gap-3">
+                        {languages.map((code) => (
+                            <button
+                                key={code}
+                                onClick={() => speak(getSample(code), code)}
+                                className="
+                                flex items-center gap-2
+                                px-4 py-3
+                                rounded-xl
+                                bg-gray-100 hover:bg-purple-50
+                                border border-gray-200
+                                text-base font-semibold text-gray-800
+                                shadow-sm
+                                transition
+                                min-w-[140px]
+                                justify-center
+                            "
+                                dir={code === "ar" ? "rtl" : "ltr"}
+                            >
+                                <Volume2 size={20} className="text-purple-700" />
+                                <span className="truncate max-w-[100px]"
+                                // dir={code === "ar" ? "rtl" : "ltr"}
+                                >
+                                    {/* {code}, {code.split("-")[0]}:{" "} */}
+                                    {getSample(code.split("-")[0])}
+                                </span>
+                            </button>
+                        ))}
+                    </div>
+                    <div className="text-lg text-gray-800 text-center select-none" dir={dir()}>
+                        {t("If audio sounds poor, go to your device's TTS settings and install high-quality voices.")}
+                    </div>
                 </div>
                 <button
                     className="
-                    mt-5
                     px-5 py-4
                     bg-white
                     border-2 border-purple-700
@@ -89,7 +149,6 @@ export function OnboardingTTSInstructions() {
                     rounded-2xl font-semibold text-lg shadow-lg
                     flex items-center gap-1 transition justify-center
                     "
-                    // style={{ border: "2px solid red" }}
                     onClick={() => openUrl(platform.link)}
                     dir={dir()}
                 >
@@ -98,7 +157,6 @@ export function OnboardingTTSInstructions() {
                         style={{ width: 22, height: 22, minWidth: 22, minHeight: 22 }}
                         size={22} />
                 </button>
-
             </div>
         </div>
     );
