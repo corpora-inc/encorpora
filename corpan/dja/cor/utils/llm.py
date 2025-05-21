@@ -1,5 +1,5 @@
 from enum import Enum
-from typing import List, Tuple, Literal
+from typing import List, Optional, Tuple, Literal
 from pydantic import BaseModel
 from corpora_ai.provider_loader import load_llm_provider
 from corpora_ai.llm_interface import ChatCompletionTextMessage
@@ -35,6 +35,17 @@ class EnglishSentence(BaseModel):
     en_text: str
     level: CEFRLevel
     domains: List[DomainCode]
+
+
+class TranslatedSentence(BaseModel):
+    # make optional
+    # entry_id: Optional int
+    entry_id: Optional[int]
+    translated_text: str
+
+
+class TranslationResponse(BaseModel):
+    translations: List[TranslatedSentence]
 
 
 CEFR_GUIDANCE = """
@@ -104,20 +115,19 @@ def get_english_sentences(word: str, count: int = 50) -> List[Entry]:
     return entries
 
 
-class TranslatedSentence(BaseModel):
-    entry_id: int
-    translated_text: str
-
-
-def translate_entry_batch(lang_code: str, entries: List[Tuple[int, str]]) -> None:
+def translate_entry_batch(
+    lang_code: str,
+    entries: List[Tuple[int, str]],
+    llm=llm,
+    dry_run: bool = True,
+) -> TranslationResponse:
     """
     Translate a batch of English sentences into the given language and save them to DB.
     Entries: list of (entry_id, en_text)
     """
     language = Language.objects.get(code=lang_code)
 
-    class TranslationResponse(BaseModel):
-        translations: List[TranslatedSentence]
+    # if lang_code == "en":
 
     # Create system message in target language
     prompt_native = {
@@ -186,18 +196,34 @@ def translate_entry_batch(lang_code: str, entries: List[Tuple[int, str]]) -> Non
         ),
     }.get(
         lang_code,
-        f"You are a world-class English-to-{language.name} translator. Translate each sentence naturally and respectfully, as if for A1-B1 language learners. Maintain fidelity to the original but ensure your translation sounds completely native. Return only a JSON list of translations.",
+        (
+            f"You are a world-class English-to-{language.name} translator. "
+            "Translate each sentence naturally and respectfully, "
+            "as if for A1-B1 language learners. Maintain fidelity to the "
+            "original but ensure your translation sounds completely native. "
+            "Return only a JSON list of translation responses.",
+        ),
     )
 
     messages = [
         ChatCompletionTextMessage(role="system", text=prompt_native),
         ChatCompletionTextMessage(
             role="user",
-            text="\n".join(f"{entry_id}: {en_text}" for entry_id, en_text in entries),
+            text=(
+                "Return only the TranslationResponse with `translations` as "
+                "a JSON list of TranslatedSentence objects which include the `entry_id` "
+                "and `translated_text` fields. "
+            ),
+        ),
+        ChatCompletionTextMessage(
+            role="user", text="\n\n".join([f"{i}: {text}" for (i, text) in entries])
         ),
     ]
 
+    # print(f"{messages}")
+    # print(f"{TranslationResponse.model_dump_json(indent=2)}")
     result = llm.get_data_completion(messages, TranslationResponse)
+    # print(result.translations)
 
     objs = [
         Translation(
@@ -208,4 +234,7 @@ def translate_entry_batch(lang_code: str, entries: List[Tuple[int, str]]) -> Non
         for item in result.translations
     ]
 
-    Translation.objects.bulk_create(objs, ignore_conflicts=True)
+    if not dry_run:
+        Translation.objects.bulk_create(objs, ignore_conflicts=True)
+
+    return result
