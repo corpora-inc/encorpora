@@ -39,6 +39,7 @@ export function MainExperience() {
     // Fetch a random entry with all languages, push to history
     const fetchRandomEntry = async () => {
         setIndex(history.length - 1); // set index to the end of history
+        console.log("Domains", domains);
         try {
             const entry = await invoke<EntryOut>("get_random_entry_with_translations", { domains, levels });
             pushEntry(entry); // updates both history and index
