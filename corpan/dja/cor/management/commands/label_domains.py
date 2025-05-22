@@ -2,7 +2,6 @@ import time
 from typing import List, Type
 from enum import Enum
 from django.core.management.base import BaseCommand
-from django.db.models import QuerySet
 
 from pydantic import BaseModel
 
@@ -74,20 +73,23 @@ class Command(BaseCommand):
 
         llm = self.load_llm(provider)
 
-        entries: QuerySet[Entry] = Entry.objects.filter(domains__isnull=True).order_by(
-            "id"
+        entry_ids = list(
+            Entry.objects.filter(domains__isnull=True)
+            .order_by("id")
+            .values_list("id", flat=True)
         )
         if limit:
-            entries = entries[:limit]
+            entry_ids = entry_ids[:limit]
+        total = len(entry_ids)
 
-        total = entries.count()
         self.stdout.write(f"Found {total} entries without domains.")
 
         total_labeled = 0
         start_time = time.time()
 
-        for i in range(0, entries.count(), batch_size):
-            batch = list(entries[i : i + batch_size])
+        for i in range(0, total, batch_size):
+            batch_ids = entry_ids[i : i + batch_size]
+            batch = list(Entry.objects.filter(id__in=batch_ids).order_by("id"))
             if not batch:
                 break
 
