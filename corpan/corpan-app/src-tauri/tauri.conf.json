@@ -1,0 +1,42 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "corpan",
+  "version": "0.5.0",
+  "identifier": "com.corpora.corpan",
+  "build": {
+    "beforeDevCommand": "npm run dev",
+    "devUrl": "http://localhost:1420",
+    "beforeBuildCommand": "npm run build",
+    "frontendDist": "../dist"
+  },
+  "app": {
+    "windows": [
+      {
+        "title": "Corpán",
+        "width": 800,
+        "height": 600
+      }
+    ],
+    "security": {
+      "csp": null
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": "all",
+    "resources": [
+      "../../dja/db.sqlite3"
+    ],
+    "icon": [
+      "icons/512x512.png"
+    ],
+    "iOS": {
+      "minimumSystemVersion": "14.0",
+      "developmentTeam": "F9AV5HKF6N",
+      "template": "ios/project.yml"
+    },
+    "macOS": {
+      "signingIdentity": "3rd Party Mac Developer Application: Corpora Inc (F9AV5HKF6N)"
+    }
+  }
+}
