@@ -2,5 +2,5 @@
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
 fn main() {
-    corpan_app_lib::run()
+    corpan_lib::run()
 }
