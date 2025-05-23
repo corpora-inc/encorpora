@@ -1,7 +1,7 @@
 [package]
-name = "corpan-app"
+name = "corpan"
 version = "0.1.0"
-description = "A Tauri App"
+description = "Language learning app"
 authors = ["you"]
 edition = "2021"
 
@@ -23,4 +23,6 @@ tauri-plugin-opener = "2"
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"
 rusqlite = { version = "0.35.0", features = ["bundled"] }
-tauri-plugin-tts = { git = "https://github.com/httpjamesm/tauri-plugin-tts.git" }
+# tauri-plugin-tts = { git = "https://github.com/httpjamesm/tauri-plugin-tts.git" }
+tauri-plugin-tts = { git = "https://github.com/skyl/tauri-plugin-tts.git", branch = "force-language-android" }
+# tauri-plugin-tts = { path = "/Users/skyl/Code/github/tauri-plugin-tts" }

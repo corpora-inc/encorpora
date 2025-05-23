@@ -43,7 +43,7 @@ export function OnboardingPickPrimary() {
                 <div
                     ref={wrapperRef}
                     className={`
-                        w-full max-w-xl flex flex-col gap-2 items-stretch mx-auto
+                        w-full max-w-xl flex flex-col gap-2 items-stretch mx-auto py-2
                     `}
                     style={{
                         minHeight: 0,

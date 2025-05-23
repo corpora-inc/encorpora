@@ -78,6 +78,7 @@ export function MainExperience() {
     return (
         <div className="flex flex-col flex-1 min-h-0 w-full items-center relative">
 
+            {/* Floating domain/level stuff at top left */}
             {curr && (
                 <div
                     className="fixed top-5 left-5 z-50 pointer-events-none"

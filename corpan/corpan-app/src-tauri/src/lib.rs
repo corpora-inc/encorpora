@@ -35,6 +35,9 @@ fn get_random_entry_with_translations(
     domains: Option<Vec<String>>, // plural now
     language_codes: Option<Vec<String>>,
 ) -> Result<EntryOut, String> {
+    // log
+    // println!("🚨 get_random_entry_with_translations called");
+
     let conn = db::open_connection(&app)?;
 
     let mut where_clauses = vec![];

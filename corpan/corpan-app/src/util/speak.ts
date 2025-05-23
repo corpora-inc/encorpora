@@ -185,10 +185,13 @@ export function createVoiceTTS(langPrefix: string) {
         } else {
             // Fallback to native mobile TTS via Tauri
             console.warn(
-                `[TTS:${langPrefix}] falling back to native invoke('speak')`
+                `🚨 [TTS:${langPrefix}] falling back to native invoke('speak')`
             );
             try {
-                await invoke("plugin:tts|speak", { text });
+                await invoke("plugin:tts|speak", {
+                    text: text,
+                    language: langPrefix,
+                });
             } catch (err) {
                 console.error("Native TTS invocation failed", err);
             }

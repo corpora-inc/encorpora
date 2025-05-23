@@ -1,4 +1,4 @@
-name: corpan-app
+name: corpan
 options:
   bundleIdPrefix: com.corpora.corpan
   deploymentTarget:
@@ -10,7 +10,7 @@ configs:
 settingGroups:
   app:
     base:
-      PRODUCT_NAME: corpan-app
+      PRODUCT_NAME: corpan
       PRODUCT_BUNDLE_IDENTIFIER: com.corpora.corpan
       DEVELOPMENT_TEAM: F9AV5HKF6N
 targetTemplates:
@@ -25,20 +25,20 @@ targetTemplates:
     settings:
       groups: [app]
 targets:
-  corpan-app_iOS:
+  corpan_iOS:
     type: application
     platform: iOS
     sources:
       - path: Sources
       - path: Assets.xcassets
       - path: Externals
-      - path: corpan-app_iOS
+      - path: corpan_iOS
       - path: assets
         buildPhase: resources
         type: folder
       - path: LaunchScreen.storyboard
     info:
-      path: corpan-app_iOS/Info.plist
+      path: corpan_iOS/Info.plist
       properties:
         LSRequiresIPhoneOS: true
         UILaunchStoryboardName: LaunchScreen
@@ -55,7 +55,7 @@ targets:
         CFBundleShortVersionString: 0.1.0
         CFBundleVersion: 0.1.0
     entitlements:
-      path: corpan-app_iOS/corpan-app_iOS.entitlements
+      path: corpan_iOS/corpan_iOS.entitlements
     scheme:
       environmentVariables:
         RUST_BACKTRACE: full

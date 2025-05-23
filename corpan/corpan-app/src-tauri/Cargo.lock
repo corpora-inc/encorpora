@@ -564,7 +564,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "corpan-app"
+name = "corpan"
 version = "0.1.0"
 dependencies = [
  "rusqlite",
@@ -3705,7 +3705,7 @@ dependencies = [
 [[package]]
 name = "tauri-plugin-tts"
 version = "0.2.0"
-source = "git+https://github.com/httpjamesm/tauri-plugin-tts.git#90360c9665a1c1337ed658fcdeccc87053cb1dda"
+source = "git+https://github.com/skyl/tauri-plugin-tts.git?branch=force-language-android#40d632b737499fa7258e0567e6109db1f8906bc7"
 dependencies = [
  "serde",
  "tauri",
