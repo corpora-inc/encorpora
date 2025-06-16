@@ -86,6 +86,10 @@ pub async fn pick_file(app: tauri::AppHandle) -> Result<String, String> {
     Ok("File processed successfully".to_string())
 }
 
+
+
+
+
 #[tauri::command]
 pub fn create_directory_if_not_exist(app: tauri::AppHandle, directory_name: &str) {
     let resource_dir = app.path().app_local_data_dir().unwrap();

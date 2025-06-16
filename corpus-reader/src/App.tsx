@@ -12,6 +12,7 @@ import { toast } from "sonner";
 import { BookEntry, getLibrary } from "./lib/utils";
 import EpubReader from "./components/EpubReader";
 import Loader from "./components/Loader";
+import { Reader } from "./components/Reader2.0";
 
 function App() {
   const [Books, setBooks] = useState<BookEntry[]>([]);
@@ -48,7 +49,7 @@ function App() {
               <HomeScreen books={Books} onBookAdded={fetchBooks} />
             }
           />
-          <Route path="/reader/:bookPath" element={<EpubReader />} />
+          <Route path="/reader/:bookPath" element={<Reader />} />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
         <Toaster richColors />

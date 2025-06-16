@@ -2,11 +2,18 @@ import Database from "@tauri-apps/plugin-sql";
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 import ePub, { Book as EpubBook } from "epubjs"; // Renamed Book to EpubBook
-import { readFile, BaseDirectory,  } from "@tauri-apps/plugin-fs";
+import { readFile, BaseDirectory } from "@tauri-apps/plugin-fs";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
+
+export const sample = async (path: string) => {
+  const file = await readFile(path, {
+    baseDir: BaseDirectory.AppLocalData,
+  });
+  return file;
+};
 
 // Helper function to read file and parse EPUB (moved to top)
 export const readFileFromPath = async (filePath: string): Promise<EpubBook> => {
