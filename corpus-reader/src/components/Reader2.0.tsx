@@ -1,8 +1,8 @@
 import { sample } from "@/lib/utils";
 import { useEffect, useState } from "react";
-import { ReactReader } from "react-reader";
 import { useParams } from "react-router-dom";
 import { Button } from "./ui/button";
+import { ReactReader } from "./react-reader/react-reader";
 export const Reader = () => {
   const [location, setLocation] = useState(undefined);
   const [epubFile, setEpubFile] = useState<ArrayBufferLike | undefined>(
