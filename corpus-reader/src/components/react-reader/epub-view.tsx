@@ -1,67 +1,66 @@
-import React, { Component } from 'react'
-import Epub, { Book } from 'epubjs'
-import type { NavItem, Contents, Rendition, Location } from 'epubjs'
-import { EpubViewStyle as defaultStyles, type IEpubViewStyle } from './epub-view-styles'
-import type { RenditionOptions } from 'epubjs/types/rendition'
-import type { BookOptions } from 'epubjs/types/book'
+import React, { Component } from "react";
+import Epub, { Book } from "epubjs";
+import type { NavItem, Contents, Rendition, Location } from "epubjs";
+import type { RenditionOptions } from "epubjs/types/rendition";
+import type { BookOptions } from "epubjs/types/book";
+import Loader from "../Loader";
 
 export type RenditionOptionsFix = RenditionOptions & {
-  allowPopups: boolean
-}
+  allowPopups: boolean;
+};
 
 export type IToc = {
-  label: string
-  href: string
-}
+  label: string;
+  href: string;
+};
 
 export type IEpubViewProps = {
-  url: string | ArrayBuffer
-  epubInitOptions?: Partial<BookOptions>
-  epubOptions?: Partial<RenditionOptionsFix>
-  epubViewStyles?: IEpubViewStyle
-  loadingView?: React.ReactNode
-  location: string | number | null
-  locationChanged(value: string): void
-  showToc?: boolean
-  tocChanged?(value: NavItem[]): void
-  getRendition?(rendition: Rendition): void
-  handleKeyPress?(): void
-  handleTextSelected?(cfiRange: string, contents: Contents): void
-}
+  url: string | ArrayBuffer;
+  epubInitOptions?: Partial<BookOptions>;
+  epubOptions?: Partial<RenditionOptionsFix>;
+  loadingView?: React.ReactNode;
+  location: string | number | null;
+  locationChanged(value: string): void;
+  showToc?: boolean;
+  tocChanged?(value: NavItem[]): void;
+  getRendition?(rendition: Rendition): void;
+  handleKeyPress?(): void;
+  handleTextSelected?(cfiRange: string, contents: Contents): void;
+};
 type IEpubViewState = {
-  isLoaded: boolean
-  toc: NavItem[]
-}
+  isLoaded: boolean;
+  toc: NavItem[];
+};
 
 export class EpubView extends Component<IEpubViewProps, IEpubViewState> {
   state: Readonly<IEpubViewState> = {
     isLoaded: false,
     toc: [],
-  }
-  viewerRef = React.createRef<HTMLDivElement>()
-  location?: string | number | null
-  book?: Book
-  rendition?: Rendition
-  prevPage?: () => void
-  nextPage?: () => void
+  };
+  viewerRef = React.createRef<HTMLDivElement>();
+  location?: string | number | null;
+  book?: Book;
+  rendition?: Rendition;
+  prevPage?: () => void;
+  nextPage?: () => void;
 
   constructor(props: IEpubViewProps) {
-    super(props)
-    this.location = props.location
-    this.book = this.rendition = this.prevPage = this.nextPage = undefined
+    super(props);
+    this.location = props.location;
+    this.book = this.rendition = this.prevPage = this.nextPage = undefined;
   }
 
   componentDidMount() {
-    this.initBook()
-    document.addEventListener('keyup', this.handleKeyPress, false)
+    this.initBook();
+    document.addEventListener("keyup", this.handleKeyPress, false);
   }
 
   initBook() {
-    const { url, tocChanged, epubInitOptions } = this.props
+    const { url, tocChanged, epubInitOptions } = this.props;
     if (this.book) {
-      this.book.destroy()
+      this.book.destroy();
     }
-    this.book = Epub(url, epubInitOptions)
+    this.book = Epub(url, epubInitOptions);
     this.book.loaded.navigation.then(({ toc }) => {
       this.setState(
         {
@@ -69,19 +68,19 @@ export class EpubView extends Component<IEpubViewProps, IEpubViewState> {
           toc: toc,
         },
         () => {
-          tocChanged && tocChanged(toc)
-          this.initReader()
+          tocChanged && tocChanged(toc);
+          this.initReader();
         }
-      )
-    })
+      );
+    });
   }
 
   componentWillUnmount() {
     if (this.book) {
-      this.book.destroy()
+      this.book.destroy();
     }
-    this.book = this.rendition = this.prevPage = this.nextPage = undefined
-    document.removeEventListener('keyup', this.handleKeyPress, false)
+    this.book = this.rendition = this.prevPage = this.nextPage = undefined;
+    document.removeEventListener("keyup", this.handleKeyPress, false);
   }
 
   shouldComponentUpdate(nextProps: IEpubViewProps) {
@@ -89,7 +88,7 @@ export class EpubView extends Component<IEpubViewProps, IEpubViewState> {
       !this.state.isLoaded ||
       nextProps.location !== this.props.location ||
       nextProps.url !== this.props.url
-    )
+    );
   }
 
   componentDidUpdate(prevProps: IEpubViewProps) {
@@ -97,86 +96,84 @@ export class EpubView extends Component<IEpubViewProps, IEpubViewState> {
       prevProps.location !== this.props.location &&
       this.location !== this.props.location
     ) {
-      this.rendition?.display(this.props.location + '')
+      this.rendition?.display(this.props.location + "");
     }
     if (prevProps.url !== this.props.url) {
-      this.initBook()
+      this.initBook();
     }
   }
 
   initReader() {
-    const { toc } = this.state
-    const { location, epubOptions, getRendition } = this.props
+    const { toc } = this.state;
+    const { location, epubOptions, getRendition } = this.props;
     if (this.viewerRef.current) {
-      const node = this.viewerRef.current
+      const node = this.viewerRef.current;
       if (this.book) {
         const rendition = this.book.renderTo(node, {
-          width: '100%',
-          height: '100%',
+          width: "100%",
+          height: "100%",
           ...epubOptions,
-        })
-        this.rendition = rendition
+        });
+        this.rendition = rendition;
         this.prevPage = () => {
-          rendition.prev()
-        }
+          rendition.prev();
+        };
         this.nextPage = () => {
-          rendition.next()
-        }
-        this.registerEvents()
-        getRendition && getRendition(rendition)
+          rendition.next();
+        };
+        this.registerEvents();
+        getRendition && getRendition(rendition);
 
-        if (typeof location === 'string' || typeof location === 'number') {
-          rendition.display(location + '')
+        if (typeof location === "string" || typeof location === "number") {
+          rendition.display(location + "");
         } else if (toc.length > 0 && toc[0].href) {
-          rendition.display(toc[0].href)
+          rendition.display(toc[0].href);
         } else {
-          rendition.display()
+          rendition.display();
         }
       }
     }
   }
 
   registerEvents() {
-    const { handleKeyPress, handleTextSelected } = this.props
+    const { handleKeyPress, handleTextSelected } = this.props;
     if (this.rendition) {
-      this.rendition.on('locationChanged', this.onLocationChange)
-      this.rendition.on('keyup', handleKeyPress || this.handleKeyPress)
+      this.rendition.on("locationChanged", this.onLocationChange);
+      this.rendition.on("keyup", handleKeyPress || this.handleKeyPress);
       if (handleTextSelected) {
-        this.rendition.on('selected', handleTextSelected)
+        this.rendition.on("selected", handleTextSelected);
       }
     }
   }
 
   onLocationChange = (loc: Location) => {
-    const { location, locationChanged } = this.props
-    const newLocation = `${loc.start}`
+    const { location, locationChanged } = this.props;
+    const newLocation = `${loc.start}`;
     if (location !== newLocation) {
-      this.location = newLocation
-      locationChanged && locationChanged(newLocation)
+      this.location = newLocation;
+      locationChanged && locationChanged(newLocation);
     }
-  }
+  };
 
   renderBook() {
-    const { epubViewStyles = defaultStyles } = this.props
-    return <div ref={this.viewerRef} style={epubViewStyles.view} />
+    return <div ref={this.viewerRef} className="h-full" />;
   }
 
   handleKeyPress = (event: KeyboardEvent) => {
-    if (event.key === 'ArrowRight' && this.nextPage) {
-      this.nextPage()
+    if (event.key === "ArrowRight" && this.nextPage) {
+      this.nextPage();
     }
-    if (event.key === 'ArrowLeft' && this.prevPage) {
-      this.prevPage()
+    if (event.key === "ArrowLeft" && this.prevPage) {
+      this.prevPage();
     }
-  }
+  };
 
   render() {
-    const { isLoaded } = this.state
-    const { loadingView = null, epubViewStyles = defaultStyles } = this.props
+    const { isLoaded } = this.state;
     return (
-      <div style={epubViewStyles.viewHolder}>
-        {(isLoaded && this.renderBook()) || loadingView}
+      <div className="relative h-full w-full">
+        {(isLoaded && this.renderBook()) || <Loader text="loading book" />}
       </div>
-    )
+    );
   }
 }
