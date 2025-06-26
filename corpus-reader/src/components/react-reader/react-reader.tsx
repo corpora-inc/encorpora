@@ -278,7 +278,40 @@ export class ReactReader extends PureComponent<
   handleSearchResultClick = (cfi: string) => {
     const node = this.readerRef.current;
     if (node && node.rendition) {
-      node.rendition.display(cfi);
+      // Navigate to the search result location
+      node.rendition.display(cfi).then(() => {
+        // Add highlight after navigation is complete
+        this.highlightSearchResult(cfi);
+      });
+    }
+  };
+
+  // Highlight the search result for 2 seconds
+  highlightSearchResult = (cfi: string) => {
+    const rendition = this.readerRef.current?.rendition;
+    if (!rendition) return;
+
+    try {
+      // Remove any existing highlights first
+      rendition.annotations.remove(cfi, "highlight");
+      
+      // Add highlight annotation
+      rendition.annotations.add("highlight", cfi, {}, undefined, "hl", {
+        fill: "yellow",
+        "fill-opacity": "0.3",
+        "mix-blend-mode": "multiply"
+      });
+
+      // Remove highlight after 2 seconds
+      setTimeout(() => {
+        try {
+          rendition.annotations.remove(cfi, "highlight");
+        } catch (error) {
+          console.warn("Could not remove highlight:", error);
+        }
+      }, 2000);
+    } catch (error) {
+      console.warn("Could not add highlight:", error);
     }
   };
 
