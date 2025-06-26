@@ -15,6 +15,8 @@ import { Toc } from "./Toc";
 import { THEMES } from "./settings/ThemeSettings";
 import { DrawerDialogSetting } from "./settings/DrawerDialogSetting";
 import { Settings } from "./settings/SettingsComponent";
+import { Button } from "../ui/button";
+import { ArrowLeft } from "lucide-react";
 
 type SwipeWrapperProps = {
   children: ReactNode;
@@ -101,7 +103,7 @@ export class ReactReader extends PureComponent<
     const rendition = this.readerRef.current?.rendition;
 
     const theme = themes.find((t) => t.name === settings.theme);
-    
+
     // Apply theme to the entire component
     if (theme) {
       // Apply theme to rendition if available
@@ -112,23 +114,31 @@ export class ReactReader extends PureComponent<
 
       // Apply theme colors as CSS custom properties to the document root
       // This allows all child components to inherit the theme colors
-      document.documentElement.style.setProperty('--reader-bg-color', theme.styles.body.background);
-      document.documentElement.style.setProperty('--reader-text-color', theme.styles.body.color);
-      
+      document.documentElement.style.setProperty(
+        "--reader-bg-color",
+        theme.styles.body.background
+      );
+      document.documentElement.style.setProperty(
+        "--reader-text-color",
+        theme.styles.body.color
+      );
+
       // Apply theme to the component container and all child elements
-      const containerElement = document.querySelector('[data-react-reader-container]') as HTMLElement;
+      const containerElement = document.querySelector(
+        "[data-react-reader-container]"
+      ) as HTMLElement;
       if (containerElement) {
         containerElement.style.backgroundColor = theme.styles.body.background;
         containerElement.style.color = theme.styles.body.color;
-        
+
         // Create a style element for scoped CSS rules
-        let styleElement = document.getElementById('react-reader-theme-styles');
+        let styleElement = document.getElementById("react-reader-theme-styles");
         if (!styleElement) {
-          styleElement = document.createElement('style');
-          styleElement.id = 'react-reader-theme-styles';
+          styleElement = document.createElement("style");
+          styleElement.id = "react-reader-theme-styles";
           document.head.appendChild(styleElement);
         }
-        
+
         // Apply theme-specific CSS rules for child components
         styleElement.textContent = `
           [data-react-reader-container] {
@@ -276,14 +286,14 @@ export class ReactReader extends PureComponent<
 
   componentWillUnmount() {
     // Clean up injected theme styles
-    const styleElement = document.getElementById('react-reader-theme-styles');
+    const styleElement = document.getElementById("react-reader-theme-styles");
     if (styleElement) {
       styleElement.remove();
     }
-    
+
     // Remove CSS custom properties
-    document.documentElement.style.removeProperty('--reader-bg-color');
-    document.documentElement.style.removeProperty('--reader-text-color');
+    document.documentElement.style.removeProperty("--reader-bg-color");
+    document.documentElement.style.removeProperty("--reader-text-color");
   }
 
   render() {
@@ -301,46 +311,62 @@ export class ReactReader extends PureComponent<
       ...props
     } = this.props;
     const { toc, settings } = this.state;
-    
+
     // Get current theme colors
     const currentTheme = themes.find((t) => t.name === settings.theme);
-    const themeColors = currentTheme ? currentTheme.styles.body : { background: '#fff', color: '#000' };
-    
+    const themeColors = currentTheme
+      ? currentTheme.styles.body
+      : { background: "#fff", color: "#000" };
+
     // Create themed styles
     const themedContainerStyle = {
       ...readerStyles.container,
       backgroundColor: themeColors.background,
       color: themeColors.color,
     };
-    
+
     const themedReaderAreaStyle = {
       ...readerStyles.readerArea,
       backgroundColor: themeColors.background,
       color: themeColors.color,
     };
-    
+
     const themedArrowStyle = {
       ...readerStyles.arrow,
       color: themeColors.color,
       opacity: 0.7,
     };
-    
+
     return (
-      <div 
-        style={themedContainerStyle} 
-        data-react-reader-container
-      >
+      <div style={themedContainerStyle} data-react-reader-container>
         <div style={themedReaderAreaStyle}>
-          <div className="absolute top-4 left-4 z-20 flex items-center gap-2" style={{color: themeColors.color}}>
+          <div
+            className="absolute top-4 left-4 z-20 flex items-center gap-2"
+            style={{ color: themeColors.color }}
+          >
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => window.history.back()}
+              aria-label="Back"
+            >
+              <ArrowLeft className="w-5 h-5" />
+            </Button>
+
             {showToc && <Toc toc={toc} setLocation={this.setLocation} />}
           </div>
-          <div className="absolute top-4 right-4 z-20" style={{color: themeColors.color}}>
+          <div
+            className="absolute top-4 right-4 z-20"
+            style={{ color: themeColors.color }}
+          >
             <DrawerDialogSetting
               settings={settings}
               onSettingsChange={this.onSettingsChange}
             />
           </div>
-          <div style={{...readerStyles.titleArea, color: themeColors.color}}>{title}</div>
+          <div style={{ ...readerStyles.titleArea, color: themeColors.color }}>
+            {title}
+          </div>
           <SwipeWrapper
             swipeProps={{
               onSwiped: (eventData: SwipeEventData) => {
@@ -363,7 +389,14 @@ export class ReactReader extends PureComponent<
                 ref={this.readerRef}
                 loadingView={
                   loadingView === undefined ? (
-                    <div style={{...readerStyles.loadingView, color: themeColors.color}}>Loading…</div>
+                    <div
+                      style={{
+                        ...readerStyles.loadingView,
+                        color: themeColors.color,
+                      }}
+                    >
+                      Loading…
+                    </div>
                   ) : (
                     loadingView
                   )
