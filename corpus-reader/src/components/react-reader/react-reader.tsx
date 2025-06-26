@@ -15,6 +15,7 @@ import { Toc } from "./Toc";
 import { THEMES } from "./settings/ThemeSettings";
 import { DrawerDialogSetting } from "./settings/DrawerDialogSetting";
 import { Settings } from "./settings/SettingsComponent";
+import { SearchComponent, type SearchResult } from "./SearchComponent";
 import { Button } from "../ui/button";
 import { ArrowLeft } from "lucide-react";
 
@@ -45,12 +46,12 @@ export type IReactReaderProps = IEpubViewProps & {
 };
 const themes = THEMES;
 
-type SearchResult = { cfi: string; excerpt: string };
-
 type IReactReaderState = {
   isLoaded: boolean;
   toc: NavItem[];
   settings: Settings;
+  searchResults: SearchResult[];
+  isSearching: boolean;
 };
 
 export class ReactReader extends PureComponent<
@@ -60,6 +61,8 @@ export class ReactReader extends PureComponent<
   state: Readonly<IReactReaderState> = {
     isLoaded: false,
     toc: [],
+    searchResults: [],
+    isSearching: false,
     settings: {
       fontSize: 100,
       fontFamily: "'Inter', sans-serif",
@@ -252,22 +255,30 @@ export class ReactReader extends PureComponent<
     if (!this.readerRef.current) return;
     const book = this.readerRef.current?.book;
     if (!book) return;
-
     if (!query) {
+      this.setState({ searchResults: [], isSearching: false });
       this.props.onSearchResults?.([]);
       return;
     }
 
+    this.setState({ isSearching: true });
+
     try {
       const results = await searchInBook(book, query, this.props.contextLength);
-      // This check prevents a race condition where an old search result
-      // could overwrite a newer one if the user types quickly.
-      if (query === this.props.searchQuery) {
-        this.props.onSearchResults?.(results);
-      }
+      this.setState({ searchResults: results, isSearching: false });
+      this.props.onSearchResults?.(results);
     } catch (error) {
       console.error("An error occurred during book search:", error);
+      this.setState({ searchResults: [], isSearching: false });
       this.props.onSearchResults?.([]);
+    }
+  };
+
+  // Handle clicking on search result
+  handleSearchResultClick = (cfi: string) => {
+    const node = this.readerRef.current;
+    if (node && node.rendition) {
+      node.rendition.display(cfi);
     }
   };
 
@@ -306,8 +317,6 @@ export class ReactReader extends PureComponent<
       swipeable,
       isRTL = false,
       pageTurnOnScroll = false,
-      searchQuery,
-      contextLength,
       ...props
     } = this.props;
     const { toc, settings } = this.state;
@@ -356,9 +365,16 @@ export class ReactReader extends PureComponent<
             {showToc && <Toc toc={toc} setLocation={this.setLocation} />}
           </div>
           <div
-            className="absolute top-4 right-4 z-20"
+            className="absolute top-4 right-4 z-20 flex items-center gap-2"
             style={{ color: themeColors.color }}
           >
+            <SearchComponent
+              onSearch={this.searchInBook}
+              searchResults={this.state.searchResults}
+              onResultClick={this.handleSearchResultClick}
+              isLoading={this.state.isSearching}
+              themeColors={themeColors}
+            />
             <DrawerDialogSetting
               settings={settings}
               onSettingsChange={this.onSettingsChange}
