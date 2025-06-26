@@ -43,20 +43,30 @@ pub async fn pick_file(app: tauri::AppHandle) -> Result<String, String> {
     };
 
     let (epub_title, epub_identifier, epub_creator, epub_language, epub_publisher, epub_pubdate) =
-        get_epub_metadata(&temp_file_path);
+        match get_epub_metadata(&temp_file_path) {
+            Ok(metadata) => metadata,
+            Err(e) => {
+                println!("Failed to extract EPUB metadata: {}", e);
+                return Err(format!("Failed to extract EPUB metadata: {}", e));
+            }
+        };
 
     let epub_file_name_stem = create_file_name(epub_title.clone(), epub_identifier);
     let final_epub_filename = format!("{}.epub", epub_file_name_stem);
     let library_path = resource_dir.join(LIBRARY_DIRECTORY);
     let new_file_path = library_path.join(final_epub_filename.clone());
-    create_epub_cover(
-        &temp_file_path,
-        library_path
-            .join(format!("{}.png", epub_file_name_stem))
-            .to_str()
-            .unwrap()
-            .to_string(),
-    );
+    
+    // Create cover image with error handling
+    let cover_path = library_path
+        .join(format!("{}.png", epub_file_name_stem))
+        .to_str()
+        .unwrap()
+        .to_string();
+    
+    if let Err(e) = create_epub_cover(&temp_file_path, cover_path.clone()) {
+        println!("Warning: Failed to create cover image: {}", e);
+        // Continue without cover image - this is not a fatal error
+    }
 
     if check_if_file_exists(&new_file_path) {
         let _ = fs::remove_file(&temp_file_path);
