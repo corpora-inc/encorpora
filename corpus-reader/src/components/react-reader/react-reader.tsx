@@ -1,20 +1,22 @@
-import React, {
-  type CSSProperties,
-  PureComponent,
-  type ReactNode,
-} from "react";
+import React, { PureComponent, type ReactNode } from "react";
 import {
   type SwipeableProps,
   type SwipeEventData,
   useSwipeable,
 } from "react-swipeable";
 import { EpubView, type IEpubViewProps } from "./epub-view";
-import { type IEpubViewStyle } from "./epub-view-styles";
 import {
   ReactReaderStyle as defaultStyles,
   type IReactReaderStyle,
 } from "./react-reader-styles";
 import { type NavItem } from "epubjs";
+import {
+  SettingsDialog,
+  type ReaderTheme,
+  type Settings,
+} from "./SettingsDialog";
+import { searchInBook } from "./lib";
+import { Toc } from "./Toc";
 
 type SwipeWrapperProps = {
   children: ReactNode;
@@ -30,37 +32,40 @@ const SwipeWrapper = ({ children, swipeProps }: SwipeWrapperProps) => {
   );
 };
 
-type TocItemProps = {
-  data: NavItem;
-  setLocation: (value: string) => void;
-  styles?: CSSProperties;
-};
-
-const TocItem = ({ data, setLocation, styles }: TocItemProps) => (
-  <div>
-    <button onClick={() => setLocation(data.href)} style={styles}>
-      {data.label}
-    </button>
-    {data.subitems && data.subitems.length > 0 && (
-      <div style={{ paddingLeft: 10 }}>
-        {data.subitems.map((item, i) => (
-          <TocItem
-            key={i}
-            data={item}
-            styles={styles}
-            setLocation={setLocation}
-          />
-        ))}
-      </div>
-    )}
-  </div>
-);
+const themes: ReaderTheme[] = [
+  {
+    name: "Light",
+    styles: {
+      body: {
+        background: "#fff",
+        color: "#000",
+      },
+    },
+  },
+  {
+    name: "Dark",
+    styles: {
+      body: {
+        background: "#121212",
+        color: "#e0e0e0",
+      },
+    },
+  },
+  {
+    name: "Sepia",
+    styles: {
+      body: {
+        background: "#f4f1e9",
+        color: "#5c4b37",
+      },
+    },
+  },
+];
 
 export type IReactReaderProps = IEpubViewProps & {
   title?: string;
   showToc?: boolean;
   readerStyles?: IReactReaderStyle;
-  epubViewStyles?: IEpubViewStyle;
   swipeable?: boolean;
   isRTL?: boolean;
   pageTurnOnScroll?: boolean;
@@ -73,8 +78,8 @@ type SearchResult = { cfi: string; excerpt: string };
 
 type IReactReaderState = {
   isLoaded: boolean;
-  expandedToc: boolean;
   toc: NavItem[];
+  settings: Settings;
 };
 
 export class ReactReader extends PureComponent<
@@ -83,18 +88,21 @@ export class ReactReader extends PureComponent<
 > {
   state: Readonly<IReactReaderState> = {
     isLoaded: false,
-    expandedToc: false,
     toc: [],
+    settings: {
+      fontSize: 100,
+      fontFamily: "'Inter', sans-serif",
+      fontWeight: "normal",
+      lineHeight: 1.5,
+      textAlign: "justify",
+      spread: "auto",
+      theme: "Light",
+    },
   };
   readerRef = React.createRef<EpubView>();
   constructor(props: IReactReaderProps) {
     super(props);
   }
-  toggleToc = () => {
-    this.setState({
-      expandedToc: !this.state.expandedToc,
-    });
-  };
 
   next = () => {
     const node = this.readerRef.current;
@@ -110,80 +118,56 @@ export class ReactReader extends PureComponent<
     }
   };
 
+  onSettingsChange = (newSettings: Partial<Settings>) => {
+    this.setState(
+      { settings: { ...this.state.settings, ...newSettings } },
+      () => {
+        this.applySettings();
+      }
+    );
+  };
+
+  applySettings = () => {
+    const { settings } = this.state;
+    const rendition = this.readerRef.current?.rendition;
+    if (!rendition) return;
+
+    const theme = themes.find((t) => t.name === settings.theme);
+    if (theme) {
+      rendition.themes.register(theme.name, theme.styles);
+      rendition.themes.select(theme.name);
+    }
+
+    rendition.themes.fontSize(`${settings.fontSize}%`);
+    rendition.themes.font(settings.fontFamily);
+    rendition.themes.override("font-weight", settings.fontWeight);
+    rendition.themes.override("line-height", `${settings.lineHeight}`);
+    rendition.themes.override("text-align", settings.textAlign);
+    if (rendition.spread) {
+      rendition.spread(settings.spread);
+    }
+  };
+
   onTocChange = (toc: NavItem[]) => {
     const { tocChanged } = this.props;
     this.setState(
       {
         toc: toc,
       },
-      () => tocChanged && tocChanged(toc)
+      () => {
+        tocChanged && tocChanged(toc);
+        this.applySettings();
+      }
     );
   };
-
-  renderToc() {
-    const { toc, expandedToc } = this.state;
-    const { readerStyles = defaultStyles } = this.props;
-    return (
-      <div>
-        <div style={readerStyles.tocArea}>
-          <div style={readerStyles.toc}>
-            {Array.isArray(toc) &&
-              toc.map((item, i) => (
-                <TocItem
-                  data={item}
-                  key={i}
-                  setLocation={this.setLocation}
-                  styles={readerStyles.tocAreaButton}
-                />
-              ))}
-          </div>
-        </div>
-        {expandedToc && (
-          <div style={readerStyles.tocBackground} onClick={this.toggleToc} />
-        )}
-      </div>
-    );
-  }
 
   setLocation = (loc: string) => {
     const { locationChanged } = this.props;
     this.setState(
-      {
-        expandedToc: false,
-      },
       () => locationChanged && locationChanged(loc)
     );
   };
 
-  renderTocToggle() {
-    const { expandedToc } = this.state;
-    const { readerStyles = defaultStyles } = this.props;
-    return (
-      <button
-        style={Object.assign(
-          {},
-          readerStyles.tocButton,
-          expandedToc ? readerStyles.tocButtonExpanded : {}
-        )}
-        onClick={this.toggleToc}
-      >
-        <span
-          style={Object.assign(
-            {},
-            readerStyles.tocButtonBar,
-            readerStyles.tocButtonBarTop
-          )}
-        />
-        <span
-          style={Object.assign(
-            {},
-            readerStyles.tocButtonBar,
-            readerStyles.tocButtonBottom
-          )}
-        />
-      </button>
-    );
-  }
 
   // Changing Page based on direction of scroll
   handleWheel = (event: WheelEvent) => {
@@ -223,8 +207,7 @@ export class ReactReader extends PureComponent<
   //search function to find all occurence and set amount of charecters for context
   searchInBook = async (query?: string) => {
     if (!this.readerRef.current) return;
-    const rendition = this.readerRef.current?.rendition;
-    const book = rendition?.book;
+    const book = this.readerRef.current?.book;
     if (!book) return;
 
     if (!query) {
@@ -232,82 +215,16 @@ export class ReactReader extends PureComponent<
       return;
     }
 
-    await book.ready;
-    const results: SearchResult[] = [];
-    const promises: Promise<void>[] = [];
-
-    book.spine.each((item: any) => {
-      if (query == "" || query == null) results;
-      const promise = (async () => {
-        try {
-          await item.load(book.load.bind(book));
-          const doc = item.document;
-          const textNodes: Node[] = [];
-
-          const treeWalker = doc.createTreeWalker(
-            doc,
-            NodeFilter.SHOW_TEXT,
-            null,
-            false
-          );
-          let node;
-          while ((node = treeWalker.nextNode())) {
-            textNodes.push(node);
-          }
-
-          const fullText = textNodes
-            .map((n) => n.textContent)
-            .join("")
-            .toLowerCase();
-          const searchQuery = query.toLowerCase();
-          let pos = fullText.indexOf(searchQuery);
-
-          while (pos !== -1) {
-            let nodeIndex = 0;
-            let foundOffset = pos;
-
-            while (nodeIndex < textNodes.length) {
-              const nodeText = textNodes[nodeIndex].textContent || "";
-              if (foundOffset < nodeText.length) break;
-              foundOffset -= nodeText.length;
-              nodeIndex++;
-            }
-
-            if (nodeIndex < textNodes.length) {
-              let range = doc.createRange();
-              try {
-                range.setStart(textNodes[nodeIndex], foundOffset);
-                range.setEnd(
-                  textNodes[nodeIndex],
-                  foundOffset + searchQuery.length
-                );
-                const cfi = item.cfiFromRange(range);
-                const excerpt = `${fullText.substring(
-                  Math.max(0, pos - (this.props.contextLength || 15)),
-                  pos + searchQuery.length + (this.props.contextLength || 15)
-                )}`;
-
-                results.push({ cfi, excerpt });
-              } catch (e) {
-                console.warn("Skipping invalid range:", e);
-              }
-            }
-
-            pos = fullText.indexOf(searchQuery, pos + 1);
-          }
-
-          item.unload();
-        } catch (error) {
-          console.error("Error searching chapter:", error);
-        }
-      })();
-      promises.push(promise);
-    });
-
-    await Promise.all(promises);
-    //Fix for Search Result of previous query retaining when
-    if (query == this.props.searchQuery) {
-      this.props.onSearchResults?.(results); //passing result as an array of objects with cfi and excerpt
+    try {
+      const results = await searchInBook(book, query, this.props.contextLength);
+      // This check prevents a race condition where an old search result
+      // could overwrite a newer one if the user types quickly.
+      if (query === this.props.searchQuery) {
+        this.props.onSearchResults?.(results);
+      }
+    } catch (error) {
+      console.error("An error occurred during book search:", error);
+      this.props.onSearchResults?.([]);
     }
   };
 
@@ -332,24 +249,31 @@ export class ReactReader extends PureComponent<
       readerStyles = defaultStyles,
       locationChanged,
       swipeable,
-      epubViewStyles,
       isRTL = false,
       pageTurnOnScroll = false,
       searchQuery,
       contextLength,
       ...props
     } = this.props;
-    const { toc, expandedToc } = this.state;
+    const { toc, settings } = this.state;
     return (
       <div style={readerStyles.container}>
-        <div
-          style={Object.assign(
-            {},
-            readerStyles.readerArea,
-            expandedToc ? readerStyles.containerExpanded : {}
-          )}
-        >
-          {showToc && this.renderTocToggle()}
+        <div style={Object.assign({}, readerStyles.readerArea)}>
+          <div className="absolute top-4 left-4 z-20 flex items-center gap-2">
+            {showToc && (
+              <Toc
+                toc={toc}
+                setLocation={this.setLocation}
+              />
+            )}
+          </div>
+          <div className="absolute top-4 right-4 z-20">
+            <SettingsDialog
+              themes={themes}
+              settings={settings}
+              onSettingsChange={this.onSettingsChange}
+            />
+          </div>
           <div style={readerStyles.titleArea}>{title}</div>
           <SwipeWrapper
             swipeProps={{
@@ -378,7 +302,6 @@ export class ReactReader extends PureComponent<
                     loadingView
                   )
                 }
-                epubViewStyles={epubViewStyles}
                 {...props}
                 tocChanged={this.onTocChange}
                 locationChanged={locationChanged}
@@ -399,7 +322,6 @@ export class ReactReader extends PureComponent<
             ›
           </button>
         </div>
-        {showToc && toc && this.renderToc()}
       </div>
     );
   }

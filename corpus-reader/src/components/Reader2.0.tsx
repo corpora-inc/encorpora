@@ -1,7 +1,6 @@
 import { sample } from "@/lib/utils";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Button } from "./ui/button";
 import { ReactReader } from "./react-reader/react-reader";
 export const Reader = () => {
   const [location, setLocation] = useState(undefined);
@@ -32,14 +31,6 @@ export const Reader = () => {
 
   return (
     <div style={{ height: "100vh" }}>
-      <Button
-        onClick={() => {
-          // Navigate back to the home screen
-          window.history.back();
-        }}
-      >
-        go back
-      </Button>
       <ReactReader
         location={location}
         locationChanged={locationChanged}

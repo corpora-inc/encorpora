@@ -11,16 +11,7 @@ export interface IReactReaderStyle {
   next: CSSProperties
   arrow: CSSProperties
   arrowHover: CSSProperties
-  tocBackground: CSSProperties
-  toc: CSSProperties
-  tocArea: CSSProperties
-  tocAreaButton: CSSProperties
-  tocButton: CSSProperties
-  tocButtonExpanded: CSSProperties
-  tocButtonBar: CSSProperties
-  tocButtonBarTop: CSSProperties
   loadingView: CSSProperties
-  tocButtonBottom: CSSProperties
 }
 
 export const ReactReaderStyle: IReactReaderStyle = {
@@ -35,10 +26,10 @@ export const ReactReaderStyle: IReactReaderStyle = {
     height: '100%',
     width: '100%',
     backgroundColor: '#fff',
-    transition: 'all .3s ease',
+    transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
   },
   containerExpanded: {
-    transform: 'translateX(256px)',
+    transform: 'translateX(280px)',
   },
   titleArea: {
     position: 'absolute',
@@ -88,75 +79,7 @@ export const ReactReaderStyle: IReactReaderStyle = {
   arrowHover: {
     color: '#777',
   },
-  toc: {},
-  tocBackground: {
-    position: 'absolute',
-    left: 256,
-    top: 0,
-    bottom: 0,
-    right: 0,
-    zIndex: 1,
-  },
-  tocArea: {
-    position: 'absolute',
-    left: 0,
-    top: 0,
-    bottom: 0,
-    zIndex: 0,
-    width: 256,
-    overflowY: 'auto',
-    WebkitOverflowScrolling: 'touch',
-    background: '#f2f2f2',
-    padding: '10px 0',
-  },
-  tocAreaButton: {
-    userSelect: 'none',
-    appearance: 'none',
-    background: 'none',
-    border: 'none',
-    display: 'block',
-    fontFamily: 'sans-serif',
-    width: '100%',
-    fontSize: '.9em',
-    textAlign: 'left',
-    padding: '.9em 1em',
-    borderBottom: '1px solid #ddd',
-    color: '#aaa',
-    boxSizing: 'border-box',
-    outline: 'none',
-    cursor: 'pointer',
-  },
-  tocButton: {
-    background: 'none',
-    border: 'none',
-    width: 32,
-    height: 32,
-    position: 'absolute',
-    top: 10,
-    left: 10,
-    borderRadius: 2,
-    outline: 'none',
-    cursor: 'pointer',
-  },
-  tocButtonExpanded: {
-    background: '#f2f2f2',
-  },
-  tocButtonBar: {
-    position: 'absolute',
-    width: '60%',
-    background: '#ccc',
-    height: 2,
-    left: '50%',
-    margin: '-1px -30%',
-    top: '50%',
-    transition: 'all .5s ease',
-  },
-  tocButtonBarTop: {
-    top: '35%',
-  },
-  tocButtonBottom: {
-    top: '66%',
-  },
+
   loadingView: {
     position: 'absolute',
     top: '50%',
