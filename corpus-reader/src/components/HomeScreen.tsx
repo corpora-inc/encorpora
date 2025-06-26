@@ -83,18 +83,7 @@ export function HomeScreen({ books, onBookAdded }: HomeScreenProps) {
     return () => window.removeEventListener('focus', handleFocus);
   }, [onBookAdded]);
 
-  // Featured book should be the most recently read book
-  // const featuredBook = books.length > 0 
-  //   ? books.reduce((latest, current) => {
-  //       if (!latest) return current;
-        
-  //       // If current book has a more recent last_read date, it becomes the featured book
-  //       const latestDate = new Date(latest.last_read).getTime();
-  //       const currentDate = new Date(current.last_read).getTime();
-        
-  //       return currentDate > latestDate ? current : latest;
-  //     }, books[0])
-  //   : null;
+
 
   const completedBooks = books.filter((book) => book.is_finished);
 
