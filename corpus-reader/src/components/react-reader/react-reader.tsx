@@ -99,21 +99,88 @@ export class ReactReader extends PureComponent<
   applySettings = () => {
     const { settings } = this.state;
     const rendition = this.readerRef.current?.rendition;
-    if (!rendition) return;
 
     const theme = themes.find((t) => t.name === settings.theme);
+    
+    // Apply theme to the entire component
     if (theme) {
-      rendition.themes.register(theme.name, theme.styles);
-      rendition.themes.select(theme.name);
+      // Apply theme to rendition if available
+      if (rendition) {
+        rendition.themes.register(theme.name, theme.styles);
+        rendition.themes.select(theme.name);
+      }
+
+      // Apply theme colors as CSS custom properties to the document root
+      // This allows all child components to inherit the theme colors
+      document.documentElement.style.setProperty('--reader-bg-color', theme.styles.body.background);
+      document.documentElement.style.setProperty('--reader-text-color', theme.styles.body.color);
+      
+      // Apply theme to the component container and all child elements
+      const containerElement = document.querySelector('[data-react-reader-container]') as HTMLElement;
+      if (containerElement) {
+        containerElement.style.backgroundColor = theme.styles.body.background;
+        containerElement.style.color = theme.styles.body.color;
+        
+        // Create a style element for scoped CSS rules
+        let styleElement = document.getElementById('react-reader-theme-styles');
+        if (!styleElement) {
+          styleElement = document.createElement('style');
+          styleElement.id = 'react-reader-theme-styles';
+          document.head.appendChild(styleElement);
+        }
+        
+        // Apply theme-specific CSS rules for child components
+        styleElement.textContent = `
+          [data-react-reader-container] {
+            background-color: ${theme.styles.body.background} !important;
+            color: ${theme.styles.body.color} !important;
+          }
+          
+          [data-react-reader-container] .text-foreground,
+          [data-react-reader-container] .text-foreground\\/80 {
+            color: ${theme.styles.body.color} !important;
+          }
+          
+          [data-react-reader-container] .text-muted-foreground {
+            color: ${theme.styles.body.color}80 !important;
+          }
+          
+          [data-react-reader-container] .bg-background,
+          [data-react-reader-container] .bg-popover {
+            background-color: ${theme.styles.body.background} !important;
+          }
+          
+          [data-react-reader-container] .border-border {
+            border-color: ${theme.styles.body.color}30 !important;
+          }
+          
+          [data-react-reader-container] .hover\\:bg-accent:hover,
+          [data-react-reader-container] .hover\\:bg-accent\\/30:hover,
+          [data-react-reader-container] .hover\\:bg-accent\\/20:hover {
+            background-color: ${theme.styles.body.color}20 !important;
+          }
+          
+          [data-react-reader-container] button {
+            color: ${theme.styles.body.color} !important;
+          }
+          
+          [data-react-reader-container] svg {
+            color: ${theme.styles.body.color} !important;
+          }
+        `;
+      }
     }
 
-    rendition.themes.fontSize(`${settings.fontSize}%`);
-    rendition.themes.font(settings.fontFamily);
-    rendition.themes.override("font-weight", settings.fontWeight);
-    rendition.themes.override("line-height", `${settings.lineHeight}`);
-    rendition.themes.override("text-align", settings.textAlign);
-    if (rendition.spread) {
-      rendition.spread(settings.spread);
+    // Apply other settings to rendition if available
+    if (rendition) {
+      rendition.themes.fontSize(`${settings.fontSize}%`);
+      rendition.themes.font(settings.fontFamily);
+      rendition.themes.override("font-weight", settings.fontWeight);
+      rendition.themes.override("line-height", `${settings.lineHeight}`);
+      rendition.themes.override("text-align", settings.textAlign);
+      if (rendition.spread) {
+        rendition.spread(settings.spread);
+      }
     }
   };
 
@@ -207,6 +274,18 @@ export class ReactReader extends PureComponent<
     }
   }
 
+  componentWillUnmount() {
+    // Clean up injected theme styles
+    const styleElement = document.getElementById('react-reader-theme-styles');
+    if (styleElement) {
+      styleElement.remove();
+    }
+    
+    // Remove CSS custom properties
+    document.documentElement.style.removeProperty('--reader-bg-color');
+    document.documentElement.style.removeProperty('--reader-text-color');
+  }
+
   render() {
     const {
       title,
@@ -222,19 +301,46 @@ export class ReactReader extends PureComponent<
       ...props
     } = this.props;
     const { toc, settings } = this.state;
+    
+    // Get current theme colors
+    const currentTheme = themes.find((t) => t.name === settings.theme);
+    const themeColors = currentTheme ? currentTheme.styles.body : { background: '#fff', color: '#000' };
+    
+    // Create themed styles
+    const themedContainerStyle = {
+      ...readerStyles.container,
+      backgroundColor: themeColors.background,
+      color: themeColors.color,
+    };
+    
+    const themedReaderAreaStyle = {
+      ...readerStyles.readerArea,
+      backgroundColor: themeColors.background,
+      color: themeColors.color,
+    };
+    
+    const themedArrowStyle = {
+      ...readerStyles.arrow,
+      color: themeColors.color,
+      opacity: 0.7,
+    };
+    
     return (
-      <div style={readerStyles.container}>
-        <div style={Object.assign({}, readerStyles.readerArea)}>
-          <div className="absolute top-4 left-4 z-20 flex items-center gap-2">
+      <div 
+        style={themedContainerStyle} 
+        data-react-reader-container
+      >
+        <div style={themedReaderAreaStyle}>
+          <div className="absolute top-4 left-4 z-20 flex items-center gap-2" style={{color: themeColors.color}}>
             {showToc && <Toc toc={toc} setLocation={this.setLocation} />}
           </div>
-          <div className="absolute top-4 right-4 z-20">
+          <div className="absolute top-4 right-4 z-20" style={{color: themeColors.color}}>
             <DrawerDialogSetting
               settings={settings}
               onSettingsChange={this.onSettingsChange}
             />
           </div>
-          <div style={readerStyles.titleArea}>{title}</div>
+          <div style={{...readerStyles.titleArea, color: themeColors.color}}>{title}</div>
           <SwipeWrapper
             swipeProps={{
               onSwiped: (eventData: SwipeEventData) => {
@@ -257,7 +363,7 @@ export class ReactReader extends PureComponent<
                 ref={this.readerRef}
                 loadingView={
                   loadingView === undefined ? (
-                    <div style={readerStyles.loadingView}>Loading…</div>
+                    <div style={{...readerStyles.loadingView, color: themeColors.color}}>Loading…</div>
                   ) : (
                     loadingView
                   )
@@ -270,13 +376,13 @@ export class ReactReader extends PureComponent<
             </div>
           </SwipeWrapper>
           <button
-            style={Object.assign({}, readerStyles.arrow, readerStyles.prev)}
+            style={Object.assign({}, themedArrowStyle, readerStyles.prev)}
             onClick={isRTL ? this.next : this.prev}
           >
             ‹
           </button>
           <button
-            style={Object.assign({}, readerStyles.arrow, readerStyles.next)}
+            style={Object.assign({}, themedArrowStyle, readerStyles.next)}
             onClick={isRTL ? this.prev : this.next}
           >
             ›
