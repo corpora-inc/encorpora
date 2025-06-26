@@ -10,13 +10,11 @@ import {
   type IReactReaderStyle,
 } from "./react-reader-styles";
 import { type NavItem } from "epubjs";
-import {
-  SettingsDialog,
-  type ReaderTheme,
-  type Settings,
-} from "./SettingsDialog";
 import { searchInBook } from "./lib";
 import { Toc } from "./Toc";
+import { THEMES } from "./settings/ThemeSettings";
+import { DrawerDialogSetting } from "./settings/DrawerDialogSetting";
+import { Settings } from "./settings/SettingsComponent";
 
 type SwipeWrapperProps = {
   children: ReactNode;
@@ -32,36 +30,6 @@ const SwipeWrapper = ({ children, swipeProps }: SwipeWrapperProps) => {
   );
 };
 
-const themes: ReaderTheme[] = [
-  {
-    name: "Light",
-    styles: {
-      body: {
-        background: "#fff",
-        color: "#000",
-      },
-    },
-  },
-  {
-    name: "Dark",
-    styles: {
-      body: {
-        background: "#121212",
-        color: "#e0e0e0",
-      },
-    },
-  },
-  {
-    name: "Sepia",
-    styles: {
-      body: {
-        background: "#f4f1e9",
-        color: "#5c4b37",
-      },
-    },
-  },
-];
-
 export type IReactReaderProps = IEpubViewProps & {
   title?: string;
   showToc?: boolean;
@@ -73,6 +41,7 @@ export type IReactReaderProps = IEpubViewProps & {
   contextLength?: number;
   onSearchResults?: (results: SearchResult[]) => void;
 };
+const themes = THEMES;
 
 type SearchResult = { cfi: string; excerpt: string };
 
@@ -163,11 +132,8 @@ export class ReactReader extends PureComponent<
 
   setLocation = (loc: string) => {
     const { locationChanged } = this.props;
-    this.setState(
-      () => locationChanged && locationChanged(loc)
-    );
+    this.setState(() => locationChanged && locationChanged(loc));
   };
-
 
   // Changing Page based on direction of scroll
   handleWheel = (event: WheelEvent) => {
@@ -260,16 +226,10 @@ export class ReactReader extends PureComponent<
       <div style={readerStyles.container}>
         <div style={Object.assign({}, readerStyles.readerArea)}>
           <div className="absolute top-4 left-4 z-20 flex items-center gap-2">
-            {showToc && (
-              <Toc
-                toc={toc}
-                setLocation={this.setLocation}
-              />
-            )}
+            {showToc && <Toc toc={toc} setLocation={this.setLocation} />}
           </div>
           <div className="absolute top-4 right-4 z-20">
-            <SettingsDialog
-              themes={themes}
+            <DrawerDialogSetting
               settings={settings}
               onSettingsChange={this.onSettingsChange}
             />
