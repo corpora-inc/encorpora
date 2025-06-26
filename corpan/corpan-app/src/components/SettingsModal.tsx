@@ -43,33 +43,38 @@ export function SettingsModal({ open, onClose }: { open: boolean; onClose: () =>
                 <DialogDescription dir={dir()}>
                     {t("Adjust to your preferences")}
                 </DialogDescription>
-                <TextSizeAdjuster />
-                <RateAdjuster />
-                <LanguageSelectOrder />
-                <LevelsPicker />
-                <DomainPicker />
-                <RomanizationToggle />
-                <Button
-                    onClick={() => {
-                        setOnboarded(false);
-                        setOnboardingStep(0);
-                        onClose();
-                    }}
-                    className="
-                        mt-5 w-full rounded-xl px-6 py-8
-                        focus:outline-none focus:ring-2 focus:ring-neutral-400 focus:ring-offset-2
-                        transition-colors cursor-pointer
-                        shadow-sm
-                    "
-                >
-                    {t("reonboard")}
-                </Button>
-                <Separator className="mt-5" />
-                <div className="space-y-1 my-5">
-                    <h4 className="text-2xl leading-none font-medium text-center">{t("About Corpán" as any)}</h4>
-                    <p className="text-muted-foreground text-center">{t("Instant polyglot practice" as any)}</p>
+                
+                <div className="flex-1 overflow-hidden ">
+                    <div className="h-full overflow-y-auto px-1 space-y-4">
+                        <TextSizeAdjuster />
+                        <RateAdjuster />
+                        <LanguageSelectOrder />
+                        <LevelsPicker />
+                        <DomainPicker />
+                        <RomanizationToggle />
+                        <Button
+                            onClick={() => {
+                                setOnboarded(false);
+                                setOnboardingStep(0);
+                                onClose();
+                            }}
+                            className="
+                                mt-5 w-full rounded-xl px-6 py-8
+                                focus:outline-none focus:ring-2 focus:ring-neutral-400 focus:ring-offset-2
+                                transition-colors cursor-pointer
+                                shadow-sm
+                            "
+                        >
+                            {t("reonboard")}
+                        </Button>
+                        <Separator className="mt-5" />
+                        <div className="space-y-1 my-5">
+                            <h4 className="text-2xl leading-none font-medium text-center">{t("About Corpán" as any)}</h4>
+                            <p className="text-muted-foreground text-center">{t("Instant polyglot practice" as any)}</p>
+                        </div>
+                        <About />
+                    </div>
                 </div>
-                <About />
 
             </DialogContent>
         </Dialog>
