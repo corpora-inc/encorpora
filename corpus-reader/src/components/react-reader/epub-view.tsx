@@ -155,10 +155,6 @@ export class EpubView extends Component<IEpubViewProps, IEpubViewState> {
     }
   };
 
-  renderBook() {
-    return <div ref={this.viewerRef} className="h-full" />;
-  }
-
   handleKeyPress = (event: KeyboardEvent) => {
     if (event.key === "ArrowRight" && this.nextPage) {
       this.nextPage();
@@ -172,7 +168,9 @@ export class EpubView extends Component<IEpubViewProps, IEpubViewState> {
     const { isLoaded } = this.state;
     return (
       <div className="relative h-full w-full">
-        {(isLoaded && this.renderBook()) || <Loader text="loading book" />}
+        {(isLoaded && <div ref={this.viewerRef} className="h-full" />) || (
+          <Loader text="loading book" />
+        )}
       </div>
     );
   }
