@@ -1,6 +1,6 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import FontSettings from "./FontSettings";
-import LayoutSettings from "./layout";
+import LayoutSettings from "./LayoutSettings";
 import { ThemeSettings } from "./ThemeSettings";
 
 export type Settings = {
