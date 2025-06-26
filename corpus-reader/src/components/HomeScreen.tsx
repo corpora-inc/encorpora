@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { toast } from "sonner";
@@ -48,11 +48,53 @@ export function HomeScreen({ books, onBookAdded }: HomeScreenProps) {
   >("all");
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedLibrary, setSelectedLibrary] = useState<string>("all");
+  const [featuredBook, setFeaturedBook] = useState<BookEntry | null>(null);
 
-  const featuredBook =
-    books.find((book) => book.progress > 0 && !book.is_finished) ||
-    books[0] ||
-    null;
+  // Update featured book whenever books array changes
+  useEffect(() => {
+    if (books.length > 0) {
+      const mostRecentBook = books.reduce((latest, current) => {
+        if (!latest) return current;
+        
+        // If current book has a more recent last_read date, it becomes the featured book
+        const latestDate = new Date(latest.last_read).getTime();
+        const currentDate = new Date(current.last_read).getTime();
+        
+        return currentDate > latestDate ? current : latest;
+      }, books[0]);
+      
+      console.log("Featured book updated:", mostRecentBook.title, "Last read:", mostRecentBook.last_read);
+      setFeaturedBook(mostRecentBook);
+    } else {
+      setFeaturedBook(null);
+    }
+  }, [books]); // Re-run when books array changes
+
+  // Refresh books when window regains focus (e.g., returning from reader)
+  useEffect(() => {
+    const handleFocus = () => {
+      if (onBookAdded) {
+        console.log("Window regained focus, refreshing books...");
+        onBookAdded();
+      }
+    };
+
+    window.addEventListener('focus', handleFocus);
+    return () => window.removeEventListener('focus', handleFocus);
+  }, [onBookAdded]);
+
+  // Featured book should be the most recently read book
+  // const featuredBook = books.length > 0 
+  //   ? books.reduce((latest, current) => {
+  //       if (!latest) return current;
+        
+  //       // If current book has a more recent last_read date, it becomes the featured book
+  //       const latestDate = new Date(latest.last_read).getTime();
+  //       const currentDate = new Date(current.last_read).getTime();
+        
+  //       return currentDate > latestDate ? current : latest;
+  //     }, books[0])
+  //   : null;
 
   const completedBooks = books.filter((book) => book.is_finished);
 
@@ -216,12 +258,16 @@ export function HomeScreen({ books, onBookAdded }: HomeScreenProps) {
                     </div>
                   </div>
                 </div>
-                {/* Featured Book - Current Read */}
+                {/* Featured Book - Last Opened */}
                 {featuredBook && (
                   <section>
                     <div className="flex items-center gap-2 mb-6">
                       <h2 className="text-2xl font-bold text-foreground">
-                        Currently reading
+                        {featuredBook.progress > 0 && !featuredBook.is_finished
+                          ? "Continue reading"
+                          : featuredBook.is_finished
+                          ? "Recently finished"
+                          : "Recently added"}
                       </h2>
                     </div>
                     <FeaturedBookCard book={featuredBook} />
@@ -244,13 +290,13 @@ export function HomeScreen({ books, onBookAdded }: HomeScreenProps) {
                       <FolderIcon className="h-5 w-5 text-primary" />
                       <h2 className="text-xl font-bold text-foreground">
                         {selectedLibrary === "all"
-                          ? "Complete Library"
+                          ? "Library"
                           : selectedLibrary === "favorites"
-                          ? "Favorite Books"
+                          ? "Favorite "
                           : selectedLibrary === "currently-reading"
                           ? "Currently Reading"
                           : selectedLibrary === "want-to-read"
-                          ? "Want to Read"
+                          ? "Want to"
                           : "Custom Library"}
                       </h2>
                       <Badge variant="outline" className="text-xs">
@@ -266,22 +312,22 @@ export function HomeScreen({ books, onBookAdded }: HomeScreenProps) {
                           View All
                         </Button>
                       )}
-                                          <Tabs
-                      value={viewMode}
-                      onValueChange={(value) =>
-                        setViewMode(value as "card" | "list")
-                      }
-                      className="w-auto"
-                    >
-                      <TabsList className="h-8 px-1">
-                        <TabsTrigger value="card" className="h-6 w-7 px-0">
-                          <LayoutDashboardIcon className="w-4 h-4" />
-                        </TabsTrigger>
-                        <TabsTrigger value="list" className="h-6 w-7 px-0">
-                          <ListIcon className="w-4 h-4" />
-                        </TabsTrigger>
-                      </TabsList>
-                    </Tabs>
+                      <Tabs
+                        value={viewMode}
+                        onValueChange={(value) =>
+                          setViewMode(value as "card" | "list")
+                        }
+                        className="w-auto"
+                      >
+                        <TabsList className="h-8 px-1">
+                          <TabsTrigger value="card" className="h-6 w-7 px-0">
+                            <LayoutDashboardIcon className="w-4 h-4" />
+                          </TabsTrigger>
+                          <TabsTrigger value="list" className="h-6 w-7 px-0">
+                            <ListIcon className="w-4 h-4" />
+                          </TabsTrigger>
+                        </TabsList>
+                      </Tabs>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-4">

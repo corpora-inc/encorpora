@@ -46,7 +46,7 @@ function App() {
             path="/"
             element={<HomeScreen books={Books} onBookAdded={fetchBooks} />}
           />
-          <Route path="/reader/:bookPath" element={<Reader />} />
+          <Route path="/reader/:bookPath" element={<Reader onBookRead={fetchBooks} />} />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
         <Toaster richColors />

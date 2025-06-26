@@ -50,3 +50,23 @@ pub async fn add_book_to_db(
         .unwrap();
     println!("Book added to library:");
 }
+
+#[tauri::command]
+pub async fn update_book_last_read(app: tauri::AppHandle, book_path: String) -> Result<(), String> {
+    let db = get_db(app).await.map_err(|e| e.to_string())?;
+    
+    let query_string = r#"
+        UPDATE books 
+        SET last_read = CURRENT_TIMESTAMP 
+        WHERE path = $1
+    "#;
+    
+    sqlx::query(query_string)
+        .bind(book_path)
+        .execute(&db)
+        .await
+        .map_err(|e| format!("Failed to update last_read: {}", e))?;
+    
+    println!("Updated last_read timestamp for book");
+    Ok(())
+}
