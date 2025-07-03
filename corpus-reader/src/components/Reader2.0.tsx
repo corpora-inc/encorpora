@@ -1,4 +1,4 @@
-import { sample } from "@/lib/utils";
+import { readFileSrc } from "@/lib/utils";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { ReactReader } from "./react-reader/react-reader";
@@ -10,7 +10,7 @@ interface ReaderProps {
 
 export const Reader = ({ onBookRead }: ReaderProps) => {
   const [location, setLocation] = useState<string | number | null>(null);
-  const [epubFile, setEpubFile] = useState<ArrayBuffer | undefined>(
+  const [epubFile, setEpubFile] = useState<string | ArrayBuffer | undefined>(
     undefined
   );
   const { bookPath } = useParams<{ bookPath: string }>();
@@ -18,9 +18,8 @@ export const Reader = ({ onBookRead }: ReaderProps) => {
   const locationChanged = (epubcifi: string) => {
     setLocation(epubcifi);
   };
-
+  
   useEffect(() => {
-    // This effect runs once when the component mounts
     if (!bookPath) return;
     
     // Update the last_read timestamp when book is opened
@@ -37,12 +36,9 @@ export const Reader = ({ onBookRead }: ReaderProps) => {
     };
     
     updateLastRead();
-    
-    sample(bookPath)
-      .then((file) => {
-        const sss = file.buffer;
-        console.log("Loaded book:", bookPath, sss);
-        setEpubFile(sss);
+    readFileSrc(bookPath)
+      .then(async (file) => {
+        setEpubFile(file);
         console.log("Epub file set:");
         setLocation(null); // Reset location when a new book is loaded
       })

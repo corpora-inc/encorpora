@@ -1,20 +1,16 @@
 import Database from "@tauri-apps/plugin-sql";
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
-import { readFile, BaseDirectory } from "@tauri-apps/plugin-fs";
+import { convertFileSrc } from "@tauri-apps/api/core";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-export const sample = async (path: string) => {
-  const file = await readFile(path, {
-    baseDir: BaseDirectory.AppLocalData,
-  });
-  return file;
+export const readFileSrc = async (path: string) => {
+  const assetUrl = convertFileSrc(path);
+  return assetUrl;
 };
-
-
 
 export const removeBookFromLibrary = async (bookId: number) => {
   // Changed bookPath to bookId for consistency
