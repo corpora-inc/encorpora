@@ -18,7 +18,6 @@ export type IEpubViewProps = {
   url: string | ArrayBuffer;
   epubInitOptions?: Partial<BookOptions>;
   epubOptions?: Partial<RenditionOptionsFix>;
-  loadingView?: React.ReactNode;
   location: string | number | null;
   locationChanged(value: string): void;
   showToc?: boolean;

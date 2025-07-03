@@ -344,7 +344,6 @@ export class ReactReader extends PureComponent<
     const {
       title,
       showToc = true,
-      loadingView,
       readerStyles = defaultStyles,
       locationChanged,
       swipeable,
@@ -436,20 +435,6 @@ export class ReactReader extends PureComponent<
             <div style={readerStyles.reader}>
               <EpubView
                 ref={this.readerRef}
-                loadingView={
-                  loadingView === undefined ? (
-                    <div
-                      style={{
-                        ...readerStyles.loadingView,
-                        color: themeColors.color,
-                      }}
-                    >
-                      Loading…
-                    </div>
-                  ) : (
-                    loadingView
-                  )
-                }
                 {...props}
                 tocChanged={this.onTocChange}
                 locationChanged={locationChanged}
