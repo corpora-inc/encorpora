@@ -29,7 +29,7 @@ const HomeHeader = ({
         <div className="flex items-center space-x-2">
           {/* Search Dialog with debounce */}
           <BookSearchDialog books={books} />
-                    {/* <About /> */}
+          <About />
           <Button
             size="icon"
             className="h-8 w-8 md:hidden"

@@ -26,10 +26,12 @@ const DrawerDialog = ({
   title,
   description,
   trigger,
+  drawerCloseButton,
 }: {
   trigger: React.ReactNode;
   children: React.ReactNode;
   title: string;
+  drawerCloseButton?: React.ReactNode;
 
   description: string;
 }) => {
@@ -39,9 +41,7 @@ const DrawerDialog = ({
   if (isDesktop) {
     return (
       <Dialog open={open} onOpenChange={setOpen}>
-        <DialogTrigger asChild>
-          <div>{trigger}</div>
-        </DialogTrigger>
+        <DialogTrigger asChild>{trigger}</DialogTrigger>
         <DialogContent className="sm:max-w-[425px]">
           <DialogHeader>
             <DialogTitle>{title}</DialogTitle>
@@ -55,7 +55,7 @@ const DrawerDialog = ({
 
   return (
     <Drawer open={open} onOpenChange={setOpen}>
-      <DrawerTrigger asChild>          <div>{trigger}</div></DrawerTrigger>
+      <DrawerTrigger asChild>{trigger}</DrawerTrigger>
       <DrawerContent>
         <DrawerHeader className="text-left">
           <DrawerTitle>{title}</DrawerTitle>
@@ -63,9 +63,7 @@ const DrawerDialog = ({
         </DrawerHeader>
         {children}
         <DrawerFooter className="pt-2">
-          <DrawerClose asChild>
-            <Button variant="outline">Cancel</Button>
-          </DrawerClose>
+          {drawerCloseButton && drawerCloseButton}
         </DrawerFooter>
       </DrawerContent>
     </Drawer>

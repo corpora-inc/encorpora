@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { GithubIcon, Globe, Mail, Info } from "lucide-react";
 import DrawerDialog from "./DrawerDialogWrapper";
+import { Separator } from "./ui/separator";
 
 const WEBSITE_URL = "https://encorpora.io";
 const BOOKSITE_URL = "https://shop.encorpora.io/";
@@ -28,18 +29,19 @@ const About = () => {
   return (
     <DrawerDialog
       trigger={
-        <Button variant="outline" size='icon'>
-          <Info className=" w-8 h-8 text-gray-500" />
+        <Button variant="ghost" size='icon' className="h-8 w-8">
+          <Info />
         </Button>
       }
       title="About Corporium"
       description="The best epub reader for your books and documents"
     >
-      <div className="flex flex-col min-h-full px-2 py-2 gap-4">
+      
+      <div className="flex flex-col min-h-full py-2 gap-4">
         {/* Version Section */}
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <Info className="h-5 w-5 text-muted-foreground" />
+            <Info className="h-4 w-4 text-muted-foreground" />
             <h3 className="text-base font-medium">App version</h3>
           </div>
           <Badge variant="outline" className="px-3 py-1 text-sm">
@@ -50,7 +52,7 @@ const About = () => {
         {/* Website Section */}
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <Globe className="h-5 w-5 text-muted-foreground" />
+            <Globe className="h-4 w-4 text-muted-foreground" />
             <h3 className="text-base font-medium">Website</h3>
           </div>
           <Button
@@ -67,7 +69,7 @@ const About = () => {
         {/* Support & Feedback Section */}
         <div>
           <div className="flex items-center gap-2 mb-3">
-            <Mail className="h-5 w-5 text-muted-foreground" />
+            <Mail className="h-4 w-4 text-muted-foreground" />
             <h3 className="text-base font-medium">Support & Feedback</h3>
           </div>
 
@@ -97,13 +99,14 @@ const About = () => {
             </Button>
           </div>
         </div>
+        <Separator  />
 
         {/* Corpán Promotion Section */}
         <div>
-          <div className="flex items-center gap-2 mb-3">
-            <Info className="h-5 w-5 text-muted-foreground" />
+          <div className="flex items-center gap-1.5 mb-3">
+            <Info className="h-4 w-4 text-muted-foreground" />
             <h3 className="text-base font-medium">
-              Download our amazing books
+              Check out our amazing books
             </h3>
           </div>
           <p className="text-muted-foreground text-sm mb-4">
