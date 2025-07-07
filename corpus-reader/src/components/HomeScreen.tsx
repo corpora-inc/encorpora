@@ -34,7 +34,7 @@ import { invoke } from "@tauri-apps/api/core";
 
 interface HomeScreenProps {
   books: BookEntry[];
-  onBookAdded?: () => void;
+  onBookAdded: () => void;
 }
 
 export function HomeScreen({ books, onBookAdded }: HomeScreenProps) {
@@ -55,18 +55,15 @@ export function HomeScreen({ books, onBookAdded }: HomeScreenProps) {
     if (books.length > 0) {
       const mostRecentBook = books.reduce((latest, current) => {
         if (!latest) return current;
-
-        // If current book has a more recent last_read date, it becomes the featured book
         const latestDate = new Date(latest.last_read).getTime();
         const currentDate = new Date(current.last_read).getTime();
-
         return currentDate > latestDate ? current : latest;
       }, books[0]);
       setFeaturedBook(mostRecentBook);
     } else {
       setFeaturedBook(null);
     }
-  }, [books]); // Re-run when books array changes
+  }, [books]);
 
   // Refresh books when window regains focus (e.g., returning from reader)
   useEffect(() => {
@@ -76,38 +73,19 @@ export function HomeScreen({ books, onBookAdded }: HomeScreenProps) {
         onBookAdded();
       }
     };
-
     window.addEventListener("focus", handleFocus);
     return () => window.removeEventListener("focus", handleFocus);
   }, [onBookAdded]);
 
   const completedBooks = books.filter((book) => book.is_finished);
-
-  // Statistics
   const totalBooks = books.length;
   const booksInProgress = books.filter(
     (book) => book.last_read_page !== 0 && !book.is_finished
   ).length;
   const booksCompleted = completedBooks.length;
 
-  // Filter books based on selected library and other filters
   const getFilteredBooks = () => {
     let filtered = books;
-
-    // TODO: add library feature here
-    // switch (selectedLibrary) {
-    //   case "currently-reading":
-    //     filtered = books.filter(
-    //       (book) => book.progress > 0 && !book.is_finished
-    //     );
-    //     break;
-    //   case "want-to-read":
-    //     filtered = books.filter((book) => book.progress === 0);
-    //     break;
-    //   case "all":
-    //   default:
-    //     break;
-    // }
 
     // Apply text search
     if (searchQuery.trim()) {
@@ -119,7 +97,7 @@ export function HomeScreen({ books, onBookAdded }: HomeScreenProps) {
       );
     }
 
-    // Apply status filter on top of library filter
+    // Apply status filter
     switch (filterBy) {
       case "reading":
         filtered = filtered.filter(
@@ -133,7 +111,6 @@ export function HomeScreen({ books, onBookAdded }: HomeScreenProps) {
         filtered = filtered.filter((book) => book.progress === 0);
         break;
       default:
-      // Use already filtered books
     }
 
     return filtered.sort((a, b) => {
@@ -160,7 +137,8 @@ export function HomeScreen({ books, onBookAdded }: HomeScreenProps) {
     try {
       setLoadingBooks(true);
       message = await invoke("pick_file");
-      onBookAdded!();
+      onBookAdded();
+
     } catch (error) {
       console.error("Error opening file dialog or adding book:", error);
       toast.error("Could not open or process the EPUB file.");
@@ -169,11 +147,12 @@ export function HomeScreen({ books, onBookAdded }: HomeScreenProps) {
       toast.info(message);
     }
   };
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-background/98 to-muted/30">
+    <div className="min-h-screen bg-gradient-to-br from-background via-background/98 to-muted/30 safe-top safe-bottom">
       <div className="flex min-h-screen">
         {/* Main Content */}
-        <div className="flex-1 ">
+        <div className="flex-1">
           {/* Top Navigation Bar */}
           <HomeHeader
             books={books}
@@ -182,19 +161,17 @@ export function HomeScreen({ books, onBookAdded }: HomeScreenProps) {
           {/* Content Area */}
           <div className="container px-4 py-6 mx-auto max-w-7xl">
             {books.length === 0 ? (
-              <>
-                {loadingBooks ? (
-                  <Loader text="Loading book..." />
-                ) : (
-                  <EmptyLibrary
-                    handleAddBookToLibrary={handleAddBookToLibrary}
-                  />
-                )}
-              </>
+              loadingBooks ? (
+                <Loader text="Loading book..." />
+              ) : (
+                <EmptyLibrary
+                  handleAddBookToLibrary={handleAddBookToLibrary}
+                />
+              )
             ) : (
               <div className="w-full space-y-8">
                 {/* Stats cards */}
-                <div className="grid grid-cols-2 md:grid-cols-3  gap-4 mb-8">
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8">
                   <div className="bg-card/80 backdrop-blur-sm border border-border/50 rounded-xl p-4 hover:shadow-md transition-all duration-300">
                     <div className="flex items-center gap-3">
                       <div className="p-2 bg-primary/10 rounded-lg">
@@ -210,7 +187,6 @@ export function HomeScreen({ books, onBookAdded }: HomeScreenProps) {
                       </div>
                     </div>
                   </div>
-
                   <div className="bg-card/80 backdrop-blur-sm border border-border/50 rounded-xl p-4 hover:shadow-md transition-all duration-300">
                     <div className="flex items-center gap-3">
                       <div className="p-2 bg-blue-500/10 rounded-lg">
@@ -226,7 +202,6 @@ export function HomeScreen({ books, onBookAdded }: HomeScreenProps) {
                       </div>
                     </div>
                   </div>
-
                   <div className="bg-card/80 backdrop-blur-sm border border-border/50 rounded-xl p-4 hover:shadow-md transition-all duration-300">
                     <div className="flex items-center gap-3">
                       <div className="p-2 bg-green-500/10 rounded-lg">
@@ -243,7 +218,7 @@ export function HomeScreen({ books, onBookAdded }: HomeScreenProps) {
                     </div>
                   </div>
                 </div>
-                {/* Featured Book - Last Opened */}
+                {/* Featured Book */}
                 {featuredBook && (
                   <section>
                     <div className="flex items-center gap-2 mb-6">
@@ -251,14 +226,14 @@ export function HomeScreen({ books, onBookAdded }: HomeScreenProps) {
                         {featuredBook.progress > 0 && !featuredBook.is_finished
                           ? "Continue reading"
                           : featuredBook.is_finished
-                          ? "Recently finished"
-                          : "Recently added"}
+                            ? "Recently finished"
+                            : "Recently added"}
                       </h2>
                     </div>
                     <FeaturedBookCard book={featuredBook} />
                   </section>
                 )}
-                {/* Library Manager Section */}
+                {/* Library Manager */}
                 <section>
                   <div className="flex items-center gap-3 mb-6">
                     <LibraryIcon className="h-6 w-6 text-primary" />
@@ -267,8 +242,7 @@ export function HomeScreen({ books, onBookAdded }: HomeScreenProps) {
                     </h2>
                   </div>
                 </section>
-
-                {/* Library Section*/}
+                {/* Library Section */}
                 <section>
                   <div className="flex flex-col lg:flex-row lg:items-center justify-between mb-6 gap-4">
                     <div className="flex items-center gap-3">
@@ -277,12 +251,12 @@ export function HomeScreen({ books, onBookAdded }: HomeScreenProps) {
                         {selectedLibrary === "all"
                           ? "Library"
                           : selectedLibrary === "favorites"
-                          ? "Favorite "
-                          : selectedLibrary === "currently-reading"
-                          ? "Currently Reading"
-                          : selectedLibrary === "want-to-read"
-                          ? "Want to"
-                          : "Custom Library"}
+                            ? "Favorite "
+                            : selectedLibrary === "currently-reading"
+                              ? "Currently Reading"
+                              : selectedLibrary === "want-to-read"
+                                ? "Want to"
+                                : "Custom Library"}
                       </h2>
                       <Badge variant="outline" className="text-xs">
                         {filteredBooks.length} of {totalBooks} books
@@ -314,11 +288,7 @@ export function HomeScreen({ books, onBookAdded }: HomeScreenProps) {
                         </TabsList>
                       </Tabs>
                     </div>
-
                     <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-4">
-                      {/* View Mode Toggle */}
-
-                      {/* Advanced Search */}
                       <div className="flex items-center gap-2 bg-muted/30 rounded-lg px-3 py-2 border border-border/40">
                         <SearchIcon className="h-4 w-4 text-muted-foreground" />
                         <input
@@ -331,7 +301,6 @@ export function HomeScreen({ books, onBookAdded }: HomeScreenProps) {
                         />
                       </div>
                       <div className="flex items-center gap-4">
-                        {/* Filter Dropdown */}
                         <div className="flex items-center gap-2">
                           <FilterIcon className="h-4 w-4 text-muted-foreground" />
                           <Select
@@ -351,8 +320,6 @@ export function HomeScreen({ books, onBookAdded }: HomeScreenProps) {
                             </SelectContent>
                           </Select>
                         </div>
-
-                        {/* Sort Dropdown */}
                         <div className="flex items-center gap-2">
                           <SortAscIcon className="h-4 w-4 text-muted-foreground" />
                           <Select
@@ -373,7 +340,6 @@ export function HomeScreen({ books, onBookAdded }: HomeScreenProps) {
                       </div>
                     </div>
                   </div>
-                  {/* Books Grid/List */}
                   {viewMode === "list" ? (
                     <div className="space-y-3">
                       {filteredBooks.map((book) => (
@@ -386,7 +352,7 @@ export function HomeScreen({ books, onBookAdded }: HomeScreenProps) {
                         <BookCard key={book.id} book={book} kind="card" />
                       ))}
                     </div>
-                  )}{" "}
+                  )}
                   {filteredBooks.length === 0 && (
                     <div className="text-center py-12">
                       <div className="mx-auto w-24 h-24 bg-muted/50 rounded-full flex items-center justify-center mb-4">
@@ -400,23 +366,23 @@ export function HomeScreen({ books, onBookAdded }: HomeScreenProps) {
                         {selectedLibrary === "all"
                           ? "No books found"
                           : selectedLibrary === "favorites"
-                          ? "No favorite books yet"
-                          : selectedLibrary === "currently-reading"
-                          ? "No books in progress"
-                          : selectedLibrary === "want-to-read"
-                          ? "No books in your wishlist"
-                          : "Library is empty"}
+                            ? "No favorite books yet"
+                            : selectedLibrary === "currently-reading"
+                              ? "No books in progress"
+                              : selectedLibrary === "want-to-read"
+                                ? "No books in your wishlist"
+                                : "Library is empty"}
                       </h3>
                       <p className="text-muted-foreground mb-4">
                         {selectedLibrary === "all"
                           ? "Try adjusting your filters or add some books to your library."
                           : selectedLibrary === "favorites"
-                          ? "Mark some books as favorites to see them here."
-                          : selectedLibrary === "currently-reading"
-                          ? "Start reading a book to track your progress here."
-                          : selectedLibrary === "want-to-read"
-                          ? "Add books you want to read to this wishlist."
-                          : `No books match the current filters in this library.`}
+                            ? "Mark some books as favorites to see them here."
+                            : selectedLibrary === "currently-reading"
+                              ? "Start reading a book to track your progress here."
+                              : selectedLibrary === "want-to-read"
+                                ? "Add books you want to read to this wishlist."
+                                : `No books match the current filters in this library.`}
                       </p>
                       <div className="flex gap-2 justify-center">
                         <Button
@@ -447,7 +413,9 @@ export function HomeScreen({ books, onBookAdded }: HomeScreenProps) {
       </div>
 
       {/* Floating action button for mobile */}
-      <div className="fixed right-4 bottom-4 z-50 md:hidden">
+      <div
+        className="fixed right-4 z-50 md:hidden safe-fab"
+      >
         <Button
           onClick={handleAddBookToLibrary}
           size="icon"
