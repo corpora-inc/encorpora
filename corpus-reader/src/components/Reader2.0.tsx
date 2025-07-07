@@ -1,8 +1,11 @@
-import { readFileSrc } from "@/lib/utils";
+import {
+  getBookInformation,
+  readFileSrc,
+  updateBookProgress,
+} from "@/lib/utils";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { ReactReader } from "./react-reader/react-reader";
-import { invoke } from "@tauri-apps/api/core";
 
 interface ReaderProps {
   onBookRead?: () => void;
@@ -15,17 +18,23 @@ export const Reader = ({ onBookRead }: ReaderProps) => {
   );
   const { bookPath } = useParams<{ bookPath: string }>();
 
-  const locationChanged = (epubcifi: string) => {
+  const locationChanged = async (epubcifi: string) => {
+    if (!bookPath) return;
     setLocation(epubcifi);
+    await updateBookProgress(bookPath, epubcifi, null);
   };
-  
+
   useEffect(() => {
     if (!bookPath) return;
-    
+    const getBookInfo = async () => {
+      const book = await getBookInformation(bookPath);
+      return book;
+    };
+
     // Update the last_read timestamp when book is opened
     const updateLastRead = async () => {
       try {
-        await invoke("update_book_last_read", { bookPath: decodeURIComponent(bookPath) });
+        await updateBookProgress(bookPath);
         // Refresh the books list to update the UI
         if (onBookRead) {
           onBookRead();
@@ -34,13 +43,16 @@ export const Reader = ({ onBookRead }: ReaderProps) => {
         console.error("Failed to update last_read:", error);
       }
     };
-    
+
     updateLastRead();
+    getBookInfo().then((book) => {
+      if (book) {
+        setLocation(book.last_read_page);
+      }
+    });
     readFileSrc(bookPath)
       .then(async (file) => {
         setEpubFile(file);
-        console.log("Epub file set:");
-        setLocation(null); // Reset location when a new book is loaded
       })
       .catch((error) => {
         console.error("Error loading book:", error);

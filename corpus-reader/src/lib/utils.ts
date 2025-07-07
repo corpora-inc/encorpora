@@ -85,21 +85,39 @@ export interface NoteEntry {
 }
 
 export const updateBookProgress = async (
-  bookId: number,
-  progress: number,
-  lastReadPage: number
+  path: string,
+  lastReadPage?: string | number | null,
+  progress?: string | number | null,
+
 ) => {
   const db = await Database.load("sqlite:library.db");
   try {
     await db.execute(
-      "UPDATE books SET progress = $1, last_read_page = $2, last_read = CURRENT_TIMESTAMP WHERE id = $3",
-      [progress, lastReadPage, bookId]
+      "UPDATE books SET progress = $1, last_read_page = $2, last_read = CURRENT_TIMESTAMP WHERE path = $3",
+      [progress, lastReadPage, path]
     );
-    console.log(`Progress updated for book ID ${bookId}.`);
+    console.log(`Progress updated for book  ${path}.`);
   } catch (error) {
-    console.error(`Error updating progress for book ID ${bookId}:`, error);
+    console.error(`Error updating progress for book ${path}:`, error);
   }
 };
+
+export const getBookInformation = async (bookPath: string): Promise<BookEntry | null> => {
+  const db = await Database.load("sqlite:library.db");
+  try {
+    const book: BookEntry[] = await db.select(
+      "SELECT * FROM books WHERE path = $1",
+      [bookPath]
+    );
+    if (book.length > 0) {
+      return book[0];
+    }
+    return null;
+  } catch (error) {
+    console.error(`Error fetching book information for ${bookPath}:`, error);
+    return null;
+  }
+}
 
 export const markBookAsFinished = async (
   bookId: number,

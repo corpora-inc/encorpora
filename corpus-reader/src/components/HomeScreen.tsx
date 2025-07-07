@@ -55,15 +55,13 @@ export function HomeScreen({ books, onBookAdded }: HomeScreenProps) {
     if (books.length > 0) {
       const mostRecentBook = books.reduce((latest, current) => {
         if (!latest) return current;
-        
+
         // If current book has a more recent last_read date, it becomes the featured book
         const latestDate = new Date(latest.last_read).getTime();
         const currentDate = new Date(current.last_read).getTime();
-        
+
         return currentDate > latestDate ? current : latest;
       }, books[0]);
-      
-      console.log("Featured book updated:", mostRecentBook.title, "Last read:", mostRecentBook.last_read);
       setFeaturedBook(mostRecentBook);
     } else {
       setFeaturedBook(null);
@@ -79,18 +77,16 @@ export function HomeScreen({ books, onBookAdded }: HomeScreenProps) {
       }
     };
 
-    window.addEventListener('focus', handleFocus);
-    return () => window.removeEventListener('focus', handleFocus);
+    window.addEventListener("focus", handleFocus);
+    return () => window.removeEventListener("focus", handleFocus);
   }, [onBookAdded]);
-
-
 
   const completedBooks = books.filter((book) => book.is_finished);
 
   // Statistics
   const totalBooks = books.length;
   const booksInProgress = books.filter(
-    (book) => book.progress > 0 && !book.is_finished
+    (book) => book.last_read_page !== 0 && !book.is_finished
   ).length;
   const booksCompleted = completedBooks.length;
 

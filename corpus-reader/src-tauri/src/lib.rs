@@ -85,7 +85,6 @@ pub fn run() {
         .plugin(tauri_plugin_dialog::init())
         .invoke_handler(tauri::generate_handler![
             file_commands::pick_file,
-            db_commands::update_book_last_read,
         ])
         .plugin(tauri_plugin_opener::init())
         .run(tauri::generate_context!())
