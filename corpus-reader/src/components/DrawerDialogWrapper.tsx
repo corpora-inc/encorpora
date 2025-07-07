@@ -1,7 +1,6 @@
 import * as React from "react";
 
 import { useMediaQuery } from "@/hooks/use-media-query";
-import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
@@ -63,7 +62,7 @@ const DrawerDialog = ({
         </DrawerHeader>
         {children}
         <DrawerFooter className="pt-2">
-          {drawerCloseButton && drawerCloseButton}
+          {drawerCloseButton && <DrawerClose asChild>{drawerCloseButton}</DrawerClose>}
         </DrawerFooter>
       </DrawerContent>
     </Drawer>

@@ -372,12 +372,6 @@ export class ReactReader extends PureComponent<
       color: themeColors.color,
     };
 
-    const themedArrowStyle = {
-      ...readerStyles.arrow,
-      color: themeColors.color,
-      opacity: 0.7,
-    };
-
     return (
       <div style={themedContainerStyle} data-react-reader-container>
         <div style={themedReaderAreaStyle}>
