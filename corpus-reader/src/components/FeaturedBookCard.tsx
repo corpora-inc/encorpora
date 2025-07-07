@@ -39,9 +39,14 @@ const FeaturedBookCard = ({ book }: { book: BookEntry }) => {
 
           {/* Play button overlay - hidden on mobile, shown on hover for desktop */}
           <div className="absolute inset-0 items-center justify-center z-20 opacity-0 group-hover:opacity-100 transition-all duration-300 hidden md:flex">
-            <div className="bg-primary/90 backdrop-blur-sm rounded-full p-4 shadow-2xl transform scale-75 group-hover:scale-100 transition-transform duration-300">
+            <button
+              type="button"
+              onClick={handleContinueReading}
+              aria-label="Play Book"
+              className="cursor-pointer bg-primary/90 backdrop-blur-sm rounded-full p-4 shadow-2xl transform scale-75 group-hover:scale-100 transition-transform duration-300 focus:outline-none"
+            >
               <PlayIcon className="w-8 h-8 text-primary-foreground fill-current" />
-            </div>
+            </button>
           </div>
 
           {/* Status badges */}
