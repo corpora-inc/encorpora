@@ -439,10 +439,10 @@ export class ReactReader extends PureComponent<
                 tocChanged={this.onTocChange}
                 locationChanged={locationChanged}
               />
-              {swipeable && <div style={readerStyles.swipeWrapper} />}
+              <div style={readerStyles.swipeWrapper} />
             </div>
           </SwipeWrapper>
-          <button
+          {/* <button
             style={Object.assign({}, themedArrowStyle, readerStyles.prev)}
             onClick={isRTL ? this.next : this.prev}
           >
@@ -453,7 +453,7 @@ export class ReactReader extends PureComponent<
             onClick={isRTL ? this.prev : this.next}
           >
             ›
-          </button>
+          </button> */}
         </div>
       </div>
     );

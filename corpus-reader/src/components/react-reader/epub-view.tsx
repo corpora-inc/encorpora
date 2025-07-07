@@ -42,6 +42,7 @@ export class EpubView extends Component<IEpubViewProps, IEpubViewState> {
   rendition?: Rendition;
   prevPage?: () => void;
   nextPage?: () => void;
+  private initializationPromise?: Promise<void>;
 
   constructor(props: IEpubViewProps) {
     super(props);
@@ -54,24 +55,62 @@ export class EpubView extends Component<IEpubViewProps, IEpubViewState> {
     document.addEventListener("keyup", this.handleKeyPress, false);
   }
 
-  initBook() {
-    const { url, tocChanged, epubInitOptions } = this.props;
-    if (this.book) {
-      this.book.destroy();
+  async initBook() {
+  const { url, tocChanged, epubInitOptions } = this.props;
+    
+    // Cancel any previous initialization
+    if (this.initializationPromise) {
+      return;
     }
-    this.book = Epub(url, epubInitOptions);
-    this.book.loaded.navigation.then(({ toc }) => {
-      this.setState(
-        {
-          isLoaded: true,
-          toc: toc,
-        },
-        () => {
-          tocChanged && tocChanged(toc);
-          this.initReader();
+
+    try {
+      // Set loading state
+      this.setState({ isLoaded: false, toc: [] });
+
+      this.initializationPromise = new Promise(async (resolve, reject) => {
+        try {
+          // Clean up previous book
+          if (this.book) {
+            this.book.destroy();
+          }
+
+          // Use setTimeout to defer the heavy operation
+          await new Promise(resolve => setTimeout(resolve, 0));
+
+          // Initialize book asynchronously
+          this.book = Epub(url, epubInitOptions);
+          
+          // Wait for navigation to load
+          const navigation = await this.book.loaded.navigation;
+          
+          this.setState(
+            {
+              isLoaded: true,
+              toc: navigation.toc,
+            },
+            () => {
+              tocChanged && tocChanged(navigation.toc);
+              this.initReader();
+              resolve();
+            }
+          );
+        } catch (error) {
+          console.error("Error initializing EPUB:", error);
+          // Set error state or retry logic here
+          this.setState({
+            isLoaded: false,
+            toc: [],
+          });
+          reject(error);
         }
-      );
-    });
+      });
+
+      await this.initializationPromise;
+    } catch (error) {
+      console.error("Failed to initialize EPUB:", error);
+    } finally {
+      this.initializationPromise = undefined;
+    }
   }
 
   componentWillUnmount() {

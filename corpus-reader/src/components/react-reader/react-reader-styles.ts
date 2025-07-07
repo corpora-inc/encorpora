@@ -11,7 +11,6 @@ export interface IReactReaderStyle {
   next: CSSProperties
   arrow: CSSProperties
   arrowHover: CSSProperties
-  loadingView: CSSProperties
 }
 
 export const ReactReaderStyle: IReactReaderStyle = {
@@ -42,9 +41,9 @@ export const ReactReaderStyle: IReactReaderStyle = {
   reader: {
     position: 'absolute',
     top: 50,
-    left: 50,
-    bottom: 20,
-    right: 50,
+    left: 10,
+    bottom: 10,
+    right: 10,
   },
   swipeWrapper: {
     position: 'absolute',
@@ -78,15 +77,5 @@ export const ReactReaderStyle: IReactReaderStyle = {
   },
   arrowHover: {
     color: '#777',
-  },
-
-  loadingView: {
-    position: 'absolute',
-    top: '50%',
-    left: '10%',
-    right: '10%',
-    color: '#ccc',
-    textAlign: 'center',
-    marginTop: '-.5em',
   },
 }
