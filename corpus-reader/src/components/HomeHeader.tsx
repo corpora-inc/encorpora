@@ -31,21 +31,12 @@ const HomeHeader = ({
           <BookSearchDialog books={books} />
           <About />
           <Button
-            size="icon"
-            className="h-8 w-8 md:hidden"
-            onClick={handleAddBookToLibrary}
-          >
-            <PlusIcon className="h-4 w-4" />
-          </Button>
-
-          <Button
-            className="hidden md:block"
             onClick={handleAddBookToLibrary}
             size="sm"
+            className="h-8 w-auto flex items-center justify-center"
           >
-            <p>
-              <PlusIcon className="inline" /> Add book
-            </p>
+            <PlusIcon className="h-4 w-4" />
+            <span className="hidden md:inline ml-1">Add book</span>
           </Button>
         </div>
       </div>
