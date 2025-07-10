@@ -31,7 +31,30 @@ export const searchInBook = async (
   const results: SearchResult[] = [];
   const promises: Promise<void>[] = [];
 
+  // Filter out table of contents, navigation items, and front matter
+  const contentItems: any[] = [];
   book.spine.each((item: any) => {
+    // Exclude common TOC, navigation, and front matter file patterns
+    const href = item.href.toLowerCase();
+    if (!href.includes('toc') && 
+        !href.includes('nav') && 
+        !href.includes('contents') &&
+        !href.includes('navigation') &&
+        !href.includes('cover') &&
+        !href.includes('title') &&
+        !href.includes('copyright') &&
+        !href.includes('dedication') &&
+        !href.includes('foreword') &&
+        !href.includes('preface') &&
+        !href.includes('acknowledgment') &&
+        !href.includes('front') &&
+        !href.includes('frontmatter') &&
+        item.linear !== 'no') {
+      contentItems.push(item);
+    }
+  });
+
+  contentItems.forEach((item: any) => {
     const promise = (async () => {
       try {
         await item.load(book.load.bind(book));
