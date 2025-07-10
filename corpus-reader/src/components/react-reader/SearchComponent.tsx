@@ -62,7 +62,7 @@ export const SearchComponent: React.FC<SearchComponentProps> = ({
   };
 
   const SearchContent = () => (
-    <div className="p-4">
+    <div className="min-h-[400px] p-4" style={{ color: themeColors.color }}>
       <div className="flex items-center gap-2 mb-3">
         <div className="relative flex-1">
           <Input
@@ -118,7 +118,7 @@ export const SearchComponent: React.FC<SearchComponentProps> = ({
           >
             {searchResults.length} result{searchResults.length !== 1 ? 's' : ''} found
           </div>
-          <ScrollArea className="h-64">
+          <ScrollArea className="h-72">
             <div className="space-y-2">
               {searchResults.map((result, index) => (
                 <div
