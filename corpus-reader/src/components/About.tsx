@@ -37,7 +37,7 @@ const About = () => {
       description="The best epub reader for your books and documents"
     >
       
-      <div className="flex flex-col min-h-full py-2 gap-4">
+      <div className="flex flex-col min-h-full p-5 md:p-0 md:py-2 gap-4">
         {/* Version Section */}
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
