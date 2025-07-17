@@ -6,6 +6,8 @@ import { MainExperience } from "./components/MainExperience";
 import { SettingsModal } from "./components/SettingsModal";
 import { Button } from "./components/ui/button";
 import "./index.css";
+import { ThemeProvider } from "./components/ThemeProvider";
+import ThemeToggle from "./components/ThemeSwitch";
 
 export default function App() {
   const [showSettings, setShowSettings] = useState(false);
@@ -17,7 +19,7 @@ export default function App() {
     const newClass = `text-${textSize}`;
 
     // Remove any existing text size classes from html element
-    ALL_TEXT_SIZES.forEach(size => {
+    ALL_TEXT_SIZES.forEach((size) => {
       root.classList.remove(`text-${size}`);
     });
 
@@ -32,7 +34,7 @@ export default function App() {
     return <OnboardingWizard />;
   }
   return (
-    <>
+    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
       <div className={`flex flex-col min-h-0 h-screen w-full relative`}>
         <MainExperience />
         <div className="fixed top-5 right-5 z-50">
@@ -46,6 +48,7 @@ export default function App() {
             >
               <SettingsIcon className="w-6 h-6 text-gray-600" />
             </Button>
+            <ThemeToggle />
           </div>
         </div>
       </div>
@@ -54,6 +57,6 @@ export default function App() {
         open={showSettings}
         onClose={() => setShowSettings(false)}
       />
-    </>
+    </ThemeProvider>
   );
 }
