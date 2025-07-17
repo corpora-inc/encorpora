@@ -79,6 +79,9 @@ function BasicPdfRender() {
   // Use ref to track the last saved page to avoid unnecessary updates
   const lastSavedPageRef = useRef<number>(1);
 
+  // Ref for scroll container to implement intersection observer
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+
   // Extract settings from store
   const { scale, rotation, viewMode, readingMode, brightness } = settings;
 
@@ -181,6 +184,69 @@ function BasicPdfRender() {
     return () => clearTimeout(timeoutId);
   }, [currentPage, numPages, bookPath]);
 
+  // Intersection Observer for vertical scroll mode to track current page
+  useEffect(() => {
+    if (readingMode !== "vertical" || !numPages) {
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        // Find the page that's most visible
+        let mostVisiblePage = 1;
+        let maxVisibility = 0;
+
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const pageId = entry.target.id;
+            const pageNumber = parseInt(pageId.replace("page-", ""));
+
+            // Use intersection ratio to determine which page is most visible
+            if (entry.intersectionRatio > maxVisibility) {
+              maxVisibility = entry.intersectionRatio;
+              mostVisiblePage = pageNumber;
+            }
+          }
+        });
+
+        // Only update if the page actually changed
+        if (mostVisiblePage !== currentPage && maxVisibility > 0.3) {
+          setCurrentPage(mostVisiblePage);
+        }
+      },
+      {
+        threshold: [0.1, 0.3, 0.5, 0.7, 0.9], // Multiple thresholds for better detection
+        rootMargin: "-10% 0px -10% 0px", // Only consider pages that are well within viewport
+      }
+    );
+
+    // Observe all page elements
+    const pageElements = document.querySelectorAll('[id^="page-"]');
+    pageElements.forEach((element) => observer.observe(element));
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [readingMode, numPages, currentPage]);
+
+  // Scroll to saved page when switching to vertical mode
+  useEffect(() => {
+    if (readingMode === "vertical" && currentPage > 1) {
+      // Small delay to ensure pages are rendered
+      const timeoutId = setTimeout(() => {
+        const pageElement = document.getElementById(`page-${currentPage}`);
+        if (pageElement) {
+          pageElement.scrollIntoView({
+            behavior: "auto", // Use 'auto' instead of 'smooth' for initial positioning
+            block: "start",
+          });
+        }
+      }, 100);
+
+      return () => clearTimeout(timeoutId);
+    }
+  }, [readingMode, currentPage]);
+
   const onDocumentLoadSuccess = useCallback(
     ({ numPages }: DocumentLoadSuccess) => {
       console.log("PDF loaded successfully with", numPages, "pages");
@@ -219,7 +285,20 @@ function BasicPdfRender() {
 
   const goToPage = (pageNumber: number) => {
     setCurrentPage(pageNumber);
-    setViewMode("single");
+
+    if (readingMode === "vertical") {
+      // In vertical mode, scroll to the specific page
+      const pageElement = document.getElementById(`page-${pageNumber}`);
+      if (pageElement) {
+        pageElement.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }
+    } else {
+      // In page mode, switch to single view
+      setViewMode("single");
+    }
   };
 
   const toggleViewMode = () => {
@@ -749,7 +828,11 @@ function BasicPdfRender() {
                     {numPages &&
                       Array.from({ length: numPages }, (_, i) => i + 1).map(
                         (pageNum) => (
-                          <div key={pageNum} className="relative">
+                          <div
+                            key={pageNum}
+                            id={`page-${pageNum}`}
+                            className="relative"
+                          >
                             <Page
                               pageNumber={pageNum}
                               scale={scale}
