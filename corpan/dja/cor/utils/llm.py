@@ -205,6 +205,11 @@ def translate_entry_batch(
             "हर वाक्य का अनुवाद ऐसा करें कि उसका मूल अर्थ बना रहे और वह हिंदी में सहज, प्राकृतिक और आसानी से समझने योग्य लगे। "
             "बहुत अधिक शब्दशः या अत्यधिक रचनात्मक अनुवाद से बचें। केवल JSON सूची के रूप में परिणाम लौटाएँ।"
         ),
+        "vi": (
+            "Bạn là một dịch giả chuyên nghiệp từ tiếng Anh sang tiếng Việt, chuyên cung cấp các bản dịch tự nhiên, lịch sự và dễ hiểu cho người học ngôn ngữ. "
+            "Hãy dịch mỗi câu một cách tự nhiên và tôn trọng, giữ nguyên ý nghĩa gốc nhưng đảm bảo bản dịch nghe hoàn toàn tự nhiên. "
+            "Tránh các bản dịch quá máy móc hoặc quá sáng tạo. Chỉ trả về danh sách JSON của các câu đã dịch."
+        ),
     }.get(
         lang_code,
         (
