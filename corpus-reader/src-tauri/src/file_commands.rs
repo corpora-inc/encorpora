@@ -3,11 +3,60 @@ use crate::db_commands::add_book_to_db;
 use crate::epub_commands::{create_epub_cover, get_epub_metadata};
 use crate::pdf_commands::extract_pdf_metadata;
 use regex::Regex;
-use std::{fs, path::PathBuf};
-use tauri::Manager;
-use tauri_plugin_dialog::DialogExt;
-use tauri_plugin_fs::FsExt;
 use serde::{Deserialize, Serialize};
+use std::{fs, path::PathBuf};
+use tauri::{AppHandle, Manager};
+use tauri_plugin_dialog::{DialogExt, FilePath};
+use tauri_plugin_fs::FsExt;
+
+use mime_guess::MimeGuess;
+
+fn media_subtype(mime: &str) -> &str {
+    mime.rsplit('/')
+        .next()
+        .and_then(|s| s.split('+').next())
+        .unwrap_or("")
+}
+
+fn mime_from_path(path_like: &str) -> Option<String> {
+    MimeGuess::from_path(path_like)
+        .first()
+        .map(|m| m.essence_str().to_owned()) // e.g. "application/pdf"
+}
+
+fn sniff_bytes(bytes: &[u8]) -> Option<String> {
+    infer::get(bytes).map(|k| k.mime_type().to_owned())
+}
+
+/// Return the MIME type of whatever the user picked.
+///
+/// 1. Try to guess from the last path segment.
+/// 2. If that fails (Android `content://…`), read the file and sniff its header.
+fn mime_of_file(app: &AppHandle, fp: &FilePath) -> Result<String, String> {
+    // ── 1. Try extension based detection ──────────────────────────────────────
+    if let Some(mt) = match fp {
+        FilePath::Path(buf) => mime_from_path(buf.to_string_lossy().as_ref()),
+        FilePath::Url(url) => mime_from_path(url.path()),
+    } {
+        return Ok(mt);
+    }
+
+    // ── 2. Fallback: read a few KB and sniff ──────────────────────────────────
+    // app.fs().read() will work for both real paths and Android/iOS content URIs
+    let bytes = app
+        .fs()
+        .read(fp.clone())
+        .map_err(|e| format!("cannot read file: {e}"))?;
+
+    if let Some(mt) = sniff_bytes(&bytes) {
+        let extension = media_subtype(&mt);
+        return Ok(extension.to_string());
+    }
+
+    // Final fallback
+    Ok("application/octet-stream".into())
+}
+
 #[derive(Serialize, Deserialize)]
 pub struct FileProcessResult {
     pub message: String,
@@ -43,12 +92,7 @@ pub async fn pick_file(app: tauri::AppHandle) -> Result<FileProcessResult, Strin
         }
     };
 
-    let path_buf = path.as_path();
-    let extension = path_buf
-        .unwrap()
-        .extension()
-        .and_then(|ext| ext.to_str())
-        .unwrap_or("");
+    let extension = mime_of_file(&app, &path)?;
 
     let temp_file_path = resource_dir.join(format!("temporal.{}", extension));
     println!("My temp file is called: {:#?}", temp_file_path);
@@ -130,13 +174,14 @@ pub async fn pick_file(app: tauri::AppHandle) -> Result<FileProcessResult, Strin
         });
 
     } else if extension == "pdf" {
-        let metadata = extract_pdf_metadata(path.to_string().as_str()).unwrap();
+        let metadata = extract_pdf_metadata(&temp_file_path.as_path().to_str().unwrap()).unwrap();
 
         let epub_file_name_stem =
             create_file_name(metadata.title.clone(), metadata.creation_date.clone());
         let final_epub_filename = format!("{}.pdf", epub_file_name_stem);
         let library_path = resource_dir.join(LIBRARY_DIRECTORY);
         let new_file_path = library_path.join(final_epub_filename.clone());
+        print!("done");
 
         if check_if_file_exists(&new_file_path) {
             let _ = fs::remove_file(&temp_file_path);
