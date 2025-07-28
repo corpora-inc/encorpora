@@ -6,7 +6,7 @@ from corpora_ai.llm_interface import ChatCompletionTextMessage
 
 from cor.models import Domain, Entry, Language, Translation
 
-llm = load_llm_provider("xai")
+llm = load_llm_provider("local")
 
 DomainCode = Literal[
     "travel",
