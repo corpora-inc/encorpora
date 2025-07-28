@@ -23,6 +23,10 @@ export default defineConfig(async () => ({
           src: cMapsDir,
           dest: "",
         },
+        {
+          src: normalizePath(path.join(pdfjsDistPath, "build", "pdf.worker.mjs")),
+          dest: "",
+        },
       ],
     }),
   ],

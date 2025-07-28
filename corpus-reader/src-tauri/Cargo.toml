@@ -34,3 +34,5 @@ sqlx = "=0.8.6"
 # sqlx = { version = "0.8", features = ["sqlite", "runtime-tokio-native-tls"] }
 regex = "1.11.1"
 lopdf = "0.36.0"
+mime_guess = "2.0"
+infer      = "0.15"

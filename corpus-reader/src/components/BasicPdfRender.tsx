@@ -48,7 +48,7 @@ import PdfSearch from "./PdfSearch";
 import { useTheme } from "@/components/ThemeProvider";
 import { usePdfViewerStore } from "@/store/usePdfViewerStore";
 
-pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
+pdfjs.GlobalWorkerOptions.workerSrc = '/pdf.worker.mjs';
 
 interface DocumentLoadSuccess {
   numPages: number;
