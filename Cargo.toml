@@ -1,7 +1,7 @@
 [workspace]
 members = [
     # TODO: sql version don't match
-    "corpus-reader/src-tauri",
-    # "corpan/corpan-app/src-tauri",
+    # "corpus-reader/src-tauri",
+    "corpan/corpan-app/src-tauri",
     # "panko/pako/src-tauri",
 ]
