@@ -7,7 +7,7 @@ import {
 import { RTL_LANGUAGES } from "./constants";
 
 export const ALL_LANGUAGES = [
-    "en", "ko-polite", "es", "fr", "de", "pt-BR", "ja", "zh-Hans", "ar", "ru", "it", "hi",
+    "en", "ko-polite", "es", "fr", "de", "pt-BR", "ja", "zh-Hans", "ar", "ru", "it", "hi", "vi",
 ];
 
 export const ALL_LEVELS = ["A1", "A2", "B1", "B2", "C1", "C2"];

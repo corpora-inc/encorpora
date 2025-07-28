@@ -12,6 +12,7 @@ export const LANGUAGE_NAMES: Record<string, string> = {
     ru: "Russian",
     it: "Italian",
     hi: "Hindi",
+    vi: "Vietnamese",
 };
 
 export const RTL_LANGUAGES = ["ar", "he", "fa", "ur"];
