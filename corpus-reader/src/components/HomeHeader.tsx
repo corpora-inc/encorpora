@@ -31,7 +31,7 @@ const HomeHeader = ({
           <Button
             onClick={handleAddBookToLibrary}
             size="sm"
-            className="w-auto flex items-center justify-center"
+            className="hidden md:flex w-auto items-center justify-center"
           >
             <PlusIcon className="h-4 w-4" />
             <span className="hidden md:inline ml-1">Add book</span>
