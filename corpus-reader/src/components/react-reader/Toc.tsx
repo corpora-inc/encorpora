@@ -31,7 +31,7 @@ const TocItem = ({ data, setLocation }: TocItemProps) => (
           className="w-full justify-between text-sm font-normal text-left h-auto py-2.5 px-3 hover:bg-accent/30 transition-colors duration-150 group rounded-md"
           onClick={() => !data.subitems?.length && setLocation(data.href)}
         >
-          <span className="truncate text-foreground/80 group-hover:text-foreground">
+          <span className="text-wrap text-foreground/80 group-hover:text-foreground">
             {data.label || "Unknown Chapter"}
           </span>
           {data.subitems && data.subitems.length > 0 && (
@@ -50,7 +50,7 @@ const TocItem = ({ data, setLocation }: TocItemProps) => (
                     className="w-full justify-start text-xs h-auto py-2 px-3 text-muted-foreground hover:text-foreground hover:bg-accent/20 transition-colors duration-150 rounded-md"
                     onClick={() => setLocation(subitem.href)}
                   >
-                    <span className="truncate">
+                    <span className="text-wrap">
                       {subitem.label || "Unknown Section"}
                     </span>
                   </Button>
