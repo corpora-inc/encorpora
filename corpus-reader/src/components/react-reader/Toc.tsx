@@ -78,7 +78,7 @@ export const Toc = ({
           <Menu className="h-4 w-4" />
         </Button>
       </SheetTrigger>
-      <SheetContent side="left" className="w-full md:w-72">
+      <SheetContent side="left" className="w-full">
         <SheetHeader>
           <SheetTitle> Contents</SheetTitle>
         </SheetHeader>
