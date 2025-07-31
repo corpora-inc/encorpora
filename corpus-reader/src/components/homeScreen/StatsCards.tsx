@@ -13,7 +13,7 @@ export function StatsCards({
 }: StatsCardsProps) {
   return (
     <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8">
-      <div className="bg-card/80 backdrop-blur-sm border border-border/50 rounded-xl p-4 hover:shadow-md transition-all duration-300">
+      <div className="bg-card/80 backdrop-blur-sm border border-border/50 rounded-lg p-4 hover:shadow-md transition-all duration-300">
         <div className="flex items-center gap-3">
           <div className="p-2 bg-primary/10 rounded-lg">
             <BookOpenIcon className="h-5 w-5 text-primary" />
@@ -24,7 +24,7 @@ export function StatsCards({
           </div>
         </div>
       </div>
-      <div className="bg-card/80 backdrop-blur-sm border border-border/50 rounded-xl p-4 hover:shadow-md transition-all duration-300">
+      <div className="bg-card/80 backdrop-blur-sm border border-border/50 rounded-lg p-4 hover:shadow-md transition-all duration-300">
         <div className="flex items-center gap-3">
           <div className="p-2 bg-blue-500/10 rounded-lg">
             <TrendingUpIcon className="h-5 w-5 text-blue-500" />
@@ -37,7 +37,7 @@ export function StatsCards({
           </div>
         </div>
       </div>
-      <div className="bg-card/80 backdrop-blur-sm border border-border/50 rounded-xl p-4 hover:shadow-md transition-all duration-300">
+      <div className="bg-card/80 backdrop-blur-sm border border-border/50 rounded-lg p-4 hover:shadow-md transition-all duration-300">
         <div className="flex items-center gap-3">
           <div className="p-2 bg-green-500/10 rounded-lg">
             <StarIcon className="h-5 w-5 text-green-500" />
