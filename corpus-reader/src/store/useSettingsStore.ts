@@ -10,8 +10,8 @@ interface SettingsState {
 // Default settings values
 const initialSettings: Settings = {
   fontSize: 100,
-  fontFamily: "'Inter', sans-serif",
-  fontWeight: "normal",
+  fontFamily: "sans-serif",
+  fontWeight: "400",
   lineHeight: 1.5,
   textAlign: "justify",
   spread: "auto",
