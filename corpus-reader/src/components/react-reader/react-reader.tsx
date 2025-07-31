@@ -54,6 +54,7 @@ type IReactReaderState = {
   settings: Settings;
   searchResults: SearchResult[];
   isSearching: boolean;
+  headerVisible: boolean;
 };
 
 export class ReactReader extends PureComponent<
@@ -70,6 +71,7 @@ export class ReactReader extends PureComponent<
     toc: [],
     searchResults: [],
     isSearching: false,
+    headerVisible: false,
     settings: {
       fontSize: 100,
       fontFamily: "'Inter', sans-serif",
@@ -81,6 +83,9 @@ export class ReactReader extends PureComponent<
     },
   };
   readerRef = React.createRef<EpubView>();
+  headerTimeoutRef: NodeJS.Timeout | null = null;
+  lastTouchTime = 0;
+  touchCount = 0;
   constructor(props: IReactReaderProps) {
     super(props);
     // Initialize settings from persistent store
@@ -123,6 +128,9 @@ export class ReactReader extends PureComponent<
   }
   componentWillUnmount() {
     this.unsubscribeSettings?.();
+    if (this.headerTimeoutRef) {
+      clearTimeout(this.headerTimeoutRef);
+    }
   }
 
   next = () => {
@@ -130,6 +138,66 @@ export class ReactReader extends PureComponent<
     if (node && node.nextPage) {
       node.nextPage();
     }
+  };
+
+  // Header visibility management
+  showHeader = () => {
+    this.setState({ headerVisible: true });
+    this.resetHeaderTimeout();
+  };
+
+  hideHeader = () => {
+    this.setState({ headerVisible: false });
+  };
+
+  resetHeaderTimeout = () => {
+    if (this.headerTimeoutRef) {
+      clearTimeout(this.headerTimeoutRef);
+    }
+    this.headerTimeoutRef = setTimeout(() => {
+      this.hideHeader();
+    }, 2000); // Hide after 3 seconds of inactivity
+  };
+
+  // Mouse event handlers
+  handleMouseMove = (event: React.MouseEvent) => {
+    const { clientY } = event;
+    // Show header when mouse is in top 100px of screen
+    if (clientY <= 100) {
+      this.showHeader();
+    }
+  };
+
+  handleClick = () => {
+    if (this.state.headerVisible) {
+      this.hideHeader();
+    } else {
+      this.showHeader();
+    }
+  };
+
+  // Touch event handlers for mobile
+  handleTouchStart = (event: React.TouchEvent) => {
+    const currentTime = Date.now();
+    const timeDiff = currentTime - this.lastTouchTime;
+
+    // Double tap detection (within 300ms)
+    if (timeDiff < 300) {
+      this.touchCount++;
+      if (this.touchCount === 2) {
+        this.showHeader();
+        this.touchCount = 0;
+      }
+    } else {
+      this.touchCount = 1;
+    }
+
+    this.lastTouchTime = currentTime;
+  };
+
+  // Handle swipe down gesture
+  handleSwipeDown = () => {
+    this.showHeader();
   };
 
   prev = () => {
@@ -387,17 +455,39 @@ export class ReactReader extends PureComponent<
       color: themeColors.color,
     };
 
+    // Dynamic reader styles based on header visibility
+    const dynamicReaderStyle = {
+      ...readerStyles.reader,
+      backgroundColor: themeColors.background,
+      top: this.state.headerVisible ? 50 : 10, // Reduce top margin when header is hidden
+      transition: 'top 0.3s ease-in-out', // Smooth transition
+    };
+
     return (
-      <div style={themedContainerStyle} data-react-reader-container>
+      <div
+        style={themedContainerStyle}
+        data-react-reader-container
+        onMouseMove={this.handleMouseMove}
+        onClick={this.handleClick}
+        onTouchStart={this.handleTouchStart}
+      >
         <div style={themedReaderAreaStyle}>
+          {/* Left header controls */}
           <div
-            className="absolute top-4 left-4 z-20 flex items-center gap-2"
+            className={`absolute top-4 left-4 z-20 flex items-center gap-2 transition-all duration-300 ${
+              this.state.headerVisible
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 -translate-y-4 pointer-events-none"
+            }`}
             style={{ color: themeColors.color }}
           >
             <Button
               variant="ghost"
               size="icon"
-              onClick={() => window.history.back()}
+              onClick={(e) => {
+                e.stopPropagation();
+                window.history.back();
+              }}
               aria-label="Back"
             >
               <ArrowLeft className="w-5 h-5" />
@@ -405,8 +495,14 @@ export class ReactReader extends PureComponent<
 
             {showToc && <Toc toc={toc} setLocation={this.setLocation} />}
           </div>
+
+          {/* Right header controls */}
           <div
-            className="absolute top-4 right-4 z-20 flex items-center gap-2"
+            className={`absolute top-4 right-4 z-20 flex items-center gap-2 transition-all duration-300 ${
+              this.state.headerVisible
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 -translate-y-4 pointer-events-none"
+            }`}
             style={{ color: themeColors.color }}
           >
             <SearchComponent
@@ -422,6 +518,7 @@ export class ReactReader extends PureComponent<
                   variant="ghost"
                   size="sm"
                   className="h-8 w-8 rounded-md p-0"
+                  onClick={(e) => e.stopPropagation()}
                 >
                   <SettingsIcon className="h-4 w-4" />
                 </Button>
@@ -443,6 +540,9 @@ export class ReactReader extends PureComponent<
                 if (dir === "Right") {
                   isRTL ? this.next() : this.prev();
                 }
+                if (dir === "Down") {
+                  this.handleSwipeDown();
+                }
               },
               onTouchStartOrOnMouseDown: ({ event }) => event.preventDefault(),
               touchEventOptions: { passive: false },
@@ -451,10 +551,7 @@ export class ReactReader extends PureComponent<
             }}
           >
             <div
-              style={{
-                ...readerStyles.reader,
-                backgroundColor: themeColors.background,
-              }}
+              style={dynamicReaderStyle}
             >
               <EpubView
                 ref={this.readerRef}

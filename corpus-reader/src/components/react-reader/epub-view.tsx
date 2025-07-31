@@ -56,8 +56,8 @@ export class EpubView extends Component<IEpubViewProps, IEpubViewState> {
   }
 
   async initBook() {
-  const { url, tocChanged, epubInitOptions } = this.props;
-    
+    const { url, tocChanged, epubInitOptions } = this.props;
+
     // Cancel any previous initialization
     if (this.initializationPromise) {
       return;
@@ -75,14 +75,14 @@ export class EpubView extends Component<IEpubViewProps, IEpubViewState> {
           }
 
           // Use setTimeout to defer the heavy operation
-          await new Promise(resolve => setTimeout(resolve, 0));
+          await new Promise((resolve) => setTimeout(resolve, 0));
 
           // Initialize book asynchronously
           this.book = Epub(url, epubInitOptions);
-          
+
           // Wait for navigation to load
           const navigation = await this.book.loaded.navigation;
-          
+
           this.setState(
             {
               isLoaded: true,
@@ -205,12 +205,12 @@ export class EpubView extends Component<IEpubViewProps, IEpubViewState> {
   render() {
     const { isLoaded } = this.state;
     return (
-      <div className="relative h-full w-full" >
-        {(isLoaded && <div ref={this.viewerRef} className="h-full"  />) || (
+      <div className="relative h-full w-full">
+        {(isLoaded && <div ref={this.viewerRef} className="h-full w-full" />) || (
           <Loader text="loading book" />
         )}
       </div>
     );
   }
 }
-``
+``;
