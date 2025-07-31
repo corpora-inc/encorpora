@@ -19,6 +19,7 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer";
+import { ScrollArea } from "./ui/scroll-area";
 
 const DrawerDialog = ({
   children,
@@ -55,14 +56,16 @@ const DrawerDialog = ({
   return (
     <Drawer open={open} onOpenChange={setOpen}>
       <DrawerTrigger asChild>{trigger}</DrawerTrigger>
-      <DrawerContent>
-        <DrawerHeader className="text-left">
+      <DrawerContent className="flex flex-col max-h-[90vh]">
+        <DrawerHeader className="text-left flex-shrink-0">
           <DrawerTitle>{title}</DrawerTitle>
           <DrawerDescription>{description}</DrawerDescription>
         </DrawerHeader>
-        {children}
-        <DrawerFooter className="pt-2">
-          {drawerCloseButton && <DrawerClose asChild>{drawerCloseButton}</DrawerClose>}
+          <div className="px-4">{children}</div>
+        <DrawerFooter className="pt-2 flex-shrink-0">
+          {drawerCloseButton && (
+            <DrawerClose asChild>{drawerCloseButton}</DrawerClose>
+          )}
         </DrawerFooter>
       </DrawerContent>
     </Drawer>
