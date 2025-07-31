@@ -16,14 +16,24 @@ const FeaturedBookCard = ({ book }: { book: BookEntry }) => {
   const navigate = useNavigate();
 
   const handleBookClick = async () => {
-    const bookPath = book.path
-    if (bookPath.includes("pdf")) navigate(`/pdf/${encodeURIComponent(bookPath)}`);
+    const bookPath = book.path;
+    if (bookPath.includes("pdf"))
+      navigate(`/pdf/${encodeURIComponent(bookPath)}`);
     else navigate(`/reader/${encodeURIComponent(bookPath)}`);
   };
 
   return (
     <div className="relative overflow-hidden rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-500 bg-gradient-to-r from-card/80 to-card/60 backdrop-blur-sm border border-border/50 group">
-      <div className="flex flex-col md:flex-row h-full">
+      <div
+        className="flex flex-col md:flex-row h-full md:cursor-pointer"
+        onClick={async (e) => {
+          // Only handle click on desktop (md and up)
+          if (window.innerWidth >= 768) {
+            e.preventDefault();
+            await handleBookClick();
+          }
+        }}
+      >
         {/* Image Section */}
         <div className="relative w-full md:w-2/5 h-[200px] md:h-auto overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-black/80 via-black/40 to-transparent z-10" />
@@ -138,8 +148,8 @@ const FeaturedBookCard = ({ book }: { book: BookEntry }) => {
             )}
           </div>
 
-          {/* Action button */}
-          <div className="mt-4 sm:mt-6 md:mt-8">
+          {/* Action button - only visible on mobile */}
+          <div className="mt-4 sm:mt-6 md:hidden">
             <Button
               onClick={async () => await handleBookClick()}
               className="w-full h-11  font-medium cursor-pointer"
