@@ -459,8 +459,8 @@ export class ReactReader extends PureComponent<
     const dynamicReaderStyle = {
       ...readerStyles.reader,
       backgroundColor: themeColors.background,
-      top: this.state.headerVisible ? 50 : 10, // Reduce top margin when header is hidden
-      transition: 'top 0.3s ease-in-out', // Smooth transition
+      top: this.state.headerVisible ? 80 : 30,
+      transition: "top 0.3s ease-in-out", // Smooth transition
     };
 
     return (
@@ -550,9 +550,7 @@ export class ReactReader extends PureComponent<
               trackMouse: true,
             }}
           >
-            <div
-              style={dynamicReaderStyle}
-            >
+            <div style={dynamicReaderStyle}>
               <EpubView
                 ref={this.readerRef}
                 {...props}
