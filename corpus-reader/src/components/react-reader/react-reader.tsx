@@ -14,12 +14,13 @@ import { searchInBook } from "./lib";
 import { Toc } from "./Toc";
 import { THEMES } from "./settings/ThemeSettings";
 import { DrawerDialogSetting } from "./settings/DrawerDialogSetting";
-import { Settings } from "./settings/SettingsComponent";
+import { Settings, SettingsComponent } from "./settings/SettingsComponent";
 import { SearchComponent, type SearchResult } from "./SearchComponent";
 import { Button } from "../ui/button";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, SettingsIcon } from "lucide-react";
 import { ThemeProviderContext } from "@/components/ThemeProvider";
 import { useSettingsStore } from "@/store/useSettingsStore";
+import DrawerDialog from "../DrawerDialogWrapper";
 
 type SwipeWrapperProps = {
   children: ReactNode;
@@ -91,7 +92,7 @@ export class ReactReader extends PureComponent<
     };
     // Initialize reader theme from global theme context
     const globalTheme = this.context?.theme;
-    if (globalTheme && globalTheme !== 'system') {
+    if (globalTheme && globalTheme !== "system") {
       this.state = {
         ...this.state,
         settings: { ...this.state.settings, theme: globalTheme },
@@ -101,7 +102,11 @@ export class ReactReader extends PureComponent<
 
   componentDidMount() {
     const { theme: globalTheme } = this.context;
-    if (globalTheme && globalTheme !== "system" && globalTheme !== this.state.settings.theme) {
+    if (
+      globalTheme &&
+      globalTheme !== "system" &&
+      globalTheme !== this.state.settings.theme
+    ) {
       this.setState(
         { settings: { ...this.state.settings, theme: globalTheme } },
         () => this.applySettings()
@@ -317,12 +322,12 @@ export class ReactReader extends PureComponent<
     try {
       // Remove any existing highlights first
       rendition.annotations.remove(cfi, "highlight");
-      
+
       // Add highlight annotation
       rendition.annotations.add("highlight", cfi, {}, undefined, "hl", {
         fill: "yellow",
         "fill-opacity": "0.3",
-        "mix-blend-mode": "multiply"
+        "mix-blend-mode": "multiply",
       });
 
       // Remove highlight after 2 seconds
@@ -350,7 +355,6 @@ export class ReactReader extends PureComponent<
       this.attachWheelListener();
     }
   }
-
 
   render() {
     const {
@@ -412,6 +416,20 @@ export class ReactReader extends PureComponent<
               onResultClick={this.handleSearchResultClick}
               isLoading={this.state.isSearching}
             />
+            <DrawerDialog
+              title="Settings"
+              trigger={
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className="h-8 w-8 rounded-md p-0"
+                >
+                  <SettingsIcon className="h-4 w-4" />
+                </Button>
+              }
+            >
+              <SettingsComponent />
+            </DrawerDialog>
             <DrawerDialogSetting />
           </div>
           <div style={{ ...readerStyles.titleArea, color: themeColors.color }}>
@@ -434,7 +452,12 @@ export class ReactReader extends PureComponent<
               trackMouse: true,
             }}
           >
-            <div style={{ ...readerStyles.reader, backgroundColor: themeColors.background }}>
+            <div
+              style={{
+                ...readerStyles.reader,
+                backgroundColor: themeColors.background,
+              }}
+            >
               <EpubView
                 ref={this.readerRef}
                 {...props}
@@ -444,7 +467,6 @@ export class ReactReader extends PureComponent<
               <div style={readerStyles.swipeWrapper} />
             </div>
           </SwipeWrapper>
-
         </div>
       </div>
     );
