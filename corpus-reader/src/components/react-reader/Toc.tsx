@@ -40,7 +40,7 @@ const TocItem = ({ data, setLocation }: TocItemProps) => (
         </Button>
       </CollapsibleTrigger>
       {data.subitems && data.subitems.length > 0 && (
-        <CollapsibleContent className="overflow-hidden data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down">
+        <CollapsibleContent className="text-wrap data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down">
           <div className="ml-3 mt-1 border-l border-border/30">
             <ul className="space-y-0.5">
               {data.subitems.map((subitem, subIndex) => (
@@ -78,11 +78,11 @@ export const Toc = ({
           <Menu className="h-4 w-4" />
         </Button>
       </SheetTrigger>
-      <SheetContent side="left" className="w-72">
+      <SheetContent side="left" className="w-full md:w-72">
         <SheetHeader>
           <SheetTitle> Contents</SheetTitle>
         </SheetHeader>
-        <ScrollArea className="max-h-screen w-72 px-3">
+        <ScrollArea className="max-h-screen w-full px-3">
           {Array.isArray(toc) && toc.length > 0 ? (
             <div className="space-y-2">
               {toc.map((item, i) => (
