@@ -29,7 +29,7 @@ const TocItem = ({ data, setLocation }: TocItemProps) => (
         <Button
           variant="ghost"
           className="w-full justify-between text-sm font-normal text-left h-auto py-2.5 px-3 hover:bg-accent/30 transition-colors duration-150 group rounded-md"
-          onClick={() => !data.subitems?.length && setLocation(data.href)}
+          onClick={() => setLocation(data.href)}
         >
           <span className="text-wrap text-foreground/80 group-hover:text-foreground">
             {data.label || "Unknown Chapter"}
