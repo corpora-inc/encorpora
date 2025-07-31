@@ -88,7 +88,7 @@ export const SearchComponent: React.FC<SearchComponentProps> = ({
               variant="ghost"
               size="sm"
               onClick={handleClearSearch}
-              className="absolute right-1 top-1/2 -translate-y-1/2 h-6 w-6 p-0"
+              className="absolute right-1 top-1/2 -translate-y-1/2 h-6 w-6 p-0 cursor-pointer"
             >
               <X className="w-3 h-3" />
             </Button>
