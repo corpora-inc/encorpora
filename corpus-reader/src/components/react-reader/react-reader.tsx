@@ -13,7 +13,6 @@ import { type NavItem } from "epubjs";
 import { searchInBook } from "./lib";
 import { Toc } from "./Toc";
 import { THEMES } from "./settings/ThemeSettings";
-import { DrawerDialogSetting } from "./settings/DrawerDialogSetting";
 import { Settings, SettingsComponent } from "./settings/SettingsComponent";
 import { SearchComponent, type SearchResult } from "./SearchComponent";
 import { Button } from "../ui/button";
@@ -430,7 +429,6 @@ export class ReactReader extends PureComponent<
             >
               <SettingsComponent />
             </DrawerDialog>
-            <DrawerDialogSetting />
           </div>
           <div style={{ ...readerStyles.titleArea, color: themeColors.color }}>
             {title}
