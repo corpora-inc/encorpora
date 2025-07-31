@@ -19,7 +19,6 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer";
-import { ScrollArea } from "./ui/scroll-area";
 
 const DrawerDialog = ({
   children,
@@ -32,8 +31,7 @@ const DrawerDialog = ({
   children: React.ReactNode;
   title: string;
   drawerCloseButton?: React.ReactNode;
-
-  description: string;
+  description?: string;
 }) => {
   const [open, setOpen] = React.useState(false);
   const isDesktop = useMediaQuery("(min-width: 768px)");
