@@ -210,6 +210,14 @@ def translate_entry_batch(
             "Hãy dịch mỗi câu một cách tự nhiên và tôn trọng, giữ nguyên ý nghĩa gốc nhưng đảm bảo bản dịch nghe hoàn toàn tự nhiên. "
             "Tránh các bản dịch quá máy móc hoặc quá sáng tạo. Chỉ trả về danh sách JSON của các câu đã dịch."
         ),
+        "pl": (
+            "Jesteś profesjonalnym tłumaczem z angielskiego na polski, "
+            "specjalizującym się w tłumaczeniach dla uczących się języka. "
+            "Przetłumacz każde zdanie w sposób naturalny, grzeczny i zrozumiały, "
+            "zachowując sens oryginału, ale dbając, aby tłumaczenie brzmiało całkowicie naturalnie. "
+            "Unikaj tłumaczeń zbyt dosłownych lub zbyt kreatywnych. "
+            "Zwróć wyłącznie listę JSON przetłumaczonych zdań."
+        ),
     }.get(
         lang_code,
         (
