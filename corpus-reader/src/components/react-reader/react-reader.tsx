@@ -199,7 +199,7 @@ export class ReactReader extends PureComponent<
   };
 
   // Touch event handlers for mobile
-  handleTouchStart = (event: React.TouchEvent) => {
+  handleTouchStart = (_event: React.TouchEvent) => {
     // Don't handle touch events if a dialog is open
     if (isDialogOrOverlayOpen()) {
       return;
@@ -409,10 +409,33 @@ export class ReactReader extends PureComponent<
   handleSearchResultClick = (cfi: string) => {
     const node = this.readerRef.current;
     if (node && node.rendition) {
-      // Navigate to the search result location
+      // Check if we're on mobile to adjust timing
+      const isMobile = window.innerWidth <= 768;
+      const navigationDelay = isMobile ? 300 : 200;
+      const highlightDelay = isMobile ? 400 : 300;
+
+      console.log(`Navigating to search result: ${cfi}, mobile: ${isMobile}`);
+
+      // Navigate to the search result location with improved handling
       node.rendition.display(cfi).then(() => {
-        // Add highlight after navigation is complete
-        this.highlightSearchResult(cfi);
+        console.log(`Navigation successful, highlighting in ${navigationDelay}ms`);
+        // Wait for mobile single page rendering to stabilize
+        setTimeout(() => {
+          this.highlightSearchResult(cfi);
+        }, navigationDelay);
+      }).catch((error) => {
+        console.warn("Navigation error, trying alternative approach:", error);
+        // Fallback: try displaying the CFI again with longer delay
+        setTimeout(() => {
+          if (node.rendition) {
+            console.log("Retrying navigation...");
+            node.rendition.display(cfi).then(() => {
+              setTimeout(() => {
+                this.highlightSearchResult(cfi);
+              }, highlightDelay);
+            });
+          }
+        }, 150);
       });
     }
   };
@@ -420,29 +443,58 @@ export class ReactReader extends PureComponent<
   // Highlight the search result for 2 seconds
   highlightSearchResult = (cfi: string) => {
     const rendition = this.readerRef.current?.rendition;
-    if (!rendition) return;
+    if (!rendition) {
+      console.warn("No rendition available for highlighting");
+      return;
+    }
+
+    console.log(`Attempting to highlight CFI: ${cfi}`);
 
     try {
       // Remove any existing highlights first
-      rendition.annotations.remove(cfi, "highlight");
+      try {
+        rendition.annotations.remove(cfi, "highlight");
+      } catch (e) {
+        // Ignore errors when removing non-existent highlights
+      }
 
-      // Add highlight annotation
+      // Add highlight annotation with improved error handling
       rendition.annotations.add("highlight", cfi, {}, undefined, "hl", {
         fill: "yellow",
-        "fill-opacity": "0.3",
+        "fill-opacity": "0.4",
         "mix-blend-mode": "multiply",
+        stroke: "#fbbf24",
+        "stroke-width": "1px",
       });
 
-      // Remove highlight after 2 seconds
+      console.log("Highlight added successfully");
+
+      // Remove highlight after 3 seconds (extended for mobile)
       setTimeout(() => {
         try {
           rendition.annotations.remove(cfi, "highlight");
+          console.log("Highlight removed");
         } catch (error) {
           console.warn("Could not remove highlight:", error);
         }
-      }, 2000);
+      }, 3000);
     } catch (error) {
       console.warn("Could not add highlight:", error);
+      // Fallback: try to get the range and scroll the containing element
+      try {
+        const range = rendition.getRange(cfi);
+        if (range && range.startContainer) {
+          const element = range.startContainer.nodeType === Node.TEXT_NODE 
+            ? range.startContainer.parentElement 
+            : range.startContainer as Element;
+          if (element && element.scrollIntoView) {
+            console.log("Using fallback scroll behavior");
+            element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
+        }
+      } catch (scrollError) {
+        console.warn("Could not scroll to location:", scrollError);
+      }
     }
   };
 

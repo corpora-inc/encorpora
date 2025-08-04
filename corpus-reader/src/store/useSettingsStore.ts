@@ -26,7 +26,8 @@ const getInitialSettings = (): Settings => ({
   fontWeight: "400",
   lineHeight: 1.5,
   textAlign: isMobileDevice() ? "left" : "justify",
-  spread: "auto",
+  // Force single page mode on mobile for better search navigation
+  spread: isMobileDevice() ? "none" : "auto",
   theme: "light",
 });
 
