@@ -1,7 +1,7 @@
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { cn } from "@/lib/utils";
-import { SettingsProps } from "./SettingsComponent";
+import { Settings } from "./SettingsComponent";
 import { useTheme } from "@/components/ThemeProvider";
 import type { Theme as ThemeName } from "@/components/ThemeProvider";
 
@@ -30,9 +30,12 @@ export const THEMES: ReaderTheme[] = [
   { name: "sunset", styles: { body: { background: "#4d3c37", color: "#e0e0e0" } } },
 ];
 
-export const ThemeSettings: React.FC<SettingsProps> = ({
+export const ThemeSettings = ({
   onSettingsChange,
   settings,
+}: {
+  onSettingsChange: ({ theme }: { theme: string }) => void;
+  settings: Settings;
 }) => {
   const { setTheme: setGlobalTheme } = useTheme();
 
