@@ -5,6 +5,7 @@ import type { Settings } from "../components/react-reader/settings/SettingsCompo
 interface SettingsState {
   settings: Settings;
   setSettings: (partial: Partial<Settings>) => void;
+  resetSettings: () => void;
 }
 
 // Function to detect mobile devices
@@ -39,6 +40,9 @@ export const useSettingsStore = create<SettingsState>()(
       setSettings: (partial: Partial<Settings>) => {
         const newSettings = { ...get().settings, ...partial };
         set({ settings: newSettings });
+      },
+      resetSettings: () => {
+        set({ settings: getInitialSettings() });
       },
     }),
     {

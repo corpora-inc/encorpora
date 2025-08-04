@@ -4,6 +4,7 @@ import LayoutSettings from "./LayoutSettings";
 import { ThemeSettings } from "./ThemeSettings";
 import { useSettingsStore } from "@/store/useSettingsStore";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { Button } from "@/components/ui/button";
 
 export type Settings = {
   fontSize: number;
@@ -20,8 +21,14 @@ export type Settings = {
 export const SettingsComponent = () => {
   const settings = useSettingsStore((state) => state.settings);
   const onSettingsChange = useSettingsStore((state) => state.setSettings);
+  const resetSettings = useSettingsStore((state) => state.resetSettings);
+
+  const handleResetSettings = () => {
+    resetSettings();
+  };
+
   return (
-    <div className="px-4 h-[50vh]">
+    <div className="px-4 h-[55vh]">
       <Tabs defaultValue="font" className="w-full">
         <TabsList className="grid w-full grid-cols-3">
           <TabsTrigger value="font">Font</TabsTrigger>
@@ -49,6 +56,16 @@ export const SettingsComponent = () => {
           </ScrollArea>
         </TabsContent>
       </Tabs>
+      
+      <div className="mt-4 pt-4 border-t border-border">
+        <Button
+          variant="outline"
+          onClick={handleResetSettings}
+          className="w-full"
+        >
+          Reset to default settings
+        </Button>
+      </div>
     </div>
   );
 };
