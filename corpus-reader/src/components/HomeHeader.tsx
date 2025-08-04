@@ -9,9 +9,11 @@ import About from "./About";
 const HomeHeader = ({
   books,
   handleAddBookToLibrary,
+  onBookDeleted,
 }: {
   books: BookEntry[];
   handleAddBookToLibrary: () => Promise<void>;
+  onBookDeleted?: () => void;
 }) => {
   return (
     <div className=" bg-background/60 backdrop-blur-sm border-b sticky top-0 z-50">
@@ -26,7 +28,7 @@ const HomeHeader = ({
         <div>{/* TODO: add bookmarks and notes section */}</div>
         <div className="flex items-center space-x-2">
           {/* Search Dialog with debounce */}
-          <BookSearchDialog books={books} />
+          <BookSearchDialog books={books} onBookDeleted={onBookDeleted} />
           <About />
           <Button
             onClick={handleAddBookToLibrary}

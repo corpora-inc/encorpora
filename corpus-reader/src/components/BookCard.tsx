@@ -1,21 +1,43 @@
 import { useLoadImage } from "@/lib/hooks/useLoadImage";
-import { BookEntry } from "@/lib/utils";
-import { BookIcon, EyeIcon, BookOpenIcon } from "lucide-react";
+import { BookEntry, deleteBookCompletely } from "@/lib/utils";
+import { BookIcon, EyeIcon, BookOpenIcon, Trash2Icon } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 const BookCard = ({
   book,
   kind,
+  onBookDeleted,
 }: {
   book: BookEntry;
   kind: "card" | "list";
+  onBookDeleted?: () => void;
 }) => {
   const navigate = useNavigate();
   const { imageUrl } = useLoadImage(book.cover_path);
+  const [isDeleting, setIsDeleting] = useState(false);
 
   const handleBookClick = async (bookPath: string) => {
     if (bookPath.includes("pdf"))
       navigate(`/pdf/${encodeURIComponent(bookPath)}`);
     else navigate(`/reader/${encodeURIComponent(bookPath)}`);
+  };
+
+  const handleDeleteBook = async (e: React.MouseEvent) => {
+    console.log(book)
+    e.stopPropagation(); // Prevent triggering the book click
+    
+    if (window.confirm(`Are you sure you want to delete "${book.title}"? This action cannot be undone.`)) {
+      setIsDeleting(true);
+      try {
+        await deleteBookCompletely(book.id);
+        onBookDeleted?.(); // Notify parent component to refresh the library
+      } catch (error) {
+        console.error("Failed to delete book:", error);
+        alert("Failed to delete book. Please try again.");
+      } finally {
+        setIsDeleting(false);
+      }
+    }
   };
   if (kind === "card") {
     return (
@@ -54,6 +76,18 @@ const BookCard = ({
                 {book.lang}
               </div>
             )}
+          </div>
+
+          {/* Delete button */}
+          <div className="absolute top-2 right-2">
+            <button
+              onClick={handleDeleteBook}
+              disabled={isDeleting}
+              className="opacity-0 group-hover:opacity-100 transition-all duration-300 bg-red-500/80 hover:bg-red-600/90 backdrop-blur-sm rounded-full p-1.5 shadow-lg"
+              title="Delete book"
+            >
+              <Trash2Icon className="w-3 h-3 text-white" />
+            </button>
           </div>
 
           {/* Quick action overlay */}
@@ -205,6 +239,16 @@ const BookCard = ({
                   : "unread"}
               </span>
             </div>
+
+            {/* Delete button for list view */}
+            <button
+              onClick={handleDeleteBook}
+              disabled={isDeleting}
+              className="ml-2 opacity-0 group-hover:opacity-100 transition-all duration-300 bg-red-500/80 hover:bg-red-600/90 backdrop-blur-sm rounded-full p-1.5 shadow-lg"
+              title="Delete book"
+            >
+              <Trash2Icon className="w-3 h-3 text-white" />
+            </button>
           </div>
         </div>
       </div>

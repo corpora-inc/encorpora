@@ -11,7 +11,7 @@ import BookCard from "./BookCard";
 import { Button } from "@/components/ui/button";
 import { SearchIcon } from "lucide-react";
 
-const BookSearchDialog = ({ books }: { books: BookEntry[] }) => {
+const BookSearchDialog = ({ books, onBookDeleted }: { books: BookEntry[]; onBookDeleted?: () => void }) => {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState<BookEntry[]>([]);
   const debounceRef = useRef<NodeJS.Timeout | null>(null);
@@ -60,7 +60,7 @@ const BookSearchDialog = ({ books }: { books: BookEntry[] }) => {
             )}
             {results.length > 0 &&
               results.map((result) => (
-                <BookCard key={result.id} book={result} kind="list" />
+                <BookCard key={result.id} book={result} kind="list" onBookDeleted={onBookDeleted} />
               ))}
           </div>
         </div>

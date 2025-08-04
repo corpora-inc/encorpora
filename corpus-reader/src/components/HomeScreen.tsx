@@ -18,9 +18,10 @@ import FeaturedBookCard from "./FeaturedBookCard";
 interface HomeScreenProps {
   books: BookEntry[];
   onBookAdded: () => void;
+  onBookDeleted?: () => void;
 }
 
-export function HomeScreen({ books, onBookAdded }: HomeScreenProps) {
+export function HomeScreen({ books, onBookAdded, onBookDeleted }: HomeScreenProps) {
   const {
     viewMode,
     setViewMode,
@@ -65,6 +66,7 @@ export function HomeScreen({ books, onBookAdded }: HomeScreenProps) {
           <HomeHeader
             books={books}
             handleAddBookToLibrary={handleAddBookToLibrary}
+            onBookDeleted={onBookDeleted}
           />
           {/* Content Area */}
           <div className="container px-4 py-6 mx-auto max-w-7xl">
@@ -124,6 +126,7 @@ export function HomeScreen({ books, onBookAdded }: HomeScreenProps) {
                   sortBy={sortBy}
                   setSortBy={setSortBy}
                   handleAddBookToLibrary={handleAddBookToLibrary}
+                  onBookDeleted={onBookDeleted}
                 />
               </div>
             )}

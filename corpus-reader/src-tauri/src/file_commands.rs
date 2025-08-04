@@ -1,5 +1,5 @@
 use crate::config::LIBRARY_DIRECTORY;
-use crate::db_commands::add_book_to_db;
+use crate::db_commands::{add_book_to_db, get_db};
 use crate::epub_commands::{create_epub_cover, get_epub_metadata};
 use crate::pdf_commands::extract_pdf_metadata;
 use regex::Regex;
@@ -263,4 +263,87 @@ fn create_file_name(s1: String, s2: String) -> String {
     let s2_sanitized = trim_underscores_regex.replace_all(&s2_sanitized, "");
 
     format!("{}{}", s1_sanitized, s2_sanitized)
+}
+
+#[tauri::command]
+pub async fn delete_book(app: tauri::AppHandle, book_id: i64) -> Result<String, String> {
+    println!("Attempting to delete book with ID: {}", book_id);
+    
+    // Get database connection
+    let db = match get_db(app.clone()).await {
+        Ok(db) => db,
+        Err(e) => {
+            println!("Failed to get database connection: {}", e);
+            return Err(format!("Failed to get database connection: {}", e));
+        }
+    };
+
+    // First, get the book information to know which files to delete
+    let book_query = "SELECT path, cover_path FROM books WHERE id = $1";
+    let book_result = match sqlx::query_as::<_, (String, Option<String>)>(book_query)
+        .bind(book_id)
+        .fetch_optional(&db)
+        .await
+    {
+        Ok(result) => result,
+        Err(e) => {
+            println!("Failed to fetch book information: {}", e);
+            return Err(format!("Failed to fetch book information: {}", e));
+        }
+    };
+
+    let (book_path, cover_path) = match book_result {
+        Some((path, cover)) => (path, cover),
+        None => {
+            println!("Book with ID {} not found in database", book_id);
+            return Err(format!("Book with ID {} not found", book_id));
+        }
+    };
+
+    // Delete the book file from filesystem
+    if check_if_file_exists(&PathBuf::from(&book_path)) {
+        if let Err(e) = fs::remove_file(&book_path) {
+            println!("Failed to delete book file {}: {}", book_path, e);
+            return Err(format!("Failed to delete book file: {}", e));
+        }
+        println!("Successfully deleted book file: {}", book_path);
+    } else {
+        println!("Book file {} does not exist on filesystem", book_path);
+    }
+
+    // Delete the cover image if it exists
+    if let Some(cover) = cover_path {
+        if check_if_file_exists(&PathBuf::from(&cover)) {
+            if let Err(e) = fs::remove_file(&cover) {
+                println!("Failed to delete cover file {}: {}", cover, e);
+                // Don't return error here, as the main book deletion should proceed
+            } else {
+                println!("Successfully deleted cover file: {}", cover);
+            }
+        } else {
+            println!("Cover file {} does not exist on filesystem", cover);
+        }
+    }
+
+    // Delete the book from database (this will cascade delete related records)
+    let delete_query = "DELETE FROM books WHERE id = $1";
+    match sqlx::query(delete_query)
+        .bind(book_id)
+        .execute(&db)
+        .await
+    {
+        Ok(result) => {
+            if result.rows_affected() > 0 {
+                println!("Successfully deleted book with ID {} from database", book_id);
+                Ok(format!("Book successfully deleted"))
+            } else {
+                println!("No rows affected when deleting book ID {}", book_id);
+                Err(format!("Book with ID {} not found in database", book_id))
+            }
+        }
+        Err(e) => {
+            println!("Failed to delete book from database: {}", e);
+            Err(format!("Failed to delete book from database: {}", e))
+        }
+    }
 }

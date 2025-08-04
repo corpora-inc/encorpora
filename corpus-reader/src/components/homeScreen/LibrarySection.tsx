@@ -17,6 +17,7 @@ interface LibrarySectionProps {
   sortBy: "recent" | "title" | "author" | "progress";
   setSortBy: (sort: "recent" | "title" | "author" | "progress") => void;
   handleAddBookToLibrary: () => void;
+  onBookDeleted?: () => void;
 }
 
 export function LibrarySection({
@@ -33,6 +34,7 @@ export function LibrarySection({
   sortBy,
   setSortBy,
   handleAddBookToLibrary,
+  onBookDeleted,
 }: LibrarySectionProps) {
   return (
     <section>
@@ -58,7 +60,7 @@ export function LibrarySection({
           setSelectedLibrary={setSelectedLibrary}
         />
       ) : (
-        <BookGrid books={filteredBooks} viewMode={viewMode} />
+        <BookGrid books={filteredBooks} viewMode={viewMode} onBookDeleted={onBookDeleted} />
       )}
     </section>
   );

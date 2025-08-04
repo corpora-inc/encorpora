@@ -47,7 +47,7 @@ function App() {
         <Routes>
           <Route
             path="/"
-            element={<HomeScreen books={Books} onBookAdded={fetchBooks} />}
+            element={<HomeScreen books={Books} onBookAdded={fetchBooks} onBookDeleted={fetchBooks} />}
           />
           <Route path="/reader/:bookPath" element={<Reader onBookRead={fetchBooks} />} />
           <Route path="/pdf/:bookPath" element={<BasicPdfRender />} />

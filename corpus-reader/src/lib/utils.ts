@@ -1,7 +1,7 @@
 import Database from "@tauri-apps/plugin-sql";
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
-import { convertFileSrc } from "@tauri-apps/api/core";
+import { convertFileSrc, invoke } from "@tauri-apps/api/core";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -22,6 +22,17 @@ export const removeBookFromLibrary = async (bookId: number) => {
     console.log(`Book with ID ${bookId} removed from library.`);
   } catch (error) {
     console.error(`Error removing book with ID ${bookId}:`, error);
+  }
+};
+
+export const deleteBookCompletely = async (bookId: number): Promise<string> => {
+  try {
+    const result = await invoke<string>("delete_book", { bookId });
+    console.log(`Book with ID ${bookId} deleted successfully:`, result);
+    return result;
+  } catch (error) {
+    console.error(`Error deleting book with ID ${bookId}:`, error);
+    throw error;
   }
 };
 
