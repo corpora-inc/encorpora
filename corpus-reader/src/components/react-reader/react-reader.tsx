@@ -509,12 +509,16 @@ export class ReactReader extends PureComponent<
         <div style={themedReaderAreaStyle}>
           {/* Header controls - consolidated into single div */}
           <div
-            className={`absolute top-0 left-0 right-0 z-20 flex items-center justify-between p-4 transition-all duration-300 ${
+            className={`absolute top-0 left-0 right-0 z-20 flex items-center justify-between px-4 py-2 transition-all duration-300 ${
               this.state.headerVisible
                 ? "opacity-100 translate-y-0"
                 : "opacity-0 -translate-y-4 pointer-events-none"
             }`}
-            style={{ color: themeColors.color }}
+            style={{ 
+              color: themeColors.color,
+              backgroundColor: `${themeColors.background}CC`,
+              backdropFilter: "blur(8px)"
+            }}
           >
             {/* Left controls */}
             <div className="flex items-center gap-2">

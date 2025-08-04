@@ -36,7 +36,7 @@ export const ReactReaderStyle: IReactReaderStyle = {
   },
   reader: {
     position: 'absolute',
-    top: 50,
+    top: 30,
     left: 10,
     bottom: 10,
     right: 10,
