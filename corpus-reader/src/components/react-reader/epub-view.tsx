@@ -5,6 +5,14 @@ import type { RenditionOptions } from "epubjs/types/rendition";
 import type { BookOptions } from "epubjs/types/book";
 import Loader from "../Loader";
 
+// Helper function to check if any dialog or overlay is open
+const isDialogOrOverlayOpen = (): boolean => {
+  return document.querySelector('[role="dialog"]') !== null ||
+         document.querySelector('[data-state="open"]') !== null ||
+         document.querySelector('.drawer-content') !== null ||
+         document.querySelector('[data-radix-dialog-content]') !== null;
+};
+
 export type RenditionOptionsFix = RenditionOptions & {
   allowPopups: boolean;
 };
@@ -194,6 +202,11 @@ export class EpubView extends Component<IEpubViewProps, IEpubViewState> {
   };
 
   handleKeyPress = (event: KeyboardEvent) => {
+    // Don't handle arrow keys if a dialog is open
+    if (isDialogOrOverlayOpen()) {
+      return;
+    }
+    
     if (event.key === "ArrowRight" && this.nextPage) {
       this.nextPage();
     }

@@ -21,6 +21,16 @@ import { ThemeProviderContext } from "@/components/ThemeProvider";
 import { useSettingsStore } from "@/store/useSettingsStore";
 import DrawerDialog from "../DrawerDialogWrapper";
 
+// Helper function to check if any dialog or overlay is open
+const isDialogOrOverlayOpen = (): boolean => {
+  return (
+    document.querySelector('[role="dialog"]') !== null ||
+    document.querySelector('[data-state="open"]') !== null ||
+    document.querySelector(".drawer-content") !== null ||
+    document.querySelector("[data-radix-dialog-content]") !== null
+  );
+};
+
 type SwipeWrapperProps = {
   children: ReactNode;
   swipeProps: Partial<SwipeableProps>;
@@ -142,6 +152,10 @@ export class ReactReader extends PureComponent<
 
   // Header visibility management
   showHeader = () => {
+    // Don't show header if a dialog is open
+    if (isDialogOrOverlayOpen()) {
+      return;
+    }
     this.setState({ headerVisible: true });
     this.resetHeaderTimeout();
   };
@@ -161,6 +175,10 @@ export class ReactReader extends PureComponent<
 
   // Mouse event handlers
   handleMouseMove = (event: React.MouseEvent) => {
+    // Don't show header if a dialog is open
+    if (isDialogOrOverlayOpen()) {
+      return;
+    }
     const { clientY } = event;
     // Show header when mouse is in top 100px of screen
     if (clientY <= 100) {
@@ -169,6 +187,10 @@ export class ReactReader extends PureComponent<
   };
 
   handleClick = () => {
+    // Don't handle click events if a dialog is open
+    if (isDialogOrOverlayOpen()) {
+      return;
+    }
     if (this.state.headerVisible) {
       this.hideHeader();
     } else {
@@ -178,6 +200,11 @@ export class ReactReader extends PureComponent<
 
   // Touch event handlers for mobile
   handleTouchStart = (event: React.TouchEvent) => {
+    // Don't handle touch events if a dialog is open
+    if (isDialogOrOverlayOpen()) {
+      return;
+    }
+    
     const currentTime = Date.now();
     const timeDiff = currentTime - this.lastTouchTime;
 
@@ -197,6 +224,10 @@ export class ReactReader extends PureComponent<
 
   // Handle swipe down gesture
   handleSwipeDown = () => {
+    // Don't show header if a dialog is open
+    if (isDialogOrOverlayOpen()) {
+      return;
+    }
     this.showHeader();
   };
 
@@ -312,6 +343,11 @@ export class ReactReader extends PureComponent<
 
   // Changing Page based on direction of scroll
   handleWheel = (event: WheelEvent) => {
+    // Don't handle wheel events if a dialog is open
+    if (isDialogOrOverlayOpen()) {
+      return;
+    }
+
     event.preventDefault();
 
     const node = this.readerRef.current;
@@ -533,6 +569,11 @@ export class ReactReader extends PureComponent<
           <SwipeWrapper
             swipeProps={{
               onSwiped: (eventData: SwipeEventData) => {
+                // Don't handle swipe events if a dialog is open
+                if (isDialogOrOverlayOpen()) {
+                  return;
+                }
+
                 const { dir } = eventData;
                 if (dir === "Left") {
                   isRTL ? this.prev() : this.next();
