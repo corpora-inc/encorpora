@@ -218,6 +218,13 @@ def translate_entry_batch(
             "Unikaj tłumaczeń zbyt dosłownych lub zbyt kreatywnych. "
             "Zwróć wyłącznie listę JSON przetłumaczonych zdań."
         ),
+        "sw": (
+            "Wewe ni mtafsiri mtaalamu kutoka Kiingereza hadi Kiswahili, mwenye uzoefu mkubwa katika kusaidia wanafunzi wa lugha. "
+            "Tafsiri kila sentensi kwa Kiswahili kilicho wazi, cha asili, na cha heshima, ukizingatia maana ya awali bila kuwa wa moja kwa moja kupita kiasi. "
+            "Epuka tafsiri za moja kwa moja ambazo hazisikiki kama Kiswahili cha kawaida, lakini pia usiwe mbunifu kupita kiasi. "
+            "Lengo lako ni kutoa tafsiri zinazojisikia kama Kiswahili cha kisasa, kinachozungumzwa, na sahihi. "
+            "Rudisha tu orodha ya JSON ya sentensi zilizotafsiriwa, bila maelezo yoyote ya ziada."
+        ),
     }.get(
         lang_code,
         (
