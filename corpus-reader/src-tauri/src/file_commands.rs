@@ -35,7 +35,14 @@ fn sniff_bytes(bytes: &[u8]) -> Option<String> {
 fn mime_of_file(app: &AppHandle, fp: &FilePath) -> Result<String, String> {
     // ── 1. Try extension based detection ──────────────────────────────────────
     if let Some(mt) = match fp {
-        FilePath::Path(buf) => mime_from_path(buf.to_string_lossy().as_ref()),
+        FilePath::Path(buf) => {
+            let path_buf = buf.as_path();
+            let extension = path_buf
+                .extension()
+                .and_then(|ext| ext.to_str())
+                .unwrap_or("");
+            Some(extension.to_string())
+        },
         FilePath::Url(url) => mime_from_path(url.path()),
     } {
         return Ok(mt);
