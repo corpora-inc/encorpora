@@ -28,7 +28,7 @@ const TocItem = ({ data, setLocation }: TocItemProps) => (
       <CollapsibleTrigger asChild>
         <Button
           variant="ghost"
-          className="w-full justify-between text-sm font-normal text-left h-auto py-2.5 px-3 hover:bg-accent/30 transition-colors duration-150 group rounded-md"
+          className="w-full cursor-pointer justify-between text-sm font-normal text-left h-auto py-2.5 px-3 hover:bg-accent/30 transition-colors duration-150 group rounded-md"
           onClick={() => setLocation(data.href)}
         >
           <span className="text-wrap text-foreground/80 group-hover:text-foreground">
@@ -47,7 +47,7 @@ const TocItem = ({ data, setLocation }: TocItemProps) => (
                 <li key={subIndex}>
                   <Button
                     variant="ghost"
-                    className="w-full justify-start text-xs h-auto py-2 px-3 text-muted-foreground hover:text-foreground hover:bg-accent/20 transition-colors duration-150 rounded-md"
+                    className="w-full cursor-pinter justify-start text-xs h-auto py-2 px-3 text-muted-foreground hover:text-foreground hover:bg-accent/20 transition-colors duration-150 rounded-md"
                     onClick={() => setLocation(subitem.href)}
                   >
                     <span className="text-wrap">
