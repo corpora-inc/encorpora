@@ -1098,6 +1098,13 @@ export const TRANSLATIONS = {
         "Fast": "Gyors",
         "Slower": "Lassabb",
         "Faster": "Gyorsabb",
+        "Levels": "Szintek",
+        "Select all": "Összes kijelölése",
+        "All levels included.": "Minden szintet tartalmaz.",
+        "selected": "kiválasztva",
+        "Domains": "Témakörök",
+        "All domains included.": "Minden témakör szerepel.",
+        // Onboarding
         "welcome": "Üdvözöljük",
         "make primary language": "Állítsa be a magyart elsődleges nyelvként",
         "can change later": "Ne aggódjon, később bármikor megváltoztathatja.",
@@ -1124,10 +1131,9 @@ export const TRANSLATIONS = {
         "Loading...": "Betöltés...",
         "About Corpán": "A Corpán-ról",
         "Instant polyglot practice": "Azonnali többnyelvű gyakorlás",
-        "Show Romanization": "Rómaizáció megjelenítése",
-
-
+        "Show Romanization": "Rómaizáció megjelenítése"
     }
+
 } as const;
 
 export type TranslationKey = keyof typeof TRANSLATIONS["en"];
