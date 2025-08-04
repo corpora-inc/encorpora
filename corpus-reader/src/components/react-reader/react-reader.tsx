@@ -491,12 +491,11 @@ export class ReactReader extends PureComponent<
       color: themeColors.color,
     };
 
-    // Dynamic reader styles based on header visibility
+    // Dynamic reader styles - controls now overlay instead of pushing content
     const dynamicReaderStyle = {
       ...readerStyles.reader,
       backgroundColor: themeColors.background,
-      top: this.state.headerVisible ? 80 : 30,
-      transition: "top 0.3s ease-in-out", // Smooth transition
+      // Removed dynamic top adjustment - controls now overlay
     };
 
     return (
@@ -508,60 +507,56 @@ export class ReactReader extends PureComponent<
         onTouchStart={this.handleTouchStart}
       >
         <div style={themedReaderAreaStyle}>
-          {/* Left header controls */}
+          {/* Header controls - consolidated into single div */}
           <div
-            className={`absolute top-4 left-4 z-20 flex items-center gap-2 transition-all duration-300 ${
+            className={`absolute top-0 left-0 right-0 z-20 flex items-center justify-between p-4 transition-all duration-300 ${
               this.state.headerVisible
                 ? "opacity-100 translate-y-0"
                 : "opacity-0 -translate-y-4 pointer-events-none"
             }`}
             style={{ color: themeColors.color }}
           >
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={(e) => {
-                e.stopPropagation();
-                window.history.back();
-              }}
-              aria-label="Back"
-            >
-              <ArrowLeft className="w-5 h-5" />
-            </Button>
+            {/* Left controls */}
+            <div className="flex items-center gap-2">
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  window.history.back();
+                }}
+                aria-label="Back"
+              >
+                <ArrowLeft className="w-5 h-5" />
+              </Button>
 
-            {showToc && <Toc toc={toc} setLocation={this.setLocation} />}
-          </div>
+              {showToc && <Toc toc={toc} setLocation={this.setLocation} />}
+            </div>
 
-          {/* Right header controls */}
-          <div
-            className={`absolute top-4 right-4 z-20 flex items-center gap-2 transition-all duration-300 ${
-              this.state.headerVisible
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 -translate-y-4 pointer-events-none"
-            }`}
-            style={{ color: themeColors.color }}
-          >
-            <SearchComponent
-              onSearch={this.searchInBook}
-              searchResults={this.state.searchResults}
-              onResultClick={this.handleSearchResultClick}
-              isLoading={this.state.isSearching}
-            />
-            <DrawerDialog
-              title="Settings"
-              trigger={
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  className="h-8 w-8 rounded-md p-0"
-                  onClick={(e) => e.stopPropagation()}
-                >
-                  <SettingsIcon className="h-4 w-4" />
-                </Button>
-              }
-            >
-              <SettingsComponent />
-            </DrawerDialog>
+            {/* Right controls */}
+            <div className="flex items-center gap-2">
+              <SearchComponent
+                onSearch={this.searchInBook}
+                searchResults={this.state.searchResults}
+                onResultClick={this.handleSearchResultClick}
+                isLoading={this.state.isSearching}
+              />
+              <DrawerDialog
+                title="Settings"
+                trigger={
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    className="h-8 w-8 rounded-md p-0"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    <SettingsIcon className="h-4 w-4" />
+                  </Button>
+                }
+              >
+                <SettingsComponent />
+              </DrawerDialog>
+            </div>
           </div>
           <div style={{ ...readerStyles.titleArea, color: themeColors.color }}>
             {title}
