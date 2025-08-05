@@ -23,10 +23,9 @@ const BookCard = ({
   };
 
   const handleDeleteBook = async (e: React.MouseEvent) => {
-    console.log(book)
-    e.stopPropagation(); // Prevent triggering the book click
-    
-    if (window.confirm(`Are you sure you want to delete "${book.title}"? This action cannot be undone.`)) {
+    e.stopPropagation(); 
+    const confirmation = await window.confirm(`Are you sure you want to delete "${book.title}"? This action cannot be undone.`);
+    if (confirmation) {
       setIsDeleting(true);
       try {
         await deleteBookCompletely(book.id);
@@ -79,11 +78,11 @@ const BookCard = ({
           </div>
 
           {/* Delete button */}
-          <div className="absolute top-2 right-2">
+          <div className="absolute top-2 right-2 z-50 ">
             <button
               onClick={handleDeleteBook}
               disabled={isDeleting}
-              className="opacity-0 group-hover:opacity-100 transition-all duration-300 bg-red-500/80 hover:bg-red-600/90 backdrop-blur-sm rounded-full p-1.5 shadow-lg"
+              className="z-50 coursor-pointer opacity-0 group-hover:opacity-100 transition-all duration-300 bg-red-500/80 hover:bg-red-600/90 backdrop-blur-sm rounded-full p-1.5 shadow-lg"
               title="Delete book"
             >
               <Trash2Icon className="w-3 h-3 text-white" />
@@ -244,7 +243,7 @@ const BookCard = ({
             <button
               onClick={handleDeleteBook}
               disabled={isDeleting}
-              className="ml-2 opacity-0 group-hover:opacity-100 transition-all duration-300 bg-red-500/80 hover:bg-red-600/90 backdrop-blur-sm rounded-full p-1.5 shadow-lg"
+              className="coursor-pointer ml-2 opacity-0 group-hover:opacity-100 transition-all duration-300 bg-red-500/80 hover:bg-red-600/90 backdrop-blur-sm rounded-full p-1.5 shadow-lg"
               title="Delete book"
             >
               <Trash2Icon className="w-3 h-3 text-white" />
