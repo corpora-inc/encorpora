@@ -121,7 +121,12 @@ const SPEAKER_MAP: Record<string, string> = {
 export function createVoiceTTS(langPrefix: string) {
     let candidateVoices: SpeechSynthesisVoice[] = [];
 
+    if (langPrefix === "fa") {
+        langPrefix = "ar"
+    }
+
     function refreshVoices() {
+        console.log("ALL", window.speechSynthesis.getVoices());
         const all = window.speechSynthesis
             .getVoices()
             .filter((v): v is SpeechSynthesisVoice =>
@@ -176,11 +181,12 @@ export function createVoiceTTS(langPrefix: string) {
                     Math.floor(Math.random() * candidateVoices.length)
                     ];
             }
+
             const utter = new SpeechSynthesisUtterance(text);
             utter.voice = voice;
             utter.lang = voice.lang;
             utter.rate = rate;
-            console.log(`[TTS:${langPrefix}] speaking with ${voice.name}`);
+            console.log(`[TTS:${langPrefix}] using voice: ${voice.name} (${voice.lang})`);
             speechSynthesis.speak(utter);
         } else {
             // Fallback to native mobile TTS via Tauri
