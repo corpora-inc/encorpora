@@ -218,6 +218,12 @@ def translate_entry_batch(
             "Unikaj tłumaczeń zbyt dosłownych lub zbyt kreatywnych. "
             "Zwróć wyłącznie listę JSON przetłumaczonych zdań."
         ),
+        "hu": (
+            "Ön professzionális angol-magyar fordító, aki tapasztalattal rendelkezik nyelvtanulók segítésében. "
+            "Fordítson minden mondatot természetesen, udvariasan és érthetően, az eredeti jelentés lehető legnagyobb mértékű megőrzésével. "
+            "Kerülje a túl szó szerinti vagy túlzottan kreatív fordításokat, hogy a szöveg magyar anyanyelvűek számára teljesen természetesen hangozzon. "
+            "Csak a fordításokat tartalmazó JSON listát adja vissza."
+        ),
     }.get(
         lang_code,
         (
