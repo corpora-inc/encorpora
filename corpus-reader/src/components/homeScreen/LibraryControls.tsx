@@ -62,13 +62,13 @@ export function LibraryControls({
   };
 
   return (
-    <div className="flex flex-col lg:flex-row lg:items-center justify-between mb-6 gap-4">
-      <div className="flex items-center gap-3">
-        <FolderIcon className="h-5 w-5 text-primary" />
-        <h2 className="text-xl font-bold text-foreground">
+    <div className="flex flex-col lg:flex-row lg:items-center justify-between mb-6 gap-4 w-full">
+      <div className="flex flex-wrap items-center gap-3 min-w-0">
+        <FolderIcon className="h-5 w-5 text-primary flex-shrink-0" />
+        <h2 className="text-xl font-bold text-foreground truncate">
           {getLibraryTitle()}
         </h2>
-        <Badge variant="outline" className="text-xs">
+        <Badge variant="outline" className="text-xs flex-shrink-0">
           {filteredBooksCount} of {totalBooks} books
         </Badge>
         {selectedLibrary !== "all" && (
@@ -76,7 +76,7 @@ export function LibraryControls({
             variant="ghost"
             size="sm"
             onClick={() => setSelectedLibrary("all")}
-            className="text-xs px-2 py-1 h-6"
+            className="text-xs px-2 py-1 h-6 flex-shrink-0"
           >
             View All
           </Button>
@@ -84,7 +84,7 @@ export function LibraryControls({
         <Tabs
           value={viewMode}
           onValueChange={(value) => setViewMode(value as "card" | "list")}
-          className="w-auto"
+          className="w-auto flex-shrink-0"
         >
           <TabsList className="h-8 px-1">
             <TabsTrigger value="card" className="h-6 w-7 px-0">
@@ -96,52 +96,54 @@ export function LibraryControls({
           </TabsList>
         </Tabs>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-4">
-        <div className="flex items-center gap-2 bg-muted/30 rounded-lg px-3 py-2 border border-border/40">
-          <SearchIcon className="h-4 w-4 text-muted-foreground" />
-          <input
-            type="text"
-            placeholder="Search books..."
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            className="bg-transparent border-none outline-none text-sm placeholder:text-muted-foreground w-full"
-            aria-label="Search books"
-          />
-        </div>
-        <div className="flex items-center gap-4">
-          <div className="flex items-center gap-2">
-            <FilterIcon className="h-4 w-4 text-muted-foreground" />
-            <Select
-              value={filterBy}
-              onValueChange={(value: any) => setFilterBy(value)}
-            >
-              <SelectTrigger className="w-36 h-8">
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="all">All Books</SelectItem>
-                <SelectItem value="reading">Reading</SelectItem>
-                <SelectItem value="completed">Completed</SelectItem>
-                <SelectItem value="unread">Unread</SelectItem>
-              </SelectContent>
-            </Select>
+      <div className="w-full lg:w-auto lg:max-w-none">
+        <div className="flex flex-col sm:grid grid-cols-1 md:grid-cols-2 lg:flex lg:flex-row items-stretch sm:items-center gap-4 w-full">
+          <div className="flex items-center gap-2 bg-muted/30 rounded-lg px-3 py-2 border border-border/40 w-full lg:w-auto lg:min-w-[200px]">
+            <SearchIcon className="h-4 w-4 text-muted-foreground flex-shrink-0" />
+            <input
+              type="text"
+              placeholder="Search books..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="bg-transparent border-none outline-none text-sm placeholder:text-muted-foreground w-full min-w-0"
+              aria-label="Search books"
+            />
           </div>
-          <div className="flex items-center gap-2">
-            <SortAscIcon className="h-4 w-4 text-muted-foreground" />
-            <Select
-              value={sortBy}
-              onValueChange={(value: any) => setSortBy(value)}
-            >
-              <SelectTrigger className="w-36 h-8">
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="recent">Recent</SelectItem>
-                <SelectItem value="title">Title</SelectItem>
-                <SelectItem value="author">Author</SelectItem>
-                <SelectItem value="progress">Progress</SelectItem>
-              </SelectContent>
-            </Select>
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 sm:gap-4 w-full lg:w-auto">
+            <div className="flex items-center gap-2 w-full sm:w-auto">
+              <FilterIcon className="h-4 w-4 text-muted-foreground flex-shrink-0" />
+              <Select
+                value={filterBy}
+                onValueChange={(value: any) => setFilterBy(value)}
+              >
+                <SelectTrigger className="w-full sm:w-36 h-8">
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="all">All Books</SelectItem>
+                  <SelectItem value="reading">Reading</SelectItem>
+                  <SelectItem value="completed">Completed</SelectItem>
+                  <SelectItem value="unread">Unread</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+            <div className="flex items-center gap-2 w-full sm:w-auto">
+              <SortAscIcon className="h-4 w-4 text-muted-foreground flex-shrink-0" />
+              <Select
+                value={sortBy}
+                onValueChange={(value: any) => setSortBy(value)}
+              >
+                <SelectTrigger className="w-full sm:w-36 h-8">
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="recent">Recent</SelectItem>
+                  <SelectItem value="title">Title</SelectItem>
+                  <SelectItem value="author">Author</SelectItem>
+                  <SelectItem value="progress">Progress</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
           </div>
         </div>
       </div>
