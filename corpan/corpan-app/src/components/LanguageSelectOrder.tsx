@@ -12,6 +12,7 @@ import { CSS } from "@dnd-kit/utilities";
 import { Button } from "@/components/ui/button";
 import { GripVertical, Plus, X } from "lucide-react";
 import { TranslationKey } from "@/store/translations";
+import { useTranslation } from "react-i18next";
 
 
 function LangChip({
@@ -24,7 +25,7 @@ function LangChip({
     dragHandleProps?: any;
     [k: string]: any;
 }) {
-    const t = useSettingsStore(s => s.t);
+    const { t } = useTranslation()
     const dir = useSettingsStore(s => s.dir);
     return (
         <div
@@ -44,6 +45,7 @@ function LangChip({
                 dir={dir()}
             >
                 {/* {LANGUAGE_NAMES[code] || code} */}
+                {/* TODO */}
                 {t(code as TranslationKey)}
             </span>
             {onRemove && (
@@ -99,13 +101,13 @@ export function LanguageSelectOrder() {
     // Find unselected languages
     const available = ALL_LANGUAGES.filter(c => !languages.includes(c));
 
-    const t = useSettingsStore(s => s.t);
+    const { t } = useTranslation();
 
     return (
         <div className="w-full">
             <div className="mb-3 font-semibold text-sm"
                 dir={dir()}
-            >{t("Selected Languages")}</div>
+            >{t("settings.selectedLanguages")}</div>
             <DndContext
                 sensors={sensors}
                 collisionDetection={closestCenter}
@@ -141,7 +143,7 @@ export function LanguageSelectOrder() {
                     <div className="mt-4" dir={dir()}>
                         <div className="mb-2 text-xs text-gray-500"
                             dir={dir()}
-                        >{t("Add more languages")}</div>
+                        >{t("settings.addMoreLanguages")}</div>
                         <div className="flex flex-wrap gap-2">
                             {available.map(code => (
                                 <Button
@@ -155,7 +157,7 @@ export function LanguageSelectOrder() {
                                     <span className="mr-1"
                                         dir={dir()}
                                     >
-                                        {t(code as TranslationKey)}
+                                        {t(code as any) || code}
                                     </span>
                                 </Button>
                             ))}

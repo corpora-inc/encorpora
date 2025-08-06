@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { useMemo } from "react";
 import { BROWSER_TTS } from "@/util/speak";
 import { TranslationKey } from "@/store/translations";
+import { useTranslation } from "react-i18next";
 
 const BUTTONS = [
     { label: "Slow", value: 0.5 },
@@ -15,7 +16,7 @@ export function RateAdjuster() {
     const rate = useSettingsStore(s => s.rate);
     const setRate = useSettingsStore(s => s.setRate);
 
-    const t = useSettingsStore(s => s.t);
+    const { t } = useTranslation()
     const speech_rate = useSettingsStore(s => s.t("Speech Rate"));
     const dir = useSettingsStore(s => s.dir());
 
@@ -40,6 +41,7 @@ export function RateAdjuster() {
                         onClick={() => setRate(btn.value)}
                     >
                         {/* {btn.label} */}
+                        {/* TODO */}
                         {t(btn.label as TranslationKey)}
                     </Button>
                 ))}
@@ -59,10 +61,10 @@ export function RateAdjuster() {
             </div>
             <div className="mt-1 text-xs text-gray-400 text-center" dir={dir}>
                 {rate === 1.0
-                    ? t("Normal")
+                    ? t("settings.normal")
                     : rate < 1.0
-                        ? `${t("Slower")} (${rate.toFixed(2)}x)`
-                        : `${t("Faster")} (${rate.toFixed(2)}x)`
+                        ? `${t("settings.slower")} (${rate.toFixed(2)}x)`
+                        : `${t("settings.faster")} (${rate.toFixed(2)}x)`
                 }
             </div>
         </div>

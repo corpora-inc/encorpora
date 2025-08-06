@@ -15,6 +15,7 @@ import { useSettingsStore } from "@/store/settings";
 import { useHistoryStore, EntryOut } from "@/store/history";
 import { createVoiceTTS } from "@/util/speak";
 import { TranslationKey } from "@/store/translations";
+import { useTranslation } from "react-i18next";
 
 // Lame but OK
 function getPlatformPadding() {
@@ -37,7 +38,7 @@ export function MainExperience() {
     const domains = useSettingsStore((s) => s.domains);
     const levels = useSettingsStore((s) => s.levels);
     const rate = useSettingsStore((s) => s.rate);
-    const t = useSettingsStore((s) => s.t);
+    const { t } = useTranslation()
     const textSize = useSettingsStore((s) => s.textSize);
     // console.log("textSize", textSize);
 
@@ -112,7 +113,7 @@ export function MainExperience() {
                                 key={d}
                                 className="px-2 py-0.5 rounded-full border border-gray-200 bg-gray-50 text-xs"
                             >
-                                {t(d as TranslationKey) || d}
+                                {t(d as any) || d}
                             </span>
                         ))}
                     </div>
@@ -145,7 +146,7 @@ export function MainExperience() {
                             <div
                                 key={idx}
                                 className="text-xs text-gray-400 mb-1"
-                            >{t(code as TranslationKey) || code}</div>
+                            >{t(code as any) || code}</div>
                             <div
                                 className="text-center text-xl md:text-2xl lg:text-3xl"
                                 style={{
