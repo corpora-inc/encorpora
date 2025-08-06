@@ -79,7 +79,7 @@ pub async fn pick_file(app: tauri::AppHandle) -> Result<FileProcessResult, Strin
         .file()
         // .add_filter("Only EPubs and PDF'S", &["epub", "pdf"])
         .blocking_pick_file();
-
+    println!("File path option: {:?}", file_path_option);
     let path = match file_path_option {
         Some(p) => p,
         None => {
