@@ -57,7 +57,7 @@ function LangChip({
       >
         {/* {LANGUAGE_NAMES[code] || code} */}
         {/* TODO */}
-        {t(code as TranslationKey)}
+        {t(`languages.${toCammelCase(code)}` as any)}
       </span>
       {onRemove && (
         <button
