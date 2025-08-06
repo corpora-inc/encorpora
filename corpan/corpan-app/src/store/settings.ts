@@ -1,9 +1,5 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-import {
-    TRANSLATIONS,
-    TranslationKey,
-} from "./translations";
 import { RTL_LANGUAGES } from "./constants";
 
 export const ALL_LANGUAGES = [
@@ -35,7 +31,6 @@ type SettingsState = {
     showRomanization: boolean;
     setShowRomanization: (val: boolean) => void;
     topLang: () => string;
-    t: (key: TranslationKey) => string;
     dir: () => "ltr" | "rtl";
 
     onboarded: boolean;
@@ -71,13 +66,6 @@ export const useSettingsStore = create<SettingsState>()(
 
             topLang: () => get().languages[0],
 
-            t: (key) => {
-                const lang = get().languages[0];
-                const base = lang.split("-")[0] as keyof typeof TRANSLATIONS;
-                return TRANSLATIONS[lang as keyof typeof TRANSLATIONS]?.[key]
-                    ?? TRANSLATIONS[base]?.[key]
-                    ?? TRANSLATIONS.en[key];
-            },
             dir: () => {
                 const lang = get().languages[0];
                 const base = lang.split("-")[0];

@@ -3,7 +3,6 @@ import { Slider } from "@/components/ui/slider";
 import { Button } from "@/components/ui/button";
 import { useMemo } from "react";
 import { BROWSER_TTS } from "@/util/speak";
-import { TranslationKey } from "@/store/translations";
 import { useTranslation } from "react-i18next";
 
 const BUTTONS = [
@@ -17,7 +16,6 @@ export function RateAdjuster() {
     const setRate = useSettingsStore(s => s.setRate);
 
     const { t } = useTranslation()
-    const speech_rate = useSettingsStore(s => s.t("Speech Rate"));
     const dir = useSettingsStore(s => s.dir());
 
     // Keep slider and rate in sync
@@ -30,7 +28,7 @@ export function RateAdjuster() {
 
     return (
         <div className="mt-1 w-full">
-            <div className="mb-3 font-semibold text-sm" dir={dir}>{speech_rate}</div>
+            <div className="mb-3 font-semibold text-sm" dir={dir}>{t("settings.speechRate")}</div>
             <div className="flex gap-2 mb-3" dir={dir}>
                 {BUTTONS.map(btn => (
                     <Button
@@ -42,7 +40,7 @@ export function RateAdjuster() {
                     >
                         {/* {btn.label} */}
                         {/* TODO */}
-                        {t(btn.label as TranslationKey)}
+                        {t(`settings.${btn.label.toLowerCase()}` as any)}
                     </Button>
                 ))}
             </div>

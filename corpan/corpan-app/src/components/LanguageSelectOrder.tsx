@@ -15,7 +15,6 @@ import {
 import { CSS } from "@dnd-kit/utilities";
 import { Button } from "@/components/ui/button";
 import { GripVertical, Plus, X } from "lucide-react";
-import { TranslationKey } from "@/store/translations";
 import { useTranslation } from "react-i18next";
 import { toCammelCase } from "@/util/convert";
 
