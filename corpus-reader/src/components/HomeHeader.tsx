@@ -17,7 +17,7 @@ const HomeHeader = ({
 }) => {
   return (
     <div className=" bg-background/60 backdrop-blur-sm border-b sticky top-0 z-50">
-      <div className="flex h-14 items-center justify-between  container px-4 mx-auto max-w-7xl">
+      <div className="flex h-12 items-center justify-between  container px-4 mx-auto max-w-7xl">
         <div className="flex items-center justify-center gap-2 ">
           <Avatar className="h-10 w-10">
             <AvatarImage src="/logo.png" />
