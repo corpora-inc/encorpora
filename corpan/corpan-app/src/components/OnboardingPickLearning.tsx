@@ -7,7 +7,7 @@ export function OnboardingPickLearning() {
   const setStep = useSettingsStore((s) => s.setOnboardingStep);
   const languages = useSettingsStore((s) => s.languages);
   const setLanguages = useSettingsStore((s) => s.setLanguages);
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const dir = useSettingsStore((s) => s.dir);
 
   const primary = languages[0];
@@ -23,7 +23,6 @@ export function OnboardingPickLearning() {
 
   const canProceed = learning.length > 0;
 
-  console.log(i18n.languages, "languages in i18n");
 
   return (
     <div className="flex flex-col h-full w-full">
@@ -61,7 +60,6 @@ export function OnboardingPickLearning() {
       <div className="flex-1 min-h-0 w-full flex items-center justify-center">
         <ScrollIndicatorWrapper className="w-full max-w-xl flex flex-col gap-2 items-center px-2 pb-4 mx-auto">
           {choices.map((code) => {
-            console.log(code, "language code in choices");
             const label =
               t(
                 `languages.${code.replace(/-(\w)/g, (_, c) =>
