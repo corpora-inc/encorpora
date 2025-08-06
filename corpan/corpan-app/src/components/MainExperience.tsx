@@ -14,8 +14,9 @@ import { Button } from "@/components/ui/button";
 import { useSettingsStore } from "@/store/settings";
 import { useHistoryStore, EntryOut } from "@/store/history";
 import { createVoiceTTS } from "@/util/speak";
-import { TranslationKey } from "@/store/translations";
 import { useTranslation } from "react-i18next";
+
+import { toCammelCase } from "@/util/convert";
 
 // Lame but OK
 function getPlatformPadding() {
@@ -146,7 +147,7 @@ export function MainExperience() {
                             <div
                                 key={idx}
                                 className="text-xs text-gray-400 mb-1"
-                            >{t(code as any) || code}</div>
+                            >{t(`languages.${toCammelCase(code)}` as any) || code}</div>
                             <div
                                 className="text-center text-xl md:text-2xl lg:text-3xl"
                                 style={{

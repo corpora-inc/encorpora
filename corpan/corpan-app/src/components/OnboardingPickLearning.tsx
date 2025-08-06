@@ -2,6 +2,7 @@ import { useSettingsStore, ALL_LANGUAGES } from "@/store/settings";
 import { ArrowRightCircle, ArrowLeftCircle, CheckCircle2 } from "lucide-react";
 import { ScrollIndicatorWrapper } from "./ScrollIndicatorWrapper";
 import { useTranslation } from "react-i18next";
+import { toCammelCase } from "@/util/convert";
 
 export function OnboardingPickLearning() {
   const setStep = useSettingsStore((s) => s.setOnboardingStep);
@@ -22,7 +23,6 @@ export function OnboardingPickLearning() {
   };
 
   const canProceed = learning.length > 0;
-
 
   return (
     <div className="flex flex-col h-full w-full">
@@ -60,12 +60,7 @@ export function OnboardingPickLearning() {
       <div className="flex-1 min-h-0 w-full flex items-center justify-center">
         <ScrollIndicatorWrapper className="w-full max-w-xl flex flex-col gap-2 items-center px-2 pb-4 mx-auto">
           {choices.map((code) => {
-            const label =
-              t(
-                `languages.${code.replace(/-(\w)/g, (_, c) =>
-                  c.toUpperCase()
-                )}` as any
-              ) || code;
+            const label = t(`languages.${toCammelCase(code)}` as any) || code;
             const selected = learning.includes(code);
             return (
               <button
