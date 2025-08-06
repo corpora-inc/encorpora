@@ -258,7 +258,6 @@ export class ReactReader extends PureComponent<
       // Apply theme to rendition if available
       if (rendition) {
         rendition.themes.default(theme.styles);
-        // rendition.themes.select(theme.name);
       }
 
       // Apply theme colors as CSS custom properties to the document root
