@@ -16,19 +16,18 @@ type ReaderTheme = {
 };
 
 export const THEMES: ReaderTheme[] = [
-  { name: "light", styles: { body: { background: "#fff", color: "#000" } } },
+  { name: "light", styles: { body: { background: "#ffffff", color: "#000000" } } },
   { name: "dark", styles: { body: { background: "#121212", color: "#e0e0e0" } } },
   { name: "solarized", styles: { body: { background: "#002b36", color: "#839496" } } },
   { name: "sepia", styles: { body: { background: "#4b4231", color: "#d5c3a1" } } },
   { name: "nord", styles: { body: { background: "#2e3440", color: "#d8dee9" } } },
   { name: "grass", styles: { body: { background: "#333d2b", color: "#e0e0e0" } } },
-
-  // { name: "gray", styles: { body: { background: "#4e4e4e", color: "#e0e0e0" } } },
-  // { name: "cherry", styles: { body: { background: "#422930", color: "#e0e0e0" } } },
-  // { name: "sky", styles: { body: { background: "#2c334e", color: "#e0e0e0" } } },
-  // { name: "gruvbox", styles: { body: { background: "#282828", color: "#ebdbb2" } } },
-  // { name: "contrast", styles: { body: { background: "#000000", color: "#ffffff" } } },
-  // { name: "sunset", styles: { body: { background: "#4d3c37", color: "#e0e0e0" } } },
+  { name: "gray", styles: { body: { background: "#4e4e4e", color: "#e0e0e0" } } },
+  { name: "cherry", styles: { body: { background: "#422930", color: "#e0e0e0" } } },
+  { name: "sky", styles: { body: { background: "#2c334e", color: "#e0e0e0" } } },
+  { name: "gruvbox", styles: { body: { background: "#282828", color: "#ebdbb2" } } },
+  { name: "contrast", styles: { body: { background: "#000000", color: "#ffffff" } } },
+  { name: "sunset", styles: { body: { background: "#4d3c37", color: "#e0e0e0" } } },
 ];
 
 export const ThemeSettings = ({
