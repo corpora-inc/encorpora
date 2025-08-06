@@ -78,28 +78,30 @@ export const Toc = ({
           <Menu className="h-4 w-4" />
         </Button>
       </SheetTrigger>
-      <SheetContent side="left" className="w-full">
+      <SheetContent side="left" className="w-full flex flex-col">
         <SheetHeader>
           <SheetTitle> Contents</SheetTitle>
         </SheetHeader>
-        <ScrollArea className="max-h-screen w-full px-3">
-          {Array.isArray(toc) && toc.length > 0 ? (
-            <div className="space-y-2">
-              {toc.map((item, i) => (
-                <TocItem data={item} key={i} setLocation={setLocation} />
-              ))}
-            </div>
-          ) : (
-            <div className="flex flex-col items-center justify-center py-8 text-center">
-              <div className="w-12 h-12 bg-muted/30 rounded-lg flex items-center justify-center mb-3">
-                <Menu className="w-5 h-5 text-muted-foreground/50" />
+        <div className="flex-1 overflow-hidden">
+          <ScrollArea className="h-full w-full px-3">
+            {Array.isArray(toc) && toc.length > 0 ? (
+              <div className="space-y-2 py-4">
+                {toc.map((item, i) => (
+                  <TocItem data={item} key={i} setLocation={setLocation} />
+                ))}
               </div>
-              <p className="text-xs text-muted-foreground">
-                No chapters available
-              </p>
-            </div>
-          )}
-        </ScrollArea>
+            ) : (
+              <div className="flex flex-col items-center justify-center py-8 text-center">
+                <div className="w-12 h-12 bg-muted/30 rounded-lg flex items-center justify-center mb-3">
+                  <Menu className="w-5 h-5 text-muted-foreground/50" />
+                </div>
+                <p className="text-xs text-muted-foreground">
+                  No chapters available
+                </p>
+              </div>
+            )}
+          </ScrollArea>
+        </div>
         <SheetFooter>
           {toc.length > 0 && (
             <div className="border-t border-border/30 px-4 py-2">
