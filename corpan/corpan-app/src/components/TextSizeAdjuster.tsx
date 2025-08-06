@@ -28,8 +28,11 @@ export function TextSizeAdjuster() {
             onClick={() => setTextSize(size as TextSizeType)}
             className="capitalize"
           >
-            {/* TODO */}
-            {t(`settings.small`) || size}
+            {t(
+              `settings.${size.replace(/-(\w)/g, (_, c) =>
+                c.toUpperCase()
+              )}` as any
+            ) || size}
           </Button>
         ))}
       </div>
