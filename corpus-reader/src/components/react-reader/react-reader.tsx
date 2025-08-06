@@ -259,54 +259,6 @@ export class ReactReader extends PureComponent<
       if (rendition) {
         rendition.themes.default(theme.styles);
       }
-
-      // Apply theme colors as CSS custom properties to the document root
-      // This allows all child components to inherit the theme colors
-
-      document.documentElement.style.setProperty(
-        "--reader-text-color",
-        theme.styles.body.color
-      );
-
-      // Apply theme to the component container and all child elements
-      const containerElement = document.querySelector(
-        "[data-react-reader-container]"
-      ) as HTMLElement;
-      if (containerElement) {
-        containerElement.style.color = theme.styles.body.color;
-
-        // Create a style element for scoped CSS rules
-        let styleElement = document.getElementById("react-reader-theme-styles");
-        if (!styleElement) {
-          styleElement = document.createElement("style");
-          styleElement.id = "react-reader-theme-styles";
-          document.head.appendChild(styleElement);
-        }
-
-        // Apply theme-specific CSS rules for child components
-        styleElement.textContent = `
-          [data-react-reader-container] {
-            color: ${theme.styles.body.color} !important;
-          }
-          
-          [data-react-reader-container] .text-foreground,
-          [data-react-reader-container] .text-foreground\\/80 {
-            color: ${theme.styles.body.color} !important;
-          }
-          
-          [data-react-reader-container] .text-muted-foreground {
-            color: ${theme.styles.body.color}80 !important;
-          }
-          
-          [data-react-reader-container] button {
-            color: ${theme.styles.body.color} !important;
-          }
-          
-          [data-react-reader-container] svg {
-            color: ${theme.styles.body.color} !important;
-          }
-        `;
-      }
     }
 
     // Apply other settings to rendition if available
@@ -566,8 +518,8 @@ export class ReactReader extends PureComponent<
                 : "opacity-0 -translate-y-4 pointer-events-none"
             }`}
             style={{ 
-              color: themeColors.color,
-              backgroundColor: `${themeColors.background}CC`,
+              color: `-moz-initial !important ${themeColors.color}`,
+              backgroundColor: `${themeColors.background}`,
               backdropFilter: "blur(8px)"
             }}
           >
