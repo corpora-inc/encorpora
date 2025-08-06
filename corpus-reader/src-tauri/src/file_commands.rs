@@ -12,20 +12,29 @@ use tauri_plugin_fs::FsExt;
 use mime_guess::MimeGuess;
 
 fn media_subtype(mime: &str) -> &str {
-    mime.rsplit('/')
+    println!("DEBUG: media_subtype called with mime: {}", mime);
+    let result = mime.rsplit('/')
         .next()
         .and_then(|s| s.split('+').next())
-        .unwrap_or("")
+        .unwrap_or("");
+    println!("DEBUG: media_subtype returning: {}", result);
+    result
 }
 
 fn mime_from_path(path_like: &str) -> Option<String> {
-    MimeGuess::from_path(path_like)
+    println!("DEBUG: mime_from_path called with path: {}", path_like);
+    let result = MimeGuess::from_path(path_like)
         .first()
-        .map(|m| m.essence_str().to_owned()) // e.g. "application/pdf"
+        .map(|m| m.essence_str().to_owned()); // e.g. "application/pdf"
+    println!("DEBUG: mime_from_path returning: {:?}", result);
+    result
 }
 
 fn sniff_bytes(bytes: &[u8]) -> Option<String> {
-    infer::get(bytes).map(|k| k.mime_type().to_owned())
+    println!("DEBUG: sniff_bytes called with {} bytes", bytes.len());
+    let result = infer::get(bytes).map(|k| k.mime_type().to_owned());
+    println!("DEBUG: sniff_bytes returning: {:?}", result);
+    result
 }
 
 /// Return the MIME type of whatever the user picked.
@@ -33,6 +42,8 @@ fn sniff_bytes(bytes: &[u8]) -> Option<String> {
 /// 1. Try to guess from the last path segment.
 /// 2. If that fails (Android `content://…`), read the file and sniff its header.
 fn mime_of_file(app: &AppHandle, fp: &FilePath) -> Result<String, String> {
+    println!("DEBUG: mime_of_file called with filepath: {:?}", fp);
+    
     // ── 1. Try extension based detection ──────────────────────────────────────
     if let Some(mt) = match fp {
         FilePath::Path(buf) => {
@@ -41,13 +52,20 @@ fn mime_of_file(app: &AppHandle, fp: &FilePath) -> Result<String, String> {
                 .extension()
                 .and_then(|ext| ext.to_str())
                 .unwrap_or("");
+            println!("DEBUG: FilePath::Path - extracted extension: {}", extension);
             Some(extension.to_string())
         },
-        FilePath::Url(url) => mime_from_path(url.path()),
+        FilePath::Url(url) => {
+            println!("DEBUG: FilePath::Url - url path: {}", url.path());
+            mime_from_path(url.path())
+        }
     } {
+        println!("DEBUG: Extension detection successful, returning: {}", mt);
         return Ok(mt);
     }
 
+    println!("DEBUG: Extension detection failed, falling back to byte sniffing");
+    
     // ── 2. Fallback: read a few KB and sniff ──────────────────────────────────
     // app.fs().read() will work for both real paths and Android/iOS content URIs
     let bytes = app
@@ -55,11 +73,16 @@ fn mime_of_file(app: &AppHandle, fp: &FilePath) -> Result<String, String> {
         .read(fp.clone())
         .map_err(|e| format!("cannot read file: {e}"))?;
 
+    println!("DEBUG: Read {} bytes for sniffing", bytes.len());
+
     if let Some(mt) = sniff_bytes(&bytes) {
         let extension = media_subtype(&mt);
+        println!("DEBUG: Byte sniffing successful, mime: {}, extension: {}", mt, extension);
         return Ok(extension.to_string());
     }
 
+    println!("DEBUG: Byte sniffing failed, using fallback");
+    
     // Final fallback
     Ok("application/octet-stream".into())
 }
