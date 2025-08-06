@@ -1,4 +1,4 @@
-import { deleteBookCompletely } from "@/lib/utils";
+import { cn, deleteBookCompletely } from "@/lib/utils";
 import { Trash2Icon } from "lucide-react"
 import { useState } from "react";
 
@@ -6,9 +6,10 @@ interface DeleteBookButtonProps {
     bookId: number;
     bookTitle: string;
     onBookDeleted?: () => void; // Callback to notify parent component
+    isMobile?: boolean; // Whether the device is mobile
 }
 
-const DeleteBookButton: React.FC<DeleteBookButtonProps> = ({ bookId, bookTitle, onBookDeleted }) => {
+const DeleteBookButton: React.FC<DeleteBookButtonProps> = ({ bookId, bookTitle, onBookDeleted, isMobile = false }) => {
     const [isDeleting, setIsDeleting] = useState(false);
 
     const handleDeleteBook = async (e: React.MouseEvent) => {
@@ -27,14 +28,20 @@ const DeleteBookButton: React.FC<DeleteBookButtonProps> = ({ bookId, bookTitle, 
             }
         }
     };
+
+    // On mobile, always show the button. On desktop, show only on hover
+    const visibilityClasses = isMobile 
+        ? "opacity-75" 
+        : "opacity-0 group-hover:opacity-100";
+
     return (
         <button
             onClick={handleDeleteBook}
             disabled={isDeleting}
-            className="z-50 coursor-pointer opacity-0 group-hover:opacity-100 transition-all duration-300 bg-red-500/80 hover:bg-red-600/90 backdrop-blur-sm rounded-full p-1.5 shadow-lg"
+            className={cn(visibilityClasses, `z-50 cursor-pointer transition-all duration-300 bg-red-500/80 hover:bg-red-600/90 backdrop-blur-sm rounded-full p-1.5 shadow-lg`)}
             title="Delete book"
         >
-            <Trash2Icon className="w-4 h-4 " />
+            <Trash2Icon className="w-4 h-4 text-white" />
         </button>
     )
 }

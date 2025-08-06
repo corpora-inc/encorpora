@@ -1,4 +1,5 @@
 import { useLoadImage } from "@/lib/hooks/useLoadImage";
+import { useMediaQuery } from "@/hooks/use-media-query";
 import DeleteBookButton from "./DeleteBookButton";
 import { BookIcon, EyeIcon } from "lucide-react";
 import { BookCardListProps } from "./BookGrid";
@@ -9,6 +10,8 @@ const BookListItem: React.FC<BookCardListProps> = ({
     handleBookClick
 }) => {
     const { imageUrl } = useLoadImage(book.cover_path);
+    const isMobile = useMediaQuery("(max-width: 768px)");
+    
     return (
         <div
             className="group flex items-center p-2  rounded-xl hover:bg-muted/30 active:bg-muted/50 transition-all duration-300 cursor-pointer border border-border/40 hover:border-border/80 shadow-sm hover:shadow-lg bg-card/50 backdrop-blur-sm"
@@ -112,7 +115,12 @@ const BookListItem: React.FC<BookCardListProps> = ({
                     </div>
 
                     {/* Delete button for list view */}
-                    <DeleteBookButton bookId={book.id} bookTitle={book.title} onBookDeleted={() => onBookDeleted?.()} />
+                    <DeleteBookButton 
+                        bookId={book.id} 
+                        bookTitle={book.title} 
+                        onBookDeleted={() => onBookDeleted?.()} 
+                        isMobile={isMobile}
+                    />
                 </div>
             </div>
         </div>
