@@ -113,7 +113,7 @@ export function MainExperience() {
                                 key={d}
                                 className="px-2 py-0.5 rounded-full border border-gray-200 bg-gray-50 text-xs"
                             >
-                                {t(d as any) || d}
+                                {t(`categories.${d}` as any) || d}
                             </span>
                         ))}
                     </div>
