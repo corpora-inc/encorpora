@@ -50,7 +50,7 @@ const TocItem = ({ data, setLocation }: TocItemProps) => (
                     className="w-full cursor-pinter justify-start text-xs h-auto py-2 px-3 text-muted-foreground hover:text-foreground hover:bg-accent/20 transition-colors duration-150 rounded-md"
                     onClick={() => setLocation(subitem.href)}
                   >
-                    <span className="text-wrap">
+                    <span className="text-wrap text-start">
                       {subitem.label || "Unknown Section"}
                     </span>
                   </Button>
