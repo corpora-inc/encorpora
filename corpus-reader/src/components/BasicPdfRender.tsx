@@ -268,7 +268,7 @@ function BasicPdfRender() {
     }
     headerHideTimeoutRef.current = window.setTimeout(() => {
       setHeaderVisible(false);
-    }, 1000);
+    }, 3000);
   }, []);
 
   const suppressClickUntilRef = useRef<number>(0);
