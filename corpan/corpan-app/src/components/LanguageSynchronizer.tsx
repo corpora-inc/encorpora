@@ -17,7 +17,8 @@ const LanguageSynchronizer = ({ children }: { children: React.ReactNode }) => {
   // Optional: Listen for external i18n changes to update the store
   useEffect(() => {
     const handleLanguageChange = (lng: string) => {
-      useSettingsStore.getState().setLanguages([lng]);
+      const [_, ...rest] = useSettingsStore.getState().languages;
+      useSettingsStore.getState().setLanguages([lng, ...rest]);
     };
 
     i18n.on("languageChanged", handleLanguageChange);
