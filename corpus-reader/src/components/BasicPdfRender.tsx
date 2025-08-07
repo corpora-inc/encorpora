@@ -4,7 +4,7 @@ import {
   getBookInformation,
   BookEntry,
 } from "@/lib/utils";
-import { useEffect, useState, useCallback, useRef } from "react";
+import { useEffect, useState, useCallback, useRef, useMemo } from "react";
 import { Document, Page, pdfjs } from "react-pdf";
 import "react-pdf/dist/Page/AnnotationLayer.css";
 import "react-pdf/dist/Page/TextLayer.css";
@@ -48,7 +48,7 @@ import PdfSearch from "./PdfSearch";
 import { useTheme } from "@/components/ThemeProvider";
 import { usePdfViewerStore } from "@/store/usePdfViewerStore";
 
-pdfjs.GlobalWorkerOptions.workerSrc = '/pdf.worker.mjs';
+pdfjs.GlobalWorkerOptions.workerSrc = "/pdf.worker.mjs";
 
 interface DocumentLoadSuccess {
   numPages: number;
@@ -77,6 +77,8 @@ function BasicPdfRender() {
   const [bookInfo, setBookInfo] = useState<BookEntry | null>(null);
   // Header visibility state
   const [headerVisible, setHeaderVisible] = useState(false);
+  // Responsive scale state
+  const [responsiveScale, setResponsiveScale] = useState<number>(1);
 
   // Use ref to track the last saved page to avoid unnecessary updates
   const lastSavedPageRef = useRef<number>(1);
@@ -92,6 +94,58 @@ function BasicPdfRender() {
 
   // Extract settings from store
   const { scale, rotation, viewMode, readingMode, brightness } = settings;
+
+  // Calculate responsive scale based on viewport and device
+  const calculateResponsiveScale = useCallback(() => {
+    // Safe window access for SSR compatibility
+    if (typeof window === "undefined") return scale;
+
+    const viewportWidth = window.innerWidth;
+    const viewportHeight = window.innerHeight;
+
+    // Base scale factors for different device types
+    let baseScale = 1;
+
+    if (viewportWidth <= 480) {
+      // Mobile phones - smaller scale for better fit
+      baseScale = 0.6;
+    } else if (viewportWidth <= 768) {
+      // Tablets - medium scale
+      baseScale = 0.8;
+    } else if (viewportWidth <= 1024) {
+      // Small laptops - slightly larger
+      baseScale = 0.9;
+    } else {
+      // Desktop - full scale
+      baseScale = 1.0;
+    }
+
+    // Adjust for viewport height on mobile devices
+    if (viewportWidth <= 768 && viewportHeight <= 800) {
+      baseScale *= 0.85;
+    }
+
+    // Apply user's scale preference on top of responsive base
+    return baseScale * scale;
+  }, [scale]);
+
+  // Update responsive scale on window resize and scale changes
+  useEffect(() => {
+    const updateResponsiveScale = () => {
+      setResponsiveScale(calculateResponsiveScale());
+    };
+
+    updateResponsiveScale();
+
+    // Handle both resize and orientation change events
+    window.addEventListener("resize", updateResponsiveScale);
+    window.addEventListener("orientationchange", updateResponsiveScale);
+
+    return () => {
+      window.removeEventListener("resize", updateResponsiveScale);
+      window.removeEventListener("orientationchange", updateResponsiveScale);
+    };
+  }, [calculateResponsiveScale]);
 
   // Load book information and restore last read page
   useEffect(() => {
@@ -240,10 +294,16 @@ function BasicPdfRender() {
   // Scroll to saved page only when switching to vertical mode or on initial position
   useEffect(() => {
     const justSwitchedToVertical =
-      prevReadingModeRef.current && prevReadingModeRef.current !== readingMode && readingMode === "vertical";
+      prevReadingModeRef.current &&
+      prevReadingModeRef.current !== readingMode &&
+      readingMode === "vertical";
 
-    if ((justSwitchedToVertical || !hasPositionedInitiallyRef.current) && readingMode === "vertical") {
-      const targetPage = currentPage > 1 ? currentPage : lastSavedPageRef.current;
+    if (
+      (justSwitchedToVertical || !hasPositionedInitiallyRef.current) &&
+      readingMode === "vertical"
+    ) {
+      const targetPage =
+        currentPage > 1 ? currentPage : lastSavedPageRef.current;
       const timeoutId = window.setTimeout(() => {
         const pageElement = document.getElementById(`page-${targetPage}`);
         if (pageElement) {
@@ -279,11 +339,14 @@ function BasicPdfRender() {
     showHeader();
   }, [showHeader]);
 
-  const handleMouseMove = useCallback((e: React.MouseEvent) => {
-    if (e.clientY <= 120) {
-      showHeader();
-    }
-  }, [showHeader]);
+  const handleMouseMove = useCallback(
+    (e: React.MouseEvent) => {
+      if (e.clientY <= 120) {
+        showHeader();
+      }
+    },
+    [showHeader]
+  );
 
   const handleTouchEnd = useCallback((e: React.TouchEvent) => {
     // If the touch is interacting with the header or its children, do not interfere
@@ -342,11 +405,15 @@ function BasicPdfRender() {
   };
 
   const zoomIn = () => {
-    setScale(scale + 0.2);
+    const increment =
+      typeof window !== "undefined" && window.innerWidth <= 768 ? 0.1 : 0.2; // Smaller increments on mobile
+    setScale(Math.min(scale + increment, 3));
   };
 
   const zoomOut = () => {
-    setScale(scale - 0.2);
+    const decrement =
+      typeof window !== "undefined" && window.innerWidth <= 768 ? 0.1 : 0.2; // Smaller decrements on mobile
+    setScale(Math.max(scale - decrement, 0.3));
   };
 
   const rotate = () => {
@@ -398,7 +465,9 @@ function BasicPdfRender() {
       const target = event.target as HTMLElement | null;
       if (!target) return;
       const tagName = target.tagName?.toLowerCase();
-      const isEditable = target.isContentEditable || ["input", "textarea", "select"].includes(tagName);
+      const isEditable =
+        target.isContentEditable ||
+        ["input", "textarea", "select"].includes(tagName);
       if (isEditable) return;
 
       if (event.key === "ArrowRight" || event.key === "ArrowDown") {
@@ -411,7 +480,8 @@ function BasicPdfRender() {
     };
 
     window.addEventListener("keydown", handleKeyDown, { passive: false });
-    return () => window.removeEventListener("keydown", handleKeyDown as EventListener);
+    return () =>
+      window.removeEventListener("keydown", handleKeyDown as EventListener);
   }, [readingMode, goToNextPage, goToPrevPage]);
 
   const getReadingModeIcon = () => {
@@ -463,7 +533,7 @@ function BasicPdfRender() {
 
   return (
     <div
-      className="flex flex-col h-screen bg-background"
+      className="flex flex-col h-screen bg-background overflow-hidden"
       onClick={handleContainerClick}
       onMouseMove={handleMouseMove}
       onTouchEnd={handleTouchEnd}
@@ -472,7 +542,9 @@ function BasicPdfRender() {
       {/* Floating Header with controls (hidden by default) */}
       <div
         className={`border-b bg-card/90 shadow-md backdrop-blur-sm fixed top-0 left-0 right-0 z-50 transition-all duration-200 ease-out ${
-          headerVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-3 pointer-events-none"
+          headerVisible
+            ? "opacity-100 translate-y-0"
+            : "opacity-0 -translate-y-3 pointer-events-none"
         }`}
         ref={headerRef}
         onClick={(e) => e.stopPropagation()}
@@ -672,7 +744,7 @@ function BasicPdfRender() {
                         </Button>
                         <div className="flex-1 text-center">
                           <span className="text-lg font-semibold">
-                            {Math.round(scale * 100)}%
+                            {Math.round(responsiveScale * 100)}%
                           </span>
                         </div>
                         <Button
@@ -793,7 +865,7 @@ function BasicPdfRender() {
                   <ZoomOut className="h-3 w-3" />
                 </Button>
                 <span className="text-xs font-medium px-1 min-w-[3rem] text-center">
-                  {Math.round(scale * 100)}%
+                  {Math.round(responsiveScale * 100)}%
                 </span>
                 <Button
                   variant="ghost"
@@ -872,149 +944,163 @@ function BasicPdfRender() {
       </div>
 
       {/* PDF Content */}
-      <ScrollArea className="flex-1">
-        {viewMode === "single" ? (
-          // Single Page or Scroll Views
-          readingMode === "page" ? (
-            // Page Mode - Single page at a time
-            <div className="flex justify-center p-6">
-              <div className="max-w-full relative">
-                <Document
-                  file={file}
-                  onLoadSuccess={onDocumentLoadSuccess}
-                  onLoadError={onDocumentLoadError}
-                  loading={
-                    <div className="flex items-center justify-center p-8">
-                      <Loader2 className="h-6 w-6 animate-spin text-primary" />
-                    </div>
-                  }
-                  className="shadow-lg"
-                >
-                  <div
-                    className="relative"
-                    style={{
-                      filter: `brightness(${brightness}%)`,
-                    }}
+      <div className="flex-1 w-full overflow-auto">
+        <div className="min-h-full w-full">
+          {viewMode === "single" ? (
+            // Single Page or Scroll Views
+            readingMode === "page" ? (
+              // Page Mode - Single page at a time
+              <div className="flex justify-center p-2 sm:p-4 md:p-6 min-w-fit">
+                <div className="relative flex justify-center">
+                  <Document
+                    file={file}
+                    onLoadSuccess={onDocumentLoadSuccess}
+                    onLoadError={onDocumentLoadError}
+                    loading={
+                      <div className="flex items-center justify-center p-8">
+                        <Loader2 className="h-6 w-6 animate-spin text-primary" />
+                      </div>
+                    }
+                    className="shadow-lg"
                   >
-                    <Page
-                      pageNumber={currentPage}
-                      scale={scale}
-                      rotate={rotation}
-                      loading={
-                        <div className="flex items-center justify-center p-8 bg-muted/20 rounded-lg">
-                          <Loader2 className="h-6 w-6 animate-spin text-primary" />
-                        </div>
-                      }
-                      className="shadow-lg border rounded-lg overflow-hidden"
-                    />
-                  </div>
-                </Document>
+                    <div
+                      className="relative"
+                      style={{
+                        filter: `brightness(${brightness}%)`,
+                      }}
+                    >
+                      <Page
+                        pageNumber={currentPage}
+                        scale={responsiveScale}
+                        rotate={rotation}
+                        loading={
+                          <div className="flex items-center justify-center p-8 bg-muted/20 rounded-lg">
+                            <Loader2 className="h-6 w-6 animate-spin text-primary" />
+                          </div>
+                        }
+                        className="shadow-lg border rounded-lg"
+                      />
+                    </div>
+                  </Document>
+                </div>
               </div>
-            </div>
-          ) : (
-            // Vertical Scroll Mode - All pages in a vertical column
-            <div className="flex justify-center p-6">
-              <div className="max-w-full space-y-4">
-                <Document
-                  file={file}
-                  onLoadSuccess={onDocumentLoadSuccess}
-                  onLoadError={onDocumentLoadError}
-                  loading={
-                    <div className="flex items-center justify-center p-8">
-                      <Loader2 className="h-6 w-6 animate-spin text-primary" />
-                    </div>
-                  }
-                >
-                  <div
-                    style={{
-                      filter: `brightness(${brightness}%)`,
-                    }}
+            ) : (
+              // Vertical Scroll Mode - All pages in a vertical column
+              <div className="flex justify-center p-2 sm:p-4 md:p-6 min-w-fit">
+                <div className="space-y-2 sm:space-y-4 flex flex-col items-center">
+                  <Document
+                    file={file}
+                    onLoadSuccess={onDocumentLoadSuccess}
+                    onLoadError={onDocumentLoadError}
+                    loading={
+                      <div className="flex items-center justify-center p-8">
+                        <Loader2 className="h-6 w-6 animate-spin text-primary" />
+                      </div>
+                    }
                   >
-                    {numPages &&
-                      Array.from({ length: numPages }, (_, i) => i + 1).map(
-                        (pageNum) => (
+                    <div
+                      style={{
+                        filter: `brightness(${brightness}%)`,
+                      }}
+                    >
+                      {numPages &&
+                        Array.from({ length: numPages }, (_, i) => i + 1).map(
+                          (pageNum) => (
+                            <div
+                              key={pageNum}
+                              id={`page-${pageNum}`}
+                              className="relative"
+                            >
+                              <Page
+                                pageNumber={pageNum}
+                                scale={responsiveScale}
+                                rotate={rotation}
+                                loading={
+                                  <div className="flex items-center justify-center p-8 bg-muted/20 rounded-lg">
+                                    <Loader2 className="h-6 w-6 animate-spin text-primary" />
+                                  </div>
+                                }
+                                className="shadow-lg border rounded-lg mb-2 sm:mb-4"
+                              />
+                              <div className="absolute top-2 right-2 bg-black/70 text-white text-xs px-2 py-1 rounded">
+                                Page {pageNum}
+                              </div>
+                            </div>
+                          )
+                        )}
+                    </div>
+                  </Document>
+                </div>
+              </div>
+            )
+          ) : (
+            // Grid View - All Pages
+            <div className="p-2 sm:p-4 md:p-6 min-w-fit">
+              <Document
+                file={file}
+                onLoadSuccess={onDocumentLoadSuccess}
+                onLoadError={onDocumentLoadError}
+                loading={
+                  <div className="flex items-center justify-center p-8">
+                    <Loader2 className="h-6 w-6 animate-spin text-primary" />
+                  </div>
+                }
+              >
+                <div
+                  className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-8 gap-2 sm:gap-3 md:gap-4 justify-items-center"
+                  style={{
+                    filter: `brightness(${brightness}%)`,
+                  }}
+                >
+                  {numPages &&
+                    Array.from({ length: numPages }, (_, i) => i + 1).map(
+                      (pageNum) => {
+                        // Calculate grid thumbnail scale based on viewport
+                        const getGridScale = () => {
+                          if (typeof window === "undefined") return 0.3;
+                          const viewportWidth = window.innerWidth;
+                          if (viewportWidth <= 480) return 0.15; // Mobile
+                          if (viewportWidth <= 768) return 0.2; // Tablet
+                          if (viewportWidth <= 1024) return 0.25; // Small laptop
+                          return 0.3; // Desktop
+                        };
+
+                        return (
                           <div
                             key={pageNum}
-                            id={`page-${pageNum}`}
-                            className="relative"
+                            className={`relative cursor-pointer transition-all duration-200 hover:scale-105 ${
+                              currentPage === pageNum
+                                ? "ring-2 ring-primary ring-offset-2 shadow-lg"
+                                : "hover:shadow-md"
+                            }`}
+                            onClick={() => goToPage(pageNum)}
                           >
-                            <Page
-                              pageNumber={pageNum}
-                              scale={scale}
-                              rotate={rotation}
-                              loading={
-                                <div className="flex items-center justify-center p-8 bg-muted/20 rounded-lg">
-                                  <Loader2 className="h-6 w-6 animate-spin text-primary" />
-                                </div>
-                              }
-                              className="shadow-lg border rounded-lg overflow-hidden mb-4"
-                            />
-                            <div className="absolute top-2 right-2 bg-black/70 text-white text-xs px-2 py-1 rounded">
-                              Page {pageNum}
+                            <div className="relative">
+                              <Page
+                                pageNumber={pageNum}
+                                scale={getGridScale()}
+                                rotate={rotation}
+                                loading={
+                                  <div className="flex items-center justify-center p-2 sm:p-4 bg-muted/20 rounded-lg">
+                                    <Loader2 className="h-3 w-3 sm:h-4 sm:w-4 animate-spin text-primary" />
+                                  </div>
+                                }
+                                className="shadow border rounded-lg"
+                              />
+                              <div className="absolute bottom-1 left-1 bg-black/70 text-white text-xs px-1.5 py-0.5 rounded">
+                                {pageNum}
+                              </div>
                             </div>
                           </div>
-                        )
-                      )}
-                  </div>
-                </Document>
-              </div>
-            </div>
-          )
-        ) : (
-          // Grid View - All Pages
-          <div className="p-6">
-            <Document
-              file={file}
-              onLoadSuccess={onDocumentLoadSuccess}
-              onLoadError={onDocumentLoadError}
-              loading={
-                <div className="flex items-center justify-center p-8">
-                  <Loader2 className="h-6 w-6 animate-spin text-primary" />
+                        );
+                      }
+                    )}
                 </div>
-              }
-            >
-              <div
-                className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4"
-                style={{
-                  filter: `brightness(${brightness}%)`,
-                }}
-              >
-                {numPages &&
-                  Array.from({ length: numPages }, (_, i) => i + 1).map(
-                    (pageNum) => (
-                      <div
-                        key={pageNum}
-                        className={`max-w-fit relative cursor-pointer transition-all duration-200 hover:scale-105 ${
-                          currentPage === pageNum
-                            ? "ring-2 ring-primary ring-offset-2 shadow-lg"
-                            : "hover:shadow-md"
-                        }`}
-                        onClick={() => goToPage(pageNum)}
-                      >
-                        <div className="relative">
-                          <Page
-                            pageNumber={pageNum}
-                            scale={0.3}
-                            rotate={rotation}
-                            loading={
-                              <div className="flex items-center justify-center p-4 bg-muted/20 rounded-lg">
-                                <Loader2 className="h-4 w-4 animate-spin text-primary max-w-fit" />
-                              </div>
-                            }
-                            className="shadow border rounded-lg overflow-hidden"
-                          />
-                          <div className="absolute bottom-2 left-2 bg-black/70 text-white text-xs px-2 py-1 rounded">
-                            {pageNum}
-                          </div>
-                        </div>
-                      </div>
-                    )
-                  )}
-              </div>
-            </Document>
-          </div>
-        )}
-      </ScrollArea>
+              </Document>
+            </div>
+          )}
+        </div>
+      </div>
     </div>
   );
 }
