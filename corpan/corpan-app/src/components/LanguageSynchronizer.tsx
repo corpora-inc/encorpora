@@ -10,7 +10,6 @@ const LanguageSynchronizer = ({ children }: { children: React.ReactNode }) => {
   // This useEffect will run whenever the 'language' in the store changes.
   useEffect(() => {
     const val = language();
-    console.log("change language", val);
     i18n.changeLanguage(val);
   }, [language, i18n]);
 
