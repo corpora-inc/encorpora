@@ -57,11 +57,13 @@ fn mime_of_file(app: &AppHandle, fp: &FilePath) -> Result<String, String> {
         },
         FilePath::Url(url) => {
             println!("DEBUG: FilePath::Url - url path: {}", url.path());
-            mime_from_path(url.path())
+            mime_from_path(url.path()).map(|m| media_subtype(&m).to_string())
         }
     } {
-        println!("DEBUG: Extension detection successful, returning: {}", mt);
-        return Ok(mt);
+        if !mt.is_empty() {
+            println!("DEBUG: Extension detection successful, returning: {}", mt);
+            return Ok(mt);
+        }
     }
 
     println!("DEBUG: Extension detection failed, falling back to byte sniffing");
