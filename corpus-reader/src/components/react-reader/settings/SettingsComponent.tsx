@@ -31,7 +31,7 @@ export const SettingsComponent = () => {
   };
 
   return (
-    <div className="px-4 h-[55vh]">
+    <div className="px-4">
       <Tabs defaultValue="font" className="w-full">
         <TabsList className="grid w-full grid-cols-3">
           <TabsTrigger value="font">Font</TabsTrigger>
@@ -45,11 +45,15 @@ export const SettingsComponent = () => {
           />
         </TabsContent>
         <TabsContent value="layout">
-          <LayoutSettings
-            onSettingsChange={onSettingsChange}
-            settings={settings}
-          />
+          <ScrollArea className="max-h-[50vh] overflow-y-auto">
+            <LayoutSettings
+              onSettingsChange={onSettingsChange}
+              settings={settings}
+            />
+          </ScrollArea>
+
         </TabsContent>
+
         <TabsContent value="theme">
           <ScrollArea className="max-h-[50vh] overflow-y-auto">
             <ThemeSettings
@@ -59,7 +63,7 @@ export const SettingsComponent = () => {
           </ScrollArea>
         </TabsContent>
       </Tabs>
-      
+
       <div className="mt-4 pt-4 border-t border-border">
         <Button
           variant="outline"
