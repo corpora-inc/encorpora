@@ -391,6 +391,29 @@ function BasicPdfRender() {
     setBrightness(brightness - 10);
   };
 
+  // Keyboard navigation in page mode (Arrow keys)
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (readingMode !== "page") return;
+      const target = event.target as HTMLElement | null;
+      if (!target) return;
+      const tagName = target.tagName?.toLowerCase();
+      const isEditable = target.isContentEditable || ["input", "textarea", "select"].includes(tagName);
+      if (isEditable) return;
+
+      if (event.key === "ArrowRight" || event.key === "ArrowDown") {
+        event.preventDefault();
+        goToNextPage();
+      } else if (event.key === "ArrowLeft" || event.key === "ArrowUp") {
+        event.preventDefault();
+        goToPrevPage();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown, { passive: false });
+    return () => window.removeEventListener("keydown", handleKeyDown as EventListener);
+  }, [readingMode, goToNextPage, goToPrevPage]);
+
   const getReadingModeIcon = () => {
     switch (readingMode) {
       case "page":
