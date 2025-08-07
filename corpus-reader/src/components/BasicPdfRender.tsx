@@ -75,12 +75,20 @@ function BasicPdfRender() {
   const [file, setFile] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
   const [bookInfo, setBookInfo] = useState<BookEntry | null>(null);
+  // Header visibility state
+  const [headerVisible, setHeaderVisible] = useState(false);
 
   // Use ref to track the last saved page to avoid unnecessary updates
   const lastSavedPageRef = useRef<number>(1);
 
   // Ref for scroll container to implement intersection observer
   const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const prevReadingModeRef = useRef<"page" | "vertical" | null>(null);
+  const hasPositionedInitiallyRef = useRef(false);
+  const headerHideTimeoutRef = useRef<number | null>(null);
+  const lastTapTimeRef = useRef<number>(0);
+  const tapCountRef = useRef<number>(0);
+  const headerRef = useRef<HTMLDivElement>(null);
 
   // Extract settings from store
   const { scale, rotation, viewMode, readingMode, brightness } = settings;
@@ -215,8 +223,8 @@ function BasicPdfRender() {
         }
       },
       {
-        threshold: [0.1, 0.3, 0.5, 0.7, 0.9], // Multiple thresholds for better detection
-        rootMargin: "-10% 0px -10% 0px", // Only consider pages that are well within viewport
+        threshold: [0.1, 0.3, 0.5, 0.7, 0.9],
+        rootMargin: "-10% 0px -10% 0px",
       }
     );
 
@@ -227,25 +235,87 @@ function BasicPdfRender() {
     return () => {
       observer.disconnect();
     };
-  }, [readingMode, numPages, currentPage]);
+  }, [readingMode, numPages]);
 
-  // Scroll to saved page when switching to vertical mode
+  // Scroll to saved page only when switching to vertical mode or on initial position
   useEffect(() => {
-    if (readingMode === "vertical" && currentPage > 1) {
-      // Small delay to ensure pages are rendered
-      const timeoutId = setTimeout(() => {
-        const pageElement = document.getElementById(`page-${currentPage}`);
-        if (pageElement) {
-          pageElement.scrollIntoView({
-            behavior: "auto", // Use 'auto' instead of 'smooth' for initial positioning
-            block: "start",
-          });
-        }
-      }, 100);
+    const justSwitchedToVertical =
+      prevReadingModeRef.current && prevReadingModeRef.current !== readingMode && readingMode === "vertical";
 
-      return () => clearTimeout(timeoutId);
+    if ((justSwitchedToVertical || !hasPositionedInitiallyRef.current) && readingMode === "vertical") {
+      const targetPage = currentPage > 1 ? currentPage : lastSavedPageRef.current;
+      const timeoutId = window.setTimeout(() => {
+        const pageElement = document.getElementById(`page-${targetPage}`);
+        if (pageElement) {
+          pageElement.scrollIntoView({ behavior: "auto", block: "start" });
+        }
+        hasPositionedInitiallyRef.current = true;
+      }, 120);
+      return () => window.clearTimeout(timeoutId);
     }
-  }, [readingMode, currentPage]);
+  }, [readingMode]);
+
+  // Track previous reading mode
+  useEffect(() => {
+    prevReadingModeRef.current = readingMode;
+  }, [readingMode]);
+
+  // Header visibility helpers
+  const showHeader = useCallback(() => {
+    setHeaderVisible(true);
+    if (headerHideTimeoutRef.current) {
+      window.clearTimeout(headerHideTimeoutRef.current);
+    }
+    headerHideTimeoutRef.current = window.setTimeout(() => {
+      setHeaderVisible(false);
+    }, 1000);
+  }, []);
+
+  const suppressClickUntilRef = useRef<number>(0);
+
+  const handleContainerClick = useCallback(() => {
+    const now = Date.now();
+    if (now < suppressClickUntilRef.current) return; // ignore right after touch
+    showHeader();
+  }, [showHeader]);
+
+  const handleMouseMove = useCallback((e: React.MouseEvent) => {
+    if (e.clientY <= 120) {
+      showHeader();
+    }
+  }, [showHeader]);
+
+  const handleTouchEnd = useCallback((e: React.TouchEvent) => {
+    // If the touch is interacting with the header or its children, do not interfere
+    const target = e.target as Node | null;
+    if (target && headerRef.current && headerRef.current.contains(target)) {
+      return;
+    }
+    // prevent synthetic click from toggling header again on content taps
+    e.preventDefault();
+    const now = Date.now();
+    if (now - lastTapTimeRef.current < 350) {
+      tapCountRef.current += 1;
+    } else {
+      tapCountRef.current = 1;
+    }
+    lastTapTimeRef.current = now;
+
+    if (tapCountRef.current >= 2) {
+      showHeader();
+      tapCountRef.current = 0;
+    }
+    // suppress subsequent click for a short window
+    suppressClickUntilRef.current = now + 500;
+  }, []);
+
+  useEffect(() => {
+    return () => {
+      if (headerHideTimeoutRef.current) {
+        window.clearTimeout(headerHideTimeoutRef.current);
+      }
+    };
+  }, []);
 
   const onDocumentLoadSuccess = useCallback(
     ({ numPages }: DocumentLoadSuccess) => {
@@ -369,9 +439,21 @@ function BasicPdfRender() {
   }
 
   return (
-    <div className="flex flex-col h-screen bg-background">
-      {/* Header with controls */}
-      <div className="border-b bg-card/50 backdrop-blur-sm sticky top-0 z-20">
+    <div
+      className="flex flex-col h-screen bg-background"
+      onClick={handleContainerClick}
+      onMouseMove={handleMouseMove}
+      onTouchEnd={handleTouchEnd}
+      ref={scrollContainerRef}
+    >
+      {/* Floating Header with controls (hidden by default) */}
+      <div
+        className={`border-b bg-card/90 shadow-md backdrop-blur-sm fixed top-0 left-0 right-0 z-50 transition-all duration-200 ease-out ${
+          headerVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-3 pointer-events-none"
+        }`}
+        ref={headerRef}
+        onClick={(e) => e.stopPropagation()}
+      >
         {/* Main Header Row */}
         <div className="flex items-center justify-between p-3 md:p-4">
           {/* Left side - Back button and title */}
@@ -380,7 +462,7 @@ function BasicPdfRender() {
               variant="ghost"
               size="icon"
               onClick={() => window.history.back()}
-              aria-label="Back"
+              ariseta-label="Back"
               className="shrink-0"
             >
               <ArrowLeft className="w-4 h-4 md:w-5 md:h-5" />
