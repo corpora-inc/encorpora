@@ -1,4 +1,4 @@
-import { Grid3X3, Lightbulb, Menu, Minus, Plus, RotateCw, ZoomIn, ZoomOut, ScrollText, ArrowUpDown, Sun, Moon } from "lucide-react"
+import { Grid3X3, Lightbulb, Settings, Minus, Plus, RotateCw, ZoomIn, ZoomOut, ScrollText, ArrowUpDown, Sun, Moon } from "lucide-react"
 import { Button } from "../ui/button"
 import { Drawer, DrawerContent, DrawerHeader, DrawerTitle, DrawerTrigger } from "../ui/drawer"
 import { useTheme } from "../ThemeProvider"
@@ -54,7 +54,7 @@ const PdfMobileMenu = ({
                     className="h-8 w-8 p-0 md:hidden"
                     aria-label="Open settings"
                 >
-                    <Menu className="h-4 w-4" />
+                    <Settings className="h-4 w-4" />
                 </Button>
             </DrawerTrigger>
             <DrawerContent>

@@ -11,13 +11,10 @@ import "react-pdf/dist/Page/TextLayer.css";
 import { useParams } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Progress } from "@/components/ui/progress";
 import { Separator } from "@/components/ui/separator";
 import { Badge } from "@/components/ui/badge";
 
 import {
-  ChevronLeft,
-  ChevronRight,
   ZoomIn,
   ZoomOut,
   RotateCw,
@@ -567,68 +564,9 @@ function BasicPdfRender() {
             )}
           </div>
 
-          {/* Center - Page info and navigation (mobile-first) */}
-          <div className="flex items-center gap-1 md:gap-2 mx-2 md:mx-4">
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={goToPrevPage}
-              disabled={currentPage <= 1}
-              className="h-8 px-2 md:px-3"
-            >
-              <ChevronLeft className="h-3 w-3 md:h-4 md:w-4" />
-              <span className="hidden sm:inline ml-1">Prev</span>
-            </Button>
-
-            {numPages && (
-              <div className="flex items-center gap-1 md:gap-2 px-1 md:px-2">
-                <span className="text-xs md:text-sm font-medium whitespace-nowrap">
-                  {currentPage}/{numPages}
-                </span>
-                <div className="w-12 md:w-16 hidden sm:block">
-                  <Progress
-                    value={(currentPage / numPages) * 100}
-                    className="h-1.5 md:h-2"
-                  />
-                </div>
-              </div>
-            )}
-
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={goToNextPage}
-              disabled={currentPage >= (numPages || 0)}
-              className="h-8 px-2 md:px-3"
-            >
-              <span className="hidden sm:inline mr-1">Next</span>
-              <ChevronRight className="h-3 w-3 md:h-4 md:w-4" />
-            </Button>
-          </div>
 
           {/* Right side - Menu toggle and essential controls */}
           <div className="flex items-center gap-1 md:gap-2 shrink-0">
-            {/* Essential controls always visible */}
-            <div className="flex items-center gap-1 md:hidden">
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={zoomOut}
-                disabled={scale <= 0.5}
-                className="h-8 w-8 p-0"
-              >
-                <ZoomOut className="h-3 w-3" />
-              </Button>
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={zoomIn}
-                disabled={scale >= 3}
-                className="h-8 w-8 p-0"
-              >
-                <ZoomIn className="h-3 w-3" />
-              </Button>
-            </div>
 
             {/* Mobile drawer toggle */}
             <PdfMobileMenu
@@ -646,23 +584,16 @@ function BasicPdfRender() {
               cycleReadingMode={cycleReadingMode}
               toggleTheme={toggleTheme}
             />
-
+            <PdfToc
+              currentPage={currentPage}
+              file={file}
+              goToPage={goToPage}
+              numPages={numPages}
+              rotation={rotation}
+            />
             {/* Desktop controls - always visible on larger screens */}
             <div className="hidden md:flex items-center gap-2">
-              <PdfSearch
-                file={file}
-                numPages={numPages}
-                onGoToPage={goToPage}
-                currentPage={currentPage}
-              />
 
-              <PdfToc
-                currentPage={currentPage}
-                file={file}
-                goToPage={goToPage}
-                numPages={numPages}
-                rotation={rotation}
-              />
 
               <Separator orientation="vertical" className="h-6" />
 
@@ -745,7 +676,7 @@ function BasicPdfRender() {
                   variant="ghost"
                   size="sm"
                   onClick={increaseBrightness}
-                  disabled={brightness >= 150}
+                  disabled={brightness >= 100}
                   className="h-6 w-6 p-0"
                   title="Increase brightness"
                 >
