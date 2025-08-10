@@ -458,10 +458,8 @@ function BasicPdfRender() {
     setBrightness(brightness - 10);
   };
 
-  // Keyboard navigation in page mode (Arrow keys)
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
-      if (readingMode !== "page") return;
       const target = event.target as HTMLElement | null;
       if (!target) return;
       const tagName = target.tagName?.toLowerCase();
