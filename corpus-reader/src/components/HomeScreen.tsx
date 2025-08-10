@@ -44,18 +44,6 @@ export function HomeScreen({ books, onBookAdded, onBookDeleted }: HomeScreenProp
     sortBy,
   });
 
-  // // Refresh books when window regains focus (e.g., returning from reader)
-  // useEffect(() => {
-  //   const handleFocus = () => {
-  //     if (onBookAdded) {
-  //       console.log("Window regained focus, refreshing books...");
-  //       onBookAdded();
-  //     }
-  //   };
-  //   window.addEventListener("focus", handleFocus);
-  //   return () => window.removeEventListener("focus", handleFocus);
-  // }, [onBookAdded]);
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background/98 to-muted/30 safe-top safe-bottom">
       <div className="flex min-h-screen">
