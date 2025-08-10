@@ -160,7 +160,8 @@ function BasicPdfRender() {
           // Restore last read page if available
           if (info.last_read_page && info.last_read_page > 0) {
             setCurrentPage(info.last_read_page);
-            lastSavedPageRef.current = info.last_read_page;
+            // Don't set lastSavedPageRef immediately to allow progress update to work
+            // It will be set when the progress is actually saved
             console.log(`Restored last read page: ${info.last_read_page}`);
           }
         }
@@ -223,9 +224,18 @@ function BasicPdfRender() {
 
   // Update progress when current page changes
   useEffect(() => {
-    if (!bookPath || !numPages || currentPage === lastSavedPageRef.current) {
+    if (!bookPath || !numPages) {
       return;
     }
+
+    // Allow progress update if page changed or if this is the first time setting progress
+    const shouldUpdate = currentPage !== lastSavedPageRef.current;
+    
+    if (!shouldUpdate) {
+      return;
+    }
+
+    console.log(`Progress update triggered: currentPage=${currentPage}, lastSaved=${lastSavedPageRef.current}, mode=${readingMode}`);
 
     // Debounce the progress update to avoid too many database calls
     const timeoutId = setTimeout(async () => {
@@ -234,15 +244,15 @@ function BasicPdfRender() {
         await updateBookProgress(bookPath, currentPage, progress);
         lastSavedPageRef.current = currentPage;
         console.log(
-          `Progress updated: Page ${currentPage}/${numPages} (${progress}%)`
+          `Progress saved: Page ${currentPage}/${numPages} (${progress}%) in ${readingMode} mode`
         );
       } catch (error) {
         console.error("Error updating book progress:", error);
       }
-    }, 1000); // Wait 1 second before saving to avoid rapid updates
+    }, readingMode === "vertical" ? 2000 : 1000); // Longer debounce for vertical mode
 
     return () => clearTimeout(timeoutId);
-  }, [currentPage, numPages, bookPath]);
+  }, [currentPage, numPages, bookPath, readingMode]);
 
   // Intersection Observer for vertical scroll mode to track current page
   useEffect(() => {
@@ -253,7 +263,7 @@ function BasicPdfRender() {
     const observer = new IntersectionObserver(
       (entries) => {
         // Find the page that's most visible
-        let mostVisiblePage = 1;
+        let mostVisiblePage = currentPage;
         let maxVisibility = 0;
 
         entries.forEach((entry) => {
@@ -269,25 +279,30 @@ function BasicPdfRender() {
           }
         });
 
-        // Only update if the page actually changed
-        if (mostVisiblePage !== currentPage && maxVisibility > 0.3) {
+        // Only update if the page actually changed and has significant visibility
+        if (mostVisiblePage !== currentPage && maxVisibility > 0.2) {
+          console.log(`Vertical mode: Page changed to ${mostVisiblePage} (visibility: ${maxVisibility})`);
           setCurrentPage(mostVisiblePage);
         }
       },
       {
-        threshold: [0.1, 0.3, 0.5, 0.7, 0.9],
-        rootMargin: "-10% 0px -10% 0px",
+        threshold: [0.1, 0.2, 0.3, 0.5, 0.7, 0.9],
+        rootMargin: "-20% 0px -20% 0px", // More conservative margin
       }
     );
 
-    // Observe all page elements
-    const pageElements = document.querySelectorAll('[id^="page-"]');
-    pageElements.forEach((element) => observer.observe(element));
+    // Small delay to ensure pages are rendered before observing
+    const timeoutId = setTimeout(() => {
+      const pageElements = document.querySelectorAll('[id^="page-"]');
+      console.log(`Vertical mode: Observing ${pageElements.length} pages`);
+      pageElements.forEach((element) => observer.observe(element));
+    }, 100);
 
     return () => {
+      clearTimeout(timeoutId);
       observer.disconnect();
     };
-  }, [readingMode, numPages]);
+  }, [readingMode, numPages, currentPage]); // Added currentPage to dependencies
 
   // Scroll to saved page only when switching to vertical mode or on initial position
   useEffect(() => {
@@ -302,16 +317,29 @@ function BasicPdfRender() {
     ) {
       const targetPage =
         currentPage > 1 ? currentPage : lastSavedPageRef.current;
+      
+      console.log(`Scrolling to page ${targetPage} in vertical mode`);
+      
       const timeoutId = window.setTimeout(() => {
         const pageElement = document.getElementById(`page-${targetPage}`);
         if (pageElement) {
           pageElement.scrollIntoView({ behavior: "auto", block: "start" });
+          console.log(`Scrolled to page ${targetPage}`);
+          
+          // After scrolling, ensure currentPage is set correctly
+          // This helps when the intersection observer doesn't fire immediately
+          if (currentPage !== targetPage) {
+            setCurrentPage(targetPage);
+          }
+        } else {
+          console.warn(`Page element page-${targetPage} not found`);
         }
         hasPositionedInitiallyRef.current = true;
-      }, 120);
+      }, 200); // Slightly longer delay to ensure pages are rendered
+      
       return () => window.clearTimeout(timeoutId);
     }
-  }, [readingMode]);
+  }, [readingMode, currentPage]);
 
   // Track previous reading mode
   useEffect(() => {
