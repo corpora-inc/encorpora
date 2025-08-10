@@ -14,13 +14,6 @@ import { Card } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { Separator } from "@/components/ui/separator";
 import { Badge } from "@/components/ui/badge";
-import {
-  Drawer,
-  DrawerContent,
-  DrawerHeader,
-  DrawerTitle,
-  DrawerTrigger,
-} from "@/components/ui/drawer";
 
 import {
   ChevronLeft,
@@ -40,12 +33,12 @@ import {
   Lightbulb,
   Minus,
   Plus,
-  Menu,
 } from "lucide-react";
 import PdfToc from "./pdfViewer/PdfToc";
 import PdfSearch from "./PdfSearch";
 import { useTheme } from "@/components/ThemeProvider";
 import { usePdfViewerStore } from "@/store/usePdfViewerStore";
+import PdfMobileMenu from "./pdfViewer/pdfMobileMenu";
 
 pdfjs.GlobalWorkerOptions.workerSrc = "/pdf.worker.mjs";
 
@@ -538,11 +531,10 @@ function BasicPdfRender() {
     >
       {/* Floating Header with controls (hidden by default) */}
       <div
-        className={`border-b bg-card/90 shadow-md backdrop-blur-sm fixed top-0 left-0 right-0 z-50 transition-all duration-200 ease-out ${
-          headerVisible
-            ? "opacity-100 translate-y-0"
-            : "opacity-0 -translate-y-3 pointer-events-none"
-        }`}
+        className={`border-b bg-card/90 shadow-md backdrop-blur-sm fixed top-0 left-0 right-0 z-50 transition-all duration-200 ease-out ${headerVisible
+          ? "opacity-100 translate-y-0"
+          : "opacity-0 -translate-y-3 pointer-events-none"
+          }`}
         ref={headerRef}
         onClick={(e) => e.stopPropagation()}
       >
@@ -639,176 +631,21 @@ function BasicPdfRender() {
             </div>
 
             {/* Mobile drawer toggle */}
-            <Drawer>
-              <DrawerTrigger asChild>
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  className="h-8 w-8 p-0 md:hidden"
-                  aria-label="Open settings"
-                >
-                  <Menu className="h-4 w-4" />
-                </Button>
-              </DrawerTrigger>
-              <DrawerContent>
-                <DrawerHeader>
-                  <DrawerTitle>PDF Settings</DrawerTitle>
-                </DrawerHeader>
-                <div className="p-4 pb-8">
-                  <div className="grid grid-cols-2 gap-4">
-                    {/* View Controls */}
-                    <div className="space-y-3">
-                      <div className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
-                        View
-                      </div>
-                      <div className="space-y-2">
-                        <Button
-                          variant="ghost"
-                          size="sm"
-                          onClick={cycleReadingMode}
-                          className="w-full h-10 justify-start gap-3"
-                        >
-                          {getReadingModeIcon()}
-                          <span className="text-sm">
-                            {readingMode === "page"
-                              ? "Page Mode"
-                              : "Scroll Mode"}
-                          </span>
-                        </Button>
-                        <Button
-                          variant="ghost"
-                          size="sm"
-                          onClick={toggleViewMode}
-                          className="w-full h-10 justify-start gap-3"
-                        >
-                          <Grid3X3 className="h-4 w-4" />
-                          <span className="text-sm">
-                            {viewMode === "single"
-                              ? "Single View"
-                              : "Grid View"}
-                          </span>
-                        </Button>
-                      </div>
-                    </div>
-
-                    {/* Tools */}
-                    <div className="space-y-3">
-                      <div className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
-                        Tools
-                      </div>
-                      <div className="space-y-2">
-                        <Button
-                          variant="ghost"
-                          size="sm"
-                          onClick={rotate}
-                          className="w-full h-10 justify-start gap-3"
-                        >
-                          <RotateCw className="h-4 w-4" />
-                          <span className="text-sm">Rotate</span>
-                        </Button>
-                        <Button
-                          variant="ghost"
-                          size="sm"
-                          onClick={toggleTheme}
-                          className="w-full h-10 justify-start gap-3"
-                        >
-                          {theme === "dark" ? (
-                            <Sun className="h-4 w-4" />
-                          ) : (
-                            <Moon className="h-4 w-4" />
-                          )}
-                          <span className="text-sm">
-                            {theme === "dark" ? "Light Mode" : "Dark Mode"}
-                          </span>
-                        </Button>
-                      </div>
-                    </div>
-
-                    {/* Zoom Control */}
-                    <div className="col-span-2 space-y-3">
-                      <div className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
-                        Zoom
-                      </div>
-                      <div className="flex items-center gap-3 bg-muted/30 rounded-xl p-4">
-                        <Button
-                          variant="ghost"
-                          size="sm"
-                          onClick={zoomOut}
-                          disabled={scale <= 0.5}
-                          className="h-10 w-10 p-0 rounded-full"
-                        >
-                          <ZoomOut className="h-5 w-5" />
-                        </Button>
-                        <div className="flex-1 text-center">
-                          <span className="text-lg font-semibold">
-                            {Math.round(responsiveScale * 100)}%
-                          </span>
-                        </div>
-                        <Button
-                          variant="ghost"
-                          size="sm"
-                          onClick={zoomIn}
-                          disabled={scale >= 3}
-                          className="h-10 w-10 p-0 rounded-full"
-                        >
-                          <ZoomIn className="h-5 w-5" />
-                        </Button>
-                      </div>
-                    </div>
-
-                    {/* Brightness Control */}
-                    <div className="col-span-2 space-y-3">
-                      <div className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
-                        Brightness
-                      </div>
-                      <div className="flex items-center gap-3 bg-muted/30 rounded-xl p-4">
-                        <Button
-                          variant="ghost"
-                          size="sm"
-                          onClick={decreaseBrightness}
-                          disabled={brightness <= 20}
-                          className="h-10 w-10 p-0 rounded-full"
-                        >
-                          <Minus className="h-5 w-5" />
-                        </Button>
-                        <div className="flex-1 text-center flex items-center justify-center gap-2">
-                          <Lightbulb className="h-5 w-5" />
-                          <span className="text-lg font-semibold">
-                            {brightness}%
-                          </span>
-                        </div>
-                        <Button
-                          variant="ghost"
-                          size="sm"
-                          onClick={increaseBrightness}
-                          disabled={brightness >= 150}
-                          className="h-10 w-10 p-0 rounded-full"
-                        >
-                          <Plus className="h-5 w-5" />
-                        </Button>
-                      </div>
-                    </div>
-
-                    {/* Search and Table of Contents */}
-                    <div className="col-span-2 pt-2 space-y-4">
-                      <PdfSearch
-                        file={file}
-                        numPages={numPages}
-                        onGoToPage={goToPage}
-                        currentPage={currentPage}
-                      />
-                      <PdfToc
-                        currentPage={currentPage}
-                        file={file}
-                        goToPage={goToPage}
-                        numPages={numPages}
-                        rotation={rotation}
-                      />
-                    </div>
-                  </div>
-                </div>
-              </DrawerContent>
-            </Drawer>
+            <PdfMobileMenu
+              brightness={brightness}
+              scale={scale}
+              responsiveScale={responsiveScale}
+              readingMode={readingMode}
+              viewMode={viewMode}
+              zoomIn={zoomIn}
+              zoomOut={zoomOut}
+              increaseBrightness={increaseBrightness}
+              decreaseBrightness={decreaseBrightness}
+              rotate={rotate}
+              toggleViewMode={toggleViewMode}
+              cycleReadingMode={cycleReadingMode}
+              toggleTheme={toggleTheme}
+            />
 
             {/* Desktop controls - always visible on larger screens */}
             <div className="hidden md:flex items-center gap-2">
@@ -1065,11 +902,10 @@ function BasicPdfRender() {
                         return (
                           <div
                             key={pageNum}
-                            className={`relative cursor-pointer transition-all duration-200 hover:scale-105 ${
-                              currentPage === pageNum
-                                ? "ring-2 ring-primary ring-offset-2 shadow-lg"
-                                : "hover:shadow-md"
-                            }`}
+                            className={`relative cursor-pointer transition-all duration-200 hover:scale-105 ${currentPage === pageNum
+                              ? "ring-2 ring-primary ring-offset-2 shadow-lg"
+                              : "hover:shadow-md"
+                              }`}
                             onClick={() => goToPage(pageNum)}
                           >
                             <div className="relative">
