@@ -364,11 +364,21 @@ function createValidAbsoluteUrl(url, baseUrl = null, options = null) {
       } catch {}
     }
   }
-  const absoluteUrl = baseUrl ? URL.parse(url, baseUrl) : URL.parse(url);
+  let absoluteUrl;
+  try {
+    absoluteUrl = baseUrl ? new URL(url, baseUrl) : new URL(url);
+  } catch {
+    return null;
+  }
   return _isValidProtocol(absoluteUrl) ? absoluteUrl : null;
 }
 function updateUrlHash(url, hash, allowRel = false) {
-  const res = URL.parse(url);
+  let res;
+  try {
+    res = new URL(url);
+  } catch {
+    res = null;
+  }
   if (res) {
     res.hash = hash;
     return res.href;
