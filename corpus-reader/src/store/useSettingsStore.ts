@@ -15,7 +15,7 @@ const isMobileDevice = (): boolean => {
   return (
     /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
       navigator.userAgent
-    ) || window.innerWidth <= 768
+    ) || window.innerWidth <= 1024
   );
 };
 
@@ -26,7 +26,6 @@ const getInitialSettings = (): Settings => ({
   fontWeight: "400",
   lineHeight: 1.5,
   textAlign: isMobileDevice() ? "left" : "justify",
-  // Force single page mode on mobile for better search navigation
   spread: isMobileDevice() ? "none" : "auto",
   theme: "light",
 });
