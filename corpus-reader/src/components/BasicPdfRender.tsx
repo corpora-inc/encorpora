@@ -38,6 +38,16 @@ import PdfMobileMenu from "./pdfViewer/pdfMobileMenu";
 
 pdfjs.GlobalWorkerOptions.workerSrc = "/pdf.worker.mjs";
 
+// Helper function to check if any dialog or overlay is open
+const isDialogOrOverlayOpen = (): boolean => {
+  return (
+    document.querySelector('[role="dialog"]') !== null ||
+    document.querySelector('[data-state="open"]') !== null ||
+    document.querySelector(".drawer-content") !== null ||
+    document.querySelector("[data-radix-dialog-content]") !== null
+  );
+};
+
 interface DocumentLoadSuccess {
   numPages: number;
 }
@@ -310,6 +320,10 @@ function BasicPdfRender() {
 
   // Header visibility helpers
   const showHeader = useCallback(() => {
+    // Don't show header if a dialog is open
+    if (isDialogOrOverlayOpen()) {
+      return;
+    }
     setHeaderVisible(true);
     if (headerHideTimeoutRef.current) {
       window.clearTimeout(headerHideTimeoutRef.current);
@@ -322,6 +336,10 @@ function BasicPdfRender() {
   const suppressClickUntilRef = useRef<number>(0);
 
   const handleContainerClick = useCallback(() => {
+    // Don't handle click events if a dialog is open
+    if (isDialogOrOverlayOpen()) {
+      return;
+    }
     const now = Date.now();
     if (now < suppressClickUntilRef.current) return; // ignore right after touch
     showHeader();
@@ -329,6 +347,10 @@ function BasicPdfRender() {
 
   const handleMouseMove = useCallback(
     (e: React.MouseEvent) => {
+      // Don't show header if a dialog is open
+      if (isDialogOrOverlayOpen()) {
+        return;
+      }
       if (e.clientY <= 120) {
         showHeader();
       }
@@ -337,6 +359,11 @@ function BasicPdfRender() {
   );
 
   const handleTouchEnd = useCallback((e: React.TouchEvent) => {
+    // Don't handle touch events if a dialog is open
+    if (isDialogOrOverlayOpen()) {
+      return;
+    }
+    
     // If the touch is interacting with the header or its children, do not interfere
     const target = e.target as Node | null;
     if (target && headerRef.current && headerRef.current.contains(target)) {
@@ -358,7 +385,7 @@ function BasicPdfRender() {
     }
     // suppress subsequent click for a short window
     suppressClickUntilRef.current = now + 500;
-  }, []);
+  }, [showHeader]);
 
   useEffect(() => {
     return () => {
@@ -448,6 +475,11 @@ function BasicPdfRender() {
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
+      // Don't handle keyboard events if a dialog is open
+      if (isDialogOrOverlayOpen()) {
+        return;
+      }
+      
       const target = event.target as HTMLElement | null;
       if (!target) return;
       const tagName = target.tagName?.toLowerCase();
