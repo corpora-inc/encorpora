@@ -32,7 +32,6 @@ import {
   Plus,
 } from "lucide-react";
 import PdfToc from "./pdfViewer/PdfToc";
-import PdfSearch from "./PdfSearch";
 import { useTheme } from "@/components/ThemeProvider";
 import { usePdfViewerStore } from "@/store/usePdfViewerStore";
 import PdfMobileMenu from "./pdfViewer/pdfMobileMenu";
@@ -600,7 +599,7 @@ function BasicPdfRender() {
               <Button
                 variant="ghost"
                 size="sm"
-                disabled={readingMode === "vertical" || viewMode === "grid"}
+                disabled={viewMode === "grid"}
                 onClick={cycleReadingMode}
                 className="h-8 w-8 p-0"
                 title={getReadingModeTitle()}
