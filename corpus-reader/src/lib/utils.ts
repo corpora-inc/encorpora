@@ -99,15 +99,23 @@ export const updateBookProgress = async (
   path: string,
   lastReadPage?: string | number | null,
   progress?: string | number | null,
-
 ) => {
   const db = await Database.load("sqlite:library.db");
   try {
+    // Convert progress to number for comparison
+    const progressNumber = progress ? Number(progress) : null;
+    const isFinished = progressNumber !== null && progressNumber >= 100;
+
     await db.execute(
-      "UPDATE books SET progress = $1, last_read_page = $2, last_read = CURRENT_TIMESTAMP WHERE path = $3",
-      [progress, lastReadPage, path]
+      "UPDATE books SET progress = $1, last_read_page = $2, last_read = CURRENT_TIMESTAMP, is_finished = $4 WHERE path = $3",
+      [progress, lastReadPage, path, isFinished]
     );
-    console.log(`Progress updated for book  ${path}.`);
+    
+    if (isFinished) {
+      console.log(`Book finished! Progress updated for book ${path} - marked as completed.`);
+    } else {
+      console.log(`Progress updated for book ${path}.`);
+    }
   } catch (error) {
     console.error(`Error updating progress for book ${path}:`, error);
   }
