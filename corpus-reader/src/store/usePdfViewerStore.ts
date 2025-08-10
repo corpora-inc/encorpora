@@ -1,6 +1,27 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
+// Function to detect if device is mobile
+const isMobile = () => {
+  if (typeof window !== "undefined") {
+    return window.matchMedia("(max-width: 767px)").matches;
+  }
+  return false;
+};
+
+// Get initial settings based on device type
+const getInitialSettings = (): PdfViewerSettings => {
+  const mobile = isMobile();
+  return {
+    scale: mobile ? 0.45 : 1.2,
+    rotation: 0,
+    viewMode: "single",
+    readingMode: mobile ? "vertical" : "page",
+    theme: "system",
+    brightness: 100,
+  };
+};
+
 export interface PdfViewerSettings {
   scale: number;
   rotation: number;
@@ -23,18 +44,11 @@ interface PdfViewerState {
 }
 
 // Default PDF viewer settings
-const initialSettings: PdfViewerSettings = {
-  scale: 1.2,
-  rotation: 0,
-  viewMode: "single",
-  readingMode: "page",
-  theme: "system",
-  brightness: 100,
-};
+const initialSettings: PdfViewerSettings = getInitialSettings();
 
 export const usePdfViewerStore = create<PdfViewerState>()(
   persist(
-    (set, get) => ({
+    (set) => ({
       settings: initialSettings,
       
       setScale: (scale: number) => {
@@ -90,7 +104,7 @@ export const usePdfViewerStore = create<PdfViewerState>()(
       },
       
       resetSettings: () => {
-        set({ settings: initialSettings });
+        set({ settings: getInitialSettings() });
       },
     }),
     {
