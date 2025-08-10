@@ -51,9 +51,17 @@ export const usePdfViewerStore = create<PdfViewerState>()(
       },
       
       setViewMode: (viewMode: "single" | "grid") => {
-        set((state) => ({
-          settings: { ...state.settings, viewMode }
-        }));
+        set((state) => {
+          // When switching to grid view, automatically set reading mode to page
+          const newReadingMode = viewMode === "grid" ? "page" : state.settings.readingMode;
+          return {
+            settings: { 
+              ...state.settings, 
+              viewMode,
+              readingMode: newReadingMode
+            }
+          };
+        });
       },
       
       setReadingMode: (readingMode: "page" | "vertical") => {

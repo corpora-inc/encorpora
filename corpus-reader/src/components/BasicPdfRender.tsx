@@ -600,6 +600,7 @@ function BasicPdfRender() {
               <Button
                 variant="ghost"
                 size="sm"
+                disabled={readingMode === "vertical" || viewMode === "grid"}
                 onClick={cycleReadingMode}
                 className="h-8 w-8 p-0"
                 title={getReadingModeTitle()}
