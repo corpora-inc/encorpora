@@ -138,7 +138,7 @@ const FeaturedBookCard = ({ book }: { book: BookEntry }) => {
                   />
                 </div>
                 <p className="text-xs text-muted-foreground">
-                  {book.is_finished
+                  {book.is_finished === "true"
                     ? "🎉 Congratulations! You've finished this book."
                     : `Keep going! You're ${Math.round(
                         book.progress
