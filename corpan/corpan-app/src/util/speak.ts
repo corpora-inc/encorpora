@@ -121,16 +121,16 @@ const SPEAKER_MAP: Record<string, string> = {
 export function createVoiceTTS(langPrefix: string) {
     let candidateVoices: SpeechSynthesisVoice[] = [];
 
-    if (langPrefix === "fa") {
-        langPrefix = "ar"
-    }
-
     function refreshVoices() {
         console.log("ALL", window.speechSynthesis.getVoices());
+        let _langPrefix = langPrefix;
+        if (langPrefix === "fa") {
+            _langPrefix = "ar";
+        }
         const all = window.speechSynthesis
             .getVoices()
             .filter((v): v is SpeechSynthesisVoice =>
-                typeof v.lang === "string" && v.lang.startsWith(langPrefix)
+                typeof v.lang === "string" && v.lang.startsWith(_langPrefix)
             );
 
         // const premium = all.filter(
