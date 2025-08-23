@@ -24,5 +24,6 @@ serde = { version = "1", features = ["derive"] }
 serde_json = "1"
 rusqlite = { version = "0.35.0", features = ["bundled"] }
 # tauri-plugin-tts = { git = "https://github.com/httpjamesm/tauri-plugin-tts.git" }
-tauri-plugin-tts = { git = "https://github.com/skyl/tauri-plugin-tts.git", branch = "force-language-android" }
-# tauri-plugin-tts = { path = "/Users/skyl/Code/github/tauri-plugin-tts" }
+# tauri-plugin-tts = { git = "https://github.com/skyl/tauri-plugin-tts.git", branch = "force-language-android" }
+# tauri-plugin-tts = { git = "https://github.com/skyl/tauri-plugin-tts.git", branch = "ext-hack-swift" }
+tauri-plugin-tts = { path = "/Users/skyl/Code/github/tauri-plugin-tts" }
