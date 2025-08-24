@@ -20,7 +20,8 @@ def translate_and_save(
     batch_start = time.time()
 
     if provider == "local":
-        llm = load_llm_provider("local", completion_model="qwen3-30b-a3b-mlx")
+        # llm = load_llm_provider("local", completion_model="qwen3-30b-a3b-mlx")
+        llm = load_llm_provider("local", completion_model="google/gemma-3-27b")
     elif provider == "xai":
         llm = load_llm_provider("xai", completion_model="grok-3-mini")
     elif provider == "openai":
