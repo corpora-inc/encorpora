@@ -28,10 +28,10 @@ export function SettingsModal({
   const { t } = useTranslation();
 
   const dir = useSettingsStore((s) => s.dir);
-  const topLang = useSettingsStore((s) => s.topLang());
+  const primaryLang = useSettingsStore((s) => s.primaryLang());
   const setOnboarded = useSettingsStore((s) => s.setOnboarded);
   const setOnboardingStep = useSettingsStore((s) => s.setOnboardingStep);
-  console.log("new topLang", topLang);
+  console.log("new primaryLang", primaryLang);
 
   return (
     <Dialog open={open} onOpenChange={onClose}>

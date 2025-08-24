@@ -23,14 +23,14 @@ function LangChip({
   code,
   onRemove,
   isDragging,
-  isTop,
+  isPrimary,
   dragHandleProps,
   ...props
 }: {
   code: string;
   onRemove?: () => void;
   isDragging?: boolean;
-  isTop?: boolean;
+  isPrimary?: boolean;
   dragHandleProps?: any;
   [k: string]: any;
 }) {
@@ -40,7 +40,7 @@ function LangChip({
     <div
       className={`
                 flex items-center gap-1 px-3 py-1 rounded-lg border bg-white shadow-sm
-                ${isTop ? "bg-purple-50 border-purple-300" : ""}
+                ${isPrimary ? "bg-purple-50 border-purple-300" : ""}
                 ${isDragging ? "opacity-60 border-blue-400 shadow-lg" : ""}
                 select-none mb-1
             `}
@@ -78,7 +78,9 @@ export function LanguageSelectOrder() {
   const languages = useSettingsStore((s) => s.languages);
   const setLanguages = useSettingsStore((s) => s.setLanguages);
   const dir = useSettingsStore((s) => s.dir);
-  const { i18n } = useTranslation();
+  const { i18n, t } = useTranslation();
+
+  const displayedLanguages = [...languages].reverse();
 
   // DnD-kit
   const sensors = useSensors(useSensor(PointerSensor));
@@ -87,34 +89,36 @@ export function LanguageSelectOrder() {
   const handleDragEnd = (event: any) => {
     const { active, over } = event;
     if (over && active.id !== over.id) {
-      const oldIdx = languages.indexOf(active.id);
-      const newIdx = languages.indexOf(over.id);
+      const oldIdx = displayedLanguages.indexOf(active.id);
+      const newIdx = displayedLanguages.indexOf(over.id);
       if (oldIdx !== -1 && newIdx !== -1) {
-        const reordered = [...languages];
-        reordered.splice(oldIdx, 1);
-        reordered.splice(newIdx, 0, active.id);
-        setLanguages(reordered);
-        i18n.changeLanguage(reordered[0]);
+        const reorderedDisplayed = [...displayedLanguages];
+        reorderedDisplayed.splice(oldIdx, 1);
+        reorderedDisplayed.splice(newIdx, 0, active.id);
+        const newLanguages = [...reorderedDisplayed].reverse();
+        setLanguages(newLanguages);
+        i18n.changeLanguage(newLanguages[0]);
       }
     }
   };
 
   const handleRemove = (code: string) => {
-    // console.log("Removing language:", code);
-    // console.log("Current languages:", languages);
-    // console.log(languages.length)
     if (languages.length <= 1) return; // Don't allow removing last
-    setLanguages(languages.filter((c) => c !== code));
+    const newLanguages = languages.filter((c) => c !== code);
+    setLanguages(newLanguages);
+    i18n.changeLanguage(newLanguages[0]);
   };
 
   const handleAdd = (code: string) => {
-    if (!languages.includes(code)) setLanguages([...languages, code]);
+    if (!languages.includes(code)) {
+      const newLanguages = [...languages, code];
+      setLanguages(newLanguages);
+      i18n.changeLanguage(newLanguages[0]);
+    }
   };
 
   // Find unselected languages
   const available = ALL_LANGUAGES.filter((c) => !languages.includes(c));
-
-  const { t } = useTranslation();
 
   return (
     <div className="w-full">
@@ -145,16 +149,16 @@ export function LanguageSelectOrder() {
         }}
       >
         <SortableContext
-          items={languages}
+          items={displayedLanguages}
           strategy={verticalListSortingStrategy}
         >
           <div className="flex flex-col gap-1">
-            {languages.map((code, i) => (
+            {displayedLanguages.map((code, i) => (
               <SortableLangChip
                 key={code}
                 code={code}
                 onRemove={() => handleRemove(code)}
-                isTop={i === 0}
+                isPrimary={i === displayedLanguages.length - 1}
               />
             ))}
           </div>
@@ -196,11 +200,11 @@ export function LanguageSelectOrder() {
 function SortableLangChip({
   code,
   onRemove,
-  isTop,
+  isPrimary,
 }: {
   code: string;
   onRemove?: () => void;
-  isTop?: boolean;
+  isPrimary?: boolean;
 }) {
   const {
     attributes,
@@ -223,7 +227,7 @@ function SortableLangChip({
         code={code}
         onRemove={onRemove}
         isDragging={isDragging}
-        isTop={isTop}
+        isPrimary={isPrimary}
         dragHandleProps={listeners}
         {...attributes}
       />

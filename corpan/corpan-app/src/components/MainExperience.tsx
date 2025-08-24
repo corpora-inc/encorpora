@@ -96,6 +96,8 @@ export function MainExperience() {
         else fetchRandomEntry();
     };
 
+    const displayedLanguages = [...languages].reverse();
+
     return (
         <div className="flex flex-col flex-1 min-h-0 w-full items-center relative">
 
@@ -135,7 +137,7 @@ export function MainExperience() {
                     className="w-full max-w-4xl mx-auto flex flex-col items-center gap-y-7 my-auto"
                 >
 
-                    {languages.map((code, idx) => (
+                    {displayedLanguages.map((code, idx) => (
                         <motion.div
                             key={idx}
                             initial={{ opacity: 0, y: 16, scale: 0.98 }}

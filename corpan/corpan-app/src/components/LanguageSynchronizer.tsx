@@ -5,7 +5,7 @@ import { useSettingsStore } from "@/store/settings";
 const LanguageSynchronizer = ({ children }: { children: React.ReactNode }) => {
   const { i18n } = useTranslation();
   // Get the current language from the Zustand store
-  const language = useSettingsStore((state) => state.topLang);
+  const language = useSettingsStore((state) => state.primaryLang);
 
   // This useEffect will run whenever the 'language' in the store changes.
   useEffect(() => {

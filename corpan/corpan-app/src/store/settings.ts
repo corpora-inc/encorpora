@@ -30,7 +30,7 @@ type SettingsState = {
     setTextSize: (size: TextSizeType) => void;
     showRomanization: boolean;
     setShowRomanization: (val: boolean) => void;
-    topLang: () => string;
+    primaryLang: () => string;
     dir: () => "ltr" | "rtl";
 
     onboarded: boolean;
@@ -43,7 +43,7 @@ type SettingsState = {
 export const useSettingsStore = create<SettingsState>()(
     persist(
         (set, get) => ({
-            languages: ["en", "es", "pt-BR", "fr", "it", "ko-polite"],
+            languages: ["en", "es", "pt-BR", "fr", "it", "ko-polite"].reverse(),
             setLanguages: (codes) => set({ languages: codes }),
             domains: [...ALL_DOMAINS],
             setDomains: (domains) => set({ domains }),
@@ -51,7 +51,7 @@ export const useSettingsStore = create<SettingsState>()(
             setLevels: (levels) => set({ levels }),
             reset: () =>
                 set({
-                    languages: ["en", "es", "pt-BR", "fr", "it", "ko-polite"],
+                    languages: ["en", "es", "pt-BR", "fr", "it", "ko-polite"].reverse(),
                     domains: [...ALL_DOMAINS],
                     levels: ["A1"],
                     textSize: "medium", // Add textSize to reset
@@ -64,7 +64,7 @@ export const useSettingsStore = create<SettingsState>()(
             showRomanization: true,
             setShowRomanization: (val) => set({ showRomanization: val }),
 
-            topLang: () => get().languages[0],
+            primaryLang: () => get().languages[0],
 
             dir: () => {
                 const lang = get().languages[0];

@@ -12,17 +12,17 @@ export function OnboardingPickLearning() {
   const { t, i18n } = useTranslation();
   const dir = useSettingsStore((s) => s.dir);
 
-  // Primary at the BOTTOM
-  const primary = languages[languages.length - 1];
-  const learning = languages.slice(0, -1);
+  // Primary at the START
+  const primary = languages[0];
+  const learning = languages.slice(1);
   const choices = ALL_LANGUAGES.filter((code) => code !== primary);
 
   const toggleLearning = (code: string) => {
     const selected = learning.includes(code)
       ? learning.filter((c) => c !== code)
       : [...learning, code];
-    // Keep primary at the bottom
-    setLanguages([...selected, primary]);
+    // Keep primary at the start
+    setLanguages([primary, ...selected]);
   };
 
   const canProceed = learning.length > 0;
