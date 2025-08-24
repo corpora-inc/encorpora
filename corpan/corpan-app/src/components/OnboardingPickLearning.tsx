@@ -1,14 +1,15 @@
+import { useMemo } from "react";
 import { useSettingsStore, ALL_LANGUAGES } from "@/store/settings";
 import { ArrowRightCircle, ArrowLeftCircle, CheckCircle2 } from "lucide-react";
 import { ScrollIndicatorWrapper } from "./ScrollIndicatorWrapper";
 import { useTranslation } from "react-i18next";
-import { toCammelCase } from "@/util/convert";
+import { toCamelCase } from "@/util/convert";
 
 export function OnboardingPickLearning() {
   const setStep = useSettingsStore((s) => s.setOnboardingStep);
   const languages = useSettingsStore((s) => s.languages);
   const setLanguages = useSettingsStore((s) => s.setLanguages);
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const dir = useSettingsStore((s) => s.dir);
 
   const primary = languages[0];
@@ -16,13 +17,34 @@ export function OnboardingPickLearning() {
   const choices = ALL_LANGUAGES.filter((code) => code !== primary);
 
   const toggleLearning = (code: string) => {
-    let selected = learning.includes(code)
+    const selected = learning.includes(code)
       ? learning.filter((c) => c !== code)
       : [...learning, code];
     setLanguages([primary, ...selected]);
   };
 
   const canProceed = learning.length > 0;
+
+  // --- NEW: locale-aware sorting after translation ---
+  const sortedChoices = useMemo(() => {
+    // Use current UI language for collation; fall back to 'en'
+    const collator = new Intl.Collator(i18n.language || "en", {
+      sensitivity: "base",          // ignore accents/case for friendlier sort
+      ignorePunctuation: true,
+      numeric: true
+    });
+
+    // Precompute labels once to avoid calling t() inside the comparator repeatedly
+    const items = choices.map((code) => {
+      const key = `languages.${toCamelCase(code)}` as const;
+      // defaultValue ensures a stable fallback when a translation is missing
+      const label = t(key, { defaultValue: code }) as string;
+      return { code, label };
+    });
+
+    items.sort((a, b) => collator.compare(a.label, b.label));
+    return items;
+  }, [choices, t, i18n.language]);
 
   return (
     <div className="flex flex-col h-full w-full">
@@ -44,11 +66,10 @@ export function OnboardingPickLearning() {
         </div>
         <button
           className={`flex items-center justify-center rounded-full p-3 shadow transition
-                        ${
-                          canProceed
-                            ? "bg-black hover:bg-gray-900 text-white border border-purple-400"
-                            : "bg-gray-200 text-gray-400 border cursor-not-allowed"
-                        }`}
+                        ${canProceed
+              ? "bg-black hover:bg-gray-900 text-white border border-purple-400"
+              : "bg-gray-200 text-gray-400 border cursor-not-allowed"
+            }`}
           onClick={() => canProceed && setStep(3)}
           disabled={!canProceed}
           tabIndex={0}
@@ -56,11 +77,11 @@ export function OnboardingPickLearning() {
           <ArrowRightCircle size={30} />
         </button>
       </div>
+
       {/* Scrollable list with scroll indicators */}
       <div className="flex-1 min-h-0 w-full flex items-center justify-center">
         <ScrollIndicatorWrapper className="w-full max-w-xl flex flex-col gap-2 items-center px-2 pb-4 mx-auto">
-          {choices.map((code) => {
-            const label = t(`languages.${toCammelCase(code)}` as any) || code;
+          {sortedChoices.map(({ code, label }) => {
             const selected = learning.includes(code);
             return (
               <button
@@ -68,42 +89,30 @@ export function OnboardingPickLearning() {
                 onClick={() => toggleLearning(code)}
                 lang={code}
                 className={`
-                                    w-full px-5 py-4
-                                    rounded-2xl shadow
-                                    bg-white border border-gray-200
-                                    text-lg font-semibold text-gray-900
-                                    flex items-center justify-between
-                                    focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-400
-                                    hover:bg-gray-50 hover:border-purple-400
-                                    transition
-                                    ${
-                                      dir() === "rtl"
-                                        ? "text-right"
-                                        : "text-left"
-                                    }
-                                    break-words
-                                    select-text
-                                    ${
-                                      selected
-                                        ? "border-purple-500 bg-purple-50"
-                                        : ""
-                                    }
-                                `}
+                  w-full px-5 py-4
+                  rounded-2xl shadow
+                  bg-white border border-gray-200
+                  text-lg font-semibold text-gray-900
+                  flex items-center justify-between
+                  focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-400
+                  hover:bg-gray-50 hover:border-purple-400
+                  transition
+                  ${dir() === "rtl" ? "text-right" : "text-left"}
+                  break-words
+                  select-text
+                  ${selected ? "border-purple-500 bg-purple-50" : ""}
+                `}
                 style={{
                   minHeight: 56,
                   wordBreak: "break-word",
                   whiteSpace: "normal",
                   lineHeight: 1.25,
-                  // margin: "0 auto",
                 }}
                 dir={dir()}
               >
                 <span className="flex-1">{label}</span>
                 {selected ? (
-                  <CheckCircle2
-                    className="ml-4 shrink-0 text-purple-500"
-                    size={24}
-                  />
+                  <CheckCircle2 className="ml-4 shrink-0 text-purple-500" size={24} />
                 ) : (
                   <span className="ml-4 shrink-0 w-6 h-6" />
                 )}

@@ -16,7 +16,7 @@ import { CSS } from "@dnd-kit/utilities";
 import { Button } from "@/components/ui/button";
 import { GripVertical, Plus, X } from "lucide-react";
 import { useTranslation } from "react-i18next";
-import { toCammelCase } from "@/util/convert";
+import { toCamelCase } from "@/util/convert";
 // import i18n from "@/i18n";
 
 function LangChip({
@@ -57,7 +57,7 @@ function LangChip({
       >
         {/* {LANGUAGE_NAMES[code] || code} */}
         {/* TODO */}
-        {t(`languages.${toCammelCase(code)}` as any)}
+        {t(`languages.${toCamelCase(code)}` as any)}
       </span>
       {onRemove && (
         <button
@@ -176,7 +176,7 @@ export function LanguageSelectOrder() {
               >
                 <Plus size={15} />
                 <span className="mr-1" dir={dir()}>
-                  {t(`languages.${toCammelCase(code)}` as any) || code}
+                  {t(`languages.${toCamelCase(code)}` as any) || code}
                 </span>
               </Button>
             ))}

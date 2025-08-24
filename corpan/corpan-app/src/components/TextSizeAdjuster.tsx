@@ -6,7 +6,7 @@ import {
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { useTranslation } from "react-i18next";
-import { toCammelCase } from "@/util/convert";
+import { toCamelCase } from "@/util/convert";
 
 export function TextSizeAdjuster() {
   const textSize = useSettingsStore((s) => s.textSize);
@@ -29,7 +29,7 @@ export function TextSizeAdjuster() {
             onClick={() => setTextSize(size as TextSizeType)}
             className="capitalize"
           >
-            {t(`settings.${toCammelCase(size)}` as any) || size}
+            {t(`settings.${toCamelCase(size)}` as any) || size}
           </Button>
         ))}
       </div>

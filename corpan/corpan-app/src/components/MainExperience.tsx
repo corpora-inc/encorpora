@@ -16,7 +16,7 @@ import { useHistoryStore, EntryOut } from "@/store/history";
 import { createVoiceTTS } from "@/util/speak";
 import { useTranslation } from "react-i18next";
 
-import { toCammelCase } from "@/util/convert";
+import { toCamelCase } from "@/util/convert";
 
 // Lame but OK
 function getPlatformPadding() {
@@ -147,7 +147,7 @@ export function MainExperience() {
                             <div
                                 key={idx}
                                 className="text-xs text-gray-400 mb-1"
-                            >{t(`languages.${toCammelCase(code)}` as any) || code}</div>
+                            >{t(`languages.${toCamelCase(code)}` as any) || code}</div>
                             <div
                                 className="text-center text-xl md:text-2xl lg:text-3xl"
                                 style={{
