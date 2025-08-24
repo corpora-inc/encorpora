@@ -12,9 +12,10 @@ export function TextSizeAdjuster() {
   const textSize = useSettingsStore((s) => s.textSize);
   const setTextSize = useSettingsStore((s) => s.setTextSize);
   const { t } = useTranslation();
+  const dir = useSettingsStore((s) => s.dir);
 
   return (
-    <div className="py-4">
+    <div className="py-4" dir={dir()}>
       <Label
         htmlFor="text-size-adjuster"
         className="block text-sm font-medium text-gray-700 mb-2"
