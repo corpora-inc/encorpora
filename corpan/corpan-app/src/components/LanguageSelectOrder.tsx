@@ -17,6 +17,7 @@ import { Button } from "@/components/ui/button";
 import { GripVertical, Plus, X } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { toCammelCase } from "@/util/convert";
+// import i18n from "@/i18n";
 
 function LangChip({
   code,
@@ -77,6 +78,7 @@ export function LanguageSelectOrder() {
   const languages = useSettingsStore((s) => s.languages);
   const setLanguages = useSettingsStore((s) => s.setLanguages);
   const dir = useSettingsStore((s) => s.dir);
+  const { i18n } = useTranslation();
 
   // DnD-kit
   const sensors = useSensors(useSensor(PointerSensor));
@@ -92,6 +94,7 @@ export function LanguageSelectOrder() {
         reordered.splice(oldIdx, 1);
         reordered.splice(newIdx, 0, active.id);
         setLanguages(reordered);
+        i18n.changeLanguage(reordered[0]);
       }
     }
   };
