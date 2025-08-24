@@ -1,13 +1,14 @@
 import { useSettingsStore } from "@/store/settings";
 import { ArrowRightCircle, ArrowLeftCircle, ExternalLink } from "lucide-react";
 import { openUrl } from "@tauri-apps/plugin-opener";
+import { useTranslation } from "react-i18next";
 
 const ENCORPORA_URL = "https://encorpora.io";
 
 export function OnboardingFinish() {
     const setStep = useSettingsStore(s => s.setOnboardingStep);
     const setOnboarded = useSettingsStore(s => s.setOnboarded);
-    const t = useSettingsStore(s => s.t);
+    const { t } = useTranslation();
     const dir = useSettingsStore(s => s.dir);
 
     const handleVisit = async () => {
@@ -16,7 +17,7 @@ export function OnboardingFinish() {
             await openUrl(ENCORPORA_URL);
         } catch {
             await navigator.clipboard.writeText(ENCORPORA_URL);
-            alert(t("link_copied") + "\n" + ENCORPORA_URL);
+            alert(t("onboarding.linkCopied") + "\n" + ENCORPORA_URL);
         }
     };
 
@@ -36,7 +37,7 @@ export function OnboardingFinish() {
                     style={{ letterSpacing: 0.5 }}
                     dir={dir()}
                 >
-                    {t("welcome_title")}
+                    {t("onboarding.welcomeTitle")}
                 </div>
                 <button
                     className="flex items-center justify-center rounded-full p-3 shadow transition bg-black hover:bg-gray-900 text-white border border-purple-400"
@@ -50,7 +51,7 @@ export function OnboardingFinish() {
             <div className="flex flex-1 flex-col items-center justify-center px-6 pb-10 w-full">
                 <div className="w-full max-w-xl flex flex-col items-center mx-auto text-center">
                     <div className="text-lg text-gray-700" dir={dir()}>
-                        {t("welcome_body")}
+                        {t("onboarding.welcomeBody")}
                     </div>
                     <div className="mt-7 text-center">
                         <button
@@ -60,7 +61,7 @@ export function OnboardingFinish() {
                             tabIndex={0}
                             dir={dir()}
                         >
-                            {t("welcome_visit")}
+                            {t("onboarding.welcomeVisit")}
                             <ExternalLink size={18} />
                         </button>
                     </div>

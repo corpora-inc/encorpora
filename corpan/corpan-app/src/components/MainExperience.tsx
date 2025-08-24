@@ -14,7 +14,9 @@ import { Button } from "@/components/ui/button";
 import { useSettingsStore } from "@/store/settings";
 import { useHistoryStore, EntryOut } from "@/store/history";
 import { createVoiceTTS } from "@/util/speak";
-import { TranslationKey } from "@/store/translations";
+import { useTranslation } from "react-i18next";
+
+import { isRTL, toCamelCase } from "@/util/convert";
 
 // Lame but OK
 function getPlatformPadding() {
@@ -37,7 +39,7 @@ export function MainExperience() {
     const domains = useSettingsStore((s) => s.domains);
     const levels = useSettingsStore((s) => s.levels);
     const rate = useSettingsStore((s) => s.rate);
-    const t = useSettingsStore((s) => s.t);
+    const { t } = useTranslation()
     const textSize = useSettingsStore((s) => s.textSize);
     // console.log("textSize", textSize);
 
@@ -94,6 +96,8 @@ export function MainExperience() {
         else fetchRandomEntry();
     };
 
+    const displayedLanguages = [...languages].reverse();
+
     return (
         <div className="flex flex-col flex-1 min-h-0 w-full items-center relative">
 
@@ -112,7 +116,7 @@ export function MainExperience() {
                                 key={d}
                                 className="px-2 py-0.5 rounded-full border border-gray-200 bg-gray-50 text-xs"
                             >
-                                {t(d as TranslationKey) || d}
+                                {t(`categories.${d}` as any) || d}
                             </span>
                         ))}
                     </div>
@@ -133,7 +137,7 @@ export function MainExperience() {
                     className="w-full max-w-4xl mx-auto flex flex-col items-center gap-y-7 my-auto"
                 >
 
-                    {languages.map((code, idx) => (
+                    {displayedLanguages.map((code, idx) => (
                         <motion.div
                             key={idx}
                             initial={{ opacity: 0, y: 16, scale: 0.98 }}
@@ -145,7 +149,7 @@ export function MainExperience() {
                             <div
                                 key={idx}
                                 className="text-xs text-gray-400 mb-1"
-                            >{t(code as TranslationKey) || code}</div>
+                            >{t(`languages.${toCamelCase(code)}` as any) || code}</div>
                             <div
                                 className="text-center text-xl md:text-2xl lg:text-3xl"
                                 style={{
@@ -153,7 +157,7 @@ export function MainExperience() {
                                     maxWidth: "80vw",
                                     lineHeight: 1.15,
                                 }}
-                                dir={code === "ar" ? "rtl" : "ltr"}
+                                dir={isRTL(code) ? "rtl" : "ltr"}
                             >
                                 {textByLang[code] || <span className="opacity-30">—</span>}
                             </div>

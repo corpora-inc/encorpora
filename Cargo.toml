@@ -5,3 +5,4 @@ members = [
     "corpan/corpan-app/src-tauri",
     # "panko/pako/src-tauri",
 ]
+resolver = "2"

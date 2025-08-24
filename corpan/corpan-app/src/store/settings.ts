@@ -1,9 +1,5 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-import {
-    TRANSLATIONS,
-    TranslationKey,
-} from "./translations";
 import { RTL_LANGUAGES } from "./constants";
 
 export const ALL_LANGUAGES = [
@@ -34,8 +30,7 @@ type SettingsState = {
     setTextSize: (size: TextSizeType) => void;
     showRomanization: boolean;
     setShowRomanization: (val: boolean) => void;
-    topLang: () => string;
-    t: (key: TranslationKey) => string;
+    primaryLang: () => string;
     dir: () => "ltr" | "rtl";
 
     onboarded: boolean;
@@ -48,7 +43,7 @@ type SettingsState = {
 export const useSettingsStore = create<SettingsState>()(
     persist(
         (set, get) => ({
-            languages: ["en", "es", "pt-BR", "fr", "it", "ko-polite"],
+            languages: ["en", "es", "pt-BR", "fr", "it", "ko-polite"].reverse(),
             setLanguages: (codes) => set({ languages: codes }),
             domains: [...ALL_DOMAINS],
             setDomains: (domains) => set({ domains }),
@@ -56,7 +51,7 @@ export const useSettingsStore = create<SettingsState>()(
             setLevels: (levels) => set({ levels }),
             reset: () =>
                 set({
-                    languages: ["en", "es", "pt-BR", "fr", "it", "ko-polite"],
+                    languages: ["en", "es", "pt-BR", "fr", "it", "ko-polite"].reverse(),
                     domains: [...ALL_DOMAINS],
                     levels: ["A1"],
                     textSize: "medium", // Add textSize to reset
@@ -69,15 +64,8 @@ export const useSettingsStore = create<SettingsState>()(
             showRomanization: true,
             setShowRomanization: (val) => set({ showRomanization: val }),
 
-            topLang: () => get().languages[0],
+            primaryLang: () => get().languages[0],
 
-            t: (key) => {
-                const lang = get().languages[0];
-                const base = lang.split("-")[0] as keyof typeof TRANSLATIONS;
-                return TRANSLATIONS[lang as keyof typeof TRANSLATIONS]?.[key]
-                    ?? TRANSLATIONS[base]?.[key]
-                    ?? TRANSLATIONS.en[key];
-            },
             dir: () => {
                 const lang = get().languages[0];
                 const base = lang.split("-")[0];

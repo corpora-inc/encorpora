@@ -1,12 +1,13 @@
 import { useSettingsStore, ALL_LEVELS } from "@/store/settings";
 import { Button } from "@/components/ui/button";
+import { useTranslation } from "react-i18next";
 
 export function LevelsPicker() {
     const levels = useSettingsStore((s) => s.levels);
     const setLevels = useSettingsStore((s) => s.setLevels);
 
     const dir = useSettingsStore((s) => s.dir());
-    const t = useSettingsStore((s) => s.t);
+    const { t } = useTranslation()
 
     const allActive = levels.length === 0 || levels.length === ALL_LEVELS.length;
 
@@ -27,14 +28,14 @@ export function LevelsPicker() {
 
     return (
         <div className="w-full mt-3">
-            <div className="mb-2 font-semibold text-sm" dir={dir}>{t("Levels")}</div>
+            <div className="mb-2 font-semibold text-sm" dir={dir}>{t("settings.levels")}</div>
             <div className="flex gap-2 mb-3" dir={dir}>
                 <Button
                     size="sm"
                     variant={allActive ? "default" : "outline"}
                     onClick={handleSelectAll}
                 >
-                    {t("Select all")}
+                    {t("settings.selectAll")}
                 </Button>
             </div>
             <div className="flex flex-wrap gap-2" dir={dir}>
@@ -61,8 +62,8 @@ export function LevelsPicker() {
             </div>
             <div className="mt-2 text-xs text-gray-400" dir={dir}>
                 {allActive
-                    ? t("All levels included.")
-                    : `${levels.length} ${t("selected")}.`}
+                    ? t("settings.allLevelsIncluded")
+                    : `${levels.length} ${t("settings.selected")}.`}
             </div>
         </div>
     );
