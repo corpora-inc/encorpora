@@ -25,19 +25,16 @@ export function OnboardingPickLearning() {
 
   const canProceed = learning.length > 0;
 
-  // --- NEW: locale-aware sorting after translation ---
+  // Locale-aware sorting by translated label
   const sortedChoices = useMemo(() => {
-    // Use current UI language for collation; fall back to 'en'
     const collator = new Intl.Collator(i18n.language || "en", {
-      sensitivity: "base",          // ignore accents/case for friendlier sort
+      sensitivity: "base",
       ignorePunctuation: true,
-      numeric: true
+      numeric: true,
     });
 
-    // Precompute labels once to avoid calling t() inside the comparator repeatedly
     const items = choices.map((code) => {
       const key = `languages.${toCamelCase(code)}` as const;
-      // defaultValue ensures a stable fallback when a translation is missing
       const label = t(key, { defaultValue: code }) as string;
       return { code, label };
     });
@@ -47,7 +44,7 @@ export function OnboardingPickLearning() {
   }, [choices, t, i18n.language]);
 
   return (
-    <div className="flex flex-col h-full w-full">
+    <div className="flex flex-col flex-1 min-h-0 h-full w-full">
       {/* Header always on top */}
       <div className="w-full max-w-xl mx-auto flex flex-row items-center justify-between py-5 px-2">
         <button
@@ -66,7 +63,7 @@ export function OnboardingPickLearning() {
         </div>
         <button
           className={`flex items-center justify-center rounded-full p-3 shadow transition
-                        ${canProceed
+            ${canProceed
               ? "bg-black hover:bg-gray-900 text-white border border-purple-400"
               : "bg-gray-200 text-gray-400 border cursor-not-allowed"
             }`}
@@ -78,9 +75,9 @@ export function OnboardingPickLearning() {
         </button>
       </div>
 
-      {/* Scrollable list with scroll indicators */}
-      <div className="flex-1 min-h-0 w-full flex items-center justify-center">
-        <ScrollIndicatorWrapper className="w-full max-w-xl flex flex-col gap-2 items-center px-2 pb-4 mx-auto">
+      {/* Make the outer container the scroll area (like Pick Primary) */}
+      <ScrollIndicatorWrapper className="flex-1 min-h-0 w-full">
+        <div className="w-full max-w-xl flex flex-col gap-2 items-stretch px-2 pb-4 mx-auto">
           {sortedChoices.map(({ code, label }) => {
             const selected = learning.includes(code);
             return (
@@ -119,8 +116,8 @@ export function OnboardingPickLearning() {
               </button>
             );
           })}
-        </ScrollIndicatorWrapper>
-      </div>
+        </div>
+      </ScrollIndicatorWrapper>
     </div>
   );
 }

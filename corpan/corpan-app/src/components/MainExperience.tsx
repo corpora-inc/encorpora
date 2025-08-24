@@ -16,7 +16,7 @@ import { useHistoryStore, EntryOut } from "@/store/history";
 import { createVoiceTTS } from "@/util/speak";
 import { useTranslation } from "react-i18next";
 
-import { toCamelCase } from "@/util/convert";
+import { isRTL, toCamelCase } from "@/util/convert";
 
 // Lame but OK
 function getPlatformPadding() {
@@ -155,7 +155,7 @@ export function MainExperience() {
                                     maxWidth: "80vw",
                                     lineHeight: 1.15,
                                 }}
-                                dir={code === "ar" ? "rtl" : "ltr"}
+                                dir={isRTL(code) ? "rtl" : "ltr"}
                             >
                                 {textByLang[code] || <span className="opacity-30">—</span>}
                             </div>

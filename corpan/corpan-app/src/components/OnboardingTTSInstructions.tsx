@@ -5,6 +5,7 @@ import { useMemo } from "react";
 import { ScrollIndicatorWrapper } from "./ScrollIndicatorWrapper";
 import { createVoiceTTS } from "@/util/speak";
 import { useTranslation } from "react-i18next";
+import { isRTL } from "@/util/convert";
 
 const SAMPLES: Record<string, string> = {
     en: "Hello! This is what English sounds like.",
@@ -20,6 +21,9 @@ const SAMPLES: Record<string, string> = {
     tr: "Merhaba! Türkçe böyle duyulur.",
     ar: "مرحبًا! هكذا تبدو اللغة العربية.",
     hi: "नमस्ते! यह हिंदी की आवाज़ है।",
+    vi: "Xin chào! Đây là âm thanh của tiếng Việt.",
+    pl: "Cześć! Tak brzmi język polski.",
+    hu: "Szia! Így hangzik a magyar.",
     fa: "سلام! این صدای زبان فارسی است.",
 };
 
@@ -129,7 +133,7 @@ export function OnboardingTTSInstructions() {
                                         min-w-[140px]
                                         justify-center
                                     "
-                                    dir={code === "ar" ? "rtl" : "ltr"}
+                                    dir={isRTL(code) ? "rtl" : "ltr"}
                                 >
                                     <Volume2 size={20} className="text-purple-700" />
                                     <span className="truncate max-w-[100px]">
