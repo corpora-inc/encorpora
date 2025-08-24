@@ -11,7 +11,8 @@ export const BROWSER_TTS = "speechSynthesis" in window;
 
 export const SPEAKER_MAP: Record<string, string> = {
     en: "Tessa",
-    es: "Mónica",
+    // es: "Mónica",
+    es: "Paulina",
     zh: "Meijia",
     ar: "Majed",
     ru: "Milena",
@@ -61,9 +62,18 @@ export function createVoiceTTS(langPrefix: string) {
         if ("speechSynthesis" in window) {
             try {
                 const voices = getAllVoices();
+
+                // Log all voices
                 console.log(
                     `[TTS:${langPrefix}] available voices:`,
                     voices.map((v) => `${v.name} (${v.lang}${(v as any).default ? ", default" : ""})`)
+                );
+
+                // Log only those that match the given prefix
+                const matching = voices.filter((v) => isLangCompatible(v.lang, langPrefix));
+                console.log(
+                    `[TTS:${langPrefix}] matching voices for prefix "${langPrefix}":`,
+                    matching.map((v) => `${v.name} (${v.lang})`)
                 );
 
                 // Explicit narrowing – never returns a string
