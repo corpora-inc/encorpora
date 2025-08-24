@@ -48,6 +48,9 @@
         },
         "hu": {
           "type": "string"
+        },
+        "fa": {
+          "type": "string"
         }
       },
       "required": [
@@ -295,7 +298,10 @@
           "type": "string"
         }
       },
-      "required": ["loading", "instantPolyglotPractice"],
+      "required": [
+        "loading",
+        "instantPolyglotPractice"
+      ],
       "additionalProperties": false
     },
     "footer": {
