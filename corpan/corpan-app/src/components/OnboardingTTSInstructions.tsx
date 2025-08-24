@@ -20,6 +20,7 @@ const SAMPLES: Record<string, string> = {
     tr: "Merhaba! Türkçe böyle duyulur.",
     ar: "مرحبًا! هكذا تبدو اللغة العربية.",
     hi: "नमस्ते! यह हिंदी की आवाज़ है।",
+    fa: "سلام! این صدای زبان فارسی است.",
 };
 
 function getPlatformInfo() {

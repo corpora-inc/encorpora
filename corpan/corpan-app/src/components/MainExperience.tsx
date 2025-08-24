@@ -87,7 +87,7 @@ export function MainExperience() {
         textByLang["en"] = curr.en_text;
     }
 
-    console.log(showRomanization, romanizationByLang);
+    // console.log(showRomanization, romanizationByLang);
 
     // Navigation
     const handlePrev = () => index > 0 && setIndex(index - 1);

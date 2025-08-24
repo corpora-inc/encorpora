@@ -1,204 +1,129 @@
+// tts.ts
+// Priority:
+// 1) Preferred named voice from SPEAKER_MAP if present
+// 2) Any other compatible language voice
+// 3) If none: DO NOT use browser default — fall back to native invoke()
+// 4) If Web Speech API missing or errors: native invoke()
+
 import { invoke } from "@tauri-apps/api/core";
 
-export const BROWSER_TTS = "speechSynthesis" in window
+export const BROWSER_TTS = "speechSynthesis" in window;
 
-// static map of language codes to names
-const SPEAKER_MAP: Record<string, string> = {
-    // was working but then stopped?
-    // "en": "Ava",
-    // "en": "Daniel",
-    "en": "Tessa",
-    // "en": "Karen",
-    "es": "Mónica",
-    "zh": "Meijia",
-    "ar": "Majed",
-    "ru": "Milena",
-    // "it": "Rocko",
-    // "fr": "Thomas",
-    "fr": "Amélie",
-    "ja": "Kyoko",
-    "it": "Alice",
-    "de": "Anna",
-    "pt": "Luciana",
-    "hi": "Lekha",
-    // Why are these so terrible?
-    // "en": "Flo", XXXX
-    // "en": "Eddy", XXXX
-    //6
-    // "Flo (en-GB)"
-    // 7
-    // "Eddy (en-GB)"
-    // 8
-    // "Reed (en-GB)"
-    // 9
-    // "Sandy (en-GB)"
-    // 10
-    // "Moira (en-IE)"
-    // 11
-    // "Rishi (en-IN)"
-    // 12
-    // "Flo (en-US)"
-    // 13
-    // "Bahh (en-US)"
-    // 14
-    // "Albert (en-US)"
-    // 15
-    // "Fred (en-US)"
-    // 16
-    // "Jester (en-US)"
-    // 17
-    // "Organ (en-US)"
-    // 18
-    // "Cellos (en-US)"
-    // 19
-    // "Zarvox (en-US)"
-    // 20
-    // "Rocko (en-US)"
-    // 21
-    // "Shelley (en-US)"
-    // 22
-    // "Superstar (en-US)"
-    // 23
-    // "Grandma (en-US)"
-    // 24
-    // "Eddy (en-US)"
-    // 25
-    // "Bells (en-US)"
-    // 26
-    // "Grandpa (en-US)"
-    // 27
-    // "Trinoids (en-US)"
-    // 28
-    // "Kathy (en-US)"
-    // 29
-    // "Reed (en-US)"
-    // 30
-    // "Boing (en-US)"
-    // 31
-    // "Whisper (en-US)"
-    // 32
-    // "Good News (en-US)"
-    // 33
-    // "Wobble (en-US)"
-    // 34
-    // "Bad News (en-US)"
-    // 35
-    // "Bubbles (en-US)"
-    // 36
-    // "Samantha (en-US)"
-    // 37
-    // "Sandy (en-US)"
-    // 38
-    // "Junior (en-US)"
-    // 39
-    // "Ralph (en-US)"
-    // 40
-    // "Tessa (en-ZA)"
-    // 41
-    // "Moira (en-IE)"
-    // 42
-    // "Tessa (en-ZA)"
-    // 43
-    // "Karen (en-AU)"
-    // 44
-    // "Daniel (en-GB)"
-    // 45
-    // "Rishi (en-IN)"
-    // 46
-    // "Samantha (en-US)"
-    "ko": "Yuna",
+export const SPEAKER_MAP: Record<string, string> = {
+    en: "Tessa",
+    // es: "Mónica",
+    es: "Paulina",
+    zh: "Meijia",
+    ar: "Majed",
+    ru: "Milena",
+    fr: "Amélie",
+    ja: "Kyoko",
+    it: "Alice",
+    de: "Anna",
+    pt: "Luciana",
+    hi: "Lekha",
+    fa: "Dariush",
+    ko: "Yuna",
+};
+
+function baseLang(tag: string | undefined | null): string {
+    if (!tag) return "";
+    const t = tag.toLowerCase();
+    const i = t.indexOf("-");
+    return i === -1 ? t : t.slice(0, i);
 }
 
+function isLangCompatible(voiceLang: string | undefined, prefix: string): boolean {
+    if (!voiceLang) return false;
+    const v = voiceLang.toLowerCase();
+    const p = prefix.toLowerCase();
+    return v === p || v.startsWith(p + "-") || baseLang(v) === p;
+}
 
-
-
-/**
- * createVoiceTTS: Generic factory for a speak(text) function
- * that picks only high-quality voices for the given lang prefix
- * and then randomizes among them on each call. Falls back to
- * Tauri invoke('speak') if the Web Speech API isn’t available.
- */
 export function createVoiceTTS(langPrefix: string) {
-    let candidateVoices: SpeechSynthesisVoice[] = [];
-
-    function refreshVoices() {
-        const all = window.speechSynthesis
-            .getVoices()
-            .filter((v): v is SpeechSynthesisVoice =>
-                typeof v.lang === "string" && v.lang.startsWith(langPrefix)
-            );
-
-        // const premium = all.filter(
-        //     (v) => v.localService || /Neural|Enhanced|Premium/i.test(v.name)
-        // );
-
-        // candidateVoices = premium.length > 0 ? premium : all;
-
-        candidateVoices = all;
-        console.log(`[TTS:${langPrefix}] candidate voices:`, candidateVoices);
+    function getAllVoices(): SpeechSynthesisVoice[] {
+        try {
+            return "speechSynthesis" in window ? window.speechSynthesis.getVoices() || [] : [];
+        } catch {
+            return [];
+        }
     }
 
-    // Only wire up the Web Speech listeners if it's supported
     if ("speechSynthesis" in window) {
-        speechSynthesis.onvoiceschanged = refreshVoices;
-        refreshVoices();
+        window.speechSynthesis.onvoiceschanged = () => {
+            console.log(`[TTS:${langPrefix}] voiceschanged fired`);
+        };
     }
 
     return async function speak(text: string, rate: number = 0.7) {
-        console.log(`[TTS:${langPrefix}] speaking: ${text}`);
+        const preferredName = SPEAKER_MAP[langPrefix];
+        console.log(`[TTS:${langPrefix}] speaking: "${text}"`);
 
-        // If Web Speech is available and we have voices, use it
-        if (
-            "speechSynthesis" in window &&
-            candidateVoices.length > 0
-        ) {
-            // const voice =
-            //     candidateVoices.find((v) => v.name === "Yuna") ||
-            //     candidateVoices.find((v) => v.name === "Samantha") ||
-            //     candidateVoices[
-            //     Math.floor(Math.random() * candidateVoices.length)
-            //     ];
-
-            // if in SPEAKER_MAP, use that
-            // candidateVoices = candidateVoices.reverse();
-            let voice = candidateVoices.find((v) =>
-                v.name === SPEAKER_MAP[langPrefix]
-            );
-            if (!voice) {
-                console.warn(
-                    `[TTS:${langPrefix}] no voice found for ${SPEAKER_MAP[langPrefix]}`
-                );
-                voice =
-                    candidateVoices.find((v) => v.name === "Yuna") ||
-                    // candidateVoices.find((v) => v.name === "Samantha") ||
-                    // fallback to random
-                    candidateVoices[
-                    Math.floor(Math.random() * candidateVoices.length)
-                    ];
-            }
-            const utter = new SpeechSynthesisUtterance(text);
-            utter.voice = voice;
-            utter.lang = voice.lang;
-            utter.rate = rate;
-            console.log(`[TTS:${langPrefix}] speaking with ${voice.name}`);
-            speechSynthesis.speak(utter);
-        } else {
-            // Fallback to native mobile TTS via Tauri
-            console.warn(
-                `🚨 [TTS:${langPrefix}] falling back to native invoke('speak')`
-            );
+        if ("speechSynthesis" in window) {
             try {
+                const voices = getAllVoices();
+
+                // Log all voices
+                console.log(
+                    `[TTS:${langPrefix}] available voices:`,
+                    voices.map((v) => `${v.name} (${v.lang}${(v as any).default ? ", default" : ""})`)
+                );
+
+                // Log only those that match the given prefix
+                const matching = voices.filter((v) => isLangCompatible(v.lang, langPrefix));
+                console.log(
+                    `[TTS:${langPrefix}] matching voices for prefix "${langPrefix}":`,
+                    matching.map((v) => `${v.name} (${v.lang})`)
+                );
+
+                // Explicit narrowing – never returns a string
+                const named: SpeechSynthesisVoice | undefined = preferredName
+                    ? voices.find((v) => v.name === preferredName && isLangCompatible(v.lang, langPrefix))
+                    : undefined;
+
+                const compatible: SpeechSynthesisVoice | undefined =
+                    named ? undefined : voices.find((v) => isLangCompatible(v.lang, langPrefix));
+
+                // If we found a browser voice, use it.
+                if (named || compatible) {
+                    const chosen: SpeechSynthesisVoice = (named ?? compatible)!;
+                    const utter = new SpeechSynthesisUtterance(text);
+                    utter.voice = chosen;
+                    utter.lang = chosen.lang || langPrefix;
+                    utter.rate = rate;
+                    console.log(
+                        `[TTS:${langPrefix}] using ${named ? "preferred" : "compatible"} voice: ${chosen.name} (${chosen.lang})`
+                    );
+                    window.speechSynthesis.speak(utter);
+                    return;
+                }
+
+                // No compatible browser voice → go native immediately
+                console.warn(
+                    `[TTS:${langPrefix}] no compatible browser voice; falling back to native invoke('plugin:tts|speak'), ${rate}`
+                );
                 await invoke("plugin:tts|speak", {
-                    text: text,
-                    language: langPrefix,
+                    text,
+                    language: langPrefix, // e.g. "fa" — native side should resolve fa / fa-IR
+                    rate,
                 });
+                return;
             } catch (err) {
-                console.error("Native TTS invocation failed", err);
+                console.warn(`[TTS:${langPrefix}] Web Speech API error; falling back to native`, err);
+                // fall through to native below
             }
+        }
+
+        // Web Speech not available at all → native
+        try {
+            console.warn(`[TTS:${langPrefix}] no Web Speech; invoking native plugin ${rate}`);
+            await invoke("plugin:tts|speak", {
+                text,
+                language: langPrefix,
+                rate,
+            });
+        } catch (err) {
+            console.error(`[TTS:${langPrefix}] Native TTS invocation failed`, err);
         }
     };
 }
-
-// Export two instances:
-export const speakKO = createVoiceTTS("ko");
-export const speakEN = createVoiceTTS("en");
