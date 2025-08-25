@@ -1,58 +1,64 @@
-/* src/index.css */
-
-/* 1) Import all of Tailwind’s layers in the correct order */
+/* ──────────────────────────────────────────────────────────────────
+   1) Tailwind layers
+   ------------------------------------------------------------------ */
 @import "tailwindcss";
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
 
-/* 2) Simple global reset so we get full-height layout & no scrollbars */
+/* ──────────────────────────────────────────────────────────────────
+   2) Base sizing & layout
+   - Single height model (100dvh)
+   - No global overflow trap
+   - Children may scroll (use .scroll-area where needed)
+   ------------------------------------------------------------------ */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
 html,
 body,
 #root {
-    height: 100%;
     margin: 0;
-    overflow: hidden;
+    padding: 0;
+    height: 100dvh;
 }
 
-/* Apply base text size and allow overriding */
+#root {
+    /* Contains paints without blocking child scrolling */
+    overflow: clip;
+}
+
+.scroll-area {
+    overflow: auto;
+}
+
+/* Base font-size + opt-in text scale classes */
 body {
-    font-size: 16px; /* Default base size */
+    font-size: 16px;
 }
 
 .text-small {
-    font-size: 0.8rem; 
+    font-size: 0.8rem;
 }
 
 .text-medium {
-    font-size: 1rem; 
+    font-size: 1rem;
 }
 
 .text-large {
-    font-size: 1.2rem; 
+    font-size: 1.2rem;
 }
 
 .text-extra-large {
-    font-size: 1.5rem; 
+    font-size: 1.5rem;
 }
 
-html,
-body,
-#root,
-#app {
-    width: 100vw;
-    height: 100dvh;
-    min-width: 0;
-    min-height: 0;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    overflow: hidden;
-    /* Prevent double scrollbars, but not required */
-    position: relative;
-}
-
-
+/* ──────────────────────────────────────────────────────────────────
+   3) Theme tokens (kept from your file)
+   ------------------------------------------------------------------ */
 @theme inline {
     --radius-sm: calc(var(--radius) - 4px);
     --radius-md: calc(var(--radius) - 2px);
@@ -160,6 +166,7 @@ body,
     --sidebar-ring: oklch(0.556 0 0);
 }
 
+/* Tailwind base tokens hookup */
 @layer base {
     * {
         @apply border-border outline-ring/50;
@@ -168,4 +175,65 @@ body,
     body {
         @apply bg-background text-foreground;
     }
+}
+
+/* ──────────────────────────────────────────────────────────────────
+   4) Safe-area handling (plugin → env() → 0)
+   - Pads page content
+   - Auto-lifts any Tailwind `fixed bottom-0/top-0/...`
+   ------------------------------------------------------------------ */
+:root {
+    /* env() fallback values */
+    --safe-top: env(safe-area-inset-top, 0px);
+    --safe-right: env(safe-area-inset-right, 0px);
+    --safe-bottom: env(safe-area-inset-bottom, 0px);
+    --safe-left: env(safe-area-inset-left, 0px);
+
+    /* Prefer plugin-injected vars if present; otherwise use env() */
+    --inset-top: var(--safe-area-inset-top, var(--safe-top));
+    --inset-right: var(--safe-area-inset-right, var(--safe-right));
+    --inset-bottom: var(--safe-area-inset-bottom, var(--safe-bottom));
+    --inset-left: var(--safe-area-inset-left, var(--safe-left));
+}
+
+/* Pad page edges so long content never hides under bars/cutouts */
+body {
+    padding-top: var(--inset-top);
+    padding-right: var(--inset-right);
+    padding-bottom: var(--inset-bottom);
+    padding-left: var(--inset-left);
+}
+
+/* Auto-lift any Tailwind fixed elements anchored to screen edges */
+[class~="fixed"][class~="bottom-0"] {
+    bottom: max(0px, var(--inset-bottom));
+}
+
+[class~="fixed"][class~="top-0"] {
+    top: max(0px, var(--inset-top));
+}
+
+[class~="fixed"][class~="left-0"] {
+    left: max(0px, var(--inset-left));
+}
+
+[class~="fixed"][class~="right-0"] {
+    right: max(0px, var(--inset-right));
+}
+
+/* Optional utilities if you want to opt-in per-component */
+.pb-safe {
+    padding-bottom: var(--inset-bottom);
+}
+
+.pt-safe {
+    padding-top: var(--inset-top);
+}
+
+.pl-safe {
+    padding-left: var(--inset-left);
+}
+
+.pr-safe {
+    padding-right: var(--inset-right);
 }

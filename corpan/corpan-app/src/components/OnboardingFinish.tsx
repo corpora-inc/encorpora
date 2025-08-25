@@ -22,9 +22,12 @@ export function OnboardingFinish() {
     };
 
     return (
-        <div className="flex flex-col h-full w-full">
+        <div className="flex flex-col h-full w-full mt-15">
             {/* Header: Back / Title / Finish */}
-            <div className="w-full max-w-xl mx-auto flex flex-row items-center justify-between py-5 px-2">
+            <div className="w-full max-w-xl mx-auto flex flex-row items-center justify-between py-5 px-2"
+                style={{ height: 100 }}
+
+            >
                 <button
                     className="flex items-center justify-center bg-gray-200 hover:bg-gray-300 text-gray-700 rounded-full p-3 shadow transition border"
                     onClick={() => setStep(3)}

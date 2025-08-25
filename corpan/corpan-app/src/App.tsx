@@ -35,16 +35,18 @@ export default function App() {
     <>
       <div className={`flex flex-col min-h-0 h-screen w-full relative`}>
         <MainExperience />
-        <div className="fixed top-5 right-5 z-50">
+        <div className="fixed top-12 right-5 z-50">
           <div className="flex items-center gap-2">
             <Button
               variant="default"
-              size="icon"
+              // size="icon"
+              size="lg"
+              // size="sm"
               className="rounded-full shadow-lg bg-white border border-gray-200 hover:bg-gray-100 transition"
               aria-label="Settings"
               onClick={() => setShowSettings(true)}
             >
-              <SettingsIcon className="w-6 h-6 text-gray-600" />
+              <SettingsIcon className="text-gray-600" />
             </Button>
           </div>
         </div>

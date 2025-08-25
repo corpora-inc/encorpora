@@ -40,8 +40,8 @@ export function OnboardingPickPrimary() {
   }, [ALL_LANGUAGES.length]);
 
   return (
-    <div className="flex flex-col flex-1 min-h-0 h-full w-full">
-      <ScrollIndicatorWrapper className="flex-1 min-h-0" ref={containerRef}>
+    <div className="flex flex-col flex-1 min-h-0 h-full w-full mt-15">
+      <ScrollIndicatorWrapper className="flex-1 min-h-0 pb-10" ref={containerRef}>
         <div
           ref={wrapperRef}
           className={`
@@ -56,10 +56,10 @@ export function OnboardingPickPrimary() {
           {ALL_LANGUAGES.map((code) => {
             const label =
               TRANSLATIONS[code as keyof typeof TRANSLATIONS]?.[
-                "make primary language"
+              "make primary language"
               ] ||
               TRANSLATIONS[code as keyof typeof TRANSLATIONS]?.[
-                code as keyof (typeof TRANSLATIONS)["en"]
+              code as keyof (typeof TRANSLATIONS)["en"]
               ] ||
               code;
 

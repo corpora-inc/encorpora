@@ -18,12 +18,13 @@ crate-type = ["staticlib", "cdylib", "rlib"]
 tauri-build = { version = "2", features = [] }
 
 [dependencies]
-tauri = { version = "2", features = [] }
+tauri = { version = "2", features = ["wry"] }
+tauri-plugin-safe-area-insets-css = "0.2"
 tauri-plugin-opener = "2"
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"
 rusqlite = { version = "0.35.0", features = ["bundled"] }
 # tauri-plugin-tts = { git = "https://github.com/httpjamesm/tauri-plugin-tts.git" }
 # tauri-plugin-tts = { git = "https://github.com/skyl/tauri-plugin-tts.git", branch = "force-language-android" }
-tauri-plugin-tts = { git = "https://github.com/skyl/tauri-plugin-tts.git", branch = "ext-hack-swift" }
-# tauri-plugin-tts = { path = "/Users/skyl/Code/github/tauri-plugin-tts" }
+# tauri-plugin-tts = { git = "https://github.com/skyl/tauri-plugin-tts.git", branch = "ext-hack-swift" }
+tauri-plugin-tts = { path = "/Users/skyl/Code/github/tauri-plugin-tts" }

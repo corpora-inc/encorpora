@@ -20,9 +20,10 @@ import { isRTL, toCamelCase } from "@/util/convert";
 
 // Lame but OK
 function getPlatformPadding() {
-    if (/iPhone|iPad|iPod|iOS/i.test(navigator.userAgent)) {
-        return 240;
-    }
+    // if (/iPhone|iPad|iPod|iOS/i.test(navigator.userAgent)) {
+    //     return 180;
+    // }
+    // return 135;
     return 135;
 }
 
@@ -104,7 +105,7 @@ export function MainExperience() {
             {/* Floating domain/level stuff at top left */}
             {curr && (
                 <div
-                    className="fixed top-5 left-5 z-50 pointer-events-none"
+                    className="fixed top-15 left-5 z-50 pointer-events-none"
                     style={{ background: "transparent" }}
                 >
                     <div className="flex flex-wrap gap-1 items-center justify-center text-gray-400 text-xs mb-1">
@@ -194,7 +195,7 @@ export function MainExperience() {
                 </div>
             </div>
 
-            {/* Floating Nav + Level/Domains */}
+            {/* Floating Nav */}
             <div
                 className="fixed bottom-0 left-0 w-full flex justify-center pb-6 z-50 pointer-events-none"
                 style={{ background: "transparent" }
