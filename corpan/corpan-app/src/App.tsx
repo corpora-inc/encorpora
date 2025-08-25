@@ -35,7 +35,7 @@ export default function App() {
     <>
       <div className={`flex flex-col min-h-0 h-screen w-full relative`}>
         <MainExperience />
-        <div className="fixed top-12 right-5 z-50">
+        <div className="fixed top-17 right-5 z-50">
           <div className="flex items-center gap-2">
             <Button
               variant="default"
