@@ -42,14 +42,13 @@ body,
 #root,
 #app {
     width: 100vw;
-    height: 100dvh;
+    /* height: 100dvh; */
     min-width: 0;
     min-height: 0;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     overflow: hidden;
-    /* Prevent double scrollbars, but not required */
     position: relative;
 }
 
@@ -202,13 +201,11 @@ body {
    - Auto-lifts any Tailwind `fixed bottom-0/top-0/...`
    ------------------------------------------------------------------ */
 :root {
-    /* env() fallback values */
     --safe-top: env(safe-area-inset-top, 0px);
     --safe-right: env(safe-area-inset-right, 0px);
     --safe-bottom: env(safe-area-inset-bottom, 0px);
     --safe-left: env(safe-area-inset-left, 0px);
 
-    /* Prefer plugin-injected vars if present; otherwise use env() */
     --inset-top: var(--safe-area-inset-top, var(--safe-top));
     --inset-right: var(--safe-area-inset-right, var(--safe-right));
     --inset-bottom: var(--safe-area-inset-bottom, var(--safe-bottom));

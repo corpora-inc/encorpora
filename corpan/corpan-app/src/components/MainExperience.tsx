@@ -17,13 +17,16 @@ import { createVoiceTTS } from "@/util/speak";
 import { useTranslation } from "react-i18next";
 
 import { isRTL, toCamelCase } from "@/util/convert";
+import { isAndroid } from "@/util/browser";
 
 // Lame but OK
 function getPlatformPadding() {
     if (/iPhone|iPad|iPod|iOS/i.test(navigator.userAgent)) {
         return 220;
+    } if (/Android/i.test(navigator.userAgent)) {
+        return 170;
     }
-    return 135;
+    return 120;
 }
 
 // Even lamer but still fine
@@ -71,7 +74,7 @@ export function MainExperience() {
             if (scrollRef.current) {
                 scrollRef.current.scrollTo({ top: -200, behavior: "smooth" });
             }
-        }, 55);
+        }, 33);
     }, [index]);
 
     const curr = history[index] || null;
@@ -104,8 +107,12 @@ export function MainExperience() {
             {/* Floating domain/level stuff at top left */}
             {curr && (
                 <div
-                    className="fixed top-20 left-5 z-50 pointer-events-none"
-                    style={{ background: "transparent" }}
+                    className="fixed top-5 pt-safe left-5 z-50 pointer-events-none"
+                    style={{
+                        background: "transparent",
+                        marginTop: isAndroid() ? "20px" : 0,
+                    }}
+
                 >
                     <div className="flex flex-wrap gap-1 items-center justify-center text-gray-400 text-xs mb-1">
                         <span
@@ -125,9 +132,10 @@ export function MainExperience() {
 
             {/* Scrollable Translations */}
             <div
-                className="flex-1 w-full overflow-y-auto min-h-0 px-2 pt-16 flex flex-col"
+                className="flex-1 w-full overflow-y-auto min-h-0 px-2 pt-20 flex flex-col"
                 ref={scrollRef}
                 style={{
+                    marginTop: isAndroid() ? "20px" : undefined,
                     paddingBottom: `${getPlatformPadding() + paddingAdjustMap[textSize]}px`,
                 }}
             >
@@ -196,11 +204,12 @@ export function MainExperience() {
 
             {/* Floating Nav */}
             <div
-                className="fixed bottom-0 left-0 w-full flex justify-center pb-6 z-50 pointer-events-none"
-                style={{ background: "transparent" }
-                }
+                className="fixed bottom-0 left-0 w-full flex justify-center pb-5 z-50 pointer-events-none"
+                style={{ background: "transparent" }}
             >
-                <div className="flex flex-col gap-1 pointer-events-auto rounded-2xl shadow-2xl bg-white/95 px-8 py-3 border border-gray-200 items-center min-w-[280px]">
+                <div className="flex flex-col gap-1 pointer-events-auto rounded-2xl shadow-2xl bg-white/95 px-8 py-3 border border-gray-200 items-center min-w-[280px]"
+                    style={{ marginBottom: isAndroid() ? "39px" : 0 }}
+                >
                     <div className="flex justify-center items-center gap-8">
                         <Button
                             onClick={handlePrev}

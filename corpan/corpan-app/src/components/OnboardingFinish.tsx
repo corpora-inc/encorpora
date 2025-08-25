@@ -22,7 +22,7 @@ export function OnboardingFinish() {
     };
 
     return (
-        <div className="flex flex-col h-full w-full mt-15">
+        <div className="flex flex-col h-full w-full pt-safe my-3">
             {/* Header: Back / Title / Finish */}
             <div className="w-full max-w-xl mx-auto flex flex-row items-center justify-between py-5 px-2"
                 style={{ height: 100 }}
@@ -37,7 +37,7 @@ export function OnboardingFinish() {
                 </button>
                 <div
                     className="flex-1 text-center text-lg font-semibold text-gray-800 select-none px-2"
-                    style={{ letterSpacing: 0.5 }}
+                    style={{ letterSpacing: 0.25 }}
                     dir={dir()}
                 >
                     {t("onboarding.welcomeTitle")}

@@ -4,6 +4,28 @@ import { ArrowRightCircle } from "lucide-react";
 import { ScrollIndicatorWrapper } from "./ScrollIndicatorWrapper";
 import { useRef, useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
+import { isAndroid, isIOS } from "@/util/browser";
+
+
+function getPlatformTopPadding() {
+  if (isIOS()) {
+    return 55;
+  } if (isAndroid()) {
+    return 35;
+  }
+  return 0;
+}
+
+function getPlatformBottomPadding() {
+
+  if (isIOS()) {
+    return 0;
+  } if (isAndroid()) {
+    return 42;
+  }
+  return 0;
+}
+
 
 export function OnboardingPickPrimary() {
   const setStep = useSettingsStore((s) => s.setOnboardingStep);
@@ -40,17 +62,26 @@ export function OnboardingPickPrimary() {
   }, [ALL_LANGUAGES.length]);
 
   return (
-    <div className="flex flex-col flex-1 min-h-0 h-full w-full mt-15">
-      <ScrollIndicatorWrapper className="flex-1 min-h-0 pb-10" ref={containerRef}>
+    <div className="flex flex-col flex-1 min-h-0 w-full"
+      style={{
+        paddingTop: getPlatformTopPadding(),
+        paddingBottom: getPlatformBottomPadding(),
+        // marginBottom: "calc(var(--inset-bottom) * -4)",
+      }}
+    >
+      <ScrollIndicatorWrapper className="flex-1 min-h-0" ref={containerRef}>
         <div
           ref={wrapperRef}
           className={`
-                        w-full max-w-xl flex flex-col gap-2 items-stretch mx-auto py-2
+                        w-full max-w-xl flex flex-col gap-2 items-stretch mx-auto
                     `}
           style={{
             minHeight: 0,
             transform: `translateY(${offset}px)`,
             transition: "transform 0.35s cubic-bezier(.4,1.4,.5,1)",
+            padding: "20px 0",
+            // height: "100%",
+            // height: "100dvh",
           }}
         >
           {ALL_LANGUAGES.map((code) => {

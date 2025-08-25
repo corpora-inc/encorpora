@@ -6,6 +6,8 @@ import { MainExperience } from "./components/MainExperience";
 import { SettingsModal } from "./components/SettingsModal";
 import { Button } from "./components/ui/button";
 import "./index.css";
+import { isAndroid } from './util/browser';
+
 
 export default function App() {
   const [showSettings, setShowSettings] = useState(false);
@@ -35,7 +37,9 @@ export default function App() {
     <>
       <div className={`flex flex-col min-h-0 h-screen w-full relative`}>
         <MainExperience />
-        <div className="fixed top-17 right-5 z-50">
+        <div className="fixed top-3 pt-safe right-5 z-50"
+          style={{ marginTop: isAndroid() ? "18px" : 0 }}
+        >
           <div className="flex items-center gap-2">
             <Button
               variant="default"

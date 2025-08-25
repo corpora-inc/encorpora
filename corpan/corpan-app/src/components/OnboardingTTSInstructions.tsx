@@ -78,7 +78,7 @@ export function OnboardingTTSInstructions() {
     };
 
     return (
-        <div className="flex flex-col h-full w-full mt-15">
+        <div className="flex flex-col h-full w-full pt-safe my-3">
             {/* Header nav always on top */}
             <div className="w-full max-w-xl mx-auto flex flex-row items-center justify-between py-5 px-2"
                 style={{ height: 100 }}
@@ -92,7 +92,7 @@ export function OnboardingTTSInstructions() {
                 </button>
                 <div
                     className="flex-1 text-center text-lg font-semibold text-gray-800 select-none px-2"
-                    style={{ letterSpacing: 0.5 }}
+                    style={{ letterSpacing: 0.25 }}
                     dir={dir()}
                 >
                     {t("onboarding.textToSpeechSetup")}
@@ -109,7 +109,7 @@ export function OnboardingTTSInstructions() {
             </div>
 
             {/* Main scrollable content with scroll indicators */}
-            <div className="flex-1 flex flex-col items-center justify-center min-h-0 w-full overflow-y-auto my-10">
+            <div className="flex-1 flex flex-col items-center justify-center min-h-0 w-full overflow-y-auto mb-10">
                 <ScrollIndicatorWrapper
                     className="w-full max-w-xl flex flex-col items-center mx-auto"
                 >

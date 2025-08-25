@@ -46,7 +46,7 @@ export function OnboardingPickLearning() {
   }, [choices, t, i18n.language]);
 
   return (
-    <div className="flex flex-col flex-1 min-h-0 h-full w-full mt-15">
+    <div className="flex flex-col flex-1 min-h-0 h-full w-full pt-safe my-3">
       {/* Header always on top */}
       <div className="w-full max-w-xl mx-auto flex flex-row items-center justify-between py-5 px-2"
         style={{ height: 100 }}
