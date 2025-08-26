@@ -24,7 +24,7 @@ export function getPlatformBottomPadding() {
     if (/iPhone|iPad|iPod|iOS/i.test(navigator.userAgent)) {
         return 180;
     } if (/Android/i.test(navigator.userAgent)) {
-        return 220;
+        return 190;
     }
     return 170;
 }
@@ -33,7 +33,7 @@ export function getPlatformTopPaddingButtons() {
     if (/iPhone|iPad|iPod|iOS/i.test(navigator.userAgent)) {
         return 55;
     } if (/Android/i.test(navigator.userAgent)) {
-        return 100;
+        return 10;
     }
     return 0;
 }
@@ -42,7 +42,7 @@ export function getPlatformTopPaddingTranslations() {
     if (/iPhone|iPad|iPod|iOS/i.test(navigator.userAgent)) {
         return 150;
     } if (/Android/i.test(navigator.userAgent)) {
-        return 12;
+        return 110;
     }
     return 75;
 }
@@ -228,7 +228,7 @@ export function MainExperience() {
                 className="fixed bottom-0 left-0 w-full flex justify-center z-50 pointer-events-none"
                 style={{
                     background: "transparent",
-                    paddingBottom: getPlatformBottomPadding() / 5,
+                    paddingBottom: getPlatformBottomPadding() / 6,
                 }}
             >
                 <div className="flex flex-col gap-1 pointer-events-auto rounded-2xl shadow-2xl bg-white/95 px-8 py-3 border border-gray-200 items-center min-w-[280px]"
