@@ -17,7 +17,6 @@ function getPlatformTopPadding() {
 }
 
 function getPlatformBottomPadding() {
-
   if (isIOS()) {
     return 0;
   } if (isAndroid()) {
@@ -62,19 +61,21 @@ export function OnboardingPickPrimary() {
   }, [ALL_LANGUAGES.length]);
 
   return (
-    <div className="flex flex-col flex-1 min-h-0 w-full"
+    <div className="flex flex-col flex-1 min-h-0 w-full h-full"
       style={{
-        paddingTop: getPlatformTopPadding(),
-        paddingBottom: getPlatformBottomPadding(),
+        // paddingTop: getPlatformTopPadding(),
+        // paddingBottom: getPlatformBottomPadding(),
         // marginBottom: "calc(var(--inset-bottom) * -4)",
+        // marginBottom: "-200px",
+        // paddingBottom: "200px"
+        // marginTop: "200px",
+        // paddingTop: "500px",
       }}
     >
       <ScrollIndicatorWrapper className="flex-1 min-h-0" ref={containerRef}>
         <div
           ref={wrapperRef}
-          className={`
-                        w-full max-w-xl flex flex-col gap-2 items-stretch mx-auto
-                    `}
+          className="w-full max-w-xl flex flex-col gap-2 items-stretch mx-auto"
           style={{
             minHeight: 0,
             transform: `translateY(${offset}px)`,

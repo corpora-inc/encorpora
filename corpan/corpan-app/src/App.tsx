@@ -2,7 +2,7 @@ import { useSettingsStore, ALL_TEXT_SIZES } from "@/store/settings";
 import { OnboardingWizard } from "@/components/OnboardingWizard";
 import { SettingsIcon } from "lucide-react";
 import { useState, useEffect } from "react";
-import { MainExperience } from "./components/MainExperience";
+import { getPlatformTopPaddingButtons, MainExperience } from "./components/MainExperience";
 import { SettingsModal } from "./components/SettingsModal";
 import { Button } from "./components/ui/button";
 import "./index.css";
@@ -38,7 +38,7 @@ export default function App() {
       <div className={`flex flex-col min-h-0 h-screen w-full relative`}>
         <MainExperience />
         <div className="fixed top-3 pt-safe right-5 z-50"
-          style={{ marginTop: isAndroid() ? "18px" : 0 }}
+          style={{ marginTop: getPlatformTopPaddingButtons() - 3 }}
         >
           <div className="flex items-center gap-2">
             <Button

@@ -91,7 +91,7 @@ export function OnboardingTTSInstructions() {
                     <ArrowLeftCircle size={30} />
                 </button>
                 <div
-                    className="flex-1 text-center text-lg font-semibold text-gray-800 select-none px-2"
+                    className="flex-1 text-center text-sm font-semibold text-gray-800 select-none px-2"
                     style={{ letterSpacing: 0.25 }}
                     dir={dir()}
                 >

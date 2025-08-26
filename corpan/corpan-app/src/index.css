@@ -43,6 +43,7 @@ body,
 #app {
     width: 100vw;
     /* height: 100dvh; */
+    /* height: 20%; */
     min-width: 0;
     min-height: 0;
     margin: 0;
@@ -200,7 +201,7 @@ body {
    - Pads page content
    - Auto-lifts any Tailwind `fixed bottom-0/top-0/...`
    ------------------------------------------------------------------ */
-:root {
+/* :root {
     --safe-top: env(safe-area-inset-top, 0px);
     --safe-right: env(safe-area-inset-right, 0px);
     --safe-bottom: env(safe-area-inset-bottom, 0px);
@@ -210,18 +211,19 @@ body {
     --inset-right: var(--safe-area-inset-right, var(--safe-right));
     --inset-bottom: var(--safe-area-inset-bottom, var(--safe-bottom));
     --inset-left: var(--safe-area-inset-left, var(--safe-left));
-}
+} */
 
 /* Pad page edges so long content never hides under bars/cutouts */
-body {
-    padding-top: var(--inset-top);
-    padding-right: var(--inset-right);
-    padding-bottom: var(--inset-bottom);
-    padding-left: var(--inset-left);
-}
+/* body { */
+/* padding-top: var(--inset-top); */
+/* padding-right: var(--inset-right); */
+/* padding-bottom: var(--inset-bottom); */
+/* padding-bottom: 500px; */
+/* padding-left: var(--inset-left); */
+/* } */
 
 /* Auto-lift any Tailwind fixed elements anchored to screen edges */
-[class~="fixed"][class~="bottom-0"] {
+/* [class~="fixed"][class~="bottom-0"] {
     bottom: max(0px, var(--inset-bottom));
 }
 
@@ -235,7 +237,7 @@ body {
 
 [class~="fixed"][class~="right-0"] {
     right: max(0px, var(--inset-right));
-}
+} */
 
 /* Optional utilities if you want to opt-in per-component */
 .pb-safe {

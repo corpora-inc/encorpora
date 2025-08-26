@@ -46,7 +46,7 @@ export function OnboardingPickLearning() {
   }, [choices, t, i18n.language]);
 
   return (
-    <div className="flex flex-col flex-1 min-h-0 h-full w-full pt-safe my-3">
+    <div className="flex flex-col flex-1 min-h-0 h-full w-full my-3">
       {/* Header always on top */}
       <div className="w-full max-w-xl mx-auto flex flex-row items-center justify-between py-5 px-2"
         style={{ height: 100 }}
@@ -59,7 +59,7 @@ export function OnboardingPickLearning() {
           <ArrowLeftCircle size={30} />
         </button>
         <div
-          className="flex-1 text-center text-lg font-semibold text-gray-800 select-none px-1"
+          className="flex-1 text-center text-sm font-semibold text-gray-800 select-none px-1"
           style={{ letterSpacing: 0.25 }}
           dir={dir()}
         >

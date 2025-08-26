@@ -19,14 +19,32 @@ import { useTranslation } from "react-i18next";
 import { isRTL, toCamelCase } from "@/util/convert";
 import { isAndroid } from "@/util/browser";
 
-// Lame but OK
-function getPlatformPadding() {
+
+export function getPlatformBottomPadding() {
     if (/iPhone|iPad|iPod|iOS/i.test(navigator.userAgent)) {
-        return 220;
+        return 180;
     } if (/Android/i.test(navigator.userAgent)) {
-        return 170;
+        return 220;
     }
-    return 120;
+    return 170;
+}
+
+export function getPlatformTopPaddingButtons() {
+    if (/iPhone|iPad|iPod|iOS/i.test(navigator.userAgent)) {
+        return 55;
+    } if (/Android/i.test(navigator.userAgent)) {
+        return 100;
+    }
+    return 20;
+}
+
+export function getPlatformTopPaddingTranslations() {
+    if (/iPhone|iPad|iPod|iOS/i.test(navigator.userAgent)) {
+        return 150;
+    } if (/Android/i.test(navigator.userAgent)) {
+        return 12;
+    }
+    return 0;
 }
 
 // Even lamer but still fine
@@ -110,7 +128,7 @@ export function MainExperience() {
                     className="fixed top-5 pt-safe left-5 z-50 pointer-events-none"
                     style={{
                         background: "transparent",
-                        marginTop: isAndroid() ? "20px" : 0,
+                        marginTop: getPlatformTopPaddingButtons(),
                     }}
 
                 >
@@ -128,15 +146,18 @@ export function MainExperience() {
                         ))}
                     </div>
                 </div>
-            )}
+            )
+            }
 
             {/* Scrollable Translations */}
             <div
                 className="flex-1 w-full overflow-y-auto min-h-0 px-2 pt-20 flex flex-col"
                 ref={scrollRef}
                 style={{
-                    marginTop: isAndroid() ? "20px" : undefined,
-                    paddingBottom: `${getPlatformPadding() + paddingAdjustMap[textSize]}px`,
+                    // marginTop: isAndroid() ? "20px" : undefined,
+                    // paddingBottom: `${getPlatformPadding() + paddingAdjustMap[textSize]}px`,
+                    paddingBottom: `${getPlatformBottomPadding()}px`,
+                    paddingTop: `${getPlatformTopPaddingTranslations()}px`,
                 }}
             >
 
@@ -204,8 +225,11 @@ export function MainExperience() {
 
             {/* Floating Nav */}
             <div
-                className="fixed bottom-0 left-0 w-full flex justify-center pb-5 z-50 pointer-events-none"
-                style={{ background: "transparent" }}
+                className="fixed bottom-0 left-0 w-full flex justify-center z-50 pointer-events-none"
+                style={{
+                    background: "transparent",
+                    paddingBottom: getPlatformBottomPadding() / 5,
+                }}
             >
                 <div className="flex flex-col gap-1 pointer-events-auto rounded-2xl shadow-2xl bg-white/95 px-8 py-3 border border-gray-200 items-center min-w-[280px]"
                     style={{ marginBottom: isAndroid() ? "39px" : 0 }}
@@ -241,6 +265,6 @@ export function MainExperience() {
                     </span>
                 </div>
             </div>
-        </div>
+        </div >
     );
 }
