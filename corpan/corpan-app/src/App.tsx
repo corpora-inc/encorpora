@@ -6,7 +6,6 @@ import { getPlatformTopPaddingButtons, MainExperience } from "./components/MainE
 import { SettingsModal } from "./components/SettingsModal";
 import { Button } from "./components/ui/button";
 import "./index.css";
-import { isAndroid } from './util/browser';
 
 
 export default function App() {

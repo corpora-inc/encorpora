@@ -35,7 +35,7 @@ export function getPlatformTopPaddingButtons() {
     } if (/Android/i.test(navigator.userAgent)) {
         return 100;
     }
-    return 20;
+    return 0;
 }
 
 export function getPlatformTopPaddingTranslations() {
@@ -44,7 +44,7 @@ export function getPlatformTopPaddingTranslations() {
     } if (/Android/i.test(navigator.userAgent)) {
         return 12;
     }
-    return 0;
+    return 75;
 }
 
 // Even lamer but still fine
