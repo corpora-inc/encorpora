@@ -47,13 +47,13 @@ export function getPlatformTopPaddingTranslations() {
     return 75;
 }
 
-// Even lamer but still fine
-const paddingAdjustMap: Record<string, number> = {
-    "small": -5,
-    "medium": 25,
-    "large": 50,
-    "extra-large": 75,
-}
+// // Even lamer but still fine
+// const paddingAdjustMap: Record<string, number> = {
+//     "small": -5,
+//     "medium": 25,
+//     "large": 50,
+//     "extra-large": 75,
+// }
 
 export function MainExperience() {
     const languages = useSettingsStore((s) => s.languages);
@@ -61,7 +61,7 @@ export function MainExperience() {
     const levels = useSettingsStore((s) => s.levels);
     const rate = useSettingsStore((s) => s.rate);
     const { t } = useTranslation()
-    const textSize = useSettingsStore((s) => s.textSize);
+    // const textSize = useSettingsStore((s) => s.textSize);
     // console.log("textSize", textSize);
 
     const showRomanization = useSettingsStore((s) => s.showRomanization);

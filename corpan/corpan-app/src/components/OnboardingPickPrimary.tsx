@@ -4,26 +4,6 @@ import { ArrowRightCircle } from "lucide-react";
 import { ScrollIndicatorWrapper } from "./ScrollIndicatorWrapper";
 import { useRef, useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import { isAndroid, isIOS } from "@/util/browser";
-
-
-function getPlatformTopPadding() {
-  if (isIOS()) {
-    return 55;
-  } if (isAndroid()) {
-    return 35;
-  }
-  return 0;
-}
-
-function getPlatformBottomPadding() {
-  if (isIOS()) {
-    return 0;
-  } if (isAndroid()) {
-    return 42;
-  }
-  return 0;
-}
 
 
 export function OnboardingPickPrimary() {
