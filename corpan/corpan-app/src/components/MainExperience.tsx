@@ -205,7 +205,10 @@ export function MainExperience() {
                                 </div>
                                 {/* Render romanization if enabled and available */}
                                 {showRomanization && romanizationByLang[code] && (
-                                    <div className="text-center text-base text-gray-400 italic mt-1 select-text">
+                                    <div className="text-center text-base text-gray-400 italic mt-1 select-text"
+                                        style={{ maxWidth: "80vw", wordBreak: "break-word" }}
+
+                                    >
                                         {romanizationByLang[code]}
                                     </div>
                                 )}
