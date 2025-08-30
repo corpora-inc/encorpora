@@ -26,7 +26,7 @@ export function getPlatformBottomPadding() {
     } if (/Android/i.test(navigator.userAgent)) {
         return 190;
     }
-    return 170;
+    return 180;
 }
 
 export function getPlatformTopPaddingButtons() {
