@@ -45,7 +45,7 @@ export function SettingsModal({
                 "
         style={{
           paddingBottom: "2rem",
-          paddingTop: "3rem",
+          paddingTop: "5rem",
         }}
         id="settings-modal-content"
       >

@@ -22,9 +22,12 @@ export function OnboardingFinish() {
     };
 
     return (
-        <div className="flex flex-col h-full w-full">
+        <div className="flex flex-col h-full w-full pt-safe my-3">
             {/* Header: Back / Title / Finish */}
-            <div className="w-full max-w-xl mx-auto flex flex-row items-center justify-between py-5 px-2">
+            <div className="w-full max-w-xl mx-auto flex flex-row items-center justify-between py-5 px-2"
+                style={{ height: 100 }}
+
+            >
                 <button
                     className="flex items-center justify-center bg-gray-200 hover:bg-gray-300 text-gray-700 rounded-full p-3 shadow transition border"
                     onClick={() => setStep(3)}
@@ -33,8 +36,8 @@ export function OnboardingFinish() {
                     <ArrowLeftCircle size={30} />
                 </button>
                 <div
-                    className="flex-1 text-center text-lg font-semibold text-gray-800 select-none px-2"
-                    style={{ letterSpacing: 0.5 }}
+                    className="flex-1 text-center text-sm font-semibold text-gray-800 select-none px-2"
+                    style={{ letterSpacing: 0.25 }}
                     dir={dir()}
                 >
                     {t("onboarding.welcomeTitle")}

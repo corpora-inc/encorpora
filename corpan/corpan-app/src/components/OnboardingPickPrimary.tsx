@@ -5,6 +5,7 @@ import { ScrollIndicatorWrapper } from "./ScrollIndicatorWrapper";
 import { useRef, useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
+
 export function OnboardingPickPrimary() {
   const setStep = useSettingsStore((s) => s.setOnboardingStep);
   const setLanguages = useSettingsStore((s) => s.setLanguages);
@@ -40,26 +41,37 @@ export function OnboardingPickPrimary() {
   }, [ALL_LANGUAGES.length]);
 
   return (
-    <div className="flex flex-col flex-1 min-h-0 h-full w-full">
+    <div className="flex flex-col flex-1 min-h-0 w-full h-full"
+      style={{
+        // paddingTop: getPlatformTopPadding(),
+        // paddingBottom: getPlatformBottomPadding(),
+        // marginBottom: "calc(var(--inset-bottom) * -4)",
+        // marginBottom: "-200px",
+        // paddingBottom: "200px"
+        // marginTop: "200px",
+        // paddingTop: "500px",
+      }}
+    >
       <ScrollIndicatorWrapper className="flex-1 min-h-0" ref={containerRef}>
         <div
           ref={wrapperRef}
-          className={`
-                        w-full max-w-xl flex flex-col gap-2 items-stretch mx-auto py-2
-                    `}
+          className="w-full max-w-xl flex flex-col gap-2 items-stretch mx-auto"
           style={{
             minHeight: 0,
             transform: `translateY(${offset}px)`,
             transition: "transform 0.35s cubic-bezier(.4,1.4,.5,1)",
+            padding: "20px 0",
+            // height: "100%",
+            // height: "100dvh",
           }}
         >
           {ALL_LANGUAGES.map((code) => {
             const label =
               TRANSLATIONS[code as keyof typeof TRANSLATIONS]?.[
-                "make primary language"
+              "make primary language"
               ] ||
               TRANSLATIONS[code as keyof typeof TRANSLATIONS]?.[
-                code as keyof (typeof TRANSLATIONS)["en"]
+              code as keyof (typeof TRANSLATIONS)["en"]
               ] ||
               code;
 

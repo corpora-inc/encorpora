@@ -46,9 +46,11 @@ export function OnboardingPickLearning() {
   }, [choices, t, i18n.language]);
 
   return (
-    <div className="flex flex-col flex-1 min-h-0 h-full w-full">
+    <div className="flex flex-col flex-1 min-h-0 h-full w-full my-3">
       {/* Header always on top */}
-      <div className="w-full max-w-xl mx-auto flex flex-row items-center justify-between py-5 px-2">
+      <div className="w-full max-w-xl mx-auto flex flex-row items-center justify-between py-5 px-2"
+        style={{ height: 100 }}
+      >
         <button
           className="flex items-center justify-center bg-gray-200 hover:bg-gray-300 text-gray-700 rounded-full p-3 shadow transition border"
           onClick={() => setStep(1)}
@@ -57,8 +59,8 @@ export function OnboardingPickLearning() {
           <ArrowLeftCircle size={30} />
         </button>
         <div
-          className="flex-1 text-center text-lg font-semibold text-gray-800 select-none px-2"
-          style={{ letterSpacing: 0.5 }}
+          className="flex-1 text-center text-sm font-semibold text-gray-800 select-none px-1"
+          style={{ letterSpacing: 0.25 }}
           dir={dir()}
         >
           {t("onboarding.pickLanguagesToLearn")}
@@ -79,7 +81,7 @@ export function OnboardingPickLearning() {
 
       {/* Make the outer container the scroll area (like Pick Primary) */}
       <ScrollIndicatorWrapper className="flex-1 min-h-0 w-full">
-        <div className="w-full max-w-xl flex flex-col gap-2 items-stretch px-2 pb-4 mx-auto">
+        <div className="w-full max-w-xl flex flex-col gap-2 items-stretch px-2 pb-10 mx-auto">
           {sortedChoices.map(({ code, label }) => {
             const selected = learning.includes(code);
             return (
@@ -111,7 +113,7 @@ export function OnboardingPickLearning() {
               >
                 <span className="flex-1">{label}</span>
                 {selected ? (
-                  <CheckCircle2 className="ml-4 shrink-0 text-purple-500" size={24} />
+                  <CheckCircle2 className="ml-4 shrink-0 w-6 h-6 text-purple-500" size={24} />
                 ) : (
                   <span className="ml-4 shrink-0 w-6 h-6" />
                 )}

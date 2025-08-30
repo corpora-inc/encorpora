@@ -2,7 +2,7 @@ import { useSettingsStore } from "@/store/settings";
 import { Slider } from "@/components/ui/slider";
 import { Button } from "@/components/ui/button";
 import { useMemo } from "react";
-import { BROWSER_TTS } from "@/util/speak";
+// import { BROWSER_TTS } from "@/util/speak";
 import { useTranslation } from "react-i18next";
 
 const BUTTONS = [
@@ -21,10 +21,10 @@ export function RateAdjuster() {
     // Keep slider and rate in sync
     const sliderValue = useMemo(() => [rate], [rate]);
 
-    // tauri-plugin-tts doesn't have a rate option right now
-    if (!BROWSER_TTS) {
-        return null;
-    }
+    // // tauri-plugin-tts doesn't have a rate option right now
+    // if (!BROWSER_TTS) {
+    //     return null;
+    // }
 
     return (
         <div className="mt-1 w-full">

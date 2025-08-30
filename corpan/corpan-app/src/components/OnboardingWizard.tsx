@@ -10,9 +10,6 @@ import { OnboardingFinish } from "./OnboardingFinish";
 export function OnboardingWizard() {
     const step = useSettingsStore(s => s.onboardingStep);
 
-    // const setStep = useSettingsStore(s => s.setOnboardingStep);
-    // setStep(0); // Reset step to 0 on mount
-
     return (
         <WizardShell>
             {step === 0 && <OnboardingWelcome />}

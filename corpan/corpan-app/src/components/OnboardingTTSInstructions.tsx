@@ -78,9 +78,11 @@ export function OnboardingTTSInstructions() {
     };
 
     return (
-        <div className="flex flex-col h-full w-full">
+        <div className="flex flex-col h-full w-full pt-safe my-3">
             {/* Header nav always on top */}
-            <div className="w-full max-w-xl mx-auto flex flex-row items-center justify-between py-5 px-2">
+            <div className="w-full max-w-xl mx-auto flex flex-row items-center justify-between py-5 px-2"
+                style={{ height: 100 }}
+            >
                 <button
                     className="flex items-center justify-center bg-gray-200 hover:bg-gray-300 text-gray-700 rounded-full p-3 shadow transition border"
                     onClick={() => setStep(2)}
@@ -89,8 +91,8 @@ export function OnboardingTTSInstructions() {
                     <ArrowLeftCircle size={30} />
                 </button>
                 <div
-                    className="flex-1 text-center text-lg font-semibold text-gray-800 select-none px-2"
-                    style={{ letterSpacing: 0.5 }}
+                    className="flex-1 text-center text-sm font-semibold text-gray-800 select-none px-2"
+                    style={{ letterSpacing: 0.25 }}
                     dir={dir()}
                 >
                     {t("onboarding.textToSpeechSetup")}
@@ -107,9 +109,9 @@ export function OnboardingTTSInstructions() {
             </div>
 
             {/* Main scrollable content with scroll indicators */}
-            <div className="flex-1 flex flex-col items-center justify-center min-h-0 w-full overflow-y-auto">
+            <div className="flex-1 flex flex-col items-center justify-center min-h-0 w-full overflow-y-auto mb-10">
                 <ScrollIndicatorWrapper
-                    className="w-full max-w-xl flex flex-col gap-7 items-center mx-auto"
+                    className="w-full max-w-xl flex flex-col items-center mx-auto"
                 >
                     <div className="flex flex-col gap-7 max-w-lg w-full items-center mt-10">
                         <div className="text-lg text-gray-800 text-center select-none" dir={dir()}>
