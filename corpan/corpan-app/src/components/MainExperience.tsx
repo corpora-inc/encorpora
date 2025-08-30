@@ -163,7 +163,7 @@ export function MainExperience() {
 
                 <div
                     key={index}
-                    className="w-full max-w-4xl mx-auto flex flex-col items-center gap-y-7 my-auto"
+                    className="w-full max-w-4xl mx-auto flex flex-col items-center gap-y-9 my-auto"
                 >
 
                     {displayedLanguages.map((code, idx) => (
@@ -174,19 +174,22 @@ export function MainExperience() {
                             exit={{ opacity: 0, y: 8, scale: 0.98 }}
                             transition={{ duration: 0.28, delay: idx * 0.04, ease: "easeOut" }}
                             className="w-full flex flex-col items-center"
-                            onClick={() => {
-                                const langPrefix = code.split("-")[0];
-                                createVoiceTTS(langPrefix)(
-                                    textByLang[code],
-                                    rate,
-                                );
-                            }}
+
 
                         >
                             <motion.div
-                                whileTap={{ scale: 0.95 }}
+                                whileTap={{ scale: 0.97 }}
                                 transition={{ type: "spring", stiffness: 300, damping: 17 }}
                                 className="text-center"
+                                // Add style for pointer on hover:
+                                style={{ cursor: "pointer" }}
+                                onClick={() => {
+                                    const langPrefix = code.split("-")[0];
+                                    createVoiceTTS(langPrefix)(
+                                        textByLang[code],
+                                        rate,
+                                    );
+                                }}
                             >
                                 <div
                                     key={idx}
@@ -197,7 +200,7 @@ export function MainExperience() {
                                     style={{
                                         wordBreak: "break-word",
                                         maxWidth: "80vw",
-                                        lineHeight: 1.2,
+                                        lineHeight: 1.1,
                                     }}
                                     dir={isRTL(code) ? "rtl" : "ltr"}
                                 >
@@ -205,8 +208,12 @@ export function MainExperience() {
                                 </div>
                                 {/* Render romanization if enabled and available */}
                                 {showRomanization && romanizationByLang[code] && (
-                                    <div className="text-center text-sm text-base text-gray-400 italic mt-1 mb-2 select-text"
-                                        style={{ maxWidth: "80vw", wordBreak: "break-word", lineHeight: 0.8 }}
+                                    <div className="text-center text-sm text-base text-gray-400 italic mt-1 mb-1 select-text"
+                                        style={{
+                                            maxWidth: "80vw",
+                                            wordBreak: "break-word",
+                                            // lineHeight: 0.95,
+                                        }}
                                     >
                                         {romanizationByLang[code]}
                                     </div>
@@ -214,9 +221,10 @@ export function MainExperience() {
 
 
                                 <Button
-                                    // className="mt-1"
+                                    className="mt-1"
                                     size="sm"
                                     variant="outline"
+                                    style={{ cursor: "pointer" }}
                                 >
                                     <Speaker className="w-3 h-3" />
                                     <AudioLines className="w-3 h-3" />
