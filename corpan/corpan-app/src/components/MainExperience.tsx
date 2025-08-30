@@ -26,7 +26,7 @@ export function getPlatformBottomPadding() {
     } if (/Android/i.test(navigator.userAgent)) {
         return 190;
     }
-    return 170;
+    return 180;
 }
 
 export function getPlatformTopPaddingButtons() {
@@ -174,41 +174,44 @@ export function MainExperience() {
                             exit={{ opacity: 0, y: 8, scale: 0.98 }}
                             transition={{ duration: 0.28, delay: idx * 0.04, ease: "easeOut" }}
                             className="w-full flex flex-col items-center"
-                        >
-                            <div
-                                key={idx}
-                                className="text-xs text-gray-400 mb-1"
-                            >{t(`languages.${toCamelCase(code)}` as any) || code}</div>
-                            <div
-                                className="text-center text-xl md:text-2xl lg:text-3xl"
-                                style={{
-                                    wordBreak: "break-word",
-                                    maxWidth: "80vw",
-                                    lineHeight: 1.15,
-                                }}
-                                dir={isRTL(code) ? "rtl" : "ltr"}
-                            >
-                                {textByLang[code] || <span className="opacity-30">—</span>}
-                            </div>
-                            {/* Render romanization if enabled and available */}
-                            {showRomanization && romanizationByLang[code] && (
-                                <div className="text-center text-base text-gray-400 italic mt-1 select-text">
-                                    {romanizationByLang[code]}
-                                </div>
-                            )}
+                            onClick={() => {
+                                const langPrefix = code.split("-")[0];
+                                createVoiceTTS(langPrefix)(
+                                    textByLang[code],
+                                    rate,
+                                );
+                            }}
 
+                        >
                             <motion.div
                                 whileTap={{ scale: 0.95 }}
                                 transition={{ type: "spring", stiffness: 300, damping: 17 }}
+                                className="text-center"
                             >
-                                <Button
-                                    onClick={() => {
-                                        const langPrefix = code.split("-")[0];
-                                        createVoiceTTS(langPrefix)(
-                                            textByLang[code],
-                                            rate,
-                                        );
+                                <div
+                                    key={idx}
+                                    className="text-xs text-gray-400 mb-1"
+                                >{t(`languages.${toCamelCase(code)}` as any) || code}</div>
+                                <div
+                                    className="text-center text-xl md:text-2xl lg:text-3xl"
+                                    style={{
+                                        wordBreak: "break-word",
+                                        maxWidth: "80vw",
+                                        lineHeight: 1.15,
                                     }}
+                                    dir={isRTL(code) ? "rtl" : "ltr"}
+                                >
+                                    {textByLang[code] || <span className="opacity-30">—</span>}
+                                </div>
+                                {/* Render romanization if enabled and available */}
+                                {showRomanization && romanizationByLang[code] && (
+                                    <div className="text-center text-base text-gray-400 italic mt-1 select-text">
+                                        {romanizationByLang[code]}
+                                    </div>
+                                )}
+
+
+                                <Button
                                     className="mt-2"
                                     size="sm"
                                     variant="outline"

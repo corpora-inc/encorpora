@@ -1,30 +1,42 @@
 // tts.ts
-// Priority:
-// 1) Preferred named voice from SPEAKER_MAP if present
-// 2) Any other compatible language voice
-// 3) If none: DO NOT use browser default — fall back to native invoke()
-// 4) If Web Speech API missing or errors: native invoke()
+// Strategy:
+// - If we're running in Tauri *and* UA says macOS, iOS, or Android → use the native TTS plugin.
+// - Otherwise → use the browser Web Speech API (pick the first compatible voice for the langPrefix).
+//
+// Notes:
+// - No named voice preferences; users pick voices at the OS level.
+// - Native plugin contract: invoke("plugin:tts|speak", { text, language, rate })
+// - This version avoids importing @tauri-apps/api/os; it relies on navigator.userAgent.
 
 import { invoke } from "@tauri-apps/api/core";
 
-export const BROWSER_TTS = "speechSynthesis" in window;
+type UAOS = "macos" | "ios" | "android" | "other";
 
-export const SPEAKER_MAP: Record<string, string> = {
-    en: "Tessa",
-    // es: "Mónica",
-    es: "Paulina",
-    zh: "Meijia",
-    ar: "Majed",
-    ru: "Milena",
-    fr: "Amélie",
-    ja: "Kyoko",
-    it: "Alice",
-    de: "Anna",
-    pt: "Luciana",
-    hi: "Lekha",
-    fa: "Dariush",
-    ko: "Yuna",
-};
+function detectOSFromUA(): UAOS {
+    const ua = (typeof navigator !== "undefined" && navigator.userAgent) ? navigator.userAgent : "";
+
+    // iOS (including iPadOS Safari)
+    if (/iPhone|iPad|iPod/i.test(ua)) return "ios";
+    // Android
+    if (/Android/i.test(ua)) return "android";
+    // macOS (avoid misclassifying iOS Safari on iPad that sometimes reports "Mac")
+    if (/Macintosh/i.test(ua) && !/Mobile\/\w+ Safari/i.test(ua)) return "macos";
+    return "other";
+}
+
+async function preferNativeTTS(): Promise<boolean> {
+    // Only prefer native if we're in Tauri *and* UA is macOS/iOS/Android
+    const os = detectOSFromUA();
+    return os === "macos" || os === "ios" || os === "android";
+}
+
+export const BROWSER_TTS = (() => {
+    try {
+        return typeof window !== "undefined" && "speechSynthesis" in window;
+    } catch {
+        return false;
+    }
+})();
 
 function baseLang(tag: string | undefined | null): string {
     if (!tag) return "";
@@ -40,90 +52,94 @@ function isLangCompatible(voiceLang: string | undefined, prefix: string): boolea
     return v === p || v.startsWith(p + "-") || baseLang(v) === p;
 }
 
-export function createVoiceTTS(langPrefix: string) {
-    function getAllVoices(): SpeechSynthesisVoice[] {
-        try {
-            return "speechSynthesis" in window ? window.speechSynthesis.getVoices() || [] : [];
-        } catch {
-            return [];
-        }
-    }
+// Wait briefly for voices to populate (common on some browsers)
+async function awaitVoices(timeoutMs = 500): Promise<SpeechSynthesisVoice[]> {
+    if (!BROWSER_TTS) return [];
+    const voicesNow = window.speechSynthesis.getVoices();
+    if (voicesNow && voicesNow.length > 0) return voicesNow;
 
-    if ("speechSynthesis" in window) {
+    return new Promise((resolve) => {
+        let done = false;
+        const finish = (result: SpeechSynthesisVoice[]) => {
+            if (done) return;
+            done = true;
+            resolve(result);
+        };
+
+        const timer = setTimeout(() => {
+            finish(window.speechSynthesis.getVoices() || []);
+        }, timeoutMs);
+
+        const handler = () => {
+            clearTimeout(timer);
+            window.speechSynthesis.removeEventListener("voiceschanged", handler);
+            finish(window.speechSynthesis.getVoices() || []);
+        };
+
+        window.speechSynthesis.addEventListener("voiceschanged", handler);
+        // Trigger loading
+        window.speechSynthesis.getVoices();
+    });
+}
+
+async function speakNative(text: string, langPrefix: string, rate: number) {
+    await invoke("plugin:tts|speak", {
+        text,
+        language: langPrefix, // e.g. 'fa' or 'fa-IR' resolved natively
+        rate,
+    });
+}
+
+async function speakBrowser(text: string, langPrefix: string, rate: number) {
+    if (!BROWSER_TTS) throw new Error("Web Speech API not available");
+
+    const voices = await awaitVoices();
+    const compatible = voices.find((v) => isLangCompatible(v.lang, langPrefix));
+
+    const utter = new SpeechSynthesisUtterance(text);
+    if (compatible) {
+        utter.voice = compatible;
+        utter.lang = compatible.lang || langPrefix;
+    } else {
+        // No compatible voice—still set lang; browser may fallback reasonably.
+        utter.lang = langPrefix;
+    }
+    utter.rate = rate;
+
+    window.speechSynthesis.speak(utter);
+}
+
+export function createVoiceTTS(langPrefix: string) {
+    if (BROWSER_TTS) {
         window.speechSynthesis.onvoiceschanged = () => {
-            console.log(`[TTS:${langPrefix}] voiceschanged fired`);
+            // eslint-disable-next-line no-console
+            console.log(`[TTS:${langPrefix}] voiceschanged (${window.speechSynthesis.getVoices().length} voices)`);
         };
     }
 
     return async function speak(text: string, rate: number = 0.7) {
-        const preferredName = SPEAKER_MAP[langPrefix];
-        console.log(`[TTS:${langPrefix}] speaking: "${text}"`);
-
-        if ("speechSynthesis" in window) {
-            try {
-                const voices = getAllVoices();
-
-                // Log all voices
-                console.log(
-                    `[TTS:${langPrefix}] available voices:`,
-                    voices.map((v) => `${v.name} (${v.lang}${(v as any).default ? ", default" : ""})`)
-                );
-
-                // Log only those that match the given prefix
-                const matching = voices.filter((v) => isLangCompatible(v.lang, langPrefix));
-                console.log(
-                    `[TTS:${langPrefix}] matching voices for prefix "${langPrefix}":`,
-                    matching.map((v) => `${v.name} (${v.lang})`)
-                );
-
-                // Explicit narrowing – never returns a string
-                const named: SpeechSynthesisVoice | undefined = preferredName
-                    ? voices.find((v) => v.name === preferredName && isLangCompatible(v.lang, langPrefix))
-                    : undefined;
-
-                const compatible: SpeechSynthesisVoice | undefined =
-                    named ? undefined : voices.find((v) => isLangCompatible(v.lang, langPrefix));
-
-                // If we found a browser voice, use it.
-                if (named || compatible) {
-                    const chosen: SpeechSynthesisVoice = (named ?? compatible)!;
-                    const utter = new SpeechSynthesisUtterance(text);
-                    utter.voice = chosen;
-                    utter.lang = chosen.lang || langPrefix;
-                    utter.rate = rate;
-                    console.log(
-                        `[TTS:${langPrefix}] using ${named ? "preferred" : "compatible"} voice: ${chosen.name} (${chosen.lang})`
-                    );
-                    window.speechSynthesis.speak(utter);
-                    return;
-                }
-
-                // No compatible browser voice → go native immediately
-                console.warn(
-                    `[TTS:${langPrefix}] no compatible browser voice; falling back to native invoke('plugin:tts|speak'), ${rate}`
-                );
-                await invoke("plugin:tts|speak", {
-                    text,
-                    language: langPrefix, // e.g. "fa" — native side should resolve fa / fa-IR
-                    rate,
-                });
+        // 1) Prefer native on macOS/iOS/Android when in Tauri (UA-based).
+        try {
+            if (await preferNativeTTS()) {
+                // eslint-disable-next-line no-console
+                console.log(`[TTS:${langPrefix}] Using native TTS plugin`);
+                await speakNative(text, langPrefix, rate);
                 return;
-            } catch (err) {
-                console.warn(`[TTS:${langPrefix}] Web Speech API error; falling back to native`, err);
-                // fall through to native below
             }
+        } catch (err) {
+            // eslint-disable-next-line no-console
+            console.warn(`[TTS:${langPrefix}] Native-preference check failed; will try browser`, err);
         }
 
-        // Web Speech not available at all → native
+        // 2) Otherwise, try browser Web Speech.
         try {
-            console.warn(`[TTS:${langPrefix}] no Web Speech; invoking native plugin ${rate}`);
-            await invoke("plugin:tts|speak", {
-                text,
-                language: langPrefix,
-                rate,
-            });
+            // eslint-disable-next-line no-console
+            console.log(`[TTS:${langPrefix}] Using browser Web Speech API`);
+            await speakBrowser(text, langPrefix, rate);
+            return;
         } catch (err) {
-            console.error(`[TTS:${langPrefix}] Native TTS invocation failed`, err);
+            // eslint-disable-next-line no-console
+            console.warn(`[TTS:${langPrefix}] Browser TTS failed`, err);
         }
     };
 }
