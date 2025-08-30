@@ -190,14 +190,14 @@ export function MainExperience() {
                             >
                                 <div
                                     key={idx}
-                                    className="text-xs text-gray-400 mb-1"
+                                    className="text-xs text-gray-400"
                                 >{t(`languages.${toCamelCase(code)}` as any) || code}</div>
                                 <div
-                                    className="text-center text-xl md:text-2xl lg:text-3xl"
+                                    className="text-center text-xl md:text-2xl lg:text-3xl my-1"
                                     style={{
                                         wordBreak: "break-word",
                                         maxWidth: "80vw",
-                                        lineHeight: 1.15,
+                                        lineHeight: 1.2,
                                     }}
                                     dir={isRTL(code) ? "rtl" : "ltr"}
                                 >
@@ -205,9 +205,8 @@ export function MainExperience() {
                                 </div>
                                 {/* Render romanization if enabled and available */}
                                 {showRomanization && romanizationByLang[code] && (
-                                    <div className="text-center text-base text-gray-400 italic mt-1 select-text"
-                                        style={{ maxWidth: "80vw", wordBreak: "break-word" }}
-
+                                    <div className="text-center text-sm text-base text-gray-400 italic mt-1 mb-2 select-text"
+                                        style={{ maxWidth: "80vw", wordBreak: "break-word", lineHeight: 0.8 }}
                                     >
                                         {romanizationByLang[code]}
                                     </div>
@@ -215,13 +214,13 @@ export function MainExperience() {
 
 
                                 <Button
-                                    className="mt-2"
+                                    // className="mt-1"
                                     size="sm"
                                     variant="outline"
                                 >
-                                    <Speaker className="w-4 h-4" />
-                                    <AudioLines className="w-4 h-4" />
-                                    <Ear className="w-4 h-4" />
+                                    <Speaker className="w-3 h-3" />
+                                    <AudioLines className="w-3 h-3" />
+                                    <Ear className="w-3 h-3" />
                                 </Button>
                             </motion.div>
                         </motion.div>
