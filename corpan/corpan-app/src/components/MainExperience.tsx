@@ -174,12 +174,9 @@ export function MainExperience() {
                             exit={{ opacity: 0, y: 8, scale: 0.98 }}
                             transition={{ duration: 0.28, delay: idx * 0.04, ease: "easeOut" }}
                             className="w-full flex flex-col items-center"
-
-
                         >
-                            <motion.div
-                                whileTap={{ scale: 0.97 }}
-                                transition={{ type: "spring", stiffness: 300, damping: 17 }}
+                            <div
+
                                 className="text-center"
                                 // Add style for pointer on hover:
                                 style={{ cursor: "pointer" }}
@@ -220,17 +217,22 @@ export function MainExperience() {
                                 )}
 
 
-                                <Button
-                                    className="mt-1"
-                                    size="sm"
-                                    variant="outline"
-                                    style={{ cursor: "pointer" }}
+                                <motion.div
+                                    whileTap={{ scale: 0.9 }}
+                                    transition={{ type: "spring", stiffness: 133, damping: 7 }}
                                 >
-                                    <Speaker className="w-3 h-3" />
-                                    <AudioLines className="w-3 h-3" />
-                                    <Ear className="w-3 h-3" />
-                                </Button>
-                            </motion.div>
+                                    <Button
+                                        className="mt-1"
+                                        size="sm"
+                                        variant="outline"
+                                        style={{ cursor: "pointer" }}
+                                    >
+                                        <Speaker className="w-3 h-3" />
+                                        <AudioLines className="w-3 h-3" />
+                                        <Ear className="w-3 h-3" />
+                                    </Button>
+                                </motion.div>
+                            </div>
                         </motion.div>
                     ))}
                 </div>
