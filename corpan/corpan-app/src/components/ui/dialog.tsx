@@ -4,6 +4,13 @@ import { XIcon } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 
+import {
+  // getPlatformBottomPadding,
+  getPlatformTopPaddingButtons,
+  // getPlatformTopPaddingTranslations,
+  // isAndroid,
+} from "@/util/browser";
+
 function Dialog({
   ...props
 }: React.ComponentProps<typeof DialogPrimitive.Root>) {
@@ -60,11 +67,21 @@ function DialogContent({
         )}
         {...props}
       >
-        {children}
-        <DialogPrimitive.Close className="ring-offset-background focus:ring-ring data-[state=open]:bg-accent data-[state=open]:text-muted-foreground absolute top-17 right-7 rounded-xs opacity-70 transition-opacity hover:opacity-100 focus:ring-2 focus:ring-offset-2 focus:outline-hidden disabled:pointer-events-none [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4">
-          <XIcon className="size-10" />
+        {/* Move Close BEFORE children and make it sticky */}
+        <DialogPrimitive.Close
+          // className="sticky top-0 z-1001 ml-auto inline-flex items-center justify-center rounded-md border bg-background p-1 shadow-sm cursor-pointer transition-all hover:shadow-md hover:bg-accent/5 focus:outline-hidden focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none pointer-events-auto"
+          className="sticky top-0 z-[1001] ml-auto inline-flex items-center justify-center rounded-md border bg-background p-1 shadow-sm cursor-pointer transition-all hover:shadow-md hover:bg-background focus:outline-hidden focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none pointer-events-auto"
+        >
+          <XIcon className="size-10"
+            style={{
+              marginTop: getPlatformTopPaddingButtons(),
+            }}
+
+          />
           <span className="sr-only">Close</span>
         </DialogPrimitive.Close>
+
+        {children}
       </DialogPrimitive.Content>
     </DialogPortal>
   )
