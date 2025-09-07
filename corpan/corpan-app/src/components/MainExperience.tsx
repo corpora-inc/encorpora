@@ -196,7 +196,8 @@ export function MainExperience() {
 
                                 <motion.div
                                     whileTap={{ scale: 0.9 }}
-                                    transition={{ type: "spring", stiffness: 133, damping: 7 }}
+                                    transition={{ type: "spring", stiffness: 100, damping: 10 }}
+                                    className="transform-gpu will-change-transform"
                                 >
                                     <Button
                                         className="mt-1"
@@ -204,11 +205,12 @@ export function MainExperience() {
                                         variant="outline"
                                         style={{ cursor: "pointer" }}
                                     >
-                                        <Speaker className="w-3 h-3" />
-                                        <AudioLines className="w-3 h-3" />
-                                        <Ear className="w-3 h-3" />
+                                        <Speaker className="shrink-0" />
+                                        <AudioLines className="shrink-0" />
+                                        <Ear className="shrink-0" />
                                     </Button>
                                 </motion.div>
+
                             </div>
                         </motion.div>
                     ))}
