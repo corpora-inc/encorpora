@@ -45,10 +45,10 @@ export function RateAdjuster() {
                 ))}
             </div>
             <div className="flex items-center gap-4" dir={dir}>
-                <span className="text-xs text-gray-500 min-w-[45px]">0.01</span>
+                <span className="text-xs text-gray-500 min-w-[45px]">0.1</span>
                 <Slider
                     value={sliderValue}
-                    min={0}
+                    min={0.1}
                     max={1.5}
                     step={0.005}
                     className="flex-1"
