@@ -21,7 +21,7 @@ export function getPlatformTopPaddingButtons() {
     } if (/Android/i.test(navigator.userAgent)) {
         return 27;
     }
-    return 0;
+    return 10;
 }
 
 export function getPlatformTopPaddingTranslations() {

@@ -66,18 +66,15 @@ function DialogContent({
           className
         )}
         {...props}
+        style={{
+          paddingTop: getPlatformTopPaddingButtons(),
+        }}
       >
         {/* Move Close BEFORE children and make it sticky */}
         <DialogPrimitive.Close
-          // className="sticky top-0 z-1001 ml-auto inline-flex items-center justify-center rounded-md border bg-background p-1 shadow-sm cursor-pointer transition-all hover:shadow-md hover:bg-accent/5 focus:outline-hidden focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none pointer-events-auto"
-          className="sticky top-0 z-[1001] ml-auto inline-flex items-center justify-center rounded-md border bg-background p-1 shadow-sm cursor-pointer transition-all hover:shadow-md hover:bg-background focus:outline-hidden focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none pointer-events-auto"
+          className="sticky top-3 z-[1001] ml-auto inline-flex items-center justify-center rounded-md border bg-background p-1 shadow-sm cursor-pointer transition-all hover:shadow-md hover:bg-background focus:outline-hidden focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none pointer-events-auto"
         >
-          <XIcon className="size-10"
-            style={{
-              marginTop: getPlatformTopPaddingButtons(),
-            }}
-
-          />
+          <XIcon className="size-8" />
           <span className="sr-only">Close</span>
         </DialogPrimitive.Close>
 
