@@ -176,6 +176,7 @@ fn get_random_entry_with_translations(
 pub fn run() {
     tauri::Builder::default()
         .invoke_handler(tauri::generate_handler![get_random_entry_with_translations])
+        .plugin(tauri_plugin_safe_area_insets_css::init())
         .plugin(tauri_plugin_tts::init())
         .plugin(tauri_plugin_opener::init())
         .run(tauri::generate_context!())

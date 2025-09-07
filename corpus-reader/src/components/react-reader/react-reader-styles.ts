@@ -9,8 +9,6 @@ export interface IReactReaderStyle {
   swipeWrapper: CSSProperties
   prev: CSSProperties
   next: CSSProperties
-  arrow: CSSProperties
-  arrowHover: CSSProperties
 }
 
 export const ReactReaderStyle: IReactReaderStyle = {
@@ -24,7 +22,6 @@ export const ReactReaderStyle: IReactReaderStyle = {
     zIndex: 1,
     height: '100%',
     width: '100%',
-    backgroundColor: '#fff',
     transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
   },
   containerExpanded: {
@@ -36,11 +33,10 @@ export const ReactReaderStyle: IReactReaderStyle = {
     left: 50,
     right: 50,
     textAlign: 'center',
-    color: '#999',
   },
   reader: {
     position: 'absolute',
-    top: 50,
+    top: 30,
     left: 10,
     bottom: 10,
     right: 10,
@@ -59,23 +55,5 @@ export const ReactReaderStyle: IReactReaderStyle = {
   next: {
     right: 1,
   },
-  arrow: {
-    outline: 'none',
-    border: 'none',
-    background: 'none',
-    position: 'absolute',
-    top: '50%',
-    marginTop: -32,
-    fontSize: 64,
-    padding: '0 10px',
-    color: '#E2E2E2',
-    fontFamily: 'arial, sans-serif',
-    cursor: 'pointer',
-    userSelect: 'none',
-    appearance: 'none',
-    fontWeight: 'normal',
-  },
-  arrowHover: {
-    color: '#777',
-  },
+
 }

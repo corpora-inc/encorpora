@@ -2,12 +2,13 @@ import { useSettingsStore, ALL_TEXT_SIZES } from "@/store/settings";
 import { OnboardingWizard } from "@/components/OnboardingWizard";
 import { SettingsIcon } from "lucide-react";
 import { useState, useEffect } from "react";
-import { MainExperience } from "./components/MainExperience";
+import { getPlatformTopPaddingButtons, MainExperience } from "./components/MainExperience";
 import { SettingsModal } from "./components/SettingsModal";
 import { Button } from "./components/ui/button";
 import "./index.css";
 import { ThemeProvider } from "./components/ThemeProvider";
 import ThemeToggle from "./components/ThemeSwitch";
+
 
 export default function App() {
   const [showSettings, setShowSettings] = useState(false);
@@ -37,16 +38,20 @@ export default function App() {
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
       <div className={`flex flex-col min-h-0 h-screen w-full relative`}>
         <MainExperience />
-        <div className="fixed top-5 right-5 z-50">
+        <div className="fixed top-3 pt-safe right-5 z-50"
+          style={{ marginTop: getPlatformTopPaddingButtons() - 3 }}
+        >
           <div className="flex items-center gap-2">
             <Button
               variant="default"
-              size="icon"
+              // size="icon"
+              size="lg"
+              // size="sm"
               className="rounded-full shadow-lg bg-white border border-gray-200 hover:bg-gray-100 transition"
               aria-label="Settings"
               onClick={() => setShowSettings(true)}
             >
-              <SettingsIcon className="w-6 h-6 text-gray-600" />
+              <SettingsIcon className="text-gray-600" />
             </Button>
             <ThemeToggle />
           </div>

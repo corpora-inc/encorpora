@@ -45,7 +45,7 @@ const FontSettings = ({ onSettingsChange, settings }: FontSettingsProps) => {
           <Button
             variant="outline"
             size="sm"
-            onClick={() => handleFontSizeChange(-10)}
+            onClick={() => handleFontSizeChange(-5)}
             className="h-8 w-8 p-0 !rounded-full"
           >
             <MinusIcon className="h-1 w-1" />
@@ -54,7 +54,7 @@ const FontSettings = ({ onSettingsChange, settings }: FontSettingsProps) => {
           <Button
             variant="outline"
             size="sm"
-            onClick={() => handleFontSizeChange(10)}
+            onClick={() => handleFontSizeChange(5)}
             className="h-8 w-8 p-0 !rounded-full"
           >
             <PlusIcon className="h-1 w-1" />

@@ -15,15 +15,27 @@ const FeaturedBookCard = ({ book }: { book: BookEntry }) => {
   const { imageUrl } = useLoadImage(book.cover_path);
   const navigate = useNavigate();
 
-  const handleContinueReading = () => {
-    navigate(`/reader/${encodeURIComponent(book.path)}`);
+  const handleBookClick = async () => {
+    const bookPath = book.path;
+    if (bookPath.includes("pdf"))
+      navigate(`/pdf/${encodeURIComponent(bookPath)}`);
+    else navigate(`/reader/${encodeURIComponent(bookPath)}`);
   };
 
   return (
     <div className="relative overflow-hidden rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-500 bg-gradient-to-r from-card/80 to-card/60 backdrop-blur-sm border border-border/50 group">
-      <div className="flex flex-col md:flex-row  md:h-[270px]">
+      <div
+        className="flex flex-col md:flex-row h-full md:cursor-pointer"
+        onClick={async (e) => {
+          // Only handle click on desktop (md and up)
+          if (window.innerWidth >= 768) {
+            e.preventDefault();
+            await handleBookClick();
+          }
+        }}
+      >
         {/* Image Section */}
-        <div className="relative w-full md:w-2/5 h-[200px] sm:h-[240px] md:h-full overflow-hidden">
+        <div className="relative w-full md:w-2/5 h-[200px] md:h-auto overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-black/80 via-black/40 to-transparent z-10" />
           {imageUrl ? (
             <img
@@ -41,7 +53,7 @@ const FeaturedBookCard = ({ book }: { book: BookEntry }) => {
           <div className="absolute inset-0 items-center justify-center z-20 opacity-0 group-hover:opacity-100 transition-all duration-300 hidden md:flex">
             <button
               type="button"
-              onClick={handleContinueReading}
+              onClick={async () => await handleBookClick()}
               aria-label="Play Book"
               className="cursor-pointer bg-primary/90 backdrop-blur-sm rounded-full p-4 shadow-2xl transform scale-75 group-hover:scale-100 transition-transform duration-300 focus:outline-none"
             >
@@ -63,7 +75,7 @@ const FeaturedBookCard = ({ book }: { book: BookEntry }) => {
         </div>
 
         {/* Content Section */}
-        <div className="relative flex-1 p-4 sm:p-6 md:p-6 lg:p-8 flex flex-col justify-between">
+        <div className="relative flex-1 p-4 sm:p-6 md:p-6  flex flex-col justify-between">
           <div className="space-y-3 sm:space-y-4">
             <div>
               <h2 className="text-xl sm:text-2xl md:text-2xl lg:text-3xl font-bold mb-2 sm:mb-3 line-clamp-2 text-foreground leading-tight">
@@ -126,7 +138,7 @@ const FeaturedBookCard = ({ book }: { book: BookEntry }) => {
                   />
                 </div>
                 <p className="text-xs text-muted-foreground">
-                  {book.is_finished
+                  {book.is_finished === "true"
                     ? "🎉 Congratulations! You've finished this book."
                     : `Keep going! You're ${Math.round(
                         book.progress
@@ -136,11 +148,11 @@ const FeaturedBookCard = ({ book }: { book: BookEntry }) => {
             )}
           </div>
 
-          {/* Action button */}
-          <div className="mt-4 sm:mt-6 md:mt-8">
+          {/* Action button - only visible on mobile */}
+          <div className="mt-4 sm:mt-6 md:hidden">
             <Button
-              onClick={handleContinueReading}
-              className="w-full bg-gradient-to-r from-primary to-primary/90 hover:from-primary/90 hover:to-primary text-primary-foreground shadow-lg hover:shadow-xl transition-all duration-300 h-11 sm:h-12 text-sm sm:text-base font-medium"
+              onClick={async () => await handleBookClick()}
+              className="w-full h-11  font-medium cursor-pointer"
               size="lg"
             >
               <BookOpenIcon className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />

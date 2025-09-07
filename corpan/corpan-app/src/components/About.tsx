@@ -4,7 +4,7 @@ import { openUrl } from "@tauri-apps/plugin-opener";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { GithubIcon, Globe, Mail, Info } from "lucide-react";
-import { useSettingsStore } from "@/store/settings";
+import { useTranslation } from "react-i18next";
 
 const WEBSITE_URL = "https://encorpora.io";
 const GITHUB_ISSUES = "https://github.com/corpora-inc/encorpora/issues";
@@ -12,7 +12,7 @@ const SUPPORT_EMAIL = "team@encorpora.io";
 
 const About = () => {
   const [appVersion, setAppVersion] = useState<string>("");
-  const t = useSettingsStore((s) => s.t);
+  const { t } = useTranslation();
 
   useEffect(() => {
     (async () => {
@@ -32,10 +32,10 @@ const About = () => {
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
           <Info className="h-5 w-5 text-muted-foreground" />
-          <h3 className="text-base font-medium">{t("App version" as any)}</h3>
+          <h3 className="text-base font-medium">{t("footer.appVersion")}</h3>
         </div>
         <Badge variant="outline" className="px-3 py-1 text-sm">
-          {appVersion || t("Loading..." as any)}
+          {appVersion || t("common.loading")}
         </Badge>
       </div>
 
@@ -43,7 +43,7 @@ const About = () => {
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
           <Globe className="h-5 w-5 text-muted-foreground" />
-          <h3 className="text-base font-medium">{t("Website" as any)}</h3>
+          <h3 className="text-base font-medium">{t("footer.website")}</h3>
         </div>
         <Button
           variant="outline"
@@ -60,11 +60,11 @@ const About = () => {
       <div>
         <div className="flex items-center gap-2 mb-3">
           <Mail className="h-5 w-5 text-muted-foreground" />
-          <h3 className="text-base font-medium">{t("Support & Feedback" as any)}</h3>
+          <h3 className="text-base font-medium">{t("footer.supportAndFeedback")}</h3>
         </div>
 
         <p className="text-muted-foreground text-sm mb-4">
-          {t("For issues or suggestions, please visit our GitHub repository or contact us via email." as any)}
+          {t("footer.feedbackNote")}
         </p>
 
         <div className="flex flex-col sm:flex-row gap-3">
@@ -75,7 +75,7 @@ const About = () => {
             onClick={() => openUrl(GITHUB_ISSUES)}
           >
             <GithubIcon className="h-4 w-4" />
-            {t("GitHub issues" as any)}
+            {t("footer.githubIssues")}
           </Button>
           <Button
             variant="outline"

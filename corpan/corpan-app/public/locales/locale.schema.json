@@ -1,0 +1,349 @@
+{
+  "type": "object",
+  "properties": {
+    "languages": {
+      "type": "object",
+      "properties": {
+        "en": {
+          "type": "string"
+        },
+        "koPolite": {
+          "type": "string"
+        },
+        "es": {
+          "type": "string"
+        },
+        "fr": {
+          "type": "string"
+        },
+        "de": {
+          "type": "string"
+        },
+        "ptBR": {
+          "type": "string"
+        },
+        "ja": {
+          "type": "string"
+        },
+        "zhHans": {
+          "type": "string"
+        },
+        "ar": {
+          "type": "string"
+        },
+        "ru": {
+          "type": "string"
+        },
+        "it": {
+          "type": "string"
+        },
+        "hi": {
+          "type": "string"
+        },
+        "vi": {
+          "type": "string"
+        },
+        "pl": {
+          "type": "string"
+        },
+        "hu": {
+          "type": "string"
+        },
+        "fa": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "en",
+        "koPolite",
+        "es",
+        "fr",
+        "de",
+        "ptBR",
+        "ja",
+        "zhHans",
+        "ar",
+        "ru",
+        "it",
+        "hi",
+        "vi",
+        "pl",
+        "hu"
+      ],
+      "additionalProperties": false
+    },
+    "categories": {
+      "type": "object",
+      "properties": {
+        "travel": {
+          "type": "string"
+        },
+        "business": {
+          "type": "string"
+        },
+        "education": {
+          "type": "string"
+        },
+        "social": {
+          "type": "string"
+        },
+        "health": {
+          "type": "string"
+        },
+        "housing": {
+          "type": "string"
+        },
+        "numbers": {
+          "type": "string"
+        },
+        "civic": {
+          "type": "string"
+        },
+        "technology": {
+          "type": "string"
+        },
+        "environment": {
+          "type": "string"
+        },
+        "emergency": {
+          "type": "string"
+        },
+        "culture": {
+          "type": "string"
+        },
+        "everyday": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "travel",
+        "business",
+        "education",
+        "social",
+        "health",
+        "housing",
+        "numbers",
+        "civic",
+        "technology",
+        "environment",
+        "emergency",
+        "culture",
+        "everyday"
+      ],
+      "additionalProperties": false
+    },
+    "settings": {
+      "type": "object",
+      "properties": {
+        "addMoreLanguages": {
+          "type": "string"
+        },
+        "selectedLanguages": {
+          "type": "string"
+        },
+        "settings": {
+          "type": "string"
+        },
+        "adjustToYourPreferences": {
+          "type": "string"
+        },
+        "speechRate": {
+          "type": "string"
+        },
+        "slow": {
+          "type": "string"
+        },
+        "normal": {
+          "type": "string"
+        },
+        "fast": {
+          "type": "string"
+        },
+        "slower": {
+          "type": "string"
+        },
+        "faster": {
+          "type": "string"
+        },
+        "levels": {
+          "type": "string"
+        },
+        "selectAll": {
+          "type": "string"
+        },
+        "allLevelsIncluded": {
+          "type": "string"
+        },
+        "selected": {
+          "type": "string"
+        },
+        "domains": {
+          "type": "string"
+        },
+        "allDomainsIncluded": {
+          "type": "string"
+        },
+        "textSize": {
+          "type": "string"
+        },
+        "small": {
+          "type": "string"
+        },
+        "medium": {
+          "type": "string"
+        },
+        "large": {
+          "type": "string"
+        },
+        "extraLarge": {
+          "type": "string"
+        },
+        "testTts": {
+          "type": "string"
+        },
+        "showRomanization": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "addMoreLanguages",
+        "selectedLanguages",
+        "settings",
+        "adjustToYourPreferences",
+        "speechRate",
+        "slow",
+        "normal",
+        "fast",
+        "slower",
+        "faster",
+        "levels",
+        "selectAll",
+        "allLevelsIncluded",
+        "selected",
+        "domains",
+        "allDomainsIncluded",
+        "textSize",
+        "small",
+        "medium",
+        "large",
+        "extraLarge",
+        "testTts",
+        "showRomanization"
+      ],
+      "additionalProperties": false
+    },
+    "onboarding": {
+      "type": "object",
+      "properties": {
+        "welcome": {
+          "type": "string"
+        },
+        "makePrimaryLanguage": {
+          "type": "string"
+        },
+        "canChangeLater": {
+          "type": "string"
+        },
+        "pickLanguagesToLearn": {
+          "type": "string"
+        },
+        "textToSpeechSetup": {
+          "type": "string"
+        },
+        "ttsPoorQualityNote": {
+          "type": "string"
+        },
+        "howToSetupTtsOn": {
+          "type": "string"
+        },
+        "welcomeTitle": {
+          "type": "string"
+        },
+        "welcomeBody": {
+          "type": "string"
+        },
+        "welcomeVisit": {
+          "type": "string"
+        },
+        "linkCopied": {
+          "type": "string"
+        },
+        "reonboard": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "welcome",
+        "makePrimaryLanguage",
+        "canChangeLater",
+        "pickLanguagesToLearn",
+        "textToSpeechSetup",
+        "ttsPoorQualityNote",
+        "howToSetupTtsOn",
+        "welcomeTitle",
+        "welcomeBody",
+        "welcomeVisit",
+        "linkCopied",
+        "reonboard"
+      ],
+      "additionalProperties": false
+    },
+    "common": {
+      "type": "object",
+      "properties": {
+        "loading": {
+          "type": "string"
+        },
+        "instantPolyglotPractice": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "loading",
+        "instantPolyglotPractice"
+      ],
+      "additionalProperties": false
+    },
+    "footer": {
+      "type": "object",
+      "properties": {
+        "appVersion": {
+          "type": "string"
+        },
+        "website": {
+          "type": "string"
+        },
+        "supportAndFeedback": {
+          "type": "string"
+        },
+        "feedbackNote": {
+          "type": "string"
+        },
+        "githubIssues": {
+          "type": "string"
+        },
+        "aboutCorpan": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "appVersion",
+        "website",
+        "supportAndFeedback",
+        "feedbackNote",
+        "githubIssues",
+        "aboutCorpan"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "languages",
+    "categories",
+    "settings",
+    "onboarding",
+    "common",
+    "footer"
+  ],
+  "additionalProperties": false
+}
