@@ -25,6 +25,6 @@
     }
 
   },
-  "include": ["src"],
+  "include": ["src", "public/pdf.worker.min.mjs"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

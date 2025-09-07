@@ -21,7 +21,7 @@ export type SearchResult = {
 export const searchInBook = async (
   book: Book,
   query: string,
-  contextLength: number = 15
+  contextLength: number = 25
 ): Promise<SearchResult[]> => {
   if (!query) {
     return [];
@@ -95,20 +95,25 @@ export const searchInBook = async (
           if (nodeIndex < textNodes.length) {
             const range = doc.createRange();
             try {
+              // Ensure we don't exceed text node length
+              const nodeText = textNodes[nodeIndex].textContent || "";
+              const endOffset = Math.min(foundOffset + searchQuery.length, nodeText.length);
+              
               range.setStart(textNodes[nodeIndex], foundOffset);
-              range.setEnd(
-                textNodes[nodeIndex],
-                foundOffset + searchQuery.length
-              );
+              range.setEnd(textNodes[nodeIndex], endOffset);
 
               // Generate the CFI and a text excerpt for the result
               const cfi = item.cfiFromRange(range);
-              const excerpt = fullText.substring(
-                Math.max(0, pos - contextLength),
-                pos + searchQuery.length + contextLength
-              );
+              
+              // Create a more robust excerpt with better context
+              const excerptStart = Math.max(0, pos - contextLength);
+              const excerptEnd = Math.min(fullText.length, pos + searchQuery.length + contextLength);
+              const excerpt = fullText.substring(excerptStart, excerptEnd);
 
-              results.push({ cfi, excerpt: `...${excerpt}...` });
+              // Ensure we have a valid CFI before adding the result
+              if (cfi && cfi.trim()) {
+                results.push({ cfi, excerpt: `...${excerpt}...` });
+              }
             } catch (e) {
               console.warn("Skipping invalid range:", e);
             }

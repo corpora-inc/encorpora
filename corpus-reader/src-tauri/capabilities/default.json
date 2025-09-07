@@ -28,6 +28,7 @@
         }
       ]
     },
+    "log:default",
     "log:default"
   ]
 }

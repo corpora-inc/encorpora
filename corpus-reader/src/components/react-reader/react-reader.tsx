@@ -13,11 +13,23 @@ import { type NavItem } from "epubjs";
 import { searchInBook } from "./lib";
 import { Toc } from "./Toc";
 import { THEMES } from "./settings/ThemeSettings";
-import { DrawerDialogSetting } from "./settings/DrawerDialogSetting";
-import { Settings } from "./settings/SettingsComponent";
+import { Settings, SettingsComponent } from "./settings/SettingsComponent";
 import { SearchComponent, type SearchResult } from "./SearchComponent";
 import { Button } from "../ui/button";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, SettingsIcon } from "lucide-react";
+import { ThemeProviderContext } from "@/components/ThemeProvider";
+import { useSettingsStore } from "@/store/useSettingsStore";
+import DrawerDialog from "../DrawerDialogWrapper";
+
+// Helper function to check if any dialog or overlay is open
+const isDialogOrOverlayOpen = (): boolean => {
+  return (
+    document.querySelector('[role="dialog"]') !== null ||
+    document.querySelector('[data-state="open"]') !== null ||
+    document.querySelector(".drawer-content") !== null ||
+    document.querySelector("[data-radix-dialog-content]") !== null
+  );
+};
 
 type SwipeWrapperProps = {
   children: ReactNode;
@@ -52,17 +64,24 @@ type IReactReaderState = {
   settings: Settings;
   searchResults: SearchResult[];
   isSearching: boolean;
+  headerVisible: boolean;
 };
 
 export class ReactReader extends PureComponent<
   IReactReaderProps,
   IReactReaderState
 > {
+  // unsubscribe function for settings store subscription
+  unsubscribeSettings?: () => void;
+  static contextType = ThemeProviderContext;
+  declare context: React.ContextType<typeof ThemeProviderContext>;
+
   state: Readonly<IReactReaderState> = {
     isLoaded: false,
     toc: [],
     searchResults: [],
     isSearching: false,
+    headerVisible: false,
     settings: {
       fontSize: 100,
       fontFamily: "'Inter', sans-serif",
@@ -70,12 +89,58 @@ export class ReactReader extends PureComponent<
       lineHeight: 1.5,
       textAlign: "justify",
       spread: "auto",
-      theme: "Light",
+      theme: "light",
     },
   };
   readerRef = React.createRef<EpubView>();
+  headerTimeoutRef: NodeJS.Timeout | null = null;
+  lastTouchTime = 0;
+  touchCount = 0;
   constructor(props: IReactReaderProps) {
     super(props);
+    // Initialize settings from persistent store
+    const stored = useSettingsStore.getState().settings;
+    this.state = {
+      ...this.state,
+      settings: stored,
+    };
+    // Initialize reader theme from global theme context
+    const globalTheme = this.context?.theme;
+    if (globalTheme && globalTheme !== "system") {
+      this.state = {
+        ...this.state,
+        settings: { ...this.state.settings, theme: globalTheme },
+      };
+    }
+  }
+
+  componentDidMount() {
+    const { theme: globalTheme } = this.context;
+    if (
+      globalTheme &&
+      globalTheme !== "system" &&
+      globalTheme !== this.state.settings.theme
+    ) {
+      this.setState(
+        { settings: { ...this.state.settings, theme: globalTheme } },
+        () => this.applySettings()
+      );
+    }
+    // Apply initial settings
+    this.applySettings();
+    // Subscribe to settings store updates
+    this.unsubscribeSettings = useSettingsStore.subscribe((state: any) => {
+      const settings = state.settings;
+      this.setState({ settings }, () => {
+        this.applySettings();
+      });
+    });
+  }
+  componentWillUnmount() {
+    this.unsubscribeSettings?.();
+    if (this.headerTimeoutRef) {
+      clearTimeout(this.headerTimeoutRef);
+    }
   }
 
   next = () => {
@@ -83,6 +148,87 @@ export class ReactReader extends PureComponent<
     if (node && node.nextPage) {
       node.nextPage();
     }
+  };
+
+  // Header visibility management
+  showHeader = () => {
+    // Don't show header if a dialog is open
+    if (isDialogOrOverlayOpen()) {
+      return;
+    }
+    this.setState({ headerVisible: true });
+    this.resetHeaderTimeout();
+  };
+
+  hideHeader = () => {
+    this.setState({ headerVisible: false });
+  };
+
+  resetHeaderTimeout = () => {
+    if (this.headerTimeoutRef) {
+      clearTimeout(this.headerTimeoutRef);
+    }
+    this.headerTimeoutRef = setTimeout(() => {
+      this.hideHeader();
+    }, 2000); // Hide after 3 seconds of inactivity
+  };
+
+  // Mouse event handlers
+  handleMouseMove = (event: React.MouseEvent) => {
+    // Don't show header if a dialog is open
+    if (isDialogOrOverlayOpen()) {
+      return;
+    }
+    const { clientY } = event;
+    // Show header when mouse is in top 100px of screen
+    if (clientY <= 100) {
+      this.showHeader();
+    }
+  };
+
+  handleClick = () => {
+    // Don't handle click events if a dialog is open
+    if (isDialogOrOverlayOpen()) {
+      return;
+    }
+    if (this.state.headerVisible) {
+      this.hideHeader();
+    } else {
+      this.showHeader();
+    }
+  };
+
+  // Touch event handlers for mobile
+  handleTouchStart = (_event: React.TouchEvent) => {
+    // Don't handle touch events if a dialog is open
+    if (isDialogOrOverlayOpen()) {
+      return;
+    }
+    
+    const currentTime = Date.now();
+    const timeDiff = currentTime - this.lastTouchTime;
+
+    // Double tap detection (within 300ms)
+    if (timeDiff < 300) {
+      this.touchCount++;
+      if (this.touchCount === 2) {
+        this.showHeader();
+        this.touchCount = 0;
+      }
+    } else {
+      this.touchCount = 1;
+    }
+
+    this.lastTouchTime = currentTime;
+  };
+
+  // Handle swipe down gesture
+  handleSwipeDown = () => {
+    // Don't show header if a dialog is open
+    if (isDialogOrOverlayOpen()) {
+      return;
+    }
+    this.showHeader();
   };
 
   prev = () => {
@@ -111,76 +257,7 @@ export class ReactReader extends PureComponent<
     if (theme) {
       // Apply theme to rendition if available
       if (rendition) {
-        rendition.themes.register(theme.name, theme.styles);
-        rendition.themes.select(theme.name);
-      }
-
-      // Apply theme colors as CSS custom properties to the document root
-      // This allows all child components to inherit the theme colors
-      document.documentElement.style.setProperty(
-        "--reader-bg-color",
-        theme.styles.body.background
-      );
-      document.documentElement.style.setProperty(
-        "--reader-text-color",
-        theme.styles.body.color
-      );
-
-      // Apply theme to the component container and all child elements
-      const containerElement = document.querySelector(
-        "[data-react-reader-container]"
-      ) as HTMLElement;
-      if (containerElement) {
-        containerElement.style.backgroundColor = theme.styles.body.background;
-        containerElement.style.color = theme.styles.body.color;
-
-        // Create a style element for scoped CSS rules
-        let styleElement = document.getElementById("react-reader-theme-styles");
-        if (!styleElement) {
-          styleElement = document.createElement("style");
-          styleElement.id = "react-reader-theme-styles";
-          document.head.appendChild(styleElement);
-        }
-
-        // Apply theme-specific CSS rules for child components
-        styleElement.textContent = `
-          [data-react-reader-container] {
-            background-color: ${theme.styles.body.background} !important;
-            color: ${theme.styles.body.color} !important;
-          }
-          
-          [data-react-reader-container] .text-foreground,
-          [data-react-reader-container] .text-foreground\\/80 {
-            color: ${theme.styles.body.color} !important;
-          }
-          
-          [data-react-reader-container] .text-muted-foreground {
-            color: ${theme.styles.body.color}80 !important;
-          }
-          
-          [data-react-reader-container] .bg-background,
-          [data-react-reader-container] .bg-popover {
-            background-color: ${theme.styles.body.background} !important;
-          }
-          
-          [data-react-reader-container] .border-border {
-            border-color: ${theme.styles.body.color}30 !important;
-          }
-          
-          [data-react-reader-container] .hover\\:bg-accent:hover,
-          [data-react-reader-container] .hover\\:bg-accent\\/30:hover,
-          [data-react-reader-container] .hover\\:bg-accent\\/20:hover {
-            background-color: ${theme.styles.body.color}20 !important;
-          }
-          
-          [data-react-reader-container] button {
-            color: ${theme.styles.body.color} !important;
-          }
-          
-          [data-react-reader-container] svg {
-            color: ${theme.styles.body.color} !important;
-          }
-        `;
+        rendition.themes.default(theme.styles);
       }
     }
 
@@ -217,6 +294,11 @@ export class ReactReader extends PureComponent<
 
   // Changing Page based on direction of scroll
   handleWheel = (event: WheelEvent) => {
+    // Don't handle wheel events if a dialog is open
+    if (isDialogOrOverlayOpen()) {
+      return;
+    }
+
     event.preventDefault();
 
     const node = this.readerRef.current;
@@ -278,10 +360,33 @@ export class ReactReader extends PureComponent<
   handleSearchResultClick = (cfi: string) => {
     const node = this.readerRef.current;
     if (node && node.rendition) {
-      // Navigate to the search result location
+      // Check if we're on mobile to adjust timing
+      const isMobile = window.innerWidth <= 768;
+      const navigationDelay = isMobile ? 300 : 200;
+      const highlightDelay = isMobile ? 400 : 300;
+
+      console.log(`Navigating to search result: ${cfi}, mobile: ${isMobile}`);
+
+      // Navigate to the search result location with improved handling
       node.rendition.display(cfi).then(() => {
-        // Add highlight after navigation is complete
-        this.highlightSearchResult(cfi);
+        console.log(`Navigation successful, highlighting in ${navigationDelay}ms`);
+        // Wait for mobile single page rendering to stabilize
+        setTimeout(() => {
+          this.highlightSearchResult(cfi);
+        }, navigationDelay);
+      }).catch((error) => {
+        console.warn("Navigation error, trying alternative approach:", error);
+        // Fallback: try displaying the CFI again with longer delay
+        setTimeout(() => {
+          if (node.rendition) {
+            console.log("Retrying navigation...");
+            node.rendition.display(cfi).then(() => {
+              setTimeout(() => {
+                this.highlightSearchResult(cfi);
+              }, highlightDelay);
+            });
+          }
+        }, 150);
       });
     }
   };
@@ -289,29 +394,58 @@ export class ReactReader extends PureComponent<
   // Highlight the search result for 2 seconds
   highlightSearchResult = (cfi: string) => {
     const rendition = this.readerRef.current?.rendition;
-    if (!rendition) return;
+    if (!rendition) {
+      console.warn("No rendition available for highlighting");
+      return;
+    }
+
+    console.log(`Attempting to highlight CFI: ${cfi}`);
 
     try {
       // Remove any existing highlights first
-      rendition.annotations.remove(cfi, "highlight");
-      
-      // Add highlight annotation
+      try {
+        rendition.annotations.remove(cfi, "highlight");
+      } catch (e) {
+        // Ignore errors when removing non-existent highlights
+      }
+
+      // Add highlight annotation with improved error handling
       rendition.annotations.add("highlight", cfi, {}, undefined, "hl", {
         fill: "yellow",
-        "fill-opacity": "0.3",
-        "mix-blend-mode": "multiply"
+        "fill-opacity": "0.4",
+        "mix-blend-mode": "multiply",
+        stroke: "#fbbf24",
+        "stroke-width": "1px",
       });
 
-      // Remove highlight after 2 seconds
+      console.log("Highlight added successfully");
+
+      // Remove highlight after 3 seconds (extended for mobile)
       setTimeout(() => {
         try {
           rendition.annotations.remove(cfi, "highlight");
+          console.log("Highlight removed");
         } catch (error) {
           console.warn("Could not remove highlight:", error);
         }
-      }, 2000);
+      }, 3000);
     } catch (error) {
       console.warn("Could not add highlight:", error);
+      // Fallback: try to get the range and scroll the containing element
+      try {
+        const range = rendition.getRange(cfi);
+        if (range && range.startContainer) {
+          const element = range.startContainer.nodeType === Node.TEXT_NODE 
+            ? range.startContainer.parentElement 
+            : range.startContainer as Element;
+          if (element && element.scrollIntoView) {
+            console.log("Using fallback scroll behavior");
+            element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
+        }
+      } catch (scrollError) {
+        console.warn("Could not scroll to location:", scrollError);
+      }
     }
   };
 
@@ -326,18 +460,6 @@ export class ReactReader extends PureComponent<
     if (this.props.pageTurnOnScroll === true) {
       this.attachWheelListener();
     }
-  }
-
-  componentWillUnmount() {
-    // Clean up injected theme styles
-    const styleElement = document.getElementById("react-reader-theme-styles");
-    if (styleElement) {
-      styleElement.remove();
-    }
-
-    // Remove CSS custom properties
-    document.documentElement.style.removeProperty("--reader-bg-color");
-    document.documentElement.style.removeProperty("--reader-text-color");
   }
 
   render() {
@@ -372,39 +494,76 @@ export class ReactReader extends PureComponent<
       color: themeColors.color,
     };
 
-    return (
-      <div style={themedContainerStyle} data-react-reader-container>
-        <div style={themedReaderAreaStyle}>
-          <div
-            className="absolute top-4 left-4 z-20 flex items-center gap-2"
-            style={{ color: themeColors.color }}
-          >
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => window.history.back()}
-              aria-label="Back"
-            >
-              <ArrowLeft className="w-5 h-5" />
-            </Button>
+    // Dynamic reader styles - controls now overlay instead of pushing content
+    const dynamicReaderStyle = {
+      ...readerStyles.reader,
+      backgroundColor: themeColors.background,
+      // Removed dynamic top adjustment - controls now overlay
+    };
 
-            {showToc && <Toc toc={toc} setLocation={this.setLocation} />}
-          </div>
+    return (
+      <div
+        style={themedContainerStyle}
+        data-react-reader-container
+        onMouseMove={this.handleMouseMove}
+        onClick={this.handleClick}
+        onTouchStart={this.handleTouchStart}
+      >
+        <div style={themedReaderAreaStyle}>
+          {/* Header controls - consolidated into single div */}
           <div
-            className="absolute top-4 right-4 z-20 flex items-center gap-2"
-            style={{ color: themeColors.color }}
+            className={`absolute top-0 left-0 right-0 z-20 flex items-center justify-between px-4 py-2 transition-all duration-300 ${
+              this.state.headerVisible
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 -translate-y-4 pointer-events-none"
+            }`}
+            style={{ 
+              color: `-moz-initial !important ${themeColors.color}`,
+              backgroundColor: `${themeColors.background}`,
+              backdropFilter: "blur(8px)"
+            }}
           >
-            <SearchComponent
-              onSearch={this.searchInBook}
-              searchResults={this.state.searchResults}
-              onResultClick={this.handleSearchResultClick}
-              isLoading={this.state.isSearching}
-              themeColors={themeColors}
-            />
-            <DrawerDialogSetting
-              settings={settings}
-              onSettingsChange={this.onSettingsChange}
-            />
+            {/* Left controls */}
+            <div className="flex items-center gap-2">
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  window.history.back();
+                }}
+                aria-label="Back"
+              >
+                <ArrowLeft className="w-5 h-5" />
+              </Button>
+
+              {showToc && <Toc toc={toc} setLocation={this.setLocation} />}
+            </div>
+
+            {/* Right controls */}
+            <div className="flex items-center gap-2">
+              <SearchComponent
+                onSearch={this.searchInBook}
+                searchResults={this.state.searchResults}
+                onResultClick={this.handleSearchResultClick}
+                isLoading={this.state.isSearching}
+              />
+              <DrawerDialog
+                title="Settings"
+                trigger={
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    className="h-8 w-8 rounded-md p-0"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    <SettingsIcon className="h-4 w-4" />
+                  </Button>
+                }
+              >
+                <SettingsComponent />
+              </DrawerDialog>
+            </div>
           </div>
           <div style={{ ...readerStyles.titleArea, color: themeColors.color }}>
             {title}
@@ -412,12 +571,20 @@ export class ReactReader extends PureComponent<
           <SwipeWrapper
             swipeProps={{
               onSwiped: (eventData: SwipeEventData) => {
+                // Don't handle swipe events if a dialog is open
+                if (isDialogOrOverlayOpen()) {
+                  return;
+                }
+
                 const { dir } = eventData;
                 if (dir === "Left") {
                   isRTL ? this.prev() : this.next();
                 }
                 if (dir === "Right") {
                   isRTL ? this.next() : this.prev();
+                }
+                if (dir === "Down") {
+                  this.handleSwipeDown();
                 }
               },
               onTouchStartOrOnMouseDown: ({ event }) => event.preventDefault(),
@@ -426,7 +593,7 @@ export class ReactReader extends PureComponent<
               trackMouse: true,
             }}
           >
-            <div style={readerStyles.reader}>
+            <div style={dynamicReaderStyle}>
               <EpubView
                 ref={this.readerRef}
                 {...props}
@@ -436,18 +603,6 @@ export class ReactReader extends PureComponent<
               <div style={readerStyles.swipeWrapper} />
             </div>
           </SwipeWrapper>
-          {/* <button
-            style={Object.assign({}, themedArrowStyle, readerStyles.prev)}
-            onClick={isRTL ? this.next : this.prev}
-          >
-            ‹
-          </button>
-          <button
-            style={Object.assign({}, themedArrowStyle, readerStyles.next)}
-            onClick={isRTL ? this.prev : this.next}
-          >
-            ›
-          </button> */}
         </div>
       </div>
     );

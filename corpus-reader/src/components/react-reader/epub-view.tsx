@@ -5,6 +5,14 @@ import type { RenditionOptions } from "epubjs/types/rendition";
 import type { BookOptions } from "epubjs/types/book";
 import Loader from "../Loader";
 
+// Helper function to check if any dialog or overlay is open
+const isDialogOrOverlayOpen = (): boolean => {
+  return document.querySelector('[role="dialog"]') !== null ||
+         document.querySelector('[data-state="open"]') !== null ||
+         document.querySelector('.drawer-content') !== null ||
+         document.querySelector('[data-radix-dialog-content]') !== null;
+};
+
 export type RenditionOptionsFix = RenditionOptions & {
   allowPopups: boolean;
 };
@@ -56,8 +64,8 @@ export class EpubView extends Component<IEpubViewProps, IEpubViewState> {
   }
 
   async initBook() {
-  const { url, tocChanged, epubInitOptions } = this.props;
-    
+    const { url, tocChanged, epubInitOptions } = this.props;
+
     // Cancel any previous initialization
     if (this.initializationPromise) {
       return;
@@ -75,14 +83,14 @@ export class EpubView extends Component<IEpubViewProps, IEpubViewState> {
           }
 
           // Use setTimeout to defer the heavy operation
-          await new Promise(resolve => setTimeout(resolve, 0));
+          await new Promise((resolve) => setTimeout(resolve, 0));
 
           // Initialize book asynchronously
           this.book = Epub(url, epubInitOptions);
-          
+
           // Wait for navigation to load
           const navigation = await this.book.loaded.navigation;
-          
+
           this.setState(
             {
               isLoaded: true,
@@ -194,6 +202,11 @@ export class EpubView extends Component<IEpubViewProps, IEpubViewState> {
   };
 
   handleKeyPress = (event: KeyboardEvent) => {
+    // Don't handle arrow keys if a dialog is open
+    if (isDialogOrOverlayOpen()) {
+      return;
+    }
+    
     if (event.key === "ArrowRight" && this.nextPage) {
       this.nextPage();
     }
@@ -205,11 +218,12 @@ export class EpubView extends Component<IEpubViewProps, IEpubViewState> {
   render() {
     const { isLoaded } = this.state;
     return (
-      <div className="relative h-full w-full" style={{backgroundColor: 'inherit', color: 'inherit'}}>
-        {(isLoaded && <div ref={this.viewerRef} className="h-full" style={{backgroundColor: 'inherit'}} />) || (
+      <div className="relative h-full w-full">
+        {(isLoaded && <div ref={this.viewerRef} className="h-full w-full" />) || (
           <Loader text="loading book" />
         )}
       </div>
     );
   }
 }
+``;

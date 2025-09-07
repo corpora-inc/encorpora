@@ -2,6 +2,10 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import FontSettings from "./FontSettings";
 import LayoutSettings from "./LayoutSettings";
 import { ThemeSettings } from "./ThemeSettings";
+import { useSettingsStore } from "@/store/useSettingsStore";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { Button } from "@/components/ui/button";
+import { useTheme } from "@/components/ThemeProvider";
 
 export type Settings = {
   fontSize: number;
@@ -13,15 +17,19 @@ export type Settings = {
   theme: string;
 };
 
-export type SettingsProps = {
-  settings: Settings;
-  onSettingsChange: (settings: Partial<Settings>) => void;
-};
+// Props are managed via zustand store
 
-export const SettingsComponent = ({
-  settings,
-  onSettingsChange,
-}: SettingsProps) => {
+export const SettingsComponent = () => {
+  const settings = useSettingsStore((state) => state.settings);
+  const onSettingsChange = useSettingsStore((state) => state.setSettings);
+  const resetSettings = useSettingsStore((state) => state.resetSettings);
+  const { setTheme: setGlobalTheme } = useTheme();
+
+  const handleResetSettings = () => {
+    resetSettings();
+    setGlobalTheme("light"); // Reset global theme to default
+  };
+
   return (
     <div className="px-4">
       <Tabs defaultValue="font" className="w-full">
@@ -37,18 +45,34 @@ export const SettingsComponent = ({
           />
         </TabsContent>
         <TabsContent value="layout">
-          <LayoutSettings
-            onSettingsChange={onSettingsChange}
-            settings={settings}
-          />
+          <ScrollArea className="max-h-[50vh] overflow-y-auto">
+            <LayoutSettings
+              onSettingsChange={onSettingsChange}
+              settings={settings}
+            />
+          </ScrollArea>
+
         </TabsContent>
+
         <TabsContent value="theme">
-          <ThemeSettings
-            onSettingsChange={onSettingsChange}
-            settings={settings}
-          />
+          <ScrollArea className="max-h-[50vh] overflow-y-auto">
+            <ThemeSettings
+              onSettingsChange={onSettingsChange}
+              settings={settings}
+            />
+          </ScrollArea>
         </TabsContent>
       </Tabs>
+
+      <div className="mt-4 pt-4 border-t border-border">
+        <Button
+          variant="outline"
+          onClick={handleResetSettings}
+          className="w-full"
+        >
+          Reset to default settings
+        </Button>
+      </div>
     </div>
   );
 };
