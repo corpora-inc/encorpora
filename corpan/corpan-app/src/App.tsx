@@ -2,10 +2,11 @@ import { useSettingsStore, ALL_TEXT_SIZES } from "@/store/settings";
 import { OnboardingWizard } from "@/components/OnboardingWizard";
 import { SettingsIcon } from "lucide-react";
 import { useState, useEffect } from "react";
-import { getPlatformTopPaddingButtons, MainExperience } from "./components/MainExperience";
+import { MainExperience } from "./components/MainExperience";
 import { SettingsModal } from "./components/SettingsModal";
 import { Button } from "./components/ui/button";
 import "./index.css";
+import { getPlatformTopPaddingButtons } from "./util/browser";
 
 
 export default function App() {

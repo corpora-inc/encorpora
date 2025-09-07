@@ -17,35 +17,12 @@ import { createVoiceTTS } from "@/util/speak";
 import { useTranslation } from "react-i18next";
 
 import { isRTL, toCamelCase } from "@/util/convert";
-import { isAndroid } from "@/util/browser";
-
-
-export function getPlatformBottomPadding() {
-    if (/iPhone|iPad|iPod|iOS/i.test(navigator.userAgent)) {
-        return 180;
-    } if (/Android/i.test(navigator.userAgent)) {
-        return 195;
-    }
-    return 180;
-}
-
-export function getPlatformTopPaddingButtons() {
-    if (/iPhone|iPad|iPod|iOS/i.test(navigator.userAgent)) {
-        return 55;
-    } if (/Android/i.test(navigator.userAgent)) {
-        return 27;
-    }
-    return 0;
-}
-
-export function getPlatformTopPaddingTranslations() {
-    if (/iPhone|iPad|iPod|iOS/i.test(navigator.userAgent)) {
-        return 150;
-    } if (/Android/i.test(navigator.userAgent)) {
-        return 125;
-    }
-    return 75;
-}
+import {
+    getPlatformBottomPadding,
+    getPlatformTopPaddingButtons,
+    getPlatformTopPaddingTranslations,
+    isAndroid,
+} from "@/util/browser";
 
 // // Even lamer but still fine
 // const paddingAdjustMap: Record<string, number> = {
@@ -219,7 +196,8 @@ export function MainExperience() {
 
                                 <motion.div
                                     whileTap={{ scale: 0.9 }}
-                                    transition={{ type: "spring", stiffness: 133, damping: 7 }}
+                                    transition={{ type: "spring", stiffness: 100, damping: 10 }}
+                                    className="transform-gpu will-change-transform"
                                 >
                                     <Button
                                         className="mt-1"
@@ -227,11 +205,12 @@ export function MainExperience() {
                                         variant="outline"
                                         style={{ cursor: "pointer" }}
                                     >
-                                        <Speaker className="w-3 h-3" />
-                                        <AudioLines className="w-3 h-3" />
-                                        <Ear className="w-3 h-3" />
+                                        <Speaker className="shrink-0" />
+                                        <AudioLines className="shrink-0" />
+                                        <Ear className="shrink-0" />
                                     </Button>
                                 </motion.div>
+
                             </div>
                         </motion.div>
                     ))}

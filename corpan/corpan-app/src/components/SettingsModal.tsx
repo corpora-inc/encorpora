@@ -44,8 +44,8 @@ export function SettingsModal({
                     flex flex-col
                 "
         style={{
-          paddingBottom: "2rem",
-          paddingTop: "5rem",
+          // paddingBottom: "2rem",
+          // paddingTop: "5rem",
         }}
         id="settings-modal-content"
       >
