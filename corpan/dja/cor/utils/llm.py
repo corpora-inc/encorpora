@@ -6,7 +6,7 @@ from corpora_ai.llm_interface import ChatCompletionTextMessage
 
 from cor.models import Domain, Entry, Language, Translation
 
-llm = load_llm_provider("xai")
+llm = load_llm_provider("local")
 
 DomainCode = Literal[
     "travel",
@@ -204,6 +204,32 @@ def translate_entry_batch(
             "आप एक पेशेवर अंग्रेज़ी-से-हिंदी अनुवादक हैं, जो भाषा सीखने वालों के लिए स्पष्ट, स्वाभाविक और शिष्ट अनुवाद प्रदान करने में माहिर हैं। "
             "हर वाक्य का अनुवाद ऐसा करें कि उसका मूल अर्थ बना रहे और वह हिंदी में सहज, प्राकृतिक और आसानी से समझने योग्य लगे। "
             "बहुत अधिक शब्दशः या अत्यधिक रचनात्मक अनुवाद से बचें। केवल JSON सूची के रूप में परिणाम लौटाएँ।"
+        ),
+        "vi": (
+            "Bạn là một dịch giả chuyên nghiệp từ tiếng Anh sang tiếng Việt, chuyên cung cấp các bản dịch tự nhiên, lịch sự và dễ hiểu cho người học ngôn ngữ. "
+            "Hãy dịch mỗi câu một cách tự nhiên và tôn trọng, giữ nguyên ý nghĩa gốc nhưng đảm bảo bản dịch nghe hoàn toàn tự nhiên. "
+            "Tránh các bản dịch quá máy móc hoặc quá sáng tạo. Chỉ trả về danh sách JSON của các câu đã dịch."
+        ),
+        "pl": (
+            "Jesteś profesjonalnym tłumaczem z angielskiego na polski, "
+            "specjalizującym się w tłumaczeniach dla uczących się języka. "
+            "Przetłumacz każde zdanie w sposób naturalny, grzeczny i zrozumiały, "
+            "zachowując sens oryginału, ale dbając, aby tłumaczenie brzmiało całkowicie naturalnie. "
+            "Unikaj tłumaczeń zbyt dosłownych lub zbyt kreatywnych. "
+            "Zwróć wyłącznie listę JSON przetłumaczonych zdań."
+        ),
+        "hu": (
+            "Ön professzionális angol-magyar fordító, aki tapasztalattal rendelkezik nyelvtanulók segítésében. "
+            "Fordítson minden mondatot természetesen, udvariasan és érthetően, az eredeti jelentés lehető legnagyobb mértékű megőrzésével. "
+            "Kerülje a túl szó szerinti vagy túlzottan kreatív fordításokat, hogy a szöveg magyar anyanyelvűek számára teljesen természetesen hangozzon. "
+            "Csak a fordításokat tartalmazó JSON listát adja vissza."
+        ),
+        "fa": (
+            "شما یک مترجم حرفه‌ای انگلیسی به فارسی هستید که در کمک به زبان‌آموزان تجربه زیادی دارید. "
+            "هر جمله را به فارسی معیار، روان، طبیعی و محترمانه ترجمه کنید، به‌گونه‌ای که برای فارسی‌زبانان قابل فهم و خوشایند باشد. "
+            "هدف شما حفظ معنای اصلی در عین استفاده از ساختارها و واژگان رایج و طبیعی در زبان فارسی است. "
+            "از ترجمه‌های تحت‌اللفظی یا ماشینی خودداری کنید و فقط معادل‌های متداول و قابل فهم را به‌کار ببرید. "
+            "فقط یک لیست JSON از ترجمه‌ها بازگردانید و هیچ توضیحی اضافه نکنید."
         ),
     }.get(
         lang_code,

@@ -14,31 +14,31 @@ import { Button } from "@/components/ui/button";
 import { useSettingsStore } from "@/store/settings";
 import { useHistoryStore, EntryOut } from "@/store/history";
 import { createVoiceTTS } from "@/util/speak";
-import { TranslationKey } from "@/store/translations";
+import { useTranslation } from "react-i18next";
 
-// Lame but OK
-function getPlatformPadding() {
-    if (/iPhone|iPad|iPod|iOS/i.test(navigator.userAgent)) {
-        return 240;
-    }
-    return 135;
-}
+import { isRTL, toCamelCase } from "@/util/convert";
+import {
+    getPlatformBottomPadding,
+    getPlatformTopPaddingButtons,
+    getPlatformTopPaddingTranslations,
+    isAndroid,
+} from "@/util/browser";
 
-// Even lamer but still fine
-const paddingAdjustMap: Record<string, number> = {
-    "small": -5,
-    "medium": 25,
-    "large": 50,
-    "extra-large": 75,
-}
+// // Even lamer but still fine
+// const paddingAdjustMap: Record<string, number> = {
+//     "small": -5,
+//     "medium": 25,
+//     "large": 50,
+//     "extra-large": 75,
+// }
 
 export function MainExperience() {
     const languages = useSettingsStore((s) => s.languages);
     const domains = useSettingsStore((s) => s.domains);
     const levels = useSettingsStore((s) => s.levels);
     const rate = useSettingsStore((s) => s.rate);
-    const t = useSettingsStore((s) => s.t);
-    const textSize = useSettingsStore((s) => s.textSize);
+    const { t } = useTranslation()
+    // const textSize = useSettingsStore((s) => s.textSize);
     // console.log("textSize", textSize);
 
     const showRomanization = useSettingsStore((s) => s.showRomanization);
@@ -67,9 +67,9 @@ export function MainExperience() {
     useLayoutEffect(() => {
         setTimeout(() => {
             if (scrollRef.current) {
-                scrollRef.current.scrollTo({ top: 0, behavior: "smooth" });
+                scrollRef.current.scrollTo({ top: -200, behavior: "smooth" });
             }
-        }, 27);
+        }, 33);
     }, [index]);
 
     const curr = history[index] || null;
@@ -85,7 +85,7 @@ export function MainExperience() {
         textByLang["en"] = curr.en_text;
     }
 
-    console.log(showRomanization, romanizationByLang);
+    // console.log(showRomanization, romanizationByLang);
 
     // Navigation
     const handlePrev = () => index > 0 && setIndex(index - 1);
@@ -94,14 +94,20 @@ export function MainExperience() {
         else fetchRandomEntry();
     };
 
+    const displayedLanguages = [...languages].reverse();
+
     return (
         <div className="flex flex-col flex-1 min-h-0 w-full items-center relative">
 
             {/* Floating domain/level stuff at top left */}
             {curr && (
                 <div
-                    className="fixed top-5 left-5 z-50 pointer-events-none"
-                    style={{ background: "transparent" }}
+                    className="fixed top-5 pt-safe left-5 z-50 pointer-events-none"
+                    style={{
+                        background: "transparent",
+                        marginTop: getPlatformTopPaddingButtons(),
+                    }}
+
                 >
                     <div className="flex flex-wrap gap-1 items-center justify-center text-gray-400 text-xs mb-1">
                         <span
@@ -112,28 +118,32 @@ export function MainExperience() {
                                 key={d}
                                 className="px-2 py-0.5 rounded-full border border-gray-200 bg-gray-50 text-xs"
                             >
-                                {t(d as TranslationKey) || d}
+                                {t(`categories.${d}` as any) || d}
                             </span>
                         ))}
                     </div>
                 </div>
-            )}
+            )
+            }
 
             {/* Scrollable Translations */}
             <div
-                className="flex-1 w-full overflow-y-auto min-h-0 px-2 pt-16 flex flex-col"
+                className="flex-1 w-full overflow-y-auto min-h-0 px-2 pt-20 flex flex-col"
                 ref={scrollRef}
                 style={{
-                    paddingBottom: `${getPlatformPadding() + paddingAdjustMap[textSize]}px`,
+                    // marginTop: isAndroid() ? "20px" : undefined,
+                    // paddingBottom: `${getPlatformPadding() + paddingAdjustMap[textSize]}px`,
+                    paddingBottom: `${getPlatformBottomPadding()}px`,
+                    paddingTop: `${getPlatformTopPaddingTranslations()}px`,
                 }}
             >
 
                 <div
                     key={index}
-                    className="w-full max-w-4xl mx-auto flex flex-col items-center gap-y-7 my-auto"
+                    className="w-full max-w-4xl mx-auto flex flex-col items-center gap-y-9 my-auto"
                 >
 
-                    {languages.map((code, idx) => (
+                    {displayedLanguages.map((code, idx) => (
                         <motion.div
                             key={idx}
                             initial={{ opacity: 0, y: 16, scale: 0.98 }}
@@ -143,60 +153,81 @@ export function MainExperience() {
                             className="w-full flex flex-col items-center"
                         >
                             <div
-                                key={idx}
-                                className="text-xs text-gray-400 mb-1"
-                            >{t(code as TranslationKey) || code}</div>
-                            <div
-                                className="text-center text-xl md:text-2xl lg:text-3xl"
-                                style={{
-                                    wordBreak: "break-word",
-                                    maxWidth: "80vw",
-                                    lineHeight: 1.15,
-                                }}
-                                dir={code === "ar" ? "rtl" : "ltr"}
-                            >
-                                {textByLang[code] || <span className="opacity-30">—</span>}
-                            </div>
-                            {/* Render romanization if enabled and available */}
-                            {showRomanization && romanizationByLang[code] && (
-                                <div className="text-center text-base text-gray-400 italic mt-1 select-text">
-                                    {romanizationByLang[code]}
-                                </div>
-                            )}
 
-                            <motion.div
-                                whileTap={{ scale: 0.95 }}
-                                transition={{ type: "spring", stiffness: 300, damping: 17 }}
+                                className="text-center"
+                                // Add style for pointer on hover:
+                                style={{ cursor: "pointer" }}
+                                onClick={() => {
+                                    const langPrefix = code.split("-")[0];
+                                    createVoiceTTS(langPrefix)(
+                                        textByLang[code],
+                                        rate,
+                                    );
+                                }}
                             >
-                                <Button
-                                    onClick={() => {
-                                        const langPrefix = code.split("-")[0];
-                                        createVoiceTTS(langPrefix)(
-                                            textByLang[code],
-                                            rate,
-                                        );
+                                <div
+                                    key={idx}
+                                    className="text-xs text-gray-400"
+                                >{t(`languages.${toCamelCase(code)}` as any) || code}</div>
+                                <div
+                                    className="text-center text-xl md:text-2xl lg:text-3xl my-1"
+                                    style={{
+                                        wordBreak: "break-word",
+                                        maxWidth: "80vw",
+                                        lineHeight: 1.1,
                                     }}
-                                    className="mt-2"
-                                    size="sm"
-                                    variant="outline"
+                                    dir={isRTL(code) ? "rtl" : "ltr"}
                                 >
-                                    <Speaker className="w-4 h-4" />
-                                    <AudioLines className="w-4 h-4" />
-                                    <Ear className="w-4 h-4" />
-                                </Button>
-                            </motion.div>
+                                    {textByLang[code] || <span className="opacity-30">—</span>}
+                                </div>
+                                {/* Render romanization if enabled and available */}
+                                {showRomanization && romanizationByLang[code] && (
+                                    <div className="text-center text-sm text-base text-gray-400 italic mt-1 mb-1 select-text"
+                                        style={{
+                                            maxWidth: "80vw",
+                                            wordBreak: "break-word",
+                                            // lineHeight: 0.95,
+                                        }}
+                                    >
+                                        {romanizationByLang[code]}
+                                    </div>
+                                )}
+
+
+                                <motion.div
+                                    whileTap={{ scale: 0.9 }}
+                                    transition={{ type: "spring", stiffness: 100, damping: 10 }}
+                                    className="transform-gpu will-change-transform"
+                                >
+                                    <Button
+                                        className="mt-1"
+                                        size="sm"
+                                        variant="outline"
+                                        style={{ cursor: "pointer" }}
+                                    >
+                                        <Speaker className="shrink-0" />
+                                        <AudioLines className="shrink-0" />
+                                        <Ear className="shrink-0" />
+                                    </Button>
+                                </motion.div>
+
+                            </div>
                         </motion.div>
                     ))}
                 </div>
             </div>
 
-            {/* Floating Nav + Level/Domains */}
+            {/* Floating Nav */}
             <div
-                className="fixed bottom-0 left-0 w-full flex justify-center pb-6 z-50 pointer-events-none"
-                style={{ background: "transparent" }
-                }
+                className="fixed bottom-0 left-0 w-full flex justify-center z-50 pointer-events-none"
+                style={{
+                    background: "transparent",
+                    paddingBottom: getPlatformBottomPadding() / 6,
+                }}
             >
-                <div className="flex flex-col gap-1 pointer-events-auto rounded-2xl shadow-2xl bg-white/95 px-8 py-3 border border-gray-200 items-center min-w-[280px]">
+                <div className="flex flex-col gap-1 pointer-events-auto rounded-2xl shadow-2xl bg-white/95 px-8 py-3 border border-gray-200 items-center min-w-[280px]"
+                    style={{ marginBottom: isAndroid() ? "39px" : 0 }}
+                >
                     <div className="flex justify-center items-center gap-8">
                         <Button
                             onClick={handlePrev}
@@ -228,6 +259,6 @@ export function MainExperience() {
                     </span>
                 </div>
             </div>
-        </div>
+        </div >
     );
 }
