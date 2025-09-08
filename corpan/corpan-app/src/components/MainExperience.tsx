@@ -201,7 +201,7 @@ export function MainExperience() {
                                 >
                                     <Button
                                         className="mt-1"
-                                        size="sm"
+                                        size="default"
                                         variant="outline"
                                         style={{ cursor: "pointer" }}
                                     >
