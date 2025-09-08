@@ -13,7 +13,7 @@ export const ALL_DOMAINS = [
     "civic", "technology", "environment", "emergency", "culture", "everyday",
 ];
 
-export const ALL_TEXT_SIZES = ["small", "medium", "large", "extra-large"] as const;
+export const ALL_TEXT_SIZES = ["small", "medium", "semi-large", "large", "extra-large"] as const;
 export type TextSizeType = typeof ALL_TEXT_SIZES[number];
 
 type SettingsState = {
@@ -54,11 +54,11 @@ export const useSettingsStore = create<SettingsState>()(
                     languages: ["en", "es", "pt-BR", "fr", "it", "ko-polite"].reverse(),
                     domains: [...ALL_DOMAINS],
                     levels: ["A1"],
-                    textSize: "medium", // Add textSize to reset
+                    textSize: "semi-large",
                 }),
             rate: 0.7,
             setRate: (rate) => set({ rate }),
-            textSize: "medium",
+            textSize: "semi-large",
             setTextSize: (size) => set({ textSize: size }),
 
             showRomanization: true,
