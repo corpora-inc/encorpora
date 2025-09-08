@@ -53,6 +53,7 @@
     "textSize": "テキストサイズ",
     "small": "小",
     "medium": "中",
+    "semiLarge": "やや大",
     "large": "大",
     "extraLarge": "特大",
     "testTts": "以下のボタンをクリックしてTTS設定をテストしてください：",

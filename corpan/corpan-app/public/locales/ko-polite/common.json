@@ -53,6 +53,7 @@
     "textSize": "텍스트 크기",
     "small": "작음",
     "medium": "보통",
+    "semiLarge": "약간 큼",
     "large": "큼",
     "extraLarge": "아주 큼",
     "testTts": "아래 버튼을 눌러 TTS 설정을 테스트해보세요.",
