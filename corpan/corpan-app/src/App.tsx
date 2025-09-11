@@ -40,7 +40,7 @@ export default function App() {
         <MainExperience />
         
         {/* Floating History Button - Left */}
-        <div className="fixed top-3 pt-safe left-5 z-50"
+        <div className="fixed top-16 pt-safe right-5 z-50"
           style={{ marginTop: getPlatformTopPaddingButtons() - 3 }}
         >
           <HistorySheet>
