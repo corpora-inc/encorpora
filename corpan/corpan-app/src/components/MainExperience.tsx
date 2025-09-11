@@ -7,12 +7,15 @@ import {
     Speaker,
     AudioLines,
     Ear,
+    Bookmark as BookmarkIcon,
+    BookmarkCheck as BookmarkCheckIcon,
 } from "lucide-react";
 import { motion } from "framer-motion";
 
 import { Button } from "@/components/ui/button";
 import { useSettingsStore } from "@/store/settings";
 import { useHistoryStore, EntryOut } from "@/store/history";
+import { useBookmarkStore } from "@/store/bookmarks";
 import { createVoiceTTS } from "@/util/speak";
 import { useTranslation } from "react-i18next";
 
@@ -47,6 +50,10 @@ export function MainExperience() {
     const index = useHistoryStore((s) => s.index);
     const pushEntry = useHistoryStore((s) => s.pushEntry);
     const setIndex = useHistoryStore((s) => s.setIndex);
+
+    const addBookmark = useBookmarkStore((s) => s.addBookmark);
+    const removeBookmark = useBookmarkStore((s) => s.removeBookmark);
+    const isBookmarked = useBookmarkStore((s) => s.isBookmarked);
 
     // Fetch a random entry with all languages, push to history
     const fetchRandomEntry = async () => {
@@ -92,6 +99,17 @@ export function MainExperience() {
     const handleNext = () => {
         if (index < history.length - 1) setIndex(index + 1);
         else fetchRandomEntry();
+    };
+
+    // Bookmark functionality
+    const toggleBookmark = () => {
+        if (curr) {
+            if (isBookmarked(curr.entry_id)) {
+                removeBookmark(curr.entry_id);
+            } else {
+                addBookmark(curr);
+            }
+        }
     };
 
     const displayedLanguages = [...languages].reverse();
@@ -182,7 +200,7 @@ export function MainExperience() {
                                 </div>
                                 {/* Render romanization if enabled and available */}
                                 {showRomanization && romanizationByLang[code] && (
-                                    <div className="text-center text-sm text-base text-gray-400 italic mt-1 mb-1 select-text"
+                                    <div className="text-center text-sm text-gray-400 italic mt-1 mb-1 select-text"
                                         style={{
                                             maxWidth: "80vw",
                                             wordBreak: "break-word",
@@ -252,6 +270,21 @@ export function MainExperience() {
                             aria-label="Next sentence"
                         >
                             <ChevronRightIcon />
+                        </Button>
+                    </div>
+                    <div className="flex justify-center items-center gap-3 mt-2">
+                        <Button
+                            onClick={toggleBookmark}
+                            variant="ghost"
+                            size="sm"
+                            aria-label={curr && isBookmarked(curr.entry_id) ? "Remove bookmark" : "Add bookmark"}
+                            disabled={!curr}
+                        >
+                            {curr && isBookmarked(curr.entry_id) ? (
+                                <BookmarkCheckIcon className="h-4 w-4" />
+                            ) : (
+                                <BookmarkIcon className="h-4 w-4" />
+                            )}
                         </Button>
                     </div>
                     <span className="text-xs text-gray-400 mt-1">
