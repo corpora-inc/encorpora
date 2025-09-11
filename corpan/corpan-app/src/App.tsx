@@ -47,10 +47,10 @@ export default function App() {
             <Button
               variant="default"
               size="lg"
-              className="rounded-full shadow-lg bg-white border border-gray-200 hover:bg-gray-100 transition"
+              className="rounded-full shadow-lg bg-white border border-gray-200 hover:bg-gray-100 transition w-12 h-12 !p-0"
               aria-label="History & Bookmarks"
             >
-              <HistoryIcon className="text-gray-600" />
+              <HistoryIcon className="text-gray-600 w-8 h-8" />
             </Button>
           </HistorySheet>
         </div>
@@ -62,14 +62,12 @@ export default function App() {
           <div className="flex items-center gap-2">
             <Button
               variant="default"
-              // size="icon"
               size="lg"
-              // size="sm"
-              className="rounded-full shadow-lg bg-white border border-gray-200 hover:bg-gray-100 transition"
+              className="rounded-full shadow-lg bg-white border border-gray-200 hover:bg-gray-100 transition w-12 h-12 !p-0"
               aria-label="Settings"
               onClick={() => setShowSettings(true)}
             >
-              <SettingsIcon className="text-gray-600" />
+              <SettingsIcon className="text-gray-600 w-8 h-8" />
             </Button>
           </div>
         </div>
