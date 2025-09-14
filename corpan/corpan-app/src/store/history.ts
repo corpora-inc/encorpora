@@ -106,23 +106,23 @@ export const useHistoryStore = create<HistoryState>()(
                     set({ byStack: { ...byStack, [aId]: next } });
                 },
 
-                pushEntry: (entryOrId) => {
+                // Always append to the end, never truncate forward history.
+                pushEntry: (entryId: number) => {
                     const aId =
                         useSettingsStore.getState().activeStackId ||
                         Object.keys(useSettingsStore.getState().stacks || {})[0] ||
                         "default";
-                    const { byStack } = get();
-                    const curr = byStack[aId] ?? { ids: [], index: -1 };
 
-                    const id =
-                        typeof entryOrId === "number"
-                            ? entryOrId
-                            : (entryOrId as EntryOut)?.entry_id;
-                    if (typeof id !== "number") return;
-
-                    const nextIds = [...curr.ids.slice(0, curr.index + 1), id];
-                    const next: StackHistory = { ids: nextIds, index: nextIds.length - 1 };
-                    set({ byStack: { ...byStack, [aId]: next } });
+                    set((state) => {
+                        const curr = state.byStack[aId] ?? { ids: [], index: -1 };
+                        const ids = [...curr.ids, entryId];
+                        return {
+                            byStack: {
+                                ...state.byStack,
+                                [aId]: { ids, index: ids.length - 1 }, // jump to the new tail
+                            },
+                        };
+                    });
                 },
 
                 // src/store/history.ts
