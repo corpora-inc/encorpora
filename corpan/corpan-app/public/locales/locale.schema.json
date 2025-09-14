@@ -340,11 +340,62 @@
       "type": "object",
       "properties": {
         "note": {
-          "type": "string"
+          "type": "string",
+          "description": "Helper text shown under the toolbar."
+        },
+        "newStackBase": {
+          "type": "string",
+          "description": "Base name for a newly created stack."
+        },
+        "untitled": {
+          "type": "string",
+          "description": "Fallback name when the stack name is empty."
+        },
+        "delete": {
+          "type": "string",
+          "description": "Tooltip/label for the delete button."
+        },
+        "confirmDeleteTitle": {
+          "type": "string",
+          "description": "Title in the delete confirmation UI."
+        },
+        "confirmDelete": {
+          "type": "string",
+          "description": "Body text in the delete confirmation UI."
+        },
+        "new": {
+          "type": "string",
+          "description": "Tooltip/label for the new stack button."
+        },
+        "newName": {
+          "type": "string",
+          "description": "Label/placeholder for the 'name for new stack' field."
+        },
+        "rename": {
+          "type": "string",
+          "description": "Tooltip/label for the rename button."
+        },
+        "selectAria": {
+          "type": "string",
+          "description": "ARIA label for the stack select."
+        },
+        "selectPlaceholder": {
+          "type": "string",
+          "description": "Placeholder text inside the stack select."
         }
       },
       "required": [
-        "note"
+        "note",
+        "newStackBase",
+        "untitled",
+        "delete",
+        "confirmDeleteTitle",
+        "confirmDelete",
+        "new",
+        "newName",
+        "rename",
+        "selectAria",
+        "selectPlaceholder"
       ],
       "additionalProperties": false
     }
