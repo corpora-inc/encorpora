@@ -1,3 +1,4 @@
+// src/components/ui/popover.tsx
 "use client";
 
 import * as React from "react";
@@ -7,10 +8,7 @@ import { cn } from "@/lib/utils";
 const Popover = PopoverPrimitive.Root;
 const PopoverTrigger = PopoverPrimitive.Trigger;
 
-type PopoverContentProps = React.ComponentPropsWithoutRef<
-    typeof PopoverPrimitive.Content
-> & {
-    /** Portal into a specific element (e.g. "settings-modal-content") */
+type PopoverContentProps = React.ComponentPropsWithoutRef<typeof PopoverPrimitive.Content> & {
     containerId?: string;
 };
 
@@ -29,8 +27,10 @@ const PopoverContent = React.forwardRef<
                 ref={ref}
                 align={align}
                 sideOffset={sideOffset}
+                onOpenAutoFocus={(e) => e.preventDefault()}
+                onCloseAutoFocus={(e) => e.preventDefault()}
                 className={cn(
-                    "z-[2000] rounded-xl border bg-white p-3 text-gray-900 shadow-md outline-none",
+                    "z-[100000] rounded-xl border bg-white p-3 text-gray-900 shadow-md outline-none",
                     "data-[state=open]:animate-in data-[state=closed]:animate-out",
                     "data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
                     "data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95",
@@ -45,4 +45,4 @@ const PopoverContent = React.forwardRef<
 });
 PopoverContent.displayName = PopoverPrimitive.Content.displayName;
 
-export { Popover, PopoverTrigger, PopoverContent, Popover as default };
+export { Popover, PopoverTrigger, PopoverContent };

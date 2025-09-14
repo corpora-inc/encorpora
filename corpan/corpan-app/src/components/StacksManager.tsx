@@ -91,7 +91,7 @@ export function StacksManager() {
                         onChange={handleRenameChange}
                         inputRef={renameRef}
                     />
-                    <StacksManagerNewPopover
+                    {/* <StacksManagerNewPopover
                         open={newOpen}
                         setOpen={setNewOpen}
                         newName={newName}
@@ -104,7 +104,7 @@ export function StacksManager() {
                         canDelete={stacksList.length > 1}
                         activeName={active?.name}
                         onConfirm={handleConfirmDelete}
-                    />
+                    /> */}
                 </div>
             </div>
 
