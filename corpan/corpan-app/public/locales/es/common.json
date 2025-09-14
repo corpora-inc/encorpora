@@ -83,5 +83,8 @@
     "feedbackNote": "Para problemas o sugerencias, por favor visita nuestro repositorio de GitHub o contáctanos por correo electrónico.",
     "githubIssues": "Problemas en GitHub",
     "aboutCorpan": "Sobre Corpán"
+  },
+  "stacks": {
+    "note": "Cada Stack™ tiene sus propios ajustes e historial."
   }
 }

@@ -335,6 +335,18 @@
         "aboutCorpan"
       ],
       "additionalProperties": false
+    },
+    "stacks": {
+      "type": "object",
+      "properties": {
+        "note": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "note"
+      ],
+      "additionalProperties": false
     }
   },
   "required": [
@@ -343,7 +355,8 @@
     "settings",
     "onboarding",
     "common",
-    "footer"
+    "footer",
+    "stacks"
   ],
   "additionalProperties": false
 }
