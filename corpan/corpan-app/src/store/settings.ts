@@ -4,49 +4,15 @@ import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import { RTL_LANGUAGES } from "./constants";
 
-/**
- * v0.7.0: Multi-stack settings store
- * - Preserves existing selectors (languages/domains/levels/rate/textSize/showRomanization/etc.)
- *   but they now read/write the ACTIVE STACK.
- * - Adds stack CRUD: getStacks, setActiveStack, createStack, renameStack, deleteStack
- * - One-time migration: imports legacy `corpan-settings` (if present) into a "Default" stack.
- */
-
 export const ALL_LANGUAGES = [
-    "en",
-    "ko-polite",
-    "es",
-    "fr",
-    "de",
-    "pt-BR",
-    "ja",
-    "zh-Hans",
-    "ar",
-    "ru",
-    "it",
-    "hi",
-    "vi",
-    "pl",
-    "hu",
-    "fa",
+    "en", "ko-polite", "es", "fr", "de", "pt-BR", "ja", "zh-Hans", "ar", "ru", "it", "hi", "vi", "pl", "hu", "fa",
 ];
 
 export const ALL_LEVELS = ["A1", "A2", "B1", "B2", "C1", "C2"];
 
 export const ALL_DOMAINS = [
-    "travel",
-    "business",
-    "education",
-    "social",
-    "health",
-    "housing",
-    "numbers",
-    "civic",
-    "technology",
-    "environment",
-    "emergency",
-    "culture",
-    "everyday",
+    "travel", "business", "education", "social", "health", "housing", "numbers",
+    "civic", "technology", "environment", "emergency", "culture", "everyday",
 ];
 
 export const ALL_TEXT_SIZES = ["small", "medium", "large", "extra-large"] as const;
@@ -72,64 +38,53 @@ export type Stack = {
 };
 
 type MultiStackState = {
-    // multi-stack core
+    // Core
     stacks: Record<StackId, Stack>;
     activeStackId: StackId;
 
-    // global onboarding UX (unchanged)
+    // Derived mirrors of active stack (REAL FIELDS, not getters)
+    languages: string[];
+    domains: string[];
+    levels: string[];
+    rate: number;
+    textSize: TextSizeType;
+    showRomanization: boolean;
+
+    // Global onboarding (not per stack)
     onboarded: boolean;
     onboardingStep: number;
 
-    // === Existing selectors mapped to ACTIVE stack ===
-    languages: string[];
+    // Existing API (unchanged)
     setLanguages: (codes: string[]) => void;
-
-    domains: string[];
     setDomains: (domains: string[]) => void;
-
-    levels: string[];
     setLevels: (levels: string[]) => void;
-
-    rate: number;
     setRate: (rate: number) => void;
-
-    textSize: TextSizeType;
     setTextSize: (size: TextSizeType) => void;
-
-    showRomanization: boolean;
     setShowRomanization: (val: boolean) => void;
 
     primaryLang: () => string;
     dir: () => "ltr" | "rtl";
-
     reset: () => void;
 
     setOnboarded: (b: boolean) => void;
     resetOnboarding: () => void;
     setOnboardingStep: (n: number) => void;
 
-    // === New stack management API ===
+    // New stack mgmt
     getStacks: () => Array<{ id: string; name: string }>;
     getActiveStackId: () => string;
     getActiveStackName: () => string;
     setActiveStack: (id: string) => void;
-    createStack: (name?: string, baseId?: string) => string; // returns new id
+    createStack: (name?: string, baseId?: string) => string;
     renameStack: (id: string, name: string) => void;
     deleteStack: (id: string) => void;
 };
 
-// ----- defaults & helpers -----
+// ---------- helpers ----------
 
 const DEFAULT_STACK_NAME = "Default";
-
-function now() {
-    return Date.now();
-}
-
-function nanoid(): string {
-    // Compact unique id (no external deps)
-    return Math.random().toString(36).slice(2, 10) + Math.random().toString(36).slice(2, 10);
-}
+const now = () => Date.now();
+const nanoid = () => Math.random().toString(36).slice(2, 10) + Math.random().toString(36).slice(2, 10);
 
 const DEFAULT_SETTINGS: StackSettings = {
     languages: ["en", "es", "pt-BR", "fr", "it", "ko-polite"].reverse(),
@@ -164,33 +119,36 @@ function cloneStack(src: Stack, newName?: string): Stack {
     };
 }
 
-// Attempt a one-time import from legacy single-stack storage
+function deriveFrom(stack: Stack) {
+    return {
+        languages: [...stack.settings.languages],
+        domains: [...stack.settings.domains],
+        levels: [...stack.settings.levels],
+        rate: stack.settings.rate,
+        textSize: stack.settings.textSize,
+        showRomanization: stack.settings.showRomanization,
+    };
+}
+
+// One-time import from legacy single-stack storage
 function importLegacySingleStack(): { stacks: Record<string, Stack>; activeStackId: string } | null {
     try {
         const raw = localStorage.getItem("corpan-settings");
         if (!raw) return null;
-
         const parsed = JSON.parse(raw);
-        // Zustand persist with { state: {...} } shape
         const legacyState = parsed?.state ?? parsed;
 
         const legacy: Partial<StackSettings> = {
             languages: Array.isArray(legacyState?.languages) ? legacyState.languages : undefined,
             domains: Array.isArray(legacyState?.domains) ? legacyState.domains : undefined,
             levels: Array.isArray(legacyState?.levels) ? legacyState.levels : undefined,
-            rate:
-                typeof legacyState?.rate === "number" && isFinite(legacyState.rate)
-                    ? legacyState.rate
-                    : undefined,
+            rate: typeof legacyState?.rate === "number" ? legacyState.rate : undefined,
             textSize: ALL_TEXT_SIZES.includes(legacyState?.textSize) ? legacyState.textSize : undefined,
-            showRomanization:
-                typeof legacyState?.showRomanization === "boolean"
-                    ? legacyState.showRomanization
-                    : undefined,
+            showRomanization: typeof legacyState?.showRomanization === "boolean" ? legacyState.showRomanization : undefined,
         };
 
-        const stack = makeStack(DEFAULT_STACK_NAME, legacy);
-        return { stacks: { [stack.id]: stack }, activeStackId: stack.id };
+        const s = makeStack(DEFAULT_STACK_NAME, legacy);
+        return { stacks: { [s.id]: s }, activeStackId: s.id };
     } catch {
         return null;
     }
@@ -199,140 +157,110 @@ function importLegacySingleStack(): { stacks: Record<string, Stack>; activeStack
 export const useSettingsStore = create<MultiStackState>()(
     persist(
         (set, get) => {
-            // Initialize with either legacy-imported single stack or a fresh default stack
             const imported = importLegacySingleStack();
-            const initialStack = imported
-                ? imported
-                : (() => {
+            const boot = imported ?? (() => {
+                const s = makeStack(DEFAULT_STACK_NAME);
+                return { stacks: { [s.id]: s }, activeStackId: s.id };
+            })();
+
+            // initialize derived
+            const active = boot.stacks[boot.activeStackId] ?? Object.values(boot.stacks)[0];
+            const derived = deriveFrom(active);
+
+            const writeActiveSettings = (mutator: (s: StackSettings) => void) => {
+                const { stacks, activeStackId } = get();
+                const stack = stacks[activeStackId];
+                if (!stack) return;
+                const updated: Stack = {
+                    ...stack,
+                    settings: { ...stack.settings },
+                    updatedAt: now(),
+                };
+                mutator(updated.settings);
+                set({
+                    stacks: { ...stacks, [activeStackId]: updated },
+                    ...deriveFrom(updated),
+                });
+            };
+
+            const syncToActive = () => {
+                const { stacks, activeStackId } = get();
+                const curr = stacks[activeStackId] ?? Object.values(stacks)[0];
+                if (!curr) {
                     const s = makeStack(DEFAULT_STACK_NAME);
-                    return { stacks: { [s.id]: s }, activeStackId: s.id };
-                })();
-
-            const readActive = (): Stack => {
-                const { stacks, activeStackId } = get();
-                const s = stacks[activeStackId];
-                // Hard self-heal: if missing, re-point to any stack
-                if (!s) {
-                    const any = Object.values(stacks)[0];
-                    if (any) {
-                        set({ activeStackId: any.id });
-                        return any;
-                    }
-                    // really pathological: recreate default
-                    const fresh = makeStack(DEFAULT_STACK_NAME);
-                    set({ stacks: { [fresh.id]: fresh }, activeStackId: fresh.id });
-                    return fresh;
+                    set({ stacks: { [s.id]: s }, activeStackId: s.id, ...deriveFrom(s) });
+                    return;
                 }
-                return s;
+                set({ ...deriveFrom(curr) });
             };
 
-            const writeActive = (mutate: (s: Stack) => void) => {
-                const { stacks, activeStackId } = get();
-                const s = stacks[activeStackId];
-                if (!s) return;
-                const copy: Stack = { ...s, settings: { ...s.settings }, updatedAt: now() };
-                mutate(copy);
-                set({ stacks: { ...stacks, [activeStackId]: copy } });
-            };
-
-            // Public API impl
             return {
-                // core state
-                stacks: initialStack.stacks,
-                activeStackId: initialStack.activeStackId,
+                // core
+                stacks: boot.stacks,
+                activeStackId: boot.activeStackId,
 
-                // onboarding (global)
+                // derived mirrors
+                ...derived,
+
+                // global onboarding
                 onboarded: false,
                 onboardingStep: 0,
 
-                // selectors mapped to active stack
-                get languages() {
-                    return readActive().settings.languages;
-                },
-                setLanguages: (codes) =>
-                    writeActive((s) => {
-                        s.settings.languages = codes;
-                    }),
-
-                get domains() {
-                    return readActive().settings.domains;
-                },
-                setDomains: (domains) =>
-                    writeActive((s) => {
-                        s.settings.domains = domains;
-                    }),
-
-                get levels() {
-                    return readActive().settings.levels;
-                },
-                setLevels: (levels) =>
-                    writeActive((s) => {
-                        s.settings.levels = levels;
-                    }),
-
-                get rate() {
-                    return readActive().settings.rate;
-                },
-                setRate: (rate) =>
-                    writeActive((s) => {
-                        s.settings.rate = rate;
-                    }),
-
-                get textSize() {
-                    return readActive().settings.textSize;
-                },
-                setTextSize: (size) =>
-                    writeActive((s) => {
-                        s.settings.textSize = size;
-                    }),
-
-                get showRomanization() {
-                    return readActive().settings.showRomanization;
-                },
-                setShowRomanization: (val) =>
-                    writeActive((s) => {
-                        s.settings.showRomanization = val;
-                    }),
+                // existing API (writes to active stack + keeps mirrors in sync)
+                setLanguages: (codes) => writeActiveSettings((s) => { s.languages = codes; }),
+                setDomains: (domains) => writeActiveSettings((s) => { s.domains = domains; }),
+                setLevels: (levels) => writeActiveSettings((s) => { s.levels = levels; }),
+                setRate: (rate) => writeActiveSettings((s) => { s.rate = rate; }),
+                setTextSize: (size) => writeActiveSettings((s) => { s.textSize = size; }),
+                setShowRomanization: (val) => writeActiveSettings((s) => { s.showRomanization = val; }),
 
                 primaryLang: () => {
-                    const langs = readActive().settings.languages;
-                    return langs[0];
+                    const { languages } = get();
+                    return languages[0];
                 },
 
                 dir: () => {
-                    const lang = readActive().settings.languages[0];
-                    const base = (lang || "").split("-")[0];
+                    const { languages } = get();
+                    const base = (languages[0] || "").split("-")[0];
                     return RTL_LANGUAGES.includes(base as any) ? "rtl" : "ltr";
                 },
 
-                reset: () =>
-                    writeActive((s) => {
-                        s.settings = { ...DEFAULT_SETTINGS };
-                    }),
+                reset: () => {
+                    const { stacks, activeStackId } = get();
+                    const stack = stacks[activeStackId];
+                    if (!stack) return;
+                    const updated: Stack = { ...stack, settings: { ...DEFAULT_SETTINGS }, updatedAt: now() };
+                    set({
+                        stacks: { ...stacks, [activeStackId]: updated },
+                        ...deriveFrom(updated),
+                    });
+                },
 
                 setOnboarded: (b) => set({ onboarded: b }),
                 resetOnboarding: () => set({ onboarded: false }),
                 setOnboardingStep: (n) => set({ onboardingStep: n }),
 
-                // stacks management
+                // stacks mgmt
                 getStacks: () => Object.values(get().stacks).map(({ id, name }) => ({ id, name })),
                 getActiveStackId: () => get().activeStackId,
-                getActiveStackName: () => readActive().name,
+                getActiveStackName: () => {
+                    const { stacks, activeStackId } = get();
+                    return stacks[activeStackId]?.name ?? DEFAULT_STACK_NAME;
+                },
 
                 setActiveStack: (id) => {
                     const { stacks } = get();
-                    if (stacks[id]) set({ activeStackId: id });
+                    if (!stacks[id]) return;
+                    set({ activeStackId: id });
+                    syncToActive();
                 },
 
                 createStack: (name?: string, baseId?: string) => {
-                    const { stacks } = get();
-                    let newStack: Stack;
-                    if (baseId && stacks[baseId]) {
-                        newStack = cloneStack(stacks[baseId], name);
-                    } else {
-                        newStack = makeStack(name || DEFAULT_STACK_NAME);
-                    }
-                    set({ stacks: { ...stacks, [newStack.id]: newStack }, activeStackId: newStack.id });
+                    const { stacks, activeStackId } = get();
+                    const base = baseId && stacks[baseId] ? stacks[baseId] : stacks[activeStackId];
+                    const newStack = base ? cloneStack(base, name || `${base.name} copy`) : makeStack(name || DEFAULT_STACK_NAME);
+                    const nextStacks = { ...stacks, [newStack.id]: newStack };
+                    set({ stacks: nextStacks, activeStackId: newStack.id, ...deriveFrom(newStack) });
                     return newStack.id;
                 },
 
@@ -347,28 +275,52 @@ export const useSettingsStore = create<MultiStackState>()(
                 deleteStack: (id) => {
                     const { stacks, activeStackId } = get();
                     const keys = Object.keys(stacks);
-                    if (keys.length <= 1) return; // protect last stack
-
-                    if (!stacks[id]) return;
+                    if (keys.length <= 1 || !stacks[id]) return;
 
                     const nextStacks = { ...stacks };
                     delete nextStacks[id];
 
                     let nextActive = activeStackId;
                     if (activeStackId === id) {
-                        // pick a deterministic next (first key)
-                        const firstId = Object.keys(nextStacks)[0];
-                        nextActive = firstId;
+                        nextActive = Object.keys(nextStacks)[0];
                     }
                     set({ stacks: nextStacks, activeStackId: nextActive });
+                    const curr = nextStacks[nextActive] ?? Object.values(nextStacks)[0];
+                    if (curr) set({ ...deriveFrom(curr) });
                 },
             };
         },
         {
             name: "corpan-stacks-v1",
             version: 1,
-            // Note: We intentionally avoid a complex migrate() here since we import legacy in-constructor.
-            // If you later bump versions, you can add a migrate function.
+            // Persist only canonical state (not the derived mirrors)
+            partialize: (state) => ({
+                stacks: state.stacks,
+                activeStackId: state.activeStackId,
+                onboarded: state.onboarded,
+                onboardingStep: state.onboardingStep,
+            }),
+            onRehydrateStorage: () => (state, error) => {
+                // After hydration, re-sync derived mirrors from active stack
+                if (error) return;
+                try {
+                    const { stacks, activeStackId } = state as unknown as MultiStackState;
+                    const active =
+                        (stacks && stacks[activeStackId]) ||
+                        (stacks && Object.values(stacks)[0]) ||
+                        makeStack(DEFAULT_STACK_NAME);
+                    // Use a set call through the store instance
+                    // eslint-disable-next-line @typescript-eslint/no-var-requires
+                    const useStore = require("./settings").useSettingsStore as typeof useSettingsStore;
+                    useStore.setState({
+                        stacks: stacks ?? { [active.id]: active },
+                        activeStackId: stacks ? (stacks[activeStackId] ? activeStackId : active.id) : active.id,
+                        ...deriveFrom(active),
+                    });
+                } catch {
+                    // noop
+                }
+            },
         }
     )
 );

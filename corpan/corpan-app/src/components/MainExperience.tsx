@@ -1,4 +1,5 @@
 // src/components/MainExperience.tsx
+// (update to derive the active stack's slice directly; no mirrors/subscriptions)
 
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { invoke } from "@tauri-apps/api/core";
@@ -26,13 +27,11 @@ import {
     isAndroid,
 } from "@/util/browser";
 
-// Types matching the Rust command return shapes
 type TranslationOut = {
     language_code: string;
     text: string;
     romanization: string;
 };
-
 type EntryOut = {
     entry_id: number;
     en_text: string;
@@ -43,18 +42,18 @@ type EntryOut = {
 
 export function MainExperience() {
     // Settings (active stack)
+    const activeStackId = useSettingsStore((s) => s.activeStackId);
     const languages = useSettingsStore((s) => s.languages);
     const domains = useSettingsStore((s) => s.domains);
     const levels = useSettingsStore((s) => s.levels);
     const rate = useSettingsStore((s) => s.rate);
     const showRomanization = useSettingsStore((s) => s.showRomanization);
-    const activeStackId = useSettingsStore((s) => s.activeStackId);
 
     const { t } = useTranslation();
 
-    // History (per active stack): now stores IDs only
-    const ids = useHistoryStore((s) => s.history);
-    const index = useHistoryStore((s) => s.index);
+    // Derive active history slice directly from canonical store
+    const ids = useHistoryStore((s) => s.byStack[activeStackId]?.ids ?? []);
+    const index = useHistoryStore((s) => s.byStack[activeStackId]?.index ?? -1);
     const pushEntry = useHistoryStore((s) => s.pushEntry);
     const setIndex = useHistoryStore((s) => s.setIndex);
 
@@ -65,7 +64,6 @@ export function MainExperience() {
 
     const languageCodes = useMemo(() => [...languages], [languages]);
 
-    // Fetch a random entry (filters applied), push ONLY its id into history
     const fetchRandomEntry = async () => {
         // keep index pointing to end before pushing new
         setIndex(ids.length - 1);
@@ -73,27 +71,22 @@ export function MainExperience() {
         const entry = await invoke<EntryOut>("get_random_entry_with_translations", {
             levels,
             domains,
-            languageCodes, // optional filter on backend; harmless if unused
-            language_codes: languageCodes, // also pass snake for safety across rust naming
+            languageCodes,
+            language_codes: languageCodes,
         }).catch(() => null);
 
         if (!entry) return;
-
-        // Prime cache for instant display
         cacheRef.current.set(entry.entry_id, entry);
-        pushEntry(entry.entry_id);
+        pushEntry(entry.entry_id); // store only the id
     };
 
-    // Resolve current ID -> EntryOut (from cache or Tauri)
     const resolveCurrent = async (entryId: number | undefined) => {
-        if (!entryId && entryId !== 0) {
+        if (entryId == null) {
             setCurrEntry(null);
             return;
         }
-        // use fetch sequence to ignore stale responses
         const mySeq = ++fetchSeqRef.current;
 
-        // serve from cache if present
         const cached = cacheRef.current.get(entryId);
         if (cached) {
             setCurrEntry(cached);
@@ -102,7 +95,7 @@ export function MainExperience() {
 
         const entry = await invoke<EntryOut>("get_entry_by_id_with_translations", {
             entryId,
-            entry_id: entryId, // rust param name safety
+            entry_id: entryId,
             languageCodes,
             language_codes: languageCodes,
         }).catch(() => null);
@@ -113,26 +106,24 @@ export function MainExperience() {
         }
     };
 
-    // Initial fetch when stack changes or history is empty
+    // When stack changes, ensure we show something for that stack
     useEffect(() => {
-        if (ids.length === 0) {
+        if ((ids?.length ?? 0) === 0) {
             fetchRandomEntry();
         } else {
-            // Ensure current entry is resolved when switching stacks
             const currId = ids[index] ?? ids[ids.length - 1];
             resolveCurrent(currId);
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [activeStackId]);
 
-    // When index or ids change, resolve the current entry
+    // Resolve whenever ids/index/languages change
     useEffect(() => {
         const currId = ids[index];
         resolveCurrent(currId);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [ids, index, languageCodes]);
 
-    // Scroll behavior same as before
     const scrollRef = useRef<HTMLDivElement>(null);
     useLayoutEffect(() => {
         setTimeout(() => {
@@ -142,7 +133,6 @@ export function MainExperience() {
         }, 33);
     }, [index]);
 
-    // Build translation lookup by language code
     const textByLang: Record<string, string> = {};
     const romanizationByLang: Record<string, string | undefined> = {};
     if (currEntry) {
@@ -153,10 +143,8 @@ export function MainExperience() {
         textByLang["en"] = currEntry.en_text;
     }
 
-    // Navigation
     const handlePrev = () => index > 0 && setIndex(index - 1);
     const handleNext = () => {
-        console.log("handleNext", { index, ids });
         if (index < ids.length - 1) setIndex(index + 1);
         else fetchRandomEntry();
     };
@@ -165,14 +153,10 @@ export function MainExperience() {
 
     return (
         <div className="flex flex-col flex-1 min-h-0 w-full items-center relative">
-            {/* Floating domain/level chips at top-left */}
             {currEntry && (
                 <div
                     className="fixed top-5 pt-safe left-5 z-50 pointer-events-none"
-                    style={{
-                        background: "transparent",
-                        marginTop: getPlatformTopPaddingButtons(),
-                    }}
+                    style={{ background: "transparent", marginTop: getPlatformTopPaddingButtons() }}
                 >
                     <div className="flex flex-wrap gap-1 items-center justify-center text-gray-400 text-xs mb-1">
                         <span className="px-2 py-0.5 rounded-full border border-gray-200 bg-gray-50 text-xs">
@@ -190,7 +174,6 @@ export function MainExperience() {
                 </div>
             )}
 
-            {/* Scrollable Translations */}
             <div
                 className="flex-1 w-full overflow-y-auto min-h-0 px-2 pt-20 flex flex-col"
                 ref={scrollRef}
@@ -222,28 +205,20 @@ export function MainExperience() {
                                     createVoiceTTS(langPrefix)(text, rate);
                                 }}
                             >
-                                <div key={idx} className="text-xs text-gray-400">
+                                <div className="text-xs text-gray-400">
                                     {t(`languages.${toCamelCase(code)}` as any) || code}
                                 </div>
                                 <div
                                     className="text-center text-xl md:text-2xl lg:text-3xl my-1"
-                                    style={{
-                                        wordBreak: "break-word",
-                                        maxWidth: "80vw",
-                                        lineHeight: 1.1,
-                                    }}
+                                    style={{ wordBreak: "break-word", maxWidth: "80vw", lineHeight: 1.1 }}
                                     dir={isRTL(code) ? "rtl" : "ltr"}
                                 >
                                     {textByLang[code] || <span className="opacity-30">—</span>}
                                 </div>
-                                {/* Render romanization if enabled and available */}
                                 {showRomanization && romanizationByLang[code] && (
                                     <div
                                         className="text-center text-sm text-base text-gray-400 italic mt-1 mb-1 select-text"
-                                        style={{
-                                            maxWidth: "80vw",
-                                            wordBreak: "break-word",
-                                        }}
+                                        style={{ maxWidth: "80vw", wordBreak: "break-word" }}
                                     >
                                         {romanizationByLang[code]}
                                     </div>
@@ -266,13 +241,9 @@ export function MainExperience() {
                 </div>
             </div>
 
-            {/* Floating Nav */}
             <div
                 className="fixed bottom-0 left-0 w-full flex justify-center z-50 pointer-events-none"
-                style={{
-                    background: "transparent",
-                    paddingBottom: getPlatformBottomPadding() / 6,
-                }}
+                style={{ background: "transparent", paddingBottom: getPlatformBottomPadding() / 6 }}
             >
                 <div
                     className="flex flex-col gap-1 pointer-events-auto rounded-2xl shadow-2xl bg-white/95 px-8 py-3 border border-gray-200 items-center min-w-[280px]"

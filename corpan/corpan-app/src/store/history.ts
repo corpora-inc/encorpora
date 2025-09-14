@@ -5,14 +5,12 @@ import { persist } from "zustand/middleware";
 import { useSettingsStore } from "./settings";
 
 /**
- * v0.7.0: Per-stack history (IDs only)
- * - Public API remains the same names, but history is now number[] (entry_ids).
- * - Internally keyed by activeStackId from settings.
- * - One-time migration: imports legacy `corpan-history` (EntryOut[]) into Default stack as ids[].
+ * v0.7.0: Per-stack history (IDs only), no subscriptions/mirrors.
+ * - Canonical state: byStack[stackId] = { ids, index }
+ * - Components derive the active slice with activeStackId from settings.
+ * - Mutators always write to the CURRENT active stack.
  */
 
-// Keep a minimal shape so existing imports of EntryOut don't explode.
-// In v0.7.x we only care about entry_id.
 export type EntryOut = { entry_id: number };
 
 type StackHistory = {
@@ -21,21 +19,15 @@ type StackHistory = {
 };
 
 type HistoryState = {
-    // Internal: histories for each stack
     byStack: Record<string, StackHistory>;
 
-    // Derived for the ACTIVE stack
-    history: number[];
-    index: number;
-
-    // API (same method names as before)
     setHistory: (ids: number[], index?: number) => void;
-    pushEntry: (entry: EntryOut | number) => void;
+    pushEntry: (entryOrId: EntryOut | number) => void;
     setIndex: (index: number) => void;
     clear: () => void;
 };
 
-// ---- migration from legacy single-history store ----
+// ---- one-time migration from legacy single-history store ----
 
 function importLegacyHistory(): Record<string, StackHistory> | null {
     try {
@@ -51,18 +43,18 @@ function importLegacyHistory(): Record<string, StackHistory> | null {
                 ? legacyState.index
                 : -1;
 
-        // Convert EntryOut[] -> number[]
         const ids: number[] = legacyArr
             .map((e) => (e && typeof e.entry_id === "number" ? e.entry_id : null))
             .filter((n) => typeof n === "number") as number[];
 
-        const stackId = useSettingsStore.getState().getActiveStackId?.() ||
-            useSettingsStore.getState().activeStackId ||
-            Object.keys(useSettingsStore.getState().stacks || {})[0] ||
+        const settings = useSettingsStore.getState();
+        const activeStackId =
+            settings.activeStackId ||
+            Object.keys(settings.stacks || {})[0] ||
             "default";
 
         return {
-            [stackId]: {
+            [activeStackId]: {
                 ids,
                 index: Math.min(Math.max(legacyIndex, -1), ids.length - 1),
             },
@@ -76,80 +68,93 @@ export const useHistoryStore = create<HistoryState>()(
     persist(
         (set, get) => {
             const imported = importLegacyHistory();
-            const initial: Record<string, StackHistory> = imported ?? {};
+            const initialByStack: Record<string, StackHistory> = imported ?? {};
 
-            const readActive = (): StackHistory => {
-                const activeId =
-                    useSettingsStore.getState().getActiveStackId?.() ||
-                    useSettingsStore.getState().activeStackId;
+            // Utility: operate on current active stack
+            const withActive = <T,>(fn: (h: StackHistory, aId: string) => T): T | void => {
+                const aId =
+                    useSettingsStore.getState().activeStackId ||
+                    Object.keys(useSettingsStore.getState().stacks || {})[0] ||
+                    "default";
+
                 const { byStack } = get();
-                const h = byStack[activeId];
-                if (h) return h;
+                const curr = byStack[aId] ?? { ids: [], index: -1 };
+                const result = fn(curr, aId);
 
-                // self-heal initialize empty history for this stack
-                const empty: StackHistory = { ids: [], index: -1 };
-                set({ byStack: { ...byStack, [activeId]: empty } });
-                return empty;
-            };
-
-            const writeActive = (mutate: (h: StackHistory) => void) => {
-                const activeId =
-                    useSettingsStore.getState().getActiveStackId?.() ||
-                    useSettingsStore.getState().activeStackId;
-                const { byStack } = get();
-                const current = byStack[activeId] ?? { ids: [], index: -1 };
-                const copy: StackHistory = { ids: [...current.ids], index: current.index };
-                mutate(copy);
-                set({ byStack: { ...byStack, [activeId]: copy } });
+                // If fn mutated, persist back
+                if (curr !== byStack[aId]) {
+                    // userland didn’t mutate ref; do nothing
+                    return result;
+                }
+                // We mutate via copy in callers; they will set()
+                return result;
             };
 
             return {
-                byStack: initial,
+                byStack: initialByStack,
 
-                // Derived getters reflect the active stack
-                get history() {
-                    return readActive().ids;
+                setHistory: (ids, index = -1) => {
+                    const aId =
+                        useSettingsStore.getState().activeStackId ||
+                        Object.keys(useSettingsStore.getState().stacks || {})[0] ||
+                        "default";
+                    const { byStack } = get();
+                    const next: StackHistory = {
+                        ids: [...ids],
+                        index: Math.min(Math.max(index, -1), ids.length - 1),
+                    };
+                    set({ byStack: { ...byStack, [aId]: next } });
                 },
-                get index() {
-                    return readActive().index;
+
+                pushEntry: (entryOrId) => {
+                    const aId =
+                        useSettingsStore.getState().activeStackId ||
+                        Object.keys(useSettingsStore.getState().stacks || {})[0] ||
+                        "default";
+                    const { byStack } = get();
+                    const curr = byStack[aId] ?? { ids: [], index: -1 };
+
+                    const id =
+                        typeof entryOrId === "number"
+                            ? entryOrId
+                            : (entryOrId as EntryOut)?.entry_id;
+                    if (typeof id !== "number") return;
+
+                    const nextIds = [...curr.ids.slice(0, curr.index + 1), id];
+                    const next: StackHistory = { ids: nextIds, index: nextIds.length - 1 };
+                    set({ byStack: { ...byStack, [aId]: next } });
                 },
 
-                setHistory: (ids, index = -1) =>
-                    writeActive((h) => {
-                        h.ids = [...ids];
-                        h.index = Math.min(Math.max(index, -1), h.ids.length - 1);
-                    }),
+                setIndex: (index) => {
+                    const aId =
+                        useSettingsStore.getState().activeStackId ||
+                        Object.keys(useSettingsStore.getState().stacks || {})[0] ||
+                        "default";
+                    const { byStack } = get();
+                    const curr = byStack[aId] ?? { ids: [], index: -1 };
+                    const next: StackHistory = {
+                        ids: curr.ids,
+                        index: Math.min(Math.max(index, -1), curr.ids.length - 1),
+                    };
+                    set({ byStack: { ...byStack, [aId]: next } });
+                },
 
-                pushEntry: (entryOrId) =>
-                    writeActive((h) => {
-                        const id =
-                            typeof entryOrId === "number"
-                                ? entryOrId
-                                : (entryOrId as EntryOut)?.entry_id;
-
-                        if (typeof id !== "number") return;
-
-                        // standard forward-history semantics
-                        const next = [...h.ids.slice(0, h.index + 1), id];
-                        h.ids = next;
-                        h.index = next.length - 1;
-                    }),
-
-                setIndex: (index) =>
-                    writeActive((h) => {
-                        h.index = Math.min(Math.max(index, -1), h.ids.length - 1);
-                    }),
-
-                clear: () =>
-                    writeActive((h) => {
-                        h.ids = [];
-                        h.index = -1;
-                    }),
+                clear: () => {
+                    const aId =
+                        useSettingsStore.getState().activeStackId ||
+                        Object.keys(useSettingsStore.getState().stacks || {})[0] ||
+                        "default";
+                    const { byStack } = get();
+                    set({ byStack: { ...byStack, [aId]: { ids: [], index: -1 } } });
+                },
             };
         },
         {
             name: "corpan-history-v2",
             version: 2,
+            partialize: (state) => ({
+                byStack: state.byStack, // only persist canonical data
+            }),
         }
     )
 );
