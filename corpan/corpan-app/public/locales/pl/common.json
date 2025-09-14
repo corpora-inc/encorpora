@@ -74,7 +74,10 @@
   },
   "common": {
     "loading": "Ładowanie...",
-    "instantPolyglotPractice": "Natychmiastowa praktyka poligloty"
+    "instantPolyglotPractice": "Natychmiastowa praktyka poligloty",
+    "cancel": "Anuluj",
+    "delete": "Usuń",
+    "create": "Utwórz"
   },
   "footer": {
     "appVersion": "Wersja aplikacji",

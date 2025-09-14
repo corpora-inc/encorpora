@@ -74,7 +74,10 @@
   },
   "common": {
     "loading": "Betöltés...",
-    "instantPolyglotPractice": "Azonnali többnyelvű gyakorlás"
+    "instantPolyglotPractice": "Azonnali többnyelvű gyakorlás",
+    "cancel": "Mégse",
+    "delete": "Törlés",
+    "create": "Létrehozás"
   },
   "footer": {
     "appVersion": "Alkalmazás verzió",

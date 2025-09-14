@@ -74,7 +74,10 @@
   },
   "common": {
     "loading": "Chargement...",
-    "instantPolyglotPractice": "Pratique polyglotte instantanée"
+    "instantPolyglotPractice": "Pratique polyglotte instantanée",
+    "cancel": "Annuler",
+    "delete": "Supprimer",
+    "create": "Créer"
   },
   "footer": {
     "appVersion": "Version de l'application",

@@ -74,7 +74,10 @@
   },
   "common": {
     "loading": "로드 중...",
-    "instantPolyglotPractice": "즉석 다국어 연습"
+    "instantPolyglotPractice": "즉석 다국어 연습",
+    "cancel": "취소",
+    "delete": "삭제",
+    "create": "생성"
   },
   "footer": {
     "appVersion": "앱 버전",

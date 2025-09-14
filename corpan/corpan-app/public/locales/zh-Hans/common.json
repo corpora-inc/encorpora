@@ -74,7 +74,10 @@
   },
   "common": {
     "loading": "加载中...",
-    "instantPolyglotPractice": "即时多语言练习"
+    "instantPolyglotPractice": "即时多语言练习",
+    "cancel": "取消",
+    "delete": "删除",
+    "create": "创建"
   },
   "footer": {
     "appVersion": "应用版本",

@@ -73,14 +73,6 @@ export default function StacksManagerNewPopover({
                         <div className="flex justify-end gap-2 pt-1">
                             <Button
                                 size="sm"
-                                variant="outline"
-                                className="cursor-pointer"
-                                onClick={() => setOpen(false)}
-                            >
-                                {t("common.cancel", { defaultValue: "Cancel" }) as string}
-                            </Button>
-                            <Button
-                                size="sm"
                                 className="cursor-pointer"
                                 onClick={onCreate}
                             >

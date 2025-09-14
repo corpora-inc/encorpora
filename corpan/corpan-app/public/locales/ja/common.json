@@ -74,7 +74,10 @@
   },
   "common": {
     "loading": "読み込み中...",
-    "instantPolyglotPractice": "インスタント多言語練習"
+    "instantPolyglotPractice": "インスタント多言語練習",
+    "cancel": "キャンセル",
+    "delete": "削除",
+    "create": "作成"
   },
   "footer": {
     "appVersion": "アプリのバージョン",

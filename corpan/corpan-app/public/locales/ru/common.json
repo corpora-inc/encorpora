@@ -74,7 +74,10 @@
   },
   "common": {
     "loading": "Загрузка...",
-    "instantPolyglotPractice": "Мгновенная практика на нескольких языках"
+    "instantPolyglotPractice": "Мгновенная практика на нескольких языках",
+    "cancel": "Отмена",
+    "delete": "Удалить",
+    "create": "Создать"
   },
   "footer": {
     "appVersion": "Версия приложения",

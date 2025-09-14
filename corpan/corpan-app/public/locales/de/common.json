@@ -74,7 +74,10 @@
   },
   "common": {
     "loading": "Wird geladen...",
-    "instantPolyglotPractice": "Sofortige Polyglott-Übung"
+    "instantPolyglotPractice": "Sofortige Polyglott-Übung",
+    "cancel": "Abbrechen",
+    "delete": "Löschen",
+    "create": "Erstellen"
   },
   "footer": {
     "appVersion": "App-Version",

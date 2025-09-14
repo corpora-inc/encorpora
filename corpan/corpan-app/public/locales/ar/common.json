@@ -74,7 +74,10 @@
   },
   "common": {
     "loading": "جار التحميل...",
-    "instantPolyglotPractice": "ممارسة متعددة اللغات فورية"
+    "instantPolyglotPractice": "ممارسة متعددة اللغات فورية",
+    "cancel": "إلغاء",
+    "delete": "حذف",
+    "create": "إنشاء"
   },
   "footer": {
     "appVersion": "إصدار التطبيق",

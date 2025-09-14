@@ -74,7 +74,10 @@
   },
   "common": {
     "loading": "Loading...",
-    "instantPolyglotPractice": "Instant polyglot practice"
+    "instantPolyglotPractice": "Instant polyglot practice",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "create": "Create"
   },
   "footer": {
     "appVersion": "App version",

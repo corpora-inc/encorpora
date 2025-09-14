@@ -74,7 +74,10 @@
   },
   "common": {
     "loading": "Đang tải...",
-    "instantPolyglotPractice": "Luyện tập đa ngôn ngữ tức thì"
+    "instantPolyglotPractice": "Luyện tập đa ngôn ngữ tức thì",
+    "cancel": "Hủy",
+    "delete": "Xóa",
+    "create": "Tạo"
   },
   "footer": {
     "appVersion": "Phiên bản ứng dụng",

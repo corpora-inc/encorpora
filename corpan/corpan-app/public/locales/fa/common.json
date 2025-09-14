@@ -74,7 +74,10 @@
   },
   "common": {
     "loading": "در حال بارگذاری...",
-    "instantPolyglotPractice": "تمرین چندزبانه فوری"
+    "instantPolyglotPractice": "تمرین چندزبانه فوری",
+    "cancel": "لغو",
+    "delete": "حذف",
+    "create": "ایجاد"
   },
   "footer": {
     "appVersion": "نسخه برنامه",

@@ -74,7 +74,10 @@
   },
   "common": {
     "loading": "Carregando...",
-    "instantPolyglotPractice": "Prática instantânea de poliglota"
+    "instantPolyglotPractice": "Prática instantânea de poliglota",
+    "cancel": "Cancelar",
+    "delete": "Excluir",
+    "create": "Criar"
   },
   "footer": {
     "appVersion": "Versão do App",

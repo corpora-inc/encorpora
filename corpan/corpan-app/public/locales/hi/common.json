@@ -74,7 +74,10 @@
   },
   "common": {
     "loading": "लोड हो रहा है...",
-    "instantPolyglotPractice": "झटपट बहुभाषी अभ्यास"
+    "instantPolyglotPractice": "झटपट बहुभाषी अभ्यास",
+    "cancel": "रद्द करें",
+    "delete": "हटाएं",
+    "create": "बनाएँ"
   },
   "footer": {
     "appVersion": "एप्लिकेशन संस्करण",
