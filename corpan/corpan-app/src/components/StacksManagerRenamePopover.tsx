@@ -61,9 +61,6 @@ export default function StacksManagerRenamePopover({
                     className="absolute right-0 top-full z-[1000] mt-2 w-[260px] rounded-xl border border-gray-200 bg-white p-3 text-gray-900 shadow-md"
                 >
                     <div className="space-y-2">
-                        <label className="text-xs text-gray-500">
-                            {t("stacks.renameLabel", { defaultValue: "Stack name" }) as string}
-                        </label>
                         <input
                             ref={inputRef}
                             type="text"
