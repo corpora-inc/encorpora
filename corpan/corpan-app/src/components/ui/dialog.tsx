@@ -70,13 +70,17 @@ function DialogContent({
           paddingTop: getPlatformTopPaddingButtons(),
         }}
       >
-        {/* Move Close BEFORE children and make it sticky */}
-        <DialogPrimitive.Close
-          className="sticky top-3 z-[1001] ml-auto inline-flex items-center justify-center rounded-md border bg-background p-1 shadow-sm cursor-pointer transition-all hover:shadow-md hover:bg-background focus:outline-hidden focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none pointer-events-auto"
-        >
-          <XIcon className="size-8" />
-          <span className="sr-only">Close</span>
-        </DialogPrimitive.Close>
+        {/* Sticky wrapper reserves space; button is absolute so rings don’t affect layout */}
+        <div className="sticky top-3 z-[1001]">
+          <div className="relative h-10">
+            <DialogPrimitive.Close
+              className="absolute right-0 top-0 inline-flex h-9 w-9 items-center justify-center rounded-md border bg-background shadow-sm cursor-pointer transition-shadow hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none pointer-events-auto"
+            >
+              <XIcon className="h-5 w-5" />
+              <span className="sr-only">Close</span>
+            </DialogPrimitive.Close>
+          </div>
+        </div>
 
         {children}
       </DialogPrimitive.Content>
