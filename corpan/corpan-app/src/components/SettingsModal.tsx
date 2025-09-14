@@ -53,12 +53,14 @@ export function SettingsModal({
         <DialogDescription dir={dir()}>
           {t("settings.adjustToYourPreferences")}
         </DialogDescription>
+        {/* Stack definition */}
         <TextSizeAdjuster />
         <RateAdjuster />
         <LanguageSelectOrder />
         <LevelsPicker />
         <DomainPicker />
         <RomanizationToggle />
+        {/* Above is a Stack definition; Below could go somewhere else */}
         <Button
           onClick={() => {
             setOnboarded(false);

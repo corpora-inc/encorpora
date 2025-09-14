@@ -1,4 +1,6 @@
-import { useEffect, useLayoutEffect, useRef } from "react";
+// src/components/MainExperience.tsx
+
+import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { invoke } from "@tauri-apps/api/core";
 import {
     ChevronLeft as ChevronLeftIcon,
@@ -12,7 +14,7 @@ import { motion } from "framer-motion";
 
 import { Button } from "@/components/ui/button";
 import { useSettingsStore } from "@/store/settings";
-import { useHistoryStore, EntryOut } from "@/store/history";
+import { useHistoryStore } from "@/store/history";
 import { createVoiceTTS } from "@/util/speak";
 import { useTranslation } from "react-i18next";
 
@@ -24,46 +26,114 @@ import {
     isAndroid,
 } from "@/util/browser";
 
-// // Even lamer but still fine
-// const paddingAdjustMap: Record<string, number> = {
-//     "small": -5,
-//     "medium": 25,
-//     "large": 50,
-//     "extra-large": 75,
-// }
+// Types matching the Rust command return shapes
+type TranslationOut = {
+    language_code: string;
+    text: string;
+    romanization: string;
+};
+
+type EntryOut = {
+    entry_id: number;
+    en_text: string;
+    level: string;
+    domains: string[];
+    translations: TranslationOut[];
+};
 
 export function MainExperience() {
+    // Settings (active stack)
     const languages = useSettingsStore((s) => s.languages);
     const domains = useSettingsStore((s) => s.domains);
     const levels = useSettingsStore((s) => s.levels);
     const rate = useSettingsStore((s) => s.rate);
-    const { t } = useTranslation()
-    // const textSize = useSettingsStore((s) => s.textSize);
-    // console.log("textSize", textSize);
-
     const showRomanization = useSettingsStore((s) => s.showRomanization);
+    const activeStackId = useSettingsStore((s) => s.activeStackId);
 
-    const history = useHistoryStore((s) => s.history);
+    const { t } = useTranslation();
+
+    // History (per active stack): now stores IDs only
+    const ids = useHistoryStore((s) => s.history);
     const index = useHistoryStore((s) => s.index);
     const pushEntry = useHistoryStore((s) => s.pushEntry);
     const setIndex = useHistoryStore((s) => s.setIndex);
 
-    // Fetch a random entry with all languages, push to history
+    // In-memory cache for resolved entries by id
+    const cacheRef = useRef<Map<number, EntryOut>>(new Map());
+    const [currEntry, setCurrEntry] = useState<EntryOut | null>(null);
+    const fetchSeqRef = useRef(0);
+
+    const languageCodes = useMemo(() => [...languages], [languages]);
+
+    // Fetch a random entry (filters applied), push ONLY its id into history
     const fetchRandomEntry = async () => {
-        setIndex(history.length - 1); // set index to the end of history
-        try {
-            const entry = await invoke<EntryOut>("get_random_entry_with_translations", { domains, levels });
-            pushEntry(entry); // updates both history and index
-        } finally {
+        // keep index pointing to end before pushing new
+        setIndex(ids.length - 1);
+
+        const entry = await invoke<EntryOut>("get_random_entry_with_translations", {
+            levels,
+            domains,
+            languageCodes, // optional filter on backend; harmless if unused
+            language_codes: languageCodes, // also pass snake for safety across rust naming
+        }).catch(() => null);
+
+        if (!entry) return;
+
+        // Prime cache for instant display
+        cacheRef.current.set(entry.entry_id, entry);
+        pushEntry(entry.entry_id);
+    };
+
+    // Resolve current ID -> EntryOut (from cache or Tauri)
+    const resolveCurrent = async (entryId: number | undefined) => {
+        if (!entryId && entryId !== 0) {
+            setCurrEntry(null);
+            return;
+        }
+        // use fetch sequence to ignore stale responses
+        const mySeq = ++fetchSeqRef.current;
+
+        // serve from cache if present
+        const cached = cacheRef.current.get(entryId);
+        if (cached) {
+            setCurrEntry(cached);
+            return;
+        }
+
+        const entry = await invoke<EntryOut>("get_entry_by_id_with_translations", {
+            entryId,
+            entry_id: entryId, // rust param name safety
+            languageCodes,
+            language_codes: languageCodes,
+        }).catch(() => null);
+
+        if (entry && mySeq === fetchSeqRef.current) {
+            cacheRef.current.set(entry.entry_id, entry);
+            setCurrEntry(entry);
         }
     };
 
+    // Initial fetch when stack changes or history is empty
     useEffect(() => {
-        if (history.length === 0) fetchRandomEntry();
-    }, []);
+        if (ids.length === 0) {
+            fetchRandomEntry();
+        } else {
+            // Ensure current entry is resolved when switching stacks
+            const currId = ids[index] ?? ids[ids.length - 1];
+            resolveCurrent(currId);
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [activeStackId]);
 
+    // When index or ids change, resolve the current entry
+    useEffect(() => {
+        const currId = ids[index];
+        resolveCurrent(currId);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [ids, index, languageCodes]);
+
+    // Scroll behavior same as before
     const scrollRef = useRef<HTMLDivElement>(null);
-
     useLayoutEffect(() => {
         setTimeout(() => {
             if (scrollRef.current) {
@@ -72,25 +142,22 @@ export function MainExperience() {
         }, 33);
     }, [index]);
 
-    const curr = history[index] || null;
-
     // Build translation lookup by language code
     const textByLang: Record<string, string> = {};
     const romanizationByLang: Record<string, string | undefined> = {};
-    if (curr) {
-        curr.translations.forEach((t) => {
+    if (currEntry) {
+        currEntry.translations.forEach((t) => {
             textByLang[t.language_code] = t.text;
             romanizationByLang[t.language_code] = t.romanization;
         });
-        textByLang["en"] = curr.en_text;
+        textByLang["en"] = currEntry.en_text;
     }
-
-    // console.log(showRomanization, romanizationByLang);
 
     // Navigation
     const handlePrev = () => index > 0 && setIndex(index - 1);
     const handleNext = () => {
-        if (index < history.length - 1) setIndex(index + 1);
+        console.log("handleNext", { index, ids });
+        if (index < ids.length - 1) setIndex(index + 1);
         else fetchRandomEntry();
     };
 
@@ -98,22 +165,20 @@ export function MainExperience() {
 
     return (
         <div className="flex flex-col flex-1 min-h-0 w-full items-center relative">
-
-            {/* Floating domain/level stuff at top left */}
-            {curr && (
+            {/* Floating domain/level chips at top-left */}
+            {currEntry && (
                 <div
                     className="fixed top-5 pt-safe left-5 z-50 pointer-events-none"
                     style={{
                         background: "transparent",
                         marginTop: getPlatformTopPaddingButtons(),
                     }}
-
                 >
                     <div className="flex flex-wrap gap-1 items-center justify-center text-gray-400 text-xs mb-1">
-                        <span
-                            className="px-2 py-0.5 rounded-full border border-gray-200 bg-gray-50 text-xs"
-                        >{curr.level.toUpperCase()}</span>
-                        {curr.domains.map((d) => (
+                        <span className="px-2 py-0.5 rounded-full border border-gray-200 bg-gray-50 text-xs">
+                            {currEntry.level.toUpperCase()}
+                        </span>
+                        {currEntry.domains.map((d) => (
                             <span
                                 key={d}
                                 className="px-2 py-0.5 rounded-full border border-gray-200 bg-gray-50 text-xs"
@@ -123,26 +188,21 @@ export function MainExperience() {
                         ))}
                     </div>
                 </div>
-            )
-            }
+            )}
 
             {/* Scrollable Translations */}
             <div
                 className="flex-1 w-full overflow-y-auto min-h-0 px-2 pt-20 flex flex-col"
                 ref={scrollRef}
                 style={{
-                    // marginTop: isAndroid() ? "20px" : undefined,
-                    // paddingBottom: `${getPlatformPadding() + paddingAdjustMap[textSize]}px`,
                     paddingBottom: `${getPlatformBottomPadding()}px`,
                     paddingTop: `${getPlatformTopPaddingTranslations()}px`,
                 }}
             >
-
                 <div
                     key={index}
                     className="w-full max-w-4xl mx-auto flex flex-col items-center gap-y-9 my-auto"
                 >
-
                     {displayedLanguages.map((code, idx) => (
                         <motion.div
                             key={idx}
@@ -153,22 +213,18 @@ export function MainExperience() {
                             className="w-full flex flex-col items-center"
                         >
                             <div
-
                                 className="text-center"
-                                // Add style for pointer on hover:
                                 style={{ cursor: "pointer" }}
                                 onClick={() => {
                                     const langPrefix = code.split("-")[0];
-                                    createVoiceTTS(langPrefix)(
-                                        textByLang[code],
-                                        rate,
-                                    );
+                                    const text = textByLang[code];
+                                    if (!text) return;
+                                    createVoiceTTS(langPrefix)(text, rate);
                                 }}
                             >
-                                <div
-                                    key={idx}
-                                    className="text-xs text-gray-400"
-                                >{t(`languages.${toCamelCase(code)}` as any) || code}</div>
+                                <div key={idx} className="text-xs text-gray-400">
+                                    {t(`languages.${toCamelCase(code)}` as any) || code}
+                                </div>
                                 <div
                                     className="text-center text-xl md:text-2xl lg:text-3xl my-1"
                                     style={{
@@ -182,35 +238,28 @@ export function MainExperience() {
                                 </div>
                                 {/* Render romanization if enabled and available */}
                                 {showRomanization && romanizationByLang[code] && (
-                                    <div className="text-center text-sm text-base text-gray-400 italic mt-1 mb-1 select-text"
+                                    <div
+                                        className="text-center text-sm text-base text-gray-400 italic mt-1 mb-1 select-text"
                                         style={{
                                             maxWidth: "80vw",
                                             wordBreak: "break-word",
-                                            // lineHeight: 0.95,
                                         }}
                                     >
                                         {romanizationByLang[code]}
                                     </div>
                                 )}
 
-
                                 <motion.div
                                     whileTap={{ scale: 0.9 }}
                                     transition={{ type: "spring", stiffness: 100, damping: 10 }}
                                     className="transform-gpu will-change-transform"
                                 >
-                                    <Button
-                                        className="mt-1"
-                                        size="sm"
-                                        variant="outline"
-                                        style={{ cursor: "pointer" }}
-                                    >
+                                    <Button className="mt-1" size="sm" variant="outline" style={{ cursor: "pointer" }}>
                                         <Speaker className="shrink-0" />
                                         <AudioLines className="shrink-0" />
                                         <Ear className="shrink-0" />
                                     </Button>
                                 </motion.div>
-
                             </div>
                         </motion.div>
                     ))}
@@ -225,40 +274,26 @@ export function MainExperience() {
                     paddingBottom: getPlatformBottomPadding() / 6,
                 }}
             >
-                <div className="flex flex-col gap-1 pointer-events-auto rounded-2xl shadow-2xl bg-white/95 px-8 py-3 border border-gray-200 items-center min-w-[280px]"
+                <div
+                    className="flex flex-col gap-1 pointer-events-auto rounded-2xl shadow-2xl bg-white/95 px-8 py-3 border border-gray-200 items-center min-w-[280px]"
                     style={{ marginBottom: isAndroid() ? "39px" : 0 }}
                 >
                     <div className="flex justify-center items-center gap-8">
-                        <Button
-                            onClick={handlePrev}
-                            variant="ghost"
-                            size="lg"
-                            aria-label="Previous sentence"
-                        >
+                        <Button onClick={handlePrev} variant="ghost" size="lg" aria-label="Previous sentence">
                             <ChevronLeftIcon />
                         </Button>
-                        <Button
-                            onClick={fetchRandomEntry}
-                            variant="outline"
-                            size="lg"
-                            aria-label="Random sentence"
-                        >
+                        <Button onClick={fetchRandomEntry} variant="outline" size="lg" aria-label="Random sentence">
                             <RefreshIcon />
                         </Button>
-                        <Button
-                            onClick={handleNext}
-                            variant="ghost"
-                            size="lg"
-                            aria-label="Next sentence"
-                        >
+                        <Button onClick={handleNext} variant="ghost" size="lg" aria-label="Next sentence">
                             <ChevronRightIcon />
                         </Button>
                     </div>
                     <span className="text-xs text-gray-400 mt-1">
-                        {index + 1}/{history.length}
+                        {Math.max(0, index + 1)}/{ids.length}
                     </span>
                 </div>
             </div>
-        </div >
+        </div>
     );
 }
