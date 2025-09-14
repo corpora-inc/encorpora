@@ -125,6 +125,9 @@ export const useHistoryStore = create<HistoryState>()(
                     set({ byStack: { ...byStack, [aId]: next } });
                 },
 
+                // src/store/history.ts
+                // Only the setIndex function changed (and tiny comment). Replace that function.
+
                 setIndex: (index) => {
                     const aId =
                         useSettingsStore.getState().activeStackId ||
@@ -132,10 +135,14 @@ export const useHistoryStore = create<HistoryState>()(
                         "default";
                     const { byStack } = get();
                     const curr = byStack[aId] ?? { ids: [], index: -1 };
+
+                    const clamped = Math.min(Math.max(index, -1), curr.ids.length - 1);
+                    // IMPORTANT: give ids a new reference even if unchanged, so selectors that pick the object re-render
                     const next: StackHistory = {
-                        ids: curr.ids,
-                        index: Math.min(Math.max(index, -1), curr.ids.length - 1),
+                        ids: [...curr.ids],
+                        index: clamped,
                     };
+
                     set({ byStack: { ...byStack, [aId]: next } });
                 },
 
