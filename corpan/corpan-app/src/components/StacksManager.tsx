@@ -98,14 +98,14 @@ export function StacksManager() {
                         setNewName={setNewName}
                         onCreate={handleCreateNew}
                     />
-                    {/*
+
                     <StacksManagerDeletePopover
                         open={delOpen}
                         setOpen={setDelOpen}
                         canDelete={stacksList.length > 1}
                         activeName={active?.name}
                         onConfirm={handleConfirmDelete}
-                    /> */}
+                    />
                 </div>
             </div>
 
