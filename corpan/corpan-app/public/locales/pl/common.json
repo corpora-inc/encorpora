@@ -83,5 +83,18 @@
     "feedbackNote": "W przypadku problemów lub sugestii odwiedź nasze repozytorium GitHub lub skontaktuj się z nami za pośrednictwem e-maila.",
     "githubIssues": "Problemy GitHub",
     "aboutCorpan": "O Corpán"
+  },
+  "stacks": {
+    "note": "Każdy profil ma własne ustawienia i historię.",
+    "newStackBase": "Nowy profil",
+    "untitled": "Bez tytułu",
+    "delete": "Usuń profil",
+    "confirmDeleteTitle": "Usunąć ten profil?",
+    "confirmDelete": "Usunąć ten profil? Tej operacji nie można cofnąć.",
+    "new": "Nowy profil",
+    "newName": "Nazwa nowego profilu",
+    "rename": "Zmień nazwę",
+    "selectAria": "Wybierz profil",
+    "selectPlaceholder": "Wybierz…"
   }
 }

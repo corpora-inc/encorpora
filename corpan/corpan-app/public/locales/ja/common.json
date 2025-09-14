@@ -83,5 +83,18 @@
     "feedbackNote": "問題や提案については、GitHubリポジトリをご覧いただくか、メールでお問い合わせください。",
     "githubIssues": "GitHubの問題",
     "aboutCorpan": "Corpánについて"
+  },
+  "stacks": {
+    "note": "各プロフィールにはそれぞれ独自の設定と履歴があります。",
+    "newStackBase": "新しいプロフィール",
+    "untitled": "無題",
+    "delete": "プロフィールを削除",
+    "confirmDeleteTitle": "このプロフィールを削除しますか？",
+    "confirmDelete": "このプロフィールを削除しますか？ この操作は元に戻せません。",
+    "new": "新しいプロフィール",
+    "newName": "新しいプロフィールの名前",
+    "rename": "名前を変更",
+    "selectAria": "プロフィールを選択",
+    "selectPlaceholder": "選択…"
   }
 }

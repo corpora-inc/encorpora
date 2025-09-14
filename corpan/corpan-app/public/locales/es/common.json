@@ -85,6 +85,16 @@
     "aboutCorpan": "Sobre Corpán"
   },
   "stacks": {
-    "note": "Cada Stack™ tiene sus propios ajustes e historial."
+    "note": "Cada perfil tiene su propia configuración e historial.",
+    "newStackBase": "Nuevo perfil",
+    "untitled": "Sin título",
+    "delete": "Eliminar perfil",
+    "confirmDeleteTitle": "¿Eliminar este perfil?",
+    "confirmDelete": "¿Eliminar este perfil? Esta acción no se puede deshacer.",
+    "new": "Nuevo perfil",
+    "newName": "Nombre del nuevo perfil",
+    "rename": "Renombrar",
+    "selectAria": "Seleccionar un perfil",
+    "selectPlaceholder": "Elegir…"
   }
 }

@@ -83,5 +83,18 @@
     "feedbackNote": "للمشاكل أو الاقتراحات ، يرجى زيارة مستودع GitHub الخاص بنا أو الاتصال بنا عبر البريد الإلكتروني.",
     "githubIssues": "مشكلات GitHub",
     "aboutCorpan": "حول Corpán"
+  },
+  "stacks": {
+    "note": "لكل ملف إعداداته وسجله الخاص.",
+    "newStackBase": "مجموعة جديدة",
+    "untitled": "بدون عنوان",
+    "delete": "حذف المجموعة",
+    "confirmDeleteTitle": "حذف هذه المجموعة؟",
+    "confirmDelete": "هل تريد حذف هذه المجموعة؟ لا يمكن التراجع.",
+    "new": "مجموعة جديدة",
+    "newName": "اسم المجموعة الجديدة",
+    "rename": "إعادة تسمية",
+    "selectAria": "اختر مجموعة",
+    "selectPlaceholder": "اختر…"
   }
 }
