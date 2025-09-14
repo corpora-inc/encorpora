@@ -31,7 +31,7 @@ export function SettingsModal({
   const { t } = useTranslation();
 
   const dir = useSettingsStore((s) => s.dir);
-  const primaryLang = useSettingsStore((s) => s.primaryLang());
+  // const primaryLang = useSettingsStore((s) => s.primaryLang());
   const setOnboarded = useSettingsStore((s) => s.setOnboarded);
   const setOnboardingStep = useSettingsStore((s) => s.setOnboardingStep);
 
