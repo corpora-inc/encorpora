@@ -45,10 +45,10 @@ export function StacksManager() {
     const handleRenameChange = (val: string) => {
         setNameDraft(val);
         if (!active) return;
-        const trimmed = val.trim();
+        // const trimmed = val.trim();
         renameStack(
             active.id,
-            trimmed.length ? trimmed : (t("stacks.untitled", { defaultValue: "Untitled" }) as string)
+            val.length ? val : (t("stacks.untitled", { defaultValue: "Untitled" }) as string)
         );
     };
 
@@ -91,13 +91,14 @@ export function StacksManager() {
                         onChange={handleRenameChange}
                         inputRef={renameRef}
                     />
-                    {/* <StacksManagerNewPopover
+                    <StacksManagerNewPopover
                         open={newOpen}
                         setOpen={setNewOpen}
                         newName={newName}
                         setNewName={setNewName}
                         onCreate={handleCreateNew}
                     />
+                    {/*
                     <StacksManagerDeletePopover
                         open={delOpen}
                         setOpen={setDelOpen}
