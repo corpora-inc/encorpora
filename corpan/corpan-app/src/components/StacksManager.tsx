@@ -52,20 +52,22 @@ export function StacksManager() {
         );
     };
 
+    // src/components/StacksManager.tsx
+    // Replace only handleCreateNew with this version (no auto-open rename)
+
     const handleCreateNew = () => {
         const newId = createStack();
         const trimmed = newName.trim();
-        const finalName = trimmed.length
-            ? trimmed
-            : (t("stacks.newStackBase", { defaultValue: "New Stack" }) as string);
+        const finalName =
+            trimmed.length
+                ? trimmed
+                : (t("stacks.newStackBase", { defaultValue: "New Stack" }) as string);
+
         renameStack(newId, finalName);
         setActiveStack(newId);
-        setNewOpen(false);
-        setTimeout(() => {
-            setRenameOpen(true);
-            requestAnimationFrame(() => renameRef.current?.focus());
-        }, 0);
+        setNewOpen(false); // close popover and keep the entered name
     };
+
 
     const handleConfirmDelete = () => {
         if (!active) return;
