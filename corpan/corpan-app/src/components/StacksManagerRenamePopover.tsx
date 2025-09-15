@@ -1,3 +1,4 @@
+// src/components/StacksManagerRenamePopover.tsx
 import { useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Pencil } from "lucide-react";
@@ -28,7 +29,6 @@ export default function StacksManagerRenamePopover({
 
     return (
         <Popover open={open} onOpenChange={setOpen}>
-            {/* wrap in a DOM element so Radix can attach a ref even if Button isn't forwardRef */}
             <PopoverTrigger asChild>
                 <span ref={triggerWrapRef} className="inline-flex">
                     <Button
@@ -48,7 +48,6 @@ export default function StacksManagerRenamePopover({
                 side="bottom"
                 align="center"
                 sideOffset={8}
-                // width + clamp so it never overflows even before collision kicks in
                 className="w-[260px] max-w-[92vw]"
             >
                 <input
@@ -60,6 +59,7 @@ export default function StacksManagerRenamePopover({
                     onKeyDown={(e) => {
                         if (e.key === "Enter" || e.key === "Escape") setOpen(false);
                     }}
+                    placeholder={t("stacks.renameLabel", { defaultValue: "Stack name" }) as string}
                 />
             </PopoverContent>
         </Popover>

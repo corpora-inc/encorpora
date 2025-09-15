@@ -1,9 +1,13 @@
 // src/components/StacksManagerNewPopover.tsx
 import { useEffect, useRef } from "react";
+import { flushSync } from "react-dom";
 import { Button } from "@/components/ui/button";
 import { Plus } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { Popover, PopoverTrigger, PopoverContent } from "@/components/ui/popover";
+
+const FUN_CHARS = ["★", "☆", "✦", "✧", "◆", "◇", "◈", "⬢", "⬡", "♠", "♥", "♦", "♣", "☀", "☾", "☽", "☼", "✿", "❀", "❁", "⚝"];
+const randomGlyphs = (n = 3) => Array.from({ length: n }, () => FUN_CHARS[(Math.random() * FUN_CHARS.length) | 0]).join("");
 
 export default function StacksManagerNewPopover({
     open,
@@ -22,16 +26,31 @@ export default function StacksManagerNewPopover({
     const triggerWrapRef = useRef<HTMLSpanElement>(null);
     const inputRef = useRef<HTMLInputElement>(null);
 
+    // Focus input when opening
     useEffect(() => {
         if (!open) return;
         const id = requestAnimationFrame(() => inputRef.current?.focus());
         return () => cancelAnimationFrame(id);
     }, [open]);
 
+    const commitCreate = () => {
+        const final = newName.trim() || randomGlyphs(3);
+        // ensure parent sees the final name before onCreate runs
+        flushSync(() => setNewName(final));
+        onCreate();
+        setOpen(false);
+    };
+
     return (
         <Popover open={open} onOpenChange={setOpen}>
             <PopoverTrigger asChild>
-                <span ref={triggerWrapRef} className="inline-flex">
+                <span
+                    ref={triggerWrapRef}
+                    className="inline-flex"
+                    onClick={() => {
+                        if (!open) setNewName(""); // start truly blank each time we open
+                    }}
+                >
                     <Button
                         type="button"
                         className="rounded-xl cursor-pointer"
@@ -58,22 +77,13 @@ export default function StacksManagerNewPopover({
                     value={newName}
                     onChange={(e) => setNewName(e.target.value)}
                     onKeyDown={(e) => {
-                        if (e.key === "Enter") onCreate();
+                        if (e.key === "Enter") commitCreate();
                         if (e.key === "Escape") setOpen(false);
                     }}
-                    placeholder={
-                        t("stacks.newName", { defaultValue: "Name for new stack" }) as string
-                    }
+                    placeholder={t("stacks.newName", { defaultValue: "Name for new stack" }) as string}
                 />
                 <div className="mt-2 flex justify-end">
-                    <Button
-                        size="sm"
-                        className="cursor-pointer"
-                        onClick={() => {
-                            onCreate();
-                            setOpen(false);
-                        }}
-                    >
+                    <Button size="sm" className="cursor-pointer" onClick={commitCreate}>
                         {t("common.create", { defaultValue: "Create" }) as string}
                     </Button>
                 </div>
