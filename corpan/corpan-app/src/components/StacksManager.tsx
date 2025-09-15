@@ -1,11 +1,22 @@
+// src/components/StacksManager.tsx
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useSettingsStore } from "@/store/settings";
 import { useTranslation } from "react-i18next";
-import { nextCopyName } from "./StacksManager.utils";
 import StacksManagerSelect from "./StacksManagerSelect";
 import StacksManagerRenamePopover from "./StacksManagerRenamePopover";
 import StacksManagerNewPopover from "./StacksManagerNewPopover";
 import StacksManagerDeletePopover from "./StacksManagerDeletePopover";
+
+function genWhimsy(existing: string[]): string {
+    const glyphs = "αβγδεζηθικλμνξοπρστυφχψω";
+    let s = "";
+    for (let i = 0; i < 3; i++) {
+        s += glyphs[Math.floor(Math.random() * glyphs.length)];
+    }
+    // avoid exact collisions, just in case
+    if (existing.includes(s)) return genWhimsy(existing);
+    return s;
+}
 
 export function StacksManager() {
     const { t } = useTranslation();
@@ -24,50 +35,61 @@ export function StacksManager() {
     );
     const active = stacks[activeId];
 
+    // Popover states
     const [renameOpen, setRenameOpen] = useState(false);
-    const [nameDraft, setNameDraft] = useState(active?.name ?? "");
-    const renameRef = useRef<HTMLInputElement>(null);
-
     const [newOpen, setNewOpen] = useState(false);
-    const [newName, setNewName] = useState("");
-
     const [delOpen, setDelOpen] = useState(false);
 
-    useEffect(() => {
-        const current = active?.name ?? "";
-        setNameDraft(current);
-        const base = t("stacks.newStackBase", { defaultValue: "New Stack" }) as string;
-        const existingNames = stacksList.map((s) => s.name);
-        const suggested = existingNames.includes(base) ? nextCopyName(base, existingNames) : base;
-        setNewName(suggested);
-    }, [activeId, active?.name, stacksList, t]);
+    // Local drafts (no write-through during typing)
+    const [nameDraft, setNameDraft] = useState(active?.name ?? "");
+    const [newName, setNewName] = useState("");
 
+    const renameRef = useRef<HTMLInputElement>(null);
+
+    // Sync drafts when active stack changes
+    useEffect(() => {
+        setNameDraft(active?.name ?? "");
+        // New Stack input starts blank; placeholder handles affordance
+        setNewName("");
+    }, [activeId, active?.name]);
+
+    // Live typing only updates draft (never “Untitled”)
     const handleRenameChange = (val: string) => {
         setNameDraft(val);
-        if (!active) return;
-        // const trimmed = val.trim();
-        renameStack(
-            active.id,
-            val.length ? val : (t("stacks.untitled", { defaultValue: "Untitled" }) as string)
-        );
+        // optional live preview in select (we already pass nameDraftActive), but do NOT persist here
     };
 
-    // src/components/StacksManager.tsx
-    // Replace only handleCreateNew with this version (no auto-open rename)
+    // Commit rename when the popover closes; if empty, generate whimsy
+    useEffect(() => {
+        if (renameOpen) return;
+        if (!active) return;
 
+        const trimmed = nameDraft.trim();
+        if (trimmed.length > 0) {
+            if (trimmed !== active.name) renameStack(active.id, trimmed);
+            return;
+        }
+
+        // Empty on close → synthesize short fun name
+        const existingNames = stacksList.map((s) => s.name);
+        const funky = genWhimsy(existingNames);
+        renameStack(active.id, funky);
+        setNameDraft(funky); // reflect immediately in UI
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [renameOpen]); // relies on nameDraft, active, stacksList via closure
+
+    // Create new: blank allowed → synthesize if empty
     const handleCreateNew = () => {
         const newId = createStack();
         const trimmed = newName.trim();
         const finalName =
-            trimmed.length
-                ? trimmed
-                : (t("stacks.newStackBase", { defaultValue: "New Stack" }) as string);
+            trimmed.length > 0 ? trimmed : genWhimsy(stacksList.map((s) => s.name));
 
         renameStack(newId, finalName);
         setActiveStack(newId);
-        setNewOpen(false); // close popover and keep the entered name
+        setNewOpen(false);
+        // Do NOT auto-open rename; we “roll out with the name we already input”
     };
-
 
     const handleConfirmDelete = () => {
         if (!active) return;
@@ -81,7 +103,7 @@ export function StacksManager() {
                 <StacksManagerSelect
                     activeId={activeId}
                     stacks={stacksList}
-                    nameDraftActive={nameDraft}
+                    nameDraftActive={nameDraft} // shows draft for the active item while typing
                     onChange={setActiveStack}
                 />
 
@@ -100,7 +122,6 @@ export function StacksManager() {
                         setNewName={setNewName}
                         onCreate={handleCreateNew}
                     />
-
                     <StacksManagerDeletePopover
                         open={delOpen}
                         setOpen={setDelOpen}
