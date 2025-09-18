@@ -9,7 +9,6 @@ import {
     Ear,
     Bookmark as BookmarkIcon,
     BookmarkCheck as BookmarkCheckIcon,
-    BookMarkedIcon,
 } from "lucide-react";
 import { motion } from "framer-motion";
 
