@@ -163,11 +163,11 @@ export function MainExperience() {
                     style={{ background: "transparent", marginTop: getPlatformTopPaddingButtons() }}
                 >
                     <div className="flex flex-wrap gap-1 items-center justify-center text-gray-400 text-xs mb-1">
-                        <span className="px-2 py-0.5 rounded-full border border-gray-200 bg-gray-50 text-xs">
+                        <span className="px-2 py-0.5 rounded-md border border-gray-200 bg-gray-50 text-xs">
                             {currEntry.level.toUpperCase()}
                         </span>
                         {currEntry.domains.map((d) => (
-                            <span key={d} className="px-2 py-0.5 rounded-full border border-gray-200 bg-gray-50 text-xs">
+                            <span key={d} className="px-2 py-0.5 rounded-md border border-gray-200 bg-gray-50 text-xs">
                                 {t(`categories.${d}` as any) || d}
                             </span>
                         ))}
@@ -245,7 +245,7 @@ export function MainExperience() {
                 style={{ background: "transparent", paddingBottom: getPlatformBottomPadding() / 6 }}
             >
                 <div
-                    className="flex flex-col gap-1 pointer-events-auto rounded-2xl shadow-2xl bg-white/95 px-8 py-3 border border-gray-200 items-center min-w-[280px]"
+                    className="flex flex-col gap-1 pointer-events-auto rounded-md shadow-2xl bg-white/95 px-8 py-3 border border-gray-200 items-center min-w-[280px]"
                     style={{ marginBottom: isAndroid() ? "39px" : 0 }}
                 >
                     <div className="flex justify-center items-center gap-8">

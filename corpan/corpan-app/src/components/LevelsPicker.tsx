@@ -48,7 +48,7 @@ export function LevelsPicker() {
                             variant={selected ? "default" : "outline"}
                             size="sm"
                             className={`
-                                rounded-full text-xs p-3
+                                rounded-md text-xs p-3
                                 transition
                                 ${selected ? "shadow-sm" : ""}
                             `}

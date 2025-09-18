@@ -46,7 +46,7 @@ export default function App() {
               // size="icon"
               size="lg"
               // size="sm"
-              className="rounded-full shadow-lg bg-white border border-gray-200 hover:bg-gray-100 transition"
+              className="rounded-md shadow-lg bg-white border border-gray-200 hover:bg-gray-100 transition"
               aria-label="Settings"
               onClick={() => setShowSettings(true)}
             >

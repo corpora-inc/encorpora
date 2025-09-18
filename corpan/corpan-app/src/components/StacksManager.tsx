@@ -98,7 +98,7 @@ export function StacksManager() {
     };
 
     return (
-        <div className="mb-2 rounded-2xl border border-gray-200 bg-white/80 p-2 md:p-3">
+        <div className="mb-2 rounded-md border border-gray-200 bg-white/80 p-2 md:p-3">
             <div className="flex flex-wrap items-center gap-2">
                 <StacksManagerSelect
                     activeId={activeId}

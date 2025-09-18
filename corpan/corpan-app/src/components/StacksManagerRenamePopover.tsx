@@ -33,7 +33,7 @@ export default function StacksManagerRenamePopover({
                 <span ref={triggerWrapRef} className="inline-flex">
                     <Button
                         type="button"
-                        className="rounded-xl cursor-pointer"
+                        className="rounded-md cursor-pointer"
                         size="sm"
                         variant="outline"
                         title={t("stacks.rename", { defaultValue: "Rename" }) as string}
@@ -53,7 +53,7 @@ export default function StacksManagerRenamePopover({
                 <input
                     ref={inputRef}
                     type="text"
-                    className="w-full rounded-xl border border-gray-300 bg-white px-3 py-1.5 text-sm outline-none focus:ring-2 focus:ring-neutral-400"
+                    className="w-full rounded-md border border-gray-300 bg-white px-3 py-1.5 text-sm outline-none focus:ring-2 focus:ring-neutral-400"
                     value={nameDraft}
                     onChange={(e) => onChange(e.target.value)}
                     onKeyDown={(e) => {

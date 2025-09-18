@@ -32,7 +32,7 @@ export default function StacksManagerDeletePopover({
                 <span ref={triggerWrapRef} className="inline-flex">
                     <Button
                         type="button"
-                        className="rounded-xl cursor-pointer"
+                        className="rounded-md cursor-pointer"
                         size="sm"
                         variant="outline"
                         disabled={!canDelete}

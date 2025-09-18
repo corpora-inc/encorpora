@@ -35,7 +35,7 @@ export function RateAdjuster() {
                         key={btn.label}
                         size="sm"
                         variant={Math.abs(rate - btn.value) < 0.03 ? "default" : "outline"}
-                        className="rounded-full text-xs px-4 py-1"
+                        className="rounded-md text-xs px-4 py-1"
                         onClick={() => setRate(btn.value)}
                     >
                         {/* {btn.label} */}

@@ -16,12 +16,7 @@ export function TextSizeAdjuster() {
 
   return (
     <div className="py-4" dir={dir()}>
-      <Label
-        htmlFor="text-size-adjuster"
-        className="block text-sm font-medium text-gray-700 mb-2"
-      >
-        {t("settings.textSize")}
-      </Label>
+      <div className="mb-3 font-semibold text-sm">{t("settings.textSize")}</div>
       <div className="flex flex-wrap gap-2" id="text-size-adjuster">
         {ALL_TEXT_SIZES.map((size) => (
           <Button

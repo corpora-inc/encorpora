@@ -53,7 +53,7 @@ export default function StacksManagerNewPopover({
                 >
                     <Button
                         type="button"
-                        className="rounded-xl cursor-pointer"
+                        className="rounded-md cursor-pointer"
                         size="sm"
                         variant="outline"
                         title={t("stacks.new", { defaultValue: "New stack" }) as string}
@@ -73,7 +73,7 @@ export default function StacksManagerNewPopover({
                 <input
                     ref={inputRef}
                     type="text"
-                    className="w-full rounded-xl border border-gray-300 bg-white px-3 py-1.5 text-sm outline-none focus:ring-2 focus:ring-neutral-400"
+                    className="w-full rounded-md border border-gray-300 bg-white px-3 py-1.5 text-sm outline-none focus:ring-2 focus:ring-neutral-400"
                     value={newName}
                     onChange={(e) => setNewName(e.target.value)}
                     onKeyDown={(e) => {

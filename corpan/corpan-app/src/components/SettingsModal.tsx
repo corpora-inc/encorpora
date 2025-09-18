@@ -42,7 +42,7 @@ export function SettingsModal({
           max-w-full w-[100vw] sm:max-w-[100vw] md:max-w-[90vw] lg:max-w-[75vw] xl:max-w-[60vw]
           max-h-[100dvh] h-[100dvh] md:h-auto md:max-h-[95dvh]
           overflow-y-auto rounded-none bg-white
-          md:rounded-lg
+          md:rounded-md
           flex flex-col
         "
         id="settings-modal-content"
@@ -71,7 +71,7 @@ export function SettingsModal({
             onClose();
           }}
           className="
-            mt-5 w-full rounded-xl px-6 py-8
+            mt-5 w-full rounded-md px-6 py-8
             focus:outline-none focus:ring-2 focus:ring-neutral-400 focus:ring-offset-2
             transition-colors cursor-pointer
             shadow-sm
