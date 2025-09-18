@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useRef } from "react";
+import { useEffect, useLayoutEffect, useRef, useState, useCallback } from "react";
 import { invoke } from "@tauri-apps/api/core";
 import {
     ChevronLeft as ChevronLeftIcon,
@@ -7,6 +7,8 @@ import {
     Speaker,
     AudioLines,
     Ear,
+    Play as PlayIcon,
+    Square as StopIcon,
 } from "lucide-react";
 import { motion } from "framer-motion";
 
@@ -37,6 +39,7 @@ export function MainExperience() {
     const domains = useSettingsStore((s) => s.domains);
     const levels = useSettingsStore((s) => s.levels);
     const rate = useSettingsStore((s) => s.rate);
+    const autoplayDelayMs = useSettingsStore((s) => s.autoplayDelayMs);
     const { t } = useTranslation()
     // const textSize = useSettingsStore((s) => s.textSize);
     // console.log("textSize", textSize);
@@ -95,6 +98,58 @@ export function MainExperience() {
     };
 
     const displayedLanguages = [...languages].reverse();
+
+    // Autoplay state
+    const [autoplay, setAutoplay] = useState(false);
+    const autoplayRef = useRef(false);
+    autoplayRef.current = autoplay;
+
+    // Cancel flag for async loop
+    const cancelRef = useRef<{ cancelled: boolean }>({ cancelled: false });
+
+    const speakAllForCurrent = useCallback(async () => {
+        const currLocal = history[index];
+        if (!currLocal) return;
+        // Sequence languages in displayed order
+        for (const code of displayedLanguages) {
+            if (!autoplayRef.current || cancelRef.current.cancelled) return;
+            const langPrefix = code.split("-")[0];
+            const text = textByLang[code];
+            if (text) {
+                try {
+                    await createVoiceTTS(langPrefix)(text, rate);
+                } catch { /* ignore */ }
+            }
+            // Delay between sentences if still autoplaying
+            if (!autoplayRef.current || cancelRef.current.cancelled) return;
+            await new Promise(r => setTimeout(r, autoplayDelayMs));
+        }
+    }, [history, index, displayedLanguages, textByLang, rate, autoplayDelayMs]);
+
+    // Main autoplay effect
+    useEffect(() => {
+        if (!autoplay) {
+            cancelRef.current.cancelled = true;
+            cancelRef.current = { cancelled: false };
+            return;
+        }
+        let active = true;
+        cancelRef.current = { cancelled: false };
+
+        (async () => {
+            while (active && autoplayRef.current) {
+                await speakAllForCurrent();
+                if (!autoplayRef.current || cancelRef.current.cancelled) break;
+                // Move to next entry (will fetch new if needed)
+                if (index < history.length - 1) setIndex(index + 1); else await fetchRandomEntry();
+                // Wait a tiny gap before next batch
+                await new Promise(r => setTimeout(r, Math.min(autoplayDelayMs, 800)));
+            }
+        })();
+
+        return () => { active = false; cancelRef.current.cancelled = true; };
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [autoplay, index, history.length, speakAllForCurrent]);
 
     return (
         <div className="flex flex-col flex-1 min-h-0 w-full items-center relative">
@@ -182,7 +237,7 @@ export function MainExperience() {
                                 </div>
                                 {/* Render romanization if enabled and available */}
                                 {showRomanization && romanizationByLang[code] && (
-                                    <div className="text-center text-sm text-base text-gray-400 italic mt-1 mb-1 select-text"
+                                    <div className="text-center text-sm  text-gray-400 italic mt-1 mb-1 select-text"
                                         style={{
                                             maxWidth: "80vw",
                                             wordBreak: "break-word",
@@ -228,7 +283,15 @@ export function MainExperience() {
                 <div className="flex flex-col gap-1 pointer-events-auto rounded-2xl shadow-2xl bg-white/95 px-8 py-3 border border-gray-200 items-center min-w-[280px]"
                     style={{ marginBottom: isAndroid() ? "39px" : 0 }}
                 >
-                    <div className="flex justify-center items-center gap-8">
+                    <div className="flex justify-center items-center gap-3">
+                        <Button
+                            onClick={() => setAutoplay(a => !a)}
+                            variant={autoplay ? "default" : "outline"}
+                            size="lg"
+                            aria-label={autoplay ? "Stop autoplay" : "Start autoplay"}
+                        >
+                            {autoplay ? <StopIcon /> : <PlayIcon />}
+                        </Button>
                         <Button
                             onClick={handlePrev}
                             variant="ghost"

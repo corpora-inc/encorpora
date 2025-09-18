@@ -117,7 +117,7 @@ export function createVoiceTTS(langPrefix: string) {
         };
     }
 
-    return async function speak(text: string, rate: number = 0.7) {
+    return async function speak(text: string, rate: number = 0.7): Promise<void> {
         // 1) Prefer native on macOS/iOS/Android when in Tauri (UA-based).
         try {
             if (await preferNativeTTS()) {
