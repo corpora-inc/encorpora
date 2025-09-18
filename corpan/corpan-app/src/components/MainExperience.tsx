@@ -9,6 +9,7 @@ import {
     Ear,
     Bookmark as BookmarkIcon,
     BookmarkCheck as BookmarkCheckIcon,
+    BookMarkedIcon,
 } from "lucide-react";
 import { motion } from "framer-motion";
 
@@ -53,7 +54,7 @@ export function MainExperience() {
 
     const addBookmark = useBookmarkStore((s) => s.addBookmark);
     const removeBookmark = useBookmarkStore((s) => s.removeBookmark);
-    const isBookmarked = useBookmarkStore((s) => s.isBookmarked);
+    const bookmarks = useBookmarkStore((s) => s.bookmarks);
 
     // Fetch a random entry with all languages, push to history
     const fetchRandomEntry = async () => {
@@ -102,9 +103,11 @@ export function MainExperience() {
     };
 
     // Bookmark functionality
+    const bookmarked = curr ? bookmarks.some((b) => b.entry_id === curr.entry_id) : false;
+
     const toggleBookmark = () => {
         if (curr) {
-            if (isBookmarked(curr.entry_id)) {
+            if (bookmarked) {
                 removeBookmark(curr.entry_id);
             } else {
                 addBookmark(curr);
@@ -277,11 +280,11 @@ export function MainExperience() {
                             onClick={toggleBookmark}
                             variant="ghost"
                             size="sm"
-                            aria-label={curr && isBookmarked(curr.entry_id) ? "Remove bookmark" : "Add bookmark"}
+                            aria-label={curr && bookmarked ? "Remove bookmark" : "Add bookmark"}
                             disabled={!curr}
                         >
-                            {curr && isBookmarked(curr.entry_id) ? (
-                                <BookmarkCheckIcon className="h-4 w-4" />
+                            {curr && bookmarked ? (
+                                <BookmarkCheckIcon className="h-4 w-4 text-black" />
                             ) : (
                                 <BookmarkIcon className="h-4 w-4" />
                             )}

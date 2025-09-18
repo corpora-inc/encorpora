@@ -5,7 +5,8 @@ import {
     BookmarkPlus as BookmarkPlusIcon,
     BookmarkMinus as BookmarkMinusIcon,
     Trash2 as TrashIcon,
-    Calendar as CalendarIcon
+    Calendar as CalendarIcon,
+    BookmarkCheckIcon
 } from "lucide-react";
 
 import {
@@ -50,7 +51,6 @@ export function HistorySheet({ children }: HistorySheetProps) {
     const bookmarks = useBookmarkStore((s) => s.bookmarks);
     const addBookmark = useBookmarkStore((s) => s.addBookmark);
     const removeBookmark = useBookmarkStore((s) => s.removeBookmark);
-    const isBookmarked = useBookmarkStore((s) => s.isBookmarked);
     const clearBookmarks = useBookmarkStore((s) => s.clear);
     
     const primaryLang = useSettingsStore((s) => s.primaryLang);
@@ -65,7 +65,8 @@ export function HistorySheet({ children }: HistorySheetProps) {
     };
 
     const toggleBookmark = (entry: EntryOut) => {
-        if (isBookmarked(entry.entry_id)) {
+        const bookmarked = bookmarks.some(b => b.entry_id === entry.entry_id);
+        if (bookmarked) {
             removeBookmark(entry.entry_id);
         } else {
             addBookmark(entry);
@@ -111,10 +112,10 @@ export function HistorySheet({ children }: HistorySheetProps) {
                                 }}
                                 className="h-8 w-8 p-0"
                             >
-                                {isBookmarked(entry.entry_id) ? (
-                                    <BookmarkMinusIcon className="h-4 w-4" />
+                                {bookmarks.some(b => b.entry_id === entry.entry_id) ? (
+                                    <BookmarkCheckIcon className="h-4 w-4" />
                                 ) : (
-                                    <BookmarkPlusIcon className="h-4 w-4" />
+                                    <BookmarkIcon className="h-4 w-4" />
                                 )}
                             </Button>
                         )}
@@ -235,7 +236,7 @@ export function HistorySheet({ children }: HistorySheetProps) {
                         <div className="space-y-3 overflow-y-scroll h-screen">
                             {bookmarks.length === 0 ? (
                                 <div className="text-center text-muted-foreground py-8">
-                                    <BookmarkIcon className="h-8 w-8 mx-auto mb-2 opacity-50" />
+                                    <BookmarkCheckIcon className="h-8 w-8 mx-auto mb-2 opacity-50" />
                                     <p className="text-sm">No bookmarks yet</p>
                                     <p className="text-xs mt-1">Tap the bookmark icon to save sentences</p>
                                 </div>
