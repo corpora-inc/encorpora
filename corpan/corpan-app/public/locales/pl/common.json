@@ -21,6 +21,11 @@
   "categories": {
     "travel": "Podróże",
     "business": "Biznes",
+    "autoPlay": "Autoodtwarzanie",
+    "startAutoPlay": "Uruchom autoodtwarzanie",
+    "stopAutoPlay": "Zatrzymaj autoodtwarzanie",
+    "autoPlayDelay": "Opóźnienie autoodtwarzania",
+    "betweenSentences": "między zdaniami",
     "education": "Edukacja",
     "social": "Społeczny",
     "health": "Zdrowie",

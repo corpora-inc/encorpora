@@ -21,6 +21,11 @@
   "categories": {
     "travel": "سفر",
     "business": "عمل",
+    "autoPlay": "تشغيل تلقائي",
+    "startAutoPlay": "بدء التشغيل التلقائي",
+    "stopAutoPlay": "إيقاف التشغيل التلقائي",
+    "autoPlayDelay": "تأخير التشغيل التلقائي",
+    "betweenSentences": "بين الجمل",
     "education": "تعليم",
     "social": "اجتماعي",
     "health": "صحة",

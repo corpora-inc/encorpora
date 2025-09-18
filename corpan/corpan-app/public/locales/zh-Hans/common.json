@@ -21,6 +21,11 @@
   "categories": {
     "travel": "旅行",
     "business": "商务",
+    "autoPlay": "自动播放",
+    "startAutoPlay": "开始自动播放",
+    "stopAutoPlay": "停止自动播放",
+    "autoPlayDelay": "自动播放间隔",
+    "betweenSentences": "句子之间",
     "education": "教育",
     "social": "社交",
     "health": "健康",

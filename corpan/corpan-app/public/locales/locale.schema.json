@@ -1,6 +1,7 @@
 {
   "type": "object",
   "properties": {
+    "$schema": { "type": "string" },
     "languages": {
       "type": "object",
       "properties": {
@@ -165,6 +166,11 @@
         "faster": {
           "type": "string"
         },
+        "autoPlay": { "type": "string" },
+        "startAutoPlay": { "type": "string" },
+        "stopAutoPlay": { "type": "string" },
+        "autoPlayDelay": { "type": "string" },
+        "betweenSentences": { "type": "string" },
         "levels": {
           "type": "string"
         },
@@ -216,6 +222,11 @@
         "fast",
         "slower",
         "faster",
+  "autoPlay",
+  "startAutoPlay",
+  "stopAutoPlay",
+  "autoPlayDelay",
+  "betweenSentences",
         "levels",
         "selectAll",
         "allLevelsIncluded",

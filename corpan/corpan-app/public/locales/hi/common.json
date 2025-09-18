@@ -21,6 +21,11 @@
   "categories": {
     "travel": "यात्रा",
     "business": "व्यापार",
+    "autoPlay": "ऑटो प्ले",
+    "startAutoPlay": "ऑटो प्ले शुरू करें",
+    "stopAutoPlay": "ऑटो प्ले रोकें",
+    "autoPlayDelay": "ऑटो प्ले विलंब",
+    "betweenSentences": "वाक्यों के बीच",
     "education": "शिक्षा",
     "social": "सामाजिक",
     "health": "स्वास्थ्य",

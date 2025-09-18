@@ -21,6 +21,11 @@
   "categories": {
     "travel": "旅行",
     "business": "ビジネス",
+    "autoPlay": "自動再生",
+    "startAutoPlay": "自動再生開始",
+    "stopAutoPlay": "自動再生停止",
+    "autoPlayDelay": "自動再生の遅延",
+    "betweenSentences": "文と文の間",
     "education": "教育",
     "social": "社会",
     "health": "健康",

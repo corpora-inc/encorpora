@@ -21,6 +21,11 @@
   "categories": {
     "travel": "Utazás",
     "business": "Üzlet",
+    "autoPlay": "Automatikus lejátszás",
+    "startAutoPlay": "Automatikus lejátszás indítása",
+    "stopAutoPlay": "Automatikus lejátszás leállítása",
+    "autoPlayDelay": "Automatikus lejátszás késleltetés",
+    "betweenSentences": "mondatok között",
     "education": "Oktatás",
     "social": "Szociális",
     "health": "Egészségügy",

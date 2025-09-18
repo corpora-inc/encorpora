@@ -21,6 +21,11 @@
   "categories": {
     "travel": "Du lịch",
     "business": "Kinh doanh",
+    "autoPlay": "Tự động phát",
+    "startAutoPlay": "Bắt đầu tự động phát",
+    "stopAutoPlay": "Dừng tự động phát",
+    "autoPlayDelay": "Độ trễ tự động phát",
+    "betweenSentences": "giữa các câu",
     "education": "Giáo dục",
     "social": "Xã hội",
     "health": "Sức khỏe",

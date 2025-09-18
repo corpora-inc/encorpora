@@ -21,6 +21,11 @@
   "categories": {
     "travel": "Путешествия",
     "business": "Бизнес",
+    "autoPlay": "Автовоспроизведение",
+    "startAutoPlay": "Начать автовоспроизведение",
+    "stopAutoPlay": "Остановить автовоспроизведение",
+    "autoPlayDelay": "Задержка автовоспроизведения",
+    "betweenSentences": "между предложениями",
     "education": "Образование",
     "social": "Социальное",
     "health": "Здоровье",

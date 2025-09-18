@@ -21,6 +21,11 @@
     "categories": {
         "travel": "سفر",
         "business": "کسب‌وکار",
+        "autoPlay": "پخش خودکار",
+        "startAutoPlay": "شروع پخش خودکار",
+        "stopAutoPlay": "توقف پخش خودکار",
+        "autoPlayDelay": "تاخیر پخش خودکار",
+        "betweenSentences": "بین جملات",
         "education": "آموزش",
         "social": "اجتماعی",
         "health": "سلامت",
