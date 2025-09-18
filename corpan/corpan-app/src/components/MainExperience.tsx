@@ -285,14 +285,6 @@ export function MainExperience() {
                 >
                     <div className="flex justify-center items-center gap-3">
                         <Button
-                            onClick={() => setAutoplay(a => !a)}
-                            variant={autoplay ? "default" : "outline"}
-                            size="lg"
-                            aria-label={autoplay ? "Stop autoplay" : "Start autoplay"}
-                        >
-                            {autoplay ? <StopIcon /> : <PlayIcon />}
-                        </Button>
-                        <Button
                             onClick={handlePrev}
                             variant="ghost"
                             size="lg"
@@ -300,14 +292,22 @@ export function MainExperience() {
                         >
                             <ChevronLeftIcon />
                         </Button>
-                        <Button
-                            onClick={fetchRandomEntry}
-                            variant="outline"
-                            size="lg"
-                            aria-label="Random sentence"
-                        >
-                            <RefreshIcon />
-                        </Button>
+                            <Button
+                                onClick={fetchRandomEntry}
+                                variant="outline"
+                                size="lg"
+                                aria-label="Random sentence"
+                            >
+                                <RefreshIcon />
+                            </Button>
+                            <Button
+                                onClick={() => setAutoplay(a => !a)}
+                                variant={autoplay ? "default" : "outline"}
+                                size="lg"
+                                aria-label={autoplay ? "Stop autoplay" : "Start autoplay"}
+                            >
+                                {autoplay ? <StopIcon /> : <PlayIcon />}
+                            </Button>
                         <Button
                             onClick={handleNext}
                             variant="ghost"
