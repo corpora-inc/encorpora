@@ -9,6 +9,7 @@ import { DomainPicker } from "./DomainPicker";
 import { LevelsPicker } from "./LevelsPicker";
 import { RateAdjuster } from "./RateAdjuster";
 import { RomanizationToggle } from "./RomanizationToggle";
+import { AutoplayDelayAdjuster } from "./AutoplayDelayAdjuster";
 
 import { useSettingsStore } from "@/store/settings";
 import { Button } from "./ui/button";
@@ -55,6 +56,7 @@ export function SettingsModal({
         </DialogDescription>
         <TextSizeAdjuster />
         <RateAdjuster />
+  <AutoplayDelayAdjuster />
         <LanguageSelectOrder />
         <LevelsPicker />
         <DomainPicker />
