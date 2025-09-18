@@ -2,8 +2,6 @@ import { useState } from "react";
 import { 
     History as HistoryIcon, 
     Bookmark as BookmarkIcon, 
-    BookmarkPlus as BookmarkPlusIcon,
-    BookmarkMinus as BookmarkMinusIcon,
     Trash2 as TrashIcon,
     Calendar as CalendarIcon,
     BookmarkCheckIcon
@@ -204,7 +202,7 @@ export function HistorySheet({ children }: HistorySheetProps) {
                             </Button>
                         </div>
                         
-                        <div className="space-y-3 overflow-y-scroll h-screen">
+                        <div className="space-y-3 overflow-y-auto max-h-[calc(100vh-220px)]">
                             {history.length === 0 ? (
                                 <div className="text-center text-muted-foreground py-8">
                                     <CalendarIcon className="h-8 w-8 mx-auto mb-2 opacity-50" />
@@ -233,7 +231,7 @@ export function HistorySheet({ children }: HistorySheetProps) {
                             </Button>
                         </div>
                         
-                        <div className="space-y-3 overflow-y-scroll h-screen">
+                        <div className="space-y-3 overflow-y-auto max-h-[calc(100vh-220px)]">
                             {bookmarks.length === 0 ? (
                                 <div className="text-center text-muted-foreground py-8">
                                     <BookmarkCheckIcon className="h-8 w-8 mx-auto mb-2 opacity-50" />
