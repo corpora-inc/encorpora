@@ -3,7 +3,6 @@ import {
   ALL_TEXT_SIZES,
   TextSizeType,
 } from "@/store/settings";
-import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { useTranslation } from "react-i18next";
 import { toCamelCase } from "@/util/convert";

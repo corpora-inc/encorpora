@@ -6,6 +6,7 @@ import StacksManagerSelect from "./StacksManagerSelect";
 import StacksManagerRenamePopover from "./StacksManagerRenamePopover";
 import StacksManagerNewPopover from "./StacksManagerNewPopover";
 import StacksManagerDeletePopover from "./StacksManagerDeletePopover";
+import { dir } from "i18next";
 
 function genWhimsy(existing: string[]): string {
     const glyphs = "αβγδεζηθικλμνξοπρστυφχψω";
@@ -98,7 +99,10 @@ export function StacksManager() {
     };
 
     return (
-        <div className="mb-2 rounded-md border border-gray-200 bg-white/80 p-2 md:p-3">
+        <div className="mb-2 rounded-md border border-gray-200 bg-white/80 p-2 md:p-3"
+            //   ${dir() === "rtl" ? "text-right" : "text-left"}
+            dir={dir()}
+        >
             <div className="flex flex-wrap items-center gap-2">
                 <StacksManagerSelect
                     activeId={activeId}

@@ -1,7 +1,7 @@
 // src/store/settings.ts
 
 import { create } from "zustand";
-import { persist } from "zustand/middleware";
+import { persist, createJSONStorage } from "zustand/middleware";
 import { RTL_LANGUAGES } from "./constants";
 
 export const ALL_LANGUAGES = [
@@ -38,11 +38,11 @@ export type Stack = {
 };
 
 type MultiStackState = {
-    // Core
+    // Canonical (persisted)
     stacks: Record<StackId, Stack>;
     activeStackId: StackId;
 
-    // Derived mirrors of active stack (REAL FIELDS, not getters)
+    // Mirrors of active (not persisted)
     languages: string[];
     domains: string[];
     levels: string[];
@@ -50,11 +50,11 @@ type MultiStackState = {
     textSize: TextSizeType;
     showRomanization: boolean;
 
-    // Global onboarding (not per stack)
+    // Onboarding (persisted)
     onboarded: boolean;
     onboardingStep: number;
 
-    // Existing API (unchanged)
+    // Updaters (write canonical + mirrors)
     setLanguages: (codes: string[]) => void;
     setDomains: (domains: string[]) => void;
     setLevels: (levels: string[]) => void;
@@ -70,7 +70,7 @@ type MultiStackState = {
     resetOnboarding: () => void;
     setOnboardingStep: (n: number) => void;
 
-    // New stack mgmt
+    // Stacks mgmt
     getStacks: () => Array<{ id: string; name: string }>;
     getActiveStackId: () => string;
     getActiveStackName: () => string;
@@ -84,7 +84,9 @@ type MultiStackState = {
 
 const DEFAULT_STACK_NAME = "Default";
 const now = () => Date.now();
-const nanoid = () => Math.random().toString(36).slice(2, 10) + Math.random().toString(36).slice(2, 10);
+const nanoid = () =>
+    Math.random().toString(36).slice(2, 10) +
+    Math.random().toString(36).slice(2, 10);
 
 const DEFAULT_SETTINGS: StackSettings = {
     languages: ["en", "es", "pt-BR", "fr", "it", "ko-polite"].reverse(),
@@ -130,7 +132,29 @@ function deriveFrom(stack: Stack) {
     };
 }
 
-// One-time import from legacy single-stack storage
+/** Read current persisted “corpan-stacks-v1” synchronously to avoid a default flash. */
+function readPersistedBoot():
+    | { stacks: Record<string, Stack>; activeStackId: string; onboarded?: boolean; onboardingStep?: number }
+    | null {
+    try {
+        const raw = localStorage.getItem("corpan-stacks-v1");
+        if (!raw) return null;
+        const parsed = JSON.parse(raw);
+        const state = parsed?.state ?? parsed;
+        const stacks = state?.stacks;
+        const activeStackId = state?.activeStackId;
+        const onboarded = !!state?.onboarded;
+        const onboardingStep = typeof state?.onboardingStep === "number" ? state.onboardingStep : 0;
+        if (stacks && typeof activeStackId === "string") {
+            return { stacks, activeStackId, onboarded, onboardingStep };
+        }
+        return null;
+    } catch {
+        return null;
+    }
+}
+
+/** One-time import from legacy single-stack storage. */
 function importLegacySingleStack(): { stacks: Record<string, Stack>; activeStackId: string } | null {
     try {
         const raw = localStorage.getItem("corpan-settings");
@@ -143,7 +167,7 @@ function importLegacySingleStack(): { stacks: Record<string, Stack>; activeStack
             domains: Array.isArray(legacyState?.domains) ? legacyState.domains : undefined,
             levels: Array.isArray(legacyState?.levels) ? legacyState.levels : undefined,
             rate: typeof legacyState?.rate === "number" ? legacyState.rate : undefined,
-            textSize: ALL_TEXT_SIZES.includes(legacyState?.textSize) ? legacyState.textSize : undefined,
+            textSize: (ALL_TEXT_SIZES as readonly string[]).includes(legacyState?.textSize) ? legacyState.textSize : undefined,
             showRomanization: typeof legacyState?.showRomanization === "boolean" ? legacyState.showRomanization : undefined,
         };
 
@@ -157,13 +181,21 @@ function importLegacySingleStack(): { stacks: Record<string, Stack>; activeStack
 export const useSettingsStore = create<MultiStackState>()(
     persist(
         (set, get) => {
-            const imported = importLegacySingleStack();
-            const boot = imported ?? (() => {
-                const s = makeStack(DEFAULT_STACK_NAME);
-                return { stacks: { [s.id]: s }, activeStackId: s.id };
-            })();
+            // 1) Try to boot from already persisted stacks (synchronous)
+            const pre = readPersistedBoot();
 
-            // initialize derived
+            // 2) Else import legacy single-stack (and skip onboarding)
+            const imported = pre ? null : importLegacySingleStack();
+
+            // 3) Else create a fresh default stack
+            const boot =
+                pre ??
+                imported ??
+                (() => {
+                    const s = makeStack(DEFAULT_STACK_NAME);
+                    return { stacks: { [s.id]: s }, activeStackId: s.id };
+                })();
+
             const active = boot.stacks[boot.activeStackId] ?? Object.values(boot.stacks)[0];
             const derived = deriveFrom(active);
 
@@ -195,18 +227,18 @@ export const useSettingsStore = create<MultiStackState>()(
             };
 
             return {
-                // core
+                // Canonical
                 stacks: boot.stacks,
                 activeStackId: boot.activeStackId,
 
-                // derived mirrors
+                // Mirrors (initialized from the boot active)
                 ...derived,
 
-                // global onboarding
-                onboarded: false,
-                onboardingStep: 0,
+                // Onboarding: if we had any prior state (pre or legacy), skip onboarding
+                onboarded: !!(pre || imported),
+                onboardingStep: pre?.onboardingStep ?? 0,
 
-                // existing API (writes to active stack + keeps mirrors in sync)
+                // Updaters
                 setLanguages: (codes) => writeActiveSettings((s) => { s.languages = codes; }),
                 setDomains: (domains) => writeActiveSettings((s) => { s.domains = domains; }),
                 setLevels: (levels) => writeActiveSettings((s) => { s.levels = levels; }),
@@ -214,14 +246,10 @@ export const useSettingsStore = create<MultiStackState>()(
                 setTextSize: (size) => writeActiveSettings((s) => { s.textSize = size; }),
                 setShowRomanization: (val) => writeActiveSettings((s) => { s.showRomanization = val; }),
 
-                primaryLang: () => {
-                    const { languages } = get();
-                    return languages[0];
-                },
+                primaryLang: () => get().languages[0],
 
                 dir: () => {
-                    const { languages } = get();
-                    const base = (languages[0] || "").split("-")[0];
+                    const base = (get().languages[0] || "").split("-")[0];
                     return RTL_LANGUAGES.includes(base as any) ? "rtl" : "ltr";
                 },
 
@@ -240,7 +268,7 @@ export const useSettingsStore = create<MultiStackState>()(
                 resetOnboarding: () => set({ onboarded: false }),
                 setOnboardingStep: (n) => set({ onboardingStep: n }),
 
-                // stacks mgmt
+                // Stacks mgmt
                 getStacks: () => Object.values(get().stacks).map(({ id, name }) => ({ id, name })),
                 getActiveStackId: () => get().activeStackId,
                 getActiveStackName: () => {
@@ -258,7 +286,9 @@ export const useSettingsStore = create<MultiStackState>()(
                 createStack: (name?: string, baseId?: string) => {
                     const { stacks, activeStackId } = get();
                     const base = baseId && stacks[baseId] ? stacks[baseId] : stacks[activeStackId];
-                    const newStack = base ? cloneStack(base, name || `${base.name} copy`) : makeStack(name || DEFAULT_STACK_NAME);
+                    const newStack = base
+                        ? cloneStack(base, name || `${base.name} copy`)
+                        : makeStack(name || DEFAULT_STACK_NAME);
                     const nextStacks = { ...stacks, [newStack.id]: newStack };
                     set({ stacks: nextStacks, activeStackId: newStack.id, ...deriveFrom(newStack) });
                     return newStack.id;
@@ -293,34 +323,27 @@ export const useSettingsStore = create<MultiStackState>()(
         {
             name: "corpan-stacks-v1",
             version: 1,
-            // Persist only canonical state (not the derived mirrors)
+            storage: createJSONStorage(() => localStorage),
+            // Persist only canonical + onboarding; mirrors are re-derived.
             partialize: (state) => ({
                 stacks: state.stacks,
                 activeStackId: state.activeStackId,
                 onboarded: state.onboarded,
                 onboardingStep: state.onboardingStep,
             }),
-            onRehydrateStorage: () => (state, error) => {
-                // After hydration, re-sync derived mirrors from active stack
-                if (error) return;
-                try {
-                    const { stacks, activeStackId } = state as unknown as MultiStackState;
-                    const active =
-                        (stacks && stacks[activeStackId]) ||
-                        (stacks && Object.values(stacks)[0]) ||
-                        makeStack(DEFAULT_STACK_NAME);
-                    // Use a set call through the store instance
-                    // eslint-disable-next-line @typescript-eslint/no-var-requires
-                    const useStore = require("./settings").useSettingsStore as typeof useSettingsStore;
-                    useStore.setState({
-                        stacks: stacks ?? { [active.id]: active },
-                        activeStackId: stacks ? (stacks[activeStackId] ? activeStackId : active.id) : active.id,
-                        ...deriveFrom(active),
-                    });
-                } catch {
-                    // noop
-                }
-            },
         }
     )
 );
+
+// After hydration, re-derive mirrors from whatever canonical was loaded.
+// Also skip onboarding if any stack exists (covers first-run after a manual data import, etc.)
+useSettingsStore.persist.onFinishHydration(() => {
+    const { stacks, activeStackId, onboarded } = useSettingsStore.getState();
+    const active = stacks[activeStackId] ?? Object.values(stacks)[0];
+    if (active) {
+        useSettingsStore.setState({ ...deriveFrom(active) }, false);
+    }
+    if (!onboarded && Object.keys(stacks).length > 0) {
+        useSettingsStore.setState({ onboarded: true }, false);
+    }
+});

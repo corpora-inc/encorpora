@@ -1,4 +1,5 @@
 import { Select, SelectTrigger, SelectContent, SelectGroup, SelectItem, SelectValue } from "@/components/ui/select";
+import { dir } from "i18next";
 import { useTranslation } from "react-i18next";
 
 type StackListItem = { id: string; name: string };
@@ -24,10 +25,16 @@ export default function StacksManagerSelect({
                 >
                     <SelectValue placeholder={t("stacks.selectPlaceholder", { defaultValue: "Choose…" }) as string} />
                 </SelectTrigger>
-                <SelectContent containerId="settings-modal-content">
-                    <SelectGroup>
+                <SelectContent containerId="settings-modal-content"
+                    dir={dir()}
+                >
+                    <SelectGroup
+                        dir={dir()}
+                    >
                         {stacks.map((s) => (
-                            <SelectItem key={s.id} value={s.id} className="cursor-pointer">
+                            <SelectItem key={s.id} value={s.id} className="cursor-pointer"
+                                dir={dir()}
+                            >
                                 {s.id === activeId ? nameDraftActive || s.name : s.name}
                             </SelectItem>
                         ))}
