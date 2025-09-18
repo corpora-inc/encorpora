@@ -26,6 +26,8 @@ type SettingsState = {
     reset: () => void;
     rate: number;
     setRate: (rate: number) => void;
+    autoplayDelayMs: number; // delay between sentences for autoplay (ms)
+    setAutoplayDelayMs: (ms: number) => void;
     textSize: TextSizeType;
     setTextSize: (size: TextSizeType) => void;
     showRomanization: boolean;
@@ -58,6 +60,8 @@ export const useSettingsStore = create<SettingsState>()(
                 }),
             rate: 0.7,
             setRate: (rate) => set({ rate }),
+            autoplayDelayMs: 1200,
+            setAutoplayDelayMs: (autoplayDelayMs) => set({ autoplayDelayMs }),
             textSize: "medium",
             setTextSize: (size) => set({ textSize: size }),
 
