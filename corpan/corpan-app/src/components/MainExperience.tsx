@@ -210,9 +210,10 @@ export function MainExperience() {
                             <div
 
                                 className="text-center"
-                                // Add style for pointer on hover:
-                                style={{ cursor: "pointer" }}
+                                // Add style for pointer on hover; show not-allowed when autoplaying
+                                style={{ cursor: autoplay ? "not-allowed" : "pointer" }}
                                 onClick={() => {
+                                    if (autoplay) return; // disabled during autoplay
                                     const langPrefix = code.split("-")[0];
                                     createVoiceTTS(langPrefix)(
                                         textByLang[code],
@@ -250,7 +251,7 @@ export function MainExperience() {
 
 
                                 <motion.div
-                                    whileTap={{ scale: 0.9 }}
+                                    whileTap={autoplay ? undefined : { scale: 0.9 }}
                                     transition={{ type: "spring", stiffness: 100, damping: 10 }}
                                     className="transform-gpu will-change-transform"
                                 >
@@ -258,7 +259,8 @@ export function MainExperience() {
                                         className="mt-1"
                                         size="sm"
                                         variant="outline"
-                                        style={{ cursor: "pointer" }}
+                                        disabled={autoplay}
+                                        style={{ cursor: autoplay ? "not-allowed" : "pointer" }}
                                     >
                                         <Speaker className="shrink-0" />
                                         <AudioLines className="shrink-0" />
