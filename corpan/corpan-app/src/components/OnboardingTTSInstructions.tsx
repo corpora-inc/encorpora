@@ -84,7 +84,7 @@ export function OnboardingTTSInstructions() {
                 style={{ height: 100 }}
             >
                 <button
-                    className="flex items-center justify-center bg-gray-200 hover:bg-gray-300 text-gray-700 rounded-full p-3 shadow transition border"
+                    className="flex items-center justify-center bg-gray-200 hover:bg-gray-300 text-gray-700 rounded-md p-3 shadow transition border"
                     onClick={() => setStep(2)}
                     tabIndex={0}
                 >
@@ -99,8 +99,8 @@ export function OnboardingTTSInstructions() {
                 </div>
                 {/* Make NEXT the prominent action: Purple styling */}
                 <button
-                    // className="flex items-center justify-center bg-white border-2 border-purple-700 hover:bg-purple-50 text-purple-700 hover:text-purple-800 rounded-2xl font-semibold text-lg shadow-lg px-5 py-4 gap-1 transition"
-                    className="flex items-center justify-center rounded-full p-3 shadow transition bg-black hover:bg-gray-900 text-white border border-purple-400"
+                    // className="flex items-center justify-center bg-white border-2 border-purple-700 hover:bg-purple-50 text-purple-700 hover:text-purple-800 rounded-md font-semibold text-lg shadow-lg px-5 py-4 gap-1 transition"
+                    className="flex items-center justify-center rounded-md p-3 shadow transition bg-black hover:bg-gray-900 text-white border border-purple-400"
                     onClick={() => setStep(4)}
                     tabIndex={0}
                 >
@@ -126,7 +126,7 @@ export function OnboardingTTSInstructions() {
                                     className="
                                         flex items-center gap-2
                                         px-4 py-3
-                                        rounded-xl
+                                        rounded-md
                                         bg-gray-100 hover:bg-purple-50
                                         border border-gray-200
                                         text-base font-semibold text-gray-800

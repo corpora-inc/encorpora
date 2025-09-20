@@ -74,7 +74,10 @@
   },
   "common": {
     "loading": "Cargando...",
-    "instantPolyglotPractice": "Práctica políglota instantánea"
+    "instantPolyglotPractice": "Práctica políglota instantánea",
+    "cancel": "Cancelar",
+    "delete": "Eliminar",
+    "create": "Crear"
   },
   "footer": {
     "appVersion": "Versión de la App",
@@ -83,5 +86,18 @@
     "feedbackNote": "Para problemas o sugerencias, por favor visita nuestro repositorio de GitHub o contáctanos por correo electrónico.",
     "githubIssues": "Problemas en GitHub",
     "aboutCorpan": "Sobre Corpán"
+  },
+  "stacks": {
+    "note": "Cada perfil tiene su propia configuración e historial.",
+    "newStackBase": "Nuevo perfil",
+    "untitled": "Sin título",
+    "delete": "Eliminar perfil",
+    "confirmDeleteTitle": "¿Eliminar este perfil?",
+    "confirmDelete": "¿Eliminar este perfil? Esta acción no se puede deshacer.",
+    "new": "Nuevo perfil",
+    "newName": "Nombre del nuevo perfil",
+    "rename": "Renombrar",
+    "selectAria": "Seleccionar un perfil",
+    "selectPlaceholder": "Elegir…"
   }
 }

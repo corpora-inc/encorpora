@@ -74,7 +74,10 @@
   },
   "common": {
     "loading": "로드 중...",
-    "instantPolyglotPractice": "즉석 다국어 연습"
+    "instantPolyglotPractice": "즉석 다국어 연습",
+    "cancel": "취소",
+    "delete": "삭제",
+    "create": "생성"
   },
   "footer": {
     "appVersion": "앱 버전",
@@ -83,5 +86,18 @@
     "feedbackNote": "문제나 제안 사항이 있으시면 GitHub 리포지토리를 방문하시거나 이메일로 문의해 주십시오.",
     "githubIssues": "GitHub 문제",
     "aboutCorpan": "Corpán 정보"
+  },
+  "stacks": {
+    "note": "각 프로필에는 고유한 설정과 기록이 있습니다.",
+    "newStackBase": "새 프로필",
+    "untitled": "제목 없음",
+    "delete": "프로필 삭제",
+    "confirmDeleteTitle": "이 프로필을 삭제하시겠어요?",
+    "confirmDelete": "이 프로필을 삭제하시겠어요? 이 작업은 취소할 수 없습니다.",
+    "new": "새 프로필",
+    "newName": "새 프로필 이름",
+    "rename": "이름 변경",
+    "selectAria": "프로필 선택",
+    "selectPlaceholder": "선택…"
   }
 }

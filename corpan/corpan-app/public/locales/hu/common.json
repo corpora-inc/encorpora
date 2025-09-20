@@ -74,7 +74,10 @@
   },
   "common": {
     "loading": "Betöltés...",
-    "instantPolyglotPractice": "Azonnali többnyelvű gyakorlás"
+    "instantPolyglotPractice": "Azonnali többnyelvű gyakorlás",
+    "cancel": "Mégse",
+    "delete": "Törlés",
+    "create": "Létrehozás"
   },
   "footer": {
     "appVersion": "Alkalmazás verzió",
@@ -83,5 +86,18 @@
     "feedbackNote": "Problémák vagy javaslatok esetén kérjük, látogasson el a GitHub tárolónkhoz, vagy lépjen kapcsolatba velünk e-mailben.",
     "githubIssues": "GitHub problémák",
     "aboutCorpan": "A Corpán-ról"
+  },
+  "stacks": {
+    "note": "Minden profilnak saját beállításai és előzményei vannak.",
+    "newStackBase": "Új profil",
+    "untitled": "Névtelen",
+    "delete": "Profil törlése",
+    "confirmDeleteTitle": "Töröljük ezt a profilt?",
+    "confirmDelete": "Biztos törlöd ezt a profilt? A művelet nem visszavonható.",
+    "new": "Új profil",
+    "newName": "Új profil neve",
+    "rename": "Átnevezés",
+    "selectAria": "Profil kiválasztása",
+    "selectPlaceholder": "Válassz…"
   }
 }
