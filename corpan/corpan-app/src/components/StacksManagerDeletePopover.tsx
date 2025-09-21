@@ -48,9 +48,13 @@ export default function StacksManagerDeletePopover({
                 side="bottom"
                 align="center"
                 sideOffset={8}
-                className="w-[260px] max-w-[92vw]"
+                // Default width/cap; expand to near-full width on very small screens
+                className="w-[260px] max-w-[92vw] max-[480px]:w-[calc(100vw-24px)] max-[480px]:max-w-none"
                 onEscapeKeyDown={() => setOpen(false)}
                 onPointerDownOutside={() => setOpen(false)}
+                // Prevent focus auto-moves that can cause scroll jumps on mobile
+                onOpenAutoFocus={(e) => e.preventDefault()}
+                onCloseAutoFocus={(e) => e.preventDefault()}
             >
                 <div className="space-y-2">
                     <div className="text-sm font-medium">
@@ -64,20 +68,10 @@ export default function StacksManagerDeletePopover({
                         }) as string}
                     </div>
                     <div className="flex justify-end gap-2 pt-1">
-                        <Button
-                            size="sm"
-                            variant="outline"
-                            className="cursor-pointer"
-                            onClick={() => setOpen(false)}
-                        >
+                        <Button size="sm" variant="outline" className="cursor-pointer" onClick={() => setOpen(false)}>
                             {t("common.cancel", { defaultValue: "Cancel" }) as string}
                         </Button>
-                        <Button
-                            size="sm"
-                            variant="destructive"
-                            className="cursor-pointer"
-                            onClick={confirmAndClose}
-                        >
+                        <Button size="sm" variant="destructive" className="cursor-pointer" onClick={confirmAndClose}>
                             {t("common.delete", { defaultValue: "Delete" }) as string}
                         </Button>
                     </div>
