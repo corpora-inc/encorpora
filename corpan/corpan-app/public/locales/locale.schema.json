@@ -1,6 +1,9 @@
 {
   "type": "object",
   "properties": {
+    "$schema": {
+      "type": "string"
+    },
     "languages": {
       "type": "object",
       "properties": {
@@ -26,6 +29,9 @@
           "type": "string"
         },
         "zhHans": {
+          "type": "string"
+        },
+        "zhHant": {
           "type": "string"
         },
         "ar": {
@@ -295,6 +301,15 @@
           "type": "string"
         },
         "instantPolyglotPractice": {
+          "type": "string"
+        },
+        "cancel": {
+          "type": "string"
+        },
+        "delete": {
+          "type": "string"
+        },
+        "create": {
           "type": "string"
         }
       },

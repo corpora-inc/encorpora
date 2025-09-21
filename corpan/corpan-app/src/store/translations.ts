@@ -698,7 +698,7 @@ export const TRANSLATIONS = {
         "Loading...": "加載中...",
         "About Corpán": "關於 Corpán",
         "Instant polyglot practice": "即時多語練習",
-        "Show Romanization": "顯示羅馬
+        "Show Romanization": "顯示羅馬",
     },
     "ar": {
         "en": "الإنجليزية",
