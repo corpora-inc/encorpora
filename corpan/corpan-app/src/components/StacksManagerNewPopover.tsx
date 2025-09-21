@@ -29,16 +29,23 @@ export default function StacksManagerNewPopover({
     // Focus input when opening
     useEffect(() => {
         if (!open) return;
-        const id = requestAnimationFrame(() => inputRef.current?.focus());
+        const id = requestAnimationFrame(() => inputRef.current?.focus({ preventScroll: true }));
         return () => cancelAnimationFrame(id);
     }, [open]);
 
     const commitCreate = () => {
         const final = newName.trim() || randomGlyphs(3);
-        // ensure parent sees the final name before onCreate runs
         flushSync(() => setNewName(final));
         onCreate();
-        setOpen(false);
+
+        // Important on mobile: blur before closing so focus doesn't snap
+        // back to the trigger (which can scroll the viewport).
+        inputRef.current?.blur();
+
+        // Defer close to next frame to let keyboard dismiss settle first.
+        requestAnimationFrame(() => {
+            setOpen(false);
+        });
     };
 
     return (
@@ -68,25 +75,47 @@ export default function StacksManagerNewPopover({
                 side="bottom"
                 align="center"
                 sideOffset={8}
-                className="w-[260px] max-w-[92vw]"
+                // className="w-[260px] max-w-[92vw]"
+                className="w-[260px] max-w-[92vw] max-[480px]:w-[calc(100vw-24px)] max-[480px]:max-w-none"
+
+                // Prevent Radix from auto-focusing the content on open or
+                // returning focus to the trigger on close (both can scroll).
+                onOpenAutoFocus={(e) => e.preventDefault()}
+                onCloseAutoFocus={(e) => e.preventDefault()}
             >
-                <input
-                    ref={inputRef}
-                    type="text"
-                    className="w-full rounded-md border border-gray-300 bg-white px-3 py-1.5 text-sm outline-none focus:ring-2 focus:ring-neutral-400"
-                    value={newName}
-                    onChange={(e) => setNewName(e.target.value)}
-                    onKeyDown={(e) => {
-                        if (e.key === "Enter") commitCreate();
-                        if (e.key === "Escape") setOpen(false);
+                <form
+                    onSubmit={(e) => {
+                        e.preventDefault(); // stop implicit submit/scroll behavior
+                        commitCreate();
                     }}
-                    placeholder={t("stacks.newName", { defaultValue: "Name for new stack" }) as string}
-                />
-                <div className="mt-2 flex justify-end">
-                    <Button size="sm" className="cursor-pointer" onClick={commitCreate}>
-                        {t("common.create", { defaultValue: "Create" }) as string}
-                    </Button>
-                </div>
+                >
+                    <input
+                        ref={inputRef}
+                        type="text"
+                        className="w-full rounded-md border border-gray-300 bg-white px-3 py-1.5 text-sm outline-none focus:ring-2 focus:ring-neutral-400"
+                        value={newName}
+                        onChange={(e) => setNewName(e.target.value)}
+                        onKeyDown={(e) => {
+                            // Let form handle Enter; still close on Escape.
+                            if (e.key === "Escape") {
+                                e.preventDefault();
+                                inputRef.current?.blur();
+                                // Prevent Radix from snapping focus back to trigger
+                                requestAnimationFrame(() => setOpen(false));
+                            }
+                        }}
+                        placeholder={t("stacks.newName", { defaultValue: "Name for new stack" }) as string}
+                        inputMode="text"
+                        autoComplete="off"
+                        autoCorrect="off"
+                        spellCheck={false}
+                    />
+                    <div className="mt-2 flex justify-end">
+                        <Button size="sm" className="cursor-pointer" type="submit">
+                            {t("common.create", { defaultValue: "Create" }) as string}
+                        </Button>
+                    </div>
+                </form>
             </PopoverContent>
         </Popover>
     );

@@ -71,7 +71,7 @@ export function OnboardingTTSInstructions() {
 
     const speak = (text: string, lang: string) => {
         try {
-            createVoiceTTS(lang.split('-')[0])(text);
+            createVoiceTTS(lang)(text);
         } catch (e) {
             alert("Unable to speak. TTS error.");
         }
