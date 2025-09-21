@@ -2,10 +2,10 @@ from typing import List, Tuple, Dict, Optional
 from django.db import transaction
 from corpora_ai.provider_loader import load_llm_provider
 
-from cor.models import Language, Entry, Pack, PackEntry
+from cor.models import Language, Entry, Pack, PackEntry, Translation
 from cor.utils.split import split_into_utterances
 from cor.utils.llm_source import translate_source_to_english_batch
-from cor.utils.llm import translate_entry_batch
+from cor.utils.llm import translate_entry_batch  # EN -> target
 
 DEFAULT_BATCH_SIZE = 40
 
@@ -18,14 +18,15 @@ def create_pack_from_text(
     llm_provider: str = "openai",
     default_level: str = "A1",
     batch_size: int = DEFAULT_BATCH_SIZE,
-    skip_source_redundant: bool = False,
+    skip_source_redundant: bool = False,  # kept for API, source is always excluded below
     dry_run: bool = True,
 ) -> Optional[Pack]:
     """
-    Split → SOURCE→EN (batched) → (optionally) persist Pack/Entries → EN→all fan-out (batched per language).
+    Split → SOURCE→EN (batched) → (optionally) persist Pack/Entries + SOURCE translations →
+    EN→all other targets (batched per language).
 
-    - dry_run=True: no DB writes; prints pivot EN and per-language previews. Returns None.
-    - dry_run=False: creates Pack, Entries, PackEntries, and writes translations. Returns the Pack.
+    - dry_run=True: no DB writes; prints pivot EN and previews per-language output.
+    - dry_run=False: writes Pack/Entries/PackEntries, saves SOURCE translations, then fan-out to other languages.
     """
     langs = list(Language.objects.all().order_by("code"))
     code2lang: Dict[str, Language] = {lng.code: lng for lng in langs}
@@ -63,15 +64,20 @@ def create_pack_from_text(
     for idx, line in enumerate(en_texts, start=1):
         print(f"{idx:>3}: {line}")
 
+    # Always exclude EN and SOURCE from fan-out
+    target_codes = [
+        lng.code for lng in langs if lng.code not in ("en", source_lang_code)
+    ]
+
     if dry_run:
         # Preview only: do not write anything
+        print(f"\n[PREVIEW {source_lang_code}] (source texts that would be saved):")
+        for idx, src in enumerate(utterances, start=1):
+            print(f"{idx:>3}: {src.strip()}")
+
         temp_entries_payload: List[Tuple[int, str]] = [
             (i, s) for i, s in enumerate(en_texts, start=1)
         ]
-        target_codes = [lng.code for lng in langs if lng.code != "en"]
-        if skip_source_redundant:
-            target_codes = [c for c in target_codes if c != source_lang_code]
-
         for code in target_codes:
             print(
                 f"\n[PREVIEW {code}] Translating {len(temp_entries_payload)} items..."
@@ -84,25 +90,31 @@ def create_pack_from_text(
         print("\n[dry_run] No database changes were made.")
         return None
 
-    # 2) Persist Pack + Entries + PackEntries
+    # 2) Persist Pack + Entries + PackEntries + SOURCE translations
+    source_language = code2lang[source_lang_code]
     with transaction.atomic():
         pack = Pack.objects.create(title=title, narrator=narrator)
         ordered_entries: List[Entry] = []
-        for order, en_text in enumerate(en_texts, start=1):
+        for order, (en_text, src_text) in enumerate(zip(en_texts, utterances), start=1):
             entry, _ = Entry.objects.get_or_create(
                 en_text=en_text, defaults={"level": default_level}
             )
+            # Save/ensure SOURCE translation attached to this Entry
+            tr, created_tr = Translation.objects.get_or_create(
+                entry=entry,
+                language=source_language,
+                defaults={"text": src_text.strip()},
+            )
+            if not created_tr and tr.text != src_text.strip():
+                tr.text = src_text.strip()
+                tr.save(update_fields=["text"])
             ordered_entries.append(entry)
             PackEntry.objects.create(pack=pack, entry=entry, order=order)
 
-    # 3) Fan-out EN -> all targets (reuse existing batch tool)
+    # 3) Fan-out EN -> all other targets (reuse existing batch tool)
     entries_payload: List[Tuple[int, str]] = [
         (e.id, e.en_text) for e in ordered_entries
     ]
-    target_codes = [lng.code for lng in langs if lng.code != "en"]
-    if skip_source_redundant:
-        target_codes = [c for c in target_codes if c != source_lang_code]
-
     for code in target_codes:
         print(
             f"\n[WRITE {code}] Translating and saving {len(entries_payload)} items..."
@@ -116,6 +128,7 @@ def create_pack_from_text(
             )
 
     print(
-        f"\n[done] Pack '{title or pack.id}' created with {len(ordered_entries)} entries."
+        f"\n[done] Pack '{title or pack.id}' created with {len(ordered_entries)} entries; "
+        f"source '{source_lang_code}' translations saved and fan-out completed."
     )
     return pack

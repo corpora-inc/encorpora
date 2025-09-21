@@ -5,7 +5,7 @@ import { persist, createJSONStorage } from "zustand/middleware";
 import { RTL_LANGUAGES } from "./constants";
 
 export const ALL_LANGUAGES = [
-    "en", "ko-polite", "es", "fr", "de", "pt-BR", "ja", "zh-Hans", "ar", "ru", "it", "hi", "vi", "pl", "hu", "fa",
+    "en", "ko-polite", "es", "fr", "de", "pt-BR", "ja", "zh-Hans", "zh-Hant", "ar", "ru", "it", "hi", "vi", "pl", "hu", "fa",
 ];
 
 export const ALL_LEVELS = ["A1", "A2", "B1", "B2", "C1", "C2"];

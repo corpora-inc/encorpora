@@ -6,6 +6,13 @@ def T(text, expected, lang="en"):
     assert split_into_utterances(text) == expected
 
 
+def test_chinese_semicolon():
+    # Chinese fullwidth semicolon (； U+FF1B)
+    s = "無名天地之始；有名萬物之母。"
+    split = ["無名天地之始；", "有名萬物之母。"]
+    T(s, split, lang="zh-Hans")
+
+
 def test_basic_english():
     T("Hello world. How are you?", ["Hello world.", "How are you?"])
     T("Wow! Really?", ["Wow!", "Really?"])
