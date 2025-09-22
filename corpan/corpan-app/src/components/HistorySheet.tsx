@@ -60,6 +60,12 @@ export function HistorySheet({ children }: HistorySheetProps) {
     const primaryLang = useSettingsStore((s) => s.primaryLang);
     const showRomanization = useSettingsStore((s) => s.showRomanization);
 
+    const clearHistoryAndBookmarks = useCallback(() => {
+        clearHistory();
+        clearBookmarks();
+        setHistoryEntries([]);
+    }, [clearHistory, clearBookmarks]);
+
     // Load full history entries when the sheet opens or stack changes
     useEffect(() => {
         const loadHistoryEntries = async () => {
@@ -227,7 +233,7 @@ export function HistorySheet({ children }: HistorySheetProps) {
                             <Button
                                 variant="ghost"
                                 size="sm"
-                                onClick={clearHistory}
+                                onClick={clearHistoryAndBookmarks}
                                 disabled={historyEntries.length === 0}
                                 className="h-8 text-xs"
                             >
