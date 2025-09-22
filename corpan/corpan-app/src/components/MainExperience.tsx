@@ -10,14 +10,17 @@ import {
     Bookmark as BookmarkIcon,
     BookmarkCheck as BookmarkCheckIcon,
     History as HistoryIcon,
+    Settings as SettingsIcon,
+    MoreHorizontal,
 } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 import { Button } from "@/components/ui/button";
 import { useSettingsStore } from "@/store/settings";
 import { EntryOut, useHistoryStore } from "@/store/history";
 import { useBookmarkStore } from "@/store/bookmarks";
 import { HistorySheet } from "@/components/HistorySheet";
+import { SettingsModal } from "@/components/SettingsModal";
 import { createVoiceTTS } from "@/util/speak";
 import { useTranslation } from "react-i18next";
 
@@ -57,13 +60,17 @@ export function MainExperience() {
     const [currEntry, setCurrEntry] = useState<EntryOut | null>(null);
     const fetchSeqRef = useRef(0);
 
+    // Dog-ear action bank state
+    const [showActionBank, setShowActionBank] = useState(false);
+    const [showSettings, setShowSettings] = useState(false);
+
     const displayedLanguages = useMemo(() => [...languages].reverse(), [languages]);
 
     // --- Bookmark handlers ----------------------------------------------------
 
     const toggleBookmark = useCallback(() => {
         if (!currEntry) return;
-        
+
         if (isBookmarked(currEntry.entry_id)) {
             removeBookmark(currEntry.entry_id);
         } else {
@@ -170,9 +177,11 @@ export function MainExperience() {
             {/* Floating domain/level chips */}
             {currEntry && (
                 <div
-                    className="fixed top-5 pt-safe left-5 z-50 pointer-events-none"
+                    className="fixed top-5 pt-safe left-5 z-50 pointer-events-none flex"
                     style={{ background: "transparent", marginTop: getPlatformTopPaddingButtons() }}
                 >
+
+
                     <div className="flex flex-wrap gap-1 items-center justify-center text-gray-400 text-xs mb-1">
                         <span className="px-2 py-0.5 rounded-md border border-gray-200 bg-gray-50 text-xs">
                             {currEntry.level.toUpperCase()}
@@ -183,6 +192,7 @@ export function MainExperience() {
                             </span>
                         ))}
                     </div>
+
                 </div>
             )}
 
@@ -290,33 +300,103 @@ export function MainExperience() {
                             <ChevronRightIcon />
                         </Button>
                     </div>
-                    <div className="flex justify-center items-center gap-3 mt-2">
-                        <HistorySheet>
-                            <Button
-                                variant="ghost"
-                                size="sm"
-                                aria-label="View history and bookmarks"
-                            >
-                                <HistoryIcon className="h-4 w-4" />
-                            </Button>
-                        </HistorySheet>
-                        <Button
-                            onClick={toggleBookmark}
-                            variant="ghost"
-                            size="sm"
-                            aria-label={currEntry && isBookmarked(currEntry.entry_id) ? "Remove bookmark" : "Add bookmark"}
-                            disabled={!currEntry}
-                        >
-                            {currEntry && isBookmarked(currEntry.entry_id) ? (
-                                <BookmarkCheckIcon className="h-4 w-4 text-black" />
-                            ) : (
-                                <BookmarkIcon className="h-4 w-4" />
-                            )}
-                        </Button>
-                    </div>
+
                     <span className="text-xs text-gray-400 mt-1">
                         {Math.max(0, index + 1)}/{ids.length}
                     </span>
+                </div>
+            </div>
+
+            {/* Action bank - positioned at bottom-right of screen */}
+            <div
+                className="fixed bottom-0 right-0 z-50 pointer-events-none"
+                style={{
+                    paddingBottom: getPlatformBottomPadding() / 6 + (isAndroid() ? 39 : 0),
+                    paddingRight: "16px"
+                }}
+            >
+                <div className="relative">
+                    {/* Action toggle button */}
+                    <motion.button
+                        className="pointer-events-auto bg-white/95 border border-gray-200 rounded-md w-11 h-11 flex items-center justify-center shadow-lg hover:shadow-xl transition-shadow"
+                        onClick={() => setShowActionBank(!showActionBank)}
+                        aria-expanded={showActionBank}
+                        aria-label={showActionBank ? "Close actions" : "Open actions"}
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                    >
+                        <motion.div
+                            animate={{ rotate: showActionBank ? 180 : 0 }}
+                            transition={{ duration: 0.2 }}
+                        >
+                            <MoreHorizontal className="h-5 w-5 text-gray-600" />
+                        </motion.div>
+                    </motion.button>
+
+                    {/* Expandable action popover */}
+                    <AnimatePresence>
+                        {showActionBank && (
+                            <motion.div
+                                initial={{ opacity: 0, scale: 0.8, y: 10 }}
+                                animate={{ opacity: 1, scale: 1, y: 0 }}
+                                exit={{ opacity: 0, scale: 0.8, y: 10 }}
+                                transition={{ duration: 0.2, ease: "easeOut" }}
+                                className="absolute bottom-full right-0 mb-2 pointer-events-auto"
+                            >
+                                <div className="bg-white/95 border border-gray-200 rounded-lg shadow-2xl p-2 min-w-[120px]">
+                                    <div className="flex flex-col gap-1">
+                                        <Button
+                                            onClick={toggleBookmark}
+                                            variant="ghost"
+                                            size="sm"
+                                            aria-label={currEntry && isBookmarked(currEntry.entry_id) ? "Remove bookmark" : "Add bookmark"}
+                                            disabled={!currEntry}
+                                            className="justify-start gap-2 h-8"
+                                        >
+                                            {currEntry && isBookmarked(currEntry.entry_id) ? (
+                                                <>
+                                                    <BookmarkCheckIcon className="h-4 w-4 text-black" />
+                                                    <span className="text-xs">Unsaved</span>
+                                                </>
+                                            ) : (
+                                                <>
+                                                    <BookmarkIcon className="h-4 w-4" />
+                                                    <span className="text-xs">Save</span>
+                                                </>
+                                            )}
+                                        </Button>
+
+                                        <HistorySheet>
+                                            <Button
+                                                variant="ghost"
+                                                size="sm"
+                                                className="justify-start gap-2 h-8"
+                                                aria-label="History & Bookmarks"
+                                            >
+                                                <HistoryIcon className="h-4 w-4" />
+                                                <span className="text-xs">History</span>
+                                            </Button>
+                                        </HistorySheet>
+      <SettingsModal
+        open={showSettings}
+        onClose={() => setShowSettings(false)}
+      />
+                                        <Button
+                                            onClick={() => setShowSettings(true)}
+                                            variant="ghost"
+                                            size="sm"
+                                            className="justify-start gap-2 h-8"
+                                            aria-label="Settings"
+                                        >
+                                            <SettingsIcon className="h-4 w-4" />
+                                            <span className="text-xs">Settings</span>
+                                        </Button>
+
+                                    </div>
+                                </div>
+                            </motion.div>
+                        )}
+                    </AnimatePresence>
                 </div>
             </div>
         </div>
