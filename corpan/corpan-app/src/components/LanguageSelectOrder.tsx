@@ -39,7 +39,7 @@ function LangChip({
   return (
     <div
       className={`
-                flex items-center gap-1 px-3 py-1 rounded-lg border bg-white shadow-sm
+                flex items-center gap-1 px-3 py-1 rounded-md border bg-white shadow-sm
                 ${isPrimary ? "bg-purple-50 border-purple-300" : ""}
                 ${isDragging ? "opacity-60 border-blue-400 shadow-lg" : ""}
                 select-none mb-1
@@ -175,7 +175,7 @@ export function LanguageSelectOrder() {
                 key={code}
                 variant="outline"
                 size="sm"
-                className="rounded-full text-xs p-3"
+                className="rounded-md text-xs p-3"
                 onClick={() => handleAdd(code)}
               >
                 <Plus size={15} />

@@ -9,6 +9,7 @@
     "ptBR": "Tiếng Bồ Đào Nha (Brazil)",
     "ja": "Tiếng Nhật",
     "zhHans": "Tiếng Trung (Giản thể)",
+    "zhHant": "Tiếng Trung (Phồn thể)",
     "ar": "Tiếng Ả Rập",
     "ru": "Tiếng Nga",
     "it": "Tiếng Ý",
@@ -74,7 +75,10 @@
   },
   "common": {
     "loading": "Đang tải...",
-    "instantPolyglotPractice": "Luyện tập đa ngôn ngữ tức thì"
+    "instantPolyglotPractice": "Luyện tập đa ngôn ngữ tức thì",
+    "cancel": "Hủy",
+    "delete": "Xóa",
+    "create": "Tạo"
   },
   "footer": {
     "appVersion": "Phiên bản ứng dụng",
@@ -83,5 +87,18 @@
     "feedbackNote": "Đối với các vấn đề hoặc đề xuất, vui lòng truy cập kho GitHub của chúng tôi hoặc liên hệ với chúng tôi qua email.",
     "githubIssues": "Vấn đề trên GitHub",
     "aboutCorpan": "Về Corpán"
+  },
+  "stacks": {
+    "note": "Mỗi hồ sơ có cài đặt và lịch sử riêng.",
+    "newStackBase": "Hồ sơ mới",
+    "untitled": "Không tiêu đề",
+    "delete": "Xóa hồ sơ",
+    "confirmDeleteTitle": "Xóa hồ sơ này?",
+    "confirmDelete": "Xóa hồ sơ này? Hành động không thể hoàn tác.",
+    "new": "Hồ sơ mới",
+    "newName": "Tên hồ sơ mới",
+    "rename": "Đổi tên",
+    "selectAria": "Chọn hồ sơ",
+    "selectPlaceholder": "Chọn…"
   }
 }

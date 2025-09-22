@@ -52,7 +52,7 @@ export function OnboardingPickLearning() {
         style={{ height: 100 }}
       >
         <button
-          className="flex items-center justify-center bg-gray-200 hover:bg-gray-300 text-gray-700 rounded-full p-3 shadow transition border"
+          className="flex items-center justify-center bg-gray-200 hover:bg-gray-300 text-gray-700 rounded-md p-3 shadow transition border"
           onClick={() => setStep(1)}
           tabIndex={0}
         >
@@ -66,7 +66,7 @@ export function OnboardingPickLearning() {
           {t("onboarding.pickLanguagesToLearn")}
         </div>
         <button
-          className={`flex items-center justify-center rounded-full p-3 shadow transition
+          className={`flex items-center justify-center rounded-md p-3 shadow transition
             ${canProceed
               ? "bg-black hover:bg-gray-900 text-white border border-purple-400"
               : "bg-gray-200 text-gray-400 border cursor-not-allowed"
@@ -91,7 +91,7 @@ export function OnboardingPickLearning() {
                 lang={code}
                 className={`
                   w-full px-5 py-4
-                  rounded-2xl shadow
+                  rounded-md shadow
                   bg-white border border-gray-200
                   text-lg font-semibold text-gray-900
                   flex items-center justify-between

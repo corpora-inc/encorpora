@@ -35,7 +35,7 @@ export function RateAdjuster() {
                         key={btn.label}
                         size="sm"
                         variant={Math.abs(rate - btn.value) < 0.03 ? "default" : "outline"}
-                        className="rounded-full text-xs px-4 py-1"
+                        className="rounded-md text-xs px-4 py-1"
                         onClick={() => setRate(btn.value)}
                     >
                         {/* {btn.label} */}
@@ -45,10 +45,10 @@ export function RateAdjuster() {
                 ))}
             </div>
             <div className="flex items-center gap-4" dir={dir}>
-                <span className="text-xs text-gray-500 min-w-[45px]">0.01</span>
+                <span className="text-xs text-gray-500 min-w-[45px]">0.1</span>
                 <Slider
                     value={sliderValue}
-                    min={0}
+                    min={0.1}
                     max={1.5}
                     step={0.005}
                     className="flex-1"
