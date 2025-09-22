@@ -70,6 +70,7 @@ export function MainExperience() {
     const [showHistory, setShowHistory] = useState(false);
 
     const actionBankRef = useRef<HTMLDivElement>(null);
+    const actionBankToggleRef = useRef<HTMLButtonElement>(null);
 
     const displayedLanguages = useMemo(() => [...languages].reverse(), [languages]);
 
@@ -133,7 +134,12 @@ export function MainExperience() {
     // Close action bank on outside click
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
-            if (actionBankRef.current && !actionBankRef.current.contains(event.target as Node)) {
+            if (
+                actionBankRef.current &&
+                !actionBankRef.current.contains(event.target as Node) &&
+                actionBankToggleRef.current &&
+                !actionBankToggleRef.current.contains(event.target as Node)
+            ) {
                 setShowActionBank(false);
             }
         };
@@ -344,6 +350,7 @@ export function MainExperience() {
                 <div className="relative">
                     {/* Action toggle button */}
                     <motion.button
+                        ref={actionBankToggleRef}
                         className="pointer-events-auto bg-white/95 border border-gray-200 rounded-md w-11 h-11 flex items-center justify-center shadow-lg hover:shadow-xl transition-shadow"
                         onClick={() => setShowActionBank(!showActionBank)}
                         aria-expanded={showActionBank}
