@@ -55,7 +55,7 @@ export function MainExperience() {
     // Bookmark functionality
     const addBookmark = useBookmarkStore((s) => s.addBookmark);
     const removeBookmark = useBookmarkStore((s) => s.removeBookmark);
-    const bookmarks = useBookmarkStore((s) => s.bookmarks);
+    const bookmarks = useBookmarkStore((s) => s.byStack[activeStackId] ?? []);
     const [currEntry, setCurrEntry] = useState<EntryOut | null>(null);
     const fetchSeqRef = useRef(0);
 
@@ -67,6 +67,7 @@ export function MainExperience() {
     // Dog-ear action bank state
     const [showActionBank, setShowActionBank] = useState(false);
     const [showSettings, setShowSettings] = useState(false);
+    const [showHistory, setShowHistory] = useState(false);
 
     const actionBankRef = useRef<HTMLDivElement>(null);
 
@@ -136,6 +137,7 @@ export function MainExperience() {
                 setShowActionBank(false);
             }
         };
+        if (!showActionBank) return;
 
         if (showActionBank) {
             document.addEventListener('mousedown', handleClickOutside);
@@ -391,17 +393,21 @@ export function MainExperience() {
                                             )}
                                         </Button>
 
-                                        <HistorySheet>
-                                            <Button
-                                                variant="ghost"
-                                                size="sm"
-                                                className="justify-start gap-2 h-8"
-                                                aria-label="History & Bookmarks"
-                                            >
-                                                <HistoryIcon className="h-4 w-4" />
-                                                <span className="text-xs">History</span>
-                                            </Button>
-                                        </HistorySheet>
+                                        <Button
+                                            variant="ghost"
+                                            size="sm"
+                                            onClick={() => {
+                                                setShowHistory(true);
+                                                setShowActionBank(false);
+                                            }}
+
+                                            className="justify-start gap-2 h-8"
+                                            aria-label="History & Bookmarks"
+                                        >
+                                            <HistoryIcon className="h-4 w-4" />
+                                            <span className="text-xs">History</span>
+                                        </Button>
+
 
                                         <Button
                                             onClick={
@@ -425,7 +431,10 @@ export function MainExperience() {
                     </AnimatePresence>
                 </div>
             </div>
-
+            <HistorySheet
+                open={showHistory}
+                onClose={() => setShowHistory(false)}
+            />
             <SettingsModal
                 open={showSettings}
                 onClose={() => setShowSettings(false)}

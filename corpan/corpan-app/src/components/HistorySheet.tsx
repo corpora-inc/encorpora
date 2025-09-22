@@ -1,7 +1,7 @@
 import { useState, useCallback, useEffect } from "react";
-import { 
-    History as HistoryIcon, 
-    Bookmark as BookmarkIcon, 
+import {
+    History as HistoryIcon,
+    Bookmark as BookmarkIcon,
     Trash2 as TrashIcon,
     Calendar as CalendarIcon,
     BookmarkCheckIcon
@@ -14,7 +14,6 @@ import {
     SheetDescription,
     SheetHeader,
     SheetTitle,
-    SheetTrigger,
 } from "@/components/ui/sheet";
 import {
     Tabs,
@@ -37,26 +36,26 @@ import { useSettingsStore } from "@/store/settings";
 import { isRTL } from "@/util/convert";
 
 interface HistorySheetProps {
-    children: React.ReactNode;
+    onClose: () => void;
+    open: boolean;
 }
 
-export function HistorySheet({ children }: HistorySheetProps) {
-    const [open, setOpen] = useState(false);
+export function HistorySheet({ onClose,  open }: HistorySheetProps) {
     const [historyEntries, setHistoryEntries] = useState<EntryOut[]>([]);
-    
+
     // Get the current stack's history
     const activeStackId = useSettingsStore((s) => s.activeStackId);
     const activeHistory = useHistoryStore((s) => s.byStack[activeStackId]);
     const ids = activeHistory?.ids ?? [];
-    
+
     const setIndex = useHistoryStore((s) => s.setIndex);
     const clearHistory = useHistoryStore((s) => s.clear);
-    
-    const bookmarks = useBookmarkStore((s) => s.bookmarks);
+
+    const bookmarks = useBookmarkStore((s) => s.byStack[activeStackId] ?? []);
     const addBookmark = useBookmarkStore((s) => s.addBookmark);
     const removeBookmark = useBookmarkStore((s) => s.removeBookmark);
     const clearBookmarks = useBookmarkStore((s) => s.clear);
-    
+
     const primaryLang = useSettingsStore((s) => s.primaryLang);
     const showRomanization = useSettingsStore((s) => s.showRomanization);
 
@@ -73,7 +72,7 @@ export function HistorySheet({ children }: HistorySheetProps) {
                 setHistoryEntries([]);
                 return;
             }
-            
+
             try {
                 const entries: EntryOut[] = [];
                 for (const id of ids) {
@@ -98,7 +97,7 @@ export function HistorySheet({ children }: HistorySheetProps) {
         const index = ids.findIndex(id => id === entry.entry_id);
         if (index !== -1) {
             setIndex(index);
-            setOpen(false);
+            onClose();
         }
     }, [ids, setIndex]);
 
@@ -114,7 +113,7 @@ export function HistorySheet({ children }: HistorySheetProps) {
     const renderEntry = (entry: EntryOut, showBookmarkButton = true) => {
         const textByLang: Record<string, string> = {};
         const romanizationByLang: Record<string, string | undefined> = {};
-        
+
         entry.translations.forEach((t) => {
             textByLang[t.language_code] = t.text;
             romanizationByLang[t.language_code] = t.romanization;
@@ -159,8 +158,8 @@ export function HistorySheet({ children }: HistorySheetProps) {
                         )}
                     </div>
                 </CardHeader>
-                <CardContent 
-                    className="pt-0 cursor-pointer" 
+                <CardContent
+                    className="pt-0 cursor-pointer"
                     onClick={() => handleEntryClick(entry)}
                 >
                     {/* Only show primary language */}
@@ -169,16 +168,16 @@ export function HistorySheet({ children }: HistorySheetProps) {
                         const text = textByLang[primaryLanguage];
                         const romanization = romanizationByLang[primaryLanguage];
                         const isRTLText = isRTL(primaryLanguage);
-                        
+
                         if (!text) return (
                             <div className="text-center text-muted-foreground py-2">
                                 No text available
                             </div>
                         );
-                        
+
                         return (
                             <div>
-                                <div 
+                                <div
                                     className={`text-base font-medium ${isRTLText ? 'text-right' : 'text-left'}`}
                                     dir={isRTLText ? 'rtl' : 'ltr'}
                                 >
@@ -198,10 +197,7 @@ export function HistorySheet({ children }: HistorySheetProps) {
     };
 
     return (
-        <Sheet open={open} onOpenChange={setOpen}>
-            <SheetTrigger asChild>
-                {children}
-            </SheetTrigger>
+        <Sheet open={open} onOpenChange={onClose}  >
             <SheetContent className="w-full sm:max-w-lg">
                 <SheetHeader>
                     <SheetTitle className="flex items-center gap-2">
@@ -212,8 +208,8 @@ export function HistorySheet({ children }: HistorySheetProps) {
                         View your sentence history and bookmarks
                     </SheetDescription>
                 </SheetHeader>
-                
-                <Tabs defaultValue="history" className="mt-6">
+
+                <Tabs defaultValue="history" className="mt-6" >
                     <TabsList className="grid w-full grid-cols-2">
                         <TabsTrigger value="history" className="flex items-center gap-2">
                             <HistoryIcon className="h-4 w-4" />
@@ -224,7 +220,7 @@ export function HistorySheet({ children }: HistorySheetProps) {
                             Bookmarks ({bookmarks.length})
                         </TabsTrigger>
                     </TabsList>
-                    
+
                     <TabsContent value="history" className="mt-4">
                         <div className="flex items-center justify-between mb-4">
                             <h3 className="text-sm font-medium">
@@ -241,7 +237,7 @@ export function HistorySheet({ children }: HistorySheetProps) {
                                 Clear
                             </Button>
                         </div>
-                        
+
                         <div className="space-y-3 overflow-y-auto max-h-[calc(100vh-220px)]">
                             {historyEntries.length === 0 ? (
                                 <div className="text-center text-muted-foreground py-8">
@@ -253,7 +249,7 @@ export function HistorySheet({ children }: HistorySheetProps) {
                             )}
                         </div>
                     </TabsContent>
-                    
+
                     <TabsContent value="bookmarks" className="mt-4">
                         <div className="flex items-center justify-between mb-4">
                             <h3 className="text-sm font-medium">
@@ -270,7 +266,7 @@ export function HistorySheet({ children }: HistorySheetProps) {
                                 Clear
                             </Button>
                         </div>
-                        
+
                         <div className="space-y-3 overflow-y-auto max-h-[calc(100vh-220px)]">
                             {bookmarks.length === 0 ? (
                                 <div className="text-center text-muted-foreground py-8">
