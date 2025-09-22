@@ -1,10 +1,9 @@
 import { useSettingsStore, ALL_TEXT_SIZES } from "@/store/settings";
 import { OnboardingWizard } from "@/components/OnboardingWizard";
-import { SettingsIcon, History as HistoryIcon } from "lucide-react";
+import { SettingsIcon } from "lucide-react";
 import { useState, useEffect } from "react";
 import { MainExperience } from "./components/MainExperience";
 import { SettingsModal } from "./components/SettingsModal";
-import { HistorySheet } from "./components/HistorySheet";
 import { Button } from "./components/ui/button";
 import "./index.css";
 import { getPlatformTopPaddingButtons } from "./util/browser";
@@ -39,21 +38,6 @@ export default function App() {
       <div className={`flex flex-col min-h-0 h-screen w-full relative`}>
         <MainExperience />
         
-        {/* Floating History Button - Left */}
-        <div className="fixed top-16 pt-safe right-5 z-50"
-          style={{ marginTop: getPlatformTopPaddingButtons() - 3 }}
-        >
-          <HistorySheet>
-            <Button
-              variant="default"
-              size="lg"
-              className="rounded-full shadow-lg bg-white border border-gray-200 hover:bg-gray-100 transition w-12 h-12 !p-0"
-              aria-label="History & Bookmarks"
-            >
-              <HistoryIcon className="text-gray-600 w-8 h-8" />
-            </Button>
-          </HistorySheet>
-        </div>
         
         {/* Floating Settings Button - Right */}
         <div className="fixed top-3 pt-safe right-5 z-50"
