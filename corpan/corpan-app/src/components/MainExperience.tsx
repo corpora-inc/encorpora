@@ -55,10 +55,14 @@ export function MainExperience() {
     // Bookmark functionality
     const addBookmark = useBookmarkStore((s) => s.addBookmark);
     const removeBookmark = useBookmarkStore((s) => s.removeBookmark);
-    const isBookmarked = useBookmarkStore((s) => s.isBookmarked);
-
+    const bookmarks = useBookmarkStore((s) => s.bookmarks);
     const [currEntry, setCurrEntry] = useState<EntryOut | null>(null);
     const fetchSeqRef = useRef(0);
+
+    // Create a derived bookmark check that uses the bookmarks array directly
+    const isCurrentBookmarked = useMemo(() => {
+        return currEntry ? bookmarks.some(b => b.entry_id === currEntry.entry_id) : false;
+    }, [bookmarks, currEntry]);
 
     // Dog-ear action bank state
     const [showActionBank, setShowActionBank] = useState(false);
@@ -71,12 +75,13 @@ export function MainExperience() {
     const toggleBookmark = useCallback(() => {
         if (!currEntry) return;
 
-        if (isBookmarked(currEntry.entry_id)) {
+        if (isCurrentBookmarked) {
             removeBookmark(currEntry.entry_id);
         } else {
             addBookmark(currEntry);
         }
-    }, [currEntry, isBookmarked, addBookmark, removeBookmark]);
+
+    }, [currEntry, isCurrentBookmarked, addBookmark, removeBookmark]);
 
     // --- DB fetchers -----------------------------------------------------------
 
@@ -349,14 +354,14 @@ export function MainExperience() {
                                             onClick={toggleBookmark}
                                             variant="ghost"
                                             size="sm"
-                                            aria-label={currEntry && isBookmarked(currEntry.entry_id) ? "Remove bookmark" : "Add bookmark"}
+                                            aria-label={currEntry && isCurrentBookmarked ? "Remove bookmark" : "Add bookmark"}
                                             disabled={!currEntry}
                                             className="justify-start gap-2 h-8"
                                         >
-                                            {currEntry && isBookmarked(currEntry.entry_id) ? (
+                                            {currEntry && isCurrentBookmarked ? (
                                                 <>
                                                     <BookmarkCheckIcon className="h-4 w-4 text-black" />
-                                                    <span className="text-xs">Unsaved</span>
+                                                    <span className="text-xs">Saved</span>
                                                 </>
                                             ) : (
                                                 <>
