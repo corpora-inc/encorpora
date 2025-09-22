@@ -8,6 +8,20 @@ import { useSettingsStore } from "./settings";
  * byStack[stackId] = { ids, index }
  */
 
+type TranslationOut = {
+    language_code: string;
+    text: string;
+    romanization: string;
+};
+
+export type EntryOut = {
+    entry_id: number;
+    en_text: string;
+    level: string;
+    domains: string[];
+    translations: TranslationOut[];
+};
+
 type StackHistory = {
     ids: number[];
     index: number;

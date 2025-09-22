@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { 
     History as HistoryIcon, 
     Bookmark as BookmarkIcon, 
@@ -6,6 +6,7 @@ import {
     Calendar as CalendarIcon,
     BookmarkCheckIcon
 } from "lucide-react";
+import { invoke } from "@tauri-apps/api/core";
 
 import {
     Sheet,
@@ -41,8 +42,13 @@ interface HistorySheetProps {
 
 export function HistorySheet({ children }: HistorySheetProps) {
     const [open, setOpen] = useState(false);
+    const [historyEntries, setHistoryEntries] = useState<EntryOut[]>([]);
     
-    const history = useHistoryStore((s) => s.history);
+    // Get the current stack's history
+    const activeStackId = useSettingsStore((s) => s.activeStackId);
+    const activeHistory = useHistoryStore((s) => s.byStack[activeStackId]);
+    const ids = activeHistory?.ids ?? [];
+    
     const setIndex = useHistoryStore((s) => s.setIndex);
     const clearHistory = useHistoryStore((s) => s.clear);
     
@@ -54,22 +60,50 @@ export function HistorySheet({ children }: HistorySheetProps) {
     const primaryLang = useSettingsStore((s) => s.primaryLang);
     const showRomanization = useSettingsStore((s) => s.showRomanization);
 
-    const handleEntryClick = (entry: EntryOut) => {
-        const index = history.findIndex(h => h.entry_id === entry.entry_id);
+    // Load full history entries when the sheet opens or stack changes
+    useEffect(() => {
+        const loadHistoryEntries = async () => {
+            if (ids.length === 0) {
+                setHistoryEntries([]);
+                return;
+            }
+            
+            try {
+                const entries: EntryOut[] = [];
+                for (const id of ids) {
+                    const entry = await invoke<EntryOut>("get_entry_by_id_with_translations", { entryId: id });
+                    if (entry) {
+                        entries.push(entry);
+                    }
+                }
+                setHistoryEntries(entries);
+            } catch (error) {
+                console.error("Failed to load history entries:", error);
+                setHistoryEntries([]);
+            }
+        };
+
+        if (open) {
+            void loadHistoryEntries();
+        }
+    }, [open, ids]);
+
+    const handleEntryClick = useCallback((entry: EntryOut) => {
+        const index = ids.findIndex(id => id === entry.entry_id);
         if (index !== -1) {
             setIndex(index);
             setOpen(false);
         }
-    };
+    }, [ids, setIndex]);
 
-    const toggleBookmark = (entry: EntryOut) => {
+    const toggleBookmark = useCallback((entry: EntryOut) => {
         const bookmarked = bookmarks.some(b => b.entry_id === entry.entry_id);
         if (bookmarked) {
             removeBookmark(entry.entry_id);
         } else {
             addBookmark(entry);
         }
-    };
+    }, [bookmarks, addBookmark, removeBookmark]);
 
     const renderEntry = (entry: EntryOut, showBookmarkButton = true) => {
         const textByLang: Record<string, string> = {};
@@ -177,7 +211,7 @@ export function HistorySheet({ children }: HistorySheetProps) {
                     <TabsList className="grid w-full grid-cols-2">
                         <TabsTrigger value="history" className="flex items-center gap-2">
                             <HistoryIcon className="h-4 w-4" />
-                            History ({history.length})
+                            History ({historyEntries.length})
                         </TabsTrigger>
                         <TabsTrigger value="bookmarks" className="flex items-center gap-2">
                             <BookmarkIcon className="h-4 w-4" />
@@ -194,7 +228,7 @@ export function HistorySheet({ children }: HistorySheetProps) {
                                 variant="ghost"
                                 size="sm"
                                 onClick={clearHistory}
-                                disabled={history.length === 0}
+                                disabled={historyEntries.length === 0}
                                 className="h-8 text-xs"
                             >
                                 <TrashIcon className="h-4 w-4 mr-1" />
@@ -203,13 +237,13 @@ export function HistorySheet({ children }: HistorySheetProps) {
                         </div>
                         
                         <div className="space-y-3 overflow-y-auto max-h-[calc(100vh-220px)]">
-                            {history.length === 0 ? (
+                            {historyEntries.length === 0 ? (
                                 <div className="text-center text-muted-foreground py-8">
                                     <CalendarIcon className="h-8 w-8 mx-auto mb-2 opacity-50" />
                                     <p className="text-sm">No history yet</p>
                                 </div>
                             ) : (
-                                [...history].reverse().map((entry) => renderEntry(entry, true))
+                                [...historyEntries].reverse().map((entry) => renderEntry(entry, true))
                             )}
                         </div>
                     </TabsContent>

@@ -9,13 +9,15 @@ import {
     Ear,
     Bookmark as BookmarkIcon,
     BookmarkCheck as BookmarkCheckIcon,
+    History as HistoryIcon,
 } from "lucide-react";
 import { motion } from "framer-motion";
 
 import { Button } from "@/components/ui/button";
 import { useSettingsStore } from "@/store/settings";
-import { useHistoryStore } from "@/store/history";
+import { EntryOut, useHistoryStore } from "@/store/history";
 import { useBookmarkStore } from "@/store/bookmarks";
+import { HistorySheet } from "@/components/HistorySheet";
 import { createVoiceTTS } from "@/util/speak";
 import { useTranslation } from "react-i18next";
 
@@ -27,18 +29,7 @@ import {
     isAndroid,
 } from "@/util/browser";
 
-type TranslationOut = {
-    language_code: string;
-    text: string;
-    romanization: string;
-};
-type EntryOut = {
-    entry_id: number;
-    en_text: string;
-    level: string;
-    domains: string[];
-    translations: TranslationOut[];
-};
+
 
 export function MainExperience() {
     // Settings (active stack)
@@ -58,10 +49,27 @@ export function MainExperience() {
     const pushEntry = useHistoryStore((s) => s.pushEntry);
     const setIndex = useHistoryStore((s) => s.setIndex);
 
+    // Bookmark functionality
+    const addBookmark = useBookmarkStore((s) => s.addBookmark);
+    const removeBookmark = useBookmarkStore((s) => s.removeBookmark);
+    const isBookmarked = useBookmarkStore((s) => s.isBookmarked);
+
     const [currEntry, setCurrEntry] = useState<EntryOut | null>(null);
     const fetchSeqRef = useRef(0);
 
     const displayedLanguages = useMemo(() => [...languages].reverse(), [languages]);
+
+    // --- Bookmark handlers ----------------------------------------------------
+
+    const toggleBookmark = useCallback(() => {
+        if (!currEntry) return;
+        
+        if (isBookmarked(currEntry.entry_id)) {
+            removeBookmark(currEntry.entry_id);
+        } else {
+            addBookmark(currEntry);
+        }
+    }, [currEntry, isBookmarked, addBookmark, removeBookmark]);
 
     // --- DB fetchers -----------------------------------------------------------
 
@@ -241,7 +249,7 @@ export function MainExperience() {
                                     </div>
                                     {showRomanization && rom && (
                                         <div
-                                            className="text-center text-sm text-base text-gray-400 italic mt-1 mb-1 select-text"
+                                            className="text-center text-sm text-gray-400 italic mt-1 mb-1 select-text"
                                             style={{ maxWidth: "80vw", wordBreak: "break-word" }}
                                         >
                                             {rom}
@@ -282,21 +290,30 @@ export function MainExperience() {
                             <ChevronRightIcon />
                         </Button>
                     </div>
-                    {/* <div className="flex justify-center items-center gap-3 mt-2">
+                    <div className="flex justify-center items-center gap-3 mt-2">
+                        <HistorySheet>
+                            <Button
+                                variant="ghost"
+                                size="sm"
+                                aria-label="View history and bookmarks"
+                            >
+                                <HistoryIcon className="h-4 w-4" />
+                            </Button>
+                        </HistorySheet>
                         <Button
                             onClick={toggleBookmark}
                             variant="ghost"
                             size="sm"
-                            aria-label={curr && bookmarked ? "Remove bookmark" : "Add bookmark"}
-                            disabled={!curr}
+                            aria-label={currEntry && isBookmarked(currEntry.entry_id) ? "Remove bookmark" : "Add bookmark"}
+                            disabled={!currEntry}
                         >
-                            {curr && bookmarked ? (
+                            {currEntry && isBookmarked(currEntry.entry_id) ? (
                                 <BookmarkCheckIcon className="h-4 w-4 text-black" />
                             ) : (
                                 <BookmarkIcon className="h-4 w-4" />
                             )}
                         </Button>
-                    </div> */}
+                    </div>
                     <span className="text-xs text-gray-400 mt-1">
                         {Math.max(0, index + 1)}/{ids.length}
                     </span>
