@@ -68,6 +68,8 @@ export function MainExperience() {
     const [showActionBank, setShowActionBank] = useState(false);
     const [showSettings, setShowSettings] = useState(false);
 
+    const actionBankRef = useRef<HTMLDivElement>(null);
+
     const displayedLanguages = useMemo(() => [...languages].reverse(), [languages]);
 
     // --- Bookmark handlers ----------------------------------------------------
@@ -126,6 +128,23 @@ export function MainExperience() {
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [languages]);
+
+    // Close action bank on outside click
+    useEffect(() => {
+        const handleClickOutside = (event: MouseEvent) => {
+            if (actionBankRef.current && !actionBankRef.current.contains(event.target as Node)) {
+                setShowActionBank(false);
+            }
+        };
+
+        if (showActionBank) {
+            document.addEventListener('mousedown', handleClickOutside);
+        }
+
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, [showActionBank]);
 
     // --- Nav handlers (deterministic: compute id, set index, resolve now) ------
 
@@ -342,6 +361,7 @@ export function MainExperience() {
                     <AnimatePresence>
                         {showActionBank && (
                             <motion.div
+                                ref={actionBankRef}
                                 initial={{ opacity: 0, scale: 0.8, y: 10 }}
                                 animate={{ opacity: 1, scale: 1, y: 0 }}
                                 exit={{ opacity: 0, scale: 0.8, y: 10 }}
@@ -382,12 +402,13 @@ export function MainExperience() {
                                                 <span className="text-xs">History</span>
                                             </Button>
                                         </HistorySheet>
-      <SettingsModal
-        open={showSettings}
-        onClose={() => setShowSettings(false)}
-      />
+
                                         <Button
-                                            onClick={() => setShowSettings(true)}
+                                            onClick={
+                                                () => {
+                                                    setShowSettings(true);
+                                                    setShowActionBank(false);
+                                                }}
                                             variant="ghost"
                                             size="sm"
                                             className="justify-start gap-2 h-8"
@@ -404,6 +425,11 @@ export function MainExperience() {
                     </AnimatePresence>
                 </div>
             </div>
+
+            <SettingsModal
+                open={showSettings}
+                onClose={() => setShowSettings(false)}
+            />
         </div>
     );
 }
