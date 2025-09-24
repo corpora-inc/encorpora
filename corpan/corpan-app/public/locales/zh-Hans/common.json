@@ -9,6 +9,7 @@
     "ptBR": "葡萄牙语（巴西）",
     "ja": "日语",
     "zhHans": "中文（简体）",
+    "zhHant": "中文（繁体）",
     "ar": "阿拉伯语",
     "ru": "俄语",
     "it": "意大利语",
@@ -74,7 +75,10 @@
   },
   "common": {
     "loading": "加载中...",
-    "instantPolyglotPractice": "即时多语言练习"
+    "instantPolyglotPractice": "即时多语言练习",
+    "cancel": "取消",
+    "delete": "删除",
+    "create": "创建"
   },
   "footer": {
     "appVersion": "应用版本",
@@ -83,5 +87,18 @@
     "feedbackNote": "如有问题或建议，请访问我们的 GitHub 存储库或通过电子邮件与我们联系。",
     "githubIssues": "GitHub 问题",
     "aboutCorpan": "关于 Corpán"
+  },
+  "stacks": {
+    "note": "每个配置文件都有自己的设置和历史记录。",
+    "newStackBase": "新建配置文件",
+    "untitled": "未命名",
+    "delete": "删除配置文件",
+    "confirmDeleteTitle": "删除此配置文件？",
+    "confirmDelete": "确定删除此配置文件？此操作无法撤销。",
+    "new": "新建配置文件",
+    "newName": "新配置文件名称",
+    "rename": "重命名",
+    "selectAria": "选择配置文件",
+    "selectPlaceholder": "选择…"
   }
 }
