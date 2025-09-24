@@ -9,6 +9,7 @@
     "ptBR": "Portuguese (BR)",
     "ja": "Japanese",
     "zhHans": "Chinese (Simplified)",
+    "zhHant": "Chinese (Traditional)",
     "ar": "Arabic",
     "ru": "Russian",
     "it": "Italian",
@@ -75,7 +76,10 @@
   },
   "common": {
     "loading": "Loading...",
-    "instantPolyglotPractice": "Instant polyglot practice"
+    "instantPolyglotPractice": "Instant polyglot practice",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "create": "Create"
   },
   "footer": {
     "appVersion": "App version",
@@ -84,5 +88,18 @@
     "feedbackNote": "For issues or suggestions, please visit our GitHub repository or contact us via email.",
     "githubIssues": "GitHub issues",
     "aboutCorpan": "About Corpán"
+  },
+  "stacks": {
+    "note": "Each stack has its own settings and history.",
+    "newStackBase": "New Stack",
+    "untitled": "Untitled",
+    "delete": "Delete stack",
+    "confirmDeleteTitle": "Delete this stack?",
+    "confirmDelete": "Delete this stack? This cannot be undone.",
+    "new": "New stack",
+    "newName": "Name for new stack",
+    "rename": "Rename",
+    "selectAria": "Select a stack",
+    "selectPlaceholder": "Choose…"
   }
 }

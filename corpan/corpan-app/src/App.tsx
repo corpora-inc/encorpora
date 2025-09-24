@@ -40,17 +40,19 @@ export default function App() {
         <div className="fixed top-3 pt-safe right-5 z-50"
           style={{ marginTop: getPlatformTopPaddingButtons() - 3 }}
         >
-          <div className="flex items-center gap-2">
+          <div className="flex items-center">
             <Button
               variant="default"
               // size="icon"
               size="lg"
               // size="sm"
-              className="rounded-full shadow-lg bg-white border border-gray-200 hover:bg-gray-100 transition"
+              className="h-10 w-12 rounded-md shadow-lg bg-white border border-gray-200 hover:bg-gray-100 transition"
+              // className=""
               aria-label="Settings"
               onClick={() => setShowSettings(true)}
+            // style={{ height: 55, width: 55 }}
             >
-              <SettingsIcon className="text-gray-600" />
+              <SettingsIcon className="text-gray-600 h-5 w-5" />
             </Button>
           </div>
         </div>

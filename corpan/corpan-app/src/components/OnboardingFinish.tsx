@@ -29,7 +29,7 @@ export function OnboardingFinish() {
 
             >
                 <button
-                    className="flex items-center justify-center bg-gray-200 hover:bg-gray-300 text-gray-700 rounded-full p-3 shadow transition border"
+                    className="flex items-center justify-center bg-gray-200 hover:bg-gray-300 text-gray-700 rounded-md p-3 shadow transition border"
                     onClick={() => setStep(3)}
                     tabIndex={0}
                 >
@@ -43,7 +43,7 @@ export function OnboardingFinish() {
                     {t("onboarding.welcomeTitle")}
                 </div>
                 <button
-                    className="flex items-center justify-center rounded-full p-3 shadow transition bg-black hover:bg-gray-900 text-white border border-purple-400"
+                    className="flex items-center justify-center rounded-md p-3 shadow transition bg-black hover:bg-gray-900 text-white border border-purple-400"
                     onClick={() => setOnboarded(true)}
                     tabIndex={0}
                 >

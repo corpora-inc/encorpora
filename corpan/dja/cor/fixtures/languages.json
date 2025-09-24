@@ -58,6 +58,41 @@
     {
         "model": "cor.language",
         "fields": {
+            "code": "zh-Hant",
+            "name": "Chinese (Traditional)"
+        }
+    },
+    {
+        "model": "cor.language",
+        "fields": {
+            "code": "vi",
+            "name": "Vietnamese"
+        }
+    },
+    {
+        "model": "cor.language",
+        "fields": {
+            "code": "pl",
+            "name": "Polish"
+        }
+    },
+    {
+        "model": "cor.language",
+        "fields": {
+            "code": "hu",
+            "name": "Hungarian"
+        }
+    },
+    {
+        "model": "cor.language",
+        "fields": {
+            "code": "fa",
+            "name": "Persian"
+        }
+    },
+    {
+        "model": "cor.language",
+        "fields": {
             "code": "ja",
             "name": "Japanese"
         }

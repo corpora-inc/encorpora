@@ -82,7 +82,7 @@ export function OnboardingPickPrimary() {
                 lang={code}
                 className={`
                                     w-full px-5 py-4
-                                    rounded-2xl shadow
+                                    rounded-md shadow
                                     bg-white border border-gray-200
                                     text-lg font-semibold text-gray-900
                                     flex items-center justify-between
