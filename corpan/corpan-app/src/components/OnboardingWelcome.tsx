@@ -127,7 +127,7 @@ export function OnboardingWelcome() {
                     flex items-center justify-center
                     bg-black hover:bg-gray-900
                     border border-purple-400
-                    rounded-full
+                    rounded-md
                     transition
                     outline-none ring-0 z-10
                     shadow-2xl

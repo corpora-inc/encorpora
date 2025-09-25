@@ -15,7 +15,7 @@ const EmptyLibrary = ({
         Your library is empty
       </h3>
       <p className="text-sm text-muted-foreground mb-6 max-w-md text-center">
-        Start your reading journey by adding your first EPUB to your collection.
+        Start your reading journey by adding your first file to your collection.
       </p>
       <Button
         size="lg"
@@ -23,7 +23,7 @@ const EmptyLibrary = ({
         className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-md transition-all duration-300 hover:scale-105"
       >
         <PlusIcon className="" />
-        Add your first EPUB
+        Add your first file
       </Button>
     </div>
   );

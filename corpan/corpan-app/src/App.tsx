@@ -8,6 +8,8 @@ import { Button } from "./components/ui/button";
 import "./index.css";
 import { ThemeProvider } from "./components/ThemeProvider";
 import ThemeToggle from "./components/ThemeSwitch";
+import { getPlatformTopPaddingButtons } from "./util/browser";
+
 
 export default function App() {
   const [showSettings, setShowSettings] = useState(false);
@@ -37,16 +39,22 @@ export default function App() {
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
       <div className={`flex flex-col min-h-0 h-screen w-full relative`}>
         <MainExperience />
-        <div className="fixed top-5 right-5 z-50">
-          <div className="flex items-center gap-2">
+        <div className="fixed top-3 pt-safe right-5 z-50"
+          style={{ marginTop: getPlatformTopPaddingButtons() - 3 }}
+        >
+          <div className="flex items-center">
             <Button
               variant="default"
-              size="icon"
-              className="rounded-full shadow-lg bg-white border border-gray-200 hover:bg-gray-100 transition"
+              // size="icon"
+              size="lg"
+              // size="sm"
+              className="h-10 w-12 rounded-md shadow-lg bg-white border border-gray-200 hover:bg-gray-100 transition"
+              // className=""
               aria-label="Settings"
               onClick={() => setShowSettings(true)}
+            // style={{ height: 55, width: 55 }}
             >
-              <SettingsIcon className="w-6 h-6 text-gray-600" />
+              <SettingsIcon className="text-gray-600 h-5 w-5" />
             </Button>
             <ThemeToggle />
           </div>

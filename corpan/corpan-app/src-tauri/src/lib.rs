@@ -7,6 +7,7 @@ mod db;
 
 use rusqlite::params_from_iter;
 use serde::Serialize;
+use std::collections::HashSet;
 use tauri::{command, AppHandle};
 use tauri_plugin_opener;
 
@@ -18,7 +19,7 @@ struct TranslationOut {
     romanization: String,
 }
 
-/// Return type for the random entry with all translations
+/// Return type for an entry with all translations
 #[derive(Serialize)]
 struct EntryOut {
     entry_id: i64,
@@ -28,7 +29,7 @@ struct EntryOut {
     translations: Vec<TranslationOut>,
 }
 
-/// Get one random entry matching given filters, with all translations
+/// Get one random entry matching given filters, with all translations (existing)
 #[command]
 fn get_random_entry_with_translations(
     app: AppHandle,
@@ -36,9 +37,6 @@ fn get_random_entry_with_translations(
     domains: Option<Vec<String>>, // plural now
     language_codes: Option<Vec<String>>,
 ) -> Result<EntryOut, String> {
-    // log
-    // println!("🚨 get_random_entry_with_translations called");
-
     let conn = db::open_connection(&app)?;
 
     let mut where_clauses = vec![];
@@ -60,7 +58,6 @@ fn get_random_entry_with_translations(
         if !dom_vec.is_empty() {
             // Only entries that have at least one domain in dom_vec
             let q = format!("d.code IN ({})", vec!["?"; dom_vec.len()].join(","));
-            // This join is required to filter for domain codes
             (
                 "INNER JOIN cor_entry_domains ced ON ced.entry_id = e.id
                  INNER JOIN cor_domain d ON d.id = ced.domain_id",
@@ -99,8 +96,8 @@ fn get_random_entry_with_translations(
          GROUP BY e.id
          ORDER BY RANDOM()
          LIMIT 1",
-         domain_join = domain_join,
-         where = where_str
+        domain_join = domain_join,
+        where = where_str
     );
 
     let mut stmt = conn.prepare(&sql).map_err(|e| e.to_string())?;
@@ -130,9 +127,9 @@ fn get_random_entry_with_translations(
     let mut translation_stmt = conn
         .prepare(
             "SELECT l.code, t.text, t.romanization
-         FROM cor_translation t
-         JOIN cor_language l ON l.id = t.language_id
-         WHERE t.entry_id = ?",
+             FROM cor_translation t
+             JOIN cor_language l ON l.id = t.language_id
+             WHERE t.entry_id = ?",
         )
         .map_err(|e| e.to_string())?;
 
@@ -145,8 +142,7 @@ fn get_random_entry_with_translations(
         })
         .map_err(|e| e.to_string())?;
 
-    let allowed_langs: Option<std::collections::HashSet<String>> =
-        language_codes.map(|v| v.into_iter().collect());
+    let allowed_langs: Option<HashSet<String>> = language_codes.map(|v| v.into_iter().collect());
 
     let mut translations = vec![];
     for res in translation_rows {
@@ -172,10 +168,98 @@ fn get_random_entry_with_translations(
     })
 }
 
+/// NEW: Fetch a specific entry by ID with all translations (optionally filtered by language codes)
+#[command]
+fn get_entry_by_id_with_translations(
+    app: AppHandle,
+    entry_id: i64,
+    language_codes: Option<Vec<String>>,
+) -> Result<EntryOut, String> {
+    let conn = db::open_connection(&app)?;
+
+    // Fetch core entry row (en_text, level, domains)
+    let mut stmt = conn
+        .prepare(
+            "SELECT e.id, e.en_text, e.level, group_concat(DISTINCT d.code) AS domains
+             FROM cor_entry e
+             LEFT JOIN cor_entry_domains ced ON ced.entry_id = e.id
+             LEFT JOIN cor_domain d ON d.id = ced.domain_id
+             WHERE e.id = ?
+             GROUP BY e.id",
+        )
+        .map_err(|e| e.to_string())?;
+
+    let mut rows = stmt.query([entry_id]).map_err(|e| e.to_string())?;
+    let row = rows
+        .next()
+        .map_err(|e| e.to_string())?
+        .ok_or("Entry not found")?;
+
+    let id: i64 = row.get(0).map_err(|e| e.to_string())?;
+    let en_text: String = row.get(1).map_err(|e| e.to_string())?;
+    let level: String = row.get(2).map_err(|e| e.to_string())?;
+    let domain_str: Option<String> = row.get(3).ok();
+
+    let domains_vec = domain_str
+        .unwrap_or_default()
+        .split(',')
+        .filter(|s| !s.is_empty())
+        .map(|s| s.to_string())
+        .collect::<Vec<_>>();
+
+    // Fetch translations
+    let mut tstmt = conn
+        .prepare(
+            "SELECT l.code, t.text, t.romanization
+             FROM cor_translation t
+             JOIN cor_language l ON l.id = t.language_id
+             WHERE t.entry_id = ?",
+        )
+        .map_err(|e| e.to_string())?;
+
+    let trows = tstmt
+        .query_map([id], |row| {
+            let lang_code: String = row.get(0)?;
+            let text: String = row.get(1)?;
+            let romanization: String = row.get(2)?;
+            Ok((lang_code, text, romanization))
+        })
+        .map_err(|e| e.to_string())?;
+
+    let allowed_langs: Option<HashSet<String>> = language_codes.map(|v| v.into_iter().collect());
+
+    let mut translations = vec![];
+    for res in trows {
+        let (lang, text, romanization) = res.map_err(|e| e.to_string())?;
+        if allowed_langs
+            .as_ref()
+            .map_or(true, |set| set.contains(&lang))
+        {
+            translations.push(TranslationOut {
+                language_code: lang,
+                text,
+                romanization,
+            });
+        }
+    }
+
+    Ok(EntryOut {
+        entry_id: id,
+        en_text,
+        level,
+        domains: domains_vec,
+        translations,
+    })
+}
+
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
     tauri::Builder::default()
-        .invoke_handler(tauri::generate_handler![get_random_entry_with_translations])
+        .invoke_handler(tauri::generate_handler![
+            get_random_entry_with_translations,
+            get_entry_by_id_with_translations
+        ])
+        .plugin(tauri_plugin_safe_area_insets_css::init())
         .plugin(tauri_plugin_tts::init())
         .plugin(tauri_plugin_opener::init())
         .run(tauri::generate_context!())

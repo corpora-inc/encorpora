@@ -37,12 +37,12 @@ const About = () => {
       description="The best epub reader for your books and documents"
     >
       
-      <div className="flex flex-col min-h-full p-5 md:p-0 md:py-2 gap-4">
+      <div className="flex flex-col gap-4 pb-4">
         {/* Version Section */}
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
             <Info className="h-4 w-4 text-muted-foreground" />
-            <h3 className="text-base font-medium">App version</h3>
+            <h3 className="text-sm sm:text-base  font-medium">App version</h3>
           </div>
           <Badge variant="outline" className="px-3 py-1 text-sm">
             {appVersion || "Loading..."}
@@ -53,13 +53,14 @@ const About = () => {
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
             <Globe className="h-4 w-4 text-muted-foreground" />
-            <h3 className="text-base font-medium">Website</h3>
+            <h3 className="text-sm sm:text-base  font-medium">Website</h3>
           </div>
           <Button
             variant="outline"
             size="sm"
             className="gap-1.5"
             onClick={() => openUrl(WEBSITE_URL)}
+            
           >
             <Globe className="h-4 w-4" />
             encorpora.io
@@ -70,10 +71,10 @@ const About = () => {
         <div>
           <div className="flex items-center gap-2 mb-3">
             <Mail className="h-4 w-4 text-muted-foreground" />
-            <h3 className="text-base font-medium">Support & Feedback</h3>
+            <h3 className="text-sm sm:text-base  font-medium">Support & Feedback</h3>
           </div>
 
-          <p className="text-muted-foreground text-sm mb-4">
+          <p className="text-muted-foreground text-xs md:text-sm mb-4">
             For issues or suggestions, please visit our GitHub repository or
             contact us via email.
           </p>
@@ -105,11 +106,11 @@ const About = () => {
         <div>
           <div className="flex items-center gap-1.5 mb-3">
             <Info className="h-4 w-4 text-muted-foreground" />
-            <h3 className="text-base font-medium">
+            <h3 className="text-sm sm:text-base  font-medium">
               Check out our amazing books
             </h3>
           </div>
-          <p className="text-muted-foreground text-sm mb-4">
+          <p className="text-muted-foreground text-xs md:text-sm mb-4">
             Discover the books created by our team at Corpora Inc. These books
             are designed to enhance your reading experience with interactive
             features and rich content.
@@ -117,7 +118,8 @@ const About = () => {
           <Button
             variant="outline"
             size="sm"
-            className="gap-1.5"
+            
+            className="gap-1.5 w-full"
             onClick={() => openUrl(BOOKSITE_URL)}
           >
             <Globe className="h-4 w-4" />

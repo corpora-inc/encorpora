@@ -1,13 +1,13 @@
 import { Button } from "@/components/ui/button";
 import { useSettingsStore, ALL_DOMAINS } from "@/store/settings";
-import { TranslationKey } from "@/store/translations";
+import { useTranslation } from "react-i18next";
 
 
 export function DomainPicker() {
     const domains = useSettingsStore((s) => s.domains);
     const setDomains = useSettingsStore((s) => s.setDomains);
     const dir = useSettingsStore((s) => s.dir());
-    const t = useSettingsStore((s) => s.t);
+    const { t } = useTranslation()
 
     const allActive = domains.length === 0 || domains.length === ALL_DOMAINS.length;
 
@@ -30,14 +30,14 @@ export function DomainPicker() {
 
     return (
         <div className="w-full mt-3">
-            <div className="mb-2 font-semibold text-sm" dir={dir}>{t("Domains")}</div>
+            <div className="mb-2 font-semibold text-sm" dir={dir}>{t("settings.domains")}</div>
             <div className="flex gap-2 mb-3" dir={dir}>
                 <Button
                     size="sm"
                     variant={allActive ? "default" : "outline"}
                     onClick={handleSelectAll}
                 >
-                    {t("Select all")}
+                    {t("settings.selectAll")}
                 </Button>
             </div>
             <div className="flex flex-wrap gap-2" dir={dir}>
@@ -50,7 +50,7 @@ export function DomainPicker() {
                             variant={selected ? "default" : "outline"}
                             size="sm"
                             className={`
-                                rounded-full text-xs p-3
+                                rounded-md text-xs p-3
                                 transition
                                 ${selected ? "shadow-sm" : ""}
                             `}
@@ -59,15 +59,16 @@ export function DomainPicker() {
                             dir={dir}
                         >
                             {/* {DOMAIN_NAMES[code] || code} */}
-                            {t(code as TranslationKey)}
+                            {/* TODO */}
+                            {t(`categories.${code}` as any) || code}
                         </Button>
                     );
                 })}
             </div>
             <div className="mt-2 text-xs text-gray-400" dir={dir}>
                 {allActive
-                    ? t("All domains included.")
-                    : `${domains.length} ${t("selected")}.`}
+                    ? t("settings.allDomainsIncluded")
+                    : `${domains.length} ${t("settings.selected")}.`}
             </div>
         </div>
     );

@@ -7,14 +7,24 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "./ui/input";
 import { BookEntry } from "@/lib/utils";
-import BookCard from "./BookCard";
 import { Button } from "@/components/ui/button";
 import { SearchIcon } from "lucide-react";
+import BookListItem from "./homeScreen/BookListItem";
+import { useNavigate } from "react-router-dom";
 
-const BookSearchDialog = ({ books }: { books: BookEntry[] }) => {
+const BookSearchDialog = ({ books, onBookDeleted }: { books: BookEntry[]; onBookDeleted?: () => void }) => {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState<BookEntry[]>([]);
   const debounceRef = useRef<NodeJS.Timeout | null>(null);
+  const navigate = useNavigate();
+
+
+  const handleBookClick = async (bookPath: string) => {
+    if (bookPath.includes("pdf"))
+      navigate(`/pdf/${encodeURIComponent(bookPath)}`);
+    else navigate(`/reader/${encodeURIComponent(bookPath)}`);
+  };
+
 
   useEffect(() => {
     if (debounceRef.current) clearTimeout(debounceRef.current);
@@ -60,7 +70,7 @@ const BookSearchDialog = ({ books }: { books: BookEntry[] }) => {
             )}
             {results.length > 0 &&
               results.map((result) => (
-                <BookCard key={result.id} book={result} kind="list" />
+                <BookListItem handleBookClick={handleBookClick} key={result.id} book={result} onBookDeleted={onBookDeleted} />
               ))}
           </div>
         </div>

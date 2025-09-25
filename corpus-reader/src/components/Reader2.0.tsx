@@ -21,7 +21,7 @@ export const Reader = ({ onBookRead }: ReaderProps) => {
   const locationChanged = async (epubcifi: string) => {
     if (!bookPath) return;
     setLocation(epubcifi);
-    await updateBookProgress(bookPath, epubcifi, 10); //Should get a way to extract the progress of the epub....
+    await updateBookProgress(bookPath, epubcifi, 0); //Should get a way to extract the progress of the epub....
     if (onBookRead) onBookRead();
   };
 

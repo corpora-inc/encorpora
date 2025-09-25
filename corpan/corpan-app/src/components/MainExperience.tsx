@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useRef } from "react";
+import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { invoke } from "@tauri-apps/api/core";
 import {
     ChevronLeft as ChevronLeftIcon,
@@ -12,107 +12,163 @@ import { motion } from "framer-motion";
 
 import { Button } from "@/components/ui/button";
 import { useSettingsStore } from "@/store/settings";
-import { useHistoryStore, EntryOut } from "@/store/history";
+import { useHistoryStore } from "@/store/history";
 import { createVoiceTTS } from "@/util/speak";
-import { TranslationKey } from "@/store/translations";
+import { useTranslation } from "react-i18next";
 
-// Lame but OK
-function getPlatformPadding() {
-    if (/iPhone|iPad|iPod|iOS/i.test(navigator.userAgent)) {
-        return 240;
-    }
-    return 135;
-}
+import { isRTL, toCamelCase } from "@/util/convert";
+import {
+    getPlatformBottomPadding,
+    getPlatformTopPaddingButtons,
+    getPlatformTopPaddingTranslations,
+    isAndroid,
+} from "@/util/browser";
 
-// Even lamer but still fine
-const paddingAdjustMap: Record<string, number> = {
-    "small": -5,
-    "medium": 25,
-    "large": 50,
-    "extra-large": 75,
-}
+type TranslationOut = {
+    language_code: string;
+    text: string;
+    romanization: string;
+};
+type EntryOut = {
+    entry_id: number;
+    en_text: string;
+    level: string;
+    domains: string[];
+    translations: TranslationOut[];
+};
 
 export function MainExperience() {
+    // Settings (active stack)
+    const activeStackId = useSettingsStore((s) => s.activeStackId);
     const languages = useSettingsStore((s) => s.languages);
     const domains = useSettingsStore((s) => s.domains);
     const levels = useSettingsStore((s) => s.levels);
     const rate = useSettingsStore((s) => s.rate);
-    const t = useSettingsStore((s) => s.t);
-    const textSize = useSettingsStore((s) => s.textSize);
-    // console.log("textSize", textSize);
-
     const showRomanization = useSettingsStore((s) => s.showRomanization);
+    const { t } = useTranslation();
 
-    const history = useHistoryStore((s) => s.history);
-    const index = useHistoryStore((s) => s.index);
+    // Active stack history
+    const activeHistory = useHistoryStore((s) => s.byStack[activeStackId]);
+    const ids = activeHistory?.ids ?? [];
+    const index = activeHistory?.index ?? -1;
+
     const pushEntry = useHistoryStore((s) => s.pushEntry);
     const setIndex = useHistoryStore((s) => s.setIndex);
 
-    // Fetch a random entry with all languages, push to history
-    const fetchRandomEntry = async () => {
-        setIndex(history.length - 1); // set index to the end of history
-        try {
-            const entry = await invoke<EntryOut>("get_random_entry_with_translations", { domains, levels });
-            pushEntry(entry); // updates both history and index
-        } finally {
-        }
-    };
+    const [currEntry, setCurrEntry] = useState<EntryOut | null>(null);
+    const fetchSeqRef = useRef(0);
 
-    useEffect(() => {
-        if (history.length === 0) fetchRandomEntry();
+    const displayedLanguages = useMemo(() => [...languages].reverse(), [languages]);
+
+    // --- DB fetchers -----------------------------------------------------------
+
+    const resolveCurrent = useCallback(async (entry_id: number) => {
+        // console.log("resolving", entry_id);
+        const mySeq = ++fetchSeqRef.current;
+        const entry = await invoke<EntryOut>("get_entry_by_id_with_translations", { entryId: entry_id })
+        // console.log("resolved", entry_id, entry);
+        if (entry && mySeq === fetchSeqRef.current) setCurrEntry(entry);
     }, []);
 
-    const scrollRef = useRef<HTMLDivElement>(null);
+    const fetchRandomEntry = useCallback(async () => {
+        const entry = await invoke<EntryOut>("get_random_entry_with_translations", {
+            levels,
+            domains,
+        })
+        if (!entry) return;
 
+        // push id to history and show immediately (we already have the full entry)
+        pushEntry(entry.entry_id);
+        setCurrEntry(entry);
+    }, [levels, domains, pushEntry]);
+
+    // --- Effects ---------------------------------------------------------------
+
+    // On stack switch: clear view, then either load existing selection or fetch one
+    useEffect(() => {
+        setCurrEntry(null);
+        if (ids.length === 0) {
+            void fetchRandomEntry();
+        } else if (index >= 0) {
+            void resolveCurrent(ids[index]);
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [activeStackId]);
+
+    // Re-fetch same entry when language list changes (always fetch all translations,
+    // but we re-resolve to ensure fresh data & mapping)
+    useEffect(() => {
+        if (index >= 0 && index < ids.length) {
+            void resolveCurrent(ids[index]);
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [languages]);
+
+    // --- Nav handlers (deterministic: compute id, set index, resolve now) ------
+
+    const handlePrev = () => {
+        if (index <= 0) return;
+        const target = ids[index - 1];
+        if (typeof target !== "number") return;
+        setIndex(index - 1);
+        void resolveCurrent(target);
+    };
+
+    const handleNext = () => {
+        // if we have a forward item, go to it
+        if (index < ids.length - 1) {
+            const target = ids[index + 1];
+            if (typeof target !== "number") return;
+            setIndex(index + 1);
+            void resolveCurrent(target);
+            return;
+        }
+        // else fetch a new random
+        void fetchRandomEntry();
+    };
+
+    // keep the gentle scroll on index change (purely visual)
+    const scrollRef = useRef<HTMLDivElement>(null);
     useLayoutEffect(() => {
         setTimeout(() => {
-            if (scrollRef.current) {
-                scrollRef.current.scrollTo({ top: 0, behavior: "smooth" });
-            }
-        }, 27);
+            scrollRef.current?.scrollTo({ top: -200, behavior: "smooth" });
+        }, 33);
     }, [index]);
 
-    const curr = history[index] || null;
+    // --- Render helpers --------------------------------------------------------
 
-    // Build translation lookup by language code
-    const textByLang: Record<string, string> = {};
-    const romanizationByLang: Record<string, string | undefined> = {};
-    if (curr) {
-        curr.translations.forEach((t) => {
-            textByLang[t.language_code] = t.text;
-            romanizationByLang[t.language_code] = t.romanization;
-        });
-        textByLang["en"] = curr.en_text;
+    const textByDbCode: Record<string, string> = {};
+    const romByDbCode: Record<string, string | undefined> = {};
+    if (currEntry) {
+        for (const tItem of currEntry.translations) {
+            textByDbCode[tItem.language_code] = tItem.text;
+            romByDbCode[tItem.language_code] = tItem.romanization;
+        }
+        textByDbCode["en"] = currEntry.en_text;
     }
 
-    console.log(showRomanization, romanizationByLang);
+    const textFor = (uiCode: string) =>
+        textByDbCode[uiCode] ?? textByDbCode[uiCode.split("-")[0]] ?? "";
+    const romanizationFor = (uiCode: string) =>
+        romByDbCode[uiCode] ?? romByDbCode[uiCode.split("-")[0]];
 
-    // Navigation
-    const handlePrev = () => index > 0 && setIndex(index - 1);
-    const handleNext = () => {
-        if (index < history.length - 1) setIndex(index + 1);
-        else fetchRandomEntry();
-    };
+    // --- UI --------------------------------------------------------------------
 
     return (
         <div className="flex flex-col flex-1 min-h-0 w-full items-center relative">
-
-            {/* Floating domain/level stuff at top left */}
-            {curr && (
+            {/* Floating domain/level chips */}
+            {currEntry && (
                 <div
-                    className="fixed top-5 left-5 z-50 pointer-events-none"
-                    style={{ background: "transparent" }}
+                    className="fixed top-5 pt-safe left-5 z-50 pointer-events-none"
+                    style={{ background: "transparent", marginTop: getPlatformTopPaddingButtons() }}
                 >
                     <div className="flex flex-wrap gap-1 items-center justify-center text-gray-400 text-xs mb-1">
-                        <span
-                            className="px-2 py-0.5 rounded-full border border-gray-200 bg-gray-50 text-xs"
-                        >{curr.level.toUpperCase()}</span>
-                        {curr.domains.map((d) => (
-                            <span
-                                key={d}
-                                className="px-2 py-0.5 rounded-full border border-gray-200 bg-gray-50 text-xs"
-                            >
-                                {t(d as TranslationKey) || d}
+                        <span className="px-2 py-0.5 rounded-md border border-gray-200 bg-gray-50 text-xs">
+                            {currEntry.level.toUpperCase()}
+                        </span>
+                        {currEntry.domains.map((d) => (
+                            <span key={d} className="px-2 py-0.5 rounded-md border border-gray-200 bg-gray-50 text-xs">
+                                {t(`categories.${d}` as any) || d}
                             </span>
                         ))}
                     </div>
@@ -121,110 +177,110 @@ export function MainExperience() {
 
             {/* Scrollable Translations */}
             <div
-                className="flex-1 w-full overflow-y-auto min-h-0 px-2 pt-16 flex flex-col"
+                className="flex-1 w-full overflow-y-auto min-h-0 px-2 pt-20 flex flex-col"
                 ref={scrollRef}
                 style={{
-                    paddingBottom: `${getPlatformPadding() + paddingAdjustMap[textSize]}px`,
+                    paddingBottom: `${getPlatformBottomPadding()}px`,
+                    paddingTop: `${getPlatformTopPaddingTranslations()}px`,
                 }}
             >
-
-                <div
-                    key={index}
-                    className="w-full max-w-4xl mx-auto flex flex-col items-center gap-y-7 my-auto"
-                >
-
-                    {languages.map((code, idx) => (
-                        <motion.div
-                            key={idx}
-                            initial={{ opacity: 0, y: 16, scale: 0.98 }}
-                            animate={{ opacity: 1, y: 0, scale: 1 }}
-                            exit={{ opacity: 0, y: 8, scale: 0.98 }}
-                            transition={{ duration: 0.28, delay: idx * 0.04, ease: "easeOut" }}
-                            className="w-full flex flex-col items-center"
-                        >
-                            <div
-                                key={idx}
-                                className="text-xs text-gray-400 mb-1"
-                            >{t(code as TranslationKey) || code}</div>
-                            <div
-                                className="text-center text-xl md:text-2xl lg:text-3xl"
-                                style={{
-                                    wordBreak: "break-word",
-                                    maxWidth: "80vw",
-                                    lineHeight: 1.15,
-                                }}
-                                dir={code === "ar" ? "rtl" : "ltr"}
-                            >
-                                {textByLang[code] || <span className="opacity-30">—</span>}
-                            </div>
-                            {/* Render romanization if enabled and available */}
-                            {showRomanization && romanizationByLang[code] && (
-                                <div className="text-center text-base text-gray-400 italic mt-1 select-text">
-                                    {romanizationByLang[code]}
-                                </div>
-                            )}
-
+                <div key={index} className="w-full max-w-4xl mx-auto flex flex-col items-center gap-y-9 my-auto">
+                    {displayedLanguages.map((uiCode, idx) => {
+                        const txt = textFor(uiCode);
+                        const rom = romanizationFor(uiCode);
+                        return (
                             <motion.div
-                                whileTap={{ scale: 0.95 }}
-                                transition={{ type: "spring", stiffness: 300, damping: 17 }}
+                                key={idx}
+                                initial={{ opacity: 0, y: 16, scale: 0.98 }}
+                                animate={{ opacity: 1, y: 0, scale: 1 }}
+                                exit={{ opacity: 0, y: 8, scale: 0.98 }}
+                                transition={{ duration: 0.28, delay: idx * 0.04, ease: "easeOut" }}
+                                className="w-full flex flex-col items-center"
                             >
-                                <Button
+                                <div
+                                    className="text-center"
+                                    style={{ cursor: "pointer" }}
                                     onClick={() => {
-                                        const langPrefix = code.split("-")[0];
-                                        createVoiceTTS(langPrefix)(
-                                            textByLang[code],
-                                            rate,
-                                        );
+                                        // TODO: this is just a hack for our
+                                        // preferences for right now but
+                                        // very soon we should do a full,
+                                        // proper, voice introspection and
+                                        // choice and also ... ya' know,
+                                        // narrators and stuff.
+                                        if (uiCode === "en") {
+                                            uiCode = "en-US";
+                                        }
+                                        if (uiCode === "es") {
+                                            uiCode = "es-MX";
+                                        }
+                                        if (uiCode === "zh-Hant") {
+                                            uiCode = "zh-TW";
+                                            // uiCode = "zh-HK";
+                                        }
+                                        if (uiCode === "zh-Hans") {
+                                            uiCode = "zh-CN";
+                                        }
+                                        // if (uiCode === "fr") {
+                                        //     uiCode = "fr-FR";
+                                        // }
+                                        createVoiceTTS(uiCode)(txt, rate);
                                     }}
-                                    className="mt-2"
-                                    size="sm"
-                                    variant="outline"
                                 >
-                                    <Speaker className="w-4 h-4" />
-                                    <AudioLines className="w-4 h-4" />
-                                    <Ear className="w-4 h-4" />
-                                </Button>
+                                    <div className="text-xs text-gray-400">
+                                        {t(`languages.${toCamelCase(uiCode)}` as any) || uiCode}
+                                    </div>
+                                    <div
+                                        className="text-center text-xl md:text-2xl lg:text-3xl my-1"
+                                        style={{ wordBreak: "break-word", maxWidth: "80vw", lineHeight: 1.1 }}
+                                        dir={isRTL(uiCode) ? "rtl" : "ltr"}
+                                    >
+                                        {txt || <span className="opacity-30">—</span>}
+                                    </div>
+                                    {showRomanization && rom && (
+                                        <div
+                                            className="text-center text-sm text-base text-gray-400 italic mt-1 mb-1 select-text"
+                                            style={{ maxWidth: "80vw", wordBreak: "break-word" }}
+                                        >
+                                            {rom}
+                                        </div>
+                                    )}
+
+                                    <motion.div whileTap={{ scale: 0.9 }} transition={{ type: "spring", stiffness: 100, damping: 10 }}>
+                                        <Button className="mt-1" size="sm" variant="outline" style={{ cursor: "pointer" }}>
+                                            <Speaker className="shrink-0" />
+                                            <AudioLines className="shrink-0" />
+                                            <Ear className="shrink-0" />
+                                        </Button>
+                                    </motion.div>
+                                </div>
                             </motion.div>
-                        </motion.div>
-                    ))}
+                        );
+                    })}
                 </div>
             </div>
 
-            {/* Floating Nav + Level/Domains */}
+            {/* Floating Nav */}
             <div
-                className="fixed bottom-0 left-0 w-full flex justify-center pb-6 z-50 pointer-events-none"
-                style={{ background: "transparent" }
-                }
+                className="fixed bottom-0 left-0 w-full flex justify-center z-50 pointer-events-none"
+                style={{ background: "transparent", paddingBottom: getPlatformBottomPadding() / 6 }}
             >
-                <div className="flex flex-col gap-1 pointer-events-auto rounded-2xl shadow-2xl bg-white/95 px-8 py-3 border border-gray-200 items-center min-w-[280px]">
+                <div
+                    className="flex flex-col gap-1 pointer-events-auto rounded-md shadow-2xl bg-white/95 px-8 py-3 border border-gray-200 items-center min-w-[280px]"
+                    style={{ marginBottom: isAndroid() ? "39px" : 0 }}
+                >
                     <div className="flex justify-center items-center gap-8">
-                        <Button
-                            onClick={handlePrev}
-                            variant="ghost"
-                            size="lg"
-                            aria-label="Previous sentence"
-                        >
+                        <Button onClick={handlePrev} variant="ghost" size="lg" aria-label="Previous sentence">
                             <ChevronLeftIcon />
                         </Button>
-                        <Button
-                            onClick={fetchRandomEntry}
-                            variant="outline"
-                            size="lg"
-                            aria-label="Random sentence"
-                        >
+                        <Button onClick={fetchRandomEntry} variant="outline" size="lg" aria-label="Random sentence">
                             <RefreshIcon />
                         </Button>
-                        <Button
-                            onClick={handleNext}
-                            variant="ghost"
-                            size="lg"
-                            aria-label="Next sentence"
-                        >
+                        <Button onClick={handleNext} variant="ghost" size="lg" aria-label="Next sentence">
                             <ChevronRightIcon />
                         </Button>
                     </div>
                     <span className="text-xs text-gray-400 mt-1">
-                        {index + 1}/{history.length}
+                        {Math.max(0, index + 1)}/{ids.length}
                     </span>
                 </div>
             </div>

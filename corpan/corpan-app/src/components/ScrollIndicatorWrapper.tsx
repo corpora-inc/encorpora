@@ -58,7 +58,6 @@ export const ScrollIndicatorWrapper = forwardRef<HTMLDivElement, {
             <div
                 ref={ref}
                 className={`overflow-y-auto flex-1 min-h-0 w-full h-full ${className}`}
-                style={{ maxHeight: "100%" }}
             >
                 {children}
             </div>

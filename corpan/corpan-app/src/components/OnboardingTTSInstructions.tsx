@@ -4,6 +4,8 @@ import { ArrowRightCircle, ArrowLeftCircle, ExternalLink, Volume2 } from "lucide
 import { useMemo } from "react";
 import { ScrollIndicatorWrapper } from "./ScrollIndicatorWrapper";
 import { createVoiceTTS } from "@/util/speak";
+import { useTranslation } from "react-i18next";
+import { isRTL } from "@/util/convert";
 
 const SAMPLES: Record<string, string> = {
     en: "Hello! This is what English sounds like.",
@@ -19,6 +21,10 @@ const SAMPLES: Record<string, string> = {
     tr: "Merhaba! Türkçe böyle duyulur.",
     ar: "مرحبًا! هكذا تبدو اللغة العربية.",
     hi: "नमस्ते! यह हिंदी की आवाज़ है।",
+    vi: "Xin chào! Đây là âm thanh của tiếng Việt.",
+    pl: "Cześć! Tak brzmi język polski.",
+    hu: "Szia! Így hangzik a magyar.",
+    fa: "سلام! این صدای زبان فارسی است.",
 };
 
 function getPlatformInfo() {
@@ -55,7 +61,7 @@ function getPlatformInfo() {
 
 export function OnboardingTTSInstructions() {
     const setStep = useSettingsStore(s => s.setOnboardingStep);
-    const t = useSettingsStore(s => s.t);
+    const { t } = useTranslation()
     const dir = useSettingsStore(s => s.dir);
     const platform = useMemo(() => getPlatformInfo(), []);
     const languages = useSettingsStore(s => s.languages);
@@ -65,34 +71,36 @@ export function OnboardingTTSInstructions() {
 
     const speak = (text: string, lang: string) => {
         try {
-            createVoiceTTS(lang.split('-')[0])(text);
+            createVoiceTTS(lang)(text);
         } catch (e) {
             alert("Unable to speak. TTS error.");
         }
     };
 
     return (
-        <div className="flex flex-col h-full w-full">
+        <div className="flex flex-col h-full w-full pt-safe my-3">
             {/* Header nav always on top */}
-            <div className="w-full max-w-xl mx-auto flex flex-row items-center justify-between py-5 px-2">
+            <div className="w-full max-w-xl mx-auto flex flex-row items-center justify-between py-5 px-2"
+                style={{ height: 100 }}
+            >
                 <button
-                    className="flex items-center justify-center bg-gray-200 hover:bg-gray-300 text-gray-700 rounded-full p-3 shadow transition border"
+                    className="flex items-center justify-center bg-gray-200 hover:bg-gray-300 text-gray-700 rounded-md p-3 shadow transition border"
                     onClick={() => setStep(2)}
                     tabIndex={0}
                 >
                     <ArrowLeftCircle size={30} />
                 </button>
                 <div
-                    className="flex-1 text-center text-lg font-semibold text-gray-800 select-none px-2"
-                    style={{ letterSpacing: 0.5 }}
+                    className="flex-1 text-center text-sm font-semibold text-gray-800 select-none px-2"
+                    style={{ letterSpacing: 0.25 }}
                     dir={dir()}
                 >
-                    {t("Text-to-Speech Setup")}
+                    {t("onboarding.textToSpeechSetup")}
                 </div>
                 {/* Make NEXT the prominent action: Purple styling */}
                 <button
-                    // className="flex items-center justify-center bg-white border-2 border-purple-700 hover:bg-purple-50 text-purple-700 hover:text-purple-800 rounded-2xl font-semibold text-lg shadow-lg px-5 py-4 gap-1 transition"
-                    className="flex items-center justify-center rounded-full p-3 shadow transition bg-black hover:bg-gray-900 text-white border border-purple-400"
+                    // className="flex items-center justify-center bg-white border-2 border-purple-700 hover:bg-purple-50 text-purple-700 hover:text-purple-800 rounded-md font-semibold text-lg shadow-lg px-5 py-4 gap-1 transition"
+                    className="flex items-center justify-center rounded-md p-3 shadow transition bg-black hover:bg-gray-900 text-white border border-purple-400"
                     onClick={() => setStep(4)}
                     tabIndex={0}
                 >
@@ -101,13 +109,13 @@ export function OnboardingTTSInstructions() {
             </div>
 
             {/* Main scrollable content with scroll indicators */}
-            <div className="flex-1 flex flex-col items-center justify-center min-h-0 w-full overflow-y-auto">
+            <div className="flex-1 flex flex-col items-center justify-center min-h-0 w-full overflow-y-auto mb-10">
                 <ScrollIndicatorWrapper
-                    className="w-full max-w-xl flex flex-col gap-7 items-center mx-auto"
+                    className="w-full max-w-xl flex flex-col items-center mx-auto"
                 >
                     <div className="flex flex-col gap-7 max-w-lg w-full items-center mt-10">
                         <div className="text-lg text-gray-800 text-center select-none" dir={dir()}>
-                            {t("test_tts")}
+                            {t("settings.testTts")}
                         </div>
                         {/* TTS Sample Buttons */}
                         <div className="w-full flex flex-wrap justify-center gap-3">
@@ -118,7 +126,7 @@ export function OnboardingTTSInstructions() {
                                     className="
                                         flex items-center gap-2
                                         px-4 py-3
-                                        rounded-xl
+                                        rounded-md
                                         bg-gray-100 hover:bg-purple-50
                                         border border-gray-200
                                         text-base font-semibold text-gray-800
@@ -127,7 +135,7 @@ export function OnboardingTTSInstructions() {
                                         min-w-[140px]
                                         justify-center
                                     "
-                                    dir={code === "ar" ? "rtl" : "ltr"}
+                                    dir={isRTL(code) ? "rtl" : "ltr"}
                                 >
                                     <Volume2 size={20} className="text-purple-700" />
                                     <span className="truncate max-w-[100px]">
@@ -137,7 +145,7 @@ export function OnboardingTTSInstructions() {
                             ))}
                         </div>
                         <div className="text-lg text-gray-800 text-center select-none" dir={dir()}>
-                            {t("If audio sounds poor, go to your device's TTS settings and install high-quality voices.")}
+                            {t("onboarding.ttsPoorQualityNote")}
                         </div>
                         {/* Normal link for TTS setup instructions */}
                         <div className="text-center">
@@ -148,7 +156,7 @@ export function OnboardingTTSInstructions() {
                                 tabIndex={0}
                                 dir={dir()}
                             >
-                                {t("How to set up TTS on") + " " + platform.name}
+                                {t("onboarding.howToSetupTtsOn") + " " + platform.name}
                                 <ExternalLink
                                     style={{ width: 18, height: 18, minWidth: 18, minHeight: 18 }}
                                     size={18}
