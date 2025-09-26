@@ -7,7 +7,6 @@ import { SettingsModal } from "./components/SettingsModal";
 import { Button } from "./components/ui/button";
 import "./index.css";
 import { ThemeProvider } from "./components/ThemeProvider";
-import ThemeToggle from "./components/ThemeSwitch";
 import { getPlatformTopPaddingButtons } from "./util/browser";
 
 
@@ -56,7 +55,7 @@ export default function App() {
             >
               <SettingsIcon className="text-gray-600 h-5 w-5" />
             </Button>
-            <ThemeToggle />
+          
           </div>
         </div>
       </div>

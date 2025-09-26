@@ -19,6 +19,7 @@ import About from "./About";
 import { useSettingsStore } from "@/store/settings";
 import { useTranslation } from "react-i18next";
 import StacksManager from "./StacksManager";
+import ThemeToggle from "./ThemeSwitch";
 
 // Use the built-in modal with correct sizing
 export function SettingsModal({
@@ -62,6 +63,7 @@ export function SettingsModal({
         <LevelsPicker />
         <DomainPicker />
         <RomanizationToggle />
+        <ThemeToggle />
 
         {/* Global onboarding controls */}
         <Button
