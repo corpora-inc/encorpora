@@ -10,7 +10,7 @@ from cor.utils.llm import translate_entry_batch
 from corpora_ai.provider_loader import load_llm_provider
 
 
-BATCH_SIZE = 10  # Default
+BATCH_SIZE = 25  # Default
 
 
 def translate_and_save(
@@ -23,9 +23,9 @@ def translate_and_save(
         # llm = load_llm_provider("local", completion_model="qwen3-30b-a3b-mlx")
         llm = load_llm_provider("local", completion_model="google/gemma-3-27b")
     elif provider == "xai":
-        llm = load_llm_provider("xai", completion_model="grok-3-mini")
+        llm = load_llm_provider("xai")
     elif provider == "openai":
-        llm = load_llm_provider("openai", completion_model="gpt-4o")
+        llm = load_llm_provider("openai")
     else:
         raise ValueError(f"Unknown provider: {provider}")
 
