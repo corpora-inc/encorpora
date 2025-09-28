@@ -1,11 +1,13 @@
 import time
-import multiprocessing
+import random
+import multiprocessing as mp
 from functools import partial
-from typing import List, Tuple
+from typing import List, Tuple, Dict
 
 from django.core.management.base import BaseCommand
 from django.db import close_old_connections
 from django.db.models import Q
+
 from pydantic import BaseModel
 
 from cor.models import Language, Translation
@@ -13,7 +15,9 @@ from corpora_ai.provider_loader import load_llm_provider
 from corpora_ai.llm_interface import ChatCompletionTextMessage
 
 
-# Pydantic schemas
+# ----------------- Pydantic schemas -----------------
+
+
 class FaRomanizationItem(BaseModel):
     id: int
     persian: str
@@ -28,7 +32,7 @@ class FaRomanizationResp(BaseModel):
     romanizations: List[FaRomanizationRespItem]
 
 
-# LLM prompt construction
+# ----------------- Prompt -----------------
 
 
 def get_system_prompt() -> str:
@@ -60,186 +64,249 @@ def build_llm_messages(
     ]
 
 
-# Worker invoked in parallel for each batch
+# ----------------- Worker infra -----------------
+
+_LLM = None  # set per-process
 
 
-def romanize_batch(
-    batch: List[Tuple[int, str]],
-    provider: str,
-    model: str,
-    dry_run: bool,
-    max_retries: int,
-) -> dict:
+def _init_worker(provider: str, model: str | None):
+    """Initializer runs once per child. Build LLM client here instead of per-batch."""
+    global _LLM
     close_old_connections()
-    start = time.time()
-
-    # Load LLM provider
     if provider == "local":
-        llm = load_llm_provider("local", completion_model=model)
+        _LLM = load_llm_provider("local", completion_model=model)
     elif provider == "openai":
-        llm = load_llm_provider("openai", completion_model=model)
+        _LLM = load_llm_provider("openai", completion_model=model)
     elif provider == "xai":
-        llm = load_llm_provider("xai", completion_model=model)
+        _LLM = load_llm_provider("xai", completion_model=model)
     else:
         raise ValueError(f"Unknown provider: {provider}")
+
+
+def _romanize_batch(batch: List[Tuple[int, str]], max_retries: int) -> Dict:
+    """
+    Pure compute in worker: call LLM, return rows to parent.
+    No DB writes or prints here (keeps it fast and clean).
+    """
+    global _LLM
+    start = time.time()
 
     items = [FaRomanizationItem(id=i, persian=text) for i, text in batch]
     messages = build_llm_messages(items)
 
-    # Retry on failure
     tries = 0
     response = None
     while tries < max_retries:
         try:
-            response = llm.get_data_completion(messages, FaRomanizationResp)
+            response = _LLM.get_data_completion(messages, FaRomanizationResp)
             break
         except Exception:
             tries += 1
-            time.sleep(2**tries)
+            time.sleep(min(1.5 * (2**tries), 8.0))
 
-    processed = len(batch)
-    updated = 0
     elapsed = time.time() - start
-
     if not response:
-        return {"processed": processed, "updated": updated, "time": elapsed}
+        return {"processed": len(batch), "rows": [], "time": elapsed}
 
-    if dry_run:
-        for obj in response.romanizations:
-            orig = next((t for t in batch if t[0] == obj.id), None)
-            print(f"[dry] ID {obj.id}: '{orig[1]}' → '{obj.romanization}'")
-    else:
-        for obj in response.romanizations:
-            try:
-                t = Translation.objects.get(id=obj.id)
-                roman = obj.romanization.strip()
-                if roman:
-                    t.romanization = roman
-                    t.save(update_fields=["romanization"])
-                    updated += 1
-            except Translation.DoesNotExist:
-                continue
-
-    return {"processed": processed, "updated": updated, "time": elapsed}
+    # return pairs only; parent prints/saves
+    rows = [
+        (obj.id, obj.romanization.strip())
+        for obj in response.romanizations
+        if obj.romanization.strip()
+    ]
+    return {"processed": len(batch), "rows": rows, "time": elapsed}
 
 
-# Management command
+# ----------------- Management command -----------------
+
+
 class Command(BaseCommand):
-    help = "Romanize Persian translations using an LLM."
+    help = "Romanize Persian translations using an LLM (fast + chatty). Dry-run streams suggestions quickly."
 
     def add_arguments(self, parser):
         parser.add_argument(
-            "--batch-size",
-            type=int,
-            default=20,
-            help="Number of strings per LLM batch.",
+            "--batch-size", type=int, default=20, help="Strings per LLM batch."
         )
         parser.add_argument(
             "--processes",
             type=int,
-            default=multiprocessing.cpu_count(),
-            help="Number of parallel worker processes.",
+            default=max(1, mp.cpu_count() // 2),
+            help="Parallel workers.",
         )
         parser.add_argument(
             "--provider",
             type=str,
-            default="local",
+            default="openai",
             help="LLM backend: local, openai, xai.",
         )
         parser.add_argument(
             "--model",
             type=str,
-            default="gpt-4o",
-            help="Completion model name for the chosen provider.",
+            default="gpt-4.1",
+            help="Completion model name for the provider.",
         )
         parser.add_argument(
             "--dry-run",
             action="store_true",
             default=False,
-            help="Show sample output without saving changes.",
+            help="Preview output without saving.",
         )
         parser.add_argument(
-            "--limit",
-            type=int,
-            default=0,
-            help="Max number of strings to process (0 = all).",
+            "--limit", type=int, default=0, help="Max number to process (0 = all)."
         )
         parser.add_argument(
             "--only-level",
             type=str,
             default="",
-            help="Process only entries with this CEFR level (e.g. 'A1').",
+            help="Only entries with this CEFR level (e.g. 'A1').",
         )
         parser.add_argument(
-            "--max-retries",
+            "--max-retries", type=int, default=5, help="LLM retry attempts."
+        )
+        parser.add_argument(
+            "--seed", type=int, default=42, help="RNG seed for sampling."
+        )
+        parser.add_argument(
+            "--preview-first",
             type=int,
-            default=5,
-            help="Number of retry attempts on LLM API errors.",
+            default=10,
+            help="Do a tiny synchronous preview before parallel run.",
         )
 
     def handle(self, *args, **opts):
-        batch_size: int = opts["batch_size"]
-        processes: int = opts["processes"]
-        provider: str = opts["provider"]
-        model: str = opts["model"]
-        dry_run: bool = opts["dry_run"]
-        limit: int = opts["limit"]
-        only_level: str = opts["only_level"]
-        max_retries: int = opts["max_retries"]
+        batch_size = opts["batch_size"]
+        processes = max(1, opts["processes"])
+        provider = opts["provider"]
+        model = opts["model"]
+        dry_run = opts["dry_run"]
+        limit = opts["limit"]
+        only_level = opts["only_level"]
+        max_retries = opts["max_retries"]
+        seed = int(opts["seed"])
+        preview_first = max(0, int(opts["preview_first"]))
 
+        # -------- build target set (fast random sample without ORDER BY RANDOM()) --------
         fa_lang = Language.objects.get(code="fa")
-        qs = Translation.objects.filter(language=fa_lang).filter(
+        base_qs = Translation.objects.filter(language=fa_lang).filter(
             Q(romanization__isnull=True) | Q(romanization__exact="")
         )
         if only_level:
-            qs = qs.filter(entry__level=only_level)
+            base_qs = base_qs.filter(entry__level=only_level)
 
-        total = qs.count()
-        self.stdout.write(f"Total missing Persian romanizations: {total}")
-        if total == 0:
-            return
-
-        # Randomize order and apply limit
-        qs = qs.order_by("?")
-        if limit > 0:
-            qs = qs[:limit]
-
-        pairs: List[Tuple[int, str]] = [(t.id, t.text) for t in qs]
-        batches = [pairs[i : i + batch_size] for i in range(0, len(pairs), batch_size)]
-        self.stdout.write(f"Processing {len(batches)} batches of size {batch_size}...")
-
-        worker = partial(
-            romanize_batch,
-            provider=provider,
-            model=model,
-            dry_run=dry_run,
-            max_retries=max_retries,
+        total_missing = base_qs.count()
+        self.stdout.write(
+            self.style.NOTICE(f"Missing Persian romanizations: {total_missing}")
         )
 
-        pool = multiprocessing.Pool(processes=processes)
-        start_time = time.time()
+        if total_missing == 0:
+            return
+
+        # get all candidate IDs first (cheap), then sample in Python
+        id_text = list(base_qs.values_list("id", "text"))
+        if limit and limit < len(id_text):
+            random.Random(seed).shuffle(id_text)
+            id_text = id_text[:limit]
+
+        # partition into batches
+        pairs: List[Tuple[int, str]] = id_text
+        batches = [pairs[i : i + batch_size] for i in range(0, len(pairs), batch_size)]
+        self.stdout.write(
+            self.style.NOTICE(
+                f"Batches: {len(batches)}  (batch_size={batch_size}, processes={processes})"
+            )
+        )
 
         total_processed = 0
         total_updated = 0
         total_llm_time = 0.0
+        t0 = time.time()
 
-        for result in pool.imap(worker, batches):
-            total_processed += result["processed"]
-            total_updated += result["updated"]
-            total_llm_time += result["time"]
-            self.stdout.write(
-                f"[Batch] processed {result['processed']}, updated {result['updated']} "
-                f"in {result['time']:.2f}s (avg {result['time']/result['processed']:.2f}s/s)."
+        # -------- instant mini-preview (synchronous) --------
+        if dry_run and preview_first > 0 and pairs:
+            mini = pairs[: min(preview_first, len(pairs))]
+            self.stdout.write(self.style.WARNING(f"Preview {len(mini)} items…"))
+            # init local LLM once
+            llm = (
+                load_llm_provider(provider, completion_model=model)
+                if model
+                else load_llm_provider(provider)
             )
+            items = [FaRomanizationItem(id=i, persian=txt) for i, txt in mini]
+            messages = build_llm_messages(items)
+            try:
+                resp = llm.get_data_completion(messages, FaRomanizationResp)
+                for obj in resp.romanizations:
+                    orig = next((t for t in mini if t[0] == obj.id), None)
+                    if orig:
+                        print(f"[dry] ID {obj.id}: '{orig[1]}' → '{obj.romanization}'")
+            except Exception as e:
+                self.stdout.write(self.style.ERROR(f"Preview failed: {e}"))
+            # continue with the full run (will include these again; dry-run so fine)
 
-        pool.close()
-        pool.join()
+        # -------- parallel compute; parent prints and writes --------
+        ctx = mp.get_context(
+            "fork" if hasattr(mp, "get_context") else None
+        )  # faster startup on unix
+        with ctx.Pool(
+            processes=processes,
+            initializer=_init_worker,
+            initargs=(provider, model),
+            maxtasksperchild=100,  # keep workers fresh
+        ) as pool:
+            worker = partial(_romanize_batch, max_retries=max_retries)
+            # chunksize=1 ensures quick first results; adjust if you want fewer callbacks
+            for idx, result in enumerate(
+                pool.imap_unordered(worker, batches, chunksize=1), start=1
+            ):
+                total_processed += result["processed"]
+                total_llm_time += result["time"]
 
-        overall = time.time() - start_time
-        avg_time = total_llm_time / total_processed if total_processed else 0
+                if dry_run:
+                    # print every suggestion as it comes back
+                    for tid, roman in result["rows"]:
+                        # find original text quickly via dict
+                        # build a small lookup only once
+                        # (for big runs you can prebuild a dict outside the loop)
+                        pass
+                    # quick lookup map (build once lazily)
+                    if not hasattr(self, "_lookup"):
+                        self._lookup = {i: t for i, t in pairs}
+                    for tid, roman in result["rows"]:
+                        orig = self._lookup.get(tid, "")
+                        print(f"[dry] ID {tid}: '{orig}' → '{roman}'")
+                else:
+                    # bulk update in parent for this batch
+                    rows = result["rows"]
+                    if rows:
+                        id_list = [tid for tid, _ in rows]
+                        objs = list(Translation.objects.filter(id__in=id_list))
+                        rom_by_id = {tid: roman for tid, roman in rows}
+                        for o in objs:
+                            r = rom_by_id.get(o.id, "").strip()
+                            if r and r != o.romanization:
+                                o.romanization = r
+                        if objs:
+                            Translation.objects.bulk_update(objs, ["romanization"])
+                            total_updated += len(rows)
+
+                # chatty progress line
+                avg = (
+                    (result["time"] / result["processed"]) if result["processed"] else 0
+                )
+                self.stdout.write(
+                    f"[batch {idx}/{len(batches)}] processed={result['processed']} "
+                    f"rows={len(result['rows'])} time={result['time']:.2f}s avg={avg:.2f}s/s",
+                )
+
+        elapsed = time.time() - t0
         self.stdout.write(
-            f"✅ Completed: {total_processed} sentences, {total_updated} saved."
+            self.style.SUCCESS(
+                f"✅ Completed: {total_processed} sentences; saved={total_updated if not dry_run else 0}."
+            )
         )
+        per = (total_llm_time / total_processed) if total_processed else 0
         self.stdout.write(
-            f"LLM wall-clock: {total_llm_time:.2f}s, avg {avg_time:.2f}s/s, overall elapsed {overall:.2f}s."
+            self.style.NOTICE(
+                f"LLM wall-clock: {total_llm_time:.2f}s  avg={per:.2f}s/s  overall={elapsed:.2f}s"
+            )
         )

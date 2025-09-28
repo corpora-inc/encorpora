@@ -1,7 +1,13 @@
+# cor/management/commands/romanize_ar.py
+from __future__ import annotations
+
 import time
+from typing import List
+
 from django.core.management.base import BaseCommand
-from typing import List, Optional
+from django.db.models import Q
 from pydantic import BaseModel
+
 from corpora_ai.provider_loader import load_llm_provider
 from corpora_ai.llm_interface import ChatCompletionTextMessage
 from cor.models import Language, Translation
@@ -10,14 +16,15 @@ from cor.models import Language, Translation
 # llm = load_llm_provider("local", completion_model="qwen3-30b-a3b-mlx")
 # llm = load_llm_provider("local", completion_model="qwen3-1.7b")
 # llm = load_llm_provider("local", completion_model="qwen1.5-7b-chat")
-llm = load_llm_provider("openai", completion_model="gpt-3.5-turbo")
+llm = load_llm_provider("openai")
+
+
+# ---------- Pydantic Schemas ----------
 
 
 class ArabicRomanizationItem(BaseModel):
     id: int
     arabic: str
-    buckwalter: str
-    old_romanization: Optional[str] = None
 
 
 class RomanizationResponseItem(BaseModel):
@@ -29,13 +36,18 @@ class RomanizationResponse(BaseModel):
     romanizations: List[RomanizationResponseItem]
 
 
-def get_system_prompt():
+# ---------- Prompt ----------
+
+
+def get_system_prompt() -> str:
     return (
-        "You are an expert Arabic linguist and educator. Your job is to produce Latin-script romanizations of Arabic text that are easy for beginners to pronounce. "
-        "You are given both Arabic and Buckwalter transliteration. DO NOT copy Buckwalter—write out natural, readable, phrasebook-style romanizations. "
-        "No numerals, no weird symbols, no Arabizi. Use only regular letters and apostrophes for 'ayn (ع) or glottal stops (ء). "
-        "Examples: حبيبي: habibi, رحلة: rihla, صديق: sadiq, عربي: 'arabi, خالد: khalid, أستاذ: 'ustadh, سؤال: su'al. "
-        "Your romanization should be as if written for a beginner phrasebook for English or Spanish speakers. Output only the JSON."
+        "You are an expert Arabic linguist and educator. Produce Latin-script romanizations of Arabic text "
+        "that are easy for beginners to pronounce. No numerals, no unusual symbols, no Arabizi. "
+        "Use only regular letters and apostrophes for ʿayn (ع) and glottal stop (ء). "
+        "Keep it phrasebook-simple and readable.\n"
+        "Examples:\n"
+        "حبيبي → habibi; رحلة → rihla; صديق → sadiq; عربي → 'arabi; خالد → khalid; "
+        "مستشفى → mustashfa; أستاذ → 'ustadh; سؤال → su'al; المدرسة → al-madrasa."
     )
 
 
@@ -43,10 +55,10 @@ def build_llm_messages(
     items: List[ArabicRomanizationItem],
 ) -> List[ChatCompletionTextMessage]:
     user_prompt = (
-        "For each item below, return a learner-friendly romanization using the Latin alphabet. "
-        "Each object has: id, arabic, buckwalter. "
-        'Return ONLY a single JSON object: {"romanizations": [{"id": ..., "romanization": ...}, ...]}. '
-        "Examples: حبيبي → habibi, رحلة → rihla, خالد → khalid, غرفة → ghurfa, عربي → 'arabi, مستشفى → mustashfa, أستاذ → 'ustadh, سؤال → su'al, المدرسة → al-madrasa."
+        "For each item below, return a learner-friendly romanization using the Latin alphabet.\n"
+        "Each object has: id, arabic.\n"
+        "Return ONLY a single JSON object exactly as:\n"
+        '{"romanizations":[{"id":<int>,"romanization":"<string>"} , ... ]}'
     )
     return [
         ChatCompletionTextMessage(role="system", text=get_system_prompt()),
@@ -62,106 +74,124 @@ def build_llm_messages(
     ]
 
 
-def batch_qs(qs, batch_size):
-    total = qs.count()
-    for i in range(0, total, batch_size):
-        yield qs[i : i + batch_size]
+# ---------- Utils ----------
 
 
-def show_results(chunk, response):
+def chunked(seq, n):
+    for i in range(0, len(seq), n):
+        yield seq[i : i + n]
+
+
+def show_results(objs: List[Translation], response: RomanizationResponse):
+    by_id = {o.id: o for o in objs}
     for obj in response.romanizations:
-        t = next((tr for tr in chunk if tr.id == obj.id), None)
+        t = by_id.get(obj.id)
         print("=" * 60)
-        print(f"ID: {obj.id}")
+        print(f"ID:            {obj.id}")
         print(f"Arabic:        {t.text if t else ''}")
-        print(f"Buckwalter:    {t.romanization if t else ''}")
-        print(f"Old Roman.:    {t.romanization if t else ''}")
         print(f"LLM Suggested: {obj.romanization}")
     print("=" * 60)
     print("Dry run complete. No changes saved.")
 
 
+# ---------- Command ----------
+
+
 class Command(BaseCommand):
-    help = "Use LLM to convert Arabic+Buckwalter to learner-friendly romanizations."
+    help = "Use an LLM to generate learner-friendly Arabic romanizations."
 
     def add_arguments(self, parser):
-        parser.add_argument("--batch", type=int, default=20)
-        parser.add_argument("--dry", action="store_true", default=False)
+        parser.add_argument("--batch", type=int, default=20, help="Items per LLM call.")
+        parser.add_argument(
+            "--dry",
+            action="store_true",
+            default=False,
+            help="Preview only; no DB writes.",
+        )
         parser.add_argument(
             "--skip",
             type=int,
             default=0,
-            help="Number of batches to skip before processing.",
+            help="Number of batches to skip before processing (apply mode).",
+        )
+        parser.add_argument(
+            "--missing-only",
+            action="store_true",
+            default=False,
+            help="Process only rows where romanization is NULL or empty.",
         )
 
     def handle(self, *args, **opts):
         import datetime
 
         ar = Language.objects.get(code="ar")
-        dry_run = opts["dry"]
-        batch_size = opts["batch"]
-        skip_batches = opts.get("skip", 0)
+        dry_run: bool = opts["dry"]
+        batch_size: int = opts["batch"]
+        skip_batches: int = int(opts.get("skip", 0))
+        missing_only: bool = bool(opts.get("missing_only", False))
 
-        total_translations = Translation.objects.filter(language=ar).count()
-        self.stdout.write(f"Total Arabic translations: {total_translations}")
+        base_qs = Translation.objects.filter(language=ar)
+        if missing_only:
+            base_qs = base_qs.filter(
+                Q(romanization__isnull=True) | Q(romanization__exact="")
+            )
+
+        total_in_scope = base_qs.count()
+        scope_label = "missing" if missing_only else "total"
+        self.stdout.write(
+            f"{scope_label.capitalize()} Arabic translations in scope: {total_in_scope}"
+        )
+        if total_in_scope == 0:
+            self.stdout.write("Nothing to do.")
+            return
+
+        # Freeze the target IDs up front so the set doesn't shrink mid-run
+        id_list = list(base_qs.order_by("id").values_list("id", flat=True))
 
         overall_start = time.time()
         sentence_count = 0
         total_llm_time = 0.0
-        batch_num = 0
-
-        qs = Translation.objects.filter(language=ar)
 
         if dry_run:
-            qs = qs.order_by("?")[:batch_size]
-            self.stdout.write(
-                f"🔎 Dry run: sampling {batch_size} random Arabic translations."
-            )
-            chunk = qs
-            items = [
-                ArabicRomanizationItem(
-                    id=t.id,
-                    arabic=t.text,
-                    buckwalter=t.romanization or "",
-                    old_romanization=t.romanization or None,
-                )
-                for t in chunk
-            ]
+            sample_ids = id_list[: min(batch_size, len(id_list))]
+            objs = list(Translation.objects.filter(id__in=sample_ids))
+            objs.sort(key=lambda o: sample_ids.index(o.id))
+
+            items = [ArabicRomanizationItem(id=o.id, arabic=o.text) for o in objs]
+
             batch_start = time.time()
             messages = build_llm_messages(items)
             response = llm.get_data_completion(messages, RomanizationResponse)
             batch_elapsed = time.time() - batch_start
-            show_results(chunk, response)
+
+            show_results(objs, response)
             self.stdout.write(
-                f"⏱️ Batch time: {batch_elapsed:.2f}s | Per sentence: {batch_elapsed/len(chunk):.2f}s"
+                f"⏱️ Batch time: {batch_elapsed:.2f}s | Per sentence: {batch_elapsed/len(objs):.2f}s"
             )
             self.stdout.write("Dry run complete. No changes saved.")
             return
 
-        # Non-dry run: all, batch update, with skip logic
-        for chunk in batch_qs(qs, batch_size):
+        # Apply mode
+        batch_num = 0
+        for id_chunk in chunked(id_list, batch_size):
             batch_num += 1
             if batch_num <= skip_batches:
                 self.stdout.write(f"⏭️ Skipping batch {batch_num} (as requested)")
                 continue
 
-            items = [
-                ArabicRomanizationItem(
-                    id=t.id,
-                    arabic=t.text,
-                    buckwalter=t.romanization or "",
-                    old_romanization=t.romanization or None,
-                )
-                for t in chunk
-            ]
-            batch_start = time.time()
-            messages = build_llm_messages(items)
+            objs = list(Translation.objects.filter(id__in=id_chunk))
+            objs.sort(key=lambda o: id_chunk.index(o.id))
 
+            items = [ArabicRomanizationItem(id=o.id, arabic=o.text) for o in objs]
+
+            # LLM call with retries
+            batch_start = time.time()
             tries = 0
             max_retries = 5
             response = None
             while tries < max_retries:
                 try:
+                    messages = build_llm_messages(items)
                     response = llm.get_data_completion(messages, RomanizationResponse)
                     break
                 except Exception as e:
@@ -169,6 +199,7 @@ class Command(BaseCommand):
                     self.stderr.write(
                         f"Error in batch {batch_num}, attempt {tries}: {e}"
                     )
+                    time.sleep(min(1.5 * (2**tries), 8.0))
                     if tries >= max_retries:
                         self.stderr.write("Max retries reached. Skipping this batch.")
                         break
@@ -178,17 +209,24 @@ class Command(BaseCommand):
 
             batch_elapsed = time.time() - batch_start
             total_llm_time += batch_elapsed
-            sentence_count += len(chunk)
-            updates = 0
-            for obj in response.romanizations:
-                t = next((tr for tr in chunk if tr.id == obj.id), None)
-                if t and obj.romanization.strip():
-                    t.romanization = obj.romanization.strip()
-                    t.save(update_fields=["romanization"])
-                    updates += 1
+            sentence_count += len(objs)
+
+            # Apply updates in-memory then bulk_update
+            resp_by_id = {
+                r.id: (r.romanization or "").strip() for r in response.romanizations
+            }
+            to_update: List[Translation] = []
+            for o in objs:
+                rom = resp_by_id.get(o.id, "")
+                if rom and rom != (o.romanization or ""):
+                    o.romanization = rom
+                    to_update.append(o)
+
+            if to_update:
+                Translation.objects.bulk_update(to_update, ["romanization"])
+
             self.stdout.write(
-                f"[Batch {batch_num}] {len(chunk)} processed, {updates} updated. "
-                f"⏱️ Batch: {batch_elapsed:.2f}s | Per sentence: {batch_elapsed/len(chunk):.2f}s"
+                f"[Batch {batch_num}] {len(objs)} processed, {len(to_update)} updated."
             )
 
         overall_elapsed = time.time() - overall_start
