@@ -2,7 +2,7 @@
 
 PROVIDER="openai"
 PROCS=24
-LANGS=(ar de en es fa fr hi hu it ja ko-polite pl pt-BR ru vi zh-Hans zh-Hant)
+LANGS=(ar de es fa fr hi hu it ja ko-polite pl pt-BR ru vi zh-Hans zh-Hant)
 
 for lang in "${LANGS[@]}"; do
   echo "=== translate_missing → ${lang} ==="
