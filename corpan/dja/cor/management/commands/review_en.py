@@ -28,24 +28,42 @@ class BatchReviewResult(BaseModel):
     suggestions: List[EnSuggestion] = Field(default_factory=list)
 
 
-# ---------- Minimal prompts ----------
+# ---------- Conservative, vocab-preserving prompts ----------
+
+# --- Minimal, conservative gate + bold upgrades on change ---
 
 BASE_SYSTEM_PROMPT = """
 You edit English lines for a language-learning corpus.
-Make each line A++: natural, idiomatic, useful, and a touch lively.
-Keep CEFR level, meaning, and ~±20% length.
-If a line is awkward or suboptimal for learning, rewrite it to a clearly better phrasing.
-If it's already excellent, omit it.
-Return only improved items.
+
+DEFAULT BEHAVIOR: SKIP.
+Only change a line if it is clearly awkward, unidiomatic, confusing, dated, or misleading for learners.
+
+Hard rules for making a change:
+- The line must fail at least one of:
+  (A) grammar/collocation error,
+  (B) unnatural or textbooky phrasing people wouldn’t say,
+  (C) ambiguous/misleading wording that hurts learning,
+  (D) dated/odd register for the level.
+- Preserve key headwords (core vocabulary) whenever possible. Do NOT replace them with synonyms (“plan” → “idea”, “photo” → “picture/favorite”, etc.) unless the original usage is wrong.
+- Do NOT perform micro-edits (article/preposition/word-order nudge) unless it fixes a real error.
+- Keep CEFR level and roughly similar length (±20%).
+- Do NOT switch US↔UK spelling, and do NOT change numbers/units or named entities.
+
+Edit-rate target: return suggestions for **at most 5% of inputs**. If none clearly qualify, return none.
+
+Goal of a replacement: a line a native would actually say, that teaches well, while keeping the original headword(s) when feasible.
 """.strip()
 
 BASE_USER_PROMPT = """
-For each {entry_id, en_text, level}, output ONLY improved items:
+For each {entry_id, en_text, level}, apply the rules above.
+
+Output ONLY the items that truly need replacement, as:
 { entry_id, original, suggestion } inside `suggestions`.
-If an item needs no change, omit it.
+
+If a line is already natural and learner-useful (e.g., “I have a plan.”, “I like this photo.”, “Take a look at my eye.”), SKIP it.
+
 Return exactly one BatchReviewResult object.
 """.strip()
-
 
 # ---------- Helpers ----------
 
