@@ -23,6 +23,8 @@ import {
     getPlatformTopPaddingTranslations,
     isAndroid,
 } from "@/util/browser";
+import { speakWithStackPrefs } from "@/util/speakWithStackPrefs";
+
 
 type TranslationOut = {
     language_code: string;
@@ -207,23 +209,24 @@ export function MainExperience() {
                                         // proper, voice introspection and
                                         // choice and also ... ya' know,
                                         // narrators and stuff.
-                                        if (uiCode === "en") {
-                                            uiCode = "en-US";
-                                        }
-                                        if (uiCode === "es") {
-                                            uiCode = "es-MX";
-                                        }
-                                        if (uiCode === "zh-Hant") {
-                                            uiCode = "zh-TW";
-                                            // uiCode = "zh-HK";
-                                        }
-                                        if (uiCode === "zh-Hans") {
-                                            uiCode = "zh-CN";
-                                        }
+                                        // if (uiCode === "en") {
+                                        //    uiCode = "en-US";
+                                        //}
+                                        //if (uiCode === "es") {
+                                        //    uiCode = "es-MX";
+                                        //}
+                                        //if (uiCode === "zh-Hant") {
+                                        //    uiCode = "zh-TW";
+                                        // uiCode = "zh-HK";
+                                        //}
+                                        //if (uiCode === "zh-Hans") {
+                                        //    uiCode = "zh-CN";
+                                        //}
                                         // if (uiCode === "fr") {
                                         //     uiCode = "fr-FR";
                                         // }
-                                        createVoiceTTS(uiCode)(txt, rate);
+                                        speakWithStackPrefs(uiCode, txt, rate);
+                                        // createVoiceTTS(uiCode)(txt, rate);
                                     }}
                                 >
                                     <div className="text-xs text-gray-400">
