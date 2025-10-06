@@ -12,12 +12,11 @@ const ThemeToggle = () => {
   return (
     <div className="flex items-center justify-between space-x-2">
       <p className="sr-only">Toggle theme</p>
-      <p>Turn on {theme === "dark" ? "light" : "dark"} mode</p>
+      <p className="font-medium text-sm">Turn on {theme === "dark" ? "light" : "dark"} mode</p>
       <Switch
         id="toggle-theme"
         checked={theme === "dark"}
         onCheckedChange={toggleTheme}
-        className="data-[state=checked]:bg-gray-800 data-[state=unchecked]:bg-gray-300 transition-colors"
       />
     </div>
   );
