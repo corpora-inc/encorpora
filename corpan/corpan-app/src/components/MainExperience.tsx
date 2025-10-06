@@ -162,12 +162,12 @@ export function MainExperience() {
                     className="fixed top-5 pt-safe left-5 z-50 pointer-events-none"
                     style={{ background: "transparent", marginTop: getPlatformTopPaddingButtons() }}
                 >
-                    <div className="flex flex-wrap gap-1 items-center justify-center text-gray-400 text-xs mb-1">
-                        <span className="px-2 py-0.5 rounded-md border border-gray-200 bg-gray-50 text-xs">
+                    <div className="flex flex-wrap gap-1 items-center justify-center text-gray-400 text-xs mb-1 ">
+                        <span className="px-2 py-0.5 rounded-md border border-gray-200 bg-gray-50 text-xs dark:bg-input/30 dark:border-input">
                             {currEntry.level.toUpperCase()}
                         </span>
                         {currEntry.domains.map((d) => (
-                            <span key={d} className="px-2 py-0.5 rounded-md border border-gray-200 bg-gray-50 text-xs">
+                            <span key={d} className="px-2 py-0.5 rounded-md border border-gray-200 bg-gray-50 text-xs dark:bg-input/30 dark:border-input  ">
                                 {t(`categories.${d}` as any) || d}
                             </span>
                         ))}
@@ -238,7 +238,7 @@ export function MainExperience() {
                                     </div>
                                     {showRomanization && rom && (
                                         <div
-                                            className="text-center text-sm text-base text-gray-400 italic mt-1 mb-1 select-text"
+                                            className="text-center text-sm  text-gray-400 italic mt-1 mb-1 select-text"
                                             style={{ maxWidth: "80vw", wordBreak: "break-word" }}
                                         >
                                             {rom}
@@ -265,7 +265,7 @@ export function MainExperience() {
                 style={{ background: "transparent", paddingBottom: getPlatformBottomPadding() / 6 }}
             >
                 <div
-                    className="flex flex-col gap-1 pointer-events-auto rounded-md shadow-2xl bg-white/95 px-8 py-3 border border-gray-200 items-center min-w-[280px]"
+                    className="flex flex-col gap-1 pointer-events-auto rounded-md shadow-2xl px-8 py-3 border items-center min-w-[280px] dark:bg-input/30"
                     style={{ marginBottom: isAndroid() ? "39px" : 0 }}
                 >
                     <div className="flex justify-center items-center gap-8">

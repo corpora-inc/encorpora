@@ -44,16 +44,12 @@ export default function App() {
           <div className="flex items-center">
             <Button
               variant="default"
-              // size="icon"
               size="lg"
-              // size="sm"
-              className="h-10 w-12 rounded-md shadow-lg bg-white border border-gray-200 hover:bg-gray-100 transition"
-              // className=""
+              className="h-10 w-12 rounded-md shadow-lg text-foreground bg-white border border-gray-200 hover:bg-gray-100 transition dark:bg-input/30 dark:border-input dark:hover:bg-gray-700 dark:text-gray-100"
               aria-label="Settings"
               onClick={() => setShowSettings(true)}
-            // style={{ height: 55, width: 55 }}
             >
-              <SettingsIcon className="text-gray-600 h-5 w-5" />
+              <SettingsIcon className=" h-5 w-5" />
             </Button>
           
           </div>

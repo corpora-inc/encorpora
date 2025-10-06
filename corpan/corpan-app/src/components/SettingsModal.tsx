@@ -42,7 +42,7 @@ export function SettingsModal({
         className="
           max-w-full w-[100vw] sm:max-w-[100vw] md:max-w-[90vw] lg:max-w-[75vw] xl:max-w-[60vw]
           max-h-[100dvh] h-[100dvh] md:h-auto md:max-h-[95dvh]
-          overflow-y-auto rounded-none bg-white
+          overflow-y-auto rounded-none 
           md:rounded-md
           flex flex-col
         "
