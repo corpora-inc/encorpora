@@ -83,11 +83,11 @@ export function OnboardingPickPrimary() {
                 className={`
                                     w-full px-5 py-4
                                     rounded-md shadow
-                                    bg-white border border-gray-200
-                                    text-lg font-semibold text-gray-900
+                                    bg-white dark:bg-input/30 dark:border-input border border-gray-200
+                                    text-lg font-semibold text-gray-900 dark:text-gray-300
                                     flex items-center justify-between
-                                    focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-400
-                                    hover:bg-gray-50 hover:border-purple-400
+                                    focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-400 dark:focus-visible:ring-purple-700
+                                    hover:bg-gray-50 hover:border-purple-400 dark:hover:border-purple-800 
                                     transition
                                     text-left
                                     break-words

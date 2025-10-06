@@ -32,7 +32,11 @@ export default function App() {
   }, [textSize]);
 
   if (!onboarded) {
-    return <OnboardingWizard />;
+    return (
+      <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+        <OnboardingWizard />
+      </ThemeProvider>
+    )
   }
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
@@ -51,7 +55,7 @@ export default function App() {
             >
               <SettingsIcon className=" h-5 w-5" />
             </Button>
-          
+
           </div>
         </div>
       </div>

@@ -52,24 +52,24 @@ export function OnboardingPickLearning() {
         style={{ height: 100 }}
       >
         <button
-          className="flex items-center justify-center bg-gray-200 hover:bg-gray-300 text-gray-700 rounded-md p-3 shadow transition border"
+          className="flex items-center justify-center dark:bg-input/30 dark:border-input dark:text-gray-400 bg-gray-200 hover:bg-gray-300 text-gray-700 rounded-md p-3 shadow transition border"
           onClick={() => setStep(1)}
           tabIndex={0}
         >
           <ArrowLeftCircle size={30} />
         </button>
         <div
-          className="flex-1 text-center text-sm font-semibold text-gray-800 select-none px-1"
+          className="flex-1 text-center text-sm font-semibold text-gray-800 dark:text-gray-300 select-none px-1"
           style={{ letterSpacing: 0.25 }}
           dir={dir()}
         >
           {t("onboarding.pickLanguagesToLearn")}
         </div>
         <button
-          className={`flex items-center justify-center rounded-md p-3 shadow transition
+          className={`flex items-center  justify-center rounded-md p-3 shadow transition
             ${canProceed
-              ? "bg-black hover:bg-gray-900 text-white border border-purple-400"
-              : "bg-gray-200 text-gray-400 border cursor-not-allowed"
+              ? "bg-black  hover:bg-gray-900 text-white border border-purple-400 dark:border-purple-800 dark:bg-purple-800/30 dark:hover:bg-purple-800/50 dark:text-purple-200"
+              : "bg-gray-200 dark:bg-input/40 dark:text-gray-600 text-gray-400 border cursor-not-allowed"
             }`}
           onClick={() => canProceed && setStep(3)}
           disabled={!canProceed}
@@ -92,16 +92,17 @@ export function OnboardingPickLearning() {
                 className={`
                   w-full px-5 py-4
                   rounded-md shadow
-                  bg-white border border-gray-200
+                  bg-white dark:bg-input/30 dark:border-input dark:text-gray-300 border border-gray-200
                   text-lg font-semibold text-gray-900
                   flex items-center justify-between
-                  focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-400
-                  hover:bg-gray-50 hover:border-purple-400
+                  focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-400 dark:focus-visible:ring-purple-800
+                  hover:bg-gray-50 dark:hover:bg-gray-700 hover:border-purple-400
+                  dark:hover:border-purple-700
                   transition
                   ${dir() === "rtl" ? "text-right" : "text-left"}
                   break-words
                   select-text
-                  ${selected ? "border-purple-500 bg-purple-50" : ""}
+                  ${selected ? "border-purple-500  bg-purple-50" : ""}
                 `}
                 style={{
                   minHeight: 56,

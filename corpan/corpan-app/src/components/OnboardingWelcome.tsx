@@ -75,7 +75,7 @@ export function OnboardingWelcome() {
                     className="absolute w-full text-center pointer-events-none font-bold"
                     style={{
                         fontSize: "clamp(2.1rem, 7vw, 3.2rem)",
-                        color: "#222",
+                        color: "var(--foreground)",
                         opacity: fading ? 0 : 1,
                         transition: `opacity ${FADE_DURATION}ms`,
                         letterSpacing: 1,
@@ -103,7 +103,7 @@ export function OnboardingWelcome() {
                                 margin: "0 0.2em",
                                 opacity: isActive ? (fading ? 0.2 : 1) : 0.35,
                                 fontWeight: 500,
-                                color: isActive ? "#222" : "#999",
+                                color: isActive ? "var(--foreground)" : "var(--muted-foreground)",
                                 textShadow: isActive
                                     ? fading
                                         ? "0 2px 24px #fff0, 0 0px 2px #3330"
@@ -125,13 +125,14 @@ export function OnboardingWelcome() {
                 aria-label="Next"
                 className="
                     flex items-center justify-center
-                    bg-black hover:bg-gray-900
-                    border border-purple-400
+                    bg-primary hover:bg-primary/90
+                    border border-primary
                     rounded-md
                     transition
                     outline-none ring-0 z-10
                     shadow-2xl
                     text-3xl
+                    text-primary-foreground
                 "
                 style={{
                     boxShadow: "0 8px 64px 0 #0002", // just a subtle shadow for lift
@@ -142,7 +143,7 @@ export function OnboardingWelcome() {
                 }}
                 onClick={() => setStep(1)}
             >
-                <ArrowRightCircle size={36} className="text-white" />
+                <ArrowRightCircle size={36} className="text-primary-foreground" />
                 {/* If you want a purple icon: className="text-purple-500" */}
             </button>
 

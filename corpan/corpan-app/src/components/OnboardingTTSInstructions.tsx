@@ -84,14 +84,14 @@ export function OnboardingTTSInstructions() {
                 style={{ height: 100 }}
             >
                 <button
-                    className="flex items-center justify-center bg-gray-200 hover:bg-gray-300 text-gray-700 rounded-md p-3 shadow transition border"
+                    className="flex items-center justify-center dark:bg-input/30 dark:border-input dark:text-gray-400 bg-gray-200 hover:bg-gray-300 text-gray-700 rounded-md p-3 shadow transition border"
                     onClick={() => setStep(2)}
                     tabIndex={0}
                 >
                     <ArrowLeftCircle size={30} />
                 </button>
                 <div
-                    className="flex-1 text-center text-sm font-semibold text-gray-800 select-none px-2"
+                    className="flex-1 text-center text-sm font-semibold text-gray-800 dark:text-gray-300 select-none px-2"
                     style={{ letterSpacing: 0.25 }}
                     dir={dir()}
                 >
@@ -100,7 +100,7 @@ export function OnboardingTTSInstructions() {
                 {/* Make NEXT the prominent action: Purple styling */}
                 <button
                     // className="flex items-center justify-center bg-white border-2 border-purple-700 hover:bg-purple-50 text-purple-700 hover:text-purple-800 rounded-md font-semibold text-lg shadow-lg px-5 py-4 gap-1 transition"
-                    className="flex items-center justify-center rounded-md p-3 shadow transition bg-black hover:bg-gray-900 text-white border border-purple-400"
+                    className="flex items-center justify-center rounded-md p-3 shadow transition bg-black hover:bg-gray-900 text-white border border-purple-400 dark:border-purple-800 dark:bg-purple-800/30 dark:hover:bg-purple-800/50 dark:text-purple-200"
                     onClick={() => setStep(4)}
                     tabIndex={0}
                 >
@@ -114,7 +114,7 @@ export function OnboardingTTSInstructions() {
                     className="w-full max-w-xl flex flex-col items-center mx-auto"
                 >
                     <div className="flex flex-col gap-7 max-w-lg w-full items-center mt-10">
-                        <div className="text-lg text-gray-800 text-center select-none" dir={dir()}>
+                        <div className="text-lg text-gray-800 dark:text-gray-300 text-center select-none" dir={dir()}>
                             {t("settings.testTts")}
                         </div>
                         {/* TTS Sample Buttons */}
@@ -127,7 +127,7 @@ export function OnboardingTTSInstructions() {
                                         flex items-center gap-2
                                         px-4 py-3
                                         rounded-md
-                                        bg-gray-100 hover:bg-purple-50
+                                        bg-gray-100 dark:bg-input/30 dark:border-input dark:text-gray-300 hover:bg-purple-50
                                         border border-gray-200
                                         text-base font-semibold text-gray-800
                                         shadow-sm
@@ -144,7 +144,7 @@ export function OnboardingTTSInstructions() {
                                 </button>
                             ))}
                         </div>
-                        <div className="text-lg text-gray-800 text-center select-none" dir={dir()}>
+                        <div className="text-lg text-gray-800 dark:text-gray-400 text-center select-none" dir={dir()}>
                             {t("onboarding.ttsPoorQualityNote")}
                         </div>
                         {/* Normal link for TTS setup instructions */}

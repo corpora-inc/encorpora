@@ -29,21 +29,21 @@ export function OnboardingFinish() {
 
             >
                 <button
-                    className="flex items-center justify-center bg-gray-200 hover:bg-gray-300 text-gray-700 rounded-md p-3 shadow transition border"
+                    className="flex items-center justify-center bg-gray-200 hover:bg-gray-300 text-gray-700 rounded-md p-3 shadow transition border dark:bg-input/30 dark:border-input dark:text-gray-400 "
                     onClick={() => setStep(3)}
                     tabIndex={0}
                 >
                     <ArrowLeftCircle size={30} />
                 </button>
                 <div
-                    className="flex-1 text-center text-sm font-semibold text-gray-800 select-none px-2"
+                    className="flex-1 text-center text-sm font-semibold text-gray-800 dark:text-gray-300 select-none px-2"
                     style={{ letterSpacing: 0.25 }}
                     dir={dir()}
                 >
                     {t("onboarding.welcomeTitle")}
                 </div>
                 <button
-                    className="flex items-center justify-center rounded-md p-3 shadow transition bg-black hover:bg-gray-900 text-white border border-purple-400"
+                    className="flex items-center justify-center rounded-md p-3 shadow transition bg-black hover:bg-gray-900 text-white border border-purple-400 dark:border-purple-800 dark:bg-purple-800/30 dark:hover:bg-purple-800/50 dark:text-purple-200"
                     onClick={() => setOnboarded(true)}
                     tabIndex={0}
                 >
@@ -53,7 +53,7 @@ export function OnboardingFinish() {
             {/* Content */}
             <div className="flex flex-1 flex-col items-center justify-center px-6 pb-10 w-full">
                 <div className="w-full max-w-xl flex flex-col items-center mx-auto text-center">
-                    <div className="text-lg text-gray-700" dir={dir()}>
+                    <div className="text-lg text-gray-700 dark:text-gray-300" dir={dir()}>
                         {t("onboarding.welcomeBody")}
                     </div>
                     <div className="mt-7 text-center">

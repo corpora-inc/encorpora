@@ -23,7 +23,7 @@ export function WizardShell({ children }: { children: React.ReactNode }) {
     return (
         // <div className="fixed inset-0 w-full h-full flex items-center justify-center bg-white md:bg-gray-50">
         <div
-            className="fixed w-full h-full flex items-center justify-center bg-white md:bg-gray-50"
+            className="fixed w-full h-full flex items-center justify-center bg-background"
             // className="fixed w-full"
             style={{
                 // position: "fixed",
@@ -50,7 +50,7 @@ export function WizardShell({ children }: { children: React.ReactNode }) {
         >
             <div
                 className={`
-                    w-full h-full flex flex-col items-center justify-center bg-white transition-all
+                    w-full h-full flex flex-col items-center justify-center transition-all
                     rounded-none shadow-none
                     min-h-[500px] max-w-xl
                     md:shadow-2xl
