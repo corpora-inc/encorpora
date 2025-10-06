@@ -92,7 +92,7 @@ export default function StacksManagerNewPopover({
                     <input
                         ref={inputRef}
                         type="text"
-                        className="w-full rounded-md border border-gray-300 bg-white px-3 py-1.5 text-sm outline-none focus:ring-2 focus:ring-neutral-400"
+                        className="w-full rounded-md border  px-3 py-1.5 text-sm outline-none focus:ring-2 "
                         value={newName}
                         onChange={(e) => setNewName(e.target.value)}
                         onKeyDown={(e) => {

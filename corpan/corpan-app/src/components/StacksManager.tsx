@@ -99,7 +99,7 @@ export function StacksManager() {
     };
 
     return (
-        <div className="mb-2 rounded-md border border-gray-200 bg-white/80 p-2 md:p-3"
+        <div className="mb-2 rounded-md border p-2 md:p-3"
             //   ${dir() === "rtl" ? "text-right" : "text-left"}
             dir={dir()}
         >
