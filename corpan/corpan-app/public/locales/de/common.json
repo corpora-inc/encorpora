@@ -57,7 +57,10 @@
     "large": "Groß",
     "extraLarge": "Sehr groß",
     "testTts": "Testen Sie Ihre TTS-Einstellungen, indem Sie auf die Schaltflächen unten klicken:",
-    "showRomanization": "Romanisierung anzeigen"
+    "showRomanization": "Romanisierung anzeigen",
+    "themeMode": "Design-Modus",
+    "turnOnLightMode": "Hellen Modus aktivieren",
+    "turnOnDarkMode": "Dunklen Modus aktivieren"
   },
   "onboarding": {
     "welcome": "Willkommen",

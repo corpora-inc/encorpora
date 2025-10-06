@@ -57,7 +57,10 @@
     "large": "Lớn",
     "extraLarge": "Rất lớn",
     "testTts": "Kiểm tra cài đặt TTS của bạn bằng cách nhấp vào các nút dưới đây:",
-    "showRomanization": "Hiển thị La-tinh hóa"
+    "showRomanization": "Hiển thị La-tinh hóa",
+    "themeMode": "Chế độ giao diện",
+    "turnOnLightMode": "Bật chế độ sáng",
+    "turnOnDarkMode": "Bật chế độ tối"
   },
   "onboarding": {
     "welcome": "Chào mừng",

@@ -209,6 +209,15 @@
         },
         "showRomanization": {
           "type": "string"
+        },
+        "themeMode": {
+          "type": "string"
+        },
+        "turnOnLightMode": {
+          "type": "string"
+        },
+        "turnOnDarkMode": {
+          "type": "string"
         }
       },
       "required": [
@@ -234,7 +243,10 @@
         "large",
         "extraLarge",
         "testTts",
-        "showRomanization"
+        "showRomanization",
+        "themeMode",
+        "turnOnLightMode",
+        "turnOnDarkMode"
       ],
       "additionalProperties": false
     },

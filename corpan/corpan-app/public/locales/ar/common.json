@@ -57,7 +57,10 @@
     "large": "كبير",
     "extraLarge": "كبير جدًا",
     "testTts": "اختبر إعدادات تحويل النص إلى كلام الخاصة بك من خلال النقر على الأزرار أدناه:",
-    "showRomanization": "إظهار الرومنة"
+    "showRomanization": "إظهار الرومنة",
+    "themeMode": "وضع المظهر",
+    "turnOnLightMode": "تفعيل الوضع الفاتح",
+    "turnOnDarkMode": "تفعيل الوضع الداكن"
   },
   "onboarding": {
     "welcome": "أهلا بك",
