@@ -67,6 +67,7 @@ export function SettingsModal({
 
         {/* Global onboarding controls */}
         <Button
+        variant="outline"
           onClick={() => {
             setOnboarded(false);
             setOnboardingStep(0);

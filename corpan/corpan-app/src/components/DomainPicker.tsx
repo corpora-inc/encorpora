@@ -30,7 +30,7 @@ export function DomainPicker() {
 
     return (
         <div className="w-full mt-3">
-            <div className="mb-2 font-semibold text-sm" dir={dir}>{t("settings.domains")}</div>
+            <div className="mb-2 font-semibold text-sm dark:text-gray-200" dir={dir}>{t("settings.domains")}</div>
             <div className="flex gap-2 mb-3" dir={dir}>
                 <Button
                     size="sm"
@@ -65,7 +65,7 @@ export function DomainPicker() {
                     );
                 })}
             </div>
-            <div className="mt-2 text-xs text-gray-400" dir={dir}>
+            <div className="mt-2 text-xs text-gray-400 dark:text-gray-500" dir={dir}>
                 {allActive
                     ? t("settings.allDomainsIncluded")
                     : `${domains.length} ${t("settings.selected")}.`}
