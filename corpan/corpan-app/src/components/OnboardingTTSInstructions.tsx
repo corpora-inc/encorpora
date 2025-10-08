@@ -19,7 +19,6 @@ import { useSettingsStore } from "@/store/settings";
 import { OnboardingTTSInstructionsHeaderActions } from "./OnboardingTTSInstructionsHeaderActions";
 import {
     OnboardingTTSInstructionsLanguageSection,
-    type LangMode,
 } from "./OnboardingTTSInstructionsLanguageSection";
 
 import { OnboardingHeader, STEPS } from "./OnboardingHeader";
@@ -207,7 +206,7 @@ export function OnboardingTTSInstructions() {
                 <div className="mx-auto w-full max-w-5xl px-3">
                     {langs.map((code) => {
                         const list = voicesForLang(code);
-                        const pref = voicePrefs[code] ?? { ids: [], mode: "cycle" as LangMode };
+                        const pref = voicePrefs[code] ?? { ids: [], mode: "cycle" };
                         const sample = sampleFor(code);
 
                         return (
@@ -216,11 +215,7 @@ export function OnboardingTTSInstructions() {
                                 code={code}
                                 voices={list}
                                 selectedIds={pref.ids}
-                                mode={"cycle"}
                                 onToggleSelect={(voiceId) => toggleVoiceSelection(code, voiceId)}
-                                onChangeMode={() => {
-                                    if (pref.mode !== "cycle") setVoiceMode(code, "cycle");
-                                }}
                                 onPreviewAny={(voice) => speakExact(voice, sample, 0.9)}
                                 previewSampleText={sample}
                                 isRTL={isRTL(code)}

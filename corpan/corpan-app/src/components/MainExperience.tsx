@@ -13,7 +13,6 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { useSettingsStore } from "@/store/settings";
 import { useHistoryStore } from "@/store/history";
-import { createVoiceTTS } from "@/util/speak";
 import { useTranslation } from "react-i18next";
 
 import { isRTL, toCamelCase } from "@/util/convert";

@@ -203,7 +203,7 @@ function VoiceCard({
                         e.stopPropagation(); // don’t toggle when previewing
                         onPreview();
                     }}
-                    className="inline-flex items-center gap-1.5 rounded-md border bg-white px-2.5 py-1.5 text-xs font-medium text-gray-800 shadow-sm hover:bg-gray-50"
+                    className="inline-flex items-center gap-1.5 rounded-md border bg-white px-2.5 py-1.5 text-xs font-medium text-gray-800 shadow-sm hover:bg-gray-50 hover:cursor-pointer"
                     dir={isRTL ? "rtl" : "ltr"}
                     aria-label={ariaPreview}
                     title={ariaPreview}
@@ -327,7 +327,7 @@ export const OnboardingTTSInstructionsLanguageSection = memo(function Section({
                 <div className="flex items-center gap-2">
                     <button
                         onClick={playNextOnce}
-                        className="inline-flex items-center gap-2 rounded-md border bg-white px-3 py-2 text-sm font-medium text-gray-800 shadow-sm hover:bg-gray-50"
+                        className="inline-flex items-center gap-2 rounded-md border bg-white px-3 py-2 text-sm font-medium text-gray-800 shadow-sm hover:bg-gray-50 hover:cursor-pointer"
                         dir={isRTL ? "rtl" : "ltr"}
                         aria-label={headerPreviewAria}
                         title={headerPreviewAria}
