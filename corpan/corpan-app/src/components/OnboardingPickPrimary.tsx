@@ -1,7 +1,6 @@
 import { useSettingsStore, ALL_LANGUAGES } from "@/store/settings";
 import { TRANSLATIONS } from "@/store/translations";
 import { ArrowRightCircle } from "lucide-react";
-import { ScrollIndicatorWrapper } from "./ScrollIndicatorWrapper";
 import { useRef, useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
@@ -41,46 +40,35 @@ export function OnboardingPickPrimary() {
   }, [ALL_LANGUAGES.length]);
 
   return (
-    <div className="flex flex-col flex-1 min-h-0 w-full h-full"
-      style={{
-        // paddingTop: getPlatformTopPadding(),
-        // paddingBottom: getPlatformBottomPadding(),
-        // marginBottom: "calc(var(--inset-bottom) * -4)",
-        // marginBottom: "-200px",
-        // paddingBottom: "200px"
-        // marginTop: "200px",
-        // paddingTop: "500px",
-      }}
-    >
-      <ScrollIndicatorWrapper className="flex-1 min-h-0" ref={containerRef}>
-        <div
-          ref={wrapperRef}
-          className="w-full max-w-xl flex flex-col gap-2 items-stretch mx-auto"
-          style={{
-            minHeight: 0,
-            transform: `translateY(${offset}px)`,
-            transition: "transform 0.35s cubic-bezier(.4,1.4,.5,1)",
-            padding: "20px 0",
-            // height: "100%",
-            // height: "100dvh",
-          }}
-        >
-          {ALL_LANGUAGES.map((code) => {
-            const label =
-              TRANSLATIONS[code as keyof typeof TRANSLATIONS]?.[
-              "make primary language"
-              ] ||
-              TRANSLATIONS[code as keyof typeof TRANSLATIONS]?.[
-              code as keyof (typeof TRANSLATIONS)["en"]
-              ] ||
-              code;
+    <div className="flex flex-col flex-1 min-h-0 w-full h-full p-2 my-2">
+      <div
+        ref={wrapperRef}
+        className="w-full max-w-xl flex flex-col gap-2 items-stretch mx-auto"
+        style={{
+          minHeight: 0,
+          transform: `translateY(${offset}px)`,
+          transition: "transform 0.35s cubic-bezier(.4,1.4,.5,1)",
+          padding: "20px 0",
+          // height: "100%",
+          // height: "100dvh",
+        }}
+      >
+        {ALL_LANGUAGES.map((code) => {
+          const label =
+            TRANSLATIONS[code as keyof typeof TRANSLATIONS]?.[
+            "make primary language"
+            ] ||
+            TRANSLATIONS[code as keyof typeof TRANSLATIONS]?.[
+            code as keyof (typeof TRANSLATIONS)["en"]
+            ] ||
+            code;
 
-            return (
-              <button
-                key={code}
-                onClick={() => handleSelect(code)}
-                lang={code}
-                className={`
+          return (
+            <button
+              key={code}
+              onClick={() => handleSelect(code)}
+              lang={code}
+              className={`
                                     w-full px-5 py-4
                                     rounded-md shadow
                                     bg-white border border-gray-200
@@ -93,23 +81,22 @@ export function OnboardingPickPrimary() {
                                     break-words
                                     select-text
                                 `}
-                style={{
-                  minHeight: 56,
-                  wordBreak: "break-word",
-                  whiteSpace: "normal",
-                  lineHeight: 1.25,
-                }}
-              >
-                <span className="flex-1">{label}</span>
-                <ArrowRightCircle
-                  className="ml-4 shrink-0 text-gray-400"
-                  size={22}
-                />
-              </button>
-            );
-          })}
-        </div>
-      </ScrollIndicatorWrapper>
+              style={{
+                minHeight: 56,
+                wordBreak: "break-word",
+                whiteSpace: "normal",
+                lineHeight: 1.25,
+              }}
+            >
+              <span className="flex-1">{label}</span>
+              <ArrowRightCircle
+                className="ml-4 shrink-0 text-gray-400"
+                size={22}
+              />
+            </button>
+          );
+        })}
+      </div>
     </div>
   );
 }

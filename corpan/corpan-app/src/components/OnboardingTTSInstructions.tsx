@@ -192,7 +192,7 @@ export function OnboardingTTSInstructions() {
         <div className="flex flex-col h-full w-full pt-safe my-3">
             {/* Header nav */}
             <div
-                className="w-full max-w-5xl mx-auto flex flex-row items-center justify-between py-4 px-3"
+                className="w-full max-w-5xl mx-auto flex flex-row items-center justify-between py-4 px-3 fixed"
                 style={{ minHeight: 72 }}
             >
                 <button
@@ -225,7 +225,7 @@ export function OnboardingTTSInstructions() {
             </div>
 
             {/* Top actions */}
-            <div className="w-full max-w-5xl mx-auto px-3">
+            <div className="w-full max-w-5xl mx-auto px-3 pt-20">
                 <OnboardingTTSInstructionsHeaderActions
                     os={os}
                     loading={loading}
