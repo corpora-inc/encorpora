@@ -41,7 +41,7 @@ export function OnboardingPickLearning() {
       style={{
         WebkitOverflowScrolling: "touch",
         // safe areas: keep top/left/right here for the sticky header
-        paddingTop: "env(safe-area-inset-top)",
+        // paddingTop: "env(safe-area-inset-top)",
         paddingLeft: "env(safe-area-inset-left)",
         paddingRight: "env(safe-area-inset-right)",
         // ⛔️ remove paddingBottom from the scrollport
@@ -96,7 +96,9 @@ const OnboaringHeader = memo(function OnboaringHeader({
   nextAria: string;
 }) {
   return (
-    <header className="sticky top-0 z-50 border-b bg-white/80 backdrop-blur supports-[backdrop-filter]:bg-white/60">
+    <header className="sticky top-0 z-50 border-b bg-white/80 backdrop-blur supports-[backdrop-filter]:bg-white/60"
+      style={{ paddingTop: "env(safe-area-inset-top)" }}
+    >
       <div className="relative mx-auto w-full max-w-xl px-4 py-3">
         {/* side controls in normal flow */}
         <div className="flex items-center justify-between">
