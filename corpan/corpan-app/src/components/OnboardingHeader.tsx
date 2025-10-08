@@ -1,4 +1,4 @@
-import { memo } from "react";
+import { memo, useLayoutEffect, useRef, type ReactNode } from "react";
 import { Button } from "./ui/button";
 import { ArrowLeftCircle, ArrowRightCircle } from "lucide-react";
 
@@ -19,6 +19,7 @@ export const OnboardingHeader = memo(function OnboaringHeader({
     canNext,
     backAria,
     nextAria,
+    children,
 }: {
     title: string;
     steps: string[];
@@ -28,13 +29,36 @@ export const OnboardingHeader = memo(function OnboaringHeader({
     canNext: boolean;
     backAria: string;
     nextAria: string;
+    children?: ReactNode;
 }) {
+    const headerRef = useRef<HTMLElement | null>(null);
+    // const dir = useSettingsStore((s) => s.dir);
+
+    useLayoutEffect(() => {
+        const el = headerRef.current;
+        const scrollEl =
+            (document.getElementById("onboarding-scroll") as HTMLElement | null) ||
+            document.documentElement;
+        if (!el || !scrollEl) return;
+
+        const apply = () =>
+            scrollEl.style.setProperty("--onb-header-h", `${el.offsetHeight}px`);
+        apply();
+        const ro = new ResizeObserver(apply);
+        ro.observe(el);
+        return () => ro.disconnect();
+    }, []);
+
     return (
-        <header className="sticky top-0 z-50 border-b bg-white/80 backdrop-blur supports-[backdrop-filter]:bg-white/60"
+        <header
+            ref={headerRef}
+            // One blurred surface for the entire header (title/stepper + actions)
+            className="sticky top-0 z-50 isolate bg-white/80 backdrop-blur supports-[backdrop-filter]:bg-white/60"
             style={{ paddingTop: "env(safe-area-inset-top)" }}
+        // dir={dir()}
         >
+            {/* Top row */}
             <div className="relative mx-auto w-full max-w-xl px-4 py-3">
-                {/* side controls in normal flow */}
                 <div className="flex items-center justify-between">
                     <Button
                         type="button"
@@ -58,16 +82,23 @@ export const OnboardingHeader = memo(function OnboaringHeader({
                     </Button>
                 </div>
 
-                {/* absolutely centered middle lane */}
+                {/* Centered title + stepper */}
                 <div className="pointer-events-none absolute left-4 right-4 top-1/2 -translate-y-1/2">
                     <div className="mx-auto max-w-md px-15">
-                        <div className="text-center text-sm font-semibold text-gray-900">
+                        <div className="truncate text-center text-sm font-semibold text-gray-900">
                             {title}
                         </div>
                         <Stepper steps={steps} currentIndex={currentIndex} />
                     </div>
                 </div>
             </div>
+
+            {/* Actions slot: transparent so the parent's blur shows through */}
+            {children && (
+                <div className="border-white/40 bg-transparent">
+                    <div className="mx-auto w-full max-w-5xl px-3 py-2">{children}</div>
+                </div>
+            )}
         </header>
     );
 });

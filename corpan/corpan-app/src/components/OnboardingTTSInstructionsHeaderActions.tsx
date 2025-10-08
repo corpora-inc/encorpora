@@ -1,93 +1,47 @@
 // encorpora/corpan/corpan-app/src/components/OnboardingTTSInstructionsHeaderActions.tsx
-import { RefreshCw, Settings, Download, ExternalLink, Star } from "lucide-react";
+import { Download, Settings } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 type Props = {
     os: "android" | "ios" | "macos" | "windows" | "other";
-    loading: boolean;
-    totalCount: number;
-    showHQOnly: boolean;
-    onToggleHQ: () => void;
-    onRefresh: () => void;
     onOpenInstaller: () => void;
     onOpenSettings: () => void;
-    onOpenGuide: () => void;
 };
 
 export function OnboardingTTSInstructionsHeaderActions({
     os,
-    loading,
-    totalCount,
-    showHQOnly,
-    onToggleHQ,
-    onRefresh,
     onOpenInstaller,
     onOpenSettings,
-    onOpenGuide,
 }: Props) {
-    const canInstallProgrammatically = os === "android";
+    const { t } = useTranslation();
+
+    const useInstaller = os === "android";
+    const Icon = useInstaller ? Download : Settings;
+
+    const label = useInstaller
+        ? t("onboarding.installVoicesAndroid", { defaultValue: "Install voices" })
+        : t("onboarding.openVoiceSettings", { defaultValue: "Open Voice Settings" });
+
+    const handlePrimary = () => (useInstaller ? onOpenInstaller() : onOpenSettings());
 
     return (
-        <div className="rounded-xl border bg-white shadow-sm p-3 sm:p-4 flex flex-col gap-3">
-            <div className="flex items-center justify-between gap-3">
-                {/* Left: compact icon controls */}
-                <div className="flex items-center gap-2">
-                    {/* Refresh */}
-                    <button
-                        onClick={onRefresh}
-                        className="inline-flex items-center justify-center rounded-md border bg-white hover:bg-gray-50 p-2 shadow-sm"
-                    >
-                        <RefreshCw size={18} />
-                    </button>
-
-                    {/* HQ filter toggle (star) */}
-                    <button
-                        onClick={onToggleHQ}
-                        className={`inline-flex items-center justify-center rounded-md border p-2 shadow-sm ${showHQOnly ? "bg-amber-100 border-amber-300" : "bg-white hover:bg-gray-50"
-                            }`}
-                    >
-                        <Star size={18} />
-                    </button>
-
-                    {/* System settings (gear) */}
-                    <button
-                        onClick={onOpenSettings}
-                        className="inline-flex items-center justify-center rounded-md border bg-white hover:bg-gray-50 p-2 shadow-sm"
-                    >
-                        <Settings size={18} />
-                    </button>
-
-                    {/* Install voices (download) — Android primary */}
-                    <button
-                        onClick={onOpenInstaller}
-                        className={`inline-flex items-center justify-center rounded-md border p-2 shadow-sm ${canInstallProgrammatically
-                            ? "bg-purple-600 hover:bg-purple-700 text-white border-purple-600"
-                            : "bg-white hover:bg-gray-50"
-                            }`}
-                    >
-                        <Download size={18} />
-                    </button>
-
-                    {/* Docs / guide (external link) */}
-                    <button
-                        onClick={onOpenGuide}
-                        className="inline-flex items-center justify-center rounded-md border bg-white hover:bg-gray-50 p-2 shadow-sm"
-                    >
-                        <ExternalLink size={18} />
-                    </button>
-                </div>
-
-                {/* Right: numeric badge only (no text) */}
-                <div className="inline-flex items-center">
-                    <div
-                        className={`px-2 py-1 rounded-full text-xs font-semibold border ${loading
-                            ? "bg-gray-100 text-gray-500 border-gray-200"
-                            : "bg-gray-900 text-white border-gray-900"
-                            }`}
-                    >
-                        {loading ? "…" : totalCount}
-                    </div>
-                </div>
-            </div>
+        // Centered, transparent; header's blur shows through
+        <div className="w-full flex items-center justify-center">
+            <button
+                onClick={handlePrimary}
+                className="
+          inline-flex items-center gap-2 rounded-md
+          border border-gray-300/70 bg-transparent
+          px-4 py-2 text-sm font-medium text-gray-900
+          shadow-sm hover:bg-white/50
+          focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-400
+          active:scale-[0.99] transition
+        "
+                aria-label={label}
+            >
+                <Icon size={16} />
+                <span>{label}</span>
+            </button>
         </div>
     );
 }

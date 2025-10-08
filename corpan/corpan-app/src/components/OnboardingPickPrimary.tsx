@@ -40,7 +40,7 @@ export function OnboardingPickPrimary() {
   }, [ALL_LANGUAGES.length]);
 
   return (
-    <div className="flex flex-col flex-1 min-h-0 w-full h-full p-2 my-2">
+    <div className="flex flex-col flex-1 min-h-0 w-full h-full p-2 my-5">
       <div
         ref={wrapperRef}
         className="w-full max-w-xl flex flex-col gap-2 items-stretch mx-auto"
