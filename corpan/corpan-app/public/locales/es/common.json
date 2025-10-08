@@ -80,6 +80,18 @@
     "delete": "Eliminar",
     "create": "Crear"
   },
+  "dialects": {
+    "en": "Inglés",
+    "en-US": "Inglés (EE.UU.)",
+    "en-ZA": "Inglés (Sudáfrica)",
+    "es": "Español",
+    "es-AR": "Español (Argentina)",
+    "es-CO": "Español (Colombia)",
+    "es-CL": "Español (Chile)",
+    "es-ES": "Español (España)",
+    "es-MX": "Español (México)",
+    "vi": "Vietnamita"
+  },
   "footer": {
     "appVersion": "Versión de la App",
     "website": "Sitio Web",

@@ -80,6 +80,11 @@
     "delete": "Delete",
     "create": "Create"
   },
+  "dialects": {
+    "en": "English",
+    "en-US": "English (US)",
+    "en-ZA": "English (South Africa)"
+  },
   "footer": {
     "appVersion": "App version",
     "website": "Website",

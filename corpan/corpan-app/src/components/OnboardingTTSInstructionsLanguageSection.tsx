@@ -36,27 +36,37 @@ function uniqBy<T>(arr: T[], key: (x: T) => string): T[] {
     return out;
 }
 
-// Normalizes casing (lang lower, Script Title, REGION upper). We DO NOT strip
-// extensions for translation lookups; only for the last-ditch fallback.
+// Normalizes casing (lang lower, Script Title, REGION upper).
+// **Important**: only include defined parts to avoid "zh--CN".
 function normalizeTagCasing(tag: string) {
     const [base, ...extParts] = tag.split("-u-");
-    const parts = base.split("-");
+    const parts = base.split("-").filter(Boolean);
     if (!parts.length) return tag;
 
     const lang = parts[0].toLowerCase();
+
+    let i = 1;
     let script: string | undefined;
     let region: string | undefined;
-    let rest: string[] = [];
 
-    if (parts[1]?.length === 4) {
-        script = parts[1][0].toUpperCase() + parts[1].slice(1).toLowerCase();
-        region = parts[2]?.toUpperCase();
-        rest = parts.slice(3);
-    } else {
-        region = parts[1]?.toUpperCase();
-        rest = parts.slice(2);
+    if (parts[i] && parts[i].length === 4) {
+        const s = parts[i];
+        script = s[0].toUpperCase() + s.slice(1).toLowerCase();
+        i++;
     }
-    const rebuilt = [lang, script, region, ...rest.filter(Boolean)].join("-");
+    if (parts[i] && (parts[i].length === 2 || parts[i].length === 3)) {
+        region = parts[i].toUpperCase();
+        i++;
+    }
+
+    const rest = parts.slice(i);
+
+    const rebuiltParts: string[] = [lang];
+    if (script) rebuiltParts.push(script);
+    if (region) rebuiltParts.push(region);
+    if (rest.length) rebuiltParts.push(...rest);
+
+    const rebuilt = rebuiltParts.join("-");
     return extParts.length ? `${rebuilt}-u-${extParts.join("-u-")}` : rebuilt;
 }
 
@@ -246,8 +256,7 @@ export const OnboardingTTSInstructionsLanguageSection = memo(function Section({
 }: Props) {
     const { t } = useTranslation();
 
-    // Simple local accessor into *one* namespace ("common") under "dialects.*"
-    // Casting to string keeps TS quiet without polluting TFunction types.
+    // One namespace ("common") → "dialects.*"
     const trDial = (key: string) =>
         (t(`dialects.${key}`, { defaultValue: "" }) as unknown as string) || "";
 
@@ -256,21 +265,13 @@ export const OnboardingTTSInstructionsLanguageSection = memo(function Section({
         [voices]
     );
 
-    // Section header label (translations-first)
-    const sectionLabel = useMemo(
-        () => resolveDialectLabel(code, trDial),
-        [code] // trDial stable enough; depends only on t instance
-    );
+    // ⚠️ Compute labels on every render so they update when i18n language changes/loads.
+    const sectionLabel = resolveDialectLabel(code, trDial);
 
-    // Per-voice pretty labels (translations-first)
-    const voicesWithPretty = useMemo(
-        () =>
-            voicesUnique.map((v) => ({
-                ...v,
-                __prettyLang: resolveDialectLabel(v.language || code, trDial),
-            })),
-        [voicesUnique, code]
-    );
+    const voicesWithPretty = voicesUnique.map((v) => ({
+        ...v,
+        __prettyLang: resolveDialectLabel(v.language || code, trDial),
+    }));
 
     const previewVoice =
         voicesWithPretty.find((v) => selectedIds.includes(v.id)) || voicesWithPretty[0];
