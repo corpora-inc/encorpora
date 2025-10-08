@@ -46,6 +46,7 @@ export function MainExperience() {
     const levels = useSettingsStore((s) => s.levels);
     const rate = useSettingsStore((s) => s.rate);
     const showRomanization = useSettingsStore((s) => s.showRomanization);
+    const scrollNavigationEnabled = useSettingsStore((s) => s.scrollNavigationEnabled);
     const { t } = useTranslation();
 
     // Active stack history
@@ -139,12 +140,11 @@ export function MainExperience() {
     // Scroll navigation - use the hook
     const { handleWheel, handleTouchStart, handleTouchEnd } = useScrollNavigation(handlePrev, handleNext);
 
-    // Attach wheel and touch event listeners
+    // Attach wheel and touch event listeners (only if enabled)
     useEffect(() => {
         const scrollElement = scrollRef.current;
-        if (!scrollElement) return;
+        if (!scrollElement || !scrollNavigationEnabled) return;
 
-        // Use passive: false to allow preventDefault if needed
         scrollElement.addEventListener("wheel", handleWheel, { passive: true });
         scrollElement.addEventListener("touchstart", handleTouchStart, { passive: true });
         scrollElement.addEventListener("touchend", handleTouchEnd, { passive: true });
@@ -154,7 +154,7 @@ export function MainExperience() {
             scrollElement.removeEventListener("touchstart", handleTouchStart);
             scrollElement.removeEventListener("touchend", handleTouchEnd);
         };
-    }, [handleWheel, handleTouchStart, handleTouchEnd]);
+    }, [handleWheel, handleTouchStart, handleTouchEnd, scrollNavigationEnabled]);
 
     // --- Render helpers --------------------------------------------------------
 

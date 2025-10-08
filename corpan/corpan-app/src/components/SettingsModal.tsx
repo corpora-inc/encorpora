@@ -11,6 +11,7 @@ import { DomainPicker } from "./DomainPicker";
 import { LevelsPicker } from "./LevelsPicker";
 import { RateAdjuster } from "./RateAdjuster";
 import { RomanizationToggle } from "./RomanizationToggle";
+import { ScrollNavigationToggle } from "./ScrollNavigationToggle";
 import { TextSizeAdjuster } from "./TextSizeAdjuster";
 import { Button } from "./ui/button";
 import { Separator } from "./ui/separator";
@@ -62,6 +63,7 @@ export function SettingsModal({
         <LevelsPicker />
         <DomainPicker />
         <RomanizationToggle />
+        <ScrollNavigationToggle />
 
         {/* Global onboarding controls */}
         <Button
