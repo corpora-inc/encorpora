@@ -41,7 +41,7 @@ export function OnboardingPickLearning() {
     >
 
       <OnboardingHeader
-        title={t("onboarding.pickLanguagesToLearn", { defaultValue: "Pick languages to learn" })}
+        title={t("onboarding.pickLanguagesToLearn")}
         steps={stepLabels}
         currentIndex={CURRENT_STEP_IDX}
         onBack={() => setStep(1)}
