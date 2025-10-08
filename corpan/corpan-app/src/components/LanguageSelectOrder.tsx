@@ -175,7 +175,7 @@ export function LanguageSelectOrder() {
                 key={code}
                 variant="outline"
                 size="sm"
-                className="rounded-md p-3 text-xs hover:cursor-pointer"
+                className="rounded-md p-3 text-xs"
                 onClick={() => handleAdd(code)}
               >
                 <Plus size={15} className="mr-1" />
