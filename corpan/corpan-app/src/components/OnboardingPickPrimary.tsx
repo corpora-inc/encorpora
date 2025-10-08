@@ -80,6 +80,7 @@ export function OnboardingPickPrimary() {
                                     text-left
                                     break-words
                                     select-text
+                                    hover:cursor-pointer
                                 `}
               style={{
                 minHeight: 56,

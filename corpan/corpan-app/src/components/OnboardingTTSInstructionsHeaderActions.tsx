@@ -36,6 +36,7 @@ export function OnboardingTTSInstructionsHeaderActions({
           shadow-sm hover:bg-white/50
           focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-400
           active:scale-[0.99] transition
+          hover:cursor-pointer
         "
                 aria-label={label}
             >

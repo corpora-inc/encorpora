@@ -63,7 +63,7 @@ export const OnboardingHeader = memo(function OnboaringHeader({
                     <Button
                         type="button"
                         variant="outline"
-                        className="h-10 px-3"
+                        className="h-10 px-3 hover:cursor-pointer"
                         onClick={onBack}
                         aria-label={backAria}
                     >
@@ -74,7 +74,7 @@ export const OnboardingHeader = memo(function OnboaringHeader({
                         type="button"
                         onClick={onNext}
                         disabled={!canNext}
-                        className="h-10 px-3 border border-purple-400 bg-black text-white hover:bg-gray-900 disabled:cursor-not-allowed disabled:border-gray-200 disabled:bg-gray-200"
+                        className="h-10 px-3 border border-purple-400 bg-black text-white hover:bg-gray-900 disabled:cursor-not-allowed disabled:border-gray-200 disabled:bg-gray-200 hover:cursor-pointer"
                         aria-label={nextAria}
                         aria-disabled={!canNext}
                     >
