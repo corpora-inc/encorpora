@@ -71,7 +71,7 @@
     "welcomeBody": "Küldetésünk, hogy forradalmasítsuk az oktatást mindenki számára. Ha segítségre van szüksége, visszajelzést szeretne adni vagy csatlakozni szeretne hozzánk, látogasson el a weboldalunkra.",
     "welcomeVisit": "Látogasson el az encorpora.io oldalra",
     "linkCopied": "A hivatkozás másolva! Nyissa meg a böngészőjében:",
-    "reonboard": "Újraindítja az onboarding folyamatot"
+    "reconfigureStack": "Profil újrakonfigurálása"
   },
   "common": {
     "loading": "Betöltés...",

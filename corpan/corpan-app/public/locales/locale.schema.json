@@ -281,7 +281,7 @@
         "linkCopied": {
           "type": "string"
         },
-        "reonboard": {
+        "reconfigureStack": {
           "type": "string"
         }
       },
@@ -297,7 +297,7 @@
         "welcomeBody",
         "welcomeVisit",
         "linkCopied",
-        "reonboard"
+        "reconfigureStack"
       ],
       "additionalProperties": false
     },

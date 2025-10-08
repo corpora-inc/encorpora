@@ -77,7 +77,7 @@ export function SettingsModal({
             shadow-sm
           "
         >
-          {t("onboarding.reonboard")}
+          {t("onboarding.reconfigureStack")}
         </Button>
 
         <Separator className="mt-5" />

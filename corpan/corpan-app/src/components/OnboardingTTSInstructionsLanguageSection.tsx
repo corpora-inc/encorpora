@@ -6,17 +6,13 @@ import { useTranslation } from "react-i18next";
 
 /* ----------------------------- Types ----------------------------- */
 
-export type LangMode = "cycle" | "random";
-
 type Props = {
     code: string; // e.g., "es-AR", "zh-CN-u-sd-cnln"
     voices: VoiceInfo[];
     selectedIds: string[];
-    mode: LangMode; // ignored visually
     onToggleSelect: (voiceId: string) => void;
-    onChangeMode: (m: LangMode) => void; // kept for compatibility
     onPreviewAny: (voice: VoiceInfo) => void | Promise<void>;
-    previewSampleText: string;
+    previewSampleText: string; // kept for API compatibility (not used here)
     isRTL: boolean;
 };
 
@@ -155,7 +151,6 @@ function VoiceCard({
     prettyLang: string;
     isHighlighted: boolean;
 }) {
-    // slow, visible highlight (2s pulse + ring)
     const highlightCls = isHighlighted ? "ring-2 ring-purple-400 animate-pulse" : "";
     return (
         <div
@@ -227,11 +222,9 @@ export const OnboardingTTSInstructionsLanguageSection = memo(function Section({
     code,
     voices,
     selectedIds,
-    mode: _mode, // ignored
-    onChangeMode: _onChangeMode, // ignored
     onToggleSelect,
     onPreviewAny,
-    previewSampleText,
+    previewSampleText: _previewSampleText, // intentionally unused here
     isRTL,
 }: Props) {
     const { t } = useTranslation();
@@ -239,13 +232,13 @@ export const OnboardingTTSInstructionsLanguageSection = memo(function Section({
     const trDial = (key: string) =>
         (t(`dialects.${key}`, { defaultValue: "" }) as unknown as string) || "";
 
-    // 1) unique list from props
+    // unique by (id|language)
     const voicesUnique = useMemo(
         () => uniqBy(voices, (v) => `${v.id}|${v.language}`),
         [voices]
     );
 
-    // 2) sort for display: quality desc, then name asc
+    // display order: quality desc, then name asc
     const voicesSorted = useMemo(() => {
         const score = (q?: VoiceInfo["quality"]) =>
             (q ? QUALITY_LEVEL[(q as QualityKey)] : 0) ?? 0;
@@ -259,21 +252,21 @@ export const OnboardingTTSInstructionsLanguageSection = memo(function Section({
         });
     }, [voicesUnique]);
 
-    // 3) add pretty labels (translations every render)
+    // pretty labels
     const sectionLabel = resolveDialectLabel(code, trDial);
     const voicesWithPretty = voicesSorted.map((v) => ({
         ...v,
         __prettyLang: resolveDialectLabel(v.language || code, trDial),
     }));
 
-    // --- one-tap cycle index (advances every tap, regardless of playing) ---
+    // rotation index (one tap = one voice; allows overlaps)
     const [cycleIdx, setCycleIdx] = useState(0);
 
-    // --- transient highlight map: id -> version counter ---
+    // slow highlight per tapped/previewed voice
     const [highlight, setHighlight] = useState<Record<string, number>>({});
     const HIGHLIGHT_MS = 2000;
 
-    // Build the rotation sequence **in the exact display order**
+    // sequence follows UI order; only selected voices, fallback to first
     const selectedSet = useMemo(() => new Set(selectedIds), [selectedIds]);
     const sequence: VoiceInfo[] = useMemo(() => {
         const filtered = voicesWithPretty.filter((v) => selectedSet.has(v.id));
@@ -281,7 +274,7 @@ export const OnboardingTTSInstructionsLanguageSection = memo(function Section({
         return voicesWithPretty[0] ? [voicesWithPretty[0] as VoiceInfo] : [];
     }, [voicesWithPretty, selectedSet]);
 
-    // clamp/reset cycleIdx when sequence changes
+    // clamp/reset index when sequence changes
     useEffect(() => {
         if (cycleIdx >= sequence.length) setCycleIdx(0);
     }, [sequence.length, cycleIdx]);

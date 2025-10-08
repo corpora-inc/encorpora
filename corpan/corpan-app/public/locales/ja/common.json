@@ -71,7 +71,7 @@
     "welcomeBody": "私たちの使命は、すべての人に教育を革新することです。ご質問・ご意見・参加希望があれば、ウェブサイトをご覧ください。",
     "welcomeVisit": "encorpora.io を訪問",
     "linkCopied": "リンクをコピーしました！ブラウザで開いてください：",
-    "reonboard": "オンボーディングを再起動"
+    "reconfigureStack": "プロファイルを再設定"
   },
   "common": {
     "loading": "読み込み中...",
