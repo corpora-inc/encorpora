@@ -94,7 +94,7 @@ export function OnboardingFinish() {
                     {/* Hero text */}
                     <div className="mb-6 text-center">
                         <h2 className="text-lg font-semibold text-gray-900">
-                            {t("onboarding.welcomeBodyTitle", { defaultValue: "Join the community" })}
+                            {t("onboarding.welcomeTitle", { defaultValue: "Join the community" })}
                         </h2>
                         <p className="mt-2 text-sm text-gray-600">
                             {t("onboarding.welcomeBody", {
@@ -146,6 +146,7 @@ export function OnboardingFinish() {
                                                                     : "Product, docs, and announcements.",
                                                 })}
                                             </div>
+
                                         </div>
                                         <ExternalLink
                                             size={16}
@@ -166,6 +167,6 @@ export function OnboardingFinish() {
                     </div>
                 </div>
             </main>
-        </section>
+        </section >
     );
 }

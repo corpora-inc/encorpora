@@ -283,6 +283,15 @@
         },
         "reconfigureStack": {
           "type": "string"
+        },
+        "openVoiceSettings": {
+          "type": "string"
+        },
+        "welcomeFollowUp": {
+          "type": "string"
+        },
+        "openTTSSetup": {
+          "type": "string"
         }
       },
       "required": [
@@ -297,7 +306,10 @@
         "welcomeBody",
         "welcomeVisit",
         "linkCopied",
-        "reconfigureStack"
+        "reconfigureStack",
+        "openVoiceSettings",
+        "welcomeFollowUp",
+        "openTTSSetup"
       ],
       "additionalProperties": false
     },

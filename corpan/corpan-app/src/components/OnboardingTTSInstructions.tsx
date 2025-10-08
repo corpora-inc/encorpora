@@ -91,7 +91,6 @@ export function OnboardingTTSInstructions() {
     const dir = useSettingsStore((s) => s.dir);
 
     const voicePrefs = useSettingsStore((s) => s.voicePrefs);
-    const setVoiceMode = useSettingsStore((s) => s.setVoiceMode);
     const toggleVoiceSelection = useSettingsStore((s) => s.toggleVoiceSelection);
 
     const { t } = useTranslation();
