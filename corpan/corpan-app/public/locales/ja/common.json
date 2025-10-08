@@ -57,7 +57,8 @@
     "large": "大",
     "extraLarge": "特大",
     "testTts": "以下のボタンをクリックしてTTS設定をテストしてください：",
-    "showRomanization": "ローマ字表記を表示"
+    "showRomanization": "ローマ字表記を表示",
+    "scrollNavigation": "スクロールナビゲーション"
   },
   "onboarding": {
     "welcome": "ようこそ",

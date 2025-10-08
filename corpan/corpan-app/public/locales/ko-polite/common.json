@@ -57,7 +57,8 @@
     "large": "큼",
     "extraLarge": "아주 큼",
     "testTts": "아래 버튼을 눌러 TTS 설정을 테스트해보세요.",
-    "showRomanization": "로마자 표기 보기"
+    "showRomanization": "로마자 표기 보기",
+    "scrollNavigation": "스크롤 탐색"
   },
   "onboarding": {
     "welcome": "환영합니다",

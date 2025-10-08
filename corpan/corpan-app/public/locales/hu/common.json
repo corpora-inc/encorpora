@@ -57,7 +57,8 @@
     "large": "Nagy",
     "extraLarge": "Extra nagy",
     "testTts": "Tesztelje a TTS beállításait az alábbi gombok megnyomásával:",
-    "showRomanization": "Rómaizáció megjelenítése"
+    "showRomanization": "Rómaizáció megjelenítése",
+    "scrollNavigation": "Görgetéses navigáció"
   },
   "onboarding": {
     "welcome": "Üdvözöljük",
