@@ -23,6 +23,7 @@ import {
     getPlatformTopPaddingTranslations,
     isAndroid,
 } from "@/util/browser";
+import { useScrollNavigation } from "@/hooks/useScrollNavigation";
 
 type TranslationOut = {
     language_code: string;
@@ -135,6 +136,26 @@ export function MainExperience() {
         }, 33);
     }, [index]);
 
+    // Scroll navigation - use the hook
+    const { handleWheel, handleTouchStart, handleTouchEnd } = useScrollNavigation(handlePrev, handleNext);
+
+    // Attach wheel and touch event listeners
+    useEffect(() => {
+        const scrollElement = scrollRef.current;
+        if (!scrollElement) return;
+
+        // Use passive: false to allow preventDefault if needed
+        scrollElement.addEventListener("wheel", handleWheel, { passive: true });
+        scrollElement.addEventListener("touchstart", handleTouchStart, { passive: true });
+        scrollElement.addEventListener("touchend", handleTouchEnd, { passive: true });
+
+        return () => {
+            scrollElement.removeEventListener("wheel", handleWheel);
+            scrollElement.removeEventListener("touchstart", handleTouchStart);
+            scrollElement.removeEventListener("touchend", handleTouchEnd);
+        };
+    }, [handleWheel, handleTouchStart, handleTouchEnd]);
+
     // --- Render helpers --------------------------------------------------------
 
     const textByDbCode: Record<string, string> = {};
@@ -238,7 +259,7 @@ export function MainExperience() {
                                     </div>
                                     {showRomanization && rom && (
                                         <div
-                                            className="text-center text-sm text-base text-gray-400 italic mt-1 mb-1 select-text"
+                                            className="text-center text-sm text-gray-400 italic mt-1 mb-1 select-text"
                                             style={{ maxWidth: "80vw", wordBreak: "break-word" }}
                                         >
                                             {rom}
