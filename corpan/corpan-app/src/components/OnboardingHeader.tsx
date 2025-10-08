@@ -1,12 +1,13 @@
 import { memo, useLayoutEffect, useRef, type ReactNode } from "react";
 import { Button } from "./ui/button";
 import { ArrowLeftCircle, ArrowRightCircle } from "lucide-react";
+import { useSettingsStore } from "@/store/settings";
 
 export const STEPS = [
     { key: "learning", label: "Learning languages" },
     { key: "tts", label: "TTS setup" },
-    { key: "levels", label: "Levels" },
-    { key: "domains", label: "Domains" },
+    // { key: "levels", label: "Levels" },
+    // { key: "domains", label: "Domains" },
     { key: "socials", label: "Follow & connect" },
 ] as const;
 
@@ -31,6 +32,7 @@ export const OnboardingHeader = memo(function OnboaringHeader({
     nextAria: string;
     children?: ReactNode;
 }) {
+    const dir = useSettingsStore((s) => s.dir);
     const headerRef = useRef<HTMLElement | null>(null);
     // const dir = useSettingsStore((s) => s.dir);
 
@@ -67,7 +69,8 @@ export const OnboardingHeader = memo(function OnboaringHeader({
                         onClick={onBack}
                         aria-label={backAria}
                     >
-                        <ArrowLeftCircle size={20} />
+                        {dir() === "rtl" ? <ArrowRightCircle size={20} /> :
+                            <ArrowLeftCircle size={20} />}
                     </Button>
 
                     <Button
@@ -78,7 +81,8 @@ export const OnboardingHeader = memo(function OnboaringHeader({
                         aria-label={nextAria}
                         aria-disabled={!canNext}
                     >
-                        <ArrowRightCircle size={20} />
+                        {dir() === "rtl" ? <ArrowLeftCircle size={20} /> :
+                            <ArrowRightCircle size={20} />}
                     </Button>
                 </div>
 
