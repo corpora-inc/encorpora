@@ -127,6 +127,7 @@ function QualityIcon({ q }: { q?: VoiceInfo["quality"] }) {
 }
 
 function GenderIcon({ g }: { g?: VoiceInfo["gender"] }) {
+    console.warn(g);
     if (g === "female") return <Venus size={14} className="text-gray-600" />;
     if (g === "male") return <Mars size={14} className="text-gray-600" />;
     return <User size={14} className="text-gray-400" />;
@@ -152,6 +153,7 @@ function VoiceCard({
     isHighlighted: boolean;
 }) {
     const highlightCls = isHighlighted ? "ring-2 ring-purple-400 animate-pulse" : "";
+    console.warn(v);
     return (
         <div
             role="checkbox"
