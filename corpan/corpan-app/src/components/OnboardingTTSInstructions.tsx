@@ -1,7 +1,6 @@
 // encorpora/corpan/corpan-app/src/components/OnboardingTTSInstructions.tsx
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { ArrowRightCircle, ArrowLeftCircle } from "lucide-react";
 import { invoke } from "@tauri-apps/api/core";
 import { openUrl } from "@tauri-apps/plugin-opener";
 
@@ -19,9 +18,14 @@ import { isRTL } from "@/util/convert";
 import { useSettingsStore } from "@/store/settings";
 
 import { OnboardingTTSInstructionsHeaderActions } from "./OnboardingTTSInstructionsHeaderActions";
-import { OnboardingTTSInstructionsLanguageSection, type LangMode } from "./OnboardingTTSInstructionsLanguageSection";
+import {
+    OnboardingTTSInstructionsLanguageSection,
+    type LangMode,
+} from "./OnboardingTTSInstructionsLanguageSection";
 
-// -------------------- Spoken samples (not visible UI text) --------------------
+import { OnboardingHeader, STEPS } from "./OnboardingHeader";
+
+/* -------------------------------- Samples (not UI text) -------------------------------- */
 const SAMPLES: Record<string, string> = {
     en: "Hello!",
     es: "¡Hola!",
@@ -42,7 +46,6 @@ const SAMPLES: Record<string, string> = {
     fa: "سلام!",
 };
 
-// Small utility to ensure stable uniqueness across sources
 function uniqBy<T>(arr: T[], key: (x: T) => string): T[] {
     const seen = new Set<string>();
     const out: T[] = [];
@@ -76,7 +79,10 @@ function platformDocLink() {
             link: "https://support.microsoft.com/en-us/windows/chapter-1-introducing-narrator-7fe8fd72-541f-4536-7658-bfc37ddaf9c6",
         };
     }
-    return { name: "device", link: "https://en.wikipedia.org/wiki/Speech_synthesis#Personal_computers" };
+    return {
+        name: "device",
+        link: "https://en.wikipedia.org/wiki/Speech_synthesis#Personal_computers",
+    };
 }
 
 function baseLang(tag: string) {
@@ -88,12 +94,15 @@ function sampleFor(lang: string) {
     return SAMPLES[lang] || SAMPLES[baseLang(lang)] || SAMPLES["en"];
 }
 
+/* -------------------------------- Component -------------------------------- */
+
+const CURRENT_STEP_IDX = 1; // learning=0, TTS=1, levels=2, domains=3, socials=4
+
 export function OnboardingTTSInstructions() {
     const setStep = useSettingsStore((s) => s.setOnboardingStep);
     const languages = useSettingsStore((s) => s.languages);
     const dir = useSettingsStore((s) => s.dir);
 
-    // Per-stack voice prefs + helpers
     const voicePrefs = useSettingsStore((s) => s.voicePrefs);
     const setVoiceMode = useSettingsStore((s) => s.setVoiceMode);
     const toggleVoiceSelection = useSettingsStore((s) => s.toggleVoiceSelection);
@@ -108,11 +117,10 @@ export function OnboardingTTSInstructions() {
     const visibleRef = useRef(true);
     const pollTimer = useRef<number | null>(null);
 
-    // -------- Data refresh / hot updates --------
+    // Refresh voices (hot updates while user installs/enables packs)
     async function refresh() {
         try {
             const raw = await getVoices({});
-            // De-duplicate across potential multiple sources (plugin + web)
             const list = uniqBy(raw, (v) => `${v.id}|${v.language}`);
             setVoices(list);
             setLoading(false);
@@ -137,7 +145,7 @@ export function OnboardingTTSInstructions() {
         };
     }, []);
 
-    // -------- Actions --------
+    // Actions
     async function openInstaller() {
         await deepLinkToVoiceInstall();
     }
@@ -149,7 +157,6 @@ export function OnboardingTTSInstructions() {
     }
 
     async function speakExact(voice: VoiceInfo, text: string, rate = 0.9) {
-        console.log("Speak exact", { voice, text, rate });
         try {
             await invoke("plugin:tts|speak", {
                 args: {
@@ -157,16 +164,26 @@ export function OnboardingTTSInstructions() {
                     language: voice.language,
                     rate,
                     voiceId: voice.id,
-                }
+                },
             });
         } catch {
             try {
                 await createVoiceTTS(voice.language)(text, rate);
             } catch {
-                // icon-only UI; no alert needed
+                // icon-only UI; swallow
             }
         }
     }
+
+    const stepLabels = useMemo(
+        () =>
+            STEPS.map((s, i) =>
+                i === CURRENT_STEP_IDX
+                    ? t("onboarding.ttsStepTitle", { defaultValue: s.label })
+                    : t(`onboarding.${s.key}`, { defaultValue: s.label })
+            ),
+        [t]
+    );
 
     const langs =
         (languages && languages.length
@@ -177,55 +194,53 @@ export function OnboardingTTSInstructions() {
         const filtered = voices.filter((v) => {
             const L = v.language.toLowerCase();
             const c = code.toLowerCase();
-            const matches = L === c || L.startsWith(c + "-") || baseLang(L) === baseLang(c);
+            const matches =
+                L === c || L.startsWith(c + "-") || baseLang(L) === baseLang(c);
             if (!matches) return false;
             if (!showHQOnly) return true;
-            return v.quality === "enhanced" || v.quality === "high" || v.quality === "very_high";
+            return (
+                v.quality === "enhanced" ||
+                v.quality === "high" ||
+                v.quality === "very_high"
+            );
         });
 
-        // Extra safety: de-dupe within the section too
         const unique = uniqBy(filtered, (v) => `${v.id}|${v.language}`);
         return sortVoicesForLanguage(unique, code);
     }
 
+    // We generally allow proceeding even if no voices yet; user can install later.
+    const canNext = true;
+
     return (
-        <div className="flex flex-col h-full w-full pt-safe my-3">
-            {/* Header nav */}
-            <div
-                className="w-full max-w-5xl mx-auto flex flex-row items-center justify-between py-4 px-3 fixed"
-                style={{ minHeight: 72 }}
-            >
-                <button
-                    className="flex items-center justify-center bg-gray-200 hover:bg-gray-300 text-gray-700 rounded-md p-3 shadow transition border"
-                    onClick={() => setStep(2)}
-                    tabIndex={0}
-                    aria-label={t("onboarding.welcome")}
-                    title={t("onboarding.welcome")}
-                >
-                    <ArrowLeftCircle size={26} />
-                </button>
+        <section
+            id="onboarding-scroll"
+            className="flex h-dvh min-h-[100svh] w-full flex-col overflow-y-auto overscroll-contain bg-white md:bg-gray-50"
+            style={{
+                WebkitOverflowScrolling: "touch",
+                // keep L/R safe-area on the scrollport
+                paddingLeft: "env(safe-area-inset-left)",
+                paddingRight: "env(safe-area-inset-right)",
+                // no top/bottom safe-area here (top on header, bottom on main)
+            }}
+            dir={dir()}
+        >
+            {/* Shared sticky header with blur */}
+            <OnboardingHeader
+                title={t("onboarding.textToSpeechSetup", {
+                    defaultValue: "Text-to-speech setup",
+                })}
+                steps={stepLabels}
+                currentIndex={CURRENT_STEP_IDX}
+                onBack={() => setStep(2)} // keep your existing step indices
+                onNext={() => setStep(4)}
+                canNext={canNext}
+                backAria={t("common.back", { defaultValue: "Back" })}
+                nextAria={t("common.next", { defaultValue: "Next" })}
+            />
 
-                <div
-                    className="flex-1 text-center text-sm sm:text-base font-semibold text-gray-800 select-none px-2"
-                    style={{ letterSpacing: 0.2 }}
-                    dir={dir()}
-                >
-                    {t("onboarding.textToSpeechSetup")}
-                </div>
-
-                <button
-                    className="flex items-center justify-center rounded-md p-3 shadow transition bg-black hover:bg-gray-900 text-white border border-purple-400"
-                    onClick={() => setStep(4)}
-                    tabIndex={0}
-                    aria-label={t("onboarding.reonboard")}
-                    title={t("onboarding.reonboard")}
-                >
-                    <ArrowRightCircle size={26} />
-                </button>
-            </div>
-
-            {/* Top actions */}
-            <div className="w-full max-w-5xl mx-auto px-3 pt-20">
+            {/* Top actions / controls */}
+            <div className="mx-auto w-full max-w-5xl px-3 pt-6">
                 <OnboardingTTSInstructionsHeaderActions
                     os={os}
                     loading={loading}
@@ -239,12 +254,18 @@ export function OnboardingTTSInstructions() {
                 />
             </div>
 
-            {/* Main voice picker */}
-            <div className="flex-1 overflow-y-auto">
-                <div className="w-full max-w-5xl mx-auto px-3 pb-16">
+            {/* Main voice picker list (fills to bottom; safe-area bottom padding here) */}
+            <main
+                className="flex-1 min-h-0"
+                style={{
+                    paddingBottom: "calc(env(safe-area-inset-bottom) + 1.5rem)",
+                }}
+            >
+                <div className="mx-auto w-full max-w-5xl px-3">
                     {langs.map((code) => {
                         const list = voicesForLang(code);
-                        const pref = voicePrefs[code] ?? { ids: [], mode: "cycle" as LangMode };
+                        const pref =
+                            voicePrefs[code] ?? { ids: [], mode: "cycle" as LangMode };
                         const sample = sampleFor(code);
 
                         return (
@@ -256,17 +277,14 @@ export function OnboardingTTSInstructions() {
                                 mode={pref.mode}
                                 onToggleSelect={(voiceId) => toggleVoiceSelection(code, voiceId)}
                                 onChangeMode={(m) => setVoiceMode(code, m)}
-                                onPreviewAny={(voice) => {
-                                    console.log("Preview voice", voice);
-                                    speakExact(voice, sample, 0.9)
-                                }}
+                                onPreviewAny={(voice) => speakExact(voice, sample, 0.9)}
                                 previewSampleText={sample}
                                 isRTL={isRTL(code)}
                             />
                         );
                     })}
                 </div>
-            </div>
-        </div>
+            </main>
+        </section>
     );
 }
