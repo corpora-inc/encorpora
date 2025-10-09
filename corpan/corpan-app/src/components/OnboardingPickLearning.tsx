@@ -28,13 +28,15 @@ export function OnboardingPickLearning() {
     <section
       id="onboarding-scroll"
       // single scrollport; keep blur working
-      className="flex h-dvh min-h-[100svh] w-full flex-col overflow-y-auto overscroll-contain bg-white md:bg-gray-50"
+      className="flex h-dvh min-h-[100svh] w-full flex-col overflow-y-auto overscroll-contain bg-white md:bg-gray-50 pb-10"
       style={{
         WebkitOverflowScrolling: "touch",
         // safe areas: keep top/left/right here for the sticky header
         // paddingTop: "env(safe-area-inset-top)",
         paddingLeft: "env(safe-area-inset-left)",
         paddingRight: "env(safe-area-inset-right)",
+        paddingBottom: "env(safe-area-inset-bottom)",
+        // paddingBottom: "10em",
         // ⛔️ remove paddingBottom from the scrollport
       }}
       dir={dir()}
@@ -54,10 +56,12 @@ export function OnboardingPickLearning() {
         // allow the flex child to actually fill the remainder
         className="flex-1 min-h-0 px-4 pt-6"
         // put bottom safe-area on the content, so it truly reaches the bottom
-        style={{ paddingBottom: "calc(env(safe-area-inset-bottom) + 1.5rem)" }} // 1.5rem ≈ `pb-6`
+        style={{
+          paddingBottom: "calc(env(safe-area-inset-bottom) + 3rem)",
+        }}
       >
         <LanguageSelectOrder />
-        <div className="h-8" />
+        <div className="h-8 pb-20" />
       </main>
 
 

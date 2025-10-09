@@ -160,7 +160,7 @@ export function OnboardingFinish() {
                     </ul>
 
                     {/* Subtle nudge */}
-                    <div className="mt-6 text-center text-xs text-gray-500">
+                    <div className="mt-6 text-center text-xs text-gray-500 pb-20">
                         {t("onboarding.welcomeFollowUp", {
                             defaultValue: "Thanks for being here - see you in the community!",
                         })}
