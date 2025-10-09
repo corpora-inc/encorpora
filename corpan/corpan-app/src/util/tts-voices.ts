@@ -163,10 +163,11 @@ export async function installTtsDataIfSupported(): Promise<boolean> {
  * - If unsupported or not launched, open the settings screen instead.
  */
 export async function deepLinkToVoiceInstall(): Promise<void> {
-    const launched = await installTtsDataIfSupported();
-    if (!launched) {
-        await openTtsSettings();
-    }
+    // const launched = await installTtsDataIfSupported();
+    await installTtsDataIfSupported();
+    // if (!launched) {
+    //     await openTtsSettings();
+    // }
 }
 
 // --------------------------- Voice utilities --------------------------
