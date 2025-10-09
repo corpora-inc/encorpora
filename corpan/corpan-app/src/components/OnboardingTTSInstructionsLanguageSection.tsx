@@ -127,7 +127,7 @@ function QualityIcon({ q }: { q?: VoiceInfo["quality"] }) {
 }
 
 function GenderIcon({ g }: { g?: VoiceInfo["gender"] }) {
-    console.warn(g);
+    // console.warn(g);
     if (g === "female") return <Venus size={14} className="text-gray-600" />;
     if (g === "male") return <Mars size={14} className="text-gray-600" />;
     return <User size={14} className="text-gray-400" />;
@@ -153,7 +153,7 @@ function VoiceCard({
     isHighlighted: boolean;
 }) {
     const highlightCls = isHighlighted ? "ring-2 ring-purple-400 animate-pulse" : "";
-    console.warn(v);
+    // console.warn(v);
     return (
         <div
             role="checkbox"
@@ -310,8 +310,8 @@ export const OnboardingTTSInstructionsLanguageSection = memo(function Section({
         }
     }
 
-    const headerPreviewAria = t("onboarding.previewNext", { defaultValue: "Preview next" });
-    const perCardPreviewAria = t("onboarding.preview", { defaultValue: "Preview" });
+    const headerPreviewAria = "Preview next";
+    const perCardPreviewAria = "Preview";
 
     return (
         <div className="mt-6 overflow-hidden rounded-xl border bg-white shadow-sm">

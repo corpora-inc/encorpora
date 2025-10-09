@@ -2,7 +2,7 @@
 // Frontend helpers for Corpán voice onboarding:
 // - Deep link to OS voice settings / install panels via the Tauri plugin
 // - Enumerate native voices (Android/iOS/macOS) with browser fallback
-// - Filter/sort voices by language and quality
+// - Optional sorting with language bias (NO filtering here)
 
 import { invoke } from "@tauri-apps/api/core";
 
@@ -117,7 +117,7 @@ export async function listVoicesBrowser(): Promise<VoiceInfo[]> {
 
 // ------------------------- Native (plugin) calls ----------------------
 
-/** Enumerate native voices (Android/iOS/macOS). Falls back to [] if plugin/command is unavailable. */
+/** Enumerate native voices (Android/iOS/macOS). Falls back to [] if the command is unavailable. */
 export async function listVoicesNative(): Promise<VoiceInfo[]> {
     try {
         // Rust normalizes iOS (object envelope) vs Android/mac (array) to an array,
@@ -157,29 +157,29 @@ export async function installTtsDataIfSupported(): Promise<boolean> {
     }
 }
 
-/**
- * “Deep link” helper:
- * - Try programmatic install (Android) first.
- * - If unsupported or not launched, open the settings screen instead.
- */
+/** “Deep link” helper: best-effort voice install/settings path for the platform. */
 export async function deepLinkToVoiceInstall(): Promise<void> {
-    // const launched = await installTtsDataIfSupported();
     await installTtsDataIfSupported();
-    // if (!launched) {
-    //     await openTtsSettings();
-    // }
+    // If you want: fall back to openTtsSettings() after this returns false on Android.
+    // We keep it simple for now (native-side filtering ensures we only list usable voices).
 }
 
 // --------------------------- Voice utilities --------------------------
 
-/** Sort voices for a given language preference: exact tag > base match; higher quality first; stable by name/id. */
-export function sortVoicesForLanguage(voices: VoiceInfo[], langTag: string): VoiceInfo[] {
-    const want = langTag || "";
+/**
+ * Sort voices with an optional language **bias** (no filtering):
+ * - exact tag > base match > others
+ * - higher quality first
+ * - then stable by name/id
+ */
+export function sortVoicesWithLangBias(voices: VoiceInfo[], langBias?: string): VoiceInfo[] {
+    const want = langBias || "";
     return [...voices].sort((a, b) => {
-        const lA = langMatchScore(a.language, want);
-        const lB = langMatchScore(b.language, want);
-        if (lA !== lB) return lB - lA;
-
+        if (want) {
+            const lA = langMatchScore(a.language, want);
+            const lB = langMatchScore(b.language, want);
+            if (lA !== lB) return lB - lA;
+        }
         const qA = qualityRank(a.quality);
         const qB = qualityRank(b.quality);
         if (qA !== qB) return qB - qA;
@@ -192,24 +192,16 @@ export function sortVoicesForLanguage(voices: VoiceInfo[], langTag: string): Voi
     });
 }
 
-/** Filter voices compatible with a language prefix (e.g., "fa" should match "fa-IR"). */
-export function filterVoicesByLangPrefix(voices: VoiceInfo[], langPrefix: string): VoiceInfo[] {
-    const p = (langPrefix || "").toLowerCase();
-    if (!p) return voices;
-    return voices.filter((v) => {
-        const L = (v.language || "").toLowerCase();
-        return L === p || L.startsWith(p + "-") || baseLang(L) === p;
-    });
-}
+// --------------------------- Public API -------------------------------
 
 /**
  * High-level “get voices” API for the UI:
  * - Try native first (Android/iOS/macOS).
  * - On failure or empty, fallback to Web Speech (if available).
- * - Optional `langPrefix` lets you pre-filter to the target language family.
+ * - **No filtering** here; optional `langBias` only affects ordering.
  */
-export async function getVoices(opts?: { langPrefix?: string; preferBrowser?: boolean }): Promise<VoiceInfo[]> {
-    const { langPrefix, preferBrowser } = opts ?? {};
+export async function getVoices(opts?: { langBias?: string; preferBrowser?: boolean }): Promise<VoiceInfo[]> {
+    const { langBias, preferBrowser } = opts ?? {};
 
     let voices: VoiceInfo[] = [];
     try {
@@ -221,36 +213,22 @@ export async function getVoices(opts?: { langPrefix?: string; preferBrowser?: bo
             if (voices.length === 0) voices = await listVoicesBrowser();
         }
     } catch {
-        // swallow; we’ll return whatever we have
+        // swallow and return whatever we have
     }
 
-    if (langPrefix) {
-        voices = filterVoicesByLangPrefix(voices, langPrefix);
-    }
-    return voices;
-}
-
-// --------------------------- Quick UX helpers --------------------------
-
-/**
- * Launch the right OS UI for installing/enabling TTS voices, with light guidance:
- * - On Android: try the engine’s “install TTS data” activity; fallback to TTS settings.
- * - On iOS/macOS: open Spoken Content / Accessibility or app settings (best-effort).
- */
-export async function guideUserToInstallVoices(): Promise<void> {
-    await deepLinkToVoiceInstall();
+    // DO NOT filter on the frontend. Only optionally sort with a language bias.
+    return sortVoicesWithLangBias(voices, langBias);
 }
 
 /**
- * Minimal “is there at least one compatible voice?” check for a language.
- * If none, opens install/settings UI and returns the post-action list (for the UI to re-check).
+ * Minimal “do we have *any* voices?” helper:
+ * - If none yet, punt user to install flow and return whatever’s present afterward.
+ * - **No filtering**; caller can decide what to show.
  */
-export async function ensureVoicesForLanguage(langPrefix: string): Promise<VoiceInfo[]> {
-    let voices = await getVoices({ langPrefix });
+export async function ensureVoicesAvailable(langBias?: string): Promise<VoiceInfo[]> {
+    let voices = await getVoices({ langBias });
     if (voices.length > 0) return voices;
 
-    await guideUserToInstallVoices();
-    // Give the OS a moment (user may come back later); the caller can re-poll as needed.
-    // We just return the current list immediately.
-    return getVoices({ langPrefix });
+    await deepLinkToVoiceInstall();
+    return getVoices({ langBias });
 }

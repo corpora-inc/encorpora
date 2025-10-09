@@ -202,30 +202,7 @@ export function MainExperience() {
                                     className="text-center"
                                     style={{ cursor: "pointer" }}
                                     onClick={() => {
-                                        // TODO: this is just a hack for our
-                                        // preferences for right now but
-                                        // very soon we should do a full,
-                                        // proper, voice introspection and
-                                        // choice and also ... ya' know,
-                                        // narrators and stuff.
-                                        // if (uiCode === "en") {
-                                        //    uiCode = "en-US";
-                                        //}
-                                        //if (uiCode === "es") {
-                                        //    uiCode = "es-MX";
-                                        //}
-                                        //if (uiCode === "zh-Hant") {
-                                        //    uiCode = "zh-TW";
-                                        // uiCode = "zh-HK";
-                                        //}
-                                        //if (uiCode === "zh-Hans") {
-                                        //    uiCode = "zh-CN";
-                                        //}
-                                        // if (uiCode === "fr") {
-                                        //     uiCode = "fr-FR";
-                                        // }
                                         speakWithStackPrefs(uiCode, txt, rate);
-                                        // createVoiceTTS(uiCode)(txt, rate);
                                     }}
                                 >
                                     <div className="text-xs text-gray-400">

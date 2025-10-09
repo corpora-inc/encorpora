@@ -84,13 +84,14 @@ async function awaitVoices(timeoutMs = 500): Promise<SpeechSynthesisVoice[]> {
 }
 
 async function speakNative(text: string, langPrefix: string, rate: number, voiceId?: string) {
+    console.warn("speaking natively", voiceId)
     await invoke("plugin:tts|speak", {
 
         args: {
             text,
             language: langPrefix, // e.g. 'fa' or 'fa-IR' resolved natively
             rate,
-            voiceId: voiceId,
+            voice_id: voiceId,
         }
     });
 }
@@ -146,6 +147,7 @@ export function createVoiceTTS(langPrefix: string) {
                 // eslint-disable-next-line no-console
                 console.log(`[TTS:${langPrefix}] Using native TTS plugin`, voiceId ? `(voiceId=${voiceId})` : "");
                 await speakNative(text, langPrefix, rate, voiceId);
+                console.log("spoken")
                 return;
             }
         } catch (err) {

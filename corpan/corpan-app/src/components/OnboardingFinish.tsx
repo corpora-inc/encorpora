@@ -82,8 +82,7 @@ export function OnboardingFinish() {
                 onBack={() => setStep(3)}
                 onNext={() => setOnboarded(true)}
                 canNext={true}
-                backAria={t("common.back", { defaultValue: "Back" })}
-                nextAria={t("onboarding.finish", { defaultValue: "Finish" })}
+
             />
 
             <main

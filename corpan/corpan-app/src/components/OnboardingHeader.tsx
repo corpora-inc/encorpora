@@ -18,8 +18,6 @@ export const OnboardingHeader = memo(function OnboaringHeader({
     onBack,
     onNext,
     canNext,
-    backAria,
-    nextAria,
     children,
 }: {
     title: string;
@@ -28,8 +26,6 @@ export const OnboardingHeader = memo(function OnboaringHeader({
     onBack: () => void;
     onNext: () => void;
     canNext: boolean;
-    backAria: string;
-    nextAria: string;
     children?: ReactNode;
 }) {
     const dir = useSettingsStore((s) => s.dir);
@@ -67,7 +63,7 @@ export const OnboardingHeader = memo(function OnboaringHeader({
                         variant="outline"
                         className="h-10 px-3"
                         onClick={onBack}
-                        aria-label={backAria}
+                        aria-label="Back"
                     >
                         {dir() === "rtl" ? <ArrowRightCircle size={20} /> :
                             <ArrowLeftCircle size={20} />}
@@ -78,7 +74,7 @@ export const OnboardingHeader = memo(function OnboaringHeader({
                         onClick={onNext}
                         disabled={!canNext}
                         className="h-10 px-3 border border-purple-400 bg-black text-white hover:bg-gray-900 disabled:cursor-not-allowed disabled:border-gray-200 disabled:bg-gray-200"
-                        aria-label={nextAria}
+                        aria-label="Next"
                         aria-disabled={!canNext}
                     >
                         {dir() === "rtl" ? <ArrowLeftCircle size={20} /> :

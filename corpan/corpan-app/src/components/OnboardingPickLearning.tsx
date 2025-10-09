@@ -49,8 +49,6 @@ export function OnboardingPickLearning() {
         onBack={() => setStep(1)}
         onNext={() => canProceed && setStep(3)}
         canNext={canProceed}
-        backAria={t("common.back", { defaultValue: "Back" })}
-        nextAria={t("common.next", { defaultValue: "Next" })}
       />
       <main
         // allow the flex child to actually fill the remainder

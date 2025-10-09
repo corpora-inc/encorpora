@@ -6,7 +6,7 @@ import { invoke } from "@tauri-apps/api/core";
 import {
     detectOSFromUA,
     getVoices,
-    sortVoicesForLanguage,
+    sortVoicesWithLangBias,
     deepLinkToVoiceInstall,
     openTtsSettings,
     type VoiceInfo,
@@ -17,10 +17,7 @@ import { isRTL } from "@/util/convert";
 import { useSettingsStore } from "@/store/settings";
 
 import { OnboardingTTSInstructionsHeaderActions } from "./OnboardingTTSInstructionsHeaderActions";
-import {
-    OnboardingTTSInstructionsLanguageSection,
-} from "./OnboardingTTSInstructionsLanguageSection";
-
+import { OnboardingTTSInstructionsLanguageSection } from "./OnboardingTTSInstructionsLanguageSection";
 import { OnboardingHeader, STEPS } from "./OnboardingHeader";
 
 /* -------------------------------- Samples (not UI text) -------------------------------- */
@@ -44,33 +41,18 @@ const SAMPLES: Record<string, string> = {
     fa: "سبوس دارم با شما یاد بگیرم.",
 };
 
-// >=3 quality only (hide default/low/eloquence, etc.)
-const ACCEPTED_QUALITIES = new Set<VoiceInfo["quality"]>([
-    "enhanced",
-    "high",
-    "very_high",
-]);
-
 function uniqBy<T>(arr: T[], key: (x: T) => string): T[] {
     const seen = new Set<string>();
     const out: T[] = [];
     for (const item of arr) {
         const k = key(item);
         if (!seen.has(k)) {
-            seen.add(k); out.push(item);
+            seen.add(k);
+            out.push(item);
         }
     }
     return out;
 }
-
-// function platformDocLink() {
-//     const ua = navigator.userAgent;
-//     if (/android/i.test(ua)) return { name: "Android", link: "https://support.google.com/accessibility/android/answer/6006983?hl=en" };
-//     if (/iPad|iPhone|iPod/.test(ua)) return { name: "iOS", link: "https://support.apple.com/en-us/111798" };
-//     if (/macintosh|mac os/i.test(ua)) return { name: "macOS", link: "https://support.apple.com/en-us/111798" };
-//     if (/windows/i.test(ua)) return { name: "Windows", link: "https://support.microsoft.com/en-us/windows/chapter-1-introducing-narrator-7fe8fd72-541f-4536-7658-bfc37ddaf9c6" };
-//     return { name: "device", link: "https://en.wikipedia.org/wiki/Speech_synthesis#Personal_computers" };
-// }
 
 function baseLang(tag: string) {
     const t = tag.toLowerCase();
@@ -96,8 +78,6 @@ export function OnboardingTTSInstructions() {
     const { t } = useTranslation();
     const os = useMemo(() => detectOSFromUA(), []);
     const [voices, setVoices] = useState<VoiceInfo[]>([]);
-    // UI may still show toggles in HeaderActions; we keep state here,
-    // but filtering below *always* enforces >=3 quality.
 
     const visibleRef = useRef(true);
     const pollTimer = useRef<number | null>(null);
@@ -126,16 +106,31 @@ export function OnboardingTTSInstructions() {
     }, []);
 
     // Actions
-    async function openInstaller() { await deepLinkToVoiceInstall(); }
-    async function openSettings() { await openTtsSettings(); }
+    async function openInstaller() {
+        await deepLinkToVoiceInstall();
+    }
+    async function openSettings() {
+        await openTtsSettings();
+    }
 
     async function speakExact(voice: VoiceInfo, text: string, rate = 0.9) {
+        console.warn("speakExact", voice.id);
         try {
+            // IMPORTANT: plugin expects { args: { ... , voice_id } }
             await invoke("plugin:tts|speak", {
-                args: { text, language: voice.language, rate, voiceId: voice.id },
+                args: {
+                    text,
+                    language: voice.language,
+                    rate,
+                    voice_id: voice.id,
+                },
             });
         } catch {
-            try { await createVoiceTTS(voice.language)(text, rate); } catch { }
+            try {
+                await createVoiceTTS(voice.language)(text, rate);
+            } catch {
+                /* noop */
+            }
         }
     }
 
@@ -155,18 +150,15 @@ export function OnboardingTTSInstructions() {
             : Array.from(new Set(voices.map((v) => baseLang(v.language))))) || [];
 
     function voicesForLang(code: string): VoiceInfo[] {
-        const filtered = voices.filter((v) => {
-            // Hide anything below "enhanced" class, regardless of toggle.
-            if (!ACCEPTED_QUALITIES.has(v.quality)) return false;
-
-            const L = v.language.toLowerCase();
+        // NO filtering by quality here — show everything the native layer allowed.
+        const compatible = voices.filter((v) => {
+            const L = (v.language || "").toLowerCase();
             const c = code.toLowerCase();
-            const matches = L === c || L.startsWith(c + "-") || baseLang(L) === baseLang(c);
-            return matches;
+            return L === c || L.startsWith(c + "-") || baseLang(L) === baseLang(c);
         });
-
-        const unique = uniqBy(filtered, (v) => `${v.id}|${v.language}`);
-        return sortVoicesForLanguage(unique, code);
+        const unique = uniqBy(compatible, (v) => `${v.id}|${v.language}`);
+        // Stable, helpful order: exact/base matches & higher quality float up, but everything stays visible.
+        return sortVoicesWithLangBias(unique, code);
     }
 
     return (
@@ -187,8 +179,6 @@ export function OnboardingTTSInstructions() {
                 onBack={() => setStep(2)}
                 onNext={() => setStep(4)}
                 canNext={true}
-                backAria={t("common.back", { defaultValue: "Back" })}
-                nextAria={t("common.next", { defaultValue: "Next" })}
             >
                 <OnboardingTTSInstructionsHeaderActions
                     os={os}
@@ -205,7 +195,7 @@ export function OnboardingTTSInstructions() {
                 <div className="mx-auto w-full max-w-5xl px-3">
                     {langs.map((code) => {
                         const list = voicesForLang(code);
-                        const pref = voicePrefs[code] ?? { ids: [], mode: "cycle" };
+                        const pref = voicePrefs[code] ?? { ids: [], mode: "cycle" as const };
                         const sample = sampleFor(code);
 
                         return (
