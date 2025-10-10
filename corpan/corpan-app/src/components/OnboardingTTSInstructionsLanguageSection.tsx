@@ -103,6 +103,7 @@ function resolveDialectLabel(fullTag: string, trDial: (k: string) => string) {
 
 const QUALITY_LEVEL = {
     very_high: 4,
+    premium: 4,
     high: 3,
     enhanced: 3,
     normal: 2,
