@@ -19,17 +19,40 @@ import { useTranslation } from "react-i18next";
 import { ALL_LANGUAGES, useSettingsStore } from "@/store/settings";
 import { toCamelCase } from "@/util/convert";
 
-function lockOnboardingScroll(lock: boolean) {
-  const el = document.getElementById("onboarding-scroll") as HTMLElement | null;
-  if (!el) return;
-  if (lock) {
-    el.dataset.prevOverflowY = getComputedStyle(el).overflowY;
-    el.style.overflowY = "hidden";
-  } else {
-    el.style.overflowY = el.dataset.prevOverflowY || "auto";
-    delete el.dataset.prevOverflowY;
+function lockScroll(lock: boolean) {
+  const ids = ["settings-modal-content", "onboarding-scroll"]; // modal first, then onboarding
+  for (const id of ids) {
+    const el = document.getElementById(id) as HTMLElement | null;
+    if (!el) continue;
+
+    if (lock) {
+      // stash current values so we can restore exactly
+      if (!("prevOverflowY" in el.dataset)) {
+        el.dataset.prevOverflowY = getComputedStyle(el).overflowY;
+      }
+      if (!("prevTouchAction" in el.dataset)) {
+        el.dataset.prevTouchAction = el.style.touchAction || "";
+      }
+      if (!("prevOverscroll" in el.dataset)) {
+        el.dataset.prevOverscroll = el.style.overscrollBehaviorY || "";
+      }
+
+      // freeze scroll + stop scroll chaining on iOS/mac catalyst
+      el.style.overflowY = "hidden";
+      el.style.touchAction = "none";             // iOS 13+ honored in WKWebView
+      el.style.overscrollBehaviorY = "contain";  // avoid bounce / chain
+    } else {
+      // restore
+      el.style.overflowY = el.dataset.prevOverflowY || "";
+      el.style.touchAction = el.dataset.prevTouchAction || "";
+      el.style.overscrollBehaviorY = el.dataset.prevOverscroll || "";
+      delete el.dataset.prevOverflowY;
+      delete el.dataset.prevTouchAction;
+      delete el.dataset.prevOverscroll;
+    }
   }
 }
+
 
 
 function LangChip({
@@ -116,7 +139,7 @@ export function LanguageSelectOrder() {
         i18n.changeLanguage(newLanguages[0]);
       }
     }
-    lockOnboardingScroll(false);
+    lockScroll(false);
   };
 
   const handleRemove = (code: string) => {
@@ -146,9 +169,9 @@ export function LanguageSelectOrder() {
         sensors={sensors}
         collisionDetection={closestCenter}
         modifiers={[restrictToVerticalAxis, restrictToParentElement]}
-        onDragStart={() => lockOnboardingScroll(true)}
+        onDragStart={() => lockScroll(true)}
         onDragEnd={handleDragEnd}
-        onDragCancel={() => lockOnboardingScroll(false)}
+        onDragCancel={() => lockScroll(false)}
       >
         <SortableContext items={displayedLanguages} strategy={verticalListSortingStrategy}>
           <div className="flex flex-col gap-1">

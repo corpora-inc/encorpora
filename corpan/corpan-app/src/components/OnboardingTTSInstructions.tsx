@@ -212,6 +212,11 @@ export function OnboardingTTSInstructions() {
                         );
                     })}
                 </div>
+                <div className="h-8"
+                    style={{
+                        paddingBottom: "calc(env(safe-area-inset-bottom) + 1rem)",
+                    }}
+                />
             </main>
         </section>
     );

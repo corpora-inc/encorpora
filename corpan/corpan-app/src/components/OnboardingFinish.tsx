@@ -76,7 +76,7 @@ export function OnboardingFinish() {
             dir={dir()}
         >
             <OnboardingHeader
-                title={t("onboarding.welcomeTitle", { defaultValue: "Welcome to Corpán" })}
+                title="Aloha!"
                 steps={stepLabels}
                 currentIndex={CURRENT_STEP_IDX}
                 onBack={() => setStep(3)}

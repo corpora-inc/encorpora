@@ -48,9 +48,8 @@ export function OnboardingPickPrimary() {
           minHeight: 0,
           transform: `translateY(${offset}px)`,
           transition: "transform 0.35s cubic-bezier(.4,1.4,.5,1)",
-          padding: "20px 0",
-          // height: "100%",
-          // height: "100dvh",
+          paddingBottom: "env(safe-area-inset-bottom)",
+          paddingTop: "env(safe-area-inset-top)",
         }}
       >
         {ALL_LANGUAGES.map((code) => {
@@ -98,6 +97,6 @@ export function OnboardingPickPrimary() {
           );
         })}
       </div>
-    </div>
+    </div >
   );
 }
