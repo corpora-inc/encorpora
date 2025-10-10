@@ -25,16 +25,25 @@ export function getPlatformBottomPadding() {
         return 180;
     } if (isAndroidButNotChromeOS()) {
         return 195;
+    } if (/Mac OS X/i.test(navigator.userAgent)) {
+        return 200;
     }
     return 180;
 }
 
 export function getPlatformTopPaddingButtons() {
+    console.warn(navigator.userAgent);
     if (/iPhone|iPad|iPod|iOS/i.test(navigator.userAgent)) {
         return 55;
+        // } if (/isPad|iPod/i.test(navigator.userAgent)) {
+        //     return 75;
     } if (isAndroidButNotChromeOS()) {
         return 27;
+        // Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko)
+    } if (/Mac OS X/i.test(navigator.userAgent)) {
+        return 30;
     }
+
     return 10;
 }
 
@@ -43,6 +52,8 @@ export function getPlatformTopPaddingTranslations() {
         return 150;
     } if (isAndroidButNotChromeOS()) {
         return 125;
+    } if (/Mac OS X/i.test(navigator.userAgent)) {
+        return 130;
     }
     return 75;
 }

@@ -183,9 +183,13 @@ export function MainExperience() {
                 style={{
                     paddingBottom: `${getPlatformBottomPadding()}px`,
                     paddingTop: `${getPlatformTopPaddingTranslations()}px`,
+                    // use the inset:
+                    // paddingBottom: "env(safe-area-inset-bottom)",
+                    // paddingTop: `calc(env(safe-area-inset-top) + 4rem)`,
                 }}
             >
-                <div key={index} className="w-full max-w-4xl mx-auto flex flex-col items-center gap-y-9 my-auto">
+                <div key={index} className="w-full max-w-4xl mx-auto flex flex-col items-center gap-y-9 my-auto"
+                >
                     {displayedLanguages.map((uiCode, idx) => {
                         const txt = textFor(uiCode);
                         const rom = romanizationFor(uiCode);
