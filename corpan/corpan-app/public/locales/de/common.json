@@ -100,5 +100,13 @@
     "rename": "Umbenennen",
     "selectAria": "Profil auswählen",
     "selectPlaceholder": "Auswählen…"
+  },
+  "rating": {
+    "title": "Gefällt Ihnen Corpán?",
+    "description": "Ihr Feedback hilft uns, besser zu werden und mehr Sprachlerner weltweit zu erreichen!",
+    "rateNow": "⭐ Im Play Store bewerten",
+    "remindLater": "Vielleicht später",
+    "noThanks": "Nein, danke",
+    "close": "Schließen"
   }
 }

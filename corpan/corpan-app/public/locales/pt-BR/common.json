@@ -100,5 +100,13 @@
     "rename": "Renomear",
     "selectAria": "Selecionar um perfil",
     "selectPlaceholder": "Escolher…"
+  },
+  "rating": {
+    "title": "Curtindo o Corpán?",
+    "description": "Seu feedback nos ajuda a melhorar e alcançar mais estudantes de idiomas no mundo!",
+    "rateNow": "⭐ Avaliar na Play Store",
+    "remindLater": "Talvez mais tarde",
+    "noThanks": "Não, obrigado",
+    "close": "Fechar"
   }
 }

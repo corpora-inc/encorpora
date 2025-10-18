@@ -1,9 +1,11 @@
 import { useSettingsStore, ALL_TEXT_SIZES } from "@/store/settings";
+import { useRatingStore } from "@/store/rating";
 import { OnboardingWizard } from "@/components/OnboardingWizard";
 import { SettingsIcon } from "lucide-react";
 import { useState, useEffect } from "react";
 import { MainExperience } from "./components/MainExperience";
 import { SettingsModal } from "./components/SettingsModal";
+import { RatingPrompt } from "./components/RatingPrompt";
 import { Button } from "./components/ui/button";
 import "./index.css";
 import { getPlatformTopPaddingButtons } from "./util/browser";
@@ -13,6 +15,10 @@ export default function App() {
   const [showSettings, setShowSettings] = useState(false);
   const onboarded = useSettingsStore((s) => s.onboarded);
   const textSize = useSettingsStore((s) => s.textSize);
+  
+  // Rating tracking
+  const trackSessionStart = useRatingStore((s) => s.trackSessionStart);
+  const trackSessionEnd = useRatingStore((s) => s.trackSessionEnd);
 
   useEffect(() => {
     const root = document.documentElement;
@@ -29,6 +35,18 @@ export default function App() {
     // No explicit cleanup function needed here as we add/remove directly based on textSize.
     // The class will be updated whenever textSize changes.
   }, [textSize]);
+
+  // Track session start/end for rating prompt
+  useEffect(() => {
+    if (onboarded) {
+      trackSessionStart();
+      
+      // Track session end when component unmounts or user leaves
+      return () => {
+        trackSessionEnd();
+      };
+    }
+  }, [onboarded, trackSessionStart, trackSessionEnd]);
 
   if (!onboarded) {
     return <OnboardingWizard />;
@@ -62,6 +80,8 @@ export default function App() {
         open={showSettings}
         onClose={() => setShowSettings(false)}
       />
+      
+      <RatingPrompt />
     </>
   );
 }

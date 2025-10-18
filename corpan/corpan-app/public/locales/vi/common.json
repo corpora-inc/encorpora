@@ -100,5 +100,13 @@
     "rename": "Đổi tên",
     "selectAria": "Chọn hồ sơ",
     "selectPlaceholder": "Chọn…"
+  },
+  "rating": {
+    "title": "Thích Corpán không?",
+    "description": "Phản hồi của bạn giúp chúng tôi cải thiện và tiếp cận nhiều người học ngôn ngữ trên toàn thế giới!",
+    "rateNow": "⭐ Đánh giá trên Play Store",
+    "remindLater": "Để sau",
+    "noThanks": "Không, cảm ơn",
+    "close": "Đóng"
   }
 }

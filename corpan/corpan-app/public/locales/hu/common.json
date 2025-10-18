@@ -100,5 +100,13 @@
     "rename": "Átnevezés",
     "selectAria": "Profil kiválasztása",
     "selectPlaceholder": "Válassz…"
+  },
+  "rating": {
+    "title": "Tetszik a Corpán?",
+    "description": "Visszajelzésed segít fejlődnünk és több nyelvtanulót elérnünk világszerte!",
+    "rateNow": "⭐ Értékeld a Play Store-ban",
+    "remindLater": "Talán később",
+    "noThanks": "Nem, köszönöm",
+    "close": "Bezárás"
   }
 }

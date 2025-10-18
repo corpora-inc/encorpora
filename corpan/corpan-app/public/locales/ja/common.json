@@ -100,5 +100,13 @@
     "rename": "名前を変更",
     "selectAria": "プロフィールを選択",
     "selectPlaceholder": "選択…"
+  },
+  "rating": {
+    "title": "Corpánを楽しんでいますか？",
+    "description": "あなたのフィードバックは、私たちの改善と世界中の言語学習者へのリーチに役立ちます！",
+    "rateNow": "⭐ Play Storeで評価",
+    "remindLater": "後で",
+    "noThanks": "いいえ、結構です",
+    "close": "閉じる"
   }
 }

@@ -100,5 +100,13 @@
     "rename": "重新命名",
     "selectAria": "選擇設定檔",
     "selectPlaceholder": "選擇…"
+  },
+  "rating": {
+    "title": "喜歡 Corpán 嗎？",
+    "description": "您的回饋幫助我們改進並惠及全球更多語言學習者！",
+    "rateNow": "⭐ 在 Play 商店評分",
+    "remindLater": "稍後再說",
+    "noThanks": "不了，謝謝",
+    "close": "關閉"
   }
 }

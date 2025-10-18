@@ -1,0 +1,193 @@
+import { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Star, X, Heart } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { useTranslation } from "react-i18next";
+import { useRatingStore } from "@/store/rating";
+import { openUrl } from "@tauri-apps/plugin-opener";
+
+export function RatingPrompt() {
+    const { t } = useTranslation();
+    const [isVisible, setIsVisible] = useState(true);
+    
+    const shouldShowPrompt = useRatingStore((s) => s.shouldShowPrompt);
+    const dismissPrompt = useRatingStore((s) => s.dismissPrompt);
+    const rateApp = useRatingStore((s) => s.rateApp);
+    const remindLater = useRatingStore((s) => s.remindLater);
+
+    useEffect(() => {
+        // Check if we should show the prompt after a short delay
+        const timer = setTimeout(() => {
+            if (shouldShowPrompt()) {
+                setIsVisible(true);
+            }
+        }, 2000); // Wait 2 seconds before checking
+
+        return () => clearTimeout(timer);
+    }, [shouldShowPrompt]);
+
+    const handleRate = async () => {
+        rateApp();
+        setIsVisible(false);
+        
+        // Open Play Store or App Store
+        // You can customize the URL based on your app's store listing
+        const playStoreUrl = "https://play.google.com/store/apps/details?id=your.app.id";
+        
+        try {
+            // Try to open the appropriate store
+            // For now, defaulting to Play Store since you mentioned it
+            await openUrl(playStoreUrl);
+        } catch (error) {
+            console.error("Failed to open store:", error);
+        }
+    };
+
+    const handleDismiss = () => {
+        dismissPrompt();
+        setIsVisible(false);
+    };
+
+    const handleRemindLater = () => {
+        remindLater();
+        setIsVisible(false);
+    };
+
+    return (
+        <AnimatePresence>
+            {isVisible && (
+                <>
+                    {/* Backdrop */}
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.3 }}
+                        className="fixed inset-0 bg-black/20 backdrop-blur-sm z-[100]"
+                        onClick={handleRemindLater}
+                    />
+                    
+                    {/* Prompt Card */}
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                        animate={{ opacity: 1, scale: 1, y: 0 }}
+                        exit={{ opacity: 0, scale: 0.9, y: 20 }}
+                        transition={{ 
+                            type: "spring", 
+                            stiffness: 300, 
+                            damping: 25,
+                            duration: 0.4 
+                        }}
+                        className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[101] w-[90%] max-w-md"
+                    >
+                        <div className="bg-white rounded-2xl shadow-2xl p-6 relative overflow-hidden">
+                            {/* Close button */}
+                            <button
+                                onClick={handleDismiss}
+                                className="absolute top-3 right-3 text-gray-400 hover:text-gray-600 transition-colors"
+                                aria-label={t("rating.close" as any)}
+                            >
+                                <X size={20} />
+                            </button>
+
+                            {/* Icon */}
+                            <motion.div
+                                initial={{ scale: 0 }}
+                                animate={{ scale: 1 }}
+                                transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
+                                className="flex justify-center mb-4"
+                            >
+                                <div className="bg-gradient-to-br from-purple-400 to-purple-600 rounded-full p-4">
+                                    <Heart className="text-white" size={32} fill="white" />
+                                </div>
+                            </motion.div>
+
+                            {/* Title */}
+                            <motion.h3
+                                initial={{ opacity: 0, y: 10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 0.3 }}
+                                className="text-xl font-semibold text-center text-gray-800 mb-2"
+                            >
+                                {t("rating.title" as any)}
+                            </motion.h3>
+
+                            {/* Description */}
+                            <motion.p
+                                initial={{ opacity: 0, y: 10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 0.35 }}
+                                className="text-center text-gray-600 mb-6 text-sm leading-relaxed"
+                            >
+                                {t("rating.description" as any)}
+                            </motion.p>
+
+                            {/* Stars decoration */}
+                            <motion.div
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ delay: 0.4 }}
+                                className="flex justify-center gap-2 mb-6"
+                            >
+                                {[1, 2, 3, 4, 5].map((star, index) => (
+                                    <motion.div
+                                        key={star}
+                                        initial={{ opacity: 0, scale: 0 }}
+                                        animate={{ opacity: 1, scale: 1 }}
+                                        transition={{ 
+                                            delay: 0.4 + (index * 0.05),
+                                            type: "spring",
+                                            stiffness: 200
+                                        }}
+                                    >
+                                        <Star 
+                                            className="text-purple-400" 
+                                            size={24} 
+                                            fill="#c084fc"
+                                        />
+                                    </motion.div>
+                                ))}
+                            </motion.div>
+
+                            {/* Buttons */}
+                            <motion.div
+                                initial={{ opacity: 0, y: 10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 0.5 }}
+                                className="flex flex-col gap-2"
+                            >
+                                <Button
+                                    onClick={handleRate}
+                                    size="lg"
+                                    className="w-full bg-gradient-to-r from-purple-500 to-purple-600 hover:from-purple-600 hover:to-purple-700 text-white font-medium shadow-md"
+                                >
+                                    {t("rating.rateNow" as any)}
+                                </Button>
+                                
+                                <div className="flex gap-2">
+                                    <Button
+                                        onClick={handleRemindLater}
+                                        variant="outline"
+                                        size="sm"
+                                        className="flex-1 text-gray-600"
+                                    >
+                                        {t("rating.remindLater" as any)}
+                                    </Button>
+                                    
+                                    <Button
+                                        onClick={handleDismiss}
+                                        variant="ghost"
+                                        size="sm"
+                                        className="flex-1 text-gray-500"
+                                    >
+                                        {t("rating.noThanks" as any)}
+                                    </Button>
+                                </div>
+                            </motion.div>
+                        </div>
+                    </motion.div>
+                </>
+            )}
+        </AnimatePresence>
+    );
+}

@@ -100,5 +100,13 @@
     "rename": "إعادة تسمية",
     "selectAria": "اختر مجموعة",
     "selectPlaceholder": "اختر…"
+  },
+  "rating": {
+    "title": "هل تستمتع بـ Corpán؟",
+    "description": "ملاحظاتك تساعدنا على التحسين والوصول إلى المزيد من متعلمي اللغات حول العالم!",
+    "rateNow": "⭐ قيّم على Play Store",
+    "remindLater": "ربما لاحقاً",
+    "noThanks": "لا، شكراً",
+    "close": "إغلاق"
   }
 }

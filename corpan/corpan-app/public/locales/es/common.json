@@ -100,5 +100,13 @@
     "rename": "Renombrar",
     "selectAria": "Seleccionar un perfil",
     "selectPlaceholder": "Elegir…"
+  },
+  "rating": {
+    "title": "¿Disfrutando Corpán?",
+    "description": "¡Tu opinión nos ayuda a mejorar y llegar a más estudiantes de idiomas en todo el mundo!",
+    "rateNow": "⭐ Calificar en Play Store",
+    "remindLater": "Quizás más tarde",
+    "noThanks": "No, gracias",
+    "close": "Cerrar"
   }
 }

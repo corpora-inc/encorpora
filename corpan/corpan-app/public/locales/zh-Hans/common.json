@@ -100,5 +100,13 @@
     "rename": "重命名",
     "selectAria": "选择配置文件",
     "selectPlaceholder": "选择…"
+  },
+  "rating": {
+    "title": "喜欢 Corpán 吗？",
+    "description": "您的反馈帮助我们改进并惠及全球更多语言学习者！",
+    "rateNow": "⭐ 在 Play 商店评分",
+    "remindLater": "稍后再说",
+    "noThanks": "不了，谢谢",
+    "close": "关闭"
   }
 }

@@ -100,5 +100,13 @@
     "rename": "이름 변경",
     "selectAria": "프로필 선택",
     "selectPlaceholder": "선택…"
+  },
+  "rating": {
+    "title": "Corpán이 마음에 드시나요?",
+    "description": "여러분의 피드백은 저희가 개선하고 전 세계 더 많은 언어 학습자에게 다가가는 데 도움이 됩니다!",
+    "rateNow": "⭐ Play Store에서 평가하기",
+    "remindLater": "나중에",
+    "noThanks": "아니요, 괜찮습니다",
+    "close": "닫기"
   }
 }

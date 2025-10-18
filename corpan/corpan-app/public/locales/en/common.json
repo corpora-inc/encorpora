@@ -100,5 +100,13 @@
     "rename": "Rename",
     "selectAria": "Select a stack",
     "selectPlaceholder": "Choose…"
+  },
+  "rating": {
+    "title": "Enjoying Corpán?",
+    "description": "Your feedback helps us improve and reach more language learners worldwide!",
+    "rateNow": "⭐ Rate on Play Store",
+    "remindLater": "Maybe later",
+    "noThanks": "No, thanks",
+    "close": "Close"
   }
 }

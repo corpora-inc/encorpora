@@ -100,5 +100,13 @@
     "rename": "Rinomina",
     "selectAria": "Seleziona un profilo",
     "selectPlaceholder": "Scegli…"
+  },
+  "rating": {
+    "title": "Ti piace Corpán?",
+    "description": "Il tuo feedback ci aiuta a migliorare e raggiungere più studenti di lingue in tutto il mondo!",
+    "rateNow": "⭐ Vota sul Play Store",
+    "remindLater": "Forse più tardi",
+    "noThanks": "No, grazie",
+    "close": "Chiudi"
   }
 }
