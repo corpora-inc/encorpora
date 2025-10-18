@@ -28,7 +28,7 @@ export function OnboardingPickLearning() {
     <section
       id="onboarding-scroll"
       // single scrollport; keep blur working
-      className="flex h-dvh min-h-[100svh] w-full flex-col overflow-y-auto overscroll-contain bg-white md:bg-gray-50 pb-10"
+      className="flex h-dvh min-h-[100svh] w-full flex-col overflow-y-auto overscroll-contain  pb-10"
       style={{
         WebkitOverflowScrolling: "touch",
         // safe areas: keep top/left/right here for the sticky header
