@@ -133,6 +133,7 @@ export function OnboardingWelcome() {
                     shadow-2xl
                     text-3xl
                     text-primary-foreground
+                    hover:cursor-pointer
                 "
                 style={{
                     boxShadow: "0 8px 64px 0 #0002", // just a subtle shadow for lift

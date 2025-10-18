@@ -1,75 +1,171 @@
+// encorpora/corpan/corpan-app/src/components/OnboardingFinish.tsx
+import { useMemo } from "react";
 import { useSettingsStore } from "@/store/settings";
-import { ArrowRightCircle, ArrowLeftCircle, ExternalLink } from "lucide-react";
-import { openUrl } from "@tauri-apps/plugin-opener";
+import { OnboardingHeader, STEPS } from "./OnboardingHeader";
 import { useTranslation } from "react-i18next";
+import { openUrl } from "@tauri-apps/plugin-opener";
+import { Github, Youtube, Newspaper, Globe, ExternalLink } from "lucide-react";
 
-const ENCORPORA_URL = "https://encorpora.io";
+/** Fill these with your actual profiles */
+const LINKS = [
+    {
+        key: "youtube",
+        url: "https://www.youtube.com/@corpán1",
+        Icon: Youtube,
+        cls: "text-red-600",
+    },
+    {
+        key: "github",
+        url: "https://github.com/corpora-inc",
+        Icon: Github,
+        cls: "text-gray-900",
+    },
+    {
+        key: "blog",
+        url: "https://free2z.com/corpora",
+        Icon: Newspaper,
+        cls: "text-amber-600",
+    },
+    {
+        key: "website",
+        url: "https://encorpora.io",
+        Icon: Globe,
+        cls: "text-indigo-600",
+    },
+] as const;
+
+const CURRENT_STEP_IDX = 4; // learning=0, tts=1, levels=2, domains=3, socials=4
 
 export function OnboardingFinish() {
-    const setStep = useSettingsStore(s => s.setOnboardingStep);
-    const setOnboarded = useSettingsStore(s => s.setOnboarded);
+    const setStep = useSettingsStore((s) => s.setOnboardingStep);
+    const setOnboarded = useSettingsStore((s) => s.setOnboarded);
+    const dir = useSettingsStore((s) => s.dir);
     const { t } = useTranslation();
-    const dir = useSettingsStore(s => s.dir);
 
-    const handleVisit = async () => {
-        // console.log("Visiting Encorpora URL");
+    const stepLabels = useMemo(
+        () =>
+            STEPS.map((s, i) =>
+                i === CURRENT_STEP_IDX
+                    ? t("onboarding.socialsStepTitle", { defaultValue: s.label })
+                    : t(`onboarding.${s.key}`, { defaultValue: s.label })
+            ),
+        [t]
+    );
+
+    async function openExternal(url: string) {
         try {
-            await openUrl(ENCORPORA_URL);
+            await openUrl(url);
         } catch {
-            await navigator.clipboard.writeText(ENCORPORA_URL);
-            alert(t("onboarding.linkCopied") + "\n" + ENCORPORA_URL);
+            try {
+                await navigator.clipboard.writeText(url);
+            } catch { }
+            // Fallback alert – translated
+            alert(t("onboarding.linkCopied", { defaultValue: "Link copied to clipboard." }) + "\n" + url);
         }
-    };
+    }
 
     return (
-        <div className="flex flex-col h-full w-full pt-safe my-3">
-            {/* Header: Back / Title / Finish */}
-            <div className="w-full max-w-xl mx-auto flex flex-row items-center justify-between py-5 px-2"
-                style={{ height: 100 }}
+        <section
+            id="onboarding-scroll"
+            className="flex h-dvh min-h-[100svh] w-full flex-col overflow-y-auto overscroll-contain bg-white md:bg-gray-50"
+            style={{
+                WebkitOverflowScrolling: "touch",
+                paddingLeft: "env(safe-area-inset-left)",
+                paddingRight: "env(safe-area-inset-right)",
+            }}
+            dir={dir()}
+        >
+            <OnboardingHeader
+                title="Aloha!"
+                steps={stepLabels}
+                currentIndex={CURRENT_STEP_IDX}
+                onBack={() => setStep(3)}
+                onNext={() => setOnboarded(true)}
+                canNext={true}
 
+            />
+
+            <main
+                className="flex-1 min-h-0 px-4 pt-6"
+                style={{ paddingBottom: "calc(env(safe-area-inset-bottom) + 1.5rem)" }}
             >
-                <button
-                    className="flex items-center justify-center bg-gray-200 hover:bg-gray-300 text-gray-700 rounded-md p-3 shadow transition border dark:bg-input/30 dark:border-input dark:text-gray-400 "
-                    onClick={() => setStep(3)}
-                    tabIndex={0}
-                >
-                    <ArrowLeftCircle size={30} />
-                </button>
-                <div
-                    className="flex-1 text-center text-sm font-semibold text-gray-800 dark:text-gray-300 select-none px-2"
-                    style={{ letterSpacing: 0.25 }}
-                    dir={dir()}
-                >
-                    {t("onboarding.welcomeTitle")}
-                </div>
-                <button
-                    className="flex items-center justify-center rounded-md p-3 shadow transition bg-black hover:bg-gray-900 text-white border border-purple-400 dark:border-purple-800 dark:bg-purple-800/30 dark:hover:bg-purple-800/50 dark:text-purple-200"
-                    onClick={() => setOnboarded(true)}
-                    tabIndex={0}
-                >
-                    <ArrowRightCircle size={30} />
-                </button>
-            </div>
-            {/* Content */}
-            <div className="flex flex-1 flex-col items-center justify-center px-6 pb-10 w-full">
-                <div className="w-full max-w-xl flex flex-col items-center mx-auto text-center">
-                    <div className="text-lg text-gray-700 dark:text-gray-300" dir={dir()}>
-                        {t("onboarding.welcomeBody")}
+                <div className="mx-auto w-full max-w-xl">
+                    {/* Hero text */}
+                    <div className="mb-6 text-center">
+                        <h2 className="text-lg font-semibold text-gray-900">
+                            {t("onboarding.welcomeTitle", { defaultValue: "Join the community" })}
+                        </h2>
+                        <p className="mt-2 text-sm text-gray-600">
+                            {t("onboarding.welcomeBody", {
+                                defaultValue:
+                                    "Follow our channels for updates, deep dives, and community learning sessions.",
+                            })}
+                        </p>
                     </div>
-                    <div className="mt-7 text-center">
-                        <button
-                            className="inline-flex items-center gap-1 text-purple-700 underline hover:text-purple-900 text-base font-medium"
-                            style={{ padding: 0, background: "none", border: "none" }}
-                            onClick={handleVisit}
-                            tabIndex={0}
-                            dir={dir()}
-                        >
-                            {t("onboarding.welcomeVisit")}
-                            <ExternalLink size={18} />
-                        </button>
+
+                    {/* Link grid */}
+                    <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+                        {LINKS.map(({ key, url, Icon, cls }) => (
+                            <li key={key}>
+                                <button
+                                    onClick={() => openExternal(url)}
+                                    className="group w-full rounded-xl border border-gray-200 bg-white p-4 text-left shadow-sm transition hover:-translate-y-[1px] hover:border-purple-400 hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-400 hover:cursor-pointer"
+                                    aria-label={t(`socials.${key}.cta`, { defaultValue: "Open link" })}
+                                >
+                                    <div className="flex items-center gap-3">
+                                        <span
+                                            className={`grid h-10 w-10 place-items-center rounded-lg bg-gray-50 ${cls} transition group-hover:scale-105`}
+                                            aria-hidden
+                                        >
+                                            <Icon size={20} />
+                                        </span>
+                                        <div className="min-w-0 flex-1">
+                                            <div className="truncate text-sm font-semibold text-gray-900">
+                                                {t(`socials.${key}.title`, {
+                                                    // sensible defaults per brand
+                                                    defaultValue:
+                                                        key === "youtube"
+                                                            ? "Corpán Studios"
+                                                            : key === "github"
+                                                                ? "GitHub"
+                                                                : key === "blog"
+                                                                    ? "Free2Z Blog"
+                                                                    : "Website",
+                                                })}
+                                            </div>
+                                            <div className="mt-0.5 line-clamp-2 text-xs text-gray-600">
+                                                {t(`socials.${key}.desc`, {
+                                                    defaultValue:
+                                                        key === "youtube"
+                                                            ? "Tutorials, demos, and behind-the-scenes."
+                                                            : key === "github"
+                                                                ? "Star the repo and follow development."
+                                                                : key === "blog"
+                                                                    ? "Notes, release writeups, and essays."
+                                                                    : "Product, docs, and announcements.",
+                                                })}
+                                            </div>
+
+                                        </div>
+                                        <ExternalLink
+                                            size={16}
+                                            className="shrink-0 text-gray-400 transition group-hover:text-gray-600"
+                                            aria-hidden
+                                        />
+                                    </div>
+                                </button>
+                            </li>
+                        ))}
+                    </ul>
+
+                    {/* Subtle nudge */}
+                    <div className="mt-6 text-center text-xs text-gray-500 pb-20">
+                        {t("onboarding.welcomeFollowUp", {
+                            defaultValue: "Thanks for being here - see you in the community!",
+                        })}
                     </div>
                 </div>
-            </div>
-        </div>
+            </main>
+        </section >
     );
 }

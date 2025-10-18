@@ -13,7 +13,6 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { useSettingsStore } from "@/store/settings";
 import { useHistoryStore } from "@/store/history";
-import { createVoiceTTS } from "@/util/speak";
 import { useTranslation } from "react-i18next";
 
 import { isRTL, toCamelCase } from "@/util/convert";
@@ -23,6 +22,8 @@ import {
     getPlatformTopPaddingTranslations,
     isAndroid,
 } from "@/util/browser";
+import { speakWithStackPrefs } from "@/util/speakWithStackPrefs";
+
 
 type TranslationOut = {
     language_code: string;
@@ -182,9 +183,13 @@ export function MainExperience() {
                 style={{
                     paddingBottom: `${getPlatformBottomPadding()}px`,
                     paddingTop: `${getPlatformTopPaddingTranslations()}px`,
+                    // use the inset:
+                    // paddingBottom: "env(safe-area-inset-bottom)",
+                    // paddingTop: `calc(env(safe-area-inset-top) + 4rem)`,
                 }}
             >
-                <div key={index} className="w-full max-w-4xl mx-auto flex flex-col items-center gap-y-9 my-auto">
+                <div key={index} className="w-full max-w-4xl mx-auto flex flex-col items-center gap-y-9 my-auto"
+                >
                     {displayedLanguages.map((uiCode, idx) => {
                         const txt = textFor(uiCode);
                         const rom = romanizationFor(uiCode);
@@ -201,29 +206,7 @@ export function MainExperience() {
                                     className="text-center"
                                     style={{ cursor: "pointer" }}
                                     onClick={() => {
-                                        // TODO: this is just a hack for our
-                                        // preferences for right now but
-                                        // very soon we should do a full,
-                                        // proper, voice introspection and
-                                        // choice and also ... ya' know,
-                                        // narrators and stuff.
-                                        if (uiCode === "en") {
-                                            uiCode = "en-US";
-                                        }
-                                        if (uiCode === "es") {
-                                            uiCode = "es-MX";
-                                        }
-                                        if (uiCode === "zh-Hant") {
-                                            uiCode = "zh-TW";
-                                            // uiCode = "zh-HK";
-                                        }
-                                        if (uiCode === "zh-Hans") {
-                                            uiCode = "zh-CN";
-                                        }
-                                        // if (uiCode === "fr") {
-                                        //     uiCode = "fr-FR";
-                                        // }
-                                        createVoiceTTS(uiCode)(txt, rate);
+                                        speakWithStackPrefs(uiCode, txt, rate);
                                     }}
                                 >
                                     <div className="text-xs text-gray-400">
