@@ -109,12 +109,12 @@ export function OnboardingFinish() {
                             <li key={key}>
                                 <button
                                     onClick={() => openExternal(url)}
-                                    className="group w-full rounded-xl border border-gray-200 bg-background p-4 text-left shadow-sm transition hover:-translate-y-[1px] hover:border-black hover:shadow-md hover:bg-black/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-black hover:cursor-pointer dark:border-slate-600 dark:bg-background dark:shadow-none dark:hover:border-white/70 dark:hover:bg-white/10 dark:focus-visible:ring-white/70"
+                                    className="group w-full rounded-xl border border-gray-200 bg-background p-4 text-left shadow-sm transition hover:-translate-y-[1px] hover:border-black hover:shadow-md hover:bg-black/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-black hover:cursor-pointer dark:border-input dark:bg-input/30 dark:shadow-none dark:hover:border-input dark:hover:bg-input/50 dark:focus-visible:ring-white/70"
                                     aria-label={t(`socials.${key}.cta`, { defaultValue: "Open link" })}
                                 >
                                     <div className="flex items-center gap-3">
                                         <span
-                                            className={`grid h-10 w-10 place-items-center rounded-lg bg-gray-100 ${cls} transition group-hover:scale-105 dark:bg-slate-800 dark:text-current`}
+                                            className={`grid h-10 w-10 place-items-center rounded-lg bg-gray-100 ${cls} transition group-hover:scale-105 dark:bg-input/40 dark:text-current`}
                                             aria-hidden
                                         >
                                             <Icon size={20} />

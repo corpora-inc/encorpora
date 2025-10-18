@@ -170,8 +170,8 @@ function VoiceCard({
             className={[
                 "cursor-pointer rounded-lg border p-3 shadow-sm transition focus:outline-none focus-visible:ring-2 focus-visible:ring-black dark:shadow-none dark:focus-visible:ring-white/70",
                 checked
-                    ? "border-black ring-2 ring-black/30 dark:border-white dark:ring-white/40 dark:bg-background"
-                    : "border-gray-200 hover:bg-gray-50 dark:border-slate-600 dark:hover:bg-slate-800",
+                    ? "border-black ring-2 ring-black/30 dark:border-input dark:ring-white/40 dark:bg-input/60"
+                    : "border-gray-200 hover:bg-gray-50 dark:border-input dark:bg-input/30 dark:hover:bg-input/50",
                 highlightCls,
             ].join(" ")}
         >
@@ -185,8 +185,8 @@ function VoiceCard({
                     className={[
                         "shrink-0 rounded-full border p-1.5",
                         checked
-                            ? "bg-black border-black text-white dark:bg-white dark:border-white dark:text-black"
-                            : "bg-background border-gray-300 text-gray-800 dark:bg-background dark:border-slate-600 dark:text-slate-100",
+                            ? "bg-black border-black text-white dark:bg-input/70 dark:border-input dark:text-white"
+                            : "bg-background border-gray-300 text-gray-800 dark:bg-input/30 dark:border-input dark:text-slate-100",
                     ].join(" ")}
                     aria-hidden
                 >
@@ -210,7 +210,7 @@ function VoiceCard({
                         e.stopPropagation(); // don’t toggle when previewing
                         onPreview();
                     }}
-                    className="inline-flex items-center gap-1.5 rounded-md border border-gray-300 bg-background px-2.5 py-1.5 text-xs font-medium text-gray-900 shadow-sm hover:bg-gray-50 hover:cursor-pointer dark:border-slate-600 dark:bg-background dark:text-slate-100 dark:hover:bg-slate-800"
+                    className="inline-flex items-center gap-1.5 rounded-md border border-gray-300 bg-background px-2.5 py-1.5 text-xs font-medium text-gray-900 shadow-sm hover:bg-gray-50 hover:cursor-pointer dark:border-input dark:bg-input/30 dark:text-slate-100 dark:hover:bg-input/50"
                     dir={isRTL ? "rtl" : "ltr"}
                     aria-label={ariaPreview}
                     title={ariaPreview}
@@ -319,9 +319,9 @@ export const OnboardingTTSInstructionsLanguageSection = memo(function Section({
     const perCardPreviewAria = "Preview";
 
     return (
-        <div className="mt-6 overflow-hidden rounded-xl border bg-background shadow-sm dark:border-slate-700 dark:bg-background dark:shadow-none">
+        <div className="mt-6 overflow-hidden rounded-xl border border-gray-200 bg-background shadow-sm transition dark:border-input dark:bg-input/20 dark:shadow-none">
             {/* Header row: language label + count + preview-next */}
-            <div className="flex flex-col gap-3 border-b bg-background p-3 sm:flex-row sm:items-center sm:justify-between sm:p-4 dark:border-slate-700">
+            <div className="flex flex-col gap-3 border-b border-gray-200 bg-background p-3 sm:flex-row sm:items-center sm:justify-between sm:p-4 dark:border-input dark:bg-input/30">
                 <div className="flex items-center gap-3">
                     <span className="text-sm font-semibold tracking-wide text-gray-900 sm:text-base dark:text-slate-100">
                         {sectionLabel}
@@ -334,7 +334,7 @@ export const OnboardingTTSInstructionsLanguageSection = memo(function Section({
                 <div className="flex items-center gap-2">
                     <button
                         onClick={playNextOnce}
-                        className="inline-flex items-center gap-2 rounded-md border border-gray-300 bg-background px-3 py-2 text-sm font-medium text-gray-900 shadow-sm hover:bg-gray-50 hover:cursor-pointer dark:border-slate-600 dark:bg-background dark:text-slate-100 dark:hover:bg-slate-800"
+                        className="inline-flex items-center gap-2 rounded-md border border-gray-300 bg-background px-3 py-2 text-sm font-medium text-gray-900 shadow-sm hover:bg-gray-50 hover:cursor-pointer dark:border-input dark:bg-input/30 dark:text-slate-100 dark:hover:bg-input/50"
                         dir={isRTL ? "rtl" : "ltr"}
                         aria-label={headerPreviewAria}
                         title={headerPreviewAria}
