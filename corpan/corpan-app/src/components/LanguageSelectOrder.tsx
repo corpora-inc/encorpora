@@ -75,7 +75,7 @@ function LangChip({
   return (
     <div
       className={`
-                flex items-center gap-1  rounded-md border px-3 py-1 shadow-sm select-none
+                flex items-center gap-1 px-3 py-1 rounded-md border  shadow-sm
                 ${isPrimary ? "bg-purple-50 dark:bg-purple-900/30 dark:border-purple-900 border-purple-300" : ""}
                 ${isDragging ? "opacity-60 border-blue-400 dark:border-blue-900 shadow-lg" : ""}
                 select-none mb-1
