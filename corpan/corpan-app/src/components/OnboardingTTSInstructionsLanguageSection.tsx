@@ -319,9 +319,9 @@ export const OnboardingTTSInstructionsLanguageSection = memo(function Section({
     const perCardPreviewAria = "Preview";
 
     return (
-        <div className="mt-6 overflow-hidden rounded-xl border border-gray-200 bg-background shadow-sm transition dark:border-input dark:bg-input/20 dark:shadow-none">
+        <div className="mt-6 overflow-hidden rounded-xl border border-gray-200 bg-background shadow-sm transition dark:border-input dark:bg-input/10 dark:shadow-none">
             {/* Header row: language label + count + preview-next */}
-            <div className="flex flex-col gap-3 border-b border-gray-200 bg-background p-3 sm:flex-row sm:items-center sm:justify-between sm:p-4 dark:border-input dark:bg-input/30">
+            <div className="flex flex-col gap-3 border-b border-gray-200 bg-background p-3 sm:flex-row sm:items-center sm:justify-between sm:p-4 dark:border-input dark:bg-input/20">
                 <div className="flex items-center gap-3">
                     <span className="text-sm font-semibold tracking-wide text-gray-900 sm:text-base dark:text-slate-100">
                         {sectionLabel}
