@@ -57,10 +57,7 @@
     "large": "大",
     "extraLarge": "特大",
     "testTts": "下のボタンを押してTTS設定をテストしてください：",
-    "showRomanization": "ローマ字表記を表示",
-    "themeMode": "テーマモード",
-    "turnOnLightMode": "ライトモードをオンにする",
-    "turnOnDarkMode": "ダークモードをオンにする"
+    "showRomanization": "ローマ字表記を表示"
   },
   "onboarding": {
     "welcome": "ようこそ",

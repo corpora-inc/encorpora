@@ -57,10 +57,7 @@
     "large": "大",
     "extraLarge": "特大",
     "testTts": "點擊下方按鈕以測試您的 TTS 設定：",
-    "showRomanization": "顯示羅馬拼音",
-        "themeMode": "主題模式",
-    "turnOnLightMode": "開啟淺色模式",
-    "turnOnDarkMode": "開啟深色模式"
+    "showRomanization": "顯示羅馬拼音"
   },
   "onboarding": {
     "welcome": "歡迎",
