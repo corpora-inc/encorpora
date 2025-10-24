@@ -20,6 +20,7 @@ import About from "./About";
 import { useSettingsStore } from "@/store/settings";
 import { useTranslation } from "react-i18next";
 import StacksManager from "./StacksManager";
+import { JumpToTTSButton } from "./JumpToTTSButton";
 
 // Use the built-in modal with correct sizing
 export function SettingsModal({
@@ -60,6 +61,7 @@ export function SettingsModal({
         <TextSizeAdjuster />
         <RateAdjuster />
         <LanguageSelectOrder />
+        <JumpToTTSButton fullWidth />
         <LevelsPicker />
         <DomainPicker />
         <RomanizationToggle />
@@ -79,7 +81,7 @@ export function SettingsModal({
             shadow-sm
           "
         >
-          {t("onboarding.reonboard")}
+          {t("onboarding.reconfigureStack")}
         </Button>
 
         <Separator className="mt-5" />

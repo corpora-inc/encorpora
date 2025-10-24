@@ -44,5 +44,5 @@ export function getPlatformTopPaddingTranslations() {
     } if (isAndroidButNotChromeOS()) {
         return 125;
     }
-    return 75;
+    return 100;
 }
