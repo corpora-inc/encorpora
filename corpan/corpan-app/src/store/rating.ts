@@ -29,8 +29,8 @@ type RatingState = {
 const CRITERIA = {
     MIN_SESSIONS: 5,           // Show after at least 5 sessions
     MIN_TIME_MS: 6 * 60 * 1000, // Show after 5 minutes total usage
-    REMIND_DELAY_MS: 3 * 24 * 60 * 60 * 1000, // Remind after 3 days
-    MAX_REMIND_COUNT: 2,       // Max times to show "remind me later"
+    REMIND_DELAY_MS: 1 * 24 * 60 * 60 * 1000, // Remind after 1 day
+    MAX_REMIND_COUNT: 3,       // Max times to show "remind me later"
 };
 
 export const useRatingStore = create<RatingState>()(

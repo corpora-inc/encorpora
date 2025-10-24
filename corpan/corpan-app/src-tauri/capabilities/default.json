@@ -8,6 +8,7 @@
   "permissions": [
     "core:default",
     "opener:default",
-    "tts:allow-speak"
+    "tts:allow-speak",
+    "os:default"
   ]
 }
