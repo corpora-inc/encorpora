@@ -38,7 +38,7 @@ const SAMPLES: Record<string, string> = {
     vi: "Tôi mong được học cùng bạn.",
     pl: "Nie mogę się doczekać nauki z tobą.",
     hu: "Alig várom, hogy tanulhassak veled.",
-    fa: "سبوس دارم با شما یاد بگیرم.", // (left as-is from your original)
+    fa: "سبوس دارم با شما یاد بگیرم.",
 };
 
 function uniqBy<T>(arr: T[], key: (x: T) => string): T[] {
@@ -158,6 +158,36 @@ export function OnboardingTTSInstructions() {
         return sortVoicesWithLangBias(unique, code);
     }
 
+    // --- Smart Select: enabled only if each language has >= 1 installed voice
+    const canSmartSelect = useMemo(
+        () => langs.every((code) => voicesForLang(code).length > 0),
+        // voices in deps so this recomputes when the backend updates
+        [langs, voices]
+    );
+
+    // helper stays the same
+    function setSelectionForLang(code: string, desiredIds: string[]) {
+        const current = new Set((voicePrefs[code]?.ids ?? []).slice());
+        const desired = new Set(desiredIds);
+        // deselect anything not desired
+        for (const id of current) {
+            if (!desired.has(id)) toggleVoiceSelection(code, id);
+        }
+        // select anything missing
+        for (const id of desired) {
+            if (!current.has(id)) toggleVoiceSelection(code, id);
+        }
+    }
+
+    // FIX: select *all* installed voices for each language, not just the first
+    function smartSelectAll() {
+        if (!canSmartSelect) return;
+        for (const code of langs) {
+            const allIds = voicesForLang(code).map((v) => v.id);
+            setSelectionForLang(code, allIds);
+        }
+    }
+
     return (
         <section
             id="onboarding-scroll"
@@ -173,14 +203,16 @@ export function OnboardingTTSInstructions() {
                 title={t("onboarding.textToSpeechSetup", { defaultValue: "Text-to-speech setup" })}
                 steps={stepLabels}
                 currentIndex={CURRENT_STEP_IDX}
-                onBack={() => setStep(0)}
-                onNext={() => setStep(2)}
+                onBack={() => setStep(2)}
+                onNext={() => setStep(4)}
                 canNext={true}
             >
                 <OnboardingTTSInstructionsHeaderActions
                     os={os}
                     onOpenInstaller={openInstaller}
                     onOpenSettings={openSettings}
+                    onSmartSelect={smartSelectAll}
+                    canSmartSelect={canSmartSelect}
                 />
             </OnboardingHeader>
 
