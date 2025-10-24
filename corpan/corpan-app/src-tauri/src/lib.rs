@@ -259,7 +259,6 @@ pub fn run() {
             get_random_entry_with_translations,
             get_entry_by_id_with_translations
         ])
-        .plugin(tauri_plugin_safe_area_insets_css::init())
         .plugin(tauri_plugin_tts::init())
         .plugin(tauri_plugin_opener::init())
         .run(tauri::generate_context!())
