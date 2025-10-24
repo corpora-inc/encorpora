@@ -67,7 +67,7 @@ export function OnboardingFinish() {
     return (
         <section
             id="onboarding-scroll"
-            className="flex h-dvh min-h-[100svh] w-full flex-col overflow-y-auto overscroll-contain bg-white md:bg-gray-50"
+            className="flex h-dvh min-h-[100svh] w-full flex-col overflow-y-auto overscroll-contain"
             style={{
                 WebkitOverflowScrolling: "touch",
                 paddingLeft: "env(safe-area-inset-left)",
@@ -92,10 +92,10 @@ export function OnboardingFinish() {
                 <div className="mx-auto w-full max-w-xl">
                     {/* Hero text */}
                     <div className="mb-6 text-center">
-                        <h2 className="text-lg font-semibold text-gray-900">
+                        <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-300">
                             {t("onboarding.welcomeTitle", { defaultValue: "Join the community" })}
                         </h2>
-                        <p className="mt-2 text-sm text-gray-600">
+                        <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
                             {t("onboarding.welcomeBody", {
                                 defaultValue:
                                     "Follow our channels for updates, deep dives, and community learning sessions.",
@@ -109,18 +109,18 @@ export function OnboardingFinish() {
                             <li key={key}>
                                 <button
                                     onClick={() => openExternal(url)}
-                                    className="group w-full rounded-xl border border-gray-200 bg-white p-4 text-left shadow-sm transition hover:-translate-y-[1px] hover:border-purple-400 hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-400 hover:cursor-pointer"
+                                    className="group w-full rounded-xl border border-gray-200 bg-background p-4 text-left shadow-sm transition hover:-translate-y-[1px] hover:border-black hover:shadow-md hover:bg-black/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-black hover:cursor-pointer dark:border-input dark:bg-input/30 dark:shadow-none dark:hover:border-input dark:hover:bg-input/50 dark:focus-visible:ring-white/70"
                                     aria-label={t(`socials.${key}.cta`, { defaultValue: "Open link" })}
                                 >
                                     <div className="flex items-center gap-3">
                                         <span
-                                            className={`grid h-10 w-10 place-items-center rounded-lg bg-gray-50 ${cls} transition group-hover:scale-105`}
+                                            className={`grid h-10 w-10 place-items-center rounded-lg bg-gray-100 ${cls} transition group-hover:scale-105 dark:bg-input/40 dark:text-current`}
                                             aria-hidden
                                         >
                                             <Icon size={20} />
                                         </span>
                                         <div className="min-w-0 flex-1">
-                                            <div className="truncate text-sm font-semibold text-gray-900">
+                                            <div className="truncate text-sm font-semibold text-gray-900 dark:text-slate-100">
                                                 {t(`socials.${key}.title`, {
                                                     // sensible defaults per brand
                                                     defaultValue:
@@ -133,7 +133,7 @@ export function OnboardingFinish() {
                                                                     : "Website",
                                                 })}
                                             </div>
-                                            <div className="mt-0.5 line-clamp-2 text-xs text-gray-600">
+                                            <div className="mt-0.5 line-clamp-2 text-xs text-gray-600 dark:text-slate-400">
                                                 {t(`socials.${key}.desc`, {
                                                     defaultValue:
                                                         key === "youtube"
@@ -149,7 +149,7 @@ export function OnboardingFinish() {
                                         </div>
                                         <ExternalLink
                                             size={16}
-                                            className="shrink-0 text-gray-400 transition group-hover:text-gray-600"
+                                            className="shrink-0 text-gray-500 transition group-hover:text-gray-700 dark:text-slate-400 dark:group-hover:text-slate-200"
                                             aria-hidden
                                         />
                                     </div>
@@ -159,7 +159,7 @@ export function OnboardingFinish() {
                     </ul>
 
                     {/* Subtle nudge */}
-                    <div className="mt-6 text-center text-xs text-gray-500 pb-20">
+                    <div className="mt-6 text-center text-xs text-gray-500 dark:text-gray-400 pb-20">
                         {t("onboarding.welcomeFollowUp", {
                             defaultValue: "Thanks for being here - see you in the community!",
                         })}

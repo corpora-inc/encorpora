@@ -57,7 +57,10 @@
     "large": "बड़ा",
     "extraLarge": "बहुत बड़ा",
     "testTts": "नीचे दिए गए बटनों से अपनी TTS सेटिंग्स जाँचें:",
-    "showRomanization": "रोमन लिप्यंतरण दिखाएँ"
+    "showRomanization": "रोमन लिप्यंतरण दिखाएँ",
+    "themeMode": "थीम मोड",
+    "turnOnLightMode": "लाइट मोड चालू करें",
+    "turnOnDarkMode": "डार्क मोड चालू करें"
   },
   "onboarding": {
     "welcome": "स्वागत है",

@@ -19,6 +19,7 @@ import About from "./About";
 import { useSettingsStore } from "@/store/settings";
 import { useTranslation } from "react-i18next";
 import StacksManager from "./StacksManager";
+import ThemeToggle from "./ThemeSwitch";
 import { JumpToTTSButton } from "./JumpToTTSButton";
 import ThemeToggle from "./ThemeSwitch";
 

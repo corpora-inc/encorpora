@@ -120,7 +120,7 @@ function QualityIcon({ q }: { q?: VoiceInfo["quality"] }) {
             {Array.from({ length: 4 }, (_, i) => (
                 <span
                     key={i}
-                    className={`inline-block h-3 w-1 rounded-sm ${i < level ? "bg-emerald-600" : "bg-gray-300"}`}
+                    className={`inline-block h-3 w-1 rounded-sm ${i < level ? "bg-emerald-600 dark:bg-emerald-400" : "bg-gray-300 dark:bg-slate-600"}`}
                 />
             ))}
         </div>
@@ -129,9 +129,9 @@ function QualityIcon({ q }: { q?: VoiceInfo["quality"] }) {
 
 function GenderIcon({ g }: { g?: VoiceInfo["gender"] }) {
     // console.warn(g);
-    if (g === "female") return <Venus size={14} className="text-gray-600" />;
-    if (g === "male") return <Mars size={14} className="text-gray-600" />;
-    return <User size={14} className="text-gray-400" />;
+    if (g === "female") return <Venus size={14} className="text-gray-600 dark:text-slate-300" />;
+    if (g === "male") return <Mars size={14} className="text-gray-600 dark:text-slate-300" />;
+    return <User size={14} className="text-gray-400 dark:text-slate-500" />;
 }
 
 function VoiceCard({
@@ -153,7 +153,7 @@ function VoiceCard({
     prettyLang: string;
     isHighlighted: boolean;
 }) {
-    const highlightCls = isHighlighted ? "ring-2 ring-purple-400 animate-pulse" : "";
+    const highlightCls = isHighlighted ? "ring-2 ring-black/50 dark:ring-white/40 animate-pulse" : "";
     // console.warn(v);
     return (
         <div
@@ -168,21 +168,25 @@ function VoiceCard({
             }}
             onClick={onToggle}
             className={[
-                "cursor-pointer rounded-lg border p-3 shadow-sm transition focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-400",
-                checked ? "border-purple-500 ring-2 ring-purple-200" : "border-gray-200 hover:bg-gray-50",
+                "cursor-pointer rounded-lg border p-3 shadow-sm transition focus:outline-none focus-visible:ring-2 focus-visible:ring-black dark:shadow-none dark:focus-visible:ring-white/70",
+                checked
+                    ? "border-black ring-2 ring-black/30 dark:border-input dark:ring-white/40 dark:bg-input/60"
+                    : "border-gray-200 hover:bg-gray-50 dark:border-input dark:bg-input/30 dark:hover:bg-input/50",
                 highlightCls,
             ].join(" ")}
         >
             <div className="flex items-start justify-between gap-2">
                 <div className="min-w-0 flex-1">
-                    <div className="truncate text-sm font-semibold text-gray-900">{v.name || v.id}</div>
-                    <div className="text-xs text-gray-600">{prettyLang}</div>
+                    <div className="truncate text-sm font-semibold text-gray-900 dark:text-slate-100">{v.name || v.id}</div>
+                    <div className="text-xs text-gray-600 dark:text-slate-400">{prettyLang}</div>
                 </div>
 
                 <div
                     className={[
                         "shrink-0 rounded-full border p-1.5",
-                        checked ? "bg-purple-600 border-purple-600 text-white" : "bg-white border-gray-300 text-gray-800",
+                        checked
+                            ? "bg-black border-black text-white dark:bg-input/70 dark:border-input dark:text-white"
+                            : "bg-background border-gray-300 text-gray-800 dark:bg-input/30 dark:border-input dark:text-slate-100",
                     ].join(" ")}
                     aria-hidden
                 >
@@ -193,7 +197,7 @@ function VoiceCard({
             <div className="mt-2 flex flex-wrap items-center gap-2">
                 <QualityIcon q={v.quality} />
                 {v.engine ? (
-                    <span className="rounded border border-slate-200 bg-slate-100 px-1.5 py-0.5 text-[10px] text-slate-800">
+                    <span className="rounded border border-slate-200 bg-slate-100 px-1.5 py-0.5 text-[10px] text-slate-800 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-200">
                         {v.engine}
                     </span>
                 ) : null}
@@ -206,14 +210,14 @@ function VoiceCard({
                         e.stopPropagation(); // don’t toggle when previewing
                         onPreview();
                     }}
-                    className="inline-flex items-center gap-1.5 rounded-md border bg-white px-2.5 py-1.5 text-xs font-medium text-gray-800 shadow-sm hover:bg-gray-50 hover:cursor-pointer"
+                    className="inline-flex items-center gap-1.5 rounded-md border border-gray-300 bg-background px-2.5 py-1.5 text-xs font-medium text-gray-900 shadow-sm hover:bg-gray-50 hover:cursor-pointer dark:border-input dark:bg-input/30 dark:text-slate-100 dark:hover:bg-input/50"
                     dir={isRTL ? "rtl" : "ltr"}
                     aria-label={ariaPreview}
                     title={ariaPreview}
                 >
-                    <Volume2 size={14} className="text-purple-700" />
+                    <Volume2 size={14} className="text-black dark:text-white" />
                 </button>
-                <div className="truncate text-[11px] text-gray-500">{v.id}</div>
+                <div className="truncate text-[11px] text-gray-500 dark:text-slate-400">{v.id}</div>
             </div>
         </div>
     );
@@ -315,14 +319,14 @@ export const OnboardingTTSInstructionsLanguageSection = memo(function Section({
     const perCardPreviewAria = "Preview";
 
     return (
-        <div className="mt-6 overflow-hidden rounded-xl border bg-white shadow-sm">
+        <div className="mt-6 overflow-hidden rounded-xl border border-gray-200 bg-background shadow-sm transition dark:border-input dark:bg-input/10 dark:shadow-none">
             {/* Header row: language label + count + preview-next */}
-            <div className="flex flex-col gap-3 border-b bg-gray-50 p-3 sm:flex-row sm:items-center sm:justify-between sm:p-4">
+            <div className="flex flex-col gap-3 border-b border-gray-200 bg-background p-3 sm:flex-row sm:items-center sm:justify-between sm:p-4 dark:border-input dark:bg-input/20">
                 <div className="flex items-center gap-3">
-                    <span className="text-sm font-semibold tracking-wide text-gray-900 sm:text-base">
+                    <span className="text-sm font-semibold tracking-wide text-gray-900 sm:text-base dark:text-slate-100">
                         {sectionLabel}
                     </span>
-                    <span className="rounded-full border border-gray-900 bg-gray-900 px-2 py-1 text-xs font-semibold text-white">
+                    <span className="rounded-full border border-black bg-black px-2 py-1 text-xs font-semibold text-white dark:border-white dark:bg-white dark:text-black">
                         {voicesWithPretty.length}
                     </span>
                 </div>
@@ -330,12 +334,12 @@ export const OnboardingTTSInstructionsLanguageSection = memo(function Section({
                 <div className="flex items-center gap-2">
                     <button
                         onClick={playNextOnce}
-                        className="inline-flex items-center gap-2 rounded-md border bg-white px-3 py-2 text-sm font-medium text-gray-800 shadow-sm hover:bg-gray-50 hover:cursor-pointer"
+                        className="inline-flex items-center gap-2 rounded-md border border-gray-300 bg-background px-3 py-2 text-sm font-medium text-gray-900 shadow-sm hover:bg-gray-50 hover:cursor-pointer dark:border-input dark:bg-input/30 dark:text-slate-100 dark:hover:bg-input/50"
                         dir={isRTL ? "rtl" : "ltr"}
                         aria-label={headerPreviewAria}
                         title={headerPreviewAria}
                     >
-                        <Volume2 size={16} className="text-purple-700" />
+                        <Volume2 size={16} className="text-black dark:text-white" />
                     </button>
                 </div>
             </div>
@@ -343,7 +347,7 @@ export const OnboardingTTSInstructionsLanguageSection = memo(function Section({
             {/* Grid of voices */}
             {voicesWithPretty.length === 0 ? (
                 <div className="p-6">
-                    <div className="flex h-24 items-center justify-center rounded-lg border-2 border-dashed text-gray-400 sm:h-28" />
+                    <div className="flex h-24 items-center justify-center rounded-lg border-2 border-dashed text-gray-400 sm:h-28 dark:border-slate-600 dark:text-slate-500" />
                 </div>
             ) : (
                 <div className="grid grid-cols-1 gap-3 p-3 sm:grid-cols-2 sm:p-4 lg:grid-cols-3">

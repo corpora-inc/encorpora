@@ -57,7 +57,10 @@
     "large": "大",
     "extraLarge": "特大",
     "testTts": "点击下方按钮测试您的 TTS 设置：",
-    "showRomanization": "显示罗马化"
+    "showRomanization": "显示罗马化",
+    "themeMode": "主题模式",
+    "turnOnLightMode": "开启浅色模式",
+    "turnOnDarkMode": "开启深色模式"
   },
   "onboarding": {
     "welcome": "欢迎",
