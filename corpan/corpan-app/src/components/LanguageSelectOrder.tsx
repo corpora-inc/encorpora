@@ -1,7 +1,7 @@
-import { useSettingsStore, ALL_LANGUAGES } from "@/store/settings";
 import {
   DndContext,
   PointerSensor,
+  TouchSensor,
   useSensors,
   useSensor,
   closestCenter,
@@ -11,13 +11,49 @@ import {
   useSortable,
   verticalListSortingStrategy,
 } from "@dnd-kit/sortable";
-
+import { restrictToVerticalAxis, restrictToParentElement } from "@dnd-kit/modifiers";
 import { CSS } from "@dnd-kit/utilities";
 import { Button } from "@/components/ui/button";
 import { GripVertical, Plus, X } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import { ALL_LANGUAGES, useSettingsStore } from "@/store/settings";
 import { toCamelCase } from "@/util/convert";
-// import i18n from "@/i18n";
+
+function lockScroll(lock: boolean) {
+  const ids = ["settings-modal-content", "onboarding-scroll"]; // modal first, then onboarding
+  for (const id of ids) {
+    const el = document.getElementById(id) as HTMLElement | null;
+    if (!el) continue;
+
+    if (lock) {
+      // stash current values so we can restore exactly
+      if (!("prevOverflowY" in el.dataset)) {
+        el.dataset.prevOverflowY = getComputedStyle(el).overflowY;
+      }
+      if (!("prevTouchAction" in el.dataset)) {
+        el.dataset.prevTouchAction = el.style.touchAction || "";
+      }
+      if (!("prevOverscroll" in el.dataset)) {
+        el.dataset.prevOverscroll = el.style.overscrollBehaviorY || "";
+      }
+
+      // freeze scroll + stop scroll chaining on iOS/mac catalyst
+      el.style.overflowY = "hidden";
+      el.style.touchAction = "none";             // iOS 13+ honored in WKWebView
+      el.style.overscrollBehaviorY = "contain";  // avoid bounce / chain
+    } else {
+      // restore
+      el.style.overflowY = el.dataset.prevOverflowY || "";
+      el.style.touchAction = el.dataset.prevTouchAction || "";
+      el.style.overscrollBehaviorY = el.dataset.prevOverscroll || "";
+      delete el.dataset.prevOverflowY;
+      delete el.dataset.prevTouchAction;
+      delete el.dataset.prevOverscroll;
+    }
+  }
+}
+
+
 
 function LangChip({
   code,
@@ -39,32 +75,31 @@ function LangChip({
   return (
     <div
       className={`
-                flex items-center gap-1 px-3 py-1 rounded-md border bg-white shadow-sm
-                ${isPrimary ? "bg-purple-50 border-purple-300" : ""}
-                ${isDragging ? "opacity-60 border-blue-400 shadow-lg" : ""}
-                select-none mb-1
-            `}
+        mb-1 flex items-center gap-1 rounded-md border bg-white px-3 py-1 shadow-sm select-none
+        ${isPrimary ? "bg-purple-50 border-purple-300" : ""}
+        ${isDragging ? "opacity-60 border-blue-400 shadow-lg" : ""}
+      `}
       style={{ minWidth: 0 }}
       {...props}
     >
-      <span className="mr-1 text-gray-400 cursor-grab " {...dragHandleProps}>
+      <span
+        className="mr-1 text-gray-400 cursor-grab touch-none"
+        {...dragHandleProps}
+      >
         <GripVertical size={16} />
       </span>
       <span
-        className="flex-1 truncate cursor-grab"
+        className="flex-1 truncate cursor-grab touch-none"
         {...dragHandleProps}
         dir={dir()}
       >
-        {/* {LANGUAGE_NAMES[code] || code} */}
-        {/* TODO */}
         {t(`languages.${toCamelCase(code)}` as any)}
       </span>
       {onRemove && (
         <button
           type="button"
-          className="ml-2 p-0.5 text-gray-300 hover:text-red-400 z-1000"
-          aria-label="Remove language"
-          tabIndex={0}
+          className="z-50 ml-2 p-0.5 text-gray-300 hover:text-red-400"
+          aria-label={t("settings.removeLanguage", { defaultValue: "Remove language" })}
           onClick={onRemove}
         >
           <X size={15} />
@@ -82,10 +117,14 @@ export function LanguageSelectOrder() {
 
   const displayedLanguages = [...languages].reverse();
 
-  // DnD-kit
-  const sensors = useSensors(useSensor(PointerSensor));
+  // Sensors: Pointer + Touch with activation constraint for iOS
+  const sensors = useSensors(
+    useSensor(PointerSensor),
+    useSensor(TouchSensor, {
+      activationConstraint: { delay: 120, tolerance: 6 }, // small hold + wiggle to start drag
+    })
+  );
 
-  // Handlers
   const handleDragEnd = (event: any) => {
     const { active, over } = event;
     if (over && active.id !== over.id) {
@@ -100,10 +139,11 @@ export function LanguageSelectOrder() {
         i18n.changeLanguage(newLanguages[0]);
       }
     }
+    lockScroll(false);
   };
 
   const handleRemove = (code: string) => {
-    if (languages.length <= 1) return; // Don't allow removing last
+    if (languages.length <= 1) return;
     const newLanguages = languages.filter((c) => c !== code);
     setLanguages(newLanguages);
     i18n.changeLanguage(newLanguages[0]);
@@ -117,41 +157,23 @@ export function LanguageSelectOrder() {
     }
   };
 
-  // Find unselected languages
   const available = ALL_LANGUAGES.filter((c) => !languages.includes(c));
 
   return (
-    <div className="w-full">
-      <div className="mb-3 font-semibold text-sm" dir={dir()}>
+    <div className="w-full" dir={dir()}>
+      <div className="mb-3 text-sm font-semibold">
         {t("settings.selectedLanguages")}
       </div>
+
       <DndContext
         sensors={sensors}
         collisionDetection={closestCenter}
-        onDragStart={() => {
-          const el = document.querySelector(
-            "#settings-modal-content"
-          ) as HTMLElement;
-          if (el) el.style.overflow = "hidden";
-        }}
-        onDragEnd={(event) => {
-          handleDragEnd(event);
-          const el = document.querySelector(
-            "#settings-modal-content"
-          ) as HTMLElement;
-          if (el) el.style.overflow = "";
-        }}
-        onDragCancel={() => {
-          const el = document.querySelector(
-            "#settings-modal-content"
-          ) as HTMLElement;
-          if (el) el.style.overflow = "";
-        }}
+        modifiers={[restrictToVerticalAxis, restrictToParentElement]}
+        onDragStart={() => lockScroll(true)}
+        onDragEnd={handleDragEnd}
+        onDragCancel={() => lockScroll(false)}
       >
-        <SortableContext
-          items={displayedLanguages}
-          strategy={verticalListSortingStrategy}
-        >
+        <SortableContext items={displayedLanguages} strategy={verticalListSortingStrategy}>
           <div className="flex flex-col gap-1">
             {displayedLanguages.map((code, i) => (
               <SortableLangChip
@@ -164,9 +186,10 @@ export function LanguageSelectOrder() {
           </div>
         </SortableContext>
       </DndContext>
+
       {available.length > 0 && (
-        <div className="mt-4" dir={dir()}>
-          <div className="mb-2 text-xs text-gray-500" dir={dir()}>
+        <div className="mt-4">
+          <div className="mb-2 text-xs text-gray-500">
             {t("settings.addMoreLanguages")}
           </div>
           <div className="flex flex-wrap gap-2">
@@ -175,28 +198,20 @@ export function LanguageSelectOrder() {
                 key={code}
                 variant="outline"
                 size="sm"
-                className="rounded-md text-xs p-3"
+                className="rounded-md p-3 text-xs"
                 onClick={() => handleAdd(code)}
               >
-                <Plus size={15} />
-                <span className="mr-1" dir={dir()}>
-                  {t(`languages.${toCamelCase(code)}` as any) || code}
-                </span>
+                <Plus size={15} className="mr-1" />
+                <span>{t(`languages.${toCamelCase(code)}` as any) || code}</span>
               </Button>
             ))}
           </div>
-        </div>
-      )}
-      {languages.length === 1 && (
-        <div className="mt-3 text-xs text-red-400">
-          At least one language required.
         </div>
       )}
     </div>
   );
 }
 
-// --- Sortable chip wrapper ---
 function SortableLangChip({
   code,
   onRemove,
@@ -206,14 +221,9 @@ function SortableLangChip({
   onRemove?: () => void;
   isPrimary?: boolean;
 }) {
-  const {
-    attributes,
-    listeners,
-    setNodeRef,
-    transform,
-    transition,
-    isDragging,
-  } = useSortable({ id: code });
+  const { attributes, listeners, setNodeRef, transform, transition, isDragging } =
+    useSortable({ id: code });
+
   return (
     <div
       ref={setNodeRef}
