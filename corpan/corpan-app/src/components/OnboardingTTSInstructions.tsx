@@ -77,7 +77,7 @@ export function OnboardingTTSInstructions() {
 
     const { t } = useTranslation();
     const os = useMemo(() => detectOSFromUA(), []);
-    const [voices, setVoices] = useState<VoiceInfo[]>([]);
+    const [voices, setVoices] = useState<VoiceInfo[] | null>(null);
 
     const visibleRef = useRef(true);
     const pollTimer = useRef<number | null>(null);
@@ -143,12 +143,14 @@ export function OnboardingTTSInstructions() {
         [t]
     );
 
-    const langs =
-        (languages && languages.length
-            ? languages
-            : Array.from(new Set(voices.map((v) => baseLang(v.language))))) || [];
+    const langs = languages;
+    if (!langs || !langs.length) {
+        console.warn("OnboardingTTSInstructions: no languages selected");
+        return null;
+    }
 
-    function voicesForLang(code: string): VoiceInfo[] {
+    function voicesForLang(code: string): VoiceInfo[] | null {
+        if (!voices) return null;
         const compatible = voices.filter((v) => {
             const L = (v.language || "").toLowerCase();
             const c = code.toLowerCase();
@@ -160,7 +162,7 @@ export function OnboardingTTSInstructions() {
 
     // --- Smart Select: enabled only if each language has >= 1 installed voice
     const canSmartSelect = useMemo(
-        () => langs.every((code) => voicesForLang(code).length > 0),
+        () => langs.every((code) => (voicesForLang(code) || []).length > 0),
         // voices in deps so this recomputes when the backend updates
         [langs, voices]
     );
@@ -181,9 +183,9 @@ export function OnboardingTTSInstructions() {
 
     // FIX: select *all* installed voices for each language, not just the first
     function smartSelectAll() {
-        if (!canSmartSelect) return;
+        // if (!canSmartSelect) return;
         for (const code of langs) {
-            const allIds = voicesForLang(code).map((v) => v.id);
+            const allIds = (voicesForLang(code) || []).map((v) => v.id);
             setSelectionForLang(code, allIds);
         }
     }
@@ -226,6 +228,11 @@ export function OnboardingTTSInstructions() {
                         const list = voicesForLang(code);
                         const pref = voicePrefs[code] ?? { ids: [], mode: "cycle" as const };
                         const sample = sampleFor(code);
+                        if (list === null) {
+                            return (
+                                null
+                            )
+                        };
 
                         return (
                             <OnboardingTTSInstructionsLanguageSection
