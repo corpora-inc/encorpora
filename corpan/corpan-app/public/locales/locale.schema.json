@@ -242,6 +242,13 @@
       ],
       "additionalProperties": false
     },
+    "dialects": {
+      "type": "object",
+      "properties": {},
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
     "onboarding": {
       "type": "object",
       "properties": {
@@ -278,7 +285,16 @@
         "linkCopied": {
           "type": "string"
         },
-        "reonboard": {
+        "reconfigureStack": {
+          "type": "string"
+        },
+        "openVoiceSettings": {
+          "type": "string"
+        },
+        "welcomeFollowUp": {
+          "type": "string"
+        },
+        "openTTSSetup": {
           "type": "string"
         }
       },
@@ -294,7 +310,10 @@
         "welcomeBody",
         "welcomeVisit",
         "linkCopied",
-        "reonboard"
+        "reconfigureStack",
+        "openVoiceSettings",
+        "welcomeFollowUp",
+        "openTTSSetup"
       ],
       "additionalProperties": false
     },
