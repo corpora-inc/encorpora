@@ -38,7 +38,7 @@ const SAMPLES: Record<string, string> = {
     vi: "Tôi mong được học cùng bạn.",
     pl: "Nie mogę się doczekać nauki z tobą.",
     hu: "Alig várom, hogy tanulhassak veled.",
-    fa: "سبوس دارم با شما یاد بگیرم.",
+    fa: "سبوس دارم با شما یاد بگیرم.", // (left as-is from your original)
 };
 
 function uniqBy<T>(arr: T[], key: (x: T) => string): T[] {
@@ -114,9 +114,8 @@ export function OnboardingTTSInstructions() {
     }
 
     async function speakExact(voice: VoiceInfo, text: string, rate = 0.9) {
-        console.warn("speakExact", voice.id);
         try {
-            // IMPORTANT: plugin expects { args: { ... , voice_id } }
+            // Prefer native TTS via plugin (Android/iOS), fallback to Web Speech
             await invoke("plugin:tts|speak", {
                 args: {
                     text,
@@ -150,14 +149,12 @@ export function OnboardingTTSInstructions() {
             : Array.from(new Set(voices.map((v) => baseLang(v.language))))) || [];
 
     function voicesForLang(code: string): VoiceInfo[] {
-        // NO filtering by quality here — show everything the native layer allowed.
         const compatible = voices.filter((v) => {
             const L = (v.language || "").toLowerCase();
             const c = code.toLowerCase();
             return L === c || L.startsWith(c + "-") || baseLang(L) === baseLang(c);
         });
         const unique = uniqBy(compatible, (v) => `${v.id}|${v.language}`);
-        // Stable, helpful order: exact/base matches & higher quality float up, but everything stays visible.
         return sortVoicesWithLangBias(unique, code);
     }
 
@@ -176,8 +173,8 @@ export function OnboardingTTSInstructions() {
                 title={t("onboarding.textToSpeechSetup", { defaultValue: "Text-to-speech setup" })}
                 steps={stepLabels}
                 currentIndex={CURRENT_STEP_IDX}
-                onBack={() => setStep(2)}
-                onNext={() => setStep(4)}
+                onBack={() => setStep(0)}
+                onNext={() => setStep(2)}
                 canNext={true}
             >
                 <OnboardingTTSInstructionsHeaderActions
@@ -187,7 +184,7 @@ export function OnboardingTTSInstructions() {
                 />
             </OnboardingHeader>
 
-            {/* Content below header (no extra offset needed; header height is measured) */}
+            {/* Content below header */}
             <main
                 className="flex-1 min-h-0"
                 style={{ paddingBottom: "calc(env(safe-area-inset-bottom) + 1.5rem)" }}
@@ -212,10 +209,9 @@ export function OnboardingTTSInstructions() {
                         );
                     })}
                 </div>
-                <div className="h-8"
-                    style={{
-                        paddingBottom: "calc(env(safe-area-inset-bottom) + 1rem)",
-                    }}
+                <div
+                    className="h-8"
+                    style={{ paddingBottom: "calc(env(safe-area-inset-bottom) + 1rem)" }}
                 />
             </main>
         </section>
