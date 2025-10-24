@@ -57,10 +57,7 @@
     "large": "Grande",
     "extraLarge": "Muito grande",
     "testTts": "Teste suas configurações de TTS clicando nos botões abaixo:",
-    "showRomanization": "Mostrar romanização",
-    "themeMode": "Modo de Tema",
-    "turnOnLightMode": "Ativar modo claro",
-    "turnOnDarkMode": "Ativar modo escuro"
+    "showRomanization": "Mostrar romanização"
   },
   "onboarding": {
     "welcome": "Bem-vindo",

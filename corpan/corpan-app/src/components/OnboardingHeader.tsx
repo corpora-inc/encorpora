@@ -51,7 +51,7 @@ export const OnboardingHeader = memo(function OnboaringHeader({
         <header
             ref={headerRef}
             // One blurred surface for the entire header (title/stepper + actions)
-            className="sticky top-0 z-50 isolate bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60 dark:bg-background/95 dark:supports-[backdrop-filter]:bg-background/40"
+            className="sticky top-0 z-50 isolate bg-white/80 backdrop-blur supports-[backdrop-filter]:bg-white/60"
             style={{ paddingTop: "env(safe-area-inset-top)" }}
         // dir={dir()}
         >
@@ -73,7 +73,7 @@ export const OnboardingHeader = memo(function OnboaringHeader({
                         type="button"
                         onClick={onNext}
                         disabled={!canNext}
-                        className="h-10 px-3 border border-purple-400 bg-black text-white shadow-sm transition hover:bg-black/90 hover:border-purple-500 disabled:cursor-not-allowed disabled:border-gray-300 disabled:bg-gray-200 disabled:text-gray-500 dark:border-purple-300 dark:bg-slate-900 dark:text-slate-100 dark:hover:bg-slate-800 dark:hover:border-purple-200 dark:disabled:border-slate-700 dark:disabled:bg-slate-800 dark:disabled:text-slate-500"
+                        className="h-10 px-3 border border-purple-400 bg-black text-white hover:bg-gray-900 disabled:cursor-not-allowed disabled:border-gray-200 disabled:bg-gray-200"
                         aria-label="Next"
                         aria-disabled={!canNext}
                     >
@@ -85,7 +85,7 @@ export const OnboardingHeader = memo(function OnboaringHeader({
                 {/* Centered title + stepper */}
                 <div className="pointer-events-none absolute left-4 right-4 top-1/2 -translate-y-1/2">
                     <div className="mx-auto max-w-md px-15">
-                        <div className="truncate text-center text-sm font-semibold text-gray-900 dark:text-slate-100">
+                        <div className="truncate text-center text-sm font-semibold text-gray-900">
                             {title}
                         </div>
                         <Stepper steps={steps} currentIndex={currentIndex} />
@@ -95,7 +95,7 @@ export const OnboardingHeader = memo(function OnboaringHeader({
 
             {/* Actions slot: transparent so the parent's blur shows through */}
             {children && (
-                <div className="border-white/40 bg-transparent dark:border-white/10">
+                <div className="border-white/40 bg-transparent">
                     <div className="mx-auto w-full max-w-5xl px-3 py-2">{children}</div>
                 </div>
             )}
@@ -128,11 +128,7 @@ const Stepper = memo(function Stepper({
                                 aria-label={label}
                                 className={[
                                     "block h-1.5 rounded-full",
-                                    done
-                                        ? "bg-purple-500 dark:bg-purple-400"
-                                        : active
-                                            ? "bg-purple-400 dark:bg-purple-300"
-                                            : "bg-gray-300 dark:bg-slate-700",
+                                    done ? "bg-purple-500" : active ? "bg-purple-400" : "bg-gray-200",
                                 ].join(" ")}
                             />
                         </li>

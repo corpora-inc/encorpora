@@ -57,10 +57,7 @@
     "large": "Большой",
     "extraLarge": "Очень большой",
     "testTts": "Проверьте настройки TTS, нажав кнопки ниже:",
-    "showRomanization": "Показать романизацию",
-    "themeMode": "Режим темы",
-    "turnOnLightMode": "Включить светлый режим",
-    "turnOnDarkMode": "Включить тёмный режим"
+    "showRomanization": "Показать романизацию"
   },
   "onboarding": {
     "welcome": "Добро пожаловать",

@@ -29,7 +29,15 @@ export function OnboardingTTSInstructionsHeaderActions({
         <div className="w-full flex items-center justify-center">
             <button
                 onClick={handlePrimary}
-                className="inline-flex items-center gap-2 rounded-md border border-gray-300/70 bg-transparent px-4 py-2 text-sm font-medium text-gray-900 shadow-sm transition hover:cursor-pointer hover:bg-white/50 focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-400 active:scale-[0.99]  dark:text-slate-100 dark:bg-input/30 dark:border-input dark:hover:bg-input/50 dark:focus-visible:ring-purple-300"
+                className="
+          inline-flex items-center gap-2 rounded-md
+          border border-gray-300/70 bg-transparent
+          px-4 py-2 text-sm font-medium text-gray-900
+          shadow-sm hover:bg-white/50
+          focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-400
+          active:scale-[0.99] transition
+            hover:cursor-pointer
+        "
                 aria-label={label}
             >
                 <Icon size={16} />

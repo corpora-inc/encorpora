@@ -132,7 +132,6 @@ export function OnboardingWelcome() {
                     outline-none ring-0 z-10
                     shadow-2xl
                     text-3xl
-                    text-primary-foreground
                     hover:cursor-pointer
                 "
                 style={{

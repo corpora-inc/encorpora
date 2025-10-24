@@ -57,10 +57,7 @@
     "large": "Nagy",
     "extraLarge": "Nagyon nagy",
     "testTts": "Tesztelje a TTS beállításokat az alábbi gombokkal:",
-    "showRomanization": "Rómaizáció megjelenítése",
-    "themeMode": "Téma mód",
-    "turnOnLightMode": "Világos mód bekapcsolása",
-    "turnOnDarkMode": "Sötét mód bekapcsolása"
+    "showRomanization": "Rómaizáció megjelenítése"
   },
   "onboarding": {
     "welcome": "Üdvözöljük",
