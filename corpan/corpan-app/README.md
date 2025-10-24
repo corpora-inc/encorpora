@@ -3,7 +3,7 @@
 [![Star on GitHub](https://img.shields.io/github/stars/corpora-inc/encorpora?style=social)](https://github.com/corpora-inc/encorpora/stargazers)
 [![Open Issues](https://img.shields.io/github/issues/corpora-inc/encorpora)](https://github.com/corpora-inc/encorpora/issues)
 [![Last Commit](https://img.shields.io/github/last-commit/corpora-inc/encorpora)](https://github.com/corpora-inc/encorpora/commits)
-[![Build with pnpm](https://img.shields.io/badge/built%20with-pnpm-blueviolet)](https://pnpm.io/)
+[![Build with npm](https://img.shields.io/badge/built%20with-npm-blueviolet)](https://npm.io/)
 
 Corpan is a precision language acceleration desktop app that turns curated bilingual corpora into an interactive study environment. The React + Tailwind UI is packaged with a Tauri runtime that embeds SQLite, premium on-device text-to-speech, and deterministic offline pipelines so your device becomes the most reliable tool for language acquisition.
 
@@ -35,13 +35,13 @@ Corpan is a precision language acceleration desktop app that turns curated bilin
 ## Getting Started
 
 ### Prerequisites
-- Node.js 18+ and pnpm (preferred) or npm.
+- Node.js 18+ and npm 
 - Rust toolchain (`rustup`) and the system packages required by [Tauri 2 prerequisites](https://v2.tauri.app/start/prerequisites/).
 - For Python-based helper scripts, Python 3.10+ with virtualenv (optional).
 
 ### Install dependencies
 ```bash
-pnpm install
+npm install
 # or npm install
 ```
 
@@ -49,24 +49,24 @@ pnpm install
 
 #### Run the web UI in the browser
 ```bash
-pnpm dev
+npm run dev
 ```
 
 #### Run the desktop app with Tauri
 ```bash
-pnpm tauri dev
+npm run tauri dev
 ```
 
 #### Run the android / ios app app with Tauri
 ```bash
-pnpm tauri <android>/<ios> dev
+npm run tauri <android>/<ios> dev
 ```
 
 When the Tauri shell opens, you can complete the onboarding flow to create your first stack and begin exploring sentences.
 
 ## Building for Production
-- Bundle the web assets only: `pnpm build`
-- Create a native desktop bundle (msi, dmg, AppImage, etc.): `pnpm tauri build`
+- Bundle the web assets only: `npm run build`
+- Create a native desktop bundle (msi, dmg, AppImage, etc.): `npm run tauri build`
 
 Artifacts land under `dist/` (web) and `src-tauri/target/` (desktop) respectively.
 
@@ -78,7 +78,7 @@ Artifacts land under `dist/` (web) and `src-tauri/target/` (desktop) respectivel
 ## Contributing
 We welcome fixes and improvements:
 1. Fork the repository and branch from the latest default branch.
-2. Run `pnpm install` and verify changes with `pnpm tsc`, `pnpm build`, or `pnpm tauri dev`.
+2. Run `npm install` and verify changes with `npm tsc`, `npm build`, or `npm tauri dev`.
 3. Include locale updates or database migrations when behavior changes depend on them.
 4. Open a pull request describing the change, the rationale, and any manual testing performed.
 
