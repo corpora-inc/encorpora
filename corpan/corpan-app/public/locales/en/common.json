@@ -158,7 +158,8 @@
     "zh-CN-u-sd-cnsc": "Mandarin (Sichuan, Mainland China)",
     "zh-CN-u-sd-cnsn": "Mandarin (Shaanxi, Mainland China)",
     "zh-HK": "Cantonese (Hong Kong)",
-    "zh-TW": "Mandarin (Taiwan)"
+    "zh-TW": "Mandarin (Taiwan)",
+    "bn": "Bengali"
   },
   "footer": {
     "appVersion": "App version",
