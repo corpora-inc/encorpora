@@ -338,8 +338,8 @@ export function OnboardingTTSInstructionsLanguageSection({
     return (
         <div
             className={[
-                "mt-3 overflow-hidden rounded-xl border bg-white shadow-sm",
-                hasVoices ? "border-gray-200" : "border-amber-300",
+                "mt-3 overflow-hidden rounded-xl border bg-white shadow-sm dark:shadow-none dark:bg-input/30",
+                hasVoices ? "border-gray-200 dark:border-input" : "border-amber-300 dark:border-input",
             ].join(" ")}
         >
             {/* Header: toggle + label + counts + preview (one row) */}
@@ -353,7 +353,9 @@ export function OnboardingTTSInstructionsLanguageSection({
                 <div
                     className={[
                         "flex items-center justify-between gap-2 px-3 py-2 sm:px-4 border-b",
-                        hasVoices ? "bg-gray-50 border-gray-200" : "bg-amber-50/70 border-amber-200",
+                        hasVoices
+                            ? "bg-gray-50 border-gray-200 dark:bg-input/30 dark:border-input"
+                            : "bg-amber-50/70 border-amber-200 dark:bg-input/30 dark:border-input",
                     ].join(" ")}
                 >
                     {/* Left: chevron + label */}
@@ -362,13 +364,13 @@ export function OnboardingTTSInstructionsLanguageSection({
                         <span
                             className={[
                                 "truncate text-sm font-semibold tracking-wide sm:text-base",
-                                hasVoices ? "text-gray-900" : "text-amber-900",
+                                hasVoices ? "text-gray-900 dark:text-gray-100" : "text-amber-900 dark:text-amber-100",
                             ].join(" ")}
                         >
                             {sectionLabel}
                         </span>
                         {!hasVoices && (
-                            <span className="inline-flex items-center gap-1 rounded-full border border-amber-300 bg-amber-100 px-2 py-[1px] text-[11px] font-medium text-amber-900">
+                            <span className="inline-flex items-center gap-1 rounded-full border border-amber-300 bg-amber-100 px-2 py-px text-[11px] font-medium text-amber-900">
                                 <span className="h-1.5 w-1.5 rounded-full bg-amber-500" aria-hidden />
                                 {t("onboarding.noVoices", { defaultValue: "No voices" })}
                             </span>
@@ -379,7 +381,7 @@ export function OnboardingTTSInstructionsLanguageSection({
                     <div className="flex items-center gap-2">
                         <span
                             className={[
-                                "rounded-full px-2 py-[2px] text-xs font-semibold",
+                                "rounded-full px-2 py-0.5 text-xs font-semibold",
                                 hasVoices
                                     ? "border border-gray-900 bg-gray-900 text-white"
                                     : "border border-amber-600 bg-amber-600 text-white",
@@ -398,8 +400,8 @@ export function OnboardingTTSInstructionsLanguageSection({
                                 "inline-flex items-center gap-1.5 rounded-md border px-2.5 py-1.5 text-xs font-medium shadow-sm",
                                 "focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-400",
                                 hasVoices
-                                    ? "bg-white text-gray-800 hover:bg-gray-50"
-                                    : "bg-gray-200 text-gray-500 border-gray-300 cursor-not-allowed",
+                                    ? "bg-white text-gray-800 hover:bg-gray-50 dark:bg-input/60 dark:text-slate-100 dark:hover:bg-input/50"
+                                    : "bg-gray-200 text-gray-500 border-gray-300 cursor-not-allowed dark:bg-input/30 dark:text-slate-400",
                             ].join(" ")}
                             dir={isRTL ? "rtl" : "ltr"}
                             aria-label={headerPreviewAria}
