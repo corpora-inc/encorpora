@@ -1,6 +1,6 @@
 // encorpora/corpan/corpan-app/src/components/OnboardingTTSInstructionsLanguageSection.tsx
-import { memo, useMemo, useState, useEffect } from "react";
-import { CheckCircle2, Circle, Volume2, Venus, Mars, User } from "lucide-react";
+import { useState, useMemo, useEffect } from "react";
+import { CheckCircle2, Circle, Volume2, Venus, Mars, User, ChevronDown, ChevronRight } from "lucide-react";
 import type { VoiceInfo } from "@/util/tts-voices";
 import { useTranslation } from "react-i18next";
 
@@ -213,7 +213,6 @@ function VoiceCard({
                     className="inline-flex items-center gap-1.5 rounded-md border border-gray-300 bg-background px-2.5 py-1.5 text-xs font-medium text-gray-900 shadow-sm hover:bg-gray-50 hover:cursor-pointer dark:border-input dark:bg-input/30 dark:text-slate-100 dark:hover:bg-input/50"
                     dir={isRTL ? "rtl" : "ltr"}
                     aria-label={ariaPreview}
-                    title={ariaPreview}
                 >
                     <Volume2 size={14} className="text-black dark:text-white" />
                 </button>
@@ -225,7 +224,7 @@ function VoiceCard({
 
 /* ----------------------------- Section ----------------------------- */
 
-export const OnboardingTTSInstructionsLanguageSection = memo(function Section({
+export function OnboardingTTSInstructionsLanguageSection({
     code,
     voices,
     selectedIds,
@@ -247,8 +246,11 @@ export const OnboardingTTSInstructionsLanguageSection = memo(function Section({
 
     // display order: quality desc, then name asc
     const voicesSorted = useMemo(() => {
-        const score = (q?: VoiceInfo["quality"]) =>
-            (q ? QUALITY_LEVEL[(q as QualityKey)] : 0) ?? 0;
+        const score = (q?: VoiceInfo["quality"]) => {
+            if (!q) return 0;
+            const v = QUALITY_LEVEL[q as QualityKey];
+            return typeof v === "number" ? v : 0;
+        };
         return [...voicesUnique].sort((a, b) => {
             const qa = score(a.quality);
             const qb = score(b.quality);
@@ -261,10 +263,14 @@ export const OnboardingTTSInstructionsLanguageSection = memo(function Section({
 
     // pretty labels
     const sectionLabel = resolveDialectLabel(code, trDial);
-    const voicesWithPretty = voicesSorted.map((v) => ({
-        ...v,
-        __prettyLang: resolveDialectLabel(v.language || code, trDial),
-    }));
+    const voicesWithPretty = useMemo(
+        () =>
+            voicesSorted.map((v) => ({
+                ...v,
+                __prettyLang: resolveDialectLabel(v.language || code, trDial),
+            })),
+        [voicesSorted, code]
+    );
 
     // rotation index (one tap = one voice; allows overlaps)
     const [cycleIdx, setCycleIdx] = useState(0);
@@ -272,6 +278,9 @@ export const OnboardingTTSInstructionsLanguageSection = memo(function Section({
     // slow highlight per tapped/previewed voice
     const [highlight, setHighlight] = useState<Record<string, number>>({});
     const HIGHLIGHT_MS = 2000;
+
+    // collapsed by default
+    const [open, setOpen] = useState(false);
 
     // sequence follows UI order; only selected voices, fallback to first
     const selectedSet = useMemo(() => new Set(selectedIds), [selectedIds]);
@@ -291,10 +300,10 @@ export const OnboardingTTSInstructionsLanguageSection = memo(function Section({
         setHighlight((prev) => {
             const nextVersion = (prev[voiceId] ?? 0) + 1;
             const next = { ...prev, [voiceId]: nextVersion };
-            setTimeout(() => {
+            window.setTimeout(() => {
                 setHighlight((cur) => {
                     if (cur[voiceId] === nextVersion) {
-                        const { [voiceId]: _, ...rest } = cur;
+                        const { [voiceId]: _removed, ...rest } = cur;
                         return rest;
                     }
                     return cur;
@@ -318,60 +327,121 @@ export const OnboardingTTSInstructionsLanguageSection = memo(function Section({
     const headerPreviewAria = "Preview next";
     const perCardPreviewAria = "Preview";
 
+    const selectedCount = useMemo(
+        () => voicesWithPretty.filter((v) => selectedIds.includes(v.id)).length,
+        [voicesWithPretty, selectedIds]
+    );
+
+    const sectionId = `tts-lang-${code.replace(/[^a-z0-9]/gi, "_")}`;
+    const hasVoices = voicesWithPretty.length > 0;
+
     return (
-        <div className="mt-6 overflow-hidden rounded-xl border border-gray-200 bg-background shadow-sm transition dark:border-input dark:bg-input/10 dark:shadow-none">
-            {/* Header row: language label + count + preview-next */}
-            <div className="flex flex-col gap-3 border-b border-gray-200 bg-background p-3 sm:flex-row sm:items-center sm:justify-between sm:p-4 dark:border-input dark:bg-input/20">
-                <div className="flex items-center gap-3">
-                    <span className="text-sm font-semibold tracking-wide text-gray-900 sm:text-base dark:text-slate-100">
-                        {sectionLabel}
-                    </span>
-                    <span className="rounded-full border border-black bg-black px-2 py-1 text-xs font-semibold text-white dark:border-white dark:bg-white dark:text-black">
-                        {voicesWithPretty.length}
-                    </span>
-                </div>
+        <div
+            className={[
+                "mt-3 overflow-hidden rounded-xl border bg-white shadow-sm",
+                hasVoices ? "border-gray-200" : "border-amber-300",
+            ].join(" ")}
+        >
+            {/* Header: toggle + label + counts + preview (one row) */}
+            <button
+                type="button"
+                onClick={() => setOpen((o) => !o)}
+                aria-controls={sectionId}
+                aria-expanded={open}
+                className="w-full"
+            >
+                <div
+                    className={[
+                        "flex items-center justify-between gap-2 px-3 py-2 sm:px-4 border-b",
+                        hasVoices ? "bg-gray-50 border-gray-200" : "bg-amber-50/70 border-amber-200",
+                    ].join(" ")}
+                >
+                    {/* Left: chevron + label */}
+                    <div className="flex min-w-0 items-center gap-2">
+                        {open ? <ChevronDown size={16} /> : <ChevronRight size={16} />}
+                        <span
+                            className={[
+                                "truncate text-sm font-semibold tracking-wide sm:text-base",
+                                hasVoices ? "text-gray-900" : "text-amber-900",
+                            ].join(" ")}
+                        >
+                            {sectionLabel}
+                        </span>
+                        {!hasVoices && (
+                            <span className="inline-flex items-center gap-1 rounded-full border border-amber-300 bg-amber-100 px-2 py-[1px] text-[11px] font-medium text-amber-900">
+                                <span className="h-1.5 w-1.5 rounded-full bg-amber-500" aria-hidden />
+                                {t("onboarding.noVoices", { defaultValue: "No voices" })}
+                            </span>
+                        )}
+                    </div>
 
-                <div className="flex items-center gap-2">
-                    <button
-                        onClick={playNextOnce}
-                        className="inline-flex items-center gap-2 rounded-md border border-gray-300 bg-background px-3 py-2 text-sm font-medium text-gray-900 shadow-sm hover:bg-gray-50 hover:cursor-pointer dark:border-input dark:bg-input/30 dark:text-slate-100 dark:hover:bg-input/50"
-                        dir={isRTL ? "rtl" : "ltr"}
-                        aria-label={headerPreviewAria}
-                        title={headerPreviewAria}
-                    >
-                        <Volume2 size={16} className="text-black dark:text-white" />
-                    </button>
+                    {/* Right: counts + preview button */}
+                    <div className="flex items-center gap-2">
+                        <span
+                            className={[
+                                "rounded-full px-2 py-[2px] text-xs font-semibold",
+                                hasVoices
+                                    ? "border border-gray-900 bg-gray-900 text-white"
+                                    : "border border-amber-600 bg-amber-600 text-white",
+                            ].join(" ")}
+                        >
+                            {selectedCount}/{voicesWithPretty.length}
+                        </span>
+                        <button
+                            type="button"
+                            disabled={!hasVoices}
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                if (hasVoices) playNextOnce();
+                            }}
+                            className={[
+                                "inline-flex items-center gap-1.5 rounded-md border px-2.5 py-1.5 text-xs font-medium shadow-sm",
+                                "focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-400",
+                                hasVoices
+                                    ? "bg-white text-gray-800 hover:bg-gray-50"
+                                    : "bg-gray-200 text-gray-500 border-gray-300 cursor-not-allowed",
+                            ].join(" ")}
+                            dir={isRTL ? "rtl" : "ltr"}
+                            aria-label={headerPreviewAria}
+                        >
+                            <Volume2 size={14} className={hasVoices ? "text-purple-700" : "text-gray-500"} />
+                        </button>
+                    </div>
                 </div>
+            </button>
+
+            {/* Body: grid of voices (collapsed by default) */}
+            <div id={sectionId} hidden={!open}>
+                {hasVoices ? (
+                    <div className="grid grid-cols-1 gap-3 p-3 sm:grid-cols-2 sm:p-4 lg:grid-cols-3">
+                        {voicesWithPretty.map((v) => {
+                            const checked = selectedIds.includes(v.id);
+                            return (
+                                <VoiceCard
+                                    key={`${v.id}|${v.language}`}
+                                    v={v}
+                                    checked={checked}
+                                    onToggle={() => onToggleSelect(v.id)}
+                                    onPreview={() => {
+                                        flash(v.id);
+                                        onPreviewAny(v);
+                                    }}
+                                    isRTL={isRTL}
+                                    ariaPreview={perCardPreviewAria}
+                                    prettyLang={(v as any).__prettyLang}
+                                    isHighlighted={highlight[v.id] != null}
+                                />
+                            );
+                        })}
+                    </div>
+                ) : (
+                    <div className="p-4">
+                        <div className="flex h-20 items-center justify-center rounded-lg border-2 border-dashed border-amber-200 text-amber-700 sm:h-24 text-xs">
+                            {t("onboarding.noVoicesHint", { defaultValue: "Install voices to enable this language." })}
+                        </div>
+                    </div>
+                )}
             </div>
-
-            {/* Grid of voices */}
-            {voicesWithPretty.length === 0 ? (
-                <div className="p-6">
-                    <div className="flex h-24 items-center justify-center rounded-lg border-2 border-dashed text-gray-400 sm:h-28 dark:border-slate-600 dark:text-slate-500" />
-                </div>
-            ) : (
-                <div className="grid grid-cols-1 gap-3 p-3 sm:grid-cols-2 sm:p-4 lg:grid-cols-3">
-                    {voicesWithPretty.map((v) => {
-                        const checked = selectedIds.includes(v.id);
-                        return (
-                            <VoiceCard
-                                key={`${v.id}|${v.language}`}
-                                v={v}
-                                checked={checked}
-                                onToggle={() => onToggleSelect(v.id)}
-                                onPreview={() => {
-                                    flash(v.id);
-                                    onPreviewAny(v);
-                                }}
-                                isRTL={isRTL}
-                                ariaPreview={perCardPreviewAria}
-                                prettyLang={(v as any).__prettyLang}
-                                isHighlighted={highlight[v.id] != null}
-                            />
-                        );
-                    })}
-                </div>
-            )}
         </div>
     );
-});
+}

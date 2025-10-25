@@ -42,7 +42,7 @@ export default function App() {
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
       <div className={`flex flex-col min-h-0 h-screen w-full relative`}>
         <MainExperience />
-        <div className="fixed top-3 pt-safe right-5 z-50"
+        <div className="fixed top-5 pt-safe right-5 z-50"
           style={{ marginTop: getPlatformTopPaddingButtons() - 3 }}
         >
           <div className="flex items-center">

@@ -43,8 +43,8 @@
     "zustand": "^5.0.4"
   },
   "devDependencies": {
-    "@tailwindcss/vite": "^4.1.11",
-    "@tauri-apps/cli": "^2.8.1",
+    "@tailwindcss/vite": "^4.1.6",
+    "@tauri-apps/cli": "^2.9.1",
     "@types/node": "^24.4.0",
     "@types/react": "^18.3.1",
     "@types/react-dom": "^18.3.1",
