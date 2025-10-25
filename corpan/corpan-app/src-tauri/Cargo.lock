@@ -3871,6 +3871,7 @@ dependencies = [
 [[package]]
 name = "tauri-plugin-tts"
 version = "0.2.0"
+source = "git+https://github.com/skyl/tauri-plugin-tts.git?branch=ext-hack-swift-con-todo#e7b6e3d78047070196e49ed77053554f9de15281"
 dependencies = [
  "cocoa",
  "objc",
