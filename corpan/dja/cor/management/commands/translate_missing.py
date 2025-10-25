@@ -38,6 +38,9 @@ def translate_and_save(
         raise ValueError(f"Unknown provider: {provider}")
 
     print(f"  Translating {len(batch)} entries → '{lang}'...")
+    for eid, en in batch:
+        print(f'    [en] ({eid}) {en.replace("\\n", " ")[:200]}')
+
     tresp = translate_entry_batch(lang, batch, dry_run=dry_run, llm=llm)
     elapsed = time.time() - batch_start
 

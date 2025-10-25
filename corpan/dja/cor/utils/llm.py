@@ -231,14 +231,25 @@ def translate_entry_batch(
             "از ترجمه‌های تحت‌اللفظی یا ماشینی خودداری کنید و فقط معادل‌های متداول و قابل فهم را به‌کار ببرید. "
             "فقط یک لیست JSON از ترجمه‌ها بازگردانید و هیچ توضیحی اضافه نکنید."
         ),
+        "he": (
+            "אתה מתרגם מצוין מאנגלית לעברית. "
+            "כתוב כל משפט בעברית תקנית, ברורה ופשוטה, "
+            "שתהיה טבעית ומובנת ללומדים. "
+            "אל תתרגם מילה במילה ואל תשתמש בביטויים ספרותיים או מתורגמים מאנגלית. "
+            "שמור על המשמעות המקורית, "
+            "בחר תמיד במילים ובצורות הדקדוק הנכונות והנפוצות ביותר, "
+            "הוסף ניקוד כדי לעזור ללומדים, "
+            "ודאג שהתוצאה תהיה ברורה, נכונה ואידיומטית, "
+            "כמו מה שאנשים באמת אומרים בעברית של היום, "
+            "וללא שגיאות כתיב או דקדוק."
+        ),
     }.get(
         lang_code,
         (
             f"You are a world-class English-to-{language.name} translator. "
             "Translate each sentence naturally and respectfully, "
-            "as if for A1-B1 language learners. Maintain fidelity to the "
-            "original but ensure your translation sounds completely native. "
-            "Return only a JSON list of translation responses."
+            "for language learners. Maintain fidelity to the "
+            "original but ensure your translation sounds completely native, natural and idiomatic."
         ),
     )
 
