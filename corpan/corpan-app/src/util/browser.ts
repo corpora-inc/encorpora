@@ -33,7 +33,7 @@ export function getPlatformTopPaddingButtons() {
     if (/iPhone|iPad|iPod|iOS/i.test(navigator.userAgent)) {
         return 55;
     } if (isAndroidButNotChromeOS()) {
-        return 27;
+        return 37;
     }
     return 10;
 }
