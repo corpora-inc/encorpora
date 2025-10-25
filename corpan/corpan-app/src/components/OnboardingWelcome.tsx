@@ -1,3 +1,5 @@
+// src/components/onboarding/OnboardingWelcome.tsx
+
 import { useSettingsStore, ALL_LANGUAGES } from "@/store/settings";
 import { TRANSLATIONS } from "@/store/translations";
 import { RTL_LANGUAGES } from "@/store/constants";
@@ -5,7 +7,7 @@ import { ArrowRightCircle } from "lucide-react";
 import { useEffect, useState, useMemo } from "react";
 
 const DISPLAY_DURATION = 2200; // ms before fade starts
-const FADE_DURATION = 2000;    // ms fade in/out
+const FADE_DURATION = 2000; // ms fade in/out
 
 const HIGHLIGHT_COLORS = [
     "#ac6df6", // purple
@@ -14,22 +16,25 @@ const HIGHLIGHT_COLORS = [
     "#f6d96d", // gold
     "#f66d6d", // coral
 ];
+
 function getRandomColor() {
     return HIGHLIGHT_COLORS[Math.floor(Math.random() * HIGHLIGHT_COLORS.length)];
 }
 
 export function OnboardingWelcome() {
-    const setStep = useSettingsStore(s => s.setOnboardingStep);
+    const setStep = useSettingsStore((s) => s.setOnboardingStep);
     const [shadowColor, setShadowColor] = useState(HIGHLIGHT_COLORS[0]);
     const [idx, setIdx] = useState(0);
     const [fading, setFading] = useState(false);
 
     // Memoize welcomes array for perf (won't change during onboarding)
-    const welcomes = useMemo(() =>
-        ALL_LANGUAGES.map(code => ({
-            code,
-            word: TRANSLATIONS[code as keyof typeof TRANSLATIONS]?.["welcome" as keyof typeof TRANSLATIONS["en"]] || code
-        })), []
+    const welcomes = useMemo(
+        () =>
+            ALL_LANGUAGES.map((code) => ({
+                code,
+                word: TRANSLATIONS.getWelcomeLabel(code),
+            })),
+        []
     );
 
     useEffect(() => {
@@ -39,7 +44,7 @@ export function OnboardingWelcome() {
         fadeTimeout = setTimeout(() => setFading(true), DISPLAY_DURATION);
 
         nextTimeout = setTimeout(() => {
-            setIdx(i => (i + 1) % welcomes.length);
+            setIdx((i) => (i + 1) % welcomes.length);
             setFading(false);
         }, DISPLAY_DURATION + FADE_DURATION);
 
@@ -47,6 +52,7 @@ export function OnboardingWelcome() {
             clearTimeout(fadeTimeout);
             clearTimeout(nextTimeout);
         };
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [idx, welcomes.length]);
 
     useEffect(() => {
@@ -54,11 +60,12 @@ export function OnboardingWelcome() {
     }, [idx]);
 
     const current = welcomes[idx];
-    const dir = RTL_LANGUAGES.includes(current.code.split('-')[0]) ? "rtl" : "ltr";
+    const baseLang = current.code.split("-")[0];
+    const dir = RTL_LANGUAGES.includes(baseLang) ? "rtl" : "ltr";
 
     return (
-        // <div className="flex flex-col items-center px-6 pb-6 w-full gap-y-7">
-        <div className="flex flex-col flex-1 w-full h-full items-center justify-center px-6 pb-6 gap-y-7
+        <div
+            className="flex flex-col flex-1 w-full h-full items-center justify-center px-6 pb-6 gap-y-7
             md:max-h-[730px] md:justify-center"
             style={{ minHeight: 0 }}
         >
@@ -68,7 +75,7 @@ export function OnboardingWelcome() {
                 style={{
                     maxWidth: 600,
                     minHeight: 60,
-                    position: "relative"
+                    position: "relative",
                 }}
             >
                 <span
@@ -88,6 +95,7 @@ export function OnboardingWelcome() {
                     {current.word}
                 </span>
             </div>
+
             {/* Inline faded welcomes */}
             <div
                 className="flex flex-wrap gap-3 justify-center items-center"
@@ -120,33 +128,32 @@ export function OnboardingWelcome() {
                     );
                 })}
             </div>
+
             {/* Center button */}
             <button
                 aria-label="Next"
                 className="
-                    flex items-center justify-center
-                    bg-black hover:bg-gray-900
-                    border border-purple-400
-                    rounded-md
-                    transition
-                    outline-none ring-0 z-10
-                    shadow-2xl
-                    text-3xl
-                    hover:cursor-pointer
-                "
+          flex items-center justify-center
+          bg-black hover:bg-gray-900
+          border border-purple-400
+          rounded-md
+          transition
+          outline-none ring-0 z-10
+          shadow-2xl
+          text-3xl
+          hover:cursor-pointer
+        "
                 style={{
-                    boxShadow: "0 8px 64px 0 #0002", // just a subtle shadow for lift
+                    boxShadow: "0 8px 64px 0 #0002",
                     width: 72,
                     height: 72,
-                    borderWidth: 1,                // <--- 1px border, not 2
+                    borderWidth: 1,
                     borderStyle: "solid",
                 }}
                 onClick={() => setStep(1)}
             >
                 <ArrowRightCircle size={36} className="text-white" />
-                {/* If you want a purple icon: className="text-purple-500" */}
             </button>
-
         </div>
     );
 }

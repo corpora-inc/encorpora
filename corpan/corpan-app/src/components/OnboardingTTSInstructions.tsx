@@ -35,6 +35,7 @@ const SAMPLES: Record<string, string> = {
     tr: "Seninle öğrenmeyi dört gözle bekliyorum.",
     ar: "متحمس للتعلم معك.",
     hi: "मैं आपके साथ सीखने के लिए उत्सुक हूँ।",
+    bn: "আমি আপনার সাথে শেখার জন্য উন্মুখ।",
     vi: "Tôi mong được học cùng bạn.",
     pl: "Nie mogę się doczekać nauki z tobą.",
     hu: "Alig várom, hogy tanulhassak veled.",
