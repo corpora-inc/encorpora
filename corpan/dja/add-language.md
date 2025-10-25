@@ -43,11 +43,26 @@ You can run this in parallel up to the point of getting rate limited or running 
 
 ## Now, the frontend
 
-Add the translation of the language itself and the translations for the language:
+These are better done on the host machine, not in the container.
+
+~Add the translation of the language itself and the translations for the language~:
 
 ```
 corpan/corpan-app/src/store/translations.ts
 ```
+
+> Now we have normal translations.
+
+Add one for the new language:
+
+```
+cd encorpora/corpan/corpan-app
+mkdir public/locales/pl
+touch public/locales/pl/common.json
+```
+
+You can fill `public/locales/pl/common.json` with AI.
+
 
 Add the code to the settings (TODO: could query the DB and not need this list?):
 
