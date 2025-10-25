@@ -71,7 +71,7 @@ function DialogContent({
         }}
       >
         {/* Sticky wrapper reserves space; button is absolute so rings don’t affect layout */}
-        <div className="sticky top-3 z-[1001]">
+        <div className="sticky top-5 z-[1001]">
           <div className="relative h-10">
             <DialogPrimitive.Close
               className="absolute right-0 top-0 inline-flex h-10 w-12 items-center justify-center rounded-md border bg-background shadow-sm cursor-pointer transition-shadow hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none pointer-events-auto"
