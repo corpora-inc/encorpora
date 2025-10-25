@@ -13,6 +13,7 @@ export const LANGUAGE_NAMES: Record<string, string> = {
     ru: "Russian",
     it: "Italian",
     hi: "Hindi",
+    bn: "Bengali",
     vi: "Vietnamese",
     pl: "Polish",
     hu: "Hungarian",
