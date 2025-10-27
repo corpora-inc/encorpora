@@ -348,7 +348,7 @@ export function OnboardingTTSInstructionsLanguageSection({
                 onClick={() => setOpen((o) => !o)}
                 aria-controls={sectionId}
                 aria-expanded={open}
-                className="w-full"
+                className="w-full cursor-pointer"
             >
                 <div
                     className={[
@@ -397,7 +397,7 @@ export function OnboardingTTSInstructionsLanguageSection({
                                 if (hasVoices) playNextOnce();
                             }}
                             className={[
-                                "inline-flex items-center gap-1.5 rounded-md border px-2.5 py-1.5 text-xs font-medium shadow-sm",
+                                "cursor-pointer inline-flex items-center gap-1.5 rounded-md border px-2.5 py-1.5 text-xs font-medium shadow-sm",
                                 "focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-400",
                                 hasVoices
                                     ? "bg-white text-gray-800 hover:bg-gray-50 dark:bg-input/60 dark:text-slate-100 dark:hover:bg-input/50"

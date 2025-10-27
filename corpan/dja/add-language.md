@@ -43,11 +43,34 @@ You can run this in parallel up to the point of getting rate limited or running 
 
 ## Now, the frontend
 
-Add the translation of the language itself and the translations for the language:
+These are better done on the host machine, not in the container.
+
+~Add the translation of the language itself and the translations for the language~:
 
 ```
 corpan/corpan-app/src/store/translations.ts
 ```
+
+> Now we have normal translations.
+
+Add one for the new language:
+
+```
+cd encorpora/corpan/corpan-app
+mkdir public/locales/pl
+touch public/locales/pl/common.json
+```
+
+You can fill `public/locales/pl/common.json` with AI.
+
+You also need to add the new language to the locale schema:
+
+```
+corpan/corpan-app/public/locales/locale.schema.json
+```
+
+add, the new language to each of the common.json files, see `add_bn.py` for a script that can help you do this.
+
 
 Add the code to the settings (TODO: could query the DB and not need this list?):
 
@@ -60,5 +83,7 @@ And then similarly `LANGUAGE_NAMES` (TODO: ?):
 ```
 corpan/corpan-app/src/store/constants.ts
 ```
+
+Add to SAMPLES in `encorpora/corpan/corpan-app/src/components/OnboardingTTSInstructions.tsx`
 
 BOOM! You're done. Go check it out on the frontend and see if it is amazing!
