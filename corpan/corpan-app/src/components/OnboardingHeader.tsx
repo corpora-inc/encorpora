@@ -51,7 +51,7 @@ export const OnboardingHeader = memo(function OnboaringHeader({
         <header
             ref={headerRef}
             // One blurred surface for the entire header (title/stepper + actions)
-            className="sticky top-0 z-50 isolate bg-white/80 backdrop-blur supports-[backdrop-filter]:bg-white/60"
+            className="sticky top-0 z-500 isolate bg-white/80 backdrop-blur supports-[backdrop-filter]:bg-white/60"
             style={{ paddingTop: "env(safe-area-inset-top)" }}
         // dir={dir()}
         >

@@ -1,9 +1,10 @@
+// src/components/onboarding/OnboardingPickPrimary.tsx
+
 import { useSettingsStore, ALL_LANGUAGES } from "@/store/settings";
 import { TRANSLATIONS } from "@/store/translations";
 import { ArrowRightCircle } from "lucide-react";
 import { useRef, useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
-
 
 export function OnboardingPickPrimary() {
   const setStep = useSettingsStore((s) => s.setOnboardingStep);
@@ -53,14 +54,7 @@ export function OnboardingPickPrimary() {
         }}
       >
         {ALL_LANGUAGES.map((code) => {
-          const label =
-            TRANSLATIONS[code as keyof typeof TRANSLATIONS]?.[
-            "make primary language"
-            ] ||
-            TRANSLATIONS[code as keyof typeof TRANSLATIONS]?.[
-            code as keyof (typeof TRANSLATIONS)["en"]
-            ] ||
-            code;
+          const label = TRANSLATIONS.getMakePrimaryLabel(code);
 
           return (
             <button
@@ -97,6 +91,6 @@ export function OnboardingPickPrimary() {
           );
         })}
       </div>
-    </div >
+    </div>
   );
 }
