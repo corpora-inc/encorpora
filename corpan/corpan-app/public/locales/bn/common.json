@@ -58,7 +58,10 @@
     "large": "বড়",
     "extraLarge": "অতিরিক্ত বড়",
     "testTts": "নিচের বোতাম দিয়ে টিটিএস পরীক্ষা করুন:",
-    "showRomanization": "রোমানাইজেশন দেখান"
+    "showRomanization": "রোমানাইজেশন দেখান",
+    "themeMode": "থিম মোড",
+    "turnOnDarkMode": "গা dark ় মোড চালু করুন",
+    "turnOnLightMode": "হালকা মোড চালু করুন"
   },
   "onboarding": {
     "welcome": "স্বাগতম",
