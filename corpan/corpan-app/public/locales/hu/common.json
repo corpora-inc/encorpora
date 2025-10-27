@@ -56,10 +56,6 @@
     "small": "Kicsi",
     "medium": "Közepes",
     "large": "Nagy",
-    "extraLarge": "Extra nagy",
-    "testTts": "Tesztelje a TTS beállításait az alábbi gombok megnyomásával:",
-    "showRomanization": "Rómaizáció megjelenítése",
-    "scrollNavigation": "Görgetéses navigáció"
     "extraLarge": "Nagyon nagy",
     "testTts": "Tesztelje a TTS beállításokat az alábbi gombokkal:",
     "showRomanization": "Rómaizáció megjelenítése"

@@ -57,9 +57,6 @@
     "medium": "中",
     "large": "大",
     "extraLarge": "特大",
-    "testTts": "通过点击下面的按钮测试您的TTS设置：",
-    "showRomanization": "显示罗马化",
-    "scrollNavigation": "滚动导航"
     "testTts": "点击下方按钮测试您的 TTS 设置：",
     "showRomanization": "显示罗马化"
   },

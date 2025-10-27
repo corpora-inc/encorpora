@@ -57,9 +57,6 @@
     "medium": "Średni",
     "large": "Duży",
     "extraLarge": "Bardzo duży",
-    "testTts": "Przetestuj swoje ustawienia TTS, klikając przyciski poniżej:",
-    "showRomanization": "Pokaż romanizację",
-    "scrollNavigation": "Nawigacja przewijaniem"
     "testTts": "Przetestuj ustawienia TTS, klikając przyciski poniżej:",
     "showRomanization": "Pokaż romanizację"
   },

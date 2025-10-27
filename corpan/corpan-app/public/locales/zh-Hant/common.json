@@ -57,9 +57,6 @@
     "medium": "中",
     "large": "大",
     "extraLarge": "特大",
-    "testTts": "點擊下方按鈕測試您的 TTS 設定：",
-    "showRomanization": "顯示羅馬化",
-    "scrollNavigation": "滾動導航"
     "testTts": "點擊下方按鈕以測試您的 TTS 設定：",
     "showRomanization": "顯示羅馬拼音"
   },

@@ -56,10 +56,6 @@
     "small": "Pequeño",
     "medium": "Mediano",
     "large": "Grande",
-    "extraLarge": "Extra Grande",
-    "testTts": "Prueba la configuración de TTS haciendo clic en los botones de abajo:",
-    "showRomanization": "Mostrar romanización",
-    "scrollNavigation": "Navegación por Desplazamiento"
     "extraLarge": "Muy grande",
     "testTts": "Prueba TTS con los botones de abajo:",
     "showRomanization": "Mostrar romanización"
