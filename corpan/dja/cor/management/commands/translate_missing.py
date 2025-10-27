@@ -12,7 +12,7 @@ from cor.utils.llm import translate_entry_batch
 from corpora_ai.provider_loader import load_llm_provider
 
 
-BATCH_SIZE = 25  # default
+BATCH_SIZE = 10  # default
 
 
 def translate_and_save(

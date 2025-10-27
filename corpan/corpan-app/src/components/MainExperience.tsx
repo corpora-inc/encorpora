@@ -160,7 +160,7 @@ export function MainExperience() {
             {/* Floating domain/level chips */}
             {currEntry && (
                 <div
-                    className="fixed top-5 pt-safe left-5 z-50 pointer-events-none"
+                    className="fixed top-7 pt-safe left-5 z-50 pointer-events-none"
                     style={{ background: "transparent", marginTop: getPlatformTopPaddingButtons() }}
                 >
                     <div className="flex flex-wrap gap-1 items-center justify-center text-gray-400 text-xs mb-1">
