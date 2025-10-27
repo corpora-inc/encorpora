@@ -58,7 +58,8 @@
     "large": "Lớn",
     "extraLarge": "Rất lớn",
     "testTts": "Kiểm tra cài đặt TTS của bạn bằng cách nhấp vào các nút bên dưới:",
-    "showRomanization": "Hiển thị La-tinh hóa"
+    "showRomanization": "Hiển thị La-tinh hóa",
+    "scrollNavigation": "Scroll navigation"
   },
   "onboarding": {
     "welcome": "Chào mừng",

@@ -58,7 +58,8 @@
     "large": "Grande",
     "extraLarge": "Muito grande",
     "testTts": "Teste suas configurações de TTS clicando nos botões abaixo:",
-    "showRomanization": "Mostrar romanização"
+    "showRomanization": "Mostrar romanização",
+    "scrollNavigation": "Scroll navigation"
   },
   "onboarding": {
     "welcome": "Bem-vindo",

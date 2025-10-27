@@ -58,7 +58,8 @@
     "large": "大",
     "extraLarge": "特大",
     "testTts": "点击下方按钮测试您的 TTS 设置：",
-    "showRomanization": "显示罗马化"
+    "showRomanization": "显示罗马化",
+    "scrollNavigation": "Scroll navigation"
   },
   "onboarding": {
     "welcome": "欢迎",

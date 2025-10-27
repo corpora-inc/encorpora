@@ -58,7 +58,8 @@
     "large": "بزرگ",
     "extraLarge": "خیلی بزرگ",
     "testTts": "برای آزمایش تنظیمات TTS روی دکمه‌های زیر بزنید:",
-    "showRomanization": "نمایش رومن‌نویسی"
+    "showRomanization": "نمایش رومن‌نویسی",
+    "scrollNavigation": "Scroll navigation"
   },
   "onboarding": {
     "welcome": "خوش آمدید",
