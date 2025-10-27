@@ -33,7 +33,7 @@ export function getPlatformTopPaddingButtons() {
     if (/iPhone|iPad|iPod|iOS/i.test(navigator.userAgent)) {
         return 55;
     } if (isAndroidButNotChromeOS()) {
-        return 27;
+        return 37;
     }
     return 10;
 }
@@ -44,5 +44,5 @@ export function getPlatformTopPaddingTranslations() {
     } if (isAndroidButNotChromeOS()) {
         return 125;
     }
-    return 75;
+    return 100;
 }

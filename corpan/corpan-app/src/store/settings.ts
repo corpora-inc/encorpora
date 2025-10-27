@@ -5,20 +5,55 @@ import { persist, createJSONStorage } from "zustand/middleware";
 import { RTL_LANGUAGES } from "./constants";
 
 export const ALL_LANGUAGES = [
-    "en", "ko-polite", "es", "fr", "de", "pt-BR", "ja", "zh-Hans", "zh-Hant", "ar", "ru", "it", "hi", "vi", "pl", "hu", "fa",
+    "en",
+    "es",
+    "fr",
+    "it",
+    "pt-BR",
+    "de",
+    "pl",
+    "ru",
+    "hu",
+    "ko-polite",
+    "zh-Hans",
+    "zh-Hant",
+    "ja",
+    "vi",
+    "bn",
+    "hi",
+    "ar",
+    "fa",
 ];
 
 export const ALL_LEVELS = ["A1", "A2", "B1", "B2", "C1", "C2"];
 
 export const ALL_DOMAINS = [
-    "travel", "business", "education", "social", "health", "housing", "numbers",
-    "civic", "technology", "environment", "emergency", "culture", "everyday",
+    "travel",
+    "business",
+    "education",
+    "social",
+    "health",
+    "housing",
+    "numbers",
+    "civic",
+    "technology",
+    "environment",
+    "emergency",
+    "culture",
+    "everyday",
 ];
 
 export const ALL_TEXT_SIZES = ["small", "medium", "large", "extra-large"] as const;
 export type TextSizeType = (typeof ALL_TEXT_SIZES)[number];
 
 export type StackId = string;
+
+export type VoiceMode = "cycle" | "random";
+export type VoicePrefs = { ids: string[]; mode: VoiceMode };
+export type VoicePrefsMap = Record<string /* lang tag (base or full) */, VoicePrefs>;
+
+/** Safe default for missing per-language voice prefs */
+export const EMPTY_VOICE_PREF: VoicePrefs = { ids: [], mode: "cycle" };
 
 export type StackSettings = {
     languages: string[];
@@ -27,6 +62,9 @@ export type StackSettings = {
     rate: number;
     textSize: TextSizeType;
     showRomanization: boolean;
+
+    /** Per-language TTS voice preferences */
+    voicePrefs: VoicePrefsMap;
 };
 
 export type Stack = {
@@ -49,6 +87,11 @@ type MultiStackState = {
     rate: number;
     textSize: TextSizeType;
     showRomanization: boolean;
+    /** Mirror of per-language voice prefs for active stack */
+    voicePrefs: VoicePrefsMap;
+
+    // Ephemeral per-language cycle pointer for the active stack (not persisted)
+    _voiceCycleIndex: Record<string, number>;
 
     // Onboarding (persisted)
     onboarded: boolean;
@@ -61,6 +104,15 @@ type MultiStackState = {
     setRate: (rate: number) => void;
     setTextSize: (size: TextSizeType) => void;
     setShowRomanization: (val: boolean) => void;
+
+    /** Voice preference updaters for active stack */
+    setVoiceMode: (lang: string, mode: VoiceMode) => void;
+    toggleVoiceSelection: (lang: string, voiceId: string) => void;
+    setVoiceSelection: (lang: string, ids: string[]) => void;
+    clearVoiceSelection: (lang: string) => void;
+
+    /** Helper: pick the next voice id according to prefs + available ids, and advance cycle when needed */
+    nextVoiceId: (lang: string, availableIds: string[]) => string | undefined;
 
     primaryLang: () => string;
     dir: () => "ltr" | "rtl";
@@ -95,6 +147,7 @@ const DEFAULT_SETTINGS: StackSettings = {
     rate: 0.7,
     textSize: "medium",
     showRomanization: true,
+    voicePrefs: {}, // important: always an object
 };
 
 function makeStack(name = DEFAULT_STACK_NAME, base?: Partial<StackSettings>): Stack {
@@ -103,7 +156,12 @@ function makeStack(name = DEFAULT_STACK_NAME, base?: Partial<StackSettings>): St
     return {
         id,
         name,
-        settings: { ...DEFAULT_SETTINGS, ...base },
+        settings: {
+            ...DEFAULT_SETTINGS,
+            ...base,
+            // ensure voicePrefs is a map
+            voicePrefs: { ...(DEFAULT_SETTINGS.voicePrefs), ...(base?.voicePrefs || {}) },
+        },
         createdAt: ts,
         updatedAt: ts,
     };
@@ -115,13 +173,17 @@ function cloneStack(src: Stack, newName?: string): Stack {
     return {
         id,
         name: newName ?? `${src.name} copy`,
-        settings: { ...src.settings },
+        settings: {
+            ...src.settings,
+            voicePrefs: { ...(src.settings.voicePrefs || {}) },
+        },
         createdAt: ts,
         updatedAt: ts,
     };
 }
 
 function deriveFrom(stack: Stack) {
+    const vp = stack.settings.voicePrefs || {};
     return {
         languages: [...stack.settings.languages],
         domains: [...stack.settings.domains],
@@ -129,6 +191,7 @@ function deriveFrom(stack: Stack) {
         rate: stack.settings.rate,
         textSize: stack.settings.textSize,
         showRomanization: stack.settings.showRomanization,
+        voicePrefs: { ...vp }, // cloned, never undefined
     };
 }
 
@@ -145,7 +208,15 @@ function readPersistedBoot():
         const activeStackId = state?.activeStackId;
         const onboarded = !!state?.onboarded;
         const onboardingStep = typeof state?.onboardingStep === "number" ? state.onboardingStep : 0;
+
+        // Backfill voicePrefs if older persisted shape
         if (stacks && typeof activeStackId === "string") {
+            for (const s of Object.values<Stack>(stacks)) {
+                if (!s.settings) {
+                    s.settings = { ...(DEFAULT_SETTINGS as any) };
+                }
+                if (!s.settings.voicePrefs) s.settings.voicePrefs = {};
+            }
             return { stacks, activeStackId, onboarded, onboardingStep };
         }
         return null;
@@ -169,6 +240,7 @@ function importLegacySingleStack(): { stacks: Record<string, Stack>; activeStack
             rate: typeof legacyState?.rate === "number" ? legacyState.rate : undefined,
             textSize: (ALL_TEXT_SIZES as readonly string[]).includes(legacyState?.textSize) ? legacyState.textSize : undefined,
             showRomanization: typeof legacyState?.showRomanization === "boolean" ? legacyState.showRomanization : undefined,
+            voicePrefs: {}, // none in legacy
         };
 
         const s = makeStack(DEFAULT_STACK_NAME, legacy);
@@ -208,6 +280,8 @@ export const useSettingsStore = create<MultiStackState>()(
                     settings: { ...stack.settings },
                     updatedAt: now(),
                 };
+                // guard: always a map before mutation
+                if (!updated.settings.voicePrefs) updated.settings.voicePrefs = {};
                 mutator(updated.settings);
                 set({
                     stacks: { ...stacks, [activeStackId]: updated },
@@ -220,10 +294,15 @@ export const useSettingsStore = create<MultiStackState>()(
                 const curr = stacks[activeStackId] ?? Object.values(stacks)[0];
                 if (!curr) {
                     const s = makeStack(DEFAULT_STACK_NAME);
-                    set({ stacks: { [s.id]: s }, activeStackId: s.id, ...deriveFrom(s) });
+                    set({
+                        stacks: { [s.id]: s },
+                        activeStackId: s.id,
+                        ...deriveFrom(s),
+                        _voiceCycleIndex: {},
+                    });
                     return;
                 }
-                set({ ...deriveFrom(curr) });
+                set({ ...deriveFrom(curr), _voiceCycleIndex: {} });
             };
 
             return {
@@ -233,6 +312,9 @@ export const useSettingsStore = create<MultiStackState>()(
 
                 // Mirrors (initialized from the boot active)
                 ...derived,
+
+                // Ephemeral cycle pointer
+                _voiceCycleIndex: {},
 
                 // Onboarding: if we had any prior state (pre or legacy), skip onboarding
                 onboarded: !!(pre || imported),
@@ -246,6 +328,60 @@ export const useSettingsStore = create<MultiStackState>()(
                 setTextSize: (size) => writeActiveSettings((s) => { s.textSize = size; }),
                 setShowRomanization: (val) => writeActiveSettings((s) => { s.showRomanization = val; }),
 
+                // -------- Voice Prefs (active stack) --------
+                setVoiceMode: (lang, mode) =>
+                    writeActiveSettings((s) => {
+                        s.voicePrefs = s.voicePrefs || {};
+                        const prev = s.voicePrefs[lang] ?? EMPTY_VOICE_PREF;
+                        s.voicePrefs[lang] = { ...prev, mode };
+                    }),
+
+                toggleVoiceSelection: (lang, voiceId) =>
+                    writeActiveSettings((s) => {
+                        s.voicePrefs = s.voicePrefs || {};
+                        const prev = s.voicePrefs[lang] ?? EMPTY_VOICE_PREF;
+                        const exists = prev.ids.includes(voiceId);
+                        const ids = exists ? prev.ids.filter((x) => x !== voiceId) : [...prev.ids, voiceId];
+                        s.voicePrefs[lang] = { ...prev, ids };
+                    }),
+
+                setVoiceSelection: (lang, ids) =>
+                    writeActiveSettings((s) => {
+                        s.voicePrefs = s.voicePrefs || {};
+                        const prev = s.voicePrefs[lang] ?? EMPTY_VOICE_PREF;
+                        s.voicePrefs[lang] = { ...prev, ids: [...new Set(ids)] };
+                    }),
+
+                clearVoiceSelection: (lang) =>
+                    writeActiveSettings((s) => {
+                        s.voicePrefs = s.voicePrefs || {};
+                        const prev = s.voicePrefs[lang] ?? EMPTY_VOICE_PREF;
+                        s.voicePrefs[lang] = { ...prev, ids: [] };
+                    }),
+
+                /** Return next id based on prefs + availableIds. When cycle mode, advances the pointer. */
+                nextVoiceId: (lang, availableIds) => {
+                    const { voicePrefs, _voiceCycleIndex } = get();
+                    const pref = (voicePrefs && voicePrefs[lang]) ?? EMPTY_VOICE_PREF;
+
+                    // Intersect preferred ids with available. If none, fall back to available.
+                    const preferred = pref.ids.length ? pref.ids : availableIds;
+                    const pool = preferred.filter((id) => availableIds.includes(id));
+                    if (!pool.length) return undefined;
+
+                    if (pref.mode === "random") {
+                        const pick = pool[Math.floor(Math.random() * pool.length)];
+                        return pick;
+                    }
+
+                    // cycle
+                    const idx = _voiceCycleIndex[lang] ?? 0;
+                    const id = pool[idx % pool.length];
+                    // advance pointer
+                    set({ _voiceCycleIndex: { ..._voiceCycleIndex, [lang]: (idx + 1) % pool.length } });
+                    return id;
+                },
+
                 primaryLang: () => get().languages[0],
 
                 dir: () => {
@@ -257,10 +393,15 @@ export const useSettingsStore = create<MultiStackState>()(
                     const { stacks, activeStackId } = get();
                     const stack = stacks[activeStackId];
                     if (!stack) return;
-                    const updated: Stack = { ...stack, settings: { ...DEFAULT_SETTINGS }, updatedAt: now() };
+                    const updated: Stack = {
+                        ...stack,
+                        settings: { ...DEFAULT_SETTINGS },
+                        updatedAt: now(),
+                    };
                     set({
                         stacks: { ...stacks, [activeStackId]: updated },
                         ...deriveFrom(updated),
+                        _voiceCycleIndex: {},
                     });
                 },
 
@@ -290,7 +431,12 @@ export const useSettingsStore = create<MultiStackState>()(
                         ? cloneStack(base, name || `${base.name} copy`)
                         : makeStack(name || DEFAULT_STACK_NAME);
                     const nextStacks = { ...stacks, [newStack.id]: newStack };
-                    set({ stacks: nextStacks, activeStackId: newStack.id, ...deriveFrom(newStack) });
+                    set({
+                        stacks: nextStacks,
+                        activeStackId: newStack.id,
+                        ...deriveFrom(newStack),
+                        _voiceCycleIndex: {},
+                    });
                     return newStack.id;
                 },
 
@@ -314,7 +460,7 @@ export const useSettingsStore = create<MultiStackState>()(
                     if (activeStackId === id) {
                         nextActive = Object.keys(nextStacks)[0];
                     }
-                    set({ stacks: nextStacks, activeStackId: nextActive });
+                    set({ stacks: nextStacks, activeStackId: nextActive, _voiceCycleIndex: {} });
                     const curr = nextStacks[nextActive] ?? Object.values(nextStacks)[0];
                     if (curr) set({ ...deriveFrom(curr) });
                 },
@@ -322,7 +468,16 @@ export const useSettingsStore = create<MultiStackState>()(
         },
         {
             name: "corpan-stacks-v1",
-            version: 1,
+            version: 2, // bump: includes voicePrefs backfill + guards
+            migrate: (state: any, version) => {
+                if (version < 2 && state?.stacks) {
+                    for (const s of Object.values<Stack>(state.stacks)) {
+                        if (!s.settings) s.settings = { ...(DEFAULT_SETTINGS as any) };
+                        if (!s.settings.voicePrefs) s.settings.voicePrefs = {};
+                    }
+                }
+                return state;
+            },
             storage: createJSONStorage(() => localStorage),
             // Persist only canonical + onboarding; mirrors are re-derived.
             partialize: (state) => ({
@@ -341,7 +496,7 @@ useSettingsStore.persist.onFinishHydration(() => {
     const { stacks, activeStackId, onboarded } = useSettingsStore.getState();
     const active = stacks[activeStackId] ?? Object.values(stacks)[0];
     if (active) {
-        useSettingsStore.setState({ ...deriveFrom(active) }, false);
+        useSettingsStore.setState({ ...deriveFrom(active), _voiceCycleIndex: {} }, false);
     }
     if (!onboarded && Object.keys(stacks).length > 0) {
         useSettingsStore.setState({ onboarded: true }, false);
