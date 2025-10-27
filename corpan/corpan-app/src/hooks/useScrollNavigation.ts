@@ -23,6 +23,7 @@ export function useScrollNavigation(onPrev: () => void, onNext: () => void) {
     const SCROLL_THRESHOLD = 100; // pixels needed to trigger navigation
     const NAVIGATION_COOLDOWN = 500; // ms cooldown between navigations
     const TOUCH_THRESHOLD = 50; // pixels for touch swipe
+    const EDGE_EPSILON = 1; // tolerated distance from scroll edge
 
     const handleWheel = useCallback(
         (e: WheelEvent) => {
@@ -31,11 +32,32 @@ export function useScrollNavigation(onPrev: () => void, onNext: () => void) {
             const now = Date.now();
             if (now - lastScrollTimeRef.current < NAVIGATION_COOLDOWN) return;
 
-            // Accumulate scroll delta (both vertical and horizontal)
-            const delta = Math.abs(e.deltaY) > Math.abs(e.deltaX) ? e.deltaY : e.deltaX;
+            const isVerticalScroll = Math.abs(e.deltaY) >= Math.abs(e.deltaX);
+            const delta = isVerticalScroll ? e.deltaY : e.deltaX;
+
+            if (isVerticalScroll) {
+                const target = e.currentTarget as HTMLElement | null;
+                if (target) {
+                    const { scrollTop, scrollHeight, clientHeight } = target;
+                    const maxScrollTop = scrollHeight - clientHeight;
+                    const isScrollable = scrollHeight > clientHeight + 1;
+                    const isScrollingDown = delta > 0;
+                    const isScrollingUp = delta < 0;
+                    const isAtTop = scrollTop <= EDGE_EPSILON;
+                    const isAtBottom = scrollTop >= maxScrollTop - EDGE_EPSILON;
+
+                    if (
+                        isScrollable &&
+                        ((isScrollingDown && !isAtBottom) || (isScrollingUp && !isAtTop))
+                    ) {
+                        scrollAccumulatorRef.current = 0;
+                        return;
+                    }
+                }
+            }
+
             scrollAccumulatorRef.current += delta;
 
-            // Check if threshold reached
             if (Math.abs(scrollAccumulatorRef.current) >= SCROLL_THRESHOLD) {
                 isNavigatingRef.current = true;
                 lastScrollTimeRef.current = now;
@@ -64,7 +86,10 @@ export function useScrollNavigation(onPrev: () => void, onNext: () => void) {
 
     const handleTouchEnd = useCallback(
         (e: TouchEvent) => {
-            if (!touchStartRef.current || isNavigatingRef.current) return;
+            const start = touchStartRef.current;
+            touchStartRef.current = null;
+
+            if (!start || isNavigatingRef.current) return;
 
             const now = Date.now();
             if (now - lastScrollTimeRef.current < NAVIGATION_COOLDOWN) return;
@@ -74,12 +99,32 @@ export function useScrollNavigation(onPrev: () => void, onNext: () => void) {
                 y: e.changedTouches[0].clientY,
             };
 
-            const deltaX = touchEnd.x - touchStartRef.current.x;
-            const deltaY = touchEnd.y - touchStartRef.current.y;
+            const deltaX = touchEnd.x - start.x;
+            const deltaY = touchEnd.y - start.y;
 
             // Determine if swipe was primarily horizontal or vertical
             const isHorizontal = Math.abs(deltaX) > Math.abs(deltaY);
             const delta = isHorizontal ? deltaX : deltaY;
+
+            if (!isHorizontal) {
+                const target = e.currentTarget as HTMLElement | null;
+                if (target) {
+                    const { scrollTop, scrollHeight, clientHeight } = target;
+                    const maxScrollTop = scrollHeight - clientHeight;
+                    const isScrollable = scrollHeight > clientHeight + 1;
+                    const isSwipeUp = delta < 0;
+                    const isSwipeDown = delta > 0;
+                    const isAtTop = scrollTop <= EDGE_EPSILON;
+                    const isAtBottom = scrollTop >= maxScrollTop - EDGE_EPSILON;
+
+                    if (
+                        isScrollable &&
+                        ((isSwipeUp && !isAtBottom) || (isSwipeDown && !isAtTop))
+                    ) {
+                        return;
+                    }
+                }
+            }
 
             if (Math.abs(delta) >= TOUCH_THRESHOLD) {
                 isNavigatingRef.current = true;
@@ -95,8 +140,6 @@ export function useScrollNavigation(onPrev: () => void, onNext: () => void) {
                     isNavigatingRef.current = false;
                 }, NAVIGATION_COOLDOWN);
             }
-
-            touchStartRef.current = null;
         },
         [onNext, onPrev]
     );
