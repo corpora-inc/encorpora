@@ -7,7 +7,7 @@
 
 Corpan is a precision language acceleration desktop app that turns curated bilingual corpora into an interactive study environment. The React + Tailwind UI is packaged with a Tauri runtime that embeds SQLite, premium on-device text-to-speech, and deterministic offline pipelines so your device becomes the most reliable tool for language acquisition.
 
-**Available languages (auto-discovered from `public/locales`):** Arabic, Chinese (Simplified), Chinese (Traditional), English, French, German, Hindi, Hungarian, Italian, Japanese, Korean (polite), Persian, Polish, Portuguese (Brazil), Russian, Spanish, Vietnamese.
+**Available languages (auto-discovered from `public/locales`):** Arabic, Chinese (Simplified), Chinese (Traditional), English, French, German, Hindi, Hungarian, Italian, Japanese, Korean (polite), Persian, Polish, Portuguese (Brazil), Russian, Spanish, Vietnamese, Bengali
 
 ## Key Features
 - Oxford 5000-complete corpus of real-world sentences with bilingual alignment, romanization, and localization metadata.
