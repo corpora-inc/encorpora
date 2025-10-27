@@ -17,7 +17,8 @@
     "vi": "Vietnamita",
     "pl": "Polacco",
     "hu": "Ungherese",
-    "fa": "Persiano"
+    "fa": "Persiano",
+    "bn": "Bengalese"
   },
   "categories": {
     "travel": "Viaggio",
@@ -160,7 +161,8 @@
     "zh-CN-u-sd-cnsc": "Mandarino (Sichuan, Cina continentale)",
     "zh-CN-u-sd-cnsn": "Mandarino (Shaanxi, Cina continentale)",
     "zh-HK": "Cantonese (Hong Kong)",
-    "zh-TW": "Mandarino (Taiwan)"
+    "zh-TW": "Mandarino (Taiwan)",
+    "bn": "Bengalese"
   },
   "footer": {
     "appVersion": "Versione dell’app",

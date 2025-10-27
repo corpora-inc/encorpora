@@ -17,7 +17,8 @@
     "vi": "Vietnamita",
     "pl": "Polaco",
     "hu": "Húngaro",
-    "fa": "Persa"
+    "fa": "Persa",
+    "bn": "Bengalí"
   },
   "categories": {
     "travel": "Viaje",
@@ -161,7 +162,8 @@
     "zh-CN-u-sd-cnsc": "Mandarín (Sichuan, China continental)",
     "zh-CN-u-sd-cnsn": "Mandarín (Shaanxi, China continental)",
     "zh-HK": "Cantonés (Hong Kong)",
-    "zh-TW": "Mandarín (Taiwán)"
+    "zh-TW": "Mandarín (Taiwán)",
+    "bn": "Bengalí"
   },
   "footer": {
     "appVersion": "Versión de la app",

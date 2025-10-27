@@ -17,7 +17,8 @@
     "vi": "Vietnamesisch",
     "pl": "Polnisch",
     "hu": "Ungarisch",
-    "fa": "Persisch"
+    "fa": "Persisch",
+    "bn": "Bengalisch"
   },
   "categories": {
     "travel": "Reise",
@@ -158,7 +159,8 @@
     "zh-CN-u-sd-cnsc": "Mandarin (Sichuan, Festlandchina)",
     "zh-CN-u-sd-cnsn": "Mandarin (Shaanxi, Festlandchina)",
     "zh-HK": "Kantonesisch (Hongkong)",
-    "zh-TW": "Mandarin (Taiwan)"
+    "zh-TW": "Mandarin (Taiwan)",
+    "bn": "Bengalisch"
   },
   "footer": {
     "appVersion": "App-Version",
