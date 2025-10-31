@@ -9,6 +9,6 @@
     "core:default",
     "opener:default",
     "tts:allow-speak",
-    "os:default"
+    "tts:default"
   ]
 }
