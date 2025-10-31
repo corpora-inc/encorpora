@@ -18,7 +18,8 @@
     "pl": "Polonês",
     "hu": "Húngaro",
     "fa": "Persa",
-    "bn": "Bengalês"
+    "bn": "Bengalês",
+    "th": "Tailandês"
   },
   "categories": {
     "travel": "Viagem",
@@ -159,7 +160,8 @@
     "zh-CN-u-sd-cnsn": "Mandarim (Shaanxi, China)",
     "zh-HK": "Cantonês (Hong Kong)",
     "zh-TW": "Mandarim (Taiwan)",
-    "bn": "Bengalês"
+    "bn": "Bengalês",
+    "th": "Tailandês"
   },
   "footer": {
     "appVersion": "Versão do aplicativo",
