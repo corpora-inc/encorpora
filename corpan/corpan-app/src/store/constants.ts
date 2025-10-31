@@ -1,4 +1,3 @@
-
 export const LANGUAGE_NAMES: Record<string, string> = {
     en: "English",
     es: "Spanish",
