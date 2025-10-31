@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { useTranslation } from "react-i18next";
 import { useRatingStore } from "@/store/rating";
 import { openUrl } from "@tauri-apps/plugin-opener";
-import { platform as getPlatform } from '@tauri-apps/plugin-os';
+import { detectPlatform } from "@/lib/getPlatform";
 const platforms = [
 	{
 		name: "ios",
@@ -42,7 +42,7 @@ export function RatingPrompt() {
 		setIsVisible(false);
 
 		try {
-			const platformName = await getPlatform();
+			const platformName = await detectPlatform();
 			const storeUrl =
 				platforms.find((p) => p.name === platformName)?.link ??
 				"https://github.com/0bkevin/encorpora"; // Fallback for desktop
@@ -75,7 +75,7 @@ export function RatingPrompt() {
 						animate={{ opacity: 1 }}
 						exit={{ opacity: 0 }}
 						transition={{ duration: 0.3 }}
-						className="fixed inset-0 bg-black/20 backdrop-blur-sm z-[100]"
+						className="fixed inset-0 bg-black/20 backdrop-blur-sm z-100"
 						onClick={handleRemindLater}
 					/>
 
@@ -90,7 +90,7 @@ export function RatingPrompt() {
 							damping: 25,
 							duration: 0.4,
 						}}
-						className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[101] w-[90%] max-w-md"
+						className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-101 w-[90%] max-w-md"
 					>
 						<div className="bg-white rounded-2xl shadow-2xl p-6 relative overflow-hidden">
 							{/* Close button */}
@@ -113,7 +113,7 @@ export function RatingPrompt() {
 								}}
 								className="flex justify-center mb-4"
 							>
-								<div className="bg-gradient-to-br from-purple-400 to-purple-600 rounded-full p-4">
+								<div className="bg-linear-to-br from-purple-400 to-purple-600 rounded-full p-4">
 									<Heart className="text-white" size={32} fill="white" />
 								</div>
 							</motion.div>
@@ -175,7 +175,8 @@ export function RatingPrompt() {
 								<Button
 									onClick={handleRate}
 									size="lg"
-									className="w-full bg-gradient-to-r from-purple-500 to-purple-600 hover:from-purple-600 hover:to-purple-700 text-white font-medium shadow-md"
+									
+									className="w-full bg-linear-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white font-medium shadow-md"
 								>
 									{t("rating.rateNow" as any)}
 								</Button>
