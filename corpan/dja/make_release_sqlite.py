@@ -2,8 +2,8 @@
 from __future__ import annotations
 import argparse
 import sqlite3
-import gzip
-import shutil
+
+# import gzip
 import sys
 from pathlib import Path
 
@@ -86,14 +86,14 @@ def fmt_bytes(n: int) -> str:
         n /= 1024
 
 
-def gz_size(p: Path) -> int | None:
-    try:
-        gz = p.with_suffix(p.suffix + ".gz")
-        with open(p, "rb") as src, gzip.open(gz, "wb", compresslevel=9) as dst:
-            shutil.copyfileobj(src, dst)
-        return gz.stat().st_size
-    except Exception:
-        return None
+# def gz_size(p: Path) -> int | None:
+#     try:
+#         gz = p.with_suffix(p.suffix + ".gz")
+#         with open(p, "rb") as src, gzip.open(gz, "wb", compresslevel=9) as dst:
+#             shutil.copyfileobj(src, dst)
+#         return gz.stat().st_size
+#     except Exception:
+#         return None
 
 
 def assert_cols(conn: sqlite3.Connection, t: str, cols: list[str]) -> None:
@@ -157,12 +157,12 @@ def main() -> None:
     # Report sizes
     orig = src.stat().st_size
     new = dst.stat().st_size
-    gz = gz_size(dst)
+    # gz = gz_size(dst)
     print("== Built release DB ==")
     print(f"Source:  {src}   size={fmt_bytes(orig)}")
     print(f"Output:  {dst}   size={fmt_bytes(new)}")
-    if gz:
-        print(f"Output (.gz): {fmt_bytes(gz)}")
+    # if gz:
+    #     print(f"Output (.gz): {fmt_bytes(gz)}")
 
     # Optional: breakdown
     try:
