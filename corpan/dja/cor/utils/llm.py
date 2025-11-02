@@ -136,83 +136,120 @@ def translate_entry_batch(
     # Create system message in target language
     prompt_native = {
         "es": (
-            "Eres un traductor profesional de inglés a español con años de experiencia ayudando a estudiantes de idiomas. "
-            "Traduce cada oración inglesa al español de forma muy clara, precisa, y natural, usando un tono respetuoso y educado. "
-            "Tu objetivo es lograr que la traducción sea cercana al original pero perfectamente comprensible y auténtica en español moderno. "
-            "Evita traducciones robóticas o demasiado literales. Devuelve solo una lista JSON con los resultados."
+            "Eres traductor profesional EN→ES. "
+            "Entrega una única traducción breve, clara y natural, en español moderno y neutral panhispánico. "
+            "Mantén el sentido del original sin sonar literal; usa colocaciones habituales y evita calcos. "
+            "Si el texto es un rótulo o indicación, permite fragmentos (por ejemplo: «Solo hoy», «Debajo de la mesa»). "
+            "Omite pronombres redundantes cuando el verbo los hace obvios. "
+            "Para ubicación, usa estar/aquí/ahí; para existencia, usa hay. "
+            "Registro: trato educado en servicio; casual en frases cotidianas. "
+            "Salida: solo la traducción, sin comillas ni notas."
         ),
         "fr": (
             "Vous êtes un traducteur professionnel de l'anglais vers le français. "
-            "Traduisez chaque phrase de manière naturelle, fluide et idiomatique, "
-            "en respectant le sens de l'original sans être trop littéral. "
-            "Utilisez un français moderne, clair et courant, tel qu'on le parle réellement. "
-            "Respectez les règles d'accord de genre, y compris les cas comme 'mon amie' et 'mon équipe'. "
-            "Ne surutilisez pas de structures répétitives ou artificielles. "
-            "N'utilisez que du français, sans mots étrangers ni balises inutiles. "
-            "Retournez uniquement les résultats sous forme de liste JSON."
+            "Rendez chaque phrase naturelle, idiomatique et claire en français moderne, en évitant les calques. "
+            "Préservez fidèlement le sens sans ajout ni omission et privilégiez des tournures courantes. "
+            "Registre neutre et poli par défaut; accents et ponctuation corrects. "
+            "Respectez les accords de genre et de nombre. "
+            "Ne produisez que la traduction en français, sans balises ni commentaires."
         ),
         "de": (
-            "Sie sind ein professioneller Übersetzer vom Englischen ins Deutsche, "
-            "spezialisiert auf klare, idiomatische und respektvolle Ausdrucksweise. "
-            "Übersetzen Sie jede englische Aussage so, dass sie natürlich und verständlich klingt, "
-            "dabei aber eng am Original bleibt. "
-            "Vermeiden Sie unnatürliche Strukturen oder übermäßig freie Interpretationen. "
-            "Geben Sie ausschließlich eine JSON-Liste mit den Übersetzungen zurück."
+            "Sie sind professionelle*r EN→DE-Übersetzer*in. "
+            "Schreiben Sie kurze, idiomatische, gut verständliche Sätze in zeitgenössischem Standarddeutsch. "
+            "Bewahren Sie Sinn und Ton und bleiben Sie nahe am Original; keine wörtlichen Kalks, keine übermäßigen Freiheiten. "
+            "Verwenden Sie einfache, gängige Wörter und korrekte Zeichensetzung. "
+            "Geben Sie ausschließlich die Übersetzung aus."
         ),
         "pt-BR": (
-            "Você é um tradutor profissional de inglês para português brasileiro, com experiência no ensino de idiomas. "
-            "Traduza cada frase de forma natural, clara e educada, mantendo o significado original sempre que possível. "
-            "Evite traduções excessivamente literais que soem estranhas, mas também evite ser criativo além do necessário. "
-            "Retorne apenas uma lista JSON com as traduções."
+            "Você é um tradutor profissional do inglês para o português brasileiro. "
+            "Traduza cada frase para um português natural, claro e idiomático, fiel ao sentido do original sem rigidez literal. "
+            "Use registro neutro e cortês, com 'você' e imperativos usuais; só ajuste o tom se o texto exigir formalidade explícita. "
+            "Evite calques e anglicismos desnecessários; prefira construções correntes no português contemporâneo. "
+            "Não acrescente nem omita informações e não inclua marcas, notas ou etiquetas. "
+            "Respeite pontuação, acentuação e a ortografia vigente."
         ),
         "ko-polite": (
-            "당신은 영어에서 한국어(존댓말)로 번역하는 전문 번역가입니다. "
-            "모든 번역은 ‘-요’로 끝나는 존댓말(비격식체, 해요체)로 작성하세요. 가장 자연스럽고 일상적인 표현을 사용하세요. "
-            "문장 하나하나를 자연스럽고 공손하게 번역하되, 원문의 의미를 최대한 유지하세요. "
-            "단어 번역은 ‘요’를 붙이지 말고 기본형만 사용하세요. 문장 번역은 자연스럽고 공손한 존댓말로 하세요. "
-            "명령문(지시문)은 ‘-세요’로, 평서문/의문문 등은 ‘-요’로 끝나도록 하세요. "
-            "너무 문자 그대로 번역하거나 번역투 표현을 피하고, 한국어 화자에게 익숙한 표현을 사용하세요. "
-            "다른 언어를 혼합하지 마세요. 오직 한국어만 사용하세요. "
-            "결과는 JSON 목록으로만 반환하세요."
+            "영어→한국어(존댓말, 해요체) 전문 번역가입니다. "
+            "완성 문장은 자연스러운 구어체 존댓말로 끝맺고, 요청·지시는 ‘-세요’를 사용하세요. "
+            "반말과 과도한 ‘-습니다/-습니까’ 체는 사용하지 마세요. "
+            "주체 높임(-시-)은 필요할 때만 쓰세요. "
+            "문장 값이 아닌 단어·구 항목은 기본형만 제시하고 ‘-요’를 붙이지 마세요. "
+            "의미 보존을 우선하되, 한국어 화자에게 자연스러운 어휘·어순·담화를 선택하세요. "
+            "적합성·선호를 서술할 때는 경험 주어에 주제 표지(예: ‘NP+에게/한테+는’)를 적절히 사용하고, "
+            "수량·시간·금액에는 자연스러운 단위와 조사(명/개/병/분/원 등)를 쓰세요. "
+            "영어의 등위 연결(… and …)은 ‘…하고/랑 …’처럼 명시적 접속으로 표현하고, "
+            "‘잡다한 것들’ 의미의 상투어는 피하세요. "
+            "직역이 어색하거나 모호하면 공손하고 무난한 표현으로 약간 의역하세요. "
+            "‘당신’은 쓰지 말고 주어 생략이나 호칭·역할명으로 처리하세요. "
+            "출력은 번역문만 제공하세요(설명·로마자·따옴표·태그 금지). "
+            "맞춤법과 띄어쓰기를 지키고, 의문문에는 ‘?’를 사용하세요."
+        ),
+        "zh-Hant": (
+            "您是專業的英→繁體中文（臺灣）翻譯。 "
+            "請只輸出一個譯文，使用現代臺灣中文的自然、清楚、精簡表達。 "
+            "忠實保留原意，避免生硬直譯或過度意譯；不自然時可做最小幅度的調整以符合中文習慣。 "
+            "用詞與書寫採臺灣慣用與正體字規範，避免簡化字與陸用詞。 "
+            "禮貌語氣中性且得體；服務情境可用「請」「您」，日常語境保持自然而不失禮。 "
+            "標示、按鈕、指示可用片語或短句。 "
+            "語法提示：地點用「在…」、存在用「有」；依情境正確使用量詞與數字；必要時使用自然的體貌標記（了／過／在／著）。 "
+            "標點與句尾助詞依臺灣慣例（嗎、呢、吧、喔）；只輸出中文譯文，不要引號、拼音或註解。"
         ),
         "zh-Hans": (
-            "你是一名经验丰富的英译简体中文翻译专家，擅长为语言学习者提供地道、自然的表达。"
-            "请将以下英文句子翻译成通顺、礼貌、符合中文习惯的简体中文，尽量忠实于原意，避免过度直译或意译。"
-            "只返回一个 JSON 列表，不要添加任何说明。"
+            "你是专业的 EN→简体中文 翻译。 "
+            "输出一条简洁、自然、地道的现代汉语（简体，偏大陆用法）。 "
+            "忠实原意，避免生硬直译与不必要的增删，优先常用搭配与自然语序。 "
+            "如为提示/按钮/指示语，可直接输出词组或短句（无需主语）。 "
+            "位置表达用“在…/这里/那里/哪儿”，存在用“有”；量词、时间与金额等按常规习惯使用。 "
+            "语气默认中性而礼貌；请求/指令可用“请…/…一下/可以吗”等委婉式。 "
+            "只输出译文本身，不要引号、注释或标签；使用中文标点，疑问句用“？”。"
         ),
         "ja": (
-            "あなたは英語から日本語への翻訳に精通したプロの翻訳者です。"
-            "以下の英文を、丁寧で自然な日本語に翻訳してください。"
-            "原文の意味を正確に保ちつつ、日本語として自然で読みやすい表現にしてください。"
-            "不自然な直訳や、過度な意訳は避けてください。"
-            "結果は JSON リストのみで返してください。"
+            "あなたは英日翻訳の専門家です。"
+            "これから与える英文を、日本語話者が読んで自然に感じる丁寧な日本語（です・ます）に訳してください。"
+            "逐語訳は禁止です。日本語として最も自然な語順・語彙へ積極的に置き換えてください。"
+            "ただし、事実・数値・固有名詞・技術用語は原文どおり正確に保持してください。"
+            "英語が透けて見える不自然な表現は絶対に避けてください。"
+            "過度な意訳で内容を勝手に追加・削除することも禁止します。"
+            "訳文は端的で簡潔に、1文は必要以上に長くしないでください。"
+            "出力は訳文のみとし、その他の説明や注釈は一切入れないでください。"
         ),
         "ar": (
-            "أنت مترجم محترف من الإنجليزية إلى العربية، ولديك خبرة واسعة في الترجمة للمتعلمين. "
-            "ترجم كل جملة إلى اللغة العربية الفصحى بأسلوب واضح، طبيعي، ومهذب. "
-            "حافظ على المعنى الأصلي قدر الإمكان، وتجنب الترجمة الحرفية التي قد تبدو غير مألوفة أو مصطنعة. "
-            "أعد النتائج على شكل قائمة JSON فقط، دون أي شرح إضافي."
+            "أنت مُترجم محترف من الإنجليزية إلى العربية الفصحى الحديثة. "
+            "قدّم ترجمة واحدة فقط، قصيرة وواضحة وطبيعية، بلسان فصيح معاصر خالٍ من اللهجات. "
+            "حافظ على المعنى والدلالة دون حرفية جافة أو زيادات. "
+            "للافتات والتعليمات، اقبل العبارات المقتضبة عند اللزوم (مثل «اليوم فقط»، «تحت الطاولة»). "
+            "في الطلبات العامة فضّل الصياغة غير الشخصية مثل «يُرجى …»، ويمكن استخدام «من فضلك» عند المخاطبة المباشرة. "
+            "للوصف المكاني استخدم «هنا/هناك/في …»، ولِلوجود استخدم «هناك/يوجد». "
+            "في الزمن الحاضر لا تُصرّح بفعل الكينونة؛ صِغ الجمل الاسمية بصورة طبيعية. "
+            "تجنّب الألفاظ العامية والترجمة الصوتية، واختر مصطلحات فصحى شائعة. "
+            "احترم التذكير/التأنيث والجمع، وتجنّب تحديد الجنس عندما لا يلزم. "
+            "استخدم علامات ترقيم عربية، واختم الاستفهام بعلامة «؟». "
+            "المخرَج: النص العربي فقط، بلا علامات اقتباس أو تعليقات."
         ),
         "ru": (
-            "Вы профессиональный переводчик с английского на русский язык, специализирующийся на обучающих материалах. "
-            "Переводите каждое предложение ясно, естественно и вежливо, сохраняя оригинальный смысл. "
-            "Избегайте кальки и чрезмерно дословного перевода. "
-            "Верните результат только в виде JSON-списка."
+            "Вы — профессиональный переводчик EN→RU. "
+            "Пишите кратко, естественно и идиоматично на современном стандартном русском, без кальки. "
+            "Сохраняйте смысл и тон оригинала без добавлений и опущений. "
+            "Отдавайте приоритет нейтральным, контекст-независимым формулировкам: используйте безличные конструкции, "
+            "указательные «это/то», «здесь/там», а при наличии/отсутствии — «есть/нет». "
+            "Если род не задан, предпочитайте средний род или формы без родовой маркировки. "
+            "Избегайте навязывания пола и обращения «ты/вы», если это не выражено явно; просьбы — нейтрально-вежливо (инфинитив/императив с «пожалуйста») по уместности. "
+            "Числа, меры и время — в естественных русских единицах и правильных падежах. "
+            "Выводите только перевод по-русски, без кавычек, примечаний и меток."
         ),
         "it": (
             "Sei un traduttore professionista dall'inglese all'italiano, specializzato in testi per studenti di lingua. "
             "Traduci ogni frase in un italiano chiaro, naturale e rispettoso, mantenendo il significato originale il più possibile. "
-            "Evita traduzioni troppo letterali o eccessivamente creative. Restituisci solo una lista in formato JSON."
+            "Evita traduzioni troppo letterali o eccessivamente creative."
         ),
         "hi": (
             "आप एक पेशेवर अंग्रेज़ी-से-हिंदी अनुवादक हैं, जो भाषा सीखने वालों के लिए स्पष्ट, स्वाभाविक और शिष्ट अनुवाद प्रदान करने में माहिर हैं। "
-            "हर वाक्य का अनुवाद ऐसा करें कि उसका मूल अर्थ बना रहे और वह हिंदी में सहज, प्राकृतिक और आसानी से समझने योग्य लगे। "
-            "बहुत अधिक शब्दशः या अत्यधिक रचनात्मक अनुवाद से बचें। केवल JSON सूची के रूप में परिणाम लौटाएँ।"
+            "हर वाक्य का अनुवाद ऐसा करें कि उसका मूल अर्थ बना रहे और वह हिंदी में सहज, प्राकृतिक और आसानी से समझने योग्य लगे।"
         ),
         "vi": (
             "Bạn là một dịch giả chuyên nghiệp từ tiếng Anh sang tiếng Việt, chuyên cung cấp các bản dịch tự nhiên, lịch sự và dễ hiểu cho người học ngôn ngữ. "
             "Hãy dịch mỗi câu một cách tự nhiên và tôn trọng, giữ nguyên ý nghĩa gốc nhưng đảm bảo bản dịch nghe hoàn toàn tự nhiên. "
-            "Tránh các bản dịch quá máy móc hoặc quá sáng tạo. Chỉ trả về danh sách JSON của các câu đã dịch."
+            "Tránh các bản dịch quá máy móc hoặc quá sáng tạo."
         ),
         "pl": (
             "Jesteś profesjonalnym tłumaczem z angielskiego na polski, "
@@ -293,7 +330,8 @@ def translate_entry_batch(
     # print(f"{messages}")
     # print(f"{TranslationResponse.model_dump_json(indent=2)}")
     result = llm.get_data_completion(messages, TranslationResponse)
-    # print(result.translations)
+    print("RESULT:")
+    print(result.translations)
 
     objs = [
         Translation(
