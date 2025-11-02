@@ -8,54 +8,74 @@ import sys
 from pathlib import Path
 
 SCHEMA_SQL = """
+-- Minimal runtime schema
 CREATE TABLE cor_entry(
   id INTEGER PRIMARY KEY,
   level TEXT NOT NULL
 );
+
 CREATE TABLE cor_domain(
   id INTEGER PRIMARY KEY,
   code TEXT NOT NULL
 );
+
+-- Composite PK; WITHOUT ROWID lets us DROP the entry_id index
 CREATE TABLE cor_entry_domains(
   entry_id INTEGER NOT NULL,
-  domain_id INTEGER NOT NULL
-);
+  domain_id INTEGER NOT NULL,
+  PRIMARY KEY(entry_id, domain_id)
+) WITHOUT ROWID;
+
 CREATE TABLE cor_language(
   id INTEGER PRIMARY KEY,
   code TEXT NOT NULL
 );
+
+-- Composite PK; WITHOUT ROWID lets us DROP the translation(entry_id) index
+-- Make romanization nullable to avoid storing empty strings
 CREATE TABLE cor_translation(
   entry_id INTEGER NOT NULL,
   language_id INTEGER NOT NULL,
   text TEXT NOT NULL,
-  romanization TEXT NOT NULL
-);
-CREATE INDEX cor_translation_entry_id    ON cor_translation(entry_id);
-CREATE INDEX cor_entry_domains_entry_id  ON cor_entry_domains(entry_id);
+  romanization TEXT,
+  PRIMARY KEY(entry_id, language_id)
+) WITHOUT ROWID;
+
+-- Minimal helper indexes
 CREATE INDEX cor_entry_domains_domain_id ON cor_entry_domains(domain_id);
 CREATE INDEX cor_domain_code             ON cor_domain(code);
 """
 
 COPY_SQL = """
+-- Keep rows in PK order to reduce page splits
 INSERT INTO cor_entry(id, level)
 SELECT id, COALESCE(level, '')
-FROM src.cor_entry;
+FROM src.cor_entry
+ORDER BY id;
 
 INSERT INTO cor_domain(id, code)
-SELECT id, code FROM src.cor_domain;
+SELECT id, code
+FROM src.cor_domain
+ORDER BY id;
 
 INSERT INTO cor_entry_domains(entry_id, domain_id)
-SELECT entry_id, domain_id FROM src.cor_entry_domains;
+SELECT entry_id, domain_id
+FROM src.cor_entry_domains
+ORDER BY entry_id, domain_id;
 
 INSERT INTO cor_language(id, code)
-SELECT id, code FROM src.cor_language;
+SELECT id, code
+FROM src.cor_language
+ORDER BY id;
 
+-- Store romanization as NULL when empty; copy in PK order
 INSERT INTO cor_translation(entry_id, language_id, text, romanization)
 SELECT t.entry_id,
        t.language_id,
        COALESCE(t.text, ''),
-       COALESCE(t.romanization, '')
-FROM src.cor_translation t;
+       CASE WHEN t.romanization IS NULL OR t.romanization = '' THEN NULL ELSE t.romanization END
+FROM src.cor_translation t
+ORDER BY t.entry_id, t.language_id;
 """
 
 
@@ -101,7 +121,7 @@ def main() -> None:
     conn = sqlite3.connect(str(dst))
     conn.isolation_level = None  # autocommit
 
-    # Packing knobs first
+    # Pack knobs before schema
     conn.execute(f"PRAGMA page_size={args.page_size};")
     conn.execute("PRAGMA journal_mode=OFF;")
     conn.execute("PRAGMA synchronous=OFF;")
@@ -112,8 +132,8 @@ def main() -> None:
     src_esc = str(src).replace("'", "''")
     conn.execute(f"ATTACH DATABASE 'file:{src_esc}?mode=ro&immutable=1' AS src;")
 
-    # Sanity: columns we actually need from source
-    assert_cols(conn, "cor_entry", ["id", "level"])  # en_text not required anymore
+    # Sanity checks
+    assert_cols(conn, "cor_entry", ["id", "level"])
     assert_cols(conn, "cor_domain", ["id", "code"])
     assert_cols(conn, "cor_entry_domains", ["entry_id", "domain_id"])
     assert_cols(conn, "cor_language", ["id", "code"])
@@ -121,11 +141,11 @@ def main() -> None:
         conn, "cor_translation", ["entry_id", "language_id", "text", "romanization"]
     )
 
-    # Build schema & copy data
+    # Build & copy
     conn.executescript(SCHEMA_SQL)
     conn.executescript(COPY_SQL)
 
-    # Detach src BEFORE ANALYZE to avoid RO writes
+    # Detach before ANALYZE so we don’t touch src
     conn.execute("DETACH DATABASE src;")
 
     # Stats & repack
