@@ -27,6 +27,7 @@ export const WELCOME_BY_LANG = {
     hu: "Üdvözöljük",
     fa: "خوش آمدید",
     bn: "স্বাগতম",
+    th: "ยินดีต้อนรับ",
 } as const;
 export type WelcomeCode = keyof typeof WELCOME_BY_LANG;
 
@@ -50,6 +51,7 @@ export const AUTONYM_BY_LANG = {
     hu: "Magyar",
     fa: "فارسی",
     bn: "বাংলা",
+    th: "ไทย",
 } as const;
 export type LanguageCode = keyof typeof AUTONYM_BY_LANG;
 
@@ -76,6 +78,7 @@ export const MAKE_PRIMARY_BY_LANG = {
     hu: "A magyart állítsa be elsődleges nyelvnek",
     fa: "فارسی را زبان اصلی من کن",
     bn: "বাংলাকে আমার প্রধান ভাষা করুন",
+    th: "ตั้งค่าไทยเป็นภาษาหลักของฉัน",
 } as const;
 export type MakePrimaryCode = keyof typeof MAKE_PRIMARY_BY_LANG;
 

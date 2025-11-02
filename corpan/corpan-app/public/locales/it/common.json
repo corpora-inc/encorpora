@@ -18,7 +18,8 @@
     "pl": "Polacco",
     "hu": "Ungherese",
     "fa": "Persiano",
-    "bn": "Bengalese"
+    "bn": "Bengalese",
+    "th": "Thai"
   },
   "categories": {
     "travel": "Viaggio",
@@ -159,7 +160,8 @@
     "zh-CN-u-sd-cnsn": "Mandarino (Shaanxi, Cina continentale)",
     "zh-HK": "Cantonese (Hong Kong)",
     "zh-TW": "Mandarino (Taiwan)",
-    "bn": "Bengalese"
+    "bn": "Bengalese",
+    "th": "Thai"
   },
   "footer": {
     "appVersion": "Versione dell’app",

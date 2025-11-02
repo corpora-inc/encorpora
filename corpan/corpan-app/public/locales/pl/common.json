@@ -18,7 +18,8 @@
     "pl": "Polski",
     "hu": "Węgierski",
     "fa": "Perski",
-    "bn": "Bengalski"
+    "bn": "Bengalski",
+    "th": "Tajski"
   },
   "categories": {
     "travel": "Podróże",
@@ -159,7 +160,8 @@
     "zh-CN-u-sd-cnsn": "Mandaryński (Shaanxi, Chiny)",
     "zh-HK": "Kantoński (Hongkong)",
     "zh-TW": "Mandaryński (Tajwan)",
-    "bn": "Bengalski"
+    "bn": "Bengalski",
+    "th": "Tajski"
   },
   "footer": {
     "appVersion": "Wersja aplikacji",

@@ -18,7 +18,8 @@
     "pl": "Lengyel",
     "hu": "Magyar",
     "fa": "Perzsa",
-    "bn": "Bengáli"
+    "bn": "Bengáli",
+    "th": "Thai"
   },
   "categories": {
     "travel": "Utazás",
@@ -159,7 +160,8 @@
     "zh-CN-u-sd-cnsn": "Mandarin (Shaanxi, Kína)",
     "zh-HK": "Kantoni (Hongkong)",
     "zh-TW": "Mandarin (Tajvan)",
-    "bn": "Bengáli"
+    "bn": "Bengáli",
+    "th": "Thai"
   },
   "footer": {
     "appVersion": "Alkalmazás verzió",

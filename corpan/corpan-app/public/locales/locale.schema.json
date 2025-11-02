@@ -60,6 +60,9 @@
         },
         "bn": {
           "type": "string"
+        },
+        "th": {
+          "type": "string"
         }
       },
       "required": [
@@ -80,7 +83,8 @@
         "hu",
         "fa",
         "bn",
-        "zhHant"
+        "zhHant",
+        "th"
       ],
       "additionalProperties": false
     },

@@ -18,7 +18,8 @@
     "pl": "Polonais",
     "hu": "Hongrois",
     "fa": "Persan",
-    "bn": "Bengali"
+    "bn": "Bengali",
+    "th": "Thaï"
   },
   "categories": {
     "travel": "Voyage",
@@ -159,7 +160,8 @@
     "zh-CN-u-sd-cnsn": "Mandarin (Shaanxi, Chine continentale)",
     "zh-HK": "Cantonais (Hong Kong)",
     "zh-TW": "Mandarin (Taïwan)",
-    "bn": "Bengali"
+    "bn": "Bengali",
+    "th": "Thaï"
   },
   "footer": {
     "appVersion": "Version de l’application",

@@ -19,6 +19,7 @@ export const ALL_LANGUAGES = [
     "zh-Hant",
     "ja",
     "vi",
+    "th",
     "bn",
     "hi",
     "ar",

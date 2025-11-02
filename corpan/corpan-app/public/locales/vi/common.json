@@ -18,7 +18,8 @@
     "pl": "Tiếng Ba Lan",
     "hu": "Tiếng Hungary",
     "fa": "Tiếng Ba Tư",
-    "bn": "Tiếng Bengal"
+    "bn": "Tiếng Bengal",
+    "th": "Tiếng Thái"
   },
   "categories": {
     "travel": "Du lịch",
@@ -159,7 +160,8 @@
     "zh-CN-u-sd-cnsn": "Tiếng Phổ Thông (Thiểm Tây, Trung Quốc)",
     "zh-HK": "Tiếng Quảng Đông (Hồng Kông)",
     "zh-TW": "Tiếng Phổ Thông (Đài Loan)",
-    "bn": "Tiếng Bengal"
+    "bn": "Tiếng Bengal",
+    "th": "Tiếng Thái"
   },
   "footer": {
     "appVersion": "Phiên bản ứng dụng",

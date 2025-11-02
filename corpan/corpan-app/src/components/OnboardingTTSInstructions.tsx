@@ -40,6 +40,7 @@ const SAMPLES: Record<string, string> = {
     pl: "Nie mogę się doczekać nauki z tobą.",
     hu: "Alig várom, hogy tanulhassak veled.",
     fa: "سبوس دارم با شما یاد بگیرم.",
+    th: "ฉันตั้งตารอที่จะได้เรียนรู้กับคุณ",
 };
 
 function uniqBy<T>(arr: T[], key: (x: T) => string): T[] {
