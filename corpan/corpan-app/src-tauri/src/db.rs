@@ -6,7 +6,7 @@ use tauri::AppHandle;
 
 /// Embed your prebuilt SQLite at compile time.
 /// Make sure the path is correct relative to db.rs!
-const EMBEDDED_DB: &[u8] = include_bytes!("../../../dja/db.sqlite3");
+const EMBEDDED_DB: &[u8] = include_bytes!("../../../dja/release.sqlite3");
 
 pub fn open_connection(_: &AppHandle) -> Result<Connection, String> {
     // Open an in-memory database.
