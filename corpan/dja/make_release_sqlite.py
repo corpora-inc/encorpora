@@ -10,7 +10,6 @@ from pathlib import Path
 SCHEMA_SQL = """
 CREATE TABLE cor_entry(
   id INTEGER PRIMARY KEY,
-  en_text TEXT NOT NULL,
   level TEXT NOT NULL
 );
 CREATE TABLE cor_domain(
@@ -31,8 +30,6 @@ CREATE TABLE cor_translation(
   text TEXT NOT NULL,
   romanization TEXT NOT NULL
 );
-
--- Minimal helpful indexes
 CREATE INDEX cor_translation_entry_id    ON cor_translation(entry_id);
 CREATE INDEX cor_entry_domains_entry_id  ON cor_entry_domains(entry_id);
 CREATE INDEX cor_entry_domains_domain_id ON cor_entry_domains(domain_id);
@@ -40,24 +37,25 @@ CREATE INDEX cor_domain_code             ON cor_domain(code);
 """
 
 COPY_SQL = """
-INSERT INTO cor_entry(id, en_text, level)
-SELECT id, en_text, COALESCE(level, '')
+INSERT INTO cor_entry(id, level)
+SELECT id, COALESCE(level, '')
 FROM src.cor_entry;
+
 INSERT INTO cor_domain(id, code)
-SELECT id, code
-FROM src.cor_domain;
+SELECT id, code FROM src.cor_domain;
+
 INSERT INTO cor_entry_domains(entry_id, domain_id)
-SELECT entry_id, domain_id
-FROM src.cor_entry_domains;
+SELECT entry_id, domain_id FROM src.cor_entry_domains;
+
 INSERT INTO cor_language(id, code)
-SELECT id, code
-FROM src.cor_language;
+SELECT id, code FROM src.cor_language;
+
 INSERT INTO cor_translation(entry_id, language_id, text, romanization)
-SELECT entry_id,
-       language_id,
-       COALESCE(text, ''),
-       COALESCE(romanization, '')
-FROM src.cor_translation;
+SELECT t.entry_id,
+       t.language_id,
+       COALESCE(t.text, ''),
+       COALESCE(t.romanization, '')
+FROM src.cor_translation t;
 """
 
 
@@ -103,7 +101,7 @@ def main() -> None:
     conn = sqlite3.connect(str(dst))
     conn.isolation_level = None  # autocommit
 
-    # Pack settings BEFORE schema
+    # Packing knobs first
     conn.execute(f"PRAGMA page_size={args.page_size};")
     conn.execute("PRAGMA journal_mode=OFF;")
     conn.execute("PRAGMA synchronous=OFF;")
@@ -114,8 +112,8 @@ def main() -> None:
     src_esc = str(src).replace("'", "''")
     conn.execute(f"ATTACH DATABASE 'file:{src_esc}?mode=ro&immutable=1' AS src;")
 
-    # Fail-fast on required columns
-    assert_cols(conn, "cor_entry", ["id", "en_text", "level"])
+    # Sanity: columns we actually need from source
+    assert_cols(conn, "cor_entry", ["id", "level"])  # en_text not required anymore
     assert_cols(conn, "cor_domain", ["id", "code"])
     assert_cols(conn, "cor_entry_domains", ["entry_id", "domain_id"])
     assert_cols(conn, "cor_language", ["id", "code"])
@@ -123,15 +121,15 @@ def main() -> None:
         conn, "cor_translation", ["entry_id", "language_id", "text", "romanization"]
     )
 
-    # Build and copy (autocommit)
+    # Build schema & copy data
     conn.executescript(SCHEMA_SQL)
     conn.executescript(COPY_SQL)
 
-    # Detach src BEFORE ANALYZE (src is read-only)
+    # Detach src BEFORE ANALYZE to avoid RO writes
     conn.execute("DETACH DATABASE src;")
 
-    # Stats & repack for main only
-    conn.execute("ANALYZE;")  # or "ANALYZE main;"
+    # Stats & repack
+    conn.execute("ANALYZE;")
     conn.execute("PRAGMA optimize;")
     conn.execute("VACUUM;")
     conn.close()
@@ -146,7 +144,7 @@ def main() -> None:
     if gz:
         print(f"Output (.gz): {fmt_bytes(gz)}")
 
-    # Optional breakdown
+    # Optional: breakdown
     try:
         c2 = sqlite3.connect(str(dst))
         rows = c2.execute("""
@@ -155,7 +153,7 @@ def main() -> None:
           GROUP BY name
           ORDER BY bytes DESC
         """).fetchall()
-        print("\n== release.sqlite layout (dbstat) ==")
+        print("\n== release.sqlite3 layout (dbstat) ==")
         for n, b in rows:
             print(f"{n:<40} {fmt_bytes(b)}")
         c2.close()
