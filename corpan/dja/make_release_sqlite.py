@@ -87,8 +87,8 @@ def assert_cols(conn: sqlite3.Connection, t: str, cols: list[str]) -> None:
 
 def main() -> None:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--in", dest="src", type=Path, default=Path("db.sqlite"))
-    ap.add_argument("--out", dest="dst", type=Path, default=Path("release.sqlite"))
+    ap.add_argument("--in", dest="src", type=Path, default=Path("db.sqlite3"))
+    ap.add_argument("--out", dest="dst", type=Path, default=Path("release.sqlite3"))
     ap.add_argument("--page-size", type=int, default=4096)
     args = ap.parse_args()
 
