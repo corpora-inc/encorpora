@@ -162,9 +162,8 @@ class Command(BaseCommand):
                 for t, new in changes:
                     t.romanization = new
                 # Bulk update
-                from math import ceil
-
-                chunks = ceil(len(changes) / batch_size)
+                # from math import ceil
+                # chunks = ceil(len(changes) / batch_size)
                 for i in range(0, len(changes), batch_size):
                     Translation.objects.bulk_update(
                         [t for (t, _new) in changes[i : i + batch_size]],
