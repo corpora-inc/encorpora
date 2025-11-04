@@ -1,8 +1,6 @@
 # cor/management/commands/load_thai_rtgs.py
-from __future__ import annotations
-
 """
-Thai RTGS romanization at production quality.
+Thai RTGS romanization at production quality — **only fills empty romanizations**.
 
 Pipeline (deterministic core + utterance-level cleanup):
   1) Segment Thai with AttaCut (required) to get real word boundaries.
@@ -11,11 +9,14 @@ Pipeline (deterministic core + utterance-level cleanup):
   4) Utterance-level LLM "RTGS normalizer" to fix segmentation artifacts, dropped vowels,
      compounds, loanwords, and spacing. (Provider via load_llm_provider().)
 
-Only flag: --dry-run (prints a random sample of 10 without saving).
+Flags:
+  --dry-run    Print a random sample of 10 (from rows with empty romanization) without saving.
 
 Requirements:
   pip install pythainlp attacut
 """
+
+from __future__ import annotations
 
 import json
 import random
@@ -57,6 +58,10 @@ USE_LLM_CLEAN = True  # Single utterance-level cleanup pass
 LLM_BATCH = 10  # items per LLM request
 LLM_PROCESSES = max(1, mp.cpu_count() // 2)
 LLM_MAX_RETRIES = 3
+
+# --------------------------- Only process truly "empty" romanizations ---------------------------
+# Treat NULL or all-whitespace as empty
+EMPTY_ROMAN_Q = Q(romanization__isnull=True) | Q(romanization__regex=r"^\s*$")
 
 # --------------------------- Regex / Unicode helpers ---------------------------
 _SPLIT_PUNCT = re.compile(r"(\s+|[.,!?;:()\"'…—\-])")
@@ -123,6 +128,9 @@ def _rtgs_base(text: str) -> str:
       • Join with spaces; sanitize any stray Thai codepoints.
     """
     src = _nfc(text)
+    if not src.strip():
+        return ""
+
     coarse = _SPLIT_PUNCT.split(src)
     result_tokens: List[str] = []
 
@@ -143,11 +151,12 @@ def _rtgs_base(text: str) -> str:
                     try:
                         rt = romanize(w, engine="royin")
                     except Exception:
-                        rt = w  # very rare; LLM pass can fix
+                        rt = w  # rare; LLM pass can fix
                     result_tokens.append(_sanitize_roman(rt))
                 else:
                     result_tokens.append(w)
         else:
+            # Non-Thai chunks: pass through unchanged
             result_tokens.append(chunk)
 
     return _join_with_spaces(result_tokens)
@@ -183,15 +192,14 @@ _SYSTEM_PROMPT = (
     'OUTPUT: JSON only: {"romanizations":[{"id":<id>,"rtgs":"<final>"}...]}\n'
 )
 
-# --- Parallel LLM kernel ---
-_LLM = None  # per-process
+_LLM = None  # per-process singleton
 
 
-def _init_worker():
+def _init_worker() -> None:
     """Initialize per-process LLM client once."""
     global _LLM
     close_old_connections()
-    _LLM = load_llm_provider()  # no args
+    _LLM = load_llm_provider()  # dynamic provider selection
 
 
 def _llm_call(batch: List[CleanItem]) -> Dict[int, str]:
@@ -245,13 +253,9 @@ def _llm_cleanup_batch(items: List[CleanItem]) -> List[str]:
     if not items:
         return []
 
-    # Map original order
     order = [it.id for it in items]
-
-    # Split into small batches (better model focus & latency)
     batches = _chunk(items, LLM_BATCH)
 
-    # Parallel pool (fork on unix)
     ctx = mp.get_context("fork") if hasattr(mp, "get_context") else mp
     merged: Dict[int, str] = {}
     with ctx.Pool(
@@ -265,7 +269,6 @@ def _llm_cleanup_batch(items: List[CleanItem]) -> List[str]:
     base_by_id = {it.id: _sanitize_roman(it.rtgs_base) for it in items}
     out_by_id = {i: merged.get(i, base_by_id[i]) for i in order}
 
-    # Return in original order
     return [out_by_id[i] for i in order]
 
 
@@ -274,25 +277,46 @@ def _romanize_batch(sentences: List[str]) -> List[str]:
     base = [_rtgs_base(s) for s in sentences]
     if not USE_LLM_CLEAN:
         return base
-    clean_items = [
-        CleanItem(id=i, thai=t, rtgs_base=b)
-        for i, (t, b) in enumerate(zip(sentences, base))
-    ]
-    cleaned = _llm_cleanup_batch(clean_items)
+
+    # Only send non-empty texts to the LLM; preserve ordering
+    clean_payload: List[CleanItem] = []
+    index_map: Dict[int, int] = {}  # local idx -> payload idx
+    for idx, (t, b) in enumerate(zip(sentences, base)):
+        if t.strip():
+            index_map[idx] = len(clean_payload)
+            clean_payload.append(CleanItem(id=len(clean_payload), thai=t, rtgs_base=b))
+
+    if not clean_payload:
+        return base
+
+    cleaned = _llm_cleanup_batch(clean_payload)
+
+    # Reassemble in original order
+    out: List[str] = []
+    for idx, b in enumerate(base):
+        if idx in index_map:
+            out.append(cleaned[index_map[idx]])
+        else:
+            out.append(b)
+
     # Final sanitation & spacing normalization (idempotent)
-    return [_sanitize_roman(_join_with_spaces(s.split(" "))) for s in cleaned]
+    return [_sanitize_roman(_join_with_spaces(s.split(" "))) for s in out]
 
 
 # --------------------------- Django command ---------------------------
 class Command(BaseCommand):
-    help = "Fill/refresh Translation.romanization for Thai (th) using AttaCut+ROYIN with parallel utterance-level LLM cleanup. --dry-run prints a random sample of 10."
+    help = (
+        "Fill/refresh Translation.romanization for Thai (th) using AttaCut+ROYIN with "
+        "parallel utterance-level LLM cleanup. Processes **only rows with empty romanization**. "
+        "--dry-run prints a random sample of 10."
+    )
 
     def add_arguments(self, parser):
         parser.add_argument(
             "--dry-run",
             action="store_true",
             default=False,
-            help="Preview a random sample of 10 without saving.",
+            help="Preview a random sample of 10 (from empty-romanization rows) without saving.",
         )
 
     def handle(self, *args, **opts):
@@ -303,15 +327,20 @@ class Command(BaseCommand):
         except Language.DoesNotExist as e:
             raise CommandError("Language(code='th') not found.") from e
 
-        qs = Translation.objects.filter(language=th).filter(
-            Q(romanization__isnull=True) | Q(romanization__exact="")
+        # Only rows with empty romanization
+        base_qs = (
+            Translation.objects.filter(language=th)
+            .filter(EMPTY_ROMAN_Q)
+            .only("id", "text", "romanization")
+            .order_by("id")
         )
-        total = qs.count()
+
+        total = base_qs.count()
         if total == 0:
-            self.stdout.write("th: nothing to process.")
+            self.stdout.write("th: nothing to process (no empty romanizations).")
             return
 
-        id_text: List[Tuple[int, str]] = list(qs.values_list("id", "text"))
+        id_text: List[Tuple[int, str]] = list(base_qs.values_list("id", "text"))
 
         if dry:
             random.shuffle(id_text)
@@ -323,7 +352,6 @@ class Command(BaseCommand):
             self.stdout.write("✅ DRY RUN complete.")
             return
 
-        # Write path
         updated = 0
         for i in range(0, len(id_text), BATCH_SIZE_IDS):
             batch = id_text[i : i + BATCH_SIZE_IDS]
@@ -332,17 +360,34 @@ class Command(BaseCommand):
 
             roms = _romanize_batch(texts)
 
-            objs = list(Translation.objects.filter(id__in=ids))
-            by_id = {tid: rom for (tid, _), rom in zip(batch, roms)}
-            for o in objs:
-                new_val = by_id.get(o.id, "").strip()
-                if new_val and new_val != (o.romanization or "").strip():
-                    o.romanization = new_val
-                    updated += 1
-            if objs:
-                Translation.objects.bulk_update(
-                    objs, ["romanization"], batch_size=BATCH_SIZE_IDS
-                )
-            self.stdout.write(f"[batch {i//BATCH_SIZE_IDS + 1}] saved {len(objs)}")
+            # Re-fetch the same ids but **still empty** (defensive; avoids races)
+            objs = list(
+                Translation.objects.filter(id__in=ids)
+                .filter(EMPTY_ROMAN_Q)
+                .only("id", "romanization")
+            )
 
-        self.stdout.write(self.style.SUCCESS(f"✅ Done: updated {updated} rows."))
+            by_id = {tid: rom for (tid, _), rom in zip(batch, roms)}
+            to_update: List[Translation] = []
+            for o in objs:
+                # Do not overwrite any non-empty value
+                if o.romanization and o.romanization.strip():
+                    continue
+                new_val = (by_id.get(o.id, "") or "").strip()
+                if new_val:
+                    o.romanization = new_val
+                    to_update.append(o)
+
+            if to_update:
+                Translation.objects.bulk_update(
+                    to_update, ["romanization"], batch_size=BATCH_SIZE_IDS
+                )
+                updated += len(to_update)
+
+            self.stdout.write(
+                f"[batch {i // BATCH_SIZE_IDS + 1}] saved {len(to_update)}"
+            )
+
+        self.stdout.write(
+            self.style.SUCCESS(f"✅ Done: updated {updated} rows (only empties).")
+        )

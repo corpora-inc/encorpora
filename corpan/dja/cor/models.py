@@ -22,6 +22,7 @@ class Domain(models.Model):
 
 
 CEFR_LEVELS = [
+    ("A0", "A0"),
     ("A1", "A1"),
     ("A2", "A2"),
     ("B1", "B1"),

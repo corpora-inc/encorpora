@@ -32,7 +32,7 @@ type TranslationOut = {
 };
 type EntryOut = {
     entry_id: number;
-    en_text: string;
+    // en_text: string;
     level: string;
     domains: string[];
     translations: TranslationOut[];
@@ -145,7 +145,7 @@ export function MainExperience() {
             textByDbCode[tItem.language_code] = tItem.text;
             romByDbCode[tItem.language_code] = tItem.romanization;
         }
-        textByDbCode["en"] = currEntry.en_text;
+        // textByDbCode["en"] = currEntry.en_text;
     }
 
     const textFor = (uiCode: string) =>

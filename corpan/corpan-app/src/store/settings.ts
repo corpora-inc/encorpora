@@ -26,7 +26,7 @@ export const ALL_LANGUAGES = [
     "fa",
 ];
 
-export const ALL_LEVELS = ["A1", "A2", "B1", "B2", "C1", "C2"];
+export const ALL_LEVELS = ["A0", "A1", "A2", "B1", "B2", "C1", "C2"];
 
 export const ALL_DOMAINS = [
     "travel",
@@ -144,7 +144,7 @@ const nanoid = () =>
 const DEFAULT_SETTINGS: StackSettings = {
     languages: ["en", "es", "pt-BR", "fr", "it", "ko-polite"].reverse(),
     domains: [...ALL_DOMAINS],
-    levels: ["A1"],
+    levels: ["A0"],
     rate: 0.7,
     textSize: "medium",
     showRomanization: true,
