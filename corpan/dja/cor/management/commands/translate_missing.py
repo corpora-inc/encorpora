@@ -34,6 +34,8 @@ def translate_and_save(
         llm = load_llm_provider("xai")
     elif provider == "openai":
         llm = load_llm_provider("openai")
+    elif provider == "claude":
+        llm = load_llm_provider("claude")
     else:
         raise ValueError(f"Unknown provider: {provider}")
 

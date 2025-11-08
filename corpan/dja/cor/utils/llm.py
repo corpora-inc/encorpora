@@ -391,6 +391,16 @@ def translate_entry_batch(
             "ਸਾਹਿਤਿਕ, ਬਹੁਤ ਦਫ਼ਤਰੀ ਜਾਂ ਸਲੈਂਗ ਅੰਦਾਜ਼ ਨਾ ਵਰਤੋ — ਸਿਰਫ਼ ਆਧੁਨਿਕ, ਨਿਮਰ ਮਿਆਰੀ ਪੰਜਾਬੀ ਵਰਤੋ।"
             "ਕੇਵਲ ਤਰਜਮੇ ਵਾਲਾ ਵਾਕ ਹੀ ਲਿਖੋ — ਕੋਈ ਟਿੱਪਣੀ ਨਾ ਸ਼ਾਮਲ ਕਰੋ।"
         ),
+        "id": (
+            "Anda adalah penerjemah kelas dunia, penutur asli bahasa Indonesia. "
+            "Terjemahkan setiap kalimat secara alami dan dengan nada hormat, "
+            "seolah-olah untuk pelajar bahasa tingkat A1–B1. "
+            "Pertahankan kesetiaan makna pada sumber asli, "
+            "namun pastikan terjemahan Anda benar-benar terdengar seperti penutur asli. "
+            "Makna dan signifikansi jauh lebih penting daripada terjemahan harfiah kata per kata. "
+            "Secara umum gunakan nada sopan (misalnya: gunakan ‘Anda’), "
+            "namun jika konteksnya jelas sangat santai dan akrab, maka gunakan bentuk yang lebih informal."
+        ),
     }.get(
         lang_code,
         (
