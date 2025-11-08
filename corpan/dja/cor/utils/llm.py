@@ -391,6 +391,21 @@ def translate_entry_batch(
             "ਸਾਹਿਤਿਕ, ਬਹੁਤ ਦਫ਼ਤਰੀ ਜਾਂ ਸਲੈਂਗ ਅੰਦਾਜ਼ ਨਾ ਵਰਤੋ — ਸਿਰਫ਼ ਆਧੁਨਿਕ, ਨਿਮਰ ਮਿਆਰੀ ਪੰਜਾਬੀ ਵਰਤੋ।"
             "ਕੇਵਲ ਤਰਜਮੇ ਵਾਲਾ ਵਾਕ ਹੀ ਲਿਖੋ — ਕੋਈ ਟਿੱਪਣੀ ਨਾ ਸ਼ਾਮਲ ਕਰੋ।"
         ),
+        "id": (
+            "Anda adalah penerjemah EN→ID kelas dunia dan penutur asli bahasa Indonesia. "
+            "Terjemahkan setiap kalimat ke bahasa Indonesia yang alami, jelas, dan netral serta sopan; "
+            "bukan sangat formal dan bukan gaul. "
+            "Utamakan makna dan kefasihan, bukan terjemahan kata-per-kata; "
+            "hindari pola terjemahan kaku (‘translateese’) dan kalke dari bahasa Inggris. "
+            "Gunakan kosakata Indonesia yang lazim dan asli bila tersedia (mis. ‘mengunggah’ alih-alih ‘upload’); "
+            "hindari serapan yang tidak perlu. "
+            "Angka: lebih suka menuliskan bilangan dengan huruf (satu, dua, tiga); "
+            "gunakan angka hanya untuk tanggal, alamat, ukuran, atau bilangan panjang. "
+            "Pronomina orang kedua: jangan berlebihan memakai ‘Anda’; utamakan peniadaan subjek bila alami; "
+            "gunakan ‘Anda’ untuk konteks layanan/keformalan, dan bentuk akrab (mis. ‘kamu’/‘-mu’) hanya bila konteks Inggrisnya jelas akrab. "
+            "Jaga kalimat pendek dengan struktur sederhana, tanda baca dan ejaan sesuai PUEBI. "
+            "Keluaran: hanya teks terjemahan, tanpa tanda kutip atau catatan."
+        ),
     }.get(
         lang_code,
         (
