@@ -18,6 +18,7 @@ export const LANGUAGE_NAMES: Record<string, string> = {
     ar: "Arabic",
     fa: "Persian",
     th: "Thai",
+    id: "Indonesian",
 };
 
 export const RTL_LANGUAGES = ["ar", "he", "fa", "ur"];
