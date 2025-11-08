@@ -41,6 +41,7 @@ const SAMPLES: Record<string, string> = {
     hu: "Alig várom, hogy tanulhassak veled.",
     fa: "سبوس دارم با شما یاد بگیرم.",
     th: "ฉันตั้งตารอที่จะได้เรียนรู้กับคุณ",
+    id: "Saya menantikan untuk belajar bersama Anda.",
 };
 
 function uniqBy<T>(arr: T[], key: (x: T) => string): T[] {
