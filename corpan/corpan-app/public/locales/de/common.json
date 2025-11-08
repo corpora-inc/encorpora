@@ -19,7 +19,8 @@
     "hu": "Ungarisch",
     "fa": "Persisch",
     "bn": "Bengalisch",
-    "th": "Thailändisch"
+    "th": "Thailändisch",
+    "id": "Indonesisch"
   },
   "categories": {
     "travel": "Reise",
@@ -161,7 +162,8 @@
     "zh-HK": "Kantonesisch (Hongkong)",
     "zh-TW": "Mandarin (Taiwan)",
     "bn": "Bengalisch",
-    "th": "Thailändisch"
+    "th": "Thailändisch",
+    "id": "Indonesisch"
   },
   "footer": {
     "appVersion": "App-Version",

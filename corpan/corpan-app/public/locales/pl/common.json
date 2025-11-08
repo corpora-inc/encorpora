@@ -19,7 +19,8 @@
     "hu": "Węgierski",
     "fa": "Perski",
     "bn": "Bengalski",
-    "th": "Tajski"
+    "th": "Tajski",
+    "id": "indonezyjski"
   },
   "categories": {
     "travel": "Podróże",
@@ -161,7 +162,8 @@
     "zh-HK": "Kantoński (Hongkong)",
     "zh-TW": "Mandaryński (Tajwan)",
     "bn": "Bengalski",
-    "th": "Tajski"
+    "th": "Tajski",
+    "id": "indonezyjski"
   },
   "footer": {
     "appVersion": "Wersja aplikacji",
