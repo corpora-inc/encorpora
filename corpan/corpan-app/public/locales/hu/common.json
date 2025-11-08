@@ -19,7 +19,8 @@
     "hu": "Magyar",
     "fa": "Perzsa",
     "bn": "Bengáli",
-    "th": "Thai"
+    "th": "Thai",
+    "id": "indonéz"
   },
   "categories": {
     "travel": "Utazás",
@@ -161,7 +162,8 @@
     "zh-HK": "Kantoni (Hongkong)",
     "zh-TW": "Mandarin (Tajvan)",
     "bn": "Bengáli",
-    "th": "Thai"
+    "th": "Thai",
+    "id": "indonéz"
   },
   "footer": {
     "appVersion": "Alkalmazás verzió",

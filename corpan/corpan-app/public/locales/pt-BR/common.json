@@ -19,7 +19,8 @@
     "hu": "Húngaro",
     "fa": "Persa",
     "bn": "Bengalês",
-    "th": "Tailandês"
+    "th": "Tailandês",
+    "id": "indonésio"
   },
   "categories": {
     "travel": "Viagem",
@@ -161,7 +162,8 @@
     "zh-HK": "Cantonês (Hong Kong)",
     "zh-TW": "Mandarim (Taiwan)",
     "bn": "Bengalês",
-    "th": "Tailandês"
+    "th": "Tailandês",
+    "id": "indonésio"
   },
   "footer": {
     "appVersion": "Versão do aplicativo",

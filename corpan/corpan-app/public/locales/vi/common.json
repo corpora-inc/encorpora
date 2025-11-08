@@ -19,7 +19,8 @@
     "hu": "Tiếng Hungary",
     "fa": "Tiếng Ba Tư",
     "bn": "Tiếng Bengal",
-    "th": "Tiếng Thái"
+    "th": "Tiếng Thái",
+    "id": "Tiếng Indonesia"
   },
   "categories": {
     "travel": "Du lịch",
@@ -161,7 +162,8 @@
     "zh-HK": "Tiếng Quảng Đông (Hồng Kông)",
     "zh-TW": "Tiếng Phổ Thông (Đài Loan)",
     "bn": "Tiếng Bengal",
-    "th": "Tiếng Thái"
+    "th": "Tiếng Thái",
+    "id": "Tiếng Indonesia"
   },
   "footer": {
     "appVersion": "Phiên bản ứng dụng",

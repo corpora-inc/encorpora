@@ -63,6 +63,9 @@
         },
         "th": {
           "type": "string"
+        },
+        "id": {
+          "type": "string"
         }
       },
       "required": [
@@ -84,7 +87,8 @@
         "fa",
         "bn",
         "zhHant",
-        "th"
+        "th",
+        "id"
       ],
       "additionalProperties": false
     },
