@@ -20,7 +20,8 @@
     "fa": "Persiano",
     "bn": "Bengalese",
     "th": "Thai",
-    "id": "indonesiano"
+    "id": "indonesiano",
+    "tr": "Turco"
   },
   "categories": {
     "travel": "Viaggio",
@@ -163,7 +164,8 @@
     "zh-TW": "Mandarino (Taiwan)",
     "bn": "Bengalese",
     "th": "Thai",
-    "id": "indonesiano"
+    "id": "indonesiano",
+    "tr": "Turco"
   },
   "footer": {
     "appVersion": "Versione dell’app",

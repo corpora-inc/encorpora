@@ -20,7 +20,8 @@
     "fa": "Persa",
     "bn": "Bengalês",
     "th": "Tailandês",
-    "id": "indonésio"
+    "id": "indonésio",
+    "tr": "Turco"
   },
   "categories": {
     "travel": "Viagem",
@@ -163,7 +164,8 @@
     "zh-TW": "Mandarim (Taiwan)",
     "bn": "Bengalês",
     "th": "Tailandês",
-    "id": "indonésio"
+    "id": "indonésio",
+    "tr": "Turco"
   },
   "footer": {
     "appVersion": "Versão do aplicativo",

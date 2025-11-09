@@ -20,7 +20,8 @@
     "fa": "Persisch",
     "bn": "Bengalisch",
     "th": "Thailändisch",
-    "id": "Indonesisch"
+    "id": "Indonesisch",
+    "tr": "Türkisch"
   },
   "categories": {
     "travel": "Reise",
@@ -163,7 +164,8 @@
     "zh-TW": "Mandarin (Taiwan)",
     "bn": "Bengalisch",
     "th": "Thailändisch",
-    "id": "Indonesisch"
+    "id": "Indonesisch",
+    "tr": "Türkisch"
   },
   "footer": {
     "appVersion": "App-Version",
