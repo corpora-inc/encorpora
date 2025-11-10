@@ -635,7 +635,7 @@ dependencies = [
 
 [[package]]
 name = "corpan"
-version = "0.7.15"
+version = "0.7.16"
 dependencies = [
  "rusqlite",
  "serde",
