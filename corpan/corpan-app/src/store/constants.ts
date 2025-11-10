@@ -8,6 +8,7 @@ export const LANGUAGE_NAMES: Record<string, string> = {
     pl: "Polish",
     ru: "Russian",
     hu: "Hungarian",
+    tr: "Turkish",
     "ko-polite": "Korean (Polite)",
     "zh-Hans": "Chinese (Simplified)",
     "zh-Hant": "Chinese (Traditional)",
