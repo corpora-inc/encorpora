@@ -406,6 +406,25 @@ def translate_entry_batch(
             "Jaga kalimat pendek dengan struktur sederhana, tanda baca dan ejaan sesuai PUEBI. "
             "Keluaran: hanya teks terjemahan, tanpa tanda kutip atau catatan."
         ),
+        "tr": (
+            "Profesyonel bir İngilizceden Türkçeye çevirmenisiniz. "
+            "Her cümleyi modern, doğal ve akıcı standart Türkçe ile çevirin; katı kelime kelime çeviriden ve İngilizce kalıpların kopyasından kaçının. "
+            "Anlamı eksiksiz koruyun; keyfi ekleme veya çıkarma yapmayın. "
+            "Söz diziminde Türkçenin doğal düzenini (özne-tümleç-yüklem) tercih edin; vurgu için gerekirse yerini değiştirin ama yüklemi genelde sonda bırakın. "
+            "Belirtili nesnede belirtme durumu ekini (-(y)ı/-i/-u/-ü) kullanın; belirsizde yalın ya da 'bir' kullanın. "
+            "Sahiplik için iyelik + 'var/yok' yapısını kurun (örn. 'Bir arabam var'); 'have' fiilini doğrudan çevirmeyin. "
+            "Varlık/konumda 'var/yok' ve -de/-da kullanın; günlük dilde gereksiz 'mevcut' sözcüğünden kaçının. "
+            "Kip/zaman seçimi: alışkanlık/genel gerçekler → geniş zaman (-r), şu anda olan → şimdiki (-yor), gelecek → -(y)acak, geçmiş → -dı/-di; bağlama göre doğal olanı seçin. "
+            "Rica/isteklerde kibar üslup kullanın: 'Lütfen … yapın' ya da '…-ebilir misiniz?'; özne zamirlerini (sen/siz) gereksiz yere kullanmayın. "
+            "Etiket/tuş/uyarı gibi arayüz metinlerinde kısa, eksiltili ifadeler kabul edilir. "
+            "Sayıdan sonra isim tekil kalır ('iki kitap'); ekleri büyük-küçük ünlü uyumuna göre bağlayın, gerektiğinde kaynaştırma 'y/n/s' kullanın. "
+            "İkilemeleri ve yerleşik deyimleri tercih edin; 'turn on'→'açmak', 'look for'→'aramak' gibi doğal karşılıkları seçin; İngilizce yapıları Türkçeye aynen taşımayın. "
+            "Soru eki 'mi/mı/mu/mü' ayrı yazılır ve kişi ekleriyle birlikte doğru biçimlenir. "
+            "Bağlaç 'de/da' ayrı yazılır; yer eki -de/-da ile karıştırmayın. "
+            "Özel adlara gelen eklerde apostrof kullanın (İstanbul'da, Ahmet'e). "
+            "Türkçe karakterleri doğru yazın (ç, ğ, ı/İ, ö, ş, ü) ve noktalama işaretlerini koruyun. "
+            "Çıktı: yalnızca Türkçe çeviri; tırnak işareti, açıklama ya da etiket eklemeyin."
+        ),
     }.get(
         lang_code,
         (
@@ -438,9 +457,18 @@ def translate_entry_batch(
         ),
     ]
 
-    # print(f"{messages}")
+    print(f"{messages}")
     # print(f"{TranslationResponse.model_dump_json(indent=2)}")
-    result = llm.get_data_completion(messages, TranslationResponse)
+    try:
+        result = llm.get_data_completion(messages, TranslationResponse)
+    except Exception as e:
+        print(f"LLM translation error: {e}")
+        # print stack
+        import traceback
+
+        traceback.print_exc()
+        # raise e
+
     print("RESULT:")
     print(result.translations)
 

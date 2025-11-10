@@ -20,7 +20,8 @@
     "fa": "เปอร์เซีย",
     "bn": "เบงกาลี",
     "th": "ไทย",
-    "id": "Indonesian"
+    "id": "Indonesian",
+    "tr": "Turkish"
   },
   "categories": {
     "travel": "การท่องเที่ยว",
@@ -163,7 +164,8 @@
     "zh-TW": "จีนกลาง (ไต้หวัน)",
     "bn": "เบงกาลี",
     "th": "ไทย",
-    "id": "Indonesian"
+    "id": "Indonesian",
+    "tr": "Turkish"
   },
   "footer": {
     "appVersion": "เวอร์ชันแอป",

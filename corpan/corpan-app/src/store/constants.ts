@@ -8,18 +8,20 @@ export const LANGUAGE_NAMES: Record<string, string> = {
     pl: "Polish",
     ru: "Russian",
     hu: "Hungarian",
-    "ko-polite": "Korean (Polite)",
-    "zh-Hans": "Chinese (Simplified)",
-    "zh-Hant": "Chinese (Traditional)",
-    ja: "Japanese",
-    vi: "Vietnamese",
-    bn: "Bengali",
-    hi: "Hindi",
+    tr: "Turkish",
     ar: "Arabic",
     fa: "Persian",
+    hi: "Hindi",
+    bn: "Bengali",
     th: "Thai",
+    vi: "Vietnamese",
     id: "Indonesian",
+    "zh-Hans": "Chinese (Simplified)",
+    "zh-Hant": "Chinese (Traditional)",
+    "ko-polite": "Korean (Polite)",
+    ja: "Japanese",
 };
+
 
 export const RTL_LANGUAGES = ["ar", "he", "fa", "ur"];
 

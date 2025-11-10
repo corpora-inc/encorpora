@@ -20,7 +20,8 @@
     "fa": "Perzsa",
     "bn": "Bengáli",
     "th": "Thai",
-    "id": "indonéz"
+    "id": "Indonéz",
+    "tr": "Török"
   },
   "categories": {
     "travel": "Utazás",
@@ -163,7 +164,8 @@
     "zh-TW": "Mandarin (Tajvan)",
     "bn": "Bengáli",
     "th": "Thai",
-    "id": "indonéz"
+    "id": "Indonéz",
+    "tr": "Török"
   },
   "footer": {
     "appVersion": "Alkalmazás verzió",

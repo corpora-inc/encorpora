@@ -20,7 +20,8 @@
     "fa": "Persia",
     "bn": "Bengali",
     "th": "Thai",
-    "id": "Indonesia"
+    "id": "Indonesia",
+    "tr": "Bahasa Turki"
   },
   "categories": {
     "travel": "Perjalanan",
@@ -163,7 +164,8 @@
     "zh-TW": "Mandarin (Taiwan)",
     "bn": "Bengali",
     "th": "Thai",
-    "id": "Indonesian"
+    "id": "Indonesian",
+    "tr": "Bahasa Turki"
   },
   "footer": {
     "appVersion": "Versi aplikasi",
