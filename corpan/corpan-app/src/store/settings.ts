@@ -14,19 +14,20 @@ export const ALL_LANGUAGES = [
     "pl",
     "ru",
     "hu",
-    "ko-polite",
-    "zh-Hans",
-    "zh-Hant",
-    "ja",
-    "vi",
-    "th",
-    "bn",
-    "hi",
+    "tr",
     "ar",
     "fa",
+    "hi",
+    "bn",
+    "th",
+    "vi",
     "id",
-    "tr",
+    "zh-Hans",
+    "zh-Hant",
+    "ko-polite",
+    "ja",
 ];
+
 
 export const ALL_LEVELS = ["A0", "A1", "A2", "B1", "B2", "C1", "C2"];
 
