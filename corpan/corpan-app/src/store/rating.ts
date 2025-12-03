@@ -9,13 +9,13 @@ type RatingState = {
     sessionCount: number;
     totalTimeSpentMs: number;
     lastSessionStartedAt: number | null;
-    
+
     // Rating state
     hasRated: boolean;
     hasDismissed: boolean;
     remindMeLaterCount: number;
     lastRemindMeLaterAt: number | null;
-    
+
     // Actions
     trackSessionStart: () => void;
     trackSessionEnd: () => void;
@@ -47,6 +47,7 @@ export const useRatingStore = create<RatingState>()(
             lastRemindMeLaterAt: null,
 
             trackSessionStart: () => {
+                console.log("Tracking session start for rating");
                 const now = Date.now();
                 set((state) => ({
                     firstUsedAt: state.firstUsedAt ?? now,
@@ -56,6 +57,7 @@ export const useRatingStore = create<RatingState>()(
             },
 
             trackSessionEnd: () => {
+                console.log("Tracking session end for rating");
                 const { lastSessionStartedAt } = get();
                 if (lastSessionStartedAt) {
                     const sessionDuration = Date.now() - lastSessionStartedAt;
@@ -68,7 +70,7 @@ export const useRatingStore = create<RatingState>()(
 
             shouldShowPrompt: () => {
                 const state = get();
-                
+
                 // Don't show if already rated or permanently dismissed
                 if (state.hasRated || state.hasDismissed) {
                     return false;

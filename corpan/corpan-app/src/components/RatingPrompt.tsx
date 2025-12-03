@@ -6,6 +6,9 @@ import { useTranslation } from "react-i18next";
 import { useRatingStore } from "@/store/rating";
 import { openUrl } from "@tauri-apps/plugin-opener";
 import { detectPlatform } from "@/lib/getPlatform";
+
+const FALLBACK = "https://github.com/corpora-inc/encorpora";
+
 const platforms = [
 	{
 		name: "ios",
@@ -15,6 +18,7 @@ const platforms = [
 		name: "android",
 		link: "https://play.google.com/store/apps/details?id=com.corpora.corpan",
 	},
+
 ];
 
 export function RatingPrompt() {
@@ -45,13 +49,13 @@ export function RatingPrompt() {
 			const platformName = await detectPlatform();
 			const storeUrl =
 				platforms.find((p) => p.name === platformName)?.link ??
-				"https://github.com/0bkevin/encorpora"; // Fallback for desktop
+				FALLBACK;
 
 			await openUrl(storeUrl);
 		} catch (error) {
 			console.error("Failed to open store:", error);
 			// Fallback for web environment or if Tauri API fails
-			await openUrl("https://github.com/0bkevin/encorpora");
+			await openUrl(FALLBACK);
 		}
 	};
 
@@ -175,7 +179,7 @@ export function RatingPrompt() {
 								<Button
 									onClick={handleRate}
 									size="lg"
-									
+
 									className="w-full bg-linear-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white font-medium shadow-md"
 								>
 									{t("rating.rateNow" as any)}

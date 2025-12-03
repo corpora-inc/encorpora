@@ -15,7 +15,7 @@ export default function App() {
   const [showSettings, setShowSettings] = useState(false);
   const onboarded = useSettingsStore((s) => s.onboarded);
   const textSize = useSettingsStore((s) => s.textSize);
-  
+
   // Rating tracking
   const trackSessionStart = useRatingStore((s) => s.trackSessionStart);
   const trackSessionEnd = useRatingStore((s) => s.trackSessionEnd);
@@ -38,11 +38,13 @@ export default function App() {
 
   // Track session start/end for rating prompt
   useEffect(() => {
+    console.log("App onboarded changed:", onboarded);
     if (onboarded) {
       trackSessionStart();
-      
+
       // Track session end when component unmounts or user leaves
       return () => {
+        console.error("App unmounting or user leaving, tracking session end");
         trackSessionEnd();
       };
     }
@@ -80,7 +82,7 @@ export default function App() {
         open={showSettings}
         onClose={() => setShowSettings(false)}
       />
-      
+
       <RatingPrompt />
     </>
   );

@@ -450,6 +450,38 @@
         "selectPlaceholder"
       ],
       "additionalProperties": false
+    },
+    "rating": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "rateNow": {
+          "type": "string"
+        },
+        "remindLater": {
+          "type": "string"
+        },
+        "noThanks": {
+          "type": "string"
+        },
+        "close": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "title",
+        "description",
+        "rateNow",
+        "remindLater",
+        "noThanks",
+        "close"
+      ],
+      "additionalProperties": false
     }
   },
   "required": [
