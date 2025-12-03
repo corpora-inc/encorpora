@@ -28,6 +28,24 @@ export const ALL_LANGUAGES = [
     "ja",
 ];
 
+export const COMING_SOON_LANGUAGES = [
+    "ur",
+    "ta",
+    "te",
+    "kn",
+    "mr",
+    "gu",
+    "pa",
+    "sw",
+    "he",
+    "el",
+    "my",
+    "km",
+    "yue-Hant-HK",
+] as const;
+
+export type ComingSoonLanguageCode = (typeof COMING_SOON_LANGUAGES)[number];
+
 
 export const ALL_LEVELS = ["A0", "A1", "A2", "B1", "B2", "C1", "C2"];
 
