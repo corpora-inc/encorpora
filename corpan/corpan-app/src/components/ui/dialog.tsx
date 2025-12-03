@@ -70,11 +70,26 @@ function DialogContent({
           paddingTop: getPlatformTopPaddingButtons(),
         }}
       >
-        {/* Sticky wrapper reserves space; button is absolute so rings don’t affect layout */}
-        <div className="sticky top-3 z-[1001]">
+        {/* Sticky wrapper reserves space; button is absolute so rings don’t affect layout
+        <div className="sticky top-5 z-[1001]"
+        // style={{
+        //   maxWidth: "10px"
+        // }}
+        >
           <div className="relative h-10">
             <DialogPrimitive.Close
               className="absolute right-0 top-0 inline-flex h-10 w-12 items-center justify-center rounded-md border bg-background shadow-sm cursor-pointer transition-shadow hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none pointer-events-auto"
+              style={{ marginRight: "-0.15em" }}
+            >
+              <XIcon className="h-5 w-5" />
+              <span className="sr-only">Close</span>
+            </DialogPrimitive.Close>
+          </div>
+        </div> */}
+        <div className="sticky top-5 z-[1001] ml-auto w-12 pointer-events-none">
+          <div className="relative h-10 w-12">
+            <DialogPrimitive.Close
+              className="pointer-events-auto absolute inset-0 inline-flex h-10 w-12 items-center justify-center rounded-md border bg-background shadow-sm cursor-pointer transition-shadow hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none"
               style={{ marginRight: "-0.15em" }}
             >
               <XIcon className="h-5 w-5" />

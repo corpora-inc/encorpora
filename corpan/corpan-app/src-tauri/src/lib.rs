@@ -16,25 +16,24 @@ use tauri_plugin_opener;
 struct TranslationOut {
     language_code: String,
     text: String,
-    romanization: String,
+    romanization: String, // kept as String for the API; we coalesce NULL -> ""
 }
 
 /// Return type for an entry with all translations
 #[derive(Serialize)]
 struct EntryOut {
     entry_id: i64,
-    en_text: String,
     level: String,
     domains: Vec<String>,
     translations: Vec<TranslationOut>,
 }
 
-/// Get one random entry matching given filters, with all translations (existing)
+/// Get one random entry matching given filters, with all translations
 #[command]
 fn get_random_entry_with_translations(
     app: AppHandle,
-    levels: Option<Vec<String>>,  // plural now
-    domains: Option<Vec<String>>, // plural now
+    levels: Option<Vec<String>>,
+    domains: Option<Vec<String>>,
     language_codes: Option<Vec<String>>,
 ) -> Result<EntryOut, String> {
     let conn = db::open_connection(&app)?;
@@ -42,7 +41,7 @@ fn get_random_entry_with_translations(
     let mut where_clauses = vec![];
     let mut params: Vec<Box<dyn rusqlite::ToSql>> = vec![];
 
-    // Handle levels
+    // Levels filter
     if let Some(ref lv_vec) = levels {
         if !lv_vec.is_empty() {
             let q = format!("e.level IN ({})", vec!["?"; lv_vec.len()].join(","));
@@ -53,10 +52,9 @@ fn get_random_entry_with_translations(
         }
     }
 
-    // Handle domains (join only if domains specified)
+    // Domain filter (join only if domains specified)
     let (domain_join, domain_where) = if let Some(ref dom_vec) = domains {
         if !dom_vec.is_empty() {
-            // Only entries that have at least one domain in dom_vec
             let q = format!("d.code IN ({})", vec!["?"; dom_vec.len()].join(","));
             (
                 "INNER JOIN cor_entry_domains ced ON ced.entry_id = e.id
@@ -70,7 +68,6 @@ fn get_random_entry_with_translations(
         ("", None)
     };
 
-    // Add domain filter (if present) to where_clauses
     if let Some(q) = domain_where {
         where_clauses.push(q);
         if let Some(dom_vec) = &domains {
@@ -87,7 +84,7 @@ fn get_random_entry_with_translations(
     };
 
     let sql = format!(
-        "SELECT e.id, e.en_text, e.level, group_concat(DISTINCT d2.code) AS domains
+        "SELECT e.id, e.level, group_concat(DISTINCT d2.code) AS domains
          FROM cor_entry e
          LEFT JOIN cor_entry_domains ced2 ON ced2.entry_id = e.id
          LEFT JOIN cor_domain d2 ON d2.id = ced2.domain_id
@@ -111,9 +108,8 @@ fn get_random_entry_with_translations(
         .ok_or("No entries found for these criteria")?;
 
     let entry_id: i64 = row.get(0).map_err(|e| e.to_string())?;
-    let en_text: String = row.get(1).map_err(|e| e.to_string())?;
-    let level: String = row.get(2).map_err(|e| e.to_string())?;
-    let domain_str: Option<String> = row.get(3).ok();
+    let level: String = row.get(1).map_err(|e| e.to_string())?;
+    let domain_str: Option<String> = row.get(2).ok();
 
     // Domains as vec
     let domains_vec = domain_str
@@ -123,7 +119,7 @@ fn get_random_entry_with_translations(
         .map(|s| s.to_string())
         .collect::<Vec<_>>();
 
-    // Get all translations for this entry
+    // Get all translations for this entry (romanization may be NULL in DB)
     let mut translation_stmt = conn
         .prepare(
             "SELECT l.code, t.text, t.romanization
@@ -137,8 +133,8 @@ fn get_random_entry_with_translations(
         .query_map([entry_id], |row| {
             let lang_code: String = row.get(0)?;
             let text: String = row.get(1)?;
-            let romanization: String = row.get(2)?;
-            Ok((lang_code, text, romanization))
+            let romanization: Option<String> = row.get(2)?; // tolerate NULL
+            Ok((lang_code, text, romanization.unwrap_or_default()))
         })
         .map_err(|e| e.to_string())?;
 
@@ -161,14 +157,13 @@ fn get_random_entry_with_translations(
 
     Ok(EntryOut {
         entry_id,
-        en_text,
         level,
         domains: domains_vec,
         translations,
     })
 }
 
-/// NEW: Fetch a specific entry by ID with all translations (optionally filtered by language codes)
+/// Fetch a specific entry by ID with all translations (optionally filtered by language codes)
 #[command]
 fn get_entry_by_id_with_translations(
     app: AppHandle,
@@ -177,10 +172,10 @@ fn get_entry_by_id_with_translations(
 ) -> Result<EntryOut, String> {
     let conn = db::open_connection(&app)?;
 
-    // Fetch core entry row (en_text, level, domains)
+    // Core entry row
     let mut stmt = conn
         .prepare(
-            "SELECT e.id, e.en_text, e.level, group_concat(DISTINCT d.code) AS domains
+            "SELECT e.id, e.level, group_concat(DISTINCT d.code) AS domains
              FROM cor_entry e
              LEFT JOIN cor_entry_domains ced ON ced.entry_id = e.id
              LEFT JOIN cor_domain d ON d.id = ced.domain_id
@@ -196,9 +191,8 @@ fn get_entry_by_id_with_translations(
         .ok_or("Entry not found")?;
 
     let id: i64 = row.get(0).map_err(|e| e.to_string())?;
-    let en_text: String = row.get(1).map_err(|e| e.to_string())?;
-    let level: String = row.get(2).map_err(|e| e.to_string())?;
-    let domain_str: Option<String> = row.get(3).ok();
+    let level: String = row.get(1).map_err(|e| e.to_string())?;
+    let domain_str: Option<String> = row.get(2).ok();
 
     let domains_vec = domain_str
         .unwrap_or_default()
@@ -207,7 +201,7 @@ fn get_entry_by_id_with_translations(
         .map(|s| s.to_string())
         .collect::<Vec<_>>();
 
-    // Fetch translations
+    // Translations (romanization may be NULL)
     let mut tstmt = conn
         .prepare(
             "SELECT l.code, t.text, t.romanization
@@ -221,8 +215,8 @@ fn get_entry_by_id_with_translations(
         .query_map([id], |row| {
             let lang_code: String = row.get(0)?;
             let text: String = row.get(1)?;
-            let romanization: String = row.get(2)?;
-            Ok((lang_code, text, romanization))
+            let romanization: Option<String> = row.get(2)?; // tolerate NULL
+            Ok((lang_code, text, romanization.unwrap_or_default()))
         })
         .map_err(|e| e.to_string())?;
 
@@ -245,7 +239,6 @@ fn get_entry_by_id_with_translations(
 
     Ok(EntryOut {
         entry_id: id,
-        en_text,
         level,
         domains: domains_vec,
         translations,

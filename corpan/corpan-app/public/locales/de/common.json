@@ -17,7 +17,11 @@
     "vi": "Vietnamesisch",
     "pl": "Polnisch",
     "hu": "Ungarisch",
-    "fa": "Persisch"
+    "fa": "Persisch",
+    "bn": "Bengalisch",
+    "th": "Thailändisch",
+    "id": "Indonesisch",
+    "tr": "Türkisch"
   },
   "categories": {
     "travel": "Reise",
@@ -68,7 +72,7 @@
     "ttsPoorQualityNote": "Wenn die Audioqualität schlecht ist, gehe in die TTS-Einstellungen deines Geräts und installiere hochwertige Stimmen.",
     "howToSetupTtsOn": "So richtest du TTS ein auf",
     "welcomeTitle": "Willkommen in der Corpán-Familie!",
-    "welcomeBody": "Unsere Mission ist es, Bildung für alle zu revolutionieren. Benötigen Sie Hilfe, Feedback oder möchten Sie mitmachen? Besuchen Sie unsere Website.",
+    "welcomeBody": "Corpán ist ein Open-Source-Projekt, das von einem sehr kleinen Team entwickelt wird, nicht von einem großen Unternehmen, dem Sprache und Bildung aber sehr am Herzen liegen. Wir stehen noch ganz am Anfang, daher kannst du auf unfertige Stellen, fehlende Funktionen oder Sprachen stoßen, die es noch nicht gibt. Wenn etwas für dich nicht funktioniert, melde dich bitte über GitHub oder per E-Mail, statt dich still zu ärgern - Feedback und Fehlermeldungen helfen uns enorm. Wir veröffentlichen häufig Updates, und deine Geduld und Unterstützung helfen uns, das Sprachenlernen für alle besser zu machen.",
     "welcomeVisit": "Besuchen Sie encorpora.io",
     "linkCopied": "Link kopiert! Im Browser öffnen:",
     "reconfigureStack": "Stack neu konfigurieren",
@@ -157,7 +161,11 @@
     "zh-CN-u-sd-cnsc": "Mandarin (Sichuan, Festlandchina)",
     "zh-CN-u-sd-cnsn": "Mandarin (Shaanxi, Festlandchina)",
     "zh-HK": "Kantonesisch (Hongkong)",
-    "zh-TW": "Mandarin (Taiwan)"
+    "zh-TW": "Mandarin (Taiwan)",
+    "bn": "Bengalisch",
+    "th": "Thailändisch",
+    "id": "Indonesisch",
+    "tr": "Türkisch"
   },
   "footer": {
     "appVersion": "App-Version",

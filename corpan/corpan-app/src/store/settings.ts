@@ -6,25 +6,48 @@ import { RTL_LANGUAGES } from "./constants";
 
 export const ALL_LANGUAGES = [
     "en",
-    "ko-polite",
     "es",
     "fr",
-    "de",
+    "it",
     "pt-BR",
-    "ja",
+    "de",
+    "pl",
+    "ru",
+    "hu",
+    "tr",
+    "ar",
+    "fa",
+    "hi",
+    "bn",
+    "th",
+    "vi",
+    "id",
     "zh-Hans",
     "zh-Hant",
-    "ar",
-    "ru",
-    "it",
-    "hi",
-    "vi",
-    "pl",
-    "hu",
-    "fa",
+    "ko-polite",
+    "ja",
 ];
 
-export const ALL_LEVELS = ["A1", "A2", "B1", "B2", "C1", "C2"];
+export const COMING_SOON_LANGUAGES = [
+    "ur",
+    "ta",
+    "te",
+    "kn",
+    "mr",
+    "gu",
+    "pa",
+    "sw",
+    "he",
+    "el",
+    "my",
+    "km",
+    "yue-Hant-HK",
+] as const;
+
+export type ComingSoonLanguageCode = (typeof COMING_SOON_LANGUAGES)[number];
+
+
+export const ALL_LEVELS = ["A0", "A1", "A2", "B1", "B2", "C1", "C2"];
 
 export const ALL_DOMAINS = [
     "travel",
@@ -142,7 +165,7 @@ const nanoid = () =>
 const DEFAULT_SETTINGS: StackSettings = {
     languages: ["en", "es", "pt-BR", "fr", "it", "ko-polite"].reverse(),
     domains: [...ALL_DOMAINS],
-    levels: ["A1"],
+    levels: ["A0"],
     rate: 0.7,
     textSize: "medium",
     showRomanization: true,

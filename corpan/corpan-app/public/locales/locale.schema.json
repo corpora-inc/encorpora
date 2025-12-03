@@ -57,6 +57,18 @@
         },
         "fa": {
           "type": "string"
+        },
+        "bn": {
+          "type": "string"
+        },
+        "th": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "tr": {
+          "type": "string"
         }
       },
       "required": [
@@ -74,7 +86,13 @@
         "hi",
         "vi",
         "pl",
-        "hu"
+        "hu",
+        "fa",
+        "bn",
+        "zhHant",
+        "th",
+        "id",
+        "tr"
       ],
       "additionalProperties": false
     },

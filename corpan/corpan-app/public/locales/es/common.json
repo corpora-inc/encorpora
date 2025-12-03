@@ -17,7 +17,11 @@
     "vi": "Vietnamita",
     "pl": "Polaco",
     "hu": "Húngaro",
-    "fa": "Persa"
+    "fa": "Persa",
+    "bn": "Bengalí",
+    "th": "Tailandés",
+    "id": "Indonesio",
+    "tr": "Turco"
   },
   "categories": {
     "travel": "Viaje",
@@ -68,7 +72,7 @@
     "ttsPoorQualityNote": "Si el audio suena mal, instala voces de alta calidad en los ajustes de TTS del dispositivo.",
     "howToSetupTtsOn": "Cómo configurar TTS en",
     "welcomeTitle": "¡Bienvenido a la familia Corpán!",
-    "welcomeBody": "Nuestra misión es mejorar la educación para todos. ¿Necesitas ayuda o quieres participar? Visita nuestro sitio web.",
+    "welcomeBody": "Corpán es un proyecto de código abierto creado por un equipo muy pequeño, no por una gran empresa, que se preocupa profundamente por los idiomas y la educación. Aún estamos empezando, así que puedes encontrar detalles sin pulir, funciones que faltan o idiomas que todavía no están disponibles. Si algo no funciona para ti, por favor escríbenos por GitHub o por correo electrónico en lugar de sufrir en silencio: los comentarios y los informes de errores nos ayudan muchísimo. Publicamos actualizaciones con frecuencia, y tu paciencia y apoyo nos ayudan a mejorar el aprendizaje de idiomas para todo el mundo.",
     "welcomeVisit": "Visita encorpora.io",
     "linkCopied": "¡Enlace copiado! Ábrelo en tu navegador:",
     "reconfigureStack": "Reconfigurar perfil",
@@ -157,7 +161,11 @@
     "zh-CN-u-sd-cnsc": "Mandarín (Sichuan, China continental)",
     "zh-CN-u-sd-cnsn": "Mandarín (Shaanxi, China continental)",
     "zh-HK": "Cantonés (Hong Kong)",
-    "zh-TW": "Mandarín (Taiwán)"
+    "zh-TW": "Mandarín (Taiwán)",
+    "bn": "Bengalí",
+    "th": "Tailandés",
+    "id": "Indonesio",
+    "tr": "Turco"
   },
   "footer": {
     "appVersion": "Versión de la app",

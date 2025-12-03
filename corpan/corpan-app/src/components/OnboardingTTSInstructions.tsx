@@ -35,10 +35,13 @@ const SAMPLES: Record<string, string> = {
     tr: "Seninle öğrenmeyi dört gözle bekliyorum.",
     ar: "متحمس للتعلم معك.",
     hi: "मैं आपके साथ सीखने के लिए उत्सुक हूँ।",
+    bn: "আমি আপনার সাথে শেখার জন্য উন্মুখ।",
     vi: "Tôi mong được học cùng bạn.",
     pl: "Nie mogę się doczekać nauki z tobą.",
     hu: "Alig várom, hogy tanulhassak veled.",
     fa: "سبوس دارم با شما یاد بگیرم.",
+    th: "ฉันตั้งตารอที่จะได้เรียนรู้กับคุณ",
+    id: "Saya menantikan untuk belajar bersama Anda.",
 };
 
 function uniqBy<T>(arr: T[], key: (x: T) => string): T[] {
@@ -77,7 +80,7 @@ export function OnboardingTTSInstructions() {
 
     const { t } = useTranslation();
     const os = useMemo(() => detectOSFromUA(), []);
-    const [voices, setVoices] = useState<VoiceInfo[]>([]);
+    const [voices, setVoices] = useState<VoiceInfo[] | null>(null);
 
     const visibleRef = useRef(true);
     const pollTimer = useRef<number | null>(null);
@@ -114,9 +117,8 @@ export function OnboardingTTSInstructions() {
     }
 
     async function speakExact(voice: VoiceInfo, text: string, rate = 0.9) {
-        console.warn("speakExact", voice.id);
         try {
-            // IMPORTANT: plugin expects { args: { ... , voice_id } }
+            // Prefer native TTS via plugin (Android/iOS), fallback to Web Speech
             await invoke("plugin:tts|speak", {
                 args: {
                     text,
@@ -144,21 +146,51 @@ export function OnboardingTTSInstructions() {
         [t]
     );
 
-    const langs =
-        (languages && languages.length
-            ? languages
-            : Array.from(new Set(voices.map((v) => baseLang(v.language))))) || [];
+    const langs = languages;
+    if (!langs || !langs.length) {
+        console.warn("OnboardingTTSInstructions: no languages selected");
+        return null;
+    }
 
-    function voicesForLang(code: string): VoiceInfo[] {
-        // NO filtering by quality here — show everything the native layer allowed.
+    function voicesForLang(code: string): VoiceInfo[] | null {
+        if (!voices) return null;
         const compatible = voices.filter((v) => {
             const L = (v.language || "").toLowerCase();
             const c = code.toLowerCase();
             return L === c || L.startsWith(c + "-") || baseLang(L) === baseLang(c);
         });
         const unique = uniqBy(compatible, (v) => `${v.id}|${v.language}`);
-        // Stable, helpful order: exact/base matches & higher quality float up, but everything stays visible.
         return sortVoicesWithLangBias(unique, code);
+    }
+
+    // --- Smart Select: enabled only if each language has >= 1 installed voice
+    const canSmartSelect = useMemo(
+        () => langs.every((code) => (voicesForLang(code) || []).length > 0),
+        // voices in deps so this recomputes when the backend updates
+        [langs, voices]
+    );
+
+    // helper stays the same
+    function setSelectionForLang(code: string, desiredIds: string[]) {
+        const current = new Set((voicePrefs[code]?.ids ?? []).slice());
+        const desired = new Set(desiredIds);
+        // deselect anything not desired
+        for (const id of current) {
+            if (!desired.has(id)) toggleVoiceSelection(code, id);
+        }
+        // select anything missing
+        for (const id of desired) {
+            if (!current.has(id)) toggleVoiceSelection(code, id);
+        }
+    }
+
+    // FIX: select *all* installed voices for each language, not just the first
+    function smartSelectAll() {
+        // if (!canSmartSelect) return;
+        for (const code of langs) {
+            const allIds = (voicesForLang(code) || []).map((v) => v.id);
+            setSelectionForLang(code, allIds);
+        }
     }
 
     return (
@@ -184,10 +216,12 @@ export function OnboardingTTSInstructions() {
                     os={os}
                     onOpenInstaller={openInstaller}
                     onOpenSettings={openSettings}
+                    onSmartSelect={smartSelectAll}
+                    canSmartSelect={canSmartSelect}
                 />
             </OnboardingHeader>
 
-            {/* Content below header (no extra offset needed; header height is measured) */}
+            {/* Content below header */}
             <main
                 className="flex-1 min-h-0"
                 style={{ paddingBottom: "calc(env(safe-area-inset-bottom) + 1.5rem)" }}
@@ -197,6 +231,11 @@ export function OnboardingTTSInstructions() {
                         const list = voicesForLang(code);
                         const pref = voicePrefs[code] ?? { ids: [], mode: "cycle" as const };
                         const sample = sampleFor(code);
+                        if (list === null) {
+                            return (
+                                null
+                            )
+                        };
 
                         return (
                             <OnboardingTTSInstructionsLanguageSection
@@ -212,10 +251,9 @@ export function OnboardingTTSInstructions() {
                         );
                     })}
                 </div>
-                <div className="h-8"
-                    style={{
-                        paddingBottom: "calc(env(safe-area-inset-bottom) + 1rem)",
-                    }}
+                <div
+                    className="h-8"
+                    style={{ paddingBottom: "calc(env(safe-area-inset-bottom) + 1rem)" }}
                 />
             </main>
         </section>
