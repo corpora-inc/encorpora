@@ -5,11 +5,11 @@ import { persist, createJSONStorage } from "zustand/middleware";
 
 export const RATING_CRITERIA = {
     // First time we ever show the prompt
-    MIN_UTTERANCES_BEFORE_FIRST_PROMPT: 25,
+    MIN_UTTERANCES_BEFORE_FIRST_PROMPT: 1,
     // Utterances between prompts after "remind me later"
-    UTTERANCES_BETWEEN_PROMPTS: 25,
+    UTTERANCES_BETWEEN_PROMPTS: 1,
     // Max times to honor "remind me later"
-    MAX_REMIND_COUNT: 3,
+    MAX_REMIND_COUNT: 100,
 } as const;
 
 type RatingState = {

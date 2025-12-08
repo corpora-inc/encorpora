@@ -11,14 +11,14 @@ import { Button } from "./components/ui/button";
 import "./index.css";
 import { getPlatformTopPaddingButtons } from "./util/browser";
 
-// import { useRatingStore } from "@/store/rating";
+import { useRatingStore } from "@/store/rating";
 
-// // In a module that always loads (e.g. App.tsx)
-// if (import.meta.env.DEV) {
-//   (window as any).resetRatingState = () => {
-//     useRatingStore.getState().reset();
-//   };
-// }
+// In a module that always loads (e.g. App.tsx)
+if (import.meta.env.DEV) {
+  (window as any).resetRatingState = () => {
+    useRatingStore.getState().reset();
+  };
+}
 
 export default function App() {
   const [showSettings, setShowSettings] = useState(false);

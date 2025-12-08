@@ -16,6 +16,10 @@ const platforms = [
 		link: "https://apps.apple.com/gb/app/corp%C3%A1n/id6746082061",
 	},
 	{
+		name: "mac",
+		link: "https://apps.apple.com/gb/app/corp%C3%A1n/id6746082061",
+	},
+	{
 		name: "android",
 		link: "https://play.google.com/store/apps/details?id=com.corpora.corpan",
 	},
