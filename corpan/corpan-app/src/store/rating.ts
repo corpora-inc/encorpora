@@ -32,7 +32,7 @@ type RatingState = {
 
 export const useRatingStore = create<RatingState>()(
     persist(
-        (set, get) => ({
+        (set, _get) => ({
             // Initial state
             totalUtteranceCount: 0,
             utterancesSinceLastPrompt: 0,
@@ -46,7 +46,7 @@ export const useRatingStore = create<RatingState>()(
                     utterancesSinceLastPrompt:
                         state.utterancesSinceLastPrompt + 1,
                 }));
-                console.log("Utterance counted", get().totalUtteranceCount, get().utterancesSinceLastPrompt);
+                // console.log("Utterance counted", get().totalUtteranceCount, get().utterancesSinceLastPrompt);
             },
 
             dismissPrompt: () => {

@@ -41,10 +41,13 @@ export function RatingPrompt() {
 	const rateApp = useRatingStore((s) => s.rateApp);
 	const remindLater = useRatingStore((s) => s.remindLater);
 
+	// const state = useRatingStore.getState();
+	// console.log("Rating state:", state);
+
 	const show =
-		// !hasRated &&
+		!hasRated &&
 		!hasDismissed &&
-		// remindMeLaterCount < CRITERIA.MAX_REMIND_COUNT &&
+		remindMeLaterCount < CRITERIA.MAX_REMIND_COUNT &&
 		totalUtteranceCount >= CRITERIA.MIN_UTTERANCES_BEFORE_FIRST_PROMPT &&
 		utterancesSinceLastPrompt >= CRITERIA.UTTERANCES_BETWEEN_PROMPTS;
 

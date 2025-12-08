@@ -87,7 +87,7 @@ export function MainExperience() {
         pushEntry(entry.entry_id);
         setCurrEntry(entry);
 
-        console.warn("Fetched new entry", entry.entry_id);
+        // console.warn("Fetched new entry", entry.entry_id);
         incrementUtteranceCount();
     }, [levels, domains, pushEntry]);
 
