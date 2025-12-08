@@ -59,7 +59,7 @@ export function RatingPrompt() {
 
 			await openUrl(storeUrl);
 		} catch (error) {
-			console.error("Failed to open store:", error);
+			// console.error("Failed to open store:", error);
 			await openUrl(FALLBACK);
 		}
 	};
@@ -79,7 +79,7 @@ export function RatingPrompt() {
 		try {
 			await openUrl(GITHUB_ISSUES);
 		} catch (error) {
-			console.error("Failed to open GitHub issues:", error);
+			// console.error("Failed to open GitHub issues:", error);
 			await openUrl(FALLBACK);
 		}
 	};
@@ -113,7 +113,7 @@ export function RatingPrompt() {
 						<div className="bg-white rounded-3xl shadow-2xl p-6 sm:p-7 relative overflow-hidden border border-black/5">
 							{/* Close button */}
 							<button
-								onClick={handleDismiss}
+								onClick={handleRemindLater}
 								className="absolute top-3 right-3 text-gray-400 hover:text-gray-600 transition-colors cursor-pointer"
 								aria-label={t("rating.close" as any)}
 							>

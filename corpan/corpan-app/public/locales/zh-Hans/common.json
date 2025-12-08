@@ -190,10 +190,12 @@
   },
   "rating": {
     "title": "喜欢 Corpán 吗？",
-    "description": "您的反馈帮助我们改进并惠及全球更多语言学习者！",
-    "rateNow": "⭐ 在 Play 商店评分",
+    "description": "Corpán 由一个刚起步的小型开源团队制作。如果你觉得它配得上 5 星，花几秒评分对我们帮助很大。",
+    "rateNow": "⭐ 评为 5 星",
     "remindLater": "稍后再说",
     "noThanks": "不了，谢谢",
-    "close": "关闭"
+    "close": "关闭",
+    "feedbackHint": "还达不到你心中的 5 星？请点“反馈建议”，告诉我们该怎么改进。",
+    "feedbackButton": "在 GitHub 提交反馈"
   }
 }

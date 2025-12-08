@@ -190,10 +190,12 @@
   },
   "rating": {
     "title": "喜歡 Corpán 嗎？",
-    "description": "您的回饋幫助我們改進並惠及全球更多語言學習者！",
-    "rateNow": "⭐ 在 Play 商店評分",
+    "description": "Corpán 由一個剛起步的小型開源團隊製作。如果你覺得值得 5 星，花幾秒評分對我們幫助很大。",
+    "rateNow": "⭐ 給 5 星評分",
     "remindLater": "稍後再說",
-    "noThanks": "不了，謝謝",
-    "close": "關閉"
+    "noThanks": "不用了，謝謝",
+    "close": "關閉",
+    "feedbackHint": "還沒到你心中的 5 星嗎？請點「提供回饋」，告訴我們可以怎麼改進。",
+    "feedbackButton": "在 GitHub 提供回饋"
   }
 }

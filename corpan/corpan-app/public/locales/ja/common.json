@@ -190,10 +190,12 @@
   },
   "rating": {
     "title": "Corpánを楽しんでいますか？",
-    "description": "あなたのフィードバックは、私たちの改善と世界中の言語学習者へのリーチに役立ちます！",
-    "rateNow": "⭐ Play Storeで評価",
-    "remindLater": "後で",
+    "description": "Corpán は小さなオープンソースチームが作り始めたばかりのアプリです。「星5つだ」と感じたら、ひと言レビューでとても助かります。",
+    "rateNow": "⭐ 星5つで評価する",
+    "remindLater": "あとで",
     "noThanks": "いいえ、結構です",
-    "close": "閉じる"
+    "close": "閉じる",
+    "feedbackHint": "まだ星5つと思えない場合は、低い評価の代わりに「フィードバックを送る」から改善点を教えてください。",
+    "feedbackButton": "GitHubでフィードバックを送る"
   }
 }

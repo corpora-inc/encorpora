@@ -148,7 +148,7 @@ export function OnboardingTTSInstructions() {
 
     const langs = languages;
     if (!langs || !langs.length) {
-        console.warn("OnboardingTTSInstructions: no languages selected");
+        // console.warn("OnboardingTTSInstructions: no languages selected");
         return null;
     }
 

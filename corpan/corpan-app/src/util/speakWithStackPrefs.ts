@@ -21,7 +21,7 @@ export async function speakWithStackPrefs(uiCode: string, text: string, rate: nu
     const mergedPrefIds = Array.from(new Set([...exactIds, ...baseIds]));
 
     // If there are no prefs at all, just speak with language
-    console.log("mergedPrefIds", mergedPrefIds);
+    // console.log("mergedPrefIds", mergedPrefIds);
     if (mergedPrefIds.length === 0) {
         await createVoiceTTS(uiCode)(text, rate);
         return;
@@ -32,7 +32,7 @@ export async function speakWithStackPrefs(uiCode: string, text: string, rate: nu
     const availableIds = new Set(available.map((v) => v.id));
     const pool = mergedPrefIds.filter((id) => availableIds.has(id));
 
-    console.warn(pool)
+    // console.warn(pool)
     if (pool.length === 0) {
         // Preferred IDs aren’t installed/available right now; speak by language
         await createVoiceTTS(uiCode)(text, rate);

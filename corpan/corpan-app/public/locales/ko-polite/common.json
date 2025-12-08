@@ -190,10 +190,12 @@
   },
   "rating": {
     "title": "Corpán이 마음에 드시나요?",
-    "description": "여러분의 피드백은 저희가 개선하고 전 세계 더 많은 언어 학습자에게 다가가는 데 도움이 됩니다!",
-    "rateNow": "⭐ Play Store에서 평가하기",
+    "description": "Corpán은 아주 작은 오픈 소스 팀이 이제 막 시작한 앱입니다. 별 5개짜리 앱이라고 느껴지신다면, 잠깐의 별점 평가만으로도 큰 도움이 됩니다.",
+    "rateNow": "⭐ 별 5개로 평가하기",
     "remindLater": "나중에",
-    "noThanks": "아니요, 괜찮습니다",
-    "close": "닫기"
+    "noThanks": "괜찮아요",
+    "close": "닫기",
+    "feedbackHint": "아직 별 5개까지는 아니다 싶으시면, 낮은 평점 대신 ‘피드백 보내기’를 눌러 개선점을 알려 주세요.",
+    "feedbackButton": "GitHub에서 피드백 보내기"
   }
 }

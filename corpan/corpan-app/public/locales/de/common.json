@@ -189,11 +189,13 @@
     "selectPlaceholder": "Auswählen…"
   },
   "rating": {
-    "title": "Gefällt Ihnen Corpán?",
-    "description": "Ihr Feedback hilft uns, besser zu werden und mehr Sprachlerner weltweit zu erreichen!",
-    "rateNow": "⭐ Im Play Store bewerten",
+    "title": "Gefällt dir Corpán?",
+    "description": "Corpán wird von einem kleinen Open-Source-Team entwickelt, das gerade erst startet. Wenn es für dich 5 Sterne wert ist, eine kurze Bewertung hilft uns sehr.",
+    "rateNow": "⭐ Mit 5 Sternen bewerten",
     "remindLater": "Vielleicht später",
     "noThanks": "Nein, danke",
-    "close": "Schließen"
+    "close": "Schließen",
+    "feedbackHint": "Noch keine vollen 5 Sterne? Klicke auf „Feedback geben“ und sag uns, was wir besser machen können.",
+    "feedbackButton": "Feedback auf GitHub geben"
   }
 }

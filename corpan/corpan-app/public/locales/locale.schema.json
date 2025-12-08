@@ -471,6 +471,12 @@
         },
         "close": {
           "type": "string"
+        },
+        "feedbackHint": {
+          "type": "string"
+        },
+        "feedbackButton": {
+          "type": "string"
         }
       },
       "required": [
@@ -479,7 +485,9 @@
         "rateNow",
         "remindLater",
         "noThanks",
-        "close"
+        "close",
+        "feedbackHint",
+        "feedbackButton"
       ],
       "additionalProperties": false
     }

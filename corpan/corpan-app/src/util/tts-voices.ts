@@ -128,7 +128,7 @@ export async function listVoicesNative(): Promise<VoiceInfo[]> {
         const maybe = (res as unknown as { voices?: VoiceInfo[] })?.voices;
         return Array.isArray(maybe) ? maybe : [];
     } catch (e) {
-        console.warn("[TTS] list_voices failed; returning []", e);
+        // console.warn("[TTS] list_voices failed; returning []", e);
         return [];
     }
 }
@@ -139,7 +139,7 @@ export async function openTtsSettings(): Promise<boolean> {
         await invoke("plugin:tts|open_tts_settings");
         return true;
     } catch (e) {
-        console.warn("[TTS] open_tts_settings failed", e);
+        // console.warn("[TTS] open_tts_settings failed", e);
         return false;
     }
 }

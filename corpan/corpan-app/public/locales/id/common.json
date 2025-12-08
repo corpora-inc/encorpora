@@ -187,5 +187,15 @@
     "rename": "Ganti nama",
     "selectAria": "Pilih sebuah stack",
     "selectPlaceholder": "Pilih…"
+  },
+  "rating": {
+    "title": "Suka dengan Corpán?",
+    "description": "Corpán dibuat oleh tim open-source kecil yang baru mulai. Kalau menurut Anda layak 5 bintang, satu rating singkat sangat membantu kami.",
+    "feedbackHint": "Belum terasa pantas 5 bintang? Ketuk 'Kirim masukan' dan beri tahu kami apa yang perlu diperbaiki.",
+    "feedbackButton": "Kirim masukan di GitHub",
+    "rateNow": "⭐ Beri rating 5 bintang",
+    "remindLater": "Nanti saja",
+    "noThanks": "Tidak, terima kasih",
+    "close": "Tutup"
   }
 }

@@ -189,11 +189,13 @@
     "selectPlaceholder": "Elegir…"
   },
   "rating": {
-    "title": "¿Disfrutando Corpán?",
-    "description": "¡Tu opinión nos ayuda a mejorar y llegar a más estudiantes de idiomas en todo el mundo!",
-    "rateNow": "⭐ Calificar en Play Store",
+    "title": "¿Disfrutas de Corpán?",
+    "description": "Corpán lo hace un pequeño equipo de código abierto que recién empieza. Si para ti vale 5 estrellas, una valoración rápida nos ayuda muchísimo.",
+    "rateNow": "⭐ Valorar con 5 estrellas",
     "remindLater": "Quizás más tarde",
     "noThanks": "No, gracias",
-    "close": "Cerrar"
+    "close": "Cerrar",
+    "feedbackHint": "¿Aún no es de 5 estrellas? Pulsa «Enviar comentarios» y dinos qué mejorar.",
+    "feedbackButton": "Enviar comentarios en GitHub"
   }
 }

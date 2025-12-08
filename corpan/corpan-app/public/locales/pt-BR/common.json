@@ -190,10 +190,12 @@
   },
   "rating": {
     "title": "Curtindo o Corpán?",
-    "description": "Seu feedback nos ajuda a melhorar e alcançar mais estudantes de idiomas no mundo!",
-    "rateNow": "⭐ Avaliar na Play Store",
+    "description": "O Corpán é feito por uma pequena equipe open source que está só começando. Se para você vale 5 estrelas, uma avaliação rápida ajuda demais.",
+    "rateNow": "⭐ Avaliar com 5 estrelas",
     "remindLater": "Talvez mais tarde",
     "noThanks": "Não, obrigado",
-    "close": "Fechar"
+    "close": "Fechar",
+    "feedbackHint": "Ainda não é 5 estrelas? Toque em “Enviar feedback” e conte o que a gente pode melhorar.",
+    "feedbackButton": "Enviar feedback no GitHub"
   }
 }

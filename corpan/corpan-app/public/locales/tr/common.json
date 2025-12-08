@@ -187,5 +187,15 @@
     "rename": "Yeniden adlandır",
     "selectAria": "Bir yığın seçin",
     "selectPlaceholder": "Seçin…"
+  },
+  "rating": {
+    "title": "Corpán hoşunuza gidiyor mu?",
+    "description": "Corpán küçük bir açık kaynak ekibi tarafından geliştiriliyor ve daha yolun başındayız. Sizce 5 yıldızı hak ediyorsa, kısa bir oy bize gerçekten çok yardımcı olur.",
+    "feedbackHint": "Sizce henüz tam 5 yıldız değil mi? Daha düşük puan vermek yerine lütfen “Geri bildirim gönder”e tıklayıp neleri geliştirebileceğimizi yazın.",
+    "feedbackButton": "GitHub üzerinden geri bildirim gönder",
+    "rateNow": "⭐ 5 yıldızla oy ver",
+    "remindLater": "Belki sonra",
+    "noThanks": "Hayır, teşekkürler",
+    "close": "Kapat"
   }
 }

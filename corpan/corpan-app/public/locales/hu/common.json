@@ -190,11 +190,12 @@
   },
   "rating": {
     "title": "Tetszik a Corpán?",
-    "description": "Visszajelzésed segít fejlődnünk és több nyelvtanulót elérnünk világszerte!",
-    "rateNow": "⭐ Értékeld a Play Store-ban",
+    "description": "A Corpánt egy kicsi, nyílt forráskódú csapat készíti, most indulunk. Ha szerinted 5 csillagot ér, egy gyors értékelés rengeteget segít.",
+    "rateNow": "⭐ Értékelem 5 csillagra",
     "remindLater": "Talán később",
     "noThanks": "Nem, köszönöm",
-    "close": "Bezárás"
-    "selectPlaceholder": "Válasszon…"
+    "close": "Bezárás",
+    "feedbackHint": "Még nem éri el nálad az 5 csillagot? Kattints a „Visszajelzés küldése” gombra, és írd meg, min javítsunk.",
+    "feedbackButton": "Visszajelzés GitHubon"
   }
 }

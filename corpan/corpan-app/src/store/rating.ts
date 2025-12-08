@@ -5,9 +5,9 @@ import { persist, createJSONStorage } from "zustand/middleware";
 
 export const RATING_CRITERIA = {
     // First time we ever show the prompt
-    MIN_UTTERANCES_BEFORE_FIRST_PROMPT: 1,
+    MIN_UTTERANCES_BEFORE_FIRST_PROMPT: 20,
     // Utterances between prompts after "remind me later"
-    UTTERANCES_BETWEEN_PROMPTS: 1,
+    UTTERANCES_BETWEEN_PROMPTS: 20,
     // Max times to honor "remind me later"
     MAX_REMIND_COUNT: 100,
 } as const;
@@ -46,7 +46,7 @@ export const useRatingStore = create<RatingState>()(
                     utterancesSinceLastPrompt:
                         state.utterancesSinceLastPrompt + 1,
                 }));
-                // console.log("Utterance counted", get().totalUtteranceCount, get().utterancesSinceLastPrompt);
+                // // console.log("Utterance counted", get().totalUtteranceCount, get().utterancesSinceLastPrompt);
             },
 
             dismissPrompt: () => {
