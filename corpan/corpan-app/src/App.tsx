@@ -1,5 +1,6 @@
+// src/App.tsx
+
 import { useSettingsStore, ALL_TEXT_SIZES } from "@/store/settings";
-import { useRatingStore } from "@/store/rating";
 import { OnboardingWizard } from "@/components/OnboardingWizard";
 import { SettingsIcon } from "lucide-react";
 import { useState, useEffect } from "react";
@@ -10,67 +11,43 @@ import { Button } from "./components/ui/button";
 import "./index.css";
 import { getPlatformTopPaddingButtons } from "./util/browser";
 
-
 export default function App() {
   const [showSettings, setShowSettings] = useState(false);
   const onboarded = useSettingsStore((s) => s.onboarded);
   const textSize = useSettingsStore((s) => s.textSize);
-
-  // Rating tracking
-  const trackSessionStart = useRatingStore((s) => s.trackSessionStart);
-  const trackSessionEnd = useRatingStore((s) => s.trackSessionEnd);
 
   useEffect(() => {
     const root = document.documentElement;
     const newClass = `text-${textSize}`;
 
     // Remove any existing text size classes from html element
-    ALL_TEXT_SIZES.forEach(size => {
+    ALL_TEXT_SIZES.forEach((size) => {
       root.classList.remove(`text-${size}`);
     });
 
     // Add the new text size class to html element
     root.classList.add(newClass);
-
-    // No explicit cleanup function needed here as we add/remove directly based on textSize.
-    // The class will be updated whenever textSize changes.
   }, [textSize]);
-
-  // Track session start/end for rating prompt
-  useEffect(() => {
-    console.log("App onboarded changed:", onboarded);
-    if (onboarded) {
-      trackSessionStart();
-
-      // Track session end when component unmounts or user leaves
-      return () => {
-        console.error("App unmounting or user leaving, tracking session end");
-        trackSessionEnd();
-      };
-    }
-  }, [onboarded, trackSessionStart, trackSessionEnd]);
 
   if (!onboarded) {
     return <OnboardingWizard />;
   }
+
   return (
     <>
-      <div className={`flex flex-col min-h-0 h-screen w-full relative`}>
+      <div className="flex flex-col min-h-0 h-screen w-full relative">
         <MainExperience />
-        <div className="fixed top-5 pt-safe right-5 z-50"
+        <div
+          className="fixed top-5 pt-safe right-5 z-50"
           style={{ marginTop: getPlatformTopPaddingButtons() - 3 }}
         >
           <div className="flex items-center">
             <Button
               variant="default"
-              // size="icon"
               size="lg"
-              // size="sm"
               className="h-10 w-12 rounded-md shadow-lg bg-white border border-gray-200 hover:bg-gray-100 transition"
-              // className=""
               aria-label="Settings"
               onClick={() => setShowSettings(true)}
-            // style={{ height: 55, width: 55 }}
             >
               <SettingsIcon className="text-gray-600 h-5 w-5" />
             </Button>

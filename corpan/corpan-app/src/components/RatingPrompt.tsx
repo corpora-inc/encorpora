@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react";
+// src/components/RatingPrompt.tsx
+
 import { motion, AnimatePresence } from "framer-motion";
 import { Star, X, Heart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useTranslation } from "react-i18next";
-import { useRatingStore } from "@/store/rating";
+import { useRatingStore, RATING_CRITERIA as CRITERIA } from "@/store/rating";
 import { openUrl } from "@tauri-apps/plugin-opener";
 import { detectPlatform } from "@/lib/getPlatform";
 
@@ -18,32 +19,37 @@ const platforms = [
 		name: "android",
 		link: "https://play.google.com/store/apps/details?id=com.corpora.corpan",
 	},
-
 ];
 
 export function RatingPrompt() {
 	const { t } = useTranslation();
-	const [isVisible, setIsVisible] = useState(false);
 
-	const shouldShowPrompt = useRatingStore((s) => s.shouldShowPrompt);
+	// One primitive per selector to keep useSyncExternalStore happy
+	const totalUtteranceCount = useRatingStore(
+		(s) => s.totalUtteranceCount
+	);
+	const utterancesSinceLastPrompt = useRatingStore(
+		(s) => s.utterancesSinceLastPrompt
+	);
+	const hasRated = useRatingStore((s) => s.hasRated);
+	const hasDismissed = useRatingStore((s) => s.hasDismissed);
+	const remindMeLaterCount = useRatingStore(
+		(s) => s.remindMeLaterCount
+	);
+
 	const dismissPrompt = useRatingStore((s) => s.dismissPrompt);
 	const rateApp = useRatingStore((s) => s.rateApp);
 	const remindLater = useRatingStore((s) => s.remindLater);
 
-	useEffect(() => {
-		// Check if we should show the prompt after a short delay
-		const timer = setTimeout(() => {
-			if (shouldShowPrompt()) {
-				setIsVisible(true);
-			}
-		}, 2000); // Wait 2 seconds before checking
-
-		return () => clearTimeout(timer);
-	}, [shouldShowPrompt]);
+	const show =
+		// !hasRated &&
+		!hasDismissed &&
+		// remindMeLaterCount < CRITERIA.MAX_REMIND_COUNT &&
+		totalUtteranceCount >= CRITERIA.MIN_UTTERANCES_BEFORE_FIRST_PROMPT &&
+		utterancesSinceLastPrompt >= CRITERIA.UTTERANCES_BETWEEN_PROMPTS;
 
 	const handleRate = async () => {
 		rateApp();
-		setIsVisible(false);
 
 		try {
 			const platformName = await detectPlatform();
@@ -61,17 +67,15 @@ export function RatingPrompt() {
 
 	const handleDismiss = () => {
 		dismissPrompt();
-		setIsVisible(false);
 	};
 
 	const handleRemindLater = () => {
 		remindLater();
-		setIsVisible(false);
 	};
 
 	return (
 		<AnimatePresence>
-			{isVisible && (
+			{show && (
 				<>
 					{/* Backdrop */}
 					<motion.div
@@ -118,7 +122,11 @@ export function RatingPrompt() {
 								className="flex justify-center mb-4"
 							>
 								<div className="bg-linear-to-br from-purple-400 to-purple-600 rounded-full p-4">
-									<Heart className="text-white" size={32} fill="white" />
+									<Heart
+										className="text-white"
+										size={32}
+										fill="white"
+									/>
 								</div>
 							</motion.div>
 
@@ -179,7 +187,6 @@ export function RatingPrompt() {
 								<Button
 									onClick={handleRate}
 									size="lg"
-
 									className="w-full bg-linear-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white font-medium shadow-md"
 								>
 									{t("rating.rateNow" as any)}

@@ -23,6 +23,7 @@ import {
     isAndroid,
 } from "@/util/browser";
 import { speakWithStackPrefs } from "@/util/speakWithStackPrefs";
+import { useRatingStore } from "@/store/rating";
 
 
 type TranslationOut = {
@@ -47,6 +48,10 @@ export function MainExperience() {
     const rate = useSettingsStore((s) => s.rate);
     const showRomanization = useSettingsStore((s) => s.showRomanization);
     const { t } = useTranslation();
+
+    const incrementUtteranceCount = useRatingStore(
+        (s) => s.incrementUtteranceCount
+    );
 
     // Active stack history
     const activeHistory = useHistoryStore((s) => s.byStack[activeStackId]);
@@ -81,6 +86,9 @@ export function MainExperience() {
         // push id to history and show immediately (we already have the full entry)
         pushEntry(entry.entry_id);
         setCurrEntry(entry);
+
+        console.warn("Fetched new entry", entry.entry_id);
+        incrementUtteranceCount();
     }, [levels, domains, pushEntry]);
 
     // --- Effects ---------------------------------------------------------------

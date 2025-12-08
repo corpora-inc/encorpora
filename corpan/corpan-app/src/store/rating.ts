@@ -3,97 +3,50 @@
 import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
 
+export const RATING_CRITERIA = {
+    // First time we ever show the prompt
+    MIN_UTTERANCES_BEFORE_FIRST_PROMPT: 25,
+    // Utterances between prompts after "remind me later"
+    UTTERANCES_BETWEEN_PROMPTS: 25,
+    // Max times to honor "remind me later"
+    MAX_REMIND_COUNT: 3,
+} as const;
+
 type RatingState = {
-    // Tracking
-    firstUsedAt: number | null;
-    sessionCount: number;
-    totalTimeSpentMs: number;
-    lastSessionStartedAt: number | null;
+    // Usage tracking
+    totalUtteranceCount: number;
+    utterancesSinceLastPrompt: number;
 
     // Rating state
     hasRated: boolean;
     hasDismissed: boolean;
     remindMeLaterCount: number;
-    lastRemindMeLaterAt: number | null;
 
     // Actions
-    trackSessionStart: () => void;
-    trackSessionEnd: () => void;
-    shouldShowPrompt: () => boolean;
+    incrementUtteranceCount: () => void;
     dismissPrompt: () => void;
     rateApp: () => void;
     remindLater: () => void;
     reset: () => void;
 };
 
-const CRITERIA = {
-    MIN_SESSIONS: 5,           // Show after at least 5 sessions
-    MIN_TIME_MS: 6 * 60 * 1000, // Show after 5 minutes total usage
-    REMIND_DELAY_MS: 1 * 24 * 60 * 60 * 1000, // Remind after 1 day
-    MAX_REMIND_COUNT: 3,       // Max times to show "remind me later"
-};
-
 export const useRatingStore = create<RatingState>()(
     persist(
         (set, get) => ({
             // Initial state
-            firstUsedAt: null,
-            sessionCount: 0,
-            totalTimeSpentMs: 0,
-            lastSessionStartedAt: null,
+            totalUtteranceCount: 0,
+            utterancesSinceLastPrompt: 0,
             hasRated: false,
             hasDismissed: false,
             remindMeLaterCount: 0,
-            lastRemindMeLaterAt: null,
 
-            trackSessionStart: () => {
-                console.log("Tracking session start for rating");
-                const now = Date.now();
+            incrementUtteranceCount: () => {
                 set((state) => ({
-                    firstUsedAt: state.firstUsedAt ?? now,
-                    sessionCount: state.sessionCount + 1,
-                    lastSessionStartedAt: now,
+                    totalUtteranceCount: state.totalUtteranceCount + 1,
+                    utterancesSinceLastPrompt:
+                        state.utterancesSinceLastPrompt + 1,
                 }));
-            },
-
-            trackSessionEnd: () => {
-                console.log("Tracking session end for rating");
-                const { lastSessionStartedAt } = get();
-                if (lastSessionStartedAt) {
-                    const sessionDuration = Date.now() - lastSessionStartedAt;
-                    set((state) => ({
-                        totalTimeSpentMs: state.totalTimeSpentMs + sessionDuration,
-                        lastSessionStartedAt: null,
-                    }));
-                }
-            },
-
-            shouldShowPrompt: () => {
-                const state = get();
-
-                // Don't show if already rated or permanently dismissed
-                if (state.hasRated || state.hasDismissed) {
-                    return false;
-                }
-
-                // Check if user has postponed too many times
-                if (state.remindMeLaterCount >= CRITERIA.MAX_REMIND_COUNT) {
-                    return false;
-                }
-
-                // Check if enough time has passed since last "remind me later"
-                if (state.lastRemindMeLaterAt) {
-                    const timeSinceReminder = Date.now() - state.lastRemindMeLaterAt;
-                    if (timeSinceReminder < CRITERIA.REMIND_DELAY_MS) {
-                        return false;
-                    }
-                }
-
-                // Check if criteria are met
-                const hasEnoughSessions = state.sessionCount >= CRITERIA.MIN_SESSIONS;
-                const hasEnoughTime = state.totalTimeSpentMs >= CRITERIA.MIN_TIME_MS;
-
-                return hasEnoughSessions && hasEnoughTime;
+                console.log("Utterance counted", get().totalUtteranceCount, get().utterancesSinceLastPrompt);
             },
 
             dismissPrompt: () => {
@@ -107,20 +60,18 @@ export const useRatingStore = create<RatingState>()(
             remindLater: () => {
                 set((state) => ({
                     remindMeLaterCount: state.remindMeLaterCount + 1,
-                    lastRemindMeLaterAt: Date.now(),
+                    // Reset the "since last prompt" counter so we wait for more usage
+                    utterancesSinceLastPrompt: 0,
                 }));
             },
 
             reset: () => {
                 set({
-                    firstUsedAt: null,
-                    sessionCount: 0,
-                    totalTimeSpentMs: 0,
-                    lastSessionStartedAt: null,
+                    totalUtteranceCount: 0,
+                    utterancesSinceLastPrompt: 0,
                     hasRated: false,
                     hasDismissed: false,
                     remindMeLaterCount: 0,
-                    lastRemindMeLaterAt: null,
                 });
             },
         }),
