@@ -72,7 +72,7 @@
     "ttsPoorQualityNote": "Se o áudio estiver com má qualidade, acesse as configurações de TTS do seu dispositivo e instale vozes de alta qualidade.",
     "howToSetupTtsOn": "Como configurar o TTS em",
     "welcomeTitle": "Bem-vindo à família Corpán!",
-    "welcomeBody": "Nossa missão é revolucionar a educação para todos. Precisa de ajuda, tem sugestões ou quer fazer parte? Visite nosso site.",
+    "welcomeBody": "Corpán é um projeto de código aberto criado por uma equipe bem pequena, não por uma grande empresa, que se importa profundamente com idiomas e educação. Ainda estamos só começando, então você pode ver partes inacabadas, recursos que ainda faltam ou idiomas que ainda não estão disponíveis. Se algo não funcionar para você, fale com a gente pelo GitHub ou por e-mail em vez de ficar sofrendo em silêncio - comentários e relatos de bugs nos ajudam demais. Lançamos atualizações com frequência, e a sua paciência e apoio nos ajudam a tornar o aprendizado de idiomas melhor para todas as pessoas.",
     "welcomeVisit": "Visite encorpora.io",
     "linkCopied": "Link copiado! Abra no seu navegador:",
     "reconfigureStack": "Reconfigurar perfil",
@@ -187,5 +187,15 @@
     "rename": "Renomear",
     "selectAria": "Selecionar um perfil",
     "selectPlaceholder": "Escolher…"
+  },
+  "rating": {
+    "title": "Curtindo o Corpán?",
+    "description": "O Corpán é feito por uma pequena equipe open source que está só começando. Se para você vale 5 estrelas, uma avaliação rápida ajuda demais.",
+    "rateNow": "⭐ Avaliar com 5 estrelas",
+    "remindLater": "Talvez mais tarde",
+    "noThanks": "Não, obrigado",
+    "close": "Fechar",
+    "feedbackHint": "Ainda não é 5 estrelas? Toque em “Enviar feedback” e conte o que a gente pode melhorar.",
+    "feedbackButton": "Enviar feedback no GitHub"
   }
 }

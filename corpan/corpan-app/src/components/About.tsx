@@ -20,7 +20,7 @@ const About = () => {
         const version = await getVersion();
         setAppVersion(version);
       } catch (e) {
-        console.error("Failed to get app version:", e);
+        // console.error("Failed to get app version:", e);
         setAppVersion("N/A");
       }
     })();

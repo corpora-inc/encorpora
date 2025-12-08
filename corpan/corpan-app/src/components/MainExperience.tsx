@@ -23,6 +23,7 @@ import {
     isAndroid,
 } from "@/util/browser";
 import { speakWithStackPrefs } from "@/util/speakWithStackPrefs";
+import { useRatingStore } from "@/store/rating";
 
 
 type TranslationOut = {
@@ -48,6 +49,10 @@ export function MainExperience() {
     const showRomanization = useSettingsStore((s) => s.showRomanization);
     const { t } = useTranslation();
 
+    const incrementUtteranceCount = useRatingStore(
+        (s) => s.incrementUtteranceCount
+    );
+
     // Active stack history
     const activeHistory = useHistoryStore((s) => s.byStack[activeStackId]);
     const ids = activeHistory?.ids ?? [];
@@ -64,10 +69,10 @@ export function MainExperience() {
     // --- DB fetchers -----------------------------------------------------------
 
     const resolveCurrent = useCallback(async (entry_id: number) => {
-        // console.log("resolving", entry_id);
+        // // console.log("resolving", entry_id);
         const mySeq = ++fetchSeqRef.current;
         const entry = await invoke<EntryOut>("get_entry_by_id_with_translations", { entryId: entry_id })
-        // console.log("resolved", entry_id, entry);
+        // // console.log("resolved", entry_id, entry);
         if (entry && mySeq === fetchSeqRef.current) setCurrEntry(entry);
     }, []);
 
@@ -81,6 +86,9 @@ export function MainExperience() {
         // push id to history and show immediately (we already have the full entry)
         pushEntry(entry.entry_id);
         setCurrEntry(entry);
+
+        // // console.warn("Fetched new entry", entry.entry_id);
+        incrementUtteranceCount();
     }, [levels, domains, pushEntry]);
 
     // --- Effects ---------------------------------------------------------------

@@ -84,7 +84,7 @@ async function awaitVoices(timeoutMs = 500): Promise<SpeechSynthesisVoice[]> {
 }
 
 async function speakNative(text: string, langPrefix: string, rate: number, voiceId?: string) {
-    console.warn("speaking natively", voiceId)
+    // console.warn("speaking natively", voiceId)
     await invoke("plugin:tts|speak", {
 
         args: {
@@ -136,7 +136,7 @@ export function createVoiceTTS(langPrefix: string) {
         // light debug hook; safe no-op if unused
         window.speechSynthesis.onvoiceschanged = () => {
             // eslint-disable-next-line no-console
-            console.log(`[TTS:${langPrefix}] voiceschanged (${window.speechSynthesis.getVoices().length} voices)`);
+            // console.log(`[TTS:${langPrefix}] voiceschanged (${window.speechSynthesis.getVoices().length} voices)`);
         };
     }
 
@@ -145,25 +145,25 @@ export function createVoiceTTS(langPrefix: string) {
         try {
             if (await preferNativeTTS()) {
                 // eslint-disable-next-line no-console
-                console.log(`[TTS:${langPrefix}] Using native TTS plugin`, voiceId ? `(voiceId=${voiceId})` : "");
+                // console.log(`[TTS:${langPrefix}] Using native TTS plugin`, voiceId ? `(voiceId=${voiceId})` : "");
                 await speakNative(text, langPrefix, rate, voiceId);
-                console.log("spoken")
+                // console.log("spoken")
                 return;
             }
         } catch (err) {
             // eslint-disable-next-line no-console
-            console.warn(`[TTS:${langPrefix}] Native-preference check failed; will try browser`, err);
+            // console.warn(`[TTS:${langPrefix}] Native-preference check failed; will try browser`, err);
         }
 
         // 2) Otherwise, try browser Web Speech.
         try {
             // eslint-disable-next-line no-console
-            console.log(`[TTS:${langPrefix}] Using browser Web Speech API`, voiceId ? `(voiceId=${voiceId})` : "");
+            // console.log(`[TTS:${langPrefix}] Using browser Web Speech API`, voiceId ? `(voiceId=${voiceId})` : "");
             await speakBrowser(text, langPrefix, rate, voiceId);
             return;
         } catch (err) {
             // eslint-disable-next-line no-console
-            console.warn(`[TTS:${langPrefix}] Browser TTS failed`, err);
+            // console.warn(`[TTS:${langPrefix}] Browser TTS failed`, err);
         }
     };
 }

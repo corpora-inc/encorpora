@@ -72,7 +72,7 @@
     "ttsPoorQualityNote": "若音質不佳，請前往裝置的 TTS 設定中安裝高品質語音。",
     "howToSetupTtsOn": "如何在各裝置上設定 TTS",
     "welcomeTitle": "歡迎加入 Corpán 大家庭！",
-    "welcomeBody": "我們的使命是為所有人帶來教育的革新。若需要協助、想提供回饋或加入我們，請造訪我們的網站。",
+    "welcomeBody": "Corpán 是一個由小型團隊開發的開源專案，而不是大型公司，但我們非常重視語言和教育。現在還只是起步階段，所以你可能會看到一些尚未打磨好的地方、缺少的功能，或是還未支援的語言。如果有什麼地方對你來說運作不正常，請不要默默忍受，歡迎透過 GitHub 或電子郵件聯繫我們——你的回饋和錯誤回報對我們非常重要。我們會經常推出更新，你的耐心與支持能幫助我們讓語言學習對所有人來說變得更好。",
     "welcomeVisit": "造訪 encorpora.io",
     "linkCopied": "連結已複製！請在瀏覽器中開啟：",
     "reconfigureStack": "重新設定個人檔案",
@@ -187,5 +187,15 @@
     "rename": "重新命名",
     "selectAria": "選擇設定檔",
     "selectPlaceholder": "選擇…"
+  },
+  "rating": {
+    "title": "喜歡 Corpán 嗎？",
+    "description": "Corpán 由一個剛起步的小型開源團隊製作。如果你覺得值得 5 星，花幾秒評分對我們幫助很大。",
+    "rateNow": "⭐ 給 5 星評分",
+    "remindLater": "稍後再說",
+    "noThanks": "不用了，謝謝",
+    "close": "關閉",
+    "feedbackHint": "還沒到你心中的 5 星嗎？請點「提供回饋」，告訴我們可以怎麼改進。",
+    "feedbackButton": "在 GitHub 提供回饋"
   }
 }

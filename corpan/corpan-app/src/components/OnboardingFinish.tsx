@@ -95,10 +95,10 @@ export function OnboardingFinish() {
                         <h2 className="text-lg font-semibold text-gray-900">
                             {t("onboarding.welcomeTitle", { defaultValue: "Join the community" })}
                         </h2>
-                        <p className="mt-2 text-sm text-gray-600">
+                        <p className="mt-3 mx-3 text-sm text-gray-600 text-justify">
                             {t("onboarding.welcomeBody", {
                                 defaultValue:
-                                    "Follow our channels for updates, deep dives, and community learning sessions.",
+                                    "Corpán is an open-source project created by a tiny team, not a big company, that cares deeply about language and education. We are still just getting started, so you may see rough edges, missing features, or languages that are not here yet. If something does not work for you, please reach out via GitHub or email instead of suffering in silence - feedback and bug reports really help us. We ship frequent updates, and your patience and support help us make language learning better for everyone.",
                             })}
                         </p>
                     </div>
@@ -114,7 +114,7 @@ export function OnboardingFinish() {
                                 >
                                     <div className="flex items-center gap-3">
                                         <span
-                                            className={`grid h-10 w-10 place-items-center rounded-lg bg-gray-50 ${cls} transition group-hover:scale-105`}
+                                            className={`grid h-10 w-10 place-items-center rounded-lg ${cls} transition group-hover:scale-105`}
                                             aria-hidden
                                         >
                                             <Icon size={20} />

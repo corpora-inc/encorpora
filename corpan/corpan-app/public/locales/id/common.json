@@ -72,7 +72,7 @@
     "ttsPoorQualityNote": "Jika audio terdengar buruk, instal suara berkualitas tinggi di pengaturan TTS perangkat Anda.",
     "howToSetupTtsOn": "Cara menyiapkan TTS di",
     "welcomeTitle": "Selamat datang di keluarga Corpán!",
-    "welcomeBody": "Misi kami adalah meningkatkan pendidikan untuk semua orang. Perlu bantuan, masukan, atau ingin bergabung? Kunjungi situs kami.",
+    "welcomeBody": "Corpán adalah proyek open source yang dibuat oleh tim yang sangat kecil, bukan perusahaan besar, yang benar-benar peduli pada bahasa dan pendidikan. Kami masih baru mulai, jadi kamu mungkin akan menemukan bagian yang belum rapi, fitur yang belum ada, atau bahasa yang belum tersedia. Jika ada sesuatu yang tidak bekerja dengan baik untukmu, tolong hubungi kami lewat GitHub atau email, jangan hanya diam dan kesal sendiri - masukan dan laporan bug sangat membantu kami. Kami merilis pembaruan secara rutin, dan kesabaran serta dukunganmu membantu kami membuat pembelajaran bahasa menjadi lebih baik untuk semua orang.",
     "welcomeVisit": "Kunjungi encorpora.io",
     "linkCopied": "Tautan disalin. Buka di peramban Anda:",
     "reconfigureStack": "Konfigurasi ulang stack",
@@ -187,5 +187,15 @@
     "rename": "Ganti nama",
     "selectAria": "Pilih sebuah stack",
     "selectPlaceholder": "Pilih…"
+  },
+  "rating": {
+    "title": "Suka dengan Corpán?",
+    "description": "Corpán dibuat oleh tim open-source kecil yang baru mulai. Kalau menurut Anda layak 5 bintang, satu rating singkat sangat membantu kami.",
+    "feedbackHint": "Belum terasa pantas 5 bintang? Ketuk 'Kirim masukan' dan beri tahu kami apa yang perlu diperbaiki.",
+    "feedbackButton": "Kirim masukan di GitHub",
+    "rateNow": "⭐ Beri rating 5 bintang",
+    "remindLater": "Nanti saja",
+    "noThanks": "Tidak, terima kasih",
+    "close": "Tutup"
   }
 }

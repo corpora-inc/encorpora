@@ -72,7 +72,7 @@
     "ttsPoorQualityNote": "Nếu âm thanh kém, hãy vào cài đặt TTS của thiết bị và cài đặt giọng nói chất lượng cao.",
     "howToSetupTtsOn": "Cách cài đặt TTS trên",
     "welcomeTitle": "Chào mừng bạn đến với gia đình Corpán!",
-    "welcomeBody": "Sứ mệnh của chúng tôi là cách mạng hóa giáo dục cho tất cả mọi người. Nếu bạn cần giúp đỡ, muốn gửi phản hồi hoặc tham gia cùng chúng tôi, hãy truy cập trang web của chúng tôi.",
+    "welcomeBody": "Corpán là một dự án mã nguồn mở do một nhóm rất nhỏ phát triển, chứ không phải một công ty lớn, nhưng chúng tôi thực sự quan tâm đến ngôn ngữ và giáo dục. Chúng tôi vẫn đang ở giai đoạn khởi đầu, nên bạn có thể bắt gặp vài chỗ chưa hoàn thiện, tính năng còn thiếu hoặc những ngôn ngữ chưa được hỗ trợ. Nếu có điều gì đó không hoạt động tốt với bạn, hãy liên hệ với chúng tôi qua GitHub hoặc email thay vì lặng lẽ chịu đựng – phản hồi và báo lỗi giúp chúng tôi rất nhiều. Chúng tôi phát hành bản cập nhật thường xuyên, và sự kiên nhẫn cùng sự ủng hộ của bạn giúp chúng tôi cải thiện việc học ngôn ngữ cho mọi người.",
     "welcomeVisit": "Truy cập encorpora.io",
     "linkCopied": "Đã sao chép liên kết! Mở trong trình duyệt của bạn:",
     "reconfigureStack": "Cấu hình lại hồ sơ",
@@ -187,5 +187,15 @@
     "rename": "Đổi tên",
     "selectAria": "Chọn hồ sơ",
     "selectPlaceholder": "Chọn…"
+  },
+  "rating": {
+    "title": "Bạn có thích Corpán không?",
+    "description": "Corpán được xây dựng bởi một nhóm mã nguồn mở nhỏ, mới bắt đầu. Nếu với bạn ứng dụng xứng đáng 5 sao, một đánh giá nhanh giúp chúng tôi rất nhiều.",
+    "rateNow": "⭐ Đánh giá 5 sao",
+    "remindLater": "Để sau",
+    "noThanks": "Không, cảm ơn",
+    "close": "Đóng",
+    "feedbackHint": "Chưa thực sự là 5 sao trong mắt bạn? Hãy bấm “Góp ý” và cho chúng tôi biết cần cải thiện gì.",
+    "feedbackButton": "Góp ý trên GitHub"
   }
 }
