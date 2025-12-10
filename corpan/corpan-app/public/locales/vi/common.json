@@ -72,7 +72,7 @@
     "ttsPoorQualityNote": "Nếu âm thanh kém, hãy vào cài đặt TTS của thiết bị và cài đặt giọng nói chất lượng cao.",
     "howToSetupTtsOn": "Cách cài đặt TTS trên",
     "welcomeTitle": "Chào mừng bạn đến với gia đình Corpán!",
-    "welcomeBody": "Corpán là một dự án mã nguồn mở do một nhóm rất nhỏ phát triển, chứ không phải một công ty lớn, nhưng chúng tôi thực sự quan tâm đến ngôn ngữ và giáo dục. Chúng tôi vẫn đang ở giai đoạn khởi đầu, nên bạn có thể bắt gặp vài chỗ chưa hoàn thiện, tính năng còn thiếu hoặc những ngôn ngữ chưa được hỗ trợ. Nếu có điều gì đó không hoạt động tốt với bạn, hãy liên hệ với chúng tôi qua GitHub hoặc email thay vì lặng lẽ chịu đựng – phản hồi và báo lỗi giúp chúng tôi rất nhiều. Chúng tôi phát hành bản cập nhật thường xuyên, và sự kiên nhẫn cùng sự ủng hộ của bạn giúp chúng tôi cải thiện việc học ngôn ngữ cho mọi người.",
+    "welcomeBody": "Corpán là một ứng dụng mã nguồn mở do một nhóm rất nhỏ phát triển, chứ không phải một công ty lớn. Chúng tôi thực sự quan tâm đến ngôn ngữ và giáo dục, và dự án vẫn còn ở giai đoạn đầu, nên có thể bạn sẽ thấy vài chỗ chưa hoàn thiện, tính năng còn thiếu hoặc ngôn ngữ chưa được hỗ trợ. Nếu có điều gì không hoạt động tốt, hãy báo cho chúng tôi qua GitHub hoặc email. Phản hồi của bạn giúp chúng tôi ra bản cập nhật thường xuyên và cải thiện việc học ngôn ngữ cho mọi người.",
     "welcomeVisit": "Truy cập encorpora.io",
     "linkCopied": "Đã sao chép liên kết! Mở trong trình duyệt của bạn:",
     "reconfigureStack": "Cấu hình lại hồ sơ",

@@ -72,7 +72,7 @@
     "ttsPoorQualityNote": "Si l’audio est de mauvaise qualité, installez des voix haute qualité dans les réglages TTS de l’appareil.",
     "howToSetupTtsOn": "Configurer la synthèse vocale sur",
     "welcomeTitle": "Bienvenue dans la famille Corpán !",
-    "welcomeBody": "Corpán est un projet open source créé par une toute petite équipe, et non par une grande entreprise, qui se soucie profondément des langues et de l’éducation. Nous en sommes encore aux débuts, il est donc possible que tu rencontres des éléments pas encore polis, des fonctionnalités manquantes ou des langues qui ne sont pas encore disponibles. Si quelque chose ne fonctionne pas pour toi, écris-nous s’il te plaît via GitHub ou par e-mail au lieu de rester seul avec le problème - les retours et les rapports de bugs nous aident énormément. Nous publions des mises à jour fréquentes, et ta patience et ton soutien nous aident à rendre l’apprentissage des langues meilleur pour tout le monde.",
+    "welcomeBody": "Corpán est une application open source créée par une toute petite équipe, pas par une grande entreprise. Nous nous soucions vraiment des langues et de l’éducation et le projet est encore jeune, il peut donc rester des aspérités, des fonctions manquantes ou des langues absentes. Si quelque chose ne fonctionne pas, écris-nous sur GitHub ou par e-mail. Tes retours nous aident à publier des mises à jour régulières et à rendre l’apprentissage des langues meilleur pour tous.",
     "welcomeVisit": "Visiter encorpora.io",
     "linkCopied": "Lien copié. Ouvrez-le dans votre navigateur :",
     "reconfigureStack": "Reconfigurer le profil",

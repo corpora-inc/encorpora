@@ -72,7 +72,7 @@
     "ttsPoorQualityNote": "Ses kalitesi düşük geliyorsa, cihazınızın TTS ayarlarından yüksek kaliteli sesler yükleyin.",
     "howToSetupTtsOn": "TTS kurulumu",
     "welcomeTitle": "Corpán ailesine hoş geldiniz!",
-    "welcomeBody": "Corpán, büyük bir şirketin değil, dilleri ve eğitimi gerçekten önemseyen küçücük bir ekibin geliştirdiği açık kaynaklı bir projedir. Hâlâ yolun çok başındayız, bu yüzden tamamlanmamış yerler, eksik özellikler veya henüz eklenmemiş dillerle karşılaşabilirsiniz. Sizin için bir şey düzgün çalışmıyorsa, lütfen sessizce sinirlenmek yerine GitHub ya da e-posta üzerinden bizimle iletişime geçin - geri bildirimler ve hata raporları bize gerçekten çok yardımcı oluyor. Sık sık güncelleme yayınlıyoruz ve sabrınız ile desteğiniz, dil öğrenimini herkes için daha iyi hâle getirmemize yardımcı oluyor.",
+    "welcomeBody": "Corpán, büyük bir şirketin değil, dilleri ve eğitimi gerçekten önemseyen küçücük bir ekibin geliştirdiği açık kaynaklı bir uygulamadır. Proje hâlâ erken aşamada, bu yüzden tamamlanmamış bölgeler, eksik özellikler veya henüz eklenmemiş dillerle karşılaşabilirsiniz. Sizin için bir şey iyi çalışmıyorsa, lütfen sessizce sinirlenmek yerine GitHub ya da e-posta üzerinden bize yazın. Geri bildirimleriniz sık güncelleme yapmamıza ve dil öğrenimini herkes için daha iyi hale getirmemize yardımcı olur.",
     "welcomeVisit": "encorpora.io adresini ziyaret edin",
     "linkCopied": "Bağlantı kopyalandı. Tarayıcınızda açın:",
     "reconfigureStack": "Yığını yeniden yapılandır",
