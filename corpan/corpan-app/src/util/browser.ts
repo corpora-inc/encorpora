@@ -24,16 +24,16 @@ export function getPlatformBottomPadding() {
     if (/iPhone|iPad|iPod|iOS/i.test(navigator.userAgent)) {
         return 180;
     } if (isAndroidButNotChromeOS()) {
-        return 195;
+        return 180;
     }
     return 180;
 }
 
 export function getPlatformTopPaddingButtons() {
     if (/iPhone|iPad|iPod|iOS/i.test(navigator.userAgent)) {
-        return 55;
+        return 50;
     } if (isAndroidButNotChromeOS()) {
-        return 37;
+        return 25;
     }
     return 10;
 }

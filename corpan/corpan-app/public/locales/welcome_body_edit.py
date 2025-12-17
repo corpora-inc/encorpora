@@ -9,216 +9,169 @@ import json
 
 BASE_DIR = Path(__file__).parent
 
-NEW_WELCOME_BODY = (
-    "Corpán is an open-source project created by a tiny team, not a big company, "
-    "that cares deeply about language and education. We are still just getting "
-    "started, so you may see rough edges, missing features, or languages that are "
-    "not here yet. If something does not work for you, please reach out via GitHub "
-    "or email instead of suffering in silence - feedback and bug reports really "
-    "help us. We ship frequent updates, and your patience and support help us make "
-    "language learning better for everyone."
-)
-
-# All languages must be present here. No fallbacks.
 PER_LANGUAGE_OVERRIDE = {
     # English
-    "en": NEW_WELCOME_BODY,
+    "en": (
+        "Corpán is an open-source app from a tiny team, not a big company. We care deeply about "
+        "language and education and we are still early, so you may see rough edges or missing "
+        "features and languages. If something does not work, please tell us on GitHub or by email. "
+        "Your feedback helps us ship frequent updates and make language learning better for everyone."
+    ),
     # Arabic
     "ar": (
-        "Corpán هو مشروع مفتوح المصدر طوّره فريق صغير جداً، وليس شركة كبيرة، يهتم كثيراً "
-        "باللغات والتعليم. نحن ما زلنا في البداية، لذلك قد تلاحظ بعض الأجزاء غير المكتملة "
-        "أو الميزات الناقصة أو لغات لم نضفها بعد. إذا كان هناك شيء لا يعمل جيداً بالنسبة لك، "
-        "فيرجى التواصل معنا عبر GitHub أو البريد الإلكتروني بدلاً من المعاناة بصمت - "
-        "الملاحظات وتقارير الأخطاء تساعدنا كثيراً. نقوم بإصدار تحديثات بشكل متكرر، وصبرك "
-        "ودعمك يساعداننا على جعل تعلّم اللغات أفضل للجميع."
+        "‏Corpán مشروع مفتوح المصدر يطوّره فريق صغير جداً، وليس شركة كبيرة، ويهتم بجدية باللغات "
+        "والتعليم. ما زلنا في المراحل الأولى، لذلك قد تلاحظ بعض النواقص أو اللغات والميزات غير "
+        "المكتملة. إذا واجهت مشكلة، يرجى إبلاغنا عبر GitHub أو البريد الإلكتروني. ملاحظاتك تساعدنا "
+        "على تحسين التطبيق وتقديم تحديثات متكررة لتجربة تعلّم لغات أفضل للجميع."
     ),
-    # Bengali (tightened)
+    # Bengali
     "bn": (
-        "Corpán একটি ওপেন সোর্স প্রকল্প, যা কোনো বড় কোম্পানি নয়, কয়েকজন মানুষের ছোট একটি দল "
-        "তৈরি করছে যারা ভাষা আর শিক্ষাকে সত্যিই গুরুত্ব দেয়। আমরা এখনও একেবারে শুরুতে, তাই আপনি "
-        "কিছু অসম্পূর্ণ অংশ, অনুপস্থিত ফিচার বা এখনো যোগ না করা ভাষা দেখতে পারেন। যদি কোনো কিছু "
-        "আপনার জন্য ঠিকমতো কাজ না করে, তাহলে চুপচাপ বিরক্ত না হয়ে GitHub বা ইমেইলের মাধ্যমে আমাদের "
-        "জানান – আপনার মতামত আর বাগ রিপোর্ট আমাদের জন্য খুব সহায়ক। আমরা নিয়মিত আপডেট দিই, আর আপনার "
-        "ধৈর্য আর সমর্থন সবার জন্য ভাষা শেখাকে আরও ভালো করতে আমাদের সাহায্য করে।"
+        "Corpán একটি ওপেন সোর্স অ্যাপ, যা কোনো বড় কোম্পানি নয়, ছোট একটি দল বানাচ্ছে যারা ভাষা "
+        "আর শিক্ষাকে সত্যিই গুরুত্ব দেয়। আমরা এখনও একেবারে শুরুতে, তাই কিছু খসখসে জায়গা, "
+        "মিসিং ফিচার বা এখনো যোগ না হওয়া ভাষা দেখতে পারেন। যদি কিছু ঠিকমতো কাজ না করে, "
+        "GitHub বা ইমেইলে আমাদের জানিয়ে দিন। আপনার ফিডব্যাক আমাদের দ্রুত আপডেট এবং আরও ভালো "
+        "ভাষা শেখার অভিজ্ঞতা দিতে সাহায্য করে।"
     ),
     # German
     "de": (
-        "Corpán ist ein Open-Source-Projekt, das von einem sehr kleinen Team entwickelt wird, "
-        "nicht von einem großen Unternehmen, dem Sprache und Bildung aber sehr am Herzen "
-        "liegen. Wir stehen noch ganz am Anfang, daher kannst du auf unfertige Stellen, "
-        "fehlende Funktionen oder Sprachen stoßen, die es noch nicht gibt. Wenn etwas für "
-        "dich nicht funktioniert, melde dich bitte über GitHub oder per E-Mail, statt dich "
-        "still zu ärgern - Feedback und Fehlermeldungen helfen uns enorm. Wir veröffentlichen "
-        "häufig Updates, und deine Geduld und Unterstützung helfen uns, das Sprachenlernen "
-        "für alle besser zu machen."
+        "Corpán ist eine Open-Source-App eines sehr kleinen Teams, nicht eines großen Konzerns. "
+        "Uns liegen Sprachen und Bildung am Herzen und das Projekt steckt noch in den Anfängen, "
+        "daher können Ecken, fehlende Funktionen oder Sprachen auftreten. Wenn etwas nicht gut "
+        "funktioniert, melde dich bitte über GitHub oder per E-Mail. Dein Feedback hilft uns, "
+        "häufige Updates zu liefern und das Sprachenlernen für alle zu verbessern."
     ),
     # Spanish
     "es": (
-        "Corpán es un proyecto de código abierto creado por un equipo muy pequeño, no por una "
-        "gran empresa, que se preocupa profundamente por los idiomas y la educación. Aún "
-        "estamos empezando, así que puedes encontrar detalles sin pulir, funciones que faltan "
-        "o idiomas que todavía no están disponibles. Si algo no funciona para ti, por favor "
-        "escríbenos por GitHub o por correo electrónico en lugar de sufrir en silencio: los "
-        "comentarios y los informes de errores nos ayudan muchísimo. Publicamos actualizaciones "
-        "con frecuencia, y tu paciencia y apoyo nos ayudan a mejorar el aprendizaje de idiomas "
-        "para todo el mundo."
+        "Corpán es una app de código abierto creada por un equipo muy pequeño, no por una gran "
+        "empresa. Nos importan de verdad los idiomas y la educación, y todavía estamos empezando, "
+        "así que puede que veas detalles sin pulir, funciones que faltan o idiomas aún no disponibles. "
+        "Si algo no te funciona, escríbenos por GitHub o por correo. Tus comentarios nos ayudan a "
+        "sacar actualizaciones frecuentes y mejorar el aprendizaje de idiomas para todos."
     ),
     # Persian
     "fa": (
-        "Corpán یک پروژه متن باز است که توسط یک تیم خیلی کوچک ساخته شده، نه یک شرکت بزرگ، "
-        "و برای زبان و آموزش عمیقاً اهمیت قائل است. ما هنوز در شروع راه هستیم، بنابراین "
-        "ممکن است با بخش‌های ناتمام، امکانات ناقص یا زبان‌هایی که هنوز اضافه نشده‌اند "
-        "روبه‌رو شوید. اگر چیزی برای شما درست کار نمی‌کند، لطفاً به جای این که در سکوت "
-        "بمانید، از طریق GitHub یا ایمیل با ما تماس بگیرید - بازخورد و گزارش خطاها واقعاً "
-        "به ما کمک می‌کنند. ما مرتباً به‌روزرسانی منتشر می‌کنیم و صبر و حمایت شما به ما "
-        "کمک می‌کند یادگیری زبان را برای همه بهتر کنیم."
+        "‏Corpán یک برنامه متن‌باز است که توسط تیمی بسیار کوچک ساخته می‌شود، نه یک شرکت بزرگ، "
+        "و ما واقعاً به زبان و آموزش اهمیت می‌دهیم. پروژه هنوز در آغاز راه است، بنابراین ممکن "
+        "است بخش‌های ناتمام، امکانات کم یا زبان‌هایی که هنوز اضافه نشده‌اند ببینید. اگر چیزی "
+        "برای شما درست کار نمی‌کند، لطفاً از طریق GitHub یا ایمیل به ما خبر بدهید. بازخورد شما "
+        "به ما کمک می‌کند به‌روزرسانی‌های مداوم ارائه کنیم و یادگیری زبان را برای همه بهتر کنیم."
     ),
     # French
     "fr": (
-        "Corpán est un projet open source créé par une toute petite équipe, et non par une "
-        "grande entreprise, qui se soucie profondément des langues et de l’éducation. Nous en "
-        "sommes encore aux débuts, il est donc possible que tu rencontres des éléments pas "
-        "encore polis, des fonctionnalités manquantes ou des langues qui ne sont pas encore "
-        "disponibles. Si quelque chose ne fonctionne pas pour toi, écris-nous s’il te plaît "
-        "via GitHub ou par e-mail au lieu de rester seul avec le problème - les retours et les "
-        "rapports de bugs nous aident énormément. Nous publions des mises à jour fréquentes, et "
-        "ta patience et ton soutien nous aident à rendre l’apprentissage des langues meilleur "
-        "pour tout le monde."
+        "Corpán est une application open source créée par une toute petite équipe, pas par une grande "
+        "entreprise. Nous nous soucions vraiment des langues et de l’éducation et le projet est encore "
+        "jeune, il peut donc rester des aspérités, des fonctions manquantes ou des langues absentes. "
+        "Si quelque chose ne fonctionne pas, écris-nous sur GitHub ou par e-mail. Tes retours nous "
+        "aident à publier des mises à jour régulières et à rendre l’apprentissage des langues meilleur pour tous."
     ),
-    # Hindi (tightened)
+    # Hindi
     "hi": (
-        "Corpán एक ओपन सोर्स प्रोजेक्ट है, जिसे किसी बड़ी कंपनी ने नहीं, बल्कि कुछ लोगों की "
-        "एक छोटी टीम ने बनाया है जो भाषा और शिक्षा की सचमुच परवाह करती है। हम अभी शुरुआत "
-        "में ही हैं, इसलिए आपको कहीं-कहीं अधूरी चीजें, गायब फीचर या ऐसी भाषाएँ दिख सकती हैं "
-        "जो अभी शामिल नहीं हुई हैं। अगर आपके लिए कुछ ठीक से काम नहीं कर रहा है, तो कृपया "
-        "चुपचाप झेलने के बजाय GitHub या ईमेल के ज़रिए हमें बताइए – आपका फीडबैक और बग रिपोर्ट "
-        "हमारे लिए बहुत मददगार है। हम अक्सर अपडेट जारी करते रहते हैं, और आपका धैर्य और समर्थन "
-        "सबके लिए भाषा सीखना बेहतर बनाने में हमारी मदद करता है।"
+        "Corpán एक ओपन सोर्स ऐप है, जिसे किसी बड़ी कंपनी ने नहीं बल्कि कुछ लोगों की छोटी टीम ने "
+        "बनाया है जो भाषा और शिक्षा की सच में परवाह करती है। हम अभी शुरुआती चरण में हैं, इसलिए "
+        "आपको कहीं-कहीं अधूरे हिस्से, गायब फीचर या ऐसी भाषाएँ दिख सकती हैं जो अभी जोड़ी नहीं गई हैं। "
+        "अगर कुछ ठीक से काम नहीं कर रहा हो, तो कृपया GitHub या ईमेल के ज़रिए हमें बताइए। आपका "
+        "फ़ीडबैक हमें तेज़ी से अपडेट जारी करने और सबके लिए भाषा सीखना बेहतर बनाने में मदद करता है।"
     ),
     # Hungarian
     "hu": (
-        "A Corpán egy nyílt forráskódú projekt, amelyet egy apró csapat fejleszt, nem egy nagy "
-        "vállalat, de számunkra a nyelvek és az oktatás nagyon fontosak. Még csak az elején "
-        "járunk, ezért találkozhatsz félkész részekkel, hiányzó funkciókkal vagy olyan "
-        "nyelvekkel, amelyek még nincsenek benne. Ha valami nem működik jól számodra, kérünk, "
-        "ne bosszankodj csendben, hanem jelezd GitHubon vagy e-mailben – a visszajelzések és "
-        "hibajelentések rengeteget segítenek. Gyakran adunk ki frissítéseket, és a türelmed, "
-        "valamint a támogatásod segít abban, hogy a nyelvtanulást mindenki számára jobbá tegyük."
+        "A Corpán egy nyílt forráskódú alkalmazás, amelyet egy apró csapat fejleszt, nem egy nagy "
+        "vállalat. Nagyon fontosnak tartjuk a nyelveket és az oktatást, és a projekt még korai "
+        "szakaszban van, ezért előfordulhatnak félkész részek, hiányzó funkciók vagy nyelvek. "
+        "Ha valami nem működik jól, kérjük, jelezd GitHubon vagy e-mailben. A visszajelzések "
+        "segítenek nekünk gyakori frissítéseket kiadni és jobbá tenni a nyelvtanulást mindenki számára."
     ),
     # Indonesian
     "id": (
-        "Corpán adalah proyek open source yang dibuat oleh tim yang sangat kecil, bukan "
-        "perusahaan besar, yang benar-benar peduli pada bahasa dan pendidikan. Kami masih baru "
-        "mulai, jadi kamu mungkin akan menemukan bagian yang belum rapi, fitur yang belum ada, "
-        "atau bahasa yang belum tersedia. Jika ada sesuatu yang tidak bekerja dengan baik "
-        "untukmu, tolong hubungi kami lewat GitHub atau email, jangan hanya diam dan kesal "
-        "sendiri - masukan dan laporan bug sangat membantu kami. Kami merilis pembaruan secara "
-        "rutin, dan kesabaran serta dukunganmu membantu kami membuat pembelajaran bahasa "
-        "menjadi lebih baik untuk semua orang."
+        "Corpán adalah aplikasi open source yang dibuat oleh tim kecil sekali, bukan perusahaan besar. "
+        "Kami sangat peduli pada bahasa dan pendidikan, dan proyek ini masih di tahap awal, jadi kamu "
+        "mungkin akan melihat bagian yang belum rapi, fitur yang belum ada, atau bahasa yang belum "
+        "tersedia. Jika ada yang tidak berjalan dengan baik, kabari kami lewat GitHub atau email. "
+        "Masukanmu membantu kami merilis pembaruan rutin dan membuat belajar bahasa jadi lebih baik untuk semua."
     ),
     # Italian
     "it": (
-        "Corpán è un progetto open source creato da un team piccolissimo, non da una grande "
-        "azienda, che tiene moltissimo alle lingue e all’educazione. Siamo ancora solo "
-        "all’inizio, quindi potresti trovare parti poco rifinite, funzionalità mancanti o "
-        "lingue che non sono ancora disponibili. Se qualcosa non funziona per te, ti preghiamo "
-        "di contattarci su GitHub o via e-mail invece di restare in silenzio: i feedback e le "
-        "segnalazioni di bug ci aiutano tantissimo. Rilasciamo aggiornamenti frequenti e la tua "
-        "pazienza e il tuo supporto ci aiutano a migliorare l’apprendimento delle lingue per tutti."
+        "Corpán è un’app open source creata por un team piccolissimo, non da una grande azienda. "
+        "Ci teniamo molto alle lingue e all’educazione e il progetto è ancora all’inizio, quindi "
+        "potresti trovare parti poco rifinite, funzioni mancanti o lingue non ancora disponibili. "
+        "Se qualcosa non funziona, scrivici su GitHub o via e-mail. I tuoi feedback ci aiutano a "
+        "rilasciare aggiornamenti frequenti e a migliorare l’apprendimento delle lingue per tutti."
     ),
     # Japanese
     "ja": (
-        "Corpán は、大企業ではなく、とても小さなチームが開発しているオープンソースの"
-        "プロジェクトで、言語と教育を本気で大切にしています。まだ始まったばかりな"
-        "ので、作り込みが足りない部分や、未実装の機能、まだ対応していない言語が見"
-        "つかるかもしれません。もしうまく動かないところがあれば、黙って我慢する代"
-        "わりに、GitHub やメールからぜひ知らせてください。フィードバックやバグ報告"
-        "は本当に助けになります。私たちは頻繁にアップデートを配信しており、あなた"
-        "の忍耐とサポートが、すべての人にとっての語学学習をより良いものにする力に"
-        "なっています。"
+        "Corpán は大企業ではなく、とても小さなチームが開発しているオープンソースのアプリで、"
+        "言語と教育を本気で大切にしています。まだ始まったばかりなので、作り込みが足りない部分や、"
+        "未実装の機能・未対応の言語が残っているかもしれません。もしうまく動かないところがあれば、"
+        "黙って我慢せず GitHub やメールから教えてください。皆さんのフィードバックが頻繁なアップデートと、"
+        "より良い語学学習体験につながります。"
     ),
     # Korean (polite)
     "ko-polite": (
         "Corpán 은 대기업이 아니라, 언어와 교육을 진심으로 아끼는 아주 작은 팀이 만드는 "
-        "오픈 소스 프로젝트입니다. 아직은 시작 단계라서 다듬어지지 않은 부분이나, 빠져 "
-        "있는 기능, 아직 추가되지 않은 언어들이 보일 수 있습니다. 사용하시다가 잘 동작하지 "
-        "않는 점이 있다면 조용히 불편함을 감추지 마시고 GitHub 이나 이메일로 꼭 알려 주세요. "
-        "피드백과 버그 제보는 저희에게 정말 큰 도움이 됩니다. 저희는 자주 업데이트를 내보내고 "
-        "있으며, 여러분의 인내와 응원이 모두를 위한 언어 학습을 더 나아지게 만드는 데 큰 힘이 됩니다."
+        "오픈 소스 앱입니다. 아직 초기 단계라 다듬어지지 않은 부분이나 빠진 기능, 지원되지 않는 "
+        "언어들이 있을 수 있습니다. 사용하시다가 문제가 보이면 조용히 불편해하시기보다 GitHub "
+        "이나 이메일로 알려 주세요. 여러분의 피드백 덕분에 자주 업데이트하고, 더 나은 언어 학습 "
+        "경험을 만들어 갈 수 있습니다."
     ),
     # Polish
     "pl": (
-        "Corpán to projekt open source tworzony przez bardzo mały zespół, a nie wielką "
-        "korporację, któremu naprawdę zależy na językach i edukacji. Wciąż dopiero zaczynamy, "
-        "więc możesz natknąć się na niedopracowane elementy, brakujące funkcje albo języki, "
-        "których jeszcze nie ma. Jeśli coś u ciebie nie działa, prosimy, napisz do nas przez "
-        "GitHuba lub e-mail zamiast denerwować się po cichu – opinie i zgłoszenia błędów bardzo "
-        "nam pomagają. Często wypuszczamy aktualizacje, a twoja cierpliwość i wsparcie pomagają "
-        "nam ulepszać naukę języków dla wszystkich."
+        "Corpán to aplikacja open source tworzona przez bardzo mały zespół, a nie wielką firmę. "
+        "Naprawdę zależy nam na językach i edukacji, a projekt jest wciąż na wczesnym etapie, więc "
+        "możesz trafić na niedopracowane elementy, brakujące funkcje lub języki. Jeśli coś nie działa, "
+        "napisz do nas przez GitHuba lub e-mail. Twoje uwagi pomagają nam często wydawać aktualizacje "
+        "i ulepszać naukę języków dla wszystkich."
     ),
     # Portuguese (Brazil)
     "pt-BR": (
-        "Corpán é um projeto de código aberto criado por uma equipe bem pequena, não por uma "
-        "grande empresa, que se importa profundamente com idiomas e educação. Ainda estamos só "
-        "começando, então você pode ver partes inacabadas, recursos que ainda faltam ou idiomas "
-        "que ainda não estão disponíveis. Se algo não funcionar para você, fale com a gente pelo "
-        "GitHub ou por e-mail em vez de ficar sofrendo em silêncio - comentários e relatos de bugs "
-        "nos ajudam demais. Lançamos atualizações com frequência, e a sua paciência e apoio nos "
-        "ajudam a tornar o aprendizado de idiomas melhor para todas as pessoas."
+        "Corpán é um app de código aberto feito por uma equipe bem pequena, não por uma grande empresa. "
+        "Levamos idiomas e educação a sério e ainda estamos no começo, então você pode ver cantos rústicos, "
+        "recursos faltando ou idiomas ainda não disponíveis. Se algo não funcionar bem, fale com a gente "
+        "pelo GitHub ou por e-mail. Seu feedback nos ajuda a lançar atualizações frequentes e tornar o "
+        "aprendizado de idiomas melhor para todo mundo."
     ),
     # Russian
     "ru": (
-        "Corpán — это проект с открытым исходным кодом, который создаёт очень маленькая команда, "
-        "а не крупная компания, но нам искренне важны языки и образование. Мы всё ещё только "
-        "начинаем, поэтому вы можете столкнуться с шероховатостями, отсутствующими функциями или "
-        "языками, которые ещё не добавлены. Если что-то у вас не работает, пожалуйста, напишите "
-        "нам через GitHub или по электронной почте, а не молчите — отзывы и сообщения об ошибках "
-        "очень помогают нам. Мы часто выпускаем обновления, и ваше терпение и поддержка помогают "
-        "нам сделать изучение языков лучше для всех."
-    ),
-    # Thai (tightened)
+        "Corpán — это приложение с открытым исходным кодом, которое делает очень маленькая команда, "
+        "а не крупная компания. Нам по-настоящему важны языки и образование, и проект всё ещё на ранней "
+        "стадии, поэтому возможны шероховатости, отсутствующие функции или языки. Если что-то у вас не "
+        "работает, пожалуйста, напишите нам через GitHub или по электронной почте. Ваши отзывы помогают "
+        "нам чаще выпускать обновления и делать изучение языков лучше для всех."
+    ).replace(" — ", " - "),
+    # Thai
     "th": (
-        "Corpán เป็นโปรเจ็กต์โอเพนซอร์สที่ทีมเล็ก ๆ กลุ่มหนึ่งสร้างขึ้น ไม่ใช่บริษัทใหญ่ "
-        "แต่เราใส่ใจเรื่องภาษาและการศึกษาอย่างจริงจัง ตอนนี้เรายังอยู่ช่วงเริ่มต้น คุณจึงอาจเห็นบางส่วนที่ยังไม่สมบูรณ์ "
-        "ฟีเจอร์ที่ยังไม่มี หรือภาษาที่ยังไม่ถูกเพิ่มเข้ามา ถ้ามีอะไรใช้แล้วไม่เหมาะกับคุณ โปรดติดต่อเราผ่าน GitHub "
-        "หรืออีเมล แทนการทนหงุดหงิดคนเดียว – คำแนะนำและรายงานบั๊กช่วยเราได้มาก เราปล่อยอัปเดตอยู่เรื่อย ๆ "
-        "และความอดทนกับการสนับสนุนของคุณช่วยให้เราทำให้การเรียนภาษาเป็นสิ่งที่ดียิ่งขึ้นสำหรับทุกคน."
+        "Corpán เป็นแอปโอเพนซอร์สที่ทีมเล็ก ๆ กลุ่มหนึ่งพัฒนา ไม่ใช่บริษัทใหญ่ แต่เราใส่ใจเรื่องภาษา "
+        "และการศึกษาอย่างจริงจัง ตอนนี้โปรเจ็กต์ยังอยู่ช่วงเริ่มต้น จึงอาจมีส่วนที่ยังไม่เรียบร้อย ฟีเจอร์ที่หายไป "
+        "หรือภาษาที่ยังไม่รองรับ หากมีอะไรใช้แล้วไม่ดีนัก โปรดบอกเราผ่าน GitHub หรืออีเมล ข้อเสนอแนะของคุณ "
+        "ช่วยให้เราอัปเดตบ่อย ๆ และทำให้การเรียนภาษาดีขึ้นสำหรับทุกคน."
     ),
     # Turkish
     "tr": (
-        "Corpán, büyük bir şirketin değil, dilleri ve eğitimi gerçekten önemseyen küçücük bir "
-        "ekibin geliştirdiği açık kaynaklı bir projedir. Hâlâ yolun çok başındayız, bu yüzden "
-        "tamamlanmamış yerler, eksik özellikler veya henüz eklenmemiş dillerle karşılaşabilirsiniz. "
-        "Sizin için bir şey düzgün çalışmıyorsa, lütfen sessizce sinirlenmek yerine GitHub ya da "
-        "e-posta üzerinden bizimle iletişime geçin - geri bildirimler ve hata raporları bize gerçekten "
-        "çok yardımcı oluyor. Sık sık güncelleme yayınlıyoruz ve sabrınız ile desteğiniz, dil öğrenimini "
-        "herkes için daha iyi hâle getirmemize yardımcı oluyor."
+        "Corpán, büyük bir şirketin değil, dilleri ve eğitimi gerçekten önemseyen küçücük bir ekibin "
+        "geliştirdiği açık kaynaklı bir uygulamadır. Proje hâlâ erken aşamada, bu yüzden tamamlanmamış "
+        "bölgeler, eksik özellikler veya henüz eklenmemiş dillerle karşılaşabilirsiniz. Sizin için bir şey "
+        "iyi çalışmıyorsa, lütfen sessizce sinirlenmek yerine GitHub ya da e-posta üzerinden bize yazın. "
+        "Geri bildirimleriniz sık güncelleme yapmamıza ve dil öğrenimini herkes için daha iyi hale getirmemize yardımcı olur."
     ),
-    # Vietnamese (tightened)
+    # Vietnamese
     "vi": (
-        "Corpán là một dự án mã nguồn mở do một nhóm rất nhỏ phát triển, chứ không phải một công ty "
-        "lớn, nhưng chúng tôi thực sự quan tâm đến ngôn ngữ và giáo dục. Chúng tôi vẫn đang ở giai "
-        "đoạn khởi đầu, nên bạn có thể bắt gặp vài chỗ chưa hoàn thiện, tính năng còn thiếu hoặc những "
-        "ngôn ngữ chưa được hỗ trợ. Nếu có điều gì đó không hoạt động tốt với bạn, hãy liên hệ với chúng "
-        "tôi qua GitHub hoặc email thay vì lặng lẽ chịu đựng – phản hồi và báo lỗi giúp chúng tôi rất nhiều. "
-        "Chúng tôi phát hành bản cập nhật thường xuyên, và sự kiên nhẫn cùng sự ủng hộ của bạn giúp chúng tôi "
-        "cải thiện việc học ngôn ngữ cho mọi người."
+        "Corpán là một ứng dụng mã nguồn mở do một nhóm rất nhỏ phát triển, chứ không phải một công ty lớn. "
+        "Chúng tôi thực sự quan tâm đến ngôn ngữ và giáo dục, và dự án vẫn còn ở giai đoạn đầu, nên có thể bạn "
+        "sẽ thấy vài chỗ chưa hoàn thiện, tính năng còn thiếu hoặc ngôn ngữ chưa được hỗ trợ. Nếu có điều gì "
+        "không hoạt động tốt, hãy báo cho chúng tôi qua GitHub hoặc email. Phản hồi của bạn giúp chúng tôi ra "
+        "bản cập nhật thường xuyên và cải thiện việc học ngôn ngữ cho mọi người."
     ),
     # Chinese (Simplified)
     "zh-Hans": (
-        "Corpán 是一个由很小的团队开发的开源项目，而不是一家大公司，但我们非常在乎语"
-        "言和教育。我们目前还只是起步阶段，所以你可能会看到一些还不够完善的地方、缺失"
-        "的功能，或者暂时尚未支持的语言。如果有哪一部分对你来说不能正常工作，请不要默"
-        "默忍受，欢迎通过 GitHub 或电子邮件联系我们——你的反馈和错误报告对我们非常重要。"
-        "我们会频繁发布更新，你的耐心和支持能帮助我们一起把语言学习做得对所有人都更好。"
+        "Corpán 是由一个很小的团队开发的开源应用，而不是大公司产品，我们非常重视语言和教育。"
+        "项目还在早期阶段，所以你可能会看到不够完善的地方、缺失的功能或暂时尚未支持的语言。"
+        "如果有任何功能对你来说不好用，请通过 GitHub 或电子邮件告诉我们。你的反馈能帮助我们频繁更新，"
+        "也能让所有人的语言学习体验变得更好。"
     ),
     # Chinese (Traditional)
     "zh-Hant": (
-        "Corpán 是一個由小型團隊開發的開源專案，而不是大型公司，但我們非常重視語言和教育。"
-        "現在還只是起步階段，所以你可能會看到一些尚未打磨好的地方、缺少的功能，或是還未支援的語言。"
-        "如果有什麼地方對你來說運作不正常，請不要默默忍受，歡迎透過 GitHub 或電子郵件聯繫我們——"
-        "你的回饋和錯誤回報對我們非常重要。我們會經常推出更新，你的耐心與支持能幫助我們讓語言學習"
-        "對所有人來說變得更好。"
+        "Corpán 是由小型團隊開發的開源應用，而不是大型公司的產品，我們非常重視語言與教育。"
+        "專案仍在早期階段，因此你可能會看到尚未打磨好的地方、缺少的功能或尚未支援的語言。"
+        "如果有任何功能對你來說不好用，請透過 GitHub 或電子郵件告訴我們。你的回饋能幫助我們頻繁更新，"
+        "也讓所有人的語言學習體驗變得更好。"
     ),
 }
 
