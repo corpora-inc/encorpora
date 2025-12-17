@@ -78,7 +78,10 @@
     "reconfigureStack": "Stack neu konfigurieren",
     "openVoiceSettings": "Öffne die Spracheinstellungen deines Geräts",
     "openTTSSetup": "Öffne die TTS-Einrichtung",
-    "welcomeFollowUp": "Danke, dass du hier bist - wir sehen uns in der Community!"
+    "welcomeFollowUp": "Danke, dass du hier bist - wir sehen uns in der Community!",
+    "learningStepTitle": "Lernen",
+    "languageOrderTipTitle": "Tipp",
+    "languageOrderTipBody": "Die unterste Sprache wird zur UI-Sprache der App. Ziehe sie, um sie jederzeit zu ändern."
   },
   "common": {
     "loading": "Wird geladen...",

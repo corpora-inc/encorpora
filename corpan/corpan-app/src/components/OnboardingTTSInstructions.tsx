@@ -2,6 +2,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { invoke } from "@tauri-apps/api/core";
+import { AlertCircle } from "lucide-react";
 
 import {
     detectOSFromUA,
@@ -44,6 +45,11 @@ const SAMPLES: Record<string, string> = {
     id: "Saya menantikan untuk belajar bersama Anda.",
 };
 
+type ExtendedVoiceInfo = VoiceInfo & {
+    /** True if this voice is online-only according to the engine (or our heuristic). */
+    networkRequired?: boolean;
+};
+
 function uniqBy<T>(arr: T[], key: (x: T) => string): T[] {
     const seen = new Set<string>();
     const out: T[] = [];
@@ -80,7 +86,10 @@ export function OnboardingTTSInstructions() {
 
     const { t } = useTranslation();
     const os = useMemo(() => detectOSFromUA(), []);
-    const [voices, setVoices] = useState<VoiceInfo[] | null>(null);
+    const [voices, setVoices] = useState<ExtendedVoiceInfo[] | null>(null);
+
+    // By default we only show offline voices; user can opt in to online-only voices (Android only).
+    const [includeNetworkVoices, setIncludeNetworkVoices] = useState(false);
 
     const visibleRef = useRef(true);
     const pollTimer = useRef<number | null>(null);
@@ -88,7 +97,8 @@ export function OnboardingTTSInstructions() {
     // Refresh voices (hot updates while user installs/enables packs)
     async function refresh() {
         const raw = await getVoices({});
-        const list = uniqBy(raw, (v) => `${v.id}|${v.language}`);
+        const cast = raw as ExtendedVoiceInfo[];
+        const list = uniqBy(cast, (v) => `${v.id}|${v.language}`);
         setVoices(list);
     }
 
@@ -148,29 +158,36 @@ export function OnboardingTTSInstructions() {
 
     const langs = languages;
     if (!langs || !langs.length) {
-        // console.warn("OnboardingTTSInstructions: no languages selected");
         return null;
     }
 
-    function voicesForLang(code: string): VoiceInfo[] | null {
+    function voicesForLang(code: string): ExtendedVoiceInfo[] | null {
         if (!voices) return null;
         const compatible = voices.filter((v) => {
             const L = (v.language || "").toLowerCase();
             const c = code.toLowerCase();
-            return L === c || L.startsWith(c + "-") || baseLang(L) === baseLang(c);
+            const langMatches =
+                L === c || L.startsWith(c + "-") || baseLang(L) === baseLang(c);
+
+            if (!langMatches) return false;
+
+            // On Android, optionally hide voices that we know/guess are online-only.
+            if (os === "android" && !includeNetworkVoices && v.networkRequired === true) {
+                return false;
+            }
+
+            return true;
         });
         const unique = uniqBy(compatible, (v) => `${v.id}|${v.language}`);
         return sortVoicesWithLangBias(unique, code);
     }
 
-    // --- Smart Select: enabled only if each language has >= 1 installed voice
+    // --- Smart Select: enabled only if each language has >= 1 installed voice (after filtering).
     const canSmartSelect = useMemo(
         () => langs.every((code) => (voicesForLang(code) || []).length > 0),
-        // voices in deps so this recomputes when the backend updates
-        [langs, voices]
+        [langs, voices, includeNetworkVoices, os]
     );
 
-    // helper stays the same
     function setSelectionForLang(code: string, desiredIds: string[]) {
         const current = new Set((voicePrefs[code]?.ids ?? []).slice());
         const desired = new Set(desiredIds);
@@ -184,9 +201,9 @@ export function OnboardingTTSInstructions() {
         }
     }
 
-    // FIX: select *all* installed voices for each language, not just the first
+    // Respect the same filter: this will select all offline voices by default,
+    // or offline + online voices if the toggle is enabled.
     function smartSelectAll() {
-        // if (!canSmartSelect) return;
         for (const code of langs) {
             const allIds = (voicesForLang(code) || []).map((v) => v.id);
             setSelectionForLang(code, allIds);
@@ -227,15 +244,42 @@ export function OnboardingTTSInstructions() {
                 style={{ paddingBottom: "calc(env(safe-area-inset-bottom) + 1.5rem)" }}
             >
                 <div className="mx-auto w-full max-w-5xl px-3">
+                    {/* Disclaimer + offline/online toggle – Android only */}
+                    {os === "android" && (
+                        <div className="mt-4 mb-6 rounded-lg border border-amber-300 bg-amber-50 px-3 py-2 text-xs text-amber-900 md:text-sm">
+                            <div className="flex items-start gap-2">
+                                <AlertCircle className="mt-0.5 h-4 w-4 flex-shrink-0" />
+                                <p className="leading-snug">
+                                    {t("onboarding.ttsDisclaimer", {
+                                        defaultValue:
+                                            "Corpán uses the text-to-speech engine installed on your device. We test most often with Google's 'Speech Services'. Other manufacturer engines (for example Samsung TTS) may not show all voices or may not work correctly in every language. If you have trouble, open your system text-to-speech settings, choose the Google engine if it is available, and then return to this screen. By default we only list voices that work offline; you can optionally show online-only voices below.",
+                                    })}
+                                </p>
+                            </div>
+                            <label className="mt-2 inline-flex items-center gap-2 text-xs md:text-sm">
+                                <input
+                                    type="checkbox"
+                                    checked={includeNetworkVoices}
+                                    onChange={(e) => setIncludeNetworkVoices(e.target.checked)}
+                                    className="h-4 w-4 rounded border-gray-400 text-purple-600"
+                                />
+                                <span>
+                                    {t("onboarding.includeOnlineVoices", {
+                                        defaultValue:
+                                            "Show voices that require an internet connection",
+                                    })}
+                                </span>
+                            </label>
+                        </div>
+                    )}
+
                     {langs.map((code) => {
                         const list = voicesForLang(code);
                         const pref = voicePrefs[code] ?? { ids: [], mode: "cycle" as const };
                         const sample = sampleFor(code);
                         if (list === null) {
-                            return (
-                                null
-                            )
-                        };
+                            return null;
+                        }
 
                         return (
                             <OnboardingTTSInstructionsLanguageSection

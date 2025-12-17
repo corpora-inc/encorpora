@@ -78,7 +78,10 @@
     "reconfigureStack": "پروفایل را دوباره پیکربندی کن",
     "openVoiceSettings": "باز کردن تنظیمات صدا",
     "openTTSSetup": "باز کردن تنظیمات TTS",
-    "welcomeFollowUp": "از پیوستن شما سپاسگزاریم — در جامعه می‌بینیمتان!"
+    "welcomeFollowUp": "از پیوستن شما سپاسگزاریم — در جامعه می‌بینیمتان!",
+    "learningStepTitle": "یادگیری",
+    "languageOrderTipTitle": "نکته",
+    "languageOrderTipBody": "زبانِ پایین‌ترین ردیف، زبان رابط برنامه می‌شود. هر زمان خواستید با کشیدن تغییرش دهید."
   },
   "common": {
     "loading": "در حال بارگذاری…",

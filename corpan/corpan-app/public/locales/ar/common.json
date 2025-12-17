@@ -78,7 +78,10 @@
     "reconfigureStack": "إعادة تهيئة المجموعة",
     "openVoiceSettings": "افتح إعدادات الصوت على جهازك",
     "openTTSSetup": "افتح إعدادات تحويل النص إلى كلام",
-    "welcomeFollowUp": "شكرًا لانضمامك — نراك في المجتمع!"
+    "welcomeFollowUp": "شكرًا لانضمامك — نراك في المجتمع!",
+    "learningStepTitle": "التعلّم",
+    "languageOrderTipTitle": "نصيحة",
+    "languageOrderTipBody": "اللغة في الأسفل تصبح لغة واجهة التطبيق. اسحب لتغييرها في أي وقت."
   },
   "common": {
     "loading": "جارٍ التحميل…",

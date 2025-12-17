@@ -78,7 +78,10 @@
     "reconfigureStack": "Reconfigure stack",
     "openVoiceSettings": "Open your device's voice settings",
     "openTTSSetup": "Open TTS settings",
-    "welcomeFollowUp": "Thanks for joining—see you in the community!"
+    "welcomeFollowUp": "Thanks for joining—see you in the community!",
+    "learningStepTitle": "Learning",
+    "languageOrderTipTitle": "Tip",
+    "languageOrderTipBody": "The bottom language becomes the app’s UI language. Drag to change it anytime."
   },
   "common": {
     "loading": "Loading...",

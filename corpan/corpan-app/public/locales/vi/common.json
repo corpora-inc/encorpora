@@ -78,7 +78,10 @@
     "reconfigureStack": "Cấu hình lại hồ sơ",
     "openVoiceSettings": "Mở cài đặt giọng nói",
     "openTTSSetup": "Mở cài đặt TTS",
-    "welcomeFollowUp": "Cảm ơn bạn đã tham gia — hẹn gặp lại trong cộng đồng!"
+    "welcomeFollowUp": "Cảm ơn bạn đã tham gia — hẹn gặp lại trong cộng đồng!",
+    "learningStepTitle": "Học",
+    "languageOrderTipTitle": "Mẹo",
+    "languageOrderTipBody": "Ngôn ngữ ở cuối sẽ trở thành ngôn ngữ giao diện. Kéo để đổi bất cứ lúc nào."
   },
   "common": {
     "loading": "Đang tải...",

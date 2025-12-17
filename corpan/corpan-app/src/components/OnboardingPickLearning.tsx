@@ -3,6 +3,7 @@ import { useSettingsStore } from "@/store/settings";
 import { LanguageSelectOrder } from "@/components/LanguageSelectOrder";
 import { useMemo } from "react";
 import { OnboardingHeader, STEPS } from "@/components/OnboardingHeader";
+import { Lightbulb } from "lucide-react";
 
 const CURRENT_STEP_IDX = 0;
 
@@ -28,7 +29,7 @@ export function OnboardingPickLearning() {
     <section
       id="onboarding-scroll"
       // single scrollport; keep blur working
-      className="flex h-dvh min-h-[100svh] w-full flex-col overflow-y-auto overscroll-contain bg-white md:bg-gray-50 pb-10"
+      className="flex h-dvh min-h-[100svh] w-full flex-col overflow-y-auto overscroll-contain bg-white pb-10 md:bg-gray-50"
       style={{
         WebkitOverflowScrolling: "touch",
         // safe areas: keep top/left/right here for the sticky header
@@ -36,12 +37,9 @@ export function OnboardingPickLearning() {
         paddingLeft: "env(safe-area-inset-left)",
         paddingRight: "env(safe-area-inset-right)",
         paddingBottom: "env(safe-area-inset-bottom)",
-        // paddingBottom: "10em",
-        // ⛔️ remove paddingBottom from the scrollport
       }}
       dir={dir()}
     >
-
       <OnboardingHeader
         title={t("onboarding.pickLanguagesToLearn")}
         steps={stepLabels}
@@ -50,19 +48,45 @@ export function OnboardingPickLearning() {
         onNext={() => canProceed && setStep(3)}
         canNext={canProceed}
       />
+
       <main
         // allow the flex child to actually fill the remainder
-        className="flex-1 min-h-0 px-4 pt-6"
+        className="min-h-0 flex-1 px-4 pt-6"
         // put bottom safe-area on the content, so it truly reaches the bottom
         style={{
           paddingBottom: "calc(env(safe-area-inset-bottom) + 3rem)",
         }}
       >
+        {/* Unmissable tip: bottom language becomes UI language */}
+        <div
+          role="note"
+          className="mb-5 rounded-2xl border border-amber-200 bg-amber-50 px-4 py-3 shadow-sm"
+        >
+          <div className="flex items-start gap-3">
+            <div className="mt-0.5 shrink-0 rounded-xl bg-amber-100 p-2">
+              <Lightbulb className="h-5 w-5" />
+            </div>
+
+            <div className="min-w-0">
+              <div className="text-sm font-semibold text-amber-950">
+                {t("onboarding.languageOrderTipTitle", {
+                  defaultValue: "Tip",
+                })}
+              </div>
+              <div className="mt-0.5 text-sm leading-snug text-amber-900">
+                {t("onboarding.languageOrderTipBody", {
+                  defaultValue:
+                    "The bottom language becomes the app’s UI language. Drag to change it anytime.",
+                })}
+              </div>
+            </div>
+          </div>
+        </div>
+
         <LanguageSelectOrder />
+
         <div className="h-8 pb-20" />
       </main>
-
-
-    </section >
+    </section>
   );
 }

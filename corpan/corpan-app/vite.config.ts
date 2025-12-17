@@ -2,39 +2,40 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import tailwind from "@tailwindcss/vite";
 
-import { fileURLToPath, URL } from 'url'
+import { fileURLToPath, URL } from "url";
 
-// @ts-expect-error process is a nodejs global
-const host = process.env.TAURI_DEV_HOST;
+// We *can* still read TAURI_DEV_HOST for iOS / future,
+// but we always fall back to 0.0.0.0 so Android can reach us.
+const rawHost = process.env.TAURI_DEV_HOST;
+const serverHost = rawHost || "127.0.0.1";
 
 // https://vitejs.dev/config/
 export default defineConfig(async () => ({
   plugins: [react(), tailwind()],
   resolve: {
     alias: {
-      // any import that starts with "@" will resolve to /<project-root>/src
-      '@': fileURLToPath(new URL('./src', import.meta.url)),
+      "@": fileURLToPath(new URL("./src", import.meta.url)),
     },
   },
 
-  // Vite options tailored for Tauri development and only applied in `tauri dev` or `tauri build`
-  //
-  // 1. prevent vite from obscuring rust errors
   clearScreen: false,
-  // 2. tauri expects a fixed port, fail if that port is not available
+
   server: {
     port: 1420,
     strictPort: true,
-    host: host || false,
-    hmr: host
+    host: serverHost,
+
+    // Let Vite decide HMR host unless TAURI_DEV_HOST is set.
+    // This avoids weirdness like ws://0.0.0.0.
+    hmr: rawHost
       ? {
         protocol: "ws",
-        host,
+        host: rawHost,
         port: 1421,
       }
       : undefined,
+
     watch: {
-      // 3. tell vite to ignore watching `src-tauri`
       ignored: ["**/src-tauri/**"],
     },
   },

@@ -78,7 +78,10 @@
     "reconfigureStack": "ปรับแต่งสแต็กใหม่",
     "openVoiceSettings": "เปิดการตั้งค่าเสียงของอุปกรณ์",
     "openTTSSetup": "เปิดการตั้งค่า TTS",
-    "welcomeFollowUp": "ขอบคุณที่เข้าร่วม—แล้วพบกันในชุมชน!"
+    "welcomeFollowUp": "ขอบคุณที่เข้าร่วม—แล้วพบกันในชุมชน!",
+    "learningStepTitle": "การเรียนรู้",
+    "languageOrderTipTitle": "เคล็ดลับ",
+    "languageOrderTipBody": "ภาษาล่างสุดจะเป็นภาษา UI ของแอป ลากเพื่อเปลี่ยนได้ทุกเมื่อ"
   },
   "common": {
     "loading": "กำลังโหลด...",

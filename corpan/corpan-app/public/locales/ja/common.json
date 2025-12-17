@@ -78,7 +78,10 @@
     "reconfigureStack": "プロフィールを再設定",
     "openVoiceSettings": "音声設定を開く",
     "openTTSSetup": "TTS設定を開く",
-    "welcomeFollowUp": "ご参加ありがとうございます。コミュニティでお会いしましょう！"
+    "welcomeFollowUp": "ご参加ありがとうございます。コミュニティでお会いしましょう！",
+    "learningStepTitle": "学習",
+    "languageOrderTipTitle": "ヒント",
+    "languageOrderTipBody": "一番下の言語がアプリの表示言語になります。ドラッグしていつでも変更できます。"
   },
   "common": {
     "loading": "読み込み中...",

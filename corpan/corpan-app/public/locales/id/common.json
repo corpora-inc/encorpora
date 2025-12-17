@@ -78,7 +78,10 @@
     "reconfigureStack": "Konfigurasi ulang stack",
     "openVoiceSettings": "Buka pengaturan suara di perangkat Anda",
     "openTTSSetup": "Buka pengaturan TTS",
-    "welcomeFollowUp": "Terima kasih telah bergabung—sampai jumpa di komunitas!"
+    "welcomeFollowUp": "Terima kasih telah bergabung—sampai jumpa di komunitas!",
+    "learningStepTitle": "Belajar",
+    "languageOrderTipTitle": "Tip",
+    "languageOrderTipBody": "Bahasa paling bawah menjadi bahasa antarmuka aplikasi. Seret untuk mengubah kapan saja."
   },
   "common": {
     "loading": "Memuat...",

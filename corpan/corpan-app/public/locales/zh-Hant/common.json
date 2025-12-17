@@ -78,7 +78,10 @@
     "reconfigureStack": "重新設定個人檔案",
     "openVoiceSettings": "開啟語音設定",
     "openTTSSetup": "開啟 TTS 設定",
-    "welcomeFollowUp": "感謝您的加入！期待在社群中與您相見。"
+    "welcomeFollowUp": "感謝您的加入！期待在社群中與您相見。",
+    "learningStepTitle": "學習",
+    "languageOrderTipTitle": "提示",
+    "languageOrderTipBody": "最底部的語言會成為應用介面語言。拖曳即可隨時更改。"
   },
   "common": {
     "loading": "載入中…",

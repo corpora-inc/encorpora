@@ -1,4 +1,3 @@
-// encorpora/corpan/corpan-app/src/components/OnboardingTTSInstructionsHeaderActions.tsx
 import { Download, Settings, CheckCheck } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
@@ -6,7 +5,7 @@ type Props = {
     os: "android" | "ios" | "macos" | "windows" | "other";
     onOpenInstaller: () => void;
     onOpenSettings: () => void;
-    // NEW (optional): smart select handler + enabled state
+    // Smart select handler + enabled state
     onSmartSelect?: () => void;
     canSmartSelect?: boolean;
 };
@@ -29,11 +28,11 @@ export function OnboardingTTSInstructionsHeaderActions({
 
     const handlePrimary = () => (useInstaller ? onOpenInstaller() : onOpenSettings());
 
-    const smartLabel = t("onboarding.smartSelect", { defaultValue: "Select all" });
+    // const smartLabel = t("onboarding.smartSelect", { defaultValue: "Select all" });
+    const smartLabel = t("settings.selectAll", { defaultValue: "Select all" });
     const smartDisabled = onSmartSelect ? canSmartSelect === false : false;
 
     return (
-        // Centered, transparent; header's blur shows through
         <div className="w-full flex items-center justify-center gap-2">
             <button
                 onClick={handlePrimary}

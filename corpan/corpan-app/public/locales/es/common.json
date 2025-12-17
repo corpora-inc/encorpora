@@ -78,7 +78,10 @@
     "reconfigureStack": "Reconfigurar perfil",
     "openVoiceSettings": "Abrir ajustes de voz",
     "openTTSSetup": "Abrir ajustes de TTS",
-    "welcomeFollowUp": "¡Gracias por unirte! Te esperamos en la comunidad."
+    "welcomeFollowUp": "¡Gracias por unirte! Te esperamos en la comunidad.",
+    "learningStepTitle": "Aprender",
+    "languageOrderTipTitle": "Consejo",
+    "languageOrderTipBody": "El idioma de abajo se vuelve el idioma de la interfaz. Arrástralo para cambiarlo cuando quieras."
   },
   "common": {
     "loading": "Cargando...",

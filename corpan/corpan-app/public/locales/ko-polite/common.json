@@ -78,7 +78,10 @@
     "reconfigureStack": "프로필 재설정",
     "openVoiceSettings": "음성 설정 열기",
     "openTTSSetup": "TTS 설정 열기",
-    "welcomeFollowUp": "참여해 주셔서 감사합니다! 커뮤니티에서 뵙겠습니다."
+    "welcomeFollowUp": "참여해 주셔서 감사합니다! 커뮤니티에서 뵙겠습니다.",
+    "learningStepTitle": "학습",
+    "languageOrderTipTitle": "팁",
+    "languageOrderTipBody": "맨 아래 언어가 앱 UI 언어가 됩니다. 드래그해서 언제든 바꿀 수 있어요."
   },
   "common": {
     "loading": "로드 중...",

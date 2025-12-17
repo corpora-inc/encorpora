@@ -78,7 +78,10 @@
     "reconfigureStack": "স্ট্যাক পুনঃবিন্যাস করুন",
     "openVoiceSettings": "আপনার ডিভাইসের ভয়েস সেটিংস খুলুন",
     "openTTSSetup": "টিটিএস সেটিংস খুলুন",
-    "welcomeFollowUp": "যোগ দেওয়ার জন্য ধন্যবাদ—কমিউনিটিতে দেখা হবে!"
+    "welcomeFollowUp": "যোগ দেওয়ার জন্য ধন্যবাদ—কমিউনিটিতে দেখা হবে!",
+    "learningStepTitle": "শেখা",
+    "languageOrderTipTitle": "টিপ",
+    "languageOrderTipBody": "সবচেয়ে নিচের ভাষাই অ্যাপের UI ভাষা হবে। যেকোনো সময় বদলাতে টেনে নিন।"
   },
   "common": {
     "loading": "লোড হচ্ছে...",

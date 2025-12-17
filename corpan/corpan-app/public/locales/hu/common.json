@@ -78,7 +78,10 @@
     "reconfigureStack": "Profil újrakonfigurálása",
     "openVoiceSettings": "Hangbeállítások megnyitása",
     "openTTSSetup": "TTS-beállítások megnyitása",
-    "welcomeFollowUp": "Köszönjük, hogy csatlakozott — találkozunk a közösségben!"
+    "welcomeFollowUp": "Köszönjük, hogy csatlakozott — találkozunk a közösségben!",
+    "learningStepTitle": "Tanulás",
+    "languageOrderTipTitle": "Tipp",
+    "languageOrderTipBody": "A legalul lévő nyelv lesz az app felületének nyelve. Húzd, és bármikor átállíthatod."
   },
   "common": {
     "loading": "Betöltés...",

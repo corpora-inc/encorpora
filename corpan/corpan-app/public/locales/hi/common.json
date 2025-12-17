@@ -78,7 +78,10 @@
     "reconfigureStack": "प्रोफ़ाइल पुनः कॉन्फ़िगर करें",
     "openVoiceSettings": "वॉइस सेटिंग्स खोलें",
     "openTTSSetup": "TTS सेटिंग्स खोलें",
-    "welcomeFollowUp": "जुड़ने के लिए धन्यवाद — समुदाय में मिलते हैं!"
+    "welcomeFollowUp": "जुड़ने के लिए धन्यवाद — समुदाय में मिलते हैं!",
+    "learningStepTitle": "सीखना",
+    "languageOrderTipTitle": "टिप",
+    "languageOrderTipBody": "सबसे नीचे वाली भाषा ऐप की UI भाषा बन जाती है। कभी भी बदलने के लिए खींचें।"
   },
   "common": {
     "loading": "लोड हो रहा है...",

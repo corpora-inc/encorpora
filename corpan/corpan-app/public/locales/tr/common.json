@@ -78,7 +78,10 @@
     "reconfigureStack": "Yığını yeniden yapılandır",
     "openVoiceSettings": "Cihazınızın ses ayarlarını açın",
     "openTTSSetup": "TTS ayarlarını açın",
-    "welcomeFollowUp": "Katıldığınız için teşekkürler — toplulukta görüşmek üzere!"
+    "welcomeFollowUp": "Katıldığınız için teşekkürler — toplulukta görüşmek üzere!",
+    "learningStepTitle": "Öğrenme",
+    "languageOrderTipTitle": "İpucu",
+    "languageOrderTipBody": "En alttaki dil, uygulamanın arayüz dili olur. İstediğiniz zaman sürükleyip değiştirin."
   },
   "common": {
     "loading": "Yükleniyor...",
