@@ -80,7 +80,7 @@ export const BROWSER_TTS = (() => {
     }
 })();
 
-async function awaitBrowserVoices(timeoutMs = 600): Promise<SpeechSynthesisVoice[]> {
+async function awaitBrowserVoices(timeoutMs = 3000): Promise<SpeechSynthesisVoice[]> {
     if (!BROWSER_TTS) return [];
     const existing = window.speechSynthesis.getVoices();
     if (existing && existing.length > 0) return existing;

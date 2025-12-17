@@ -111,7 +111,7 @@ export function OnboardingTTSInstructions() {
         document.addEventListener("visibilitychange", onVisibility);
         pollTimer.current = window.setInterval(() => {
             if (visibleRef.current) refresh();
-        }, 4000);
+        }, 5000);
         return () => {
             document.removeEventListener("visibilitychange", onVisibility);
             if (pollTimer.current) window.clearInterval(pollTimer.current);
