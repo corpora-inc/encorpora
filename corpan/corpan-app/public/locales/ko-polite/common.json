@@ -81,7 +81,14 @@
     "welcomeFollowUp": "참여해 주셔서 감사합니다! 커뮤니티에서 뵙겠습니다.",
     "learningStepTitle": "학습",
     "languageOrderTipTitle": "팁",
-    "languageOrderTipBody": "맨 아래 언어가 앱 UI 언어가 됩니다. 드래그해서 언제든 바꿀 수 있어요."
+    "languageOrderTipBody": "맨 아래 언어가 앱 UI 언어가 됩니다. 드래그해서 언제든 바꿀 수 있어요.",
+    "ttsOsTipTitle": "팁",
+    "ttsOsTipAndroid": "가장 잘 됩니다: Google TTS 사용. Samsung TTS는 Corpán에서 동작하지 않습니다.",
+    "ttsOsTipIOS": "설정 → 손쉬운 사용에서 읽어주기/말하기(또는 말하기) 항목을 찾아 음성을 다운로드하세요.",
+    "ttsOsTipMac": "시스템 설정 → 손쉬운 사용에서 말하기(또는 읽어주기) 항목을 찾아 음성을 다운로드하세요.",
+    "ttsOsTipWindows": "설정에서 음성을 설치한 뒤 여기로 돌아오세요.",
+    "ttsOsTipOther": "기기 설정에서 음성을 설치한 뒤 여기로 돌아오세요.",
+    "installVoicesAndroid": "음성 설치"
   },
   "common": {
     "loading": "로드 중...",

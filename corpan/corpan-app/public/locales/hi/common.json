@@ -81,7 +81,14 @@
     "welcomeFollowUp": "जुड़ने के लिए धन्यवाद — समुदाय में मिलते हैं!",
     "learningStepTitle": "सीखना",
     "languageOrderTipTitle": "टिप",
-    "languageOrderTipBody": "सबसे नीचे वाली भाषा ऐप की UI भाषा बन जाती है। कभी भी बदलने के लिए खींचें।"
+    "languageOrderTipBody": "सबसे नीचे वाली भाषा ऐप की UI भाषा बन जाती है। कभी भी बदलने के लिए खींचें।",
+    "ttsOsTipTitle": "टिप",
+    "ttsOsTipAndroid": "सबसे अच्छा: Google TTS इस्तेमाल करें। Samsung TTS Corpán में काम नहीं करता।",
+    "ttsOsTipIOS": "Settings → Accessibility में Read & Speak / Spoken Content ढूँढें और voices डाउनलोड करें।",
+    "ttsOsTipMac": "System Settings → Accessibility में Spoken Content ढूँढें और voices डाउनलोड करें।",
+    "ttsOsTipWindows": "Settings में speech voices इंस्टॉल करें, फिर यहाँ लौटें।",
+    "ttsOsTipOther": "डिवाइस Settings में speech voices इंस्टॉल करें, फिर यहाँ लौटें।",
+    "installVoicesAndroid": "आवाज़ें इंस्टॉल करें"
   },
   "common": {
     "loading": "लोड हो रहा है...",

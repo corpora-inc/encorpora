@@ -81,7 +81,14 @@
     "welcomeFollowUp": "Köszönjük, hogy csatlakozott — találkozunk a közösségben!",
     "learningStepTitle": "Tanulás",
     "languageOrderTipTitle": "Tipp",
-    "languageOrderTipBody": "A legalul lévő nyelv lesz az app felületének nyelve. Húzd, és bármikor átállíthatod."
+    "languageOrderTipBody": "A legalul lévő nyelv lesz az app felületének nyelve. Húzd, és bármikor átállíthatod.",
+    "ttsOsTipTitle": "Tipp",
+    "ttsOsTipAndroid": "Legjobb: Google TTS. A Samsung TTS nem működik a Corpánban.",
+    "ttsOsTipIOS": "A Beállítások → Kisegítő lehetőségek alatt keresd a Felolvasás/Beszéd vagy a Felolvasott tartalom részt, és tölts le hangokat.",
+    "ttsOsTipMac": "A Rendszerbeállítások → Kisegítő lehetőségek alatt nyisd meg a Felolvasott tartalom részt, és tölts le hangokat.",
+    "ttsOsTipWindows": "Telepíts hangokat a Beállításokban, majd térj vissza ide.",
+    "ttsOsTipOther": "Telepíts hangokat az eszköz beállításaiban, majd térj vissza ide.",
+    "installVoicesAndroid": "Hangok telepítése"
   },
   "common": {
     "loading": "Betöltés...",

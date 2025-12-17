@@ -81,7 +81,14 @@
     "welcomeFollowUp": "Danke, dass du hier bist - wir sehen uns in der Community!",
     "learningStepTitle": "Lernen",
     "languageOrderTipTitle": "Tipp",
-    "languageOrderTipBody": "Die unterste Sprache wird zur UI-Sprache der App. Ziehe sie, um sie jederzeit zu ändern."
+    "languageOrderTipBody": "Die unterste Sprache wird zur UI-Sprache der App. Ziehe sie, um sie jederzeit zu ändern.",
+    "ttsOsTipTitle": "Tipp",
+    "ttsOsTipAndroid": "Beste Ergebnisse: Google-Sprachausgabe verwenden. Samsung TTS funktioniert in Corpán nicht.",
+    "ttsOsTipIOS": "In Einstellungen → Bedienungshilfen nach „Vorlesen/Sprechen“ oder „Gesprochene Inhalte“ suchen und Stimmen laden.",
+    "ttsOsTipMac": "In Systemeinstellungen → Bedienungshilfen „Gesprochene Inhalte“ öffnen und Stimmen laden.",
+    "ttsOsTipWindows": "In Einstellungen Sprachstimmen installieren und dann hierher zurückkehren.",
+    "ttsOsTipOther": "In den Geräteeinstellungen Sprachstimmen installieren und dann hierher zurückkehren.",
+    "installVoicesAndroid": "Stimmen installieren"
   },
   "common": {
     "loading": "Wird geladen...",

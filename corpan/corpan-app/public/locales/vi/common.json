@@ -81,7 +81,14 @@
     "welcomeFollowUp": "Cảm ơn bạn đã tham gia — hẹn gặp lại trong cộng đồng!",
     "learningStepTitle": "Học",
     "languageOrderTipTitle": "Mẹo",
-    "languageOrderTipBody": "Ngôn ngữ ở cuối sẽ trở thành ngôn ngữ giao diện. Kéo để đổi bất cứ lúc nào."
+    "languageOrderTipBody": "Ngôn ngữ ở cuối sẽ trở thành ngôn ngữ giao diện. Kéo để đổi bất cứ lúc nào.",
+    "ttsOsTipTitle": "Mẹo",
+    "ttsOsTipAndroid": "Tốt nhất: dùng Google TTS. Samsung TTS không dùng được trong Corpán.",
+    "ttsOsTipIOS": "Trong Cài đặt → Trợ năng, tìm Đọc & Nói / Nội dung được đọc và tải giọng.",
+    "ttsOsTipMac": "Trong Cài đặt hệ thống → Trợ năng, tìm Nội dung được đọc và tải giọng.",
+    "ttsOsTipWindows": "Cài giọng nói trong Cài đặt rồi quay lại đây.",
+    "ttsOsTipOther": "Cài giọng nói trong cài đặt thiết bị rồi quay lại đây.",
+    "installVoicesAndroid": "Cài giọng"
   },
   "common": {
     "loading": "Đang tải...",

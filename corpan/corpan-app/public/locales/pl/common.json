@@ -81,7 +81,14 @@
     "welcomeFollowUp": "Dziękujemy za dołączenie — do zobaczenia w społeczności!",
     "learningStepTitle": "Nauka",
     "languageOrderTipTitle": "Wskazówka",
-    "languageOrderTipBody": "Język na dole staje się językiem interfejsu. Przeciągnij, aby zmienić w dowolnym momencie."
+    "languageOrderTipBody": "Język na dole staje się językiem interfejsu. Przeciągnij, aby zmienić w dowolnym momencie.",
+    "ttsOsTipTitle": "Wskazówka",
+    "ttsOsTipAndroid": "Najlepiej działa Google TTS. Samsung TTS nie działa w Corpán.",
+    "ttsOsTipIOS": "W Ustawienia → Dostępność znajdź Czytanie i mówienie / Treści mówione i pobierz głosy.",
+    "ttsOsTipMac": "W Ustawieniach systemowych → Dostępność otwórz Treści mówione i pobierz głosy.",
+    "ttsOsTipWindows": "Zainstaluj głosy w Ustawieniach i wróć tutaj.",
+    "ttsOsTipOther": "Zainstaluj głosy w ustawieniach urządzenia i wróć tutaj.",
+    "installVoicesAndroid": "Zainstaluj głosy"
   },
   "common": {
     "loading": "Ładowanie...",

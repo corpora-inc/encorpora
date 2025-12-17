@@ -81,7 +81,14 @@
     "welcomeFollowUp": "যোগ দেওয়ার জন্য ধন্যবাদ—কমিউনিটিতে দেখা হবে!",
     "learningStepTitle": "শেখা",
     "languageOrderTipTitle": "টিপ",
-    "languageOrderTipBody": "সবচেয়ে নিচের ভাষাই অ্যাপের UI ভাষা হবে। যেকোনো সময় বদলাতে টেনে নিন।"
+    "languageOrderTipBody": "সবচেয়ে নিচের ভাষাই অ্যাপের UI ভাষা হবে। যেকোনো সময় বদলাতে টেনে নিন।",
+    "ttsOsTipTitle": "টিপ",
+    "ttsOsTipAndroid": "সবচেয়ে ভালো: Google TTS ব্যবহার করুন। Samsung TTS Corpán-এ কাজ করে না।",
+    "ttsOsTipIOS": "Settings → Accessibility এ Read & Speak / Spoken Content খুঁজে ভয়েস ডাউনলোড করুন।",
+    "ttsOsTipMac": "System Settings → Accessibility এ Spoken Content খুঁজে ভয়েস ডাউনলোড করুন।",
+    "ttsOsTipWindows": "Settings-এ speech voices ইনস্টল করে এখানে ফিরে আসুন।",
+    "ttsOsTipOther": "ডিভাইস Settings-এ speech voices ইনস্টল করে এখানে ফিরে আসুন।",
+    "installVoicesAndroid": "ভয়েস ইনস্টল করুন"
   },
   "common": {
     "loading": "লোড হচ্ছে...",

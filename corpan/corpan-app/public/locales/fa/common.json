@@ -81,7 +81,14 @@
     "welcomeFollowUp": "از پیوستن شما سپاسگزاریم — در جامعه می‌بینیمتان!",
     "learningStepTitle": "یادگیری",
     "languageOrderTipTitle": "نکته",
-    "languageOrderTipBody": "زبانِ پایین‌ترین ردیف، زبان رابط برنامه می‌شود. هر زمان خواستید با کشیدن تغییرش دهید."
+    "languageOrderTipBody": "زبانِ پایین‌ترین ردیف، زبان رابط برنامه می‌شود. هر زمان خواستید با کشیدن تغییرش دهید.",
+    "ttsOsTipTitle": "نکته",
+    "ttsOsTipAndroid": "بهترین نتیجه: از Google TTS استفاده کنید. Samsung TTS در Corpán کار نمی‌کند.",
+    "ttsOsTipIOS": "در Settings → Accessibility بخش Read & Speak / Spoken Content را پیدا کنید و صداها را دانلود کنید.",
+    "ttsOsTipMac": "در System Settings → Accessibility بخش Spoken Content را پیدا کنید و صداها را دانلود کنید.",
+    "ttsOsTipWindows": "صداهای گفتار را در Settings نصب کنید و بعد برگردید.",
+    "ttsOsTipOther": "صداهای گفتار را در تنظیمات دستگاه نصب کنید و بعد برگردید.",
+    "installVoicesAndroid": "نصب صداها"
   },
   "common": {
     "loading": "در حال بارگذاری…",

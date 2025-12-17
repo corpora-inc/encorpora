@@ -81,7 +81,14 @@
     "welcomeFollowUp": "感謝您的加入！期待在社群中與您相見。",
     "learningStepTitle": "學習",
     "languageOrderTipTitle": "提示",
-    "languageOrderTipBody": "最底部的語言會成為應用介面語言。拖曳即可隨時更改。"
+    "languageOrderTipBody": "最底部的語言會成為應用介面語言。拖曳即可隨時更改。",
+    "ttsOsTipTitle": "提示",
+    "ttsOsTipAndroid": "最佳效果：使用 Google 語音。Samsung TTS 在 Corpán 中無法使用。",
+    "ttsOsTipIOS": "在「設定」→「輔助使用」找到「朗讀/說話」（或「朗讀內容」），下載語音後回到這裡。",
+    "ttsOsTipMac": "在「系統設定」→「輔助使用」找到「朗讀內容」，下載語音後回到這裡。",
+    "ttsOsTipWindows": "在「設定」安裝語音後回到這裡。",
+    "ttsOsTipOther": "在裝置設定安裝語音後回到這裡。",
+    "installVoicesAndroid": "安裝語音"
   },
   "common": {
     "loading": "載入中…",

@@ -81,7 +81,14 @@
     "welcomeFollowUp": "ขอบคุณที่เข้าร่วม—แล้วพบกันในชุมชน!",
     "learningStepTitle": "การเรียนรู้",
     "languageOrderTipTitle": "เคล็ดลับ",
-    "languageOrderTipBody": "ภาษาล่างสุดจะเป็นภาษา UI ของแอป ลากเพื่อเปลี่ยนได้ทุกเมื่อ"
+    "languageOrderTipBody": "ภาษาล่างสุดจะเป็นภาษา UI ของแอป ลากเพื่อเปลี่ยนได้ทุกเมื่อ",
+    "ttsOsTipTitle": "เคล็ดลับ",
+    "ttsOsTipAndroid": "แนะนำ: ใช้ Google TTS — Samsung TTS ใช้กับ Corpán ไม่ได้",
+    "ttsOsTipIOS": "ไปที่ การตั้งค่า → การช่วยการเข้าถึง แล้วหา Read & Speak / เนื้อหาที่พูด เพื่อดาวน์โหลดเสียง",
+    "ttsOsTipMac": "ไปที่ การตั้งค่าระบบ → การช่วยการเข้าถึง แล้วหา เนื้อหาที่พูด เพื่อดาวน์โหลดเสียง",
+    "ttsOsTipWindows": "ติดตั้งเสียงพูดใน Settings แล้วกลับมาที่นี่",
+    "ttsOsTipOther": "ติดตั้งเสียงพูดในตั้งค่าเครื่อง แล้วกลับมาที่นี่",
+    "installVoicesAndroid": "ติดตั้งเสียง"
   },
   "common": {
     "loading": "กำลังโหลด...",

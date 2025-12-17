@@ -4,6 +4,7 @@ import { LanguageSelectOrder } from "@/components/LanguageSelectOrder";
 import { useMemo } from "react";
 import { OnboardingHeader, STEPS } from "@/components/OnboardingHeader";
 import { Lightbulb } from "lucide-react";
+import { DismissableTip } from "./DismissableTip";
 
 const CURRENT_STEP_IDX = 0;
 
@@ -51,38 +52,20 @@ export function OnboardingPickLearning() {
 
       <main
         // allow the flex child to actually fill the remainder
-        className="min-h-0 flex-1 px-4 pt-6"
+        className="min-h-0 flex-1 px-3 py-3"
         // put bottom safe-area on the content, so it truly reaches the bottom
         style={{
           paddingBottom: "calc(env(safe-area-inset-bottom) + 3rem)",
         }}
       >
-        {/* Unmissable tip: bottom language becomes UI language */}
-        <div
-          role="note"
-          className="mb-5 rounded-2xl border border-amber-200 bg-amber-50 px-4 py-3 shadow-sm"
-        >
-          <div className="flex items-start gap-3">
-            <div className="mt-0.5 shrink-0 rounded-xl bg-amber-100 p-2">
-              <Lightbulb className="h-5 w-5" />
-            </div>
-
-            <div className="min-w-0">
-              <div className="text-sm font-semibold text-amber-950">
-                {t("onboarding.languageOrderTipTitle", {
-                  defaultValue: "Tip",
-                })}
-              </div>
-              <div className="mt-0.5 text-sm leading-snug text-amber-900">
-                {t("onboarding.languageOrderTipBody", {
-                  defaultValue:
-                    "The bottom language becomes the app’s UI language. Drag to change it anytime.",
-                })}
-              </div>
-            </div>
-          </div>
-        </div>
-
+        <DismissableTip
+          storageKey="tip:language-order"
+          title={t("onboarding.languageOrderTipTitle", { defaultValue: "Tip" })}
+          body={t("onboarding.languageOrderTipBody", {
+            defaultValue:
+              "The bottom language becomes the app's UI language. Drag to change it anytime.",
+          })}
+        />
         <LanguageSelectOrder />
 
         <div className="h-8 pb-20" />

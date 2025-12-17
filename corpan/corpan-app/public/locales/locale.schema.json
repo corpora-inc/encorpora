@@ -319,6 +319,27 @@
         },
         "openTTSSetup": {
           "type": "string"
+        },
+        "ttsOsTipTitle": {
+          "type": "string"
+        },
+        "ttsOsTipAndroid": {
+          "type": "string"
+        },
+        "ttsOsTipIOS": {
+          "type": "string"
+        },
+        "ttsOsTipMac": {
+          "type": "string"
+        },
+        "ttsOsTipWindows": {
+          "type": "string"
+        },
+        "ttsOsTipOther": {
+          "type": "string"
+        },
+        "installVoicesAndroid": {
+          "type": "string"
         }
       },
       "required": [
@@ -339,7 +360,14 @@
         "reconfigureStack",
         "openVoiceSettings",
         "welcomeFollowUp",
-        "openTTSSetup"
+        "openTTSSetup",
+        "ttsOsTipTitle",
+        "ttsOsTipAndroid",
+        "ttsOsTipIOS",
+        "ttsOsTipMac",
+        "ttsOsTipWindows",
+        "ttsOsTipOther",
+        "installVoicesAndroid"
       ],
       "additionalProperties": false
     },

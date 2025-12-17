@@ -81,7 +81,14 @@
     "welcomeFollowUp": "Katıldığınız için teşekkürler — toplulukta görüşmek üzere!",
     "learningStepTitle": "Öğrenme",
     "languageOrderTipTitle": "İpucu",
-    "languageOrderTipBody": "En alttaki dil, uygulamanın arayüz dili olur. İstediğiniz zaman sürükleyip değiştirin."
+    "languageOrderTipBody": "En alttaki dil, uygulamanın arayüz dili olur. İstediğiniz zaman sürükleyip değiştirin.",
+    "ttsOsTipTitle": "İpucu",
+    "ttsOsTipAndroid": "En iyi sonuç: Google TTS kullanın. Samsung TTS Corpán’da çalışmaz.",
+    "ttsOsTipIOS": "Ayarlar → Erişilebilirlik içinde Read & Speak / Konuşulan İçerik bölümünü bulun ve sesleri indirin.",
+    "ttsOsTipMac": "Sistem Ayarları → Erişilebilirlik içinde Konuşulan İçerik bölümünü bulun ve sesleri indirin.",
+    "ttsOsTipWindows": "Ayarlar’dan sesleri yükleyin, sonra buraya dönün.",
+    "ttsOsTipOther": "Cihaz ayarlarından sesleri yükleyin, sonra buraya dönün.",
+    "installVoicesAndroid": "Sesleri yükle"
   },
   "common": {
     "loading": "Yükleniyor...",

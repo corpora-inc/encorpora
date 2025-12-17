@@ -81,7 +81,14 @@
     "welcomeFollowUp": "Terima kasih telah bergabung—sampai jumpa di komunitas!",
     "learningStepTitle": "Belajar",
     "languageOrderTipTitle": "Tip",
-    "languageOrderTipBody": "Bahasa paling bawah menjadi bahasa antarmuka aplikasi. Seret untuk mengubah kapan saja."
+    "languageOrderTipBody": "Bahasa paling bawah menjadi bahasa antarmuka aplikasi. Seret untuk mengubah kapan saja.",
+    "ttsOsTipTitle": "Tips",
+    "ttsOsTipAndroid": "Paling cocok: gunakan Google TTS. Samsung TTS tidak berfungsi di Corpán.",
+    "ttsOsTipIOS": "Di Pengaturan → Aksesibilitas, cari Read & Speak / Konten Lisan lalu unduh suara.",
+    "ttsOsTipMac": "Di Pengaturan Sistem → Aksesibilitas, cari Konten Lisan lalu unduh suara.",
+    "ttsOsTipWindows": "Instal suara di Pengaturan lalu kembali ke sini.",
+    "ttsOsTipOther": "Instal suara di pengaturan perangkat lalu kembali ke sini.",
+    "installVoicesAndroid": "Instal suara"
   },
   "common": {
     "loading": "Memuat...",
