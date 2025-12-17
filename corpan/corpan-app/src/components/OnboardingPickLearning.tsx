@@ -3,7 +3,6 @@ import { useSettingsStore } from "@/store/settings";
 import { LanguageSelectOrder } from "@/components/LanguageSelectOrder";
 import { useMemo } from "react";
 import { OnboardingHeader, STEPS } from "@/components/OnboardingHeader";
-import { Lightbulb } from "lucide-react";
 import { DismissableTip } from "./DismissableTip";
 
 const CURRENT_STEP_IDX = 0;

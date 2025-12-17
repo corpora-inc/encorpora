@@ -2,7 +2,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { invoke } from "@tauri-apps/api/core";
-import { AlertCircle } from "lucide-react";
 
 import {
     detectOSFromUA,
@@ -89,7 +88,7 @@ export function OnboardingTTSInstructions() {
     const [voices, setVoices] = useState<ExtendedVoiceInfo[] | null>(null);
 
     // By default we only show offline voices; user can opt in to online-only voices (Android only).
-    const [includeNetworkVoices, setIncludeNetworkVoices] = useState(false);
+    // const [includeNetworkVoices, setIncludeNetworkVoices] = useState(false);
 
     const visibleRef = useRef(true);
     const pollTimer = useRef<number | null>(null);
@@ -171,10 +170,10 @@ export function OnboardingTTSInstructions() {
 
             if (!langMatches) return false;
 
-            // On Android, optionally hide voices that we know/guess are online-only.
-            if (os === "android" && !includeNetworkVoices && v.networkRequired === true) {
-                return false;
-            }
+            // // On Android, optionally hide voices that we know/guess are online-only.
+            // if (os === "android" && !includeNetworkVoices && v.networkRequired === true) {
+            //     return false;
+            // }
 
             return true;
         });
@@ -185,7 +184,7 @@ export function OnboardingTTSInstructions() {
     // --- Smart Select: enabled only if each language has >= 1 installed voice (after filtering).
     const canSmartSelect = useMemo(
         () => langs.every((code) => (voicesForLang(code) || []).length > 0),
-        [langs, voices, includeNetworkVoices, os]
+        [langs, voices, os]
     );
 
     function setSelectionForLang(code: string, desiredIds: string[]) {
