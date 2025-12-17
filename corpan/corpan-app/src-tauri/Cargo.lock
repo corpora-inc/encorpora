@@ -594,7 +594,7 @@ dependencies = [
 
 [[package]]
 name = "corpan"
-version = "0.7.18"
+version = "0.7.19"
 dependencies = [
  "rusqlite",
  "serde",
@@ -3907,6 +3907,7 @@ dependencies = [
 [[package]]
 name = "tauri-plugin-tts"
 version = "0.2.0"
+source = "git+https://github.com/skyl/tauri-plugin-tts.git?branch=ext-hack-swift-con-todo#97c23339d7e252853668bdba361d974ec12b74a9"
 dependencies = [
  "cocoa",
  "objc",

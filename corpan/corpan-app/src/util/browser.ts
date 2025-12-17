@@ -31,9 +31,9 @@ export function getPlatformBottomPadding() {
 
 export function getPlatformTopPaddingButtons() {
     if (/iPhone|iPad|iPod|iOS/i.test(navigator.userAgent)) {
-        return 35;
+        return 50;
     } if (isAndroidButNotChromeOS()) {
-        return 20;
+        return 25;
     }
     return 10;
 }

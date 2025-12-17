@@ -344,11 +344,13 @@ export function MainExperience() {
             {/* Floating Nav */}
             <div
                 className="fixed bottom-0 left-0 w-full flex justify-center z-50 pointer-events-none"
-                style={{ background: "transparent", paddingBottom: getPlatformBottomPadding() / 10 }}
+                style={{ background: "transparent", paddingBottom: getPlatformBottomPadding() / 3.3 }}
             >
                 <div
-                    className="flex flex-col gap-1 pointer-events-auto rounded-md shadow-2xl bg-white/95 px-8 py-3 border border-gray-200 items-center min-w-[280px]"
-                    style={{ marginBottom: "39px" }}
+                    className="flex flex-col gap-1 pointer-events-auto rounded-md shadow-2xl bg-white/95 px-3 py-3 border border-gray-200 items-center min-w-[270px]"
+                // ...
+                // style={{ marginBottom: "39px" }}
+
                 >
                     <div className="flex justify-center items-center gap-8">
                         <Button onClick={handlePrev} variant="ghost" size="lg" aria-label="Previous sentence" disabled={index <= 0}>
