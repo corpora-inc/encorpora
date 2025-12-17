@@ -244,34 +244,6 @@ export function OnboardingTTSInstructions() {
                 style={{ paddingBottom: "calc(env(safe-area-inset-bottom) + 1.5rem)" }}
             >
                 <div className="mx-auto w-full max-w-5xl px-3">
-                    {/* Disclaimer + offline/online toggle – Android only */}
-                    {os === "android" && (
-                        <div className="mt-4 mb-6 rounded-lg border border-amber-300 bg-amber-50 px-3 py-2 text-xs text-amber-900 md:text-sm">
-                            <div className="flex items-start gap-2">
-                                <AlertCircle className="mt-0.5 h-4 w-4 flex-shrink-0" />
-                                <p className="leading-snug">
-                                    {t("onboarding.ttsDisclaimer", {
-                                        defaultValue:
-                                            "Corpán uses the text-to-speech engine installed on your device. We test most often with Google's 'Speech Services'. Other manufacturer engines (for example Samsung TTS) may not show all voices or may not work correctly in every language. If you have trouble, open your system text-to-speech settings, choose the Google engine if it is available, and then return to this screen. By default we only list voices that work offline; you can optionally show online-only voices below.",
-                                    })}
-                                </p>
-                            </div>
-                            <label className="mt-2 inline-flex items-center gap-2 text-xs md:text-sm">
-                                <input
-                                    type="checkbox"
-                                    checked={includeNetworkVoices}
-                                    onChange={(e) => setIncludeNetworkVoices(e.target.checked)}
-                                    className="h-4 w-4 rounded border-gray-400 text-purple-600"
-                                />
-                                <span>
-                                    {t("onboarding.includeOnlineVoices", {
-                                        defaultValue:
-                                            "Show voices that require an internet connection",
-                                    })}
-                                </span>
-                            </label>
-                        </div>
-                    )}
 
                     {langs.map((code) => {
                         const list = voicesForLang(code);

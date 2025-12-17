@@ -24,7 +24,7 @@ export function getPlatformBottomPadding() {
     if (/iPhone|iPad|iPod|iOS/i.test(navigator.userAgent)) {
         return 180;
     } if (isAndroidButNotChromeOS()) {
-        return 100;
+        return 180;
     }
     return 180;
 }
