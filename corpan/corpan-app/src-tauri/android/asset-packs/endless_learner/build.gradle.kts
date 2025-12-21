@@ -3,7 +3,7 @@ plugins {
 }
 
 assetPack {
-    packName = "endless_runner"
+    packName = "endless_learner"
     dynamicDelivery {
         deliveryType = "on-demand"
     }

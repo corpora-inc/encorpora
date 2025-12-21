@@ -1,7 +1,7 @@
 (function () {
   const registry = (window.CorpanGames = window.CorpanGames || {});
 
-  registry["endless_runner"] = {
+  registry["endless_learner"] = {
     mount: (container, hostApi, initialState) => {
       const root = document.createElement("div");
       root.className = "corp-runner";
@@ -210,5 +210,4 @@
       };
     },
   };
-  registry["endless-runner"] = registry["endless_runner"];
 })();

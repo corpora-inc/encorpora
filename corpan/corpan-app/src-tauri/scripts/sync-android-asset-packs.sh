@@ -24,14 +24,14 @@ if ! rg -q "com.android.asset-pack" "$SETTINGS"; then
   perl -0pi -e 's/id \'com.android.library\'     version \'8.6.0\'\n/id \'com.android.library\'     version \'8.6.0\'\n    id \'com.android.asset-pack\'  version \'8.6.0\'\n/' "$SETTINGS"
 fi
 
-if ! rg -q "include ':endless_runner'" "$SETTINGS"; then
-  perl -0pi -e "s/include ':app'\n/include ':app'\ninclude ':endless_runner'\n/" "$SETTINGS"
+if ! rg -q "include ':endless_learner'" "$SETTINGS"; then
+  perl -0pi -e "s/include ':app'\n/include ':app'\ninclude ':endless_learner'\n/" "$SETTINGS"
 fi
 
 # Ensure app/build.gradle.kts references asset packs
 APP_BUILD="$GEN_ANDROID/app/build.gradle.kts"
 if ! rg -q "assetPacks" "$APP_BUILD"; then
-  perl -0pi -e 's/ndkVersion = "28.2.13676358"/ndkVersion = "28.2.13676358"\n\n    assetPacks += listOf(":endless_runner")/' "$APP_BUILD"
+  perl -0pi -e 's/ndkVersion = "28.2.13676358"/ndkVersion = "28.2.13676358"\n\n    assetPacks += listOf(":endless_learner")/' "$APP_BUILD"
 fi
 
 echo "Android asset packs synced."

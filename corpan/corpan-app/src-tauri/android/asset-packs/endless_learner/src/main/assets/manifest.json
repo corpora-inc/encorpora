@@ -1,6 +1,6 @@
 {
-  "id": "endless_runner",
-  "name": "Endless Runner Prototype",
+  "id": "endless_learner",
+  "name": "Endless Learner Prototype",
   "version": "0.1.0",
   "entry": "app.js",
   "styles": ["app.css"],

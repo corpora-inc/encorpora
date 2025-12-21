@@ -17,8 +17,8 @@ This describes the no-server IAP delivery path for Corpan game packs.
 
 ### Xcode / App Store steps (required)
 
-- Add the pack folder (e.g. `assets/corpan-packs/endless_runner/`) to the Xcode target resources.
-- In Xcode, set the **On Demand Resource Tags** for that folder to the pack ID (`endless_runner`).
+- Add the pack folder (e.g. `assets/corpan-packs/endless_learner/`) to the Xcode target resources.
+- In Xcode, set the **On Demand Resource Tags** for that folder to the pack ID (`endless_learner`).
 - In App Store Connect, enable ODR for the app and upload a build so Apple hosts the tag.
   - Pack sources live in `corpan-app/src-tauri/ios/assets/corpan-packs/`.
 
@@ -30,7 +30,7 @@ This describes the no-server IAP delivery path for Corpan game packs.
 
 ### Play Console steps (required)
 
-- Ensure the asset pack module (`endless_runner`) is included in the Android App Bundle.
+- Ensure the asset pack module (`endless_learner`) is included in the Android App Bundle.
 - Mark the pack as **on-demand** in the Play Console (or fast-follow if desired).
 - Upload the new AAB so Play hosts the pack.
 

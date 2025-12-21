@@ -13,7 +13,7 @@ private struct PackInfo {
 
 final class GamePacksPlugin: Plugin {
     private let knownPacks: [PackInfo] = [
-        PackInfo(id: "endless_runner", name: "Endless Runner", version: "0.1.0")
+        PackInfo(id: "endless_learner", name: "Endless Learner", version: "0.1.0")
     ]
 
     private var activeRequests: [String: NSBundleResourceRequest] = [:]

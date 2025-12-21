@@ -153,7 +153,7 @@ class GamePacksPlugin(private val activity: Activity) : Plugin(activity) {
 
     companion object {
         private val KNOWN_PACKS = listOf(
-            PackInfo("endless_runner", "Endless Runner", "0.1.0")
+            PackInfo("endless_learner", "Endless Learner", "0.1.0")
         )
     }
 }
