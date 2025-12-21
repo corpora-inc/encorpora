@@ -1,0 +1,145 @@
+:root {
+  color-scheme: dark;
+}
+
+.corp-runner {
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: 16px;
+  padding: 24px 28px 28px;
+  box-sizing: border-box;
+  background: radial-gradient(circle at top, #3b2f1e, #0c0b08 60%);
+  color: #f6f1e8;
+  font-family: "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
+}
+
+.corp-runner header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.corp-runner .title {
+  font-size: 20px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.corp-runner .stack {
+  font-size: 12px;
+  color: rgba(246, 241, 232, 0.6);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.corp-runner .arena {
+  position: relative;
+  border-radius: 28px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0));
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: 16px;
+  padding: 24px;
+}
+
+.corp-runner .prompt {
+  font-size: 32px;
+  font-weight: 600;
+}
+
+.corp-runner .subtitle {
+  font-size: 14px;
+  color: rgba(246, 241, 232, 0.7);
+}
+
+.corp-runner .lanes {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  align-items: stretch;
+  height: 100%;
+}
+
+.corp-runner .lane {
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 16px;
+  display: grid;
+  gap: 8px;
+  align-content: center;
+  text-align: center;
+  font-size: 18px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.corp-runner .lane.active {
+  transform: translateY(-6px);
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+.corp-runner .lane.correct {
+  border-color: #8ef58f;
+  box-shadow: 0 0 18px rgba(142, 245, 143, 0.3);
+}
+
+.corp-runner .lane.wrong {
+  border-color: #ff6f6f;
+  box-shadow: 0 0 18px rgba(255, 111, 111, 0.3);
+}
+
+.corp-runner .status {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.corp-runner .btn {
+  border: none;
+  border-radius: 999px;
+  padding: 10px 18px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  background: #f6f1e8;
+  color: #1b160f;
+  cursor: pointer;
+}
+
+.corp-runner .hint {
+  font-size: 12px;
+  color: rgba(246, 241, 232, 0.6);
+}
+
+.corp-runner .ticker {
+  height: 6px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.corp-runner .ticker span {
+  display: block;
+  height: 100%;
+  width: 100%;
+  transform-origin: left;
+  background: linear-gradient(90deg, #f6f1e8, #ffa756);
+  animation: ticker 6s linear infinite;
+}
+
+@keyframes ticker {
+  from {
+    transform: scaleX(1);
+  }
+  to {
+    transform: scaleX(0);
+  }
+}

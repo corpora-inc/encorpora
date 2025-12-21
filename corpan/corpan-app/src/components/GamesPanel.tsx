@@ -1,8 +1,13 @@
-import { useMemo, useState } from "react"
+import { useCallback, useEffect, useMemo, useState } from "react"
 
 import { Button } from "@/components/ui/button"
 import { Separator } from "@/components/ui/separator"
 import { useGamesStore, type InstalledGame } from "@/store/games"
+import {
+  listPlatformPacks,
+  resolvePlatformPackManifestUrl,
+  type PlatformPack,
+} from "@/contentPacks/platformPacks"
 
 const normalizeManifestUrl = (input: string) => {
   const trimmed = input.trim()
@@ -15,6 +20,15 @@ const normalizeManifestUrl = (input: string) => {
 const proxyUrlIfNeeded = (rawUrl: string) => {
   try {
     const resolved = new URL(rawUrl, window.location.href)
+    if (resolved.protocol !== "http:" && resolved.protocol !== "https:") {
+      return resolved.toString()
+    }
+    if (
+      resolved.hostname.endsWith(".localhost") &&
+      resolved.hostname.startsWith("corpan-pack")
+    ) {
+      return resolved.toString()
+    }
     if (resolved.origin === window.location.origin) {
       return resolved.toString()
     }
@@ -39,6 +53,9 @@ export function GamesPanel({
   const [manifestUrl, setManifestUrl] = useState("")
   const [error, setError] = useState<string | null>(null)
   const [installing, setInstalling] = useState(false)
+  const [platformPacks, setPlatformPacks] = useState<PlatformPack[]>([])
+  const [platformError, setPlatformError] = useState<string | null>(null)
+  const [platformLoading, setPlatformLoading] = useState(false)
 
   const handleInstall = async () => {
     const normalized = normalizeManifestUrl(manifestUrl)
@@ -75,6 +92,33 @@ export function GamesPanel({
     } finally {
       setInstalling(false)
     }
+  }
+
+  const refreshPlatformPacks = useCallback(async () => {
+    setPlatformLoading(true)
+    setPlatformError(null)
+    const packs = await listPlatformPacks()
+    setPlatformPacks(packs)
+    setPlatformLoading(false)
+  }, [])
+
+  useEffect(() => {
+    void refreshPlatformPacks()
+  }, [refreshPlatformPacks])
+
+  const handleLaunchPlatform = async (pack: PlatformPack) => {
+    const manifest = await resolvePlatformPackManifestUrl(pack.id)
+    if (!manifest) {
+      setPlatformError("Unable to resolve manifest for this pack.")
+      return
+    }
+    onLaunchGame?.({
+      id: pack.id,
+      name: pack.name,
+      manifestUrl: manifest,
+      version: pack.version,
+      installedAt: Date.now(),
+    })
   }
 
   return (
@@ -134,6 +178,48 @@ export function GamesPanel({
                   onClick={() => removeGame(game.id)}
                 >
                   Remove
+                </Button>
+              </div>
+            </div>
+          ))
+        )}
+      </div>
+
+      <div className="mt-8 space-y-3">
+        <div className="flex items-center justify-between">
+          <h4 className="text-base font-semibold">Purchased packs</h4>
+          <Button
+            size="sm"
+            variant="ghost"
+            onClick={refreshPlatformPacks}
+            disabled={platformLoading}
+          >
+            {platformLoading ? "Refreshing..." : "Refresh"}
+          </Button>
+        </div>
+        <p className="text-sm text-muted-foreground">
+          iOS/Android purchases will appear here when running on device.
+        </p>
+        {platformError ? (
+          <div className="text-sm text-red-600">{platformError}</div>
+        ) : null}
+        {platformPacks.length === 0 ? (
+          <div className="text-sm text-muted-foreground">
+            No platform packs detected.
+          </div>
+        ) : (
+          platformPacks.map((pack) => (
+            <div
+              key={pack.id}
+              className="flex flex-col gap-3 rounded-md border border-gray-200 bg-white/80 p-4"
+            >
+              <div>
+                <div className="text-base font-medium">{pack.name}</div>
+                <div className="text-xs text-muted-foreground">{pack.id}</div>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                <Button size="sm" onClick={() => handleLaunchPlatform(pack)}>
+                  Launch
                 </Button>
               </div>
             </div>

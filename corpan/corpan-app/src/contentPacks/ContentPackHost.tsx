@@ -46,6 +46,15 @@ const clearInjectedAssets = (id: string) => {
 const proxyUrlIfNeeded = (rawUrl: string) => {
   try {
     const resolved = new URL(rawUrl, window.location.href)
+    if (resolved.protocol !== "http:" && resolved.protocol !== "https:") {
+      return resolved.toString()
+    }
+    if (
+      resolved.hostname.endsWith(".localhost") &&
+      resolved.hostname.startsWith("corpan-pack")
+    ) {
+      return resolved.toString()
+    }
     if (resolved.origin === window.location.origin) {
       return resolved.toString()
     }

@@ -19,7 +19,7 @@ type GamesState = {
 
 const devGame: InstalledGame | null = import.meta.env.DEV
   ? {
-      id: "endless-runner",
+      id: "endless_runner",
       name: "Endless Runner (local)",
       manifestUrl: "/games/endless-runner/manifest.json",
       version: "0.1.0",

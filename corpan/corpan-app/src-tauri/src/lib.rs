@@ -249,6 +249,7 @@ fn get_entry_by_id_with_translations(
 pub fn run() {
     tauri::Builder::default()
         .plugin(tauri_plugin_os::init())
+        .plugin(tauri_plugin_game_packs::init())
         .invoke_handler(tauri::generate_handler![
             get_random_entry_with_translations,
             get_entry_by_id_with_translations
