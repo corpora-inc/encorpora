@@ -25,9 +25,11 @@ import { JumpToTTSButton } from "./JumpToTTSButton";
 export function SettingsModal({
   open,
   onClose,
+  onLaunchGame,
 }: {
   open: boolean;
   onClose: () => void;
+  onLaunchGame?: (id: string) => void;
 }) {
   const { t } = useTranslation();
 
@@ -64,6 +66,24 @@ export function SettingsModal({
         <LevelsPicker />
         <DomainPicker />
         <RomanizationToggle />
+
+        {onLaunchGame ? (
+          <Button
+            variant="outline"
+            onClick={() => {
+              onClose();
+              onLaunchGame("endless-runner");
+            }}
+            className="
+              mt-3 w-full rounded-md px-6 py-6
+              focus:outline-none focus:ring-2 focus:ring-neutral-400 focus:ring-offset-2
+              transition-colors cursor-pointer
+              shadow-sm
+            "
+          >
+            Launch Endless Runner (prototype)
+          </Button>
+        ) : null}
 
         {/* Global onboarding controls */}
         <Button

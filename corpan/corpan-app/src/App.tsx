@@ -8,6 +8,7 @@ import { MainExperience } from "./components/MainExperience";
 import { SettingsModal } from "./components/SettingsModal";
 import { RatingPrompt } from "./components/RatingPrompt";
 import { Button } from "./components/ui/button";
+import { ContentPackOverlay } from "./components/ContentPackOverlay";
 import "./index.css";
 import { getPlatformTopPaddingButtons } from "./util/browser";
 
@@ -22,8 +23,22 @@ if (import.meta.env.DEV) {
 
 export default function App() {
   const [showSettings, setShowSettings] = useState(false);
+  const [activeGameId, setActiveGameId] = useState<string | null>(() => {
+    if (typeof window === "undefined") return null;
+    const params = new URLSearchParams(window.location.search);
+    return params.get("game");
+  });
   const onboarded = useSettingsStore((s) => s.onboarded);
   const textSize = useSettingsStore((s) => s.textSize);
+
+  useEffect(() => {
+    const onPop = () => {
+      const params = new URLSearchParams(window.location.search);
+      setActiveGameId(params.get("game"));
+    };
+    window.addEventListener("popstate", onPop);
+    return () => window.removeEventListener("popstate", onPop);
+  }, []);
 
   useEffect(() => {
     const root = document.documentElement;
@@ -41,6 +56,16 @@ export default function App() {
   if (!onboarded) {
     return <OnboardingWizard />;
   }
+
+  const updateGameParam = (id: string | null) => {
+    const url = new URL(window.location.href);
+    if (id) {
+      url.searchParams.set("game", id);
+    } else {
+      url.searchParams.delete("game");
+    }
+    window.history.pushState({}, "", url);
+  };
 
   return (
     <>
@@ -67,9 +92,24 @@ export default function App() {
       <SettingsModal
         open={showSettings}
         onClose={() => setShowSettings(false)}
+        onLaunchGame={(id) => {
+          setShowSettings(false);
+          setActiveGameId(id);
+          updateGameParam(id);
+        }}
       />
 
       <RatingPrompt />
+
+      {activeGameId ? (
+        <ContentPackOverlay
+          id={activeGameId}
+          onClose={() => {
+            setActiveGameId(null);
+            updateGameParam(null);
+          }}
+        />
+      ) : null}
     </>
   );
 }
