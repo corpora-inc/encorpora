@@ -43,6 +43,18 @@ const clearInjectedAssets = (id: string) => {
     .forEach((node) => node.remove())
 }
 
+const proxyUrlIfNeeded = (rawUrl: string) => {
+  try {
+    const resolved = new URL(rawUrl, window.location.href)
+    if (resolved.origin === window.location.origin) {
+      return resolved.toString()
+    }
+    return `/game-proxy?url=${encodeURIComponent(resolved.toString())}`
+  } catch {
+    return rawUrl
+  }
+}
+
 export default function ContentPackHost({
   id,
   manifestUrl,
@@ -78,7 +90,8 @@ export default function ContentPackHost({
         manifestRequestUrl,
         window.location.href
       ).toString()
-      const res = await fetch(resolvedManifestUrl, {
+      const manifestFetchUrl = proxyUrlIfNeeded(resolvedManifestUrl)
+      const res = await fetch(manifestFetchUrl, {
         cache: "no-store",
       })
       if (!res.ok) {
@@ -94,12 +107,12 @@ export default function ContentPackHost({
 
       if (manifest.styles) {
         manifest.styles.forEach((style) => {
-          const href = new URL(style, baseUrl).toString()
+          const href = proxyUrlIfNeeded(new URL(style, baseUrl).toString())
           loadStyle(href, id)
         })
       }
 
-      const entryUrl = new URL(manifest.entry, baseUrl).toString()
+      const entryUrl = proxyUrlIfNeeded(new URL(manifest.entry, baseUrl).toString())
       await loadScript(entryUrl, id, manifest.entryType ?? "script")
 
       activeModule =

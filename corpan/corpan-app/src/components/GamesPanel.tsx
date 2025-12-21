@@ -12,6 +12,18 @@ const normalizeManifestUrl = (input: string) => {
   return `${trimmed.replace(/\/$/, "")}/manifest.json`
 }
 
+const proxyUrlIfNeeded = (rawUrl: string) => {
+  try {
+    const resolved = new URL(rawUrl, window.location.href)
+    if (resolved.origin === window.location.origin) {
+      return resolved.toString()
+    }
+    return `/game-proxy?url=${encodeURIComponent(resolved.toString())}`
+  } catch {
+    return rawUrl
+  }
+}
+
 export function GamesPanel({
   onLaunchGame,
 }: {
@@ -38,7 +50,7 @@ export function GamesPanel({
     setError(null)
     try {
       const resolved = new URL(normalized, window.location.href).toString()
-      const res = await fetch(resolved, { cache: "no-store" })
+      const res = await fetch(proxyUrlIfNeeded(resolved), { cache: "no-store" })
       if (!res.ok) {
         throw new Error(`Manifest not found (${res.status})`)
       }

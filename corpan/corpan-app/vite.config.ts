@@ -40,6 +40,33 @@ const serveGames = () => ({
         fs.createReadStream(filePath).pipe(res);
       });
     });
+    server.middlewares.use("/game-proxy", async (req: any, res: any) => {
+      try {
+        if (!req.url) {
+          res.statusCode = 400;
+          res.end("Missing url");
+          return;
+        }
+        const urlParam = new URL(req.url, "http://localhost").searchParams.get("url");
+        if (!urlParam) {
+          res.statusCode = 400;
+          res.end("Missing url");
+          return;
+        }
+        const target = new URL(urlParam);
+        const response = await fetch(target.toString());
+        res.statusCode = response.status;
+        const contentType = response.headers.get("content-type");
+        if (contentType) {
+          res.setHeader("Content-Type", contentType);
+        }
+        const buffer = Buffer.from(await response.arrayBuffer());
+        res.end(buffer);
+      } catch {
+        res.statusCode = 502;
+        res.end("Proxy error");
+      }
+    });
   },
 });
 
