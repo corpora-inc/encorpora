@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Endless Runner (Standalone)</title>
+    <link rel="stylesheet" href="./app.css" />
+    <style>
+      html, body { height: 100%; margin: 0; }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script src="./app.js"></script>
+    <script type="module">
+      import { mountStandalone } from "../sdk/index.js";
+
+      const game = window.CorpanGames?.["endless_runner"];
+      if (!game) {
+        throw new Error("Game module not registered");
+      }
+
+      mountStandalone(game, {
+        container: document.getElementById("root"),
+      });
+    </script>
+  </body>
+</html>
