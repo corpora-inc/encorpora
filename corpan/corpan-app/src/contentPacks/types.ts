@@ -10,6 +10,8 @@ export type StackConfig = {
 
 export type HostApi = {
   speak: (uiCode: string, text: string) => Promise<void>
+  stopSpeech?: () => Promise<void>
+  dispose?: () => void
   getStackConfig: () => StackConfig
   onStackConfigChange: (listener: (config: StackConfig) => void) => () => void
   getRandomEntry: () => Promise<unknown>

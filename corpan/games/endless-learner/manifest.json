@@ -2,8 +2,8 @@
   "id": "endless_learner",
   "name": "Endless Learner Prototype",
   "version": "0.1.0",
-  "entry": "app.js",
-  "styles": ["app.css"],
+  "entry": "dist/app.js",
+  "styles": ["dist/app.css"],
   "entryType": "script",
   "sdkVersion": "0.1.0"
 }

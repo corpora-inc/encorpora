@@ -64,6 +64,26 @@ const proxyUrlIfNeeded = (rawUrl: string) => {
   }
 }
 
+const lookupGameModule = (primaryId: string, fallbackId: string) => {
+  const registry = (globalThis as { CorpanGames?: Record<string, ContentPackModule> })
+    .CorpanGames
+  return registry?.[primaryId] ?? registry?.[fallbackId] ?? null
+}
+
+const waitForGameModule = async (
+  primaryId: string,
+  fallbackId: string,
+  timeoutMs = 500
+) => {
+  const start = performance.now()
+  let module = lookupGameModule(primaryId, fallbackId)
+  while (!module && performance.now() - start < timeoutMs) {
+    await new Promise(requestAnimationFrame)
+    module = lookupGameModule(primaryId, fallbackId)
+  }
+  return module
+}
+
 export default function ContentPackHost({
   id,
   manifestUrl,
@@ -71,6 +91,7 @@ export default function ContentPackHost({
   const containerRef = useRef<HTMLDivElement>(null)
   const [loadState, setLoadState] = useState<LoadState>("idle")
   const [error, setError] = useState<string | null>(null)
+  const skipStopRef = useRef(true)
 
   const hostApi = useMemo(() => createHostApi(), [])
 
@@ -85,6 +106,9 @@ export default function ContentPackHost({
       }
       activeModule = null
       activeInstance = undefined
+      if (containerRef.current) {
+        containerRef.current.replaceChildren()
+      }
       clearInjectedAssets(id)
     }
 
@@ -124,8 +148,7 @@ export default function ContentPackHost({
       const entryUrl = proxyUrlIfNeeded(new URL(manifest.entry, baseUrl).toString())
       await loadScript(entryUrl, id, manifest.entryType ?? "script")
 
-      activeModule =
-        window.CorpanGames?.[manifest.id] ?? window.CorpanGames?.[id] ?? null
+      activeModule = await waitForGameModule(manifest.id, id)
       if (!activeModule || typeof activeModule.mount !== "function") {
         throw new Error(`Content pack did not register: ${id}`)
       }
@@ -155,6 +178,12 @@ export default function ContentPackHost({
     return () => {
       cancelled = true
       cleanup()
+      if (skipStopRef.current) {
+        skipStopRef.current = false
+        return
+      }
+      hostApi.stopSpeech?.()
+      hostApi.dispose?.()
     }
   }, [hostApi, id])
 
