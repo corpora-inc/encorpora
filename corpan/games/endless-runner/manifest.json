@@ -3,5 +3,7 @@
   "name": "Endless Runner Prototype",
   "version": "0.1.0",
   "entry": "app.js",
-  "styles": ["app.css"]
+  "styles": ["app.css"],
+  "entryType": "script",
+  "sdkVersion": "0.1.0"
 }

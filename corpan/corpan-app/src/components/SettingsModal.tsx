@@ -20,6 +20,8 @@ import { useSettingsStore } from "@/store/settings";
 import { useTranslation } from "react-i18next";
 import StacksManager from "./StacksManager";
 import { JumpToTTSButton } from "./JumpToTTSButton";
+import { GamesPanel } from "./GamesPanel";
+import type { InstalledGame } from "@/store/games";
 
 // Use the built-in modal with correct sizing
 export function SettingsModal({
@@ -29,7 +31,7 @@ export function SettingsModal({
 }: {
   open: boolean;
   onClose: () => void;
-  onLaunchGame?: (id: string) => void;
+  onLaunchGame?: (game: InstalledGame) => void;
 }) {
   const { t } = useTranslation();
 
@@ -67,23 +69,12 @@ export function SettingsModal({
         <DomainPicker />
         <RomanizationToggle />
 
-        {onLaunchGame ? (
-          <Button
-            variant="outline"
-            onClick={() => {
-              onClose();
-              onLaunchGame("endless-runner");
-            }}
-            className="
-              mt-3 w-full rounded-md px-6 py-6
-              focus:outline-none focus:ring-2 focus:ring-neutral-400 focus:ring-offset-2
-              transition-colors cursor-pointer
-              shadow-sm
-            "
-          >
-            Launch Endless Runner (prototype)
-          </Button>
-        ) : null}
+        <GamesPanel
+          onLaunchGame={(game) => {
+            onClose();
+            onLaunchGame?.(game);
+          }}
+        />
 
         {/* Global onboarding controls */}
         <Button

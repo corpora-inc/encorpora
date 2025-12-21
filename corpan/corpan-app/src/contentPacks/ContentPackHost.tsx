@@ -7,35 +7,46 @@ type LoadState = "idle" | "loading" | "ready" | "error"
 
 type ContentPackHostProps = {
   id: string
+  manifestUrl?: string
 }
 
-const loadScript = (src: string) =>
+const loadScript = (src: string, id: string, type: "script" | "module") =>
   new Promise<HTMLScriptElement>((resolve, reject) => {
     const script = document.createElement("script")
     script.src = src
     script.async = true
     script.dataset.corpGame = "true"
+    script.dataset.corpGameId = id
+    if (type === "module") {
+      script.type = "module"
+    }
     script.onload = () => resolve(script)
     script.onerror = () => reject(new Error(`Failed to load ${src}`))
     document.head.appendChild(script)
   })
 
-const loadStyle = (href: string) => {
+const loadStyle = (href: string, id: string) => {
   const link = document.createElement("link")
   link.rel = "stylesheet"
   link.href = href
   link.dataset.corpGame = "true"
+  link.dataset.corpGameId = id
   document.head.appendChild(link)
   return link
 }
 
-const clearInjectedAssets = () => {
+const clearInjectedAssets = (id: string) => {
   document
-    .querySelectorAll("script[data-corp-game], link[data-corp-game]")
+    .querySelectorAll(
+      `script[data-corp-game-id="${id}"], link[data-corp-game-id="${id}"]`
+    )
     .forEach((node) => node.remove())
 }
 
-export default function ContentPackHost({ id }: ContentPackHostProps) {
+export default function ContentPackHost({
+  id,
+  manifestUrl,
+}: ContentPackHostProps) {
   const containerRef = useRef<HTMLDivElement>(null)
   const [loadState, setLoadState] = useState<LoadState>("idle")
   const [error, setError] = useState<string | null>(null)
@@ -53,7 +64,7 @@ export default function ContentPackHost({ id }: ContentPackHostProps) {
       }
       activeModule = null
       activeInstance = undefined
-      clearInjectedAssets()
+      clearInjectedAssets(id)
     }
 
     const load = async () => {
@@ -61,22 +72,35 @@ export default function ContentPackHost({ id }: ContentPackHostProps) {
       setError(null)
       cleanup()
 
-      const res = await fetch(`/games/${id}/manifest.json`, {
+      const manifestRequestUrl =
+        manifestUrl ?? `/games/${id}/manifest.json`
+      const resolvedManifestUrl = new URL(
+        manifestRequestUrl,
+        window.location.href
+      ).toString()
+      const res = await fetch(resolvedManifestUrl, {
         cache: "no-store",
       })
       if (!res.ok) {
         throw new Error(`Missing content pack: ${id}`)
       }
       const manifest = (await res.json()) as ContentPackManifest
+      if (!manifest.id || !manifest.entry) {
+        throw new Error(`Invalid manifest for ${id}`)
+      }
+      const baseUrl = manifest.baseUrl
+        ? new URL(manifest.baseUrl, resolvedManifestUrl).toString()
+        : new URL(".", resolvedManifestUrl).toString()
 
       if (manifest.styles) {
         manifest.styles.forEach((style) => {
-          const href = `/games/${id}/${style}`
-          loadStyle(href)
+          const href = new URL(style, baseUrl).toString()
+          loadStyle(href, id)
         })
       }
 
-      await loadScript(`/games/${id}/${manifest.entry}`)
+      const entryUrl = new URL(manifest.entry, baseUrl).toString()
+      await loadScript(entryUrl, id, manifest.entryType ?? "script")
 
       activeModule =
         window.CorpanGames?.[manifest.id] ?? window.CorpanGames?.[id] ?? null

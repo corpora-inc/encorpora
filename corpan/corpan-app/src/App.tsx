@@ -13,6 +13,7 @@ import "./index.css";
 import { getPlatformTopPaddingButtons } from "./util/browser";
 
 import { useRatingStore } from "@/store/rating";
+import type { InstalledGame } from "@/store/games";
 
 // In a module that always loads (e.g. App.tsx)
 if (import.meta.env.DEV) {
@@ -23,10 +24,16 @@ if (import.meta.env.DEV) {
 
 export default function App() {
   const [showSettings, setShowSettings] = useState(false);
-  const [activeGameId, setActiveGameId] = useState<string | null>(() => {
+  const [activeGame, setActiveGame] = useState<{
+    id: string;
+    manifestUrl?: string;
+  } | null>(() => {
     if (typeof window === "undefined") return null;
     const params = new URLSearchParams(window.location.search);
-    return params.get("game");
+    const id = params.get("game");
+    if (!id) return null;
+    const manifestUrl = params.get("gameUrl") ?? undefined;
+    return { id, manifestUrl };
   });
   const onboarded = useSettingsStore((s) => s.onboarded);
   const textSize = useSettingsStore((s) => s.textSize);
@@ -34,7 +41,13 @@ export default function App() {
   useEffect(() => {
     const onPop = () => {
       const params = new URLSearchParams(window.location.search);
-      setActiveGameId(params.get("game"));
+      const id = params.get("game");
+      if (!id) {
+        setActiveGame(null);
+        return;
+      }
+      const manifestUrl = params.get("gameUrl") ?? undefined;
+      setActiveGame({ id, manifestUrl });
     };
     window.addEventListener("popstate", onPop);
     return () => window.removeEventListener("popstate", onPop);
@@ -57,12 +70,20 @@ export default function App() {
     return <OnboardingWizard />;
   }
 
-  const updateGameParam = (id: string | null) => {
+  const updateGameParam = (
+    game: { id: string; manifestUrl?: string } | null
+  ) => {
     const url = new URL(window.location.href);
-    if (id) {
-      url.searchParams.set("game", id);
+    if (game) {
+      url.searchParams.set("game", game.id);
+      if (game.manifestUrl) {
+        url.searchParams.set("gameUrl", game.manifestUrl);
+      } else {
+        url.searchParams.delete("gameUrl");
+      }
     } else {
       url.searchParams.delete("game");
+      url.searchParams.delete("gameUrl");
     }
     window.history.pushState({}, "", url);
   };
@@ -92,20 +113,21 @@ export default function App() {
       <SettingsModal
         open={showSettings}
         onClose={() => setShowSettings(false)}
-        onLaunchGame={(id) => {
+        onLaunchGame={(game: InstalledGame) => {
           setShowSettings(false);
-          setActiveGameId(id);
-          updateGameParam(id);
+          setActiveGame({ id: game.id, manifestUrl: game.manifestUrl });
+          updateGameParam({ id: game.id, manifestUrl: game.manifestUrl });
         }}
       />
 
       <RatingPrompt />
 
-      {activeGameId ? (
+      {activeGame ? (
         <ContentPackOverlay
-          id={activeGameId}
+          id={activeGame.id}
+          manifestUrl={activeGame.manifestUrl}
           onClose={() => {
-            setActiveGameId(null);
+            setActiveGame(null);
             updateGameParam(null);
           }}
         />

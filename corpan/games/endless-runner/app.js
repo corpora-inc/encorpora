@@ -67,17 +67,35 @@
       root.appendChild(footer);
       container.appendChild(root);
 
-      const baseStack = (initialState && initialState.stackConfig) || {
-        languages: ["en", "es"],
-        domains: [],
-        levels: [],
-        rate: 1,
+      let stackConfig =
+        (initialState && initialState.stackConfig) ||
+        (hostApi.getStackConfig ? hostApi.getStackConfig() : null) || {
+          languages: ["en", "es"],
+          domains: [],
+          levels: [],
+          rate: 1,
+          textSize: "medium",
+          showRomanization: true,
+        };
+
+      let speakLang = "en";
+      let targetLang = "es";
+
+      const updateStackLabel = () => {
+        const langs = stackConfig.languages || ["en", "es"];
+        speakLang = langs[0] || "en";
+        targetLang = langs[1] || "es";
+        stack.textContent = `${speakLang} -> ${targetLang}`;
       };
 
-      const speakLang = baseStack.languages[0] || "en";
-      const targetLang = baseStack.languages[1] || "es";
+      updateStackLabel();
 
-      stack.textContent = `${speakLang} -> ${targetLang}`;
+      const unsubscribeStack = hostApi.onStackConfigChange
+        ? hostApi.onStackConfigChange((next) => {
+            stackConfig = next;
+            updateStackLabel();
+          })
+        : () => {};
 
       const phrases = [
         {
@@ -186,6 +204,7 @@
         unmount: () => {
           window.removeEventListener("keydown", onKey);
           speakBtn.removeEventListener("click", announcePrompt);
+          unsubscribeStack();
           container.removeChild(root);
         },
       };

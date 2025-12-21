@@ -17,6 +17,15 @@ export type HostApi = {
   isMock?: boolean
 }
 
+export type GameModule = {
+  id: string
+  mount: (
+    container: HTMLElement,
+    hostApi: HostApi,
+    initialState?: Record<string, unknown>
+  ) => { unmount?: () => void } | void
+}
+
 export type ContentPackManifest = {
   id: string
   name: string
@@ -29,10 +38,19 @@ export type ContentPackManifest = {
   permissions?: string[]
 }
 
-export type ContentPackModule = {
-  mount: (
-    container: HTMLElement,
-    hostApi: HostApi,
+export function registerGame(game: GameModule): GameModule
+
+export function createMockHostApi(options?:
+  Partial<HostApi> & {
+    stackConfig?: Partial<StackConfig>
+  }
+): HostApi
+
+export function mountStandalone(
+  game: GameModule,
+  options?: {
+    container?: HTMLElement
+    hostApi?: HostApi
     initialState?: Record<string, unknown>
-  ) => { unmount?: () => void } | void
-}
+  }
+): { unmount?: () => void }
