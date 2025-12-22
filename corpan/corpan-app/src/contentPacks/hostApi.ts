@@ -147,6 +147,14 @@ export const createHostApi = (): HostApi => {
         domains,
       })
     },
+    getRandomEntries: async (count: number) => {
+      const { levels, domains } = useSettingsStore.getState()
+      return invoke("get_random_entries_with_translations", {
+        count,
+        levels,
+        domains,
+      })
+    },
     getEntryById: async (entryId) => {
       return invoke("get_entry_by_id_with_translations", { entryId })
     },

@@ -98,7 +98,7 @@ const computeLayout = (width: number, height: number): Layout => {
 const ANSWER_TRAVEL_MS = 9000
 const ANSWER_GAP_MS = 2400
 const POST_CORRECT_PAUSE_MS = 3200
-const SPEAK_REPEAT_MS = 7700
+const SPEAK_REPEAT_MS = 5000
 const NATIVE_REPEAT_MULT = 2
 const FEEDBACK_CLEAR_MS = 1800
 const IMPACT_HOLD_MS = 240
@@ -111,7 +111,7 @@ const MIN_SPEED = 0.6
 const MAX_SPEED = 2.2
 const MIN_CANDIDATES = 1
 const MAX_CANDIDATES = 9
-const PREFETCH_TARGET = 6
+const BATCH_SIZE = 10
 
 
 const DEBUG = false
@@ -288,7 +288,6 @@ export function App({ hostApi, initialStack, runtime }: AppProps) {
   const isDisposedRef = useRef(false)
   const roundQueueRef = useRef<Round[]>([])
   const prefetchingRef = useRef(false)
-  const prefetchTimerRef = useRef<number | null>(null)
 
   useEffect(() => {
     if (typeof window === "undefined") {
@@ -454,7 +453,7 @@ export function App({ hostApi, initialStack, runtime }: AppProps) {
       .then(() => {
         bgmUnlockedRef.current = true
       })
-      .catch(() => {})
+      .catch(() => { })
   }, [])
 
   const runCleanup = useCallback(() => {
@@ -504,10 +503,6 @@ export function App({ hostApi, initialStack, runtime }: AppProps) {
       }
     })
     cleanupActionsRef.current.add(() => {
-      if (prefetchTimerRef.current) {
-        window.clearTimeout(prefetchTimerRef.current)
-        prefetchTimerRef.current = null
-      }
       prefetchingRef.current = false
       clearRoundQueue()
     })
@@ -567,11 +562,6 @@ export function App({ hostApi, initialStack, runtime }: AppProps) {
       return trimmed
     })
   }, [clearImpactTimer, settings.maxCandidates])
-
-  useEffect(() => {
-    clearRoundQueue()
-    schedulePrefetch()
-  }, [clearRoundQueue, schedulePrefetch, settings.maxCandidates, stack])
 
   const buildRound = useCallback(async (): Promise<Round> => {
     if (!runtime.isActive()) {
@@ -662,7 +652,7 @@ export function App({ hostApi, initialStack, runtime }: AppProps) {
     }
 
     return {
-      id: roundIdRef.current + 1,
+      id: 0,
       prompt: promptText,
       romanization,
       promptLang,
@@ -674,46 +664,115 @@ export function App({ hostApi, initialStack, runtime }: AppProps) {
     }
   }, [hostApi, runtime, settings.maxCandidates])
 
-  const fillRoundQueue = useCallback(async () => {
+  const getRoundLanguages = useCallback(() => {
+    const stackSettings = stackRef.current
+    const languages = stackSettings.languages.length
+      ? stackSettings.languages
+      : ["en"]
+    const nativeLang = languages[0] ?? "en"
+    const learningLangs = languages.slice(1)
+    const modes = ["learningToNative"]
+    if (learningLangs.length > 0) {
+      modes.push("nativeToLearning")
+    }
+    const mode = pickRandom(modes)
+    let promptLang = nativeLang
+    let answerLang = nativeLang
+    if (mode === "nativeToLearning") {
+      promptLang = nativeLang
+      answerLang = pickRandom(learningLangs.length ? learningLangs : [nativeLang])
+    } else if (mode === "learningToNative") {
+      promptLang = pickRandom(learningLangs.length ? learningLangs : [nativeLang])
+      answerLang = nativeLang
+    } else {
+      promptLang = pickRandom(learningLangs.length ? learningLangs : [nativeLang])
+      answerLang = nativeLang
+    }
+    return { promptLang, answerLang, mode }
+  }, [])
+
+  const buildRoundFromEntry = useCallback(
+    (
+      entry: EntryOut,
+      lookup: ReturnType<typeof buildLookup>,
+      pool: Array<{ entry: EntryOut; lookup: ReturnType<typeof buildLookup> }>
+    ): Round | null => {
+      const { promptLang, answerLang, mode } = getRoundLanguages()
+      const promptText = pickText(lookup.textByCode, promptLang)
+      const romanization = pickRom(lookup.romByCode, promptLang)
+      const correct = pickText(lookup.textByCode, answerLang)
+      if (!promptText || !correct) {
+        return null
+      }
+      const correctRomanization = pickRom(lookup.romByCode, answerLang)
+      const distractorTarget = Math.max(
+        DISTRACTOR_TARGET,
+        settings.maxCandidates * 3
+      )
+      const distractors: Array<{ text: string; romanization?: string }> = []
+      for (const candidate of pool) {
+        if (distractors.length >= distractorTarget) {
+          break
+        }
+        if (candidate.entry.entry_id === entry.entry_id) {
+          continue
+        }
+        const distractText = pickText(candidate.lookup.textByCode, answerLang)
+        if (distractText && distractText !== correct) {
+          uniquePushText(distractors, {
+            text: distractText,
+            romanization: pickRom(candidate.lookup.romByCode, answerLang),
+          })
+        }
+      }
+      return {
+        id: 0,
+        prompt: promptText,
+        romanization,
+        promptLang,
+        answerLang,
+        correctAnswer: correct,
+        correctRomanization,
+        distractors,
+        mode: MODE_LABELS[mode as keyof typeof MODE_LABELS] ?? "Run",
+      }
+    },
+    [getRoundLanguages, settings.maxCandidates]
+  )
+
+  const fetchRoundBatch = useCallback(async () => {
     if (prefetchingRef.current) {
       return
     }
     prefetchingRef.current = true
     try {
-      while (
-        runtime.isActive() &&
-        !isDisposedRef.current &&
-        roundQueueRef.current.length < PREFETCH_TARGET
-      ) {
-        const next = await buildRound()
-        if (next.prompt) {
+      const poolEntries: EntryOut[] = []
+      if (hostApi.getRandomEntries) {
+        const batch = await hostApi.getRandomEntries(BATCH_SIZE)
+        poolEntries.push(...batch)
+      } else if (hostApi.getRandomEntry) {
+        for (let i = 0; i < BATCH_SIZE; i += 1) {
+          poolEntries.push(await hostApi.getRandomEntry())
+        }
+      }
+      const pool = poolEntries.map((entry) => ({
+        entry,
+        lookup: buildLookup(entry),
+      }))
+      for (const { entry, lookup } of pool) {
+        const next = buildRoundFromEntry(entry, lookup, pool)
+        if (next?.prompt) {
           roundQueueRef.current.push(next)
         }
-        await new Promise((resolve) => window.setTimeout(resolve, 0))
       }
     } finally {
       prefetchingRef.current = false
     }
-  }, [buildRound, runtime])
+  }, [buildRoundFromEntry, hostApi])
 
-  const schedulePrefetch = useCallback(() => {
-    if (prefetchTimerRef.current || prefetchingRef.current) {
-      return
-    }
-    const idle = window.requestIdleCallback
-    if (idle) {
-      const id = idle(() => {
-        prefetchTimerRef.current = null
-        void fillRoundQueue()
-      })
-      prefetchTimerRef.current = id as unknown as number
-      return
-    }
-    prefetchTimerRef.current = window.setTimeout(() => {
-      prefetchTimerRef.current = null
-      void fillRoundQueue()
-    }, 16)
-  }, [fillRoundQueue])
+  useEffect(() => {
+    clearRoundQueue()
+  }, [clearRoundQueue, settings.maxCandidates, stack])
 
   const getSpeedMultiplier = useCallback(() => {
     const base = settings.baseSpeed
@@ -780,14 +839,14 @@ export function App({ hostApi, initialStack, runtime }: AppProps) {
           const lastWrong = lastWrongTextRef.current
           const options = lastWrong
             ? current.distractors.filter(
-                (choice) =>
-                  choice.text &&
-                  choice.text !== lastWrong &&
-                  !activeTexts.has(choice.text)
-              )
+              (choice) =>
+                choice.text &&
+                choice.text !== lastWrong &&
+                !activeTexts.has(choice.text)
+            )
             : current.distractors.filter(
-                (choice) => choice.text && !activeTexts.has(choice.text)
-              )
+              (choice) => choice.text && !activeTexts.has(choice.text)
+            )
           const picks = options.length ? options : current.distractors
           const picked = pickRandom(picks)
           if (picked?.text) {
@@ -922,10 +981,13 @@ export function App({ hostApi, initialStack, runtime }: AppProps) {
         return null
       }
       try {
-        const queued = roundQueueRef.current.shift()
+        let queued = roundQueueRef.current.shift()
+        if (!queued) {
+          await fetchRoundBatch()
+          queued = roundQueueRef.current.shift()
+        }
         const next = queued ?? (await buildRound())
         if (next.prompt) {
-          schedulePrefetch()
           return next
         }
       } catch {
@@ -934,7 +996,7 @@ export function App({ hostApi, initialStack, runtime }: AppProps) {
       await new Promise((resolve) => window.setTimeout(resolve, 300))
     }
     return null
-  }, [buildRound, runtime, schedulePrefetch])
+  }, [buildRound, fetchRoundBatch, runtime])
 
   const beginRound = useCallback(
     (next: Round) => {
@@ -946,8 +1008,9 @@ export function App({ hostApi, initialStack, runtime }: AppProps) {
       }
       startedRef.current = true
       curveSeedRef.current = Math.random() * Math.PI * 2
-      roundIdRef.current = next.id
-      setRound(next)
+      roundIdRef.current += 1
+      const roundId = roundIdRef.current
+      setRound({ ...next, id: roundId })
       clearAllAnswers()
       setFeedback(null)
       if (DEBUG) {
@@ -970,8 +1033,11 @@ export function App({ hostApi, initialStack, runtime }: AppProps) {
       return
     }
     beginRound(next)
+    if (roundQueueRef.current.length === 0) {
+      void fetchRoundBatch()
+    }
     setBootState("ready")
-  }, [beginRound, prepareRound, runtime])
+  }, [beginRound, fetchRoundBatch, prepareRound, runtime])
 
   const retryBoot = useCallback(() => {
     if (bootState !== "error") {
@@ -1026,7 +1092,7 @@ export function App({ hostApi, initialStack, runtime }: AppProps) {
       clearAllAnswers()
       ensureBgmStart()
       clearRoundQueue()
-      schedulePrefetch()
+      await fetchRoundBatch()
       const next = await prepareRound()
       if (cancelled) {
         return
@@ -1050,9 +1116,9 @@ export function App({ hostApi, initialStack, runtime }: AppProps) {
     clearRoundQueue,
     clearTimers,
     ensureBgmStart,
+    fetchRoundBatch,
     hostApi,
     prepareRound,
-    schedulePrefetch,
   ])
 
   useEffect(() => {
@@ -1487,8 +1553,8 @@ export function App({ hostApi, initialStack, runtime }: AppProps) {
             <div className={`prompt size-${stack.textSize}`}>{round.prompt}</div>
           ) : null}
           {settings.showRomanization &&
-          stack.showRomanization &&
-          round.romanization ? (
+            stack.showRomanization &&
+            round.romanization ? (
             <div className="romanization">{round.romanization}</div>
           ) : null}
           {settings.showFeedback && feedback ? (

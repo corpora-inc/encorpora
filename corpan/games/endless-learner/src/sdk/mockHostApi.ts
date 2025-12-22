@@ -77,6 +77,15 @@ export const createMockHostApi = (): HostApi => {
       index += 1
       return entry
     },
+    getRandomEntries: async (count) => {
+      const results: EntryOut[] = []
+      for (let i = 0; i < count; i += 1) {
+        const entry = seedEntries[index % seedEntries.length]
+        index += 1
+        results.push(entry)
+      }
+      return results
+    },
     getEntryById: async (entryId) => {
       return seedEntries.find((entry) => entry.entry_id === entryId) ?? seedEntries[0]
     },

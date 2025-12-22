@@ -15,6 +15,7 @@ export type HostApi = {
   getStackConfig: () => StackConfig
   onStackConfigChange: (listener: (config: StackConfig) => void) => () => void
   getRandomEntry: () => Promise<unknown>
+  getRandomEntries?: (count: number) => Promise<unknown[]>
   getEntryById: (entryId: number) => Promise<unknown>
   isMock?: boolean
 }

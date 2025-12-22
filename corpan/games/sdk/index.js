@@ -69,6 +69,21 @@ export const createMockHostApi = (options = {}) => {
         { language_code: "en", text: "hello", romanization: "" },
       ],
     }),
+    getRandomEntries: async (count = 1) => {
+      const entries = [];
+      for (let i = 0; i < count; i += 1) {
+        entries.push({
+          entry_id: 1 + i,
+          level: "A1",
+          domains: ["travel"],
+          translations: [
+            { language_code: "es", text: "hola", romanization: "" },
+            { language_code: "en", text: "hello", romanization: "" },
+          ],
+        });
+      }
+      return entries;
+    },
     getEntryById: async () => null,
     ...overrides,
   };

@@ -1,12 +1,24 @@
 use rusqlite::{ffi, Connection};
 use std::convert::TryInto;
 use std::ffi::CString;
-use tauri::AppHandle;
+use std::sync::Mutex;
 
 /// Embed your prebuilt SQLite at compile time.
 const EMBEDDED_DB: &[u8] = include_bytes!("../../../dja/release.sqlite3");
 
-pub fn open_connection(_: &AppHandle) -> Result<Connection, String> {
+pub struct DbState {
+    pub conn: Mutex<Connection>,
+}
+
+impl DbState {
+    pub fn new() -> Result<Self, String> {
+        Ok(Self {
+            conn: Mutex::new(open_connection()?),
+        })
+    }
+}
+
+fn open_connection() -> Result<Connection, String> {
     // 1) Open an in-memory connection.
     let conn =
         Connection::open_in_memory().map_err(|e| format!("failed to open in-memory DB: {}", e))?;
