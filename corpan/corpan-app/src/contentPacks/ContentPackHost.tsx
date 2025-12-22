@@ -198,6 +198,7 @@ export default function ContentPackHost({
       setLoadState("loading")
       setError(null)
       cleanup()
+      ;(globalThis as { __corpanHostActive?: boolean }).__corpanHostActive = true
       try {
         const res = await fetch(manifestFetchUrl, {
           cache: "no-store",

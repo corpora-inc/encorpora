@@ -8,6 +8,7 @@ import "./styles.css"
 type GlobalScope = typeof globalThis & {
   CorpanGames?: Record<string, GameModule>
   __endlessLearner?: { dispose: () => void }
+  __corpanHostActive?: boolean
 }
 
 type InitialState = {
@@ -52,13 +53,16 @@ const registerGame = () => {
 }
 
 const mountForDev = () => {
+  const scope = globalThis as GlobalScope
+  if (scope.__corpanHostActive) {
+    return
+  }
   const root = document.getElementById("corpan-game-root")
   if (!root) {
     return
   }
 
   const hostApi: HostApi = createMockHostApi()
-  const scope = globalThis as GlobalScope
   if (scope.__endlessLearner) {
     scope.__endlessLearner.dispose()
   }

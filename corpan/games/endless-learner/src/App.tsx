@@ -2,8 +2,9 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react"
 import type { PointerEvent } from "react"
 import type { EntryOut, HostApi, StackConfig } from "./sdk/types"
 import type { GameRuntime } from "./runtime"
-import { DEFAULT_SFX_VOLUME, getSfx } from "./audio"
+import { getSfx } from "./audio"
 import lunaUrl from "./assets/sfx/luna.mp3"
+import { DEFAULT_SETTINGS, type GameSettings, useGameStore } from "./store/gameStore"
 
 type AppProps = {
   hostApi: HostApi
@@ -18,7 +19,8 @@ type Round = {
   promptLang: string
   answerLang: string
   correctAnswer: string
-  distractors: string[]
+  correctRomanization?: string
+  distractors: Array<{ text: string; romanization?: string }>
   mode: string
 }
 
@@ -30,6 +32,7 @@ type PlayerPos = {
 type IncomingAnswer = {
   id: number
   text: string
+  romanization?: string
   isCorrect: boolean
   row: number
   col: number
@@ -45,18 +48,7 @@ type Feedback = {
   message: string
 }
 
-type GameSettings = {
-  musicVolume: number
-  sfxVolume: number
-  baseSpeed: number
-  adaptiveSpeed: boolean
-  correctChance: number
-  maxCandidates: number
-  showPrompt: boolean
-  showRomanization: boolean
-  showFeedback: boolean
-  showHints: boolean
-}
+type BootState = "booting" | "ready" | "error"
 
 const GRID_SIZE = 3
 const GRID_SPAN_RATIO = 0.98
@@ -111,29 +103,16 @@ const NATIVE_REPEAT_MULT = 2
 const FEEDBACK_CLEAR_MS = 1800
 const IMPACT_HOLD_MS = 240
 const MAX_WRONG_BEFORE_CORRECT = 2
-const CORRECT_CHANCE = 0.35
 const SKIP_SCORE = 2
 const DISTRACTOR_TARGET = 10
 const TOKEN_VIEW_MARGIN_MIN = 12
 const TOKEN_VIEW_MARGIN_MAX = 48
-const BGM_VOLUME = 0.7
 const MIN_SPEED = 0.6
 const MAX_SPEED = 2.2
 const MIN_CANDIDATES = 1
 const MAX_CANDIDATES = 9
+const PREFETCH_TARGET = 6
 
-const DEFAULT_SETTINGS: GameSettings = {
-  musicVolume: BGM_VOLUME,
-  sfxVolume: DEFAULT_SFX_VOLUME,
-  baseSpeed: 1,
-  adaptiveSpeed: true,
-  correctChance: CORRECT_CHANCE,
-  maxCandidates: 1,
-  showPrompt: true,
-  showRomanization: true,
-  showFeedback: true,
-  showHints: true,
-}
 
 const DEBUG = false
 
@@ -150,6 +129,7 @@ const emptyRound: Round = {
   promptLang: "",
   answerLang: "",
   correctAnswer: "",
+  correctRomanization: undefined,
   distractors: [],
   mode: "",
 }
@@ -184,6 +164,17 @@ const pickRandom = <T,>(items: T[]) =>
 
 const uniquePush = (arr: string[], value: string) => {
   if (!value || arr.includes(value)) {
+    return false
+  }
+  arr.push(value)
+  return true
+}
+
+const uniquePushText = (
+  arr: Array<{ text: string; romanization?: string }>,
+  value: { text: string; romanization?: string }
+) => {
+  if (!value.text || arr.some((entry) => entry.text === value.text)) {
     return false
   }
   arr.push(value)
@@ -245,13 +236,20 @@ export function App({ hostApi, initialStack, runtime }: AppProps) {
   const [stack, setStack] = useState<StackConfig>(
     initialStack ?? hostApi.getStackConfig()
   )
-  const [score, setScore] = useState(0)
-  const [streak, setStreak] = useState(0)
+  const settings = useGameStore((state) => state.settings)
+  const score = useGameStore((state) => state.stats.score)
+  const streak = useGameStore((state) => state.stats.streak)
+  const setSettings = useGameStore((state) => state.setSettings)
+  const incrementScore = useGameStore((state) => state.incrementScore)
+  const incrementStreak = useGameStore((state) => state.incrementStreak)
+  const resetStreak = useGameStore((state) => state.resetStreak)
   const [round, setRound] = useState<Round>(emptyRound)
   const [activeAnswers, setActiveAnswers] = useState<IncomingAnswer[]>([])
   const [playerPos, setPlayerPos] = useState<PlayerPos>({ row: 1, col: 1 })
   const [feedback, setFeedback] = useState<Feedback | null>(null)
-  const [settings, setSettings] = useState<GameSettings>(DEFAULT_SETTINGS)
+  const [draftSettings, setDraftSettings] =
+    useState<GameSettings>(settings)
+  const [bootState, setBootState] = useState<BootState>("booting")
   const [settingsOpen, setSettingsOpen] = useState(false)
   const [isPaused, setIsPaused] = useState(false)
   const [layout, setLayout] = useState<Layout>(() =>
@@ -263,6 +261,7 @@ export function App({ hostApi, initialStack, runtime }: AppProps) {
   const sfx = useMemo(() => getSfx(), [])
   const bgmRef = useRef<HTMLAudioElement | null>(null)
   const arenaRef = useRef<HTMLDivElement | null>(null)
+  const cleanupActionsRef = useRef<Set<() => void>>(new Set())
 
   const roundRef = useRef<Round>(round)
   const stackRef = useRef<StackConfig>(stack)
@@ -285,6 +284,11 @@ export function App({ hostApi, initialStack, runtime }: AppProps) {
   const streakRef = useRef(0)
   const isPausedRef = useRef(false)
   const pauseStartedRef = useRef<number | null>(null)
+  const rafIdRef = useRef<number | null>(null)
+  const isDisposedRef = useRef(false)
+  const roundQueueRef = useRef<Round[]>([])
+  const prefetchingRef = useRef(false)
+  const prefetchTimerRef = useRef<number | null>(null)
 
   useEffect(() => {
     if (typeof window === "undefined") {
@@ -293,7 +297,7 @@ export function App({ hostApi, initialStack, runtime }: AppProps) {
     const audio = new Audio(lunaUrl)
     audio.loop = true
     audio.preload = "auto"
-    audio.volume = BGM_VOLUME
+    audio.volume = settings.musicVolume
     bgmRef.current = audio
     return () => {
       audio.pause()
@@ -315,7 +319,12 @@ export function App({ hostApi, initialStack, runtime }: AppProps) {
 
   useEffect(() => {
     setIsPaused(settingsOpen)
-  }, [settingsOpen])
+    if (settingsOpen) {
+      setDraftSettings(settings)
+    } else {
+      setSettings(draftSettings)
+    }
+  }, [settings, settingsOpen])
 
   useEffect(() => {
     roundRef.current = round
@@ -425,6 +434,44 @@ export function App({ hostApi, initialStack, runtime }: AppProps) {
     setActiveAnswers([])
   }, [])
 
+  const stopBgm = useCallback(() => {
+    const bgm = bgmRef.current
+    if (!bgm) {
+      return
+    }
+    bgm.pause()
+    bgm.currentTime = 0
+    bgm.src = ""
+    bgm.load()
+  }, [])
+
+  const ensureBgmStart = useCallback(() => {
+    const bgm = bgmRef.current
+    if (!bgm || bgmUnlockedRef.current) {
+      return
+    }
+    void bgm.play()
+      .then(() => {
+        bgmUnlockedRef.current = true
+      })
+      .catch(() => {})
+  }, [])
+
+  const runCleanup = useCallback(() => {
+    cleanupActionsRef.current.forEach((cleanup) => {
+      try {
+        cleanup()
+      } catch {
+        // Best-effort cleanup.
+      }
+    })
+    cleanupActionsRef.current.clear()
+  }, [])
+
+  const clearRoundQueue = useCallback(() => {
+    roundQueueRef.current = []
+  }, [])
+
   const removeAnswer = useCallback(
     (answerId: number) => {
       clearImpactTimer(answerId)
@@ -432,6 +479,75 @@ export function App({ hostApi, initialStack, runtime }: AppProps) {
     },
     [clearImpactTimer]
   )
+
+  useEffect(() => {
+    cleanupActionsRef.current.clear()
+    cleanupActionsRef.current.add(() => {
+      clearTimers()
+    })
+    cleanupActionsRef.current.add(() => {
+      clearAllAnswers()
+    })
+    cleanupActionsRef.current.add(() => {
+      hostApi.stopSpeech?.()
+    })
+    cleanupActionsRef.current.add(() => {
+      sfx.dispose()
+    })
+    cleanupActionsRef.current.add(() => {
+      stopBgm()
+    })
+    cleanupActionsRef.current.add(() => {
+      if (rafIdRef.current) {
+        cancelAnimationFrame(rafIdRef.current)
+        rafIdRef.current = null
+      }
+    })
+    cleanupActionsRef.current.add(() => {
+      if (prefetchTimerRef.current) {
+        window.clearTimeout(prefetchTimerRef.current)
+        prefetchTimerRef.current = null
+      }
+      prefetchingRef.current = false
+      clearRoundQueue()
+    })
+    return () => {
+      isDisposedRef.current = true
+      runCleanup()
+    }
+  }, [clearAllAnswers, clearRoundQueue, clearTimers, hostApi, runCleanup, sfx, stopBgm])
+
+  const handleVisibility = useCallback(() => {
+    if (document.visibilityState === "hidden") {
+      stopBgm()
+    }
+  }, [stopBgm])
+
+  useEffect(() => {
+    let intervalId: number | null = null
+    intervalId = window.setInterval(() => {
+      if (!runtime.isActive() && !isDisposedRef.current) {
+        isDisposedRef.current = true
+        runCleanup()
+      }
+    }, 500)
+    return () => {
+      if (intervalId) {
+        window.clearInterval(intervalId)
+      }
+    }
+  }, [runCleanup, runtime])
+
+  useEffect(() => {
+    window.addEventListener("visibilitychange", handleVisibility)
+    window.addEventListener("pagehide", handleVisibility)
+    window.addEventListener("blur", handleVisibility)
+    return () => {
+      window.removeEventListener("visibilitychange", handleVisibility)
+      window.removeEventListener("pagehide", handleVisibility)
+      window.removeEventListener("blur", handleVisibility)
+    }
+  }, [handleVisibility])
 
   useEffect(() => {
     if (activeAnswersRef.current.length <= settings.maxCandidates) {
@@ -451,6 +567,11 @@ export function App({ hostApi, initialStack, runtime }: AppProps) {
       return trimmed
     })
   }, [clearImpactTimer, settings.maxCandidates])
+
+  useEffect(() => {
+    clearRoundQueue()
+    schedulePrefetch()
+  }, [clearRoundQueue, schedulePrefetch, settings.maxCandidates, stack])
 
   const buildRound = useCallback(async (): Promise<Round> => {
     if (!runtime.isActive()) {
@@ -493,15 +614,19 @@ export function App({ hostApi, initialStack, runtime }: AppProps) {
       | null = null
 
     for (let i = 0; i < maxAttempts; i += 1) {
-      const candidate = await hostApi.getRandomEntry()
-      const candidateLookup = buildLookup(candidate)
-      if (
-        pickText(candidateLookup.textByCode, promptLang) &&
-        pickText(candidateLookup.textByCode, answerLang)
-      ) {
-        entry = candidate
-        lookup = candidateLookup
-        break
+      try {
+        const candidate = await hostApi.getRandomEntry()
+        const candidateLookup = buildLookup(candidate)
+        if (
+          pickText(candidateLookup.textByCode, promptLang) &&
+          pickText(candidateLookup.textByCode, answerLang)
+        ) {
+          entry = candidate
+          lookup = candidateLookup
+          break
+        }
+      } catch {
+        // Retry when the host data isn't ready yet.
       }
     }
 
@@ -512,18 +637,27 @@ export function App({ hostApi, initialStack, runtime }: AppProps) {
     const promptText = pickText(lookup.textByCode, promptLang)
     const romanization = pickRom(lookup.romByCode, promptLang)
     const correct = pickText(lookup.textByCode, answerLang)
+    const correctRomanization = pickRom(lookup.romByCode, answerLang)
 
     const distractorTarget = Math.max(
       DISTRACTOR_TARGET,
       settings.maxCandidates * 3
     )
-    const distractors: string[] = []
+    const distractors: Array<{ text: string; romanization?: string }> = []
     for (let i = 0; i < maxAttempts && distractors.length < distractorTarget; i += 1) {
-      const distractor = await hostApi.getRandomEntry()
-      const distractLookup = buildLookup(distractor)
-      const distractText = pickText(distractLookup.textByCode, answerLang)
-      if (distractText && distractText !== correct) {
-        uniquePush(distractors, distractText)
+      try {
+        const distractor = await hostApi.getRandomEntry()
+        const distractLookup = buildLookup(distractor)
+        const distractText = pickText(distractLookup.textByCode, answerLang)
+        if (distractText && distractText !== correct) {
+          const distractRom = pickRom(distractLookup.romByCode, answerLang)
+          uniquePushText(distractors, {
+            text: distractText,
+            romanization: distractRom,
+          })
+        }
+      } catch {
+        // Retry when the host data isn't ready yet.
       }
     }
 
@@ -534,10 +668,52 @@ export function App({ hostApi, initialStack, runtime }: AppProps) {
       promptLang,
       answerLang,
       correctAnswer: correct,
+      correctRomanization,
       distractors,
       mode: MODE_LABELS[mode as keyof typeof MODE_LABELS] ?? "Run",
     }
   }, [hostApi, runtime, settings.maxCandidates])
+
+  const fillRoundQueue = useCallback(async () => {
+    if (prefetchingRef.current) {
+      return
+    }
+    prefetchingRef.current = true
+    try {
+      while (
+        runtime.isActive() &&
+        !isDisposedRef.current &&
+        roundQueueRef.current.length < PREFETCH_TARGET
+      ) {
+        const next = await buildRound()
+        if (next.prompt) {
+          roundQueueRef.current.push(next)
+        }
+        await new Promise((resolve) => window.setTimeout(resolve, 0))
+      }
+    } finally {
+      prefetchingRef.current = false
+    }
+  }, [buildRound, runtime])
+
+  const schedulePrefetch = useCallback(() => {
+    if (prefetchTimerRef.current || prefetchingRef.current) {
+      return
+    }
+    const idle = window.requestIdleCallback
+    if (idle) {
+      const id = idle(() => {
+        prefetchTimerRef.current = null
+        void fillRoundQueue()
+      })
+      prefetchTimerRef.current = id as unknown as number
+      return
+    }
+    prefetchTimerRef.current = window.setTimeout(() => {
+      prefetchTimerRef.current = null
+      void fillRoundQueue()
+    }, 16)
+  }, [fillRoundQueue])
 
   const getSpeedMultiplier = useCallback(() => {
     const base = settings.baseSpeed
@@ -561,7 +737,11 @@ export function App({ hostApi, initialStack, runtime }: AppProps) {
 
   const scheduleNextAnswer = useCallback(
     (delayMs?: number) => {
-      if (!runtime.isActive() || isPausedRef.current) {
+      if (
+        !runtime.isActive() ||
+        isPausedRef.current ||
+        isDisposedRef.current
+      ) {
         return
       }
       if (answerTimeoutRef.current) {
@@ -570,6 +750,9 @@ export function App({ hostApi, initialStack, runtime }: AppProps) {
       const waitMs = delayMs ?? getGapMs()
       answerTimeoutRef.current = window.setTimeout(() => {
         if (!runtime.isActive() || isPausedRef.current) {
+          return
+        }
+        if (isDisposedRef.current) {
           return
         }
         const liveLayout = layoutRef.current
@@ -582,22 +765,42 @@ export function App({ hostApi, initialStack, runtime }: AppProps) {
           return
         }
 
+        const activeTexts = new Set(
+          activeAnswersRef.current.map((answer) => answer.text)
+        )
         const forceCorrect =
           wrongSinceCorrectRef.current >= MAX_WRONG_BEFORE_CORRECT
         let useCorrect = forceCorrect || Math.random() < settings.correctChance
+        if (useCorrect && activeTexts.has(current.correctAnswer)) {
+          useCorrect = false
+        }
         let text = current.correctAnswer
+        let romanization = current.correctRomanization
         if (!useCorrect) {
           const lastWrong = lastWrongTextRef.current
           const options = lastWrong
-            ? current.distractors.filter((choice) => choice && choice !== lastWrong)
-            : current.distractors
+            ? current.distractors.filter(
+                (choice) =>
+                  choice.text &&
+                  choice.text !== lastWrong &&
+                  !activeTexts.has(choice.text)
+              )
+            : current.distractors.filter(
+                (choice) => choice.text && !activeTexts.has(choice.text)
+              )
           const picks = options.length ? options : current.distractors
           const picked = pickRandom(picks)
-          if (picked) {
-            text = picked
+          if (picked?.text) {
+            text = picked.text
+            romanization = picked.romanization
           } else {
+            if (activeTexts.has(current.correctAnswer)) {
+              scheduleNextAnswer(240)
+              return
+            }
             useCorrect = true
             text = current.correctAnswer
+            romanization = current.correctRomanization
           }
         }
 
@@ -651,6 +854,7 @@ export function App({ hostApi, initialStack, runtime }: AppProps) {
           {
             id: Date.now() + Math.random(),
             text,
+            romanization,
             isCorrect: useCorrect,
             row,
             col,
@@ -668,7 +872,11 @@ export function App({ hostApi, initialStack, runtime }: AppProps) {
   )
 
   const speakPrompt = useCallback(() => {
-    if (!runtime.isActive() || isPausedRef.current) {
+    if (
+      !runtime.isActive() ||
+      isPausedRef.current ||
+      isDisposedRef.current
+    ) {
       return
     }
     const current = roundRef.current
@@ -679,7 +887,11 @@ export function App({ hostApi, initialStack, runtime }: AppProps) {
   }, [hostApi, runtime])
 
   const scheduleSpeakRepeat = useCallback(() => {
-    if (!runtime.isActive() || isPausedRef.current) {
+    if (
+      !runtime.isActive() ||
+      isPausedRef.current ||
+      isDisposedRef.current
+    ) {
       return
     }
     const settings = stackRef.current
@@ -703,31 +915,74 @@ export function App({ hostApi, initialStack, runtime }: AppProps) {
     }, repeatMs)
   }, [runtime, speakPrompt])
 
+  const prepareRound = useCallback(async (): Promise<Round | null> => {
+    const maxTries = 8
+    for (let i = 0; i < maxTries; i += 1) {
+      if (!runtime.isActive() || isDisposedRef.current) {
+        return null
+      }
+      try {
+        const queued = roundQueueRef.current.shift()
+        const next = queued ?? (await buildRound())
+        if (next.prompt) {
+          schedulePrefetch()
+          return next
+        }
+      } catch {
+        // Retry when host data isn't ready yet.
+      }
+      await new Promise((resolve) => window.setTimeout(resolve, 300))
+    }
+    return null
+  }, [buildRound, runtime, schedulePrefetch])
+
+  const beginRound = useCallback(
+    (next: Round) => {
+      clearTimers()
+      solvedRef.current = false
+      wrongSinceCorrectRef.current = 0
+      if (startedRef.current) {
+        hostApi.stopSpeech?.()
+      }
+      startedRef.current = true
+      curveSeedRef.current = Math.random() * Math.PI * 2
+      roundIdRef.current = next.id
+      setRound(next)
+      clearAllAnswers()
+      setFeedback(null)
+      if (DEBUG) {
+        // eslint-disable-next-line no-console
+        console.info("[endless-learner] round", next)
+      }
+      scheduleNextAnswer()
+      scheduleSpeakRepeat()
+    },
+    [clearAllAnswers, clearTimers, hostApi, scheduleNextAnswer, scheduleSpeakRepeat]
+  )
 
   const startRound = useCallback(async () => {
-    if (!runtime.isActive()) {
+    if (!runtime.isActive() || isDisposedRef.current) {
+      return
+    }
+    const next = await prepareRound()
+    if (!next) {
+      setBootState("error")
+      return
+    }
+    beginRound(next)
+    setBootState("ready")
+  }, [beginRound, prepareRound, runtime])
+
+  const retryBoot = useCallback(() => {
+    if (bootState !== "error") {
       return
     }
     clearTimers()
-    solvedRef.current = false
-    wrongSinceCorrectRef.current = 0
-    if (startedRef.current) {
-      hostApi.stopSpeech?.()
-    }
-    startedRef.current = true
-    curveSeedRef.current = Math.random() * Math.PI * 2
-    const next = await buildRound()
-    roundIdRef.current = next.id
-    setRound(next)
     clearAllAnswers()
-    setFeedback(null)
-    if (DEBUG) {
-      // eslint-disable-next-line no-console
-      console.info("[endless-learner] round", next)
-    }
-    scheduleNextAnswer()
-    scheduleSpeakRepeat()
-  }, [buildRound, clearAllAnswers, clearTimers, hostApi, runtime, scheduleNextAnswer, scheduleSpeakRepeat])
+    ensureBgmStart()
+    setBootState("booting")
+    void startRound()
+  }, [bootState, clearAllAnswers, clearTimers, ensureBgmStart, startRound])
 
   useEffect(() => {
     if (isPaused) {
@@ -749,31 +1004,56 @@ export function App({ hostApi, initialStack, runtime }: AppProps) {
       }
       pauseStartedRef.current = null
     }
-    if (runtime.isActive()) {
-      if (solvedRef.current) {
-        void startRound()
-      } else {
-        scheduleNextAnswer(240)
-        scheduleSpeakRepeat()
-      }
+    if (runtime.isActive() && bootState === "ready") {
+      scheduleNextAnswer(240)
+      scheduleSpeakRepeat()
     }
   }, [
+    bootState,
     clearTimers,
     hostApi,
     isPaused,
     runtime,
     scheduleNextAnswer,
     scheduleSpeakRepeat,
-    startRound,
   ])
 
   useEffect(() => {
-    void startRound()
+    let cancelled = false
+    const boot = async () => {
+      setBootState("booting")
+      clearTimers()
+      clearAllAnswers()
+      ensureBgmStart()
+      clearRoundQueue()
+      schedulePrefetch()
+      const next = await prepareRound()
+      if (cancelled) {
+        return
+      }
+      if (!next) {
+        setBootState("error")
+        return
+      }
+      beginRound(next)
+      setBootState("ready")
+    }
+    void boot()
     return () => {
+      cancelled = true
       clearTimers()
       hostApi.stopSpeech?.()
     }
-  }, [clearTimers, hostApi, runtime, startRound])
+  }, [
+    beginRound,
+    clearAllAnswers,
+    clearRoundQueue,
+    clearTimers,
+    ensureBgmStart,
+    hostApi,
+    prepareRound,
+    schedulePrefetch,
+  ])
 
   useEffect(() => {
     speakPrompt()
@@ -809,8 +1089,8 @@ export function App({ hostApi, initialStack, runtime }: AppProps) {
       if (result === "correct") {
         solvedRef.current = true
         clearTimers()
-        setScore((prev) => prev + 10)
-        setStreak((prev) => prev + 1)
+        incrementScore(10)
+        incrementStreak()
         sfx.playSuccess()
         clearAllAnswers()
         setFeedback({
@@ -843,7 +1123,7 @@ export function App({ hostApi, initialStack, runtime }: AppProps) {
         sfx.playFail()
       }
 
-      setStreak(0)
+      resetStreak()
       feedbackTimeoutRef.current = window.setTimeout(() => {
         setFeedback(null)
       }, FEEDBACK_CLEAR_MS)
@@ -853,7 +1133,10 @@ export function App({ hostApi, initialStack, runtime }: AppProps) {
       clearAllAnswers,
       clearTimers,
       hostApi,
+      incrementScore,
+      incrementStreak,
       removeAnswer,
+      resetStreak,
       runtime,
       scheduleNextAnswer,
       startRound,
@@ -871,15 +1154,15 @@ export function App({ hostApi, initialStack, runtime }: AppProps) {
           type: "miss",
           message: `That was correct: ${roundRef.current?.correctAnswer ?? ""}`,
         })
-        setStreak(0)
+        resetStreak()
         sfx.playFail()
       } else {
         setFeedback({
           type: "correct",
           message: "Nice skip",
         })
-        setScore((prev) => prev + SKIP_SCORE)
-        setStreak((prev) => prev + 1)
+        incrementScore(SKIP_SCORE)
+        incrementStreak()
         sfx.playSuccess()
       }
       feedbackTimeoutRef.current = window.setTimeout(() => {
@@ -887,7 +1170,7 @@ export function App({ hostApi, initialStack, runtime }: AppProps) {
       }, FEEDBACK_CLEAR_MS)
       scheduleNextAnswer()
     },
-    [removeAnswer, runtime, scheduleNextAnswer]
+    [incrementScore, incrementStreak, removeAnswer, resetStreak, runtime, scheduleNextAnswer]
   )
 
   useEffect(() => {
@@ -897,11 +1180,12 @@ export function App({ hostApi, initialStack, runtime }: AppProps) {
     let animationFrame = 0
 
     const tick = (time: number) => {
-      if (!runtime.isActive()) {
+      if (!runtime.isActive() || isDisposedRef.current) {
         return
       }
       if (isPausedRef.current) {
         animationFrame = requestAnimationFrame(tick)
+        rafIdRef.current = animationFrame
         return
       }
       const current = activeAnswersRef.current
@@ -949,9 +1233,11 @@ export function App({ hostApi, initialStack, runtime }: AppProps) {
       }
 
       animationFrame = requestAnimationFrame(tick)
+      rafIdRef.current = animationFrame
     }
 
     animationFrame = requestAnimationFrame(tick)
+    rafIdRef.current = animationFrame
     return () => cancelAnimationFrame(animationFrame)
   }, [resolveAnswer, resolveSkip, runtime])
 
@@ -991,7 +1277,11 @@ export function App({ hostApi, initialStack, runtime }: AppProps) {
 
   const handleArenaPointer = useCallback(
     (event: PointerEvent<HTMLDivElement>) => {
-      if (!runtime.isActive() || isPausedRef.current) {
+      if (
+        !runtime.isActive() ||
+        isPausedRef.current ||
+        isDisposedRef.current
+      ) {
         return
       }
       const rect = arenaRef.current?.getBoundingClientRect()
@@ -1023,6 +1313,9 @@ export function App({ hostApi, initialStack, runtime }: AppProps) {
 
   useEffect(() => {
     const onKey = (event: KeyboardEvent) => {
+      if (isDisposedRef.current) {
+        return
+      }
       if (isPausedRef.current) {
         return
       }
@@ -1116,6 +1409,7 @@ export function App({ hostApi, initialStack, runtime }: AppProps) {
       activeAnswers.map((answer) => ({
         id: answer.id,
         text: answer.text,
+        romanization: answer.romanization,
         style: buildAnswerStyle(answer),
       })),
     [activeAnswers, buildAnswerStyle]
@@ -1136,15 +1430,37 @@ export function App({ hostApi, initialStack, runtime }: AppProps) {
     }
   }, [layout, playerPos])
 
-  const updateSetting = useCallback(
+  const updateDraftSetting = useCallback(
     <K extends keyof GameSettings,>(key: K, value: GameSettings[K]) => {
-      setSettings((prev) => ({ ...prev, [key]: value }))
+      setDraftSettings((prev) => ({ ...prev, [key]: value }))
     },
     []
   )
 
+  const resetDraftSettings = useCallback(() => {
+    setDraftSettings(DEFAULT_SETTINGS)
+    setSettings(DEFAULT_SETTINGS)
+  }, [setSettings])
+
   return (
     <div className="game-shell">
+      {bootState !== "ready" ? (
+        <div
+          className={`boot-overlay ${bootState}`}
+          onPointerDown={retryBoot}
+        >
+          <div className="boot-card">
+            <div className="boot-title">
+              {bootState === "error" ? "Loading failed" : "Loading"}
+            </div>
+            <div className="boot-subtitle">
+              {bootState === "error"
+                ? "Tap to retry."
+                : "Preparing your run..."}
+            </div>
+          </div>
+        </div>
+      ) : null}
       <div
         className="arena"
         ref={arenaRef}
@@ -1157,7 +1473,10 @@ export function App({ hostApi, initialStack, runtime }: AppProps) {
             className="answer-token"
             style={answer.style}
           >
-            {answer.text}
+            <div className="answer-text">{answer.text}</div>
+            {settings.showRomanization && answer.romanization ? (
+              <div className="answer-rom">{answer.romanization}</div>
+            ) : null}
           </div>
         ))}
         <div className="player-marker" style={playerStyle} />
@@ -1211,36 +1530,43 @@ export function App({ hostApi, initialStack, runtime }: AppProps) {
       ) : null}
       <aside className={`settings-panel ${settingsOpen ? "open" : ""}`}>
         <div className="settings-title">Game Settings</div>
+        <button
+          className="settings-reset"
+          onClick={resetDraftSettings}
+          type="button"
+        >
+          Restore Defaults
+        </button>
         <div className="settings-group">
           <label>
             <span className="setting-label">Music Volume</span>
             <span className="setting-value">
-              {Math.round(settings.musicVolume * 100)}%
+              {Math.round(draftSettings.musicVolume * 100)}%
             </span>
             <input
               type="range"
               min={0}
               max={1}
               step={0.01}
-              value={settings.musicVolume}
+              value={draftSettings.musicVolume}
               onChange={(event) =>
-                updateSetting("musicVolume", Number(event.target.value))
+                updateDraftSetting("musicVolume", Number(event.target.value))
               }
             />
           </label>
           <label>
             <span className="setting-label">SFX Volume</span>
             <span className="setting-value">
-              {Math.round(settings.sfxVolume * 100)}%
+              {Math.round(draftSettings.sfxVolume * 100)}%
             </span>
             <input
               type="range"
               min={0}
               max={1}
               step={0.01}
-              value={settings.sfxVolume}
+              value={draftSettings.sfxVolume}
               onChange={(event) =>
-                updateSetting("sfxVolume", Number(event.target.value))
+                updateDraftSetting("sfxVolume", Number(event.target.value))
               }
             />
           </label>
@@ -1249,25 +1575,25 @@ export function App({ hostApi, initialStack, runtime }: AppProps) {
           <label>
             <span className="setting-label">Base Speed</span>
             <span className="setting-value">
-              {settings.baseSpeed.toFixed(2)}x
+              {draftSettings.baseSpeed.toFixed(2)}x
             </span>
             <input
               type="range"
               min={0.6}
               max={2.2}
               step={0.05}
-              value={settings.baseSpeed}
+              value={draftSettings.baseSpeed}
               onChange={(event) =>
-                updateSetting("baseSpeed", Number(event.target.value))
+                updateDraftSetting("baseSpeed", Number(event.target.value))
               }
             />
           </label>
           <label className="toggle">
             <input
               type="checkbox"
-              checked={settings.adaptiveSpeed}
+              checked={draftSettings.adaptiveSpeed}
               onChange={(event) =>
-                updateSetting("adaptiveSpeed", event.target.checked)
+                updateDraftSetting("adaptiveSpeed", event.target.checked)
               }
             />
             Adaptive Speed
@@ -1275,32 +1601,32 @@ export function App({ hostApi, initialStack, runtime }: AppProps) {
           <label>
             <span className="setting-label">Correct Chance</span>
             <span className="setting-value">
-              {Math.round(settings.correctChance * 100)}%
+              {Math.round(draftSettings.correctChance * 100)}%
             </span>
             <input
               type="range"
               min={0.15}
               max={0.8}
               step={0.05}
-              value={settings.correctChance}
+              value={draftSettings.correctChance}
               onChange={(event) =>
-                updateSetting("correctChance", Number(event.target.value))
+                updateDraftSetting("correctChance", Number(event.target.value))
               }
             />
           </label>
           <label>
             <span className="setting-label">Candidates On Screen</span>
             <span className="setting-value">
-              {settings.maxCandidates}
+              {draftSettings.maxCandidates}
             </span>
             <input
               type="range"
               min={MIN_CANDIDATES}
               max={MAX_CANDIDATES}
               step={1}
-              value={settings.maxCandidates}
+              value={draftSettings.maxCandidates}
               onChange={(event) =>
-                updateSetting("maxCandidates", Number(event.target.value))
+                updateDraftSetting("maxCandidates", Number(event.target.value))
               }
             />
           </label>
@@ -1309,9 +1635,9 @@ export function App({ hostApi, initialStack, runtime }: AppProps) {
           <label className="toggle">
             <input
               type="checkbox"
-              checked={settings.showPrompt}
+              checked={draftSettings.showPrompt}
               onChange={(event) =>
-                updateSetting("showPrompt", event.target.checked)
+                updateDraftSetting("showPrompt", event.target.checked)
               }
             />
             Show Prompt
@@ -1319,9 +1645,9 @@ export function App({ hostApi, initialStack, runtime }: AppProps) {
           <label className="toggle">
             <input
               type="checkbox"
-              checked={settings.showRomanization}
+              checked={draftSettings.showRomanization}
               onChange={(event) =>
-                updateSetting("showRomanization", event.target.checked)
+                updateDraftSetting("showRomanization", event.target.checked)
               }
             />
             Show Romanization
@@ -1329,9 +1655,9 @@ export function App({ hostApi, initialStack, runtime }: AppProps) {
           <label className="toggle">
             <input
               type="checkbox"
-              checked={settings.showFeedback}
+              checked={draftSettings.showFeedback}
               onChange={(event) =>
-                updateSetting("showFeedback", event.target.checked)
+                updateDraftSetting("showFeedback", event.target.checked)
               }
             />
             Show Feedback
@@ -1339,9 +1665,9 @@ export function App({ hostApi, initialStack, runtime }: AppProps) {
           <label className="toggle">
             <input
               type="checkbox"
-              checked={settings.showHints}
+              checked={draftSettings.showHints}
               onChange={(event) =>
-                updateSetting("showHints", event.target.checked)
+                updateDraftSetting("showHints", event.target.checked)
               }
             />
             Show Hints

@@ -8,6 +8,7 @@ type SfxHandle = {
   setVolume: (volume: number) => void
   playSuccess: () => void
   playFail: () => void
+  dispose: () => void
 }
 
 type AudioPoolEntry = {
@@ -155,11 +156,30 @@ const createSfxHandle = (): SfxHandle => {
     })
   }
 
+  const dispose = () => {
+    htmlPools.forEach((entry) => {
+      entry.pool.forEach((audio) => {
+        audio.pause()
+        audio.currentTime = 0
+        audio.src = ""
+      })
+      entry.pool.length = 0
+    })
+    if (ctx) {
+      void ctx.close().catch(() => {})
+    }
+    ctx = null
+    master = null
+    buffers.clear()
+    bufferPromises.clear()
+  }
+
   return {
     unlock,
     setVolume,
     playSuccess: () => playWebAudio("success"),
     playFail: () => playWebAudio("fail"),
+    dispose,
   }
 }
 
