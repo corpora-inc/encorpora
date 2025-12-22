@@ -91,7 +91,7 @@ export default function ContentPackHost({
   const containerRef = useRef<HTMLDivElement>(null)
   const [loadState, setLoadState] = useState<LoadState>("idle")
   const [error, setError] = useState<string | null>(null)
-  const skipStopRef = useRef(true)
+  const hasLoadedRef = useRef(false)
 
   const hostApi = useMemo(() => createHostApi(), [])
 
@@ -101,13 +101,22 @@ export default function ContentPackHost({
     let activeInstance: { unmount?: () => void } | void
 
     const cleanup = () => {
-      if (activeInstance && typeof activeInstance.unmount === "function") {
-        activeInstance.unmount()
-      }
+      const instanceToUnmount = activeInstance
       activeModule = null
       activeInstance = undefined
-      if (containerRef.current) {
-        containerRef.current.replaceChildren()
+      if (instanceToUnmount && typeof instanceToUnmount.unmount === "function") {
+        queueMicrotask(() => {
+          try {
+            instanceToUnmount.unmount?.()
+          } catch {
+            // Avoid unmount errors from crashing the host UI.
+          }
+        })
+      }
+      if (hasLoadedRef.current) {
+        hostApi.stopSpeech?.()
+        hostApi.dispose?.()
+        hasLoadedRef.current = false
       }
       clearInjectedAssets(id)
     }
@@ -163,6 +172,7 @@ export default function ContentPackHost({
 
       if (!cancelled) {
         setLoadState("ready")
+        hasLoadedRef.current = true
       }
     }
 
@@ -178,12 +188,6 @@ export default function ContentPackHost({
     return () => {
       cancelled = true
       cleanup()
-      if (skipStopRef.current) {
-        skipStopRef.current = false
-        return
-      }
-      hostApi.stopSpeech?.()
-      hostApi.dispose?.()
     }
   }, [hostApi, id])
 

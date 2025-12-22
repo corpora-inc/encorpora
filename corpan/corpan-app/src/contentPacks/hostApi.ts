@@ -26,51 +26,34 @@ const getStackSnapshot = () => {
 }
 
 export const createHostApi = (): HostApi => {
-  let lastSpokenAt = 0
-  let speaking = false
   let disposed = false
-  let pending: { uiCode: string; text: string } | null = null
+  let running = false
+  let generation = 0
+  let queue: Array<{ uiCode: string; text: string; rate: number }> = []
 
   const delay = (ms: number) =>
     new Promise<void>((resolve) => {
       window.setTimeout(resolve, ms)
     })
 
-  const speakScheduled = async (uiCode: string, text: string) => {
-    if (disposed) {
-      return
-    }
-    pending = { uiCode, text }
-    if (speaking) {
-      return
-    }
-    speaking = true
-
-    while (pending) {
-      const next = pending
-      pending = null
-
-      const now = Date.now()
-      const gap = 1200
-      const wait = Math.max(0, gap - (now - lastSpokenAt))
-      if (wait) {
-        await delay(wait)
+  const delayUnlessInterrupted = async (ms: number, gen: number) => {
+    const start = Date.now()
+    while (Date.now() - start < ms) {
+      if (disposed || gen !== generation) {
+        return
       }
-
-      if (!disposed) {
-        const { rate } = useSettingsStore.getState()
-        await speakWithStackPrefs(next.uiCode, next.text, rate)
-        lastSpokenAt = Date.now()
-      }
+      await delay(120)
     }
-
-    speaking = false
   }
 
-  const stopSpeech = async () => {
-    pending = null
-    speaking = false
-    lastSpokenAt = 0
+  const estimateDurationMs = (text: string, rate: number) => {
+    const words = text.trim().split(/\s+/).filter(Boolean).length
+    const wpm = 160 * Math.max(rate, 0.4)
+    const ms = (words / wpm) * 60000
+    return Math.max(1800, Math.min(ms + 600, 12000))
+  }
+
+  const stopNativeSpeech = async () => {
     if (typeof window !== "undefined" && "speechSynthesis" in window) {
       window.speechSynthesis.cancel()
     }
@@ -81,10 +64,61 @@ export const createHostApi = (): HostApi => {
     }
   }
 
+  const stopSpeech = async () => {
+    generation += 1
+    queue = []
+    await stopNativeSpeech()
+  }
+
+  let lastEnqueued: { uiCode: string; text: string; at: number } | null = null
+
+  const runQueue = async () => {
+    if (running) {
+      return
+    }
+    running = true
+    while (queue.length && !disposed) {
+      const currentGen = generation
+      const next = queue.shift()
+      if (!next) {
+        break
+      }
+      if (currentGen !== generation) {
+        continue
+      }
+      await speakWithStackPrefs(next.uiCode, next.text, next.rate)
+      if (currentGen !== generation) {
+        continue
+      }
+      const wait = estimateDurationMs(next.text, next.rate)
+      await delayUnlessInterrupted(wait, currentGen)
+    }
+    running = false
+  }
+
+  const speakScheduled = async (uiCode: string, text: string) => {
+    if (disposed) {
+      return
+    }
+    const { rate } = useSettingsStore.getState()
+    const now = Date.now()
+    if (
+      lastEnqueued &&
+      lastEnqueued.uiCode === uiCode &&
+      lastEnqueued.text === text &&
+      now - lastEnqueued.at < 600
+    ) {
+      return
+    }
+    lastEnqueued = { uiCode, text, at: now }
+    queue.push({ uiCode, text, rate })
+    void runQueue()
+  }
+
   const dispose = () => {
     disposed = true
-    pending = null
-    speaking = false
+    queue = []
+    running = false
   }
 
   return {

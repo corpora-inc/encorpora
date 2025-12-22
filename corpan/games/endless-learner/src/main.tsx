@@ -6,6 +6,7 @@ import "./styles.css"
 
 type GlobalScope = typeof globalThis & {
   CorpanGames?: Record<string, GameModule>
+  __endlessLearner?: { dispose: () => void }
 }
 
 type InitialState = {
@@ -18,15 +19,29 @@ const registerGame = () => {
 
   registry["endless_learner"] = {
     mount: (container, hostApi, initialState) => {
+      const scope = globalThis as GlobalScope
+      if (scope.__endlessLearner) {
+        scope.__endlessLearner.dispose()
+      }
       const root = createRoot(container)
+      let disposed = false
       root.render(
         <App
           hostApi={hostApi}
           initialStack={initialState?.stackConfig}
         />
       )
+      const dispose = () => {
+        if (disposed) {
+          return
+        }
+        disposed = true
+        hostApi.stopSpeech?.()
+        root.unmount()
+      }
+      scope.__endlessLearner = { dispose }
       return {
-        unmount: () => root.unmount(),
+        unmount: dispose,
       }
     },
   }
@@ -40,6 +55,9 @@ const mountForDev = () => {
 
   const hostApi: HostApi = createMockHostApi()
   const scope = globalThis as GlobalScope
+  if (scope.__endlessLearner) {
+    scope.__endlessLearner.dispose()
+  }
   const module = scope.CorpanGames?.["endless_learner"]
   if (!module) {
     return

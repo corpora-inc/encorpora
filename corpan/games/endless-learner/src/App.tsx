@@ -139,6 +139,7 @@ export function App({ hostApi, initialStack }: AppProps) {
   const roundTimeoutRef = useRef<number | null>(null)
   const feedbackTimeoutRef = useRef<number | null>(null)
   const speakTimeoutRef = useRef<number | null>(null)
+  const startedRef = useRef(false)
 
   useEffect(() => {
     roundRef.current = round
@@ -313,6 +314,10 @@ export function App({ hostApi, initialStack }: AppProps) {
     clearTimers()
     solvedRef.current = false
     wrongSinceCorrectRef.current = 0
+    if (startedRef.current) {
+      hostApi.stopSpeech?.()
+    }
+    startedRef.current = true
     const next = await buildRound()
     roundIdRef.current = next.id
     setRound(next)
@@ -330,6 +335,7 @@ export function App({ hostApi, initialStack }: AppProps) {
     void startRound()
     return () => {
       clearTimers()
+      hostApi.stopSpeech?.()
     }
   }, [])
 
@@ -392,6 +398,7 @@ export function App({ hostApi, initialStack }: AppProps) {
         feedbackTimeoutRef.current = window.setTimeout(() => {
           setFeedback(null)
         }, FEEDBACK_CLEAR_MS)
+        hostApi.stopSpeech?.()
         hostApi.speak(current.answerLang, current.correctAnswer)
         roundTimeoutRef.current = window.setTimeout(() => {
           void startRound()
@@ -404,6 +411,7 @@ export function App({ hostApi, initialStack }: AppProps) {
           type: "miss",
           message: `That was correct: ${current.correctAnswer}`,
         })
+        hostApi.stopSpeech?.()
         hostApi.speak(current.answerLang, current.correctAnswer)
       } else if (result === "wrong") {
         setFeedback({
