@@ -1,9 +1,11 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react"
 import type { EntryOut, HostApi, StackConfig } from "./sdk/types"
+import type { GameRuntime } from "./runtime"
 
 type AppProps = {
   hostApi: HostApi
   initialStack?: StackConfig
+  runtime: GameRuntime
 }
 
 type Round = {
@@ -29,6 +31,8 @@ type IncomingAnswer = {
   row: number
   col: number
   progress: number
+  startX: number
+  startY: number
 }
 
 type Feedback = {
@@ -42,10 +46,12 @@ const GRID_GAP = 20
 const GRID_DEPTH_SHIFT = 160
 
 const ANSWER_TRAVEL_MS = 9000
-const ANSWER_GAP_MS = 2200
-const SPEAK_REPEAT_MS = 7000
+const ANSWER_GAP_MS = 2400
+const POST_CORRECT_PAUSE_MS = 3200
+const SPEAK_REPEAT_MS = 7700
+const NATIVE_REPEAT_MULT = 2
 const FEEDBACK_CLEAR_MS = 1800
-const HIT_ZONE = 0.92
+const HIT_ZONE = 0.97
 const MAX_WRONG_BEFORE_CORRECT = 2
 const CORRECT_CHANCE = 0.35
 const SKIP_SCORE = 2
@@ -59,14 +65,14 @@ const MODE_LABELS = {
   learningToLearningAlt: "Learning → Learning+",
 }
 
-const fallbackRound: Round = {
+const emptyRound: Round = {
   id: 0,
-  prompt: "bonjour",
-  promptLang: "fr",
-  answerLang: "en",
-  correctAnswer: "hello",
-  distractors: ["goodbye", "bonjour"],
-  mode: MODE_LABELS.learningToNative,
+  prompt: "",
+  promptLang: "",
+  answerLang: "",
+  correctAnswer: "",
+  distractors: [],
+  mode: "",
 }
 
 const baseLang = (code: string) => code.split("-")[0] ?? code
@@ -118,13 +124,13 @@ const gridToPosition = (row: number, col: number) => {
   }
 }
 
-export function App({ hostApi, initialStack }: AppProps) {
+export function App({ hostApi, initialStack, runtime }: AppProps) {
   const [stack, setStack] = useState<StackConfig>(
     initialStack ?? hostApi.getStackConfig()
   )
   const [score, setScore] = useState(0)
   const [streak, setStreak] = useState(0)
-  const [round, setRound] = useState<Round>(fallbackRound)
+  const [round, setRound] = useState<Round>(emptyRound)
   const [activeAnswer, setActiveAnswer] = useState<IncomingAnswer | null>(null)
   const [playerPos, setPlayerPos] = useState<PlayerPos>({ row: 1, col: 1 })
   const [feedback, setFeedback] = useState<Feedback | null>(null)
@@ -183,8 +189,11 @@ export function App({ hostApi, initialStack }: AppProps) {
   }, [])
 
   const buildRound = useCallback(async (): Promise<Round> => {
+    if (!runtime.isActive()) {
+      return emptyRound
+    }
     if (!hostApi.getRandomEntry) {
-      return fallbackRound
+      return emptyRound
     }
 
     const settings = stackRef.current
@@ -239,7 +248,7 @@ export function App({ hostApi, initialStack }: AppProps) {
     }
 
     if (!entry || !lookup) {
-      return fallbackRound
+      return emptyRound
     }
 
     const promptText = pickText(lookup.textByCode, promptLang)
@@ -264,15 +273,21 @@ export function App({ hostApi, initialStack }: AppProps) {
       distractors,
       mode: MODE_LABELS[mode as keyof typeof MODE_LABELS] ?? "Run",
     }
-  }, [hostApi])
+  }, [hostApi, runtime])
 
   const scheduleNextAnswer = useCallback((delayMs: number) => {
+    if (!runtime.isActive()) {
+      return
+    }
     if (answerTimeoutRef.current) {
       window.clearTimeout(answerTimeoutRef.current)
     }
     answerTimeoutRef.current = window.setTimeout(() => {
+      if (!runtime.isActive()) {
+        return
+      }
       const current = roundRef.current
-      if (!current) {
+      if (!current || !current.prompt) {
         return
       }
       if (activeAnswerRef.current) {
@@ -286,8 +301,12 @@ export function App({ hostApi, initialStack }: AppProps) {
         ? current.correctAnswer
         : pickRandom(current.distractors) ?? current.correctAnswer
 
-      const row = Math.floor(Math.random() * GRID_SIZE)
-      const col = Math.floor(Math.random() * GRID_SIZE)
+    const row = Math.floor(Math.random() * GRID_SIZE)
+    const col = Math.floor(Math.random() * GRID_SIZE)
+    const base = gridToPosition(row, col)
+    const offset = GRID_CELL * 0.35
+    const startX = base.x + (Math.random() - 0.5) * offset
+    const startY = base.y + (Math.random() - 0.5) * offset
 
       if (DEBUG) {
         // eslint-disable-next-line no-console
@@ -310,11 +329,52 @@ export function App({ hostApi, initialStack }: AppProps) {
         row,
         col,
         progress: 0,
+        startX,
+        startY,
       })
     }, delayMs)
-  }, [])
+  }, [runtime])
+
+  const speakPrompt = useCallback(() => {
+    if (!runtime.isActive()) {
+      return
+    }
+    const current = roundRef.current
+    if (!current?.prompt) {
+      return
+    }
+    hostApi.speak(current.promptLang, current.prompt)
+  }, [hostApi, runtime])
+
+  const scheduleSpeakRepeat = useCallback(() => {
+    if (!runtime.isActive()) {
+      return
+    }
+    const settings = stackRef.current
+    const nativeLang = settings.languages[0]
+    const current = roundRef.current
+    const isNativePrompt = current?.promptLang === nativeLang
+    const repeatMs = Math.round(
+      SPEAK_REPEAT_MS * (isNativePrompt ? NATIVE_REPEAT_MULT : 1)
+    )
+    if (speakTimeoutRef.current) {
+      window.clearTimeout(speakTimeoutRef.current)
+    }
+    speakTimeoutRef.current = window.setTimeout(() => {
+      if (!runtime.isActive()) {
+        return
+      }
+      if (!solvedRef.current) {
+        speakPrompt()
+        scheduleSpeakRepeat()
+      }
+    }, repeatMs)
+  }, [runtime, speakPrompt])
 
   const startRound = useCallback(async () => {
+    if (!runtime.isActive()) {
+      return
+    }
     clearTimers()
     solvedRef.current = false
     wrongSinceCorrectRef.current = 0
@@ -333,35 +393,16 @@ export function App({ hostApi, initialStack }: AppProps) {
     }
     scheduleNextAnswer(ANSWER_GAP_MS)
     scheduleSpeakRepeat()
-  }, [buildRound, clearTimers, scheduleNextAnswer])
+  }, [buildRound, clearTimers, hostApi, runtime, scheduleNextAnswer, scheduleSpeakRepeat])
 
   useEffect(() => {
     void startRound()
     return () => {
       clearTimers()
       hostApi.stopSpeech?.()
+      runtime.stop()
     }
-  }, [])
-
-  const speakPrompt = useCallback(() => {
-    const current = roundRef.current
-    if (!current?.prompt) {
-      return
-    }
-    hostApi.speak(current.promptLang, current.prompt)
-  }, [hostApi])
-
-  const scheduleSpeakRepeat = useCallback(() => {
-    if (speakTimeoutRef.current) {
-      window.clearTimeout(speakTimeoutRef.current)
-    }
-    speakTimeoutRef.current = window.setTimeout(() => {
-      if (!solvedRef.current) {
-        speakPrompt()
-        scheduleSpeakRepeat()
-      }
-    }, SPEAK_REPEAT_MS)
-  }, [speakPrompt])
+  }, [clearTimers, hostApi, runtime, startRound])
 
   useEffect(() => {
     speakPrompt()
@@ -375,6 +416,9 @@ export function App({ hostApi, initialStack }: AppProps) {
 
   const resolveAnswer = useCallback(
     (result: "correct" | "wrong" | "miss", answer: IncomingAnswer) => {
+      if (!runtime.isActive()) {
+        return
+      }
       setActiveAnswer(null)
       const current = roundRef.current
       if (!current) {
@@ -406,7 +450,7 @@ export function App({ hostApi, initialStack }: AppProps) {
         hostApi.speak(current.answerLang, current.correctAnswer)
         roundTimeoutRef.current = window.setTimeout(() => {
           void startRound()
-        }, ANSWER_GAP_MS)
+        }, POST_CORRECT_PAUSE_MS)
         return
       }
 
@@ -430,11 +474,14 @@ export function App({ hostApi, initialStack }: AppProps) {
       }, FEEDBACK_CLEAR_MS)
       scheduleNextAnswer(ANSWER_GAP_MS)
     },
-    [hostApi, scheduleNextAnswer, startRound]
+    [hostApi, runtime, scheduleNextAnswer, startRound]
   )
 
   const resolveSkip = useCallback(
     (answer: IncomingAnswer) => {
+      if (!runtime.isActive()) {
+        return
+      }
       setActiveAnswer(null)
       if (answer.isCorrect) {
         setFeedback({
@@ -455,11 +502,14 @@ export function App({ hostApi, initialStack }: AppProps) {
       }, FEEDBACK_CLEAR_MS)
       scheduleNextAnswer(ANSWER_GAP_MS)
     },
-    [scheduleNextAnswer]
+    [runtime, scheduleNextAnswer]
   )
 
   useEffect(() => {
     if (!activeAnswer) {
+      return
+    }
+    if (!runtime.isActive()) {
       return
     }
     const answerId = activeAnswer.id
@@ -469,6 +519,9 @@ export function App({ hostApi, initialStack }: AppProps) {
     let resolved = false
 
     const tick = (time: number) => {
+      if (!runtime.isActive()) {
+        return
+      }
       const progress = Math.min((time - spawnedAt) / ANSWER_TRAVEL_MS, 1)
       setActiveAnswer((prev) =>
         prev && prev.id === answerId ? { ...prev, progress } : prev
@@ -495,7 +548,7 @@ export function App({ hostApi, initialStack }: AppProps) {
 
     animationFrame = requestAnimationFrame(tick)
     return () => cancelAnimationFrame(animationFrame)
-  }, [activeAnswer?.id, resolveAnswer, resolveSkip])
+  }, [activeAnswer?.id, resolveAnswer, resolveSkip, runtime])
 
   const movePlayer = useCallback((rowDelta: number, colDelta: number) => {
     setPlayerPos((prev) => ({
@@ -509,6 +562,9 @@ export function App({ hostApi, initialStack }: AppProps) {
     if (!current) {
       return
     }
+    if (!runtime.isActive()) {
+      return
+    }
     const pos = playerPosRef.current
     const inLane = pos.row === current.row && pos.col === current.col
     if (inLane) {
@@ -516,7 +572,7 @@ export function App({ hostApi, initialStack }: AppProps) {
     } else {
       resolveSkip(current)
     }
-  }, [resolveAnswer, resolveSkip])
+  }, [resolveAnswer, resolveSkip, runtime])
 
   useEffect(() => {
     const onKey = (event: KeyboardEvent) => {
@@ -548,11 +604,16 @@ export function App({ hostApi, initialStack }: AppProps) {
       return null
     }
     const base = gridToPosition(activeAnswer.row, activeAnswer.col)
-    const depth = (1 - activeAnswer.progress) * GRID_DEPTH_SHIFT
-    const scale = 0.65 + activeAnswer.progress * 0.6
+    const scale = 0.45 + activeAnswer.progress * 1.35
+    const x =
+      activeAnswer.startX +
+      (base.x - activeAnswer.startX) * activeAnswer.progress
+    const y =
+      activeAnswer.startY +
+      (base.y - activeAnswer.startY) * activeAnswer.progress
     return {
-      transform: `translate3d(${base.x}px, ${base.y - depth}px, 0) scale(${scale})`,
-      opacity: 0.2 + activeAnswer.progress * 0.8,
+      transform: `translate3d(${x}px, ${y}px, 0) scale(${scale})`,
+      opacity: 0.6 + activeAnswer.progress * 0.4,
     }
   }, [activeAnswer])
 
@@ -575,21 +636,11 @@ export function App({ hostApi, initialStack }: AppProps) {
         <div className="player-marker" style={playerStyle} />
       </div>
       <div className="hud">
-        <div className="hud-top">
-          <div className="hud-title">Endless Learner</div>
-          <div className="hud-stack">
-            {round.promptLang.toUpperCase()} → {round.answerLang.toUpperCase()}
-          </div>
-        </div>
         <div className="hud-center">
           <div className={`prompt size-${stack.textSize}`}>{round.prompt}</div>
           {stack.showRomanization && round.romanization ? (
             <div className="romanization">{round.romanization}</div>
           ) : null}
-          <div className="mode">{round.mode}</div>
-          <div className="hint">
-            Move with WASD/arrow keys. Enter = zap. Space = replay.
-          </div>
           {feedback ? (
             <div className={`feedback ${feedback.type}`}>{feedback.message}</div>
           ) : null}
@@ -606,6 +657,16 @@ export function App({ hostApi, initialStack }: AppProps) {
             <button className="speak" onClick={speakPrompt}>
               Replay
             </button>
+          </div>
+        </div>
+        <div className="hud-meta">
+          <div className="hud-title">Endless Learner</div>
+          <div className="hud-stack">
+            {round.promptLang.toUpperCase()} → {round.answerLang.toUpperCase()}
+          </div>
+          <div className="mode">{round.mode}</div>
+          <div className="hint">
+            Move with WASD/arrow keys. Enter = zap. Space = replay.
           </div>
         </div>
       </div>

@@ -34,6 +34,7 @@ canvas {
   display: grid;
   place-items: center;
   pointer-events: auto;
+  overflow: hidden;
 }
 
 .grid {
@@ -61,8 +62,8 @@ canvas {
   max-width: 220px;
   padding: 10px 16px;
   border-radius: 999px;
-  background: rgba(83, 244, 196, 0.16);
-  border: 1px solid rgba(83, 244, 196, 0.6);
+  background: rgba(83, 244, 196, 0.24);
+  border: 1px solid rgba(140, 255, 230, 0.9);
   color: #f9fafc;
   font-size: 14px;
   text-align: center;
@@ -70,7 +71,9 @@ canvas {
   text-transform: uppercase;
   transform-origin: center;
   pointer-events: none;
-  backdrop-filter: blur(6px);
+  backdrop-filter: blur(8px);
+  text-shadow: 0 0 18px rgba(140, 255, 230, 0.7);
+  box-shadow: 0 0 30px rgba(83, 244, 196, 0.35);
 }
 
 .hud {
@@ -79,39 +82,42 @@ canvas {
   inset: 0;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-end;
   padding: 32px;
-  gap: 24px;
+  gap: 18px;
   background: linear-gradient(
     180deg,
-    rgba(5, 6, 8, 0.75) 0%,
-    rgba(5, 6, 8, 0.1) 50%,
-    rgba(5, 6, 8, 0.7) 100%
+    rgba(5, 6, 8, 0.25) 0%,
+    rgba(5, 6, 8, 0.05) 50%,
+    rgba(5, 6, 8, 0.85) 100%
   );
 }
 
-.hud-top {
+.hud-meta {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  flex-direction: column;
+  gap: 6px;
   text-transform: uppercase;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.18em;
   font-size: 12px;
+  color: #c9d0e0;
 }
 
 .hud-title {
   font-weight: 600;
-  font-size: 14px;
+  font-size: 13px;
 }
 
 .hud-stack {
   color: #53f4c4;
+  font-size: 12px;
 }
 
 .hud-center {
   display: grid;
   gap: 12px;
   justify-items: start;
+  margin-bottom: auto;
 }
 
 .prompt {
@@ -129,7 +135,7 @@ canvas {
 
 .romanization {
   font-size: 16px;
-  color: #53f4c4;
+  color: #8bf7dd;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -138,7 +144,7 @@ canvas {
   font-size: 12px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: #c9d0e0;
+  color: #9aa3b7;
 }
 
 .hint {

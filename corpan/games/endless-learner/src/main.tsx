@@ -2,6 +2,7 @@ import { createRoot } from "react-dom/client"
 import { App } from "./App"
 import { createMockHostApi } from "./sdk/mockHostApi"
 import type { GameModule, HostApi, StackConfig } from "./sdk/types"
+import { createRuntime } from "./runtime"
 import "./styles.css"
 
 type GlobalScope = typeof globalThis & {
@@ -25,10 +26,12 @@ const registerGame = () => {
       }
       const root = createRoot(container)
       let disposed = false
+      const runtime = createRuntime()
       root.render(
         <App
           hostApi={hostApi}
           initialStack={initialState?.stackConfig}
+          runtime={runtime}
         />
       )
       const dispose = () => {
@@ -36,6 +39,7 @@ const registerGame = () => {
           return
         }
         disposed = true
+        runtime.stop()
         hostApi.stopSpeech?.()
         root.unmount()
       }
