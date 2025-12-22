@@ -1,4 +1,4 @@
-import { copyFile, mkdir } from "node:fs/promises"
+import { copyFile, cp, mkdir, stat } from "node:fs/promises"
 import path from "node:path"
 import { fileURLToPath } from "node:url"
 
@@ -29,6 +29,19 @@ const androidDir = path.join(
 
 const files = ["manifest.json"]
 const distFiles = ["app.js", "app.css"]
+const distDirs = ["assets"]
+
+const copyDirIfExists = async (srcDir, destDir) => {
+  try {
+    const info = await stat(srcDir)
+    if (!info.isDirectory()) {
+      return
+    }
+  } catch {
+    return
+  }
+  await cp(srcDir, destDir, { recursive: true })
+}
 
 const copyTo = async (targetDir) => {
   const distTarget = path.join(targetDir, "dist")
@@ -45,6 +58,13 @@ const copyTo = async (targetDir) => {
       const src = path.join(packRoot, "dist", file)
       const dest = path.join(distTarget, file)
       await copyFile(src, dest)
+    })
+  )
+  await Promise.all(
+    distDirs.map(async (dir) => {
+      const src = path.join(packRoot, "dist", dir)
+      const dest = path.join(distTarget, dir)
+      await copyDirIfExists(src, dest)
     })
   )
 }

@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react"
 import type { EntryOut, HostApi, StackConfig } from "./sdk/types"
 import type { GameRuntime } from "./runtime"
+import { getSfx } from "./audio"
 
 type AppProps = {
   hostApi: HostApi
@@ -52,6 +53,8 @@ type Layout = {
   spanHeight: number
   offsetX: number
   offsetY: number
+  viewWidth: number
+  viewHeight: number
 }
 
 const computeLayout = (width: number, height: number): Layout => {
@@ -78,6 +81,8 @@ const computeLayout = (width: number, height: number): Layout => {
     spanHeight: spanWithGapY,
     offsetX,
     offsetY,
+    viewWidth: width,
+    viewHeight: height,
   }
 }
 
@@ -93,6 +98,8 @@ const MAX_WRONG_BEFORE_CORRECT = 2
 const CORRECT_CHANCE = 0.35
 const SKIP_SCORE = 2
 const DISTRACTOR_TARGET = 10
+const TOKEN_VIEW_MARGIN_MIN = 12
+const TOKEN_VIEW_MARGIN_MAX = 48
 
 const DEBUG = false
 
@@ -171,10 +178,17 @@ const laneCornerOffset = (row: number, col: number, layout: Layout) => {
 }
 
 const curveOffset = (progress: number, layout: Layout, seed: number) => {
+  const fade = 1 - progress
   const sway =
-    Math.sin(progress * Math.PI * 1.15 + seed) * layout.cellWidth * 0.16
+    Math.sin(progress * Math.PI * 1.15 + seed) *
+    layout.cellWidth *
+    0.16 *
+    fade
   const lift =
-    Math.cos(progress * Math.PI * 0.9 + seed) * layout.cellHeight * 0.1
+    Math.cos(progress * Math.PI * 0.9 + seed) *
+    layout.cellHeight *
+    0.1 *
+    fade
   return { x: sway, y: lift }
 }
 
@@ -194,6 +208,7 @@ export function App({ hostApi, initialStack, runtime }: AppProps) {
       typeof window !== "undefined" ? window.innerHeight : 768
     )
   )
+  const sfx = useMemo(() => getSfx(), [])
 
   const roundRef = useRef<Round>(round)
   const stackRef = useRef<StackConfig>(stack)
@@ -211,6 +226,7 @@ export function App({ hostApi, initialStack, runtime }: AppProps) {
   const startedRef = useRef(false)
   const curveSeedRef = useRef(Math.random() * Math.PI * 2)
   const lastWrongTextRef = useRef<string | null>(null)
+  const sfxUnlockedRef = useRef(false)
 
   useEffect(() => {
     roundRef.current = round
@@ -243,6 +259,25 @@ export function App({ hostApi, initialStack, runtime }: AppProps) {
     window.addEventListener("resize", onResize)
     return () => window.removeEventListener("resize", onResize)
   }, [])
+
+  useEffect(() => {
+    if (typeof window === "undefined") {
+      return
+    }
+    const unlock = () => {
+      if (sfxUnlockedRef.current) {
+        return
+      }
+      sfx.unlock()
+      sfxUnlockedRef.current = true
+    }
+    window.addEventListener("pointerdown", unlock, { passive: true })
+    window.addEventListener("keydown", unlock)
+    return () => {
+      window.removeEventListener("pointerdown", unlock)
+      window.removeEventListener("keydown", unlock)
+    }
+  }, [sfx])
 
   useEffect(() => {
     const unsubscribe = hostApi.onStackConfigChange?.((next) => {
@@ -526,6 +561,7 @@ export function App({ hostApi, initialStack, runtime }: AppProps) {
         solvedRef.current = true
         setScore((prev) => prev + 10)
         setStreak((prev) => prev + 1)
+        sfx.playSuccess()
         setFeedback({
           type: "correct",
           message: `Correct: ${current.correctAnswer}`,
@@ -553,6 +589,7 @@ export function App({ hostApi, initialStack, runtime }: AppProps) {
           type: "wrong",
           message: `Not quite. Try again.`,
         })
+        sfx.playFail()
       }
 
       setStreak(0)
@@ -576,6 +613,7 @@ export function App({ hostApi, initialStack, runtime }: AppProps) {
           message: `That was correct: ${roundRef.current?.correctAnswer ?? ""}`,
         })
         setStreak(0)
+        sfx.playFail()
       } else {
         setFeedback({
           type: "correct",
@@ -583,6 +621,7 @@ export function App({ hostApi, initialStack, runtime }: AppProps) {
         })
         setScore((prev) => prev + SKIP_SCORE)
         setStreak((prev) => prev + 1)
+        sfx.playSuccess()
       }
       feedbackTimeoutRef.current = window.setTimeout(() => {
         setFeedback(null)
@@ -717,8 +756,31 @@ export function App({ hostApi, initialStack, runtime }: AppProps) {
       12,
       Math.min(28, minSide * 0.22 * lengthFactor)
     )
-    const x = base.x + corner.x * (1 - activeAnswer.progress) + curve.x
-    const y = base.y + corner.y * (1 - activeAnswer.progress) + curve.y
+    const driftX = corner.x * (1 - activeAnswer.progress) + curve.x
+    const driftY = corner.y * (1 - activeAnswer.progress) + curve.y
+    const viewMargin = clamp(
+      minSide * 0.16,
+      TOKEN_VIEW_MARGIN_MIN,
+      TOKEN_VIEW_MARGIN_MAX
+    )
+    const halfW = (baseWidth * scale) / 2
+    const halfH = (baseHeight * scale) / 2
+    const limitX = Math.max(
+      Math.abs(base.x),
+      layout.viewWidth / 2 - viewMargin - halfW
+    )
+    const limitY = Math.max(
+      Math.abs(base.y),
+      layout.viewHeight / 2 - viewMargin - halfH
+    )
+    const minOffsetX = -limitX - base.x
+    const maxOffsetX = limitX - base.x
+    const minOffsetY = -limitY - base.y
+    const maxOffsetY = limitY - base.y
+    const offsetX = clamp(driftX, minOffsetX, maxOffsetX)
+    const offsetY = clamp(driftY, minOffsetY, maxOffsetY)
+    const x = base.x + offsetX
+    const y = base.y + offsetY
     return {
       left: "50%",
       top: "50%",
@@ -735,7 +797,6 @@ export function App({ hostApi, initialStack, runtime }: AppProps) {
 
   const playerStyle = useMemo(() => {
     const base = gridToPosition(playerPos.row, playerPos.col, layout)
-    const curve = curveOffset(1, layout, curveSeedRef.current)
     const size = Math.max(
       24,
       Math.min(layout.cellWidth, layout.cellHeight) * 0.3
@@ -743,7 +804,7 @@ export function App({ hostApi, initialStack, runtime }: AppProps) {
     return {
       left: "50%",
       top: "50%",
-      transform: `translate3d(${base.x + curve.x}px, ${base.y + curve.y}px, 0) translate(-50%, -50%)`,
+      transform: `translate3d(${base.x}px, ${base.y}px, 0) translate(-50%, -50%)`,
       width: `${size}px`,
       height: `${size}px`,
     }
