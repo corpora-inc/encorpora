@@ -5,6 +5,7 @@ type SfxKey = "success" | "fail"
 
 type SfxHandle = {
   unlock: () => void
+  setVolume: (volume: number) => void
   playSuccess: () => void
   playFail: () => void
 }
@@ -15,18 +16,21 @@ type AudioPoolEntry = {
 }
 
 const MAX_POOL = 4
-const SFX_VOLUME = 0.07
+export const DEFAULT_SFX_VOLUME = 0.07
 
-const createHtmlAudio = (url: string) => {
+const clamp = (value: number, min: number, max: number) =>
+  Math.min(Math.max(value, min), max)
+
+const createHtmlAudio = (url: string, volume: number) => {
   const audio = new Audio(url)
   audio.preload = "auto"
-  audio.volume = SFX_VOLUME
+  audio.volume = clamp(volume, 0, 1)
   return audio
 }
 
-const createPool = (url: string): AudioPoolEntry => ({
+const createPool = (url: string, volume: number): AudioPoolEntry => ({
   url,
-  pool: [createHtmlAudio(url)],
+  pool: [createHtmlAudio(url, volume)],
 })
 
 const getPoolAudio = (entry: AudioPoolEntry) => {
@@ -36,7 +40,7 @@ const getPoolAudio = (entry: AudioPoolEntry) => {
     return existing
   }
   if (entry.pool.length < MAX_POOL) {
-    const next = createHtmlAudio(entry.url)
+    const next = createHtmlAudio(entry.url, entry.pool[0]?.volume ?? DEFAULT_SFX_VOLUME)
     entry.pool.push(next)
     return next
   }
@@ -46,13 +50,14 @@ const getPoolAudio = (entry: AudioPoolEntry) => {
 }
 
 const createSfxHandle = (): SfxHandle => {
+  let volume = DEFAULT_SFX_VOLUME
   const urls: Record<SfxKey, string> = {
     success: affirmativeUrl,
     fail: nopeUrl,
   }
   const htmlPools = new Map<SfxKey, AudioPoolEntry>([
-    ["success", createPool(urls.success)],
-    ["fail", createPool(urls.fail)],
+    ["success", createPool(urls.success, volume)],
+    ["fail", createPool(urls.fail, volume)],
   ])
   const AudioCtx =
     typeof window !== "undefined"
@@ -70,7 +75,7 @@ const createSfxHandle = (): SfxHandle => {
     if (!ctx) {
       ctx = new AudioCtx()
       master = ctx.createGain()
-      master.gain.value = SFX_VOLUME
+      master.gain.value = volume
       master.connect(ctx.destination)
     }
     return ctx
@@ -138,8 +143,21 @@ const createSfxHandle = (): SfxHandle => {
     ensureBuffer("fail")
   }
 
+  const setVolume = (next: number) => {
+    volume = clamp(next, 0, 1)
+    if (master) {
+      master.gain.value = volume
+    }
+    htmlPools.forEach((entry) => {
+      entry.pool.forEach((audio) => {
+        audio.volume = volume
+      })
+    })
+  }
+
   return {
     unlock,
+    setVolume,
     playSuccess: () => playWebAudio("success"),
     playFail: () => playWebAudio("fail"),
   }
