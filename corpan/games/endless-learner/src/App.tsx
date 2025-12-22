@@ -48,6 +48,7 @@ const FEEDBACK_CLEAR_MS = 1800
 const HIT_ZONE = 0.92
 const MAX_WRONG_BEFORE_CORRECT = 2
 const CORRECT_CHANCE = 0.35
+const SKIP_SCORE = 2
 
 const DEBUG = false
 
@@ -188,9 +189,12 @@ export function App({ hostApi, initialStack }: AppProps) {
 
     const settings = stackRef.current
     const languages = settings.languages.length ? settings.languages : ["en"]
-    const nativeLang = languages[languages.length - 1] ?? languages[0]
-    const learningLangs = languages.slice(0, -1)
-    const modes = ["nativeToLearning", "learningToNative", "learningToLearning"]
+    const nativeLang = languages[0] ?? "en"
+    const learningLangs = languages.slice(1)
+    const modes = ["learningToNative", "learningToLearning"]
+    if (learningLangs.length > 0) {
+      modes.push("nativeToLearning")
+    }
     if (learningLangs.length > 1) {
       modes.push("learningToLearningAlt")
     }
@@ -429,6 +433,31 @@ export function App({ hostApi, initialStack }: AppProps) {
     [hostApi, scheduleNextAnswer, startRound]
   )
 
+  const resolveSkip = useCallback(
+    (answer: IncomingAnswer) => {
+      setActiveAnswer(null)
+      if (answer.isCorrect) {
+        setFeedback({
+          type: "miss",
+          message: `That was correct: ${roundRef.current?.correctAnswer ?? ""}`,
+        })
+        setStreak(0)
+      } else {
+        setFeedback({
+          type: "correct",
+          message: "Nice skip",
+        })
+        setScore((prev) => prev + SKIP_SCORE)
+        setStreak((prev) => prev + 1)
+      }
+      feedbackTimeoutRef.current = window.setTimeout(() => {
+        setFeedback(null)
+      }, FEEDBACK_CLEAR_MS)
+      scheduleNextAnswer(ANSWER_GAP_MS)
+    },
+    [scheduleNextAnswer]
+  )
+
   useEffect(() => {
     if (!activeAnswer) {
       return
@@ -447,7 +476,17 @@ export function App({ hostApi, initialStack }: AppProps) {
 
       if (!resolved && progress >= 1) {
         resolved = true
-        resolveAnswer("miss", answerSnapshot)
+        const pos = playerPosRef.current
+        const inLane =
+          pos.row === answerSnapshot.row && pos.col === answerSnapshot.col
+        if (inLane) {
+          resolveAnswer(
+            answerSnapshot.isCorrect ? "correct" : "wrong",
+            answerSnapshot
+          )
+        } else {
+          resolveSkip(answerSnapshot)
+        }
         return
       }
 
@@ -456,7 +495,7 @@ export function App({ hostApi, initialStack }: AppProps) {
 
     animationFrame = requestAnimationFrame(tick)
     return () => cancelAnimationFrame(animationFrame)
-  }, [activeAnswer?.id, resolveAnswer])
+  }, [activeAnswer?.id, resolveAnswer, resolveSkip])
 
   const movePlayer = useCallback((rowDelta: number, colDelta: number) => {
     setPlayerPos((prev) => ({
@@ -472,11 +511,12 @@ export function App({ hostApi, initialStack }: AppProps) {
     }
     const pos = playerPosRef.current
     const inLane = pos.row === current.row && pos.col === current.col
-    resolveAnswer(
-      inLane && current.isCorrect ? "correct" : "wrong",
-      current
-    )
-  }, [resolveAnswer])
+    if (inLane) {
+      resolveAnswer(current.isCorrect ? "correct" : "wrong", current)
+    } else {
+      resolveSkip(current)
+    }
+  }, [resolveAnswer, resolveSkip])
 
   useEffect(() => {
     const onKey = (event: KeyboardEvent) => {
