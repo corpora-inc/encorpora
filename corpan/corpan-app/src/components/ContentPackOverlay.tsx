@@ -15,11 +15,12 @@ export function ContentPackOverlay({
       <ContentPackHost id={id} manifestUrl={manifestUrl} />
       <div className="absolute top-5 right-5">
         <Button
-          variant="secondary"
-          className="shadow-lg"
+          variant="ghost"
+          className="h-10 w-10 rounded-full bg-white/10 p-0 text-white/80 shadow-lg backdrop-blur hover:bg-white/20 hover:text-white"
           onClick={onClose}
+          aria-label="Exit game"
         >
-          Exit game
+          ×
         </Button>
       </div>
     </div>

@@ -58,8 +58,9 @@ canvas {
 
 .answer-token {
   position: absolute;
-  min-width: 120px;
-  max-width: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 10px 16px;
   border-radius: 999px;
   background: rgba(83, 244, 196, 0.24);
@@ -71,6 +72,9 @@ canvas {
   text-transform: uppercase;
   transform-origin: center;
   pointer-events: none;
+  overflow: hidden;
+  word-break: break-word;
+  text-wrap: balance;
   backdrop-filter: blur(8px);
   text-shadow: 0 0 18px rgba(140, 255, 230, 0.7);
   box-shadow: 0 0 30px rgba(83, 244, 196, 0.35);

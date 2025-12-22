@@ -31,8 +31,8 @@ type IncomingAnswer = {
   row: number
   col: number
   progress: number
-  startX: number
-  startY: number
+  laneOffsetX: number
+  laneOffsetY: number
 }
 
 type Feedback = {
@@ -41,9 +41,45 @@ type Feedback = {
 }
 
 const GRID_SIZE = 3
-const GRID_CELL = 120
-const GRID_GAP = 20
-const GRID_DEPTH_SHIFT = 160
+const GRID_SPAN_RATIO = 0.98
+
+type Layout = {
+  cellWidth: number
+  cellHeight: number
+  gapX: number
+  gapY: number
+  spanWidth: number
+  spanHeight: number
+  offsetX: number
+  offsetY: number
+}
+
+const computeLayout = (width: number, height: number): Layout => {
+  const spanWidth = width * GRID_SPAN_RATIO
+  const spanHeight = height * GRID_SPAN_RATIO
+  const gapX = Math.min(20, spanWidth * 0.02)
+  const gapY = Math.min(22, spanHeight * 0.02)
+  const cellWidth =
+    (spanWidth - gapX * (GRID_SIZE - 1)) / GRID_SIZE
+  const cellHeight =
+    (spanHeight - gapY * (GRID_SIZE - 1)) / GRID_SIZE
+  const spanWithGapX =
+    cellWidth * GRID_SIZE + gapX * (GRID_SIZE - 1)
+  const spanWithGapY =
+    cellHeight * GRID_SIZE + gapY * (GRID_SIZE - 1)
+  const offsetX = spanWithGapX / 2 - cellWidth / 2
+  const offsetY = spanWithGapY / 2 - cellHeight / 2
+  return {
+    cellWidth,
+    cellHeight,
+    gapX,
+    gapY,
+    spanWidth: spanWithGapX,
+    spanHeight: spanWithGapY,
+    offsetX,
+    offsetY,
+  }
+}
 
 const ANSWER_TRAVEL_MS = 9000
 const ANSWER_GAP_MS = 2400
@@ -51,10 +87,12 @@ const POST_CORRECT_PAUSE_MS = 3200
 const SPEAK_REPEAT_MS = 7700
 const NATIVE_REPEAT_MULT = 2
 const FEEDBACK_CLEAR_MS = 1800
+const IMPACT_HOLD_MS = 240
 const HIT_ZONE = 0.97
 const MAX_WRONG_BEFORE_CORRECT = 2
 const CORRECT_CHANCE = 0.35
 const SKIP_SCORE = 2
+const DISTRACTOR_TARGET = 10
 
 const DEBUG = false
 
@@ -114,14 +152,30 @@ const uniquePush = (arr: string[], value: string) => {
 const clamp = (value: number, min: number, max: number) =>
   Math.min(Math.max(value, min), max)
 
-const gridSpan = GRID_CELL * GRID_SIZE + GRID_GAP * (GRID_SIZE - 1)
-const gridOffset = gridSpan / 2 - GRID_CELL / 2
-
-const gridToPosition = (row: number, col: number) => {
+const gridToPosition = (row: number, col: number, layout: Layout) => {
   return {
-    x: col * (GRID_CELL + GRID_GAP) - gridOffset,
-    y: row * (GRID_CELL + GRID_GAP) - gridOffset,
+    x: col * (layout.cellWidth + layout.gapX) - layout.offsetX,
+    y: row * (layout.cellHeight + layout.gapY) - layout.offsetY,
   }
+}
+
+const laneCornerOffset = (row: number, col: number, layout: Layout) => {
+  const rowFactor = row - 1
+  const colFactor = col - 1
+  const cornerX = layout.cellWidth * 0.38
+  const cornerY = layout.cellHeight * 0.38
+  return {
+    x: colFactor * cornerX,
+    y: rowFactor * cornerY,
+  }
+}
+
+const curveOffset = (progress: number, layout: Layout, seed: number) => {
+  const sway =
+    Math.sin(progress * Math.PI * 1.15 + seed) * layout.cellWidth * 0.16
+  const lift =
+    Math.cos(progress * Math.PI * 0.9 + seed) * layout.cellHeight * 0.1
+  return { x: sway, y: lift }
 }
 
 export function App({ hostApi, initialStack, runtime }: AppProps) {
@@ -134,11 +188,18 @@ export function App({ hostApi, initialStack, runtime }: AppProps) {
   const [activeAnswer, setActiveAnswer] = useState<IncomingAnswer | null>(null)
   const [playerPos, setPlayerPos] = useState<PlayerPos>({ row: 1, col: 1 })
   const [feedback, setFeedback] = useState<Feedback | null>(null)
+  const [layout, setLayout] = useState<Layout>(() =>
+    computeLayout(
+      typeof window !== "undefined" ? window.innerWidth : 1024,
+      typeof window !== "undefined" ? window.innerHeight : 768
+    )
+  )
 
   const roundRef = useRef<Round>(round)
   const stackRef = useRef<StackConfig>(stack)
   const playerPosRef = useRef<PlayerPos>(playerPos)
   const activeAnswerRef = useRef<IncomingAnswer | null>(activeAnswer)
+  const layoutRef = useRef<Layout>(layout)
   const roundIdRef = useRef(0)
   const solvedRef = useRef(false)
   const wrongSinceCorrectRef = useRef(0)
@@ -146,7 +207,10 @@ export function App({ hostApi, initialStack, runtime }: AppProps) {
   const roundTimeoutRef = useRef<number | null>(null)
   const feedbackTimeoutRef = useRef<number | null>(null)
   const speakTimeoutRef = useRef<number | null>(null)
+  const impactTimeoutRef = useRef<number | null>(null)
   const startedRef = useRef(false)
+  const curveSeedRef = useRef(Math.random() * Math.PI * 2)
+  const lastWrongTextRef = useRef<string | null>(null)
 
   useEffect(() => {
     roundRef.current = round
@@ -163,6 +227,22 @@ export function App({ hostApi, initialStack, runtime }: AppProps) {
   useEffect(() => {
     activeAnswerRef.current = activeAnswer
   }, [activeAnswer])
+
+  useEffect(() => {
+    layoutRef.current = layout
+  }, [layout])
+
+  useEffect(() => {
+    if (typeof window === "undefined") {
+      return
+    }
+    const onResize = () => {
+      setLayout(computeLayout(window.innerWidth, window.innerHeight))
+    }
+    onResize()
+    window.addEventListener("resize", onResize)
+    return () => window.removeEventListener("resize", onResize)
+  }, [])
 
   useEffect(() => {
     const unsubscribe = hostApi.onStackConfigChange?.((next) => {
@@ -186,6 +266,9 @@ export function App({ hostApi, initialStack, runtime }: AppProps) {
     if (speakTimeoutRef.current) {
       window.clearTimeout(speakTimeoutRef.current)
     }
+    if (impactTimeoutRef.current) {
+      window.clearTimeout(impactTimeoutRef.current)
+    }
   }, [])
 
   const buildRound = useCallback(async (): Promise<Round> => {
@@ -200,12 +283,9 @@ export function App({ hostApi, initialStack, runtime }: AppProps) {
     const languages = settings.languages.length ? settings.languages : ["en"]
     const nativeLang = languages[0] ?? "en"
     const learningLangs = languages.slice(1)
-    const modes = ["learningToNative", "learningToLearning"]
+    const modes = ["learningToNative"]
     if (learningLangs.length > 0) {
       modes.push("nativeToLearning")
-    }
-    if (learningLangs.length > 1) {
-      modes.push("learningToLearningAlt")
     }
 
     const mode = pickRandom(modes)
@@ -218,14 +298,9 @@ export function App({ hostApi, initialStack, runtime }: AppProps) {
     } else if (mode === "learningToNative") {
       promptLang = pickRandom(learningLangs.length ? learningLangs : [nativeLang])
       answerLang = nativeLang
-    } else if (mode === "learningToLearning") {
-      promptLang = pickRandom(learningLangs.length ? learningLangs : [nativeLang])
-      answerLang = promptLang
     } else {
-      const first = pickRandom(learningLangs)
-      const rest = learningLangs.filter((lang) => lang !== first)
-      promptLang = first
-      answerLang = pickRandom(rest.length ? rest : [nativeLang])
+      promptLang = pickRandom(learningLangs.length ? learningLangs : [nativeLang])
+      answerLang = nativeLang
     }
 
     const maxAttempts = 8
@@ -256,7 +331,7 @@ export function App({ hostApi, initialStack, runtime }: AppProps) {
     const correct = pickText(lookup.textByCode, answerLang)
 
     const distractors: string[] = []
-    for (let i = 0; i < maxAttempts && distractors.length < 5; i += 1) {
+    for (let i = 0; i < maxAttempts && distractors.length < DISTRACTOR_TARGET; i += 1) {
       const distractor = await hostApi.getRandomEntry()
       const distractLookup = buildLookup(distractor)
       const distractText = pickText(distractLookup.textByCode, answerLang)
@@ -286,6 +361,7 @@ export function App({ hostApi, initialStack, runtime }: AppProps) {
       if (!runtime.isActive()) {
         return
       }
+      const liveLayout = layoutRef.current
       const current = roundRef.current
       if (!current || !current.prompt) {
         return
@@ -297,16 +373,22 @@ export function App({ hostApi, initialStack, runtime }: AppProps) {
       const forceCorrect =
         wrongSinceCorrectRef.current >= MAX_WRONG_BEFORE_CORRECT
       const useCorrect = forceCorrect || Math.random() < CORRECT_CHANCE
-      const text = useCorrect
-        ? current.correctAnswer
-        : pickRandom(current.distractors) ?? current.correctAnswer
+      let text = current.correctAnswer
+      if (!useCorrect) {
+        const lastWrong = lastWrongTextRef.current
+        const options = lastWrong
+          ? current.distractors.filter((choice) => choice && choice !== lastWrong)
+          : current.distractors
+        text = pickRandom(options.length ? options : current.distractors) ?? current.correctAnswer
+      }
 
-    const row = Math.floor(Math.random() * GRID_SIZE)
-    const col = Math.floor(Math.random() * GRID_SIZE)
-    const base = gridToPosition(row, col)
-    const offset = GRID_CELL * 0.35
-    const startX = base.x + (Math.random() - 0.5) * offset
-    const startY = base.y + (Math.random() - 0.5) * offset
+      const row = Math.floor(Math.random() * GRID_SIZE)
+      const col = Math.floor(Math.random() * GRID_SIZE)
+      const corner = laneCornerOffset(row, col, liveLayout)
+      const jitterX = liveLayout.cellWidth * 0.05
+      const jitterY = liveLayout.cellHeight * 0.05
+      const laneOffsetX = corner.x + (Math.random() - 0.5) * jitterX
+      const laneOffsetY = corner.y + (Math.random() - 0.5) * jitterY
 
       if (DEBUG) {
         // eslint-disable-next-line no-console
@@ -321,6 +403,11 @@ export function App({ hostApi, initialStack, runtime }: AppProps) {
       wrongSinceCorrectRef.current = useCorrect
         ? 0
         : wrongSinceCorrectRef.current + 1
+      if (useCorrect) {
+        lastWrongTextRef.current = null
+      } else {
+        lastWrongTextRef.current = text
+      }
 
       setActiveAnswer({
         id: Date.now(),
@@ -329,8 +416,8 @@ export function App({ hostApi, initialStack, runtime }: AppProps) {
         row,
         col,
         progress: 0,
-        startX,
-        startY,
+        laneOffsetX,
+        laneOffsetY,
       })
     }, delayMs)
   }, [runtime])
@@ -382,6 +469,7 @@ export function App({ hostApi, initialStack, runtime }: AppProps) {
       hostApi.stopSpeech?.()
     }
     startedRef.current = true
+    curveSeedRef.current = Math.random() * Math.PI * 2
     const next = await buildRound()
     roundIdRef.current = next.id
     setRound(next)
@@ -400,7 +488,6 @@ export function App({ hostApi, initialStack, runtime }: AppProps) {
     return () => {
       clearTimers()
       hostApi.stopSpeech?.()
-      runtime.stop()
     }
   }, [clearTimers, hostApi, runtime, startRound])
 
@@ -529,17 +616,25 @@ export function App({ hostApi, initialStack, runtime }: AppProps) {
 
       if (!resolved && progress >= 1) {
         resolved = true
-        const pos = playerPosRef.current
-        const inLane =
-          pos.row === answerSnapshot.row && pos.col === answerSnapshot.col
-        if (inLane) {
-          resolveAnswer(
-            answerSnapshot.isCorrect ? "correct" : "wrong",
-            answerSnapshot
-          )
-        } else {
-          resolveSkip(answerSnapshot)
-        }
+        setActiveAnswer((prev) =>
+          prev && prev.id === answerId ? { ...prev, progress: 1 } : prev
+        )
+        impactTimeoutRef.current = window.setTimeout(() => {
+          if (!runtime.isActive()) {
+            return
+          }
+          const pos = playerPosRef.current
+          const inLane =
+            pos.row === answerSnapshot.row && pos.col === answerSnapshot.col
+          if (inLane) {
+            resolveAnswer(
+              answerSnapshot.isCorrect ? "correct" : "wrong",
+              answerSnapshot
+            )
+          } else {
+            resolveSkip(answerSnapshot)
+          }
+        }, IMPACT_HOLD_MS)
         return
       }
 
@@ -603,26 +698,56 @@ export function App({ hostApi, initialStack, runtime }: AppProps) {
     if (!activeAnswer) {
       return null
     }
-    const base = gridToPosition(activeAnswer.row, activeAnswer.col)
-    const scale = 0.45 + activeAnswer.progress * 1.35
-    const x =
-      activeAnswer.startX +
-      (base.x - activeAnswer.startX) * activeAnswer.progress
-    const y =
-      activeAnswer.startY +
-      (base.y - activeAnswer.startY) * activeAnswer.progress
-    return {
-      transform: `translate3d(${x}px, ${y}px, 0) scale(${scale})`,
-      opacity: 0.6 + activeAnswer.progress * 0.4,
+    const base = gridToPosition(activeAnswer.row, activeAnswer.col, layout)
+    const curve = curveOffset(activeAnswer.progress, layout, curveSeedRef.current)
+    const corner = {
+      x: activeAnswer.laneOffsetX,
+      y: activeAnswer.laneOffsetY,
     }
-  }, [activeAnswer])
+    const baseWidth = layout.cellWidth
+    const baseHeight = layout.cellHeight
+    const minSide = Math.min(baseWidth, baseHeight)
+    const scale = 0.25 + activeAnswer.progress * 0.75
+    const length = activeAnswer.text.length
+    const lengthFactor = Math.min(
+      1,
+      Math.pow(20 / Math.max(10, length), 0.25)
+    )
+    const fontSize = Math.max(
+      12,
+      Math.min(28, minSide * 0.22 * lengthFactor)
+    )
+    const x = base.x + corner.x * (1 - activeAnswer.progress) + curve.x
+    const y = base.y + corner.y * (1 - activeAnswer.progress) + curve.y
+    return {
+      left: "50%",
+      top: "50%",
+      width: `${baseWidth}px`,
+      height: `${baseHeight}px`,
+      fontSize: `${fontSize}px`,
+      padding: `${Math.max(4, minSide * 0.08)}px`,
+      borderRadius: `${Math.max(10, minSide * 0.22)}px`,
+      lineHeight: 1.1,
+      transform: `translate3d(${x}px, ${y}px, 0) translate(-50%, -50%) scale(${scale})`,
+      opacity: 0.55 + activeAnswer.progress * 0.45,
+    }
+  }, [activeAnswer, layout])
 
   const playerStyle = useMemo(() => {
-    const base = gridToPosition(playerPos.row, playerPos.col)
+    const base = gridToPosition(playerPos.row, playerPos.col, layout)
+    const curve = curveOffset(1, layout, curveSeedRef.current)
+    const size = Math.max(
+      24,
+      Math.min(layout.cellWidth, layout.cellHeight) * 0.3
+    )
     return {
-      transform: `translate3d(${base.x}px, ${base.y}px, 0)`,
+      left: "50%",
+      top: "50%",
+      transform: `translate3d(${base.x + curve.x}px, ${base.y + curve.y}px, 0) translate(-50%, -50%)`,
+      width: `${size}px`,
+      height: `${size}px`,
     }
-  }, [playerPos])
+  }, [layout, playerPos])
 
   return (
     <div className="game-shell">
