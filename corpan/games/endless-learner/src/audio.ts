@@ -15,7 +15,7 @@ type AudioPoolEntry = {
 }
 
 const MAX_POOL = 4
-const SFX_VOLUME = 0.62
+const SFX_VOLUME = 0.07
 
 const createHtmlAudio = (url: string) => {
   const audio = new Audio(url)
@@ -106,7 +106,7 @@ const createSfxHandle = (): SfxHandle => {
       return
     }
     const audio = getPoolAudio(entry)
-    void audio.play().catch(() => {})
+    void audio.play().catch(() => { })
   }
 
   const playWebAudio = (key: SfxKey) => {

@@ -3,7 +3,10 @@
   "name": "Endless Learner Prototype",
   "version": "0.1.0",
   "entry": "dist/app.js",
-  "styles": ["dist/app.css"],
+  "styles": [
+    "dist/app.css"
+  ],
   "entryType": "script",
-  "sdkVersion": "0.1.0"
+  "sdkVersion": "0.1.0",
+  "devRevision": "2025-12-22T05:31:32.053Z"
 }

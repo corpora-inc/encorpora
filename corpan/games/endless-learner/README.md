@@ -20,20 +20,15 @@ This uses the SDK mock host API (browser TTS + fake corpus response) so you can 
 
 ## In-app dev (Corpan wrapper)
 
-1) Build the pack bundle (writes `dist/app.js` + `dist/app.css`):
+1) Build + serve with auto-reload (writes `dist/app.js` + `dist/app.css` and
+   bumps `manifest.json` for live reload):
 
 ```
 cd games/endless-learner
-npm run build
+npm run dev:corpan
 ```
 
-2) From `corpan/games`, run a static server:
-
-```
-python3 -m http.server 8989
-```
-
-3) Run Corpan:
+2) Run Corpan:
 
 ```
 cd corpan-app
@@ -47,6 +42,8 @@ http://localhost:8989/endless-learner/manifest.json
 ```
 
 5) Launch the game from the installed list.
+
+Now edits to the pack should rebuild and live-reload inside the running app.
 
 ## Store delivery (native asset packs)
 

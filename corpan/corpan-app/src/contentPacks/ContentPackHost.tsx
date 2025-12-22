@@ -10,6 +10,8 @@ type ContentPackHostProps = {
   manifestUrl?: string
 }
 
+const DEV_RELOAD_INTERVAL_MS = 1200
+
 const loadScript = (src: string, id: string, type: "script" | "module") =>
   new Promise<HTMLScriptElement>((resolve, reject) => {
     const script = document.createElement("script")
@@ -64,6 +66,33 @@ const proxyUrlIfNeeded = (rawUrl: string) => {
   }
 }
 
+const isLocalhostUrl = (rawUrl: string) => {
+  try {
+    const resolved = new URL(rawUrl, window.location.href)
+    return (
+      resolved.hostname === "localhost" ||
+      resolved.hostname === "127.0.0.1" ||
+      resolved.hostname.endsWith(".localhost")
+    )
+  } catch {
+    return false
+  }
+}
+
+const withCacheBust = (rawUrl: string, token?: string) => {
+  if (!token) {
+    return rawUrl
+  }
+  try {
+    const url = new URL(rawUrl, window.location.href)
+    url.searchParams.set("dev", token)
+    return url.toString()
+  } catch {
+    const joiner = rawUrl.includes("?") ? "&" : "?"
+    return `${rawUrl}${joiner}dev=${encodeURIComponent(token)}`
+  }
+}
+
 const lookupGameModule = (primaryId: string, fallbackId: string) => {
   const registry = (globalThis as { CorpanGames?: Record<string, ContentPackModule> })
     .CorpanGames
@@ -99,8 +128,24 @@ export default function ContentPackHost({
     let cancelled = false
     let activeModule: ContentPackModule | null = null
     let activeInstance: { unmount?: () => void } | void
+    let devReloadTimer: number | null = null
+    let lastManifestSignature = ""
+    let isLoading = false
+
+    const manifestRequestUrl =
+      manifestUrl ?? `/games/${id}/manifest.json`
+    const resolvedManifestUrl = new URL(
+      manifestRequestUrl,
+      window.location.href
+    ).toString()
+    const manifestFetchUrl = proxyUrlIfNeeded(resolvedManifestUrl)
+    const shouldDevReload = isLocalhostUrl(resolvedManifestUrl)
 
     const cleanup = () => {
+      if (devReloadTimer) {
+        window.clearInterval(devReloadTimer)
+        devReloadTimer = null
+      }
       const instanceToUnmount = activeInstance
       activeModule = null
       activeInstance = undefined
@@ -121,58 +166,94 @@ export default function ContentPackHost({
       clearInjectedAssets(id)
     }
 
+    const updateManifestSignature = (manifest: ContentPackManifest) => {
+      lastManifestSignature = JSON.stringify(manifest)
+    }
+
+    const checkForUpdate = async () => {
+      if (cancelled || isLoading) {
+        return
+      }
+      try {
+        const res = await fetch(manifestFetchUrl, { cache: "no-store" })
+        if (!res.ok) {
+          return
+        }
+        const manifest = (await res.json()) as ContentPackManifest
+        const signature = JSON.stringify(manifest)
+        if (signature !== lastManifestSignature) {
+          updateManifestSignature(manifest)
+          void load()
+        }
+      } catch {
+        // Ignore polling errors during dev reload.
+      }
+    }
+
     const load = async () => {
+      if (isLoading) {
+        return
+      }
+      isLoading = true
       setLoadState("loading")
       setError(null)
       cleanup()
-
-      const manifestRequestUrl =
-        manifestUrl ?? `/games/${id}/manifest.json`
-      const resolvedManifestUrl = new URL(
-        manifestRequestUrl,
-        window.location.href
-      ).toString()
-      const manifestFetchUrl = proxyUrlIfNeeded(resolvedManifestUrl)
-      const res = await fetch(manifestFetchUrl, {
-        cache: "no-store",
-      })
-      if (!res.ok) {
-        throw new Error(`Missing content pack: ${id}`)
-      }
-      const manifest = (await res.json()) as ContentPackManifest
-      if (!manifest.id || !manifest.entry) {
-        throw new Error(`Invalid manifest for ${id}`)
-      }
-      const baseUrl = manifest.baseUrl
-        ? new URL(manifest.baseUrl, resolvedManifestUrl).toString()
-        : new URL(".", resolvedManifestUrl).toString()
-
-      if (manifest.styles) {
-        manifest.styles.forEach((style) => {
-          const href = proxyUrlIfNeeded(new URL(style, baseUrl).toString())
-          loadStyle(href, id)
+      try {
+        const res = await fetch(manifestFetchUrl, {
+          cache: "no-store",
         })
-      }
+        if (!res.ok) {
+          throw new Error(`Missing content pack: ${id}`)
+        }
+        const manifest = (await res.json()) as ContentPackManifest
+        if (!manifest.id || !manifest.entry) {
+          throw new Error(`Invalid manifest for ${id}`)
+        }
+        updateManifestSignature(manifest)
+        const baseUrl = manifest.baseUrl
+          ? new URL(manifest.baseUrl, resolvedManifestUrl).toString()
+          : new URL(".", resolvedManifestUrl).toString()
+        const devToken = shouldDevReload ? manifest.devRevision : undefined
 
-      const entryUrl = proxyUrlIfNeeded(new URL(manifest.entry, baseUrl).toString())
-      await loadScript(entryUrl, id, manifest.entryType ?? "script")
+        if (manifest.styles) {
+          manifest.styles.forEach((style) => {
+            const href = proxyUrlIfNeeded(
+              withCacheBust(new URL(style, baseUrl).toString(), devToken)
+            )
+            loadStyle(href, id)
+          })
+        }
 
-      activeModule = await waitForGameModule(manifest.id, id)
-      if (!activeModule || typeof activeModule.mount !== "function") {
-        throw new Error(`Content pack did not register: ${id}`)
-      }
+        const entryUrl = proxyUrlIfNeeded(
+          withCacheBust(new URL(manifest.entry, baseUrl).toString(), devToken)
+        )
+        await loadScript(entryUrl, id, manifest.entryType ?? "script")
 
-      if (!containerRef.current) {
-        throw new Error("Content pack container missing")
-      }
+        activeModule = await waitForGameModule(manifest.id, id)
+        if (!activeModule || typeof activeModule.mount !== "function") {
+          throw new Error(`Content pack did not register: ${id}`)
+        }
 
-      activeInstance = activeModule.mount(containerRef.current, hostApi, {
-        stackConfig: hostApi.getStackConfig(),
-      })
+        if (!containerRef.current) {
+          throw new Error("Content pack container missing")
+        }
 
-      if (!cancelled) {
-        setLoadState("ready")
-        hasLoadedRef.current = true
+        activeInstance = activeModule.mount(containerRef.current, hostApi, {
+          stackConfig: hostApi.getStackConfig(),
+        })
+
+        if (!cancelled) {
+          setLoadState("ready")
+          hasLoadedRef.current = true
+          if (shouldDevReload && !devReloadTimer) {
+            devReloadTimer = window.setInterval(
+              checkForUpdate,
+              DEV_RELOAD_INTERVAL_MS
+            )
+          }
+        }
+      } finally {
+        isLoading = false
       }
     }
 
@@ -189,7 +270,7 @@ export default function ContentPackHost({
       cancelled = true
       cleanup()
     }
-  }, [hostApi, id])
+  }, [hostApi, id, manifestUrl])
 
   return (
     <div className="relative h-full w-full bg-black text-white">

@@ -29,6 +29,7 @@ export type ContentPackManifest = {
   entryType?: "script" | "module"
   sdkVersion?: string
   permissions?: string[]
+  devRevision?: string
 }
 
 export type ContentPackModule = {

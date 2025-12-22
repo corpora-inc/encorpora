@@ -2,6 +2,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react"
 import type { EntryOut, HostApi, StackConfig } from "./sdk/types"
 import type { GameRuntime } from "./runtime"
 import { getSfx } from "./audio"
+import lunaUrl from "./assets/sfx/luna.mp3"
 
 type AppProps = {
   hostApi: HostApi
@@ -100,6 +101,7 @@ const SKIP_SCORE = 2
 const DISTRACTOR_TARGET = 10
 const TOKEN_VIEW_MARGIN_MIN = 12
 const TOKEN_VIEW_MARGIN_MAX = 48
+const BGM_VOLUME = 0.7
 
 const DEBUG = false
 
@@ -209,6 +211,7 @@ export function App({ hostApi, initialStack, runtime }: AppProps) {
     )
   )
   const sfx = useMemo(() => getSfx(), [])
+  const bgmRef = useRef<HTMLAudioElement | null>(null)
 
   const roundRef = useRef<Round>(round)
   const stackRef = useRef<StackConfig>(stack)
@@ -227,6 +230,23 @@ export function App({ hostApi, initialStack, runtime }: AppProps) {
   const curveSeedRef = useRef(Math.random() * Math.PI * 2)
   const lastWrongTextRef = useRef<string | null>(null)
   const sfxUnlockedRef = useRef(false)
+  const bgmUnlockedRef = useRef(false)
+
+  useEffect(() => {
+    if (typeof window === "undefined") {
+      return
+    }
+    const audio = new Audio(lunaUrl)
+    audio.loop = true
+    audio.preload = "auto"
+    audio.volume = BGM_VOLUME
+    bgmRef.current = audio
+    return () => {
+      audio.pause()
+      audio.src = ""
+      bgmRef.current = null
+    }
+  }, [])
 
   useEffect(() => {
     roundRef.current = round
@@ -265,11 +285,16 @@ export function App({ hostApi, initialStack, runtime }: AppProps) {
       return
     }
     const unlock = () => {
-      if (sfxUnlockedRef.current) {
+      if (!sfxUnlockedRef.current) {
+        sfx.unlock()
+        sfxUnlockedRef.current = true
+      }
+      const bgm = bgmRef.current
+      if (!bgm || bgmUnlockedRef.current) {
         return
       }
-      sfx.unlock()
-      sfxUnlockedRef.current = true
+      void bgm.play().catch(() => { })
+      bgmUnlockedRef.current = true
     }
     window.addEventListener("pointerdown", unlock, { passive: true })
     window.addEventListener("keydown", unlock)
@@ -791,7 +816,7 @@ export function App({ hostApi, initialStack, runtime }: AppProps) {
       borderRadius: `${Math.max(10, minSide * 0.22)}px`,
       lineHeight: 1.1,
       transform: `translate3d(${x}px, ${y}px, 0) translate(-50%, -50%) scale(${scale})`,
-      opacity: 0.55 + activeAnswer.progress * 0.45,
+      opacity: 0.68 + activeAnswer.progress * 0.32,
     }
   }, [activeAnswer, layout])
 
