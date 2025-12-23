@@ -17,19 +17,29 @@ type GamesState = {
   listGames: () => InstalledGame[]
 }
 
-const devGame: InstalledGame | null = import.meta.env.DEV
-  ? {
-      id: "endless_learner",
-      name: "Endless Learner (local)",
-      manifestUrl: "/games/endless-learner/manifest.json",
-      version: "0.1.0",
-      installedAt: Date.now(),
-    }
-  : null
+const devGames: InstalledGame[] = import.meta.env.DEV
+  ? [
+      {
+        id: "endless_learner",
+        name: "Endless Learner (local)",
+        manifestUrl: "/games/endless-learner/manifest.json",
+        version: "0.1.0",
+        installedAt: Date.now(),
+      },
+      {
+        id: "hover_runner",
+        name: "Hover Runner (local)",
+        manifestUrl: "/games/hover-runner/manifest.json",
+        version: "0.1.0",
+        installedAt: Date.now(),
+      },
+    ]
+  : []
 
-const seedGames: Record<string, InstalledGame> = devGame
-  ? { [devGame.id]: devGame }
-  : {}
+const seedGames: Record<string, InstalledGame> = devGames.reduce(
+  (acc, game) => ({ ...acc, [game.id]: game }),
+  {}
+)
 
 export const useGamesStore = create<GamesState>()(
   persist(

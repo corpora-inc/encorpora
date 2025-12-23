@@ -1,0 +1,12 @@
+{
+  "id": "hover_runner",
+  "name": "Hover Runner Prototype",
+  "version": "0.1.0",
+  "entry": "dist/app.js",
+  "styles": [
+    "dist/app.css"
+  ],
+  "entryType": "script",
+  "sdkVersion": "0.1.0",
+  "devRevision": "2025-12-23T00:28:05.085Z"
+}
