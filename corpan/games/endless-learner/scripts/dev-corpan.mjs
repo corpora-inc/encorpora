@@ -63,7 +63,12 @@ const buildWatcher = run(
   "build:watch"
 )
 
-const server = run("python3", ["-m", "http.server", "8989"], gamesRoot, "server")
+const server = run(
+  "python3",
+  ["-m", "http.server", "8989", "--bind", "0.0.0.0"],
+  gamesRoot,
+  "server"
+)
 
 watchDist()
 scheduleManifestUpdate()

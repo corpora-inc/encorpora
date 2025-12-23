@@ -3,7 +3,7 @@
 import { useSettingsStore, ALL_TEXT_SIZES } from "@/store/settings";
 import { OnboardingWizard } from "@/components/OnboardingWizard";
 import { SettingsIcon } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { MainExperience } from "./components/MainExperience";
 import { SettingsModal } from "./components/SettingsModal";
 import { RatingPrompt } from "./components/RatingPrompt";
@@ -66,27 +66,37 @@ export default function App() {
     root.classList.add(newClass);
   }, [textSize]);
 
+  const updateGameParam = useCallback(
+    (game: { id: string; manifestUrl?: string } | null) => {
+      const url = new URL(window.location.href);
+      if (game) {
+        url.searchParams.set("game", game.id);
+        if (game.manifestUrl) {
+          url.searchParams.set("gameUrl", game.manifestUrl);
+        } else {
+          url.searchParams.delete("gameUrl");
+        }
+      } else {
+        url.searchParams.delete("game");
+        url.searchParams.delete("gameUrl");
+      }
+      window.history.pushState({}, "", url);
+    },
+    []
+  );
+
+  useEffect(() => {
+    const onExit = () => {
+      setActiveGame(null);
+      updateGameParam(null);
+    };
+    window.addEventListener("corpan:exit", onExit as EventListener);
+    return () => window.removeEventListener("corpan:exit", onExit as EventListener);
+  }, [updateGameParam]);
+
   if (!onboarded) {
     return <OnboardingWizard />;
   }
-
-  const updateGameParam = (
-    game: { id: string; manifestUrl?: string } | null
-  ) => {
-    const url = new URL(window.location.href);
-    if (game) {
-      url.searchParams.set("game", game.id);
-      if (game.manifestUrl) {
-        url.searchParams.set("gameUrl", game.manifestUrl);
-      } else {
-        url.searchParams.delete("gameUrl");
-      }
-    } else {
-      url.searchParams.delete("game");
-      url.searchParams.delete("gameUrl");
-    }
-    window.history.pushState({}, "", url);
-  };
 
   return (
     <>
@@ -126,10 +136,6 @@ export default function App() {
         <ContentPackOverlay
           id={activeGame.id}
           manifestUrl={activeGame.manifestUrl}
-          onClose={() => {
-            setActiveGame(null);
-            updateGameParam(null);
-          }}
         />
       ) : null}
     </>

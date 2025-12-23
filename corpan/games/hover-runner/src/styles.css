@@ -36,15 +36,51 @@ body {
   touch-action: none;
 }
 
-.hover-hud {
+.hud-backdrop {
   position: absolute;
   inset: 0;
-  display: flex;
-  justify-content: space-between;
-  padding: 16px 18px;
+  background: rgba(3, 6, 12, 0.55);
+  opacity: 0;
   pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.hud-backdrop.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.hud-panel {
+  position: absolute;
+  right: 16px;
+  bottom: 80px;
+  width: min(360px, 92vw);
+  padding: 14px 16px 16px;
+  border-radius: 18px;
+  border: 1px solid rgba(234, 242, 255, 0.18);
+  background: rgba(8, 12, 24, 0.92);
+  box-shadow: 0 24px 60px rgba(3, 6, 14, 0.45);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
   color: #eaf2ff;
   letter-spacing: 0.04em;
+  opacity: 0;
+  transform: translateY(14px) scale(0.98);
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.hud-panel.open {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+.hud-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
 }
 
 .hud-left,
@@ -77,10 +113,69 @@ body {
   opacity: 0.7;
 }
 
-.tilt-button {
+.hud-skin {
+  font-size: 12px;
+  opacity: 0.75;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.hud-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.hud-exit {
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(234, 242, 255, 0.25);
+  background: rgba(234, 242, 255, 0.08);
+  color: inherit;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.hud-fab {
   position: absolute;
-  bottom: 18px;
-  right: 18px;
+  right: 16px;
+  bottom: 16px;
+  width: 52px;
+  height: 52px;
+  padding: 0;
+  border-radius: 50%;
+  border: 1px solid rgba(234, 242, 255, 0.35);
+  background: rgba(10, 16, 30, 0.85);
+  color: #f4f7ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.hud-fab.open {
+  border-color: rgba(234, 242, 255, 0.55);
+}
+
+.hud-fab-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 34px;
+  line-height: 1;
+  transition: transform 0.35s ease;
+}
+
+.hud-fab.open .hud-fab-icon {
+  transform: rotate(135deg);
+}
+
+.tilt-button {
   padding: 10px 14px;
   border-radius: 999px;
   border: 1px solid rgba(234, 242, 255, 0.35);
@@ -97,4 +192,105 @@ body {
 .tilt-button:active {
   transform: translateY(1px) scale(0.98);
   border-color: rgba(234, 242, 255, 0.6);
+}
+
+.skin-panel {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  border-radius: 14px;
+  border: 1px solid rgba(234, 242, 255, 0.2);
+  background: rgba(8, 12, 24, 0.72);
+  color: #f4f7ff;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.skin-panel label {
+  opacity: 0.75;
+}
+
+.skin-select {
+  appearance: none;
+  background: rgba(234, 242, 255, 0.08);
+  color: inherit;
+  border: 1px solid rgba(234, 242, 255, 0.2);
+  border-radius: 999px;
+  padding: 6px 22px 6px 10px;
+  font-size: 12px;
+  text-transform: none;
+  letter-spacing: 0.04em;
+  outline: none;
+}
+
+.skin-panel select:focus {
+  border-color: rgba(234, 242, 255, 0.5);
+}
+
+.skin-cycle {
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(234, 242, 255, 0.25);
+  background: rgba(234, 242, 255, 0.12);
+  color: inherit;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.skin-cycle:active {
+  transform: translateY(1px) scale(0.98);
+  border-color: rgba(234, 242, 255, 0.5);
+}
+
+@media (max-width: 360px) {
+  .hud-panel {
+    right: 12px;
+    bottom: 72px;
+    padding: 12px;
+  }
+
+  .hud-title {
+    font-size: 12px;
+  }
+
+  .hud-subtitle {
+    font-size: 10px;
+    max-width: 160px;
+  }
+
+  .hud-speed,
+  .hud-skin {
+    font-size: 10px;
+  }
+
+  .skin-panel {
+    padding: 6px 8px;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+
+  .skin-select {
+    max-width: 140px;
+  }
+
+  .tilt-button {
+    padding: 8px 10px;
+    font-size: 10px;
+  }
+
+  .hud-fab {
+    right: 12px;
+    bottom: 12px;
+    width: 46px;
+    height: 46px;
+  }
+
+  .hud-fab-icon {
+    font-size: 30px;
+  }
 }

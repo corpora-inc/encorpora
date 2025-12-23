@@ -1508,6 +1508,14 @@ export function App({ hostApi, initialStack, runtime }: AppProps) {
     setSettings(DEFAULT_SETTINGS)
   }, [setSettings])
 
+  const requestExit = useCallback(() => {
+    try {
+      window.dispatchEvent(new CustomEvent("corpan:exit"))
+    } catch {
+      // Ignore exit dispatch failures.
+    }
+  }, [])
+
   return (
     <div className="game-shell">
       {bootState !== "ready" ? (
@@ -1602,6 +1610,13 @@ export function App({ hostApi, initialStack, runtime }: AppProps) {
           type="button"
         >
           Restore Defaults
+        </button>
+        <button
+          className="settings-exit"
+          onClick={requestExit}
+          type="button"
+        >
+          Exit Game
         </button>
         <div className="settings-group">
           <label>

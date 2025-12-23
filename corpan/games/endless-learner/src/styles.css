@@ -352,6 +352,19 @@ canvas {
   cursor: pointer;
 }
 
+.settings-exit {
+  border: 1px solid rgba(255, 122, 122, 0.65);
+  border-radius: 10px;
+  padding: 6px 10px;
+  margin-bottom: 14px;
+  background: rgba(255, 122, 122, 0.12);
+  color: #f9fafc;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+}
+
 .settings-group {
   display: grid;
   gap: 10px;
