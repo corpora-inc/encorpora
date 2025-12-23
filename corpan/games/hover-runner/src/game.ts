@@ -323,6 +323,7 @@ type GameState = {
   lastPhraseId: string | null
   spawnCooldown: number
   incorrectStreak: number
+  phase: "intro" | "celebrate" | "play"
 }
 
 type GameStore<T> = {
@@ -791,7 +792,17 @@ export const createHoverRunner = (
   hudPrompt.textContent = "Waiting for phrase..."
   const hudPromptRomanization = document.createElement("div")
   hudPromptRomanization.className = "phrase-hud-romanization"
-  phraseHud.append(hudPromptLabel, hudPrompt, hudPromptRomanization)
+  const hudAnswer = document.createElement("div")
+  hudAnswer.className = "phrase-hud-answer"
+  const hudAnswerRomanization = document.createElement("div")
+  hudAnswerRomanization.className = "phrase-hud-answer-romanization"
+  phraseHud.append(
+    hudPromptLabel,
+    hudPrompt,
+    hudPromptRomanization,
+    hudAnswer,
+    hudAnswerRomanization
+  )
   root.appendChild(phraseHud)
 
   const statusHud = document.createElement("div")
@@ -831,13 +842,24 @@ export const createHoverRunner = (
     key: keyof ReturnType<typeof tuningStore.getState>["settings"],
     min: number,
     max: number,
-    step: number
+    step: number,
+    helpText: string
   ) => {
     const row = document.createElement("div")
     row.className = "tuning-row"
+    const labelWrap = document.createElement("div")
+    labelWrap.className = "tuning-label-wrap"
     const text = document.createElement("div")
     text.className = "tuning-label"
     text.textContent = label
+    const help = document.createElement("button")
+    help.type = "button"
+    help.className = "tuning-help"
+    help.textContent = "?"
+    help.dataset.help = helpText
+    help.title = helpText
+    help.setAttribute("aria-label", `${label} info`)
+    labelWrap.append(text, help)
     const value = document.createElement("div")
     value.className = "tuning-value"
     const input = document.createElement("input")
@@ -857,19 +879,108 @@ export const createHoverRunner = (
       tuningStore.getState().setSetting(key, next)
       setValue(next)
     })
-    row.append(text, value, input)
+    row.append(labelWrap, value, input)
     tuningPanel.appendChild(row)
     return { row, input, setValue, key }
   }
 
   const tuningControls = [
-    createTuningControl("Speed", "basePhraseSpeed", 8, 22, 0.5),
-    createTuningControl("Respawn", "respawnDelay", 0.2, 1.2, 0.05),
-    createTuningControl("Correct Weight", "correctWeight", 1, 4, 0.1),
-    createTuningControl("Distractors", "maxDistractors", 1, 6, 1),
-    createTuningControl("Max Misses", "maxIncorrectStreak", 1, 5, 1),
-    createTuningControl("Text Scale", "textScaleFactor", 0.5, 3, 0.1),
-    createTuningControl("Overflow", "textOverflowFactor", 1, 2, 0.05),
+    createTuningControl(
+      "Speed",
+      "basePhraseSpeed",
+      8,
+      22,
+      0.5,
+      "Base phrase travel speed. Shifts with correct/wrong answers."
+    ),
+    createTuningControl(
+      "Respawn",
+      "respawnDelay",
+      0.2,
+      1.2,
+      0.05,
+      "Delay before another candidate spawns after a phrase resolves."
+    ),
+    createTuningControl(
+      "Lead-in",
+      "promptLeadMs",
+      200,
+      2000,
+      50,
+      "Delay after intro ends before the first candidate spawns."
+    ),
+    createTuningControl(
+      "Intro Hold",
+      "introHoldMs",
+      400,
+      2500,
+      100,
+      "How long the new prompt stays centered before sliding down."
+    ),
+    createTuningControl(
+      "Intro Gap",
+      "introRepeatMs",
+      200,
+      2000,
+      100,
+      "Pause before repeating the prompt after it settles at the bottom."
+    ),
+    createTuningControl(
+      "Celebrate",
+      "celebrationMs",
+      600,
+      2500,
+      100,
+      "Minimum time to hold the match celebration on success."
+    ),
+    createTuningControl(
+      "Post Celebrate",
+      "postCelebrateMs",
+      200,
+      2500,
+      100,
+      "Extra pause after celebration before the next phrase intro."
+    ),
+    createTuningControl(
+      "Correct Weight",
+      "correctWeight",
+      1,
+      4,
+      0.1,
+      "Higher values make correct answers appear more often."
+    ),
+    createTuningControl(
+      "Distractors",
+      "maxDistractors",
+      1,
+      6,
+      1,
+      "Maximum number of wrong answers in the pool."
+    ),
+    createTuningControl(
+      "Max Misses",
+      "maxIncorrectStreak",
+      1,
+      5,
+      1,
+      "Force a correct answer after this many misses."
+    ),
+    createTuningControl(
+      "Text Scale",
+      "textScaleFactor",
+      0.5,
+      3,
+      0.1,
+      "Scale multiplier for phrase meshes on the road."
+    ),
+    createTuningControl(
+      "Overflow",
+      "textOverflowFactor",
+      1,
+      2,
+      0.05,
+      "Allow phrases to exceed their lane bounds (1 = strict)."
+    ),
   ]
 
   const fabButton = document.createElement("button")
@@ -887,9 +998,10 @@ export const createHoverRunner = (
     paused = next
     if (paused) {
       clearSpeakRepeat()
+      hostApi.stopSpeech?.()
     } else {
       const state = gameStore.getState()
-      if (state.round && !state.roundSolved) {
+      if (state.round && !state.roundSolved && state.phase === "play") {
         scheduleSpeakRepeat()
       }
     }
@@ -1195,6 +1307,7 @@ export const createHoverRunner = (
     lastPhraseId: null,
     spawnCooldown: 0,
     incorrectStreak: 0,
+    phase: "intro",
   })
   let stackUnsubscribe: (() => void) | null = null
   let tuningUnsubscribe: (() => void) | null = null
@@ -1203,14 +1316,27 @@ export const createHoverRunner = (
   const phraseRoot = new TransformNode("phrase-root", scene)
   const entryBuffer: EntryOut[] = []
   let fetchingEntries = false
-  let roundTimeout: number | null = null
   let speakRepeatTimeout: number | null = null
+  const transitionTimeouts: number[] = []
 
   const getTextScale = () => {
     const size = gameStore.getState().stackConfig?.textSize
     if (size === "large") return 1.1
     if (size === "small") return 0.9
     return 1
+  }
+
+  const estimateSpeakMs = (text: string) => {
+    const trimmed = text.trim()
+    if (!trimmed) {
+      return 800
+    }
+    const words = trimmed.split(/\s+/).filter(Boolean).length
+    const wordMs = words * 520
+    const charMs = trimmed.length * 60
+    const base = clamp(Math.max(wordMs, charMs), 800, 5000)
+    const rate = Math.max(gameStore.getState().stackConfig?.rate ?? 1, 0.4)
+    return base / rate
   }
 
   const shuffle = <T,>(items: T[]) => {
@@ -1454,22 +1580,7 @@ export const createHoverRunner = (
           answerRomanization,
           choices: shuffle([correct, ...distractors]),
         }
-        gameStore.update((draft) => {
-          draft.round = nextRound
-          draft.roundSolved = false
-          draft.activePhrase = null
-          draft.lastPhraseId = null
-          draft.lastLane = -1
-          draft.spawnCooldown = getSettings().respawnDelay
-          draft.incorrectStreak = 0
-        })
-        hudPromptLabel.textContent = getPromptLabel()
-        updatePromptText(nextRound)
-        clearSpeakRepeat()
-        if (!disposed) {
-          hostApi.speak(promptLang, prompt)
-          scheduleSpeakRepeat()
-        }
+        beginIntro(nextRound)
         return
       }
     } finally {
@@ -1499,8 +1610,10 @@ export const createHoverRunner = (
       draft.lastLane = -1
       draft.spawnCooldown = 0
       draft.incorrectStreak = 0
+      draft.phase = "intro"
     })
     clearActivePhrase()
+    clearTransition()
     hudPromptLabel.textContent = getPromptLabel()
     updatePromptText(null)
     clearSpeakRepeat()
@@ -1530,9 +1643,6 @@ export const createHoverRunner = (
   const updatePromptVisibility = () => {
     const enabled = showPrompt
     phraseHud.style.display = enabled ? "flex" : "none"
-    hudPromptLabel.style.display = enabled ? "block" : "none"
-    hudPrompt.style.display = enabled ? "block" : "none"
-    hudPromptRomanization.style.display = enabled ? "block" : "none"
   }
 
   function getPromptLabel() {
@@ -1558,9 +1668,15 @@ export const createHoverRunner = (
   }
 
   function updatePromptText(nextRound: RoundState | null) {
+    phraseHud.classList.remove("match")
+    hudPromptLabel.textContent = getPromptLabel()
     if (!nextRound) {
       hudPrompt.textContent = "Waiting for phrase..."
       hudPromptRomanization.textContent = ""
+      hudAnswer.textContent = ""
+      hudAnswerRomanization.textContent = ""
+      hudAnswer.style.display = "none"
+      hudAnswerRomanization.style.display = "none"
       return
     }
     hudPrompt.textContent = nextRound.prompt
@@ -1569,8 +1685,42 @@ export const createHoverRunner = (
       nextRound.promptRomanization
     ) {
       hudPromptRomanization.textContent = nextRound.promptRomanization
+      hudPromptRomanization.style.display = "block"
     } else {
       hudPromptRomanization.textContent = ""
+      hudPromptRomanization.style.display = "none"
+    }
+    hudAnswer.textContent = ""
+    hudAnswerRomanization.textContent = ""
+    hudAnswer.style.display = "none"
+    hudAnswerRomanization.style.display = "none"
+  }
+
+  const showMatchHud = (nextRound: RoundState) => {
+    phraseHud.classList.add("match")
+    hudPromptLabel.textContent = "Matched"
+    hudPrompt.textContent = nextRound.prompt
+    if (
+      gameStore.getState().stackConfig?.showRomanization &&
+      nextRound.promptRomanization
+    ) {
+      hudPromptRomanization.textContent = nextRound.promptRomanization
+      hudPromptRomanization.style.display = "block"
+    } else {
+      hudPromptRomanization.textContent = ""
+      hudPromptRomanization.style.display = "none"
+    }
+    hudAnswer.textContent = nextRound.answer
+    hudAnswer.style.display = "block"
+    if (
+      gameStore.getState().stackConfig?.showRomanization &&
+      nextRound.answerRomanization
+    ) {
+      hudAnswerRomanization.textContent = nextRound.answerRomanization
+      hudAnswerRomanization.style.display = "block"
+    } else {
+      hudAnswerRomanization.textContent = ""
+      hudAnswerRomanization.style.display = "none"
     }
   }
 
@@ -1586,6 +1736,9 @@ export const createHoverRunner = (
     if (disposed) {
       return
     }
+    if (paused) {
+      return
+    }
     const state = gameStore.getState()
     if (!state.round || state.roundSolved) {
       return
@@ -1593,6 +1746,9 @@ export const createHoverRunner = (
     const roundId = state.round.id
     speakRepeatTimeout = window.setTimeout(() => {
       if (disposed) {
+        return
+      }
+      if (paused) {
         return
       }
       const current = gameStore.getState()
@@ -1635,14 +1791,81 @@ export const createHoverRunner = (
     updateStatsHud()
   })
 
-  const scheduleNextRound = (delay = 450) => {
-    if (roundTimeout) {
-      window.clearTimeout(roundTimeout)
+  const setTransitionTimeout = (fn: () => void, delay: number) => {
+    const id = window.setTimeout(fn, delay)
+    transitionTimeouts.push(id)
+  }
+
+  const clearTransition = () => {
+    while (transitionTimeouts.length) {
+      const id = transitionTimeouts.pop()
+      if (id) {
+        window.clearTimeout(id)
+      }
     }
-    roundTimeout = window.setTimeout(() => {
-      roundTimeout = null
+    phraseHud.classList.remove("match", "intro", "celebrate")
+  }
+
+  const beginIntro = (nextRound: RoundState) => {
+    clearTransition()
+    gameStore.update((draft) => {
+      draft.round = nextRound
+      draft.roundSolved = false
+      draft.phase = "intro"
+      draft.activePhrase = null
+      draft.lastPhraseId = null
+      draft.lastLane = -1
+      draft.spawnCooldown = 0
+      draft.incorrectStreak = 0
+    })
+    clearActivePhrase()
+    updatePromptText(nextRound)
+    phraseHud.classList.add("intro")
+    clearSpeakRepeat()
+    hostApi.speak(nextRound.promptLang, nextRound.prompt)
+
+    const { introHoldMs, introRepeatMs, promptLeadMs } = getSettings()
+    const firstSpeakMs = estimateSpeakMs(nextRound.prompt)
+    const holdMs = Math.max(introHoldMs, firstSpeakMs + 200)
+    const gapMs = Math.max(introRepeatMs, 200)
+    const secondSpeakMs = estimateSpeakMs(nextRound.prompt)
+    setTransitionTimeout(() => {
+      phraseHud.classList.remove("intro")
+      setTransitionTimeout(() => {
+        hostApi.speak(nextRound.promptLang, nextRound.prompt)
+        setTransitionTimeout(() => {
+          gameStore.update((draft) => {
+            draft.phase = "play"
+            draft.spawnCooldown = 0
+          })
+          scheduleSpeakRepeat()
+        }, secondSpeakMs + promptLeadMs)
+      }, gapMs)
+    }, holdMs)
+  }
+
+  const startCelebration = (nextRound: RoundState) => {
+    clearTransition()
+    gameStore.update((draft) => {
+      draft.phase = "celebrate"
+    })
+    showMatchHud(nextRound)
+    phraseHud.classList.add("celebrate")
+    clearSpeakRepeat()
+    hostApi.speak(nextRound.answerLang, nextRound.answer)
+    const promptDuration = estimateSpeakMs(nextRound.prompt)
+    const answerDuration = estimateSpeakMs(nextRound.answer)
+    const speakGapMs = 220
+    setTransitionTimeout(() => {
+      hostApi.speak(nextRound.promptLang, nextRound.prompt)
+    }, answerDuration + speakGapMs)
+    const celebrationDelay = Math.max(
+      getSettings().celebrationMs,
+      answerDuration + speakGapMs + promptDuration + 250
+    )
+    setTransitionTimeout(() => {
       startNewRound()
-    }, delay)
+    }, celebrationDelay + getSettings().postCelebrateMs)
   }
 
   const spawnPhrase = (spec: PhraseSpec, lane: number) => {
@@ -1708,6 +1931,9 @@ export const createHoverRunner = (
     if (!state.round && !state.roundLoading) {
       void buildRound(state.roundGeneration)
     }
+    if (state.phase !== "play") {
+      return
+    }
 
     if (!state.roundSolved && !state.activePhrase) {
       if (state.spawnCooldown > 0) {
@@ -1751,7 +1977,6 @@ export const createHoverRunner = (
 
     if (isHit) {
       const round = gameStore.getState().round
-      const stackConfig = gameStore.getState().stackConfig
       clearActivePhrase()
       gameStore.update((draft) => {
         draft.spawnCooldown = getSettings().respawnDelay
@@ -1763,14 +1988,7 @@ export const createHoverRunner = (
         })
         sfx.playSuccess()
         tuningStore.getState().recordCorrect()
-        clearSpeakRepeat()
-        hostApi.stopSpeech?.()
-        hostApi.speak(round.answerLang, round.answer)
-        hudPrompt.textContent = round.answer
-        if (stackConfig?.showRomanization && round.answerRomanization) {
-          hudPromptRomanization.textContent = round.answerRomanization
-        }
-        scheduleNextRound(600)
+        startCelebration(round)
       } else if (!current.spec.isCorrect) {
         gameStore.update((draft) => {
           draft.incorrectStreak += 1
@@ -1788,12 +2006,16 @@ export const createHoverRunner = (
         draft.spawnCooldown = getSettings().respawnDelay
       })
       if (current.spec.isCorrect) {
+        const round = gameStore.getState().round
         gameStore.update((draft) => {
           draft.incorrectStreak = getSettings().maxIncorrectStreak
         })
         tuningStore.getState().recordWrong()
         sfx.playFail()
         setPromptStatus("Missed!", true)
+        if (round) {
+          hostApi.speak(round.answerLang, round.answer)
+        }
       } else {
         gameStore.update((draft) => {
           draft.incorrectStreak += 1
@@ -1810,12 +2032,16 @@ export const createHoverRunner = (
         draft.spawnCooldown = getSettings().respawnDelay
       })
       if (current.spec.isCorrect) {
+        const round = gameStore.getState().round
         gameStore.update((draft) => {
           draft.incorrectStreak = getSettings().maxIncorrectStreak
         })
         tuningStore.getState().recordWrong()
         sfx.playFail()
         setPromptStatus("Missed!", true)
+        if (round) {
+          hostApi.speak(round.answerLang, round.answer)
+        }
       } else {
         gameStore.update((draft) => {
           draft.incorrectStreak += 1
@@ -1897,16 +2123,13 @@ export const createHoverRunner = (
 
   const dispose = () => {
     disposed = true
-    if (roundTimeout) {
-      window.clearTimeout(roundTimeout)
-      roundTimeout = null
-    }
     if (promptStatusTimeout) {
       window.clearTimeout(promptStatusTimeout)
       promptStatusTimeout = null
     }
     clearSpeakRepeat()
     clearActivePhrase()
+    clearTransition()
     stackUnsubscribe?.()
     tuningUnsubscribe?.()
     hostApi.stopSpeech?.()

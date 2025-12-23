@@ -8,6 +8,11 @@ export type TuningSettings = {
   speedStepUp: number
   speedStepDown: number
   respawnDelay: number
+  promptLeadMs: number
+  introHoldMs: number
+  introRepeatMs: number
+  celebrationMs: number
+  postCelebrateMs: number
   maxDistractors: number
   maxIncorrectStreak: number
   correctWeight: number
@@ -48,6 +53,11 @@ const DEFAULT_SETTINGS: TuningSettings = {
   speedStepUp: 0.25,
   speedStepDown: 0.2,
   respawnDelay: 0.45,
+  promptLeadMs: 650,
+  introHoldMs: 1300,
+  introRepeatMs: 700,
+  celebrationMs: 900,
+  postCelebrateMs: 900,
   maxDistractors: 4,
   maxIncorrectStreak: 2,
   correctWeight: 2.4,
