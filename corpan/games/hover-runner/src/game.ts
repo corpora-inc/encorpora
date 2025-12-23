@@ -4,12 +4,17 @@ import {
   DynamicTexture,
   DirectionalLight,
   Engine,
+  GlowLayer,
   HemisphericLight,
+  ImageProcessingConfiguration,
   Mesh,
   MeshBuilder,
+  PBRMaterial,
   Scene,
+  ShadowGenerator,
   StandardMaterial,
   TransformNode,
+  Texture,
   UniversalCamera,
   Vector3,
 } from "@babylonjs/core"
@@ -22,6 +27,32 @@ const clamp = (value: number, min: number, max: number) =>
 
 const lerp = (start: number, end: number, t: number) =>
   start + (end - start) * t
+
+const colorToCss = (color: Color3, alpha = 1) =>
+  `rgba(${Math.round(color.r * 255)}, ${Math.round(color.g * 255)}, ${Math.round(color.b * 255)}, ${alpha})`
+
+const scaleColor = (color: Color3, factor: number) =>
+  new Color3(
+    clamp(color.r * factor, 0, 1),
+    clamp(color.g * factor, 0, 1),
+    clamp(color.b * factor, 0, 1)
+  )
+
+const createEmissivePbr = (
+  name: string,
+  scene: Scene,
+  albedo: Color3,
+  emissive: Color3,
+  metallic = 0.2,
+  roughness = 0.6
+) => {
+  const material = new PBRMaterial(name, scene)
+  material.albedoColor = albedo
+  material.emissiveColor = emissive
+  material.metallic = metallic
+  material.roughness = roughness
+  return material
+}
 
 const getSettings = () => tuningStore.getState().settings
 
@@ -145,18 +176,124 @@ type RoadState = {
   setPalette: (palette: RoadPalette) => void
 }
 
+const createRoadTexture = (scene: Scene, palette: RoadPalette) => {
+  const size = 1024
+  const texture = new DynamicTexture(
+    "road-texture",
+    { width: size, height: size },
+    scene,
+    false
+  )
+  texture.wrapU = Texture.WRAP_ADDRESSMODE
+  texture.wrapV = Texture.WRAP_ADDRESSMODE
+  texture.uScale = 1
+  texture.vScale = 4
+  texture.anisotropicFilteringLevel = 8
+
+  const ctx = texture.getContext()
+
+  const draw = (next: RoadPalette) => {
+    ctx.clearRect(0, 0, size, size)
+    ctx.fillStyle = colorToCss(next.road)
+    ctx.fillRect(0, 0, size, size)
+
+    const bandColor = scaleColor(next.road, 0.85)
+    ctx.fillStyle = colorToCss(bandColor, 0.55)
+    for (let y = 0; y < size; y += 128) {
+      ctx.fillRect(0, y, size, 64)
+    }
+
+    const gritColor = scaleColor(next.road, 0.65)
+    ctx.fillStyle = colorToCss(gritColor, 0.35)
+    for (let i = 0; i < 200; i += 1) {
+      ctx.fillRect(
+        Math.random() * size,
+        Math.random() * size,
+        2,
+        2
+      )
+    }
+
+    const edgeWidth = 44
+    ctx.fillStyle = colorToCss(next.edge, 0.9)
+    ctx.fillRect(0, 0, edgeWidth, size)
+    ctx.fillRect(size - edgeWidth, 0, edgeWidth, size)
+
+    const dashWidth = 28
+    const dashHeight = 140
+    const dashGap = 70
+    const centerX = size / 2 - dashWidth / 2
+    ctx.fillStyle = colorToCss(next.center, 0.92)
+    for (let y = 0; y < size; y += dashHeight + dashGap) {
+      ctx.fillRect(centerX, y, dashWidth, dashHeight)
+    }
+
+    ctx.globalAlpha = 0.22
+    ctx.fillStyle = colorToCss(next.center, 0.8)
+    ctx.fillRect(centerX - 24, 0, dashWidth + 48, size)
+    ctx.globalAlpha = 1
+
+    texture.update()
+  }
+
+  draw(palette)
+
+  return { texture, draw }
+}
+
+const createSkyDome = (scene: Scene) => {
+  const size = 1024
+  const texture = new DynamicTexture(
+    "sky-texture",
+    { width: size, height: size },
+    scene,
+    false
+  )
+  const ctx = texture.getContext()
+
+  const material = new StandardMaterial("sky-mat", scene)
+  material.backFaceCulling = false
+  material.disableLighting = true
+  material.emissiveTexture = texture
+  material.emissiveColor = new Color3(1, 1, 1)
+
+  const dome = MeshBuilder.CreateSphere(
+    "sky-dome",
+    { diameter: 220, segments: 32 },
+    scene
+  )
+  dome.material = material
+  dome.isPickable = false
+  dome.infiniteDistance = true
+
+  const setColor = (color: Color4) => {
+    const base = new Color3(color.r, color.g, color.b)
+    const top = scaleColor(base, 1.25)
+    const bottom = scaleColor(base, 0.55)
+    const gradient = ctx.createLinearGradient(0, 0, 0, size)
+    gradient.addColorStop(0, colorToCss(top))
+    gradient.addColorStop(0.55, colorToCss(base))
+    gradient.addColorStop(1, colorToCss(bottom))
+    ctx.fillStyle = gradient
+    ctx.fillRect(0, 0, size, size)
+
+    ctx.fillStyle = "rgba(255, 255, 255, 0.08)"
+    for (let i = 0; i < 120; i += 1) {
+      ctx.fillRect(Math.random() * size, Math.random() * size * 0.6, 2, 2)
+    }
+
+    texture.update()
+  }
+
+  return { mesh: dome, setColor }
+}
+
 const createRoad = (scene: Scene): RoadState => {
   const pathArray: Vector3[][] = [[], []]
-  const centerPoints: Vector3[] = []
-  const leftPoints: Vector3[] = []
-  const rightPoints: Vector3[] = []
 
   for (let i = 0; i < ROAD.segments; i += 1) {
     pathArray[0].push(new Vector3())
     pathArray[1].push(new Vector3())
-    centerPoints.push(new Vector3())
-    leftPoints.push(new Vector3())
-    rightPoints.push(new Vector3())
   }
 
   const road = MeshBuilder.CreateRibbon(
@@ -169,37 +306,32 @@ const createRoad = (scene: Scene): RoadState => {
     scene
   )
 
-  const roadMaterial = new StandardMaterial("road-mat", scene)
+  const basePalette: RoadPalette = {
+    road: new Color3(0.06, 0.08, 0.12),
+    emissive: new Color3(0.02, 0.04, 0.08),
+    center: new Color3(0.25, 0.7, 1),
+    edge: new Color3(0.12, 0.55, 0.95),
+  }
+  const { texture: roadTexture, draw: drawRoadTexture } = createRoadTexture(
+    scene,
+    basePalette
+  )
+
+  const roadMaterial = new PBRMaterial("road-mat", scene)
+  roadMaterial.albedoTexture = roadTexture
+  roadMaterial.emissiveTexture = roadTexture
+  roadMaterial.albedoColor = new Color3(1, 1, 1)
+  roadMaterial.emissiveColor = new Color3(1, 1, 1)
+  roadMaterial.metallic = 0.1
+  roadMaterial.roughness = 0.82
+  roadMaterial.useEmissiveAsIllumination = true
   road.material = roadMaterial
-
-  const centerLine = MeshBuilder.CreateLines(
-    "center-line",
-    { points: centerPoints, updatable: true },
-    scene
-  )
-  centerLine.color = new Color3(0.25, 0.7, 1)
-
-  const leftEdge = MeshBuilder.CreateLines(
-    "edge-left",
-    { points: leftPoints, updatable: true },
-    scene
-  )
-  leftEdge.color = new Color3(0.1, 0.5, 0.9)
-
-  const rightEdge = MeshBuilder.CreateLines(
-    "edge-right",
-    { points: rightPoints, updatable: true },
-    scene
-  )
-  rightEdge.color = new Color3(0.1, 0.5, 0.9)
+  road.receiveShadows = true
+  road.isPickable = false
 
   const applyPalette = (palette: RoadPalette) => {
-    roadMaterial.diffuseColor = palette.road
-    roadMaterial.emissiveColor = palette.emissive
-    roadMaterial.specularColor = palette.road.scale(0.6)
-    centerLine.color = palette.center
-    leftEdge.color = palette.edge
-    rightEdge.color = palette.edge
+    drawRoadTexture(palette)
+    roadMaterial.emissiveColor = scaleColor(palette.emissive, 6)
   }
 
   let travel = 0
@@ -210,10 +342,11 @@ const createRoad = (scene: Scene): RoadState => {
     travel = (travel + ROAD.speed * dt) % ROAD.length
     curveTime += dt * 0.35
     const spacing = ROAD.length / (ROAD.segments - 1)
+    roadTexture.vOffset =
+      ((travel / ROAD.length) * roadTexture.vScale) % 1
 
     for (let i = 0; i < ROAD.segments; i += 1) {
-      const raw = (i * spacing + travel) % ROAD.length
-      const baseZ = ROAD.length - raw
+      const baseZ = ROAD.length - i * spacing
       const z = baseZ + ROAD.zOffset
       const curve = computeCurve(curveTime, baseZ)
 
@@ -228,39 +361,12 @@ const createRoad = (scene: Scene): RoadState => {
       right.y = ROAD.y
       right.z = z
 
-      const center = centerPoints[i]
-      center.x = curve
-      center.y = ROAD.y + 0.04
-      center.z = z
-
-      const leftEdgePoint = leftPoints[i]
-      leftEdgePoint.x = left.x
-      leftEdgePoint.y = ROAD.y + 0.06
-      leftEdgePoint.z = z
-
-      const rightEdgePoint = rightPoints[i]
-      rightEdgePoint.x = right.x
-      rightEdgePoint.y = ROAD.y + 0.06
-      rightEdgePoint.z = z
-
-      if (i === ROAD.segments - 1) {
+      if (i === 0) {
         farCenterX = curve
       }
     }
 
     MeshBuilder.CreateRibbon("road", { pathArray, instance: road })
-    MeshBuilder.CreateLines("center-line", {
-      points: centerPoints,
-      instance: centerLine,
-    })
-    MeshBuilder.CreateLines("edge-left", {
-      points: leftPoints,
-      instance: leftEdge,
-    })
-    MeshBuilder.CreateLines("edge-right", {
-      points: rightPoints,
-      instance: rightEdge,
-    })
   }
 
   return {
@@ -376,9 +482,14 @@ const createHoverboard = (scene: Scene) => {
     board.parent = pivot
     board.position.y = 0.08
 
-    const boardMaterial = new StandardMaterial("neon-board-mat", scene)
-    boardMaterial.diffuseColor = new Color3(0.08, 0.16, 0.3)
-    boardMaterial.emissiveColor = new Color3(0.2, 0.4, 0.8)
+    const boardMaterial = createEmissivePbr(
+      "neon-board-mat",
+      scene,
+      new Color3(0.08, 0.16, 0.3),
+      new Color3(0.2, 0.4, 0.8),
+      0.25,
+      0.45
+    )
     board.material = boardMaterial
 
     const rider = MeshBuilder.CreateSphere(
@@ -389,9 +500,14 @@ const createHoverboard = (scene: Scene) => {
     rider.parent = pivot
     rider.position.y = 0.55
 
-    const riderMaterial = new StandardMaterial("neon-rider-mat", scene)
-    riderMaterial.diffuseColor = new Color3(0.9, 0.97, 1)
-    riderMaterial.emissiveColor = new Color3(0.5, 0.8, 1)
+    const riderMaterial = createEmissivePbr(
+      "neon-rider-mat",
+      scene,
+      new Color3(0.9, 0.97, 1),
+      new Color3(0.5, 0.8, 1),
+      0.1,
+      0.3
+    )
     rider.material = riderMaterial
 
     const halo = MeshBuilder.CreateTorus(
@@ -402,8 +518,14 @@ const createHoverboard = (scene: Scene) => {
     halo.parent = pivot
     halo.position.y = 0.78
     halo.rotation.x = Math.PI / 2
-    const haloMat = new StandardMaterial("neon-halo-mat", scene)
-    haloMat.emissiveColor = new Color3(0.25, 0.9, 1)
+    const haloMat = createEmissivePbr(
+      "neon-halo-mat",
+      scene,
+      new Color3(0.04, 0.08, 0.15),
+      new Color3(0.25, 0.9, 1),
+      0,
+      0.2
+    )
     halo.material = haloMat
 
     return board
@@ -418,9 +540,14 @@ const createHoverboard = (scene: Scene) => {
     board.parent = pivot
     board.position.y = 0.08
 
-    const boardMaterial = new StandardMaterial("desert-board-mat", scene)
-    boardMaterial.diffuseColor = new Color3(0.35, 0.16, 0.08)
-    boardMaterial.emissiveColor = new Color3(0.45, 0.2, 0.12)
+    const boardMaterial = createEmissivePbr(
+      "desert-board-mat",
+      scene,
+      new Color3(0.35, 0.16, 0.08),
+      new Color3(0.45, 0.2, 0.12),
+      0.15,
+      0.7
+    )
     board.material = boardMaterial
 
     const nose = MeshBuilder.CreateCylinder(
@@ -442,9 +569,14 @@ const createHoverboard = (scene: Scene) => {
     riderCore.parent = pivot
     riderCore.position.y = 0.55
 
-    const riderMaterial = new StandardMaterial("desert-rider-mat", scene)
-    riderMaterial.diffuseColor = new Color3(0.92, 0.86, 0.74)
-    riderMaterial.emissiveColor = new Color3(0.7, 0.5, 0.32)
+    const riderMaterial = createEmissivePbr(
+      "desert-rider-mat",
+      scene,
+      new Color3(0.92, 0.86, 0.74),
+      new Color3(0.7, 0.5, 0.32),
+      0.05,
+      0.65
+    )
     riderCore.material = riderMaterial
 
     return board
@@ -459,9 +591,14 @@ const createHoverboard = (scene: Scene) => {
     board.parent = pivot
     board.position.y = 0.08
 
-    const boardMaterial = new StandardMaterial("glacier-board-mat", scene)
-    boardMaterial.diffuseColor = new Color3(0.12, 0.2, 0.35)
-    boardMaterial.emissiveColor = new Color3(0.25, 0.5, 0.85)
+    const boardMaterial = createEmissivePbr(
+      "glacier-board-mat",
+      scene,
+      new Color3(0.12, 0.2, 0.35),
+      new Color3(0.25, 0.5, 0.85),
+      0.25,
+      0.45
+    )
     board.material = boardMaterial
 
     const finLeft = MeshBuilder.CreateBox(
@@ -487,9 +624,14 @@ const createHoverboard = (scene: Scene) => {
     rider.parent = pivot
     rider.position.y = 0.54
 
-    const riderMaterial = new StandardMaterial("glacier-rider-mat", scene)
-    riderMaterial.diffuseColor = new Color3(0.86, 0.94, 1)
-    riderMaterial.emissiveColor = new Color3(0.5, 0.75, 1)
+    const riderMaterial = createEmissivePbr(
+      "glacier-rider-mat",
+      scene,
+      new Color3(0.86, 0.94, 1),
+      new Color3(0.5, 0.75, 1),
+      0.2,
+      0.4
+    )
     rider.material = riderMaterial
 
     return board
@@ -544,6 +686,8 @@ const createPropField = (
   for (let i = 0; i < options.count; i += 1) {
     const mesh = options.buildMesh(i)
     mesh.parent = root
+    mesh.isPickable = false
+    mesh.receiveShadows = true
     const side = i % 2 === 0 ? -1 : 1
     const offsetX =
       options.offsetX + (Math.random() - 0.5) * options.offsetXJitter
@@ -1042,6 +1186,16 @@ export const createHoverRunner = (
 
   const scene = new Scene(engine)
   scene.clearColor = new Color4(0.02, 0.04, 0.08, 1)
+  scene.imageProcessingConfiguration.toneMappingEnabled = true
+  scene.imageProcessingConfiguration.toneMappingType =
+    ImageProcessingConfiguration.TONEMAPPING_ACES
+  scene.imageProcessingConfiguration.exposure = 1.05
+  scene.imageProcessingConfiguration.contrast = 1.08
+  scene.fogMode = Scene.FOGMODE_EXP2
+  scene.fogDensity = 0.015
+  scene.fogColor = new Color3(0.02, 0.04, 0.08)
+
+  const sky = createSkyDome(scene)
 
   const camera = new UniversalCamera(
     "camera",
@@ -1068,6 +1222,16 @@ export const createHoverRunner = (
   accent.intensity = 0.2
   accent.diffuse = new Color3(0.6, 0.7, 0.9)
 
+  const glow = new GlowLayer("glow", scene, { blurKernelSize: 64 })
+  glow.intensity = 0.45
+  glow.addExcludedMesh(sky.mesh)
+
+  const shadowGenerator = new ShadowGenerator(1024, accent)
+  shadowGenerator.useBlurExponentialShadowMap = true
+  shadowGenerator.blurKernel = 16
+  shadowGenerator.bias = 0.0005
+  shadowGenerator.normalBias = 0.02
+
   const road = createRoad(scene)
   const hoverboard = createHoverboard(scene)
   hoverboard.root.position = new Vector3(GRID.leftX, GRID.bottomY, GRID.z)
@@ -1076,9 +1240,14 @@ export const createHoverRunner = (
   const desertRoot = new TransformNode("env-desert", scene)
   const glacierRoot = new TransformNode("env-glacier", scene)
 
-  const neonMat = new StandardMaterial("neon-prop-mat", scene)
-  neonMat.diffuseColor = new Color3(0.04, 0.08, 0.14)
-  neonMat.emissiveColor = new Color3(0.2, 0.75, 1)
+  const neonMat = createEmissivePbr(
+    "neon-prop-mat",
+    scene,
+    new Color3(0.04, 0.08, 0.14),
+    new Color3(0.2, 0.75, 1),
+    0.25,
+    0.55
+  )
 
   const neonProps = createPropField(neonRoot, {
     count: 26,
@@ -1100,9 +1269,14 @@ export const createHoverRunner = (
     },
   })
 
-  const desertMat = new StandardMaterial("desert-prop-mat", scene)
-  desertMat.diffuseColor = new Color3(0.4, 0.22, 0.12)
-  desertMat.emissiveColor = new Color3(0.2, 0.12, 0.08)
+  const desertMat = createEmissivePbr(
+    "desert-prop-mat",
+    scene,
+    new Color3(0.4, 0.22, 0.12),
+    new Color3(0.2, 0.12, 0.08),
+    0.1,
+    0.75
+  )
 
   const desertProps = createPropField(desertRoot, {
     count: 22,
@@ -1124,9 +1298,14 @@ export const createHoverRunner = (
     },
   })
 
-  const glacierMat = new StandardMaterial("glacier-prop-mat", scene)
-  glacierMat.diffuseColor = new Color3(0.15, 0.25, 0.42)
-  glacierMat.emissiveColor = new Color3(0.2, 0.55, 0.95)
+  const glacierMat = createEmissivePbr(
+    "glacier-prop-mat",
+    scene,
+    new Color3(0.15, 0.25, 0.42),
+    new Color3(0.2, 0.55, 0.95),
+    0.2,
+    0.5
+  )
 
   const glacierProps = createPropField(glacierRoot, {
     count: 24,
@@ -1147,6 +1326,14 @@ export const createHoverRunner = (
       mesh.rotation.z = (Math.random() - 0.5) * 0.2
       return mesh
     },
+  })
+
+  hoverboard.root.getChildMeshes().forEach((mesh) => {
+    shadowGenerator.addShadowCaster(mesh)
+  })
+  const allProps = [...neonProps, ...desertProps, ...glacierProps]
+  allProps.forEach((prop) => {
+    shadowGenerator.addShadowCaster(prop.mesh)
   })
 
   const skins: Skin[] = [
@@ -1231,6 +1418,8 @@ export const createHoverRunner = (
     hoverboard.setVariant(next.variantId)
     road.setPalette(next.palette)
     scene.clearColor = next.sky
+    sky.setColor(next.sky)
+    scene.fogColor = new Color3(next.sky.r, next.sky.g, next.sky.b)
     hemi.intensity = next.hemi.intensity
     hemi.diffuse = next.hemi.diffuse
     hemi.groundColor = next.hemi.ground
