@@ -689,6 +689,17 @@ const initInput = (
   window.addEventListener("keydown", onKey)
   canvas.addEventListener("pointerdown", onPointer)
   tiltButton.addEventListener("click", requestTilt)
+  const prefersTilt =
+    typeof window !== "undefined" &&
+    window.matchMedia &&
+    window.matchMedia("(pointer: coarse)").matches
+  if (
+    prefersTilt &&
+    !(DeviceOrientationEvent as unknown as { requestPermission?: unknown })
+      .requestPermission
+  ) {
+    enableTilt()
+  }
 
   const dispose = () => {
     window.removeEventListener("keydown", onKey)
@@ -746,37 +757,10 @@ export const createHoverRunner = (
   hudPanel.className = "hud-panel"
   root.appendChild(hudPanel)
 
-  const hudRow = document.createElement("div")
-  hudRow.className = "hud-row"
-
-  const hudLeft = document.createElement("div")
-  hudLeft.className = "hud-left"
-  const hudSubtitle = document.createElement("div")
-  hudSubtitle.className = "hud-subtitle"
-  hudSubtitle.textContent =
-    "Tap to move between six lanes. Motion controls optional."
-  hudLeft.append(hudSubtitle)
-  hudLeft.append(hudSubtitle)
-
-  const hudRight = document.createElement("div")
-  hudRight.className = "hud-right"
-  const hudMode = document.createElement("div")
-  hudMode.className = "hud-title"
-  hudMode.textContent = "Prototype"
-  const hudSpeed = document.createElement("div")
-  hudSpeed.className = "hud-speed"
-  hudSpeed.textContent = `Speed ${ROAD.speed.toFixed(0)}`
-  const hudSkin = document.createElement("div")
-  hudSkin.className = "hud-skin"
-  hudSkin.textContent = "Skin: Neon Drift"
-  hudRight.append(hudMode, hudSpeed, hudSkin)
-
-  hudRow.append(hudLeft, hudRight)
-
   const hudControls = document.createElement("div")
   hudControls.className = "hud-controls"
 
-  hudPanel.append(hudRow, hudControls)
+  hudPanel.append(hudControls)
 
   const tuningPanel = document.createElement("div")
   tuningPanel.className = "tuning-panel"
@@ -1043,6 +1027,7 @@ export const createHoverRunner = (
 
   document.addEventListener("visibilitychange", onVisibilityChange)
   window.addEventListener("pointerdown", onWakeLockGesture)
+  void requestWakeLock()
 
   fabButton.addEventListener("click", onFabClick)
   hudBackdrop.addEventListener("click", onBackdropClick)
@@ -1252,7 +1237,6 @@ export const createHoverRunner = (
     accent.intensity = next.accent.intensity
     accent.diffuse = next.accent.color
     activeSkin = next
-    hudSkin.textContent = `Skin: ${next.name}`
   }
   applySkin(activeSkin.id)
 
@@ -1972,7 +1956,23 @@ export const createHoverRunner = (
     const dx = current.mesh.position.x - hoverboard.root.position.x
     const dy = current.mesh.position.y - hoverboard.root.position.y
     const dz = current.mesh.position.z - PHRASE_HIT_Z
-    const isHit = Math.abs(dz) <= PHRASE_HIT_WINDOW && Math.hypot(dx, dy) < 0.6
+    const isTiltActive = input.state.tiltEnabled && input.state.tiltActive
+    const midX = (GRID.leftX + GRID.rightX) * 0.5
+    const rowCutA = (GRID.topY + GRID.midY) * 0.5
+    const rowCutB = (GRID.midY + GRID.bottomY) * 0.5
+    const hoverCol = hoverboard.root.position.x < midX ? 0 : 1
+    const hoverRow =
+      hoverboard.root.position.y > rowCutA
+        ? 0
+        : hoverboard.root.position.y > rowCutB
+          ? 1
+          : 2
+    const hoverLane = hoverRow * 2 + hoverCol
+    const isHit =
+      Math.abs(dz) <= PHRASE_HIT_WINDOW &&
+      (isTiltActive
+        ? hoverLane === current.lane
+        : Math.hypot(dx, dy) < 0.6)
     const hasPassed = current.mesh.position.z < PHRASE_HIT_Z - PHRASE_HIT_WINDOW
 
     if (isHit) {

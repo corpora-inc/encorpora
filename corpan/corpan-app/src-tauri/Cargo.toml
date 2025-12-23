@@ -28,5 +28,5 @@ tauri-plugin-os = "2.3.2"
 tauri-plugin-game-packs = { path = "../../plugins/tauri-plugin-game-packs" }
 # tauri-plugin-tts = { git = "https://github.com/httpjamesm/tauri-plugin-tts.git" }
 # tauri-plugin-tts = { git = "https://github.com/skyl/tauri-plugin-tts.git", branch = "force-language-android" }
-tauri-plugin-tts = { git = "https://github.com/skyl/tauri-plugin-tts.git", branch = "ext-hack-swift-con-todo" }
-# tauri-plugin-tts = { path = "/Users/skyl/Code/github/tauri-plugin-tts" }
+# tauri-plugin-tts = { git = "https://github.com/skyl/tauri-plugin-tts.git", branch = "ext-hack-swift-con-todo" }
+tauri-plugin-tts = { path = "/Users/skyl/Code/github/tauri-plugin-tts" }
