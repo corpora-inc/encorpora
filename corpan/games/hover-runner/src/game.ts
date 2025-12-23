@@ -882,12 +882,25 @@ export const createHoverRunner = (
   root.appendChild(fabButton)
 
   let panelOpen = false
+  let paused = false
+  const setPaused = (next: boolean) => {
+    paused = next
+    if (paused) {
+      clearSpeakRepeat()
+    } else {
+      const state = gameStore.getState()
+      if (state.round && !state.roundSolved) {
+        scheduleSpeakRepeat()
+      }
+    }
+  }
   const setPanelOpen = (next: boolean) => {
     panelOpen = next
     hudPanel.classList.toggle("open", panelOpen)
     hudBackdrop.classList.toggle("open", panelOpen)
     fabButton.classList.toggle("open", panelOpen)
     fabButton.setAttribute("aria-label", panelOpen ? "Close menu" : "Open menu")
+    setPaused(panelOpen)
   }
 
   const requestExit = () => {
@@ -1864,10 +1877,12 @@ export const createHoverRunner = (
 
   engine.runRenderLoop(() => {
     const dt = Math.min(engine.getDeltaTime() / 1000, 0.05)
-    road.update(dt)
-    updatePlayer(dt)
-    updatePhrases(dt)
-    updatePropField(activeSkin.props, road)
+    if (!paused) {
+      road.update(dt)
+      updatePlayer(dt)
+      updatePhrases(dt)
+      updatePropField(activeSkin.props, road)
+    }
     const farX = road.getFarCenterX()
     camera.setTarget(new Vector3(farX * 0.2, cameraTargetY, 10))
     scene.render()
