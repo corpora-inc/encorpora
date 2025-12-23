@@ -1,6 +1,7 @@
 import {
   Color3,
   Color4,
+  DynamicTexture,
   DirectionalLight,
   Engine,
   HemisphericLight,
@@ -12,6 +13,9 @@ import {
   UniversalCamera,
   Vector3,
 } from "@babylonjs/core"
+import { getSfx } from "./audio"
+import { tuningStore } from "./tuningStore"
+import type { EntryOut, HostApi, StackConfig, TranslationOut } from "./sdk/types"
 
 const clamp = (value: number, min: number, max: number) =>
   Math.min(Math.max(value, min), max)
@@ -19,26 +23,53 @@ const clamp = (value: number, min: number, max: number) =>
 const lerp = (start: number, end: number, t: number) =>
   start + (end - start) * t
 
+const getSettings = () => tuningStore.getState().settings
+
+const getPhraseSpeed = () => {
+  const { basePhraseSpeed, phraseSpeedMin, phraseSpeedMax } = getSettings()
+  const { speedDelta } = tuningStore.getState().runtime
+  return clamp(basePhraseSpeed + speedDelta, phraseSpeedMin, phraseSpeedMax)
+}
+
+const pickRandom = <T,>(items: T[]) => {
+  if (!items.length) {
+    return null
+  }
+  const idx = Math.floor(Math.random() * items.length)
+  return items[idx] ?? null
+}
+
 const GRID = {
-  leftX: -1.6,
-  rightX: 1.6,
-  topY: 1.8,
-  midY: -0.6,
-  bottomY: -3,
+  leftX: -2,
+  rightX: 2,
+  topY: 2,
+  midY: -0.25,
+  bottomY: -2.5,
   z: 0.18,
+}
+
+const SECTOR = {
+  width: Math.abs(GRID.rightX - GRID.leftX) * 0.95,
+  height: Math.abs(GRID.topY - GRID.midY) * 0.95,
 }
 
 const ROAD = {
   width: 8.8,
   length: 90,
   segments: 50,
-  speed: 14,
-  curveAmount: 1.4,
+  speed: 20,
+  curveAmount: 2,
   y: -3.0,
-  zOffset: -4.0,
+  zOffset: -10.0,
 }
 
-const MOVE_SPEED = 14
+const MOVE_SPEED = 25
+const PHRASE_START_Z = ROAD.length + ROAD.zOffset
+const PHRASE_END_Z = -12
+const PHRASE_HIT_Z = GRID.z
+const PHRASE_HIT_WINDOW = 0.25
+const LANE_ROWS = [GRID.topY, GRID.midY, GRID.bottomY]
+const LANE_COLS = [GRID.leftX, GRID.rightX]
 
 const computeCurve = (curveTime: number, z: number) => {
   const blend = Math.pow(z / ROAD.length, 1.35)
@@ -53,6 +84,49 @@ const rowToY = (row: number) => {
     return GRID.midY
   }
   return GRID.bottomY
+}
+
+const normalizeLang = (lang: string) => lang.trim().toLowerCase()
+
+const pickByLang = (map: Record<string, string>, lang: string) => {
+  const desired = normalizeLang(lang)
+  if (map[desired]) {
+    return map[desired]
+  }
+  const base = desired.split("-")[0]
+  if (map[base]) {
+    return map[base]
+  }
+  const fallback = Object.entries(map).find(
+    ([code]) => code.startsWith(base) || base.startsWith(code)
+  )
+  return fallback?.[1]
+}
+
+const buildEntryLookup = (translations: TranslationOut[]): EntryLookup => {
+  const textByCode: Record<string, string> = {}
+  const romByCode: Record<string, string> = {}
+  translations.forEach((translation) => {
+    const code = normalizeLang(translation.language_code)
+    if (!textByCode[code]) {
+      textByCode[code] = translation.text
+    }
+    if (translation.romanization && !romByCode[code]) {
+      romByCode[code] = translation.romanization
+    }
+  })
+  return { textByCode, romByCode }
+}
+
+const pickLanguages = (stack: StackConfig | null) => {
+  const languages = stack?.languages?.length ? stack.languages : ["en"]
+  if (languages.length === 1) {
+    return { promptLang: languages[0], answerLang: languages[0] }
+  }
+  const promptLang = pickRandom(languages) ?? languages[0]
+  const remaining = languages.filter((lang) => lang !== promptLang)
+  const answerLang = pickRandom(remaining) ?? promptLang
+  return { promptLang, answerLang }
 }
 
 type RoadPalette = {
@@ -204,6 +278,78 @@ type HoverVariant = {
   name: string
   pivot: TransformNode
   board: Mesh
+}
+
+type PhraseSpec = {
+  id: string
+  text: string
+  romanization?: string
+  lang: string
+  isCorrect: boolean
+}
+
+type PhraseInstance = {
+  spec: PhraseSpec
+  mesh: Mesh
+  lane: number
+  baseWidth: number
+  baseHeight: number
+}
+
+type RoundState = {
+  id: string
+  promptLang: string
+  answerLang: string
+  prompt: string
+  promptRomanization?: string
+  answer: string
+  answerRomanization?: string
+  choices: PhraseSpec[]
+}
+
+type EntryLookup = {
+  textByCode: Record<string, string>
+  romByCode: Record<string, string>
+}
+
+type GameState = {
+  stackConfig: StackConfig | null
+  round: RoundState | null
+  roundLoading: boolean
+  roundSolved: boolean
+  roundGeneration: number
+  activePhrase: PhraseInstance | null
+  lastLane: number
+  lastPhraseId: string | null
+  spawnCooldown: number
+  incorrectStreak: number
+}
+
+type GameStore<T> = {
+  getState: () => T
+  update: (updater: (draft: T) => void) => void
+  subscribe: (listener: (state: T) => void) => () => void
+}
+
+const createGameStore = <T extends Record<string, unknown>>(
+  initial: T
+): GameStore<T> => {
+  let state = { ...initial }
+  const listeners = new Set<(next: T) => void>()
+  const getState = () => state
+  const update = (updater: (draft: T) => void) => {
+    const next = { ...state }
+    updater(next)
+    state = next
+    listeners.forEach((listener) => listener(state))
+  }
+  const subscribe = (listener: (next: T) => void) => {
+    listeners.add(listener)
+    return () => {
+      listeners.delete(listener)
+    }
+  }
+  return { getState, update, subscribe }
 }
 
 const createHoverboard = (scene: Scene) => {
@@ -553,11 +699,21 @@ const initInput = (
   return { state, dispose }
 }
 
-export const createHoverRunner = (container: HTMLElement) => {
+type InitialState = {
+  stackConfig?: StackConfig
+}
+
+export const createHoverRunner = (
+  container: HTMLElement,
+  hostApi: HostApi,
+  initialState?: InitialState
+) => {
+  let disposed = false
   const root = document.createElement("div")
   root.className = "hover-runner"
   container.appendChild(root)
 
+  const sfx = getSfx()
   let wakeLock: { release: () => Promise<void> } | null = null
   const requestWakeLock = async () => {
     const wakeLockApi = (navigator as typeof navigator & {
@@ -599,6 +755,7 @@ export const createHoverRunner = (container: HTMLElement) => {
   hudSubtitle.textContent =
     "Tap to move between six lanes. Motion controls optional."
   hudLeft.append(hudSubtitle)
+  hudLeft.append(hudSubtitle)
 
   const hudRight = document.createElement("div")
   hudRight.className = "hud-right"
@@ -620,6 +777,43 @@ export const createHoverRunner = (container: HTMLElement) => {
 
   hudPanel.append(hudRow, hudControls)
 
+  const tuningPanel = document.createElement("div")
+  tuningPanel.className = "tuning-panel"
+  hudPanel.appendChild(tuningPanel)
+
+  const phraseHud = document.createElement("div")
+  phraseHud.className = "phrase-hud"
+  const hudPromptLabel = document.createElement("div")
+  hudPromptLabel.className = "phrase-hud-label"
+  hudPromptLabel.textContent = "Listen"
+  const hudPrompt = document.createElement("div")
+  hudPrompt.className = "phrase-hud-text"
+  hudPrompt.textContent = "Waiting for phrase..."
+  const hudPromptRomanization = document.createElement("div")
+  hudPromptRomanization.className = "phrase-hud-romanization"
+  phraseHud.append(hudPromptLabel, hudPrompt, hudPromptRomanization)
+  root.appendChild(phraseHud)
+
+  const statusHud = document.createElement("div")
+  statusHud.className = "status-hud"
+  const hudScore = document.createElement("div")
+  hudScore.className = "status-score"
+  hudScore.textContent = "Score 0"
+  const hudStreak = document.createElement("div")
+  hudStreak.className = "status-streak"
+  hudStreak.textContent = "Streak 0"
+  statusHud.append(hudScore, hudStreak)
+  root.appendChild(statusHud)
+
+  const promptToggle = document.createElement("label")
+  promptToggle.className = "hud-toggle"
+  const promptToggleInput = document.createElement("input")
+  promptToggleInput.type = "checkbox"
+  promptToggleInput.checked = true
+  const promptToggleLabel = document.createElement("span")
+  promptToggleLabel.textContent = "Show prompt"
+  promptToggle.append(promptToggleInput, promptToggleLabel)
+
   const tiltButton = document.createElement("button")
   tiltButton.className = "tilt-button"
   tiltButton.type = "button"
@@ -631,6 +825,52 @@ export const createHoverRunner = (container: HTMLElement) => {
   hudExit.type = "button"
   hudExit.textContent = "Exit"
   hudControls.appendChild(hudExit)
+
+  const createTuningControl = (
+    label: string,
+    key: keyof ReturnType<typeof tuningStore.getState>["settings"],
+    min: number,
+    max: number,
+    step: number
+  ) => {
+    const row = document.createElement("div")
+    row.className = "tuning-row"
+    const text = document.createElement("div")
+    text.className = "tuning-label"
+    text.textContent = label
+    const value = document.createElement("div")
+    value.className = "tuning-value"
+    const input = document.createElement("input")
+    input.type = "range"
+    input.min = String(min)
+    input.max = String(max)
+    input.step = String(step)
+    input.dataset.settingKey = key
+    const setValue = (next: number) => {
+      value.textContent = Number.isInteger(step) ? `${next}` : next.toFixed(2)
+    }
+    const current = tuningStore.getState().settings[key] as number
+    input.value = String(current)
+    setValue(current)
+    input.addEventListener("input", () => {
+      const next = Number(input.value)
+      tuningStore.getState().setSetting(key, next)
+      setValue(next)
+    })
+    row.append(text, value, input)
+    tuningPanel.appendChild(row)
+    return { row, input, setValue, key }
+  }
+
+  const tuningControls = [
+    createTuningControl("Speed", "basePhraseSpeed", 8, 22, 0.5),
+    createTuningControl("Respawn", "respawnDelay", 0.2, 1.2, 0.05),
+    createTuningControl("Correct Weight", "correctWeight", 1, 4, 0.1),
+    createTuningControl("Distractors", "maxDistractors", 1, 6, 1),
+    createTuningControl("Max Misses", "maxIncorrectStreak", 1, 5, 1),
+    createTuningControl("Text Scale", "textScaleFactor", 0.5, 3, 0.1),
+    createTuningControl("Overflow", "textOverflowFactor", 1, 2, 0.05),
+  ]
 
   const fabButton = document.createElement("button")
   fabButton.className = "hud-fab"
@@ -672,6 +912,7 @@ export const createHoverRunner = (container: HTMLElement) => {
 
   const onWakeLockGesture = () => {
     void requestWakeLock()
+    sfx.unlock()
     window.removeEventListener("pointerdown", onWakeLockGesture)
   }
 
@@ -909,6 +1150,7 @@ export const createHoverRunner = (container: HTMLElement) => {
   skinCycle.textContent = "Cycle"
   skinPanel.append(skinLabel, skinSelect, skinCycle)
   hudControls.insertBefore(skinPanel, tiltButton)
+  hudControls.insertBefore(promptToggle, tiltButton)
 
   const onSkinChange = () => {
     applySkin(skinSelect.value)
@@ -928,6 +1170,635 @@ export const createHoverRunner = (container: HTMLElement) => {
   const velocity = new Vector3()
   const lastPos = hoverboard.root.position.clone()
   let hoverTime = 0
+
+  const gameStore = createGameStore<GameState>({
+    stackConfig: initialState?.stackConfig ?? hostApi.getStackConfig(),
+    round: null,
+    roundLoading: false,
+    roundSolved: false,
+    roundGeneration: 0,
+    activePhrase: null,
+    lastLane: -1,
+    lastPhraseId: null,
+    spawnCooldown: 0,
+    incorrectStreak: 0,
+  })
+  let stackUnsubscribe: (() => void) | null = null
+  let tuningUnsubscribe: (() => void) | null = null
+  let showPrompt = true
+  let promptStatusTimeout: number | null = null
+  const phraseRoot = new TransformNode("phrase-root", scene)
+  const entryBuffer: EntryOut[] = []
+  let fetchingEntries = false
+  let roundTimeout: number | null = null
+  let speakRepeatTimeout: number | null = null
+
+  const getTextScale = () => {
+    const size = gameStore.getState().stackConfig?.textSize
+    if (size === "large") return 1.1
+    if (size === "small") return 0.9
+    return 1
+  }
+
+  const shuffle = <T,>(items: T[]) => {
+    for (let i = items.length - 1; i > 0; i -= 1) {
+      const j = Math.floor(Math.random() * (i + 1))
+      const temp = items[i]
+      items[i] = items[j]
+      items[j] = temp
+    }
+    return items
+  }
+
+  const createPhraseMesh = (spec: PhraseSpec) => {
+    const scale = getTextScale() * 1.45 * getSettings().textScaleFactor
+    const maxChars = 18
+    const wrapText = (text: string) => {
+      const words = text.split(/\s+/).filter(Boolean)
+      const lines: string[] = []
+      let current = ""
+      words.forEach((word) => {
+        const next = current ? `${current} ${word}` : word
+        if (next.length > maxChars && current) {
+          lines.push(current)
+          current = word
+        } else {
+          current = next
+        }
+      })
+      if (current) {
+        lines.push(current)
+      }
+      return lines.slice(0, 3)
+    }
+
+    const lines = wrapText(spec.text)
+    const romLines =
+      spec.romanization && gameStore.getState().stackConfig?.showRomanization
+        ? wrapText(spec.romanization)
+        : []
+    const maxLineLength = Math.max(
+      ...lines.map((line) => line.length),
+      ...romLines.map((line) => line.length),
+      6
+    )
+    const planeWidth =
+      clamp(maxLineLength * 0.22, 2.8, 7.8) * scale
+    const lineCount = lines.length + (romLines.length ? romLines.length : 0)
+    const planeHeight = clamp(0.9 + lineCount * 0.5, 1.2, 2.6) * scale
+    const texture = new DynamicTexture(
+      `phrase-texture-${spec.id}`,
+      { width: 2048, height: 1024 },
+      scene,
+      true
+    )
+    texture.hasAlpha = true
+    const ctx = texture.getContext()
+    ctx.clearRect(0, 0, 2048, 512)
+    ctx.textAlign = "center"
+    ctx.textBaseline = "middle"
+
+    const drawTextLine = (
+      text: string,
+      y: number,
+      font: string,
+      fill: string
+    ) => {
+      ctx.font = font
+      ctx.lineWidth = 16
+      ctx.strokeStyle = "rgba(5, 10, 20, 0.7)"
+      ctx.shadowColor = "rgba(0, 0, 0, 0.55)"
+      ctx.shadowBlur = 16
+      ctx.strokeText(text, 1024, y)
+      ctx.shadowBlur = 0
+      ctx.fillStyle = fill
+      ctx.fillText(text, 1024, y)
+    }
+
+    const baseY = 320 - (lines.length - 1) * 90 - (romLines.length ? 70 : 0)
+    lines.forEach((line, index) => {
+      drawTextLine(
+        line,
+        baseY + index * 170,
+        "700 190px 'Trebuchet MS', 'Helvetica Neue', sans-serif",
+        "rgba(245, 250, 255, 0.98)"
+      )
+    })
+    if (romLines.length) {
+      romLines.forEach((line, index) => {
+        drawTextLine(
+          line,
+          baseY + lines.length * 170 + 80 + index * 130,
+          "600 120px 'Trebuchet MS', 'Helvetica Neue', sans-serif",
+          "rgba(150, 210, 255, 0.95)"
+        )
+      })
+    }
+    texture.update()
+
+    const material = new StandardMaterial(`phrase-mat-${spec.id}`, scene)
+    material.diffuseTexture = texture
+    material.emissiveTexture = texture
+    material.opacityTexture = texture
+    material.useAlphaFromDiffuseTexture = true
+    material.specularColor = new Color3(0.02, 0.04, 0.08)
+    material.emissiveColor = new Color3(0.35, 0.6, 0.95)
+
+    const mesh = MeshBuilder.CreatePlane(
+      `phrase-${spec.id}`,
+      { width: planeWidth, height: planeHeight },
+      scene
+    )
+    mesh.material = material
+    mesh.billboardMode = Mesh.BILLBOARDMODE_ALL
+    mesh.isPickable = false
+    mesh.parent = phraseRoot
+    mesh.scaling.z = 0.35
+    return { mesh, baseWidth: planeWidth, baseHeight: planeHeight }
+  }
+
+  const laneToPosition = (lane: number) => {
+    const row = Math.floor(lane / 2)
+    const col = lane % 2
+    return new Vector3(
+      LANE_COLS[col] ?? GRID.leftX,
+      LANE_ROWS[row] ?? GRID.bottomY,
+      PHRASE_START_Z
+    )
+  }
+
+  const ensureEntryBuffer = async (min: number) => {
+    if (disposed || fetchingEntries || entryBuffer.length >= min) {
+      return
+    }
+    fetchingEntries = true
+    try {
+      const needed = Math.max(min - entryBuffer.length, 4)
+      if (hostApi.getRandomEntries) {
+        const batch = await hostApi.getRandomEntries(needed)
+        entryBuffer.push(...batch)
+      } else if (hostApi.getRandomEntry) {
+        for (let i = 0; i < needed; i += 1) {
+          const entry = await hostApi.getRandomEntry()
+          if (entry) {
+            entryBuffer.push(entry)
+          }
+        }
+      }
+    } catch {
+      // Ignore host API fetch failures.
+    } finally {
+      fetchingEntries = false
+    }
+  }
+
+  const buildRound = async (generation: number) => {
+    if (disposed) {
+      return
+    }
+    const state = gameStore.getState()
+    if (state.roundLoading) {
+      return
+    }
+    gameStore.update((draft) => {
+      draft.roundLoading = true
+    })
+    try {
+      await ensureEntryBuffer(4)
+      if (disposed) {
+        return
+      }
+      for (let attempt = 0; attempt < 8; attempt += 1) {
+        const entry = entryBuffer.shift()
+        if (!entry) {
+          await ensureEntryBuffer(2)
+          if (disposed) {
+            return
+          }
+          continue
+        }
+        const lookup = buildEntryLookup(entry.translations)
+        const stackConfig = gameStore.getState().stackConfig
+        const { promptLang, answerLang } = pickLanguages(stackConfig)
+        const prompt = pickByLang(lookup.textByCode, promptLang)
+        const answer = pickByLang(lookup.textByCode, answerLang)
+        if (!prompt || !answer) {
+          continue
+        }
+        if (generation !== gameStore.getState().roundGeneration) {
+          return
+        }
+        const promptRomanization = pickByLang(lookup.romByCode, promptLang)
+        const answerRomanization = pickByLang(lookup.romByCode, answerLang)
+        await ensureEntryBuffer(4)
+        if (disposed) {
+          return
+        }
+        const distractors: PhraseSpec[] = []
+        const { maxDistractors } = getSettings()
+        for (
+          let attempt = 0;
+          attempt < 14 && distractors.length < maxDistractors;
+          attempt += 1
+        ) {
+          const candidate = entryBuffer.shift()
+          if (!candidate) {
+            await ensureEntryBuffer(2)
+            if (disposed) {
+              return
+            }
+            continue
+          }
+          const candidateLookup = buildEntryLookup(candidate.translations)
+          const text = pickByLang(candidateLookup.textByCode, answerLang)
+          if (!text || text === answer) {
+            continue
+          }
+          const romanization = pickByLang(candidateLookup.romByCode, answerLang)
+          distractors.push({
+            id: `wrong-${candidate.entry_id}-${Date.now()}`,
+            text,
+            romanization,
+            lang: answerLang,
+            isCorrect: false,
+          })
+        }
+        const roundId = `round-${entry.entry_id}-${Date.now()}`
+        const correct: PhraseSpec = {
+          id: `correct-${roundId}-${Date.now()}`,
+          text: answer,
+          romanization: answerRomanization,
+          lang: answerLang,
+          isCorrect: true,
+        }
+        const nextRound: RoundState = {
+          id: roundId,
+          promptLang,
+          answerLang,
+          prompt,
+          promptRomanization,
+          answer,
+          answerRomanization,
+          choices: shuffle([correct, ...distractors]),
+        }
+        gameStore.update((draft) => {
+          draft.round = nextRound
+          draft.roundSolved = false
+          draft.activePhrase = null
+          draft.lastPhraseId = null
+          draft.lastLane = -1
+          draft.spawnCooldown = getSettings().respawnDelay
+          draft.incorrectStreak = 0
+        })
+        hudPromptLabel.textContent = getPromptLabel()
+        updatePromptText(nextRound)
+        clearSpeakRepeat()
+        if (!disposed) {
+          hostApi.speak(promptLang, prompt)
+          scheduleSpeakRepeat()
+        }
+        return
+      }
+    } finally {
+      gameStore.update((draft) => {
+        draft.roundLoading = false
+      })
+    }
+  }
+
+  const clearActivePhrase = () => {
+    const state = gameStore.getState()
+    if (state.activePhrase) {
+      state.activePhrase.mesh.dispose()
+      gameStore.update((draft) => {
+        draft.activePhrase = null
+      })
+    }
+  }
+
+  const startNewRound = () => {
+    gameStore.update((draft) => {
+      draft.roundGeneration += 1
+      draft.round = null
+      draft.roundSolved = false
+      draft.roundLoading = false
+      draft.lastPhraseId = null
+      draft.lastLane = -1
+      draft.spawnCooldown = 0
+      draft.incorrectStreak = 0
+    })
+    clearActivePhrase()
+    hudPromptLabel.textContent = getPromptLabel()
+    updatePromptText(null)
+    clearSpeakRepeat()
+    void buildRound(gameStore.getState().roundGeneration)
+  }
+
+  const updateStackConfig = (next: StackConfig) => {
+    const prev = gameStore.getState().stackConfig
+    const normalized = {
+      ...next,
+      languages: [...next.languages],
+      domains: [...next.domains],
+      levels: [...next.levels],
+    }
+    gameStore.update((draft) => {
+      draft.stackConfig = normalized
+    })
+    if (prev?.showRomanization !== normalized.showRomanization) {
+      updatePromptText(gameStore.getState().round)
+    }
+  }
+
+  if (hostApi.onStackConfigChange) {
+    stackUnsubscribe = hostApi.onStackConfigChange(updateStackConfig)
+  }
+
+  const updatePromptVisibility = () => {
+    const enabled = showPrompt
+    phraseHud.style.display = enabled ? "flex" : "none"
+    hudPromptLabel.style.display = enabled ? "block" : "none"
+    hudPrompt.style.display = enabled ? "block" : "none"
+    hudPromptRomanization.style.display = enabled ? "block" : "none"
+  }
+
+  function getPromptLabel() {
+    const current = gameStore.getState().round
+    if (current) {
+      return `${current.promptLang.toUpperCase()} → ${current.answerLang.toUpperCase()}`
+    }
+    return "Listen"
+  }
+
+  const setPromptStatus = (text: string, isBad = false) => {
+    if (promptStatusTimeout) {
+      window.clearTimeout(promptStatusTimeout)
+      promptStatusTimeout = null
+    }
+    hudPromptLabel.textContent = text
+    hudPromptLabel.classList.toggle("bad", isBad)
+    promptStatusTimeout = window.setTimeout(() => {
+      hudPromptLabel.textContent = getPromptLabel()
+      hudPromptLabel.classList.remove("bad")
+      promptStatusTimeout = null
+    }, 850)
+  }
+
+  function updatePromptText(nextRound: RoundState | null) {
+    if (!nextRound) {
+      hudPrompt.textContent = "Waiting for phrase..."
+      hudPromptRomanization.textContent = ""
+      return
+    }
+    hudPrompt.textContent = nextRound.prompt
+    if (
+      gameStore.getState().stackConfig?.showRomanization &&
+      nextRound.promptRomanization
+    ) {
+      hudPromptRomanization.textContent = nextRound.promptRomanization
+    } else {
+      hudPromptRomanization.textContent = ""
+    }
+  }
+
+  const clearSpeakRepeat = () => {
+    if (speakRepeatTimeout) {
+      window.clearTimeout(speakRepeatTimeout)
+      speakRepeatTimeout = null
+    }
+  }
+
+  const scheduleSpeakRepeat = () => {
+    clearSpeakRepeat()
+    if (disposed) {
+      return
+    }
+    const state = gameStore.getState()
+    if (!state.round || state.roundSolved) {
+      return
+    }
+    const roundId = state.round.id
+    speakRepeatTimeout = window.setTimeout(() => {
+      if (disposed) {
+        return
+      }
+      const current = gameStore.getState()
+      if (!current.round || current.roundSolved || current.round.id !== roundId) {
+        return
+      }
+      hostApi.speak(current.round.promptLang, current.round.prompt)
+      scheduleSpeakRepeat()
+    }, getSettings().speakRepeatMs)
+  }
+
+  const onPromptToggle = () => {
+    showPrompt = promptToggleInput.checked
+    updatePromptVisibility()
+  }
+  promptToggleInput.addEventListener("change", onPromptToggle)
+  updatePromptVisibility()
+
+  const syncTuningControls = () => {
+    const { settings } = tuningStore.getState()
+    tuningControls.forEach((control) => {
+      const next = settings[control.key] as number
+      if (Number(control.input.value) !== next) {
+        control.input.value = String(next)
+        control.setValue(next)
+      }
+    })
+  }
+
+  const updateStatsHud = () => {
+    const { score, streak, bestStreak } = tuningStore.getState().stats
+    hudScore.textContent = `Score ${score}`
+    hudStreak.textContent = `Streak ${streak} • Best ${bestStreak}`
+  }
+
+  syncTuningControls()
+  updateStatsHud()
+  tuningUnsubscribe = tuningStore.subscribe(() => {
+    syncTuningControls()
+    updateStatsHud()
+  })
+
+  const scheduleNextRound = (delay = 450) => {
+    if (roundTimeout) {
+      window.clearTimeout(roundTimeout)
+    }
+    roundTimeout = window.setTimeout(() => {
+      roundTimeout = null
+      startNewRound()
+    }, delay)
+  }
+
+  const spawnPhrase = (spec: PhraseSpec, lane: number) => {
+    const { mesh, baseWidth, baseHeight } = createPhraseMesh(spec)
+    mesh.position.copyFrom(laneToPosition(lane))
+    gameStore.update((draft) => {
+      draft.activePhrase = { spec, mesh, lane, baseWidth, baseHeight }
+      draft.lastLane = lane
+      draft.lastPhraseId = spec.id
+    })
+  }
+
+  const pickNextPhrase = () => {
+    const state = gameStore.getState()
+    const choices = state.round?.choices ?? []
+    if (!choices.length) {
+      return null
+    }
+    const { correctWeight, maxIncorrectStreak } = getSettings()
+    const correct = choices.find((choice) => choice.isCorrect) ?? null
+    if (correct && state.incorrectStreak >= maxIncorrectStreak) {
+      return correct
+    }
+    let pool = choices
+    if (choices.length > 1 && state.lastPhraseId) {
+      const filtered = choices.filter((choice) => choice.id !== state.lastPhraseId)
+      if (filtered.length) {
+        pool = filtered
+      }
+    }
+    let total = 0
+    const weights = pool.map((choice) => {
+      const weight = choice.isCorrect ? correctWeight : 1
+      total += weight
+      return weight
+    })
+    if (total <= 0) {
+      return pickRandom(pool)
+    }
+    let pick = Math.random() * total
+    for (let i = 0; i < pool.length; i += 1) {
+      pick -= weights[i]
+      if (pick <= 0) {
+        return pool[i]
+      }
+    }
+    return pool[pool.length - 1] ?? null
+  }
+
+  const pickLane = (lastLane: number) => {
+    let lane = Math.floor(Math.random() * 6)
+    if (lane === lastLane) {
+      lane = (lane + 1 + Math.floor(Math.random() * 5)) % 6
+    }
+    return lane
+  }
+
+  const updatePhrases = (dt: number) => {
+    if (disposed) {
+      return
+    }
+    const state = gameStore.getState()
+    if (!state.round && !state.roundLoading) {
+      void buildRound(state.roundGeneration)
+    }
+
+    if (!state.roundSolved && !state.activePhrase) {
+      if (state.spawnCooldown > 0) {
+        gameStore.update((draft) => {
+          draft.spawnCooldown = Math.max(0, draft.spawnCooldown - dt)
+        })
+      }
+      const refreshed = gameStore.getState()
+      if (refreshed.round && !refreshed.activePhrase && refreshed.spawnCooldown <= 0) {
+        const spec = pickNextPhrase()
+        if (spec) {
+          spawnPhrase(spec, pickLane(refreshed.lastLane))
+        }
+      }
+    }
+
+    const current = gameStore.getState().activePhrase
+    if (!current) {
+      return
+    }
+
+    current.mesh.position.z -= getPhraseSpeed() * dt
+    const depth = clamp(
+      (PHRASE_START_Z - current.mesh.position.z) / (PHRASE_START_Z - PHRASE_HIT_Z),
+      0,
+      1
+    )
+    const targetScale = 0.85 + depth * 2.3
+    const { textOverflowFactor } = getSettings()
+    const maxScaleX = (SECTOR.width / current.baseWidth) * textOverflowFactor
+    const maxScaleY = (SECTOR.height / current.baseHeight) * textOverflowFactor
+    const scale = Math.min(targetScale, maxScaleX, maxScaleY)
+    current.mesh.scaling.x = scale
+    current.mesh.scaling.y = scale
+
+    const dx = current.mesh.position.x - hoverboard.root.position.x
+    const dy = current.mesh.position.y - hoverboard.root.position.y
+    const dz = current.mesh.position.z - PHRASE_HIT_Z
+    const isHit = Math.abs(dz) <= PHRASE_HIT_WINDOW && Math.hypot(dx, dy) < 0.6
+    const hasPassed = current.mesh.position.z < PHRASE_HIT_Z - PHRASE_HIT_WINDOW
+
+    if (isHit) {
+      const round = gameStore.getState().round
+      const stackConfig = gameStore.getState().stackConfig
+      clearActivePhrase()
+      gameStore.update((draft) => {
+        draft.spawnCooldown = getSettings().respawnDelay
+      })
+      if (current.spec.isCorrect && round && !gameStore.getState().roundSolved) {
+        gameStore.update((draft) => {
+          draft.roundSolved = true
+          draft.incorrectStreak = 0
+        })
+        sfx.playSuccess()
+        tuningStore.getState().recordCorrect()
+        clearSpeakRepeat()
+        hostApi.stopSpeech?.()
+        hostApi.speak(round.answerLang, round.answer)
+        hudPrompt.textContent = round.answer
+        if (stackConfig?.showRomanization && round.answerRomanization) {
+          hudPromptRomanization.textContent = round.answerRomanization
+        }
+        scheduleNextRound(600)
+      } else if (!current.spec.isCorrect) {
+        gameStore.update((draft) => {
+          draft.incorrectStreak += 1
+        })
+        tuningStore.getState().recordWrong()
+        sfx.playFail()
+        setPromptStatus("Wrong - dodge!", true)
+      }
+      return
+    }
+
+    if (hasPassed) {
+      clearActivePhrase()
+      gameStore.update((draft) => {
+        draft.spawnCooldown = getSettings().respawnDelay
+        if (current.spec.isCorrect) {
+          draft.incorrectStreak = getSettings().maxIncorrectStreak
+        } else {
+          draft.incorrectStreak += 1
+        }
+      })
+      tuningStore.getState().recordDodge()
+      sfx.playSuccess()
+      return
+    }
+
+    if (current.mesh.position.z < PHRASE_END_Z) {
+      clearActivePhrase()
+      gameStore.update((draft) => {
+        draft.spawnCooldown = getSettings().respawnDelay
+        if (current.spec.isCorrect) {
+          draft.incorrectStreak = getSettings().maxIncorrectStreak
+        } else {
+          draft.incorrectStreak += 1
+        }
+      })
+      tuningStore.getState().recordDodge()
+    }
+  }
+
+  startNewRound()
 
   const updatePlayer = (dt: number) => {
     if (input.state.tiltEnabled && input.state.tiltActive) {
@@ -980,6 +1851,7 @@ export const createHoverRunner = (container: HTMLElement) => {
     const dt = Math.min(engine.getDeltaTime() / 1000, 0.05)
     road.update(dt)
     updatePlayer(dt)
+    updatePhrases(dt)
     updatePropField(activeSkin.props, road)
     const farX = road.getFarCenterX()
     camera.setTarget(new Vector3(farX * 0.2, cameraTargetY, 10))
@@ -994,13 +1866,35 @@ export const createHoverRunner = (container: HTMLElement) => {
   window.addEventListener("resize", onResize)
 
   const dispose = () => {
+    disposed = true
+    if (roundTimeout) {
+      window.clearTimeout(roundTimeout)
+      roundTimeout = null
+    }
+    if (promptStatusTimeout) {
+      window.clearTimeout(promptStatusTimeout)
+      promptStatusTimeout = null
+    }
+    clearSpeakRepeat()
+    clearActivePhrase()
+    stackUnsubscribe?.()
+    tuningUnsubscribe?.()
+    hostApi.stopSpeech?.()
     input.dispose()
     window.removeEventListener("resize", onResize)
+    document.removeEventListener("visibilitychange", onVisibilityChange)
+    window.removeEventListener("pointerdown", onWakeLockGesture)
     hudBackdrop.removeEventListener("click", onBackdropClick)
     fabButton.removeEventListener("click", onFabClick)
     hudExit.removeEventListener("click", requestExit)
     skinSelect.removeEventListener("change", onSkinChange)
     skinCycle.removeEventListener("click", onSkinCycle)
+    promptToggleInput.removeEventListener("change", onPromptToggle)
+    if (wakeLock) {
+      void wakeLock.release()
+      wakeLock = null
+    }
+    sfx.dispose()
     engine.stopRenderLoop()
     scene.dispose()
     engine.dispose()

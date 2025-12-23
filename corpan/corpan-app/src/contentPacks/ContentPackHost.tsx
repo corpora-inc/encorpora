@@ -129,6 +129,7 @@ export default function ContentPackHost({
     let activeModule: ContentPackModule | null = null
     let activeInstance: { unmount?: () => void } | void
     let devReloadTimer: number | null = null
+    let retryTimer: number | null = null
     let lastManifestSignature = ""
     let isLoading = false
 
@@ -145,6 +146,10 @@ export default function ContentPackHost({
       if (devReloadTimer) {
         window.clearInterval(devReloadTimer)
         devReloadTimer = null
+      }
+      if (retryTimer) {
+        window.clearTimeout(retryTimer)
+        retryTimer = null
       }
       const instanceToUnmount = activeInstance
       activeModule = null
@@ -252,6 +257,20 @@ export default function ContentPackHost({
               DEV_RELOAD_INTERVAL_MS
             )
           }
+        }
+      } catch (err) {
+        if (cancelled) {
+          return
+        }
+        const message =
+          err instanceof Error ? err.message : "Failed to load content pack"
+        setError(message)
+        setLoadState("error")
+        if (shouldDevReload && !retryTimer) {
+          retryTimer = window.setTimeout(() => {
+            retryTimer = null
+            void load()
+          }, DEV_RELOAD_INTERVAL_MS)
         }
       } finally {
         isLoading = false

@@ -21,13 +21,11 @@ const registerGame = () => {
 
   registry[GAME_ID] = {
     mount: (container, hostApi, initialState) => {
-      void hostApi
-      void initialState
       const scope = globalThis as GlobalScope
       if (scope.__hoverRunner) {
         scope.__hoverRunner.dispose()
       }
-      const instance = createHoverRunner(container)
+      const instance = createHoverRunner(container, hostApi, initialState)
       scope.__hoverRunner = instance
       return {
         unmount: () => instance.dispose(),
