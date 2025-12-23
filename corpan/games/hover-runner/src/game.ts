@@ -1773,14 +1773,21 @@ export const createHoverRunner = (
       clearActivePhrase()
       gameStore.update((draft) => {
         draft.spawnCooldown = getSettings().respawnDelay
-        if (current.spec.isCorrect) {
-          draft.incorrectStreak = getSettings().maxIncorrectStreak
-        } else {
-          draft.incorrectStreak += 1
-        }
       })
-      tuningStore.getState().recordDodge()
-      sfx.playSuccess()
+      if (current.spec.isCorrect) {
+        gameStore.update((draft) => {
+          draft.incorrectStreak = getSettings().maxIncorrectStreak
+        })
+        tuningStore.getState().recordWrong()
+        sfx.playFail()
+        setPromptStatus("Missed!", true)
+      } else {
+        gameStore.update((draft) => {
+          draft.incorrectStreak += 1
+        })
+        tuningStore.getState().recordDodge()
+        sfx.playSuccess()
+      }
       return
     }
 
@@ -1788,13 +1795,21 @@ export const createHoverRunner = (
       clearActivePhrase()
       gameStore.update((draft) => {
         draft.spawnCooldown = getSettings().respawnDelay
-        if (current.spec.isCorrect) {
-          draft.incorrectStreak = getSettings().maxIncorrectStreak
-        } else {
-          draft.incorrectStreak += 1
-        }
       })
-      tuningStore.getState().recordDodge()
+      if (current.spec.isCorrect) {
+        gameStore.update((draft) => {
+          draft.incorrectStreak = getSettings().maxIncorrectStreak
+        })
+        tuningStore.getState().recordWrong()
+        sfx.playFail()
+        setPromptStatus("Missed!", true)
+      } else {
+        gameStore.update((draft) => {
+          draft.incorrectStreak += 1
+        })
+        tuningStore.getState().recordDodge()
+        sfx.playSuccess()
+      }
     }
   }
 
