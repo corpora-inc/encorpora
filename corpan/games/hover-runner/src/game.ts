@@ -501,8 +501,12 @@ const initInput = (
       return
     }
     state.tiltActive = true
-    state.tiltX = clamp(event.gamma / 20, -1, 1)
-    state.tiltY = clamp(-event.beta / 25, -1, 1)
+    state.tiltX = clamp(event.gamma / 16, -1, 1)
+    const minPitch = 52
+    const maxPitch = 62
+    const pitch = clamp(event.beta, minPitch, maxPitch)
+    const normalized = (pitch - minPitch) / (maxPitch - minPitch)
+    state.tiltY = normalized * 2 - 1
   }
 
   const enableTilt = () => {
@@ -553,6 +557,26 @@ export const createHoverRunner = (container: HTMLElement) => {
   const root = document.createElement("div")
   root.className = "hover-runner"
   container.appendChild(root)
+
+  let wakeLock: { release: () => Promise<void> } | null = null
+  const requestWakeLock = async () => {
+    const wakeLockApi = (navigator as typeof navigator & {
+      wakeLock?: { request?: (type: "screen") => Promise<{ release: () => Promise<void> }> }
+    }).wakeLock
+    if (!wakeLockApi?.request) {
+      return
+    }
+    try {
+      wakeLock = await wakeLockApi.request("screen")
+    } catch {
+      // Ignore wake lock failures.
+    }
+  }
+  const onVisibilityChange = () => {
+    if (document.visibilityState === "visible" && !wakeLock) {
+      void requestWakeLock()
+    }
+  }
 
   const canvas = document.createElement("canvas")
   root.appendChild(canvas)
@@ -645,6 +669,14 @@ export const createHoverRunner = (container: HTMLElement) => {
   const onBackdropClick = () => {
     setPanelOpen(false)
   }
+
+  const onWakeLockGesture = () => {
+    void requestWakeLock()
+    window.removeEventListener("pointerdown", onWakeLockGesture)
+  }
+
+  document.addEventListener("visibilitychange", onVisibilityChange)
+  window.addEventListener("pointerdown", onWakeLockGesture)
 
   fabButton.addEventListener("click", onFabClick)
   hudBackdrop.addEventListener("click", onBackdropClick)
