@@ -46,6 +46,7 @@ export type GameStats = {
   bestStreak: number
   allTimeBestStreak: number
   phraseHistory: PhraseHistoryEntry[]
+  coinCount: number
 }
 
 export type TuningState = {
@@ -66,6 +67,8 @@ export type TuningState = {
     targetLang: string,
     correct: boolean
   ) => void
+  addCoins: (count: number) => void
+  removeCoins: (count: number) => void
   resetStats: () => void
 }
 
@@ -110,6 +113,7 @@ export const tuningStore = createStore<TuningState>()(
         bestStreak: 0,
         allTimeBestStreak: 0,
         phraseHistory: [],
+        coinCount: 0,
       },
       setSetting: (key, value) =>
         set((state) => ({
@@ -204,6 +208,20 @@ export const tuningStore = createStore<TuningState>()(
             },
           }
         }),
+      addCoins: (count) =>
+        set((state) => ({
+          stats: {
+            ...state.stats,
+            coinCount: state.stats.coinCount + count,
+          },
+        })),
+      removeCoins: (count) =>
+        set((state) => ({
+          stats: {
+            ...state.stats,
+            coinCount: Math.max(0, state.stats.coinCount - count),
+          },
+        })),
       resetStats: () =>
         set((state) => ({
           stats: {
@@ -212,6 +230,7 @@ export const tuningStore = createStore<TuningState>()(
             bestStreak: 0,
             allTimeBestStreak: state.stats.allTimeBestStreak,
             phraseHistory: state.stats.phraseHistory,
+            coinCount: state.stats.coinCount,
           },
         })),
     }),
