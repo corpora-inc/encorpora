@@ -1,13 +1,19 @@
 import affirmativeUrl from "./assets/sfx/affirmative.wav"
 import nopeUrl from "./assets/sfx/nope.wav"
+import musicUrl from "./assets/sfx/luna.mp3"
 
 type SfxKey = "success" | "fail"
 
 type SfxHandle = {
   unlock: () => void
   setVolume: (volume: number) => void
+  setSfxVolume: (volume: number) => void
+  setMusicVolume: (volume: number) => void
   playSuccess: () => void
   playFail: () => void
+  playMusic: () => void
+  stopMusic: () => void
+  isMusicPlaying: () => boolean
   dispose: () => void
 }
 
@@ -18,6 +24,7 @@ type AudioPoolEntry = {
 
 const MAX_POOL = 4
 export const DEFAULT_SFX_VOLUME = 0.07
+export const DEFAULT_MUSIC_VOLUME = 0.3
 
 const clamp = (value: number, min: number, max: number) =>
   Math.min(Math.max(value, min), max)
@@ -54,14 +61,15 @@ const getPoolAudio = (entry: AudioPoolEntry) => {
 }
 
 const createSfxHandle = (): SfxHandle => {
-  let volume = DEFAULT_SFX_VOLUME
+  let sfxVolume = DEFAULT_SFX_VOLUME
+  let musicVolume = DEFAULT_MUSIC_VOLUME
   const urls: Record<SfxKey, string> = {
     success: affirmativeUrl,
     fail: nopeUrl,
   }
   const htmlPools = new Map<SfxKey, AudioPoolEntry>([
-    ["success", createPool(urls.success, volume)],
-    ["fail", createPool(urls.fail, volume)],
+    ["success", createPool(urls.success, sfxVolume)],
+    ["fail", createPool(urls.fail, sfxVolume)],
   ])
   const AudioCtx =
     typeof window !== "undefined"
@@ -70,7 +78,12 @@ const createSfxHandle = (): SfxHandle => {
             .webkitAudioContext)
       : undefined
   let ctx: AudioContext | null = null
-  let master: GainNode | null = null
+  let sfxGain: GainNode | null = null
+  let musicGain: GainNode | null = null
+  let musicSource: AudioBufferSourceNode | null = null
+  let musicBuffer: AudioBuffer | null = null
+  let musicBufferPromise: Promise<AudioBuffer> | null = null
+  let musicPlaying = false
   const buffers = new Map<SfxKey, AudioBuffer>()
   const bufferPromises = new Map<SfxKey, Promise<AudioBuffer>>()
 
@@ -80,9 +93,14 @@ const createSfxHandle = (): SfxHandle => {
     }
     if (!ctx) {
       ctx = new AudioCtx()
-      master = ctx.createGain()
-      master.gain.value = volume
-      master.connect(ctx.destination)
+      // Create separate gain nodes for SFX and music
+      sfxGain = ctx.createGain()
+      sfxGain.gain.value = sfxVolume
+      sfxGain.connect(ctx.destination)
+
+      musicGain = ctx.createGain()
+      musicGain.gain.value = musicVolume
+      musicGain.connect(ctx.destination)
     }
     return ctx
   }
@@ -122,7 +140,7 @@ const createSfxHandle = (): SfxHandle => {
 
   const playWebAudio = (key: SfxKey) => {
     const context = ensureContext()
-    if (!context || !master) {
+    if (!context || !sfxGain) {
       playHtml(key)
       return
     }
@@ -133,9 +151,76 @@ const createSfxHandle = (): SfxHandle => {
     }
     const source = context.createBufferSource()
     source.buffer = buffer
-    source.connect(master)
+    source.connect(sfxGain)
     source.start()
   }
+
+  const ensureMusicBuffer = () => {
+    if (musicBuffer || musicBufferPromise) {
+      return
+    }
+    const context = ensureContext()
+    if (!context) {
+      return
+    }
+    musicBufferPromise = fetch(musicUrl)
+      .then((res) => res.arrayBuffer())
+      .then((data) => context.decodeAudioData(data))
+      .then((buffer) => {
+        musicBuffer = buffer
+        musicBufferPromise = null
+        console.log("[Audio] Music buffer loaded")
+        return buffer
+      })
+      .catch((err) => {
+        musicBufferPromise = null
+        console.error("[Audio] Failed to load music:", err)
+        throw err
+      })
+  }
+
+  const playMusic = () => {
+    const context = ensureContext()
+    if (!context || !musicGain) {
+      console.warn("[Audio] Cannot play music: no audio context")
+      return
+    }
+    if (musicPlaying) {
+      return // Already playing
+    }
+    if (!musicBuffer) {
+      // Buffer not loaded yet, try again after loading
+      ensureMusicBuffer()
+      if (musicBufferPromise) {
+        musicBufferPromise.then(() => playMusic()).catch(() => {})
+      }
+      return
+    }
+    // Create new source for looped playback
+    musicSource = context.createBufferSource()
+    musicSource.buffer = musicBuffer
+    musicSource.loop = true
+    musicSource.connect(musicGain)
+    musicSource.start()
+    musicPlaying = true
+    console.log("[Audio] Music started")
+  }
+
+  const stopMusic = () => {
+    if (musicSource) {
+      try {
+        musicSource.stop()
+      } catch {
+        // Already stopped
+      }
+      musicSource.disconnect()
+      musicSource = null
+    }
+    musicPlaying = false
+    console.log("[Audio] Music stopped")
+  }
+
+  const isMusicPlaying = () => musicPlaying
 
   const unlock = () => {
     const context = ensureContext()
@@ -147,21 +232,36 @@ const createSfxHandle = (): SfxHandle => {
     }
     ensureBuffer("success")
     ensureBuffer("fail")
+    ensureMusicBuffer()
   }
 
-  const setVolume = (next: number) => {
-    volume = clamp(next, 0, 1)
-    if (master) {
-      master.gain.value = volume
+  const setSfxVolume = (next: number) => {
+    sfxVolume = clamp(next, 0, 1)
+    if (sfxGain) {
+      sfxGain.gain.value = sfxVolume
     }
     htmlPools.forEach((entry) => {
       entry.pool.forEach((audio) => {
-        audio.volume = volume
+        audio.volume = sfxVolume
       })
     })
   }
 
+  const setMusicVolume = (next: number) => {
+    musicVolume = clamp(next, 0, 1)
+    if (musicGain) {
+      musicGain.gain.value = musicVolume
+    }
+  }
+
+  // Legacy setVolume - sets both SFX and music
+  const setVolume = (next: number) => {
+    setSfxVolume(next)
+    setMusicVolume(next)
+  }
+
   const dispose = () => {
+    stopMusic()
     htmlPools.forEach((entry) => {
       entry.pool.forEach((audio) => {
         audio.pause()
@@ -174,7 +274,10 @@ const createSfxHandle = (): SfxHandle => {
       void ctx.close().catch(() => {})
     }
     ctx = null
-    master = null
+    sfxGain = null
+    musicGain = null
+    musicBuffer = null
+    musicBufferPromise = null
     buffers.clear()
     bufferPromises.clear()
   }
@@ -182,8 +285,13 @@ const createSfxHandle = (): SfxHandle => {
   return {
     unlock,
     setVolume,
+    setSfxVolume,
+    setMusicVolume,
     playSuccess: () => playWebAudio("success"),
     playFail: () => playWebAudio("fail"),
+    playMusic,
+    stopMusic,
+    isMusicPlaying,
     dispose,
   }
 }
