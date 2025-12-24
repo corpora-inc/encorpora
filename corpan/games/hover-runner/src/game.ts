@@ -51,6 +51,25 @@ const scaleColor = (color: Color3, factor: number) =>
     clamp(color.b * factor, 0, 1)
   )
 
+/**
+ * Calculate score points based on phrase length
+ * CJK languages (Chinese, Japanese, Korean): character count
+ * Other languages: word count
+ */
+const getPhraseScore = (text: string, lang: string): number => {
+  // Detect CJK languages
+  const isCJK = /^(zh|ja|ko)/i.test(lang)
+
+  if (isCJK) {
+    // For CJK, count characters (excluding spaces and punctuation)
+    return text.replace(/[\s\p{P}]/gu, "").length
+  } else {
+    // For other languages, count words
+    const words = text.trim().split(/\s+/)
+    return words.filter((w) => w.length > 0).length
+  }
+}
+
 const createEmissivePbr = (
   name: string,
   scene: Scene,
@@ -2770,7 +2789,8 @@ export const createHoverRunner = (
           draft.incorrectStreak = 0
         })
         if (tuningStore.getState().settings.sfxEnabled) sfx.playSuccess()
-        tuningStore.getState().recordCorrect()
+        const points = getPhraseScore(round.answer, round.answerLang)
+        tuningStore.getState().recordCorrect(points)
         startCelebration(round)
       } else if (!current.spec.isCorrect) {
         gameStore.update((draft) => {
