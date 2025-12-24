@@ -19,16 +19,31 @@ export type TuningSettings = {
   textScaleFactor: number
   textOverflowFactor: number
   speakRepeatMs: number
+  // Audio settings
+  musicEnabled: boolean
+  sfxEnabled: boolean
+  musicVolume: number
+  sfxVolume: number
 }
 
 export type TuningRuntime = {
   speedDelta: number
 }
 
+export type PhraseHistoryEntry = {
+  id: string
+  sourceLang: string
+  targetLang: string
+  correct: boolean
+  timestamp: number
+}
+
 export type GameStats = {
   score: number
   streak: number
   bestStreak: number
+  allTimeBestStreak: number
+  phraseHistory: PhraseHistoryEntry[]
 }
 
 export type TuningState = {
@@ -40,9 +55,15 @@ export type TuningState = {
     value: TuningSettings[K]
   ) => void
   resetRuntime: () => void
-  recordCorrect: () => void
+  recordCorrect: (points?: number) => void
   recordWrong: () => void
   recordDodge: () => void
+  recordPhraseResult: (
+    id: string,
+    sourceLang: string,
+    targetLang: string,
+    correct: boolean
+  ) => void
   resetStats: () => void
 }
 
@@ -64,6 +85,11 @@ const DEFAULT_SETTINGS: TuningSettings = {
   textScaleFactor: 100,
   textOverflowFactor: 3,
   speakRepeatMs: 5000,
+  // Audio defaults
+  musicEnabled: true,
+  sfxEnabled: true,
+  musicVolume: 0.3,
+  sfxVolume: 0.5,
 }
 
 const clamp = (value: number, min: number, max: number) =>
@@ -74,7 +100,13 @@ export const tuningStore = createStore<TuningState>()(
     (set, get) => ({
       settings: { ...DEFAULT_SETTINGS },
       runtime: { speedDelta: 0 },
-      stats: { score: 0, streak: 0, bestStreak: 0 },
+      stats: {
+        score: 0,
+        streak: 0,
+        bestStreak: 0,
+        allTimeBestStreak: 0,
+        phraseHistory: [],
+      },
       setSetting: (key, value) =>
         set((state) => ({
           settings: {
@@ -86,11 +118,12 @@ export const tuningStore = createStore<TuningState>()(
         set((state) => ({
           runtime: { ...state.runtime, speedDelta: 0 },
         })),
-      recordCorrect: () =>
+      recordCorrect: (points = 1) =>
         set((state) => {
           const nextStreak = state.stats.streak + 1
-          const nextScore = state.stats.score + 1
+          const nextScore = state.stats.score + points
           const nextBest = Math.max(state.stats.bestStreak, nextStreak)
+          const nextAllTimeBest = Math.max(state.stats.allTimeBestStreak, nextStreak)
           const nextSpeed = clamp(
             state.runtime.speedDelta + state.settings.speedStepUp,
             state.settings.phraseSpeedMin - state.settings.basePhraseSpeed,
@@ -98,9 +131,11 @@ export const tuningStore = createStore<TuningState>()(
           )
           return {
             stats: {
+              ...state.stats,
               score: nextScore,
               streak: nextStreak,
               bestStreak: nextBest,
+              allTimeBestStreak: nextAllTimeBest,
             },
             runtime: {
               ...state.runtime,
@@ -131,23 +166,61 @@ export const tuningStore = createStore<TuningState>()(
           const nextStreak = state.stats.streak + 1
           const nextScore = state.stats.score + 1
           const nextBest = Math.max(state.stats.bestStreak, nextStreak)
+          const nextAllTimeBest = Math.max(state.stats.allTimeBestStreak, nextStreak)
           return {
             stats: {
+              ...state.stats,
               score: nextScore,
               streak: nextStreak,
               bestStreak: nextBest,
+              allTimeBestStreak: nextAllTimeBest,
+            },
+          }
+        }),
+      recordPhraseResult: (id, sourceLang, targetLang, correct) =>
+        set((state) => {
+          const entry: PhraseHistoryEntry = {
+            id,
+            sourceLang,
+            targetLang,
+            correct,
+            timestamp: Date.now(),
+          }
+          const MAX_HISTORY = 1000
+          const nextHistory = [...state.stats.phraseHistory, entry]
+          // Keep only the most recent MAX_HISTORY entries (FIFO)
+          const trimmedHistory =
+            nextHistory.length > MAX_HISTORY
+              ? nextHistory.slice(nextHistory.length - MAX_HISTORY)
+              : nextHistory
+          return {
+            stats: {
+              ...state.stats,
+              phraseHistory: trimmedHistory,
             },
           }
         }),
       resetStats: () =>
-        set(() => ({
-          stats: { score: 0, streak: 0, bestStreak: 0 },
+        set((state) => ({
+          stats: {
+            score: 0,
+            streak: 0,
+            bestStreak: 0,
+            allTimeBestStreak: state.stats.allTimeBestStreak,
+            phraseHistory: state.stats.phraseHistory,
+          },
         })),
     }),
     {
       name: "hover-runner-tuning",
       storage: createJSONStorage(() => localStorage),
-      partialize: (state) => ({ settings: state.settings }),
+      partialize: (state) => ({
+        settings: state.settings,
+        stats: {
+          allTimeBestStreak: state.stats.allTimeBestStreak,
+          phraseHistory: state.stats.phraseHistory,
+        },
+      }),
       merge: (persisted, current) => {
         const stored = persisted as Partial<TuningState> | undefined
         return {
@@ -156,6 +229,12 @@ export const tuningStore = createStore<TuningState>()(
           settings: {
             ...current.settings,
             ...(stored?.settings ?? {}),
+          },
+          stats: {
+            ...current.stats,
+            allTimeBestStreak:
+              stored?.stats?.allTimeBestStreak ?? current.stats.allTimeBestStreak,
+            phraseHistory: stored?.stats?.phraseHistory ?? current.stats.phraseHistory,
           },
         }
       },

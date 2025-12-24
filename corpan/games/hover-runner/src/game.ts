@@ -1462,6 +1462,43 @@ export const createHoverRunner = (
     return { row, input, setValue, key }
   }
 
+  // Helper for toggle (checkbox) controls
+  const createToggleControl = (
+    label: string,
+    key: keyof ReturnType<typeof tuningStore.getState>["settings"],
+    helpText: string,
+    onChange?: (checked: boolean) => void
+  ) => {
+    const row = document.createElement("div")
+    row.className = "tuning-row tuning-row-toggle"
+    const labelWrap = document.createElement("div")
+    labelWrap.className = "tuning-label-wrap"
+    const text = document.createElement("div")
+    text.className = "tuning-label"
+    text.textContent = label
+    const help = document.createElement("button")
+    help.type = "button"
+    help.className = "tuning-help"
+    help.textContent = "?"
+    help.dataset.help = helpText
+    help.title = helpText
+    help.setAttribute("aria-label", `${label} info`)
+    labelWrap.append(text, help)
+    const input = document.createElement("input")
+    input.type = "checkbox"
+    input.className = "tuning-checkbox"
+    input.dataset.settingKey = key
+    const current = tuningStore.getState().settings[key] as boolean
+    input.checked = current
+    input.addEventListener("change", () => {
+      tuningStore.getState().setSetting(key, input.checked)
+      onChange?.(input.checked)
+    })
+    row.append(labelWrap, input)
+    tuningPanel.appendChild(row)
+    return { row, input, key }
+  }
+
   const tuningControls = [
     createTuningControl(
       "Speed",
@@ -1561,6 +1598,64 @@ export const createHoverRunner = (
     ),
   ]
 
+  // Audio controls section
+  const audioSectionLabel = document.createElement("div")
+  audioSectionLabel.className = "tuning-section-label"
+  audioSectionLabel.textContent = "Audio"
+  tuningPanel.appendChild(audioSectionLabel)
+
+  // Music toggle
+  createToggleControl(
+    "Music",
+    "musicEnabled",
+    "Enable or disable background music.",
+    (enabled) => {
+      if (enabled) {
+        sfx.playMusic()
+      } else {
+        sfx.stopMusic()
+      }
+    }
+  )
+
+  // SFX toggle
+  createToggleControl(
+    "Sound FX",
+    "sfxEnabled",
+    "Enable or disable sound effects."
+  )
+
+  // Music volume slider
+  createTuningControl(
+    "Music Vol",
+    "musicVolume",
+    0,
+    1,
+    0.05,
+    "Background music volume (0-100%)."
+  )
+
+  // SFX volume slider
+  createTuningControl(
+    "SFX Vol",
+    "sfxVolume",
+    0,
+    1,
+    0.05,
+    "Sound effects volume (0-100%)."
+  )
+
+  // Apply initial audio settings
+  const initSettings = tuningStore.getState().settings
+  sfx.setMusicVolume(initSettings.musicVolume)
+  sfx.setSfxVolume(initSettings.sfxVolume)
+
+  // Subscribe to audio setting changes
+  tuningStore.subscribe((state) => {
+    sfx.setMusicVolume(state.settings.musicVolume)
+    sfx.setSfxVolume(state.settings.sfxVolume)
+  })
+
   const fabButton = document.createElement("button")
   fabButton.className = "hud-fab"
   fabButton.type = "button"
@@ -1616,6 +1711,10 @@ export const createHoverRunner = (
   const onWakeLockGesture = () => {
     void requestWakeLock()
     sfx.unlock()
+    // Start background music after user gesture unlocks audio (if enabled)
+    if (tuningStore.getState().settings.musicEnabled) {
+      sfx.playMusic()
+    }
     window.removeEventListener("pointerdown", onWakeLockGesture)
   }
 
@@ -2670,7 +2769,7 @@ export const createHoverRunner = (
           draft.roundSolved = true
           draft.incorrectStreak = 0
         })
-        sfx.playSuccess()
+        if (tuningStore.getState().settings.sfxEnabled) sfx.playSuccess()
         tuningStore.getState().recordCorrect()
         startCelebration(round)
       } else if (!current.spec.isCorrect) {
@@ -2678,7 +2777,7 @@ export const createHoverRunner = (
           draft.incorrectStreak += 1
         })
         tuningStore.getState().recordWrong()
-        sfx.playFail()
+        if (tuningStore.getState().settings.sfxEnabled) sfx.playFail()
         setPromptStatus("Wrong - dodge!", true)
       }
       return
@@ -2697,7 +2796,7 @@ export const createHoverRunner = (
           draft.incorrectStreak = getSettings().maxIncorrectStreak
         })
         tuningStore.getState().recordWrong()
-        sfx.playFail()
+        if (tuningStore.getState().settings.sfxEnabled) sfx.playFail()
         setPromptStatus("Missed!", true)
         if (round) {
           hostApi.speak(round.answerLang, round.answer)
@@ -2707,7 +2806,7 @@ export const createHoverRunner = (
           draft.incorrectStreak += 1
         })
         tuningStore.getState().recordDodge()
-        sfx.playSuccess()
+        if (tuningStore.getState().settings.sfxEnabled) sfx.playSuccess()
       }
       return
     }
@@ -2725,7 +2824,7 @@ export const createHoverRunner = (
           draft.incorrectStreak = getSettings().maxIncorrectStreak
         })
         tuningStore.getState().recordWrong()
-        sfx.playFail()
+        if (tuningStore.getState().settings.sfxEnabled) sfx.playFail()
         setPromptStatus("Missed!", true)
         if (round) {
           hostApi.speak(round.answerLang, round.answer)
@@ -2735,7 +2834,7 @@ export const createHoverRunner = (
           draft.incorrectStreak += 1
         })
         tuningStore.getState().recordDodge()
-        sfx.playSuccess()
+        if (tuningStore.getState().settings.sfxEnabled) sfx.playSuccess()
       }
     }
   }

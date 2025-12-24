@@ -310,6 +310,28 @@ body {
   width: 100%;
 }
 
+.tuning-row-toggle {
+  grid-template-columns: 1fr auto;
+}
+
+.tuning-row-toggle .tuning-checkbox {
+  width: 18px;
+  height: 18px;
+  accent-color: #7fd6ff;
+  cursor: pointer;
+}
+
+.tuning-section-label {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: #7fd6ff;
+  margin-top: 16px;
+  margin-bottom: 8px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid rgba(127, 214, 255, 0.2);
+}
+
 .hud-toggle {
   display: inline-flex;
   align-items: center;
