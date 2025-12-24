@@ -581,14 +581,17 @@ const createHoverboard = (scene: Scene) => {
       material: PBRMaterial,
       glowMat: StandardMaterial,
       parent: TransformNode = container,
-      withGlow = true
+      withGlow = true,
+      withOutline = true
     ) => {
       mesh.parent = parent
       mesh.material = material
       mesh.isPickable = false
-      mesh.renderOutline = true
-      mesh.outlineColor = outlineColor
-      mesh.outlineWidth = 0.025
+      mesh.renderOutline = withOutline
+      if (withOutline) {
+        mesh.outlineColor = outlineColor
+        mesh.outlineWidth = 0.025
+      }
 
       if (withGlow) {
         const glow = mesh.clone(`${mesh.name}-glow`)
@@ -642,7 +645,7 @@ const createHoverboard = (scene: Scene) => {
       const meshes = result.meshes
       meshes.forEach((mesh) => {
         if (mesh instanceof Mesh) {
-          applyLogoMesh(mesh, earMaterial, accentMaterial, earPivot, false)
+          applyLogoMesh(mesh, earMaterial, accentMaterial, earPivot, false, false)
           earMeshes.push(mesh)
         }
       })

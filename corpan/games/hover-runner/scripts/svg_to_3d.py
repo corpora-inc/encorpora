@@ -7,6 +7,7 @@ Usage: blender --background --python svg_to_3d.py
 """
 
 import math
+import re
 from pathlib import Path
 
 import bpy
@@ -24,7 +25,7 @@ for output_dir in OUTPUT_DIRS:
 TARGET_BASE_WIDTH = 1.35
 PYRAMID_EXTRUDE = 0.12
 EAR_EXTRUDE = 0.07
-SPIRAL_TUBE_RADIUS = 0.01
+SPIRAL_TUBE_RADIUS = 0.004
 STEP_HEIGHT = 0.11
 EAR_LIFT = 0.06
 SPIRAL_FRONT_OFFSET = -0.05
@@ -76,6 +77,220 @@ def split_curve_splines(obj):
                 dup.data.splines.remove(dup.data.splines[spline_index])
         splits.append(dup)
     return splits
+
+
+def poly_area(points):
+    area = 0.0
+    for i in range(len(points) - 1):
+        x1, y1 = points[i]
+        x2, y2 = points[i + 1]
+        area += x1 * y2 - x2 * y1
+    return abs(area) * 0.5
+
+
+def resample_path(points, count):
+    if len(points) < 2:
+        return points
+    distances = [0.0]
+    for i in range(1, len(points)):
+        dx = points[i][0] - points[i - 1][0]
+        dy = points[i][1] - points[i - 1][1]
+        distances.append(distances[-1] + math.hypot(dx, dy))
+    total = distances[-1]
+    if total == 0:
+        return points
+    resampled = []
+    step = total / (count - 1)
+    target = 0.0
+    seg = 1
+    for _ in range(count):
+        while seg < len(distances) - 1 and distances[seg] < target:
+            seg += 1
+        t0 = distances[seg - 1]
+        t1 = distances[seg]
+        if t1 == t0:
+            resampled.append(points[seg])
+        else:
+            ratio = (target - t0) / (t1 - t0)
+            x0, y0 = points[seg - 1]
+            x1, y1 = points[seg]
+            resampled.append((x0 + (x1 - x0) * ratio, y0 + (y1 - y0) * ratio))
+        target += step
+    return resampled
+
+
+def build_centerline(outer, inner, samples=240):
+    outer_sampled = resample_path(outer, samples)
+    inner_sampled = resample_path(inner, samples)
+    centerline = []
+    for a, b in zip(outer_sampled, inner_sampled):
+        centerline.append(((a[0] + b[0]) * 0.5, (a[1] + b[1]) * 0.5))
+    return centerline
+
+
+def parse_svg_path_to_points(d_string, num_samples=200):
+    """
+    Parse an SVG path d attribute and sample it into discrete points.
+    Handles M, L, C, Z commands (the main ones used in the logo).
+    """
+    # Tokenize the path
+    tokens = re.findall(r'[MLCZmlcz]|[-+]?\d*\.?\d+', d_string)
+
+    points = []
+    current = (0.0, 0.0)
+    start = (0.0, 0.0)
+    i = 0
+
+    def get_num():
+        nonlocal i
+        val = float(tokens[i])
+        i += 1
+        return val
+
+    while i < len(tokens):
+        cmd = tokens[i]
+        if cmd in 'MLCZmlcz':
+            i += 1
+        else:
+            # Implicit lineto after M
+            cmd = 'L'
+
+        if cmd == 'M':
+            x, y = get_num(), get_num()
+            current = (x, y)
+            start = current
+            points.append(current)
+        elif cmd == 'm':
+            dx, dy = get_num(), get_num()
+            current = (current[0] + dx, current[1] + dy)
+            start = current
+            points.append(current)
+        elif cmd == 'L':
+            x, y = get_num(), get_num()
+            current = (x, y)
+            points.append(current)
+        elif cmd == 'l':
+            dx, dy = get_num(), get_num()
+            current = (current[0] + dx, current[1] + dy)
+            points.append(current)
+        elif cmd == 'C':
+            # Cubic bezier: sample it
+            x1, y1 = get_num(), get_num()
+            x2, y2 = get_num(), get_num()
+            x3, y3 = get_num(), get_num()
+            p0 = current
+            p1, p2, p3 = (x1, y1), (x2, y2), (x3, y3)
+            # Sample the bezier curve (5 points per segment)
+            for t in [0.2, 0.4, 0.6, 0.8, 1.0]:
+                u = 1 - t
+                bx = u*u*u*p0[0] + 3*u*u*t*p1[0] + 3*u*t*t*p2[0] + t*t*t*p3[0]
+                by = u*u*u*p0[1] + 3*u*u*t*p1[1] + 3*u*t*t*p2[1] + t*t*t*p3[1]
+                points.append((bx, by))
+            current = p3
+        elif cmd == 'c':
+            dx1, dy1 = get_num(), get_num()
+            dx2, dy2 = get_num(), get_num()
+            dx3, dy3 = get_num(), get_num()
+            p0 = current
+            p1 = (current[0] + dx1, current[1] + dy1)
+            p2 = (current[0] + dx2, current[1] + dy2)
+            p3 = (current[0] + dx3, current[1] + dy3)
+            for t in [0.2, 0.4, 0.6, 0.8, 1.0]:
+                u = 1 - t
+                bx = u*u*u*p0[0] + 3*u*u*t*p1[0] + 3*u*t*t*p2[0] + t*t*t*p3[0]
+                by = u*u*u*p0[1] + 3*u*u*t*p1[1] + 3*u*t*t*p2[1] + t*t*t*p3[1]
+                points.append((bx, by))
+            current = p3
+        elif cmd in 'Zz':
+            if current != start:
+                points.append(start)
+            current = start
+
+    return points
+
+
+def extract_centerline_from_outline(points, samples=200):
+    """
+    Extract centerline from an outline path.
+
+    An outline path (from a stroked path converted to fill) traces one edge
+    forward and the other edge backward. We split the path in half, reverse
+    the second half, then average the two edges.
+    """
+    if len(points) < 4:
+        return points
+
+    # Remove duplicate consecutive points
+    cleaned = [points[0]]
+    for p in points[1:]:
+        if abs(p[0] - cleaned[-1][0]) > 0.1 or abs(p[1] - cleaned[-1][1]) > 0.1:
+            cleaned.append(p)
+    points = cleaned
+
+    # The outline path goes: outer edge -> inner edge (reversed)
+    # Split roughly in half
+    n = len(points)
+    half = n // 2
+
+    # First half is one edge
+    edge1 = points[:half]
+    # Second half is other edge, reversed to match direction
+    edge2 = list(reversed(points[half:]))
+
+    # Resample both edges to same number of points
+    edge1_resampled = resample_path(edge1, samples)
+    edge2_resampled = resample_path(edge2, samples)
+
+    # Average to get centerline
+    centerline = []
+    for p1, p2 in zip(edge1_resampled, edge2_resampled):
+        cx = (p1[0] + p2[0]) / 2
+        cy = (p1[1] + p2[1]) / 2
+        centerline.append((cx, cy))
+
+    return centerline
+
+
+def read_svg_spiral_path(svg_path):
+    """Read the spiral path d attribute directly from the SVG file."""
+    with open(svg_path, 'r') as f:
+        content = f.read()
+
+    # Find the spiral path
+    match = re.search(r'<path[^>]*id="spiral"[^>]*d="([^"]+)"', content)
+    if match:
+        return match.group(1)
+
+    # Try alternate format
+    match = re.search(r'<path[^>]*d="([^"]+)"[^>]*id="spiral"', content)
+    if match:
+        return match.group(1)
+
+    return None
+
+
+def create_curve_from_coords(name, coords, flip_y=False, cyclic=False):
+    curve_data = bpy.data.curves.new(name, "CURVE")
+    curve_data.dimensions = "2D"
+    spline = curve_data.splines.new(type="POLY")
+    spline.points.add(len(coords) - 1)
+    for i, (x, y) in enumerate(coords):
+        y_val = -y if flip_y else y
+        spline.points[i].co = (x, y_val, 0, 1)
+    spline.use_cyclic_u = cyclic
+    obj = bpy.data.objects.new(name, curve_data)
+    bpy.context.collection.objects.link(obj)
+    return obj
+
+
+def spline_to_coords(spline):
+    if spline.type == "BEZIER":
+        coords = [(p.co.x, p.co.y) for p in spline.bezier_points]
+    else:
+        coords = [(p.co.x, p.co.y) for p in spline.points]
+    if len(coords) > 1 and coords[0] == coords[-1]:
+        coords = coords[:-1]
+    return coords
 
 
 def curve_bbox_area(obj):
@@ -191,7 +406,7 @@ def main():
     ear_curve = find_curve(curves, "ear")
     spiral_curve = find_curve(curves, "spiral")
 
-    if not base_curve or not ear_curve or not spiral_curve:
+    if not base_curve or not ear_curve:
         print("Missing required curves. Found:")
         for curve in curves:
             print(f"  - {curve.name}")
@@ -214,7 +429,23 @@ def main():
     print("\n👂 Building ear + spiral...")
     ear = convert_curve_to_mesh(ear_curve, EAR_EXTRUDE)
     ear.name = "ear_outer"
-    spiral = convert_curve_to_tube(spiral_curve, SPIRAL_TUBE_RADIUS)
+
+    if not spiral_curve:
+        print("  ERROR: Missing spiral curve in SVG.")
+        return
+
+    # Debug: Print info about the imported spiral curve
+    print(f"  Spiral curve has {len(spiral_curve.data.splines)} spline(s)")
+    for i, spline in enumerate(spiral_curve.data.splines):
+        if spline.type == "BEZIER":
+            print(f"    Spline {i}: BEZIER with {len(spline.bezier_points)} points")
+        else:
+            print(f"    Spline {i}: {spline.type} with {len(spline.points)} points")
+
+    # The spiral is an outlined stroke (filled shape).
+    # Convert it to a thin extruded mesh rather than trying to extract a centerline.
+    # This keeps it in the correct coordinate space relative to the ear.
+    spiral = convert_curve_to_mesh(spiral_curve, EAR_EXTRUDE * 0.5)  # Thinner than ear
     spiral.name = "ear_spiral"
 
     # Ensure steps are ordered largest (base) to smallest (top)
