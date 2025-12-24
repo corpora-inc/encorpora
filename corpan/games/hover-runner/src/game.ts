@@ -946,7 +946,128 @@ const createHoverboard = (scene: Scene) => {
     return board
   })
 
-  const variants = [corpan, neon, desert, glacier]
+  const crystalWave = createVariant("crystal-wave", "Crystal Wave", (pivot) => {
+    // Main hexagonal prism body
+    const prism = MeshBuilder.CreateCylinder(
+      "crystal-prism",
+      { height: 0.6, diameter: 0.5, tessellation: 6 },
+      scene
+    )
+    prism.parent = pivot
+    prism.position.y = 0.4
+    prism.rotation.y = Math.PI / 6
+
+    const prismMaterial = createEmissivePbr(
+      "crystal-prism-mat",
+      scene,
+      new Color3(0.3, 0.15, 0.5),
+      new Color3(0.6, 0.3, 0.9),
+      0.8,
+      0.1
+    )
+    prism.material = prismMaterial
+
+    // Floating crystal shards
+    const createShard = (name: string, x: number, y: number, z: number, scale: number) => {
+      const shard = MeshBuilder.CreateBox(
+        name,
+        { width: 0.08 * scale, height: 0.25 * scale, depth: 0.08 * scale },
+        scene
+      )
+      shard.parent = pivot
+      shard.position.set(x, y, z)
+      shard.rotation.set(
+        Math.random() * Math.PI * 0.3,
+        Math.random() * Math.PI * 2,
+        Math.random() * Math.PI * 0.3
+      )
+
+      const shardMaterial = createEmissivePbr(
+        `${name}-mat`,
+        scene,
+        new Color3(0.5, 0.3, 0.7),
+        new Color3(0.8, 0.5, 1),
+        0.9,
+        0.05
+      )
+      shard.material = shardMaterial
+      return shard
+    }
+
+    createShard("crystal-shard-1", -0.4, 0.6, 0.2, 0.8)
+    createShard("crystal-shard-2", 0.35, 0.5, -0.15, 0.9)
+    createShard("crystal-shard-3", 0.1, 0.75, 0.3, 0.7)
+    createShard("crystal-shard-4", -0.2, 0.3, -0.25, 0.6)
+
+    return prism
+  })
+
+  const solarFlare = createVariant("solar-flare", "Solar Flare", (pivot) => {
+    // Surfboard-style base
+    const board = MeshBuilder.CreateCylinder(
+      "solar-board",
+      { height: 1.8, diameterTop: 0.25, diameterBottom: 0.3, tessellation: 16 },
+      scene
+    )
+    board.parent = pivot
+    board.position.y = 0.12
+    board.rotation.x = Math.PI / 2
+    board.rotation.z = Math.PI / 2
+
+    const boardMaterial = createEmissivePbr(
+      "solar-board-mat",
+      scene,
+      new Color3(0.4, 0.15, 0.05),
+      new Color3(1, 0.4, 0.1),
+      0.3,
+      0.4
+    )
+    board.material = boardMaterial
+
+    // Flame fins
+    const createFlameFin = (name: string, x: number) => {
+      const fin = MeshBuilder.CreateBox(
+        name,
+        { width: 0.08, height: 0.35, depth: 0.25 },
+        scene
+      )
+      fin.parent = pivot
+      fin.position.set(x, 0.12, 0)
+
+      const finMaterial = createEmissivePbr(
+        `${name}-mat`,
+        scene,
+        new Color3(0.5, 0.1, 0.05),
+        new Color3(1, 0.3, 0),
+        0.1,
+        0.3
+      )
+      fin.material = finMaterial
+      return fin
+    }
+
+    createFlameFin("solar-fin-left", -0.7)
+    createFlameFin("solar-fin-right", 0.7)
+
+    // Central orb
+    const orb = MeshBuilder.CreateSphere("solar-orb", { diameter: 0.4 }, scene)
+    orb.parent = pivot
+    orb.position.y = 0.55
+
+    const orbMaterial = createEmissivePbr(
+      "solar-orb-mat",
+      scene,
+      new Color3(0.9, 0.4, 0.1),
+      new Color3(1, 0.6, 0.2),
+      0.1,
+      0.2
+    )
+    orb.material = orbMaterial
+
+    return board
+  })
+
+  const variants = [corpan, neon, desert, glacier, crystalWave, solarFlare]
   let activeVariant = variants[0]
   variants.forEach((variant, index) => {
     variant.pivot.setEnabled(index === 0)
