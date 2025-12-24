@@ -492,7 +492,7 @@ type GameState = {
   roundLoading: boolean
   roundSolved: boolean
   roundGeneration: number
-  activePhrase: PhraseInstance | null
+  activePhrases: PhraseInstance[]
   lastLane: number
   lastPhraseId: string | null
   spawnCooldown: number
@@ -1816,6 +1816,21 @@ export const createHoverRunner = (
     sfx.setSfxVolume(state.settings.sfxVolume)
   })
 
+  // Multi-phrase chaos mode section
+  const multiPhraseSectionLabel = document.createElement("div")
+  multiPhraseSectionLabel.className = "tuning-section-label"
+  multiPhraseSectionLabel.textContent = "Chaos Mode"
+  tuningPanel.appendChild(multiPhraseSectionLabel)
+
+  createTuningControl(
+    "Max Phrases",
+    "maxSimultaneousPhrases",
+    1,
+    5,
+    1,
+    "Maximum simultaneous phrases (1-5). Higher = more chaos!"
+  )
+
   const fabButton = document.createElement("button")
   fabButton.className = "hud-fab"
   fabButton.type = "button"
@@ -2193,7 +2208,7 @@ export const createHoverRunner = (
     roundLoading: false,
     roundSolved: false,
     roundGeneration: 0,
-    activePhrase: null,
+    activePhrases: [],
     lastLane: -1,
     lastPhraseId: null,
     spawnCooldown: 0,
@@ -2630,12 +2645,19 @@ export const createHoverRunner = (
     }
   }
 
-  const clearActivePhrase = () => {
+  const clearActivePhrase = (phrase?: PhraseInstance) => {
     const state = gameStore.getState()
-    if (state.activePhrase) {
-      state.activePhrase.mesh.dispose()
+    if (phrase) {
+      // Remove specific phrase
+      phrase.mesh.dispose()
       gameStore.update((draft) => {
-        draft.activePhrase = null
+        draft.activePhrases = draft.activePhrases.filter((p) => p !== phrase)
+      })
+    } else {
+      // Clear all phrases
+      state.activePhrases.forEach((p) => p.mesh.dispose())
+      gameStore.update((draft) => {
+        draft.activePhrases = []
       })
     }
   }
@@ -2852,7 +2874,7 @@ export const createHoverRunner = (
       draft.round = nextRound
       draft.roundSolved = false
       draft.phase = "intro"
-      draft.activePhrase = null
+      draft.activePhrases = []
       draft.lastPhraseId = null
       draft.lastLane = -1
       draft.spawnCooldown = 0
@@ -2917,8 +2939,9 @@ export const createHoverRunner = (
   const spawnPhrase = (spec: PhraseSpec, lane: number) => {
     const { mesh, baseWidth, baseHeight } = createPhraseMesh(spec)
     mesh.position.copyFrom(laneToPosition(lane))
+    const newPhrase: PhraseInstance = { spec, mesh, lane, baseWidth, baseHeight }
     gameStore.update((draft) => {
-      draft.activePhrase = { spec, mesh, lane, baseWidth, baseHeight }
+      draft.activePhrases.push(newPhrase)
       draft.lastLane = lane
       draft.lastPhraseId = spec.id
     })
@@ -2981,14 +3004,20 @@ export const createHoverRunner = (
       return
     }
 
-    if (!state.roundSolved && !state.activePhrase) {
+    // Spawn new phrases if needed (staggered spawning for chaos mode)
+    const maxPhrases = getSettings().maxSimultaneousPhrases
+    if (!state.roundSolved && state.activePhrases.length < maxPhrases) {
       if (state.spawnCooldown > 0) {
         gameStore.update((draft) => {
           draft.spawnCooldown = Math.max(0, draft.spawnCooldown - dt)
         })
       }
       const refreshed = gameStore.getState()
-      if (refreshed.round && !refreshed.activePhrase && refreshed.spawnCooldown <= 0) {
+      if (
+        refreshed.round &&
+        refreshed.activePhrases.length < maxPhrases &&
+        refreshed.spawnCooldown <= 0
+      ) {
         const spec = pickNextPhrase()
         if (spec) {
           spawnPhrase(spec, pickLane(refreshed.lastLane))
@@ -2996,12 +3025,15 @@ export const createHoverRunner = (
       }
     }
 
-    const current = gameStore.getState().activePhrase
-    if (!current) {
+    const activePhrases = gameStore.getState().activePhrases
+    if (activePhrases.length === 0) {
       electricTarget = null
       electricIntensity = 0
       return
     }
+
+    // Process each active phrase
+    for (const current of activePhrases) {
 
     current.mesh.position.z -= getPhraseSpeed() * dt
     const depth = clamp(
@@ -3048,7 +3080,7 @@ export const createHoverRunner = (
     if (isHit) {
       const round = gameStore.getState().round
       const phrasePosition = current.mesh.position.clone()
-      clearActivePhrase()
+      clearActivePhrase(current)
       electricTarget = null
       electricIntensity = 0
       gameStore.update((draft) => {
@@ -3074,12 +3106,12 @@ export const createHoverRunner = (
         triggerScreenShake()
         setPromptStatus("Wrong - dodge!", true)
       }
-      return
+      continue
     }
 
     if (hasPassed) {
       const passedPosition = current.mesh.position.clone()
-      clearActivePhrase()
+      clearActivePhrase(current)
       electricTarget = null
       electricIntensity = 0
       gameStore.update((draft) => {
@@ -3105,12 +3137,12 @@ export const createHoverRunner = (
         tuningStore.getState().recordDodge()
         if (tuningStore.getState().settings.sfxEnabled) sfx.playSuccess()
       }
-      return
+      continue
     }
 
     if (current.mesh.position.z < PHRASE_END_Z) {
       const endPosition = current.mesh.position.clone()
-      clearActivePhrase()
+      clearActivePhrase(current)
       electricTarget = null
       electricIntensity = 0
       gameStore.update((draft) => {
@@ -3136,6 +3168,7 @@ export const createHoverRunner = (
         tuningStore.getState().recordDodge()
         if (tuningStore.getState().settings.sfxEnabled) sfx.playSuccess()
       }
+    }
     }
   }
 

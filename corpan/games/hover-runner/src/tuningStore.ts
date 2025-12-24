@@ -24,6 +24,8 @@ export type TuningSettings = {
   sfxEnabled: boolean
   musicVolume: number
   sfxVolume: number
+  // Multi-phrase settings
+  maxSimultaneousPhrases: number
 }
 
 export type TuningRuntime = {
@@ -90,6 +92,8 @@ const DEFAULT_SETTINGS: TuningSettings = {
   sfxEnabled: true,
   musicVolume: 0.3,
   sfxVolume: 0.5,
+  // Multi-phrase defaults
+  maxSimultaneousPhrases: 1,
 }
 
 const clamp = (value: number, min: number, max: number) =>
