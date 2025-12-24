@@ -1,8 +1,9 @@
 import {
+  Camera,
   Color3,
   Color4,
-  DynamicTexture,
   DirectionalLight,
+  DynamicTexture,
   Engine,
   GlowLayer,
   HemisphericLight,
@@ -10,7 +11,10 @@ import {
   Mesh,
   MeshBuilder,
   PBRMaterial,
+  PointLight,
+  Quaternion,
   Scene,
+  SceneLoader,
   ShadowGenerator,
   StandardMaterial,
   TransformNode,
@@ -18,9 +22,18 @@ import {
   UniversalCamera,
   Vector3,
 } from "@babylonjs/core"
+import "@babylonjs/loaders/glTF"
 import { getSfx } from "./audio"
 import { tuningStore } from "./tuningStore"
 import type { EntryOut, HostApi, StackConfig, TranslationOut } from "./sdk/types"
+
+// Import Corpán logo meshes as bundled assets (offline-first)
+import pyramidStep1Url from "./assets/models/pyramid_step_1.glb"
+import pyramidStep2Url from "./assets/models/pyramid_step_2.glb"
+import pyramidStep3Url from "./assets/models/pyramid_step_3.glb"
+import pyramidStep4Url from "./assets/models/pyramid_step_4.glb"
+import earOuterUrl from "./assets/models/ear_outer.glb"
+import earSpiralUrl from "./assets/models/ear_spiral.glb"
 
 const clamp = (value: number, min: number, max: number) =>
   Math.min(Math.max(value, min), max)
@@ -54,6 +67,17 @@ const createEmissivePbr = (
   return material
 }
 
+const tuneLogoMaterial = (material: PBRMaterial, sheenBoost = 1.15) => {
+  material.clearCoat.isEnabled = true
+  material.clearCoat.intensity = 0.9
+  material.clearCoat.roughness = 0.08
+  material.clearCoat.indexOfRefraction = 1.52
+  material.sheen.isEnabled = true
+  material.sheen.intensity = 0.35
+  material.sheen.color = scaleColor(material.albedoColor, sheenBoost)
+  material.emissiveColor = scaleColor(material.emissiveColor, 1.15)
+}
+
 const getSettings = () => tuningStore.getState().settings
 
 const getPhraseSpeed = () => {
@@ -74,14 +98,14 @@ const GRID = {
   leftX: -2,
   rightX: 2,
   topY: 2,
-  midY: -0.25,
-  bottomY: -2.5,
+  midY: -0.,
+  bottomY: -2,
   z: 0.18,
 }
 
 const SECTOR = {
   width: Math.abs(GRID.rightX - GRID.leftX) * 0.95,
-  height: Math.abs(GRID.topY - GRID.midY) * 0.95,
+  height: Math.abs(GRID.topY - GRID.midY) * 1.05,
 }
 
 const ROAD = {
@@ -118,6 +142,11 @@ const rowToY = (row: number) => {
 }
 
 const normalizeLang = (lang: string) => lang.trim().toLowerCase()
+
+const isNoSpaceLanguage = (lang: string) => {
+  const base = normalizeLang(lang).split("-")[0]
+  return ["zh", "ja", "ko", "th", "lo", "km", "my"].includes(base)
+}
 
 const pickByLang = (map: Record<string, string>, lang: string) => {
   const desired = normalizeLang(lang)
@@ -461,6 +490,18 @@ const createGameStore = <T extends Record<string, unknown>>(
 
 const createHoverboard = (scene: Scene) => {
   const root = new TransformNode("hover-root", scene)
+  let corpanRig:
+    | {
+        container: TransformNode
+        earPivot: TransformNode
+        earFacingOffset: Quaternion
+        rings: Mesh[]
+        glowMats: StandardMaterial[]
+        baseGlow: Color3
+        baseAccent: Color3
+        light: PointLight
+      }
+    | null = null
 
   const createVariant = (
     id: string,
@@ -472,6 +513,232 @@ const createHoverboard = (scene: Scene) => {
     const board = build(pivot)
     return { id, name, pivot, board }
   }
+
+  const corpan = createVariant("corpan", "Corpán Signal", (pivot) => {
+    const clay = new Color3(0.835, 0.416, 0.102) // #d56a1a - brand color
+
+    const boardMaterial = createEmissivePbr(
+      "corpan-board-mat",
+      scene,
+      clay,
+      scaleColor(clay, 0.35),
+      0.6,
+      0.35
+    )
+    tuneLogoMaterial(boardMaterial, 1.1)
+
+    const earMaterial = createEmissivePbr(
+      "corpan-ear-mat",
+      scene,
+      clay,
+      scaleColor(clay, 0.4),
+      0.5,
+      0.4
+    )
+    tuneLogoMaterial(earMaterial, 1.1)
+
+    const glowMaterial = new StandardMaterial("corpan-glow-mat", scene)
+    glowMaterial.emissiveColor = scaleColor(clay, 1.05)
+    glowMaterial.disableLighting = true
+    glowMaterial.alpha = 0.5
+
+    const accentMaterial = new StandardMaterial("corpan-accent-mat", scene)
+    accentMaterial.emissiveColor = scaleColor(clay, 0.9)
+    accentMaterial.disableLighting = true
+    accentMaterial.alpha = 0.6
+
+    const ringMaterial = new StandardMaterial("corpan-ring-mat", scene)
+    ringMaterial.emissiveColor = scaleColor(clay, 0.85)
+    ringMaterial.disableLighting = true
+    ringMaterial.alpha = 0.65
+
+    const container = new TransformNode("corpan-logo-container", scene)
+    container.parent = pivot
+
+    const earPivot = new TransformNode("corpan-ear-pivot", scene)
+    earPivot.parent = container
+    earPivot.rotationQuaternion = Quaternion.Identity()
+    const earFacingOffset = Quaternion.RotationAxis(Vector3.Up(), Math.PI)
+    const earMeshes: Mesh[] = []
+
+    const board = MeshBuilder.CreateBox(
+      "corpan-rig",
+      { width: 1.4, height: 0.08, depth: 0.9 },
+      scene
+    )
+    board.parent = pivot
+    board.position.y = 0.08
+    board.visibility = 0
+
+    container.parent = board
+    container.position.y = 0.06
+
+    // Load the 4 pyramid steps using bundled URLs (offline-ready)
+    const stepUrls = [pyramidStep1Url, pyramidStep2Url, pyramidStep3Url, pyramidStep4Url]
+    const outlineColor = scaleColor(clay, 1.1)
+    const applyLogoMesh = (
+      mesh: Mesh,
+      material: PBRMaterial,
+      glowMat: StandardMaterial,
+      parent: TransformNode = container,
+      withGlow = true
+    ) => {
+      mesh.parent = parent
+      mesh.material = material
+      mesh.isPickable = false
+      mesh.renderOutline = true
+      mesh.outlineColor = outlineColor
+      mesh.outlineWidth = 0.025
+
+      if (withGlow) {
+        const glow = mesh.clone(`${mesh.name}-glow`)
+        if (glow) {
+          glow.parent = parent
+          glow.material = glowMat
+          glow.position.copyFrom(mesh.position)
+          glow.rotation.copyFrom(mesh.rotation)
+          glow.scaling = mesh.scaling.scale(1.03)
+          glow.isPickable = false
+        }
+      }
+    }
+
+    const stepPromises = stepUrls.map((url) =>
+      SceneLoader.ImportMeshAsync("", url, "", scene).then((result) => {
+        const meshes = result.meshes
+        meshes.forEach((mesh) => {
+          if (mesh instanceof Mesh) {
+            applyLogoMesh(mesh, boardMaterial, glowMaterial)
+          }
+        })
+        return meshes[0]
+      })
+    )
+
+    // Load the ear outer contour
+    const earOuterPromise = SceneLoader.ImportMeshAsync(
+      "",
+      earOuterUrl,
+      "",
+      scene
+    ).then((result) => {
+      const meshes = result.meshes
+      meshes.forEach((mesh) => {
+        if (mesh instanceof Mesh) {
+          applyLogoMesh(mesh, earMaterial, accentMaterial, earPivot, false)
+          earMeshes.push(mesh)
+        }
+      })
+      return meshes[0]
+    })
+
+    // Load the ear spiral (inner detail)
+    const earSpiralPromise = SceneLoader.ImportMeshAsync(
+      "",
+      earSpiralUrl,
+      "",
+      scene
+    ).then((result) => {
+      const meshes = result.meshes
+      meshes.forEach((mesh) => {
+        if (mesh instanceof Mesh) {
+          applyLogoMesh(mesh, earMaterial, accentMaterial, earPivot, false)
+          earMeshes.push(mesh)
+        }
+      })
+      return meshes[0]
+    })
+
+    const outerRing = MeshBuilder.CreateTorus(
+      "corpan-ring-outer",
+      { diameter: 1.65, thickness: 0.018, tessellation: 96 },
+      scene
+    )
+    outerRing.parent = board
+    outerRing.position.y = 0.12
+    outerRing.rotation.x = Math.PI / 2
+    outerRing.material = ringMaterial
+
+    const innerRing = MeshBuilder.CreateTorus(
+      "corpan-ring-inner",
+      { diameter: 1.1, thickness: 0.012, tessellation: 84 },
+      scene
+    )
+    innerRing.parent = board
+    innerRing.position.y = 0.38
+    innerRing.rotation.x = Math.PI / 2
+    innerRing.material = ringMaterial
+
+    const crownRing = MeshBuilder.CreateTorus(
+      "corpan-ring-crown",
+      { diameter: 0.82, thickness: 0.01, tessellation: 72 },
+      scene
+    )
+    crownRing.parent = board
+    crownRing.position.y = 0.62
+    crownRing.rotation.x = Math.PI / 2
+    crownRing.material = accentMaterial
+
+    // Wait for all meshes to load
+    Promise.all([...stepPromises, earOuterPromise, earSpiralPromise])
+      .then((loadedMeshes) => {
+        if (earMeshes.length) {
+          container.computeWorldMatrix(true)
+          earMeshes.forEach((mesh) => mesh.computeWorldMatrix(true))
+          const toContainer = container.getWorldMatrix().clone().invert()
+          let min = new Vector3(
+            Number.POSITIVE_INFINITY,
+            Number.POSITIVE_INFINITY,
+            Number.POSITIVE_INFINITY
+          )
+          let max = new Vector3(
+            Number.NEGATIVE_INFINITY,
+            Number.NEGATIVE_INFINITY,
+            Number.NEGATIVE_INFINITY
+          )
+          earMeshes.forEach((mesh) => {
+            const bounds = mesh.getBoundingInfo().boundingBox
+            bounds.vectorsWorld.forEach((corner) => {
+              const local = Vector3.TransformCoordinates(corner, toContainer)
+              min = Vector3.Minimize(min, local)
+              max = Vector3.Maximize(max, local)
+            })
+          })
+          const center = min.add(max).scale(0.5)
+          earPivot.position.copyFrom(center)
+          earMeshes.forEach((mesh) => {
+            mesh.position.subtractInPlace(center)
+          })
+        }
+        console.log("✓ Corpán logo meshes loaded:", loadedMeshes.length)
+      })
+      .catch((error) => {
+        console.error("Failed to load Corpán logo meshes:", error)
+      })
+
+    const logoLight = new PointLight(
+      "corpan-logo-light",
+      new Vector3(0, 0.6, 0.4),
+      scene
+    )
+    logoLight.parent = board
+    logoLight.diffuse = new Color3(1, 0.72, 0.4)
+    logoLight.intensity = 0.85
+    logoLight.range = 6
+
+    corpanRig = {
+      container,
+      earPivot,
+      earFacingOffset,
+      rings: [outerRing, innerRing, crownRing],
+      glowMats: [glowMaterial, accentMaterial, ringMaterial],
+      baseGlow: clay,
+      baseAccent: clay,
+      light: logoLight,
+    }
+
+    return board
+  })
 
   const neon = createVariant("neon", "Neon Drift", (pivot) => {
     const board = MeshBuilder.CreateBox(
@@ -637,7 +904,7 @@ const createHoverboard = (scene: Scene) => {
     return board
   })
 
-  const variants = [neon, desert, glacier]
+  const variants = [corpan, neon, desert, glacier]
   let activeVariant = variants[0]
   variants.forEach((variant, index) => {
     variant.pivot.setEnabled(index === 0)
@@ -659,7 +926,187 @@ const createHoverboard = (scene: Scene) => {
     setVariant,
     getActivePivot: () => activeVariant.pivot,
     getActiveBoard: () => activeVariant.board,
+    updateLogo: (time: number, camera?: Camera | null) => {
+      if (!corpanRig || activeVariant.id !== "corpan") {
+        return
+      }
+      const pulse = 0.65 + Math.sin(time * 2.2) * 0.2
+      const glow = scaleColor(corpanRig.baseGlow, 0.85 + pulse * 0.45)
+      const accent = scaleColor(corpanRig.baseAccent, 0.9 + pulse * 0.6)
+      corpanRig.glowMats[0].emissiveColor.copyFrom(glow)
+      corpanRig.glowMats[1].emissiveColor.copyFrom(accent)
+      corpanRig.glowMats[2].emissiveColor.copyFrom(
+        scaleColor(corpanRig.baseAccent, 0.7 + pulse * 0.8)
+      )
+      corpanRig.rings[0].rotation.z = time * 0.35
+      corpanRig.rings[1].rotation.z = -time * 0.55
+      corpanRig.rings[2].rotation.z = time * 0.28
+      corpanRig.container.rotation.y = Math.sin(time * 0.65) * 0.08
+      corpanRig.container.rotation.x = Math.sin(time * 0.8) * 0.05
+      corpanRig.light.intensity = 0.75 + pulse * 0.45
+      if (camera) {
+        const forward = camera.position.subtract(
+          corpanRig.earPivot.getAbsolutePosition()
+        )
+        forward.y = 0
+        if (forward.lengthSquared() > 0.0001) {
+          forward.normalize()
+          const yaw = Math.atan2(forward.x, forward.z)
+          const target = Quaternion.FromEulerAngles(0, yaw, 0)
+          const desired = target.multiply(corpanRig.earFacingOffset)
+          const current =
+            corpanRig.earPivot.rotationQuaternion ?? Quaternion.Identity()
+          corpanRig.earPivot.rotationQuaternion = Quaternion.Slerp(
+            current,
+            desired,
+            0.18
+          )
+        }
+      }
+    },
   }
+}
+
+type ElectricField = {
+  root: TransformNode
+  update: (dt: number, target: Mesh | null, intensity: number) => void
+  setColor: (color: Color3) => void
+}
+
+const createElectricField = (
+  scene: Scene,
+  parent: TransformNode,
+  baseColor: Color3
+): ElectricField => {
+  const root = new TransformNode("electric-field", scene)
+  root.parent = parent
+  root.position.y = 0.2
+
+  const core = MeshBuilder.CreateSphere(
+    "electric-core",
+    { diameter: 0.25, segments: 12 },
+    scene
+  )
+  core.parent = root
+  core.position.y = 0.45
+  core.isPickable = false
+
+  const coreMat = new StandardMaterial("electric-core-mat", scene)
+  coreMat.emissiveColor = baseColor.clone()
+  coreMat.disableLighting = true
+  core.material = coreMat
+
+  const buildArc = (
+    index: number,
+    label: string,
+    radius: number,
+    pointCount: number,
+    reachScale: number
+  ) => {
+    const points = Array.from({ length: pointCount }, () => new Vector3())
+    const mesh = MeshBuilder.CreateTube(
+      `electric-arc-${label}-${index}`,
+      {
+        path: points,
+        radius,
+        tessellation: 6,
+        updatable: true,
+      },
+      scene
+    )
+    mesh.parent = root
+    mesh.isPickable = false
+    const material = new StandardMaterial(`electric-arc-mat-${label}-${index}`, scene)
+    material.emissiveColor = baseColor.clone()
+    material.disableLighting = true
+    material.alpha = 0.85
+    mesh.material = material
+    return {
+      mesh,
+      points,
+      material,
+      seed: Math.random() * Math.PI * 2,
+      phase: Math.random() * Math.PI * 2,
+      reachScale,
+    }
+  }
+
+  const arcs = [
+    ...Array.from({ length: 12 }, (_, index) =>
+      buildArc(index, "main", 0.01, 16, 1)
+    ),
+    ...Array.from({ length: 8 }, (_, index) =>
+      buildArc(index, "branch", 0.006, 12, 0.65)
+    ),
+  ]
+
+  let time = 0
+  let currentColor = baseColor.clone()
+
+  const setColor = (color: Color3) => {
+    currentColor = color.clone()
+    coreMat.emissiveColor = scaleColor(currentColor, 1.35)
+    arcs.forEach((arc) => {
+      arc.material.emissiveColor = scaleColor(currentColor, 1.25)
+    })
+  }
+
+  const update = (dt: number, target: Mesh | null, intensity: number) => {
+    time += dt
+    const targetWorld = target?.getAbsolutePosition() ?? null
+    const rootWorld = root.getAbsolutePosition()
+    const targetLocal = targetWorld ? targetWorld.subtract(rootWorld) : null
+    const reach = clamp(intensity, 0, 1)
+
+    arcs.forEach((arc, index) => {
+      const start = new Vector3(0, 0.45, 0)
+      const theta = arc.seed + time * 0.9 + index * 0.4
+      const phi = arc.phase + time * 0.7 + index * 0.2
+      const sphereRadius = 0.85 + Math.sin(time * 1.4 + arc.seed) * 0.15
+      const randomEnd = new Vector3(
+        Math.cos(theta) * Math.sin(phi),
+        Math.cos(phi),
+        Math.sin(theta) * Math.sin(phi)
+      ).scale(sphereRadius).addInPlace(start)
+
+      let end = randomEnd
+      if (targetLocal && index < 5) {
+        end = Vector3.Lerp(randomEnd, targetLocal, reach * arc.reachScale)
+      }
+
+      const dir = end.subtract(start)
+      const axis = Math.abs(dir.y) > 0.9 ? Vector3.Right() : Vector3.Up()
+      const orthoA = Vector3.Cross(dir, axis).normalize()
+      const orthoB = Vector3.Cross(dir, orthoA).normalize()
+
+      for (let i = 0; i < arc.points.length; i += 1) {
+        const t = i / (arc.points.length - 1)
+        const wobble =
+          Math.sin(t * 14 + time * 11 + arc.seed) * 0.1 +
+          Math.cos(t * 18 + time * 9 + arc.phase) * 0.08
+        const twist = Math.sin(t * 20 + time * 12 + arc.phase) * 0.09
+        const fade = (1 - t) * 0.9 + 0.1
+        const offset = orthoA
+          .scale(wobble * fade)
+          .add(orthoB.scale(twist * fade))
+        const point = start.add(dir.scale(t)).add(offset)
+        arc.points[i].copyFrom(point)
+      }
+
+      MeshBuilder.CreateTube(
+        arc.mesh.name,
+        { path: arc.points, instance: arc.mesh }
+      )
+      arc.material.emissiveColor = scaleColor(
+        currentColor,
+        1.05 + reach * 0.75
+      )
+    })
+  }
+
+  setColor(baseColor)
+
+  return { root, update, setColor }
 }
 
 type SceneProp = {
@@ -1235,6 +1682,11 @@ export const createHoverRunner = (
   const road = createRoad(scene)
   const hoverboard = createHoverboard(scene)
   hoverboard.root.position = new Vector3(GRID.leftX, GRID.bottomY, GRID.z)
+  const electricField = createElectricField(
+    scene,
+    hoverboard.root,
+    new Color3(0.35, 0.9, 1)
+  )
 
   const neonRoot = new TransformNode("env-neon", scene)
   const desertRoot = new TransformNode("env-desert", scene)
@@ -1340,7 +1792,7 @@ export const createHoverRunner = (
     {
       id: "neon",
       name: "Neon Drift",
-      variantId: "neon",
+      variantId: "corpan",
       envRoot: neonRoot,
       props: neonProps,
       palette: {
@@ -1363,7 +1815,7 @@ export const createHoverRunner = (
     {
       id: "desert",
       name: "Sunset Skimmer",
-      variantId: "desert",
+      variantId: "corpan",
       envRoot: desertRoot,
       props: desertProps,
       palette: {
@@ -1386,7 +1838,7 @@ export const createHoverRunner = (
     {
       id: "glacier",
       name: "Glacier Pulse",
-      variantId: "glacier",
+      variantId: "corpan",
       envRoot: glacierRoot,
       props: glacierProps,
       palette: {
@@ -1420,6 +1872,7 @@ export const createHoverRunner = (
     scene.clearColor = next.sky
     sky.setColor(next.sky)
     scene.fogColor = new Color3(next.sky.r, next.sky.g, next.sky.b)
+    electricField.setColor(next.palette.center)
     hemi.intensity = next.hemi.intensity
     hemi.diffuse = next.hemi.diffuse
     hemi.groundColor = next.hemi.ground
@@ -1468,6 +1921,9 @@ export const createHoverRunner = (
   const velocity = new Vector3()
   const lastPos = hoverboard.root.position.clone()
   let hoverTime = 0
+  let electricTarget: Mesh | null = null
+  let electricIntensity = 0
+  let highlightTime = 0
 
   const gameStore = createGameStore<GameState>({
     stackConfig: initialState?.stackConfig ?? hostApi.getStackConfig(),
@@ -1525,8 +1981,20 @@ export const createHoverRunner = (
   const createPhraseMesh = (spec: PhraseSpec) => {
     const scale = getTextScale() * 1.45 * getSettings().textScaleFactor
     const maxChars = 18
-    const wrapText = (text: string) => {
-      const words = text.split(/\s+/).filter(Boolean)
+    const wrapText = (text: string, lang?: string) => {
+      const trimmed = text.trim()
+      if (!trimmed) {
+        return []
+      }
+      if (lang && isNoSpaceLanguage(lang)) {
+        const chars = Array.from(trimmed)
+        const lines: string[] = []
+        for (let i = 0; i < chars.length; i += maxChars) {
+          lines.push(chars.slice(i, i + maxChars).join(""))
+        }
+        return lines.slice(0, 3)
+      }
+      const words = trimmed.split(/\s+/).filter(Boolean)
       const lines: string[] = []
       let current = ""
       words.forEach((word) => {
@@ -1544,7 +2012,7 @@ export const createHoverRunner = (
       return lines.slice(0, 3)
     }
 
-    const lines = wrapText(spec.text)
+    const lines = wrapText(spec.text, spec.lang)
     const romLines =
       spec.romanization && gameStore.getState().stackConfig?.showRomanization
         ? wrapText(spec.romanization)
@@ -1614,7 +2082,8 @@ export const createHoverRunner = (
     material.opacityTexture = texture
     material.useAlphaFromDiffuseTexture = true
     material.specularColor = new Color3(0.02, 0.04, 0.08)
-    material.emissiveColor = new Color3(0.35, 0.6, 0.95)
+    const baseEmissive = new Color3(0.35, 0.6, 0.95)
+    material.emissiveColor = baseEmissive.clone()
 
     const mesh = MeshBuilder.CreatePlane(
       `phrase-${spec.id}`,
@@ -1622,11 +2091,24 @@ export const createHoverRunner = (
       scene
     )
     mesh.material = material
+    mesh.metadata = { baseEmissive }
     mesh.billboardMode = Mesh.BILLBOARDMODE_ALL
     mesh.isPickable = false
     mesh.parent = phraseRoot
     mesh.scaling.z = 0.35
     return { mesh, baseWidth: planeWidth, baseHeight: planeHeight }
+  }
+
+  const setPhraseHighlight = (mesh: Mesh, strength: number) => {
+    const material = mesh.material
+    if (!(material instanceof StandardMaterial)) {
+      return
+    }
+    const base =
+      (mesh.metadata as { baseEmissive?: Color3 } | undefined)?.baseEmissive ??
+      material.emissiveColor
+    const boosted = scaleColor(base, 1 + strength * 1.4)
+    material.emissiveColor.copyFrom(boosted)
   }
 
   const laneToPosition = (lane: number) => {
@@ -2125,6 +2607,8 @@ export const createHoverRunner = (
 
     const current = gameStore.getState().activePhrase
     if (!current) {
+      electricTarget = null
+      electricIntensity = 0
       return
     }
 
@@ -2157,6 +2641,12 @@ export const createHoverRunner = (
           ? 1
           : 2
     const hoverLane = hoverRow * 2 + hoverCol
+    highlightTime += dt
+    const laneMatch = hoverLane === current.lane
+    const pulse = 0.55 + Math.sin(highlightTime * 7) * 0.35
+    setPhraseHighlight(current.mesh, laneMatch ? pulse : 0)
+    electricTarget = laneMatch ? current.mesh : null
+    electricIntensity = laneMatch ? 1 : 0
     const isHit =
       Math.abs(dz) <= PHRASE_HIT_WINDOW &&
       (isTiltActive
@@ -2167,6 +2657,8 @@ export const createHoverRunner = (
     if (isHit) {
       const round = gameStore.getState().round
       clearActivePhrase()
+      electricTarget = null
+      electricIntensity = 0
       gameStore.update((draft) => {
         draft.spawnCooldown = getSettings().respawnDelay
       })
@@ -2191,6 +2683,8 @@ export const createHoverRunner = (
 
     if (hasPassed) {
       clearActivePhrase()
+      electricTarget = null
+      electricIntensity = 0
       gameStore.update((draft) => {
         draft.spawnCooldown = getSettings().respawnDelay
       })
@@ -2217,6 +2711,8 @@ export const createHoverRunner = (
 
     if (current.mesh.position.z < PHRASE_END_Z) {
       clearActivePhrase()
+      electricTarget = null
+      electricIntensity = 0
       gameStore.update((draft) => {
         draft.spawnCooldown = getSettings().respawnDelay
       })
@@ -2266,6 +2762,8 @@ export const createHoverRunner = (
     const activeBoard = hoverboard.getActiveBoard()
     activePivot.position.y = 0.08 + Math.sin(hoverTime * 5) * 0.03
 
+    hoverboard.updateLogo?.(hoverTime, camera)
+
     activeBoard.rotation.z = clamp(-velocity.x * 4, -0.45, 0.45)
     activeBoard.rotation.x = clamp(velocity.y * 6, -0.35, 0.35)
   }
@@ -2297,6 +2795,7 @@ export const createHoverRunner = (
       updatePlayer(dt)
       updatePhrases(dt)
       updatePropField(activeSkin.props, road)
+      electricField.update(dt, electricTarget, electricIntensity)
     }
     const farX = road.getFarCenterX()
     camera.setTarget(new Vector3(farX * 0.2, cameraTargetY, 10))
