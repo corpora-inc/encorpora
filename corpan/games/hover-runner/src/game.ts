@@ -10,6 +10,7 @@ import {
   ImageProcessingConfiguration,
   Mesh,
   MeshBuilder,
+  ParticleSystem,
   PBRMaterial,
   PointLight,
   Quaternion,
@@ -2108,6 +2109,50 @@ export const createHoverRunner = (
     return base / rate
   }
 
+  const createSuccessParticles = (position: Vector3) => {
+    const particleSystem = new ParticleSystem("successParticles", 100, scene)
+
+    // Use a simple sphere emitter
+    particleSystem.createSphereEmitter(0.2)
+
+    // Particle appearance - gold/orange colors
+    particleSystem.color1 = new Color4(1, 0.7, 0, 1) // Gold
+    particleSystem.color2 = new Color4(1, 0.5, 0, 1) // Orange
+    particleSystem.colorDead = new Color4(1, 0.3, 0, 0) // Fade to transparent
+
+    // Size
+    particleSystem.minSize = 0.05
+    particleSystem.maxSize = 0.15
+
+    // Lifetime
+    particleSystem.minLifeTime = 0.5
+    particleSystem.maxLifeTime = 1.0
+
+    // Emission
+    particleSystem.emitRate = 1000 // High rate for burst effect
+    particleSystem.manualEmitCount = 100 // Emit all at once
+
+    // Speed and direction
+    particleSystem.minEmitPower = 2
+    particleSystem.maxEmitPower = 4
+    particleSystem.updateSpeed = 0.01
+
+    // Gravity
+    particleSystem.gravity = new Vector3(0, -2, 0)
+
+    // Position
+    particleSystem.emitter = position.clone()
+
+    // Start the system
+    particleSystem.start()
+
+    // Auto-dispose after 1 second
+    setTimeout(() => {
+      particleSystem.stop()
+      particleSystem.dispose()
+    }, 1000)
+  }
+
   const shuffle = <T,>(items: T[]) => {
     for (let i = items.length - 1; i > 0; i -= 1) {
       const j = Math.floor(Math.random() * (i + 1))
@@ -2802,6 +2847,7 @@ export const createHoverRunner = (
 
     if (isHit) {
       const round = gameStore.getState().round
+      const phrasePosition = current.mesh.position.clone()
       clearActivePhrase()
       electricTarget = null
       electricIntensity = 0
@@ -2816,6 +2862,7 @@ export const createHoverRunner = (
         if (tuningStore.getState().settings.sfxEnabled) sfx.playSuccess()
         const points = getPhraseScore(round.answer, round.answerLang)
         tuningStore.getState().recordCorrect(points)
+        createSuccessParticles(phrasePosition)
         startCelebration(round)
       } else if (!current.spec.isCorrect) {
         gameStore.update((draft) => {
