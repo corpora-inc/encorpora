@@ -70,6 +70,25 @@ const getPhraseScore = (text: string, lang: string): number => {
   }
 }
 
+/**
+ * Calculate dynamic duration based on phrase length
+ * Returns milliseconds = baseMs + (units * msPerUnit)
+ * For CJK: units = characters, msPerUnit = 100ms
+ * For other languages: units = words, msPerUnit = 200ms
+ */
+const getPhraseDuration = (text: string, lang: string, baseMs = 800): number => {
+  const isCJK = /^(zh|ja|ko)/i.test(lang)
+  const units = getPhraseScore(text, lang)
+
+  if (isCJK) {
+    // CJK: 100ms per character
+    return baseMs + units * 100
+  } else {
+    // Other: 200ms per word
+    return baseMs + units * 200
+  }
+}
+
 const createEmissivePbr = (
   name: string,
   scene: Scene,
@@ -2600,9 +2619,10 @@ export const createHoverRunner = (
     clearSpeakRepeat()
     hostApi.speak(nextRound.promptLang, nextRound.prompt)
 
-    const { introHoldMs, introRepeatMs, promptLeadMs } = getSettings()
+    const { introRepeatMs, promptLeadMs } = getSettings()
     const firstSpeakMs = estimateSpeakMs(nextRound.prompt)
-    const holdMs = Math.max(introHoldMs, firstSpeakMs + 200)
+    const dynamicIntroMs = getPhraseDuration(nextRound.prompt, nextRound.promptLang, 800)
+    const holdMs = Math.max(dynamicIntroMs, firstSpeakMs + 200)
     const gapMs = Math.max(introRepeatMs, 200)
     const secondSpeakMs = estimateSpeakMs(nextRound.prompt)
     setTransitionTimeout(() => {
@@ -2635,8 +2655,13 @@ export const createHoverRunner = (
     setTransitionTimeout(() => {
       hostApi.speak(nextRound.promptLang, nextRound.prompt)
     }, answerDuration + speakGapMs)
+    const dynamicCelebrationMs = getPhraseDuration(
+      nextRound.answer,
+      nextRound.answerLang,
+      600
+    )
     const celebrationDelay = Math.max(
-      getSettings().celebrationMs,
+      dynamicCelebrationMs,
       answerDuration + speakGapMs + promptDuration + 250
     )
     setTransitionTimeout(() => {
