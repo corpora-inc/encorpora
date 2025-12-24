@@ -2153,6 +2153,85 @@ export const createHoverRunner = (
     }, 1000)
   }
 
+  const createFailParticles = (position: Vector3) => {
+    const particleSystem = new ParticleSystem("failParticles", 80, scene)
+
+    // Use a simple sphere emitter
+    particleSystem.createSphereEmitter(0.2)
+
+    // Particle appearance - dark red colors
+    particleSystem.color1 = new Color4(0.6, 0, 0, 1) // Dark red
+    particleSystem.color2 = new Color4(0.4, 0, 0, 1) // Darker red
+    particleSystem.colorDead = new Color4(0.2, 0, 0, 0) // Fade to transparent
+
+    // Size
+    particleSystem.minSize = 0.04
+    particleSystem.maxSize = 0.12
+
+    // Lifetime
+    particleSystem.minLifeTime = 0.4
+    particleSystem.maxLifeTime = 0.8
+
+    // Emission
+    particleSystem.emitRate = 800
+    particleSystem.manualEmitCount = 80
+
+    // Speed and direction - mostly downward
+    particleSystem.minEmitPower = 1
+    particleSystem.maxEmitPower = 2
+    particleSystem.updateSpeed = 0.01
+
+    // Strong downward gravity
+    particleSystem.gravity = new Vector3(0, -5, 0)
+
+    // Direction - bias downward
+    particleSystem.direction1 = new Vector3(-1, -2, -1)
+    particleSystem.direction2 = new Vector3(1, -1, 1)
+
+    // Position
+    particleSystem.emitter = position.clone()
+
+    // Start the system
+    particleSystem.start()
+
+    // Auto-dispose after 1 second
+    setTimeout(() => {
+      particleSystem.stop()
+      particleSystem.dispose()
+    }, 1000)
+  }
+
+  let shakeOffset = new Vector3(0, 0, 0)
+  let shakeActive = false
+
+  const triggerScreenShake = () => {
+    if (shakeActive) return
+    shakeActive = true
+
+    const startTime = performance.now()
+    const duration = 200 // 200ms
+    const intensity = 0.03 // Subtle shake
+
+    const shakeInterval = setInterval(() => {
+      const elapsed = performance.now() - startTime
+      if (elapsed >= duration) {
+        clearInterval(shakeInterval)
+        shakeOffset.set(0, 0, 0)
+        shakeActive = false
+        return
+      }
+
+      // Decay over time
+      const decay = 1 - elapsed / duration
+      const amount = intensity * decay
+
+      // Random shake
+      shakeOffset.x = (Math.random() - 0.5) * amount * 2
+      shakeOffset.y = (Math.random() - 0.5) * amount * 2
+      shakeOffset.z = (Math.random() - 0.5) * amount
+    }, 16) // ~60fps
+  }
+
   const shuffle = <T,>(items: T[]) => {
     for (let i = items.length - 1; i > 0; i -= 1) {
       const j = Math.floor(Math.random() * (i + 1))
@@ -2870,12 +2949,15 @@ export const createHoverRunner = (
         })
         tuningStore.getState().recordWrong()
         if (tuningStore.getState().settings.sfxEnabled) sfx.playFail()
+        createFailParticles(phrasePosition)
+        triggerScreenShake()
         setPromptStatus("Wrong - dodge!", true)
       }
       return
     }
 
     if (hasPassed) {
+      const passedPosition = current.mesh.position.clone()
       clearActivePhrase()
       electricTarget = null
       electricIntensity = 0
@@ -2889,6 +2971,8 @@ export const createHoverRunner = (
         })
         tuningStore.getState().recordWrong()
         if (tuningStore.getState().settings.sfxEnabled) sfx.playFail()
+        createFailParticles(passedPosition)
+        triggerScreenShake()
         setPromptStatus("Missed!", true)
         if (round) {
           hostApi.speak(round.answerLang, round.answer)
@@ -2904,6 +2988,7 @@ export const createHoverRunner = (
     }
 
     if (current.mesh.position.z < PHRASE_END_Z) {
+      const endPosition = current.mesh.position.clone()
       clearActivePhrase()
       electricTarget = null
       electricIntensity = 0
@@ -2917,6 +3002,8 @@ export const createHoverRunner = (
         })
         tuningStore.getState().recordWrong()
         if (tuningStore.getState().settings.sfxEnabled) sfx.playFail()
+        createFailParticles(endPosition)
+        triggerScreenShake()
         setPromptStatus("Missed!", true)
         if (round) {
           hostApi.speak(round.answerLang, round.answer)
@@ -2992,7 +3079,9 @@ export const createHoverRunner = (
       electricField.update(dt, electricTarget, electricIntensity)
     }
     const farX = road.getFarCenterX()
-    camera.setTarget(new Vector3(farX * 0.2, cameraTargetY, 10))
+    camera.setTarget(
+      new Vector3(farX * 0.2 + shakeOffset.x, cameraTargetY + shakeOffset.y, 10 + shakeOffset.z)
+    )
     scene.render()
   })
 
