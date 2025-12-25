@@ -160,7 +160,7 @@ body {
 
 .phrase-hud.celebrate .phrase-hud-romanization,
 .phrase-hud.celebrate .phrase-hud-answer-romanization {
-  font-size: 10px;
+  font-size: 14px;
 }
 
 .phrase-hud-label {
@@ -177,7 +177,7 @@ body {
 }
 
 .phrase-hud-romanization {
-  font-size: 13px;
+  font-size: 16px;
   opacity: 0.75;
   line-height: 1.2;
 }
@@ -190,7 +190,7 @@ body {
 }
 
 .phrase-hud-answer-romanization {
-  font-size: 13px;
+  font-size: 16px;
   opacity: 0.75;
   line-height: 1.2;
 }
