@@ -1595,16 +1595,14 @@ export const createHoverRunner = (
     highlightTime += dt
     const pulse = 0.55 + Math.sin(highlightTime * 7) * 0.35
 
-    // Find the closest phrase in ANY lane for electric field (prioritize player's lane)
+    // Find the closest phrase in the player's lane ONLY
     let closestInLane: PhraseInstance | null = null
     let closestDistance = Infinity
     for (const phrase of activePhrases) {
-      if (phrase.mesh.position.z > PHRASE_HIT_Z) {
+      if (phrase.lane === hoverLane && phrase.mesh.position.z > PHRASE_HIT_Z) {
         const distance = phrase.mesh.position.z - PHRASE_HIT_Z
-        // Prefer phrases in player's lane by treating them as closer
-        const adjustedDistance = phrase.lane === hoverLane ? distance : distance * 1.5
-        if (adjustedDistance < closestDistance) {
-          closestDistance = distance // Use real distance for intensity calc
+        if (distance < closestDistance) {
+          closestDistance = distance
           closestInLane = phrase
         }
       }

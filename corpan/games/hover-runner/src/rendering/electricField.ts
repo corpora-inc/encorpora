@@ -198,6 +198,16 @@ export const createElectricField = (
     const targetLocal = targetWorld ? targetWorld.subtract(rootWorld) : null
     const reach = clamp(intensity, 0, 1.2) // Allow stronger connection
 
+    // DEBUG
+    if (target) {
+      console.log('Electric field update:', {
+        hasTarget: !!target,
+        intensity,
+        reach,
+        targetLocal: targetLocal?.toString(),
+      })
+    }
+
     // Boost core brightness when connected
     coreMat.emissiveColor = scaleColor(currentColor, 1.35 + reach * 0.5)
 
@@ -240,8 +250,18 @@ export const createElectricField = (
 
       let end: Vector3
 
+      const shouldFocus = targetLocal && targetPoints.length > 0 && reach > 0.1
+      if (index === 0 && target) {
+        console.log('Arc 0 check:', {
+          hasTargetLocal: !!targetLocal,
+          targetPointsLength: targetPoints.length,
+          reach,
+          shouldFocus,
+        })
+      }
+
       // When target exists, ALL arcs focus on it like a plasma globe
-      if (targetLocal && targetPoints.length > 0 && reach > 0.1) {
+      if (shouldFocus) {
         // Each arc picks a different target point to create wrapping effect
         const targetIndex = index % targetPoints.length
         const targetPoint = targetPoints[targetIndex]
