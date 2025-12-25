@@ -38,6 +38,10 @@ export type PhraseInstance = {
   lane: number
   baseWidth: number
   baseHeight: number
+  surfaceEffects?: {
+    update: (dt: number, intensity: number) => void
+    dispose: () => void
+  }
 }
 
 export type RoundState = {

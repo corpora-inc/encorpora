@@ -65,6 +65,7 @@ import { createSkyDome } from "./rendering/sky"
 import { createPropField, updatePropField } from "./rendering/props"
 import { createElectricField } from "./rendering/electricField"
 import { createHoverboard } from "./rendering/hoverboard"
+import { createPhraseSurfaceEffects } from "./rendering/phraseSurfaceEffects"
 
 // Systems
 import { createSuccessParticles, createFailParticles, createScreenShake } from "./systems/particles"
@@ -1171,13 +1172,17 @@ export const createHoverRunner = (
     const state = gameStore.getState()
     if (phrase) {
       // Remove specific phrase
+      phrase.surfaceEffects?.dispose()
       phrase.mesh.dispose()
       gameStore.update((draft) => {
         draft.activePhrases = draft.activePhrases.filter((p) => p !== phrase)
       })
     } else {
       // Clear all phrases
-      state.activePhrases.forEach((p) => p.mesh.dispose())
+      state.activePhrases.forEach((p) => {
+        p.surfaceEffects?.dispose()
+        p.mesh.dispose()
+      })
       gameStore.update((draft) => {
         draft.activePhrases = []
       })
@@ -1634,6 +1639,22 @@ export const createHoverRunner = (
       // Electric target gets 2.5x stronger highlight
       const highlightStrength = isElectricTarget ? pulse * 2.5 : (laneMatch ? pulse : 0)
       setPhraseHighlight(current.mesh, highlightStrength)
+
+      // Create surface effects for electric target
+      if (isElectricTarget && electricIntensity > 0.1) {
+        if (!current.surfaceEffects) {
+          current.surfaceEffects = createPhraseSurfaceEffects(
+            scene,
+            current.mesh,
+            activeSkin.palette.center
+          )
+        }
+        // Update with dynamic intensity based on distance
+        current.surfaceEffects.update(dt, electricIntensity * 0.9)
+      } else if (current.surfaceEffects) {
+        // Fade out surface effects when no longer target
+        current.surfaceEffects.update(dt, 0)
+      }
 
       const dx = current.mesh.position.x - hoverboard.root.position.x
       const dy = current.mesh.position.y - hoverboard.root.position.y
