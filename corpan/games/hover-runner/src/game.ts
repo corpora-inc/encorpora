@@ -2432,7 +2432,7 @@ export const createHoverRunner = (
       true
     )
     texture.hasAlpha = true
-    const ctx = texture.getContext()
+    const ctx = texture.getContext() as CanvasRenderingContext2D
     ctx.clearRect(0, 0, 2048, 512)
     ctx.textAlign = "center"
     ctx.textBaseline = "middle"
