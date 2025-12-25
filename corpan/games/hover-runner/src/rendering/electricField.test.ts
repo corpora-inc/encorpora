@@ -24,27 +24,27 @@ describe("ElectricField", () => {
     const field = createElectricField(scene, parent, new Color3(0.4, 0.9, 1))
 
     // Find the particle systems
-    const streamParticles = scene.particleSystems.find((ps) =>
-      ps.name === "electric-stream"
+    const beamSparks = scene.particleSystems.find((ps) =>
+      ps.name === "beam-sparks"
     )
     const coreParticles = scene.particleSystems.find((ps) =>
       ps.name === "core-sparks"
     )
 
-    expect(streamParticles).toBeDefined()
+    expect(beamSparks).toBeDefined()
     expect(coreParticles).toBeDefined()
 
-    if (!streamParticles) return
+    if (!beamSparks) return
 
     // Test startPositionFunction signature
     // Expected: (worldMatrix, positionToUpdate, particle, isLocal?) => void
-    if (streamParticles.startPositionFunction) {
+    if (beamSparks.startPositionFunction) {
       const mockMatrix = Matrix.Identity()
       const mockPosition = Vector3.Zero()
       const mockParticle = { position: Vector3.Zero() } as any
 
       expect(() => {
-        streamParticles.startPositionFunction!(
+        beamSparks.startPositionFunction!(
           mockMatrix,
           mockPosition,
           mockParticle,
@@ -58,13 +58,13 @@ describe("ElectricField", () => {
 
     // Test startDirectionFunction signature
     // Expected: (worldMatrix, directionToUpdate, particle, isLocal?) => void
-    if (streamParticles.startDirectionFunction) {
+    if (beamSparks.startDirectionFunction) {
       const mockMatrix = Matrix.Identity()
       const mockDirection = Vector3.Zero()
       const mockParticle = { position: Vector3.Zero() } as any
 
       expect(() => {
-        streamParticles.startDirectionFunction!(
+        beamSparks.startDirectionFunction!(
           mockMatrix,
           mockDirection,
           mockParticle,
@@ -84,18 +84,18 @@ describe("ElectricField", () => {
   it("should handle invalid worldMatrix gracefully", () => {
     const field = createElectricField(scene, parent, new Color3(0.4, 0.9, 1))
 
-    const streamParticles = scene.particleSystems.find((ps) =>
-      ps.name === "electric-stream"
+    const beamSparks = scene.particleSystems.find((ps) =>
+      ps.name === "beam-sparks"
     )
 
-    if (!streamParticles?.startDirectionFunction) return
+    if (!beamSparks?.startDirectionFunction) return
 
     const mockDirection = Vector3.Zero()
     const mockParticle = { position: Vector3.Zero() } as any
 
     // Test with null/undefined worldMatrix
     expect(() => {
-      streamParticles.startDirectionFunction!(
+      beamSparks.startDirectionFunction!(
         null as any,
         mockDirection,
         mockParticle,
@@ -106,7 +106,7 @@ describe("ElectricField", () => {
     // Test with malformed matrix (missing m array)
     const badMatrix = { m: undefined } as any
     expect(() => {
-      streamParticles.startDirectionFunction!(
+      beamSparks.startDirectionFunction!(
         badMatrix,
         mockDirection,
         mockParticle,
@@ -117,7 +117,7 @@ describe("ElectricField", () => {
     // Test with incomplete matrix
     const incompleteMatrix = { m: [1, 2, 3] } as any
     expect(() => {
-      streamParticles.startDirectionFunction!(
+      beamSparks.startDirectionFunction!(
         incompleteMatrix,
         mockDirection,
         mockParticle,

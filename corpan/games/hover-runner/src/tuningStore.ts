@@ -240,8 +240,12 @@ export const tuningStore = createStore<TuningState>()(
       partialize: (state) => ({
         settings: state.settings,
         stats: {
+          score: state.stats.score,
+          streak: state.stats.streak,
+          bestStreak: state.stats.bestStreak,
           allTimeBestStreak: state.stats.allTimeBestStreak,
           phraseHistory: state.stats.phraseHistory,
+          coinCount: state.stats.coinCount,
         },
       }),
       merge: (persisted, current) => {
@@ -255,9 +259,13 @@ export const tuningStore = createStore<TuningState>()(
           },
           stats: {
             ...current.stats,
+            score: stored?.stats?.score ?? current.stats.score,
+            streak: stored?.stats?.streak ?? current.stats.streak,
+            bestStreak: stored?.stats?.bestStreak ?? current.stats.bestStreak,
             allTimeBestStreak:
               stored?.stats?.allTimeBestStreak ?? current.stats.allTimeBestStreak,
             phraseHistory: stored?.stats?.phraseHistory ?? current.stats.phraseHistory,
+            coinCount: stored?.stats?.coinCount ?? current.stats.coinCount,
           },
         }
       },

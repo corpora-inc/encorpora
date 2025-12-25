@@ -632,3 +632,44 @@ body {
     justify-content: flex-start;
   }
 }
+/* Score Popup Animation */
+.score-popup {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.5);
+  font-size: 72px;
+  font-weight: 900;
+  color: #ffffff;
+  text-shadow:
+    0 0 20px rgba(127, 214, 255, 0.9),
+    0 0 40px rgba(127, 214, 255, 0.6),
+    0 0 60px rgba(90, 180, 255, 0.4),
+    0 4px 12px rgba(0, 0, 0, 0.7);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 100;
+  letter-spacing: 0.05em;
+  font-family: "Trebuchet MS", "Impact", sans-serif;
+  -webkit-text-stroke: 2px rgba(10, 50, 100, 0.8);
+  background: linear-gradient(
+    180deg,
+    #ffffff 0%,
+    #e0f2ff 30%,
+    #7fd6ff 70%,
+    #5ab4ff 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: score-glow 0.5s ease-in-out infinite alternate;
+}
+
+@keyframes score-glow {
+  from {
+    filter: drop-shadow(0 0 10px rgba(127, 214, 255, 0.6));
+  }
+  to {
+    filter: drop-shadow(0 0 20px rgba(127, 214, 255, 0.9));
+  }
+}

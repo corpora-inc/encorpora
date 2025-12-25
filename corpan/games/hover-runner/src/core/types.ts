@@ -1,4 +1,4 @@
-import { Color3, Color4, Mesh, TransformNode } from "@babylonjs/core"
+import { Color3, Color4, Mesh, TransformNode, Vector3 } from "@babylonjs/core"
 import type { StackConfig } from "../sdk/types"
 
 export type RoadPalette = {
@@ -38,6 +38,7 @@ export type PhraseInstance = {
   lane: number
   baseWidth: number
   baseHeight: number
+  letterPositions?: Vector3[]
   surfaceEffects?: {
     update: (dt: number, intensity: number) => void
     dispose: () => void
@@ -82,7 +83,7 @@ export type GameStore<T> = {
 
 export type ElectricField = {
   root: TransformNode
-  update: (dt: number, target: Mesh | null, intensity: number) => void
+  update: (dt: number, target: Mesh | null, intensity: number, letterPositions?: Vector3[]) => void
   setColor: (color: Color3) => void
 }
 

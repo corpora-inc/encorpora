@@ -30,6 +30,10 @@ type Arc = {
   noiseScale: number
   end: Vector3
   endTarget: Vector3
+  currentLetterIndex: number
+  nextLetterIndex: number
+  letterSwitchTime: number
+  branchOffset: Vector3
 }
 
 type TargetFrame = {
@@ -168,6 +172,10 @@ export const createElectricField = (
       noiseScale: 0.1 + Math.random() * 0.06,
       end: start.clone(),
       endTarget: start.clone(),
+      currentLetterIndex: 0,
+      nextLetterIndex: 0,
+      letterSwitchTime: 0,
+      branchOffset: Vector3.Zero(),
     }
   }
 
@@ -184,35 +192,38 @@ export const createElectricField = (
     }),
   ]
 
-  const streamParticles = new ParticleSystem("electric-stream", 900, scene)
-  streamParticles.particleTexture = new Texture(
+  // Beam sparks - particles that fly off the central beam trunk
+  const beamSparks = new ParticleSystem("beam-sparks", 800, scene)
+  beamSparks.particleTexture = new Texture(
     "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMTYiIGN5PSIxNiIgcj0iMTAiIGZpbGw9IndoaXRlIi8+PC9zdmc+",
     scene
   )
-  streamParticles.emitter = core
-  streamParticles.minEmitBox = Vector3.Zero()
-  streamParticles.maxEmitBox = Vector3.Zero()
-  streamParticles.color1 = new Color4(0.4, 0.9, 1, 1)
-  streamParticles.color2 = new Color4(0.6, 0.98, 1, 1)
-  streamParticles.colorDead = new Color4(0.3, 0.6, 1, 0)
-  streamParticles.minSize = 0.02
-  streamParticles.maxSize = 0.06
-  streamParticles.minLifeTime = 0.12
-  streamParticles.maxLifeTime = 0.45
-  streamParticles.emitRate = 0
-  streamParticles.blendMode = ParticleSystem.BLENDMODE_ADD
-  streamParticles.minEmitPower = 1.5
-  streamParticles.maxEmitPower = 3
-  streamParticles.updateSpeed = 0.015
-  streamParticles.gravity = Vector3.Zero()
+  beamSparks.emitter = core
+  beamSparks.minEmitBox = Vector3.Zero()
+  beamSparks.maxEmitBox = Vector3.Zero()
+  beamSparks.color1 = new Color4(1, 1, 1, 1) // Bright white
+  beamSparks.color2 = new Color4(0.8, 0.95, 1, 1) // Blue-white
+  beamSparks.colorDead = new Color4(0.4, 0.7, 0.95, 0)
+  beamSparks.minSize = 0.02
+  beamSparks.maxSize = 0.05
+  beamSparks.minLifeTime = 0.12
+  beamSparks.maxLifeTime = 0.3
+  beamSparks.emitRate = 0
+  beamSparks.blendMode = ParticleSystem.BLENDMODE_ADD
+  beamSparks.minEmitPower = 0.5
+  beamSparks.maxEmitPower = 1.5
+  beamSparks.updateSpeed = 0.014
+  beamSparks.gravity = new Vector3(0, -1.2, 0)
 
-  const streamDirection = new Vector3(0, 0, 1)
-  const streamScratch = new Vector3()
+  const beamDirection = new Vector3(0, 0, 1)
+  const beamScratch = new Vector3()
 
-  streamParticles.startPositionFunction = (worldMatrix, positionToUpdate, particle) => {
+  // Sparks emit from random points along the beam trunk (before it spreads)
+  beamSparks.startPositionFunction = (worldMatrix, positionToUpdate, particle) => {
     const meta = particle as typeof particle & ArcParticleMeta
+    // Pick a random arc and position along the TRUNK (t < 0.7)
     const arcIndex = Math.floor(Math.random() * arcs.length)
-    const t = Math.random() * 0.9
+    const t = Math.random() * 0.7  // Only emit from unified beam section
     meta.arcIndex = arcIndex
     meta.arcT = t
     const arc = arcs[arcIndex]
@@ -229,14 +240,15 @@ export const createElectricField = (
     }
   }
 
-  streamParticles.startDirectionFunction = (
+  // Sparks fly outward perpendicular to beam direction
+  beamSparks.startDirectionFunction = (
     worldMatrix,
     directionToUpdate,
     particle
   ) => {
     const meta = particle as typeof particle & ArcParticleMeta
     const arcIndex = meta.arcIndex ?? Math.floor(Math.random() * arcs.length)
-    const t = meta.arcT ?? Math.random()
+    const t = meta.arcT ?? Math.random() * 0.7
     const arc = arcs[arcIndex]
     const pointIndex = Math.min(
       Math.floor(t * (arc.points.length - 2)),
@@ -244,18 +256,36 @@ export const createElectricField = (
     )
     const pointA = arc.points[pointIndex]
     const pointB = arc.points[pointIndex + 1] ?? pointA
-    streamScratch.copyFrom(pointB).subtractInPlace(pointA)
-    if (streamScratch.lengthSquared() < 0.0001) {
-      streamScratch.copyFrom(streamDirection)
+
+    // Calculate beam direction
+    beamScratch.copyFrom(pointB).subtractInPlace(pointA)
+    if (beamScratch.lengthSquared() < 0.0001) {
+      beamScratch.copyFrom(beamDirection)
     }
-    // Generate emit power based on the particle system's settings
-    const emitPower = streamParticles.minEmitPower +
-      Math.random() * (streamParticles.maxEmitPower - streamParticles.minEmitPower)
-    streamScratch.normalize().scaleInPlace(emitPower)
+    beamScratch.normalize()
+
+    // Create perpendicular direction (outward from beam)
+    const axis = Math.abs(beamScratch.y) > 0.85 ? Vector3.Right() : Vector3.Up()
+    const perpA = Vector3.Cross(beamScratch, axis).normalize()
+    const perpB = Vector3.Cross(beamScratch, perpA).normalize()
+
+    // Random direction perpendicular to beam + slight forward momentum
+    const angle = Math.random() * Math.PI * 2
+    const radialStrength = 0.8 + Math.random() * 0.4
+    const forwardStrength = 0.1 + Math.random() * 0.15
+
+    const emitPower = beamSparks.minEmitPower +
+      Math.random() * (beamSparks.maxEmitPower - beamSparks.minEmitPower)
+
+    directionToUpdate.copyFrom(perpA.scale(Math.cos(angle) * radialStrength))
+      .addInPlace(perpB.scale(Math.sin(angle) * radialStrength))
+      .addInPlace(beamScratch.scale(forwardStrength))
+      .normalize()
+      .scaleInPlace(emitPower)
+
     if (worldMatrix && worldMatrix.m && worldMatrix.m.length >= 16) {
-      Vector3.TransformNormalToRef(streamScratch, worldMatrix, directionToUpdate)
-    } else {
-      directionToUpdate.copyFrom(streamScratch)
+      Vector3.TransformNormalToRef(directionToUpdate, worldMatrix, beamScratch)
+      directionToUpdate.copyFrom(beamScratch)
     }
   }
 
@@ -309,9 +339,9 @@ export const createElectricField = (
     const particleColor2 = new Color4(color.r * 0.9, color.g, color.b, 1)
     const particleColorDead = new Color4(color.r * 0.5, color.g * 0.7, color.b, 0)
 
-    streamParticles.color1 = particleColor1
-    streamParticles.color2 = particleColor2
-    streamParticles.colorDead = particleColorDead
+    beamSparks.color1 = particleColor1
+    beamSparks.color2 = particleColor2
+    beamSparks.colorDead = particleColorDead
 
     coreSparkSystem.color1 = new Color4(color.r * 0.9, color.g * 0.95, color.b, 1)
     coreSparkSystem.color2 = new Color4(color.r * 0.7, color.g * 0.85, color.b, 1)
@@ -323,7 +353,7 @@ export const createElectricField = (
     })
   }
 
-  const update = (dt: number, target: Mesh | null, intensity: number) => {
+  const update = (dt: number, target: Mesh | null, intensity: number, letterPositions?: Vector3[]) => {
     time += dt
     const rootWorld = root.getAbsolutePosition()
     const desiredFocus = target ? clamp(intensity / 1.2, 0, 1) : 0
@@ -338,14 +368,14 @@ export const createElectricField = (
 
     const frame = target && focus > 0.02 ? resolveTargetFrame(target, rootWorld) : null
     if (frame) {
-      streamDirection.copyFrom(frame.centerLocal)
-      if (streamDirection.lengthSquared() > 0.0001) {
-        streamDirection.normalize()
+      beamDirection.copyFrom(frame.centerLocal)
+      if (beamDirection.lengthSquared() > 0.0001) {
+        beamDirection.normalize()
       } else {
-        streamDirection.copyFrom(fallbackNormal)
+        beamDirection.copyFrom(fallbackNormal)
       }
     } else {
-      streamDirection.copyFrom(fallbackNormal)
+      beamDirection.copyFrom(fallbackNormal)
     }
 
     coreMat.emissiveColor = scaleColor(currentColor, 1.2 + focus * 1)
@@ -357,29 +387,88 @@ export const createElectricField = (
     const extentUp = frame?.extentUp ?? 0.4
     const hasFocus = !!frame && focus > 0.05
 
-    arcs.forEach((arc) => {
+    arcs.forEach((arc, arcIndex) => {
       // Calculate orbital position for spreading at the endpoint
       let orbit = 0
       let u = 0
       let v = 0
 
       if (hasFocus) {
-        orbit = arc.orbitAngle + time * arc.orbitSpeed
-        const drift = Math.sin(time * 1.6 + arc.seed) * 0.12
-        const radius = arc.orbitRadius + drift * 0.2
-        const rawU = Math.cos(orbit) * radius
-        const rawV = Math.sin(orbit) * radius
-        u = warpEdge(rawU, 0.65)
-        v = warpEdge(rawV, 0.65)
-        const edgeScale = 0.92 + Math.sin(time * 2.4 + arc.phase) * 0.06
+        // Use letter positions if available, otherwise fall back to orbital spread
+        if (letterPositions && letterPositions.length > 0 && target) {
+          // LIGHTNING-STYLE: Randomly switch between letter targets
+          arc.letterSwitchTime -= dt
+          if (arc.letterSwitchTime <= 0) {
+            // Switch to a new random letter target
+            arc.currentLetterIndex = arc.nextLetterIndex
+            // Pick a random letter, preferring nearby letters for branching effect
+            const randomFactor = Math.random()
+            if (randomFactor < 0.6) {
+              // 60% chance: jump to a nearby letter (±1-3 positions)
+              const jump = Math.floor(Math.random() * 6) - 3
+              arc.nextLetterIndex = (arc.currentLetterIndex + jump + letterPositions.length) % letterPositions.length
+            } else {
+              // 40% chance: jump to any random letter
+              arc.nextLetterIndex = Math.floor(Math.random() * letterPositions.length)
+            }
+            // Faster switching when focused (like rapid lightning strikes)
+            arc.letterSwitchTime = 0.08 + Math.random() * 0.12
+          }
 
-        // Target is the orbital position on the phrase surface
-        arc.endTarget.copyFrom(frame.centerLocal)
-        arc.endTarget.addInPlace(targetRight.scale(u * extentRight * edgeScale))
-        arc.endTarget.addInPlace(targetUp.scale(v * extentUp * edgeScale))
-        arc.endTarget.addInPlace(
-          targetNormal.scale((0.06 + arc.reachScale * 0.14) * (0.6 + focus * 0.5))
-        )
+          // Ensure indices are in bounds
+          arc.currentLetterIndex = clamp(arc.currentLetterIndex, 0, letterPositions.length - 1)
+          arc.nextLetterIndex = clamp(arc.nextLetterIndex, 0, letterPositions.length - 1)
+
+          // Interpolate between current and next letter for smooth traversal
+          const switchProgress = 1.0 - (arc.letterSwitchTime / 0.2)
+          const currentLetterPos = letterPositions[arc.currentLetterIndex]
+          const nextLetterPos = letterPositions[arc.nextLetterIndex]
+
+          // Safety check: ensure positions exist before transforming
+          if (currentLetterPos && nextLetterPos) {
+            // Transform letter positions to world space
+            target.computeWorldMatrix(true)
+            const worldMatrix = target.getWorldMatrix()
+            const currentWorldPos = Vector3.TransformCoordinates(currentLetterPos, worldMatrix)
+            const nextWorldPos = Vector3.TransformCoordinates(nextLetterPos, worldMatrix)
+
+            // Lerp between current and next letter
+            const targetLetterWorld = Vector3.Lerp(currentWorldPos, nextWorldPos, switchProgress)
+            arc.endTarget.copyFrom(targetLetterWorld.subtract(rootWorld))
+
+            // Add chaotic forward offset with variation
+            const forwardNoise = 0.08 + Math.sin(time * 8 + arc.seed) * 0.04
+            arc.endTarget.addInPlace(targetNormal.scale(forwardNoise + arc.reachScale * 0.06))
+
+            // Add aggressive random offset for chaotic plasma look
+            const chaos = 0.15 + focus * 0.1
+            arc.branchOffset.x = Math.sin(time * 12 + arc.seed) * chaos
+            arc.branchOffset.y = Math.cos(time * 15 + arc.phase) * chaos
+            arc.branchOffset.z = Math.sin(time * 10 + arc.seed * 2) * chaos * 0.5
+            arc.endTarget.addInPlace(arc.branchOffset)
+          } else {
+            // Fallback if positions are invalid: use center
+            arc.endTarget.copyFrom(frame.centerLocal)
+            arc.endTarget.addInPlace(targetNormal.scale(0.1))
+          }
+        } else {
+          // Fallback: orbital position on the phrase surface (original behavior)
+          orbit = arc.orbitAngle + time * arc.orbitSpeed
+          const drift = Math.sin(time * 1.6 + arc.seed) * 0.12
+          const radius = arc.orbitRadius + drift * 0.2
+          const rawU = Math.cos(orbit) * radius
+          const rawV = Math.sin(orbit) * radius
+          u = warpEdge(rawU, 0.65)
+          v = warpEdge(rawV, 0.65)
+          const edgeScale = 0.92 + Math.sin(time * 2.4 + arc.phase) * 0.06
+
+          arc.endTarget.copyFrom(frame.centerLocal)
+          arc.endTarget.addInPlace(targetRight.scale(u * extentRight * edgeScale))
+          arc.endTarget.addInPlace(targetUp.scale(v * extentUp * edgeScale))
+          arc.endTarget.addInPlace(
+            targetNormal.scale((0.06 + arc.reachScale * 0.14) * (0.6 + focus * 0.5))
+          )
+        }
       } else {
         const idleAngle = arc.orbitAngle + time * arc.idleSpeed
         const idleRadius = arc.idleRadius + Math.sin(time * 1.5 + arc.seed) * 0.08
@@ -401,7 +490,7 @@ export const createElectricField = (
 
       const dirNorm = arc.end.subtract(startPos)
       if (dirNorm.lengthSquared() < 0.0001) {
-        dirNorm.copyFrom(streamDirection)
+        dirNorm.copyFrom(beamDirection)
       }
       dirNorm.normalize()
 
@@ -409,40 +498,84 @@ export const createElectricField = (
       const orthoA = Vector3.Cross(dirNorm, axis).normalize()
       const orthoB = Vector3.Cross(dirNorm, orthoA).normalize()
 
+      // Global beam pulsation - all arcs pulse together for a breathing effect
+      const beamPulse = Math.sin(time * 3.5) * 0.12 + Math.cos(time * 2.2) * 0.08
+
       const pointCount = arc.points.length - 1
       for (let i = 0; i < arc.points.length; i += 1) {
         const t = i / pointCount
 
         if (hasFocus) {
           // PLASMA GLOBE EFFECT: converge into unified beam, then spread at end
-          // Convergence: strong (1.0) at start/middle, weak (0.0) at very end
-          const spreadStart = 0.75 // Where arcs start spreading out
-          const convergence = t < spreadStart ? 1.0 : 1.0 - ((t - spreadStart) / (1.0 - spreadStart))
+          const spreadStart = 0.7 // Where arcs start spreading out
 
-          // Main beam path: converge all arcs to the beam center
+          // Base convergence with pulsation - beam breathes and separates rhythmically
+          let baseConvergence = 0.88 // Not perfect (1.0) so arcs are visible
+          if (t < spreadStart) {
+            // Add pulsating separation in the trunk
+            const pulseFactor = beamPulse * 0.15
+            const arcVariation = Math.sin(arc.seed + time * 1.8) * 0.08 // Per-arc variation
+            baseConvergence = baseConvergence - pulseFactor - arcVariation
+            baseConvergence = clamp(baseConvergence, 0.65, 0.95)
+          } else {
+            // Spread zone: converge less
+            baseConvergence = 1.0 - ((t - spreadStart) / (1.0 - spreadStart))
+          }
+
+          // Main beam path: converge all arcs toward the beam center
           const beamPoint = Vector3.Lerp(startPos, beamCenter, t)
 
           // Individual arc endpoint: spread to orbital position
           const arcEndPoint = Vector3.Lerp(startPos, arc.end, t)
 
           // Blend between unified beam and spread arc based on convergence
-          Vector3.LerpToRef(arcEndPoint, beamPoint, convergence, arc.points[i])
+          Vector3.LerpToRef(arcEndPoint, beamPoint, baseConvergence, arc.points[i])
 
-          // Very subtle noise only in the beam trunk
-          const beamNoiseAmp = arc.noiseScale * 0.15 * convergence
-          const flutter = Math.sin(t * 12 + time * 11 + arc.seed) * 0.8
-          const twist = Math.cos(t * 14 + time * 9 + arc.phase) * 0.8
-          const falloff = Math.sin(Math.PI * t)
-          const beamNoise = orthoA
-            .scale(flutter * beamNoiseAmp * falloff)
-            .add(orthoB.scale(twist * beamNoiseAmp * falloff))
-          arc.points[i].addInPlace(beamNoise)
-
-          // At the spread zone, add surface dance
-          if (t > spreadStart) {
+          // Dynamic noise based on position in arc
+          if (t < spreadStart) {
+            // Beam trunk: moderate noise
+            const beamNoiseAmp = arc.noiseScale * (0.25 + beamPulse * 0.1)
+            const flutter = Math.sin(t * 12 + time * 11 + arc.seed) * 0.8
+            const twist = Math.cos(t * 14 + time * 9 + arc.phase) * 0.8
+            const falloff = Math.sin(Math.PI * t) * (0.6 + Math.abs(beamPulse) * 0.4)
+            const beamNoise = orthoA
+              .scale(flutter * beamNoiseAmp * falloff)
+              .add(orthoB.scale(twist * beamNoiseAmp * falloff))
+            arc.points[i].addInPlace(beamNoise)
+          } else {
+            // LIGHTNING SPREAD ZONE: aggressive jagged branching
             const spreadAmount = (t - spreadStart) / (1.0 - spreadStart)
-            const surfaceWiggle = Math.sin(time * 8 + arc.phase + t * 10) * 0.08 * spreadAmount
-            arc.points[i].addInPlace(targetNormal.scale(surfaceWiggle))
+
+            // High-frequency jagged noise for lightning effect
+            const jaggedFreq = 25 + arc.seed * 5
+            const jaggedAmp = arc.noiseScale * (0.8 + spreadAmount * 1.2) * focus
+
+            // Multiple octaves of noise for fractal lightning branches
+            const noise1 = Math.sin(t * jaggedFreq + time * 15 + arc.seed) * 1.0
+            const noise2 = Math.sin(t * jaggedFreq * 2.3 + time * 12 + arc.phase) * 0.6
+            const noise3 = Math.cos(t * jaggedFreq * 3.7 + time * 18 + arc.seed * 2) * 0.4
+            const combinedNoise = (noise1 + noise2 + noise3) / 2.1
+
+            // Sharp falloff creates branch-like effect
+            const branchFalloff = Math.pow(spreadAmount, 0.7)
+
+            // Apply jagged offset perpendicular to arc
+            const jaggedNoise = orthoA
+              .scale(combinedNoise * jaggedAmp * branchFalloff)
+              .add(orthoB.scale(-combinedNoise * jaggedAmp * branchFalloff * 0.8))
+            arc.points[i].addInPlace(jaggedNoise)
+
+            // Random "kinks" - sudden direction changes like real lightning
+            if (spreadAmount > 0.3) {
+              const kinkPhase = Math.floor(t * 8 + arc.seed)
+              const kinkStrength = (Math.sin(kinkPhase * 7.3 + time * 6) * 0.5 + 0.5) * 0.2
+              const kinkDir = orthoA.scale(Math.sin(kinkPhase * 3.1)).add(orthoB.scale(Math.cos(kinkPhase * 4.2)))
+              arc.points[i].addInPlace(kinkDir.scale(kinkStrength * spreadAmount))
+            }
+
+            // Surface interaction chaos
+            const surfaceChaos = Math.sin(time * 10 + arc.phase + t * 15) * 0.12 * spreadAmount
+            arc.points[i].addInPlace(targetNormal.scale(surfaceChaos))
           }
         } else {
           // Idle state: spread out freely
@@ -464,21 +597,28 @@ export const createElectricField = (
       }
 
       MeshBuilder.CreateTube(arc.mesh.name, { path: arc.points, instance: arc.mesh })
-      arc.material.emissiveColor = scaleColor(currentColor, 0.9 + reach * 0.9)
-      arc.material.alpha = 0.35 + focus * 0.5
+
+      // Pulsating intensity for juiciness
+      const intensityBoost = hasFocus ? (1.0 + beamPulse * 0.3) : 1.0
+      arc.material.emissiveColor = scaleColor(currentColor, (0.9 + reach * 0.9) * intensityBoost)
+      arc.material.alpha = (0.35 + focus * 0.5) * (0.9 + Math.abs(beamPulse) * 0.2)
     })
 
+    // Beam sparks fly off the central trunk - elite physics-based
     if (hasFocus) {
-      if (!streamParticles.isStarted()) {
-        streamParticles.start()
+      if (!beamSparks.isStarted()) {
+        beamSparks.start()
       }
-      streamParticles.emitRate = 120 + focus * 260
-      streamParticles.minEmitPower = 1.6 + focus * 1.4
-      streamParticles.maxEmitPower = 3 + focus * 2.1
-      streamParticles.minLifeTime = 0.12 + focus * 0.08
-      streamParticles.maxLifeTime = 0.35 + focus * 0.18
-    } else if (streamParticles.isStarted()) {
-      streamParticles.stop()
+      // High emit rate for continuous spark trail
+      beamSparks.emitRate = 120 + focus * 280
+      beamSparks.minEmitPower = 0.6 + focus * 0.6
+      beamSparks.maxEmitPower = 1.2 + focus * 1.2
+
+      // Vary size for depth and realism
+      beamSparks.minSize = 0.018 + focus * 0.008
+      beamSparks.maxSize = 0.045 + focus * 0.015
+    } else if (beamSparks.isStarted()) {
+      beamSparks.stop()
     }
 
     if (hasFocus) {

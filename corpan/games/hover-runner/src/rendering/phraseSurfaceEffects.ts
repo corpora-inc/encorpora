@@ -11,128 +11,112 @@ import {
 import { scaleColor } from "../core/utils"
 
 export const createPhraseSurfaceEffects = (scene: Scene, phrase: Mesh, baseColor: Color3) => {
-  // Create particle system for surface electricity
-  const surfaceParticles = new ParticleSystem(
-    `phrase-surface-sparks-${phrase.name}`,
-    400,
+  // IMPACT SPARKS - focused particles at beam contact points
+  const impactSparks = new ParticleSystem(
+    `phrase-impact-sparks-${phrase.name}`,
+    300,
     scene
   )
 
-  surfaceParticles.particleTexture = new Texture(
-    "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMTYiIGN5PSIxNiIgcj0iMTAiIGZpbGw9IndoaXRlIi8+PC9zdmc+",
+  impactSparks.particleTexture = new Texture(
+    "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMTYiIGN5PSIxNiIgcj0iOSIgZmlsbD0id2hpdGUiLz48L3N2Zz4=",
     scene
   )
 
-  // Emit from entire phrase bounds for full coverage
   const bounds = phrase.getBoundingInfo()
   const extendSize = bounds.boundingBox.extendSize
 
-  surfaceParticles.emitter = phrase
-  surfaceParticles.minEmitBox = new Vector3(
-    -extendSize.x * 1.1,
-    -extendSize.y * 1.1,
-    -0.1
+  // Emit from center area where beam hits (not entire phrase)
+  impactSparks.emitter = phrase
+  impactSparks.minEmitBox = new Vector3(
+    -extendSize.x * 0.3,
+    -extendSize.y * 0.3,
+    0.05
   )
-  surfaceParticles.maxEmitBox = new Vector3(
-    extendSize.x * 1.1,
-    extendSize.y * 1.1,
-    0.1
+  impactSparks.maxEmitBox = new Vector3(
+    extendSize.x * 0.3,
+    extendSize.y * 0.3,
+    0.15
   )
 
-  // Electric crawling appearance
-  surfaceParticles.color1 = new Color4(
-    baseColor.r * 0.8,
-    baseColor.g * 0.95,
-    baseColor.b,
-    1
-  )
-  surfaceParticles.color2 = new Color4(
+  // Bright white-blue impact sparks
+  impactSparks.color1 = new Color4(1, 1, 1, 1)
+  impactSparks.color2 = new Color4(
     baseColor.r * 0.95,
     baseColor.g,
     baseColor.b,
     1
   )
-  surfaceParticles.colorDead = new Color4(
+  impactSparks.colorDead = new Color4(
     baseColor.r * 0.4,
     baseColor.g * 0.6,
-    baseColor.b * 0.8,
+    baseColor.b,
     0
   )
 
-  surfaceParticles.minSize = 0.05
-  surfaceParticles.maxSize = 0.15
-  surfaceParticles.minLifeTime = 0.4
-  surfaceParticles.maxLifeTime = 0.9
+  impactSparks.minSize = 0.02
+  impactSparks.maxSize = 0.06
+  impactSparks.minLifeTime = 0.15
+  impactSparks.maxLifeTime = 0.35
 
-  surfaceParticles.emitRate = 0 // Start at 0, will be controlled
-  surfaceParticles.blendMode = ParticleSystem.BLENDMODE_ADD
-  surfaceParticles.minEmitPower = 0.3
-  surfaceParticles.maxEmitPower = 0.9
-  surfaceParticles.updateSpeed = 0.01
+  impactSparks.emitRate = 0
+  impactSparks.blendMode = ParticleSystem.BLENDMODE_ADD
+  impactSparks.minEmitPower = 0.8
+  impactSparks.maxEmitPower = 2.0
+  impactSparks.updateSpeed = 0.012
 
-  // Initial direction - will be animated to wrap around phrase
-  surfaceParticles.direction1 = new Vector3(-1, -0.5, -0.2)
-  surfaceParticles.direction2 = new Vector3(1, 0.5, 0.2)
-  surfaceParticles.gravity = new Vector3(0, -0.3, 0)
+  // Sparks fly outward from impact with gravity
+  impactSparks.direction1 = new Vector3(-2, -1, -1.5)
+  impactSparks.direction2 = new Vector3(2, 1, 1.5)
+  impactSparks.gravity = new Vector3(0, -3, 0)
 
-  // Create burst particles for impact points
-  const burstParticles = new ParticleSystem(
-    `phrase-burst-sparks-${phrase.name}`,
-    200,
+  // MICRO SPARKS - tiny bright flashes at exact contact points
+  const microSparks = new ParticleSystem(
+    `phrase-micro-sparks-${phrase.name}`,
+    150,
     scene
   )
 
-  burstParticles.particleTexture = new Texture(
-    "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJhZGlhbEdyYWRpZW50IGlkPSJnIj48c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSJ3aGl0ZSIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0id2hpdGUiIHN0b3Atb3BhY2l0eT0iMCIvPjwvcmFkaWFsR3JhZGllbnQ+PGNpcmNsZSBjeD0iMTYiIGN5PSIxNiIgcj0iMTQiIGZpbGw9InVybCgjZykiLz48L3N2Zz4=",
+  microSparks.particleTexture = new Texture(
+    "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMTYiIGN5PSIxNiIgcj0iMTIiIGZpbGw9IndoaXRlIi8+PC9zdmc+",
     scene
   )
 
-  // Burst from edges and corners for plasma globe tendrils
-  burstParticles.emitter = phrase
-  burstParticles.minEmitBox = new Vector3(
-    -extendSize.x * 1.0,
-    -extendSize.y * 1.0,
-    -0.05
+  microSparks.emitter = phrase
+  microSparks.minEmitBox = new Vector3(
+    -extendSize.x * 0.4,
+    -extendSize.y * 0.4,
+    0.08
   )
-  burstParticles.maxEmitBox = new Vector3(
-    extendSize.x * 1.0,
-    extendSize.y * 1.0,
-    0.05
+  microSparks.maxEmitBox = new Vector3(
+    extendSize.x * 0.4,
+    extendSize.y * 0.4,
+    0.12
   )
 
-  burstParticles.color1 = new Color4(
-    baseColor.r * 0.9,
-    baseColor.g,
+  microSparks.color1 = new Color4(1, 1, 1, 1)
+  microSparks.color2 = new Color4(0.9, 0.95, 1, 1)
+  microSparks.colorDead = new Color4(
+    baseColor.r * 0.5,
+    baseColor.g * 0.7,
     baseColor.b,
-    1
-  )
-  burstParticles.color2 = new Color4(
-    baseColor.r * 0.7,
-    baseColor.g * 0.9,
-    baseColor.b,
-    1
-  )
-  burstParticles.colorDead = new Color4(
-    baseColor.r * 0.3,
-    baseColor.g * 0.5,
-    baseColor.b * 0.7,
     0
   )
 
-  burstParticles.minSize = 0.06
-  burstParticles.maxSize = 0.16
-  burstParticles.minLifeTime = 0.2
-  burstParticles.maxLifeTime = 0.4
-  burstParticles.emitRate = 0
-  burstParticles.blendMode = ParticleSystem.BLENDMODE_ADD
-  burstParticles.minEmitPower = 0.8
-  burstParticles.maxEmitPower = 1.6
-  burstParticles.updateSpeed = 0.01
+  microSparks.minSize = 0.015
+  microSparks.maxSize = 0.04
+  microSparks.minLifeTime = 0.08
+  microSparks.maxLifeTime = 0.2
+  microSparks.emitRate = 0
+  microSparks.blendMode = ParticleSystem.BLENDMODE_ADD
+  microSparks.minEmitPower = 0.3
+  microSparks.maxEmitPower = 1.0
+  microSparks.updateSpeed = 0.015
 
-  // Explosive burst pattern
-  burstParticles.direction1 = new Vector3(-1.5, -1.5, -1)
-  burstParticles.direction2 = new Vector3(1.5, 1.5, 1)
-  burstParticles.gravity = new Vector3(0, -2, 0)
+  // Quick radial burst
+  microSparks.direction1 = new Vector3(-1.5, -0.8, -1)
+  microSparks.direction2 = new Vector3(1.5, 0.8, 1)
+  microSparks.gravity = new Vector3(0, -1.5, 0)
 
   // Create point lights for phrase glow
   const phraseLights = Array.from({ length: 2 }, (_, index) => {
@@ -154,103 +138,83 @@ export const createPhraseSurfaceEffects = (scene: Scene, phrase: Mesh, baseColor
   const update = (dt: number, intensity: number) => {
     time += dt
 
-    const isActive = intensity > 0.1
+    const isActive = intensity > 0.3
 
-    // Control surface particles - create plasma globe wrapping effect
+    // IMPACT SPARKS - physics-based sparks at beam contact
     if (isActive) {
-      if (!surfaceParticles.isStarted()) {
-        surfaceParticles.start()
+      if (!impactSparks.isStarted()) {
+        impactSparks.start()
       }
 
-      // Massive increase in particles for full coverage
-      surfaceParticles.emitRate = 120 + intensity * 280
-      surfaceParticles.maxEmitPower = 0.8 + intensity * 1.2
+      // Scale with intensity for dramatic effect
+      const sparkIntensity = Math.pow(intensity, 1.5) // Non-linear for punch
+      impactSparks.emitRate = 60 + sparkIntensity * 180
+      impactSparks.maxEmitPower = 1.5 + sparkIntensity * 2.0
 
-      // Create multiple simultaneous flow patterns wrapping around phrase
-      // Pattern 1: Circular wrapping (like plasma tendrils seeking the surface)
-      const circleAngle = time * 2.5
-      const circle1 = new Vector3(
-        Math.cos(circleAngle) * 1.5,
-        Math.sin(circleAngle) * 1.2,
-        Math.sin(circleAngle * 1.3) * 0.4
+      // Vary direction slightly for natural look
+      const dirAngle = time * 5
+      const dirVar = Math.sin(dirAngle) * 0.3
+      impactSparks.direction1 = new Vector3(
+        -2 + dirVar,
+        -1 + Math.cos(dirAngle * 1.3) * 0.4,
+        -1.5
       )
-      const circle2 = new Vector3(
-        Math.cos(circleAngle + Math.PI) * 1.5,
-        Math.sin(circleAngle + Math.PI) * 1.2,
-        Math.sin((circleAngle + Math.PI) * 1.3) * 0.4
-      )
-
-      // Pattern 2: Vertical waves (electricity dancing up/down)
-      const wavePhase = time * 3
-      const wave1 = new Vector3(
-        Math.sin(wavePhase * 0.8) * 0.6,
-        1.0 + Math.cos(wavePhase) * 0.4,
-        0.2
-      )
-      const wave2 = new Vector3(
-        Math.sin(wavePhase * 0.8 + Math.PI) * 0.6,
-        -1.0 + Math.cos(wavePhase + Math.PI) * 0.4,
-        0.2
-      )
-
-      // Combine patterns for complex wrapping motion
-      surfaceParticles.direction1 = circle1.add(wave1).normalize().scale(1.5 + intensity)
-      surfaceParticles.direction2 = circle2.add(wave2).normalize().scale(1.5 + intensity)
-
-      // Add pulsing gravity for dynamic motion
-      surfaceParticles.gravity = new Vector3(
-        Math.sin(time * 4) * 0.3,
-        -0.4 + Math.cos(time * 3) * 0.2,
-        0
+      impactSparks.direction2 = new Vector3(
+        2 + dirVar,
+        1 + Math.cos(dirAngle * 1.3) * 0.4,
+        1.5
       )
     } else {
-      if (surfaceParticles.isStarted()) {
-        surfaceParticles.stop()
+      if (impactSparks.isStarted()) {
+        impactSparks.stop()
       }
     }
 
-    // Control burst particles (kick in earlier for more coverage)
-    if (intensity > 0.4) {
-      if (!burstParticles.isStarted()) {
-        burstParticles.start()
+    // MICRO SPARKS - rapid flickers at high intensity
+    if (intensity > 0.6) {
+      if (!microSparks.isStarted()) {
+        microSparks.start()
       }
-      // Explosive bursts from all edges and corners
-      burstParticles.emitRate = (intensity - 0.4) * 500
-      burstParticles.maxEmitPower = 2.0 + (intensity - 0.4) * 3
 
-      // Animate burst direction to create tendrils
-      const burstAngle = time * 4
-      burstParticles.direction1 = new Vector3(
-        -2 + Math.cos(burstAngle) * 1.5,
-        -2 + Math.sin(burstAngle * 1.2) * 1.5,
+      // Quick bursts create electric crackle
+      const microIntensity = (intensity - 0.6) / 0.4
+      microSparks.emitRate = 100 + microIntensity * 250
+      microSparks.maxEmitPower = 0.8 + microIntensity * 1.5
+
+      // Radial burst with slight rotation
+      const microAngle = time * 8
+      const radialVar = Math.cos(microAngle) * 0.5
+      microSparks.direction1 = new Vector3(
+        -1.5 + radialVar,
+        -0.8,
         -1
       )
-      burstParticles.direction2 = new Vector3(
-        2 + Math.cos(burstAngle + Math.PI) * 1.5,
-        2 + Math.sin((burstAngle + Math.PI) * 1.2) * 1.5,
+      microSparks.direction2 = new Vector3(
+        1.5 + radialVar,
+        0.8,
         1
       )
     } else {
-      if (burstParticles.isStarted()) {
-        burstParticles.stop()
+      if (microSparks.isStarted()) {
+        microSparks.stop()
       }
     }
 
-    // Animate point lights with complex orbits around the phrase
+    // Subtle lighting enhancement at impact points
     phraseLights.forEach((light, index) => {
       if (isActive) {
-        // Create figure-8 orbit patterns that wrap around phrase
-        const orbitAngle = time * (2.5 + index * 0.3) + index * Math.PI
-        const figure8 = Math.sin(orbitAngle * 2) // Creates figure-8 shape
+        // Position near phrase center where beam hits
+        const lightAngle = time * (3 + index * 0.5) + index * Math.PI
+        const lightRadius = 0.3 + Math.sin(time * 4 + index) * 0.15
 
-        const orbitRadius = (0.5 + Math.sin(time * 3 + index) * 0.3) * (1 + extendSize.length())
-        light.position.x = Math.cos(orbitAngle) * orbitRadius * (1 + figure8 * 0.3)
-        light.position.y = Math.sin(orbitAngle * 1.3) * orbitRadius * 0.8
-        light.position.z = Math.sin(orbitAngle * 0.7) * 0.4 + figure8 * 0.2
+        light.position.x = Math.cos(lightAngle) * lightRadius * extendSize.x
+        light.position.y = Math.sin(lightAngle * 1.2) * lightRadius * extendSize.y
+        light.position.z = 0.15 + Math.sin(time * 6) * 0.05
 
-        // Intense pulsing matched to electricity flow
-        light.intensity = 0.6 + intensity * 1.2 + Math.sin(time * 6 + index * 2.5) * 0.3
-        light.range = 2.5 + intensity * 1.5
+        // Quick pulsing for electric flicker
+        const flicker = Math.sin(time * 12 + index * 3) * 0.15
+        light.intensity = 0.4 + intensity * 0.8 + flicker
+        light.range = 1.8 + intensity * 1.0
       } else {
         light.intensity = 0
       }
@@ -258,8 +222,8 @@ export const createPhraseSurfaceEffects = (scene: Scene, phrase: Mesh, baseColor
   }
 
   const dispose = () => {
-    surfaceParticles.dispose()
-    burstParticles.dispose()
+    impactSparks.dispose()
+    microSparks.dispose()
     phraseLights.forEach((light) => light.dispose())
   }
 

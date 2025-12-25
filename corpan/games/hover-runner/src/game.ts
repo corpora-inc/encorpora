@@ -69,6 +69,7 @@ import { createPhraseSurfaceEffects } from "./rendering/phraseSurfaceEffects"
 
 // Systems
 import { createSuccessParticles, createFailParticles, createScreenShake } from "./systems/particles"
+import { createScoreAnimator } from "./ui/scoreAnimation"
 import { initInput } from "./systems/input"
 
 // Gameplay helpers
@@ -85,6 +86,7 @@ export const createHoverRunner = (
   container.appendChild(root)
 
   const sfx = getSfx()
+  const scoreAnimator = createScoreAnimator(root)
   let wakeLock: { release: () => Promise<void> } | null = null
   const requestWakeLock = async () => {
     const wakeLockApi = (navigator as typeof navigator & {
@@ -842,6 +844,7 @@ export const createHoverRunner = (
   const lastPos = hoverboard.root.position.clone()
   let hoverTime = 0
   let electricTarget: Mesh | null = null
+  let electricTargetPhrase: PhraseInstance | null = null
   let electricIntensity = 0
   let highlightTime = 0
 
@@ -1019,7 +1022,65 @@ export const createHoverRunner = (
     mesh.isPickable = false
     mesh.parent = phraseRoot
     mesh.scaling.z = 0.35
-    return { mesh, baseWidth: planeWidth, baseHeight: planeHeight }
+
+    // Calculate letter positions for electric field targeting
+    const letterPositions: Vector3[] = []
+    const textureWidth = 2048
+    const textureHeight = 1024
+    const textureCenterX = 1024
+
+    const estimateCharWidth = (char: string, fontSize: number) => {
+      // Rough estimate: CJK chars are square, others vary
+      const isCJK = /[\u4e00-\u9fa5\u3040-\u309f\u30a0-\u30ff\uac00-\ud7af]/.test(char)
+      return isCJK ? fontSize * 0.9 : fontSize * 0.5
+    }
+
+    // Calculate positions for main text lines
+    lines.forEach((line, lineIndex) => {
+      const fontSize = 190
+      const y = baseY + lineIndex * 170
+      const lineChars = Array.from(line)
+      const totalWidth = lineChars.reduce((sum, char) => sum + estimateCharWidth(char, fontSize), 0)
+      let x = textureCenterX - totalWidth / 2
+
+      lineChars.forEach((char) => {
+        if (char.trim()) { // Skip spaces
+          const charWidth = estimateCharWidth(char, fontSize)
+          // Convert texture coords to mesh local coords
+          const localX = ((x + charWidth / 2 - textureCenterX) / textureWidth) * planeWidth
+          const localY = ((textureHeight / 2 - y) / textureHeight) * planeHeight
+          letterPositions.push(new Vector3(localX, localY, 0))
+          x += charWidth
+        } else {
+          x += estimateCharWidth(char, fontSize)
+        }
+      })
+    })
+
+    // Calculate positions for romanization lines
+    if (romLines.length) {
+      romLines.forEach((line, lineIndex) => {
+        const fontSize = 85
+        const y = baseY + lines.length * 170 + 30 + lineIndex * 95
+        const lineChars = Array.from(line)
+        const totalWidth = lineChars.reduce((sum, char) => sum + estimateCharWidth(char, fontSize), 0)
+        let x = textureCenterX - totalWidth / 2
+
+        lineChars.forEach((char) => {
+          if (char.trim()) { // Skip spaces
+            const charWidth = estimateCharWidth(char, fontSize)
+            const localX = ((x + charWidth / 2 - textureCenterX) / textureWidth) * planeWidth
+            const localY = ((textureHeight / 2 - y) / textureHeight) * planeHeight
+            letterPositions.push(new Vector3(localX, localY, 0))
+            x += charWidth
+          } else {
+            x += estimateCharWidth(char, fontSize)
+          }
+        })
+      })
+    }
+
+    return { mesh, baseWidth: planeWidth, baseHeight: planeHeight, letterPositions }
   }
 
   const setPhraseHighlight = (mesh: Mesh, strength: number) => {
@@ -1399,6 +1460,7 @@ export const createHoverRunner = (
     clearTransition()
     // Clear electric field when entering intro phase
     electricTarget = null
+    electricTargetPhrase = null
     electricIntensity = 0
     gameStore.update((draft) => {
       draft.round = nextRound
@@ -1441,6 +1503,7 @@ export const createHoverRunner = (
     clearTransition()
     // Clear electric field immediately when entering celebration
     electricTarget = null
+    electricTargetPhrase = null
     electricIntensity = 0
     gameStore.update((draft) => {
       draft.phase = "celebrate"
@@ -1473,9 +1536,9 @@ export const createHoverRunner = (
   }
 
   const spawnPhrase = (spec: PhraseSpec, lane: number) => {
-    const { mesh, baseWidth, baseHeight } = createPhraseMesh(spec)
+    const { mesh, baseWidth, baseHeight, letterPositions } = createPhraseMesh(spec)
     mesh.position.copyFrom(laneToPosition(lane))
-    const newPhrase: PhraseInstance = { spec, mesh, lane, baseWidth, baseHeight }
+    const newPhrase: PhraseInstance = { spec, mesh, lane, baseWidth, baseHeight, letterPositions }
     gameStore.update((draft) => {
       draft.activePhrases.push(newPhrase)
       draft.lastLane = lane
@@ -1575,6 +1638,7 @@ export const createHoverRunner = (
     const activePhrases = gameStore.getState().activePhrases
     if (activePhrases.length === 0) {
       electricTarget = null
+      electricTargetPhrase = null
       electricIntensity = 0
       return
     }
@@ -1612,6 +1676,7 @@ export const createHoverRunner = (
     const newTarget = closestInLane ? closestInLane.mesh : null
     const targetChanged = electricTarget !== newTarget
     electricTarget = newTarget
+    electricTargetPhrase = closestInLane
 
     // Increase electric intensity when closer to target
     if (closestInLane) {
@@ -1628,6 +1693,7 @@ export const createHoverRunner = (
       }
     } else {
       electricIntensity = 0
+      electricTargetPhrase = null
       if (targetChanged && electricTarget === null) {
         console.log('Electric target LOST - no phrase in lane', {
           playerLane: hoverLane,
@@ -1691,6 +1757,7 @@ export const createHoverRunner = (
       clearActivePhrase(current)
       // Immediately clear electric field when phrase is hit
       electricTarget = null
+      electricTargetPhrase = null
       electricIntensity = 0
       gameStore.update((draft) => {
         draft.spawnCooldown = getSettings().respawnDelay
@@ -1703,13 +1770,29 @@ export const createHoverRunner = (
         if (tuningStore.getState().settings.sfxEnabled) sfx.playSuccess()
         const points = getPhraseScore(round.answer, round.answerLang)
         tuningStore.getState().recordCorrect(points)
+        tuningStore.getState().recordPhraseResult(
+          current.spec.id,
+          round.promptLang,
+          round.answerLang,
+          true
+        )
+        scoreAnimator.showScorePopup(points)
         createSuccessParticles(scene, phrasePosition)
         startCelebration(round)
       } else if (!current.spec.isCorrect) {
         gameStore.update((draft) => {
           draft.incorrectStreak += 1
         })
+        const round = gameStore.getState().round
         tuningStore.getState().recordWrong()
+        if (round) {
+          tuningStore.getState().recordPhraseResult(
+            current.spec.id,
+            round.promptLang,
+            round.answerLang,
+            false
+          )
+        }
         if (tuningStore.getState().settings.sfxEnabled) sfx.playFail()
         createFailParticles(scene, phrasePosition)
         triggerScreenShake()
@@ -1742,6 +1825,7 @@ export const createHoverRunner = (
           draft.incorrectStreak += 1
         })
         tuningStore.getState().recordDodge()
+        scoreAnimator.showScorePopup(1)
         if (tuningStore.getState().settings.sfxEnabled) sfx.playSuccess()
       }
       continue
@@ -1771,6 +1855,7 @@ export const createHoverRunner = (
           draft.incorrectStreak += 1
         })
         tuningStore.getState().recordDodge()
+        scoreAnimator.showScorePopup(1)
         if (tuningStore.getState().settings.sfxEnabled) sfx.playSuccess()
       }
     }
@@ -1835,7 +1920,7 @@ export const createHoverRunner = (
       updatePlayer(dt)
       updatePhrases(dt)
       updatePropField(activeSkin.props, road)
-      electricField.update(dt, electricTarget, electricIntensity)
+      electricField.update(dt, electricTarget, electricIntensity, electricTargetPhrase?.letterPositions)
     }
     const farX = road.getFarCenterX()
     camera.setTarget(
@@ -1860,6 +1945,7 @@ export const createHoverRunner = (
     clearSpeakRepeat()
     clearActivePhrase()
     clearTransition()
+    scoreAnimator.cleanup()
     stackUnsubscribe?.()
     tuningUnsubscribe?.()
     hostApi.stopSpeech?.()
