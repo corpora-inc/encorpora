@@ -6,6 +6,10 @@
     "dev": "vite",
     "build": "vite build",
     "typecheck": "tsc --noEmit",
+    "test": "vitest",
+    "test:ui": "vitest --ui",
+    "test:run": "vitest run",
+    "test:coverage": "vitest run --coverage",
     "build:models": "blender --background --python scripts/svg_to_3d.py",
     "build:assets": "node scripts/sync-asset-packs.mjs",
     "build:all": "npm run build && npm run build:assets",
@@ -18,7 +22,11 @@
     "zustand": "^4.5.5"
   },
   "devDependencies": {
+    "@types/node": "^25.0.3",
+    "@vitest/ui": "^4.0.16",
+    "happy-dom": "^20.0.11",
     "typescript": "^5.4.0",
-    "vite": "^5.4.0"
+    "vite": "^5.4.0",
+    "vitest": "^4.0.16"
   }
 }
