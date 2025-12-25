@@ -12,7 +12,88 @@ import {
   Vector3,
 } from "@babylonjs/core"
 import type { ElectricField } from "../core/types"
-import { clamp, scaleColor } from "../core/utils"
+import { clamp, lerp, scaleColor } from "../core/utils"
+
+type Arc = {
+  mesh: Mesh
+  points: Vector3[]
+  material: StandardMaterial
+  seed: number
+  phase: number
+  reachScale: number
+  orbitAngle: number
+  orbitSpeed: number
+  orbitRadius: number
+  idleRadius: number
+  idleSpeed: number
+  idleLift: number
+  noiseScale: number
+  end: Vector3
+  endTarget: Vector3
+}
+
+type TargetFrame = {
+  centerLocal: Vector3
+  right: Vector3
+  up: Vector3
+  normal: Vector3
+  extentRight: number
+  extentUp: number
+}
+
+type ArcParticleMeta = {
+  arcIndex?: number
+  arcT?: number
+}
+
+const warpEdge = (value: number, power: number) => {
+  const abs = Math.abs(value)
+  if (abs < 1e-4) return 0
+  return Math.sign(value) * Math.pow(abs, power)
+}
+
+const resolveTargetFrame = (target: Mesh, rootWorld: Vector3): TargetFrame => {
+  target.computeWorldMatrix(true)
+  const bounds = target.getBoundingInfo().boundingBox
+  let min = new Vector3(
+    Number.POSITIVE_INFINITY,
+    Number.POSITIVE_INFINITY,
+    Number.POSITIVE_INFINITY
+  )
+  let max = new Vector3(
+    Number.NEGATIVE_INFINITY,
+    Number.NEGATIVE_INFINITY,
+    Number.NEGATIVE_INFINITY
+  )
+  bounds.vectorsWorld.forEach((corner) => {
+    min = Vector3.Minimize(min, corner)
+    max = Vector3.Maximize(max, corner)
+  })
+  const centerWorld = min.add(max).scale(0.5)
+  const centerLocal = centerWorld.subtract(rootWorld)
+
+  const right = target.getDirection(Vector3.Right()).normalize()
+  const up = target.getDirection(Vector3.Up()).normalize()
+  let normal = Vector3.Cross(right, up)
+  if (normal.lengthSquared() < 0.001) {
+    normal = centerLocal.clone()
+  }
+  if (normal.lengthSquared() < 0.001) {
+    normal = Vector3.Forward()
+  } else {
+    normal.normalize()
+  }
+
+  let extentRight = 0.1
+  let extentUp = 0.1
+  bounds.vectorsWorld.forEach((corner) => {
+    const local = corner.subtract(centerWorld)
+    extentRight = Math.max(extentRight, Math.abs(Vector3.Dot(local, right)))
+    extentUp = Math.max(extentUp, Math.abs(Vector3.Dot(local, up)))
+  })
+
+  return { centerLocal, right, up, normal, extentRight, extentUp }
+}
 
 export const createElectricField = (
   scene: Scene,
@@ -23,13 +104,20 @@ export const createElectricField = (
   root.parent = parent
   root.position.y = 0.2
 
+  const start = new Vector3(0, 0.45, 0)
+  const startPos = new Vector3()
+  const startJitter = new Vector3()
+  const fallbackRight = Vector3.Right()
+  const fallbackUp = Vector3.Up()
+  const fallbackNormal = Vector3.Forward()
+
   const core = MeshBuilder.CreateSphere(
     "electric-core",
     { diameter: 0.25, segments: 12 },
     scene
   )
   core.parent = root
-  core.position.y = 0.45
+  core.position.y = start.y
   core.isPickable = false
 
   const coreMat = new StandardMaterial("electric-core-mat", scene)
@@ -42,15 +130,17 @@ export const createElectricField = (
     label: string,
     radius: number,
     pointCount: number,
-    reachScale: number
+    reachScale: number,
+    orbitAngle: number,
+    orbitRadius: number
   ) => {
-    const points = Array.from({ length: pointCount }, () => new Vector3())
+    const points = Array.from({ length: pointCount }, () => start.clone())
     const mesh = MeshBuilder.CreateTube(
       `electric-arc-${label}-${index}`,
       {
         path: points,
         radius,
-        tessellation: 6,
+        tessellation: 7,
         updatable: true,
       },
       scene
@@ -60,7 +150,7 @@ export const createElectricField = (
     const material = new StandardMaterial(`electric-arc-mat-${label}-${index}`, scene)
     material.emissiveColor = baseColor.clone()
     material.disableLighting = true
-    material.alpha = 0.85
+    material.alpha = 0.8
     mesh.material = material
     return {
       mesh,
@@ -69,68 +159,114 @@ export const createElectricField = (
       seed: Math.random() * Math.PI * 2,
       phase: Math.random() * Math.PI * 2,
       reachScale,
+      orbitAngle: orbitAngle + Math.random() * 0.25,
+      orbitSpeed: 0.25 + Math.random() * 0.45,
+      orbitRadius: orbitRadius * (0.9 + Math.random() * 0.18),
+      idleRadius: 0.5 + Math.random() * 0.35,
+      idleSpeed: 0.45 + Math.random() * 0.6,
+      idleLift: 0.3 + Math.random() * 0.25,
+      noiseScale: 0.1 + Math.random() * 0.06,
+      end: start.clone(),
+      endTarget: start.clone(),
     }
   }
 
-  const arcs = [
-    ...Array.from({ length: 12 }, (_, index) =>
-      buildArc(index, "main", 0.01, 16, 1)
-    ),
-    ...Array.from({ length: 8 }, (_, index) =>
-      buildArc(index, "branch", 0.006, 12, 0.65)
-    ),
+  const mainCount = 12
+  const branchCount = 8
+  const arcs: Arc[] = [
+    ...Array.from({ length: mainCount }, (_, index) => {
+      const angle = (index / mainCount) * Math.PI * 2
+      return buildArc(index, "main", 0.012, 22, 1, angle, 0.95)
+    }),
+    ...Array.from({ length: branchCount }, (_, index) => {
+      const angle = (index / branchCount) * Math.PI * 2 + 0.2
+      return buildArc(index, "branch", 0.007, 18, 0.7, angle, 0.65)
+    }),
   ]
 
-  // Create particle systems for flowing electricity along arcs
-  const arcParticleSystems = arcs.slice(0, 6).map((arc, index) => {
-    const particleSystem = new ParticleSystem(
-      `electric-particles-${index}`,
-      300,
-      scene
+  const streamParticles = new ParticleSystem("electric-stream", 900, scene)
+  streamParticles.particleTexture = new Texture(
+    "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMTYiIGN5PSIxNiIgcj0iMTAiIGZpbGw9IndoaXRlIi8+PC9zdmc+",
+    scene
+  )
+  streamParticles.emitter = core
+  streamParticles.minEmitBox = Vector3.Zero()
+  streamParticles.maxEmitBox = Vector3.Zero()
+  streamParticles.color1 = new Color4(0.4, 0.9, 1, 1)
+  streamParticles.color2 = new Color4(0.6, 0.98, 1, 1)
+  streamParticles.colorDead = new Color4(0.3, 0.6, 1, 0)
+  streamParticles.minSize = 0.02
+  streamParticles.maxSize = 0.06
+  streamParticles.minLifeTime = 0.12
+  streamParticles.maxLifeTime = 0.45
+  streamParticles.emitRate = 0
+  streamParticles.blendMode = ParticleSystem.BLENDMODE_ADD
+  streamParticles.minEmitPower = 1.5
+  streamParticles.maxEmitPower = 3
+  streamParticles.updateSpeed = 0.015
+  streamParticles.gravity = Vector3.Zero()
+
+  const streamDirection = new Vector3(0, 0, 1)
+  const streamScratch = new Vector3()
+
+  streamParticles.startPositionFunction = (worldMatrix, positionToUpdate, particle) => {
+    const meta = particle as typeof particle & ArcParticleMeta
+    const arcIndex = Math.floor(Math.random() * arcs.length)
+    const t = Math.random() * 0.9
+    meta.arcIndex = arcIndex
+    meta.arcT = t
+    const arc = arcs[arcIndex]
+    const pointIndex = Math.min(
+      Math.floor(t * (arc.points.length - 1)),
+      arc.points.length - 1
     )
+    const point = arc.points[pointIndex]
+    if (worldMatrix && worldMatrix.m && worldMatrix.m.length >= 16) {
+      const localPoint = point.subtract(core.position)
+      Vector3.TransformCoordinatesToRef(localPoint, worldMatrix, positionToUpdate)
+    } else {
+      positionToUpdate.copyFrom(point)
+    }
+  }
 
-    // No texture needed - we'll use additive blending for glowing particles
-    particleSystem.particleTexture = new Texture(
-      "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMTYiIGN5PSIxNiIgcj0iMTIiIGZpbGw9IndoaXRlIi8+PC9zdmc+",
-      scene
+  streamParticles.startDirectionFunction = (
+    worldMatrix,
+    directionToUpdate,
+    particle
+  ) => {
+    const meta = particle as typeof particle & ArcParticleMeta
+    const arcIndex = meta.arcIndex ?? Math.floor(Math.random() * arcs.length)
+    const t = meta.arcT ?? Math.random()
+    const arc = arcs[arcIndex]
+    const pointIndex = Math.min(
+      Math.floor(t * (arc.points.length - 2)),
+      arc.points.length - 2
     )
+    const pointA = arc.points[pointIndex]
+    const pointB = arc.points[pointIndex + 1] ?? pointA
+    streamScratch.copyFrom(pointB).subtractInPlace(pointA)
+    if (streamScratch.lengthSquared() < 0.0001) {
+      streamScratch.copyFrom(streamDirection)
+    }
+    // Generate emit power based on the particle system's settings
+    const emitPower = streamParticles.minEmitPower +
+      Math.random() * (streamParticles.maxEmitPower - streamParticles.minEmitPower)
+    streamScratch.normalize().scaleInPlace(emitPower)
+    if (worldMatrix && worldMatrix.m && worldMatrix.m.length >= 16) {
+      Vector3.TransformNormalToRef(streamScratch, worldMatrix, directionToUpdate)
+    } else {
+      directionToUpdate.copyFrom(streamScratch)
+    }
+  }
 
-    particleSystem.emitter = core
-    particleSystem.minEmitBox = new Vector3(-0.05, -0.05, -0.05)
-    particleSystem.maxEmitBox = new Vector3(0.05, 0.05, 0.05)
-
-    // Particle appearance - bright electric blue/cyan
-    particleSystem.color1 = new Color4(0.4, 0.8, 1, 1)
-    particleSystem.color2 = new Color4(0.6, 0.95, 1, 1)
-    particleSystem.colorDead = new Color4(0.3, 0.7, 1, 0)
-
-    particleSystem.minSize = 0.03
-    particleSystem.maxSize = 0.08
-    particleSystem.minLifeTime = 0.4
-    particleSystem.maxLifeTime = 0.8
-
-    particleSystem.emitRate = 60
-    particleSystem.blendMode = ParticleSystem.BLENDMODE_ADD
-    particleSystem.minEmitPower = 0.5
-    particleSystem.maxEmitPower = 1.5
-    particleSystem.updateSpeed = 0.01
-
-    // Add some randomness
-    particleSystem.direction1 = new Vector3(-0.2, -0.2, -0.2)
-    particleSystem.direction2 = new Vector3(0.2, 0.2, 0.2)
-
-    return { system: particleSystem, arc, active: false }
-  })
-
-  // Create spark burst particles at the core
-  const coreSparkSystem = new ParticleSystem("core-sparks", 200, scene)
+  const coreSparkSystem = new ParticleSystem("core-sparks", 220, scene)
   coreSparkSystem.particleTexture = new Texture(
     "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMTYiIGN5PSIxNiIgcj0iOCIgZmlsbD0id2hpdGUiLz48L3N2Zz4=",
     scene
   )
   coreSparkSystem.emitter = core
-  coreSparkSystem.minEmitBox = new Vector3(-0.1, -0.1, -0.1)
-  coreSparkSystem.maxEmitBox = new Vector3(0.1, 0.1, 0.1)
+  coreSparkSystem.minEmitBox = new Vector3(-0.08, -0.08, -0.08)
+  coreSparkSystem.maxEmitBox = new Vector3(0.08, 0.08, 0.08)
   coreSparkSystem.color1 = new Color4(0.8, 0.95, 1, 1)
   coreSparkSystem.color2 = new Color4(0.5, 0.85, 1, 1)
   coreSparkSystem.colorDead = new Color4(0.3, 0.6, 1, 0)
@@ -138,14 +274,13 @@ export const createElectricField = (
   coreSparkSystem.maxSize = 0.05
   coreSparkSystem.minLifeTime = 0.2
   coreSparkSystem.maxLifeTime = 0.5
-  coreSparkSystem.emitRate = 40
+  coreSparkSystem.emitRate = 20
   coreSparkSystem.blendMode = ParticleSystem.BLENDMODE_ADD
   coreSparkSystem.minEmitPower = 0.3
-  coreSparkSystem.maxEmitPower = 0.8
+  coreSparkSystem.maxEmitPower = 0.9
   coreSparkSystem.updateSpeed = 0.01
   coreSparkSystem.gravity = new Vector3(0, -1, 0)
 
-  // Create dynamic point lights for electric glow
   const pointLights = Array.from({ length: 3 }, (_, index) => {
     const light = new PointLight(
       `electric-light-${index}`,
@@ -161,7 +296,7 @@ export const createElectricField = (
 
   let time = 0
   let currentColor = baseColor.clone()
-  let lastFocusState = false
+  let focus = 0
 
   const setColor = (color: Color3) => {
     currentColor = color.clone()
@@ -170,22 +305,18 @@ export const createElectricField = (
       arc.material.emissiveColor = scaleColor(currentColor, 1.25)
     })
 
-    // Update particle colors to match theme
     const particleColor1 = new Color4(color.r * 0.7, color.g * 0.9, color.b, 1)
     const particleColor2 = new Color4(color.r * 0.9, color.g, color.b, 1)
     const particleColorDead = new Color4(color.r * 0.5, color.g * 0.7, color.b, 0)
 
-    arcParticleSystems.forEach(({ system }) => {
-      system.color1 = particleColor1
-      system.color2 = particleColor2
-      system.colorDead = particleColorDead
-    })
+    streamParticles.color1 = particleColor1
+    streamParticles.color2 = particleColor2
+    streamParticles.colorDead = particleColorDead
 
     coreSparkSystem.color1 = new Color4(color.r * 0.9, color.g * 0.95, color.b, 1)
     coreSparkSystem.color2 = new Color4(color.r * 0.7, color.g * 0.85, color.b, 1)
     coreSparkSystem.colorDead = particleColorDead
 
-    // Update light colors
     pointLights.forEach((light) => {
       light.diffuse = color.clone()
       light.specular = scaleColor(color, 1.2)
@@ -194,216 +325,145 @@ export const createElectricField = (
 
   const update = (dt: number, target: Mesh | null, intensity: number) => {
     time += dt
-    const targetWorld = target?.getAbsolutePosition() ?? null
     const rootWorld = root.getAbsolutePosition()
-    const targetLocal = targetWorld ? targetWorld.subtract(rootWorld) : null
-    const reach = clamp(intensity, 0, 1.2) // Allow stronger connection
+    const desiredFocus = target ? clamp(intensity / 1.2, 0, 1) : 0
+    const focusEase = 1 - Math.exp(-dt * 6)
+    focus = lerp(focus, desiredFocus, focusEase)
+    const reach = clamp(intensity, 0, 1.35)
 
-    // Boost core brightness when connected
-    coreMat.emissiveColor = scaleColor(currentColor, 1.35 + reach * 0.5)
+    startJitter.x = Math.sin(time * 2.8) * 0.015
+    startJitter.y = Math.cos(time * 2.2) * 0.02
+    startJitter.z = Math.sin(time * 2.4) * 0.015
+    startPos.copyFrom(start).addInPlace(startJitter)
 
-    // Calculate multiple target points around the phrase for plasma globe effect
-    const targetPoints: Vector3[] = []
-    if (targetLocal && target) {
-      const bounds = target.getBoundingInfo()
-      const extendSize = bounds.boundingBox.extendSize
-      const center = targetLocal
-
-      // Create target points at corners, edges, and surfaces of the phrase mesh
-      const offsets = [
-        // Corners
-        new Vector3(-extendSize.x, -extendSize.y, 0),
-        new Vector3(extendSize.x, -extendSize.y, 0),
-        new Vector3(-extendSize.x, extendSize.y, 0),
-        new Vector3(extendSize.x, extendSize.y, 0),
-        // Mid edges
-        new Vector3(-extendSize.x * 0.5, 0, 0),
-        new Vector3(extendSize.x * 0.5, 0, 0),
-        new Vector3(0, -extendSize.y * 0.5, 0),
-        new Vector3(0, extendSize.y * 0.5, 0),
-        // Surface points (create plasma-like distribution)
-        new Vector3(-extendSize.x * 0.7, extendSize.y * 0.7, 0),
-        new Vector3(extendSize.x * 0.7, extendSize.y * 0.7, 0),
-        new Vector3(-extendSize.x * 0.7, -extendSize.y * 0.7, 0),
-        new Vector3(extendSize.x * 0.7, -extendSize.y * 0.7, 0),
-        // Center for concentration
-        new Vector3(0, 0, 0),
-        new Vector3(0, 0, 0),
-      ]
-
-      offsets.forEach((offset) => {
-        targetPoints.push(center.add(offset))
-      })
-    }
-
-    const shouldFocus = !!(targetLocal && targetPoints.length > 0 && reach > 0.1)
-    if (shouldFocus !== lastFocusState) {
-      console.log(`Electric field ${shouldFocus ? 'FOCUSING' : 'FLOATING'}:`, {
-        hasTarget: !!target,
-        hasTargetLocal: !!targetLocal,
-        targetPointsCount: targetPoints.length,
-        intensity,
-        reach,
-        reachThreshold: 0.1,
-      })
-      lastFocusState = shouldFocus
-    }
-
-    arcs.forEach((arc, index) => {
-      const start = new Vector3(0, 0.45, 0)
-
-      let end: Vector3
-
-      // When target exists, ALL arcs focus on it like a plasma globe
-      if (shouldFocus) {
-        // Each arc picks a different target point to create wrapping effect
-        const targetIndex = index % targetPoints.length
-        const targetPoint = targetPoints[targetIndex]
-
-        // Small dance animation on target point
-        const animOffset = new Vector3(
-          Math.sin(time * 4 + index) * 0.08,
-          Math.cos(time * 3.5 + index) * 0.08,
-          Math.sin(time * 5 + index) * 0.03
-        )
-
-        const animatedTarget = targetPoint.add(animOffset)
-
-        // STRONGLY prefer the target - 95% target, 5% wobble for realism
-        const wobble = new Vector3(
-          Math.sin(time * 2 + index) * 0.1,
-          Math.cos(time * 2.3 + index) * 0.1,
-          0
-        )
-        end = animatedTarget.add(wobble.scale(0.05))
+    const frame = target && focus > 0.02 ? resolveTargetFrame(target, rootWorld) : null
+    if (frame) {
+      streamDirection.copyFrom(frame.centerLocal)
+      if (streamDirection.lengthSquared() > 0.0001) {
+        streamDirection.normalize()
       } else {
-        // No target or weak connection - arcs float randomly
-        const theta = arc.seed + time * 0.9 + index * 0.4
-        const phi = arc.phase + time * 0.7 + index * 0.2
-        const sphereRadius = 0.85 + Math.sin(time * 1.4 + arc.seed) * 0.15
-        end = new Vector3(
-          Math.cos(theta) * Math.sin(phi),
-          Math.cos(phi),
-          Math.sin(theta) * Math.sin(phi)
-        ).scale(sphereRadius).addInPlace(start)
+        streamDirection.copyFrom(fallbackNormal)
+      }
+    } else {
+      streamDirection.copyFrom(fallbackNormal)
+    }
+
+    coreMat.emissiveColor = scaleColor(currentColor, 1.2 + focus * 1)
+
+    const targetRight = frame?.right ?? fallbackRight
+    const targetUp = frame?.up ?? fallbackUp
+    const targetNormal = frame?.normal ?? fallbackNormal
+    const extentRight = frame?.extentRight ?? 0.6
+    const extentUp = frame?.extentUp ?? 0.4
+    const hasFocus = !!frame && focus > 0.05
+
+    arcs.forEach((arc) => {
+      if (hasFocus) {
+        const orbit = arc.orbitAngle + time * arc.orbitSpeed
+        const drift = Math.sin(time * 1.6 + arc.seed) * 0.12
+        const radius = arc.orbitRadius + drift * 0.2
+        const rawU = Math.cos(orbit) * radius
+        const rawV = Math.sin(orbit) * radius
+        const u = warpEdge(rawU, 0.65)
+        const v = warpEdge(rawV, 0.65)
+        const edgeScale = 0.92 + Math.sin(time * 2.4 + arc.phase) * 0.06
+        arc.endTarget.copyFrom(frame.centerLocal)
+        arc.endTarget.addInPlace(targetRight.scale(u * extentRight * edgeScale))
+        arc.endTarget.addInPlace(targetUp.scale(v * extentUp * edgeScale))
+        arc.endTarget.addInPlace(
+          targetNormal.scale((0.06 + arc.reachScale * 0.14) * (0.6 + focus * 0.5))
+        )
+      } else {
+        const idleAngle = arc.orbitAngle + time * arc.idleSpeed
+        const idleRadius = arc.idleRadius + Math.sin(time * 1.5 + arc.seed) * 0.08
+        arc.endTarget.copyFrom(startPos)
+        arc.endTarget.addInPlace(
+          new Vector3(
+            Math.cos(idleAngle) * idleRadius,
+            Math.sin(time * 1.8 + arc.phase) * 0.12 + arc.idleLift,
+            Math.sin(idleAngle) * idleRadius
+          )
+        )
       }
 
-      const dir = end.subtract(start)
-      const axis = Math.abs(dir.y) > 0.9 ? Vector3.Right() : Vector3.Up()
-      const orthoA = Vector3.Cross(dir, axis).normalize()
-      const orthoB = Vector3.Cross(dir, orthoA).normalize()
+      const endEase = 1 - Math.exp(-dt * (hasFocus ? 8 : 3))
+      Vector3.LerpToRef(arc.end, arc.endTarget, endEase, arc.end)
 
+      const dirNorm = arc.end.subtract(startPos)
+      if (dirNorm.lengthSquared() < 0.0001) {
+        dirNorm.copyFrom(streamDirection)
+      }
+      dirNorm.normalize()
+
+      const axis = Math.abs(dirNorm.y) > 0.85 ? fallbackRight : fallbackUp
+      const orthoA = Vector3.Cross(dirNorm, axis).normalize()
+      const orthoB = Vector3.Cross(dirNorm, orthoA).normalize()
+      const noiseAmp = arc.noiseScale * (0.6 + (1 - focus) * 0.5) * arc.reachScale
+
+      const pointCount = arc.points.length - 1
       for (let i = 0; i < arc.points.length; i += 1) {
-        const t = i / (arc.points.length - 1)
-        const wobble =
-          Math.sin(t * 14 + time * 11 + arc.seed) * 0.1 +
-          Math.cos(t * 18 + time * 9 + arc.phase) * 0.08
-        const twist = Math.sin(t * 20 + time * 12 + arc.phase) * 0.09
-        const fade = (1 - t) * 0.9 + 0.1
+        const t = i / pointCount
+        const falloff = Math.sin(Math.PI * t)
+        const flutter =
+          Math.sin(t * 12 + time * 11 + arc.seed) * 0.8 +
+          Math.cos(t * 18 + time * 7 + arc.phase) * 0.6
+        const twist =
+          Math.cos(t * 14 + time * 9 + arc.phase) * 0.8 +
+          Math.sin(t * 22 + time * 8 + arc.seed) * 0.6
         const offset = orthoA
-          .scale(wobble * fade)
-          .add(orthoB.scale(twist * fade))
-        const point = start.add(dir.scale(t)).add(offset)
-        arc.points[i].copyFrom(point)
-      }
+          .scale(flutter * noiseAmp * falloff)
+          .add(orthoB.scale(twist * noiseAmp * falloff))
 
-      MeshBuilder.CreateTube(
-        arc.mesh.name,
-        { path: arc.points, instance: arc.mesh }
-      )
-      // Stronger brightness boost when connected (up to 2.2x from 1.8x)
-      arc.material.emissiveColor = scaleColor(
-        currentColor,
-        1.1 + reach * 0.9
-      )
-    })
+        Vector3.LerpToRef(startPos, arc.end, t, arc.points[i])
+        arc.points[i].addInPlace(offset)
 
-    // Animate particles flowing along arcs to wrap around phrase
-    const hasTarget = targetLocal !== null && reach > 0.1 && targetPoints.length > 0
-
-    arcParticleSystems.forEach(({ system, active }, index) => {
-      if (hasTarget) {
-        // Activate particles and direct them toward phrase surface
-        if (!active) {
-          system.start()
-          arcParticleSystems[index].active = true
+        if (hasFocus && t > 0.7) {
+          const tip = (t - 0.7) / 0.3
+          const tipWiggle = Math.sin(time * 8 + arc.phase + t * 10) * 0.05 * tip
+          arc.points[i].addInPlace(targetNormal.scale(tipWiggle))
         }
-
-        // Particles seek different points on phrase surface for plasma globe effect
-        const targetPointIndex = (index * 3) % targetPoints.length
-        const surfaceTarget = targetPoints[targetPointIndex]
-        const direction = surfaceTarget.subtract(new Vector3(0, 0.45, 0)).normalize()
-
-        // Add spiral motion as particles flow toward phrase
-        const spiralAngle = time * 3 + index * 0.5
-        const spiralRadius = 0.4
-        const spiralOffset = new Vector3(
-          Math.cos(spiralAngle) * spiralRadius,
-          Math.sin(spiralAngle) * spiralRadius,
-          0
-        )
-
-        const tangent1 = direction.add(spiralOffset).normalize()
-        const tangent2 = direction.add(spiralOffset.scale(-1)).normalize()
-
-        // Particles flow in spiraling streams toward surface
-        const jitter = 0.2
-        system.direction1 = tangent1.scale(2.5 + reach).add(
-          new Vector3(
-            (Math.random() - 0.5) * jitter,
-            (Math.random() - 0.5) * jitter,
-            (Math.random() - 0.5) * jitter
-          )
-        )
-        system.direction2 = tangent2.scale(3 + reach).add(
-          new Vector3(
-            (Math.random() - 0.5) * jitter,
-            (Math.random() - 0.5) * jitter,
-            (Math.random() - 0.5) * jitter
-          )
-        )
-
-        // Massive increase in particles for stunning visual
-        system.emitRate = 80 + reach * 180
-        system.minEmitPower = 1.5 + reach * 2.5
-        system.maxEmitPower = 2.5 + reach * 4
-      } else if (active) {
-        // Deactivate particles
-        system.stop()
-        arcParticleSystems[index].active = false
       }
+
+      MeshBuilder.CreateTube(arc.mesh.name, { path: arc.points, instance: arc.mesh })
+      arc.material.emissiveColor = scaleColor(currentColor, 0.9 + reach * 0.9)
+      arc.material.alpha = 0.35 + focus * 0.5
     })
 
-    // Control core spark system
-    if (hasTarget) {
+    if (hasFocus) {
+      if (!streamParticles.isStarted()) {
+        streamParticles.start()
+      }
+      streamParticles.emitRate = 120 + focus * 260
+      streamParticles.minEmitPower = 1.6 + focus * 1.4
+      streamParticles.maxEmitPower = 3 + focus * 2.1
+      streamParticles.minLifeTime = 0.12 + focus * 0.08
+      streamParticles.maxLifeTime = 0.35 + focus * 0.18
+    } else if (streamParticles.isStarted()) {
+      streamParticles.stop()
+    }
+
+    if (hasFocus) {
       if (!coreSparkSystem.isStarted()) {
         coreSparkSystem.start()
       }
-      coreSparkSystem.emitRate = 40 + reach * 80
-      coreSparkSystem.maxEmitPower = 0.8 + reach * 1.2
-    } else {
-      if (coreSparkSystem.isStarted()) {
-        coreSparkSystem.stop()
-      }
+      coreSparkSystem.emitRate = 30 + reach * 90
+      coreSparkSystem.maxEmitPower = 0.9 + reach * 1.3
+    } else if (coreSparkSystem.isStarted()) {
+      coreSparkSystem.stop()
     }
 
-    // Animate point lights along arcs
     pointLights.forEach((light, index) => {
-      if (hasTarget && index < 3) {
-        // Position lights along the arc path
-        const arcIndex = index * 2
+      if (hasFocus) {
+        const arcIndex = (index * 3) % arcs.length
         const arc = arcs[arcIndex]
-        if (arc) {
-          // Animate light position along the arc
-          const t = (Math.sin(time * 3 + index * 2) * 0.5 + 0.5) * 0.7 + 0.15
-          const pointIndex = Math.floor(t * (arc.points.length - 1))
-          const arcPoint = arc.points[pointIndex]
-          if (arcPoint) {
-            const worldPoint = root.getAbsolutePosition().add(arcPoint)
-            light.position = worldPoint
-          }
+        const t = (Math.sin(time * 3 + index * 2) * 0.5 + 0.5) * 0.75 + 0.15
+        const pointIndex = Math.floor(t * (arc.points.length - 1))
+        const arcPoint = arc.points[pointIndex]
+        if (arcPoint) {
+          light.position = rootWorld.add(arcPoint)
         }
-        light.intensity = 0.3 + reach * 0.7
+        light.intensity = 0.35 + focus * 0.85
+        light.range = 2.4 + focus * 1.6
       } else {
         light.intensity = 0
       }
