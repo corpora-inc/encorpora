@@ -240,8 +240,8 @@ export const createElectricField = (
 
       let end: Vector3
 
-      // When target exists, ALL arcs focus on it like a plasma globe
-      if (targetLocal && targetPoints.length > 0 && reach > 0.3) {
+      // When target exists and player is close, ALL arcs focus on it like a plasma globe
+      if (targetLocal && targetPoints.length > 0 && reach > 1.05) {
         // Each arc picks a different target point to create wrapping effect
         const targetIndex = index % targetPoints.length
         const targetPoint = targetPoints[targetIndex]
