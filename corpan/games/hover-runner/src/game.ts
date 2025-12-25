@@ -3058,6 +3058,10 @@ export const createHoverRunner = (
         const spec = pickNextPhrase()
         if (spec) {
           spawnPhrase(spec, pickLane(refreshed.lastLane))
+          // Set cooldown for staggered spawning (shorter than respawn delay for smoother chaos)
+          gameStore.update((draft) => {
+            draft.spawnCooldown = Math.max(0.3, getSettings().respawnDelay * 0.6)
+          })
         }
       }
     }
