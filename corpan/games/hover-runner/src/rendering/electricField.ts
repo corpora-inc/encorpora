@@ -237,31 +237,41 @@ export const createElectricField = (
 
     arcs.forEach((arc, index) => {
       const start = new Vector3(0, 0.45, 0)
-      const theta = arc.seed + time * 0.9 + index * 0.4
-      const phi = arc.phase + time * 0.7 + index * 0.2
-      const sphereRadius = 0.85 + Math.sin(time * 1.4 + arc.seed) * 0.15
-      const randomEnd = new Vector3(
-        Math.cos(theta) * Math.sin(phi),
-        Math.cos(phi),
-        Math.sin(theta) * Math.sin(phi)
-      ).scale(sphereRadius).addInPlace(start)
 
-      let end = randomEnd
-      // ALL arcs connect to wrap around the phrase like a plasma globe
-      if (targetLocal && targetPoints.length > 0) {
+      let end: Vector3
+
+      // When target exists, ALL arcs focus on it like a plasma globe
+      if (targetLocal && targetPoints.length > 0 && reach > 0.3) {
         // Each arc picks a different target point to create wrapping effect
         const targetIndex = index % targetPoints.length
         const targetPoint = targetPoints[targetIndex]
 
-        // Add some animation to make electricity dance
+        // Small dance animation on target point
         const animOffset = new Vector3(
-          Math.sin(time * 4 + index) * 0.15,
-          Math.cos(time * 3.5 + index) * 0.15,
-          Math.sin(time * 5 + index) * 0.05
+          Math.sin(time * 4 + index) * 0.08,
+          Math.cos(time * 3.5 + index) * 0.08,
+          Math.sin(time * 5 + index) * 0.03
         )
 
         const animatedTarget = targetPoint.add(animOffset)
-        end = Vector3.Lerp(randomEnd, animatedTarget, reach * arc.reachScale * 1.2)
+
+        // STRONGLY prefer the target - 95% target, 5% wobble for realism
+        const wobble = new Vector3(
+          Math.sin(time * 2 + index) * 0.1,
+          Math.cos(time * 2.3 + index) * 0.1,
+          0
+        )
+        end = animatedTarget.add(wobble.scale(0.05))
+      } else {
+        // No target or weak connection - arcs float randomly
+        const theta = arc.seed + time * 0.9 + index * 0.4
+        const phi = arc.phase + time * 0.7 + index * 0.2
+        const sphereRadius = 0.85 + Math.sin(time * 1.4 + arc.seed) * 0.15
+        end = new Vector3(
+          Math.cos(theta) * Math.sin(phi),
+          Math.cos(phi),
+          Math.sin(theta) * Math.sin(phi)
+        ).scale(sphereRadius).addInPlace(start)
       }
 
       const dir = end.subtract(start)
