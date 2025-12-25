@@ -60,6 +60,7 @@ body {
   right: calc(16px + var(--safe-right));
   bottom: calc(80px + var(--safe-bottom));
   width: min(360px, 92vw);
+  max-height: calc(100vh - 80px - 20px - var(--safe-top) - var(--safe-bottom));
   padding: 14px 16px 16px;
   border-radius: 18px;
   border: 1px solid rgba(234, 242, 255, 0.18);
@@ -75,12 +76,31 @@ body {
   pointer-events: none;
   transition: opacity 0.2s ease, transform 0.2s ease;
   z-index: 30;
+  overflow-y: auto;
 }
 
 .hud-panel.open {
   opacity: 1;
   transform: translateY(0) scale(1);
   pointer-events: auto;
+}
+
+.hud-panel::-webkit-scrollbar {
+  width: 6px;
+}
+
+.hud-panel::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+}
+
+.hud-panel::-webkit-scrollbar-thumb {
+  background: rgba(127, 214, 255, 0.3);
+  border-radius: 3px;
+}
+
+.hud-panel::-webkit-scrollbar-thumb:hover {
+  background: rgba(127, 214, 255, 0.5);
 }
 
 .hud-row {
@@ -232,28 +252,6 @@ body {
   flex-direction: column;
   gap: 4px;
   margin-top: 6px;
-  max-height: calc(100vh - 200px);
-  overflow-y: auto;
-  overflow-x: hidden;
-  padding-right: 4px;
-}
-
-.tuning-panel::-webkit-scrollbar {
-  width: 6px;
-}
-
-.tuning-panel::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.2);
-  border-radius: 3px;
-}
-
-.tuning-panel::-webkit-scrollbar-thumb {
-  background: rgba(127, 214, 255, 0.3);
-  border-radius: 3px;
-}
-
-.tuning-panel::-webkit-scrollbar-thumb:hover {
-  background: rgba(127, 214, 255, 0.5);
 }
 
 .accordion-section {
