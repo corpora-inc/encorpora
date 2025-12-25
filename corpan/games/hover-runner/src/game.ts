@@ -1821,9 +1821,7 @@ export const createHoverRunner = (
           hostApi.speak(round.answerLang, round.answer)
         }
       } else {
-        gameStore.update((draft) => {
-          draft.incorrectStreak += 1
-        })
+        // Successfully dodged a wrong answer - no miss increment!
         tuningStore.getState().recordDodge()
         scoreAnimator.showScorePopup(1)
         if (tuningStore.getState().settings.sfxEnabled) sfx.playSuccess()
@@ -1851,9 +1849,7 @@ export const createHoverRunner = (
           hostApi.speak(round.answerLang, round.answer)
         }
       } else {
-        gameStore.update((draft) => {
-          draft.incorrectStreak += 1
-        })
+        // Successfully dodged a wrong answer - no miss increment!
         tuningStore.getState().recordDodge()
         scoreAnimator.showScorePopup(1)
         if (tuningStore.getState().settings.sfxEnabled) sfx.playSuccess()
