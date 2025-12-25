@@ -885,11 +885,22 @@ export const createHoverRunner = (
     return 1
   }
 
-  const estimateSpeakMs = (text: string) => {
+  const estimateSpeakMs = (text: string, lang?: string) => {
     const trimmed = text.trim()
     if (!trimmed) {
       return 800
     }
+
+    // CJK languages need much more time per character for TTS
+    const isCJK = lang && /^(zh|ja|ko)/i.test(lang)
+    if (isCJK) {
+      const chars = trimmed.replace(/[\s\p{P}]/gu, "").length
+      const base = clamp(chars * 350, 800, 5000)
+      const rate = Math.max(gameStore.getState().stackConfig?.rate ?? 1, 0.4)
+      return base / rate
+    }
+
+    // Non-CJK languages: word-based timing
     const words = trimmed.split(/\s+/).filter(Boolean).length
     const wordMs = words * 520
     const charMs = trimmed.length * 60
@@ -1412,11 +1423,11 @@ export const createHoverRunner = (
     hostApi.speak(nextRound.promptLang, nextRound.prompt)
 
     const { introRepeatMs, promptLeadMs } = getSettings()
-    const firstSpeakMs = estimateSpeakMs(nextRound.prompt)
+    const firstSpeakMs = estimateSpeakMs(nextRound.prompt, nextRound.promptLang)
     const dynamicIntroMs = getPhraseDuration(nextRound.prompt, nextRound.promptLang, 800)
     const holdMs = Math.max(dynamicIntroMs, firstSpeakMs + 200)
     const gapMs = Math.max(introRepeatMs, 200)
-    const secondSpeakMs = estimateSpeakMs(nextRound.prompt)
+    const secondSpeakMs = estimateSpeakMs(nextRound.prompt, nextRound.promptLang)
     setTransitionTimeout(() => {
       phraseHud.classList.remove("intro")
       setTransitionTimeout(() => {
@@ -1444,8 +1455,8 @@ export const createHoverRunner = (
     phraseHud.classList.add("celebrate")
     clearSpeakRepeat()
     hostApi.speak(nextRound.answerLang, nextRound.answer)
-    const promptDuration = estimateSpeakMs(nextRound.prompt)
-    const answerDuration = estimateSpeakMs(nextRound.answer)
+    const promptDuration = estimateSpeakMs(nextRound.prompt, nextRound.promptLang)
+    const answerDuration = estimateSpeakMs(nextRound.answer, nextRound.answerLang)
     const speakGapMs = 220
     setTransitionTimeout(() => {
       hostApi.speak(nextRound.promptLang, nextRound.prompt)
