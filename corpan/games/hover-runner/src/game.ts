@@ -1368,6 +1368,12 @@ const initInput = (
   }
 
   const onKey = (event: KeyboardEvent) => {
+    // Start music on first keyboard interaction (if not already playing)
+    if (tuningStore.getState().settings.musicEnabled && !sfx.isMusicPlaying()) {
+      sfx.unlock()
+      sfx.playMusic()
+    }
+
     if (event.key === "ArrowUp" || event.key === "w") {
       state.row = clamp(state.row - 1, 0, 2)
     }
@@ -1383,6 +1389,12 @@ const initInput = (
   }
 
   const onPointer = (event: PointerEvent) => {
+    // Start music on first canvas interaction (if not already playing)
+    if (tuningStore.getState().settings.musicEnabled && !sfx.isMusicPlaying()) {
+      sfx.unlock()
+      sfx.playMusic()
+    }
+
     const rect = canvas.getBoundingClientRect()
     const x = event.clientX - rect.left
     const y = event.clientY - rect.top
