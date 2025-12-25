@@ -3058,9 +3058,11 @@ export const createHoverRunner = (
         const spec = pickNextPhrase()
         if (spec) {
           spawnPhrase(spec, pickLane(refreshed.lastLane))
-          // Set cooldown for staggered spawning (shorter than respawn delay for smoother chaos)
+          // Set cooldown for staggered spawning - longer delay for more continuous feel
+          const baseDelay = getSettings().respawnDelay
+          const staggerMultiplier = maxPhrases > 1 ? 0.8 : 1.0
           gameStore.update((draft) => {
-            draft.spawnCooldown = Math.max(0.3, getSettings().respawnDelay * 0.6)
+            draft.spawnCooldown = Math.max(0.5, baseDelay * staggerMultiplier)
           })
         }
       }
@@ -3073,26 +3075,7 @@ export const createHoverRunner = (
       return
     }
 
-    // Process each active phrase
-    for (const current of activePhrases) {
-
-    current.mesh.position.z -= getPhraseSpeed() * dt
-    const depth = clamp(
-      (PHRASE_START_Z - current.mesh.position.z) / (PHRASE_START_Z - PHRASE_HIT_Z),
-      0,
-      1
-    )
-    const targetScale = 0.85 + depth * 2.3
-    const { textOverflowFactor } = getSettings()
-    const maxScaleX = (SECTOR.width / current.baseWidth) * textOverflowFactor
-    const maxScaleY = (SECTOR.height / current.baseHeight) * textOverflowFactor
-    const scale = Math.min(targetScale, maxScaleX, maxScaleY)
-    current.mesh.scaling.x = scale
-    current.mesh.scaling.y = scale
-
-    const dx = current.mesh.position.x - hoverboard.root.position.x
-    const dy = current.mesh.position.y - hoverboard.root.position.y
-    const dz = current.mesh.position.z - PHRASE_HIT_Z
+    // Calculate player's current lane once
     const isTiltActive = input.state.tiltEnabled && input.state.tiltActive
     const midX = (GRID.leftX + GRID.rightX) * 0.5
     const rowCutA = (GRID.topY + GRID.midY) * 0.5
@@ -3106,11 +3089,47 @@ export const createHoverRunner = (
           : 2
     const hoverLane = hoverRow * 2 + hoverCol
     highlightTime += dt
-    const laneMatch = hoverLane === current.lane
     const pulse = 0.55 + Math.sin(highlightTime * 7) * 0.35
-    setPhraseHighlight(current.mesh, laneMatch ? pulse : 0)
-    electricTarget = laneMatch ? current.mesh : null
-    electricIntensity = laneMatch ? 1 : 0
+
+    // Find the closest phrase in the player's lane (for electric field)
+    let closestInLane: PhraseInstance | null = null
+    let closestDistance = Infinity
+    for (const phrase of activePhrases) {
+      if (phrase.lane === hoverLane && phrase.mesh.position.z > PHRASE_HIT_Z) {
+        const distance = phrase.mesh.position.z - PHRASE_HIT_Z
+        if (distance < closestDistance) {
+          closestDistance = distance
+          closestInLane = phrase
+        }
+      }
+    }
+
+    // Set electric field target to closest phrase in player's lane
+    electricTarget = closestInLane ? closestInLane.mesh : null
+    electricIntensity = closestInLane ? 1 : 0
+
+    // Process each active phrase
+    for (const current of activePhrases) {
+      current.mesh.position.z -= getPhraseSpeed() * dt
+      const depth = clamp(
+        (PHRASE_START_Z - current.mesh.position.z) / (PHRASE_START_Z - PHRASE_HIT_Z),
+        0,
+        1
+      )
+      const targetScale = 0.85 + depth * 2.3
+      const { textOverflowFactor } = getSettings()
+      const maxScaleX = (SECTOR.width / current.baseWidth) * textOverflowFactor
+      const maxScaleY = (SECTOR.height / current.baseHeight) * textOverflowFactor
+      const scale = Math.min(targetScale, maxScaleX, maxScaleY)
+      current.mesh.scaling.x = scale
+      current.mesh.scaling.y = scale
+
+      const laneMatch = hoverLane === current.lane
+      setPhraseHighlight(current.mesh, laneMatch ? pulse : 0)
+
+      const dx = current.mesh.position.x - hoverboard.root.position.x
+      const dy = current.mesh.position.y - hoverboard.root.position.y
+      const dz = current.mesh.position.z - PHRASE_HIT_Z
     const isHit =
       Math.abs(dz) <= PHRASE_HIT_WINDOW &&
       (isTiltActive
@@ -3122,8 +3141,6 @@ export const createHoverRunner = (
       const round = gameStore.getState().round
       const phrasePosition = current.mesh.position.clone()
       clearActivePhrase(current)
-      electricTarget = null
-      electricIntensity = 0
       gameStore.update((draft) => {
         draft.spawnCooldown = getSettings().respawnDelay
       })
@@ -3153,8 +3170,6 @@ export const createHoverRunner = (
     if (hasPassed) {
       const passedPosition = current.mesh.position.clone()
       clearActivePhrase(current)
-      electricTarget = null
-      electricIntensity = 0
       gameStore.update((draft) => {
         draft.spawnCooldown = getSettings().respawnDelay
       })
@@ -3184,8 +3199,6 @@ export const createHoverRunner = (
     if (current.mesh.position.z < PHRASE_END_Z) {
       const endPosition = current.mesh.position.clone()
       clearActivePhrase(current)
-      electricTarget = null
-      electricIntensity = 0
       gameStore.update((draft) => {
         draft.spawnCooldown = getSettings().respawnDelay
       })
