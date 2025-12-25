@@ -5,7 +5,7 @@ private struct PackRequest: Decodable {
     let packId: String
 }
 
-private struct PackInfo {
+private struct PackInfo: Encodable {
     let id: String
     let name: String
     let version: String?
@@ -19,14 +19,7 @@ final class GamePacksPlugin: Plugin {
     private var activeRequests: [String: NSBundleResourceRequest] = [:]
 
     @objc public func listPacks(_ invoke: Invoke) {
-        let payload = knownPacks.map { pack in
-            [
-                "id": pack.id,
-                "name": pack.name,
-                "version": pack.version as Any
-            ]
-        }
-        invoke.resolve(payload)
+        invoke.resolve(knownPacks)
     }
 
     @objc public func getManifestUrl(_ invoke: Invoke) {
