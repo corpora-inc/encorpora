@@ -2431,8 +2431,7 @@ export const createHoverRunner = (
 
   const createPhraseMesh = (spec: PhraseSpec) => {
     const scale = getTextScale() * 1.45 * getSettings().textScaleFactor
-    const maxChars = 18
-    const wrapText = (text: string, lang?: string) => {
+    const wrapText = (text: string, lang?: string, maxChars = 18) => {
       const trimmed = text.trim()
       if (!trimmed) {
         return []
@@ -2463,10 +2462,10 @@ export const createHoverRunner = (
       return lines.slice(0, 3)
     }
 
-    const lines = wrapText(spec.text, spec.lang)
+    const lines = wrapText(spec.text, spec.lang, 18)
     const romLines =
       spec.romanization && gameStore.getState().stackConfig?.showRomanization
-        ? wrapText(spec.romanization)
+        ? wrapText(spec.romanization, undefined, 30)
         : []
     const maxLineLength = Math.max(
       ...lines.map((line) => line.length),
@@ -2519,7 +2518,7 @@ export const createHoverRunner = (
       romLines.forEach((line, index) => {
         drawTextLine(
           line,
-          baseY + lines.length * 170 + 50 + index * 95,
+          baseY + lines.length * 170 + 30 + index * 95,
           "600 85px 'Trebuchet MS', 'Helvetica Neue', sans-serif",
           "rgba(150, 210, 255, 0.95)"
         )
