@@ -12,12 +12,7 @@ import {
   TransformNode,
   Vector3,
 } from "@babylonjs/core"
-import pyramidStep1Url from "../assets/models/pyramid_step_1.glb"
-import pyramidStep2Url from "../assets/models/pyramid_step_2.glb"
-import pyramidStep3Url from "../assets/models/pyramid_step_3.glb"
-import pyramidStep4Url from "../assets/models/pyramid_step_4.glb"
-import earOuterUrl from "../assets/models/ear_outer.glb"
-import earSpiralUrl from "../assets/models/ear_spiral.glb"
+import corpanLogoUrl from "../assets/models/corpan_logo.glb"
 import type { HoverVariant } from "../core/types"
 import { createEmissivePbr, tuneLogoMaterial, scaleColor } from "../core/utils"
 
@@ -25,15 +20,15 @@ export const createHoverboard = (scene: Scene) => {
   const root = new TransformNode("hover-root", scene)
   let corpanRig:
     | {
-        container: TransformNode
-        earPivot: TransformNode
-        earFacingOffset: Quaternion
-        rings: Mesh[]
-        glowMats: StandardMaterial[]
-        baseGlow: Color3
-        baseAccent: Color3
-        light: PointLight
-      }
+      container: TransformNode
+      earPivot: TransformNode
+      earFacingOffset: Quaternion
+      rings: Mesh[]
+      glowMats: StandardMaterial[]
+      baseGlow: Color3
+      baseAccent: Color3
+      light: PointLight
+    }
     | null = null
 
   const createVariant = (
@@ -92,7 +87,6 @@ export const createHoverboard = (scene: Scene) => {
     earPivot.parent = container
     earPivot.rotationQuaternion = Quaternion.Identity()
     const earFacingOffset = Quaternion.RotationAxis(Vector3.Up(), Math.PI)
-    const earMeshes: Mesh[] = []
 
     const board = MeshBuilder.CreateBox(
       "corpan-rig",
@@ -106,17 +100,17 @@ export const createHoverboard = (scene: Scene) => {
     container.parent = board
     container.position.y = 0.06
 
-    const stepUrls = [pyramidStep1Url, pyramidStep2Url, pyramidStep3Url, pyramidStep4Url]
     const outlineColor = scaleColor(clay, 1.1)
     const applyLogoMesh = (
       mesh: Mesh,
       material: PBRMaterial,
       glowMat: StandardMaterial,
-      parent: TransformNode = container,
+      parent?: TransformNode | null,
       withGlow = true,
       withOutline = true
     ) => {
-      mesh.parent = parent
+      const resolvedParent = parent ?? (mesh.parent as TransformNode | null) ?? container
+      mesh.parent = resolvedParent
       mesh.material = material
       mesh.isPickable = false
       mesh.renderOutline = withOutline
@@ -128,7 +122,7 @@ export const createHoverboard = (scene: Scene) => {
       if (withGlow) {
         const glow = mesh.clone(`${mesh.name}-glow`)
         if (glow) {
-          glow.parent = parent
+          glow.parent = resolvedParent
           glow.material = glowMat
           glow.position.copyFrom(mesh.position)
           glow.rotation.copyFrom(mesh.rotation)
@@ -138,49 +132,54 @@ export const createHoverboard = (scene: Scene) => {
       }
     }
 
-    const stepPromises = stepUrls.map((url) =>
-      SceneLoader.ImportMeshAsync("", url, "", scene).then((result) => {
-        const meshes = result.meshes
-        meshes.forEach((mesh) => {
-          if (mesh instanceof Mesh) {
+    SceneLoader.LoadAssetContainerAsync("", corpanLogoUrl, scene)
+      .then((logoAsset) => {
+        logoAsset.addAllToScene()
+        const logoRoot = logoAsset.transformNodes.find(
+          (node) => node.name === "corpan_logo_root"
+        )
+        if (logoRoot) {
+          logoRoot.parent = container
+        } else {
+          logoAsset.meshes.forEach((mesh) => {
+            if (!mesh.parent) {
+              mesh.parent = container
+            }
+          })
+        }
+
+        const importedEarPivot = logoAsset.transformNodes.find(
+          (node) => node.name === "corpan_ear_pivot"
+        )
+        if (importedEarPivot && corpanRig) {
+          importedEarPivot.rotationQuaternion = Quaternion.Identity()
+          corpanRig.earPivot.dispose()
+          corpanRig.earPivot = importedEarPivot
+        }
+
+        logoAsset.meshes.forEach((mesh) => {
+          if (!(mesh instanceof Mesh)) {
+            return
+          }
+          const name = mesh.name.toLowerCase()
+          if (name.startsWith("pyramid_step")) {
             applyLogoMesh(mesh, boardMaterial, glowMaterial)
+            return
+          }
+          if (name === "ear_outer") {
+            applyLogoMesh(mesh, earMaterial, accentMaterial, undefined, false)
+            return
+          }
+          if (name === "ear_spiral") {
+            applyLogoMesh(mesh, earMaterial, accentMaterial, undefined, false, false)
           }
         })
-        return meshes[0]
-      })
-    )
 
-    const earOuterPromise = SceneLoader.ImportMeshAsync(
-      "",
-      earOuterUrl,
-      "",
-      scene
-    ).then((result) => {
-      const meshes = result.meshes
-      meshes.forEach((mesh) => {
-        if (mesh instanceof Mesh) {
-          applyLogoMesh(mesh, earMaterial, accentMaterial, earPivot, false)
-          earMeshes.push(mesh)
-        }
+        console.log("✓ Corpán logo meshes loaded:", logoAsset.meshes.length)
       })
-      return meshes[0]
-    })
-
-    const earSpiralPromise = SceneLoader.ImportMeshAsync(
-      "",
-      earSpiralUrl,
-      "",
-      scene
-    ).then((result) => {
-      const meshes = result.meshes
-      meshes.forEach((mesh) => {
-        if (mesh instanceof Mesh) {
-          applyLogoMesh(mesh, earMaterial, accentMaterial, earPivot, false, false)
-          earMeshes.push(mesh)
-        }
+      .catch((error) => {
+        console.error("Failed to load Corpán logo mesh:", error)
       })
-      return meshes[0]
-    })
 
     const outerRing = MeshBuilder.CreateTorus(
       "corpan-ring-outer",
@@ -211,42 +210,6 @@ export const createHoverboard = (scene: Scene) => {
     crownRing.position.y = 0.62
     crownRing.rotation.x = Math.PI / 2
     crownRing.material = accentMaterial
-
-    Promise.all([...stepPromises, earOuterPromise, earSpiralPromise])
-      .then((loadedMeshes) => {
-        if (earMeshes.length) {
-          container.computeWorldMatrix(true)
-          earMeshes.forEach((mesh) => mesh.computeWorldMatrix(true))
-          const toContainer = container.getWorldMatrix().clone().invert()
-          let min = new Vector3(
-            Number.POSITIVE_INFINITY,
-            Number.POSITIVE_INFINITY,
-            Number.POSITIVE_INFINITY
-          )
-          let max = new Vector3(
-            Number.NEGATIVE_INFINITY,
-            Number.NEGATIVE_INFINITY,
-            Number.NEGATIVE_INFINITY
-          )
-          earMeshes.forEach((mesh) => {
-            const bounds = mesh.getBoundingInfo().boundingBox
-            bounds.vectorsWorld.forEach((corner) => {
-              const local = Vector3.TransformCoordinates(corner, toContainer)
-              min = Vector3.Minimize(min, local)
-              max = Vector3.Maximize(max, local)
-            })
-          })
-          const center = min.add(max).scale(0.5)
-          earPivot.position.copyFrom(center)
-          earMeshes.forEach((mesh) => {
-            mesh.position.subtractInPlace(center)
-          })
-        }
-        console.log("✓ Corpán logo meshes loaded:", loadedMeshes.length)
-      })
-      .catch((error) => {
-        console.error("Failed to load Corpán logo meshes:", error)
-      })
 
     const logoLight = new PointLight(
       "corpan-logo-light",

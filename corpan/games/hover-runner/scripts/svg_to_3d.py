@@ -366,6 +366,22 @@ def bounds_for_objects(objs):
     return min_v, max_v
 
 
+def geometric_center(objs):
+    """Calculate geometric center (average of all vertex positions)."""
+    total = Vector((0, 0, 0))
+    count = 0
+    for obj in objs:
+        if not hasattr(obj.data, 'vertices'):
+            continue
+        for vert in obj.data.vertices:
+            world = obj.matrix_world @ vert.co
+            total += world
+            count += 1
+    if count == 0:
+        return Vector((0, 0, 0))
+    return total / count
+
+
 def mesh_bbox_area(obj):
     size = curve_bbox_size(obj)
     return size.x * size.y
@@ -453,66 +469,134 @@ def main():
     for index, obj in enumerate(steps, start=1):
         obj.name = f"pyramid_step_{index}"
 
-    # Lay pyramid steps flat to become 3D tiers
+    print("  Step 1: Rotate pyramid steps 90° to stand up")
     for obj in steps:
         obj.rotation_euler.x = STEP_ROTATION
+        apply_transform(obj)
 
-    # Stand the ear up so it faces the camera
-    ear.rotation_euler.x = EAR_ROTATION
-    spiral.rotation_euler.x = EAR_ROTATION
+    bpy.context.view_layer.update()
 
-    all_objs = steps + [ear, spiral]
-
-    # Scale to target size based on the largest step width
+    print("  Step 2: Scale to target size")
     base_size = curve_bbox_size(steps[0])
     scale_factor = TARGET_BASE_WIDTH / base_size.x if base_size.x else 1
-    for obj in all_objs:
+    for obj in steps:
         obj.scale *= scale_factor
+        apply_transform(obj)
 
-    # Stack pyramid tiers upward
+    bpy.context.view_layer.update()
+
+    print("  Step 3: Scale Z to reasonable depth")
+    # Keep pyramid steps flat like in the 2D logo
+    # They should have minimal depth, more like thick cards than boxes
+    TARGET_DEPTH = 0.15  # Minimal depth for visibility
+    base = steps[0]
+    bounds = [base.matrix_world @ Vector(v) for v in base.bound_box]
+    min_z = min(v.z for v in bounds)
+    max_z = max(v.z for v in bounds)
+    current_depth = max_z - min_z
+    if current_depth > 0:
+        z_scale = TARGET_DEPTH / current_depth
+        # Apply the SAME z_scale to ALL steps
+        for obj in steps:
+            obj.scale.z *= z_scale
+            apply_transform(obj)
+        print(f"    Target depth={TARGET_DEPTH:.3f}, current={current_depth:.3f}, z_scale={z_scale:.3f}")
+        print(f"    Applied z_scale={z_scale:.3f} to all {len(steps)} steps")
+
+    bpy.context.view_layer.update()
+
+    print("  Step 4: Stack pyramid steps")
     for index, obj in enumerate(steps):
         obj.location.y = index * STEP_HEIGHT
 
     bpy.context.view_layer.update()
 
-    # Place the ear above the pyramid
+    print("  Step 5: Center pyramid using geometric center")
+    pyramid_geo_center = geometric_center(steps)
+    pyramid_min, pyramid_max = bounds_for_objects(steps)
+    pyramid_offset = Vector((-pyramid_geo_center.x, -pyramid_min.y, -pyramid_geo_center.z))
+    for obj in steps:
+        obj.location += pyramid_offset
+    print(f"    Pyramid geo center: {pyramid_geo_center}")
+    print(f"    Pyramid offset: {pyramid_offset}")
+
+    bpy.context.view_layer.update()
+
+    print("  Step 6: Position and scale ear")
+    ear.rotation_euler.x = EAR_ROTATION
+    spiral.rotation_euler.x = EAR_ROTATION
+    ear.scale *= scale_factor
+    spiral.scale *= scale_factor
+    apply_transform(ear)
+    apply_transform(spiral)
+
+    bpy.context.view_layer.update()
+
+    print("  Step 7: Center ear at X=0, Z=0 (same as pyramid)")
+    # Get ear's bounding box BEFORE spiral offset
+    ear_bounds = [ear.matrix_world @ Vector(v) for v in ear.bound_box]
+    ear_min_x = min(v.x for v in ear_bounds)
+    ear_max_x = max(v.x for v in ear_bounds)
+    ear_min_z = min(v.z for v in ear_bounds)
+    ear_max_z = max(v.z for v in ear_bounds)
+    ear_center_x = (ear_min_x + ear_max_x) / 2
+    ear_center_z = (ear_min_z + ear_max_z) / 2
+
+    # Move ear to X=0, Z=0 to match pyramid
+    ear_offset = Vector((-ear_center_x, 0, -ear_center_z))
+    ear.location += ear_offset
+    print(f"    Ear center before: ({ear_center_x:.3f}, {ear_center_z:.3f})")
+    print(f"    Ear offset: {ear_offset}")
+
+    bpy.context.view_layer.update()
+
+    print("  Step 8: Position ear above pyramid")
     step_min, step_max = bounds_for_objects(steps)
     ear_min, ear_max = bounds_for_objects([ear])
     ear.location.y += step_max.y - ear_min.y + EAR_LIFT
 
     bpy.context.view_layer.update()
 
-    # Center the spiral within the ear and pull it slightly toward the camera
+    print("  Step 9: Center spiral within ear")
     ear_min, ear_max = bounds_for_objects([ear])
     spiral_min, spiral_max = bounds_for_objects([spiral])
-    ear_center = Vector(
-        (
-            (ear_min.x + ear_max.x) / 2,
-            (ear_min.y + ear_max.y) / 2,
-            (ear_min.z + ear_max.z) / 2,
-        )
-    )
-    spiral_center = Vector(
-        (
-            (spiral_min.x + spiral_max.x) / 2,
-            (spiral_min.y + spiral_max.y) / 2,
-            (spiral_min.z + spiral_max.z) / 2,
-        )
-    )
+    ear_center = Vector((
+        (ear_min.x + ear_max.x) / 2,
+        (ear_min.y + ear_max.y) / 2,
+        (ear_min.z + ear_max.z) / 2,
+    ))
+    spiral_center = Vector((
+        (spiral_min.x + spiral_max.x) / 2,
+        (spiral_min.y + spiral_max.y) / 2,
+        (spiral_min.z + spiral_max.z) / 2,
+    ))
     spiral.location += ear_center - spiral_center
     spiral.location.z += SPIRAL_FRONT_OFFSET
+    print(f"    Spiral centered within ear, offset forward by {SPIRAL_FRONT_OFFSET}")
 
     bpy.context.view_layer.update()
 
-    # Center and ground the logo
-    min_v, max_v = bounds_for_objects(all_objs)
-    center_x = (min_v.x + max_v.x) / 2
-    center_z = (min_v.z + max_v.z) / 2
-    offset = Vector((-center_x, -min_v.y, -center_z))
-    for obj in all_objs:
-        obj.location += offset
+    print("  Step 10: Force both pyramid and ear to exact same Z position")
+    # Get pyramid's actual Z center after all transforms
+    pyramid_bounds = bounds_for_objects(steps)
+    pyramid_z_center = (pyramid_bounds[0].z + pyramid_bounds[1].z) / 2
+
+    # Get ear's actual Z center
+    ear_bounds = bounds_for_objects([ear, spiral])
+    ear_z_center = (ear_bounds[0].z + ear_bounds[1].z) / 2
+
+    # Move ear to match pyramid's Z exactly
+    z_correction = pyramid_z_center - ear_z_center
+    ear.location.z += z_correction
+    spiral.location.z += z_correction
+    print(f"    Pyramid Z center: {pyramid_z_center:.3f}")
+    print(f"    Ear Z center before: {ear_z_center:.3f}")
+    print(f"    Z correction applied: {z_correction:.3f}")
+
+    all_objs = steps + [ear, spiral]
 
     # Bake transforms before export
+    print("  Step 11: Bake transforms")
     for obj in all_objs:
         apply_transform(obj)
 
