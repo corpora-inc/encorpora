@@ -93,7 +93,10 @@ export const createElectricField = (
     const targetWorld = target?.getAbsolutePosition() ?? null
     const rootWorld = root.getAbsolutePosition()
     const targetLocal = targetWorld ? targetWorld.subtract(rootWorld) : null
-    const reach = clamp(intensity, 0, 1)
+    const reach = clamp(intensity, 0, 1.2) // Allow stronger connection
+
+    // Boost core brightness when connected
+    coreMat.emissiveColor = scaleColor(currentColor, 1.35 + reach * 0.5)
 
     arcs.forEach((arc, index) => {
       const start = new Vector3(0, 0.45, 0)
@@ -107,7 +110,8 @@ export const createElectricField = (
       ).scale(sphereRadius).addInPlace(start)
 
       let end = randomEnd
-      if (targetLocal && index < 5) {
+      // More arcs connect to target (8 instead of 5) for stronger visual connection
+      if (targetLocal && index < 8) {
         end = Vector3.Lerp(randomEnd, targetLocal, reach * arc.reachScale)
       }
 
@@ -134,9 +138,10 @@ export const createElectricField = (
         arc.mesh.name,
         { path: arc.points, instance: arc.mesh }
       )
+      // Stronger brightness boost when connected (up to 2.2x from 1.8x)
       arc.material.emissiveColor = scaleColor(
         currentColor,
-        1.05 + reach * 0.75
+        1.1 + reach * 0.9
       )
     })
   }

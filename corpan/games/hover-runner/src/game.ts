@@ -1605,7 +1605,13 @@ export const createHoverRunner = (
 
     // Set electric field target to closest phrase in player's lane
     electricTarget = closestInLane ? closestInLane.mesh : null
-    electricIntensity = closestInLane ? 1 : 0
+    // Increase electric intensity when closer to target
+    if (closestInLane) {
+      const normalizedDistance = clamp(closestDistance / (PHRASE_START_Z - PHRASE_HIT_Z), 0, 1)
+      electricIntensity = 1.2 - normalizedDistance * 0.2 // 1.2 when close, 1.0 when far
+    } else {
+      electricIntensity = 0
+    }
 
     // Process each active phrase
     for (const current of activePhrases) {
@@ -1624,7 +1630,10 @@ export const createHoverRunner = (
       current.mesh.scaling.y = scale
 
       const laneMatch = hoverLane === current.lane
-      setPhraseHighlight(current.mesh, laneMatch ? pulse : 0)
+      const isElectricTarget = current === closestInLane
+      // Electric target gets 2.5x stronger highlight
+      const highlightStrength = isElectricTarget ? pulse * 2.5 : (laneMatch ? pulse : 0)
+      setPhraseHighlight(current.mesh, highlightStrength)
 
       const dx = current.mesh.position.x - hoverboard.root.position.x
       const dy = current.mesh.position.y - hoverboard.root.position.y
