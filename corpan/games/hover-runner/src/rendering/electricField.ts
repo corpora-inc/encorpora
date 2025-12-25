@@ -358,15 +358,22 @@ export const createElectricField = (
     const hasFocus = !!frame && focus > 0.05
 
     arcs.forEach((arc) => {
+      // Calculate orbital position for spreading at the endpoint
+      let orbit = 0
+      let u = 0
+      let v = 0
+
       if (hasFocus) {
-        const orbit = arc.orbitAngle + time * arc.orbitSpeed
+        orbit = arc.orbitAngle + time * arc.orbitSpeed
         const drift = Math.sin(time * 1.6 + arc.seed) * 0.12
         const radius = arc.orbitRadius + drift * 0.2
         const rawU = Math.cos(orbit) * radius
         const rawV = Math.sin(orbit) * radius
-        const u = warpEdge(rawU, 0.65)
-        const v = warpEdge(rawV, 0.65)
+        u = warpEdge(rawU, 0.65)
+        v = warpEdge(rawV, 0.65)
         const edgeScale = 0.92 + Math.sin(time * 2.4 + arc.phase) * 0.06
+
+        // Target is the orbital position on the phrase surface
         arc.endTarget.copyFrom(frame.centerLocal)
         arc.endTarget.addInPlace(targetRight.scale(u * extentRight * edgeScale))
         arc.endTarget.addInPlace(targetUp.scale(v * extentUp * edgeScale))
@@ -389,6 +396,9 @@ export const createElectricField = (
       const endEase = 1 - Math.exp(-dt * (hasFocus ? 8 : 3))
       Vector3.LerpToRef(arc.end, arc.endTarget, endEase, arc.end)
 
+      // Calculate beam center (all arcs converge to this when focused)
+      const beamCenter = hasFocus ? frame.centerLocal : arc.end
+
       const dirNorm = arc.end.subtract(startPos)
       if (dirNorm.lengthSquared() < 0.0001) {
         dirNorm.copyFrom(streamDirection)
@@ -398,29 +408,58 @@ export const createElectricField = (
       const axis = Math.abs(dirNorm.y) > 0.85 ? fallbackRight : fallbackUp
       const orthoA = Vector3.Cross(dirNorm, axis).normalize()
       const orthoB = Vector3.Cross(dirNorm, orthoA).normalize()
-      const noiseAmp = arc.noiseScale * (0.6 + (1 - focus) * 0.5) * arc.reachScale
 
       const pointCount = arc.points.length - 1
       for (let i = 0; i < arc.points.length; i += 1) {
         const t = i / pointCount
-        const falloff = Math.sin(Math.PI * t)
-        const flutter =
-          Math.sin(t * 12 + time * 11 + arc.seed) * 0.8 +
-          Math.cos(t * 18 + time * 7 + arc.phase) * 0.6
-        const twist =
-          Math.cos(t * 14 + time * 9 + arc.phase) * 0.8 +
-          Math.sin(t * 22 + time * 8 + arc.seed) * 0.6
-        const offset = orthoA
-          .scale(flutter * noiseAmp * falloff)
-          .add(orthoB.scale(twist * noiseAmp * falloff))
 
-        Vector3.LerpToRef(startPos, arc.end, t, arc.points[i])
-        arc.points[i].addInPlace(offset)
+        if (hasFocus) {
+          // PLASMA GLOBE EFFECT: converge into unified beam, then spread at end
+          // Convergence: strong (1.0) at start/middle, weak (0.0) at very end
+          const spreadStart = 0.75 // Where arcs start spreading out
+          const convergence = t < spreadStart ? 1.0 : 1.0 - ((t - spreadStart) / (1.0 - spreadStart))
 
-        if (hasFocus && t > 0.7) {
-          const tip = (t - 0.7) / 0.3
-          const tipWiggle = Math.sin(time * 8 + arc.phase + t * 10) * 0.05 * tip
-          arc.points[i].addInPlace(targetNormal.scale(tipWiggle))
+          // Main beam path: converge all arcs to the beam center
+          const beamPoint = Vector3.Lerp(startPos, beamCenter, t)
+
+          // Individual arc endpoint: spread to orbital position
+          const arcEndPoint = Vector3.Lerp(startPos, arc.end, t)
+
+          // Blend between unified beam and spread arc based on convergence
+          Vector3.LerpToRef(arcEndPoint, beamPoint, convergence, arc.points[i])
+
+          // Very subtle noise only in the beam trunk
+          const beamNoiseAmp = arc.noiseScale * 0.15 * convergence
+          const flutter = Math.sin(t * 12 + time * 11 + arc.seed) * 0.8
+          const twist = Math.cos(t * 14 + time * 9 + arc.phase) * 0.8
+          const falloff = Math.sin(Math.PI * t)
+          const beamNoise = orthoA
+            .scale(flutter * beamNoiseAmp * falloff)
+            .add(orthoB.scale(twist * beamNoiseAmp * falloff))
+          arc.points[i].addInPlace(beamNoise)
+
+          // At the spread zone, add surface dance
+          if (t > spreadStart) {
+            const spreadAmount = (t - spreadStart) / (1.0 - spreadStart)
+            const surfaceWiggle = Math.sin(time * 8 + arc.phase + t * 10) * 0.08 * spreadAmount
+            arc.points[i].addInPlace(targetNormal.scale(surfaceWiggle))
+          }
+        } else {
+          // Idle state: spread out freely
+          const falloff = Math.sin(Math.PI * t)
+          const noiseAmp = arc.noiseScale * 0.6 * arc.reachScale
+          const flutter =
+            Math.sin(t * 12 + time * 11 + arc.seed) * 0.8 +
+            Math.cos(t * 18 + time * 7 + arc.phase) * 0.6
+          const twist =
+            Math.cos(t * 14 + time * 9 + arc.phase) * 0.8 +
+            Math.sin(t * 22 + time * 8 + arc.seed) * 0.6
+          const offset = orthoA
+            .scale(flutter * noiseAmp * falloff)
+            .add(orthoB.scale(twist * noiseAmp * falloff))
+
+          Vector3.LerpToRef(startPos, arc.end, t, arc.points[i])
+          arc.points[i].addInPlace(offset)
         }
       }
 
