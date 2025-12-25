@@ -2504,7 +2504,7 @@ export const createHoverRunner = (
       ctx.fillText(text, 1024, y)
     }
 
-    const baseY = 320 - (lines.length - 1) * 90 - (romLines.length ? 70 : 0)
+    const baseY = 320 - (lines.length - 1) * 90 - (romLines.length ? 45 : 0)
     lines.forEach((line, index) => {
       drawTextLine(
         line,
@@ -2517,8 +2517,8 @@ export const createHoverRunner = (
       romLines.forEach((line, index) => {
         drawTextLine(
           line,
-          baseY + lines.length * 170 + 80 + index * 130,
-          "600 120px 'Trebuchet MS', 'Helvetica Neue', sans-serif",
+          baseY + lines.length * 170 + 50 + index * 95,
+          "600 85px 'Trebuchet MS', 'Helvetica Neue', sans-serif",
           "rgba(150, 210, 255, 0.95)"
         )
       })
