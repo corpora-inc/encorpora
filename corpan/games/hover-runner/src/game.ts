@@ -1450,10 +1450,13 @@ export const createHoverRunner = (
     setTransitionTimeout(() => {
       hostApi.speak(nextRound.promptLang, nextRound.prompt)
     }, answerDuration + speakGapMs)
+    // Give CJK languages more base time in celebration for comprehension
+    const isCJK = /^(zh|ja|ko)/i.test(nextRound.answerLang)
+    const celebrationBaseMs = isCJK ? 900 : 600
     const dynamicCelebrationMs = getPhraseDuration(
       nextRound.answer,
       nextRound.answerLang,
-      600
+      celebrationBaseMs
     )
     const celebrationDelay = Math.max(
       dynamicCelebrationMs,
