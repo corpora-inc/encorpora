@@ -161,6 +161,7 @@ export const createElectricField = (
 
   let time = 0
   let currentColor = baseColor.clone()
+  let lastFocusState = false
 
   const setColor = (color: Color3) => {
     currentColor = color.clone()
@@ -197,16 +198,6 @@ export const createElectricField = (
     const rootWorld = root.getAbsolutePosition()
     const targetLocal = targetWorld ? targetWorld.subtract(rootWorld) : null
     const reach = clamp(intensity, 0, 1.2) // Allow stronger connection
-
-    // DEBUG
-    if (target) {
-      console.log('Electric field update:', {
-        hasTarget: !!target,
-        intensity,
-        reach,
-        targetLocal: targetLocal?.toString(),
-      })
-    }
 
     // Boost core brightness when connected
     coreMat.emissiveColor = scaleColor(currentColor, 1.35 + reach * 0.5)
@@ -245,20 +236,23 @@ export const createElectricField = (
       })
     }
 
+    const shouldFocus = !!(targetLocal && targetPoints.length > 0 && reach > 0.1)
+    if (shouldFocus !== lastFocusState) {
+      console.log(`Electric field ${shouldFocus ? 'FOCUSING' : 'FLOATING'}:`, {
+        hasTarget: !!target,
+        hasTargetLocal: !!targetLocal,
+        targetPointsCount: targetPoints.length,
+        intensity,
+        reach,
+        reachThreshold: 0.1,
+      })
+      lastFocusState = shouldFocus
+    }
+
     arcs.forEach((arc, index) => {
       const start = new Vector3(0, 0.45, 0)
 
       let end: Vector3
-
-      const shouldFocus = targetLocal && targetPoints.length > 0 && reach > 0.1
-      if (index === 0 && target) {
-        console.log('Arc 0 check:', {
-          hasTargetLocal: !!targetLocal,
-          targetPointsLength: targetPoints.length,
-          reach,
-          shouldFocus,
-        })
-      }
 
       // When target exists, ALL arcs focus on it like a plasma globe
       if (shouldFocus) {

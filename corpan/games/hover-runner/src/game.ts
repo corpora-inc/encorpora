@@ -1609,13 +1609,32 @@ export const createHoverRunner = (
     }
 
     // Set electric field target to closest phrase
-    electricTarget = closestInLane ? closestInLane.mesh : null
+    const newTarget = closestInLane ? closestInLane.mesh : null
+    const targetChanged = electricTarget !== newTarget
+    electricTarget = newTarget
+
     // Increase electric intensity when closer to target
     if (closestInLane) {
       const normalizedDistance = clamp(closestDistance / (PHRASE_START_Z - PHRASE_HIT_Z), 0, 1)
       electricIntensity = 1.2 - normalizedDistance * 0.2 // 1.2 when close, 1.0 when far
+      if (targetChanged) {
+        console.log('Electric target LOCKED:', {
+          phraseLane: closestInLane.lane,
+          playerLane: hoverLane,
+          phraseZ: closestInLane.mesh.position.z.toFixed(2),
+          distance: closestDistance.toFixed(2),
+          intensity: electricIntensity.toFixed(2),
+        })
+      }
     } else {
       electricIntensity = 0
+      if (targetChanged && electricTarget === null) {
+        console.log('Electric target LOST - no phrase in lane', {
+          playerLane: hoverLane,
+          totalPhrases: activePhrases.length,
+          phraseLanes: activePhrases.map(p => p.lane),
+        })
+      }
     }
 
     // Process each active phrase
