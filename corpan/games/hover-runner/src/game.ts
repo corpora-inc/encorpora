@@ -74,7 +74,7 @@ const getPhraseScore = (text: string, lang: string): number => {
 /**
  * Calculate dynamic duration based on phrase length
  * Returns milliseconds = baseMs + (units * msPerUnit)
- * For CJK: units = characters, msPerUnit = 100ms
+ * For CJK: units = characters, msPerUnit = 200ms
  * For other languages: units = words, msPerUnit = 200ms
  */
 const getPhraseDuration = (text: string, lang: string, baseMs = 800): number => {
@@ -82,8 +82,8 @@ const getPhraseDuration = (text: string, lang: string, baseMs = 800): number => 
   const units = getPhraseScore(text, lang)
 
   if (isCJK) {
-    // CJK: 100ms per character
-    return baseMs + units * 100
+    // CJK: 200ms per character (more time for speech comprehension)
+    return baseMs + units * 200
   } else {
     // Other: 200ms per word
     return baseMs + units * 200
