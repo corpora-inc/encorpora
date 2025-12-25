@@ -1,10 +1,8 @@
 # Hover Runner TODO
 
-## Task 1: Add Background Music
-- Copy `luna.mp3` from `endless-learner/src/assets/sfx/` to `hover-runner/src/assets/sfx/`
-- Extend `audio.ts` with music playback (Web Audio API, gapless looping)
-- Add `playMusic()`, `stopMusic()`, `setMusicVolume()` methods
-- Start music after audio unlock in game initialization
+## Music polish
+
+- when we turn the music off can we fade it to 0 over 1 second instead of cutting it off abruptly?
 
 ## Task 2: Music and SFX Settings
 - Add to tuningStore: `musicEnabled`, `sfxEnabled`, `musicVolume`, `sfxVolume`
