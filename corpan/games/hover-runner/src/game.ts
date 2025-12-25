@@ -1574,13 +1574,45 @@ export const createHoverRunner = (
   hudExit.textContent = "Exit"
   hudControls.appendChild(hudExit)
 
+  // Accordion section helper
+  const createAccordionSection = (title: string, expanded = false) => {
+    const section = document.createElement("div")
+    section.className = "accordion-section"
+    if (expanded) section.classList.add("expanded")
+
+    const header = document.createElement("button")
+    header.className = "accordion-header"
+    header.type = "button"
+    header.innerHTML = `<span>${title}</span><span class="accordion-icon">▼</span>`
+
+    const content = document.createElement("div")
+    content.className = "accordion-content"
+
+    header.addEventListener("click", () => {
+      const wasExpanded = section.classList.contains("expanded")
+      // Close all sections
+      tuningPanel.querySelectorAll(".accordion-section").forEach((s) => {
+        s.classList.remove("expanded")
+      })
+      // Toggle this section
+      if (!wasExpanded) {
+        section.classList.add("expanded")
+      }
+    })
+
+    section.append(header, content)
+    tuningPanel.appendChild(section)
+    return content
+  }
+
   const createTuningControl = (
     label: string,
     key: keyof ReturnType<typeof tuningStore.getState>["settings"],
     min: number,
     max: number,
     step: number,
-    helpText: string
+    helpText: string,
+    parent: HTMLElement = tuningPanel
   ) => {
     const row = document.createElement("div")
     row.className = "tuning-row"
@@ -1617,7 +1649,7 @@ export const createHoverRunner = (
       setValue(next)
     })
     row.append(labelWrap, value, input)
-    tuningPanel.appendChild(row)
+    parent.appendChild(row)
     return { row, input, setValue, key }
   }
 
@@ -1626,7 +1658,8 @@ export const createHoverRunner = (
     label: string,
     key: keyof ReturnType<typeof tuningStore.getState>["settings"],
     helpText: string,
-    onChange?: (checked: boolean) => void
+    onChange?: (checked: boolean) => void,
+    parent: HTMLElement = tuningPanel
   ) => {
     const row = document.createElement("div")
     row.className = "tuning-row tuning-row-toggle"
@@ -1654,10 +1687,12 @@ export const createHoverRunner = (
       onChange?.(input.checked)
     })
     row.append(labelWrap, input)
-    tuningPanel.appendChild(row)
+    parent.appendChild(row)
     return { row, input, key }
   }
 
+  // Gameplay Settings Section (expanded by default)
+  const gameplaySection = createAccordionSection("Gameplay", true)
   const tuningControls = [
     createTuningControl(
       "Speed",
@@ -1665,7 +1700,8 @@ export const createHoverRunner = (
       8,
       22,
       0.5,
-      "Base phrase travel speed. Shifts with correct/wrong answers."
+      "Base phrase travel speed. Shifts with correct/wrong answers.",
+      gameplaySection
     ),
     createTuningControl(
       "Respawn",
@@ -1673,7 +1709,8 @@ export const createHoverRunner = (
       0.2,
       1.2,
       0.05,
-      "Delay before another candidate spawns after a phrase resolves."
+      "Delay before another candidate spawns after a phrase resolves.",
+      gameplaySection
     ),
     createTuningControl(
       "Lead-in",
@@ -1681,7 +1718,8 @@ export const createHoverRunner = (
       200,
       2000,
       50,
-      "Delay after intro ends before the first candidate spawns."
+      "Delay after intro ends before the first candidate spawns.",
+      gameplaySection
     ),
     createTuningControl(
       "Intro Hold",
@@ -1689,7 +1727,8 @@ export const createHoverRunner = (
       400,
       2500,
       100,
-      "How long the new prompt stays centered before sliding down."
+      "How long the new prompt stays centered before sliding down.",
+      gameplaySection
     ),
     createTuningControl(
       "Intro Gap",
@@ -1697,7 +1736,8 @@ export const createHoverRunner = (
       200,
       2000,
       100,
-      "Pause before repeating the prompt after it settles at the bottom."
+      "Pause before repeating the prompt after it settles at the bottom.",
+      gameplaySection
     ),
     createTuningControl(
       "Celebrate",
@@ -1705,7 +1745,8 @@ export const createHoverRunner = (
       600,
       2500,
       100,
-      "Minimum time to hold the match celebration on success."
+      "Minimum time to hold the match celebration on success.",
+      gameplaySection
     ),
     createTuningControl(
       "Post Celebrate",
@@ -1713,7 +1754,8 @@ export const createHoverRunner = (
       200,
       2500,
       100,
-      "Extra pause after celebration before the next phrase intro."
+      "Extra pause after celebration before the next phrase intro.",
+      gameplaySection
     ),
     createTuningControl(
       "Correct Weight",
@@ -1721,7 +1763,8 @@ export const createHoverRunner = (
       1,
       4,
       0.1,
-      "Higher values make correct answers appear more often."
+      "Higher values make correct answers appear more often.",
+      gameplaySection
     ),
     createTuningControl(
       "Distractors",
@@ -1729,7 +1772,8 @@ export const createHoverRunner = (
       1,
       6,
       1,
-      "Maximum number of wrong answers in the pool."
+      "Maximum number of wrong answers in the pool.",
+      gameplaySection
     ),
     createTuningControl(
       "Max Misses",
@@ -1737,7 +1781,8 @@ export const createHoverRunner = (
       1,
       5,
       1,
-      "Force a correct answer after this many misses."
+      "Force a correct answer after this many misses.",
+      gameplaySection
     ),
     createTuningControl(
       "Text Scale",
@@ -1745,7 +1790,8 @@ export const createHoverRunner = (
       0.5,
       3,
       0.1,
-      "Scale multiplier for phrase meshes on the road."
+      "Scale multiplier for phrase meshes on the road.",
+      gameplaySection
     ),
     createTuningControl(
       "Overflow",
@@ -1753,17 +1799,13 @@ export const createHoverRunner = (
       1,
       2,
       0.05,
-      "Allow phrases to exceed their lane bounds (1 = strict)."
+      "Allow phrases to exceed their lane bounds (1 = strict).",
+      gameplaySection
     ),
   ]
 
-  // Audio controls section
-  const audioSectionLabel = document.createElement("div")
-  audioSectionLabel.className = "tuning-section-label"
-  audioSectionLabel.textContent = "Audio"
-  tuningPanel.appendChild(audioSectionLabel)
-
-  // Music toggle
+  // Audio Settings Section
+  const audioSection = createAccordionSection("Audio")
   createToggleControl(
     "Music",
     "musicEnabled",
@@ -1774,34 +1816,45 @@ export const createHoverRunner = (
       } else {
         sfx.stopMusic()
       }
-    }
+    },
+    audioSection
   )
-
-  // SFX toggle
   createToggleControl(
     "Sound FX",
     "sfxEnabled",
-    "Enable or disable sound effects."
+    "Enable or disable sound effects.",
+    undefined,
+    audioSection
   )
-
-  // Music volume slider
   createTuningControl(
     "Music Vol",
     "musicVolume",
     0,
     1,
     0.05,
-    "Background music volume (0-100%)."
+    "Background music volume (0-100%).",
+    audioSection
   )
-
-  // SFX volume slider
   createTuningControl(
     "SFX Vol",
     "sfxVolume",
     0,
     1,
     0.05,
-    "Sound effects volume (0-100%)."
+    "Sound effects volume (0-100%).",
+    audioSection
+  )
+
+  // Chaos Mode Section
+  const chaosSection = createAccordionSection("Chaos Mode")
+  createTuningControl(
+    "Max Phrases",
+    "maxSimultaneousPhrases",
+    1,
+    5,
+    1,
+    "Maximum simultaneous phrases (1-5). Higher = more chaos!",
+    chaosSection
   )
 
   // Apply initial audio settings
@@ -1814,21 +1867,6 @@ export const createHoverRunner = (
     sfx.setMusicVolume(state.settings.musicVolume)
     sfx.setSfxVolume(state.settings.sfxVolume)
   })
-
-  // Multi-phrase chaos mode section
-  const multiPhraseSectionLabel = document.createElement("div")
-  multiPhraseSectionLabel.className = "tuning-section-label"
-  multiPhraseSectionLabel.textContent = "Chaos Mode"
-  tuningPanel.appendChild(multiPhraseSectionLabel)
-
-  createTuningControl(
-    "Max Phrases",
-    "maxSimultaneousPhrases",
-    1,
-    5,
-    1,
-    "Maximum simultaneous phrases (1-5). Higher = more chaos!"
-  )
 
   const fabButton = document.createElement("button")
   fabButton.className = "hud-fab"

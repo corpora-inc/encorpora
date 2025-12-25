@@ -230,8 +230,78 @@ body {
 .tuning-panel {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 4px;
   margin-top: 6px;
+  max-height: calc(100vh - 200px);
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-right: 4px;
+}
+
+.tuning-panel::-webkit-scrollbar {
+  width: 6px;
+}
+
+.tuning-panel::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+}
+
+.tuning-panel::-webkit-scrollbar-thumb {
+  background: rgba(127, 214, 255, 0.3);
+  border-radius: 3px;
+}
+
+.tuning-panel::-webkit-scrollbar-thumb:hover {
+  background: rgba(127, 214, 255, 0.5);
+}
+
+.accordion-section {
+  border: 1px solid rgba(127, 214, 255, 0.15);
+  border-radius: 8px;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.15);
+}
+
+.accordion-header {
+  width: 100%;
+  padding: 10px 12px;
+  background: rgba(127, 214, 255, 0.08);
+  border: none;
+  color: #7fd6ff;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background 0.2s ease;
+}
+
+.accordion-header:hover {
+  background: rgba(127, 214, 255, 0.12);
+}
+
+.accordion-icon {
+  font-size: 10px;
+  transition: transform 0.2s ease;
+}
+
+.accordion-section.expanded .accordion-icon {
+  transform: rotate(180deg);
+}
+
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.accordion-section.expanded .accordion-content {
+  max-height: 2000px;
+  padding: 8px 0;
 }
 
 .tuning-row {
