@@ -1,25 +1,23 @@
 # Hover Runner TODO
 
-## Music polish
+## Audio/Music polish
 
 - when we turn the music off can we fade it to 0 over 1 second instead of cutting it off abruptly?
 
-## Task 2: Music and SFX Settings
-- Add to tuningStore: `musicEnabled`, `sfxEnabled`, `musicVolume`, `sfxVolume`
-- Add UI toggles in tuning panel (checkboxes + volume sliders)
-- Wire toggles to audio.ts methods
-- Check `sfxEnabled` before playing success/fail sounds
 
-## Task 3: Data Persistence
+## Polish Corpan Logo Avatar
+- The ear must be centered over the pyramid (centered over the base)
+- the pyramid should have more depth in z and show more "stairs" in the front toward the user
+
+
+## Data Persistence
 - Persist score, streak, bestStreak, allTimeBestStreak in localStorage
 - Add phrase history tracking: `[{id, sourceLang, targetLang, correct, timestamp}]`
-- Cap history at 1000 entries (FIFO)
 - Restore stats on game load
 
-## Task 4: Scoring Based on Phrase Length
-- Dodging wrong answer: +1 point (unchanged)
-- Correct answer: +N points where N = word count (or character count for CJK)
-- Add helper: `getPhraseScore(text, lang)` - detects CJK vs word-based languages
+## Scoring
+
+- Show a juicy +N animation when the score increases
 
 ## Task 5: Dynamic Timing Based on Phrase Length
 - Add helper: `getPhraseDuration(text, lang)` = baseMs + (units * msPerUnit)
@@ -36,9 +34,6 @@
 - Add screen shake function (200ms duration, subtle intensity)
 - Create fail particle system (dark red, downward motion)
 - Trigger both on wrong answer
-
-## Task 8: Polish Corpan Logo Avatar
-**SKIP** - requires visual verification, not suitable for overnight run
 
 ## Task 9: Create 2 New Avatar Variants
 - "Crystal Wave" - purple hexagonal prism with floating crystal shards
