@@ -72,7 +72,15 @@ export const createMockHostApi = (
       }
       return entries
     },
-    getEntryById: async () => null,
+    getEntryById: async () => {
+      // Mock implementation - not used in hover-runner
+      return {
+        entry_id: 0,
+        level: "A1",
+        domains: [],
+        translations: [],
+      }
+    },
     ...overrides,
   }
 }

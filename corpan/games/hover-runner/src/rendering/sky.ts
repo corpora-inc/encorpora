@@ -2,7 +2,6 @@ import {
   Color3,
   Color4,
   DynamicTexture,
-  Mesh,
   MeshBuilder,
   Scene,
   StandardMaterial,

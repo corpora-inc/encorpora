@@ -1,5 +1,4 @@
 import {
-  Camera,
   Color3,
   Color4,
   DirectionalLight,
@@ -10,28 +9,21 @@ import {
   ImageProcessingConfiguration,
   Mesh,
   MeshBuilder,
-  ParticleSystem,
-  PBRMaterial,
-  PointLight,
-  Quaternion,
   Scene,
-  SceneLoader,
   ShadowGenerator,
   StandardMaterial,
   TransformNode,
-  Texture,
   UniversalCamera,
   Vector3,
 } from "@babylonjs/core"
 import "@babylonjs/loaders/glTF"
 import { getSfx } from "./audio"
 import { tuningStore } from "./tuningStore"
-import type { EntryOut, HostApi, StackConfig, TranslationOut } from "./sdk/types"
+import type { EntryOut, HostApi, StackConfig } from "./sdk/types"
 
 // Core modules
 import {
   GRID,
-  ROAD,
   SECTOR,
   MOVE_SPEED,
   PHRASE_START_Z,
@@ -46,14 +38,13 @@ import type {
   RoundState,
   PhraseSpec,
   PhraseInstance,
-  InputState,
   InitialState,
-  EntryLookup,
+  Skin,
+  SceneProp,
 } from "./core/types"
 import {
   clamp,
   lerp,
-  colorToCss,
   scaleColor,
   getPhraseScore,
   getPhraseDuration,
@@ -61,9 +52,7 @@ import {
   getSettings,
   getPhraseSpeed,
   pickRandom,
-  computeCurve,
   rowToY,
-  normalizeLang,
   isNoSpaceLanguage,
   pickByLang,
   shuffle,
@@ -795,7 +784,7 @@ export const createHoverRunner = (
     const next = skins.find((skin) => skin.id === id) ?? skins[0]
     skins.forEach((skin) => {
       const enabled = skin.id === next.id
-      skin.props.forEach((prop) => prop.mesh.setEnabled(enabled))
+      skin.props.forEach((prop: SceneProp) => prop.mesh.setEnabled(enabled))
     })
     hoverboard.setVariant(next.variantId)
     road.setPalette(next.palette)

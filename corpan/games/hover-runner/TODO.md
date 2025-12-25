@@ -6,11 +6,13 @@
 
 
 ## Polish Corpan Logo Avatar
+
 - The ear must be centered over the pyramid (centered over the base)
 - the pyramid should have more depth in z and show more "stairs" in the front toward the user
 
 
 ## Data Persistence
+
 - Persist score, streak, bestStreak, allTimeBestStreak in localStorage
 - Add phrase history tracking: `[{id, sourceLang, targetLang, correct, timestamp}]`
 - Restore stats on game load
@@ -18,6 +20,16 @@
 ## Scoring
 
 - Show a juicy +N animation when the score increases
+
+
+## Word Coin Feature
+
+- On correct: explode words/characters as collectible gold rings with the word or character inside them
+- Coins get scattered far down the road to get possibly collected later. They can float in any part of the grid for the user to collect them later.
+- On wrong: scatter coins get busted out of the avatar (Sonic-style), the coin counts of the user are decreased - user has a count of each word/character collected
+- Track coin count, we can make some sort of grand analytics review screen later on
+
+
 
 ## Task 5: Dynamic Timing Based on Phrase Length
 - Add helper: `getPhraseDuration(text, lang)` = baseMs + (units * msPerUnit)
@@ -40,27 +52,8 @@
 - "Solar Flare" - orange-red surfboard with flame fins and central orb
 - Add to variants array, accessible via avatar selector
 
-## Task 10: Multi-Phrase Chaos Mode
-- Add setting: `maxSimultaneousPhrases` (1-5, default 1)
-- Add UI slider in tuning panel
-- Modify game state to track multiple active phrases
-- Stagger spawns (trickle out, not simultaneous)
-- Update collision detection to handle multiple phrases
 
-## Task 11: Word Coin Feature
-- On correct: explode words/characters as collectible gold coins
-- Coins travel toward player, collect on collision
-- On wrong: scatter coins outward (Sonic-style), lose some coins
-- Track coin count in stats, display in HUD
 
----
-
-## Execution Order
-1, 2, 3, 4, 5, 6, 7, 9, 10, 11
-
-## Notes
-- Task 8 skipped (visual polish requires human verification)
-- Settings ranges: case-by-case (not all 0-100)
-- Multi-phrase: trickle spawns, not simultaneous
 - Particle effects: use Babylon.js ParticleSystem
-- Music: Web Audio API for gapless looping
+
+

@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "typecheck": "tsc --noEmit",
     "build:models": "blender --background --python scripts/svg_to_3d.py",
     "build:assets": "node scripts/sync-asset-packs.mjs",
     "build:all": "npm run build && npm run build:assets",

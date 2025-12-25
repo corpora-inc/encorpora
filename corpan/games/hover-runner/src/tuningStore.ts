@@ -104,7 +104,7 @@ const clamp = (value: number, min: number, max: number) =>
 
 export const tuningStore = createStore<TuningState>()(
   persist(
-    (set, get) => ({
+    (set, _get) => ({
       settings: { ...DEFAULT_SETTINGS },
       runtime: { speedDelta: 0 },
       stats: {
