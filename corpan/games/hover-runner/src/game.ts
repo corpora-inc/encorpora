@@ -2907,6 +2907,9 @@ export const createHoverRunner = (
 
   const beginIntro = (nextRound: RoundState) => {
     clearTransition()
+    // Clear electric field when entering intro phase
+    electricTarget = null
+    electricIntensity = 0
     gameStore.update((draft) => {
       draft.round = nextRound
       draft.roundSolved = false
@@ -2946,6 +2949,9 @@ export const createHoverRunner = (
 
   const startCelebration = (nextRound: RoundState) => {
     clearTransition()
+    // Clear electric field immediately when entering celebration
+    electricTarget = null
+    electricIntensity = 0
     gameStore.update((draft) => {
       draft.phase = "celebrate"
     })
@@ -3141,6 +3147,9 @@ export const createHoverRunner = (
       const round = gameStore.getState().round
       const phrasePosition = current.mesh.position.clone()
       clearActivePhrase(current)
+      // Immediately clear electric field when phrase is hit
+      electricTarget = null
+      electricIntensity = 0
       gameStore.update((draft) => {
         draft.spawnCooldown = getSettings().respawnDelay
       })
