@@ -201,6 +201,40 @@ export const createElectricField = (
     // Boost core brightness when connected
     coreMat.emissiveColor = scaleColor(currentColor, 1.35 + reach * 0.5)
 
+    // Calculate multiple target points around the phrase for plasma globe effect
+    const targetPoints: Vector3[] = []
+    if (targetLocal && target) {
+      const bounds = target.getBoundingInfo()
+      const extendSize = bounds.boundingBox.extendSize
+      const center = targetLocal
+
+      // Create target points at corners, edges, and surfaces of the phrase mesh
+      const offsets = [
+        // Corners
+        new Vector3(-extendSize.x, -extendSize.y, 0),
+        new Vector3(extendSize.x, -extendSize.y, 0),
+        new Vector3(-extendSize.x, extendSize.y, 0),
+        new Vector3(extendSize.x, extendSize.y, 0),
+        // Mid edges
+        new Vector3(-extendSize.x * 0.5, 0, 0),
+        new Vector3(extendSize.x * 0.5, 0, 0),
+        new Vector3(0, -extendSize.y * 0.5, 0),
+        new Vector3(0, extendSize.y * 0.5, 0),
+        // Surface points (create plasma-like distribution)
+        new Vector3(-extendSize.x * 0.7, extendSize.y * 0.7, 0),
+        new Vector3(extendSize.x * 0.7, extendSize.y * 0.7, 0),
+        new Vector3(-extendSize.x * 0.7, -extendSize.y * 0.7, 0),
+        new Vector3(extendSize.x * 0.7, -extendSize.y * 0.7, 0),
+        // Center for concentration
+        new Vector3(0, 0, 0),
+        new Vector3(0, 0, 0),
+      ]
+
+      offsets.forEach((offset) => {
+        targetPoints.push(center.add(offset))
+      })
+    }
+
     arcs.forEach((arc, index) => {
       const start = new Vector3(0, 0.45, 0)
       const theta = arc.seed + time * 0.9 + index * 0.4
@@ -213,9 +247,21 @@ export const createElectricField = (
       ).scale(sphereRadius).addInPlace(start)
 
       let end = randomEnd
-      // More arcs connect to target (8 instead of 5) for stronger visual connection
-      if (targetLocal && index < 8) {
-        end = Vector3.Lerp(randomEnd, targetLocal, reach * arc.reachScale)
+      // ALL arcs connect to wrap around the phrase like a plasma globe
+      if (targetLocal && targetPoints.length > 0) {
+        // Each arc picks a different target point to create wrapping effect
+        const targetIndex = index % targetPoints.length
+        const targetPoint = targetPoints[targetIndex]
+
+        // Add some animation to make electricity dance
+        const animOffset = new Vector3(
+          Math.sin(time * 4 + index) * 0.15,
+          Math.cos(time * 3.5 + index) * 0.15,
+          Math.sin(time * 5 + index) * 0.05
+        )
+
+        const animatedTarget = targetPoint.add(animOffset)
+        end = Vector3.Lerp(randomEnd, animatedTarget, reach * arc.reachScale * 1.2)
       }
 
       const dir = end.subtract(start)
@@ -248,31 +294,44 @@ export const createElectricField = (
       )
     })
 
-    // Animate particles flowing along arcs
-    const hasTarget = targetLocal !== null && reach > 0.1
+    // Animate particles flowing along arcs to wrap around phrase
+    const hasTarget = targetLocal !== null && reach > 0.1 && targetPoints.length > 0
 
-    arcParticleSystems.forEach(({ system, arc, active }, index) => {
-      if (hasTarget && index < 4) {
-        // Activate particles and direct them toward target
+    arcParticleSystems.forEach(({ system, active }, index) => {
+      if (hasTarget) {
+        // Activate particles and direct them toward phrase surface
         if (!active) {
           system.start()
           arcParticleSystems[index].active = true
         }
 
-        // Get the end point of this arc (where particles should flow to)
-        const endPoint = arc.points[arc.points.length - 1]
-        const direction = endPoint.subtract(new Vector3(0, 0.45, 0)).normalize()
+        // Particles seek different points on phrase surface for plasma globe effect
+        const targetPointIndex = (index * 3) % targetPoints.length
+        const surfaceTarget = targetPoints[targetPointIndex]
+        const direction = surfaceTarget.subtract(new Vector3(0, 0.45, 0)).normalize()
 
-        // Update particle direction to flow along the arc
-        const jitter = 0.3
-        system.direction1 = direction.scale(2).add(
+        // Add spiral motion as particles flow toward phrase
+        const spiralAngle = time * 3 + index * 0.5
+        const spiralRadius = 0.4
+        const spiralOffset = new Vector3(
+          Math.cos(spiralAngle) * spiralRadius,
+          Math.sin(spiralAngle) * spiralRadius,
+          0
+        )
+
+        const tangent1 = direction.add(spiralOffset).normalize()
+        const tangent2 = direction.add(spiralOffset.scale(-1)).normalize()
+
+        // Particles flow in spiraling streams toward surface
+        const jitter = 0.2
+        system.direction1 = tangent1.scale(2.5 + reach).add(
           new Vector3(
             (Math.random() - 0.5) * jitter,
             (Math.random() - 0.5) * jitter,
             (Math.random() - 0.5) * jitter
           )
         )
-        system.direction2 = direction.scale(3).add(
+        system.direction2 = tangent2.scale(3 + reach).add(
           new Vector3(
             (Math.random() - 0.5) * jitter,
             (Math.random() - 0.5) * jitter,
@@ -280,10 +339,10 @@ export const createElectricField = (
           )
         )
 
-        // Increase emission rate with connection strength
-        system.emitRate = 60 + reach * 120
-        system.minEmitPower = 1 + reach * 2
-        system.maxEmitPower = 2 + reach * 3
+        // Massive increase in particles for stunning visual
+        system.emitRate = 80 + reach * 180
+        system.minEmitPower = 1.5 + reach * 2.5
+        system.maxEmitPower = 2.5 + reach * 4
       } else if (active) {
         // Deactivate particles
         system.stop()

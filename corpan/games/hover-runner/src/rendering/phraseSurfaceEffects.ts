@@ -23,9 +23,21 @@ export const createPhraseSurfaceEffects = (scene: Scene, phrase: Mesh, baseColor
     scene
   )
 
+  // Emit from entire phrase bounds for full coverage
+  const bounds = phrase.getBoundingInfo()
+  const extendSize = bounds.boundingBox.extendSize
+
   surfaceParticles.emitter = phrase
-  surfaceParticles.minEmitBox = new Vector3(-0.3, -0.3, -0.1)
-  surfaceParticles.maxEmitBox = new Vector3(0.3, 0.3, 0.1)
+  surfaceParticles.minEmitBox = new Vector3(
+    -extendSize.x * 1.1,
+    -extendSize.y * 1.1,
+    -0.1
+  )
+  surfaceParticles.maxEmitBox = new Vector3(
+    extendSize.x * 1.1,
+    extendSize.y * 1.1,
+    0.1
+  )
 
   // Electric crawling appearance
   surfaceParticles.color1 = new Color4(
@@ -47,21 +59,21 @@ export const createPhraseSurfaceEffects = (scene: Scene, phrase: Mesh, baseColor
     0
   )
 
-  surfaceParticles.minSize = 0.04
-  surfaceParticles.maxSize = 0.12
-  surfaceParticles.minLifeTime = 0.3
-  surfaceParticles.maxLifeTime = 0.7
+  surfaceParticles.minSize = 0.05
+  surfaceParticles.maxSize = 0.15
+  surfaceParticles.minLifeTime = 0.4
+  surfaceParticles.maxLifeTime = 0.9
 
   surfaceParticles.emitRate = 0 // Start at 0, will be controlled
   surfaceParticles.blendMode = ParticleSystem.BLENDMODE_ADD
-  surfaceParticles.minEmitPower = 0.2
-  surfaceParticles.maxEmitPower = 0.6
+  surfaceParticles.minEmitPower = 0.3
+  surfaceParticles.maxEmitPower = 0.9
   surfaceParticles.updateSpeed = 0.01
 
-  // Particles crawl along the surface
-  surfaceParticles.direction1 = new Vector3(-1, -0.3, -0.2)
-  surfaceParticles.direction2 = new Vector3(1, 0.3, 0.2)
-  surfaceParticles.gravity = new Vector3(0, -0.5, 0)
+  // Initial direction - will be animated to wrap around phrase
+  surfaceParticles.direction1 = new Vector3(-1, -0.5, -0.2)
+  surfaceParticles.direction2 = new Vector3(1, 0.5, 0.2)
+  surfaceParticles.gravity = new Vector3(0, -0.3, 0)
 
   // Create burst particles for impact points
   const burstParticles = new ParticleSystem(
@@ -75,9 +87,18 @@ export const createPhraseSurfaceEffects = (scene: Scene, phrase: Mesh, baseColor
     scene
   )
 
+  // Burst from edges and corners for plasma globe tendrils
   burstParticles.emitter = phrase
-  burstParticles.minEmitBox = new Vector3(-0.2, -0.2, -0.05)
-  burstParticles.maxEmitBox = new Vector3(0.2, 0.2, 0.05)
+  burstParticles.minEmitBox = new Vector3(
+    -extendSize.x * 1.0,
+    -extendSize.y * 1.0,
+    -0.05
+  )
+  burstParticles.maxEmitBox = new Vector3(
+    extendSize.x * 1.0,
+    extendSize.y * 1.0,
+    0.05
+  )
 
   burstParticles.color1 = new Color4(
     baseColor.r * 0.9,
@@ -135,26 +156,52 @@ export const createPhraseSurfaceEffects = (scene: Scene, phrase: Mesh, baseColor
 
     const isActive = intensity > 0.1
 
-    // Control surface particles
+    // Control surface particles - create plasma globe wrapping effect
     if (isActive) {
       if (!surfaceParticles.isStarted()) {
         surfaceParticles.start()
       }
-      // Increase particles as connection strengthens
-      surfaceParticles.emitRate = 60 + intensity * 180
-      surfaceParticles.maxEmitPower = 0.6 + intensity * 0.8
 
-      // Animate particle directions to create crawling effect
-      const angle = time * 2
-      surfaceParticles.direction1 = new Vector3(
-        Math.cos(angle) * 1.2,
-        Math.sin(angle * 0.7) * 0.5,
-        Math.sin(angle * 0.5) * 0.3
+      // Massive increase in particles for full coverage
+      surfaceParticles.emitRate = 120 + intensity * 280
+      surfaceParticles.maxEmitPower = 0.8 + intensity * 1.2
+
+      // Create multiple simultaneous flow patterns wrapping around phrase
+      // Pattern 1: Circular wrapping (like plasma tendrils seeking the surface)
+      const circleAngle = time * 2.5
+      const circle1 = new Vector3(
+        Math.cos(circleAngle) * 1.5,
+        Math.sin(circleAngle) * 1.2,
+        Math.sin(circleAngle * 1.3) * 0.4
       )
-      surfaceParticles.direction2 = new Vector3(
-        Math.cos(angle + Math.PI) * 1.2,
-        Math.sin((angle + Math.PI) * 0.7) * 0.5,
-        Math.sin((angle + Math.PI) * 0.5) * 0.3
+      const circle2 = new Vector3(
+        Math.cos(circleAngle + Math.PI) * 1.5,
+        Math.sin(circleAngle + Math.PI) * 1.2,
+        Math.sin((circleAngle + Math.PI) * 1.3) * 0.4
+      )
+
+      // Pattern 2: Vertical waves (electricity dancing up/down)
+      const wavePhase = time * 3
+      const wave1 = new Vector3(
+        Math.sin(wavePhase * 0.8) * 0.6,
+        1.0 + Math.cos(wavePhase) * 0.4,
+        0.2
+      )
+      const wave2 = new Vector3(
+        Math.sin(wavePhase * 0.8 + Math.PI) * 0.6,
+        -1.0 + Math.cos(wavePhase + Math.PI) * 0.4,
+        0.2
+      )
+
+      // Combine patterns for complex wrapping motion
+      surfaceParticles.direction1 = circle1.add(wave1).normalize().scale(1.5 + intensity)
+      surfaceParticles.direction2 = circle2.add(wave2).normalize().scale(1.5 + intensity)
+
+      // Add pulsing gravity for dynamic motion
+      surfaceParticles.gravity = new Vector3(
+        Math.sin(time * 4) * 0.3,
+        -0.4 + Math.cos(time * 3) * 0.2,
+        0
       )
     } else {
       if (surfaceParticles.isStarted()) {
@@ -162,30 +209,48 @@ export const createPhraseSurfaceEffects = (scene: Scene, phrase: Mesh, baseColor
       }
     }
 
-    // Control burst particles (more intense when very close)
-    if (intensity > 0.6) {
+    // Control burst particles (kick in earlier for more coverage)
+    if (intensity > 0.4) {
       if (!burstParticles.isStarted()) {
         burstParticles.start()
       }
-      burstParticles.emitRate = (intensity - 0.6) * 300
-      burstParticles.maxEmitPower = 1.6 + (intensity - 0.6) * 2
+      // Explosive bursts from all edges and corners
+      burstParticles.emitRate = (intensity - 0.4) * 500
+      burstParticles.maxEmitPower = 2.0 + (intensity - 0.4) * 3
+
+      // Animate burst direction to create tendrils
+      const burstAngle = time * 4
+      burstParticles.direction1 = new Vector3(
+        -2 + Math.cos(burstAngle) * 1.5,
+        -2 + Math.sin(burstAngle * 1.2) * 1.5,
+        -1
+      )
+      burstParticles.direction2 = new Vector3(
+        2 + Math.cos(burstAngle + Math.PI) * 1.5,
+        2 + Math.sin((burstAngle + Math.PI) * 1.2) * 1.5,
+        1
+      )
     } else {
       if (burstParticles.isStarted()) {
         burstParticles.stop()
       }
     }
 
-    // Animate point lights around the phrase
+    // Animate point lights with complex orbits around the phrase
     phraseLights.forEach((light, index) => {
       if (isActive) {
-        // Orbit around the phrase
-        const orbitAngle = time * 2 + index * Math.PI
-        const orbitRadius = 0.4 + Math.sin(time * 3 + index) * 0.2
-        light.position.x = Math.cos(orbitAngle) * orbitRadius
-        light.position.y = Math.sin(orbitAngle * 0.8) * orbitRadius * 0.6
-        light.position.z = Math.sin(orbitAngle) * 0.2
+        // Create figure-8 orbit patterns that wrap around phrase
+        const orbitAngle = time * (2.5 + index * 0.3) + index * Math.PI
+        const figure8 = Math.sin(orbitAngle * 2) // Creates figure-8 shape
 
-        light.intensity = 0.4 + intensity * 0.8 + Math.sin(time * 5 + index * 2) * 0.2
+        const orbitRadius = (0.5 + Math.sin(time * 3 + index) * 0.3) * (1 + extendSize.length())
+        light.position.x = Math.cos(orbitAngle) * orbitRadius * (1 + figure8 * 0.3)
+        light.position.y = Math.sin(orbitAngle * 1.3) * orbitRadius * 0.8
+        light.position.z = Math.sin(orbitAngle * 0.7) * 0.4 + figure8 * 0.2
+
+        // Intense pulsing matched to electricity flow
+        light.intensity = 0.6 + intensity * 1.2 + Math.sin(time * 6 + index * 2.5) * 0.3
+        light.range = 2.5 + intensity * 1.5
       } else {
         light.intensity = 0
       }
