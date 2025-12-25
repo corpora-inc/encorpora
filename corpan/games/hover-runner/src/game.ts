@@ -3064,11 +3064,16 @@ export const createHoverRunner = (
         const spec = pickNextPhrase()
         if (spec) {
           spawnPhrase(spec, pickLane(refreshed.lastLane))
-          // Set cooldown for staggered spawning - longer delay for more continuous feel
-          const baseDelay = getSettings().respawnDelay
-          const staggerMultiplier = maxPhrases > 1 ? 0.8 : 1.0
+          // Calculate even spacing: divide travel time by number of phrases
+          const speed = getPhraseSpeed()
+          const travelDistance = PHRASE_START_Z - PHRASE_END_Z
+          const travelTime = travelDistance / speed
+          const baseSpawnInterval = travelTime / maxPhrases
+          // Add random noise for variety (+/- 15%)
+          const noise = (Math.random() - 0.5) * 0.3 * baseSpawnInterval
+          const spawnInterval = Math.max(0.3, baseSpawnInterval + noise)
           gameStore.update((draft) => {
-            draft.spawnCooldown = Math.max(0.5, baseDelay * staggerMultiplier)
+            draft.spawnCooldown = spawnInterval
           })
         }
       }
