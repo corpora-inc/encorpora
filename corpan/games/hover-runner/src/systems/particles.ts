@@ -1,5 +1,8 @@
 import { Color4, ParticleSystem, Scene, Vector3 } from "@babylonjs/core"
 
+// Track all active particle timeouts for cleanup
+const activeParticleTimeouts = new Set<number>()
+
 export const createSuccessParticles = (scene: Scene, position: Vector3) => {
   const particleSystem = new ParticleSystem("successParticles", 100, scene)
 
@@ -28,10 +31,19 @@ export const createSuccessParticles = (scene: Scene, position: Vector3) => {
 
   particleSystem.start()
 
-  setTimeout(() => {
-    particleSystem.stop()
-    particleSystem.dispose()
+  const timeoutId = window.setTimeout(() => {
+    activeParticleTimeouts.delete(timeoutId)
+    if (!scene.isDisposed) {
+      particleSystem.stop()
+      particleSystem.dispose()
+    }
   }, 1000)
+  activeParticleTimeouts.add(timeoutId)
+}
+
+export const clearAllParticleTimeouts = () => {
+  activeParticleTimeouts.forEach((id) => window.clearTimeout(id))
+  activeParticleTimeouts.clear()
 }
 
 export const createFailParticles = (scene: Scene, position: Vector3) => {
@@ -65,10 +77,14 @@ export const createFailParticles = (scene: Scene, position: Vector3) => {
 
   particleSystem.start()
 
-  setTimeout(() => {
-    particleSystem.stop()
-    particleSystem.dispose()
+  const timeoutId = window.setTimeout(() => {
+    activeParticleTimeouts.delete(timeoutId)
+    if (!scene.isDisposed) {
+      particleSystem.stop()
+      particleSystem.dispose()
+    }
   }, 1000)
+  activeParticleTimeouts.add(timeoutId)
 }
 
 export const createScreenShake = () => {

@@ -113,6 +113,8 @@ export const createRoad = (scene: Scene): RoadState => {
   roadMaterial.emissiveColor = new Color3(1, 1, 1)
   roadMaterial.metallic = 0.1
   roadMaterial.roughness = 0.82
+  roadMaterial.alpha = 0.55
+  roadMaterial.transparencyMode = PBRMaterial.PBRMATERIAL_ALPHABLEND
   road.material = roadMaterial
   road.receiveShadows = true
   road.isPickable = false

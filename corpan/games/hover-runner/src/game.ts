@@ -70,7 +70,7 @@ import { createHoverboard } from "./rendering/hoverboard"
 import { createPhraseSurfaceEffects } from "./rendering/phraseSurfaceEffects"
 
 // Systems
-import { createSuccessParticles, createFailParticles, createScreenShake } from "./systems/particles"
+import { createSuccessParticles, createFailParticles, createScreenShake, clearAllParticleTimeouts } from "./systems/particles"
 import { createScoreAnimator } from "./ui/scoreAnimation"
 import { initInput } from "./systems/input"
 
@@ -89,7 +89,9 @@ export const createHoverRunner = (
   const debugFlags =
     typeof window !== "undefined" ? new URLSearchParams(window.location.search) : null
   const showFps = debugFlags?.has("fps") ?? false
-  const showPerf = debugFlags?.has("perf") ?? false
+  const globalPerf =
+    (globalThis as { __corpanPerf?: boolean }).__corpanPerf ?? false
+  const showPerf = (debugFlags?.has("perf") ?? false) || globalPerf
   const debugElectricTarget = debugFlags?.has("debugElectric") ?? false
   const root = document.createElement("div")
   root.className = "hover-runner"
@@ -632,7 +634,7 @@ export const createHoverRunner = (
   hoverboard.root.position = new Vector3(GRID.leftX, GRID.bottomY, GRID.z)
   const electricField = createElectricField(
     scene,
-    hoverboard.root,
+    hoverboard.visualRoot,
     new Color3(0.35, 0.9, 1)
   )
 
@@ -678,14 +680,45 @@ export const createHoverRunner = (
     baseY: 0.45,
     baseYJitter: 0.2,
     buildMesh: (index) => {
-      const height = 0.7 + (index % 4) * 0.35
-      const mesh = MeshBuilder.CreateCylinder(
-        `neon-pylon-${index}`,
-        { height, diameter: 0.12 },
-        scene
-      )
+      const shapeType = index % 4
+      let mesh: Mesh
+
+      if (shapeType === 0) {
+        // Tall thin pylons
+        const height = 0.7 + (index % 4) * 0.35
+        mesh = MeshBuilder.CreateCylinder(
+          `neon-pylon-${index}`,
+          { height, diameter: 0.12 },
+          scene
+        )
+      } else if (shapeType === 1) {
+        // Floating rings
+        mesh = MeshBuilder.CreateTorus(
+          `neon-ring-${index}`,
+          { diameter: 0.6, thickness: 0.08, tessellation: 16 },
+          scene
+        )
+      } else if (shapeType === 2) {
+        // Boxes
+        const size = 0.3 + (index % 3) * 0.15
+        mesh = MeshBuilder.CreateBox(
+          `neon-box-${index}`,
+          { size, height: size * 1.5 },
+          scene
+        )
+      } else {
+        // Octahedrons
+        const size = 0.4 + (index % 3) * 0.2
+        mesh = MeshBuilder.CreatePolyhedron(
+          `neon-oct-${index}`,
+          { type: 1, size },
+          scene
+        )
+      }
+
       mesh.material = neonMat
       mesh.rotation.y = Math.random() * Math.PI
+      mesh.rotation.x = (Math.random() - 0.5) * 0.3
       return mesh
     },
   })
@@ -707,14 +740,38 @@ export const createHoverRunner = (
     baseY: 0.9,
     baseYJitter: 0.3,
     buildMesh: (index) => {
-      const height = 1.6 + (index % 3) * 0.6
-      const mesh = MeshBuilder.CreateCylinder(
-        `desert-spire-${index}`,
-        { height, diameterTop: 0.18, diameterBottom: 0.6 },
-        scene
-      )
+      const shapeType = index % 3
+      let mesh: Mesh
+
+      if (shapeType === 0) {
+        // Classic spires
+        const height = 1.6 + (index % 3) * 0.6
+        mesh = MeshBuilder.CreateCylinder(
+          `desert-spire-${index}`,
+          { height, diameterTop: 0.18, diameterBottom: 0.6 },
+          scene
+        )
+      } else if (shapeType === 1) {
+        // Stacked discs
+        const height = 1.2 + (index % 4) * 0.4
+        mesh = MeshBuilder.CreateCylinder(
+          `desert-disc-${index}`,
+          { height, diameter: 0.5, tessellation: 8 },
+          scene
+        )
+      } else {
+        // Crystal clusters
+        const size = 0.6 + (index % 3) * 0.3
+        mesh = MeshBuilder.CreatePolyhedron(
+          `desert-crystal-${index}`,
+          { type: 0, size },
+          scene
+        )
+      }
+
       mesh.material = desertMat
       mesh.rotation.y = Math.random() * Math.PI
+      mesh.rotation.z = (Math.random() - 0.5) * 0.15
       return mesh
     },
   })
@@ -736,15 +793,47 @@ export const createHoverRunner = (
     baseY: 0.6,
     baseYJitter: 0.25,
     buildMesh: (index) => {
-      const height = 1.2 + (index % 4) * 0.5
-      const mesh = MeshBuilder.CreateCylinder(
-        `glacier-shard-${index}`,
-        { height, diameterTop: 0.08, diameterBottom: 0.5 },
-        scene
-      )
+      const shapeType = index % 4
+      let mesh: Mesh
+
+      if (shapeType === 0) {
+        // Tall ice shards
+        const height = 1.2 + (index % 4) * 0.5
+        mesh = MeshBuilder.CreateCylinder(
+          `glacier-shard-${index}`,
+          { height, diameterTop: 0.08, diameterBottom: 0.5 },
+          scene
+        )
+      } else if (shapeType === 1) {
+        // Ice spheres
+        const diameter = 0.5 + (index % 3) * 0.2
+        mesh = MeshBuilder.CreateSphere(
+          `glacier-orb-${index}`,
+          { diameter, segments: 12 },
+          scene
+        )
+      } else if (shapeType === 2) {
+        // Prisms
+        const height = 0.8 + (index % 3) * 0.4
+        mesh = MeshBuilder.CreateCylinder(
+          `glacier-prism-${index}`,
+          { height, diameter: 0.4, tessellation: 6 },
+          scene
+        )
+      } else {
+        // Dodecahedrons
+        const size = 0.35 + (index % 3) * 0.15
+        mesh = MeshBuilder.CreatePolyhedron(
+          `glacier-dodec-${index}`,
+          { type: 2, size },
+          scene
+        )
+      }
+
       mesh.material = glacierMat
       mesh.rotation.y = Math.random() * Math.PI
       mesh.rotation.z = (Math.random() - 0.5) * 0.2
+      mesh.rotation.x = (Math.random() - 0.5) * 0.15
       return mesh
     },
   })
@@ -907,6 +996,7 @@ export const createHoverRunner = (
     spawnCooldown: 0,
     incorrectStreak: 0,
     phase: "intro",
+    hasSpokenMissedAnswer: false,
   })
   let stackUnsubscribe: (() => void) | null = null
   let tuningUnsubscribe: (() => void) | null = null
@@ -954,61 +1044,103 @@ export const createHoverRunner = (
 
   const createPhraseMesh = (spec: PhraseSpec) => {
     const scale = getTextScale() * 1.45 * getSettings().textScaleFactor
-    const wrapText = (text: string, lang?: string, maxChars = 18) => {
+    const textureWidth = 2048
+    const baseTextureHeight = 1024
+    const paddingX = 200
+    const paddingY = 160
+    const mainFont = "700 190px 'Trebuchet MS', 'Helvetica Neue', sans-serif"
+    const romanFont = "600 85px 'Trebuchet MS', 'Helvetica Neue', sans-serif"
+    const mainLineHeight = 170
+    const romanLineHeight = 95
+    const romanGap = 30
+    const maxLineWidth = textureWidth - paddingX * 2
+    const measureCanvas =
+      typeof document !== "undefined" ? document.createElement("canvas") : null
+    const measureCtx = measureCanvas?.getContext("2d") ?? null
+    const measureTextWidth = (text: string, font: string) => {
+      if (!measureCtx) {
+        return text.length * 100
+      }
+      measureCtx.font = font
+      return measureCtx.measureText(text).width
+    }
+    const wrapText = (text: string, lang: string | undefined, font: string) => {
       const trimmed = text.trim()
       if (!trimmed) {
         return []
       }
-      if (lang && isNoSpaceLanguage(lang)) {
-        const chars = Array.from(trimmed)
-        const lines: string[] = []
-        for (let i = 0; i < chars.length; i += maxChars) {
-          lines.push(chars.slice(i, i + maxChars).join(""))
-        }
-        return lines.slice(0, 3)
-      }
-      const words = trimmed.split(/\s+/).filter(Boolean)
+      const isNoSpace = Boolean(lang && isNoSpaceLanguage(lang))
+      const tokens = isNoSpace ? Array.from(trimmed) : trimmed.split(/\s+/).filter(Boolean)
       const lines: string[] = []
       let current = ""
-      words.forEach((word) => {
-        const next = current ? `${current} ${word}` : word
-        if (next.length > maxChars && current) {
-          lines.push(current)
-          current = word
-        } else {
+      const joinToken = (line: string, token: string) =>
+        line ? (isNoSpace ? `${line}${token}` : `${line} ${token}`) : token
+
+      const commitLine = (line: string) => {
+        if (line) {
+          lines.push(line)
+        }
+      }
+
+      tokens.forEach((token) => {
+        const next = joinToken(current, token)
+        if (measureTextWidth(next, font) <= maxLineWidth || !current) {
           current = next
+          return
+        }
+        commitLine(current)
+        current = token
+        if (!isNoSpace && measureTextWidth(token, font) > maxLineWidth) {
+          current = ""
+          Array.from(token).forEach((char) => {
+            const attempt = `${current}${char}`
+            if (measureTextWidth(attempt, font) > maxLineWidth && current) {
+              commitLine(current)
+              current = char
+            } else {
+              current = attempt
+            }
+          })
         }
       })
-      if (current) {
-        lines.push(current)
-      }
-      return lines.slice(0, 3)
+      commitLine(current)
+      return lines
     }
 
-    const lines = wrapText(spec.text, spec.lang, 18)
+    const lines = wrapText(spec.text, spec.lang, mainFont)
     const romLines =
       spec.romanization && gameStore.getState().stackConfig?.showRomanization
-        ? wrapText(spec.romanization, undefined, 30)
+        ? wrapText(spec.romanization, undefined, romanFont)
         : []
     const maxLineLength = Math.max(
       ...lines.map((line) => line.length),
       ...romLines.map((line) => line.length),
-      6
+      1
     )
-    const planeWidth =
-      clamp(maxLineLength * 0.22, 2.8, 7.8) * scale
+    const planeWidth = maxLineLength * 0.22 * scale
     const lineCount = lines.length + (romLines.length ? romLines.length : 0)
-    const planeHeight = clamp(0.9 + lineCount * 0.5, 1.2, 2.6) * scale
+    const planeHeight = (0.9 + lineCount * 0.5) * scale
+
+    const mainBlockHeight = lines.length * mainLineHeight
+    const romanBlockHeight = romLines.length
+      ? romanGap + romLines.length * romanLineHeight
+      : 0
+    const totalBlockHeight = mainBlockHeight + romanBlockHeight
+    const textureHeight = Math.max(
+      baseTextureHeight,
+      Math.ceil(totalBlockHeight + paddingY * 2)
+    )
+    const blockTop = (textureHeight - totalBlockHeight) / 2
 
     const texture = new DynamicTexture(
       `phrase-texture-${spec.id}`,
-      { width: 2048, height: 1024 },
+      { width: textureWidth, height: textureHeight },
       scene,
       true
     )
     texture.hasAlpha = true
     const ctx = texture.getContext() as CanvasRenderingContext2D
-    ctx.clearRect(0, 0, 2048, 1024)
+    ctx.clearRect(0, 0, textureWidth, textureHeight)
     ctx.textAlign = "center"
     ctx.textBaseline = "middle"
 
@@ -1029,12 +1161,12 @@ export const createHoverRunner = (
       ctx.fillText(text, 1024, y)
     }
 
-    const baseY = 320 - (lines.length - 1) * 90 - (romLines.length ? 45 : 0)
+    const baseY = blockTop + mainLineHeight / 2
     lines.forEach((line, index) => {
       drawTextLine(
         line,
-        baseY + index * 170,
-        "700 190px 'Trebuchet MS', 'Helvetica Neue', sans-serif",
+        baseY + index * mainLineHeight,
+        mainFont,
         "rgba(245, 250, 255, 0.98)"
       )
     })
@@ -1042,8 +1174,12 @@ export const createHoverRunner = (
       romLines.forEach((line, index) => {
         drawTextLine(
           line,
-          baseY + lines.length * 170 + 30 + index * 95,
-          "600 85px 'Trebuchet MS', 'Helvetica Neue', sans-serif",
+          baseY +
+            lines.length * mainLineHeight +
+            romanGap +
+            romanLineHeight / 2 +
+            index * romanLineHeight,
+          romanFont,
           "rgba(150, 210, 255, 0.95)"
         )
       })
@@ -1073,9 +1209,7 @@ export const createHoverRunner = (
 
     // Calculate letter positions for electric field targeting
     const letterPositions: Vector3[] = []
-    const textureWidth = 2048
-    const textureHeight = 1024
-    const textureCenterX = 1024
+    const textureCenterX = textureWidth / 2
 
     const estimateCharWidth = (char: string, fontSize: number) => {
       // Rough estimate: CJK chars are square, others vary
@@ -1086,7 +1220,7 @@ export const createHoverRunner = (
     // Calculate positions for main text lines
     lines.forEach((line, lineIndex) => {
       const fontSize = 190
-      const y = baseY + lineIndex * 170
+      const y = baseY + lineIndex * mainLineHeight
       const lineChars = Array.from(line)
       const totalWidth = lineChars.reduce((sum, char) => sum + estimateCharWidth(char, fontSize), 0)
       let x = textureCenterX - totalWidth / 2
@@ -1109,7 +1243,12 @@ export const createHoverRunner = (
     if (romLines.length) {
       romLines.forEach((line, lineIndex) => {
         const fontSize = 85
-        const y = baseY + lines.length * 170 + 30 + lineIndex * 95
+        const y =
+          baseY +
+          lines.length * mainLineHeight +
+          romanGap +
+          romanLineHeight / 2 +
+          lineIndex * romanLineHeight
         const lineChars = Array.from(line)
         const totalWidth = lineChars.reduce((sum, char) => sum + estimateCharWidth(char, fontSize), 0)
         let x = textureCenterX - totalWidth / 2
@@ -1309,6 +1448,7 @@ export const createHoverRunner = (
       draft.spawnCooldown = 0
       draft.incorrectStreak = 0
       draft.phase = "intro"
+      draft.hasSpokenMissedAnswer = false
     })
     clearActivePhrase()
     clearTransition()
@@ -1542,6 +1682,7 @@ export const createHoverRunner = (
       draft.lastLane = -1
       draft.spawnCooldown = 0
       draft.incorrectStreak = 0
+      draft.hasSpokenMissedAnswer = false
     })
     clearActivePhrase()
     updatePromptText(nextRound)
@@ -1783,12 +1924,8 @@ export const createHoverRunner = (
         1
       )
       const targetScale = 0.85 + depth * 2.3
-      const { textOverflowFactor } = getSettings()
-      const maxScaleX = (SECTOR.width / current.baseWidth) * textOverflowFactor
-      const maxScaleY = (SECTOR.height / current.baseHeight) * textOverflowFactor
-      const scale = Math.min(targetScale, maxScaleX, maxScaleY)
-      current.mesh.scaling.x = scale
-      current.mesh.scaling.y = scale
+      current.mesh.scaling.x = targetScale
+      current.mesh.scaling.y = targetScale
 
       const laneMatch = hoverLane === current.lane
       const isElectricTarget = current === closestInLane
@@ -1880,15 +2017,19 @@ export const createHoverRunner = (
       })
       if (current.spec.isCorrect) {
         const round = gameStore.getState().round
+        const hasSpoken = gameStore.getState().hasSpokenMissedAnswer
         gameStore.update((draft) => {
           draft.incorrectStreak = getSettings().maxIncorrectStreak
+          if (!hasSpoken) {
+            draft.hasSpokenMissedAnswer = true
+          }
         })
         tuningStore.getState().recordWrong()
         if (tuningStore.getState().settings.sfxEnabled) sfx.playFail()
         createFailParticles(scene, passedPosition)
         triggerScreenShake()
         setPromptStatus("Missed!", true)
-        if (round) {
+        if (round && !hasSpoken) {
           hostApi.speak(round.answerLang, round.answer)
         }
       } else {
@@ -1908,15 +2049,19 @@ export const createHoverRunner = (
       })
       if (current.spec.isCorrect) {
         const round = gameStore.getState().round
+        const hasSpoken = gameStore.getState().hasSpokenMissedAnswer
         gameStore.update((draft) => {
           draft.incorrectStreak = getSettings().maxIncorrectStreak
+          if (!hasSpoken) {
+            draft.hasSpokenMissedAnswer = true
+          }
         })
         tuningStore.getState().recordWrong()
         if (tuningStore.getState().settings.sfxEnabled) sfx.playFail()
         createFailParticles(scene, endPosition)
         triggerScreenShake()
         setPromptStatus("Missed!", true)
-        if (round) {
+        if (round && !hasSpoken) {
           hostApi.speak(round.answerLang, round.answer)
         }
       } else {
@@ -1993,6 +2138,7 @@ export const createHoverRunner = (
     if (!paused) {
       frameCount++
       road.update(dt, frameCount)
+      sky.update(dt)
       updatePlayer(dt)
       updatePhrases(dt)
       updatePropField(activeSkin.props, road, frameCount)
@@ -2083,6 +2229,7 @@ export const createHoverRunner = (
     clearSpeakRepeat()
     clearActivePhrase()
     clearTransition()
+    clearAllParticleTimeouts()
     scoreAnimator.cleanup()
     stackUnsubscribe?.()
     tuningUnsubscribe?.()

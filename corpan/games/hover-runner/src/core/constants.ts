@@ -18,7 +18,7 @@ export const ROAD = {
   segments: 50,
   speed: 20,
   curveAmount: 2,
-  y: -3.0,
+  y: -3.7,
   zOffset: -10.0,
 } as const
 

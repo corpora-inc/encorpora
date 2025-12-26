@@ -18,6 +18,9 @@ import { createEmissivePbr, tuneLogoMaterial, scaleColor } from "../core/utils"
 
 export const createHoverboard = (scene: Scene) => {
   const root = new TransformNode("hover-root", scene)
+  const visualRoot = new TransformNode("hover-visual-root", scene)
+  visualRoot.parent = root
+  visualRoot.position.y = -1.25
   let corpanRig:
     | {
       container: TransformNode
@@ -37,7 +40,7 @@ export const createHoverboard = (scene: Scene) => {
     build: (pivot: TransformNode) => Mesh
   ): HoverVariant => {
     const pivot = new TransformNode(`${id}-pivot`, scene)
-    pivot.parent = root
+    pivot.parent = visualRoot
     const board = build(pivot)
     return { id, name, pivot, board }
   }
@@ -533,6 +536,7 @@ export const createHoverboard = (scene: Scene) => {
 
   return {
     root,
+    visualRoot,
     variants,
     setVariant,
     getActivePivot: () => activeVariant.pivot,

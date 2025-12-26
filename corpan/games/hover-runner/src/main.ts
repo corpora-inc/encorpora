@@ -24,11 +24,15 @@ const registerGame = () => {
       const scope = globalThis as GlobalScope
       if (scope.__hoverRunner) {
         scope.__hoverRunner.dispose()
+        scope.__hoverRunner = undefined
       }
       const instance = createHoverRunner(container, hostApi, initialState)
       scope.__hoverRunner = instance
       return {
-        unmount: () => instance.dispose(),
+        unmount: () => {
+          instance.dispose()
+          scope.__hoverRunner = undefined
+        },
       }
     },
   }
@@ -47,6 +51,7 @@ const mountForDev = () => {
   const hostApi: HostApi = createMockHostApi()
   if (scope.__hoverRunner) {
     scope.__hoverRunner.dispose()
+    scope.__hoverRunner = undefined
   }
   const module = scope.CorpanGames?.[GAME_ID]
   if (!module) {

@@ -114,7 +114,7 @@ export const createElectricField = (
   const branchPointCount = isIOS ? 14 : 18
   const lightCount = isIOS ? 2 : 3
 
-  const start = new Vector3(0, 0.45, 0)
+  const start = new Vector3(0, 1.25, 0)
   const startPos = new Vector3()
   const startJitter = new Vector3()
   const fallbackRight = Vector3.Right()
@@ -524,97 +524,97 @@ export const createElectricField = (
       if (shouldUpdateGeometry) {
         const pointCount = arc.points.length - 1
         for (let i = 0; i < arc.points.length; i += 1) {
-        const t = i / pointCount
+          const t = i / pointCount
 
-        if (hasFocus) {
-          // PLASMA GLOBE EFFECT: converge into unified beam, then spread at end
-          const spreadStart = 0.7 // Where arcs start spreading out
+          if (hasFocus) {
+            // PLASMA GLOBE EFFECT: converge into unified beam, then spread at end
+            const spreadStart = 0.7 // Where arcs start spreading out
 
-          // Base convergence with pulsation - beam breathes and separates rhythmically
-          let baseConvergence = 0.88 // Not perfect (1.0) so arcs are visible
-          if (t < spreadStart) {
-            // Add pulsating separation in the trunk
-            const pulseFactor = beamPulse * 0.15
-            const arcVariation = Math.sin(arc.seed + time * 1.8) * 0.08 // Per-arc variation
-            baseConvergence = baseConvergence - pulseFactor - arcVariation
-            baseConvergence = clamp(baseConvergence, 0.65, 0.95)
-          } else {
-            // Spread zone: converge less
-            baseConvergence = 1.0 - ((t - spreadStart) / (1.0 - spreadStart))
-          }
-
-          // Main beam path: converge all arcs toward the beam center
-          const beamPoint = Vector3.Lerp(startPos, beamCenter, t)
-
-          // Individual arc endpoint: spread to orbital position
-          const arcEndPoint = Vector3.Lerp(startPos, arc.end, t)
-
-          // Blend between unified beam and spread arc based on convergence
-          Vector3.LerpToRef(arcEndPoint, beamPoint, baseConvergence, arc.points[i])
-
-          // Dynamic noise based on position in arc
-          if (t < spreadStart) {
-            // Beam trunk: moderate noise
-            const beamNoiseAmp = arc.noiseScale * (0.25 + beamPulse * 0.1)
-            const flutter = Math.sin(t * 12 + time * 11 + arc.seed) * 0.8
-            const twist = Math.cos(t * 14 + time * 9 + arc.phase) * 0.8
-            const falloff = Math.sin(Math.PI * t) * (0.6 + Math.abs(beamPulse) * 0.4)
-            const beamNoise = orthoA
-              .scale(flutter * beamNoiseAmp * falloff)
-              .add(orthoB.scale(twist * beamNoiseAmp * falloff))
-            arc.points[i].addInPlace(beamNoise)
-          } else {
-            // LIGHTNING SPREAD ZONE: aggressive jagged branching
-            const spreadAmount = (t - spreadStart) / (1.0 - spreadStart)
-
-            // High-frequency jagged noise for lightning effect
-            const jaggedFreq = 25 + arc.seed * 5
-            const jaggedAmp = arc.noiseScale * (0.8 + spreadAmount * 1.2) * focus
-
-            // Multiple octaves of noise for fractal lightning branches
-            const noise1 = Math.sin(t * jaggedFreq + time * 15 + arc.seed) * 1.0
-            const noise2 = Math.sin(t * jaggedFreq * 2.3 + time * 12 + arc.phase) * 0.6
-            const noise3 = Math.cos(t * jaggedFreq * 3.7 + time * 18 + arc.seed * 2) * 0.4
-            const combinedNoise = (noise1 + noise2 + noise3) / 2.1
-
-            // Sharp falloff creates branch-like effect
-            const branchFalloff = Math.pow(spreadAmount, 0.7)
-
-            // Apply jagged offset perpendicular to arc
-            const jaggedNoise = orthoA
-              .scale(combinedNoise * jaggedAmp * branchFalloff)
-              .add(orthoB.scale(-combinedNoise * jaggedAmp * branchFalloff * 0.8))
-            arc.points[i].addInPlace(jaggedNoise)
-
-            // Random "kinks" - sudden direction changes like real lightning
-            if (spreadAmount > 0.3) {
-              const kinkPhase = Math.floor(t * 8 + arc.seed)
-              const kinkStrength = (Math.sin(kinkPhase * 7.3 + time * 6) * 0.5 + 0.5) * 0.2
-              const kinkDir = orthoA.scale(Math.sin(kinkPhase * 3.1)).add(orthoB.scale(Math.cos(kinkPhase * 4.2)))
-              arc.points[i].addInPlace(kinkDir.scale(kinkStrength * spreadAmount))
+            // Base convergence with pulsation - beam breathes and separates rhythmically
+            let baseConvergence = 0.88 // Not perfect (1.0) so arcs are visible
+            if (t < spreadStart) {
+              // Add pulsating separation in the trunk
+              const pulseFactor = beamPulse * 0.15
+              const arcVariation = Math.sin(arc.seed + time * 1.8) * 0.08 // Per-arc variation
+              baseConvergence = baseConvergence - pulseFactor - arcVariation
+              baseConvergence = clamp(baseConvergence, 0.65, 0.95)
+            } else {
+              // Spread zone: converge less
+              baseConvergence = 1.0 - ((t - spreadStart) / (1.0 - spreadStart))
             }
 
-            // Surface interaction chaos
-            const surfaceChaos = Math.sin(time * 10 + arc.phase + t * 15) * 0.12 * spreadAmount
-            arc.points[i].addInPlace(targetNormal.scale(surfaceChaos))
-          }
-        } else {
-          // Idle state: spread out freely
-          const falloff = Math.sin(Math.PI * t)
-          const noiseAmp = arc.noiseScale * 0.6 * arc.reachScale
-          const flutter =
-            Math.sin(t * 12 + time * 11 + arc.seed) * 0.8 +
-            Math.cos(t * 18 + time * 7 + arc.phase) * 0.6
-          const twist =
-            Math.cos(t * 14 + time * 9 + arc.phase) * 0.8 +
-            Math.sin(t * 22 + time * 8 + arc.seed) * 0.6
-          const offset = orthoA
-            .scale(flutter * noiseAmp * falloff)
-            .add(orthoB.scale(twist * noiseAmp * falloff))
+            // Main beam path: converge all arcs toward the beam center
+            const beamPoint = Vector3.Lerp(startPos, beamCenter, t)
 
-          Vector3.LerpToRef(startPos, arc.end, t, arc.points[i])
-          arc.points[i].addInPlace(offset)
-        }
+            // Individual arc endpoint: spread to orbital position
+            const arcEndPoint = Vector3.Lerp(startPos, arc.end, t)
+
+            // Blend between unified beam and spread arc based on convergence
+            Vector3.LerpToRef(arcEndPoint, beamPoint, baseConvergence, arc.points[i])
+
+            // Dynamic noise based on position in arc
+            if (t < spreadStart) {
+              // Beam trunk: moderate noise
+              const beamNoiseAmp = arc.noiseScale * (0.25 + beamPulse * 0.1)
+              const flutter = Math.sin(t * 12 + time * 11 + arc.seed) * 0.8
+              const twist = Math.cos(t * 14 + time * 9 + arc.phase) * 0.8
+              const falloff = Math.sin(Math.PI * t) * (0.6 + Math.abs(beamPulse) * 0.4)
+              const beamNoise = orthoA
+                .scale(flutter * beamNoiseAmp * falloff)
+                .add(orthoB.scale(twist * beamNoiseAmp * falloff))
+              arc.points[i].addInPlace(beamNoise)
+            } else {
+              // LIGHTNING SPREAD ZONE: aggressive jagged branching
+              const spreadAmount = (t - spreadStart) / (1.0 - spreadStart)
+
+              // High-frequency jagged noise for lightning effect
+              const jaggedFreq = 25 + arc.seed * 5
+              const jaggedAmp = arc.noiseScale * (0.8 + spreadAmount * 1.2) * focus
+
+              // Multiple octaves of noise for fractal lightning branches
+              const noise1 = Math.sin(t * jaggedFreq + time * 15 + arc.seed) * 1.0
+              const noise2 = Math.sin(t * jaggedFreq * 2.3 + time * 12 + arc.phase) * 0.6
+              const noise3 = Math.cos(t * jaggedFreq * 3.7 + time * 18 + arc.seed * 2) * 0.4
+              const combinedNoise = (noise1 + noise2 + noise3) / 2.1
+
+              // Sharp falloff creates branch-like effect
+              const branchFalloff = Math.pow(spreadAmount, 0.7)
+
+              // Apply jagged offset perpendicular to arc
+              const jaggedNoise = orthoA
+                .scale(combinedNoise * jaggedAmp * branchFalloff)
+                .add(orthoB.scale(-combinedNoise * jaggedAmp * branchFalloff * 0.8))
+              arc.points[i].addInPlace(jaggedNoise)
+
+              // Random "kinks" - sudden direction changes like real lightning
+              if (spreadAmount > 0.3) {
+                const kinkPhase = Math.floor(t * 8 + arc.seed)
+                const kinkStrength = (Math.sin(kinkPhase * 7.3 + time * 6) * 0.5 + 0.5) * 0.2
+                const kinkDir = orthoA.scale(Math.sin(kinkPhase * 3.1)).add(orthoB.scale(Math.cos(kinkPhase * 4.2)))
+                arc.points[i].addInPlace(kinkDir.scale(kinkStrength * spreadAmount))
+              }
+
+              // Surface interaction chaos
+              const surfaceChaos = Math.sin(time * 10 + arc.phase + t * 15) * 0.12 * spreadAmount
+              arc.points[i].addInPlace(targetNormal.scale(surfaceChaos))
+            }
+          } else {
+            // Idle state: spread out freely
+            const falloff = Math.sin(Math.PI * t)
+            const noiseAmp = arc.noiseScale * 0.6 * arc.reachScale
+            const flutter =
+              Math.sin(t * 12 + time * 11 + arc.seed) * 0.8 +
+              Math.cos(t * 18 + time * 7 + arc.phase) * 0.6
+            const twist =
+              Math.cos(t * 14 + time * 9 + arc.phase) * 0.8 +
+              Math.sin(t * 22 + time * 8 + arc.seed) * 0.6
+            const offset = orthoA
+              .scale(flutter * noiseAmp * falloff)
+              .add(orthoB.scale(twist * noiseAmp * falloff))
+
+            Vector3.LerpToRef(startPos, arc.end, t, arc.points[i])
+            arc.points[i].addInPlace(offset)
+          }
         }
 
         MeshBuilder.CreateTube(arc.mesh.name, { path: arc.points, instance: arc.mesh })

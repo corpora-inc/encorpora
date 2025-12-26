@@ -73,6 +73,7 @@ export type GameState = {
   spawnCooldown: number
   incorrectStreak: number
   phase: "intro" | "celebrate" | "play"
+  hasSpokenMissedAnswer: boolean
 }
 
 export type GameStore<T> = {
@@ -93,6 +94,8 @@ export type SceneProp = {
   offsetX: number
   baseY: number
   side: -1 | 1
+  baseEmissive?: Color3
+  rotationOffset?: number
 }
 
 export type Skin = {

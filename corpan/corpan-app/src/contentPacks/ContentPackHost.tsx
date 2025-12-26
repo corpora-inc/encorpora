@@ -168,6 +168,9 @@ export default function ContentPackHost({
         hostApi.dispose?.()
         hasLoadedRef.current = false
       }
+      if (shouldDevReload) {
+        ;(globalThis as { __corpanPerf?: boolean }).__corpanPerf = false
+      }
       clearInjectedAssets(id)
     }
 
@@ -204,6 +207,9 @@ export default function ContentPackHost({
       setError(null)
       cleanup()
       ;(globalThis as { __corpanHostActive?: boolean }).__corpanHostActive = true
+      if (shouldDevReload) {
+        ;(globalThis as { __corpanPerf?: boolean }).__corpanPerf = true
+      }
       try {
         const res = await fetch(manifestFetchUrl, {
           cache: "no-store",
