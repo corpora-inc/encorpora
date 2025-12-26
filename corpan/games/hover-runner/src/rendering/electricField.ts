@@ -57,7 +57,6 @@ const warpEdge = (value: number, power: number) => {
 }
 
 const resolveTargetFrame = (target: Mesh, rootWorld: Vector3): TargetFrame => {
-  target.computeWorldMatrix(true)
   const bounds = target.getBoundingInfo().boundingBox
   let min = new Vector3(
     Number.POSITIVE_INFINITY,
@@ -107,6 +106,13 @@ export const createElectricField = (
   const root = new TransformNode("electric-field", scene)
   root.parent = parent
   root.position.y = 0.2
+  const isIOS =
+    typeof navigator !== "undefined" && /iPhone|iPad|iPod|iOS/i.test(navigator.userAgent)
+  const mainCount = isIOS ? 8 : 12
+  const branchCount = isIOS ? 5 : 8
+  const mainPointCount = isIOS ? 18 : 22
+  const branchPointCount = isIOS ? 14 : 18
+  const lightCount = isIOS ? 2 : 3
 
   const start = new Vector3(0, 0.45, 0)
   const startPos = new Vector3()
@@ -179,21 +185,20 @@ export const createElectricField = (
     }
   }
 
-  const mainCount = 12
-  const branchCount = 8
   const arcs: Arc[] = [
     ...Array.from({ length: mainCount }, (_, index) => {
       const angle = (index / mainCount) * Math.PI * 2
-      return buildArc(index, "main", 0.012, 22, 1, angle, 0.95)
+      return buildArc(index, "main", 0.012, mainPointCount, 1, angle, 0.95)
     }),
     ...Array.from({ length: branchCount }, (_, index) => {
       const angle = (index / branchCount) * Math.PI * 2 + 0.2
-      return buildArc(index, "branch", 0.007, 18, 0.7, angle, 0.65)
+      return buildArc(index, "branch", 0.007, branchPointCount, 0.7, angle, 0.65)
     }),
   ]
 
   // Beam sparks - particles that fly off the central beam trunk
-  const beamSparks = new ParticleSystem("beam-sparks", 800, scene)
+  // Reduced from 800 to 400 for performance
+  const beamSparks = new ParticleSystem("beam-sparks", isIOS ? 240 : 400, scene)
   beamSparks.particleTexture = new Texture(
     "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMTYiIGN5PSIxNiIgcj0iMTAiIGZpbGw9IndoaXRlIi8+PC9zdmc+",
     scene
@@ -289,7 +294,8 @@ export const createElectricField = (
     }
   }
 
-  const coreSparkSystem = new ParticleSystem("core-sparks", 220, scene)
+  // Reduced from 220 to 110 for performance
+  const coreSparkSystem = new ParticleSystem("core-sparks", isIOS ? 70 : 110, scene)
   coreSparkSystem.particleTexture = new Texture(
     "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMTYiIGN5PSIxNiIgcj0iOCIgZmlsbD0id2hpdGUiLz48L3N2Zz4=",
     scene
@@ -311,7 +317,7 @@ export const createElectricField = (
   coreSparkSystem.updateSpeed = 0.01
   coreSparkSystem.gravity = new Vector3(0, -1, 0)
 
-  const pointLights = Array.from({ length: 3 }, (_, index) => {
+  const pointLights = Array.from({ length: lightCount }, (_, index) => {
     const light = new PointLight(
       `electric-light-${index}`,
       new Vector3(0, 0, 0),
@@ -353,9 +359,21 @@ export const createElectricField = (
     })
   }
 
+  // Performance optimization: frame counter for reduced geometry updates
+  let frameCount = 0
+  // iOS performance: update less frequently (every 3 frames vs 2)
+  const updateInterval = isIOS ? 3 : 2 // Update geometry every N frames
+
   const update = (dt: number, target: Mesh | null, intensity: number, letterPositions?: Vector3[]) => {
     time += dt
+    frameCount++
+
     const rootWorld = root.getAbsolutePosition()
+    if (target) {
+      target.computeWorldMatrix(true)
+    }
+    const targetWorldMatrix =
+      target && letterPositions && letterPositions.length > 0 ? target.getWorldMatrix() : null
     const desiredFocus = target ? clamp(intensity / 1.2, 0, 1) : 0
     const focusEase = 1 - Math.exp(-dt * 6)
     focus = lerp(focus, desiredFocus, focusEase)
@@ -387,6 +405,9 @@ export const createElectricField = (
     const extentUp = frame?.extentUp ?? 0.4
     const hasFocus = !!frame && focus > 0.05
 
+    // Skip expensive geometry updates on most frames for performance
+    const shouldUpdateGeometry = frameCount % updateInterval === 0
+
     arcs.forEach((arc, arcIndex) => {
       // Calculate orbital position for spreading at the endpoint
       let orbit = 0
@@ -395,7 +416,7 @@ export const createElectricField = (
 
       if (hasFocus) {
         // Use letter positions if available, otherwise fall back to orbital spread
-        if (letterPositions && letterPositions.length > 0 && target) {
+        if (letterPositions && letterPositions.length > 0 && target && targetWorldMatrix) {
           // LIGHTNING-STYLE: Randomly switch between letter targets
           arc.letterSwitchTime -= dt
           if (arc.letterSwitchTime <= 0) {
@@ -427,10 +448,8 @@ export const createElectricField = (
           // Safety check: ensure positions exist before transforming
           if (currentLetterPos && nextLetterPos) {
             // Transform letter positions to world space
-            target.computeWorldMatrix(true)
-            const worldMatrix = target.getWorldMatrix()
-            const currentWorldPos = Vector3.TransformCoordinates(currentLetterPos, worldMatrix)
-            const nextWorldPos = Vector3.TransformCoordinates(nextLetterPos, worldMatrix)
+            const currentWorldPos = Vector3.TransformCoordinates(currentLetterPos, targetWorldMatrix)
+            const nextWorldPos = Vector3.TransformCoordinates(nextLetterPos, targetWorldMatrix)
 
             // Lerp between current and next letter
             const targetLetterWorld = Vector3.Lerp(currentWorldPos, nextWorldPos, switchProgress)
@@ -501,8 +520,10 @@ export const createElectricField = (
       // Global beam pulsation - all arcs pulse together for a breathing effect
       const beamPulse = Math.sin(time * 3.5) * 0.12 + Math.cos(time * 2.2) * 0.08
 
-      const pointCount = arc.points.length - 1
-      for (let i = 0; i < arc.points.length; i += 1) {
+      // Only recalculate geometry on update frames (performance optimization)
+      if (shouldUpdateGeometry) {
+        const pointCount = arc.points.length - 1
+        for (let i = 0; i < arc.points.length; i += 1) {
         const t = i / pointCount
 
         if (hasFocus) {
@@ -594,11 +615,12 @@ export const createElectricField = (
           Vector3.LerpToRef(startPos, arc.end, t, arc.points[i])
           arc.points[i].addInPlace(offset)
         }
+        }
+
+        MeshBuilder.CreateTube(arc.mesh.name, { path: arc.points, instance: arc.mesh })
       }
 
-      MeshBuilder.CreateTube(arc.mesh.name, { path: arc.points, instance: arc.mesh })
-
-      // Pulsating intensity for juiciness
+      // Pulsating intensity for juiciness (always update colors)
       const intensityBoost = hasFocus ? (1.0 + beamPulse * 0.3) : 1.0
       arc.material.emissiveColor = scaleColor(currentColor, (0.9 + reach * 0.9) * intensityBoost)
       arc.material.alpha = (0.35 + focus * 0.5) * (0.9 + Math.abs(beamPulse) * 0.2)

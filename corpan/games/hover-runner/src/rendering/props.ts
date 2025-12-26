@@ -36,7 +36,13 @@ export const createPropField = (
   return props
 }
 
-export const updatePropField = (props: SceneProp[], road: RoadState) => {
+export const updatePropField = (props: SceneProp[], road: RoadState, frameCount?: number) => {
+  // Performance optimization: Only update props every 2 frames
+  // Props move smoothly enough at 30 updates/second
+  if (frameCount !== undefined && frameCount % 2 !== 0) {
+    return
+  }
+
   const travel = road.getTravel()
   props.forEach((prop) => {
     const baseZ = ROAD.length - ((prop.baseZ + travel) % ROAD.length)

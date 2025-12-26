@@ -1,6 +1,12 @@
 import { createStore } from "zustand/vanilla"
 import { createJSONStorage, persist } from "zustand/middleware"
 
+// iOS detection helper for performance tuning
+const isIOS = (): boolean => {
+  if (typeof navigator === "undefined") return false
+  return /iPhone|iPad|iPod|iOS/i.test(navigator.userAgent)
+}
+
 export type TuningSettings = {
   basePhraseSpeed: number
   phraseSpeedMin: number
@@ -89,7 +95,8 @@ const DEFAULT_SETTINGS: TuningSettings = {
   correctWeight: 2.4,
   textScaleFactor: 100,
   textOverflowFactor: 3,
-  speakRepeatMs: 5000,
+  // iOS performance: longer interval to reduce TTS overhead (8s vs 5s)
+  speakRepeatMs: isIOS() ? 8000 : 5000,
   // Audio defaults
   musicEnabled: true,
   sfxEnabled: true,

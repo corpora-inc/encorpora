@@ -4,12 +4,14 @@ import {
   DirectionalLight,
   DynamicTexture,
   Engine,
+  EngineInstrumentation,
   GlowLayer,
   HemisphericLight,
   ImageProcessingConfiguration,
   Mesh,
   MeshBuilder,
   Scene,
+  SceneInstrumentation,
   ShadowGenerator,
   StandardMaterial,
   TransformNode,
@@ -81,6 +83,14 @@ export const createHoverRunner = (
   initialState?: InitialState
 ) => {
   let disposed = false
+  const isIOS =
+    typeof navigator !== "undefined" &&
+    /iPhone|iPad|iPod|iOS/i.test(navigator.userAgent)
+  const debugFlags =
+    typeof window !== "undefined" ? new URLSearchParams(window.location.search) : null
+  const showFps = debugFlags?.has("fps") ?? false
+  const showPerf = debugFlags?.has("perf") ?? false
+  const debugElectricTarget = debugFlags?.has("debugElectric") ?? false
   const root = document.createElement("div")
   root.className = "hover-runner"
   container.appendChild(root)
@@ -109,6 +119,17 @@ export const createHoverRunner = (
 
   const canvas = document.createElement("canvas")
   root.appendChild(canvas)
+
+  const fpsHud = showFps ? document.createElement("div") : null
+  if (fpsHud) {
+    fpsHud.textContent = "0 fps"
+    fpsHud.style.cssText =
+      "position:absolute;top:calc(8px + var(--safe-top));left:calc(8px + var(--safe-left));" +
+      "padding:4px 8px;border-radius:8px;background:rgba(3,6,12,0.6);" +
+      "color:#dfe9ff;font:12px/1.2 'Trebuchet MS','Helvetica Neue',sans-serif;" +
+      "letter-spacing:0.04em;z-index:40;pointer-events:none;"
+    root.appendChild(fpsHud)
+  }
 
   const hudBackdrop = document.createElement("div")
   hudBackdrop.className = "hud-backdrop"
@@ -546,12 +567,15 @@ export const createHoverRunner = (
   hudBackdrop.addEventListener("click", onBackdropClick)
   hudExit.addEventListener("click", requestExit)
 
+  const maxDevicePixelRatio = isIOS ? 1.5 : 2
   const engine = new Engine(canvas, true, {
-    preserveDrawingBuffer: true,
+    preserveDrawingBuffer: false,
     stencil: true,
-    antialias: true,
+    antialias: !isIOS,
   })
-  engine.setHardwareScalingLevel(1 / Math.min(window.devicePixelRatio || 1, 2))
+  engine.setHardwareScalingLevel(
+    1 / Math.min(window.devicePixelRatio || 1, maxDevicePixelRatio)
+  )
 
   const scene = new Scene(engine)
   scene.clearColor = new Color4(0.02, 0.04, 0.08, 1)
@@ -591,13 +615,15 @@ export const createHoverRunner = (
   accent.intensity = 0.2
   accent.diffuse = new Color3(0.6, 0.7, 0.9)
 
-  const glow = new GlowLayer("glow", scene, { blurKernelSize: 64 })
-  glow.intensity = 0.45
+  const glow = new GlowLayer("glow", scene, {
+    blurKernelSize: isIOS ? 32 : 64,
+  })
+  glow.intensity = isIOS ? 0.35 : 0.45
   glow.addExcludedMesh(sky.mesh)
 
-  const shadowGenerator = new ShadowGenerator(1024, accent)
+  const shadowGenerator = new ShadowGenerator(isIOS ? 512 : 1024, accent)
   shadowGenerator.useBlurExponentialShadowMap = true
-  shadowGenerator.blurKernel = 16
+  shadowGenerator.blurKernel = isIOS ? 8 : 16
   shadowGenerator.bias = 0.0005
   shadowGenerator.normalBias = 0.02
 
@@ -609,6 +635,27 @@ export const createHoverRunner = (
     hoverboard.root,
     new Color3(0.35, 0.9, 1)
   )
+
+  const perfHud = showPerf ? document.createElement("div") : null
+  if (perfHud) {
+    perfHud.textContent = "perf"
+    perfHud.style.cssText =
+      "position:absolute;top:calc(8px + var(--safe-top));right:calc(8px + var(--safe-right));" +
+      "padding:6px 8px;border-radius:10px;background:rgba(3,6,12,0.65);" +
+      "color:#dfe9ff;font:12px/1.3 'Trebuchet MS','Helvetica Neue',sans-serif;" +
+      "letter-spacing:0.03em;z-index:40;pointer-events:none;white-space:pre;"
+    root.appendChild(perfHud)
+  }
+  const sceneInstrumentation = showPerf ? new SceneInstrumentation(scene) : null
+  if (sceneInstrumentation) {
+    sceneInstrumentation.captureFrameTime = true
+    sceneInstrumentation.captureRenderTime = true
+    sceneInstrumentation.captureInterFrameTime = true
+  }
+  const engineInstrumentation = showPerf ? new EngineInstrumentation(engine) : null
+  if (engineInstrumentation) {
+    engineInstrumentation.captureGPUFrameTime = true
+  }
 
   const neonRoot = new TransformNode("env-neon", scene)
   const desertRoot = new TransformNode("env-desert", scene)
@@ -952,6 +999,7 @@ export const createHoverRunner = (
       clamp(maxLineLength * 0.22, 2.8, 7.8) * scale
     const lineCount = lines.length + (romLines.length ? romLines.length : 0)
     const planeHeight = clamp(0.9 + lineCount * 0.5, 1.2, 2.6) * scale
+
     const texture = new DynamicTexture(
       `phrase-texture-${spec.id}`,
       { width: 2048, height: 1024 },
@@ -960,7 +1008,7 @@ export const createHoverRunner = (
     )
     texture.hasAlpha = true
     const ctx = texture.getContext() as CanvasRenderingContext2D
-    ctx.clearRect(0, 0, 2048, 512)
+    ctx.clearRect(0, 0, 2048, 1024)
     ctx.textAlign = "center"
     ctx.textBaseline = "middle"
 
@@ -1270,8 +1318,31 @@ export const createHoverRunner = (
     void buildRound(gameStore.getState().roundGeneration)
   }
 
+  // Helper for array comparison
+  const arraysEqual = (a: unknown[], b: unknown[]) => {
+    if (a.length !== b.length) return false
+    return a.every((val, idx) => val === b[idx])
+  }
+
   const updateStackConfig = (next: StackConfig) => {
     const prev = gameStore.getState().stackConfig
+
+    // Deep equality check to avoid unnecessary updates
+    const hasChanged = (
+      !prev ||
+      !arraysEqual(prev.languages, next.languages) ||
+      !arraysEqual(prev.domains, next.domains) ||
+      !arraysEqual(prev.levels, next.levels) ||
+      prev.rate !== next.rate ||
+      prev.textSize !== next.textSize ||
+      prev.showRomanization !== next.showRomanization ||
+      JSON.stringify(prev.voicePrefs) !== JSON.stringify(next.voicePrefs)
+    )
+
+    if (!hasChanged) {
+      return // Skip update if nothing changed
+    }
+
     const normalized = {
       ...next,
       languages: [...next.languages],
@@ -1682,8 +1753,8 @@ export const createHoverRunner = (
     if (closestInLane) {
       const normalizedDistance = clamp(closestDistance / (PHRASE_START_Z - PHRASE_HIT_Z), 0, 1)
       electricIntensity = 1.2 - normalizedDistance * 0.2 // 1.2 when close, 1.0 when far
-      if (targetChanged) {
-        console.log('Electric target LOCKED:', {
+      if (debugElectricTarget && targetChanged) {
+        console.log("Electric target LOCKED:", {
           phraseLane: closestInLane.lane,
           playerLane: hoverLane,
           phraseZ: closestInLane.mesh.position.z.toFixed(2),
@@ -1694,11 +1765,11 @@ export const createHoverRunner = (
     } else {
       electricIntensity = 0
       electricTargetPhrase = null
-      if (targetChanged && electricTarget === null) {
-        console.log('Electric target LOST - no phrase in lane', {
+      if (debugElectricTarget && targetChanged && electricTarget === null) {
+        console.log("Electric target LOST - no phrase in lane", {
           playerLane: hoverLane,
           totalPhrases: activePhrases.length,
-          phraseLanes: activePhrases.map(p => p.lane),
+          phraseLanes: activePhrases.map((p) => p.lane),
         })
       }
     }
@@ -1909,24 +1980,94 @@ export const createHoverRunner = (
 
   updateCameraForViewport()
 
+  // Frame counter for performance optimizations
+  let frameCount = 0
+  const cameraTarget = new Vector3()
+  let fpsTimer = 0
+  let perfTimer = 0
+  let lastLongFrameLog = 0
+
   engine.runRenderLoop(() => {
     const dt = Math.min(engine.getDeltaTime() / 1000, 0.05)
+    const dtMs = dt * 1000
     if (!paused) {
-      road.update(dt)
+      frameCount++
+      road.update(dt, frameCount)
       updatePlayer(dt)
       updatePhrases(dt)
-      updatePropField(activeSkin.props, road)
+      updatePropField(activeSkin.props, road, frameCount)
       electricField.update(dt, electricTarget, electricIntensity, electricTargetPhrase?.letterPositions)
     }
     const farX = road.getFarCenterX()
-    camera.setTarget(
-      new Vector3(farX * 0.2 + shakeOffset.x, cameraTargetY + shakeOffset.y, 10 + shakeOffset.z)
+    cameraTarget.set(
+      farX * 0.2 + shakeOffset.x,
+      cameraTargetY + shakeOffset.y,
+      10 + shakeOffset.z
     )
+    camera.setTarget(cameraTarget)
     scene.render()
+
+    if (fpsHud) {
+      fpsTimer += dt
+      if (fpsTimer >= 0.25) {
+        fpsHud.textContent = `${Math.round(engine.getFps())} fps`
+        fpsTimer = 0
+      }
+    }
+
+    if (perfHud) {
+      perfTimer += dt
+      if (perfTimer >= 0.25) {
+        const fps = Math.round(engine.getFps())
+        const frameMs = dtMs.toFixed(1)
+        const gpuMs = engineInstrumentation?.gpuFrameTimeCounter?.current
+        const renderMs = sceneInstrumentation?.renderTimeCounter?.current
+        const interMs = sceneInstrumentation?.interFrameTimeCounter?.current
+        const activeMeshes = scene.getActiveMeshes().length
+        const totalMeshes = scene.meshes.length
+        const textures = scene.textures.length
+        const totalVertices = scene.getTotalVertices()
+        const drawCalls =
+          (engine as unknown as { getDrawCalls?: () => number }).getDrawCalls?.() ??
+          (engine as unknown as { drawCalls?: number }).drawCalls ??
+          0
+
+        perfHud.textContent =
+          `fps ${fps} | frame ${frameMs}ms\n` +
+          `gpu ${gpuMs ? gpuMs.toFixed(1) : "n/a"}ms | render ${renderMs ? renderMs.toFixed(1) : "n/a"}ms\n` +
+          `inter ${interMs ? interMs.toFixed(1) : "n/a"}ms | draws ${drawCalls}\n` +
+          `meshes ${activeMeshes}/${totalMeshes} | verts ${totalVertices}\n` +
+          `textures ${textures}`
+        perfTimer = 0
+      }
+    }
+
+    if (showPerf && dtMs > 40) {
+      const now = performance.now()
+      if (now - lastLongFrameLog > 1000) {
+        lastLongFrameLog = now
+        const gpuMs = engineInstrumentation?.gpuFrameTimeCounter?.current
+        const renderMs = sceneInstrumentation?.renderTimeCounter?.current
+        const activeMeshes = scene.getActiveMeshes().length
+        const drawCalls =
+          (engine as unknown as { getDrawCalls?: () => number }).getDrawCalls?.() ??
+          (engine as unknown as { drawCalls?: number }).drawCalls ??
+          0
+        console.warn("[hover-runner][perf] long frame", {
+          dtMs: Number(dtMs.toFixed(1)),
+          gpuMs: gpuMs ? Number(gpuMs.toFixed(1)) : null,
+          renderMs: renderMs ? Number(renderMs.toFixed(1)) : null,
+          activeMeshes,
+          drawCalls,
+        })
+      }
+    }
   })
 
   const onResize = () => {
-    engine.setHardwareScalingLevel(1 / Math.min(window.devicePixelRatio || 1, 2))
+    engine.setHardwareScalingLevel(
+      1 / Math.min(window.devicePixelRatio || 1, maxDevicePixelRatio)
+    )
     engine.resize()
     updateCameraForViewport()
   }
@@ -1934,6 +2075,7 @@ export const createHoverRunner = (
 
   const dispose = () => {
     disposed = true
+
     if (promptStatusTimeout) {
       window.clearTimeout(promptStatusTimeout)
       promptStatusTimeout = null
@@ -1960,6 +2102,8 @@ export const createHoverRunner = (
       wakeLock = null
     }
     sfx.dispose()
+    sceneInstrumentation?.dispose()
+    engineInstrumentation?.dispose()
     engine.stopRenderLoop()
     scene.dispose()
     engine.dispose()

@@ -126,35 +126,40 @@ export const createRoad = (scene: Scene): RoadState => {
   let curveTime = 0
   let farCenterX = 0
 
-  const update = (dt: number) => {
+  const update = (dt: number, frameCount?: number) => {
     travel = (travel + ROAD.speed * dt) % ROAD.length
     curveTime += dt * 0.35
     const spacing = ROAD.length / (ROAD.segments - 1)
     roadTexture.vOffset =
       ((travel / ROAD.length) * roadTexture.vScale) % 1
 
-    for (let i = 0; i < ROAD.segments; i += 1) {
-      const baseZ = ROAD.length - i * spacing
-      const z = baseZ + ROAD.zOffset
-      const curve = computeCurve(curveTime, baseZ)
+    // Performance optimization: only update geometry every 2 frames
+    const shouldUpdateGeometry = frameCount === undefined || frameCount % 2 === 0
 
-      const left = pathArray[0][i]
-      const right = pathArray[1][i]
+    if (shouldUpdateGeometry) {
+      for (let i = 0; i < ROAD.segments; i += 1) {
+        const baseZ = ROAD.length - i * spacing
+        const z = baseZ + ROAD.zOffset
+        const curve = computeCurve(curveTime, baseZ)
 
-      left.x = curve - ROAD.width / 2
-      left.y = ROAD.y
-      left.z = z
+        const left = pathArray[0][i]
+        const right = pathArray[1][i]
 
-      right.x = curve + ROAD.width / 2
-      right.y = ROAD.y
-      right.z = z
+        left.x = curve - ROAD.width / 2
+        left.y = ROAD.y
+        left.z = z
 
-      if (i === 0) {
-        farCenterX = curve
+        right.x = curve + ROAD.width / 2
+        right.y = ROAD.y
+        right.z = z
+
+        if (i === 0) {
+          farCenterX = curve
+        }
       }
-    }
 
-    MeshBuilder.CreateRibbon("road", { pathArray, instance: road })
+      MeshBuilder.CreateRibbon("road", { pathArray, instance: road })
+    }
   }
 
   return {

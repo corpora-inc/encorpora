@@ -11,10 +11,15 @@ import {
 import { scaleColor } from "../core/utils"
 
 export const createPhraseSurfaceEffects = (scene: Scene, phrase: Mesh, baseColor: Color3) => {
+  const isIOS =
+    typeof navigator !== "undefined" && /iPhone|iPad|iPod|iOS/i.test(navigator.userAgent)
+  const impactCount = isIOS ? 100 : 150
+  const microCount = isIOS ? 50 : 75
   // IMPACT SPARKS - focused particles at beam contact points
+  // Reduced from 300 to 150 for performance
   const impactSparks = new ParticleSystem(
     `phrase-impact-sparks-${phrase.name}`,
-    300,
+    impactCount,
     scene
   )
 
@@ -71,9 +76,10 @@ export const createPhraseSurfaceEffects = (scene: Scene, phrase: Mesh, baseColor
   impactSparks.gravity = new Vector3(0, -3, 0)
 
   // MICRO SPARKS - tiny bright flashes at exact contact points
+  // Reduced from 150 to 75 for performance
   const microSparks = new ParticleSystem(
     `phrase-micro-sparks-${phrase.name}`,
-    150,
+    microCount,
     scene
   )
 

@@ -135,9 +135,39 @@ export const createHostApi = (): HostApi => {
         listener(getStackSnapshot())
       }
       emit()
-      const unsubscribe = useSettingsStore.subscribe(() => {
-        emit()
-      })
+
+      // Selective subscription: only fire when stack config changes
+      // Exclude _voiceCycleIndex to prevent voice cycling from triggering game updates
+      const unsubscribe = useSettingsStore.subscribe(
+        (state) => ({
+          // Only include fields that matter for stack config
+          languages: state.languages,
+          domains: state.domains,
+          levels: state.levels,
+          rate: state.rate,
+          textSize: state.textSize,
+          showRomanization: state.showRomanization,
+          voicePrefs: state.voicePrefs,
+          // Explicitly exclude: _voiceCycleIndex, stacks, activeStackId
+        }),
+        (selected) => {
+          emit()
+        },
+        {
+          // Use shallow equality for the selected slice
+          equalityFn: (a, b) => {
+            return (
+              a.languages === b.languages &&
+              a.domains === b.domains &&
+              a.levels === b.levels &&
+              a.rate === b.rate &&
+              a.textSize === b.textSize &&
+              a.showRomanization === b.showRomanization &&
+              a.voicePrefs === b.voicePrefs
+            )
+          },
+        }
+      )
       return () => unsubscribe()
     },
     getRandomEntry: async () => {
