@@ -1,6 +1,6 @@
 import { Color3, PBRMaterial, Scene } from "@babylonjs/core"
 import { tuningStore } from "../tuningStore"
-import { ROAD } from "./constants"
+import { ROAD, TIMING, SPEED, TEXT } from "./constants"
 
 export const clamp = (value: number, min: number, max: number) =>
   Math.min(Math.max(value, min), max)
@@ -78,12 +78,34 @@ export const tuneLogoMaterial = (material: PBRMaterial, sheenBoost = 1.15) => {
   material.emissiveColor = scaleColor(material.emissiveColor, 1.15)
 }
 
-export const getSettings = () => tuningStore.getState().settings
+// iOS detection helper
+const isIOS = (): boolean => {
+  if (typeof navigator === "undefined") return false
+  return /iPhone|iPad|iPod|iOS/i.test(navigator.userAgent)
+}
+
+export const getSettings = () => {
+  const settings = tuningStore.getState().settings
+  // Merge user settings with constants for easy access
+  return {
+    ...settings,
+    // Timing constants
+    respawnDelay: TIMING.respawnDelay,
+    promptLeadMs: TIMING.promptLeadMs,
+    introHoldMs: TIMING.introHoldMs,
+    introRepeatMs: TIMING.introRepeatMs,
+    celebrationMs: TIMING.celebrationMs,
+    postCelebrateMs: TIMING.postCelebrateMs,
+    speakRepeatMs: isIOS() ? TIMING.speakRepeatMsIOS : TIMING.speakRepeatMs,
+    // Text constants
+    textOverflowFactor: TEXT.overflowFactor,
+  }
+}
 
 export const getPhraseSpeed = () => {
-  const { basePhraseSpeed, phraseSpeedMin, phraseSpeedMax } = getSettings()
+  const { basePhraseSpeed } = tuningStore.getState().settings
   const { speedDelta } = tuningStore.getState().runtime
-  return clamp(basePhraseSpeed + speedDelta, phraseSpeedMin, phraseSpeedMax)
+  return clamp(basePhraseSpeed + speedDelta, SPEED.min, SPEED.max)
 }
 
 export const pickRandom = <T,>(items: T[]) => {

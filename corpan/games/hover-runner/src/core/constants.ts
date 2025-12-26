@@ -18,7 +18,7 @@ export const ROAD = {
   segments: 50,
   speed: 20,
   curveAmount: 2,
-  y: -3.7,
+  y: -3.9,
   zOffset: -10.0,
 } as const
 
@@ -29,3 +29,28 @@ export const PHRASE_HIT_Z = GRID.z
 export const PHRASE_HIT_WINDOW = 0.25
 export const LANE_ROWS = [GRID.topY, GRID.midY, GRID.bottomY] as const
 export const LANE_COLS = [GRID.leftX, GRID.rightX] as const
+
+// Game timing constants (not user-adjustable)
+export const TIMING = {
+  respawnDelay: 0.2,
+  promptLeadMs: 200,
+  introHoldMs: 400,
+  introRepeatMs: 200,
+  celebrationMs: 600,
+  postCelebrateMs: 200,
+  speakRepeatMs: 5000,
+  speakRepeatMsIOS: 8000,
+} as const
+
+// Speed adjustment constants (not user-adjustable)
+export const SPEED = {
+  min: 8,
+  max: 22,
+  stepUp: 0.25,
+  stepDown: 0.2,
+} as const
+
+// Text rendering constants
+export const TEXT = {
+  overflowFactor: 1.1,
+} as const

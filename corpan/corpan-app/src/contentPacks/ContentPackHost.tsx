@@ -184,6 +184,13 @@ export default function ContentPackHost({
       const instanceToUnmount = activeInstance
       activeModule = null
       activeInstance = undefined
+      try {
+        window.dispatchEvent(
+          new CustomEvent("corpan:host-dispose", { detail: { id } })
+        )
+      } catch {
+        // Ignore host-dispose dispatch failures.
+      }
       if (instanceToUnmount && typeof instanceToUnmount.unmount === "function") {
         queueMicrotask(() => {
           try {

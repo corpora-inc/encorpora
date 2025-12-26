@@ -334,77 +334,33 @@ export const createHoverRunner = (
 
   // Gameplay Settings Section (expanded by default)
   const gameplaySection = createAccordionSection("Gameplay", true)
+
+  // Auto Adjust Difficulty toggle
+  createToggleControl(
+    "Auto Adjust",
+    "autoAdjustDifficulty",
+    "Automatically increases speed and phrase count as you succeed, decreases on failure.",
+    undefined,
+    gameplaySection
+  )
+
   const tuningControls = [
     createTuningControl(
-      "Speed",
+      "Base Speed",
       "basePhraseSpeed",
       8,
       22,
       0.5,
-      "Base phrase travel speed. Shifts with correct/wrong answers.",
+      "Your preferred baseline speed. Auto-adjusts up/down during gameplay if enabled.",
       gameplaySection
     ),
     createTuningControl(
-      "Respawn",
-      "respawnDelay",
-      0.2,
-      1.2,
-      0.05,
-      "Delay before another candidate spawns after a phrase resolves.",
-      gameplaySection
-    ),
-    createTuningControl(
-      "Lead-in",
-      "promptLeadMs",
-      200,
-      2000,
-      50,
-      "Delay after intro ends before the first candidate spawns.",
-      gameplaySection
-    ),
-    createTuningControl(
-      "Intro Hold",
-      "introHoldMs",
-      400,
-      2500,
-      100,
-      "How long the new prompt stays centered before sliding down.",
-      gameplaySection
-    ),
-    createTuningControl(
-      "Intro Gap",
-      "introRepeatMs",
-      200,
-      2000,
-      100,
-      "Pause before repeating the prompt after it settles at the bottom.",
-      gameplaySection
-    ),
-    createTuningControl(
-      "Celebrate",
-      "celebrationMs",
-      600,
-      2500,
-      100,
-      "Minimum time to hold the match celebration on success.",
-      gameplaySection
-    ),
-    createTuningControl(
-      "Post Celebrate",
-      "postCelebrateMs",
-      200,
-      2500,
-      100,
-      "Extra pause after celebration before the next phrase intro.",
-      gameplaySection
-    ),
-    createTuningControl(
-      "Correct Weight",
-      "correctWeight",
-      1,
-      4,
+      "Text Scale",
+      "textScaleFactor",
       0.1,
-      "Higher values make correct answers appear more often.",
+      1,
+      0.05,
+      "Size of phrase text on the road.",
       gameplaySection
     ),
     createTuningControl(
@@ -426,21 +382,12 @@ export const createHoverRunner = (
       gameplaySection
     ),
     createTuningControl(
-      "Text Scale",
-      "textScaleFactor",
+      "Correct Weight",
+      "correctWeight",
+      1,
+      4,
       0.1,
-      1,
-      0.05,
-      "Scale multiplier for phrase meshes on the road.",
-      gameplaySection
-    ),
-    createTuningControl(
-      "Overflow",
-      "textOverflowFactor",
-      1,
-      2,
-      0.05,
-      "Allow phrases to exceed their lane bounds (1 = strict).",
+      "Higher values make correct answers appear more often.",
       gameplaySection
     ),
   ]
@@ -494,7 +441,7 @@ export const createHoverRunner = (
     1,
     5,
     1,
-    "Maximum simultaneous phrases (1-5). Higher = more chaos!",
+    "Maximum simultaneous phrases. With Auto Adjust on, phrases build up to this limit as you succeed.",
     chaosSection
   )
 
@@ -542,6 +489,7 @@ export const createHoverRunner = (
   }
 
   const requestExit = () => {
+    dispose()
     try {
       window.dispatchEvent(new CustomEvent("corpan:exit"))
     } catch {
@@ -574,6 +522,10 @@ export const createHoverRunner = (
   document.addEventListener("visibilitychange", onVisibilityChange)
   window.addEventListener("pointerdown", onWakeLockGesture)
   void requestWakeLock()
+  const onHostDispose = () => {
+    dispose()
+  }
+  window.addEventListener("corpan:host-dispose", onHostDispose as EventListener)
 
   fabButton.addEventListener("click", onFabClick)
   hudBackdrop.addEventListener("click", onBackdropClick)
@@ -1831,7 +1783,7 @@ export const createHoverRunner = (
     }
 
     // Spawn new phrases if needed (staggered spawning for chaos mode)
-    const maxPhrases = getSettings().maxSimultaneousPhrases
+    const maxPhrases = tuningStore.getState().runtime.currentPhraseCount
     if (!state.roundSolved && state.activePhrases.length < maxPhrases) {
       if (state.spawnCooldown > 0) {
         gameStore.update((draft) => {
@@ -2235,6 +2187,9 @@ export const createHoverRunner = (
   window.addEventListener("resize", onResize)
 
   const dispose = () => {
+    if (disposed) {
+      return
+    }
     disposed = true
 
     if (promptStatusTimeout) {
@@ -2253,6 +2208,10 @@ export const createHoverRunner = (
     window.removeEventListener("resize", onResize)
     document.removeEventListener("visibilitychange", onVisibilityChange)
     window.removeEventListener("pointerdown", onWakeLockGesture)
+    window.removeEventListener(
+      "corpan:host-dispose",
+      onHostDispose as EventListener
+    )
     hudBackdrop.removeEventListener("click", onBackdropClick)
     fabButton.removeEventListener("click", onFabClick)
     hudExit.removeEventListener("click", requestExit)

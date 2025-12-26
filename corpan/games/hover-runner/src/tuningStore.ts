@@ -1,5 +1,6 @@
 import { createStore } from "zustand/vanilla"
 import { createJSONStorage, persist } from "zustand/middleware"
+import { SPEED } from "./core/constants"
 
 // iOS detection helper for performance tuning
 const isIOS = (): boolean => {
@@ -8,34 +9,25 @@ const isIOS = (): boolean => {
 }
 
 export type TuningSettings = {
+  // User-adjustable gameplay settings
   basePhraseSpeed: number
-  phraseSpeedMin: number
-  phraseSpeedMax: number
-  speedStepUp: number
-  speedStepDown: number
-  respawnDelay: number
-  promptLeadMs: number
-  introHoldMs: number
-  introRepeatMs: number
-  celebrationMs: number
-  postCelebrateMs: number
+  autoAdjustDifficulty: boolean
+  textScaleFactor: number
   maxDistractors: number
   maxIncorrectStreak: number
   correctWeight: number
-  textScaleFactor: number
-  textOverflowFactor: number
-  speakRepeatMs: number
   // Audio settings
   musicEnabled: boolean
   sfxEnabled: boolean
   musicVolume: number
   sfxVolume: number
-  // Multi-phrase settings
+  // Chaos mode
   maxSimultaneousPhrases: number
 }
 
 export type TuningRuntime = {
   speedDelta: number
+  currentPhraseCount: number
 }
 
 export type PhraseHistoryEntry = {
@@ -80,30 +72,16 @@ export type TuningState = {
 
 const DEFAULT_SETTINGS: TuningSettings = {
   basePhraseSpeed: 14,
-  phraseSpeedMin: 8,
-  phraseSpeedMax: 22,
-  speedStepUp: 0.25,
-  speedStepDown: 0.2,
-  respawnDelay: 0.45,
-  promptLeadMs: 650,
-  introHoldMs: 1300,
-  introRepeatMs: 700,
-  celebrationMs: 900,
-  postCelebrateMs: 900,
+  autoAdjustDifficulty: true,
+  textScaleFactor: 0.6,
   maxDistractors: 4,
   maxIncorrectStreak: 2,
   correctWeight: 2.4,
-  textScaleFactor: 0.6,
-  textOverflowFactor: 3,
-  // iOS performance: longer interval to reduce TTS overhead (8s vs 5s)
-  speakRepeatMs: isIOS() ? 8000 : 5000,
-  // Audio defaults
   musicEnabled: true,
   sfxEnabled: true,
   musicVolume: 0.3,
   sfxVolume: 0.5,
-  // Multi-phrase defaults
-  maxSimultaneousPhrases: 1,
+  maxSimultaneousPhrases: 3,
 }
 
 const clamp = (value: number, min: number, max: number) =>
@@ -113,7 +91,7 @@ export const tuningStore = createStore<TuningState>()(
   persist(
     (set, _get) => ({
       settings: { ...DEFAULT_SETTINGS },
-      runtime: { speedDelta: 0 },
+      runtime: { speedDelta: 0, currentPhraseCount: 1 },
       stats: {
         score: 0,
         streak: 0,
@@ -131,7 +109,7 @@ export const tuningStore = createStore<TuningState>()(
         })),
       resetRuntime: () =>
         set((state) => ({
-          runtime: { ...state.runtime, speedDelta: 0 },
+          runtime: { speedDelta: 0, currentPhraseCount: 1 },
         })),
       recordCorrect: (points = 1) =>
         set((state) => {
@@ -139,11 +117,29 @@ export const tuningStore = createStore<TuningState>()(
           const nextScore = state.stats.score + points
           const nextBest = Math.max(state.stats.bestStreak, nextStreak)
           const nextAllTimeBest = Math.max(state.stats.allTimeBestStreak, nextStreak)
-          const nextSpeed = clamp(
-            state.runtime.speedDelta + state.settings.speedStepUp,
-            state.settings.phraseSpeedMin - state.settings.basePhraseSpeed,
-            state.settings.phraseSpeedMax - state.settings.basePhraseSpeed
-          )
+
+          // Auto-adjust difficulty if enabled
+          let nextSpeed = state.runtime.speedDelta
+          let nextPhraseCount = state.runtime.currentPhraseCount
+
+          if (state.settings.autoAdjustDifficulty) {
+            // Increase speed slightly on success
+            nextSpeed = clamp(
+              state.runtime.speedDelta + SPEED.stepUp,
+              SPEED.min - state.settings.basePhraseSpeed,
+              SPEED.max - state.settings.basePhraseSpeed
+            )
+
+            // Gradually increase phrase count based on streak
+            // Every 3 correct in a row, add a phrase (up to max)
+            if (nextStreak % 3 === 0 && nextStreak > 0) {
+              nextPhraseCount = Math.min(
+                state.runtime.currentPhraseCount + 1,
+                state.settings.maxSimultaneousPhrases
+              )
+            }
+          }
+
           return {
             stats: {
               ...state.stats,
@@ -155,16 +151,28 @@ export const tuningStore = createStore<TuningState>()(
             runtime: {
               ...state.runtime,
               speedDelta: nextSpeed,
+              currentPhraseCount: nextPhraseCount,
             },
           }
         }),
       recordWrong: () =>
         set((state) => {
-          const nextSpeed = clamp(
-            state.runtime.speedDelta - state.settings.speedStepDown,
-            state.settings.phraseSpeedMin - state.settings.basePhraseSpeed,
-            state.settings.phraseSpeedMax - state.settings.basePhraseSpeed
-          )
+          // Auto-adjust difficulty if enabled
+          let nextSpeed = state.runtime.speedDelta
+          let nextPhraseCount = state.runtime.currentPhraseCount
+
+          if (state.settings.autoAdjustDifficulty) {
+            // Decrease speed on failure
+            nextSpeed = clamp(
+              state.runtime.speedDelta - SPEED.stepDown,
+              SPEED.min - state.settings.basePhraseSpeed,
+              SPEED.max - state.settings.basePhraseSpeed
+            )
+
+            // Reduce phrase count back to 1 on failure
+            nextPhraseCount = 1
+          }
+
           return {
             stats: {
               ...state.stats,
@@ -173,6 +181,7 @@ export const tuningStore = createStore<TuningState>()(
             runtime: {
               ...state.runtime,
               speedDelta: nextSpeed,
+              currentPhraseCount: nextPhraseCount,
             },
           }
         }),
