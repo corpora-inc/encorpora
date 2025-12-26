@@ -23,7 +23,7 @@ type AudioPoolEntry = {
 }
 
 const MAX_POOL = 4
-export const DEFAULT_SFX_VOLUME = 0.07
+export const DEFAULT_SFX_VOLUME = 0.05
 export const DEFAULT_MUSIC_VOLUME = 0.3
 
 const clamp = (value: number, min: number, max: number) =>

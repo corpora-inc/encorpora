@@ -10,7 +10,7 @@ type ContentPackHostProps = {
   manifestUrl?: string
 }
 
-const DEV_RELOAD_INTERVAL_MS = 1200
+const DEV_RELOAD_INTERVAL_MS = 10000
 
 const loadScript = (src: string, id: string, type: "script" | "module") =>
   new Promise<HTMLScriptElement>((resolve, reject) => {
@@ -165,12 +165,58 @@ export default function ContentPackHost({
       window.location.href
     ).toString()
     const manifestFetchUrl = proxyUrlIfNeeded(resolvedManifestUrl)
-    const shouldDevReload =
+  const shouldDevReload =
       isLocalhostUrl(resolvedManifestUrl) || isPrivateNetworkUrl(resolvedManifestUrl)
-    const getManifestFetchUrl = () =>
-      shouldDevReload
-        ? withCacheBust(manifestFetchUrl, String(Date.now()))
-        : manifestFetchUrl
+    let activeManifestSourceUrl = resolvedManifestUrl
+
+    const getManifestSourceUrls = () => {
+      const urls = [activeManifestSourceUrl, resolvedManifestUrl]
+      try {
+        const base = new URL(resolvedManifestUrl, window.location.href)
+        if (
+          (base.protocol === "http:" || base.protocol === "https:") &&
+          isPrivateNetworkUrl(resolvedManifestUrl) &&
+          !isLocalhostUrl(resolvedManifestUrl)
+        ) {
+          const localhost = new URL(base.toString())
+          localhost.hostname = "localhost"
+          urls.push(localhost.toString())
+          const loopback = new URL(base.toString())
+          loopback.hostname = "127.0.0.1"
+          urls.push(loopback.toString())
+        }
+      } catch {
+        // Ignore invalid manifest URL fallbacks.
+      }
+      return Array.from(new Set(urls))
+    }
+
+    const getManifestFetchCandidates = (token?: string) => {
+      const sourceUrls = getManifestSourceUrls()
+      return sourceUrls.map((sourceUrl) => {
+        const fetchUrl = proxyUrlIfNeeded(withCacheBust(sourceUrl, token))
+        return { sourceUrl, fetchUrl }
+      })
+    }
+
+    const fetchManifest = async (token?: string) => {
+      const candidates = getManifestFetchCandidates(token)
+      let lastError: unknown
+      for (const { sourceUrl, fetchUrl } of candidates) {
+        try {
+          const res = await fetch(fetchUrl, { cache: "no-store" })
+          if (!res.ok) {
+            lastError = new Error(`Missing content pack: ${id}`)
+            continue
+          }
+          const manifest = (await res.json()) as ContentPackManifest
+          return { manifest, sourceUrl }
+        } catch (err) {
+          lastError = err
+        }
+      }
+      throw lastError ?? new Error(`Missing content pack: ${id}`)
+    }
 
     const cleanup = () => {
       if (devReloadTimer) {
@@ -220,14 +266,13 @@ export default function ContentPackHost({
         return
       }
       try {
-        const res = await fetch(getManifestFetchUrl(), { cache: "no-store" })
-        if (!res.ok) {
-          return
-        }
-        const manifest = (await res.json()) as ContentPackManifest
+        const { manifest, sourceUrl } = await fetchManifest(
+          shouldDevReload ? String(Date.now()) : undefined
+        )
         const signature = JSON.stringify(manifest)
         if (signature !== lastManifestSignature) {
           updateManifestSignature(manifest)
+          activeManifestSourceUrl = sourceUrl
           void load()
         }
       } catch {
@@ -248,20 +293,17 @@ export default function ContentPackHost({
         ;(globalThis as { __corpanPerf?: boolean }).__corpanPerf = true
       }
       try {
-        const res = await fetch(getManifestFetchUrl(), {
-          cache: "no-store",
-        })
-        if (!res.ok) {
-          throw new Error(`Missing content pack: ${id}`)
-        }
-        const manifest = (await res.json()) as ContentPackManifest
+        const { manifest, sourceUrl } = await fetchManifest(
+          shouldDevReload ? String(Date.now()) : undefined
+        )
         if (!manifest.id || !manifest.entry) {
           throw new Error(`Invalid manifest for ${id}`)
         }
         updateManifestSignature(manifest)
+        activeManifestSourceUrl = sourceUrl
         const baseUrl = manifest.baseUrl
-          ? new URL(manifest.baseUrl, resolvedManifestUrl).toString()
-          : new URL(".", resolvedManifestUrl).toString()
+          ? new URL(manifest.baseUrl, activeManifestSourceUrl).toString()
+          : new URL(".", activeManifestSourceUrl).toString()
         const devToken = shouldDevReload ? manifest.devRevision : undefined
 
         if (manifest.styles) {

@@ -124,13 +124,14 @@ export const createHoverRunner = (
   root.appendChild(canvas)
 
   const fpsHud = showFps ? document.createElement("div") : null
+  let showInstrumentation = false // Hidden by default, toggle with 'i' key
   if (fpsHud) {
     fpsHud.textContent = "0 fps"
     fpsHud.style.cssText =
       "position:absolute;top:calc(8px + var(--safe-top));left:calc(8px + var(--safe-left));" +
       "padding:4px 8px;border-radius:8px;background:rgba(3,6,12,0.6);" +
       "color:#dfe9ff;font:12px/1.2 'Trebuchet MS','Helvetica Neue',sans-serif;" +
-      "letter-spacing:0.04em;z-index:40;pointer-events:none;"
+      "letter-spacing:0.04em;z-index:40;pointer-events:none;opacity:0;"
     root.appendChild(fpsHud)
   }
 
@@ -427,10 +428,10 @@ export const createHoverRunner = (
   createTuningControl(
     "SFX Vol",
     "sfxVolume",
-    0,
-    1,
-    0.05,
-    "Sound effects volume (0-100%).",
+    0.01,
+    0.5,
+    0.01,
+    "Sound effects volume. SFX are normalized loud, so low values work best.",
     audioSection
   )
 
@@ -608,7 +609,7 @@ export const createHoverRunner = (
       "position:absolute;top:calc(8px + var(--safe-top));right:calc(8px + var(--safe-right));" +
       "padding:6px 8px;border-radius:10px;background:rgba(3,6,12,0.65);" +
       "color:#dfe9ff;font:12px/1.3 'Trebuchet MS','Helvetica Neue',sans-serif;" +
-      "letter-spacing:0.03em;z-index:40;pointer-events:none;white-space:pre;"
+      "letter-spacing:0.03em;z-index:40;pointer-events:none;white-space:pre;opacity:0;"
     root.appendChild(perfHud)
   }
   const sceneInstrumentation = showPerf ? new SceneInstrumentation(scene) : null
@@ -943,6 +944,25 @@ export const createHoverRunner = (
   skinCycle.addEventListener("click", onSkinCycle)
 
   const input = initInput(canvas, tiltButton)
+
+  // Keyboard handler for toggling instrumentation (FPS/perf) with 'i' key
+  const toggleInstrumentation = () => {
+    showInstrumentation = !showInstrumentation
+    const opacity = showInstrumentation ? "1" : "0"
+    if (fpsHud) {
+      fpsHud.style.opacity = opacity
+    }
+    if (perfHud) {
+      perfHud.style.opacity = opacity
+    }
+  }
+  const onKeyDownGlobal = (event: KeyboardEvent) => {
+    if (event.key === "i" || event.key === "I") {
+      toggleInstrumentation()
+    }
+  }
+  window.addEventListener("keydown", onKeyDownGlobal)
+
   const target = new Vector3()
   const velocity = new Vector3()
   const lastPos = hoverboard.root.position.clone()
@@ -2222,6 +2242,7 @@ export const createHoverRunner = (
     tuningUnsubscribe?.()
     hostApi.stopSpeech?.()
     input.dispose()
+    window.removeEventListener("keydown", onKeyDownGlobal)
     window.removeEventListener("resize", onResize)
     document.removeEventListener("visibilitychange", onVisibilityChange)
     window.removeEventListener("pointerdown", onWakeLockGesture)

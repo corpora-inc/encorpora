@@ -80,7 +80,7 @@ const DEFAULT_SETTINGS: TuningSettings = {
   musicEnabled: true,
   sfxEnabled: true,
   musicVolume: 0.3,
-  sfxVolume: 0.5,
+  sfxVolume: 0.05,
   maxSimultaneousPhrases: 3,
 }
 

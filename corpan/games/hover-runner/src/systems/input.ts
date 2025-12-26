@@ -24,6 +24,19 @@ export const initInput = (
   const SMOOTHING_FACTOR_LARGE = 0.4 // Light smoothing for large movements
   const LARGE_MOVEMENT_THRESHOLD = 0.3 // Threshold to detect intentional large movements
 
+  // Screen orientation detection for sensor remapping
+  const getScreenOrientation = (): number => {
+    // Try modern API first
+    if (typeof window !== "undefined" && window.screen?.orientation?.angle != null) {
+      return window.screen.orientation.angle
+    }
+    // Fallback to deprecated API
+    if (typeof window !== "undefined" && (window as typeof window & { orientation?: number }).orientation != null) {
+      return (window as typeof window & { orientation?: number }).orientation ?? 0
+    }
+    return 0
+  }
+
   const onKey = (event: KeyboardEvent) => {
     // Start music on first keyboard interaction (if not already playing)
     const audio = getSfx()
@@ -73,11 +86,39 @@ export const initInput = (
     }
     state.tiltActive = true
 
-    // Calculate raw target values from sensors
-    const targetX = clamp(event.gamma / 16, -1, 1)
+    // Get screen orientation and remap sensor axes accordingly
+    const screenAngle = getScreenOrientation()
+    let rawX = 0
+    let rawY = 0
+
+    // Remap axes based on device orientation
+    // Portrait (0°): gamma = X (left/right), beta = Y (forward/back)
+    // Landscape-right (90°): beta = X, -gamma = Y
+    // Portrait-inverted (180°): -gamma = X, -beta = Y
+    // Landscape-left (270°): -beta = X, gamma = Y
+    if (screenAngle === 90) {
+      // Landscape-right
+      rawX = event.beta
+      rawY = -event.gamma
+    } else if (screenAngle === 180) {
+      // Portrait-inverted
+      rawX = -event.gamma
+      rawY = -event.beta
+    } else if (screenAngle === 270 || screenAngle === -90) {
+      // Landscape-left
+      rawX = -event.beta
+      rawY = event.gamma
+    } else {
+      // Portrait (0° or default)
+      rawX = event.gamma
+      rawY = event.beta
+    }
+
+    // Calculate target values from remapped sensors
+    const targetX = clamp(rawX / 16, -1, 1)
     const minPitch = 52
     const maxPitch = 62
-    const pitch = clamp(event.beta, minPitch, maxPitch)
+    const pitch = clamp(rawY, minPitch, maxPitch)
     const normalized = (pitch - minPitch) / (maxPitch - minPitch)
     const targetY = normalized * 2 - 1
 
@@ -106,6 +147,12 @@ export const initInput = (
     state.tiltY = clamp(smoothedY, -1, 1)
   }
 
+  const onOrientationChange = () => {
+    // Reset smoothed values when orientation changes to avoid jarring transitions
+    smoothedX = 0
+    smoothedY = 0
+  }
+
   const enableTilt = () => {
     if (state.tiltEnabled) {
       return
@@ -118,6 +165,13 @@ export const initInput = (
     smoothedX = state.tiltX
     smoothedY = state.tiltY
     window.addEventListener("deviceorientation", orientationHandler)
+    // Listen for screen orientation changes
+    if (window.screen?.orientation) {
+      window.screen.orientation.addEventListener("change", onOrientationChange)
+    } else {
+      // Fallback for older browsers
+      window.addEventListener("orientationchange", onOrientationChange)
+    }
   }
 
   const requestTilt = async () => {
@@ -162,6 +216,12 @@ export const initInput = (
     window.removeEventListener("keydown", onKey)
     canvas.removeEventListener("pointerdown", onPointer)
     window.removeEventListener("deviceorientation", orientationHandler)
+    // Clean up orientation change listeners
+    if (window.screen?.orientation) {
+      window.screen.orientation.removeEventListener("change", onOrientationChange)
+    } else {
+      window.removeEventListener("orientationchange", onOrientationChange)
+    }
     if (tiltButton) {
       tiltButton.removeEventListener("click", requestTilt)
     }

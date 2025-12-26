@@ -58,7 +58,7 @@ body {
 .hud-panel {
   position: absolute;
   right: calc(16px + var(--safe-right));
-  bottom: calc(80px + var(--safe-bottom));
+  top: calc(80px + var(--safe-top));
   width: min(360px, 92vw);
   max-height: calc(100vh - 80px - 20px - var(--safe-top) - var(--safe-bottom));
   padding: 14px 16px 16px;
@@ -72,7 +72,7 @@ body {
   color: #eaf2ff;
   letter-spacing: 0.04em;
   opacity: 0;
-  transform: translateY(14px) scale(0.98);
+  transform: translateY(-14px) scale(0.98);
   pointer-events: none;
   transition: opacity 0.2s ease, transform 0.2s ease;
   z-index: 30;
@@ -526,7 +526,7 @@ body {
 .hud-fab {
   position: absolute;
   right: calc(16px + var(--safe-right));
-  bottom: calc(16px + var(--safe-bottom));
+  top: calc(16px + var(--safe-top));
   width: 52px;
   height: 52px;
   padding: 0;
@@ -556,7 +556,7 @@ body {
 }
 
 .hud-fab.open .hud-fab-icon {
-  transform: rotate(135deg);
+  transform: rotate(-135deg);
 }
 
 .tilt-button {
@@ -645,7 +645,7 @@ body {
 @media (max-width: 360px) {
   .hud-panel {
     right: calc(12px + var(--safe-right));
-    bottom: calc(72px + var(--safe-bottom));
+    top: calc(72px + var(--safe-top));
     padding: 12px;
   }
 
@@ -707,7 +707,7 @@ body {
 
   .hud-fab {
     right: calc(12px + var(--safe-right));
-    bottom: calc(12px + var(--safe-bottom));
+    top: calc(12px + var(--safe-top));
     width: 48px;
     height: 48px;
   }
@@ -722,9 +722,9 @@ body {
     left: calc(10px + var(--safe-left));
     right: calc(10px + var(--safe-right));
     top: calc(10px + var(--safe-top));
-    bottom: calc(10px + var(--safe-bottom));
+    bottom: auto;
     width: auto;
-    max-height: calc(100% - var(--safe-top) - var(--safe-bottom) - 20px);
+    max-height: calc(100vh - 20px - var(--safe-top) - var(--safe-bottom));
     overflow-y: auto;
   }
 
