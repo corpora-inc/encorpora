@@ -16,6 +16,14 @@ export const initInput = (
     tiltY: 0,
   }
 
+  // Smoothing state for motion input
+  let smoothedX = 0
+  let smoothedY = 0
+  const DEAD_ZONE = 0.08 // Ignore changes smaller than this
+  const SMOOTHING_FACTOR_SMALL = 0.15 // Strong smoothing for small movements
+  const SMOOTHING_FACTOR_LARGE = 0.4 // Light smoothing for large movements
+  const LARGE_MOVEMENT_THRESHOLD = 0.3 // Threshold to detect intentional large movements
+
   const onKey = (event: KeyboardEvent) => {
     // Start music on first keyboard interaction (if not already playing)
     const audio = getSfx()
@@ -64,12 +72,38 @@ export const initInput = (
       return
     }
     state.tiltActive = true
-    state.tiltX = clamp(event.gamma / 16, -1, 1)
+
+    // Calculate raw target values from sensors
+    const targetX = clamp(event.gamma / 16, -1, 1)
     const minPitch = 52
     const maxPitch = 62
     const pitch = clamp(event.beta, minPitch, maxPitch)
     const normalized = (pitch - minPitch) / (maxPitch - minPitch)
-    state.tiltY = normalized * 2 - 1
+    const targetY = normalized * 2 - 1
+
+    // Apply smart smoothing with dead zone
+    const deltaX = Math.abs(targetX - smoothedX)
+    const deltaY = Math.abs(targetY - smoothedY)
+
+    // Dead zone: ignore tiny movements (jitter from hand shake)
+    if (deltaX > DEAD_ZONE) {
+      // Adaptive smoothing: use less smoothing for large intentional movements
+      const factorX = deltaX > LARGE_MOVEMENT_THRESHOLD
+        ? SMOOTHING_FACTOR_LARGE
+        : SMOOTHING_FACTOR_SMALL
+      smoothedX += (targetX - smoothedX) * factorX
+    }
+
+    if (deltaY > DEAD_ZONE) {
+      const factorY = deltaY > LARGE_MOVEMENT_THRESHOLD
+        ? SMOOTHING_FACTOR_LARGE
+        : SMOOTHING_FACTOR_SMALL
+      smoothedY += (targetY - smoothedY) * factorY
+    }
+
+    // Update state with smoothed values
+    state.tiltX = clamp(smoothedX, -1, 1)
+    state.tiltY = clamp(smoothedY, -1, 1)
   }
 
   const enableTilt = () => {
@@ -80,6 +114,9 @@ export const initInput = (
     if (tiltButton) {
       tiltButton.textContent = "Motion Active"
     }
+    // Initialize smoothed values to current state to avoid jump
+    smoothedX = state.tiltX
+    smoothedY = state.tiltY
     window.addEventListener("deviceorientation", orientationHandler)
   }
 
