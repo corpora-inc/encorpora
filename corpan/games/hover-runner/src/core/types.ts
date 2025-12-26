@@ -38,6 +38,7 @@ export type PhraseInstance = {
   lane: number
   baseWidth: number
   baseHeight: number
+  baseY: number // Target Y position (lane height)
   letterPositions?: Vector3[]
   surfaceEffects?: {
     update: (dt: number, intensity: number) => void

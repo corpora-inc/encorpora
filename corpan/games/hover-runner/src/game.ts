@@ -50,6 +50,7 @@ import {
   scaleColor,
   getPhraseScore,
   getPhraseDuration,
+  estimateSpeechDuration,
   createEmissivePbr,
   getSettings,
   getPhraseSpeed,
@@ -1572,6 +1573,13 @@ export const createHoverRunner = (
       return
     }
     const roundId = state.round.id
+
+    // Calculate delay based on phrase length + base gap (~5s after phrase finishes)
+    const phraseText = state.round.prompt
+    const speakDuration = estimateSpeechDuration(phraseText)
+    const baseGap = getSettings().speakRepeatMs
+    const totalDelay = speakDuration + baseGap
+
     speakRepeatTimeout = window.setTimeout(() => {
       if (disposed) {
         return
@@ -1585,7 +1593,7 @@ export const createHoverRunner = (
       }
       hostApi.speak(current.round.promptLang, current.round.prompt)
       scheduleSpeakRepeat()
-    }, getSettings().speakRepeatMs)
+    }, totalDelay)
   }
 
   const onPromptToggle = () => {
@@ -1716,8 +1724,10 @@ export const createHoverRunner = (
 
   const spawnPhrase = (spec: PhraseSpec, lane: number) => {
     const { mesh, baseWidth, baseHeight, letterPositions } = createPhraseMesh(spec)
-    mesh.position.copyFrom(laneToPosition(lane))
-    const newPhrase: PhraseInstance = { spec, mesh, lane, baseWidth, baseHeight, letterPositions }
+    const startPos = laneToPosition(lane)
+    mesh.position.copyFrom(startPos)
+    const baseY = startPos.y
+    const newPhrase: PhraseInstance = { spec, mesh, lane, baseWidth, baseHeight, baseY, letterPositions }
     gameStore.update((draft) => {
       draft.activePhrases.push(newPhrase)
       draft.lastLane = lane
@@ -1893,6 +1903,13 @@ export const createHoverRunner = (
       const targetScale = 0.85 + depth * 2.3
       current.mesh.scaling.x = targetScale
       current.mesh.scaling.y = targetScale
+
+      // Gentle arc trajectory: phrases start elevated and descend to lane height
+      // Uses parabolic curve for natural motion
+      const arcProgress = 1 - depth // 1 when far, 0 when close
+      const arcHeight = 2.0 // Max height offset when far away
+      const yOffset = arcProgress * arcProgress * arcHeight
+      current.mesh.position.y = current.baseY + yOffset
 
       const laneMatch = hoverLane === current.lane
       const isElectricTarget = current === closestInLane

@@ -116,6 +116,16 @@ export const pickRandom = <T,>(items: T[]) => {
   return items[idx] ?? null
 }
 
+// Estimate speech duration based on text length
+// Average speaking rate: ~150 words per minute = 2.5 words per second
+// Average word length: ~5 characters, so ~12.5 chars per second = 80ms per char
+export const estimateSpeechDuration = (text: string): number => {
+  const chars = text.length
+  const baseMs = 500 // Minimum time for very short phrases
+  const msPerChar = 80 // Milliseconds per character
+  return Math.max(baseMs, chars * msPerChar)
+}
+
 export const computeCurve = (curveTime: number, z: number) => {
   const blend = Math.pow(z / ROAD.length, 1.35)
   return Math.sin(curveTime + z * 0.08) * ROAD.curveAmount * blend

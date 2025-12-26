@@ -19,7 +19,7 @@ export const ROAD = {
   speed: 20,
   curveAmount: 2,
   y: -3.9,
-  zOffset: -10.0,
+  zOffset: -5.0,
 } as const
 
 export const MOVE_SPEED = 25
@@ -38,6 +38,7 @@ export const TIMING = {
   introRepeatMs: 200,
   celebrationMs: 600,
   postCelebrateMs: 200,
+  // Gap AFTER phrase finishes speaking (added to estimated speech duration)
   speakRepeatMs: 5000,
   speakRepeatMsIOS: 8000,
 } as const
