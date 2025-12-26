@@ -5,7 +5,7 @@ import type { InputState } from "../core/types"
 
 export const initInput = (
   canvas: HTMLCanvasElement,
-  tiltButton: HTMLButtonElement
+  tiltButton: HTMLButtonElement | null
 ) => {
   const state: InputState = {
     row: 2,
@@ -77,7 +77,9 @@ export const initInput = (
       return
     }
     state.tiltEnabled = true
-    tiltButton.textContent = "Motion Active"
+    if (tiltButton) {
+      tiltButton.textContent = "Motion Active"
+    }
     window.addEventListener("deviceorientation", orientationHandler)
   }
 
@@ -104,24 +106,28 @@ export const initInput = (
 
   window.addEventListener("keydown", onKey)
   canvas.addEventListener("pointerdown", onPointer)
-  tiltButton.addEventListener("click", requestTilt)
-  const prefersTilt =
-    typeof window !== "undefined" &&
-    window.matchMedia &&
-    window.matchMedia("(pointer: coarse)").matches
-  if (
-    prefersTilt &&
-    !(DeviceOrientationEvent as unknown as { requestPermission?: unknown })
-      .requestPermission
-  ) {
-    enableTilt()
+  if (tiltButton) {
+    tiltButton.addEventListener("click", requestTilt)
+    const prefersTilt =
+      typeof window !== "undefined" &&
+      window.matchMedia &&
+      window.matchMedia("(pointer: coarse)").matches
+    if (
+      prefersTilt &&
+      !(DeviceOrientationEvent as unknown as { requestPermission?: unknown })
+        .requestPermission
+    ) {
+      enableTilt()
+    }
   }
 
   const dispose = () => {
     window.removeEventListener("keydown", onKey)
     canvas.removeEventListener("pointerdown", onPointer)
     window.removeEventListener("deviceorientation", orientationHandler)
-    tiltButton.removeEventListener("click", requestTilt)
+    if (tiltButton) {
+      tiltButton.removeEventListener("click", requestTilt)
+    }
   }
 
   return { state, dispose }

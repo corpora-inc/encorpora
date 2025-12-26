@@ -79,6 +79,31 @@ const isLocalhostUrl = (rawUrl: string) => {
   }
 }
 
+const isPrivateNetworkUrl = (rawUrl: string) => {
+  try {
+    const resolved = new URL(rawUrl, window.location.href)
+    const host = resolved.hostname
+    if (host === "localhost" || host === "127.0.0.1" || host === "::1") {
+      return true
+    }
+    if (host.endsWith(".localhost") || host.endsWith(".local")) {
+      return true
+    }
+    const ipv4 = host.match(/^(\d{1,3})\.(\d{1,3})\.(\d{1,3})\.(\d{1,3})$/)
+    if (ipv4) {
+      const [a, b] = [Number(ipv4[1]), Number(ipv4[2])]
+      if (a === 10 || a === 127) return true
+      if (a === 192 && b === 168) return true
+      if (a === 172 && b >= 16 && b <= 31) return true
+      if (a === 169 && b === 254) return true
+      return false
+    }
+    return host.startsWith("fe80:") || host.startsWith("fd") || host.startsWith("fc")
+  } catch {
+    return false
+  }
+}
+
 const withCacheBust = (rawUrl: string, token?: string) => {
   if (!token) {
     return rawUrl
@@ -140,7 +165,12 @@ export default function ContentPackHost({
       window.location.href
     ).toString()
     const manifestFetchUrl = proxyUrlIfNeeded(resolvedManifestUrl)
-    const shouldDevReload = isLocalhostUrl(resolvedManifestUrl)
+    const shouldDevReload =
+      isLocalhostUrl(resolvedManifestUrl) || isPrivateNetworkUrl(resolvedManifestUrl)
+    const getManifestFetchUrl = () =>
+      shouldDevReload
+        ? withCacheBust(manifestFetchUrl, String(Date.now()))
+        : manifestFetchUrl
 
     const cleanup = () => {
       if (devReloadTimer) {
@@ -183,7 +213,7 @@ export default function ContentPackHost({
         return
       }
       try {
-        const res = await fetch(manifestFetchUrl, { cache: "no-store" })
+        const res = await fetch(getManifestFetchUrl(), { cache: "no-store" })
         if (!res.ok) {
           return
         }
@@ -211,7 +241,7 @@ export default function ContentPackHost({
         ;(globalThis as { __corpanPerf?: boolean }).__corpanPerf = true
       }
       try {
-        const res = await fetch(manifestFetchUrl, {
+        const res = await fetch(getManifestFetchUrl(), {
           cache: "no-store",
         })
         if (!res.ok) {

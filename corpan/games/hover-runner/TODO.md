@@ -1,21 +1,22 @@
 # Hover Runner TODO
 
+- Music DOES NOT STOP RELIABLY - FUCK MY LIFE. How the fuck is that hard?
+
 ## Mobile
 
-- Bigger settings elements for mobile
 - toggle between motion or touch (only show motion controls on mobile, try to turn on motion controls by default on mobile)
 
 ## Fit words better on screen
 
-- the words _must_ always fit .. perhaps they need to be scaled down for longer phrases or allow them to go off the sides a bit..
+sometimes the words go under the road and it looks weird (still usable though)
 
-## whole scene fit
 
-move the grid down (avatar closer to the camera) - move road down a bit.
 
 ## Cooler scenery
 
 without killing performance, let's make the scenes a little bit more trippy and cool looking.
+
+
 
 ## Settings cleanup
 

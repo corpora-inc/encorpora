@@ -193,11 +193,21 @@ export const createHoverRunner = (
   promptToggleLabel.textContent = "Show prompt"
   promptToggle.append(promptToggleInput, promptToggleLabel)
 
-  const tiltButton = document.createElement("button")
-  tiltButton.className = "tilt-button"
-  tiltButton.type = "button"
-  tiltButton.textContent = "Enable Motion"
-  hudControls.appendChild(tiltButton)
+  // Check if device supports orientation (mobile/tablet only)
+  const supportsOrientation =
+    typeof DeviceOrientationEvent !== "undefined" &&
+    typeof window !== "undefined" &&
+    window.matchMedia &&
+    window.matchMedia("(pointer: coarse)").matches
+
+  let tiltButton: HTMLButtonElement | null = null
+  if (supportsOrientation) {
+    tiltButton = document.createElement("button")
+    tiltButton.className = "tilt-button"
+    tiltButton.type = "button"
+    tiltButton.textContent = "Enable Motion"
+    hudControls.appendChild(tiltButton)
+  }
 
   const hudExit = document.createElement("button")
   hudExit.className = "hud-exit"
@@ -418,9 +428,9 @@ export const createHoverRunner = (
     createTuningControl(
       "Text Scale",
       "textScaleFactor",
-      0.5,
-      3,
       0.1,
+      1,
+      0.05,
       "Scale multiplier for phrase meshes on the road.",
       gameplaySection
     ),
@@ -958,8 +968,13 @@ export const createHoverRunner = (
   skinCycle.type = "button"
   skinCycle.textContent = "Cycle"
   skinPanel.append(skinLabel, skinSelect, skinCycle)
-  hudControls.insertBefore(skinPanel, tiltButton)
-  hudControls.insertBefore(promptToggle, tiltButton)
+  if (tiltButton) {
+    hudControls.insertBefore(skinPanel, tiltButton)
+    hudControls.insertBefore(promptToggle, tiltButton)
+  } else {
+    hudControls.insertBefore(skinPanel, hudExit)
+    hudControls.insertBefore(promptToggle, hudExit)
+  }
 
   const onSkinChange = () => {
     applySkin(skinSelect.value)
@@ -1175,10 +1190,10 @@ export const createHoverRunner = (
         drawTextLine(
           line,
           baseY +
-            lines.length * mainLineHeight +
-            romanGap +
-            romanLineHeight / 2 +
-            index * romanLineHeight,
+          lines.length * mainLineHeight +
+          romanGap +
+          romanLineHeight / 2 +
+          index * romanLineHeight,
           romanFont,
           "rgba(150, 210, 255, 0.95)"
         )
@@ -1952,125 +1967,125 @@ export const createHoverRunner = (
       const dx = current.mesh.position.x - hoverboard.root.position.x
       const dy = current.mesh.position.y - hoverboard.root.position.y
       const dz = current.mesh.position.z - PHRASE_HIT_Z
-    const isHit =
-      Math.abs(dz) <= PHRASE_HIT_WINDOW &&
-      (isTiltActive
-        ? hoverLane === current.lane
-        : Math.hypot(dx, dy) < 0.6)
-    const hasPassed = current.mesh.position.z < PHRASE_HIT_Z - PHRASE_HIT_WINDOW
+      const isHit =
+        Math.abs(dz) <= PHRASE_HIT_WINDOW &&
+        (isTiltActive
+          ? hoverLane === current.lane
+          : Math.hypot(dx, dy) < 0.6)
+      const hasPassed = current.mesh.position.z < PHRASE_HIT_Z - PHRASE_HIT_WINDOW
 
-    if (isHit) {
-      const round = gameStore.getState().round
-      const phrasePosition = current.mesh.position.clone()
-      clearActivePhrase(current)
-      // Immediately clear electric field when phrase is hit
-      electricTarget = null
-      electricTargetPhrase = null
-      electricIntensity = 0
-      gameStore.update((draft) => {
-        draft.spawnCooldown = getSettings().respawnDelay
-      })
-      if (current.spec.isCorrect && round && !gameStore.getState().roundSolved) {
-        gameStore.update((draft) => {
-          draft.roundSolved = true
-          draft.incorrectStreak = 0
-        })
-        if (tuningStore.getState().settings.sfxEnabled) sfx.playSuccess()
-        const points = getPhraseScore(round.answer, round.answerLang)
-        tuningStore.getState().recordCorrect(points)
-        tuningStore.getState().recordPhraseResult(
-          current.spec.id,
-          round.promptLang,
-          round.answerLang,
-          true
-        )
-        scoreAnimator.showScorePopup(points)
-        createSuccessParticles(scene, phrasePosition)
-        startCelebration(round)
-      } else if (!current.spec.isCorrect) {
-        gameStore.update((draft) => {
-          draft.incorrectStreak += 1
-        })
+      if (isHit) {
         const round = gameStore.getState().round
-        tuningStore.getState().recordWrong()
-        if (round) {
+        const phrasePosition = current.mesh.position.clone()
+        clearActivePhrase(current)
+        // Immediately clear electric field when phrase is hit
+        electricTarget = null
+        electricTargetPhrase = null
+        electricIntensity = 0
+        gameStore.update((draft) => {
+          draft.spawnCooldown = getSettings().respawnDelay
+        })
+        if (current.spec.isCorrect && round && !gameStore.getState().roundSolved) {
+          gameStore.update((draft) => {
+            draft.roundSolved = true
+            draft.incorrectStreak = 0
+          })
+          if (tuningStore.getState().settings.sfxEnabled) sfx.playSuccess()
+          const points = getPhraseScore(round.answer, round.answerLang)
+          tuningStore.getState().recordCorrect(points)
           tuningStore.getState().recordPhraseResult(
             current.spec.id,
             round.promptLang,
             round.answerLang,
-            false
+            true
           )
-        }
-        if (tuningStore.getState().settings.sfxEnabled) sfx.playFail()
-        createFailParticles(scene, phrasePosition)
-        triggerScreenShake()
-        setPromptStatus("Wrong - dodge!", true)
-      }
-      continue
-    }
-
-    if (hasPassed) {
-      const passedPosition = current.mesh.position.clone()
-      clearActivePhrase(current)
-      gameStore.update((draft) => {
-        draft.spawnCooldown = getSettings().respawnDelay
-      })
-      if (current.spec.isCorrect) {
-        const round = gameStore.getState().round
-        const hasSpoken = gameStore.getState().hasSpokenMissedAnswer
-        gameStore.update((draft) => {
-          draft.incorrectStreak = getSettings().maxIncorrectStreak
-          if (!hasSpoken) {
-            draft.hasSpokenMissedAnswer = true
+          scoreAnimator.showScorePopup(points)
+          createSuccessParticles(scene, phrasePosition)
+          startCelebration(round)
+        } else if (!current.spec.isCorrect) {
+          gameStore.update((draft) => {
+            draft.incorrectStreak += 1
+          })
+          const round = gameStore.getState().round
+          tuningStore.getState().recordWrong()
+          if (round) {
+            tuningStore.getState().recordPhraseResult(
+              current.spec.id,
+              round.promptLang,
+              round.answerLang,
+              false
+            )
           }
-        })
-        tuningStore.getState().recordWrong()
-        if (tuningStore.getState().settings.sfxEnabled) sfx.playFail()
-        createFailParticles(scene, passedPosition)
-        triggerScreenShake()
-        setPromptStatus("Missed!", true)
-        if (round && !hasSpoken) {
-          hostApi.speak(round.answerLang, round.answer)
+          if (tuningStore.getState().settings.sfxEnabled) sfx.playFail()
+          createFailParticles(scene, phrasePosition)
+          triggerScreenShake()
+          setPromptStatus("Wrong - dodge!", true)
         }
-      } else {
-        // Successfully dodged a wrong answer - no miss increment!
-        tuningStore.getState().recordDodge()
-        scoreAnimator.showScorePopup(1)
-        if (tuningStore.getState().settings.sfxEnabled) sfx.playSuccess()
+        continue
       }
-      continue
-    }
 
-    if (current.mesh.position.z < PHRASE_END_Z) {
-      const endPosition = current.mesh.position.clone()
-      clearActivePhrase(current)
-      gameStore.update((draft) => {
-        draft.spawnCooldown = getSettings().respawnDelay
-      })
-      if (current.spec.isCorrect) {
-        const round = gameStore.getState().round
-        const hasSpoken = gameStore.getState().hasSpokenMissedAnswer
+      if (hasPassed) {
+        const passedPosition = current.mesh.position.clone()
+        clearActivePhrase(current)
         gameStore.update((draft) => {
-          draft.incorrectStreak = getSettings().maxIncorrectStreak
-          if (!hasSpoken) {
-            draft.hasSpokenMissedAnswer = true
-          }
+          draft.spawnCooldown = getSettings().respawnDelay
         })
-        tuningStore.getState().recordWrong()
-        if (tuningStore.getState().settings.sfxEnabled) sfx.playFail()
-        createFailParticles(scene, endPosition)
-        triggerScreenShake()
-        setPromptStatus("Missed!", true)
-        if (round && !hasSpoken) {
-          hostApi.speak(round.answerLang, round.answer)
+        if (current.spec.isCorrect) {
+          const round = gameStore.getState().round
+          const hasSpoken = gameStore.getState().hasSpokenMissedAnswer
+          gameStore.update((draft) => {
+            draft.incorrectStreak = getSettings().maxIncorrectStreak
+            if (!hasSpoken) {
+              draft.hasSpokenMissedAnswer = true
+            }
+          })
+          tuningStore.getState().recordWrong()
+          if (tuningStore.getState().settings.sfxEnabled) sfx.playFail()
+          createFailParticles(scene, passedPosition)
+          triggerScreenShake()
+          setPromptStatus("Missed!", true)
+          if (round && !hasSpoken) {
+            hostApi.speak(round.answerLang, round.answer)
+          }
+        } else {
+          // Successfully dodged a wrong answer - no miss increment!
+          tuningStore.getState().recordDodge()
+          scoreAnimator.showScorePopup(1)
+          if (tuningStore.getState().settings.sfxEnabled) sfx.playSuccess()
         }
-      } else {
-        // Successfully dodged a wrong answer - no miss increment!
-        tuningStore.getState().recordDodge()
-        scoreAnimator.showScorePopup(1)
-        if (tuningStore.getState().settings.sfxEnabled) sfx.playSuccess()
+        continue
       }
-    }
+
+      if (current.mesh.position.z < PHRASE_END_Z) {
+        const endPosition = current.mesh.position.clone()
+        clearActivePhrase(current)
+        gameStore.update((draft) => {
+          draft.spawnCooldown = getSettings().respawnDelay
+        })
+        if (current.spec.isCorrect) {
+          const round = gameStore.getState().round
+          const hasSpoken = gameStore.getState().hasSpokenMissedAnswer
+          gameStore.update((draft) => {
+            draft.incorrectStreak = getSettings().maxIncorrectStreak
+            if (!hasSpoken) {
+              draft.hasSpokenMissedAnswer = true
+            }
+          })
+          tuningStore.getState().recordWrong()
+          if (tuningStore.getState().settings.sfxEnabled) sfx.playFail()
+          createFailParticles(scene, endPosition)
+          triggerScreenShake()
+          setPromptStatus("Missed!", true)
+          if (round && !hasSpoken) {
+            hostApi.speak(round.answerLang, round.answer)
+          }
+        } else {
+          // Successfully dodged a wrong answer - no miss increment!
+          tuningStore.getState().recordDodge()
+          scoreAnimator.showScorePopup(1)
+          if (tuningStore.getState().settings.sfxEnabled) sfx.playSuccess()
+        }
+      }
     }
   }
 

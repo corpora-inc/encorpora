@@ -93,7 +93,7 @@ const DEFAULT_SETTINGS: TuningSettings = {
   maxDistractors: 4,
   maxIncorrectStreak: 2,
   correctWeight: 2.4,
-  textScaleFactor: 100,
+  textScaleFactor: 0.6,
   textOverflowFactor: 3,
   // iOS performance: longer interval to reduce TTS overhead (8s vs 5s)
   speakRepeatMs: isIOS() ? 8000 : 5000,
