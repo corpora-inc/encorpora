@@ -1,12 +1,24 @@
-import { Color4, ParticleSystem, Scene, Vector3 } from "@babylonjs/core"
+import { Color4, ParticleSystem, Scene, Texture, Vector3 } from "@babylonjs/core"
 
 // Track all active particle timeouts for cleanup
 const activeParticleTimeouts = new Set<number>()
+
+const createParticleTexture = (scene: Scene) =>
+  new Texture(
+    "data:image/svg+xml;base64," +
+      btoa(
+        `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32">` +
+          `<circle cx="16" cy="16" r="14" fill="white"/>` +
+        `</svg>`
+      ),
+    scene
+  )
 
 export const createSuccessParticles = (scene: Scene, position: Vector3) => {
   const particleSystem = new ParticleSystem("successParticles", 100, scene)
 
   particleSystem.createSphereEmitter(0.2)
+  particleSystem.particleTexture = createParticleTexture(scene)
 
   particleSystem.color1 = new Color4(1, 0.7, 0, 1)
   particleSystem.color2 = new Color4(1, 0.5, 0, 1)
@@ -50,6 +62,7 @@ export const createFailParticles = (scene: Scene, position: Vector3) => {
   const particleSystem = new ParticleSystem("failParticles", 80, scene)
 
   particleSystem.createSphereEmitter(0.2)
+  particleSystem.particleTexture = createParticleTexture(scene)
 
   particleSystem.color1 = new Color4(0.6, 0, 0, 1)
   particleSystem.color2 = new Color4(0.4, 0, 0, 1)
@@ -96,8 +109,8 @@ export const createScreenShake = () => {
     shakeActive = true
 
     const startTime = performance.now()
-    const duration = 200
-    const intensity = 0.03
+    const duration = 260
+    const intensity = 0.08
 
     const shakeInterval = setInterval(() => {
       const elapsed = performance.now() - startTime
@@ -133,6 +146,7 @@ export const createAvatarAura = (
 
   // Emit from a tight sphere around the electricity (electron cloud effect)
   particleSystem.createSphereEmitter(0.3)
+  particleSystem.particleTexture = createParticleTexture(scene)
 
   // Clay/orange/gold color palette matching avatar
   particleSystem.color1 = new Color4(0.835, 0.416, 0.102, 0.8 * intensity)

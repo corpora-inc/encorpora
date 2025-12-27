@@ -36,9 +36,14 @@ export const createSkyDome = (scene: Scene) => {
   let animationTime = 0
 
   const setColor = (color: Color4) => {
-    const base = new Color3(color.r, color.g, color.b)
-    const top = scaleColor(base, 1.25)
-    const bottom = scaleColor(base, 0.55)
+    const lift = (value: number, min: number) => Math.max(value, min)
+    const base = new Color3(
+      lift(color.r, 0.06),
+      lift(color.g, 0.06),
+      lift(color.b, 0.08)
+    )
+    const top = scaleColor(base, 1.6)
+    const bottom = scaleColor(base, 0.45)
     const gradient = ctx.createLinearGradient(0, 0, 0, size)
     gradient.addColorStop(0, colorToCss(top))
     gradient.addColorStop(0.55, colorToCss(base))

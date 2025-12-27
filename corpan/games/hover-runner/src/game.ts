@@ -724,7 +724,7 @@ export const createHoverRunner = (
   const glow = new GlowLayer("glow", scene, {
     blurKernelSize: 64,
   })
-  glow.intensity = 0.45
+  glow.intensity = 0.8
   glow.addExcludedMesh(sky.mesh)
 
   const shadowGenerator = new ShadowGenerator(1024, accent)
@@ -732,6 +732,7 @@ export const createHoverRunner = (
   shadowGenerator.blurKernel = 16
   shadowGenerator.bias = 0.0005
   shadowGenerator.normalBias = 0.02
+  shadowGenerator.darkness = 0.35
 
   const road = createRoad(scene)
   const hoverboard = createHoverboard(scene)
@@ -779,6 +780,7 @@ export const createHoverRunner = (
     0.25,
     0.55
   )
+  neonMat.emissiveColor = scaleColor(neonMat.emissiveColor, 1.6)
 
   const neonProps = createPropField(neonRoot, {
     count: 26,
@@ -839,6 +841,7 @@ export const createHoverRunner = (
     0.1,
     0.75
   )
+  desertMat.emissiveColor = scaleColor(desertMat.emissiveColor, 1.4)
 
   const desertProps = createPropField(desertRoot, {
     count: 22,
@@ -892,6 +895,7 @@ export const createHoverRunner = (
     0.2,
     0.5
   )
+  glacierMat.emissiveColor = scaleColor(glacierMat.emissiveColor, 1.5)
 
   const glacierProps = createPropField(glacierRoot, {
     count: 24,
@@ -974,14 +978,14 @@ export const createHoverRunner = (
         ground: new Color3(0.06, 0.08, 0.12),
       },
       accent: {
-        intensity: 0.25,
+        intensity: 0.5,
         color: new Color3(0.6, 0.8, 1),
       },
     },
     {
       id: "desert",
       name: "Sunset Skimmer",
-      variantId: "corpan",
+      variantId: "desert",
       envRoot: desertRoot,
       props: desertProps,
       palette: {
@@ -997,14 +1001,14 @@ export const createHoverRunner = (
         ground: new Color3(0.18, 0.1, 0.08),
       },
       accent: {
-        intensity: 0.3,
+        intensity: 0.55,
         color: new Color3(1, 0.6, 0.35),
       },
     },
     {
       id: "glacier",
       name: "Glacier Pulse",
-      variantId: "corpan",
+      variantId: "glacier",
       envRoot: glacierRoot,
       props: glacierProps,
       palette: {
@@ -1020,7 +1024,7 @@ export const createHoverRunner = (
         ground: new Color3(0.04, 0.08, 0.16),
       },
       accent: {
-        intensity: 0.28,
+        intensity: 0.5,
         color: new Color3(0.5, 0.8, 1),
       },
     },

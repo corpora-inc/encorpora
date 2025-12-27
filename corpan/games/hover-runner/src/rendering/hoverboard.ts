@@ -528,14 +528,37 @@ export const createHoverboard = (scene: Scene) => {
     variant.pivot.setEnabled(index === 0)
   })
 
+  // Sacred geometry state (only for corpan variant)
+  let lastGeometrySpecs:
+    | Array<{
+        scale: number
+        orbitRadius: number
+        orbitSpeed: number
+        rotationSpeed: number
+        emissiveIntensity: number
+      }>
+    | null = null
+
   const setVariant = (id: string) => {
     const next = variants.find((variant) => variant.id === id)
     if (!next || next === activeVariant) {
       return
     }
+    const leavingCorpan = activeVariant.id === "corpan" && next.id !== "corpan"
+    const enteringCorpan = activeVariant.id !== "corpan" && next.id === "corpan"
+    if (leavingCorpan) {
+      geometryPool.forEach((geom) => {
+        geom.inUse = false
+        geom.mesh.setEnabled(false)
+        geom.particleTrail?.stop()
+      })
+    }
     activeVariant.pivot.setEnabled(false)
     next.pivot.setEnabled(true)
     activeVariant = next
+    if (enteringCorpan && lastGeometrySpecs) {
+      configureGeometries(lastGeometrySpecs)
+    }
   }
 
   // Sacred geometry system with object pooling for performance
@@ -656,6 +679,7 @@ export const createHoverboard = (scene: Scene) => {
     if (!corpanRig || activeVariant.id !== "corpan") return
 
     console.log(`[GEOMETRY] Configuring ${specs.length} geometries`)
+    lastGeometrySpecs = specs
 
     // Disable all first
     geometryPool.forEach(g => {
