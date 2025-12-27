@@ -6,8 +6,8 @@ Content packs are web bundles loaded at runtime via a manifest URL. The host inj
 
 ```json
 {
-  "id": "endless_learner",
-  "name": "Endless Learner",
+  "id": "hover_runner",
+  "name": "Hover Runner",
   "version": "0.1.0",
   "entry": "app.js",
   "styles": ["app.css"],

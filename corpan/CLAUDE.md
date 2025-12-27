@@ -10,7 +10,7 @@ Corpan is a cross-platform language learning application built with:
 - **Data Management**: Django backend (`dja/`) for content generation and SQLite database bundling
 - **Games**: Pluggable game system with SDK for standalone development
 
-The app delivers language learning content through mini-games packaged as asset packs for Android PAD and iOS ODR.
+The app delivers language learning content through mini-games packaged as downloadable content packs. ODR/PAD are not priorities for MVP and may never be used.
 
 ## Repository Structure
 
@@ -38,11 +38,10 @@ dja/                 # Django content management
 
 games/               # Standalone game packages
 ├── sdk/             # Corpan Game SDK for game development
-├── endless-learner/ # Example game
-└── hover-runner/    # Example game
+└── hover-runner/    # Reference game
 
 plugins/
-└── tauri-plugin-game-packs/  # Native game-pack delivery plugin
+└── tauri-plugin-game-packs/  # Legacy plugin; MVP uses app-managed content pack installs
 ```
 
 ## Common Commands
@@ -150,12 +149,12 @@ Games are loaded dynamically:
 4. Games render into a container and handle their own UI/logic
 
 Native delivery:
-- **Android**: Asset packs in `corpan-app/src-tauri/android/asset-packs/`
-- **iOS**: On-Demand Resources in `corpan-app/src-tauri/ios/assets/`
+- **MVP**: downloadable content packs installed into app data directory
+- **ODR/PAD**: optional future add-on, not required for current releases
 
 ### Important Constraints
 
-- **DO NOT EDIT** `corpan-app/src-tauri/gen/` - this is generated build output
+- **DO NOT EDIT** `corpan-app/src-tauri/gen/` - generated build output (exceptions must be documented and tracked)
 - **Prefer editing** templates or plugins over generated code
 - **Android PAD assets** in `corpan-app/src-tauri/android/asset-packs` must be synced to `gen/android` after generation
 - **iOS ODR assets** in `corpan-app/src-tauri/ios/assets` require tagging in Xcode
@@ -194,26 +193,26 @@ Native delivery:
 2. Implement `registerGame()` with your game logic
 3. Create manifest.json with game metadata
 4. Use `mountStandalone()` for browser development
-5. Package for distribution via asset packs (Android) or ODR (iOS)
+5. Package for distribution as downloadable content packs (zip + manifest)
 
 ## Platform-Specific Notes
 
 ### iOS
 
-- ODR assets live in `corpan-app/src-tauri/ios/assets/`
-- Requires tagging in Xcode
-- `MANUAL.md` notes: Add `LSApplicationQueriesSchemes` to `gen/apple/Info.plist` for deep linking
+- Content packs are downloaded and installed into app data directory.
+- HTTPS downloads must be ATS compliant.
+- `MANUAL.md` notes: Add `LSApplicationQueriesSchemes` to `gen/apple/Info.plist` for deep linking.
 
 ### Android
 
-- PAD assets live in `corpan-app/src-tauri/android/asset-packs/`
-- Must be synced to `gen/android/` after generation
+- Content packs are downloaded and installed into app data directory.
+- `com.android.vending.BILLING` permission required for in-app purchases.
 - Upload keystore: `corpan-app/src-tauri/upload-keystore.jks`
 
 ## Dependencies
 
 - **tauri-plugin-tts**: Local dev dependency at `/Users/skyl/Code/github/tauri-plugin-tts`
-- **tauri-plugin-game-packs**: Local plugin in `plugins/tauri-plugin-game-packs/`
+- **tauri-plugin-game-packs**: Legacy plugin in `plugins/tauri-plugin-game-packs/`
 - **shadcn/ui**: UI components from Radix UI primitives
 - **zustand**: State management
 - **i18next**: Internationalization

@@ -1,10 +1,10 @@
 [
   {
-    "id": "endless_learner",
-    "name": "Endless Learner",
+    "id": "hover_runner",
+    "name": "Hover Runner",
     "version": "0.1.0",
-    "manifestUrl": "/games/endless-learner/manifest.json",
-    "description": "Fast-paced vocabulary drill with audio feedback.",
+    "manifestUrl": "/games/hover-runner/manifest.json",
+    "description": "Hoverboard runner that drills core phrases.",
     "purchase": {
       "type": "free",
       "priceLabel": "Free"

@@ -21,13 +21,6 @@ type GamesState = {
 const devGames: InstalledGame[] = import.meta.env.DEV
   ? [
       {
-        id: "endless_learner",
-        name: "Endless Learner (local)",
-        manifestUrl: "/games/endless-learner/manifest.json",
-        version: "0.1.0",
-        installedAt: Date.now(),
-      },
-      {
         id: "hover_runner",
         name: "Hover Runner (local)",
         manifestUrl: "/games/hover-runner/manifest.json",

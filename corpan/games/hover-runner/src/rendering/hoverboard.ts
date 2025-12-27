@@ -603,21 +603,21 @@ export const createHoverboard = (scene: Scene) => {
       mesh.material = material
 
       // Create magical particle trail for this geometry
-      const particleTrail = new ParticleSystem(`trail-${i}`, 20, scene) // 20 particles per trail
+      const particleTrail = new ParticleSystem(`trail-${i}`, 30, scene) // 30 particles per trail
       particleTrail.particleTexture = null // No texture for performance
-      particleTrail.emitter = mesh
-      particleTrail.minSize = 0.03
-      particleTrail.maxSize = 0.08
-      particleTrail.minLifeTime = 0.3
-      particleTrail.maxLifeTime = 0.6
-      particleTrail.emitRate = 40
-      particleTrail.minEmitPower = 0.05
-      particleTrail.maxEmitPower = 0.15
+      particleTrail.emitter = new Vector3(0, 0, 0) // Will update position every frame
+      particleTrail.minSize = 0.05
+      particleTrail.maxSize = 0.12
+      particleTrail.minLifeTime = 0.4
+      particleTrail.maxLifeTime = 0.8
+      particleTrail.emitRate = 50
+      particleTrail.minEmitPower = 0.1
+      particleTrail.maxEmitPower = 0.3
       particleTrail.updateSpeed = 0.016
-      particleTrail.gravity = new Vector3(0, 0.5, 0) // Gentle upward drift
+      particleTrail.gravity = new Vector3(0, -0.5, 0) // Downward drift (like sparks falling)
       particleTrail.color1 = new Color4(colors[i % colors.length].r, colors[i % colors.length].g, colors[i % colors.length].b, 1.0)
-      particleTrail.color2 = new Color4(colors[i % colors.length].r, colors[i % colors.length].g, colors[i % colors.length].b, 0.6)
-      particleTrail.colorDead = new Color4(colors[i % colors.length].r * 0.5, colors[i % colors.length].g * 0.5, colors[i % colors.length].b * 0.5, 0)
+      particleTrail.color2 = new Color4(colors[i % colors.length].r, colors[i % colors.length].g, colors[i % colors.length].b, 0.7)
+      particleTrail.colorDead = new Color4(colors[i % colors.length].r * 0.3, colors[i % colors.length].g * 0.3, colors[i % colors.length].b * 0.3, 0)
       particleTrail.blendMode = ParticleSystem.BLENDMODE_ADD // Additive blending for glow effect
 
       geometryPool.push({
@@ -708,11 +708,16 @@ export const createHoverboard = (scene: Scene) => {
       const localZ = orbitX * sinPlane + orbitY * cosPlane * cosTilt
 
       // Apply avatar's world position
-      geom.mesh.position.set(
-        avatarWorldPos.x + localX,
-        avatarWorldPos.y + localY,
-        avatarWorldPos.z + localZ
-      )
+      const worldX = avatarWorldPos.x + localX
+      const worldY = avatarWorldPos.y + localY
+      const worldZ = avatarWorldPos.z + localZ
+
+      geom.mesh.position.set(worldX, worldY, worldZ)
+
+      // Update particle emitter position to follow mesh
+      if (geom.particleTrail && geom.particleTrail.emitter instanceof Vector3) {
+        geom.particleTrail.emitter.set(worldX, worldY, worldZ)
+      }
 
       // Rotate the geometry itself (faster and more chaotic)
       geom.mesh.rotation.x += geom.rotationSpeed * dt * 1.2

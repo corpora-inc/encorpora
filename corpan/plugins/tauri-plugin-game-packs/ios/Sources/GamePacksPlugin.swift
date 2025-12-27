@@ -12,9 +12,7 @@ private struct PackInfo: Encodable {
 }
 
 final class GamePacksPlugin: Plugin {
-    private let knownPacks: [PackInfo] = [
-        PackInfo(id: "endless_learner", name: "Endless Learner", version: "0.1.0")
-    ]
+    private let knownPacks: [PackInfo] = []
 
     private var activeRequests: [String: NSBundleResourceRequest] = [:]
 
