@@ -17,7 +17,6 @@ SCRIPT_DIR = Path(__file__).resolve().parent
 CORPAN_DIR = SCRIPT_DIR.parents[3]
 SVG_PATH = CORPAN_DIR / "corpan" / "logo_mesh_hifi.svg"
 OUTPUT_DIRS = [
-    SCRIPT_DIR.parent / "public" / "models" / "corpan-logo",
     SCRIPT_DIR.parent / "src" / "assets" / "models",
 ]
 

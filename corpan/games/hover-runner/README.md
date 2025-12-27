@@ -20,4 +20,3 @@ npm run build:models
 
 Outputs:
 - `corpan/games/hover-runner/src/assets/models/corpan_logo.glb`
-- `corpan/games/hover-runner/public/models/corpan-logo/corpan_logo.glb`
