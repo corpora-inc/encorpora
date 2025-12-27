@@ -1,8 +1,10 @@
 import {
   Camera,
   Color3,
+  Color4,
   Mesh,
   MeshBuilder,
+  ParticleSystem,
   PBRMaterial,
   PointLight,
   Quaternion,
@@ -534,6 +536,201 @@ export const createHoverboard = (scene: Scene) => {
     activeVariant = next
   }
 
+  // Sacred geometry system with object pooling for performance
+  type GeometryPool = {
+    mesh: Mesh
+    orbitRadius: number
+    orbitSpeed: number
+    rotationSpeed: number
+    orbitAngle: number
+    orbitPlaneAngle: number // Angle of orbital plane (for 3D chaos)
+    orbitTilt: number // Tilt of orbital plane
+    inUse: boolean
+    particleTrail: ParticleSystem | null
+  }
+
+  // Pre-create pool of 6 simple geometries (max we'll ever need)
+  const geometryPool: GeometryPool[] = []
+  const MAX_GEOMETRIES = 6
+
+  const initGeometryPool = () => {
+    if (!corpanRig || activeVariant.id !== "corpan") {
+      console.log('[GEOMETRY] Cannot init pool - no corpanRig or wrong variant')
+      return
+    }
+
+    console.log('[GEOMETRY] Initializing geometry pool with 6 shapes')
+
+    // Color palette for variety
+    const colors = [
+      new Color3(0.835, 0.416, 0.102), // Clay orange
+      new Color3(1.0, 0.7, 0.2),       // Gold
+      new Color3(0.3, 0.8, 1.0),       // Cyan
+      new Color3(1.0, 0.3, 0.5),       // Pink
+      new Color3(0.5, 1.0, 0.3),       // Green
+      new Color3(0.9, 0.3, 1.0),       // Purple
+    ]
+
+    // Shape types for VARIETY
+    const shapeCreators = [
+      () => MeshBuilder.CreatePolyhedron('geom', { type: 0, size: 0.2 }, scene), // Tetrahedron
+      () => MeshBuilder.CreatePolyhedron('geom', { type: 1, size: 0.2 }, scene), // Octahedron
+      () => MeshBuilder.CreatePolyhedron('geom', { type: 3, size: 0.2 }, scene), // Icosahedron
+      () => MeshBuilder.CreateBox('geom', { size: 0.2 }, scene),                 // Cube
+      () => MeshBuilder.CreateTorus('geom', { diameter: 0.25, thickness: 0.05, tessellation: 16 }, scene), // Torus
+      () => MeshBuilder.CreateCylinder('geom', { height: 0.25, diameter: 0.15, tessellation: 8 }, scene),  // Cylinder
+    ]
+
+    for (let i = 0; i < MAX_GEOMETRIES; i++) {
+      const mesh = shapeCreators[i % shapeCreators.length]()
+
+      // NO PARENT - position in world space directly!
+      mesh.isPickable = false
+      mesh.setEnabled(false)
+      mesh.isVisible = true
+      mesh.alwaysSelectAsActiveMesh = true
+
+      // Variety: alternate wireframe and solid
+      const isWireframe = i % 2 === 0
+
+      const material = new StandardMaterial(`sacred-mat-${i}`, scene)
+      material.emissiveColor = colors[i % colors.length]
+      material.disableLighting = true
+      material.backFaceCulling = false
+      material.wireframe = isWireframe
+      material.alpha = 1.0
+      material.freeze() // Freeze material for performance
+      mesh.material = material
+
+      // Create magical particle trail for this geometry
+      const particleTrail = new ParticleSystem(`trail-${i}`, 20, scene) // 20 particles per trail
+      particleTrail.particleTexture = null // No texture for performance
+      particleTrail.emitter = mesh
+      particleTrail.minSize = 0.03
+      particleTrail.maxSize = 0.08
+      particleTrail.minLifeTime = 0.3
+      particleTrail.maxLifeTime = 0.6
+      particleTrail.emitRate = 40
+      particleTrail.minEmitPower = 0.05
+      particleTrail.maxEmitPower = 0.15
+      particleTrail.updateSpeed = 0.016
+      particleTrail.gravity = new Vector3(0, 0.5, 0) // Gentle upward drift
+      particleTrail.color1 = new Color4(colors[i % colors.length].r, colors[i % colors.length].g, colors[i % colors.length].b, 1.0)
+      particleTrail.color2 = new Color4(colors[i % colors.length].r, colors[i % colors.length].g, colors[i % colors.length].b, 0.6)
+      particleTrail.colorDead = new Color4(colors[i % colors.length].r * 0.5, colors[i % colors.length].g * 0.5, colors[i % colors.length].b * 0.5, 0)
+      particleTrail.blendMode = ParticleSystem.BLENDMODE_ADD // Additive blending for glow effect
+
+      geometryPool.push({
+        mesh,
+        orbitRadius: 1.0,
+        orbitSpeed: 0.5,
+        rotationSpeed: 0.5,
+        orbitAngle: Math.random() * Math.PI * 2, // Random start angle
+        orbitPlaneAngle: Math.random() * Math.PI * 2, // Random orbital plane
+        orbitTilt: Math.random() * Math.PI - Math.PI / 2, // Random tilt (-90 to +90 degrees)
+        inUse: false,
+        particleTrail
+      })
+    }
+
+    console.log(`[GEOMETRY] Pool initialized with ${geometryPool.length} geometries`)
+  }
+
+  const configureGeometries = (specs: Array<{
+    scale: number
+    orbitRadius: number
+    orbitSpeed: number
+    rotationSpeed: number
+    emissiveIntensity: number
+  }>) => {
+    if (!corpanRig || activeVariant.id !== "corpan") return
+
+    console.log(`[GEOMETRY] Configuring ${specs.length} geometries`)
+
+    // Disable all first
+    geometryPool.forEach(g => {
+      g.inUse = false
+      g.mesh.setEnabled(false)
+      g.particleTrail?.stop()
+    })
+
+    // Configure and enable needed geometries
+    const count = Math.min(specs.length, MAX_GEOMETRIES)
+    console.log(`[GEOMETRY] Enabling ${count} geometries from pool of ${geometryPool.length}`)
+    for (let i = 0; i < count; i++) {
+      const spec = specs[i]
+      const geom = geometryPool[i]
+
+      geom.inUse = true
+      geom.orbitRadius = spec.orbitRadius
+      geom.orbitSpeed = spec.orbitSpeed
+      geom.rotationSpeed = spec.rotationSpeed
+      geom.mesh.scaling.setAll(spec.scale)
+
+      // Update brightness but keep original colors for variety
+      const mat = geom.mesh.material as StandardMaterial
+      if (mat && mat.emissiveColor) {
+        const baseColor = mat.emissiveColor.clone()
+        mat.emissiveColor = scaleColor(baseColor, spec.emissiveIntensity)
+      }
+
+      geom.mesh.setEnabled(true)
+      geom.particleTrail?.start()
+    }
+  }
+
+  const updateSacredGeometries = (time: number, dt: number) => {
+    if (!corpanRig || activeVariant.id !== "corpan") return
+
+    // Get avatar world position
+    const avatarWorldPos = corpanRig.earPivot.getAbsolutePosition()
+
+    geometryPool.forEach((geom) => {
+      if (!geom.inUse) return
+
+      // Update orbit angle (can be negative for reverse direction)
+      geom.orbitAngle += geom.orbitSpeed * dt
+
+      // Calculate position in tilted orbital plane (electron cloud chaos)
+      // Base orbit in local plane
+      const orbitX = Math.cos(geom.orbitAngle) * geom.orbitRadius
+      const orbitY = Math.sin(geom.orbitAngle) * geom.orbitRadius
+
+      // Apply tilt to create 3D orbital plane
+      const cosTilt = Math.cos(geom.orbitTilt)
+      const sinTilt = Math.sin(geom.orbitTilt)
+      const cosPlane = Math.cos(geom.orbitPlaneAngle)
+      const sinPlane = Math.sin(geom.orbitPlaneAngle)
+
+      // Rotate orbit into 3D space
+      const localX = orbitX * cosPlane - orbitY * sinPlane * cosTilt
+      const localY = orbitY * sinTilt + Math.sin(time * 0.8) * geom.orbitRadius * 0.2 // Add chaotic wobble
+      const localZ = orbitX * sinPlane + orbitY * cosPlane * cosTilt
+
+      // Apply avatar's world position
+      geom.mesh.position.set(
+        avatarWorldPos.x + localX,
+        avatarWorldPos.y + localY,
+        avatarWorldPos.z + localZ
+      )
+
+      // Rotate the geometry itself (faster and more chaotic)
+      geom.mesh.rotation.x += geom.rotationSpeed * dt * 1.2
+      geom.mesh.rotation.y += geom.rotationSpeed * dt * 0.9
+      geom.mesh.rotation.z += geom.rotationSpeed * dt * 0.7
+    })
+  }
+
+  const disposeGeometryPool = () => {
+    geometryPool.forEach((geom) => {
+      geom.particleTrail?.dispose()
+      geom.mesh.dispose()
+    })
+    geometryPool.length = 0
+  }
+
+  // Removed particle system for performance - effects now come from geometry glow
+
   return {
     root,
     visualRoot,
@@ -541,6 +738,39 @@ export const createHoverboard = (scene: Scene) => {
     setVariant,
     getActivePivot: () => activeVariant.pivot,
     getActiveBoard: () => activeVariant.board,
+    updateRings: (heightOffset: number, alpha: number, ringCount: number, ringScale: number) => {
+      if (!corpanRig || activeVariant.id !== "corpan") {
+        return
+      }
+      // Base heights CENTERED on electricity (at ~0.8)
+      const baseHeights = [0.6, 0.8, 1.0]
+
+      // Update each ring's visibility, position, and scale
+      corpanRig.rings.forEach((ring, index) => {
+        const shouldShow = index < ringCount
+        ring.setEnabled(shouldShow)
+
+        if (shouldShow) {
+          // Position rings higher, near the electricity
+          ring.position.y = baseHeights[index] + heightOffset
+
+          // Scale rings
+          ring.scaling.setAll(ringScale)
+
+          // Update alpha for crown ring
+          if (index === 2) {
+            corpanRig.glowMats[2].alpha = alpha
+            if (ring.material instanceof StandardMaterial) {
+              ring.material.alpha = alpha
+            }
+          }
+        }
+      })
+    },
+    initGeometryPool,
+    configureGeometries,
+    updateSacredGeometries,
+    disposeGeometryPool,
     updateLogo: (time: number, camera?: Camera | null) => {
       if (!corpanRig || activeVariant.id !== "corpan") {
         return

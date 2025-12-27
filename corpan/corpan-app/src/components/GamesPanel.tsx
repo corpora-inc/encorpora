@@ -8,35 +8,12 @@ import {
   resolvePlatformPackManifestUrl,
   type PlatformPack,
 } from "@/contentPacks/platformPacks"
-
-const normalizeManifestUrl = (input: string) => {
-  const trimmed = input.trim()
-  if (!trimmed) return ""
-  if (trimmed.endsWith("/manifest.json")) return trimmed
-  if (trimmed.endsWith("manifest.json")) return trimmed
-  return `${trimmed.replace(/\/$/, "")}/manifest.json`
-}
-
-const proxyUrlIfNeeded = (rawUrl: string) => {
-  try {
-    const resolved = new URL(rawUrl, window.location.href)
-    if (resolved.protocol !== "http:" && resolved.protocol !== "https:") {
-      return resolved.toString()
-    }
-    if (
-      resolved.hostname.endsWith(".localhost") &&
-      resolved.hostname.startsWith("corpan-pack")
-    ) {
-      return resolved.toString()
-    }
-    if (resolved.origin === window.location.origin) {
-      return resolved.toString()
-    }
-    return `/game-proxy?url=${encodeURIComponent(resolved.toString())}`
-  } catch {
-    return rawUrl
-  }
-}
+import {
+  compareVersions,
+  fetchGameCatalog,
+  type CatalogGame,
+} from "@/contentPacks/catalog"
+import { installPack } from "@/contentPacks/install"
 
 export function GamesPanel({
   onLaunchGame,
@@ -56,34 +33,29 @@ export function GamesPanel({
   const [platformPacks, setPlatformPacks] = useState<PlatformPack[]>([])
   const [platformError, setPlatformError] = useState<string | null>(null)
   const [platformLoading, setPlatformLoading] = useState(false)
+  const [catalog, setCatalog] = useState<CatalogGame[]>([])
+  const [catalogError, setCatalogError] = useState<string | null>(null)
+  const [catalogLoading, setCatalogLoading] = useState(false)
+  const [catalogInstalling, setCatalogInstalling] = useState<string | null>(null)
 
   const handleInstall = async () => {
-    const normalized = normalizeManifestUrl(manifestUrl)
-    if (!normalized) {
+    if (!manifestUrl.trim()) {
       setError("Enter a manifest URL.")
       return
     }
     setInstalling(true)
     setError(null)
     try {
-      const resolved = new URL(normalized, window.location.href).toString()
-      const res = await fetch(proxyUrlIfNeeded(resolved), { cache: "no-store" })
-      if (!res.ok) {
-        throw new Error(`Manifest not found (${res.status})`)
-      }
-      const manifest = (await res.json()) as {
-        id?: string
-        name?: string
-        version?: string
-      }
-      if (!manifest.id) {
-        throw new Error("Manifest missing id")
-      }
+      const result = await installPack({
+        manifestUrl,
+        source: "manual",
+      })
       addGame({
-        id: manifest.id,
-        name: manifest.name ?? manifest.id,
-        manifestUrl: resolved,
-        version: manifest.version,
+        id: result.packId,
+        name: result.name ?? result.packId,
+        manifestUrl: result.manifestUrl,
+        version: result.version,
+        source: result.source,
       })
       setManifestUrl("")
     } catch (err) {
@@ -102,9 +74,21 @@ export function GamesPanel({
     setPlatformLoading(false)
   }, [])
 
+  const refreshCatalog = useCallback(async () => {
+    setCatalogLoading(true)
+    setCatalogError(null)
+    const next = await fetchGameCatalog()
+    setCatalog(next)
+    setCatalogLoading(false)
+  }, [])
+
   useEffect(() => {
     void refreshPlatformPacks()
   }, [refreshPlatformPacks])
+
+  useEffect(() => {
+    void refreshCatalog()
+  }, [refreshCatalog])
 
   const handleLaunchPlatform = async (pack: PlatformPack) => {
     const manifest = await resolvePlatformPackManifestUrl(pack.id)
@@ -117,8 +101,56 @@ export function GamesPanel({
       name: pack.name,
       manifestUrl: manifest,
       version: pack.version,
+      source: "platform",
       installedAt: Date.now(),
     })
+  }
+
+  const catalogMap = useMemo(
+    () => new Map(catalog.map((entry) => [entry.id, entry])),
+    [catalog]
+  )
+  const availableCatalog = useMemo(
+    () => catalog.filter((entry) => !gamesMap[entry.id]),
+    [catalog, gamesMap]
+  )
+  const getUpdateForGame = (game: InstalledGame) => {
+    const entry = catalogMap.get(game.id)
+    if (!entry || !entry.version || !game.version) {
+      return null
+    }
+    if (compareVersions(entry.version, game.version) > 0) {
+      return entry
+    }
+    return null
+  }
+
+  const handleCatalogInstall = async (entry: CatalogGame) => {
+    if (!entry.manifestUrl) {
+      setCatalogError("Catalog entry is missing a manifest URL.")
+      return
+    }
+    setCatalogInstalling(entry.id)
+    setCatalogError(null)
+    try {
+      const result = await installPack({
+        manifestUrl: entry.manifestUrl,
+        source: "catalog",
+        expectedVersion: entry.version,
+      })
+      addGame({
+        id: result.packId,
+        name: result.name ?? entry.name ?? result.packId,
+        manifestUrl: result.manifestUrl,
+        version: result.version,
+        source: result.source,
+      })
+    } catch (err) {
+      const message = err instanceof Error ? err.message : "Install failed"
+      setCatalogError(message)
+    } finally {
+      setCatalogInstalling(null)
+    }
   }
 
   return (
@@ -129,6 +161,57 @@ export function GamesPanel({
         <p className="text-sm text-muted-foreground">
           Install a game from a manifest URL, then launch it in full-screen.
         </p>
+      </div>
+
+      <div className="mt-6 space-y-3">
+        <div className="flex items-center justify-between">
+          <h4 className="text-base font-semibold">Available games</h4>
+          <Button
+            size="sm"
+            variant="ghost"
+            onClick={refreshCatalog}
+            disabled={catalogLoading}
+          >
+            {catalogLoading ? "Refreshing..." : "Refresh"}
+          </Button>
+        </div>
+        {catalogError ? (
+          <div className="text-sm text-red-600">{catalogError}</div>
+        ) : null}
+        {availableCatalog.length === 0 ? (
+          <div className="text-sm text-muted-foreground">
+            No games available right now.
+          </div>
+        ) : (
+          availableCatalog.map((entry) => (
+            <div
+              key={entry.id}
+              className="flex flex-col gap-3 rounded-md border border-gray-200 bg-white/80 p-4"
+            >
+              <div>
+                <div className="text-base font-medium">{entry.name}</div>
+                <div className="text-xs text-muted-foreground">{entry.id}</div>
+                {entry.description ? (
+                  <div className="mt-2 text-sm text-muted-foreground">
+                    {entry.description}
+                  </div>
+                ) : null}
+              </div>
+              <div className="flex flex-wrap items-center gap-2">
+                <Button
+                  size="sm"
+                  onClick={() => handleCatalogInstall(entry)}
+                  disabled={catalogInstalling === entry.id}
+                >
+                  {catalogInstalling === entry.id ? "Installing..." : "Get"}
+                </Button>
+                <div className="text-xs text-muted-foreground">
+                  {entry.purchase?.priceLabel ?? "Free"}
+                </div>
+              </div>
+            </div>
+          ))
+        )}
       </div>
 
       <div className="mt-4 space-y-3">
@@ -164,6 +247,11 @@ export function GamesPanel({
                 <div className="text-xs text-muted-foreground">
                   {game.id}
                 </div>
+                {game.version ? (
+                  <div className="text-xs text-muted-foreground">
+                    Version {game.version}
+                  </div>
+                ) : null}
               </div>
               <div className="flex flex-wrap gap-2">
                 <Button
@@ -179,7 +267,25 @@ export function GamesPanel({
                 >
                   Remove
                 </Button>
+                {getUpdateForGame(game) ? (
+                  <Button
+                    size="sm"
+                    variant="outline"
+                    onClick={() =>
+                      handleCatalogInstall(getUpdateForGame(game) as CatalogGame)
+                    }
+                    disabled={catalogInstalling === game.id}
+                  >
+                    {catalogInstalling === game.id ? "Updating..." : "Update"}
+                  </Button>
+                ) : null}
               </div>
+              {getUpdateForGame(game) ? (
+                <div className="text-xs text-muted-foreground">
+                  Update available: {game.version} →{" "}
+                  {getUpdateForGame(game)?.version}
+                </div>
+              ) : null}
             </div>
           ))
         )}

@@ -1,0 +1,13 @@
+[
+  {
+    "id": "endless_learner",
+    "name": "Endless Learner",
+    "version": "0.1.0",
+    "manifestUrl": "/games/endless-learner/manifest.json",
+    "description": "Fast-paced vocabulary drill with audio feedback.",
+    "purchase": {
+      "type": "free",
+      "priceLabel": "Free"
+    }
+  }
+]

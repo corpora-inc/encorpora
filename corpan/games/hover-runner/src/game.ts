@@ -59,6 +59,7 @@ import {
   isNoSpaceLanguage,
   pickByLang,
   shuffle,
+  getProgressionParams,
 } from "./core/utils"
 import { createGameStore } from "./core/gameStore"
 
@@ -334,67 +335,7 @@ export const createHoverRunner = (
     return { row, input, key }
   }
 
-  // Gameplay Settings Section (expanded by default)
-  const gameplaySection = createAccordionSection("Gameplay", true)
-
-  // Auto Adjust Difficulty toggle
-  createToggleControl(
-    "Auto Adjust",
-    "autoAdjustDifficulty",
-    "Automatically increases speed and phrase count as you succeed, decreases on failure.",
-    undefined,
-    gameplaySection
-  )
-
-  const tuningControls = [
-    createTuningControl(
-      "Base Speed",
-      "basePhraseSpeed",
-      8,
-      22,
-      0.5,
-      "Your preferred baseline speed. Auto-adjusts up/down during gameplay if enabled.",
-      gameplaySection
-    ),
-    createTuningControl(
-      "Text Scale",
-      "textScaleFactor",
-      0.1,
-      1,
-      0.05,
-      "Size of phrase text on the road.",
-      gameplaySection
-    ),
-    createTuningControl(
-      "Distractors",
-      "maxDistractors",
-      1,
-      6,
-      1,
-      "Maximum number of wrong answers in the pool.",
-      gameplaySection
-    ),
-    createTuningControl(
-      "Max Misses",
-      "maxIncorrectStreak",
-      1,
-      5,
-      1,
-      "Force a correct answer after this many misses.",
-      gameplaySection
-    ),
-    createTuningControl(
-      "Correct Weight",
-      "correctWeight",
-      1,
-      4,
-      0.1,
-      "Higher values make correct answers appear more often.",
-      gameplaySection
-    ),
-  ]
-
-  // Audio Settings Section
+  // Audio Settings Section (first)
   const audioSection = createAccordionSection("Audio")
   createToggleControl(
     "Music",
@@ -435,17 +376,192 @@ export const createHoverRunner = (
     audioSection
   )
 
-  // Chaos Mode Section
-  const chaosSection = createAccordionSection("Chaos Mode")
+  // Gameplay Settings Section (expanded by default)
+  const gameplaySection = createAccordionSection("Gameplay", true)
+
+  createToggleControl(
+    "Auto Adjust",
+    "autoAdjustDifficulty",
+    "Dynamically adjusts difficulty based on your performance. Speed, distractors, phrase count, and correct answer probability all scale with your skill.",
+    undefined,
+    gameplaySection
+  )
+
+  createTuningControl(
+    "Text Scale",
+    "textScaleFactor",
+    0.1,
+    1,
+    0.05,
+    "Size of phrase text on the road.",
+    gameplaySection
+  )
+
+  // Advanced Gameplay Section (collapsed by default)
+  const advancedSection = createAccordionSection("Advanced Gameplay")
+
+  // Baseline values
+  createTuningControl(
+    "Baseline Speed",
+    "baselineSpeed",
+    8,
+    22,
+    0.5,
+    "Starting speed before auto-adjustment. Lower = easier.",
+    advancedSection
+  )
+  createTuningControl(
+    "Baseline Correct %",
+    "baselineCorrectProb",
+    0.1,
+    1,
+    0.05,
+    "Starting probability (0-1) that correct answer is in choices. Lower = harder.",
+    advancedSection
+  )
+  createTuningControl(
+    "Baseline Distractors",
+    "baselineDistractors",
+    1,
+    4,
+    1,
+    "Starting number of wrong answers. Higher = harder.",
+    advancedSection
+  )
+  createTuningControl(
+    "Baseline Max Phrases",
+    "baselineMaxPhrases",
+    1,
+    3,
+    1,
+    "Starting max simultaneous phrases. Higher = harder.",
+    advancedSection
+  )
+  createTuningControl(
+    "Baseline Max Misses",
+    "baselineMaxMisses",
+    1,
+    3,
+    1,
+    "Starting tolerance for misses. Higher = more forgiving.",
+    advancedSection
+  )
+
+  // Maximum caps
+  createTuningControl(
+    "Max Speed",
+    "maxSpeed",
+    10,
+    30,
+    0.5,
+    "Maximum speed at highest difficulty.",
+    advancedSection
+  )
+  createTuningControl(
+    "Max Distractors",
+    "maxDistractors",
+    2,
+    8,
+    1,
+    "Maximum wrong answers at highest difficulty.",
+    advancedSection
+  )
   createTuningControl(
     "Max Phrases",
     "maxSimultaneousPhrases",
     1,
     5,
     1,
-    "Maximum simultaneous phrases. With Auto Adjust on, phrases build up to this limit as you succeed.",
-    chaosSection
+    "Maximum simultaneous phrases at highest difficulty.",
+    advancedSection
   )
+  createTuningControl(
+    "Max Max Misses",
+    "maxMaxMisses",
+    2,
+    6,
+    1,
+    "Maximum miss tolerance at highest difficulty.",
+    advancedSection
+  )
+  createTuningControl(
+    "Min Correct %",
+    "minCorrectProb",
+    0.05,
+    0.5,
+    0.05,
+    "Minimum probability of correct answer at highest difficulty. 0.1 = 1 in 10.",
+    advancedSection
+  )
+
+  // Reset to defaults button
+  const resetButton = document.createElement("button")
+  resetButton.className = "reset-defaults-button"
+  resetButton.type = "button"
+  resetButton.textContent = "Reset All to Defaults"
+  resetButton.addEventListener("click", () => {
+    const confirmed = confirm(
+      "Reset all settings to default values? This cannot be undone."
+    )
+    if (!confirmed) return
+
+    // Get default settings
+    const defaults = {
+      autoAdjustDifficulty: true,
+      textScaleFactor: 0.6,
+      musicEnabled: true,
+      sfxEnabled: true,
+      musicVolume: 0.3,
+      sfxVolume: 0.05,
+      baselineSpeed: 12,
+      baselineCorrectProb: 0.5,
+      baselineDistractors: 2,
+      baselineMaxPhrases: 1,
+      baselineMaxMisses: 1,
+      maxSpeed: 22,
+      maxDistractors: 6,
+      maxSimultaneousPhrases: 3,
+      maxMaxMisses: 4,
+      minCorrectProb: 0.1,
+    }
+
+    // Reset all settings in store
+    Object.entries(defaults).forEach(([key, value]) => {
+      tuningStore.getState().setSetting(
+        key as keyof typeof defaults,
+        value
+      )
+    })
+
+    // Update all UI controls to reflect reset values
+    tuningPanel.querySelectorAll<HTMLInputElement>("input[data-setting-key]").forEach((input) => {
+      const key = input.dataset.settingKey as keyof typeof defaults
+      if (key && key in defaults) {
+        const value = defaults[key]
+        if (input.type === "checkbox") {
+          input.checked = value as boolean
+        } else if (input.type === "range" || input.type === "number") {
+          input.value = String(value)
+          // Update display value if it exists
+          const valueDisplay = input.parentElement?.querySelector(".tuning-value")
+          if (valueDisplay) {
+            valueDisplay.textContent = String(value)
+          }
+        }
+      }
+    })
+
+    // Handle audio settings
+    if (defaults.musicEnabled) {
+      sfx.playMusic()
+    } else {
+      sfx.stopMusic()
+    }
+  })
+  tuningPanel.appendChild(resetButton)
+
+  // Store references for later cleanup
+  const tuningControls: Array<{ row: HTMLElement; input: HTMLInputElement; key: string }> = []
 
   // Apply initial audio settings
   const initSettings = tuningStore.getState().settings
@@ -596,6 +712,10 @@ export const createHoverRunner = (
   const road = createRoad(scene)
   const hoverboard = createHoverboard(scene)
   hoverboard.root.position = new Vector3(GRID.leftX, GRID.bottomY, GRID.z)
+
+  // Initialize geometry pool for avatar progression (performance optimization)
+  hoverboard.initGeometryPool?.()
+
   const electricField = createElectricField(
     scene,
     hoverboard.visualRoot,
@@ -971,6 +1091,8 @@ export const createHoverRunner = (
   let electricTargetPhrase: PhraseInstance | null = null
   let electricIntensity = 0
   let highlightTime = 0
+  let lastProgressionLevel = -1
+  let lastProgressionNetCorrect = -1
 
   const gameStore = createGameStore<GameState>({
     stackConfig: initialState?.stackConfig ?? hostApi.getStackConfig(),
@@ -1348,10 +1470,10 @@ export const createHoverRunner = (
           return
         }
         const distractors: PhraseSpec[] = []
-        const { maxDistractors } = getSettings()
+        const { dynamicDistractors } = getSettings()
         for (
           let attempt = 0;
-          attempt < 14 && distractors.length < maxDistractors;
+          attempt < 14 && distractors.length < dynamicDistractors;
           attempt += 1
         ) {
           const candidate = entryBuffer.shift()
@@ -1384,6 +1506,11 @@ export const createHoverRunner = (
           lang: answerLang,
           isCorrect: true,
         }
+
+        // Always include correct answer in choices pool
+        // Difficulty is controlled by spawn probability in pickNextPhrase()
+        const choices = shuffle([correct, ...distractors])
+
         const nextRound: RoundState = {
           id: roundId,
           promptLang,
@@ -1392,7 +1519,7 @@ export const createHoverRunner = (
           promptRomanization,
           answer,
           answerRomanization,
-          choices: shuffle([correct, ...distractors]),
+          choices,
         }
         beginIntro(nextRound)
         return
@@ -1635,8 +1762,8 @@ export const createHoverRunner = (
   }
 
   const updateStatsHud = () => {
-    const { score, streak, bestStreak } = tuningStore.getState().stats
-    hudScore.textContent = `Score ${score}`
+    const { score, streak, bestStreak, netCorrect } = tuningStore.getState().stats
+    hudScore.textContent = `Score ${score} • Net ${netCorrect >= 0 ? '+' : ''}${netCorrect}`
     hudStreak.textContent = `Streak ${streak} • Best ${bestStreak}`
   }
 
@@ -1761,9 +1888,10 @@ export const createHoverRunner = (
     if (!choices.length) {
       return null
     }
-    const { correctWeight, maxIncorrectStreak } = getSettings()
+    const { dynamicMaxMisses, dynamicCorrectProb } = getSettings()
     const correct = choices.find((choice) => choice.isCorrect) ?? null
-    if (correct && state.incorrectStreak >= maxIncorrectStreak) {
+    // Force correct answer after too many misses
+    if (correct && state.incorrectStreak >= dynamicMaxMisses) {
       return correct
     }
     let pool = choices
@@ -1773,6 +1901,15 @@ export const createHoverRunner = (
         pool = filtered
       }
     }
+    // Calculate weight for correct answer based on desired probability
+    // If correctProb = 0.5 and we have 3 distractors (weight 1 each):
+    //   correctWeight = 0.5 * 3 / (1 - 0.5) = 3.0
+    // If correctProb = 0.1 and we have 5 distractors:
+    //   correctWeight = 0.1 * 5 / (1 - 0.1) = 0.556
+    const distractorCount = pool.filter((c) => !c.isCorrect).length
+    const targetProb = clamp(dynamicCorrectProb, 0.05, 0.95) // Avoid division by zero
+    const correctWeight = distractorCount * targetProb / (1 - targetProb)
+
     let total = 0
     const weights = pool.map((choice) => {
       const weight = choice.isCorrect ? correctWeight : 1
@@ -2023,7 +2160,7 @@ export const createHoverRunner = (
           const round = gameStore.getState().round
           const hasSpoken = gameStore.getState().hasSpokenMissedAnswer
           gameStore.update((draft) => {
-            draft.incorrectStreak = getSettings().maxIncorrectStreak
+            draft.incorrectStreak = getSettings().dynamicMaxMisses
             if (!hasSpoken) {
               draft.hasSpokenMissedAnswer = true
             }
@@ -2055,7 +2192,7 @@ export const createHoverRunner = (
           const round = gameStore.getState().round
           const hasSpoken = gameStore.getState().hasSpokenMissedAnswer
           gameStore.update((draft) => {
-            draft.incorrectStreak = getSettings().maxIncorrectStreak
+            draft.incorrectStreak = getSettings().dynamicMaxMisses
             if (!hasSpoken) {
               draft.hasSpokenMissedAnswer = true
             }
@@ -2104,6 +2241,32 @@ export const createHoverRunner = (
     activePivot.position.y = 0.08 + Math.sin(hoverTime * 5) * 0.03
 
     hoverboard.updateLogo?.(hoverTime, camera)
+    hoverboard.updateSacredGeometries?.(hoverTime, dt)
+
+    // Update visual progression based on level + netCorrect
+    const stats = tuningStore.getState().stats
+    const currentLevel = stats.level
+    const netCorrect = stats.netCorrect
+    const seed = stats.allTimeBestStreak || 1 // Use allTimeBestStreak as seed for reproducibility
+
+    // Only reconfigure geometries when progression actually changes
+    if (currentLevel !== lastProgressionLevel || netCorrect !== lastProgressionNetCorrect) {
+      lastProgressionLevel = currentLevel
+      lastProgressionNetCorrect = netCorrect
+
+      const progression = getProgressionParams(currentLevel, netCorrect, seed)
+
+      hoverboard.updateRings?.(
+        progression.ringHeightOffset,
+        progression.ringAlpha,
+        progression.ringCount,
+        progression.ringScale
+      )
+
+      // Configure sacred geometries from pool (no create/destroy for performance)
+      hoverboard.configureGeometries?.(progression.sacredGeometries)
+      console.log(`[PROGRESSION] Level ${currentLevel}, NetCorrect ${netCorrect}, Geometries: ${progression.sacredGeometries.length}`)
+    }
 
     activeBoard.rotation.z = clamp(-velocity.x * 4, -0.45, 0.45)
     activeBoard.rotation.x = clamp(velocity.y * 6, -0.35, 0.35)
@@ -2146,7 +2309,23 @@ export const createHoverRunner = (
       updatePlayer(dt)
       updatePhrases(dt)
       updatePropField(activeSkin.props, road, frameCount)
-      electricField.update(dt, electricTarget, electricIntensity, electricTargetPhrase?.letterPositions)
+
+      // Apply visual progression to electric field
+      const stats = tuningStore.getState().stats
+      const progression = getProgressionParams(
+        stats.level,
+        stats.netCorrect,
+        stats.allTimeBestStreak || 1
+      )
+      electricField.update(
+        dt,
+        electricTarget,
+        electricIntensity,
+        electricTargetPhrase?.letterPositions,
+        progression.mainArcCount,
+        progression.branchArcCount,
+        progression.electricIntensity
+      )
     }
     const farX = road.getFarCenterX()
     cameraTarget.set(

@@ -86,6 +86,8 @@ const isIOS = (): boolean => {
 
 export const getSettings = () => {
   const settings = tuningStore.getState().settings
+  const dynamicParams = getDynamicGameParams()
+
   // Merge user settings with constants for easy access
   return {
     ...settings,
@@ -99,13 +101,26 @@ export const getSettings = () => {
     speakRepeatMs: isIOS() ? TIMING.speakRepeatMsIOS : TIMING.speakRepeatMs,
     // Text constants
     textOverflowFactor: TEXT.overflowFactor,
+    // Dynamic gameplay parameters (calculated from difficulty)
+    dynamicSpeed: dynamicParams.speed,
+    dynamicCorrectProb: dynamicParams.correctProbability,
+    dynamicDistractors: dynamicParams.distractorCount,
+    dynamicMaxPhrases: dynamicParams.maxPhrases,
+    dynamicMaxMisses: dynamicParams.maxMisses,
   }
 }
 
 export const getPhraseSpeed = () => {
-  const { basePhraseSpeed } = tuningStore.getState().settings
-  const { speedDelta } = tuningStore.getState().runtime
-  return clamp(basePhraseSpeed + speedDelta, SPEED.min, SPEED.max)
+  const { autoAdjustDifficulty } = tuningStore.getState().settings
+
+  if (autoAdjustDifficulty) {
+    // Use dynamic speed based on difficulty curve
+    const dynamicParams = getDynamicGameParams()
+    return dynamicParams.speed
+  } else {
+    // Use baseline speed (no auto-adjustment)
+    return tuningStore.getState().settings.baselineSpeed
+  }
 }
 
 export const pickRandom = <T,>(items: T[]) => {
@@ -171,4 +186,258 @@ export const shuffle = <T,>(items: T[]) => {
     items[j] = temp
   }
   return items
+}
+
+/**
+ * Seeded random number generator for reproducible randomness
+ */
+const seededRandom = (seed: number) => {
+  let state = seed
+  return () => {
+    state = (state * 1664525 + 1013904223) % 4294967296
+    return state / 4294967296
+  }
+}
+
+/**
+ * Visual progression parameters based on player level (1-20)
+ */
+export type ProgressionParams = {
+  // Electric field
+  mainArcCount: number // Number of main lightning arcs
+  branchArcCount: number // Number of branch arcs
+  electricIntensity: number // Base intensity multiplier (0-1)
+  particleMultiplier: number // Particle count multiplier (0-1)
+
+  // Avatar rings and sacred geometries
+  ringHeightOffset: number // Vertical offset for rings (0-1)
+  ringAlpha: number // Ring opacity (0-1)
+  ringCount: number // How many rings to show (0-3)
+  ringScale: number // Scale multiplier for rings
+
+  // Sacred geometries (simplified for pooling system)
+  sacredGeometries: {
+    scale: number
+    orbitRadius: number
+    orbitSpeed: number
+    rotationSpeed: number
+    emissiveIntensity: number
+  }[]
+
+  // Lighting
+  lightIntensity: number // Point light intensity multiplier (0-1)
+  lightCount: number // Number of dynamic lights (1-5)
+}
+
+export const getProgressionParams = (level: number, netCorrect: number, seed: number): ProgressionParams => {
+  // JUICY PROGRESSION - primarily based on immediate performance (netCorrect)
+  // Every 2-3 correct answers should show visible change!
+
+  // Use netCorrect as primary driver (0-50 range for rapid early progression)
+  const progress = clamp(netCorrect / 50, 0, 3)
+
+  // Seeded random for reproducible progression
+  const rng = seededRandom(seed)
+
+  // Sacred geometries progression - add more frequently!
+  const geometries: ProgressionParams['sacredGeometries'] = []
+
+  // Ring configuration
+  let ringCount = 0
+  let ringScale = 0.8
+
+  // START WITH GEOMETRIES IMMEDIATELY - NO WAITING!
+  // HIDE RINGS TO SEE GEOMETRIES
+  // 0-1 correct: Start with 1 geometry visible - VERY TIGHT electron cloud
+  if (progress < 0.04) {
+    ringCount = 0  // NO RINGS
+    ringScale = 0.8
+    geometries.push({
+      scale: 0.35,
+      orbitRadius: 0.3,
+      orbitSpeed: (rng() - 0.5) * 1.2, // Random direction
+      rotationSpeed: 0.8,
+      emissiveIntensity: 1.2
+    })
+  }
+  // 2-4 correct: 2 geometries
+  else if (progress < 0.1) {
+    ringCount = 0  // NO RINGS
+    ringScale = 0.9
+
+    for (let i = 0; i < 2; i++) {
+      geometries.push({
+        scale: 0.33,
+        orbitRadius: 0.3 + rng() * 0.15,
+        orbitSpeed: (rng() - 0.5) * 1.4,
+        rotationSpeed: 0.6 + rng() * 0.7,
+        emissiveIntensity: 1.2
+      })
+    }
+  }
+  // 5-7 correct: 3 geometries
+  else if (progress < 0.16) {
+    ringCount = 0  // NO RINGS
+    ringScale = 1.0
+
+    for (let i = 0; i < 3; i++) {
+      geometries.push({
+        scale: 0.31,
+        orbitRadius: 0.35 + rng() * 0.15,
+        orbitSpeed: (rng() - 0.5) * 1.6,
+        rotationSpeed: 0.6 + rng() * 0.8,
+        emissiveIntensity: 1.2
+      })
+    }
+  }
+  // 8-12 correct: 4 geometries
+  else if (progress < 0.26) {
+    ringCount = 0  // NO RINGS
+    ringScale = 1.05
+
+    for (let i = 0; i < 4; i++) {
+      geometries.push({
+        scale: 0.29,
+        orbitRadius: 0.35 + rng() * 0.2,
+        orbitSpeed: (rng() - 0.5) * 1.8,
+        rotationSpeed: 0.5 + rng() * 1.0,
+        emissiveIntensity: 1.2 + rng() * 0.4
+      })
+    }
+  }
+  // 13-20 correct: 5 geometries
+  else if (progress < 0.42) {
+    ringCount = 0  // NO RINGS
+    ringScale = 1.1
+
+    for (let i = 0; i < 5; i++) {
+      geometries.push({
+        scale: 0.28,
+        orbitRadius: 0.4 + rng() * 0.2,
+        orbitSpeed: (rng() - 0.5) * 2.0,
+        rotationSpeed: 0.4 + rng() * 1.2,
+        emissiveIntensity: 1.3 + rng() * 0.5
+      })
+    }
+  }
+  // 21+ correct: MAX 6 geometries with WILD speeds and directions
+  else {
+    ringCount = 0  // NO RINGS
+    ringScale = 1.1
+
+    for (let i = 0; i < 6; i++) {
+      geometries.push({
+        scale: 0.26 + rng() * 0.12,
+        orbitRadius: 0.4 + rng() * 0.25,
+        orbitSpeed: (rng() - 0.5) * 2.5,
+        rotationSpeed: 0.3 + rng() * 2.0,
+        emissiveIntensity: 1.4 + rng() * 0.8
+      })
+    }
+  }
+
+  return {
+    // Electric arcs: Grow rapidly with progress
+    mainArcCount: Math.max(1, Math.floor(lerp(2, 12, clamp(progress, 0, 1.5)))),
+    branchArcCount: Math.max(0, Math.floor(lerp(0, 8, clamp(progress, 0, 1.5)))),
+
+    // Intensity: Start moderate, grow to insane
+    electricIntensity: lerp(0.5, 2.0, clamp(progress, 0, 2)),
+
+    // Particles: Grow dramatically
+    particleMultiplier: lerp(0.4, 2.5, clamp(progress, 0, 2)),
+
+    // Rings: Move up and scale dramatically
+    ringHeightOffset: lerp(0, 1.5, clamp(progress, 0, 2)),
+    ringAlpha: lerp(0.4, 1.0, clamp(progress, 0, 1.5)),
+    ringCount,
+    ringScale,
+
+    // Sacred geometries
+    sacredGeometries: geometries,
+
+    // Lighting: Grow to multiple intense lights
+    lightIntensity: lerp(0.6, 2.5, clamp(progress, 0, 2)),
+    lightCount: Math.min(5, 1 + Math.floor(progress * 3)),
+  }
+}
+
+/**
+ * Calculate difficulty from net correct answers (0-1 scale)
+ * Uses a smooth exponential curve:
+ * - netCorrect = 0 → difficulty = 0 (easiest)
+ * - netCorrect = 100 → difficulty = 1.0 (hardest)
+ * - Formula: 1 - exp(-netCorrect / 50)
+ * This gives a smooth ramp that levels off as you approach max difficulty
+ */
+export const getDifficulty = (netCorrect: number): number => {
+  // Allow negative netCorrect (if player does worse than 50/50)
+  // Clamp to reasonable range
+  const clamped = clamp(netCorrect, -50, 150)
+
+  // Exponential curve: 1 - e^(-x/50)
+  // This reaches ~86% of max at netCorrect=100
+  // and ~99% at netCorrect=200
+  const raw = 1 - Math.exp(-clamped / 50)
+
+  // Clamp to 0-1 and ensure it's never negative
+  return clamp(raw, 0, 1)
+}
+
+/**
+ * Dynamic gameplay parameters based on difficulty curve
+ */
+export type DynamicGameParams = {
+  speed: number // Actual speed to use
+  correctProbability: number // Probability of spawning correct answer
+  distractorCount: number // Number of incorrect choices
+  maxPhrases: number // Max simultaneous phrases
+  maxMisses: number // Tolerance for incorrect answers before game over
+}
+
+export const getDynamicGameParams = (): DynamicGameParams => {
+  const state = tuningStore.getState()
+  const settings = state.settings
+  const difficulty = getDifficulty(state.stats.netCorrect)
+
+  // If auto-adjust is off, use baseline values
+  if (!settings.autoAdjustDifficulty) {
+    return {
+      speed: settings.baselineSpeed,
+      correctProbability: settings.baselineCorrectProb,
+      distractorCount: settings.baselineDistractors,
+      maxPhrases: settings.baselineMaxPhrases,
+      maxMisses: settings.baselineMaxMisses,
+    }
+  }
+
+  // Interpolate all parameters based on difficulty
+  return {
+    // Speed: Start at baseline, ramp to max
+    speed: lerp(settings.baselineSpeed, settings.maxSpeed, difficulty),
+
+    // Correct probability: Start at baseline (e.g., 0.5), decrease to min (e.g., 0.1)
+    // This makes it harder to find the right answer
+    correctProbability: lerp(
+      settings.baselineCorrectProb,
+      settings.minCorrectProb,
+      difficulty
+    ),
+
+    // Distractors: Start at baseline, increase to max
+    distractorCount: Math.floor(
+      lerp(settings.baselineDistractors, settings.maxDistractors, difficulty)
+    ),
+
+    // Max phrases: Start at baseline (usually 1), increase to max
+    maxPhrases: Math.floor(
+      lerp(settings.baselineMaxPhrases, settings.maxSimultaneousPhrases, difficulty)
+    ),
+
+    // Max misses: Start low (strict), increase as player gets better (more forgiving)
+    // This is INVERSE - easier when you're better
+    maxMisses: Math.floor(
+      lerp(settings.baselineMaxMisses, settings.maxMaxMisses, difficulty)
+    ),
+  }
 }

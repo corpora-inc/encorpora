@@ -34,6 +34,8 @@ export function SettingsModal({
   onLaunchGame?: (game: InstalledGame) => void;
 }) {
   const { t } = useTranslation();
+  const showGames =
+    import.meta.env.DEV || import.meta.env.VITE_ENABLE_GAMES === "true";
 
   const dir = useSettingsStore((s) => s.dir);
   // const primaryLang = useSettingsStore((s) => s.primaryLang());
@@ -69,12 +71,14 @@ export function SettingsModal({
         <DomainPicker />
         <RomanizationToggle />
 
-        <GamesPanel
-          onLaunchGame={(game) => {
-            onClose();
-            onLaunchGame?.(game);
-          }}
-        />
+        {showGames ? (
+          <GamesPanel
+            onLaunchGame={(game) => {
+              onClose();
+              onLaunchGame?.(game);
+            }}
+          />
+        ) : null}
 
         {/* Global onboarding controls */}
         <Button

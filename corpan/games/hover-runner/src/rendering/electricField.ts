@@ -101,15 +101,15 @@ const resolveTargetFrame = (target: Mesh, rootWorld: Vector3): TargetFrame => {
 export const createElectricField = (
   scene: Scene,
   parent: TransformNode,
-  baseColor: Color3
+  baseColor: Color3,
+  mainCount = 12,
+  branchCount = 8
 ): ElectricField => {
   const root = new TransformNode("electric-field", scene)
   root.parent = parent
   root.position.y = 0.2
   const isIOS =
     typeof navigator !== "undefined" && /iPhone|iPad|iPod|iOS/i.test(navigator.userAgent)
-  const mainCount = isIOS ? 8 : 12
-  const branchCount = isIOS ? 5 : 8
   const mainPointCount = isIOS ? 18 : 22
   const branchPointCount = isIOS ? 14 : 18
   const lightCount = isIOS ? 2 : 3
@@ -364,7 +364,15 @@ export const createElectricField = (
   // iOS performance: update less frequently (every 3 frames vs 2)
   const updateInterval = isIOS ? 3 : 2 // Update geometry every N frames
 
-  const update = (dt: number, target: Mesh | null, intensity: number, letterPositions?: Vector3[]) => {
+  const update = (
+    dt: number,
+    target: Mesh | null,
+    intensity: number,
+    letterPositions?: Vector3[],
+    visibleMainArcs?: number,
+    visibleBranchArcs?: number,
+    intensityMultiplier = 1.0
+  ) => {
     time += dt
     frameCount++
 
@@ -377,7 +385,11 @@ export const createElectricField = (
     const desiredFocus = target ? clamp(intensity / 1.2, 0, 1) : 0
     const focusEase = 1 - Math.exp(-dt * 6)
     focus = lerp(focus, desiredFocus, focusEase)
-    const reach = clamp(intensity, 0, 1.35)
+    const reach = clamp(intensity, 0, 1.35) * intensityMultiplier
+
+    // Calculate visible arc counts (use defaults if not provided)
+    const mainArcsToShow = visibleMainArcs ?? mainCount
+    const branchArcsToShow = visibleBranchArcs ?? branchCount
 
     startJitter.x = Math.sin(time * 2.8) * 0.015
     startJitter.y = Math.cos(time * 2.2) * 0.02
@@ -409,6 +421,22 @@ export const createElectricField = (
     const shouldUpdateGeometry = frameCount % updateInterval === 0
 
     arcs.forEach((arc, arcIndex) => {
+      // Determine if this arc should be visible based on progression
+      const isMainArc = arcIndex < mainCount
+      const relativeIndex = isMainArc ? arcIndex : arcIndex - mainCount
+      const maxForType = isMainArc ? mainArcsToShow : branchArcsToShow
+      const shouldBeVisible = relativeIndex < maxForType
+
+      // Hide arc if not visible for this progression level
+      if (!shouldBeVisible) {
+        arc.material.alpha = 0
+        arc.mesh.setEnabled(false)
+        return
+      }
+
+      // Re-enable if it was previously hidden
+      arc.mesh.setEnabled(true)
+
       // Calculate orbital position for spreading at the endpoint
       let orbit = 0
       let u = 0

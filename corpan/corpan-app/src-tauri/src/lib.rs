@@ -3,14 +3,19 @@
     windows_subsystem = "windows"
 )]
 
+mod content_packs;
 mod db;
 
 use rusqlite::{params_from_iter, Connection, ToSql};
 use serde::Serialize;
 use std::collections::HashSet;
-use tauri::{command, State};
+use tauri::{command, AppHandle, State};
 use std::time::{SystemTime, UNIX_EPOCH};
 use tauri_plugin_opener;
+use crate::content_packs::{
+    download_and_install, get_manifest_url, list_installed, ContentPackInfo,
+    ContentPackInstallResult,
+};
 
 /// Return type for each translation
 #[derive(Serialize)]
@@ -362,6 +367,26 @@ fn get_entry_by_id_with_translations(
     fetch_entry_with_translations(&conn, entry_id, allowed_langs.as_ref())
 }
 
+#[command]
+async fn content_packs_install_from_url(
+    app: AppHandle,
+    pack_id: String,
+    download_url: String,
+    expected_sha256: Option<String>,
+) -> Result<ContentPackInstallResult, String> {
+    download_and_install(&app, pack_id, download_url, expected_sha256).await
+}
+
+#[command]
+fn content_packs_list_installed(app: AppHandle) -> Result<Vec<ContentPackInfo>, String> {
+    list_installed(&app)
+}
+
+#[command]
+fn content_packs_get_manifest_url(app: AppHandle, pack_id: String) -> Result<String, String> {
+    get_manifest_url(&app, pack_id)
+}
+
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
     let db_state =
@@ -373,7 +398,10 @@ pub fn run() {
         .invoke_handler(tauri::generate_handler![
             get_random_entry_with_translations,
             get_random_entries_with_translations,
-            get_entry_by_id_with_translations
+            get_entry_by_id_with_translations,
+            content_packs_install_from_url,
+            content_packs_list_installed,
+            content_packs_get_manifest_url
         ])
         .plugin(tauri_plugin_safe_area_insets_css::init())
         .plugin(tauri_plugin_tts::init())

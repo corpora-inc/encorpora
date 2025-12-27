@@ -1,0 +1,260 @@
+use serde::{Deserialize, Serialize};
+use std::collections::HashMap;
+use std::fs;
+use std::io::Cursor;
+use std::path::{Path, PathBuf};
+use std::time::{SystemTime, UNIX_EPOCH};
+use tauri::{AppHandle, Manager, Runtime};
+
+#[derive(Debug, Serialize, Deserialize, Clone)]
+pub struct ContentPackInfo {
+    pub id: String,
+    pub name: Option<String>,
+    pub version: Option<String>,
+    pub manifest_url: String,
+    pub installed_at: i64,
+}
+
+#[derive(Debug, Serialize)]
+pub struct ContentPackInstallResult {
+    pub pack: ContentPackInfo,
+}
+
+#[derive(Debug, Serialize, Deserialize, Default)]
+struct ContentPackIndex {
+    packs: HashMap<String, ContentPackInfo>,
+}
+
+fn pack_root<R: Runtime>(app: &AppHandle<R>) -> Result<PathBuf, String> {
+    app.path()
+        .app_data_dir()
+        .map(|dir| dir.join("corpan-packs"))
+        .map_err(|e| e.to_string())
+}
+
+fn index_path(root: &Path) -> PathBuf {
+    root.join("index.json")
+}
+
+fn load_index(root: &Path) -> ContentPackIndex {
+    let path = index_path(root);
+    if let Ok(raw) = fs::read_to_string(path) {
+        if let Ok(index) = serde_json::from_str::<ContentPackIndex>(&raw) {
+            return index;
+        }
+    }
+    ContentPackIndex::default()
+}
+
+fn save_index(root: &Path, index: &ContentPackIndex) -> Result<(), String> {
+    let path = index_path(root);
+    let raw = serde_json::to_string_pretty(index).map_err(|e| e.to_string())?;
+    fs::write(path, raw).map_err(|e| e.to_string())
+}
+
+fn manifest_url_for(pack_id: &str) -> String {
+    format!("corpan-pack://localhost/{pack_id}/manifest.json")
+}
+
+fn now_epoch_ms() -> i64 {
+    SystemTime::now()
+        .duration_since(UNIX_EPOCH)
+        .map(|d| d.as_millis() as i64)
+        .unwrap_or(0)
+}
+
+fn safe_extract_zip(data: &[u8], dest: &Path) -> Result<(), String> {
+    let reader = Cursor::new(data);
+    let mut archive = zip::ZipArchive::new(reader).map_err(|e| e.to_string())?;
+    for i in 0..archive.len() {
+        let mut file = archive.by_index(i).map_err(|e| e.to_string())?;
+        let name = match file.enclosed_name() {
+            Some(path) => path.to_owned(),
+            None => return Err("Invalid zip entry".to_string()),
+        };
+        let out_path = dest.join(name);
+        if file.is_dir() {
+            fs::create_dir_all(&out_path).map_err(|e| e.to_string())?;
+        } else {
+            if let Some(parent) = out_path.parent() {
+                fs::create_dir_all(parent).map_err(|e| e.to_string())?;
+            }
+            let mut outfile = fs::File::create(&out_path).map_err(|e| e.to_string())?;
+            std::io::copy(&mut file, &mut outfile).map_err(|e| e.to_string())?;
+        }
+    }
+    Ok(())
+}
+
+fn find_pack_root(staging: &Path) -> Option<PathBuf> {
+    let manifest = staging.join("manifest.json");
+    if manifest.exists() {
+        return Some(staging.to_path_buf());
+    }
+    let mut children = vec![];
+    if let Ok(entries) = fs::read_dir(staging) {
+        for entry in entries.flatten() {
+            let path = entry.path();
+            if path.is_dir() {
+                children.push(path);
+            }
+        }
+    }
+    if children.len() == 1 {
+        let candidate = children.remove(0);
+        if candidate.join("manifest.json").exists() {
+            return Some(candidate);
+        }
+    }
+    None
+}
+
+fn read_manifest_info(path: &Path) -> Result<(String, Option<String>, Option<String>), String> {
+    let raw = fs::read_to_string(path).map_err(|e| e.to_string())?;
+    let json = serde_json::from_str::<serde_json::Value>(&raw).map_err(|e| e.to_string())?;
+    let id = json
+        .get("id")
+        .and_then(|v| v.as_str())
+        .ok_or("Manifest missing id")?
+        .to_string();
+    let name = json.get("name").and_then(|v| v.as_str()).map(|s| s.to_string());
+    let version = json
+        .get("version")
+        .and_then(|v| v.as_str())
+        .map(|s| s.to_string());
+    Ok((id, name, version))
+}
+
+fn hash_bytes_sha256(bytes: &[u8]) -> String {
+    use sha2::Digest;
+    let mut hasher = sha2::Sha256::new();
+    hasher.update(bytes);
+    let result = hasher.finalize();
+    result
+        .iter()
+        .map(|b| format!("{b:02x}"))
+        .collect::<Vec<_>>()
+        .join("")
+}
+
+pub async fn download_and_install<R: Runtime>(
+    app: &AppHandle<R>,
+    pack_id: String,
+    download_url: String,
+    expected_sha256: Option<String>,
+) -> Result<ContentPackInstallResult, String> {
+    let client = reqwest::Client::new();
+    let res = client
+        .get(&download_url)
+        .send()
+        .await
+        .map_err(|e| e.to_string())?;
+    let status = res.status();
+    if !status.is_success() {
+        return Err(format!("Download failed ({status})"));
+    }
+    let bytes = res.bytes().await.map_err(|e| e.to_string())?;
+    if let Some(expected) = expected_sha256 {
+        let actual = hash_bytes_sha256(&bytes);
+        if actual != expected {
+            return Err("Pack hash mismatch".to_string());
+        }
+    }
+
+    let root = pack_root(app)?;
+    fs::create_dir_all(&root).map_err(|e| e.to_string())?;
+
+    let staging = root.join(format!(".{pack_id}.staging"));
+    if staging.exists() {
+        let _ = fs::remove_dir_all(&staging);
+    }
+    fs::create_dir_all(&staging).map_err(|e| e.to_string())?;
+
+    safe_extract_zip(&bytes, &staging)?;
+
+    let pack_root_dir = find_pack_root(&staging).ok_or("Manifest not found in pack")?;
+    let manifest_path = pack_root_dir.join("manifest.json");
+    let (manifest_id, name, version) = read_manifest_info(&manifest_path)?;
+    if manifest_id != pack_id {
+        return Err("Pack id mismatch".to_string());
+    }
+
+    let final_dir = root.join(&pack_id);
+    let backup_dir = root.join(format!(".{pack_id}.backup"));
+    if backup_dir.exists() {
+        let _ = fs::remove_dir_all(&backup_dir);
+    }
+    if final_dir.exists() {
+        fs::rename(&final_dir, &backup_dir).map_err(|e| e.to_string())?;
+    }
+
+    if pack_root_dir == staging {
+        fs::rename(&staging, &final_dir).map_err(|e| e.to_string())?;
+    } else {
+        fs::rename(&pack_root_dir, &final_dir).map_err(|e| e.to_string())?;
+        let _ = fs::remove_dir_all(&staging);
+    }
+
+    if backup_dir.exists() {
+        let _ = fs::remove_dir_all(&backup_dir);
+    }
+
+    let manifest_url = manifest_url_for(&pack_id);
+    let mut index = load_index(&root);
+    let info = ContentPackInfo {
+        id: pack_id,
+        name,
+        version,
+        manifest_url: manifest_url.clone(),
+        installed_at: now_epoch_ms(),
+    };
+    index.packs.insert(info.id.clone(), info.clone());
+    save_index(&root, &index)?;
+
+    Ok(ContentPackInstallResult { pack: info })
+}
+
+pub fn list_installed<R: Runtime>(app: &AppHandle<R>) -> Result<Vec<ContentPackInfo>, String> {
+    let root = pack_root(app)?;
+    if !root.exists() {
+        return Ok(vec![]);
+    }
+    let index = load_index(&root);
+    if !index.packs.is_empty() {
+        return Ok(index.packs.values().cloned().collect());
+    }
+    let mut packs = vec![];
+    let entries = fs::read_dir(&root).map_err(|e| e.to_string())?;
+    for entry in entries.flatten() {
+        let path = entry.path();
+        if !path.is_dir() {
+            continue;
+        }
+        let manifest_path = path.join("manifest.json");
+        if !manifest_path.exists() {
+            continue;
+        }
+        let (id, name, version) = read_manifest_info(&manifest_path)?;
+        let info = ContentPackInfo {
+            id: id.clone(),
+            name,
+            version,
+            manifest_url: manifest_url_for(&id),
+            installed_at: now_epoch_ms(),
+        };
+        packs.push(info);
+    }
+    Ok(packs)
+}
+
+pub fn get_manifest_url<R: Runtime>(
+    app: &AppHandle<R>,
+    pack_id: String,
+) -> Result<String, String> {
+    let root = pack_root(app)?;
+    let manifest_path = root.join(&pack_id).join("manifest.json");
+    if !manifest_path.exists() {
+        return Err("Pack not installed".to_string());
+    }
+    Ok(manifest_url_for(&pack_id))
+}

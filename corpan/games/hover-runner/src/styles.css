@@ -308,6 +308,35 @@ body {
   padding: 12px 8px;
 }
 
+.reset-defaults-button {
+  width: 100%;
+  padding: 14px 20px;
+  margin-top: 16px;
+  background: rgba(255, 100, 100, 0.15);
+  border: 1px solid rgba(255, 100, 100, 0.4);
+  border-radius: 8px;
+  color: #ffcccc;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.reset-defaults-button:hover {
+  background: rgba(255, 100, 100, 0.25);
+  border-color: rgba(255, 100, 100, 0.6);
+  color: #fff;
+}
+
+.reset-defaults-button:active {
+  background: rgba(255, 100, 100, 0.35);
+  transform: scale(0.98);
+}
+
 .tuning-row {
   display: grid;
   grid-template-columns: 1fr auto;

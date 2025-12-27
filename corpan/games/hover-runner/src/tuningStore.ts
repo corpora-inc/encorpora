@@ -9,24 +9,29 @@ const isIOS = (): boolean => {
 }
 
 export type TuningSettings = {
-  // User-adjustable gameplay settings
-  basePhraseSpeed: number
+  // Core gameplay
   autoAdjustDifficulty: boolean
   textScaleFactor: number
-  maxDistractors: number
-  maxIncorrectStreak: number
-  correctWeight: number
   // Audio settings
   musicEnabled: boolean
   sfxEnabled: boolean
   musicVolume: number
   sfxVolume: number
-  // Chaos mode
-  maxSimultaneousPhrases: number
+  // Advanced gameplay (baseline values for auto-adjustment)
+  baselineSpeed: number // Starting speed before auto-adjustment
+  baselineCorrectProb: number // Starting probability of correct answer (0-1, default 0.5)
+  baselineDistractors: number // Starting number of distractors (default 2)
+  baselineMaxPhrases: number // Starting max simultaneous phrases (default 1)
+  baselineMaxMisses: number // Starting tolerance for misses (default 1)
+  // Maximum caps for auto-adjustment
+  maxSpeed: number // Fastest speed allowed (default 22)
+  maxDistractors: number // Most distractors allowed (default 6)
+  maxSimultaneousPhrases: number // Most phrases at once (default 3)
+  maxMaxMisses: number // Most misses tolerated (default 4)
+  minCorrectProb: number // Hardest probability (default 0.1 = 1 in 10)
 }
 
 export type TuningRuntime = {
-  speedDelta: number
   currentPhraseCount: number
 }
 
@@ -45,6 +50,9 @@ export type GameStats = {
   allTimeBestStreak: number
   phraseHistory: PhraseHistoryEntry[]
   coinCount: number
+  level: number // Visual progression level (1-20)
+  xp: number // Experience points for leveling up
+  netCorrect: number // Total correct - total incorrect (for difficulty scaling)
 }
 
 export type TuningState = {
@@ -71,27 +79,45 @@ export type TuningState = {
 }
 
 const DEFAULT_SETTINGS: TuningSettings = {
-  basePhraseSpeed: 14,
+  // Core gameplay
   autoAdjustDifficulty: true,
   textScaleFactor: 0.6,
-  maxDistractors: 4,
-  maxIncorrectStreak: 2,
-  correctWeight: 2.4,
+  // Audio settings
   musicEnabled: true,
   sfxEnabled: true,
   musicVolume: 0.3,
   sfxVolume: 0.05,
+  // Advanced gameplay baselines
+  baselineSpeed: 12,
+  baselineCorrectProb: 0.5, // 50% correct at start (1 in 2)
+  baselineDistractors: 2,
+  baselineMaxPhrases: 1,
+  baselineMaxMisses: 1,
+  // Maximum caps
+  maxSpeed: 22,
+  maxDistractors: 6,
   maxSimultaneousPhrases: 3,
+  maxMaxMisses: 4,
+  minCorrectProb: 0.1, // 10% at hardest (1 in 10)
 }
 
 const clamp = (value: number, min: number, max: number) =>
   Math.min(Math.max(value, min), max)
 
+// XP progression curve: exponential scaling for 20 levels
+// Level 1→2: 10 XP, Level 2→3: 15 XP, etc.
+const getXpForLevel = (level: number): number => {
+  if (level >= 20) return Infinity // Max level reached
+  return Math.floor(10 + level * 5)
+}
+
+const MAX_LEVEL = 20
+
 export const tuningStore = createStore<TuningState>()(
   persist(
     (set, _get) => ({
       settings: { ...DEFAULT_SETTINGS },
-      runtime: { speedDelta: 0, currentPhraseCount: 1 },
+      runtime: { currentPhraseCount: 1 },
       stats: {
         score: 0,
         streak: 0,
@@ -99,6 +125,9 @@ export const tuningStore = createStore<TuningState>()(
         allTimeBestStreak: 0,
         phraseHistory: [],
         coinCount: 0,
+        level: 1,
+        xp: 0,
+        netCorrect: 0,
       },
       setSetting: (key, value) =>
         set((state) => ({
@@ -108,8 +137,8 @@ export const tuningStore = createStore<TuningState>()(
           },
         })),
       resetRuntime: () =>
-        set((state) => ({
-          runtime: { speedDelta: 0, currentPhraseCount: 1 },
+        set(() => ({
+          runtime: { currentPhraseCount: 1 },
         })),
       recordCorrect: (points = 1) =>
         set((state) => {
@@ -117,19 +146,23 @@ export const tuningStore = createStore<TuningState>()(
           const nextScore = state.stats.score + points
           const nextBest = Math.max(state.stats.bestStreak, nextStreak)
           const nextAllTimeBest = Math.max(state.stats.allTimeBestStreak, nextStreak)
+          const nextNetCorrect = state.stats.netCorrect + 1
+
+          // XP and leveling system
+          let nextXp = state.stats.xp + points
+          let nextLevel = state.stats.level
+          const xpNeeded = getXpForLevel(nextLevel)
+
+          // Level up if enough XP
+          while (nextLevel < MAX_LEVEL && nextXp >= xpNeeded) {
+            nextXp -= xpNeeded
+            nextLevel++
+          }
 
           // Auto-adjust difficulty if enabled
-          let nextSpeed = state.runtime.speedDelta
+          // Phrase count increases gradually with streak
           let nextPhraseCount = state.runtime.currentPhraseCount
-
           if (state.settings.autoAdjustDifficulty) {
-            // Increase speed slightly on success
-            nextSpeed = clamp(
-              state.runtime.speedDelta + SPEED.stepUp,
-              SPEED.min - state.settings.basePhraseSpeed,
-              SPEED.max - state.settings.basePhraseSpeed
-            )
-
             // Gradually increase phrase count based on streak
             // Every 3 correct in a row, add a phrase (up to max)
             if (nextStreak % 3 === 0 && nextStreak > 0) {
@@ -147,29 +180,24 @@ export const tuningStore = createStore<TuningState>()(
               streak: nextStreak,
               bestStreak: nextBest,
               allTimeBestStreak: nextAllTimeBest,
+              level: nextLevel,
+              xp: nextXp,
+              netCorrect: nextNetCorrect,
             },
             runtime: {
               ...state.runtime,
-              speedDelta: nextSpeed,
               currentPhraseCount: nextPhraseCount,
             },
           }
         }),
       recordWrong: () =>
         set((state) => {
+          const nextNetCorrect = state.stats.netCorrect - 1
+
           // Auto-adjust difficulty if enabled
-          let nextSpeed = state.runtime.speedDelta
+          // Reduce phrase count back to 1 on failure
           let nextPhraseCount = state.runtime.currentPhraseCount
-
           if (state.settings.autoAdjustDifficulty) {
-            // Decrease speed on failure
-            nextSpeed = clamp(
-              state.runtime.speedDelta - SPEED.stepDown,
-              SPEED.min - state.settings.basePhraseSpeed,
-              SPEED.max - state.settings.basePhraseSpeed
-            )
-
-            // Reduce phrase count back to 1 on failure
             nextPhraseCount = 1
           }
 
@@ -177,10 +205,10 @@ export const tuningStore = createStore<TuningState>()(
             stats: {
               ...state.stats,
               streak: 0,
+              netCorrect: nextNetCorrect,
             },
             runtime: {
               ...state.runtime,
-              speedDelta: nextSpeed,
               currentPhraseCount: nextPhraseCount,
             },
           }
@@ -247,6 +275,9 @@ export const tuningStore = createStore<TuningState>()(
             allTimeBestStreak: state.stats.allTimeBestStreak,
             phraseHistory: state.stats.phraseHistory,
             coinCount: state.stats.coinCount,
+            level: state.stats.level,
+            xp: state.stats.xp,
+            netCorrect: state.stats.netCorrect, // Preserve difficulty progression
           },
         })),
     }),
@@ -262,6 +293,9 @@ export const tuningStore = createStore<TuningState>()(
           allTimeBestStreak: state.stats.allTimeBestStreak,
           phraseHistory: state.stats.phraseHistory,
           coinCount: state.stats.coinCount,
+          level: state.stats.level,
+          xp: state.stats.xp,
+          netCorrect: state.stats.netCorrect,
         },
       }),
       merge: (persisted, current) => {
@@ -282,6 +316,9 @@ export const tuningStore = createStore<TuningState>()(
               stored?.stats?.allTimeBestStreak ?? current.stats.allTimeBestStreak,
             phraseHistory: stored?.stats?.phraseHistory ?? current.stats.phraseHistory,
             coinCount: stored?.stats?.coinCount ?? current.stats.coinCount,
+            level: stored?.stats?.level ?? current.stats.level,
+            xp: stored?.stats?.xp ?? current.stats.xp,
+            netCorrect: stored?.stats?.netCorrect ?? current.stats.netCorrect,
           },
         }
       },

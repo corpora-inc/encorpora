@@ -85,7 +85,15 @@ export type GameStore<T> = {
 
 export type ElectricField = {
   root: TransformNode
-  update: (dt: number, target: Mesh | null, intensity: number, letterPositions?: Vector3[]) => void
+  update: (
+    dt: number,
+    target: Mesh | null,
+    intensity: number,
+    letterPositions?: Vector3[],
+    visibleMainArcs?: number,
+    visibleBranchArcs?: number,
+    intensityMultiplier?: number
+  ) => void
   setColor: (color: Color3) => void
 }
 
