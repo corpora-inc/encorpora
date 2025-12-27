@@ -2,7 +2,7 @@ name: Deploy Hover Runner to GitHub Pages
 
 on:
   push:
-    branches: ["main", "gametime"]
+    branches: ["main"]
     paths:
       - "corpan/games/hover-runner/**"
       - ".github/workflows/hover-runner-pages.yml"
