@@ -51,7 +51,6 @@ const About = () => {
           className="gap-1.5 hover:bg-muted cursor-pointer"
           onClick={() => openUrl(WEBSITE_URL)}
         >
-          <Globe className="h-4 w-4" />
           encorpora.io
         </Button>
       </div>

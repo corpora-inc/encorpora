@@ -91,7 +91,7 @@ export function SettingsModal({
         className="
           max-w-full w-[100vw] sm:max-w-[100vw] md:max-w-[90vw] lg:max-w-[75vw] xl:max-w-[60vw]
           max-h-[100dvh] h-[100dvh] md:h-auto md:max-h-[95dvh]
-          overflow-y-auto rounded-none bg-white
+          overflow-y-auto rounded-none bg-white pb-6
           md:rounded-md
           flex flex-col
         "
@@ -143,44 +143,45 @@ export function SettingsModal({
         </div>
 
         <About />
-        <div className="mt-6 space-y-3 rounded-md border border-gray-200 bg-white/80 p-4">
-          <div className="space-y-1">
-            <div className="text-sm font-semibold">
-              {t("packs.devUnlockTitle")}
+        <div className="mt-3 space-y-3 rounded-md border border-gray-200 bg-white/80 p-4">
+          {!devModeEnabled && (
+            <>
+              <div className="space-y-1">
+                <div className="text-md font-semibold">
+                  {t("packs.devUnlockTitle")}
+                </div>
+                <div className="text-xs text-muted-foreground">
+                  {t("packs.devUnlockHint")}
+                </div>
+              </div>
+              <Button
+                type="button"
+                variant="outline"
+                onClick={handleDevTap}
+                className="w-full"
+              >
+                {t("packs.devUnlockTitle")} ({devTapCount}/7)
+              </Button>
+            </>
+          )}
+          {showGames ? (
+            <GamesPanel
+              showDevInstall={devModeEnabled}
+              showPlatformPacks={false}
+              onLaunchGame={(game) => {
+                onClose();
+                onLaunchGame?.(game);
+              }}
+            />
+          ) : null}
+          {devToastVisible ? (
+            <div className="pointer-events-none fixed inset-x-0 bottom-6 flex justify-center">
+              <div className="rounded-full bg-neutral-900 px-4 py-2 text-xs font-medium text-white shadow-lg">
+                {t("packs.devUnlockToast")}
+              </div>
             </div>
-            <div className="text-xs text-muted-foreground">
-              {t("packs.devUnlockHint")}
-            </div>
-          </div>
-          <Button
-            type="button"
-            variant="outline"
-            onClick={handleDevTap}
-            disabled={devModeEnabled}
-            className="w-full"
-          >
-            {devModeEnabled
-              ? t("packs.devUnlockToast")
-              : t("packs.devUnlockTitle")}
-          </Button>
+          ) : null}
         </div>
-        {showGames ? (
-          <GamesPanel
-            showDevInstall={devModeEnabled}
-            showPlatformPacks={false}
-            onLaunchGame={(game) => {
-              onClose();
-              onLaunchGame?.(game);
-            }}
-          />
-        ) : null}
-        {devToastVisible ? (
-          <div className="pointer-events-none fixed inset-x-0 bottom-6 flex justify-center">
-            <div className="rounded-full bg-neutral-900 px-4 py-2 text-xs font-medium text-white shadow-lg">
-              {t("packs.devUnlockToast")}
-            </div>
-          </div>
-        ) : null}
       </DialogContent>
     </Dialog>
   );

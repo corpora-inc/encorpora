@@ -2,7 +2,6 @@ import { useCallback, useEffect, useMemo, useState } from "react"
 import { useTranslation } from "react-i18next"
 
 import { Button } from "@/components/ui/button"
-import { Separator } from "@/components/ui/separator"
 import { useGamesStore, type InstalledGame } from "@/store/games"
 import {
   listPlatformPacks,
@@ -171,8 +170,7 @@ export function GamesPanel({
   }
 
   return (
-    <div className="mt-6">
-      <Separator className="my-5" />
+    <div>
       <div className="space-y-2">
         <h3 className="text-lg font-semibold">{t("packs.title")}</h3>
         <p className="text-sm text-muted-foreground">{t("packs.devIntro")}</p>
