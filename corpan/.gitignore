@@ -1,3 +1,3 @@
 private/
 *.zip
-
+plugins/tauri-plugin-game-packs/android/build/
