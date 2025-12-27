@@ -207,5 +207,31 @@
     "close": "Cerrar",
     "feedbackHint": "¿Aún no es de 5 estrellas? Pulsa «Enviar comentarios» y dinos qué mejorar.",
     "feedbackButton": "Enviar comentarios en GitHub"
+  },
+  "packs": {
+    "title": "Paquetes",
+    "available": "Paquetes disponibles",
+    "emptyAvailable": "Aún no hay paquetes.",
+    "installed": "Paquetes instalados",
+    "emptyInstalled": "No hay paquetes instalados.",
+    "get": "Obtener",
+    "open": "Abrir",
+    "remove": "Eliminar",
+    "version": "Versión {{version}}",
+    "refresh": "Actualizar",
+    "free": "Gratis",
+    "install": "Instalar",
+    "installing": "Instalando...",
+    "installFailed": "Error al instalar.",
+    "update": "Actualizar",
+    "updating": "Actualizando...",
+    "manifestTitle": "URL del manifiesto",
+    "manifestPlaceholder": "https://ejemplo.com/manifest.json",
+    "manifestHint": "Pega una URL de manifiesto.",
+    "devUnlockTitle": "Paquetes de desarrollador",
+    "devUnlockHint": "Toca 7 veces para desbloquear instalaciones por manifiesto.",
+    "devUnlockToast": "Paquetes de desarrollador desbloqueados.",
+    "devIntro": "Prueba un Pack de Corpán o crea el tuyo.",
+    "devLink": "Más en Free2z"
   }
 }

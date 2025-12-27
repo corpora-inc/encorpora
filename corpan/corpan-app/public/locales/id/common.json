@@ -207,5 +207,31 @@
     "remindLater": "Nanti saja",
     "noThanks": "Tidak, terima kasih",
     "close": "Tutup"
+  },
+  "packs": {
+    "title": "Paket",
+    "available": "Paket tersedia",
+    "emptyAvailable": "Belum ada paket.",
+    "installed": "Paket terpasang",
+    "emptyInstalled": "Tidak ada paket terpasang.",
+    "get": "Dapatkan",
+    "open": "Buka",
+    "remove": "Hapus",
+    "version": "Versi {{version}}",
+    "refresh": "Segarkan",
+    "free": "Gratis",
+    "install": "Pasang",
+    "installing": "Memasang...",
+    "installFailed": "Gagal memasang.",
+    "update": "Perbarui",
+    "updating": "Memperbarui...",
+    "manifestTitle": "URL manifest",
+    "manifestPlaceholder": "https://example.com/manifest.json",
+    "manifestHint": "Tempel URL manifest.",
+    "devUnlockTitle": "Paket pengembang",
+    "devUnlockHint": "Ketuk 7 kali untuk membuka instalasi manifest.",
+    "devUnlockToast": "Paket pengembang diaktifkan.",
+    "devIntro": "Coba Pack Corpán atau buat sendiri.",
+    "devLink": "Pelajari di Free2z"
   }
 }

@@ -248,13 +248,13 @@ export const getProgressionParams = (level: number, netCorrect: number, seed: nu
 
   // START WITH GEOMETRIES IMMEDIATELY - NO WAITING!
   // HIDE RINGS TO SEE GEOMETRIES
-  // 0-1 correct: Start with 1 geometry visible - VERY TIGHT electron cloud
+  // 0-1 correct: Start with 1 geometry visible - SUPER TIGHT near pyramid top
   if (progress < 0.04) {
     ringCount = 0  // NO RINGS
     ringScale = 0.8
     geometries.push({
-      scale: 0.35,
-      orbitRadius: 0.3,
+      scale: 0.3,
+      orbitRadius: 0.25,
       orbitSpeed: (rng() - 0.5) * 1.2, // Random direction
       rotationSpeed: 0.8,
       emissiveIntensity: 1.2
@@ -267,8 +267,8 @@ export const getProgressionParams = (level: number, netCorrect: number, seed: nu
 
     for (let i = 0; i < 2; i++) {
       geometries.push({
-        scale: 0.33,
-        orbitRadius: 0.3 + rng() * 0.15,
+        scale: 0.28,
+        orbitRadius: 0.25 + rng() * 0.1,
         orbitSpeed: (rng() - 0.5) * 1.4,
         rotationSpeed: 0.6 + rng() * 0.7,
         emissiveIntensity: 1.2
@@ -282,8 +282,8 @@ export const getProgressionParams = (level: number, netCorrect: number, seed: nu
 
     for (let i = 0; i < 3; i++) {
       geometries.push({
-        scale: 0.31,
-        orbitRadius: 0.35 + rng() * 0.15,
+        scale: 0.27,
+        orbitRadius: 0.25 + rng() * 0.12,
         orbitSpeed: (rng() - 0.5) * 1.6,
         rotationSpeed: 0.6 + rng() * 0.8,
         emissiveIntensity: 1.2
@@ -297,8 +297,8 @@ export const getProgressionParams = (level: number, netCorrect: number, seed: nu
 
     for (let i = 0; i < 4; i++) {
       geometries.push({
-        scale: 0.29,
-        orbitRadius: 0.35 + rng() * 0.2,
+        scale: 0.26,
+        orbitRadius: 0.25 + rng() * 0.15,
         orbitSpeed: (rng() - 0.5) * 1.8,
         rotationSpeed: 0.5 + rng() * 1.0,
         emissiveIntensity: 1.2 + rng() * 0.4
@@ -312,8 +312,8 @@ export const getProgressionParams = (level: number, netCorrect: number, seed: nu
 
     for (let i = 0; i < 5; i++) {
       geometries.push({
-        scale: 0.28,
-        orbitRadius: 0.4 + rng() * 0.2,
+        scale: 0.25,
+        orbitRadius: 0.3 + rng() * 0.15,
         orbitSpeed: (rng() - 0.5) * 2.0,
         rotationSpeed: 0.4 + rng() * 1.2,
         emissiveIntensity: 1.3 + rng() * 0.5
@@ -327,8 +327,8 @@ export const getProgressionParams = (level: number, netCorrect: number, seed: nu
 
     for (let i = 0; i < 6; i++) {
       geometries.push({
-        scale: 0.26 + rng() * 0.12,
-        orbitRadius: 0.4 + rng() * 0.25,
+        scale: 0.24 + rng() * 0.1,
+        orbitRadius: 0.3 + rng() * 0.2,
         orbitSpeed: (rng() - 0.5) * 2.5,
         rotationSpeed: 0.3 + rng() * 2.0,
         emissiveIntensity: 1.4 + rng() * 0.8
@@ -366,19 +366,20 @@ export const getProgressionParams = (level: number, netCorrect: number, seed: nu
  * Calculate difficulty from net correct answers (0-1 scale)
  * Uses a smooth exponential curve:
  * - netCorrect = 0 → difficulty = 0 (easiest)
- * - netCorrect = 100 → difficulty = 1.0 (hardest)
- * - Formula: 1 - exp(-netCorrect / 50)
- * This gives a smooth ramp that levels off as you approach max difficulty
+ * - netCorrect = 150 → difficulty ≈ 0.63 (approaching harder)
+ * - Formula: 1 - exp(-netCorrect / 150)
+ * This gives a VERY gradual ramp to maintain fun gameplay
  */
 export const getDifficulty = (netCorrect: number): number => {
   // Allow negative netCorrect (if player does worse than 50/50)
   // Clamp to reasonable range
-  const clamped = clamp(netCorrect, -50, 150)
+  const clamped = clamp(netCorrect, -50, 300)
 
-  // Exponential curve: 1 - e^(-x/50)
-  // This reaches ~86% of max at netCorrect=100
-  // and ~99% at netCorrect=200
-  const raw = 1 - Math.exp(-clamped / 50)
+  // Exponential curve: 1 - e^(-x/150)
+  // This reaches ~49% of max at netCorrect=100
+  // and ~63% at netCorrect=150
+  // Very gradual progression to keep correct answer probability reasonable
+  const raw = 1 - Math.exp(-clamped / 150)
 
   // Clamp to 0-1 and ensure it's never negative
   return clamp(raw, 0, 1)

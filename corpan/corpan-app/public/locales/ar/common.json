@@ -207,5 +207,31 @@
     "close": "إغلاق",
     "feedbackHint": "‏ليس في نظرك ٥ نجوم بعد؟ اضغط «إرسال ملاحظات» وأخبرنا بما يمكن تحسينه.",
     "feedbackButton": "إرسال ملاحظات عبر GitHub"
+  },
+  "packs": {
+    "title": "الحِزم",
+    "available": "الحزم المتاحة",
+    "emptyAvailable": "لا توجد حزم بعد.",
+    "installed": "الحزم المثبتة",
+    "emptyInstalled": "لا توجد حزم مثبتة.",
+    "get": "احصل",
+    "open": "افتح",
+    "remove": "إزالة",
+    "version": "الإصدار {{version}}",
+    "refresh": "تحديث",
+    "free": "مجاني",
+    "install": "تثبيت",
+    "installing": "جارٍ التثبيت...",
+    "installFailed": "فشل التثبيت.",
+    "update": "تحديث",
+    "updating": "جارٍ التحديث...",
+    "manifestTitle": "رابط البيان",
+    "manifestPlaceholder": "https://example.com/manifest.json",
+    "manifestHint": "الصق رابط البيان.",
+    "devUnlockTitle": "حزم المطوّر",
+    "devUnlockHint": "اضغط 7 مرات لفتح تثبيت البيان.",
+    "devUnlockToast": "تم تفعيل حزم المطوّر.",
+    "devIntro": "جرّب حزمة Corpán أو أنشئ حزمة خاصة بك.",
+    "devLink": "اعرف المزيد على Free2z"
   }
 }

@@ -17,6 +17,7 @@ import { Separator } from "./ui/separator";
 
 import About from "./About";
 import { useSettingsStore } from "@/store/settings";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import StacksManager from "./StacksManager";
 import { JumpToTTSButton } from "./JumpToTTSButton";
@@ -34,13 +35,55 @@ export function SettingsModal({
   onLaunchGame?: (game: InstalledGame) => void;
 }) {
   const { t } = useTranslation();
-  const showGames =
-    import.meta.env.DEV || import.meta.env.VITE_ENABLE_GAMES === "true";
+  const [devTapCount, setDevTapCount] = useState(0);
+  const [devModeEnabled, setDevModeEnabled] = useState(() => {
+    try {
+      return localStorage.getItem("corpan:dev-games") === "true";
+    } catch {
+      return false;
+    }
+  });
+  const [devToastVisible, setDevToastVisible] = useState(false);
+  const devToastTimeoutRef = useRef<number | null>(null);
+  const showGames = useMemo(() => {
+    return import.meta.env.VITE_ENABLE_GAMES === "true" || devModeEnabled;
+  }, [devModeEnabled]);
 
   const dir = useSettingsStore((s) => s.dir);
   // const primaryLang = useSettingsStore((s) => s.primaryLang());
   const setOnboarded = useSettingsStore((s) => s.setOnboarded);
   const setOnboardingStep = useSettingsStore((s) => s.setOnboardingStep);
+  useEffect(() => {
+    return () => {
+      if (devToastTimeoutRef.current !== null) {
+        window.clearTimeout(devToastTimeoutRef.current);
+      }
+    };
+  }, []);
+  const handleDevTap = () => {
+    if (devModeEnabled) {
+      return;
+    }
+    const next = devTapCount + 1;
+    if (next >= 7) {
+      setDevModeEnabled(true);
+      try {
+        localStorage.setItem("corpan:dev-games", "true");
+      } catch {
+        // Ignore localStorage failures.
+      }
+      setDevToastVisible(true);
+      if (devToastTimeoutRef.current !== null) {
+        window.clearTimeout(devToastTimeoutRef.current);
+      }
+      devToastTimeoutRef.current = window.setTimeout(() => {
+        setDevToastVisible(false);
+      }, 2400);
+      setDevTapCount(0);
+    } else {
+      setDevTapCount(next);
+    }
+  };
 
   return (
     <Dialog open={open} onOpenChange={onClose}>
@@ -71,15 +114,6 @@ export function SettingsModal({
         <DomainPicker />
         <RomanizationToggle />
 
-        {showGames ? (
-          <GamesPanel
-            onLaunchGame={(game) => {
-              onClose();
-              onLaunchGame?.(game);
-            }}
-          />
-        ) : null}
-
         {/* Global onboarding controls */}
         <Button
           onClick={() => {
@@ -109,6 +143,44 @@ export function SettingsModal({
         </div>
 
         <About />
+        <div className="mt-6 space-y-3 rounded-md border border-gray-200 bg-white/80 p-4">
+          <div className="space-y-1">
+            <div className="text-sm font-semibold">
+              {t("packs.devUnlockTitle")}
+            </div>
+            <div className="text-xs text-muted-foreground">
+              {t("packs.devUnlockHint")}
+            </div>
+          </div>
+          <Button
+            type="button"
+            variant="outline"
+            onClick={handleDevTap}
+            disabled={devModeEnabled}
+            className="w-full"
+          >
+            {devModeEnabled
+              ? t("packs.devUnlockToast")
+              : t("packs.devUnlockTitle")}
+          </Button>
+        </div>
+        {showGames ? (
+          <GamesPanel
+            showDevInstall={devModeEnabled}
+            showPlatformPacks={false}
+            onLaunchGame={(game) => {
+              onClose();
+              onLaunchGame?.(game);
+            }}
+          />
+        ) : null}
+        {devToastVisible ? (
+          <div className="pointer-events-none fixed inset-x-0 bottom-6 flex justify-center">
+            <div className="rounded-full bg-neutral-900 px-4 py-2 text-xs font-medium text-white shadow-lg">
+              {t("packs.devUnlockToast")}
+            </div>
+          </div>
+        ) : null}
       </DialogContent>
     </Dialog>
   );

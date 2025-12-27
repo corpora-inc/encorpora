@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from "react"
+import { useTranslation } from "react-i18next"
 
 import { Button } from "@/components/ui/button"
 import { Separator } from "@/components/ui/separator"
@@ -17,9 +18,16 @@ import { installPack } from "@/contentPacks/install"
 
 export function GamesPanel({
   onLaunchGame,
+  showDevInstall = false,
+  showCatalog = false,
+  showPlatformPacks = false,
 }: {
   onLaunchGame?: (game: InstalledGame) => void
+  showDevInstall?: boolean
+  showCatalog?: boolean
+  showPlatformPacks?: boolean
 }) {
+  const { t } = useTranslation()
   const gamesMap = useGamesStore((s) => s.games)
   const games = useMemo(() => {
     return Object.values(gamesMap).sort((a, b) => a.name.localeCompare(b.name))
@@ -37,10 +45,11 @@ export function GamesPanel({
   const [catalogError, setCatalogError] = useState<string | null>(null)
   const [catalogLoading, setCatalogLoading] = useState(false)
   const [catalogInstalling, setCatalogInstalling] = useState<string | null>(null)
+  const packsInfoUrl = "https://free2z.cash/corpora"
 
   const handleInstall = async () => {
     if (!manifestUrl.trim()) {
-      setError("Enter a manifest URL.")
+      setError(t("packs.manifestHint"))
       return
     }
     setInstalling(true)
@@ -59,41 +68,50 @@ export function GamesPanel({
       })
       setManifestUrl("")
     } catch (err) {
-      const message = err instanceof Error ? err.message : "Install failed"
-      setError(message)
+      setError(t("packs.installFailed"))
     } finally {
       setInstalling(false)
     }
   }
 
   const refreshPlatformPacks = useCallback(async () => {
+    if (!showPlatformPacks) {
+      return
+    }
     setPlatformLoading(true)
     setPlatformError(null)
     const packs = await listPlatformPacks()
     setPlatformPacks(packs)
     setPlatformLoading(false)
-  }, [])
+  }, [showPlatformPacks])
 
   const refreshCatalog = useCallback(async () => {
+    if (!showCatalog) {
+      return
+    }
     setCatalogLoading(true)
     setCatalogError(null)
     const next = await fetchGameCatalog()
     setCatalog(next)
     setCatalogLoading(false)
-  }, [])
+  }, [showCatalog])
 
   useEffect(() => {
-    void refreshPlatformPacks()
+    if (showPlatformPacks) {
+      void refreshPlatformPacks()
+    }
   }, [refreshPlatformPacks])
 
   useEffect(() => {
-    void refreshCatalog()
+    if (showCatalog) {
+      void refreshCatalog()
+    }
   }, [refreshCatalog])
 
   const handleLaunchPlatform = async (pack: PlatformPack) => {
     const manifest = await resolvePlatformPackManifestUrl(pack.id)
     if (!manifest) {
-      setPlatformError("Unable to resolve manifest for this pack.")
+      setPlatformError(t("packs.installFailed"))
       return
     }
     onLaunchGame?.({
@@ -127,7 +145,7 @@ export function GamesPanel({
 
   const handleCatalogInstall = async (entry: CatalogGame) => {
     if (!entry.manifestUrl) {
-      setCatalogError("Catalog entry is missing a manifest URL.")
+      setCatalogError(t("packs.installFailed"))
       return
     }
     setCatalogInstalling(entry.id)
@@ -146,8 +164,7 @@ export function GamesPanel({
         source: result.source,
       })
     } catch (err) {
-      const message = err instanceof Error ? err.message : "Install failed"
-      setCatalogError(message)
+      setCatalogError(t("packs.installFailed"))
     } finally {
       setCatalogInstalling(null)
     }
@@ -157,84 +174,78 @@ export function GamesPanel({
     <div className="mt-6">
       <Separator className="my-5" />
       <div className="space-y-2">
-        <h3 className="text-lg font-semibold">Games</h3>
-        <p className="text-sm text-muted-foreground">
-          Install a game from a manifest URL, then launch it in full-screen.
-        </p>
+        <h3 className="text-lg font-semibold">{t("packs.title")}</h3>
+        <p className="text-sm text-muted-foreground">{t("packs.devIntro")}</p>
+        <a
+          className="text-sm font-medium text-sky-700 hover:text-sky-900 hover:underline"
+          href={packsInfoUrl}
+          target="_blank"
+          rel="noreferrer"
+        >
+          {t("packs.devLink")}
+        </a>
       </div>
 
-      <div className="mt-6 space-y-3">
-        <div className="flex items-center justify-between">
-          <h4 className="text-base font-semibold">Available games</h4>
-          <Button
-            size="sm"
-            variant="ghost"
-            onClick={refreshCatalog}
-            disabled={catalogLoading}
-          >
-            {catalogLoading ? "Refreshing..." : "Refresh"}
-          </Button>
-        </div>
-        {catalogError ? (
-          <div className="text-sm text-red-600">{catalogError}</div>
-        ) : null}
-        {availableCatalog.length === 0 ? (
-          <div className="text-sm text-muted-foreground">
-            No games available right now.
-          </div>
-        ) : (
-          availableCatalog.map((entry) => (
-            <div
-              key={entry.id}
-              className="flex flex-col gap-3 rounded-md border border-gray-200 bg-white/80 p-4"
+      {showCatalog ? (
+        <div className="mt-6 space-y-3">
+          <div className="flex items-center justify-between">
+            <h4 className="text-base font-semibold">{t("packs.available")}</h4>
+            <Button
+              size="sm"
+              variant="ghost"
+              onClick={refreshCatalog}
+              disabled={catalogLoading}
             >
-              <div>
-                <div className="text-base font-medium">{entry.name}</div>
-                <div className="text-xs text-muted-foreground">{entry.id}</div>
-                {entry.description ? (
-                  <div className="mt-2 text-sm text-muted-foreground">
-                    {entry.description}
+              {t("packs.refresh")}
+            </Button>
+          </div>
+          {catalogError ? (
+            <div className="text-sm text-red-600">{catalogError}</div>
+          ) : null}
+          {availableCatalog.length === 0 ? (
+            <div className="text-sm text-muted-foreground">
+              {t("packs.emptyAvailable")}
+            </div>
+          ) : (
+            availableCatalog.map((entry) => (
+              <div
+                key={entry.id}
+                className="flex flex-col gap-3 rounded-md border border-gray-200 bg-white/80 p-4"
+              >
+                <div>
+                  <div className="text-base font-medium">{entry.name}</div>
+                  <div className="text-xs text-muted-foreground">{entry.id}</div>
+                  {entry.description ? (
+                    <div className="mt-2 text-sm text-muted-foreground">
+                      {entry.description}
+                    </div>
+                  ) : null}
+                </div>
+                <div className="flex flex-wrap items-center gap-2">
+                  <Button
+                    size="sm"
+                    onClick={() => handleCatalogInstall(entry)}
+                    disabled={catalogInstalling === entry.id}
+                  >
+                    {catalogInstalling === entry.id
+                      ? t("packs.installing")
+                      : t("packs.get")}
+                  </Button>
+                  <div className="text-xs text-muted-foreground">
+                    {entry.purchase?.priceLabel ?? t("packs.free")}
                   </div>
-                ) : null}
-              </div>
-              <div className="flex flex-wrap items-center gap-2">
-                <Button
-                  size="sm"
-                  onClick={() => handleCatalogInstall(entry)}
-                  disabled={catalogInstalling === entry.id}
-                >
-                  {catalogInstalling === entry.id ? "Installing..." : "Get"}
-                </Button>
-                <div className="text-xs text-muted-foreground">
-                  {entry.purchase?.priceLabel ?? "Free"}
                 </div>
               </div>
-            </div>
-          ))
-        )}
-      </div>
-
-      <div className="mt-4 space-y-3">
-        <input
-          className="w-full rounded-md border border-gray-200 px-3 py-2 text-sm"
-          placeholder="https://example.com/corpan-game/manifest.json"
-          value={manifestUrl}
-          onChange={(event) => setManifestUrl(event.target.value)}
-        />
-        <Button
-          variant="outline"
-          onClick={handleInstall}
-          disabled={installing}
-        >
-          {installing ? "Installing..." : "Install game"}
-        </Button>
-        {error ? <div className="text-sm text-red-600">{error}</div> : null}
-      </div>
+            ))
+          )}
+        </div>
+      ) : null}
 
       <div className="mt-6 space-y-3">
+        <h4 className="text-base font-semibold">{t("packs.installed")}</h4>
         {games.length === 0 ? (
           <div className="text-sm text-muted-foreground">
-            No games installed yet.
+            {t("packs.emptyInstalled")}
           </div>
         ) : (
           games.map((game) => (
@@ -244,28 +255,23 @@ export function GamesPanel({
             >
               <div>
                 <div className="text-base font-medium">{game.name}</div>
-                <div className="text-xs text-muted-foreground">
-                  {game.id}
-                </div>
+                <div className="text-xs text-muted-foreground">{game.id}</div>
                 {game.version ? (
                   <div className="text-xs text-muted-foreground">
-                    Version {game.version}
+                    {t("packs.version", { version: game.version })}
                   </div>
                 ) : null}
               </div>
               <div className="flex flex-wrap gap-2">
-                <Button
-                  size="sm"
-                  onClick={() => onLaunchGame?.(game)}
-                >
-                  Launch
+                <Button size="sm" onClick={() => onLaunchGame?.(game)}>
+                  {t("packs.open")}
                 </Button>
                 <Button
                   size="sm"
                   variant="ghost"
                   onClick={() => removeGame(game.id)}
                 >
-                  Remove
+                  {t("packs.remove")}
                 </Button>
                 {getUpdateForGame(game) ? (
                   <Button
@@ -276,62 +282,80 @@ export function GamesPanel({
                     }
                     disabled={catalogInstalling === game.id}
                   >
-                    {catalogInstalling === game.id ? "Updating..." : "Update"}
+                    {catalogInstalling === game.id
+                      ? t("packs.updating")
+                      : t("packs.update")}
                   </Button>
                 ) : null}
               </div>
-              {getUpdateForGame(game) ? (
-                <div className="text-xs text-muted-foreground">
-                  Update available: {game.version} →{" "}
-                  {getUpdateForGame(game)?.version}
-                </div>
-              ) : null}
             </div>
           ))
         )}
       </div>
 
-      <div className="mt-8 space-y-3">
-        <div className="flex items-center justify-between">
-          <h4 className="text-base font-semibold">Purchased packs</h4>
-          <Button
-            size="sm"
-            variant="ghost"
-            onClick={refreshPlatformPacks}
-            disabled={platformLoading}
-          >
-            {platformLoading ? "Refreshing..." : "Refresh"}
-          </Button>
-        </div>
-        <p className="text-sm text-muted-foreground">
-          iOS/Android purchases will appear here when running on device.
-        </p>
-        {platformError ? (
-          <div className="text-sm text-red-600">{platformError}</div>
-        ) : null}
-        {platformPacks.length === 0 ? (
-          <div className="text-sm text-muted-foreground">
-            No platform packs detected.
-          </div>
-        ) : (
-          platformPacks.map((pack) => (
-            <div
-              key={pack.id}
-              className="flex flex-col gap-3 rounded-md border border-gray-200 bg-white/80 p-4"
-            >
-              <div>
-                <div className="text-base font-medium">{pack.name}</div>
-                <div className="text-xs text-muted-foreground">{pack.id}</div>
-              </div>
-              <div className="flex flex-wrap gap-2">
-                <Button size="sm" onClick={() => handleLaunchPlatform(pack)}>
-                  Launch
-                </Button>
-              </div>
+      {showDevInstall ? (
+        <div className="mt-6 space-y-3 rounded-md border border-gray-200 bg-white/70 p-4">
+          <div className="space-y-1">
+            <div className="text-sm font-semibold">{t("packs.manifestTitle")}</div>
+            <div className="text-xs text-muted-foreground">
+              {t("packs.manifestHint")}
             </div>
-          ))
-        )}
-      </div>
+          </div>
+          <input
+            className="w-full rounded-md border border-gray-200 px-3 py-2 text-sm"
+            placeholder={t("packs.manifestPlaceholder")}
+            value={manifestUrl}
+            onChange={(event) => setManifestUrl(event.target.value)}
+          />
+          <div className="flex flex-wrap items-center gap-3">
+            <Button onClick={handleInstall} disabled={installing}>
+              {installing ? t("packs.installing") : t("packs.install")}
+            </Button>
+          </div>
+          {error ? <div className="text-sm text-red-600">{error}</div> : null}
+        </div>
+      ) : null}
+
+      {showPlatformPacks ? (
+        <div className="mt-8 space-y-3">
+          <div className="flex items-center justify-between">
+            <h4 className="text-base font-semibold">{t("packs.available")}</h4>
+            <Button
+              size="sm"
+              variant="ghost"
+              onClick={refreshPlatformPacks}
+              disabled={platformLoading}
+            >
+              {t("packs.refresh")}
+            </Button>
+          </div>
+          {platformError ? (
+            <div className="text-sm text-red-600">{platformError}</div>
+          ) : null}
+          {platformPacks.length === 0 ? (
+            <div className="text-sm text-muted-foreground">
+              {t("packs.emptyAvailable")}
+            </div>
+          ) : (
+            platformPacks.map((pack) => (
+              <div
+                key={pack.id}
+                className="flex flex-col gap-3 rounded-md border border-gray-200 bg-white/80 p-4"
+              >
+                <div>
+                  <div className="text-base font-medium">{pack.name}</div>
+                  <div className="text-xs text-muted-foreground">{pack.id}</div>
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  <Button size="sm" onClick={() => handleLaunchPlatform(pack)}>
+                    {t("packs.open")}
+                  </Button>
+                </div>
+              </div>
+            ))
+          )}
+        </div>
+      ) : null}
     </div>
   )
 }

@@ -1950,7 +1950,8 @@ export const createHoverRunner = (
     }
 
     // Spawn new phrases if needed (staggered spawning for chaos mode)
-    const maxPhrases = tuningStore.getState().runtime.currentPhraseCount
+    // Use ceil to allow smooth float-based phrase count
+    const maxPhrases = Math.ceil(tuningStore.getState().runtime.currentPhraseCount)
     if (!state.roundSolved && state.activePhrases.length < maxPhrases) {
       if (state.spawnCooldown > 0) {
         gameStore.update((draft) => {
@@ -1970,7 +1971,8 @@ export const createHoverRunner = (
           const speed = getPhraseSpeed()
           const travelDistance = PHRASE_START_Z - PHRASE_END_Z
           const travelTime = travelDistance / speed
-          const baseSpawnInterval = travelTime / maxPhrases
+          // Spawn phrases 25% more frequently for better flow
+          const baseSpawnInterval = travelTime / (maxPhrases * 1.25)
           // Add random noise for variety (+/- 15%)
           const noise = (Math.random() - 0.5) * 0.3 * baseSpawnInterval
           const spawnInterval = Math.max(0.3, baseSpawnInterval + noise)
@@ -2119,6 +2121,7 @@ export const createHoverRunner = (
           if (tuningStore.getState().settings.sfxEnabled) sfx.playSuccess()
           const points = getPhraseScore(round.answer, round.answerLang)
           tuningStore.getState().recordCorrect(points)
+          hoverboard.adjustParticleIntensity?.(true)
           tuningStore.getState().recordPhraseResult(
             current.spec.id,
             round.promptLang,
@@ -2134,6 +2137,7 @@ export const createHoverRunner = (
           })
           const round = gameStore.getState().round
           tuningStore.getState().recordWrong()
+          hoverboard.adjustParticleIntensity?.(false)
           if (round) {
             tuningStore.getState().recordPhraseResult(
               current.spec.id,
@@ -2166,6 +2170,7 @@ export const createHoverRunner = (
             }
           })
           tuningStore.getState().recordWrong()
+          hoverboard.adjustParticleIntensity?.(false)
           if (tuningStore.getState().settings.sfxEnabled) sfx.playFail()
           createFailParticles(scene, passedPosition)
           triggerScreenShake()
@@ -2198,6 +2203,7 @@ export const createHoverRunner = (
             }
           })
           tuningStore.getState().recordWrong()
+          hoverboard.adjustParticleIntensity?.(false)
           if (tuningStore.getState().settings.sfxEnabled) sfx.playFail()
           createFailParticles(scene, endPosition)
           triggerScreenShake()
@@ -2241,6 +2247,7 @@ export const createHoverRunner = (
     activePivot.position.y = 0.08 + Math.sin(hoverTime * 5) * 0.03
 
     hoverboard.updateLogo?.(hoverTime, camera)
+
     hoverboard.updateSacredGeometries?.(hoverTime, dt)
 
     // Update visual progression based on level + netCorrect

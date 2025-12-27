@@ -35,4 +35,4 @@ Content packs are web bundles loaded at runtime via a manifest URL. The host inj
 
 ## Platform delivery (no server)
 
-For iOS/Android IAP delivery, see `corpan-app/src/contentPacks/PLATFORM_DELIVERY.md`.
+For production delivery, see `corpan-app/src/contentPacks/DELIVERY_PLAN.md`.

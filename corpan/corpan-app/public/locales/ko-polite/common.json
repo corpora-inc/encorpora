@@ -207,5 +207,31 @@
     "close": "닫기",
     "feedbackHint": "아직 별 5개까지는 아니다 싶으시면, 낮은 평점 대신 ‘피드백 보내기’를 눌러 개선점을 알려 주세요.",
     "feedbackButton": "GitHub에서 피드백 보내기"
+  },
+  "packs": {
+    "title": "팩",
+    "available": "사용 가능한 팩",
+    "emptyAvailable": "아직 팩이 없습니다.",
+    "installed": "설치된 팩",
+    "emptyInstalled": "설치된 팩이 없습니다.",
+    "get": "받기",
+    "open": "열기",
+    "remove": "삭제",
+    "version": "버전 {{version}}",
+    "refresh": "새로고침",
+    "free": "무료",
+    "install": "설치",
+    "installing": "설치 중...",
+    "installFailed": "설치에 실패했습니다.",
+    "update": "업데이트",
+    "updating": "업데이트 중...",
+    "manifestTitle": "매니페스트 URL",
+    "manifestPlaceholder": "https://example.com/manifest.json",
+    "manifestHint": "매니페스트 URL을 붙여넣어 주세요.",
+    "devUnlockTitle": "개발자 팩",
+    "devUnlockHint": "매니페스트 설치를 열려면 7번 탭하세요.",
+    "devUnlockToast": "개발자 팩이 활성화되었습니다.",
+    "devIntro": "Corpán 팩을 사용해 보거나 직접 만들어 보세요.",
+    "devLink": "Free2z에서 더 알아보기"
   }
 }

@@ -11,6 +11,7 @@ import {
   Scene,
   SceneLoader,
   StandardMaterial,
+  Texture,
   TransformNode,
   Vector3,
 } from "@babylonjs/core"
@@ -555,11 +556,9 @@ export const createHoverboard = (scene: Scene) => {
 
   const initGeometryPool = () => {
     if (!corpanRig || activeVariant.id !== "corpan") {
-      console.log('[GEOMETRY] Cannot init pool - no corpanRig or wrong variant')
       return
     }
 
-    console.log('[GEOMETRY] Initializing geometry pool with 6 shapes')
 
     // Color palette for variety
     const colors = [
@@ -602,26 +601,35 @@ export const createHoverboard = (scene: Scene) => {
       material.freeze() // Freeze material for performance
       mesh.material = material
 
-      // Create magical particle trail for this geometry - MASSIVE TEST
-      const particleTrail = new ParticleSystem(`trail-${i}`, 100, scene) // LOTS of particles
-      particleTrail.particleTexture = null
-      particleTrail.emitter = new Vector3(0, 0, 0)
-      particleTrail.minSize = 0.2 // HUGE
-      particleTrail.maxSize = 0.4 // MASSIVE
-      particleTrail.minLifeTime = 1.0
-      particleTrail.maxLifeTime = 2.0
-      particleTrail.emitRate = 100 // TONS of particles
-      particleTrail.minEmitPower = 0.5
-      particleTrail.maxEmitPower = 1.0
-      particleTrail.updateSpeed = 0.016
-      particleTrail.gravity = new Vector3(0, 0, 0) // NO gravity
-      // BRIGHT WHITE for testing
-      particleTrail.color1 = new Color4(1, 1, 1, 1)
-      particleTrail.color2 = new Color4(1, 1, 1, 1)
-      particleTrail.colorDead = new Color4(1, 1, 1, 0)
-      particleTrail.blendMode = ParticleSystem.BLENDMODE_ONEONE // BRIGHTEST blend mode
+      // Create physics-based magical particle trail
+      const particleTrail = new ParticleSystem(`trail-${i}`, 40, scene)
 
-      console.log(`[PARTICLES] Created trail ${i}: capacity=100 emitRate=100`)
+      // Create a simple procedural texture for particles (required - null texture = invisible!)
+      const particleTexture = new Texture('data:image/svg+xml;base64,' + btoa(`
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32">
+          <circle cx="16" cy="16" r="15" fill="white" opacity="0.9"/>
+        </svg>
+      `), scene)
+      particleTrail.particleTexture = particleTexture
+
+      particleTrail.emitter = new Vector3(0, 0, 0)
+      particleTrail.minSize = 0.015
+      particleTrail.maxSize = 0.04
+      particleTrail.minLifeTime = 0.6
+      particleTrail.maxLifeTime = 1.2
+      particleTrail.emitRate = 30 // Will be adjusted based on performance
+      particleTrail.minEmitPower = 0.2
+      particleTrail.maxEmitPower = 0.6
+      particleTrail.updateSpeed = 0.016
+      // Particles trail behind avatar in positive Z direction
+      particleTrail.direction1 = new Vector3(-0.2, -0.1, 0.5)
+      particleTrail.direction2 = new Vector3(0.2, 0.1, 1.0)
+      particleTrail.gravity = new Vector3(0, -0.2, 0) // Slight downward drift
+      // Use geometry color with more transparency
+      particleTrail.color1 = new Color4(colors[i % colors.length].r, colors[i % colors.length].g, colors[i % colors.length].b, 0.9)
+      particleTrail.color2 = new Color4(colors[i % colors.length].r, colors[i % colors.length].g, colors[i % colors.length].b, 0.5)
+      particleTrail.colorDead = new Color4(colors[i % colors.length].r * 0.2, colors[i % colors.length].g * 0.2, colors[i % colors.length].b * 0.2, 0)
+      particleTrail.blendMode = ParticleSystem.BLENDMODE_ADD
 
       geometryPool.push({
         mesh,
@@ -635,8 +643,6 @@ export const createHoverboard = (scene: Scene) => {
         particleTrail
       })
     }
-
-    console.log(`[GEOMETRY] Pool initialized with ${geometryPool.length} geometries`)
   }
 
   const configureGeometries = (specs: Array<{
@@ -678,31 +684,35 @@ export const createHoverboard = (scene: Scene) => {
       }
 
       geom.mesh.setEnabled(true)
-      if (geom.particleTrail) {
-        geom.particleTrail.start()
-        console.log(`[PARTICLES] Started trail for geometry ${i}: isStarted=${geom.particleTrail.isStarted()} emitter=`, geom.particleTrail.emitter)
-      }
+      geom.particleTrail?.start()
     }
   }
 
-  let particleDebugCounter = 0
+  // Particle intensity tracking for continuous feedback
+  let particleIntensity = 1.0 // 0.5 to 2.0 range
+
+  const adjustParticleIntensity = (correct: boolean) => {
+    if (correct) {
+      particleIntensity = Math.min(2.0, particleIntensity + 0.1)
+    } else {
+      particleIntensity = Math.max(0.5, particleIntensity - 0.15)
+    }
+
+    // Update all active particle systems
+    geometryPool.forEach((geom) => {
+      if (geom.inUse && geom.particleTrail) {
+        geom.particleTrail.emitRate = 30 * particleIntensity
+      }
+    })
+  }
+
   const updateSacredGeometries = (time: number, dt: number) => {
     if (!corpanRig || activeVariant.id !== "corpan") return
 
     // Get avatar world position
     const avatarWorldPos = corpanRig.earPivot.getAbsolutePosition()
 
-    // Debug particles every 2 seconds
-    particleDebugCounter += dt
-    const debugParticles = particleDebugCounter > 2
-
-    if (debugParticles) {
-      particleDebugCounter = 0
-      const activeParticles = geometryPool.filter(g => g.inUse && g.particleTrail?.isStarted())
-      console.log(`[PARTICLES] ${activeParticles.length} active particle systems`)
-    }
-
-    geometryPool.forEach((geom, idx) => {
+    geometryPool.forEach((geom) => {
       if (!geom.inUse) return
 
       // Update orbit angle (can be negative for reverse direction)
@@ -734,10 +744,6 @@ export const createHoverboard = (scene: Scene) => {
       // Update particle emitter position to follow mesh
       if (geom.particleTrail && geom.particleTrail.emitter instanceof Vector3) {
         geom.particleTrail.emitter.set(worldX, worldY, worldZ)
-
-        if (debugParticles && idx === 0) {
-          console.log(`[PARTICLES] Emitter ${idx} at (${worldX.toFixed(2)}, ${worldY.toFixed(2)}, ${worldZ.toFixed(2)}) isStarted=${geom.particleTrail.isStarted()}`)
-        }
       }
 
       // Rotate the geometry itself (faster and more chaotic)
@@ -796,6 +802,7 @@ export const createHoverboard = (scene: Scene) => {
     initGeometryPool,
     configureGeometries,
     updateSacredGeometries,
+    adjustParticleIntensity,
     disposeGeometryPool,
     updateLogo: (time: number, camera?: Camera | null) => {
       if (!corpanRig || activeVariant.id !== "corpan") {

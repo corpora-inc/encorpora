@@ -160,17 +160,15 @@ export const tuningStore = createStore<TuningState>()(
           }
 
           // Auto-adjust difficulty if enabled
-          // Phrase count increases gradually with streak
+          // Phrase count increases continuously on each correct answer
           let nextPhraseCount = state.runtime.currentPhraseCount
           if (state.settings.autoAdjustDifficulty) {
-            // Gradually increase phrase count based on streak
-            // Every 3 correct in a row, add a phrase (up to max)
-            if (nextStreak % 3 === 0 && nextStreak > 0) {
-              nextPhraseCount = Math.min(
-                state.runtime.currentPhraseCount + 1,
-                state.settings.maxSimultaneousPhrases
-              )
-            }
+            // Gradual continuous increase: +0.17 per correct answer
+            // Takes ~6 correct to reach 2 phrases, ~12 correct to reach 3 phrases
+            nextPhraseCount = Math.min(
+              state.runtime.currentPhraseCount + 0.17,
+              state.settings.maxSimultaneousPhrases
+            )
           }
 
           return {
@@ -195,10 +193,11 @@ export const tuningStore = createStore<TuningState>()(
           const nextNetCorrect = state.stats.netCorrect - 1
 
           // Auto-adjust difficulty if enabled
-          // Reduce phrase count back to 1 on failure
+          // Reduce phrase count gradually on failure
           let nextPhraseCount = state.runtime.currentPhraseCount
           if (state.settings.autoAdjustDifficulty) {
-            nextPhraseCount = 1
+            // Gradual decrease: -0.25 per wrong answer (slightly more than increase)
+            nextPhraseCount = Math.max(1, state.runtime.currentPhraseCount - 0.25)
           }
 
           return {

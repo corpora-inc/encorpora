@@ -207,5 +207,31 @@
     "remindLater": "ไว้ทีหลัง",
     "noThanks": "ไม่ล่ะ ขอบคุณ",
     "close": "ปิด"
+  },
+  "packs": {
+    "title": "แพ็ก",
+    "available": "แพ็กที่มี",
+    "emptyAvailable": "ยังไม่มีแพ็ก",
+    "installed": "แพ็กที่ติดตั้ง",
+    "emptyInstalled": "ยังไม่ได้ติดตั้งแพ็ก",
+    "get": "รับ",
+    "open": "เปิด",
+    "remove": "ลบ",
+    "version": "เวอร์ชัน {{version}}",
+    "refresh": "รีเฟรช",
+    "free": "ฟรี",
+    "install": "ติดตั้ง",
+    "installing": "กำลังติดตั้ง...",
+    "installFailed": "ติดตั้งไม่สำเร็จ",
+    "update": "อัปเดต",
+    "updating": "กำลังอัปเดต...",
+    "manifestTitle": "URL แมนิฟেস্ট",
+    "manifestPlaceholder": "https://example.com/manifest.json",
+    "manifestHint": "วาง URL แมนิฟেস্ট",
+    "devUnlockTitle": "แพ็กสำหรับนักพัฒนา",
+    "devUnlockHint": "แตะ 7 ครั้งเพื่อปลดล็อกการติดตั้งด้วยแมนิฟেস্ট",
+    "devUnlockToast": "ปลดล็อกแพ็กนักพัฒนาแล้ว",
+    "devIntro": "ลองแพ็ก Corpán หรือสร้างของคุณเอง",
+    "devLink": "ดูเพิ่มที่ Free2z"
   }
 }
