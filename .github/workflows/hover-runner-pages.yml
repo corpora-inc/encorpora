@@ -33,7 +33,7 @@ jobs:
 
       - name: Install
         working-directory: corpan/games/hover-runner
-        run: npm ci
+        run: npm install --legacy-peer-deps
 
       - name: Build
         working-directory: corpan/games/hover-runner
