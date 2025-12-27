@@ -164,8 +164,7 @@ export default function ContentPackHost({
       manifestRequestUrl,
       window.location.href
     ).toString()
-    const manifestFetchUrl = proxyUrlIfNeeded(resolvedManifestUrl)
-  const shouldDevReload =
+    const shouldDevReload =
       isLocalhostUrl(resolvedManifestUrl) || isPrivateNetworkUrl(resolvedManifestUrl)
     let activeManifestSourceUrl = resolvedManifestUrl
 

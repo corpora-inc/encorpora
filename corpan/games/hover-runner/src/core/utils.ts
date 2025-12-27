@@ -1,6 +1,6 @@
 import { Color3, PBRMaterial, Scene } from "@babylonjs/core"
 import { tuningStore } from "../tuningStore"
-import { ROAD, TIMING, SPEED, TEXT } from "./constants"
+import { ROAD, TIMING, TEXT } from "./constants"
 
 export const clamp = (value: number, min: number, max: number) =>
   Math.min(Math.max(value, min), max)
@@ -229,7 +229,7 @@ export type ProgressionParams = {
   lightCount: number // Number of dynamic lights (1-5)
 }
 
-export const getProgressionParams = (level: number, netCorrect: number, seed: number): ProgressionParams => {
+export const getProgressionParams = (_level: number, netCorrect: number, seed: number): ProgressionParams => {
   // JUICY PROGRESSION - primarily based on immediate performance (netCorrect)
   // Every 2-3 correct answers should show visible change!
 

@@ -10,7 +10,7 @@ export type RoadPalette = {
 
 export type RoadState = {
   mesh: Mesh
-  update: (dt: number) => void
+  update: (dt: number, frameCount?: number) => void
   getFarCenterX: () => number
   getTravel: () => number
   getCurveAt: (z: number) => number

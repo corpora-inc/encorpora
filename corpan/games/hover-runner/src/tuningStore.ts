@@ -1,12 +1,7 @@
 import { createStore } from "zustand/vanilla"
 import { createJSONStorage, persist } from "zustand/middleware"
-import { SPEED } from "./core/constants"
 
-// iOS detection helper for performance tuning
-const isIOS = (): boolean => {
-  if (typeof navigator === "undefined") return false
-  return /iPhone|iPad|iPod|iOS/i.test(navigator.userAgent)
-}
+// iOS detection removed - no longer needed for performance tuning
 
 export type TuningSettings = {
   // Core gameplay
@@ -101,9 +96,6 @@ const DEFAULT_SETTINGS: TuningSettings = {
   maxMaxMisses: 4,
   minCorrectProb: 0.1, // 10% at hardest (1 in 10)
 }
-
-const clamp = (value: number, min: number, max: number) =>
-  Math.min(Math.max(value, min), max)
 
 // XP progression curve: exponential scaling for 20 levels
 // Level 1→2: 10 XP, Level 2→3: 15 XP, etc.

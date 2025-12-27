@@ -61,6 +61,28 @@ const parsePurchase = (value: unknown): PurchaseInfo | undefined => {
 const getDefaultCatalog = () =>
   import.meta.env.DEV ? DEV_CATALOG : DEFAULT_CATALOG
 
+const parseCatalog = (data: unknown): CatalogGame[] | null => {
+  if (!Array.isArray(data)) return null
+  const parsed: CatalogGame[] = []
+  for (const item of data) {
+    if (!item || typeof item !== "object") continue
+    const record = item as Record<string, unknown>
+    const id = toStringValue(record.id)
+    const name = toStringValue(record.name)
+    const version = toStringValue(record.version)
+    if (!id || !version) continue
+    parsed.push({
+      id,
+      name: name || id,
+      version,
+      manifestUrl: toOptionalString(record.manifestUrl),
+      description: toOptionalString(record.description),
+      purchase: parsePurchase(record.purchase),
+    })
+  }
+  return parsed
+}
+
 export const fetchGameCatalog = async (): Promise<CatalogGame[]> => {
   const urlValue = getCatalogUrl()
   if (!urlValue) {
@@ -71,25 +93,8 @@ export const fetchGameCatalog = async (): Promise<CatalogGame[]> => {
     const res = await fetch(url, { cache: "no-store" })
     if (!res.ok) return getDefaultCatalog()
     const data = (await res.json()) as unknown
-    if (!Array.isArray(data)) return getDefaultCatalog()
-    return data
-      .map((item) => {
-        if (!item || typeof item !== "object") return null
-        const record = item as Record<string, unknown>
-        const id = toStringValue(record.id)
-        const name = toStringValue(record.name)
-        const version = toStringValue(record.version)
-        if (!id || !version) return null
-        return {
-          id,
-          name: name || id,
-          version,
-          manifestUrl: toOptionalString(record.manifestUrl),
-          description: toOptionalString(record.description),
-          purchase: parsePurchase(record.purchase),
-        }
-      })
-      .filter((game): game is CatalogGame => !!game)
+    const parsed = parseCatalog(data)
+    return parsed ?? getDefaultCatalog()
   } catch {
     return getDefaultCatalog()
   }

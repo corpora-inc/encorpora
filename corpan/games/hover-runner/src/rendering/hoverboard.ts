@@ -774,11 +774,14 @@ export const createHoverboard = (scene: Scene) => {
       if (!corpanRig || activeVariant.id !== "corpan") {
         return
       }
+      // corpanRig is guaranteed non-null after the check above
+      const rig = corpanRig
+
       // Base heights CENTERED on electricity (at ~0.8)
       const baseHeights = [0.6, 0.8, 1.0]
 
       // Update each ring's visibility, position, and scale
-      corpanRig.rings.forEach((ring, index) => {
+      rig.rings.forEach((ring, index) => {
         const shouldShow = index < ringCount
         ring.setEnabled(shouldShow)
 
@@ -791,7 +794,7 @@ export const createHoverboard = (scene: Scene) => {
 
           // Update alpha for crown ring
           if (index === 2) {
-            corpanRig.glowMats[2].alpha = alpha
+            rig.glowMats[2].alpha = alpha
             if (ring.material instanceof StandardMaterial) {
               ring.material.alpha = alpha
             }

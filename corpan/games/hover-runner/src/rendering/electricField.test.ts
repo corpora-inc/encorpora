@@ -1,4 +1,4 @@
-import { describe, it, expect, vi, beforeEach } from "vitest"
+import { describe, it, expect, beforeEach } from "vitest"
 import { Scene, Engine, NullEngine, TransformNode, Color3, Vector3, Matrix } from "@babylonjs/core"
 import { createElectricField } from "./electricField"
 
@@ -21,7 +21,7 @@ describe("ElectricField", () => {
   })
 
   it("should have valid particle system callback signatures", () => {
-    const field = createElectricField(scene, parent, new Color3(0.4, 0.9, 1))
+    createElectricField(scene, parent, new Color3(0.4, 0.9, 1))
 
     // Find the particle systems
     const beamSparks = scene.particleSystems.find((ps) =>
@@ -36,15 +36,18 @@ describe("ElectricField", () => {
 
     if (!beamSparks) return
 
+    // Cast to any to access implementation-specific properties
+    const sparksImpl = beamSparks as any
+
     // Test startPositionFunction signature
     // Expected: (worldMatrix, positionToUpdate, particle, isLocal?) => void
-    if (beamSparks.startPositionFunction) {
+    if (sparksImpl.startPositionFunction) {
       const mockMatrix = Matrix.Identity()
       const mockPosition = Vector3.Zero()
       const mockParticle = { position: Vector3.Zero() } as any
 
       expect(() => {
-        beamSparks.startPositionFunction!(
+        sparksImpl.startPositionFunction(
           mockMatrix,
           mockPosition,
           mockParticle,
@@ -58,13 +61,13 @@ describe("ElectricField", () => {
 
     // Test startDirectionFunction signature
     // Expected: (worldMatrix, directionToUpdate, particle, isLocal?) => void
-    if (beamSparks.startDirectionFunction) {
+    if (sparksImpl.startDirectionFunction) {
       const mockMatrix = Matrix.Identity()
       const mockDirection = Vector3.Zero()
       const mockParticle = { position: Vector3.Zero() } as any
 
       expect(() => {
-        beamSparks.startDirectionFunction!(
+        sparksImpl.startDirectionFunction(
           mockMatrix,
           mockDirection,
           mockParticle,
@@ -82,20 +85,23 @@ describe("ElectricField", () => {
   })
 
   it("should handle invalid worldMatrix gracefully", () => {
-    const field = createElectricField(scene, parent, new Color3(0.4, 0.9, 1))
+    createElectricField(scene, parent, new Color3(0.4, 0.9, 1))
 
     const beamSparks = scene.particleSystems.find((ps) =>
       ps.name === "beam-sparks"
     )
 
-    if (!beamSparks?.startDirectionFunction) return
+    // Cast to any to access implementation-specific properties
+    const sparksImpl = beamSparks as any
+
+    if (!sparksImpl?.startDirectionFunction) return
 
     const mockDirection = Vector3.Zero()
     const mockParticle = { position: Vector3.Zero() } as any
 
     // Test with null/undefined worldMatrix
     expect(() => {
-      beamSparks.startDirectionFunction!(
+      sparksImpl.startDirectionFunction(
         null as any,
         mockDirection,
         mockParticle,
@@ -106,7 +112,7 @@ describe("ElectricField", () => {
     // Test with malformed matrix (missing m array)
     const badMatrix = { m: undefined } as any
     expect(() => {
-      beamSparks.startDirectionFunction!(
+      sparksImpl.startDirectionFunction(
         badMatrix,
         mockDirection,
         mockParticle,
@@ -117,7 +123,7 @@ describe("ElectricField", () => {
     // Test with incomplete matrix
     const incompleteMatrix = { m: [1, 2, 3] } as any
     expect(() => {
-      beamSparks.startDirectionFunction!(
+      sparksImpl.startDirectionFunction(
         incompleteMatrix,
         mockDirection,
         mockParticle,

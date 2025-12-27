@@ -26,7 +26,6 @@ import type { EntryOut, HostApi, StackConfig } from "./sdk/types"
 // Core modules
 import {
   GRID,
-  SECTOR,
   MOVE_SPEED,
   PHRASE_START_Z,
   PHRASE_END_Z,
@@ -85,9 +84,7 @@ export const createHoverRunner = (
   initialState?: InitialState
 ) => {
   let disposed = false
-  const isIOS =
-    typeof navigator !== "undefined" &&
-    /iPhone|iPad|iPod|iOS/i.test(navigator.userAgent)
+  // iOS detection removed - no longer needed for platform-specific hacks
   const debugFlags =
     typeof window !== "undefined" ? new URLSearchParams(window.location.search) : null
   const showFps = debugFlags?.has("fps") ?? false
@@ -1628,8 +1625,7 @@ export const createHoverRunner = (
       !arraysEqual(prev.levels, next.levels) ||
       prev.rate !== next.rate ||
       prev.textSize !== next.textSize ||
-      prev.showRomanization !== next.showRomanization ||
-      JSON.stringify(prev.voicePrefs) !== JSON.stringify(next.voicePrefs)
+      prev.showRomanization !== next.showRomanization
     )
 
     if (!hasChanged) {
@@ -1791,10 +1787,10 @@ export const createHoverRunner = (
   const syncTuningControls = () => {
     const { settings } = tuningStore.getState()
     tuningControls.forEach((control) => {
-      const next = settings[control.key] as number
+      const next = settings[control.key as keyof typeof settings] as number
       if (Number(control.input.value) !== next) {
         control.input.value = String(next)
-        control.setValue(next)
+        // Note: tuningControls is currently empty, this code path is unused
       }
     })
   }

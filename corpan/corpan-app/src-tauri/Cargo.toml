@@ -34,5 +34,5 @@ sha2 = "0.10"
 zip = "2.2.2"
 # tauri-plugin-tts = { git = "https://github.com/httpjamesm/tauri-plugin-tts.git" }
 # tauri-plugin-tts = { git = "https://github.com/skyl/tauri-plugin-tts.git", branch = "force-language-android" }
-tauri-plugin-tts = { git = "https://github.com/skyl/tauri-plugin-tts.git", branch = "packs" }
+tauri-plugin-tts = { git = "https://github.com/skyl/tauri-plugin-tts.git", branch = "packz" }
 # tauri-plugin-tts = { path = "/Users/skyl/Code/github/tauri-plugin-tts" }

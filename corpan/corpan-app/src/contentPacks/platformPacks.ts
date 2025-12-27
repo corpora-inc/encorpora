@@ -20,19 +20,19 @@ export const listPlatformPacks = async (): Promise<PlatformPack[]> => {
   try {
     const result = await invoke<unknown>("plugin:game_packs|list_game_packs")
     if (!Array.isArray(result)) return []
-    return result
-      .map((item) => {
-        if (!item || typeof item !== "object") return null
-        const record = item as Record<string, unknown>
-        const id = toStringValue(record.id)
-        if (!id) return null
-        return {
-          id,
-          name: toStringValue(record.name) || id,
-          version: toOptionalString(record.version),
-        }
+    const packs: PlatformPack[] = []
+    for (const item of result) {
+      if (!item || typeof item !== "object") continue
+      const record = item as Record<string, unknown>
+      const id = toStringValue(record.id)
+      if (!id) continue
+      packs.push({
+        id,
+        name: toStringValue(record.name) || id,
+        version: toOptionalString(record.version),
       })
-      .filter((pack): pack is PlatformPack => !!pack)
+    }
+    return packs
   } catch {
     return []
   }

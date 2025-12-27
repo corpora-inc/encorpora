@@ -25,6 +25,42 @@ const getStackSnapshot = () => {
   }
 }
 
+type SettingsState = ReturnType<typeof useSettingsStore.getState>
+
+type StackSlice = {
+  languages: string[]
+  domains: string[]
+  levels: string[]
+  rate: number
+  textSize: string
+  showRomanization: boolean
+  voicePrefs: SettingsState["voicePrefs"]
+}
+
+const getStackSlice = (state: SettingsState): StackSlice => {
+  return {
+    languages: state.languages,
+    domains: state.domains,
+    levels: state.levels,
+    rate: state.rate,
+    textSize: state.textSize,
+    showRomanization: state.showRomanization,
+    voicePrefs: state.voicePrefs,
+  }
+}
+
+const isSameStackSlice = (a: StackSlice, b: StackSlice) => {
+  return (
+    a.languages === b.languages &&
+    a.domains === b.domains &&
+    a.levels === b.levels &&
+    a.rate === b.rate &&
+    a.textSize === b.textSize &&
+    a.showRomanization === b.showRomanization &&
+    a.voicePrefs === b.voicePrefs
+  )
+}
+
 export const createHostApi = (): HostApi => {
   let disposed = false
   let running = false
@@ -138,36 +174,15 @@ export const createHostApi = (): HostApi => {
 
       // Selective subscription: only fire when stack config changes
       // Exclude _voiceCycleIndex to prevent voice cycling from triggering game updates
-      const unsubscribe = useSettingsStore.subscribe(
-        (state) => ({
-          // Only include fields that matter for stack config
-          languages: state.languages,
-          domains: state.domains,
-          levels: state.levels,
-          rate: state.rate,
-          textSize: state.textSize,
-          showRomanization: state.showRomanization,
-          voicePrefs: state.voicePrefs,
-          // Explicitly exclude: _voiceCycleIndex, stacks, activeStackId
-        }),
-        (selected) => {
-          emit()
-        },
-        {
-          // Use shallow equality for the selected slice
-          equalityFn: (a, b) => {
-            return (
-              a.languages === b.languages &&
-              a.domains === b.domains &&
-              a.levels === b.levels &&
-              a.rate === b.rate &&
-              a.textSize === b.textSize &&
-              a.showRomanization === b.showRomanization &&
-              a.voicePrefs === b.voicePrefs
-            )
-          },
+      let previous = getStackSlice(useSettingsStore.getState())
+      const unsubscribe = useSettingsStore.subscribe((state) => {
+        const next = getStackSlice(state)
+        if (isSameStackSlice(previous, next)) {
+          return
         }
-      )
+        previous = next
+        emit()
+      })
       return () => unsubscribe()
     },
     getRandomEntry: async () => {
