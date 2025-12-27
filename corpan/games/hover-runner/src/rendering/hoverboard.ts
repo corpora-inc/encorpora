@@ -15,6 +15,7 @@ import {
   TransformNode,
   Vector3,
 } from "@babylonjs/core"
+
 import corpanLogoUrl from "../assets/models/corpan_logo.glb"
 import type { HoverVariant } from "../core/types"
 import { createEmissivePbr, tuneLogoMaterial, scaleColor } from "../core/utils"
