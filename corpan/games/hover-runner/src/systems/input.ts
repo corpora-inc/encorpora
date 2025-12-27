@@ -24,17 +24,33 @@ export const initInput = (
   const SMOOTHING_FACTOR_LARGE = 0.4 // Light smoothing for large movements
   const LARGE_MOVEMENT_THRESHOLD = 0.3 // Threshold to detect intentional large movements
 
+  // Detect iOS/Safari
+  const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+    (navigator.userAgent.includes("Mac") && "ontouchend" in document)
+
   // Screen orientation detection for sensor remapping
   const getScreenOrientation = (): number => {
+    let angle = 0
     // Try modern API first
     if (typeof window !== "undefined" && window.screen?.orientation?.angle != null) {
-      return window.screen.orientation.angle
+      angle = window.screen.orientation.angle
     }
     // Fallback to deprecated API
-    if (typeof window !== "undefined" && (window as typeof window & { orientation?: number }).orientation != null) {
-      return (window as typeof window & { orientation?: number }).orientation ?? 0
+    else if (typeof window !== "undefined" && (window as typeof window & { orientation?: number }).orientation != null) {
+      angle = (window as typeof window & { orientation?: number }).orientation ?? 0
     }
-    return 0
+
+    // iOS reports angles in reverse: when device is portrait, it says 90°
+    // When device is landscape, it says 0° or 180°
+    // So we need to invert the mapping for iOS
+    if (isIOS) {
+      if (angle === 0) return 90  // iOS portrait = our landscape-right
+      if (angle === 90) return 0  // iOS landscape-right = our portrait
+      if (angle === 180) return 270  // iOS portrait-inverted = our landscape-left
+      if (angle === 270 || angle === -90) return 180  // iOS landscape-left = our portrait-inverted
+    }
+
+    return angle
   }
 
   const onKey = (event: KeyboardEvent) => {
@@ -88,31 +104,37 @@ export const initInput = (
 
     // Get screen orientation and remap sensor axes accordingly
     const screenAngle = getScreenOrientation()
+    console.log("[ORIENTATION] screenAngle:", screenAngle, "gamma:", event.gamma.toFixed(1), "beta:", event.beta.toFixed(1))
     let rawX = 0
     let rawY = 0
 
     // Remap axes based on device orientation
     // Portrait (0°): gamma = X (left/right), beta = Y (forward/back)
-    // Landscape-right (90°): beta = X, -gamma = Y
+    // Landscape-right (90°): beta = X, -gamma = Y (flipped for iOS)
     // Portrait-inverted (180°): -gamma = X, -beta = Y
-    // Landscape-left (270°): -beta = X, gamma = Y
+    // Landscape-left (270°): -beta = X, gamma = Y (flipped for iOS)
     if (screenAngle === 90) {
-      // Landscape-right
+      // Landscape-right (flipped for iOS)
+      console.log("[ORIENTATION] Using landscape-right mapping")
       rawX = event.beta
       rawY = -event.gamma
     } else if (screenAngle === 180) {
       // Portrait-inverted
+      console.log("[ORIENTATION] Using portrait-inverted mapping")
       rawX = -event.gamma
       rawY = -event.beta
     } else if (screenAngle === 270 || screenAngle === -90) {
-      // Landscape-left
+      // Landscape-left (flipped for iOS)
+      console.log("[ORIENTATION] Using landscape-left mapping")
       rawX = -event.beta
       rawY = event.gamma
     } else {
       // Portrait (0° or default)
+      console.log("[ORIENTATION] Using portrait mapping")
       rawX = event.gamma
       rawY = event.beta
     }
+    console.log("[ORIENTATION] rawX:", rawX.toFixed(1), "rawY:", rawY.toFixed(1))
 
     // Calculate target values from remapped sensors
     const targetX = clamp(rawX / 16, -1, 1)

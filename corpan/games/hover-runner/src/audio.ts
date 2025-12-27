@@ -1,8 +1,19 @@
-import affirmativeUrl from "./assets/sfx/affirmative.wav"
-import nopeUrl from "./assets/sfx/nope.wav"
 import musicUrl from "./assets/sfx/luna.mp3"
 
-type SfxKey = "success" | "fail"
+// Affirmative sounds
+import affirmBig1 from "./assets/sfx/affirmative-short-tight-big-1.mp3"
+import affirmBig2 from "./assets/sfx/affirmative-short-tight-big-2.mp3"
+import affirmBig3 from "./assets/sfx/affirmative-short-tight-big-3.mp3"
+
+// Negative sounds
+import nopeBig1 from "./assets/sfx/nope-short-tight-big-1.mp3"
+import nopeBig2 from "./assets/sfx/nope-short-tight-big-2.mp3"
+import nopeBig3 from "./assets/sfx/nope-short-tight-big-3.mp3"
+
+const affirmativeSounds = [affirmBig1, affirmBig2, affirmBig3]
+const negativeSounds = [nopeBig1, nopeBig2, nopeBig3]
+
+const pickRandom = <T>(arr: T[]): T => arr[Math.floor(Math.random() * arr.length)]
 
 type SfxHandle = {
   unlock: () => void
@@ -23,8 +34,13 @@ type AudioPoolEntry = {
 }
 
 const MAX_POOL = 4
-export const DEFAULT_SFX_VOLUME = 0.05
+export const DEFAULT_SFX_VOLUME = 0.5
 export const DEFAULT_MUSIC_VOLUME = 0.3
+
+// iOS Safari applies heavy volume limiting, boost to compensate
+const isIOS = typeof navigator !== "undefined" &&
+  /iPhone|iPad|iPod|iOS/i.test(navigator.userAgent)
+const IOS_VOLUME_BOOST = 1.5 // 50% boost for iOS
 
 const clamp = (value: number, min: number, max: number) =>
   Math.min(Math.max(value, min), max)
@@ -32,7 +48,8 @@ const clamp = (value: number, min: number, max: number) =>
 const createHtmlAudio = (url: string, volume: number) => {
   const audio = new Audio(url)
   audio.preload = "auto"
-  audio.volume = clamp(volume, 0, 1)
+  const boostedVolume = isIOS ? volume * IOS_VOLUME_BOOST : volume
+  audio.volume = clamp(boostedVolume, 0, 1)
   return audio
 }
 
@@ -63,14 +80,11 @@ const getPoolAudio = (entry: AudioPoolEntry) => {
 const createSfxHandle = (): SfxHandle => {
   let sfxVolume = DEFAULT_SFX_VOLUME
   let musicVolume = DEFAULT_MUSIC_VOLUME
-  const urls: Record<SfxKey, string> = {
-    success: affirmativeUrl,
-    fail: nopeUrl,
-  }
-  const htmlPools = new Map<SfxKey, AudioPoolEntry>([
-    ["success", createPool(urls.success, sfxVolume)],
-    ["fail", createPool(urls.fail, sfxVolume)],
-  ])
+
+  // Store all possible sound URLs for preloading
+  const allSoundUrls = [...affirmativeSounds, ...negativeSounds]
+
+  const htmlPools = new Map<string, AudioPoolEntry>()
   const AudioCtx =
     typeof window !== "undefined"
       ? (window.AudioContext ||
@@ -84,8 +98,8 @@ const createSfxHandle = (): SfxHandle => {
   let musicBuffer: AudioBuffer | null = null
   let musicBufferPromise: Promise<AudioBuffer> | null = null
   let musicPlaying = false
-  const buffers = new Map<SfxKey, AudioBuffer>()
-  const bufferPromises = new Map<SfxKey, Promise<AudioBuffer>>()
+  const buffers = new Map<string, AudioBuffer>()
+  const bufferPromises = new Map<string, Promise<AudioBuffer>>()
 
   const ensureContext = () => {
     if (!AudioCtx) {
@@ -95,58 +109,60 @@ const createSfxHandle = (): SfxHandle => {
       ctx = new AudioCtx()
       // Create separate gain nodes for SFX and music
       sfxGain = ctx.createGain()
-      sfxGain.gain.value = sfxVolume
+      const boostedSfxVolume = isIOS ? sfxVolume * IOS_VOLUME_BOOST : sfxVolume
+      sfxGain.gain.value = Math.min(boostedSfxVolume, 1)
       sfxGain.connect(ctx.destination)
 
       musicGain = ctx.createGain()
-      musicGain.gain.value = musicVolume
+      const boostedMusicVolume = isIOS ? musicVolume * IOS_VOLUME_BOOST : musicVolume
+      musicGain.gain.value = Math.min(boostedMusicVolume, 1)
       musicGain.connect(ctx.destination)
     }
     return ctx
   }
 
-  const ensureBuffer = (key: SfxKey) => {
-    if (buffers.has(key) || bufferPromises.has(key)) {
+  const ensureBuffer = (url: string) => {
+    if (buffers.has(url) || bufferPromises.has(url)) {
       return
     }
     const context = ensureContext()
     if (!context) {
       return
     }
-    const url = urls[key]
     const promise = fetch(url)
       .then((res) => res.arrayBuffer())
       .then((data) => context.decodeAudioData(data))
       .then((buffer) => {
-        buffers.set(key, buffer)
-        bufferPromises.delete(key)
+        buffers.set(url, buffer)
+        bufferPromises.delete(url)
         return buffer
       })
       .catch(() => {
-        bufferPromises.delete(key)
+        bufferPromises.delete(url)
         throw new Error("Failed to decode audio")
       })
-    bufferPromises.set(key, promise)
+    bufferPromises.set(url, promise)
   }
 
-  const playHtml = (key: SfxKey) => {
-    const entry = htmlPools.get(key)
+  const playHtml = (url: string) => {
+    let entry = htmlPools.get(url)
     if (!entry) {
-      return
+      entry = createPool(url, sfxVolume)
+      htmlPools.set(url, entry)
     }
     const audio = getPoolAudio(entry)
     void audio.play().catch(() => {})
   }
 
-  const playWebAudio = (key: SfxKey) => {
+  const playWebAudio = (url: string) => {
     const context = ensureContext()
     if (!context || !sfxGain) {
-      playHtml(key)
+      playHtml(url)
       return
     }
-    const buffer = buffers.get(key)
+    const buffer = buffers.get(url)
     if (!buffer) {
-      playHtml(key)
+      playHtml(url)
       return
     }
     const source = context.createBufferSource()
@@ -230,19 +246,21 @@ const createSfxHandle = (): SfxHandle => {
     if (context.state === "suspended") {
       void context.resume()
     }
-    ensureBuffer("success")
-    ensureBuffer("fail")
+    // Preload all sound buffers
+    allSoundUrls.forEach((url) => ensureBuffer(url))
     ensureMusicBuffer()
   }
 
   const setSfxVolume = (next: number) => {
     sfxVolume = clamp(next, 0, 1)
     if (sfxGain) {
-      sfxGain.gain.value = sfxVolume
+      const boostedVolume = isIOS ? sfxVolume * IOS_VOLUME_BOOST : sfxVolume
+      sfxGain.gain.value = Math.min(boostedVolume, 1)
     }
     htmlPools.forEach((entry) => {
       entry.pool.forEach((audio) => {
-        audio.volume = sfxVolume
+        const boostedVolume = isIOS ? sfxVolume * IOS_VOLUME_BOOST : sfxVolume
+        audio.volume = clamp(boostedVolume, 0, 1)
       })
     })
   }
@@ -250,7 +268,8 @@ const createSfxHandle = (): SfxHandle => {
   const setMusicVolume = (next: number) => {
     musicVolume = clamp(next, 0, 1)
     if (musicGain) {
-      musicGain.gain.value = musicVolume
+      const boostedVolume = isIOS ? musicVolume * IOS_VOLUME_BOOST : musicVolume
+      musicGain.gain.value = Math.min(boostedVolume, 1)
     }
   }
 
@@ -287,8 +306,14 @@ const createSfxHandle = (): SfxHandle => {
     setVolume,
     setSfxVolume,
     setMusicVolume,
-    playSuccess: () => playWebAudio("success"),
-    playFail: () => playWebAudio("fail"),
+    playSuccess: () => {
+      const soundUrl = pickRandom(affirmativeSounds)
+      playWebAudio(soundUrl)
+    },
+    playFail: () => {
+      const soundUrl = pickRandom(negativeSounds)
+      playWebAudio(soundUrl)
+    },
     playMusic,
     stopMusic,
     isMusicPlaying,

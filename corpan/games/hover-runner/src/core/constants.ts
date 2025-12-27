@@ -33,13 +33,13 @@ export const LANE_COLS = [GRID.leftX, GRID.rightX] as const
 // Game timing constants (not user-adjustable)
 export const TIMING = {
   respawnDelay: 0.2,
-  promptLeadMs: 200,
+  promptLeadMs: 1200,
   introHoldMs: 400,
   introRepeatMs: 200,
-  celebrationMs: 600,
-  postCelebrateMs: 200,
+  celebrationMs: 1600,
+  postCelebrateMs: 2000,
   // Gap AFTER phrase finishes speaking (added to estimated speech duration)
-  speakRepeatMs: 5000,
+  speakRepeatMs: 8000,
   speakRepeatMsIOS: 8000,
 } as const
 

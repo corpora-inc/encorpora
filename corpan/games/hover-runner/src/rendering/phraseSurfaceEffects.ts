@@ -11,10 +11,8 @@ import {
 import { scaleColor } from "../core/utils"
 
 export const createPhraseSurfaceEffects = (scene: Scene, phrase: Mesh, baseColor: Color3) => {
-  const isIOS =
-    typeof navigator !== "undefined" && /iPhone|iPad|iPod|iOS/i.test(navigator.userAgent)
-  const impactCount = isIOS ? 100 : 150
-  const microCount = isIOS ? 50 : 75
+  const impactCount = 150
+  const microCount = 75
   // IMPACT SPARKS - focused particles at beam contact points
   // Reduced from 300 to 150 for performance
   const impactSparks = new ParticleSystem(

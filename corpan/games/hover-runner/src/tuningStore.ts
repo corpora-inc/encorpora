@@ -76,6 +76,7 @@ export type TuningState = {
   addCoins: (count: number) => void
   removeCoins: (count: number) => void
   resetStats: () => void
+  resetNetCorrect: () => void
 }
 
 const DEFAULT_SETTINGS: TuningSettings = {
@@ -86,7 +87,7 @@ const DEFAULT_SETTINGS: TuningSettings = {
   musicEnabled: true,
   sfxEnabled: true,
   musicVolume: 0.3,
-  sfxVolume: 0.05,
+  sfxVolume: 0.5,
   // Advanced gameplay baselines
   baselineSpeed: 12,
   baselineCorrectProb: 0.5, // 50% correct at start (1 in 2)
@@ -279,6 +280,18 @@ export const tuningStore = createStore<TuningState>()(
             netCorrect: state.stats.netCorrect, // Preserve difficulty progression
           },
         })),
+      resetNetCorrect: () => {
+        console.log("[STORE] resetNetCorrect called")
+        set((state) => {
+          console.log("[STORE] Setting netCorrect from", state.stats.netCorrect, "to 0")
+          return {
+            stats: {
+              ...state.stats,
+              netCorrect: 0,
+            },
+          }
+        })
+      },
     }),
     {
       name: "hover-runner-tuning",

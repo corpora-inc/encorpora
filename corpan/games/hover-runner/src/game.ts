@@ -101,6 +101,12 @@ export const createHoverRunner = (
 
   const sfx = getSfx()
   const scoreAnimator = createScoreAnimator(root)
+
+  // References for reset functionality
+  let skinSelectElement: HTMLSelectElement | null = null
+  let applySkinFunction: ((id: string) => void) | null = null
+  let forceProgressionUpdate: (() => void) | null = null
+
   let wakeLock: { release: () => Promise<void> } | null = null
   const requestWakeLock = async () => {
     const wakeLockApi = (navigator as typeof navigator & {
@@ -370,9 +376,9 @@ export const createHoverRunner = (
     "SFX Vol",
     "sfxVolume",
     0.01,
-    0.5,
+    1.0,
     0.01,
-    "Sound effects volume. SFX are normalized loud, so low values work best.",
+    "Sound effects volume (1-100%).",
     audioSection
   )
 
@@ -500,10 +506,7 @@ export const createHoverRunner = (
   resetButton.type = "button"
   resetButton.textContent = "Reset All to Defaults"
   resetButton.addEventListener("click", () => {
-    const confirmed = confirm(
-      "Reset all settings to default values? This cannot be undone."
-    )
-    if (!confirmed) return
+    console.log("[RESET] Button clicked!")
 
     // Get default settings
     const defaults = {
@@ -512,7 +515,7 @@ export const createHoverRunner = (
       musicEnabled: true,
       sfxEnabled: true,
       musicVolume: 0.3,
-      sfxVolume: 0.05,
+      sfxVolume: 0.5,
       baselineSpeed: 12,
       baselineCorrectProb: 0.5,
       baselineDistractors: 2,
@@ -545,18 +548,42 @@ export const createHoverRunner = (
           // Update display value if it exists
           const valueDisplay = input.parentElement?.querySelector(".tuning-value")
           if (valueDisplay) {
-            valueDisplay.textContent = String(value)
+            const step = Number(input.step)
+            const numValue = Number(value)
+            valueDisplay.textContent = Number.isInteger(step) ? `${numValue}` : numValue.toFixed(2)
           }
         }
       }
     })
 
-    // Handle audio settings
-    if (defaults.musicEnabled) {
+    // Reset netCorrect to 0 (but preserve other stats)
+    console.log("[RESET] netCorrect BEFORE:", tuningStore.getState().stats.netCorrect)
+    tuningStore.getState().resetNetCorrect()
+    console.log("[RESET] netCorrect AFTER:", tuningStore.getState().stats.netCorrect)
+
+    // Apply audio settings properly
+    sfx.setMusicVolume(defaults.musicVolume)
+    sfx.setSfxVolume(defaults.sfxVolume)
+    // Only start/stop music if the enabled state changed
+    const currentMusicPlaying = sfx.isMusicPlaying()
+    if (defaults.musicEnabled && !currentMusicPlaying) {
       sfx.playMusic()
-    } else {
+    } else if (!defaults.musicEnabled && currentMusicPlaying) {
       sfx.stopMusic()
     }
+
+    // Reset skin to default (first skin)
+    if (skinSelectElement && applySkinFunction) {
+      skinSelectElement.value = skinSelectElement.options[0]?.value || ""
+      applySkinFunction(skinSelectElement.value)
+    }
+
+    // Force avatar progression update
+    if (forceProgressionUpdate) {
+      forceProgressionUpdate()
+    }
+
+    console.log("[RESET] Complete!")
   })
   tuningPanel.appendChild(resetButton)
 
@@ -649,11 +676,11 @@ export const createHoverRunner = (
   hudBackdrop.addEventListener("click", onBackdropClick)
   hudExit.addEventListener("click", requestExit)
 
-  const maxDevicePixelRatio = isIOS ? 1.5 : 2
+  const maxDevicePixelRatio = 2
   const engine = new Engine(canvas, true, {
     preserveDrawingBuffer: false,
     stencil: true,
-    antialias: !isIOS,
+    antialias: true,
   })
   engine.setHardwareScalingLevel(
     1 / Math.min(window.devicePixelRatio || 1, maxDevicePixelRatio)
@@ -698,14 +725,14 @@ export const createHoverRunner = (
   accent.diffuse = new Color3(0.6, 0.7, 0.9)
 
   const glow = new GlowLayer("glow", scene, {
-    blurKernelSize: isIOS ? 32 : 64,
+    blurKernelSize: 64,
   })
-  glow.intensity = isIOS ? 0.35 : 0.45
+  glow.intensity = 0.45
   glow.addExcludedMesh(sky.mesh)
 
-  const shadowGenerator = new ShadowGenerator(isIOS ? 512 : 1024, accent)
+  const shadowGenerator = new ShadowGenerator(1024, accent)
   shadowGenerator.useBlurExponentialShadowMap = true
-  shadowGenerator.blurKernel = isIOS ? 8 : 16
+  shadowGenerator.blurKernel = 16
   shadowGenerator.bias = 0.0005
   shadowGenerator.normalBias = 0.02
 
@@ -1022,6 +1049,8 @@ export const createHoverRunner = (
     accent.diffuse = next.accent.color
     activeSkin = next
   }
+  // Store reference for reset functionality
+  applySkinFunction = applySkin
   applySkin(activeSkin.id)
 
   const skinPanel = document.createElement("div")
@@ -1030,6 +1059,8 @@ export const createHoverRunner = (
   skinLabel.textContent = "Skin"
   const skinSelect = document.createElement("select")
   skinSelect.className = "skin-select"
+  // Store reference for reset functionality
+  skinSelectElement = skinSelect
   skins.forEach((skin) => {
     const option = document.createElement("option")
     option.value = skin.id
@@ -1093,6 +1124,13 @@ export const createHoverRunner = (
   let highlightTime = 0
   let lastProgressionLevel = -1
   let lastProgressionNetCorrect = -1
+
+  // Store reference for forcing progression update on reset
+  forceProgressionUpdate = () => {
+    console.log("[PROGRESSION] Force update - resetting tracking vars")
+    lastProgressionLevel = -1
+    lastProgressionNetCorrect = -1
+  }
 
   const gameStore = createGameStore<GameState>({
     stackConfig: initialState?.stackConfig ?? hostApi.getStackConfig(),

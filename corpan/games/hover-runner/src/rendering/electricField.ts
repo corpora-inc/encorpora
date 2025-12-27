@@ -108,11 +108,9 @@ export const createElectricField = (
   const root = new TransformNode("electric-field", scene)
   root.parent = parent
   root.position.y = 0.2
-  const isIOS =
-    typeof navigator !== "undefined" && /iPhone|iPad|iPod|iOS/i.test(navigator.userAgent)
-  const mainPointCount = isIOS ? 18 : 22
-  const branchPointCount = isIOS ? 14 : 18
-  const lightCount = isIOS ? 2 : 3
+  const mainPointCount = 22
+  const branchPointCount = 18
+  const lightCount = 3
 
   const start = new Vector3(0, 1.25, 0)
   const startPos = new Vector3()
@@ -198,7 +196,7 @@ export const createElectricField = (
 
   // Beam sparks - particles that fly off the central beam trunk
   // Reduced from 800 to 400 for performance
-  const beamSparks = new ParticleSystem("beam-sparks", isIOS ? 240 : 400, scene)
+  const beamSparks = new ParticleSystem("beam-sparks", 400, scene)
   beamSparks.particleTexture = new Texture(
     "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMTYiIGN5PSIxNiIgcj0iMTAiIGZpbGw9IndoaXRlIi8+PC9zdmc+",
     scene
@@ -295,7 +293,7 @@ export const createElectricField = (
   }
 
   // Reduced from 220 to 110 for performance
-  const coreSparkSystem = new ParticleSystem("core-sparks", isIOS ? 70 : 110, scene)
+  const coreSparkSystem = new ParticleSystem("core-sparks", 110, scene)
   coreSparkSystem.particleTexture = new Texture(
     "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMTYiIGN5PSIxNiIgcj0iOCIgZmlsbD0id2hpdGUiLz48L3N2Zz4=",
     scene
@@ -361,8 +359,7 @@ export const createElectricField = (
 
   // Performance optimization: frame counter for reduced geometry updates
   let frameCount = 0
-  // iOS performance: update less frequently (every 3 frames vs 2)
-  const updateInterval = isIOS ? 3 : 2 // Update geometry every N frames
+  const updateInterval = 2 // Update geometry every N frames
 
   const update = (
     dt: number,
