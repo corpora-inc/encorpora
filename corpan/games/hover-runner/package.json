@@ -11,8 +11,6 @@
     "test:run": "vitest run",
     "test:coverage": "vitest run --coverage",
     "build:models": "blender --background --python scripts/svg_to_3d_v2.py",
-    "build:assets": "node scripts/sync-asset-packs.mjs",
-    "build:all": "npm run build && npm run build:assets",
     "dev:corpan": "node scripts/dev-corpan.mjs",
     "preview": "vite preview"
   },

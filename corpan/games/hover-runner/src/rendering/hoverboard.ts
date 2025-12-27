@@ -602,23 +602,26 @@ export const createHoverboard = (scene: Scene) => {
       material.freeze() // Freeze material for performance
       mesh.material = material
 
-      // Create magical particle trail for this geometry
-      const particleTrail = new ParticleSystem(`trail-${i}`, 30, scene) // 30 particles per trail
-      particleTrail.particleTexture = null // No texture for performance
-      particleTrail.emitter = new Vector3(0, 0, 0) // Will update position every frame
-      particleTrail.minSize = 0.05
-      particleTrail.maxSize = 0.12
-      particleTrail.minLifeTime = 0.4
-      particleTrail.maxLifeTime = 0.8
-      particleTrail.emitRate = 50
-      particleTrail.minEmitPower = 0.1
-      particleTrail.maxEmitPower = 0.3
+      // Create magical particle trail for this geometry - MASSIVE TEST
+      const particleTrail = new ParticleSystem(`trail-${i}`, 100, scene) // LOTS of particles
+      particleTrail.particleTexture = null
+      particleTrail.emitter = new Vector3(0, 0, 0)
+      particleTrail.minSize = 0.2 // HUGE
+      particleTrail.maxSize = 0.4 // MASSIVE
+      particleTrail.minLifeTime = 1.0
+      particleTrail.maxLifeTime = 2.0
+      particleTrail.emitRate = 100 // TONS of particles
+      particleTrail.minEmitPower = 0.5
+      particleTrail.maxEmitPower = 1.0
       particleTrail.updateSpeed = 0.016
-      particleTrail.gravity = new Vector3(0, -0.5, 0) // Downward drift (like sparks falling)
-      particleTrail.color1 = new Color4(colors[i % colors.length].r, colors[i % colors.length].g, colors[i % colors.length].b, 1.0)
-      particleTrail.color2 = new Color4(colors[i % colors.length].r, colors[i % colors.length].g, colors[i % colors.length].b, 0.7)
-      particleTrail.colorDead = new Color4(colors[i % colors.length].r * 0.3, colors[i % colors.length].g * 0.3, colors[i % colors.length].b * 0.3, 0)
-      particleTrail.blendMode = ParticleSystem.BLENDMODE_ADD // Additive blending for glow effect
+      particleTrail.gravity = new Vector3(0, 0, 0) // NO gravity
+      // BRIGHT WHITE for testing
+      particleTrail.color1 = new Color4(1, 1, 1, 1)
+      particleTrail.color2 = new Color4(1, 1, 1, 1)
+      particleTrail.colorDead = new Color4(1, 1, 1, 0)
+      particleTrail.blendMode = ParticleSystem.BLENDMODE_ONEONE // BRIGHTEST blend mode
+
+      console.log(`[PARTICLES] Created trail ${i}: capacity=100 emitRate=100`)
 
       geometryPool.push({
         mesh,
@@ -675,17 +678,31 @@ export const createHoverboard = (scene: Scene) => {
       }
 
       geom.mesh.setEnabled(true)
-      geom.particleTrail?.start()
+      if (geom.particleTrail) {
+        geom.particleTrail.start()
+        console.log(`[PARTICLES] Started trail for geometry ${i}: isStarted=${geom.particleTrail.isStarted()} emitter=`, geom.particleTrail.emitter)
+      }
     }
   }
 
+  let particleDebugCounter = 0
   const updateSacredGeometries = (time: number, dt: number) => {
     if (!corpanRig || activeVariant.id !== "corpan") return
 
     // Get avatar world position
     const avatarWorldPos = corpanRig.earPivot.getAbsolutePosition()
 
-    geometryPool.forEach((geom) => {
+    // Debug particles every 2 seconds
+    particleDebugCounter += dt
+    const debugParticles = particleDebugCounter > 2
+
+    if (debugParticles) {
+      particleDebugCounter = 0
+      const activeParticles = geometryPool.filter(g => g.inUse && g.particleTrail?.isStarted())
+      console.log(`[PARTICLES] ${activeParticles.length} active particle systems`)
+    }
+
+    geometryPool.forEach((geom, idx) => {
       if (!geom.inUse) return
 
       // Update orbit angle (can be negative for reverse direction)
@@ -717,6 +734,10 @@ export const createHoverboard = (scene: Scene) => {
       // Update particle emitter position to follow mesh
       if (geom.particleTrail && geom.particleTrail.emitter instanceof Vector3) {
         geom.particleTrail.emitter.set(worldX, worldY, worldZ)
+
+        if (debugParticles && idx === 0) {
+          console.log(`[PARTICLES] Emitter ${idx} at (${worldX.toFixed(2)}, ${worldY.toFixed(2)}, ${worldZ.toFixed(2)}) isStarted=${geom.particleTrail.isStarted()}`)
+        }
       }
 
       // Rotate the geometry itself (faster and more chaotic)

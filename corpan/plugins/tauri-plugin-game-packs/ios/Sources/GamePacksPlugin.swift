@@ -36,7 +36,7 @@ final class GamePacksPlugin: Plugin {
         request.beginAccessingResources { [weak self] error in
             if let error = error {
                 self?.activeRequests.removeValue(forKey: packId)
-                invoke.reject("ODR error: \(error.localizedDescription)")
+                invoke.reject("Resource error: \(error.localizedDescription)")
                 return
             }
 

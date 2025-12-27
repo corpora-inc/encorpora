@@ -10,7 +10,7 @@ Corpan is a cross-platform language learning application built with:
 - **Data Management**: Django backend (`dja/`) for content generation and SQLite database bundling
 - **Games**: Pluggable game system with SDK for standalone development
 
-The app delivers language learning content through mini-games packaged as downloadable content packs. ODR/PAD are not priorities for MVP and may never be used.
+The app delivers language learning content through mini-games packaged as downloadable content packs.
 
 ## Repository Structure
 
@@ -150,14 +150,11 @@ Games are loaded dynamically:
 
 Native delivery:
 - **MVP**: downloadable content packs installed into app data directory
-- **ODR/PAD**: optional future add-on, not required for current releases
 
 ### Important Constraints
 
 - **DO NOT EDIT** `corpan-app/src-tauri/gen/` - generated build output (exceptions must be documented and tracked)
 - **Prefer editing** templates or plugins over generated code
-- **Android PAD assets** in `corpan-app/src-tauri/android/asset-packs` must be synced to `gen/android` after generation
-- **iOS ODR assets** in `corpan-app/src-tauri/ios/assets` require tagging in Xcode
 
 ## Development Workflow
 

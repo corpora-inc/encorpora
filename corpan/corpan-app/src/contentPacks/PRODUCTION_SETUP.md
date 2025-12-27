@@ -101,5 +101,4 @@ Response (failure):
 
 ## Optional (defer for MVP)
 - Hosted catalog `/catalog` endpoint.
-- ODR/PAD delivery (platform asset packs).
 - Background download + resumable transfer.

@@ -9,12 +9,6 @@ npm install
 npm run dev
 ```
 
-To mirror the asset-pack workflow:
-
-```bash
-npm run build:all
-```
-
 ## Logo models
 
 The Corpán logo is generated as a single GLB with a baked hierarchy and

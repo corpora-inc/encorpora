@@ -30,7 +30,7 @@ Content packs are web bundles loaded at runtime via a manifest URL. The host inj
 - Game bundles must register themselves on `window.CorpanGames[id]` with a `mount(container, hostApi, initialState)` function.
 - The host resolves asset URLs relative to the manifest URL (or `baseUrl` if provided).
 - Packs can be loaded from `/games/<id>/manifest.json` (dev) or any remote manifest URL.
-- Platform-delivered packs are served locally via the `corpan-pack://` scheme (Android uses `http://corpan-pack.localhost/`).
+- Content packs are served locally via the `corpan-pack://` scheme (Android uses `http://corpan-pack.localhost/`).
 - Native delivery is implemented in `plugins/tauri-plugin-game-packs`.
 
 ## Platform delivery (no server)

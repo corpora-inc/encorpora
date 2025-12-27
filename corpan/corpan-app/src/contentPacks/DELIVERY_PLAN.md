@@ -71,9 +71,6 @@ Build a world-class, end-to-end delivery system for Corpan games:
 ## Compatibility and dev safety
 - Existing manifest URL install remains available for local dev.
 - If no catalog URL is configured, the app uses the baked-in catalog.
-- Platform packs (ODR/PAD): optional future add-on, not required for MVP.
-  - Prefer S3 + signed packs for GitOps friendliness and simpler ops.
-  - Add ODR/PAD later only if platform policy requires it.
 
 ## Next engineering steps (MVP today)
 1. Keep baked-in catalog + update signaling in app UI.
