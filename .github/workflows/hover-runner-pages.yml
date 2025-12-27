@@ -4,7 +4,7 @@ on:
   push:
     branches: ["main", "gametime"]
     paths:
-      - "games/hover-runner/**"
+      - "corpan/games/hover-runner/**"
       - ".github/workflows/hover-runner-pages.yml"
   workflow_dispatch: {}
 
@@ -29,18 +29,18 @@ jobs:
         with:
           node-version: "20"
           cache: "npm"
-          cache-dependency-path: games/hover-runner/package-lock.json
+          cache-dependency-path: corpan/games/hover-runner/package-lock.json
 
       - name: Install
-        working-directory: games/hover-runner
+        working-directory: corpan/games/hover-runner
         run: npm ci
 
       - name: Build
-        working-directory: games/hover-runner
+        working-directory: corpan/games/hover-runner
         run: npm run build
 
       - name: Package Pages Artifact
-        working-directory: games/hover-runner
+        working-directory: corpan/games/hover-runner
         run: |
           rm -rf .pages
           mkdir -p .pages/dist
@@ -50,7 +50,7 @@ jobs:
       - name: Upload Pages Artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: games/hover-runner/.pages
+          path: corpan/games/hover-runner/.pages
 
   deploy:
     runs-on: ubuntu-latest
