@@ -22,7 +22,13 @@
     "th": "Tiếng Thái",
     "id": "Tiếng Indonesia",
     "tr": "Tiếng Thổ Nhĩ Kỳ",
-    "ta": "Tiếng Tamil"
+    "ta": "Tiếng Tamil",
+    "te": "Tiếng Telugu",
+    "kn": "Tiếng Kannada",
+    "mr": "Tiếng Marathi",
+    "gu": "Tiếng Gujarati",
+    "pa": "Tiếng Punjabi",
+    "ur": "Tiếng Urdu"
   },
   "categories": {
     "travel": "Du lịch",

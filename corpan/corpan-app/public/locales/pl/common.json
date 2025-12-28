@@ -22,7 +22,13 @@
     "th": "Tajski",
     "id": "Indonezyjski",
     "tr": "Turecki",
-    "ta": "Tamilski"
+    "ta": "Tamilski",
+    "te": "Telugu",
+    "kn": "Kannada",
+    "mr": "Marathi",
+    "gu": "Gudżarati",
+    "pa": "Pendżabski",
+    "ur": "Urdu"
   },
   "categories": {
     "travel": "Podróże",

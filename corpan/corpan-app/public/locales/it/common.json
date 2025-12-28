@@ -22,7 +22,13 @@
     "th": "Thai",
     "id": "Indonesiano",
     "tr": "Turco",
-    "ta": "Tamil"
+    "ta": "Tamil",
+    "te": "Telugu",
+    "kn": "Kannada",
+    "mr": "Marathi",
+    "gu": "Gujarati",
+    "pa": "Punjabi",
+    "ur": "Urdu"
   },
   "categories": {
     "travel": "Viaggio",

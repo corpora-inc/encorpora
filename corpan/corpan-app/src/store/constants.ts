@@ -21,6 +21,12 @@ export const LANGUAGE_NAMES: Record<string, string> = {
     "ko-polite": "Korean (Polite)",
     ja: "Japanese",
     ta: "Tamil",
+    te: "Telugu",
+    kn: "Kannada",
+    mr: "Marathi",
+    gu: "Gujarati",
+    pa: "Punjabi",
+    ur: "Urdu",
 };
 
 

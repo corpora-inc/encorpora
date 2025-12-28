@@ -22,7 +22,13 @@
     "th": "Thai",
     "id": "Indonéz",
     "tr": "Török",
-    "ta": "Tamil"
+    "ta": "Tamil",
+    "te": "Telugu",
+    "kn": "Kannada",
+    "mr": "Marathi",
+    "gu": "Gudzsaráti",
+    "pa": "Pandzsábi",
+    "ur": "Urdu"
   },
   "categories": {
     "travel": "Utazás",

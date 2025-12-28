@@ -27,15 +27,15 @@ export const ALL_LANGUAGES = [
     "ko-polite",
     "ja",
     "ta",
-];
-
-export const COMING_SOON_LANGUAGES = [
-    "ur",
     "te",
     "kn",
     "mr",
     "gu",
     "pa",
+    "ur",
+];
+
+export const COMING_SOON_LANGUAGES = [
     "sw",
     "he",
     "el",

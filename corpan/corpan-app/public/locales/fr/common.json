@@ -22,7 +22,13 @@
     "th": "Thaï",
     "id": "Indonésien",
     "tr": "Turc",
-    "ta": "Tamoul"
+    "ta": "Tamoul",
+    "te": "Télougou",
+    "kn": "Kannada",
+    "mr": "Marathi",
+    "gu": "Gujarati",
+    "pa": "Pendjabi",
+    "ur": "Ourdou"
   },
   "categories": {
     "travel": "Voyage",

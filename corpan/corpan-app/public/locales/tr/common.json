@@ -22,7 +22,13 @@
     "th": "Tayca",
     "id": "Endonezce",
     "tr": "Türkçe",
-    "ta": "Tamilce"
+    "ta": "Tamilce",
+    "te": "Telugu",
+    "kn": "Kannada",
+    "mr": "Marathi",
+    "gu": "Güceratça",
+    "pa": "Pencapça",
+    "ur": "Urduca"
   },
   "categories": {
     "travel": "Seyahat",

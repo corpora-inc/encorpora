@@ -32,14 +32,14 @@ export const WELCOME_BY_LANG = {
     "ko-polite": "환영합니다",
     ja: "ようこそ",
     ta: "வரவேற்பு",
-
-    // Coming soon languages
-    ur: "خوش آمديد",
     te: "స్వాగతం",
     kn: "ಸ್ವಾಗತ",
     mr: "स्वागत आहे",
     gu: "સ્વાગત છે",
     pa: "ਸਵਾਗਤ ਹੈ",
+    ur: "خوش آمديد",
+
+    // Coming soon languages
     sw: "Karibu",
     he: "ברוך הבא",
     el: "Καλώς ήρθατε",
@@ -73,14 +73,14 @@ export const AUTONYM_BY_LANG = {
     "ko-polite": "한국어 (존댓말)",
     ja: "日本語",
     ta: "தமிழ்",
-
-    // Coming soon languages
-    ur: "اردو",
     te: "తెలుగు",
     kn: "ಕನ್ನಡ",
     mr: "मराठी",
     gu: "ગુજરાતી",
     pa: "ਪੰਜਾਬੀ",
+    ur: "اردو",
+
+    // Coming soon languages
     sw: "Kiswahili",
     he: "עברית",
     el: "Ελληνικά",
@@ -117,6 +117,12 @@ export const MAKE_PRIMARY_BY_LANG = {
     "ko-polite": "한국어를 기본 언어로 설정하기",
     ja: "日本語を主言語にする",
     ta: "தமிழை எனது முதன்மை மொழியாக அமைக்கவும்",
+    te: "తెలుగును నా ప్రాథమిక భాషగా చేయండి",
+    kn: "ಕನ್ನಡವನ್ನು ನನ್ನ ಪ್ರಾಥಮಿಕ ಭಾಷೆಯನ್ನಾಗಿ ಮಾಡಿ",
+    mr: "मराठीला माझी प्राथमिक भाषा करा",
+    gu: "ગુજરાતીને મારી પ્રાથમિક ભાષા બનાવો",
+    pa: "ਪੰਜਾਬੀ ਨੂੰ ਮੇਰੀ ਮੁੱਖ ਭਾਸ਼ਾ ਬਣਾਓ",
+    ur: "اردو کو میری بنیادی زبان بنائیں",
 } as const;
 export type MakePrimaryCode = keyof typeof MAKE_PRIMARY_BY_LANG;
 
@@ -125,12 +131,6 @@ export type MakePrimaryCode = keyof typeof MAKE_PRIMARY_BY_LANG;
  * The autonym is rendered separately as the headline.
  */
 export const COMING_SOON_BY_LANG = {
-    ur: "جلد آ رہی ہے",
-    te: "త్వరలో రానుంది",
-    kn: "ಶೀಘ್ರದಲ್ಲೇ ಬರುತ್ತಿದೆ",
-    mr: "लवकरच येत आहे",
-    gu: "જલ્દી જ આવી રહ્યું છે",
-    pa: "ਜਲਦੀ ਹੀ ਆ ਰਿਹਾ ਹੈ",
     sw: "Inakuja hivi karibuni",
     he: "מגיע בקרוב",
     el: "Έρχεται σύντομα",
