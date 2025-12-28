@@ -207,5 +207,31 @@
     "close": "Fermer",
     "feedbackHint": "Pas encore un vrai 5 étoiles ? Cliquez sur « Donner votre avis » et dites-nous quoi améliorer.",
     "feedbackButton": "Donner votre avis sur GitHub"
+  },
+  "packs": {
+    "title": "Packs",
+    "available": "Packs disponibles",
+    "emptyAvailable": "Aucun pack pour le moment.",
+    "installed": "Packs installés",
+    "emptyInstalled": "Aucun pack installé.",
+    "get": "Obtenir",
+    "open": "Ouvrir",
+    "remove": "Supprimer",
+    "version": "Version {{version}}",
+    "refresh": "Actualiser",
+    "free": "Gratuit",
+    "install": "Installer",
+    "installing": "Installation...",
+    "installFailed": "Échec de l’installation.",
+    "update": "Mettre à jour",
+    "updating": "Mise à jour...",
+    "manifestTitle": "URL du manifeste",
+    "manifestPlaceholder": "https://exemple.com/manifest.json",
+    "manifestHint": "Collez une URL de manifeste.",
+    "devUnlockTitle": "Packs développeur",
+    "devUnlockHint": "Touchez 7 fois pour débloquer l’installation par manifeste.",
+    "devUnlockToast": "Packs développeur activés.",
+    "devIntro": "Essayez un Pack Corpán ou créez le vôtre.",
+    "devLink": "En savoir plus sur Free2z"
   }
 }

@@ -1,0 +1,64 @@
+name: Deploy Hover Runner to GitHub Pages
+
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - "corpan/games/hover-runner/**"
+      - ".github/workflows/hover-runner-pages.yml"
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages-hover-runner"
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+          cache-dependency-path: corpan/games/hover-runner/package-lock.json
+
+      - name: Install
+        working-directory: corpan/games/hover-runner
+        run: npm install --legacy-peer-deps
+
+      - name: Build
+        working-directory: corpan/games/hover-runner
+        run: npm run build
+
+      - name: Package Pages Artifact
+        working-directory: corpan/games/hover-runner
+        run: |
+          rm -rf .pages
+          mkdir -p .pages/dist
+          cp manifest.json .pages/manifest.json
+          cp -R dist/. .pages/dist/
+
+      - name: Upload Pages Artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: corpan/games/hover-runner/.pages
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

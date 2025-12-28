@@ -207,5 +207,31 @@
     "close": "閉じる",
     "feedbackHint": "まだ星5つと思えない場合は、低い評価の代わりに「フィードバックを送る」から改善点を教えてください。",
     "feedbackButton": "GitHubでフィードバックを送る"
+  },
+  "packs": {
+    "title": "パック",
+    "available": "利用可能なパック",
+    "emptyAvailable": "利用可能なパックはありません。",
+    "installed": "インストール済みのパック",
+    "emptyInstalled": "インストール済みのパックはありません。",
+    "get": "入手",
+    "open": "開く",
+    "remove": "削除",
+    "version": "バージョン {{version}}",
+    "refresh": "更新",
+    "free": "無料",
+    "install": "インストール",
+    "installing": "インストール中…",
+    "installFailed": "インストールに失敗しました。",
+    "update": "更新",
+    "updating": "更新中…",
+    "manifestTitle": "マニフェストURL",
+    "manifestPlaceholder": "https://example.com/manifest.json",
+    "manifestHint": "マニフェストURLを貼り付けてください。",
+    "devUnlockTitle": "開発者パック",
+    "devUnlockHint": "7回タップでマニフェストのインストールを解除します。",
+    "devUnlockToast": "開発者パックが有効になりました。",
+    "devIntro": "Corpánパックを試すか、自分で作ってください。",
+    "devLink": "Free2zで詳しく見る"
   }
 }

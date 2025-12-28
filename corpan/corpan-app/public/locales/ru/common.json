@@ -207,5 +207,31 @@
     "close": "Закрыть",
     "feedbackHint": "Пока не тянет на честные 5 звёзд? Нажмите «Оставить отзыв» и расскажите, что улучшить.",
     "feedbackButton": "Оставить отзыв на GitHub"
+  },
+  "packs": {
+    "title": "Пакеты",
+    "available": "Доступные пакеты",
+    "emptyAvailable": "Пока нет пакетов.",
+    "installed": "Установленные пакеты",
+    "emptyInstalled": "Нет установленных пакетов.",
+    "get": "Получить",
+    "open": "Открыть",
+    "remove": "Удалить",
+    "version": "Версия {{version}}",
+    "refresh": "Обновить",
+    "free": "Бесплатно",
+    "install": "Установить",
+    "installing": "Установка...",
+    "installFailed": "Не удалось установить.",
+    "update": "Обновить",
+    "updating": "Обновление...",
+    "manifestTitle": "URL манифеста",
+    "manifestPlaceholder": "https://example.com/manifest.json",
+    "manifestHint": "Вставьте URL манифеста.",
+    "devUnlockTitle": "Пакеты разработчика",
+    "devUnlockHint": "Нажмите 7 раз, чтобы открыть установку по манифесту.",
+    "devUnlockToast": "Пакеты разработчика включены.",
+    "devIntro": "Попробуйте пакет Corpán или создайте свой.",
+    "devLink": "Подробнее на Free2z"
   }
 }

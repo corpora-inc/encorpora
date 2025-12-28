@@ -207,5 +207,31 @@
     "remindLater": "Belki sonra",
     "noThanks": "Hayır, teşekkürler",
     "close": "Kapat"
+  },
+  "packs": {
+    "title": "Paketler",
+    "available": "Mevcut paketler",
+    "emptyAvailable": "Henüz paket yok.",
+    "installed": "Yüklü paketler",
+    "emptyInstalled": "Yüklü paket yok.",
+    "get": "Al",
+    "open": "Aç",
+    "remove": "Kaldır",
+    "version": "Sürüm {{version}}",
+    "refresh": "Yenile",
+    "free": "Ücretsiz",
+    "install": "Yükle",
+    "installing": "Yükleniyor...",
+    "installFailed": "Yükleme başarısız.",
+    "update": "Güncelle",
+    "updating": "Güncelleniyor...",
+    "manifestTitle": "Manifest URL",
+    "manifestPlaceholder": "https://example.com/manifest.json",
+    "manifestHint": "Manifest URL'sini yapıştırın.",
+    "devUnlockTitle": "Geliştirici paketleri",
+    "devUnlockHint": "Manifest yüklemeyi açmak için 7 kez dokunun.",
+    "devUnlockToast": "Geliştirici paketleri açıldı.",
+    "devIntro": "Bir Corpán paketi deneyin ya da kendiniz oluşturun.",
+    "devLink": "Free2z'de daha fazla bilgi"
   }
 }

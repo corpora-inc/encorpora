@@ -207,5 +207,31 @@
     "remindLater": "পরে হয়তো",
     "noThanks": "না, ধন্যবাদ",
     "close": "বন্ধ করুন"
+  },
+  "packs": {
+    "title": "প্যাক",
+    "available": "উপলব্ধ প্যাক",
+    "emptyAvailable": "এখনও কোনো প্যাক নেই।",
+    "installed": "ইনস্টল করা প্যাক",
+    "emptyInstalled": "কোনো প্যাক ইনস্টল নেই।",
+    "get": "নিন",
+    "open": "খুলুন",
+    "remove": "সরান",
+    "version": "সংস্করণ {{version}}",
+    "refresh": "রিফ্রেশ",
+    "free": "ফ্রি",
+    "install": "ইনস্টল",
+    "installing": "ইনস্টল হচ্ছে...",
+    "installFailed": "ইনস্টল ব্যর্থ হয়েছে।",
+    "update": "আপডেট",
+    "updating": "আপডেট হচ্ছে...",
+    "manifestTitle": "ম্যানিফেস্ট URL",
+    "manifestPlaceholder": "https://example.com/manifest.json",
+    "manifestHint": "ম্যানিফেস্ট URL পেস্ট করুন।",
+    "devUnlockTitle": "ডেভেলপার প্যাক",
+    "devUnlockHint": "ম্যানিফেস্ট ইনস্টল খুলতে ৭ বার ট্যাপ করুন।",
+    "devUnlockToast": "ডেভেলপার প্যাক চালু হয়েছে।",
+    "devIntro": "একটি Corpán প্যাক চেষ্টা করুন বা নিজে বানান।",
+    "devLink": "Free2z\u001fএ আরও জানুন"
   }
 }

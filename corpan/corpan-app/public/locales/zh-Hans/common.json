@@ -207,5 +207,31 @@
     "close": "关闭",
     "feedbackHint": "还达不到你心中的 5 星？请点“反馈建议”，告诉我们该怎么改进。",
     "feedbackButton": "在 GitHub 提交反馈"
+  },
+  "packs": {
+    "title": "包",
+    "available": "可用包",
+    "emptyAvailable": "暂无可用包。",
+    "installed": "已安装包",
+    "emptyInstalled": "暂无已安装包。",
+    "get": "获取",
+    "open": "打开",
+    "remove": "移除",
+    "version": "版本 {{version}}",
+    "refresh": "刷新",
+    "free": "免费",
+    "install": "安装",
+    "installing": "正在安装…",
+    "installFailed": "安装失败。",
+    "update": "更新",
+    "updating": "正在更新…",
+    "manifestTitle": "清单 URL",
+    "manifestPlaceholder": "https://example.com/manifest.json",
+    "manifestHint": "粘贴清单 URL。",
+    "devUnlockTitle": "开发者包",
+    "devUnlockHint": "点按 7 次以解锁清单安装。",
+    "devUnlockToast": "开发者包已解锁。",
+    "devIntro": "试试 Corpán 包或自己制作一个。",
+    "devLink": "在 Free2z 了解更多"
   }
 }

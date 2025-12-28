@@ -28,6 +28,18 @@ export interface VoiceInfo {
     engine?: string | null; // Android engine package; otherwise null/undefined
 }
 
+type VoiceCacheKey = "nativeFirst" | "browserFirst";
+
+const DEFAULT_VOICES_CACHE_MS = 30_000;
+const voicesCache: Record<VoiceCacheKey, { voices: VoiceInfo[]; at: number } | null> = {
+    nativeFirst: null,
+    browserFirst: null,
+};
+const voicesInFlight: Record<VoiceCacheKey, Promise<VoiceInfo[]> | null> = {
+    nativeFirst: null,
+    browserFirst: null,
+};
+
 // ---------------------------- Env helpers -----------------------------
 
 type UAOS = "macos" | "ios" | "android" | "other";
@@ -194,14 +206,8 @@ export function sortVoicesWithLangBias(voices: VoiceInfo[], langBias?: string): 
 
 // --------------------------- Public API -------------------------------
 
-/**
- * High-level “get voices” API for the UI:
- * - Try native first (Android/iOS/macOS).
- * - On failure or empty, fallback to Web Speech (if available).
- * - **No filtering** here; optional `langBias` only affects ordering.
- */
-export async function getVoices(opts?: { langBias?: string; preferBrowser?: boolean }): Promise<VoiceInfo[]> {
-    const { langBias, preferBrowser } = opts ?? {};
+async function fetchVoices(opts?: { preferBrowser?: boolean }): Promise<VoiceInfo[]> {
+    const { preferBrowser } = opts ?? {};
 
     let voices: VoiceInfo[] = [];
     try {
@@ -216,7 +222,53 @@ export async function getVoices(opts?: { langBias?: string; preferBrowser?: bool
         // swallow and return whatever we have
     }
 
-    // DO NOT filter on the frontend. Only optionally sort with a language bias.
+    return voices;
+}
+
+export async function getVoicesCached(opts?: {
+    langBias?: string;
+    preferBrowser?: boolean;
+    maxAgeMs?: number;
+    forceRefresh?: boolean;
+}): Promise<VoiceInfo[]> {
+    const { langBias, preferBrowser, maxAgeMs, forceRefresh } = opts ?? {};
+    const key: VoiceCacheKey = preferBrowser ? "browserFirst" : "nativeFirst";
+    const now = Date.now();
+    const maxAge = maxAgeMs ?? DEFAULT_VOICES_CACHE_MS;
+
+    if (!forceRefresh) {
+        const cached = voicesCache[key];
+        if (cached && now - cached.at < maxAge) {
+            return sortVoicesWithLangBias(cached.voices, langBias);
+        }
+    }
+
+    const pending = voicesInFlight[key];
+    if (pending) {
+        const voices = await pending;
+        return sortVoicesWithLangBias(voices, langBias);
+    }
+
+    const request = fetchVoices({ preferBrowser }).then((voices) => {
+        voicesCache[key] = { voices, at: Date.now() };
+        voicesInFlight[key] = null;
+        return voices;
+    });
+    voicesInFlight[key] = request;
+
+    const voices = await request;
+    return sortVoicesWithLangBias(voices, langBias);
+}
+
+/**
+ * High-level “get voices” API for the UI:
+ * - Try native first (Android/iOS/macOS).
+ * - On failure or empty, fallback to Web Speech (if available).
+ * - **No filtering** here; optional `langBias` only affects ordering.
+ */
+export async function getVoices(opts?: { langBias?: string; preferBrowser?: boolean }): Promise<VoiceInfo[]> {
+    const { langBias, preferBrowser } = opts ?? {};
+    const voices = await fetchVoices({ preferBrowser });
     return sortVoicesWithLangBias(voices, langBias);
 }
 

@@ -207,5 +207,31 @@
     "close": "बंद करें",
     "feedbackHint": "अभी 5 स्टार जैसा नहीं लगता? कम रेटिंग देने के बजाय ‘फ़ीडबैक भेजें’ पर टैप करके बताइए क्या सुधारें।",
     "feedbackButton": "GitHub पर फ़ीडबैक भेजें"
+  },
+  "packs": {
+    "title": "पैक्स",
+    "available": "उपलब्ध पैक्स",
+    "emptyAvailable": "अभी कोई पैक उपलब्ध नहीं है।",
+    "installed": "इंस्टॉल किए गए पैक्स",
+    "emptyInstalled": "कोई पैक इंस्टॉल नहीं है।",
+    "get": "प्राप्त करें",
+    "open": "खोलें",
+    "remove": "हटाएं",
+    "version": "संस्करण {{version}}",
+    "refresh": "रीफ्रेश",
+    "free": "मुफ़्त",
+    "install": "इंस्टॉल करें",
+    "installing": "इंस्टॉल हो रहा है...",
+    "installFailed": "इंस्टॉल विफल हुआ।",
+    "update": "अपडेट",
+    "updating": "अपडेट हो रहा है...",
+    "manifestTitle": "मैनिफेस्ट URL",
+    "manifestPlaceholder": "https://example.com/manifest.json",
+    "manifestHint": "मैनिफेस्ट URL चिपकाएँ।",
+    "devUnlockTitle": "डेवलपर पैक्स",
+    "devUnlockHint": "मैनिफेस्ट इंस्टॉल खोलने के लिए 7 बार टैप करें।",
+    "devUnlockToast": "डेवलपर पैक्स सक्षम हो गए।",
+    "devIntro": "एक Corpán पैक आज़माएँ या अपना बनाएं।",
+    "devLink": "Free2z पर और जानें"
   }
 }

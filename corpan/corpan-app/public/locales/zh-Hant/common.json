@@ -207,5 +207,31 @@
     "close": "關閉",
     "feedbackHint": "還沒到你心中的 5 星嗎？請點「提供回饋」，告訴我們可以怎麼改進。",
     "feedbackButton": "在 GitHub 提供回饋"
+  },
+  "packs": {
+    "title": "套件",
+    "available": "可用套件",
+    "emptyAvailable": "目前沒有可用套件。",
+    "installed": "已安裝套件",
+    "emptyInstalled": "尚未安裝套件。",
+    "get": "取得",
+    "open": "開啟",
+    "remove": "移除",
+    "version": "版本 {{version}}",
+    "refresh": "重新整理",
+    "free": "免費",
+    "install": "安裝",
+    "installing": "安裝中…",
+    "installFailed": "安裝失敗。",
+    "update": "更新",
+    "updating": "更新中…",
+    "manifestTitle": "清單 URL",
+    "manifestPlaceholder": "https://example.com/manifest.json",
+    "manifestHint": "貼上清單 URL。",
+    "devUnlockTitle": "開發者套件",
+    "devUnlockHint": "點按 7 次以解鎖清單安裝。",
+    "devUnlockToast": "開發者套件已解鎖。",
+    "devIntro": "試試 Corpán 套件或自己製作。",
+    "devLink": "在 Free2z 了解更多"
   }
 }

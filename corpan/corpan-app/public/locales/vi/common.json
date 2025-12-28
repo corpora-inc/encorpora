@@ -207,5 +207,31 @@
     "close": "Đóng",
     "feedbackHint": "Chưa thực sự là 5 sao trong mắt bạn? Hãy bấm “Góp ý” và cho chúng tôi biết cần cải thiện gì.",
     "feedbackButton": "Góp ý trên GitHub"
+  },
+  "packs": {
+    "title": "Gói",
+    "available": "Gói có sẵn",
+    "emptyAvailable": "Chưa có gói nào.",
+    "installed": "Gói đã cài",
+    "emptyInstalled": "Chưa cài gói nào.",
+    "get": "Nhận",
+    "open": "Mở",
+    "remove": "Xóa",
+    "version": "Phiên bản {{version}}",
+    "refresh": "Làm mới",
+    "free": "Miễn phí",
+    "install": "Cài đặt",
+    "installing": "Đang cài...",
+    "installFailed": "Cài đặt thất bại.",
+    "update": "Cập nhật",
+    "updating": "Đang cập nhật...",
+    "manifestTitle": "URL manifest",
+    "manifestPlaceholder": "https://example.com/manifest.json",
+    "manifestHint": "Dán URL manifest.",
+    "devUnlockTitle": "Gói dành cho nhà phát triển",
+    "devUnlockHint": "Chạm 7 lần để mở cài đặt bằng manifest.",
+    "devUnlockToast": "Đã mở gói dành cho nhà phát triển.",
+    "devIntro": "Thử một gói Corpán hoặc tự tạo.",
+    "devLink": "Tìm hiểu thêm trên Free2z"
   }
 }

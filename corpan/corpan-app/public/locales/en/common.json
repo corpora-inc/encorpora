@@ -207,5 +207,31 @@
     "close": "Close",
     "feedbackHint": "Not 5 stars yet? Tap 'Share feedback' and tell us how we can make it better.",
     "feedbackButton": "Share feedback on GitHub"
+  },
+  "packs": {
+    "title": "Packs",
+    "available": "Available packs",
+    "emptyAvailable": "No packs yet.",
+    "installed": "Installed packs",
+    "emptyInstalled": "No packs installed.",
+    "get": "Get",
+    "open": "Open",
+    "remove": "Remove",
+    "version": "Version {{version}}",
+    "refresh": "Refresh",
+    "free": "Free",
+    "install": "Install",
+    "installing": "Installing...",
+    "installFailed": "Install failed.",
+    "update": "Update",
+    "updating": "Updating...",
+    "manifestTitle": "Manifest URL",
+    "manifestPlaceholder": "https://example.com/manifest.json",
+    "manifestHint": "Paste a manifest URL.",
+    "devUnlockTitle": "Developer packs",
+    "devUnlockHint": "Tap 7 times to unlock manifest installs.",
+    "devUnlockToast": "Developer packs unlocked.",
+    "devIntro": "Try a Corpán Pack or make your own.",
+    "devLink": "Learn more on Free2z"
   }
 }

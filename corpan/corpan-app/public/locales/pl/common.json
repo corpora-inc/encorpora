@@ -207,5 +207,31 @@
     "close": "Zamknij",
     "feedbackHint": "Jeszcze nie pełne 5 gwiazdek? Kliknij „Przekaż opinię” i napisz, co możemy poprawić.",
     "feedbackButton": "Przekaż opinię na GitHubie"
+  },
+  "packs": {
+    "title": "Pakiety",
+    "available": "Dostępne pakiety",
+    "emptyAvailable": "Brak pakietów.",
+    "installed": "Zainstalowane pakiety",
+    "emptyInstalled": "Brak zainstalowanych pakietów.",
+    "get": "Pobierz",
+    "open": "Otwórz",
+    "remove": "Usuń",
+    "version": "Wersja {{version}}",
+    "refresh": "Odśwież",
+    "free": "Bezpłatnie",
+    "install": "Zainstaluj",
+    "installing": "Instalowanie...",
+    "installFailed": "Instalacja nie powiodła się.",
+    "update": "Aktualizuj",
+    "updating": "Aktualizowanie...",
+    "manifestTitle": "URL manifestu",
+    "manifestPlaceholder": "https://example.com/manifest.json",
+    "manifestHint": "Wklej URL manifestu.",
+    "devUnlockTitle": "Pakiety deweloperskie",
+    "devUnlockHint": "Stuknij 7 razy, aby odblokować instalację z manifestu.",
+    "devUnlockToast": "Pakiety deweloperskie odblokowane.",
+    "devIntro": "Wypróbuj pakiet Corpán lub stwórz własny.",
+    "devLink": "Dowiedz się więcej na Free2z"
   }
 }

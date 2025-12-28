@@ -4,7 +4,7 @@
 
 import { createVoiceTTS } from "@/util/speak";
 import { useSettingsStore } from "@/store/settings";
-import { getVoices } from "@/util/tts-voices";
+import { getVoicesCached } from "@/util/tts-voices";
 
 export async function speakWithStackPrefs(uiCode: string, text: string, rate: number) {
     const state = useSettingsStore.getState();
@@ -28,7 +28,7 @@ export async function speakWithStackPrefs(uiCode: string, text: string, rate: nu
     }
 
     // Validate against currently available voices (native first, browser fallback)
-    const available = await getVoices({});
+    const available = await getVoicesCached({ maxAgeMs: 30_000 });
     const availableIds = new Set(available.map((v) => v.id));
     const pool = mergedPrefIds.filter((id) => availableIds.has(id));
 

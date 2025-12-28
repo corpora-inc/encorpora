@@ -207,5 +207,31 @@
     "close": "Bezárás",
     "feedbackHint": "Még nem éri el nálad az 5 csillagot? Kattints a „Visszajelzés küldése” gombra, és írd meg, min javítsunk.",
     "feedbackButton": "Visszajelzés GitHubon"
+  },
+  "packs": {
+    "title": "Csomagok",
+    "available": "Elérhető csomagok",
+    "emptyAvailable": "Még nincs csomag.",
+    "installed": "Telepített csomagok",
+    "emptyInstalled": "Nincsenek telepített csomagok.",
+    "get": "Letöltés",
+    "open": "Megnyitás",
+    "remove": "Eltávolítás",
+    "version": "Verzió {{version}}",
+    "refresh": "Frissítés",
+    "free": "Ingyenes",
+    "install": "Telepítés",
+    "installing": "Telepítés...",
+    "installFailed": "A telepítés sikertelen.",
+    "update": "Frissítés",
+    "updating": "Frissítés...",
+    "manifestTitle": "Manifest URL",
+    "manifestPlaceholder": "https://example.com/manifest.json",
+    "manifestHint": "Illesszen be egy manifest URL-t.",
+    "devUnlockTitle": "Fejlesztői csomagok",
+    "devUnlockHint": "Koppintson 7-szer a manifest telepítéséhez.",
+    "devUnlockToast": "Fejlesztői csomagok feloldva.",
+    "devIntro": "Próbáljon ki egy Corpán csomagot, vagy készítsen sajátot.",
+    "devLink": "Tudjon meg többet a Free2z oldalán"
   }
 }
