@@ -72,6 +72,24 @@
         },
         "ta": {
           "type": "string"
+        },
+        "te": {
+          "type": "string"
+        },
+        "kn": {
+          "type": "string"
+        },
+        "mr": {
+          "type": "string"
+        },
+        "gu": {
+          "type": "string"
+        },
+        "pa": {
+          "type": "string"
+        },
+        "ur": {
+          "type": "string"
         }
       },
       "required": [
@@ -96,7 +114,13 @@
         "th",
         "id",
         "tr",
-        "ta"
+        "ta",
+        "te",
+        "kn",
+        "mr",
+        "gu",
+        "pa",
+        "ur"
       ],
       "additionalProperties": false
     },
