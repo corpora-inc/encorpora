@@ -20,6 +20,7 @@ export const LANGUAGE_NAMES: Record<string, string> = {
     "zh-Hant": "Chinese (Traditional)",
     "ko-polite": "Korean (Polite)",
     ja: "Japanese",
+    ta: "Tamil",
 };
 
 

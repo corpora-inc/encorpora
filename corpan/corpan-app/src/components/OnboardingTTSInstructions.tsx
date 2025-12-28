@@ -42,6 +42,7 @@ const SAMPLES: Record<string, string> = {
     fa: "سبوس دارم با شما یاد بگیرم.",
     th: "ฉันตั้งตารอที่จะได้เรียนรู้กับคุณ",
     id: "Saya menantikan untuk belajar bersama Anda.",
+    ta: "நான் உங்களுடன் கற்கவும் ஆவலாக காத்திருக்கிறேன்.",
 };
 
 type ExtendedVoiceInfo = VoiceInfo & {

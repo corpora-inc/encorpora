@@ -31,10 +31,10 @@ export const WELCOME_BY_LANG = {
     "zh-Hant": "歡迎",
     "ko-polite": "환영합니다",
     ja: "ようこそ",
+    ta: "வரவேற்பு",
 
     // Coming soon languages
     ur: "خوش آمديد",
-    ta: "வரவேற்பு",
     te: "స్వాగతం",
     kn: "ಸ್ವಾಗತ",
     mr: "स्वागत आहे",
@@ -72,10 +72,10 @@ export const AUTONYM_BY_LANG = {
     "zh-Hant": "中文（繁體）",
     "ko-polite": "한국어 (존댓말)",
     ja: "日本語",
+    ta: "தமிழ்",
 
     // Coming soon languages
     ur: "اردو",
-    ta: "தமிழ்",
     te: "తెలుగు",
     kn: "ಕನ್ನಡ",
     mr: "मराठी",
@@ -98,7 +98,7 @@ export const MAKE_PRIMARY_BY_LANG = {
     en: "Make English my primary language",
     es: "Hacer que el español sea mi idioma principal",
     fr: "Définir le français comme langue principale",
-    it: "Imposta l’italiano come lingua principale",
+    it: "Imposta l'italiano come lingua principale",
     "pt-BR": "Tornar o português meu idioma principal",
     de: "Deutsch als meine Hauptsprache festlegen",
     pl: "Ustaw polski jako mój język główny",
@@ -116,6 +116,7 @@ export const MAKE_PRIMARY_BY_LANG = {
     "zh-Hant": "將繁體中文設為我的主要語言",
     "ko-polite": "한국어를 기본 언어로 설정하기",
     ja: "日本語を主言語にする",
+    ta: "தமிழை எனது முதன்மை மொழியாக அமைக்கவும்",
 } as const;
 export type MakePrimaryCode = keyof typeof MAKE_PRIMARY_BY_LANG;
 
@@ -125,7 +126,6 @@ export type MakePrimaryCode = keyof typeof MAKE_PRIMARY_BY_LANG;
  */
 export const COMING_SOON_BY_LANG = {
     ur: "جلد آ رہی ہے",
-    ta: "விரைவில் வருகிறது",
     te: "త్వరలో రానుంది",
     kn: "ಶೀಘ್ರದಲ್ಲೇ ಬರುತ್ತಿದೆ",
     mr: "लवकरच येत आहे",

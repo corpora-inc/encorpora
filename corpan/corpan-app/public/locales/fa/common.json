@@ -21,7 +21,8 @@
     "bn": "بنغالی",
     "th": "تایلندی",
     "id": "اندونزیایی",
-    "tr": "ترکی"
+    "tr": "ترکی",
+    "ta": "تامیل"
   },
   "categories": {
     "travel": "سفر",
@@ -209,28 +210,28 @@
     "feedbackButton": "ارسال بازخورد در GitHub"
   },
   "packs": {
-    "title": "بسته\u200cها",
-    "available": "بسته\u200cهای موجود",
-    "emptyAvailable": "هنوز بسته\u200cای نیست.",
-    "installed": "بسته\u200cهای نصب\u200cشده",
-    "emptyInstalled": "هیچ بسته\u200cای نصب نشده است.",
+    "title": "بسته‌ها",
+    "available": "بسته‌های موجود",
+    "emptyAvailable": "هنوز بسته‌ای نیست.",
+    "installed": "بسته‌های نصب‌شده",
+    "emptyInstalled": "هیچ بسته‌ای نصب نشده است.",
     "get": "دریافت",
     "open": "باز کردن",
     "remove": "حذف",
     "version": "نسخه {{version}}",
-    "refresh": "تازه\u200cسازی",
+    "refresh": "تازه‌سازی",
     "free": "رایگان",
     "install": "نصب",
     "installing": "در حال نصب...",
     "installFailed": "نصب ناموفق بود.",
-    "update": "به\u200cروزرسانی",
-    "updating": "در حال به\u200cروزرسانی...",
+    "update": "به‌روزرسانی",
+    "updating": "در حال به‌روزرسانی...",
     "manifestTitle": "نشانی مانیفست",
     "manifestPlaceholder": "https://example.com/manifest.json",
     "manifestHint": "نشانی مانیفست را بچسبانید.",
-    "devUnlockTitle": "بسته\u200cهای توسعه\u200cدهنده",
+    "devUnlockTitle": "بسته‌های توسعه‌دهنده",
     "devUnlockHint": "۷ بار ضربه بزنید تا نصب مانیفست فعال شود.",
-    "devUnlockToast": "بسته\u200cهای توسعه\u200cدهنده فعال شد.",
+    "devUnlockToast": "بسته‌های توسعه‌دهنده فعال شد.",
     "devIntro": "یک بسته Corpán را امتحان کنید یا خودتان بسازید.",
     "devLink": "بیشتر در Free2z"
   }

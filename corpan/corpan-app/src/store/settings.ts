@@ -26,11 +26,11 @@ export const ALL_LANGUAGES = [
     "zh-Hant",
     "ko-polite",
     "ja",
+    "ta",
 ];
 
 export const COMING_SOON_LANGUAGES = [
     "ur",
-    "ta",
     "te",
     "kn",
     "mr",
