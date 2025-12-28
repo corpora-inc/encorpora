@@ -196,6 +196,24 @@ export const initInput = (
     }
   }
 
+  const disableTilt = () => {
+    if (!state.tiltEnabled) {
+      return
+    }
+    state.tiltEnabled = false
+    state.tiltActive = false
+    if (tiltButton) {
+      tiltButton.textContent = "Enable Motion"
+    }
+    window.removeEventListener("deviceorientation", orientationHandler)
+    // Remove orientation change listeners
+    if (window.screen?.orientation) {
+      window.screen.orientation.removeEventListener("change", onOrientationChange)
+    } else {
+      window.removeEventListener("orientationchange", onOrientationChange)
+    }
+  }
+
   const requestTilt = async () => {
     const requestPermission = (
       DeviceOrientationEvent as unknown as {
@@ -237,17 +255,11 @@ export const initInput = (
   const dispose = () => {
     window.removeEventListener("keydown", onKey)
     canvas.removeEventListener("pointerdown", onPointer)
-    window.removeEventListener("deviceorientation", orientationHandler)
-    // Clean up orientation change listeners
-    if (window.screen?.orientation) {
-      window.screen.orientation.removeEventListener("change", onOrientationChange)
-    } else {
-      window.removeEventListener("orientationchange", onOrientationChange)
-    }
+    disableTilt()
     if (tiltButton) {
       tiltButton.removeEventListener("click", requestTilt)
     }
   }
 
-  return { state, dispose }
+  return { state, dispose, enableTilt, disableTilt, requestTilt }
 }

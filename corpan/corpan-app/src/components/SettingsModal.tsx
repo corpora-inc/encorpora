@@ -143,7 +143,7 @@ export function SettingsModal({
         </div>
 
         <About />
-        <div className="mt-3 space-y-3 rounded-md border border-gray-200 bg-white/80 p-4">
+        <div className="mb-8 space-y-3 rounded-md border border-gray-200 bg-white/80 p-4">
           {!devModeEnabled && (
             <>
               <div className="space-y-1">

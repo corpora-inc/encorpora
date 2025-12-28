@@ -390,6 +390,22 @@ export const createHoverRunner = (
     gameplaySection
   )
 
+  // Motion Controls toggle - only show on mobile devices that support it
+  const isMobileDevice =
+    typeof window !== "undefined" &&
+    window.matchMedia &&
+    window.matchMedia("(pointer: coarse)").matches
+
+  if (isMobileDevice) {
+    createToggleControl(
+      "Motion Controls",
+      "motionControlsEnabled",
+      "Use device motion/tilt to control the hoverboard. When disabled, use tap to steer.",
+      undefined,
+      gameplaySection
+    )
+  }
+
   createTuningControl(
     "Text Scale",
     "textScaleFactor",
@@ -1096,6 +1112,47 @@ export const createHoverRunner = (
   skinCycle.addEventListener("click", onSkinCycle)
 
   const input = initInput(canvas, tiltButton)
+
+  // Auto-enable motion controls on mobile if setting is enabled
+  // (isMobileDevice already defined above when creating the toggle)
+  const syncMotionControls = async () => {
+    const enabled = tuningStore.getState().settings.motionControlsEnabled
+    if (enabled && isMobileDevice) {
+      // Try to enable tilt - will request permission on iOS if needed
+      const needsPermission = !!(DeviceOrientationEvent as unknown as { requestPermission?: unknown }).requestPermission
+      if (needsPermission) {
+        // On iOS, we need user gesture - requestTilt will handle this
+        // Note: This will only work if called from a user gesture context
+        await input.requestTilt()
+      } else {
+        // On Android and desktop, enable directly
+        input.enableTilt()
+      }
+    } else {
+      // Disabled or not mobile - turn off tilt
+      input.disableTilt()
+    }
+  }
+
+  // Initial sync - try to enable on mobile if setting is on
+  void syncMotionControls()
+
+  // Subscribe to setting changes
+  const motionUnsubscribe = tuningStore.subscribe(() => {
+    void syncMotionControls()
+  })
+
+  // Also sync when tilt button is clicked (for iOS permission flow)
+  if (tiltButton) {
+    const originalClickHandler = async () => {
+      // Enable the setting when user clicks the button
+      tuningStore.getState().setSetting("motionControlsEnabled", true)
+      // The setting change will trigger syncMotionControls via subscription
+    }
+    // Note: input.ts already sets up its own click handler, so this creates two handlers
+    // The input.ts handler will request permission, and this one will update the setting
+    tiltButton.addEventListener("click", originalClickHandler)
+  }
 
   // Keyboard handler for toggling instrumentation (FPS/perf) with 'i' key
   const toggleInstrumentation = () => {
@@ -2464,6 +2521,7 @@ export const createHoverRunner = (
     scoreAnimator.cleanup()
     stackUnsubscribe?.()
     tuningUnsubscribe?.()
+    motionUnsubscribe?.()
     hostApi.stopSpeech?.()
     input.dispose()
     window.removeEventListener("keydown", onKeyDownGlobal)

@@ -7,6 +7,7 @@ export type TuningSettings = {
   // Core gameplay
   autoAdjustDifficulty: boolean
   textScaleFactor: number
+  motionControlsEnabled: boolean
   // Audio settings
   musicEnabled: boolean
   sfxEnabled: boolean
@@ -78,6 +79,7 @@ const DEFAULT_SETTINGS: TuningSettings = {
   // Core gameplay
   autoAdjustDifficulty: true,
   textScaleFactor: 0.6,
+  motionControlsEnabled: true, // Auto-enabled on mobile devices
   // Audio settings
   musicEnabled: true,
   sfxEnabled: true,
