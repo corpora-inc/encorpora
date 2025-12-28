@@ -137,6 +137,41 @@ fn hash_bytes_sha256(bytes: &[u8]) -> String {
         .join("")
 }
 
+fn is_private_host(host: &str) -> bool {
+    host == "localhost"
+        || host == "127.0.0.1"
+        || host.starts_with("10.")
+        || host.starts_with("192.168.")
+        || host.starts_with("172.16.")
+        || host.starts_with("172.17.")
+        || host.starts_with("172.18.")
+        || host.starts_with("172.19.")
+        || host.starts_with("172.2")
+        || host.starts_with("172.30.")
+        || host.starts_with("172.31.")
+}
+
+pub async fn fetch_text(url: String) -> Result<String, String> {
+    let parsed = reqwest::Url::parse(&url).map_err(|e| e.to_string())?;
+    let scheme = parsed.scheme();
+    if scheme != "https" && scheme != "http" {
+        return Err("Unsupported URL scheme".to_string());
+    }
+    if scheme == "http" {
+        let host = parsed.host_str().unwrap_or("");
+        if !is_private_host(host) {
+            return Err("Insecure HTTP is only allowed for localhost/private hosts".to_string());
+        }
+    }
+    let client = reqwest::Client::new();
+    let res = client.get(parsed).send().await.map_err(|e| e.to_string())?;
+    let status = res.status();
+    if !status.is_success() {
+        return Err(format!("Request failed ({status})"));
+    }
+    res.text().await.map_err(|e| e.to_string())
+}
+
 pub async fn download_and_install<R: Runtime>(
     app: &AppHandle<R>,
     pack_id: String,

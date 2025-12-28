@@ -48,6 +48,9 @@ const clearInjectedAssets = (id: string) => {
 const proxyUrlIfNeeded = (rawUrl: string) => {
   try {
     const resolved = new URL(rawUrl, window.location.href)
+    if (!import.meta.env.DEV) {
+      return resolved.toString()
+    }
     if (resolved.protocol !== "http:" && resolved.protocol !== "https:") {
       return resolved.toString()
     }
@@ -198,17 +201,27 @@ export default function ContentPackHost({
       })
     }
 
+    const isTauriRuntime = () =>
+      typeof window !== "undefined" && "__TAURI__" in window
+
     const fetchManifest = async (token?: string) => {
       const candidates = getManifestFetchCandidates(token)
       let lastError: unknown
       for (const { sourceUrl, fetchUrl } of candidates) {
         try {
-          const res = await fetch(fetchUrl, { cache: "no-store" })
-          if (!res.ok) {
-            lastError = new Error(`Missing content pack: ${id}`)
-            continue
+          let manifest: ContentPackManifest
+          if (!import.meta.env.DEV && isTauriRuntime()) {
+            const { fetchContentPackText } = await import("./native")
+            const text = await fetchContentPackText(sourceUrl)
+            manifest = JSON.parse(text) as ContentPackManifest
+          } else {
+            const res = await fetch(fetchUrl, { cache: "no-store" })
+            if (!res.ok) {
+              lastError = new Error(`Missing content pack: ${id}`)
+              continue
+            }
+            manifest = (await res.json()) as ContentPackManifest
           }
-          const manifest = (await res.json()) as ContentPackManifest
           return { manifest, sourceUrl }
         } catch (err) {
           lastError = err

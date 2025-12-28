@@ -67,7 +67,12 @@ export function GamesPanel({
       })
       setManifestUrl("")
     } catch (err) {
-      setError(t("packs.installFailed"))
+      const message = err instanceof Error ? err.message : ""
+      setError(
+        message
+          ? `${t("packs.installFailed")} ${message}`
+          : t("packs.installFailed")
+      )
     } finally {
       setInstalling(false)
     }
@@ -163,7 +168,12 @@ export function GamesPanel({
         source: result.source,
       })
     } catch (err) {
-      setCatalogError(t("packs.installFailed"))
+      const message = err instanceof Error ? err.message : ""
+      setCatalogError(
+        message
+          ? `${t("packs.installFailed")} ${message}`
+          : t("packs.installFailed")
+      )
     } finally {
       setCatalogInstalling(null)
     }

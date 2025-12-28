@@ -39,3 +39,7 @@ export const getInstalledManifestUrl = async (
 ): Promise<string> => {
   return invoke("content_packs_get_manifest_url", { packId })
 }
+
+export const fetchContentPackText = async (url: string): Promise<string> => {
+  return invoke("content_packs_fetch_text", { url })
+}
