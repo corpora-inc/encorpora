@@ -26,6 +26,9 @@ export type InstallResult = {
 const proxyUrlIfNeeded = (rawUrl: string) => {
   try {
     const resolved = new URL(rawUrl, window.location.href)
+    if (!import.meta.env.DEV) {
+      return resolved.toString()
+    }
     if (resolved.protocol !== "http:" && resolved.protocol !== "https:") {
       return resolved.toString()
     }
@@ -63,6 +66,21 @@ const hashManifest = async (text: string) => {
   return toHex(digest)
 }
 
+const isTauriRuntime = () =>
+  typeof window !== "undefined" && "__TAURI__" in window
+
+const fetchManifestText = async (url: string) => {
+  if (!import.meta.env.DEV && isTauriRuntime()) {
+    const { fetchContentPackText } = await import("./native")
+    return fetchContentPackText(url)
+  }
+  const res = await fetch(proxyUrlIfNeeded(url), { cache: "no-store" })
+  if (!res.ok) {
+    throw new Error(`Manifest not found (${res.status})`)
+  }
+  return res.text()
+}
+
 export const installPack = async (
   request: InstallRequest
 ): Promise<InstallResult> => {
@@ -71,11 +89,7 @@ export const installPack = async (
     throw new Error("Missing manifest URL")
   }
   const resolved = new URL(normalized, window.location.href).toString()
-  const res = await fetch(proxyUrlIfNeeded(resolved), { cache: "no-store" })
-  if (!res.ok) {
-    throw new Error(`Manifest not found (${res.status})`)
-  }
-  const text = await res.text()
+  const text = await fetchManifestText(resolved)
   if (request.expectedHash) {
     const hash = await hashManifest(text)
     if (hash !== request.expectedHash) {

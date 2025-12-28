@@ -378,6 +378,11 @@ async fn content_packs_install_from_url(
 }
 
 #[command]
+async fn content_packs_fetch_text(url: String) -> Result<String, String> {
+    content_packs::fetch_text(url).await
+}
+
+#[command]
 fn content_packs_list_installed(app: AppHandle) -> Result<Vec<ContentPackInfo>, String> {
     list_installed(&app)
 }
@@ -400,6 +405,7 @@ pub fn run() {
             get_random_entries_with_translations,
             get_entry_by_id_with_translations,
             content_packs_install_from_url,
+            content_packs_fetch_text,
             content_packs_list_installed,
             content_packs_get_manifest_url
         ])

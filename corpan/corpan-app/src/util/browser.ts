@@ -31,11 +31,11 @@ export function getPlatformBottomPadding() {
 
 export function getPlatformTopPaddingButtons() {
     if (/iPhone|iPad|iPod|iOS/i.test(navigator.userAgent)) {
-        return 50;
+        return 25;
     } if (isAndroidButNotChromeOS()) {
         return 25;
     }
-    return 10;
+    return 25;
 }
 
 export function getPlatformTopPaddingTranslations() {
