@@ -1182,12 +1182,14 @@ export const createHoverRunner = (
   let highlightTime = 0
   let lastProgressionLevel = -1
   let lastProgressionNetCorrect = -1
+  let cachedProgression: ReturnType<typeof getProgressionParams> | null = null
 
   // Store reference for forcing progression update on reset
   forceProgressionUpdate = () => {
     console.log("[PROGRESSION] Force update - resetting tracking vars")
     lastProgressionLevel = -1
     lastProgressionNetCorrect = -1
+    cachedProgression = null
   }
 
   const gameStore = createGameStore<GameState>({
@@ -2356,18 +2358,19 @@ export const createHoverRunner = (
       lastProgressionLevel = currentLevel
       lastProgressionNetCorrect = netCorrect
 
-      const progression = getProgressionParams(currentLevel, netCorrect, seed)
+      // Cache progression for reuse in render loop (electric field)
+      cachedProgression = getProgressionParams(currentLevel, netCorrect, seed)
 
       hoverboard.updateRings?.(
-        progression.ringHeightOffset,
-        progression.ringAlpha,
-        progression.ringCount,
-        progression.ringScale
+        cachedProgression.ringHeightOffset,
+        cachedProgression.ringAlpha,
+        cachedProgression.ringCount,
+        cachedProgression.ringScale
       )
 
       // Configure sacred geometries from pool (no create/destroy for performance)
-      hoverboard.configureGeometries?.(progression.sacredGeometries)
-      console.log(`[PROGRESSION] Level ${currentLevel}, NetCorrect ${netCorrect}, Geometries: ${progression.sacredGeometries.length}`)
+      hoverboard.configureGeometries?.(cachedProgression.sacredGeometries)
+      console.log(`[PROGRESSION] Level ${currentLevel}, NetCorrect ${netCorrect}, Geometries: ${cachedProgression.sacredGeometries.length}`)
     }
 
     activeBoard.rotation.z = clamp(-velocity.x * 4, -0.45, 0.45)
@@ -2412,22 +2415,18 @@ export const createHoverRunner = (
       updatePhrases(dt)
       updatePropField(activeSkin.props, road, frameCount)
 
-      // Apply visual progression to electric field
-      const stats = tuningStore.getState().stats
-      const progression = getProgressionParams(
-        stats.level,
-        stats.netCorrect,
-        stats.allTimeBestStreak || 1
-      )
-      electricField.update(
-        dt,
-        electricTarget,
-        electricIntensity,
-        electricTargetPhrase?.letterPositions,
-        progression.mainArcCount,
-        progression.branchArcCount,
-        progression.electricIntensity
-      )
+      // Apply visual progression to electric field (use cached progression)
+      if (cachedProgression) {
+        electricField.update(
+          dt,
+          electricTarget,
+          electricIntensity,
+          electricTargetPhrase?.letterPositions,
+          cachedProgression.mainArcCount,
+          cachedProgression.branchArcCount,
+          cachedProgression.electricIntensity
+        )
+      }
     }
     const farX = road.getFarCenterX()
     cameraTarget.set(

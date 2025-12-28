@@ -33,10 +33,6 @@ export const initInput = (
   // Screen orientation detection for sensor remapping
   const getScreenOrientation = (): ScreenOrientationType => {
     const orientation = window.screen?.orientation
-    if (orientation?.type) {
-      return orientation.type as ScreenOrientationType
-    }
-
     let angle = 0
     if (orientation?.angle != null) {
       angle = orientation.angle
@@ -44,7 +40,18 @@ export const initInput = (
       angle = (window as typeof window & { orientation?: number }).orientation ?? 0
     }
 
-    const isLandscape = window.innerWidth > window.innerHeight
+    let isPortrait: boolean | null = null
+    if (window.matchMedia) {
+      isPortrait = window.matchMedia("(orientation: portrait)").matches
+    }
+    if (isPortrait == null && orientation?.type) {
+      isPortrait = orientation.type.startsWith("portrait")
+    }
+    if (isPortrait == null) {
+      isPortrait = window.innerHeight >= window.innerWidth
+    }
+
+    const isLandscape = !isPortrait
 
     if (angle === 0) {
       return isLandscape ? "landscape-primary" : "portrait-primary"
@@ -85,6 +92,16 @@ export const initInput = (
   }
 
   const onPointer = (event: PointerEvent) => {
+    // Ensure canvas is mounted and has valid dimensions before processing
+    if (!canvas.isConnected || !canvas.offsetParent) {
+      return // Canvas not in DOM or not visible
+    }
+
+    const rect = canvas.getBoundingClientRect()
+    if (rect.width === 0 || rect.height === 0) {
+      return // Canvas has no dimensions yet
+    }
+
     // Start music on first canvas interaction (if not already playing)
     const audio = getSfx()
     if (tuningStore.getState().settings.musicEnabled && !audio.isMusicPlaying()) {
@@ -92,7 +109,6 @@ export const initInput = (
       audio.playMusic()
     }
 
-    const rect = canvas.getBoundingClientRect()
     const x = event.clientX - rect.left
     const y = event.clientY - rect.top
     state.col = x < rect.width / 2 ? 0 : 1
