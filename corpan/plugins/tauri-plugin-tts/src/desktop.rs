@@ -103,10 +103,13 @@ mod macos_impl {
     }
 
     // Static synthesizer instance for performance (reuse instead of creating new one per call)
+    // Note: Using Once + static mut is safe here because Once guarantees single initialization.
+    // The warning about static_mut_refs is a new Rust 2024 lint, but this pattern is sound.
     static SYNTH_INIT: Once = Once::new();
     static mut SYNTH_INSTANCE: Option<Mutex<id>> = None;
 
     /// Get or create the shared synthesizer instance
+    #[allow(static_mut_refs)] // Safe: Once guarantees SYNTH_INSTANCE is only written once
     unsafe fn get_synthesizer() -> &'static Mutex<id> {
         SYNTH_INIT.call_once(|| {
             let synth: id = msg_send![class!(AVSpeechSynthesizer), new];
@@ -229,12 +232,41 @@ mod macos_impl {
         novelty.iter().any(|t| blob.contains(t))
     }
 
+    /// Extract base voice name by removing quality suffixes
+    /// E.g., "Alice Enhanced" -> "Alice", "Alice (Premium)" -> "Alice"
+    fn base_voice_name(name: &str) -> String {
+        let quality_suffixes = [
+            " (premium)",
+            " premium",
+            " (enhanced)",
+            " enhanced",
+            " (improved)",
+            " improved",
+            " (natural)",
+            " natural",
+            " (siri)",
+            " siri",
+            " (neural)",
+            " neural",
+            " (compact)",
+            " compact",
+        ];
+
+        let lower = name.to_lowercase();
+        for suffix in &quality_suffixes {
+            if lower.ends_with(suffix) {
+                return name[..name.len() - suffix.len()].trim().to_string();
+            }
+        }
+        name.to_string()
+    }
+
     pub(super) fn macos_list_voices() -> Vec<VoiceInfo> {
         unsafe {
             let voices: id = msg_send![class!(AVSpeechSynthesisVoice), speechVoices];
             let count: usize = msg_send![voices, count];
 
-            // Collect all voices (no deduplication by quality)
+            // Collect all voices first
             let mut out: Vec<VoiceInfo> = Vec::new();
 
             for idx in 0..count {
@@ -316,8 +348,36 @@ mod macos_impl {
                 an.cmp(&bn)
             });
 
-            out
+            // Deduplicate by keeping only the highest quality version of each voice
+            // Since voices are already sorted by quality (highest first), we can use a simple approach
+            deduplicate_by_quality(out)
         }
+    }
+
+    /// Deduplicate voices by keeping only the highest quality version for each (language, base_name) pair
+    /// Input must be pre-sorted by quality (highest first)
+    fn deduplicate_by_quality(voices: Vec<VoiceInfo>) -> Vec<VoiceInfo> {
+        use std::collections::HashSet;
+
+        let mut seen: HashSet<(String, String)> = HashSet::new();
+        let mut result = Vec::new();
+
+        for voice in voices {
+            // Create a key from language + base voice name
+            let base_name = voice
+                .name
+                .as_ref()
+                .map(|n| base_voice_name(n))
+                .unwrap_or_default();
+            let key = (voice.language.to_lowercase(), base_name.to_lowercase());
+
+            // Only keep the first occurrence (which is highest quality due to pre-sorting)
+            if seen.insert(key) {
+                result.push(voice);
+            }
+        }
+
+        result
     }
 
     fn normalize_want(want: &str) -> (String, String) {
