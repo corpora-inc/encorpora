@@ -91,11 +91,17 @@
     "languageOrderTipBody": "一番下の言語がアプリの表示言語になります。ドラッグしていつでも変更できます。",
     "ttsOsTipTitle": "ヒント",
     "ttsOsTipAndroid": "最適: Google の読み上げを使用。Samsung TTS は Corpán では動作しません。",
-    "ttsOsTipIOS": "「設定」→「アクセシビリティ」で「読み上げ/話す」または「読み上げコンテンツ」を探し、音声をダウンロード。",
-    "ttsOsTipMac": "「システム設定」→「アクセシビリティ」で「読み上げコンテンツ」を開き、音声をダウンロード。",
+    "ttsOsTipIOS": "In Settings → Accessibility, find Spoken Content and download voices. Note: Apple doesn't provide voices for every language. If upgrading doesn't help, request support via Apple's Feedback app.",
+    "ttsOsTipMac": "In System Settings → Accessibility, find Spoken Content and download voices. Note: Apple doesn't provide voices for every language. If upgrading doesn't help, request support via Apple's Feedback app.",
     "ttsOsTipWindows": "「設定」で音声を追加/インストールしてから戻ってください。",
     "ttsOsTipOther": "端末の設定で音声を追加/インストールしてから戻ってください。",
-    "installVoicesAndroid": "音声を追加"
+    "installVoicesAndroid": "音声を追加",
+    "learning": "Learning languages",
+    "ttsStepTitle": "Text-to-speech",
+    "socials": "Follow & connect",
+    "noVoices": "No voices",
+    "noVoicesHint": "Install voices to enable this language.",
+    "sendAppleFeedback": "Send Apple Feedback"
   },
   "common": {
     "loading": "読み込み中...",
@@ -182,7 +188,20 @@
     "bn": "ベンガル語",
     "th": "タイ語",
     "id": "インドネシア語",
-    "tr": "トルコ語"
+    "tr": "トルコ語",
+    "bn-IN": "Bengali (India)",
+    "te-IN": "Telugu (India)",
+    "kn-IN": "Kannada (India)",
+    "mr": "Marathi",
+    "mr-IN": "Marathi (India)",
+    "gu": "Gujarati",
+    "gu-IN": "Gujarati (India)",
+    "pa": "Punjabi",
+    "pa-IN": "Punjabi (India)",
+    "pa-Guru-IN": "Punjabi (Gurmukhi, India)",
+    "ur": "Urdu",
+    "ur-IN": "Urdu (India)",
+    "ur-PK": "Urdu (Pakistan)"
   },
   "footer": {
     "appVersion": "アプリのバージョン",

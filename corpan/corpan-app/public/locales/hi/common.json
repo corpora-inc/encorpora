@@ -91,11 +91,17 @@
     "languageOrderTipBody": "सबसे नीचे वाली भाषा ऐप की UI भाषा बन जाती है। कभी भी बदलने के लिए खींचें।",
     "ttsOsTipTitle": "टिप",
     "ttsOsTipAndroid": "सबसे अच्छा: Google TTS इस्तेमाल करें। Samsung TTS Corpán में काम नहीं करता।",
-    "ttsOsTipIOS": "Settings → Accessibility में Read & Speak / Spoken Content ढूँढें और voices डाउनलोड करें।",
-    "ttsOsTipMac": "System Settings → Accessibility में Spoken Content ढूँढें और voices डाउनलोड करें।",
+    "ttsOsTipIOS": "In Settings → Accessibility, find Spoken Content and download voices. Note: Apple doesn't provide voices for every language. If upgrading doesn't help, request support via Apple's Feedback app.",
+    "ttsOsTipMac": "In System Settings → Accessibility, find Spoken Content and download voices. Note: Apple doesn't provide voices for every language. If upgrading doesn't help, request support via Apple's Feedback app.",
     "ttsOsTipWindows": "Settings में speech voices इंस्टॉल करें, फिर यहाँ लौटें।",
     "ttsOsTipOther": "डिवाइस Settings में speech voices इंस्टॉल करें, फिर यहाँ लौटें।",
-    "installVoicesAndroid": "आवाज़ें इंस्टॉल करें"
+    "installVoicesAndroid": "आवाज़ें इंस्टॉल करें",
+    "learning": "Learning languages",
+    "ttsStepTitle": "Text-to-speech",
+    "socials": "Follow & connect",
+    "noVoices": "No voices",
+    "noVoicesHint": "Install voices to enable this language.",
+    "sendAppleFeedback": "Send Apple Feedback"
   },
   "common": {
     "loading": "लोड हो रहा है...",
@@ -182,7 +188,20 @@
     "bn": "बंगाली",
     "th": "थाई",
     "id": "इंडोनेशियाई",
-    "tr": "तुर्की"
+    "tr": "तुर्की",
+    "bn-IN": "Bengali (India)",
+    "te-IN": "Telugu (India)",
+    "kn-IN": "Kannada (India)",
+    "mr": "Marathi",
+    "mr-IN": "Marathi (India)",
+    "gu": "Gujarati",
+    "gu-IN": "Gujarati (India)",
+    "pa": "Punjabi",
+    "pa-IN": "Punjabi (India)",
+    "pa-Guru-IN": "Punjabi (Gurmukhi, India)",
+    "ur": "Urdu",
+    "ur-IN": "Urdu (India)",
+    "ur-PK": "Urdu (Pakistan)"
   },
   "footer": {
     "appVersion": "ऐप संस्करण",

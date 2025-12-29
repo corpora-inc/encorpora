@@ -91,11 +91,17 @@
     "languageOrderTipBody": "La lingua in fondo diventa la lingua dell’app. Trascina per cambiarla quando vuoi.",
     "ttsOsTipTitle": "Suggerimento",
     "ttsOsTipAndroid": "Per risultati migliori, usa il TTS di Google. Samsung TTS non funziona in Corpán.",
-    "ttsOsTipIOS": "In Impostazioni → Accessibilità, cerca Leggi e pronuncia / Contenuti pronunciati e scarica le voci.",
-    "ttsOsTipMac": "In Impostazioni di Sistema → Accessibilità, cerca Contenuti pronunciati e scarica le voci.",
+    "ttsOsTipIOS": "In Settings → Accessibility, find Spoken Content and download voices. Note: Apple doesn't provide voices for every language. If upgrading doesn't help, request support via Apple's Feedback app.",
+    "ttsOsTipMac": "In System Settings → Accessibility, find Spoken Content and download voices. Note: Apple doesn't provide voices for every language. If upgrading doesn't help, request support via Apple's Feedback app.",
     "ttsOsTipWindows": "In Impostazioni, installa le voci di sintesi e torna qui.",
     "ttsOsTipOther": "Nelle impostazioni del dispositivo, installa le voci di sintesi e torna qui.",
-    "installVoicesAndroid": "Installa voci"
+    "installVoicesAndroid": "Installa voci",
+    "learning": "Learning languages",
+    "ttsStepTitle": "Text-to-speech",
+    "socials": "Follow & connect",
+    "noVoices": "No voices",
+    "noVoicesHint": "Install voices to enable this language.",
+    "sendAppleFeedback": "Send Apple Feedback"
   },
   "common": {
     "loading": "Caricamento...",
@@ -182,7 +188,20 @@
     "bn": "Bengalese",
     "th": "Thai",
     "id": "Indonesiano",
-    "tr": "Turco"
+    "tr": "Turco",
+    "bn-IN": "Bengali (India)",
+    "te-IN": "Telugu (India)",
+    "kn-IN": "Kannada (India)",
+    "mr": "Marathi",
+    "mr-IN": "Marathi (India)",
+    "gu": "Gujarati",
+    "gu-IN": "Gujarati (India)",
+    "pa": "Punjabi",
+    "pa-IN": "Punjabi (India)",
+    "pa-Guru-IN": "Punjabi (Gurmukhi, India)",
+    "ur": "Urdu",
+    "ur-IN": "Urdu (India)",
+    "ur-PK": "Urdu (Pakistan)"
   },
   "footer": {
     "appVersion": "Versione dell’app",

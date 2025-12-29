@@ -91,11 +91,17 @@
     "languageOrderTipBody": "దిగువ భాష యాప్ యొక్క UI భాషగా మారుతుంది. ఎప్పుడైనా మార్చడానికి లాగండి.",
     "ttsOsTipTitle": "చిట్కా",
     "ttsOsTipAndroid": "ఉత్తమ ఫలితాలు: Google టెక్స్ట్-టు-స్పీచ్ ఉపయోగించండి. Samsung TTS Corpán లో పని చేయదు.",
-    "ttsOsTipIOS": "సెట్టింగ్‌లు → యాక్సెసిబిలిటీ → చదవండి & మాట్లాడండి / మాట్లాడే కంటెంట్‌లో, వాయిస్‌లను డౌన్‌లోడ్ చేయండి.",
-    "ttsOsTipMac": "సిస్టమ్ సెట్టింగ్‌లు → యాక్సెసిబిలిటీ → మాట్లాడే కంటెంట్‌లో, వాయిస్‌లను డౌన్‌లోడ్ చేయండి.",
+    "ttsOsTipIOS": "In Settings → Accessibility, find Spoken Content and download voices. Note: Apple doesn't provide voices for every language. If upgrading doesn't help, request support via Apple's Feedback app.",
+    "ttsOsTipMac": "In System Settings → Accessibility, find Spoken Content and download voices. Note: Apple doesn't provide voices for every language. If upgrading doesn't help, request support via Apple's Feedback app.",
     "ttsOsTipWindows": "సెట్టింగ్‌లలో, స్పీచ్ వాయిస్‌లను జోడించండి/ఇన్‌స్టాల్ చేయండి, తర్వాత ఇక్కడకు తిరిగి రండి.",
     "ttsOsTipOther": "మీ పరికర సెట్టింగ్‌లలో, టెక్స్ట్-టు-స్పీచ్ వాయిస్‌లను జోడించండి/ఇన్‌స్టాల్ చేయండి, తర్వాత ఇక్కడకు తిరిగి రండి.",
-    "installVoicesAndroid": "వాయిస్‌లను ఇన్‌స్టాల్ చేయండి"
+    "installVoicesAndroid": "వాయిస్‌లను ఇన్‌స్టాల్ చేయండి",
+    "learning": "Learning languages",
+    "ttsStepTitle": "Text-to-speech",
+    "socials": "Follow & connect",
+    "noVoices": "No voices",
+    "noVoicesHint": "Install voices to enable this language.",
+    "sendAppleFeedback": "Send Apple Feedback"
   },
   "common": {
     "loading": "లోడ్ అవుతోంది...",
@@ -105,7 +111,20 @@
     "create": "సృష్టించు"
   },
   "dialects": {
-    "te": "తెలుగు"
+    "te": "తెలుగు",
+    "bn-IN": "Bengali (India)",
+    "te-IN": "Telugu (India)",
+    "kn-IN": "Kannada (India)",
+    "mr": "Marathi",
+    "mr-IN": "Marathi (India)",
+    "gu": "Gujarati",
+    "gu-IN": "Gujarati (India)",
+    "pa": "Punjabi",
+    "pa-IN": "Punjabi (India)",
+    "pa-Guru-IN": "Punjabi (Gurmukhi, India)",
+    "ur": "Urdu",
+    "ur-IN": "Urdu (India)",
+    "ur-PK": "Urdu (Pakistan)"
   },
   "footer": {
     "appVersion": "యాప్ వెర్షన్",

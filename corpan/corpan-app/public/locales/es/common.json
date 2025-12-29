@@ -91,11 +91,17 @@
     "languageOrderTipBody": "El idioma de abajo se vuelve el idioma de la interfaz. Arrástralo para cambiarlo cuando quieras.",
     "ttsOsTipTitle": "Consejo",
     "ttsOsTipAndroid": "Mejor resultado: usa el TTS de Google. Samsung TTS no funciona en Corpán.",
-    "ttsOsTipIOS": "En Ajustes → Accesibilidad, busca Leer y hablar / Contenido hablado y descarga voces.",
-    "ttsOsTipMac": "En Ajustes del Sistema → Accesibilidad, busca Contenido hablado y descarga voces.",
+    "ttsOsTipIOS": "In Settings → Accessibility, find Spoken Content and download voices. Note: Apple doesn't provide voices for every language. If upgrading doesn't help, request support via Apple's Feedback app.",
+    "ttsOsTipMac": "In System Settings → Accessibility, find Spoken Content and download voices. Note: Apple doesn't provide voices for every language. If upgrading doesn't help, request support via Apple's Feedback app.",
     "ttsOsTipWindows": "En Configuración, instala voces de texto a voz y vuelve aquí.",
     "ttsOsTipOther": "En los ajustes del dispositivo, instala voces de texto a voz y vuelve aquí.",
-    "installVoicesAndroid": "Instalar voces"
+    "installVoicesAndroid": "Instalar voces",
+    "learning": "Learning languages",
+    "ttsStepTitle": "Text-to-speech",
+    "socials": "Follow & connect",
+    "noVoices": "No voices",
+    "noVoicesHint": "Install voices to enable this language.",
+    "sendAppleFeedback": "Send Apple Feedback"
   },
   "common": {
     "loading": "Cargando...",
@@ -182,7 +188,20 @@
     "bn": "Bengalí",
     "th": "Tailandés",
     "id": "Indonesio",
-    "tr": "Turco"
+    "tr": "Turco",
+    "bn-IN": "Bengali (India)",
+    "te-IN": "Telugu (India)",
+    "kn-IN": "Kannada (India)",
+    "mr": "Marathi",
+    "mr-IN": "Marathi (India)",
+    "gu": "Gujarati",
+    "gu-IN": "Gujarati (India)",
+    "pa": "Punjabi",
+    "pa-IN": "Punjabi (India)",
+    "pa-Guru-IN": "Punjabi (Gurmukhi, India)",
+    "ur": "Urdu",
+    "ur-IN": "Urdu (India)",
+    "ur-PK": "Urdu (Pakistan)"
   },
   "footer": {
     "appVersion": "Versión de la app",

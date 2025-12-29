@@ -91,11 +91,17 @@
     "languageOrderTipBody": "Ngôn ngữ ở cuối sẽ trở thành ngôn ngữ giao diện. Kéo để đổi bất cứ lúc nào.",
     "ttsOsTipTitle": "Mẹo",
     "ttsOsTipAndroid": "Tốt nhất: dùng Google TTS. Samsung TTS không dùng được trong Corpán.",
-    "ttsOsTipIOS": "Trong Cài đặt → Trợ năng, tìm Đọc & Nói / Nội dung được đọc và tải giọng.",
-    "ttsOsTipMac": "Trong Cài đặt hệ thống → Trợ năng, tìm Nội dung được đọc và tải giọng.",
+    "ttsOsTipIOS": "In Settings → Accessibility, find Spoken Content and download voices. Note: Apple doesn't provide voices for every language. If upgrading doesn't help, request support via Apple's Feedback app.",
+    "ttsOsTipMac": "In System Settings → Accessibility, find Spoken Content and download voices. Note: Apple doesn't provide voices for every language. If upgrading doesn't help, request support via Apple's Feedback app.",
     "ttsOsTipWindows": "Cài giọng nói trong Cài đặt rồi quay lại đây.",
     "ttsOsTipOther": "Cài giọng nói trong cài đặt thiết bị rồi quay lại đây.",
-    "installVoicesAndroid": "Cài giọng"
+    "installVoicesAndroid": "Cài giọng",
+    "learning": "Learning languages",
+    "ttsStepTitle": "Text-to-speech",
+    "socials": "Follow & connect",
+    "noVoices": "No voices",
+    "noVoicesHint": "Install voices to enable this language.",
+    "sendAppleFeedback": "Send Apple Feedback"
   },
   "common": {
     "loading": "Đang tải...",
@@ -182,7 +188,20 @@
     "bn": "Tiếng Bengal",
     "th": "Tiếng Thái",
     "id": "Tiếng Indonesia",
-    "tr": "Tiếng Thổ Nhĩ Kỳ"
+    "tr": "Tiếng Thổ Nhĩ Kỳ",
+    "bn-IN": "Bengali (India)",
+    "te-IN": "Telugu (India)",
+    "kn-IN": "Kannada (India)",
+    "mr": "Marathi",
+    "mr-IN": "Marathi (India)",
+    "gu": "Gujarati",
+    "gu-IN": "Gujarati (India)",
+    "pa": "Punjabi",
+    "pa-IN": "Punjabi (India)",
+    "pa-Guru-IN": "Punjabi (Gurmukhi, India)",
+    "ur": "Urdu",
+    "ur-IN": "Urdu (India)",
+    "ur-PK": "Urdu (Pakistan)"
   },
   "footer": {
     "appVersion": "Phiên bản ứng dụng",

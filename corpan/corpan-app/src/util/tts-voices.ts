@@ -156,6 +156,23 @@ export async function openTtsSettings(): Promise<boolean> {
     }
 }
 
+/** Open Apple's Feedback Assistant app (macOS/iOS). Returns true if successful. */
+export async function openAppleFeedback(): Promise<boolean> {
+    const os = detectOSFromUA();
+    if (os !== "macos" && os !== "ios") {
+        return false; // Only available on Apple platforms
+    }
+
+    try {
+        // Call our custom Tauri command that uses the 'open' command
+        await invoke("open_apple_feedback");
+        return true;
+    } catch (err) {
+        console.warn("[TTS] Failed to open Apple Feedback app:", err);
+        return false;
+    }
+}
+
 /**
  * Android-only: request the engine to install/download voice data.
  * Returns true if an activity was launched; false otherwise (including non-Android).

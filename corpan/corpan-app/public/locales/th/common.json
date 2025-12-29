@@ -91,11 +91,17 @@
     "languageOrderTipBody": "ภาษาล่างสุดจะเป็นภาษา UI ของแอป ลากเพื่อเปลี่ยนได้ทุกเมื่อ",
     "ttsOsTipTitle": "เคล็ดลับ",
     "ttsOsTipAndroid": "แนะนำ: ใช้ Google TTS — Samsung TTS ใช้กับ Corpán ไม่ได้",
-    "ttsOsTipIOS": "ไปที่ การตั้งค่า → การช่วยการเข้าถึง แล้วหา Read & Speak / เนื้อหาที่พูด เพื่อดาวน์โหลดเสียง",
-    "ttsOsTipMac": "ไปที่ การตั้งค่าระบบ → การช่วยการเข้าถึง แล้วหา เนื้อหาที่พูด เพื่อดาวน์โหลดเสียง",
+    "ttsOsTipIOS": "In Settings → Accessibility, find Spoken Content and download voices. Note: Apple doesn't provide voices for every language. If upgrading doesn't help, request support via Apple's Feedback app.",
+    "ttsOsTipMac": "In System Settings → Accessibility, find Spoken Content and download voices. Note: Apple doesn't provide voices for every language. If upgrading doesn't help, request support via Apple's Feedback app.",
     "ttsOsTipWindows": "ติดตั้งเสียงพูดใน Settings แล้วกลับมาที่นี่",
     "ttsOsTipOther": "ติดตั้งเสียงพูดในตั้งค่าเครื่อง แล้วกลับมาที่นี่",
-    "installVoicesAndroid": "ติดตั้งเสียง"
+    "installVoicesAndroid": "ติดตั้งเสียง",
+    "learning": "Learning languages",
+    "ttsStepTitle": "Text-to-speech",
+    "socials": "Follow & connect",
+    "noVoices": "No voices",
+    "noVoicesHint": "Install voices to enable this language.",
+    "sendAppleFeedback": "Send Apple Feedback"
   },
   "common": {
     "loading": "กำลังโหลด...",
@@ -182,7 +188,20 @@
     "bn": "เบงกาลี",
     "th": "ไทย",
     "id": "Indonesian",
-    "tr": "Turkish"
+    "tr": "Turkish",
+    "bn-IN": "Bengali (India)",
+    "te-IN": "Telugu (India)",
+    "kn-IN": "Kannada (India)",
+    "mr": "Marathi",
+    "mr-IN": "Marathi (India)",
+    "gu": "Gujarati",
+    "gu-IN": "Gujarati (India)",
+    "pa": "Punjabi",
+    "pa-IN": "Punjabi (India)",
+    "pa-Guru-IN": "Punjabi (Gurmukhi, India)",
+    "ur": "Urdu",
+    "ur-IN": "Urdu (India)",
+    "ur-PK": "Urdu (Pakistan)"
   },
   "footer": {
     "appVersion": "เวอร์ชันแอป",

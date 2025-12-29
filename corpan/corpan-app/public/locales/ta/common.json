@@ -91,11 +91,17 @@
     "languageOrderTipBody": "கீழே உள்ள மொழி பயன்பாட்டின் UI மொழியாக மாறும். எப்போது வேண்டுமானாலும் மாற்ற இழுக்கவும்.",
     "ttsOsTipTitle": "குறிப்பு",
     "ttsOsTipAndroid": "சிறந்த முடிவுகள்: Google உரை-குரல் பயன்படுத்தவும். Samsung TTS Corpán இல் வேலை செய்யாது.",
-    "ttsOsTipIOS": "அமைப்புகள் → அணுகல் → வாசி & பேசு / பேசப்பட்ட உள்ளடக்கத்தில், குரல்களை பதிவிறக்கவும்.",
-    "ttsOsTipMac": "கணினி அமைப்புகள் → அணுகல் → பேசப்பட்ட உள்ளடக்கத்தில், குரல்களை பதிவிறக்கவும்.",
+    "ttsOsTipIOS": "In Settings → Accessibility, find Spoken Content and download voices. Note: Apple doesn't provide voices for every language. If upgrading doesn't help, request support via Apple's Feedback app.",
+    "ttsOsTipMac": "In System Settings → Accessibility, find Spoken Content and download voices. Note: Apple doesn't provide voices for every language. If upgrading doesn't help, request support via Apple's Feedback app.",
     "ttsOsTipWindows": "அமைப்புகளில், பேச்சு குரல்களைச் சேர்க்கவும்/நிறுவவும், பின்னர் இங்கு திரும்பவும்.",
     "ttsOsTipOther": "உங்கள் சாதன அமைப்புகளில், உரை-குரல் குரல்களை சேர்க்கவும்/நிறுவவும், பின்னர் இங்கு திரும்பவும்.",
-    "installVoicesAndroid": "குரல்களை நிறுவவும்"
+    "installVoicesAndroid": "குரல்களை நிறுவவும்",
+    "learning": "Learning languages",
+    "ttsStepTitle": "Text-to-speech",
+    "socials": "Follow & connect",
+    "noVoices": "No voices",
+    "noVoicesHint": "Install voices to enable this language.",
+    "sendAppleFeedback": "Send Apple Feedback"
   },
   "common": {
     "loading": "ஏற்றுகிறது...",
@@ -183,7 +189,20 @@
     "th": "தாய்",
     "id": "இந்தோனேசிய",
     "tr": "துருக்கிய",
-    "ta": "தமிழ்"
+    "ta": "தமிழ்",
+    "bn-IN": "Bengali (India)",
+    "te-IN": "Telugu (India)",
+    "kn-IN": "Kannada (India)",
+    "mr": "Marathi",
+    "mr-IN": "Marathi (India)",
+    "gu": "Gujarati",
+    "gu-IN": "Gujarati (India)",
+    "pa": "Punjabi",
+    "pa-IN": "Punjabi (India)",
+    "pa-Guru-IN": "Punjabi (Gurmukhi, India)",
+    "ur": "Urdu",
+    "ur-IN": "Urdu (India)",
+    "ur-PK": "Urdu (Pakistan)"
   },
   "footer": {
     "appVersion": "பயன்பாட்டு பதிப்பு",
