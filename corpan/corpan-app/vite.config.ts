@@ -81,6 +81,25 @@ export default defineConfig(async () => ({
 
   clearScreen: false,
 
+  // Production optimizations
+  build: {
+    target: "es2020", // Modern browsers only, smaller output
+    minify: "esbuild", // Fast minification (default, no extra deps needed)
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          // Split vendor code for better caching on updates
+          vendor: ["react", "react-dom", "zustand"],
+          i18n: ["i18next", "react-i18next", "i18next-http-backend"],
+          ui: ["@radix-ui/react-dialog", "@radix-ui/react-select", "@radix-ui/react-slider"],
+        },
+      },
+    },
+    chunkSizeWarningLimit: 1000, // Warn if chunks exceed 1MB
+    reportCompressedSize: true, // Show gzip sizes in build output
+    sourcemap: false, // Disable source maps in production for smaller size and faster builds
+  },
+
   server: {
     port: 1420,
     strictPort: true,
