@@ -92,11 +92,17 @@
     "languageOrderTipBody": "खालची भाषा अॅपची UI भाषा बनते. कधीही बदलण्यासाठी ओढा.",
     "ttsOsTipTitle": "टीप",
     "ttsOsTipAndroid": "सर्वोत्तम परिणाम: Google मजकूर-उच्चार वापरा. Samsung TTS Corpán मध्ये काम करत नाही.",
-    "ttsOsTipIOS": "सेटिंग्ज → प्रवेशयोग्यता → वाचा आणि बोला / बोललेली सामग्रीमध्ये, आवाज डाउनलोड करा.",
-    "ttsOsTipMac": "सिस्टम सेटिंग्ज → प्रवेशयोग्यता → बोललेली सामग्रीमध्ये, आवाज डाउनलोड करा.",
+    "ttsOsTipIOS": "In Settings → Accessibility, find Spoken Content and download voices. Note: Apple doesn't provide voices for every language. If upgrading doesn't help, request support via Apple's Feedback app.",
+    "ttsOsTipMac": "In System Settings → Accessibility, find Spoken Content and download voices. Note: Apple doesn't provide voices for every language. If upgrading doesn't help, request support via Apple's Feedback app.",
     "ttsOsTipWindows": "सेटिंग्जमध्ये, उच्चार आवाज जोडा/इन्स्टॉल करा, नंतर येथे परत या.",
     "ttsOsTipOther": "तुमच्या डिव्हाइस सेटिंग्जमध्ये, मजकूर-उच्चार आवाज जोडा/इन्स्टॉल करा, नंतर येथे परत या.",
-    "installVoicesAndroid": "आवाज इन्स्टॉल करा"
+    "installVoicesAndroid": "आवाज इन्स्टॉल करा",
+    "learning": "Learning languages",
+    "ttsStepTitle": "Text-to-speech",
+    "socials": "Follow & connect",
+    "noVoices": "No voices",
+    "noVoicesHint": "Install voices to enable this language.",
+    "sendAppleFeedback": "Send Apple Feedback"
   },
   "common": {
     "loading": "लोड होत आहे...",
@@ -106,7 +112,19 @@
     "create": "तयार करा"
   },
   "dialects": {
-    "mr": "मराठी"
+    "mr": "मराठी",
+    "bn-IN": "Bengali (India)",
+    "te-IN": "Telugu (India)",
+    "kn-IN": "Kannada (India)",
+    "mr-IN": "Marathi (India)",
+    "gu": "Gujarati",
+    "gu-IN": "Gujarati (India)",
+    "pa": "Punjabi",
+    "pa-IN": "Punjabi (India)",
+    "pa-Guru-IN": "Punjabi (Gurmukhi, India)",
+    "ur": "Urdu",
+    "ur-IN": "Urdu (India)",
+    "ur-PK": "Urdu (Pakistan)"
   },
   "footer": {
     "appVersion": "अॅप आवृत्ती",

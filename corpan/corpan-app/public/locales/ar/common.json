@@ -92,11 +92,17 @@
     "languageOrderTipBody": "اللغة في الأسفل تصبح لغة واجهة التطبيق. اسحب لتغييرها في أي وقت.",
     "ttsOsTipTitle": "نصيحة",
     "ttsOsTipAndroid": "لأفضل نتيجة استخدم نطق Google. ‏Samsung TTS لا يعمل في Corpán.",
-    "ttsOsTipIOS": "في الإعدادات → تسهيلات الاستخدام، ابحث عن القراءة/النطق أو «المحتوى المنطوق» ونزّل الأصوات.",
-    "ttsOsTipMac": "في إعدادات النظام → تسهيلات الاستخدام، افتح «المحتوى المنطوق» ونزّل الأصوات.",
+    "ttsOsTipIOS": "In Settings → Accessibility, find Spoken Content and download voices. Note: Apple doesn't provide voices for every language. If upgrading doesn't help, request support via Apple's Feedback app.",
+    "ttsOsTipMac": "In System Settings → Accessibility, find Spoken Content and download voices. Note: Apple doesn't provide voices for every language. If upgrading doesn't help, request support via Apple's Feedback app.",
     "ttsOsTipWindows": "ثبّت أصوات النطق من الإعدادات ثم ارجع هنا.",
     "ttsOsTipOther": "ثبّت أصوات النطق من إعدادات جهازك ثم ارجع هنا.",
-    "installVoicesAndroid": "تثبيت الأصوات"
+    "installVoicesAndroid": "تثبيت الأصوات",
+    "learning": "Learning languages",
+    "ttsStepTitle": "Text-to-speech",
+    "socials": "Follow & connect",
+    "noVoices": "No voices",
+    "noVoicesHint": "Install voices to enable this language.",
+    "sendAppleFeedback": "Send Apple Feedback"
   },
   "common": {
     "loading": "جارٍ التحميل…",
@@ -183,7 +189,20 @@
     "bn": "البنغالية",
     "th": "التايلاندية",
     "id": "الإندونيسية",
-    "tr": "التركية"
+    "tr": "التركية",
+    "bn-IN": "Bengali (India)",
+    "te-IN": "Telugu (India)",
+    "kn-IN": "Kannada (India)",
+    "mr": "Marathi",
+    "mr-IN": "Marathi (India)",
+    "gu": "Gujarati",
+    "gu-IN": "Gujarati (India)",
+    "pa": "Punjabi",
+    "pa-IN": "Punjabi (India)",
+    "pa-Guru-IN": "Punjabi (Gurmukhi, India)",
+    "ur": "Urdu",
+    "ur-IN": "Urdu (India)",
+    "ur-PK": "Urdu (Pakistan)"
   },
   "footer": {
     "appVersion": "إصدار التطبيق",

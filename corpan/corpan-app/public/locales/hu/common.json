@@ -92,11 +92,17 @@
     "languageOrderTipBody": "A legalul lévő nyelv lesz az app felületének nyelve. Húzd, és bármikor átállíthatod.",
     "ttsOsTipTitle": "Tipp",
     "ttsOsTipAndroid": "Legjobb: Google TTS. A Samsung TTS nem működik a Corpánban.",
-    "ttsOsTipIOS": "A Beállítások → Kisegítő lehetőségek alatt keresd a Felolvasás/Beszéd vagy a Felolvasott tartalom részt, és tölts le hangokat.",
-    "ttsOsTipMac": "A Rendszerbeállítások → Kisegítő lehetőségek alatt nyisd meg a Felolvasott tartalom részt, és tölts le hangokat.",
+    "ttsOsTipIOS": "In Settings → Accessibility, find Spoken Content and download voices. Note: Apple doesn't provide voices for every language. If upgrading doesn't help, request support via Apple's Feedback app.",
+    "ttsOsTipMac": "In System Settings → Accessibility, find Spoken Content and download voices. Note: Apple doesn't provide voices for every language. If upgrading doesn't help, request support via Apple's Feedback app.",
     "ttsOsTipWindows": "Telepíts hangokat a Beállításokban, majd térj vissza ide.",
     "ttsOsTipOther": "Telepíts hangokat az eszköz beállításaiban, majd térj vissza ide.",
-    "installVoicesAndroid": "Hangok telepítése"
+    "installVoicesAndroid": "Hangok telepítése",
+    "learning": "Learning languages",
+    "ttsStepTitle": "Text-to-speech",
+    "socials": "Follow & connect",
+    "noVoices": "No voices",
+    "noVoicesHint": "Install voices to enable this language.",
+    "sendAppleFeedback": "Send Apple Feedback"
   },
   "common": {
     "loading": "Betöltés...",
@@ -183,7 +189,20 @@
     "bn": "Bengáli",
     "th": "Thai",
     "id": "Indonéz",
-    "tr": "Török"
+    "tr": "Török",
+    "bn-IN": "Bengali (India)",
+    "te-IN": "Telugu (India)",
+    "kn-IN": "Kannada (India)",
+    "mr": "Marathi",
+    "mr-IN": "Marathi (India)",
+    "gu": "Gujarati",
+    "gu-IN": "Gujarati (India)",
+    "pa": "Punjabi",
+    "pa-IN": "Punjabi (India)",
+    "pa-Guru-IN": "Punjabi (Gurmukhi, India)",
+    "ur": "Urdu",
+    "ur-IN": "Urdu (India)",
+    "ur-PK": "Urdu (Pakistan)"
   },
   "footer": {
     "appVersion": "Alkalmazás verzió",

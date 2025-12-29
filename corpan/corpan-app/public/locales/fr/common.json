@@ -92,11 +92,17 @@
     "languageOrderTipBody": "La langue tout en bas devient la langue de l’interface. Faites-la glisser pour la changer à tout moment.",
     "ttsOsTipTitle": "Astuce",
     "ttsOsTipAndroid": "Pour de meilleurs résultats, utilisez le TTS de Google. Samsung TTS ne fonctionne pas dans Corpán.",
-    "ttsOsTipIOS": "Dans Réglages → Accessibilité, cherchez Lecture et énonciation / Contenu énoncé et téléchargez des voix.",
-    "ttsOsTipMac": "Dans Réglages Système → Accessibilité, cherchez Contenu énoncé et téléchargez des voix.",
+    "ttsOsTipIOS": "In Settings → Accessibility, find Spoken Content and download voices. Note: Apple doesn't provide voices for every language. If upgrading doesn't help, request support via Apple's Feedback app.",
+    "ttsOsTipMac": "In System Settings → Accessibility, find Spoken Content and download voices. Note: Apple doesn't provide voices for every language. If upgrading doesn't help, request support via Apple's Feedback app.",
     "ttsOsTipWindows": "Dans Paramètres, installez des voix de synthèse vocale, puis revenez ici.",
     "ttsOsTipOther": "Dans les réglages de l’appareil, installez des voix de synthèse vocale, puis revenez ici.",
-    "installVoicesAndroid": "Installer des voix"
+    "installVoicesAndroid": "Installer des voix",
+    "learning": "Learning languages",
+    "ttsStepTitle": "Text-to-speech",
+    "socials": "Follow & connect",
+    "noVoices": "No voices",
+    "noVoicesHint": "Install voices to enable this language.",
+    "sendAppleFeedback": "Send Apple Feedback"
   },
   "common": {
     "loading": "Chargement…",
@@ -183,7 +189,20 @@
     "bn": "Bengali",
     "th": "Thaï",
     "id": "Indonésien",
-    "tr": "Turc"
+    "tr": "Turc",
+    "bn-IN": "Bengali (India)",
+    "te-IN": "Telugu (India)",
+    "kn-IN": "Kannada (India)",
+    "mr": "Marathi",
+    "mr-IN": "Marathi (India)",
+    "gu": "Gujarati",
+    "gu-IN": "Gujarati (India)",
+    "pa": "Punjabi",
+    "pa-IN": "Punjabi (India)",
+    "pa-Guru-IN": "Punjabi (Gurmukhi, India)",
+    "ur": "Urdu",
+    "ur-IN": "Urdu (India)",
+    "ur-PK": "Urdu (Pakistan)"
   },
   "footer": {
     "appVersion": "Version de l’application",

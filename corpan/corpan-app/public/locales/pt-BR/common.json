@@ -92,11 +92,17 @@
     "languageOrderTipBody": "O idioma de baixo vira o idioma do app. Arraste para mudar quando quiser.",
     "ttsOsTipTitle": "Dica",
     "ttsOsTipAndroid": "Para melhores resultados, use o TTS do Google. O Samsung TTS não funciona no Corpán.",
-    "ttsOsTipIOS": "Em Ajustes → Acessibilidade, procure Ler e Falar / Conteúdo Falado e baixe vozes.",
-    "ttsOsTipMac": "Em Ajustes do Sistema → Acessibilidade, procure Conteúdo Falado e baixe vozes.",
+    "ttsOsTipIOS": "In Settings → Accessibility, find Spoken Content and download voices. Note: Apple doesn't provide voices for every language. If upgrading doesn't help, request support via Apple's Feedback app.",
+    "ttsOsTipMac": "In System Settings → Accessibility, find Spoken Content and download voices. Note: Apple doesn't provide voices for every language. If upgrading doesn't help, request support via Apple's Feedback app.",
     "ttsOsTipWindows": "Em Configurações, instale vozes de fala e volte aqui.",
     "ttsOsTipOther": "Nas configurações do dispositivo, instale vozes de fala e volte aqui.",
-    "installVoicesAndroid": "Instalar vozes"
+    "installVoicesAndroid": "Instalar vozes",
+    "learning": "Learning languages",
+    "ttsStepTitle": "Text-to-speech",
+    "socials": "Follow & connect",
+    "noVoices": "No voices",
+    "noVoicesHint": "Install voices to enable this language.",
+    "sendAppleFeedback": "Send Apple Feedback"
   },
   "common": {
     "loading": "Carregando...",
@@ -183,7 +189,20 @@
     "bn": "Bengalês",
     "th": "Tailandês",
     "id": "Indonésio",
-    "tr": "Turco"
+    "tr": "Turco",
+    "bn-IN": "Bengali (India)",
+    "te-IN": "Telugu (India)",
+    "kn-IN": "Kannada (India)",
+    "mr": "Marathi",
+    "mr-IN": "Marathi (India)",
+    "gu": "Gujarati",
+    "gu-IN": "Gujarati (India)",
+    "pa": "Punjabi",
+    "pa-IN": "Punjabi (India)",
+    "pa-Guru-IN": "Punjabi (Gurmukhi, India)",
+    "ur": "Urdu",
+    "ur-IN": "Urdu (India)",
+    "ur-PK": "Urdu (Pakistan)"
   },
   "footer": {
     "appVersion": "Versão do aplicativo",

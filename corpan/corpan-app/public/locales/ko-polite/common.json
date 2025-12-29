@@ -92,11 +92,17 @@
     "languageOrderTipBody": "맨 아래 언어가 앱 UI 언어가 됩니다. 드래그해서 언제든 바꿀 수 있어요.",
     "ttsOsTipTitle": "팁",
     "ttsOsTipAndroid": "가장 잘 됩니다: Google TTS 사용. Samsung TTS는 Corpán에서 동작하지 않습니다.",
-    "ttsOsTipIOS": "설정 → 손쉬운 사용에서 읽어주기/말하기(또는 말하기) 항목을 찾아 음성을 다운로드하세요.",
-    "ttsOsTipMac": "시스템 설정 → 손쉬운 사용에서 말하기(또는 읽어주기) 항목을 찾아 음성을 다운로드하세요.",
+    "ttsOsTipIOS": "In Settings → Accessibility, find Spoken Content and download voices. Note: Apple doesn't provide voices for every language. If upgrading doesn't help, request support via Apple's Feedback app.",
+    "ttsOsTipMac": "In System Settings → Accessibility, find Spoken Content and download voices. Note: Apple doesn't provide voices for every language. If upgrading doesn't help, request support via Apple's Feedback app.",
     "ttsOsTipWindows": "설정에서 음성을 설치한 뒤 여기로 돌아오세요.",
     "ttsOsTipOther": "기기 설정에서 음성을 설치한 뒤 여기로 돌아오세요.",
-    "installVoicesAndroid": "음성 설치"
+    "installVoicesAndroid": "음성 설치",
+    "learning": "Learning languages",
+    "ttsStepTitle": "Text-to-speech",
+    "socials": "Follow & connect",
+    "noVoices": "No voices",
+    "noVoicesHint": "Install voices to enable this language.",
+    "sendAppleFeedback": "Send Apple Feedback"
   },
   "common": {
     "loading": "로드 중...",
@@ -183,7 +189,20 @@
     "bn": "벵골어",
     "th": "태국어",
     "id": "인도네시아어",
-    "tr": "터키어"
+    "tr": "터키어",
+    "bn-IN": "Bengali (India)",
+    "te-IN": "Telugu (India)",
+    "kn-IN": "Kannada (India)",
+    "mr": "Marathi",
+    "mr-IN": "Marathi (India)",
+    "gu": "Gujarati",
+    "gu-IN": "Gujarati (India)",
+    "pa": "Punjabi",
+    "pa-IN": "Punjabi (India)",
+    "pa-Guru-IN": "Punjabi (Gurmukhi, India)",
+    "ur": "Urdu",
+    "ur-IN": "Urdu (India)",
+    "ur-PK": "Urdu (Pakistan)"
   },
   "footer": {
     "appVersion": "앱 버전",

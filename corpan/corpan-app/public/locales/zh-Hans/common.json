@@ -92,11 +92,17 @@
     "languageOrderTipBody": "最底部的语言会成为应用界面语言。拖动即可随时更改。",
     "ttsOsTipTitle": "提示",
     "ttsOsTipAndroid": "最佳效果：使用 Google 语音。Samsung TTS 在 Corpán 中无法使用。",
-    "ttsOsTipIOS": "在“设置”→“辅助功能”里找到“朗读/说话”（或“朗读内容”），下载语音后返回这里。",
-    "ttsOsTipMac": "在“系统设置”→“辅助功能”里找到“朗读内容”，下载语音后返回这里。",
+    "ttsOsTipIOS": "In Settings → Accessibility, find Spoken Content and download voices. Note: Apple doesn't provide voices for every language. If upgrading doesn't help, request support via Apple's Feedback app.",
+    "ttsOsTipMac": "In System Settings → Accessibility, find Spoken Content and download voices. Note: Apple doesn't provide voices for every language. If upgrading doesn't help, request support via Apple's Feedback app.",
     "ttsOsTipWindows": "在“设置”里安装语音后返回这里。",
     "ttsOsTipOther": "在设备设置里安装语音后返回这里。",
-    "installVoicesAndroid": "安装语音"
+    "installVoicesAndroid": "安装语音",
+    "learning": "Learning languages",
+    "ttsStepTitle": "Text-to-speech",
+    "socials": "Follow & connect",
+    "noVoices": "No voices",
+    "noVoicesHint": "Install voices to enable this language.",
+    "sendAppleFeedback": "Send Apple Feedback"
   },
   "common": {
     "loading": "加载中...",
@@ -183,7 +189,20 @@
     "bn": "孟加拉语",
     "th": "泰语",
     "id": "印度尼西亚语",
-    "tr": "土耳其语"
+    "tr": "土耳其语",
+    "bn-IN": "Bengali (India)",
+    "te-IN": "Telugu (India)",
+    "kn-IN": "Kannada (India)",
+    "mr": "Marathi",
+    "mr-IN": "Marathi (India)",
+    "gu": "Gujarati",
+    "gu-IN": "Gujarati (India)",
+    "pa": "Punjabi",
+    "pa-IN": "Punjabi (India)",
+    "pa-Guru-IN": "Punjabi (Gurmukhi, India)",
+    "ur": "Urdu",
+    "ur-IN": "Urdu (India)",
+    "ur-PK": "Urdu (Pakistan)"
   },
   "footer": {
     "appVersion": "应用版本",

@@ -92,11 +92,17 @@
     "languageOrderTipBody": "The bottom language becomes the app's UI language. Drag to change it anytime.",
     "ttsOsTipTitle": "Tip",
     "ttsOsTipAndroid": "Best results: use Google text-to-speech. Samsung TTS does not work in Corpán.",
-    "ttsOsTipIOS": "In Settings → Accessibility, find Read & Speak / Spoken Content and download voices.",
-    "ttsOsTipMac": "In System Settings → Accessibility, find Spoken Content and download voices.",
+    "ttsOsTipIOS": "In Settings → Accessibility, find Spoken Content and download voices. Note: Apple doesn't provide voices for every language. If upgrading doesn't help, request support via Apple's Feedback app.",
+    "ttsOsTipMac": "In System Settings → Accessibility, find Spoken Content and download voices. Note: Apple doesn't provide voices for every language. If upgrading doesn't help, request support via Apple's Feedback app.",
     "ttsOsTipWindows": "In Settings, add/install speech voices, then return here.",
     "ttsOsTipOther": "In your device settings, add/install text-to-speech voices, then return here.",
-    "installVoicesAndroid": "Install voices"
+    "installVoicesAndroid": "Install voices",
+    "learning": "Learning languages",
+    "ttsStepTitle": "Text-to-speech",
+    "socials": "Follow & connect",
+    "noVoices": "No voices",
+    "noVoicesHint": "Install voices to enable this language.",
+    "sendAppleFeedback": "Send Apple Feedback"
   },
   "common": {
     "loading": "Loading...",
@@ -106,7 +112,19 @@
     "create": "Create"
   },
   "dialects": {
-    "ur": "اردو"
+    "ur": "اردو",
+    "bn-IN": "Bengali (India)",
+    "te-IN": "Telugu (India)",
+    "kn-IN": "Kannada (India)",
+    "mr": "Marathi",
+    "mr-IN": "Marathi (India)",
+    "gu": "Gujarati",
+    "gu-IN": "Gujarati (India)",
+    "pa": "Punjabi",
+    "pa-IN": "Punjabi (India)",
+    "pa-Guru-IN": "Punjabi (Gurmukhi, India)",
+    "ur-IN": "Urdu (India)",
+    "ur-PK": "Urdu (Pakistan)"
   },
   "footer": {
     "appVersion": "App version",

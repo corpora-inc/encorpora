@@ -92,11 +92,17 @@
     "languageOrderTipBody": "Die unterste Sprache wird zur UI-Sprache der App. Ziehe sie, um sie jederzeit zu ändern.",
     "ttsOsTipTitle": "Tipp",
     "ttsOsTipAndroid": "Beste Ergebnisse: Google-Sprachausgabe verwenden. Samsung TTS funktioniert in Corpán nicht.",
-    "ttsOsTipIOS": "In Einstellungen → Bedienungshilfen nach „Vorlesen/Sprechen“ oder „Gesprochene Inhalte“ suchen und Stimmen laden.",
-    "ttsOsTipMac": "In Systemeinstellungen → Bedienungshilfen „Gesprochene Inhalte“ öffnen und Stimmen laden.",
+    "ttsOsTipIOS": "In Settings → Accessibility, find Spoken Content and download voices. Note: Apple doesn't provide voices for every language. If upgrading doesn't help, request support via Apple's Feedback app.",
+    "ttsOsTipMac": "In System Settings → Accessibility, find Spoken Content and download voices. Note: Apple doesn't provide voices for every language. If upgrading doesn't help, request support via Apple's Feedback app.",
     "ttsOsTipWindows": "In Einstellungen Sprachstimmen installieren und dann hierher zurückkehren.",
     "ttsOsTipOther": "In den Geräteeinstellungen Sprachstimmen installieren und dann hierher zurückkehren.",
-    "installVoicesAndroid": "Stimmen installieren"
+    "installVoicesAndroid": "Stimmen installieren",
+    "learning": "Learning languages",
+    "ttsStepTitle": "Text-to-speech",
+    "socials": "Follow & connect",
+    "noVoices": "No voices",
+    "noVoicesHint": "Install voices to enable this language.",
+    "sendAppleFeedback": "Send Apple Feedback"
   },
   "common": {
     "loading": "Wird geladen...",
@@ -183,7 +189,20 @@
     "bn": "Bengalisch",
     "th": "Thailändisch",
     "id": "Indonesisch",
-    "tr": "Türkisch"
+    "tr": "Türkisch",
+    "bn-IN": "Bengali (India)",
+    "te-IN": "Telugu (India)",
+    "kn-IN": "Kannada (India)",
+    "mr": "Marathi",
+    "mr-IN": "Marathi (India)",
+    "gu": "Gujarati",
+    "gu-IN": "Gujarati (India)",
+    "pa": "Punjabi",
+    "pa-IN": "Punjabi (India)",
+    "pa-Guru-IN": "Punjabi (Gurmukhi, India)",
+    "ur": "Urdu",
+    "ur-IN": "Urdu (India)",
+    "ur-PK": "Urdu (Pakistan)"
   },
   "footer": {
     "appVersion": "App-Version",

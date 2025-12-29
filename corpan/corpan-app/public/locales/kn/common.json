@@ -92,11 +92,17 @@
     "languageOrderTipBody": "ಕೆಳಗಿನ ಭಾಷೆ ಅಪ್ಲಿಕೇಶನ್‌ನ UI ಭಾಷೆಯಾಗುತ್ತದೆ. ಯಾವಾಗ ಬೇಕಾದರೂ ಬದಲಾಯಿಸಲು ಎಳೆಯಿರಿ.",
     "ttsOsTipTitle": "ಸಲಹೆ",
     "ttsOsTipAndroid": "ಉತ್ತಮ ಫಲಿತಾಂಶಗಳು: Google ಪಠ್ಯ-ಭಾಷಣ ಬಳಸಿ. Samsung TTS Corpán ನಲ್ಲಿ ಕೆಲಸ ಮಾಡುವುದಿಲ್ಲ.",
-    "ttsOsTipIOS": "ಸೆಟ್ಟಿಂಗ್‌ಗಳು → ಪ್ರವೇಶಿಸುವಿಕೆ → ಓದಿ & ಮಾತನಾಡಿ / ಮಾತನಾಡುವ ವಿಷಯದಲ್ಲಿ, ಧ್ವನಿಗಳನ್ನು ಡೌನ್‌ಲೋಡ್ ಮಾಡಿ.",
-    "ttsOsTipMac": "ಸಿಸ್ಟಮ್ ಸೆಟ್ಟಿಂಗ್‌ಗಳು → ಪ್ರವೇಶಿಸುವಿಕೆ → ಮಾತನಾಡುವ ವಿಷಯದಲ್ಲಿ, ಧ್ವನಿಗಳನ್ನು ಡೌನ್‌ಲೋಡ್ ಮಾಡಿ.",
+    "ttsOsTipIOS": "In Settings → Accessibility, find Spoken Content and download voices. Note: Apple doesn't provide voices for every language. If upgrading doesn't help, request support via Apple's Feedback app.",
+    "ttsOsTipMac": "In System Settings → Accessibility, find Spoken Content and download voices. Note: Apple doesn't provide voices for every language. If upgrading doesn't help, request support via Apple's Feedback app.",
     "ttsOsTipWindows": "ಸೆಟ್ಟಿಂಗ್‌ಗಳಲ್ಲಿ, ಭಾಷಣ ಧ್ವನಿಗಳನ್ನು ಸೇರಿಸಿ/ಸ್ಥಾಪಿಸಿ, ನಂತರ ಇಲ್ಲಿಗೆ ಹಿಂತಿರುಗಿ.",
     "ttsOsTipOther": "ನಿಮ್ಮ ಸಾಧನ ಸೆಟ್ಟಿಂಗ್‌ಗಳಲ್ಲಿ, ಪಠ್ಯ-ಭಾಷಣ ಧ್ವನಿಗಳನ್ನು ಸೇರಿಸಿ/ಸ್ಥಾಪಿಸಿ, ನಂತರ ಇಲ್ಲಿಗೆ ಹಿಂತಿರುಗಿ.",
-    "installVoicesAndroid": "ಧ್ವನಿಗಳನ್ನು ಸ್ಥಾಪಿಸಿ"
+    "installVoicesAndroid": "ಧ್ವನಿಗಳನ್ನು ಸ್ಥಾಪಿಸಿ",
+    "learning": "Learning languages",
+    "ttsStepTitle": "Text-to-speech",
+    "socials": "Follow & connect",
+    "noVoices": "No voices",
+    "noVoicesHint": "Install voices to enable this language.",
+    "sendAppleFeedback": "Send Apple Feedback"
   },
   "common": {
     "loading": "ಲೋಡ್ ಆಗುತ್ತಿದೆ...",
@@ -106,7 +112,20 @@
     "create": "ರಚಿಸಿ"
   },
   "dialects": {
-    "kn": "ಕನ್ನಡ"
+    "kn": "ಕನ್ನಡ",
+    "bn-IN": "Bengali (India)",
+    "te-IN": "Telugu (India)",
+    "kn-IN": "Kannada (India)",
+    "mr": "Marathi",
+    "mr-IN": "Marathi (India)",
+    "gu": "Gujarati",
+    "gu-IN": "Gujarati (India)",
+    "pa": "Punjabi",
+    "pa-IN": "Punjabi (India)",
+    "pa-Guru-IN": "Punjabi (Gurmukhi, India)",
+    "ur": "Urdu",
+    "ur-IN": "Urdu (India)",
+    "ur-PK": "Urdu (Pakistan)"
   },
   "footer": {
     "appVersion": "ಅಪ್ಲಿಕೇಶನ್ ಆವೃತ್ತಿ",

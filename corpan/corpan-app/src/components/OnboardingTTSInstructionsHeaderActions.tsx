@@ -3,12 +3,14 @@ import {
     Download,
     Settings,
     CheckCheck,
+    MessageSquare,
     // Lightbulb,
     // X,
     type LucideIcon,
 } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { DismissableTip } from "./DismissableTip";
+import { openAppleFeedback } from "@/util/tts-voices";
 
 type Props = {
     os: "android" | "ios" | "macos" | "windows" | "other";
@@ -131,6 +133,13 @@ export function OnboardingTTSInstructionsHeaderActions({
     //     return () => window.clearTimeout(tmr);
     // }, [tipClosing]);
 
+    // Optional action for Apple platforms
+    const feedbackAction = (os === "ios" || os === "macos") ? {
+        label: t("onboarding.sendAppleFeedback", { defaultValue: "Send Apple Feedback" }),
+        onClick: () => openAppleFeedback(),
+        icon: <MessageSquare size={14} />,
+    } : undefined;
+
     return (
         <div className="w-full py-1">
             {/* {!tipDismissed && ( */}
@@ -138,6 +147,7 @@ export function OnboardingTTSInstructionsHeaderActions({
                 storageKey={`tip:tts-os:${os}`}
                 title={tipTitle}
                 body={tipBody}
+                action={feedbackAction}
             />
             {/* )} */}
 

@@ -92,11 +92,17 @@
     "languageOrderTipBody": "En alttaki dil, uygulamanın arayüz dili olur. İstediğiniz zaman sürükleyip değiştirin.",
     "ttsOsTipTitle": "İpucu",
     "ttsOsTipAndroid": "En iyi sonuç: Google TTS kullanın. Samsung TTS Corpán’da çalışmaz.",
-    "ttsOsTipIOS": "Ayarlar → Erişilebilirlik içinde Read & Speak / Konuşulan İçerik bölümünü bulun ve sesleri indirin.",
-    "ttsOsTipMac": "Sistem Ayarları → Erişilebilirlik içinde Konuşulan İçerik bölümünü bulun ve sesleri indirin.",
+    "ttsOsTipIOS": "In Settings → Accessibility, find Spoken Content and download voices. Note: Apple doesn't provide voices for every language. If upgrading doesn't help, request support via Apple's Feedback app.",
+    "ttsOsTipMac": "In System Settings → Accessibility, find Spoken Content and download voices. Note: Apple doesn't provide voices for every language. If upgrading doesn't help, request support via Apple's Feedback app.",
     "ttsOsTipWindows": "Ayarlar’dan sesleri yükleyin, sonra buraya dönün.",
     "ttsOsTipOther": "Cihaz ayarlarından sesleri yükleyin, sonra buraya dönün.",
-    "installVoicesAndroid": "Sesleri yükle"
+    "installVoicesAndroid": "Sesleri yükle",
+    "learning": "Learning languages",
+    "ttsStepTitle": "Text-to-speech",
+    "socials": "Follow & connect",
+    "noVoices": "No voices",
+    "noVoicesHint": "Install voices to enable this language.",
+    "sendAppleFeedback": "Send Apple Feedback"
   },
   "common": {
     "loading": "Yükleniyor...",
@@ -183,7 +189,20 @@
     "bn": "Bengalce",
     "th": "Tayca",
     "id": "Endonezce",
-    "tr": "Türkçe"
+    "tr": "Türkçe",
+    "bn-IN": "Bengali (India)",
+    "te-IN": "Telugu (India)",
+    "kn-IN": "Kannada (India)",
+    "mr": "Marathi",
+    "mr-IN": "Marathi (India)",
+    "gu": "Gujarati",
+    "gu-IN": "Gujarati (India)",
+    "pa": "Punjabi",
+    "pa-IN": "Punjabi (India)",
+    "pa-Guru-IN": "Punjabi (Gurmukhi, India)",
+    "ur": "Urdu",
+    "ur-IN": "Urdu (India)",
+    "ur-PK": "Urdu (Pakistan)"
   },
   "footer": {
     "appVersion": "Uygulama sürümü",

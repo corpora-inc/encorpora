@@ -92,11 +92,17 @@
     "languageOrderTipBody": "زبانِ پایین‌ترین ردیف، زبان رابط برنامه می‌شود. هر زمان خواستید با کشیدن تغییرش دهید.",
     "ttsOsTipTitle": "نکته",
     "ttsOsTipAndroid": "بهترین نتیجه: از Google TTS استفاده کنید. Samsung TTS در Corpán کار نمی‌کند.",
-    "ttsOsTipIOS": "در Settings → Accessibility بخش Read & Speak / Spoken Content را پیدا کنید و صداها را دانلود کنید.",
-    "ttsOsTipMac": "در System Settings → Accessibility بخش Spoken Content را پیدا کنید و صداها را دانلود کنید.",
+    "ttsOsTipIOS": "In Settings → Accessibility, find Spoken Content and download voices. Note: Apple doesn't provide voices for every language. If upgrading doesn't help, request support via Apple's Feedback app.",
+    "ttsOsTipMac": "In System Settings → Accessibility, find Spoken Content and download voices. Note: Apple doesn't provide voices for every language. If upgrading doesn't help, request support via Apple's Feedback app.",
     "ttsOsTipWindows": "صداهای گفتار را در Settings نصب کنید و بعد برگردید.",
     "ttsOsTipOther": "صداهای گفتار را در تنظیمات دستگاه نصب کنید و بعد برگردید.",
-    "installVoicesAndroid": "نصب صداها"
+    "installVoicesAndroid": "نصب صداها",
+    "learning": "Learning languages",
+    "ttsStepTitle": "Text-to-speech",
+    "socials": "Follow & connect",
+    "noVoices": "No voices",
+    "noVoicesHint": "Install voices to enable this language.",
+    "sendAppleFeedback": "Send Apple Feedback"
   },
   "common": {
     "loading": "در حال بارگذاری…",
@@ -183,7 +189,20 @@
     "bn": "بنغالی",
     "th": "تایلندی",
     "id": "اندونزیایی",
-    "tr": "ترکی"
+    "tr": "ترکی",
+    "bn-IN": "Bengali (India)",
+    "te-IN": "Telugu (India)",
+    "kn-IN": "Kannada (India)",
+    "mr": "Marathi",
+    "mr-IN": "Marathi (India)",
+    "gu": "Gujarati",
+    "gu-IN": "Gujarati (India)",
+    "pa": "Punjabi",
+    "pa-IN": "Punjabi (India)",
+    "pa-Guru-IN": "Punjabi (Gurmukhi, India)",
+    "ur": "Urdu",
+    "ur-IN": "Urdu (India)",
+    "ur-PK": "Urdu (Pakistan)"
   },
   "footer": {
     "appVersion": "نسخهٔ برنامه",

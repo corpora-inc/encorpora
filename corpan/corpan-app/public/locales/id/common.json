@@ -92,11 +92,17 @@
     "languageOrderTipBody": "Bahasa paling bawah menjadi bahasa antarmuka aplikasi. Seret untuk mengubah kapan saja.",
     "ttsOsTipTitle": "Tips",
     "ttsOsTipAndroid": "Paling cocok: gunakan Google TTS. Samsung TTS tidak berfungsi di Corpán.",
-    "ttsOsTipIOS": "Di Pengaturan → Aksesibilitas, cari Read & Speak / Konten Lisan lalu unduh suara.",
-    "ttsOsTipMac": "Di Pengaturan Sistem → Aksesibilitas, cari Konten Lisan lalu unduh suara.",
+    "ttsOsTipIOS": "In Settings → Accessibility, find Spoken Content and download voices. Note: Apple doesn't provide voices for every language. If upgrading doesn't help, request support via Apple's Feedback app.",
+    "ttsOsTipMac": "In System Settings → Accessibility, find Spoken Content and download voices. Note: Apple doesn't provide voices for every language. If upgrading doesn't help, request support via Apple's Feedback app.",
     "ttsOsTipWindows": "Instal suara di Pengaturan lalu kembali ke sini.",
     "ttsOsTipOther": "Instal suara di pengaturan perangkat lalu kembali ke sini.",
-    "installVoicesAndroid": "Instal suara"
+    "installVoicesAndroid": "Instal suara",
+    "learning": "Learning languages",
+    "ttsStepTitle": "Text-to-speech",
+    "socials": "Follow & connect",
+    "noVoices": "No voices",
+    "noVoicesHint": "Install voices to enable this language.",
+    "sendAppleFeedback": "Send Apple Feedback"
   },
   "common": {
     "loading": "Memuat...",
@@ -183,7 +189,20 @@
     "bn": "Bengali",
     "th": "Thai",
     "id": "Indonesian",
-    "tr": "Bahasa Turki"
+    "tr": "Bahasa Turki",
+    "bn-IN": "Bengali (India)",
+    "te-IN": "Telugu (India)",
+    "kn-IN": "Kannada (India)",
+    "mr": "Marathi",
+    "mr-IN": "Marathi (India)",
+    "gu": "Gujarati",
+    "gu-IN": "Gujarati (India)",
+    "pa": "Punjabi",
+    "pa-IN": "Punjabi (India)",
+    "pa-Guru-IN": "Punjabi (Gurmukhi, India)",
+    "ur": "Urdu",
+    "ur-IN": "Urdu (India)",
+    "ur-PK": "Urdu (Pakistan)"
   },
   "footer": {
     "appVersion": "Versi aplikasi",
