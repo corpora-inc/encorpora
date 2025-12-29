@@ -44,11 +44,37 @@ const voicesInFlight: Record<VoiceCacheKey, Promise<VoiceInfo[]> | null> = {
 
 type UAOS = "macos" | "ios" | "android" | "other";
 
+/**
+ * Detect OS with robust iOS detection for modern iPads
+ * iPadOS 13+ often reports as "Macintosh" to get desktop sites
+ */
 export function detectOSFromUA(): UAOS {
-    const ua = typeof navigator !== "undefined" ? navigator.userAgent : "";
-    if (/iPhone|iPad|iPod/i.test(ua)) return "ios";
-    if (/Android/i.test(ua)) return "android";
-    if (/Macintosh/i.test(ua) && !/Mobile\/\w+ Safari/i.test(ua)) return "macos";
+    if (typeof navigator === "undefined") return "other";
+
+    const ua = navigator.userAgent || "";
+    const platform = navigator.platform || "";
+    const maxTouchPoints = navigator.maxTouchPoints || 0;
+
+    // Check for explicit iOS identifiers (iPhone, iPod, legacy iPad)
+    if (/iPhone|iPod/i.test(ua) || /iPad/i.test(ua)) {
+        return "ios";
+    }
+
+    // Modern iPad detection: MacIntel + touch support = iPad masquerading as desktop
+    if (/Mac/i.test(platform) && maxTouchPoints > 1) {
+        return "ios";
+    }
+
+    // Android (excluding ChromeOS)
+    if (/Android/i.test(ua) && !/CrOS/i.test(ua)) {
+        return "android";
+    }
+
+    // Real macOS (Mac without touch, and not an iPad)
+    if (/Mac/i.test(platform) && maxTouchPoints <= 1) {
+        return "macos";
+    }
+
     return "other";
 }
 
