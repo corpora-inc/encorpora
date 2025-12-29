@@ -316,13 +316,6 @@ mod macos_impl {
                 an.cmp(&bn)
             });
 
-            println!("[NATIVE_TTS:DEBUG] After filtering (no quality deduplication): {} voices", out.len());
-            println!("[NATIVE_TTS:DEBUG] Languages present: {:?}",
-                out.iter()
-                    .map(|v| v.language.as_str())
-                    .collect::<std::collections::HashSet<_>>()
-            );
-
             out
         }
     }
