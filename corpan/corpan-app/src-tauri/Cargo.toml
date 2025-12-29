@@ -1,6 +1,6 @@
 [package]
 name = "corpan"
-version = "0.8.3"
+version = "0.8.4"
 description = "Language learning app"
 authors = ["you"]
 edition = "2021"
@@ -36,8 +36,8 @@ tauri-plugin-tts = { path = "../../plugins/tauri-plugin-tts" }
 
 # Production optimizations for release builds
 [profile.release]
-opt-level = "z"        # Optimize for size (important for mobile apps)
-lto = true             # Link-time optimization for better performance and smaller binary
-codegen-units = 1      # Better optimization at cost of compile time
-strip = true           # Strip symbols from binary (smaller size)
-panic = "abort"        # Smaller binary, no unwinding
+opt-level = "z"   # Optimize for size (important for mobile apps)
+lto = true        # Link-time optimization for better performance and smaller binary
+codegen-units = 1 # Better optimization at cost of compile time
+strip = true      # Strip symbols from binary (smaller size)
+panic = "abort"   # Smaller binary, no unwinding

@@ -651,7 +651,7 @@ dependencies = [
 
 [[package]]
 name = "corpan"
-version = "0.8.3"
+version = "0.8.4"
 dependencies = [
  "reqwest",
  "rusqlite",
