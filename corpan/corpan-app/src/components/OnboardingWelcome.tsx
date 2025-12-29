@@ -106,7 +106,7 @@ export function OnboardingWelcome() {
                     return (
                         <span
                             key={w.code}
-                            className="text-lg font-medium"
+                            className="text-md"
                             style={{
                                 margin: "0 0.2em",
                                 opacity: isActive ? (fading ? 0.2 : 1) : 0.35,

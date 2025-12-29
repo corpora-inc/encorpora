@@ -10,7 +10,7 @@
         "en": {
           "type": "string"
         },
-        "koPolite": {
+        "ko-polite": {
           "type": "string"
         },
         "es": {
@@ -22,16 +22,16 @@
         "de": {
           "type": "string"
         },
-        "ptBR": {
+        "pt-BR": {
           "type": "string"
         },
         "ja": {
           "type": "string"
         },
-        "zhHans": {
+        "zh-Hans": {
           "type": "string"
         },
-        "zhHant": {
+        "zh-Hant": {
           "type": "string"
         },
         "ar": {
@@ -97,13 +97,13 @@
       },
       "required": [
         "en",
-        "koPolite",
+        "ko-polite",
         "es",
         "fr",
         "de",
-        "ptBR",
+        "pt-BR",
         "ja",
-        "zhHans",
+        "zh-Hans",
         "ar",
         "ru",
         "it",
@@ -113,7 +113,7 @@
         "hu",
         "fa",
         "bn",
-        "zhHant",
+        "zh-Hant",
         "th",
         "id",
         "tr",
