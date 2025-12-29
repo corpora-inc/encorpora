@@ -16,48 +16,140 @@ from django.core.management.base import BaseCommand, CommandError
 
 from cor.models import Language, Translation
 
-try:
-    from aksharamukha import transliterate as akshara_tr  # type: ignore
-except Exception as e:
-    raise CommandError(
-        "aksharamukha is not installed or failed to import. "
-        "Install with: pip install aksharamukha"
-    ) from e
-
-
-SRC_SCRIPT = "Urdu"
-TARGET_SCHEME = "ISO"
-
 
 def _nfc(s: str) -> str:
     """Normalize to NFC (canonical composition)."""
     return unicodedata.normalize("NFC", s or "")
 
 
+# ISO 15919 romanization mapping for Urdu characters
+URDU_TO_ISO = {
+    # Vowels
+    "ا": "ā",
+    "آ": "ā",
+    "ع": """,  # ain - glottal stop
+    'ء': """,  # hamza
+    "و": "o",  # can be u/ū/o depending on context
+    "ی": "ī",
+    "ے": "e",
+    # Consonants
+    "ب": "b",
+    "پ": "p",
+    "ت": "t",
+    "ٹ": "ṭ",
+    "ث": "s̱",  # se
+    "ج": "j",
+    "چ": "c",
+    "ح": "ḥ",
+    "خ": "x",
+    "د": "d",
+    "ڈ": "ḍ",
+    "ذ": "z̤",  # zāl
+    "ر": "r",
+    "ڑ": "ṛ",
+    "ز": "z",
+    "ژ": "ž",
+    "س": "s",
+    "ش": "š",
+    "ص": "ṣ",
+    "ض": "ẓ",
+    "ط": "ṯ",
+    "ظ": "ẕ",
+    "غ": "ġ",
+    "ف": "f",
+    "ق": "q",
+    "ک": "k",
+    "گ": "g",
+    "ل": "l",
+    "م": "m",
+    "ن": "n",
+    "ں": "ṅ",
+    "ہ": "h",
+    "ھ": "h",
+    "ؤ": "o",
+    "ئ": "y",
+    # Diacritics
+    "َ": "a",  # zabar (fatha)
+    "ِ": "i",  # zer (kasra)
+    "ُ": "u",  # pesh (damma)
+    "ّ": "",  # shadda (gemination)
+    "ٰ": "ā",  # alif khanjariyah
+    "ً": "an",  # tanwin fath
+    "ٍ": "in",  # tanwin kasr
+    "ٌ": "un",  # tanwin zamm
+    "ْ": "",  # sukun
+    # Special
+    "۔": ".",  # Urdu period
+    "؍": "/",
+    "،": ",",
+    "؟": "?",
+    "۰": "0",
+    "۱": "1",
+    "۲": "2",
+    "۳": "3",
+    "۴": "4",
+    "۵": "5",
+    "۶": "6",
+    "۷": "7",
+    "۸": "8",
+    "۹": "9",
+}
+
+
 def ur_to_iso15919(text_ur: str) -> str:
     """
-    Deterministic Urdu → ISO 15919 via Aksharamukha.
+    Deterministic Urdu → ISO 15919 romanization.
 
     Urdu script features (Perso-Arabic with Indo-Aryan extensions):
     - Written right-to-left (RTL)
     - Additional retroflex letters: ٹ (ṭ), ڈ (ḍ), ڑ (ṛ)
     - Aspirated consonants marked with ھ: بھ (bh), پھ (ph), تھ (th), etc.
     - Vowel diacritics (zabar, zer, pesh) often omitted in writing
-    - Special consonants: ژ (zh), ڑ (ṛ), ں (ṅ), ے (e)
+    - Special consonants: ژ (ž), ڑ (ṛ), ں (ṅ), ے (e)
 
-    ISO 15919 provides standard romanization for Urdu's extended Arabic alphabet.
-    Note: Urdu shares much phonetic inventory with Hindi but uses different script.
+    Uses custom ISO 15919 character mapping with digraph handling.
     """
     # NFC normalize source
     src = _nfc(text_ur)
 
-    # Run Aksharamukha ISO 15919 transliteration
-    out = akshara_tr.process(
-        SRC_SCRIPT, TARGET_SCHEME, src, nativize=True, pre_options=[], post_options=[]
-    )
+    # Handle aspirated consonants (digraphs) first
+    # These must be processed before individual character mapping
+    aspirates = {
+        "بھ": "bh",
+        "پھ": "ph",
+        "تھ": "th",
+        "ٹھ": "ṭh",
+        "جھ": "jh",
+        "چھ": "ch",
+        "دھ": "dh",
+        "ڈھ": "ḍh",
+        "کھ": "kh",
+        "گھ": "gh",
+        "ڑھ": "ṛh",
+    }
 
-    # Replace Aksharamukha's clitic colon with apostrophe
-    out = out.replace(":", "'")
+    # Replace aspirated consonants with placeholders
+    for aspirate, roman in aspirates.items():
+        src = src.replace(aspirate, f"◆{roman}◆")
+
+    # Character-by-character transliteration
+    result = []
+    for char in src:
+        if char == "◆":
+            # Marker for already-processed aspirates
+            continue
+        elif char in URDU_TO_ISO:
+            result.append(URDU_TO_ISO[char])
+        elif char.isspace() or char.isascii():
+            result.append(char)
+        else:
+            # Unknown character - keep as is
+            result.append(char)
+
+    out = "".join(result)
+
+    # Restore aspirated consonants
+    out = out.replace("◆", "")
 
     # NFC normalize and trim
     return _nfc(out).strip()
@@ -87,11 +179,17 @@ class Command(BaseCommand):
             default=0,
             help="Process only this many rows (0 = all).",
         )
+        parser.add_argument(
+            "--force",
+            action="store_true",
+            help="Force update all rows, even if romanization appears unchanged.",
+        )
 
     def handle(self, *args, **opts):
         dry = bool(opts["dry_run"])
         sample_n = int(opts["sample"])
         limit = int(opts["limit"])
+        force = bool(opts["force"])
 
         try:
             lang = Language.objects.get(code="ur")
@@ -121,7 +219,7 @@ class Command(BaseCommand):
             old = _nfc((t.romanization or "").strip())
             new = ur_to_iso15919(t.text)
 
-            if new != old:
+            if force or new != old:
                 changes.append((t, new))
 
         if dry:

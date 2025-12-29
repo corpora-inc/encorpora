@@ -10,4 +10,3 @@ pykakasi==2.3.0
 pypinyin==0.54.0
 transliterate==1.10.2
 unidic-lite==1.0.8
-
