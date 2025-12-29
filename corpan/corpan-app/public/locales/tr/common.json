@@ -68,7 +68,7 @@
     "small": "Küçük",
     "medium": "Orta",
     "large": "Büyük",
-    "extraLarge": "Çok büyük",
+    "extra-large": "Çok büyük",
     "testTts": "Aşağıdaki düğmelerle TTS'yi test edin:",
     "showRomanization": "Okunuşu göster"
   },
@@ -224,7 +224,9 @@
     "gu-IN": "Guceratça (Hindistan)",
     "pa": "Pencapça",
     "pa-IN": "Pencapça (Hindistan)",
+    "pa-Guru": "Pencapça (Gurmukhi)",
     "pa-Guru-IN": "Pencapça (Gurmukhi, Hindistan)",
+    "pa-Arab": "Pencapça (Şahmukhi)",
     "ur": "Urduca",
     "ur-IN": "Urduca (Hindistan)",
     "ur-PK": "Urduca (Pakistan)",

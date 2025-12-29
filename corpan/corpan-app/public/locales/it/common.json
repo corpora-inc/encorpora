@@ -68,7 +68,7 @@
     "small": "Piccolo",
     "medium": "Medio",
     "large": "Grande",
-    "extraLarge": "Molto grande",
+    "extra-large": "Molto grande",
     "testTts": "Prova le impostazioni TTS con i pulsanti qui sotto:",
     "showRomanization": "Mostra romanizzazione"
   },
@@ -224,7 +224,9 @@
     "gu-IN": "Gujarati (India)",
     "pa": "Punjabi",
     "pa-IN": "Punjabi (India)",
+    "pa-Guru": "Punjabi (Gurmukhi)",
     "pa-Guru-IN": "Punjabi (Gurmukhi, India)",
+    "pa-Arab": "Punjabi (Shahmukhi)",
     "ur": "Urdu",
     "ur-IN": "Urdu (India)",
     "ur-PK": "Urdu (Pakistan)",

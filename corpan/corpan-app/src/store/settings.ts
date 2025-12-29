@@ -2,7 +2,7 @@
 
 import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
-import { RTL_LANGUAGES } from "./constants";
+import { isRTL } from "@/util/convert";
 
 export const ALL_LANGUAGES = [
     "en",
@@ -17,8 +17,16 @@ export const ALL_LANGUAGES = [
     "tr",
     "ar",
     "fa",
+    "ur",
+    "pa-Arab",
+    "pa-Guru",
     "hi",
     "bn",
+    "mr",
+    "gu",
+    "kn",
+    "te",
+    "ta",
     "th",
     "vi",
     "id",
@@ -26,14 +34,6 @@ export const ALL_LANGUAGES = [
     "zh-Hant",
     "ko-polite",
     "ja",
-    "ta",
-    "te",
-    "kn",
-    "mr",
-    "gu",
-    "pa-Guru",
-    "pa-Arab",
-    "ur",
 ];
 
 export const COMING_SOON_LANGUAGES = [
@@ -408,8 +408,8 @@ export const useSettingsStore = create<MultiStackState>()(
                 primaryLang: () => get().languages[0],
 
                 dir: () => {
-                    const base = (get().languages[0] || "").split("-")[0];
-                    return RTL_LANGUAGES.includes(base as any) ? "rtl" : "ltr";
+                    const primaryLang = get().languages[0] || "";
+                    return isRTL(primaryLang) ? "rtl" : "ltr";
                 },
 
                 reset: () => {

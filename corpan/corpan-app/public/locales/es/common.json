@@ -68,7 +68,7 @@
     "small": "Pequeño",
     "medium": "Mediano",
     "large": "Grande",
-    "extraLarge": "Muy grande",
+    "extra-large": "Muy grande",
     "testTts": "Prueba TTS con los botones de abajo:",
     "showRomanization": "Mostrar romanización"
   },
@@ -224,7 +224,9 @@
     "gu-IN": "Gujaratí (India)",
     "pa": "Punyabí",
     "pa-IN": "Punyabí (India)",
+    "pa-Guru": "Punyabí (Gurmukhī)",
     "pa-Guru-IN": "Punyabí (Gurmukhī, India)",
+    "pa-Arab": "Punyabí (Shahmukhi)",
     "ur": "Urdu",
     "ur-IN": "Urdu (India)",
     "ur-PK": "Urdu (Pakistán)",

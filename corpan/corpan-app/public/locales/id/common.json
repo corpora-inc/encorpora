@@ -68,7 +68,7 @@
     "small": "Kecil",
     "medium": "Sedang",
     "large": "Besar",
-    "extraLarge": "Sangat besar",
+    "extra-large": "Sangat besar",
     "testTts": "Uji TTS dengan tombol di bawah:",
     "showRomanization": "Tampilkan romanisasi"
   },
@@ -224,7 +224,9 @@
     "gu-IN": "Gujarati (India)",
     "pa": "Punjabi",
     "pa-IN": "Punjabi (India)",
+    "pa-Guru": "Punjabi (Gurmukhi)",
     "pa-Guru-IN": "Punjabi (Gurmukhi, India)",
+    "pa-Arab": "Punjabi (Shahmukhi)",
     "ur": "Urdu",
     "ur-IN": "Urdu (India)",
     "ur-PK": "Urdu (Pakistan)",

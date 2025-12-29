@@ -68,7 +68,7 @@
     "small": "Nhỏ",
     "medium": "Trung bình",
     "large": "Lớn",
-    "extraLarge": "Rất lớn",
+    "extra-large": "Rất lớn",
     "testTts": "Kiểm tra cài đặt TTS của bạn bằng cách nhấp vào các nút bên dưới:",
     "showRomanization": "Hiển thị La-tinh hóa"
   },
@@ -224,7 +224,9 @@
     "gu-IN": "Tiếng Gujarati (Ấn Độ)",
     "pa": "Tiếng Punjab",
     "pa-IN": "Tiếng Punjab (Ấn Độ)",
+    "pa-Guru": "Tiếng Punjab (Gurmukhi)",
     "pa-Guru-IN": "Tiếng Punjab (Gurmukhi, Ấn Độ)",
+    "pa-Arab": "Tiếng Punjab (Shahmukhi)",
     "ur": "Tiếng Urdu",
     "ur-IN": "Tiếng Urdu (Ấn Độ)",
     "ur-PK": "Tiếng Urdu (Pakistan)",

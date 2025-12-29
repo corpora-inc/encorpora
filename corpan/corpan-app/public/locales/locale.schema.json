@@ -254,7 +254,7 @@
         "large": {
           "type": "string"
         },
-        "extraLarge": {
+        "extra-large": {
           "type": "string"
         },
         "testTts": {
@@ -286,7 +286,7 @@
         "small",
         "medium",
         "large",
-        "extraLarge",
+        "extra-large",
         "testTts",
         "showRomanization"
       ],
@@ -455,7 +455,11 @@
               "type": "string"
             }
           },
-          "required": ["cta", "title", "desc"],
+          "required": [
+            "cta",
+            "title",
+            "desc"
+          ],
           "additionalProperties": false
         },
         "github": {
@@ -471,7 +475,11 @@
               "type": "string"
             }
           },
-          "required": ["cta", "title", "desc"],
+          "required": [
+            "cta",
+            "title",
+            "desc"
+          ],
           "additionalProperties": false
         },
         "blog": {
@@ -487,7 +495,11 @@
               "type": "string"
             }
           },
-          "required": ["cta", "title", "desc"],
+          "required": [
+            "cta",
+            "title",
+            "desc"
+          ],
           "additionalProperties": false
         },
         "website": {
@@ -503,11 +515,20 @@
               "type": "string"
             }
           },
-          "required": ["cta", "title", "desc"],
+          "required": [
+            "cta",
+            "title",
+            "desc"
+          ],
           "additionalProperties": false
         }
       },
-      "required": ["youtube", "github", "blog", "website"],
+      "required": [
+        "youtube",
+        "github",
+        "blog",
+        "website"
+      ],
       "additionalProperties": false
     },
     "common": {

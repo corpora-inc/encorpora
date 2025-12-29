@@ -68,7 +68,7 @@
     "small": "Klein",
     "medium": "Mittel",
     "large": "Groß",
-    "extraLarge": "Sehr groß",
+    "extra-large": "Sehr groß",
     "testTts": "Testen Sie Ihre TTS-Einstellungen, indem Sie auf die Schaltflächen unten klicken:",
     "showRomanization": "Romanisierung anzeigen"
   },
@@ -224,7 +224,9 @@
     "gu-IN": "Gujarati (Indien)",
     "pa": "Panjabi",
     "pa-IN": "Panjabi (Indien)",
+    "pa-Guru": "Panjabi (Gurmukhi)",
     "pa-Guru-IN": "Panjabi (Gurmukhi, Indien)",
+    "pa-Arab": "Panjabi (Shahmukhi)",
     "ur": "Urdu",
     "ur-IN": "Urdu (Indien)",
     "ur-PK": "Urdu (Pakistan)",

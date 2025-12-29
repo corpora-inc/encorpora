@@ -2,7 +2,7 @@
 
 import { useSettingsStore, ALL_LANGUAGES } from "@/store/settings";
 import { TRANSLATIONS } from "@/store/translations";
-import { RTL_LANGUAGES } from "@/store/constants";
+import { isRTL } from "@/util/convert";
 import { ArrowRightCircle } from "lucide-react";
 import { useEffect, useState, useMemo } from "react";
 
@@ -60,8 +60,7 @@ export function OnboardingWelcome() {
     }, [idx]);
 
     const current = welcomes[idx];
-    const baseLang = current.code.split("-")[0];
-    const dir = RTL_LANGUAGES.includes(baseLang) ? "rtl" : "ltr";
+    const dir = isRTL(current.code) ? "rtl" : "ltr";
 
     return (
         <div
