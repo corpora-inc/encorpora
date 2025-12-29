@@ -28,8 +28,8 @@
     "mr": "Маратхи",
     "gu": "Гуджарати",
     "ur": "Урду",
-    "pa-Guru": "Punjabi (Gurmukhi)",
-    "pa-Arab": "Punjabi (Shahmukhi)"
+    "pa-Guru": "панджаби (гурмукхи)",
+    "pa-Arab": "панджаби (шахмухи)"
   },
   "categories": {
     "travel": "Путешествия",
@@ -49,6 +49,7 @@
   "settings": {
     "addMoreLanguages": "Добавить больше языков",
     "selectedLanguages": "Выбранные языки",
+    "removeLanguage": "Удалить язык",
     "settings": "Настройки",
     "adjustToYourPreferences": "Настроить под ваши предпочтения",
     "speechRate": "Скорость речи",
@@ -88,21 +89,45 @@
     "openTTSSetup": "Открыть настройки TTS",
     "welcomeFollowUp": "Спасибо, что присоединились! Увидимся в сообществе.",
     "learningStepTitle": "Обучение",
+    "tts": "Текст в речь",
     "languageOrderTipTitle": "Совет",
     "languageOrderTipBody": "Язык внизу становится языком интерфейса. Перетащите, чтобы изменить в любой момент.",
     "ttsOsTipTitle": "Совет",
     "ttsOsTipAndroid": "Лучше всего работает Google TTS. Samsung TTS в Corpán не работает.",
-    "ttsOsTipIOS": "In Settings → Accessibility, find Spoken Content and download voices. Note: Apple doesn't provide voices for every language. If upgrading doesn't help, request support via Apple's Feedback app.",
-    "ttsOsTipMac": "In System Settings → Accessibility, find Spoken Content and download voices. Note: Apple doesn't provide voices for every language. If upgrading doesn't help, request support via Apple's Feedback app.",
+    "ttsOsTipIOS": "В Settings → Accessibility найдите Spoken Content и скачайте голоса. Примечание: Apple не предоставляет голоса для всех языков. Если обновление не помогает, запросите поддержку через приложение Feedback от Apple.",
+    "ttsOsTipMac": "В System Settings → Accessibility найдите Spoken Content и скачайте голоса. Примечание: Apple не предоставляет голоса для всех языков. Если обновление не помогает, запросите поддержку через приложение Feedback от Apple.",
     "ttsOsTipWindows": "Установите голоса в «Параметрах» и вернитесь сюда.",
     "ttsOsTipOther": "Установите голоса в настройках устройства и вернитесь сюда.",
     "installVoicesAndroid": "Установить голоса",
-    "learning": "Learning languages",
-    "ttsStepTitle": "Text-to-speech",
-    "socials": "Follow & connect",
-    "noVoices": "No voices",
-    "noVoicesHint": "Install voices to enable this language.",
-    "sendAppleFeedback": "Send Apple Feedback"
+    "learning": "Изучение языков",
+    "ttsStepTitle": "Текст в речь",
+    "socials": "Подписывайтесь и общайтесь",
+    "socialsStepTitle": "Соцсети",
+    "noVoices": "Нет голосов",
+    "noVoicesHint": "Установите голоса, чтобы включить этот язык.",
+    "sendAppleFeedback": "Отправить отзыв Apple"
+  },
+  "socials": {
+    "youtube": {
+      "cta": "Смотреть",
+      "title": "YouTube",
+      "desc": "Уроки, демо и закулисье."
+    },
+    "github": {
+      "cta": "Поставить звезду и внести вклад",
+      "title": "GitHub",
+      "desc": "Открытый исходный код. PR приветствуются!"
+    },
+    "blog": {
+      "cta": "Читать",
+      "title": "Free2z Blog",
+      "desc": "Обновления, дорожная карта и глубокие разборы."
+    },
+    "website": {
+      "cta": "Посетить",
+      "title": "encorpora.io",
+      "desc": "Основной сайт с документацией и сообществом."
+    }
   },
   "common": {
     "loading": "Загрузка...",
@@ -190,19 +215,22 @@
     "th": "Тайский",
     "id": "Индонезийский",
     "tr": "Турецкий",
-    "bn-IN": "Bengali (India)",
-    "te-IN": "Telugu (India)",
-    "kn-IN": "Kannada (India)",
-    "mr": "Marathi",
-    "mr-IN": "Marathi (India)",
-    "gu": "Gujarati",
-    "gu-IN": "Gujarati (India)",
-    "pa": "Punjabi",
-    "pa-IN": "Punjabi (India)",
-    "pa-Guru-IN": "Punjabi (Gurmukhi, India)",
-    "ur": "Urdu",
-    "ur-IN": "Urdu (India)",
-    "ur-PK": "Urdu (Pakistan)"
+    "bn-IN": "бенгальский (Индия)",
+    "te-IN": "телугу (Индия)",
+    "kn-IN": "каннада (Индия)",
+    "mr": "маратхи",
+    "mr-IN": "маратхи (Индия)",
+    "gu": "гуджарати",
+    "gu-IN": "гуджарати (Индия)",
+    "pa": "панджаби",
+    "pa-IN": "панджаби (Индия)",
+    "pa-Guru-IN": "панджаби (гурмукхи, Индия)",
+    "ur": "урду",
+    "ur-IN": "урду (Индия)",
+    "ur-PK": "урду (Пакистан)",
+    "ta": "тамильский",
+    "te": "телугу",
+    "kn": "каннада"
   },
   "footer": {
     "appVersion": "Версия приложения",
@@ -222,6 +250,7 @@
     "new": "Новый профиль",
     "newName": "Название нового профиля",
     "rename": "Переименовать",
+    "renameLabel": "Новое имя для стека",
     "selectAria": "Выберите профиль",
     "selectPlaceholder": "Выбрать…"
   },

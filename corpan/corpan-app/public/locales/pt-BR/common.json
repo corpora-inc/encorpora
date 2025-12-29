@@ -28,7 +28,7 @@
     "mr": "Marati",
     "gu": "Guzerate",
     "ur": "Urdu",
-    "pa-Guru": "Punjabi (Gurmukhi)",
+    "pa-Guru": "Punjabi (Gurmuqui)",
     "pa-Arab": "Punjabi (Shahmukhi)"
   },
   "categories": {
@@ -49,6 +49,7 @@
   "settings": {
     "addMoreLanguages": "Adicionar mais idiomas",
     "selectedLanguages": "Idiomas selecionados",
+    "removeLanguage": "Remover idioma",
     "settings": "Configurações",
     "adjustToYourPreferences": "Ajustar às suas preferências",
     "speechRate": "Velocidade da fala",
@@ -88,21 +89,45 @@
     "openTTSSetup": "Abrir configurações de TTS",
     "welcomeFollowUp": "Obrigado por se juntar a nós — te vemos na comunidade!",
     "learningStepTitle": "Aprender",
+    "tts": "Texto para fala",
     "languageOrderTipTitle": "Dica",
     "languageOrderTipBody": "O idioma de baixo vira o idioma do app. Arraste para mudar quando quiser.",
     "ttsOsTipTitle": "Dica",
     "ttsOsTipAndroid": "Para melhores resultados, use o TTS do Google. O Samsung TTS não funciona no Corpán.",
-    "ttsOsTipIOS": "In Settings → Accessibility, find Spoken Content and download voices. Note: Apple doesn't provide voices for every language. If upgrading doesn't help, request support via Apple's Feedback app.",
-    "ttsOsTipMac": "In System Settings → Accessibility, find Spoken Content and download voices. Note: Apple doesn't provide voices for every language. If upgrading doesn't help, request support via Apple's Feedback app.",
+    "ttsOsTipIOS": "Em Ajustes → Acessibilidade, encontre Conteúdo Falado e baixe vozes. Nota: a Apple não fornece vozes para todos os idiomas. Se atualizar não ajudar, solicite suporte pelo app Feedback da Apple.",
+    "ttsOsTipMac": "Em Ajustes do Sistema → Acessibilidade, encontre Conteúdo Falado e baixe vozes. Nota: a Apple não fornece vozes para todos os idiomas. Se atualizar não ajudar, solicite suporte pelo app Feedback da Apple.",
     "ttsOsTipWindows": "Em Configurações, instale vozes de fala e volte aqui.",
     "ttsOsTipOther": "Nas configurações do dispositivo, instale vozes de fala e volte aqui.",
     "installVoicesAndroid": "Instalar vozes",
-    "learning": "Learning languages",
-    "ttsStepTitle": "Text-to-speech",
-    "socials": "Follow & connect",
-    "noVoices": "No voices",
-    "noVoicesHint": "Install voices to enable this language.",
-    "sendAppleFeedback": "Send Apple Feedback"
+    "learning": "Aprendendo idiomas",
+    "ttsStepTitle": "Texto para fala",
+    "socials": "Seguir e conectar",
+    "socialsStepTitle": "Redes sociais",
+    "noVoices": "Sem vozes",
+    "noVoicesHint": "Instale vozes para ativar este idioma.",
+    "sendAppleFeedback": "Enviar feedback à Apple"
+  },
+  "socials": {
+    "youtube": {
+      "cta": "Assistir",
+      "title": "YouTube",
+      "desc": "Tutoriais, demos e bastidores."
+    },
+    "github": {
+      "cta": "Favoritar e contribuir",
+      "title": "GitHub",
+      "desc": "Código aberto. PRs bem-vindos!"
+    },
+    "blog": {
+      "cta": "Ler",
+      "title": "Free2z Blog",
+      "desc": "Atualizações, roteiro e análises profundas."
+    },
+    "website": {
+      "cta": "Visitar",
+      "title": "encorpora.io",
+      "desc": "Site principal com docs e comunidade."
+    }
   },
   "common": {
     "loading": "Carregando...",
@@ -190,19 +215,22 @@
     "th": "Tailandês",
     "id": "Indonésio",
     "tr": "Turco",
-    "bn-IN": "Bengali (India)",
-    "te-IN": "Telugu (India)",
-    "kn-IN": "Kannada (India)",
-    "mr": "Marathi",
-    "mr-IN": "Marathi (India)",
-    "gu": "Gujarati",
-    "gu-IN": "Gujarati (India)",
+    "bn-IN": "Bengalês (Índia)",
+    "te-IN": "Télugo (Índia)",
+    "kn-IN": "Canarês (Índia)",
+    "mr": "Marati",
+    "mr-IN": "Marati (Índia)",
+    "gu": "Guzerate",
+    "gu-IN": "Guzerate (Índia)",
     "pa": "Punjabi",
-    "pa-IN": "Punjabi (India)",
-    "pa-Guru-IN": "Punjabi (Gurmukhi, India)",
+    "pa-IN": "Punjabi (Índia)",
+    "pa-Guru-IN": "Punjabi (Gurmuqui, Índia)",
     "ur": "Urdu",
-    "ur-IN": "Urdu (India)",
-    "ur-PK": "Urdu (Pakistan)"
+    "ur-IN": "Urdu (Índia)",
+    "ur-PK": "Urdu (Paquistão)",
+    "ta": "Tâmil",
+    "te": "Telugu",
+    "kn": "Kannada"
   },
   "footer": {
     "appVersion": "Versão do aplicativo",
@@ -222,6 +250,7 @@
     "new": "Novo perfil",
     "newName": "Nome do novo perfil",
     "rename": "Renomear",
+    "renameLabel": "Novo nome para pilha",
     "selectAria": "Selecionar um perfil",
     "selectPlaceholder": "Escolher…"
   },
@@ -236,7 +265,7 @@
     "feedbackButton": "Enviar feedback no GitHub"
   },
   "packs": {
-    "title": "Packs",
+    "title": "Pacotes",
     "available": "Packs disponíveis",
     "emptyAvailable": "Ainda não há packs.",
     "installed": "Packs instalados",

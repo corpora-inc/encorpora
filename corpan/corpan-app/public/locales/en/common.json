@@ -49,6 +49,7 @@
   "settings": {
     "addMoreLanguages": "Add more languages",
     "selectedLanguages": "Selected languages",
+    "removeLanguage": "Remove language",
     "settings": "Settings",
     "adjustToYourPreferences": "Adjust to your preferences",
     "speechRate": "Speech rate",
@@ -89,8 +90,10 @@
     "welcomeFollowUp": "Thanks for joining—see you in the community!",
     "learning": "Learning languages",
     "learningStepTitle": "Learning",
+    "tts": "Text-to-speech",
     "ttsStepTitle": "Text-to-speech",
     "socials": "Follow & connect",
+    "socialsStepTitle": "Socials",
     "noVoices": "No voices",
     "noVoicesHint": "Install voices to enable this language.",
     "languageOrderTipTitle": "Tip",
@@ -103,6 +106,28 @@
     "ttsOsTipOther": "In your device settings, add/install text-to-speech voices, then return here.",
     "installVoicesAndroid": "Install voices",
     "sendAppleFeedback": "Send Apple Feedback"
+  },
+  "socials": {
+    "youtube": {
+      "cta": "Watch",
+      "title": "YouTube",
+      "desc": "Tutorials, demos, and behind-the-scenes."
+    },
+    "github": {
+      "cta": "Star & contribute",
+      "title": "GitHub",
+      "desc": "Open source. PRs welcome!"
+    },
+    "blog": {
+      "cta": "Read",
+      "title": "Free2z Blog",
+      "desc": "Updates, roadmap, and deep dives."
+    },
+    "website": {
+      "cta": "Visit",
+      "title": "encorpora.io",
+      "desc": "Main site with docs and community."
+    }
   },
   "common": {
     "loading": "Loading...",
@@ -225,6 +250,7 @@
     "new": "New stack",
     "newName": "Name for new stack",
     "rename": "Rename",
+    "renameLabel": "New name for stack",
     "selectAria": "Select a stack",
     "selectPlaceholder": "Choose…"
   },

@@ -28,8 +28,8 @@
     "mr": "الماراثية",
     "gu": "الغوجاراتية",
     "ur": "الأوردو",
-    "pa-Guru": "Punjabi (Gurmukhi)",
-    "pa-Arab": "Punjabi (Shahmukhi)"
+    "pa-Guru": "البنجابية (غورموخي)",
+    "pa-Arab": "البنجابية (شاه مُكهي)"
   },
   "categories": {
     "travel": "سفر",
@@ -49,6 +49,7 @@
   "settings": {
     "addMoreLanguages": "إضافة لغات أخرى",
     "selectedLanguages": "اللغات المختارة",
+    "removeLanguage": "إزالة اللغة",
     "settings": "الإعدادات",
     "adjustToYourPreferences": "اضبطها حسب تفضيلاتك",
     "speechRate": "سرعة الكلام",
@@ -88,21 +89,45 @@
     "openTTSSetup": "افتح إعدادات تحويل النص إلى كلام",
     "welcomeFollowUp": "شكرًا لانضمامك — نراك في المجتمع!",
     "learningStepTitle": "التعلّم",
+    "tts": "تحويل النص إلى كلام",
     "languageOrderTipTitle": "نصيحة",
     "languageOrderTipBody": "اللغة في الأسفل تصبح لغة واجهة التطبيق. اسحب لتغييرها في أي وقت.",
     "ttsOsTipTitle": "نصيحة",
     "ttsOsTipAndroid": "لأفضل نتيجة استخدم نطق Google. ‏Samsung TTS لا يعمل في Corpán.",
-    "ttsOsTipIOS": "In Settings → Accessibility, find Spoken Content and download voices. Note: Apple doesn't provide voices for every language. If upgrading doesn't help, request support via Apple's Feedback app.",
-    "ttsOsTipMac": "In System Settings → Accessibility, find Spoken Content and download voices. Note: Apple doesn't provide voices for every language. If upgrading doesn't help, request support via Apple's Feedback app.",
+    "ttsOsTipIOS": "في الإعدادات → تسهيلات الاستخدام، ابحث عن المحتوى المنطوق ونزّل الأصوات. ملاحظة: لا توفّر Apple أصواتًا لكل لغة. إذا لم يساعد التحديث، اطلب الدعم عبر تطبيق الملاحظات من Apple.",
+    "ttsOsTipMac": "في إعدادات النظام → تسهيلات الاستخدام، ابحث عن المحتوى المنطوق ونزّل الأصوات. ملاحظة: لا توفّر Apple أصواتًا لكل لغة. إذا لم يساعد التحديث، اطلب الدعم عبر تطبيق الملاحظات من Apple.",
     "ttsOsTipWindows": "ثبّت أصوات النطق من الإعدادات ثم ارجع هنا.",
     "ttsOsTipOther": "ثبّت أصوات النطق من إعدادات جهازك ثم ارجع هنا.",
     "installVoicesAndroid": "تثبيت الأصوات",
-    "learning": "Learning languages",
-    "ttsStepTitle": "Text-to-speech",
-    "socials": "Follow & connect",
-    "noVoices": "No voices",
-    "noVoicesHint": "Install voices to enable this language.",
-    "sendAppleFeedback": "Send Apple Feedback"
+    "learning": "تعلّم اللغات",
+    "ttsStepTitle": "تحويل النص إلى كلام",
+    "socials": "تابع وتواصل",
+    "socialsStepTitle": "وسائل التواصل",
+    "noVoices": "لا توجد أصوات",
+    "noVoicesHint": "ثبّت أصواتًا لتمكين هذه اللغة.",
+    "sendAppleFeedback": "إرسال ملاحظات إلى Apple"
+  },
+  "socials": {
+    "youtube": {
+      "cta": "شاهد",
+      "title": "YouTube",
+      "desc": "دروس، عروض، وما وراء الكواليس."
+    },
+    "github": {
+      "cta": "ضع نجمة وساهم",
+      "title": "GitHub",
+      "desc": "مفتوح المصدر. طلبات السحب مرحب بها!"
+    },
+    "blog": {
+      "cta": "اقرأ",
+      "title": "Free2z Blog",
+      "desc": "تحديثات، خارطة طريق، وتفاصيل معمّقة."
+    },
+    "website": {
+      "cta": "زر",
+      "title": "encorpora.io",
+      "desc": "الموقع الرئيسي مع المستندات والمجتمع."
+    }
   },
   "common": {
     "loading": "جارٍ التحميل…",
@@ -190,19 +215,22 @@
     "th": "التايلاندية",
     "id": "الإندونيسية",
     "tr": "التركية",
-    "bn-IN": "Bengali (India)",
-    "te-IN": "Telugu (India)",
-    "kn-IN": "Kannada (India)",
-    "mr": "Marathi",
-    "mr-IN": "Marathi (India)",
-    "gu": "Gujarati",
-    "gu-IN": "Gujarati (India)",
-    "pa": "Punjabi",
-    "pa-IN": "Punjabi (India)",
-    "pa-Guru-IN": "Punjabi (Gurmukhi, India)",
-    "ur": "Urdu",
-    "ur-IN": "Urdu (India)",
-    "ur-PK": "Urdu (Pakistan)"
+    "bn-IN": "البنغالية (الهند)",
+    "te-IN": "التيلوغو (الهند)",
+    "kn-IN": "الكانادا (الهند)",
+    "mr": "الماراثية",
+    "mr-IN": "الماراثية (الهند)",
+    "gu": "الغوجاراتية",
+    "gu-IN": "الغوجاراتية (الهند)",
+    "pa": "البنجابية",
+    "pa-IN": "البنجابية (الهند)",
+    "pa-Guru-IN": "البنجابية (غورموخي، الهند)",
+    "ur": "الأوردو",
+    "ur-IN": "الأوردو (الهند)",
+    "ur-PK": "الأوردو (باكستان)",
+    "ta": "التاميلية",
+    "te": "التيلوغو",
+    "kn": "الكانادا"
   },
   "footer": {
     "appVersion": "إصدار التطبيق",
@@ -222,6 +250,7 @@
     "new": "مجموعة جديدة",
     "newName": "اسم المجموعة الجديدة",
     "rename": "إعادة تسمية",
+    "renameLabel": "اسم جديد للمجموعة",
     "selectAria": "اختيار مجموعة",
     "selectPlaceholder": "اختر…"
   },

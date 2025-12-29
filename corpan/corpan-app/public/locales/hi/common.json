@@ -28,8 +28,8 @@
     "mr": "मराठी",
     "gu": "गुजराती",
     "ur": "उर्दू",
-    "pa-Guru": "Punjabi (Gurmukhi)",
-    "pa-Arab": "Punjabi (Shahmukhi)"
+    "pa-Guru": "पंजाबी (गुरमुखी)",
+    "pa-Arab": "पंजाबी (शाहमुखी)"
   },
   "categories": {
     "travel": "यात्रा",
@@ -49,6 +49,7 @@
   "settings": {
     "addMoreLanguages": "अधिक भाषाएँ जोड़ें",
     "selectedLanguages": "चयनित भाषाएँ",
+    "removeLanguage": "भाषा हटाएं",
     "settings": "सेटिंग्स",
     "adjustToYourPreferences": "अपनी पसंद के अनुसार समायोजित करें",
     "speechRate": "भाषण गति",
@@ -88,21 +89,45 @@
     "openTTSSetup": "TTS सेटिंग्स खोलें",
     "welcomeFollowUp": "जुड़ने के लिए धन्यवाद — समुदाय में मिलते हैं!",
     "learningStepTitle": "सीखना",
+    "tts": "पाठ से वाक्",
     "languageOrderTipTitle": "टिप",
     "languageOrderTipBody": "सबसे नीचे वाली भाषा ऐप की UI भाषा बन जाती है। कभी भी बदलने के लिए खींचें।",
     "ttsOsTipTitle": "टिप",
     "ttsOsTipAndroid": "सबसे अच्छा: Google TTS इस्तेमाल करें। Samsung TTS Corpán में काम नहीं करता।",
-    "ttsOsTipIOS": "In Settings → Accessibility, find Spoken Content and download voices. Note: Apple doesn't provide voices for every language. If upgrading doesn't help, request support via Apple's Feedback app.",
-    "ttsOsTipMac": "In System Settings → Accessibility, find Spoken Content and download voices. Note: Apple doesn't provide voices for every language. If upgrading doesn't help, request support via Apple's Feedback app.",
+    "ttsOsTipIOS": "Settings → Accessibility में Spoken Content ढूँढें और आवाज़ें डाउनलोड करें। नोट: Apple हर भाषा के लिए आवाज़ें नहीं देता। अगर अपग्रेड से मदद नहीं मिलती, तो Apple के Feedback ऐप से सहायता माँगें।",
+    "ttsOsTipMac": "System Settings → Accessibility में Spoken Content ढूँढें और आवाज़ें डाउनलोड करें। नोट: Apple हर भाषा के लिए आवाज़ें नहीं देता। अगर अपग्रेड से मदद नहीं मिलती, तो Apple के Feedback ऐप से सहायता माँगें।",
     "ttsOsTipWindows": "Settings में speech voices इंस्टॉल करें, फिर यहाँ लौटें।",
     "ttsOsTipOther": "डिवाइस Settings में speech voices इंस्टॉल करें, फिर यहाँ लौटें।",
     "installVoicesAndroid": "आवाज़ें इंस्टॉल करें",
-    "learning": "Learning languages",
-    "ttsStepTitle": "Text-to-speech",
-    "socials": "Follow & connect",
-    "noVoices": "No voices",
-    "noVoicesHint": "Install voices to enable this language.",
-    "sendAppleFeedback": "Send Apple Feedback"
+    "learning": "भाषाएँ सीखना",
+    "ttsStepTitle": "टेक्स्ट-टू-स्पीच",
+    "socials": "फॉलो करें और जुड़ें",
+    "socialsStepTitle": "सोशल मीडिया",
+    "noVoices": "कोई आवाज़ नहीं",
+    "noVoicesHint": "इस भाषा को सक्षम करने के लिए आवाज़ें इंस्टॉल करें।",
+    "sendAppleFeedback": "Apple फ़ीडबैक भेजें"
+  },
+  "socials": {
+    "youtube": {
+      "cta": "देखें",
+      "title": "YouTube",
+      "desc": "ट्यूटोरियल, डेमो और पर्दे के पीछे की बातें।"
+    },
+    "github": {
+      "cta": "स्टार करें और योगदान दें",
+      "title": "GitHub",
+      "desc": "ओपन सोर्स। PRs का स्वागत है!"
+    },
+    "blog": {
+      "cta": "पढ़ें",
+      "title": "Free2z Blog",
+      "desc": "अपडेट्स, रोडमैप और गहराई से जानकारी।"
+    },
+    "website": {
+      "cta": "देखें",
+      "title": "encorpora.io",
+      "desc": "दस्तावेज़ और समुदाय वाला मुख्य साइट।"
+    }
   },
   "common": {
     "loading": "लोड हो रहा है...",
@@ -190,19 +215,22 @@
     "th": "थाई",
     "id": "इंडोनेशियाई",
     "tr": "तुर्की",
-    "bn-IN": "Bengali (India)",
-    "te-IN": "Telugu (India)",
-    "kn-IN": "Kannada (India)",
-    "mr": "Marathi",
-    "mr-IN": "Marathi (India)",
-    "gu": "Gujarati",
-    "gu-IN": "Gujarati (India)",
-    "pa": "Punjabi",
-    "pa-IN": "Punjabi (India)",
-    "pa-Guru-IN": "Punjabi (Gurmukhi, India)",
-    "ur": "Urdu",
-    "ur-IN": "Urdu (India)",
-    "ur-PK": "Urdu (Pakistan)"
+    "bn-IN": "बंगाली (भारत)",
+    "te-IN": "तेलुगु (भारत)",
+    "kn-IN": "कन्नड़ (भारत)",
+    "mr": "मराठी",
+    "mr-IN": "मराठी (भारत)",
+    "gu": "गुजराती",
+    "gu-IN": "गुजराती (भारत)",
+    "pa": "पंजाबी",
+    "pa-IN": "पंजाबी (भारत)",
+    "pa-Guru-IN": "पंजाबी (गुरमुखी, भारत)",
+    "ur": "उर्दू",
+    "ur-IN": "उर्दू (भारत)",
+    "ur-PK": "उर्दू (पाकिस्तान)",
+    "ta": "तमिल",
+    "te": "तेलुगु",
+    "kn": "कन्नड़"
   },
   "footer": {
     "appVersion": "ऐप संस्करण",
@@ -222,6 +250,7 @@
     "new": "नई प्रोफ़ाइल",
     "newName": "नई प्रोफ़ाइल का नाम",
     "rename": "नाम बदलें",
+    "renameLabel": "स्टैक के लिए नया नाम",
     "selectAria": "प्रोफ़ाइल चुनें",
     "selectPlaceholder": "चुनें…"
   },

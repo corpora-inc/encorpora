@@ -197,6 +197,9 @@
         "selectedLanguages": {
           "type": "string"
         },
+        "removeLanguage": {
+          "type": "string"
+        },
         "settings": {
           "type": "string"
         },
@@ -264,6 +267,7 @@
       "required": [
         "addMoreLanguages",
         "selectedLanguages",
+        "removeLanguage",
         "settings",
         "adjustToYourPreferences",
         "speechRate",
@@ -310,7 +314,28 @@
         "pickLanguagesToLearn": {
           "type": "string"
         },
+        "learning": {
+          "type": "string"
+        },
         "learningStepTitle": {
+          "type": "string"
+        },
+        "tts": {
+          "type": "string"
+        },
+        "ttsStepTitle": {
+          "type": "string"
+        },
+        "socials": {
+          "type": "string"
+        },
+        "socialsStepTitle": {
+          "type": "string"
+        },
+        "noVoices": {
+          "type": "string"
+        },
+        "noVoicesHint": {
           "type": "string"
         },
         "languageOrderTipTitle": {
@@ -372,6 +397,9 @@
         },
         "installVoicesAndroid": {
           "type": "string"
+        },
+        "sendAppleFeedback": {
+          "type": "string"
         }
       },
       "required": [
@@ -379,7 +407,14 @@
         "makePrimaryLanguage",
         "canChangeLater",
         "pickLanguagesToLearn",
+        "learning",
         "learningStepTitle",
+        "tts",
+        "ttsStepTitle",
+        "socials",
+        "socialsStepTitle",
+        "noVoices",
+        "noVoicesHint",
         "languageOrderTipTitle",
         "languageOrderTipBody",
         "textToSpeechSetup",
@@ -399,8 +434,80 @@
         "ttsOsTipMac",
         "ttsOsTipWindows",
         "ttsOsTipOther",
-        "installVoicesAndroid"
+        "installVoicesAndroid",
+        "sendAppleFeedback"
       ],
+      "additionalProperties": false
+    },
+    "socials": {
+      "type": "object",
+      "properties": {
+        "youtube": {
+          "type": "object",
+          "properties": {
+            "cta": {
+              "type": "string"
+            },
+            "title": {
+              "type": "string"
+            },
+            "desc": {
+              "type": "string"
+            }
+          },
+          "required": ["cta", "title", "desc"],
+          "additionalProperties": false
+        },
+        "github": {
+          "type": "object",
+          "properties": {
+            "cta": {
+              "type": "string"
+            },
+            "title": {
+              "type": "string"
+            },
+            "desc": {
+              "type": "string"
+            }
+          },
+          "required": ["cta", "title", "desc"],
+          "additionalProperties": false
+        },
+        "blog": {
+          "type": "object",
+          "properties": {
+            "cta": {
+              "type": "string"
+            },
+            "title": {
+              "type": "string"
+            },
+            "desc": {
+              "type": "string"
+            }
+          },
+          "required": ["cta", "title", "desc"],
+          "additionalProperties": false
+        },
+        "website": {
+          "type": "object",
+          "properties": {
+            "cta": {
+              "type": "string"
+            },
+            "title": {
+              "type": "string"
+            },
+            "desc": {
+              "type": "string"
+            }
+          },
+          "required": ["cta", "title", "desc"],
+          "additionalProperties": false
+        }
+      },
+      "required": ["youtube", "github", "blog", "website"],
       "additionalProperties": false
     },
     "common": {
@@ -499,6 +606,10 @@
           "type": "string",
           "description": "Tooltip/label for the rename button."
         },
+        "renameLabel": {
+          "type": "string",
+          "description": "Label for the rename input field."
+        },
         "selectAria": {
           "type": "string",
           "description": "ARIA label for the stack select."
@@ -518,6 +629,7 @@
         "new",
         "newName",
         "rename",
+        "renameLabel",
         "selectAria",
         "selectPlaceholder"
       ],
@@ -562,6 +674,110 @@
         "feedbackButton"
       ],
       "additionalProperties": false
+    },
+    "packs": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "available": {
+          "type": "string"
+        },
+        "emptyAvailable": {
+          "type": "string"
+        },
+        "installed": {
+          "type": "string"
+        },
+        "emptyInstalled": {
+          "type": "string"
+        },
+        "get": {
+          "type": "string"
+        },
+        "open": {
+          "type": "string"
+        },
+        "remove": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        },
+        "refresh": {
+          "type": "string"
+        },
+        "free": {
+          "type": "string"
+        },
+        "install": {
+          "type": "string"
+        },
+        "installing": {
+          "type": "string"
+        },
+        "installFailed": {
+          "type": "string"
+        },
+        "update": {
+          "type": "string"
+        },
+        "updating": {
+          "type": "string"
+        },
+        "manifestTitle": {
+          "type": "string"
+        },
+        "manifestPlaceholder": {
+          "type": "string"
+        },
+        "manifestHint": {
+          "type": "string"
+        },
+        "devUnlockTitle": {
+          "type": "string"
+        },
+        "devUnlockHint": {
+          "type": "string"
+        },
+        "devUnlockToast": {
+          "type": "string"
+        },
+        "devIntro": {
+          "type": "string"
+        },
+        "devLink": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "title",
+        "available",
+        "emptyAvailable",
+        "installed",
+        "emptyInstalled",
+        "get",
+        "open",
+        "remove",
+        "version",
+        "refresh",
+        "free",
+        "install",
+        "installing",
+        "installFailed",
+        "update",
+        "updating",
+        "manifestTitle",
+        "manifestPlaceholder",
+        "manifestHint",
+        "devUnlockTitle",
+        "devUnlockHint",
+        "devUnlockToast",
+        "devIntro",
+        "devLink"
+      ],
+      "additionalProperties": false
     }
   },
   "required": [
@@ -569,9 +785,11 @@
     "categories",
     "settings",
     "onboarding",
+    "socials",
     "common",
     "footer",
-    "stacks"
+    "stacks",
+    "packs"
   ],
   "additionalProperties": false
 }

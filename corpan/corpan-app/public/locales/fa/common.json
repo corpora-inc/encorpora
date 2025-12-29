@@ -28,8 +28,8 @@
     "mr": "مراتی",
     "gu": "گجراتی",
     "ur": "اردو",
-    "pa-Guru": "Punjabi (Gurmukhi)",
-    "pa-Arab": "Punjabi (Shahmukhi)"
+    "pa-Guru": "پنجابی (گورموخی)",
+    "pa-Arab": "پنجابی (شاه‌مکھی)"
   },
   "categories": {
     "travel": "سفر",
@@ -49,6 +49,7 @@
   "settings": {
     "addMoreLanguages": "افزودن زبان‌های بیشتر",
     "selectedLanguages": "زبان‌های انتخاب‌شده",
+    "removeLanguage": "حذف زبان",
     "settings": "تنظیمات",
     "adjustToYourPreferences": "تنظیم بر اساس ترجیحات شما",
     "speechRate": "سرعت گفتار",
@@ -88,21 +89,45 @@
     "openTTSSetup": "باز کردن تنظیمات TTS",
     "welcomeFollowUp": "از پیوستن شما سپاسگزاریم — در جامعه می‌بینیمتان!",
     "learningStepTitle": "یادگیری",
+    "tts": "متن به گفتار",
     "languageOrderTipTitle": "نکته",
     "languageOrderTipBody": "زبانِ پایین‌ترین ردیف، زبان رابط برنامه می‌شود. هر زمان خواستید با کشیدن تغییرش دهید.",
     "ttsOsTipTitle": "نکته",
     "ttsOsTipAndroid": "بهترین نتیجه: از Google TTS استفاده کنید. Samsung TTS در Corpán کار نمی‌کند.",
-    "ttsOsTipIOS": "In Settings → Accessibility, find Spoken Content and download voices. Note: Apple doesn't provide voices for every language. If upgrading doesn't help, request support via Apple's Feedback app.",
-    "ttsOsTipMac": "In System Settings → Accessibility, find Spoken Content and download voices. Note: Apple doesn't provide voices for every language. If upgrading doesn't help, request support via Apple's Feedback app.",
+    "ttsOsTipIOS": "در Settings → Accessibility، Spoken Content را پیدا کنید و صداها را دانلود کنید. توجه: Apple برای همهٔ زبان‌ها صدا ارائه نمی‌کند. اگر به‌روزرسانی کمک نکرد، از طریق برنامهٔ Feedback اپل درخواست پشتیبانی کنید.",
+    "ttsOsTipMac": "در System Settings → Accessibility، Spoken Content را پیدا کنید و صداها را دانلود کنید. توجه: Apple برای همهٔ زبان‌ها صدا ارائه نمی‌کند. اگر به‌روزرسانی کمک نکرد، از طریق برنامهٔ Feedback اپل درخواست پشتیبانی کنید.",
     "ttsOsTipWindows": "صداهای گفتار را در Settings نصب کنید و بعد برگردید.",
     "ttsOsTipOther": "صداهای گفتار را در تنظیمات دستگاه نصب کنید و بعد برگردید.",
     "installVoicesAndroid": "نصب صداها",
-    "learning": "Learning languages",
-    "ttsStepTitle": "Text-to-speech",
-    "socials": "Follow & connect",
-    "noVoices": "No voices",
-    "noVoicesHint": "Install voices to enable this language.",
-    "sendAppleFeedback": "Send Apple Feedback"
+    "learning": "یادگیری زبان‌ها",
+    "ttsStepTitle": "تبدیل متن به گفتار",
+    "socials": "دنبال کنید و ارتباط بگیرید",
+    "socialsStepTitle": "شبکه‌های اجتماعی",
+    "noVoices": "صدایی موجود نیست",
+    "noVoicesHint": "برای فعال‌سازی این زبان صداها را نصب کنید.",
+    "sendAppleFeedback": "ارسال بازخورد به Apple"
+  },
+  "socials": {
+    "youtube": {
+      "cta": "تماشا کنید",
+      "title": "YouTube",
+      "desc": "آموزش‌ها، دموها و پشت صحنه."
+    },
+    "github": {
+      "cta": "ستاره بدهید و مشارکت کنید",
+      "title": "GitHub",
+      "desc": "متن‌باز. PRها خوش‌آمدند!"
+    },
+    "blog": {
+      "cta": "بخوانید",
+      "title": "Free2z Blog",
+      "desc": "به‌روزرسانی‌ها، نقشهٔ راه و مطالب عمیق."
+    },
+    "website": {
+      "cta": "بازدید",
+      "title": "encorpora.io",
+      "desc": "سایت اصلی با مستندات و جامعه."
+    }
   },
   "common": {
     "loading": "در حال بارگذاری…",
@@ -190,19 +215,22 @@
     "th": "تایلندی",
     "id": "اندونزیایی",
     "tr": "ترکی",
-    "bn-IN": "Bengali (India)",
-    "te-IN": "Telugu (India)",
-    "kn-IN": "Kannada (India)",
-    "mr": "Marathi",
-    "mr-IN": "Marathi (India)",
-    "gu": "Gujarati",
-    "gu-IN": "Gujarati (India)",
-    "pa": "Punjabi",
-    "pa-IN": "Punjabi (India)",
-    "pa-Guru-IN": "Punjabi (Gurmukhi, India)",
-    "ur": "Urdu",
-    "ur-IN": "Urdu (India)",
-    "ur-PK": "Urdu (Pakistan)"
+    "bn-IN": "بنغالی (هند)",
+    "te-IN": "تلوگو (هند)",
+    "kn-IN": "کانارا (هند)",
+    "mr": "مراتی",
+    "mr-IN": "مراتی (هند)",
+    "gu": "گجراتی",
+    "gu-IN": "گجراتی (هند)",
+    "pa": "پنجابی",
+    "pa-IN": "پنجابی (هند)",
+    "pa-Guru-IN": "پنجابی (گورموخی، هند)",
+    "ur": "اردو",
+    "ur-IN": "اردو (هند)",
+    "ur-PK": "اردو (پاکستان)",
+    "ta": "تامیل",
+    "te": "تلوگو",
+    "kn": "کانارا"
   },
   "footer": {
     "appVersion": "نسخهٔ برنامه",
@@ -222,6 +250,7 @@
     "new": "پروفایل جدید",
     "newName": "نام پروفایل جدید",
     "rename": "تغییر نام",
+    "renameLabel": "نام جدید برای پشته",
     "selectAria": "انتخاب پروفایل",
     "selectPlaceholder": "انتخاب…"
   },

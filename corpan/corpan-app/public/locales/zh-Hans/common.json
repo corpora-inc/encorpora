@@ -28,8 +28,8 @@
     "mr": "马拉地语",
     "gu": "古吉拉特语",
     "ur": "乌尔都语",
-    "pa-Guru": "Punjabi (Gurmukhi)",
-    "pa-Arab": "Punjabi (Shahmukhi)"
+    "pa-Guru": "旁遮普语（果鲁穆奇文）",
+    "pa-Arab": "旁遮普语（沙希穆基文）"
   },
   "categories": {
     "travel": "旅行",
@@ -49,6 +49,7 @@
   "settings": {
     "addMoreLanguages": "添加更多语言",
     "selectedLanguages": "已选择的语言",
+    "removeLanguage": "删除语言",
     "settings": "设置",
     "adjustToYourPreferences": "根据您的喜好进行调整",
     "speechRate": "语速",
@@ -88,21 +89,45 @@
     "openTTSSetup": "打开 TTS 设置",
     "welcomeFollowUp": "感谢您的加入！期待在社区中见到您。",
     "learningStepTitle": "学习",
+    "tts": "文本转语音",
     "languageOrderTipTitle": "提示",
     "languageOrderTipBody": "最底部的语言会成为应用界面语言。拖动即可随时更改。",
     "ttsOsTipTitle": "提示",
     "ttsOsTipAndroid": "最佳效果：使用 Google 语音。Samsung TTS 在 Corpán 中无法使用。",
-    "ttsOsTipIOS": "In Settings → Accessibility, find Spoken Content and download voices. Note: Apple doesn't provide voices for every language. If upgrading doesn't help, request support via Apple's Feedback app.",
-    "ttsOsTipMac": "In System Settings → Accessibility, find Spoken Content and download voices. Note: Apple doesn't provide voices for every language. If upgrading doesn't help, request support via Apple's Feedback app.",
+    "ttsOsTipIOS": "在“设置 → 辅助功能”中找到“朗读内容”，下载语音。注意：Apple 并不为每种语言提供语音。若升级无效，请通过 Apple 的 Feedback 应用请求支持。",
+    "ttsOsTipMac": "在“系统设置 → 辅助功能”中找到“朗读内容”，下载语音。注意：Apple 并不为每种语言提供语音。若升级无效，请通过 Apple 的 Feedback 应用请求支持。",
     "ttsOsTipWindows": "在“设置”里安装语音后返回这里。",
     "ttsOsTipOther": "在设备设置里安装语音后返回这里。",
     "installVoicesAndroid": "安装语音",
-    "learning": "Learning languages",
-    "ttsStepTitle": "Text-to-speech",
-    "socials": "Follow & connect",
-    "noVoices": "No voices",
-    "noVoicesHint": "Install voices to enable this language.",
-    "sendAppleFeedback": "Send Apple Feedback"
+    "learning": "学习语言",
+    "ttsStepTitle": "文字转语音",
+    "socials": "关注并连接",
+    "socialsStepTitle": "社交媒体",
+    "noVoices": "无语音",
+    "noVoicesHint": "安装语音以启用此语言。",
+    "sendAppleFeedback": "发送 Apple 反馈"
+  },
+  "socials": {
+    "youtube": {
+      "cta": "观看",
+      "title": "YouTube",
+      "desc": "教程、演示和幕后花絮。"
+    },
+    "github": {
+      "cta": "加星并贡献",
+      "title": "GitHub",
+      "desc": "开源。欢迎 PR！"
+    },
+    "blog": {
+      "cta": "阅读",
+      "title": "Free2z Blog",
+      "desc": "更新、路线图和深度内容。"
+    },
+    "website": {
+      "cta": "访问",
+      "title": "encorpora.io",
+      "desc": "包含文档和社区的主站。"
+    }
   },
   "common": {
     "loading": "加载中...",
@@ -190,19 +215,22 @@
     "th": "泰语",
     "id": "印度尼西亚语",
     "tr": "土耳其语",
-    "bn-IN": "Bengali (India)",
-    "te-IN": "Telugu (India)",
-    "kn-IN": "Kannada (India)",
-    "mr": "Marathi",
-    "mr-IN": "Marathi (India)",
-    "gu": "Gujarati",
-    "gu-IN": "Gujarati (India)",
-    "pa": "Punjabi",
-    "pa-IN": "Punjabi (India)",
-    "pa-Guru-IN": "Punjabi (Gurmukhi, India)",
-    "ur": "Urdu",
-    "ur-IN": "Urdu (India)",
-    "ur-PK": "Urdu (Pakistan)"
+    "bn-IN": "孟加拉语（印度）",
+    "te-IN": "泰卢固语（印度）",
+    "kn-IN": "卡纳达语（印度）",
+    "mr": "马拉地语",
+    "mr-IN": "马拉地语（印度）",
+    "gu": "古吉拉特语",
+    "gu-IN": "古吉拉特语（印度）",
+    "pa": "旁遮普语",
+    "pa-IN": "旁遮普语（印度）",
+    "pa-Guru-IN": "旁遮普语（果鲁穆奇文，印度）",
+    "ur": "乌尔都语",
+    "ur-IN": "乌尔都语（印度）",
+    "ur-PK": "乌尔都语（巴基斯坦）",
+    "ta": "泰米尔语",
+    "te": "泰卢固语",
+    "kn": "卡纳达语"
   },
   "footer": {
     "appVersion": "应用版本",
@@ -222,6 +250,7 @@
     "new": "新建档案",
     "newName": "新档案名称",
     "rename": "重命名",
+    "renameLabel": "堆栈的新名称",
     "selectAria": "选择档案",
     "selectPlaceholder": "选择…"
   },

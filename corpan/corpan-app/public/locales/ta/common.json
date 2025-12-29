@@ -28,8 +28,8 @@
     "mr": "மராத்தி",
     "gu": "குஜராத்தி",
     "ur": "உருது",
-    "pa-Guru": "Punjabi (Gurmukhi)",
-    "pa-Arab": "Punjabi (Shahmukhi)"
+    "pa-Guru": "பஞ்சாபி (குர்முகி)",
+    "pa-Arab": "பஞ்சாபி (ஷாஹ்முகி)"
   },
   "categories": {
     "travel": "பயணம்",
@@ -49,6 +49,7 @@
   "settings": {
     "addMoreLanguages": "மேலும் மொழிகள் சேர்க்கவும்",
     "selectedLanguages": "தேர்ந்தெடுக்கப்பட்ட மொழிகள்",
+    "removeLanguage": "மொழியை அகற்று",
     "settings": "அமைப்புகள்",
     "adjustToYourPreferences": "உங்கள் விருப்பத்திற்கு ஏற்ப அமைக்கவும்",
     "speechRate": "பேச்சு வேகம்",
@@ -88,21 +89,45 @@
     "openTTSSetup": "TTS அமைப்புகளைத் திறக்கவும்",
     "welcomeFollowUp": "சேர்ந்ததற்கு நன்றி—சமூகத்தில் சந்திப்போம்!",
     "learningStepTitle": "கற்றல்",
+    "tts": "உரையிலிருந்து பேச்சுக்கு",
     "languageOrderTipTitle": "குறிப்பு",
     "languageOrderTipBody": "கீழே உள்ள மொழி பயன்பாட்டின் UI மொழியாக மாறும். எப்போது வேண்டுமானாலும் மாற்ற இழுக்கவும்.",
     "ttsOsTipTitle": "குறிப்பு",
     "ttsOsTipAndroid": "சிறந்த முடிவுகள்: Google உரை-குரல் பயன்படுத்தவும். Samsung TTS Corpán இல் வேலை செய்யாது.",
-    "ttsOsTipIOS": "In Settings → Accessibility, find Spoken Content and download voices. Note: Apple doesn't provide voices for every language. If upgrading doesn't help, request support via Apple's Feedback app.",
-    "ttsOsTipMac": "In System Settings → Accessibility, find Spoken Content and download voices. Note: Apple doesn't provide voices for every language. If upgrading doesn't help, request support via Apple's Feedback app.",
+    "ttsOsTipIOS": "Settings → Accessibility இல் Spoken Content ஐ கண்டுபிடித்து குரல்களை பதிவிறக்கவும். குறிப்பு: Apple எல்லா மொழிகளுக்கும் குரல்கள் வழங்காது. மேம்படுத்தியும் உதவவில்லை என்றால் Apple Feedback ஆப்பின் மூலம் ஆதரவை கோரவும்.",
+    "ttsOsTipMac": "System Settings → Accessibility இல் Spoken Content ஐ கண்டுபிடித்து குரல்களை பதிவிறக்கவும். குறிப்பு: Apple எல்லா மொழிகளுக்கும் குரல்கள் வழங்காது. மேம்படுத்தியும் உதவவில்லை என்றால் Apple Feedback ஆப்பின் மூலம் ஆதரவை கோரவும்.",
     "ttsOsTipWindows": "அமைப்புகளில், பேச்சு குரல்களைச் சேர்க்கவும்/நிறுவவும், பின்னர் இங்கு திரும்பவும்.",
     "ttsOsTipOther": "உங்கள் சாதன அமைப்புகளில், உரை-குரல் குரல்களை சேர்க்கவும்/நிறுவவும், பின்னர் இங்கு திரும்பவும்.",
     "installVoicesAndroid": "குரல்களை நிறுவவும்",
-    "learning": "Learning languages",
-    "ttsStepTitle": "Text-to-speech",
-    "socials": "Follow & connect",
-    "noVoices": "No voices",
-    "noVoicesHint": "Install voices to enable this language.",
-    "sendAppleFeedback": "Send Apple Feedback"
+    "learning": "மொழிகளைப் பயிலுதல்",
+    "ttsStepTitle": "உரை-ஒலிப்பாடு",
+    "socials": "பின்தொடர்ந்து இணைக",
+    "socialsStepTitle": "சமூக ஊடகங்கள்",
+    "noVoices": "குரல்கள் இல்லை",
+    "noVoicesHint": "இந்த மொழியை இயக்க குரல்களை நிறுவவும்.",
+    "sendAppleFeedback": "Apple கருத்தை அனுப்பவும்"
+  },
+  "socials": {
+    "youtube": {
+      "cta": "பாருங்கள்",
+      "title": "YouTube",
+      "desc": "ட்யுடோரியல்கள், டெமோக்கள், மற்றும் திரைக்குப் பின்னணி."
+    },
+    "github": {
+      "cta": "நட்சத்திரம் வைக்கவும் & பங்களிக்கவும்",
+      "title": "GitHub",
+      "desc": "திறந்த மூல. PRக்கள் வரவேற்கப்படுகிறது!"
+    },
+    "blog": {
+      "cta": "படிக்கவும்",
+      "title": "Free2z Blog",
+      "desc": "புதுப்பிப்புகள், ரோட்மேப், மற்றும் ஆழமான கட்டுரைகள்."
+    },
+    "website": {
+      "cta": "பார்வையிடவும்",
+      "title": "encorpora.io",
+      "desc": "ஆவணங்களும் சமூகமும் உள்ள முக்கிய தளம்."
+    }
   },
   "common": {
     "loading": "ஏற்றுகிறது...",
@@ -191,19 +216,21 @@
     "id": "இந்தோனேசிய",
     "tr": "துருக்கிய",
     "ta": "தமிழ்",
-    "bn-IN": "Bengali (India)",
-    "te-IN": "Telugu (India)",
-    "kn-IN": "Kannada (India)",
-    "mr": "Marathi",
-    "mr-IN": "Marathi (India)",
-    "gu": "Gujarati",
-    "gu-IN": "Gujarati (India)",
-    "pa": "Punjabi",
-    "pa-IN": "Punjabi (India)",
-    "pa-Guru-IN": "Punjabi (Gurmukhi, India)",
-    "ur": "Urdu",
-    "ur-IN": "Urdu (India)",
-    "ur-PK": "Urdu (Pakistan)"
+    "bn-IN": "பெங்காலி (இந்தியா)",
+    "te-IN": "தெலுங்கு (இந்தியா)",
+    "kn-IN": "கன்னடம் (இந்தியா)",
+    "mr": "மராத்தி",
+    "mr-IN": "மராத்தி (இந்தியா)",
+    "gu": "குஜராத்தி",
+    "gu-IN": "குஜராத்தி (இந்தியா)",
+    "pa": "பஞ்சாபி",
+    "pa-IN": "பஞ்சாபி (இந்தியா)",
+    "pa-Guru-IN": "பஞ்சாபி (குர்முகி, இந்தியா)",
+    "ur": "உருது",
+    "ur-IN": "உருது (இந்தியா)",
+    "ur-PK": "உருது (பாகிஸ்தான்)",
+    "te": "தெலுங்கு",
+    "kn": "கன்னடம்"
   },
   "footer": {
     "appVersion": "பயன்பாட்டு பதிப்பு",
@@ -223,6 +250,7 @@
     "new": "புதிய அடுக்கு",
     "newName": "புதிய அடுக்கிற்கான பெயர்",
     "rename": "பெயர் மாற்று",
+    "renameLabel": "அடுக்குக்கான புதிய பெயர்",
     "selectAria": "ஒரு அடுக்கைத் தேர்ந்தெடுக்கவும்",
     "selectPlaceholder": "தேர்ந்தெடு…"
   },

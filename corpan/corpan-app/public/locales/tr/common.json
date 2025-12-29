@@ -28,8 +28,8 @@
     "mr": "Marathi",
     "gu": "Güceratça",
     "ur": "Urduca",
-    "pa-Guru": "Punjabi (Gurmukhi)",
-    "pa-Arab": "Punjabi (Shahmukhi)"
+    "pa-Guru": "Pencapça (Gurmukhi)",
+    "pa-Arab": "Pencapça (Şahmukhi)"
   },
   "categories": {
     "travel": "Seyahat",
@@ -49,6 +49,7 @@
   "settings": {
     "addMoreLanguages": "Daha fazla dil ekle",
     "selectedLanguages": "Seçili diller",
+    "removeLanguage": "Dili kaldır",
     "settings": "Ayarlar",
     "adjustToYourPreferences": "Tercihlerinize göre ayarlayın",
     "speechRate": "Konuşma hızı",
@@ -88,21 +89,45 @@
     "openTTSSetup": "TTS ayarlarını açın",
     "welcomeFollowUp": "Katıldığınız için teşekkürler — toplulukta görüşmek üzere!",
     "learningStepTitle": "Öğrenme",
+    "tts": "Metinden konuşmaya",
     "languageOrderTipTitle": "İpucu",
     "languageOrderTipBody": "En alttaki dil, uygulamanın arayüz dili olur. İstediğiniz zaman sürükleyip değiştirin.",
     "ttsOsTipTitle": "İpucu",
     "ttsOsTipAndroid": "En iyi sonuç: Google TTS kullanın. Samsung TTS Corpán’da çalışmaz.",
-    "ttsOsTipIOS": "In Settings → Accessibility, find Spoken Content and download voices. Note: Apple doesn't provide voices for every language. If upgrading doesn't help, request support via Apple's Feedback app.",
-    "ttsOsTipMac": "In System Settings → Accessibility, find Spoken Content and download voices. Note: Apple doesn't provide voices for every language. If upgrading doesn't help, request support via Apple's Feedback app.",
+    "ttsOsTipIOS": "Settings → Accessibility içinde Spoken Content öğesini bulun ve sesleri indirin. Not: Apple her dil için ses sağlamaz. Güncelleme işe yaramazsa Apple Feedback uygulamasıyla destek isteyin.",
+    "ttsOsTipMac": "System Settings → Accessibility içinde Spoken Content öğesini bulun ve sesleri indirin. Not: Apple her dil için ses sağlamaz. Güncelleme işe yaramazsa Apple Feedback uygulamasıyla destek isteyin.",
     "ttsOsTipWindows": "Ayarlar’dan sesleri yükleyin, sonra buraya dönün.",
     "ttsOsTipOther": "Cihaz ayarlarından sesleri yükleyin, sonra buraya dönün.",
     "installVoicesAndroid": "Sesleri yükle",
-    "learning": "Learning languages",
-    "ttsStepTitle": "Text-to-speech",
-    "socials": "Follow & connect",
-    "noVoices": "No voices",
-    "noVoicesHint": "Install voices to enable this language.",
-    "sendAppleFeedback": "Send Apple Feedback"
+    "learning": "Dil öğrenme",
+    "ttsStepTitle": "Metinden konuşmaya",
+    "socials": "Takip et ve bağlantı kur",
+    "socialsStepTitle": "Sosyal medya",
+    "noVoices": "Ses yok",
+    "noVoicesHint": "Bu dili etkinleştirmek için sesleri yükleyin.",
+    "sendAppleFeedback": "Apple geri bildirimi gönder"
+  },
+  "socials": {
+    "youtube": {
+      "cta": "İzle",
+      "title": "YouTube",
+      "desc": "Eğitimler, demolar ve perde arkası."
+    },
+    "github": {
+      "cta": "Yıldızla ve katkı ver",
+      "title": "GitHub",
+      "desc": "Açık kaynak. PR’lar hoş geldiniz!"
+    },
+    "blog": {
+      "cta": "Oku",
+      "title": "Free2z Blog",
+      "desc": "Güncellemeler, yol haritası ve derinlemesine içerikler."
+    },
+    "website": {
+      "cta": "Ziyaret et",
+      "title": "encorpora.io",
+      "desc": "Belgeler ve topluluk içeren ana site."
+    }
   },
   "common": {
     "loading": "Yükleniyor...",
@@ -190,19 +215,22 @@
     "th": "Tayca",
     "id": "Endonezce",
     "tr": "Türkçe",
-    "bn-IN": "Bengali (India)",
-    "te-IN": "Telugu (India)",
-    "kn-IN": "Kannada (India)",
+    "bn-IN": "Bengalce (Hindistan)",
+    "te-IN": "Telugu (Hindistan)",
+    "kn-IN": "Kannada (Hindistan)",
     "mr": "Marathi",
-    "mr-IN": "Marathi (India)",
-    "gu": "Gujarati",
-    "gu-IN": "Gujarati (India)",
-    "pa": "Punjabi",
-    "pa-IN": "Punjabi (India)",
-    "pa-Guru-IN": "Punjabi (Gurmukhi, India)",
-    "ur": "Urdu",
-    "ur-IN": "Urdu (India)",
-    "ur-PK": "Urdu (Pakistan)"
+    "mr-IN": "Marathi (Hindistan)",
+    "gu": "Guceratça",
+    "gu-IN": "Guceratça (Hindistan)",
+    "pa": "Pencapça",
+    "pa-IN": "Pencapça (Hindistan)",
+    "pa-Guru-IN": "Pencapça (Gurmukhi, Hindistan)",
+    "ur": "Urduca",
+    "ur-IN": "Urduca (Hindistan)",
+    "ur-PK": "Urduca (Pakistan)",
+    "ta": "Tamil",
+    "te": "Telugu",
+    "kn": "Kannada"
   },
   "footer": {
     "appVersion": "Uygulama sürümü",
@@ -222,6 +250,7 @@
     "new": "Yeni yığın",
     "newName": "Yeni yığının adı",
     "rename": "Yeniden adlandır",
+    "renameLabel": "Yığın için yeni ad",
     "selectAria": "Bir yığın seçin",
     "selectPlaceholder": "Seçin…"
   },
@@ -252,7 +281,7 @@
     "installFailed": "Yükleme başarısız.",
     "update": "Güncelle",
     "updating": "Güncelleniyor...",
-    "manifestTitle": "Manifest URL",
+    "manifestTitle": "Manifest URL'si",
     "manifestPlaceholder": "https://example.com/manifest.json",
     "manifestHint": "Manifest URL'sini yapıştırın.",
     "devUnlockTitle": "Geliştirici paketleri",

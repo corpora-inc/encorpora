@@ -28,8 +28,8 @@
     "mr": "Maratí",
     "gu": "Gujaratí",
     "ur": "Urdu",
-    "pa-Guru": "Punjabi (Gurmukhi)",
-    "pa-Arab": "Punjabi (Shahmukhi)"
+    "pa-Guru": "Punyabí (Gurmukhī)",
+    "pa-Arab": "Punyabí (Shahmukhi)"
   },
   "categories": {
     "travel": "Viaje",
@@ -49,6 +49,7 @@
   "settings": {
     "addMoreLanguages": "Agregar más idiomas",
     "selectedLanguages": "Idiomas seleccionados",
+    "removeLanguage": "Eliminar idioma",
     "settings": "Configuración",
     "adjustToYourPreferences": "Ajustar a tus preferencias",
     "speechRate": "Velocidad de voz",
@@ -88,21 +89,45 @@
     "openTTSSetup": "Abrir ajustes de TTS",
     "welcomeFollowUp": "¡Gracias por unirte! Te esperamos en la comunidad.",
     "learningStepTitle": "Aprender",
+    "tts": "Texto a voz",
     "languageOrderTipTitle": "Consejo",
     "languageOrderTipBody": "El idioma de abajo se vuelve el idioma de la interfaz. Arrástralo para cambiarlo cuando quieras.",
     "ttsOsTipTitle": "Consejo",
     "ttsOsTipAndroid": "Mejor resultado: usa el TTS de Google. Samsung TTS no funciona en Corpán.",
-    "ttsOsTipIOS": "In Settings → Accessibility, find Spoken Content and download voices. Note: Apple doesn't provide voices for every language. If upgrading doesn't help, request support via Apple's Feedback app.",
-    "ttsOsTipMac": "In System Settings → Accessibility, find Spoken Content and download voices. Note: Apple doesn't provide voices for every language. If upgrading doesn't help, request support via Apple's Feedback app.",
+    "ttsOsTipIOS": "En Ajustes → Accesibilidad, busca Contenido Hablado y descarga voces. Nota: Apple no proporciona voces para todos los idiomas. Si actualizar no ayuda, solicita soporte a través de la app de Comentarios de Apple.",
+    "ttsOsTipMac": "En Ajustes del Sistema → Accesibilidad, busca Contenido Hablado y descarga voces. Nota: Apple no proporciona voces para todos los idiomas. Si actualizar no ayuda, solicita soporte a través de la app de Comentarios de Apple.",
     "ttsOsTipWindows": "En Configuración, instala voces de texto a voz y vuelve aquí.",
     "ttsOsTipOther": "En los ajustes del dispositivo, instala voces de texto a voz y vuelve aquí.",
     "installVoicesAndroid": "Instalar voces",
-    "learning": "Learning languages",
-    "ttsStepTitle": "Text-to-speech",
-    "socials": "Follow & connect",
-    "noVoices": "No voices",
-    "noVoicesHint": "Install voices to enable this language.",
-    "sendAppleFeedback": "Send Apple Feedback"
+    "learning": "Aprender idiomas",
+    "ttsStepTitle": "Texto a voz",
+    "socials": "Seguir y conectar",
+    "socialsStepTitle": "Redes sociales",
+    "noVoices": "Sin voces",
+    "noVoicesHint": "Instala voces para habilitar este idioma.",
+    "sendAppleFeedback": "Enviar comentarios a Apple"
+  },
+  "socials": {
+    "youtube": {
+      "cta": "Ver",
+      "title": "YouTube",
+      "desc": "Tutoriales, demos y entre bastidores."
+    },
+    "github": {
+      "cta": "Dar estrella y contribuir",
+      "title": "GitHub",
+      "desc": "Código abierto. ¡PRs bienvenidos!"
+    },
+    "blog": {
+      "cta": "Leer",
+      "title": "Free2z Blog",
+      "desc": "Actualizaciones, hoja de ruta y análisis profundos."
+    },
+    "website": {
+      "cta": "Visitar",
+      "title": "encorpora.io",
+      "desc": "Sitio principal con documentos y comunidad."
+    }
   },
   "common": {
     "loading": "Cargando...",
@@ -190,19 +215,22 @@
     "th": "Tailandés",
     "id": "Indonesio",
     "tr": "Turco",
-    "bn-IN": "Bengali (India)",
+    "bn-IN": "Bengalí (India)",
     "te-IN": "Telugu (India)",
-    "kn-IN": "Kannada (India)",
-    "mr": "Marathi",
-    "mr-IN": "Marathi (India)",
-    "gu": "Gujarati",
-    "gu-IN": "Gujarati (India)",
-    "pa": "Punjabi",
-    "pa-IN": "Punjabi (India)",
-    "pa-Guru-IN": "Punjabi (Gurmukhi, India)",
+    "kn-IN": "Canarés (India)",
+    "mr": "Maratí",
+    "mr-IN": "Maratí (India)",
+    "gu": "Gujaratí",
+    "gu-IN": "Gujaratí (India)",
+    "pa": "Punyabí",
+    "pa-IN": "Punyabí (India)",
+    "pa-Guru-IN": "Punyabí (Gurmukhī, India)",
     "ur": "Urdu",
     "ur-IN": "Urdu (India)",
-    "ur-PK": "Urdu (Pakistan)"
+    "ur-PK": "Urdu (Pakistán)",
+    "ta": "Tamil",
+    "te": "Telugu",
+    "kn": "Canarés"
   },
   "footer": {
     "appVersion": "Versión de la app",
@@ -222,6 +250,7 @@
     "new": "Nuevo perfil",
     "newName": "Nombre del nuevo perfil",
     "rename": "Renombrar",
+    "renameLabel": "Nuevo nombre para pila",
     "selectAria": "Seleccionar perfil",
     "selectPlaceholder": "Elegir…"
   },

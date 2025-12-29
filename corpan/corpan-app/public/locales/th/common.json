@@ -20,16 +20,16 @@
     "fa": "เปอร์เซีย",
     "bn": "เบงกาลี",
     "th": "ไทย",
-    "id": "Indonesian",
-    "tr": "Turkish",
+    "id": "อินโดนีเซีย",
+    "tr": "ตุรกี",
     "ta": "ทมิฬ",
     "te": "เตลูกู",
     "kn": "กันนาดา",
     "mr": "มราฐี",
     "gu": "คุชราต",
     "ur": "อูรดู",
-    "pa-Guru": "Punjabi (Gurmukhi)",
-    "pa-Arab": "Punjabi (Shahmukhi)"
+    "pa-Guru": "ปัญจาบี (กูร์มุขี)",
+    "pa-Arab": "ปัญจาบี (ชาห์มุคี)"
   },
   "categories": {
     "travel": "การท่องเที่ยว",
@@ -49,6 +49,7 @@
   "settings": {
     "addMoreLanguages": "เพิ่มภาษา",
     "selectedLanguages": "ภาษาที่เลือก",
+    "removeLanguage": "ลบภาษา",
     "settings": "การตั้งค่า",
     "adjustToYourPreferences": "ปรับให้ตรงตามความต้องการของคุณ",
     "speechRate": "ความเร็วเสียงพูด",
@@ -88,21 +89,45 @@
     "openTTSSetup": "เปิดการตั้งค่า TTS",
     "welcomeFollowUp": "ขอบคุณที่เข้าร่วม—แล้วพบกันในชุมชน!",
     "learningStepTitle": "การเรียนรู้",
+    "tts": "ข้อความเป็นเสียง",
     "languageOrderTipTitle": "เคล็ดลับ",
     "languageOrderTipBody": "ภาษาล่างสุดจะเป็นภาษา UI ของแอป ลากเพื่อเปลี่ยนได้ทุกเมื่อ",
     "ttsOsTipTitle": "เคล็ดลับ",
     "ttsOsTipAndroid": "แนะนำ: ใช้ Google TTS — Samsung TTS ใช้กับ Corpán ไม่ได้",
-    "ttsOsTipIOS": "In Settings → Accessibility, find Spoken Content and download voices. Note: Apple doesn't provide voices for every language. If upgrading doesn't help, request support via Apple's Feedback app.",
-    "ttsOsTipMac": "In System Settings → Accessibility, find Spoken Content and download voices. Note: Apple doesn't provide voices for every language. If upgrading doesn't help, request support via Apple's Feedback app.",
+    "ttsOsTipIOS": "ใน Settings → Accessibility ให้หา Spoken Content แล้วดาวน์โหลดเสียง หมายเหตุ: Apple ไม่มีเสียงสำหรับทุกภาษา หากอัปเกรดแล้วยังไม่ดีขึ้น ให้ขอความช่วยเหลือผ่านแอป Feedback ของ Apple.",
+    "ttsOsTipMac": "ใน System Settings → Accessibility ให้หา Spoken Content แล้วดาวน์โหลดเสียง หมายเหตุ: Apple ไม่มีเสียงสำหรับทุกภาษา หากอัปเกรดแล้วยังไม่ดีขึ้น ให้ขอความช่วยเหลือผ่านแอป Feedback ของ Apple.",
     "ttsOsTipWindows": "ติดตั้งเสียงพูดใน Settings แล้วกลับมาที่นี่",
     "ttsOsTipOther": "ติดตั้งเสียงพูดในตั้งค่าเครื่อง แล้วกลับมาที่นี่",
     "installVoicesAndroid": "ติดตั้งเสียง",
-    "learning": "Learning languages",
-    "ttsStepTitle": "Text-to-speech",
-    "socials": "Follow & connect",
-    "noVoices": "No voices",
-    "noVoicesHint": "Install voices to enable this language.",
-    "sendAppleFeedback": "Send Apple Feedback"
+    "learning": "การเรียนภาษา",
+    "ttsStepTitle": "ข้อความเป็นเสียง",
+    "socials": "ติดตามและเชื่อมต่อ",
+    "socialsStepTitle": "โซเชียลมีเดีย",
+    "noVoices": "ไม่มีเสียง",
+    "noVoicesHint": "ติดตั้งเสียงเพื่อเปิดใช้งานภาษานี้",
+    "sendAppleFeedback": "ส่งความคิดเห็นให้ Apple"
+  },
+  "socials": {
+    "youtube": {
+      "cta": "ดู",
+      "title": "YouTube",
+      "desc": "บทเรียน เดโม และเบื้องหลัง."
+    },
+    "github": {
+      "cta": "กดดาวและร่วมพัฒนา",
+      "title": "GitHub",
+      "desc": "โอเพนซอร์ส ยินดีรับ PR!"
+    },
+    "blog": {
+      "cta": "อ่าน",
+      "title": "Free2z Blog",
+      "desc": "อัปเดต แผนงาน และเจาะลึก."
+    },
+    "website": {
+      "cta": "เยี่ยมชม",
+      "title": "encorpora.io",
+      "desc": "เว็บไซต์หลักพร้อมเอกสารและชุมชน."
+    }
   },
   "common": {
     "loading": "กำลังโหลด...",
@@ -188,21 +213,24 @@
     "zh-TW": "จีนกลาง (ไต้หวัน)",
     "bn": "เบงกาลี",
     "th": "ไทย",
-    "id": "Indonesian",
-    "tr": "Turkish",
-    "bn-IN": "Bengali (India)",
-    "te-IN": "Telugu (India)",
-    "kn-IN": "Kannada (India)",
-    "mr": "Marathi",
-    "mr-IN": "Marathi (India)",
-    "gu": "Gujarati",
-    "gu-IN": "Gujarati (India)",
-    "pa": "Punjabi",
-    "pa-IN": "Punjabi (India)",
-    "pa-Guru-IN": "Punjabi (Gurmukhi, India)",
-    "ur": "Urdu",
-    "ur-IN": "Urdu (India)",
-    "ur-PK": "Urdu (Pakistan)"
+    "id": "อินโดนีเซีย",
+    "tr": "ตุรกี",
+    "bn-IN": "เบงกาลี (อินเดีย)",
+    "te-IN": "เตลูกู (อินเดีย)",
+    "kn-IN": "กันนาดา (อินเดีย)",
+    "mr": "มราฐี",
+    "mr-IN": "มราฐี (อินเดีย)",
+    "gu": "คุชราต",
+    "gu-IN": "คุชราต (อินเดีย)",
+    "pa": "ปัญจาบี",
+    "pa-IN": "ปัญจาบี (อินเดีย)",
+    "pa-Guru-IN": "ปัญจาบี (กูร์มุขี, อินเดีย)",
+    "ur": "อูรดู",
+    "ur-IN": "อูรดู (อินเดีย)",
+    "ur-PK": "อูรดู (ปากีสถาน)",
+    "ta": "ทมิฬ",
+    "te": "เตลูกู",
+    "kn": "กันนาดา"
   },
   "footer": {
     "appVersion": "เวอร์ชันแอป",
@@ -222,6 +250,7 @@
     "new": "สแต็กใหม่",
     "newName": "ตั้งชื่อสแต็กใหม่",
     "rename": "เปลี่ยนชื่อ",
+    "renameLabel": "ชื่อใหม่สำหรับสแต็ก",
     "selectAria": "เลือกสแต็ก",
     "selectPlaceholder": "เลือก…"
   },

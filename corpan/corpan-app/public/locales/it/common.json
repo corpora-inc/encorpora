@@ -49,6 +49,7 @@
   "settings": {
     "addMoreLanguages": "Aggiungi altre lingue",
     "selectedLanguages": "Lingue selezionate",
+    "removeLanguage": "Rimuovi lingua",
     "settings": "Impostazioni",
     "adjustToYourPreferences": "Regola in base alle tue preferenze",
     "speechRate": "Velocità di parlato",
@@ -88,21 +89,45 @@
     "openTTSSetup": "Apri impostazioni TTS",
     "welcomeFollowUp": "Grazie per esserti unito — ci vediamo nella community!",
     "learningStepTitle": "Impara",
+    "tts": "Sintesi vocale",
     "languageOrderTipTitle": "Suggerimento",
     "languageOrderTipBody": "La lingua in fondo diventa la lingua dell’app. Trascina per cambiarla quando vuoi.",
     "ttsOsTipTitle": "Suggerimento",
     "ttsOsTipAndroid": "Per risultati migliori, usa il TTS di Google. Samsung TTS non funziona in Corpán.",
-    "ttsOsTipIOS": "In Settings → Accessibility, find Spoken Content and download voices. Note: Apple doesn't provide voices for every language. If upgrading doesn't help, request support via Apple's Feedback app.",
-    "ttsOsTipMac": "In System Settings → Accessibility, find Spoken Content and download voices. Note: Apple doesn't provide voices for every language. If upgrading doesn't help, request support via Apple's Feedback app.",
+    "ttsOsTipIOS": "In Impostazioni → Accessibilità, trova Contenuti letti e scarica le voci. Nota: Apple non fornisce voci per tutte le lingue. Se l’aggiornamento non aiuta, richiedi supporto tramite l’app Feedback di Apple.",
+    "ttsOsTipMac": "In Impostazioni di sistema → Accessibilità, trova Contenuti letti e scarica le voci. Nota: Apple non fornisce voci per tutte le lingue. Se l’aggiornamento non aiuta, richiedi supporto tramite l’app Feedback di Apple.",
     "ttsOsTipWindows": "In Impostazioni, installa le voci di sintesi e torna qui.",
     "ttsOsTipOther": "Nelle impostazioni del dispositivo, installa le voci di sintesi e torna qui.",
     "installVoicesAndroid": "Installa voci",
-    "learning": "Learning languages",
-    "ttsStepTitle": "Text-to-speech",
-    "socials": "Follow & connect",
-    "noVoices": "No voices",
-    "noVoicesHint": "Install voices to enable this language.",
-    "sendAppleFeedback": "Send Apple Feedback"
+    "learning": "Apprendimento delle lingue",
+    "ttsStepTitle": "Sintesi vocale",
+    "socials": "Segui e connettiti",
+    "socialsStepTitle": "Social",
+    "noVoices": "Nessuna voce",
+    "noVoicesHint": "Installa le voci per abilitare questa lingua.",
+    "sendAppleFeedback": "Invia feedback ad Apple"
+  },
+  "socials": {
+    "youtube": {
+      "cta": "Guarda",
+      "title": "YouTube",
+      "desc": "Tutorial, demo e dietro le quinte."
+    },
+    "github": {
+      "cta": "Metti una stella e contribuisci",
+      "title": "GitHub",
+      "desc": "Open source. PR benvenute!"
+    },
+    "blog": {
+      "cta": "Leggi",
+      "title": "Free2z Blog",
+      "desc": "Aggiornamenti, roadmap e approfondimenti."
+    },
+    "website": {
+      "cta": "Visita",
+      "title": "encorpora.io",
+      "desc": "Sito principale con documenti e community."
+    }
   },
   "common": {
     "loading": "Caricamento...",
@@ -190,7 +215,7 @@
     "th": "Thai",
     "id": "Indonesiano",
     "tr": "Turco",
-    "bn-IN": "Bengali (India)",
+    "bn-IN": "Bengalese (India)",
     "te-IN": "Telugu (India)",
     "kn-IN": "Kannada (India)",
     "mr": "Marathi",
@@ -202,7 +227,10 @@
     "pa-Guru-IN": "Punjabi (Gurmukhi, India)",
     "ur": "Urdu",
     "ur-IN": "Urdu (India)",
-    "ur-PK": "Urdu (Pakistan)"
+    "ur-PK": "Urdu (Pakistan)",
+    "ta": "Tamil",
+    "te": "Telugu",
+    "kn": "Kannada"
   },
   "footer": {
     "appVersion": "Versione dell’app",
@@ -222,6 +250,7 @@
     "new": "Nuovo profilo",
     "newName": "Nome del nuovo profilo",
     "rename": "Rinomina",
+    "renameLabel": "Nuovo nome per stack",
     "selectAria": "Seleziona un profilo",
     "selectPlaceholder": "Scegli…"
   },

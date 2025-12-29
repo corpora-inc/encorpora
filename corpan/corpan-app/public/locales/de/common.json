@@ -28,8 +28,8 @@
     "mr": "Marathi",
     "gu": "Gujarati",
     "ur": "Urdu",
-    "pa-Guru": "Punjabi (Gurmukhi)",
-    "pa-Arab": "Punjabi (Shahmukhi)"
+    "pa-Guru": "Panjabi (Gurmukhi)",
+    "pa-Arab": "Panjabi (Shahmukhi)"
   },
   "categories": {
     "travel": "Reise",
@@ -49,11 +49,12 @@
   "settings": {
     "addMoreLanguages": "Weitere Sprachen hinzufügen",
     "selectedLanguages": "Ausgewählte Sprachen",
+    "removeLanguage": "Sprache entfernen",
     "settings": "Einstellungen",
     "adjustToYourPreferences": "Passen Sie es an Ihre Vorlieben an",
     "speechRate": "Sprechgeschwindigkeit",
     "slow": "Langsam",
-    "normal": "Normal",
+    "normal": "Standard",
     "fast": "Schnell",
     "slower": "Langsame",
     "faster": "Schneller",
@@ -88,21 +89,45 @@
     "openTTSSetup": "Öffne die TTS-Einrichtung",
     "welcomeFollowUp": "Danke, dass du hier bist - wir sehen uns in der Community!",
     "learningStepTitle": "Lernen",
+    "tts": "Text-zu-Sprache",
     "languageOrderTipTitle": "Tipp",
     "languageOrderTipBody": "Die unterste Sprache wird zur UI-Sprache der App. Ziehe sie, um sie jederzeit zu ändern.",
     "ttsOsTipTitle": "Tipp",
     "ttsOsTipAndroid": "Beste Ergebnisse: Google-Sprachausgabe verwenden. Samsung TTS funktioniert in Corpán nicht.",
-    "ttsOsTipIOS": "In Settings → Accessibility, find Spoken Content and download voices. Note: Apple doesn't provide voices for every language. If upgrading doesn't help, request support via Apple's Feedback app.",
-    "ttsOsTipMac": "In System Settings → Accessibility, find Spoken Content and download voices. Note: Apple doesn't provide voices for every language. If upgrading doesn't help, request support via Apple's Feedback app.",
+    "ttsOsTipIOS": "In Einstellungen → Bedienungshilfen, finde Gesprochene Inhalte und lade Stimmen herunter. Hinweis: Apple bietet nicht für jede Sprache Stimmen an. Wenn ein Upgrade nicht hilft, fordere Unterstützung über Apples Feedback-App an.",
+    "ttsOsTipMac": "In Systemeinstellungen → Bedienungshilfen, finde Gesprochene Inhalte und lade Stimmen herunter. Hinweis: Apple bietet nicht für jede Sprache Stimmen an. Wenn ein Upgrade nicht hilft, fordere Unterstützung über Apples Feedback-App an.",
     "ttsOsTipWindows": "In Einstellungen Sprachstimmen installieren und dann hierher zurückkehren.",
     "ttsOsTipOther": "In den Geräteeinstellungen Sprachstimmen installieren und dann hierher zurückkehren.",
     "installVoicesAndroid": "Stimmen installieren",
-    "learning": "Learning languages",
-    "ttsStepTitle": "Text-to-speech",
-    "socials": "Follow & connect",
-    "noVoices": "No voices",
-    "noVoicesHint": "Install voices to enable this language.",
-    "sendAppleFeedback": "Send Apple Feedback"
+    "learning": "Sprachen lernen",
+    "ttsStepTitle": "Text-zu-Sprache",
+    "socials": "Folgen & vernetzen",
+    "socialsStepTitle": "Soziale Medien",
+    "noVoices": "Keine Stimmen",
+    "noVoicesHint": "Installiere Stimmen, um diese Sprache zu aktivieren.",
+    "sendAppleFeedback": "Apple Feedback senden"
+  },
+  "socials": {
+    "youtube": {
+      "cta": "Ansehen",
+      "title": "YouTube",
+      "desc": "Tutorials, Demos und Einblicke hinter die Kulissen."
+    },
+    "github": {
+      "cta": "Markieren & beitragen",
+      "title": "GitHub",
+      "desc": "Open Source. PRs willkommen!"
+    },
+    "blog": {
+      "cta": "Lesen",
+      "title": "Free2z Blog",
+      "desc": "Updates, Roadmap und Detailanalysen."
+    },
+    "website": {
+      "cta": "Besuchen",
+      "title": "encorpora.io",
+      "desc": "Hauptseite mit Dokumentation und Community."
+    }
   },
   "common": {
     "loading": "Wird geladen...",
@@ -190,24 +215,27 @@
     "th": "Thailändisch",
     "id": "Indonesisch",
     "tr": "Türkisch",
-    "bn-IN": "Bengali (India)",
-    "te-IN": "Telugu (India)",
-    "kn-IN": "Kannada (India)",
+    "bn-IN": "Bengalisch (Indien)",
+    "te-IN": "Telugu (Indien)",
+    "kn-IN": "Kannada (Indien)",
     "mr": "Marathi",
-    "mr-IN": "Marathi (India)",
+    "mr-IN": "Marathi (Indien)",
     "gu": "Gujarati",
-    "gu-IN": "Gujarati (India)",
-    "pa": "Punjabi",
-    "pa-IN": "Punjabi (India)",
-    "pa-Guru-IN": "Punjabi (Gurmukhi, India)",
+    "gu-IN": "Gujarati (Indien)",
+    "pa": "Panjabi",
+    "pa-IN": "Panjabi (Indien)",
+    "pa-Guru-IN": "Panjabi (Gurmukhi, Indien)",
     "ur": "Urdu",
-    "ur-IN": "Urdu (India)",
-    "ur-PK": "Urdu (Pakistan)"
+    "ur-IN": "Urdu (Indien)",
+    "ur-PK": "Urdu (Pakistan)",
+    "ta": "Tamil",
+    "te": "Telugu",
+    "kn": "Kannada"
   },
   "footer": {
     "appVersion": "App-Version",
     "website": "Webseite",
-    "supportAndFeedback": "Support & Feedback",
+    "supportAndFeedback": "Support und Feedback",
     "feedbackNote": "Bei Problemen oder Vorschlägen besuchen Sie bitte unser GitHub-Repository oder kontaktieren Sie uns per E-Mail.",
     "githubIssues": "GitHub-Probleme",
     "aboutCorpan": "Über Corpán"
@@ -222,6 +250,7 @@
     "new": "Neues Profil",
     "newName": "Name des neuen Profils",
     "rename": "Umbenennen",
+    "renameLabel": "Neuer Name für Stapel",
     "selectAria": "Profil auswählen",
     "selectPlaceholder": "Auswählen…"
   },
@@ -236,7 +265,7 @@
     "feedbackButton": "Feedback auf GitHub geben"
   },
   "packs": {
-    "title": "Packs",
+    "title": "Pakete",
     "available": "Verfügbare Packs",
     "emptyAvailable": "Noch keine Packs.",
     "installed": "Installierte Packs",

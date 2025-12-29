@@ -28,8 +28,8 @@
     "mr": "Tiếng Marathi",
     "gu": "Tiếng Gujarati",
     "ur": "Tiếng Urdu",
-    "pa-Guru": "Punjabi (Gurmukhi)",
-    "pa-Arab": "Punjabi (Shahmukhi)"
+    "pa-Guru": "Tiếng Punjab (Gurmukhi)",
+    "pa-Arab": "Tiếng Punjab (Shahmukhi)"
   },
   "categories": {
     "travel": "Du lịch",
@@ -49,6 +49,7 @@
   "settings": {
     "addMoreLanguages": "Thêm ngôn ngữ",
     "selectedLanguages": "Ngôn ngữ đã chọn",
+    "removeLanguage": "Xóa ngôn ngữ",
     "settings": "Cài đặt",
     "adjustToYourPreferences": "Điều chỉnh theo sở thích của bạn",
     "speechRate": "Tốc độ giọng nói",
@@ -88,21 +89,45 @@
     "openTTSSetup": "Mở cài đặt TTS",
     "welcomeFollowUp": "Cảm ơn bạn đã tham gia — hẹn gặp lại trong cộng đồng!",
     "learningStepTitle": "Học",
+    "tts": "Chuyển văn bản thành giọng nói",
     "languageOrderTipTitle": "Mẹo",
     "languageOrderTipBody": "Ngôn ngữ ở cuối sẽ trở thành ngôn ngữ giao diện. Kéo để đổi bất cứ lúc nào.",
     "ttsOsTipTitle": "Mẹo",
     "ttsOsTipAndroid": "Tốt nhất: dùng Google TTS. Samsung TTS không dùng được trong Corpán.",
-    "ttsOsTipIOS": "In Settings → Accessibility, find Spoken Content and download voices. Note: Apple doesn't provide voices for every language. If upgrading doesn't help, request support via Apple's Feedback app.",
-    "ttsOsTipMac": "In System Settings → Accessibility, find Spoken Content and download voices. Note: Apple doesn't provide voices for every language. If upgrading doesn't help, request support via Apple's Feedback app.",
+    "ttsOsTipIOS": "Trong Settings → Accessibility, tìm Spoken Content và tải giọng nói. Lưu ý: Apple không cung cấp giọng nói cho mọi ngôn ngữ. Nếu cập nhật không giúp, hãy yêu cầu hỗ trợ qua ứng dụng Feedback của Apple.",
+    "ttsOsTipMac": "Trong System Settings → Accessibility, tìm Spoken Content và tải giọng nói. Lưu ý: Apple không cung cấp giọng nói cho mọi ngôn ngữ. Nếu cập nhật không giúp, hãy yêu cầu hỗ trợ qua ứng dụng Feedback của Apple.",
     "ttsOsTipWindows": "Cài giọng nói trong Cài đặt rồi quay lại đây.",
     "ttsOsTipOther": "Cài giọng nói trong cài đặt thiết bị rồi quay lại đây.",
     "installVoicesAndroid": "Cài giọng",
-    "learning": "Learning languages",
-    "ttsStepTitle": "Text-to-speech",
-    "socials": "Follow & connect",
-    "noVoices": "No voices",
-    "noVoicesHint": "Install voices to enable this language.",
-    "sendAppleFeedback": "Send Apple Feedback"
+    "learning": "Học ngôn ngữ",
+    "ttsStepTitle": "Chuyển văn bản thành giọng nói",
+    "socials": "Theo dõi & kết nối",
+    "socialsStepTitle": "Mạng xã hội",
+    "noVoices": "Không có giọng nói",
+    "noVoicesHint": "Cài đặt giọng nói để bật ngôn ngữ này.",
+    "sendAppleFeedback": "Gửi phản hồi cho Apple"
+  },
+  "socials": {
+    "youtube": {
+      "cta": "Xem",
+      "title": "YouTube",
+      "desc": "Hướng dẫn, demo và hậu trường."
+    },
+    "github": {
+      "cta": "Gắn sao & đóng góp",
+      "title": "GitHub",
+      "desc": "Mã nguồn mở. PR hoan nghênh!"
+    },
+    "blog": {
+      "cta": "Đọc",
+      "title": "Free2z Blog",
+      "desc": "Cập nhật, lộ trình và phân tích sâu."
+    },
+    "website": {
+      "cta": "Truy cập",
+      "title": "encorpora.io",
+      "desc": "Trang chính với tài liệu và cộng đồng."
+    }
   },
   "common": {
     "loading": "Đang tải...",
@@ -190,19 +215,22 @@
     "th": "Tiếng Thái",
     "id": "Tiếng Indonesia",
     "tr": "Tiếng Thổ Nhĩ Kỳ",
-    "bn-IN": "Bengali (India)",
-    "te-IN": "Telugu (India)",
-    "kn-IN": "Kannada (India)",
-    "mr": "Marathi",
-    "mr-IN": "Marathi (India)",
-    "gu": "Gujarati",
-    "gu-IN": "Gujarati (India)",
-    "pa": "Punjabi",
-    "pa-IN": "Punjabi (India)",
-    "pa-Guru-IN": "Punjabi (Gurmukhi, India)",
-    "ur": "Urdu",
-    "ur-IN": "Urdu (India)",
-    "ur-PK": "Urdu (Pakistan)"
+    "bn-IN": "Tiếng Bengal (Ấn Độ)",
+    "te-IN": "Tiếng Telugu (Ấn Độ)",
+    "kn-IN": "Tiếng Kannada (Ấn Độ)",
+    "mr": "Tiếng Marathi",
+    "mr-IN": "Tiếng Marathi (Ấn Độ)",
+    "gu": "Tiếng Gujarati",
+    "gu-IN": "Tiếng Gujarati (Ấn Độ)",
+    "pa": "Tiếng Punjab",
+    "pa-IN": "Tiếng Punjab (Ấn Độ)",
+    "pa-Guru-IN": "Tiếng Punjab (Gurmukhi, Ấn Độ)",
+    "ur": "Tiếng Urdu",
+    "ur-IN": "Tiếng Urdu (Ấn Độ)",
+    "ur-PK": "Tiếng Urdu (Pakistan)",
+    "ta": "Tiếng Tamil",
+    "te": "Tiếng Telugu",
+    "kn": "Tiếng Kannada"
   },
   "footer": {
     "appVersion": "Phiên bản ứng dụng",
@@ -222,6 +250,7 @@
     "new": "Hồ sơ mới",
     "newName": "Tên hồ sơ mới",
     "rename": "Đổi tên",
+    "renameLabel": "Tên mới cho ngăn xếp",
     "selectAria": "Chọn hồ sơ",
     "selectPlaceholder": "Chọn…"
   },
