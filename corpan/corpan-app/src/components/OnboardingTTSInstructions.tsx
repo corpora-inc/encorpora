@@ -102,49 +102,9 @@ export function OnboardingTTSInstructions() {
 
     // Refresh voices (hot updates while user installs/enables packs)
     async function refresh() {
-        console.log("[TTS Onboarding] Refreshing voice list...");
         const raw = await getVoices({});
         const cast = raw as ExtendedVoiceInfo[];
         const list = uniqBy(cast, (v) => `${v.id}|${v.language}`);
-        console.log(`[TTS Onboarding] Got ${list.length} voices`);
-
-        // Log ALL voices grouped by language
-        const voicesByLang = new Map<string, ExtendedVoiceInfo[]>();
-        for (const voice of list) {
-            const lang = baseLang(voice.language);
-            if (!voicesByLang.has(lang)) {
-                voicesByLang.set(lang, []);
-            }
-            voicesByLang.get(lang)!.push(voice);
-        }
-
-        // Sort and log all languages
-        const sortedLangs = Array.from(voicesByLang.keys()).sort();
-        console.log(`[TTS Onboarding] Languages available: ${sortedLangs.join(', ')}`);
-
-        // Detailed log for South Asian languages
-        const southAsianLangs = ['mr', 'gu', 'pa', 'ur', 'hi', 'bn', 'ta', 'te', 'kn'];
-        for (const lang of southAsianLangs) {
-            const matching = list.filter(v => {
-                const vLang = v.language.toLowerCase();
-                return vLang === lang || vLang.startsWith(lang + '-') || baseLang(vLang) === lang;
-            });
-            if (matching.length > 0) {
-                console.log(`[TTS Onboarding]   ${lang}: ${matching.length} voices`,
-                    matching.map(v => `${v.name} (${v.language})`));
-            } else {
-                console.log(`[TTS Onboarding]   ${lang}: NO VOICES FOUND`);
-            }
-        }
-
-        // Log complete voice list for debugging
-        console.log("[TTS Onboarding] Complete voice list:");
-        const grouped = Array.from(voicesByLang.entries())
-            .sort((a, b) => a[0].localeCompare(b[0]));
-        for (const [lang, voices] of grouped) {
-            console.log(`  ${lang}:`, voices.map(v => `${v.name} (${v.language}, ${v.quality})`).join(', '));
-        }
-
         setVoices(list);
     }
 

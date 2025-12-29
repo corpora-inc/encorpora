@@ -234,8 +234,6 @@ mod macos_impl {
             let voices: id = msg_send![class!(AVSpeechSynthesisVoice), speechVoices];
             let count: usize = msg_send![voices, count];
 
-            println!("[NATIVE_TTS:DEBUG] macOS found {} total voices from AVSpeechSynthesisVoice", count);
-
             // Collect all voices (no deduplication by quality)
             let mut out: Vec<VoiceInfo> = Vec::new();
 
@@ -251,16 +249,11 @@ mod macos_impl {
                 let ident = nsstring_to_rust(id_ns);
                 let lang = nsstring_to_rust(lang_ns);
 
-                println!("[NATIVE_TTS:DEBUG]   Voice {}: name='{}', id='{}', lang='{}', quality={}",
-                    idx, name, ident, lang, av_q);
-
                 // Filter legacy/Eloquence/novelty
                 if is_blocked_vendor(&ident) {
-                    println!("[NATIVE_TTS:DEBUG]     ↳ FILTERED (blocked vendor)");
                     continue;
                 }
                 if is_novelty(&name, &ident) {
-                    println!("[NATIVE_TTS:DEBUG]     ↳ FILTERED (novelty)");
                     continue;
                 }
 
