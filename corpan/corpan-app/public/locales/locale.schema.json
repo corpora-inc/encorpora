@@ -85,7 +85,10 @@
         "gu": {
           "type": "string"
         },
-        "pa": {
+        "pa-Guru": {
+          "type": "string"
+        },
+        "pa-Arab": {
           "type": "string"
         },
         "ur": {
@@ -119,7 +122,8 @@
         "kn",
         "mr",
         "gu",
-        "pa",
+        "pa-Guru",
+        "pa-Arab",
         "ur"
       ],
       "additionalProperties": false

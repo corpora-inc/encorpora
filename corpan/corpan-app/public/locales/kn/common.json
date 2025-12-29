@@ -27,8 +27,9 @@
     "kn": "ಕನ್ನಡ",
     "mr": "ಮರಾಠಿ",
     "gu": "ಗುಜರಾತಿ",
-    "pa": "ಪಂಜಾಬಿ",
-    "ur": "ಉರ್ದು"
+    "ur": "ಉರ್ದು",
+    "pa-Guru": "Punjabi (Gurmukhi)",
+    "pa-Arab": "Punjabi (Shahmukhi)"
   },
   "categories": {
     "travel": "ಪ್ರಯಾಣ",
@@ -104,7 +105,9 @@
     "delete": "ಅಳಿಸಿ",
     "create": "ರಚಿಸಿ"
   },
-  "dialects": {"kn": "ಕನ್ನಡ"},
+  "dialects": {
+    "kn": "ಕನ್ನಡ"
+  },
   "footer": {
     "appVersion": "ಅಪ್ಲಿಕೇಶನ್ ಆವೃತ್ತಿ",
     "website": "ವೆಬ್‌ಸೈಟ್",

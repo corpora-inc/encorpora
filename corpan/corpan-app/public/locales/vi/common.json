@@ -27,8 +27,9 @@
     "kn": "Tiếng Kannada",
     "mr": "Tiếng Marathi",
     "gu": "Tiếng Gujarati",
-    "pa": "Tiếng Punjabi",
-    "ur": "Tiếng Urdu"
+    "ur": "Tiếng Urdu",
+    "pa-Guru": "Punjabi (Gurmukhi)",
+    "pa-Arab": "Punjabi (Shahmukhi)"
   },
   "categories": {
     "travel": "Du lịch",

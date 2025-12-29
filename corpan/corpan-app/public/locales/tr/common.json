@@ -27,8 +27,9 @@
     "kn": "Kannada",
     "mr": "Marathi",
     "gu": "Güceratça",
-    "pa": "Pencapça",
-    "ur": "Urduca"
+    "ur": "Urduca",
+    "pa-Guru": "Punjabi (Gurmukhi)",
+    "pa-Arab": "Punjabi (Shahmukhi)"
   },
   "categories": {
     "travel": "Seyahat",

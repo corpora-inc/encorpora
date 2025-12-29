@@ -27,8 +27,9 @@
     "kn": "卡納達語",
     "mr": "馬拉地語",
     "gu": "古吉拉特語",
-    "pa": "旁遮普語",
-    "ur": "烏爾都語"
+    "ur": "烏爾都語",
+    "pa-Guru": "Punjabi (Gurmukhi)",
+    "pa-Arab": "Punjabi (Shahmukhi)"
   },
   "categories": {
     "travel": "旅行",

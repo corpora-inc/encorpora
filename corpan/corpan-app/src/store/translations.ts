@@ -36,7 +36,8 @@ export const WELCOME_BY_LANG = {
     kn: "ಸ್ವಾಗತ",
     mr: "स्वागत आहे",
     gu: "સ્વાગત છે",
-    pa: "ਸਵਾਗਤ ਹੈ",
+    "pa-Guru": "ਸਵਾਗਤ ਹੈ",
+    "pa-Arab": "خوش آمدید",
     ur: "خوش آمديد",
 
     // Coming soon languages
@@ -77,7 +78,8 @@ export const AUTONYM_BY_LANG = {
     kn: "ಕನ್ನಡ",
     mr: "मराठी",
     gu: "ગુજરાતી",
-    pa: "ਪੰਜਾਬੀ",
+    "pa-Guru": "ਪੰਜਾਬੀ",
+    "pa-Arab": "پنجابی",
     ur: "اردو",
 
     // Coming soon languages
@@ -121,7 +123,8 @@ export const MAKE_PRIMARY_BY_LANG = {
     kn: "ಕನ್ನಡವನ್ನು ನನ್ನ ಪ್ರಾಥಮಿಕ ಭಾಷೆಯನ್ನಾಗಿ ಮಾಡಿ",
     mr: "मराठीला माझी प्राथमिक भाषा करा",
     gu: "ગુજરાતીને મારી પ્રાથમિક ભાષા બનાવો",
-    pa: "ਪੰਜਾਬੀ ਨੂੰ ਮੇਰੀ ਮੁੱਖ ਭਾਸ਼ਾ ਬਣਾਓ",
+    "pa-Guru": "ਪੰਜਾਬੀ ਨੂੰ ਮੇਰੀ ਮੁੱਖ ਭਾਸ਼ਾ ਬਣਾਓ",
+    "pa-Arab": "پنجابی کو میری بنیادی زبان بنائیں",
     ur: "اردو کو میری بنیادی زبان بنائیں",
 } as const;
 export type MakePrimaryCode = keyof typeof MAKE_PRIMARY_BY_LANG;

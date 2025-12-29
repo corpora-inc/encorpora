@@ -27,8 +27,9 @@
     "kn": "কন্নড়",
     "mr": "মারাঠি",
     "gu": "গুজরাটি",
-    "pa": "পাঞ্জাবি",
-    "ur": "উর্দু"
+    "ur": "উর্দু",
+    "pa-Guru": "Punjabi (Gurmukhi)",
+    "pa-Arab": "Punjabi (Shahmukhi)"
   },
   "categories": {
     "travel": "ভ্রমণ",

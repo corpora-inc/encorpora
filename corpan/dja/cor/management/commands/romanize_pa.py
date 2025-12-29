@@ -65,8 +65,8 @@ def pa_to_iso15919(text_pa: str) -> str:
 
 class Command(BaseCommand):
     help = (
-        "Fill/refresh Translation.romanization for Punjabi (pa) using "
-        "Aksharamukha → ISO 15919. Punjabi uses Gurmukhi script."
+        "Fill/refresh Translation.romanization for Punjabi (Gurmukhi) (pa-Guru) using "
+        "Aksharamukha → ISO 15919."
     )
 
     def add_arguments(self, parser):
@@ -94,9 +94,9 @@ class Command(BaseCommand):
         limit = int(opts["limit"])
 
         try:
-            lang = Language.objects.get(code="pa")
+            lang = Language.objects.get(code="pa-Guru")
         except Language.DoesNotExist:
-            raise CommandError("Language(code='pa') not found.")
+            raise CommandError("Language(code='pa-Guru') not found.")
 
         qs = Translation.objects.filter(language=lang).order_by("?")
 
@@ -105,10 +105,10 @@ class Command(BaseCommand):
 
         n = qs.count()
         if n == 0:
-            self.stdout.write("pa: nothing to process.")
+            self.stdout.write("pa-Guru: nothing to process.")
             return
 
-        self.stdout.write(f"Processing {n} Punjabi rows...")
+        self.stdout.write(f"Processing {n} Punjabi (Gurmukhi) rows...")
 
         changes: List[Tuple[Translation, str]] = []
         processed = 0
@@ -159,5 +159,5 @@ class Command(BaseCommand):
             self.stdout.write(f"  Saved {chunk_end}/{total}...")
 
         self.stdout.write(
-            self.style.SUCCESS(f"✅ Done: updated {total} Punjabi romanizations.")
+            self.style.SUCCESS(f"✅ Done: updated {total} Punjabi (Gurmukhi) romanizations.")
         )

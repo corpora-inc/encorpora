@@ -27,8 +27,9 @@
     "kn": "カンナダ語",
     "mr": "マラーティー語",
     "gu": "グジャラート語",
-    "pa": "パンジャブ語",
-    "ur": "ウルドゥー語"
+    "ur": "ウルドゥー語",
+    "pa-Guru": "Punjabi (Gurmukhi)",
+    "pa-Arab": "Punjabi (Shahmukhi)"
   },
   "categories": {
     "travel": "旅行",

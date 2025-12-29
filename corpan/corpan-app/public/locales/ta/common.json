@@ -27,8 +27,9 @@
     "kn": "கன்னடம்",
     "mr": "மராத்தி",
     "gu": "குஜராத்தி",
-    "pa": "பஞ்சாபி",
-    "ur": "உருது"
+    "ur": "உருது",
+    "pa-Guru": "Punjabi (Gurmukhi)",
+    "pa-Arab": "Punjabi (Shahmukhi)"
   },
   "categories": {
     "travel": "பயணம்",

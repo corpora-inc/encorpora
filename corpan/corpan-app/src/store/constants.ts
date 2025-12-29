@@ -25,12 +25,13 @@ export const LANGUAGE_NAMES: Record<string, string> = {
     kn: "Kannada",
     mr: "Marathi",
     gu: "Gujarati",
-    pa: "Punjabi",
+    "pa-Guru": "Punjabi (Gurmukhi)",
+    "pa-Arab": "Punjabi (Shahmukhi)",
     ur: "Urdu",
 };
 
 
-export const RTL_LANGUAGES = ["ar", "he", "fa", "ur"];
+export const RTL_LANGUAGES = ["ar", "he", "fa", "pa-Arab", "ur"];
 
 export const DOMAIN_NAMES: Record<string, string> = {
     travel: "Travel",

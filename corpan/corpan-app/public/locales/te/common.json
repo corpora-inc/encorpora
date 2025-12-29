@@ -27,8 +27,9 @@
     "kn": "కన్నడ",
     "mr": "మరాఠీ",
     "gu": "గుజరాతీ",
-    "pa": "పంజాబీ",
-    "ur": "ఉర్దూ"
+    "ur": "ఉర్దూ",
+    "pa-Guru": "Punjabi (Gurmukhi)",
+    "pa-Arab": "Punjabi (Shahmukhi)"
   },
   "categories": {
     "travel": "ప్రయాణం",

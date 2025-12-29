@@ -27,8 +27,9 @@
     "kn": "کنڑ",
     "mr": "مراٹھی",
     "gu": "گجراتی",
-    "pa": "پنجابی",
-    "ur": "اردو"
+    "ur": "اردو",
+    "pa-Guru": "Punjabi (Gurmukhi)",
+    "pa-Arab": "Punjabi (Shahmukhi)"
   },
   "categories": {
     "travel": "سفر",

@@ -31,7 +31,8 @@ export const ALL_LANGUAGES = [
     "kn",
     "mr",
     "gu",
-    "pa",
+    "pa-Guru",
+    "pa-Arab",
     "ur",
 ];
 

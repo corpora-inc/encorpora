@@ -27,8 +27,9 @@
     "kn": "Kannada",
     "mr": "Marathi",
     "gu": "Gudżarati",
-    "pa": "Pendżabski",
-    "ur": "Urdu"
+    "ur": "Urdu",
+    "pa-Guru": "Punjabi (Gurmukhi)",
+    "pa-Arab": "Punjabi (Shahmukhi)"
   },
   "categories": {
     "travel": "Podróże",
