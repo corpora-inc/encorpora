@@ -394,7 +394,7 @@ fn content_packs_get_manifest_url(app: AppHandle, pack_id: String) -> Result<Str
 
 /// Open Apple's Feedback Assistant app using the 'open' command (macOS/iOS)
 #[command]
-fn open_apple_feedback() -> Result<(), String> {
+fn open_apple_feedback(#[allow(unused_variables)] app: AppHandle) -> Result<(), String> {
     #[cfg(target_os = "macos")]
     {
         use std::process::Command;
@@ -422,7 +422,31 @@ fn open_apple_feedback() -> Result<(), String> {
         }
     }
 
-    #[cfg(not(target_os = "macos"))]
+    #[cfg(target_os = "ios")]
+    {
+        use tauri_plugin_opener::OpenerExt;
+
+        // On iOS, try multiple options in order of preference:
+        // 1. Feedback app (if installed via TestFlight/Beta program)
+        // 2. Apple Support app (most users have this)
+        // 3. Web feedback form as fallback
+        let urls = vec![
+            "applefeedback://new",           // Feedback app (Beta users)
+            "applefeedback://",              // Feedback app (alternative)
+            "applesupport://",               // Apple Support app
+            "https://www.apple.com/feedback/", // Web fallback
+        ];
+
+        for url in urls {
+            if let Ok(_) = app.opener().open_url(url, None::<&str>) {
+                return Ok(());
+            }
+        }
+
+        Err("Could not open Apple Feedback. Please install the Apple Support app from the App Store.".to_string())
+    }
+
+    #[cfg(not(any(target_os = "macos", target_os = "ios")))]
     {
         Err("Feedback Assistant is only available on Apple platforms".to_string())
     }

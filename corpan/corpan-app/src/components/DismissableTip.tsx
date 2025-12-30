@@ -83,7 +83,7 @@ export function DismissableTip({ title, body, storageKey, action, className }: P
                 "origin-top transition-all duration-500 ease-out",
                 closing
                     ? "opacity-0 scale-95 -translate-y-1 max-h-0 py-0 mb-0"
-                    : "opacity-100 scale-100 max-h-40",
+                    : "opacity-100 scale-100", // removed max-h-40 to let tip box grow naturally
                 className ?? "",
             ].join(" ")}
         >
