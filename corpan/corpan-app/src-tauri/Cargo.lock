@@ -651,7 +651,7 @@ dependencies = [
 
 [[package]]
 name = "corpan"
-version = "0.8.3"
+version = "0.8.5"
 dependencies = [
  "reqwest",
  "rusqlite",
@@ -4261,7 +4261,6 @@ dependencies = [
 [[package]]
 name = "tauri-plugin-tts"
 version = "0.2.0"
-source = "git+https://github.com/skyl/tauri-plugin-tts.git?branch=packz#93d7d14b03a1468fc376db5ffd7f12b8ad4eed8d"
 dependencies = [
  "cocoa",
  "objc",

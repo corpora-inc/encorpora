@@ -16,7 +16,7 @@ import { useSettingsStore } from "@/store/settings";
 import { useHistoryStore } from "@/store/history";
 import { useRatingStore } from "@/store/rating";
 
-import { isRTL, toCamelCase } from "@/util/convert";
+import { isRTL } from "@/util/convert";
 import {
     getPlatformBottomPadding,
     getPlatformTopPaddingButtons,
@@ -295,7 +295,7 @@ export function MainExperience() {
     // --- Render helpers --------------------------------------------------------
 
     const labelFor = (uiCode: string) =>
-        (t(`languages.${toCamelCase(uiCode)}` as any, { defaultValue: uiCode }) as unknown as string) || uiCode;
+        (t(`languages.${uiCode}` as any, { defaultValue: uiCode }) as unknown as string) || uiCode;
 
     const speak = (uiCode: string, txt: string) => {
         if (!txt) return;

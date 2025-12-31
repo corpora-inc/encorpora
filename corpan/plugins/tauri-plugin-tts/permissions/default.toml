@@ -1,0 +1,10 @@
+# permissions/default.toml
+[default]
+description = "Default permissions for the TTS plugin"
+permissions = [
+    "allow-speak",
+    "allow-stop",
+    "allow-open-tts-settings",
+    "allow-install-tts-data-if-supported",
+    "allow-list-voices",
+]

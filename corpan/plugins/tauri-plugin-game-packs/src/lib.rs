@@ -96,10 +96,10 @@ pub fn init<R: Runtime>() -> TauriPlugin<R> {
                     .unwrap(),
             }
         })
-        .setup(|app, api| {
+        .setup(|app, _api| {
             #[cfg(mobile)]
             {
-                let packs = mobile::init(app, api)?;
+                let packs = mobile::init(app, _api)?;
                 app.manage(packs);
             }
 

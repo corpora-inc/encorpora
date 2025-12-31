@@ -20,10 +20,18 @@ export const LANGUAGE_NAMES: Record<string, string> = {
     "zh-Hant": "Chinese (Traditional)",
     "ko-polite": "Korean (Polite)",
     ja: "Japanese",
+    ta: "Tamil",
+    te: "Telugu",
+    kn: "Kannada",
+    mr: "Marathi",
+    gu: "Gujarati",
+    "pa-Guru": "Punjabi (Gurmukhi)",
+    "pa-Arab": "Punjabi (Shahmukhi)",
+    ur: "Urdu",
 };
 
 
-export const RTL_LANGUAGES = ["ar", "he", "fa", "ur"];
+export const RTL_LANGUAGES = ["ar", "he", "fa", "pa-Arab", "ur"];
 
 export const DOMAIN_NAMES: Record<string, string> = {
     travel: "Travel",

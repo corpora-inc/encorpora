@@ -2,14 +2,14 @@
   "$schema": "./../locale.schema.json",
   "languages": {
     "en": "Angol",
-    "koPolite": "Koreai (udvarias)",
+    "ko-polite": "Koreai (udvarias)",
     "es": "Spanyol",
     "fr": "Francia",
     "de": "Német",
-    "ptBR": "Portugál (Brazília)",
+    "pt-BR": "Portugál (Brazília)",
     "ja": "Japán",
-    "zhHans": "Kínai (egyszerűsített)",
-    "zhHant": "Kínai (hagyományos)",
+    "zh-Hans": "Kínai (egyszerűsített)",
+    "zh-Hant": "Kínai (hagyományos)",
     "ar": "Arab",
     "ru": "Orosz",
     "it": "Olasz",
@@ -21,7 +21,15 @@
     "bn": "Bengáli",
     "th": "Thai",
     "id": "Indonéz",
-    "tr": "Török"
+    "tr": "Török",
+    "ta": "Tamil",
+    "te": "Telugu",
+    "kn": "Kannada",
+    "mr": "Maráthi",
+    "gu": "Gudzsaráti",
+    "ur": "Urdu",
+    "pa-Guru": "Pandzsábi (Gurmukhi)",
+    "pa-Arab": "Pandzsábi (Shahmukhi)"
   },
   "categories": {
     "travel": "Utazás",
@@ -41,6 +49,7 @@
   "settings": {
     "addMoreLanguages": "További nyelvek hozzáadása",
     "selectedLanguages": "Kiválasztott nyelvek",
+    "removeLanguage": "Nyelv eltávolítása",
     "settings": "Beállítások",
     "adjustToYourPreferences": "Igazítsa az igényeihez",
     "speechRate": "Beszédsebesség",
@@ -59,7 +68,7 @@
     "small": "Kicsi",
     "medium": "Közepes",
     "large": "Nagy",
-    "extraLarge": "Nagyon nagy",
+    "extra-large": "Nagyon nagy",
     "testTts": "Tesztelje a TTS beállításokat az alábbi gombokkal:",
     "showRomanization": "Rómaizáció megjelenítése"
   },
@@ -80,15 +89,45 @@
     "openTTSSetup": "TTS-beállítások megnyitása",
     "welcomeFollowUp": "Köszönjük, hogy csatlakozott — találkozunk a közösségben!",
     "learningStepTitle": "Tanulás",
+    "tts": "Szövegfelolvasás",
     "languageOrderTipTitle": "Tipp",
     "languageOrderTipBody": "A legalul lévő nyelv lesz az app felületének nyelve. Húzd, és bármikor átállíthatod.",
     "ttsOsTipTitle": "Tipp",
     "ttsOsTipAndroid": "Legjobb: Google TTS. A Samsung TTS nem működik a Corpánban.",
-    "ttsOsTipIOS": "A Beállítások → Kisegítő lehetőségek alatt keresd a Felolvasás/Beszéd vagy a Felolvasott tartalom részt, és tölts le hangokat.",
-    "ttsOsTipMac": "A Rendszerbeállítások → Kisegítő lehetőségek alatt nyisd meg a Felolvasott tartalom részt, és tölts le hangokat.",
+    "ttsOsTipIOS": "A Settings → Accessibility menüben keresd meg a Spoken Content részt, és töltsd le a hangokat. Megjegyzés: az Apple nem biztosít hangokat minden nyelvhez. Ha a frissítés nem segít, kérj támogatást az Apple Feedback appon keresztül.",
+    "ttsOsTipMac": "A System Settings → Accessibility menüben keresd meg a Spoken Content részt, és töltsd le a hangokat. Megjegyzés: az Apple nem biztosít hangokat minden nyelvhez. Ha a frissítés nem segít, kérj támogatást az Apple Feedback appon keresztül.",
     "ttsOsTipWindows": "Telepíts hangokat a Beállításokban, majd térj vissza ide.",
     "ttsOsTipOther": "Telepíts hangokat az eszköz beállításaiban, majd térj vissza ide.",
-    "installVoicesAndroid": "Hangok telepítése"
+    "installVoicesAndroid": "Hangok telepítése",
+    "learning": "Nyelvtanulás",
+    "ttsStepTitle": "Szövegfelolvasás",
+    "socials": "Kövess és kapcsolódj",
+    "socialsStepTitle": "Közösségi média",
+    "noVoices": "Nincs hang",
+    "noVoicesHint": "A nyelv engedélyezéséhez telepíts hangokat.",
+    "sendAppleFeedback": "Apple-visszajelzés küldése"
+  },
+  "socials": {
+    "youtube": {
+      "cta": "Nézd",
+      "title": "YouTube",
+      "desc": "Oktatóanyagok, demók és kulisszatitkok."
+    },
+    "github": {
+      "cta": "Csillag és hozzájárulás",
+      "title": "GitHub",
+      "desc": "Nyílt forráskód. PR-eket szívesen fogadunk!"
+    },
+    "blog": {
+      "cta": "Olvasd",
+      "title": "Free2z Blog",
+      "desc": "Frissítések, ütemterv és mélyebb anyagok."
+    },
+    "website": {
+      "cta": "Látogasd",
+      "title": "encorpora.io",
+      "desc": "A főoldal dokumentációval és közösséggel."
+    }
   },
   "common": {
     "loading": "Betöltés...",
@@ -175,7 +214,25 @@
     "bn": "Bengáli",
     "th": "Thai",
     "id": "Indonéz",
-    "tr": "Török"
+    "tr": "Török",
+    "bn-IN": "Bengáli (India)",
+    "te-IN": "Telugu (India)",
+    "kn-IN": "Kannada (India)",
+    "mr": "Maráthi",
+    "mr-IN": "Maráthi (India)",
+    "gu": "Gudzsarati",
+    "gu-IN": "Gudzsarati (India)",
+    "pa": "Pandzsábi",
+    "pa-IN": "Pandzsábi (India)",
+    "pa-Guru": "Pandzsábi (Gurmukhi)",
+    "pa-Guru-IN": "Pandzsábi (Gurmukhi, India)",
+    "pa-Arab": "Pandzsábi (Shahmukhi)",
+    "ur": "Urdu",
+    "ur-IN": "Urdu (India)",
+    "ur-PK": "Urdu (Pakisztán)",
+    "ta": "Tamil",
+    "te": "Telugu",
+    "kn": "Kannada"
   },
   "footer": {
     "appVersion": "Alkalmazás verzió",
@@ -195,6 +252,7 @@
     "new": "Új profil",
     "newName": "Új profil neve",
     "rename": "Átnevezés",
+    "renameLabel": "Új név a veremhez",
     "selectAria": "Profil kiválasztása",
     "selectPlaceholder": "Válassz…"
   },
@@ -225,7 +283,7 @@
     "installFailed": "A telepítés sikertelen.",
     "update": "Frissítés",
     "updating": "Frissítés...",
-    "manifestTitle": "Manifest URL",
+    "manifestTitle": "Manifest URL-cím",
     "manifestPlaceholder": "https://example.com/manifest.json",
     "manifestHint": "Illesszen be egy manifest URL-t.",
     "devUnlockTitle": "Fejlesztői csomagok",

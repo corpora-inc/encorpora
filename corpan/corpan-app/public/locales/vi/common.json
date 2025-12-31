@@ -2,14 +2,14 @@
   "$schema": "./../locale.schema.json",
   "languages": {
     "en": "Tiếng Anh",
-    "koPolite": "Tiếng Hàn (Lịch sự)",
+    "ko-polite": "Tiếng Hàn (Lịch sự)",
     "es": "Tiếng Tây Ban Nha",
     "fr": "Tiếng Pháp",
     "de": "Tiếng Đức",
-    "ptBR": "Tiếng Bồ Đào Nha (Brazil)",
+    "pt-BR": "Tiếng Bồ Đào Nha (Brazil)",
     "ja": "Tiếng Nhật",
-    "zhHans": "Tiếng Trung (Giản thể)",
-    "zhHant": "Tiếng Trung (Phồn thể)",
+    "zh-Hans": "Tiếng Trung (Giản thể)",
+    "zh-Hant": "Tiếng Trung (Phồn thể)",
     "ar": "Tiếng Ả Rập",
     "ru": "Tiếng Nga",
     "it": "Tiếng Ý",
@@ -21,7 +21,15 @@
     "bn": "Tiếng Bengal",
     "th": "Tiếng Thái",
     "id": "Tiếng Indonesia",
-    "tr": "Tiếng Thổ Nhĩ Kỳ"
+    "tr": "Tiếng Thổ Nhĩ Kỳ",
+    "ta": "Tiếng Tamil",
+    "te": "Tiếng Telugu",
+    "kn": "Tiếng Kannada",
+    "mr": "Tiếng Marathi",
+    "gu": "Tiếng Gujarati",
+    "ur": "Tiếng Urdu",
+    "pa-Guru": "Tiếng Punjab (Gurmukhi)",
+    "pa-Arab": "Tiếng Punjab (Shahmukhi)"
   },
   "categories": {
     "travel": "Du lịch",
@@ -41,6 +49,7 @@
   "settings": {
     "addMoreLanguages": "Thêm ngôn ngữ",
     "selectedLanguages": "Ngôn ngữ đã chọn",
+    "removeLanguage": "Xóa ngôn ngữ",
     "settings": "Cài đặt",
     "adjustToYourPreferences": "Điều chỉnh theo sở thích của bạn",
     "speechRate": "Tốc độ giọng nói",
@@ -59,7 +68,7 @@
     "small": "Nhỏ",
     "medium": "Trung bình",
     "large": "Lớn",
-    "extraLarge": "Rất lớn",
+    "extra-large": "Rất lớn",
     "testTts": "Kiểm tra cài đặt TTS của bạn bằng cách nhấp vào các nút bên dưới:",
     "showRomanization": "Hiển thị La-tinh hóa"
   },
@@ -80,15 +89,45 @@
     "openTTSSetup": "Mở cài đặt TTS",
     "welcomeFollowUp": "Cảm ơn bạn đã tham gia — hẹn gặp lại trong cộng đồng!",
     "learningStepTitle": "Học",
+    "tts": "Chuyển văn bản thành giọng nói",
     "languageOrderTipTitle": "Mẹo",
     "languageOrderTipBody": "Ngôn ngữ ở cuối sẽ trở thành ngôn ngữ giao diện. Kéo để đổi bất cứ lúc nào.",
     "ttsOsTipTitle": "Mẹo",
     "ttsOsTipAndroid": "Tốt nhất: dùng Google TTS. Samsung TTS không dùng được trong Corpán.",
-    "ttsOsTipIOS": "Trong Cài đặt → Trợ năng, tìm Đọc & Nói / Nội dung được đọc và tải giọng.",
-    "ttsOsTipMac": "Trong Cài đặt hệ thống → Trợ năng, tìm Nội dung được đọc và tải giọng.",
+    "ttsOsTipIOS": "Trong Settings → Accessibility, tìm Spoken Content và tải giọng nói. Lưu ý: Apple không cung cấp giọng nói cho mọi ngôn ngữ. Nếu cập nhật không giúp, hãy yêu cầu hỗ trợ qua ứng dụng Feedback của Apple.",
+    "ttsOsTipMac": "Trong System Settings → Accessibility, tìm Spoken Content và tải giọng nói. Lưu ý: Apple không cung cấp giọng nói cho mọi ngôn ngữ. Nếu cập nhật không giúp, hãy yêu cầu hỗ trợ qua ứng dụng Feedback của Apple.",
     "ttsOsTipWindows": "Cài giọng nói trong Cài đặt rồi quay lại đây.",
     "ttsOsTipOther": "Cài giọng nói trong cài đặt thiết bị rồi quay lại đây.",
-    "installVoicesAndroid": "Cài giọng"
+    "installVoicesAndroid": "Cài giọng",
+    "learning": "Học ngôn ngữ",
+    "ttsStepTitle": "Chuyển văn bản thành giọng nói",
+    "socials": "Theo dõi & kết nối",
+    "socialsStepTitle": "Mạng xã hội",
+    "noVoices": "Không có giọng nói",
+    "noVoicesHint": "Cài đặt giọng nói để bật ngôn ngữ này.",
+    "sendAppleFeedback": "Gửi phản hồi cho Apple"
+  },
+  "socials": {
+    "youtube": {
+      "cta": "Xem",
+      "title": "YouTube",
+      "desc": "Hướng dẫn, demo và hậu trường."
+    },
+    "github": {
+      "cta": "Gắn sao & đóng góp",
+      "title": "GitHub",
+      "desc": "Mã nguồn mở. PR hoan nghênh!"
+    },
+    "blog": {
+      "cta": "Đọc",
+      "title": "Free2z Blog",
+      "desc": "Cập nhật, lộ trình và phân tích sâu."
+    },
+    "website": {
+      "cta": "Truy cập",
+      "title": "encorpora.io",
+      "desc": "Trang chính với tài liệu và cộng đồng."
+    }
   },
   "common": {
     "loading": "Đang tải...",
@@ -175,7 +214,25 @@
     "bn": "Tiếng Bengal",
     "th": "Tiếng Thái",
     "id": "Tiếng Indonesia",
-    "tr": "Tiếng Thổ Nhĩ Kỳ"
+    "tr": "Tiếng Thổ Nhĩ Kỳ",
+    "bn-IN": "Tiếng Bengal (Ấn Độ)",
+    "te-IN": "Tiếng Telugu (Ấn Độ)",
+    "kn-IN": "Tiếng Kannada (Ấn Độ)",
+    "mr": "Tiếng Marathi",
+    "mr-IN": "Tiếng Marathi (Ấn Độ)",
+    "gu": "Tiếng Gujarati",
+    "gu-IN": "Tiếng Gujarati (Ấn Độ)",
+    "pa": "Tiếng Punjab",
+    "pa-IN": "Tiếng Punjab (Ấn Độ)",
+    "pa-Guru": "Tiếng Punjab (Gurmukhi)",
+    "pa-Guru-IN": "Tiếng Punjab (Gurmukhi, Ấn Độ)",
+    "pa-Arab": "Tiếng Punjab (Shahmukhi)",
+    "ur": "Tiếng Urdu",
+    "ur-IN": "Tiếng Urdu (Ấn Độ)",
+    "ur-PK": "Tiếng Urdu (Pakistan)",
+    "ta": "Tiếng Tamil",
+    "te": "Tiếng Telugu",
+    "kn": "Tiếng Kannada"
   },
   "footer": {
     "appVersion": "Phiên bản ứng dụng",
@@ -195,6 +252,7 @@
     "new": "Hồ sơ mới",
     "newName": "Tên hồ sơ mới",
     "rename": "Đổi tên",
+    "renameLabel": "Tên mới cho ngăn xếp",
     "selectAria": "Chọn hồ sơ",
     "selectPlaceholder": "Chọn…"
   },

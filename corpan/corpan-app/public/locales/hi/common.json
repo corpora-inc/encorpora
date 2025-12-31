@@ -2,14 +2,14 @@
   "$schema": "./../locale.schema.json",
   "languages": {
     "en": "अंग्रेज़ी",
-    "koPolite": "कोरियाई (औपचारिक)",
+    "ko-polite": "कोरियाई (औपचारिक)",
     "es": "स्पेनिश",
     "fr": "फ़्रेंच",
     "de": "जर्मन",
-    "ptBR": "पुर्तगाली (ब्राज़ील)",
+    "pt-BR": "पुर्तगाली (ब्राज़ील)",
     "ja": "जापानी",
-    "zhHans": "चीनी (सरलीकृत)",
-    "zhHant": "चीनी (पारंपरिक)",
+    "zh-Hans": "चीनी (सरलीकृत)",
+    "zh-Hant": "चीनी (पारंपरिक)",
     "ar": "अरबी",
     "ru": "रूसी",
     "it": "इतालवी",
@@ -21,7 +21,15 @@
     "bn": "बंगाली",
     "th": "थाई",
     "id": "इंडोनेशियाई",
-    "tr": "तुर्की"
+    "tr": "तुर्की",
+    "ta": "तमिल",
+    "te": "तेलुगु",
+    "kn": "कन्नड़",
+    "mr": "मराठी",
+    "gu": "गुजराती",
+    "ur": "उर्दू",
+    "pa-Guru": "पंजाबी (गुरमुखी)",
+    "pa-Arab": "पंजाबी (शाहमुखी)"
   },
   "categories": {
     "travel": "यात्रा",
@@ -41,6 +49,7 @@
   "settings": {
     "addMoreLanguages": "अधिक भाषाएँ जोड़ें",
     "selectedLanguages": "चयनित भाषाएँ",
+    "removeLanguage": "भाषा हटाएं",
     "settings": "सेटिंग्स",
     "adjustToYourPreferences": "अपनी पसंद के अनुसार समायोजित करें",
     "speechRate": "भाषण गति",
@@ -59,7 +68,7 @@
     "small": "छोटा",
     "medium": "मध्यम",
     "large": "बड़ा",
-    "extraLarge": "बहुत बड़ा",
+    "extra-large": "बहुत बड़ा",
     "testTts": "नीचे दिए गए बटनों से अपनी TTS सेटिंग्स जाँचें:",
     "showRomanization": "रोमन लिप्यंतरण दिखाएँ"
   },
@@ -80,15 +89,45 @@
     "openTTSSetup": "TTS सेटिंग्स खोलें",
     "welcomeFollowUp": "जुड़ने के लिए धन्यवाद — समुदाय में मिलते हैं!",
     "learningStepTitle": "सीखना",
+    "tts": "पाठ से वाक्",
     "languageOrderTipTitle": "टिप",
     "languageOrderTipBody": "सबसे नीचे वाली भाषा ऐप की UI भाषा बन जाती है। कभी भी बदलने के लिए खींचें।",
     "ttsOsTipTitle": "टिप",
     "ttsOsTipAndroid": "सबसे अच्छा: Google TTS इस्तेमाल करें। Samsung TTS Corpán में काम नहीं करता।",
-    "ttsOsTipIOS": "Settings → Accessibility में Read & Speak / Spoken Content ढूँढें और voices डाउनलोड करें।",
-    "ttsOsTipMac": "System Settings → Accessibility में Spoken Content ढूँढें और voices डाउनलोड करें।",
+    "ttsOsTipIOS": "Settings → Accessibility में Spoken Content ढूँढें और आवाज़ें डाउनलोड करें। नोट: Apple हर भाषा के लिए आवाज़ें नहीं देता। अगर अपग्रेड से मदद नहीं मिलती, तो Apple के Feedback ऐप से सहायता माँगें।",
+    "ttsOsTipMac": "System Settings → Accessibility में Spoken Content ढूँढें और आवाज़ें डाउनलोड करें। नोट: Apple हर भाषा के लिए आवाज़ें नहीं देता। अगर अपग्रेड से मदद नहीं मिलती, तो Apple के Feedback ऐप से सहायता माँगें।",
     "ttsOsTipWindows": "Settings में speech voices इंस्टॉल करें, फिर यहाँ लौटें।",
     "ttsOsTipOther": "डिवाइस Settings में speech voices इंस्टॉल करें, फिर यहाँ लौटें।",
-    "installVoicesAndroid": "आवाज़ें इंस्टॉल करें"
+    "installVoicesAndroid": "आवाज़ें इंस्टॉल करें",
+    "learning": "भाषाएँ सीखना",
+    "ttsStepTitle": "टेक्स्ट-टू-स्पीच",
+    "socials": "फॉलो करें और जुड़ें",
+    "socialsStepTitle": "सोशल मीडिया",
+    "noVoices": "कोई आवाज़ नहीं",
+    "noVoicesHint": "इस भाषा को सक्षम करने के लिए आवाज़ें इंस्टॉल करें।",
+    "sendAppleFeedback": "Apple फ़ीडबैक भेजें"
+  },
+  "socials": {
+    "youtube": {
+      "cta": "देखें",
+      "title": "YouTube",
+      "desc": "ट्यूटोरियल, डेमो और पर्दे के पीछे की बातें।"
+    },
+    "github": {
+      "cta": "स्टार करें और योगदान दें",
+      "title": "GitHub",
+      "desc": "ओपन सोर्स। PRs का स्वागत है!"
+    },
+    "blog": {
+      "cta": "पढ़ें",
+      "title": "Free2z Blog",
+      "desc": "अपडेट्स, रोडमैप और गहराई से जानकारी।"
+    },
+    "website": {
+      "cta": "देखें",
+      "title": "encorpora.io",
+      "desc": "दस्तावेज़ और समुदाय वाला मुख्य साइट।"
+    }
   },
   "common": {
     "loading": "लोड हो रहा है...",
@@ -175,7 +214,25 @@
     "bn": "बंगाली",
     "th": "थाई",
     "id": "इंडोनेशियाई",
-    "tr": "तुर्की"
+    "tr": "तुर्की",
+    "bn-IN": "बंगाली (भारत)",
+    "te-IN": "तेलुगु (भारत)",
+    "kn-IN": "कन्नड़ (भारत)",
+    "mr": "मराठी",
+    "mr-IN": "मराठी (भारत)",
+    "gu": "गुजराती",
+    "gu-IN": "गुजराती (भारत)",
+    "pa": "पंजाबी",
+    "pa-IN": "पंजाबी (भारत)",
+    "pa-Guru": "पंजाबी (गुरमुखी)",
+    "pa-Guru-IN": "पंजाबी (गुरमुखी, भारत)",
+    "pa-Arab": "पंजाबी (शाहमुखी)",
+    "ur": "उर्दू",
+    "ur-IN": "उर्दू (भारत)",
+    "ur-PK": "उर्दू (पाकिस्तान)",
+    "ta": "तमिल",
+    "te": "तेलुगु",
+    "kn": "कन्नड़"
   },
   "footer": {
     "appVersion": "ऐप संस्करण",
@@ -195,6 +252,7 @@
     "new": "नई प्रोफ़ाइल",
     "newName": "नई प्रोफ़ाइल का नाम",
     "rename": "नाम बदलें",
+    "renameLabel": "स्टैक के लिए नया नाम",
     "selectAria": "प्रोफ़ाइल चुनें",
     "selectPlaceholder": "चुनें…"
   },

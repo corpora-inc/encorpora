@@ -14,12 +14,21 @@ type Props = {
     storageKey?: string;
 
     /**
+     * Optional action button to show below the body text.
+     */
+    action?: {
+        label: string;
+        onClick: () => void;
+        icon?: React.ReactNode;
+    };
+
+    /**
      * Layout tweaks (kept minimal so tips look identical everywhere).
      */
     className?: string; // wrapper spacing override if needed (rare)
 };
 
-export function DismissableTip({ title, body, storageKey, className }: Props) {
+export function DismissableTip({ title, body, storageKey, action, className }: Props) {
     const reactId = useId();
     const noteId = `tip-${reactId}`;
 
@@ -74,7 +83,7 @@ export function DismissableTip({ title, body, storageKey, className }: Props) {
                 "origin-top transition-all duration-500 ease-out",
                 closing
                     ? "opacity-0 scale-95 -translate-y-1 max-h-0 py-0 mb-0"
-                    : "opacity-100 scale-100 max-h-40",
+                    : "opacity-100 scale-100", // removed max-h-40 to let tip box grow naturally
                 className ?? "",
             ].join(" ")}
         >
@@ -108,6 +117,18 @@ export function DismissableTip({ title, body, storageKey, className }: Props) {
                     >
                         {body}
                     </div>
+
+                    {action && (
+                        <button
+                            type="button"
+                            onClick={action.onClick}
+                            className="mt-2 inline-flex items-center gap-1.5 rounded-md border border-blue-300 bg-blue-50 px-3 py-1.5 text-xs font-medium text-blue-900 shadow-sm transition hover:bg-blue-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 cursor-pointer"
+                            aria-label={action.label}
+                        >
+                            {action.icon}
+                            <span>{action.label}</span>
+                        </button>
+                    )}
                 </div>
             </div>
         </div>

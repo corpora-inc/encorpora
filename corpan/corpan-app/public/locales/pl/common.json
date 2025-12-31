@@ -2,14 +2,14 @@
   "$schema": "./../locale.schema.json",
   "languages": {
     "en": "Angielski",
-    "koPolite": "Koreański (grzeczny)",
+    "ko-polite": "Koreański (grzeczny)",
     "es": "Hiszpański",
     "fr": "Francuski",
     "de": "Niemiecki",
-    "ptBR": "Portugalski (Brazylia)",
+    "pt-BR": "Portugalski (Brazylia)",
     "ja": "Japoński",
-    "zhHans": "Chiński (uproszczony)",
-    "zhHant": "Chiński (tradycyjny)",
+    "zh-Hans": "Chiński (uproszczony)",
+    "zh-Hant": "Chiński (tradycyjny)",
     "ar": "Arabski",
     "ru": "Rosyjski",
     "it": "Włoski",
@@ -21,7 +21,15 @@
     "bn": "Bengalski",
     "th": "Tajski",
     "id": "Indonezyjski",
-    "tr": "Turecki"
+    "tr": "Turecki",
+    "ta": "Tamilski",
+    "te": "Telugu",
+    "kn": "Kannada",
+    "mr": "Marathi",
+    "gu": "Gudżarati",
+    "ur": "Urdu",
+    "pa-Guru": "Pendżabski (Gurmukhi)",
+    "pa-Arab": "Pendżabski (Shahmukhi)"
   },
   "categories": {
     "travel": "Podróże",
@@ -41,6 +49,7 @@
   "settings": {
     "addMoreLanguages": "Dodaj więcej języków",
     "selectedLanguages": "Wybrane języki",
+    "removeLanguage": "Usuń język",
     "settings": "Ustawienia",
     "adjustToYourPreferences": "Dostosuj do swoich preferencji",
     "speechRate": "Tempo mowy",
@@ -59,7 +68,7 @@
     "small": "Mały",
     "medium": "Średni",
     "large": "Duży",
-    "extraLarge": "Bardzo duży",
+    "extra-large": "Bardzo duży",
     "testTts": "Przetestuj ustawienia TTS, klikając przyciski poniżej:",
     "showRomanization": "Pokaż romanizację"
   },
@@ -80,15 +89,45 @@
     "openTTSSetup": "Otwórz ustawienia TTS",
     "welcomeFollowUp": "Dziękujemy za dołączenie — do zobaczenia w społeczności!",
     "learningStepTitle": "Nauka",
+    "tts": "Zamiana tekstu na mowę",
     "languageOrderTipTitle": "Wskazówka",
     "languageOrderTipBody": "Język na dole staje się językiem interfejsu. Przeciągnij, aby zmienić w dowolnym momencie.",
     "ttsOsTipTitle": "Wskazówka",
     "ttsOsTipAndroid": "Najlepiej działa Google TTS. Samsung TTS nie działa w Corpán.",
-    "ttsOsTipIOS": "W Ustawienia → Dostępność znajdź Czytanie i mówienie / Treści mówione i pobierz głosy.",
-    "ttsOsTipMac": "W Ustawieniach systemowych → Dostępność otwórz Treści mówione i pobierz głosy.",
+    "ttsOsTipIOS": "W Settings → Accessibility znajdź Spoken Content i pobierz głosy. Uwaga: Apple nie udostępnia głosów dla każdego języka. Jeśli aktualizacja nie pomaga, poproś o wsparcie przez aplikację Feedback Apple.",
+    "ttsOsTipMac": "W System Settings → Accessibility znajdź Spoken Content i pobierz głosy. Uwaga: Apple nie udostępnia głosów dla każdego języka. Jeśli aktualizacja nie pomaga, poproś o wsparcie przez aplikację Feedback Apple.",
     "ttsOsTipWindows": "Zainstaluj głosy w Ustawieniach i wróć tutaj.",
     "ttsOsTipOther": "Zainstaluj głosy w ustawieniach urządzenia i wróć tutaj.",
-    "installVoicesAndroid": "Zainstaluj głosy"
+    "installVoicesAndroid": "Zainstaluj głosy",
+    "learning": "Nauka języków",
+    "ttsStepTitle": "Tekst na mowę",
+    "socials": "Obserwuj i łącz się",
+    "socialsStepTitle": "Media społecznościowe",
+    "noVoices": "Brak głosów",
+    "noVoicesHint": "Zainstaluj głosy, aby włączyć ten język.",
+    "sendAppleFeedback": "Wyślij opinię do Apple"
+  },
+  "socials": {
+    "youtube": {
+      "cta": "Oglądaj",
+      "title": "YouTube",
+      "desc": "Samouczki, dema i kulisy."
+    },
+    "github": {
+      "cta": "Dodaj gwiazdkę i współtwórz",
+      "title": "GitHub",
+      "desc": "Open source. PR-y mile widziane!"
+    },
+    "blog": {
+      "cta": "Czytaj",
+      "title": "Free2z Blog",
+      "desc": "Aktualizacje, mapa drogowa i głębokie analizy."
+    },
+    "website": {
+      "cta": "Odwiedź",
+      "title": "encorpora.io",
+      "desc": "Główna strona z dokumentacją i społecznością."
+    }
   },
   "common": {
     "loading": "Ładowanie...",
@@ -175,7 +214,25 @@
     "bn": "Bengalski",
     "th": "Tajski",
     "id": "Indonezyjski",
-    "tr": "Turecki"
+    "tr": "Turecki",
+    "bn-IN": "Bengalski (Indie)",
+    "te-IN": "Telugu (Indie)",
+    "kn-IN": "Kannada (Indie)",
+    "mr": "Marathi",
+    "mr-IN": "Marathi (Indie)",
+    "gu": "Gudżarati",
+    "gu-IN": "Gudżarati (Indie)",
+    "pa": "Pendżabski",
+    "pa-IN": "Pendżabski (Indie)",
+    "pa-Guru": "Pendżabski (Gurmukhi)",
+    "pa-Guru-IN": "Pendżabski (Gurmukhi, Indie)",
+    "pa-Arab": "Pendżabski (Shahmukhi)",
+    "ur": "Urdu",
+    "ur-IN": "Urdu (Indie)",
+    "ur-PK": "Urdu (Pakistan)",
+    "ta": "Tamilski",
+    "te": "Telugu",
+    "kn": "Kannada"
   },
   "footer": {
     "appVersion": "Wersja aplikacji",
@@ -195,6 +252,7 @@
     "new": "Nowy profil",
     "newName": "Nazwa nowego profilu",
     "rename": "Zmień nazwę",
+    "renameLabel": "Nowa nazwa stosu",
     "selectAria": "Wybierz profil",
     "selectPlaceholder": "Wybierz…"
   },

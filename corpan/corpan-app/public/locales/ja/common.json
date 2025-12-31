@@ -2,14 +2,14 @@
   "$schema": "./../locale.schema.json",
   "languages": {
     "en": "英語",
-    "koPolite": "韓国語（丁寧）",
+    "ko-polite": "韓国語（丁寧）",
     "es": "スペイン語",
     "fr": "フランス語",
     "de": "ドイツ語",
-    "ptBR": "ポルトガル語（ブラジル）",
+    "pt-BR": "ポルトガル語（ブラジル）",
     "ja": "日本語",
-    "zhHans": "中国語（簡体字）",
-    "zhHant": "中国語（繁体字）",
+    "zh-Hans": "中国語（簡体字）",
+    "zh-Hant": "中国語（繁体字）",
     "ar": "アラビア語",
     "ru": "ロシア語",
     "it": "イタリア語",
@@ -21,7 +21,15 @@
     "bn": "ベンガル語",
     "th": "タイ語",
     "id": "インドネシア語",
-    "tr": "トルコ語"
+    "tr": "トルコ語",
+    "ta": "タミル語",
+    "te": "テルグ語",
+    "kn": "カンナダ語",
+    "mr": "マラーティー語",
+    "gu": "グジャラート語",
+    "ur": "ウルドゥー語",
+    "pa-Guru": "パンジャーブ語（グルムキー文字）",
+    "pa-Arab": "パンジャーブ語（シャームキー文字）"
   },
   "categories": {
     "travel": "旅行",
@@ -41,6 +49,7 @@
   "settings": {
     "addMoreLanguages": "言語を追加",
     "selectedLanguages": "選択された言語",
+    "removeLanguage": "言語を削除",
     "settings": "設定",
     "adjustToYourPreferences": "お好みに合わせて調整",
     "speechRate": "話す速さ",
@@ -59,7 +68,7 @@
     "small": "小",
     "medium": "中",
     "large": "大",
-    "extraLarge": "特大",
+    "extra-large": "特大",
     "testTts": "下のボタンを押してTTS設定をテストしてください：",
     "showRomanization": "ローマ字表記を表示"
   },
@@ -80,15 +89,45 @@
     "openTTSSetup": "TTS設定を開く",
     "welcomeFollowUp": "ご参加ありがとうございます。コミュニティでお会いしましょう！",
     "learningStepTitle": "学習",
+    "tts": "テキスト読み上げ",
     "languageOrderTipTitle": "ヒント",
     "languageOrderTipBody": "一番下の言語がアプリの表示言語になります。ドラッグしていつでも変更できます。",
     "ttsOsTipTitle": "ヒント",
     "ttsOsTipAndroid": "最適: Google の読み上げを使用。Samsung TTS は Corpán では動作しません。",
-    "ttsOsTipIOS": "「設定」→「アクセシビリティ」で「読み上げ/話す」または「読み上げコンテンツ」を探し、音声をダウンロード。",
-    "ttsOsTipMac": "「システム設定」→「アクセシビリティ」で「読み上げコンテンツ」を開き、音声をダウンロード。",
+    "ttsOsTipIOS": "設定 → アクセシビリティから「読み上げコンテンツ」を探して音声をダウンロードしてください。注：Appleはすべての言語に音声を提供していません。アップグレードしても改善しない場合は、AppleのフィードバックAppからサポートをリクエストしてください。",
+    "ttsOsTipMac": "システム設定 → アクセシビリティから「読み上げコンテンツ」を探して音声をダウンロードしてください。注：Appleはすべての言語に音声を提供していません。アップグレードしても改善しない場合は、AppleのフィードバックAppからサポートをリクエストしてください。",
     "ttsOsTipWindows": "「設定」で音声を追加/インストールしてから戻ってください。",
     "ttsOsTipOther": "端末の設定で音声を追加/インストールしてから戻ってください。",
-    "installVoicesAndroid": "音声を追加"
+    "installVoicesAndroid": "音声を追加",
+    "learning": "言語学習",
+    "ttsStepTitle": "テキスト読み上げ",
+    "socials": "フォロー＆つながる",
+    "socialsStepTitle": "ソーシャル",
+    "noVoices": "音声なし",
+    "noVoicesHint": "この言語を有効にするには音声をインストールしてください。",
+    "sendAppleFeedback": "Appleにフィードバックを送る"
+  },
+  "socials": {
+    "youtube": {
+      "cta": "見る",
+      "title": "YouTube",
+      "desc": "チュートリアル、デモ、舞台裏。"
+    },
+    "github": {
+      "cta": "スターをつけて貢献",
+      "title": "GitHub",
+      "desc": "オープンソース。PRを歓迎します！"
+    },
+    "blog": {
+      "cta": "読む",
+      "title": "Free2z Blog",
+      "desc": "アップデート、ロードマップ、詳細解説。"
+    },
+    "website": {
+      "cta": "訪問",
+      "title": "encorpora.io",
+      "desc": "ドキュメントとコミュニティのメインサイト。"
+    }
   },
   "common": {
     "loading": "読み込み中...",
@@ -175,7 +214,25 @@
     "bn": "ベンガル語",
     "th": "タイ語",
     "id": "インドネシア語",
-    "tr": "トルコ語"
+    "tr": "トルコ語",
+    "bn-IN": "ベンガル語（インド）",
+    "te-IN": "テルグ語（インド）",
+    "kn-IN": "カンナダ語（インド）",
+    "mr": "マラーティー語",
+    "mr-IN": "マラーティー語（インド）",
+    "gu": "グジャラート語",
+    "gu-IN": "グジャラート語（インド）",
+    "pa": "パンジャーブ語",
+    "pa-IN": "パンジャーブ語（インド）",
+    "pa-Guru": "パンジャーブ語（グルムキー文字）",
+    "pa-Guru-IN": "パンジャーブ語（グルムキー文字、インド）",
+    "pa-Arab": "パンジャーブ語（シャームキー文字）",
+    "ur": "ウルドゥー語",
+    "ur-IN": "ウルドゥー語（インド）",
+    "ur-PK": "ウルドゥー語（パキスタン）",
+    "ta": "タミル語",
+    "te": "テルグ語",
+    "kn": "カンナダ語"
   },
   "footer": {
     "appVersion": "アプリのバージョン",
@@ -195,6 +252,7 @@
     "new": "新しいプロフィール",
     "newName": "新しいプロフィール名",
     "rename": "名前を変更",
+    "renameLabel": "スタックの新しい名前",
     "selectAria": "プロフィールを選択",
     "selectPlaceholder": "選択…"
   },

@@ -1,5 +1,5 @@
 use std::fs;
-use std::path::{Path, PathBuf};
+use std::path::PathBuf;
 
 use serde::Deserialize;
 use tauri::{AppHandle, Manager, Runtime};
@@ -79,12 +79,4 @@ pub fn build_manifest_url(pack_id: &str) -> String {
     {
         format!("corpan-pack://localhost/{}/manifest.json", pack_id)
     }
-}
-
-pub fn safe_join(root: &Path, rel_path: &str) -> Option<PathBuf> {
-    if rel_path.contains("..") || rel_path.is_empty() {
-        return None;
-    }
-    let rel = rel_path.trim_start_matches('/');
-    Some(root.join(rel))
 }

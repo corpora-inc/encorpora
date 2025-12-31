@@ -14,6 +14,7 @@ i18n
   .init({
     fallbackLng: "en", // use 'en' if the user's language is not available
     debug: !import.meta.env.PROD,
+    load: "currentOnly", // only load the exact language code (e.g., "zh-Hans"), don't try base ("zh") first
 
     interpolation: {
       escapeValue: false, // not needed for react as it escapes by default

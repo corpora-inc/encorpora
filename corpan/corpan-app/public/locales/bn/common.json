@@ -2,14 +2,14 @@
   "$schema": "./../locale.schema.json",
   "languages": {
     "en": "ইংরেজি",
-    "koPolite": "কোরিয়ান (ভদ্ররূপ)",
+    "ko-polite": "কোরিয়ান (ভদ্ররূপ)",
     "es": "স্প্যানিশ",
     "fr": "ফরাসি",
     "de": "জার্মান",
-    "ptBR": "পর্তুগিজ (ব্রাজিল)",
+    "pt-BR": "পর্তুগিজ (ব্রাজিল)",
     "ja": "জাপানি",
-    "zhHans": "চীনা (সরলীকৃত)",
-    "zhHant": "চীনা (প্রচলিত)",
+    "zh-Hans": "চীনা (সরলীকৃত)",
+    "zh-Hant": "চীনা (প্রচলিত)",
     "ar": "আরবি",
     "ru": "রুশ",
     "it": "ইতালীয়",
@@ -21,7 +21,15 @@
     "bn": "বাংলা",
     "th": "থাই",
     "id": "ইন্দোনেশীয়",
-    "tr": "তুর্কি"
+    "tr": "তুর্কি",
+    "ta": "তামিল",
+    "te": "তেলুগু",
+    "kn": "কন্নড়",
+    "mr": "মারাঠি",
+    "gu": "গুজরাটি",
+    "ur": "উর্দু",
+    "pa-Guru": "পাঞ্জাবি (গুরুমুখী)",
+    "pa-Arab": "পাঞ্জাবি (শাহমুখী)"
   },
   "categories": {
     "travel": "ভ্রমণ",
@@ -41,6 +49,7 @@
   "settings": {
     "addMoreLanguages": "আরও ভাষা যোগ করুন",
     "selectedLanguages": "নির্বাচিত ভাষা",
+    "removeLanguage": "ভাষা সরান",
     "settings": "সেটিংস",
     "adjustToYourPreferences": "আপনার পছন্দ অনুযায়ী সামঞ্জস্য করুন",
     "speechRate": "বক্তৃতার গতি",
@@ -59,13 +68,13 @@
     "small": "ছোট",
     "medium": "মাঝারি",
     "large": "বড়",
-    "extraLarge": "অতিরিক্ত বড়",
+    "extra-large": "অতিরিক্ত বড়",
     "testTts": "নিচের বোতাম দিয়ে টিটিএস পরীক্ষা করুন:",
     "showRomanization": "রোমানাইজেশন দেখান"
   },
   "onboarding": {
     "welcome": "স্বাগতম",
-    "makePrimaryLanguage": "ইংরেজিকে আমার প্রাথমিক ভাষা করুন",
+    "makePrimaryLanguage": "বাংলাকে আমার প্রাথমিক ভাষা করুন",
     "canChangeLater": "আপনি পরে এটি পরিবর্তন করতে পারবেন।",
     "pickLanguagesToLearn": "শেখার জন্য ভাষা নির্বাচন করুন",
     "textToSpeechSetup": "টেক্সট-টু-স্পিচ সেটআপ",
@@ -80,15 +89,45 @@
     "openTTSSetup": "টিটিএস সেটিংস খুলুন",
     "welcomeFollowUp": "যোগ দেওয়ার জন্য ধন্যবাদ—কমিউনিটিতে দেখা হবে!",
     "learningStepTitle": "শেখা",
+    "tts": "টেক্সট-টু-স্পিচ",
     "languageOrderTipTitle": "টিপ",
     "languageOrderTipBody": "সবচেয়ে নিচের ভাষাই অ্যাপের UI ভাষা হবে। যেকোনো সময় বদলাতে টেনে নিন।",
     "ttsOsTipTitle": "টিপ",
     "ttsOsTipAndroid": "সবচেয়ে ভালো: Google TTS ব্যবহার করুন। Samsung TTS Corpán-এ কাজ করে না।",
-    "ttsOsTipIOS": "Settings → Accessibility এ Read & Speak / Spoken Content খুঁজে ভয়েস ডাউনলোড করুন।",
-    "ttsOsTipMac": "System Settings → Accessibility এ Spoken Content খুঁজে ভয়েস ডাউনলোড করুন।",
+    "ttsOsTipIOS": "Settings → Accessibility-তে Spoken Content খুঁজুন এবং ভয়েস ডাউনলোড করুন। নোট: Apple সব ভাষার জন্য ভয়েস দেয় না। আপগ্রেড করেও কাজ না হলে Apple's Feedback অ্যাপে সাপোর্ট চান।",
+    "ttsOsTipMac": "System Settings → Accessibility-তে Spoken Content খুঁজুন এবং ভয়েস ডাউনলোড করুন। নোট: Apple সব ভাষার জন্য ভয়েস দেয় না। আপগ্রেড করেও কাজ না হলে Apple's Feedback অ্যাপে সাপোর্ট চান।",
     "ttsOsTipWindows": "Settings-এ speech voices ইনস্টল করে এখানে ফিরে আসুন।",
     "ttsOsTipOther": "ডিভাইস Settings-এ speech voices ইনস্টল করে এখানে ফিরে আসুন।",
-    "installVoicesAndroid": "ভয়েস ইনস্টল করুন"
+    "installVoicesAndroid": "ভয়েস ইনস্টল করুন",
+    "learning": "ভাষা শেখা",
+    "ttsStepTitle": "টেক্সট-টু-স্পিচ",
+    "socials": "ফলো ও সংযুক্ত হন",
+    "socialsStepTitle": "সোশ্যাল মিডিয়া",
+    "noVoices": "কোনো ভয়েস নেই",
+    "noVoicesHint": "এই ভাষা চালু করতে ভয়েস ইনস্টল করুন।",
+    "sendAppleFeedback": "Apple-কে ফিডব্যাক পাঠান"
+  },
+  "socials": {
+    "youtube": {
+      "cta": "দেখুন",
+      "title": "YouTube",
+      "desc": "টিউটোরিয়াল, ডেমো আর পর্দার আড়ালের গল্প।"
+    },
+    "github": {
+      "cta": "স্টার ও কন্ট্রিবিউট করুন",
+      "title": "GitHub",
+      "desc": "ওপেন সোর্স। PR স্বাগত!"
+    },
+    "blog": {
+      "cta": "পড়ুন",
+      "title": "Free2z Blog",
+      "desc": "আপডেট, রোডম্যাপ আর গভীর বিশ্লেষণ।"
+    },
+    "website": {
+      "cta": "ভিজিট করুন",
+      "title": "encorpora.io",
+      "desc": "ডকুমেন্টেশন ও কমিউনিটি সহ মূল সাইট।"
+    }
   },
   "common": {
     "loading": "লোড হচ্ছে...",
@@ -175,7 +214,25 @@
     "bn": "বাংলা",
     "th": "থাই",
     "id": "ইন্দোনেশীয়",
-    "tr": "তুর্কি"
+    "tr": "তুর্কি",
+    "bn-IN": "বাংলা (ভারত)",
+    "te-IN": "তেলুগু (ভারত)",
+    "kn-IN": "কন্নড় (ভারত)",
+    "mr": "মারাঠি",
+    "mr-IN": "মারাঠি (ভারত)",
+    "gu": "গুজরাটি",
+    "gu-IN": "গুজরাটি (ভারত)",
+    "pa": "পাঞ্জাবি",
+    "pa-IN": "পাঞ্জাবি (ভারত)",
+    "pa-Guru": "পাঞ্জাবি (গুরুমুখী)",
+    "pa-Guru-IN": "পাঞ্জাবি (গুরুমুখী, ভারত)",
+    "pa-Arab": "পাঞ্জাবি (শাহমুখী)",
+    "ur": "উর্দু",
+    "ur-IN": "উর্দু (ভারত)",
+    "ur-PK": "উর্দু (পাকিস্তান)",
+    "ta": "তামিল",
+    "te": "তেলুগু",
+    "kn": "কন্নড়"
   },
   "footer": {
     "appVersion": "অ্যাপ সংস্করণ",
@@ -195,6 +252,7 @@
     "new": "নতুন স্ট্যাক",
     "newName": "নতুন স্ট্যাকের নাম",
     "rename": "নাম পরিবর্তন করুন",
+    "renameLabel": "স্ট্যাকের জন্য নতুন নাম",
     "selectAria": "একটি স্ট্যাক নির্বাচন করুন",
     "selectPlaceholder": "নির্বাচন করুন…"
   },

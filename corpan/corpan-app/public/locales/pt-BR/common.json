@@ -2,14 +2,14 @@
   "$schema": "./../locale.schema.json",
   "languages": {
     "en": "Inglês",
-    "koPolite": "Coreano (Polido)",
+    "ko-polite": "Coreano (Polido)",
     "es": "Espanhol",
     "fr": "Francês",
     "de": "Alemão",
-    "ptBR": "Português (Brasil)",
+    "pt-BR": "Português (Brasil)",
     "ja": "Japonês",
-    "zhHans": "Chinês (Simplificado)",
-    "zhHant": "Chinês (Tradicional)",
+    "zh-Hans": "Chinês (Simplificado)",
+    "zh-Hant": "Chinês (Tradicional)",
     "ar": "Árabe",
     "ru": "Russo",
     "it": "Italiano",
@@ -21,7 +21,15 @@
     "bn": "Bengalês",
     "th": "Tailandês",
     "id": "Indonésio",
-    "tr": "Turco"
+    "tr": "Turco",
+    "ta": "Tâmil",
+    "te": "Télugo",
+    "kn": "Canarês",
+    "mr": "Marati",
+    "gu": "Guzerate",
+    "ur": "Urdu",
+    "pa-Guru": "Punjabi (Gurmuqui)",
+    "pa-Arab": "Punjabi (Shahmukhi)"
   },
   "categories": {
     "travel": "Viagem",
@@ -41,6 +49,7 @@
   "settings": {
     "addMoreLanguages": "Adicionar mais idiomas",
     "selectedLanguages": "Idiomas selecionados",
+    "removeLanguage": "Remover idioma",
     "settings": "Configurações",
     "adjustToYourPreferences": "Ajustar às suas preferências",
     "speechRate": "Velocidade da fala",
@@ -59,7 +68,7 @@
     "small": "Pequeno",
     "medium": "Médio",
     "large": "Grande",
-    "extraLarge": "Muito grande",
+    "extra-large": "Muito grande",
     "testTts": "Teste suas configurações de TTS clicando nos botões abaixo:",
     "showRomanization": "Mostrar romanização"
   },
@@ -80,15 +89,45 @@
     "openTTSSetup": "Abrir configurações de TTS",
     "welcomeFollowUp": "Obrigado por se juntar a nós — te vemos na comunidade!",
     "learningStepTitle": "Aprender",
+    "tts": "Texto para fala",
     "languageOrderTipTitle": "Dica",
     "languageOrderTipBody": "O idioma de baixo vira o idioma do app. Arraste para mudar quando quiser.",
     "ttsOsTipTitle": "Dica",
     "ttsOsTipAndroid": "Para melhores resultados, use o TTS do Google. O Samsung TTS não funciona no Corpán.",
-    "ttsOsTipIOS": "Em Ajustes → Acessibilidade, procure Ler e Falar / Conteúdo Falado e baixe vozes.",
-    "ttsOsTipMac": "Em Ajustes do Sistema → Acessibilidade, procure Conteúdo Falado e baixe vozes.",
+    "ttsOsTipIOS": "Em Ajustes → Acessibilidade, encontre Conteúdo Falado e baixe vozes. Nota: a Apple não fornece vozes para todos os idiomas. Se atualizar não ajudar, solicite suporte pelo app Feedback da Apple.",
+    "ttsOsTipMac": "Em Ajustes do Sistema → Acessibilidade, encontre Conteúdo Falado e baixe vozes. Nota: a Apple não fornece vozes para todos os idiomas. Se atualizar não ajudar, solicite suporte pelo app Feedback da Apple.",
     "ttsOsTipWindows": "Em Configurações, instale vozes de fala e volte aqui.",
     "ttsOsTipOther": "Nas configurações do dispositivo, instale vozes de fala e volte aqui.",
-    "installVoicesAndroid": "Instalar vozes"
+    "installVoicesAndroid": "Instalar vozes",
+    "learning": "Aprendendo idiomas",
+    "ttsStepTitle": "Texto para fala",
+    "socials": "Seguir e conectar",
+    "socialsStepTitle": "Redes sociais",
+    "noVoices": "Sem vozes",
+    "noVoicesHint": "Instale vozes para ativar este idioma.",
+    "sendAppleFeedback": "Enviar feedback à Apple"
+  },
+  "socials": {
+    "youtube": {
+      "cta": "Assistir",
+      "title": "YouTube",
+      "desc": "Tutoriais, demos e bastidores."
+    },
+    "github": {
+      "cta": "Favoritar e contribuir",
+      "title": "GitHub",
+      "desc": "Código aberto. PRs bem-vindos!"
+    },
+    "blog": {
+      "cta": "Ler",
+      "title": "Free2z Blog",
+      "desc": "Atualizações, roteiro e análises profundas."
+    },
+    "website": {
+      "cta": "Visitar",
+      "title": "encorpora.io",
+      "desc": "Site principal com docs e comunidade."
+    }
   },
   "common": {
     "loading": "Carregando...",
@@ -175,7 +214,25 @@
     "bn": "Bengalês",
     "th": "Tailandês",
     "id": "Indonésio",
-    "tr": "Turco"
+    "tr": "Turco",
+    "bn-IN": "Bengalês (Índia)",
+    "te-IN": "Télugo (Índia)",
+    "kn-IN": "Canarês (Índia)",
+    "mr": "Marati",
+    "mr-IN": "Marati (Índia)",
+    "gu": "Guzerate",
+    "gu-IN": "Guzerate (Índia)",
+    "pa": "Punjabi",
+    "pa-IN": "Punjabi (Índia)",
+    "pa-Guru": "Punjabi (Gurmuqui)",
+    "pa-Guru-IN": "Punjabi (Gurmuqui, Índia)",
+    "pa-Arab": "Punjabi (Shahmukhi)",
+    "ur": "Urdu",
+    "ur-IN": "Urdu (Índia)",
+    "ur-PK": "Urdu (Paquistão)",
+    "ta": "Tâmil",
+    "te": "Telugu",
+    "kn": "Kannada"
   },
   "footer": {
     "appVersion": "Versão do aplicativo",
@@ -195,6 +252,7 @@
     "new": "Novo perfil",
     "newName": "Nome do novo perfil",
     "rename": "Renomear",
+    "renameLabel": "Novo nome para pilha",
     "selectAria": "Selecionar um perfil",
     "selectPlaceholder": "Escolher…"
   },
@@ -209,7 +267,7 @@
     "feedbackButton": "Enviar feedback no GitHub"
   },
   "packs": {
-    "title": "Packs",
+    "title": "Pacotes",
     "available": "Packs disponíveis",
     "emptyAvailable": "Ainda não há packs.",
     "installed": "Packs instalados",
