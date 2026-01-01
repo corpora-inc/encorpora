@@ -3,11 +3,11 @@ import { useCallback, useRef } from "react";
 /**
  * Custom hook for scroll-based navigation between items.
  * Supports mouse wheel, trackpad, and touch swipe gestures.
- * 
+ *
  * @param onPrev - Callback to navigate to previous item
  * @param onNext - Callback to navigate to next item
  * @returns Event handlers for wheel and touch events
- * 
+ *
  * @example
  * const { handleWheel, handleTouchStart, handleTouchEnd } = useScrollNavigation(
  *   handlePrev,
@@ -16,21 +16,30 @@ import { useCallback, useRef } from "react";
  */
 export function useScrollNavigation(onPrev: () => void, onNext: () => void) {
     const scrollAccumulatorRef = useRef(0);
-    const lastScrollTimeRef = useRef(0);
-    const isNavigatingRef = useRef(false);
+    const lastWheelTimeRef = useRef(0);
+    const hasNavigatedInGestureRef = useRef(false);
     const touchStartRef = useRef<{ x: number; y: number } | null>(null);
 
     const SCROLL_THRESHOLD = 100; // pixels needed to trigger navigation
-    const NAVIGATION_COOLDOWN = 500; // ms cooldown between navigations
+    const GESTURE_TIMEOUT = 50; // ms pause to consider a new gesture
     const TOUCH_THRESHOLD = 50; // pixels for touch swipe
     const EDGE_EPSILON = 1; // tolerated distance from scroll edge
 
     const handleWheel = useCallback(
         (e: WheelEvent) => {
-            if (isNavigatingRef.current) return;
-
             const now = Date.now();
-            if (now - lastScrollTimeRef.current < NAVIGATION_COOLDOWN) return;
+            const timeSinceLastWheel = now - lastWheelTimeRef.current;
+
+            // New gesture detected after pause
+            if (timeSinceLastWheel > GESTURE_TIMEOUT) {
+                hasNavigatedInGestureRef.current = false;
+                scrollAccumulatorRef.current = 0;
+            }
+
+            lastWheelTimeRef.current = now;
+
+            // Already navigated in this gesture
+            if (hasNavigatedInGestureRef.current) return;
 
             const isVerticalScroll = Math.abs(e.deltaY) >= Math.abs(e.deltaX);
             const delta = isVerticalScroll ? e.deltaY : e.deltaX;
@@ -59,8 +68,7 @@ export function useScrollNavigation(onPrev: () => void, onNext: () => void) {
             scrollAccumulatorRef.current += delta;
 
             if (Math.abs(scrollAccumulatorRef.current) >= SCROLL_THRESHOLD) {
-                isNavigatingRef.current = true;
-                lastScrollTimeRef.current = now;
+                hasNavigatedInGestureRef.current = true;
 
                 if (scrollAccumulatorRef.current > 0) {
                     onNext();
@@ -69,9 +77,6 @@ export function useScrollNavigation(onPrev: () => void, onNext: () => void) {
                 }
 
                 scrollAccumulatorRef.current = 0;
-                setTimeout(() => {
-                    isNavigatingRef.current = false;
-                }, NAVIGATION_COOLDOWN);
             }
         },
         [onNext, onPrev]
@@ -89,10 +94,7 @@ export function useScrollNavigation(onPrev: () => void, onNext: () => void) {
             const start = touchStartRef.current;
             touchStartRef.current = null;
 
-            if (!start || isNavigatingRef.current) return;
-
-            const now = Date.now();
-            if (now - lastScrollTimeRef.current < NAVIGATION_COOLDOWN) return;
+            if (!start) return;
 
             const touchEnd = {
                 x: e.changedTouches[0].clientX,
@@ -127,18 +129,11 @@ export function useScrollNavigation(onPrev: () => void, onNext: () => void) {
             }
 
             if (Math.abs(delta) >= TOUCH_THRESHOLD) {
-                isNavigatingRef.current = true;
-                lastScrollTimeRef.current = now;
-
                 if (delta < 0) {
                     onNext();
                 } else {
                     onPrev();
                 }
-
-                setTimeout(() => {
-                    isNavigatingRef.current = false;
-                }, NAVIGATION_COOLDOWN);
             }
         },
         [onNext, onPrev]
