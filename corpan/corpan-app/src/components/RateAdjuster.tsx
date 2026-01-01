@@ -29,7 +29,7 @@ export function RateAdjuster() {
     return (
         <div className="mt-1 w-full">
             <div className="mb-3 font-semibold text-sm" dir={dir}>{t("settings.speechRate")}</div>
-            <div className="flex gap-2 mb-3" dir={dir}>
+            <div className="flex flex-wrap gap-2 mb-3" dir={dir}>
                 {BUTTONS.map(btn => (
                     <Button
                         key={btn.label}

@@ -1,11 +1,11 @@
 {
   "$schema": "https://schema.tauri.app/config/2",
   "productName": "corpan",
-  "version": "0.7.10",
+  "version": "0.8.5",
   "identifier": "com.corpora.corpan",
   "build": {
     "beforeDevCommand": "npm run dev",
-    "devUrl": "http://localhost:1420",
+    "devUrl": "http://127.0.0.1:1420",
     "beforeBuildCommand": "npm run build",
     "frontendDist": "../dist"
   },
@@ -13,8 +13,9 @@
     "windows": [
       {
         "title": "Corpán",
-        "width": 800,
-        "height": 600
+        "devtools": true,
+        "width": 1200,
+        "height": 1000
       }
     ],
     "security": {

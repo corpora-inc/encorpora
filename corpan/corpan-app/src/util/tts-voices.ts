@@ -28,15 +28,53 @@ export interface VoiceInfo {
     engine?: string | null; // Android engine package; otherwise null/undefined
 }
 
+type VoiceCacheKey = "nativeFirst" | "browserFirst";
+
+const DEFAULT_VOICES_CACHE_MS = 30_000;
+const voicesCache: Record<VoiceCacheKey, { voices: VoiceInfo[]; at: number } | null> = {
+    nativeFirst: null,
+    browserFirst: null,
+};
+const voicesInFlight: Record<VoiceCacheKey, Promise<VoiceInfo[]> | null> = {
+    nativeFirst: null,
+    browserFirst: null,
+};
+
 // ---------------------------- Env helpers -----------------------------
 
 type UAOS = "macos" | "ios" | "android" | "other";
 
+/**
+ * Detect OS with robust iOS detection for modern iPads
+ * iPadOS 13+ often reports as "Macintosh" to get desktop sites
+ */
 export function detectOSFromUA(): UAOS {
-    const ua = typeof navigator !== "undefined" ? navigator.userAgent : "";
-    if (/iPhone|iPad|iPod/i.test(ua)) return "ios";
-    if (/Android/i.test(ua)) return "android";
-    if (/Macintosh/i.test(ua) && !/Mobile\/\w+ Safari/i.test(ua)) return "macos";
+    if (typeof navigator === "undefined") return "other";
+
+    const ua = navigator.userAgent || "";
+    const platform = navigator.platform || "";
+    const maxTouchPoints = navigator.maxTouchPoints || 0;
+
+    // Check for explicit iOS identifiers (iPhone, iPod, legacy iPad)
+    if (/iPhone|iPod/i.test(ua) || /iPad/i.test(ua)) {
+        return "ios";
+    }
+
+    // Modern iPad detection: MacIntel + touch support = iPad masquerading as desktop
+    if (/Mac/i.test(platform) && maxTouchPoints > 1) {
+        return "ios";
+    }
+
+    // Android (excluding ChromeOS)
+    if (/Android/i.test(ua) && !/CrOS/i.test(ua)) {
+        return "android";
+    }
+
+    // Real macOS (Mac without touch, and not an iPad)
+    if (/Mac/i.test(platform) && maxTouchPoints <= 1) {
+        return "macos";
+    }
+
     return "other";
 }
 
@@ -80,7 +118,7 @@ export const BROWSER_TTS = (() => {
     }
 })();
 
-async function awaitBrowserVoices(timeoutMs = 600): Promise<SpeechSynthesisVoice[]> {
+async function awaitBrowserVoices(timeoutMs = 3000): Promise<SpeechSynthesisVoice[]> {
     if (!BROWSER_TTS) return [];
     const existing = window.speechSynthesis.getVoices();
     if (existing && existing.length > 0) return existing;
@@ -128,7 +166,7 @@ export async function listVoicesNative(): Promise<VoiceInfo[]> {
         const maybe = (res as unknown as { voices?: VoiceInfo[] })?.voices;
         return Array.isArray(maybe) ? maybe : [];
     } catch (e) {
-        console.warn("[TTS] list_voices failed; returning []", e);
+        // console.warn("[TTS] list_voices failed; returning []", e);
         return [];
     }
 }
@@ -139,7 +177,24 @@ export async function openTtsSettings(): Promise<boolean> {
         await invoke("plugin:tts|open_tts_settings");
         return true;
     } catch (e) {
-        console.warn("[TTS] open_tts_settings failed", e);
+        // console.warn("[TTS] open_tts_settings failed", e);
+        return false;
+    }
+}
+
+/** Open Apple's Feedback Assistant app (macOS/iOS). Returns true if successful. */
+export async function openAppleFeedback(): Promise<boolean> {
+    const os = detectOSFromUA();
+    if (os !== "macos" && os !== "ios") {
+        return false; // Only available on Apple platforms
+    }
+
+    try {
+        // Call our custom Tauri command that uses the 'open' command
+        await invoke("open_apple_feedback");
+        return true;
+    } catch (err) {
+        console.warn("[TTS] Failed to open Apple Feedback app:", err);
         return false;
     }
 }
@@ -194,14 +249,8 @@ export function sortVoicesWithLangBias(voices: VoiceInfo[], langBias?: string): 
 
 // --------------------------- Public API -------------------------------
 
-/**
- * High-level “get voices” API for the UI:
- * - Try native first (Android/iOS/macOS).
- * - On failure or empty, fallback to Web Speech (if available).
- * - **No filtering** here; optional `langBias` only affects ordering.
- */
-export async function getVoices(opts?: { langBias?: string; preferBrowser?: boolean }): Promise<VoiceInfo[]> {
-    const { langBias, preferBrowser } = opts ?? {};
+async function fetchVoices(opts?: { preferBrowser?: boolean }): Promise<VoiceInfo[]> {
+    const { preferBrowser } = opts ?? {};
 
     let voices: VoiceInfo[] = [];
     try {
@@ -216,7 +265,53 @@ export async function getVoices(opts?: { langBias?: string; preferBrowser?: bool
         // swallow and return whatever we have
     }
 
-    // DO NOT filter on the frontend. Only optionally sort with a language bias.
+    return voices;
+}
+
+export async function getVoicesCached(opts?: {
+    langBias?: string;
+    preferBrowser?: boolean;
+    maxAgeMs?: number;
+    forceRefresh?: boolean;
+}): Promise<VoiceInfo[]> {
+    const { langBias, preferBrowser, maxAgeMs, forceRefresh } = opts ?? {};
+    const key: VoiceCacheKey = preferBrowser ? "browserFirst" : "nativeFirst";
+    const now = Date.now();
+    const maxAge = maxAgeMs ?? DEFAULT_VOICES_CACHE_MS;
+
+    if (!forceRefresh) {
+        const cached = voicesCache[key];
+        if (cached && now - cached.at < maxAge) {
+            return sortVoicesWithLangBias(cached.voices, langBias);
+        }
+    }
+
+    const pending = voicesInFlight[key];
+    if (pending) {
+        const voices = await pending;
+        return sortVoicesWithLangBias(voices, langBias);
+    }
+
+    const request = fetchVoices({ preferBrowser }).then((voices) => {
+        voicesCache[key] = { voices, at: Date.now() };
+        voicesInFlight[key] = null;
+        return voices;
+    });
+    voicesInFlight[key] = request;
+
+    const voices = await request;
+    return sortVoicesWithLangBias(voices, langBias);
+}
+
+/**
+ * High-level “get voices” API for the UI:
+ * - Try native first (Android/iOS/macOS).
+ * - On failure or empty, fallback to Web Speech (if available).
+ * - **No filtering** here; optional `langBias` only affects ordering.
+ */
+export async function getVoices(opts?: { langBias?: string; preferBrowser?: boolean }): Promise<VoiceInfo[]> {
+    const { langBias, preferBrowser } = opts ?? {};
+    const voices = await fetchVoices({ preferBrowser });
     return sortVoicesWithLangBias(voices, langBias);
 }
 

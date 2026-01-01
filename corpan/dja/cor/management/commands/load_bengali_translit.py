@@ -1,4 +1,8 @@
 # cor/management/commands/load_bengali_translit.py
+"""
+Bengali ISO 15919 romanization at production quality.
+"""
+
 from __future__ import annotations
 
 import random

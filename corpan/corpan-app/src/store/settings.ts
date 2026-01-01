@@ -2,7 +2,7 @@
 
 import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
-import { RTL_LANGUAGES } from "./constants";
+import { isRTL } from "@/util/convert";
 
 export const ALL_LANGUAGES = [
     "en",
@@ -14,18 +14,41 @@ export const ALL_LANGUAGES = [
     "pl",
     "ru",
     "hu",
-    "ko-polite",
-    "zh-Hans",
-    "zh-Hant",
-    "ja",
-    "vi",
-    "bn",
-    "hi",
+    "tr",
     "ar",
     "fa",
+    "ur",
+    "pa-Arab",
+    "pa-Guru",
+    "hi",
+    "bn",
+    "mr",
+    "gu",
+    "kn",
+    "te",
+    "ta",
+    "th",
+    "vi",
+    "id",
+    "zh-Hans",
+    "zh-Hant",
+    "ko-polite",
+    "ja",
 ];
 
-export const ALL_LEVELS = ["A1", "A2", "B1", "B2", "C1", "C2"];
+export const COMING_SOON_LANGUAGES = [
+    "sw",
+    "he",
+    "el",
+    "my",
+    "km",
+    "yue-Hant-HK",
+] as const;
+
+export type ComingSoonLanguageCode = (typeof COMING_SOON_LANGUAGES)[number];
+
+
+export const ALL_LEVELS = ["A0", "A1", "A2", "B1", "B2", "C1", "C2"];
 
 export const ALL_DOMAINS = [
     "travel",
@@ -146,7 +169,7 @@ const nanoid = () =>
 const DEFAULT_SETTINGS: StackSettings = {
     languages: ["en", "es", "pt-BR", "fr", "it", "ko-polite"].reverse(),
     domains: [...ALL_DOMAINS],
-    levels: ["A1"],
+    levels: ["A0"],
     rate: 0.7,
     textSize: "medium",
     showRomanization: true,
@@ -391,8 +414,8 @@ export const useSettingsStore = create<MultiStackState>()(
                 primaryLang: () => get().languages[0],
 
                 dir: () => {
-                    const base = (get().languages[0] || "").split("-")[0];
-                    return RTL_LANGUAGES.includes(base as any) ? "rtl" : "ltr";
+                    const primaryLang = get().languages[0] || "";
+                    return isRTL(primaryLang) ? "rtl" : "ltr";
                 },
 
                 reset: () => {

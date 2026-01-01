@@ -27,6 +27,8 @@ def translate_and_save(
     close_old_connections()
     batch_start = time.time()
 
+    print(f"Loading LLM provider '{provider}'...")
+
     if provider == "local":
         # llm = load_llm_provider("local", completion_model="qwen3-30b-a3b-mlx")
         llm = load_llm_provider("local", completion_model="google/gemma-3-27b")
@@ -34,8 +36,15 @@ def translate_and_save(
         llm = load_llm_provider("xai")
     elif provider == "openai":
         llm = load_llm_provider("openai")
+    elif provider == "claude":
+        print("Requesting Claude LLM provider...")
+        llm = load_llm_provider("claude")
+        print("Loaded Claude LLM provider.")
     else:
+        print(f"ERROR: Unknown provider '{provider}'")
         raise ValueError(f"Unknown provider: {provider}")
+
+    print("!!!!!")
 
     print(f"  Translating {len(batch)} entries → '{lang}'...")
     tresp = translate_entry_batch(lang, batch, dry_run=dry_run, llm=llm)

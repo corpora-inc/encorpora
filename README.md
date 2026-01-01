@@ -1,9 +1,29 @@
-# Books
+# encorpora
 
-Welcome to Corpora Inc's repository of books. This collection serves as a broad and versatile resource intended to enhance educational experiences across various subjects and grade levels.
+![Corpán](corpan/corpan-app/src-tauri/icons/512x512.png)
 
-Contributions are welcome.
+**encorpora** (“on corpora”) is Corpora Inc’s experimental lab.
+The core software lives at `https://github.com/corpora-inc/corpora`.
+
+This repo houses experiments that depend on Corpora. When something becomes stable and broadly useful, it graduates to the main `corpora` monorepo.
+
+## Current focus
+
+- **Corpán app**: the main product experience.
+- **Corpán Games**: SDK experiments + new interactive learning formats.
+- **Hover Runner**: the reference game prototype.
+- **Books & publishing**
+
+## What’s next
+
+We’re actively exploring audio, video, ASR/STT, and richer media learning flows.
+Stay tuned and jump in.
+
+## Community
+
+- YouTube: https://www.youtube.com/@corp%C3%A1n1
+- Free2Z: https://free2z.cash/corpora
 
 ## Contact
 
-For queries or support, please reach out to the development team at team@encorpora.io. We hope this repository serves as a valuable tool in enhancing education.
+team@encorpora.io

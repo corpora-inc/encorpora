@@ -40,6 +40,21 @@ const SAMPLES: Record<string, string> = {
     pl: "Nie mogę się doczekać nauki z tobą.",
     hu: "Alig várom, hogy tanulhassak veled.",
     fa: "سبوس دارم با شما یاد بگیرم.",
+    th: "ฉันตั้งตารอที่จะได้เรียนรู้กับคุณ",
+    id: "Saya menantikan untuk belajar bersama Anda.",
+    ta: "நான் உங்களுடன் கற்கவும் ஆவலாக காத்திருக்கிறேன்.",
+    te: "నేను మీతో నేర్చుకోవడానికి ఎదురు చూస్తున్నాను.",
+    kn: "ನಾನು ನಿಮ್ಮೊಂದಿಗೆ ಕಲಿಯಲು ಎದುರು ನೋಡುತ್ತಿದ್ದೇನೆ.",
+    mr: "मी तुमच्यासोबत शिकण्यासाठी उत्सुक आहे.",
+    gu: "હું તમારી સાથે શીખવા માટે આતુર છું.",
+    "pa-Guru": "ਮੈਂ ਤੁਹਾਡੇ ਨਾਲ ਸਿੱਖਣ ਲਈ ਉਤਸੁਕ ਹਾਂ.",
+    "pa-Arab": "میں تہاڈے نال سکھن لئی اتسک ہاں.",
+    ur: "میں آپ کے ساتھ سیکھنے کا منتظر ہوں۔",
+};
+
+type ExtendedVoiceInfo = VoiceInfo & {
+    /** True if this voice is online-only according to the engine (or our heuristic). */
+    networkRequired?: boolean;
 };
 
 function uniqBy<T>(arr: T[], key: (x: T) => string): T[] {
@@ -78,7 +93,10 @@ export function OnboardingTTSInstructions() {
 
     const { t } = useTranslation();
     const os = useMemo(() => detectOSFromUA(), []);
-    const [voices, setVoices] = useState<VoiceInfo[] | null>(null);
+    const [voices, setVoices] = useState<ExtendedVoiceInfo[] | null>(null);
+
+    // By default we only show offline voices; user can opt in to online-only voices (Android only).
+    // const [includeNetworkVoices, setIncludeNetworkVoices] = useState(false);
 
     const visibleRef = useRef(true);
     const pollTimer = useRef<number | null>(null);
@@ -86,7 +104,8 @@ export function OnboardingTTSInstructions() {
     // Refresh voices (hot updates while user installs/enables packs)
     async function refresh() {
         const raw = await getVoices({});
-        const list = uniqBy(raw, (v) => `${v.id}|${v.language}`);
+        const cast = raw as ExtendedVoiceInfo[];
+        const list = uniqBy(cast, (v) => `${v.id}|${v.language}`);
         setVoices(list);
     }
 
@@ -99,7 +118,7 @@ export function OnboardingTTSInstructions() {
         document.addEventListener("visibilitychange", onVisibility);
         pollTimer.current = window.setInterval(() => {
             if (visibleRef.current) refresh();
-        }, 4000);
+        }, 5000);
         return () => {
             document.removeEventListener("visibilitychange", onVisibility);
             if (pollTimer.current) window.clearInterval(pollTimer.current);
@@ -146,29 +165,36 @@ export function OnboardingTTSInstructions() {
 
     const langs = languages;
     if (!langs || !langs.length) {
-        console.warn("OnboardingTTSInstructions: no languages selected");
         return null;
     }
 
-    function voicesForLang(code: string): VoiceInfo[] | null {
+    function voicesForLang(code: string): ExtendedVoiceInfo[] | null {
         if (!voices) return null;
         const compatible = voices.filter((v) => {
             const L = (v.language || "").toLowerCase();
             const c = code.toLowerCase();
-            return L === c || L.startsWith(c + "-") || baseLang(L) === baseLang(c);
+            const langMatches =
+                L === c || L.startsWith(c + "-") || baseLang(L) === baseLang(c);
+
+            if (!langMatches) return false;
+
+            // // On Android, optionally hide voices that we know/guess are online-only.
+            // if (os === "android" && !includeNetworkVoices && v.networkRequired === true) {
+            //     return false;
+            // }
+
+            return true;
         });
         const unique = uniqBy(compatible, (v) => `${v.id}|${v.language}`);
         return sortVoicesWithLangBias(unique, code);
     }
 
-    // --- Smart Select: enabled only if each language has >= 1 installed voice
+    // --- Smart Select: enabled only if each language has >= 1 installed voice (after filtering).
     const canSmartSelect = useMemo(
         () => langs.every((code) => (voicesForLang(code) || []).length > 0),
-        // voices in deps so this recomputes when the backend updates
-        [langs, voices]
+        [langs, voices, os]
     );
 
-    // helper stays the same
     function setSelectionForLang(code: string, desiredIds: string[]) {
         const current = new Set((voicePrefs[code]?.ids ?? []).slice());
         const desired = new Set(desiredIds);
@@ -182,9 +208,9 @@ export function OnboardingTTSInstructions() {
         }
     }
 
-    // FIX: select *all* installed voices for each language, not just the first
+    // Respect the same filter: this will select all offline voices by default,
+    // or offline + online voices if the toggle is enabled.
     function smartSelectAll() {
-        // if (!canSmartSelect) return;
         for (const code of langs) {
             const allIds = (voicesForLang(code) || []).map((v) => v.id);
             setSelectionForLang(code, allIds);
@@ -225,15 +251,14 @@ export function OnboardingTTSInstructions() {
                 style={{ paddingBottom: "calc(env(safe-area-inset-bottom) + 1.5rem)" }}
             >
                 <div className="mx-auto w-full max-w-5xl px-3">
+
                     {langs.map((code) => {
                         const list = voicesForLang(code);
                         const pref = voicePrefs[code] ?? { ids: [], mode: "cycle" as const };
                         const sample = sampleFor(code);
                         if (list === null) {
-                            return (
-                                null
-                            )
-                        };
+                            return null;
+                        }
 
                         return (
                             <OnboardingTTSInstructionsLanguageSection
