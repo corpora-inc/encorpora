@@ -70,7 +70,8 @@
     "large": "ದೊಡ್ಡ",
     "extra-large": "ಅತ್ಯಂತ ದೊಡ್ಡ",
     "testTts": "ಕೆಳಗಿನ ಬಟನ್‌ಗಳೊಂದಿಗೆ TTS ಅನ್ನು ಪರೀಕ್ಷಿಸಿ:",
-    "showRomanization": "ರೋಮನೀಕರಣವನ್ನು ತೋರಿಸಿ"
+    "showRomanization": "ರೋಮನೀಕರಣವನ್ನು ತೋರಿಸಿ",
+    "scrollNavigation": "ಸ್ಕ್ರೋಲ್ ನ್ಯಾವಿಗೇಶನ್"
   },
   "onboarding": {
     "welcome": "ಸ್ವಾಗತ",

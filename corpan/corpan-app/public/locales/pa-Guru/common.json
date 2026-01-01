@@ -70,7 +70,8 @@
     "large": "ਵੱਡਾ",
     "extra-large": "ਬਹੁਤ ਵੱਡਾ",
     "testTts": "ਹੇਠਲੇ ਬਟਨਾਂ ਨਾਲ TTS ਦੀ ਜਾਂਚ ਕਰੋ:",
-    "showRomanization": "ਰੋਮਨ ਲਿਪੀ ਦਿਖਾਓ"
+    "showRomanization": "ਰੋਮਨ ਲਿਪੀ ਦਿਖਾਓ",
+    "scrollNavigation": "ਸਕ੍ਰੋਲ ਨੈਵੀਗੇਸ਼ਨ"
   },
   "onboarding": {
     "welcome": "ਸਵਾਗਤ",

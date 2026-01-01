@@ -70,7 +70,8 @@
     "large": "بڑا",
     "extra-large": "بہت بڑا",
     "testTts": "نیچے والے بٹنوں سے TTS آزمائیں:",
-    "showRomanization": "رومنائزیشن دکھائیں"
+    "showRomanization": "رومنائزیشن دکھائیں",
+    "scrollNavigation": "اسکرول نیویگیشن"
   },
   "onboarding": {
     "welcome": "خوش آمدید",

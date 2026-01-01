@@ -262,6 +262,9 @@
         },
         "showRomanization": {
           "type": "string"
+        },
+        "scrollNavigation": {
+          "type": "string"
         }
       },
       "required": [
@@ -288,7 +291,8 @@
         "large",
         "extra-large",
         "testTts",
-        "showRomanization"
+        "showRomanization",
+        "scrollNavigation"
       ],
       "additionalProperties": false
     },

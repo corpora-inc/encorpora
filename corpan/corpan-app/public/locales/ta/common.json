@@ -70,7 +70,8 @@
     "large": "பெரியது",
     "extra-large": "மிகப் பெரியது",
     "testTts": "கீழே உள்ள பொத்தான்களுடன் TTS ஐ சோதிக்கவும்:",
-    "showRomanization": "ரோமானியமயமாக்கல் காட்டவும்"
+    "showRomanization": "ரோமானியமயமாக்கல் காட்டவும்",
+    "scrollNavigation": "ஸ்க்ரோல் வழிசெலுத்தல்"
   },
   "onboarding": {
     "welcome": "வரவேற்பு",
