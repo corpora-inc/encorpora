@@ -41,28 +41,12 @@ export function useScrollNavigation(onPrev: () => void, onNext: () => void) {
             // Already navigated in this gesture
             if (hasNavigatedInGestureRef.current) return;
 
-            const isVerticalScroll = Math.abs(e.deltaY) >= Math.abs(e.deltaX);
-            const delta = isVerticalScroll ? e.deltaY : e.deltaX;
+            // Only use horizontal scroll for navigation (ignore vertical)
+            const delta = e.deltaX;
 
-            if (isVerticalScroll) {
-                const target = e.currentTarget as HTMLElement | null;
-                if (target) {
-                    const { scrollTop, scrollHeight, clientHeight } = target;
-                    const maxScrollTop = scrollHeight - clientHeight;
-                    const isScrollable = scrollHeight > clientHeight + 1;
-                    const isScrollingDown = delta > 0;
-                    const isScrollingUp = delta < 0;
-                    const isAtTop = scrollTop <= EDGE_EPSILON;
-                    const isAtBottom = scrollTop >= maxScrollTop - EDGE_EPSILON;
-
-                    if (
-                        isScrollable &&
-                        ((isScrollingDown && !isAtBottom) || (isScrollingUp && !isAtTop))
-                    ) {
-                        scrollAccumulatorRef.current = 0;
-                        return;
-                    }
-                }
+            // If there's no horizontal movement, ignore the event
+            if (Math.abs(delta) < 1) {
+                return;
             }
 
             scrollAccumulatorRef.current += delta;
@@ -104,34 +88,21 @@ export function useScrollNavigation(onPrev: () => void, onNext: () => void) {
             const deltaX = touchEnd.x - start.x;
             const deltaY = touchEnd.y - start.y;
 
-            // Determine if swipe was primarily horizontal or vertical
+            // Only handle horizontal swipes (ignore vertical)
             const isHorizontal = Math.abs(deltaX) > Math.abs(deltaY);
-            const delta = isHorizontal ? deltaX : deltaY;
 
+            // If the swipe is not primarily horizontal, ignore it
             if (!isHorizontal) {
-                const target = e.currentTarget as HTMLElement | null;
-                if (target) {
-                    const { scrollTop, scrollHeight, clientHeight } = target;
-                    const maxScrollTop = scrollHeight - clientHeight;
-                    const isScrollable = scrollHeight > clientHeight + 1;
-                    const isSwipeUp = delta < 0;
-                    const isSwipeDown = delta > 0;
-                    const isAtTop = scrollTop <= EDGE_EPSILON;
-                    const isAtBottom = scrollTop >= maxScrollTop - EDGE_EPSILON;
-
-                    if (
-                        isScrollable &&
-                        ((isSwipeUp && !isAtBottom) || (isSwipeDown && !isAtTop))
-                    ) {
-                        return;
-                    }
-                }
+                return;
             }
 
-            if (Math.abs(delta) >= TOUCH_THRESHOLD) {
-                if (delta < 0) {
+            // Use horizontal delta for navigation
+            if (Math.abs(deltaX) >= TOUCH_THRESHOLD) {
+                if (deltaX < 0) {
+                    // Swipe left = next
                     onNext();
                 } else {
+                    // Swipe right = previous
                     onPrev();
                 }
             }
