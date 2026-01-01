@@ -22,6 +22,7 @@ import {
     getPlatformTopPaddingButtons,
     getPlatformTopPaddingTranslations,
 } from "@/util/browser";
+import { useScrollNavigation } from "@/hooks/useScrollNavigation";
 import { speakWithStackPrefs } from "@/util/speakWithStackPrefs";
 
 /* -------------------------------- Types -------------------------------- */
@@ -201,6 +202,7 @@ export function MainExperience() {
     const levels = useSettingsStore((s) => s.levels);
     const rate = useSettingsStore((s) => s.rate);
     const showRomanization = useSettingsStore((s) => s.showRomanization);
+    const scrollNavigationEnabled = useSettingsStore((s) => s.scrollNavigationEnabled);
 
     const incrementUtteranceCount = useRatingStore((s) => s.incrementUtteranceCount);
 
@@ -291,6 +293,25 @@ export function MainExperience() {
         }
         void fetchRandomEntry();
     };
+
+    // Scroll navigation - use the hook
+    const { handleWheel, handleTouchStart, handleTouchEnd } = useScrollNavigation(handlePrev, handleNext);
+
+    // Attach wheel and touch event listeners (only if enabled)
+    useEffect(() => {
+        const scrollElement = scrollRef.current;
+        if (!scrollElement || !scrollNavigationEnabled) return;
+
+        scrollElement.addEventListener("wheel", handleWheel, { passive: true });
+        scrollElement.addEventListener("touchstart", handleTouchStart, { passive: true });
+        scrollElement.addEventListener("touchend", handleTouchEnd, { passive: true });
+
+        return () => {
+            scrollElement.removeEventListener("wheel", handleWheel);
+            scrollElement.removeEventListener("touchstart", handleTouchStart);
+            scrollElement.removeEventListener("touchend", handleTouchEnd);
+        };
+    }, [handleWheel, handleTouchStart, handleTouchEnd, scrollNavigationEnabled]);
 
     // --- Render helpers --------------------------------------------------------
 

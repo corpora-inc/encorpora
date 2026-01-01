@@ -70,7 +70,8 @@
     "large": "ใหญ่",
     "extra-large": "ใหญ่มาก",
     "testTts": "ทดสอบ TTS ด้วยปุ่มด้านล่าง:",
-    "showRomanization": "แสดงถอดเสียง"
+    "showRomanization": "แสดงถอดเสียง",
+    "scrollNavigation": "การนำทางด้วยการเลื่อน"
   },
   "onboarding": {
     "welcome": "ยินดีต้อนรับ",

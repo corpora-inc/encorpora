@@ -85,6 +85,7 @@ export type StackSettings = {
     rate: number;
     textSize: TextSizeType;
     showRomanization: boolean;
+    scrollNavigationEnabled: boolean;
 
     /** Per-language TTS voice preferences */
     voicePrefs: VoicePrefsMap;
@@ -110,6 +111,7 @@ type MultiStackState = {
     rate: number;
     textSize: TextSizeType;
     showRomanization: boolean;
+    scrollNavigationEnabled: boolean;
     /** Mirror of per-language voice prefs for active stack */
     voicePrefs: VoicePrefsMap;
 
@@ -127,6 +129,7 @@ type MultiStackState = {
     setRate: (rate: number) => void;
     setTextSize: (size: TextSizeType) => void;
     setShowRomanization: (val: boolean) => void;
+    setScrollNavigationEnabled: (val: boolean) => void;
 
     /** Voice preference updaters for active stack */
     setVoiceMode: (lang: string, mode: VoiceMode) => void;
@@ -170,6 +173,7 @@ const DEFAULT_SETTINGS: StackSettings = {
     rate: 0.7,
     textSize: "medium",
     showRomanization: true,
+    scrollNavigationEnabled: true,
     voicePrefs: {}, // important: always an object
 };
 
@@ -214,6 +218,7 @@ function deriveFrom(stack: Stack) {
         rate: stack.settings.rate,
         textSize: stack.settings.textSize,
         showRomanization: stack.settings.showRomanization,
+        scrollNavigationEnabled: stack.settings.scrollNavigationEnabled ?? true,
         voicePrefs: { ...vp }, // cloned, never undefined
     };
 }
@@ -350,6 +355,7 @@ export const useSettingsStore = create<MultiStackState>()(
                 setRate: (rate) => writeActiveSettings((s) => { s.rate = rate; }),
                 setTextSize: (size) => writeActiveSettings((s) => { s.textSize = size; }),
                 setShowRomanization: (val) => writeActiveSettings((s) => { s.showRomanization = val; }),
+                setScrollNavigationEnabled: (val) => writeActiveSettings((s) => { s.scrollNavigationEnabled = val; }),
 
                 // -------- Voice Prefs (active stack) --------
                 setVoiceMode: (lang, mode) =>

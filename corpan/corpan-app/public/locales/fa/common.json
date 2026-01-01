@@ -70,7 +70,8 @@
     "large": "بزرگ",
     "extra-large": "خیلی بزرگ",
     "testTts": "برای آزمایش تنظیمات TTS روی دکمه‌های زیر بزنید:",
-    "showRomanization": "نمایش رومن‌نویسی"
+    "showRomanization": "نمایش رومن‌نویسی",
+    "scrollNavigation": "ناوبری با لغزش"
   },
   "onboarding": {
     "welcome": "خوش آمدید",

@@ -70,7 +70,8 @@
     "large": "Besar",
     "extra-large": "Sangat besar",
     "testTts": "Uji TTS dengan tombol di bawah:",
-    "showRomanization": "Tampilkan romanisasi"
+    "showRomanization": "Tampilkan romanisasi",
+    "scrollNavigation": "Navigasi gulir"
   },
   "onboarding": {
     "welcome": "Selamat datang",

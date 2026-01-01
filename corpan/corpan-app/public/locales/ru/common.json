@@ -70,7 +70,8 @@
     "large": "Большой",
     "extra-large": "Очень большой",
     "testTts": "Проверьте настройки TTS, нажав кнопки ниже:",
-    "showRomanization": "Показать романизацию"
+    "showRomanization": "Показать романизацию",
+    "scrollNavigation": "Навигация прокруткой"
   },
   "onboarding": {
     "welcome": "Добро пожаловать",

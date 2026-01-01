@@ -70,7 +70,8 @@
     "large": "Nagy",
     "extra-large": "Nagyon nagy",
     "testTts": "Tesztelje a TTS beállításokat az alábbi gombokkal:",
-    "showRomanization": "Rómaizáció megjelenítése"
+    "showRomanization": "Rómaizáció megjelenítése",
+    "scrollNavigation": "Görgetés navigáció"
   },
   "onboarding": {
     "welcome": "Üdvözöljük",

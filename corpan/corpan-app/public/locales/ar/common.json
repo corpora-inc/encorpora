@@ -70,7 +70,8 @@
     "large": "كبير",
     "extra-large": "كبير جدًا",
     "testTts": "اختبر إعدادات TTS بالنقر على الأزرار أدناه:",
-    "showRomanization": "إظهار الكتابة اللاتينية"
+    "showRomanization": "إظهار الكتابة اللاتينية",
+    "scrollNavigation": "التنقل بالتمرير"
   },
   "onboarding": {
     "welcome": "مرحبًا",

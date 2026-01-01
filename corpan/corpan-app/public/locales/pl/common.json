@@ -70,7 +70,8 @@
     "large": "Duży",
     "extra-large": "Bardzo duży",
     "testTts": "Przetestuj ustawienia TTS, klikając przyciski poniżej:",
-    "showRomanization": "Pokaż romanizację"
+    "showRomanization": "Pokaż romanizację",
+    "scrollNavigation": "Nawigacja przewijaniem"
   },
   "onboarding": {
     "welcome": "Witamy",

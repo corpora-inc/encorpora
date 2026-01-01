@@ -70,7 +70,8 @@
     "large": "Büyük",
     "extra-large": "Çok büyük",
     "testTts": "Aşağıdaki düğmelerle TTS'yi test edin:",
-    "showRomanization": "Okunuşu göster"
+    "showRomanization": "Okunuşu göster",
+    "scrollNavigation": "Kaydırma navigasyonu"
   },
   "onboarding": {
     "welcome": "Hoş geldiniz",

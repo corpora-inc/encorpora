@@ -70,7 +70,8 @@
     "large": "বড়",
     "extra-large": "অতিরিক্ত বড়",
     "testTts": "নিচের বোতাম দিয়ে টিটিএস পরীক্ষা করুন:",
-    "showRomanization": "রোমানাইজেশন দেখান"
+    "showRomanization": "রোমানাইজেশন দেখান",
+    "scrollNavigation": "স্ক্রল নেভিগেশন"
   },
   "onboarding": {
     "welcome": "স্বাগতম",
