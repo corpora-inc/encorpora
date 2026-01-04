@@ -295,7 +295,13 @@ export function MainExperience() {
     };
 
     // Scroll navigation - use the hook
-    const { handleWheel, handleTouchStart, handleTouchEnd } = useScrollNavigation(handlePrev, handleNext);
+    const {
+        handleWheel,
+        handleTouchStart,
+        handleTouchMove,
+        handleTouchEnd,
+        handleTouchCancel,
+    } = useScrollNavigation(handlePrev, handleNext);
 
     // Attach wheel and touch event listeners (only if enabled)
     useEffect(() => {
@@ -304,14 +310,25 @@ export function MainExperience() {
 
         scrollElement.addEventListener("wheel", handleWheel, { passive: true });
         scrollElement.addEventListener("touchstart", handleTouchStart, { passive: true });
+        scrollElement.addEventListener("touchmove", handleTouchMove, { passive: true });
         scrollElement.addEventListener("touchend", handleTouchEnd, { passive: true });
+        scrollElement.addEventListener("touchcancel", handleTouchCancel, { passive: true });
 
         return () => {
             scrollElement.removeEventListener("wheel", handleWheel);
             scrollElement.removeEventListener("touchstart", handleTouchStart);
+            scrollElement.removeEventListener("touchmove", handleTouchMove);
             scrollElement.removeEventListener("touchend", handleTouchEnd);
+            scrollElement.removeEventListener("touchcancel", handleTouchCancel);
         };
-    }, [handleWheel, handleTouchStart, handleTouchEnd, scrollNavigationEnabled]);
+    }, [
+        handleWheel,
+        handleTouchStart,
+        handleTouchMove,
+        handleTouchEnd,
+        handleTouchCancel,
+        scrollNavigationEnabled,
+    ]);
 
     // --- Render helpers --------------------------------------------------------
 

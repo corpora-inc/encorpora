@@ -9,7 +9,7 @@ import { useCallback, useRef } from "react";
  * @returns Event handlers for wheel and touch events
  *
  * @example
- * const { handleWheel, handleTouchStart, handleTouchEnd } = useScrollNavigation(
+ * const { handleWheel, handleTouchStart, handleTouchMove, handleTouchEnd } = useScrollNavigation(
  *   handlePrev,
  *   handleNext
  * );
@@ -18,14 +18,44 @@ export function useScrollNavigation(onPrev: () => void, onNext: () => void) {
     const scrollAccumulatorRef = useRef(0);
     const lastWheelTimeRef = useRef(0);
     const hasNavigatedInGestureRef = useRef(false);
-    const touchStartRef = useRef<{ x: number; y: number } | null>(null);
+    const touchStartRef = useRef<{ x: number; y: number; time: number } | null>(null);
+    const touchHasMultiTouchRef = useRef(false);
+    const touchStartedOnInteractiveRef = useRef(false);
+    const touchSelectionActiveRef = useRef(false);
 
     const SCROLL_THRESHOLD = 100; // pixels needed to trigger navigation
     const GESTURE_TIMEOUT = 50; // ms pause to consider a new gesture
     const TOUCH_THRESHOLD = 50; // pixels for touch swipe
+    const TOUCH_HORIZONTAL_RATIO = 1.5; // require clearer horizontal intent
+    const MAX_SWIPE_DURATION = 450; // ms, avoids long-press selection triggering swipe
+    const MIN_SWIPE_VELOCITY = 0.25; // px/ms
+
+    const hasActiveSelection = () => {
+        if (typeof window === "undefined") return false;
+        const selection = window.getSelection();
+        return !!selection && !selection.isCollapsed;
+    };
+
+    const isInteractiveTarget = (target: EventTarget | null) => {
+        if (!(target instanceof HTMLElement)) return false;
+        return !!target.closest(
+            "input, textarea, select, button, a, [contenteditable='true'], [contenteditable=''], [role='textbox']"
+        );
+    };
+
+    const resetTouchState = () => {
+        touchStartRef.current = null;
+        touchHasMultiTouchRef.current = false;
+        touchStartedOnInteractiveRef.current = false;
+        touchSelectionActiveRef.current = false;
+    };
 
     const handleWheel = useCallback(
         (e: WheelEvent) => {
+            if (e.ctrlKey) {
+                return;
+            }
+
             const now = Date.now();
             const timeSinceLastWheel = now - lastWheelTimeRef.current;
 
@@ -66,18 +96,51 @@ export function useScrollNavigation(onPrev: () => void, onNext: () => void) {
     );
 
     const handleTouchStart = useCallback((e: TouchEvent) => {
+        resetTouchState();
+
+        if (e.touches.length !== 1) {
+            touchHasMultiTouchRef.current = true;
+            return;
+        }
+
+        touchStartedOnInteractiveRef.current = isInteractiveTarget(e.target);
+        touchSelectionActiveRef.current = hasActiveSelection();
+
+        const touch = e.touches[0];
         touchStartRef.current = {
-            x: e.touches[0].clientX,
-            y: e.touches[0].clientY,
+            x: touch.clientX,
+            y: touch.clientY,
+            time: Date.now(),
         };
+    }, []);
+
+    const handleTouchMove = useCallback((e: TouchEvent) => {
+        if (e.touches.length > 1) {
+            touchHasMultiTouchRef.current = true;
+        }
+
+        if (hasActiveSelection()) {
+            touchSelectionActiveRef.current = true;
+        }
     }, []);
 
     const handleTouchEnd = useCallback(
         (e: TouchEvent) => {
             const start = touchStartRef.current;
-            touchStartRef.current = null;
+            if (!start) {
+                resetTouchState();
+                return;
+            }
 
-            if (!start) return;
+            if (
+                touchHasMultiTouchRef.current ||
+                touchStartedOnInteractiveRef.current ||
+                touchSelectionActiveRef.current ||
+                hasActiveSelection()
+            ) {
+                resetTouchState();
+                return;
+            }
 
             const touchEnd = {
                 x: e.changedTouches[0].clientX,
@@ -86,17 +149,26 @@ export function useScrollNavigation(onPrev: () => void, onNext: () => void) {
 
             const deltaX = touchEnd.x - start.x;
             const deltaY = touchEnd.y - start.y;
+            const duration = Date.now() - start.time;
+
+            if (duration > MAX_SWIPE_DURATION) {
+                resetTouchState();
+                return;
+            }
 
             // Only handle horizontal swipes (ignore vertical)
-            const isHorizontal = Math.abs(deltaX) > Math.abs(deltaY);
+            const isHorizontal = Math.abs(deltaX) > Math.abs(deltaY) * TOUCH_HORIZONTAL_RATIO;
 
             // If the swipe is not primarily horizontal, ignore it
             if (!isHorizontal) {
+                resetTouchState();
                 return;
             }
 
             // Use horizontal delta for navigation
-            if (Math.abs(deltaX) >= TOUCH_THRESHOLD) {
+            const distance = Math.abs(deltaX);
+            const velocity = distance / Math.max(duration, 1);
+            if (distance >= TOUCH_THRESHOLD && velocity >= MIN_SWIPE_VELOCITY) {
                 if (deltaX < 0) {
                     // Swipe left = next
                     onNext();
@@ -105,9 +177,15 @@ export function useScrollNavigation(onPrev: () => void, onNext: () => void) {
                     onPrev();
                 }
             }
+
+            resetTouchState();
         },
         [onNext, onPrev]
     );
 
-    return { handleWheel, handleTouchStart, handleTouchEnd };
+    const handleTouchCancel = useCallback(() => {
+        resetTouchState();
+    }, []);
+
+    return { handleWheel, handleTouchStart, handleTouchMove, handleTouchEnd, handleTouchCancel };
 }
