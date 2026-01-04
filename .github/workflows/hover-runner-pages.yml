@@ -56,10 +56,9 @@ jobs:
 
       - name: Copy Hover Runner into io/out
         run: |
-          OUTPUT_ROOT="web/io/out${ENCORPORA_BASE_PATH}"
-          mkdir -p "$OUTPUT_ROOT/corpan/games/hover-runner"
-          cp corpan/games/hover-runner/manifest.json "$OUTPUT_ROOT/corpan/games/hover-runner/"
-          cp -R corpan/games/hover-runner/dist/. "$OUTPUT_ROOT/corpan/games/hover-runner/"
+          mkdir -p "web/io/out/corpan/games/hover-runner"
+          cp corpan/games/hover-runner/manifest.json "web/io/out/corpan/games/hover-runner/"
+          cp -R corpan/games/hover-runner/dist/. "web/io/out/corpan/games/hover-runner/"
 
       - name: Show Final Structure
         run: |
