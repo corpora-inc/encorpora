@@ -1,5 +1,5 @@
 import { JSX } from "react";
-import { FaAppStore, FaGooglePlay } from "react-icons/fa";
+import { FaAppStore, FaGooglePlay, FaGamepad } from "react-icons/fa";
 
 interface App {
   id: string;
@@ -29,6 +29,11 @@ export const APPS_INFO: App[] = [
         name: "Android",
         link: "https://play.google.com/store/apps/details?id=com.corpora.corpan",
         icon: <FaGooglePlay />,
+      },
+      {
+        name: "Web Games",
+        link: "/corpan/games",
+        icon: <FaGamepad />,
       },
     ],
   },

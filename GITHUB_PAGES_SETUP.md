@@ -1,71 +1,120 @@
 # GitHub Pages Setup
 
-This document explains the new scalable structure for the GitHub Pages site.
+This document explains the scalable composable architecture for the GitHub Pages site.
+
+## Architecture
+
+The GitHub Pages site uses a **composable architecture**:
+
+1. **`io/` site** → Root marketing website (Next.js)
+2. **`pages/` templates** → Corpan app pages (static HTML)
+3. **`corpan/games/`** → Individual game builds
+4. **Final deployment** → Everything composed into `io/out/`
+
+This allows us to scale to many apps, games, and content types - all composed into one cohesive site.
 
 ## Site Structure
 
-The GitHub Pages site is now organized with proper namespacing and landing pages at each level:
-
 ```
 https://corpora-inc.github.io/encorpora/
-├── index.html                    # Root landing page (all apps)
+├── index.html                    # io/ root site (Next.js export)
+├── books.html                    # io/ books page
+├── privacy.html                  # io/ privacy page
+├── assets/                       # Corpan assets (logo, avatars)
+│   ├── logo-512.png
+│   └── hover-runner-avatar.png
 ├── corpan/
-│   ├── index.html                # Corpan landing page
+│   ├── index.html                # Corpan landing page (composed)
 │   └── games/
-│       ├── index.html            # Games listing page
+│       ├── index.html            # Games listing (composed)
 │       └── hover-runner/
 │           ├── manifest.json     # Game manifest
-│           ├── app.js            # Game code
-│           ├── app.css           # Game styles
-│           └── ...               # Other game assets
+│           └── ...               # Game assets
+└── _next/                        # Next.js assets
 ```
 
 ## How It Works
 
-### 1. Landing Pages
+### 1. Root Site (`io/`)
 
-Landing pages are built from templates in the `pages/` directory:
+The Next.js site at `io/` is the source of truth for the root domain:
 
-- **Root page** (`pages/templates/root.html`): Lists all apps
-- **Corpan page** (`pages/templates/corpan.html`): Corpan app information
-- **Games page** (`pages/templates/games.html`): Lists all Corpan games
+- Marketing pages (index, books, privacy)
+- Monochrome design system
+- Builds to `io/out/` via `npm run build`
 
-### 2. Data Files
+### 2. Corpan Pages (`pages/`)
 
-App and game metadata is stored in JSON files:
+Corpan-specific pages are built from templates:
 
-- `pages/data/apps.json`: App metadata (name, description, links, etc.)
-- `pages/data/games.json`: Game metadata (name, version, manifest URL, etc.)
+- **Corpan landing** (`pages/templates/corpan.html`): App information with logo
+- **Games listing** (`pages/templates/games.html`): All Corpan games
 
-### 3. Build Script
+### 3. Data Files
 
-The `pages/build.js` script generates static HTML files from templates and data:
+Game metadata in `pages/data/games.json`:
 
-```bash
-node pages/build.js <output-directory>
+```json
+{
+  "id": "hover-runner",
+  "name": "Hover Runner",
+  "version": "0.1.0",
+  "manifestUrl": "./hover-runner/manifest.json"
+}
 ```
 
-### 4. GitHub Actions Workflow
+### 4. Games (`corpan/games/`)
 
-The `.github/workflows/hover-runner-pages.yml` workflow:
+Each game is a standalone build:
 
-1. Builds landing pages using `pages/build.js`
-2. Builds each game (e.g., hover-runner)
-3. Assembles everything into the proper directory structure
-4. Deploys to GitHub Pages
+- Own build process (npm run build)
+- Outputs to `dist/` directory
+- Has manifest.json for metadata
+
+### 5. Composition
+
+The build process composes everything into `io/out/`:
+
+```bash
+# 1. Build io/ site
+cd io && npm run build  # → io/out/
+
+# 2. Add Corpan pages
+node pages/build.js io/out  # → io/out/corpan/
+
+# 3. Add games
+cp -R corpan/games/hover-runner/dist io/out/corpan/games/hover-runner/
+
+# 4. Deploy
+# io/out/ is deployed to GitHub Pages
+```
+
+### 6. GitHub Actions Workflow
+
+The `.github/workflows/hover-runner-pages.yml` workflow automates this:
+
+1. Builds `io/` site (Next.js) → `io/out/`
+2. Builds Corpan pages into `io/out/corpan/`
+3. Builds each game and copies to `io/out/corpan/games/`
+4. Deploys `io/out/` to GitHub Pages
 
 ## Adding a New Game
 
-### Step 1: Add game metadata
+### Step 1: Create game in `corpan/games/my-game/`
 
-Edit `pages/data/games.json` and add your game:
+Build your game with the Corpan Game SDK. Ensure it has:
+- `manifest.json` with game metadata
+- Build script (`npm run build`) that outputs to `dist/`
+
+### Step 2: Add to games data
+
+Edit `pages/data/games.json`:
 
 ```json
 {
   "id": "my-game",
   "name": "My Game",
   "description": "A fun language learning game",
-  "icon": "🎮",
   "status": "beta",
   "version": "1.0.0",
   "manifestUrl": "./my-game/manifest.json",
@@ -74,12 +123,22 @@ Edit `pages/data/games.json` and add your game:
 }
 ```
 
-### Step 2: Update GitHub Actions workflow
+### Step 3: (Optional) Add game avatar
 
-Edit `.github/workflows/hover-runner-pages.yml` to build your game:
+Place game avatar in `pages/assets/my-game-avatar.png`, then update `pages/templates/games.html`:
+
+```javascript
+const gameAvatars = {
+  'hover-runner': '/assets/hover-runner-avatar.png',
+  'my-game': '/assets/my-game-avatar.png'  // Add this
+};
+```
+
+### Step 4: Update GitHub Actions workflow
+
+Edit `.github/workflows/hover-runner-pages.yml`:
 
 ```yaml
-# Add to the build job
 - name: Install My Game Dependencies
   working-directory: corpan/games/my-game
   run: npm install --legacy-peer-deps
@@ -88,77 +147,64 @@ Edit `.github/workflows/hover-runner-pages.yml` to build your game:
   working-directory: corpan/games/my-game
   run: npm run build
 
-# Update the Assemble step
-- name: Assemble Pages Artifact
+- name: Copy My Game into io/out
   run: |
-    # ... existing code ...
-
-    # Copy my-game files
-    cp corpan/games/my-game/manifest.json .pages/corpan/games/my-game/
-    cp -R corpan/games/my-game/dist/. .pages/corpan/games/my-game/
+    mkdir -p io/out/corpan/games/my-game
+    cp corpan/games/my-game/manifest.json io/out/corpan/games/my-game/
+    cp -R corpan/games/my-game/dist/. io/out/corpan/games/my-game/
 ```
 
-### Step 3: Test locally
+### Step 5: Test locally
 
 ```bash
-# Build landing pages
-node pages/build.js /tmp/test-pages
-
-# Build your game
-cd corpan/games/my-game
-npm run build
-
-# Copy game to test pages
-mkdir -p /tmp/test-pages/corpan/games/my-game
-cp manifest.json /tmp/test-pages/corpan/games/my-game/
-cp -R dist/* /tmp/test-pages/corpan/games/my-game/
-
-# Serve locally to test
-cd /tmp/test-pages
-python -m http.server 8000
+./serve-local.sh
 ```
 
-Open `http://localhost:8000` to preview.
+Open `http://localhost:8000/corpan/games/my-game/` to preview.
 
 ## Adding a New App
 
-### Step 1: Add app metadata
+Adding a new app follows the same composable pattern as Corpan:
 
-Edit `pages/data/apps.json`:
+### Step 1: Create app pages
 
-```json
-{
-  "id": "my-app",
-  "name": "My App",
-  "description": "An awesome new app",
-  "icon": "✨",
-  "status": "active",
-  "links": {
-    "homepage": "./my-app/",
-    "github": "https://github.com/corpora-inc/encorpora/tree/main/my-app"
-  }
-}
+Create templates in `pages/templates/my-app/`:
+
+```
+pages/templates/my-app/
+├── index.html      # Landing page
+└── features.html   # Additional pages
 ```
 
-### Step 2: Create landing page (optional)
+Use the same monochrome design system as Corpan pages.
 
-If you want a dedicated landing page:
+### Step 2: Update build script
 
-1. Create `pages/templates/my-app.html`
-2. Update `pages/build.js` to generate the page
-3. Update the GitHub Actions workflow to include your app's content
+Edit `pages/build.js` to build your app pages into the output directory:
 
-### Step 3: Commit and push
+```javascript
+// Build My App pages
+console.log('Building my-app pages...');
+const myAppTemplate = readTemplate('my-app/index');
+fs.writeFileSync(path.join(outputDir, 'my-app', 'index.html'), myAppTemplate);
+```
 
-The workflow will automatically rebuild and deploy the site.
+### Step 3: Update workflow
+
+Add build steps to `.github/workflows/hover-runner-pages.yml` to compose your app into `io/out/`.
+
+### Step 4: (Optional) Link from io/ site
+
+Add a link or section in `io/app/page.tsx` to feature your new app.
 
 ## Workflow Triggers
 
 The workflow runs when:
 
 - Changes are pushed to `main` branch in:
+  - `io/**` (root site changes)
   - `corpan/games/**` (any game changes)
-  - `pages/**` (landing page changes)
+  - `pages/**` (Corpan page changes)
   - `.github/workflows/hover-runner-pages.yml` (workflow changes)
 - Manually triggered via `workflow_dispatch`
 
@@ -169,53 +215,50 @@ The workflow runs when:
 - Node.js 20+
 - Python 3 (for local server)
 
-### Quick Start - Serve Entire Site Locally
+### Quick Start - Serve Complete Site
 
-The easiest way to test the entire site locally:
+The `serve-local.sh` script builds and serves the complete composed site:
 
 ```bash
-# From the repository root
 ./serve-local.sh
 ```
 
-This script will:
-1. Build all landing pages
-2. Build hover-runner game
-3. Assemble everything into `.local-pages/`
-4. Start a local server at `http://localhost:8000`
+This will:
+1. Build `io/` site (Next.js) → `io/out/`
+2. Build Corpan pages into `io/out/corpan/`
+3. Build hover-runner into `io/out/corpan/games/hover-runner/`
+4. Start server at `http://localhost:8000`
 
-You can then browse:
-- `http://localhost:8000/` - Root landing page
+Browse:
+- `http://localhost:8000/` - io/ root site
 - `http://localhost:8000/corpan/` - Corpan page
 - `http://localhost:8000/corpan/games/` - Games listing
 - `http://localhost:8000/corpan/games/hover-runner/` - Play hover-runner
 
 ### Manual Build Steps
 
-If you want to build components separately:
+Build individual components:
 
-#### Building landing pages only
+#### io/ site only
 
 ```bash
-cd pages
-node build.js ../dist
+cd io
+npm install
+npm run build  # → io/out/
 ```
 
-#### Building hover-runner only
+#### Corpan pages only
+
+```bash
+node pages/build.js /some/output/dir
+```
+
+#### Individual game
 
 ```bash
 cd corpan/games/hover-runner
 npm install --legacy-peer-deps
-npm run build
-```
-
-#### Preview landing pages only
-
-```bash
-cd dist
-python -m http.server 8000
-# or
-npx serve
+npm run build  # → dist/
 ```
 
 ## Troubleshooting

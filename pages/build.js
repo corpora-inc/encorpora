@@ -17,6 +17,7 @@ const path = require('path');
 const SCRIPT_DIR = __dirname;
 const TEMPLATES_DIR = path.join(SCRIPT_DIR, 'templates');
 const DATA_DIR = path.join(SCRIPT_DIR, 'data');
+const ASSETS_DIR = path.join(SCRIPT_DIR, 'assets');
 
 function readTemplate(name) {
   const templatePath = path.join(TEMPLATES_DIR, `${name}.html`);
@@ -34,31 +35,89 @@ function ensureDir(dir) {
   }
 }
 
-function buildPages(outputDir) {
-  console.log('Building GitHub Pages site...');
+function copyDir(src, dest) {
+  ensureDir(dest);
+  const entries = fs.readdirSync(src, { withFileTypes: true });
+
+  for (const entry of entries) {
+    const srcPath = path.join(src, entry.name);
+    const destPath = path.join(dest, entry.name);
+
+    if (entry.isDirectory()) {
+      copyDir(srcPath, destPath);
+    } else {
+      fs.copyFileSync(srcPath, destPath);
+    }
+  }
+}
+
+function buildGameLandingPage(game, outputDir) {
+  const gameLandingTemplate = readTemplate('game-landing');
+
+  // Build video section HTML
+  let videoSectionHtml = '';
+  const hasVideos = (game.videos?.shorts && game.videos.shorts.length > 0) ||
+                     (game.videos?.demos && game.videos.demos.length > 0);
+
+  if (hasVideos) {
+    videoSectionHtml = '<div class="section"><h2>Watch in Action</h2><div class="videos-grid">';
+
+    // Add shorts
+    if (game.videos.shorts) {
+      game.videos.shorts.forEach(videoId => {
+        videoSectionHtml += `
+          <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/${videoId}"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+          </div>`;
+      });
+    }
+
+    // Add demo videos
+    if (game.videos.demos) {
+      game.videos.demos.forEach(videoId => {
+        videoSectionHtml += `
+          <div class="video-container video-wide">
+            <iframe src="https://www.youtube.com/embed/${videoId}"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+          </div>`;
+      });
+    }
+
+    videoSectionHtml += '</div></div>';
+  }
+
+  // Replace placeholders
+  let html = gameLandingTemplate
+    .replace(/\{\{GAME_ID\}\}/g, game.id)
+    .replace(/\{\{GAME_NAME\}\}/g, game.name)
+    .replace(/\{\{GAME_DESCRIPTION\}\}/g, game.description)
+    .replace(/\{\{GAME_VERSION\}\}/g, game.version)
+    .replace(/\{\{GAME_AVATAR\}\}/g, `/assets/${game.id}-avatar.png`)
+    .replace('{{VIDEO_SECTION}}', videoSectionHtml);
+
+  // Write file
+  const gameDir = path.join(outputDir, 'corpan', 'games', game.id);
+  ensureDir(gameDir);
+  fs.writeFileSync(path.join(gameDir, 'index.html'), html);
+}
+
+function buildPages(outputDir, options = {}) {
+  console.log('Building Corpan pages...');
   console.log(`Output directory: ${outputDir}`);
 
   // Load data
-  const appsData = readData('apps');
   const gamesData = readData('games');
 
   // Load templates
-  const rootTemplate = readTemplate('root');
   const corpanTemplate = readTemplate('corpan');
   const gamesTemplate = readTemplate('games');
 
-  // Create directory structure
-  ensureDir(outputDir);
+  // Create directory structure for Corpan pages
   ensureDir(path.join(outputDir, 'corpan'));
   ensureDir(path.join(outputDir, 'corpan', 'games'));
-
-  // Build root page
-  console.log('Building root index.html...');
-  const rootHtml = rootTemplate.replace(
-    '{{APPS_DATA}}',
-    JSON.stringify(appsData)
-  );
-  fs.writeFileSync(path.join(outputDir, 'index.html'), rootHtml);
 
   // Build Corpan page
   console.log('Building corpan/index.html...');
@@ -72,11 +131,27 @@ function buildPages(outputDir) {
   );
   fs.writeFileSync(path.join(outputDir, 'corpan', 'games', 'index.html'), gamesHtml);
 
-  console.log('✓ Site built successfully!');
-  console.log('\nGenerated pages:');
-  console.log('  - index.html (root)');
+  // Build game landing pages
+  console.log('Building game landing pages...');
+  gamesData.forEach(game => {
+    console.log(`  - corpan/games/${game.id}/index.html`);
+    buildGameLandingPage(game, outputDir);
+  });
+
+  // Copy assets directory
+  console.log('Copying assets...');
+  if (fs.existsSync(ASSETS_DIR)) {
+    copyDir(ASSETS_DIR, path.join(outputDir, 'assets'));
+  }
+
+  console.log('✓ Corpan pages built successfully!');
+  console.log('\nGenerated:');
   console.log('  - corpan/index.html');
   console.log('  - corpan/games/index.html');
+  gamesData.forEach(game => {
+    console.log(`  - corpan/games/${game.id}/index.html`);
+  });
+  console.log('  - assets/ (images)');
 }
 
 // Main

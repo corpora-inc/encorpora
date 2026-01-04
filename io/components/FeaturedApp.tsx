@@ -109,8 +109,8 @@ const FeaturedApps = () => {
                       >
                         <a
                           href={platform.link}
-                          target="_blank"
-                          rel="noopener noreferrer"
+                          target={platform.link.startsWith('/') ? '_self' : '_blank'}
+                          rel={platform.link.startsWith('/') ? undefined : 'noopener noreferrer'}
                           className="flex items-center gap-3 w-full"
                         >
                           <div className="w-5 h-5 flex items-center justify-center">

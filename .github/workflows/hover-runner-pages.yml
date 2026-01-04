@@ -4,6 +4,7 @@ on:
   push:
     branches: ["main"]
     paths:
+      - "io/**"
       - "corpan/games/**"
       - "pages/**"
       - ".github/workflows/hover-runner-pages.yml"
@@ -30,9 +31,17 @@ jobs:
         with:
           node-version: "20"
 
-      - name: Build Landing Pages
+      - name: Install io/ Dependencies
+        working-directory: io
+        run: npm install
+
+      - name: Build io/ Site (Root)
+        working-directory: io
+        run: npm run build
+
+      - name: Build Corpan Pages into io/out
         run: |
-          node pages/build.js .pages-temp
+          node pages/build.js io/out
 
       - name: Install Hover Runner Dependencies
         working-directory: corpan/games/hover-runner
@@ -42,29 +51,21 @@ jobs:
         working-directory: corpan/games/hover-runner
         run: npm run build
 
-      - name: Assemble Pages Artifact
+      - name: Copy Hover Runner into io/out
         run: |
-          # Create the final directory structure
-          mkdir -p .pages/corpan/games/hover-runner
+          mkdir -p io/out/corpan/games/hover-runner
+          cp corpan/games/hover-runner/manifest.json io/out/corpan/games/hover-runner/
+          cp -R corpan/games/hover-runner/dist/. io/out/corpan/games/hover-runner/
 
-          # Copy landing pages
-          cp -R .pages-temp/* .pages/
-
-          # Copy hover-runner game files
-          cp corpan/games/hover-runner/manifest.json .pages/corpan/games/hover-runner/
-          cp -R corpan/games/hover-runner/dist/. .pages/corpan/games/hover-runner/
-
-          # Clean up temp directory
-          rm -rf .pages-temp
-
-          # Show the final structure for debugging
+      - name: Show Final Structure
+        run: |
           echo "Final site structure:"
-          find .pages -type f | sort
+          find io/out -type f | sort
 
       - name: Upload Pages Artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: .pages
+          path: io/out
 
   deploy:
     runs-on: ubuntu-latest
