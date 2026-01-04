@@ -1,6 +1,15 @@
+node_modules/
 *.pyc
 __pycache__/
 target/
 # TODO: we actually would like this but the members
 # don't match because of rusqlite versus sqlx
 Cargo.lock
+
+# GitHub Pages builds
+.local-pages/
+.pages/
+.pages-temp/
+web/io/out/
+web/io/.next/
+corpan/plugins/tauri-plugin-game-packs/ios/.build/

@@ -1,10 +1,13 @@
-name: Deploy Hover Runner to GitHub Pages
+name: Deploy Encorpora to GitHub Pages
 
 on:
   push:
     branches: ["main"]
     paths:
-      - "corpan/games/hover-runner/**"
+      - "web/io/**"
+      - "corpan/games/**"
+      - "web/pages/**"
+      - "web/scripts/**"
       - ".github/workflows/hover-runner-pages.yml"
   workflow_dispatch: {}
 
@@ -14,12 +17,14 @@ permissions:
   id-token: write
 
 concurrency:
-  group: "pages-hover-runner"
+  group: "pages"
   cancel-in-progress: true
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      ENCORPORA_BASE_PATH: /encorpora
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -28,29 +33,43 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "20"
-          cache: "npm"
-          cache-dependency-path: corpan/games/hover-runner/package-lock.json
 
-      - name: Install
+      - name: Install io/ Dependencies
+        working-directory: web/io
+        run: npm install
+
+      - name: Build io/ Site (Root)
+        working-directory: web/io
+        run: npm run build
+
+      - name: Build Corpan Pages into io/out
+        run: |
+          node web/pages/build.js web/io/out
+
+      - name: Install Hover Runner Dependencies
         working-directory: corpan/games/hover-runner
         run: npm install --legacy-peer-deps
 
-      - name: Build
+      - name: Build Hover Runner
         working-directory: corpan/games/hover-runner
         run: npm run build
 
-      - name: Package Pages Artifact
-        working-directory: corpan/games/hover-runner
+      - name: Copy Hover Runner into io/out
         run: |
-          rm -rf .pages
-          mkdir -p .pages/dist
-          cp manifest.json .pages/manifest.json
-          cp -R dist/. .pages/dist/
+          OUTPUT_ROOT="web/io/out${ENCORPORA_BASE_PATH}"
+          mkdir -p "$OUTPUT_ROOT/corpan/games/hover-runner"
+          cp corpan/games/hover-runner/manifest.json "$OUTPUT_ROOT/corpan/games/hover-runner/"
+          cp -R corpan/games/hover-runner/dist/. "$OUTPUT_ROOT/corpan/games/hover-runner/"
+
+      - name: Show Final Structure
+        run: |
+          echo "Final site structure:"
+          find web/io/out -type f | sort
 
       - name: Upload Pages Artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: corpan/games/hover-runner/.pages
+          path: web/io/out
 
   deploy:
     runs-on: ubuntu-latest

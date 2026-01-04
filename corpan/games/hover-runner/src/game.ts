@@ -96,6 +96,21 @@ export const createHoverRunner = (
   root.className = "hover-runner"
   container.appendChild(root)
 
+  const updateViewportSize = () => {
+    const viewport = window.visualViewport
+    const width = Math.round(viewport?.width ?? window.innerWidth)
+    const height = Math.round(viewport?.height ?? window.innerHeight)
+    if (!Number.isFinite(width) || !Number.isFinite(height)) {
+      return
+    }
+    container.style.width = `${width}px`
+    container.style.height = `${height}px`
+    root.style.width = `${width}px`
+    root.style.height = `${height}px`
+  }
+
+  updateViewportSize()
+
   const sfx = getSfx()
   const scoreAnimator = createScoreAnimator(root)
 
@@ -2495,13 +2510,44 @@ export const createHoverRunner = (
   })
 
   const onResize = () => {
+    if (disposed) {
+      return
+    }
+    updateViewportSize()
     engine.setHardwareScalingLevel(
       1 / Math.min(window.devicePixelRatio || 1, maxDevicePixelRatio)
     )
     engine.resize()
     updateCameraForViewport()
   }
-  window.addEventListener("resize", onResize)
+
+  let resizeFrame = 0
+  let resizeTimeout: number | null = null
+  const scheduleResize = () => {
+    if (resizeFrame) {
+      window.cancelAnimationFrame(resizeFrame)
+    }
+    resizeFrame = window.requestAnimationFrame(() => {
+      resizeFrame = 0
+      onResize()
+    })
+    if (resizeTimeout != null) {
+      window.clearTimeout(resizeTimeout)
+    }
+    resizeTimeout = window.setTimeout(onResize, 250)
+  }
+
+  scheduleResize()
+  window.addEventListener("resize", scheduleResize)
+  window.addEventListener("orientationchange", scheduleResize)
+  if (window.screen?.orientation) {
+    window.screen.orientation.addEventListener("change", scheduleResize)
+  }
+  const visualViewport = window.visualViewport
+  if (visualViewport) {
+    visualViewport.addEventListener("resize", scheduleResize)
+    visualViewport.addEventListener("scroll", scheduleResize)
+  }
 
   const dispose = () => {
     if (disposed) {
@@ -2524,7 +2570,23 @@ export const createHoverRunner = (
     hostApi.stopSpeech?.()
     input.dispose()
     window.removeEventListener("keydown", onKeyDownGlobal)
-    window.removeEventListener("resize", onResize)
+    if (resizeFrame) {
+      window.cancelAnimationFrame(resizeFrame)
+      resizeFrame = 0
+    }
+    if (resizeTimeout != null) {
+      window.clearTimeout(resizeTimeout)
+      resizeTimeout = null
+    }
+    window.removeEventListener("resize", scheduleResize)
+    window.removeEventListener("orientationchange", scheduleResize)
+    if (window.screen?.orientation) {
+      window.screen.orientation.removeEventListener("change", scheduleResize)
+    }
+    if (visualViewport) {
+      visualViewport.removeEventListener("resize", scheduleResize)
+      visualViewport.removeEventListener("scroll", scheduleResize)
+    }
     document.removeEventListener("visibilitychange", onVisibilityChange)
     window.removeEventListener("pointerdown", onWakeLockGesture)
     window.removeEventListener(

@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{GAME_NAME}} - Corpán</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: #171717;
+            background: #ffffff;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem;
+        }
+
+        .breadcrumb {
+            font-size: 0.875rem;
+            color: #737373;
+            margin-bottom: 3rem;
+        }
+
+        .breadcrumb a {
+            color: #171717;
+            text-decoration: none;
+            transition: opacity 0.15s ease;
+        }
+
+        .breadcrumb a:hover {
+            opacity: 0.7;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 4rem;
+            padding-bottom: 3rem;
+        }
+
+        .logo-container {
+            margin-bottom: 2rem;
+        }
+
+        .game-avatar {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto;
+            display: block;
+            border-radius: 8px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #171717;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.75rem;
+        }
+
+        .tagline {
+            font-size: 1.125rem;
+            color: #737373;
+            font-weight: 400;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        .version {
+            font-size: 0.875rem;
+            color: #a3a3a3;
+            margin-bottom: 2rem;
+        }
+
+        .store-links {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+
+        .store-button {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.875rem 2rem;
+            background: #171717;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .store-button:hover {
+            transform: translateY(-1px);
+            opacity: 0.9;
+        }
+
+        .note {
+            font-size: 0.875rem;
+            color: #737373;
+            text-align: center;
+        }
+
+        .section {
+            margin: 4rem 0;
+        }
+
+        .section h2 {
+            color: #171717;
+            margin-bottom: 2rem;
+            font-size: 1.75rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            text-align: center;
+        }
+
+        .videos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 177.78%; /* 9:16 aspect ratio for shorts */
+            height: 0;
+            overflow: hidden;
+            border-radius: 8px;
+            background: #f5f5f5;
+            border: 1px solid #e5e5e5;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .video-wide {
+            padding-bottom: 56.25%; /* 16:9 aspect ratio for regular videos */
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .feature {
+            padding: 1.5rem;
+            background: #ffffff;
+            border: 1px solid #e5e5e5;
+            border-radius: 6px;
+            text-align: center;
+        }
+
+        .feature h3 {
+            color: #171717;
+            margin-bottom: 0.5rem;
+            font-size: 1.125rem;
+            font-weight: 600;
+        }
+
+        .feature p {
+            color: #737373;
+            font-size: 0.9375rem;
+            line-height: 1.6;
+        }
+
+        footer {
+            margin-top: 6rem;
+            padding-top: 2rem;
+            border-top: 1px solid #e5e5e5;
+            text-align: center;
+            color: #737373;
+            font-size: 0.875rem;
+        }
+
+        footer a {
+            color: #171717;
+            text-decoration: none;
+            transition: opacity 0.15s ease;
+        }
+
+        footer a:hover {
+            opacity: 0.7;
+        }
+
+        @media (max-width: 640px) {
+            .game-avatar {
+                width: 150px;
+                height: 150px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .videos-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="breadcrumb">
+            <a href="{{BASE_PATH}}">← encorpora.io</a> / <a href="{{BASE_PATH}}corpan/">Corpán</a> / <a href="{{BASE_PATH}}corpan/games/">Games</a>
+        </div>
+
+        <header>
+            <div class="logo-container">
+                <img src="{{GAME_AVATAR}}" alt="{{GAME_NAME}}" class="game-avatar">
+            </div>
+            <h1>{{GAME_NAME}}</h1>
+            <p class="tagline">{{GAME_DESCRIPTION}}</p>
+            <p class="version">Version {{GAME_VERSION}}</p>
+
+            <div class="store-links">
+                <a href="https://apps.apple.com/gb/app/corp%C3%A1n/id6746082061" class="store-button" target="_blank" rel="noopener">
+                    Download on iOS
+                </a>
+                <a href="https://play.google.com/store/apps/details?id=com.corpora.corpan" class="store-button" target="_blank" rel="noopener">
+                    Get it on Android
+                </a>
+            </div>
+            <p class="note">Play this game inside the Corpán app</p>
+        </header>
+
+        <main>
+            {{VIDEO_SECTION}}
+
+            <div class="section">
+                <h2>About This Game</h2>
+                <div class="features">
+                    <div class="feature">
+                        <h3>Interactive Learning</h3>
+                        <p>Practice language skills through engaging gameplay</p>
+                    </div>
+                    <div class="feature">
+                        <h3>Native Audio</h3>
+                        <p>Hear authentic pronunciation with TTS support</p>
+                    </div>
+                    <div class="feature">
+                        <h3>Offline Ready</h3>
+                        <p>Play anytime without an internet connection</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>
+                <a href="https://github.com/corpora-inc/encorpora/tree/main/corpan/games/{{GAME_ID}}" target="_blank" rel="noopener">
+                    View on GitHub
+                </a>
+                ·
+                <a href="https://encorpora.io" target="_blank" rel="noopener">
+                    encorpora.io
+                </a>
+            </p>
+        </footer>
+    </div>
+</body>
+</html>
