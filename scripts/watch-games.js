@@ -9,7 +9,21 @@ const fs = require('fs');
 const path = require('path');
 
 const GAMES_DIR = path.join(__dirname, 'corpan', 'games');
-const OUTPUT_DIR = path.join(__dirname, 'io', 'out', 'corpan', 'games');
+
+const normalizeBasePath = (value) => {
+  const trimmed = (value || '').trim();
+  if (!trimmed || trimmed === '/') {
+    return '';
+  }
+  const normalized = trimmed.startsWith('/') ? trimmed : `/${trimmed}`;
+  return normalized.replace(/\/$/, '');
+};
+
+const basePath = normalizeBasePath(process.env.ENCORPORA_BASE_PATH);
+const outputRoot = basePath
+  ? path.join(__dirname, 'io', 'out', basePath.replace(/^\//, ''))
+  : path.join(__dirname, 'io', 'out');
+const OUTPUT_DIR = path.join(outputRoot, 'corpan', 'games');
 
 function copyGame(gameName) {
   const srcDir = path.join(GAMES_DIR, gameName, 'dist');

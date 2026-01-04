@@ -249,12 +249,12 @@
 <body>
     <div class="container">
         <div class="breadcrumb">
-            <a href="/">← encorpora.io</a> / <a href="/corpan/">Corpán</a>
+            <a href="{{BASE_PATH}}">← encorpora.io</a> / <a href="{{BASE_PATH}}corpan/">Corpán</a>
         </div>
 
         <header>
             <div class="logo-container">
-                <img src="/assets/logo-512.png" alt="Corpán" class="logo">
+                <img src="{{BASE_PATH}}assets/logo-512.png" alt="Corpán" class="logo">
             </div>
             <h1>Corpán Games</h1>
             <p class="tagline">Interactive language learning games</p>
@@ -282,10 +282,11 @@
     <script>
         const games = {{GAMES_DATA}};
         const container = document.getElementById('games-container');
+        const basePath = "{{BASE_PATH}}";
 
         // Map game IDs to their avatar images
         const gameAvatars = {
-            'hover-runner': '/assets/hover-runner-avatar.png'
+            'hover-runner': `${basePath}assets/hover-runner-avatar.png`
         };
 
         if (games.length === 0) {

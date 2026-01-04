@@ -33,6 +33,13 @@ https://corpora-inc.github.io/encorpora/
 └── _next/                        # Next.js assets
 ```
 
+## Base path support
+
+The build supports both GitHub Pages (`/encorpora`) and a custom domain root by setting `ENCORPORA_BASE_PATH` at build time:
+
+- GitHub Pages: `ENCORPORA_BASE_PATH=/encorpora`
+- Custom domain: leave `ENCORPORA_BASE_PATH` empty
+
 ## How It Works
 
 ### 1. Root Site (`io/`)

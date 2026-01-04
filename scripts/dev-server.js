@@ -16,6 +16,19 @@ const DEV_PORT = 8000;
 const NEXT_PORT = 3000;
 const OUT_DIR = path.join(__dirname, 'io', 'out');
 
+const normalizeBasePath = (value) => {
+  const trimmed = (value || '').trim();
+  if (!trimmed || trimmed === '/') {
+    return '';
+  }
+  const normalized = trimmed.startsWith('/') ? trimmed : `/${trimmed}`;
+  return normalized.replace(/\/$/, '');
+};
+
+const basePath = normalizeBasePath(process.env.ENCORPORA_BASE_PATH);
+const basePathPrefix = basePath ? `${basePath}/` : '';
+const routePrefix = basePathPrefix || '/';
+
 // MIME types
 const MIME_TYPES = {
   '.html': 'text/html',
@@ -76,9 +89,12 @@ const server = http.createServer((req, res) => {
   const url = new URL(req.url, `http://localhost:${DEV_PORT}`);
   const pathname = url.pathname;
 
-  // Serve static files for /corpan and /assets
-  if (pathname.startsWith('/corpan') || pathname.startsWith('/assets')) {
-    let filepath = path.join(OUT_DIR, pathname);
+  // Serve static files for /corpan and /assets (with optional base path)
+  const corpanPrefix = basePath ? `${basePath}/corpan` : '/corpan';
+  const assetsPrefix = basePath ? `${basePath}/assets` : '/assets';
+  if (pathname.startsWith(corpanPrefix) || pathname.startsWith(assetsPrefix)) {
+    const relativePath = pathname.replace(/^\//, '');
+    let filepath = path.join(OUT_DIR, relativePath);
 
     // If it's a directory, try index.html
     if (fs.existsSync(filepath) && fs.statSync(filepath).isDirectory()) {
@@ -106,10 +122,10 @@ server.listen(DEV_PORT, () => {
   console.log(`  Local:   http://localhost:${DEV_PORT}`);
   console.log('');
   console.log('  Routes:');
-  console.log('  • /                  → Next.js (hot reload)');
-  console.log('  • /corpan            → Static (auto rebuild)');
-  console.log('  • /corpan/games      → Static (auto rebuild)');
-  console.log('  • /assets            → Static');
+  console.log(`  • ${routePrefix}         → Next.js (hot reload)`);
+  console.log(`  • ${routePrefix}corpan   → Static (auto rebuild)`);
+  console.log(`  • ${routePrefix}corpan/games → Static (auto rebuild)`);
+  console.log(`  • ${routePrefix}assets   → Static`);
   console.log('');
   console.log('  Press Ctrl+C to stop');
   console.log('');

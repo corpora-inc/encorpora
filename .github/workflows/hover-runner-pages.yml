@@ -22,6 +22,8 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      ENCORPORA_BASE_PATH: /encorpora
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -53,9 +55,10 @@ jobs:
 
       - name: Copy Hover Runner into io/out
         run: |
-          mkdir -p io/out/corpan/games/hover-runner
-          cp corpan/games/hover-runner/manifest.json io/out/corpan/games/hover-runner/
-          cp -R corpan/games/hover-runner/dist/. io/out/corpan/games/hover-runner/
+          OUTPUT_ROOT="io/out${ENCORPORA_BASE_PATH}"
+          mkdir -p "$OUTPUT_ROOT/corpan/games/hover-runner"
+          cp corpan/games/hover-runner/manifest.json "$OUTPUT_ROOT/corpan/games/hover-runner/"
+          cp -R corpan/games/hover-runner/dist/. "$OUTPUT_ROOT/corpan/games/hover-runner/"
 
       - name: Show Final Structure
         run: |

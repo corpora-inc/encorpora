@@ -8,6 +8,21 @@ SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 IO_DIR="$SCRIPT_DIR/io"
 BUILD_DIR="$IO_DIR/out"
 
+BASE_PATH_RAW="${ENCORPORA_BASE_PATH:-}"
+BASE_PATH_STRIPPED="${BASE_PATH_RAW#/}"
+BASE_PATH_STRIPPED="${BASE_PATH_STRIPPED%/}"
+BASE_PATH=""
+BASE_PATH_URL="/"
+OUTPUT_ROOT="$BUILD_DIR"
+
+if [ -n "$BASE_PATH_STRIPPED" ]; then
+  BASE_PATH="/${BASE_PATH_STRIPPED}"
+  BASE_PATH_URL="${BASE_PATH}/"
+  OUTPUT_ROOT="${BUILD_DIR}${BASE_PATH}"
+fi
+
+export ENCORPORA_BASE_PATH="$BASE_PATH"
+
 echo "🏗️  Building complete site (io + corpan + games)..."
 echo ""
 
@@ -43,9 +58,9 @@ echo ""
 
 # Step 4: Copy hover-runner into io/out
 echo "📦 Copying hover-runner into site..."
-mkdir -p "$BUILD_DIR/corpan/games/hover-runner"
-cp "$SCRIPT_DIR/corpan/games/hover-runner/manifest.json" "$BUILD_DIR/corpan/games/hover-runner/"
-cp -R "$SCRIPT_DIR/corpan/games/hover-runner/dist/." "$BUILD_DIR/corpan/games/hover-runner/"
+mkdir -p "$OUTPUT_ROOT/corpan/games/hover-runner"
+cp "$SCRIPT_DIR/corpan/games/hover-runner/manifest.json" "$OUTPUT_ROOT/corpan/games/hover-runner/"
+cp -R "$SCRIPT_DIR/corpan/games/hover-runner/dist/." "$OUTPUT_ROOT/corpan/games/hover-runner/"
 
 echo ""
 echo "✅ Build complete!"
@@ -62,10 +77,10 @@ echo "   Site will be available at:"
 echo "   http://localhost:8000"
 echo ""
 echo "   Browse to:"
-echo "   • http://localhost:8000/ (io/ root site)"
-echo "   • http://localhost:8000/corpan/ (Corpan)"
-echo "   • http://localhost:8000/corpan/games/ (Games listing)"
-echo "   • http://localhost:8000/corpan/games/hover-runner/ (Hover Runner)"
+echo "   • http://localhost:8000${BASE_PATH_URL} (io/ root site)"
+echo "   • http://localhost:8000${BASE_PATH_URL}corpan/ (Corpan)"
+echo "   • http://localhost:8000${BASE_PATH_URL}corpan/games/ (Games listing)"
+echo "   • http://localhost:8000${BASE_PATH_URL}corpan/games/hover-runner/ (Hover Runner)"
 echo ""
 echo "   Press Ctrl+C to stop the server"
 echo ""

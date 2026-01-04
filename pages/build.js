@@ -19,6 +19,18 @@ const TEMPLATES_DIR = path.join(SCRIPT_DIR, 'templates');
 const DATA_DIR = path.join(SCRIPT_DIR, 'data');
 const ASSETS_DIR = path.join(SCRIPT_DIR, 'assets');
 
+function normalizeBasePath(value) {
+  const trimmed = (value || '').trim();
+  if (!trimmed || trimmed === '/') {
+    return '';
+  }
+  const normalized = trimmed.startsWith('/') ? trimmed : `/${trimmed}`;
+  return normalized.replace(/\/$/, '');
+}
+
+const basePath = normalizeBasePath(process.env.ENCORPORA_BASE_PATH);
+const basePathWithSlash = basePath ? `${basePath}/` : '/';
+
 function readTemplate(name) {
   const templatePath = path.join(TEMPLATES_DIR, `${name}.html`);
   return fs.readFileSync(templatePath, 'utf-8');
@@ -51,8 +63,12 @@ function copyDir(src, dest) {
   }
 }
 
+function applyBasePath(html) {
+  return html.replace(/\{\{BASE_PATH\}\}/g, basePathWithSlash);
+}
+
 function buildGameLandingPage(game, outputDir) {
-  const gameLandingTemplate = readTemplate('game-landing');
+  const gameLandingTemplate = applyBasePath(readTemplate('game-landing'));
 
   // Build video section HTML
   let videoSectionHtml = '';
@@ -95,7 +111,7 @@ function buildGameLandingPage(game, outputDir) {
     .replace(/\{\{GAME_NAME\}\}/g, game.name)
     .replace(/\{\{GAME_DESCRIPTION\}\}/g, game.description)
     .replace(/\{\{GAME_VERSION\}\}/g, game.version)
-    .replace(/\{\{GAME_AVATAR\}\}/g, `/assets/${game.id}-avatar.png`)
+    .replace(/\{\{GAME_AVATAR\}\}/g, `${basePathWithSlash}assets/${game.id}-avatar.png`)
     .replace('{{VIDEO_SECTION}}', videoSectionHtml);
 
   // Write file
@@ -107,21 +123,28 @@ function buildGameLandingPage(game, outputDir) {
 function buildPages(outputDir, options = {}) {
   console.log('Building Corpan pages...');
   console.log(`Output directory: ${outputDir}`);
+  if (basePath) {
+    console.log(`Base path: ${basePath}`);
+  }
 
   // Load data
   const gamesData = readData('games');
 
   // Load templates
-  const corpanTemplate = readTemplate('corpan');
-  const gamesTemplate = readTemplate('games');
+  const corpanTemplate = applyBasePath(readTemplate('corpan'));
+  const gamesTemplate = applyBasePath(readTemplate('games'));
+
+  const outputRoot = basePath
+    ? path.join(outputDir, basePath.replace(/^\//, ''))
+    : outputDir;
 
   // Create directory structure for Corpan pages
-  ensureDir(path.join(outputDir, 'corpan'));
-  ensureDir(path.join(outputDir, 'corpan', 'games'));
+  ensureDir(path.join(outputRoot, 'corpan'));
+  ensureDir(path.join(outputRoot, 'corpan', 'games'));
 
   // Build Corpan page
   console.log('Building corpan/index.html...');
-  fs.writeFileSync(path.join(outputDir, 'corpan', 'index.html'), corpanTemplate);
+  fs.writeFileSync(path.join(outputRoot, 'corpan', 'index.html'), corpanTemplate);
 
   // Build Games listing page
   console.log('Building corpan/games/index.html...');
@@ -129,19 +152,19 @@ function buildPages(outputDir, options = {}) {
     '{{GAMES_DATA}}',
     JSON.stringify(gamesData)
   );
-  fs.writeFileSync(path.join(outputDir, 'corpan', 'games', 'index.html'), gamesHtml);
+  fs.writeFileSync(path.join(outputRoot, 'corpan', 'games', 'index.html'), gamesHtml);
 
   // Build game landing pages
   console.log('Building game landing pages...');
   gamesData.forEach(game => {
     console.log(`  - corpan/games/${game.id}/index.html`);
-    buildGameLandingPage(game, outputDir);
+    buildGameLandingPage(game, outputRoot);
   });
 
   // Copy assets directory
   console.log('Copying assets...');
   if (fs.existsSync(ASSETS_DIR)) {
-    copyDir(ASSETS_DIR, path.join(outputDir, 'assets'));
+    copyDir(ASSETS_DIR, path.join(outputRoot, 'assets'));
   }
 
   console.log('✓ Corpan pages built successfully!');
