@@ -141,10 +141,8 @@ function buildPages(outputDir) {
   const corpanTemplate = applyBasePath(readTemplate('corpan'));
   const gamesTemplate = applyBasePath(readTemplate('games'));
 
-  const outputRoot = basePath
-    ? path.join(outputDir, basePath.replace(/^\//, ''))
-    : outputDir;
-
+  // Always write to outputDir directly - GitHub Pages handles base path routing
+  const outputRoot = outputDir;
   const assetsDir = path.join(outputRoot, 'assets');
 
   // Create directory structure for Corpan pages
