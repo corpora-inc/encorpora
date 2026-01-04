@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Footer from "@/components/Footer";
+import { withBasePath } from "@/lib/basePath";
 
 // Load your fonts (adjust or remove if not using Geist)
 const geistSans = Geist({
@@ -15,6 +16,8 @@ const geistMono = Geist_Mono({
 });
 
 // Update metadata to reflect the purpose of your textbooks
+const favicon = withBasePath("/favicon.ico");
+
 export const metadata: Metadata = {
   title: "Encorpora – Structured, No-Frills Textbooks",
   description:
@@ -33,7 +36,7 @@ export const metadata: Metadata = {
     ],
   },
   icons: {
-    icon: "/favicon.ico",
+    icon: favicon,
   },
 };
 

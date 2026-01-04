@@ -28,14 +28,14 @@ Browse games and content at our GitHub Pages site:
 
 ```bash
 # One-command setup
-./setup.sh
+./web/scripts/setup.sh
 
 # Start development server with hot reload
 npm run dev
 ```
 
 Visit **http://localhost:8000** - all changes auto-rebuild:
-- io/ site (Next.js hot reload)
+- web/io/ site (Next.js hot reload)
 - Corpan pages (auto rebuild)
 - Games (auto rebuild)
 
@@ -44,7 +44,7 @@ See [DEVELOPMENT.md](DEVELOPMENT.md) for detailed development guide.
 ### Production Build
 
 ```bash
-npm run build  # Builds to io/out/
+npm run build  # Builds to web/io/out/
 npm run serve  # Test locally
 ```
 

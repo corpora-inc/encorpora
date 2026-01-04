@@ -5,7 +5,9 @@
 set -e  # Exit on error
 
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-IO_DIR="$SCRIPT_DIR/io"
+WEB_DIR="$( cd "$SCRIPT_DIR/.." && pwd )"
+REPO_ROOT="$( cd "$WEB_DIR/.." && pwd )"
+IO_DIR="$WEB_DIR/io"
 BUILD_DIR="$IO_DIR/out"
 
 BASE_PATH_RAW="${ENCORPORA_BASE_PATH:-}"
@@ -23,11 +25,11 @@ fi
 
 export ENCORPORA_BASE_PATH="$BASE_PATH"
 
-echo "🏗️  Building complete site (io + corpan + games)..."
+echo "🏗️  Building complete site (web/io + corpan + games)..."
 echo ""
 
-# Step 1: Build io/ site (root)
-echo "🌐 Building io/ site (root)..."
+# Step 1: Build web/io/ site (root)
+echo "🌐 Building web/io/ site (root)..."
 cd "$IO_DIR"
 
 if [ ! -d "node_modules" ]; then
@@ -38,15 +40,15 @@ fi
 npm run build
 echo ""
 
-# Step 2: Build Corpan pages into io/out
+# Step 2: Build Corpan pages into web/io/out
 echo "📄 Building Corpan pages..."
-cd "$SCRIPT_DIR"
-node "$SCRIPT_DIR/pages/build.js" "$BUILD_DIR"
+cd "$WEB_DIR"
+node "$WEB_DIR/pages/build.js" "$BUILD_DIR"
 echo ""
 
 # Step 3: Build hover-runner
 echo "🎮 Building hover-runner game..."
-cd "$SCRIPT_DIR/corpan/games/hover-runner"
+cd "$REPO_ROOT/corpan/games/hover-runner"
 
 if [ ! -d "node_modules" ]; then
   echo "Installing hover-runner dependencies..."
@@ -56,18 +58,18 @@ fi
 npm run build
 echo ""
 
-# Step 4: Copy hover-runner into io/out
+# Step 4: Copy hover-runner into web/io/out
 echo "📦 Copying hover-runner into site..."
 mkdir -p "$OUTPUT_ROOT/corpan/games/hover-runner"
-cp "$SCRIPT_DIR/corpan/games/hover-runner/manifest.json" "$OUTPUT_ROOT/corpan/games/hover-runner/"
-cp -R "$SCRIPT_DIR/corpan/games/hover-runner/dist/." "$OUTPUT_ROOT/corpan/games/hover-runner/"
+cp "$REPO_ROOT/corpan/games/hover-runner/manifest.json" "$OUTPUT_ROOT/corpan/games/hover-runner/"
+cp -R "$REPO_ROOT/corpan/games/hover-runner/dist/." "$OUTPUT_ROOT/corpan/games/hover-runner/"
 
 echo ""
 echo "✅ Build complete!"
 echo ""
 echo "📁 Site structure:"
 find "$BUILD_DIR" -type f | grep -E "(corpan|assets|manifest)" | sort | sed "s|$BUILD_DIR|  |" | head -20
-echo "  ... (and other io/ site files)"
+echo "  ... (and other web/io/ site files)"
 echo ""
 
 # Step 5: Start local server
@@ -77,7 +79,7 @@ echo "   Site will be available at:"
 echo "   http://localhost:8000"
 echo ""
 echo "   Browse to:"
-echo "   • http://localhost:8000${BASE_PATH_URL} (io/ root site)"
+echo "   • http://localhost:8000${BASE_PATH_URL} (web/io/ root site)"
 echo "   • http://localhost:8000${BASE_PATH_URL}corpan/ (Corpan)"
 echo "   • http://localhost:8000${BASE_PATH_URL}corpan/games/ (Games listing)"
 echo "   • http://localhost:8000${BASE_PATH_URL}corpan/games/hover-runner/ (Hover Runner)"

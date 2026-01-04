@@ -4,9 +4,10 @@ on:
   push:
     branches: ["main"]
     paths:
-      - "io/**"
+      - "web/io/**"
       - "corpan/games/**"
-      - "pages/**"
+      - "web/pages/**"
+      - "web/scripts/**"
       - ".github/workflows/hover-runner-pages.yml"
   workflow_dispatch: {}
 
@@ -34,16 +35,16 @@ jobs:
           node-version: "20"
 
       - name: Install io/ Dependencies
-        working-directory: io
+        working-directory: web/io
         run: npm install
 
       - name: Build io/ Site (Root)
-        working-directory: io
+        working-directory: web/io
         run: npm run build
 
       - name: Build Corpan Pages into io/out
         run: |
-          node pages/build.js io/out
+          node web/pages/build.js web/io/out
 
       - name: Install Hover Runner Dependencies
         working-directory: corpan/games/hover-runner
@@ -55,7 +56,7 @@ jobs:
 
       - name: Copy Hover Runner into io/out
         run: |
-          OUTPUT_ROOT="io/out${ENCORPORA_BASE_PATH}"
+          OUTPUT_ROOT="web/io/out${ENCORPORA_BASE_PATH}"
           mkdir -p "$OUTPUT_ROOT/corpan/games/hover-runner"
           cp corpan/games/hover-runner/manifest.json "$OUTPUT_ROOT/corpan/games/hover-runner/"
           cp -R corpan/games/hover-runner/dist/. "$OUTPUT_ROOT/corpan/games/hover-runner/"
@@ -63,12 +64,12 @@ jobs:
       - name: Show Final Structure
         run: |
           echo "Final site structure:"
-          find io/out -type f | sort
+          find web/io/out -type f | sort
 
       - name: Upload Pages Artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: io/out
+          path: web/io/out
 
   deploy:
     runs-on: ubuntu-latest

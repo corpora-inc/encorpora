@@ -1,6 +1,7 @@
 // app/components/FeaturedBooks.tsx
 "use client";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
@@ -134,13 +135,13 @@ const FeaturedBooks = () => {
         </AnimatePresence>
 
         <div className="text-center mt-12 sm:mt-16">
-          <a
+          <Link
             href="/books"
             className="text-black font-semibold flex items-center gap-2 border border-gray-200 hover:border-black transition-all duration-200 text-base sm:text-lg px-6 py-3 rounded-full mx-auto w-fit"
           >
             View Complete Collection
             <span className="ml-1">&#8594;</span>
-          </a>
+          </Link>
         </div>
       </div>
     </section>

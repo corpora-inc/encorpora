@@ -18,15 +18,15 @@ encorpora/
 │   ├── cor/             # Core models (Entry, Translation, Pack)
 │   └── db.sqlite3       # Development database
 │
-├── io/                  # Marketing website (Next.js)
+├── web/io/                  # Marketing website (Next.js)
 │   └── out/             # Built static site
 │
-├── pages/               # Corpán pages for GitHub Pages
+├── web/pages/               # Corpán pages for GitHub Pages
 │   ├── templates/       # HTML templates
 │   ├── data/           # JSON data
 │   └── assets/         # Static assets
 │
-└── scripts/            # Dev tooling for Pages site
+└── web/scripts/            # Dev tooling for Pages site
     ├── dev-server.js   # Development proxy server
     └── watch-games.js  # Game build watcher
 ```
@@ -97,7 +97,7 @@ python make_release_sqlite.py
 - **Pack**: Ordered collections of entries
 - **Narrator**: TTS voice metadata
 
-### 3. Marketing Site (`io/`)
+### 3. Marketing Site (`web/io/`)
 
 Next.js-based marketing website.
 
@@ -109,16 +109,16 @@ Next.js-based marketing website.
 
 **Development:**
 ```bash
-cd io
+cd web/io
 
 # Dev mode
 npm run dev  # Visit http://localhost:3000
 
 # Build
-npm run build  # Outputs to io/out/
+npm run build  # Outputs to web/io/out/
 ```
 
-### 4. Corpán Pages (`pages/`)
+### 4. Corpán Pages (`web/pages/`)
 
 Static promotional pages for GitHub Pages deployment.
 
@@ -133,10 +133,10 @@ Static promotional pages for GitHub Pages deployment.
 npm run dev  # Starts full composed dev environment
 
 # Or just pages:
-node pages/watch.js
+node web/pages/watch.js
 ```
 
-See `pages/DEVELOPMENT.md` for detailed Pages development guide.
+See `web/pages/DEVELOPMENT.md` for detailed Pages development guide.
 
 ### 5. Games (`corpan/games/`)
 
@@ -186,7 +186,7 @@ python make_release_sqlite.py
 npm run dev
 # Visit http://localhost:8000
 
-# See pages/DEVELOPMENT.md for details
+# See web/pages/DEVELOPMENT.md for details
 ```
 
 ### Creating a New Game
@@ -199,8 +199,8 @@ cp -r corpan/games/sdk corpan/games/my-game
 cd corpan/games/my-game
 # Edit src/ files
 
-# 3. Add to pages/data/games.json
-# 4. Update scripts/watch-games.js
+# 3. Add to web/pages/data/games.json
+# 4. Update web/scripts/watch-games.js
 ```
 
 ## Build & Deployment
@@ -213,15 +213,15 @@ npm run build
 ```
 
 This builds:
-1. Next.js site → `io/out/`
-2. Corpán pages → `io/out/corpan/`
-3. Games → `io/out/corpan/games/`
+1. Next.js site → `web/io/out/`
+2. Corpán pages → `web/io/out/corpan/`
+3. Games → `web/io/out/corpan/games/`
 
 ### Deploy to GitHub Pages
 
 GitHub Actions automatically deploys on push:
 - Workflow: `.github/workflows/hover-runner-pages.yml`
-- Triggers: Changes to `io/`, `pages/`, `corpan/games/`, or workflow
+- Triggers: Changes to `web/io/`, `web/pages/`, `corpan/games/`, or workflow
 - Output: `https://corpora-inc.github.io/encorpora/`
 
 ### Build Corpán App
@@ -250,8 +250,8 @@ npm install  # Installs concurrently, chokidar, wait-on
 ### Project Specific
 
 ```bash
-# io/ site
-cd io && npm install
+# web/io/ site
+cd web/io && npm install
 
 # corpan-app
 cd corpan/corpan-app && npm install
@@ -276,7 +276,7 @@ PORT=8001 npm run dev
 
 ```bash
 # Pages site
-npm run clean  # Removes io/out, io/.next
+npm run clean  # Removes web/io/out, web/io/.next
 
 # Corpán app
 cd corpan/corpan-app
@@ -301,7 +301,7 @@ npm run dev
 ## Documentation
 
 - **This file**: Overview of entire monorepo
-- **pages/DEVELOPMENT.md**: Pages site development
+- **web/pages/DEVELOPMENT.md**: Pages site development
 - **corpan/CLAUDE.md**: Corpán app development
 - **corpan/games/sdk/README.md**: Game development
 - **dja/README.md**: Django CMS (if exists)
@@ -317,10 +317,10 @@ npm run dev
 
 ### Pages Composition
 
-1. **io/**: Next.js marketing site (root)
-2. **pages/**: Static Corpán pages compose into `io/out/corpan/`
-3. **games/**: Game builds compose into `io/out/corpan/games/`
-4. **Result**: Single unified site at `io/out/`
+1. **web/io/**: Next.js marketing site (root)
+2. **web/pages/**: Static Corpán pages compose into `web/io/out/corpan/`
+3. **games/**: Game builds compose into `web/io/out/corpan/games/`
+4. **Result**: Single unified site at `web/io/out/`
 
 ### Game System
 
@@ -348,7 +348,7 @@ npm run dev
 ## Contributing
 
 - **App development**: See `corpan/CLAUDE.md`
-- **Pages site**: See `pages/DEVELOPMENT.md`
+- **Pages site**: See `web/pages/DEVELOPMENT.md`
 - **Games**: See `corpan/games/sdk/README.md`
 
 ## Platform-Specific Notes

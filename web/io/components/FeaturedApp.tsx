@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
 import { APPS_INFO } from "@/lib/appsInfo";
+import { withBasePath } from "@/lib/basePath";
 
 const FeaturedApps = () => {
   return (
@@ -54,7 +55,10 @@ const FeaturedApps = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.3 }}
         >
-          {APPS_INFO.map((app, index) => (
+          {APPS_INFO.map((app, index) => {
+            const iconSrc = app.icon ? withBasePath(app.icon) : "";
+
+            return (
             <motion.div
               key={app.id}
               initial={{ opacity: 0, y: 20 }}
@@ -72,9 +76,9 @@ const FeaturedApps = () => {
               <div className="p-6">
                 <div className="flex items-center gap-4 mb-5">
                   <div className="w-12 h-12 rounded-lg bg-gray-50 flex items-center justify-center overflow-hidden">
-                    {app.icon ? (
+                    {iconSrc ? (
                       <img
-                        src={app.icon}
+                        src={iconSrc}
                         alt={`${app.title} icon`}
                         className="w-full h-full object-cover"
                       />
@@ -101,30 +105,36 @@ const FeaturedApps = () => {
                     </Button>
                   </DropdownMenuTrigger>
                   <DropdownMenuContent className="!w-full min-w-[200px] bg-white border border-gray-100 shadow-lg rounded-lg">
-                    {app.platforms.map((platform, idx) => (
-                      <DropdownMenuItem
-                        key={idx}
-                        asChild
-                        className="px-4 py-2.5 hover:bg-gray-50 cursor-pointer"
-                      >
-                        <a
-                          href={platform.link}
-                          target={platform.link.startsWith('/') ? '_self' : '_blank'}
-                          rel={platform.link.startsWith('/') ? undefined : 'noopener noreferrer'}
-                          className="flex items-center gap-3 w-full"
+                    {app.platforms.map((platform, idx) => {
+                      const platformHref = withBasePath(platform.link);
+                      const isInternal = platformHref.startsWith("/");
+
+                      return (
+                        <DropdownMenuItem
+                          key={idx}
+                          asChild
+                          className="px-4 py-2.5 hover:bg-gray-50 cursor-pointer"
                         >
-                          <div className="w-5 h-5 flex items-center justify-center">
-                            {platform.icon}
-                          </div>
-                          <span className="font-medium">{platform.name}</span>
-                        </a>
-                      </DropdownMenuItem>
-                    ))}
+                          <a
+                            href={platformHref}
+                            target={isInternal ? "_self" : "_blank"}
+                            rel={isInternal ? undefined : "noopener noreferrer"}
+                            className="flex items-center gap-3 w-full"
+                          >
+                            <div className="w-5 h-5 flex items-center justify-center">
+                              {platform.icon}
+                            </div>
+                            <span className="font-medium">{platform.name}</span>
+                          </a>
+                        </DropdownMenuItem>
+                      );
+                    })}
                   </DropdownMenuContent>
                 </DropdownMenu>
               </div>
             </motion.div>
-          ))}
+            );
+          })}
         </motion.div>
 
         {/* Simple bar accent for section finish */}

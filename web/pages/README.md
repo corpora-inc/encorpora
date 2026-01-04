@@ -17,27 +17,24 @@ This creates a world-class, understated interface where content shines.
 ## Structure
 
 ```
-pages/
+web/pages/
 ├── templates/          # HTML templates
 │   ├── corpan.html     # Corpan app page
 │   └── games.html      # Games listing page
 ├── data/               # JSON data files
 │   └── games.json      # Games metadata
-├── assets/             # Static assets
-│   ├── logo-512.png    # Corpán logo (512x512)
-│   └── hover-runner-avatar.png  # Game avatars
 ├── build.js            # Build script
 └── package.json        # Package metadata
 ```
 
 ## Architecture
 
-These pages are **composed** into the `io/` site build:
+These pages are **composed** into the `web/io/` site build:
 
-1. `io/` Next.js site builds → `io/out/` (root)
-2. This build script adds → `io/out/corpan/`
-3. Game builds are copied → `io/out/corpan/games/`
-4. Final result: complete site in `io/out/`
+1. `web/io/` Next.js site builds → `web/io/out/` (root)
+2. This build script adds → `web/io/out/corpan/`
+3. Game builds are copied → `web/io/out/corpan/games/`
+4. Final result: complete site in `web/io/out/`
 
 ## Usage
 
@@ -47,11 +44,10 @@ These pages are **composed** into the `io/` site build:
 node build.js <output-directory>
 ```
 
-Example (composing into io/out):
+Example (composing into web/io/out):
 ```bash
-cd io && npm run build  # First build io/ site
-cd ..
-node pages/build.js io/out  # Add Corpan pages
+cd web/io && npm run build && cd ../..  # First build web/io/ site
+node web/pages/build.js web/io/out  # Add Corpan pages
 ```
 
 This generates:
@@ -62,28 +58,25 @@ This generates:
 ### Adding a new game
 
 1. Edit `data/games.json` with game metadata
-2. Add avatar to `assets/my-game-avatar.png` (optional)
-3. Update `templates/games.html` gameAvatars map
-4. Update GitHub workflow to build and copy game
+2. (Optional) Set `avatarSource` to a canonical repo asset
+3. Update GitHub workflow to build and copy game
 
 ### Local testing
 
-Use the root `serve-local.sh` script which builds everything:
+Use the `web/scripts/serve-local.sh` script which builds everything:
 
 ```bash
 # From repo root
-./serve-local.sh
+./web/scripts/serve-local.sh
 ```
 
 ## Final Deployed Structure
 
 ```
 https://corpora-inc.github.io/encorpora/
-├── index.html                  # io/ root site
-├── books.html                  # io/ books page
-├── assets/
-│   ├── logo-512.png            # Corpán logo
-│   └── hover-runner-avatar.png # Game avatars
+├── index.html                  # web/io/ root site
+├── books.html                  # web/io/ books page
+├── assets/                     # Copied from canonical repo assets
 ├── corpan/
 │   ├── index.html              # Corpan landing
 │   └── games/

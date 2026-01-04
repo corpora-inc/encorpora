@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Watch game builds and copy to io/out when they change
+ * Watch game builds and copy to web/io/out when they change
  */
 
 const chokidar = require('chokidar');
@@ -8,7 +8,7 @@ const { execSync } = require('child_process');
 const fs = require('fs');
 const path = require('path');
 
-const GAMES_DIR = path.join(__dirname, 'corpan', 'games');
+const GAMES_DIR = path.join(__dirname, '..', '..', 'corpan', 'games');
 
 const normalizeBasePath = (value) => {
   const trimmed = (value || '').trim();
@@ -21,8 +21,8 @@ const normalizeBasePath = (value) => {
 
 const basePath = normalizeBasePath(process.env.ENCORPORA_BASE_PATH);
 const outputRoot = basePath
-  ? path.join(__dirname, 'io', 'out', basePath.replace(/^\//, ''))
-  : path.join(__dirname, 'io', 'out');
+  ? path.join(__dirname, '..', 'io', 'out', basePath.replace(/^\//, ''))
+  : path.join(__dirname, '..', 'io', 'out');
 const OUTPUT_DIR = path.join(outputRoot, 'corpan', 'games');
 
 function copyGame(gameName) {

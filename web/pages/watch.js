@@ -9,6 +9,7 @@ const { execSync } = require('child_process');
 const path = require('path');
 
 const SCRIPT_DIR = __dirname;
+const REPO_ROOT = path.join(SCRIPT_DIR, '..', '..');
 const OUTPUT_DIR = path.join(SCRIPT_DIR, '..', 'io', 'out');
 
 function build() {
@@ -31,7 +32,8 @@ build();
 const watchPaths = [
   path.join(SCRIPT_DIR, 'templates', '**', '*.html'),
   path.join(SCRIPT_DIR, 'data', '**', '*.json'),
-  path.join(SCRIPT_DIR, 'assets', '**', '*')
+  path.join(REPO_ROOT, 'corpan', 'corpan-app', 'src-tauri', 'icons', '512x512.png'),
+  path.join(REPO_ROOT, 'corpan', 'games', '**', '*-avatar.*')
 ];
 
 console.log('[pages] Setting up watchers for:');
@@ -68,7 +70,8 @@ watcher.on('ready', () => {
   console.log('[pages] Watching:');
   console.log('  - templates/**/*.html');
   console.log('  - data/**/*.json');
-  console.log('  - assets/**/*');
+  console.log('  - corpan/corpan-app/src-tauri/icons/512x512.png');
+  console.log('  - corpan/games/**/**/*-avatar.*');
   console.log('[pages] Try editing a file to trigger rebuild...');
 });
 

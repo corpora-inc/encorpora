@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 /**
  * Development server that composes:
- * - Next.js dev server (io/) at root
- * - Static Corpan pages from io/out/corpan
- * - Static game builds from io/out/corpan/games
+ * - Next.js dev server (web/io/) at root
+ * - Static Corpan pages from web/io/out/corpan
+ * - Static game builds from web/io/out/corpan/games
  */
 
 const http = require('http');
@@ -14,7 +14,7 @@ const { URL } = require('url');
 
 const DEV_PORT = 8000;
 const NEXT_PORT = 3000;
-const OUT_DIR = path.join(__dirname, 'io', 'out');
+const OUT_DIR = path.join(__dirname, '..', 'io', 'out');
 
 const normalizeBasePath = (value) => {
   const trimmed = (value || '').trim();

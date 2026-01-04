@@ -15,8 +15,8 @@ This document explains how to develop the Corpán pages website (GitHub Pages) l
 # Root dependencies (dev orchestration)
 npm install
 
-# io/ site dependencies
-cd io && npm install && cd ..
+# web/io/ site dependencies
+cd web/io && npm install && cd ../..
 
 # Game dependencies
 cd corpan/games/hover-runner && npm install --legacy-peer-deps && cd ../../..
@@ -31,10 +31,10 @@ npm run dev
 ```
 
 This starts:
-- **io/** - Next.js dev server (port 3000) with hot reload
-- **pages/** - Watcher that rebuilds Corpan pages on change
+- **web/io/** - Next.js dev server (port 3000) with hot reload
+- **web/pages/** - Watcher that rebuilds Corpan pages on change
 - **games/** - Vite watch build for hover-runner
-- **watch-games** - Copies game builds to io/out
+- **watch-games** - Copies game builds to web/io/out
 - **serve** - Dev proxy server (port 8000) that composes everything
 
 Open **http://localhost:8000** and you'll see:
@@ -47,34 +47,34 @@ Open **http://localhost:8000** and you'll see:
 
 | Path | Source | Trigger |
 |------|--------|---------|
-| `/` | `io/` | Any file change in io/ (Next.js hot reload) |
-| `/corpan` | `pages/` | Template or data changes |
+| `/` | `web/io/` | Any file change in web/io/ (Next.js hot reload) |
+| `/corpan` | `web/pages/` | Template or data changes |
 | `/corpan/games/hover-runner` | `corpan/games/hover-runner/` | Source file changes |
-| `/assets` | `pages/assets/` | Asset changes |
+| `/assets` | `corpan/**` (canonical assets) | Avatar or logo updates |
 
 ## Architecture
 
 ### Composable Build System
 
 ```
-io/                    → Next.js site (root)
-pages/                 → Corpan page templates
+web/io/                    → Next.js site (root)
+web/pages/                 → Corpan page templates
 corpan/games/*/        → Individual game builds
          ↓
     Composed into
          ↓
-    io/out/            → Complete site
+    web/io/out/            → Complete site
 ```
 
 ### Dev Mode Flow
 
 1. **Next.js dev server** runs on port 3000 (memory, hot reload)
-2. **pages/watch.js** watches templates → rebuilds to `io/out/corpan/`
+2. **web/pages/watch.js** watches templates → rebuilds to `web/io/out/corpan/`
 3. **Vite watch** rebuilds games → `corpan/games/*/dist/`
-4. **scripts/watch-games.js** copies game builds → `io/out/corpan/games/`
-5. **scripts/dev-server.js** (port 8000) proxies:
+4. **web/scripts/watch-games.js** copies game builds → `web/io/out/corpan/games/`
+5. **web/scripts/dev-server.js** (port 8000) proxies:
    - `/` → Next.js (port 3000)
-   - `/corpan`, `/assets` → Static files from `io/out/`
+   - `/corpan`, `/assets` → Static files from `web/io/out/`
 
 ## Development Commands
 
@@ -94,10 +94,10 @@ npm run serve
 
 ## Individual Component Development
 
-### Work on io/ site only
+### Work on web/io/ site only
 
 ```bash
-cd io
+cd web/io
 npm run dev
 # Visit http://localhost:3000
 ```
@@ -106,10 +106,10 @@ npm run dev
 
 ```bash
 # Terminal 1: Watch and rebuild
-node pages/watch.js
+node web/pages/watch.js
 
 # Terminal 2: Serve
-cd io/out && python3 -m http.server 8000
+cd web/io/out && python3 -m http.server 8000
 ```
 
 ### Work on hover-runner game only
@@ -130,10 +130,10 @@ npm run dev:watch  # Builds to dist/ on change
 2. Add `dev:watch` script to game's `package.json`
 3. Update root `package.json`:
    - Add to `dev:games` (or create separate dev:my-game)
-   - Update `scripts/watch-games.js` to watch new game
+   - Update `web/scripts/watch-games.js` to watch new game
    - Update `build:games` to build new game
-4. Add metadata to `pages/data/games.json`
-5. Optionally add avatar to `pages/assets/`
+4. Add metadata to `web/pages/data/games.json`
+5. (Optional) Add `avatarSource` in `web/pages/data/games.json`
 
 ## Troubleshooting
 
@@ -170,8 +170,8 @@ curl http://localhost:3000
 ### Game not appearing
 
 1. Check game built to `dist/`: `ls corpan/games/hover-runner/dist/`
-2. Check copied to output: `ls io/out/corpan/games/hover-runner/`
-3. Check manifest exists: `cat io/out/corpan/games/hover-runner/manifest.json`
+2. Check copied to output: `ls web/io/out/corpan/games/hover-runner/`
+3. Check manifest exists: `cat web/io/out/corpan/games/hover-runner/manifest.json`
 
 ## Production Build
 
@@ -180,7 +180,7 @@ curl http://localhost:3000
 npm run build
 
 # Verify output
-ls -la io/out/corpan/games/
+ls -la web/io/out/corpan/games/
 
 # Test production build locally
 npm run serve
@@ -189,10 +189,10 @@ npm run serve
 
 ## File Watching Behavior
 
-- **io/**: Next.js handles watching and hot reload
-- **pages/**: Chokidar watches `templates/`, `data/`, `assets/` (via `pages/watch.js`)
+- **web/io/**: Next.js handles watching and hot reload
+- **web/pages/**: Chokidar watches `templates/`, `data/`, and canonical asset sources (via `web/pages/watch.js`)
 - **games/**: Vite watches source files, builds to `dist/`
-- **watch-games**: Chokidar watches `dist/` and `manifest.json`, copies to `io/out/` (via `scripts/watch-games.js`)
+- **watch-games**: Chokidar watches `dist/` and `manifest.json`, copies to `web/io/out/` (via `web/scripts/watch-games.js`)
 
 This multi-layer watching ensures:
 - Fast rebuilds (only affected parts rebuild)
@@ -202,16 +202,13 @@ This multi-layer watching ensures:
 ## Directory Structure
 
 ```
-pages/
+web/pages/
 ├── templates/           # HTML templates with placeholders
 │   ├── corpan.html     # /corpan landing page
 │   ├── games.html      # /corpan/games listing
 │   └── game-landing.html # Individual game landing pages
 ├── data/               # JSON data files
 │   └── games.json      # Game metadata
-├── assets/             # Static assets (images, etc.)
-│   ├── logo-512.png
-│   └── hover-runner-avatar.png
 ├── build.js            # Build script (composable)
 ├── watch.js            # File watcher for dev mode
 └── DEVELOPMENT.md      # This file
@@ -234,4 +231,4 @@ Templates use `{{PLACEHOLDER}}` syntax:
 - `{{GAME_AVATAR}}` - Path to avatar image
 - `{{VIDEO_SECTION}}` - Generated HTML with YouTube embeds
 
-Build script (`build.js`) reads templates, replaces placeholders, and writes to `io/out/corpan/`.
+Build script (`build.js`) reads templates, replaces placeholders, and writes to `web/io/out/corpan/`.

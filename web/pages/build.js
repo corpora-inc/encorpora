@@ -15,9 +15,17 @@ const path = require('path');
 
 // Paths
 const SCRIPT_DIR = __dirname;
+const REPO_ROOT = path.join(SCRIPT_DIR, '..', '..');
 const TEMPLATES_DIR = path.join(SCRIPT_DIR, 'templates');
 const DATA_DIR = path.join(SCRIPT_DIR, 'data');
-const ASSETS_DIR = path.join(SCRIPT_DIR, 'assets');
+const CORPAN_LOGO_SOURCE = path.join(
+  REPO_ROOT,
+  'corpan',
+  'corpan-app',
+  'src-tauri',
+  'icons',
+  '512x512.png'
+);
 
 function normalizeBasePath(value) {
   const trimmed = (value || '').trim();
@@ -47,20 +55,19 @@ function ensureDir(dir) {
   }
 }
 
-function copyDir(src, dest) {
-  ensureDir(dest);
-  const entries = fs.readdirSync(src, { withFileTypes: true });
-
-  for (const entry of entries) {
-    const srcPath = path.join(src, entry.name);
-    const destPath = path.join(dest, entry.name);
-
-    if (entry.isDirectory()) {
-      copyDir(srcPath, destPath);
-    } else {
-      fs.copyFileSync(srcPath, destPath);
-    }
+function copyFileSafe(sourcePath, destPath) {
+  if (!fs.existsSync(sourcePath)) {
+    console.warn(`[pages] Missing asset: ${sourcePath}`);
+    return false;
   }
+  ensureDir(path.dirname(destPath));
+  fs.copyFileSync(sourcePath, destPath);
+  return true;
+}
+
+function resolveAssetSource(relativePath) {
+  if (!relativePath) return null;
+  return path.join(REPO_ROOT, relativePath);
 }
 
 function applyBasePath(html) {
@@ -111,7 +118,7 @@ function buildGameLandingPage(game, outputDir) {
     .replace(/\{\{GAME_NAME\}\}/g, game.name)
     .replace(/\{\{GAME_DESCRIPTION\}\}/g, game.description)
     .replace(/\{\{GAME_VERSION\}\}/g, game.version)
-    .replace(/\{\{GAME_AVATAR\}\}/g, `${basePathWithSlash}assets/${game.id}-avatar.png`)
+    .replace(/\{\{GAME_AVATAR\}\}/g, game.avatarUrl || `${basePathWithSlash}assets/${game.id}-avatar.png`)
     .replace('{{VIDEO_SECTION}}', videoSectionHtml);
 
   // Write file
@@ -120,7 +127,7 @@ function buildGameLandingPage(game, outputDir) {
   fs.writeFileSync(path.join(gameDir, 'index.html'), html);
 }
 
-function buildPages(outputDir, options = {}) {
+function buildPages(outputDir) {
   console.log('Building Corpan pages...');
   console.log(`Output directory: ${outputDir}`);
   if (basePath) {
@@ -138,9 +145,37 @@ function buildPages(outputDir, options = {}) {
     ? path.join(outputDir, basePath.replace(/^\//, ''))
     : outputDir;
 
+  const assetsDir = path.join(outputRoot, 'assets');
+
   // Create directory structure for Corpan pages
   ensureDir(path.join(outputRoot, 'corpan'));
   ensureDir(path.join(outputRoot, 'corpan', 'games'));
+
+  // Copy shared assets from canonical locations
+  console.log('Copying assets...');
+  copyFileSafe(CORPAN_LOGO_SOURCE, path.join(assetsDir, 'logo-512.png'));
+
+  const gamesWithAssets = gamesData.map((game) => {
+    const fallbackAvatar = path.join(
+      'corpan',
+      'games',
+      game.id,
+      `${game.id}-avatar.png`
+    );
+    const avatarSourcePath = resolveAssetSource(game.avatarSource || fallbackAvatar);
+    const avatarExt = avatarSourcePath ? path.extname(avatarSourcePath) || '.png' : '.png';
+    const avatarFileName = `${game.id}-avatar${avatarExt}`;
+    const avatarDest = path.join(assetsDir, avatarFileName);
+
+    if (avatarSourcePath) {
+      copyFileSafe(avatarSourcePath, avatarDest);
+    }
+
+    return {
+      ...game,
+      avatarUrl: `${basePathWithSlash}assets/${avatarFileName}`,
+    };
+  });
 
   // Build Corpan page
   console.log('Building corpan/index.html...');
@@ -150,28 +185,22 @@ function buildPages(outputDir, options = {}) {
   console.log('Building corpan/games/index.html...');
   const gamesHtml = gamesTemplate.replace(
     '{{GAMES_DATA}}',
-    JSON.stringify(gamesData)
+    JSON.stringify(gamesWithAssets)
   );
   fs.writeFileSync(path.join(outputRoot, 'corpan', 'games', 'index.html'), gamesHtml);
 
   // Build game landing pages
   console.log('Building game landing pages...');
-  gamesData.forEach(game => {
+  gamesWithAssets.forEach(game => {
     console.log(`  - corpan/games/${game.id}/index.html`);
     buildGameLandingPage(game, outputRoot);
   });
-
-  // Copy assets directory
-  console.log('Copying assets...');
-  if (fs.existsSync(ASSETS_DIR)) {
-    copyDir(ASSETS_DIR, path.join(outputRoot, 'assets'));
-  }
 
   console.log('✓ Corpan pages built successfully!');
   console.log('\nGenerated:');
   console.log('  - corpan/index.html');
   console.log('  - corpan/games/index.html');
-  gamesData.forEach(game => {
+  gamesWithAssets.forEach(game => {
     console.log(`  - corpan/games/${game.id}/index.html`);
   });
   console.log('  - assets/ (images)');

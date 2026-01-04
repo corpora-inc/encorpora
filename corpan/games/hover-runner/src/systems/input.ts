@@ -33,6 +33,17 @@ export const initInput = (
   // Screen orientation detection for sensor remapping
   const getScreenOrientation = (): ScreenOrientationType => {
     const orientation = window.screen?.orientation
+    if (orientation?.type) {
+      const type = orientation.type
+      if (
+        type === "portrait-primary" ||
+        type === "portrait-secondary" ||
+        type === "landscape-primary" ||
+        type === "landscape-secondary"
+      ) {
+        return type
+      }
+    }
     let angle = 0
     if (orientation?.angle != null) {
       angle = orientation.angle
@@ -51,22 +62,18 @@ export const initInput = (
       isPortrait = window.innerHeight >= window.innerWidth
     }
 
-    const isLandscape = !isPortrait
+    const normalizedAngle = ((angle % 360) + 360) % 360
+    if (isPortrait) {
+      if (normalizedAngle === 180 || normalizedAngle === 270) {
+        return "portrait-secondary"
+      }
+      return "portrait-primary"
+    }
 
-    if (angle === 0) {
-      return isLandscape ? "landscape-primary" : "portrait-primary"
-    }
-    if (angle === 180) {
-      return isLandscape ? "landscape-secondary" : "portrait-secondary"
-    }
-    if (angle === 90) {
-      return "landscape-primary"
-    }
-    if (angle === 270 || angle === -90) {
+    if (normalizedAngle === 180 || normalizedAngle === 270) {
       return "landscape-secondary"
     }
-
-    return isLandscape ? "landscape-primary" : "portrait-primary"
+    return "landscape-primary"
   }
 
   const onKey = (event: KeyboardEvent) => {

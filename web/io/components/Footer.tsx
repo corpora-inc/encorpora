@@ -1,4 +1,5 @@
 import { FC } from "react";
+import Link from "next/link";
 import {
   FaEnvelope,
   FaGithub,
@@ -7,6 +8,7 @@ import {
 import { SiGitconnected } from "react-icons/si";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { withBasePath } from "@/lib/basePath";
 
 interface FooterLink {
   label: string;
@@ -14,6 +16,7 @@ interface FooterLink {
 }
 
 const Footer: FC = () => {
+  const logoSrc = withBasePath("/logo-og.webp");
   const quickLinks: FooterLink[] = [
     { label: "Shop", href: "https://shop.encorpora.io/" },
     { label: "Github", href: "https://github.com/corpora-inc" },
@@ -52,7 +55,7 @@ const Footer: FC = () => {
           <div className="md:col-span-4">
             <div className="flex items-center space-x-2 mb-4">
               <Avatar className="rounded-lg">
-                <AvatarImage src="/logo-og.webp" alt="Corpora logo" />
+                <AvatarImage src={logoSrc} alt="Corpora logo" />
                 <AvatarFallback>CN</AvatarFallback>
               </Avatar>
               <span className="text-xl font-bold tracking-wider">
@@ -139,12 +142,12 @@ const Footer: FC = () => {
           <div className="flex items-center">
             <span className="w-1 h-1 bg-gray-300 rounded-full"></span>
 
-            <a
+            <Link
               href="/privacy"
               className="text-xs text-gray-500 hover:text-black transition-colors duration-300 mx-3"
             >
               Privacy Policy
-            </a>
+            </Link>
           </div>
         </div>
       </div>

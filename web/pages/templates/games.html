@@ -282,12 +282,6 @@
     <script>
         const games = {{GAMES_DATA}};
         const container = document.getElementById('games-container');
-        const basePath = "{{BASE_PATH}}";
-
-        // Map game IDs to their avatar images
-        const gameAvatars = {
-            'hover-runner': `${basePath}assets/hover-runner-avatar.png`
-        };
 
         if (games.length === 0) {
             container.innerHTML = `
@@ -301,7 +295,7 @@
                 card.className = 'game-card';
 
                 const statusClass = 'status-' + game.status;
-                const avatarUrl = gameAvatars[game.id] || '';
+                const avatarUrl = game.avatarUrl || '';
 
                 let imageHtml = '';
                 if (avatarUrl) {
