@@ -203,6 +203,107 @@
             opacity: 0.7;
         }
 
+        .dev-section {
+            margin-top: 3rem;
+            padding: 2rem;
+            background: #f9fafb;
+            border: 1px solid #e5e5e5;
+            border-radius: 8px;
+        }
+
+        .dev-section h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #171717;
+            margin-bottom: 0.5rem;
+        }
+
+        .dev-section p {
+            color: #737373;
+            font-size: 0.9375rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .install-options {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .install-option {
+            padding: 1rem;
+            background: #ffffff;
+            border: 1px solid #e5e5e5;
+            border-radius: 6px;
+        }
+
+        .install-option-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+
+        .install-option h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #171717;
+        }
+
+        .install-badge {
+            font-size: 0.75rem;
+            padding: 0.25rem 0.5rem;
+            background: #171717;
+            color: #ffffff;
+            border-radius: 3px;
+            font-weight: 500;
+        }
+
+        .install-option p {
+            color: #737373;
+            font-size: 0.875rem;
+            margin: 0 0 1rem 0;
+        }
+
+        .url-copy-container {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .url-input {
+            flex: 1;
+            padding: 0.5rem;
+            font-family: 'Monaco', 'Menlo', 'Consolas', monospace;
+            font-size: 0.875rem;
+            background: #f5f5f5;
+            border: 1px solid #e5e5e5;
+            border-radius: 4px;
+            color: #171717;
+        }
+
+        .copy-button {
+            padding: 0.5rem 1rem;
+            background: #171717;
+            color: #ffffff;
+            border: none;
+            border-radius: 4px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: opacity 0.15s ease;
+        }
+
+        .copy-button:hover {
+            opacity: 0.8;
+        }
+
+        .copy-button:active {
+            opacity: 0.6;
+        }
+
+        .copy-button.copied {
+            background: #16a34a;
+        }
+
         @media (max-width: 640px) {
             .game-avatar {
                 width: 150px;
@@ -242,6 +343,49 @@
                 </a>
             </div>
             <p class="note">Play this game inside the Corpán app</p>
+
+            <div class="dev-section">
+                <h3>Developer Install</h3>
+                <p>Install this game in Corpán by pasting one of these URLs in Settings → Games (tap version 7 times to enable dev mode):</p>
+
+                <div class="install-options">
+                    <div class="install-option">
+                        <div class="install-option-header">
+                            <h4>Web Play</h4>
+                            <span class="install-badge">Always Latest</span>
+                        </div>
+                        <p>Loads from the web each time. Always gets updates automatically.</p>
+                        <div class="url-copy-container">
+                            <input
+                                type="text"
+                                class="url-input"
+                                value="{{BASE_PATH}}corpan/games/{{GAME_ID}}/manifest.json"
+                                readonly
+                                id="manifest-url"
+                            />
+                            <button class="copy-button" onclick="copyUrl('manifest-url', this)">Copy</button>
+                        </div>
+                    </div>
+
+                    <div class="install-option">
+                        <div class="install-option-header">
+                            <h4>Offline Download</h4>
+                            <span class="install-badge">Works Offline</span>
+                        </div>
+                        <p>Downloads once (5.6 MB). Works 100% offline after installation.</p>
+                        <div class="url-copy-container">
+                            <input
+                                type="text"
+                                class="url-input"
+                                value="{{BASE_PATH}}corpan/games/{{GAME_ID}}.zip"
+                                readonly
+                                id="zip-url"
+                            />
+                            <button class="copy-button" onclick="copyUrl('zip-url', this)">Copy</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </header>
 
         <main>
@@ -278,5 +422,35 @@
             </p>
         </footer>
     </div>
+
+    <script>
+        function copyUrl(inputId, button) {
+            const input = document.getElementById(inputId);
+            const fullUrl = window.location.origin + input.value;
+
+            navigator.clipboard.writeText(fullUrl).then(() => {
+                const originalText = button.textContent;
+                button.textContent = 'Copied!';
+                button.classList.add('copied');
+
+                setTimeout(() => {
+                    button.textContent = originalText;
+                    button.classList.remove('copied');
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy:', err);
+                // Fallback for older browsers
+                input.select();
+                document.execCommand('copy');
+                button.textContent = 'Copied!';
+                button.classList.add('copied');
+
+                setTimeout(() => {
+                    button.textContent = 'Copy';
+                    button.classList.remove('copied');
+                }, 2000);
+            });
+        }
+    </script>
 </body>
 </html>
