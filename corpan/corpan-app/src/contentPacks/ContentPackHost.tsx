@@ -12,8 +12,33 @@ type ContentPackHostProps = {
 
 const DEV_RELOAD_INTERVAL_MS = 10000
 
-const loadScript = (src: string, id: string, type: "script" | "module") =>
-  new Promise<HTMLScriptElement>((resolve, reject) => {
+const loadScript = async (src: string, id: string, type: "script" | "module", inline?: boolean) => {
+  if (inline) {
+    // Inline mode: fetch content and inject as text
+    console.log(`[loadScript] Fetching inline script from: ${src}`)
+    const { fetchContentPackText } = await import("./native")
+    const content = await fetchContentPackText(src)
+    console.log(`[loadScript] Fetched ${content.length} bytes, injecting inline`)
+    return new Promise<HTMLScriptElement>((resolve, reject) => {
+      const script = document.createElement("script")
+      script.textContent = content
+      script.async = true
+      script.dataset.corpGame = "true"
+      script.dataset.corpGameId = id
+      if (type === "module") {
+        script.type = "module"
+      }
+      script.onload = () => resolve(script)
+      script.onerror = () => reject(new Error(`Failed to load ${src}`))
+      document.head.appendChild(script)
+      // Trigger onload manually for inline scripts
+      script.onload?.(new Event('load'))
+    })
+  }
+
+  // URL mode: load via src attribute
+  console.log(`[loadScript] Loading script via src: ${src}`)
+  return new Promise<HTMLScriptElement>((resolve, reject) => {
     const script = document.createElement("script")
     script.src = src
     script.async = true
@@ -22,12 +47,35 @@ const loadScript = (src: string, id: string, type: "script" | "module") =>
     if (type === "module") {
       script.type = "module"
     }
-    script.onload = () => resolve(script)
-    script.onerror = () => reject(new Error(`Failed to load ${src}`))
+    script.onload = () => {
+      console.log(`[loadScript] Script loaded successfully: ${src}`)
+      resolve(script)
+    }
+    script.onerror = (err) => {
+      console.error(`[loadScript] Script load error: ${src}`, err)
+      reject(new Error(`Failed to load ${src}`))
+    }
     document.head.appendChild(script)
   })
+}
 
-const loadStyle = (href: string, id: string) => {
+const loadStyle = async (href: string, id: string, inline?: boolean) => {
+  if (inline) {
+    // Inline mode: fetch content and inject as <style>
+    console.log(`[loadStyle] Fetching inline style from: ${href}`)
+    const { fetchContentPackText } = await import("./native")
+    const content = await fetchContentPackText(href)
+    console.log(`[loadStyle] Fetched ${content.length} bytes, injecting inline`)
+    const style = document.createElement("style")
+    style.textContent = content
+    style.dataset.corpGame = "true"
+    style.dataset.corpGameId = id
+    document.head.appendChild(style)
+    return style
+  }
+
+  // URL mode: load via href attribute
+  console.log(`[loadStyle] Loading style via href: ${href}`)
   const link = document.createElement("link")
   link.rel = "stylesheet"
   link.href = href
@@ -40,7 +88,7 @@ const loadStyle = (href: string, id: string) => {
 const clearInjectedAssets = (id: string) => {
   document
     .querySelectorAll(
-      `script[data-corp-game-id="${id}"], link[data-corp-game-id="${id}"]`
+      `script[data-corp-game-id="${id}"], link[data-corp-game-id="${id}"], style[data-corp-game-id="${id}"]`
     )
     .forEach((node) => node.remove())
 }
@@ -201,20 +249,31 @@ export default function ContentPackHost({
       })
     }
 
-    const isTauriRuntime = () =>
-      typeof window !== "undefined" && "__TAURI__" in window
-
     const fetchManifest = async (token?: string) => {
       const candidates = getManifestFetchCandidates(token)
       let lastError: unknown
       for (const { sourceUrl, fetchUrl } of candidates) {
         try {
           let manifest: ContentPackManifest
-          if (!import.meta.env.DEV && isTauriRuntime()) {
+          const isCorpanPack = sourceUrl.startsWith('corpan-pack://')
+
+          console.log(`[fetchManifest] Fetching sourceUrl=${sourceUrl}, isCorpanPack=${isCorpanPack}`)
+
+          // Always use Tauri command - this app only runs in Tauri
+          if (isCorpanPack) {
+            console.log(`[fetchManifest] Using Tauri command for corpan-pack URL`)
+            const { fetchContentPackText } = await import("./native")
+            const text = await fetchContentPackText(sourceUrl)
+            manifest = JSON.parse(text) as ContentPackManifest
+          } else if (!import.meta.env.DEV) {
+            // Production: use Tauri for all fetches
+            console.log(`[fetchManifest] Using Tauri command for production`)
             const { fetchContentPackText } = await import("./native")
             const text = await fetchContentPackText(sourceUrl)
             manifest = JSON.parse(text) as ContentPackManifest
           } else {
+            // Dev mode: use browser fetch for HTTP URLs only
+            console.log(`[fetchManifest] Using browser fetch for dev mode`)
             const res = await fetch(fetchUrl, { cache: "no-store" })
             if (!res.ok) {
               lastError = new Error(`Missing content pack: ${id}`)
@@ -224,6 +283,7 @@ export default function ContentPackHost({
           }
           return { manifest, sourceUrl }
         } catch (err) {
+          console.error(`[fetchManifest] Error fetching manifest:`, err)
           lastError = err
         }
       }
@@ -264,7 +324,7 @@ export default function ContentPackHost({
         hasLoadedRef.current = false
       }
       if (shouldDevReload) {
-        ;(globalThis as { __corpanPerf?: boolean }).__corpanPerf = false
+        ; (globalThis as { __corpanPerf?: boolean }).__corpanPerf = false
       }
       clearInjectedAssets(id)
     }
@@ -300,14 +360,16 @@ export default function ContentPackHost({
       setLoadState("loading")
       setError(null)
       cleanup()
-      ;(globalThis as { __corpanHostActive?: boolean }).__corpanHostActive = true
+        ; (globalThis as { __corpanHostActive?: boolean }).__corpanHostActive = true
       if (shouldDevReload) {
-        ;(globalThis as { __corpanPerf?: boolean }).__corpanPerf = true
+        ; (globalThis as { __corpanPerf?: boolean }).__corpanPerf = true
       }
       try {
+        console.log(`[ContentPackHost] Loading pack ${id}, manifestUrl=${manifestUrl}`)
         const { manifest, sourceUrl } = await fetchManifest(
           shouldDevReload ? String(Date.now()) : undefined
         )
+        console.log(`[ContentPackHost] Fetched manifest:`, { manifest, sourceUrl })
         if (!manifest.id || !manifest.entry) {
           throw new Error(`Invalid manifest for ${id}`)
         }
@@ -318,19 +380,28 @@ export default function ContentPackHost({
           : new URL(".", activeManifestSourceUrl).toString()
         const devToken = shouldDevReload ? manifest.devRevision : undefined
 
+        // corpan-pack:// URLs must be fetched via Tauri commands and injected inline
+        const useInlineLoad = baseUrl.startsWith('corpan-pack://')
+
+        console.log(`[ContentPackHost] baseUrl=${baseUrl}, useInlineLoad=${useInlineLoad}, entry=${manifest.entry}, styles=${JSON.stringify(manifest.styles)}`)
+
         if (manifest.styles) {
-          manifest.styles.forEach((style) => {
+          for (const style of manifest.styles) {
             const href = proxyUrlIfNeeded(
               withCacheBust(new URL(style, baseUrl).toString(), devToken)
             )
-            loadStyle(href, id)
-          })
+            console.log(`[ContentPackHost] Loading style: ${href}, inline=${useInlineLoad}`)
+            await loadStyle(href, id, useInlineLoad)
+            console.log(`[ContentPackHost] Style loaded: ${href}`)
+          }
         }
 
         const entryUrl = proxyUrlIfNeeded(
           withCacheBust(new URL(manifest.entry, baseUrl).toString(), devToken)
         )
-        await loadScript(entryUrl, id, manifest.entryType ?? "script")
+        console.log(`[ContentPackHost] Loading script: ${entryUrl}, inline=${useInlineLoad}`)
+        await loadScript(entryUrl, id, manifest.entryType ?? "script", useInlineLoad)
+        console.log(`[ContentPackHost] Script loaded: ${entryUrl}`)
 
         activeModule = await waitForGameModule(manifest.id, id)
         if (!activeModule || typeof activeModule.mount !== "function") {

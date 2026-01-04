@@ -378,8 +378,8 @@ async fn content_packs_install_from_url(
 }
 
 #[command]
-async fn content_packs_fetch_text(url: String) -> Result<String, String> {
-    content_packs::fetch_text(url).await
+async fn content_packs_fetch_text(app: AppHandle, url: String) -> Result<String, String> {
+    content_packs::fetch_text(&app, url).await
 }
 
 #[command]
