@@ -203,6 +203,116 @@
             opacity: 0.7;
         }
 
+        .dev-section {
+            margin-top: 3rem;
+            padding: 2rem;
+            background: #f9fafb;
+            border: 1px solid #e5e5e5;
+            border-radius: 8px;
+        }
+
+        .dev-section h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #171717;
+            margin-bottom: 0.5rem;
+        }
+
+        .dev-section p {
+            color: #737373;
+            font-size: 0.9375rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .install-options {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .install-option {
+            padding: 1rem;
+            background: #ffffff;
+            border: 1px solid #e5e5e5;
+            border-radius: 6px;
+        }
+
+        .install-option-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+
+        .install-option h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #171717;
+        }
+
+        .install-badge {
+            font-size: 0.75rem;
+            padding: 0.25rem 0.5rem;
+            background: #171717;
+            color: #ffffff;
+            border-radius: 3px;
+            font-weight: 500;
+        }
+
+        .install-option p {
+            color: #737373;
+            font-size: 0.875rem;
+            margin: 0 0 0.75rem 0;
+        }
+
+        .copy-button {
+            padding: 0.75rem 1.5rem;
+            background: #171717;
+            color: #ffffff;
+            border: none;
+            border-radius: 6px;
+            font-size: 0.9375rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        .copy-button:hover {
+            background: #404040;
+            transform: translateY(-1px);
+        }
+
+        .copy-button:active {
+            transform: translateY(0);
+        }
+
+        .copy-button.copied {
+            background: #16a34a;
+        }
+
+        .copy-toast {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: #171717;
+            color: #ffffff;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            font-size: 0.9375rem;
+            font-weight: 500;
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            pointer-events: none;
+        }
+
+        .copy-toast.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+
         @media (max-width: 640px) {
             .game-avatar {
                 width: 150px;
@@ -214,6 +324,10 @@
             }
 
             .videos-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .install-options {
                 grid-template-columns: 1fr;
             }
         }
@@ -242,6 +356,31 @@
                 </a>
             </div>
             <p class="note">Play this game inside the Corpán app</p>
+
+            <div class="dev-section">
+                <h3>Developer Install</h3>
+                <p>Install this pack in Corpán: Open Settings, tap the "Developer packs" button 7 times, then paste one of these URLs in the Install from URL section:</p>
+
+                <div class="install-options">
+                    <div class="install-option">
+                        <div class="install-option-header">
+                            <h4>Web Play</h4>
+                            <span class="install-badge">Always Latest</span>
+                        </div>
+                        <p>Loads from the web each time. Always gets updates automatically.</p>
+                        <button class="copy-button" onclick="copyUrl('manifest')">Copy Install URL</button>
+                    </div>
+
+                    <div class="install-option">
+                        <div class="install-option-header">
+                            <h4>Offline Download</h4>
+                            <span class="install-badge">Works Offline</span>
+                        </div>
+                        <p>Downloads once (5.6 MB). Works 100% offline after installation.</p>
+                        <button class="copy-button" onclick="copyUrl('zip')">Copy Install URL</button>
+                    </div>
+                </div>
+            </div>
         </header>
 
         <main>
@@ -278,5 +417,61 @@
             </p>
         </footer>
     </div>
+
+    <div class="copy-toast" id="copy-toast">URL copied to clipboard!</div>
+
+    <script>
+        // URL mappings - these get filled in by the build script
+        const URLS = {
+            manifest: '{{BASE_PATH}}corpan/games/{{GAME_ID}}/manifest.json',
+            zip: '{{BASE_PATH}}corpan/games/{{GAME_ID}}.zip'
+        };
+
+        function showToast(message) {
+            const toast = document.getElementById('copy-toast');
+            toast.textContent = message;
+            toast.classList.add('show');
+
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 2500);
+        }
+
+        function copyUrl(type) {
+            const url = window.location.origin + URLS[type];
+
+            // Modern approach
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(url).then(() => {
+                    showToast('URL copied to clipboard!');
+                }).catch(err => {
+                    console.error('Copy failed:', err);
+                    fallbackCopy(url);
+                });
+            } else {
+                // Fallback for older browsers
+                fallbackCopy(url);
+            }
+        }
+
+        function fallbackCopy(text) {
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            textarea.style.position = 'fixed';
+            textarea.style.opacity = '0';
+            document.body.appendChild(textarea);
+            textarea.select();
+
+            try {
+                document.execCommand('copy');
+                showToast('URL copied to clipboard!');
+            } catch (err) {
+                console.error('Fallback copy failed:', err);
+                showToast('Failed to copy. Please copy manually.');
+            }
+
+            document.body.removeChild(textarea);
+        }
+    </script>
 </body>
 </html>

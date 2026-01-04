@@ -12,8 +12,9 @@
     "build": "npm run build:io && npm run build:pages && npm run build:games",
     "build:io": "cd web/io && npm run build",
     "build:pages": "node web/pages/build.js web/io/out",
-    "build:games": "cd corpan/games/hover-runner && npm run build && cd ../../.. && npm run copy:games",
-    "copy:games": "mkdir -p web/io/out/corpan/games/hover-runner && cp corpan/games/hover-runner/manifest.json web/io/out/corpan/games/hover-runner/ && cp -R corpan/games/hover-runner/dist web/io/out/corpan/games/hover-runner/",
+    "build:games": "cd corpan/games/hover-runner && npm run build && cd ../../.. && npm run package:games && npm run copy:games",
+    "package:games": "cd corpan/games/hover-runner && zip -r hover-runner.zip manifest.json dist/",
+    "copy:games": "mkdir -p web/io/out/corpan/games/hover-runner && cp corpan/games/hover-runner/manifest.json web/io/out/corpan/games/hover-runner/ && cp -R corpan/games/hover-runner/dist web/io/out/corpan/games/hover-runner/ && cp corpan/games/hover-runner/hover-runner.zip web/io/out/corpan/games/",
     "serve": "cd web/io/out && python3 -m http.server 8000",
     "clean": "rm -rf web/io/out web/io/.next .local-pages"
   },

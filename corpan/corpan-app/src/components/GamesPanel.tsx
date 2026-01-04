@@ -308,10 +308,19 @@ export function GamesPanel({
             <div className="text-xs text-muted-foreground">
               {t("packs.manifestHint")}
             </div>
+            <div className="mt-2 space-y-1 text-xs text-muted-foreground">
+              <div className="font-medium">Two install options:</div>
+              <div className="ml-2">
+                • <span className="font-mono">manifest.json</span> - Web play (always latest version)
+              </div>
+              <div className="ml-2">
+                • <span className="font-mono">.zip</span> - Offline download (install once, works offline)
+              </div>
+            </div>
           </div>
           <input
             className="w-full rounded-md border border-gray-200 px-3 py-2 text-sm"
-            placeholder={t("packs.manifestPlaceholder")}
+            placeholder="https://example.com/game/manifest.json or .../game.zip"
             value={manifestUrl}
             onChange={(event) => setManifestUrl(event.target.value)}
           />

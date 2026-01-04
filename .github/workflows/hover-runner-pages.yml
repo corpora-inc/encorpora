@@ -54,11 +54,18 @@ jobs:
         working-directory: corpan/games/hover-runner
         run: npm run build
 
+      - name: Package Hover Runner as ZIP
+        run: |
+          cd corpan/games/hover-runner
+          zip -r hover-runner.zip manifest.json dist/
+          cd ../../..
+
       - name: Copy Hover Runner into io/out
         run: |
           mkdir -p "web/io/out/corpan/games/hover-runner"
           cp corpan/games/hover-runner/manifest.json "web/io/out/corpan/games/hover-runner/"
           cp -R corpan/games/hover-runner/dist "web/io/out/corpan/games/hover-runner/"
+          cp corpan/games/hover-runner/hover-runner.zip "web/io/out/corpan/games/hover-runner.zip"
 
       - name: Show Final Structure
         run: |
