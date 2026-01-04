@@ -23,7 +23,6 @@ export function useScrollNavigation(onPrev: () => void, onNext: () => void) {
     const SCROLL_THRESHOLD = 100; // pixels needed to trigger navigation
     const GESTURE_TIMEOUT = 50; // ms pause to consider a new gesture
     const TOUCH_THRESHOLD = 50; // pixels for touch swipe
-    const EDGE_EPSILON = 1; // tolerated distance from scroll edge
 
     const handleWheel = useCallback(
         (e: WheelEvent) => {

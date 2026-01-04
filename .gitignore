@@ -4,3 +4,8 @@ target/
 # TODO: we actually would like this but the members
 # don't match because of rusqlite versus sqlx
 Cargo.lock
+
+# GitHub Pages local builds
+.local-pages/
+.pages/
+.pages-temp/

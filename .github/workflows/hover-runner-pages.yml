@@ -1,10 +1,11 @@
-name: Deploy Hover Runner to GitHub Pages
+name: Deploy Encorpora to GitHub Pages
 
 on:
   push:
     branches: ["main"]
     paths:
-      - "corpan/games/hover-runner/**"
+      - "corpan/games/**"
+      - "pages/**"
       - ".github/workflows/hover-runner-pages.yml"
   workflow_dispatch: {}
 
@@ -14,7 +15,7 @@ permissions:
   id-token: write
 
 concurrency:
-  group: "pages-hover-runner"
+  group: "pages"
   cancel-in-progress: true
 
 jobs:
@@ -28,29 +29,42 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "20"
-          cache: "npm"
-          cache-dependency-path: corpan/games/hover-runner/package-lock.json
 
-      - name: Install
+      - name: Build Landing Pages
+        run: |
+          node pages/build.js .pages-temp
+
+      - name: Install Hover Runner Dependencies
         working-directory: corpan/games/hover-runner
         run: npm install --legacy-peer-deps
 
-      - name: Build
+      - name: Build Hover Runner
         working-directory: corpan/games/hover-runner
         run: npm run build
 
-      - name: Package Pages Artifact
-        working-directory: corpan/games/hover-runner
+      - name: Assemble Pages Artifact
         run: |
-          rm -rf .pages
-          mkdir -p .pages/dist
-          cp manifest.json .pages/manifest.json
-          cp -R dist/. .pages/dist/
+          # Create the final directory structure
+          mkdir -p .pages/corpan/games/hover-runner
+
+          # Copy landing pages
+          cp -R .pages-temp/* .pages/
+
+          # Copy hover-runner game files
+          cp corpan/games/hover-runner/manifest.json .pages/corpan/games/hover-runner/
+          cp -R corpan/games/hover-runner/dist/. .pages/corpan/games/hover-runner/
+
+          # Clean up temp directory
+          rm -rf .pages-temp
+
+          # Show the final structure for debugging
+          echo "Final site structure:"
+          find .pages -type f | sort
 
       - name: Upload Pages Artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: corpan/games/hover-runner/.pages
+          path: .pages
 
   deploy:
     runs-on: ubuntu-latest

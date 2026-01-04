@@ -1,0 +1,13 @@
+[
+  {
+    "id": "corpan",
+    "name": "Corpán",
+    "description": "A cross-platform language learning app with mini-games and TTS",
+    "icon": "🌍",
+    "status": "active",
+    "links": {
+      "games": "./corpan/games/",
+      "github": "https://github.com/corpora-inc/encorpora/tree/main/corpan"
+    }
+  }
+]

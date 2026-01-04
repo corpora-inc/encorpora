@@ -1,0 +1,13 @@
+[
+  {
+    "id": "hover-runner",
+    "name": "Hover Runner",
+    "description": "A prototype game where you hover over words to reveal translations",
+    "icon": "🏃",
+    "status": "prototype",
+    "version": "0.1.0",
+    "manifestUrl": "./hover-runner/manifest.json",
+    "playUrl": "./hover-runner/",
+    "github": "https://github.com/corpora-inc/encorpora/tree/main/corpan/games/hover-runner"
+  }
+]

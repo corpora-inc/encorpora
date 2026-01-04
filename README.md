@@ -14,9 +14,29 @@ This repo houses experiments that depend on Corpora. When something becomes stab
 - **Hover Runner**: the reference game prototype.
 - **Books & publishing**
 
-## What’s next
+## Live Demos
 
-We’re actively exploring audio, video, ASR/STT, and richer media learning flows.
+Browse games and content at our GitHub Pages site:
+**https://corpora-inc.github.io/encorpora/**
+
+- [Corpán Games](https://corpora-inc.github.io/encorpora/corpan/games/)
+- [Hover Runner](https://corpora-inc.github.io/encorpora/corpan/games/hover-runner/)
+
+### Local Development
+
+Test the entire GitHub Pages site locally:
+
+```bash
+./serve-local.sh
+```
+
+Then visit `http://localhost:8000`
+
+See [GITHUB_PAGES_SETUP.md](GITHUB_PAGES_SETUP.md) for details.
+
+## What's next
+
+We're actively exploring audio, video, ASR/STT, and richer media learning flows.
 Stay tuned and jump in.
 
 ## Community

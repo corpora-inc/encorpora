@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Corpán - Language Learning Games</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            padding: 3rem;
+        }
+
+        .breadcrumb {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 2rem;
+        }
+
+        .breadcrumb a {
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        h1 {
+            font-size: 3rem;
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+
+        .tagline {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .hero-description {
+            max-width: 700px;
+            margin: 0 auto;
+            color: #555;
+            font-size: 1rem;
+        }
+
+        .section {
+            margin: 3rem 0;
+        }
+
+        .section h2 {
+            color: #333;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+
+        .games-link {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin-bottom: 2rem;
+        }
+
+        .games-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(102, 126, 234, 0.3);
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .feature {
+            padding: 1.5rem;
+            background: #f5f7fa;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature h3 {
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        .links {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .link-button {
+            padding: 0.75rem 1.5rem;
+            border: 2px solid #667eea;
+            color: #667eea;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .link-button:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        footer {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 2px solid #e0e0e0;
+            text-align: center;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="breadcrumb">
+            <a href="../">← Encorpora</a> / Corpán
+        </div>
+
+        <header>
+            <h1>🌍 Corpán</h1>
+            <p class="tagline">Cross-platform language learning through interactive games</p>
+            <p class="hero-description">
+                A modern language learning app built with Tauri and React, delivering content through
+                downloadable mini-game packs. Learn languages naturally through engaging gameplay.
+            </p>
+        </header>
+
+        <main>
+            <div class="section">
+                <a href="./games/" class="games-link">Browse Games →</a>
+            </div>
+
+            <div class="section">
+                <h2>Features</h2>
+                <div class="features">
+                    <div class="feature">
+                        <div class="feature-icon">🎮</div>
+                        <h3>Pluggable Games</h3>
+                        <p>Modular game system with SDK for standalone development</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">🔊</div>
+                        <h3>Text-to-Speech</h3>
+                        <p>Native TTS support for pronunciation practice</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">📱</div>
+                        <h3>Cross-Platform</h3>
+                        <p>Desktop (Windows, macOS, Linux) and mobile (iOS, Android)</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">🌐</div>
+                        <h3>Multiple Languages</h3>
+                        <p>Support for numerous language pairs and dialects</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">📦</div>
+                        <h3>Content Packs</h3>
+                        <p>Downloadable game and language content bundles</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">⚡</div>
+                        <h3>Fast & Native</h3>
+                        <p>Built with Rust and Tauri for optimal performance</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Resources</h2>
+                <div class="links">
+                    <a href="https://github.com/corpora-inc/encorpora/tree/main/corpan" target="_blank" rel="noopener" class="link-button">GitHub Repository ↗</a>
+                    <a href="./games/" class="link-button">Browse Games →</a>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>
+                <a href="https://github.com/corpora-inc/encorpora" target="_blank" rel="noopener">
+                    Encorpora on GitHub
+                </a>
+                |
+                Open Source Language Learning
+            </p>
+        </footer>
+    </div>
+</body>
+</html>

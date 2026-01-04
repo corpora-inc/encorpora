@@ -1,0 +1,7 @@
+# Build output
+dist/
+.pages/
+.pages-temp/
+
+# Node modules (if we ever add dependencies)
+node_modules/
