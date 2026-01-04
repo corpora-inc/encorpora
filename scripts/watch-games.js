@@ -47,28 +47,44 @@ console.log('[watch-games] Copying hover-runner...');
 copyGame('hover-runner');
 
 // Watch for changes in game dist directories
-const watcher = chokidar.watch([
+const watchPaths = [
   path.join(GAMES_DIR, 'hover-runner', 'dist', '**', '*'),
   path.join(GAMES_DIR, 'hover-runner', 'manifest.json')
-], {
+];
+
+console.log('[watch-games] Setting up watchers for:');
+watchPaths.forEach(p => console.log(`  ${p}`));
+
+const watcher = chokidar.watch(watchPaths, {
   ignored: /node_modules/,
   persistent: true,
-  ignoreInitial: true
+  ignoreInitial: true,
+  awaitWriteFinish: {
+    stabilityThreshold: 200,
+    pollInterval: 100
+  }
 });
 
 let timeout;
 watcher.on('all', (event, filepath) => {
   const gameName = path.relative(GAMES_DIR, filepath).split(path.sep)[0];
-  console.log(`[watch-games] Changed: ${path.relative(__dirname, filepath)}`);
+  console.log(`[watch-games] ${event}: ${path.relative(__dirname, filepath)}`);
 
   // Debounce copies
   clearTimeout(timeout);
   timeout = setTimeout(() => {
     copyGame(gameName);
-  }, 100);
+  }, 200);
 });
 
-console.log('[watch-games] Watching for game changes...');
+watcher.on('ready', () => {
+  console.log('[watch-games] ✓ Watchers ready');
+  console.log('[watch-games] Watching for game changes...');
+});
+
+watcher.on('error', error => {
+  console.error('[watch-games] ✗ Watcher error:', error);
+});
 
 // Handle cleanup
 process.on('SIGINT', () => {

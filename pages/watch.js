@@ -28,42 +28,52 @@ console.log('[pages] Starting watch mode...');
 build();
 
 // Watch for changes
-const watcher = chokidar.watch([
+const watchPaths = [
   path.join(SCRIPT_DIR, 'templates', '**', '*.html'),
   path.join(SCRIPT_DIR, 'data', '**', '*.json'),
   path.join(SCRIPT_DIR, 'assets', '**', '*')
-], {
+];
+
+console.log('[pages] Setting up watchers for:');
+watchPaths.forEach(p => console.log(`  ${p}`));
+
+const watcher = chokidar.watch(watchPaths, {
   ignored: /node_modules/,
   persistent: true,
   ignoreInitial: true,
   awaitWriteFinish: {
-    stabilityThreshold: 100,
-    pollInterval: 50
+    stabilityThreshold: 200,
+    pollInterval: 100
   }
 });
 
 let timeout;
-const handleChange = (filepath) => {
+const handleChange = (filepath, event) => {
   const relative = path.relative(SCRIPT_DIR, filepath);
-  console.log(`[pages] Changed: ${relative}`);
+  console.log(`[pages] ${event || 'Changed'}: ${relative}`);
 
   // Debounce builds
   clearTimeout(timeout);
   timeout = setTimeout(() => {
     build();
-  }, 100);
+  }, 200);
 };
 
-watcher.on('change', handleChange);
-watcher.on('add', handleChange);
-watcher.on('unlink', handleChange);
+watcher.on('change', (filepath) => handleChange(filepath, 'Changed'));
+watcher.on('add', (filepath) => handleChange(filepath, 'Added'));
+watcher.on('unlink', (filepath) => handleChange(filepath, 'Removed'));
 
 watcher.on('ready', () => {
-  console.log('[pages] Watching for changes...');
+  console.log('[pages] ✓ Watchers ready');
   console.log('[pages] Watching:');
   console.log('  - templates/**/*.html');
   console.log('  - data/**/*.json');
   console.log('  - assets/**/*');
+  console.log('[pages] Try editing a file to trigger rebuild...');
+});
+
+watcher.on('error', error => {
+  console.error('[pages] ✗ Watcher error:', error);
 });
 
 // Handle cleanup
