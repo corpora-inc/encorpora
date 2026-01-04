@@ -32,8 +32,8 @@ function copyGame(gameName) {
       execSync(`cp "${srcManifest}" "${destDir}/"`, { stdio: 'inherit' });
     }
 
-    // Copy dist contents
-    execSync(`cp -R "${srcDir}/." "${destDir}/"`, { stdio: 'inherit' });
+    // Copy dist directory (keep the folder structure)
+    execSync(`cp -R "${srcDir}" "${destDir}/"`, { stdio: 'inherit' });
 
     console.log(`[watch-games] ✓ ${gameName} copied`);
   } catch (error) {

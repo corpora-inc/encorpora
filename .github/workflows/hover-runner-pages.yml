@@ -58,7 +58,7 @@ jobs:
         run: |
           mkdir -p "web/io/out/corpan/games/hover-runner"
           cp corpan/games/hover-runner/manifest.json "web/io/out/corpan/games/hover-runner/"
-          cp -R corpan/games/hover-runner/dist/. "web/io/out/corpan/games/hover-runner/"
+          cp -R corpan/games/hover-runner/dist "web/io/out/corpan/games/hover-runner/"
 
       - name: Show Final Structure
         run: |
