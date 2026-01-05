@@ -2,14 +2,14 @@
   "$schema": "./../locale.schema.json",
   "languages": {
     "en": "Inglese",
-    "koPolite": "Coreano (formale)",
+    "ko-polite": "Coreano (formale)",
     "es": "Spagnolo",
     "fr": "Francese",
     "de": "Tedesco",
-    "ptBR": "Portoghese (Brasile)",
+    "pt-BR": "Portoghese (Brasile)",
     "ja": "Giapponese",
-    "zhHans": "Cinese (semplificato)",
-    "zhHant": "Cinese (tradizionale)",
+    "zh-Hans": "Cinese (semplificato)",
+    "zh-Hant": "Cinese (tradizionale)",
     "ar": "Arabo",
     "ru": "Russo",
     "it": "Italiano",
@@ -18,7 +18,18 @@
     "pl": "Polacco",
     "hu": "Ungherese",
     "fa": "Persiano",
-    "bn": "Bengalese"
+    "bn": "Bengalese",
+    "th": "Thai",
+    "id": "Indonesiano",
+    "tr": "Turco",
+    "ta": "Tamil",
+    "te": "Telugu",
+    "kn": "Kannada",
+    "mr": "Marathi",
+    "gu": "Gujarati",
+    "ur": "Urdu",
+    "pa-Guru": "Punjabi (Gurmukhi)",
+    "pa-Arab": "Punjabi (Shahmukhi)"
   },
   "categories": {
     "travel": "Viaggio",
@@ -38,6 +49,7 @@
   "settings": {
     "addMoreLanguages": "Aggiungi altre lingue",
     "selectedLanguages": "Lingue selezionate",
+    "removeLanguage": "Rimuovi lingua",
     "settings": "Impostazioni",
     "adjustToYourPreferences": "Regola in base alle tue preferenze",
     "speechRate": "Velocità di parlato",
@@ -56,9 +68,10 @@
     "small": "Piccolo",
     "medium": "Medio",
     "large": "Grande",
-    "extraLarge": "Molto grande",
+    "extra-large": "Molto grande",
     "testTts": "Prova le impostazioni TTS con i pulsanti qui sotto:",
-    "showRomanization": "Mostra romanizzazione"
+    "showRomanization": "Mostra romanizzazione",
+    "scrollNavigation": "Navigazione a scorrimento"
   },
   "onboarding": {
     "welcome": "Benvenuto",
@@ -69,13 +82,53 @@
     "ttsPoorQualityNote": "Se la qualità audio è scarsa, installa voci di alta qualità nelle impostazioni TTS del dispositivo.",
     "howToSetupTtsOn": "Come configurare la sintesi vocale su",
     "welcomeTitle": "Benvenuto nella famiglia Corpán!",
-    "welcomeBody": "La nostra missione è migliorare l’istruzione per tutti. Hai bisogno di aiuto o vuoi partecipare? Visita il nostro sito.",
+    "welcomeBody": "Corpán è un’app open source creata por un team piccolissimo, non da una grande azienda. Ci teniamo molto alle lingue e all’educazione e il progetto è ancora all’inizio, quindi potresti trovare parti poco rifinite, funzioni mancanti o lingue non ancora disponibili. Se qualcosa non funziona, scrivici su GitHub o via e-mail. I tuoi feedback ci aiutano a rilasciare aggiornamenti frequenti e a migliorare l’apprendimento delle lingue per tutti.",
     "welcomeVisit": "Visita encorpora.io",
     "linkCopied": "Link copiato. Aprilo nel browser:",
     "reconfigureStack": "Riconfigura profilo",
     "openVoiceSettings": "Apri impostazioni voce",
     "openTTSSetup": "Apri impostazioni TTS",
-    "welcomeFollowUp": "Grazie per esserti unito — ci vediamo nella community!"
+    "welcomeFollowUp": "Grazie per esserti unito — ci vediamo nella community!",
+    "learningStepTitle": "Impara",
+    "tts": "Sintesi vocale",
+    "languageOrderTipTitle": "Suggerimento",
+    "languageOrderTipBody": "La lingua in fondo diventa la lingua dell’app. Trascina per cambiarla quando vuoi.",
+    "ttsOsTipTitle": "Suggerimento",
+    "ttsOsTipAndroid": "Per risultati migliori, usa il TTS di Google. Samsung TTS non funziona in Corpán.",
+    "ttsOsTipIOS": "In Impostazioni → Accessibilità, trova Contenuti letti e scarica le voci. Nota: Apple non fornisce voci per tutte le lingue. Se l’aggiornamento non aiuta, richiedi supporto tramite l’app Feedback di Apple.",
+    "ttsOsTipMac": "In Impostazioni di sistema → Accessibilità, trova Contenuti letti e scarica le voci. Nota: Apple non fornisce voci per tutte le lingue. Se l’aggiornamento non aiuta, richiedi supporto tramite l’app Feedback di Apple.",
+    "ttsOsTipWindows": "In Impostazioni, installa le voci di sintesi e torna qui.",
+    "ttsOsTipOther": "Nelle impostazioni del dispositivo, installa le voci di sintesi e torna qui.",
+    "installVoicesAndroid": "Installa voci",
+    "learning": "Apprendimento delle lingue",
+    "ttsStepTitle": "Sintesi vocale",
+    "socials": "Segui e connettiti",
+    "socialsStepTitle": "Social",
+    "noVoices": "Nessuna voce",
+    "noVoicesHint": "Installa le voci per abilitare questa lingua.",
+    "sendAppleFeedback": "Invia feedback ad Apple"
+  },
+  "socials": {
+    "youtube": {
+      "cta": "Guarda",
+      "title": "YouTube",
+      "desc": "Tutorial, demo e dietro le quinte."
+    },
+    "github": {
+      "cta": "Metti una stella e contribuisci",
+      "title": "GitHub",
+      "desc": "Open source. PR benvenute!"
+    },
+    "blog": {
+      "cta": "Leggi",
+      "title": "Free2z Blog",
+      "desc": "Aggiornamenti, roadmap e approfondimenti."
+    },
+    "website": {
+      "cta": "Visita",
+      "title": "encorpora.io",
+      "desc": "Sito principale con documenti e community."
+    }
   },
   "common": {
     "loading": "Caricamento...",
@@ -159,7 +212,28 @@
     "zh-CN-u-sd-cnsn": "Mandarino (Shaanxi, Cina continentale)",
     "zh-HK": "Cantonese (Hong Kong)",
     "zh-TW": "Mandarino (Taiwan)",
-    "bn": "Bengalese"
+    "bn": "Bengalese",
+    "th": "Thai",
+    "id": "Indonesiano",
+    "tr": "Turco",
+    "bn-IN": "Bengalese (India)",
+    "te-IN": "Telugu (India)",
+    "kn-IN": "Kannada (India)",
+    "mr": "Marathi",
+    "mr-IN": "Marathi (India)",
+    "gu": "Gujarati",
+    "gu-IN": "Gujarati (India)",
+    "pa": "Punjabi",
+    "pa-IN": "Punjabi (India)",
+    "pa-Guru": "Punjabi (Gurmukhi)",
+    "pa-Guru-IN": "Punjabi (Gurmukhi, India)",
+    "pa-Arab": "Punjabi (Shahmukhi)",
+    "ur": "Urdu",
+    "ur-IN": "Urdu (India)",
+    "ur-PK": "Urdu (Pakistan)",
+    "ta": "Tamil",
+    "te": "Telugu",
+    "kn": "Kannada"
   },
   "footer": {
     "appVersion": "Versione dell’app",
@@ -179,7 +253,44 @@
     "new": "Nuovo profilo",
     "newName": "Nome del nuovo profilo",
     "rename": "Rinomina",
+    "renameLabel": "Nuovo nome per stack",
     "selectAria": "Seleziona un profilo",
     "selectPlaceholder": "Scegli…"
+  },
+  "rating": {
+    "title": "Ti piace Corpán?",
+    "description": "Corpán è creato da un piccolo team open-source agli inizi. Se per te vale 5 stelle, una valutazione veloce ci aiuta tantissimo.",
+    "rateNow": "⭐ Valuta con 5 stelle",
+    "remindLater": "Forse più tardi",
+    "noThanks": "No, grazie",
+    "close": "Chiudi",
+    "feedbackHint": "Non è ancora da 5 stelle? Tocca «Invia feedback» e dicci cosa migliorare.",
+    "feedbackButton": "Invia feedback su GitHub"
+  },
+  "packs": {
+    "title": "Pacchetti",
+    "available": "Pacchetti disponibili",
+    "emptyAvailable": "Nessun pacchetto disponibile.",
+    "installed": "Pacchetti installati",
+    "emptyInstalled": "Nessun pacchetto installato.",
+    "get": "Ottieni",
+    "open": "Apri",
+    "remove": "Rimuovi",
+    "version": "Versione {{version}}",
+    "refresh": "Aggiorna",
+    "free": "Gratis",
+    "install": "Installa",
+    "installing": "Installazione...",
+    "installFailed": "Installazione non riuscita.",
+    "update": "Aggiorna",
+    "updating": "Aggiornamento...",
+    "manifestTitle": "URL del manifesto",
+    "manifestPlaceholder": "https://esempio.com/manifest.json",
+    "manifestHint": "Incolla un URL del manifesto.",
+    "devUnlockTitle": "Pacchetti per sviluppatori",
+    "devUnlockHint": "Tocca 7 volte per sbloccare le installazioni da manifesto.",
+    "devUnlockToast": "Pacchetti per sviluppatori sbloccati.",
+    "devIntro": "Prova un Pack Corpán o creane uno tuo.",
+    "devLink": "Scopri di più su Free2z"
   }
 }

@@ -2,7 +2,7 @@
 
 import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
-import { RTL_LANGUAGES } from "./constants";
+import { isRTL } from "@/util/convert";
 
 export const ALL_LANGUAGES = [
     "en",
@@ -14,18 +14,41 @@ export const ALL_LANGUAGES = [
     "pl",
     "ru",
     "hu",
-    "ko-polite",
-    "zh-Hans",
-    "zh-Hant",
-    "ja",
-    "vi",
-    "bn",
-    "hi",
+    "tr",
     "ar",
     "fa",
+    "ur",
+    "pa-Arab",
+    "pa-Guru",
+    "hi",
+    "bn",
+    "mr",
+    "gu",
+    "kn",
+    "te",
+    "ta",
+    "th",
+    "vi",
+    "id",
+    "zh-Hans",
+    "zh-Hant",
+    "ko-polite",
+    "ja",
 ];
 
-export const ALL_LEVELS = ["A1", "A2", "B1", "B2", "C1", "C2"];
+export const COMING_SOON_LANGUAGES = [
+    "sw",
+    "he",
+    "el",
+    "my",
+    "km",
+    "yue-Hant-HK",
+] as const;
+
+export type ComingSoonLanguageCode = (typeof COMING_SOON_LANGUAGES)[number];
+
+
+export const ALL_LEVELS = ["A0", "A1", "A2", "B1", "B2", "C1", "C2"];
 
 export const ALL_DOMAINS = [
     "travel",
@@ -62,6 +85,7 @@ export type StackSettings = {
     rate: number;
     textSize: TextSizeType;
     showRomanization: boolean;
+    scrollNavigationEnabled: boolean;
 
     /** Per-language TTS voice preferences */
     voicePrefs: VoicePrefsMap;
@@ -87,6 +111,7 @@ type MultiStackState = {
     rate: number;
     textSize: TextSizeType;
     showRomanization: boolean;
+    scrollNavigationEnabled: boolean;
     /** Mirror of per-language voice prefs for active stack */
     voicePrefs: VoicePrefsMap;
 
@@ -104,6 +129,7 @@ type MultiStackState = {
     setRate: (rate: number) => void;
     setTextSize: (size: TextSizeType) => void;
     setShowRomanization: (val: boolean) => void;
+    setScrollNavigationEnabled: (val: boolean) => void;
 
     /** Voice preference updaters for active stack */
     setVoiceMode: (lang: string, mode: VoiceMode) => void;
@@ -143,10 +169,11 @@ const nanoid = () =>
 const DEFAULT_SETTINGS: StackSettings = {
     languages: ["en", "es", "pt-BR", "fr", "it", "ko-polite"].reverse(),
     domains: [...ALL_DOMAINS],
-    levels: ["A1"],
+    levels: ["A0"],
     rate: 0.7,
     textSize: "medium",
     showRomanization: true,
+    scrollNavigationEnabled: true,
     voicePrefs: {}, // important: always an object
 };
 
@@ -191,6 +218,7 @@ function deriveFrom(stack: Stack) {
         rate: stack.settings.rate,
         textSize: stack.settings.textSize,
         showRomanization: stack.settings.showRomanization,
+        scrollNavigationEnabled: stack.settings.scrollNavigationEnabled ?? true,
         voicePrefs: { ...vp }, // cloned, never undefined
     };
 }
@@ -327,6 +355,7 @@ export const useSettingsStore = create<MultiStackState>()(
                 setRate: (rate) => writeActiveSettings((s) => { s.rate = rate; }),
                 setTextSize: (size) => writeActiveSettings((s) => { s.textSize = size; }),
                 setShowRomanization: (val) => writeActiveSettings((s) => { s.showRomanization = val; }),
+                setScrollNavigationEnabled: (val) => writeActiveSettings((s) => { s.scrollNavigationEnabled = val; }),
 
                 // -------- Voice Prefs (active stack) --------
                 setVoiceMode: (lang, mode) =>
@@ -385,8 +414,8 @@ export const useSettingsStore = create<MultiStackState>()(
                 primaryLang: () => get().languages[0],
 
                 dir: () => {
-                    const base = (get().languages[0] || "").split("-")[0];
-                    return RTL_LANGUAGES.includes(base as any) ? "rtl" : "ltr";
+                    const primaryLang = get().languages[0] || "";
+                    return isRTL(primaryLang) ? "rtl" : "ltr";
                 },
 
                 reset: () => {

@@ -2,14 +2,14 @@
   "$schema": "./../locale.schema.json",
   "languages": {
     "en": "영어",
-    "koPolite": "한국어 (존댓말)",
+    "ko-polite": "한국어 (존댓말)",
     "es": "스페인어",
     "fr": "프랑스어",
     "de": "독일어",
-    "ptBR": "포르투갈어 (브라질)",
+    "pt-BR": "포르투갈어 (브라질)",
     "ja": "일본어",
-    "zhHans": "중국어 (간체)",
-    "zhHant": "중국어 (번체)",
+    "zh-Hans": "중국어 (간체)",
+    "zh-Hant": "중국어 (번체)",
     "ar": "아랍어",
     "ru": "러시아어",
     "it": "이탈리아어",
@@ -18,7 +18,18 @@
     "pl": "폴란드어",
     "hu": "헝가리어",
     "fa": "페르시아어",
-    "bn": "벵골어"
+    "bn": "벵골어",
+    "th": "태국어",
+    "id": "인도네시아어",
+    "tr": "터키어",
+    "ta": "타밀어",
+    "te": "텔루구어",
+    "kn": "칸나다어",
+    "mr": "마라티어",
+    "gu": "구자라트어",
+    "ur": "우르두어",
+    "pa-Guru": "펀자브어 (구르무키)",
+    "pa-Arab": "펀자브어 (샤무키)"
   },
   "categories": {
     "travel": "여행",
@@ -38,6 +49,7 @@
   "settings": {
     "addMoreLanguages": "언어 추가",
     "selectedLanguages": "선택된 언어",
+    "removeLanguage": "언어 제거",
     "settings": "설정",
     "adjustToYourPreferences": "선호에 맞게 조정",
     "speechRate": "발음 속도",
@@ -56,9 +68,10 @@
     "small": "작게",
     "medium": "보통",
     "large": "크게",
-    "extraLarge": "아주 크게",
+    "extra-large": "아주 크게",
     "testTts": "아래 버튼을 눌러 TTS 설정을 테스트해 보세요:",
-    "showRomanization": "로마자 표기 보기"
+    "showRomanization": "로마자 표기 보기",
+    "scrollNavigation": "스크롤 탐색"
   },
   "onboarding": {
     "welcome": "환영합니다",
@@ -69,13 +82,53 @@
     "ttsPoorQualityNote": "음질이 좋지 않다면 기기의 TTS 설정에서 고품질 음성을 설치하세요.",
     "howToSetupTtsOn": "TTS 설정 방법",
     "welcomeTitle": "Corpán 가족이 되어 주셔서 감사합니다!",
-    "welcomeBody": "저희의 목표는 모두를 위한 교육 혁신입니다. 도움이 필요하시거나 피드백 또는 참여를 원하시면 웹사이트를 방문해 주세요.",
+    "welcomeBody": "Corpán 은 대기업이 아니라, 언어와 교육을 진심으로 아끼는 아주 작은 팀이 만드는 오픈 소스 앱입니다. 아직 초기 단계라 다듬어지지 않은 부분이나 빠진 기능, 지원되지 않는 언어들이 있을 수 있습니다. 사용하시다가 문제가 보이면 조용히 불편해하시기보다 GitHub 이나 이메일로 알려 주세요. 여러분의 피드백 덕분에 자주 업데이트하고, 더 나은 언어 학습 경험을 만들어 갈 수 있습니다.",
     "welcomeVisit": "encorpora.io 방문하기",
     "linkCopied": "링크가 복사되었습니다. 브라우저에서 열어보세요:",
     "reconfigureStack": "프로필 재설정",
     "openVoiceSettings": "음성 설정 열기",
     "openTTSSetup": "TTS 설정 열기",
-    "welcomeFollowUp": "참여해 주셔서 감사합니다! 커뮤니티에서 뵙겠습니다."
+    "welcomeFollowUp": "참여해 주셔서 감사합니다! 커뮤니티에서 뵙겠습니다.",
+    "learningStepTitle": "학습",
+    "tts": "텍스트 음성 변환",
+    "languageOrderTipTitle": "팁",
+    "languageOrderTipBody": "맨 아래 언어가 앱 UI 언어가 됩니다. 드래그해서 언제든 바꿀 수 있어요.",
+    "ttsOsTipTitle": "팁",
+    "ttsOsTipAndroid": "가장 잘 됩니다: Google TTS 사용. Samsung TTS는 Corpán에서 동작하지 않습니다.",
+    "ttsOsTipIOS": "설정 → 접근성에서 Spoken Content를 찾아 음성을 다운로드하세요. 참고: Apple은 모든 언어에 음성을 제공하지 않습니다. 업그레이드로 해결되지 않으면 Apple의 Feedback 앱으로 지원을 요청하세요.",
+    "ttsOsTipMac": "시스템 설정 → 접근성에서 Spoken Content를 찾아 음성을 다운로드하세요. 참고: Apple은 모든 언어에 음성을 제공하지 않습니다. 업그레이드로 해결되지 않으면 Apple의 Feedback 앱으로 지원을 요청하세요.",
+    "ttsOsTipWindows": "설정에서 음성을 설치한 뒤 여기로 돌아오세요.",
+    "ttsOsTipOther": "기기 설정에서 음성을 설치한 뒤 여기로 돌아오세요.",
+    "installVoicesAndroid": "음성 설치",
+    "learning": "언어 학습",
+    "ttsStepTitle": "텍스트 음성 변환",
+    "socials": "팔로우하고 연결하기",
+    "socialsStepTitle": "소셜 미디어",
+    "noVoices": "음성 없음",
+    "noVoicesHint": "이 언어를 사용하려면 음성을 설치하세요.",
+    "sendAppleFeedback": "Apple 피드백 보내기"
+  },
+  "socials": {
+    "youtube": {
+      "cta": "시청",
+      "title": "YouTube",
+      "desc": "튜토리얼, 데모, 그리고 비하인드 스토리."
+    },
+    "github": {
+      "cta": "별표 주고 기여하기",
+      "title": "GitHub",
+      "desc": "오픈 소스. PR 환영!"
+    },
+    "blog": {
+      "cta": "읽기",
+      "title": "Free2z Blog",
+      "desc": "업데이트, 로드맵, 심층 콘텐츠."
+    },
+    "website": {
+      "cta": "방문",
+      "title": "encorpora.io",
+      "desc": "문서와 커뮤니티가 있는 메인 사이트."
+    }
   },
   "common": {
     "loading": "로드 중...",
@@ -159,7 +212,28 @@
     "zh-CN-u-sd-cnsn": "표준 중국어 (산시, 중국)",
     "zh-HK": "광둥어 (홍콩)",
     "zh-TW": "표준 중국어 (대만)",
-    "bn": "벵골어"
+    "bn": "벵골어",
+    "th": "태국어",
+    "id": "인도네시아어",
+    "tr": "터키어",
+    "bn-IN": "벵골어 (인도)",
+    "te-IN": "텔루구어 (인도)",
+    "kn-IN": "칸나다어 (인도)",
+    "mr": "마라티어",
+    "mr-IN": "마라티어 (인도)",
+    "gu": "구자라트어",
+    "gu-IN": "구자라트어 (인도)",
+    "pa": "펀자브어",
+    "pa-IN": "펀자브어 (인도)",
+    "pa-Guru": "펀자브어 (구르무키)",
+    "pa-Guru-IN": "펀자브어 (구르무키, 인도)",
+    "pa-Arab": "펀자브어 (샤무키)",
+    "ur": "우르두어",
+    "ur-IN": "우르두어 (인도)",
+    "ur-PK": "우르두어 (파키스탄)",
+    "ta": "타밀어",
+    "te": "텔루구어",
+    "kn": "칸나다어"
   },
   "footer": {
     "appVersion": "앱 버전",
@@ -179,7 +253,44 @@
     "new": "새 프로필",
     "newName": "새 프로필 이름",
     "rename": "이름 변경",
+    "renameLabel": "스택의 새 이름",
     "selectAria": "프로필 선택",
     "selectPlaceholder": "선택…"
+  },
+  "rating": {
+    "title": "Corpán이 마음에 드시나요?",
+    "description": "Corpán은 아주 작은 오픈 소스 팀이 이제 막 시작한 앱입니다. 별 5개짜리 앱이라고 느껴지신다면, 잠깐의 별점 평가만으로도 큰 도움이 됩니다.",
+    "rateNow": "⭐ 별 5개로 평가하기",
+    "remindLater": "나중에",
+    "noThanks": "괜찮아요",
+    "close": "닫기",
+    "feedbackHint": "아직 별 5개까지는 아니다 싶으시면, 낮은 평점 대신 ‘피드백 보내기’를 눌러 개선점을 알려 주세요.",
+    "feedbackButton": "GitHub에서 피드백 보내기"
+  },
+  "packs": {
+    "title": "팩",
+    "available": "사용 가능한 팩",
+    "emptyAvailable": "아직 팩이 없습니다.",
+    "installed": "설치된 팩",
+    "emptyInstalled": "설치된 팩이 없습니다.",
+    "get": "받기",
+    "open": "열기",
+    "remove": "삭제",
+    "version": "버전 {{version}}",
+    "refresh": "새로고침",
+    "free": "무료",
+    "install": "설치",
+    "installing": "설치 중...",
+    "installFailed": "설치에 실패했습니다.",
+    "update": "업데이트",
+    "updating": "업데이트 중...",
+    "manifestTitle": "매니페스트 URL",
+    "manifestPlaceholder": "https://example.com/manifest.json",
+    "manifestHint": "매니페스트 URL을 붙여넣어 주세요.",
+    "devUnlockTitle": "개발자 팩",
+    "devUnlockHint": "매니페스트 설치를 열려면 7번 탭하세요.",
+    "devUnlockToast": "개발자 팩이 활성화되었습니다.",
+    "devIntro": "Corpán 팩을 사용해 보거나 직접 만들어 보세요.",
+    "devLink": "Free2z에서 더 알아보기"
   }
 }

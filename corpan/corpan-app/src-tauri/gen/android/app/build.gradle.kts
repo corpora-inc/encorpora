@@ -14,27 +14,27 @@ val tauriProperties = Properties().apply {
 }
 
 android {
-    // packagingOptions {
-    //     jniLibs {
-    //         useLegacyPackaging = true
-    //     }
-    // }
-    compileSdk = 36
     namespace = "com.corpora.corpan"
+    compileSdk = 36
+
     defaultConfig {
-        manifestPlaceholders["usesCleartextTraffic"] = "false"
         applicationId = "com.corpora.corpan"
-        minSdk = 24
+        minSdk = 26
         targetSdk = 36
+
         versionCode = tauriProperties.getProperty("tauri.android.versionCode", "1").toInt()
         versionName = tauriProperties.getProperty("tauri.android.versionName", "1.0")
+
+        manifestPlaceholders["usesCleartextTraffic"] = "false"
     }
+
     buildTypes {
         getByName("debug") {
             manifestPlaceholders["usesCleartextTraffic"] = "true"
             isDebuggable = true
             isJniDebuggable = true
             isMinifyEnabled = false
+
             packaging {
                 jniLibs.keepDebugSymbols.add("*/arm64-v8a/*.so")
                 jniLibs.keepDebugSymbols.add("*/armeabi-v7a/*.so")
@@ -51,12 +51,24 @@ android {
             )
         }
     }
-    kotlinOptions {
-        jvmTarget = "1.8"
+
+    // Java 17 language level for Android toolchain
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
+
     buildFeatures {
         buildConfig = true
     }
+
+    // Pin NDK (optional, keep if you rely on this exact version)
+    ndkVersion = "28.2.13676358"
+}
+
+// Kotlin JVM target = 17
+tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
+    kotlinOptions.jvmTarget = "17"
 }
 
 rust {
@@ -68,31 +80,11 @@ dependencies {
     implementation("androidx.appcompat:appcompat:1.7.1")
     implementation("androidx.activity:activity-ktx:1.10.1")
     implementation("com.google.android.material:material:1.12.0")
+    implementation("com.android.billingclient:billing:7.1.1")
+
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.4")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.0")
 }
 
 apply(from = "tauri.build.gradle.kts")
-/* BEGIN: corpan patch (idempotent) */
-android {
-    // Force modern SDK + NDK
-    compileSdk = 36
-    defaultConfig {
-        minSdk = 24
-        targetSdk = 36
-    }
-    ndkVersion = "28.2.13676358"
-
-    // Java 17 language level
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
-    }
-}
-
-// Kotlin JVM target = 17 (no plugin block assumptions)
-tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
-    kotlinOptions.jvmTarget = "17"
-}
-/* END: corpan patch */

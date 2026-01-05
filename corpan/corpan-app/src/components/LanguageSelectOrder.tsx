@@ -17,7 +17,6 @@ import { Button } from "@/components/ui/button";
 import { GripVertical, Plus, X } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { ALL_LANGUAGES, useSettingsStore } from "@/store/settings";
-import { toCamelCase } from "@/util/convert";
 
 function lockScroll(lock: boolean) {
   const ids = ["settings-modal-content", "onboarding-scroll"]; // modal first, then onboarding
@@ -93,7 +92,7 @@ function LangChip({
         {...dragHandleProps}
         dir={dir()}
       >
-        {t(`languages.${toCamelCase(code)}` as any)}
+        {t(`languages.${code}` as any)}
       </span>
       {onRemove && (
         <button
@@ -202,7 +201,7 @@ export function LanguageSelectOrder() {
                 onClick={() => handleAdd(code)}
               >
                 <Plus size={15} className="mr-1" />
-                <span>{t(`languages.${toCamelCase(code)}` as any) || code}</span>
+                <span>{t(`languages.${code}` as any) || code}</span>
               </Button>
             ))}
           </div>

@@ -2,14 +2,14 @@
   "$schema": "./../locale.schema.json",
   "languages": {
     "en": "Tiếng Anh",
-    "koPolite": "Tiếng Hàn (Lịch sự)",
+    "ko-polite": "Tiếng Hàn (Lịch sự)",
     "es": "Tiếng Tây Ban Nha",
     "fr": "Tiếng Pháp",
     "de": "Tiếng Đức",
-    "ptBR": "Tiếng Bồ Đào Nha (Brazil)",
+    "pt-BR": "Tiếng Bồ Đào Nha (Brazil)",
     "ja": "Tiếng Nhật",
-    "zhHans": "Tiếng Trung (Giản thể)",
-    "zhHant": "Tiếng Trung (Phồn thể)",
+    "zh-Hans": "Tiếng Trung (Giản thể)",
+    "zh-Hant": "Tiếng Trung (Phồn thể)",
     "ar": "Tiếng Ả Rập",
     "ru": "Tiếng Nga",
     "it": "Tiếng Ý",
@@ -18,7 +18,18 @@
     "pl": "Tiếng Ba Lan",
     "hu": "Tiếng Hungary",
     "fa": "Tiếng Ba Tư",
-    "bn": "Tiếng Bengal"
+    "bn": "Tiếng Bengal",
+    "th": "Tiếng Thái",
+    "id": "Tiếng Indonesia",
+    "tr": "Tiếng Thổ Nhĩ Kỳ",
+    "ta": "Tiếng Tamil",
+    "te": "Tiếng Telugu",
+    "kn": "Tiếng Kannada",
+    "mr": "Tiếng Marathi",
+    "gu": "Tiếng Gujarati",
+    "ur": "Tiếng Urdu",
+    "pa-Guru": "Tiếng Punjab (Gurmukhi)",
+    "pa-Arab": "Tiếng Punjab (Shahmukhi)"
   },
   "categories": {
     "travel": "Du lịch",
@@ -38,6 +49,7 @@
   "settings": {
     "addMoreLanguages": "Thêm ngôn ngữ",
     "selectedLanguages": "Ngôn ngữ đã chọn",
+    "removeLanguage": "Xóa ngôn ngữ",
     "settings": "Cài đặt",
     "adjustToYourPreferences": "Điều chỉnh theo sở thích của bạn",
     "speechRate": "Tốc độ giọng nói",
@@ -56,9 +68,10 @@
     "small": "Nhỏ",
     "medium": "Trung bình",
     "large": "Lớn",
-    "extraLarge": "Rất lớn",
+    "extra-large": "Rất lớn",
     "testTts": "Kiểm tra cài đặt TTS của bạn bằng cách nhấp vào các nút bên dưới:",
-    "showRomanization": "Hiển thị La-tinh hóa"
+    "showRomanization": "Hiển thị La-tinh hóa",
+    "scrollNavigation": "Điều hướng cuộn"
   },
   "onboarding": {
     "welcome": "Chào mừng",
@@ -69,13 +82,53 @@
     "ttsPoorQualityNote": "Nếu âm thanh kém, hãy vào cài đặt TTS của thiết bị và cài đặt giọng nói chất lượng cao.",
     "howToSetupTtsOn": "Cách cài đặt TTS trên",
     "welcomeTitle": "Chào mừng bạn đến với gia đình Corpán!",
-    "welcomeBody": "Sứ mệnh của chúng tôi là cách mạng hóa giáo dục cho tất cả mọi người. Nếu bạn cần giúp đỡ, muốn gửi phản hồi hoặc tham gia cùng chúng tôi, hãy truy cập trang web của chúng tôi.",
+    "welcomeBody": "Corpán là một ứng dụng mã nguồn mở do một nhóm rất nhỏ phát triển, chứ không phải một công ty lớn. Chúng tôi thực sự quan tâm đến ngôn ngữ và giáo dục, và dự án vẫn còn ở giai đoạn đầu, nên có thể bạn sẽ thấy vài chỗ chưa hoàn thiện, tính năng còn thiếu hoặc ngôn ngữ chưa được hỗ trợ. Nếu có điều gì không hoạt động tốt, hãy báo cho chúng tôi qua GitHub hoặc email. Phản hồi của bạn giúp chúng tôi ra bản cập nhật thường xuyên và cải thiện việc học ngôn ngữ cho mọi người.",
     "welcomeVisit": "Truy cập encorpora.io",
     "linkCopied": "Đã sao chép liên kết! Mở trong trình duyệt của bạn:",
     "reconfigureStack": "Cấu hình lại hồ sơ",
     "openVoiceSettings": "Mở cài đặt giọng nói",
     "openTTSSetup": "Mở cài đặt TTS",
-    "welcomeFollowUp": "Cảm ơn bạn đã tham gia — hẹn gặp lại trong cộng đồng!"
+    "welcomeFollowUp": "Cảm ơn bạn đã tham gia — hẹn gặp lại trong cộng đồng!",
+    "learningStepTitle": "Học",
+    "tts": "Chuyển văn bản thành giọng nói",
+    "languageOrderTipTitle": "Mẹo",
+    "languageOrderTipBody": "Ngôn ngữ ở cuối sẽ trở thành ngôn ngữ giao diện. Kéo để đổi bất cứ lúc nào.",
+    "ttsOsTipTitle": "Mẹo",
+    "ttsOsTipAndroid": "Tốt nhất: dùng Google TTS. Samsung TTS không dùng được trong Corpán.",
+    "ttsOsTipIOS": "Trong Settings → Accessibility, tìm Spoken Content và tải giọng nói. Lưu ý: Apple không cung cấp giọng nói cho mọi ngôn ngữ. Nếu cập nhật không giúp, hãy yêu cầu hỗ trợ qua ứng dụng Feedback của Apple.",
+    "ttsOsTipMac": "Trong System Settings → Accessibility, tìm Spoken Content và tải giọng nói. Lưu ý: Apple không cung cấp giọng nói cho mọi ngôn ngữ. Nếu cập nhật không giúp, hãy yêu cầu hỗ trợ qua ứng dụng Feedback của Apple.",
+    "ttsOsTipWindows": "Cài giọng nói trong Cài đặt rồi quay lại đây.",
+    "ttsOsTipOther": "Cài giọng nói trong cài đặt thiết bị rồi quay lại đây.",
+    "installVoicesAndroid": "Cài giọng",
+    "learning": "Học ngôn ngữ",
+    "ttsStepTitle": "Chuyển văn bản thành giọng nói",
+    "socials": "Theo dõi & kết nối",
+    "socialsStepTitle": "Mạng xã hội",
+    "noVoices": "Không có giọng nói",
+    "noVoicesHint": "Cài đặt giọng nói để bật ngôn ngữ này.",
+    "sendAppleFeedback": "Gửi phản hồi cho Apple"
+  },
+  "socials": {
+    "youtube": {
+      "cta": "Xem",
+      "title": "YouTube",
+      "desc": "Hướng dẫn, demo và hậu trường."
+    },
+    "github": {
+      "cta": "Gắn sao & đóng góp",
+      "title": "GitHub",
+      "desc": "Mã nguồn mở. PR hoan nghênh!"
+    },
+    "blog": {
+      "cta": "Đọc",
+      "title": "Free2z Blog",
+      "desc": "Cập nhật, lộ trình và phân tích sâu."
+    },
+    "website": {
+      "cta": "Truy cập",
+      "title": "encorpora.io",
+      "desc": "Trang chính với tài liệu và cộng đồng."
+    }
   },
   "common": {
     "loading": "Đang tải...",
@@ -159,7 +212,28 @@
     "zh-CN-u-sd-cnsn": "Tiếng Phổ Thông (Thiểm Tây, Trung Quốc)",
     "zh-HK": "Tiếng Quảng Đông (Hồng Kông)",
     "zh-TW": "Tiếng Phổ Thông (Đài Loan)",
-    "bn": "Tiếng Bengal"
+    "bn": "Tiếng Bengal",
+    "th": "Tiếng Thái",
+    "id": "Tiếng Indonesia",
+    "tr": "Tiếng Thổ Nhĩ Kỳ",
+    "bn-IN": "Tiếng Bengal (Ấn Độ)",
+    "te-IN": "Tiếng Telugu (Ấn Độ)",
+    "kn-IN": "Tiếng Kannada (Ấn Độ)",
+    "mr": "Tiếng Marathi",
+    "mr-IN": "Tiếng Marathi (Ấn Độ)",
+    "gu": "Tiếng Gujarati",
+    "gu-IN": "Tiếng Gujarati (Ấn Độ)",
+    "pa": "Tiếng Punjab",
+    "pa-IN": "Tiếng Punjab (Ấn Độ)",
+    "pa-Guru": "Tiếng Punjab (Gurmukhi)",
+    "pa-Guru-IN": "Tiếng Punjab (Gurmukhi, Ấn Độ)",
+    "pa-Arab": "Tiếng Punjab (Shahmukhi)",
+    "ur": "Tiếng Urdu",
+    "ur-IN": "Tiếng Urdu (Ấn Độ)",
+    "ur-PK": "Tiếng Urdu (Pakistan)",
+    "ta": "Tiếng Tamil",
+    "te": "Tiếng Telugu",
+    "kn": "Tiếng Kannada"
   },
   "footer": {
     "appVersion": "Phiên bản ứng dụng",
@@ -179,7 +253,44 @@
     "new": "Hồ sơ mới",
     "newName": "Tên hồ sơ mới",
     "rename": "Đổi tên",
+    "renameLabel": "Tên mới cho ngăn xếp",
     "selectAria": "Chọn hồ sơ",
     "selectPlaceholder": "Chọn…"
+  },
+  "rating": {
+    "title": "Bạn có thích Corpán không?",
+    "description": "Corpán được xây dựng bởi một nhóm mã nguồn mở nhỏ, mới bắt đầu. Nếu với bạn ứng dụng xứng đáng 5 sao, một đánh giá nhanh giúp chúng tôi rất nhiều.",
+    "rateNow": "⭐ Đánh giá 5 sao",
+    "remindLater": "Để sau",
+    "noThanks": "Không, cảm ơn",
+    "close": "Đóng",
+    "feedbackHint": "Chưa thực sự là 5 sao trong mắt bạn? Hãy bấm “Góp ý” và cho chúng tôi biết cần cải thiện gì.",
+    "feedbackButton": "Góp ý trên GitHub"
+  },
+  "packs": {
+    "title": "Gói",
+    "available": "Gói có sẵn",
+    "emptyAvailable": "Chưa có gói nào.",
+    "installed": "Gói đã cài",
+    "emptyInstalled": "Chưa cài gói nào.",
+    "get": "Nhận",
+    "open": "Mở",
+    "remove": "Xóa",
+    "version": "Phiên bản {{version}}",
+    "refresh": "Làm mới",
+    "free": "Miễn phí",
+    "install": "Cài đặt",
+    "installing": "Đang cài...",
+    "installFailed": "Cài đặt thất bại.",
+    "update": "Cập nhật",
+    "updating": "Đang cập nhật...",
+    "manifestTitle": "URL manifest",
+    "manifestPlaceholder": "https://example.com/manifest.json",
+    "manifestHint": "Dán URL manifest.",
+    "devUnlockTitle": "Gói dành cho nhà phát triển",
+    "devUnlockHint": "Chạm 7 lần để mở cài đặt bằng manifest.",
+    "devUnlockToast": "Đã mở gói dành cho nhà phát triển.",
+    "devIntro": "Thử một gói Corpán hoặc tự tạo.",
+    "devLink": "Tìm hiểu thêm trên Free2z"
   }
 }

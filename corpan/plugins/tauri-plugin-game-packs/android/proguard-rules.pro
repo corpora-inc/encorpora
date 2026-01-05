@@ -1,0 +1,2 @@
+-keep class com.corpora.tauri.gamepacks.GamePacksPlugin { *; }
+-keep class com.corpora.tauri.gamepacks.PackRequest { *; }

@@ -337,12 +337,19 @@ export function OnboardingTTSInstructionsLanguageSection({
             ].join(" ")}
         >
             {/* Header: toggle + label + counts + preview (one row) */}
-            <button
-                type="button"
+            <div
+                role="button"
+                tabIndex={0}
                 onClick={() => setOpen((o) => !o)}
+                onKeyDown={(e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                        e.preventDefault();
+                        setOpen((o) => !o);
+                    }
+                }}
                 aria-controls={sectionId}
                 aria-expanded={open}
-                className="w-full cursor-pointer"
+                className="w-full cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-400"
             >
                 <div
                     className={[
@@ -402,7 +409,7 @@ export function OnboardingTTSInstructionsLanguageSection({
                         </button>
                     </div>
                 </div>
-            </button>
+            </div>
 
             {/* Body: grid of voices (collapsed by default) */}
             <div id={sectionId} hidden={!open}>

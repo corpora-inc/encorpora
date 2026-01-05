@@ -1,0 +1,21 @@
+[
+  {
+    "id": "hover-runner",
+    "name": "Hover Runner",
+    "description": "Hover over words to reveal translations in this interactive reading game",
+    "status": "prototype",
+    "version": "0.1.0",
+    "manifestUrl": "./hover-runner/manifest.json",
+    "landingUrl": "./hover-runner/",
+    "avatarSource": "corpan/games/hover-runner/hover-runner-avatar.png",
+    "github": "https://github.com/corpora-inc/encorpora/tree/main/corpan/games/hover-runner",
+    "videos": {
+      "shorts": [
+        "GnUNvb7n4hc",
+        "9rtYc8j4UQU",
+        "Rj0x7kug9oc"
+      ],
+      "demos": []
+    }
+  }
+]

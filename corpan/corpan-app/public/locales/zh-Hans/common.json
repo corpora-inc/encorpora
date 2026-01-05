@@ -2,14 +2,14 @@
   "$schema": "./../locale.schema.json",
   "languages": {
     "en": "英语",
-    "koPolite": "韩语（敬语）",
+    "ko-polite": "韩语（敬语）",
     "es": "西班牙语",
     "fr": "法语",
     "de": "德语",
-    "ptBR": "葡萄牙语（巴西）",
+    "pt-BR": "葡萄牙语（巴西）",
     "ja": "日语",
-    "zhHans": "中文（简体）",
-    "zhHant": "中文（繁体）",
+    "zh-Hans": "中文（简体）",
+    "zh-Hant": "中文（繁体）",
     "ar": "阿拉伯语",
     "ru": "俄语",
     "it": "意大利语",
@@ -18,7 +18,18 @@
     "pl": "波兰语",
     "hu": "匈牙利语",
     "fa": "波斯语",
-    "bn": "孟加拉语"
+    "bn": "孟加拉语",
+    "th": "泰语",
+    "id": "印度尼西亚语",
+    "tr": "土耳其语",
+    "ta": "泰米尔语",
+    "te": "泰卢固语",
+    "kn": "卡纳达语",
+    "mr": "马拉地语",
+    "gu": "古吉拉特语",
+    "ur": "乌尔都语",
+    "pa-Guru": "旁遮普语（果鲁穆奇文）",
+    "pa-Arab": "旁遮普语（沙希穆基文）"
   },
   "categories": {
     "travel": "旅行",
@@ -38,6 +49,7 @@
   "settings": {
     "addMoreLanguages": "添加更多语言",
     "selectedLanguages": "已选择的语言",
+    "removeLanguage": "删除语言",
     "settings": "设置",
     "adjustToYourPreferences": "根据您的喜好进行调整",
     "speechRate": "语速",
@@ -56,9 +68,10 @@
     "small": "小",
     "medium": "中",
     "large": "大",
-    "extraLarge": "特大",
+    "extra-large": "特大",
     "testTts": "点击下方按钮测试您的 TTS 设置：",
-    "showRomanization": "显示罗马化"
+    "showRomanization": "显示罗马化",
+    "scrollNavigation": "滚动导航"
   },
   "onboarding": {
     "welcome": "欢迎",
@@ -69,13 +82,53 @@
     "ttsPoorQualityNote": "如果语音质量较差，请进入设备的 TTS 设置并安装高质量语音包。",
     "howToSetupTtsOn": "如何在以下设备上设置 TTS",
     "welcomeTitle": "欢迎加入 Corpán 家庭！",
-    "welcomeBody": "我们的使命是为所有人带来教育的革新。如果您需要帮助、想要反馈或希望加入我们，请访问我们的网站。",
+    "welcomeBody": "Corpán 是由一个很小的团队开发的开源应用，而不是大公司产品，我们非常重视语言和教育。项目还在早期阶段，所以你可能会看到不够完善的地方、缺失的功能或暂时尚未支持的语言。如果有任何功能对你来说不好用，请通过 GitHub 或电子邮件告诉我们。你的反馈能帮助我们频繁更新，也能让所有人的语言学习体验变得更好。",
     "welcomeVisit": "访问 encorpora.io",
     "linkCopied": "链接已复制！请在浏览器中打开：",
     "reconfigureStack": "重新配置档案",
     "openVoiceSettings": "打开语音设置",
     "openTTSSetup": "打开 TTS 设置",
-    "welcomeFollowUp": "感谢您的加入！期待在社区中见到您。"
+    "welcomeFollowUp": "感谢您的加入！期待在社区中见到您。",
+    "learningStepTitle": "学习",
+    "tts": "文本转语音",
+    "languageOrderTipTitle": "提示",
+    "languageOrderTipBody": "最底部的语言会成为应用界面语言。拖动即可随时更改。",
+    "ttsOsTipTitle": "提示",
+    "ttsOsTipAndroid": "最佳效果：使用 Google 语音。Samsung TTS 在 Corpán 中无法使用。",
+    "ttsOsTipIOS": "在“设置 → 辅助功能”中找到“朗读内容”，下载语音。注意：Apple 并不为每种语言提供语音。若升级无效，请通过 Apple 的 Feedback 应用请求支持。",
+    "ttsOsTipMac": "在“系统设置 → 辅助功能”中找到“朗读内容”，下载语音。注意：Apple 并不为每种语言提供语音。若升级无效，请通过 Apple 的 Feedback 应用请求支持。",
+    "ttsOsTipWindows": "在“设置”里安装语音后返回这里。",
+    "ttsOsTipOther": "在设备设置里安装语音后返回这里。",
+    "installVoicesAndroid": "安装语音",
+    "learning": "学习语言",
+    "ttsStepTitle": "文字转语音",
+    "socials": "关注并连接",
+    "socialsStepTitle": "社交媒体",
+    "noVoices": "无语音",
+    "noVoicesHint": "安装语音以启用此语言。",
+    "sendAppleFeedback": "发送 Apple 反馈"
+  },
+  "socials": {
+    "youtube": {
+      "cta": "观看",
+      "title": "YouTube",
+      "desc": "教程、演示和幕后花絮。"
+    },
+    "github": {
+      "cta": "加星并贡献",
+      "title": "GitHub",
+      "desc": "开源。欢迎 PR！"
+    },
+    "blog": {
+      "cta": "阅读",
+      "title": "Free2z Blog",
+      "desc": "更新、路线图和深度内容。"
+    },
+    "website": {
+      "cta": "访问",
+      "title": "encorpora.io",
+      "desc": "包含文档和社区的主站。"
+    }
   },
   "common": {
     "loading": "加载中...",
@@ -159,7 +212,28 @@
     "zh-CN-u-sd-cnsn": "普通话（陕西，中国）",
     "zh-HK": "粤语（香港）",
     "zh-TW": "普通话（台湾）",
-    "bn": "孟加拉语"
+    "bn": "孟加拉语",
+    "th": "泰语",
+    "id": "印度尼西亚语",
+    "tr": "土耳其语",
+    "bn-IN": "孟加拉语（印度）",
+    "te-IN": "泰卢固语（印度）",
+    "kn-IN": "卡纳达语（印度）",
+    "mr": "马拉地语",
+    "mr-IN": "马拉地语（印度）",
+    "gu": "古吉拉特语",
+    "gu-IN": "古吉拉特语（印度）",
+    "pa": "旁遮普语",
+    "pa-IN": "旁遮普语（印度）",
+    "pa-Guru": "旁遮普语（果鲁穆奇文）",
+    "pa-Guru-IN": "旁遮普语（果鲁穆奇文，印度）",
+    "pa-Arab": "旁遮普语（沙希穆基文）",
+    "ur": "乌尔都语",
+    "ur-IN": "乌尔都语（印度）",
+    "ur-PK": "乌尔都语（巴基斯坦）",
+    "ta": "泰米尔语",
+    "te": "泰卢固语",
+    "kn": "卡纳达语"
   },
   "footer": {
     "appVersion": "应用版本",
@@ -179,7 +253,44 @@
     "new": "新建档案",
     "newName": "新档案名称",
     "rename": "重命名",
+    "renameLabel": "堆栈的新名称",
     "selectAria": "选择档案",
     "selectPlaceholder": "选择…"
+  },
+  "rating": {
+    "title": "喜欢 Corpán 吗？",
+    "description": "Corpán 由一个刚起步的小型开源团队制作。如果你觉得它配得上 5 星，花几秒评分对我们帮助很大。",
+    "rateNow": "⭐ 评为 5 星",
+    "remindLater": "稍后再说",
+    "noThanks": "不了，谢谢",
+    "close": "关闭",
+    "feedbackHint": "还达不到你心中的 5 星？请点“反馈建议”，告诉我们该怎么改进。",
+    "feedbackButton": "在 GitHub 提交反馈"
+  },
+  "packs": {
+    "title": "包",
+    "available": "可用包",
+    "emptyAvailable": "暂无可用包。",
+    "installed": "已安装包",
+    "emptyInstalled": "暂无已安装包。",
+    "get": "获取",
+    "open": "打开",
+    "remove": "移除",
+    "version": "版本 {{version}}",
+    "refresh": "刷新",
+    "free": "免费",
+    "install": "安装",
+    "installing": "正在安装…",
+    "installFailed": "安装失败。",
+    "update": "更新",
+    "updating": "正在更新…",
+    "manifestTitle": "清单 URL",
+    "manifestPlaceholder": "https://example.com/manifest.json",
+    "manifestHint": "粘贴清单 URL。",
+    "devUnlockTitle": "开发者包",
+    "devUnlockHint": "点按 7 次以解锁清单安装。",
+    "devUnlockToast": "开发者包已解锁。",
+    "devIntro": "试试 Corpán 包或自己制作一个。",
+    "devLink": "在 Free2z 了解更多"
   }
 }
