@@ -151,25 +151,69 @@ fn is_private_host(host: &str) -> bool {
         || host.starts_with("172.31.")
 }
 
-pub async fn fetch_text(url: String) -> Result<String, String> {
+pub async fn fetch_text<R: Runtime>(app: &AppHandle<R>, url: String) -> Result<String, String> {
+    eprintln!("[fetch_text] Fetching URL: {}", url);
+
+    // Handle corpan-pack:// URLs by reading from local filesystem
+    if url.starts_with("corpan-pack://") {
+        eprintln!("[fetch_text] Handling corpan-pack:// URL");
+        // Parse: corpan-pack://localhost/pack_id/path/to/file
+        // Strip query parameters (e.g., ?dev=timestamp)
+        let url_without_query = url.split('?').next().unwrap_or(&url);
+        let path_part = url_without_query.strip_prefix("corpan-pack://localhost/")
+            .ok_or("Invalid corpan-pack URL format")?;
+        let mut parts = path_part.splitn(2, '/');
+        let pack_id = parts.next().ok_or("Missing pack ID in corpan-pack URL")?;
+        let rel_path = parts.next().ok_or("Missing file path in corpan-pack URL")?;
+
+        eprintln!("[fetch_text] Pack ID: {}, Rel path: {}", pack_id, rel_path);
+
+        // Use Tauri's proper API to get app data directory - works across all platforms
+        let pack_root = app.path()
+            .app_data_dir()
+            .map(|dir| dir.join("corpan-packs"))
+            .map_err(|e| format!("Failed to get app data dir: {}", e))?;
+
+        eprintln!("[fetch_text] Pack root: {:?}", pack_root);
+        let file_path = pack_root.join(pack_id).join(rel_path);
+        eprintln!("[fetch_text] Reading file: {:?}", file_path);
+
+        let content = fs::read_to_string(&file_path)
+            .map_err(|e| format!("Failed to read file {:?}: {}", file_path, e))?;
+        eprintln!("[fetch_text] Successfully read {} bytes from disk", content.len());
+        return Ok(content);
+    }
+
     let parsed = reqwest::Url::parse(&url).map_err(|e| e.to_string())?;
     let scheme = parsed.scheme();
+    eprintln!("[fetch_text] URL scheme: {}", scheme);
     if scheme != "https" && scheme != "http" {
+        eprintln!("[fetch_text] Unsupported URL scheme: {}", scheme);
         return Err("Unsupported URL scheme".to_string());
     }
     if scheme == "http" {
         let host = parsed.host_str().unwrap_or("");
         if !is_private_host(host) {
+            eprintln!("[fetch_text] Insecure HTTP not allowed for host: {}", host);
             return Err("Insecure HTTP is only allowed for localhost/private hosts".to_string());
         }
     }
     let client = reqwest::Client::new();
-    let res = client.get(parsed).send().await.map_err(|e| e.to_string())?;
+    let res = client.get(parsed).send().await.map_err(|e| {
+        eprintln!("[fetch_text] Request error: {}", e);
+        e.to_string()
+    })?;
     let status = res.status();
+    eprintln!("[fetch_text] Response status: {}", status);
     if !status.is_success() {
         return Err(format!("Request failed ({status})"));
     }
-    res.text().await.map_err(|e| e.to_string())
+    let text = res.text().await.map_err(|e| {
+        eprintln!("[fetch_text] Text decode error: {}", e);
+        e.to_string()
+    })?;
+    eprintln!("[fetch_text] Successfully fetched {} bytes", text.len());
+    Ok(text)
 }
 
 pub async fn download_and_install<R: Runtime>(

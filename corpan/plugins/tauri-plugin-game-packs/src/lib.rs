@@ -43,9 +43,14 @@ pub fn init<R: Runtime>() -> TauriPlugin<R> {
             commands::get_game_pack_manifest_url
         ])
         .register_uri_scheme_protocol("corpan-pack", |ctx, request| {
+            eprintln!("[corpan-pack] Protocol handler invoked, URI: {}", request.uri());
             let pack_root = match app_pack_root(ctx.app_handle()) {
-                Ok(root) => root,
+                Ok(root) => {
+                    eprintln!("[corpan-pack] Pack root: {:?}", root);
+                    root
+                },
                 Err(msg) => {
+                    eprintln!("[corpan-pack] Failed to get pack root: {}", msg);
                     return Response::builder()
                         .status(StatusCode::INTERNAL_SERVER_ERROR)
                         .header(header::CONTENT_TYPE, "text/plain")
@@ -56,10 +61,12 @@ pub fn init<R: Runtime>() -> TauriPlugin<R> {
 
             let path = request.uri().path();
             let trimmed = path.trim_start_matches('/');
+            eprintln!("[corpan-pack] Path: {}", trimmed);
             let mut parts = trimmed.splitn(2, '/');
             let pack_id = match parts.next() {
                 Some(id) if !id.is_empty() => id,
                 _ => {
+                    eprintln!("[corpan-pack] Missing pack id");
                     return Response::builder()
                         .status(StatusCode::BAD_REQUEST)
                         .header(header::CONTENT_TYPE, "text/plain")
@@ -68,10 +75,15 @@ pub fn init<R: Runtime>() -> TauriPlugin<R> {
                 }
             };
             let rel_path = parts.next().unwrap_or("");
+            eprintln!("[corpan-pack] Pack ID: {}, Rel path: {}", pack_id, rel_path);
             let pack_dir = pack_root.join(pack_id);
             let file_path = match safe_join(&pack_dir, rel_path) {
-                Some(path) => path,
+                Some(path) => {
+                    eprintln!("[corpan-pack] File path: {:?}", path);
+                    path
+                },
                 None => {
+                    eprintln!("[corpan-pack] Invalid path (contains ..): {}", rel_path);
                     return Response::builder()
                         .status(StatusCode::FORBIDDEN)
                         .header(header::CONTENT_TYPE, "text/plain")
@@ -83,17 +95,21 @@ pub fn init<R: Runtime>() -> TauriPlugin<R> {
             match fs::read(&file_path) {
                 Ok(data) => {
                     let content_type = content_type_for_path(&file_path);
+                    eprintln!("[corpan-pack] Successfully read {} bytes, content-type: {}", data.len(), content_type);
                     Response::builder()
                         .status(StatusCode::OK)
                         .header(header::CONTENT_TYPE, content_type)
                         .body(data)
                         .unwrap()
                 }
-                Err(_) => Response::builder()
-                    .status(StatusCode::NOT_FOUND)
-                    .header(header::CONTENT_TYPE, "text/plain")
-                    .body(b"Not found".to_vec())
-                    .unwrap(),
+                Err(e) => {
+                    eprintln!("[corpan-pack] File not found: {:?}, error: {}", file_path, e);
+                    Response::builder()
+                        .status(StatusCode::NOT_FOUND)
+                        .header(header::CONTENT_TYPE, "text/plain")
+                        .body(b"Not found".to_vec())
+                        .unwrap()
+                }
             }
         })
         .setup(|app, _api| {
