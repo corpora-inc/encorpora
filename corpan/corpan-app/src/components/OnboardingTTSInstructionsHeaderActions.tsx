@@ -5,7 +5,7 @@ import {
     CheckCheck,
     MessageSquare,
     // Lightbulb,
-    // X,
+    X,
     type LucideIcon,
 } from "lucide-react";
 import { useTranslation } from "react-i18next";
@@ -19,6 +19,7 @@ type Props = {
     // Smart select handler + enabled state
     onSmartSelect?: () => void;
     canSmartSelect?: boolean;
+    isAllSelected?: boolean;
 };
 
 type OsSpec = {
@@ -96,6 +97,7 @@ export function OnboardingTTSInstructionsHeaderActions({
     onOpenSettings,
     onSmartSelect,
     canSmartSelect,
+    isAllSelected,
 }: Props) {
     const { t } = useTranslation();
 
@@ -114,7 +116,9 @@ export function OnboardingTTSInstructionsHeaderActions({
     const handlePrimary = () =>
         spec.primaryAction === "installer" ? onOpenInstaller() : onOpenSettings();
 
-    const smartLabel = t("settings.selectAll", { defaultValue: "Select all" });
+    const smartLabel = isAllSelected
+        ? t("settings.deselectAll", { defaultValue: "Deselect all" })
+        : t("settings.selectAll", { defaultValue: "Select all" });
     const smartDisabled = onSmartSelect ? canSmartSelect === false : false;
 
     const PrimaryIcon = spec.primaryIcon;
@@ -174,7 +178,7 @@ export function OnboardingTTSInstructionsHeaderActions({
                         ].join(" ")}
                         aria-label={smartLabel}
                     >
-                        <CheckCheck size={16} />
+                        {isAllSelected ? <X size={16} /> : <CheckCheck size={16} />}
                         <span>{smartLabel}</span>
                     </button>
                 )}

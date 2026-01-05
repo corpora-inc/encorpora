@@ -195,6 +195,15 @@ export function OnboardingTTSInstructions() {
         [langs, voices, os]
     );
 
+    const isAllSelected = useMemo(() => {
+        if (!voices || !canSmartSelect) return false;
+        return langs.every((code) => {
+            const availableIds = (voicesForLang(code) || []).map((v) => v.id);
+            const selectedIds = voicePrefs[code]?.ids ?? [];
+            return availableIds.length > 0 && availableIds.every((id) => selectedIds.includes(id));
+        });
+    }, [langs, voices, voicePrefs, canSmartSelect]);
+
     function setSelectionForLang(code: string, desiredIds: string[]) {
         const current = new Set((voicePrefs[code]?.ids ?? []).slice());
         const desired = new Set(desiredIds);
@@ -211,9 +220,10 @@ export function OnboardingTTSInstructions() {
     // Respect the same filter: this will select all offline voices by default,
     // or offline + online voices if the toggle is enabled.
     function smartSelectAll() {
+        const deselect = isAllSelected;
         for (const code of langs) {
-            const allIds = (voicesForLang(code) || []).map((v) => v.id);
-            setSelectionForLang(code, allIds);
+            const targetIds = deselect ? [] : (voicesForLang(code) || []).map((v) => v.id);
+            setSelectionForLang(code, targetIds);
         }
     }
 
@@ -242,6 +252,7 @@ export function OnboardingTTSInstructions() {
                     onOpenSettings={openSettings}
                     onSmartSelect={smartSelectAll}
                     canSmartSelect={canSmartSelect}
+                    isAllSelected={isAllSelected}
                 />
             </OnboardingHeader>
 

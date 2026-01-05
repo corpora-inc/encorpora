@@ -60,6 +60,7 @@
     "faster": "Faster",
     "levels": "Levels",
     "selectAll": "Select all",
+    "deselectAll": "Deselect all",
     "allLevelsIncluded": "All levels included.",
     "selected": "selected",
     "domains": "Domains",
