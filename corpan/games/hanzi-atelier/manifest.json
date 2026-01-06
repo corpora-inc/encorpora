@@ -1,0 +1,14 @@
+{
+  "id": "hanzi_atelier",
+  "name": "Hanzi Atelier",
+  "version": "0.1.0",
+  "entry": "index.js",
+  "styles": [
+    "styles.css"
+  ],
+  "entryType": "script",
+  "sdkVersion": "0.1.0",
+  "databases": {
+    "main": "data/hanzi.sqlite3"
+  }
+}

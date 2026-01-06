@@ -85,6 +85,25 @@ export const createMockHostApi = (options = {}) => {
       return entries;
     },
     getEntryById: async () => null,
+    searchEntriesByText: async ({ text, limit = 10, offset = 0 } = {}) => {
+      const sample = {
+        entry_id: 42,
+        level: "A1",
+        domains: ["travel"],
+        translations: [
+          { language_code: "zh-Hans", text: text || "你好", romanization: "nǐ hǎo" },
+          { language_code: "en", text: "hello", romanization: "" },
+        ],
+      };
+      return Array.from({ length: limit }, (_v, i) => ({
+        ...sample,
+        entry_id: sample.entry_id + offset + i,
+      }));
+    },
+    queryPackDb: async () => ({
+      columns: [],
+      rows: [],
+    }),
     ...overrides,
   };
 };

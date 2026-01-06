@@ -60,12 +60,27 @@ jobs:
           zip -r hover-runner.zip manifest.json dist/
           cd ../../..
 
+      - name: Package Hanzi Atelier as ZIP
+        run: |
+          cd corpan/games/hanzi-atelier
+          zip -r hanzi-atelier.zip manifest.json index.js styles.css data/
+          cd ../../..
+
       - name: Copy Hover Runner into io/out
         run: |
           mkdir -p "web/io/out/corpan/games/hover-runner"
           cp corpan/games/hover-runner/manifest.json "web/io/out/corpan/games/hover-runner/"
           cp -R corpan/games/hover-runner/dist "web/io/out/corpan/games/hover-runner/"
           cp corpan/games/hover-runner/hover-runner.zip "web/io/out/corpan/games/hover-runner.zip"
+
+      - name: Copy Hanzi Atelier into io/out
+        run: |
+          mkdir -p "web/io/out/corpan/games/hanzi-atelier"
+          cp corpan/games/hanzi-atelier/manifest.json "web/io/out/corpan/games/hanzi-atelier/"
+          cp corpan/games/hanzi-atelier/index.js "web/io/out/corpan/games/hanzi-atelier/"
+          cp corpan/games/hanzi-atelier/styles.css "web/io/out/corpan/games/hanzi-atelier/"
+          cp -R corpan/games/hanzi-atelier/data "web/io/out/corpan/games/hanzi-atelier/"
+          cp corpan/games/hanzi-atelier/hanzi-atelier.zip "web/io/out/corpan/games/hanzi-atelier.zip"
 
       - name: Show Final Structure
         run: |

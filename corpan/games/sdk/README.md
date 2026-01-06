@@ -39,6 +39,14 @@ mountStandalone(game);
   "version": "0.1.0",
   "entry": "app.js",
   "styles": ["app.css"],
-  "entryType": "script"
+  "entryType": "script",
+  "databases": {
+    "main": "data/game.sqlite3"
+  }
 }
 ```
+
+## Host API (selected)
+
+- `queryPackDb({ sql, params, dbName })` runs a read-only query against the pack's SQLite database.
+- `searchEntriesByText({ text, languageCodes, limit, offset })` returns core corpus entries whose translations contain `text`.

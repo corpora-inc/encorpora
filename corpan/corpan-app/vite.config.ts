@@ -12,6 +12,9 @@ const rawHost = process.env.TAURI_DEV_HOST;
 const serverHost = rawHost || "127.0.0.1";
 
 const gamesRoot = fileURLToPath(new URL("../games", import.meta.url));
+const outGamesRoot = fileURLToPath(
+  new URL("../../web/io/out/corpan/games", import.meta.url)
+);
 
 const contentTypes: Record<string, string> = {
   ".js": "text/javascript",
@@ -19,27 +22,31 @@ const contentTypes: Record<string, string> = {
   ".json": "application/json",
   ".svg": "image/svg+xml",
   ".png": "image/png",
+  ".zip": "application/zip",
+};
+
+const serveStaticFromRoot = (rootDir: string) => (req: any, res: any, next: any) => {
+  if (!req.url) return next();
+  const requestPath = decodeURIComponent(req.url.split("?")[0]);
+  const filePath = path.join(rootDir, requestPath);
+  if (!filePath.startsWith(rootDir)) {
+    res.statusCode = 403;
+    res.end("Forbidden");
+    return;
+  }
+  fs.stat(filePath, (err, stat) => {
+    if (err || !stat.isFile()) return next();
+    const ext = path.extname(filePath);
+    res.setHeader("Content-Type", contentTypes[ext] ?? "application/octet-stream");
+    fs.createReadStream(filePath).pipe(res);
+  });
 };
 
 const serveGames = () => ({
   name: "serve-corpan-games",
   configureServer(server: any) {
-    server.middlewares.use("/games", (req: any, res: any, next: any) => {
-      if (!req.url) return next();
-      const requestPath = decodeURIComponent(req.url.split("?")[0]);
-      const filePath = path.join(gamesRoot, requestPath);
-      if (!filePath.startsWith(gamesRoot)) {
-        res.statusCode = 403;
-        res.end("Forbidden");
-        return;
-      }
-      fs.stat(filePath, (err, stat) => {
-        if (err || !stat.isFile()) return next();
-        const ext = path.extname(filePath);
-        res.setHeader("Content-Type", contentTypes[ext] ?? "application/octet-stream");
-        fs.createReadStream(filePath).pipe(res);
-      });
-    });
+    server.middlewares.use("/games", serveStaticFromRoot(gamesRoot));
+    server.middlewares.use("/corpan/games", serveStaticFromRoot(outGamesRoot));
     server.middlewares.use("/game-proxy", async (req: any, res: any) => {
       try {
         if (!req.url) {

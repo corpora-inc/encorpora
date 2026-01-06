@@ -23,3 +23,4 @@ Feature flags:
 
 ## Reference game
 - `hover-runner` is the reference implementation.
+- `hanzi-atelier` is the Mandarin character pack (pack-owned DB + handwriting surface).

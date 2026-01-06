@@ -198,7 +198,7 @@ export default function ContentPackHost({
   const [error, setError] = useState<string | null>(null)
   const hasLoadedRef = useRef(false)
 
-  const hostApi = useMemo(() => createHostApi(), [])
+  const hostApi = useMemo(() => createHostApi(id), [id])
 
   useEffect(() => {
     let cancelled = false

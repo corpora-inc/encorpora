@@ -11,13 +11,37 @@ const path = require('path');
 const GAMES_DIR = path.join(__dirname, '..', '..', 'corpan', 'games');
 const OUTPUT_DIR = path.join(__dirname, '..', 'io', 'out', 'corpan', 'games');
 
-function copyGame(gameName) {
-  const srcDir = path.join(GAMES_DIR, gameName, 'dist');
-  const srcManifest = path.join(GAMES_DIR, gameName, 'manifest.json');
-  const destDir = path.join(OUTPUT_DIR, gameName);
+const GAME_CONFIGS = [
+  {
+    name: 'hover-runner',
+    distDir: 'dist',
+    files: ['manifest.json']
+  },
+  {
+    name: 'hanzi-atelier',
+    distDir: null,
+    files: ['manifest.json', 'index.js', 'styles.css'],
+    dirs: ['data'],
+    zipName: 'hanzi-atelier.zip',
+    zipEntries: ['manifest.json', 'index.js', 'styles.css', 'data/']
+  }
+];
 
-  if (!fs.existsSync(srcDir)) {
-    console.log(`[watch-games] ${gameName} dist/ not found, skipping...`);
+const GAME_CONFIG_MAP = new Map(GAME_CONFIGS.map((config) => [config.name, config]));
+
+function copyGame(gameName) {
+  const config = GAME_CONFIG_MAP.get(gameName);
+  if (!config) {
+    console.log(`[watch-games] ${gameName} not configured, skipping...`);
+    return;
+  }
+
+  const destDir = path.join(OUTPUT_DIR, gameName);
+  const srcRoot = path.join(GAMES_DIR, gameName);
+  const srcDir = config.distDir ? path.join(srcRoot, config.distDir) : null;
+
+  if (srcDir && !fs.existsSync(srcDir)) {
+    console.log(`[watch-games] ${gameName} ${config.distDir}/ not found, skipping...`);
     return;
   }
 
@@ -27,13 +51,45 @@ function copyGame(gameName) {
     // Create destination directory
     execSync(`mkdir -p "${destDir}"`, { stdio: 'inherit' });
 
-    // Copy manifest
-    if (fs.existsSync(srcManifest)) {
-      execSync(`cp "${srcManifest}" "${destDir}/"`, { stdio: 'inherit' });
-    }
+    // Copy files
+    (config.files || []).forEach((fileName) => {
+      const srcFile = path.join(srcRoot, fileName);
+      if (!fs.existsSync(srcFile)) {
+        return;
+      }
+      execSync(`cp "${srcFile}" "${destDir}/"`, { stdio: 'inherit' });
+    });
 
     // Copy dist directory (keep the folder structure)
-    execSync(`cp -R "${srcDir}" "${destDir}/"`, { stdio: 'inherit' });
+    if (srcDir) {
+      execSync(`cp -R "${srcDir}" "${destDir}/"`, { stdio: 'inherit' });
+    }
+
+    // Copy any additional directories
+    (config.dirs || []).forEach((dirName) => {
+      const srcPath = path.join(srcRoot, dirName);
+      if (!fs.existsSync(srcPath)) {
+        return;
+      }
+      execSync(`cp -R "${srcPath}" "${destDir}/"`, { stdio: 'inherit' });
+    });
+
+    // Build zip (if configured)
+    if (config.zipName && config.zipEntries?.length) {
+      const entries = config.zipEntries.map((entry) => `"${entry}"`).join(' ');
+      try {
+        execSync(`cd "${srcRoot}" && zip -r -FS "${config.zipName}" ${entries}`, {
+          stdio: 'inherit'
+        });
+        execSync(`mkdir -p "${OUTPUT_DIR}"`, { stdio: 'inherit' });
+        const zipPath = path.join(srcRoot, config.zipName);
+        if (fs.existsSync(zipPath)) {
+          execSync(`cp "${zipPath}" "${OUTPUT_DIR}/"`, { stdio: 'inherit' });
+        }
+      } catch (zipError) {
+        console.error(`[watch-games] ✗ Failed to package ${gameName}:`, zipError.message);
+      }
+    }
 
     console.log(`[watch-games] ✓ ${gameName} copied`);
   } catch (error) {
@@ -43,14 +99,24 @@ function copyGame(gameName) {
 
 // Initial copy
 console.log('[watch-games] Starting watch mode...');
-console.log('[watch-games] Copying hover-runner...');
-copyGame('hover-runner');
+console.log('[watch-games] Copying games...');
+GAME_CONFIGS.forEach((config) => copyGame(config.name));
 
 // Watch for changes in game dist directories
-const watchPaths = [
-  path.join(GAMES_DIR, 'hover-runner', 'dist', '**', '*'),
-  path.join(GAMES_DIR, 'hover-runner', 'manifest.json')
-];
+const watchPaths = GAME_CONFIGS.flatMap((config) => {
+  const base = path.join(GAMES_DIR, config.name);
+  const paths = [];
+  if (config.distDir) {
+    paths.push(path.join(base, config.distDir, '**', '*'));
+  }
+  (config.files || []).forEach((fileName) => {
+    paths.push(path.join(base, fileName));
+  });
+  (config.dirs || []).forEach((dirName) => {
+    paths.push(path.join(base, dirName, '**', '*'));
+  });
+  return paths;
+});
 
 console.log('[watch-games] Setting up watchers for:');
 watchPaths.forEach(p => console.log(`  ${p}`));

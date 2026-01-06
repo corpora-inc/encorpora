@@ -2,7 +2,7 @@ import { invoke } from "@tauri-apps/api/core"
 
 import { speakWithStackPrefs } from "@/util/speakWithStackPrefs"
 import { useSettingsStore } from "@/store/settings"
-import type { HostApi } from "./types"
+import type { HostApi, PackDbQuery } from "./types"
 
 const getStackSnapshot = () => {
   const {
@@ -61,7 +61,7 @@ const isSameStackSlice = (a: StackSlice, b: StackSlice) => {
   )
 }
 
-export const createHostApi = (): HostApi => {
+export const createHostApi = (packId?: string): HostApi => {
   let disposed = false
   let running = false
   let generation = 0
@@ -157,6 +157,10 @@ export const createHostApi = (): HostApi => {
     running = false
   }
 
+  const resolvePackId = (query: PackDbQuery) => {
+    return query.packId ?? packId
+  }
+
   return {
     speak: async (uiCode, text) => {
       await speakScheduled(uiCode, text)
@@ -202,6 +206,27 @@ export const createHostApi = (): HostApi => {
     },
     getEntryById: async (entryId) => {
       return invoke("get_entry_by_id_with_translations", { entryId })
+    },
+    searchEntriesByText: async ({ text, languageCodes, limit, offset }) => {
+      return invoke("search_entries_by_translation_text", {
+        text,
+        languageCodes,
+        limit,
+        offset,
+      })
+    },
+    queryPackDb: async (query) => {
+      const resolvedPackId = resolvePackId(query)
+      if (!resolvedPackId) {
+        throw new Error("Pack ID is required to query pack databases.")
+      }
+      return invoke("content_packs_query_db", {
+        packId: resolvedPackId,
+        dbName: query.dbName,
+        sql: query.sql,
+        params: query.params ?? [],
+        maxRows: query.maxRows,
+      })
     },
   }
 }
