@@ -339,6 +339,8 @@
     ctx.stroke();
   };
 
+  const computeCanvasPadding = (width, height) => Math.min(width, height) * 0.08;
+
   let hanziWriterPromise = null;
   const resolvePackBaseUrl = () => {
     const script =
@@ -385,12 +387,25 @@
       this.currentChar = null;
       this.ready = false;
       this.size = { width: 0, height: 0, padding: 0 };
+      this.opId = 0;
+      this.layout = null;
     }
 
-    measure() {
+    measure(layout) {
+      const override = layout || this.layout;
+      if (override && override.width && override.height) {
+        return {
+          width: override.width,
+          height: override.height,
+          padding:
+            typeof override.padding === "number"
+              ? override.padding
+              : computeCanvasPadding(override.width, override.height),
+        };
+      }
       const rect = this.container.getBoundingClientRect();
       const minDim = Math.min(rect.width, rect.height);
-      const padding = Math.max(8, minDim * 0.06);
+      const padding = computeCanvasPadding(rect.width, rect.height);
       return { width: rect.width, height: rect.height, padding };
     }
 
@@ -405,12 +420,15 @@
       return changed;
     }
 
-    async createWriter(character) {
+    async createWriter(character, opId, sizeOverride) {
       const HanziWriter = await ensureHanziWriter();
+      if (opId !== this.opId) return;
       if (!HanziWriter) return;
-      const nextSize = this.measure();
+      const nextSize = this.measure(sizeOverride);
       if (!nextSize.width || !nextSize.height) return;
+      if (opId !== this.opId) return;
       this.size = nextSize;
+      this.layout = nextSize;
       this.container.innerHTML = "";
       const colors = this.getColors();
       this.writer = HanziWriter.create(this.container, character, {
@@ -429,36 +447,42 @@
           onComplete(payload);
         },
       });
+      if (opId !== this.opId) return;
       this.currentChar = character;
       this.ready = true;
     }
 
-    async setCharacter(data) {
+    async setCharacter(data, layout) {
       if (!data || !data.character) return;
       this.charData.set(data.character, data);
-      const nextSize = this.measure();
+      const nextSize = this.measure(layout);
+      const opId = ++this.opId;
+      this.layout = nextSize;
       if (!this.writer || this.sizeChanged(nextSize)) {
-        await this.createWriter(data.character);
+        await this.createWriter(data.character, opId, nextSize);
         return;
       }
       if (this.writer && typeof this.writer.setCharacter === "function") {
         try {
           await this.writer.setCharacter(data.character);
+          if (opId !== this.opId) return;
           this.currentChar = data.character;
           return;
         } catch {
-          await this.createWriter(data.character);
+          await this.createWriter(data.character, opId, nextSize);
         }
       } else {
-        await this.createWriter(data.character);
+        await this.createWriter(data.character, opId, nextSize);
       }
     }
 
-    async resize() {
+    async resize(layout) {
       if (!this.currentChar) return;
-      const nextSize = this.measure();
+      const nextSize = this.measure(layout);
       if (this.sizeChanged(nextSize)) {
-        await this.createWriter(this.currentChar);
+        const opId = ++this.opId;
+        this.layout = nextSize;
+        await this.createWriter(this.currentChar, opId, nextSize);
       }
     }
 
@@ -506,6 +530,7 @@
       this.ghostWidth = 8;
       this.userWidth = 8;
       this.highlightWidth = 10;
+      this.layout = { width: 0, height: 0, padding: 0 };
       this.resize();
       this.attachEvents();
       this.drawGhost();
@@ -536,7 +561,7 @@
     }
 
     resize() {
-      const rect = this.drawCanvas.getBoundingClientRect();
+      const rect = this.container.getBoundingClientRect();
       this.canvasRect = rect;
       const dpr = window.devicePixelRatio || 1;
       [this.ghostCanvas, this.drawCanvas, this.fxCanvas].forEach((canvas) => {
@@ -547,19 +572,24 @@
         const ctx = canvas.getContext("2d");
         ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       });
-      const padding = Math.min(rect.width, rect.height) * 0.08;
+      const padding = computeCanvasPadding(rect.width, rect.height);
       const size = Math.min(rect.width, rect.height) - padding * 2;
       this.bounds = {
         x: (rect.width - size) / 2,
         y: (rect.height - size) / 2,
         size,
       };
+      this.layout = { width: rect.width, height: rect.height, padding };
       const baseWidth = Math.max(12, size * 0.075);
       this.ghostWidth = baseWidth;
       this.userWidth = Math.max(8, size * 0.045);
       this.highlightWidth = baseWidth * 1.05;
       this.drawGhost();
       this.redrawUser();
+    }
+
+    getLayout() {
+      return this.layout;
     }
 
     toCanvas(point) {
@@ -874,7 +904,7 @@
         medians: state.medians,
       };
       try {
-        await writerLayer.setCharacter(data);
+        await writerLayer.setCharacter(data, engine.getLayout());
         if (writerLayer.ready && data.medians.length) {
           engine.setGhostEnabled(false);
         } else {
@@ -1154,13 +1184,22 @@
     };
     elExamples.addEventListener("scroll", onScroll);
 
-    const resizeObserver = new ResizeObserver(() => {
-      engine.resize();
-      if (writerLayer) {
-        writerLayer.resize();
+    let resizeRaf = 0;
+    const handleResize = () => {
+      if (resizeRaf) {
+        cancelAnimationFrame(resizeRaf);
       }
-    });
+      resizeRaf = requestAnimationFrame(() => {
+        resizeRaf = 0;
+        engine.resize();
+        if (writerLayer) {
+          writerLayer.resize(engine.getLayout());
+        }
+      });
+    };
+    const resizeObserver = new ResizeObserver(handleResize);
     resizeObserver.observe(canvasShell);
+    window.addEventListener("resize", handleResize);
 
     if (hostApi.onStackConfigChange) {
       hostApi.onStackConfigChange((next) => {
@@ -1177,6 +1216,11 @@
     return {
       unmount: () => {
         resizeObserver.disconnect();
+        window.removeEventListener("resize", handleResize);
+        if (resizeRaf) {
+          cancelAnimationFrame(resizeRaf);
+          resizeRaf = 0;
+        }
         elExamples.removeEventListener("scroll", onScroll);
         if (writerLayer) {
           writerLayer.destroy();

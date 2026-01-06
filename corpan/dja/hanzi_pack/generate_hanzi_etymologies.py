@@ -5,9 +5,12 @@ import argparse
 import json
 import sqlite3
 import sys
+import threading
 import time
 from pathlib import Path
 from typing import Dict, List
+
+from concurrent.futures import ThreadPoolExecutor, as_completed
 
 from pydantic import BaseModel
 
@@ -103,12 +106,14 @@ def save_output(path: Path, data: Dict[str, Dict[str, str]]) -> None:
 def chunk(items: List[str], size: int) -> List[List[str]]:
     return [items[i : i + size] for i in range(0, len(items), size)]
 
+
 def looks_non_english(text: str) -> bool:
     if not text:
         return True
     cjk = sum(1 for ch in text if is_hanzi(ch))
     ratio = cjk / max(len(text), 1)
     return cjk >= 8 and ratio > 0.2
+
 
 def log_batch(stage: str, lang: str, index: int, total: int, count: int) -> None:
     print(f"[{stage}] {lang} batch {index}/{total} ({count} chars)", flush=True)
@@ -146,6 +151,12 @@ def main() -> None:
     ap.add_argument("--provider", type=str, default="local")
     ap.add_argument("--completion-model", type=str, default=None)
     ap.add_argument("--base-url", type=str, default=None)
+    ap.add_argument(
+        "--workers",
+        type=int,
+        default=1,
+        help="Parallel workers for batch requests (default: 1).",
+    )
     args = ap.parse_args()
 
     core_db = args.core_db.resolve()
@@ -173,15 +184,17 @@ def main() -> None:
         llm_kwargs["completion_model"] = args.completion_model
     if args.base_url:
         llm_kwargs["base_url"] = args.base_url
-    llm = load_llm_provider(args.provider, **llm_kwargs)
+    llm_local = threading.local()
 
-    # 1) English etymologies
-    missing_en = [ch for ch in characters if "en" not in existing.get(ch, {})]
-    if missing_en:
-        print(f"Generating English etymologies: {len(missing_en)} chars")
-    en_batches = chunk(missing_en, args.batch_size)
-    for idx, batch in enumerate(en_batches, start=1):
-        log_batch("etymology", "en", idx, len(en_batches), len(batch))
+    def get_llm():
+        llm = getattr(llm_local, "llm", None)
+        if llm is None:
+            llm = load_llm_provider(args.provider, **llm_kwargs)
+            llm_local.llm = llm
+        return llm
+
+    def run_etymology_batch(batch: List[str], index: int, total: int):
+        log_batch("etymology", "en", index, total, len(batch))
         started = time.time()
         prompt = "\n".join([f"{ch}" for ch in batch])
         messages = [
@@ -200,7 +213,9 @@ def main() -> None:
                 text=f"Return JSON for these characters:\n{prompt}",
             ),
         ]
+        llm = get_llm()
         result = llm.get_data_completion(messages, EtymologyBatch)
+        items = []
         for item in result.items:
             cleaned = item.etymology.strip()
             if looks_non_english(cleaned):
@@ -209,12 +224,81 @@ def main() -> None:
                     flush=True,
                 )
                 continue
-            existing.setdefault(item.char, {})["en"] = cleaned
-        save_output(out, existing)
+            items.append((item.char, cleaned))
         elapsed = time.time() - started
-        print(f"[etymology] en batch {idx} done in {elapsed:.1f}s", flush=True)
-        if args.sleep:
-            time.sleep(args.sleep)
+        return {"items": items, "elapsed": elapsed, "index": index}
+
+    def run_translation_batch(
+        lang_code: str, batch: List[str], index: int, total: int
+    ):
+        log_batch("translate", lang_code, index, total, len(batch))
+        started = time.time()
+        prompt_lines = [
+            f"{ch}: {existing[ch]['en']}"
+            for ch in batch
+            if "en" in existing.get(ch, {})
+        ]
+        prompt = "\n".join(prompt_lines)
+        messages = [
+            ChatCompletionTextMessage(
+                role="system",
+                text=(
+                    f"You are a world-class translator. Translate the following English etymologies "
+                    f"into language code '{lang_code}'. Preserve meaning and tone, keep 2-5 sentences, "
+                    "and do not add facts. Output JSON with `items`: each item has `char` and `text`."
+                ),
+            ),
+            ChatCompletionTextMessage(
+                role="user",
+                text=f"Return JSON translations:\n{prompt}",
+            ),
+        ]
+        llm = get_llm()
+        result = llm.get_data_completion(messages, TranslationBatch)
+        items = [(item.char, item.text.strip()) for item in result.items if item.text]
+        elapsed = time.time() - started
+        return {"items": items, "elapsed": elapsed, "index": index}
+
+    # 1) English etymologies
+    missing_en = [ch for ch in characters if "en" not in existing.get(ch, {})]
+    if missing_en:
+        print(f"Generating English etymologies: {len(missing_en)} chars")
+    en_batches = chunk(missing_en, args.batch_size)
+    if args.workers <= 1 or len(en_batches) <= 1:
+        for idx, batch in enumerate(en_batches, start=1):
+            result = run_etymology_batch(batch, idx, len(en_batches))
+            for char, text in result["items"]:
+                existing.setdefault(char, {})["en"] = text
+            save_output(out, existing)
+            print(
+                f"[etymology] en batch {result['index']} done in {result['elapsed']:.1f}s",
+                flush=True,
+            )
+            if args.sleep:
+                time.sleep(args.sleep)
+    else:
+        workers = min(args.workers, len(en_batches))
+        with ThreadPoolExecutor(max_workers=workers) as executor:
+            futures = {
+                executor.submit(run_etymology_batch, batch, idx, len(en_batches)): idx
+                for idx, batch in enumerate(en_batches, start=1)
+            }
+            for future in as_completed(futures):
+                idx = futures[future]
+                try:
+                    result = future.result()
+                except Exception as exc:  # noqa: BLE001
+                    print(f"[etymology] en batch {idx} failed: {exc}", flush=True)
+                    continue
+                for char, text in result["items"]:
+                    existing.setdefault(char, {})["en"] = text
+                save_output(out, existing)
+                print(
+                    f"[etymology] en batch {result['index']} done in {result['elapsed']:.1f}s",
+                    flush=True,
+                )
+                if args.sleep:
+                    time.sleep(args.sleep)
 
     # 2) Translations
     target_langs = [code for code in langs if code != "en"]
@@ -230,36 +314,46 @@ def main() -> None:
             continue
         print(f" -> {lang_code}: {len(missing)} chars")
         lang_batches = chunk(missing, args.batch_size)
-        for idx, batch in enumerate(lang_batches, start=1):
-            log_batch("translate", lang_code, idx, len(lang_batches), len(batch))
-            started = time.time()
-            prompt_lines = [
-                f"{ch}: {existing[ch]['en']}" for ch in batch if "en" in existing.get(ch, {})
-            ]
-            prompt = "\n".join(prompt_lines)
-            messages = [
-                ChatCompletionTextMessage(
-                    role="system",
-                    text=(
-                        f"You are a world-class translator. Translate the following English etymologies "
-                        f"into language code '{lang_code}'. Preserve meaning and tone, keep 2-5 sentences, "
-                        "and do not add facts. Output JSON with `items`: each item has `char` and `text`."
-                    ),
-                ),
-                ChatCompletionTextMessage(
-                    role="user",
-                    text=f"Return JSON translations:\n{prompt}",
-                ),
-            ]
-            result = llm.get_data_completion(messages, TranslationBatch)
-            for item in result.items:
-                if item.text:
-                    existing.setdefault(item.char, {})[lang_code] = item.text.strip()
-            save_output(out, existing)
-            elapsed = time.time() - started
-            print(f"[translate] {lang_code} batch {idx} done in {elapsed:.1f}s", flush=True)
-            if args.sleep:
-                time.sleep(args.sleep)
+        if args.workers <= 1 or len(lang_batches) <= 1:
+            for idx, batch in enumerate(lang_batches, start=1):
+                result = run_translation_batch(lang_code, batch, idx, len(lang_batches))
+                for char, text in result["items"]:
+                    existing.setdefault(char, {})[lang_code] = text
+                save_output(out, existing)
+                print(
+                    f"[translate] {lang_code} batch {result['index']} done in {result['elapsed']:.1f}s",
+                    flush=True,
+                )
+                if args.sleep:
+                    time.sleep(args.sleep)
+        else:
+            workers = min(args.workers, len(lang_batches))
+            with ThreadPoolExecutor(max_workers=workers) as executor:
+                futures = {
+                    executor.submit(
+                        run_translation_batch, lang_code, batch, idx, len(lang_batches)
+                    ): idx
+                    for idx, batch in enumerate(lang_batches, start=1)
+                }
+                for future in as_completed(futures):
+                    idx = futures[future]
+                    try:
+                        result = future.result()
+                    except Exception as exc:  # noqa: BLE001
+                        print(
+                            f"[translate] {lang_code} batch {idx} failed: {exc}",
+                            flush=True,
+                        )
+                        continue
+                    for char, text in result["items"]:
+                        existing.setdefault(char, {})[lang_code] = text
+                    save_output(out, existing)
+                    print(
+                        f"[translate] {lang_code} batch {result['index']} done in {result['elapsed']:.1f}s",
+                        flush=True,
+                    )
+                    if args.sleep:
+                        time.sleep(args.sleep)
 
     print(f"Done. Wrote {out}")
 
