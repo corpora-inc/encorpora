@@ -20,10 +20,10 @@ const GAME_CONFIGS = [
   {
     name: 'hanzi-atelier',
     distDir: null,
-    files: ['manifest.json', 'index.js', 'styles.css'],
+    files: ['manifest.json', 'index.js', 'styles.css', 'hanziwriter.min.js', 'HANZIWRITER_LICENSE.txt'],
     dirs: ['data'],
     zipName: 'hanzi-atelier.zip',
-    zipEntries: ['manifest.json', 'index.js', 'styles.css', 'data/']
+    zipEntries: ['manifest.json', 'index.js', 'styles.css', 'hanziwriter.min.js', 'HANZIWRITER_LICENSE.txt', 'data/']
   }
 ];
 

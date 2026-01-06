@@ -26,10 +26,9 @@ CREATE TABLE hanzi_character(
   tags_json TEXT
 );
 
-CREATE TABLE hanzi_strokes(
+CREATE TABLE hanzi_writer(
   char TEXT PRIMARY KEY,
-  strokes_json TEXT NOT NULL,
-  medians_json TEXT NOT NULL
+  data_json TEXT NOT NULL
 );
 
 CREATE TABLE hanzi_etymology(
@@ -223,7 +222,7 @@ def main() -> None:
 
     now = datetime.now(timezone.utc).isoformat()
     meta_rows = [
-        ("schema_version", "1"),
+        ("schema_version", "2"),
         ("generated_at", now),
         ("core_db", str(core_db)),
     ]
@@ -237,15 +236,20 @@ def main() -> None:
             radical = stroke.radical
             frequency = stroke.frequency
             tags_json = json.dumps(stroke.tags or [], ensure_ascii=False)
-            strokes_json = json.dumps(stroke.strokes, ensure_ascii=False)
-            medians_json = json.dumps(stroke.medians, ensure_ascii=False)
+            writer_json = json.dumps(
+                {
+                    "character": ch,
+                    "strokes": stroke.strokes,
+                    "medians": stroke.medians,
+                },
+                ensure_ascii=False,
+            )
         else:
             stroke_count = None
             radical = None
             frequency = None
             tags_json = json.dumps([], ensure_ascii=False)
-            strokes_json = json.dumps([], ensure_ascii=False)
-            medians_json = json.dumps([], ensure_ascii=False)
+            writer_json = json.dumps({}, ensure_ascii=False)
 
         conn.execute(
             """
@@ -263,8 +267,8 @@ def main() -> None:
             ),
         )
         conn.execute(
-            "INSERT INTO hanzi_strokes(char, strokes_json, medians_json) VALUES(?, ?, ?)",
-            (ch, strokes_json, medians_json),
+            "INSERT INTO hanzi_writer(char, data_json) VALUES(?, ?)",
+            (ch, writer_json),
         )
 
         for lang, summary in etymologies.get(ch, {}).items():

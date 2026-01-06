@@ -103,6 +103,16 @@ def save_output(path: Path, data: Dict[str, Dict[str, str]]) -> None:
 def chunk(items: List[str], size: int) -> List[List[str]]:
     return [items[i : i + size] for i in range(0, len(items), size)]
 
+def looks_non_english(text: str) -> bool:
+    if not text:
+        return True
+    cjk = sum(1 for ch in text if is_hanzi(ch))
+    ratio = cjk / max(len(text), 1)
+    return cjk >= 8 and ratio > 0.2
+
+def log_batch(stage: str, lang: str, index: int, total: int, count: int) -> None:
+    print(f"[{stage}] {lang} batch {index}/{total} ({count} chars)", flush=True)
+
 
 def main() -> None:
     ap = argparse.ArgumentParser()
@@ -169,15 +179,20 @@ def main() -> None:
     missing_en = [ch for ch in characters if "en" not in existing.get(ch, {})]
     if missing_en:
         print(f"Generating English etymologies: {len(missing_en)} chars")
-    for batch in chunk(missing_en, args.batch_size):
+    en_batches = chunk(missing_en, args.batch_size)
+    for idx, batch in enumerate(en_batches, start=1):
+        log_batch("etymology", "en", idx, len(en_batches), len(batch))
+        started = time.time()
         prompt = "\n".join([f"{ch}" for ch in batch])
         messages = [
             ChatCompletionTextMessage(
                 role="system",
                 text=(
-                    "You are a Chinese etymology expert. For each character, write 2-5 sentences "
-                    "explaining its origin, components, and a memorable mnemonic. Keep it concise, "
-                    "clear, and accurate. Output JSON with `items`: each item has `char` and `etymology`."
+                    "You are a Chinese etymology expert. Write in English ONLY. For each character, write "
+                    "2-3 concise sentences that include: (1) the primary meaning(s)/definition for learners, "
+                    "(2) common usage or nuance (how it can be used alone or in compounds), and (3) a brief "
+                    "origin/components note or mnemonic. Keep it short, accurate, and practical. "
+                    "Do not switch languages. Output JSON with `items`: each item has `char` and `etymology`."
                 ),
             ),
             ChatCompletionTextMessage(
@@ -187,8 +202,17 @@ def main() -> None:
         ]
         result = llm.get_data_completion(messages, EtymologyBatch)
         for item in result.items:
-            existing.setdefault(item.char, {})["en"] = item.etymology.strip()
+            cleaned = item.etymology.strip()
+            if looks_non_english(cleaned):
+                print(
+                    f"[etymology] Warning: {item.char} looks non-English; skipping.",
+                    flush=True,
+                )
+                continue
+            existing.setdefault(item.char, {})["en"] = cleaned
         save_output(out, existing)
+        elapsed = time.time() - started
+        print(f"[etymology] en batch {idx} done in {elapsed:.1f}s", flush=True)
         if args.sleep:
             time.sleep(args.sleep)
 
@@ -205,7 +229,10 @@ def main() -> None:
         if not missing:
             continue
         print(f" -> {lang_code}: {len(missing)} chars")
-        for batch in chunk(missing, args.batch_size):
+        lang_batches = chunk(missing, args.batch_size)
+        for idx, batch in enumerate(lang_batches, start=1):
+            log_batch("translate", lang_code, idx, len(lang_batches), len(batch))
+            started = time.time()
             prompt_lines = [
                 f"{ch}: {existing[ch]['en']}" for ch in batch if "en" in existing.get(ch, {})
             ]
@@ -229,6 +256,8 @@ def main() -> None:
                 if item.text:
                     existing.setdefault(item.char, {})[lang_code] = item.text.strip()
             save_output(out, existing)
+            elapsed = time.time() - started
+            print(f"[translate] {lang_code} batch {idx} done in {elapsed:.1f}s", flush=True)
             if args.sleep:
                 time.sleep(args.sleep)
 

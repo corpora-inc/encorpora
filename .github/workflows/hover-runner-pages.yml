@@ -63,7 +63,7 @@ jobs:
       - name: Package Hanzi Atelier as ZIP
         run: |
           cd corpan/games/hanzi-atelier
-          zip -r hanzi-atelier.zip manifest.json index.js styles.css data/
+          zip -r hanzi-atelier.zip manifest.json index.js styles.css hanziwriter.min.js HANZIWRITER_LICENSE.txt data/
           cd ../../..
 
       - name: Copy Hover Runner into io/out
@@ -79,6 +79,8 @@ jobs:
           cp corpan/games/hanzi-atelier/manifest.json "web/io/out/corpan/games/hanzi-atelier/"
           cp corpan/games/hanzi-atelier/index.js "web/io/out/corpan/games/hanzi-atelier/"
           cp corpan/games/hanzi-atelier/styles.css "web/io/out/corpan/games/hanzi-atelier/"
+          cp corpan/games/hanzi-atelier/hanziwriter.min.js "web/io/out/corpan/games/hanzi-atelier/"
+          cp corpan/games/hanzi-atelier/HANZIWRITER_LICENSE.txt "web/io/out/corpan/games/hanzi-atelier/"
           cp -R corpan/games/hanzi-atelier/data "web/io/out/corpan/games/hanzi-atelier/"
           cp corpan/games/hanzi-atelier/hanzi-atelier.zip "web/io/out/corpan/games/hanzi-atelier.zip"
 

@@ -36,6 +36,7 @@
           </div>
           <div class="canvas-shell" data-canvas-shell>
             <canvas class="canvas-layer" data-ghost></canvas>
+            <div class="writer-layer" data-writer></div>
             <canvas class="canvas-layer" data-draw></canvas>
             <canvas class="canvas-layer" data-fx></canvas>
             <div class="canvas-overlay" data-overlay>Ready</div>
@@ -321,6 +322,167 @@
     return Math.round(clamp(1 - avg / tolerance, 0, 1) * 100);
   };
 
+  const drawSmoothStroke = (ctx, points, toCanvas) => {
+    if (!points || points.length < 2) return;
+    ctx.beginPath();
+    let [px, py] = toCanvas(points[0]);
+    ctx.moveTo(px, py);
+    for (let i = 1; i < points.length; i += 1) {
+      const [cx, cy] = toCanvas(points[i]);
+      const mx = (px + cx) / 2;
+      const my = (py + cy) / 2;
+      ctx.quadraticCurveTo(px, py, mx, my);
+      px = cx;
+      py = cy;
+    }
+    ctx.lineTo(px, py);
+    ctx.stroke();
+  };
+
+  let hanziWriterPromise = null;
+  const resolvePackBaseUrl = () => {
+    const script =
+      document.querySelector(`script[data-corp-game-id="${GAME_ID}"]`) ||
+      document.currentScript;
+    const dataset = script && script.dataset ? script.dataset : null;
+    const baseAttr = dataset ? dataset.corpGameBaseUrl : "";
+    if (baseAttr) {
+      return baseAttr;
+    }
+    const srcAttr = dataset ? dataset.corpGameSrc : "";
+    if (srcAttr) {
+      return new URL(".", srcAttr).toString();
+    }
+    const src = script && script.src ? script.src : "";
+    if (src) {
+      return new URL(".", src).toString();
+    }
+    return window.location.href;
+  };
+
+  const ensureHanziWriter = () => {
+    if (window.HanziWriter) return Promise.resolve(window.HanziWriter);
+    if (hanziWriterPromise) return hanziWriterPromise;
+    const baseUrl = resolvePackBaseUrl();
+    const scriptUrl = new URL("hanziwriter.min.js", baseUrl).toString();
+    hanziWriterPromise = new Promise((resolve, reject) => {
+      const script = document.createElement("script");
+      script.src = scriptUrl;
+      script.async = true;
+      script.onload = () => resolve(window.HanziWriter);
+      script.onerror = () => reject(new Error("Failed to load HanziWriter"));
+      document.head.appendChild(script);
+    });
+    return hanziWriterPromise;
+  };
+
+  class HanziWriterLayer {
+    constructor(container, getColors) {
+      this.container = container;
+      this.getColors = getColors;
+      this.writer = null;
+      this.charData = new Map();
+      this.currentChar = null;
+      this.ready = false;
+      this.size = { width: 0, height: 0, padding: 0 };
+    }
+
+    measure() {
+      const rect = this.container.getBoundingClientRect();
+      const minDim = Math.min(rect.width, rect.height);
+      const padding = Math.max(8, minDim * 0.06);
+      return { width: rect.width, height: rect.height, padding };
+    }
+
+    sizeChanged(next) {
+      const changed =
+        Math.abs(next.width - this.size.width) > 1 ||
+        Math.abs(next.height - this.size.height) > 1 ||
+        Math.abs(next.padding - this.size.padding) > 1;
+      if (changed) {
+        this.size = next;
+      }
+      return changed;
+    }
+
+    async createWriter(character) {
+      const HanziWriter = await ensureHanziWriter();
+      if (!HanziWriter) return;
+      const nextSize = this.measure();
+      if (!nextSize.width || !nextSize.height) return;
+      this.size = nextSize;
+      this.container.innerHTML = "";
+      const colors = this.getColors();
+      this.writer = HanziWriter.create(this.container, character, {
+        width: nextSize.width,
+        height: nextSize.height,
+        padding: nextSize.padding,
+        showOutline: false,
+        showCharacter: true,
+        strokeColor: colors.ghost,
+        outlineColor: colors.ghost,
+        highlightColor: colors.accent,
+        drawingColor: colors.user,
+        charDataLoader: (char, onComplete) => {
+          const payload =
+            this.charData.get(char) || { character: char, strokes: [], medians: [] };
+          onComplete(payload);
+        },
+      });
+      this.currentChar = character;
+      this.ready = true;
+    }
+
+    async setCharacter(data) {
+      if (!data || !data.character) return;
+      this.charData.set(data.character, data);
+      const nextSize = this.measure();
+      if (!this.writer || this.sizeChanged(nextSize)) {
+        await this.createWriter(data.character);
+        return;
+      }
+      if (this.writer && typeof this.writer.setCharacter === "function") {
+        try {
+          await this.writer.setCharacter(data.character);
+          this.currentChar = data.character;
+          return;
+        } catch {
+          await this.createWriter(data.character);
+        }
+      } else {
+        await this.createWriter(data.character);
+      }
+    }
+
+    async resize() {
+      if (!this.currentChar) return;
+      const nextSize = this.measure();
+      if (this.sizeChanged(nextSize)) {
+        await this.createWriter(this.currentChar);
+      }
+    }
+
+    showHint(index) {
+      if (!this.writer || typeof this.writer.animateStroke !== "function") return;
+      this.writer.animateStroke(index);
+    }
+
+    replay() {
+      if (!this.writer || typeof this.writer.animateCharacter !== "function") return;
+      this.writer.animateCharacter();
+    }
+
+    destroy() {
+      if (this.writer && typeof this.writer.cancelAnimation === "function") {
+        this.writer.cancelAnimation();
+      }
+      this.container.innerHTML = "";
+      this.writer = null;
+      this.ready = false;
+      this.currentChar = null;
+    }
+  }
+
   class DrawingEngine {
     constructor(container, ghostCanvas, drawCanvas, fxCanvas, onScore) {
       this.container = container;
@@ -340,6 +502,10 @@
       this.onScore = onScore;
       this.bounds = { x: 0, y: 0, size: 0 };
       this.canvasRect = null;
+      this.ghostEnabled = true;
+      this.ghostWidth = 8;
+      this.userWidth = 8;
+      this.highlightWidth = 10;
       this.resize();
       this.attachEvents();
       this.drawGhost();
@@ -358,6 +524,15 @@
       this.usedMedians = new Set();
       this.clearUser();
       this.drawGhost();
+    }
+
+    getModelBounds() {
+      return {
+        minX: 0,
+        maxX: 1024,
+        minY: -124,
+        maxY: 900,
+      };
     }
 
     resize() {
@@ -379,49 +554,71 @@
         y: (rect.height - size) / 2,
         size,
       };
+      const baseWidth = Math.max(12, size * 0.075);
+      this.ghostWidth = baseWidth;
+      this.userWidth = Math.max(8, size * 0.045);
+      this.highlightWidth = baseWidth * 1.05;
       this.drawGhost();
       this.redrawUser();
     }
 
     toCanvas(point) {
+      const bounds = this.getModelBounds();
+      const width = bounds.maxX - bounds.minX;
+      const height = bounds.maxY - bounds.minY;
       return [
-        this.bounds.x + (point[0] / 1000) * this.bounds.size,
-        this.bounds.y + ((1000 - point[1]) / 1000) * this.bounds.size,
+        this.bounds.x + ((point[0] - bounds.minX) / width) * this.bounds.size,
+        this.bounds.y +
+          (1 - (point[1] - bounds.minY) / height) * this.bounds.size,
       ];
     }
 
     toModel(point) {
+      const bounds = this.getModelBounds();
+      const width = bounds.maxX - bounds.minX;
+      const height = bounds.maxY - bounds.minY;
       return [
-        ((point[0] - this.bounds.x) / this.bounds.size) * 1000,
-        1000 - ((point[1] - this.bounds.y) / this.bounds.size) * 1000,
+        bounds.minX + ((point[0] - this.bounds.x) / this.bounds.size) * width,
+        bounds.minY +
+          (1 - (point[1] - this.bounds.y) / this.bounds.size) * height,
       ];
+    }
+
+    setGhostEnabled(enabled) {
+      this.ghostEnabled = enabled;
+      this.drawGhost();
     }
 
     drawGhost(highlightIndex = null) {
       const ctx = this.ghostCtx;
+      if (!ctx) return;
       ctx.clearRect(0, 0, this.ghostCanvas.width, this.ghostCanvas.height);
-      ctx.lineCap = "round";
-      ctx.lineJoin = "round";
+      if (!this.ghostEnabled) {
+        return;
+      }
       const ghostColor = getComputedStyle(this.container).getPropertyValue("--stroke-ghost");
       const accent = getComputedStyle(this.container).getPropertyValue("--accent-strong");
+      ctx.lineCap = "round";
+      ctx.lineJoin = "round";
       this.medians.forEach((median, index) => {
         const color = highlightIndex === index ? accent : ghostColor;
         ctx.strokeStyle = color.trim() || "rgba(11,107,111,0.22)";
-        ctx.lineWidth = highlightIndex === index ? 6 : 4;
-        ctx.beginPath();
-        median.forEach((pt, i) => {
-          const [cx, cy] = this.toCanvas(pt);
-          if (i === 0) ctx.moveTo(cx, cy);
-          else ctx.lineTo(cx, cy);
-        });
-        ctx.stroke();
-        if (index === 0 || highlightIndex === index) {
+        ctx.lineWidth = highlightIndex === index ? this.highlightWidth : this.ghostWidth;
+        ctx.shadowColor = color.trim() || "rgba(11,107,111,0.22)";
+        ctx.shadowBlur = highlightIndex === index ? this.highlightWidth * 0.18 : this.ghostWidth * 0.16;
+        drawSmoothStroke(ctx, median, (pt) => this.toCanvas(pt));
+      });
+      ctx.shadowBlur = 0;
+      if (this.medians.length) {
+        this.medians.forEach((median, index) => {
+          if (index !== 0 && highlightIndex !== index) return;
           const [sx, sy] = this.toCanvas(median[0]);
+          const color = highlightIndex === index ? accent : ghostColor;
           ctx.fillStyle = color.trim() || "rgba(11,107,111,0.22)";
           ctx.font = "12px 'Avenir Next', 'Futura', sans-serif";
           ctx.fillText(String(index + 1), sx + 6, sy - 6);
-        }
-      });
+        });
+      }
     }
 
     redrawUser() {
@@ -430,16 +627,10 @@
       ctx.lineCap = "round";
       ctx.lineJoin = "round";
       ctx.strokeStyle = getComputedStyle(this.container).getPropertyValue("--stroke-user");
-      ctx.lineWidth = 8;
+      ctx.lineWidth = this.userWidth;
       this.userStrokes.forEach((stroke) => {
         if (stroke.length < 2) return;
-        ctx.beginPath();
-        stroke.forEach((pt, i) => {
-          const [cx, cy] = this.toCanvas(pt);
-          if (i === 0) ctx.moveTo(cx, cy);
-          else ctx.lineTo(cx, cy);
-        });
-        ctx.stroke();
+        drawSmoothStroke(ctx, stroke, (pt) => this.toCanvas(pt));
       });
     }
 
@@ -455,24 +646,19 @@
       }
     }
 
-    flashStroke(median, score) {
-      if (!median || median.length < 2) return;
+    flashStroke(targetIndex, score) {
       const ctx = this.fxCtx;
       ctx.clearRect(0, 0, this.fxCanvas.width, this.fxCanvas.height);
-      ctx.lineCap = "round";
-      ctx.lineJoin = "round";
       const good = score >= 75;
       ctx.strokeStyle = good
         ? getComputedStyle(this.container).getPropertyValue("--stroke-user")
         : getComputedStyle(this.container).getPropertyValue("--stroke-wrong");
-      ctx.lineWidth = 10;
-      ctx.beginPath();
-      median.forEach((pt, i) => {
-        const [cx, cy] = this.toCanvas(pt);
-        if (i === 0) ctx.moveTo(cx, cy);
-        else ctx.lineTo(cx, cy);
-      });
-      ctx.stroke();
+      const median = this.medians[targetIndex];
+      if (!median || median.length < 2) return;
+      ctx.lineCap = "round";
+      ctx.lineJoin = "round";
+      ctx.lineWidth = this.highlightWidth;
+      drawSmoothStroke(ctx, median, (pt) => this.toCanvas(pt));
       setTimeout(() => {
         ctx.clearRect(0, 0, this.fxCanvas.width, this.fxCanvas.height);
       }, 260);
@@ -495,7 +681,7 @@
           this.drawCtx.lineCap = "round";
           this.drawCtx.lineJoin = "round";
           this.drawCtx.strokeStyle = getComputedStyle(this.container).getPropertyValue("--stroke-user");
-          this.drawCtx.lineWidth = 8;
+          this.drawCtx.lineWidth = this.userWidth;
           this.drawCtx.beginPath();
           const [cx, cy] = point;
           this.drawCtx.moveTo(cx, cy);
@@ -543,7 +729,7 @@
           let overall = null;
           if (targetIndex !== null && this.medians[targetIndex]) {
             score = scoreStroke(stroke, this.medians[targetIndex]);
-            this.flashStroke(this.medians[targetIndex], score);
+            this.flashStroke(targetIndex, score);
           }
           const scored = Math.min(this.userStrokes.length, this.medians.length || this.userStrokes.length);
           if (scored > 0) {
@@ -556,6 +742,7 @@
           if (this.onScore) {
             this.onScore({ score, overall, strokeIndex: targetIndex });
           }
+          this.redrawUser();
         }
       };
 
@@ -572,6 +759,7 @@
 
     showHint(index) {
       if (index === null || index === undefined) return;
+      if (!this.ghostEnabled) return;
       this.drawGhost(index);
     }
 
@@ -586,18 +774,15 @@
         let t = 0;
         const step = () => {
           ctx.clearRect(0, 0, this.fxCanvas.width, this.fxCanvas.height);
-          ctx.strokeStyle = accent.trim() || "#0b6b6f";
-          ctx.lineWidth = 8;
-          ctx.lineCap = "round";
-          ctx.lineJoin = "round";
-          ctx.beginPath();
-          const length = Math.max(2, Math.floor(median.length * t));
-          median.slice(0, length).forEach((pt, i) => {
-            const [cx, cy] = this.toCanvas(pt);
-            if (i === 0) ctx.moveTo(cx, cy);
-            else ctx.lineTo(cx, cy);
-          });
-          ctx.stroke();
+          const color = accent.trim() || "#0b6b6f";
+          if (median && median.length >= 2) {
+            ctx.strokeStyle = color;
+            ctx.lineCap = "round";
+            ctx.lineJoin = "round";
+            ctx.lineWidth = this.highlightWidth;
+            const length = Math.max(2, Math.floor(median.length * t));
+            drawSmoothStroke(ctx, median.slice(0, length), (pt) => this.toCanvas(pt));
+          }
           t += 0.08;
           if (t < 1.1) {
             requestAnimationFrame(step);
@@ -630,6 +815,7 @@
     const elExampleCount = root.querySelector("[data-example-count]");
     const elExamplesFooter = root.querySelector("[data-examples-footer]");
     const canvasShell = root.querySelector("[data-canvas-shell]");
+    const writerLayerEl = root.querySelector("[data-writer]");
     const ghostCanvas = root.querySelector("[data-ghost]");
     const drawCanvas = root.querySelector("[data-draw]");
     const fxCanvas = root.querySelector("[data-fx]");
@@ -668,6 +854,37 @@
         elScore.textContent = "Score: --";
       }
     });
+
+    const writerLayer = writerLayerEl
+      ? new HanziWriterLayer(writerLayerEl, () => {
+        const styles = getComputedStyle(root);
+        return {
+          ghost: styles.getPropertyValue("--stroke-ghost").trim() || "rgba(11,107,111,0.22)",
+          accent: styles.getPropertyValue("--accent").trim() || "#0b6b6f",
+          user: styles.getPropertyValue("--stroke-user").trim() || "rgba(15,139,141,0.9)",
+        };
+      })
+      : null;
+
+    const updateWriterLayer = async () => {
+      if (!writerLayer) return;
+      const data = {
+        character: state.character,
+        strokes: state.strokes,
+        medians: state.medians,
+      };
+      try {
+        await writerLayer.setCharacter(data);
+        if (writerLayer.ready && data.medians.length) {
+          engine.setGhostEnabled(false);
+        } else {
+          engine.setGhostEnabled(true);
+        }
+      } catch (err) {
+        console.warn("[hanzi] HanziWriter load failed", err);
+        engine.setGhostEnabled(true);
+      }
+    };
 
     const setMode = (mode) => {
       state.mode = mode;
@@ -784,6 +1001,7 @@
         state.medians = fallback.medians;
         state.etymology = fallback.etymology;
         state.etyLang = "en";
+        await updateWriterLayer();
       } else {
         state.character = row.char || fallbackCharacter.char;
         state.pinyin = row.pinyin || "";
@@ -794,14 +1012,15 @@
         state.radical = row.radical || "";
 
         const strokeRes = await queryPackDb(
-          "SELECT strokes_json, medians_json FROM hanzi_strokes WHERE char = ? LIMIT 1",
+          "SELECT data_json FROM hanzi_writer WHERE char = ? LIMIT 1",
           [state.character]
         );
         const strokeRow = strokeRes.rows[0];
-        if (strokeRow) {
+        if (strokeRow && strokeRow.data_json) {
           try {
-            state.strokes = JSON.parse(strokeRow.strokes_json || "[]");
-            state.medians = JSON.parse(strokeRow.medians_json || "[]");
+            const parsed = JSON.parse(strokeRow.data_json || "{}");
+            state.strokes = Array.isArray(parsed.strokes) ? parsed.strokes : [];
+            state.medians = Array.isArray(parsed.medians) ? parsed.medians : [];
           } catch {
             state.strokes = [];
             state.medians = [];
@@ -813,6 +1032,7 @@
         if (!state.strokes.length || !state.medians.length) {
           state.strokeCount = null;
         }
+        await updateWriterLayer();
 
         const etyRes = await queryPackDb(
           "SELECT language_code, summary FROM hanzi_etymology WHERE char = ?",
@@ -890,8 +1110,21 @@
         const action = btn.dataset.action;
         if (action === "next") loadCharacter();
         if (action === "clear") engine.clearUser();
-        if (action === "hint") engine.showHint(state.mode === "guided" ? engine.currentStrokeIndex : 0);
-        if (action === "replay") engine.replay();
+        if (action === "hint") {
+          const index = state.mode === "guided" ? engine.currentStrokeIndex : 0;
+          if (writerLayer && writerLayer.ready) {
+            writerLayer.showHint(index);
+          } else {
+            engine.showHint(index);
+          }
+        }
+        if (action === "replay") {
+          if (writerLayer && writerLayer.ready) {
+            writerLayer.replay();
+          } else {
+            engine.replay();
+          }
+        }
         if (action === "speak") {
           const zh = (state.stackConfig.languages || []).find((lang) => lang.startsWith("zh"));
           const lang = zh || "zh-Hans";
@@ -921,7 +1154,12 @@
     };
     elExamples.addEventListener("scroll", onScroll);
 
-    const resizeObserver = new ResizeObserver(() => engine.resize());
+    const resizeObserver = new ResizeObserver(() => {
+      engine.resize();
+      if (writerLayer) {
+        writerLayer.resize();
+      }
+    });
     resizeObserver.observe(canvasShell);
 
     if (hostApi.onStackConfigChange) {
@@ -940,6 +1178,9 @@
       unmount: () => {
         resizeObserver.disconnect();
         elExamples.removeEventListener("scroll", onScroll);
+        if (writerLayer) {
+          writerLayer.destroy();
+        }
         root.remove();
       },
     };

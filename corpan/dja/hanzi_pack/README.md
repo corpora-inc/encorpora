@@ -54,7 +54,7 @@ python3 encorpora/corpan/dja/hanzi_pack/build_hanzi_pack.py \
 
 ## Data format
 
-`seed/strokes_seed.json` is a list of records:
+`seed/strokes_seed.json` is a list of records (Make Me a Hanzi / Hanzi Writer format):
 
 ```json
 {
@@ -64,6 +64,16 @@ python3 encorpora/corpan/dja/hanzi_pack/build_hanzi_pack.py \
   "radical": "一",
   "frequency": 1,
   "tags": ["seed"]
+}
+```
+
+The pack DB stores stroke data in a single `hanzi_writer` table with JSON payloads:
+
+```json
+{
+  "character": "一",
+  "strokes": ["M150 500 L850 500"],
+  "medians": [[[150, 500], [850, 500]]]
 }
 ```
 
