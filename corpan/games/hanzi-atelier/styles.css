@@ -283,6 +283,7 @@
   justify-content: space-between;
   margin-bottom: 16px;
   gap: 12px;
+  flex-wrap: wrap;
 }
 
 .panel-title {
@@ -299,15 +300,11 @@
   text-transform: uppercase;
 }
 
-.panel-meta {
-  font-size: 11px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--accent);
-  background: rgba(11, 107, 111, 0.12);
-  padding: 6px 12px;
-  border-radius: 999px;
-  font-weight: 600;
+.panel-meta-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
 }
 
 .panel-controls {

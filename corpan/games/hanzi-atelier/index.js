@@ -38,7 +38,9 @@
         <div class="panel draw-panel">
           <div class="panel-header">
             <div class="panel-title">Write It</div>
-            <div class="panel-meta">Guided • Stroke order</div>
+            <div class="panel-meta-row">
+              <button class="toggle-btn active" data-guided-toggle>Guided</button>
+            </div>
           </div>
           <div class="canvas-shell" data-canvas-shell>
             <canvas class="canvas-layer" data-ghost></canvas>
@@ -347,6 +349,8 @@
   };
 
   const computeCanvasPadding = (width, height) => Math.min(width, height) * 0.08;
+  const REPLAY_STEP = 0.16;
+  const REPLAY_DELAY_MS = 40;
 
   let hanziWriterPromise = null;
   const resolvePackBaseUrl = () => {
@@ -500,7 +504,24 @@
 
     replay() {
       if (!this.writer || typeof this.writer.animateCharacter !== "function") return;
-      this.writer.animateCharacter();
+      const options = this.writer._options;
+      if (!options) {
+        this.writer.animateCharacter();
+        return;
+      }
+      const prev = {
+        strokeAnimationSpeed: options.strokeAnimationSpeed,
+        delayBetweenStrokes: options.delayBetweenStrokes,
+        strokeFadeDuration: options.strokeFadeDuration,
+      };
+      options.strokeAnimationSpeed = Math.max(2.8, options.strokeAnimationSpeed || 1);
+      options.delayBetweenStrokes = Math.min(120, options.delayBetweenStrokes ?? 1000);
+      options.strokeFadeDuration = Math.min(240, options.strokeFadeDuration ?? 400);
+      this.writer.animateCharacter().finally(() => {
+        options.strokeAnimationSpeed = prev.strokeAnimationSpeed;
+        options.delayBetweenStrokes = prev.delayBetweenStrokes;
+        options.strokeFadeDuration = prev.strokeFadeDuration;
+      });
     }
 
     destroy() {
@@ -825,12 +846,12 @@
             const length = Math.max(2, Math.floor(median.length * t));
             drawSmoothStroke(ctx, median.slice(0, length), (pt) => this.toCanvas(pt));
           }
-          t += 0.08;
+          t += REPLAY_STEP;
           if (t < 1.1) {
             requestAnimationFrame(step);
           } else {
             strokeIndex += 1;
-            setTimeout(drawNext, 120);
+            setTimeout(drawNext, REPLAY_DELAY_MS);
           }
         };
         step();
@@ -860,6 +881,7 @@
     const ghostCanvas = root.querySelector("[data-ghost]");
     const drawCanvas = root.querySelector("[data-draw]");
     const fxCanvas = root.querySelector("[data-fx]");
+    const guidedToggle = root.querySelector("[data-guided-toggle]");
     const actionButtons = root.querySelectorAll("[data-action]");
 
     const state = {
@@ -873,6 +895,7 @@
       etymology: fallbackEtymology,
       etyLang: "en",
       mode: "guided",
+      guidedHints: true,
       onlyWithStrokes: true,
       examples: [],
       examplesOffset: 0,
@@ -885,16 +908,18 @@
     let hintTimer = 0;
     let writerLayer = null;
 
-    const showGuidedHint = (index) => {
+    const showGuidedHint = (index, options = {}) => {
+      const { force = false } = options;
+      if (!state.guidedHints && !force) return;
       if (index === null || index === undefined) return;
       if (!state.medians.length || index < 0 || index >= state.medians.length) {
         return;
       }
-      if (writerLayer && writerLayer.ready) {
-        writerLayer.showHint(index);
-      } else {
-        engine.showHint(index);
-      }
+        if (writerLayer && writerLayer.ready) {
+          writerLayer.showHint(index);
+        } else {
+          engine.showHint(index);
+        }
     };
 
     const engine = new DrawingEngine(canvasShell, ghostCanvas, drawCanvas, fxCanvas, ({ score, overall }) => {
@@ -1150,13 +1175,24 @@
       state.loadingExamples = false;
     };
 
+    if (guidedToggle) {
+      guidedToggle.addEventListener("click", () => {
+        state.guidedHints = !state.guidedHints;
+        guidedToggle.classList.toggle("active", state.guidedHints);
+        guidedToggle.textContent = state.guidedHints ? "Guided" : "Unguided";
+        if (state.guidedHints) {
+          showGuidedHint(engine.currentStrokeIndex, { force: true });
+        }
+      });
+    }
+
     actionButtons.forEach((btn) => {
       btn.addEventListener("click", () => {
         const action = btn.dataset.action;
         if (action === "next") loadCharacter();
         if (action === "clear") engine.clearUser();
         if (action === "hint") {
-          showGuidedHint(engine.currentStrokeIndex);
+          showGuidedHint(engine.currentStrokeIndex, { force: true });
         }
         if (action === "replay") {
           if (writerLayer && writerLayer.ready) {
