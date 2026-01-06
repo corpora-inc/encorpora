@@ -119,6 +119,7 @@
   grid-template-columns: minmax(0, 0.72fr) minmax(0, 1.28fr);
   gap: clamp(16px, 3vw, 28px);
   align-items: center;
+  position: relative;
 }
 
 .hero-left {
@@ -305,6 +306,56 @@
   align-items: center;
   gap: 8px;
   flex-wrap: wrap;
+}
+
+.nav-btn {
+  position: absolute;
+  bottom: clamp(12px, 2.2vw, 20px);
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  border: 1px solid rgba(27, 27, 31, 0.12);
+  background: rgba(255, 255, 255, 0.75);
+  color: var(--ink);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 8px 16px rgba(16, 26, 31, 0.12);
+  transition: transform 120ms ease, box-shadow 120ms ease, opacity 120ms ease;
+}
+
+.nav-btn svg {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.nav-prev {
+  left: clamp(12px, 2.2vw, 20px);
+}
+
+.nav-next {
+  right: clamp(12px, 2.2vw, 20px);
+}
+
+.nav-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 20px rgba(16, 26, 31, 0.16);
+}
+
+.nav-btn:active {
+  transform: translateY(1px) scale(0.98);
+}
+
+.nav-btn.disabled {
+  opacity: 0.35;
+  pointer-events: none;
+  box-shadow: none;
 }
 
 .panel-controls {

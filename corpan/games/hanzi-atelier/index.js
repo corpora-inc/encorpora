@@ -23,15 +23,22 @@
             <div class="char-details">
               <span class="chip" data-strokes></span>
             </div>
-            <div class="char-actions">
-              <button class="primary-btn" data-action="next">Next</button>
-            </div>
           </div>
           <div class="hero-right">
             <div class="eyebrow">Etymology</div>
             <div class="ety-text" data-etymology></div>
             <div class="ety-lang" data-ety-lang></div>
           </div>
+          <button class="nav-btn nav-prev" data-nav="prev" data-action="prev" aria-label="Previous">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M15.5 5.5 9 12l6.5 6.5" />
+            </svg>
+          </button>
+          <button class="nav-btn nav-next" data-nav="next" data-action="next" aria-label="Next">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M8.5 5.5 15 12l-6.5 6.5" />
+            </svg>
+          </button>
         </div>
       </div>
       <div class="workspace">
@@ -882,6 +889,8 @@
     const drawCanvas = root.querySelector("[data-draw]");
     const fxCanvas = root.querySelector("[data-fx]");
     const guidedToggle = root.querySelector("[data-guided-toggle]");
+    const navPrev = root.querySelector("[data-nav='prev']");
+    const navNext = root.querySelector("[data-nav='next']");
     const actionButtons = root.querySelectorAll("[data-action]");
 
     const state = {
@@ -897,6 +906,8 @@
       mode: "guided",
       guidedHints: true,
       onlyWithStrokes: true,
+      history: [],
+      historyIndex: -1,
       examples: [],
       examplesOffset: 0,
       loadingExamples: false,
@@ -907,6 +918,92 @@
     const pinyinCache = new Map();
     let hintTimer = 0;
     let writerLayer = null;
+    let hasInitialGuidedHint = false;
+    const STORAGE_KEY = "hanzi_atelier_state_v1";
+
+    const readStoredState = () => {
+      try {
+        const raw = window.localStorage.getItem(STORAGE_KEY);
+        if (!raw) return null;
+        const parsed = JSON.parse(raw);
+        if (!parsed || typeof parsed !== "object") return null;
+        return parsed;
+      } catch {
+        return null;
+      }
+    };
+
+    const persistState = () => {
+      try {
+        window.localStorage.setItem(
+          STORAGE_KEY,
+          JSON.stringify({
+            guidedHints: state.guidedHints,
+            onlyWithStrokes: state.onlyWithStrokes,
+            history: state.history,
+            historyIndex: state.historyIndex,
+          })
+        );
+      } catch {
+        // Ignore storage failures (private mode).
+      }
+    };
+
+    const applyStoredState = () => {
+      const saved = readStoredState();
+      if (!saved) return;
+      if (typeof saved.guidedHints === "boolean") {
+        state.guidedHints = saved.guidedHints;
+      }
+      if (typeof saved.onlyWithStrokes === "boolean") {
+        state.onlyWithStrokes = saved.onlyWithStrokes;
+      }
+      if (Array.isArray(saved.history)) {
+        state.history = saved.history.filter((item) => typeof item === "string");
+      }
+      if (Number.isInteger(saved.historyIndex)) {
+        state.historyIndex = Math.max(-1, Math.min(saved.historyIndex, state.history.length - 1));
+      }
+    };
+
+    const updateNavButtons = () => {
+      const canPrev = state.historyIndex > 0;
+      const canNext = true;
+      if (navPrev) {
+        navPrev.disabled = !canPrev;
+        navPrev.classList.toggle("disabled", !canPrev);
+      }
+      if (navNext) {
+        navNext.disabled = !canNext;
+        navNext.classList.toggle("disabled", !canNext);
+      }
+    };
+
+    const pushHistory = (char) => {
+      if (!char) return;
+      if (state.historyIndex < state.history.length - 1) {
+        state.history = state.history.slice(0, state.historyIndex + 1);
+      }
+      state.history.push(char);
+      state.historyIndex = state.history.length - 1;
+      persistState();
+      updateNavButtons();
+    };
+
+    const setHistoryIndex = (index) => {
+      state.historyIndex = Math.max(-1, Math.min(index, state.history.length - 1));
+      persistState();
+      updateNavButtons();
+    };
+
+    const scheduleGuidedHint = (delayMs, options = {}) => {
+      if (hintTimer) {
+        clearTimeout(hintTimer);
+      }
+      hintTimer = window.setTimeout(() => {
+        showGuidedHint(engine.currentStrokeIndex, options);
+      }, delayMs);
+    };
 
     const showGuidedHint = (index, options = {}) => {
       const { force = false } = options;
@@ -915,12 +1012,22 @@
       if (!state.medians.length || index < 0 || index >= state.medians.length) {
         return;
       }
-        if (writerLayer && writerLayer.ready) {
-          writerLayer.showHint(index);
-        } else {
-          engine.showHint(index);
-        }
+      if (writerLayer && writerLayer.ready) {
+        writerLayer.showHint(index);
+      } else {
+        engine.showHint(index);
+      }
     };
+
+    const syncGuidedToggle = () => {
+      if (!guidedToggle) return;
+      guidedToggle.classList.toggle("active", state.guidedHints);
+      guidedToggle.textContent = state.guidedHints ? "Guided" : "Unguided";
+    };
+
+    applyStoredState();
+    syncGuidedToggle();
+    updateNavButtons();
 
     const engine = new DrawingEngine(canvasShell, ghostCanvas, drawCanvas, fxCanvas, ({ score, overall }) => {
       if (overall !== null) {
@@ -932,12 +1039,7 @@
         elScore.textContent = "Score: --";
       }
       if (state.mode === "guided") {
-        if (hintTimer) {
-          clearTimeout(hintTimer);
-        }
-        hintTimer = window.setTimeout(() => {
-          showGuidedHint(engine.currentStrokeIndex);
-        }, 140);
+        scheduleGuidedHint(140);
       }
     });
 
@@ -1058,13 +1160,29 @@
       return entry;
     };
 
-    const loadCharacter = async () => {
+    const scheduleInitialHint = () => {
+      const delay = hasInitialGuidedHint ? 220 : 900;
+      hasInitialGuidedHint = true;
+      scheduleGuidedHint(delay);
+    };
+
+    const loadCharacter = async (options = {}) => {
+      const { targetChar = null, push = true } = options;
       elOverlay.textContent = "Loading";
       const filter = state.onlyWithStrokes ? "WHERE stroke_count IS NOT NULL AND stroke_count > 0" : "";
-      const result = await queryPackDb(
-        `SELECT char, pinyin, stroke_count, radical FROM hanzi_character ${filter} ORDER BY RANDOM() LIMIT 1`
-      );
-      const row = result.rows[0];
+      let row = null;
+      if (targetChar) {
+        const lookup = await queryPackDb(
+          "SELECT char, pinyin, stroke_count, radical FROM hanzi_character WHERE char = ? LIMIT 1",
+          [targetChar]
+        );
+        row = lookup.rows[0];
+      } else {
+        const result = await queryPackDb(
+          `SELECT char, pinyin, stroke_count, radical FROM hanzi_character ${filter} ORDER BY RANDOM() LIMIT 1`
+        );
+        row = result.rows[0];
+      }
       if (!row) {
         const fallback = pickFallbackEntry();
         state.character = fallback.char;
@@ -1076,7 +1194,7 @@
         state.etymology = fallback.etymology;
         state.etyLang = "en";
         await updateWriterLayer();
-        showGuidedHint(engine.currentStrokeIndex);
+        scheduleInitialHint();
       } else {
         state.character = row.char || fallbackCharacter.char;
         state.pinyin = row.pinyin || "";
@@ -1108,7 +1226,7 @@
           state.strokeCount = null;
         }
         await updateWriterLayer();
-        showGuidedHint(engine.currentStrokeIndex);
+        scheduleInitialHint();
 
         const etyRes = await queryPackDb(
           "SELECT language_code, summary FROM hanzi_etymology WHERE char = ?",
@@ -1137,6 +1255,9 @@
       state.examplesOffset = 0;
       state.noMoreExamples = false;
       await loadExamples(true);
+      if (push) {
+        pushHistory(state.character);
+      }
       if (!state.packDbAvailable) {
         elOverlay.textContent = "Demo mode (install pack zip for full corpus)";
       } else {
@@ -1175,13 +1296,155 @@
       state.loadingExamples = false;
     };
 
+    const goToHistoryIndex = async (index) => {
+      if (index < 0 || index >= state.history.length) return;
+      const char = state.history[index];
+      if (!char) return;
+      setHistoryIndex(index);
+      await loadCharacter({ targetChar: char, push: false });
+    };
+
+    const swipeState = { active: false, startX: 0, startY: 0, startTime: 0, hasNavigated: false };
+    const wheelState = {
+      accumulator: 0,
+      lastTime: 0,
+      hasNavigated: false,
+    };
+    const SCROLL_THRESHOLD = 100;
+    const GESTURE_TIMEOUT = 50;
+    const WHEEL_IDLE_MS = 180;
+    const WHEEL_IDLE_POLL_MS = 80;
+    let wheelLastAt = 0;
+    let navLock = false;
+    const NAV_DEBUG =
+      typeof window !== "undefined" &&
+      window.localStorage.getItem("hanzi_nav_debug") === "1";
+    const logNav = (...args) => {
+      if (!NAV_DEBUG) return;
+      // eslint-disable-next-line no-console
+      console.log("[hanzi][nav]", ...args);
+    };
+    const SWIPE_DISTANCE = 70;
+    const SWIPE_HORIZONTAL_RATIO = 1.3;
+    const MAX_SWIPE_DURATION = 500;
+    const isSwipeTarget = (event) => {
+      const target = event.target;
+      if (!(target instanceof Element)) return false;
+      if (target.closest("button, a, input, textarea")) return false;
+      if (target.closest(".canvas-shell")) return false;
+      if (target.closest(".examples-list")) return false;
+      return true;
+    };
+    const onSwipeStart = (event) => {
+      if (!isSwipeTarget(event)) return;
+      swipeState.active = true;
+      swipeState.startX = event.clientX;
+      swipeState.startY = event.clientY;
+      swipeState.startTime = Date.now();
+      swipeState.hasNavigated = false;
+    };
+    const onSwipeMove = (event) => {
+      if (!swipeState.active || swipeState.hasNavigated) return;
+      if (Date.now() - swipeState.startTime > MAX_SWIPE_DURATION) {
+        swipeState.active = false;
+        return;
+      }
+      const dx = event.clientX - swipeState.startX;
+      const dy = event.clientY - swipeState.startY;
+      if (Math.abs(dx) < SWIPE_DISTANCE || Math.abs(dx) < Math.abs(dy) * SWIPE_HORIZONTAL_RATIO) {
+        return;
+      }
+      swipeState.active = false;
+      swipeState.hasNavigated = true;
+      if (dx > 0) {
+        goPrev();
+      } else {
+        goNext();
+      }
+    };
+    const onSwipeEnd = () => {
+      swipeState.active = false;
+      swipeState.hasNavigated = false;
+    };
+    const releaseNavLockWhenIdle = () => {
+      if (!navLock) return;
+      const idleFor = Date.now() - wheelLastAt;
+      if (idleFor >= WHEEL_IDLE_MS) {
+        navLock = false;
+        wheelState.hasNavigated = false;
+        wheelState.accumulator = 0;
+        return;
+      }
+      window.setTimeout(releaseNavLockWhenIdle, WHEEL_IDLE_POLL_MS);
+    };
+    const onWheelSwipe = (event) => {
+      if (event.ctrlKey) return;
+      wheelLastAt = Date.now();
+      if (navLock) {
+        logNav("wheel-ignored:locked", { deltaX: event.deltaX });
+        return;
+      }
+      if (!isSwipeTarget(event)) return;
+      const absX = Math.abs(event.deltaX);
+      const absY = Math.abs(event.deltaY);
+      if (absX < 1 || absX < absY * SWIPE_HORIZONTAL_RATIO) return;
+      const now = Date.now();
+      const timeSinceLast = now - wheelState.lastTime;
+      if (timeSinceLast > GESTURE_TIMEOUT) {
+        wheelState.accumulator = 0;
+        wheelState.hasNavigated = false;
+      }
+      wheelState.lastTime = now;
+      if (wheelState.hasNavigated) return;
+      if (Math.abs(event.deltaX) < 1) {
+        return;
+      }
+      wheelState.accumulator += event.deltaX;
+      if (Math.abs(wheelState.accumulator) >= SCROLL_THRESHOLD) {
+        wheelState.hasNavigated = true;
+        navLock = true;
+        releaseNavLockWhenIdle();
+        if (wheelState.accumulator > 0) {
+          logNav("wheel-next", { acc: wheelState.accumulator });
+          goNext();
+        } else {
+          logNav("wheel-prev", { acc: wheelState.accumulator });
+          goPrev();
+        }
+        wheelState.accumulator = 0;
+      }
+    };
+
+    const goPrev = async () => {
+      if (state.historyIndex <= 0) return;
+      navLock = true;
+      wheelState.accumulator = 0;
+      wheelState.hasNavigated = true;
+      releaseNavLockWhenIdle();
+      logNav("prev");
+      await goToHistoryIndex(state.historyIndex - 1);
+    };
+
+    const goNext = async () => {
+      navLock = true;
+      wheelState.accumulator = 0;
+      wheelState.hasNavigated = true;
+      releaseNavLockWhenIdle();
+      logNav("next");
+      if (state.historyIndex >= 0 && state.historyIndex < state.history.length - 1) {
+        await goToHistoryIndex(state.historyIndex + 1);
+        return;
+      }
+      await loadCharacter();
+    };
+
     if (guidedToggle) {
       guidedToggle.addEventListener("click", () => {
         state.guidedHints = !state.guidedHints;
-        guidedToggle.classList.toggle("active", state.guidedHints);
-        guidedToggle.textContent = state.guidedHints ? "Guided" : "Unguided";
+        syncGuidedToggle();
+        persistState();
         if (state.guidedHints) {
-          showGuidedHint(engine.currentStrokeIndex, { force: true });
+          scheduleGuidedHint(160, { force: true });
         }
       });
     }
@@ -1189,7 +1452,8 @@
     actionButtons.forEach((btn) => {
       btn.addEventListener("click", () => {
         const action = btn.dataset.action;
-        if (action === "next") loadCharacter();
+        if (action === "next") goNext();
+        if (action === "prev") goPrev();
         if (action === "clear") engine.clearUser();
         if (action === "hint") {
           showGuidedHint(engine.currentStrokeIndex, { force: true });
@@ -1230,6 +1494,12 @@
     };
     elExamples.addEventListener("scroll", onScroll);
 
+    root.addEventListener("pointerdown", onSwipeStart);
+    root.addEventListener("pointermove", onSwipeMove);
+    root.addEventListener("pointerup", onSwipeEnd);
+    root.addEventListener("pointercancel", onSwipeEnd);
+    root.addEventListener("wheel", onWheelSwipe, { passive: true });
+
     let resizeRaf = 0;
     const handleResize = () => {
       if (resizeRaf) {
@@ -1256,7 +1526,12 @@
     }
 
     renderCharacter();
-    loadCharacter();
+    const initialChar = state.historyIndex >= 0 ? state.history[state.historyIndex] : null;
+    if (initialChar) {
+      loadCharacter({ targetChar: initialChar, push: false });
+    } else {
+      loadCharacter();
+    }
 
     return {
       unmount: () => {
@@ -1266,7 +1541,17 @@
           cancelAnimationFrame(resizeRaf);
           resizeRaf = 0;
         }
+        if (hintTimer) {
+          clearTimeout(hintTimer);
+          hintTimer = 0;
+        }
+        navLock = false;
         elExamples.removeEventListener("scroll", onScroll);
+        root.removeEventListener("pointerdown", onSwipeStart);
+        root.removeEventListener("pointermove", onSwipeMove);
+        root.removeEventListener("pointerup", onSwipeEnd);
+        root.removeEventListener("pointercancel", onSwipeEnd);
+        root.removeEventListener("wheel", onWheelSwipe);
         if (writerLayer) {
           writerLayer.destroy();
         }
