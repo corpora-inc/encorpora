@@ -3,25 +3,35 @@
 
   const template = `
     <div class="hanzi-app">
+      <button class="exit-btn" data-action="exit" aria-label="Exit">
+        <span>Exit</span>
+      </button>
       <div class="hero">
-        <div class="card char-card">
-          <button class="exit-btn" data-action="exit">Exit</button>
-          <div class="char-symbol" data-char></div>
-          <div class="char-pinyin" data-pinyin></div>
-          <button class="speak-main" data-action="speak">Speak</button>
-          <div class="char-details">
-            <span class="chip" data-radical></span>
-            <span class="chip" data-strokes></span>
+        <div class="card hero-card">
+          <div class="hero-left">
+            <div class="char-symbol" data-char></div>
+            <div class="char-row">
+              <div class="char-pinyin" data-pinyin></div>
+              <button class="icon-btn speak-btn" data-action="speak" aria-label="Speak">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path
+                    d="M4 10.5v3c0 .83.67 1.5 1.5 1.5h3.25l3.71 3.46A1 1 0 0 0 14 17.7V6.3a1 1 0 0 0-1.54-.86L8.75 8.9H5.5A1.5 1.5 0 0 0 4 10.5zM17.2 8.36a.9.9 0 0 1 1.26 0 6 6 0 0 1 0 8.28.9.9 0 1 1-1.26-1.28 4.2 4.2 0 0 0 0-5.72.9.9 0 0 1 0-1.28z"
+                  />
+                </svg>
+              </button>
+            </div>
+            <div class="char-details">
+              <span class="chip" data-strokes></span>
+            </div>
+            <div class="char-actions">
+              <button class="primary-btn" data-action="next">Next</button>
+            </div>
           </div>
-          <div class="char-actions">
-            <button class="primary-btn" data-action="next">Next</button>
-            <button class="ghost-btn" data-action="replay">Replay</button>
+          <div class="hero-right">
+            <div class="eyebrow">Etymology</div>
+            <div class="ety-text" data-etymology></div>
+            <div class="ety-lang" data-ety-lang></div>
           </div>
-        </div>
-        <div class="card ety-card">
-          <div class="eyebrow">Etymology</div>
-          <div class="ety-text" data-etymology></div>
-          <div class="ety-lang" data-ety-lang></div>
         </div>
       </div>
       <div class="workspace">
@@ -44,6 +54,7 @@
           <div class="panel-actions">
             <div class="score" data-score>Score: --</div>
             <div class="action-buttons">
+              <button class="action-btn" data-action="replay">Replay</button>
               <button class="action-btn" data-action="hint">Hint</button>
               <button class="action-btn" data-action="clear">Clear</button>
               <button class="action-btn secondary" data-action="next">Next</button>
@@ -840,7 +851,6 @@
 
     const elChar = root.querySelector("[data-char]");
     const elPinyin = root.querySelector("[data-pinyin]");
-    const elRadical = root.querySelector("[data-radical]");
     const elStrokes = root.querySelector("[data-strokes]");
     const elEtymology = root.querySelector("[data-etymology]");
     const elEtyLang = root.querySelector("[data-ety-lang]");
@@ -940,7 +950,6 @@
         pinyinCache.set(state.character, pinyin);
       }
       elPinyin.textContent = state.stackConfig.showRomanization ? pinyin : "";
-      elRadical.textContent = state.radical ? `Radical ${state.radical}` : "Radical --";
       elStrokes.textContent = state.strokeCount ? `${state.strokeCount} strokes` : "Strokes --";
       elEtymology.textContent = state.etymology || "Etymology in progress.";
       elEtyLang.textContent = state.etyLang ? state.etyLang.toUpperCase() : "--";
