@@ -564,22 +564,27 @@
       const rect = this.container.getBoundingClientRect();
       this.canvasRect = rect;
       const dpr = window.devicePixelRatio || 1;
+      const style = getComputedStyle(this.drawCanvas);
+      const insetX = Number.parseFloat(style.left) || 12;
+      const insetY = Number.parseFloat(style.top) || 12;
+      const innerWidth = Math.max(0, rect.width - insetX * 2);
+      const innerHeight = Math.max(0, rect.height - insetY * 2);
       [this.ghostCanvas, this.drawCanvas, this.fxCanvas].forEach((canvas) => {
-        canvas.width = rect.width * dpr;
-        canvas.height = rect.height * dpr;
-        canvas.style.width = `${rect.width}px`;
-        canvas.style.height = `${rect.height}px`;
+        canvas.width = innerWidth * dpr;
+        canvas.height = innerHeight * dpr;
+        canvas.style.width = `${innerWidth}px`;
+        canvas.style.height = `${innerHeight}px`;
         const ctx = canvas.getContext("2d");
         ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       });
-      const padding = computeCanvasPadding(rect.width, rect.height);
-      const size = Math.min(rect.width, rect.height) - padding * 2;
+      const padding = computeCanvasPadding(innerWidth, innerHeight);
+      const size = Math.min(innerWidth, innerHeight) - padding * 2;
       this.bounds = {
-        x: (rect.width - size) / 2,
-        y: (rect.height - size) / 2,
+        x: (innerWidth - size) / 2,
+        y: (innerHeight - size) / 2,
         size,
       };
-      this.layout = { width: rect.width, height: rect.height, padding };
+      this.layout = { width: innerWidth, height: innerHeight, padding };
       const baseWidth = Math.max(12, size * 0.075);
       this.ghostWidth = baseWidth;
       this.userWidth = Math.max(8, size * 0.045);
