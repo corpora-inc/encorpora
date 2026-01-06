@@ -38,11 +38,7 @@
         <div class="panel draw-panel">
           <div class="panel-header">
             <div class="panel-title">Write It</div>
-            <div class="panel-controls">
-              <button class="toggle-btn active" data-mode="guided">Guided</button>
-              <button class="toggle-btn" data-mode="free">Free</button>
-              <button class="toggle-btn" data-toggle="focus">Only with strokes</button>
-            </div>
+            <div class="panel-meta">Guided • Stroke order</div>
           </div>
           <div class="canvas-shell" data-canvas-shell>
             <canvas class="canvas-layer" data-ghost></canvas>
@@ -864,8 +860,6 @@
     const ghostCanvas = root.querySelector("[data-ghost]");
     const drawCanvas = root.querySelector("[data-draw]");
     const fxCanvas = root.querySelector("[data-fx]");
-    const modeButtons = root.querySelectorAll("[data-mode]");
-    const focusButton = root.querySelector("[data-toggle='focus']");
     const actionButtons = root.querySelectorAll("[data-action]");
 
     const state = {
@@ -888,6 +882,20 @@
       fallbackIndex: 0,
     };
     const pinyinCache = new Map();
+    let hintTimer = 0;
+    let writerLayer = null;
+
+    const showGuidedHint = (index) => {
+      if (index === null || index === undefined) return;
+      if (!state.medians.length || index < 0 || index >= state.medians.length) {
+        return;
+      }
+      if (writerLayer && writerLayer.ready) {
+        writerLayer.showHint(index);
+      } else {
+        engine.showHint(index);
+      }
+    };
 
     const engine = new DrawingEngine(canvasShell, ghostCanvas, drawCanvas, fxCanvas, ({ score, overall }) => {
       if (overall !== null) {
@@ -898,9 +906,17 @@
       } else {
         elScore.textContent = "Score: --";
       }
+      if (state.mode === "guided") {
+        if (hintTimer) {
+          clearTimeout(hintTimer);
+        }
+        hintTimer = window.setTimeout(() => {
+          showGuidedHint(engine.currentStrokeIndex);
+        }, 140);
+      }
     });
 
-    const writerLayer = writerLayerEl
+    writerLayer = writerLayerEl
       ? new HanziWriterLayer(writerLayerEl, () => {
         const styles = getComputedStyle(root);
         return {
@@ -929,17 +945,6 @@
         console.warn("[hanzi] HanziWriter load failed", err);
         engine.setGhostEnabled(true);
       }
-    };
-
-    const setMode = (mode) => {
-      state.mode = mode;
-      engine.setMode(mode);
-      modeButtons.forEach((btn) => btn.classList.toggle("active", btn.dataset.mode === mode));
-    };
-
-    const setFocus = (value) => {
-      state.onlyWithStrokes = value;
-      focusButton.classList.toggle("active", value);
     };
 
     const renderCharacter = () => {
@@ -1046,6 +1051,7 @@
         state.etymology = fallback.etymology;
         state.etyLang = "en";
         await updateWriterLayer();
+        showGuidedHint(engine.currentStrokeIndex);
       } else {
         state.character = row.char || fallbackCharacter.char;
         state.pinyin = row.pinyin || "";
@@ -1077,6 +1083,7 @@
           state.strokeCount = null;
         }
         await updateWriterLayer();
+        showGuidedHint(engine.currentStrokeIndex);
 
         const etyRes = await queryPackDb(
           "SELECT language_code, summary FROM hanzi_etymology WHERE char = ?",
@@ -1143,24 +1150,13 @@
       state.loadingExamples = false;
     };
 
-    modeButtons.forEach((btn) => {
-      btn.addEventListener("click", () => setMode(btn.dataset.mode));
-    });
-
-    focusButton.addEventListener("click", () => setFocus(!state.onlyWithStrokes));
-
     actionButtons.forEach((btn) => {
       btn.addEventListener("click", () => {
         const action = btn.dataset.action;
         if (action === "next") loadCharacter();
         if (action === "clear") engine.clearUser();
         if (action === "hint") {
-          const index = state.mode === "guided" ? engine.currentStrokeIndex : 0;
-          if (writerLayer && writerLayer.ready) {
-            writerLayer.showHint(index);
-          } else {
-            engine.showHint(index);
-          }
+          showGuidedHint(engine.currentStrokeIndex);
         }
         if (action === "replay") {
           if (writerLayer && writerLayer.ready) {
@@ -1224,7 +1220,6 @@
     }
 
     renderCharacter();
-    setFocus(state.onlyWithStrokes);
     loadCharacter();
 
     return {
