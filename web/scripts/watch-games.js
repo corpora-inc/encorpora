@@ -29,6 +29,18 @@ const GAME_CONFIGS = [
 
 const GAME_CONFIG_MAP = new Map(GAME_CONFIGS.map((config) => [config.name, config]));
 
+function bumpDevRevision(manifestPath) {
+  if (!fs.existsSync(manifestPath)) return;
+  try {
+    const raw = fs.readFileSync(manifestPath, 'utf8');
+    const data = JSON.parse(raw);
+    data.devRevision = String(Date.now());
+    fs.writeFileSync(manifestPath, `${JSON.stringify(data, null, 2)}\n`, 'utf8');
+  } catch (error) {
+    console.error(`[watch-games] ✗ Failed to update devRevision:`, error.message);
+  }
+}
+
 function copyGame(gameName) {
   const config = GAME_CONFIG_MAP.get(gameName);
   if (!config) {
@@ -73,6 +85,9 @@ function copyGame(gameName) {
       }
       execSync(`cp -R "${srcPath}" "${destDir}/"`, { stdio: 'inherit' });
     });
+
+    const destManifest = path.join(destDir, 'manifest.json');
+    bumpDevRevision(destManifest);
 
     // Build zip (if configured)
     if (config.zipName && config.zipEntries?.length) {

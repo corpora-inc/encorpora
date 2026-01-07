@@ -408,12 +408,56 @@
     if (hanziWriterPromise) return hanziWriterPromise;
     const baseUrl = resolvePackBaseUrl();
     const scriptUrl = new URL("hanziwriter.min.js", baseUrl).toString();
+    const getTauriInvoke = () => {
+      const tauri = window.__TAURI__;
+      if (!tauri) return null;
+      return tauri.core && typeof tauri.core.invoke === "function"
+        ? tauri.core.invoke.bind(tauri.core)
+        : typeof tauri.invoke === "function"
+          ? tauri.invoke.bind(tauri)
+          : null;
+    };
+    const toCorpanPackUrl = (url) => {
+      try {
+        if (url.startsWith("corpan-pack://")) return url;
+        const parsed = new URL(url);
+        if (parsed.hostname === "corpan-pack.localhost") {
+          return `corpan-pack://localhost${parsed.pathname}`;
+        }
+      } catch {
+        // Ignore URL parse errors.
+      }
+      return url;
+    };
+    const loadInlineViaTauri = async () => {
+      const invoke = getTauriInvoke();
+      if (!invoke) return null;
+      const packUrl = toCorpanPackUrl(scriptUrl);
+      const text = await invoke("content_packs_fetch_text", { url: packUrl });
+      if (!text) return null;
+      const script = document.createElement("script");
+      script.type = "text/javascript";
+      script.textContent = String(text);
+      document.head.appendChild(script);
+      return window.HanziWriter;
+    };
     hanziWriterPromise = new Promise((resolve, reject) => {
       const script = document.createElement("script");
       script.src = scriptUrl;
       script.async = true;
       script.onload = () => resolve(window.HanziWriter);
-      script.onerror = () => reject(new Error("Failed to load HanziWriter"));
+      script.onerror = async () => {
+        try {
+          const inline = await loadInlineViaTauri();
+          if (inline) {
+            resolve(inline);
+            return;
+          }
+        } catch {
+          // fall through to reject
+        }
+        reject(new Error("Failed to load HanziWriter"));
+      };
       document.head.appendChild(script);
     });
     return hanziWriterPromise;
@@ -528,30 +572,25 @@
     }
 
     showHint(index) {
-      if (!this.writer || typeof this.writer.animateStroke !== "function") return;
-      this.writer.animateStroke(index);
+      if (!this.writer) return;
+      if (typeof this.writer.highlightStroke === "function") {
+        this.writer.highlightStroke(index);
+        return;
+      }
+      if (typeof this.writer.animateStroke === "function") {
+        this.writer.animateStroke(index, {
+          onComplete: () => {
+            if (this.writer && typeof this.writer.showCharacter === "function") {
+              this.writer.showCharacter({ duration: 0 });
+            }
+          },
+        });
+      }
     }
 
     replay() {
       if (!this.writer || typeof this.writer.animateCharacter !== "function") return;
-      const options = this.writer._options;
-      if (!options) {
-        this.writer.animateCharacter();
-        return;
-      }
-      const prev = {
-        strokeAnimationSpeed: options.strokeAnimationSpeed,
-        delayBetweenStrokes: options.delayBetweenStrokes,
-        strokeFadeDuration: options.strokeFadeDuration,
-      };
-      options.strokeAnimationSpeed = Math.max(2.8, options.strokeAnimationSpeed || 1);
-      options.delayBetweenStrokes = Math.min(120, options.delayBetweenStrokes ?? 1000);
-      options.strokeFadeDuration = Math.min(240, options.strokeFadeDuration ?? 400);
-      this.writer.animateCharacter().finally(() => {
-        options.strokeAnimationSpeed = prev.strokeAnimationSpeed;
-        options.delayBetweenStrokes = prev.delayBetweenStrokes;
-        options.strokeFadeDuration = prev.strokeFadeDuration;
-      });
+      this.writer.animateCharacter();
     }
 
     destroy() {
@@ -589,6 +628,7 @@
       this.userWidth = 8;
       this.highlightWidth = 10;
       this.layout = { width: 0, height: 0, padding: 0 };
+      this.hintTimer = 0;
       this.resize();
       this.attachEvents();
       this.drawGhost();
@@ -712,6 +752,14 @@
           ctx.fillText(String(index + 1), sx + 6, sy - 6);
         });
       }
+    }
+
+    clearHint() {
+      if (this.hintTimer) {
+        clearTimeout(this.hintTimer);
+        this.hintTimer = 0;
+      }
+      this.drawGhost();
     }
 
     redrawUser() {
@@ -863,7 +911,15 @@
     showHint(index) {
       if (index === null || index === undefined) return;
       if (!this.ghostEnabled) return;
+      if (this.hintTimer) {
+        clearTimeout(this.hintTimer);
+        this.hintTimer = 0;
+      }
       this.drawGhost(index);
+      this.hintTimer = window.setTimeout(() => {
+        this.hintTimer = 0;
+        this.drawGhost();
+      }, 700);
     }
 
     replay() {
@@ -872,7 +928,12 @@
       const accent = getComputedStyle(this.container).getPropertyValue("--accent");
       let strokeIndex = 0;
       const drawNext = () => {
-        if (strokeIndex >= this.medians.length) return;
+        if (strokeIndex >= this.medians.length) {
+          setTimeout(() => {
+            ctx.clearRect(0, 0, this.fxCanvas.width, this.fxCanvas.height);
+          }, 220);
+          return;
+        }
         const median = this.medians[strokeIndex];
         let t = 0;
         const step = () => {
@@ -905,6 +966,12 @@
     root.className = "hanzi-root";
     root.innerHTML = template;
     container.appendChild(root);
+    if (typeof navigator !== "undefined" && /Android/i.test(navigator.userAgent || "")) {
+      root.style.paddingTop = "25px";
+      root.style.setProperty("--safe-top", "25px");
+    } else {
+      root.style.setProperty("--safe-top", "0px");
+    }
 
     const elChar = root.querySelector("[data-char]");
     const elPinyin = root.querySelector("[data-pinyin]");
@@ -958,6 +1025,8 @@
     let writerLayer = null;
     let hasInitialGuidedHint = false;
     let completedThisChar = false;
+    let scoreBurstTimer = 0;
+    let scoreAnimFrame = 0;
     const STORAGE_KEY = "hanzi_atelier_state_v1";
 
     const readStoredState = () => {
@@ -1052,6 +1121,16 @@
       }
     };
 
+    const clearScoreBurst = () => {
+      if (!elScoreBurst) return;
+      if (scoreBurstTimer) {
+        clearTimeout(scoreBurstTimer);
+        scoreBurstTimer = 0;
+      }
+      elScoreBurst.textContent = "";
+      elScoreBurst.classList.remove("is-active");
+    };
+
     const scheduleGuidedHint = (delayMs, options = {}) => {
       if (hintTimer) {
         clearTimeout(hintTimer);
@@ -1105,6 +1184,46 @@
       elScoreBurst.classList.remove("is-active");
       void elScoreBurst.offsetWidth;
       elScoreBurst.classList.add("is-active");
+      if (scoreBurstTimer) {
+        clearTimeout(scoreBurstTimer);
+      }
+      scoreBurstTimer = window.setTimeout(() => {
+        clearScoreBurst();
+      }, 900);
+    };
+
+    const animateTotalScore = (from, to) => {
+      if (!elTotalScore) return;
+      if (scoreAnimFrame) {
+        cancelAnimationFrame(scoreAnimFrame);
+        scoreAnimFrame = 0;
+      }
+      const startTime = performance.now();
+      const duration = 450;
+      const step = (now) => {
+        const t = Math.min(1, (now - startTime) / duration);
+        const eased = t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+        const value = Math.round(from + (to - from) * eased);
+        elTotalScore.textContent = String(value);
+        if (t < 1) {
+          scoreAnimFrame = requestAnimationFrame(step);
+        } else {
+          scoreAnimFrame = 0;
+          elTotalScore.textContent = String(to);
+        }
+      };
+      elTotalScore.classList.add("is-pulse");
+      requestAnimationFrame(step);
+      window.setTimeout(() => {
+        elTotalScore.classList.remove("is-pulse");
+      }, 520);
+    };
+
+    const addTotalScore = (points) => {
+      const start = state.totalScore || 0;
+      const end = start + points;
+      state.totalScore = end;
+      animateTotalScore(start, end);
     };
 
     const engine = new DrawingEngine(
@@ -1124,7 +1243,7 @@
           completedThisChar = true;
           const points = state.strokeCount || state.medians.length;
           if (points) {
-            state.totalScore += points;
+            addTotalScore(points);
             showScoreBurst(points);
           }
           state.completedCount += 1;
@@ -1405,6 +1524,15 @@
     };
 
     const swipeState = { active: false, startX: 0, startY: 0, startTime: 0, hasNavigated: false };
+    const touchState = {
+      active: false,
+      startX: 0,
+      startY: 0,
+      startTime: 0,
+      hasMultiTouch: false,
+      startedOnInteractive: false,
+      selectionActive: false,
+    };
     const wheelState = {
       accumulator: 0,
       hasNavigated: false,
@@ -1423,6 +1551,10 @@
     const SWIPE_DISTANCE = 55;
     const SWIPE_HORIZONTAL_RATIO = 1.3;
     const MAX_SWIPE_DURATION = 500;
+    const TOUCH_THRESHOLD = 50;
+    const TOUCH_HORIZONTAL_RATIO = 1.3;
+    const TOUCH_MAX_DURATION = 520;
+    const TOUCH_MIN_VELOCITY = 0.25;
     const isSwipeTarget = (event) => {
       const target = event.target;
       if (!(target instanceof Element)) return false;
@@ -1431,7 +1563,13 @@
       if (target.closest(".examples-list")) return false;
       return true;
     };
+    const hasActiveSelection = () => {
+      if (typeof window === "undefined") return false;
+      const selection = window.getSelection();
+      return !!selection && !selection.isCollapsed;
+    };
     const onSwipeStart = (event) => {
+      if (event.pointerType === "touch") return;
       if (!isSwipeTarget(event)) return;
       swipeState.active = true;
       swipeState.startX = event.clientX;
@@ -1440,6 +1578,7 @@
       swipeState.hasNavigated = false;
     };
     const onSwipeMove = (event) => {
+      if (event.pointerType === "touch") return;
       if (!swipeState.active || swipeState.hasNavigated) return;
       if (Date.now() - swipeState.startTime > MAX_SWIPE_DURATION) {
         swipeState.active = false;
@@ -1461,6 +1600,74 @@
     const onSwipeEnd = () => {
       swipeState.active = false;
       swipeState.hasNavigated = false;
+    };
+    const resetTouchSwipe = () => {
+      touchState.active = false;
+      touchState.startX = 0;
+      touchState.startY = 0;
+      touchState.startTime = 0;
+      touchState.hasMultiTouch = false;
+      touchState.startedOnInteractive = false;
+      touchState.selectionActive = false;
+    };
+    const onTouchStart = (event) => {
+      resetTouchSwipe();
+      if (event.touches.length !== 1) {
+        touchState.hasMultiTouch = true;
+        return;
+      }
+      touchState.startedOnInteractive = !isSwipeTarget(event);
+      touchState.selectionActive = hasActiveSelection();
+      const touch = event.touches[0];
+      touchState.active = true;
+      touchState.startX = touch.clientX;
+      touchState.startY = touch.clientY;
+      touchState.startTime = Date.now();
+    };
+    const onTouchMove = (event) => {
+      if (!touchState.active) return;
+      if (event.touches.length > 1) {
+        touchState.hasMultiTouch = true;
+      }
+      if (hasActiveSelection()) {
+        touchState.selectionActive = true;
+      }
+    };
+    const onTouchEnd = (event) => {
+      if (!touchState.active) {
+        resetTouchSwipe();
+        return;
+      }
+      if (touchState.hasMultiTouch || touchState.startedOnInteractive || touchState.selectionActive) {
+        resetTouchSwipe();
+        return;
+      }
+      const touch = event.changedTouches[0];
+      const dx = touch.clientX - touchState.startX;
+      const dy = touch.clientY - touchState.startY;
+      const duration = Date.now() - touchState.startTime;
+      if (duration > TOUCH_MAX_DURATION) {
+        resetTouchSwipe();
+        return;
+      }
+      const isHorizontal = Math.abs(dx) > Math.abs(dy) * TOUCH_HORIZONTAL_RATIO;
+      if (!isHorizontal) {
+        resetTouchSwipe();
+        return;
+      }
+      const distance = Math.abs(dx);
+      const velocity = distance / Math.max(duration, 1);
+      if (distance >= TOUCH_THRESHOLD && velocity >= TOUCH_MIN_VELOCITY) {
+        if (dx < 0) {
+          goNext();
+        } else {
+          goPrev();
+        }
+      }
+      resetTouchSwipe();
+    };
+    const onTouchCancel = () => {
+      resetTouchSwipe();
     };
     const resetWheelGesture = () => {
       wheelState.hasNavigated = false;
@@ -1505,6 +1712,7 @@
 
     const goPrev = async () => {
       if (state.historyIndex <= 0) return;
+      clearScoreBurst();
       wheelState.accumulator = 0;
       wheelState.hasNavigated = true;
       logNav("prev");
@@ -1512,6 +1720,7 @@
     };
 
     const goNext = async () => {
+      clearScoreBurst();
       wheelState.accumulator = 0;
       wheelState.hasNavigated = true;
       logNav("next");
@@ -1582,6 +1791,10 @@
     root.addEventListener("pointermove", onSwipeMove);
     root.addEventListener("pointerup", onSwipeEnd);
     root.addEventListener("pointercancel", onSwipeEnd);
+    root.addEventListener("touchstart", onTouchStart, { passive: true });
+    root.addEventListener("touchmove", onTouchMove, { passive: true });
+    root.addEventListener("touchend", onTouchEnd, { passive: true });
+    root.addEventListener("touchcancel", onTouchCancel, { passive: true });
     root.addEventListener("wheel", onWheelSwipe, { passive: true });
 
     let resizeRaf = 0;
@@ -1638,6 +1851,10 @@
         root.removeEventListener("pointermove", onSwipeMove);
         root.removeEventListener("pointerup", onSwipeEnd);
         root.removeEventListener("pointercancel", onSwipeEnd);
+        root.removeEventListener("touchstart", onTouchStart);
+        root.removeEventListener("touchmove", onTouchMove);
+        root.removeEventListener("touchend", onTouchEnd);
+        root.removeEventListener("touchcancel", onTouchCancel);
         root.removeEventListener("wheel", onWheelSwipe);
         if (writerLayer) {
           writerLayer.destroy();
