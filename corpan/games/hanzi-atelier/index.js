@@ -4,49 +4,62 @@
   const template = `
     <div class="hanzi-app">
       <button class="exit-btn" data-action="exit" aria-label="Exit">
-        <span>Exit</span>
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M6.5 6.5 17.5 17.5M17.5 6.5 6.5 17.5" />
+        </svg>
       </button>
       <div class="hero">
         <div class="card hero-card">
           <div class="hero-left">
+            <button class="nav-btn nav-prev" data-nav="prev" data-action="prev" aria-label="Previous">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M15.5 5.5 9 12l6.5 6.5" />
+              </svg>
+            </button>
             <div class="char-symbol" data-char></div>
             <div class="char-row">
-              <div class="char-pinyin" data-pinyin></div>
-              <button class="icon-btn speak-btn" data-action="speak" aria-label="Speak">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path
-                    d="M4 10.5v3c0 .83.67 1.5 1.5 1.5h3.25l3.71 3.46A1 1 0 0 0 14 17.7V6.3a1 1 0 0 0-1.54-.86L8.75 8.9H5.5A1.5 1.5 0 0 0 4 10.5zM17.2 8.36a.9.9 0 0 1 1.26 0 6 6 0 0 1 0 8.28.9.9 0 1 1-1.26-1.28 4.2 4.2 0 0 0 0-5.72.9.9 0 0 1 0-1.28z"
-                  />
-                </svg>
+              <button class="pinyin-btn" data-pinyin data-action="speak" aria-label="Speak">
               </button>
             </div>
-            <div class="char-details">
-              <span class="chip" data-strokes></span>
-            </div>
+            <button class="nav-btn nav-next" data-nav="next" data-action="next" aria-label="Next">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M8.5 5.5 15 12l-6.5 6.5" />
+              </svg>
+            </button>
           </div>
           <div class="hero-right">
-            <div class="eyebrow">Etymology</div>
             <div class="ety-text" data-etymology></div>
-            <div class="ety-lang" data-ety-lang></div>
           </div>
-          <button class="nav-btn nav-prev" data-nav="prev" data-action="prev" aria-label="Previous">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M15.5 5.5 9 12l6.5 6.5" />
-            </svg>
-          </button>
-          <button class="nav-btn nav-next" data-nav="next" data-action="next" aria-label="Next">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M8.5 5.5 15 12l-6.5 6.5" />
-            </svg>
-          </button>
         </div>
       </div>
       <div class="workspace">
         <div class="panel draw-panel">
-          <div class="panel-header">
-            <div class="panel-title">Write It</div>
-            <div class="panel-meta-row">
-              <button class="toggle-btn active" data-guided-toggle>Guided</button>
+          <div class="panel-toolbar">
+            <div class="toolbar-left">
+              <button class="icon-chip play-chip" data-action="replay" aria-label="Play">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M8 6.5 18 12 8 17.5Z" fill="currentColor" stroke="none" />
+                </svg>
+              </button>
+            </div>
+            <div class="toolbar-right">
+              <button class="icon-chip active" data-guided-toggle aria-label="Guided hints">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path
+                    d="M4 9.5 12 5l8 4.5-8 4.5-8-4.5zM8 13.5v3.2c0 .8 2.1 1.8 4 1.8s4-1 4-1.8v-3.2"
+                  />
+                </svg>
+              </button>
+              <button class="icon-chip" data-action="hint" aria-label="Hint">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="m12 3 1.8 4.2L18 9l-4.2 1.8L12 15l-1.8-4.2L6 9l4.2-1.8L12 3z" />
+                </svg>
+              </button>
+              <button class="icon-chip" data-action="clear" aria-label="Clear">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M6.5 6.5 17.5 17.5M17.5 6.5 6.5 17.5" />
+                </svg>
+              </button>
             </div>
           </div>
           <div class="canvas-shell" data-canvas-shell>
@@ -54,15 +67,25 @@
             <div class="writer-layer" data-writer></div>
             <canvas class="canvas-layer" data-draw></canvas>
             <canvas class="canvas-layer" data-fx></canvas>
-            <div class="canvas-overlay" data-overlay>Ready</div>
+            <div class="canvas-overlay" data-overlay>Loading...</div>
           </div>
-          <div class="panel-actions">
-            <div class="score" data-score>Score: --</div>
-            <div class="action-buttons">
-              <button class="action-btn" data-action="replay">Replay</button>
-              <button class="action-btn" data-action="hint">Hint</button>
-              <button class="action-btn" data-action="clear">Clear</button>
-              <button class="action-btn secondary" data-action="next">Next</button>
+          <div class="panel-footer">
+            <div class="score-bar" data-score-bar>
+              <div class="score-fill" data-score></div>
+            </div>
+            <div class="meta-row">
+              <span class="chip chip-inline" data-strokes></span>
+              <div class="meta-right">
+                <span class="score-burst" data-score-burst aria-hidden="true"></span>
+                <span class="total-score" data-total-score>0</span>
+                <span class="meta-divider">•</span>
+                <span class="complete-count" aria-label="Completed">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M4.5 12.5 10 18l9.5-12" />
+                  </svg>
+                  <span data-complete-count>0</span>
+                </span>
+              </div>
             </div>
           </div>
         </div>
@@ -712,7 +735,7 @@
       this.drawCtx.clearRect(0, 0, this.drawCanvas.width, this.drawCanvas.height);
       this.fxCtx.clearRect(0, 0, this.fxCanvas.width, this.fxCanvas.height);
       if (this.onScore) {
-        this.onScore({ score: null, overall: null, strokeIndex: null });
+        this.onScore({ score: null, overall: null, strokeIndex: null, userStrokeCount: 0 });
       }
     }
 
@@ -770,7 +793,12 @@
           this.currentStroke = [];
           if (!this.medians.length) {
             if (this.onScore) {
-              this.onScore({ score: null, overall: null, strokeIndex: null });
+              this.onScore({
+                score: null,
+                overall: null,
+                strokeIndex: null,
+                userStrokeCount: this.userStrokes.length,
+              });
             }
             return;
           }
@@ -810,7 +838,12 @@
             overall = Math.round(scores.reduce((sum, s) => sum + s, 0) / scores.length);
           }
           if (this.onScore) {
-            this.onScore({ score, overall, strokeIndex: targetIndex });
+            this.onScore({
+              score,
+              overall,
+              strokeIndex: targetIndex,
+              userStrokeCount: this.userStrokes.length,
+            });
           }
           this.redrawUser();
         }
@@ -877,8 +910,11 @@
     const elPinyin = root.querySelector("[data-pinyin]");
     const elStrokes = root.querySelector("[data-strokes]");
     const elEtymology = root.querySelector("[data-etymology]");
-    const elEtyLang = root.querySelector("[data-ety-lang]");
     const elScore = root.querySelector("[data-score]");
+    const elScoreBar = root.querySelector("[data-score-bar]");
+    const elScoreBurst = root.querySelector("[data-score-burst]");
+    const elTotalScore = root.querySelector("[data-total-score]");
+    const elCompleteCount = root.querySelector("[data-complete-count]");
     const elOverlay = root.querySelector("[data-overlay]");
     const elExamples = root.querySelector("[data-examples]");
     const elExampleCount = root.querySelector("[data-example-count]");
@@ -895,14 +931,14 @@
 
     const state = {
       stackConfig: initialState.stackConfig || hostApi.getStackConfig(),
-      character: fallbackCharacter.char,
-      pinyin: fallbackCharacter.pinyin,
-      radical: fallbackCharacter.radical,
-      strokeCount: fallbackCharacter.stroke_count,
-      strokes: fallbackStrokes.strokes,
-      medians: fallbackStrokes.medians,
-      etymology: fallbackEtymology,
-      etyLang: "en",
+      character: "",
+      pinyin: "",
+      radical: "",
+      strokeCount: null,
+      strokes: [],
+      medians: [],
+      etymology: "",
+      etyLang: "",
       mode: "guided",
       guidedHints: true,
       onlyWithStrokes: true,
@@ -914,11 +950,14 @@
       noMoreExamples: false,
       packDbAvailable: true,
       fallbackIndex: 0,
+      totalScore: 0,
+      completedCount: 0,
     };
     const pinyinCache = new Map();
     let hintTimer = 0;
     let writerLayer = null;
     let hasInitialGuidedHint = false;
+    let completedThisChar = false;
     const STORAGE_KEY = "hanzi_atelier_state_v1";
 
     const readStoredState = () => {
@@ -942,6 +981,8 @@
             onlyWithStrokes: state.onlyWithStrokes,
             history: state.history,
             historyIndex: state.historyIndex,
+            totalScore: state.totalScore,
+            completedCount: state.completedCount,
           })
         );
       } catch {
@@ -963,6 +1004,12 @@
       }
       if (Number.isInteger(saved.historyIndex)) {
         state.historyIndex = Math.max(-1, Math.min(saved.historyIndex, state.history.length - 1));
+      }
+      if (Number.isFinite(saved.totalScore)) {
+        state.totalScore = Math.max(0, Math.round(saved.totalScore));
+      }
+      if (Number.isFinite(saved.completedCount)) {
+        state.completedCount = Math.max(0, Math.round(saved.completedCount));
       }
     };
 
@@ -996,6 +1043,15 @@
       updateNavButtons();
     };
 
+    const renderTotals = () => {
+      if (elTotalScore) {
+        elTotalScore.textContent = String(state.totalScore || 0);
+      }
+      if (elCompleteCount) {
+        elCompleteCount.textContent = String(state.completedCount || 0);
+      }
+    };
+
     const scheduleGuidedHint = (delayMs, options = {}) => {
       if (hintTimer) {
         clearTimeout(hintTimer);
@@ -1022,26 +1078,65 @@
     const syncGuidedToggle = () => {
       if (!guidedToggle) return;
       guidedToggle.classList.toggle("active", state.guidedHints);
-      guidedToggle.textContent = state.guidedHints ? "Guided" : "Unguided";
+      guidedToggle.setAttribute("aria-pressed", state.guidedHints ? "true" : "false");
+      guidedToggle.title = state.guidedHints ? "Guided on" : "Guided off";
     };
 
     applyStoredState();
     syncGuidedToggle();
     updateNavButtons();
+    renderTotals();
 
-    const engine = new DrawingEngine(canvasShell, ghostCanvas, drawCanvas, fxCanvas, ({ score, overall }) => {
+    const updateScoreBar = (value) => {
+      if (!elScoreBar || !elScore) return;
+      if (value === null || value === undefined) {
+        elScoreBar.classList.remove("is-active");
+        elScore.style.width = "0%";
+        return;
+      }
+      const clamped = Math.max(0, Math.min(Math.round(value), 100));
+      elScoreBar.classList.add("is-active");
+      elScore.style.width = `${clamped}%`;
+    };
+
+    const showScoreBurst = (points) => {
+      if (!elScoreBurst) return;
+      elScoreBurst.textContent = `+${points}`;
+      elScoreBurst.classList.remove("is-active");
+      void elScoreBurst.offsetWidth;
+      elScoreBurst.classList.add("is-active");
+    };
+
+    const engine = new DrawingEngine(
+      canvasShell,
+      ghostCanvas,
+      drawCanvas,
+      fxCanvas,
+      ({ score, overall, strokeIndex, userStrokeCount }) => {
+      const displayScore = overall !== null && overall !== undefined ? overall : score;
+      updateScoreBar(displayScore);
       if (overall !== null) {
-        elScore.textContent = `Score: ${overall}`;
         elOverlay.textContent = overall >= 85 ? "Crisp" : overall >= 70 ? "Nice" : "Try again";
-      } else if (score !== null) {
-        elScore.textContent = `Score: ${score}`;
-      } else {
-        elScore.textContent = "Score: --";
+      }
+      const strokeTotal = userStrokeCount || 0;
+      if (overall !== null && overall !== undefined && state.medians.length && !completedThisChar) {
+        if (strokeIndex === state.medians.length - 1 || strokeTotal >= state.medians.length) {
+          completedThisChar = true;
+          const points = state.strokeCount || state.medians.length;
+          if (points) {
+            state.totalScore += points;
+            showScoreBurst(points);
+          }
+          state.completedCount += 1;
+          renderTotals();
+          persistState();
+        }
       }
       if (state.mode === "guided") {
         scheduleGuidedHint(140);
       }
-    });
+    }
+    );
 
     writerLayer = writerLayerEl
       ? new HanziWriterLayer(writerLayerEl, () => {
@@ -1081,10 +1176,14 @@
       if (pinyin) {
         pinyinCache.set(state.character, pinyin);
       }
-      elPinyin.textContent = state.stackConfig.showRomanization ? pinyin : "";
-      elStrokes.textContent = state.strokeCount ? `${state.strokeCount} strokes` : "Strokes --";
-      elEtymology.textContent = state.etymology || "Etymology in progress.";
-      elEtyLang.textContent = state.etyLang ? state.etyLang.toUpperCase() : "--";
+      elStrokes.textContent = state.strokeCount ? String(state.strokeCount) : "--";
+      elEtymology.textContent = state.etymology || "";
+      if (elPinyin) {
+        const hasPinyin = state.stackConfig.showRomanization && pinyin;
+        elPinyin.textContent = hasPinyin ? pinyin : "";
+        elPinyin.disabled = !hasPinyin;
+        elPinyin.classList.toggle("is-empty", !hasPinyin);
+      }
     };
 
     const renderExamples = () => {
@@ -1250,6 +1349,7 @@
       }
 
       renderCharacter();
+      completedThisChar = false;
       engine.setCharacter({ medians: state.medians, strokes: state.strokes });
       state.examples = [];
       state.examplesOffset = 0;
@@ -1307,15 +1407,11 @@
     const swipeState = { active: false, startX: 0, startY: 0, startTime: 0, hasNavigated: false };
     const wheelState = {
       accumulator: 0,
-      lastTime: 0,
       hasNavigated: false,
     };
-    const SCROLL_THRESHOLD = 100;
-    const GESTURE_TIMEOUT = 50;
-    const WHEEL_IDLE_MS = 180;
-    const WHEEL_IDLE_POLL_MS = 80;
-    let wheelLastAt = 0;
-    let navLock = false;
+    const SCROLL_THRESHOLD = 80;
+    const WHEEL_END_DELAY = 360;
+    let wheelEndTimer = 0;
     const NAV_DEBUG =
       typeof window !== "undefined" &&
       window.localStorage.getItem("hanzi_nav_debug") === "1";
@@ -1324,7 +1420,7 @@
       // eslint-disable-next-line no-console
       console.log("[hanzi][nav]", ...args);
     };
-    const SWIPE_DISTANCE = 70;
+    const SWIPE_DISTANCE = 55;
     const SWIPE_HORIZONTAL_RATIO = 1.3;
     const MAX_SWIPE_DURATION = 500;
     const isSwipeTarget = (event) => {
@@ -1366,44 +1462,36 @@
       swipeState.active = false;
       swipeState.hasNavigated = false;
     };
-    const releaseNavLockWhenIdle = () => {
-      if (!navLock) return;
-      const idleFor = Date.now() - wheelLastAt;
-      if (idleFor >= WHEEL_IDLE_MS) {
-        navLock = false;
-        wheelState.hasNavigated = false;
-        wheelState.accumulator = 0;
-        return;
+    const resetWheelGesture = () => {
+      wheelState.hasNavigated = false;
+      wheelState.accumulator = 0;
+    };
+    const scheduleWheelEnd = () => {
+      if (wheelEndTimer) {
+        window.clearTimeout(wheelEndTimer);
       }
-      window.setTimeout(releaseNavLockWhenIdle, WHEEL_IDLE_POLL_MS);
+      wheelEndTimer = window.setTimeout(() => {
+        resetWheelGesture();
+        logNav("wheel-end");
+      }, WHEEL_END_DELAY);
     };
     const onWheelSwipe = (event) => {
       if (event.ctrlKey) return;
-      wheelLastAt = Date.now();
-      if (navLock) {
-        logNav("wheel-ignored:locked", { deltaX: event.deltaX });
+      scheduleWheelEnd();
+      if (wheelState.hasNavigated) {
+        logNav("wheel-ignored:consumed", { deltaX: event.deltaX });
         return;
       }
       if (!isSwipeTarget(event)) return;
       const absX = Math.abs(event.deltaX);
       const absY = Math.abs(event.deltaY);
       if (absX < 1 || absX < absY * SWIPE_HORIZONTAL_RATIO) return;
-      const now = Date.now();
-      const timeSinceLast = now - wheelState.lastTime;
-      if (timeSinceLast > GESTURE_TIMEOUT) {
-        wheelState.accumulator = 0;
-        wheelState.hasNavigated = false;
-      }
-      wheelState.lastTime = now;
-      if (wheelState.hasNavigated) return;
       if (Math.abs(event.deltaX) < 1) {
         return;
       }
       wheelState.accumulator += event.deltaX;
       if (Math.abs(wheelState.accumulator) >= SCROLL_THRESHOLD) {
         wheelState.hasNavigated = true;
-        navLock = true;
-        releaseNavLockWhenIdle();
         if (wheelState.accumulator > 0) {
           logNav("wheel-next", { acc: wheelState.accumulator });
           goNext();
@@ -1417,19 +1505,15 @@
 
     const goPrev = async () => {
       if (state.historyIndex <= 0) return;
-      navLock = true;
       wheelState.accumulator = 0;
       wheelState.hasNavigated = true;
-      releaseNavLockWhenIdle();
       logNav("prev");
       await goToHistoryIndex(state.historyIndex - 1);
     };
 
     const goNext = async () => {
-      navLock = true;
       wheelState.accumulator = 0;
       wheelState.hasNavigated = true;
-      releaseNavLockWhenIdle();
       logNav("next");
       if (state.historyIndex >= 0 && state.historyIndex < state.history.length - 1) {
         await goToHistoryIndex(state.historyIndex + 1);
@@ -1525,7 +1609,6 @@
       });
     }
 
-    renderCharacter();
     const initialChar = state.historyIndex >= 0 ? state.history[state.historyIndex] : null;
     if (initialChar) {
       loadCharacter({ targetChar: initialChar, push: false });
@@ -1545,7 +1628,11 @@
           clearTimeout(hintTimer);
           hintTimer = 0;
         }
-        navLock = false;
+        resetWheelGesture();
+        if (wheelEndTimer) {
+          clearTimeout(wheelEndTimer);
+          wheelEndTimer = 0;
+        }
         elExamples.removeEventListener("scroll", onScroll);
         root.removeEventListener("pointerdown", onSwipeStart);
         root.removeEventListener("pointermove", onSwipeMove);
