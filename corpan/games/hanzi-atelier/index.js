@@ -91,8 +91,7 @@
         </div>
         <div class="panel examples-panel">
           <div class="panel-header">
-            <div class="panel-title">Examples</div>
-            <div class="panel-subtitle" data-example-count>0 loaded</div>
+            <div class="panel-count" data-example-count aria-label="Total phrases">—</div>
           </div>
           <div class="examples-list" data-examples></div>
           <div class="examples-footer" data-examples-footer>Ready</div>
@@ -1013,6 +1012,7 @@
       historyIndex: -1,
       examples: [],
       examplesOffset: 0,
+      examplesTotal: null,
       loadingExamples: false,
       noMoreExamples: false,
       packDbAvailable: true,
@@ -1354,7 +1354,7 @@
         fragment.appendChild(card);
       });
       elExamples.appendChild(fragment);
-      elExampleCount.textContent = `${state.examples.length} loaded`;
+      updateExampleCount();
     };
 
     const queryPackDb = async (sql, params = [], options = {}) => {
@@ -1472,7 +1472,10 @@
       engine.setCharacter({ medians: state.medians, strokes: state.strokes });
       state.examples = [];
       state.examplesOffset = 0;
+      state.examplesTotal = null;
       state.noMoreExamples = false;
+      updateExampleCount();
+      await loadExamplesTotal();
       await loadExamples(true);
       if (push) {
         pushHistory(state.character);
@@ -1514,6 +1517,39 @@
       elExamplesFooter.textContent = batch && batch.length ? "Scroll for more" : "No more examples";
       state.loadingExamples = false;
     };
+
+    function updateExampleCount() {
+      if (!elExampleCount) return;
+      if (typeof state.examplesTotal === "number") {
+        const loaded = state.examples.length.toLocaleString();
+        const total = state.examplesTotal.toLocaleString();
+        elExampleCount.textContent = `${loaded} / ${total}`;
+      } else if (state.examples.length) {
+        elExampleCount.textContent = state.examples.length.toLocaleString();
+      } else {
+        elExampleCount.textContent = "0";
+      }
+    }
+
+    async function loadExamplesTotal() {
+      if (!hostApi.searchEntriesByTextCount) {
+        state.examplesTotal = null;
+        updateExampleCount();
+        return;
+      }
+      const langCodes = unique([...(state.stackConfig.languages || []), "zh-Hans", "zh-Hant"]);
+      try {
+        const total = await hostApi.searchEntriesByTextCount({
+          text: state.character,
+          languageCodes: langCodes,
+        });
+        state.examplesTotal = Number.isFinite(total) ? total : null;
+      } catch (err) {
+        console.warn("[hanzi] example count failed", err);
+        state.examplesTotal = null;
+      }
+      updateExampleCount();
+    }
 
     const goToHistoryIndex = async (index) => {
       if (index < 0 || index >= state.history.length) return;
@@ -1560,6 +1596,7 @@
       if (!(target instanceof Element)) return false;
       if (target.closest("button, a, input, textarea")) return false;
       if (target.closest(".canvas-shell")) return false;
+      if (target.closest(".examples-panel")) return false;
       if (target.closest(".examples-list")) return false;
       return true;
     };
@@ -1570,6 +1607,7 @@
     };
     const onSwipeStart = (event) => {
       if (event.pointerType === "touch") return;
+      if (hasActiveSelection()) return;
       if (!isSwipeTarget(event)) return;
       swipeState.active = true;
       swipeState.startX = event.clientX;
@@ -1684,6 +1722,7 @@
     };
     const onWheelSwipe = (event) => {
       if (event.ctrlKey) return;
+      if (hasActiveSelection()) return;
       scheduleWheelEnd();
       if (wheelState.hasNavigated) {
         logNav("wheel-ignored:consumed", { deltaX: event.deltaX });

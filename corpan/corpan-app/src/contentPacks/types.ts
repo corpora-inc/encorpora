@@ -49,6 +49,10 @@ export type HostApi = {
     limit?: number
     offset?: number
   }) => Promise<EntryOut[]>
+  searchEntriesByTextCount?: (options: {
+    text: string
+    languageCodes?: string[]
+  }) => Promise<number>
   queryPackDb?: (query: PackDbQuery) => Promise<PackDbQueryResult>
   isMock?: boolean
 }

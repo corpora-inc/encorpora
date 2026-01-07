@@ -215,6 +215,12 @@ export const createHostApi = (packId?: string): HostApi => {
         offset,
       })
     },
+    searchEntriesByTextCount: async ({ text, languageCodes }) => {
+      return invoke("search_entries_by_translation_text_count", {
+        text,
+        languageCodes,
+      })
+    },
     queryPackDb: async (query) => {
       const resolvedPackId = resolvePackId(query)
       if (!resolvedPackId) {

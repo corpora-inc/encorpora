@@ -524,6 +524,51 @@ fn search_entries_by_translation_text(
     Ok(results)
 }
 
+/// Count entries whose translation text contains the requested substring.
+#[command]
+fn search_entries_by_translation_text_count(
+    state: State<'_, db::DbState>,
+    text: String,
+    language_codes: Option<Vec<String>>,
+) -> Result<i64, String> {
+    let needle = text.trim();
+    if needle.is_empty() {
+        return Ok(0);
+    }
+    let search_langs = match &language_codes {
+        Some(codes) if !codes.is_empty() => codes.clone(),
+        _ => vec!["zh-Hans".to_string(), "zh-Hant".to_string()],
+    };
+
+    let conn = state.conn.lock().map_err(|_| "DB lock poisoned".to_string())?;
+
+    let lang_placeholders = vec!["?"; search_langs.len()].join(",");
+    let sql = format!(
+        r#"SELECT COUNT(DISTINCT t.entry_id)
+         FROM cor_translation t
+         JOIN cor_language l ON l.id = t.language_id
+         WHERE l.code IN ({lang_placeholders})
+           AND t.text LIKE ? ESCAPE '\'"#
+    );
+
+    let mut params: Vec<Box<dyn ToSql>> = vec![];
+    for lang in &search_langs {
+        params.push(Box::new(lang.clone()));
+    }
+    let pattern = format!("%{}%", escape_like(needle));
+    params.push(Box::new(pattern));
+
+    let total: i64 = conn
+        .query_row(
+            &sql,
+            params_from_iter(params.iter().map(|p| &**p)),
+            |row| row.get(0),
+        )
+        .map_err(|e| e.to_string())?;
+
+    Ok(total)
+}
+
 #[command]
 fn content_packs_query_db(
     app: AppHandle,
@@ -690,6 +735,7 @@ pub fn run() {
             get_random_entries_with_translations,
             get_entry_by_id_with_translations,
             search_entries_by_translation_text,
+            search_entries_by_translation_text_count,
             content_packs_query_db,
             content_packs_install_from_url,
             content_packs_fetch_text,

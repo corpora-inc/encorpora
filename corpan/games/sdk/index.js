@@ -100,6 +100,10 @@ export const createMockHostApi = (options = {}) => {
         entry_id: sample.entry_id + offset + i,
       }));
     },
+    searchEntriesByTextCount: async ({ text } = {}) => {
+      if (!text) return 0;
+      return 128;
+    },
     queryPackDb: async () => ({
       columns: [],
       rows: [],
