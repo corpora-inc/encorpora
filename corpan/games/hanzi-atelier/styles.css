@@ -765,12 +765,30 @@
   border: none;
   background: rgba(11, 107, 111, 0.12);
   color: var(--accent);
-  padding: 8px 12px;
+  padding: 8px;
+  width: 36px;
+  height: 36px;
   border-radius: 10px;
-  font-size: 12px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
+  transition: transform 120ms ease, box-shadow 120ms ease;
+}
+
+.speak-btn svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.speak-btn:disabled {
+  opacity: 0.4;
+  cursor: default;
 }
 
 .examples-footer {

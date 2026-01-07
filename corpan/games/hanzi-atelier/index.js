@@ -1319,7 +1319,14 @@
         romanization.className = "example-romanization";
         const speak = document.createElement("button");
         speak.className = "speak-btn";
-        speak.textContent = "Speak";
+        speak.setAttribute("aria-label", "Speak");
+        speak.innerHTML = `
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path
+              d="M4 10v4h4l5 4V6L8 10H4zM16.5 8.5a4.5 4.5 0 0 1 0 7M19 6a8 8 0 0 1 0 12"
+            />
+          </svg>
+        `;
 
         const zh = entry.translations.find((t) => t.language_code.startsWith("zh-"));
         const primary = zh || entry.translations[0];
@@ -1328,6 +1335,7 @@
           state.stackConfig.showRomanization && primary && primary.romanization
             ? primary.romanization
             : "";
+        speak.disabled = !primary;
         speak.addEventListener("click", () => {
           if (!primary) return;
           hostApi.speak(primary.language_code, primary.text);
