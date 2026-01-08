@@ -65,7 +65,12 @@ jobs:
       - name: Package Hanzi Atelier as ZIP
         run: |
           cd corpan/packs/hanzipan
-          zip -r hanzipan.zip manifest.json index.js styles.css hanziwriter.min.js HANZIWRITER_LICENSE.txt data/
+          mkdir -p dist
+          cat hanziwriter.min.js > dist/app.js
+          printf '\n;' >> dist/app.js
+          cat index.js >> dist/app.js
+          cp styles.css dist/app.css
+          zip -r hanzipan.zip manifest.json dist/ HANZIWRITER_LICENSE.txt data/
           cd ../../..
 
       - name: Copy Hover Runner into io/out
@@ -79,10 +84,7 @@ jobs:
         run: |
           mkdir -p "web/io/out/corpan/packs/hanzipan"
           cp corpan/packs/hanzipan/manifest.json "web/io/out/corpan/packs/hanzipan/"
-          cp corpan/packs/hanzipan/index.js "web/io/out/corpan/packs/hanzipan/"
-          cp corpan/packs/hanzipan/styles.css "web/io/out/corpan/packs/hanzipan/"
-          cp corpan/packs/hanzipan/hanziwriter.min.js "web/io/out/corpan/packs/hanzipan/"
-          cp corpan/packs/hanzipan/HANZIWRITER_LICENSE.txt "web/io/out/corpan/packs/hanzipan/"
+          cp -R corpan/packs/hanzipan/dist "web/io/out/corpan/packs/hanzipan/"
           cp -R corpan/packs/hanzipan/data "web/io/out/corpan/packs/hanzipan/"
           cp corpan/packs/hanzipan/hanzipan.zip "web/io/out/corpan/packs/hanzipan.zip"
 

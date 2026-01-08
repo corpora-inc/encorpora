@@ -21,11 +21,11 @@ const PACK_CONFIGS = [
   },
   {
     name: 'hanzipan',
-    distDir: null,
+    distDir: 'dist',
     files: ['manifest.json', 'index.js', 'styles.css', 'hanziwriter.min.js', 'HANZIWRITER_LICENSE.txt'],
     dirs: ['data'],
     zipName: 'hanzipan.zip',
-    zipEntries: ['manifest.json', 'index.js', 'styles.css', 'hanziwriter.min.js', 'HANZIWRITER_LICENSE.txt', 'data/']
+    zipEntries: ['manifest.json', 'dist/', 'HANZIWRITER_LICENSE.txt', 'data/']
   }
 ];
 
@@ -43,6 +43,24 @@ function bumpDevRevision(manifestPath) {
   }
 }
 
+function buildHanzipanDist(srcRoot) {
+  const distDir = path.join(srcRoot, 'dist');
+  const writerPath = path.join(srcRoot, 'hanziwriter.min.js');
+  const mainPath = path.join(srcRoot, 'index.js');
+  const stylesPath = path.join(srcRoot, 'styles.css');
+
+  if (!fs.existsSync(writerPath) || !fs.existsSync(mainPath) || !fs.existsSync(stylesPath)) {
+    console.warn('[watch-packs] hanzipan missing source files, skipping dist build');
+    return;
+  }
+
+  fs.mkdirSync(distDir, { recursive: true });
+  const writer = fs.readFileSync(writerPath, 'utf8');
+  const main = fs.readFileSync(mainPath, 'utf8');
+  fs.writeFileSync(path.join(distDir, 'app.js'), `${writer}\n;${main}`, 'utf8');
+  fs.copyFileSync(stylesPath, path.join(distDir, 'app.css'));
+}
+
 function copyPack(packName) {
   const config = PACK_CONFIG_MAP.get(packName);
   if (!config) {
@@ -52,6 +70,9 @@ function copyPack(packName) {
 
   const destDir = path.join(OUTPUT_DIR, packName);
   const srcRoot = path.join(PACKS_DIR, packName);
+  if (packName === 'hanzipan') {
+    buildHanzipanDist(srcRoot);
+  }
   const srcDir = config.distDir ? path.join(srcRoot, config.distDir) : null;
 
   if (srcDir && !fs.existsSync(srcDir)) {

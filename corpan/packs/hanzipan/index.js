@@ -441,23 +441,37 @@
       return window.HanziWriter;
     };
     hanziWriterPromise = new Promise((resolve, reject) => {
-      const script = document.createElement("script");
-      script.src = scriptUrl;
-      script.async = true;
-      script.onload = () => resolve(window.HanziWriter);
-      script.onerror = async () => {
-        try {
-          const inline = await loadInlineViaTauri();
-          if (inline) {
-            resolve(inline);
-            return;
-          }
-        } catch {
-          // fall through to reject
-        }
-        reject(new Error("Failed to load HanziWriter"));
+      const loadViaScript = () => {
+        const script = document.createElement("script");
+        script.src = scriptUrl;
+        script.async = true;
+        script.onload = () => resolve(window.HanziWriter);
+        script.onerror = () => {
+          reject(new Error("Failed to load HanziWriter"));
+        };
+        document.head.appendChild(script);
       };
-      document.head.appendChild(script);
+
+      const prefersInline =
+        baseUrl.startsWith("corpan-pack://") ||
+        baseUrl.includes("corpan-pack.localhost");
+
+      if (prefersInline) {
+        loadInlineViaTauri()
+          .then((inline) => {
+            if (inline) {
+              resolve(inline);
+              return;
+            }
+            loadViaScript();
+          })
+          .catch(() => {
+            loadViaScript();
+          });
+        return;
+      }
+
+      loadViaScript();
     });
     return hanziWriterPromise;
   };
@@ -965,7 +979,7 @@
     root.className = "hanzi-root";
     root.innerHTML = template;
     container.appendChild(root);
-    if (typeof navigator !== "undefined" && /Android/i.test(navigator.userAgent || "")) {
+    if (typeof navigator !== "undefined" && /Android|iPhone|iPad|iPod/i.test(navigator.userAgent || "")) {
       root.style.paddingTop = "25px";
       root.style.setProperty("--safe-top", "25px");
     } else {

@@ -5,7 +5,7 @@ Mandarin character learning pack for Corpan.
 ## Contents
 
 - `manifest.json` - pack manifest
-- `index.js` / `styles.css` - UI + handwriting surface
+- `dist/app.js` / `dist/app.css` - bundled UI + handwriting surface
 - `data/hanzi.sqlite3` - pack-owned stroke + etymology DB
 
 ## Build the pack DB

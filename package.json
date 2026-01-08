@@ -15,10 +15,10 @@
     "build:packs": "cd corpan/packs/hover-runner && npm run build && cd ../../.. && npm run package:packs && npm run copy:packs",
     "package:packs": "npm run package:hover-runner && npm run package:hanzipan",
     "package:hover-runner": "cd corpan/packs/hover-runner && zip -r hover-runner.zip manifest.json dist/",
-    "package:hanzipan": "cd corpan/packs/hanzipan && zip -r hanzipan.zip manifest.json index.js styles.css hanziwriter.min.js HANZIWRITER_LICENSE.txt data/",
+    "package:hanzipan": "cd corpan/packs/hanzipan && mkdir -p dist && cat hanziwriter.min.js > dist/app.js && printf '\\n;' >> dist/app.js && cat index.js >> dist/app.js && cp styles.css dist/app.css && zip -r hanzipan.zip manifest.json dist/ HANZIWRITER_LICENSE.txt data/",
     "copy:packs": "npm run copy:hover-runner && npm run copy:hanzipan",
     "copy:hover-runner": "mkdir -p web/io/out/corpan/packs/hover-runner && cp corpan/packs/hover-runner/manifest.json web/io/out/corpan/packs/hover-runner/ && cp -R corpan/packs/hover-runner/dist web/io/out/corpan/packs/hover-runner/ && cp corpan/packs/hover-runner/hover-runner.zip web/io/out/corpan/packs/",
-    "copy:hanzipan": "mkdir -p web/io/out/corpan/packs/hanzipan && cp corpan/packs/hanzipan/manifest.json web/io/out/corpan/packs/hanzipan/ && cp corpan/packs/hanzipan/index.js web/io/out/corpan/packs/hanzipan/ && cp corpan/packs/hanzipan/styles.css web/io/out/corpan/packs/hanzipan/ && cp corpan/packs/hanzipan/hanziwriter.min.js web/io/out/corpan/packs/hanzipan/ && cp corpan/packs/hanzipan/HANZIWRITER_LICENSE.txt web/io/out/corpan/packs/hanzipan/ && cp -R corpan/packs/hanzipan/data web/io/out/corpan/packs/hanzipan/ && cp corpan/packs/hanzipan/hanzipan.zip web/io/out/corpan/packs/",
+    "copy:hanzipan": "mkdir -p web/io/out/corpan/packs/hanzipan && cp corpan/packs/hanzipan/manifest.json web/io/out/corpan/packs/hanzipan/ && cp -R corpan/packs/hanzipan/dist web/io/out/corpan/packs/hanzipan/ && cp -R corpan/packs/hanzipan/data web/io/out/corpan/packs/hanzipan/ && cp corpan/packs/hanzipan/hanzipan.zip web/io/out/corpan/packs/",
     "serve": "cd web/io/out && python3 -m http.server 8000",
     "clean": "rm -rf web/io/out web/io/.next .local-pages"
   },
