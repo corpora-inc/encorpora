@@ -1,7 +1,7 @@
 {
   "name": "@corpan/sdk",
   "version": "0.1.0",
-  "description": "Corpan game SDK prototype",
+  "description": "Corpan pack SDK prototype",
   "type": "module",
   "main": "./index.js",
   "types": "./index.d.ts",

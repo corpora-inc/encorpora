@@ -10,7 +10,7 @@ type ContentPackHostProps = {
   manifestUrl?: string
 }
 
-const DEV_RELOAD_INTERVAL_MS = 10000
+const DEV_RELOAD_INTERVAL_MS = 2000  // Poll every 2s for faster dev iteration
 
 const loadScript = async (
   src: string,
@@ -224,7 +224,7 @@ export default function ContentPackHost({
     let isLoading = false
 
     const manifestRequestUrl =
-      manifestUrl ?? `/games/${id}/manifest.json`
+      manifestUrl ?? `/packs/${id}/manifest.json`
     const resolvedManifestUrl = new URL(
       manifestRequestUrl,
       window.location.href

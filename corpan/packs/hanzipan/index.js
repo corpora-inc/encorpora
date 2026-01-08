@@ -1,5 +1,5 @@
 (() => {
-  const GAME_ID = "hanzi_atelier";
+  const GAME_ID = "hanzipan";
 
   const template = `
     <div class="hanzi-app">
@@ -1027,7 +1027,7 @@
     let completedThisChar = false;
     let scoreBurstTimer = 0;
     let scoreAnimFrame = 0;
-    const STORAGE_KEY = "hanzi_atelier_state_v1";
+    const STORAGE_KEY = "hanzipan_state_v1";
 
     const readStoredState = () => {
       try {

@@ -19,6 +19,7 @@ import {
 import corpanLogoUrl from "../assets/models/corpan_logo.glb"
 import type { HoverVariant } from "../core/types"
 import { createEmissivePbr, tuneLogoMaterial, scaleColor } from "../core/utils"
+import { AVATAR } from "../core/visualConfig"
 
 export const createHoverboard = (scene: Scene) => {
   const root = new TransformNode("hover-root", scene)
@@ -50,13 +51,13 @@ export const createHoverboard = (scene: Scene) => {
   }
 
   const corpan = createVariant("corpan", "Corpán Signal", (pivot) => {
-    const clay = new Color3(0.835, 0.416, 0.102)
+    const clay = new Color3(AVATAR.baseColor.r, AVATAR.baseColor.g, AVATAR.baseColor.b)
 
     const boardMaterial = createEmissivePbr(
       "corpan-board-mat",
       scene,
       clay,
-      scaleColor(clay, 0.35),
+      scaleColor(clay, AVATAR.boardEmissiveScale),
       0.6,
       0.35
     )
@@ -66,26 +67,26 @@ export const createHoverboard = (scene: Scene) => {
       "corpan-ear-mat",
       scene,
       clay,
-      scaleColor(clay, 0.4),
+      scaleColor(clay, AVATAR.earEmissiveScale),
       0.5,
       0.4
     )
     tuneLogoMaterial(earMaterial, 1.1)
 
     const glowMaterial = new StandardMaterial("corpan-glow-mat", scene)
-    glowMaterial.emissiveColor = scaleColor(clay, 1.05)
+    glowMaterial.emissiveColor = scaleColor(clay, AVATAR.ringEmissiveScale * 1.05)
     glowMaterial.disableLighting = true
-    glowMaterial.alpha = 0.5
+    glowMaterial.alpha = AVATAR.glowAlpha
 
     const accentMaterial = new StandardMaterial("corpan-accent-mat", scene)
-    accentMaterial.emissiveColor = scaleColor(clay, 0.9)
+    accentMaterial.emissiveColor = scaleColor(clay, AVATAR.accentEmissiveScale)
     accentMaterial.disableLighting = true
-    accentMaterial.alpha = 0.6
+    accentMaterial.alpha = AVATAR.accentAlpha
 
     const ringMaterial = new StandardMaterial("corpan-ring-mat", scene)
-    ringMaterial.emissiveColor = scaleColor(clay, 0.85)
+    ringMaterial.emissiveColor = scaleColor(clay, AVATAR.ringEmissiveScale)
     ringMaterial.disableLighting = true
-    ringMaterial.alpha = 0.65
+    ringMaterial.alpha = AVATAR.ringAlpha
 
     const container = new TransformNode("corpan-logo-container", scene)
     container.parent = pivot
@@ -107,7 +108,7 @@ export const createHoverboard = (scene: Scene) => {
     container.parent = board
     container.position.y = 0.06
 
-    const outlineColor = scaleColor(clay, 1.1)
+    const outlineColor = scaleColor(clay, AVATAR.outlineColorScale)
     const applyLogoMesh = (
       mesh: Mesh,
       material: PBRMaterial,
@@ -123,7 +124,7 @@ export const createHoverboard = (scene: Scene) => {
       mesh.renderOutline = withOutline
       if (withOutline) {
         mesh.outlineColor = outlineColor
-        mesh.outlineWidth = 0.025
+        mesh.outlineWidth = AVATAR.outlineWidth
       }
 
       if (withGlow) {
@@ -224,9 +225,9 @@ export const createHoverboard = (scene: Scene) => {
       scene
     )
     logoLight.parent = board
-    logoLight.diffuse = new Color3(1, 0.72, 0.4)
-    logoLight.intensity = 0.85
-    logoLight.range = 6
+    logoLight.diffuse = new Color3(AVATAR.light.color.r, AVATAR.light.color.g, AVATAR.light.color.b)
+    logoLight.intensity = AVATAR.light.intensity
+    logoLight.range = AVATAR.light.range
 
     corpanRig = {
       container,
@@ -836,7 +837,7 @@ export const createHoverboard = (scene: Scene) => {
       if (!corpanRig || activeVariant.id !== "corpan") {
         return
       }
-      const pulse = 0.65 + Math.sin(time * 2.2) * 0.2
+      const pulse = AVATAR.pulseMin + Math.sin(time * 2.2) * AVATAR.pulseMax
       const glow = scaleColor(corpanRig.baseGlow, 0.85 + pulse * 0.45)
       const accent = scaleColor(corpanRig.baseAccent, 0.9 + pulse * 0.6)
       corpanRig.glowMats[0].emissiveColor.copyFrom(glow)
@@ -849,7 +850,7 @@ export const createHoverboard = (scene: Scene) => {
       corpanRig.rings[2].rotation.z = time * 0.28
       corpanRig.container.rotation.y = Math.sin(time * 0.65) * 0.08
       corpanRig.container.rotation.x = Math.sin(time * 0.8) * 0.05
-      corpanRig.light.intensity = 0.75 + pulse * 0.45
+      corpanRig.light.intensity = AVATAR.light.intensity * (0.75 + pulse * 0.35)
       if (camera) {
         const forward = camera.position.subtract(
           corpanRig.earPivot.getAbsolutePosition()

@@ -1,4 +1,4 @@
-# Hanzi Atelier
+# Hanzipan
 
 Mandarin character learning pack for Corpan.
 
@@ -19,5 +19,5 @@ python3 encorpora/corpan/dja/hanzi_pack/build_hanzi_pack.py
 The dev server serves this pack at:
 
 ```
-/games/hanzi-atelier/manifest.json
+/packs/hanzipan/manifest.json
 ```

@@ -23,9 +23,9 @@ npm install
 cd "$REPO_ROOT"
 echo ""
 
-# hover-runner game
-echo "🎮 Installing hover-runner dependencies..."
-cd "$REPO_ROOT/corpan/games/hover-runner"
+# hover-runner pack
+echo "🎮 Installing hover-runner pack dependencies..."
+cd "$REPO_ROOT/corpan/packs/hover-runner"
 npm install --legacy-peer-deps
 cd "$REPO_ROOT"
 echo ""

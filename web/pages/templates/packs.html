@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Corpán Games</title>
+    <title>Corpán Packs</title>
     <style>
         * {
             margin: 0;
@@ -72,7 +72,7 @@
             font-weight: 400;
         }
 
-        .games-grid {
+        .packs-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
             gap: 1.5rem;
@@ -240,7 +240,7 @@
                 font-size: 2rem;
             }
 
-            .games-grid {
+            .packs-grid {
                 grid-template-columns: 1fr;
             }
         }
@@ -256,61 +256,62 @@
             <div class="logo-container">
                 <img src="{{BASE_PATH}}assets/logo-512.png" alt="Corpán" class="logo">
             </div>
-            <h1>Corpán Games</h1>
-            <p class="tagline">Interactive language learning games</p>
+            <h1>Corpán Packs</h1>
+            <p class="tagline">Interactive language learning packs</p>
         </header>
 
         <main>
-            <div class="games-grid" id="games-container">
-                <!-- Games will be inserted here by JavaScript -->
+            <div class="packs-grid" id="packs-container">
+                <!-- Packs will be inserted here by JavaScript -->
             </div>
         </main>
 
         <footer>
             <p>
-                <a href="https://github.com/corpora-inc/encorpora/tree/main/corpan/games" target="_blank" rel="noopener">
-                    Games on GitHub
+                <a href="https://github.com/corpora-inc/encorpora/tree/main/corpan/packs" target="_blank" rel="noopener">
+                    Packs on GitHub
                 </a>
                 ·
-                <a href="https://github.com/corpora-inc/encorpora/tree/main/corpan/games/sdk" target="_blank" rel="noopener">
-                    Game SDK
+                <a href="https://github.com/corpora-inc/encorpora/tree/main/corpan/packs/sdk" target="_blank" rel="noopener">
+                    Pack SDK
                 </a>
             </p>
         </footer>
     </div>
 
     <script>
-        const games = {{GAMES_DATA}};
-        const container = document.getElementById('games-container');
+        const packs = {{PACKS_DATA}};
+        const container = document.getElementById('packs-container');
 
-        if (games.length === 0) {
+        if (packs.length === 0) {
             container.innerHTML = `
                 <div class="empty-state">
-                    <p>No games available yet. Check back soon!</p>
+                    <p>No packs available yet. Check back soon!</p>
                 </div>
             `;
         } else {
-            games.forEach(game => {
+            packs.forEach(pack => {
                 const card = document.createElement('div');
                 card.className = 'game-card';
 
-                const statusClass = 'status-' + game.status;
-                const avatarUrl = game.avatarUrl || '';
+                const statusClass = 'status-' + pack.status;
+                const avatarUrl = pack.avatarUrl || '';
 
                 let imageHtml = '';
                 if (avatarUrl) {
-                    imageHtml = `<img src="${avatarUrl}" alt="${game.name}" class="game-image">`;
+                    imageHtml = `<img src="${avatarUrl}" alt="${pack.name}" class="game-image">`;
                 }
 
                 let actionsHtml = '<div class="game-actions">';
-                if (game.landingUrl) {
-                    actionsHtml += `<a href="${game.landingUrl}" class="game-button button-primary">View Details</a>`;
+                if (pack.landingUrl) {
+                    actionsHtml += `<a href="${pack.landingUrl}" class="game-button button-primary">View Details</a>`;
                 }
-                if (game.manifestUrl) {
-                    actionsHtml += `<a href="${game.manifestUrl}" class="game-button button-secondary">Manifest</a>`;
+                const downloadUrl = pack.zipUrl || pack.manifestUrl;
+                if (downloadUrl) {
+                    actionsHtml += `<a href="${downloadUrl}" class="game-button button-secondary">Download Pack</a>`;
                 }
-                if (game.github) {
-                    actionsHtml += `<a href="${game.github}" target="_blank" rel="noopener" class="game-button button-secondary">GitHub ↗</a>`;
+                if (pack.github) {
+                    actionsHtml += `<a href="${pack.github}" target="_blank" rel="noopener" class="game-button button-secondary">GitHub ↗</a>`;
                 }
                 actionsHtml += '</div>';
 
@@ -319,12 +320,12 @@
                     <div class="game-content">
                         <div class="game-header">
                             <div>
-                                <div class="game-name">${game.name}</div>
-                                <div class="game-version">v${game.version}</div>
+                                <div class="game-name">${pack.name}</div>
+                                <div class="game-version">v${pack.version}</div>
                             </div>
                         </div>
-                        <div class="game-description">${game.description}</div>
-                        <span class="game-status ${statusClass}">${game.status}</span>
+                        <div class="game-description">${pack.description}</div>
+                        <span class="game-status ${statusClass}">${pack.status}</span>
                         ${actionsHtml}
                     </div>
                 `;

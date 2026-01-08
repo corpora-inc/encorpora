@@ -29,7 +29,7 @@ Content packs are web bundles loaded at runtime via a manifest URL. The host inj
 
 - Game bundles must register themselves on `window.CorpanGames[id]` with a `mount(container, hostApi, initialState)` function.
 - The host resolves asset URLs relative to the manifest URL (or `baseUrl` if provided).
-- Packs can be loaded from `/games/<id>/manifest.json` (dev) or any remote manifest URL.
+- Packs can be loaded from `/packs/<id>/manifest.json` (dev) or any remote manifest URL.
 
 ## Host API additions
 

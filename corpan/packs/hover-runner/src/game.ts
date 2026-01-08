@@ -1,6 +1,7 @@
 import {
   Color3,
   Color4,
+  DefaultRenderingPipeline,
   DirectionalLight,
   DynamicTexture,
   Engine,
@@ -13,6 +14,7 @@ import {
   Scene,
   SceneInstrumentation,
   ShadowGenerator,
+  SSAO2RenderingPipeline,
   StandardMaterial,
   TransformNode,
   UniversalCamera,
@@ -34,6 +36,17 @@ import {
   LANE_ROWS,
   LANE_COLS,
 } from "./core/constants"
+import {
+  SCENE,
+  CAMERA,
+  LIGHTING,
+  GLOW,
+  SHADOWS,
+  SSAO,
+  POST_PROCESSING,
+  SKIN_PRESETS,
+  PYRAMIDS,
+} from "./core/visualConfig"
 import type {
   GameState,
   RoundState,
@@ -71,7 +84,7 @@ import { createHoverboard } from "./rendering/hoverboard"
 import { createPhraseSurfaceEffects } from "./rendering/phraseSurfaceEffects"
 
 // Systems
-import { createSuccessParticles, createFailParticles, createScreenShake, clearAllParticleTimeouts } from "./systems/particles"
+import { createSuccessParticles, createFailParticles, createScreenShake, clearAllParticleTimeouts, createAmbientParticles, createStarfieldParticles, createEnergyFieldParticles, createSpeedLines } from "./systems/particles"
 import { createScoreAnimator } from "./ui/scoreAnimation"
 import { initInput } from "./systems/input"
 
@@ -715,55 +728,124 @@ export const createHoverRunner = (
   )
 
   const scene = new Scene(engine)
-  scene.clearColor = new Color4(0.02, 0.04, 0.08, 1)
+  scene.clearColor = new Color4(SCENE.clearColor.r, SCENE.clearColor.g, SCENE.clearColor.b, SCENE.clearColor.a)
   scene.imageProcessingConfiguration.toneMappingEnabled = true
   scene.imageProcessingConfiguration.toneMappingType =
     ImageProcessingConfiguration.TONEMAPPING_ACES
-  scene.imageProcessingConfiguration.exposure = 1.05
-  scene.imageProcessingConfiguration.contrast = 1.08
+  scene.imageProcessingConfiguration.exposure = SCENE.exposure
+  scene.imageProcessingConfiguration.contrast = SCENE.contrast
   scene.fogMode = Scene.FOGMODE_EXP2
-  scene.fogDensity = 0.015
-  scene.fogColor = new Color3(0.02, 0.04, 0.08)
+  scene.fogDensity = SCENE.fogDensity
+  scene.fogColor = new Color3(SCENE.fogColor.r, SCENE.fogColor.g, SCENE.fogColor.b)
 
   const sky = createSkyDome(scene)
 
   const camera = new UniversalCamera(
     "camera",
-    new Vector3(0, -0.05, -4.1),
+    new Vector3(CAMERA.position.x, CAMERA.position.y, CAMERA.position.z),
     scene
   )
-  camera.setTarget(new Vector3(0, -1.05, 10))
-  camera.fov = 1.46
-  camera.minZ = 0.1
-  camera.maxZ = 200
+  camera.setTarget(new Vector3(CAMERA.target.x, CAMERA.target.y, CAMERA.target.z))
+  camera.fov = CAMERA.fov
+  camera.minZ = CAMERA.minZ
+  camera.maxZ = CAMERA.maxZ
   camera.inputs.clear()
 
-  const hemi = new HemisphericLight("hemi", new Vector3(0, 1, 0.4), scene)
-  hemi.intensity = 0.5
-  hemi.diffuse = new Color3(0.6, 0.75, 1)
-  hemi.groundColor = new Color3(0.06, 0.08, 0.12)
-
-  const accent = new DirectionalLight(
-    "accent",
-    new Vector3(-0.2, -1, 0.6),
+  const hemi = new HemisphericLight(
+    "hemi",
+    new Vector3(LIGHTING.hemi.direction.x, LIGHTING.hemi.direction.y, LIGHTING.hemi.direction.z),
     scene
   )
-  accent.position = new Vector3(6, 8, -6)
-  accent.intensity = 0.2
-  accent.diffuse = new Color3(0.6, 0.7, 0.9)
+  hemi.intensity = LIGHTING.hemi.intensity
+  hemi.diffuse = new Color3(LIGHTING.hemi.diffuse.r, LIGHTING.hemi.diffuse.g, LIGHTING.hemi.diffuse.b)
+  hemi.groundColor = new Color3(LIGHTING.hemi.ground.r, LIGHTING.hemi.ground.g, LIGHTING.hemi.ground.b)
+
+  // Main directional light
+  const accent = new DirectionalLight(
+    "accent",
+    new Vector3(LIGHTING.accent.direction.x, LIGHTING.accent.direction.y, LIGHTING.accent.direction.z),
+    scene
+  )
+  accent.position = new Vector3(LIGHTING.accent.position.x, LIGHTING.accent.position.y, LIGHTING.accent.position.z)
+  accent.intensity = LIGHTING.accent.intensity
+  accent.diffuse = new Color3(LIGHTING.accent.diffuse.r, LIGHTING.accent.diffuse.g, LIGHTING.accent.diffuse.b)
+  accent.specular = new Color3(LIGHTING.accent.specular.r, LIGHTING.accent.specular.g, LIGHTING.accent.specular.b)
+
+  // Rim light for depth separation
+  const rimLight = new DirectionalLight(
+    "rim",
+    new Vector3(LIGHTING.rim.direction.x, LIGHTING.rim.direction.y, LIGHTING.rim.direction.z),
+    scene
+  )
+  rimLight.position = new Vector3(LIGHTING.rim.position.x, LIGHTING.rim.position.y, LIGHTING.rim.position.z)
+  rimLight.intensity = LIGHTING.rim.intensity
+  rimLight.diffuse = new Color3(LIGHTING.rim.diffuse.r, LIGHTING.rim.diffuse.g, LIGHTING.rim.diffuse.b)
+  rimLight.specular = new Color3(LIGHTING.rim.specular.r, LIGHTING.rim.specular.g, LIGHTING.rim.specular.b)
 
   const glow = new GlowLayer("glow", scene, {
-    blurKernelSize: 64,
+    blurKernelSize: GLOW.blurKernelSize,
   })
-  glow.intensity = 0.8
+  glow.intensity = GLOW.intensity
   glow.addExcludedMesh(sky.mesh)
 
-  const shadowGenerator = new ShadowGenerator(1024, accent)
-  shadowGenerator.useBlurExponentialShadowMap = true
-  shadowGenerator.blurKernel = 16
-  shadowGenerator.bias = 0.0005
-  shadowGenerator.normalBias = 0.02
-  shadowGenerator.darkness = 0.35
+  // Higher quality shadow generator
+  const shadowGenerator = new ShadowGenerator(2048, accent)
+  shadowGenerator.usePercentageCloserFiltering = true
+  shadowGenerator.filteringQuality = ShadowGenerator.QUALITY_HIGH
+  shadowGenerator.bias = 0.0004
+  shadowGenerator.normalBias = 0.015
+  shadowGenerator.darkness = 0.55
+  shadowGenerator.frustumEdgeFalloff = 0.3
+
+  // SSAO for ambient occlusion (can cause WebGL errors with StandardMaterial - disable if needed)
+  let ssao: SSAO2RenderingPipeline | null = null
+  if (SSAO.enabled) {
+    ssao = new SSAO2RenderingPipeline("ssao", scene, {
+      ssaoRatio: SSAO.ssaoRatio,
+      blurRatio: SSAO.blurRatio,
+    })
+    ssao.radius = SSAO.radius
+    ssao.totalStrength = SSAO.totalStrength
+    ssao.base = SSAO.base
+    ssao.expensiveBlur = SSAO.expensiveBlur
+    ssao.samples = SSAO.samples
+    ssao.maxZ = SSAO.maxZ
+    scene.postProcessRenderPipelineManager.attachCamerasToRenderPipeline("ssao", camera)
+  }
+
+  // Default rendering pipeline for cinematic effects
+  const renderPipeline = new DefaultRenderingPipeline(
+    "defaultPipeline",
+    true,
+    scene,
+    [camera]
+  )
+  // Chromatic aberration for sci-fi aesthetic
+  renderPipeline.chromaticAberrationEnabled = true
+  renderPipeline.chromaticAberration.aberrationAmount = 15
+  renderPipeline.chromaticAberration.radialIntensity = 0.8
+
+  // Subtle vignette for focus
+  renderPipeline.imageProcessing.vignetteEnabled = true
+  renderPipeline.imageProcessing.vignetteWeight = 1.5
+  renderPipeline.imageProcessing.vignetteStretch = 0.5
+  renderPipeline.imageProcessing.vignetteCameraFov = camera.fov
+
+  // Minimal bloom - keep things sharp
+  renderPipeline.bloomEnabled = true
+  renderPipeline.bloomThreshold = 0.9  // Very high threshold - only brightest
+  renderPipeline.bloomWeight = 0.99    // Very subtle
+  renderPipeline.bloomKernel = 32
+  renderPipeline.bloomScale = 0.3
+
+  // Sharpen for crisp visuals
+  renderPipeline.sharpenEnabled = true
+  renderPipeline.sharpen.edgeAmount = 0.2
+
+  // Subtle film grain for cinematic texture
+  renderPipeline.grainEnabled = true
+  renderPipeline.grain.intensity = 3  // Reduced from 8 for crispness
+  renderPipeline.grain.animated = true
 
   const road = createRoad(scene)
   const hoverboard = createHoverboard(scene)
@@ -777,6 +859,61 @@ export const createHoverRunner = (
     hoverboard.visualRoot,
     new Color3(0.35, 0.9, 1)
   )
+
+  // Ambient background particle systems for visual depth
+  const ambientParticles = createAmbientParticles(scene, camera.position)
+  const starfieldParticles = createStarfieldParticles(scene, camera.position)
+  const energyFieldLeft = createEnergyFieldParticles(scene, "left")
+  const energyFieldRight = createEnergyFieldParticles(scene, "right")
+  const speedLines = createSpeedLines(scene, camera.position)
+
+  // Distant pyramid - background scenery
+  const distantPyramid = MeshBuilder.CreateCylinder(
+    "distant-pyramid",
+    {
+      height: PYRAMIDS.main.height,
+      diameterTop: 0,
+      diameterBottom: PYRAMIDS.main.diameter,
+      tessellation: 5,  // 4 sides = pyramid
+    },
+    scene
+  )
+  distantPyramid.position = new Vector3(
+    PYRAMIDS.main.position.x,
+    PYRAMIDS.main.position.y,
+    PYRAMIDS.main.position.z
+  )
+  distantPyramid.rotation.y = PYRAMIDS.main.rotation
+  const pyramidMat = createEmissivePbr(
+    "pyramid-mat",
+    scene,
+    new Color3(PYRAMIDS.material.albedo.r, PYRAMIDS.material.albedo.g, PYRAMIDS.material.albedo.b),
+    new Color3(PYRAMIDS.material.emissive.r, PYRAMIDS.material.emissive.g, PYRAMIDS.material.emissive.b),
+    PYRAMIDS.material.metallic,
+    PYRAMIDS.material.roughness
+  )
+  distantPyramid.material = pyramidMat
+  distantPyramid.isPickable = false
+
+  // Second smaller pyramid for depth
+  const distantPyramid2 = MeshBuilder.CreateCylinder(
+    "distant-pyramid-2",
+    {
+      height: PYRAMIDS.secondary.height,
+      diameterTop: 0,
+      diameterBottom: PYRAMIDS.secondary.diameter,
+      tessellation: 5,
+    },
+    scene
+  )
+  distantPyramid2.position = new Vector3(
+    PYRAMIDS.secondary.position.x,
+    PYRAMIDS.secondary.position.y,
+    PYRAMIDS.secondary.position.z
+  )
+  distantPyramid2.rotation.y = PYRAMIDS.secondary.rotation
+  distantPyramid2.material = pyramidMat
+  distantPyramid2.isPickable = false
 
   const perfHud = showPerf ? document.createElement("div") : null
   if (perfHud) {
@@ -989,6 +1126,7 @@ export const createHoverRunner = (
     shadowGenerator.addShadowCaster(prop.mesh)
   })
 
+  // Skins use LIGHTING intensities so they can be tweaked in visualConfig
   const skins: Skin[] = [
     {
       id: "neon",
@@ -1002,15 +1140,15 @@ export const createHoverRunner = (
         center: new Color3(0.25, 0.7, 1),
         edge: new Color3(0.12, 0.55, 0.95),
       },
-      sky: new Color4(0.02, 0.04, 0.08, 1),
+      sky: new Color4(0.01, 0.02, 0.04, 1),
       hemi: {
-        intensity: 0.6,
-        diffuse: new Color3(0.6, 0.75, 1),
-        ground: new Color3(0.06, 0.08, 0.12),
+        intensity: LIGHTING.hemi.intensity,  // From visualConfig
+        diffuse: new Color3(0.4, 0.5, 0.7),
+        ground: new Color3(0.02, 0.03, 0.05),
       },
       accent: {
-        intensity: 0.5,
-        color: new Color3(0.6, 0.8, 1),
+        intensity: LIGHTING.accent.intensity,  // From visualConfig
+        color: new Color3(0.4, 0.6, 0.9),
       },
     },
     {
@@ -1025,15 +1163,15 @@ export const createHoverRunner = (
         center: new Color3(1, 0.64, 0.3),
         edge: new Color3(0.85, 0.35, 0.2),
       },
-      sky: new Color4(0.08, 0.04, 0.02, 1),
+      sky: new Color4(0.03, 0.015, 0.01, 1),
       hemi: {
-        intensity: 0.5,
-        diffuse: new Color3(1, 0.75, 0.5),
-        ground: new Color3(0.18, 0.1, 0.08),
+        intensity: LIGHTING.hemi.intensity,  // From visualConfig
+        diffuse: new Color3(0.6, 0.45, 0.3),
+        ground: new Color3(0.06, 0.04, 0.03),
       },
       accent: {
-        intensity: 0.55,
-        color: new Color3(1, 0.6, 0.35),
+        intensity: LIGHTING.accent.intensity,  // From visualConfig
+        color: new Color3(0.8, 0.5, 0.3),
       },
     },
     {
@@ -1048,15 +1186,15 @@ export const createHoverRunner = (
         center: new Color3(0.45, 0.9, 1),
         edge: new Color3(0.28, 0.7, 0.95),
       },
-      sky: new Color4(0.02, 0.06, 0.12, 1),
+      sky: new Color4(0.01, 0.025, 0.05, 1),
       hemi: {
-        intensity: 0.55,
-        diffuse: new Color3(0.7, 0.88, 1),
-        ground: new Color3(0.04, 0.08, 0.16),
+        intensity: LIGHTING.hemi.intensity,  // From visualConfig
+        diffuse: new Color3(0.45, 0.55, 0.7),
+        ground: new Color3(0.02, 0.04, 0.06),
       },
       accent: {
-        intensity: 0.5,
-        color: new Color3(0.5, 0.8, 1),
+        intensity: LIGHTING.accent.intensity,  // From visualConfig
+        color: new Color3(0.4, 0.6, 0.85),
       },
     },
   ]
@@ -2604,6 +2742,15 @@ export const createHoverRunner = (
       wakeLock = null
     }
     sfx.dispose()
+    // Dispose background particle systems
+    ambientParticles.dispose()
+    starfieldParticles.dispose()
+    energyFieldLeft.dispose()
+    energyFieldRight.dispose()
+    speedLines.dispose()
+    // Dispose post-processing pipelines
+    ssao?.dispose()
+    renderPipeline.dispose()
     sceneInstrumentation?.dispose()
     engineInstrumentation?.dispose()
     engine.stopRenderLoop()

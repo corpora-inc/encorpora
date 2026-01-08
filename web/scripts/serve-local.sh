@@ -10,22 +10,10 @@ REPO_ROOT="$( cd "$WEB_DIR/.." && pwd )"
 IO_DIR="$WEB_DIR/io"
 BUILD_DIR="$IO_DIR/out"
 
-BASE_PATH_RAW="${ENCORPORA_BASE_PATH:-}"
-BASE_PATH_STRIPPED="${BASE_PATH_RAW#/}"
-BASE_PATH_STRIPPED="${BASE_PATH_STRIPPED%/}"
-BASE_PATH=""
 BASE_PATH_URL="/"
 OUTPUT_ROOT="$BUILD_DIR"
 
-if [ -n "$BASE_PATH_STRIPPED" ]; then
-  BASE_PATH="/${BASE_PATH_STRIPPED}"
-  BASE_PATH_URL="${BASE_PATH}/"
-  OUTPUT_ROOT="${BUILD_DIR}${BASE_PATH}"
-fi
-
-export ENCORPORA_BASE_PATH="$BASE_PATH"
-
-echo "🏗️  Building complete site (web/io + corpan + games)..."
+echo "🏗️  Building complete site (web/io + corpan + packs)..."
 echo ""
 
 # Step 1: Build web/io/ site (root)
@@ -47,8 +35,8 @@ node "$WEB_DIR/pages/build.js" "$BUILD_DIR"
 echo ""
 
 # Step 3: Build hover-runner
-echo "🎮 Building hover-runner game..."
-cd "$REPO_ROOT/corpan/games/hover-runner"
+echo "🎮 Building hover-runner pack..."
+cd "$REPO_ROOT/corpan/packs/hover-runner"
 
 if [ ! -d "node_modules" ]; then
   echo "Installing hover-runner dependencies..."
@@ -60,9 +48,14 @@ echo ""
 
 # Step 4: Copy hover-runner into web/io/out
 echo "📦 Copying hover-runner into site..."
-mkdir -p "$OUTPUT_ROOT/corpan/games/hover-runner"
-cp "$REPO_ROOT/corpan/games/hover-runner/manifest.json" "$OUTPUT_ROOT/corpan/games/hover-runner/"
-cp -R "$REPO_ROOT/corpan/games/hover-runner/dist/." "$OUTPUT_ROOT/corpan/games/hover-runner/"
+zip -r hover-runner.zip manifest.json dist/
+mkdir -p "$OUTPUT_ROOT/corpan/packs/hover-runner"
+cp "$REPO_ROOT/corpan/packs/hover-runner/manifest.json" "$OUTPUT_ROOT/corpan/packs/hover-runner/"
+cp -R "$REPO_ROOT/corpan/packs/hover-runner/dist/." "$OUTPUT_ROOT/corpan/packs/hover-runner/"
+cp "$REPO_ROOT/corpan/packs/hover-runner/hover-runner.zip" "$OUTPUT_ROOT/corpan/packs/hover-runner.zip"
+if [ -f "$REPO_ROOT/corpan/packs/hanzipan/hanzipan.zip" ]; then
+  cp "$REPO_ROOT/corpan/packs/hanzipan/hanzipan.zip" "$OUTPUT_ROOT/corpan/packs/hanzipan.zip"
+fi
 
 echo ""
 echo "✅ Build complete!"
@@ -81,8 +74,8 @@ echo ""
 echo "   Browse to:"
 echo "   • http://localhost:8000${BASE_PATH_URL} (web/io/ root site)"
 echo "   • http://localhost:8000${BASE_PATH_URL}corpan/ (Corpan)"
-echo "   • http://localhost:8000${BASE_PATH_URL}corpan/games/ (Games listing)"
-echo "   • http://localhost:8000${BASE_PATH_URL}corpan/games/hover-runner/ (Hover Runner)"
+echo "   • http://localhost:8000${BASE_PATH_URL}corpan/packs/ (Packs listing)"
+echo "   • http://localhost:8000${BASE_PATH_URL}corpan/packs/hover-runner/ (Hover Runner)"
 echo ""
 echo "   Press Ctrl+C to stop the server"
 echo ""

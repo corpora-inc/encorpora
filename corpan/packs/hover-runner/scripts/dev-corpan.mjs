@@ -6,7 +6,7 @@ import { fileURLToPath } from "node:url"
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const packRoot = path.resolve(__dirname, "..")
-const gamesRoot = path.resolve(packRoot, "..")
+const packsRoot = path.resolve(packRoot, "..")
 const manifestPath = path.join(packRoot, "manifest.json")
 const distDir = path.join(packRoot, "dist")
 
@@ -66,7 +66,7 @@ const buildWatcher = run(
 const server = run(
   "python3",
   ["-m", "http.server", "8989", "--bind", "0.0.0.0"],
-  gamesRoot,
+  packsRoot,
   "server"
 )
 
