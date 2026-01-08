@@ -32,7 +32,7 @@ export const APPS_INFO: App[] = [
       },
       {
         name: "Web Games",
-        link: "/corpan/games",
+        link: "/corpan/packs",
         icon: <FaGamepad />,
       },
     ],

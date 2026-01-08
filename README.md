@@ -19,8 +19,8 @@ This repo houses experiments that depend on Corpora. When something becomes stab
 Browse games and content at our GitHub Pages site:
 **https://corpora-inc.github.io/encorpora/**
 
-- [Corpán Games](https://corpora-inc.github.io/encorpora/corpan/games/)
-- [Hover Runner](https://corpora-inc.github.io/encorpora/corpan/games/hover-runner/)
+- [Corpán Games](https://corpora-inc.github.io/encorpora/corpan/packs/)
+- [Hover Runner](https://corpora-inc.github.io/encorpora/corpan/packs/hover-runner/)
 
 ## Local Development
 

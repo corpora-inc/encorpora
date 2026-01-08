@@ -1,6 +1,6 @@
 {
-  "id": "hanzi_atelier",
-  "name": "Hanzi Atelier",
+  "id": "hanzipan",
+  "name": "Hanzipan",
   "version": "0.1.0",
   "entry": "index.js",
   "styles": [

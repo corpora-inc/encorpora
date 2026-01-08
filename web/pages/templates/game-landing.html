@@ -336,7 +336,7 @@
 <body>
     <div class="container">
         <div class="breadcrumb">
-            <a href="{{BASE_PATH}}">← encorpora.io</a> / <a href="{{BASE_PATH}}corpan/">Corpán</a> / <a href="{{BASE_PATH}}corpan/games/">Games</a>
+            <a href="{{BASE_PATH}}">← encorpora.io</a> / <a href="{{BASE_PATH}}corpan/">Corpán</a> / <a href="{{BASE_PATH}}corpan/packs/">Packs</a>
         </div>
 
         <header>
@@ -407,7 +407,7 @@
 
         <footer>
             <p>
-                <a href="https://github.com/corpora-inc/encorpora/tree/main/corpan/games/{{GAME_ID}}" target="_blank" rel="noopener">
+                <a href="https://github.com/corpora-inc/encorpora/tree/main/corpan/packs/{{GAME_ID}}" target="_blank" rel="noopener">
                     View on GitHub
                 </a>
                 ·
@@ -423,8 +423,8 @@
     <script>
         // URL mappings - these get filled in by the build script
         const URLS = {
-            manifest: '{{BASE_PATH}}corpan/games/{{GAME_ID}}/manifest.json',
-            zip: '{{BASE_PATH}}corpan/games/{{GAME_ID}}.zip'
+            manifest: '{{BASE_PATH}}corpan/packs/{{GAME_ID}}/manifest.json',
+            zip: '{{BASE_PATH}}corpan/packs/{{GAME_ID}}.zip'
         };
 
         function showToast(message) {

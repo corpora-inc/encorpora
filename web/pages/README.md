@@ -20,9 +20,9 @@ This creates a world-class, understated interface where content shines.
 web/pages/
 ├── templates/          # HTML templates
 │   ├── corpan.html     # Corpan app page
-│   └── games.html      # Games listing page
+│   └── packs.html      # Packs listing page
 ├── data/               # JSON data files
-│   └── games.json      # Games metadata
+│   └── packs.json      # Packs metadata
 ├── build.js            # Build script
 └── package.json        # Package metadata
 ```
@@ -33,7 +33,7 @@ These pages are **composed** into the `web/io/` site build:
 
 1. `web/io/` Next.js site builds → `web/io/out/` (root)
 2. This build script adds → `web/io/out/corpan/`
-3. Game builds are copied → `web/io/out/corpan/games/`
+3. Pack builds are copied → `web/io/out/corpan/packs/`
 4. Final result: complete site in `web/io/out/`
 
 ## Usage
@@ -52,14 +52,14 @@ node web/pages/build.js web/io/out  # Add Corpan pages
 
 This generates:
 - `<output>/corpan/index.html` - Corpan landing page
-- `<output>/corpan/games/index.html` - Games listing
+- `<output>/corpan/packs/index.html` - Packs listing
 - `<output>/assets/` - Images (logo, avatars)
 
-### Adding a new game
+### Adding a new pack
 
-1. Edit `data/games.json` with game metadata
+1. Edit `data/packs.json` with pack metadata
 2. (Optional) Set `avatarSource` to a canonical repo asset
-3. Update GitHub workflow to build and copy game
+3. Update GitHub workflow to build and copy pack
 
 ### Local testing
 
@@ -79,8 +79,8 @@ https://encorpora.io/
 ├── assets/                     # Copied from canonical repo assets
 ├── corpan/
 │   ├── index.html              # Corpan landing
-│   └── games/
-│       ├── index.html          # Games listing
+│   └── packs/
+│       ├── index.html          # Packs listing
 │       └── hover-runner/
 │           ├── manifest.json
 │           └── ...

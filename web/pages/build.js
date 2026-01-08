@@ -5,7 +5,7 @@
  * This script generates landing pages at each level:
  * - Root: /index.html
  * - Corpan: /corpan/index.html
- * - Games: /corpan/games/index.html
+ * - Packs: /corpan/packs/index.html
  *
  * Usage: node build.js <output-dir>
  */
@@ -64,20 +64,20 @@ function applyBasePath(html) {
   return html.replace(/\{\{BASE_PATH\}\}/g, basePathWithSlash);
 }
 
-function buildGameLandingPage(game, outputDir) {
+function buildPackLandingPage(pack, outputDir) {
   const gameLandingTemplate = applyBasePath(readTemplate('game-landing'));
 
   // Build video section HTML
   let videoSectionHtml = '';
-  const hasVideos = (game.videos?.shorts && game.videos.shorts.length > 0) ||
-                     (game.videos?.demos && game.videos.demos.length > 0);
+  const hasVideos = (pack.videos?.shorts && pack.videos.shorts.length > 0) ||
+                     (pack.videos?.demos && pack.videos.demos.length > 0);
 
   if (hasVideos) {
     videoSectionHtml = '<div class="section"><h2>Watch in Action</h2><div class="videos-grid">';
 
     // Add shorts
-    if (game.videos.shorts) {
-      game.videos.shorts.forEach(videoId => {
+    if (pack.videos.shorts) {
+      pack.videos.shorts.forEach(videoId => {
         videoSectionHtml += `
           <div class="video-container">
             <iframe src="https://www.youtube.com/embed/${videoId}"
@@ -88,8 +88,8 @@ function buildGameLandingPage(game, outputDir) {
     }
 
     // Add demo videos
-    if (game.videos.demos) {
-      game.videos.demos.forEach(videoId => {
+    if (pack.videos.demos) {
+      pack.videos.demos.forEach(videoId => {
         videoSectionHtml += `
           <div class="video-container video-wide">
             <iframe src="https://www.youtube.com/embed/${videoId}"
@@ -104,17 +104,17 @@ function buildGameLandingPage(game, outputDir) {
 
   // Replace placeholders
   let html = gameLandingTemplate
-    .replace(/\{\{GAME_ID\}\}/g, game.id)
-    .replace(/\{\{GAME_NAME\}\}/g, game.name)
-    .replace(/\{\{GAME_DESCRIPTION\}\}/g, game.description)
-    .replace(/\{\{GAME_VERSION\}\}/g, game.version)
-    .replace(/\{\{GAME_AVATAR\}\}/g, game.avatarUrl || `${basePathWithSlash}assets/${game.id}-avatar.png`)
+    .replace(/\{\{GAME_ID\}\}/g, pack.id)
+    .replace(/\{\{GAME_NAME\}\}/g, pack.name)
+    .replace(/\{\{GAME_DESCRIPTION\}\}/g, pack.description)
+    .replace(/\{\{GAME_VERSION\}\}/g, pack.version)
+    .replace(/\{\{GAME_AVATAR\}\}/g, pack.avatarUrl || `${basePathWithSlash}assets/${pack.id}-avatar.png`)
     .replace('{{VIDEO_SECTION}}', videoSectionHtml);
 
   // Write file
-  const gameDir = path.join(outputDir, 'corpan', 'games', game.id);
-  ensureDir(gameDir);
-  fs.writeFileSync(path.join(gameDir, 'index.html'), html);
+  const packDir = path.join(outputDir, 'corpan', 'packs', pack.id);
+  ensureDir(packDir);
+  fs.writeFileSync(path.join(packDir, 'index.html'), html);
 }
 
 function buildPages(outputDir) {
@@ -122,11 +122,11 @@ function buildPages(outputDir) {
   console.log(`Output directory: ${outputDir}`);
 
   // Load data
-  const gamesData = readData('games');
+  const packsData = readData('packs');
 
   // Load templates
   const corpanTemplate = applyBasePath(readTemplate('corpan'));
-  const gamesTemplate = applyBasePath(readTemplate('games'));
+  const packsTemplate = applyBasePath(readTemplate('packs'));
 
   // Always write to outputDir directly - GitHub Pages handles base path routing
   const outputRoot = outputDir;
@@ -134,22 +134,22 @@ function buildPages(outputDir) {
 
   // Create directory structure for Corpan pages
   ensureDir(path.join(outputRoot, 'corpan'));
-  ensureDir(path.join(outputRoot, 'corpan', 'games'));
+  ensureDir(path.join(outputRoot, 'corpan', 'packs'));
 
   // Copy shared assets from canonical locations
   console.log('Copying assets...');
   copyFileSafe(CORPAN_LOGO_SOURCE, path.join(assetsDir, 'logo-512.png'));
 
-  const gamesWithAssets = gamesData.map((game) => {
+  const packsWithAssets = packsData.map((pack) => {
     const fallbackAvatar = path.join(
       'corpan',
-      'games',
-      game.id,
-      `${game.id}-avatar.png`
+      'packs',
+      pack.id,
+      `${pack.id}-avatar.png`
     );
-    const avatarSourcePath = resolveAssetSource(game.avatarSource || fallbackAvatar);
+    const avatarSourcePath = resolveAssetSource(pack.avatarSource || fallbackAvatar);
     const avatarExt = avatarSourcePath ? path.extname(avatarSourcePath) || '.png' : '.png';
-    const avatarFileName = `${game.id}-avatar${avatarExt}`;
+    const avatarFileName = `${pack.id}-avatar${avatarExt}`;
     const avatarDest = path.join(assetsDir, avatarFileName);
 
     if (avatarSourcePath) {
@@ -157,7 +157,7 @@ function buildPages(outputDir) {
     }
 
     return {
-      ...game,
+      ...pack,
       avatarUrl: `${basePathWithSlash}assets/${avatarFileName}`,
     };
   });
@@ -166,27 +166,27 @@ function buildPages(outputDir) {
   console.log('Building corpan/index.html...');
   fs.writeFileSync(path.join(outputRoot, 'corpan', 'index.html'), corpanTemplate);
 
-  // Build Games listing page
-  console.log('Building corpan/games/index.html...');
-  const gamesHtml = gamesTemplate.replace(
-    '{{GAMES_DATA}}',
-    JSON.stringify(gamesWithAssets)
+  // Build Packs listing page
+  console.log('Building corpan/packs/index.html...');
+  const packsHtml = packsTemplate.replace(
+    '{{PACKS_DATA}}',
+    JSON.stringify(packsWithAssets)
   );
-  fs.writeFileSync(path.join(outputRoot, 'corpan', 'games', 'index.html'), gamesHtml);
+  fs.writeFileSync(path.join(outputRoot, 'corpan', 'packs', 'index.html'), packsHtml);
 
-  // Build game landing pages
-  console.log('Building game landing pages...');
-  gamesWithAssets.forEach(game => {
-    console.log(`  - corpan/games/${game.id}/index.html`);
-    buildGameLandingPage(game, outputRoot);
+  // Build pack landing pages
+  console.log('Building pack landing pages...');
+  packsWithAssets.forEach(pack => {
+    console.log(`  - corpan/packs/${pack.id}/index.html`);
+    buildPackLandingPage(pack, outputRoot);
   });
 
   console.log('✓ Corpan pages built successfully!');
   console.log('\nGenerated:');
   console.log('  - corpan/index.html');
-  console.log('  - corpan/games/index.html');
-  gamesWithAssets.forEach(game => {
-    console.log(`  - corpan/games/${game.id}/index.html`);
+  console.log('  - corpan/packs/index.html');
+  packsWithAssets.forEach(pack => {
+    console.log(`  - corpan/packs/${pack.id}/index.html`);
   });
   console.log('  - assets/ (images)');
 }

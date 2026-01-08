@@ -23,14 +23,14 @@ const devGames: InstalledGame[] = import.meta.env.DEV
       {
         id: "hover_runner",
         name: "Hover Runner (local)",
-        manifestUrl: "/games/hover-runner/manifest.json",
+        manifestUrl: "/packs/hover-runner/manifest.json",
         version: "0.1.0",
         installedAt: Date.now(),
       },
       {
-        id: "hanzi_atelier",
-        name: "Hanzi Atelier (local)",
-        manifestUrl: "/games/hanzi-atelier/manifest.json",
+        id: "hanzipan",
+        name: "Hanzipan (local)",
+        manifestUrl: "/packs/hanzipan/manifest.json",
         version: "0.1.0",
         installedAt: Date.now(),
       },

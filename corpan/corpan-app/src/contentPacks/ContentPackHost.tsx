@@ -224,7 +224,7 @@ export default function ContentPackHost({
     let isLoading = false
 
     const manifestRequestUrl =
-      manifestUrl ?? `/games/${id}/manifest.json`
+      manifestUrl ?? `/packs/${id}/manifest.json`
     const resolvedManifestUrl = new URL(
       manifestRequestUrl,
       window.location.href

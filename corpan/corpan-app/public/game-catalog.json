@@ -3,7 +3,7 @@
     "id": "hover_runner",
     "name": "Hover Runner",
     "version": "0.1.0",
-    "manifestUrl": "/games/hover-runner/manifest.json",
+    "manifestUrl": "/packs/hover-runner/manifest.json",
     "description": "Hoverboard runner that drills core phrases.",
     "purchase": {
       "type": "free",
@@ -11,10 +11,10 @@
     }
   },
   {
-    "id": "hanzi_atelier",
-    "name": "Hanzi Atelier",
+    "id": "hanzipan",
+    "name": "Hanzipan",
     "version": "0.1.0",
-    "manifestUrl": "/games/hanzi-atelier/manifest.json",
+    "manifestUrl": "/packs/hanzipan/manifest.json",
     "description": "Character-first handwriting studio for Mandarin.",
     "purchase": {
       "type": "free",

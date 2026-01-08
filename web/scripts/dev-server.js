@@ -3,7 +3,7 @@
  * Development server that composes:
  * - Next.js dev server (web/io/) at root
  * - Static Corpan pages from web/io/out/corpan
- * - Static game builds from web/io/out/corpan/games
+ * - Static pack builds from web/io/out/corpan/packs
  */
 
 const http = require('http');
@@ -113,7 +113,7 @@ server.listen(DEV_PORT, () => {
   console.log('  Routes:');
   console.log(`  • ${routePrefix}         → Next.js (hot reload)`);
   console.log(`  • ${routePrefix}corpan   → Static (auto rebuild)`);
-  console.log(`  • ${routePrefix}corpan/games → Static (auto rebuild)`);
+  console.log(`  • ${routePrefix}corpan/packs → Static (auto rebuild)`);
   console.log(`  • ${routePrefix}assets   → Static`);
   console.log('');
   console.log('  Press Ctrl+C to stop');

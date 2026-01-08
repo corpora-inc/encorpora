@@ -161,7 +161,7 @@ def main() -> None:
         type=Path,
         default=Path(__file__).resolve().parents[2]
         / "games"
-        / "hanzi-atelier"
+        / "hanzipan"
         / "data"
         / "hanzi.sqlite3",
     )

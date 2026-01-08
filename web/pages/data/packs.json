@@ -7,8 +7,8 @@
     "version": "0.1.0",
     "manifestUrl": "./hover-runner/manifest.json",
     "landingUrl": "./hover-runner/",
-    "avatarSource": "corpan/games/hover-runner/hover-runner-avatar.png",
-    "github": "https://github.com/corpora-inc/encorpora/tree/main/corpan/games/hover-runner",
+    "avatarSource": "corpan/packs/hover-runner/hover-runner-avatar.png",
+    "github": "https://github.com/corpora-inc/encorpora/tree/main/corpan/packs/hover-runner",
     "videos": {
       "shorts": [
         "GnUNvb7n4hc",
@@ -19,15 +19,15 @@
     }
   },
   {
-    "id": "hanzi-atelier",
-    "name": "Hanzi Atelier",
+    "id": "hanzipan",
+    "name": "Hanzipan",
     "description": "A premium Mandarin character studio with stroke guidance, feedback, and infinite contextual examples",
     "status": "prototype",
     "version": "0.2.0",
-    "manifestUrl": "./hanzi-atelier/manifest.json",
-    "landingUrl": "./hanzi-atelier/",
+    "manifestUrl": "./hanzipan/manifest.json",
+    "landingUrl": "./hanzipan/",
     "avatarSource": "corpan/corpan-app/src-tauri/icons/512x512.png",
-    "github": "https://github.com/corpora-inc/encorpora/tree/main/corpan/games/hanzi-atelier",
+    "github": "https://github.com/corpora-inc/encorpora/tree/main/corpan/packs/hanzipan",
     "videos": {
       "shorts": [],
       "demos": []

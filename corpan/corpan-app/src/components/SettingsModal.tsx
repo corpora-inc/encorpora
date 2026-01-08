@@ -39,15 +39,15 @@ export function SettingsModal({
   const [devTapCount, setDevTapCount] = useState(0);
   const [devModeEnabled, setDevModeEnabled] = useState(() => {
     try {
-      return localStorage.getItem("corpan:dev-games") === "true";
+      return localStorage.getItem("corpan:dev-packs") === "true";
     } catch {
       return false;
     }
   });
   const [devToastVisible, setDevToastVisible] = useState(false);
   const devToastTimeoutRef = useRef<number | null>(null);
-  const showGames = useMemo(() => {
-    return import.meta.env.VITE_ENABLE_GAMES === "true" || devModeEnabled;
+  const showPacks = useMemo(() => {
+    return import.meta.env.VITE_ENABLE_PACKS === "true" || devModeEnabled;
   }, [devModeEnabled]);
 
   const dir = useSettingsStore((s) => s.dir);
@@ -69,7 +69,7 @@ export function SettingsModal({
     if (next >= 7) {
       setDevModeEnabled(true);
       try {
-        localStorage.setItem("corpan:dev-games", "true");
+        localStorage.setItem("corpan:dev-packs", "true");
       } catch {
         // Ignore localStorage failures.
       }
@@ -166,7 +166,7 @@ export function SettingsModal({
               </Button>
             </>
           )}
-          {showGames ? (
+          {showPacks ? (
             <GamesPanel
               showDevInstall={devModeEnabled}
               showPlatformPacks={false}

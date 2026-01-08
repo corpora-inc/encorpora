@@ -1,6 +1,6 @@
-# Game Installation Guide
+# Pack Installation Guide
 
-Corpán supports two methods for installing games. Each has different benefits depending on your needs.
+Corpán supports two methods for installing packs. Each has different benefits depending on your needs.
 
 ## Installation Methods
 
@@ -10,11 +10,11 @@ Corpán supports two methods for installing games. Each has different benefits d
 
 **URL Format:**
 ```
-https://corpora-inc.github.io/encorpora/corpan/games/hover-runner/manifest.json
+https://corpora-inc.github.io/encorpora/corpan/packs/hover-runner/manifest.json
 ```
 
 **How it works:**
-- Loads game files directly from the web each time you play
+- Loads pack files directly from the web each time you play
 - No local storage required (beyond manifest metadata)
 - Always gets the latest updates automatically
 - Requires internet connection to play
@@ -34,11 +34,11 @@ https://corpora-inc.github.io/encorpora/corpan/games/hover-runner/manifest.json
 
 **URL Format:**
 ```
-https://corpora-inc.github.io/encorpora/corpan/games/hover-runner.zip
+https://corpora-inc.github.io/encorpora/corpan/packs/hover-runner.zip
 ```
 
 **How it works:**
-- Downloads complete game package (5-15 MB typically)
+- Downloads complete pack package (5-15 MB typically)
 - Extracts and stores in app data directory
 - Serves from local disk via `corpan-pack://` protocol
 - Works 100% offline after installation
@@ -60,7 +60,7 @@ https://corpora-inc.github.io/encorpora/corpan/games/hover-runner.zip
 1. Open **Settings** (gear icon)
 2. Scroll to **About** section
 3. Tap the version number **7 times** to enable developer mode
-4. A **"Games"** section will appear
+4. A **"Packs"** section will appear
 5. Scroll to **"Install from URL"**
 6. Paste either a `manifest.json` or `.zip` URL
 7. Tap **"Install"**
@@ -71,29 +71,29 @@ For Hover Runner:
 
 **Web Play:**
 ```
-https://corpora-inc.github.io/encorpora/corpan/games/hover-runner/manifest.json
+https://corpora-inc.github.io/encorpora/corpan/packs/hover-runner/manifest.json
 ```
 
 **Offline:**
 ```
-https://corpora-inc.github.io/encorpora/corpan/games/hover-runner.zip
+https://corpora-inc.github.io/encorpora/corpan/packs/hover-runner.zip
 ```
 
 ## Technical Details
 
 ### Storage Locations
 
-**Web Play games:**
+**Web Play packs:**
 - Manifest stored in: `localStorage` (< 1 KB)
-- Game files: Not stored locally, loaded from web
+- Pack files: Not stored locally, loaded from web
 
-**Offline games:**
-- Installed to: `{app_data_dir}/corpan-packs/{game_id}/`
+**Offline packs:**
+- Installed to: `{app_data_dir}/corpan-packs/{pack_id}/`
 - Includes: `manifest.json`, `dist/app.js`, `dist/app.css`, etc.
 
 ### Protocol Handler
 
-Offline games use the custom `corpan-pack://` protocol:
+Offline packs use the custom `corpan-pack://` protocol:
 
 ```
 corpan-pack://localhost/hover_runner/manifest.json
@@ -109,20 +109,20 @@ The app intelligently handles both install types:
 
 ```typescript
 // Web play - URLs resolve normally
-"https://example.com/game/manifest.json"
+"https://example.com/pack/manifest.json"
   → Fetches from web on each load
 
 // Offline - Special protocol
-"corpan-pack://localhost/game_id/manifest.json"
+"corpan-pack://localhost/pack_id/manifest.json"
   → Reads from local disk
 ```
 
-## Creating Downloadable Games
+## Creating Downloadable Packs
 
 ### ZIP Structure
 
 ```
-game-name.zip
+pack-name.zip
 ├── manifest.json
 └── dist/
     ├── app.js
@@ -132,15 +132,15 @@ game-name.zip
 ### Build Process
 
 ```bash
-# Build the game
+# Build the pack
 npm run build
 
-# Create ZIP (from game directory)
-zip -r game-name.zip manifest.json dist/
+# Create ZIP (from pack directory)
+zip -r pack-name.zip manifest.json dist/
 
 # Deploy both files
-- /games/game-name/manifest.json (for web play)
-- /games/game-name.zip (for offline download)
+- /packs/pack-name/manifest.json (for web play)
+- /packs/pack-name.zip (for offline download)
 ```
 
 ### Manifest Requirements
@@ -149,8 +149,8 @@ Both install methods require a valid `manifest.json`:
 
 ```json
 {
-  "id": "game_id",
-  "name": "Game Name",
+  "id": "pack_id",
+  "name": "Pack Name",
   "version": "1.0.0",
   "entry": "dist/app.js",
   "styles": ["dist/app.css"],
@@ -159,11 +159,11 @@ Both install methods require a valid `manifest.json`:
 }
 ```
 
-**Note:** The `entry` and `styles` paths should include the `dist/` prefix. The game files are expected in a `dist/` subdirectory within the ZIP.
+**Note:** The `entry` and `styles` paths should include the `dist/` prefix. The pack files are expected in a `dist/` subdirectory within the ZIP.
 
 ## Best Practices
 
-### For Game Developers
+### For Pack Developers
 
 - **Development**: Use web play for rapid iteration
 - **Beta Testing**: Use offline downloads for reliability
@@ -189,14 +189,14 @@ Both install methods require a valid `manifest.json`:
 - Try downloading again
 - Check network connection
 
-### Game won't load offline
+### Pack won't load offline
 
 - Verify it was installed using the `.zip` URL (not `manifest.json`)
 - Check storage permissions
-- Try reinstalling the game
+- Try reinstalling the pack
 
 ## See Also
 
 - [Content Packs Documentation](./src/contentPacks/README.md)
 - [Production Setup Guide](./src/contentPacks/PRODUCTION_SETUP.md)
-- [Game SDK Documentation](../games/sdk/README.md)
+- [Pack SDK Documentation](../packs/sdk/README.md)

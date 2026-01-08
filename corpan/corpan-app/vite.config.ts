@@ -11,9 +11,9 @@ import { fileURLToPath, URL } from "url";
 const rawHost = process.env.TAURI_DEV_HOST;
 const serverHost = rawHost || "127.0.0.1";
 
-const gamesRoot = fileURLToPath(new URL("../games", import.meta.url));
-const outGamesRoot = fileURLToPath(
-  new URL("../../web/io/out/corpan/games", import.meta.url)
+const packsRoot = fileURLToPath(new URL("../packs", import.meta.url));
+const outPacksRoot = fileURLToPath(
+  new URL("../../web/io/out/corpan/packs", import.meta.url)
 );
 
 const contentTypes: Record<string, string> = {
@@ -42,11 +42,11 @@ const serveStaticFromRoot = (rootDir: string) => (req: any, res: any, next: any)
   });
 };
 
-const serveGames = () => ({
-  name: "serve-corpan-games",
+const servePacks = () => ({
+  name: "serve-corpan-packs",
   configureServer(server: any) {
-    server.middlewares.use("/games", serveStaticFromRoot(gamesRoot));
-    server.middlewares.use("/corpan/games", serveStaticFromRoot(outGamesRoot));
+    server.middlewares.use("/packs", serveStaticFromRoot(packsRoot));
+    server.middlewares.use("/corpan/packs", serveStaticFromRoot(outPacksRoot));
     server.middlewares.use("/game-proxy", async (req: any, res: any) => {
       try {
         if (!req.url) {
@@ -79,7 +79,7 @@ const serveGames = () => ({
 
 // https://vitejs.dev/config/
 export default defineConfig(async () => ({
-  plugins: [react(), tailwind(), serveGames()],
+  plugins: [react(), tailwind(), servePacks()],
   resolve: {
     alias: {
       "@": fileURLToPath(new URL("./src", import.meta.url)),
