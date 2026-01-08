@@ -322,7 +322,7 @@ export function GamesPanel({
           </div>
           <input
             className="w-full rounded-md border border-gray-200 px-3 py-2 text-sm"
-            placeholder="https://example.com/game/manifest.json or .../game.zip"
+            placeholder="https://example.com/pack/manifest.json or .../pack.zip"
             value={manifestUrl}
             onChange={(event) => setManifestUrl(event.target.value)}
           />

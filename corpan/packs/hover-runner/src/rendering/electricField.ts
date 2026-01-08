@@ -322,11 +322,18 @@ export const createElectricField = (
       scene
     )
     light.intensity = 0
-    light.range = 3
-    light.diffuse = new Color3(0.4, 0.85, 1)
-    light.specular = new Color3(0.6, 0.95, 1)
+    light.range = 4.5
+    light.diffuse = new Color3(0.5, 0.9, 1)
+    light.specular = new Color3(0.7, 0.95, 1)
     return light
   })
+
+  // Core glow light that follows the main beam
+  const coreLight = new PointLight("electric-core-light", new Vector3(0, 0, 0), scene)
+  coreLight.intensity = 0
+  coreLight.range = 2.5
+  coreLight.diffuse = new Color3(0.6, 0.9, 1)
+  coreLight.specular = new Color3(0.8, 1, 1)
 
   let time = 0
   let currentColor = baseColor.clone()
@@ -355,6 +362,8 @@ export const createElectricField = (
       light.diffuse = color.clone()
       light.specular = scaleColor(color, 1.2)
     })
+    coreLight.diffuse = scaleColor(color, 1.1)
+    coreLight.specular = scaleColor(color, 1.3)
   }
 
   // Performance optimization: frame counter for reduced geometry updates
@@ -678,6 +687,11 @@ export const createElectricField = (
       coreSparkSystem.stop()
     }
 
+    // Electric flicker effect - rapid random variation for that electric feel
+    const flicker1 = Math.sin(time * 45 + Math.sin(time * 12)) * 0.15
+    const flicker2 = Math.sin(time * 67 + Math.cos(time * 23)) * 0.1
+    const electricFlicker = 1 + flicker1 + flicker2 * Math.sin(time * 89)
+
     pointLights.forEach((light, index) => {
       if (hasFocus) {
         const arcIndex = (index * 3) % arcs.length
@@ -688,12 +702,26 @@ export const createElectricField = (
         if (arcPoint) {
           light.position = rootWorld.add(arcPoint)
         }
-        light.intensity = 0.35 + focus * 0.85
-        light.range = 2.4 + focus * 1.6
+        // Enhanced intensity with flickering
+        const baseIntensity = 0.5 + focus * 1.2
+        const indexFlicker = Math.sin(time * 35 + index * 2.5) * 0.12
+        light.intensity = baseIntensity * electricFlicker * (1 + indexFlicker)
+        light.range = 3.5 + focus * 2.5
       } else {
         light.intensity = 0
       }
     })
+
+    // Core light follows the beam center with pulsing intensity
+    if (hasFocus && frame) {
+      const beamMidpoint = startPos.add(frame.centerLocal.scale(0.5))
+      coreLight.position = rootWorld.add(beamMidpoint)
+      const corePulse = 0.85 + Math.sin(time * 8) * 0.15
+      coreLight.intensity = (0.6 + focus * 0.8) * corePulse * electricFlicker
+      coreLight.range = 2 + focus * 1.5
+    } else {
+      coreLight.intensity = 0
+    }
   }
 
   setColor(baseColor)

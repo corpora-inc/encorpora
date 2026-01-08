@@ -109,11 +109,11 @@ export const createRoad = (scene: Scene): RoadState => {
   const roadMaterial = new PBRMaterial("road-mat", scene)
   roadMaterial.albedoTexture = roadTexture
   roadMaterial.emissiveTexture = roadTexture
-  roadMaterial.albedoColor = new Color3(1, 1, 1)
-  roadMaterial.emissiveColor = new Color3(1, 1, 1)
+  roadMaterial.albedoColor = new Color3(0.7, 0.7, 0.7)  // Dimmer for word contrast
+  roadMaterial.emissiveColor = new Color3(0.6, 0.6, 0.6)  // Reduced glow
   roadMaterial.metallic = 0.1
   roadMaterial.roughness = 0.82
-  roadMaterial.alpha = 0.55
+  roadMaterial.alpha = 0.45  // Slightly more transparent
   roadMaterial.transparencyMode = PBRMaterial.PBRMATERIAL_ALPHABLEND
   road.material = roadMaterial
   road.receiveShadows = true

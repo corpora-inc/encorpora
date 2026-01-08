@@ -7,14 +7,14 @@ Corpán now supports **two installation methods** for packs, each serving differ
 ## Installation Methods
 
 ### 1. Web Play (`manifest.json`)
-- **URL**: `https://corpora-inc.github.io/encorpora/corpan/packs/hover-runner/manifest.json`
+- **URL**: `https://encorpora.io/corpan/packs/hover-runner/manifest.json`
 - **Use case**: Development, testing, always getting latest version
 - **Storage**: Minimal (manifest only)
 - **Internet**: Required to play
 - **Updates**: Automatic (loads fresh each time)
 
 ### 2. Offline Download (`.zip`)
-- **URL**: `https://corpora-inc.github.io/encorpora/corpan/packs/hover-runner.zip`
+- **URL**: `https://encorpora.io/corpan/packs/hover-runner.zip`
 - **Use case**: Production, offline play, reliability
 - **Storage**: 5-15 MB per pack
 - **Internet**: Only needed for initial download
@@ -58,17 +58,17 @@ After merging to `main`, these URLs will be available:
 
 ```
 # Pack landing page
-https://corpora-inc.github.io/encorpora/corpan/packs/hover-runner/
+https://encorpora.io/corpan/packs/hover-runner/
 
 # Web play (manifest)
-https://corpora-inc.github.io/encorpora/corpan/packs/hover-runner/manifest.json
+https://encorpora.io/corpan/packs/hover-runner/manifest.json
 
 # Offline download (ZIP)
-https://corpora-inc.github.io/encorpora/corpan/packs/hover-runner.zip
+https://encorpora.io/corpan/packs/hover-runner.zip
 
 # Web play pack files
-https://corpora-inc.github.io/encorpora/corpan/packs/hover-runner/dist/app.js
-https://corpora-inc.github.io/encorpora/corpan/packs/hover-runner/dist/app.css
+https://encorpora.io/corpan/packs/hover-runner/dist/app.js
+https://encorpora.io/corpan/packs/hover-runner/dist/app.css
 ```
 
 ## How Users Install Packs
@@ -137,7 +137,7 @@ open web/io/out/corpan/packs/hover-runner/index.html  # Landing page ✅
 ```
 
 ### Production Testing (after deploy)
-1. Visit: https://corpora-inc.github.io/encorpora/corpan/packs/hover-runner/
+1. Visit: https://encorpora.io/corpan/packs/hover-runner/
 2. Click "Copy" on Web Play URL
 3. Paste into Corpán app
 4. Verify installation works

@@ -9,12 +9,12 @@ import {
 import { colorToCss, scaleColor } from "../core/utils"
 
 export const createSkyDome = (scene: Scene) => {
-  const size = 1024
+  const size = 512  // Reduced for performance
   const texture = new DynamicTexture(
     "sky-texture",
     { width: size, height: size },
     scene,
-    false
+    true  // generateMipMaps
   )
   const ctx = texture.getContext()
 
@@ -26,7 +26,7 @@ export const createSkyDome = (scene: Scene) => {
 
   const dome = MeshBuilder.CreateSphere(
     "sky-dome",
-    { diameter: 220, segments: 32 },
+    { diameter: 220, segments: 24 },  // Reduced segments for perf
     scene
   )
   dome.material = material
@@ -34,64 +34,67 @@ export const createSkyDome = (scene: Scene) => {
   dome.infiniteDistance = true
 
   let animationTime = 0
+  let currentBase = new Color3(0.05, 0.08, 0.15)  // Default dark blue
 
-  const setColor = (color: Color4) => {
-    const lift = (value: number, min: number) => Math.max(value, min)
-    const base = new Color3(
-      lift(color.r, 0.06),
-      lift(color.g, 0.06),
-      lift(color.b, 0.08)
-    )
-    const top = scaleColor(base, 1.6)
-    const bottom = scaleColor(base, 0.45)
+  // Draw function that actually renders to texture
+  const drawSky = (base: Color3) => {
+    // Clear to black first
+    ctx.fillStyle = "#000000"
+    ctx.fillRect(0, 0, size, size)
+
+    // Main gradient
+    const top = scaleColor(base, 2.0)
+    const mid = scaleColor(base, 1.0)
+    const bottom = scaleColor(base, 0.3)
+
     const gradient = ctx.createLinearGradient(0, 0, 0, size)
     gradient.addColorStop(0, colorToCss(top))
-    gradient.addColorStop(0.55, colorToCss(base))
+    gradient.addColorStop(0.5, colorToCss(mid))
     gradient.addColorStop(1, colorToCss(bottom))
     ctx.fillStyle = gradient
     ctx.fillRect(0, 0, size, size)
 
-    // Add nebula-like clouds
-    ctx.globalAlpha = 0.12
-    const cloudCount = 8
-    for (let i = 0; i < cloudCount; i += 1) {
-      const x = (size / cloudCount) * i + Math.sin(i * 2.5) * size * 0.2
-      const y = size * 0.4 + Math.cos(i * 1.8) * size * 0.15
-      const radius = size * 0.15
-      const nebula = ctx.createRadialGradient(x, y, 0, x, y, radius)
-      const nebulaColor = scaleColor(base, 1.4)
-      nebula.addColorStop(0, colorToCss(nebulaColor, 0.25))
-      nebula.addColorStop(1, "rgba(0,0,0,0)")
-      ctx.fillStyle = nebula
-      ctx.fillRect(0, 0, size, size)
-    }
-    ctx.globalAlpha = 1
+    // Horizon glow
+    const horizonGrad = ctx.createLinearGradient(0, size * 0.75, 0, size)
+    const glowColor = scaleColor(base, 2.5)
+    horizonGrad.addColorStop(0, "rgba(0,0,0,0)")
+    horizonGrad.addColorStop(0.6, colorToCss(glowColor, 0.2))
+    horizonGrad.addColorStop(1, colorToCss(glowColor, 0.35))
+    ctx.fillStyle = horizonGrad
+    ctx.fillRect(0, 0, size, size)
 
-    // More varied stars with different sizes and colors
-    const starCount = 150
-    for (let i = 0; i < starCount; i += 1) {
-      const x = Math.random() * size
-      const y = Math.random() * size * 0.7
-      const starSize = Math.random() < 0.9 ? 2 : 3
+    // Stars - reduced count for performance
+    const starCount = 100
+    for (let i = 0; i < starCount; i++) {
+      const x = (Math.sin(i * 127.1) * 0.5 + 0.5) * size  // Pseudo-random
+      const y = (Math.cos(i * 311.7) * 0.5 + 0.5) * size * 0.7
+      const starSize = i % 10 === 0 ? 3 : 2
+      const alpha = 0.4 + (i % 5) * 0.12
 
-      // Some stars are more colorful
-      if (Math.random() < 0.15) {
-        const hue = Math.random() * 60 + (i % 3) * 120
-        ctx.fillStyle = `hsla(${hue}, 70%, 80%, ${0.3 + Math.random() * 0.5})`
-      } else {
-        ctx.fillStyle = `rgba(255, 255, 255, ${0.3 + Math.random() * 0.5})`
-      }
-
+      ctx.fillStyle = `rgba(255, 255, 255, ${alpha})`
       ctx.fillRect(x, y, starSize, starSize)
     }
 
+    // CRITICAL: Update the texture
     texture.update()
+  }
+
+  // Draw initial sky immediately
+  drawSky(currentBase)
+
+  const setColor = (color: Color4) => {
+    const lift = (v: number, min: number) => Math.max(v, min)
+    currentBase = new Color3(
+      lift(color.r, 0.04),
+      lift(color.g, 0.04),
+      lift(color.b, 0.06)
+    )
+    drawSky(currentBase)
   }
 
   const update = (dt: number) => {
     animationTime += dt
-    // Very subtle rotation for parallax effect
-    dome.rotation.y = animationTime * 0.01
+    dome.rotation.y = animationTime * 0.008
   }
 
   return { mesh: dome, setColor, update }

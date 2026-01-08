@@ -66,6 +66,12 @@ function applyBasePath(html) {
 
 function buildPackLandingPage(pack, outputDir) {
   const gameLandingTemplate = applyBasePath(readTemplate('game-landing'));
+  const urls = {
+    zip: pack.zipUrl || `${basePathWithSlash}corpan/packs/${pack.id}.zip`
+  };
+  if (pack.manifestUrl) {
+    urls.manifest = pack.manifestUrl;
+  }
 
   // Build video section HTML
   let videoSectionHtml = '';
@@ -109,7 +115,8 @@ function buildPackLandingPage(pack, outputDir) {
     .replace(/\{\{GAME_DESCRIPTION\}\}/g, pack.description)
     .replace(/\{\{GAME_VERSION\}\}/g, pack.version)
     .replace(/\{\{GAME_AVATAR\}\}/g, pack.avatarUrl || `${basePathWithSlash}assets/${pack.id}-avatar.png`)
-    .replace('{{VIDEO_SECTION}}', videoSectionHtml);
+    .replace('{{VIDEO_SECTION}}', videoSectionHtml)
+    .replace('{{URLS_JSON}}', JSON.stringify(urls));
 
   // Write file
   const packDir = path.join(outputDir, 'corpan', 'packs', pack.id);

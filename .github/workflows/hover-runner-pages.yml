@@ -5,7 +5,7 @@ on:
     branches: ["main"]
     paths:
       - "web/io/**"
-      - "corpan/games/**"
+      - "corpan/packs/**"
       - "web/pages/**"
       - "web/scripts/**"
       - ".github/workflows/hover-runner-pages.yml"
@@ -47,42 +47,42 @@ jobs:
           node web/pages/build.js web/io/out
 
       - name: Install Hover Runner Dependencies
-        working-directory: corpan/games/hover-runner
+        working-directory: corpan/packs/hover-runner
         run: npm install --legacy-peer-deps
 
       - name: Build Hover Runner
-        working-directory: corpan/games/hover-runner
+        working-directory: corpan/packs/hover-runner
         run: npm run build
 
       - name: Package Hover Runner as ZIP
         run: |
-          cd corpan/games/hover-runner
+          cd corpan/packs/hover-runner
           zip -r hover-runner.zip manifest.json dist/
           cd ../../..
 
       - name: Package Hanzi Atelier as ZIP
         run: |
-          cd corpan/games/hanzi-atelier
-          zip -r hanzi-atelier.zip manifest.json index.js styles.css hanziwriter.min.js HANZIWRITER_LICENSE.txt data/
+          cd corpan/packs/hanzipan
+          zip -r hanzipan.zip manifest.json index.js styles.css hanziwriter.min.js HANZIWRITER_LICENSE.txt data/
           cd ../../..
 
       - name: Copy Hover Runner into io/out
         run: |
-          mkdir -p "web/io/out/corpan/games/hover-runner"
-          cp corpan/games/hover-runner/manifest.json "web/io/out/corpan/games/hover-runner/"
-          cp -R corpan/games/hover-runner/dist "web/io/out/corpan/games/hover-runner/"
-          cp corpan/games/hover-runner/hover-runner.zip "web/io/out/corpan/games/hover-runner.zip"
+          mkdir -p "web/io/out/corpan/packs/hover-runner"
+          cp corpan/packs/hover-runner/manifest.json "web/io/out/corpan/packs/hover-runner/"
+          cp -R corpan/packs/hover-runner/dist "web/io/out/corpan/packs/hover-runner/"
+          cp corpan/packs/hover-runner/hover-runner.zip "web/io/out/corpan/packs/hover-runner.zip"
 
       - name: Copy Hanzi Atelier into io/out
         run: |
-          mkdir -p "web/io/out/corpan/games/hanzi-atelier"
-          cp corpan/games/hanzi-atelier/manifest.json "web/io/out/corpan/games/hanzi-atelier/"
-          cp corpan/games/hanzi-atelier/index.js "web/io/out/corpan/games/hanzi-atelier/"
-          cp corpan/games/hanzi-atelier/styles.css "web/io/out/corpan/games/hanzi-atelier/"
-          cp corpan/games/hanzi-atelier/hanziwriter.min.js "web/io/out/corpan/games/hanzi-atelier/"
-          cp corpan/games/hanzi-atelier/HANZIWRITER_LICENSE.txt "web/io/out/corpan/games/hanzi-atelier/"
-          cp -R corpan/games/hanzi-atelier/data "web/io/out/corpan/games/hanzi-atelier/"
-          cp corpan/games/hanzi-atelier/hanzi-atelier.zip "web/io/out/corpan/games/hanzi-atelier.zip"
+          mkdir -p "web/io/out/corpan/packs/hanzipan"
+          cp corpan/packs/hanzipan/manifest.json "web/io/out/corpan/packs/hanzipan/"
+          cp corpan/packs/hanzipan/index.js "web/io/out/corpan/packs/hanzipan/"
+          cp corpan/packs/hanzipan/styles.css "web/io/out/corpan/packs/hanzipan/"
+          cp corpan/packs/hanzipan/hanziwriter.min.js "web/io/out/corpan/packs/hanzipan/"
+          cp corpan/packs/hanzipan/HANZIWRITER_LICENSE.txt "web/io/out/corpan/packs/hanzipan/"
+          cp -R corpan/packs/hanzipan/data "web/io/out/corpan/packs/hanzipan/"
+          cp corpan/packs/hanzipan/hanzipan.zip "web/io/out/corpan/packs/hanzipan.zip"
 
       - name: Show Final Structure
         run: |

@@ -5,8 +5,9 @@
     "description": "Hover over words to reveal translations in this interactive reading game",
     "status": "prototype",
     "version": "0.1.0",
-    "manifestUrl": "./hover-runner/manifest.json",
-    "landingUrl": "./hover-runner/",
+    "manifestUrl": "/corpan/packs/hover-runner/manifest.json",
+    "zipUrl": "/corpan/packs/hover-runner.zip",
+    "landingUrl": "/corpan/packs/hover-runner/",
     "avatarSource": "corpan/packs/hover-runner/hover-runner-avatar.png",
     "github": "https://github.com/corpora-inc/encorpora/tree/main/corpan/packs/hover-runner",
     "videos": {
@@ -24,8 +25,8 @@
     "description": "A premium Mandarin character studio with stroke guidance, feedback, and infinite contextual examples",
     "status": "prototype",
     "version": "0.2.0",
-    "manifestUrl": "./hanzipan/manifest.json",
-    "landingUrl": "./hanzipan/",
+    "zipUrl": "/corpan/packs/hanzipan.zip",
+    "landingUrl": "/corpan/packs/hanzipan/",
     "avatarSource": "corpan/corpan-app/src-tauri/icons/512x512.png",
     "github": "https://github.com/corpora-inc/encorpora/tree/main/corpan/packs/hanzipan",
     "videos": {

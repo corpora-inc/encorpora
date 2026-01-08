@@ -48,9 +48,14 @@ echo ""
 
 # Step 4: Copy hover-runner into web/io/out
 echo "📦 Copying hover-runner into site..."
+zip -r hover-runner.zip manifest.json dist/
 mkdir -p "$OUTPUT_ROOT/corpan/packs/hover-runner"
 cp "$REPO_ROOT/corpan/packs/hover-runner/manifest.json" "$OUTPUT_ROOT/corpan/packs/hover-runner/"
 cp -R "$REPO_ROOT/corpan/packs/hover-runner/dist/." "$OUTPUT_ROOT/corpan/packs/hover-runner/"
+cp "$REPO_ROOT/corpan/packs/hover-runner/hover-runner.zip" "$OUTPUT_ROOT/corpan/packs/hover-runner.zip"
+if [ -f "$REPO_ROOT/corpan/packs/hanzipan/hanzipan.zip" ]; then
+  cp "$REPO_ROOT/corpan/packs/hanzipan/hanzipan.zip" "$OUTPUT_ROOT/corpan/packs/hanzipan.zip"
+fi
 
 echo ""
 echo "✅ Build complete!"

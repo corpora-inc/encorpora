@@ -306,8 +306,9 @@
                 if (pack.landingUrl) {
                     actionsHtml += `<a href="${pack.landingUrl}" class="game-button button-primary">View Details</a>`;
                 }
-                if (pack.manifestUrl) {
-                    actionsHtml += `<a href="${pack.manifestUrl}" class="game-button button-secondary">Manifest</a>`;
+                const downloadUrl = pack.zipUrl || pack.manifestUrl;
+                if (downloadUrl) {
+                    actionsHtml += `<a href="${downloadUrl}" class="game-button button-secondary">Download Pack</a>`;
                 }
                 if (pack.github) {
                     actionsHtml += `<a href="${pack.github}" target="_blank" rel="noopener" class="game-button button-secondary">GitHub ↗</a>`;

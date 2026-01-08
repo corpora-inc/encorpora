@@ -16,7 +16,7 @@ This allows us to scale to many apps, packs, and content types - all composed in
 ## Site Structure
 
 ```
-https://corpora-inc.github.io/encorpora/
+https://encorpora.io/
 ├── index.html                    # web/io/ root site (Next.js export)
 ├── books.html                    # web/io/ books page
 ├── privacy.html                  # web/io/ privacy page
@@ -33,12 +33,9 @@ https://corpora-inc.github.io/encorpora/
 └── _next/                        # Next.js assets
 ```
 
-## Base path support
+## Base path
 
-The build supports both GitHub Pages (`/encorpora`) and a custom domain root by setting `ENCORPORA_BASE_PATH` at build time:
-
-- GitHub Pages: `ENCORPORA_BASE_PATH=/encorpora`
-- Custom domain: leave `ENCORPORA_BASE_PATH` empty
+The site is served from the domain root, so all assets and links assume `/`.
 
 ## How It Works
 
@@ -130,7 +127,7 @@ Edit `web/pages/data/packs.json`:
   "version": "1.0.0",
   "manifestUrl": "./my-pack/manifest.json",
   "avatarSource": "corpan/packs/my-pack/my-pack-avatar.png",
-  "playUrl": "./my-pack/",
+  "landingUrl": "./my-pack/",
   "github": "https://github.com/corpora-inc/encorpora/tree/main/corpan/packs/my-pack"
 }
 ```

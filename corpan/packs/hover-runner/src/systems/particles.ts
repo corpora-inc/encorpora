@@ -3,6 +3,7 @@ import { Color4, ParticleSystem, Scene, Texture, Vector3 } from "@babylonjs/core
 // Track all active particle timeouts for cleanup
 const activeParticleTimeouts = new Set<number>()
 
+// Simple working particle texture - solid circle
 const createParticleTexture = (scene: Scene) =>
   new Texture(
     "data:image/svg+xml;base64," +
@@ -202,4 +203,219 @@ export const updateAvatarAura = (
   // Update sizes (smaller for performance)
   particleSystem.minSize = 0.015 * intensity
   particleSystem.maxSize = 0.04 * intensity
+}
+
+// ============================================================================
+// BACKGROUND PARTICLE SYSTEMS
+// These create atmospheric effects in the scene
+// ============================================================================
+
+// Ambient cosmic dust - spawns around the play area (subtle background effect)
+export const createAmbientParticles = (
+  scene: Scene,
+  _cameraPosition: Vector3
+): ParticleSystem => {
+  const particleSystem = new ParticleSystem("ambientDust", 60, scene)  // Reduced from 150
+
+  // Spawn in a box around the play area (close to camera)
+  particleSystem.createBoxEmitter(
+    new Vector3(-0.5, -0.5, -0.5),  // random drift directions
+    new Vector3(0.5, 0.5, 0.5),
+    new Vector3(-8, -5, -2),        // spawn around the play area
+    new Vector3(8, 5, 25)
+  )
+  particleSystem.particleTexture = createParticleTexture(scene)
+
+  // Subtle, softer particles
+  particleSystem.color1 = new Color4(0.8, 0.9, 1.0, 0.4)   // Reduced alpha
+  particleSystem.color2 = new Color4(1.0, 1.0, 1.0, 0.3)
+  particleSystem.colorDead = new Color4(0.7, 0.85, 1.0, 0)
+
+  // Smaller sizes for subtlety
+  particleSystem.minSize = 0.03
+  particleSystem.maxSize = 0.08
+
+  particleSystem.minLifeTime = 2.0
+  particleSystem.maxLifeTime = 4.0
+
+  particleSystem.emitRate = 8  // Reduced from 20
+
+  // Gentle drift
+  particleSystem.minEmitPower = 0.5
+  particleSystem.maxEmitPower = 2.0
+  particleSystem.updateSpeed = 0.016
+
+  particleSystem.gravity = new Vector3(0, 0.1, 0)
+
+  particleSystem.blendMode = ParticleSystem.BLENDMODE_ADD
+
+  // Emitter near the action
+  particleSystem.emitter = new Vector3(0, 0, 10)
+
+  particleSystem.start()
+
+  return particleSystem
+}
+
+// Starfield - subtle points streaming toward camera
+export const createStarfieldParticles = (
+  scene: Scene,
+  _cameraPosition: Vector3
+): ParticleSystem => {
+  const particleSystem = new ParticleSystem("starfield", 40, scene)  // Reduced from 80
+
+  // Spawn ahead, travel toward camera
+  particleSystem.createBoxEmitter(
+    new Vector3(-0.1, -0.1, -1),  // direction - toward camera
+    new Vector3(0.1, 0.1, -1),
+    new Vector3(-10, -5, 0),      // spawn box (relative to emitter)
+    new Vector3(10, 5, 20)
+  )
+
+  particleSystem.particleTexture = createParticleTexture(scene)
+
+  // Subtle white stars
+  particleSystem.color1 = new Color4(1.0, 1.0, 1.0, 0.5)   // Reduced alpha
+  particleSystem.color2 = new Color4(0.9, 0.95, 1.0, 0.4)
+  particleSystem.colorDead = new Color4(1.0, 1.0, 1.0, 0)
+
+  // Smaller sizes
+  particleSystem.minSize = 0.02
+  particleSystem.maxSize = 0.06
+
+  particleSystem.minLifeTime = 1.0
+  particleSystem.maxLifeTime = 2.0
+
+  particleSystem.emitRate = 10  // Reduced from 25
+
+  // Fast toward camera
+  particleSystem.minEmitPower = 15
+  particleSystem.maxEmitPower = 30
+  particleSystem.updateSpeed = 0.016
+
+  particleSystem.gravity = new Vector3(0, 0, 0)
+
+  particleSystem.blendMode = ParticleSystem.BLENDMODE_ADD
+
+  // Emitter closer - at z=30 instead of z=60
+  particleSystem.emitter = new Vector3(0, 0, 30)
+
+  particleSystem.start()
+
+  return particleSystem
+}
+
+// Energy field particles along road edges - subtle rising energy wisps
+export const createEnergyFieldParticles = (
+  scene: Scene,
+  side: "left" | "right"
+): ParticleSystem => {
+  const particleSystem = new ParticleSystem(`energyField-${side}`, 30, scene)  // Reduced from 80
+
+  const xOffset = side === "left" ? -4.5 : 4.5
+
+  // Simple box along the road edge
+  particleSystem.createBoxEmitter(
+    new Vector3(-0.2, 0.8, -0.3),  // direction - mostly up with slight inward
+    new Vector3(0.2, 1.2, 0.3),
+    new Vector3(-0.5, 0, -5),
+    new Vector3(0.5, 0.5, 40)
+  )
+
+  particleSystem.particleTexture = createParticleTexture(scene)
+
+  // Subtle cyan/electric blue
+  particleSystem.color1 = new Color4(0.3, 0.9, 1.0, 0.4)   // Reduced alpha
+  particleSystem.color2 = new Color4(0.5, 0.7, 1.0, 0.3)
+  particleSystem.colorDead = new Color4(0.4, 0.8, 1.0, 0)
+
+  // Smaller sizes
+  particleSystem.minSize = 0.03
+  particleSystem.maxSize = 0.08
+
+  particleSystem.minLifeTime = 1.2
+  particleSystem.maxLifeTime = 2.5
+
+  particleSystem.emitRate = 8  // Reduced from 25
+
+  // Rising motion
+  particleSystem.minEmitPower = 1.5
+  particleSystem.maxEmitPower = 3.5
+  particleSystem.updateSpeed = 0.016
+
+  // Slight upward gravity for energy feel
+  particleSystem.gravity = new Vector3(0, 0.5, 0)
+
+  particleSystem.blendMode = ParticleSystem.BLENDMODE_ADD
+
+  // Position along road edge at road Y level
+  particleSystem.emitter = new Vector3(xOffset, -3.5, 20)
+
+  particleSystem.start()
+
+  return particleSystem
+}
+
+// Speed lines - subtle fast streaks for velocity feel
+export const createSpeedLines = (
+  scene: Scene,
+  _cameraPosition: Vector3
+): ParticleSystem => {
+  const particleSystem = new ParticleSystem("speedLines", 25, scene)  // Reduced from 60
+
+  // Emit from sides of view, streak toward camera
+  particleSystem.createBoxEmitter(
+    new Vector3(0, 0, -1),     // direction - toward camera
+    new Vector3(0, 0, -1),
+    new Vector3(-8, -4, 0),    // spawn box closer
+    new Vector3(8, 3, 15)
+  )
+
+  particleSystem.particleTexture = createParticleTexture(scene)
+
+  // Subtle white
+  particleSystem.color1 = new Color4(1.0, 1.0, 1.0, 0.5)   // Reduced alpha
+  particleSystem.color2 = new Color4(0.9, 0.95, 1.0, 0.35)
+  particleSystem.colorDead = new Color4(1.0, 1.0, 1.0, 0)
+
+  // Smaller size
+  particleSystem.minSize = 0.02
+  particleSystem.maxSize = 0.05
+
+  // Short lifetime
+  particleSystem.minLifeTime = 0.15
+  particleSystem.maxLifeTime = 0.4
+
+  particleSystem.emitRate = 12  // Reduced from 30
+
+  // Fast toward camera
+  particleSystem.minEmitPower = 40
+  particleSystem.maxEmitPower = 70
+  particleSystem.updateSpeed = 0.016
+
+  particleSystem.gravity = new Vector3(0, 0, 0)
+
+  particleSystem.blendMode = ParticleSystem.BLENDMODE_ADD
+
+  // Stretch particles along velocity
+  particleSystem.billboardMode = ParticleSystem.BILLBOARDMODE_STRETCHED
+  particleSystem.minScaleY = 8
+  particleSystem.maxScaleY = 18
+
+  // Emitter closer - at z=25
+  particleSystem.emitter = new Vector3(0, 0, 25)
+
+  particleSystem.start()
+
+  return particleSystem
+}
+
+// Update speed lines intensity based on game speed (kept subtle)
+export const updateSpeedLines = (
+  particleSystem: ParticleSystem,
+  speedMultiplier: number
+) => {
+  particleSystem.emitRate = 10 + speedMultiplier * 10  // Reduced base and multiplier
+  particleSystem.minEmitPower = 40 + speedMultiplier * 20
+  particleSystem.maxEmitPower = 70 + speedMultiplier * 30
 }

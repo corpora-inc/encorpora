@@ -222,7 +222,7 @@ This builds:
 GitHub Actions automatically deploys on push:
 - Workflow: `.github/workflows/hover-runner-pages.yml`
 - Triggers: Changes to `web/io/`, `web/pages/`, `corpan/packs/`, or workflow
-- Output: `https://corpora-inc.github.io/encorpora/`
+- Output: `https://encorpora.io/`
 
 ### Build Corpán App
 

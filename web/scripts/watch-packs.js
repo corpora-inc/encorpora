@@ -15,7 +15,9 @@ const PACK_CONFIGS = [
   {
     name: 'hover-runner',
     distDir: 'dist',
-    files: ['manifest.json']
+    files: ['manifest.json'],
+    zipName: 'hover-runner.zip',
+    zipEntries: ['manifest.json', 'dist/']
   },
   {
     name: 'hanzipan',

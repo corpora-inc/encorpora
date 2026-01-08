@@ -19,7 +19,7 @@ const DEFAULT_CATALOG: CatalogGame[] = [
     id: "hover_runner",
     name: "Hover Runner",
     version: "0.1.0",
-    manifestUrl: "/packs/hover-runner/manifest.json",
+    manifestUrl: "https://encorpora.io/corpan/packs/hover-runner.zip",
     description: "Hoverboard runner that drills core phrases.",
     purchase: { type: "free", priceLabel: "Free" },
   },
@@ -27,13 +27,30 @@ const DEFAULT_CATALOG: CatalogGame[] = [
     id: "hanzipan",
     name: "Hanzipan",
     version: "0.1.0",
-    manifestUrl: "/packs/hanzipan/manifest.json",
+    manifestUrl: "https://encorpora.io/corpan/packs/hanzipan.zip",
     description: "Character-first handwriting studio for Mandarin.",
     purchase: { type: "free", priceLabel: "Free" },
   },
 ]
 
-const DEV_CATALOG: CatalogGame[] = [...DEFAULT_CATALOG]
+const DEV_CATALOG: CatalogGame[] = [
+  {
+    id: "hover_runner",
+    name: "Hover Runner",
+    version: "0.1.0",
+    manifestUrl: "/packs/hover-runner.zip",
+    description: "Hoverboard runner that drills core phrases.",
+    purchase: { type: "free", priceLabel: "Free" },
+  },
+  {
+    id: "hanzipan",
+    name: "Hanzipan",
+    version: "0.1.0",
+    manifestUrl: "/packs/hanzipan.zip",
+    description: "Character-first handwriting studio for Mandarin.",
+    purchase: { type: "free", priceLabel: "Free" },
+  },
+]
 
 const getCatalogUrl = () => {
   const envUrl = import.meta.env.VITE_GAME_CATALOG_URL

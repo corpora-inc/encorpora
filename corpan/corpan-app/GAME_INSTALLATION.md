@@ -10,7 +10,7 @@ Corpán supports two methods for installing packs. Each has different benefits d
 
 **URL Format:**
 ```
-https://corpora-inc.github.io/encorpora/corpan/packs/hover-runner/manifest.json
+https://encorpora.io/corpan/packs/hover-runner/manifest.json
 ```
 
 **How it works:**
@@ -34,7 +34,7 @@ https://corpora-inc.github.io/encorpora/corpan/packs/hover-runner/manifest.json
 
 **URL Format:**
 ```
-https://corpora-inc.github.io/encorpora/corpan/packs/hover-runner.zip
+https://encorpora.io/corpan/packs/hover-runner.zip
 ```
 
 **How it works:**
@@ -71,12 +71,12 @@ For Hover Runner:
 
 **Web Play:**
 ```
-https://corpora-inc.github.io/encorpora/corpan/packs/hover-runner/manifest.json
+https://encorpora.io/corpan/packs/hover-runner/manifest.json
 ```
 
 **Offline:**
 ```
-https://corpora-inc.github.io/encorpora/corpan/packs/hover-runner.zip
+https://encorpora.io/corpan/packs/hover-runner.zip
 ```
 
 ## Technical Details
