@@ -142,17 +142,22 @@ export const installPackFromDownload = async (
   request: DownloadInstallRequest
 ): Promise<InstallResult> => {
   const { installContentPackFromUrl } = await import("./native")
-  const result = await installContentPackFromUrl({
-    packId: request.packId,
-    downloadUrl: request.downloadUrl,
-    expectedSha256: request.expectedSha256,
-  })
-  return {
-    packId: result.pack.id,
-    name: result.pack.name,
-    manifestUrl: result.pack.manifest_url,
-    version: result.pack.version,
-    installedAt: result.pack.installed_at,
-    source: request.source,
+  try {
+    const result = await installContentPackFromUrl({
+      packId: request.packId,
+      downloadUrl: request.downloadUrl,
+      expectedSha256: request.expectedSha256,
+    })
+    return {
+      packId: result.pack.id,
+      name: result.pack.name,
+      manifestUrl: result.pack.manifest_url,
+      version: result.pack.version,
+      installedAt: result.pack.installed_at,
+      source: request.source,
+    }
+  } catch (err) {
+    const message = err instanceof Error ? err.message : String(err)
+    throw new Error(`Pack download install failed: ${message}`)
   }
 }

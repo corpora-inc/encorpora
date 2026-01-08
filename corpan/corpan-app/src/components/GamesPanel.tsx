@@ -67,7 +67,8 @@ export function GamesPanel({
       })
       setManifestUrl("")
     } catch (err) {
-      const message = err instanceof Error ? err.message : ""
+      const message = err instanceof Error ? err.message : String(err)
+      console.error("[packs] manual install failed", err)
       setError(
         message
           ? `${t("packs.installFailed")} ${message}`
@@ -168,7 +169,8 @@ export function GamesPanel({
         source: result.source,
       })
     } catch (err) {
-      const message = err instanceof Error ? err.message : ""
+      const message = err instanceof Error ? err.message : String(err)
+      console.error("[packs] catalog install failed", err)
       setCatalogError(
         message
           ? `${t("packs.installFailed")} ${message}`

@@ -27,6 +27,13 @@ const devGames: InstalledGame[] = import.meta.env.DEV
         version: "0.1.0",
         installedAt: Date.now(),
       },
+      {
+        id: "hanzi_atelier",
+        name: "Hanzi Atelier (local)",
+        manifestUrl: "/games/hanzi-atelier/manifest.json",
+        version: "0.1.0",
+        installedAt: Date.now(),
+      },
     ]
   : []
 

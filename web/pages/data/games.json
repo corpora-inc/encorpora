@@ -17,5 +17,20 @@
       ],
       "demos": []
     }
+  },
+  {
+    "id": "hanzi-atelier",
+    "name": "Hanzi Atelier",
+    "description": "A premium Mandarin character studio with stroke guidance, feedback, and infinite contextual examples",
+    "status": "prototype",
+    "version": "0.2.0",
+    "manifestUrl": "./hanzi-atelier/manifest.json",
+    "landingUrl": "./hanzi-atelier/",
+    "avatarSource": "corpan/corpan-app/src-tauri/icons/512x512.png",
+    "github": "https://github.com/corpora-inc/encorpora/tree/main/corpan/games/hanzi-atelier",
+    "videos": {
+      "shorts": [],
+      "demos": []
+    }
   }
 ]

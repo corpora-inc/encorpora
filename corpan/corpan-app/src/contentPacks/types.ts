@@ -8,15 +8,52 @@ export type StackConfig = {
   showRomanization: boolean
 }
 
+export type TranslationOut = {
+  language_code: string
+  text: string
+  romanization: string
+}
+
+export type EntryOut = {
+  entry_id: number
+  level: string
+  domains: string[]
+  translations: TranslationOut[]
+}
+
+export type PackDbQuery = {
+  sql: string
+  params?: unknown[]
+  dbName?: string
+  packId?: string
+  maxRows?: number
+}
+
+export type PackDbQueryResult = {
+  columns: string[]
+  rows: Record<string, unknown>[]
+}
+
 export type HostApi = {
   speak: (uiCode: string, text: string) => Promise<void>
   stopSpeech?: () => Promise<void>
   dispose?: () => void
   getStackConfig: () => StackConfig
   onStackConfigChange: (listener: (config: StackConfig) => void) => () => void
-  getRandomEntry: () => Promise<unknown>
-  getRandomEntries?: (count: number) => Promise<unknown[]>
-  getEntryById: (entryId: number) => Promise<unknown>
+  getRandomEntry: () => Promise<EntryOut>
+  getRandomEntries?: (count: number) => Promise<EntryOut[]>
+  getEntryById: (entryId: number) => Promise<EntryOut>
+  searchEntriesByText?: (options: {
+    text: string
+    languageCodes?: string[]
+    limit?: number
+    offset?: number
+  }) => Promise<EntryOut[]>
+  searchEntriesByTextCount?: (options: {
+    text: string
+    languageCodes?: string[]
+  }) => Promise<number>
+  queryPackDb?: (query: PackDbQuery) => Promise<PackDbQueryResult>
   isMock?: boolean
 }
 
@@ -30,6 +67,7 @@ export type ContentPackManifest = {
   entryType?: "script" | "module"
   sdkVersion?: string
   permissions?: string[]
+  databases?: Record<string, string>
   devRevision?: string
 }
 

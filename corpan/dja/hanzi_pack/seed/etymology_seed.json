@@ -1,0 +1,62 @@
+[
+  {
+    "char": "一",
+    "etymology": {
+      "en": "One. A single horizontal line representing unity."
+    }
+  },
+  {
+    "char": "二",
+    "etymology": {
+      "en": "Two. Two parallel lines indicating two."
+    }
+  },
+  {
+    "char": "三",
+    "etymology": {
+      "en": "Three. Three lines stacked to show three."
+    }
+  },
+  {
+    "char": "人",
+    "etymology": {
+      "en": "Person. A standing figure with two legs."
+    }
+  },
+  {
+    "char": "口",
+    "etymology": {
+      "en": "Mouth. A square opening."
+    }
+  },
+  {
+    "char": "日",
+    "etymology": {
+      "en": "Sun. A round or square sun symbol."
+    }
+  },
+  {
+    "char": "月",
+    "etymology": {
+      "en": "Moon. A crescent shape."
+    }
+  },
+  {
+    "char": "山",
+    "etymology": {
+      "en": "Mountain. Three peaks side by side."
+    }
+  },
+  {
+    "char": "水",
+    "etymology": {
+      "en": "Water. Flowing lines that suggest a current."
+    }
+  },
+  {
+    "char": "木",
+    "etymology": {
+      "en": "Tree. A trunk with spreading branches."
+    }
+  }
+]

@@ -5,10 +5,14 @@
 
 mod content_packs;
 mod db;
+mod pack_db;
 
 use rusqlite::{params_from_iter, Connection, ToSql};
+use rusqlite::types::{Value as SqlValue, ValueRef};
 use serde::Serialize;
+use serde_json::Value as JsonValue;
 use std::collections::HashSet;
+use std::collections::HashMap;
 use tauri::{command, AppHandle, State};
 use std::time::{SystemTime, UNIX_EPOCH};
 use tauri_plugin_opener;
@@ -16,6 +20,10 @@ use crate::content_packs::{
     download_and_install, get_manifest_url, list_installed, ContentPackInfo,
     ContentPackInstallResult,
 };
+use crate::pack_db::{open_pack_connection, resolve_pack_db_path, PackDbState};
+
+const PACK_DB_DEFAULT_MAX_ROWS: usize = 500;
+const PACK_DB_HARD_MAX_ROWS: usize = 2000;
 
 /// Return type for each translation
 #[derive(Serialize)]
@@ -32,6 +40,97 @@ struct EntryOut {
     level: String,
     domains: Vec<String>,
     translations: Vec<TranslationOut>,
+}
+
+#[derive(Serialize)]
+struct PackDbQueryResult {
+    columns: Vec<String>,
+    rows: Vec<HashMap<String, JsonValue>>,
+}
+
+fn escape_like(text: &str) -> String {
+    text.replace('\\', "\\\\")
+        .replace('%', "\\%")
+        .replace('_', "\\_")
+}
+
+fn strip_leading_comments(mut input: &str) -> &str {
+    loop {
+        let trimmed = input.trim_start();
+        if trimmed.starts_with("--") {
+            if let Some(idx) = trimmed.find('\n') {
+                input = &trimmed[idx + 1..];
+                continue;
+            }
+            return "";
+        }
+        if trimmed.starts_with("/*") {
+            if let Some(end) = trimmed.find("*/") {
+                input = &trimmed[end + 2..];
+                continue;
+            }
+            return "";
+        }
+        return trimmed;
+    }
+}
+
+fn ensure_readonly_sql(sql: &str) -> Result<(), String> {
+    let trimmed = strip_leading_comments(sql);
+    if trimmed.is_empty() {
+        return Err("SQL query is empty".to_string());
+    }
+    if trimmed.contains(';') {
+        return Err("Only a single SQL statement is allowed".to_string());
+    }
+    let keyword = trimmed
+        .split_whitespace()
+        .next()
+        .unwrap_or("")
+        .to_ascii_uppercase();
+    match keyword.as_str() {
+        "SELECT" | "WITH" | "PRAGMA" | "EXPLAIN" => Ok(()),
+        _ => Err("Only SELECT/WITH/PRAGMA/EXPLAIN statements are allowed".to_string()),
+    }
+}
+
+fn json_to_sql_value(value: &JsonValue) -> SqlValue {
+    match value {
+        JsonValue::Null => SqlValue::Null,
+        JsonValue::Bool(b) => SqlValue::Integer(if *b { 1 } else { 0 }),
+        JsonValue::Number(num) => {
+            if let Some(i) = num.as_i64() {
+                SqlValue::Integer(i)
+            } else if let Some(f) = num.as_f64() {
+                SqlValue::Real(f)
+            } else {
+                SqlValue::Null
+            }
+        }
+        JsonValue::String(s) => SqlValue::Text(s.clone()),
+        JsonValue::Array(_) | JsonValue::Object(_) => SqlValue::Text(value.to_string()),
+    }
+}
+
+fn blob_to_hex(bytes: &[u8]) -> String {
+    let mut out = String::with_capacity(bytes.len() * 2);
+    for b in bytes {
+        use std::fmt::Write;
+        let _ = write!(out, "{:02x}", b);
+    }
+    out
+}
+
+fn sql_value_ref_to_json(value: ValueRef<'_>) -> JsonValue {
+    match value {
+        ValueRef::Null => JsonValue::Null,
+        ValueRef::Integer(i) => JsonValue::from(i),
+        ValueRef::Real(f) => JsonValue::from(f),
+        ValueRef::Text(bytes) => {
+            JsonValue::from(String::from_utf8_lossy(bytes).to_string())
+        }
+        ValueRef::Blob(bytes) => JsonValue::from(format!("0x{}", blob_to_hex(bytes))),
+    }
 }
 
 fn fetch_entry_with_translations(
@@ -367,6 +466,175 @@ fn get_entry_by_id_with_translations(
     fetch_entry_with_translations(&conn, entry_id, allowed_langs.as_ref())
 }
 
+/// Search for entries whose translation text contains the requested substring.
+#[command]
+fn search_entries_by_translation_text(
+    state: State<'_, db::DbState>,
+    text: String,
+    language_codes: Option<Vec<String>>,
+    limit: Option<i64>,
+    offset: Option<i64>,
+) -> Result<Vec<EntryOut>, String> {
+    let needle = text.trim();
+    if needle.is_empty() {
+        return Ok(vec![]);
+    }
+    let limit = limit.unwrap_or(50).max(1).min(200);
+    let offset = offset.unwrap_or(0).max(0);
+    let search_langs = match &language_codes {
+        Some(codes) if !codes.is_empty() => codes.clone(),
+        _ => vec!["zh-Hans".to_string(), "zh-Hant".to_string()],
+    };
+
+    let conn = state.conn.lock().map_err(|_| "DB lock poisoned".to_string())?;
+
+    let lang_placeholders = vec!["?"; search_langs.len()].join(",");
+    let sql = format!(
+        r#"SELECT DISTINCT t.entry_id
+         FROM cor_translation t
+         JOIN cor_language l ON l.id = t.language_id
+         WHERE l.code IN ({lang_placeholders})
+           AND t.text LIKE ? ESCAPE '\'
+         ORDER BY t.entry_id
+         LIMIT ? OFFSET ?"#
+    );
+
+    let mut params: Vec<Box<dyn ToSql>> = vec![];
+    for lang in &search_langs {
+        params.push(Box::new(lang.clone()));
+    }
+    let pattern = format!("%{}%", escape_like(needle));
+    params.push(Box::new(pattern));
+    params.push(Box::new(limit));
+    params.push(Box::new(offset));
+
+    let mut stmt = conn.prepare_cached(&sql).map_err(|e| e.to_string())?;
+    let mut rows = stmt
+        .query(params_from_iter(params.iter().map(|p| &**p)))
+        .map_err(|e| e.to_string())?;
+
+    let allowed_langs: Option<HashSet<String>> =
+        language_codes.map(|v| v.into_iter().collect());
+    let mut results = vec![];
+    while let Some(row) = rows.next().map_err(|e| e.to_string())? {
+        let entry_id: i64 = row.get(0).map_err(|e| e.to_string())?;
+        let entry = fetch_entry_with_translations(&conn, entry_id, allowed_langs.as_ref())?;
+        results.push(entry);
+    }
+    Ok(results)
+}
+
+/// Count entries whose translation text contains the requested substring.
+#[command]
+fn search_entries_by_translation_text_count(
+    state: State<'_, db::DbState>,
+    text: String,
+    language_codes: Option<Vec<String>>,
+) -> Result<i64, String> {
+    let needle = text.trim();
+    if needle.is_empty() {
+        return Ok(0);
+    }
+    let search_langs = match &language_codes {
+        Some(codes) if !codes.is_empty() => codes.clone(),
+        _ => vec!["zh-Hans".to_string(), "zh-Hant".to_string()],
+    };
+
+    let conn = state.conn.lock().map_err(|_| "DB lock poisoned".to_string())?;
+
+    let lang_placeholders = vec!["?"; search_langs.len()].join(",");
+    let sql = format!(
+        r#"SELECT COUNT(DISTINCT t.entry_id)
+         FROM cor_translation t
+         JOIN cor_language l ON l.id = t.language_id
+         WHERE l.code IN ({lang_placeholders})
+           AND t.text LIKE ? ESCAPE '\'"#
+    );
+
+    let mut params: Vec<Box<dyn ToSql>> = vec![];
+    for lang in &search_langs {
+        params.push(Box::new(lang.clone()));
+    }
+    let pattern = format!("%{}%", escape_like(needle));
+    params.push(Box::new(pattern));
+
+    let total: i64 = conn
+        .query_row(
+            &sql,
+            params_from_iter(params.iter().map(|p| &**p)),
+            |row| row.get(0),
+        )
+        .map_err(|e| e.to_string())?;
+
+    Ok(total)
+}
+
+#[command]
+fn content_packs_query_db(
+    app: AppHandle,
+    state: State<'_, PackDbState>,
+    pack_id: String,
+    db_name: Option<String>,
+    sql: String,
+    params: Option<Vec<JsonValue>>,
+    max_rows: Option<usize>,
+) -> Result<PackDbQueryResult, String> {
+    ensure_readonly_sql(&sql)?;
+
+    let db_path = resolve_pack_db_path(&app, &pack_id, db_name.as_deref())?;
+    let key = format!("{}::{}", pack_id, db_name.unwrap_or_else(|| "main".to_string()));
+    let mut connections = state
+        .connections
+        .lock()
+        .map_err(|_| "Pack DB lock poisoned".to_string())?;
+
+    if !connections.contains_key(&key) {
+        let conn = open_pack_connection(&db_path)?;
+        connections.insert(key.clone(), conn);
+    }
+    let conn = connections
+        .get_mut(&key)
+        .ok_or_else(|| "Failed to open pack DB".to_string())?;
+
+    let mut stmt = conn.prepare_cached(&sql).map_err(|e| e.to_string())?;
+    let columns = stmt
+        .column_names()
+        .iter()
+        .map(|c| c.to_string())
+        .collect::<Vec<_>>();
+
+    let mut sql_params: Vec<SqlValue> = vec![];
+    if let Some(values) = params {
+        for value in values {
+            sql_params.push(json_to_sql_value(&value));
+        }
+    }
+
+    let mut rows = stmt
+        .query(params_from_iter(sql_params.iter()))
+        .map_err(|e| e.to_string())?;
+    let mut out_rows: Vec<HashMap<String, JsonValue>> = vec![];
+    let cap = max_rows
+        .unwrap_or(PACK_DB_DEFAULT_MAX_ROWS)
+        .min(PACK_DB_HARD_MAX_ROWS);
+    while let Some(row) = rows.next().map_err(|e| e.to_string())? {
+        let mut map = HashMap::new();
+        for (idx, col) in columns.iter().enumerate() {
+            let value = row.get_ref(idx).map_err(|e| e.to_string())?;
+            map.insert(col.clone(), sql_value_ref_to_json(value));
+        }
+        out_rows.push(map);
+        if out_rows.len() >= cap {
+            break;
+        }
+    }
+
+    Ok(PackDbQueryResult {
+        columns,
+        rows: out_rows,
+    })
+}
+
 #[command]
 async fn content_packs_install_from_url(
     app: AppHandle,
@@ -456,14 +724,19 @@ fn open_apple_feedback(#[allow(unused_variables)] app: AppHandle) -> Result<(), 
 pub fn run() {
     let db_state =
         db::DbState::new().expect("failed to initialize embedded database");
+    let pack_db_state = PackDbState::new();
     tauri::Builder::default()
         .manage(db_state)
+        .manage(pack_db_state)
         .plugin(tauri_plugin_os::init())
         .plugin(tauri_plugin_game_packs::init())
         .invoke_handler(tauri::generate_handler![
             get_random_entry_with_translations,
             get_random_entries_with_translations,
             get_entry_by_id_with_translations,
+            search_entries_by_translation_text,
+            search_entries_by_translation_text_count,
+            content_packs_query_db,
             content_packs_install_from_url,
             content_packs_fetch_text,
             content_packs_list_installed,

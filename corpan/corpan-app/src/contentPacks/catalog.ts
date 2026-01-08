@@ -23,6 +23,14 @@ const DEFAULT_CATALOG: CatalogGame[] = [
     description: "Hoverboard runner that drills core phrases.",
     purchase: { type: "free", priceLabel: "Free" },
   },
+  {
+    id: "hanzi_atelier",
+    name: "Hanzi Atelier",
+    version: "0.1.0",
+    manifestUrl: "/games/hanzi-atelier/manifest.json",
+    description: "Character-first handwriting studio for Mandarin.",
+    purchase: { type: "free", priceLabel: "Free" },
+  },
 ]
 
 const DEV_CATALOG: CatalogGame[] = [...DEFAULT_CATALOG]
