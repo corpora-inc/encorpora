@@ -46,7 +46,13 @@ function serveStaticFile(filepath, res) {
     }
 
     const mimeType = getMimeType(filepath);
-    res.writeHead(200, { 'Content-Type': mimeType });
+    // Disable caching for dev - critical for hot reload
+    res.writeHead(200, {
+      'Content-Type': mimeType,
+      'Cache-Control': 'no-cache, no-store, must-revalidate',
+      'Pragma': 'no-cache',
+      'Expires': '0'
+    });
     res.end(data);
   });
 }

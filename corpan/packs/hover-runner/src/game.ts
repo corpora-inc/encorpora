@@ -36,6 +36,17 @@ import {
   LANE_ROWS,
   LANE_COLS,
 } from "./core/constants"
+import {
+  SCENE,
+  CAMERA,
+  LIGHTING,
+  GLOW,
+  SHADOWS,
+  SSAO,
+  POST_PROCESSING,
+  SKIN_PRESETS,
+  PYRAMIDS,
+} from "./core/visualConfig"
 import type {
   GameState,
   RoundState,
@@ -717,60 +728,60 @@ export const createHoverRunner = (
   )
 
   const scene = new Scene(engine)
-  scene.clearColor = new Color4(0.02, 0.04, 0.08, 1)
+  scene.clearColor = new Color4(SCENE.clearColor.r, SCENE.clearColor.g, SCENE.clearColor.b, SCENE.clearColor.a)
   scene.imageProcessingConfiguration.toneMappingEnabled = true
   scene.imageProcessingConfiguration.toneMappingType =
     ImageProcessingConfiguration.TONEMAPPING_ACES
-  scene.imageProcessingConfiguration.exposure = 1.05
-  scene.imageProcessingConfiguration.contrast = 1.08
+  scene.imageProcessingConfiguration.exposure = SCENE.exposure
+  scene.imageProcessingConfiguration.contrast = SCENE.contrast
   scene.fogMode = Scene.FOGMODE_EXP2
-  scene.fogDensity = 0.003  // Further reduced for clarity - was 0.006
-  scene.fogColor = new Color3(0.02, 0.04, 0.08)
+  scene.fogDensity = SCENE.fogDensity
+  scene.fogColor = new Color3(SCENE.fogColor.r, SCENE.fogColor.g, SCENE.fogColor.b)
 
   const sky = createSkyDome(scene)
 
   const camera = new UniversalCamera(
     "camera",
-    new Vector3(0, -0.05, -4.1),
+    new Vector3(CAMERA.position.x, CAMERA.position.y, CAMERA.position.z),
     scene
   )
-  camera.setTarget(new Vector3(0, -1.05, 10))
-  camera.fov = 1.46
-  camera.minZ = 0.1
-  camera.maxZ = 200
+  camera.setTarget(new Vector3(CAMERA.target.x, CAMERA.target.y, CAMERA.target.z))
+  camera.fov = CAMERA.fov
+  camera.minZ = CAMERA.minZ
+  camera.maxZ = CAMERA.maxZ
   camera.inputs.clear()
 
   const hemi = new HemisphericLight("hemi", new Vector3(0, 1, 0.4), scene)
-  hemi.intensity = 0.5
-  hemi.diffuse = new Color3(0.6, 0.75, 1)
-  hemi.groundColor = new Color3(0.06, 0.08, 0.12)
+  hemi.intensity = 0.18  // Very low for dark scene
+  hemi.diffuse = new Color3(0.3, 0.4, 0.6)
+  hemi.groundColor = new Color3(0.02, 0.025, 0.04)
 
-  // Main directional light - enhanced for better shadow visibility
+  // Main directional light - subtle for dark scene
   const accent = new DirectionalLight(
     "accent",
     new Vector3(-0.25, -0.9, 0.4),
     scene
   )
   accent.position = new Vector3(6, 10, -6)
-  accent.intensity = 0.32
-  accent.diffuse = new Color3(0.65, 0.75, 0.95)
-  accent.specular = new Color3(0.3, 0.4, 0.6)
+  accent.intensity = 0.18  // Reduced for darker scene
+  accent.diffuse = new Color3(0.5, 0.6, 0.8)
+  accent.specular = new Color3(0.2, 0.3, 0.4)
 
-  // Subtle rim light for depth separation (visual only)
+  // Very subtle rim light for depth separation
   const rimLight = new DirectionalLight(
     "rim",
     new Vector3(0.4, -0.2, -0.9),
     scene
   )
   rimLight.position = new Vector3(-5, 3, 8)
-  rimLight.intensity = 0.12
-  rimLight.diffuse = new Color3(0.5, 0.7, 1.0)
-  rimLight.specular = new Color3(0.2, 0.3, 0.5)
+  rimLight.intensity = 0.06  // Very subtle
+  rimLight.diffuse = new Color3(0.4, 0.5, 0.7)
+  rimLight.specular = new Color3(0.1, 0.15, 0.25)
 
   const glow = new GlowLayer("glow", scene, {
-    blurKernelSize: 64,
+    blurKernelSize: 32,  // Reduced for sharper glow
   })
-  glow.intensity = 0.85
+  glow.intensity = 0.6  // Reduced for cleaner look
   glow.addExcludedMesh(sky.mesh)
 
   // Higher quality shadow generator
@@ -782,18 +793,21 @@ export const createHoverRunner = (
   shadowGenerator.darkness = 0.55
   shadowGenerator.frustumEdgeFalloff = 0.3
 
-  // SSAO for subtle ambient occlusion - kept light to preserve crispness
-  const ssao = new SSAO2RenderingPipeline("ssao", scene, {
-    ssaoRatio: 0.4,
-    blurRatio: 0.4,
-  })
-  ssao.radius = 0.8
-  ssao.totalStrength = 0.25  // Much lighter - was 0.8
-  ssao.base = 0.15
-  ssao.expensiveBlur = false
-  ssao.samples = 8  // Reduced for performance
-  ssao.maxZ = 100
-  scene.postProcessRenderPipelineManager.attachCamerasToRenderPipeline("ssao", camera)
+  // SSAO for ambient occlusion (can cause WebGL errors with StandardMaterial - disable if needed)
+  let ssao: SSAO2RenderingPipeline | null = null
+  if (SSAO.enabled) {
+    ssao = new SSAO2RenderingPipeline("ssao", scene, {
+      ssaoRatio: SSAO.ssaoRatio,
+      blurRatio: SSAO.blurRatio,
+    })
+    ssao.radius = SSAO.radius
+    ssao.totalStrength = SSAO.totalStrength
+    ssao.base = SSAO.base
+    ssao.expensiveBlur = SSAO.expensiveBlur
+    ssao.samples = SSAO.samples
+    ssao.maxZ = SSAO.maxZ
+    scene.postProcessRenderPipelineManager.attachCamerasToRenderPipeline("ssao", camera)
+  }
 
   // Default rendering pipeline for cinematic effects
   const renderPipeline = new DefaultRenderingPipeline(
@@ -813,12 +827,12 @@ export const createHoverRunner = (
   renderPipeline.imageProcessing.vignetteStretch = 0.5
   renderPipeline.imageProcessing.vignetteCameraFov = camera.fov
 
-  // Subtle bloom (supplementing glow layer)
+  // Minimal bloom - keep things sharp
   renderPipeline.bloomEnabled = true
-  renderPipeline.bloomThreshold = 0.8  // Higher threshold = less bloom
-  renderPipeline.bloomWeight = 0.15    // Reduced for crispness
-  renderPipeline.bloomKernel = 48
-  renderPipeline.bloomScale = 0.4
+  renderPipeline.bloomThreshold = 0.9  // Very high threshold - only brightest
+  renderPipeline.bloomWeight = 0.99    // Very subtle
+  renderPipeline.bloomKernel = 32
+  renderPipeline.bloomScale = 0.3
 
   // Sharpen for crisp visuals
   renderPipeline.sharpenEnabled = true
@@ -849,26 +863,30 @@ export const createHoverRunner = (
   const energyFieldRight = createEnergyFieldParticles(scene, "right")
   const speedLines = createSpeedLines(scene, camera.position)
 
-  // Distant pyramid - subtle, dark silhouette in the far background
+  // Distant pyramid - background scenery
   const distantPyramid = MeshBuilder.CreateCylinder(
     "distant-pyramid",
     {
-      height: 35,
+      height: PYRAMIDS.main.height,
       diameterTop: 0,
-      diameterBottom: 30,
-      tessellation: 4,  // 4 sides = pyramid
+      diameterBottom: PYRAMIDS.main.diameter,
+      tessellation: 5,  // 4 sides = pyramid
     },
     scene
   )
-  distantPyramid.position = new Vector3(-45, -8, 140)  // Far off to the left
-  distantPyramid.rotation.y = Math.PI / 4  // Rotate 45 degrees for better profile
+  distantPyramid.position = new Vector3(
+    PYRAMIDS.main.position.x,
+    PYRAMIDS.main.position.y,
+    PYRAMIDS.main.position.z
+  )
+  distantPyramid.rotation.y = PYRAMIDS.main.rotation
   const pyramidMat = createEmissivePbr(
     "pyramid-mat",
     scene,
-    new Color3(0.03, 0.04, 0.06),  // Very dark albedo
-    new Color3(0.015, 0.025, 0.04),  // Subtle edge glow
-    0.2,  // metallic
-    0.9   // roughness
+    new Color3(PYRAMIDS.material.albedo.r, PYRAMIDS.material.albedo.g, PYRAMIDS.material.albedo.b),
+    new Color3(PYRAMIDS.material.emissive.r, PYRAMIDS.material.emissive.g, PYRAMIDS.material.emissive.b),
+    PYRAMIDS.material.metallic,
+    PYRAMIDS.material.roughness
   )
   distantPyramid.material = pyramidMat
   distantPyramid.isPickable = false
@@ -877,16 +895,20 @@ export const createHoverRunner = (
   const distantPyramid2 = MeshBuilder.CreateCylinder(
     "distant-pyramid-2",
     {
-      height: 22,
+      height: PYRAMIDS.secondary.height,
       diameterTop: 0,
-      diameterBottom: 18,
-      tessellation: 4,
+      diameterBottom: PYRAMIDS.secondary.diameter,
+      tessellation: 5,
     },
     scene
   )
-  distantPyramid2.position = new Vector3(55, -10, 160)  // Far off to the right
-  distantPyramid2.rotation.y = Math.PI / 6
-  distantPyramid2.material = pyramidMat  // Reuse material
+  distantPyramid2.position = new Vector3(
+    PYRAMIDS.secondary.position.x,
+    PYRAMIDS.secondary.position.y,
+    PYRAMIDS.secondary.position.z
+  )
+  distantPyramid2.rotation.y = PYRAMIDS.secondary.rotation
+  distantPyramid2.material = pyramidMat
   distantPyramid2.isPickable = false
 
   const perfHud = showPerf ? document.createElement("div") : null
@@ -1113,15 +1135,15 @@ export const createHoverRunner = (
         center: new Color3(0.25, 0.7, 1),
         edge: new Color3(0.12, 0.55, 0.95),
       },
-      sky: new Color4(0.02, 0.04, 0.08, 1),
+      sky: new Color4(0.01, 0.02, 0.04, 1),  // Darker sky
       hemi: {
-        intensity: 0.6,
-        diffuse: new Color3(0.6, 0.75, 1),
-        ground: new Color3(0.06, 0.08, 0.12),
+        intensity: 0.18,  // Much darker
+        diffuse: new Color3(0.4, 0.5, 0.7),
+        ground: new Color3(0.02, 0.03, 0.05),
       },
       accent: {
-        intensity: 0.5,
-        color: new Color3(0.6, 0.8, 1),
+        intensity: 0.15,  // Much darker
+        color: new Color3(0.4, 0.6, 0.9),
       },
     },
     {
@@ -1136,15 +1158,15 @@ export const createHoverRunner = (
         center: new Color3(1, 0.64, 0.3),
         edge: new Color3(0.85, 0.35, 0.2),
       },
-      sky: new Color4(0.08, 0.04, 0.02, 1),
+      sky: new Color4(0.03, 0.015, 0.01, 1),  // Darker sky
       hemi: {
-        intensity: 0.5,
-        diffuse: new Color3(1, 0.75, 0.5),
-        ground: new Color3(0.18, 0.1, 0.08),
+        intensity: 0.15,  // Much darker
+        diffuse: new Color3(0.6, 0.45, 0.3),
+        ground: new Color3(0.06, 0.04, 0.03),
       },
       accent: {
-        intensity: 0.55,
-        color: new Color3(1, 0.6, 0.35),
+        intensity: 0.18,  // Much darker
+        color: new Color3(0.8, 0.5, 0.3),
       },
     },
     {
@@ -1159,15 +1181,15 @@ export const createHoverRunner = (
         center: new Color3(0.45, 0.9, 1),
         edge: new Color3(0.28, 0.7, 0.95),
       },
-      sky: new Color4(0.02, 0.06, 0.12, 1),
+      sky: new Color4(0.01, 0.025, 0.05, 1),  // Darker sky
       hemi: {
-        intensity: 0.55,
-        diffuse: new Color3(0.7, 0.88, 1),
-        ground: new Color3(0.04, 0.08, 0.16),
+        intensity: 0.16,  // Much darker
+        diffuse: new Color3(0.45, 0.55, 0.7),
+        ground: new Color3(0.02, 0.04, 0.06),
       },
       accent: {
-        intensity: 0.5,
-        color: new Color3(0.5, 0.8, 1),
+        intensity: 0.15,  // Much darker
+        color: new Color3(0.4, 0.6, 0.85),
       },
     },
   ]
@@ -2722,7 +2744,7 @@ export const createHoverRunner = (
     energyFieldRight.dispose()
     speedLines.dispose()
     // Dispose post-processing pipelines
-    ssao.dispose()
+    ssao?.dispose()
     renderPipeline.dispose()
     sceneInstrumentation?.dispose()
     engineInstrumentation?.dispose()

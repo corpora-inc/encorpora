@@ -115,22 +115,28 @@ function copyPack(packName) {
 }
 
 // Initial copy
+console.log('[watch-packs] ========================================');
 console.log('[watch-packs] Starting watch mode...');
+console.log('[watch-packs] PACKS_DIR:', PACKS_DIR);
+console.log('[watch-packs] OUTPUT_DIR:', OUTPUT_DIR);
 console.log('[watch-packs] Copying packs...');
 PACK_CONFIGS.forEach((config) => copyPack(config.name));
 
 // Watch for changes in pack dist directories
+// Note: Watch directories directly, not with glob patterns (chokidar glob issues)
 const watchPaths = PACK_CONFIGS.flatMap((config) => {
   const base = path.join(PACKS_DIR, config.name);
   const paths = [];
   if (config.distDir) {
-    paths.push(path.join(base, config.distDir, '**', '*'));
+    // Watch the directory itself, not a glob pattern
+    paths.push(path.join(base, config.distDir));
   }
   (config.files || []).forEach((fileName) => {
     paths.push(path.join(base, fileName));
   });
   (config.dirs || []).forEach((dirName) => {
-    paths.push(path.join(base, dirName, '**', '*'));
+    // Watch the directory itself, not a glob pattern
+    paths.push(path.join(base, dirName));
   });
   return paths;
 });

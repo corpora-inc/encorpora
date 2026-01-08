@@ -11,6 +11,7 @@ import {
 import { ROAD } from "../core/constants"
 import type { RoadPalette, RoadState } from "../core/types"
 import { colorToCss, computeCurve, scaleColor } from "../core/utils"
+import { ROAD_MATERIAL } from "../core/visualConfig"
 
 const createRoadTexture = (scene: Scene, palette: RoadPalette) => {
   const size = 1024
@@ -109,11 +110,11 @@ export const createRoad = (scene: Scene): RoadState => {
   const roadMaterial = new PBRMaterial("road-mat", scene)
   roadMaterial.albedoTexture = roadTexture
   roadMaterial.emissiveTexture = roadTexture
-  roadMaterial.albedoColor = new Color3(0.7, 0.7, 0.7)  // Dimmer for word contrast
-  roadMaterial.emissiveColor = new Color3(0.6, 0.6, 0.6)  // Reduced glow
-  roadMaterial.metallic = 0.1
-  roadMaterial.roughness = 0.82
-  roadMaterial.alpha = 0.45  // Slightly more transparent
+  roadMaterial.albedoColor = new Color3(ROAD_MATERIAL.albedoColor.r, ROAD_MATERIAL.albedoColor.g, ROAD_MATERIAL.albedoColor.b)
+  roadMaterial.emissiveColor = new Color3(ROAD_MATERIAL.emissiveColor.r, ROAD_MATERIAL.emissiveColor.g, ROAD_MATERIAL.emissiveColor.b)
+  roadMaterial.metallic = ROAD_MATERIAL.metallic
+  roadMaterial.roughness = ROAD_MATERIAL.roughness
+  roadMaterial.alpha = ROAD_MATERIAL.alpha
   roadMaterial.transparencyMode = PBRMaterial.PBRMATERIAL_ALPHABLEND
   road.material = roadMaterial
   road.receiveShadows = true
