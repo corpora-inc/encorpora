@@ -73,7 +73,7 @@ Use the `web/scripts/serve-local.sh` script which builds everything:
 ## Final Deployed Structure
 
 ```
-https://corpora-inc.github.io/encorpora/
+https://encorpora.io/
 ├── index.html                  # web/io/ root site
 ├── books.html                  # web/io/ books page
 ├── assets/                     # Copied from canonical repo assets

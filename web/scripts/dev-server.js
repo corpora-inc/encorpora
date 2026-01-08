@@ -16,18 +16,7 @@ const DEV_PORT = 8000;
 const NEXT_PORT = 3000;
 const OUT_DIR = path.join(__dirname, '..', 'io', 'out');
 
-const normalizeBasePath = (value) => {
-  const trimmed = (value || '').trim();
-  if (!trimmed || trimmed === '/') {
-    return '';
-  }
-  const normalized = trimmed.startsWith('/') ? trimmed : `/${trimmed}`;
-  return normalized.replace(/\/$/, '');
-};
-
-const basePath = normalizeBasePath(process.env.ENCORPORA_BASE_PATH);
-const basePathPrefix = basePath ? `${basePath}/` : '';
-const routePrefix = basePathPrefix || '/';
+const routePrefix = '/';
 
 // MIME types
 const MIME_TYPES = {
@@ -89,9 +78,9 @@ const server = http.createServer((req, res) => {
   const url = new URL(req.url, `http://localhost:${DEV_PORT}`);
   const pathname = url.pathname;
 
-  // Serve static files for /corpan and /assets (with optional base path)
-  const corpanPrefix = basePath ? `${basePath}/corpan` : '/corpan';
-  const assetsPrefix = basePath ? `${basePath}/assets` : '/assets';
+  // Serve static files for /corpan and /assets
+  const corpanPrefix = '/corpan';
+  const assetsPrefix = '/assets';
   if (pathname.startsWith(corpanPrefix) || pathname.startsWith(assetsPrefix)) {
     const relativePath = pathname.replace(/^\//, '');
     let filepath = path.join(OUT_DIR, relativePath);

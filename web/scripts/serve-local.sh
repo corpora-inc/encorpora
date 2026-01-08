@@ -10,20 +10,8 @@ REPO_ROOT="$( cd "$WEB_DIR/.." && pwd )"
 IO_DIR="$WEB_DIR/io"
 BUILD_DIR="$IO_DIR/out"
 
-BASE_PATH_RAW="${ENCORPORA_BASE_PATH:-}"
-BASE_PATH_STRIPPED="${BASE_PATH_RAW#/}"
-BASE_PATH_STRIPPED="${BASE_PATH_STRIPPED%/}"
-BASE_PATH=""
 BASE_PATH_URL="/"
 OUTPUT_ROOT="$BUILD_DIR"
-
-if [ -n "$BASE_PATH_STRIPPED" ]; then
-  BASE_PATH="/${BASE_PATH_STRIPPED}"
-  BASE_PATH_URL="${BASE_PATH}/"
-  OUTPUT_ROOT="${BUILD_DIR}${BASE_PATH}"
-fi
-
-export ENCORPORA_BASE_PATH="$BASE_PATH"
 
 echo "🏗️  Building complete site (web/io + corpan + games)..."
 echo ""

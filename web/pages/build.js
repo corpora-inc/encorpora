@@ -27,17 +27,7 @@ const CORPAN_LOGO_SOURCE = path.join(
   '512x512.png'
 );
 
-function normalizeBasePath(value) {
-  const trimmed = (value || '').trim();
-  if (!trimmed || trimmed === '/') {
-    return '';
-  }
-  const normalized = trimmed.startsWith('/') ? trimmed : `/${trimmed}`;
-  return normalized.replace(/\/$/, '');
-}
-
-const basePath = normalizeBasePath(process.env.ENCORPORA_BASE_PATH);
-const basePathWithSlash = basePath ? `${basePath}/` : '/';
+const basePathWithSlash = '/';
 
 function readTemplate(name) {
   const templatePath = path.join(TEMPLATES_DIR, `${name}.html`);
@@ -130,9 +120,6 @@ function buildGameLandingPage(game, outputDir) {
 function buildPages(outputDir) {
   console.log('Building Corpan pages...');
   console.log(`Output directory: ${outputDir}`);
-  if (basePath) {
-    console.log(`Base path: ${basePath}`);
-  }
 
   // Load data
   const gamesData = readData('games');
