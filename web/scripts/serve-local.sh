@@ -53,9 +53,21 @@ mkdir -p "$OUTPUT_ROOT/corpan/packs/hover-runner"
 cp "$REPO_ROOT/corpan/packs/hover-runner/manifest.json" "$OUTPUT_ROOT/corpan/packs/hover-runner/"
 cp -R "$REPO_ROOT/corpan/packs/hover-runner/dist/." "$OUTPUT_ROOT/corpan/packs/hover-runner/"
 cp "$REPO_ROOT/corpan/packs/hover-runner/hover-runner.zip" "$OUTPUT_ROOT/corpan/packs/hover-runner.zip"
-if [ -f "$REPO_ROOT/corpan/packs/hanzipan/hanzipan.zip" ]; then
-  cp "$REPO_ROOT/corpan/packs/hanzipan/hanzipan.zip" "$OUTPUT_ROOT/corpan/packs/hanzipan.zip"
-fi
+
+# Step 5: Build Hanzipan bundle + zip
+echo "📦 Packaging hanzipan..."
+cd "$REPO_ROOT/corpan/packs/hanzipan"
+mkdir -p dist
+cat hanziwriter.min.js > dist/app.js
+printf '\n;' >> dist/app.js
+cat index.js >> dist/app.js
+cp styles.css dist/app.css
+zip -r hanzipan.zip manifest.json dist/ HANZIWRITER_LICENSE.txt data/
+mkdir -p "$OUTPUT_ROOT/corpan/packs/hanzipan"
+cp "$REPO_ROOT/corpan/packs/hanzipan/manifest.json" "$OUTPUT_ROOT/corpan/packs/hanzipan/"
+cp -R "$REPO_ROOT/corpan/packs/hanzipan/dist/." "$OUTPUT_ROOT/corpan/packs/hanzipan/"
+cp -R "$REPO_ROOT/corpan/packs/hanzipan/data" "$OUTPUT_ROOT/corpan/packs/hanzipan/"
+cp "$REPO_ROOT/corpan/packs/hanzipan/hanzipan.zip" "$OUTPUT_ROOT/corpan/packs/hanzipan.zip"
 
 echo ""
 echo "✅ Build complete!"

@@ -33,14 +33,22 @@ echo "[hanzi-pack] Building pack DB..."
   --strokes "${STROKES_JSON}" \
   --etymology "${ETYMOLOGY_JSON}"
 
+echo "[hanzi-pack] Building dist bundle..."
+(
+  cd "${PACK_DIR}"
+  mkdir -p dist
+  cat hanziwriter.min.js > dist/app.js
+  printf '\n;' >> dist/app.js
+  cat index.js >> dist/app.js
+  cp styles.css dist/app.css
+)
+
 echo "[hanzi-pack] Packaging zip..."
 (
   cd "${PACK_DIR}"
   zip -r -FS hanzipan.zip \
     manifest.json \
-    index.js \
-    styles.css \
-    hanziwriter.min.js \
+    dist/ \
     HANZIWRITER_LICENSE.txt \
     data/
 )
@@ -48,9 +56,7 @@ echo "[hanzi-pack] Packaging zip..."
 echo "[hanzi-pack] Copying to dev output..."
 mkdir -p "${OUT_DIR}"
 cp "${PACK_DIR}/manifest.json" "${OUT_DIR}/"
-cp "${PACK_DIR}/index.js" "${OUT_DIR}/"
-cp "${PACK_DIR}/styles.css" "${OUT_DIR}/"
-cp "${PACK_DIR}/hanziwriter.min.js" "${OUT_DIR}/"
+cp -R "${PACK_DIR}/dist" "${OUT_DIR}/"
 cp "${PACK_DIR}/HANZIWRITER_LICENSE.txt" "${OUT_DIR}/"
 rsync -a --delete "${PACK_DIR}/data/" "${OUT_DIR}/data/"
 mkdir -p "${ENCORPORA_ROOT}/web/io/out/corpan/packs"

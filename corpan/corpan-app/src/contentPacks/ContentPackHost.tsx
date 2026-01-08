@@ -10,7 +10,7 @@ type ContentPackHostProps = {
   manifestUrl?: string
 }
 
-const DEV_RELOAD_INTERVAL_MS = 2000  // Poll every 2s for faster dev iteration
+const DEV_RELOAD_INTERVAL_MS = 20000  // Poll every 2s for faster dev iteration
 
 const loadScript = async (
   src: string,

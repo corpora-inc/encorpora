@@ -2,9 +2,9 @@
   "id": "hanzipan",
   "name": "Hanzipan",
   "version": "0.1.0",
-  "entry": "index.js",
+  "entry": "dist/app.js",
   "styles": [
-    "styles.css"
+    "dist/app.css"
   ],
   "entryType": "script",
   "sdkVersion": "0.1.0",
