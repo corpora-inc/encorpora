@@ -11,11 +11,11 @@ export const SCENE = {
   clearColor: { r: 0.01, g: 0.015, b: 0.025, a: 1 },
 
   // Tone mapping and exposure
-  exposure: 1.0,        // Scene brightness (0.5 = dark, 1.5 = bright)
-  contrast: 1.2,        // Scene contrast (1.0 = neutral)
+  exposure: 1.1,        // Scene brightness (0.5 = dark, 1.5 = bright)
+  contrast: 1.5,        // Scene contrast (1.0 = neutral)
 
   // Fog - set density to 0 to disable
-  fogDensity: 0.0,      // 0 = off, 0.006 = light fog, 0.015 = heavy
+  fogDensity: 0.001,      // 0 = off, 0.006 = light fog, 0.015 = heavy
   fogColor: { r: 0.02, g: 0.04, b: 0.08 },
 }
 
@@ -37,7 +37,7 @@ export const LIGHTING = {
   // Hemisphere light (ambient fill)
   hemi: {
     direction: { x: 0, y: 1, z: 0.4 },
-    intensity: 1.18,    // Main ambient brightness
+    intensity: 0.18,    // Main ambient brightness
     // intensity: 10,
     diffuse: { r: 0.3, g: 0.4, b: 0.6 },
     ground: { r: 0.02, g: 0.025, b: 0.04 },
@@ -47,7 +47,7 @@ export const LIGHTING = {
   accent: {
     direction: { x: -0.25, y: -0.9, z: 0.4 },
     position: { x: 6, y: 10, z: -6 },
-    intensity: 1.18,
+    intensity: 5.18,
     // intensity: 0,
     diffuse: { r: 0.5, g: 0.6, b: 0.8 },
     specular: { r: 0.2, g: 0.3, b: 0.4 },
@@ -57,7 +57,7 @@ export const LIGHTING = {
   rim: {
     direction: { x: 0.4, y: -0.2, z: -0.9 },
     position: { x: -5, y: 3, z: 8 },
-    intensity: 1.18,
+    intensity: 5.18,
     diffuse: { r: 0.4, g: 0.5, b: 0.7 },
     specular: { r: 0.1, g: 0.15, b: 0.25 },
   },
@@ -67,7 +67,7 @@ export const LIGHTING = {
 // GLOW LAYER
 // ============================================================
 export const GLOW = {
-  blurKernelSize: 32,   // Blur radius (8 = tight, 64 = wide)
+  blurKernelSize: 8,   // Blur radius (8 = tight, 64 = wide)
   intensity: 0.6,       // Glow strength
 }
 
@@ -78,7 +78,7 @@ export const SHADOWS = {
   mapSize: 2048,        // Shadow map resolution
   bias: 0.0004,
   normalBias: 0.015,
-  darkness: 0.55,       // Shadow darkness (0 = none, 1 = black)
+  darkness: 1,       // Shadow darkness (0 = none, 1 = black)
   frustumEdgeFalloff: 0.3,
 }
 
@@ -183,26 +183,26 @@ export const ROAD_MATERIAL = {
 export const PYRAMIDS = {
   // Main pyramid (left side)
   main: {
-    height: 50,
-    diameter: 45,
-    position: { x: -25, y: -5, z: 60 },  // Closer and more visible
+    height: 40,
+    diameter: 35,
+    position: { x: -35, y: -8, z: 120 },  // Farther back, not in the way
     rotation: Math.PI / 4,
   },
 
   // Secondary pyramid (right side)
   secondary: {
-    height: 35,
-    diameter: 30,
-    position: { x: 35, y: -6, z: 70 },
+    height: 28,
+    diameter: 22,
+    position: { x: 45, y: -10, z: 140 },
     rotation: Math.PI / 6,
   },
 
-  // Material - slightly emissive so they're visible in dark scene
+  // Material - solid silhouette, minimal emissive
   material: {
-    albedo: { r: 0.04, g: 0.05, b: 0.07 },
-    emissive: { r: 0.02, g: 0.03, b: 0.05 },  // Subtle glow to be visible
-    metallic: 0.1,
-    roughness: 0.9,
+    albedo: { r: 0.03, g: 0.04, b: 0.06 },
+    emissive: { r: 0.005, g: 0.008, b: 0.012 },  // Very subtle - mostly silhouette
+    metallic: 0.05,
+    roughness: 0.95,
   },
 }
 

@@ -751,37 +751,41 @@ export const createHoverRunner = (
   camera.maxZ = CAMERA.maxZ
   camera.inputs.clear()
 
-  const hemi = new HemisphericLight("hemi", new Vector3(0, 1, 0.4), scene)
-  hemi.intensity = 0.18  // Very low for dark scene
-  hemi.diffuse = new Color3(0.3, 0.4, 0.6)
-  hemi.groundColor = new Color3(0.02, 0.025, 0.04)
+  const hemi = new HemisphericLight(
+    "hemi",
+    new Vector3(LIGHTING.hemi.direction.x, LIGHTING.hemi.direction.y, LIGHTING.hemi.direction.z),
+    scene
+  )
+  hemi.intensity = LIGHTING.hemi.intensity
+  hemi.diffuse = new Color3(LIGHTING.hemi.diffuse.r, LIGHTING.hemi.diffuse.g, LIGHTING.hemi.diffuse.b)
+  hemi.groundColor = new Color3(LIGHTING.hemi.ground.r, LIGHTING.hemi.ground.g, LIGHTING.hemi.ground.b)
 
-  // Main directional light - subtle for dark scene
+  // Main directional light
   const accent = new DirectionalLight(
     "accent",
-    new Vector3(-0.25, -0.9, 0.4),
+    new Vector3(LIGHTING.accent.direction.x, LIGHTING.accent.direction.y, LIGHTING.accent.direction.z),
     scene
   )
-  accent.position = new Vector3(6, 10, -6)
-  accent.intensity = 0.18  // Reduced for darker scene
-  accent.diffuse = new Color3(0.5, 0.6, 0.8)
-  accent.specular = new Color3(0.2, 0.3, 0.4)
+  accent.position = new Vector3(LIGHTING.accent.position.x, LIGHTING.accent.position.y, LIGHTING.accent.position.z)
+  accent.intensity = LIGHTING.accent.intensity
+  accent.diffuse = new Color3(LIGHTING.accent.diffuse.r, LIGHTING.accent.diffuse.g, LIGHTING.accent.diffuse.b)
+  accent.specular = new Color3(LIGHTING.accent.specular.r, LIGHTING.accent.specular.g, LIGHTING.accent.specular.b)
 
-  // Very subtle rim light for depth separation
+  // Rim light for depth separation
   const rimLight = new DirectionalLight(
     "rim",
-    new Vector3(0.4, -0.2, -0.9),
+    new Vector3(LIGHTING.rim.direction.x, LIGHTING.rim.direction.y, LIGHTING.rim.direction.z),
     scene
   )
-  rimLight.position = new Vector3(-5, 3, 8)
-  rimLight.intensity = 0.06  // Very subtle
-  rimLight.diffuse = new Color3(0.4, 0.5, 0.7)
-  rimLight.specular = new Color3(0.1, 0.15, 0.25)
+  rimLight.position = new Vector3(LIGHTING.rim.position.x, LIGHTING.rim.position.y, LIGHTING.rim.position.z)
+  rimLight.intensity = LIGHTING.rim.intensity
+  rimLight.diffuse = new Color3(LIGHTING.rim.diffuse.r, LIGHTING.rim.diffuse.g, LIGHTING.rim.diffuse.b)
+  rimLight.specular = new Color3(LIGHTING.rim.specular.r, LIGHTING.rim.specular.g, LIGHTING.rim.specular.b)
 
   const glow = new GlowLayer("glow", scene, {
-    blurKernelSize: 32,  // Reduced for sharper glow
+    blurKernelSize: GLOW.blurKernelSize,
   })
-  glow.intensity = 0.6  // Reduced for cleaner look
+  glow.intensity = GLOW.intensity
   glow.addExcludedMesh(sky.mesh)
 
   // Higher quality shadow generator
@@ -1122,6 +1126,7 @@ export const createHoverRunner = (
     shadowGenerator.addShadowCaster(prop.mesh)
   })
 
+  // Skins use LIGHTING intensities so they can be tweaked in visualConfig
   const skins: Skin[] = [
     {
       id: "neon",
@@ -1135,14 +1140,14 @@ export const createHoverRunner = (
         center: new Color3(0.25, 0.7, 1),
         edge: new Color3(0.12, 0.55, 0.95),
       },
-      sky: new Color4(0.01, 0.02, 0.04, 1),  // Darker sky
+      sky: new Color4(0.01, 0.02, 0.04, 1),
       hemi: {
-        intensity: 0.18,  // Much darker
+        intensity: LIGHTING.hemi.intensity,  // From visualConfig
         diffuse: new Color3(0.4, 0.5, 0.7),
         ground: new Color3(0.02, 0.03, 0.05),
       },
       accent: {
-        intensity: 0.15,  // Much darker
+        intensity: LIGHTING.accent.intensity,  // From visualConfig
         color: new Color3(0.4, 0.6, 0.9),
       },
     },
@@ -1158,14 +1163,14 @@ export const createHoverRunner = (
         center: new Color3(1, 0.64, 0.3),
         edge: new Color3(0.85, 0.35, 0.2),
       },
-      sky: new Color4(0.03, 0.015, 0.01, 1),  // Darker sky
+      sky: new Color4(0.03, 0.015, 0.01, 1),
       hemi: {
-        intensity: 0.15,  // Much darker
+        intensity: LIGHTING.hemi.intensity,  // From visualConfig
         diffuse: new Color3(0.6, 0.45, 0.3),
         ground: new Color3(0.06, 0.04, 0.03),
       },
       accent: {
-        intensity: 0.18,  // Much darker
+        intensity: LIGHTING.accent.intensity,  // From visualConfig
         color: new Color3(0.8, 0.5, 0.3),
       },
     },
@@ -1181,14 +1186,14 @@ export const createHoverRunner = (
         center: new Color3(0.45, 0.9, 1),
         edge: new Color3(0.28, 0.7, 0.95),
       },
-      sky: new Color4(0.01, 0.025, 0.05, 1),  // Darker sky
+      sky: new Color4(0.01, 0.025, 0.05, 1),
       hemi: {
-        intensity: 0.16,  // Much darker
+        intensity: LIGHTING.hemi.intensity,  // From visualConfig
         diffuse: new Color3(0.45, 0.55, 0.7),
         ground: new Color3(0.02, 0.04, 0.06),
       },
       accent: {
-        intensity: 0.15,  // Much darker
+        intensity: LIGHTING.accent.intensity,  // From visualConfig
         color: new Color3(0.4, 0.6, 0.85),
       },
     },
