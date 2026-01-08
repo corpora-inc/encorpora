@@ -1,14 +1,14 @@
-# Corpan Game SDK (prototype)
+# Corpan Pack SDK (prototype)
 
-This lightweight SDK registers a game with the Corpan host and provides a mock host API for browser development.
+This lightweight SDK registers a pack with the Corpan host and provides a mock host API for browser development.
 
-## Usage (game bundle)
+## Usage (pack bundle)
 
 ```js
 import { registerGame } from "./sdk/index.js";
 
 registerGame({
-  id: "my-game",
+  id: "my-pack",
   mount(container, hostApi) {
     // render into container
   },
@@ -20,28 +20,28 @@ registerGame({
 ```js
 import { registerGame, mountStandalone } from "./sdk/index.js";
 
-const game = registerGame({
-  id: "my-game",
+const pack = registerGame({
+  id: "my-pack",
   mount(container, hostApi) {
     // render into container
   },
 });
 
-mountStandalone(game);
+mountStandalone(pack);
 ```
 
 ## Manifest shape
 
 ```json
 {
-  "id": "my-game",
-  "name": "My Game",
+  "id": "my-pack",
+  "name": "My Pack",
   "version": "0.1.0",
   "entry": "app.js",
   "styles": ["app.css"],
   "entryType": "script",
   "databases": {
-    "main": "data/game.sqlite3"
+    "main": "data/pack.sqlite3"
   }
 }
 ```
