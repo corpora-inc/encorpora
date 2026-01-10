@@ -1,0 +1,12 @@
+{
+  "id": "quest_ear",
+  "name": "Quest for the All-Hearing Ear",
+  "version": "0.1.0",
+  "entry": "dist/app.js",
+  "styles": [
+    "dist/app.css"
+  ],
+  "entryType": "script",
+  "sdkVersion": "0.1.0",
+  "devRevision": "2026-01-10T19:52:31.792Z"
+}

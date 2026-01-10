@@ -1,0 +1,187 @@
+{
+  "spec_version": "corpan.storygraph.v0.1",
+  "quest_id": "all_hearing_ear",
+  "title": "On the Trail of the All-Hearing Ear",
+  "description": "A braided, checkpoint-based quest where choices alter state, but the narrative reconnects at hubs.",
+  "start_scene_id": "S00_START",
+  "globals": {
+    "max_replays_per_scene": 99,
+    "default_language": "en"
+  },
+  "state_schema": {
+    "type": "object",
+    "vars": {
+      "ear_fragments": { "type": "int", "min": 0, "max": 7, "default": 0 },
+      "trust_kendi": { "type": "int", "min": -3, "max": 5, "default": 0 },
+      "trust_pari": { "type": "int", "min": -3, "max": 5, "default": 0 },
+      "vow_silence": { "type": "bool", "default": false },
+      "learned_pack_ids": { "type": "set_string", "default": [] },
+      "pron_score": { "type": "int", "min": 0, "max": 100, "default": 0 },
+      "visited": { "type": "set_string", "default": [] }
+    }
+  },
+  "scenes": [
+    {
+      "id": "S00_START",
+      "type": "scene",
+      "title": "The Hum Under the City",
+      "text": [
+        "A faint vibration lives inside every wall: not sound, but a suggestion of sound.",
+        "Some call it myth. Some call it data. You call it a trail."
+      ],
+      "on_enter": [
+        { "op": "add_set", "var": "visited", "value": "S00_START" }
+      ],
+      "choices": [
+        {
+          "id": "C00A",
+          "label": "Follow the hum into the market district",
+          "to": "H10_HUB_MARKET",
+          "effects": [
+            { "op": "add_set", "var": "visited", "value": "PATH_MARKET" }
+          ]
+        },
+        {
+          "id": "C00B",
+          "label": "Take the service tunnels below street level",
+          "to": "H20_HUB_TUNNELS",
+          "effects": [
+            { "op": "add_set", "var": "visited", "value": "PATH_TUNNELS" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "H10_HUB_MARKET",
+      "type": "hub",
+      "title": "Hub: Market of Whispered Tongues",
+      "text": [
+        "Stalls sell fruit, circuits, and old books with new ink.",
+        "Kendi appears beside a vendor who never looks up."
+      ],
+      "on_enter": [
+        { "op": "add_set", "var": "visited", "value": "H10_HUB_MARKET" }
+      ],
+      "choices": [
+        { "id": "H10Q1", "label": "Quest: The Vendor's Riddle", "to": "D11_ENTRY_VENDOR" },
+        { "id": "H10Q2", "label": "Quest: Kendi's Shortcut", "to": "D12_ENTRY_KENDI" },
+        {
+          "id": "H10ADV",
+          "label": "Advance to the next checkpoint (requires 1 ear fragment)",
+          "to": "H30_HUB_TEMPLE_APPROACH",
+          "requires": [{ "op": "gte", "var": "ear_fragments", "value": 1 }]
+        }
+      ]
+    },
+    {
+      "id": "D11_ENTRY_VENDOR",
+      "type": "diamond_entry",
+      "title": "The Vendor's Riddle",
+      "text": [
+        "The vendor slides you a paper slip: three lines in a language you almost recognize."
+      ],
+      "choices": [
+        {
+          "id": "D11A",
+          "label": "Try a respectful translation attempt",
+          "to": "D11_MERGE_VENDOR",
+          "effects": [{ "op": "inc", "var": "trust_pari", "value": 1 }]
+        },
+        {
+          "id": "D11B",
+          "label": "Offer a trade instead of an answer",
+          "to": "D11_MERGE_VENDOR",
+          "effects": [{ "op": "inc", "var": "trust_kendi", "value": 1 }]
+        }
+      ]
+    },
+    {
+      "id": "D11_MERGE_VENDOR",
+      "type": "diamond_merge",
+      "title": "A Slip of Paper",
+      "text": [
+        "The vendor finally meets your eyes and presses something into your palm: a thin shard shaped like an ear."
+      ],
+      "on_enter": [
+        { "op": "inc", "var": "ear_fragments", "value": 1 }
+      ],
+      "choices": [
+        { "id": "D11BACK", "label": "Back to Market Hub", "to": "H10_HUB_MARKET" }
+      ]
+    },
+    {
+      "id": "D12_ENTRY_KENDI",
+      "type": "scene",
+      "title": "Kendi's Shortcut",
+      "text": [
+        "Kendi grins. 'I know a faster way. But it costs... a phrase.'"
+      ],
+      "choices": [
+        { "id": "D12BACK", "label": "Back to Market Hub", "to": "H10_HUB_MARKET" }
+      ]
+    },
+    {
+      "id": "H20_HUB_TUNNELS",
+      "type": "hub",
+      "title": "Hub: Service Tunnels",
+      "text": [
+        "Below the city, the hum becomes a rhythm.",
+        "Somewhere ahead, a door repeats your footsteps back at you."
+      ],
+      "choices": [
+        { "id": "H20Q1", "label": "Quest: Echo Door", "to": "D21_ENTRY_ECHO" },
+        {
+          "id": "H20ADV",
+          "label": "Advance to Temple Approach (requires 1 ear fragment)",
+          "to": "H30_HUB_TEMPLE_APPROACH",
+          "requires": [{ "op": "gte", "var": "ear_fragments", "value": 1 }]
+        }
+      ]
+    },
+    {
+      "id": "D21_ENTRY_ECHO",
+      "type": "scene",
+      "title": "The Echo Door",
+      "text": [
+        "The door hums back every sound you make, slightly altered."
+      ],
+      "on_enter": [
+        { "op": "inc", "var": "ear_fragments", "value": 1 }
+      ],
+      "choices": [
+        { "id": "D21BACK", "label": "Back to Tunnels Hub", "to": "H20_HUB_TUNNELS" }
+      ]
+    },
+    {
+      "id": "H30_HUB_TEMPLE_APPROACH",
+      "type": "hub",
+      "title": "Hub: The Temple Approach",
+      "text": [
+        "The stone ahead is old, but the geometry is new.",
+        "You can feel the All-Hearing Ear listening without ears."
+      ],
+      "choices": [
+        {
+          "id": "H30FIN",
+          "label": "Enter the threshold (requires 2 fragments)",
+          "to": "S90_FINALE",
+          "requires": [{ "op": "gte", "var": "ear_fragments", "value": 2 }]
+        },
+        { "id": "H30BACK1", "label": "Return to Market Hub", "to": "H10_HUB_MARKET" },
+        { "id": "H30BACK2", "label": "Return to Tunnels Hub", "to": "H20_HUB_TUNNELS" }
+      ]
+    },
+    {
+      "id": "S90_FINALE",
+      "type": "scene",
+      "title": "Finale: The All-Hearing Ear",
+      "text": [
+        "No treasure chest. No boss fight.",
+        "Only a question that listens back: What did you become on the way here?"
+      ],
+      "choices": [
+        { "id": "END", "label": "End (for now)", "to": null }
+      ]
+    }
+  ]
+}
