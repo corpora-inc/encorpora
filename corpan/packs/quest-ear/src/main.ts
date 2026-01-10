@@ -2,6 +2,7 @@ import "./styles.css"
 import Phaser from "phaser"
 import type { GameModule, HostApi, StackConfig } from "./sdk/types"
 import { MainScene } from "./game/MainScene"
+import { ActionScene } from "./game/ActionScene"
 
 type GlobalScope = typeof globalThis & {
   CorpanGames?: Record<string, GameModule>
@@ -37,11 +38,18 @@ const registerGame = () => {
         height: 600,
         parent: container,
         backgroundColor: "#0f0f23",
+        physics: {
+          default: "arcade",
+          arcade: {
+            gravity: { x: 0, y: 0 },
+            debug: false,
+          },
+        },
         scale: {
           mode: Phaser.Scale.FIT,
           autoCenter: Phaser.Scale.CENTER_BOTH,
         },
-        scene: [MainScene],
+        scene: [MainScene, ActionScene],
       }
 
       const game = new Phaser.Game(config)

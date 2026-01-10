@@ -48,7 +48,29 @@
           "effects": [
             { "op": "add_set", "var": "visited", "value": "PATH_TUNNELS" }
           ]
+        },
+        {
+          "id": "C00C",
+          "label": "Head to the NYC streets",
+          "to": "A01_NYC_STREET",
+          "effects": [
+            { "op": "add_set", "var": "visited", "value": "PATH_NYC" }
+          ]
         }
+      ]
+    },
+    {
+      "id": "A01_NYC_STREET",
+      "type": "action",
+      "title": "NYC Streets",
+      "text": ["Navigate the bustling streets of New York..."],
+      "action_config": {
+        "scene_key": "ActionScene",
+        "location": "nyc",
+        "npcs": []
+      },
+      "choices": [
+        { "id": "A01_DONE", "label": "Continue", "to": "H10_HUB_MARKET" }
       ]
     },
     {

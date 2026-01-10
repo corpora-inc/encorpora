@@ -4,7 +4,7 @@ export type EffectOp = "set" | "inc" | "add_set" | "remove_set"
 
 export type VarType = "int" | "bool" | "set_string"
 
-export type SceneType = "scene" | "hub" | "diamond_entry" | "diamond_merge"
+export type SceneType = "scene" | "hub" | "diamond_entry" | "diamond_merge" | "action"
 
 export interface Predicate {
   op: PredicateOp
@@ -27,6 +27,12 @@ export interface Choice {
   requires_any?: Predicate[][]
 }
 
+export interface ActionConfig {
+  scene_key: string
+  location: string
+  npcs?: Array<{ id: string; x: number }>
+}
+
 export interface Scene {
   id: string
   type: SceneType
@@ -34,6 +40,7 @@ export interface Scene {
   text: string[]
   on_enter?: Effect[]
   choices: Choice[]
+  action_config?: ActionConfig
 }
 
 export interface VarSchema {
