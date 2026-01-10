@@ -1,5 +1,14 @@
 import Phaser from "phaser"
 
+interface NPCData {
+  id: string
+  x: number
+  type: string
+  icon: string // Emoji for now
+  dialog: string // Text they say (English for now, will translate later)
+  langCode: string // Target language
+}
+
 export class ActionScene extends Phaser.Scene {
   private player!: Phaser.GameObjects.Container
   private cursors!: Phaser.Types.Input.Keyboard.CursorKeys
@@ -14,6 +23,13 @@ export class ActionScene extends Phaser.Scene {
   // Player state
   private playerSpeed = 200
   private health = 100
+
+  // NPCs
+  private npcs: {
+    container: Phaser.GameObjects.Container
+    data: NPCData
+    dialogVisible: boolean
+  }[] = []
 
   constructor() {
     super({ key: "ActionScene" })
@@ -33,6 +49,9 @@ export class ActionScene extends Phaser.Scene {
 
     // Create player character
     this.player = this.createPlayer()
+
+    // Create NPCs across the world
+    this.createNPCs()
 
     // Enable physics on the container
     this.physics.add.existing(this.player)
@@ -90,6 +109,26 @@ export class ActionScene extends Phaser.Scene {
     // Update progress indicator
     const progress = Math.floor((this.player.x / this.WORLD_WIDTH) * 100)
     this.progressText.setText(`${progress}% through NYC`)
+
+    // Check NPC proximity
+    const INTERACT_DISTANCE = 100
+
+    this.npcs.forEach((npc) => {
+      const distance = Math.abs(this.player.x - npc.data.x)
+
+      if (distance < INTERACT_DISTANCE && !npc.dialogVisible) {
+        // Show dialog and speak
+        const bubble = npc.container.getAt(npc.container.length - 1) as Phaser.GameObjects.Container
+        bubble.setVisible(true)
+        npc.dialogVisible = true
+        this.speakNPCDialog(npc.data)
+      } else if (distance >= INTERACT_DISTANCE && npc.dialogVisible) {
+        // Hide dialog
+        const bubble = npc.container.getAt(npc.container.length - 1) as Phaser.GameObjects.Container
+        bubble.setVisible(false)
+        npc.dialogVisible = false
+      }
+    })
 
     // Check if reached end of world
     if (this.player.x >= this.WORLD_WIDTH - 50) {
@@ -173,6 +212,117 @@ export class ActionScene extends Phaser.Scene {
     container.add(this.add.rectangle(5, 26, 12, 6, shoeColor)) // Right shoe
 
     return container
+  }
+
+  private createNPCs() {
+    const npcTypes = [
+      { type: "hotdog", icon: "🌭", dialog: "¿Con todo?" },
+      { type: "pizza", icon: "🍕", dialog: "¿Una porción?" },
+      { type: "coffee", icon: "☕", dialog: "¿Café caliente?" },
+      { type: "juice", icon: "🧃", dialog: "¿Jugo fresco?" },
+      { type: "tickets", icon: "🎫", dialog: "¿Boletos para el show?" },
+      { type: "newspaper", icon: "📰", dialog: "¡Noticias del día!" },
+      { type: "pretzel", icon: "🥨", dialog: "¿Pretzel con sal?" },
+      { type: "taxi", icon: "🚕", dialog: "¿A dónde va?" },
+      { type: "flowers", icon: "💐", dialog: "¿Flores para alguien especial?" },
+      { type: "fruit", icon: "🍎", dialog: "¡Frutas frescas!" },
+    ]
+
+    // One NPC per screen (every ~800px), starting at screen 2
+    for (let screen = 1; screen < 100; screen++) {
+      const npcType = npcTypes[screen % npcTypes.length]
+      const x = screen * 800 + Phaser.Math.Between(200, 600)
+
+      const npcData: NPCData = {
+        id: `npc_${screen}`,
+        x,
+        type: npcType.type,
+        icon: npcType.icon,
+        dialog: npcType.dialog,
+        langCode: "es", // Spanish for now
+      }
+
+      this.createNPC(npcData)
+    }
+  }
+
+  private createNPC(data: NPCData) {
+    // NPC person's feet are at y≈8 relative to NPC person container
+    // Want feet at ground level (y≈500), similar to player
+    // Main container at y=500, NPC person at (40, 0) relative, feet at y=8, so world y = 500 + 0 + 8 = 508
+    // Actually, let's adjust: NPC person feet should be at y≈500, so if feet are at y=8 relative,
+    // and NPC person is at (40, 0), then main container should be at y = 500 - 8 = 492
+    const container = this.add.container(data.x, 492)
+
+    // Stand/cart (simple box, positioned to sit on ground)
+    // Ground is at y≈500, so cart bottom should be around y=500
+    // Cart is 40px tall, centered at y=10 relative, so bottom is at y=-10, top at y=30
+    // Adjust so cart sits on ground: container at y=492, cart at y=10 means cart center at y=502, so bottom at y=482, top at y=522
+    // Actually, let's position cart bottom at ground: if ground is y=500 and cart is 40 tall, cart center should be at y=520
+    // Relative to container at y=492, cart center should be at y=520-492=28
+    const stand = this.add.rectangle(0, 18, 60, 40, 0x8b4513) // Brown cart, positioned to sit on ground
+    container.add(stand)
+
+    // Umbrella (positioned above cart)
+    const umbrella = this.add.rectangle(0, -20, 80, 10, 0xff4444) // Red umbrella
+    container.add(umbrella)
+    const umbrellaPost = this.add.rectangle(0, -2, 4, 40, 0x666666)
+    container.add(umbrellaPost)
+
+    // Icon (using text for emoji)
+    const icon = this.add.text(0, 0, data.icon, { fontSize: "32px" }).setOrigin(0.5)
+    container.add(icon)
+
+    // NPC person (simple pixel person, different color than player)
+    const npcPerson = this.createNPCPerson()
+    npcPerson.setPosition(40, 0) // Standing beside cart
+    container.add(npcPerson)
+
+    // Dialog bubble (hidden initially)
+    const bubble = this.add.container(0, -80)
+    const bubbleBg = this.add
+      .rectangle(0, 0, 200, 50, 0xffffff, 0.95)
+      .setStrokeStyle(2, 0x000000)
+    bubble.add(bubbleBg)
+    const dialogText = this.add
+      .text(0, 0, data.dialog, {
+        fontSize: "14px",
+        color: "#000000",
+        fontFamily: "monospace",
+        wordWrap: { width: 180 },
+      })
+      .setOrigin(0.5)
+    bubble.add(dialogText)
+    bubble.setVisible(false)
+    container.add(bubble)
+
+    this.npcs.push({ container, data, dialogVisible: false })
+  }
+
+  private createNPCPerson(): Phaser.GameObjects.Container {
+    const container = this.add.container(0, 0)
+
+    // Different colors than player
+    const skinColor = 0xdeb887
+    const shirtColor = 0xcc3333 // Red shirt
+    const pantsColor = 0x333366
+
+    // Head
+    container.add(this.add.rectangle(0, -25, 14, 14, skinColor))
+    // Body
+    container.add(this.add.rectangle(0, -8, 16, 20, shirtColor))
+    // Legs
+    container.add(this.add.rectangle(-4, 8, 8, 14, pantsColor))
+    container.add(this.add.rectangle(4, 8, 8, 14, pantsColor))
+
+    return container
+  }
+
+  private speakNPCDialog(data: NPCData) {
+    const hostApi = (globalThis as any).__questEarHostApi
+    if (hostApi?.speak) {
+      hostApi.speak(data.langCode, data.dialog)
+    }
   }
 
   private createHealthBar() {
