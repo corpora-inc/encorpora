@@ -1,0 +1,267 @@
+/* Juice Squeeze Game Styles */
+
+:root {
+  --bg: #f5efe4;
+  --bg-deep: #f0e3ce;
+  --paper: #fbf7f0;
+  --ink: #1b1b1f;
+  --muted: #5f5b57;
+  --accent: #0b6b6f;
+  --accent-strong: #0f8b8d;
+  --accent-warm: #e36c2f;
+  --gold: #f2c572;
+  --shadow: rgba(16, 26, 31, 0.18);
+  --shadow-soft: rgba(16, 26, 31, 0.08);
+  --radius-lg: 26px;
+  --radius-md: 18px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.juice-squeeze {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  overflow: hidden;
+}
+
+/* Game Title */
+.game-title {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  font-weight: bold;
+  color: #FF6B6B;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3), 0 0 20px rgba(255, 107, 107, 0.5);
+  font-size: clamp(28px, 12vw, 48px);
+  top: clamp(60px, 8vh, 100px);
+  letter-spacing: 2px;
+  z-index: 1000;
+  pointer-events: none;
+  animation: floatIn 600ms ease-out;
+}
+
+/* Exit Button */
+.exit-btn {
+  position: fixed;
+  top: calc(clamp(12px, 2.4vw, 20px));
+  right: clamp(12px, 2.4vw, 24px);
+  z-index: 1001;
+  border: 1px solid rgba(27, 27, 31, 0.1);
+  background: rgba(255, 255, 255, 0.5);
+  color: var(--ink);
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border-radius: 999px;
+  cursor: pointer;
+  box-shadow: 0 6px 16px rgba(16, 26, 31, 0.1);
+  backdrop-filter: blur(10px);
+  transition: transform 120ms ease, box-shadow 120ms ease, background 120ms ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.exit-btn:hover {
+  background: rgba(255, 255, 255, 0.75);
+  box-shadow: 0 10px 18px rgba(16, 26, 31, 0.14);
+  transform: scale(1.1);
+}
+
+.exit-btn:active {
+  transform: translateY(1px) scale(0.98);
+}
+
+/* Target Phrase Display */
+.target-phrase-display {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  z-index: 1000;
+  pointer-events: none;
+  text-align: center;
+  padding: 0 clamp(16px, 4vw, 20px);
+  max-width: 90vw;
+  animation: floatIn 600ms ease-out;
+}
+
+.target-phrase-display > div:first-child {
+  font-size: clamp(14px, 4vw, 22px);
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  margin-bottom: 4px;
+  letter-spacing: 0.5px;
+}
+
+.target-phrase-display > div:last-child {
+  font-size: clamp(18px, 5.5vw, 36px);
+  font-weight: bold;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  line-height: 1.2;
+}
+
+/* Block Language Label */
+.block-language-label {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: clamp(16px, 4vw, 24px);
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.95);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  z-index: 1000;
+  pointer-events: none;
+  text-align: center;
+  padding: clamp(6px, 2vw, 12px) clamp(12px, 4vw, 24px);
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: var(--radius-md);
+  backdrop-filter: blur(4px);
+  animation: floatIn 600ms ease-out;
+}
+
+/* Next Phrase Button */
+.next-phrase-btn {
+  position: fixed;
+  bottom: clamp(20px, 5vh, 40px);
+  left: 50%;
+  transform: translateX(-50%);
+  padding: clamp(12px, 3vw, 16px) clamp(24px, 6vw, 32px);
+  font-size: clamp(16px, 4vw, 18px);
+  font-weight: bold;
+  background: linear-gradient(135deg, #FF6B6B, #ff5252);
+  color: white;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  z-index: 1001;
+  display: none;
+  visibility: hidden;
+  opacity: 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: opacity 0.3s ease, transform 150ms ease, box-shadow 150ms ease;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.next-phrase-btn:not(.show):hover {
+  transform: translateX(-50%) translateY(-1px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.35);
+}
+
+.next-phrase-btn.show:hover {
+  transform: translateX(-50%) translateY(-1px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.35);
+}
+
+.next-phrase-btn.show:active {
+  transform: translateX(-50%) translateY(1px) scale(0.98);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+.next-phrase-btn.show {
+  display: block;
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Animations */
+@keyframes floatIn {
+  from {
+    transform: translateY(12px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 720px) {
+  .game-title {
+    font-size: clamp(24px, 10vw, 40px);
+    top: clamp(40px, 6vh, 80px);
+    letter-spacing: 1px;
+  }
+
+  .target-phrase-display > div:first-child {
+    font-size: clamp(12px, 3.5vw, 18px);
+  }
+
+  .target-phrase-display > div:last-child {
+    font-size: clamp(16px, 5vw, 28px);
+  }
+
+  .block-language-label {
+    font-size: clamp(14px, 3.5vw, 20px);
+    padding: clamp(4px, 1.5vw, 10px) clamp(10px, 3vw, 20px);
+  }
+
+  .exit-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    top: clamp(10px, 2vw, 16px);
+    right: clamp(10px, 2vw, 20px);
+  }
+
+  .next-phrase-btn {
+    bottom: clamp(16px, 4vh, 32px);
+    padding: clamp(10px, 2.5vw, 14px) clamp(20px, 5vw, 28px);
+    font-size: clamp(14px, 3.5vw, 16px);
+  }
+}
+
+@media (max-width: 480px) {
+  .game-title {
+    font-size: clamp(20px, 8vw, 32px);
+    top: clamp(30px, 5vh, 60px);
+    letter-spacing: 0.5px;
+  }
+
+  .target-phrase-display {
+    padding: 0 clamp(12px, 3vw, 16px);
+  }
+
+  .target-phrase-display > div:first-child {
+    font-size: clamp(11px, 3vw, 16px);
+    margin-bottom: 2px;
+  }
+
+  .target-phrase-display > div:last-child {
+    font-size: clamp(14px, 4.5vw, 24px);
+  }
+
+  .block-language-label {
+    font-size: clamp(12px, 3vw, 18px);
+    padding: clamp(4px, 1.2vw, 8px) clamp(8px, 2.5vw, 16px);
+    border-radius: var(--radius-md);
+  }
+
+  .exit-btn {
+    width: 36px;
+    height: 36px;
+    font-size: 18px;
+    top: clamp(8px, 1.5vw, 12px);
+    right: clamp(8px, 1.5vw, 16px);
+  }
+
+  .next-phrase-btn {
+    bottom: clamp(12px, 3vh, 24px);
+    padding: clamp(8px, 2vw, 12px) clamp(16px, 4vw, 24px);
+    font-size: clamp(12px, 3vw, 14px);
+  }
+}
