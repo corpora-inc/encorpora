@@ -50,6 +50,14 @@ const DEV_CATALOG: CatalogGame[] = [
     description: "Character-first handwriting studio for Mandarin.",
     purchase: { type: "free", priceLabel: "Free" },
   },
+  {
+    id: "quest_ear",
+    name: "Quest: All-Hearing Ear",
+    version: "0.1.0",
+    manifestUrl: "/packs/quest-ear/manifest.json",
+    description: "NYC adventure quest with language immersion.",
+    purchase: { type: "free", priceLabel: "Free" },
+  },
 ]
 
 const getCatalogUrl = () => {

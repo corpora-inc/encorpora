@@ -21,6 +21,19 @@ export type EntryOut = {
   translations: TranslationOut[]
 }
 
+export type PackDbQuery = {
+  sql: string
+  params?: unknown[]
+  dbName?: string
+  packId?: string
+  maxRows?: number
+}
+
+export type PackDbQueryResult = {
+  columns: string[]
+  rows: Record<string, unknown>[]
+}
+
 export type HostApi = {
   speak: (lang: string, text: string) => void
   stopSpeech?: () => void
@@ -29,6 +42,7 @@ export type HostApi = {
   getRandomEntry?: () => Promise<EntryOut>
   getRandomEntries?: (count: number) => Promise<EntryOut[]>
   getEntryById?: (entryId: number) => Promise<EntryOut>
+  queryPackDb?: (query: PackDbQuery) => Promise<PackDbQueryResult>
 }
 
 export type GameModule = {

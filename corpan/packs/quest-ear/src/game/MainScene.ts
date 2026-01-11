@@ -5,14 +5,38 @@ import { StoryGraph } from "../engine/StoryGraph"
 import { validateQuest } from "../engine/validator"
 import questData from "../data/quest.json"
 
+// Text size multipliers based on stack config
+const TEXT_SIZE_SCALES: Record<string, number> = {
+  small: 0.85,
+  medium: 1.0,
+  large: 1.2,
+  "extra-large": 1.4,
+}
+
 export class MainScene extends Phaser.Scene {
   private storyGraph!: StoryGraph
   private currentScene: Scene | null = null
   private hostApi: HostApi | null = null
   private titleText!: Phaser.GameObjects.Text
   private bodyText!: Phaser.GameObjects.Text
+  private hintText: Phaser.GameObjects.Text | null = null
   private choiceButtons: Phaser.GameObjects.Text[] = []
+  private availableChoices: Choice[] = []
+  private selectedIndex = 0
+  private exitButton!: Phaser.GameObjects.Container
   private readonly TEXT_WIDTH = 600
+
+  // Keyboard - use cursor keys object (Phaser's built-in, reliable)
+  private cursors!: Phaser.Types.Input.Keyboard.CursorKeys
+  private enterKey!: Phaser.Input.Keyboard.Key
+  private escKey!: Phaser.Input.Keyboard.Key
+  private numberKeys: Phaser.Input.Keyboard.Key[] = []
+
+  // Base font sizes (scaled by textSize setting)
+  private readonly BASE_TITLE_SIZE = 28
+  private readonly BASE_BODY_SIZE = 18
+  private readonly BASE_CHOICE_SIZE = 16
+  private readonly BASE_EXIT_SIZE = 14
 
   constructor() {
     super({ key: "MainScene" })
@@ -20,6 +44,16 @@ export class MainScene extends Phaser.Scene {
 
   preload() {
     // Quest data is imported directly, no need to load via Phaser
+  }
+
+  private getTextScale(): number {
+    const stackConfig = this.hostApi?.getStackConfig?.()
+    const textSize = stackConfig?.textSize || "medium"
+    return TEXT_SIZE_SCALES[textSize] || 1.0
+  }
+
+  private scaledFontSize(base: number): string {
+    return `${Math.round(base * this.getTextScale())}px`
   }
 
   create(data?: { returnToSceneId?: string }) {
@@ -51,9 +85,12 @@ export class MainScene extends Phaser.Scene {
       this.hostApi = (globalThis as any).__questEarHostApi || null
     }
 
+    // Create exit button (fixed position, top-right)
+    this.createExitButton()
+
     // Create text objects for title and body (recreated on scene restart)
     this.titleText = this.add.text(0, 0, "", {
-      fontSize: "28px",
+      fontSize: this.scaledFontSize(this.BASE_TITLE_SIZE),
       color: "#00ff41",
       fontFamily: '"Courier New", monospace',
       wordWrap: { width: this.TEXT_WIDTH },
@@ -61,12 +98,34 @@ export class MainScene extends Phaser.Scene {
     })
 
     this.bodyText = this.add.text(0, 0, "", {
-      fontSize: "18px",
+      fontSize: this.scaledFontSize(this.BASE_BODY_SIZE),
       color: "#ffb347",
       fontFamily: '"Courier New", monospace',
       wordWrap: { width: this.TEXT_WIDTH },
       lineSpacing: 8,
     })
+
+    // Set up keyboard - use createCursorKeys which is safe and scene-managed
+    this.cursors = this.input.keyboard!.createCursorKeys()
+    this.enterKey = this.input.keyboard!.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER)
+    this.escKey = this.input.keyboard!.addKey(Phaser.Input.Keyboard.KeyCodes.ESC)
+
+    // Number keys 1-9
+    this.numberKeys = []
+    const keyCodes = [
+      Phaser.Input.Keyboard.KeyCodes.ONE,
+      Phaser.Input.Keyboard.KeyCodes.TWO,
+      Phaser.Input.Keyboard.KeyCodes.THREE,
+      Phaser.Input.Keyboard.KeyCodes.FOUR,
+      Phaser.Input.Keyboard.KeyCodes.FIVE,
+      Phaser.Input.Keyboard.KeyCodes.SIX,
+      Phaser.Input.Keyboard.KeyCodes.SEVEN,
+      Phaser.Input.Keyboard.KeyCodes.EIGHT,
+      Phaser.Input.Keyboard.KeyCodes.NINE,
+    ]
+    for (const keyCode of keyCodes) {
+      this.numberKeys.push(this.input.keyboard!.addKey(keyCode))
+    }
 
     // Check if we're returning from an action scene
     if (data?.returnToSceneId && this.storyGraph) {
@@ -84,6 +143,121 @@ export class MainScene extends Phaser.Scene {
     this.renderScene()
   }
 
+  // Polling-based input in update loop - most reliable method in Phaser
+  update() {
+    // Check for navigation keys (JustDown = only triggers once per press)
+    if (Phaser.Input.Keyboard.JustDown(this.cursors.up)) {
+      this.navigateChoice(-1)
+    }
+    if (Phaser.Input.Keyboard.JustDown(this.cursors.down)) {
+      this.navigateChoice(1)
+    }
+
+    // Enter or Space to select
+    if (Phaser.Input.Keyboard.JustDown(this.enterKey) || Phaser.Input.Keyboard.JustDown(this.cursors.space)) {
+      this.selectCurrentChoice()
+    }
+
+    // ESC to exit
+    if (Phaser.Input.Keyboard.JustDown(this.escKey)) {
+      this.exitGame()
+    }
+
+    // Number keys 1-9
+    for (let i = 0; i < this.numberKeys.length; i++) {
+      if (Phaser.Input.Keyboard.JustDown(this.numberKeys[i])) {
+        if (i < this.availableChoices.length) {
+          this.selectedIndex = i
+          this.updateChoiceHighlight()
+          this.selectCurrentChoice()
+        }
+      }
+    }
+  }
+
+  private createExitButton() {
+    const screenWidth = this.cameras.main.width
+    const padding = 20
+
+    // Container for exit button
+    this.exitButton = this.add.container(screenWidth - padding, padding)
+
+    // Background
+    const bg = this.add
+      .rectangle(0, 0, 70, 32, 0x333344, 0.9)
+      .setStrokeStyle(1, 0x666688)
+      .setOrigin(1, 0)
+
+    // Text
+    const text = this.add
+      .text(-35, 16, "ESC Exit", {
+        fontSize: this.scaledFontSize(this.BASE_EXIT_SIZE),
+        color: "#aaaacc",
+        fontFamily: '"Courier New", monospace',
+      })
+      .setOrigin(0.5, 0.5)
+
+    this.exitButton.add([bg, text])
+    this.exitButton.setScrollFactor(0)
+
+    // Make interactive
+    bg.setInteractive({ useHandCursor: true })
+    bg.on("pointerover", () => {
+      bg.setFillStyle(0x444466, 1)
+      text.setColor("#ffffff")
+    })
+    bg.on("pointerout", () => {
+      bg.setFillStyle(0x333344, 0.9)
+      text.setColor("#aaaacc")
+    })
+    bg.on("pointerdown", () => {
+      this.exitGame()
+    })
+  }
+
+  private navigateChoice(direction: number) {
+    if (this.availableChoices.length === 0) return
+
+    this.selectedIndex += direction
+    if (this.selectedIndex < 0) {
+      this.selectedIndex = this.availableChoices.length - 1
+    } else if (this.selectedIndex >= this.availableChoices.length) {
+      this.selectedIndex = 0
+    }
+
+    this.updateChoiceHighlight()
+  }
+
+  private updateChoiceHighlight() {
+    this.choiceButtons.forEach((button, index) => {
+      const isSelected = index === this.selectedIndex
+      button.setColor(isSelected ? "#00ff41" : "#ffffff")
+
+      // Update the prefix to show selection state
+      const choice = this.availableChoices[index]
+      if (choice) {
+        const prefix = isSelected ? "► " : "  "
+        const number = `${index + 1}. `
+        button.setText(`${prefix}${number}${choice.label}`)
+      }
+    })
+  }
+
+  private selectCurrentChoice() {
+    if (this.availableChoices.length === 0) return
+    if (this.selectedIndex >= 0 && this.selectedIndex < this.availableChoices.length) {
+      this.handleChoice(this.availableChoices[this.selectedIndex])
+    }
+  }
+
+  private exitGame() {
+    // Stop any ongoing speech
+    this.hostApi?.stopSpeech?.()
+
+    // Dispatch the exit event that the host app listens for
+    window.dispatchEvent(new Event("corpan:exit"))
+  }
+
   private renderScene() {
     // Get current scene from StoryGraph to ensure we're in sync
     const scene = this.storyGraph.getCurrentScene()
@@ -92,15 +266,19 @@ export class MainScene extends Phaser.Scene {
     }
     this.currentScene = scene
 
-    // Clear previous choice buttons
+    // Clear previous UI elements
     this.clearChoiceButtons()
+
+    // Reset selection index
+    this.selectedIndex = 0
 
     // Calculate starting Y position (centered vertically)
     const screenHeight = this.cameras.main.height
     const screenWidth = this.cameras.main.width
-    let y = screenHeight * 0.15
+    let y = screenHeight * 0.12
 
     // Render title
+    this.titleText.setStyle({ fontSize: this.scaledFontSize(this.BASE_TITLE_SIZE) })
     this.titleText.setText(this.currentScene.title)
     this.titleText.setPosition(screenWidth / 2, y)
     this.titleText.setOrigin(0.5, 0)
@@ -108,6 +286,7 @@ export class MainScene extends Phaser.Scene {
 
     // Render body text (each paragraph on a new line)
     const bodyLines = this.currentScene.text.join("\n\n")
+    this.bodyText.setStyle({ fontSize: this.scaledFontSize(this.BASE_BODY_SIZE) })
     this.bodyText.setText(bodyLines)
     this.bodyText.setPosition(screenWidth / 2, y)
     this.bodyText.setOrigin(0.5, 0)
@@ -117,28 +296,45 @@ export class MainScene extends Phaser.Scene {
     this.speakScene()
 
     // Get available choices (filtered by requirements)
-    const availableChoices = this.storyGraph.getAvailableChoicesForCurrentScene()
+    this.availableChoices = this.storyGraph.getAvailableChoicesForCurrentScene()
 
-    // Render choice buttons
-    for (let i = 0; i < availableChoices.length; i++) {
-      const choice = availableChoices[i]
+    // Add keyboard hint if there are choices (kept separate from choiceButtons)
+    if (this.availableChoices.length > 0) {
+      this.hintText = this.add
+        .text(screenWidth / 2, y, "↑↓ Navigate  •  Enter Select  •  1-9 Quick Select", {
+          fontSize: this.scaledFontSize(12),
+          color: "#666688",
+          fontFamily: '"Courier New", monospace',
+        })
+        .setOrigin(0.5, 0)
+      y += this.hintText.height + 16
+    }
+
+    // Render choice buttons with numbers
+    for (let i = 0; i < this.availableChoices.length; i++) {
+      const choice = this.availableChoices[i]
+      const isSelected = i === this.selectedIndex
+      const prefix = isSelected ? "► " : "  "
+      const number = `${i + 1}. `
+
       const button = this.add
-        .text(screenWidth / 2, y, `> ${choice.label}`, {
-          fontSize: "16px",
-          color: "#ffffff",
+        .text(screenWidth / 2, y, `${prefix}${number}${choice.label}`, {
+          fontSize: this.scaledFontSize(this.BASE_CHOICE_SIZE),
+          color: isSelected ? "#00ff41" : "#ffffff",
           fontFamily: '"Courier New", monospace',
           wordWrap: { width: this.TEXT_WIDTH },
-          align: "center",
+          align: "left",
         })
         .setOrigin(0.5, 0)
         .setInteractive({ useHandCursor: true })
 
+      // Store the index for click handler
+      const choiceIndex = i
+
       // Add hover effect
       button.on("pointerover", () => {
-        button.setColor("#00ff41")
-      })
-      button.on("pointerout", () => {
-        button.setColor("#ffffff")
+        this.selectedIndex = choiceIndex
+        this.updateChoiceHighlight()
       })
 
       // Handle click
@@ -147,7 +343,7 @@ export class MainScene extends Phaser.Scene {
       })
 
       this.choiceButtons.push(button)
-      y += button.height + 20
+      y += button.height + 16
     }
   }
 
@@ -186,6 +382,13 @@ export class MainScene extends Phaser.Scene {
 
 
   private clearChoiceButtons() {
+    // Clear hint text
+    if (this.hintText) {
+      this.hintText.destroy()
+      this.hintText = null
+    }
+
+    // Clear choice buttons
     for (const button of this.choiceButtons) {
       button.destroy()
     }
@@ -208,4 +411,3 @@ export class MainScene extends Phaser.Scene {
     this.hostApi.speak(lang, fullText)
   }
 }
-

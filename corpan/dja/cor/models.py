@@ -159,3 +159,214 @@ class PackEntry(models.Model):
 
     def __str__(self):
         return f"{self.pack.title or 'internal'} [{self.order}] – {self.entry.en_text[:50]}"
+
+
+# --- Story graph models (quest-style narrative content packs) ---
+
+STORY_NODE_TYPES = [
+    ("text", "Text"),
+    ("action", "Action"),
+    ("end", "End"),
+]
+
+STORY_EDGE_TYPES = [
+    ("auto", "Auto"),
+    ("choice", "Choice"),
+]
+
+STORY_STATE_TYPES = [
+    ("int", "Integer"),
+    ("bool", "Boolean"),
+    ("string", "String"),
+    ("set_string", "Set[String]"),
+]
+
+
+class StoryQuest(models.Model):
+    id = models.SlugField(primary_key=True)
+    title = models.CharField(max_length=200)
+    description = models.TextField(blank=True)
+    default_language = models.CharField(max_length=10, default="en")
+    start_scene = models.ForeignKey(
+        "StoryScene",
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name="start_for_quests",
+    )
+    metadata_json = models.JSONField(default=dict, blank=True)
+
+    class Meta:
+        db_table = "story_quest"
+
+    def __str__(self):
+        return self.title
+
+
+class StoryEpisode(models.Model):
+    id = models.SlugField(primary_key=True)
+    quest = models.ForeignKey(StoryQuest, on_delete=models.CASCADE, related_name="episodes")
+    title = models.CharField(max_length=200)
+    summary = models.TextField(blank=True)
+    order_index = models.PositiveIntegerField(default=0)
+    metadata_json = models.JSONField(default=dict, blank=True)
+
+    class Meta:
+        db_table = "story_episode"
+        ordering = ["order_index"]
+
+    def __str__(self):
+        return f"{self.quest_id}:{self.title}"
+
+
+class StoryScene(models.Model):
+    id = models.SlugField(primary_key=True)
+    quest = models.ForeignKey(StoryQuest, on_delete=models.CASCADE, related_name="scenes")
+    episode = models.ForeignKey(
+        StoryEpisode, on_delete=models.SET_NULL, null=True, blank=True, related_name="scenes"
+    )
+    title = models.CharField(max_length=200)
+    scene_type = models.CharField(max_length=32, default="scene")
+    summary = models.TextField(blank=True)
+    visual_json = models.JSONField(default=dict, blank=True)
+    metadata_json = models.JSONField(default=dict, blank=True)
+
+    class Meta:
+        db_table = "story_scene"
+
+    def __str__(self):
+        return f"{self.quest_id}:{self.title}"
+
+
+class StoryTextUnit(models.Model):
+    key = models.SlugField(unique=True)
+    default_text = models.TextField()
+    context = models.CharField(max_length=200, blank=True)
+    notes = models.TextField(blank=True)
+
+    class Meta:
+        db_table = "story_text_unit"
+
+    def __str__(self):
+        return self.key
+
+
+class StoryTextUnitTranslation(models.Model):
+    text_unit = models.ForeignKey(
+        StoryTextUnit, on_delete=models.CASCADE, related_name="translations"
+    )
+    language_code = models.CharField(max_length=10)
+    text = models.TextField()
+    romanization = models.TextField(blank=True, default="")
+
+    class Meta:
+        db_table = "story_text_unit_translation"
+        unique_together = [("text_unit", "language_code")]
+
+    def __str__(self):
+        return f"{self.text_unit.key} [{self.language_code}]"
+
+
+class StoryNode(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    scene = models.ForeignKey(StoryScene, on_delete=models.CASCADE, related_name="nodes")
+    node_type = models.CharField(max_length=16, choices=STORY_NODE_TYPES, default="text")
+    text_unit = models.ForeignKey(
+        StoryTextUnit, on_delete=models.SET_NULL, null=True, blank=True, related_name="nodes"
+    )
+    action_key = models.CharField(max_length=64, blank=True, default="")
+    order_index = models.PositiveIntegerField(default=0)
+    metadata_json = models.JSONField(default=dict, blank=True)
+
+    class Meta:
+        db_table = "story_node"
+        ordering = ["order_index"]
+
+    def __str__(self):
+        return f"{self.scene_id}:{self.node_type}:{self.text_unit_id or self.action_key}"
+
+
+class StoryEdge(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    from_node = models.ForeignKey(
+        StoryNode, on_delete=models.CASCADE, related_name="out_edges"
+    )
+    to_node = models.ForeignKey(
+        StoryNode, on_delete=models.SET_NULL, null=True, blank=True, related_name="in_edges"
+    )
+    to_scene = models.ForeignKey(
+        StoryScene, on_delete=models.SET_NULL, null=True, blank=True, related_name="incoming_edges"
+    )
+    edge_type = models.CharField(max_length=16, choices=STORY_EDGE_TYPES, default="auto")
+    label_text_unit = models.ForeignKey(
+        StoryTextUnit,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name="edge_labels",
+    )
+    order_index = models.PositiveIntegerField(default=0)
+    metadata_json = models.JSONField(default=dict, blank=True)
+
+    class Meta:
+        db_table = "story_edge"
+        ordering = ["order_index"]
+
+    def __str__(self):
+        return f"{self.from_node_id} -> {self.to_node_id or self.to_scene_id}"
+
+
+class StoryStateVar(models.Model):
+    quest = models.ForeignKey(StoryQuest, on_delete=models.CASCADE, related_name="state_vars")
+    name = models.CharField(max_length=64)
+    var_type = models.CharField(max_length=16, choices=STORY_STATE_TYPES, default="int")
+    min_value = models.IntegerField(null=True, blank=True)
+    max_value = models.IntegerField(null=True, blank=True)
+    default_value = models.JSONField(null=True, blank=True, default=None)
+
+    class Meta:
+        db_table = "story_state_var"
+        unique_together = [("quest", "name")]
+
+    def __str__(self):
+        return f"{self.quest_id}:{self.name}"
+
+
+class StoryNodeEffect(models.Model):
+    node = models.ForeignKey(StoryNode, on_delete=models.CASCADE, related_name="effects")
+    op = models.CharField(max_length=16)
+    var_name = models.CharField(max_length=64)
+    value = models.JSONField(default=dict, blank=True)
+
+    class Meta:
+        db_table = "story_node_effect"
+
+    def __str__(self):
+        return f"{self.node_id}:{self.op}:{self.var_name}"
+
+
+class StoryEdgeCondition(models.Model):
+    edge = models.ForeignKey(StoryEdge, on_delete=models.CASCADE, related_name="conditions")
+    group_key = models.CharField(max_length=64, blank=True, default="")
+    op = models.CharField(max_length=16)
+    var_name = models.CharField(max_length=64)
+    value = models.JSONField(default=dict, blank=True)
+
+    class Meta:
+        db_table = "story_edge_condition"
+
+    def __str__(self):
+        return f"{self.edge_id}:{self.op}:{self.var_name}"
+
+
+class StoryEdgeEffect(models.Model):
+    edge = models.ForeignKey(StoryEdge, on_delete=models.CASCADE, related_name="effects")
+    op = models.CharField(max_length=16)
+    var_name = models.CharField(max_length=64)
+    value = models.JSONField(default=dict, blank=True)
+
+    class Meta:
+        db_table = "story_edge_effect"
+
+    def __str__(self):
+        return f"{self.edge_id}:{self.op}:{self.var_name}"

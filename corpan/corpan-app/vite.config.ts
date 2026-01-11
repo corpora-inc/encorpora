@@ -63,10 +63,15 @@ const servePacks = () => ({
         const target = new URL(urlParam);
         const response = await fetch(target.toString());
         res.statusCode = response.status;
-        const contentType = response.headers.get("content-type");
-        if (contentType) {
-          res.setHeader("Content-Type", contentType);
+
+        // Get Content-Type from response, or infer from file extension
+        let contentType = response.headers.get("content-type");
+        if (!contentType || contentType === "application/octet-stream") {
+          const ext = path.extname(target.pathname);
+          contentType = contentTypes[ext] || "application/octet-stream";
         }
+        res.setHeader("Content-Type", contentType);
+
         const buffer = Buffer.from(await response.arrayBuffer());
         res.end(buffer);
       } catch {

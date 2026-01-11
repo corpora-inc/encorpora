@@ -12,17 +12,16 @@ interface NPCData {
 export class ActionScene extends Phaser.Scene {
   private player!: Phaser.GameObjects.Container
   private cursors!: Phaser.Types.Input.Keyboard.CursorKeys
+  private escKey!: Phaser.Input.Keyboard.Key
   private progressText!: Phaser.GameObjects.Text
   private returnToSceneId?: string
 
   // Constants
   private readonly WORLD_WIDTH = 80000 // 100 screens × 800px
-  private readonly SCREEN_WIDTH = 800
   private readonly SCREEN_HEIGHT = 600
 
   // Player state
   private playerSpeed = 200
-  private health = 100
 
   // NPCs
   private npcs: {
@@ -68,9 +67,13 @@ export class ActionScene extends Phaser.Scene {
 
     // Enable keyboard input
     this.cursors = this.input.keyboard!.createCursorKeys()
+    this.escKey = this.input.keyboard!.addKey(Phaser.Input.Keyboard.KeyCodes.ESC)
 
     // Health bar
     this.createHealthBar()
+
+    // Create exit button
+    this.createExitButton()
 
     // Progress indicator (fixed to camera)
     this.progressText = this.add
@@ -84,8 +87,8 @@ export class ActionScene extends Phaser.Scene {
 
     // Instructions (fixed to camera)
     this.add
-      .text(400, 30, "← → to move | Approach NPCs to interact", {
-        fontSize: "16px",
+      .text(400, 30, "← → to move | Approach NPCs to interact | ESC to exit", {
+        fontSize: "14px",
         color: "#ffffff",
         fontFamily: '"Courier New", monospace',
       })
@@ -93,9 +96,58 @@ export class ActionScene extends Phaser.Scene {
       .setScrollFactor(0)
   }
 
-  update(time: number, delta: number) {
+  private createExitButton() {
+    const padding = 20
+
+    // Container for exit button (top-left)
+    const exitButton = this.add.container(padding, padding)
+
+    // Background
+    const bg = this.add
+      .rectangle(0, 0, 70, 32, 0x333344, 0.9)
+      .setStrokeStyle(1, 0x666688)
+      .setOrigin(0, 0)
+
+    // Text
+    const text = this.add
+      .text(35, 16, "ESC Exit", {
+        fontSize: "14px",
+        color: "#aaaacc",
+        fontFamily: '"Courier New", monospace',
+      })
+      .setOrigin(0.5, 0.5)
+
+    exitButton.add([bg, text])
+    exitButton.setScrollFactor(0)
+
+    // Make interactive
+    bg.setInteractive({ useHandCursor: true })
+    bg.on("pointerover", () => {
+      bg.setFillStyle(0x444466, 1)
+      text.setColor("#ffffff")
+    })
+    bg.on("pointerout", () => {
+      bg.setFillStyle(0x333344, 0.9)
+      text.setColor("#aaaacc")
+    })
+    bg.on("pointerdown", () => {
+      this.exitGame()
+    })
+  }
+
+  private exitGame() {
+    // Stop any ongoing speech
+    const hostApi = (globalThis as any).__questEarHostApi
+    hostApi?.stopSpeech?.()
+
+    // Dispatch the exit event that the host app listens for
+    window.dispatchEvent(new Event("corpan:exit"))
+  }
+
+  update(_time: number, _delta: number) {
     const body = this.player.body as Phaser.Physics.Arcade.Body
 
+    // Movement - continuous while held
     if (this.cursors.left.isDown) {
       body.setVelocityX(-this.playerSpeed)
       this.player.setScale(-1, 1) // Flip to face left
@@ -104,6 +156,11 @@ export class ActionScene extends Phaser.Scene {
       this.player.setScale(1, 1) // Face right
     } else {
       body.setVelocityX(0)
+    }
+
+    // ESC to exit
+    if (Phaser.Input.Keyboard.JustDown(this.escKey)) {
+      this.exitGame()
     }
 
     // Update progress indicator
@@ -144,7 +201,7 @@ export class ActionScene extends Phaser.Scene {
       const height = Phaser.Math.Between(150, 350)
 
       // Building silhouette
-      const building = this.add.rectangle(x, 500 - height / 2, width, height, 0x2a2a4e)
+      this.add.rectangle(x, 500 - height / 2, width, height, 0x2a2a4e)
 
       // Windows
       for (let row = 0; row < Math.floor(height / 30); row++) {
@@ -327,9 +384,9 @@ export class ActionScene extends Phaser.Scene {
 
   private createHealthBar() {
     // Background (fixed to camera)
-    const bgBar = this.add.rectangle(700, 50, 150, 20, 0x333333).setScrollFactor(0)
-    // Health (will update dynamically, fixed to camera)
-    const healthBar = this.add.rectangle(700, 50, 145, 15, 0x00ff41).setScrollFactor(0)
+    this.add.rectangle(700, 50, 150, 20, 0x333333).setScrollFactor(0)
+    // Health bar (fixed to camera)
+    this.add.rectangle(700, 50, 145, 15, 0x00ff41).setScrollFactor(0)
     this.add
       .text(700, 50, "HEALTH", { fontSize: "10px", color: "#000", fontFamily: "monospace" })
       .setOrigin(0.5)
