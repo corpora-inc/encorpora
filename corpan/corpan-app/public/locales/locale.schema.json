@@ -718,6 +718,12 @@
         "emptyInstalled": {
           "type": "string"
         },
+        "updates": {
+          "type": "string"
+        },
+        "new": {
+          "type": "string"
+        },
         "get": {
           "type": "string"
         },
@@ -751,6 +757,9 @@
         "updating": {
           "type": "string"
         },
+        "offline": {
+          "type": "string"
+        },
         "manifestTitle": {
           "type": "string"
         },
@@ -782,6 +791,8 @@
         "emptyAvailable",
         "installed",
         "emptyInstalled",
+        "updates",
+        "new",
         "get",
         "open",
         "remove",
@@ -793,6 +804,7 @@
         "installFailed",
         "update",
         "updating",
+        "offline",
         "manifestTitle",
         "manifestPlaceholder",
         "manifestHint",

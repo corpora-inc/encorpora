@@ -71,7 +71,9 @@
     "extra-large": "Очень большой",
     "testTts": "Проверьте настройки TTS, нажав кнопки ниже:",
     "showRomanization": "Показать романизацию",
-    "scrollNavigation": "Навигация прокруткой"
+    "scrollNavigation": "Навигация прокруткой",
+    "packs": "Packs",
+    "stacks": "Stacks"
   },
   "onboarding": {
     "welcome": "Добро пожаловать",
@@ -268,15 +270,15 @@
     "feedbackButton": "Оставить отзыв на GitHub"
   },
   "packs": {
-    "title": "Пакеты",
-    "available": "Доступные пакеты",
-    "emptyAvailable": "Пока нет пакетов.",
-    "installed": "Установленные пакеты",
-    "emptyInstalled": "Нет установленных пакетов.",
+    "title": "Packs",
+    "available": "Доступно",
+    "emptyAvailable": "Пока ничего не доступно.",
+    "installed": "Установлено",
+    "emptyInstalled": "Пока ничего не установлено.",
     "get": "Получить",
     "open": "Открыть",
     "remove": "Удалить",
-    "version": "Версия {{version}}",
+    "version": "v{{version}}",
     "refresh": "Обновить",
     "free": "Бесплатно",
     "install": "Установить",
@@ -287,10 +289,13 @@
     "manifestTitle": "URL манифеста",
     "manifestPlaceholder": "https://example.com/manifest.json",
     "manifestHint": "Вставьте URL манифеста.",
-    "devUnlockTitle": "Пакеты разработчика",
+    "devUnlockTitle": "Packs для разработчиков",
     "devUnlockHint": "Нажмите 7 раз, чтобы открыть установку по манифесту.",
-    "devUnlockToast": "Пакеты разработчика включены.",
-    "devIntro": "Попробуйте пакет Corpán или создайте свой.",
-    "devLink": "Подробнее на Free2z"
+    "devUnlockToast": "Packs для разработчиков разблокированы.",
+    "devIntro": "Попробуйте Pack от Corpán или создайте свой.",
+    "devLink": "Подробнее на Free2z",
+    "new": "Новое",
+    "updates": "Обновления",
+    "offline": "Оффлайн"
   }
 }

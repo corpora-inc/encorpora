@@ -71,7 +71,9 @@
     "extra-large": "Sehr groß",
     "testTts": "Testen Sie Ihre TTS-Einstellungen, indem Sie auf die Schaltflächen unten klicken:",
     "showRomanization": "Romanisierung anzeigen",
-    "scrollNavigation": "Scrollnavigation"
+    "scrollNavigation": "Scrollnavigation",
+    "packs": "Packs",
+    "stacks": "Stacks"
   },
   "onboarding": {
     "welcome": "Willkommen",
@@ -268,15 +270,15 @@
     "feedbackButton": "Feedback auf GitHub geben"
   },
   "packs": {
-    "title": "Pakete",
-    "available": "Verfügbare Packs",
-    "emptyAvailable": "Noch keine Packs.",
-    "installed": "Installierte Packs",
-    "emptyInstalled": "Keine Packs installiert.",
+    "title": "Packs",
+    "available": "Verfügbar",
+    "emptyAvailable": "Noch nichts verfügbar.",
+    "installed": "Installiert",
+    "emptyInstalled": "Noch nichts installiert.",
     "get": "Holen",
     "open": "Öffnen",
     "remove": "Entfernen",
-    "version": "Version {{version}}",
+    "version": "v{{version}}",
     "refresh": "Aktualisieren",
     "free": "Kostenlos",
     "install": "Installieren",
@@ -289,8 +291,11 @@
     "manifestHint": "Manifest-URL einfügen.",
     "devUnlockTitle": "Entwickler-Packs",
     "devUnlockHint": "7‑mal tippen, um Manifest‑Installationen zu entsperren.",
-    "devUnlockToast": "Entwickler-Packs entsperrt.",
-    "devIntro": "Probiere einen Corpán‑Pack aus oder erstelle deinen eigenen.",
-    "devLink": "Mehr auf Free2z"
+    "devUnlockToast": "Entwickler-Packs freigeschaltet.",
+    "devIntro": "Teste ein Corpán Pack oder erstelle dein eigenes.",
+    "devLink": "Mehr auf Free2z",
+    "new": "Neu",
+    "updates": "Updates",
+    "offline": "Offline"
   }
 }

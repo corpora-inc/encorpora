@@ -87,10 +87,10 @@ export function PackActions({
     return (
       <div className="space-y-2">
         <Button disabled className="w-full" size="sm">
-          {t("packs.install")} (Offline)
+          {t("packs.get")}
         </Button>
         <p className="text-xs text-muted-foreground">
-          Requires internet connection
+          {t("packs.offline")}
         </p>
       </div>
     )
@@ -108,7 +108,7 @@ export function PackActions({
           >
             {installing
               ? t("packs.updating")
-              : `Update to ${updateVersion}`}
+              : t("packs.update")}
           </Button>
           <Button
             variant="outline"
@@ -155,14 +155,13 @@ export function PackActions({
       >
         {installing
           ? t("packs.installing")
-          : isOffline
-            ? "Download (Offline)"
-            : t("packs.get")}
+          : t("packs.get")}
       </Button>
       {error && <p className="text-xs text-red-600">{error}</p>}
-      <p className="text-xs text-muted-foreground">
-        {pack.purchase?.priceLabel ?? t("packs.free")}
-      </p>
+      <div className="flex items-center justify-between text-xs text-muted-foreground">
+        <span>{pack.purchase?.priceLabel ?? t("packs.free")}</span>
+        {isOffline ? <span>{t("packs.offline")}</span> : null}
+      </div>
     </div>
   )
 }

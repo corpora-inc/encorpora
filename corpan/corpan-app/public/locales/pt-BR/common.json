@@ -71,7 +71,9 @@
     "extra-large": "Muito grande",
     "testTts": "Teste suas configurações de TTS clicando nos botões abaixo:",
     "showRomanization": "Mostrar romanização",
-    "scrollNavigation": "Navegação por rolagem"
+    "scrollNavigation": "Navegação por rolagem",
+    "packs": "Packs",
+    "stacks": "Stacks"
   },
   "onboarding": {
     "welcome": "Bem-vindo",
@@ -268,15 +270,15 @@
     "feedbackButton": "Enviar feedback no GitHub"
   },
   "packs": {
-    "title": "Pacotes",
-    "available": "Packs disponíveis",
-    "emptyAvailable": "Ainda não há packs.",
-    "installed": "Packs instalados",
-    "emptyInstalled": "Nenhum pack instalado.",
+    "title": "Packs",
+    "available": "Disponível",
+    "emptyAvailable": "Nada disponível ainda.",
+    "installed": "Instalado",
+    "emptyInstalled": "Nada instalado ainda.",
     "get": "Obter",
     "open": "Abrir",
     "remove": "Remover",
-    "version": "Versão {{version}}",
+    "version": "v{{version}}",
     "refresh": "Atualizar",
     "free": "Grátis",
     "install": "Instalar",
@@ -290,7 +292,10 @@
     "devUnlockTitle": "Packs de desenvolvedor",
     "devUnlockHint": "Toque 7 vezes para desbloquear instalações por manifesto.",
     "devUnlockToast": "Packs de desenvolvedor desbloqueados.",
-    "devIntro": "Experimente um Pack da Corpán ou crie o seu.",
-    "devLink": "Saiba mais no Free2z"
+    "devIntro": "Teste um Pack da Corpán ou crie o seu.",
+    "devLink": "Saiba mais no Free2z",
+    "new": "Novo",
+    "updates": "Atualizações",
+    "offline": "Sem conexão"
   }
 }

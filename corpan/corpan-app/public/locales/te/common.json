@@ -71,7 +71,9 @@
     "extra-large": "అతి పెద్దది",
     "testTts": "క్రింది బటన్‌లతో TTS పరీక్షించండి:",
     "showRomanization": "రోమనైజేషన్ చూపించు",
-    "scrollNavigation": "స్క్రోల్ నావిగేషన్"
+    "scrollNavigation": "స్క్రోల్ నావిగేషన్",
+    "packs": "Packs",
+    "stacks": "Stacks"
   },
   "onboarding": {
     "welcome": "స్వాగతం",
@@ -268,15 +270,15 @@
     "feedbackButton": "GitHub లో అభిప్రాయం పంచుకోండి"
   },
   "packs": {
-    "title": "ప్యాక్‌లు",
-    "available": "అందుబాటులో ఉన్న ప్యాక్‌లు",
-    "emptyAvailable": "ఇంకా ప్యాక్‌లు లేవు.",
-    "installed": "ఇన్‌స్టాల్ చేసిన ప్యాక్‌లు",
-    "emptyInstalled": "ప్యాక్‌లు ఇన్‌స్టాల్ చేయలేదు.",
+    "title": "Packs",
+    "available": "లభ్యం",
+    "emptyAvailable": "ఇప్పటికీ ఏదీ లభ్యం లేదు.",
+    "installed": "ఇన్‌స్టాల్ అయ్యింది",
+    "emptyInstalled": "ఇప్పటికీ ఏదీ ఇన్‌స్టాల్ కాలేదు.",
     "get": "పొందండి",
     "open": "తెరువు",
     "remove": "తొలగించు",
-    "version": "వెర్షన్ {{version}}",
+    "version": "v{{version}}",
     "refresh": "రిఫ్రెష్ చేయి",
     "free": "ఉచితం",
     "install": "ఇన్‌స్టాల్ చేయండి",
@@ -287,10 +289,13 @@
     "manifestTitle": "మానిఫెస్ట్ URL",
     "manifestPlaceholder": "https://example.com/manifest.json",
     "manifestHint": "మానిఫెస్ట్ URL ను అతికించండి.",
-    "devUnlockTitle": "డెవలపర్ ప్యాక్‌లు",
+    "devUnlockTitle": "Developer Packs",
     "devUnlockHint": "మానిఫెస్ట్ ఇన్‌స్టాల్‌లను అన్‌లాక్ చేయడానికి 7 సార్లు నొక్కండి.",
-    "devUnlockToast": "డెవలపర్ ప్యాక్‌లు అన్‌లాక్ చేయబడ్డాయి.",
-    "devIntro": "Corpán ప్యాక్‌ను ప్రయత్నించండి లేదా మీ స్వంతదాన్ని తయారు చేయండి.",
-    "devLink": "Free2z లో మరింత తెలుసుకోండి"
+    "devUnlockToast": "Developer Packs అన్లాక్ అయ్యాయి.",
+    "devIntro": "Corpán Pack‌ని ప్రయత్నించండి లేదా మీరే తయారు చేయండి.",
+    "devLink": "Free2z లో మరింత తెలుసుకోండి",
+    "new": "కొత్త",
+    "updates": "అప్‌డేట్లు",
+    "offline": "ఆఫ్‌లైన్"
   }
 }
