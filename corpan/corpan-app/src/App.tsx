@@ -26,6 +26,7 @@ if (import.meta.env.DEV) {
 
 export default function App() {
   const [showSettings, setShowSettings] = useState(false);
+  const [settingsTab, setSettingsTab] = useState<"stacks" | "packs" | undefined>(undefined);
   const [activeGame, setActiveGame] = useState<{
     id: string;
     manifestUrl?: string;
@@ -103,6 +104,9 @@ export default function App() {
     const onExit = () => {
       setActiveGame(null);
       updateGameParam(null);
+      // Reopen settings modal to Packs tab after exiting a game
+      setShowSettings(true);
+      setSettingsTab("packs");
     };
     window.addEventListener("corpan:exit", onExit as EventListener);
     return () => window.removeEventListener("corpan:exit", onExit as EventListener);
@@ -132,7 +136,7 @@ export default function App() {
                 <SettingsIcon className="text-gray-600 h-5 w-5" />
               </Button>
               {updates.length > 0 && (
-                <span className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-red-600 text-xs font-semibold text-white">
+                <span className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-purple-600 text-xs font-semibold text-white animate-in fade-in zoom-in duration-500 animate-breathe">
                   {updates.length}
                 </span>
               )}
@@ -143,12 +147,16 @@ export default function App() {
 
       <SettingsModal
         open={showSettings}
-        onClose={() => setShowSettings(false)}
+        onClose={() => {
+          setShowSettings(false);
+          setSettingsTab(undefined);
+        }}
         onLaunchGame={(game: InstalledGame) => {
           setShowSettings(false);
           setActiveGame({ id: game.id, manifestUrl: game.manifestUrl });
           updateGameParam({ id: game.id, manifestUrl: game.manifestUrl });
         }}
+        initialTab={settingsTab}
       />
 
       <RatingPrompt />

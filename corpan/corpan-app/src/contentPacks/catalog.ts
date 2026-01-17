@@ -54,15 +54,33 @@ const DEV_CATALOG: CatalogGame[] = [
 
 const PRODUCTION_CATALOG_URL = "https://encorpora.io/corpan/packs/catalog.json"
 
+const isTauriRuntime = () => {
+  if (typeof window === "undefined") return false
+  return (
+    "__TAURI__" in window ||
+    "__TAURI_INTERNALS__" in window ||
+    (window as any).__TAURI_IPC__ !== undefined
+  )
+}
+
 const getCatalogUrl = () => {
   const envUrl = import.meta.env.VITE_GAME_CATALOG_URL
   if (typeof envUrl === "string" && envUrl.length > 0) {
+    console.log("[catalog] Using VITE_GAME_CATALOG_URL:", envUrl)
     return envUrl
   }
   // In production, always try to fetch from the published catalog
   if (!import.meta.env.DEV) {
+    console.log("[catalog] Production mode, using PRODUCTION_CATALOG_URL")
     return PRODUCTION_CATALOG_URL
   }
+  // In dev mode on mobile/desktop (Tauri), use production catalog for testing consumer experience
+  if (isTauriRuntime()) {
+    console.log("[catalog] Dev mode + Tauri detected, using PRODUCTION_CATALOG_URL for consumer testing")
+    return PRODUCTION_CATALOG_URL
+  }
+  // In dev mode in browser, use null to get local dev catalog
+  console.log("[catalog] Dev mode in browser, using local DEV_CATALOG")
   return null
 }
 

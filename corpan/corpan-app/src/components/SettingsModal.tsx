@@ -21,7 +21,7 @@ import { Separator } from "./ui/separator";
 
 import About from "./About";
 import { useSettingsStore } from "@/store/settings";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import StacksManager from "./StacksManager";
 import { JumpToTTSButton } from "./JumpToTTSButton";
@@ -33,12 +33,22 @@ export function SettingsModal({
   open,
   onClose,
   onLaunchGame,
+  initialTab,
 }: {
   open: boolean;
   onClose: () => void;
   onLaunchGame?: (game: InstalledGame) => void;
+  initialTab?: "stacks" | "packs";
 }) {
   const { t } = useTranslation();
+  const [activeTab, setActiveTab] = useState<"stacks" | "packs">(() => {
+    try {
+      const saved = localStorage.getItem("corpan:settings-tab");
+      return (saved === "packs" || saved === "stacks") ? saved : "stacks";
+    } catch {
+      return "stacks";
+    }
+  });
   const [devTapCount, setDevTapCount] = useState(0);
   const [devModeEnabled, setDevModeEnabled] = useState(() => {
     try {
@@ -49,14 +59,31 @@ export function SettingsModal({
   });
   const [devToastVisible, setDevToastVisible] = useState(false);
   const devToastTimeoutRef = useRef<number | null>(null);
-  const showPacks = useMemo(() => {
-    return import.meta.env.VITE_ENABLE_PACKS === "true" || devModeEnabled;
-  }, [devModeEnabled]);
 
   const dir = useSettingsStore((s) => s.dir);
   // const primaryLang = useSettingsStore((s) => s.primaryLang());
   const setOnboarded = useSettingsStore((s) => s.setOnboarded);
   const setOnboardingStep = useSettingsStore((s) => s.setOnboardingStep);
+
+  // Handle initialTab prop (e.g., when coming back from a game)
+  useEffect(() => {
+    if (initialTab && open) {
+      setActiveTab(initialTab);
+    }
+  }, [initialTab, open]);
+
+  // Handle tab changes and persist to localStorage
+  const handleTabChange = (value: string) => {
+    if (value === "stacks" || value === "packs") {
+      setActiveTab(value);
+      try {
+        localStorage.setItem("corpan:settings-tab", value);
+      } catch {
+        // Ignore localStorage failures
+      }
+    }
+  };
+
   useEffect(() => {
     return () => {
       if (devToastTimeoutRef.current !== null) {
@@ -101,6 +128,7 @@ export function SettingsModal({
           [&>div:first-child]:hidden
         "
         id="settings-modal-content"
+        style={{ paddingTop: 0 }}
       >
         <DialogTitle className="sr-only" dir={dir()}>
           {t("settings.settings")}
@@ -109,9 +137,9 @@ export function SettingsModal({
           {t("settings.adjustToYourPreferences")}
         </DialogDescription>
 
-        <Tabs defaultValue="stacks" className="w-full flex flex-col flex-1 min-h-0">
+        <Tabs value={activeTab} onValueChange={handleTabChange} className="w-full flex flex-col flex-1 min-h-0">
           {/* Sticky header with tabs and close button */}
-          <div className="sticky top-0 z-[1001] bg-white border-b border-gray-200 -mx-6 -mt-6 px-6 pt-6 pb-2">
+          <div className="sticky top-0 z-[1001] bg-white border-b border-gray-200 -mx-6 px-6 pt-7 pb-2">
             <div className="flex items-center gap-2">
               <TabsList className="flex-1 grid grid-cols-2 h-12">
                 <TabsTrigger value="stacks" className="text-base font-semibold">
@@ -173,9 +201,17 @@ export function SettingsModal({
             <About />
           </TabsContent>
 
-          <TabsContent value="packs" className="space-y-4 mt-8 pb-10">
+          <TabsContent value="packs" className="space-y-4 mt-8 pb-16">
+            <PacksListing
+              showDevInstall={devModeEnabled}
+              onLaunchGame={(game) => {
+                onClose();
+                onLaunchGame?.(game);
+              }}
+            />
+
             {!devModeEnabled && (
-              <div className="space-y-3 rounded-md border border-gray-200 bg-white/80 p-4">
+              <div className="space-y-3 rounded-md border border-gray-200 bg-white/80 p-4 mt-6">
                 <div className="space-y-1">
                   <div className="text-md font-semibold">
                     {t("packs.devUnlockTitle")}
@@ -193,15 +229,6 @@ export function SettingsModal({
                   {t("packs.devUnlockTitle")} ({devTapCount}/7)
                 </Button>
               </div>
-            )}
-            {showPacks && (
-              <PacksListing
-                showDevInstall={devModeEnabled}
-                onLaunchGame={(game) => {
-                  onClose();
-                  onLaunchGame?.(game);
-                }}
-              />
             )}
           </TabsContent>
         </Tabs>

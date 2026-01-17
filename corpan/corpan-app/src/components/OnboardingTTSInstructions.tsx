@@ -97,6 +97,7 @@ export function OnboardingTTSInstructions() {
     const os = useMemo(() => detectOSFromUA(), []);
     const [voices, setVoices] = useState<ExtendedVoiceInfo[] | null>(null);
     const [engineStatus, setEngineStatus] = useState<TtsEngineStatus | null>(null);
+    const [engineStatusReady, setEngineStatusReady] = useState(os !== "android");
 
     // By default we only show offline voices; user can opt in to online-only voices (Android only).
     // const [includeNetworkVoices, setIncludeNetworkVoices] = useState(false);
@@ -114,6 +115,7 @@ export function OnboardingTTSInstructions() {
         if (os === "android") {
             const status = await getTtsEngineStatus();
             setEngineStatus(status);
+            setEngineStatusReady(true);
         }
     }
 
@@ -251,6 +253,7 @@ export function OnboardingTTSInstructions() {
                     onSmartSelect={smartSelectAll}
                     canSmartSelect={canSmartSelect}
                     engineStatus={engineStatus}
+                    engineStatusReady={engineStatusReady}
                 />
             </OnboardingHeader>
 

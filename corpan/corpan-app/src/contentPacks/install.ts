@@ -66,8 +66,15 @@ const hashManifest = async (text: string) => {
   return toHex(digest)
 }
 
-const isTauriRuntime = () =>
-  typeof window !== "undefined" && "__TAURI__" in window
+export const isTauriRuntime = () => {
+  if (typeof window === "undefined") return false
+  // Check for Tauri-specific APIs
+  return (
+    "__TAURI__" in window ||
+    "__TAURI_INTERNALS__" in window ||
+    (window as any).__TAURI_IPC__ !== undefined
+  )
+}
 
 const fetchManifestText = async (url: string) => {
   if (!import.meta.env.DEV && isTauriRuntime()) {
@@ -141,13 +148,21 @@ export const installPack = async (
 export const installPackFromDownload = async (
   request: DownloadInstallRequest
 ): Promise<InstallResult> => {
-  const { installContentPackFromUrl } = await import("./native")
+  console.log("[install] Attempting to install pack:", request.packId)
+  console.log("[install] Tauri runtime detected:", isTauriRuntime())
+  console.log("[install] Window.__TAURI__:", (window as any).__TAURI__)
+
   try {
+    const { installContentPackFromUrl } = await import("./native")
+    console.log("[install] Native module imported successfully")
+
     const result = await installContentPackFromUrl({
       packId: request.packId,
       downloadUrl: request.downloadUrl,
       expectedSha256: request.expectedSha256,
     })
+    console.log("[install] Install successful:", result)
+
     return {
       packId: result.pack.id,
       name: result.pack.name,
@@ -157,7 +172,14 @@ export const installPackFromDownload = async (
       source: request.source,
     }
   } catch (err) {
+    console.error("[install] Install failed:", err)
     const message = err instanceof Error ? err.message : String(err)
+
+    // If the error suggests Tauri is not available, provide helpful message
+    if (message.includes("__TAURI__") || message.includes("invoke")) {
+      throw new Error("Pack downloads require the Corpán app. This feature is not available in the browser.")
+    }
+
     throw new Error(`Pack download install failed: ${message}`)
   }
 }
