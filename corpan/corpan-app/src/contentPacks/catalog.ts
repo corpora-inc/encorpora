@@ -22,7 +22,7 @@ const DEFAULT_CATALOG: CatalogGame[] = [
     version: "0.1.0",
     manifestUrl: "https://encorpora.io/corpan/packs/hover-runner.zip",
     description:
-      "Hoverboard runner using the All-Hearing Ear to lock in correct translations and avoid wrong ones.",
+      "3D fun in Hover Runner: lock in correct translations with the All-Hearing Ear and avoid wrong ones.",
     purchase: { type: "free", priceLabel: "Free" },
   },
   {
@@ -42,7 +42,7 @@ const DEV_CATALOG: CatalogGame[] = [
     version: "0.1.0",
     manifestUrl: "/packs/hover-runner.zip",
     description:
-      "Hoverboard runner using the All-Hearing Ear to lock in correct translations and avoid wrong ones.",
+      "3D fun in Hover Runner: lock in correct translations with the All-Hearing Ear and avoid wrong ones.",
     purchase: { type: "free", priceLabel: "Free" },
   },
   {
