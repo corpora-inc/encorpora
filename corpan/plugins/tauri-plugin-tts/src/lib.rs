@@ -44,7 +44,9 @@ pub fn init<R: Runtime>() -> TauriPlugin<R> {
             commands::stop,
             commands::open_tts_settings,
             commands::install_tts_data_if_supported,
-            commands::list_voices
+            commands::list_voices,
+            commands::get_tts_engine_status,
+            commands::open_tts_engine_store
         ])
         .setup(|app, api| {
             // --- Mobile (Android/iOS) ---

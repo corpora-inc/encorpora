@@ -52,10 +52,16 @@ const DEV_CATALOG: CatalogGame[] = [
   },
 ]
 
+const PRODUCTION_CATALOG_URL = "https://encorpora.io/corpan/packs/catalog.json"
+
 const getCatalogUrl = () => {
   const envUrl = import.meta.env.VITE_GAME_CATALOG_URL
   if (typeof envUrl === "string" && envUrl.length > 0) {
     return envUrl
+  }
+  // In production, always try to fetch from the published catalog
+  if (!import.meta.env.DEV) {
+    return PRODUCTION_CATALOG_URL
   }
   return null
 }
@@ -111,16 +117,23 @@ const parseCatalog = (data: unknown): CatalogGame[] | null => {
 export const fetchGameCatalog = async (): Promise<CatalogGame[]> => {
   const urlValue = getCatalogUrl()
   if (!urlValue) {
+    console.log("[catalog] No catalog URL, using defaults")
     return getDefaultCatalog()
   }
   try {
     const url = new URL(urlValue, window.location.href).toString()
+    console.log("[catalog] Fetching from:", url)
     const res = await fetch(url, { cache: "no-store" })
-    if (!res.ok) return getDefaultCatalog()
+    if (!res.ok) {
+      console.log("[catalog] Fetch failed with status:", res.status)
+      return getDefaultCatalog()
+    }
     const data = (await res.json()) as unknown
     const parsed = parseCatalog(data)
+    console.log("[catalog] Parsed catalog:", parsed)
     return parsed ?? getDefaultCatalog()
-  } catch {
+  } catch (error) {
+    console.error("[catalog] Fetch error:", error)
     return getDefaultCatalog()
   }
 }
@@ -140,4 +153,33 @@ export const compareVersions = (a: string, b: string) => {
     if (diff !== 0) return diff
   }
   return 0
+}
+
+export type UpdateType = "major" | "minor" | "patch"
+
+/**
+ * Determine the type of update based on semantic versioning
+ * @param remoteVersion The version available remotely
+ * @param localVersion The currently installed version
+ * @returns 'major', 'minor', or 'patch' if remote is newer, null otherwise
+ */
+export const getUpdateType = (
+  remoteVersion: string,
+  localVersion: string
+): UpdateType | null => {
+  const remote = normalizeVersion(remoteVersion)
+  const local = normalizeVersion(localVersion)
+
+  // Check major version (X.0.0)
+  if ((remote[0] ?? 0) > (local[0] ?? 0)) return "major"
+  if ((remote[0] ?? 0) < (local[0] ?? 0)) return null
+
+  // Check minor version (0.X.0)
+  if ((remote[1] ?? 0) > (local[1] ?? 0)) return "minor"
+  if ((remote[1] ?? 0) < (local[1] ?? 0)) return null
+
+  // Check patch version (0.0.X)
+  if ((remote[2] ?? 0) > (local[2] ?? 0)) return "patch"
+
+  return null // Same version or local is newer
 }

@@ -6,10 +6,12 @@ import { invoke } from "@tauri-apps/api/core";
 import {
     detectOSFromUA,
     getVoices,
+    getTtsEngineStatus,
     sortVoicesWithLangBias,
     deepLinkToVoiceInstall,
     openTtsSettings,
     type VoiceInfo,
+    type TtsEngineStatus,
 } from "@/util/tts-voices";
 
 import { createVoiceTTS } from "@/util/speak";
@@ -94,6 +96,7 @@ export function OnboardingTTSInstructions() {
     const { t } = useTranslation();
     const os = useMemo(() => detectOSFromUA(), []);
     const [voices, setVoices] = useState<ExtendedVoiceInfo[] | null>(null);
+    const [engineStatus, setEngineStatus] = useState<TtsEngineStatus | null>(null);
 
     // By default we only show offline voices; user can opt in to online-only voices (Android only).
     // const [includeNetworkVoices, setIncludeNetworkVoices] = useState(false);
@@ -107,6 +110,11 @@ export function OnboardingTTSInstructions() {
         const cast = raw as ExtendedVoiceInfo[];
         const list = uniqBy(cast, (v) => `${v.id}|${v.language}`);
         setVoices(list);
+
+        if (os === "android") {
+            const status = await getTtsEngineStatus();
+            setEngineStatus(status);
+        }
     }
 
     useEffect(() => {
@@ -127,7 +135,7 @@ export function OnboardingTTSInstructions() {
 
     // Actions
     async function openInstaller() {
-        await deepLinkToVoiceInstall();
+        await deepLinkToVoiceInstall({ preferGoogle: true, engineStatus });
     }
     async function openSettings() {
         await openTtsSettings();
@@ -242,6 +250,7 @@ export function OnboardingTTSInstructions() {
                     onOpenSettings={openSettings}
                     onSmartSelect={smartSelectAll}
                     canSmartSelect={canSmartSelect}
+                    engineStatus={engineStatus}
                 />
             </OnboardingHeader>
 

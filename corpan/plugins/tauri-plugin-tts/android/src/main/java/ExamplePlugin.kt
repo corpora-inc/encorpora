@@ -3,6 +3,7 @@ package space.httpjames.tauri_plugin_tts
 import android.app.Activity
 import android.content.ActivityNotFoundException
 import android.content.Intent
+import android.net.Uri
 import android.provider.Settings
 import android.speech.tts.TextToSpeech
 import android.speech.tts.UtteranceProgressListener
@@ -60,12 +61,21 @@ private fun mapWebRateToAndroid(
 /*                                   Args                                     */
 /* -------------------------------------------------------------------------- */
 
+private const val GOOGLE_TTS_PACKAGE = "com.google.android.tts"
+
 @InvokeArg
 internal class SpeakArgs {
   lateinit var text: String
   var language: String? = null    // BCP-47, e.g. "fa-IR"
   var rate: Float? = null         // 0.1–1.5
-  var voiceId: String? = null     // Voice.name
+  var voiceId: String? = null     // Voice.name (camel)
+  var voice_id: String? = null    // Voice.name (snake)
+}
+
+@InvokeArg
+internal class EngineStoreArgs {
+  var packageName: String? = null
+  var package_name: String? = null
 }
 
 /* -------------------------------------------------------------------------- */
@@ -199,8 +209,9 @@ class ExamplePlugin(private val activity: Activity) : Plugin(activity) {
       }
 
       try {
+        val resolvedVoiceId = args.voiceId ?: args.voice_id
         val chosenVoice: Voice? = when {
-          !args.voiceId.isNullOrBlank() -> findVoiceById(t, args.voiceId!!)
+          !resolvedVoiceId.isNullOrBlank() -> findVoiceById(t, resolvedVoiceId)
           !args.language.isNullOrBlank() -> chooseBestVoiceForLanguage(t, args.language!!)
           else -> null
         }
@@ -287,12 +298,12 @@ class ExamplePlugin(private val activity: Activity) : Plugin(activity) {
     try {
       val intent = Intent("android.settings.TTS_SETTINGS").addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
       activity.startActivity(intent)
-      invoke.resolve(JSObject().apply { put("ok", true) })
+      invoke.resolve()
     } catch (_: ActivityNotFoundException) {
       try {
         val fallback = Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         activity.startActivity(fallback)
-        invoke.resolve(JSObject().apply { put("ok", true) })
+        invoke.resolve()
       } catch (_: Exception) {
         invoke.reject("Unable to open TTS or Accessibility settings")
       }
@@ -308,11 +319,81 @@ class ExamplePlugin(private val activity: Activity) : Plugin(activity) {
       currentEngine(tts)?.let { pkg -> intent.`package` = pkg }
       intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
       activity.startActivity(intent)
-      invoke.resolve(JSObject().apply { put("launched", true) })
+      invoke.resolve(true)
     } catch (_: ActivityNotFoundException) {
-      invoke.resolve(JSObject().apply { put("launched", false) })
+      invoke.resolve(false)
     } catch (_: Exception) {
-      invoke.resolve(JSObject().apply { put("launched", false) })
+      invoke.resolve(false)
+    }
+  }
+
+  @Command
+  fun getTtsEngineStatus(invoke: Invoke) {
+    ensureReady {
+      val t = tts
+      if (t == null) {
+        invoke.reject("TTS not initialized")
+        return@ensureReady
+      }
+
+      val engines = t.engines ?: emptyList()
+      val arr = JSONArray()
+      for (engine in engines) {
+        val o = JSObject()
+        o.put("packageName", engine.name)
+        o.put("label", engine.label?.toString() ?: JSONObject.NULL)
+        o.put("isSystem", engine.system)
+        arr.put(o)
+      }
+
+      val defaultEngine = currentEngine(t)
+      val googleInstalled = engines.any { it.name == GOOGLE_TTS_PACKAGE }
+      val googleDefault = defaultEngine == GOOGLE_TTS_PACKAGE
+
+      val result = JSObject().apply {
+        put("supported", true)
+        put("defaultEngine", defaultEngine ?: JSONObject.NULL)
+        put("engines", arr)
+        put("googleInstalled", googleInstalled)
+        put("googleDefault", googleDefault)
+      }
+
+      invoke.resolve(result)
+    }
+  }
+
+  @Command
+  fun openTtsEngineStore(invoke: Invoke) {
+    val args = try {
+      invoke.parseArgs(EngineStoreArgs::class.java)
+    } catch (e: Exception) {
+      invoke.reject("Invalid args: ${e.message}")
+      return
+    }
+
+    val pkg = args.packageName ?: args.package_name
+    if (pkg.isNullOrBlank()) {
+      invoke.reject("packageName is required")
+      return
+    }
+
+    val marketUri = Uri.parse("market://details?id=$pkg")
+    val webUri = Uri.parse("https://play.google.com/store/apps/details?id=$pkg")
+
+    try {
+      val intent = Intent(Intent.ACTION_VIEW, marketUri).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+      activity.startActivity(intent)
+      invoke.resolve(true)
+    } catch (_: ActivityNotFoundException) {
+      try {
+        val intent = Intent(Intent.ACTION_VIEW, webUri).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        activity.startActivity(intent)
+        invoke.resolve(true)
+      } catch (_: Exception) {
+        invoke.resolve(false)
+      }
+    } catch (_: Exception) {
+      invoke.resolve(false)
     }
   }
 

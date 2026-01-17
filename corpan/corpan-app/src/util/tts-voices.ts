@@ -26,11 +26,27 @@ export interface VoiceInfo {
     gender?: VoiceGender;
     quality?: VoiceQuality;
     engine?: string | null; // Android engine package; otherwise null/undefined
+    networkRequired?: boolean; // Android-only: voice requires network
 }
+
+export type TtsEngineInfo = {
+    packageName: string;
+    label?: string | null;
+    isSystem?: boolean;
+};
+
+export type TtsEngineStatus = {
+    supported: boolean;
+    defaultEngine?: string | null;
+    engines: TtsEngineInfo[];
+    googleInstalled: boolean;
+    googleDefault: boolean;
+};
 
 type VoiceCacheKey = "nativeFirst" | "browserFirst";
 
 const DEFAULT_VOICES_CACHE_MS = 30_000;
+const GOOGLE_TTS_PACKAGE = "com.google.android.tts";
 const voicesCache: Record<VoiceCacheKey, { voices: VoiceInfo[]; at: number } | null> = {
     nativeFirst: null,
     browserFirst: null,
@@ -212,11 +228,54 @@ export async function installTtsDataIfSupported(): Promise<boolean> {
     }
 }
 
+/** Android-only: enumerate installed engines and default engine status. */
+export async function getTtsEngineStatus(): Promise<TtsEngineStatus | null> {
+    if (detectOSFromUA() !== "android") return null;
+    try {
+        const res = await invoke<TtsEngineStatus>("plugin:tts|get_tts_engine_status");
+        return res ?? null;
+    } catch {
+        return null;
+    }
+}
+
+/** Android-only: open the Play Store listing for a TTS engine package. */
+export async function openTtsEngineStore(packageName: string): Promise<boolean> {
+    if (!packageName) return false;
+    try {
+        const ok = await invoke<boolean>("plugin:tts|open_tts_engine_store", { packageName });
+        return !!ok;
+    } catch {
+        return false;
+    }
+}
+
 /** “Deep link” helper: best-effort voice install/settings path for the platform. */
-export async function deepLinkToVoiceInstall(): Promise<void> {
-    await installTtsDataIfSupported();
-    // If you want: fall back to openTtsSettings() after this returns false on Android.
-    // We keep it simple for now (native-side filtering ensures we only list usable voices).
+export async function deepLinkToVoiceInstall(opts?: {
+    preferGoogle?: boolean;
+    engineStatus?: TtsEngineStatus | null;
+}): Promise<void> {
+    const os = detectOSFromUA();
+    const preferGoogle = opts?.preferGoogle ?? true;
+
+    if (os === "android" && preferGoogle) {
+        const status = opts?.engineStatus ?? (await getTtsEngineStatus());
+        if (status?.supported) {
+            if (!status.googleInstalled) {
+                const launched = await openTtsEngineStore(GOOGLE_TTS_PACKAGE);
+                if (launched) return;
+            }
+            if (status.googleInstalled && !status.googleDefault) {
+                await openTtsSettings();
+                return;
+            }
+        }
+    }
+
+    const launched = await installTtsDataIfSupported();
+    if (!launched) {
+        await openTtsSettings();
+    }
 }
 
 // --------------------------- Voice utilities --------------------------

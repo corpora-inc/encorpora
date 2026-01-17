@@ -71,7 +71,9 @@
     "extra-large": "Extra large",
     "testTts": "Test TTS with the buttons below:",
     "showRomanization": "Show romanization",
-    "scrollNavigation": "Scroll navigation"
+    "scrollNavigation": "Scroll navigation",
+    "stacks": "Stacks",
+    "packs": "Packs"
   },
   "onboarding": {
     "welcome": "Welcome",

@@ -49,6 +49,20 @@ final class SpeakArgs: Decodable {
     private enum CodingKeys: String, CodingKey {
         case text, language, rate, pitch, volume
         case voiceId  // <-- expect "voiceId"
+        case voice_id // <-- accept "voice_id"
+    }
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        text = try container.decode(String.self, forKey: .text)
+        language = try container.decodeIfPresent(String.self, forKey: .language)
+        rate = try container.decodeIfPresent(Double.self, forKey: .rate)
+        pitch = try container.decodeIfPresent(Double.self, forKey: .pitch)
+        volume = try container.decodeIfPresent(Double.self, forKey: .volume)
+
+        let camel = try container.decodeIfPresent(String.self, forKey: .voiceId)
+        let snake = try container.decodeIfPresent(String.self, forKey: .voice_id)
+        voiceId = camel ?? snake
     }
 }
 

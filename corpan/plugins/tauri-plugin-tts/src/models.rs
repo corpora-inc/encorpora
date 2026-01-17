@@ -26,6 +26,28 @@ pub struct VoiceInfo {
     /// "enhanced" (iOS Enhanced/Premium) |
     /// "very_high" | "high" | "normal" | "default" | "low" | "very_low"
     pub quality: Option<String>,
+
+    /// Optional signal for voices that require network access (Android only).
+    pub network_required: Option<bool>,
+}
+
+/// Minimal engine inventory/status (Android; others return supported=false).
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(rename_all = "camelCase")]
+pub struct TtsEngineInfo {
+    pub package_name: String,
+    pub label: Option<String>,
+    pub is_system: bool,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(rename_all = "camelCase")]
+pub struct TtsEngineStatus {
+    pub supported: bool,
+    pub default_engine: Option<String>,
+    pub engines: Vec<TtsEngineInfo>,
+    pub google_installed: bool,
+    pub google_default: bool,
 }
 
 #[derive(Debug, Deserialize, Serialize)]

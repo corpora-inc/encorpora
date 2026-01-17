@@ -188,10 +188,33 @@ function buildPages(outputDir) {
     buildPackLandingPage(pack, outputRoot);
   });
 
+  // Generate catalog.json for app consumption
+  console.log('Generating catalog.json...');
+  const catalogData = packsData.map(pack => {
+    // Use zipUrl if available, otherwise fallback to manifest
+    const manifestUrl = pack.zipUrl
+      ? (pack.zipUrl.startsWith('/') ? `https://encorpora.io${pack.zipUrl}` : pack.zipUrl)
+      : (pack.manifestUrl
+        ? (pack.manifestUrl.startsWith('/') ? `https://encorpora.io${pack.manifestUrl}` : pack.manifestUrl)
+        : `https://encorpora.io/corpan/packs/${pack.id}.zip`);
+
+    return {
+      id: pack.id,
+      name: pack.name,
+      version: pack.version,
+      manifestUrl: manifestUrl,
+      description: pack.description,
+      purchase: { type: "free", priceLabel: "Free" }
+    };
+  });
+  const catalogPath = path.join(outputRoot, 'corpan', 'packs', 'catalog.json');
+  fs.writeFileSync(catalogPath, JSON.stringify(catalogData, null, 2));
+
   console.log('✓ Corpan pages built successfully!');
   console.log('\nGenerated:');
   console.log('  - corpan/index.html');
   console.log('  - corpan/packs/index.html');
+  console.log('  - corpan/packs/catalog.json');
   packsWithAssets.forEach(pack => {
     console.log(`  - corpan/packs/${pack.id}/index.html`);
   });

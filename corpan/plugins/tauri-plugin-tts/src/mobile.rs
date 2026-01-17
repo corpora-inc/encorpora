@@ -1,5 +1,5 @@
 // src/mobile.rs
-use crate::models::{SpeakArgs, VoiceInfo};
+use crate::models::{SpeakArgs, TtsEngineStatus, VoiceInfo};
 use serde::de::DeserializeOwned;
 use tauri::{
     plugin::{PluginApi, PluginHandle},
@@ -107,5 +107,52 @@ impl<R: Runtime> Tts<R> {
         })?;
 
         Ok(voices)
+    }
+
+    /// Android engine inventory + status. Returns supported=false on non-Android mobile.
+    pub fn get_tts_engine_status(&self) -> crate::Result<TtsEngineStatus> {
+        #[cfg(target_os = "android")]
+        {
+            self.0
+                .run_mobile_plugin::<TtsEngineStatus>("getTtsEngineStatus", Some(()))
+                .map_err(|e| {
+                    println!("[MOBILE_TTS] get_tts_engine_status error: {:?}", e);
+                    e.into()
+                })
+        }
+        #[cfg(not(target_os = "android"))]
+        {
+            Ok(TtsEngineStatus {
+                supported: false,
+                default_engine: None,
+                engines: Vec::new(),
+                google_installed: false,
+                google_default: false,
+            })
+        }
+    }
+
+    /// Open a store listing for a given engine package (Android only).
+    pub fn open_tts_engine_store(&self, package_name: String) -> crate::Result<bool> {
+        #[cfg(target_os = "android")]
+        {
+            #[derive(serde::Serialize)]
+            #[serde(rename_all = "camelCase")]
+            struct Args {
+                package_name: String,
+            }
+
+            let args = Args { package_name };
+            self.0
+                .run_mobile_plugin::<bool>("openTtsEngineStore", Some(args))
+                .map_err(|e| {
+                    println!("[MOBILE_TTS] open_tts_engine_store error: {:?}", e);
+                    e.into()
+                })
+        }
+        #[cfg(not(target_os = "android"))]
+        {
+            Ok(false)
+        }
     }
 }
