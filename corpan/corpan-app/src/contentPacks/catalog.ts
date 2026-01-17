@@ -52,10 +52,16 @@ const DEV_CATALOG: CatalogGame[] = [
   },
 ]
 
+const PRODUCTION_CATALOG_URL = "https://encorpora.io/corpan/packs/catalog.json"
+
 const getCatalogUrl = () => {
   const envUrl = import.meta.env.VITE_GAME_CATALOG_URL
   if (typeof envUrl === "string" && envUrl.length > 0) {
     return envUrl
+  }
+  // In production, always try to fetch from the published catalog
+  if (!import.meta.env.DEV) {
+    return PRODUCTION_CATALOG_URL
   }
   return null
 }
@@ -111,16 +117,23 @@ const parseCatalog = (data: unknown): CatalogGame[] | null => {
 export const fetchGameCatalog = async (): Promise<CatalogGame[]> => {
   const urlValue = getCatalogUrl()
   if (!urlValue) {
+    console.log("[catalog] No catalog URL, using defaults")
     return getDefaultCatalog()
   }
   try {
     const url = new URL(urlValue, window.location.href).toString()
+    console.log("[catalog] Fetching from:", url)
     const res = await fetch(url, { cache: "no-store" })
-    if (!res.ok) return getDefaultCatalog()
+    if (!res.ok) {
+      console.log("[catalog] Fetch failed with status:", res.status)
+      return getDefaultCatalog()
+    }
     const data = (await res.json()) as unknown
     const parsed = parseCatalog(data)
+    console.log("[catalog] Parsed catalog:", parsed)
     return parsed ?? getDefaultCatalog()
-  } catch {
+  } catch (error) {
+    console.error("[catalog] Fetch error:", error)
     return getDefaultCatalog()
   }
 }

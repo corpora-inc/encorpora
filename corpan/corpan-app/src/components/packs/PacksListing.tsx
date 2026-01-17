@@ -22,8 +22,7 @@ export function PacksListing({
   const fetchCatalog = useCatalogStore((s) => s.fetchCatalog)
   const isOnline = useCatalogStore((s) => s.isOnline)
   const lastFetched = useCatalogStore((s) => s.lastFetched)
-
-  const [isRefreshing, setIsRefreshing] = useState(false)
+  const isFetching = useCatalogStore((s) => s.isFetching)
   const [manifestUrl, setManifestUrl] = useState("")
   const [installing, setInstalling] = useState(false)
   const [error, setError] = useState<string | null>(null)
@@ -44,9 +43,7 @@ export function PacksListing({
   }, [fetchCatalog])
 
   const handleRefresh = async () => {
-    setIsRefreshing(true)
-    await fetchCatalog()
-    setIsRefreshing(false)
+    await fetchCatalog(true) // Force refresh
   }
 
   const handleDevInstall = async () => {
@@ -113,9 +110,9 @@ export function PacksListing({
             size="sm"
             variant="ghost"
             onClick={handleRefresh}
-            disabled={isRefreshing || !isOnline}
+            disabled={isFetching || !isOnline}
           >
-            {t("packs.refresh")}
+            {isFetching ? "Refreshing..." : t("packs.refresh")}
           </Button>
         </div>
       </div>

@@ -10,8 +10,9 @@ type CatalogState = {
   catalog: CatalogGame[]
   lastFetched: number | null
   isOnline: boolean
+  isFetching: boolean
 
-  fetchCatalog: () => Promise<void>
+  fetchCatalog: (force?: boolean) => Promise<void>
   getCatalog: () => CatalogGame[]
   setOnlineStatus: (online: boolean) => void
   clearCache: () => void
@@ -25,13 +26,21 @@ export const useCatalogStore = create<CatalogState>()(
       catalog: [],
       lastFetched: null,
       isOnline: getNetworkStatus(),
+      isFetching: false,
 
-      fetchCatalog: async () => {
+      fetchCatalog: async (force = false) => {
         const state = get()
+
+        // Prevent concurrent fetches
+        if (state.isFetching) {
+          return
+        }
+
         const now = Date.now()
 
-        // Use cached catalog if fresh (< 1 hour old)
+        // Use cached catalog if fresh (< 1 hour old) and not forcing refresh
         if (
+          !force &&
           state.lastFetched &&
           state.catalog.length > 0 &&
           now - state.lastFetched < CACHE_DURATION
@@ -41,17 +50,24 @@ export const useCatalogStore = create<CatalogState>()(
 
         // Only fetch if online
         if (!state.isOnline) {
+          console.log("[catalog] Cannot fetch: offline")
           return
         }
 
+        set({ isFetching: true })
+
         try {
+          console.log("[catalog] Fetching from remote...")
           const catalog = await fetchGameCatalog()
+          console.log("[catalog] Fetched catalog:", catalog)
           set({
             catalog,
             lastFetched: now,
+            isFetching: false,
           })
         } catch (error) {
-          console.error("Failed to fetch catalog:", error)
+          console.error("[catalog] Failed to fetch:", error)
+          set({ isFetching: false })
           // Keep existing cached catalog on error
         }
       },
@@ -83,8 +99,8 @@ export const useCatalogStore = create<CatalogState>()(
           catalog: [],
           lastFetched: null,
         })
-        // Fetch fresh catalog immediately
-        get().fetchCatalog()
+        // Fetch fresh catalog immediately (force)
+        get().fetchCatalog(true)
       },
     }),
     {

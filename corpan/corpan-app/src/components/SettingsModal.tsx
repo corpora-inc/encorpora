@@ -173,7 +173,7 @@ export function SettingsModal({
             <About />
           </TabsContent>
 
-          <TabsContent value="packs" className="space-y-4 mt-8">
+          <TabsContent value="packs" className="space-y-4 mt-8 pb-10">
             {!devModeEnabled && (
               <div className="space-y-3 rounded-md border border-gray-200 bg-white/80 p-4">
                 <div className="space-y-1">
