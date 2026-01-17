@@ -11,6 +11,7 @@ export type CatalogGame = {
   version: string
   manifestUrl?: string
   description?: string
+  imageUrl?: string
   purchase?: PurchaseInfo
 }
 
@@ -20,7 +21,8 @@ const DEFAULT_CATALOG: CatalogGame[] = [
     name: "Hover Runner",
     version: "0.1.0",
     manifestUrl: "https://encorpora.io/corpan/packs/hover-runner.zip",
-    description: "Hoverboard runner that drills core phrases.",
+    description:
+      "3D fun in Hover Runner: lock in correct translations with the All-Hearing Ear and avoid wrong ones.",
     purchase: { type: "free", priceLabel: "Free" },
   },
   {
@@ -39,7 +41,8 @@ const DEV_CATALOG: CatalogGame[] = [
     name: "Hover Runner",
     version: "0.1.0",
     manifestUrl: "/packs/hover-runner.zip",
-    description: "Hoverboard runner that drills core phrases.",
+    description:
+      "3D fun in Hover Runner: lock in correct translations with the All-Hearing Ear and avoid wrong ones.",
     purchase: { type: "free", priceLabel: "Free" },
   },
   {
@@ -126,6 +129,7 @@ const parseCatalog = (data: unknown): CatalogGame[] | null => {
       version,
       manifestUrl: toOptionalString(record.manifestUrl),
       description: toOptionalString(record.description),
+      imageUrl: toOptionalString(record.imageUrl),
       purchase: parsePurchase(record.purchase),
     })
   }

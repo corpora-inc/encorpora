@@ -1,6 +1,6 @@
 # Hover Runner
 
-A Babylon.js prototype for Corpan. The scene renders a dynamic road ribbon, a hoverboard placeholder, and smooth 4-quadrant movement with keyboard, tap, or device tilt.
+Hover Runner is a 3D fun pack for Corpan. Lock in correct translations with the All-Hearing Ear while you race the ribbon road with smooth 4-quadrant movement via keyboard, tap, or device tilt.
 
 ## Commands
 

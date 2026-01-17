@@ -1,3 +1,5 @@
+import { useState } from "react"
+
 /**
  * Component to display pack screenshots or video embeds
  */
@@ -10,6 +12,8 @@ export function PackScreenshot({
   alt: string
   type?: "image" | "video"
 }) {
+  const [imageError, setImageError] = useState(false)
+
   if (!src) {
     return null
   }
@@ -35,13 +39,19 @@ export function PackScreenshot({
     }
   }
 
-  // Default to image
+  // If image failed to load, don't render anything (graceful fallback)
+  if (imageError) {
+    return null
+  }
+
+  // Default to image with error handling
   return (
     <img
       src={src}
       alt={alt}
       className="aspect-video w-full rounded-md object-cover"
       loading="lazy"
+      onError={() => setImageError(true)}
     />
   )
 }

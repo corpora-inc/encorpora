@@ -19,6 +19,7 @@ export type InstallResult = {
   name?: string
   manifestUrl: string
   version?: string
+  imageUrl?: string
   installedAt: number
   source: InstallSource
 }

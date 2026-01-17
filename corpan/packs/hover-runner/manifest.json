@@ -1,6 +1,6 @@
 {
   "id": "hover_runner",
-  "name": "Hover Runner Prototype",
+  "name": "Hover Runner",
   "version": "0.1.0",
   "entry": "dist/app.js",
   "styles": [

@@ -11,7 +11,7 @@ This repo houses experiments that depend on Corpora. When something becomes stab
 
 - **Corpán app**: the main product experience.
 - **Corpán Packs**: SDK experiments + new interactive learning formats.
-- **Hover Runner**: the reference pack prototype.
+- **Hover Runner**: 3D fun that locks in correct translations with the All-Hearing Ear.
 - **Books & publishing**
 
 ## Live Demos

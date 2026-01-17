@@ -54,6 +54,7 @@ export function PackActions({
         name: result.name ?? pack.name ?? result.packId,
         manifestUrl: result.manifestUrl,
         version: result.version,
+        imageUrl: pack.imageUrl,
         source: result.source,
       })
     } catch (err) {

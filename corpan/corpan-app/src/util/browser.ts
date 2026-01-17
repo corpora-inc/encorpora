@@ -112,7 +112,7 @@ export function getPlatformTopPaddingButtons(): number {
     if (isIOS() || isAndroid()) {
         return 25;
     }
-    return 0;
+    return 10;
 }
 
 export function getPlatformTopPaddingTranslations(): number {

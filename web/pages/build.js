@@ -198,12 +198,19 @@ function buildPages(outputDir) {
         ? (pack.manifestUrl.startsWith('/') ? `https://encorpora.io${pack.manifestUrl}` : pack.manifestUrl)
         : `https://encorpora.io/corpan/packs/${pack.id}.zip`);
 
+    // Get the avatar URL from the processed pack (matches what's copied to assets/)
+    const packWithAssets = packsWithAssets.find(p => p.id === pack.id);
+    const imageUrl = packWithAssets?.avatarUrl
+      ? (packWithAssets.avatarUrl.startsWith('/') ? `https://encorpora.io${packWithAssets.avatarUrl}` : packWithAssets.avatarUrl)
+      : `https://encorpora.io/assets/${pack.id}-avatar.png`;
+
     return {
       id: pack.id,
       name: pack.name,
       version: pack.version,
       manifestUrl: manifestUrl,
       description: pack.description,
+      imageUrl: imageUrl,
       purchase: { type: "free", priceLabel: "Free" }
     };
   });

@@ -57,8 +57,21 @@ function buildHanzipanDist(srcRoot) {
   fs.mkdirSync(distDir, { recursive: true });
   const writer = fs.readFileSync(writerPath, 'utf8');
   const main = fs.readFileSync(mainPath, 'utf8');
-  fs.writeFileSync(path.join(distDir, 'app.js'), `${writer}\n;${main}`, 'utf8');
-  fs.copyFileSync(stylesPath, path.join(distDir, 'app.css'));
+  const nextJs = `${writer}\n;${main}`;
+  const nextCss = fs.readFileSync(stylesPath, 'utf8');
+  const jsPath = path.join(distDir, 'app.js');
+  const cssPath = path.join(distDir, 'app.css');
+
+  const writeIfChanged = (filePath, content) => {
+    if (fs.existsSync(filePath)) {
+      const current = fs.readFileSync(filePath, 'utf8');
+      if (current === content) return;
+    }
+    fs.writeFileSync(filePath, content, 'utf8');
+  };
+
+  writeIfChanged(jsPath, nextJs);
+  writeIfChanged(cssPath, nextCss);
 }
 
 function copyPack(packName) {
