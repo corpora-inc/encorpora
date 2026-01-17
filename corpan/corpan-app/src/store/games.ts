@@ -6,6 +6,7 @@ export type InstalledGame = {
   name: string
   manifestUrl: string
   version?: string
+  imageUrl?: string
   source?: "catalog" | "manual" | "platform" | "download"
   installedAt: number
 }

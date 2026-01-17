@@ -979,9 +979,14 @@
     root.className = "hanzi-root";
     root.innerHTML = template;
     container.appendChild(root);
-    if (typeof navigator !== "undefined" && /Android|iPhone|iPad|iPod/i.test(navigator.userAgent || "")) {
-      root.style.paddingTop = "25px";
-      root.style.setProperty("--safe-top", "25px");
+    const isMobile =
+      typeof navigator !== "undefined" &&
+      /Android|iPhone|iPad|iPod/i.test(navigator.userAgent || "");
+    if (isMobile) {
+      root.style.setProperty(
+        "--safe-top",
+        "calc(env(safe-area-inset-top, 0px) + 25px)"
+      );
     } else {
       root.style.setProperty("--safe-top", "0px");
     }

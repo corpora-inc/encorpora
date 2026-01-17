@@ -26,15 +26,30 @@
 .hanzi-root {
   position: relative;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   min-height: 100vh;
   --safe-top: 0px;
   color: var(--ink);
   font-family: "Avenir Next", "Futura", "Trebuchet MS", "Segoe UI", sans-serif;
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: transparent;
   background: radial-gradient(circle at 10% 10%, #fffaf1 0%, var(--bg) 35%, var(--bg-deep) 100%);
   overflow-x: hidden;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
+}
+
+.hanzi-root,
+.hanzi-root * {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.hanzi-root input,
+.hanzi-root textarea,
+.hanzi-root [contenteditable="true"] {
+  -webkit-user-select: text;
+  user-select: text;
 }
 
 .hanzi-root::before,
@@ -69,6 +84,7 @@
   flex-direction: column;
   gap: clamp(16px, 3vw, 24px);
   padding: clamp(16px, 3vw, 32px) clamp(16px, 4vw, 32px) clamp(24px, 5vw, 40px);
+  padding-top: calc(clamp(16px, 3vw, 32px) + var(--safe-top));
   min-height: 100%;
   height: auto;
 }
@@ -841,5 +857,34 @@
   }
   .workspace {
     --panel-height: clamp(280px, 50vh, 480px);
+  }
+}
+
+@supports (height: 100svh) {
+  .hanzi-root {
+    height: 100svh;
+    min-height: 100svh;
+  }
+
+  .workspace {
+    --panel-height: clamp(360px, 58svh, 620px);
+  }
+
+  @media (max-width: 1080px) {
+    .workspace {
+      --panel-height: clamp(320px, 55svh, 520px);
+    }
+  }
+
+  @media (max-width: 560px) {
+    .workspace {
+      --panel-height: clamp(320px, 60svh, 560px);
+    }
+  }
+
+  @media (max-height: 700px) {
+    .workspace {
+      --panel-height: clamp(280px, 50svh, 480px);
+    }
   }
 }

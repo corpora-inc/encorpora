@@ -65,6 +65,7 @@ export function PacksListing({
         name: result.name ?? result.packId,
         manifestUrl: result.manifestUrl,
         version: result.version,
+        imageUrl: result.imageUrl,
         source: result.source,
       })
       setManifestUrl("")
@@ -144,6 +145,7 @@ export function PacksListing({
                     name: game.name,
                     version: game.version ?? "unknown",
                     manifestUrl: game.manifestUrl,
+                    imageUrl: game.imageUrl,
                   }}
                   installedGame={game}
                   badge={hasUpdate ? undefined : "installed"}

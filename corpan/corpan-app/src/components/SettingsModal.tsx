@@ -130,10 +130,10 @@ export function SettingsModal({
     <Dialog open={open} onOpenChange={onClose}>
       <DialogContent
         className="
-          max-w-full w-[100vw] sm:max-w-[100vw] md:max-w-[90vw] lg:max-w-[75vw] xl:max-w-[60vw]
-          max-h-[100dvh] h-[100dvh] md:h-auto md:max-h-[95dvh]
+          max-w-full w-[100vw] sm:max-w-[100vw] md:max-w-[100vw] lg:max-w-[100vw] xl:max-w-[85vw] 2xl:max-w-[75vw]
+          max-h-[100dvh] h-[100dvh] xl:h-auto xl:max-h-[95dvh]
           overflow-y-auto rounded-none bg-white pb-6
-          md:rounded-md
+          xl:rounded-md
           flex flex-col
           [&>div:first-child]:hidden
         "
@@ -152,7 +152,7 @@ export function SettingsModal({
           <div
             className="sticky top-0 z-[1001] bg-white border-b border-gray-200 -mx-6 px-6 pb-2"
             style={{
-              paddingTop: getPlatformTopPaddingButtons(),
+              paddingTop: getPlatformTopPaddingButtons() + 10,
             }}
           >
             <div className="flex items-center gap-2">
