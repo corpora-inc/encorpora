@@ -71,7 +71,9 @@
     "extra-large": "ಅತ್ಯಂತ ದೊಡ್ಡ",
     "testTts": "ಕೆಳಗಿನ ಬಟನ್‌ಗಳೊಂದಿಗೆ TTS ಅನ್ನು ಪರೀಕ್ಷಿಸಿ:",
     "showRomanization": "ರೋಮನೀಕರಣವನ್ನು ತೋರಿಸಿ",
-    "scrollNavigation": "ಸ್ಕ್ರೋಲ್ ನ್ಯಾವಿಗೇಶನ್"
+    "scrollNavigation": "ಸ್ಕ್ರೋಲ್ ನ್ಯಾವಿಗೇಶನ್",
+    "packs": "Packs",
+    "stacks": "Stacks"
   },
   "onboarding": {
     "welcome": "ಸ್ವಾಗತ",
@@ -268,15 +270,15 @@
     "feedbackButton": "GitHub ನಲ್ಲಿ ಪ್ರತಿಕ್ರಿಯೆ ಹಂಚಿಕೊಳ್ಳಿ"
   },
   "packs": {
-    "title": "ಪ್ಯಾಕ್‌ಗಳು",
-    "available": "ಲಭ್ಯವಿರುವ ಪ್ಯಾಕ್‌ಗಳು",
-    "emptyAvailable": "ಇನ್ನೂ ಪ್ಯಾಕ್‌ಗಳಿಲ್ಲ.",
-    "installed": "ಸ್ಥಾಪಿತ ಪ್ಯಾಕ್‌ಗಳು",
-    "emptyInstalled": "ಪ್ಯಾಕ್‌ಗಳನ್ನು ಸ್ಥಾಪಿಸಲಾಗಿಲ್ಲ.",
+    "title": "Packs",
+    "available": "ಲಭ್ಯ",
+    "emptyAvailable": "ಇನ್ನೂ ಏನೂ ಲಭ್ಯವಿಲ್ಲ.",
+    "installed": "ಸ್ಥಾಪಿತ",
+    "emptyInstalled": "ಇನ್ನೂ ಏನೂ ಸ್ಥಾಪಿಸಲಾಗಿಲ್ಲ.",
     "get": "ಪಡೆಯಿರಿ",
     "open": "ತೆರೆಯಿರಿ",
     "remove": "ತೆಗೆದುಹಾಕಿ",
-    "version": "ಆವೃತ್ತಿ {{version}}",
+    "version": "v{{version}}",
     "refresh": "ರಿಫ್ರೆಶ್ ಮಾಡಿ",
     "free": "ಉಚಿತ",
     "install": "ಸ್ಥಾಪಿಸಿ",
@@ -287,10 +289,13 @@
     "manifestTitle": "ಮ್ಯಾನಿಫೆಸ್ಟ್ URL",
     "manifestPlaceholder": "https://example.com/manifest.json",
     "manifestHint": "ಮ್ಯಾನಿಫೆಸ್ಟ್ URL ಅನ್ನು ಅಂಟಿಸಿ.",
-    "devUnlockTitle": "ಡೆವಲಪರ್ ಪ್ಯಾಕ್‌ಗಳು",
+    "devUnlockTitle": "Developer Packs",
     "devUnlockHint": "ಮ್ಯಾನಿಫೆಸ್ಟ್ ಸ್ಥಾಪನೆಗಳನ್ನು ಅನ್‌ಲಾಕ್ ಮಾಡಲು 7 ಬಾರಿ ಟ್ಯಾಪ್ ಮಾಡಿ.",
-    "devUnlockToast": "ಡೆವಲಪರ್ ಪ್ಯಾಕ್‌ಗಳನ್ನು ಅನ್‌ಲಾಕ್ ಮಾಡಲಾಗಿದೆ.",
-    "devIntro": "Corpán ಪ್ಯಾಕ್ ಅನ್ನು ಪ್ರಯತ್ನಿಸಿ ಅಥವಾ ನಿಮ್ಮದೇ ಆದದನ್ನು ರಚಿಸಿ.",
-    "devLink": "Free2z ನಲ್ಲಿ ಇನ್ನಷ್ಟು ತಿಳಿಯಿರಿ"
+    "devUnlockToast": "Developer Packs ಅನ್ಲಾಕ್ ಮಾಡಲಾಗಿದೆ.",
+    "devIntro": "Corpán Pack ಅನ್ನು ಪ್ರಯತ್ನಿಸಿ ಅಥವಾ ನಿಮ್ಮದೇನನ್ನು ರಚಿಸಿ.",
+    "devLink": "Free2z ನಲ್ಲಿ ಇನ್ನಷ್ಟು ತಿಳಿಯಿರಿ",
+    "new": "ಹೊಸ",
+    "updates": "ನವೀಕರಣಗಳು",
+    "offline": "ಆಫ್‌ಲೈನ್"
   }
 }

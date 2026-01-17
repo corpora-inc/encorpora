@@ -71,7 +71,9 @@
     "extra-large": "மிகப் பெரியது",
     "testTts": "கீழே உள்ள பொத்தான்களுடன் TTS ஐ சோதிக்கவும்:",
     "showRomanization": "ரோமானியமயமாக்கல் காட்டவும்",
-    "scrollNavigation": "ஸ்க்ரோல் வழிசெலுத்தல்"
+    "scrollNavigation": "ஸ்க்ரோல் வழிசெலுத்தல்",
+    "packs": "Packs",
+    "stacks": "Stacks"
   },
   "onboarding": {
     "welcome": "வரவேற்பு",
@@ -268,15 +270,15 @@
     "feedbackButton": "GitHub இல் கருத்து பகிரவும்"
   },
   "packs": {
-    "title": "பேக்குகள்",
-    "available": "கிடைக்கக்கூடிய பேக்குகள்",
-    "emptyAvailable": "இன்னும் பேக்குகள் இல்லை.",
-    "installed": "நிறுவப்பட்ட பேக்குகள்",
-    "emptyInstalled": "பேக்குகள் நிறுவப்படவில்லை.",
+    "title": "Packs",
+    "available": "கிடைக்கும்",
+    "emptyAvailable": "இன்னும் எதுவும் கிடைக்கவில்லை.",
+    "installed": "நிறுவப்பட்டது",
+    "emptyInstalled": "இன்னும் எதுவும் நிறுவப்படவில்லை.",
     "get": "பெறு",
     "open": "திற",
     "remove": "நீக்கு",
-    "version": "பதிப்பு {{version}}",
+    "version": "v{{version}}",
     "refresh": "புதுப்பி",
     "free": "இலவசம்",
     "install": "நிறுவவும்",
@@ -287,10 +289,13 @@
     "manifestTitle": "வெளிப்பாடு URL",
     "manifestPlaceholder": "https://example.com/manifest.json",
     "manifestHint": "வெளிப்பாடு URL ஐ ஒட்டவும்.",
-    "devUnlockTitle": "டெவலப்பர் பேக்குகள்",
+    "devUnlockTitle": "Developer Packs",
     "devUnlockHint": "வெளிப்பாடு நிறுவல்களைத் திறக்க 7 முறை தட்டவும்.",
-    "devUnlockToast": "டெவலப்பர் பேக்குகள் திறக்கப்பட்டன.",
-    "devIntro": "Corpán பேக்கை முயற்சிக்கவும் அல்லது உங்களுடையதை உருவாக்கவும்.",
-    "devLink": "Free2z இல் மேலும் அறியவும்"
+    "devUnlockToast": "Developer Packs திறக்கப்பட்டது.",
+    "devIntro": "Corpán Pack ஐ முயற்சிக்கவும் அல்லது உங்கள் Pack ஐ உருவாக்கவும்.",
+    "devLink": "Free2z இல் மேலும் அறியவும்",
+    "new": "புதிய",
+    "updates": "புதுப்பிப்புகள்",
+    "offline": "ஆஃப்லைன்"
   }
 }

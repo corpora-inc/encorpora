@@ -71,7 +71,9 @@
     "extra-large": "بہت بڑا",
     "testTts": "نیچے والے بٹنوں سے TTS آزمائیں:",
     "showRomanization": "رومنائزیشن دکھائیں",
-    "scrollNavigation": "اسکرول نیویگیشن"
+    "scrollNavigation": "اسکرول نیویگیشن",
+    "packs": "Packs",
+    "stacks": "Stacks"
   },
   "onboarding": {
     "welcome": "خوش آمدید",
@@ -268,15 +270,15 @@
     "feedbackButton": "GitHub پر فیڈبیک شیئر کریں"
   },
   "packs": {
-    "title": "پیکس",
-    "available": "دستیاب پیکس",
-    "emptyAvailable": "ابھی کوئی پیک نہیں۔",
-    "installed": "انسٹال شدہ پیکس",
-    "emptyInstalled": "کوئی پیک انسٹال نہیں ہے۔",
+    "title": "Packs",
+    "available": "دستیاب",
+    "emptyAvailable": "ابھی کچھ دستیاب نہیں ہے۔",
+    "installed": "انسٹال شدہ",
+    "emptyInstalled": "ابھی کچھ انسٹال نہیں ہوا۔",
     "get": "حاصل کریں",
     "open": "کھولیں",
     "remove": "ہٹائیں",
-    "version": "ورژن {{version}}",
+    "version": "v{{version}}",
     "refresh": "ریفریش",
     "free": "مفت",
     "install": "انسٹال کریں",
@@ -287,10 +289,13 @@
     "manifestTitle": "مینفیسٹ URL",
     "manifestPlaceholder": "https://example.com/manifest.json",
     "manifestHint": "مینفیسٹ URL پیسٹ کریں۔",
-    "devUnlockTitle": "ڈیولپر پیکس",
+    "devUnlockTitle": "Developer Packs",
     "devUnlockHint": "مینفیسٹ انسٹال ان لاک کرنے کے لیے 7 بار ٹیپ کریں۔",
-    "devUnlockToast": "ڈیولپر پیکس ان لاک ہو گئے۔",
-    "devIntro": "Corpán پیک آزمائیں یا اپنا بنائیں۔",
-    "devLink": "Free2z پر مزید جانیں"
+    "devUnlockToast": "Developer Packs انلاک ہو گئے۔",
+    "devIntro": "Corpán Pack آزمائیں یا اپنا بنائیں۔",
+    "devLink": "Free2z پر مزید جانیں",
+    "new": "نیا",
+    "updates": "اپڈیٹس",
+    "offline": "آف لائن"
   }
 }

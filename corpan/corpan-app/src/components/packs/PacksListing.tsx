@@ -1,5 +1,6 @@
 import { useEffect, useState, useMemo } from "react"
 import { useTranslation } from "react-i18next"
+import { RefreshCw } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useGamesStore, type InstalledGame } from "@/store/games"
 import { useCatalogStore } from "@/store/catalog"
@@ -86,24 +87,16 @@ export function PacksListing({
 
   return (
     <div className="space-y-6">
-      {/* Consumer-friendly intro */}
-      <div className="space-y-2">
-        <p className="text-sm text-muted-foreground">
-          Discover and install games and experiences to practice your languages.
-        </p>
-        {!isOnline && (
-          <div className="flex items-center gap-2 text-sm text-orange-600">
-            <span>⚠️ Offline - showing installed packs only</span>
-          </div>
-        )}
-      </div>
 
       {/* Section 1: Updates Available */}
       {updates.length > 0 && (
         <div className="space-y-3">
           <div className="flex items-center justify-between">
             <h4 className="text-base font-semibold text-purple-700">
-              Updates Available ({updates.length})
+              {t("packs.updates")}
+              <span className="ml-2 text-sm font-medium text-purple-500">
+                ({updates.length})
+              </span>
             </h4>
           </div>
           <div className="grid gap-4 grid-cols-1 md:grid-cols-2">
@@ -125,11 +118,11 @@ export function PacksListing({
 
       {/* Section 2: Installed Packs */}
       <div className="space-y-3">
-        <h4 className="text-base font-semibold">Your Packs</h4>
+        <h4 className="text-base font-semibold">{t("packs.installed")}</h4>
         {installedGames.length === 0 ? (
           <div className="rounded-md border border-gray-200 bg-gray-50 p-6 text-center">
             <p className="text-sm text-muted-foreground">
-              No packs installed yet. Browse available packs below to get started!
+              {t("packs.emptyInstalled")}
             </p>
           </div>
         ) : (
@@ -144,7 +137,7 @@ export function PacksListing({
                   pack={catalogEntry ?? {
                     id: game.id,
                     name: game.name,
-                    version: game.version ?? "unknown",
+                    version: game.version ?? "",
                     manifestUrl: game.manifestUrl,
                     description: game.description,
                     imageUrl: game.imageUrl,
@@ -169,29 +162,34 @@ export function PacksListing({
       {/* Section 3: Discover New */}
       <div className="space-y-3">
         <div className="flex items-center justify-between">
-          <h4 className="text-base font-semibold">{t("packs.available")}</h4>
+          <div className="flex items-center gap-2">
+            <h4 className="text-base font-semibold">{t("packs.available")}</h4>
+            {!isOnline && (
+              <span className="rounded-full bg-orange-100 px-2 py-0.5 text-xs font-medium text-orange-700">
+                {t("packs.offline")}
+              </span>
+            )}
+          </div>
           {isOnline && (
             <Button
-              size="sm"
+              size="icon"
               variant="ghost"
               onClick={handleRefresh}
               disabled={isFetching}
-              className="text-xs"
+              aria-label={t("packs.refresh")}
+              title={t("packs.refresh")}
             >
-              {isFetching ? "⟳ Refreshing..." : "⟳ Refresh"}
+              <RefreshCw
+                className={`h-4 w-4${isFetching ? " animate-spin" : ""}`}
+              />
             </Button>
           )}
         </div>
         {availablePacks.length === 0 ? (
           <div className="text-sm text-muted-foreground">
-            {catalog.length === 0 ? (
-              <div>
-                Loading packs...
-                {!isOnline && " (offline - connect to internet to see available packs)"}
-              </div>
-            ) : (
-              t("packs.emptyAvailable")
-            )}
+            {catalog.length === 0 && isFetching
+              ? t("common.loading")
+              : t("packs.emptyAvailable")}
           </div>
         ) : (
           <div className="grid gap-4 grid-cols-1 md:grid-cols-2">
@@ -214,24 +212,29 @@ export function PacksListing({
         <div className="space-y-3 rounded-md border-2 border-dashed border-gray-300 bg-gray-50/50 p-4 mt-8">
           <div className="space-y-1">
             <div className="text-sm font-semibold text-gray-700">
-              🛠️ Developer Tools
+              {t("packs.devUnlockTitle")}
+            </div>
+            <div className="text-xs text-gray-600">{t("packs.devIntro")}</div>
+            <a
+              href="https://free2z.cash/corpora"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xs text-blue-600 hover:text-blue-800 underline"
+            >
+              {t("packs.devLink")}
+            </a>
+          </div>
+          <div className="space-y-1">
+            <div className="text-xs font-semibold text-gray-700">
+              {t("packs.manifestTitle")}
             </div>
             <div className="text-xs text-gray-600">
-              Install custom packs from URL (for developers and testers)
-            </div>
-            <div className="mt-2 space-y-1 text-xs text-muted-foreground">
-              <div className="font-medium">Two install options:</div>
-              <div className="ml-2">
-                • <span className="font-mono">manifest.json</span> - Web play (always latest version)
-              </div>
-              <div className="ml-2">
-                • <span className="font-mono">.zip</span> - Offline download (install once, works offline)
-              </div>
+              {t("packs.manifestHint")}
             </div>
           </div>
           <input
             className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm bg-white"
-            placeholder="https://example.com/pack/manifest.json or .../pack.zip"
+            placeholder={t("packs.manifestPlaceholder")}
             value={manifestUrl}
             onChange={(event) => setManifestUrl(event.target.value)}
           />
@@ -239,14 +242,6 @@ export function PacksListing({
             <Button onClick={handleDevInstall} disabled={installing} size="sm">
               {installing ? t("packs.installing") : t("packs.install")}
             </Button>
-            <a
-              href="https://free2z.cash/corpora"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-xs text-blue-600 hover:text-blue-800 underline"
-            >
-              Learn More
-            </a>
           </div>
           {error && <div className="text-sm text-red-600">{error}</div>}
         </div>

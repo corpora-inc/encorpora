@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next"
 import { cn } from "@/lib/utils"
 
 export type BadgeVariant = "new" | "update" | "installed" | "offline"
@@ -9,24 +10,25 @@ export function PackBadge({
   variant: BadgeVariant
   className?: string
 }) {
+  const { t } = useTranslation()
   const variants: Record<
     BadgeVariant,
     { label: string; className: string }
   > = {
     new: {
-      label: "NEW",
+      label: t("packs.new"),
       className: "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200",
     },
     update: {
-      label: "UPDATE",
+      label: t("packs.update"),
       className: "bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200",
     },
     installed: {
-      label: "INSTALLED",
+      label: t("packs.installed"),
       className: "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200",
     },
     offline: {
-      label: "OFFLINE",
+      label: t("packs.offline"),
       className: "bg-gray-100 text-gray-600 dark:bg-gray-800 dark:text-gray-400",
     },
   }

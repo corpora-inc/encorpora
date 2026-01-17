@@ -71,7 +71,9 @@
     "extra-large": "خیلی بزرگ",
     "testTts": "برای آزمایش تنظیمات TTS روی دکمه‌های زیر بزنید:",
     "showRomanization": "نمایش رومن‌نویسی",
-    "scrollNavigation": "ناوبری با لغزش"
+    "scrollNavigation": "ناوبری با لغزش",
+    "packs": "Packs",
+    "stacks": "Stacks"
   },
   "onboarding": {
     "welcome": "خوش آمدید",
@@ -268,15 +270,15 @@
     "feedbackButton": "ارسال بازخورد در GitHub"
   },
   "packs": {
-    "title": "بسته‌ها",
-    "available": "بسته‌های موجود",
-    "emptyAvailable": "هنوز بسته‌ای نیست.",
-    "installed": "بسته‌های نصب‌شده",
-    "emptyInstalled": "هیچ بسته‌ای نصب نشده است.",
+    "title": "Packs",
+    "available": "در دسترس",
+    "emptyAvailable": "فعلاً چیزی در دسترس نیست.",
+    "installed": "نصب‌شده",
+    "emptyInstalled": "فعلاً چیزی نصب نشده است.",
     "get": "دریافت",
     "open": "باز کردن",
     "remove": "حذف",
-    "version": "نسخه {{version}}",
+    "version": "v{{version}}",
     "refresh": "تازه‌سازی",
     "free": "رایگان",
     "install": "نصب",
@@ -287,10 +289,13 @@
     "manifestTitle": "نشانی مانیفست",
     "manifestPlaceholder": "https://example.com/manifest.json",
     "manifestHint": "نشانی مانیفست را بچسبانید.",
-    "devUnlockTitle": "بسته‌های توسعه‌دهنده",
+    "devUnlockTitle": "Packs توسعه‌دهنده",
     "devUnlockHint": "۷ بار ضربه بزنید تا نصب مانیفست فعال شود.",
-    "devUnlockToast": "بسته‌های توسعه‌دهنده فعال شد.",
-    "devIntro": "یک بسته Corpán را امتحان کنید یا خودتان بسازید.",
-    "devLink": "بیشتر در Free2z"
+    "devUnlockToast": "Packs توسعه‌دهنده باز شد.",
+    "devIntro": "یک Corpán Pack را امتحان کنید یا خودتان بسازید.",
+    "devLink": "بیشتر در Free2z",
+    "new": "جدید",
+    "updates": "به‌روزرسانی‌ها",
+    "offline": "آفلاین"
   }
 }

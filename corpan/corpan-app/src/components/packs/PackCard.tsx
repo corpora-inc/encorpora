@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next"
 import type { CatalogGame } from "@/contentPacks/catalog"
 import type { InstalledGame } from "@/store/games"
 import { PackBadge, type BadgeVariant } from "./PackBadge"
@@ -21,6 +22,8 @@ export function PackCard({
   onLaunch?: (game: InstalledGame) => void
   updateVersion?: string
 }) {
+  const { t } = useTranslation()
+
   return (
     <div className="flex flex-col rounded-lg border border-gray-200 bg-white/80 p-4 shadow-sm transition-shadow hover:shadow-md h-full min-w-[280px]">
       {/* Content area that grows */}
@@ -30,7 +33,9 @@ export function PackCard({
           <div className="flex-1">
             <h3 className="text-base font-semibold">{pack.name}</h3>
             {pack.version && (
-              <p className="text-xs text-muted-foreground">v{pack.version}</p>
+              <p className="text-xs text-muted-foreground">
+                {t("packs.version", { version: pack.version })}
+              </p>
             )}
           </div>
           {badge && <PackBadge variant={badge} />}

@@ -71,7 +71,9 @@
     "extra-large": "Bardzo duży",
     "testTts": "Przetestuj ustawienia TTS, klikając przyciski poniżej:",
     "showRomanization": "Pokaż romanizację",
-    "scrollNavigation": "Nawigacja przewijaniem"
+    "scrollNavigation": "Nawigacja przewijaniem",
+    "packs": "Packs",
+    "stacks": "Stacks"
   },
   "onboarding": {
     "welcome": "Witamy",
@@ -268,15 +270,15 @@
     "feedbackButton": "Przekaż opinię na GitHubie"
   },
   "packs": {
-    "title": "Pakiety",
-    "available": "Dostępne pakiety",
-    "emptyAvailable": "Brak pakietów.",
-    "installed": "Zainstalowane pakiety",
-    "emptyInstalled": "Brak zainstalowanych pakietów.",
+    "title": "Packs",
+    "available": "Dostępne",
+    "emptyAvailable": "Na razie nic nie jest dostępne.",
+    "installed": "Zainstalowane",
+    "emptyInstalled": "Na razie nic nie jest zainstalowane.",
     "get": "Pobierz",
     "open": "Otwórz",
     "remove": "Usuń",
-    "version": "Wersja {{version}}",
+    "version": "v{{version}}",
     "refresh": "Odśwież",
     "free": "Bezpłatnie",
     "install": "Zainstaluj",
@@ -287,10 +289,13 @@
     "manifestTitle": "URL manifestu",
     "manifestPlaceholder": "https://example.com/manifest.json",
     "manifestHint": "Wklej URL manifestu.",
-    "devUnlockTitle": "Pakiety deweloperskie",
+    "devUnlockTitle": "Packs dla deweloperów",
     "devUnlockHint": "Stuknij 7 razy, aby odblokować instalację z manifestu.",
-    "devUnlockToast": "Pakiety deweloperskie odblokowane.",
-    "devIntro": "Wypróbuj pakiet Corpán lub stwórz własny.",
-    "devLink": "Dowiedz się więcej na Free2z"
+    "devUnlockToast": "Packs dla deweloperów odblokowane.",
+    "devIntro": "Wypróbuj Pack Corpán lub stwórz własny.",
+    "devLink": "Dowiedz się więcej na Free2z",
+    "new": "Nowe",
+    "updates": "Aktualizacje",
+    "offline": "Offline"
   }
 }
