@@ -2,6 +2,7 @@
   "id": "hanzipan",
   "name": "Hanzipan",
   "version": "0.2.0",
+  "description": "A premium Mandarin character studio with stroke guidance, feedback, and infinite contextual examples",
   "entry": "dist/app.js",
   "styles": [
     "dist/app.css"
