@@ -141,3 +141,32 @@ export const compareVersions = (a: string, b: string) => {
   }
   return 0
 }
+
+export type UpdateType = "major" | "minor" | "patch"
+
+/**
+ * Determine the type of update based on semantic versioning
+ * @param remoteVersion The version available remotely
+ * @param localVersion The currently installed version
+ * @returns 'major', 'minor', or 'patch' if remote is newer, null otherwise
+ */
+export const getUpdateType = (
+  remoteVersion: string,
+  localVersion: string
+): UpdateType | null => {
+  const remote = normalizeVersion(remoteVersion)
+  const local = normalizeVersion(localVersion)
+
+  // Check major version (X.0.0)
+  if ((remote[0] ?? 0) > (local[0] ?? 0)) return "major"
+  if ((remote[0] ?? 0) < (local[0] ?? 0)) return null
+
+  // Check minor version (0.X.0)
+  if ((remote[1] ?? 0) > (local[1] ?? 0)) return "minor"
+  if ((remote[1] ?? 0) < (local[1] ?? 0)) return null
+
+  // Check patch version (0.0.X)
+  if ((remote[2] ?? 0) > (local[2] ?? 0)) return "patch"
+
+  return null // Same version or local is newer
+}

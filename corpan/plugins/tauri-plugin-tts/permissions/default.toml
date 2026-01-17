@@ -7,4 +7,6 @@ permissions = [
     "allow-open-tts-settings",
     "allow-install-tts-data-if-supported",
     "allow-list-voices",
+    "allow-get-tts-engine-status",
+    "allow-open-tts-engine-store",
 ]

@@ -4,6 +4,8 @@ const COMMANDS: &[&str] = &[
     "open_tts_settings",
     "install_tts_data_if_supported",
     "list_voices",
+    "get_tts_engine_status",
+    "open_tts_engine_store",
 ];
 
 fn main() {

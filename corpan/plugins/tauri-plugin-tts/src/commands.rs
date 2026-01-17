@@ -1,5 +1,5 @@
 use crate::{
-    models::{SpeakArgs, VoiceInfo},
+    models::{SpeakArgs, TtsEngineStatus, VoiceInfo},
     Result, TtsExt,
 };
 use std::time::{SystemTime, UNIX_EPOCH};
@@ -63,6 +63,32 @@ pub(crate) async fn open_tts_settings<R: Runtime>(app: AppHandle<R>) -> Result<(
 pub(crate) async fn install_tts_data_if_supported<R: Runtime>(app: AppHandle<R>) -> Result<bool> {
     println!("[NATIVE_TTS:DEBUG] install_tts_data_if_supported invoked");
     app.tts().install_tts_data_if_supported()
+}
+
+/// Android engine inventory/status (supported=false on non-Android).
+#[command]
+pub(crate) async fn get_tts_engine_status<R: Runtime>(app: AppHandle<R>) -> Result<TtsEngineStatus> {
+    println!("[NATIVE_TTS:DEBUG] get_tts_engine_status invoked");
+    app.tts().get_tts_engine_status()
+}
+
+#[derive(serde::Deserialize)]
+#[serde(rename_all = "camelCase")]
+pub(crate) struct OpenEngineStoreArgs {
+    package_name: String,
+}
+
+/// Open a store listing for a given TTS engine package (Android only).
+#[command]
+pub(crate) async fn open_tts_engine_store<R: Runtime>(
+    app: AppHandle<R>,
+    args: OpenEngineStoreArgs,
+) -> Result<bool> {
+    println!(
+        "[NATIVE_TTS:DEBUG] open_tts_engine_store invoked: package={}",
+        args.package_name
+    );
+    app.tts().open_tts_engine_store(args.package_name)
 }
 
 // use tauri::{AppHandle, Runtime};

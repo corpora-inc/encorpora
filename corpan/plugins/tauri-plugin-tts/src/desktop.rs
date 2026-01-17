@@ -3,7 +3,7 @@
 use serde::de::DeserializeOwned;
 use tauri::{plugin::PluginApi, AppHandle, Runtime};
 
-use crate::models::VoiceInfo;
+use crate::models::{TtsEngineStatus, VoiceInfo};
 
 // Initialize desktop TTS handle
 pub fn init<R: Runtime, C: DeserializeOwned>(
@@ -75,6 +75,22 @@ impl<R: Runtime> Tts<R> {
         {
             Ok(Vec::new())
         }
+    }
+
+    /// Engine status is Android-only; return supported=false on desktop.
+    pub fn get_tts_engine_status(&self) -> crate::Result<TtsEngineStatus> {
+        Ok(TtsEngineStatus {
+            supported: false,
+            default_engine: None,
+            engines: Vec::new(),
+            google_installed: false,
+            google_default: false,
+        })
+    }
+
+    /// Open a store listing for a given engine package (Android only).
+    pub fn open_tts_engine_store(&self, _package_name: String) -> crate::Result<bool> {
+        Ok(false)
     }
 }
 
@@ -313,6 +329,7 @@ mod macos_impl {
                     engine: Some("Apple TTS".to_string()),
                     gender: gender_opt,
                     quality: quality_bucket(&name, &ident, av_q),
+                    network_required: None,
                 };
 
                 out.push(vi);

@@ -9,6 +9,8 @@ Default permissions for the TTS plugin
 - `allow-open-tts-settings`
 - `allow-install-tts-data-if-supported`
 - `allow-list-voices`
+- `allow-get-tts-engine-status`
+- `allow-open-tts-engine-store`
 
 ## Permission Table
 
@@ -18,6 +20,32 @@ Default permissions for the TTS plugin
 <th>Description</th>
 </tr>
 
+
+<tr>
+<td>
+
+`tts:allow-get-tts-engine-status`
+
+</td>
+<td>
+
+Enables the get_tts_engine_status command without any pre-configured scope.
+
+</td>
+</tr>
+
+<tr>
+<td>
+
+`tts:deny-get-tts-engine-status`
+
+</td>
+<td>
+
+Denies the get_tts_engine_status command without any pre-configured scope.
+
+</td>
+</tr>
 
 <tr>
 <td>
@@ -67,6 +95,32 @@ Enables the list_voices command without any pre-configured scope.
 <td>
 
 Denies the list_voices command without any pre-configured scope.
+
+</td>
+</tr>
+
+<tr>
+<td>
+
+`tts:allow-open-tts-engine-store`
+
+</td>
+<td>
+
+Enables the open_tts_engine_store command without any pre-configured scope.
+
+</td>
+</tr>
+
+<tr>
+<td>
+
+`tts:deny-open-tts-engine-store`
+
+</td>
+<td>
+
+Denies the open_tts_engine_store command without any pre-configured scope.
 
 </td>
 </tr>
