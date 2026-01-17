@@ -235,6 +235,14 @@ export function PacksListing({
             <Button onClick={handleDevInstall} disabled={installing} size="sm">
               {installing ? t("packs.installing") : t("packs.install")}
             </Button>
+            <a
+              href="https://free2z.cash/corpora"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xs text-blue-600 hover:text-blue-800 underline"
+            >
+              Learn More
+            </a>
           </div>
           {error && <div className="text-sm text-red-600">{error}</div>}
         </div>

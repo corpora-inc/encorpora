@@ -33,12 +33,22 @@ export function SettingsModal({
   open,
   onClose,
   onLaunchGame,
+  initialTab,
 }: {
   open: boolean;
   onClose: () => void;
   onLaunchGame?: (game: InstalledGame) => void;
+  initialTab?: "stacks" | "packs";
 }) {
   const { t } = useTranslation();
+  const [activeTab, setActiveTab] = useState<"stacks" | "packs">(() => {
+    try {
+      const saved = localStorage.getItem("corpan:settings-tab");
+      return (saved === "packs" || saved === "stacks") ? saved : "stacks";
+    } catch {
+      return "stacks";
+    }
+  });
   const [devTapCount, setDevTapCount] = useState(0);
   const [devModeEnabled, setDevModeEnabled] = useState(() => {
     try {
@@ -54,6 +64,26 @@ export function SettingsModal({
   // const primaryLang = useSettingsStore((s) => s.primaryLang());
   const setOnboarded = useSettingsStore((s) => s.setOnboarded);
   const setOnboardingStep = useSettingsStore((s) => s.setOnboardingStep);
+
+  // Handle initialTab prop (e.g., when coming back from a game)
+  useEffect(() => {
+    if (initialTab && open) {
+      setActiveTab(initialTab);
+    }
+  }, [initialTab, open]);
+
+  // Handle tab changes and persist to localStorage
+  const handleTabChange = (value: string) => {
+    if (value === "stacks" || value === "packs") {
+      setActiveTab(value);
+      try {
+        localStorage.setItem("corpan:settings-tab", value);
+      } catch {
+        // Ignore localStorage failures
+      }
+    }
+  };
+
   useEffect(() => {
     return () => {
       if (devToastTimeoutRef.current !== null) {
@@ -107,7 +137,7 @@ export function SettingsModal({
           {t("settings.adjustToYourPreferences")}
         </DialogDescription>
 
-        <Tabs defaultValue="stacks" className="w-full flex flex-col flex-1 min-h-0">
+        <Tabs value={activeTab} onValueChange={handleTabChange} className="w-full flex flex-col flex-1 min-h-0">
           {/* Sticky header with tabs and close button */}
           <div className="sticky top-0 z-[1001] bg-white border-b border-gray-200 -mx-6 px-6 pt-7 pb-2">
             <div className="flex items-center gap-2">

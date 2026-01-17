@@ -22,6 +22,7 @@ type Props = {
     onSmartSelect?: () => void;
     canSmartSelect?: boolean;
     engineStatus?: TtsEngineStatus | null;
+    engineStatusReady?: boolean;
 };
 
 type OsSpec = {
@@ -100,6 +101,7 @@ export function OnboardingTTSInstructionsHeaderActions({
     onSmartSelect,
     canSmartSelect,
     engineStatus,
+    engineStatusReady,
 }: Props) {
     const { t } = useTranslation();
 
@@ -159,17 +161,36 @@ export function OnboardingTTSInstructionsHeaderActions({
         : "border-rose-200 bg-rose-50 text-rose-700";
 
     const hideTip = os === "android" && engineStatus?.supported && googleDefault;
+    const androidTipReady = os !== "android" || engineStatusReady === true;
+    const showTip = !hideTip && androidTipReady;
 
     return (
         <div className="w-full py-1">
             {/* {!tipDismissed && ( */}
-            {!hideTip && (
+            {os !== "android" ? (
                 <DismissableTip
                     storageKey={`tip:tts-os:${os}`}
                     title={tipTitle}
                     body={tipBody}
                     action={feedbackAction}
                 />
+            ) : (
+                <div
+                    className={[
+                        "overflow-hidden transition-all duration-500 ease-out",
+                        showTip
+                            ? "max-h-[320px] opacity-100 scale-100"
+                            : "max-h-0 opacity-0 scale-95 -translate-y-1 pointer-events-none",
+                    ].join(" ")}
+                    aria-hidden={!showTip}
+                >
+                    <DismissableTip
+                        storageKey={`tip:tts-os:${os}`}
+                        title={tipTitle}
+                        body={tipBody}
+                        action={feedbackAction}
+                    />
+                </div>
             )}
             {/* )} */}
 
