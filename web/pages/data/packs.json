@@ -2,7 +2,7 @@
   {
     "id": "hover-runner",
     "name": "Hover Runner",
-    "description": "Hover over words to reveal translations in this interactive reading game",
+    "description": "Hoverboard runner using the All-Hearing Ear to lock in correct translations and avoid wrong ones",
     "status": "prototype",
     "version": "0.1.0",
     "manifestUrl": "/corpan/packs/hover-runner/manifest.json",

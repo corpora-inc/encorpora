@@ -27,6 +27,10 @@ import StacksManager from "./StacksManager";
 import { JumpToTTSButton } from "./JumpToTTSButton";
 import { PacksListing } from "./packs/PacksListing";
 import type { InstalledGame } from "@/store/games";
+import { useGamesStore } from "@/store/games";
+import { useCatalogStore } from "@/store/catalog";
+import { usePackUpdates } from "@/hooks/usePackUpdates";
+import { getPlatformTopPaddingButtons } from "@/util/browser";
 
 // Use the built-in modal with correct sizing
 export function SettingsModal({
@@ -64,6 +68,12 @@ export function SettingsModal({
   // const primaryLang = useSettingsStore((s) => s.primaryLang());
   const setOnboarded = useSettingsStore((s) => s.setOnboarded);
   const setOnboardingStep = useSettingsStore((s) => s.setOnboardingStep);
+
+  // Get pack updates for badge
+  const gamesMap = useGamesStore((s) => s.games);
+  const catalog = useCatalogStore((s) => s.getCatalog());
+  const installedGames = Object.values(gamesMap);
+  const updates = usePackUpdates(installedGames, catalog);
 
   // Handle initialTab prop (e.g., when coming back from a game)
   useEffect(() => {
@@ -139,14 +149,24 @@ export function SettingsModal({
 
         <Tabs value={activeTab} onValueChange={handleTabChange} className="w-full flex flex-col flex-1 min-h-0">
           {/* Sticky header with tabs and close button */}
-          <div className="sticky top-0 z-[1001] bg-white border-b border-gray-200 -mx-6 px-6 pt-7 pb-2">
+          <div
+            className="sticky top-0 z-[1001] bg-white border-b border-gray-200 -mx-6 px-6 pb-2"
+            style={{
+              paddingTop: getPlatformTopPaddingButtons(),
+            }}
+          >
             <div className="flex items-center gap-2">
               <TabsList className="flex-1 grid grid-cols-2 h-12">
                 <TabsTrigger value="stacks" className="text-base font-semibold">
                   {t("settings.stacks")}
                 </TabsTrigger>
-                <TabsTrigger value="packs" className="text-base font-semibold">
+                <TabsTrigger value="packs" className="relative text-base font-semibold">
                   {t("settings.packs")}
+                  {updates.length > 0 && (
+                    <span className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-purple-600 text-xs font-semibold text-white animate-in fade-in zoom-in duration-500 animate-breathe">
+                      {updates.length}
+                    </span>
+                  )}
                 </TabsTrigger>
               </TabsList>
               <DialogClose className="inline-flex h-12 w-12 items-center justify-center rounded-md border bg-white shadow-sm cursor-pointer transition-shadow hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 shrink-0">
@@ -241,6 +261,6 @@ export function SettingsModal({
           </div>
         ) : null}
       </DialogContent>
-    </Dialog>
+    </Dialog >
   );
 }

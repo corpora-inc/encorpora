@@ -104,7 +104,7 @@ export function PacksListing({
               Updates Available ({updates.length})
             </h4>
           </div>
-          <div className="grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-4 grid-cols-1 md:grid-cols-2">
             {updates.map(({ game, update }) => (
               <PackCard
                 key={game.id}
@@ -131,7 +131,7 @@ export function PacksListing({
             </p>
           </div>
         ) : (
-          <div className="grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-4 grid-cols-1 md:grid-cols-2">
             {installedGames.map((game) => {
               const catalogEntry = catalog.find((c) => c.id === game.id)
               const hasUpdate = updates.some((u) => u.game.id === game.id)
@@ -190,7 +190,7 @@ export function PacksListing({
             )}
           </div>
         ) : (
-          <div className="grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-4 grid-cols-1 md:grid-cols-2">
             {availablePacks.map((pack) => (
               <PackCard
                 key={pack.id}

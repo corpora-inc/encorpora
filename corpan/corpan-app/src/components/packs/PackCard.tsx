@@ -22,7 +22,7 @@ export function PackCard({
   updateVersion?: string
 }) {
   return (
-    <div className="flex flex-col rounded-lg border border-gray-200 bg-white/80 p-4 shadow-sm transition-shadow hover:shadow-md h-full">
+    <div className="flex flex-col rounded-lg border border-gray-200 bg-white/80 p-4 shadow-sm transition-shadow hover:shadow-md h-full min-w-[280px]">
       {/* Content area that grows */}
       <div className="flex flex-col gap-3 flex-1">
         {/* Header with name and badge */}
@@ -41,11 +41,10 @@ export function PackCard({
           <p className="text-sm text-muted-foreground">{pack.description}</p>
         )}
 
-        {/* Screenshot/Video - using manifestUrl as a placeholder for now */}
-        {/* In the future, catalog can include avatarSource or videos.shorts */}
-        {pack.manifestUrl && (
+        {/* Screenshot/Video */}
+        {pack.imageUrl && (
           <PackScreenshot
-            src={undefined}
+            src={pack.imageUrl}
             alt={pack.name}
             type="image"
           />
