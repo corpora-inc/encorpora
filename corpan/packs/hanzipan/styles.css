@@ -106,7 +106,7 @@
 
 .exit-btn {
   position: fixed;
-  top: calc(clamp(12px, 2.4vw, 20px) + var(--safe-top));
+  top: calc(clamp(12px, 2.4vw, 20px) + var(--safe-top) + 10px);
   right: clamp(12px, 2.4vw, 24px);
   z-index: 20;
   border: 1px solid rgba(27, 27, 31, 0.1);
@@ -433,6 +433,7 @@
   transform: scale(1.08);
   color: var(--accent-strong);
 }
+
 .meta-divider {
   color: var(--muted);
 }
@@ -819,6 +820,7 @@
     transform: translateY(12px);
     opacity: 0;
   }
+
   to {
     transform: translateY(0);
     opacity: 1;
@@ -846,6 +848,7 @@
   .panel-actions {
     justify-content: flex-start;
   }
+
   .workspace {
     --panel-height: clamp(320px, 60vh, 560px);
   }
@@ -855,6 +858,7 @@
   .hanzi-app {
     gap: 14px;
   }
+
   .workspace {
     --panel-height: clamp(280px, 50vh, 480px);
   }
