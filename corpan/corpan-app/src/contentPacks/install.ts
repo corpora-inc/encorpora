@@ -19,6 +19,7 @@ export type InstallResult = {
   name?: string
   manifestUrl: string
   version?: string
+  description?: string
   imageUrl?: string
   installedAt: number
   source: InstallSource
@@ -132,6 +133,7 @@ export const installPack = async (
     id?: string
     name?: string
     version?: string
+    description?: string
   }
   if (!manifest.id) {
     throw new Error("Manifest missing id")
@@ -141,6 +143,7 @@ export const installPack = async (
     name: manifest.name,
     manifestUrl: resolved,
     version: manifest.version ?? request.expectedVersion,
+    description: manifest.description,
     installedAt: Date.now(),
     source: request.source,
   }

@@ -63,6 +63,7 @@ export function GamesPanel({
         name: result.name ?? result.packId,
         manifestUrl: result.manifestUrl,
         version: result.version,
+        description: result.description,
         source: result.source,
       })
       setManifestUrl("")
@@ -166,6 +167,7 @@ export function GamesPanel({
         name: result.name ?? entry.name ?? result.packId,
         manifestUrl: result.manifestUrl,
         version: result.version,
+        description: result.description ?? entry.description,
         source: result.source,
       })
     } catch (err) {

@@ -65,6 +65,7 @@ export function PacksListing({
         name: result.name ?? result.packId,
         manifestUrl: result.manifestUrl,
         version: result.version,
+        description: result.description,
         imageUrl: result.imageUrl,
         source: result.source,
       })
@@ -145,6 +146,7 @@ export function PacksListing({
                     name: game.name,
                     version: game.version ?? "unknown",
                     manifestUrl: game.manifestUrl,
+                    description: game.description,
                     imageUrl: game.imageUrl,
                   }}
                   installedGame={game}

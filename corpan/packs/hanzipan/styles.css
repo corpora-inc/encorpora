@@ -85,8 +85,8 @@
   gap: clamp(16px, 3vw, 24px);
   padding: clamp(16px, 3vw, 32px) clamp(16px, 4vw, 32px) clamp(24px, 5vw, 40px);
   padding-top: calc(clamp(16px, 3vw, 32px) + var(--safe-top));
-  min-height: 100%;
-  height: auto;
+  height: 100%;
+  min-height: 0;
 }
 
 
@@ -481,8 +481,8 @@
   gap: clamp(16px, 3vw, 24px);
   flex: 1;
   min-height: 0;
-  align-items: start;
-  --panel-height: clamp(360px, 58vh, 620px);
+  align-items: stretch;
+  grid-auto-rows: minmax(0, 1fr);
 }
 
 .panel {
@@ -496,7 +496,6 @@
 
 .draw-panel,
 .examples-panel {
-  height: var(--panel-height);
   display: flex;
   flex-direction: column;
 }
@@ -729,7 +728,7 @@
   display: flex;
   flex-direction: column;
   min-height: 0;
-  align-self: start;
+  align-self: stretch;
 }
 
 .examples-list {
@@ -830,7 +829,6 @@
 @media (max-width: 1080px) {
   .workspace {
     grid-template-columns: 1fr;
-    --panel-height: clamp(320px, 55vh, 520px);
   }
 }
 
@@ -848,19 +846,11 @@
   .panel-actions {
     justify-content: flex-start;
   }
-
-  .workspace {
-    --panel-height: clamp(320px, 60vh, 560px);
-  }
 }
 
 @media (max-height: 700px) {
   .hanzi-app {
     gap: 14px;
-  }
-
-  .workspace {
-    --panel-height: clamp(280px, 50vh, 480px);
   }
 }
 
@@ -868,27 +858,5 @@
   .hanzi-root {
     height: 100svh;
     min-height: 100svh;
-  }
-
-  .workspace {
-    --panel-height: clamp(360px, 58svh, 620px);
-  }
-
-  @media (max-width: 1080px) {
-    .workspace {
-      --panel-height: clamp(320px, 55svh, 520px);
-    }
-  }
-
-  @media (max-width: 560px) {
-    .workspace {
-      --panel-height: clamp(320px, 60svh, 560px);
-    }
-  }
-
-  @media (max-height: 700px) {
-    .workspace {
-      --panel-height: clamp(280px, 50svh, 480px);
-    }
   }
 }

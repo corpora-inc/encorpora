@@ -67,8 +67,8 @@ export const LIGHTING = {
 // GLOW LAYER
 // ============================================================
 export const GLOW = {
-  blurKernelSize: 8,   // Blur radius (8 = tight, 64 = wide)
-  intensity: 0.6,       // Glow strength
+  blurKernelSize: 4,   // Blur radius (4 = tight, 64 = wide) - reduced for crispness
+  intensity: 0.35,      // Glow strength - reduced for readability
 }
 
 // ============================================================
