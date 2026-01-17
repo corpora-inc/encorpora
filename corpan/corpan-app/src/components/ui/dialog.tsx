@@ -4,13 +4,6 @@ import { XIcon } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 
-import {
-  // getPlatformBottomPadding,
-  // getPlatformTopPaddingButtons,
-  // getPlatformTopPaddingTranslations,
-  // isAndroid,
-} from "@/util/browser";
-
 function Dialog({
   ...props
 }: React.ComponentProps<typeof DialogPrimitive.Root>) {
@@ -66,9 +59,6 @@ function DialogContent({
           className
         )}
         {...props}
-        style={{
-          // paddingTop: getPlatformTopPaddingButtons(),
-        }}
       >
         {/* Sticky wrapper reserves space; button is absolute so rings don’t affect layout
         <div className="sticky top-5 z-[1001]"

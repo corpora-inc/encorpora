@@ -109,7 +109,7 @@ export function SettingsModal({
 
         <Tabs defaultValue="stacks" className="w-full flex flex-col flex-1 min-h-0">
           {/* Sticky header with tabs and close button */}
-          <div className="sticky top-0 z-[1001] bg-white border-b border-gray-200 -mx-6 px-6 pt-6 pb-2">
+          <div className="sticky top-0 z-[1001] bg-white border-b border-gray-200 -mx-6 px-6 pt-7 pb-2">
             <div className="flex items-center gap-2">
               <TabsList className="flex-1 grid grid-cols-2 h-12">
                 <TabsTrigger value="stacks" className="text-base font-semibold">
