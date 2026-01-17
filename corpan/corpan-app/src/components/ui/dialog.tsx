@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils"
 
 import {
   // getPlatformBottomPadding,
-  getPlatformTopPaddingButtons,
+  // getPlatformTopPaddingButtons,
   // getPlatformTopPaddingTranslations,
   // isAndroid,
 } from "@/util/browser";
@@ -67,7 +67,7 @@ function DialogContent({
         )}
         {...props}
         style={{
-          paddingTop: getPlatformTopPaddingButtons(),
+          // paddingTop: getPlatformTopPaddingButtons(),
         }}
       >
         {/* Sticky wrapper reserves space; button is absolute so rings don’t affect layout

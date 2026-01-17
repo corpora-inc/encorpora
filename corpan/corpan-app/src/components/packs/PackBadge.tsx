@@ -19,7 +19,7 @@ export function PackBadge({
     },
     update: {
       label: "UPDATE",
-      className: "bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200",
+      className: "bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200",
     },
     installed: {
       label: "INSTALLED",

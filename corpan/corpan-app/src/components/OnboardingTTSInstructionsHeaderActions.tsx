@@ -4,7 +4,6 @@ import {
     Settings,
     CheckCheck,
     MessageSquare,
-    CheckCircle2,
     AlertTriangle,
     XCircle,
     // Lightbulb,
@@ -145,28 +144,33 @@ export function OnboardingTTSInstructionsHeaderActions({
         icon: <MessageSquare size={14} />,
     } : undefined;
 
-    const showAndroidStatus = os === "android" && engineStatus?.supported;
+    const showAndroidStatus =
+        os === "android" &&
+        engineStatus?.supported &&
+        (!engineStatus.googleInstalled || !engineStatus.googleDefault);
     const googleInstalled = !!engineStatus?.googleInstalled;
     const googleDefault = !!engineStatus?.googleDefault;
     const statusLabel = googleInstalled
-        ? (googleDefault
-            ? t("onboarding.ttsGoogleActive", { defaultValue: "Google TTS active" })
-            : t("onboarding.ttsGoogleInstalled", { defaultValue: "Google TTS installed" }))
+        ? t("onboarding.ttsGoogleInstalled", { defaultValue: "Google TTS installed" })
         : t("onboarding.ttsGoogleMissing", { defaultValue: "Google TTS not installed" });
-    const StatusIcon = googleInstalled ? (googleDefault ? CheckCircle2 : AlertTriangle) : XCircle;
+    const StatusIcon = googleInstalled ? AlertTriangle : XCircle;
     const statusTone = googleInstalled
-        ? (googleDefault ? "border-emerald-200 bg-emerald-50 text-emerald-700" : "border-amber-200 bg-amber-50 text-amber-700")
+        ? "border-amber-200 bg-amber-50 text-amber-700"
         : "border-rose-200 bg-rose-50 text-rose-700";
+
+    const hideTip = os === "android" && engineStatus?.supported && googleDefault;
 
     return (
         <div className="w-full py-1">
             {/* {!tipDismissed && ( */}
-            <DismissableTip
-                storageKey={`tip:tts-os:${os}`}
-                title={tipTitle}
-                body={tipBody}
-                action={feedbackAction}
-            />
+            {!hideTip && (
+                <DismissableTip
+                    storageKey={`tip:tts-os:${os}`}
+                    title={tipTitle}
+                    body={tipBody}
+                    action={feedbackAction}
+                />
+            )}
             {/* )} */}
 
             {showAndroidStatus && (

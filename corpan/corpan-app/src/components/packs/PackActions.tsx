@@ -29,6 +29,9 @@ export function PackActions({
   const [error, setError] = useState<string | null>(null)
 
   const handleInstall = async () => {
+    console.log("[PackActions] handleInstall called for pack:", pack.id)
+    console.log("[PackActions] manifestUrl:", pack.manifestUrl)
+
     if (!pack.manifestUrl) {
       setError(t("packs.installFailed"))
       return
@@ -38,11 +41,13 @@ export function PackActions({
     setError(null)
 
     try {
+      console.log("[PackActions] Calling installPack with URL:", pack.manifestUrl)
       const result = await installPack({
         manifestUrl: pack.manifestUrl,
         source: "catalog",
         expectedVersion: pack.version,
       })
+      console.log("[PackActions] Install successful:", result)
 
       addGame({
         id: result.packId,

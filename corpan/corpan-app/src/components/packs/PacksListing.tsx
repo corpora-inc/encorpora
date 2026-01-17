@@ -21,7 +21,6 @@ export function PacksListing({
   const catalog = useCatalogStore((s) => s.getCatalog())
   const fetchCatalog = useCatalogStore((s) => s.fetchCatalog)
   const isOnline = useCatalogStore((s) => s.isOnline)
-  const lastFetched = useCatalogStore((s) => s.lastFetched)
   const isFetching = useCatalogStore((s) => s.isFetching)
   const [manifestUrl, setManifestUrl] = useState("")
   const [installing, setInstalling] = useState(false)
@@ -39,8 +38,11 @@ export function PacksListing({
 
   // Fetch catalog on mount
   useEffect(() => {
-    fetchCatalog()
-  }, [fetchCatalog])
+    console.log("[PacksListing] Mounting, fetching catalog")
+    console.log("[PacksListing] Current catalog:", catalog)
+    // Force fetch to ensure we get production URLs even if cached
+    fetchCatalog(true)
+  }, [])
 
   const handleRefresh = async () => {
     await fetchCatalog(true) // Force refresh
@@ -79,49 +81,26 @@ export function PacksListing({
     }
   }
 
-  const lastUpdatedText = useMemo(() => {
-    if (!lastFetched) return null
-    const minutes = Math.floor((Date.now() - lastFetched) / 60000)
-    if (minutes < 1) return "Just now"
-    if (minutes < 60) return `${minutes}m ago`
-    const hours = Math.floor(minutes / 60)
-    if (hours < 24) return `${hours}h ago`
-    const days = Math.floor(hours / 24)
-    return `${days}d ago`
-  }, [lastFetched])
 
   return (
     <div className="space-y-6">
-      {/* Header with network status and refresh */}
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <h3 className="text-lg font-semibold">{t("packs.title")}</h3>
-          {!isOnline && (
-            <span className="text-xs text-muted-foreground">(Offline)</span>
-          )}
-        </div>
-        <div className="flex items-center gap-2">
-          {lastUpdatedText && (
-            <span className="text-xs text-muted-foreground">
-              {lastUpdatedText}
-            </span>
-          )}
-          <Button
-            size="sm"
-            variant="ghost"
-            onClick={handleRefresh}
-            disabled={isFetching || !isOnline}
-          >
-            {isFetching ? "Refreshing..." : t("packs.refresh")}
-          </Button>
-        </div>
+      {/* Consumer-friendly intro */}
+      <div className="space-y-2">
+        <p className="text-sm text-muted-foreground">
+          Discover and install games and experiences to practice your languages.
+        </p>
+        {!isOnline && (
+          <div className="flex items-center gap-2 text-sm text-orange-600">
+            <span>⚠️ Offline - showing installed packs only</span>
+          </div>
+        )}
       </div>
 
       {/* Section 1: Updates Available */}
       {updates.length > 0 && (
         <div className="space-y-3">
           <div className="flex items-center justify-between">
-            <h4 className="text-base font-semibold text-orange-700">
+            <h4 className="text-base font-semibold text-purple-700">
               Updates Available ({updates.length})
             </h4>
           </div>
@@ -144,10 +123,12 @@ export function PacksListing({
 
       {/* Section 2: Installed Packs */}
       <div className="space-y-3">
-        <h4 className="text-base font-semibold">{t("packs.installed")}</h4>
+        <h4 className="text-base font-semibold">Your Packs</h4>
         {installedGames.length === 0 ? (
-          <div className="text-sm text-muted-foreground">
-            {t("packs.emptyInstalled")}
+          <div className="rounded-md border border-gray-200 bg-gray-50 p-6 text-center">
+            <p className="text-sm text-muted-foreground">
+              No packs installed yet. Browse available packs below to get started!
+            </p>
           </div>
         ) : (
           <div className="grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
@@ -183,10 +164,30 @@ export function PacksListing({
 
       {/* Section 3: Discover New */}
       <div className="space-y-3">
-        <h4 className="text-base font-semibold">{t("packs.available")}</h4>
+        <div className="flex items-center justify-between">
+          <h4 className="text-base font-semibold">{t("packs.available")}</h4>
+          {isOnline && (
+            <Button
+              size="sm"
+              variant="ghost"
+              onClick={handleRefresh}
+              disabled={isFetching}
+              className="text-xs"
+            >
+              {isFetching ? "⟳ Refreshing..." : "⟳ Refresh"}
+            </Button>
+          )}
+        </div>
         {availablePacks.length === 0 ? (
           <div className="text-sm text-muted-foreground">
-            {t("packs.emptyAvailable")}
+            {catalog.length === 0 ? (
+              <div>
+                Loading packs...
+                {!isOnline && " (offline - connect to internet to see available packs)"}
+              </div>
+            ) : (
+              t("packs.emptyAvailable")
+            )}
           </div>
         ) : (
           <div className="grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
@@ -204,13 +205,15 @@ export function PacksListing({
         )}
       </div>
 
-      {/* Section 4: Dev Tools */}
+      {/* Section 4: Developer Tools (clearly separated) */}
       {showDevInstall && (
-        <div className="space-y-3 rounded-md border border-gray-200 bg-white/70 p-4">
+        <div className="space-y-3 rounded-md border-2 border-dashed border-gray-300 bg-gray-50/50 p-4 mt-8">
           <div className="space-y-1">
-            <div className="text-sm font-semibold">{t("packs.manifestTitle")}</div>
-            <div className="text-xs text-muted-foreground">
-              {t("packs.manifestHint")}
+            <div className="text-sm font-semibold text-gray-700">
+              🛠️ Developer Tools
+            </div>
+            <div className="text-xs text-gray-600">
+              Install custom packs from URL (for developers and testers)
             </div>
             <div className="mt-2 space-y-1 text-xs text-muted-foreground">
               <div className="font-medium">Two install options:</div>
@@ -223,32 +226,19 @@ export function PacksListing({
             </div>
           </div>
           <input
-            className="w-full rounded-md border border-gray-200 px-3 py-2 text-sm"
+            className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm bg-white"
             placeholder="https://example.com/pack/manifest.json or .../pack.zip"
             value={manifestUrl}
             onChange={(event) => setManifestUrl(event.target.value)}
           />
           <div className="flex flex-wrap items-center gap-3">
-            <Button onClick={handleDevInstall} disabled={installing}>
+            <Button onClick={handleDevInstall} disabled={installing} size="sm">
               {installing ? t("packs.installing") : t("packs.install")}
             </Button>
           </div>
           {error && <div className="text-sm text-red-600">{error}</div>}
         </div>
       )}
-
-      {/* Info link */}
-      <div className="text-center">
-        <p className="text-sm text-muted-foreground">{t("packs.devIntro")}</p>
-        <a
-          className="text-sm font-medium text-sky-700 hover:text-sky-900 hover:underline"
-          href="https://free2z.cash/corpora"
-          target="_blank"
-          rel="noreferrer"
-        >
-          {t("packs.devLink")}
-        </a>
-      </div>
     </div>
   )
 }

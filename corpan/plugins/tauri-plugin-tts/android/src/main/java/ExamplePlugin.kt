@@ -319,11 +319,11 @@ class ExamplePlugin(private val activity: Activity) : Plugin(activity) {
       currentEngine(tts)?.let { pkg -> intent.`package` = pkg }
       intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
       activity.startActivity(intent)
-      invoke.resolve(true)
+      invoke.resolveObject(true)
     } catch (_: ActivityNotFoundException) {
-      invoke.resolve(false)
+      invoke.resolveObject(false)
     } catch (_: Exception) {
-      invoke.resolve(false)
+      invoke.resolveObject(false)
     }
   }
 
@@ -342,7 +342,8 @@ class ExamplePlugin(private val activity: Activity) : Plugin(activity) {
         val o = JSObject()
         o.put("packageName", engine.name)
         o.put("label", engine.label?.toString() ?: JSONObject.NULL)
-        o.put("isSystem", engine.system)
+        // EngineInfo.system is @hide in the SDK; report false as a safe default.
+        o.put("isSystem", false)
         arr.put(o)
       }
 
@@ -383,17 +384,17 @@ class ExamplePlugin(private val activity: Activity) : Plugin(activity) {
     try {
       val intent = Intent(Intent.ACTION_VIEW, marketUri).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
       activity.startActivity(intent)
-      invoke.resolve(true)
+      invoke.resolveObject(true)
     } catch (_: ActivityNotFoundException) {
       try {
         val intent = Intent(Intent.ACTION_VIEW, webUri).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         activity.startActivity(intent)
-        invoke.resolve(true)
+        invoke.resolveObject(true)
       } catch (_: Exception) {
-        invoke.resolve(false)
+        invoke.resolveObject(false)
       }
     } catch (_: Exception) {
-      invoke.resolve(false)
+      invoke.resolveObject(false)
     }
   }
 

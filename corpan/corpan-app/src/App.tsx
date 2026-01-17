@@ -132,7 +132,7 @@ export default function App() {
                 <SettingsIcon className="text-gray-600 h-5 w-5" />
               </Button>
               {updates.length > 0 && (
-                <span className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-red-600 text-xs font-semibold text-white">
+                <span className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-purple-600 text-xs font-semibold text-white animate-in fade-in zoom-in duration-500 animate-breathe">
                   {updates.length}
                 </span>
               )}
