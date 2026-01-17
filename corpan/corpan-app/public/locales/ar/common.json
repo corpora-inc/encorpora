@@ -71,7 +71,9 @@
     "extra-large": "كبير جدًا",
     "testTts": "اختبر إعدادات TTS بالنقر على الأزرار أدناه:",
     "showRomanization": "إظهار الكتابة اللاتينية",
-    "scrollNavigation": "التنقل بالتمرير"
+    "scrollNavigation": "التنقل بالتمرير",
+    "packs": "Packs",
+    "stacks": "Stacks"
   },
   "onboarding": {
     "welcome": "مرحبًا",
@@ -268,15 +270,15 @@
     "feedbackButton": "إرسال ملاحظات عبر GitHub"
   },
   "packs": {
-    "title": "الحِزم",
-    "available": "الحزم المتاحة",
-    "emptyAvailable": "لا توجد حزم بعد.",
-    "installed": "الحزم المثبتة",
-    "emptyInstalled": "لا توجد حزم مثبتة.",
+    "title": "Packs",
+    "available": "متاح",
+    "emptyAvailable": "لا يوجد شيء متاح بعد.",
+    "installed": "مثبّت",
+    "emptyInstalled": "لا يوجد شيء مثبّت بعد.",
     "get": "احصل",
     "open": "افتح",
     "remove": "إزالة",
-    "version": "الإصدار {{version}}",
+    "version": "v{{version}}",
     "refresh": "تحديث",
     "free": "مجاني",
     "install": "تثبيت",
@@ -287,10 +289,13 @@
     "manifestTitle": "رابط البيان",
     "manifestPlaceholder": "https://example.com/manifest.json",
     "manifestHint": "الصق رابط البيان.",
-    "devUnlockTitle": "حزم المطوّر",
+    "devUnlockTitle": "Packs للمطورين",
     "devUnlockHint": "اضغط 7 مرات لفتح تثبيت البيان.",
-    "devUnlockToast": "تم تفعيل حزم المطوّر.",
-    "devIntro": "جرّب حزمة Corpán أو أنشئ حزمة خاصة بك.",
-    "devLink": "اعرف المزيد على Free2z"
+    "devUnlockToast": "تم فتح Packs للمطورين.",
+    "devIntro": "جرّب Pack من Corpán أو اصنع الخاص بك.",
+    "devLink": "اعرف المزيد على Free2z",
+    "new": "جديد",
+    "updates": "تحديثات",
+    "offline": "غير متصل"
   }
 }

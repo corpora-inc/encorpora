@@ -71,7 +71,9 @@
     "extra-large": "Sangat besar",
     "testTts": "Uji TTS dengan tombol di bawah:",
     "showRomanization": "Tampilkan romanisasi",
-    "scrollNavigation": "Navigasi gulir"
+    "scrollNavigation": "Navigasi gulir",
+    "packs": "Packs",
+    "stacks": "Stacks"
   },
   "onboarding": {
     "welcome": "Selamat datang",
@@ -268,15 +270,15 @@
     "close": "Tutup"
   },
   "packs": {
-    "title": "Paket",
-    "available": "Paket tersedia",
-    "emptyAvailable": "Belum ada paket.",
-    "installed": "Paket terpasang",
-    "emptyInstalled": "Tidak ada paket terpasang.",
+    "title": "Packs",
+    "available": "Tersedia",
+    "emptyAvailable": "Belum ada yang tersedia.",
+    "installed": "Terpasang",
+    "emptyInstalled": "Belum ada yang terpasang.",
     "get": "Dapatkan",
     "open": "Buka",
     "remove": "Hapus",
-    "version": "Versi {{version}}",
+    "version": "v{{version}}",
     "refresh": "Segarkan",
     "free": "Gratis",
     "install": "Pasang",
@@ -287,10 +289,13 @@
     "manifestTitle": "URL manifest",
     "manifestPlaceholder": "https://example.com/manifest.json",
     "manifestHint": "Tempel URL manifest.",
-    "devUnlockTitle": "Paket pengembang",
+    "devUnlockTitle": "Packs pengembang",
     "devUnlockHint": "Ketuk 7 kali untuk membuka instalasi manifest.",
-    "devUnlockToast": "Paket pengembang diaktifkan.",
-    "devIntro": "Coba Pack Corpán atau buat sendiri.",
-    "devLink": "Pelajari di Free2z"
+    "devUnlockToast": "Packs pengembang dibuka.",
+    "devIntro": "Coba Corpán Pack atau buat sendiri.",
+    "devLink": "Pelajari di Free2z",
+    "new": "Baru",
+    "updates": "Pembaruan",
+    "offline": "Offline"
   }
 }

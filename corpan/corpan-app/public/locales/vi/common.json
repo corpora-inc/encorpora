@@ -71,7 +71,9 @@
     "extra-large": "Rất lớn",
     "testTts": "Kiểm tra cài đặt TTS của bạn bằng cách nhấp vào các nút bên dưới:",
     "showRomanization": "Hiển thị La-tinh hóa",
-    "scrollNavigation": "Điều hướng cuộn"
+    "scrollNavigation": "Điều hướng cuộn",
+    "packs": "Packs",
+    "stacks": "Stacks"
   },
   "onboarding": {
     "welcome": "Chào mừng",
@@ -268,15 +270,15 @@
     "feedbackButton": "Góp ý trên GitHub"
   },
   "packs": {
-    "title": "Gói",
-    "available": "Gói có sẵn",
-    "emptyAvailable": "Chưa có gói nào.",
-    "installed": "Gói đã cài",
-    "emptyInstalled": "Chưa cài gói nào.",
+    "title": "Packs",
+    "available": "Có sẵn",
+    "emptyAvailable": "Chưa có gì khả dụng.",
+    "installed": "Đã cài",
+    "emptyInstalled": "Chưa có gì được cài.",
     "get": "Nhận",
     "open": "Mở",
     "remove": "Xóa",
-    "version": "Phiên bản {{version}}",
+    "version": "v{{version}}",
     "refresh": "Làm mới",
     "free": "Miễn phí",
     "install": "Cài đặt",
@@ -287,10 +289,13 @@
     "manifestTitle": "URL manifest",
     "manifestPlaceholder": "https://example.com/manifest.json",
     "manifestHint": "Dán URL manifest.",
-    "devUnlockTitle": "Gói dành cho nhà phát triển",
+    "devUnlockTitle": "Packs cho nhà phát triển",
     "devUnlockHint": "Chạm 7 lần để mở cài đặt bằng manifest.",
-    "devUnlockToast": "Đã mở gói dành cho nhà phát triển.",
-    "devIntro": "Thử một gói Corpán hoặc tự tạo.",
-    "devLink": "Tìm hiểu thêm trên Free2z"
+    "devUnlockToast": "Đã mở khóa Packs cho nhà phát triển.",
+    "devIntro": "Hãy thử một Corpán Pack hoặc tự tạo.",
+    "devLink": "Tìm hiểu thêm trên Free2z",
+    "new": "Mới",
+    "updates": "Cập nhật",
+    "offline": "Ngoại tuyến"
   }
 }

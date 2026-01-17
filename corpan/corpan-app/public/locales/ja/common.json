@@ -71,7 +71,9 @@
     "extra-large": "特大",
     "testTts": "下のボタンを押してTTS設定をテストしてください：",
     "showRomanization": "ローマ字表記を表示",
-    "scrollNavigation": "スクロールナビゲーション"
+    "scrollNavigation": "スクロールナビゲーション",
+    "packs": "Packs",
+    "stacks": "Stacks"
   },
   "onboarding": {
     "welcome": "ようこそ",
@@ -268,15 +270,15 @@
     "feedbackButton": "GitHubでフィードバックを送る"
   },
   "packs": {
-    "title": "パック",
-    "available": "利用可能なパック",
-    "emptyAvailable": "利用可能なパックはありません。",
-    "installed": "インストール済みのパック",
-    "emptyInstalled": "インストール済みのパックはありません。",
+    "title": "Packs",
+    "available": "利用可能",
+    "emptyAvailable": "まだ利用可能なものはありません。",
+    "installed": "インストール済み",
+    "emptyInstalled": "まだインストール済みはありません。",
     "get": "入手",
     "open": "開く",
     "remove": "削除",
-    "version": "バージョン {{version}}",
+    "version": "v{{version}}",
     "refresh": "更新",
     "free": "無料",
     "install": "インストール",
@@ -287,10 +289,13 @@
     "manifestTitle": "マニフェストURL",
     "manifestPlaceholder": "https://example.com/manifest.json",
     "manifestHint": "マニフェストURLを貼り付けてください。",
-    "devUnlockTitle": "開発者パック",
+    "devUnlockTitle": "開発者向けPacks",
     "devUnlockHint": "7回タップでマニフェストのインストールを解除します。",
-    "devUnlockToast": "開発者パックが有効になりました。",
-    "devIntro": "Corpánパックを試すか、自分で作ってください。",
-    "devLink": "Free2zで詳しく見る"
+    "devUnlockToast": "開発者向けPacksが有効になりました。",
+    "devIntro": "Corpán Packを試すか、自分で作ってみましょう。",
+    "devLink": "Free2zで詳しく見る",
+    "new": "新規",
+    "updates": "アップデート",
+    "offline": "オフライン"
   }
 }

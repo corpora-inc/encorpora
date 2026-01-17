@@ -71,7 +71,9 @@
     "extra-large": "Nagyon nagy",
     "testTts": "Tesztelje a TTS beállításokat az alábbi gombokkal:",
     "showRomanization": "Rómaizáció megjelenítése",
-    "scrollNavigation": "Görgetés navigáció"
+    "scrollNavigation": "Görgetés navigáció",
+    "packs": "Packs",
+    "stacks": "Stacks"
   },
   "onboarding": {
     "welcome": "Üdvözöljük",
@@ -268,15 +270,15 @@
     "feedbackButton": "Visszajelzés GitHubon"
   },
   "packs": {
-    "title": "Csomagok",
-    "available": "Elérhető csomagok",
-    "emptyAvailable": "Még nincs csomag.",
-    "installed": "Telepített csomagok",
-    "emptyInstalled": "Nincsenek telepített csomagok.",
+    "title": "Packs",
+    "available": "Elérhető",
+    "emptyAvailable": "Még semmi nem érhető el.",
+    "installed": "Telepítve",
+    "emptyInstalled": "Még semmi nincs telepítve.",
     "get": "Letöltés",
     "open": "Megnyitás",
     "remove": "Eltávolítás",
-    "version": "Verzió {{version}}",
+    "version": "v{{version}}",
     "refresh": "Frissítés",
     "free": "Ingyenes",
     "install": "Telepítés",
@@ -287,10 +289,13 @@
     "manifestTitle": "Manifest URL-cím",
     "manifestPlaceholder": "https://example.com/manifest.json",
     "manifestHint": "Illesszen be egy manifest URL-t.",
-    "devUnlockTitle": "Fejlesztői csomagok",
+    "devUnlockTitle": "Fejlesztői Packs",
     "devUnlockHint": "Koppintson 7-szer a manifest telepítéséhez.",
-    "devUnlockToast": "Fejlesztői csomagok feloldva.",
-    "devIntro": "Próbáljon ki egy Corpán csomagot, vagy készítsen sajátot.",
-    "devLink": "Tudjon meg többet a Free2z oldalán"
+    "devUnlockToast": "Fejlesztői Packs feloldva.",
+    "devIntro": "Próbálj ki egy Corpán Pack-et, vagy készíts sajátot.",
+    "devLink": "Tudjon meg többet a Free2z oldalán",
+    "new": "Új",
+    "updates": "Frissítések",
+    "offline": "Offline"
   }
 }

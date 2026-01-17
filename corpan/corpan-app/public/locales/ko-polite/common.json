@@ -71,7 +71,9 @@
     "extra-large": "아주 크게",
     "testTts": "아래 버튼을 눌러 TTS 설정을 테스트해 보세요:",
     "showRomanization": "로마자 표기 보기",
-    "scrollNavigation": "스크롤 탐색"
+    "scrollNavigation": "스크롤 탐색",
+    "packs": "Packs",
+    "stacks": "Stacks"
   },
   "onboarding": {
     "welcome": "환영합니다",
@@ -268,15 +270,15 @@
     "feedbackButton": "GitHub에서 피드백 보내기"
   },
   "packs": {
-    "title": "팩",
-    "available": "사용 가능한 팩",
-    "emptyAvailable": "아직 팩이 없습니다.",
-    "installed": "설치된 팩",
-    "emptyInstalled": "설치된 팩이 없습니다.",
+    "title": "Packs",
+    "available": "사용 가능",
+    "emptyAvailable": "아직 사용할 수 있는 항목이 없습니다.",
+    "installed": "설치됨",
+    "emptyInstalled": "아직 설치된 항목이 없습니다.",
     "get": "받기",
     "open": "열기",
     "remove": "삭제",
-    "version": "버전 {{version}}",
+    "version": "v{{version}}",
     "refresh": "새로고침",
     "free": "무료",
     "install": "설치",
@@ -287,10 +289,13 @@
     "manifestTitle": "매니페스트 URL",
     "manifestPlaceholder": "https://example.com/manifest.json",
     "manifestHint": "매니페스트 URL을 붙여넣어 주세요.",
-    "devUnlockTitle": "개발자 팩",
+    "devUnlockTitle": "개발자용 Packs",
     "devUnlockHint": "매니페스트 설치를 열려면 7번 탭하세요.",
-    "devUnlockToast": "개발자 팩이 활성화되었습니다.",
-    "devIntro": "Corpán 팩을 사용해 보거나 직접 만들어 보세요.",
-    "devLink": "Free2z에서 더 알아보기"
+    "devUnlockToast": "개발자용 Packs가 활성화되었습니다.",
+    "devIntro": "Corpán Pack을 사용해 보거나 직접 만들어 보세요.",
+    "devLink": "Free2z에서 더 알아보기",
+    "new": "신규",
+    "updates": "업데이트",
+    "offline": "오프라인"
   }
 }

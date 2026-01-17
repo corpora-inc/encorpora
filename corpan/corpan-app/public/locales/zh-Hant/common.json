@@ -71,7 +71,9 @@
     "extra-large": "特大",
     "testTts": "點擊下方按鈕以測試您的 TTS 設定：",
     "showRomanization": "顯示羅馬拼音",
-    "scrollNavigation": "滾動導航"
+    "scrollNavigation": "滾動導航",
+    "packs": "Packs",
+    "stacks": "Stacks"
   },
   "onboarding": {
     "welcome": "歡迎",
@@ -268,15 +270,15 @@
     "feedbackButton": "在 GitHub 提供回饋"
   },
   "packs": {
-    "title": "套件",
-    "available": "可用套件",
-    "emptyAvailable": "目前沒有可用套件。",
-    "installed": "已安裝套件",
-    "emptyInstalled": "尚未安裝套件。",
+    "title": "Packs",
+    "available": "可用",
+    "emptyAvailable": "目前沒有可用內容。",
+    "installed": "已安裝",
+    "emptyInstalled": "目前沒有已安裝內容。",
     "get": "取得",
     "open": "開啟",
     "remove": "移除",
-    "version": "版本 {{version}}",
+    "version": "v{{version}}",
     "refresh": "重新整理",
     "free": "免費",
     "install": "安裝",
@@ -287,10 +289,13 @@
     "manifestTitle": "清單 URL",
     "manifestPlaceholder": "https://example.com/manifest.json",
     "manifestHint": "貼上清單 URL。",
-    "devUnlockTitle": "開發者套件",
+    "devUnlockTitle": "開發者Packs",
     "devUnlockHint": "點按 7 次以解鎖清單安裝。",
-    "devUnlockToast": "開發者套件已解鎖。",
-    "devIntro": "試試 Corpán 套件或自己製作。",
-    "devLink": "在 Free2z 了解更多"
+    "devUnlockToast": "開發者Packs已解鎖。",
+    "devIntro": "試試 Corpán Pack，或自己製作。",
+    "devLink": "在 Free2z 了解更多",
+    "new": "新",
+    "updates": "更新",
+    "offline": "離線"
   }
 }
