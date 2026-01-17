@@ -11,8 +11,8 @@ import {
 import { scaleColor } from "../core/utils"
 
 export const createPhraseSurfaceEffects = (scene: Scene, phrase: Mesh, baseColor: Color3) => {
-  const impactCount = 150
-  const microCount = 75
+  const impactCount = 80
+  const microCount = 40
   // IMPACT SPARKS - focused particles at beam contact points
   // Reduced from 300 to 150 for performance
   const impactSparks = new ParticleSystem(
@@ -150,10 +150,10 @@ export const createPhraseSurfaceEffects = (scene: Scene, phrase: Mesh, baseColor
         impactSparks.start()
       }
 
-      // Scale with intensity for dramatic effect
-      const sparkIntensity = Math.pow(intensity, 1.5) // Non-linear for punch
-      impactSparks.emitRate = 60 + sparkIntensity * 180
-      impactSparks.maxEmitPower = 1.5 + sparkIntensity * 2.0
+      // Scale with intensity - reduced for cleaner look
+      const sparkIntensity = Math.pow(intensity, 1.5)
+      impactSparks.emitRate = 25 + sparkIntensity * 60
+      impactSparks.maxEmitPower = 1.0 + sparkIntensity * 1.2
 
       // Vary direction slightly for natural look
       const dirAngle = time * 5
@@ -175,15 +175,15 @@ export const createPhraseSurfaceEffects = (scene: Scene, phrase: Mesh, baseColor
     }
 
     // MICRO SPARKS - rapid flickers at high intensity
-    if (intensity > 0.6) {
+    if (intensity > 0.7) {
       if (!microSparks.isStarted()) {
         microSparks.start()
       }
 
-      // Quick bursts create electric crackle
-      const microIntensity = (intensity - 0.6) / 0.4
-      microSparks.emitRate = 100 + microIntensity * 250
-      microSparks.maxEmitPower = 0.8 + microIntensity * 1.5
+      // Quick bursts - reduced for cleaner readability
+      const microIntensity = (intensity - 0.7) / 0.3
+      microSparks.emitRate = 40 + microIntensity * 80
+      microSparks.maxEmitPower = 0.5 + microIntensity * 0.8
 
       // Radial burst with slight rotation
       const microAngle = time * 8
@@ -204,21 +204,21 @@ export const createPhraseSurfaceEffects = (scene: Scene, phrase: Mesh, baseColor
       }
     }
 
-    // Subtle lighting enhancement at impact points
+    // Subtle lighting enhancement at impact points - reduced for readability
     phraseLights.forEach((light, index) => {
       if (isActive) {
         // Position near phrase center where beam hits
-        const lightAngle = time * (3 + index * 0.5) + index * Math.PI
-        const lightRadius = 0.3 + Math.sin(time * 4 + index) * 0.15
+        const lightAngle = time * (2 + index * 0.3) + index * Math.PI
+        const lightRadius = 0.25 + Math.sin(time * 3 + index) * 0.1
 
         light.position.x = Math.cos(lightAngle) * lightRadius * extendSize.x
         light.position.y = Math.sin(lightAngle * 1.2) * lightRadius * extendSize.y
-        light.position.z = 0.15 + Math.sin(time * 6) * 0.05
+        light.position.z = 0.15 + Math.sin(time * 4) * 0.03
 
-        // Quick pulsing for electric flicker
-        const flicker = Math.sin(time * 12 + index * 3) * 0.15
-        light.intensity = 0.4 + intensity * 0.8 + flicker
-        light.range = 1.8 + intensity * 1.0
+        // Reduced flicker for cleaner appearance
+        const flicker = Math.sin(time * 8 + index * 3) * 0.06
+        light.intensity = 0.2 + intensity * 0.4 + flicker
+        light.range = 1.4 + intensity * 0.6
       } else {
         light.intensity = 0
       }

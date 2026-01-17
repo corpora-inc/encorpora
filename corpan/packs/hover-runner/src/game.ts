@@ -1512,10 +1512,10 @@ export const createHoverRunner = (
       fill: string
     ) => {
       ctx.font = font
-      ctx.lineWidth = 16
-      ctx.strokeStyle = "rgba(5, 10, 20, 0.7)"
-      ctx.shadowColor = "rgba(0, 0, 0, 0.55)"
-      ctx.shadowBlur = 16
+      ctx.lineWidth = 12
+      ctx.strokeStyle = "rgba(5, 10, 20, 0.85)"
+      ctx.shadowColor = "rgba(0, 0, 0, 0.4)"
+      ctx.shadowBlur = 6
       ctx.strokeText(text, 1024, y)
       ctx.shadowBlur = 0
       ctx.fillStyle = fill
@@ -1553,7 +1553,7 @@ export const createHoverRunner = (
     material.opacityTexture = texture
     material.useAlphaFromDiffuseTexture = true
     material.specularColor = new Color3(0.02, 0.04, 0.08)
-    const baseEmissive = new Color3(0.35, 0.6, 0.95)
+    const baseEmissive = new Color3(0.22, 0.4, 0.7)
     material.emissiveColor = baseEmissive.clone()
 
     const mesh = MeshBuilder.CreatePlane(
@@ -1639,7 +1639,7 @@ export const createHoverRunner = (
     const base =
       (mesh.metadata as { baseEmissive?: Color3 } | undefined)?.baseEmissive ??
       material.emissiveColor
-    const boosted = scaleColor(base, 1 + strength * 1.4)
+    const boosted = scaleColor(base, 1 + strength * 0.8)
     material.emissiveColor.copyFrom(boosted)
   }
 
@@ -2255,7 +2255,7 @@ export const createHoverRunner = (
           : 2
     const hoverLane = hoverRow * 2 + hoverCol
     highlightTime += dt
-    const pulse = 0.55 + Math.sin(highlightTime * 7) * 0.35
+    const pulse = 0.4 + Math.sin(highlightTime * 5) * 0.2
 
     // Find the closest phrase in the player's lane ONLY
     let closestInLane: PhraseInstance | null = null
@@ -2322,12 +2322,12 @@ export const createHoverRunner = (
 
       const laneMatch = hoverLane === current.lane
       const isElectricTarget = current === closestInLane
-      // Electric target gets 2.5x stronger highlight
-      const highlightStrength = isElectricTarget ? pulse * 2.5 : (laneMatch ? pulse : 0)
+      // Electric target gets modest highlight boost - keeping text readable
+      const highlightStrength = isElectricTarget ? pulse * 1.4 : (laneMatch ? pulse * 0.6 : 0)
       setPhraseHighlight(current.mesh, highlightStrength)
 
       // Create surface effects for electric target
-      if (isElectricTarget && electricIntensity > 0.1) {
+      if (isElectricTarget && electricIntensity > 0.2) {
         if (!current.surfaceEffects) {
           current.surfaceEffects = createPhraseSurfaceEffects(
             scene,
@@ -2335,8 +2335,8 @@ export const createHoverRunner = (
             activeSkin.palette.center
           )
         }
-        // Update with dynamic intensity based on distance
-        current.surfaceEffects.update(dt, electricIntensity * 0.9)
+        // Update with reduced intensity for cleaner text readability
+        current.surfaceEffects.update(dt, electricIntensity * 0.5)
       } else if (current.surfaceEffects) {
         // Fade out surface effects when no longer target
         current.surfaceEffects.update(dt, 0)
