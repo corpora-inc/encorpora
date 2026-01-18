@@ -979,14 +979,9 @@
     root.className = "hanzi-root";
     root.innerHTML = template;
     container.appendChild(root);
-    const isMobile =
-      typeof navigator !== "undefined" &&
-      /Android|iPhone|iPad|iPod/i.test(navigator.userAgent || "");
-    if (isMobile) {
-      root.style.setProperty(
-        "--safe-top",
-        "calc(env(safe-area-inset-top, 0px) + 25px)"
-      );
+    if (typeof navigator !== "undefined" && /Android|iPhone|iPad|iPod/i.test(navigator.userAgent || "")) {
+      root.style.paddingTop = "25px";
+      root.style.setProperty("--safe-top", "25px");
     } else {
       root.style.setProperty("--safe-top", "0px");
     }
@@ -1853,31 +1848,6 @@
     };
     elExamples.addEventListener("scroll", onScroll);
 
-    const isEditableTarget = (target) =>
-      target instanceof Element &&
-      !!target.closest("input, textarea, [contenteditable='true']");
-
-    const clearSelection = () => {
-      if (typeof window === "undefined") return;
-      const selection = window.getSelection();
-      if (selection && !selection.isCollapsed) selection.removeAllRanges();
-    };
-
-    const preventCanvasSelection = (event) => {
-      if (isEditableTarget(event.target)) return;
-      if (event.cancelable) event.preventDefault();
-      clearSelection();
-    };
-
-    if (canvasShell) {
-      canvasShell.addEventListener("touchstart", preventCanvasSelection, { passive: false });
-      canvasShell.addEventListener("touchmove", preventCanvasSelection, { passive: false });
-      canvasShell.addEventListener("touchend", clearSelection, { passive: true });
-      canvasShell.addEventListener("touchcancel", clearSelection, { passive: true });
-      canvasShell.addEventListener("selectstart", preventCanvasSelection);
-      canvasShell.addEventListener("dblclick", preventCanvasSelection);
-    }
-
     root.addEventListener("pointerdown", onSwipeStart);
     root.addEventListener("pointermove", onSwipeMove);
     root.addEventListener("pointerup", onSwipeEnd);
@@ -1938,14 +1908,6 @@
           wheelEndTimer = 0;
         }
         elExamples.removeEventListener("scroll", onScroll);
-        if (canvasShell) {
-          canvasShell.removeEventListener("touchstart", preventCanvasSelection);
-          canvasShell.removeEventListener("touchmove", preventCanvasSelection);
-          canvasShell.removeEventListener("touchend", clearSelection);
-          canvasShell.removeEventListener("touchcancel", clearSelection);
-          canvasShell.removeEventListener("selectstart", preventCanvasSelection);
-          canvasShell.removeEventListener("dblclick", preventCanvasSelection);
-        }
         root.removeEventListener("pointerdown", onSwipeStart);
         root.removeEventListener("pointermove", onSwipeMove);
         root.removeEventListener("pointerup", onSwipeEnd);
