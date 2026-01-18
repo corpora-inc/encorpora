@@ -26,30 +26,15 @@
 .hanzi-root {
   position: relative;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   min-height: 100vh;
   --safe-top: 0px;
   color: var(--ink);
   font-family: "Avenir Next", "Futura", "Trebuchet MS", "Segoe UI", sans-serif;
-  -webkit-touch-callout: none;
-  -webkit-tap-highlight-color: transparent;
   background: radial-gradient(circle at 10% 10%, #fffaf1 0%, var(--bg) 35%, var(--bg-deep) 100%);
   overflow-x: hidden;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
-}
-
-.hanzi-root,
-.hanzi-root * {
-  -webkit-user-select: none;
-  user-select: none;
-}
-
-.hanzi-root input,
-.hanzi-root textarea,
-.hanzi-root [contenteditable="true"] {
-  -webkit-user-select: text;
-  user-select: text;
 }
 
 .hanzi-root::before,
@@ -84,9 +69,8 @@
   flex-direction: column;
   gap: clamp(16px, 3vw, 24px);
   padding: clamp(16px, 3vw, 32px) clamp(16px, 4vw, 32px) clamp(24px, 5vw, 40px);
-  padding-top: calc(clamp(16px, 3vw, 32px) + var(--safe-top));
-  height: 100%;
-  min-height: 0;
+  min-height: 100%;
+  height: auto;
 }
 
 
@@ -106,7 +90,7 @@
 
 .exit-btn {
   position: fixed;
-  top: calc(clamp(12px, 2.4vw, 20px) + var(--safe-top) + 10px);
+  top: calc(clamp(12px, 2.4vw, 20px) + var(--safe-top));
   right: clamp(12px, 2.4vw, 24px);
   z-index: 20;
   border: 1px solid rgba(27, 27, 31, 0.1);
@@ -433,7 +417,6 @@
   transform: scale(1.08);
   color: var(--accent-strong);
 }
-
 .meta-divider {
   color: var(--muted);
 }
@@ -481,8 +464,8 @@
   gap: clamp(16px, 3vw, 24px);
   flex: 1;
   min-height: 0;
-  align-items: stretch;
-  grid-auto-rows: minmax(0, 1fr);
+  align-items: start;
+  --panel-height: clamp(360px, 58vh, 620px);
 }
 
 .panel {
@@ -496,6 +479,7 @@
 
 .draw-panel,
 .examples-panel {
+  height: var(--panel-height);
   display: flex;
   flex-direction: column;
 }
@@ -728,7 +712,7 @@
   display: flex;
   flex-direction: column;
   min-height: 0;
-  align-self: stretch;
+  align-self: start;
 }
 
 .examples-list {
@@ -819,7 +803,6 @@
     transform: translateY(12px);
     opacity: 0;
   }
-
   to {
     transform: translateY(0);
     opacity: 1;
@@ -829,6 +812,7 @@
 @media (max-width: 1080px) {
   .workspace {
     grid-template-columns: 1fr;
+    --panel-height: clamp(320px, 55vh, 520px);
   }
 }
 
@@ -846,17 +830,16 @@
   .panel-actions {
     justify-content: flex-start;
   }
+  .workspace {
+    --panel-height: clamp(320px, 60vh, 560px);
+  }
 }
 
 @media (max-height: 700px) {
   .hanzi-app {
     gap: 14px;
   }
-}
-
-@supports (height: 100svh) {
-  .hanzi-root {
-    height: 100svh;
-    min-height: 100svh;
+  .workspace {
+    --panel-height: clamp(280px, 50vh, 480px);
   }
 }
