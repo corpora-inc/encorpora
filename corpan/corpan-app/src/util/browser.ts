@@ -109,10 +109,10 @@ export function getPlatformBottomPadding(): number {
 
 export function getPlatformTopPaddingButtons(): number {
     if (isIOS()) {
-        return 30;
+        return 35;
     }
     if (isAndroid()) {
-        return 25;
+        return 30;
     }
     return 10;
 }
