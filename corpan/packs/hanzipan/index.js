@@ -985,14 +985,13 @@
     const platform = isMobile ? navigator.platform || "" : "";
     const maxTouchPoints = isMobile ? navigator.maxTouchPoints || 0 : 0;
 
-    // Detect iOS (including modern iPads that report as Mac)
-    const isIOS = /iPhone|iPod|iPad/i.test(ua) ||
-                  (/Mac/i.test(platform) && maxTouchPoints > 1);
+    // Detect iPhone/iPod only (not iPad)
+    const isIPhone = /iPhone|iPod/i.test(ua);
 
     // Detect Android
     const isAndroid = /Android/i.test(ua);
 
-    if (isIOS) {
+    if (isIPhone) {
       root.style.setProperty("--safe-top", "30px");
     } else if (isAndroid) {
       root.style.setProperty("--safe-top", "25px");
