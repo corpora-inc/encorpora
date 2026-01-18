@@ -152,7 +152,7 @@ export function SettingsModal({
           <div
             className="sticky top-0 z-[1001] bg-white border-b border-gray-200 -mx-6 px-6 pb-2"
             style={{
-              paddingTop: getPlatformTopPaddingButtons() + 10,
+              paddingTop: getPlatformTopPaddingButtons() + 15,
             }}
           >
             <div className="flex items-center gap-2">
