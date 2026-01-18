@@ -979,8 +979,22 @@
     root.className = "hanzi-root";
     root.innerHTML = template;
     container.appendChild(root);
-    if (typeof navigator !== "undefined" && /Android|iPhone|iPad|iPod/i.test(navigator.userAgent || "")) {
-      root.style.paddingTop = "25px";
+
+    const isMobile = typeof navigator !== "undefined";
+    const ua = isMobile ? navigator.userAgent || "" : "";
+    const platform = isMobile ? navigator.platform || "" : "";
+    const maxTouchPoints = isMobile ? navigator.maxTouchPoints || 0 : 0;
+
+    // Detect iOS (including modern iPads that report as Mac)
+    const isIOS = /iPhone|iPod|iPad/i.test(ua) ||
+                  (/Mac/i.test(platform) && maxTouchPoints > 1);
+
+    // Detect Android
+    const isAndroid = /Android/i.test(ua);
+
+    if (isIOS) {
+      root.style.setProperty("--safe-top", "30px");
+    } else if (isAndroid) {
       root.style.setProperty("--safe-top", "25px");
     } else {
       root.style.setProperty("--safe-top", "0px");
@@ -1499,6 +1513,10 @@
       updateExampleCount();
       await loadExamplesTotal();
       await loadExamples(true);
+      // Reset scroll position for new character
+      if (elExamples) {
+        elExamples.scrollTop = 0;
+      }
       if (push) {
         pushHistory(state.character);
       }
