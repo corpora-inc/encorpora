@@ -39,6 +39,35 @@ function readData(name) {
   return JSON.parse(fs.readFileSync(dataPath, 'utf-8'));
 }
 
+function resolveManifestPath(pack) {
+  if (pack.manifestUrl && typeof pack.manifestUrl === 'string') {
+    const trimmed = pack.manifestUrl.replace(/^\//, '');
+    if (trimmed.startsWith('corpan/packs/')) {
+      return path.join(REPO_ROOT, trimmed);
+    }
+  }
+  const slug = String(pack.id || '').replace(/_/g, '-');
+  if (!slug) return null;
+  return path.join(REPO_ROOT, 'corpan', 'packs', slug, 'manifest.json');
+}
+
+function readManifestVersion(pack) {
+  const manifestPath = resolveManifestPath(pack);
+  if (!manifestPath || !fs.existsSync(manifestPath)) {
+    console.warn(`[pages] Missing manifest for ${pack.id}, using 0.0.0`);
+    return "0.0.0";
+  }
+  try {
+    const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf-8'));
+    if (manifest && typeof manifest.version === 'string' && manifest.version.trim()) {
+      return manifest.version.trim();
+    }
+  } catch (error) {
+    console.warn(`[pages] Failed to read manifest for ${pack.id}:`, error);
+  }
+  return "0.0.0";
+}
+
 function ensureDir(dir) {
   if (!fs.existsSync(dir)) {
     fs.mkdirSync(dir, { recursive: true });
@@ -129,7 +158,10 @@ function buildPages(outputDir) {
   console.log(`Output directory: ${outputDir}`);
 
   // Load data
-  const packsData = readData('packs');
+  const packsData = readData('packs').map((pack) => ({
+    ...pack,
+    version: readManifestVersion(pack),
+  }));
 
   // Load templates
   const corpanTemplate = applyBasePath(readTemplate('corpan'));
