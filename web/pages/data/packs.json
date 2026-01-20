@@ -24,7 +24,7 @@
     "name": "Hanzipan",
     "description": "A premium Mandarin character studio with stroke guidance, feedback, and infinite contextual examples",
     "status": "prototype",
-    "version": "0.2.0",
+    "version": "0.3.0",
     "zipUrl": "/corpan/packs/hanzipan.zip",
     "landingUrl": "/corpan/packs/hanzipan/",
     "avatarSource": "corpan/packs/hanzipan/hanzipan-avatar.png",

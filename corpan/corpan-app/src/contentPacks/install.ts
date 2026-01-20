@@ -108,12 +108,16 @@ export const installPack = async (
       throw new Error("Could not determine pack ID from ZIP filename")
     }
 
-    return installPackFromDownload({
+    const result = await installPackFromDownload({
       packId,
       downloadUrl: trimmed,
       expectedSha256: request.expectedHash,
       source: request.source,
     })
+    return {
+      ...result,
+      version: result.version ?? request.expectedVersion,
+    }
   }
 
   // Handle manifest.json URLs
