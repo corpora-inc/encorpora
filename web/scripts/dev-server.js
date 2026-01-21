@@ -12,9 +12,12 @@ const fs = require('fs');
 const path = require('path');
 const { URL } = require('url');
 
-const DEV_PORT = 8000;
+const DEV_PORT = Number(process.env.DEV_PORT) || 8000;
 const NEXT_PORT = 3000;
 const OUT_DIR = path.join(__dirname, '..', 'io', 'out');
+const CERT_DIR = path.join(__dirname, 'dev-cert');
+const DEFAULT_CERT = path.join(CERT_DIR, 'localhost.pem');
+const DEFAULT_KEY = path.join(CERT_DIR, 'localhost-key.pem');
 
 const routePrefix = '/';
 
@@ -80,9 +83,11 @@ function proxyToNext(req, res) {
   req.pipe(proxy);
 }
 
-const server = http.createServer((req, res) => {
-  const url = new URL(req.url, `http://localhost:${DEV_PORT}`);
-  const pathname = url.pathname;
+function createHandler() {
+  return (req, res) => {
+    const scheme = req.socket.encrypted ? 'https' : 'http';
+    const url = new URL(req.url, `${scheme}://localhost:${DEV_PORT}`);
+    const pathname = url.pathname;
 
   // Serve static files for /corpan and /assets
   const corpanPrefix = '/corpan';
@@ -105,16 +110,43 @@ const server = http.createServer((req, res) => {
 
   // Proxy everything else to Next.js
   console.log(`[dev-server] Proxy: ${pathname} → Next.js`);
-  proxyToNext(req, res);
-});
+    proxyToNext(req, res);
+  };
+}
+
+function resolveHttpsConfig() {
+  const certPath = process.env.DEV_HTTPS_CERT || process.env.SSL_CERT_FILE || DEFAULT_CERT;
+  const keyPath = process.env.DEV_HTTPS_KEY || process.env.SSL_KEY_FILE || DEFAULT_KEY;
+  const wantHttps =
+    String(process.env.DEV_HTTPS || '').toLowerCase() === 'true' ||
+    String(process.env.DEV_HTTPS || '') === '1' ||
+    (fs.existsSync(certPath) && fs.existsSync(keyPath));
+  if (!wantHttps) return null;
+  if (!fs.existsSync(certPath) || !fs.existsSync(keyPath)) {
+    console.error('[dev-server] HTTPS requested but cert/key not found.');
+    console.error(`[dev-server] cert: ${certPath}`);
+    console.error(`[dev-server] key:  ${keyPath}`);
+    process.exit(1);
+  }
+  return {
+    cert: fs.readFileSync(certPath),
+    key: fs.readFileSync(keyPath),
+  };
+}
+
+const httpsConfig = resolveHttpsConfig();
+const server = httpsConfig
+  ? https.createServer(httpsConfig, createHandler())
+  : http.createServer(createHandler());
 
 server.listen(DEV_PORT, () => {
+  const protocol = httpsConfig ? 'https' : 'http';
   console.log('');
   console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
   console.log('  🚀 Development server running');
   console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
   console.log('');
-  console.log(`  Local:   http://localhost:${DEV_PORT}`);
+  console.log(`  Local:   ${protocol}://localhost:${DEV_PORT}`);
   console.log('');
   console.log('  Routes:');
   console.log(`  • ${routePrefix}         → Next.js (hot reload)`);

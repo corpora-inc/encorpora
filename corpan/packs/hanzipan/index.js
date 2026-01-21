@@ -41,18 +41,23 @@
                   <path d="M8 6.5 18 12 8 17.5Z" fill="currentColor" stroke="none" />
                 </svg>
               </button>
+              <button class="icon-chip" data-action="brush-settings" aria-label="Brush settings">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M18 2l3 3-3 3M18 5H9a4 4 0 0 0 0 8h1M6 22l-3-3 3-3M6 19h9a4 4 0 0 0 0-8h-1" />
+                </svg>
+              </button>
             </div>
             <div class="toolbar-right">
+              <button class="icon-chip" data-action="toggle-freedraw" data-freedraw-toggle aria-label="Free draw mode">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04a1 1 0 0 0 0-1.41l-2.34-2.34a1 1 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z" />
+                </svg>
+              </button>
               <button class="icon-chip active" data-guided-toggle aria-label="Guided hints">
                 <svg viewBox="0 0 24 24" aria-hidden="true">
                   <path
                     d="M4 9.5 12 5l8 4.5-8 4.5-8-4.5zM8 13.5v3.2c0 .8 2.1 1.8 4 1.8s4-1 4-1.8v-3.2"
                   />
-                </svg>
-              </button>
-              <button class="icon-chip" data-action="hint" aria-label="Hint">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="m12 3 1.8 4.2L18 9l-4.2 1.8L12 15l-1.8-4.2L6 9l4.2-1.8L12 3z" />
                 </svg>
               </button>
               <button class="icon-chip" data-action="clear" aria-label="Clear">
@@ -381,25 +386,188 @@
     ctx.stroke();
   };
 
-  // Brush tuning constants (future UI hooks).
+  // Brush tuning constants - now dynamically synced from BrushStore
   const BRUSH = {
+    baseWidthMultiplier: 1.0,
     minWidthFactor: 0.5,
     maxWidthFactor: 1.6,
     pressureInfluence: 0.55,
     pressureExponent: 0.75,
+    pressureCurve: [{ x: 0.25, y: 0.25 }, { x: 0.75, y: 0.75 }],
     velocityInfluence: 0.5,
     velocityRange: 2.0,
+    velocityInverted: false,
     positionSmoothing: 0.2,
     velocitySmoothing: 0.25,
     widthSmoothing: 0.3,
     startTaperDistance: 1.8,
     startTaperMin: 0.35,
     endTaperPoints: 6,
+    endTaperStrength: 0.5,
     minDistanceFactor: 0.3,
     dwellDelayMs: 120,
     dwellGrowthRate: 0.7,
     dwellMaxFactor: 2.2,
     dwellStepFactor: 0.02,
+  };
+
+  // Built-in brush presets
+  const BUILTIN_PRESETS = [
+    {
+      id: 'default', name: 'Default', isBuiltIn: true,
+      baseWidthMultiplier: 1.0, minWidthFactor: 0.5, maxWidthFactor: 1.6,
+      pressureInfluence: 0.55, pressureExponent: 0.75,
+      pressureCurve: [{ x: 0.25, y: 0.25 }, { x: 0.75, y: 0.75 }],
+      velocityInfluence: 0.5, velocityRange: 2.0, velocityInverted: false,
+      positionSmoothing: 0.2, velocitySmoothing: 0.25, widthSmoothing: 0.3,
+      startTaperDistance: 1.8, startTaperMin: 0.35, endTaperPoints: 6, endTaperStrength: 0.5,
+      dwellDelayMs: 120, dwellGrowthRate: 0.7, dwellMaxFactor: 2.2,
+    },
+    {
+      id: 'calligraphy', name: 'Calligraphy', isBuiltIn: true,
+      baseWidthMultiplier: 1.3, minWidthFactor: 0.35, maxWidthFactor: 2.0,
+      pressureInfluence: 0.75, pressureExponent: 0.6,
+      pressureCurve: [{ x: 0.15, y: 0.35 }, { x: 0.85, y: 0.65 }],
+      velocityInfluence: 0.6, velocityRange: 2.5, velocityInverted: false,
+      positionSmoothing: 0.15, velocitySmoothing: 0.2, widthSmoothing: 0.25,
+      startTaperDistance: 2.2, startTaperMin: 0.25, endTaperPoints: 8, endTaperStrength: 0.65,
+      dwellDelayMs: 100, dwellGrowthRate: 0.9, dwellMaxFactor: 2.5,
+    },
+    {
+      id: 'bold', name: 'Bold', isBuiltIn: true,
+      baseWidthMultiplier: 1.5, minWidthFactor: 0.6, maxWidthFactor: 1.4,
+      pressureInfluence: 0.4, pressureExponent: 0.85,
+      pressureCurve: [{ x: 0.3, y: 0.2 }, { x: 0.7, y: 0.8 }],
+      velocityInfluence: 0.35, velocityRange: 1.8, velocityInverted: false,
+      positionSmoothing: 0.25, velocitySmoothing: 0.3, widthSmoothing: 0.35,
+      startTaperDistance: 1.5, startTaperMin: 0.45, endTaperPoints: 4, endTaperStrength: 0.4,
+      dwellDelayMs: 150, dwellGrowthRate: 0.5, dwellMaxFactor: 1.8,
+    },
+    {
+      id: 'precise', name: 'Precise', isBuiltIn: true,
+      baseWidthMultiplier: 0.8, minWidthFactor: 0.7, maxWidthFactor: 1.3,
+      pressureInfluence: 0.3, pressureExponent: 0.9,
+      pressureCurve: [{ x: 0.25, y: 0.25 }, { x: 0.75, y: 0.75 }],
+      velocityInfluence: 0.2, velocityRange: 1.5, velocityInverted: false,
+      positionSmoothing: 0.4, velocitySmoothing: 0.4, widthSmoothing: 0.45,
+      startTaperDistance: 1.2, startTaperMin: 0.5, endTaperPoints: 5, endTaperStrength: 0.35,
+      dwellDelayMs: 180, dwellGrowthRate: 0.4, dwellMaxFactor: 1.6,
+    },
+    {
+      id: 'pencil', name: 'Pencil', isBuiltIn: true,
+      baseWidthMultiplier: 0.6, minWidthFactor: 0.8, maxWidthFactor: 1.2,
+      pressureInfluence: 0.2, pressureExponent: 1.0,
+      pressureCurve: [{ x: 0.25, y: 0.25 }, { x: 0.75, y: 0.75 }],
+      velocityInfluence: 0.1, velocityRange: 1.2, velocityInverted: false,
+      positionSmoothing: 0.1, velocitySmoothing: 0.1, widthSmoothing: 0.15,
+      startTaperDistance: 0.8, startTaperMin: 0.6, endTaperPoints: 3, endTaperStrength: 0.25,
+      dwellDelayMs: 200, dwellGrowthRate: 0.3, dwellMaxFactor: 1.4,
+    },
+  ];
+
+  const CURVE_PRESETS = {
+    linear: [{ x: 0.25, y: 0.25 }, { x: 0.75, y: 0.75 }],
+    soft: [{ x: 0.15, y: 0.35 }, { x: 0.85, y: 0.65 }],
+    firm: [{ x: 0.35, y: 0.15 }, { x: 0.65, y: 0.85 }],
+    sCurve: [{ x: 0.4, y: 0.0 }, { x: 0.6, y: 1.0 }],
+  };
+
+  // Inline BrushStore for persistence
+  // Stores customized values for all 5 presets, auto-saves on change
+  class BrushStore {
+    constructor(storageKey = 'hanzipan-brush-v1') {
+      this.storageKey = storageKey;
+      this.listeners = new Set();
+      this.activePresetId = 'default';
+      // Initialize all presets with built-in defaults
+      this.presets = {};
+      BUILTIN_PRESETS.forEach(p => {
+        this.presets[p.id] = { ...p };
+      });
+      this._load();
+    }
+    _load() {
+      try {
+        const raw = window.localStorage.getItem(this.storageKey);
+        if (!raw) return;
+        const data = JSON.parse(raw);
+
+        // Check schema version - if mismatch or missing, wipe and use defaults
+        if (!data || typeof data !== 'object' || data.schemaVersion !== 2) {
+          console.warn('[BrushStore] Schema mismatch, resetting to defaults');
+          window.localStorage.removeItem(this.storageKey);
+          return;
+        }
+
+        if (typeof data.activePresetId === 'string' && this.presets[data.activePresetId]) {
+          this.activePresetId = data.activePresetId;
+        }
+        // Merge saved preset customizations
+        if (data.presets && typeof data.presets === 'object') {
+          Object.keys(this.presets).forEach(id => {
+            if (data.presets[id]) {
+              this.presets[id] = { ...this.presets[id], ...data.presets[id] };
+            }
+          });
+        }
+      } catch (e) {
+        console.warn('[BrushStore] Failed to load, resetting:', e);
+        window.localStorage.removeItem(this.storageKey);
+      }
+    }
+    _save() {
+      try {
+        window.localStorage.setItem(this.storageKey, JSON.stringify({
+          schemaVersion: 2,
+          activePresetId: this.activePresetId,
+          presets: this.presets,
+        }));
+      } catch { /* ignore */ }
+    }
+    _notify() {
+      const snapshot = this.getConfig();
+      this.listeners.forEach(fn => { try { fn(snapshot); } catch { /* ignore */ } });
+    }
+    getConfig() {
+      return { ...this.presets[this.activePresetId] };
+    }
+    setConfig(partial) {
+      this.presets[this.activePresetId] = { ...this.presets[this.activePresetId], ...partial };
+      this._save();
+      this._notify();
+    }
+    resetCurrentPreset() {
+      // Reset only the current preset to its original built-in values
+      const builtIn = BUILTIN_PRESETS.find(p => p.id === this.activePresetId);
+      if (builtIn) {
+        this.presets[this.activePresetId] = { ...builtIn };
+        this._save();
+        this._notify();
+      }
+    }
+    getActivePresetId() { return this.activePresetId; }
+    selectPreset(id) {
+      if (this.presets[id]) {
+        this.activePresetId = id;
+        this._save();
+        this._notify();
+      }
+    }
+    getAllPresets() {
+      return Object.values(this.presets);
+    }
+    subscribe(fn) {
+      if (typeof fn !== 'function') return () => {};
+      this.listeners.add(fn);
+      return () => { this.listeners.delete(fn); };
+    }
+  }
+
+  // Sync BRUSH object from store config
+  const syncBrushFromConfig = (config) => {
+    Object.keys(BRUSH).forEach(key => {
+      if (config[key] !== undefined) BRUSH[key] = config[key];
+    });
   };
 
   const getPointerTime = (event) => {
@@ -434,7 +602,7 @@
       pressureValue
     );
     const velocityNorm = clamp(velocity / BRUSH.velocityRange, 0, 1);
-    const speedFactor = 1 - velocityNorm;
+    const speedFactor = BRUSH.velocityInverted ? velocityNorm : 1 - velocityNorm;
     const velocityFactor = lerp(1 - BRUSH.velocityInfluence, 1, speedFactor);
     const width = baseWidth * pressureFactor * velocityFactor;
     return clamp(width, baseWidth * BRUSH.minWidthFactor, baseWidth * BRUSH.maxWidthFactor);
@@ -770,6 +938,7 @@
       this.bounds = { x: 0, y: 0, size: 0 };
       this.canvasRect = null;
       this.ghostEnabled = true;
+      this.freeDrawMode = false;
       this.ghostWidth = 8;
       this.userWidth = 8;
       this.highlightWidth = 10;
@@ -778,6 +947,10 @@
       this.resize();
       this.attachEvents();
       this.drawGhost();
+    }
+
+    setFreeDrawMode(enabled) {
+      this.freeDrawMode = enabled;
     }
 
     setMode(mode) {
@@ -831,7 +1004,8 @@
       this.layout = { width: innerWidth, height: innerHeight, padding };
       const baseWidth = Math.max(12, size * 0.075);
       this.ghostWidth = baseWidth;
-      this.userWidth = Math.max(9, size * 0.05);
+      // Apply baseWidthMultiplier from brush config to match ghost width by default
+      this.userWidth = baseWidth * (BRUSH.baseWidthMultiplier || 1.0);
       this.highlightWidth = baseWidth * 1.05;
       this.drawGhost();
       this.redrawUser();
@@ -1081,6 +1255,13 @@
         this.currentStroke = [];
         this.currentInkStroke = [];
         this.strokeState = null;
+
+        // In free draw mode, skip all grading/scoring
+        if (this.freeDrawMode) {
+          this.redrawUser();
+          return;
+        }
+
         if (!this.medians.length) {
           if (this.onScore) {
             this.onScore({
@@ -1238,6 +1419,274 @@
     }
   }
 
+  // Create inline brush configuration widget
+  const createBrushWidget = (container, store, getColors) => {
+    let visible = false;
+    let activeTab = 'size';
+
+    // Backdrop
+    const backdrop = document.createElement('div');
+    backdrop.className = 'brush-widget-backdrop';
+    backdrop.style.display = 'none';
+
+    // Panel
+    const panel = document.createElement('div');
+    panel.className = 'brush-widget-panel';
+    panel.style.display = 'none';
+
+    // Header
+    const header = document.createElement('div');
+    header.className = 'brush-widget-header';
+    header.innerHTML = `
+      <span class="brush-widget-title">Brush Settings</span>
+      <button class="brush-widget-close" type="button">
+        <svg viewBox="0 0 24 24"><path d="M6.5 6.5 17.5 17.5M17.5 6.5 6.5 17.5"/></svg>
+      </button>
+    `;
+
+    // Preset row
+    const presetRow = document.createElement('div');
+    presetRow.className = 'brush-widget-preset-row';
+
+    const presetSelect = document.createElement('select');
+    presetSelect.className = 'brush-widget-select';
+
+    const resetBtn = document.createElement('button');
+    resetBtn.className = 'brush-widget-btn';
+    resetBtn.type = 'button';
+    resetBtn.textContent = 'Reset';
+
+    presetRow.appendChild(presetSelect);
+    presetRow.appendChild(resetBtn);
+
+    // Tabs
+    const tabBar = document.createElement('div');
+    tabBar.className = 'brush-widget-tabs';
+    const tabs = [
+      { id: 'size', label: 'Size' },
+      { id: 'pressure', label: 'Pressure' },
+      { id: 'smoothing', label: 'Smooth' },
+      { id: 'taper', label: 'Taper' },
+    ];
+    const tabButtons = {};
+    tabs.forEach(({ id, label }) => {
+      const btn = document.createElement('button');
+      btn.className = 'brush-widget-tab';
+      btn.type = 'button';
+      btn.textContent = label;
+      btn.dataset.tab = id;
+      tabBar.appendChild(btn);
+      tabButtons[id] = btn;
+    });
+
+    // Tab content
+    const tabContent = document.createElement('div');
+    tabContent.className = 'brush-widget-content';
+
+    panel.appendChild(header);
+    panel.appendChild(presetRow);
+    panel.appendChild(tabBar);
+    panel.appendChild(tabContent);
+
+    container.appendChild(backdrop);
+    container.appendChild(panel);
+
+    // Stop all pointer events from sliders from propagating to parent handlers
+    panel.addEventListener('pointerdown', (e) => {
+      if (e.target.closest('input[type="range"]')) {
+        e.stopPropagation();
+      }
+    }, true);
+    panel.addEventListener('pointermove', (e) => {
+      if (e.target.closest('input[type="range"]')) {
+        e.stopPropagation();
+      }
+    }, true);
+    panel.addEventListener('pointerup', (e) => {
+      if (e.target.closest('input[type="range"]')) {
+        e.stopPropagation();
+      }
+    }, true);
+
+    const populatePresets = () => {
+      presetSelect.innerHTML = '';
+      const allPresets = store.getAllPresets();
+      const activeId = store.getActivePresetId();
+      allPresets.forEach((preset) => {
+        const opt = document.createElement('option');
+        opt.value = preset.id;
+        opt.textContent = preset.isBuiltIn ? preset.name : `${preset.name} (Custom)`;
+        if (preset.id === activeId) opt.selected = true;
+        presetSelect.appendChild(opt);
+      });
+    };
+
+    const createSlider = (label, key, min, max, step, unit = '') => {
+      const config = store.getConfig();
+      const value = config[key] !== undefined ? config[key] : 0;
+      const row = document.createElement('div');
+      row.className = 'brush-widget-slider-row';
+      row.innerHTML = `
+        <div class="brush-widget-label-row">
+          <label class="brush-widget-label">${label}</label>
+          <span class="brush-widget-value">${value.toFixed(step < 1 ? 2 : 0)}${unit}</span>
+        </div>
+        <input type="range" class="brush-widget-slider" min="${min}" max="${max}" step="${step}" value="${value}">
+      `;
+      const slider = row.querySelector('input');
+      const valueEl = row.querySelector('.brush-widget-value');
+      slider.addEventListener('input', () => {
+        const val = parseFloat(slider.value);
+        valueEl.textContent = `${val.toFixed(step < 1 ? 2 : 0)}${unit}`;
+        store.setConfig({ [key]: val });
+      });
+      return row;
+    };
+
+    const createCheckbox = (label, key) => {
+      const config = store.getConfig();
+      const checked = config[key] || false;
+      const row = document.createElement('div');
+      row.className = 'brush-widget-checkbox-row';
+      row.innerHTML = `
+        <input type="checkbox" class="brush-widget-checkbox" id="brush-${key}" ${checked ? 'checked' : ''}>
+        <label class="brush-widget-checkbox-label" for="brush-${key}">${label}</label>
+      `;
+      const checkbox = row.querySelector('input');
+      checkbox.addEventListener('change', () => {
+        store.setConfig({ [key]: checkbox.checked });
+      });
+      return row;
+    };
+
+    const setActiveTab = (tabId) => {
+      activeTab = tabId;
+      Object.entries(tabButtons).forEach(([id, btn]) => {
+        btn.classList.toggle('active', id === tabId);
+      });
+      renderTabContent();
+    };
+
+    const renderTabContent = () => {
+      tabContent.innerHTML = '';
+      if (activeTab === 'size') {
+        tabContent.appendChild(createSlider('Base Size', 'baseWidthMultiplier', 0.5, 2.0, 0.05, 'x'));
+        tabContent.appendChild(createSlider('Min Width', 'minWidthFactor', 0.1, 1.0, 0.05, 'x'));
+        tabContent.appendChild(createSlider('Max Width', 'maxWidthFactor', 1.0, 3.0, 0.1, 'x'));
+        const divider = document.createElement('div');
+        divider.className = 'brush-widget-divider';
+        tabContent.appendChild(divider);
+        tabContent.appendChild(createSlider('Velocity Influence', 'velocityInfluence', 0, 1, 0.05));
+        tabContent.appendChild(createSlider('Velocity Range', 'velocityRange', 0.5, 5.0, 0.1));
+        tabContent.appendChild(createCheckbox('Invert Velocity', 'velocityInverted'));
+      } else if (activeTab === 'pressure') {
+        tabContent.appendChild(createSlider('Pressure Influence', 'pressureInfluence', 0, 1, 0.05));
+        tabContent.appendChild(createSlider('Pressure Exponent', 'pressureExponent', 0.2, 3.0, 0.05));
+      } else if (activeTab === 'smoothing') {
+        tabContent.appendChild(createSlider('Position Smoothing', 'positionSmoothing', 0, 0.9, 0.05));
+        tabContent.appendChild(createSlider('Velocity Smoothing', 'velocitySmoothing', 0, 0.9, 0.05));
+        tabContent.appendChild(createSlider('Width Smoothing', 'widthSmoothing', 0, 0.9, 0.05));
+      } else if (activeTab === 'taper') {
+        const startLabel = document.createElement('div');
+        startLabel.className = 'brush-widget-section-label';
+        startLabel.textContent = 'Start Taper';
+        tabContent.appendChild(startLabel);
+        tabContent.appendChild(createSlider('Distance', 'startTaperDistance', 0, 5, 0.1));
+        tabContent.appendChild(createSlider('Min Size', 'startTaperMin', 0.1, 1.0, 0.05, 'x'));
+        const endLabel = document.createElement('div');
+        endLabel.className = 'brush-widget-section-label';
+        endLabel.textContent = 'End Taper';
+        tabContent.appendChild(endLabel);
+        tabContent.appendChild(createSlider('Points', 'endTaperPoints', 0, 20, 1));
+        tabContent.appendChild(createSlider('Strength', 'endTaperStrength', 0, 1, 0.05));
+        const dwellLabel = document.createElement('div');
+        dwellLabel.className = 'brush-widget-section-label';
+        dwellLabel.textContent = 'Dwell';
+        tabContent.appendChild(dwellLabel);
+        tabContent.appendChild(createSlider('Delay', 'dwellDelayMs', 0, 500, 10, 'ms'));
+        tabContent.appendChild(createSlider('Growth Rate', 'dwellGrowthRate', 0, 2, 0.1));
+        tabContent.appendChild(createSlider('Max Factor', 'dwellMaxFactor', 1, 4, 0.1, 'x'));
+      }
+    };
+
+    const show = () => {
+      visible = true;
+      backdrop.style.display = 'block';
+      panel.style.display = 'flex';
+      populatePresets();
+      setActiveTab(activeTab);
+    };
+
+    const hide = () => {
+      visible = false;
+      backdrop.style.display = 'none';
+      panel.style.display = 'none';
+    };
+
+    const toggle = () => {
+      if (visible) hide();
+      else show();
+    };
+
+    // Event listeners
+    backdrop.addEventListener('click', hide);
+    header.querySelector('.brush-widget-close').addEventListener('click', hide);
+
+    tabBar.addEventListener('click', (e) => {
+      const btn = e.target.closest('[data-tab]');
+      if (btn) setActiveTab(btn.dataset.tab);
+    });
+
+    presetSelect.addEventListener('change', () => {
+      store.selectPreset(presetSelect.value);
+      renderTabContent();
+    });
+
+    resetBtn.addEventListener('click', () => {
+      store.resetCurrentPreset();
+      renderTabContent();
+    });
+
+    // Keyboard escape
+    const keyHandler = (e) => {
+      if (e.key === 'Escape' && visible) hide();
+    };
+    document.addEventListener('keydown', keyHandler);
+
+    // Subscribe to store changes
+    store.subscribe(() => {
+      if (visible) renderTabContent();
+    });
+
+    // Draggable header
+    let dragState = null;
+    header.addEventListener('pointerdown', (e) => {
+      if (e.target.closest('.brush-widget-close')) return;
+      e.preventDefault();
+      const rect = panel.getBoundingClientRect();
+      dragState = { startX: e.clientX, startY: e.clientY, panelX: rect.left, panelY: rect.top };
+      header.setPointerCapture(e.pointerId);
+    });
+    header.addEventListener('pointermove', (e) => {
+      if (!dragState) return;
+      const dx = e.clientX - dragState.startX;
+      const dy = e.clientY - dragState.startY;
+      panel.style.left = `${dragState.panelX + dx}px`;
+      panel.style.top = `${dragState.panelY + dy}px`;
+      panel.style.right = 'auto';
+      panel.style.bottom = 'auto';
+      panel.style.transform = 'none';
+    });
+    header.addEventListener('pointerup', (e) => {
+      if (dragState) {
+        header.releasePointerCapture(e.pointerId);
+        dragState = null;
+      }
+    });
+
+    return { show, hide, toggle, isVisible: () => visible };
+  };
+
   const mount = (container, hostApi, initialState = {}) => {
     const root = document.createElement("div");
     root.className = "hanzi-root";
@@ -1282,6 +1731,7 @@
     const drawCanvas = root.querySelector("[data-draw]");
     const fxCanvas = root.querySelector("[data-fx]");
     const guidedToggle = root.querySelector("[data-guided-toggle]");
+    const freeDrawToggle = root.querySelector("[data-freedraw-toggle]");
     const navPrev = root.querySelector("[data-nav='prev']");
     const navNext = root.querySelector("[data-nav='next']");
     const actionButtons = root.querySelectorAll("[data-action]");
@@ -1299,6 +1749,7 @@
       mode: "guided",
       guidedHints: true,
       onlyWithStrokes: true,
+      freeDrawMode: false,
       history: [],
       historyIndex: -1,
       examples: [],
@@ -1319,6 +1770,16 @@
     let scoreBurstTimer = 0;
     let scoreAnimFrame = 0;
     const STORAGE_KEY = "hanzipan_state_v1";
+
+    // Initialize brush store and sync config
+    const brushStore = new BrushStore('hanzipan-brush-v1');
+    syncBrushFromConfig(brushStore.getConfig());
+    brushStore.subscribe((config) => {
+      syncBrushFromConfig(config);
+      // Trigger resize to update userWidth
+      if (engine) engine.resize();
+    });
+    let brushWidget = null;
 
     const readStoredState = () => {
       try {
@@ -1422,6 +1883,8 @@
       elScoreBurst.classList.remove("is-active");
     };
 
+    const AUTO_HINT_INTERVAL = 10000; // 10 seconds
+
     const scheduleGuidedHint = (delayMs, options = {}) => {
       if (hintTimer) {
         clearTimeout(hintTimer);
@@ -1434,6 +1897,7 @@
     const showGuidedHint = (index, options = {}) => {
       const { force = false } = options;
       if (!state.guidedHints && !force) return;
+      if (state.freeDrawMode) return;
       if (index === null || index === undefined) return;
       if (!state.medians.length || index < 0 || index >= state.medians.length) {
         return;
@@ -1442,6 +1906,10 @@
         writerLayer.showHint(index);
       } else {
         engine.showHint(index);
+      }
+      // Schedule next auto-hint if guided mode is on
+      if (state.guidedHints && !state.freeDrawMode) {
+        scheduleGuidedHint(AUTO_HINT_INTERVAL);
       }
     };
 
@@ -1876,6 +2344,33 @@
       accumulator: 0,
       hasNavigated: false,
     };
+
+    // Global navigation lock to prevent multiple navigation systems firing
+    let navigationLocked = false;
+    let navigationLockTimer = 0;
+    const NAVIGATION_COOLDOWN = 500;
+
+    const canNavigate = () => {
+      return !navigationLocked;
+    };
+
+    const markNavigated = () => {
+      navigationLocked = true;
+      swipeState.hasNavigated = true;
+      swipeState.active = false;
+      wheelState.hasNavigated = true;
+      wheelState.accumulator = 0;
+      // Clear any existing timer
+      if (navigationLockTimer) {
+        clearTimeout(navigationLockTimer);
+      }
+      // Release lock after cooldown
+      navigationLockTimer = setTimeout(() => {
+        navigationLocked = false;
+        navigationLockTimer = 0;
+      }, NAVIGATION_COOLDOWN);
+    };
+
     const SCROLL_THRESHOLD = 80;
     const WHEEL_END_DELAY = 360;
     let wheelEndTimer = 0;
@@ -1897,10 +2392,12 @@
     const isSwipeTarget = (event) => {
       const target = event.target;
       if (!(target instanceof Element)) return false;
-      if (target.closest("button, a, input, textarea")) return false;
+      if (target.closest("button, a, input, textarea, select")) return false;
       if (target.closest(".canvas-shell")) return false;
       if (target.closest(".examples-panel")) return false;
       if (target.closest(".examples-list")) return false;
+      if (target.closest(".brush-widget-panel")) return false;
+      if (target.closest(".brush-widget-backdrop")) return false;
       return true;
     };
     const hasActiveSelection = () => {
@@ -1910,6 +2407,7 @@
     };
     const onSwipeStart = (event) => {
       if (event.pointerType === "touch") return;
+      if (navigationLocked) return;
       if (hasActiveSelection()) return;
       if (!isSwipeTarget(event)) return;
       swipeState.active = true;
@@ -1920,7 +2418,13 @@
     };
     const onSwipeMove = (event) => {
       if (event.pointerType === "touch") return;
+      if (!canNavigate()) return;
       if (!swipeState.active || swipeState.hasNavigated) return;
+      // Bail if pointer is now over an interactive element (e.g., slider being dragged)
+      if (!isSwipeTarget(event)) {
+        swipeState.active = false;
+        return;
+      }
       if (Date.now() - swipeState.startTime > MAX_SWIPE_DURATION) {
         swipeState.active = false;
         return;
@@ -1953,6 +2457,7 @@
     };
     const onTouchStart = (event) => {
       resetTouchSwipe();
+      if (navigationLocked) return;
       if (event.touches.length !== 1) {
         touchState.hasMultiTouch = true;
         return;
@@ -1976,6 +2481,10 @@
     };
     const onTouchEnd = (event) => {
       if (!touchState.active) {
+        resetTouchSwipe();
+        return;
+      }
+      if (!canNavigate()) {
         resetTouchSwipe();
         return;
       }
@@ -2026,6 +2535,7 @@
     const onWheelSwipe = (event) => {
       if (event.ctrlKey) return;
       if (hasActiveSelection()) return;
+      if (!canNavigate()) return;
       scheduleWheelEnd();
       if (wheelState.hasNavigated) {
         logNav("wheel-ignored:consumed", { deltaX: event.deltaX });
@@ -2053,18 +2563,20 @@
     };
 
     const goPrev = async () => {
+      if (!canNavigate()) return;
       if (state.historyIndex <= 0) return;
+      markNavigated();
       clearScoreBurst();
       wheelState.accumulator = 0;
-      wheelState.hasNavigated = true;
       logNav("prev");
       await goToHistoryIndex(state.historyIndex - 1);
     };
 
     const goNext = async () => {
+      if (!canNavigate()) return;
+      markNavigated();
       clearScoreBurst();
       wheelState.accumulator = 0;
-      wheelState.hasNavigated = true;
       logNav("next");
       if (state.historyIndex >= 0 && state.historyIndex < state.history.length - 1) {
         await goToHistoryIndex(state.historyIndex + 1);
@@ -2090,9 +2602,6 @@
         if (action === "next") goNext();
         if (action === "prev") goPrev();
         if (action === "clear") engine.clearUser();
-        if (action === "hint") {
-          showGuidedHint(engine.currentStrokeIndex, { force: true });
-        }
         if (action === "replay") {
           if (writerLayer && writerLayer.ready) {
             writerLayer.replay();
@@ -2104,6 +2613,56 @@
           const zh = (state.stackConfig.languages || []).find((lang) => lang.startsWith("zh"));
           const lang = zh || "zh-Hans";
           hostApi.speak(lang, state.character);
+        }
+        if (action === "brush-settings") {
+          if (!brushWidget) {
+            brushWidget = createBrushWidget(root, brushStore, () => {
+              const styles = getComputedStyle(root);
+              return { stroke: styles.getPropertyValue("--stroke-user").trim() || "#0f8b8d" };
+            });
+          }
+          brushWidget.toggle();
+        }
+        if (action === "toggle-freedraw") {
+          state.freeDrawMode = !state.freeDrawMode;
+          if (freeDrawToggle) {
+            freeDrawToggle.classList.toggle("active", state.freeDrawMode);
+          }
+          if (state.freeDrawMode) {
+            // Hide ALL guides: ghost canvas, HanziWriter layer, scoring UI
+            engine.setGhostEnabled(false);
+            engine.setFreeDrawMode(true);
+            engine.clearUser(); // Start with clean canvas
+            // Hide HanziWriter layer completely
+            if (writerLayerEl) writerLayerEl.style.display = "none";
+            // Hide scoring UI
+            if (elScoreBar) elScoreBar.style.display = "none";
+            if (elTotalScore) elTotalScore.style.display = "none";
+            if (elCompleteCount && elCompleteCount.parentElement) {
+              elCompleteCount.parentElement.style.display = "none";
+            }
+            if (elStrokes) elStrokes.style.display = "none";
+          } else {
+            // Restore everything
+            engine.setFreeDrawMode(false);
+            engine.clearUser();
+            // Show HanziWriter layer
+            if (writerLayerEl) writerLayerEl.style.display = "";
+            // Ghost and HanziWriter are mutually exclusive - only enable ghost if HanziWriter isn't ready
+            if (writerLayer && writerLayer.ready && state.medians.length) {
+              engine.setGhostEnabled(false);
+            } else {
+              engine.setGhostEnabled(true);
+              engine.drawGhost();
+            }
+            // Show scoring UI
+            if (elScoreBar) elScoreBar.style.display = "";
+            if (elTotalScore) elTotalScore.style.display = "";
+            if (elCompleteCount && elCompleteCount.parentElement) {
+              elCompleteCount.parentElement.style.display = "";
+            }
+            if (elStrokes) elStrokes.style.display = "";
+          }
         }
         if (action === "exit") {
           try {
