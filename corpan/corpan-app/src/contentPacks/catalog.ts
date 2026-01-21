@@ -28,7 +28,7 @@ const DEFAULT_CATALOG: CatalogGame[] = [
   {
     id: "hanzipan",
     name: "Hanzipan",
-    version: "0.1.0",
+    version: "0.3.0",
     manifestUrl: "https://encorpora.io/corpan/packs/hanzipan.zip",
     description: "Character-first handwriting studio for Mandarin.",
     purchase: { type: "free", priceLabel: "Free" },
@@ -48,7 +48,7 @@ const DEV_CATALOG: CatalogGame[] = [
   {
     id: "hanzipan",
     name: "Hanzipan",
-    version: "0.1.0",
+    version: "0.3.0",
     manifestUrl: "/packs/hanzipan.zip",
     description: "Character-first handwriting studio for Mandarin.",
     purchase: { type: "free", priceLabel: "Free" },

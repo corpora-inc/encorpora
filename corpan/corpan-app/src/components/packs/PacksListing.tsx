@@ -130,18 +130,29 @@ export function PacksListing({
             {installedGames.map((game) => {
               const catalogEntry = catalog.find((c) => c.id === game.id)
               const hasUpdate = updates.some((u) => u.game.id === game.id)
-
-              return (
-                <PackCard
-                  key={game.id}
-                  pack={catalogEntry ?? {
+              const packForCard = catalogEntry
+                ? {
+                    ...catalogEntry,
+                    id: game.id,
+                    name: game.name,
+                    version: game.version ?? catalogEntry.version,
+                    manifestUrl: game.manifestUrl ?? catalogEntry.manifestUrl,
+                    description: game.description ?? catalogEntry.description,
+                    imageUrl: game.imageUrl ?? catalogEntry.imageUrl,
+                  }
+                : {
                     id: game.id,
                     name: game.name,
                     version: game.version ?? "",
                     manifestUrl: game.manifestUrl,
                     description: game.description,
                     imageUrl: game.imageUrl,
-                  }}
+                  }
+
+              return (
+                <PackCard
+                  key={game.id}
+                  pack={packForCard}
                   installedGame={game}
                   badge={hasUpdate ? undefined : "installed"}
                   state={hasUpdate ? "update" : "installed"}

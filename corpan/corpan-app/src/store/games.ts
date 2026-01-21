@@ -33,7 +33,7 @@ const devGames: InstalledGame[] = import.meta.env.DEV
         id: "hanzipan",
         name: "Hanzipan (local)",
         manifestUrl: "/packs/hanzipan.zip",
-        version: "0.1.0",
+        version: "0.3.0",
         installedAt: Date.now(),
       },
     ]

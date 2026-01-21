@@ -290,6 +290,10 @@
 
   const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
 
+  const lerp = (a, b, t) => a + (b - a) * t;
+
+  const lerpPoint = (a, b, t) => [lerp(a[0], b[0], t), lerp(a[1], b[1], t)];
+
   const distance = (a, b) => {
     const dx = a[0] - b[0];
     const dy = a[1] - b[1];
@@ -375,6 +379,131 @@
     }
     ctx.lineTo(px, py);
     ctx.stroke();
+  };
+
+  // Brush tuning constants (future UI hooks).
+  const BRUSH = {
+    minWidthFactor: 0.5,
+    maxWidthFactor: 1.6,
+    pressureInfluence: 0.55,
+    pressureExponent: 0.75,
+    velocityInfluence: 0.5,
+    velocityRange: 2.0,
+    positionSmoothing: 0.2,
+    velocitySmoothing: 0.25,
+    widthSmoothing: 0.3,
+    startTaperDistance: 1.8,
+    startTaperMin: 0.35,
+    endTaperPoints: 6,
+    minDistanceFactor: 0.3,
+    dwellDelayMs: 120,
+    dwellGrowthRate: 0.7,
+    dwellMaxFactor: 2.2,
+    dwellStepFactor: 0.02,
+  };
+
+  const getPointerTime = (event) => {
+    if (typeof event.timeStamp === "number" && event.timeStamp > 0) {
+      return event.timeStamp;
+    }
+    if (typeof performance !== "undefined" && typeof performance.now === "function") {
+      return performance.now();
+    }
+    return Date.now();
+  };
+
+  const normalizePressure = (event) => {
+    const raw = typeof event.pressure === "number" ? event.pressure : 0;
+    if (raw > 0) {
+      return clamp(raw, 0.05, 1);
+    }
+    if (event.pointerType === "mouse") {
+      return 0.6;
+    }
+    if (event.pointerType === "pen") {
+      return 0.55;
+    }
+    return 0.45;
+  };
+
+  const computeBrushWidth = (baseWidth, pressure, velocity) => {
+    const pressureValue = Math.pow(clamp(pressure, 0, 1), BRUSH.pressureExponent);
+    const pressureFactor = lerp(
+      1 - BRUSH.pressureInfluence,
+      1 + BRUSH.pressureInfluence,
+      pressureValue
+    );
+    const velocityNorm = clamp(velocity / BRUSH.velocityRange, 0, 1);
+    const speedFactor = 1 - velocityNorm;
+    const velocityFactor = lerp(1 - BRUSH.velocityInfluence, 1, speedFactor);
+    const width = baseWidth * pressureFactor * velocityFactor;
+    return clamp(width, baseWidth * BRUSH.minWidthFactor, baseWidth * BRUSH.maxWidthFactor);
+  };
+
+  const drawInkDot = (ctx, point, width) => {
+    const radius = Math.max(0.4, width * 0.5);
+    ctx.beginPath();
+    ctx.arc(point[0], point[1], radius, 0, Math.PI * 2);
+    ctx.fill();
+  };
+
+  const drawInkSegment = (ctx, from, to, fromWidth, toWidth) => {
+    const segmentLength = distance(from, to);
+    if (segmentLength === 0) {
+      drawInkDot(ctx, from, fromWidth);
+      return;
+    }
+    const maxWidth = Math.max(fromWidth, toWidth, 1);
+    const steps = Math.max(1, Math.round((segmentLength / maxWidth) * 0.6));
+    let [px, py] = from;
+    for (let i = 1; i <= steps; i += 1) {
+      const t = i / steps;
+      const x = lerp(from[0], to[0], t);
+      const y = lerp(from[1], to[1], t);
+      const w = lerp(fromWidth, toWidth, t);
+      ctx.lineWidth = Math.max(0.5, w);
+      ctx.beginPath();
+      ctx.moveTo(px, py);
+      ctx.lineTo(x, y);
+      ctx.stroke();
+      px = x;
+      py = y;
+    }
+  };
+
+  const drawInkStroke = (ctx, stroke, toCanvas, baseWidth) => {
+    if (!stroke || stroke.length === 0) return;
+    if (stroke.length === 1) {
+      const [x, y] = toCanvas(stroke[0].point);
+      const width =
+        (typeof stroke[0].width === "number" ? stroke[0].width : 0.6) * baseWidth;
+      drawInkDot(ctx, [x, y], width);
+      return;
+    }
+    let prev = stroke[0];
+    for (let i = 1; i < stroke.length; i += 1) {
+      const next = stroke[i];
+      const [px, py] = toCanvas(prev.point);
+      const [cx, cy] = toCanvas(next.point);
+      const prevWidth =
+        (typeof prev.width === "number" ? prev.width : 0.6) * baseWidth;
+      const nextWidth =
+        (typeof next.width === "number" ? next.width : 0.6) * baseWidth;
+      drawInkSegment(ctx, [px, py], [cx, cy], prevWidth, nextWidth);
+      prev = next;
+    }
+  };
+
+  const applyEndTaper = (inkStroke) => {
+    if (!inkStroke || inkStroke.length < 2) return;
+    const count = Math.min(inkStroke.length, BRUSH.endTaperPoints);
+    if (count < 2) return;
+    for (let i = 0; i < count; i += 1) {
+      const idx = inkStroke.length - count + i;
+      const t = i / (count - 1);
+      const fade = Math.max(0.05, 1 - t);
+      inkStroke[idx].width *= fade;
+    }
   };
 
   const computeCanvasPadding = (width, height) => Math.min(width, height) * 0.08;
@@ -632,7 +761,11 @@
       this.currentStrokeIndex = 0;
       this.usedMedians = new Set();
       this.userStrokes = [];
+      this.userInkStrokes = [];
       this.currentStroke = [];
+      this.currentInkStroke = [];
+      this.strokeState = null;
+      this.dwellRaf = 0;
       this.onScore = onScore;
       this.bounds = { x: 0, y: 0, size: 0 };
       this.canvasRect = null;
@@ -698,7 +831,7 @@
       this.layout = { width: innerWidth, height: innerHeight, padding };
       const baseWidth = Math.max(12, size * 0.075);
       this.ghostWidth = baseWidth;
-      this.userWidth = Math.max(8, size * 0.045);
+      this.userWidth = Math.max(9, size * 0.05);
       this.highlightWidth = baseWidth * 1.05;
       this.drawGhost();
       this.redrawUser();
@@ -780,17 +913,24 @@
       ctx.clearRect(0, 0, this.drawCanvas.width, this.drawCanvas.height);
       ctx.lineCap = "round";
       ctx.lineJoin = "round";
-      ctx.strokeStyle = getComputedStyle(this.container).getPropertyValue("--stroke-user");
-      ctx.lineWidth = this.userWidth;
-      this.userStrokes.forEach((stroke) => {
-        if (stroke.length < 2) return;
-        drawSmoothStroke(ctx, stroke, (pt) => this.toCanvas(pt));
+      const strokeColor = getComputedStyle(this.container).getPropertyValue("--stroke-user");
+      ctx.strokeStyle = strokeColor;
+      ctx.fillStyle = strokeColor;
+      this.userInkStrokes.forEach((stroke) => {
+        drawInkStroke(ctx, stroke, (pt) => this.toCanvas(pt), this.userWidth);
       });
     }
 
     clearUser() {
       this.userStrokes = [];
+      this.userInkStrokes = [];
       this.currentStroke = [];
+      this.currentInkStroke = [];
+      this.strokeState = null;
+      if (this.dwellRaf) {
+        cancelAnimationFrame(this.dwellRaf);
+        this.dwellRaf = 0;
+      }
       this.currentStrokeIndex = 0;
       this.usedMedians = new Set();
       this.drawCtx.clearRect(0, 0, this.drawCanvas.width, this.drawCanvas.height);
@@ -819,6 +959,186 @@
     }
 
     attachEvents() {
+      const stopDwell = () => {
+        if (this.dwellRaf) {
+          cancelAnimationFrame(this.dwellRaf);
+          this.dwellRaf = 0;
+        }
+      };
+
+      const startStroke = (point, pressure, time) => {
+        stopDwell();
+        this.currentStroke = [];
+        this.currentInkStroke = [];
+        const strokeColor = getComputedStyle(this.container).getPropertyValue("--stroke-user");
+        this.drawCtx.lineCap = "round";
+        this.drawCtx.lineJoin = "round";
+        this.drawCtx.strokeStyle = strokeColor;
+        this.drawCtx.fillStyle = strokeColor;
+        const baseWidth = this.userWidth || 1;
+        const width = computeBrushWidth(baseWidth, pressure, 0) * BRUSH.startTaperMin;
+        this.strokeState = {
+          lastPoint: point,
+          filteredPoint: point,
+          lastVelocity: 0,
+          lastWidth: width,
+          lastTime: time,
+          lastMoveTime: time,
+          lastPressure: pressure,
+          length: 0,
+        };
+        drawInkDot(this.drawCtx, point, width);
+        const modelPoint = this.toModel(point);
+        this.currentStroke.push(modelPoint);
+        this.currentInkStroke.push({ point: modelPoint, width: width / baseWidth });
+        const dwellLoop = (now) => {
+          if (!this.strokeState) {
+            this.dwellRaf = 0;
+            return;
+          }
+          const state = this.strokeState;
+          const currentTime =
+            typeof now === "number"
+              ? now
+              : typeof performance !== "undefined" && typeof performance.now === "function"
+                ? performance.now()
+                : Date.now();
+          const sinceMove = currentTime - state.lastMoveTime;
+          if (sinceMove >= BRUSH.dwellDelayMs) {
+            const dwellSeconds = (sinceMove - BRUSH.dwellDelayMs) / 1000;
+            const dwellFactor = clamp(
+              1 + dwellSeconds * BRUSH.dwellGrowthRate,
+              1,
+              BRUSH.dwellMaxFactor
+            );
+            const targetBaseWidth = computeBrushWidth(baseWidth, state.lastPressure, 0);
+            const targetWidth = targetBaseWidth * dwellFactor;
+            const smoothWidth = lerp(state.lastWidth, targetWidth, BRUSH.widthSmoothing);
+            const minStep = Math.max(0.25, baseWidth * BRUSH.dwellStepFactor);
+            if (smoothWidth - state.lastWidth >= minStep) {
+              drawInkDot(this.drawCtx, state.lastPoint, smoothWidth);
+              const dwellModelPoint = this.toModel(state.lastPoint);
+              this.currentInkStroke.push({
+                point: dwellModelPoint,
+                width: smoothWidth / baseWidth,
+              });
+              state.lastWidth = smoothWidth;
+            }
+          }
+          this.dwellRaf = requestAnimationFrame(dwellLoop);
+        };
+        this.dwellRaf = requestAnimationFrame(dwellLoop);
+      };
+
+      const moveStroke = (point, pressure, time, force = false) => {
+        if (!this.strokeState) return;
+        const baseWidth = this.userWidth || 1;
+        this.strokeState.lastPressure = pressure;
+        const filtered = this.strokeState.filteredPoint
+          ? lerpPoint(this.strokeState.filteredPoint, point, 1 - BRUSH.positionSmoothing)
+          : point;
+        this.strokeState.filteredPoint = filtered;
+        const lastPoint = this.strokeState.lastPoint || filtered;
+        const minDistance = Math.max(0.6, baseWidth * BRUSH.minDistanceFactor);
+        const segmentDistance = distance(lastPoint, filtered);
+        if (!force && segmentDistance < minDistance) {
+          return;
+        }
+        const dt = Math.max(time - this.strokeState.lastTime, 1);
+        const velocity = segmentDistance / dt;
+        const smoothVelocity = lerp(this.strokeState.lastVelocity, velocity, BRUSH.velocitySmoothing);
+        const targetWidth = computeBrushWidth(baseWidth, pressure, smoothVelocity);
+        const startTaper = clamp(
+          (this.strokeState.length + segmentDistance) / (baseWidth * BRUSH.startTaperDistance),
+          BRUSH.startTaperMin,
+          1
+        );
+        const width = targetWidth * startTaper;
+        const smoothWidth = lerp(this.strokeState.lastWidth, width, BRUSH.widthSmoothing);
+        drawInkSegment(this.drawCtx, lastPoint, filtered, this.strokeState.lastWidth, smoothWidth);
+        this.strokeState.lastPoint = filtered;
+        this.strokeState.lastVelocity = smoothVelocity;
+        this.strokeState.lastWidth = smoothWidth;
+        this.strokeState.lastTime = time;
+        this.strokeState.lastMoveTime = time;
+        this.strokeState.length += segmentDistance;
+        const modelPoint = this.toModel(filtered);
+        this.currentStroke.push(modelPoint);
+        this.currentInkStroke.push({ point: modelPoint, width: smoothWidth / baseWidth });
+      };
+
+      const finishStroke = () => {
+        stopDwell();
+        if (!this.currentStroke.length) {
+          this.strokeState = null;
+          return;
+        }
+        const stroke = [...this.currentStroke];
+        const inkStroke = [...this.currentInkStroke];
+        applyEndTaper(inkStroke);
+        this.userStrokes.push(stroke);
+        this.userInkStrokes.push(inkStroke);
+        this.currentStroke = [];
+        this.currentInkStroke = [];
+        this.strokeState = null;
+        if (!this.medians.length) {
+          if (this.onScore) {
+            this.onScore({
+              score: null,
+              overall: null,
+              strokeIndex: null,
+              userStrokeCount: this.userStrokes.length,
+            });
+          }
+          this.redrawUser();
+          return;
+        }
+        let targetIndex = null;
+        if (this.mode === "guided") {
+          targetIndex = this.currentStrokeIndex;
+          this.currentStrokeIndex += 1;
+        } else {
+          let best = { index: null, score: -Infinity, dist: Infinity };
+          this.medians.forEach((median, index) => {
+            if (this.usedMedians.has(index)) return;
+            const sampled = resample(stroke, 32);
+            const avg = sampled
+              .map((pt) => distanceToPolyline(pt, median))
+              .reduce((sum, d) => sum + d, 0) / sampled.length;
+            if (avg < best.dist) {
+              best = { index, score: scoreStroke(stroke, median), dist: avg };
+            }
+          });
+          targetIndex = best.index;
+          if (targetIndex !== null) {
+            this.usedMedians.add(targetIndex);
+          }
+        }
+        let score = 0;
+        let overall = null;
+        if (targetIndex !== null && this.medians[targetIndex]) {
+          score = scoreStroke(stroke, this.medians[targetIndex]);
+          this.flashStroke(targetIndex, score);
+        }
+        const scored = Math.min(this.userStrokes.length, this.medians.length || this.userStrokes.length);
+        if (scored > 0) {
+          const scores = this.userStrokes.slice(0, scored).map((s, i) => {
+            if (!this.medians[i]) return 0;
+            return scoreStroke(s, this.medians[i]);
+          });
+          overall = Math.round(scores.reduce((sum, s) => sum + s, 0) / scores.length);
+        }
+        if (this.onScore) {
+          this.onScore({
+            score,
+            overall,
+            strokeIndex: targetIndex,
+            userStrokeCount: this.userStrokes.length,
+          });
+        }
+        this.redrawUser();
+      };
+
       const handlePointer = (event, type) => {
         const rect = this.drawCanvas.getBoundingClientRect();
         const point = [event.clientX - rect.left, event.clientY - rect.top];
@@ -830,83 +1150,21 @@
         if (!inside && type === "start") {
           return;
         }
+        const pressure = normalizePressure(event);
+        const time = getPointerTime(event);
         if (type === "start") {
-          this.currentStroke = [this.toModel(point)];
-          this.drawCtx.lineCap = "round";
-          this.drawCtx.lineJoin = "round";
-          this.drawCtx.strokeStyle = getComputedStyle(this.container).getPropertyValue("--stroke-user");
-          this.drawCtx.lineWidth = this.userWidth;
-          this.drawCtx.beginPath();
-          const [cx, cy] = point;
-          this.drawCtx.moveTo(cx, cy);
+          startStroke(point, pressure, time);
+          return;
         }
-        if (type === "move" && this.currentStroke.length) {
-          const prev = this.currentStroke[this.currentStroke.length - 1];
-          const modelPoint = this.toModel(point);
-          if (distance(prev, modelPoint) < 4) return;
-          this.currentStroke.push(modelPoint);
-          this.drawCtx.lineTo(point[0], point[1]);
-          this.drawCtx.stroke();
+        if (type === "move") {
+          moveStroke(point, pressure, time);
+          return;
         }
-        if (type === "end" && this.currentStroke.length) {
-          const stroke = [...this.currentStroke];
-          this.userStrokes.push(stroke);
-          this.currentStroke = [];
-          if (!this.medians.length) {
-            if (this.onScore) {
-              this.onScore({
-                score: null,
-                overall: null,
-                strokeIndex: null,
-                userStrokeCount: this.userStrokes.length,
-              });
-            }
-            return;
+        if (type === "end") {
+          if (this.strokeState) {
+            moveStroke(point, pressure, time, true);
           }
-          let targetIndex = null;
-          if (this.mode === "guided") {
-            targetIndex = this.currentStrokeIndex;
-            this.currentStrokeIndex += 1;
-          } else {
-            let best = { index: null, score: -Infinity, dist: Infinity };
-            this.medians.forEach((median, index) => {
-              if (this.usedMedians.has(index)) return;
-              const sampled = resample(stroke, 32);
-              const avg = sampled
-                .map((pt) => distanceToPolyline(pt, median))
-                .reduce((sum, d) => sum + d, 0) / sampled.length;
-              if (avg < best.dist) {
-                best = { index, score: scoreStroke(stroke, median), dist: avg };
-              }
-            });
-            targetIndex = best.index;
-            if (targetIndex !== null) {
-              this.usedMedians.add(targetIndex);
-            }
-          }
-          let score = 0;
-          let overall = null;
-          if (targetIndex !== null && this.medians[targetIndex]) {
-            score = scoreStroke(stroke, this.medians[targetIndex]);
-            this.flashStroke(targetIndex, score);
-          }
-          const scored = Math.min(this.userStrokes.length, this.medians.length || this.userStrokes.length);
-          if (scored > 0) {
-            const scores = this.userStrokes.slice(0, scored).map((s, i) => {
-              if (!this.medians[i]) return 0;
-              return scoreStroke(s, this.medians[i]);
-            });
-            overall = Math.round(scores.reduce((sum, s) => sum + s, 0) / scores.length);
-          }
-          if (this.onScore) {
-            this.onScore({
-              score,
-              overall,
-              strokeIndex: targetIndex,
-              userStrokeCount: this.userStrokes.length,
-            });
-          }
-          this.redrawUser();
+          finishStroke();
         }
       };
 
@@ -915,7 +1173,13 @@
         this.container.setPointerCapture(event.pointerId);
         handlePointer(event, "start");
       });
-      this.container.addEventListener("pointermove", (event) => handlePointer(event, "move"));
+      this.container.addEventListener("pointermove", (event) => {
+        const events =
+          typeof event.getCoalescedEvents === "function"
+            ? event.getCoalescedEvents()
+            : [event];
+        events.forEach((item) => handlePointer(item, "move"));
+      });
       this.container.addEventListener("pointerup", (event) => handlePointer(event, "end"));
       this.container.addEventListener("pointercancel", (event) => handlePointer(event, "end"));
       this.container.addEventListener("pointerleave", (event) => handlePointer(event, "end"));
