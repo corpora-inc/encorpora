@@ -108,6 +108,25 @@ export const createJuiceSqueeze = (
   
   // Track current utterance for word count and TTS
   let currentUtterance: Utterance | null = null
+
+  // Track TTS timeout to prevent phantom phrases on quick exit/reopen
+  let ttsTimeoutId: number | null = null
+
+  // Schedule TTS with proper cleanup
+  const scheduleTTS = (lang: string, text: string, delayMs: number = 500) => {
+    // Clear any pending TTS timeout
+    if (ttsTimeoutId !== null) {
+      window.clearTimeout(ttsTimeoutId)
+      ttsTimeoutId = null
+    }
+
+    ttsTimeoutId = window.setTimeout(() => {
+      if (!disposed && typeof hostApi.speak === "function") {
+        hostApi.speak(lang, text)
+      }
+      ttsTimeoutId = null
+    }, delayMs)
+  }
   
   // Layout metrics type
   type LayoutMetrics = {
@@ -155,7 +174,7 @@ export const createJuiceSqueeze = (
     // Regions in world coordinates (0,0 = center)
     // Top region: 80-95% of screen height = 85% from bottom = 15% from top
     // In world coords: positive Y is up, so 85% up = worldHeight * 0.35
-    const targetPhraseY = worldHeight * 0.35
+    const targetPhraseY = worldHeight * 0.48
     
     // Middle region: 45-70% of screen height = 60% from bottom = 40% from top
     // In world coords: 60% up = worldHeight * 0.1
@@ -895,7 +914,7 @@ export const createJuiceSqueeze = (
 
   // Create title "Juice Squeeze" (responsive)
   const titleElement = document.createElement("div")
-  titleElement.textContent = "🧃 JUICE SQUEEZE 🧃"
+  titleElement.textContent = "🍊 JUICE SQUEEZE 🍊"
   titleElement.className = "game-title"
   root.appendChild(titleElement)
 
@@ -995,11 +1014,9 @@ export const createJuiceSqueeze = (
     updateNavButtons()
 
     // Play target phrase TTS
-    if (utterance.targetText && typeof hostApi.speak === "function") {
-      setTimeout(() => {
-        const ttsTargetLang = useGameStore.getState().phrase.targetLang || targetLang
-        hostApi.speak(ttsTargetLang, utterance.targetText!)
-      }, 500)
+    if (utterance.targetText) {
+      const ttsTargetLang = useGameStore.getState().phrase.targetLang || targetLang
+      scheduleTTS(ttsTargetLang, utterance.targetText, 500)
     }
   }
 
@@ -1122,11 +1139,9 @@ export const createJuiceSqueeze = (
     await buildWordBlockMeshes(utterance, words, blockLang, targetLang, metrics, blockSize)
 
     // Play target phrase TTS at round start
-    if (utterance.targetText && typeof hostApi.speak === "function") {
-      setTimeout(() => {
-        const ttsTargetLang = useGameStore.getState().phrase.targetLang || targetLang
-        hostApi.speak(ttsTargetLang, utterance.targetText!)
-      }, 500)
+    if (utterance.targetText) {
+      const ttsTargetLang = useGameStore.getState().phrase.targetLang || targetLang
+      scheduleTTS(ttsTargetLang, utterance.targetText, 500)
     }
   }
 
@@ -1541,6 +1556,12 @@ export const createJuiceSqueeze = (
       return
     }
     disposed = true
+
+    // Clear pending TTS timeout to prevent phantom phrases
+    if (ttsTimeoutId !== null) {
+      window.clearTimeout(ttsTimeoutId)
+      ttsTimeoutId = null
+    }
 
     // Clear word blocks
     clearWordBlocks()
