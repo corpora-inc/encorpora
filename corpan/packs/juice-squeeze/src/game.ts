@@ -1,12 +1,10 @@
 import {
-  ActionManager,
   Camera,
   Color3,
   Color4,
   DirectionalLight,
   DynamicTexture,
   Engine,
-  ExecuteCodeAction,
   HemisphericLight,
   Mesh,
   MeshBuilder,
@@ -25,6 +23,7 @@ import "@babylonjs/loaders/glTF"
 import type { HostApi, StackConfig } from "./sdk/types"
 import { loadUtterance, type Utterance } from "./data"
 import { useGameStore } from "./store/gameState"
+import { createJuiceGlass, type JuiceGlass } from "./juiceAnimation"
 
 // Helper to darken/lighten hex colors
 const shadeColor = (color: string, percent: number): string => {
@@ -40,6 +39,13 @@ const shadeColor = (color: string, percent: number): string => {
     (B < 255 ? (B < 1 ? 0 : B) : 255)
   ).toString(16).slice(1)
 }
+
+// Utility functions for smooth responsive scaling
+const clamp = (value: number, min: number, max: number): number =>
+  Math.max(min, Math.min(max, value))
+
+const lerp = (a: number, b: number, t: number): number =>
+  a + (b - a) * clamp(t, 0, 1)
 
 type InitialState = {
   stackConfig?: StackConfig
@@ -135,11 +141,12 @@ export const createJuiceSqueeze = (
     const aspectRatio = canvasW / canvasH
     
     // World units that map to screen
-    // On a 320px wide screen, we want ~20 world units visible horizontally
-    // This means 1 world unit = 16 pixels at 320px
-    // Scale proportionally for larger screens
-    const baseWidth = 20 // world units visible at minimum
-    const worldWidth = baseWidth * Math.max(1, canvasW / 320)
+    // Keep world at constant 20 units - mesh scaling handles responsive behavior
+    // At 320px: 1 world unit = 16 pixels
+    // At 640px: 1 world unit = 32 pixels
+    // At 200px: 1 world unit = 10 pixels
+    const baseWidth = 20
+    const worldWidth = baseWidth
     const worldHeight = worldWidth / aspectRatio
     
     // Calculate pixels per world unit for HTML overlay positioning
@@ -172,60 +179,273 @@ export const createJuiceSqueeze = (
     }
   }
   
+  // Layout constants for responsive design
+  // These are BASE values at 320px viewport - they scale proportionally with viewport
+  const BASE_MIN_BLOCK_WIDTH = 2.5 // Base minimum block width at 320px
+  const BASE_MIN_BLOCK_HEIGHT = 1.25 // Base minimum block height at 320px
+  const MAX_BLOCKS_PER_ROW = 5 // Force 2-row layout above this
+
+  // Multi-row sentence area constants
+  const MAX_SENTENCE_ROWS = 3
+  const SENTENCE_BLOCKS_PER_ROW_MOBILE = 3 // ≤480px viewport width
+  const SENTENCE_BLOCKS_PER_ROW_TABLET = 4 // 481-720px
+  const SENTENCE_BLOCKS_PER_ROW_DESKTOP = 6 // >720px
+  const SENTENCE_ROW_SPACING_RATIO = 0.4 // Gap between rows as ratio of block height
+
   // Calculate dynamic block size based on word count and viewport
   const calculateBlockSize = (wordCount: number, metrics: LayoutMetrics) => {
+    // Scale minimum block dimensions with viewport
+    // At 320px (worldWidth=20): minBlockWidth = 2.5
+    // At 640px (worldWidth=40): minBlockWidth = 5.0 (larger blocks for larger screens)
+    // At 160px (worldWidth=10): minBlockWidth = 1.25 (smaller blocks for smaller screens)
+    const viewportScale = metrics.worldWidth / 20 // 1.0 at baseline 320px
+    const minBlockWidth = BASE_MIN_BLOCK_WIDTH * viewportScale
+    const minBlockHeight = BASE_MIN_BLOCK_HEIGHT * viewportScale
+
     // Blocks must fit horizontally with gaps
     const availableWidth = metrics.worldWidth * 0.9 // 90% of screen width
     const gapRatio = 0.15 // 15% of block width as gap
-    
+
+    // Check if we need 2-row layout - use scaled minimum for comparison
+    const singleRowWidth = availableWidth / (wordCount + (wordCount - 1) * gapRatio)
+    const needsTwoRows = wordCount > MAX_BLOCKS_PER_ROW || singleRowWidth < minBlockWidth
+
+    // Calculate effective word count for sizing (half for 2-row)
+    const effectiveWordCount = needsTwoRows ? Math.ceil(wordCount / 2) : wordCount
+
     // Calculate max block width that fits all words
-    const totalGaps = (wordCount - 1) * gapRatio
-    const maxBlockWidth = availableWidth / (wordCount + totalGaps)
-    
-    // Block height = 50% of width (wide rectangles)
-    const blockHeight = maxBlockWidth * 0.5
-    
+    const totalGaps = (effectiveWordCount - 1) * gapRatio
+    let maxBlockWidth = availableWidth / (effectiveWordCount + totalGaps)
+
+    // Enforce scaled minimum dimensions
+    maxBlockWidth = Math.max(minBlockWidth, maxBlockWidth)
+    const blockHeight = Math.max(minBlockHeight, maxBlockWidth * 0.5)
+
     // Font size = 40% of block height in pixels
-    // Convert world units to approximate pixels for font
-    const fontSize = Math.floor(blockHeight * metrics.pixelsPerUnit * 0.4)
-    
+    // pixelsPerUnit is constant (16) since world scales with viewport
+    const rawFontSize = Math.floor(blockHeight * metrics.pixelsPerUnit * 0.4)
+    // Clamp font size: min 16px for legibility, max 200px
+    const fontSize = Math.max(16, Math.min(rawFontSize, 200))
+
     return {
       width: maxBlockWidth,
       height: blockHeight,
       gap: maxBlockWidth * gapRatio,
-      fontSize: Math.max(24, Math.min(fontSize, 200)), // clamp 24-200px
+      fontSize,
+      twoRowLayout: needsTwoRows,
     }
   }
-  
-  // Position word blocks using metrics and block size
+
+  // Get max blocks per row for sentence area based on viewport width
+  const getSentenceBlocksPerRow = (viewportWidth: number): number => {
+    if (viewportWidth <= 480) return SENTENCE_BLOCKS_PER_ROW_MOBILE
+    if (viewportWidth <= 720) return SENTENCE_BLOCKS_PER_ROW_TABLET
+    return SENTENCE_BLOCKS_PER_ROW_DESKTOP
+  }
+
+  // Calculate number of rows needed for sentence area
+  const calculateSentenceRows = (
+    wordCount: number,
+    metrics: LayoutMetrics,
+    blockSize: { width: number }
+  ): number => {
+    const canvasElement = engine.getRenderingCanvas()
+    const viewportWidth = canvasElement?.width || 720
+
+    // Get max blocks per row based on viewport
+    const maxBlocksPerRow = getSentenceBlocksPerRow(viewportWidth)
+
+    // Also check available width vs block size
+    const availableWidth = metrics.worldWidth * 0.85
+    const blocksPerRowByWidth = Math.floor(availableWidth / (blockSize.width * 1.15))
+
+    // Use the more restrictive limit
+    const effectiveBlocksPerRow = Math.max(2, Math.min(maxBlocksPerRow, blocksPerRowByWidth))
+
+    // Calculate rows needed
+    const rowsNeeded = Math.ceil(wordCount / effectiveBlocksPerRow)
+    return Math.min(MAX_SENTENCE_ROWS, Math.max(1, rowsNeeded))
+  }
+
+  // Get row Y positions for sentence area
+  const getSentenceRowYPositions = (
+    rowCount: number,
+    sentenceAreaCenterY: number,
+    rowHeight: number
+  ): number[] => {
+    if (rowCount === 1) {
+      return [sentenceAreaCenterY]
+    }
+
+    // Center the rows around sentenceAreaCenterY
+    // Top row is highest Y (positive), bottom row is lowest
+    const totalHeight = (rowCount - 1) * rowHeight
+    const topRowY = sentenceAreaCenterY + totalHeight / 2
+
+    return Array.from({ length: rowCount }, (_, i) => topRowY - i * rowHeight)
+  }
+
+  // Get target row from drop Y position
+  const getTargetRow = (
+    dropY: number,
+    rowYPositions: number[]
+  ): number => {
+    if (rowYPositions.length === 1) return 0
+
+    // Find closest row
+    let closestRow = 0
+    let closestDistance = Math.abs(dropY - rowYPositions[0])
+
+    for (let i = 1; i < rowYPositions.length; i++) {
+      const distance = Math.abs(dropY - rowYPositions[i])
+      if (distance < closestDistance) {
+        closestDistance = distance
+        closestRow = i
+      }
+    }
+
+    return closestRow
+  }
+
+  // Reflow blocks in sentence area across multiple rows
+  const reflowSentenceBlocks = (metrics: LayoutMetrics) => {
+    // Get all blocks in sentence area with their data
+    const blocksInSentence = Array.from(wordBlockData.entries())
+      .filter(([_, data]) => data.isInSentence)
+      .map(([mesh, data]) => ({ mesh, data }))
+
+    if (blocksInSentence.length === 0) return
+
+    // Calculate current block size
+    const currentWordCount = currentUtterance?.words?.length || blocksInSentence.length
+    const currentBlockSize = calculateBlockSize(currentWordCount, metrics)
+    const sentenceSpacing = currentBlockSize.width * 1.15
+
+    // Get max blocks per row
+    const canvasElement = engine.getRenderingCanvas()
+    const viewportWidth = canvasElement?.width || 720
+    const maxBlocksPerRow = getSentenceBlocksPerRow(viewportWidth)
+
+    // Also check available width
+    const availableWidth = metrics.worldWidth * 0.85
+    const blocksPerRowByWidth = Math.floor(availableWidth / sentenceSpacing)
+    const effectiveBlocksPerRow = Math.max(2, Math.min(maxBlocksPerRow, blocksPerRowByWidth))
+
+    // Sort blocks by row first, then by X position within row
+    // This maintains the user's intended reading order
+    blocksInSentence.sort((a, b) => {
+      if (a.data.sentenceRow !== b.data.sentenceRow) {
+        return a.data.sentenceRow - b.data.sentenceRow
+      }
+      return a.mesh.position.x - b.mesh.position.x
+    })
+
+    // Redistribute blocks into rows sequentially (reading order)
+    blocksInSentence.forEach((item, globalIndex) => {
+      const row = Math.floor(globalIndex / effectiveBlocksPerRow)
+      const indexInRow = globalIndex % effectiveBlocksPerRow
+
+      // Count how many blocks are in this row
+      const rowStartIndex = row * effectiveBlocksPerRow
+      const rowEndIndex = Math.min((row + 1) * effectiveBlocksPerRow, blocksInSentence.length)
+      const blocksInThisRow = rowEndIndex - rowStartIndex
+
+      // Calculate row width and starting X
+      const rowWidth = blocksInThisRow * sentenceSpacing - (sentenceSpacing - currentBlockSize.width)
+      const rowStartX = -rowWidth / 2 + currentBlockSize.width / 2
+
+      // Position block
+      item.mesh.position.x = rowStartX + indexInRow * sentenceSpacing
+      item.mesh.position.y = sentenceRowYPositions[row] || metrics.sentenceAreaY
+      item.mesh.position.z = -0.5 // Keep in front
+
+      // Update data
+      item.data.sentenceRow = row
+    })
+  }
+
+  // Position word blocks in the word bank (NOT in sentence area)
   const positionWordBlocks = (
     blocks: Mesh[],
     metrics: LayoutMetrics,
-    blockSize: { width: number; height: number; gap: number }
+    blockSize: { width: number; height: number; gap: number; twoRowLayout?: boolean }
   ) => {
-    const wordCount = blocks.length
-    const totalWidth = wordCount * blockSize.width + (wordCount - 1) * blockSize.gap
-    const startX = -totalWidth / 2 + blockSize.width / 2
-    
-    blocks.forEach((block, i) => {
-      block.position.x = startX + i * (blockSize.width + blockSize.gap)
-      block.position.y = metrics.wordBlocksY
-      block.position.z = 0
-      
-      // Update originalPosition in wordBlockData for snap-back
+    // Filter to only blocks NOT in sentence area
+    const blocksInWordBank = blocks.filter((block) => {
       const data = wordBlockData.get(block)
-      if (data) {
-        data.originalPosition = block.position.clone()
-      }
+      return data && !data.isInSentence
     })
+
+    const wordCount = blocksInWordBank.length
+    if (wordCount === 0) return
+
+    if (blockSize.twoRowLayout && wordCount > 1) {
+      // Two-row layout for many words or narrow screens
+      const topRowCount = Math.ceil(wordCount / 2)
+      const bottomRowCount = wordCount - topRowCount
+      const rowGap = blockSize.height * 0.5 // Vertical gap between rows
+
+      // Position top row (first half of words)
+      const topRowWidth = topRowCount * blockSize.width + (topRowCount - 1) * blockSize.gap
+      const topStartX = -topRowWidth / 2 + blockSize.width / 2
+      const topY = metrics.wordBlocksY + rowGap / 2 + blockSize.height / 2
+
+      for (let i = 0; i < topRowCount; i++) {
+        blocksInWordBank[i].position.x = topStartX + i * (blockSize.width + blockSize.gap)
+        blocksInWordBank[i].position.y = topY
+        blocksInWordBank[i].position.z = 0
+        const data = wordBlockData.get(blocksInWordBank[i])
+        if (data) {
+          data.originalPosition = blocksInWordBank[i].position.clone()
+        }
+      }
+
+      // Position bottom row (remaining words)
+      const bottomRowWidth = bottomRowCount * blockSize.width + (bottomRowCount - 1) * blockSize.gap
+      const bottomStartX = -bottomRowWidth / 2 + blockSize.width / 2
+      const bottomY = metrics.wordBlocksY - rowGap / 2 - blockSize.height / 2
+
+      for (let i = topRowCount; i < wordCount; i++) {
+        const j = i - topRowCount
+        blocksInWordBank[i].position.x = bottomStartX + j * (blockSize.width + blockSize.gap)
+        blocksInWordBank[i].position.y = bottomY
+        blocksInWordBank[i].position.z = 0
+        const data = wordBlockData.get(blocksInWordBank[i])
+        if (data) {
+          data.originalPosition = blocksInWordBank[i].position.clone()
+        }
+      }
+    } else {
+      // Single row layout (original behavior)
+      const totalWidth = wordCount * blockSize.width + (wordCount - 1) * blockSize.gap
+      const startX = -totalWidth / 2 + blockSize.width / 2
+
+      blocksInWordBank.forEach((block, i) => {
+        block.position.x = startX + i * (blockSize.width + blockSize.gap)
+        block.position.y = metrics.wordBlocksY
+        block.position.z = 0
+
+        // Update originalPosition in wordBlockData for snap-back
+        const data = wordBlockData.get(block)
+        if (data) {
+          data.originalPosition = block.position.clone()
+        }
+      })
+    }
   }
   
   // Update camera to fit layout metrics
   const updateCamera = (metrics: LayoutMetrics) => {
-    camera.orthoLeft = -metrics.worldWidth / 2
-    camera.orthoRight = metrics.worldWidth / 2
-    camera.orthoBottom = -metrics.worldHeight / 2
-    camera.orthoTop = metrics.worldHeight / 2
+    // Apply slight padding factor for narrow screens to prevent edge clipping
+    const canvasElement = engine.getRenderingCanvas()
+    const viewportWidth = canvasElement?.width || 320
+    // On narrow screens (< 400px), add 5% padding to prevent edge clipping
+    const paddingFactor = lerp(1.05, 1.0, clamp((viewportWidth - 300) / 200, 0, 1))
+
+    camera.orthoLeft = -metrics.worldWidth / 2 * paddingFactor
+    camera.orthoRight = metrics.worldWidth / 2 * paddingFactor
+    camera.orthoBottom = -metrics.worldHeight / 2 * paddingFactor
+    camera.orthoTop = metrics.worldHeight / 2 * paddingFactor
   }
   
   // Initial camera setup
@@ -251,21 +471,25 @@ export const createJuiceSqueeze = (
 
   // Word blocks storage for dragging and sentence building (Babylon.js rendering state - stays local)
   let wordBlocks: Mesh[] = []
-  let wordBlockData: Map<Mesh, { word: string; originalIndex: number; originalPosition: Vector3; isInSentence: boolean }> = new Map()
+  let wordBlockData: Map<Mesh, { word: string; originalIndex: number; originalPosition: Vector3; isInSentence: boolean; sentenceRow: number; baseWidth: number; baseHeight: number }> = new Map()
   
   let sentenceAreaMesh: Mesh | null = null // Store reference to update size
   let sentenceAreaWidth = 60 // Track current sentence area width for collision detection
+  let sentenceAreaHeight = 5 // Track current sentence area height for collision detection
+  let sentenceRowCount = 1 // Track number of rows in sentence area
+  let sentenceRowHeight = 2 // Track height of each row
+  let sentenceRowYPositions: number[] = [] // Y positions for each row
 
   // Fruit slice colors (orange, mango, papaya)
   const fruitColors = ["#FFB84D", "#FF6B6B", "#FFE66D"] // Orange, Pink, Yellow
 
   // Create sentence building area with dynamic sizing
-  const createSentenceArea = (metrics: LayoutMetrics, blockSize?: { width: number; gap: number }, wordCount?: number) => {
+  const createSentenceArea = (metrics: LayoutMetrics, blockSize?: { width: number; height?: number; gap: number }, wordCount?: number) => {
     // Dispose old area if exists
     if (sentenceAreaMesh) {
       sentenceAreaMesh.dispose()
     }
-    
+
     // Calculate width from word count and block size, or use default
     let areaWidth: number
     if (blockSize && wordCount) {
@@ -274,12 +498,30 @@ export const createJuiceSqueeze = (
     } else {
       areaWidth = metrics.worldWidth * 0.8 // Default width
     }
-    
+
     sentenceAreaWidth = areaWidth // Store width for collision detection
-    
-    // Calculate height as percentage of world height (12% of height)
-    const areaHeight = metrics.worldHeight * 0.12
+
+    // Calculate number of rows needed
+    const rowCount = blockSize && wordCount
+      ? calculateSentenceRows(wordCount, metrics, blockSize)
+      : 1
+    sentenceRowCount = rowCount
+
+    // Calculate row height (block height + spacing)
+    const blockHeight = blockSize?.height || BASE_MIN_BLOCK_HEIGHT
+    const rowHeightValue = blockHeight * (1 + SENTENCE_ROW_SPACING_RATIO)
+    sentenceRowHeight = rowHeightValue
+
+    // Calculate total area height based on row count
+    const areaHeight = rowCount === 1
+      ? metrics.worldHeight * 0.12 // Single row: original size
+      : rowCount * rowHeightValue + blockHeight * 0.3 // Multi-row: fit all rows with padding
+    sentenceAreaHeight = areaHeight // Store for collision detection
+
     const areaY = metrics.sentenceAreaY
+
+    // Calculate and store row Y positions
+    sentenceRowYPositions = getSentenceRowYPositions(rowCount, areaY, rowHeightValue)
     
     const area = MeshBuilder.CreatePlane("sentence-area", { width: areaWidth, height: areaHeight }, scene)
     area.position = new Vector3(0, areaY, 2) // Push even further behind blocks
@@ -323,7 +565,24 @@ export const createJuiceSqueeze = (
     ctx.strokeStyle = "rgba(255, 255, 255, 0.8)"
     ctx.lineWidth = 2
     ctx.stroke()
-    
+
+    // Draw subtle row separator lines for multi-row layouts
+    if (rowCount > 1) {
+      ctx.strokeStyle = "rgba(11, 107, 111, 0.2)" // Subtle teal lines
+      ctx.lineWidth = 2
+      ctx.setLineDash([10, 10]) // Dashed line
+
+      for (let i = 1; i < rowCount; i++) {
+        const y = 16 + ((512 - 32) * i) / rowCount
+        ctx.beginPath()
+        ctx.moveTo(48, y)
+        ctx.lineTo(1024 - 48, y)
+        ctx.stroke()
+      }
+
+      ctx.setLineDash([]) // Reset dash
+    }
+
     areaTexture.update()
     
     const areaMaterial = new StandardMaterial("sentence-area-material", scene)
@@ -395,7 +654,10 @@ export const createJuiceSqueeze = (
     // World Y is positive up, CSS Y is positive down from top
     // pixelY = (canvasHeight / 2) - (worldY * pixelsPerUnit)
     const worldY = metrics.targetPhraseY
-    const pixelY = canvasRect.top + (canvasHeight / 2) - (worldY * metrics.pixelsPerUnit)
+    const rawPixelY = canvasRect.top + (canvasHeight / 2) - (worldY * metrics.pixelsPerUnit)
+    // Ensure minimum offset from top to avoid overlapping title
+    const minTopOffset = 70
+    const pixelY = Math.max(minTopOffset, rawPixelY)
     
     // Responsive font sizes based on viewport percentage
     const viewportWidth = canvasElement.width
@@ -416,7 +678,19 @@ export const createJuiceSqueeze = (
     
     display.appendChild(label)
     display.appendChild(phrase)
-    
+
+    // Add tap-to-speak functionality
+    display.addEventListener("click", () => {
+      const phraseState = useGameStore.getState().phrase
+      if (phraseState.targetText && phraseState.targetLang && typeof hostApi.speak === "function") {
+        try {
+          hostApi.speak(phraseState.targetLang, phraseState.targetText)
+        } catch (error) {
+          console.error("[juice-squeeze] ❌ Target phrase tap TTS error:", error)
+        }
+      }
+    })
+
     root.appendChild(display)
   }
   
@@ -508,21 +782,23 @@ export const createJuiceSqueeze = (
   const checkWin = () => {
     const state = useGameStore.getState()
     const { hasWon, phrase } = state
-    
+
     if (hasWon) {
       return // Prevent multiple wins
     }
-    
-    const wordsInSentence = Array.from(wordBlockData.values())
-      .filter((data) => data.isInSentence)
-      .sort((a, b) => {
-        // Get position in sentence area by finding the mesh
-        const meshA = Array.from(wordBlockData.entries()).find(([_, d]) => d === a)?.[0]
-        const meshB = Array.from(wordBlockData.entries()).find(([_, d]) => d === b)?.[0]
-        if (!meshA || !meshB) return 0
+
+    // Get blocks in sentence area, sorted by row first (top to bottom), then X (left to right)
+    const wordsInSentence = Array.from(wordBlockData.entries())
+      .filter(([_, data]) => data.isInSentence)
+      .sort(([meshA, dataA], [meshB, dataB]) => {
+        // First sort by row (ascending = top to bottom in reading order)
+        if (dataA.sentenceRow !== dataB.sentenceRow) {
+          return dataA.sentenceRow - dataB.sentenceRow
+        }
+        // Then sort by X within same row (left to right)
         return meshA.position.x - meshB.position.x
       })
-      .map((data) => data.word)
+      .map(([_, data]) => data.word)
     
     if (wordsInSentence.length === phrase.correctWords.length) {
       const isCorrect = wordsInSentence.every((word, i) => word === phrase.correctWords[i])
@@ -531,12 +807,18 @@ export const createJuiceSqueeze = (
         useGameStore.getState().setWon(true)
         useGameStore.getState().incrementCompletedPhrases()
         useGameStore.getState().incrementScore()
-        
+
         // WIN! Create particles
         const currentMetrics = getLayoutMetrics()
         const centerPos = new Vector3(0, currentMetrics.sentenceAreaY, 0)
         createWinParticles(centerPos)
-        
+
+        // Trigger juice glass squeeze animation and update fill
+        juiceGlass.triggerSqueeze()
+        const updatedStats = useGameStore.getState().stats
+        const newFillLevel = Math.min(1, updatedStats.completedPhrases / 10)
+        juiceGlass.updateFill(newFillLevel)
+
         // Play TTS in block language (the language the player built)
         const completeSentence = wordsInSentence.join(" ")
         const currentState = useGameStore.getState()
@@ -551,9 +833,6 @@ export const createJuiceSqueeze = (
         } else {
           console.error("[juice-squeeze] ❌ hostApi.speak is not a function!")
         }
-        
-        // Show "Next Phrase" button
-        nextPhraseButton.classList.add("show")
       }
     }
   }
@@ -616,11 +895,11 @@ export const createJuiceSqueeze = (
 
   // Create title "Juice Squeeze" (responsive)
   const titleElement = document.createElement("div")
-  titleElement.textContent = "🧃 JUICE TEST 🧃"
+  titleElement.textContent = "🧃 JUICE SQUEEZE 🧃"
   titleElement.className = "game-title"
   root.appendChild(titleElement)
 
-  // Create exit button
+  // Create exit button (top-right X)
   const exitButton = document.createElement("button")
   exitButton.textContent = "✕"
   exitButton.className = "exit-btn"
@@ -629,27 +908,114 @@ export const createJuiceSqueeze = (
   })
   root.appendChild(exitButton)
 
-  // Create "Next Phrase" button
-  const nextPhraseButton = document.createElement("button")
-  nextPhraseButton.textContent = "Next Phrase"
-  nextPhraseButton.className = "next-phrase-btn"
-  nextPhraseButton.addEventListener("click", () => {
-    console.log("[juice-squeeze] Next Phrase button clicked")
+  // Create juice glass animation (below exit button)
+  const juiceGlass: JuiceGlass = createJuiceGlass(root)
+  // Initialize fill level from store
+  const initialStats = useGameStore.getState().stats
+  const initialFillLevel = Math.min(1, initialStats.completedPhrases / 10)
+  juiceGlass.updateFill(initialFillLevel)
+
+  // Utterance history for back/forward navigation
+  const utteranceHistory: Utterance[] = []
+  let historyIndex = -1
+
+  // Create utterance navigation container (near Build label)
+  const utteranceNav = document.createElement("div")
+  utteranceNav.className = "utterance-nav"
+  root.appendChild(utteranceNav)
+
+  // Back arrow button (previous utterance)
+  const prevButton = document.createElement("button")
+  prevButton.innerHTML = "←"
+  prevButton.className = "nav-arrow prev-arrow"
+  prevButton.disabled = true
+  prevButton.addEventListener("click", () => {
+    if (historyIndex > 0) {
+      historyIndex--
+      loadUtteranceFromHistory(utteranceHistory[historyIndex])
+    }
+  })
+  utteranceNav.appendChild(prevButton)
+
+  // Forward arrow button (next utterance)
+  const nextButton = document.createElement("button")
+  nextButton.innerHTML = "→"
+  nextButton.className = "nav-arrow next-arrow"
+  nextButton.disabled = true
+  nextButton.addEventListener("click", () => {
+    if (historyIndex < utteranceHistory.length - 1) {
+      historyIndex++
+      loadUtteranceFromHistory(utteranceHistory[historyIndex])
+    } else {
+      // Load new utterance
+      createWordBlocks()
+    }
+  })
+  utteranceNav.appendChild(nextButton)
+
+  // Update navigation button states
+  const updateNavButtons = () => {
+    prevButton.disabled = historyIndex <= 0
+    nextButton.disabled = false // Always allow going forward (loads new if at end)
+  }
+
+  // Load utterance from history (reuses existing utterance)
+  const loadUtteranceFromHistory = async (utterance: Utterance) => {
+    clearWordBlocks()
     useGameStore.getState().setWon(false)
     useGameStore.getState().resetBlocks()
-    nextPhraseButton.classList.remove("show")
-    createWordBlocks()
-  })
-  root.appendChild(nextPhraseButton)
+
+    const stackConfig = hostApi.getStackConfig()
+    const [targetLang, blockLang] = pickLanguagePair(stackConfig.languages)
+
+    currentUtterance = utterance
+
+    const words = utterance.words
+    useGameStore.getState().loadNewPhrase({
+      id: utterance.id,
+      targetText: utterance.targetText || null,
+      blockText: utterance.text,
+      targetLang,
+      blockLang,
+      correctWords: [...words],
+      words: [...words],
+    })
+
+    const metrics = getLayoutMetrics()
+    const blockSize = calculateBlockSize(words.length, metrics)
+
+    if (utterance.targetText) {
+      createTargetPhraseDisplay(utterance.targetText, targetLang, metrics)
+    }
+    createBlockLanguageLabel(blockLang, metrics)
+    createSentenceArea(metrics, blockSize, words.length)
+    updateCamera(metrics)
+
+    await buildWordBlockMeshes(utterance, words, blockLang, targetLang, metrics, blockSize)
+    updateNavButtons()
+
+    // Play target phrase TTS
+    if (utterance.targetText && typeof hostApi.speak === "function") {
+      setTimeout(() => {
+        const ttsTargetLang = useGameStore.getState().phrase.targetLang || targetLang
+        hostApi.speak(ttsTargetLang, utterance.targetText!)
+      }, 500)
+    }
+  }
 
   // Clear old word blocks
   const clearWordBlocks = () => {
     wordBlocks.forEach((block) => {
+      // Detach drag behavior to unsubscribe observables
+      const dragBehavior = block.getBehaviorByName("PointerDrag")
+      if (dragBehavior) {
+        block.removeBehavior(dragBehavior)
+      }
       block.dispose()
     })
     wordBlocks = []
     wordBlockData = new Map()
-    
+
     // Clear language labels
     const oldTargetDisplay = root.querySelector(".target-phrase-display")
     if (oldTargetDisplay) {
@@ -685,24 +1051,31 @@ export const createJuiceSqueeze = (
     clearWordBlocks()
     useGameStore.getState().setWon(false)
     useGameStore.getState().resetBlocks()
-    // Hide button while loading
-    nextPhraseButton.classList.remove("show")
-    
+
     const stackConfig = hostApi.getStackConfig()
-    
+
     // Pick two random languages for this round
     const [targetLang, blockLang] = pickLanguagePair(stackConfig.languages)
-    
+
     const utterance = await loadUtterance(hostApi, 2, blockLang, targetLang)
-    
+
     if (!utterance) {
       console.warn("[juice-squeeze] No utterance loaded!")
       return
     }
 
+    // Add to history
+    // If we're not at the end, truncate forward history
+    if (historyIndex < utteranceHistory.length - 1) {
+      utteranceHistory.splice(historyIndex + 1)
+    }
+    utteranceHistory.push(utterance)
+    historyIndex = utteranceHistory.length - 1
+    updateNavButtons()
+
     // Store current utterance for camera calculation
     currentUtterance = utterance
-    
+
     // Store phrase data in store
     const words = utterance.words
     useGameStore.getState().loadNewPhrase({
@@ -714,7 +1087,7 @@ export const createJuiceSqueeze = (
       correctWords: [...words], // Store correct order for win condition checking
       words: [...words],
     })
-    
+
     const wordCount = words.length
 
     if (wordCount === 0) {
@@ -722,15 +1095,12 @@ export const createJuiceSqueeze = (
       return
     }
 
-    // Create shuffled copy of words array for gameplay challenge!
-    const shuffledWords = [...utterance.words].sort(() => Math.random() - 0.5)
-
     // Get current layout metrics
     const metrics = getLayoutMetrics()
-    
+
     // Calculate dynamic block size based on word count
     const blockSize = calculateBlockSize(wordCount, metrics)
-    
+
     // Show target phrase (target language) below title with language label
     if (utterance.targetText) {
       createTargetPhraseDisplay(utterance.targetText, targetLang, metrics)
@@ -738,21 +1108,47 @@ export const createJuiceSqueeze = (
       console.warn("[juice-squeeze] No target text available!")
       return
     }
-    
+
     // Show "Build in: [Language]" label near word blocks area
     createBlockLanguageLabel(blockLang, metrics)
 
     // Create sentence area with dynamic sizing
     createSentenceArea(metrics, blockSize, wordCount)
-    
+
     // Update camera to fit layout
     updateCamera(metrics)
-    
+
+    // Build the word block meshes
+    await buildWordBlockMeshes(utterance, words, blockLang, targetLang, metrics, blockSize)
+
+    // Play target phrase TTS at round start
+    if (utterance.targetText && typeof hostApi.speak === "function") {
+      setTimeout(() => {
+        const ttsTargetLang = useGameStore.getState().phrase.targetLang || targetLang
+        hostApi.speak(ttsTargetLang, utterance.targetText!)
+      }, 500)
+    }
+  }
+
+  // Build word block meshes (extracted for reuse in history navigation)
+  const buildWordBlockMeshes = async (
+    utterance: Utterance,
+    words: string[],
+    blockLang: string,
+    targetLang: string,
+    metrics: LayoutMetrics,
+    blockSize: { width: number; height: number; gap: number; fontSize: number; twoRowLayout?: boolean }
+  ) => {
+    const wordCount = words.length
+
+    // Create shuffled copy of words array for gameplay challenge!
+    const shuffledWords = [...words].sort(() => Math.random() - 0.5)
+
     // Calculate block positions - will be set after creating meshes
     const blockPositions: { x: number; y: number; z: number }[] = []
     const totalWidth = wordCount * blockSize.width + (wordCount - 1) * blockSize.gap
     const startX = -totalWidth / 2 + blockSize.width / 2
-    
+
     shuffledWords.forEach((_, index) => {
       const x = startX + index * (blockSize.width + blockSize.gap)
       blockPositions.push({ x, y: metrics.wordBlocksY, z: 0 })
@@ -832,6 +1228,31 @@ export const createJuiceSqueeze = (
       ctx.lineWidth = 4
       ctx.stroke()
 
+      // Draw juicy drip effects at bottom of block
+      const drawDrip = (x: number, height: number, width: number) => {
+        const dripGradient = ctx.createLinearGradient(x, textureHeight - padding, x, textureHeight - padding + height)
+        dripGradient.addColorStop(0, shadeColor(fruitColor, -10))
+        dripGradient.addColorStop(0.5, fruitColor)
+        dripGradient.addColorStop(1, "rgba(255, 255, 255, 0)")
+
+        ctx.beginPath()
+        ctx.moveTo(x - width / 2, textureHeight - padding)
+        ctx.quadraticCurveTo(x - width / 2, textureHeight - padding + height * 0.7, x, textureHeight - padding + height)
+        ctx.quadraticCurveTo(x + width / 2, textureHeight - padding + height * 0.7, x + width / 2, textureHeight - padding)
+        ctx.closePath()
+        ctx.fillStyle = dripGradient
+        ctx.fill()
+      }
+
+      // Add 2-3 drips at varied positions with varied sizes
+      const dripPositions = [0.25, 0.55, 0.8]
+      dripPositions.forEach((pos, i) => {
+        const dripX = padding + (textureWidth - padding * 2) * pos
+        const dripHeight = 30 + (i % 2) * 20 // Vary height: 30, 50, 30
+        const dripWidth = 16 + (i % 2) * 8 // Vary width: 16, 24, 16
+        drawDrip(dripX, dripHeight, dripWidth)
+      })
+
       // Calculate font size to fill 80% of texture width
       // Start with large font size and shrink until text fits
       let fontSize = 300 // Start big
@@ -907,12 +1328,15 @@ export const createJuiceSqueeze = (
       block.receiveShadows = true
       shadowGenerator.addShadowCaster(block)
 
-      // Store block data
+      // Store block data with base dimensions for resize scaling
       wordBlockData.set(block, {
         word,
         originalIndex: originalIndex, // Use originalIndex for win checking
         originalPosition,
         isInSentence: false,
+        sentenceRow: -1, // -1 means not in sentence area
+        baseWidth: blockSize.width,   // Store creation-time width for scaling
+        baseHeight: blockSize.height, // Store creation-time height for scaling
       })
 
       // Add dragging behavior
@@ -929,104 +1353,71 @@ export const createJuiceSqueeze = (
       dragBehavior.onDragStartObservable.add(() => {
         const data = wordBlockData.get(block)
         if (!data) return
-        
+
         dragStartTime = Date.now()
         dragMoved = false
         dragStartPos = block.position.clone()
-        
-        // Scale up and lift when dragging for better feedback - exaggerated
-        block.scaling = new Vector3(1.15, 1.15, 1.15) // Scale up more
-        // Lift toward camera for depth (relative to original position) - more dramatic
-        block.position.z = data.originalPosition.z - 1.0 // Lift more dramatically when dragging
+
+        // Play TTS immediately on touch - no delay
+        if (typeof hostApi.speak === "function") {
+          const lang = useGameStore.getState().phrase.blockLang || "en"
+          hostApi.speak(lang, data.word)
+        }
+
+        // Visual feedback - scale up and lift
+        block.scaling = new Vector3(1.15, 1.15, 1.15)
+        block.position.z = data.originalPosition.z - 1.0
       })
       
-      // Track if block actually moved during drag
+      // Track if block actually moved during drag (X/Y only, ignore Z lift)
       dragBehavior.onDragObservable.add(() => {
         if (dragStartPos) {
-          const movedDistance = Vector3.Distance(block.position, dragStartPos)
-          if (movedDistance > 0.1) {
+          const dx = block.position.x - dragStartPos.x
+          const dy = block.position.y - dragStartPos.y
+          const movedDistance = Math.sqrt(dx * dx + dy * dy)
+          if (movedDistance > 0.3) {
             dragMoved = true
           }
         }
       })
-      
-      // TTS on tap (not drag) - using ActionManager for better tap detection
-      block.actionManager = new ActionManager(scene)
-      
-      block.actionManager.registerAction(
-        new ExecuteCodeAction(ActionManager.OnPickUpTrigger, () => {
-          const dragDuration = Date.now() - dragStartTime
-          // Only speak if it was a tap (short duration, no significant movement)
-          if (dragDuration < 200 && !dragMoved) {
-            const blockData = wordBlockData.get(block)
-            if (blockData && typeof hostApi.speak === "function") {
-              const phraseState = useGameStore.getState().phrase
-              const blockLang = phraseState.blockLang || "en"
-              try {
-                hostApi.speak(blockLang, blockData.word)
-              } catch (error) {
-                console.error("[juice-squeeze] ❌ Word tap TTS error:", error)
-              }
-            }
-          }
-        })
-      )
-      
+
       dragBehavior.onDragEndObservable.add(() => {
         // Reset scale
         block.scaling = new Vector3(1, 1, 1)
-        
+
         const data = wordBlockData.get(block)
         if (!data) return
-        
-        // Check if dropped in sentence area (using current metrics)
+
+        // Check if dropped in sentence area (using tracked dimensions)
         const currentMetrics = getLayoutMetrics()
-        const sentenceAreaY = currentMetrics.sentenceAreaY
-        const sentenceAreaHeight = currentMetrics.worldHeight * 0.12 // 12% of height
-        const isInSentenceArea = 
-          block.position.y >= sentenceAreaY - sentenceAreaHeight / 2 &&
-          block.position.y <= sentenceAreaY + sentenceAreaHeight / 2 &&
+        const sentenceAreaCenterY = currentMetrics.sentenceAreaY
+        const isInSentenceArea =
+          block.position.y >= sentenceAreaCenterY - sentenceAreaHeight / 2 &&
+          block.position.y <= sentenceAreaCenterY + sentenceAreaHeight / 2 &&
           Math.abs(block.position.x) <= sentenceAreaWidth / 2
-        
+
         if (isInSentenceArea) {
           // Mark as in sentence area (but still draggable!)
           data.isInSentence = true
-          // Snap Y to sentence area center and keep blocks in front of sentence area
-          block.position.y = sentenceAreaY
-          block.position.z = -0.5 // Further forward to guarantee visibility
-          
-          // Arrange all words in sentence area by X position (allows reordering)
-          // Use tight spacing for sentence area (blockWidth * 1.1)
-          const wordsInSentence = Array.from(wordBlockData.values())
-            .filter((d) => d.isInSentence)
-            .map((d) => {
-              const mesh = Array.from(wordBlockData.entries()).find(([_, data]) => data === d)?.[0]
-              return { data: d, mesh, x: mesh?.position.x || 0 }
-            })
-            .sort((a, b) => a.x - b.x) // Sort by current X position (allows reordering)
-          
-          // Tight spacing in sentence area - pack blocks together
-          const currentMetrics = getLayoutMetrics()
-          const currentWordCount = currentUtterance?.words?.length || wordsInSentence.length
-          const currentBlockSize = calculateBlockSize(currentWordCount, currentMetrics)
-          const sentenceSpacing = currentBlockSize.width * 1.1
-          const sentenceStartX = -(wordsInSentence.length - 1) * sentenceSpacing / 2
-          const sentenceAreaYPos = currentMetrics.sentenceAreaY
-          wordsInSentence.forEach((item, i) => {
-            if (item.mesh) {
-              item.mesh.position.x = sentenceStartX + i * sentenceSpacing
-              item.mesh.position.y = sentenceAreaYPos
-              item.mesh.position.z = -0.5 // Further forward to guarantee visibility
-            }
-          })
-          
+
+          // Determine which row to place the block in
+          const targetRow = getTargetRow(block.position.y, sentenceRowYPositions)
+          data.sentenceRow = targetRow
+
+          // Snap Z forward
+          block.position.z = -0.5
+
+          // Reflow all blocks in sentence area with multi-row support
+          reflowSentenceBlocks(currentMetrics)
+
           // Check win condition (but don't lock blocks)
           checkWin()
         } else {
           // Dragged out of sentence area - return to original position
           data.isInSentence = false
+          data.sentenceRow = -1
           const targetPos = data.originalPosition.clone()
-          
+
           // Animate snap back
           const snapBack = () => {
             const currentPos = block.position
@@ -1040,83 +1431,17 @@ export const createJuiceSqueeze = (
             }
           }
           snapBack()
-          
+
           // Re-arrange remaining words in sentence area
-          const wordsInSentence = Array.from(wordBlockData.values())
-            .filter((d) => d.isInSentence)
-            .map((d) => {
-              const mesh = Array.from(wordBlockData.entries()).find(([_, data]) => data === d)?.[0]
-              return { data: d, mesh, x: mesh?.position.x || 0 }
-            })
-            .sort((a, b) => a.x - b.x)
-          
-          if (wordsInSentence.length > 0) {
-            // Tight spacing in sentence area - pack blocks together
-            const currentMetrics = getLayoutMetrics()
-            const currentBlockSize = calculateBlockSize(currentUtterance?.words?.length || wordsInSentence.length, currentMetrics)
-            const sentenceSpacing = currentBlockSize.width * 1.1
-            const sentenceStartX = -(wordsInSentence.length - 1) * sentenceSpacing / 2
-            const sentenceAreaYPos = currentMetrics.sentenceAreaY
-            wordsInSentence.forEach((item, i) => {
-              if (item.mesh) {
-                item.mesh.position.x = sentenceStartX + i * sentenceSpacing
-                item.mesh.position.y = sentenceAreaYPos
-                item.mesh.position.z = -0.5 // Further forward to guarantee visibility
-              }
-            })
-          }
+          reflowSentenceBlocks(currentMetrics)
         }
       })
 
       wordBlocks.push(block)
     })
-    
+
     // Position all blocks using the positioning function
     positionWordBlocks(wordBlocks, metrics, blockSize)
-    
-    // Play target phrase TTS at round start (player hears what they need to translate)
-    if (utterance.targetText) {
-      // Capture local variables for closure
-      const localTargetLang = targetLang
-      const localBlockLang = blockLang
-      
-      const playTargetTTS = () => {
-        // Get fresh state at execution time to avoid stale state
-        const freshPhraseState = useGameStore.getState().phrase
-        const targetText = utterance.targetText!
-        // Use fresh state's targetLang, fallback to local variable from function scope
-        const ttsTargetLang = freshPhraseState.targetLang || localTargetLang
-        
-        console.log("[juice-squeeze] 🎯 TTS CHECK - About to speak:")
-        console.log("[juice-squeeze]    utterance.id:", utterance.id)
-        console.log("[juice-squeeze]    utterance.text (blockText):", utterance.text)
-        console.log("[juice-squeeze]    utterance.targetText:", utterance.targetText)
-        console.log("[juice-squeeze]    local targetLang (from function):", localTargetLang)
-        console.log("[juice-squeeze]    local blockLang (from function):", localBlockLang)
-        console.log("[juice-squeeze]    freshPhraseState.targetLang:", freshPhraseState.targetLang)
-        console.log("[juice-squeeze]    freshPhraseState.targetText:", freshPhraseState.targetText)
-        console.log("[juice-squeeze]    freshPhraseState.id:", freshPhraseState.id)
-        console.log("[juice-squeeze]    SPEAKING:", targetText, "in", ttsTargetLang)
-        
-        if (!ttsTargetLang) {
-          console.error("[juice-squeeze] ❌ No targetLang available for TTS!")
-          return
-        }
-        
-        if (typeof hostApi.speak === "function") {
-          try {
-            hostApi.speak(ttsTargetLang, targetText)
-          } catch (error) {
-            console.error("[juice-squeeze] ❌ Target phrase TTS error:", error)
-          }
-        } else {
-          console.error("[juice-squeeze] ❌ hostApi.speak is not a function!")
-        }
-      }
-      
-      // Small delay to ensure blocks are rendered before TTS
-      setTimeout(playTargetTTS, 500)
-    }
   }
 
   // Load and create word blocks
@@ -1144,13 +1469,26 @@ export const createJuiceSqueeze = (
     if (currentUtterance && wordBlocks.length > 0) {
       const wordCount = currentUtterance.words.length
       const blockSize = calculateBlockSize(wordCount, metrics)
-      
-      // Reposition all blocks
-      positionWordBlocks(wordBlocks, metrics, blockSize)
-      
-      // Update sentence area
+
+      // Scale block meshes to new calculated size
+      wordBlocks.forEach((block) => {
+        const data = wordBlockData.get(block)
+        if (data && data.baseWidth && data.baseHeight) {
+          block.scaling.x = blockSize.width / data.baseWidth
+          block.scaling.y = blockSize.height / data.baseHeight
+          // Keep Z scaling at 1
+        }
+      })
+
+      // Update sentence area first (this recalculates row positions)
       createSentenceArea(metrics, blockSize, wordCount)
-      
+
+      // Reposition word bank blocks (blocks not in sentence)
+      positionWordBlocks(wordBlocks, metrics, blockSize)
+
+      // Reflow blocks that are in the sentence area
+      reflowSentenceBlocks(metrics)
+
       // Update UI overlays
       const phraseState = useGameStore.getState().phrase
       if (phraseState.targetText && phraseState.targetLang) {
@@ -1208,9 +1546,10 @@ export const createJuiceSqueeze = (
     clearWordBlocks()
     
     // Remove UI elements
-    nextPhraseButton.remove()
-    titleElement.remove()
     exitButton.remove()
+    utteranceNav.remove()
+    titleElement.remove()
+    juiceGlass.dispose()
 
     if (resizeFrame) {
       window.cancelAnimationFrame(resizeFrame)

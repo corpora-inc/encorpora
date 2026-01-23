@@ -52,7 +52,8 @@ const tokenizeText = (text: string): string[] => {
   // First, match contractions (word + apostrophe + word)
   // Then match regular words (letters/marks/numbers)
   // Finally match punctuation/symbols
-  const regex = /[\p{L}\p{M}\p{N}]+(?:'[\p{L}\p{M}\p{N}]+)*|[\p{P}\p{S}]/gu
+  // Note: [''] matches both straight apostrophe (') and curly apostrophe (')
+  const regex = /[\p{L}\p{M}\p{N}]+(?:[''][\p{L}\p{M}\p{N}]+)*|[\p{P}\p{S}]/gu
   
   let match
   let lastIndex = 0
