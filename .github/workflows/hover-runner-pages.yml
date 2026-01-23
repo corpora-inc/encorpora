@@ -73,6 +73,20 @@ jobs:
           zip -r hanzipan.zip manifest.json dist/ HANZIWRITER_LICENSE.txt data/
           cd ../../..
 
+      - name: Install Juice Squeeze Dependencies
+        working-directory: corpan/packs/juice-squeeze
+        run: npm install --legacy-peer-deps
+
+      - name: Build Juice Squeeze
+        working-directory: corpan/packs/juice-squeeze
+        run: npm run build
+
+      - name: Package Juice Squeeze as ZIP
+        run: |
+          cd corpan/packs/juice-squeeze
+          zip -r juice-squeeze.zip manifest.json dist/
+          cd ../../..
+
       - name: Copy Hover Runner into io/out
         run: |
           mkdir -p "web/io/out/corpan/packs/hover-runner"
@@ -87,6 +101,13 @@ jobs:
           cp -R corpan/packs/hanzipan/dist "web/io/out/corpan/packs/hanzipan/"
           cp -R corpan/packs/hanzipan/data "web/io/out/corpan/packs/hanzipan/"
           cp corpan/packs/hanzipan/hanzipan.zip "web/io/out/corpan/packs/hanzipan.zip"
+
+      - name: Copy Juice Squeeze into io/out
+        run: |
+          mkdir -p "web/io/out/corpan/packs/juice-squeeze"
+          cp corpan/packs/juice-squeeze/manifest.json "web/io/out/corpan/packs/juice-squeeze/"
+          cp -R corpan/packs/juice-squeeze/dist "web/io/out/corpan/packs/juice-squeeze/"
+          cp corpan/packs/juice-squeeze/juice-squeeze.zip "web/io/out/corpan/packs/juice-squeeze.zip"
 
       - name: Show Final Structure
         run: |
