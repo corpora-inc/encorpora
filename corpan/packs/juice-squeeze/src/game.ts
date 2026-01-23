@@ -24,6 +24,7 @@ import type { HostApi, StackConfig } from "./sdk/types"
 import { loadUtterance, type Utterance } from "./data"
 import { useGameStore } from "./store/gameState"
 import { createJuiceGlass, type JuiceGlass } from "./juiceAnimation"
+import successSoundUrl from "./sounds/success.mp3"
 
 // Helper to darken/lighten hex colors
 const shadeColor = (color: string, percent: number): string => {
@@ -65,6 +66,18 @@ export const createJuiceSqueeze = (
   const root = document.createElement("div")
   root.className = "juice-squeeze"
   container.appendChild(root)
+
+  // Preload success sound for instant playback on win
+  console.log("[juice-squeeze] Creating success sound with URL:", successSoundUrl)
+  const successSound = new Audio(successSoundUrl)
+  successSound.preload = "auto"
+  successSound.volume = 0.9
+  successSound.addEventListener("canplaythrough", () => {
+    console.log("[juice-squeeze] Success sound preloaded and ready")
+  })
+  successSound.addEventListener("error", (e) => {
+    console.error("[juice-squeeze] Success sound load error:", e)
+  })
 
   const updateViewportSize = () => {
     const viewport = window.visualViewport
@@ -121,13 +134,23 @@ export const createJuiceSqueeze = (
     }
 
     ttsTimeoutId = window.setTimeout(() => {
-      if (!disposed && typeof hostApi.speak === "function") {
-        hostApi.speak(lang, text)
+      if (!disposed) {
+        speakFast(lang, text)
       }
       ttsTimeoutId = null
     }, delayMs)
   }
-  
+
+  // Fast TTS - stops queue and speaks immediately (self-contained, no hostApi changes needed)
+  const speakFast = (lang: string, text: string) => {
+    if (typeof hostApi.stopSpeech === "function") {
+      hostApi.stopSpeech()
+    }
+    if (typeof hostApi.speak === "function") {
+      hostApi.speak(lang, text)
+    }
+  }
+
   // Layout metrics type
   type LayoutMetrics = {
     worldWidth: number
@@ -742,9 +765,9 @@ export const createJuiceSqueeze = (
     // Add tap-to-speak functionality
     display.addEventListener("click", () => {
       const phraseState = useGameStore.getState().phrase
-      if (phraseState.targetText && phraseState.targetLang && typeof hostApi.speak === "function") {
+      if (phraseState.targetText && phraseState.targetLang) {
         try {
-          hostApi.speak(phraseState.targetLang, phraseState.targetText)
+          speakFast(phraseState.targetLang, phraseState.targetText)
         } catch (error) {
           console.error("[juice-squeeze] ❌ Target phrase tap TTS error:", error)
         }
@@ -884,20 +907,29 @@ export const createJuiceSqueeze = (
           juiceGlass.triggerOverflow()
         }
 
-        // Play TTS in block language (the language the player built)
+        // Play success sound instantly, then TTS after sound completes
         const completeSentence = wordsInSentence.join(" ")
         const currentState = useGameStore.getState()
         const blockLang = currentState.phrase.blockLang || "en"
-        
-        if (typeof hostApi.speak === "function") {
+
+        // Play sparkle sound
+        successSound.currentTime = 0
+        console.log("[juice-squeeze] Playing success sound, url:", successSoundUrl)
+        successSound.play().then(() => {
+          console.log("[juice-squeeze] Success sound started playing")
+        }).catch((err) => {
+          console.error("[juice-squeeze] Sound play failed:", err)
+        })
+
+        // Play TTS after a short delay for the sound to be heard
+        setTimeout(() => {
+          if (disposed) return
           try {
-            hostApi.speak(blockLang, completeSentence)
+            speakFast(blockLang, completeSentence)
           } catch (error) {
             console.error("[juice-squeeze] ❌ TTS call error:", error)
           }
-        } else {
-          console.error("[juice-squeeze] ❌ hostApi.speak is not a function!")
-        }
+        }, 400) // 400ms delay for sparkle sound to be heard first
       }
     }
   }
@@ -1022,8 +1054,8 @@ export const createJuiceSqueeze = (
     root.appendChild(overlay)
 
     // Play TTS for the answer
-    if (typeof hostApi.speak === "function" && phrase.blockLang) {
-      hostApi.speak(phrase.blockLang, phrase.correctWords.join(" "))
+    if (phrase.blockLang) {
+      speakFast(phrase.blockLang, phrase.correctWords.join(" "))
     }
   })
   root.appendChild(giveUpButton)
@@ -1527,11 +1559,9 @@ export const createJuiceSqueeze = (
         dragMoved = false
         dragStartPos = block.position.clone()
 
-        // Play TTS immediately on touch - no delay
-        if (typeof hostApi.speak === "function") {
-          const lang = useGameStore.getState().phrase.blockLang || "en"
-          hostApi.speak(lang, data.word)
-        }
+        // Play TTS immediately on touch - stopSpeech clears queue for instant response
+        const lang = useGameStore.getState().phrase.blockLang || "en"
+        speakFast(lang, data.word)
 
         // Bring block to front layer so it renders on top of other blocks
         block.renderingGroupId = 2
