@@ -53,7 +53,7 @@ export default defineConfig({
     },
     rollupOptions: {
       output: {
-        banner: "globalThis.process = globalThis.process || { env: {} };",
+        banner: "globalThis.process = globalThis.process || { env: {} }; var require$$0 = require$$0 || {};",
         assetFileNames: (assetInfo) => {
           if (assetInfo.name && assetInfo.name.endsWith(".css")) {
             return "app.css"
