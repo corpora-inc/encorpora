@@ -491,6 +491,11 @@ export const createJuiceSqueeze = (
   // Word blocks storage for dragging and sentence building (Babylon.js rendering state - stays local)
   let wordBlocks: Mesh[] = []
   let wordBlockData: Map<Mesh, { word: string; originalIndex: number; originalPosition: Vector3; isInSentence: boolean; sentenceRow: number; baseWidth: number; baseHeight: number }> = new Map()
+
+  // Track active drag state to prevent swipe navigation during block drags
+  let isDragging = false
+  let dragEndTime = 0
+  const DRAG_SWIPE_LOCKOUT_MS = 200 // Prevent swipe for 200ms after drag ends
   
   let sentenceAreaMesh: Mesh | null = null // Store reference to update size
   let sentenceAreaWidth = 60 // Track current sentence area width for collision detection
@@ -874,6 +879,11 @@ export const createJuiceSqueeze = (
         const newFillLevel = Math.min(1, updatedStats.completedPhrases / 10)
         juiceGlass.updateFill(newFillLevel)
 
+        // Trigger overflow animation when glass is nearly full (>=90%)
+        if (newFillLevel >= 0.9) {
+          juiceGlass.triggerOverflow()
+        }
+
         // Play TTS in block language (the language the player built)
         const completeSentence = wordsInSentence.join(" ")
         const currentState = useGameStore.getState()
@@ -963,7 +973,62 @@ export const createJuiceSqueeze = (
   })
   root.appendChild(exitButton)
 
-  // Create juice glass animation (below exit button)
+  // Create give up / show answer button (bottom-right)
+  const giveUpButton = document.createElement("button")
+  giveUpButton.textContent = "Show Answer"
+  giveUpButton.className = "give-up-btn"
+  giveUpButton.addEventListener("click", () => {
+    const state = useGameStore.getState()
+    if (state.hasWon) return // Don't show if already won
+
+    const { phrase } = state
+    if (!phrase.correctWords.length) return
+
+    // Create overlay
+    const overlay = document.createElement("div")
+    overlay.className = "answer-overlay"
+
+    // Create answer card
+    const card = document.createElement("div")
+    card.className = "answer-card"
+
+    const title = document.createElement("h3")
+    title.textContent = "Correct Answer:"
+
+    const answerText = document.createElement("div")
+    answerText.className = "answer-text"
+    answerText.textContent = phrase.correctWords.join(" ")
+
+    const continueBtn = document.createElement("button")
+    continueBtn.textContent = "Continue"
+    continueBtn.addEventListener("click", () => {
+      overlay.remove()
+      // Load next phrase
+      createWordBlocks()
+    })
+
+    card.appendChild(title)
+    card.appendChild(answerText)
+    card.appendChild(continueBtn)
+    overlay.appendChild(card)
+
+    // Close on overlay click (outside card)
+    overlay.addEventListener("click", (e) => {
+      if (e.target === overlay) {
+        overlay.remove()
+      }
+    })
+
+    root.appendChild(overlay)
+
+    // Play TTS for the answer
+    if (typeof hostApi.speak === "function" && phrase.blockLang) {
+      hostApi.speak(phrase.blockLang, phrase.correctWords.join(" "))
+    }
+  })
+  root.appendChild(giveUpButton)
+
+  // Create juice glass animation (centered)
   const juiceGlass: JuiceGlass = createJuiceGlass(root)
   // Initialize fill level from store
   const initialStats = useGameStore.getState().stats
@@ -1026,6 +1091,10 @@ export const createJuiceSqueeze = (
   }, { passive: true })
 
   root.addEventListener("touchend", (e) => {
+    // Skip swipe detection if we were dragging or just finished dragging
+    if (isDragging) return
+    if (Date.now() - dragEndTime < DRAG_SWIPE_LOCKOUT_MS) return
+
     const touchEndX = e.changedTouches[0].clientX
     const touchEndY = e.changedTouches[0].clientY
     const deltaX = touchEndX - touchStartX
@@ -1233,7 +1302,7 @@ export const createJuiceSqueeze = (
     // Create shuffled copy of words array for gameplay challenge!
     const shuffledWords = [...words].sort(() => Math.random() - 0.5)
 
-    // Calculate block positions - will be set after creating meshes
+    // Calculate block positions - uniform width for all blocks
     const blockPositions: { x: number; y: number; z: number }[] = []
     const totalWidth = wordCount * blockSize.width + (wordCount - 1) * blockSize.gap
     const startX = -totalWidth / 2 + blockSize.width / 2
@@ -1383,11 +1452,11 @@ export const createJuiceSqueeze = (
 
       texture.update()
 
-      // Create plane mesh for word block with dynamic size
+      // Create plane mesh for word block with uniform size
       const block = MeshBuilder.CreatePlane(
         `word-block-${utterance.id}-${shuffledIndex}`,
-        { 
-          width: blockSize.width, 
+        {
+          width: blockSize.width,
           height: blockSize.height
         },
         scene
@@ -1424,7 +1493,7 @@ export const createJuiceSqueeze = (
         originalPosition,
         isInSentence: false,
         sentenceRow: -1, // -1 means not in sentence area
-        baseWidth: blockSize.width,   // Store creation-time width for scaling
+        baseWidth: blockSize.width,   // Store uniform width for scaling
         baseHeight: blockSize.height, // Store creation-time height for scaling
       })
 
@@ -1438,10 +1507,21 @@ export const createJuiceSqueeze = (
       let dragStartTime = 0
       let dragMoved = false
       let dragStartPos: Vector3 | null = null
-      
+      let shrinkAnimationId: number | null = null // Track shrink animation to cancel on new drag
+
+      // Set default rendering group for proper z-ordering
+      block.renderingGroupId = 1
+
       dragBehavior.onDragStartObservable.add(() => {
+        isDragging = true // Track drag state for swipe prevention
         const data = wordBlockData.get(block)
         if (!data) return
+
+        // Cancel any running shrink animation to prevent jerkiness
+        if (shrinkAnimationId !== null) {
+          cancelAnimationFrame(shrinkAnimationId)
+          shrinkAnimationId = null
+        }
 
         dragStartTime = Date.now()
         dragMoved = false
@@ -1453,9 +1533,24 @@ export const createJuiceSqueeze = (
           hostApi.speak(lang, data.word)
         }
 
-        // Visual feedback - scale up and lift
-        block.scaling = new Vector3(1.15, 1.15, 1.15)
+        // Bring block to front layer so it renders on top of other blocks
+        block.renderingGroupId = 2
         block.position.z = data.originalPosition.z - 1.0
+
+        // Animate smooth growth: uniform 1.7x for all blocks
+        const growthFactor = 1.7
+        const animateGrow = () => {
+          const currentScale = block.scaling.x
+          const diff = growthFactor - currentScale
+          if (Math.abs(diff) > 0.05) {
+            const newScale = currentScale + diff * 0.15
+            block.scaling = new Vector3(newScale, newScale, 1)
+            requestAnimationFrame(animateGrow)
+          } else {
+            block.scaling = new Vector3(growthFactor, growthFactor, 1)
+          }
+        }
+        animateGrow()
       })
       
       // Track if block actually moved during drag (X/Y only, ignore Z lift)
@@ -1471,8 +1566,25 @@ export const createJuiceSqueeze = (
       })
 
       dragBehavior.onDragEndObservable.add(() => {
-        // Reset scale
-        block.scaling = new Vector3(1, 1, 1)
+        isDragging = false // Clear drag state
+        dragEndTime = Date.now() // Record end time for swipe lockout
+
+        // Restore normal rendering layer
+        block.renderingGroupId = 1
+
+        // Animate smooth shrink back to normal size
+        const animateShrink = () => {
+          const currentScale = block.scaling.x
+          if (currentScale > 1.05) {
+            const newScale = currentScale * 0.85
+            block.scaling = new Vector3(newScale, newScale, 1)
+            shrinkAnimationId = requestAnimationFrame(animateShrink)
+          } else {
+            block.scaling = new Vector3(1, 1, 1)
+            shrinkAnimationId = null
+          }
+        }
+        animateShrink()
 
         const data = wordBlockData.get(block)
         if (!data) return
@@ -1642,6 +1754,7 @@ export const createJuiceSqueeze = (
     
     // Remove UI elements
     exitButton.remove()
+    giveUpButton.remove()
     utteranceNav.remove()
     titleElement.remove()
     juiceGlass.dispose()

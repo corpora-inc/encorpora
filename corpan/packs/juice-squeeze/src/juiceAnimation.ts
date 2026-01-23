@@ -1,18 +1,28 @@
 /**
  * Juice Glass Animation Module
  * Creates an SVG juice glass that fills as player completes phrases,
- * with an orange squeeze animation on each win.
+ * with an orange squeeze animation on each win and overflow spill effect.
  */
 
 export type JuiceGlass = {
   updateFill: (level: number) => void
   triggerSqueeze: () => void
+  triggerOverflow: () => void
   dispose: () => void
 }
 
 export const createJuiceGlass = (root: HTMLElement): JuiceGlass => {
   const container = document.createElement("div")
   container.className = "juice-glass-container"
+
+  // Generate random splash positions for variety
+  const splashElements = Array.from({ length: 6 }, (_, i) => {
+    const splashX = (Math.random() - 0.5) * 60
+    const splashY = Math.random() * 80 + 40
+    const delay = i * 0.08
+    return `<div class="juice-splash" style="--splash-x: ${splashX}px; --splash-y: ${splashY}px; left: ${15 + Math.random() * 70}%; animation-delay: ${delay}s;"></div>`
+  }).join("")
+
   container.innerHTML = `
     <div class="orange-squeeze">
       <div class="orange"></div>
@@ -42,11 +52,19 @@ export const createJuiceGlass = (root: HTMLElement): JuiceGlass => {
       <ellipse cx="50" cy="15" rx="32" ry="6"
                fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="2"/>
     </svg>
+    <div class="juice-overflow">
+      <div class="juice-drip drip-1"></div>
+      <div class="juice-drip drip-2"></div>
+      <div class="juice-drip drip-3"></div>
+      <div class="juice-drip drip-4"></div>
+      ${splashElements}
+    </div>
   `
   root.appendChild(container)
 
   const juiceFill = container.querySelector(".juice-fill") as SVGRectElement
   const orangeSqueeze = container.querySelector(".orange-squeeze") as HTMLElement
+  const overflowEl = container.querySelector(".juice-overflow") as HTMLElement
 
   return {
     updateFill: (level: number) => {
@@ -62,6 +80,12 @@ export const createJuiceGlass = (root: HTMLElement): JuiceGlass => {
       setTimeout(() => {
         orangeSqueeze.classList.remove("squeezing")
       }, 1500)
+    },
+    triggerOverflow: () => {
+      overflowEl.classList.add("active")
+      setTimeout(() => {
+        overflowEl.classList.remove("active")
+      }, 2000)
     },
     dispose: () => {
       container.remove()
