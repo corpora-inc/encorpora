@@ -98,7 +98,7 @@ export const createJuiceSqueeze = (
 
   const scene = new Scene(engine)
   // Tropical sunset background (warm orange/pink)
-  scene.clearColor = new Color4(1, 0.7, 0.5, 1) // Bright orange-pink tropical sunset
+  scene.clearColor = new Color4(0, 1, 1, 1) // Cyan background
 
   // Camera setup - ORTHOGRAPHIC for 2D view
   const camera = new UniversalCamera("camera", new Vector3(0, 0, -15), scene)
@@ -200,12 +200,12 @@ export const createJuiceSqueeze = (
   
   // Layout constants for responsive design
   // These are BASE values at 320px viewport - they scale proportionally with viewport
-  const BASE_MIN_BLOCK_WIDTH = 2.5 // Base minimum block width at 320px
-  const BASE_MIN_BLOCK_HEIGHT = 1.25 // Base minimum block height at 320px
+  const BASE_MIN_BLOCK_WIDTH = 2.0 // Base minimum block width at 320px (reduced to fit more)
+  const BASE_MIN_BLOCK_HEIGHT = 1.0 // Base minimum block height at 320px (reduced to fit more)
   const MAX_BLOCKS_PER_ROW = 5 // Force 2-row layout above this
 
   // Multi-row sentence area constants
-  const MAX_SENTENCE_ROWS = 3
+  const MAX_SENTENCE_ROWS = 4 // Increased to fit longer phrases
   const SENTENCE_BLOCKS_PER_ROW_MOBILE = 3 // ≤480px viewport width
   const SENTENCE_BLOCKS_PER_ROW_TABLET = 4 // 481-720px
   const SENTENCE_BLOCKS_PER_ROW_DESKTOP = 6 // >720px
@@ -653,6 +653,42 @@ export const createJuiceSqueeze = (
     return languageNames[code] || code
   }
 
+  // Get language name in its own language/script (for display to native speakers)
+  const getNativeLanguageName = (code: string): string => {
+    const nativeNames: Record<string, string> = {
+      en: "English",
+      es: "español",
+      fr: "français",
+      it: "italiano",
+      "pt-BR": "português",
+      de: "Deutsch",
+      pl: "polski",
+      ru: "русский",
+      hu: "magyar",
+      tr: "Türkçe",
+      ar: "العربية",
+      fa: "فارسی",
+      hi: "हिन्दी",
+      bn: "বাংলা",
+      th: "ไทย",
+      vi: "Tiếng Việt",
+      id: "Bahasa Indonesia",
+      "zh-Hans": "中文",
+      "zh-Hant": "中文",
+      "ko-polite": "한국어",
+      ja: "日本語",
+      ta: "தமிழ்",
+      te: "తెలుగు",
+      kn: "ಕನ್ನಡ",
+      mr: "मराठी",
+      gu: "ગુજરાતી",
+      "pa-Guru": "ਪੰਜਾਬੀ",
+      "pa-Arab": "پنجابی",
+      ur: "اردو",
+    }
+    return nativeNames[code] || code
+  }
+
   // Create target phrase display with language label (viewport-based)
   const createTargetPhraseDisplay = (text: string, languageCode: string, metrics: LayoutMetrics) => {
     // Remove old display if exists
@@ -721,27 +757,27 @@ export const createJuiceSqueeze = (
       oldLabel.remove()
     }
     
-    const languageName = getLanguageName(languageCode)
+    const nativeName = getNativeLanguageName(languageCode)
     const canvasElement = engine.getRenderingCanvas()
     if (!canvasElement) return
-    
+
     // Get canvas bounding rect for pixel positioning
     const canvasRect = canvasElement.getBoundingClientRect()
     const canvasHeight = canvasElement.height
-    
+
     // Convert world Y coordinate to CSS pixel position
     // World Y is positive up, CSS Y is positive down from top
     const worldY = metrics.blockLabelY
     const pixelY = canvasRect.top + (canvasHeight / 2) - (worldY * metrics.pixelsPerUnit)
-    
+
     // Responsive font size based on viewport percentage
     const viewportWidth = canvasElement.width
     const labelFontSize = Math.max(16, Math.min(24, viewportWidth * 0.04)) // 4% of width
     const padding = Math.max(6, Math.min(12, viewportWidth * 0.02)) // 2% of width
-    
+
     const label = document.createElement("div")
     label.className = "block-language-label"
-    label.textContent = `Build in: ${languageName}`
+    label.textContent = nativeName
     label.style.top = `${pixelY}px`
     root.appendChild(label)
   }
@@ -978,6 +1014,44 @@ export const createJuiceSqueeze = (
     nextButton.disabled = false // Always allow going forward (loads new if at end)
   }
 
+  // Swipe navigation for mobile
+  let touchStartX = 0
+  let touchStartY = 0
+  const SWIPE_THRESHOLD = 50 // Minimum swipe distance in pixels
+  const SWIPE_VERTICAL_LIMIT = 100 // Max vertical movement to count as horizontal swipe
+
+  root.addEventListener("touchstart", (e) => {
+    touchStartX = e.touches[0].clientX
+    touchStartY = e.touches[0].clientY
+  }, { passive: true })
+
+  root.addEventListener("touchend", (e) => {
+    const touchEndX = e.changedTouches[0].clientX
+    const touchEndY = e.changedTouches[0].clientY
+    const deltaX = touchEndX - touchStartX
+    const deltaY = touchEndY - touchStartY
+
+    // Only register as swipe if horizontal movement is significant
+    // and vertical movement is limited (not a scroll or drag)
+    if (Math.abs(deltaX) > SWIPE_THRESHOLD && Math.abs(deltaY) < SWIPE_VERTICAL_LIMIT) {
+      if (deltaX < 0) {
+        // Swipe left → next utterance
+        if (historyIndex < utteranceHistory.length - 1) {
+          historyIndex++
+          loadUtteranceFromHistory(utteranceHistory[historyIndex])
+        } else {
+          createWordBlocks()
+        }
+      } else {
+        // Swipe right → previous utterance
+        if (historyIndex > 0) {
+          historyIndex--
+          loadUtteranceFromHistory(utteranceHistory[historyIndex])
+        }
+      }
+    }
+  }, { passive: true })
+
   // Load utterance from history (reuses existing utterance)
   const loadUtteranceFromHistory = async (utterance: Utterance) => {
     clearWordBlocks()
@@ -1052,14 +1126,14 @@ export const createJuiceSqueeze = (
     if (languages.length === 1) {
       return [languages[0], languages[0]] // Same language if only one
     }
-    
-    // Pick two different random languages
-    const shuffled = [...languages].sort(() => Math.random() - 0.5)
-    const langA = shuffled[0]
-    const langB = shuffled[1]
-    
-    // Randomly decide which is target (shown at top) and which is blocks
-    return Math.random() < 0.5 ? [langA, langB] : [langB, langA]
+
+    // languages[0] = target language (what user is learning) - top in settings
+    // languages[1] = primary language (user's native) - bottom in settings
+    // Return: [targetLang (phrase at top), blockLang (words to build)]
+    // User sees phrase in primary/native (languages[1]), builds with target (languages[0])
+    // But API expects: targetLang for display, blockLang for blocks
+    // If user has English primary, French target: show English, build French
+    return [languages[0], languages[1]]
   }
 
   // Create word blocks from loaded utterance
