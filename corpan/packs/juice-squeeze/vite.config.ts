@@ -32,7 +32,7 @@ const updateManifestPlugin = () => {
 export default defineConfig({
   root: "./",
   publicDir: "public",
-  assetsInclude: ["**/*.glb"],
+  assetsInclude: ["**/*.glb", "**/*.mp3"],
   define: {
     "process.env": {},
   },

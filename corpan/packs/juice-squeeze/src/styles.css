@@ -50,7 +50,7 @@
     4px 4px 0 rgba(0, 0, 0, 0.15),
     0 0 20px rgba(255, 140, 0, 0.4);
   font-size: clamp(22px, 7vw, 42px);
-  top: clamp(10px, 2vh, 20px);
+  top: calc(env(safe-area-inset-top) + clamp(10px, 2vh, 20px));
   letter-spacing: 0.5px;
   z-index: 1000;
   pointer-events: none;
@@ -61,8 +61,8 @@
 /* Exit Button */
 .exit-btn {
   position: fixed;
-  top: calc(clamp(12px, 2.4vw, 20px));
-  right: clamp(12px, 2.4vw, 24px);
+  top: calc(env(safe-area-inset-top) + clamp(12px, 2.4vw, 20px));
+  right: calc(env(safe-area-inset-right) + clamp(12px, 2.4vw, 24px));
   z-index: 1001;
   border: 1px solid rgba(27, 27, 31, 0.1);
   background: rgba(255, 255, 255, 0.5);
@@ -160,8 +160,8 @@
 /* Utterance Navigation Arrows (near Build label) */
 .utterance-nav {
   position: fixed;
-  left: clamp(12px, 3vw, 24px);
-  bottom: clamp(20px, 5vh, 40px);
+  left: calc(env(safe-area-inset-left) + clamp(12px, 3vw, 24px));
+  bottom: calc(env(safe-area-inset-bottom) + clamp(20px, 5vh, 40px));
   display: flex;
   gap: clamp(8px, 2vw, 16px);
   z-index: 1001;
@@ -218,16 +218,116 @@
   background: linear-gradient(135deg, #FF9970, #FF7F50);
 }
 
-/* Juice Glass Animation */
+/* Give Up / Show Answer Button */
+.give-up-btn {
+  position: fixed;
+  right: calc(env(safe-area-inset-right) + clamp(12px, 3vw, 24px));
+  bottom: calc(env(safe-area-inset-bottom) + clamp(20px, 5vh, 40px));
+  z-index: 1001;
+  border: 1px solid rgba(27, 27, 31, 0.15);
+  background: rgba(255, 255, 255, 0.7);
+  color: var(--muted);
+  padding: clamp(8px, 2vw, 12px) clamp(12px, 3vw, 18px);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  font-size: clamp(12px, 3vw, 16px);
+  font-weight: 500;
+  box-shadow: 0 4px 12px rgba(16, 26, 31, 0.1);
+  backdrop-filter: blur(8px);
+  transition: transform 150ms ease, box-shadow 150ms ease, background 150ms ease;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.give-up-btn:hover {
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 6px 16px rgba(16, 26, 31, 0.15);
+}
+
+.give-up-btn:active {
+  transform: translateY(1px) scale(0.98);
+}
+
+/* Answer reveal overlay */
+.answer-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  animation: fadeIn 300ms ease-out;
+}
+
+.answer-card {
+  background: white;
+  border-radius: var(--radius-lg);
+  padding: clamp(20px, 5vw, 32px);
+  max-width: 90vw;
+  max-height: 80vh;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  animation: slideUp 300ms ease-out;
+}
+
+.answer-card h3 {
+  font-size: clamp(16px, 4vw, 22px);
+  color: var(--muted);
+  margin: 0 0 12px 0;
+  font-weight: 500;
+}
+
+.answer-card .answer-text {
+  font-size: clamp(20px, 5vw, 28px);
+  font-weight: bold;
+  color: var(--ink);
+  margin-bottom: 20px;
+  line-height: 1.4;
+}
+
+.answer-card button {
+  background: linear-gradient(135deg, #20B2AA, #008B8B);
+  color: white;
+  border: none;
+  border-radius: var(--radius-md);
+  padding: 12px 24px;
+  font-size: clamp(14px, 3.5vw, 18px);
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 8px;
+  transition: transform 150ms ease, box-shadow 150ms ease;
+}
+
+.answer-card button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.answer-card button:active {
+  transform: translateY(1px) scale(0.98);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* Juice Glass Animation - Top-left corner (opposite exit button) */
 .juice-glass-container {
   position: fixed;
-  right: clamp(12px, 2.4vw, 24px);
-  top: clamp(70px, 12vh, 100px);
-  width: clamp(50px, 10vw, 80px);
-  height: clamp(75px, 15vh, 120px);
+  left: calc(env(safe-area-inset-left) + clamp(12px, 3vw, 24px));
+  top: calc(env(safe-area-inset-top) + clamp(60px, 10vh, 100px));
+  width: clamp(50px, 12vw, 90px);
+  height: clamp(75px, 18vh, 135px);
   z-index: 50;
   pointer-events: none;
-  opacity: 0.9;
+  opacity: 0.95;
 }
 
 .juice-glass {
@@ -323,6 +423,86 @@
   100% { height: 0; opacity: 0; }
 }
 
+/* Juice overflow/spill effect */
+.juice-overflow {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 0;
+  pointer-events: none;
+}
+
+.juice-overflow.active {
+  animation: overflowPulse 2s ease-out forwards;
+}
+
+.juice-drip {
+  position: absolute;
+  width: 6px;
+  height: 0;
+  background: linear-gradient(to bottom, #FFB84D, #FF9800);
+  border-radius: 0 0 4px 4px;
+  opacity: 0;
+  top: 100%;
+}
+
+.juice-drip.drip-1 { left: 15%; }
+.juice-drip.drip-2 { left: 35%; }
+.juice-drip.drip-3 { left: 55%; }
+.juice-drip.drip-4 { left: 75%; }
+
+.juice-overflow.active .juice-drip {
+  animation: dripDown 1.8s ease-in forwards;
+}
+
+.juice-overflow.active .juice-drip.drip-1 { animation-delay: 0.1s; }
+.juice-overflow.active .juice-drip.drip-2 { animation-delay: 0.25s; }
+.juice-overflow.active .juice-drip.drip-3 { animation-delay: 0.15s; }
+.juice-overflow.active .juice-drip.drip-4 { animation-delay: 0.35s; }
+
+.juice-splash {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: radial-gradient(circle, #FFD54F, #FF9800);
+  border-radius: 50%;
+  opacity: 0;
+  top: 100%;
+}
+
+.juice-overflow.active .juice-splash {
+  animation: splashOut 1.2s ease-out forwards;
+}
+
+@keyframes overflowPulse {
+  0% { height: 0; }
+  30% { height: 20px; }
+  100% { height: 0; }
+}
+
+@keyframes dripDown {
+  0% { height: 0; opacity: 0; transform: translateY(0); }
+  15% { height: 40px; opacity: 1; transform: translateY(0); }
+  70% { height: 60px; opacity: 0.9; transform: translateY(80px); }
+  100% { height: 30px; opacity: 0; transform: translateY(150px); }
+}
+
+@keyframes splashOut {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translate(var(--splash-x, 20px), var(--splash-y, 100px)) scale(0.3);
+    opacity: 0;
+  }
+}
+
 /* Animations */
 @keyframes floatIn {
   from {
@@ -358,13 +538,13 @@
     width: 40px;
     height: 40px;
     font-size: 20px;
-    top: clamp(10px, 2vw, 16px);
-    right: clamp(10px, 2vw, 20px);
+    top: calc(env(safe-area-inset-top) + clamp(10px, 2vw, 16px));
+    right: calc(env(safe-area-inset-right) + clamp(10px, 2vw, 20px));
   }
 
   .utterance-nav {
-    bottom: clamp(16px, 4vh, 32px);
-    left: clamp(10px, 2.5vw, 20px);
+    bottom: calc(env(safe-area-inset-bottom) + clamp(16px, 4vh, 32px));
+    left: calc(env(safe-area-inset-left) + clamp(10px, 2.5vw, 20px));
     gap: clamp(6px, 2vw, 14px);
   }
 
@@ -375,9 +555,17 @@
   }
 
   .juice-glass-container {
-    top: clamp(60px, 10vh, 90px);
-    width: clamp(45px, 9vw, 70px);
-    height: clamp(68px, 13vh, 105px);
+    left: calc(env(safe-area-inset-left) + clamp(10px, 2.5vw, 20px));
+    top: calc(env(safe-area-inset-top) + clamp(55px, 9vh, 85px));
+    width: clamp(45px, 10vw, 75px);
+    height: clamp(68px, 15vh, 112px);
+  }
+
+  .give-up-btn {
+    right: calc(env(safe-area-inset-right) + clamp(10px, 2.5vw, 20px));
+    bottom: calc(env(safe-area-inset-bottom) + clamp(16px, 4vh, 32px));
+    padding: clamp(6px, 1.5vw, 10px) clamp(10px, 2.5vw, 16px);
+    font-size: clamp(11px, 2.8vw, 14px);
   }
 }
 
@@ -409,13 +597,13 @@
     width: 36px;
     height: 36px;
     font-size: 18px;
-    top: clamp(8px, 1.5vw, 12px);
-    right: clamp(8px, 1.5vw, 16px);
+    top: calc(env(safe-area-inset-top) + clamp(8px, 1.5vw, 12px));
+    right: calc(env(safe-area-inset-right) + clamp(8px, 1.5vw, 16px));
   }
 
   .utterance-nav {
-    bottom: clamp(12px, 3vh, 24px);
-    left: clamp(8px, 2vw, 16px);
+    bottom: calc(env(safe-area-inset-bottom) + clamp(12px, 3vh, 24px));
+    left: calc(env(safe-area-inset-left) + clamp(8px, 2vw, 16px));
     gap: clamp(6px, 1.5vw, 12px);
   }
 
@@ -426,8 +614,16 @@
   }
 
   .juice-glass-container {
-    top: clamp(50px, 8vh, 70px);
-    width: clamp(40px, 8vw, 60px);
-    height: clamp(60px, 12vh, 90px);
+    left: calc(env(safe-area-inset-left) + clamp(8px, 2vw, 16px));
+    top: calc(env(safe-area-inset-top) + clamp(50px, 8vh, 70px));
+    width: clamp(40px, 9vw, 65px);
+    height: clamp(60px, 13vh, 98px);
+  }
+
+  .give-up-btn {
+    right: calc(env(safe-area-inset-right) + clamp(8px, 2vw, 16px));
+    bottom: calc(env(safe-area-inset-bottom) + clamp(12px, 3vh, 24px));
+    padding: clamp(5px, 1.2vw, 8px) clamp(8px, 2vw, 14px);
+    font-size: clamp(10px, 2.5vw, 13px);
   }
 }
