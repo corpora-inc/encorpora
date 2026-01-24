@@ -496,8 +496,7 @@ export const createJuiceSqueeze = (
     const blocksPerRowByWidth = Math.floor(availableWidth / sentenceSpacing)
     const effectiveBlocksPerRow = Math.max(2, Math.min(maxBlocksPerRow, blocksPerRowByWidth))
 
-    // Sort blocks by row first, then by X position within row
-    // This maintains the user's intended reading order
+    // Sort blocks by row first, then by X position within row (left to right)
     blocksInSentence.sort((a, b) => {
       if (a.data.sentenceRow !== b.data.sentenceRow) {
         return a.data.sentenceRow - b.data.sentenceRow
@@ -505,7 +504,7 @@ export const createJuiceSqueeze = (
       return a.mesh.position.x - b.mesh.position.x
     })
 
-    // Redistribute blocks into rows sequentially (reading order)
+    // Redistribute blocks into rows sequentially
     blocksInSentence.forEach((item, globalIndex) => {
       const row = Math.floor(globalIndex / effectiveBlocksPerRow)
       const indexInRow = globalIndex % effectiveBlocksPerRow
@@ -867,14 +866,22 @@ export const createJuiceSqueeze = (
     const canvasRect = canvasElement.getBoundingClientRect()
     const canvasHeight = canvasElement.height
     
-    // Convert world Y coordinate to CSS pixel position
-    // World Y is positive up, CSS Y is positive down from top
-    // pixelY = (canvasHeight / 2) - (worldY * pixelsPerUnit)
+    // Position in the top space above the sentence area
+    // Calculate two positions and blend them for optimal placement
+
+    // Position 1: Based on world coordinates (original approach - higher)
     const worldY = metrics.targetPhraseY
-    const rawPixelY = canvasRect.top + (canvasHeight / 2) - (worldY * metrics.pixelsPerUnit)
-    // Ensure minimum offset from top to avoid overlapping title on mobile
-    const minTopOffset = 90
-    const pixelY = Math.max(minTopOffset, rawPixelY)
+    const worldBasedY = canvasRect.top + (canvasHeight / 2) - (worldY * metrics.pixelsPerUnit)
+
+    // Position 2: Midpoint between title and sentence area (lower)
+    const titleApproxHeight = 60
+    const topSpaceStart = canvasRect.top + titleApproxHeight
+    const sentenceWorldY = metrics.sentenceAreaY
+    const sentencePixelY = canvasRect.top + (canvasHeight / 2) - (sentenceWorldY * metrics.pixelsPerUnit)
+    const midpointBasedY = (topSpaceStart + sentencePixelY) / 2
+
+    // Blend with 70% weight on world-based (higher) and 30% on midpoint (lower)
+    const pixelY = worldBasedY * 0.7 + midpointBasedY * 0.3
     
     // Responsive font sizes based on viewport percentage
     const viewportWidth = canvasElement.width
@@ -1004,7 +1011,12 @@ export const createJuiceSqueeze = (
       return // Prevent multiple wins
     }
 
-    // Get blocks in sentence area, sorted by row first (top to bottom), then X (left to right)
+    // Check if current language is RTL
+    const blockLang = phrase.blockLang || "en"
+    const isBlockLangRTL = isRTL(blockLang)
+
+    // Get blocks in sentence area, sorted by row first (top to bottom), then X
+    // For RTL: right to left (descending X), for LTR: left to right (ascending X)
     const wordsInSentence = Array.from(wordBlockData.entries())
       .filter(([_, data]) => data.isInSentence)
       .sort(([meshA, dataA], [meshB, dataB]) => {
@@ -1012,11 +1024,12 @@ export const createJuiceSqueeze = (
         if (dataA.sentenceRow !== dataB.sentenceRow) {
           return dataA.sentenceRow - dataB.sentenceRow
         }
-        // Then sort by X within same row (left to right)
-        return meshA.position.x - meshB.position.x
+        // Then sort by X within same row
+        // RTL: right to left (descending), LTR: left to right (ascending)
+        return isBlockLangRTL ? meshB.position.x - meshA.position.x : meshA.position.x - meshB.position.x
       })
       .map(([_, data]) => data.word)
-    
+
     if (wordsInSentence.length === phrase.correctWords.length) {
       const isCorrect = wordsInSentence.every((word, i) => word === phrase.correctWords[i])
       
@@ -1426,6 +1439,12 @@ export const createJuiceSqueeze = (
     targetLangRotationIndex++
 
     return [displayLang, blockLang]
+  }
+
+  // Check if language is RTL (right-to-left)
+  const isRTL = (langCode: string): boolean => {
+    const rtlLanguages = ['ar', 'fa', 'ur', 'he', 'pa-Arab']
+    return rtlLanguages.includes(langCode)
   }
 
   // Create word blocks from loaded utterance
@@ -1854,6 +1873,9 @@ export const createJuiceSqueeze = (
           Math.abs(block.position.x) <= sentenceAreaWidth / 2
 
         const placeBlockAtSentenceEnd = (metrics: LayoutMetrics) => {
+          const currentBlockLang = useGameStore.getState().phrase.blockLang || "en"
+          const isBlockLangRTL = isRTL(currentBlockLang)
+
           const blocksInSentence = Array.from(wordBlockData.entries())
             .filter(([mesh, entry]) => entry.isInSentence && mesh !== block)
             .map(([mesh, entry]) => ({ mesh, entry }))
@@ -1862,20 +1884,49 @@ export const createJuiceSqueeze = (
           let targetX = 0
 
           if (blocksInSentence.length > 0) {
+            // Calculate max blocks per row
+            const currentWordCount = currentUtterance?.words?.length || blocksInSentence.length + 1
+            const currentBlockSize = calculateBlockSize(currentWordCount, metrics)
+            const sentenceSpacing = currentBlockSize.width * 1.15
+
+            const canvasElement = engine.getRenderingCanvas()
+            const viewportWidth = canvasElement?.width || 720
+            const maxBlocksPerRow = getSentenceBlocksPerRow(viewportWidth)
+            const availableWidth = metrics.worldWidth * 0.85
+            const blocksPerRowByWidth = Math.floor(availableWidth / sentenceSpacing)
+            const effectiveBlocksPerRow = Math.max(2, Math.min(maxBlocksPerRow, blocksPerRowByWidth))
+
+            // Sort by row, then by reading order (RTL: right-to-left, LTR: left-to-right)
             blocksInSentence.sort((a, b) => {
               if (a.entry.sentenceRow !== b.entry.sentenceRow) {
                 return a.entry.sentenceRow - b.entry.sentenceRow
               }
-              return a.mesh.position.x - b.mesh.position.x
+              return isBlockLangRTL ? b.mesh.position.x - a.mesh.position.x : a.mesh.position.x - b.mesh.position.x
             })
             const last = blocksInSentence[blocksInSentence.length - 1]
             targetRow = last.entry.sentenceRow
 
-            const currentWordCount =
-              currentUtterance?.words?.length || blocksInSentence.length + 1
-            const currentBlockSize = calculateBlockSize(currentWordCount, metrics)
-            const sentenceSpacing = currentBlockSize.width * 1.15
-            targetX = last.mesh.position.x + sentenceSpacing
+            // Count how many blocks are in the current row
+            const blocksInCurrentRow = blocksInSentence.filter(b => b.entry.sentenceRow === targetRow).length
+
+            // Check if current row is full
+            if (blocksInCurrentRow >= effectiveBlocksPerRow) {
+              // Move to next row
+              targetRow++
+              // Start at beginning of new row (right for RTL, left for LTR)
+              const rowWidth = sentenceSpacing
+              if (isBlockLangRTL) {
+                targetX = rowWidth / 2 - currentBlockSize.width / 2
+              } else {
+                targetX = -rowWidth / 2 + currentBlockSize.width / 2
+              }
+            } else {
+              // Add to current row
+              // For RTL, add to the left (subtract spacing); for LTR, add to the right (add spacing)
+              targetX = isBlockLangRTL
+                ? last.mesh.position.x - sentenceSpacing
+                : last.mesh.position.x + sentenceSpacing
+            }
           }
 
           data.isInSentence = true
