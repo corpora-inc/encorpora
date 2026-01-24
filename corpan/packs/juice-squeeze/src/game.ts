@@ -41,6 +41,128 @@ const shadeColor = (color: string, percent: number): string => {
   ).toString(16).slice(1)
 }
 
+// Helper to redraw a word block's texture with new text (for fruit flip feature)
+const updateBlockText = (
+  texture: DynamicTexture,
+  newText: string,
+  fruitColor: string
+) => {
+  const textureWidth = 1024
+  const textureHeight = 512
+  const ctx = texture.getContext() as CanvasRenderingContext2D
+
+  // Rounded rectangle helper
+  const roundRect = (x: number, y: number, w: number, h: number, r: number) => {
+    ctx.beginPath()
+    ctx.moveTo(x + r, y)
+    ctx.lineTo(x + w - r, y)
+    ctx.quadraticCurveTo(x + w, y, x + w, y + r)
+    ctx.lineTo(x + w, y + h - r)
+    ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h)
+    ctx.lineTo(x + r, y + h)
+    ctx.quadraticCurveTo(x, y + h, x, y + h - r)
+    ctx.lineTo(x, y + r)
+    ctx.quadraticCurveTo(x, y, x + r, y)
+    ctx.closePath()
+  }
+
+  // Clear texture
+  ctx.clearRect(0, 0, textureWidth, textureHeight)
+
+  const padding = 16
+  const radius = 48
+
+  // Draw rounded block with gradient for depth
+  roundRect(padding, padding, textureWidth - padding * 2, textureHeight - padding * 2, radius)
+
+  // Juicy gradient
+  const gradient = ctx.createLinearGradient(0, 0, 0, textureHeight)
+  gradient.addColorStop(0, fruitColor)
+  gradient.addColorStop(0.5, fruitColor)
+  gradient.addColorStop(1, shadeColor(fruitColor, -20))
+
+  ctx.fillStyle = gradient
+  ctx.fill()
+
+  // Glossy highlight at top
+  const highlightGradient = ctx.createLinearGradient(0, padding, 0, textureHeight * 0.3)
+  highlightGradient.addColorStop(0, "rgba(255, 255, 255, 0.75)")
+  highlightGradient.addColorStop(1, "rgba(255, 255, 255, 0)")
+  roundRect(padding, padding, textureWidth - padding * 2, textureHeight - padding * 2, radius)
+  ctx.fillStyle = highlightGradient
+  ctx.fill()
+
+  // Soft inner shadow at bottom
+  roundRect(padding, padding, textureWidth - padding * 2, textureHeight - padding * 2, radius)
+  ctx.strokeStyle = "rgba(0, 0, 0, 0.15)"
+  ctx.lineWidth = 4
+  ctx.stroke()
+
+  // Draw juicy drip effects
+  const drawDrip = (x: number, height: number, width: number) => {
+    const dripGradient = ctx.createLinearGradient(x, textureHeight - padding, x, textureHeight - padding + height)
+    dripGradient.addColorStop(0, shadeColor(fruitColor, -10))
+    dripGradient.addColorStop(0.5, fruitColor)
+    dripGradient.addColorStop(1, "rgba(255, 255, 255, 0)")
+
+    ctx.beginPath()
+    ctx.moveTo(x - width / 2, textureHeight - padding)
+    ctx.quadraticCurveTo(x - width / 2, textureHeight - padding + height * 0.7, x, textureHeight - padding + height)
+    ctx.quadraticCurveTo(x + width / 2, textureHeight - padding + height * 0.7, x + width / 2, textureHeight - padding)
+    ctx.closePath()
+    ctx.fillStyle = dripGradient
+    ctx.fill()
+  }
+
+  const dripPositions = [0.25, 0.55, 0.8]
+  dripPositions.forEach((pos, i) => {
+    const dripX = padding + (textureWidth - padding * 2) * pos
+    const dripHeight = 30 + (i % 2) * 20
+    const dripWidth = 16 + (i % 2) * 8
+    drawDrip(dripX, dripHeight, dripWidth)
+  })
+
+  // Calculate font size to fill 80% of texture width
+  let fontSize = 300
+  ctx.font = `bold ${fontSize}px Arial`
+  ctx.textAlign = "center"
+  ctx.textBaseline = "middle"
+
+  let textWidth = ctx.measureText(newText).width
+
+  while (textWidth > textureWidth * 0.8 && fontSize > 48) {
+    fontSize -= 10
+    ctx.font = `bold ${fontSize}px Arial`
+    textWidth = ctx.measureText(newText).width
+  }
+
+  // For short text (like emojis), make them HUGE
+  if (newText.length <= 3) {
+    const maxVerticalSize = textureHeight * 0.7
+    fontSize = Math.min(fontSize, maxVerticalSize)
+    ctx.font = `bold ${fontSize}px Arial`
+  }
+
+  // Text shadow for depth
+  ctx.shadowColor = "rgba(0, 0, 0, 0.4)"
+  ctx.shadowBlur = 24
+  ctx.shadowOffsetX = 0
+  ctx.shadowOffsetY = 10
+
+  // Dark text
+  ctx.fillStyle = "#2a2a2a"
+  ctx.fillText(newText, textureWidth / 2, textureHeight / 2)
+
+  // Reset shadow
+  ctx.shadowColor = "transparent"
+  ctx.shadowBlur = 0
+  ctx.shadowOffsetX = 0
+  ctx.shadowOffsetY = 0
+
+  // CRITICAL: Push changes to GPU
+  texture.update()
+}
+
 // Utility functions for smooth responsive scaling
 const clamp = (value: number, min: number, max: number): number =>
   Math.max(min, Math.min(max, value))
@@ -517,7 +639,11 @@ export const createJuiceSqueeze = (
 
   // Word blocks storage for dragging and sentence building (Babylon.js rendering state - stays local)
   let wordBlocks: Mesh[] = []
-  let wordBlockData: Map<Mesh, { word: string; originalIndex: number; originalPosition: Vector3; isInSentence: boolean; sentenceRow: number; baseWidth: number; baseHeight: number }> = new Map()
+  let wordBlockData: Map<Mesh, { word: string; originalIndex: number; originalPosition: Vector3; isInSentence: boolean; sentenceRow: number; baseWidth: number; baseHeight: number; textTexture?: DynamicTexture; fruitColor?: string }> = new Map()
+
+  // Track currently enlarged block - only one block can be enlarged at a time
+  let currentActiveBlock: Mesh | null = null
+  const blockShrinkCallbacks = new Map<Mesh, () => void>()
 
   // Track active drag state to prevent swipe navigation during block drags
   let isDragging = false
@@ -1009,15 +1135,27 @@ export const createJuiceSqueeze = (
   })
   root.appendChild(exitButton)
 
-  // Create give up / show answer button (bottom-right)
-  const giveUpButton = document.createElement("button")
-  giveUpButton.textContent = "Show Answer"
-  giveUpButton.className = "give-up-btn"
-  giveUpButton.addEventListener("click", () => {
-    const state = useGameStore.getState()
-    if (state.hasWon) return // Don't show if already won
+  // Create ear button for audio-only (bottom-right, above eye)
+  const earButton = document.createElement("button")
+  earButton.innerHTML = "👂"
+  earButton.className = "ear-btn icon-btn"
+  earButton.title = "Listen to answer"
+  earButton.addEventListener("click", () => {
+    const { phrase } = useGameStore.getState()
+    if (!phrase.correctWords.length) return
+    if (phrase.blockLang) {
+      speakFast(phrase.blockLang, phrase.correctWords.join(" "))
+    }
+  })
+  root.appendChild(earButton)
 
-    const { phrase } = state
+  // Create show answer button (bottom-right) - eye icon
+  const giveUpButton = document.createElement("button")
+  giveUpButton.innerHTML = "👁"
+  giveUpButton.className = "give-up-btn icon-btn"
+  giveUpButton.title = "Show answer"
+  giveUpButton.addEventListener("click", () => {
+    const { phrase } = useGameStore.getState()
     if (!phrase.correctWords.length) return
 
     // Create overlay
@@ -1028,15 +1166,18 @@ export const createJuiceSqueeze = (
     const card = document.createElement("div")
     card.className = "answer-card"
 
-    const title = document.createElement("h3")
-    title.textContent = "Correct Answer:"
+    const title = document.createElement("div")
+    title.className = "answer-icon"
+    title.innerHTML = "✓"
 
     const answerText = document.createElement("div")
     answerText.className = "answer-text"
     answerText.textContent = phrase.correctWords.join(" ")
 
     const continueBtn = document.createElement("button")
-    continueBtn.textContent = "Continue"
+    continueBtn.innerHTML = "→"
+    continueBtn.className = "continue-icon-btn"
+    continueBtn.title = "Next"
     continueBtn.addEventListener("click", () => {
       overlay.remove()
       // Load next phrase
@@ -1063,6 +1204,33 @@ export const createJuiceSqueeze = (
     }
   })
   root.appendChild(giveUpButton)
+
+  // Create fruit flip button (bottom-left)
+  const fruitButton = document.createElement("button")
+  fruitButton.innerHTML = "🍊"
+  fruitButton.className = "fruit-btn icon-btn"
+  fruitButton.title = "Flip to fruits"
+  root.appendChild(fruitButton)
+
+  // Fruit flip state
+  const fruitEmojis = ["🍊", "🥭", "🍍", "🍋", "🍇", "🍎", "🍓", "🍑"]
+  let blocksAreFlipped = false
+
+  fruitButton.addEventListener("click", () => {
+    blocksAreFlipped = !blocksAreFlipped
+    fruitButton.classList.toggle("active", blocksAreFlipped)
+
+    wordBlocks.forEach((block, index) => {
+      const data = wordBlockData.get(block)
+      if (!data?.textTexture || !data?.fruitColor) return
+
+      const displayText = blocksAreFlipped
+        ? fruitEmojis[index % fruitEmojis.length]
+        : data.word
+
+      updateBlockText(data.textTexture, displayText, data.fruitColor)
+    })
+  })
 
   // Create juice glass animation (centered)
   const juiceGlass: JuiceGlass = createJuiceGlass(root)
@@ -1211,6 +1379,12 @@ export const createJuiceSqueeze = (
     })
     wordBlocks = []
     wordBlockData = new Map()
+    blockShrinkCallbacks.clear()
+    currentActiveBlock = null
+
+    // Reset fruit flip state
+    blocksAreFlipped = false
+    fruitButton.classList.remove("active")
 
     // Clear language labels
     const oldTargetDisplay = root.querySelector(".target-phrase-display")
@@ -1540,6 +1714,8 @@ export const createJuiceSqueeze = (
         sentenceRow: -1, // -1 means not in sentence area
         baseWidth: blockSize.width,   // Store uniform width for scaling
         baseHeight: blockSize.height, // Store creation-time height for scaling
+        textTexture: texture,         // Store for fruit flip feature
+        fruitColor,                   // Store color for texture redraw
       })
 
       // Add dragging behavior
@@ -1557,10 +1733,23 @@ export const createJuiceSqueeze = (
       // Set default rendering group for proper z-ordering
       block.renderingGroupId = 1
 
+      // Track if block was already enlarged when drag started (for tap-to-toggle)
+      let wasAlreadyEnlarged = false
+
       dragBehavior.onDragStartObservable.add(() => {
         isDragging = true // Track drag state for swipe prevention
         const data = wordBlockData.get(block)
         if (!data) return
+
+        // Check if this block is already the active (enlarged) one
+        wasAlreadyEnlarged = currentActiveBlock === block
+
+        // Shrink previously active block if different from this one
+        if (currentActiveBlock && currentActiveBlock !== block) {
+          const prevShrink = blockShrinkCallbacks.get(currentActiveBlock)
+          if (prevShrink) prevShrink()
+        }
+        currentActiveBlock = block
 
         // Cancel any running shrink animation to prevent jerkiness
         if (shrinkAnimationId !== null) {
@@ -1580,20 +1769,23 @@ export const createJuiceSqueeze = (
         block.renderingGroupId = 2
         block.position.z = data.originalPosition.z - 1.0
 
-        // Animate smooth growth: uniform 1.7x for all blocks
-        const growthFactor = 1.7
-        const animateGrow = () => {
-          const currentScale = block.scaling.x
-          const diff = growthFactor - currentScale
-          if (Math.abs(diff) > 0.05) {
-            const newScale = currentScale + diff * 0.15
-            block.scaling = new Vector3(newScale, newScale, 1)
-            requestAnimationFrame(animateGrow)
-          } else {
-            block.scaling = new Vector3(growthFactor, growthFactor, 1)
+        // Only grow if not already enlarged
+        if (!wasAlreadyEnlarged) {
+          // Animate smooth growth: uniform 1.7x for all blocks
+          const growthFactor = 1.7
+          const animateGrow = () => {
+            const currentScale = block.scaling.x
+            const diff = growthFactor - currentScale
+            if (Math.abs(diff) > 0.05) {
+              const newScale = currentScale + diff * 0.15
+              block.scaling = new Vector3(newScale, newScale, 1)
+              requestAnimationFrame(animateGrow)
+            } else {
+              block.scaling = new Vector3(growthFactor, growthFactor, 1)
+            }
           }
+          animateGrow()
         }
-        animateGrow()
       })
       
       // Track if block actually moved during drag (X/Y only, ignore Z lift)
@@ -1608,12 +1800,13 @@ export const createJuiceSqueeze = (
         }
       })
 
-      dragBehavior.onDragEndObservable.add(() => {
-        isDragging = false // Clear drag state
-        dragEndTime = Date.now() // Record end time for swipe lockout
-
+      // Shrink function for this block - can be called externally when another block is touched
+      const triggerShrink = () => {
         // Restore normal rendering layer
         block.renderingGroupId = 1
+        if (currentActiveBlock === block) {
+          currentActiveBlock = null
+        }
 
         // Animate smooth shrink back to normal size
         const animateShrink = () => {
@@ -1628,6 +1821,15 @@ export const createJuiceSqueeze = (
           }
         }
         animateShrink()
+      }
+      blockShrinkCallbacks.set(block, triggerShrink)
+
+      dragBehavior.onDragEndObservable.add(() => {
+        isDragging = false // Clear drag state
+        dragEndTime = Date.now() // Record end time for swipe lockout
+
+        // Restore rendering layer
+        block.renderingGroupId = 1
 
         const data = wordBlockData.get(block)
         if (!data) return
@@ -1639,6 +1841,16 @@ export const createJuiceSqueeze = (
           block.position.y >= sentenceAreaCenterY - sentenceAreaHeight / 2 &&
           block.position.y <= sentenceAreaCenterY + sentenceAreaHeight / 2 &&
           Math.abs(block.position.x) <= sentenceAreaWidth / 2
+
+        // Shrink block if:
+        // 1. Dropped in sentence area (always shrink when placed)
+        // 2. Tap-to-toggle: was already enlarged and didn't drag (just tapped)
+        const wasTap = !dragMoved
+        const shouldShrink = isInSentenceArea || (wasAlreadyEnlarged && wasTap)
+
+        if (shouldShrink) {
+          triggerShrink()
+        }
 
         if (isInSentenceArea) {
           // Mark as in sentence area (but still draggable!)
@@ -1797,7 +2009,9 @@ export const createJuiceSqueeze = (
     
     // Remove UI elements
     exitButton.remove()
+    earButton.remove()
     giveUpButton.remove()
+    fruitButton.remove()
     utteranceNav.remove()
     titleElement.remove()
     juiceGlass.dispose()
