@@ -4,7 +4,7 @@ set -e
 BASENAME="third-grade-at-home"
 OUTPUT_PDF="${BASENAME}.pdf"
 OUTPUT_EPUB="${BASENAME}.epub"
-INPUT_FILES="manuscript/*.md"
+INPUT_FILES="manuscript/[0-9][0-9]-*.md"
 
 TITLE='Third Grade at Home'
 AUTHOR='Skylar Saveland'
