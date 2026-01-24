@@ -1048,7 +1048,20 @@ export const createJuiceSqueeze = (
         }
 
         // Play success sound instantly, then TTS after sound completes
-        const completeSentence = wordsInSentence.join(" ")
+        // Build sentence properly: attach punctuation to previous word without spaces
+        let completeSentence = ""
+        wordsInSentence.forEach((word, i) => {
+          if (isOnlyPunctuation(word)) {
+            // Attach punctuation directly to previous word
+            completeSentence += word
+          } else {
+            // Add space before non-punctuation words (except first word)
+            if (i > 0 && !isOnlyPunctuation(wordsInSentence[i - 1])) {
+              completeSentence += " "
+            }
+            completeSentence += word
+          }
+        })
         const currentState = useGameStore.getState()
         const blockLang = currentState.phrase.blockLang || "en"
 
@@ -1440,6 +1453,12 @@ export const createJuiceSqueeze = (
     return rtlLanguages.includes(langCode)
   }
 
+  // Check if text is only punctuation (don't speak these in TTS)
+  // Uses Unicode property escapes to catch ALL punctuation from any language
+  const isOnlyPunctuation = (text: string): boolean => {
+    return /^[\p{P}\s]+$/u.test(text)
+  }
+
   // Create word blocks from loaded utterance
   const createWordBlocks = async () => {
     // Clear existing blocks
@@ -1779,8 +1798,11 @@ export const createJuiceSqueeze = (
         dragStartPos = block.position.clone()
 
         // Play TTS immediately on touch - stopSpeech clears queue for instant response
+        // Skip TTS for punctuation-only blocks
         const lang = useGameStore.getState().phrase.blockLang || "en"
-        speakFast(lang, data.word)
+        if (!isOnlyPunctuation(data.word)) {
+          speakFast(lang, data.word)
+        }
 
         // Bring block to front layer so it renders on top of other blocks
         block.renderingGroupId = 2
@@ -1983,6 +2005,67 @@ export const createJuiceSqueeze = (
           // Determine which row to place the block in
           const targetRow = getTargetRow(block.position.y, sentenceRowYPositions)
           data.sentenceRow = targetRow
+
+          // Get current language direction
+          const currentBlockLang = useGameStore.getState().phrase.blockLang || "en"
+          const isBlockLangRTL = isRTL(currentBlockLang)
+
+          // Find blocks in the same row to determine insertion position
+          const blocksInSameRow = Array.from(wordBlockData.entries())
+            .filter(([mesh, d]) => d.isInSentence && mesh !== block && d.sentenceRow === targetRow)
+            .map(([mesh, d]) => ({ mesh, data: d }))
+
+          // Adjust X position based on drop position and reading direction
+          // This ensures the block sorts into the correct position before reflow
+          const dropX = block.position.x
+
+          if (blocksInSameRow.length > 0) {
+            // Sort blocks by reading order
+            blocksInSameRow.sort((a, b) =>
+              isBlockLangRTL ? b.mesh.position.x - a.mesh.position.x : a.mesh.position.x - b.mesh.position.x
+            )
+
+            // Find insertion position based on drop X
+            let insertIndex = blocksInSameRow.length // Default: insert at end
+
+            for (let i = 0; i < blocksInSameRow.length; i++) {
+              const existingX = blocksInSameRow[i].mesh.position.x
+
+              if (isBlockLangRTL) {
+                // RTL: insert before blocks that are to the left (lower X)
+                if (dropX > existingX) {
+                  insertIndex = i
+                  break
+                }
+              } else {
+                // LTR: insert before blocks that are to the right (higher X)
+                if (dropX < existingX) {
+                  insertIndex = i
+                  break
+                }
+              }
+            }
+
+            // Set X position to sort correctly: place between neighbors
+            if (insertIndex === 0) {
+              // Insert at beginning
+              const firstBlock = blocksInSameRow[0]
+              block.position.x = isBlockLangRTL
+                ? firstBlock.mesh.position.x + 1.0  // Further right
+                : firstBlock.mesh.position.x - 1.0  // Further left
+            } else if (insertIndex === blocksInSameRow.length) {
+              // Insert at end
+              const lastBlock = blocksInSameRow[blocksInSameRow.length - 1]
+              block.position.x = isBlockLangRTL
+                ? lastBlock.mesh.position.x - 1.0  // Further left
+                : lastBlock.mesh.position.x + 1.0  // Further right
+            } else {
+              // Insert between two blocks
+              const prevBlock = blocksInSameRow[insertIndex - 1]
+              const nextBlock = blocksInSameRow[insertIndex]
+              block.position.x = (prevBlock.mesh.position.x + nextBlock.mesh.position.x) / 2
+            }
+          }
 
           // Snap Z forward
           block.position.z = -0.5
