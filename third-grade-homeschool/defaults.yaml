@@ -1,0 +1,15 @@
+pdf-engine: xelatex
+from: markdown
+to: pdf
+variables:
+  documentclass: memoir
+  classoption:
+    - oneside
+    - 11pt
+  papersize: 5in,8in
+include-in-header:
+  - custom_headings.tex
+include-before-body:
+  - custom_cover.tex
+toc: true
+toc-depth: 2

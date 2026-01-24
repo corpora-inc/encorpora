@@ -1,0 +1,166 @@
+\usepackage[
+  paperwidth=5in,
+  paperheight=8in,
+  left=0.6in,
+  right=0.6in,
+  top=0.5in,
+  bottom=0.85in,
+  heightrounded
+]{geometry}
+
+\raggedbottom
+
+% Switching to memoir
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1em}
+% \chapterstyle{section}
+% \chapterstyle{default}
+% \chapterstyle{plain}
+\renewcommand{\chapnamefont}{}
+\renewcommand{\printchaptername}{}
+\renewcommand{\chapnumfont}{}
+\renewcommand{\printchapternum}{}
+\setlength{\beforechapskip}{0em}
+\setlength{\afterchapskip}{2em}
+\setsecnumdepth{none}
+
+% ==== Force format for \section*{Contents} ====
+\usepackage{titlesec}
+
+% ==== Redefine \tableofcontents with a small “Contents” header ====
+\makeatletter
+\renewcommand\tableofcontents{%
+  % \cleardoublepage
+  \begingroup
+    \setlength{\parskip}{1pt}%
+    \setlength{\parindent}{0pt}%
+    \vspace{3em}%
+    {\LARGE \bfseries Contents\par}
+    \vspace{0.5em}
+    \@starttoc{toc}%
+  \endgroup
+}
+\makeatother
+
+% ##
+\titlespacing*{\section}{0pt}{0.8em}{0.1em}
+% ###
+\titlespacing*{\subsection}{0pt}{0.7em}{0em}
+% ####
+\titleformat{\subsubsection}
+  {\normalfont\normalsize\bfseries}{\thesubsubsection}{1em}{}
+\titlespacing*{\subsubsection}{0pt}{0.5em}{0em}
+% #####
+\titleformat{\paragraph}
+  {\normalfont\normalsize\bfseries}{\theparagraph}{1em}{}
+\titlespacing*{\paragraph}{0pt}{0.3em}{0em}
+% ######
+\titleformat{\subparagraph}
+  {\normalfont\normalsize\bfseries\itshape}{\thesubparagraph}{1em}{}
+\titlespacing*{\subparagraph}{0pt}{0.2em}{0em}
+
+% ---------------------------------------------
+% Header and Footer Styling
+% ---------------------------------------------
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[LE,RO]{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% ---------------------------------------------
+% Customized Horizontal Rules
+% ---------------------------------------------
+\newcommand{\myhrule}{%
+  \par\vspace*{1em}%
+  {\centering\rule{0.6\linewidth}{0.4pt}\par}%
+  \vspace*{1em}%
+}
+
+% ---------------------------------------------
+% List and Bullet Customization
+% ---------------------------------------------
+\usepackage{enumitem}
+\usepackage{amssymb} % for \triangleright (reliable glyphs)
+
+\makeatletter
+% IMPORTANT: avoid \textopenbullet (often tofu under XeLaTeX/fontspec).
+% Use math glyphs for nested bullets so they always render.
+\renewcommand\labelitemii{\ensuremath{\circ}}
+\renewcommand\labelitemiii{\ensuremath{\triangleright}}
+\makeatother
+
+% Patch \item ONCE (prevents recursion if header is included twice)
+\makeatletter
+\@ifundefined{corpora@olditem}{%
+  \let\corpora@olditem\item
+  \renewcommand{\item}{\corpora@olditem\vspace{0.191em}}%
+}{}
+\makeatother
+
+\setlist[itemize,enumerate]{topsep=-0.5em, leftmargin=1.5em, after=\vspace{0.25em}}
+
+% ---------------------------------------------
+% Block Quote Styling
+% ---------------------------------------------
+\usepackage{xcolor}
+\usepackage{mdframed}
+
+\renewenvironment{quote}
+  {\begin{samepage}
+   \begin{mdframed}[
+    backgroundcolor=gray!10,
+    linecolor=gray!60,
+    leftline=true, rightline=false, topline=false, bottomline=false,
+    innerleftmargin=1em, innerrightmargin=1.618em,
+    innertopmargin=1em, innerbottommargin=1em,
+    skipabove=1em, skipbelow=0em
+   ]}
+  {\end{mdframed}\vspace{-0.5em}\end{samepage}}
+
+\usepackage{caption}
+\captionsetup[figure]{labelformat=empty}
+\captionsetup[table]{labelformat=empty}
+
+% ---------------------------------------------
+% Plotting and Graphics
+% ---------------------------------------------
+\usepackage{pgfplots}
+\pgfplotsset{width=10cm,compat=1.9}
+\usepgfplotslibrary{statistics}
+
+% ---------------------------------------------
+% Fonts (Latin + CJK) — keep your working setup
+% ---------------------------------------------
+\usepackage{fontspec}
+\usepackage{xeCJK}
+
+\setmainfont{Noto Serif}
+\setCJKmainfont{Noto Sans CJK SC}
+
+\AtBeginDocument{%
+  \fontsize{ 11.00pt }{ 13.20pt }\selectfont
+  \XeTeXcharclass`‘=0
+  \XeTeXcharclass`’=0
+  \XeTeXcharclass`“=0
+  \XeTeXcharclass`”=0
+  \XeTeXcharclass`…=0
+}
+
+% ---------------------------------------------
+% Unicode normalization (NO ucharclasses)
+% ---------------------------------------------
+\usepackage{newunicodechar}
+\newunicodechar{÷}{\ensuremath{\div}}
+\newunicodechar{×}{\ensuremath{\times}}
+\newunicodechar{−}{-}
+\newunicodechar{≤}{\ensuremath{\le}}
+\newunicodechar{≥}{\ensuremath{\ge}}
+\newunicodechar{≠}{\ensuremath{\ne}}
+\newunicodechar{≈}{\ensuremath{\approx}}
+\newunicodechar{→}{\ensuremath{\rightarrow}}
+\newunicodechar{←}{\ensuremath{\leftarrow}}
+\newunicodechar{↔}{\ensuremath{\leftrightarrow}}
+\newunicodechar{⇒}{\ensuremath{\Rightarrow}}
+\newunicodechar{…}{\ldots}

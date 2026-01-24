@@ -1,0 +1,134 @@
+# Outline: Third Grade at Home
+
+- 1: How to Use This Book
+  - 1: Who This Is For
+  - 2: What “Third Grade” Means Around the World
+  - 3: Your One-Page Homeschool Mission Statement
+  - 4: The Minimum You Must Do vs. the Extras You Can Add
+  - 5: How to Customize Without Getting Lost
+- 2: Homeschool Mindset and Mission
+  - 1: Your Real Job as a Homeschool Parent
+  - 2: Curiosity, Character, Capability: Your True North
+  - 3: Progress Is Lumpy: What to Expect Emotionally
+  - 4: Building Attention, Persistence, and Independence
+  - 5: A Calm Home Beats a Perfect Schedule
+- 3: Legal and Compliance Basics (Global-First)
+  - 1: The Global Minimum Compliance Checklist
+  - 2: Attendance and Instructional Time: Tracking Simply
+  - 3: Portfolios and Work Samples: What to Keep
+  - 4: Evaluations and Testing: When and Why
+  - 5: Georgia (USA) Example
+- 4: Setting Up Your Homeschool Life
+  - 1: Creating a Simple Learning Space
+  - 2: Choosing Curriculum: Structured vs. Hybrid
+  - 3: Materials You Actually Need (and What You Don’t)
+  - 4: Routines That Run Themselves
+  - 5: Screens, Media, and Attention Hygiene
+  - 6: Working Parents and Multi-Kid Logistics
+- 5: Language Arts: Reading, Writing, Speaking
+  - 1: Third-Grade Reading Goals
+  - 2: Fluency Without Drills
+  - 3: Comprehension: Main Idea, Inference, Structure
+  - 4: Vocabulary, Roots, and Word Curiosity
+  - 5: Read-Aloud Engine and Independent Reading Habit
+  - 6: Third-Grade Writing Goals
+  - 7: Paragraphs and Multi-Paragraph Pieces
+  - 8: Narrative Writing Done Right
+  - 9: Opinion Writing Done Right
+  - 10: Informational Writing Done Right
+  - 11: Grammar and Mechanics That Matter Most
+  - 12: Handwriting and Keyboarding as Tools
+  - 13: Multiple Valid Ways to Teach Reading
+  - 14: Multiple Valid Ways to Teach Writing
+- 6: Mathematics
+  - 1: Third-Grade Math Goals
+  - 2: Number Sense and Place Value Through 10,000+
+  - 3: Addition and Subtraction: Algorithms and Mental Math
+  - 4: Multiplication: Meaning, Facts, Arrays, Area Models
+  - 5: Division: Sharing, Grouping, Unknown Factor Thinking
+  - 6: Fractions: Unit Fractions, Equivalence, Number Lines
+  - 7: Measurement: Time, Length, Mass, Volume
+  - 8: Geometry: Shapes, Angles, Symmetry
+  - 9: Data and Graphs: Making Sense of Information
+  - 10: Word Problems and Mathematical Reasoning
+  - 11: Multiple Valid Ways to Teach Math
+  - 12: What to Do When Math Becomes a Battlefield
+- 7: Science
+  - 1: Third-Grade Science Goals
+  - 2: The Scientific Method as a Daily Habit
+  - 3: Life Science: Plants, Animals, Ecosystems
+  - 4: Earth Science: Rocks, Soil, Water Cycle, Weather
+  - 5: Physical Science: Matter, Force, Motion, Energy
+  - 6: Engineering Mindset: Build, Test, Improve
+  - 7: Simple Home Labs and a Lab Notebook
+  - 8: Multiple Valid Ways to Teach Science
+- 8: Social Studies
+  - 1: Third-Grade Social Studies Goals
+  - 2: Maps, Globes, and Spatial Thinking
+  - 3: Communities and Government Layers
+  - 4: Economics Basics: Needs, Wants, Goods, Services
+  - 5: History Thinking: Timelines and Evidence
+  - 6: Culture and World Awareness With Respect
+  - 7: Local History as a Gateway to Global History
+  - 8: Multiple Valid Ways to Teach Social Studies
+- 9: The Rest of a World-Class Third Grade
+  - 1: Health and PE: Daily Movement and Body Basics
+  - 2: Safety: Road, Water, Internet, and Real Life
+  - 3: Emotional Skills: Naming Feelings and Self-Regulation
+  - 4: Practical Life Skills as Curriculum
+  - 5: Visual Art: Skills, Creativity, Appreciation
+  - 6: Music and Rhythm: Participation Over Performance
+  - 7: Drama, Play, and Storytelling
+  - 8: Technology and Media Literacy: Create More Than You Consume
+  - 9: Character and Virtue Practice (Light, Universal, Daily)
+- 10: Planning the Year
+  - 1: The 180-Day / 36-Week Model and How to Adapt It
+  - 2: Quarterly Scope-and-Sequence for Third Grade
+  - 3: Building in Buffer, Travel, and Sick Days
+  - 4: Mixing Skill Work With Projects
+  - 5: A Simple Yearlong Tracker You Can Maintain
+- 11: Running the Week and the Day
+  - 1: The 4.5-Hour Day Without Burnout
+  - 2: Short-Block Schedule for Low-Attention Kids
+  - 3: Long-Block Schedule for Deep-Work Kids
+  - 4: Sample Weekly Rhythm (Science vs. Social Studies)
+  - 5: Breaks, Transitions, and Keeping Momentum
+  - 6: What a Good Homeschool Day Feels Like
+  - 7: Recovery Plans for Bad Days
+- 12: Teaching Methods That Work Everywhere
+  - 1: Concrete -> Visual -> Abstract as a Universal Ladder
+  - 2: Modeling Thinking Out Loud
+  - 3: Guided Practice and Gradual Release
+  - 4: Real-Life Learning: Cooking, Money, Travel, Nature
+  - 5: Games, Stories, and Projects That Teach for Free
+  - 6: How to Give Feedback Without Killing Motivation
+- 13: Assessment Without Anxiety
+  - 1: Mastery Checks You Can Do in Minutes
+  - 2: Monthly “Show What You Know” Days
+  - 3: Portfolios That Prove Real Learning
+  - 4: Standardized Testing
+  - 5: How to Interpret Results Honestly
+- 14: Recordkeeping and Documentation
+  - 1: Attendance Logs in One Page
+  - 2: Writing Annual Progress Reports Simply
+  - 3: Storing Work Samples Digitally or on Paper
+  - 4: What to Document if You Ever Re-Enter School
+- 15: Social Life and Community
+  - 1: What “Socialization” Actually Means
+  - 2: Co-ops, Clubs, Sports, Libraries, and Faith Communities
+  - 3: Mixing Ages and Building Healthy Peer Groups
+  - 4: Group Projects and Presentations
+- 16: Special Situations and Troubleshooting
+  - 1: The Reluctant Learner
+  - 2: The Advanced Learner
+  - 3: Attention Challenges and Neurodiversity
+  - 4: Multiple Kids at Different Levels
+  - 5: Parents Working Full Time
+  - 6: Conflict With a Co-Parent or Family Member
+  - 7: When You Need Outside Help (Tutors, Online Classes)
+- 17: Parent Survival and Meaning
+  - 1: The First 30 Days: A Gentle Ramp-Up Plan
+  - 2: Measuring Progress Over Months, Not Hours
+  - 3: Keeping Your Morale Steady
+  - 4: Universal Spiritual Practices
+  - 5: Ending the Year Proud, Not Exhausted
