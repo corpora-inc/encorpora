@@ -874,7 +874,7 @@ export const createJuiceSqueeze = (
     const sentencePixelY = canvasRect.top + (canvasHeight / 2) - (sentenceWorldY * metrics.pixelsPerUnit)
 
     // Position at 40% of the way from title to sentence area
-    const pixelY = topSpaceStart + (sentencePixelY - topSpaceStart) * 0.2
+    const pixelY = topSpaceStart + (sentencePixelY - topSpaceStart) * 0.125
 
     // Responsive font sizes based on viewport percentage
     const viewportWidth = canvasElement.width
