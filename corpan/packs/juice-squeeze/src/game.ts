@@ -267,8 +267,12 @@ export const createJuiceSqueeze = (
     }, delayMs)
   }
 
-  // Fast TTS - speak immediately (caller decides when to stop any active speech)
+  // Fast TTS - speak immediately, canceling any queued speech
   const speakFast = (lang: string, text: string) => {
+    // Stop any currently playing speech for instant response
+    if (typeof hostApi.stopSpeech === "function") {
+      hostApi.stopSpeech()
+    }
     if (typeof hostApi.speak === "function") {
       hostApi.speak(lang, text)
     }

@@ -163,18 +163,18 @@
   left: calc(env(safe-area-inset-left) + clamp(12px, 3vw, 24px));
   bottom: calc(env(safe-area-inset-bottom) + clamp(20px, 5vh, 40px));
   display: flex;
-  gap: clamp(8px, 2vw, 16px);
+  gap: clamp(12px, 3vw, 20px);
   z-index: 1001;
 }
 
 /* Navigation Arrow Buttons */
 .nav-arrow {
-  width: clamp(40px, 10vw, 52px);
-  height: clamp(40px, 10vw, 52px);
+  width: clamp(48px, 11vw, 56px);
+  height: clamp(48px, 11vw, 56px);
   border: none;
   border-radius: 50%;
   cursor: pointer;
-  font-size: clamp(20px, 5vw, 28px);
+  font-size: clamp(22px, 5.5vw, 30px);
   font-weight: bold;
   display: flex;
   align-items: center;
@@ -249,11 +249,11 @@
 
 /* Icon button base - circular with emoji */
 .icon-btn {
-  width: clamp(44px, 10vw, 52px);
-  height: clamp(44px, 10vw, 52px);
+  width: clamp(52px, 12vw, 60px);
+  height: clamp(52px, 12vw, 60px);
   padding: 0;
   border-radius: 50%;
-  font-size: clamp(20px, 5vw, 26px);
+  font-size: clamp(24px, 6vw, 30px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -262,7 +262,7 @@
 /* Ear button - audio only, left of eye button */
 .ear-btn {
   position: fixed;
-  right: calc(env(safe-area-inset-right) + clamp(68px, 14vw, 88px));
+  right: calc(env(safe-area-inset-right) + clamp(76px, 16vw, 100px));
   bottom: calc(env(safe-area-inset-bottom) + clamp(20px, 5vh, 40px));
   z-index: 1001;
   border: 1px solid rgba(27, 27, 31, 0.15);
@@ -285,7 +285,7 @@
 /* Fruit flip button - right of forward nav button */
 .fruit-btn {
   position: fixed;
-  left: calc(env(safe-area-inset-left) + clamp(120px, 26vw, 160px));
+  left: calc(env(safe-area-inset-left) + clamp(136px, 30vw, 180px));
   bottom: calc(env(safe-area-inset-bottom) + clamp(20px, 5vh, 40px));
   z-index: 1001;
   border: 1px solid rgba(27, 27, 31, 0.15);
@@ -622,13 +622,13 @@
   .utterance-nav {
     bottom: calc(env(safe-area-inset-bottom) + clamp(16px, 4vh, 32px));
     left: calc(env(safe-area-inset-left) + clamp(10px, 2.5vw, 20px));
-    gap: clamp(6px, 2vw, 14px);
+    gap: clamp(10px, 2.5vw, 16px);
   }
 
   .nav-arrow {
-    width: clamp(36px, 9vw, 46px);
-    height: clamp(36px, 9vw, 46px);
-    font-size: clamp(18px, 4.5vw, 24px);
+    width: clamp(44px, 10vw, 52px);
+    height: clamp(44px, 10vw, 52px);
+    font-size: clamp(20px, 5vw, 26px);
   }
 
   .juice-glass-container {
@@ -646,12 +646,12 @@
   }
 
   .ear-btn {
-    right: calc(env(safe-area-inset-right) + clamp(58px, 13vw, 76px));
+    right: calc(env(safe-area-inset-right) + clamp(68px, 15vw, 86px));
     bottom: calc(env(safe-area-inset-bottom) + clamp(16px, 4vh, 32px));
   }
 
   .fruit-btn {
-    left: calc(env(safe-area-inset-left) + clamp(100px, 24vw, 140px));
+    left: calc(env(safe-area-inset-left) + clamp(116px, 28vw, 160px));
     bottom: calc(env(safe-area-inset-bottom) + clamp(16px, 4vh, 32px));
   }
 }
@@ -691,13 +691,13 @@
   .utterance-nav {
     bottom: calc(env(safe-area-inset-bottom) + clamp(12px, 3vh, 24px));
     left: calc(env(safe-area-inset-left) + clamp(8px, 2vw, 16px));
-    gap: clamp(6px, 1.5vw, 12px);
+    gap: clamp(10px, 2.5vw, 14px);
   }
 
   .nav-arrow {
-    width: clamp(32px, 8vw, 40px);
-    height: clamp(32px, 8vw, 40px);
-    font-size: clamp(16px, 4vw, 20px);
+    width: clamp(44px, 10vw, 48px);
+    height: clamp(44px, 10vw, 48px);
+    font-size: clamp(20px, 5vw, 24px);
   }
 
   .juice-glass-container {
@@ -715,12 +715,12 @@
   }
 
   .ear-btn {
-    right: calc(env(safe-area-inset-right) + clamp(48px, 12vw, 64px));
+    right: calc(env(safe-area-inset-right) + clamp(60px, 14vw, 76px));
     bottom: calc(env(safe-area-inset-bottom) + clamp(12px, 3vh, 24px));
   }
 
   .fruit-btn {
-    left: calc(env(safe-area-inset-left) + clamp(84px, 22vw, 110px));
+    left: calc(env(safe-area-inset-left) + clamp(104px, 26vw, 130px));
     bottom: calc(env(safe-area-inset-bottom) + clamp(12px, 3vh, 24px));
   }
 }
