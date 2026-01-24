@@ -999,6 +999,115 @@ export const createJuiceSqueeze = (
     }
   }
 
+  // Create ABSOLUTELY WILD juice explosion - juice EVERYWHERE!
+  const createCrazyJuiceExplosion = (position: Vector3) => {
+    try {
+      const metrics = getLayoutMetrics()
+
+      // Main explosion - MASSIVE burst from center
+      const mainExplosion = new ParticleSystem("mainJuiceExplosion", 2000, scene)
+      mainExplosion.createSphereEmitter(3.0)
+      mainExplosion.particleTexture = createFruitParticleTexture()
+
+      // Vibrant orange juice colors
+      mainExplosion.color1 = new Color4(1, 0.65, 0.0, 1) // Bright orange
+      mainExplosion.color2 = new Color4(1, 0.85, 0.0, 1) // Golden orange
+      mainExplosion.colorDead = new Color4(1, 0.5, 0.0, 0) // Fade to transparent
+
+      mainExplosion.minSize = 0.3
+      mainExplosion.maxSize = 1.2 // HUGE particles
+      mainExplosion.minLifeTime = 1.5
+      mainExplosion.maxLifeTime = 3.0
+      mainExplosion.emitRate = 8000
+      mainExplosion.manualEmitCount = 1500 // TONS of particles
+      mainExplosion.minEmitPower = 8
+      mainExplosion.maxEmitPower = 20 // Launch them FAR
+      mainExplosion.blendMode = ParticleSystem.BLENDMODE_ADD
+      mainExplosion.updateSpeed = 0.008
+      mainExplosion.gravity = new Vector3(0, -3, 0)
+
+      mainExplosion.emitter = position.clone()
+      mainExplosion.start()
+
+      // Create multiple directional blasts - juice flying in all directions
+      const directions = [
+        new Vector3(1, 1, 0),   // Top right
+        new Vector3(-1, 1, 0),  // Top left
+        new Vector3(1, -1, 0),  // Bottom right
+        new Vector3(-1, -1, 0), // Bottom left
+        new Vector3(0, 1, 0),   // Straight up
+        new Vector3(1, 0, 0),   // Right
+        new Vector3(-1, 0, 0),  // Left
+      ]
+
+      directions.forEach((dir, i) => {
+        setTimeout(() => {
+          if (disposed) return
+
+          const blast = new ParticleSystem(`juiceBlast${i}`, 800, scene)
+          blast.particleTexture = createFruitParticleTexture()
+          blast.createDirectedSphereEmitter(1.5, dir, new Vector3(0.1, 0.1, 0.1))
+
+          blast.color1 = new Color4(1, 0.6, 0.0, 1)
+          blast.color2 = new Color4(1, 0.8, 0.2, 1)
+          blast.colorDead = new Color4(1, 0.4, 0.0, 0)
+
+          blast.minSize = 0.4
+          blast.maxSize = 1.0
+          blast.minLifeTime = 1.0
+          blast.maxLifeTime = 2.5
+          blast.manualEmitCount = 400
+          blast.minEmitPower = 10
+          blast.maxEmitPower = 25
+          blast.blendMode = ParticleSystem.BLENDMODE_ADD
+          blast.gravity = new Vector3(0, -2.5, 0)
+
+          blast.emitter = position.clone()
+          blast.start()
+
+          setTimeout(() => {
+            blast.stop()
+            blast.dispose()
+          }, 2500)
+        }, i * 80) // Stagger blasts for cascading effect
+      })
+
+      // Splatter effects - particles that stick around
+      const splatter = new ParticleSystem("juiceSplatter", 1000, scene)
+      splatter.createSphereEmitter(5.0)
+      splatter.particleTexture = createFruitParticleTexture()
+
+      splatter.color1 = new Color4(1, 0.5, 0.0, 0.8)
+      splatter.color2 = new Color4(1, 0.7, 0.1, 0.8)
+      splatter.colorDead = new Color4(1, 0.4, 0.0, 0)
+
+      splatter.minSize = 0.2
+      splatter.maxSize = 0.8
+      splatter.minLifeTime = 3.0
+      splatter.maxLifeTime = 5.0 // Long lifetime for "splatter" effect
+      splatter.manualEmitCount = 500
+      splatter.minEmitPower = 15
+      splatter.maxEmitPower = 30
+      splatter.blendMode = ParticleSystem.BLENDMODE_STANDARD
+      splatter.gravity = new Vector3(0, -4, 0) // Falls fast
+      splatter.updateSpeed = 0.01
+
+      splatter.emitter = position.clone()
+      splatter.start()
+
+      // Cleanup
+      setTimeout(() => {
+        mainExplosion.stop()
+        mainExplosion.dispose()
+        splatter.stop()
+        splatter.dispose()
+      }, 3000)
+
+    } catch (error) {
+      console.error("[juice-squeeze] ❌ Error creating crazy juice explosion:", error)
+    }
+  }
+
   // Check if sentence is complete and correct
   const checkWin = () => {
     const state = useGameStore.getState()
@@ -1035,16 +1144,42 @@ export const createJuiceSqueeze = (
         useGameStore.getState().incrementCompletedPhrases()
         useGameStore.getState().incrementScore()
 
-        // WIN! Create particles
+        // Record completed phrase with word count for all-time score
+        const phraseId = phrase.id || `phrase-${Date.now()}`
+        const wordCount = wordsInSentence.length
+        useGameStore.getState().recordCompletedPhrase(phraseId, wordCount)
+
+        // WIN! Create WILD juice particles everywhere
         const currentMetrics = getLayoutMetrics()
         const centerPos = new Vector3(0, currentMetrics.sentenceAreaY, 0)
         createWinParticles(centerPos)
+        createCrazyJuiceExplosion(centerPos)
 
         // Trigger juice glass squeeze animation and update fill
         juiceGlass.triggerSqueeze()
         const updatedStats = useGameStore.getState().stats
-        const newFillLevel = Math.min(1, updatedStats.completedPhrases / 10)
+        const allTimeCompleted = updatedStats?.allTimeCompletedPhrases || 0
+        const newFillLevel = Math.min(1, Math.max(0, allTimeCompleted / 10))
         juiceGlass.updateFill(newFillLevel)
+
+        // Update score display with animation
+        const newScore = updatedStats?.allTimeScore || 0
+        const scoreValue = scoreDisplay.querySelector(".score-value") as HTMLElement
+        const pointsAdded = wordCount
+
+        // Show floating +points animation
+        const floatingPoints = document.createElement("div")
+        floatingPoints.className = "floating-points"
+        floatingPoints.textContent = `+${pointsAdded}`
+        scoreDisplay.appendChild(floatingPoints)
+        setTimeout(() => floatingPoints.remove(), 2000)
+
+        // Animate score value
+        scoreValue.classList.add("score-pulse")
+        setTimeout(() => {
+          scoreValue.textContent = String(newScore)
+          setTimeout(() => scoreValue.classList.remove("score-pulse"), 500)
+        }, 200)
 
         // Trigger overflow animation when glass is nearly full (>=90%)
         if (newFillLevel >= 0.9) {
@@ -1239,31 +1374,49 @@ export const createJuiceSqueeze = (
   fruitButton.title = "Flip to fruits"
   root.appendChild(fruitButton)
 
-  // Fruit flip state
+  // Fruit flip state - initialize from persisted store
   const fruitEmojis = ["🍊", "🥭", "🍍", "🍋", "🍇", "🍎", "🍓", "🍑"]
-  let blocksAreFlipped = false
+  const initialFruitState = useGameStore.getState().settings.fruitsEnabled
+  fruitButton.classList.toggle("active", initialFruitState)
 
-  fruitButton.addEventListener("click", () => {
-    blocksAreFlipped = !blocksAreFlipped
-    fruitButton.classList.toggle("active", blocksAreFlipped)
-
+  // Helper to update all blocks based on fruit state
+  const updateAllBlockTexts = () => {
+    const fruitsEnabled = useGameStore.getState().settings.fruitsEnabled
     wordBlocks.forEach((block, index) => {
       const data = wordBlockData.get(block)
       if (!data?.textTexture || !data?.fruitColor) return
 
-      const displayText = blocksAreFlipped
+      const displayText = fruitsEnabled
         ? fruitEmojis[index % fruitEmojis.length]
         : data.word
 
       updateBlockText(data.textTexture, displayText, data.fruitColor)
     })
+  }
+
+  fruitButton.addEventListener("click", () => {
+    useGameStore.getState().toggleFruits()
+    const fruitsEnabled = useGameStore.getState().settings.fruitsEnabled
+    fruitButton.classList.toggle("active", fruitsEnabled)
+    updateAllBlockTexts()
   })
 
   // Create juice glass animation (centered)
   const juiceGlass: JuiceGlass = createJuiceGlass(root)
-  // Initialize fill level from store
+
+  // Create score display on juice glass (like a label)
+  const scoreDisplay = document.createElement("div")
+  scoreDisplay.className = "juice-score-display"
   const initialStats = useGameStore.getState().stats
-  const initialFillLevel = Math.min(1, initialStats.completedPhrases / 10)
+  const initialScore = initialStats?.allTimeScore || 0
+  scoreDisplay.innerHTML = `
+    <div class="score-value">${initialScore}</div>
+  `
+  root.appendChild(scoreDisplay)
+
+  // Initialize fill level from persistent all-time completed phrases
+  const allTimeCompleted = initialStats?.allTimeCompletedPhrases || 0
+  const initialFillLevel = Math.min(1, Math.max(0, allTimeCompleted / 10))
   juiceGlass.updateFill(initialFillLevel)
 
   // Utterance history for back/forward navigation
@@ -1409,9 +1562,7 @@ export const createJuiceSqueeze = (
     blockShrinkCallbacks.clear()
     currentActiveBlock = null
 
-    // Reset fruit flip state
-    blocksAreFlipped = false
-    fruitButton.classList.remove("active")
+    // Fruit state persists across phrases - no reset needed
 
     // Clear language labels
     const oldTargetDisplay = root.querySelector(".target-phrase-display")
@@ -2090,6 +2241,9 @@ export const createJuiceSqueeze = (
 
     // Position all blocks using the positioning function
     positionWordBlocks(wordBlocks, metrics, blockSize)
+
+    // Apply initial fruit flip state from store
+    updateAllBlockTexts()
   }
 
   // Load and create word blocks

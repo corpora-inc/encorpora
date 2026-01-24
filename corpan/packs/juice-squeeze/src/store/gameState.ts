@@ -24,11 +24,14 @@ export type BlockState = {
 
 // Game statistics
 export type GameStats = {
-  score: number
-  completedPhrases: number
+  score: number // Session score (resets)
+  allTimeScore: number // Persistent all-time score
+  completedPhrases: number // Session completed phrases (resets)
+  allTimeCompletedPhrases: number // Persistent completed phrases count
   currentStreak: number
   bestStreak: number
   totalPhrases: number
+  completedPhraseIds: string[] // All completed phrase IDs for analytics
 }
 
 // Game settings
@@ -36,6 +39,7 @@ export type GameSettings = {
   ttsEnabled: boolean
   difficulty: "easy" | "medium" | "hard"
   soundEffectsEnabled: boolean
+  fruitsEnabled: boolean // Fruit flip mode persisted
 }
 
 // Game state
@@ -65,6 +69,8 @@ export type GameState = {
   setWon: (won: boolean) => void
   incrementScore: (points?: number) => void
   incrementCompletedPhrases: () => void
+  recordCompletedPhrase: (phraseId: string, wordCount: number) => void
+  toggleFruits: () => void
   resetGame: () => void
   updateSettings: (settings: Partial<GameSettings>) => void
   resetBlocks: () => void
@@ -85,15 +91,19 @@ const initialState: Omit<GameState, keyof Omit<GameState, "phrase" | "blocks" | 
   isLoading: false,
   stats: {
     score: 0,
+    allTimeScore: 0,
     completedPhrases: 0,
+    allTimeCompletedPhrases: 0,
     currentStreak: 0,
     bestStreak: 0,
     totalPhrases: 0,
+    completedPhraseIds: [],
   },
   settings: {
     ttsEnabled: true,
     difficulty: "medium",
     soundEffectsEnabled: true,
+    fruitsEnabled: false,
   },
 }
 
@@ -207,7 +217,7 @@ export const useGameStore = create<GameState>()(
         set((state) => {
           const nextStreak = state.stats.currentStreak + 1
           const nextBestStreak = Math.max(state.stats.bestStreak, nextStreak)
-          
+
           return {
             stats: {
               ...state.stats,
@@ -218,6 +228,32 @@ export const useGameStore = create<GameState>()(
             },
           }
         })
+      },
+
+      recordCompletedPhrase: (phraseId, wordCount) => {
+        set((state) => {
+          // Add points based on word count (1 point per word placed)
+          const points = wordCount
+          const existingIds = state.stats.completedPhraseIds || []
+
+          return {
+            stats: {
+              ...state.stats,
+              allTimeScore: (state.stats.allTimeScore || 0) + points,
+              allTimeCompletedPhrases: (state.stats.allTimeCompletedPhrases || 0) + 1,
+              completedPhraseIds: [...existingIds, phraseId],
+            },
+          }
+        })
+      },
+
+      toggleFruits: () => {
+        set((state) => ({
+          settings: {
+            ...state.settings,
+            fruitsEnabled: !state.settings.fruitsEnabled,
+          },
+        }))
       },
       
       resetGame: () => {
@@ -248,7 +284,14 @@ export const useGameStore = create<GameState>()(
       name: "juice-squeeze-game-state",
       storage: createJSONStorage(() => localStorage),
       partialize: (state) => ({
-        stats: state.stats,
+        stats: {
+          allTimeScore: state.stats.allTimeScore,
+          allTimeCompletedPhrases: state.stats.allTimeCompletedPhrases,
+          bestStreak: state.stats.bestStreak,
+          totalPhrases: state.stats.totalPhrases,
+          completedPhraseIds: state.stats.completedPhraseIds,
+          // Don't persist session stats (score, completedPhrases, currentStreak)
+        },
         settings: state.settings,
         // Don't persist current phrase/blocks - reload fresh each session
       }),
