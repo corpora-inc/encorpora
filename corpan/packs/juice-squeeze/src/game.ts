@@ -63,6 +63,10 @@ export const createJuiceSqueeze = (
   }
   
   let disposed = false
+
+  // Track rotation index for multi-language stacks (3+ languages)
+  let targetLangRotationIndex = 0
+
   const root = document.createElement("div")
   root.className = "juice-squeeze"
   container.appendChild(root)
@@ -738,8 +742,8 @@ export const createJuiceSqueeze = (
     // pixelY = (canvasHeight / 2) - (worldY * pixelsPerUnit)
     const worldY = metrics.targetPhraseY
     const rawPixelY = canvasRect.top + (canvasHeight / 2) - (worldY * metrics.pixelsPerUnit)
-    // Ensure minimum offset from top to avoid overlapping title
-    const minTopOffset = 70
+    // Ensure minimum offset from top to avoid overlapping title on mobile
+    const minTopOffset = 90
     const pixelY = Math.max(minTopOffset, rawPixelY)
     
     // Responsive font sizes based on viewport percentage
@@ -1219,7 +1223,8 @@ export const createJuiceSqueeze = (
     }
   }
 
-  // Pick two random languages from stack config for translation practice
+  // Pick language pair from stack config for translation practice
+  // For 3+ languages, rotates through block languages each phrase
   const pickLanguagePair = (languages: string[]): [string, string] => {
     if (languages.length === 0) {
       return ["en", "en"] // Fallback
@@ -1231,10 +1236,18 @@ export const createJuiceSqueeze = (
     // languages[0] = target language (what user is learning) - top in settings
     // languages[1] = primary language (user's native) - bottom in settings
     // Return: [targetLang (phrase at top), blockLang (words to build)]
-    // User sees phrase in primary/native (languages[1]), builds with target (languages[0])
-    // But API expects: targetLang for display, blockLang for blocks
-    // If user has English primary, French target: show English, build French
-    return [languages[0], languages[1]]
+    if (languages.length === 2) {
+      return [languages[0], languages[1]]
+    }
+
+    // 3+ languages: display stays same, rotate through other languages for blocks
+    // This lets users practice building sentences in all their target languages
+    const displayLang = languages[0]
+    const blockLangs = languages.slice(1) // All non-display languages
+    const blockLang = blockLangs[targetLangRotationIndex % blockLangs.length]
+    targetLangRotationIndex++
+
+    return [displayLang, blockLang]
   }
 
   // Create word blocks from loaded utterance
