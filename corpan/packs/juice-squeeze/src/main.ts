@@ -12,7 +12,7 @@ type InitialState = {
   stackConfig?: StackConfig
 }
 
-const GAME_ID = "juice-squeeze"
+const GAME_ID = "juice_squeeze"
 
 const registerGame = () => {
   const scope = globalThis as GlobalScope
@@ -38,4 +38,3 @@ const registerGame = () => {
 }
 
 registerGame()
-

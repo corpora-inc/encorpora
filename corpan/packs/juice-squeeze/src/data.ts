@@ -18,6 +18,32 @@ export type Utterance = {
 const normalizeLang = (lang: string): string => lang.trim().toLowerCase()
 
 /**
+ * Detect if text contains CJK (Chinese, Japanese, Korean) characters
+ * Used to determine if we need character-by-character tokenization
+ */
+const isCJKText = (text: string): boolean => {
+  // CJK Unified Ideographs (Chinese), Hiragana, Katakana (Japanese), Hangul (Korean)
+  return /[\u4E00-\u9FFF\u3040-\u309F\u30A0-\u30FF\uAC00-\uD7AF]/.test(text)
+}
+
+/**
+ * Tokenize CJK text by splitting each character into its own token
+ * Punctuation is kept as separate tokens
+ */
+const tokenizeCJK = (text: string): string[] => {
+  const tokens: string[] = []
+  for (const char of text) {
+    // Skip whitespace
+    if (/\s/.test(char)) continue
+    // Each character becomes its own token (including punctuation)
+    if (char.trim()) {
+      tokens.push(char)
+    }
+  }
+  return tokens
+}
+
+/**
  * Extract text for a specific language from translations
  */
 const pickByLang = (translations: { language_code: string; text: string }[], lang: string): string | undefined => {
@@ -36,26 +62,26 @@ const pickByLang = (translations: { language_code: string; text: string }[], lan
  * Split text into words and punctuation tokens
  * Handles punctuation marks as separate tokens
  * Preserves contractions like "I'm", "don't", "can't" as single tokens
- * Preserves complete words like "am", "is", "the" as single tokens
+ * Preserves hyphenated words like "peut-être", "rendez-vous" as single tokens
+ * For CJK languages (Chinese, Japanese, Korean), splits by character
  */
 const tokenizeText = (text: string): string[] => {
+  // For CJK text, use character-by-character tokenization
+  if (isCJKText(text)) {
+    return tokenizeCJK(text)
+  }
+
   const tokens: string[] = []
-  
-  // More explicit regex pattern that handles:
-  // 1. Contractions with apostrophes: "I'm", "don't", "can't", "it's", "we're"
-  //    Pattern: letters + apostrophe + letters
-  // 2. Regular words: "am", "hello", "the", "is" (letters, marks, numbers)
-  //    Pattern: one or more letters/marks/numbers
-  // 3. Punctuation and symbols: ".", ",", "?", "!", etc.
-  //    Pattern: any punctuation or symbol
-  
-  // First, match contractions (word + apostrophe + word)
-  // Then match regular words (letters/marks/numbers)
-  // Finally match punctuation/symbols
-  // Note: Matches various apostrophe/quote characters used in contractions
-  // ' (U+0027) straight apostrophe, ' (U+2019) right single quote, ʼ (U+02BC) modifier letter apostrophe
-  // ʻ (U+02BB) modifier letter turned comma, ' (U+2018) left single quote
-  const regex = /[\p{L}\p{M}\p{N}]+(?:['ʼʻ''`][\p{L}\p{M}\p{N}]+)*|[\p{P}\p{S}]/gu
+
+  // Regex pattern that handles:
+  // 1. Contractions with apostrophes: "I'm", "don't", "l'eau", "c'est"
+  // 2. Hyphenated words: "peut-être", "rendez-vous", "aujourd'hui"
+  // 3. Regular words: "am", "hello", "the", "is" (letters, marks, numbers)
+  // 4. Punctuation and symbols: ".", ",", "?", "!", etc.
+
+  // Apostrophe variants: ' (U+0027), ' (U+2019), ʼ (U+02BC), ʻ (U+02BB), ' (U+2018), ` (backtick)
+  // Hyphen variants: - (U+002D), ‐ (U+2010), − (U+2212), – (U+2013), — (U+2014)
+  const regex = /[\p{L}\p{M}\p{N}]+(?:['ʼʻ''`\-‐−–—][\p{L}\p{M}\p{N}]+)*|[\p{P}\p{S}]/gu
   
   let match
   let lastIndex = 0
@@ -183,9 +209,11 @@ export const loadUtterance = async (
       continue
     }
     
-    // Check if text looks like a complete phrase (has spaces, not just fragments)
-    // Skip if text is too short or doesn't contain spaces (could be single word even after tokenization)
-    if (blockText.trim().length < 5 || !blockText.includes(" ")) {
+    // Check if text looks like a complete phrase
+    // Skip if text is too short (could be single word even after tokenization)
+    // Note: CJK languages don't use spaces, so we skip the space check for them
+    const isCJK = isCJKText(blockText)
+    if (blockText.trim().length < 5 || (!isCJK && !blockText.includes(" "))) {
       continue
     }
     

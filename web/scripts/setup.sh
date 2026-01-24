@@ -30,6 +30,13 @@ npm install --legacy-peer-deps
 cd "$REPO_ROOT"
 echo ""
 
+# juice-squeeze pack
+echo "🧃 Installing juice-squeeze pack dependencies..."
+cd "$REPO_ROOT/corpan/packs/juice-squeeze"
+npm install
+cd "$REPO_ROOT"
+echo ""
+
 echo "✅ Setup complete!"
 echo ""
 echo "To start developing:"

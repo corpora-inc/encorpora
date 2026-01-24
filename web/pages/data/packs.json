@@ -31,5 +31,21 @@
       "shorts": [],
       "demos": []
     }
+  },
+  {
+    "id": "juice_squeeze",
+    "name": "Juice Squeeze",
+    "description": "Fast-paced phrase building with splashy juice rewards and native audio feedback",
+    "status": "prototype",
+    "listed": false,
+    "manifestUrl": "/corpan/packs/juice-squeeze/manifest.json",
+    "zipUrl": "/corpan/packs/juice-squeeze.zip",
+    "landingUrl": "/corpan/packs/juice-squeeze/",
+    "avatarSource": "corpan/packs/juice-squeeze/juice-squeeze-avatar.svg",
+    "github": "https://github.com/corpora-inc/encorpora/tree/main/corpan/packs/juice-squeeze",
+    "videos": {
+      "shorts": [],
+      "demos": []
+    }
   }
 ]

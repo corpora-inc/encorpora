@@ -1,5 +1,5 @@
 {
-  "id": "juice-squeeze",
+  "id": "juice_squeeze",
   "name": "Juice Squeeze",
   "version": "0.1.0",
   "entry": "dist/app.js",
@@ -8,5 +8,5 @@
   ],
   "entryType": "script",
   "sdkVersion": "0.1.0",
-  "devRevision": "2026-01-23T19:31:28.819Z"
+  "devRevision": "2026-01-24T06:18:26.143Z"
 }

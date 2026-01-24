@@ -41,6 +41,128 @@ const shadeColor = (color: string, percent: number): string => {
   ).toString(16).slice(1)
 }
 
+// Helper to redraw a word block's texture with new text (for fruit flip feature)
+const updateBlockText = (
+  texture: DynamicTexture,
+  newText: string,
+  fruitColor: string
+) => {
+  const textureWidth = 1024
+  const textureHeight = 512
+  const ctx = texture.getContext() as CanvasRenderingContext2D
+
+  // Rounded rectangle helper
+  const roundRect = (x: number, y: number, w: number, h: number, r: number) => {
+    ctx.beginPath()
+    ctx.moveTo(x + r, y)
+    ctx.lineTo(x + w - r, y)
+    ctx.quadraticCurveTo(x + w, y, x + w, y + r)
+    ctx.lineTo(x + w, y + h - r)
+    ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h)
+    ctx.lineTo(x + r, y + h)
+    ctx.quadraticCurveTo(x, y + h, x, y + h - r)
+    ctx.lineTo(x, y + r)
+    ctx.quadraticCurveTo(x, y, x + r, y)
+    ctx.closePath()
+  }
+
+  // Clear texture
+  ctx.clearRect(0, 0, textureWidth, textureHeight)
+
+  const padding = 16
+  const radius = 48
+
+  // Draw rounded block with gradient for depth
+  roundRect(padding, padding, textureWidth - padding * 2, textureHeight - padding * 2, radius)
+
+  // Juicy gradient
+  const gradient = ctx.createLinearGradient(0, 0, 0, textureHeight)
+  gradient.addColorStop(0, fruitColor)
+  gradient.addColorStop(0.5, fruitColor)
+  gradient.addColorStop(1, shadeColor(fruitColor, -20))
+
+  ctx.fillStyle = gradient
+  ctx.fill()
+
+  // Glossy highlight at top
+  const highlightGradient = ctx.createLinearGradient(0, padding, 0, textureHeight * 0.3)
+  highlightGradient.addColorStop(0, "rgba(255, 255, 255, 0.75)")
+  highlightGradient.addColorStop(1, "rgba(255, 255, 255, 0)")
+  roundRect(padding, padding, textureWidth - padding * 2, textureHeight - padding * 2, radius)
+  ctx.fillStyle = highlightGradient
+  ctx.fill()
+
+  // Soft inner shadow at bottom
+  roundRect(padding, padding, textureWidth - padding * 2, textureHeight - padding * 2, radius)
+  ctx.strokeStyle = "rgba(0, 0, 0, 0.15)"
+  ctx.lineWidth = 4
+  ctx.stroke()
+
+  // Draw juicy drip effects
+  const drawDrip = (x: number, height: number, width: number) => {
+    const dripGradient = ctx.createLinearGradient(x, textureHeight - padding, x, textureHeight - padding + height)
+    dripGradient.addColorStop(0, shadeColor(fruitColor, -10))
+    dripGradient.addColorStop(0.5, fruitColor)
+    dripGradient.addColorStop(1, "rgba(255, 255, 255, 0)")
+
+    ctx.beginPath()
+    ctx.moveTo(x - width / 2, textureHeight - padding)
+    ctx.quadraticCurveTo(x - width / 2, textureHeight - padding + height * 0.7, x, textureHeight - padding + height)
+    ctx.quadraticCurveTo(x + width / 2, textureHeight - padding + height * 0.7, x + width / 2, textureHeight - padding)
+    ctx.closePath()
+    ctx.fillStyle = dripGradient
+    ctx.fill()
+  }
+
+  const dripPositions = [0.25, 0.55, 0.8]
+  dripPositions.forEach((pos, i) => {
+    const dripX = padding + (textureWidth - padding * 2) * pos
+    const dripHeight = 30 + (i % 2) * 20
+    const dripWidth = 16 + (i % 2) * 8
+    drawDrip(dripX, dripHeight, dripWidth)
+  })
+
+  // Calculate font size to fill 80% of texture width
+  let fontSize = 300
+  ctx.font = `bold ${fontSize}px Arial`
+  ctx.textAlign = "center"
+  ctx.textBaseline = "middle"
+
+  let textWidth = ctx.measureText(newText).width
+
+  while (textWidth > textureWidth * 0.8 && fontSize > 48) {
+    fontSize -= 10
+    ctx.font = `bold ${fontSize}px Arial`
+    textWidth = ctx.measureText(newText).width
+  }
+
+  // For short text (like emojis), make them HUGE
+  if (newText.length <= 3) {
+    const maxVerticalSize = textureHeight * 0.7
+    fontSize = Math.min(fontSize, maxVerticalSize)
+    ctx.font = `bold ${fontSize}px Arial`
+  }
+
+  // Text shadow for depth
+  ctx.shadowColor = "rgba(0, 0, 0, 0.4)"
+  ctx.shadowBlur = 24
+  ctx.shadowOffsetX = 0
+  ctx.shadowOffsetY = 10
+
+  // Dark text
+  ctx.fillStyle = "#2a2a2a"
+  ctx.fillText(newText, textureWidth / 2, textureHeight / 2)
+
+  // Reset shadow
+  ctx.shadowColor = "transparent"
+  ctx.shadowBlur = 0
+  ctx.shadowOffsetX = 0
+  ctx.shadowOffsetY = 0
+
+  // CRITICAL: Push changes to GPU
+  texture.update()
+}
+
 // Utility functions for smooth responsive scaling
 const clamp = (value: number, min: number, max: number): number =>
   Math.max(min, Math.min(max, value))
@@ -61,8 +183,12 @@ export const createJuiceSqueeze = (
   if (typeof hostApi.stopSpeech === "function") {
     hostApi.stopSpeech()
   }
-  
+
   let disposed = false
+
+  // Track rotation index for multi-language stacks (3+ languages)
+  let targetLangRotationIndex = 0
+
   const root = document.createElement("div")
   root.className = "juice-squeeze"
   container.appendChild(root)
@@ -118,7 +244,7 @@ export const createJuiceSqueeze = (
   camera.mode = Camera.ORTHOGRAPHIC_CAMERA
   camera.setTarget(Vector3.Zero())
   camera.inputs.clear()
-  
+
   // Track current utterance for word count and TTS
   let currentUtterance: Utterance | null = null
 
@@ -141,8 +267,9 @@ export const createJuiceSqueeze = (
     }, delayMs)
   }
 
-  // Fast TTS - stops queue and speaks immediately (self-contained, no hostApi changes needed)
+  // Fast TTS - speak immediately, canceling any queued speech
   const speakFast = (lang: string, text: string) => {
+    // Stop any currently playing speech for instant response
     if (typeof hostApi.stopSpeech === "function") {
       hostApi.stopSpeech()
     }
@@ -161,7 +288,7 @@ export const createJuiceSqueeze = (
     blockLabelY: number
     pixelsPerUnit: number
   }
-  
+
   // Get viewport-based layout metrics
   const getLayoutMetrics = (): LayoutMetrics => {
     const canvasElement = engine.getRenderingCanvas()
@@ -177,11 +304,11 @@ export const createJuiceSqueeze = (
         pixelsPerUnit: 16,
       }
     }
-    
+
     const canvasW = canvasElement.width
     const canvasH = canvasElement.height
     const aspectRatio = canvasW / canvasH
-    
+
     // World units that map to screen
     // Keep world at constant 20 units - mesh scaling handles responsive behavior
     // At 320px: 1 world unit = 16 pixels
@@ -190,26 +317,26 @@ export const createJuiceSqueeze = (
     const baseWidth = 20
     const worldWidth = baseWidth
     const worldHeight = worldWidth / aspectRatio
-    
+
     // Calculate pixels per world unit for HTML overlay positioning
     const pixelsPerUnit = canvasW / worldWidth
-    
+
     // Regions in world coordinates (0,0 = center)
     // Top region: 80-95% of screen height = 85% from bottom = 15% from top
     // In world coords: positive Y is up, so 85% up = worldHeight * 0.35
     const targetPhraseY = worldHeight * 0.48
-    
+
     // Middle region: 45-70% of screen height = 60% from bottom = 40% from top
     // In world coords: 60% up = worldHeight * 0.1
     const sentenceAreaY = worldHeight * 0.1
-    
+
     // Bottom region: 5-35% of screen height = 25% from bottom
     // In world coords: 25% down = -worldHeight * 0.25
     const wordBlocksY = -worldHeight * 0.25
-    
+
     // Block label: 40% from bottom
     const blockLabelY = -worldHeight * 0.4
-    
+
     return {
       worldWidth,
       worldHeight,
@@ -220,7 +347,7 @@ export const createJuiceSqueeze = (
       pixelsPerUnit,
     }
   }
-  
+
   // Layout constants for responsive design
   // These are BASE values at 320px viewport - they scale proportionally with viewport
   const BASE_MIN_BLOCK_WIDTH = 2.0 // Base minimum block width at 320px (reduced to fit more)
@@ -373,8 +500,7 @@ export const createJuiceSqueeze = (
     const blocksPerRowByWidth = Math.floor(availableWidth / sentenceSpacing)
     const effectiveBlocksPerRow = Math.max(2, Math.min(maxBlocksPerRow, blocksPerRowByWidth))
 
-    // Sort blocks by row first, then by X position within row
-    // This maintains the user's intended reading order
+    // Sort blocks by row first, then by X position within row (left to right)
     blocksInSentence.sort((a, b) => {
       if (a.data.sentenceRow !== b.data.sentenceRow) {
         return a.data.sentenceRow - b.data.sentenceRow
@@ -382,7 +508,7 @@ export const createJuiceSqueeze = (
       return a.mesh.position.x - b.mesh.position.x
     })
 
-    // Redistribute blocks into rows sequentially (reading order)
+    // Redistribute blocks into rows sequentially
     blocksInSentence.forEach((item, globalIndex) => {
       const row = Math.floor(globalIndex / effectiveBlocksPerRow)
       const indexInRow = globalIndex % effectiveBlocksPerRow
@@ -475,7 +601,7 @@ export const createJuiceSqueeze = (
       })
     }
   }
-  
+
   // Update camera to fit layout metrics
   const updateCamera = (metrics: LayoutMetrics) => {
     // Apply slight padding factor for narrow screens to prevent edge clipping
@@ -489,7 +615,7 @@ export const createJuiceSqueeze = (
     camera.orthoBottom = -metrics.worldHeight / 2 * paddingFactor
     camera.orthoTop = metrics.worldHeight / 2 * paddingFactor
   }
-  
+
   // Initial camera setup
   const initialMetrics = getLayoutMetrics()
   updateCamera(initialMetrics)
@@ -499,12 +625,12 @@ export const createJuiceSqueeze = (
   hemi.intensity = 0.9 // Slightly less ambient
   hemi.diffuse = new Color3(1, 0.98, 0.94) // Warm
   hemi.groundColor = new Color3(0.7, 0.65, 0.6) // Darker ground bounce for contrast
-  
+
   // Add directional light for better 3D depth and shadows
   const dirLight = new DirectionalLight("dirLight", new Vector3(-0.5, -1, -0.3), scene)
   dirLight.intensity = 0.6
   dirLight.diffuse = new Color3(1, 1, 0.95)
-  
+
   // Shadow generator for 3D depth
   const shadowGenerator = new ShadowGenerator(2048, dirLight)
   shadowGenerator.useBlurExponentialShadowMap = true
@@ -513,13 +639,24 @@ export const createJuiceSqueeze = (
 
   // Word blocks storage for dragging and sentence building (Babylon.js rendering state - stays local)
   let wordBlocks: Mesh[] = []
-  let wordBlockData: Map<Mesh, { word: string; originalIndex: number; originalPosition: Vector3; isInSentence: boolean; sentenceRow: number; baseWidth: number; baseHeight: number }> = new Map()
+  let wordBlockData: Map<Mesh, { word: string; originalIndex: number; originalPosition: Vector3; isInSentence: boolean; sentenceRow: number; baseWidth: number; baseHeight: number; textTexture?: DynamicTexture; fruitColor?: string }> = new Map()
+
+  // Track currently enlarged block - only one block can be enlarged at a time
+  let currentActiveBlock: Mesh | null = null
+  const blockShrinkCallbacks = new Map<Mesh, () => void>()
+  const shrinkOtherBlocks = (active: Mesh) => {
+    blockShrinkCallbacks.forEach((shrink, mesh) => {
+      if (mesh !== active) {
+        shrink()
+      }
+    })
+  }
 
   // Track active drag state to prevent swipe navigation during block drags
   let isDragging = false
   let dragEndTime = 0
   const DRAG_SWIPE_LOCKOUT_MS = 200 // Prevent swipe for 200ms after drag ends
-  
+
   let sentenceAreaMesh: Mesh | null = null // Store reference to update size
   let sentenceAreaWidth = 60 // Track current sentence area width for collision detection
   let sentenceAreaHeight = 5 // Track current sentence area height for collision detection
@@ -569,14 +706,14 @@ export const createJuiceSqueeze = (
 
     // Calculate and store row Y positions
     sentenceRowYPositions = getSentenceRowYPositions(rowCount, areaY, rowHeightValue)
-    
+
     const area = MeshBuilder.CreatePlane("sentence-area", { width: areaWidth, height: areaHeight }, scene)
     area.position = new Vector3(0, areaY, 2) // Push even further behind blocks
-    
+
     const areaTexture = new DynamicTexture("sentence-area-texture", { width: 1024, height: 512 }, scene, true)
     areaTexture.hasAlpha = true
     const ctx = areaTexture.getContext() as CanvasRenderingContext2D
-    
+
     // Rounded rectangle helper for sentence area
     const roundRect = (x: number, y: number, w: number, h: number, r: number) => {
       ctx.beginPath()
@@ -591,22 +728,22 @@ export const createJuiceSqueeze = (
       ctx.quadraticCurveTo(x, y, x + r, y)
       ctx.closePath()
     }
-    
+
     // Frosted glass background - subtle teal tint that contrasts with blocks
     const areaGradient = ctx.createLinearGradient(0, 0, 0, 512)
     areaGradient.addColorStop(0, "rgba(230, 245, 245, 0.9)") // Subtle teal tint
     areaGradient.addColorStop(1, "rgba(220, 235, 235, 0.85)")
-    
+
     // Rounded rectangle
     roundRect(16, 16, 1024 - 32, 512 - 32, 32)
     ctx.fillStyle = areaGradient
     ctx.fill()
-    
+
     // Subtle colored border (teal or matching accent)
     ctx.strokeStyle = "rgba(11, 107, 111, 0.4)"
     ctx.lineWidth = 3
     ctx.stroke()
-    
+
     // Inner highlight
     roundRect(20, 20, 1024 - 40, 512 - 40, 28)
     ctx.strokeStyle = "rgba(255, 255, 255, 0.8)"
@@ -631,7 +768,7 @@ export const createJuiceSqueeze = (
     }
 
     areaTexture.update()
-    
+
     const areaMaterial = new StandardMaterial("sentence-area-material", scene)
     areaMaterial.diffuseTexture = areaTexture
     areaMaterial.useAlphaFromDiffuseTexture = true
@@ -640,11 +777,11 @@ export const createJuiceSqueeze = (
     areaMaterial.disableDepthWrite = true // Render behind everything
     areaMaterial.zOffset = 10 // Push back in render order
     area.material = areaMaterial
-    
+
     sentenceAreaMesh = area
     return area
   }
-  
+
   // Convert language code to readable name
   const getLanguageName = (code: string): string => {
     const languageNames: Record<string, string> = {
@@ -724,41 +861,42 @@ export const createJuiceSqueeze = (
     if (oldDisplay) {
       oldDisplay.remove()
     }
-    
+
     const languageName = getLanguageName(languageCode)
     const canvasElement = engine.getRenderingCanvas()
     if (!canvasElement) return
-    
+
     // Get canvas bounding rect for pixel positioning
     const canvasRect = canvasElement.getBoundingClientRect()
     const canvasHeight = canvasElement.height
-    
-    // Convert world Y coordinate to CSS pixel position
-    // World Y is positive up, CSS Y is positive down from top
-    // pixelY = (canvasHeight / 2) - (worldY * pixelsPerUnit)
-    const worldY = metrics.targetPhraseY
-    const rawPixelY = canvasRect.top + (canvasHeight / 2) - (worldY * metrics.pixelsPerUnit)
-    // Ensure minimum offset from top to avoid overlapping title
-    const minTopOffset = 70
-    const pixelY = Math.max(minTopOffset, rawPixelY)
-    
+
+    // Position in the top space: 40% down from title area to sentence area
+    // This percentage approach works consistently across different aspect ratios
+    const titleApproxHeight = 60
+    const topSpaceStart = canvasRect.top + titleApproxHeight
+    const sentenceWorldY = metrics.sentenceAreaY
+    const sentencePixelY = canvasRect.top + (canvasHeight / 2) - (sentenceWorldY * metrics.pixelsPerUnit)
+
+    // Position at 40% of the way from title to sentence area
+    const pixelY = topSpaceStart + (sentencePixelY - topSpaceStart) * 0.125
+
     // Responsive font sizes based on viewport percentage
     const viewportWidth = canvasElement.width
     const labelFontSize = Math.max(14, Math.min(22, viewportWidth * 0.04)) // 4% of width
     const phraseFontSize = Math.max(20, Math.min(36, viewportWidth * 0.055)) // 5.5% of width
-    
+
     const display = document.createElement("div")
     display.className = "target-phrase-display"
     display.style.top = `${pixelY}px`
-    
+
     // Create language label
     const label = document.createElement("div")
     label.textContent = `${languageName}:`
-    
+
     // Create phrase text
     const phrase = document.createElement("div")
     phrase.textContent = text
-    
+
     display.appendChild(label)
     display.appendChild(phrase)
 
@@ -776,7 +914,7 @@ export const createJuiceSqueeze = (
 
     root.appendChild(display)
   }
-  
+
   // Create "Build in: [Language]" label near word blocks area (viewport-based)
   const createBlockLanguageLabel = (languageCode: string, metrics: LayoutMetrics) => {
     // Remove old label if exists
@@ -784,7 +922,7 @@ export const createJuiceSqueeze = (
     if (oldLabel) {
       oldLabel.remove()
     }
-    
+
     const nativeName = getNativeLanguageName(languageCode)
     const canvasElement = engine.getRenderingCanvas()
     if (!canvasElement) return
@@ -814,11 +952,11 @@ export const createJuiceSqueeze = (
   const createFruitParticleTexture = () => {
     return new Texture(
       "data:image/svg+xml;base64," +
-        btoa(
-          `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32">` +
-            `<circle cx="16" cy="16" r="14" fill="white"/>` +
-          `</svg>`
-        ),
+      btoa(
+        `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32">` +
+        `<circle cx="16" cy="16" r="14" fill="white"/>` +
+        `</svg>`
+      ),
       scene
     )
   }
@@ -827,15 +965,15 @@ export const createJuiceSqueeze = (
   const createWinParticles = (position: Vector3) => {
     try {
       const particleSystem = new ParticleSystem("winParticles", 300, scene)
-      
+
       particleSystem.createSphereEmitter(2.0) // Larger emitter for more visible effect
       particleSystem.particleTexture = createFruitParticleTexture()
-      
+
       // Bright fruit colors (orange, pink, yellow)
       particleSystem.color1 = new Color4(1, 0.72, 0.3, 1) // Orange
       particleSystem.color2 = new Color4(1, 0.42, 0.42, 1) // Pink
       particleSystem.colorDead = new Color4(1, 0.9, 0.43, 0) // Yellow fade
-      
+
       // Juicy, glowy particles
       particleSystem.minSize = 0.15
       particleSystem.maxSize = 0.4
@@ -848,16 +986,125 @@ export const createJuiceSqueeze = (
       particleSystem.blendMode = ParticleSystem.BLENDMODE_ADD // Glowy!
       particleSystem.updateSpeed = 0.01
       particleSystem.gravity = new Vector3(0, -2, 0) // Stronger gravity
-      
+
       particleSystem.emitter = position.clone()
       particleSystem.start()
-      
+
       setTimeout(() => {
         particleSystem.stop()
         particleSystem.dispose()
       }, 2000) // Longer duration
     } catch (error) {
       console.error("[juice-squeeze] ❌ Error creating particles:", error)
+    }
+  }
+
+  // Create ABSOLUTELY WILD juice explosion - juice EVERYWHERE!
+  const createCrazyJuiceExplosion = (position: Vector3) => {
+    try {
+      const metrics = getLayoutMetrics()
+
+      // Main explosion - MASSIVE burst from center
+      const mainExplosion = new ParticleSystem("mainJuiceExplosion", 2000, scene)
+      mainExplosion.createSphereEmitter(3.0)
+      mainExplosion.particleTexture = createFruitParticleTexture()
+
+      // Vibrant orange juice colors
+      mainExplosion.color1 = new Color4(1, 0.65, 0.0, 1) // Bright orange
+      mainExplosion.color2 = new Color4(1, 0.85, 0.0, 1) // Golden orange
+      mainExplosion.colorDead = new Color4(1, 0.5, 0.0, 0) // Fade to transparent
+
+      mainExplosion.minSize = 0.3
+      mainExplosion.maxSize = 1.2 // HUGE particles
+      mainExplosion.minLifeTime = 1.5
+      mainExplosion.maxLifeTime = 3.0
+      mainExplosion.emitRate = 8000
+      mainExplosion.manualEmitCount = 1500 // TONS of particles
+      mainExplosion.minEmitPower = 8
+      mainExplosion.maxEmitPower = 20 // Launch them FAR
+      mainExplosion.blendMode = ParticleSystem.BLENDMODE_ADD
+      mainExplosion.updateSpeed = 0.008
+      mainExplosion.gravity = new Vector3(0, -3, 0)
+
+      mainExplosion.emitter = position.clone()
+      mainExplosion.start()
+
+      // Create multiple directional blasts - juice flying in all directions
+      const directions = [
+        new Vector3(1, 1, 0),   // Top right
+        new Vector3(-1, 1, 0),  // Top left
+        new Vector3(1, -1, 0),  // Bottom right
+        new Vector3(-1, -1, 0), // Bottom left
+        new Vector3(0, 1, 0),   // Straight up
+        new Vector3(1, 0, 0),   // Right
+        new Vector3(-1, 0, 0),  // Left
+      ]
+
+      directions.forEach((dir, i) => {
+        setTimeout(() => {
+          if (disposed) return
+
+          const blast = new ParticleSystem(`juiceBlast${i}`, 800, scene)
+          blast.particleTexture = createFruitParticleTexture()
+          blast.createDirectedSphereEmitter(1.5, dir, new Vector3(0.1, 0.1, 0.1))
+
+          blast.color1 = new Color4(1, 0.6, 0.0, 1)
+          blast.color2 = new Color4(1, 0.8, 0.2, 1)
+          blast.colorDead = new Color4(1, 0.4, 0.0, 0)
+
+          blast.minSize = 0.4
+          blast.maxSize = 1.0
+          blast.minLifeTime = 1.0
+          blast.maxLifeTime = 2.5
+          blast.manualEmitCount = 400
+          blast.minEmitPower = 10
+          blast.maxEmitPower = 25
+          blast.blendMode = ParticleSystem.BLENDMODE_ADD
+          blast.gravity = new Vector3(0, -2.5, 0)
+
+          blast.emitter = position.clone()
+          blast.start()
+
+          setTimeout(() => {
+            blast.stop()
+            blast.dispose()
+          }, 2500)
+        }, i * 80) // Stagger blasts for cascading effect
+      })
+
+      // Splatter effects - particles that stick around
+      const splatter = new ParticleSystem("juiceSplatter", 1000, scene)
+      splatter.createSphereEmitter(5.0)
+      splatter.particleTexture = createFruitParticleTexture()
+
+      splatter.color1 = new Color4(1, 0.5, 0.0, 0.8)
+      splatter.color2 = new Color4(1, 0.7, 0.1, 0.8)
+      splatter.colorDead = new Color4(1, 0.4, 0.0, 0)
+
+      splatter.minSize = 0.2
+      splatter.maxSize = 0.8
+      splatter.minLifeTime = 3.0
+      splatter.maxLifeTime = 5.0 // Long lifetime for "splatter" effect
+      splatter.manualEmitCount = 500
+      splatter.minEmitPower = 15
+      splatter.maxEmitPower = 30
+      splatter.blendMode = ParticleSystem.BLENDMODE_STANDARD
+      splatter.gravity = new Vector3(0, -4, 0) // Falls fast
+      splatter.updateSpeed = 0.01
+
+      splatter.emitter = position.clone()
+      splatter.start()
+
+      // Cleanup
+      setTimeout(() => {
+        mainExplosion.stop()
+        mainExplosion.dispose()
+        splatter.stop()
+        splatter.dispose()
+      }, 3000)
+
+    } catch (error) {
+      console.error("[juice-squeeze] ❌ Error creating crazy juice explosion:", error)
     }
   }
 
@@ -870,7 +1117,12 @@ export const createJuiceSqueeze = (
       return // Prevent multiple wins
     }
 
-    // Get blocks in sentence area, sorted by row first (top to bottom), then X (left to right)
+    // Check if current language is RTL
+    const blockLang = phrase.blockLang || "en"
+    const isBlockLangRTL = isRTL(blockLang)
+
+    // Get blocks in sentence area, sorted by row first (top to bottom), then X
+    // For RTL: right to left (descending X), for LTR: left to right (ascending X)
     const wordsInSentence = Array.from(wordBlockData.entries())
       .filter(([_, data]) => data.isInSentence)
       .sort(([meshA, dataA], [meshB, dataB]) => {
@@ -878,29 +1130,56 @@ export const createJuiceSqueeze = (
         if (dataA.sentenceRow !== dataB.sentenceRow) {
           return dataA.sentenceRow - dataB.sentenceRow
         }
-        // Then sort by X within same row (left to right)
-        return meshA.position.x - meshB.position.x
+        // Then sort by X within same row
+        // RTL: right to left (descending), LTR: left to right (ascending)
+        return isBlockLangRTL ? meshB.position.x - meshA.position.x : meshA.position.x - meshB.position.x
       })
       .map(([_, data]) => data.word)
-    
+
     if (wordsInSentence.length === phrase.correctWords.length) {
       const isCorrect = wordsInSentence.every((word, i) => word === phrase.correctWords[i])
-      
+
       if (isCorrect && !hasWon) {
         useGameStore.getState().setWon(true)
         useGameStore.getState().incrementCompletedPhrases()
         useGameStore.getState().incrementScore()
 
-        // WIN! Create particles
+        // Record completed phrase with word count for all-time score
+        const phraseId = phrase.id || `phrase-${Date.now()}`
+        const wordCount = wordsInSentence.length
+        useGameStore.getState().recordCompletedPhrase(phraseId, wordCount)
+
+        // WIN! Create WILD juice particles everywhere
         const currentMetrics = getLayoutMetrics()
         const centerPos = new Vector3(0, currentMetrics.sentenceAreaY, 0)
         createWinParticles(centerPos)
+        createCrazyJuiceExplosion(centerPos)
 
         // Trigger juice glass squeeze animation and update fill
         juiceGlass.triggerSqueeze()
         const updatedStats = useGameStore.getState().stats
-        const newFillLevel = Math.min(1, updatedStats.completedPhrases / 10)
+        const allTimeCompleted = updatedStats?.allTimeCompletedPhrases || 0
+        const newFillLevel = Math.min(1, Math.max(0, allTimeCompleted / 10))
         juiceGlass.updateFill(newFillLevel)
+
+        // Update score display with animation
+        const newScore = updatedStats?.allTimeScore || 0
+        const scoreValue = scoreDisplay.querySelector(".score-value") as HTMLElement
+        const pointsAdded = wordCount
+
+        // Show floating +points animation
+        const floatingPoints = document.createElement("div")
+        floatingPoints.className = "floating-points"
+        floatingPoints.textContent = `+${pointsAdded}`
+        scoreDisplay.appendChild(floatingPoints)
+        setTimeout(() => floatingPoints.remove(), 2000)
+
+        // Animate score value
+        scoreValue.classList.add("score-pulse")
+        setTimeout(() => {
+          scoreValue.textContent = String(newScore)
+          setTimeout(() => scoreValue.classList.remove("score-pulse"), 500)
+        }, 200)
 
         // Trigger overflow animation when glass is nearly full (>=90%)
         if (newFillLevel >= 0.9) {
@@ -908,7 +1187,20 @@ export const createJuiceSqueeze = (
         }
 
         // Play success sound instantly, then TTS after sound completes
-        const completeSentence = wordsInSentence.join(" ")
+        // Build sentence properly: attach punctuation to previous word without spaces
+        let completeSentence = ""
+        wordsInSentence.forEach((word, i) => {
+          if (isOnlyPunctuation(word)) {
+            // Attach punctuation directly to previous word
+            completeSentence += word
+          } else {
+            // Add space before non-punctuation words (except first word)
+            if (i > 0 && !isOnlyPunctuation(wordsInSentence[i - 1])) {
+              completeSentence += " "
+            }
+            completeSentence += word
+          }
+        })
         const currentState = useGameStore.getState()
         const blockLang = currentState.phrase.blockLang || "en"
 
@@ -944,7 +1236,7 @@ export const createJuiceSqueeze = (
       const corpanLogoUrl = "../../hover-runner/src/assets/models/corpan_logo.glb"
       const avatarContainer = new TransformNode("corpan-avatar-container", scene)
       avatarContainer.position = new Vector3(-10, 5, 0)
-      
+
       // Gentle floating animation
       let floatTime = 0
       const floatAnimation = () => {
@@ -954,7 +1246,7 @@ export const createJuiceSqueeze = (
         requestAnimationFrame(floatAnimation)
       }
       floatAnimation()
-      
+
       SceneLoader.LoadAssetContainerAsync("", corpanLogoUrl, scene)
         .then((logoAsset) => {
           if (disposed) return
@@ -971,23 +1263,23 @@ export const createJuiceSqueeze = (
               }
             })
           }
-          
+
           // Scale avatar to appropriate size for 2D orthographic view
           avatarContainer.scaling = new Vector3(2, 2, 2)
-          
+
           console.log("[juice-squeeze] ✅ Corpán avatar loaded at (-10, 5, 0)")
         })
         .catch((error) => {
           console.warn("[juice-squeeze] Could not load Corpán avatar:", error)
         })
-      
+
       return avatarContainer
     } catch (error) {
       console.warn("[juice-squeeze] Could not create Corpán avatar:", error)
       return null
     }
   }
-  
+
   createCorpanAvatar()
 
   // Create title "Juice Squeeze" (responsive)
@@ -1005,15 +1297,27 @@ export const createJuiceSqueeze = (
   })
   root.appendChild(exitButton)
 
-  // Create give up / show answer button (bottom-right)
-  const giveUpButton = document.createElement("button")
-  giveUpButton.textContent = "Show Answer"
-  giveUpButton.className = "give-up-btn"
-  giveUpButton.addEventListener("click", () => {
-    const state = useGameStore.getState()
-    if (state.hasWon) return // Don't show if already won
+  // Create ear button for audio-only (bottom-right, above eye)
+  const earButton = document.createElement("button")
+  earButton.innerHTML = "👂"
+  earButton.className = "ear-btn icon-btn"
+  earButton.title = "Listen to answer"
+  earButton.addEventListener("click", () => {
+    const { phrase } = useGameStore.getState()
+    if (!phrase.correctWords.length) return
+    if (phrase.blockLang) {
+      speakFast(phrase.blockLang, phrase.correctWords.join(" "))
+    }
+  })
+  root.appendChild(earButton)
 
-    const { phrase } = state
+  // Create show answer button (bottom-right) - eye icon
+  const giveUpButton = document.createElement("button")
+  giveUpButton.innerHTML = "👁"
+  giveUpButton.className = "give-up-btn icon-btn"
+  giveUpButton.title = "Show answer"
+  giveUpButton.addEventListener("click", () => {
+    const { phrase } = useGameStore.getState()
     if (!phrase.correctWords.length) return
 
     // Create overlay
@@ -1024,15 +1328,18 @@ export const createJuiceSqueeze = (
     const card = document.createElement("div")
     card.className = "answer-card"
 
-    const title = document.createElement("h3")
-    title.textContent = "Correct Answer:"
+    const title = document.createElement("div")
+    title.className = "answer-icon"
+    title.innerHTML = "✓"
 
     const answerText = document.createElement("div")
     answerText.className = "answer-text"
     answerText.textContent = phrase.correctWords.join(" ")
 
     const continueBtn = document.createElement("button")
-    continueBtn.textContent = "Continue"
+    continueBtn.innerHTML = "→"
+    continueBtn.className = "continue-icon-btn"
+    continueBtn.title = "Next"
     continueBtn.addEventListener("click", () => {
       overlay.remove()
       // Load next phrase
@@ -1060,11 +1367,56 @@ export const createJuiceSqueeze = (
   })
   root.appendChild(giveUpButton)
 
+  // Create fruit flip button (bottom-left)
+  const fruitButton = document.createElement("button")
+  fruitButton.innerHTML = "🍊"
+  fruitButton.className = "fruit-btn icon-btn"
+  fruitButton.title = "Flip to fruits"
+  root.appendChild(fruitButton)
+
+  // Fruit flip state - initialize from persisted store
+  const fruitEmojis = ["🍊", "🥭", "🍍", "🍋", "🍇", "🍎", "🍓", "🍑"]
+  const initialFruitState = useGameStore.getState().settings.fruitsEnabled
+  fruitButton.classList.toggle("active", initialFruitState)
+
+  // Helper to update all blocks based on fruit state
+  const updateAllBlockTexts = () => {
+    const fruitsEnabled = useGameStore.getState().settings.fruitsEnabled
+    wordBlocks.forEach((block, index) => {
+      const data = wordBlockData.get(block)
+      if (!data?.textTexture || !data?.fruitColor) return
+
+      const displayText = fruitsEnabled
+        ? fruitEmojis[index % fruitEmojis.length]
+        : data.word
+
+      updateBlockText(data.textTexture, displayText, data.fruitColor)
+    })
+  }
+
+  fruitButton.addEventListener("click", () => {
+    useGameStore.getState().toggleFruits()
+    const fruitsEnabled = useGameStore.getState().settings.fruitsEnabled
+    fruitButton.classList.toggle("active", fruitsEnabled)
+    updateAllBlockTexts()
+  })
+
   // Create juice glass animation (centered)
   const juiceGlass: JuiceGlass = createJuiceGlass(root)
-  // Initialize fill level from store
+
+  // Create score display on juice glass (like a label)
+  const scoreDisplay = document.createElement("div")
+  scoreDisplay.className = "juice-score-display"
   const initialStats = useGameStore.getState().stats
-  const initialFillLevel = Math.min(1, initialStats.completedPhrases / 10)
+  const initialScore = initialStats?.allTimeScore || 0
+  scoreDisplay.innerHTML = `
+    <div class="score-value">${initialScore}</div>
+  `
+  root.appendChild(scoreDisplay)
+
+  // Initialize fill level from persistent all-time completed phrases
+  const allTimeCompleted = initialStats?.allTimeCompletedPhrases || 0
+  const initialFillLevel = Math.min(1, Math.max(0, allTimeCompleted / 10))
   juiceGlass.updateFill(initialFillLevel)
 
   // Utterance history for back/forward navigation
@@ -1207,6 +1559,10 @@ export const createJuiceSqueeze = (
     })
     wordBlocks = []
     wordBlockData = new Map()
+    blockShrinkCallbacks.clear()
+    currentActiveBlock = null
+
+    // Fruit state persists across phrases - no reset needed
 
     // Clear language labels
     const oldTargetDisplay = root.querySelector(".target-phrase-display")
@@ -1219,7 +1575,8 @@ export const createJuiceSqueeze = (
     }
   }
 
-  // Pick two random languages from stack config for translation practice
+  // Pick language pair from stack config for translation practice
+  // For 3+ languages, rotates through block languages each phrase
   const pickLanguagePair = (languages: string[]): [string, string] => {
     if (languages.length === 0) {
       return ["en", "en"] // Fallback
@@ -1231,10 +1588,30 @@ export const createJuiceSqueeze = (
     // languages[0] = target language (what user is learning) - top in settings
     // languages[1] = primary language (user's native) - bottom in settings
     // Return: [targetLang (phrase at top), blockLang (words to build)]
-    // User sees phrase in primary/native (languages[1]), builds with target (languages[0])
-    // But API expects: targetLang for display, blockLang for blocks
-    // If user has English primary, French target: show English, build French
-    return [languages[0], languages[1]]
+    if (languages.length === 2) {
+      return [languages[0], languages[1]]
+    }
+
+    // 3+ languages: display stays same, rotate through other languages for blocks
+    // This lets users practice building sentences in all their target languages
+    const displayLang = languages[0]
+    const blockLangs = languages.slice(1) // All non-display languages
+    const blockLang = blockLangs[targetLangRotationIndex % blockLangs.length]
+    targetLangRotationIndex++
+
+    return [displayLang, blockLang]
+  }
+
+  // Check if language is RTL (right-to-left)
+  const isRTL = (langCode: string): boolean => {
+    const rtlLanguages = ['ar', 'fa', 'ur', 'he', 'pa-Arab']
+    return rtlLanguages.includes(langCode)
+  }
+
+  // Check if text is only punctuation (don't speak these in TTS)
+  // Uses Unicode property escapes to catch ALL punctuation from any language
+  const isOnlyPunctuation = (text: string): boolean => {
+    return /^[\p{P}\s]+$/u.test(text)
   }
 
   // Create word blocks from loaded utterance
@@ -1344,18 +1721,18 @@ export const createJuiceSqueeze = (
       blockPositions.push({ x, y: metrics.wordBlocksY, z: 0 })
     })
 
-      // Create texture for each word with fruit slice colors (using shuffled order)
-      shuffledWords.forEach((word, shuffledIndex) => {
-        // Find original index for correct ordering
-        const originalIndex = words.indexOf(word)
-        
-        // Get position from calculated layout
-        const pos = blockPositions[shuffledIndex]
-        if (!pos) {
-          console.error(`[juice-squeeze] No position for block ${shuffledIndex}`)
-          return
-        }
-      
+    // Create texture for each word with fruit slice colors (using shuffled order)
+    shuffledWords.forEach((word, shuffledIndex) => {
+      // Find original index for correct ordering
+      const originalIndex = words.indexOf(word)
+
+      // Get position from calculated layout
+      const pos = blockPositions[shuffledIndex]
+      if (!pos) {
+        console.error(`[juice-squeeze] No position for block ${shuffledIndex}`)
+        return
+      }
+
       // High-quality texture resolution (1024x512 as specified)
       const textureWidth = 1024
       const textureHeight = 512
@@ -1370,7 +1747,7 @@ export const createJuiceSqueeze = (
 
       // Use fruit slice color (cycle through colors)
       const fruitColor = fruitColors[shuffledIndex % fruitColors.length]
-      
+
       // Rounded rectangle helper for word blocks
       const roundRect = (x: number, y: number, w: number, h: number, r: number) => {
         ctx.beginPath()
@@ -1385,25 +1762,25 @@ export const createJuiceSqueeze = (
         ctx.quadraticCurveTo(x, y, x + r, y)
         ctx.closePath()
       }
-      
+
       // Clear texture
       ctx.clearRect(0, 0, textureWidth, textureHeight)
-      
+
       const padding = 16
       const radius = 48
-      
+
       // Draw rounded block with gradient for depth
       roundRect(padding, padding, textureWidth - padding * 2, textureHeight - padding * 2, radius)
-      
+
       // Juicy gradient - lighter at top, darker at bottom
       const gradient = ctx.createLinearGradient(0, 0, 0, textureHeight)
       gradient.addColorStop(0, fruitColor)
       gradient.addColorStop(0.5, fruitColor)
       gradient.addColorStop(1, shadeColor(fruitColor, -20)) // Darker at bottom
-      
+
       ctx.fillStyle = gradient
       ctx.fill()
-      
+
       // Glossy highlight at top - brighter for juicy candy look
       const highlightGradient = ctx.createLinearGradient(0, padding, 0, textureHeight * 0.3)
       highlightGradient.addColorStop(0, "rgba(255, 255, 255, 0.75)")
@@ -1411,7 +1788,7 @@ export const createJuiceSqueeze = (
       roundRect(padding, padding, textureWidth - padding * 2, textureHeight - padding * 2, radius)
       ctx.fillStyle = highlightGradient
       ctx.fill()
-      
+
       // Soft inner shadow at bottom
       roundRect(padding, padding, textureWidth - padding * 2, textureHeight - padding * 2, radius)
       ctx.strokeStyle = "rgba(0, 0, 0, 0.15)"
@@ -1449,33 +1826,33 @@ export const createJuiceSqueeze = (
       ctx.font = `bold ${fontSize}px Arial`
       ctx.textAlign = "center"
       ctx.textBaseline = "middle"
-      
+
       let textWidth = ctx.measureText(word).width
-      
+
       // Shrink until text fits 80% of texture width
       while (textWidth > textureWidth * 0.8 && fontSize > 48) {
         fontSize -= 10
         ctx.font = `bold ${fontSize}px Arial`
         textWidth = ctx.measureText(word).width
       }
-      
+
       // For short words, make them HUGE (fill vertically too)
       if (word.length <= 3) {
         const maxVerticalSize = textureHeight * 0.7
         fontSize = Math.min(fontSize, maxVerticalSize)
         ctx.font = `bold ${fontSize}px Arial`
       }
-      
+
       // Text shadow for depth - more dramatic
       ctx.shadowColor = "rgba(0, 0, 0, 0.4)"
       ctx.shadowBlur = 24
       ctx.shadowOffsetX = 0
       ctx.shadowOffsetY = 10
-      
+
       // Dark but not pure black text
       ctx.fillStyle = "#2a2a2a"
       ctx.fillText(word, textureWidth / 2, textureHeight / 2)
-      
+
       // Reset shadow
       ctx.shadowColor = "transparent"
       ctx.shadowBlur = 0
@@ -1497,7 +1874,7 @@ export const createJuiceSqueeze = (
       // Position block from calculated layout
       const originalPosition = new Vector3(pos.x, pos.y, pos.z)
       block.position = originalPosition.clone()
-      
+
 
       // Apply texture material with enhanced 3D depth
       const material = new StandardMaterial(`word-material-${utterance.id}-${shuffledIndex}`, scene)
@@ -1513,7 +1890,7 @@ export const createJuiceSqueeze = (
       material.disableDepthWrite = false
       material.zOffset = -5 // Render blocks in front
       block.material = material
-      
+
       // Enable shadows for 3D depth
       block.receiveShadows = true
       shadowGenerator.addShadowCaster(block)
@@ -1527,6 +1904,8 @@ export const createJuiceSqueeze = (
         sentenceRow: -1, // -1 means not in sentence area
         baseWidth: blockSize.width,   // Store uniform width for scaling
         baseHeight: blockSize.height, // Store creation-time height for scaling
+        textTexture: texture,         // Store for fruit flip feature
+        fruitColor,                   // Store color for texture redraw
       })
 
       // Add dragging behavior
@@ -1534,25 +1913,39 @@ export const createJuiceSqueeze = (
         dragPlaneNormal: new Vector3(0, 0, 1), // Drag in XY plane
       })
       dragBehavior.attach(block)
-      
+
       // Track drag state for tap detection
       let dragStartTime = 0
       let dragMoved = false
       let dragStartPos: Vector3 | null = null
       let shrinkAnimationId: number | null = null // Track shrink animation to cancel on new drag
+      let growAnimationId: number | null = null // Track grow animation to cancel on other taps
 
       // Set default rendering group for proper z-ordering
       block.renderingGroupId = 1
+
+      // Track if block was already enlarged when drag started (for tap-to-toggle)
+      let wasAlreadyEnlarged = false
 
       dragBehavior.onDragStartObservable.add(() => {
         isDragging = true // Track drag state for swipe prevention
         const data = wordBlockData.get(block)
         if (!data) return
 
+        // Check if this block is already the active (enlarged) one
+        wasAlreadyEnlarged = currentActiveBlock === block
+
+        shrinkOtherBlocks(block)
+        currentActiveBlock = block
+
         // Cancel any running shrink animation to prevent jerkiness
         if (shrinkAnimationId !== null) {
           cancelAnimationFrame(shrinkAnimationId)
           shrinkAnimationId = null
+        }
+        if (growAnimationId !== null) {
+          cancelAnimationFrame(growAnimationId)
+          growAnimationId = null
         }
 
         dragStartTime = Date.now()
@@ -1560,29 +1953,36 @@ export const createJuiceSqueeze = (
         dragStartPos = block.position.clone()
 
         // Play TTS immediately on touch - stopSpeech clears queue for instant response
+        // Skip TTS for punctuation-only blocks
         const lang = useGameStore.getState().phrase.blockLang || "en"
-        speakFast(lang, data.word)
+        if (!isOnlyPunctuation(data.word)) {
+          speakFast(lang, data.word)
+        }
 
         // Bring block to front layer so it renders on top of other blocks
         block.renderingGroupId = 2
         block.position.z = data.originalPosition.z - 1.0
 
-        // Animate smooth growth: uniform 1.7x for all blocks
-        const growthFactor = 1.7
-        const animateGrow = () => {
-          const currentScale = block.scaling.x
-          const diff = growthFactor - currentScale
-          if (Math.abs(diff) > 0.05) {
-            const newScale = currentScale + diff * 0.15
-            block.scaling = new Vector3(newScale, newScale, 1)
-            requestAnimationFrame(animateGrow)
-          } else {
-            block.scaling = new Vector3(growthFactor, growthFactor, 1)
+        // Only grow if not already enlarged
+        if (!wasAlreadyEnlarged) {
+          // Animate smooth growth: uniform 1.7x for all blocks
+          const growthFactor = 1.7
+          const animateGrow = () => {
+            const currentScale = block.scaling.x
+            const diff = growthFactor - currentScale
+            if (Math.abs(diff) > 0.05) {
+              const newScale = currentScale + diff * 0.15
+              block.scaling = new Vector3(newScale, newScale, 1)
+              growAnimationId = requestAnimationFrame(animateGrow)
+            } else {
+              block.scaling = new Vector3(growthFactor, growthFactor, 1)
+              growAnimationId = null
+            }
           }
+          animateGrow()
         }
-        animateGrow()
       })
-      
+
       // Track if block actually moved during drag (X/Y only, ignore Z lift)
       dragBehavior.onDragObservable.add(() => {
         if (dragStartPos) {
@@ -1595,12 +1995,18 @@ export const createJuiceSqueeze = (
         }
       })
 
-      dragBehavior.onDragEndObservable.add(() => {
-        isDragging = false // Clear drag state
-        dragEndTime = Date.now() // Record end time for swipe lockout
-
+      // Shrink function for this block - can be called externally when another block is touched
+      const triggerShrink = () => {
         // Restore normal rendering layer
         block.renderingGroupId = 1
+        if (currentActiveBlock === block) {
+          currentActiveBlock = null
+        }
+
+        if (growAnimationId !== null) {
+          cancelAnimationFrame(growAnimationId)
+          growAnimationId = null
+        }
 
         // Animate smooth shrink back to normal size
         const animateShrink = () => {
@@ -1615,6 +2021,15 @@ export const createJuiceSqueeze = (
           }
         }
         animateShrink()
+      }
+      blockShrinkCallbacks.set(block, triggerShrink)
+
+      dragBehavior.onDragEndObservable.add(() => {
+        isDragging = false // Clear drag state
+        dragEndTime = Date.now() // Record end time for swipe lockout
+
+        // Restore rendering layer
+        block.renderingGroupId = 1
 
         const data = wordBlockData.get(block)
         if (!data) return
@@ -1627,29 +2042,78 @@ export const createJuiceSqueeze = (
           block.position.y <= sentenceAreaCenterY + sentenceAreaHeight / 2 &&
           Math.abs(block.position.x) <= sentenceAreaWidth / 2
 
-        if (isInSentenceArea) {
-          // Mark as in sentence area (but still draggable!)
+        const placeBlockAtSentenceEnd = (metrics: LayoutMetrics) => {
+          const currentBlockLang = useGameStore.getState().phrase.blockLang || "en"
+          const isBlockLangRTL = isRTL(currentBlockLang)
+
+          const blocksInSentence = Array.from(wordBlockData.entries())
+            .filter(([mesh, entry]) => entry.isInSentence && mesh !== block)
+            .map(([mesh, entry]) => ({ mesh, entry }))
+
+          let targetRow = 0
+          let targetX = 0
+
+          if (blocksInSentence.length > 0) {
+            // Calculate max blocks per row
+            const currentWordCount = currentUtterance?.words?.length || blocksInSentence.length + 1
+            const currentBlockSize = calculateBlockSize(currentWordCount, metrics)
+            const sentenceSpacing = currentBlockSize.width * 1.15
+
+            const canvasElement = engine.getRenderingCanvas()
+            const viewportWidth = canvasElement?.width || 720
+            const maxBlocksPerRow = getSentenceBlocksPerRow(viewportWidth)
+            const availableWidth = metrics.worldWidth * 0.85
+            const blocksPerRowByWidth = Math.floor(availableWidth / sentenceSpacing)
+            const effectiveBlocksPerRow = Math.max(2, Math.min(maxBlocksPerRow, blocksPerRowByWidth))
+
+            // Sort by row, then by reading order (RTL: right-to-left, LTR: left-to-right)
+            blocksInSentence.sort((a, b) => {
+              if (a.entry.sentenceRow !== b.entry.sentenceRow) {
+                return a.entry.sentenceRow - b.entry.sentenceRow
+              }
+              return isBlockLangRTL ? b.mesh.position.x - a.mesh.position.x : a.mesh.position.x - b.mesh.position.x
+            })
+            const last = blocksInSentence[blocksInSentence.length - 1]
+            targetRow = last.entry.sentenceRow
+
+            // Count how many blocks are in the current row
+            const blocksInCurrentRow = blocksInSentence.filter(b => b.entry.sentenceRow === targetRow).length
+
+            // Check if current row is full
+            if (blocksInCurrentRow >= effectiveBlocksPerRow) {
+              // Move to next row
+              targetRow++
+              // Start at beginning of new row (right for RTL, left for LTR)
+              const rowWidth = sentenceSpacing
+              if (isBlockLangRTL) {
+                targetX = rowWidth / 2 - currentBlockSize.width / 2
+              } else {
+                targetX = -rowWidth / 2 + currentBlockSize.width / 2
+              }
+            } else {
+              // Add to current row
+              // For RTL, add to the left (subtract spacing); for LTR, add to the right (add spacing)
+              targetX = isBlockLangRTL
+                ? last.mesh.position.x - sentenceSpacing
+                : last.mesh.position.x + sentenceSpacing
+            }
+          }
+
           data.isInSentence = true
-
-          // Determine which row to place the block in
-          const targetRow = getTargetRow(block.position.y, sentenceRowYPositions)
           data.sentenceRow = targetRow
-
-          // Snap Z forward
+          block.position.x = targetX
+          block.position.y = sentenceRowYPositions[targetRow] || metrics.sentenceAreaY
           block.position.z = -0.5
+        }
 
-          // Reflow all blocks in sentence area with multi-row support
-          reflowSentenceBlocks(currentMetrics)
+        const wasTap = !dragMoved
 
-          // Check win condition (but don't lock blocks)
-          checkWin()
-        } else {
-          // Dragged out of sentence area - return to original position
+        const removeFromSentence = () => {
           data.isInSentence = false
           data.sentenceRow = -1
           const targetPos = data.originalPosition.clone()
 
-          // Animate snap back
+          // Animate snap back to word bank
           const snapBack = () => {
             const currentPos = block.position
             const diff = targetPos.subtract(currentPos)
@@ -1663,8 +2127,112 @@ export const createJuiceSqueeze = (
           }
           snapBack()
 
-          // Re-arrange remaining words in sentence area
           reflowSentenceBlocks(currentMetrics)
+        }
+
+        if (wasTap && data.isInSentence) {
+          removeFromSentence()
+          triggerShrink()
+          return
+        }
+
+        if (wasTap && !isInSentenceArea && !data.isInSentence) {
+          placeBlockAtSentenceEnd(currentMetrics)
+          triggerShrink()
+          reflowSentenceBlocks(currentMetrics)
+          checkWin()
+          return
+        }
+
+        // Shrink block if:
+        // 1. Dropped in sentence area (always shrink when placed)
+        // 2. Tap-to-toggle: was already enlarged and didn't drag (just tapped)
+        const shouldShrink = isInSentenceArea || (wasAlreadyEnlarged && wasTap)
+
+        if (shouldShrink) {
+          triggerShrink()
+        }
+
+        if (isInSentenceArea) {
+          // Mark as in sentence area (but still draggable!)
+          data.isInSentence = true
+
+          // Determine which row to place the block in
+          const targetRow = getTargetRow(block.position.y, sentenceRowYPositions)
+          data.sentenceRow = targetRow
+
+          // Get current language direction
+          const currentBlockLang = useGameStore.getState().phrase.blockLang || "en"
+          const isBlockLangRTL = isRTL(currentBlockLang)
+
+          // Find blocks in the same row to determine insertion position
+          const blocksInSameRow = Array.from(wordBlockData.entries())
+            .filter(([mesh, d]) => d.isInSentence && mesh !== block && d.sentenceRow === targetRow)
+            .map(([mesh, d]) => ({ mesh, data: d }))
+
+          // Adjust X position based on drop position and reading direction
+          // This ensures the block sorts into the correct position before reflow
+          const dropX = block.position.x
+
+          if (blocksInSameRow.length > 0) {
+            // Sort blocks by reading order
+            blocksInSameRow.sort((a, b) =>
+              isBlockLangRTL ? b.mesh.position.x - a.mesh.position.x : a.mesh.position.x - b.mesh.position.x
+            )
+
+            // Find insertion position based on drop X
+            let insertIndex = blocksInSameRow.length // Default: insert at end
+
+            for (let i = 0; i < blocksInSameRow.length; i++) {
+              const existingX = blocksInSameRow[i].mesh.position.x
+
+              if (isBlockLangRTL) {
+                // RTL: insert before blocks that are to the left (lower X)
+                if (dropX > existingX) {
+                  insertIndex = i
+                  break
+                }
+              } else {
+                // LTR: insert before blocks that are to the right (higher X)
+                if (dropX < existingX) {
+                  insertIndex = i
+                  break
+                }
+              }
+            }
+
+            // Set X position to sort correctly: place between neighbors
+            if (insertIndex === 0) {
+              // Insert at beginning
+              const firstBlock = blocksInSameRow[0]
+              block.position.x = isBlockLangRTL
+                ? firstBlock.mesh.position.x + 1.0  // Further right
+                : firstBlock.mesh.position.x - 1.0  // Further left
+            } else if (insertIndex === blocksInSameRow.length) {
+              // Insert at end
+              const lastBlock = blocksInSameRow[blocksInSameRow.length - 1]
+              block.position.x = isBlockLangRTL
+                ? lastBlock.mesh.position.x - 1.0  // Further left
+                : lastBlock.mesh.position.x + 1.0  // Further right
+            } else {
+              // Insert between two blocks
+              const prevBlock = blocksInSameRow[insertIndex - 1]
+              const nextBlock = blocksInSameRow[insertIndex]
+              block.position.x = (prevBlock.mesh.position.x + nextBlock.mesh.position.x) / 2
+            }
+          }
+
+          // Snap Z forward
+          block.position.z = -0.5
+
+          // Reflow all blocks in sentence area with multi-row support
+          reflowSentenceBlocks(currentMetrics)
+
+          // Check win condition (but don't lock blocks)
+          checkWin()
+        } else {
+          // Dragged out of sentence area - return to original position
+          removeFromSentence()
         }
       })
 
@@ -1673,6 +2241,9 @@ export const createJuiceSqueeze = (
 
     // Position all blocks using the positioning function
     positionWordBlocks(wordBlocks, metrics, blockSize)
+
+    // Apply initial fruit flip state from store
+    updateAllBlockTexts()
   }
 
   // Load and create word blocks
@@ -1689,13 +2260,13 @@ export const createJuiceSqueeze = (
       1 / Math.min(window.devicePixelRatio || 1, maxDevicePixelRatio)
     )
     engine.resize()
-    
+
     // Get new layout metrics
     const metrics = getLayoutMetrics()
-    
+
     // Update camera
     updateCamera(metrics)
-    
+
     // If we have blocks, recalculate and reposition everything
     if (currentUtterance && wordBlocks.length > 0) {
       const wordCount = currentUtterance.words.length
@@ -1730,7 +2301,7 @@ export const createJuiceSqueeze = (
       }
     }
   }
-  
+
   // Initial camera setup already done above
 
   let resizeFrame = 0
@@ -1781,10 +2352,12 @@ export const createJuiceSqueeze = (
 
     // Clear word blocks
     clearWordBlocks()
-    
+
     // Remove UI elements
     exitButton.remove()
+    earButton.remove()
     giveUpButton.remove()
+    fruitButton.remove()
     utteranceNav.remove()
     titleElement.remove()
     juiceGlass.dispose()
@@ -1814,4 +2387,3 @@ export const createJuiceSqueeze = (
 
   return { dispose }
 }
-

@@ -2,7 +2,6 @@ use crate::{
     models::{SpeakArgs, TtsEngineStatus, VoiceInfo},
     Result, TtsExt,
 };
-use std::time::{SystemTime, UNIX_EPOCH};
 use tauri::{command, AppHandle, Runtime};
 
 /// Speak text using native TTS.
@@ -12,30 +11,13 @@ use tauri::{command, AppHandle, Runtime};
 ///   invoke("plugin:tts|speak", { args: { text, language?, rate?, voice_id? } })
 #[command]
 pub(crate) async fn speak<R: Runtime>(app: AppHandle<R>, args: SpeakArgs) -> Result<()> {
-    // Debounce state (static for plugin lifetime)
-    static mut LAST_SPEAK_TIME: u128 = 0;
-    const DEBOUNCE_MS: u128 = 500; // 500ms debounce window
-
-    let now = SystemTime::now()
-        .duration_since(UNIX_EPOCH)
-        .expect("Time went backwards")
-        .as_millis();
-
     println!(
-        "[NATIVE_TTS:DEBUG] speak invoked: text='{}', lang={:?}, rate={:?}, voice_id={:?}, time_since_last={}ms",
+        "[NATIVE_TTS:DEBUG] speak invoked: text='{}', lang={:?}, rate={:?}, voice_id={:?}",
         args.text.chars().take(50).collect::<String>(),
         args.language,
         args.rate,
-        args.voice_id,
-        now.saturating_sub(unsafe { LAST_SPEAK_TIME })
+        args.voice_id
     );
-
-    // Debounce bursty calls
-    if unsafe { now.saturating_sub(LAST_SPEAK_TIME) < DEBOUNCE_MS } {
-        println!("[NATIVE_TTS:DEBUG] speak debounced: too soon after last call");
-        return Ok(());
-    }
-    unsafe { LAST_SPEAK_TIME = now };
 
     // Single, unified backend entry point: pass optional voice_id through.
     app.tts()
