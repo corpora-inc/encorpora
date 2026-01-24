@@ -183,7 +183,7 @@ export const createJuiceSqueeze = (
   if (typeof hostApi.stopSpeech === "function") {
     hostApi.stopSpeech()
   }
-  
+
   let disposed = false
 
   // Track rotation index for multi-language stacks (3+ languages)
@@ -244,7 +244,7 @@ export const createJuiceSqueeze = (
   camera.mode = Camera.ORTHOGRAPHIC_CAMERA
   camera.setTarget(Vector3.Zero())
   camera.inputs.clear()
-  
+
   // Track current utterance for word count and TTS
   let currentUtterance: Utterance | null = null
 
@@ -284,7 +284,7 @@ export const createJuiceSqueeze = (
     blockLabelY: number
     pixelsPerUnit: number
   }
-  
+
   // Get viewport-based layout metrics
   const getLayoutMetrics = (): LayoutMetrics => {
     const canvasElement = engine.getRenderingCanvas()
@@ -300,11 +300,11 @@ export const createJuiceSqueeze = (
         pixelsPerUnit: 16,
       }
     }
-    
+
     const canvasW = canvasElement.width
     const canvasH = canvasElement.height
     const aspectRatio = canvasW / canvasH
-    
+
     // World units that map to screen
     // Keep world at constant 20 units - mesh scaling handles responsive behavior
     // At 320px: 1 world unit = 16 pixels
@@ -313,26 +313,26 @@ export const createJuiceSqueeze = (
     const baseWidth = 20
     const worldWidth = baseWidth
     const worldHeight = worldWidth / aspectRatio
-    
+
     // Calculate pixels per world unit for HTML overlay positioning
     const pixelsPerUnit = canvasW / worldWidth
-    
+
     // Regions in world coordinates (0,0 = center)
     // Top region: 80-95% of screen height = 85% from bottom = 15% from top
     // In world coords: positive Y is up, so 85% up = worldHeight * 0.35
     const targetPhraseY = worldHeight * 0.48
-    
+
     // Middle region: 45-70% of screen height = 60% from bottom = 40% from top
     // In world coords: 60% up = worldHeight * 0.1
     const sentenceAreaY = worldHeight * 0.1
-    
+
     // Bottom region: 5-35% of screen height = 25% from bottom
     // In world coords: 25% down = -worldHeight * 0.25
     const wordBlocksY = -worldHeight * 0.25
-    
+
     // Block label: 40% from bottom
     const blockLabelY = -worldHeight * 0.4
-    
+
     return {
       worldWidth,
       worldHeight,
@@ -343,7 +343,7 @@ export const createJuiceSqueeze = (
       pixelsPerUnit,
     }
   }
-  
+
   // Layout constants for responsive design
   // These are BASE values at 320px viewport - they scale proportionally with viewport
   const BASE_MIN_BLOCK_WIDTH = 2.0 // Base minimum block width at 320px (reduced to fit more)
@@ -597,7 +597,7 @@ export const createJuiceSqueeze = (
       })
     }
   }
-  
+
   // Update camera to fit layout metrics
   const updateCamera = (metrics: LayoutMetrics) => {
     // Apply slight padding factor for narrow screens to prevent edge clipping
@@ -611,7 +611,7 @@ export const createJuiceSqueeze = (
     camera.orthoBottom = -metrics.worldHeight / 2 * paddingFactor
     camera.orthoTop = metrics.worldHeight / 2 * paddingFactor
   }
-  
+
   // Initial camera setup
   const initialMetrics = getLayoutMetrics()
   updateCamera(initialMetrics)
@@ -621,12 +621,12 @@ export const createJuiceSqueeze = (
   hemi.intensity = 0.9 // Slightly less ambient
   hemi.diffuse = new Color3(1, 0.98, 0.94) // Warm
   hemi.groundColor = new Color3(0.7, 0.65, 0.6) // Darker ground bounce for contrast
-  
+
   // Add directional light for better 3D depth and shadows
   const dirLight = new DirectionalLight("dirLight", new Vector3(-0.5, -1, -0.3), scene)
   dirLight.intensity = 0.6
   dirLight.diffuse = new Color3(1, 1, 0.95)
-  
+
   // Shadow generator for 3D depth
   const shadowGenerator = new ShadowGenerator(2048, dirLight)
   shadowGenerator.useBlurExponentialShadowMap = true
@@ -652,7 +652,7 @@ export const createJuiceSqueeze = (
   let isDragging = false
   let dragEndTime = 0
   const DRAG_SWIPE_LOCKOUT_MS = 200 // Prevent swipe for 200ms after drag ends
-  
+
   let sentenceAreaMesh: Mesh | null = null // Store reference to update size
   let sentenceAreaWidth = 60 // Track current sentence area width for collision detection
   let sentenceAreaHeight = 5 // Track current sentence area height for collision detection
@@ -702,14 +702,14 @@ export const createJuiceSqueeze = (
 
     // Calculate and store row Y positions
     sentenceRowYPositions = getSentenceRowYPositions(rowCount, areaY, rowHeightValue)
-    
+
     const area = MeshBuilder.CreatePlane("sentence-area", { width: areaWidth, height: areaHeight }, scene)
     area.position = new Vector3(0, areaY, 2) // Push even further behind blocks
-    
+
     const areaTexture = new DynamicTexture("sentence-area-texture", { width: 1024, height: 512 }, scene, true)
     areaTexture.hasAlpha = true
     const ctx = areaTexture.getContext() as CanvasRenderingContext2D
-    
+
     // Rounded rectangle helper for sentence area
     const roundRect = (x: number, y: number, w: number, h: number, r: number) => {
       ctx.beginPath()
@@ -724,22 +724,22 @@ export const createJuiceSqueeze = (
       ctx.quadraticCurveTo(x, y, x + r, y)
       ctx.closePath()
     }
-    
+
     // Frosted glass background - subtle teal tint that contrasts with blocks
     const areaGradient = ctx.createLinearGradient(0, 0, 0, 512)
     areaGradient.addColorStop(0, "rgba(230, 245, 245, 0.9)") // Subtle teal tint
     areaGradient.addColorStop(1, "rgba(220, 235, 235, 0.85)")
-    
+
     // Rounded rectangle
     roundRect(16, 16, 1024 - 32, 512 - 32, 32)
     ctx.fillStyle = areaGradient
     ctx.fill()
-    
+
     // Subtle colored border (teal or matching accent)
     ctx.strokeStyle = "rgba(11, 107, 111, 0.4)"
     ctx.lineWidth = 3
     ctx.stroke()
-    
+
     // Inner highlight
     roundRect(20, 20, 1024 - 40, 512 - 40, 28)
     ctx.strokeStyle = "rgba(255, 255, 255, 0.8)"
@@ -764,7 +764,7 @@ export const createJuiceSqueeze = (
     }
 
     areaTexture.update()
-    
+
     const areaMaterial = new StandardMaterial("sentence-area-material", scene)
     areaMaterial.diffuseTexture = areaTexture
     areaMaterial.useAlphaFromDiffuseTexture = true
@@ -773,11 +773,11 @@ export const createJuiceSqueeze = (
     areaMaterial.disableDepthWrite = true // Render behind everything
     areaMaterial.zOffset = 10 // Push back in render order
     area.material = areaMaterial
-    
+
     sentenceAreaMesh = area
     return area
   }
-  
+
   // Convert language code to readable name
   const getLanguageName = (code: string): string => {
     const languageNames: Record<string, string> = {
@@ -857,49 +857,42 @@ export const createJuiceSqueeze = (
     if (oldDisplay) {
       oldDisplay.remove()
     }
-    
+
     const languageName = getLanguageName(languageCode)
     const canvasElement = engine.getRenderingCanvas()
     if (!canvasElement) return
-    
+
     // Get canvas bounding rect for pixel positioning
     const canvasRect = canvasElement.getBoundingClientRect()
     const canvasHeight = canvasElement.height
-    
-    // Position in the top space above the sentence area
-    // Calculate two positions and blend them for optimal placement
 
-    // Position 1: Based on world coordinates (original approach - higher)
-    const worldY = metrics.targetPhraseY
-    const worldBasedY = canvasRect.top + (canvasHeight / 2) - (worldY * metrics.pixelsPerUnit)
-
-    // Position 2: Midpoint between title and sentence area (lower)
+    // Position in the top space: 40% down from title area to sentence area
+    // This percentage approach works consistently across different aspect ratios
     const titleApproxHeight = 60
     const topSpaceStart = canvasRect.top + titleApproxHeight
     const sentenceWorldY = metrics.sentenceAreaY
     const sentencePixelY = canvasRect.top + (canvasHeight / 2) - (sentenceWorldY * metrics.pixelsPerUnit)
-    const midpointBasedY = (topSpaceStart + sentencePixelY) / 2
 
-    // Blend with 70% weight on world-based (higher) and 30% on midpoint (lower)
-    const pixelY = worldBasedY * 0.7 + midpointBasedY * 0.3
-    
+    // Position at 40% of the way from title to sentence area
+    const pixelY = topSpaceStart + (sentencePixelY - topSpaceStart) * 0.2
+
     // Responsive font sizes based on viewport percentage
     const viewportWidth = canvasElement.width
     const labelFontSize = Math.max(14, Math.min(22, viewportWidth * 0.04)) // 4% of width
     const phraseFontSize = Math.max(20, Math.min(36, viewportWidth * 0.055)) // 5.5% of width
-    
+
     const display = document.createElement("div")
     display.className = "target-phrase-display"
     display.style.top = `${pixelY}px`
-    
+
     // Create language label
     const label = document.createElement("div")
     label.textContent = `${languageName}:`
-    
+
     // Create phrase text
     const phrase = document.createElement("div")
     phrase.textContent = text
-    
+
     display.appendChild(label)
     display.appendChild(phrase)
 
@@ -917,7 +910,7 @@ export const createJuiceSqueeze = (
 
     root.appendChild(display)
   }
-  
+
   // Create "Build in: [Language]" label near word blocks area (viewport-based)
   const createBlockLanguageLabel = (languageCode: string, metrics: LayoutMetrics) => {
     // Remove old label if exists
@@ -925,7 +918,7 @@ export const createJuiceSqueeze = (
     if (oldLabel) {
       oldLabel.remove()
     }
-    
+
     const nativeName = getNativeLanguageName(languageCode)
     const canvasElement = engine.getRenderingCanvas()
     if (!canvasElement) return
@@ -955,11 +948,11 @@ export const createJuiceSqueeze = (
   const createFruitParticleTexture = () => {
     return new Texture(
       "data:image/svg+xml;base64," +
-        btoa(
-          `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32">` +
-            `<circle cx="16" cy="16" r="14" fill="white"/>` +
-          `</svg>`
-        ),
+      btoa(
+        `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32">` +
+        `<circle cx="16" cy="16" r="14" fill="white"/>` +
+        `</svg>`
+      ),
       scene
     )
   }
@@ -968,15 +961,15 @@ export const createJuiceSqueeze = (
   const createWinParticles = (position: Vector3) => {
     try {
       const particleSystem = new ParticleSystem("winParticles", 300, scene)
-      
+
       particleSystem.createSphereEmitter(2.0) // Larger emitter for more visible effect
       particleSystem.particleTexture = createFruitParticleTexture()
-      
+
       // Bright fruit colors (orange, pink, yellow)
       particleSystem.color1 = new Color4(1, 0.72, 0.3, 1) // Orange
       particleSystem.color2 = new Color4(1, 0.42, 0.42, 1) // Pink
       particleSystem.colorDead = new Color4(1, 0.9, 0.43, 0) // Yellow fade
-      
+
       // Juicy, glowy particles
       particleSystem.minSize = 0.15
       particleSystem.maxSize = 0.4
@@ -989,10 +982,10 @@ export const createJuiceSqueeze = (
       particleSystem.blendMode = ParticleSystem.BLENDMODE_ADD // Glowy!
       particleSystem.updateSpeed = 0.01
       particleSystem.gravity = new Vector3(0, -2, 0) // Stronger gravity
-      
+
       particleSystem.emitter = position.clone()
       particleSystem.start()
-      
+
       setTimeout(() => {
         particleSystem.stop()
         particleSystem.dispose()
@@ -1032,7 +1025,7 @@ export const createJuiceSqueeze = (
 
     if (wordsInSentence.length === phrase.correctWords.length) {
       const isCorrect = wordsInSentence.every((word, i) => word === phrase.correctWords[i])
-      
+
       if (isCorrect && !hasWon) {
         useGameStore.getState().setWon(true)
         useGameStore.getState().incrementCompletedPhrases()
@@ -1091,7 +1084,7 @@ export const createJuiceSqueeze = (
       const corpanLogoUrl = "../../hover-runner/src/assets/models/corpan_logo.glb"
       const avatarContainer = new TransformNode("corpan-avatar-container", scene)
       avatarContainer.position = new Vector3(-10, 5, 0)
-      
+
       // Gentle floating animation
       let floatTime = 0
       const floatAnimation = () => {
@@ -1101,7 +1094,7 @@ export const createJuiceSqueeze = (
         requestAnimationFrame(floatAnimation)
       }
       floatAnimation()
-      
+
       SceneLoader.LoadAssetContainerAsync("", corpanLogoUrl, scene)
         .then((logoAsset) => {
           if (disposed) return
@@ -1118,23 +1111,23 @@ export const createJuiceSqueeze = (
               }
             })
           }
-          
+
           // Scale avatar to appropriate size for 2D orthographic view
           avatarContainer.scaling = new Vector3(2, 2, 2)
-          
+
           console.log("[juice-squeeze] ✅ Corpán avatar loaded at (-10, 5, 0)")
         })
         .catch((error) => {
           console.warn("[juice-squeeze] Could not load Corpán avatar:", error)
         })
-      
+
       return avatarContainer
     } catch (error) {
       console.warn("[juice-squeeze] Could not create Corpán avatar:", error)
       return null
     }
   }
-  
+
   createCorpanAvatar()
 
   // Create title "Juice Squeeze" (responsive)
@@ -1554,18 +1547,18 @@ export const createJuiceSqueeze = (
       blockPositions.push({ x, y: metrics.wordBlocksY, z: 0 })
     })
 
-      // Create texture for each word with fruit slice colors (using shuffled order)
-      shuffledWords.forEach((word, shuffledIndex) => {
-        // Find original index for correct ordering
-        const originalIndex = words.indexOf(word)
-        
-        // Get position from calculated layout
-        const pos = blockPositions[shuffledIndex]
-        if (!pos) {
-          console.error(`[juice-squeeze] No position for block ${shuffledIndex}`)
-          return
-        }
-      
+    // Create texture for each word with fruit slice colors (using shuffled order)
+    shuffledWords.forEach((word, shuffledIndex) => {
+      // Find original index for correct ordering
+      const originalIndex = words.indexOf(word)
+
+      // Get position from calculated layout
+      const pos = blockPositions[shuffledIndex]
+      if (!pos) {
+        console.error(`[juice-squeeze] No position for block ${shuffledIndex}`)
+        return
+      }
+
       // High-quality texture resolution (1024x512 as specified)
       const textureWidth = 1024
       const textureHeight = 512
@@ -1580,7 +1573,7 @@ export const createJuiceSqueeze = (
 
       // Use fruit slice color (cycle through colors)
       const fruitColor = fruitColors[shuffledIndex % fruitColors.length]
-      
+
       // Rounded rectangle helper for word blocks
       const roundRect = (x: number, y: number, w: number, h: number, r: number) => {
         ctx.beginPath()
@@ -1595,25 +1588,25 @@ export const createJuiceSqueeze = (
         ctx.quadraticCurveTo(x, y, x + r, y)
         ctx.closePath()
       }
-      
+
       // Clear texture
       ctx.clearRect(0, 0, textureWidth, textureHeight)
-      
+
       const padding = 16
       const radius = 48
-      
+
       // Draw rounded block with gradient for depth
       roundRect(padding, padding, textureWidth - padding * 2, textureHeight - padding * 2, radius)
-      
+
       // Juicy gradient - lighter at top, darker at bottom
       const gradient = ctx.createLinearGradient(0, 0, 0, textureHeight)
       gradient.addColorStop(0, fruitColor)
       gradient.addColorStop(0.5, fruitColor)
       gradient.addColorStop(1, shadeColor(fruitColor, -20)) // Darker at bottom
-      
+
       ctx.fillStyle = gradient
       ctx.fill()
-      
+
       // Glossy highlight at top - brighter for juicy candy look
       const highlightGradient = ctx.createLinearGradient(0, padding, 0, textureHeight * 0.3)
       highlightGradient.addColorStop(0, "rgba(255, 255, 255, 0.75)")
@@ -1621,7 +1614,7 @@ export const createJuiceSqueeze = (
       roundRect(padding, padding, textureWidth - padding * 2, textureHeight - padding * 2, radius)
       ctx.fillStyle = highlightGradient
       ctx.fill()
-      
+
       // Soft inner shadow at bottom
       roundRect(padding, padding, textureWidth - padding * 2, textureHeight - padding * 2, radius)
       ctx.strokeStyle = "rgba(0, 0, 0, 0.15)"
@@ -1659,33 +1652,33 @@ export const createJuiceSqueeze = (
       ctx.font = `bold ${fontSize}px Arial`
       ctx.textAlign = "center"
       ctx.textBaseline = "middle"
-      
+
       let textWidth = ctx.measureText(word).width
-      
+
       // Shrink until text fits 80% of texture width
       while (textWidth > textureWidth * 0.8 && fontSize > 48) {
         fontSize -= 10
         ctx.font = `bold ${fontSize}px Arial`
         textWidth = ctx.measureText(word).width
       }
-      
+
       // For short words, make them HUGE (fill vertically too)
       if (word.length <= 3) {
         const maxVerticalSize = textureHeight * 0.7
         fontSize = Math.min(fontSize, maxVerticalSize)
         ctx.font = `bold ${fontSize}px Arial`
       }
-      
+
       // Text shadow for depth - more dramatic
       ctx.shadowColor = "rgba(0, 0, 0, 0.4)"
       ctx.shadowBlur = 24
       ctx.shadowOffsetX = 0
       ctx.shadowOffsetY = 10
-      
+
       // Dark but not pure black text
       ctx.fillStyle = "#2a2a2a"
       ctx.fillText(word, textureWidth / 2, textureHeight / 2)
-      
+
       // Reset shadow
       ctx.shadowColor = "transparent"
       ctx.shadowBlur = 0
@@ -1707,7 +1700,7 @@ export const createJuiceSqueeze = (
       // Position block from calculated layout
       const originalPosition = new Vector3(pos.x, pos.y, pos.z)
       block.position = originalPosition.clone()
-      
+
 
       // Apply texture material with enhanced 3D depth
       const material = new StandardMaterial(`word-material-${utterance.id}-${shuffledIndex}`, scene)
@@ -1723,7 +1716,7 @@ export const createJuiceSqueeze = (
       material.disableDepthWrite = false
       material.zOffset = -5 // Render blocks in front
       block.material = material
-      
+
       // Enable shadows for 3D depth
       block.receiveShadows = true
       shadowGenerator.addShadowCaster(block)
@@ -1746,7 +1739,7 @@ export const createJuiceSqueeze = (
         dragPlaneNormal: new Vector3(0, 0, 1), // Drag in XY plane
       })
       dragBehavior.attach(block)
-      
+
       // Track drag state for tap detection
       let dragStartTime = 0
       let dragMoved = false
@@ -1812,7 +1805,7 @@ export const createJuiceSqueeze = (
           animateGrow()
         }
       })
-      
+
       // Track if block actually moved during drag (X/Y only, ignore Z lift)
       dragBehavior.onDragObservable.add(() => {
         if (dragStartPos) {
@@ -2026,13 +2019,13 @@ export const createJuiceSqueeze = (
       1 / Math.min(window.devicePixelRatio || 1, maxDevicePixelRatio)
     )
     engine.resize()
-    
+
     // Get new layout metrics
     const metrics = getLayoutMetrics()
-    
+
     // Update camera
     updateCamera(metrics)
-    
+
     // If we have blocks, recalculate and reposition everything
     if (currentUtterance && wordBlocks.length > 0) {
       const wordCount = currentUtterance.words.length
@@ -2067,7 +2060,7 @@ export const createJuiceSqueeze = (
       }
     }
   }
-  
+
   // Initial camera setup already done above
 
   let resizeFrame = 0
@@ -2118,7 +2111,7 @@ export const createJuiceSqueeze = (
 
     // Clear word blocks
     clearWordBlocks()
-    
+
     // Remove UI elements
     exitButton.remove()
     earButton.remove()
