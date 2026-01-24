@@ -20,6 +20,13 @@ const PACK_CONFIGS = [
     zipEntries: ['manifest.json', 'dist/']
   },
   {
+    name: 'juice-squeeze',
+    distDir: 'dist',
+    files: ['manifest.json'],
+    zipName: 'juice-squeeze.zip',
+    zipEntries: ['manifest.json', 'dist/']
+  },
+  {
     name: 'hanzipan',
     distDir: 'dist',
     files: ['manifest.json', 'index.js', 'styles.css', 'hanziwriter.min.js', 'HANZIWRITER_LICENSE.txt'],

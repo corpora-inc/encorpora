@@ -93,6 +93,16 @@ function applyBasePath(html) {
   return html.replace(/\{\{BASE_PATH\}\}/g, basePathWithSlash);
 }
 
+function resolveLandingDir(pack, outputDir) {
+  if (typeof pack.landingUrl === 'string' && pack.landingUrl.trim()) {
+    const trimmed = pack.landingUrl.replace(/^\//, '').replace(/\/$/, '');
+    if (trimmed) {
+      return path.join(outputDir, trimmed);
+    }
+  }
+  return path.join(outputDir, 'corpan', 'packs', pack.id);
+}
+
 function buildPackLandingPage(pack, outputDir) {
   const gameLandingTemplate = applyBasePath(readTemplate('game-landing'));
   const urls = {
@@ -101,6 +111,9 @@ function buildPackLandingPage(pack, outputDir) {
   if (pack.manifestUrl) {
     urls.manifest = pack.manifestUrl;
   }
+  const githubUrl =
+    pack.github ||
+    `https://github.com/corpora-inc/encorpora/tree/main/corpan/packs/${pack.id}`;
 
   // Build video section HTML
   let videoSectionHtml = '';
@@ -144,11 +157,12 @@ function buildPackLandingPage(pack, outputDir) {
     .replace(/\{\{GAME_DESCRIPTION\}\}/g, pack.description)
     .replace(/\{\{GAME_VERSION\}\}/g, pack.version)
     .replace(/\{\{GAME_AVATAR\}\}/g, pack.avatarUrl || `${basePathWithSlash}assets/${pack.id}-avatar.png`)
+    .replace(/\{\{GAME_GITHUB\}\}/g, githubUrl)
     .replace('{{VIDEO_SECTION}}', videoSectionHtml)
     .replace('{{URLS_JSON}}', JSON.stringify(urls));
 
   // Write file
-  const packDir = path.join(outputDir, 'corpan', 'packs', pack.id);
+  const packDir = resolveLandingDir(pack, outputDir);
   ensureDir(packDir);
   fs.writeFileSync(path.join(packDir, 'index.html'), html);
 }
@@ -162,6 +176,7 @@ function buildPages(outputDir) {
     ...pack,
     version: readManifestVersion(pack),
   }));
+  const isListed = (pack) => pack.listed !== false;
 
   // Load templates
   const corpanTemplate = applyBasePath(readTemplate('corpan'));
@@ -200,6 +215,7 @@ function buildPages(outputDir) {
       avatarUrl: `${basePathWithSlash}assets/${avatarFileName}`,
     };
   });
+  const listedPacks = packsWithAssets.filter(isListed);
 
   // Build Corpan page
   console.log('Building corpan/index.html...');
@@ -209,20 +225,23 @@ function buildPages(outputDir) {
   console.log('Building corpan/packs/index.html...');
   const packsHtml = packsTemplate.replace(
     '{{PACKS_DATA}}',
-    JSON.stringify(packsWithAssets)
+    JSON.stringify(listedPacks)
   );
   fs.writeFileSync(path.join(outputRoot, 'corpan', 'packs', 'index.html'), packsHtml);
 
   // Build pack landing pages
   console.log('Building pack landing pages...');
   packsWithAssets.forEach(pack => {
-    console.log(`  - corpan/packs/${pack.id}/index.html`);
+    const landingPath = typeof pack.landingUrl === 'string' && pack.landingUrl.trim()
+      ? pack.landingUrl.replace(/^\//, '').replace(/\/$/, '')
+      : `corpan/packs/${pack.id}`;
+    console.log(`  - ${landingPath}/index.html`);
     buildPackLandingPage(pack, outputRoot);
   });
 
   // Generate catalog.json for app consumption
   console.log('Generating catalog.json...');
-  const catalogData = packsData.map(pack => {
+  const catalogData = packsData.filter(isListed).map(pack => {
     // Use zipUrl if available, otherwise fallback to manifest
     const manifestUrl = pack.zipUrl
       ? (pack.zipUrl.startsWith('/') ? `https://encorpora.io${pack.zipUrl}` : pack.zipUrl)

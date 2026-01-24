@@ -20,6 +20,7 @@ cd web/io && npm install && cd ../..
 
 # Game dependencies
 cd corpan/packs/hover-runner && npm install --legacy-peer-deps && cd ../../..
+cd corpan/packs/juice-squeeze && npm install && cd ../../..
 ```
 
 ### Development Mode
@@ -33,7 +34,7 @@ npm run dev
 This starts:
 - **web/io/** - Next.js dev server (port 3000) with hot reload
 - **web/pages/** - Watcher that rebuilds Corpan pages on change
-- **packs/** - Vite watch build for hover-runner
+- **packs/** - Vite watch build for hover-runner + juice-squeeze
 - **watch-packs** - Copies pack builds to web/io/out
 - **serve** - Dev proxy server (port 8000) that composes everything
 
@@ -41,6 +42,7 @@ Open **http://localhost:8000** and you'll see:
 - `/` → Next.js dev server (hot reload)
 - `/corpan` → Auto-rebuilt Corpan pages
 - `/corpan/packs/hover-runner` → Auto-rebuilt pack
+- `/corpan/packs/juice-squeeze` → Auto-rebuilt pack
 - `/assets` → Static assets
 
 ### What Gets Auto-Rebuilt
@@ -50,6 +52,7 @@ Open **http://localhost:8000** and you'll see:
 | `/` | `web/io/` | Any file change in web/io/ (Next.js hot reload) |
 | `/corpan` | `web/pages/` | Template or data changes |
 | `/corpan/packs/hover-runner` | `corpan/packs/hover-runner/` | Source file changes |
+| `/corpan/packs/juice-squeeze` | `corpan/packs/juice-squeeze/` | Source file changes |
 | `/assets` | `corpan/**` (canonical assets) | Avatar or logo updates |
 
 ## Architecture
@@ -112,10 +115,20 @@ node web/pages/watch.js
 cd web/io/out && python3 -m http.server 8000
 ```
 
-### Work on hover-runner pack only
+### Work on a pack only
 
 ```bash
 cd corpan/packs/hover-runner
+
+# Option 1: Vite dev server (hot reload)
+npm run dev  # Visit http://localhost:5173
+
+# Option 2: Watch build
+npm run dev:watch  # Builds to dist/ on change
+```
+
+```bash
+cd corpan/packs/juice-squeeze
 
 # Option 1: Vite dev server (hot reload)
 npm run dev  # Visit http://localhost:5173
@@ -132,7 +145,7 @@ npm run dev:watch  # Builds to dist/ on change
    - Add to `dev:packs` (or create separate dev:my-pack)
    - Update `web/scripts/watch-packs.js` to watch new pack
    - Update `build:packs` to build new pack
-4. Add metadata to `web/pages/data/packs.json`
+4. Add metadata to `web/pages/data/packs.json` (set `listed: false` for shadow launches)
 5. (Optional) Add `avatarSource` in `web/pages/data/packs.json`
 
 ## Troubleshooting
@@ -172,6 +185,7 @@ curl http://localhost:3000
 1. Check pack built to `dist/`: `ls corpan/packs/hover-runner/dist/`
 2. Check copied to output: `ls web/io/out/corpan/packs/hover-runner/`
 3. Check manifest exists: `cat web/io/out/corpan/packs/hover-runner/manifest.json`
+4. For other packs, swap the pack name in the paths above.
 
 ## Production Build
 

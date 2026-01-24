@@ -54,7 +54,27 @@ cp "$REPO_ROOT/corpan/packs/hover-runner/manifest.json" "$OUTPUT_ROOT/corpan/pac
 cp -R "$REPO_ROOT/corpan/packs/hover-runner/dist/." "$OUTPUT_ROOT/corpan/packs/hover-runner/"
 cp "$REPO_ROOT/corpan/packs/hover-runner/hover-runner.zip" "$OUTPUT_ROOT/corpan/packs/hover-runner.zip"
 
-# Step 5: Build Hanzipan bundle + zip
+# Step 5: Build juice-squeeze
+echo "🧃 Building juice-squeeze pack..."
+cd "$REPO_ROOT/corpan/packs/juice-squeeze"
+
+if [ ! -d "node_modules" ]; then
+  echo "Installing juice-squeeze dependencies..."
+  npm install
+fi
+
+npm run build
+echo ""
+
+# Step 6: Copy juice-squeeze into web/io/out
+echo "📦 Copying juice-squeeze into site..."
+zip -r juice-squeeze.zip manifest.json dist/
+mkdir -p "$OUTPUT_ROOT/corpan/packs/juice-squeeze"
+cp "$REPO_ROOT/corpan/packs/juice-squeeze/manifest.json" "$OUTPUT_ROOT/corpan/packs/juice-squeeze/"
+cp -R "$REPO_ROOT/corpan/packs/juice-squeeze/dist/." "$OUTPUT_ROOT/corpan/packs/juice-squeeze/"
+cp "$REPO_ROOT/corpan/packs/juice-squeeze/juice-squeeze.zip" "$OUTPUT_ROOT/corpan/packs/juice-squeeze.zip"
+
+# Step 7: Build Hanzipan bundle + zip
 echo "📦 Packaging hanzipan..."
 cd "$REPO_ROOT/corpan/packs/hanzipan"
 mkdir -p dist
@@ -77,7 +97,7 @@ find "$BUILD_DIR" -type f | grep -E "(corpan|assets|manifest)" | sort | sed "s|$
 echo "  ... (and other web/io/ site files)"
 echo ""
 
-# Step 5: Start local server
+# Step 8: Start local server
 echo "🚀 Starting local server..."
 echo ""
 echo "   Site will be available at:"
@@ -88,6 +108,7 @@ echo "   • http://localhost:8000${BASE_PATH_URL} (web/io/ root site)"
 echo "   • http://localhost:8000${BASE_PATH_URL}corpan/ (Corpan)"
 echo "   • http://localhost:8000${BASE_PATH_URL}corpan/packs/ (Packs listing)"
 echo "   • http://localhost:8000${BASE_PATH_URL}corpan/packs/hover-runner/ (Hover Runner)"
+echo "   • http://localhost:8000${BASE_PATH_URL}corpan/packs/juice-squeeze/ (Juice Squeeze)"
 echo ""
 echo "   Press Ctrl+C to stop the server"
 echo ""
