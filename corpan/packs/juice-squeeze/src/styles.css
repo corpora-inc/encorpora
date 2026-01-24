@@ -247,6 +247,69 @@
   transform: translateY(1px) scale(0.98);
 }
 
+/* Icon button base - circular with emoji */
+.icon-btn {
+  width: clamp(44px, 10vw, 52px);
+  height: clamp(44px, 10vw, 52px);
+  padding: 0;
+  border-radius: 50%;
+  font-size: clamp(20px, 5vw, 26px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Ear button - audio only, left of eye button */
+.ear-btn {
+  position: fixed;
+  right: calc(env(safe-area-inset-right) + clamp(68px, 14vw, 88px));
+  bottom: calc(env(safe-area-inset-bottom) + clamp(20px, 5vh, 40px));
+  z-index: 1001;
+  border: 1px solid rgba(27, 27, 31, 0.15);
+  background: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(16, 26, 31, 0.1);
+  backdrop-filter: blur(8px);
+  transition: transform 150ms ease, box-shadow 150ms ease, background 150ms ease;
+}
+
+.ear-btn:hover {
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 6px 16px rgba(16, 26, 31, 0.15);
+}
+
+.ear-btn:active {
+  transform: scale(0.95);
+}
+
+/* Fruit flip button - right of forward nav button */
+.fruit-btn {
+  position: fixed;
+  left: calc(env(safe-area-inset-left) + clamp(120px, 26vw, 160px));
+  bottom: calc(env(safe-area-inset-bottom) + clamp(20px, 5vh, 40px));
+  z-index: 1001;
+  border: 1px solid rgba(27, 27, 31, 0.15);
+  background: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(16, 26, 31, 0.1);
+  backdrop-filter: blur(8px);
+  transition: transform 150ms ease, box-shadow 150ms ease, background 150ms ease;
+}
+
+.fruit-btn:hover {
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 6px 16px rgba(16, 26, 31, 0.15);
+}
+
+.fruit-btn:active {
+  transform: scale(0.95);
+}
+
+.fruit-btn.active {
+  background: rgba(255, 200, 100, 0.8);
+  border-color: rgba(255, 150, 50, 0.4);
+}
+
 /* Answer reveal overlay */
 .answer-overlay {
   position: fixed;
@@ -271,11 +334,12 @@
   animation: slideUp 300ms ease-out;
 }
 
-.answer-card h3 {
-  font-size: clamp(16px, 4vw, 22px);
-  color: var(--muted);
-  margin: 0 0 12px 0;
-  font-weight: 500;
+/* Answer checkmark icon */
+.answer-icon {
+  font-size: clamp(36px, 10vw, 56px);
+  color: #20B2AA;
+  margin-bottom: 12px;
+  line-height: 1;
 }
 
 .answer-card .answer-text {
@@ -306,6 +370,15 @@
 
 .answer-card button:active {
   transform: translateY(1px) scale(0.98);
+}
+
+/* Continue arrow button - circular icon */
+.continue-icon-btn {
+  width: clamp(48px, 12vw, 60px);
+  height: clamp(48px, 12vw, 60px);
+  border-radius: 50%;
+  padding: 0;
+  font-size: clamp(24px, 6vw, 32px);
 }
 
 @keyframes fadeIn {
@@ -567,6 +640,16 @@
     padding: clamp(6px, 1.5vw, 10px) clamp(10px, 2.5vw, 16px);
     font-size: clamp(11px, 2.8vw, 14px);
   }
+
+  .ear-btn {
+    right: calc(env(safe-area-inset-right) + clamp(58px, 13vw, 76px));
+    bottom: calc(env(safe-area-inset-bottom) + clamp(16px, 4vh, 32px));
+  }
+
+  .fruit-btn {
+    left: calc(env(safe-area-inset-left) + clamp(100px, 24vw, 140px));
+    bottom: calc(env(safe-area-inset-bottom) + clamp(16px, 4vh, 32px));
+  }
 }
 
 @media (max-width: 480px) {
@@ -625,5 +708,15 @@
     bottom: calc(env(safe-area-inset-bottom) + clamp(12px, 3vh, 24px));
     padding: clamp(5px, 1.2vw, 8px) clamp(8px, 2vw, 14px);
     font-size: clamp(10px, 2.5vw, 13px);
+  }
+
+  .ear-btn {
+    right: calc(env(safe-area-inset-right) + clamp(48px, 12vw, 64px));
+    bottom: calc(env(safe-area-inset-bottom) + clamp(12px, 3vh, 24px));
+  }
+
+  .fruit-btn {
+    left: calc(env(safe-area-inset-left) + clamp(84px, 22vw, 110px));
+    bottom: calc(env(safe-area-inset-bottom) + clamp(12px, 3vh, 24px));
   }
 }
