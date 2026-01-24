@@ -63,31 +63,6 @@ const isSameStackSlice = (a: StackSlice, b: StackSlice) => {
 
 export const createHostApi = (packId?: string): HostApi => {
   let disposed = false
-  let running = false
-  let generation = 0
-  let queue: Array<{ uiCode: string; text: string; rate: number }> = []
-
-  const delay = (ms: number) =>
-    new Promise<void>((resolve) => {
-      window.setTimeout(resolve, ms)
-    })
-
-  const delayUnlessInterrupted = async (ms: number, gen: number) => {
-    const start = Date.now()
-    while (Date.now() - start < ms) {
-      if (disposed || gen !== generation) {
-        return
-      }
-      await delay(120)
-    }
-  }
-
-  const estimateDurationMs = (text: string, rate: number) => {
-    const words = text.trim().split(/\s+/).filter(Boolean).length
-    const wpm = 160 * Math.max(rate, 0.4)
-    const ms = (words / wpm) * 60000
-    return Math.max(1800, Math.min(ms + 600, 12000))
-  }
 
   const stopNativeSpeech = async () => {
     if (typeof window !== "undefined" && "speechSynthesis" in window) {
@@ -101,60 +76,19 @@ export const createHostApi = (packId?: string): HostApi => {
   }
 
   const stopSpeech = async () => {
-    generation += 1
-    queue = []
     await stopNativeSpeech()
   }
 
-  let lastEnqueued: { uiCode: string; text: string; at: number } | null = null
-
-  const runQueue = async () => {
-    if (running) {
-      return
-    }
-    running = true
-    while (queue.length && !disposed) {
-      const currentGen = generation
-      const next = queue.shift()
-      if (!next) {
-        break
-      }
-      if (currentGen !== generation) {
-        continue
-      }
-      await speakWithStackPrefs(next.uiCode, next.text, next.rate)
-      if (currentGen !== generation) {
-        continue
-      }
-      const wait = estimateDurationMs(next.text, next.rate)
-      await delayUnlessInterrupted(wait, currentGen)
-    }
-    running = false
-  }
-
-  const speakScheduled = async (uiCode: string, text: string) => {
+  const speakImmediate = async (uiCode: string, text: string) => {
     if (disposed) {
       return
     }
     const { rate } = useSettingsStore.getState()
-    const now = Date.now()
-    if (
-      lastEnqueued &&
-      lastEnqueued.uiCode === uiCode &&
-      lastEnqueued.text === text &&
-      now - lastEnqueued.at < 600
-    ) {
-      return
-    }
-    lastEnqueued = { uiCode, text, at: now }
-    queue.push({ uiCode, text, rate })
-    void runQueue()
+    await speakWithStackPrefs(uiCode, text, rate)
   }
 
   const dispose = () => {
     disposed = true
-    queue = []
-    running = false
   }
 
   const resolvePackId = (query: PackDbQuery) => {
@@ -163,7 +97,7 @@ export const createHostApi = (packId?: string): HostApi => {
 
   return {
     speak: async (uiCode, text) => {
-      await speakScheduled(uiCode, text)
+      await speakImmediate(uiCode, text)
     },
     stopSpeech,
     dispose,

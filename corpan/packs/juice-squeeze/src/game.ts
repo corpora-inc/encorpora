@@ -267,11 +267,8 @@ export const createJuiceSqueeze = (
     }, delayMs)
   }
 
-  // Fast TTS - stops queue and speaks immediately (self-contained, no hostApi changes needed)
+  // Fast TTS - speak immediately (caller decides when to stop any active speech)
   const speakFast = (lang: string, text: string) => {
-    if (typeof hostApi.stopSpeech === "function") {
-      hostApi.stopSpeech()
-    }
     if (typeof hostApi.speak === "function") {
       hostApi.speak(lang, text)
     }
@@ -644,6 +641,13 @@ export const createJuiceSqueeze = (
   // Track currently enlarged block - only one block can be enlarged at a time
   let currentActiveBlock: Mesh | null = null
   const blockShrinkCallbacks = new Map<Mesh, () => void>()
+  const shrinkOtherBlocks = (active: Mesh) => {
+    blockShrinkCallbacks.forEach((shrink, mesh) => {
+      if (mesh !== active) {
+        shrink()
+      }
+    })
+  }
 
   // Track active drag state to prevent swipe navigation during block drags
   let isDragging = false
@@ -1729,6 +1733,7 @@ export const createJuiceSqueeze = (
       let dragMoved = false
       let dragStartPos: Vector3 | null = null
       let shrinkAnimationId: number | null = null // Track shrink animation to cancel on new drag
+      let growAnimationId: number | null = null // Track grow animation to cancel on other taps
 
       // Set default rendering group for proper z-ordering
       block.renderingGroupId = 1
@@ -1744,17 +1749,17 @@ export const createJuiceSqueeze = (
         // Check if this block is already the active (enlarged) one
         wasAlreadyEnlarged = currentActiveBlock === block
 
-        // Shrink previously active block if different from this one
-        if (currentActiveBlock && currentActiveBlock !== block) {
-          const prevShrink = blockShrinkCallbacks.get(currentActiveBlock)
-          if (prevShrink) prevShrink()
-        }
+        shrinkOtherBlocks(block)
         currentActiveBlock = block
 
         // Cancel any running shrink animation to prevent jerkiness
         if (shrinkAnimationId !== null) {
           cancelAnimationFrame(shrinkAnimationId)
           shrinkAnimationId = null
+        }
+        if (growAnimationId !== null) {
+          cancelAnimationFrame(growAnimationId)
+          growAnimationId = null
         }
 
         dragStartTime = Date.now()
@@ -1779,9 +1784,10 @@ export const createJuiceSqueeze = (
             if (Math.abs(diff) > 0.05) {
               const newScale = currentScale + diff * 0.15
               block.scaling = new Vector3(newScale, newScale, 1)
-              requestAnimationFrame(animateGrow)
+              growAnimationId = requestAnimationFrame(animateGrow)
             } else {
               block.scaling = new Vector3(growthFactor, growthFactor, 1)
+              growAnimationId = null
             }
           }
           animateGrow()
@@ -1806,6 +1812,11 @@ export const createJuiceSqueeze = (
         block.renderingGroupId = 1
         if (currentActiveBlock === block) {
           currentActiveBlock = null
+        }
+
+        if (growAnimationId !== null) {
+          cancelAnimationFrame(growAnimationId)
+          growAnimationId = null
         }
 
         // Animate smooth shrink back to normal size
@@ -1842,10 +1853,79 @@ export const createJuiceSqueeze = (
           block.position.y <= sentenceAreaCenterY + sentenceAreaHeight / 2 &&
           Math.abs(block.position.x) <= sentenceAreaWidth / 2
 
+        const placeBlockAtSentenceEnd = (metrics: LayoutMetrics) => {
+          const blocksInSentence = Array.from(wordBlockData.entries())
+            .filter(([mesh, entry]) => entry.isInSentence && mesh !== block)
+            .map(([mesh, entry]) => ({ mesh, entry }))
+
+          let targetRow = 0
+          let targetX = 0
+
+          if (blocksInSentence.length > 0) {
+            blocksInSentence.sort((a, b) => {
+              if (a.entry.sentenceRow !== b.entry.sentenceRow) {
+                return a.entry.sentenceRow - b.entry.sentenceRow
+              }
+              return a.mesh.position.x - b.mesh.position.x
+            })
+            const last = blocksInSentence[blocksInSentence.length - 1]
+            targetRow = last.entry.sentenceRow
+
+            const currentWordCount =
+              currentUtterance?.words?.length || blocksInSentence.length + 1
+            const currentBlockSize = calculateBlockSize(currentWordCount, metrics)
+            const sentenceSpacing = currentBlockSize.width * 1.15
+            targetX = last.mesh.position.x + sentenceSpacing
+          }
+
+          data.isInSentence = true
+          data.sentenceRow = targetRow
+          block.position.x = targetX
+          block.position.y = sentenceRowYPositions[targetRow] || metrics.sentenceAreaY
+          block.position.z = -0.5
+        }
+
+        const wasTap = !dragMoved
+
+        const removeFromSentence = () => {
+          data.isInSentence = false
+          data.sentenceRow = -1
+          const targetPos = data.originalPosition.clone()
+
+          // Animate snap back to word bank
+          const snapBack = () => {
+            const currentPos = block.position
+            const diff = targetPos.subtract(currentPos)
+            if (diff.length() > 0.1) {
+              block.position = currentPos.add(diff.scale(0.2))
+              requestAnimationFrame(snapBack)
+            } else {
+              block.position = targetPos
+              block.position.z = data.originalPosition.z // Reset Z position to original
+            }
+          }
+          snapBack()
+
+          reflowSentenceBlocks(currentMetrics)
+        }
+
+        if (wasTap && data.isInSentence) {
+          removeFromSentence()
+          triggerShrink()
+          return
+        }
+
+        if (wasTap && !isInSentenceArea && !data.isInSentence) {
+          placeBlockAtSentenceEnd(currentMetrics)
+          triggerShrink()
+          reflowSentenceBlocks(currentMetrics)
+          checkWin()
+          return
+        }
+
         // Shrink block if:
         // 1. Dropped in sentence area (always shrink when placed)
         // 2. Tap-to-toggle: was already enlarged and didn't drag (just tapped)
-        const wasTap = !dragMoved
         const shouldShrink = isInSentenceArea || (wasAlreadyEnlarged && wasTap)
 
         if (shouldShrink) {
@@ -1870,26 +1950,7 @@ export const createJuiceSqueeze = (
           checkWin()
         } else {
           // Dragged out of sentence area - return to original position
-          data.isInSentence = false
-          data.sentenceRow = -1
-          const targetPos = data.originalPosition.clone()
-
-          // Animate snap back
-          const snapBack = () => {
-            const currentPos = block.position
-            const diff = targetPos.subtract(currentPos)
-            if (diff.length() > 0.1) {
-              block.position = currentPos.add(diff.scale(0.2))
-              requestAnimationFrame(snapBack)
-            } else {
-              block.position = targetPos
-              block.position.z = data.originalPosition.z // Reset Z position to original
-            }
-          }
-          snapBack()
-
-          // Re-arrange remaining words in sentence area
-          reflowSentenceBlocks(currentMetrics)
+          removeFromSentence()
         }
       })
 
@@ -2041,4 +2102,3 @@ export const createJuiceSqueeze = (
 
   return { dispose }
 }
-
