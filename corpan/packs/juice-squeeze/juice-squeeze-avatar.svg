@@ -9,7 +9,7 @@
   <circle cx="256" cy="220" r="110" fill="#ffb000" />
   <circle cx="220" cy="200" r="26" fill="#fff0c2" />
   <circle cx="300" cy="250" r="18" fill="#fff0c2" />
-  <path d="M156 360c42-24 78-36 100-36s58 12 100 36" fill="none" stroke="#6b1f00" stroke-width="18" stroke-linecap="round" />
+  <path d="M160 330Q256 380 352 330" fill="none" stroke="#6b1f00" stroke-width="18" stroke-linecap="round" />
   <path d="M200 120c32-28 72-42 120-44" fill="none" stroke="#7b2a00" stroke-width="14" stroke-linecap="round" />
   <text x="256" y="445" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="36" font-weight="700" fill="#3a1300">Juice Squeeze</text>
 </svg>
