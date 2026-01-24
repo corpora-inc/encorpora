@@ -96,7 +96,7 @@
 .target-phrase-display {
   position: fixed;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translate(-50%, -50%);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   z-index: 1000;
   pointer-events: auto;
@@ -114,7 +114,7 @@
 }
 
 .target-phrase-display:active {
-  transform: translateX(-50%) scale(0.98);
+  transform: translate(-50%, -50%) scale(0.98);
 }
 
 .target-phrase-display > div:first-child {
@@ -594,6 +594,10 @@
     font-size: clamp(20px, 6vw, 32px);
   }
 
+  .target-phrase-display {
+    padding: clamp(12px, 3vw, 16px) clamp(14px, 3.5vw, 18px);
+  }
+
   .target-phrase-display > div:first-child {
     font-size: clamp(12px, 3.5vw, 18px);
   }
@@ -658,7 +662,7 @@
   }
 
   .target-phrase-display {
-    padding: 0 clamp(12px, 3vw, 16px);
+    padding: clamp(10px, 3vw, 14px) clamp(12px, 3vw, 16px);
   }
 
   .target-phrase-display > div:first-child {
