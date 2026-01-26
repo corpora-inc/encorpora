@@ -2,7 +2,7 @@
 
 A year plan is your set of lightweight guardrails—aiming the car once so you can spend more energy on teaching than on deciding, day after day, which way to go. With a clear map, you keep reading, writing, and math moving in steady rotation and avoid that creeping feeling in spring: “Wait, did we ever actually cover fractions?” The plan isn’t about perfect prediction or locking everything in advance; it’s about making course corrections simple and inexpensive. In agile terms, think of your year as a backlog and a cadence, not a contract. You’ll plan a little, teach a little, notice what’s working, and adjust as needed. Every few weeks, take a step back for a quick check: what’s running smoothly, what’s taking too much effort, and what just isn’t earning its keep?
 
-Keeping things economical, remember your family’s limits on attention and patience. Invest in routines that pay off repeatedly and avoid drowning in admin that doesn’t add value. A simple scope-and-sequence, built-in buffer days, and a minimal tracker can cover both your educational and compliance needs—keeping your home a place of learning, not paperwork. A quick glance at the standards keeps you pointed in the right direction; you adjust as needed, without turning your days into an imitation of school.
+Keeping things economical, remember your family’s limits on attention and patience. Invest in routines that pay off repeatedly and avoid drowning in admin that doesn’t add value. Plan like bonsai: prune anything that does not earn its keep. A simple scope-and-sequence, built-in buffer days, and a minimal tracker can cover both your educational and compliance needs—keeping your home a place of learning, not paperwork. A quick glance at the standards keeps you pointed in the right direction; you adjust as needed, without bloating the plan.
 
 Children differ in how they handle the long run. Some thrive on consistent daily blocks; others sprint and rest in short cycles. Either way works if your main routines keep ticking. Low pressure and clear expectations often help children move ahead faster than you expect. This section builds the year’s structure: a flexible 36-week model, a practical overview of third-grade content, space for travel and sick days, and methods for mixing skill work with projects. The aim is a plan you can stick with and tweak as you find what truly works for your family.
 
@@ -43,9 +43,12 @@ There’s no single ideal weekly shape, but these options tend to be both sustai
 
 If you choose the four-day option, many families “make up” the total days by sprinkling a few light school days into break weeks, or by counting field trips and project days that still produce real work.
 
-![A simple one-page 36-week overview showing three alternate rhythms: five-day, four-day with flex day, and a 40-week stretched year](images/A_simple_one-page_36-week_overview_showing_three_alternate_rhythms_five-day_four-day_with_flex_day_and_a_40-week_stretched_year.png)
 
 ### Plan in short cycles (agile, not frantic)
+
+> **Just-in-time planning:** sketch the next small chunk right before you use it.
+
+> **Opportunity cost:** every extra plan crowds out something else.
 
 Instead of plotting the whole year in detail, sketch a four-week chunk with a few key goals. Run the routine. Then take fifteen minutes to review:
 
@@ -82,7 +85,7 @@ Above all, remember the job of the 180-day frame: **make planning and reporting 
 
 A quarter plan should serve as a light map, not a cage. The goal is to keep your daily core loop, reading, writing, and math, moving forward while you rotate bigger topics through science and social studies. Think of each quarter like a manageable circuit at the gym: you pick a focus, stick with it for 8 to 10 weeks, then pause for a quick review. What worked well? What tripped you up? What’s worth keeping or tweaking?
 
-![A four-season wheel labeled Q1 Foundations, Q2 Expansion, Q3 Application, Q4 Synthesis, with “Read, Write, Math daily” in the center](images/A_four-season_wheel_labeled_Q1_Foundations_Q2_Expansion_Q3_Application_Q4_Synthesis_with_Read_Write_Math_daily_in_the_center.png)
+![Seasons of learning, daily anchors](images/A_four-season_wheel_labeled_Q1_Foundations_Q2_Expansion_Q3_Application_Q4_Synthesis_with_Read_Write_Math_daily_in_the_center.png)
 
 To avoid getting tangled in overplanning, keep your must-do list short and visible. Everything else belongs in a backlog, ready when you have space. When life throws a curveball, you still cover the essentials.
 
@@ -172,7 +175,7 @@ Pick one method that fits your life. You can always change it midyear.
 - **Weekly safety valve:** Keep one day each week flexible. It can be a project day, field trip day, or make-up day.
 - **Banked days:** Reserve about 20 days up front as a “day bank.” When life happens, you draw from the bank. Unused days become spring breathing room.
 
-![A simple year calendar showing four terms, each capped with a light buffer week, plus labeled travel and sick days as planned slack.](images/A_simple_year_calendar_showing_four_terms_each_capped_with_a_light_buffer_week_plus_labeled_travel_and_sick_days_as_planned_slack..png)
+![Planned slack for a real year](images/A_simple_year_calendar_showing_four_terms_each_capped_with_a_light_buffer_week_plus_labeled_travel_and_sick_days_as_planned_slack..png)
 
 ### Define your minimum viable school day
 
@@ -254,7 +257,6 @@ A few “small but real” project examples:
 - **Hands-on engineering:** build a paper bridge and test strength, make a bird feeder and measure pieces
 - **Kitchen math:** plan and scale a snack recipe to practice fractions and measurement
 
-![Simple weekly plan page showing daily anchors and a small project box for the week](images/Simple_weekly_plan_page_showing_daily_anchors_and_a_small_project_box_for_the_week.png)
 
 ### The integration move: make your anchors feed the project
 
@@ -304,7 +306,6 @@ A tracker does one thing well: it makes real progress visible without demanding 
 
 If you use it consistently, this simple log becomes a quiet asset: a steady record you can consult or show as needed. Aim for **five minutes a day or less**. The habit is small, but it pays off over the long haul.
 
-![A one-page homeschool log with four columns: date, core work, extras, and notes, plus a small weekly reflection box](images/A_one-page_homeschool_log_with_four_columns_date_core_work_extras_and_notes_plus_a_small_weekly_reflection_box.png)
 
 ### The two-minute daily log
 
@@ -347,16 +348,16 @@ If you want one extra line that really pays off, add a **portfolio artifact** fo
 
 ### Portfolios without extra work
 
-If your district or country asks for a portfolio, don’t create a separate system. Let ordinary work generate the evidence.
+Do not build a second system. Let ordinary work generate the evidence.
 
-A simple, low-stress set of artifacts looks like this:
+A simple, low-stress set of artifacts looks like:
 
 - One math page per week (or a photo of a whiteboard)
 - One writing sample every few weeks
 - A running reading list
 - Occasional photos or brief notes about projects or experiments
 
-Store artifacts in a paper folder or a digital album sorted by month. When someone needs proof, you’re ready without panic.
+Store artifacts in a paper folder or a digital album sorted by month. When someone needs proof, you are ready without panic.
 
 ### Fit the tracker to your child
 
@@ -374,7 +375,13 @@ If standards or curriculum guides matter in your area, do a very light check onc
 
 You’re not trying to hit every bullet point. You’re staying oriented while letting your child’s actual growth lead.
 
-Above all, let the tracker lower your stress and batch your improvements. Track what you did, save a few meaningful artifacts, and use your notes to guide steady, small changes. That’s how consistency compounds over a year.
+Above all, let the tracker lower your stress and batch your improvements. Track what you did, save a few meaningful artifacts, and use your notes to guide steady, small changes. That is how consistency compounds over a year.
 
+### Activity Menu: Planning the Year
 
-
+- Set a **36-week skeleton** and mark buffer weeks.
+- Pick a **core loop** (read, write, math) and protect it.
+- Keep a **backlog** of extras and pull one per week.
+- Run a **weekly 10-minute retro** and adjust one thing.
+- Save **one artifact** per subject each month.
+- Use a **simple tracker** you can fill in under two minutes.

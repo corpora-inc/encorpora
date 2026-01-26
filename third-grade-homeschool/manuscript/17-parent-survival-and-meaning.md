@@ -1,10 +1,8 @@
 # Parent Survival and Meaning
 
-Homeschooling will challenge a parent’s endurance and emotional reserves just as much as their teaching skills. Many new homeschoolers imagine they’ll quickly feel confident and organized, but in real life the early weeks can feel overwhelming, and doubts may resurface well after you’ve started. Survival as a parent isn’t about dodging hard days or pretending things are always easy; it’s about building routines and a mindset that last, not just for a good week but for the whole year.
+Homeschooling will challenge your endurance and emotional reserves as much as your teaching skills. The early weeks can feel overwhelming, and doubts can resurface even after you start. Survival is not about dodging hard days. It is about building routines and a mindset that last for the whole year.
 
-This section walks you through starting gently, noticing genuine progress over time, and protecting the energy and connection that make home learning work. You’ll see ways to ramp up your efforts without burning out, set practical and achievable goals, steady your own morale when it dips, and add simple, universal practices that nurture both your child’s growth and your own—like moments of gratitude and wonder.
-
-The real goal is to finish the year not just having checked the academic boxes, but feeling stronger, closer, and more capable, without being drained or resentful. Here, you’ll find concrete strategies to help you teach, parent, and grow—all while keeping your footing and a sense of perspective.
+This section helps you start gently, notice real progress, and protect the energy and connection that make learning work at home. The goal is to finish the year not just with academic boxes checked, but feeling stronger, closer, and more capable.
 
 
 ## The First 30 Days: A Gentle Ramp-Up Plan
@@ -121,7 +119,7 @@ Sometimes even a solid routine hits a wall. When a lesson falls apart, it isn’
 
 Movement helps nervous energy leave the room. When you come back, pick something manageable: solve one math problem together, or read three more sentences. **Tiny wins rebuild confidence.** A reset isn’t weakness. It’s good strategy.
 
-![Parent and child taking a short break during homeschool, stretching near a table with books, then returning calmly.](images/Parent_and_child_taking_a_short_break_during_homeschool_stretching_near_a_table_with_books_then_returning_calmly..png)
+![A short break, then back to calm](images/Parent_and_child_taking_a_short_break_during_homeschool_stretching_near_a_table_with_books_then_returning_calmly..png)
 
 ### Plan for predictable slumps
 
@@ -147,7 +145,7 @@ Here, **spiritual practices** simply means small, repeatable actions that turn y
 
 > Spiritual practices (in this book) are short, repeatable habits that help a family notice what’s good, stay connected, and act with care.
 
-Think of them as “high-return minutes.” They fit into the smallest pockets of time, require no materials, and tend to compound: a calmer parent, a steadier child, and a home that feels more like a workshop than a stress factory.
+Think of them as “high-return minutes.” They fit into the smallest pockets of time, require no materials, and tend to compound: a calmer parent, a steadier child, and a home that feels more like a workshop.
 
 ### The three easiest practices to start
 
@@ -255,6 +253,11 @@ Finishing isn’t about perfection. It’s about showing up, steadily improving,
 
 Closure, in the end, is both celebration and reset. Let go of regrets, keep the habits that helped, and step toward the next season with quiet confidence: you built something real.
 
+### Activity Menu: Parent Survival
 
-
+- Use a **two-week ramp-up** for any new routine.
+- Keep a **one-line morale log** each day.
+- Do a **weekly reset**: keep, tweak, drop.
+- Protect one **parent recovery block** per week.
+- End the year with a **highlight reel** and a small celebration.
 

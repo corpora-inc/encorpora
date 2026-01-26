@@ -1,0 +1,31 @@
+{
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "default",
+  "description": "Capability for the main window",
+  "windows": ["main"],
+  "permissions": [
+    "core:default",
+    "core:path:default",
+    "opener:default",
+    "dialog:default",
+    "dialog:allow-open",
+    "dialog:allow-save",
+    "fs:allow-read",
+    "fs:allow-write",
+    "fs:allow-create",
+    "fs:allow-remove",
+    "fs:allow-exists",
+    "fs:allow-copy-file",
+    "fs:allow-mkdir",
+    "fs:allow-read-dir",
+    "fs:allow-read-file",
+    "fs:allow-write-file",
+    "fs:scope-appdata",
+    "fs:scope-appdata-recursive",
+    "fs:scope-appcache",
+    "fs:scope-appcache-recursive",
+    "fs:scope-temp",
+    "fs:scope-temp-recursive",
+    "fs:allow-read-text-file"
+  ]
+}

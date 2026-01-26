@@ -37,7 +37,7 @@ A simple setup prevents all three:
 - **One page of local requirements:** your country’s checklist with deadlines and renewal dates.
 - **A once-a-year refresh:** a quick look at current rules each year (even if they rarely change), so you are never surprised.
 
-![A simple global compliance flowchart](images/A_simple_global_compliance_flowchart.png)
+![A simple path to staying compliant](images/A_simple_global_compliance_flowchart.png)
 
 
 ## Attendance and Instructional Time: Tracking Simply
@@ -57,6 +57,8 @@ Here are a few low-stress options that work in the real world:
 - **Lightweight category log:** Track a few broad buckets (language arts, math, science, social studies, electives). Note what you did, not how perfectly you did it.
 
 If you are torn, start with the daily checkmark. It is the smallest habit that still produces a clear record.
+
+If you want a single digital log without accounts or cloud storage, **Homeschool Offline** is a lightweight option (iOS/Android). You can mark days complete, add quick notes or photos, and export your records when needed. Everything stays on your device.
 
 ### What counts as instructional time
 
@@ -113,7 +115,7 @@ Here’s a practical rhythm that stays small:
 
 The real payoff is twofold: you have solid evidence that instruction is happening, and you can see growth that’s easy to miss day to day. When you flip back a few months and notice handwriting smoothing out, sentences getting longer, or math work getting more independent, you’ll know where to focus next and you’ll have proof to match.
 
-![Example of a simple homeschool portfolio spread](images/Example_of_a_simple_homeschool_portfolio_spread.png)
+
 
 
 ## Evaluations and Testing: When and Why
@@ -198,5 +200,10 @@ If something is unclear, ask what the rule is trying to ensure, then call or ema
 
 Think of compliance as a light warm-up before the main workout: repeatable, low-drama, and meant to support your real job, not replace it. When your documentation routine is small enough to maintain week to week, you stay both compliant and sane.
 
+### Activity Menu: Compliance
 
-
+- Make a **one-page rules summary** for your region.
+- Choose a **daily attendance method** and start today.
+- Save **one monthly sample** per core subject.
+- Set a **quarterly reminder** for progress notes.
+- Keep **one folder** for all compliance records.

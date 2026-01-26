@@ -1,6 +1,6 @@
 # Language Arts: Reading, Writing, Speaking
 
-Third-grade language arts is where pieces begin to connect and learning turns practical. At this stage, your child is not just learning to read or practicing writing; they are using words to figure things out, express ideas, and link concepts across everything you do together. The heart of third grade ELA is comfort and control—being able to understand what they read, talk about what they notice and think, and write so that someone else can follow. Not polished or perfect, just clear enough that meaning comes through.
+Third-grade language arts is where pieces begin to connect and learning turns practical. At this stage, your child is not just learning to read or practicing writing; they are using words to figure things out, express ideas, and link concepts across everything you do together. The heart of third grade ELA is comfort and control—being able to understand what they read, talk about what they notice and think, and write so that someone else can follow. Not polished or perfect, just clear enough that meaning comes through. Reading, writing, and speaking are compound lifts: together they build strength across every subject.
 
 Daily reading (sometimes together, sometimes solo), short writing done often, and real conversation remain your most valuable tools. These fit best in small blocks that work with family routines. Even ten good minutes can beat a whole hour of struggle. If you set just one goal this year, make it this: your child should read with reasonable ease, talk meaningfully about what they read or notice, and write in a way that lets their ideas become visible and understandable.
 
@@ -155,7 +155,7 @@ Let’s say your child wonders, “Why do volcanoes explode?” Write the questi
 
 That’s true compound learning: one good question “pays for” reading, speaking, writing, science, and a little art, all at once.
 
-![A notebook page showing a child’s question \(“Why do octopuses change color?”\), a short reading excerpt, three vocabulary words, and a quick labeled sketch](images/A_notebook_page_showing_a_childs_question_Why_do_octopuses_change_color_a_short_reading_excerpt_three_vocabulary_words_and_a_quick_labeled_sketch.png)
+![Questions that turn into notes](images/A_notebook_page_showing_a_childs_question_Why_do_octopuses_change_color_a_short_reading_excerpt_three_vocabulary_words_and_a_quick_labeled_sketch.png)
 
 ### Choose texts that make fluency easier
 
@@ -241,7 +241,6 @@ A simple mapping tool is three boxes on paper:
 - What the author is doing
 - Three key facts
 
-![A simple “three boxes” sketch labeled Topic, What the author is doing, and Three key facts, with a child and parent pointing at a page together](images/A_simple_three_boxes_sketch_labeled_Topic_What_the_author_is_doing_and_Three_key_facts_with_a_child_and_parent_pointing_at_a_page_together.png)
 
 ### Ten-minute practice options (use today’s book)
 
@@ -331,7 +330,7 @@ Independent reading is your child reading on their own, silently or aloud, from 
 
 These routines work like training: one builds strength, the other builds endurance. You want both.
 
-![Parent reading aloud to a child, surrounded by a variety of books.](images/Parent_reading_aloud_to_a_child_surrounded_by_a_variety_of_books..png)
+![Storytime with voices and warmth](images/Parent_reading_aloud_to_a_child_surrounded_by_a_variety_of_books..png)
 
 ### A daily routine that fits real life
 
@@ -371,19 +370,20 @@ When you’re ready to widen their taste, nudge instead of shove. Read the first
 
 Tracking can be motivating, as long as it stays low-pressure. A simple reading log, a sticker on a calendar, or a visible stack of finished books is usually enough. Avoid turning it into a competition.
 
-### Using tech and AI (optional, supervised)
+### Using tech and AI (strong option)
 
-Technology can help you find fresh material or lower the effort of planning. The main event is still real books and real conversation.
+Technology can be a primary engine for language arts, not just a helper. AI conversations count as reading and writing: your child is parsing language, responding in words, and learning to ask better questions.
 
 A few practical uses:
 
 - Ask for book recommendations that match your child’s interests and approximate level.
-- Generate a short bedtime story on a topic your child loves.
-- Get quick explanations of new vocabulary, then look for the word in other places.
+- Generate a short story on a topic your child loves, then rewrite the ending together.
+- Get quick explanations of new vocabulary, then use the word in a sentence.
+- Have the AI ask your child comprehension questions after a passage or story.
 
-If you use AI chats, stay present. Treat it like a helpful assistant, not a tutor you hand your kid and walk away from.
+If you use AI chats, stay connected to the loop. Treat it like a skilled assistant and conversation partner, not a babysitter. The goal is more thinking, more language, and more confidence.
 
-![Parent and child using a tablet device together to select new stories.](images/Parent_and_child_using_a_tablet_device_together_to_select_new_stories..png)
+![Choosing the next good story](images/Parent_and_child_using_a_tablet_device_together_to_select_new_stories..png)
 
 ### Common pitfalls (and the easy fixes)
 
@@ -547,7 +547,7 @@ A few structures make this easier:
 
 If your child enjoys stories, narrative structure often cements paragraph sense quickly.
 
-![Parent and child sketching three labeled boxes \(Beginning, Middle, End\) and turning each box into a paragraph](images/Parent_and_child_sketching_three_labeled_boxes_Beginning_Middle_End_and_turning_each_box_into_a_paragraph.png)
+![Beginning, middle, end on one page](images/Parent_and_child_sketching_three_labeled_boxes_Beginning_Middle_End_and_turning_each_box_into_a_paragraph.png)
 
 To keep practice light, rotate formats: a paragraph-a-day journal (child chooses the topic, includes one specific detail), writing from a photo, or rearranging sentences from a draft. You can also cut up sentences and have your child sort “main point” sentences from “detail” sentences, or try the same topic three ways: as a story, as facts, and as an opinion.
 
@@ -574,7 +574,6 @@ If you only teach one story structure, make it this one:
 
 When your child’s story stalls, it’s almost always because one of these parts is missing or fuzzy. You can unstick them with a question or two about the gap. Breaking stories down this way keeps things from getting overwhelming and eases your child into storytelling with familiar components.
 
-![Simple “5 boxes” story planner labeled Character, Setting, Problem, Events, Ending.](images/Simple_5_boxes_story_planner_labeled_Character_Setting_Problem_Events_Ending..png)
 
 ### A repeatable workflow that prevents the blank-page freeze
 
@@ -1284,5 +1283,13 @@ The real progress in third-grade writing comes from regular, compound practice. 
 
 With steady, realistic effort, you’ll help your child become a more skillful, capable, and confident writer.
 
+### Activity Menu: Language Arts
 
-
+- Read aloud for 10 minutes, then do a **two-sentence retell**.
+- Run a **word curiosity minute**: pick one word and find two cousins.
+- Do **copywork plus upgrade**: copy a sentence, then improve one word.
+- Use **dictation**: child speaks, you write, they edit one sentence.
+- Write a **caption** for a drawing or a photo from the day.
+- Try **AI as a co-author**: generate a short story, rewrite the ending together.
+- Keep a **“three things I learned”** log from a read-aloud or article.
+- Practice **sentence combining** for five minutes.

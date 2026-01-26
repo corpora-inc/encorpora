@@ -1,6 +1,6 @@
 # Mathematics
 
-Third-grade math is when everyday arithmetic becomes a real toolkit your child can draw on, instead of just answers on a page. The real targets go beyond correctness: focus on what numbers mean, how to choose a sensible way to solve a problem, and how to explain thinking in everyday language. If these three skills start to take root this year, math in later years should feel like steady progress rather than a sudden leap into confusion.
+Third-grade math is when everyday arithmetic becomes a real toolkit your child can draw on, instead of just answers on a page. The real targets go beyond correctness: focus on what numbers mean, how to choose a sensible way to solve a problem, and how to explain thinking in everyday language. If these three skills start to take root this year, math in later years should feel like steady progress rather than a sudden leap into confusion. Think of math like a compound lift: a few core movements, practiced consistently, build global strength.
 
 Most third-grade math includes place value stretching into the thousands and ten-thousands, building fluency with multi-digit addition and subtraction, and introducing multiplication and division as big ideas—equal groups, arrays, and ways to share. Fractions begin as equal parts of a whole but quickly step up to comparisons and number line work. Measurement stays hands-on, covering time, money, length, mass, and volume. Geometry adds concepts like area, perimeter, angles, and symmetry, while kids start to create and read simple graphs and tables.
 
@@ -10,7 +10,7 @@ The pattern "Concrete → Visual → Abstract" helps most children. Start with r
 
 Short, low-prep “math talks” often help. Instead of marching through rote problems, discuss open-ended challenges where there’s more than one way forward. For example, ask how to fairly share 48 grapes among 6 people, or how many 1/4-cup scoops it takes to make 3 cups. Help your child compare fractions like 5/6 and 7/8 without converting to decimals. The goal for third grade isn’t speed — it’s building a child who can calmly say, “Here’s how I thought about it,” and who trusts that math can be puzzling, but always figure-out-able.
 
-![A parent and child at a kitchen table using beans and a quick sketch of an array on paper to solve a multiplication problem](images/A_parent_and_child_at_a_kitchen_table_using_beans_and_a_quick_sketch_of_an_array_on_paper_to_solve_a_multiplication_problem.png)
+![Hands-on arrays make multiplication click](images/A_parent_and_child_at_a_kitchen_table_using_beans_and_a_quick_sketch_of_an_array_on_paper_to_solve_a_multiplication_problem.png)
 
 
 ## Third-Grade Math Goals
@@ -77,7 +77,7 @@ Measurement sticks best when it solves real problems. A third grader should tell
 
 Try a calm “race the timer”: How long does it take to read a page or sweep the floor? Have your child estimate before timing. Measure household items and record lengths. For time practice, ask: “It’s 7:50 now. In 15 minutes, what time will it be? What about in 35 minutes?”
 
-![Child measuring household objects with a ruler and recording the lengths in a notebook.](images/Child_measuring_household_objects_with_a_ruler_and_recording_the_lengths_in_a_notebook..png)
+![Measuring the world with a ruler](images/Child_measuring_household_objects_with_a_ruler_and_recording_the_lengths_in_a_notebook..png)
 
 ### 6) Geometry: Shapes and Their Properties
 
@@ -91,7 +91,6 @@ Working with data builds the habit of reading math as communication. By third gr
 
 Do a micro-survey (favorite fruit), tally responses, and make a simple bar graph. Then practice questions like “Which got the most?” “Which got the least?” “How many more apples than bananas?” and “What’s the total?”
 
-![Child creating a simple bar graph from a family survey \(favorite fruit\) on graph paper.](images/Child_creating_a_simple_bar_graph_from_a_family_survey_favorite_fruit_on_graph_paper..png)
 
 ### 8) Multi-Step Word Problems (The Glue Skill)
 
@@ -148,7 +147,7 @@ Here are a few easy material swaps that work well:
 
 Build a number together, then “break” it apart by trading a hundred for ten tens, or a ten for ten ones. That regrouping move shows up everywhere later, so this is high-return practice.
 
-![A child and parent trading one hundred for ten tens using bundled straws and a simple place-value mat labeled thousands, hundreds, tens, ones.](images/A_child_and_parent_trading_one_hundred_for_ten_tens_using_bundled_straws_and_a_simple_place-value_mat_labeled_thousands_hundreds_tens_ones..png)
+![Trading hundreds and tens with straws](images/A_child_and_parent_trading_one_hundred_for_ten_tens_using_bundled_straws_and_a_simple_place-value_mat_labeled_thousands_hundreds_tens_ones..png)
 
 If you’re short on materials or energy, draw a quick place-value chart on scrap paper: thousands, hundreds, tens, ones. Your child can use dots, tallies, or stickers in each column. The act of moving or bunching items, physical or drawn, cements what each place means.
 
@@ -243,7 +242,6 @@ If carrying or regrouping is shaky, don’t “fix everything” at once. Isolat
 
 The open number line is a powerful bridge between mental and written math. It’s a blank line where your child draws jumps, using hundreds, tens, or ones as fits the problem.
 
-![An open number line showing 247 jumping +500 to 747, then +80 to 827, then +6 to 833](images/An_open_number_line_showing_247_jumping_500_to_747_then_80_to_827_then_6_to_833.png)
 
 For 247 + 586, it might look like:
 
@@ -317,7 +315,6 @@ Before worksheets or memorization, spend a few days (or weeks) playing with equa
 
 For instance, build four piles of three pennies, count by threes (3, 6, 9, 12), then write 4 × 3 = 12. Five good minutes of clear thinking beats thirty minutes of confusion.
 
-![Parent and child making equal groups with small objects on a table, then writing the matching multiplication sentence](images/Parent_and_child_making_equal_groups_with_small_objects_on_a_table_then_writing_the_matching_multiplication_sentence.png)
 
 If your child mixes up what each number means, slow down and ask one question that forces meaning:
 
@@ -329,13 +326,11 @@ If your child mixes up what each number means, slow down and ask one question th
 
 Arrays (rows and columns) help your child *see* multiplication. They’re the bridge between “I can count objects” and “I can work with numbers in my head.” Draw three rows of four dots and you can point to 3 × 4. Turn it sideways and you get 4 × 3. Same total, different description.
 
-![Simple dot array labeled “3 rows of 4” and “4 columns of 3,” showing the same total](images/Simple_dot_array_labeled_3_rows_of_4_and_4_columns_of_3_showing_the_same_total.png)
 
 That “array flip” is an early, friendly encounter with a big idea: **numbers are flexible**. The total stays the same even when the story changes.
 
 Area models take the same visual idea and tighten it into a rectangle you can count. Draw a rectangle that’s three squares tall and four squares wide, then count the squares inside: that’s the product. Later, this becomes real area (length times width), multi-digit multiplication, and even fraction models. Nothing feels like magic because the picture keeps returning.
 
-![Rectangle partitioned into a 3-by-4 grid, with 12 squares lightly shaded](images/Rectangle_partitioned_into_a_3-by-4_grid_with_12_squares_lightly_shaded.png)
 
 Skip-counting fits here too. Treat it as a warm-up strategy, not a lifetime crutch: walk and count steps by twos or fives, clap patterns by threes, hop along a number line by fours. If skip-counting breaks down past a certain point, that’s a cue to return to arrays or objects so the pattern has something real to attach to.
 
@@ -411,7 +406,6 @@ For example:
 
 Both use the same numbers, but they tell different stories. A lot of third-grade confusion comes from mixing up **number of groups** and **group size**.
 
-![Two side-by-side cookie stories: “24 shared among 6 kids” versus “24 in groups of 6,” showing the different questions.](images/Two_side-by-side_cookie_stories_24_shared_among_6_kids_versus_24_in_groups_of_6_showing_the_different_questions..png)
 
 ### Division as “find the missing factor”
 
@@ -512,7 +506,6 @@ A simple route that works for most kids:
 - Cut food into equal pieces (sandwiches, fruit). Label each piece as one part of the whole.
 - Make fraction strips: cut equal-length strips and label them one half, one third, one fourth, and so on. Line them up to compare.
 
-![Folding paper strips to show halves, thirds, and fourths side by side.](images/Folding_paper_strips_to_show_halves_thirds_and_fourths_side_by_side..png)
 
 **Stress the “equal parts” rule early.** Kids will happily shade three random chunks and call it “three fourths.” That’s a great teaching moment.
 
@@ -539,7 +532,6 @@ If your child gets stuck, go back to two questions:
 - “How many pieces do you have?” (numerator)
 - “How many equal pieces make the whole?” (denominator)
 
-![Side-by-side example of a shape partitioned equally and another partitioned unequally, with the child circling the correct one.](images/Side-by-side_example_of_a_shape_partitioned_equally_and_another_partitioned_unequally_with_the_child_circling_the_correct_one..png)
 
 ### Fractions on the number line (fractions as lengths)
 
@@ -552,7 +544,6 @@ Two high-leverage options:
 - **Tabletop number line:** draw 0 to 1, then partition into equal jumps and label every point.
 - **Walkable number line:** use painter’s tape on the floor. Put 0 on one end, 1 on the other, and have your child stand on one half, one fourth, then two thirds.
 
-![A floor number line made with painter’s tape, labeled from 0 to 1 with fourths.](images/A_floor_number_line_made_with_painters_tape_labeled_from_0_to_1_with_fourths..png)
 
 This is worth doing slowly. The number line does a job worksheets cannot: it helps your child feel that fractions increase smoothly, and that the “size” of the fraction is a distance.
 
@@ -594,7 +585,6 @@ The goal isn’t abstract formulas. It’s choosing a sensible unit, using a too
 
 Measuring often integrates reading, writing, and thinking in one session, much like a workout that hits multiple muscle groups at once.
 
-![A kitchen counter scene showing a ruler, tape measure, scale, measuring cup, and an analog clock, each labeled with what it measures.](images/A_kitchen_counter_scene_showing_a_ruler_tape_measure_scale_measuring_cup_and_an_analog_clock_each_labeled_with_what_it_measures..png)
 
 ### The four habits that pay off all year
 
@@ -717,7 +707,6 @@ You don’t need fancy equipment. Most activities work with ordinary household s
 - Two pencils
 - Optional: a small mirror for symmetry
 
-![A simple tabletop toolkit: paper, scissors, tape, index cards, craft sticks, two pencils, and a small mirror.](images/A_simple_tabletop_toolkit_paper_scissors_tape_index_cards_craft_sticks_two_pencils_and_a_small_mirror..png)
 
 ### Vocabulary, introduced gently
 
@@ -737,7 +726,6 @@ Use this language naturally as you build and sketch:
 - **Perpendicular** lines: cross to make a right angle.
 - **Symmetry**: you can fold (or mirror) and the halves match.
 
-![A page with three 2D shapes labeled: triangle, rectangle, circle.](images/A_page_with_three_2D_shapes_labeled_triangle_rectangle_circle..png)
 
 ### The right-angle checker (a tiny tool with big payoff)
 
@@ -745,7 +733,6 @@ Fold an index card corner-to-corner, then cut it into a clean L-shape. That corn
 
 Your child can carry it around the house and test corners quickly, without needing a protractor.
 
-![Step-by-step: an index card cut into an L-shape “right-angle checker.”](images/Step-by-step_an_index_card_cut_into_an_L-shape_right-angle_checker..png)
 
 Whenever geometry feels abstract, step back and get physical. Start with real objects (blocks, tiles, crackers, a windowpane). Then build with sticks or straws. After building, do a quick sketch with labels. Finally, have your child explain their reasoning: “It’s a rectangle because it has four right angles.” That last step is where learning really sticks.
 
@@ -793,7 +780,6 @@ After paper practice, do a symmetry hunt in daily life: butterflies, leaves, log
 
 Short, steady geometry sessions keep things memorable. A simple weekly “geometry backlog” gives you variety without reinventing the wheel.
 
-![A simple weekly “geometry backlog” sticky-note list on a notebook page.](images/A_simple_weekly_geometry_backlog_sticky-note_list_on_a_notebook_page..png)
 
 Here are a few reliable rotations:
 
@@ -810,7 +796,6 @@ Occasionally, toss in a “thinking problem” and let the child argue their cas
 - Can you build a quadrilateral with no right angles?
 - Which shapes do you predict will have symmetry? Test your guess.
 
-![A square and a rectangle side by side with a right-angle checker touching their corners.](images/A_square_and_a_rectangle_side_by_side_with_a_right-angle_checker_touching_their_corners..png)
 
 ### Calm fixes for common confusions
 
@@ -856,7 +841,6 @@ Start with a simple two-column table and add complexity only when you need it. F
 
 When your child gets stuck, slow down and talk through the categories and the counting rules. “Does juice count as a snack?” “If you ate two cookies, is that one snack or two?” This kind of consistency is the foundation of good math.
 
-![A child filling in a simple two-column tally table labeled Snack and Count](images/A_child_filling_in_a_simple_two-column_tally_table_labeled_Snack_and_Count.png)
 
 ### Bar graphs: comparison at a glance
 
@@ -869,7 +853,6 @@ A reliable way to start is to turn a tally table into a bar graph. Then use the 
 - How many in all?
 - If we add two more votes to oranges, what changes?
 
-![Simple bar graph with three categories \(Apples, Bananas, Oranges\) and a clear numbered scale](images/Simple_bar_graph_with_three_categories_Apples_Bananas_Oranges_and_a_clear_numbered_scale.png)
 
 That “how many more” question is also a nice place to offer two valid strategies.
 
@@ -884,7 +867,6 @@ Pictographs feel like drawing, which is often a win at this age. The crucial hab
 
 If the key says **1 star = 2 votes**, then three stars means six votes. If the data includes an odd number, you may need a half-symbol (and yes, that is a gentle, natural on-ramp to fractions).
 
-![Pictograph with a key showing one star equals two votes, including a half-star for an odd total](images/Pictograph_with_a_key_showing_one_star_equals_two_votes_including_a_half-star_for_an_odd_total.png)
 
 Build pictographs together and keep pointing back to the key:
 
@@ -905,7 +887,6 @@ Here are a few low-effort ways to keep it lively without adding a lot of prep:
 
 If your child likes hands-on work, use sticky notes as bars, LEGO pieces as counts, or coins as “votes.” If your child is tech-inclined, a simple spreadsheet works too, but keep the thinking in the foreground: categories, scale, and what the data actually means.
 
-![Bar graph built from sticky notes on a wall, with category labels and a simple scale](images/Bar_graph_built_from_sticky_notes_on_a_wall_with_category_labels_and_a_simple_scale.png)
 
 By the end of the year, “good enough” usually looks like this: your child can gather a small set of data, record it in a simple table, make a clear bar graph with labels and a sensible scale, create a pictograph with a correct key, and answer basic questions in plain language (most, least, total, how many more, what changes if the data changes). That is real progress, and it compounds.
 
@@ -961,7 +942,6 @@ Kids do not need a huge toolbox. They need a few modeling tools they can use qui
 - **Equal groups with objects** (coins, beans, LEGO, snacks): perfect for kids who need something concrete.
 - **Equation** (a “math sentence”): efficient once the story is clear.
 
-![A notebook page showing the same word problem solved with a sketch, a number line, and an equation.](images/A_notebook_page_showing_the_same_word_problem_solved_with_a_sketch_a_number_line_and_an_equation..png)
 
 For example:
 
@@ -1012,7 +992,6 @@ Here are a few high-return options:
 
 You can also pull word problems from real life: splitting snacks, tracking reading minutes toward a weekly goal, shopping with a budget, or planning how many trips you will make in a month.
 
-![A parent and child at a kitchen table turning a grocery receipt into two simple word problems.](images/A_parent_and_child_at_a_kitchen_table_turning_a_grocery_receipt_into_two_simple_word_problems..png)
 
 ### Estimation: the habit that keeps mistakes small
 
@@ -1084,7 +1063,6 @@ A clean blend is:
 - A brief, targeted practice set
 - One minute of reflection: “What did you notice? What’s your strategy?”
 
-![A child using an array drawing and a number line to show 4 × 6 in two different ways](images/A_child_using_an_array_drawing_and_a_number_line_to_show_4__6_in_two_different_ways.png)
 
 ### How to compare curricula without getting sold
 
@@ -1126,7 +1104,6 @@ A simple pattern:
 
 An easy high-return activity is **error spotting**: work a problem incorrectly on purpose and ask your child to find and fix the mistake. Also remember that one excellent word problem can cover reading, writing, math reasoning, and communication in one go. That’s a compounding exercise, like a pull-up for the mind.
 
-![Parent and child drawing a bar model to solve a word problem at a kitchen table](images/Parent_and_child_drawing_a_bar_model_to_solve_a_word_problem_at_a_kitchen_table.png)
 
 If you want conversation starters or quick, powerful problems, try these:
 
@@ -1178,7 +1155,6 @@ Then do something small that changes the body state. Keep it simple.
 - Stand up and stretch.
 - One minute outside.
 
-![Parent and child step away from a worksheet to do a quick “reset”: water, a stretch, and two deep breaths before returning.](images/Parent_and_child_step_away_from_a_worksheet_to_do_a_quick_reset_water_a_stretch_and_two_deep_breaths_before_returning..png)
 
 Also, **shrink the task immediately**. One excellent problem beats ten miserable ones.
 
@@ -1256,7 +1232,6 @@ Many kids believe there is exactly one correct method, and if they can’t see i
 - Breaking numbers apart (like 38 + 47 into 38 + 40, then +7) builds strong mental math.
 - Standard algorithms are efficient, but they land better after your child has the big picture.
 
-![A simple scene of blocks grouped into tens and ones beside a written problem, showing concrete-to-paper translation.](images/A_simple_scene_of_blocks_grouped_into_tens_and_ones_beside_a_written_problem_showing_concrete-to-paper_translation..png)
 
 ### Make word problems physical and smaller
 
@@ -1286,5 +1261,13 @@ Consistency does not mean long sessions. It means a steady rhythm: a little bit,
 
 Math confidence is built in steady increments, not by powering through marathons. Every time you pause, de-escalate, and steer the session back to calm, you are teaching something bigger than fractions: hard things can become doable in a safe place. Those small wins compound.
 
+### Activity Menu: Mathematics
 
-
+- Do a **number-of-the-day**: represent 3 ways (expanded, word form, equation).
+- Run a **10-minute fact sprint** with dice or cards (no worksheets).
+- Make a **kitchen math** problem (recipes, change, or measurement).
+- Draw a **quick array** and write the matching multiplication sentence.
+- Use a **number line** to compare two fractions or find a difference.
+- Solve a **word problem aloud** and act it out with objects.
+- Do **two ways**: solve once visually, once with numbers.
+- End with a **known win** to protect tomorrow’s momentum.

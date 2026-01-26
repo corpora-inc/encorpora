@@ -1,12 +1,8 @@
 # The Rest of a World-Class Third Grade
 
-A truly world-class third grade is built on more than just the core subjects. This section focuses on the essential, often overlooked areas that help children develop into capable, resilient people. Here, you’ll find practical guidance that goes beyond reading, writing, math, and science, touching on health, safety, emotional intelligence, life skills, the arts, media, and character.
+A truly world-class third grade is built on more than the core subjects. This section covers the often overlooked domains that build a capable, resilient person: health, safety, emotional skills, life skills, arts, media, and character.
 
-Think of these as life’s foundation blocks—strengths that help your child move through the world with confidence and adaptability, no matter their environment or future choices. While academics help answer, “What should my child know?” these broader domains focus on, “What can my child do, and how do they live well?”
-
-You don’t need specialized training or expensive materials to teach these well. Each area is explained clearly, so you understand what’s included, why it matters, and how to fit it easily into daily life. Most of the skills here grow best through simple routines: games, projects, lively conversations, movement, art, and real-world tasks.
-
-Much like consistent physical exercise strengthens the whole body, small, repeated habits in these domains steadily build a capable, well-rounded child. Just a little intentional time each day can transform both your home’s atmosphere and your child’s confidence in themselves.
+Think of these as life’s compound lifts. Academics answer, "What should my child know?" These answer, "What can my child do, and how do they live well?" You do not need specialized training or expensive materials. Most of these skills grow through simple, repeatable routines: movement, conversations, projects, and real-world tasks. Small, daily reps compound.
 
 
 ## Health and PE: Daily Movement and Body Basics
@@ -77,7 +73,7 @@ A simple, realistic rhythm might look like this:
 - Between subjects: 30 to 90 seconds of movement when restlessness hits
 - Once a week: a longer family block (walk, hike, park day, group game)
 
-![Child doing simple balance exercises outdoors](images/Child_doing_simple_balance_exercises_outdoors.png)
+![Balance and strength outside](images/Child_doing_simple_balance_exercises_outdoors.png)
 
 A world-class education needs a strong, healthy body alongside a nimble mind. With a blend of structure and play, you are helping your child grow more coordinated, resilient, and self-aware. That is the foundation for lifelong health.
 
@@ -102,7 +98,6 @@ A good default script is short and repeatable:
 
 If your child is impulsive, add one physical anchor: “Hand on the stroller,” “hand on the cart,” or “hold my elbow” until you’re at the curb. It turns a rule into a habit.
 
-![simple diagram of safe street crossing steps](images/simple_diagram_of_safe_street_crossing_steps.png)
 
 ### Water safety (bathtub to beach)
 
@@ -211,7 +206,7 @@ Turning feelings into a game makes these skills easier to pick up. Try feelings 
 
 Stuffed animals or simple puppets can help kids practice without feeling put on the spot.
 
-![A simple feelings chart with faces and a short list of calm-down choices](images/A_simple_feelings_chart_with_faces_and_a_short_list_of_calm-down_choices.png)
+![Feelings named, calm choices ready](images/A_simple_feelings_chart_with_faces_and_a_short_list_of_calm-down_choices.png)
 
 ### Common pitfalls (and simple fixes)
 
@@ -287,7 +282,6 @@ Almost every day presents a practical-life lesson that naturally folds in readin
 
 If motivation dips, add a bit of fun while keeping the goal the same. Turn tidy-up into a race against their last time, let them pick Friday lunch if they meet a weekly goal, or have them choose one recipe to master this week. Many kids respond to being trusted with real work, especially if they can see the result.
 
-![child preparing a simple lunch with a checklist](images/child_preparing_a_simple_lunch_with_a_checklist.png)
 
 ### Common pitfalls (and small fixes)
 
@@ -366,7 +360,6 @@ You can run these with almost no prep.
 - **Simple sculpture:** modeling clay, homemade dough, or foil and tape to build a form.
 - **Art scavenger hunt:** find circles, triangles, rough textures, shiny surfaces in your home or outside.
 
-![child sketching a still-life of simple objects](images/child_sketching_a_still-life_of_simple_objects.png)
 
 After any project, do a one-minute reflection. Keep it light: “What part was hardest?” “What did you figure out?” “What would you try differently next time?” Praise effort, creative risk-taking, and persistence alongside polish.
 
@@ -408,7 +401,6 @@ If you have an instrument at home, great. If you don’t, you still have everyth
 
 Kitchen percussion works in a pinch: pots as drums, boxes as shakers, and fingers as the only instruments you need. Start a “kitchen band,” invent rhythm patterns with jumping or stomping, or draw pictures of instruments and listen to their sounds online.
 
-![Parent and child clapping simple rhythm patterns](images/Parent_and_child_clapping_simple_rhythm_patterns.png)
 
 ### Keep it inclusive and low-pressure
 
@@ -449,7 +441,7 @@ Keep your aim modest: **not a perfect production, but regular reps in expression
 
 Simple props help kids commit to the pretend world, and commitment is where the learning compounds. Use what you already have: a scarf becomes a cape, a blanket becomes an ocean, a wooden spoon becomes a microphone. Puppets made from socks or paper bags are fun, but they’re optional. The point is momentum, not production value.
 
-![child performing a short puppet show](images/child_performing_a_short_puppet_show.png)
+![A short puppet show, big imagination](images/child_performing_a_short_puppet_show.png)
 
 If your child likes an audience, organize a tiny living room performance for a family member or a circle of stuffed animals. If they don’t, keep it private: just you two, or solo storytelling into a voice memo.
 
@@ -470,9 +462,9 @@ Over time, these playful moments often become the most memorable, productive par
 
 ## Technology and Media Literacy: Create More Than You Consume
 
-Screens, whether phones, tablets, laptops, TVs, or game systems, are stitched into daily life. Some families embrace them, others impose tight limits, and a few go almost screen-free. Any of these paths can work if you choose it on purpose.
+Screens, whether phones, tablets, laptops, TVs, or game systems, are stitched into daily life. Some families go low-tech, others go tech-rich, and a few treat AI as a daily learning partner. All of these can work if you choose them on purpose and shape them toward real learning.
 
-For third grade, the mission is not checking off a list of software skills. It’s deeper: helping your child see technology as a set of tools they can use, not something that uses them. At this age, the best return on screen time is simple: it should spark questions, support real creation, and deepen conversation.
+For third grade, the mission is not checking off a list of software skills. It is deeper: helping your child see technology as a set of tools they can use, not something that uses them. At this age, the best return on screen time is simple: spark questions, support real creation, and deepen conversation. Done well, tech does not just "fill time" - it compounds learning.
 
 > **Media literacy (third-grade level):** noticing what a message is trying to do, who made it, what it leaves out, and what you think about it.
 
@@ -483,8 +475,9 @@ These are the few ideas that pay for almost everything else.
 - **Curiosity first.** Let questions lead. Use tech to chase real interests, not to fill time.
 - **Create more than you consume.** Ask for an output: a drawing, a paragraph, a model, a narrated explanation.
 - **Bring it back to words.** After a video, game, site, or AI chat, have your child tell you what they learned in their own words.
+- **Use AI as a coach.** Let it explain, quiz, model, and stretch the conversation.
 - **People over screens.** Devices should support relationships, not replace them.
-- **Practice pause-and-ask.** Even eight-year-olds can learn: “If something feels weird, confusing, or upsetting, stop and get a grown-up.”
+- **Practice pause-and-ask.** Even eight-year-olds can learn: "If something feels weird, confusing, or upsetting, stop and get a grown-up."
 
 If you’re not sure what to do tomorrow, do this: keep the screen time, but require a small “creation receipt” afterward (two sentences, a sketch with labels, or a 30-second explanation).
 
@@ -494,9 +487,11 @@ It helps to name your default stance so you can be consistent without overthinki
 
 **Low-tech or almost no-tech** families lean on books, handwriting, outdoor play, and hands-on projects. Tech might show up as a shared movie, a documentary, or occasional research together. Media literacy still happens: you can talk about persuasion in ads, bias in a story, or how a book can be incomplete or one-sided.
 
-**Tools in moderation** families mix paper notebooks, printed books, well-chosen videos, and simple digital tools for writing or drawing. Tech comes in short, intentional blocks tied to a specific purpose: look up a fact, type a paragraph, watch a focused clip, then talk about it.
+**Hybrid** families mix paper notebooks, printed books, well-chosen videos, and simple digital tools for writing or drawing. Tech comes in short, intentional blocks tied to a specific purpose: look up a fact, type a paragraph, watch a focused clip, then talk about it.
 
-**Tech-rich (including AI) with strong guardrails** families use technology as a thinking partner. Kids might brainstorm on paper, explore a question with a parent and an AI assistant, compare sources, then return to a notebook, a hands-on experiment, or a real-world experience. The win here is not “more tech.” It’s **better questions**, **clearer thinking**, and **stronger communication**.
+**Tech-rich (including AI)** families use technology as a primary learning engine. Kids might brainstorm on paper, explore a question with an AI assistant, compare sources, then return to a notebook, a hands-on experiment, or a real-world experience. It is completely valid for a large share of academics to happen in AI conversations, as long as those sessions lead to thinking, explaining, and creating.
+
+One example of a high-return tool is **Corpán**, a language-learning app with reading and listening games across multiple scripts and languages. Early exposure to new alphabets and sounds builds mental flexibility and often strengthens English too. The broader point is that digital learning tools evolve fast, so run small experiments and keep what earns its keep.
 
 There is no virtue in any stance by itself. The test is whether it supports attention, curiosity, and family life.
 
@@ -504,7 +499,7 @@ There is no virtue in any stance by itself. The test is whether it supports atte
 
 You don’t need complicated systems. You need repeatable patterns.
 
-**Paper first, digital second.** Keep a single handwritten notebook as your child’s learning log. For every video, app, game, or AI session, your child records:
+**Output-first.** Keep a single handwritten notebook as your child’s learning log. For every video, app, game, or AI session, your child records:
 
 - Date and title
 - One thing learned
@@ -519,7 +514,6 @@ A follow-up can be as small as a labeled sketch, a walk to look for examples, a 
 
 **Weekly creation project.** Once a week, make something that has an audience (even if the audience is just you): a short explanation video, a photo “how-to” guide, a comic, or a slide story. Creation-focused projects build confidence, communication, and the habit of finishing.
 
-![Child writing in a dated notebook about a learning activity, with a tablet or laptop nearby but not the main focus](images/Child_writing_in_a_dated_notebook_about_a_learning_activity_with_a_tablet_or_laptop_nearby_but_not_the_main_focus.png)
 
 ### Safety, ambiguity, and the economics of attention
 
@@ -600,7 +594,14 @@ Stick with simple, steady language you can reuse:
 
 Over time, these phrases become automatic, and the habits follow. In that sense, character practice is a “compound” exercise for your family: small daily reps that build strength across honesty, courage, patience, and responsibility.
 
-![parent and child doing a brief end-of-day reflection](images/parent_and_child_doing_a_brief_end-of-day_reflection.png)
 
+### Activity Menu: World-Class Extras
 
-
+- Do a **daily movement burst** (3 to 5 minutes).
+- Practice a **safety script** and role-play it once a week.
+- Run a **feelings check-in**: name it, rate it, choose a reset.
+- Add a **life skill**: laundry, lunch prep, or a simple repair.
+- Do a **5-minute art block** (sketch, collage, or color study).
+- Try a **music rhythm game** with clapping or tapping.
+- Keep a **tech creation receipt** (two sentences or a sketch).
+- End with a **character reflection**: one win, one repair.

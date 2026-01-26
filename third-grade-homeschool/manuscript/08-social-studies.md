@@ -1,6 +1,6 @@
 # Social Studies
 
-Third-grade social studies is all about helping your child build a real, working sense of the world—much more than just collecting facts or covering topics. The aim is orientation: understanding where we live, who shares our world, how people work together, how goods move from place to place, and how we figure out what happened before we were born. You don’t need to be an expert or run elaborate lessons. Focus instead on consistently exploring everyday questions—maybe a map sketch one day, a quick reading about local elections the next, or making a timeline card about a grandparent’s childhood. These short, repeatable activities make social studies easy to keep up with and naturally pull in reading, writing, math, and character skills at the same time.
+Third-grade social studies helps your child build a working sense of the world, not just collect facts. The aim is orientation: where we live, how people work together, how goods move, and how we know what happened before us. You don’t need to be an expert or run elaborate lessons. Keep it small and repeatable: a map sketch, a quick reading, a timeline card. These short activities make social studies easy to keep up with and naturally pull in reading, writing, math, and character skills at the same time.
 
 Your real role isn’t to deliver lectures or become a human encyclopedia. It’s to notice what makes your child curious, pick a small question or project, and let that small spark lead to a short, hands-on activity—like labeling a map, writing a quick caption, or measuring distance on a calendar or a package label—then save the results. This approach is both efficient and effective because each ten-minute session often combines learning in multiple areas, much like a compound exercise works several muscles at once.
 
@@ -8,7 +8,7 @@ Aim to raise a child who feels at home in a global world, without feeling like y
 
 There’s no need to overspend or complicate your plans. You probably have everything you need already: your local neighborhood, election flyers, a grocery receipt, a package label, library books, a simple atlas or globe, or a basic calendar. Many of the best materials for social studies are free or close at hand on your kitchen table. By the end of the year, your child should feel comfortable with maps, understand local communities and governments, use economic words, handle timelines and evidence with growing confidence, and approach new cultures and their own with genuine respect.
 
-![A parent and child at a kitchen table with a hand-drawn map, a small globe, a receipt, and a simple timeline strip taped to the wall](images/A_parent_and_child_at_a_kitchen_table_with_a_hand-drawn_map_a_small_globe_a_receipt_and_a_simple_timeline_strip_taped_to_the_wall.png)
+![Mapping time, place, and everyday life](images/A_parent_and_child_at_a_kitchen_table_with_a_hand-drawn_map_a_small_globe_a_receipt_and_a_simple_timeline_strip_taped_to_the_wall.png)
 
 
 ## Third-Grade Social Studies Goals
@@ -42,7 +42,6 @@ Other low-effort options that build map sense quickly:
 - Draw a simple map of your neighborhood from memory, then add a legend with a handful of symbols.
 - Play “direction coach” on a walk, where your child calls turns using directional terms.
 
-![A child using a simple park map with a legend and compass rose, pointing while an adult follows their directions.](images/A_child_using_a_simple_park_map_with_a_legend_and_compass_rose_pointing_while_an_adult_follows_their_directions..png)
 
 ### Civics: how groups coordinate, and what belongs to you as a person
 
@@ -98,7 +97,6 @@ Geography is the art of not being lost, paired with curiosity about the world. I
 
 A helpful rule is to treat maps as practical tools, not trivia flashcards. If your child can use a basic map to solve a real problem, they pick up facts naturally because those facts have a job to do. This is a high-return, compound activity: one session can quietly mix reading, problem-solving, math, and real-life navigation.
 
-![child using a simple compass and comparing a paper map with a satellite view on a screen](images/child_using_a_simple_compass_and_comparing_a_paper_map_with_a_satellite_view_on_a_screen.png)
 
 ### The core ideas to revisit (often)
 
@@ -193,7 +191,6 @@ Your child is already part of several layers of community, even if they have not
 
 A simple rule of thumb is this: **the closer a decision is to everyday life, the more likely it is handled locally**. As the scope grows, bigger layers get involved. Talk it through a few times and your child starts to see government not as a distant wall of names, but as overlapping teams that handle different-sized jobs.
 
-![Three concentric circles labeled Local, Regional, National with a few kid-friendly examples written around each ring.](images/Three_concentric_circles_labeled_Local_Regional_National_with_a_few_kid-friendly_examples_written_around_each_ring..png)
 
 Here are child-friendly descriptions you can reuse:
 
@@ -326,7 +323,6 @@ For a hands-on mini-project, try running a home mini-market one afternoon. Set u
 
 That last question is a gentle, child-sized retrospective: review what worked, skip the shame, aim for a better choice next time.
 
-![Kitchen-table mini-market with price tags on a few household goods and a handwritten sign offering one simple service \(like “5-minute chair massage”\), as a child sorts purchases into needs and wants.](images/Kitchen-table_mini-market_with_price_tags_on_a_few_household_goods_and_a_handwritten_sign_offering_one_simple_service_like_5-minute_chair_massage_as_a_child_sorts_purchases_into_needs_and_wants..png)
 
 
 ## History Thinking: Timelines and Evidence
@@ -349,7 +345,7 @@ Skip the elaborate timeline crafts destined to fall off the wall after a week. I
 
 When you add a new event, let your child decide where it goes, ask them to explain their thinking, and talk through any needed adjustments. This builds chronological reasoning and the willingness to revise their ideas. If your child wants more structure, you can use the classic three eras: Ancient, Middle, and Modern. Don’t fuss over exact dates. Shape matters more than precision at this age.
 
-![A simple living timeline with three labeled zones and a few weekly cards added over time](images/A_simple_living_timeline_with_three_labeled_zones_and_a_few_weekly_cards_added_over_time.png)
+![A living timeline that keeps growing](images/A_simple_living_timeline_with_three_labeled_zones_and_a_few_weekly_cards_added_over_time.png)
 
 Some children enjoy more interactive timeline work. Two low-prep options:
 
@@ -381,7 +377,6 @@ If you want to sneak in writing practice, have your child jot two sentences:
 - One sentence about what is **certain**
 - One sentence about a **guess** (and why it seems reasonable)
 
-![A child’s notebook page labeled “Certain / Guess / Questions” beside a photo and a simple artifact](images/A_childs_notebook_page_labeled_Certain__Guess__Questions_beside_a_photo_and_a_simple_artifact.png)
 
 Kids naturally love stories with heroes and villains, and that is fine. You do not have to turn every reading into a lecture about bias. But you can gently introduce the idea that every story has a storyteller. Ask, “Who is telling this?” or “What would someone else present at the time say?” These small questions plant the seeds for perspective taking: truth in history is something we approach thoughtfully, not something we accept without question.
 
@@ -470,7 +465,6 @@ On that page, you might include:
 
 Cap it at 20 to 30 minutes per session, and stop while it’s still fun. That’s what makes it sustainable.
 
-![A single notebook page titled “Same need, different solution,” with three small pictures and a few kid-written observations.](images/A_single_notebook_page_titled_Same_need_different_solution_with_three_small_pictures_and_a_few_kid-written_observations..png)
 
 ### When your child says something blunt
 
@@ -521,7 +515,6 @@ Treat local history as your anchor text. Find one story that matters locally, an
 
 In agile terms, a strong local example becomes a reusable unit. You get more learning out of the same effort, because one good story can carry reading, writing, analysis, and geography in a single session.
 
-![A child holding a notebook while looking at an old map overlaid on a modern street map at a library table](images/A_child_holding_a_notebook_while_looking_at_an_old_map_overlaid_on_a_modern_street_map_at_a_library_table.png)
 
 Your “home base” can be simple:
 
@@ -629,7 +622,7 @@ Keep it scrappy and time-boxed.
 - Do 20 minutes a day for three days instead of a marathon Saturday.
 - Finish small: label it, add a caption, rehearse a 60-second explanation.
 
-![A simple shoebox “museum exhibit” with labeled artifacts, a hand-drawn map, and a short caption card](images/A_simple_shoebox_museum_exhibit_with_labeled_artifacts_a_hand-drawn_map_and_a_short_caption_card.png)
+![A shoebox museum, small and proud](images/A_simple_shoebox_museum_exhibit_with_labeled_artifacts_a_hand-drawn_map_and_a_short_caption_card.png)
 
 A practical example: build a shoebox “museum” about a topic (ancient Egypt, local history, immigration, a trade route). Your child makes a hand-drawn map, three artifacts (real or modeled), short labels, and a short tour guide script. In one exhibit, your child reads, writes, maps, and presents.
 
@@ -659,5 +652,13 @@ If you want a slightly more agile twist, keep a short running list of curiositie
 
 When teaching civics, keep your language simple and honest. People have rights because they’re people, not because a government bestows them. Communities and governments can recognize, protect, ignore, or argue over those rights, and that messiness is exactly why social studies belongs in your year.
 
+### Activity Menu: Social Studies
 
+- Draw a **quick map** (room, neighborhood, park) with a simple legend.
+- Make a **timeline card** from family history or local history.
+- Do a **receipt walk**: find where items came from and trace the route.
+- Run a **choices-and-tradeoffs** talk: “If we choose A, what do we give up?”
+- Read a short biography and write a **three-sentence summary**.
+- Practice **civics in real life**: vote on a family decision and record the rule.
+- Do a **mini-exhibit**: one map, three artifacts, one caption.
 

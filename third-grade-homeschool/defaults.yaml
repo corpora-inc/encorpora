@@ -4,9 +4,8 @@ to: pdf
 variables:
   documentclass: memoir
   classoption:
-    - oneside
+    - twoside
     - 11pt
-  papersize: 5in,8in
 include-in-header:
   - custom_headings.tex
 include-before-body:

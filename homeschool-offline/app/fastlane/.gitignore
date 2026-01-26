@@ -1,0 +1,27 @@
+# Fastlane specific
+report.xml
+Preview.html
+screenshots/**/*.png
+*.ipa
+
+# Delivery/Snapshot generated files
+fastlane/Preview.html
+fastlane/screenshots/**/*.png
+fastlane/screenshots/screenshots.html
+fastlane/test_output
+
+# Environment
+.env
+.env.default
+.env.secret
+
+# Code signing
+*.cer
+*.p12
+*.mobileprovision
+
+# Fastlane Session
+*_session
+
+# Pilot upload metadata
+metadata_delivery*.txt

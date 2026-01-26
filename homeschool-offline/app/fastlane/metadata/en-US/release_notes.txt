@@ -1,0 +1,5 @@
+• Initial release
+• Track homeschool days with complete privacy
+• Add photos and notes to any day
+• Support for multiple students
+• 100% offline - your data stays on your device

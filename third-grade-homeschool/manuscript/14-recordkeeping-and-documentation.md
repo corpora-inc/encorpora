@@ -23,9 +23,10 @@ A few easy formats that work:
 - A spreadsheet you print once and keep on a clipboard
 - A regular wall calendar with a clear mark on school days
 
+If you prefer digital but want to keep everything local, **Homeschool Offline** is a simple option (iOS/Android). It lets you check off days, add notes or photos, and export records when you want, with no login or cloud account required.
+
 The best system is the one you’ll actually see and use. Tape it inside a kitchen cabinet, keep it by your lesson basket, or clip it to a fridge magnet.
 
-![A one-page homeschool attendance grid with boxes for the year, some marked with X’s.](images/A_one-page_homeschool_attendance_grid_with_boxes_for_the_year_some_marked_with_Xs..png)
 
 This kind of log works because it’s simple, visible, and hard to argue with. If you ever have to demonstrate attendance, you can show a clean, straightforward record of each school day, no codes, essays, or subject breakdowns needed.
 
@@ -54,7 +55,7 @@ This is a lightweight, low-stakes habit, not a forensic audit.
 
 One example: Georgia requires 180 instructional days of at least 4.5 hours each. Many parents still use a simple grid or calendar, checking off each day. You don’t have to track every minute per subject unless the rules explicitly require it. The core lesson is universal: **match your system to your local requirements, then keep it boring.**
 
-In the end, your attendance log is meant to make life easier. By keeping it visible and simple, you save your attention for what matters: teaching your child, and keeping your home feeling like a steady workshop instead of a stress factory.
+In the end, your attendance log is meant to make life easier. By keeping it visible and simple, you save your attention for what matters: teaching your child, and keeping your home feeling like a steady workshop.
 
 
 ## Writing Annual Progress Reports Simply
@@ -141,13 +142,15 @@ A few subject-specific shortcuts help keep this light:
 
 ### Pick a system you will actually use
 
+> **One source of truth:** keep records in one trusted place so you are never hunting.
+
 The best system is the one you’ll maintain when you’re tired. Paper and digital both work. Choose based on your life, not your ideals.
 
 **Paper (simple and fast):** one folder per subject is plenty. Pocket folders or an accordion file both work well. Once a month, choose one or two pieces to add, write the date, and jot a quick note like “used paragraphs for the first time” or “solved two-step problems alone.” Periodically cull duplicates so the quality stays high and the stack stays low.
 
 **Digital (clean and searchable):** scan or photograph samples and file them in clearly named folders by subject. Date and label each file (for example, **2025-01_Math_Multiplication_Quiz_A**). Use basic cloud storage or your computer’s folders. Don’t add complexity unless you need it. **Fewer steps means better consistency.**
 
-![A simple home portfolio setup with a few labeled paper folders and matching subject folders on a laptop or tablet.](images/A_simple_home_portfolio_setup_with_a_few_labeled_paper_folders_and_matching_subject_folders_on_a_laptop_or_tablet..png)
+![Paper and digital, side by side](images/A_simple_home_portfolio_setup_with_a_few_labeled_paper_folders_and_matching_subject_folders_on_a_laptop_or_tablet..png)
 
 ### What to save (variety beats volume)
 
@@ -207,7 +210,6 @@ A reliable re-entry folder usually includes:
 - **A math “skills mastered” list:** brief notes with dates, like “adds and subtracts 3-digit numbers without help” or “uses fractions in recipes and on clocks.”
 - **Testing results (optional):** keep them if you have them, but do not assume they are required.
 
-![Sample homeschool documentation folder with labeled sections for attendance, reading log, work samples, and progress report.](images/Sample_homeschool_documentation_folder_with_labeled_sections_for_attendance_reading_log_work_samples_and_progress_report..png)
 
 > A good portfolio answers one question: **What can this child do now, and how do you know?**
 
@@ -230,9 +232,15 @@ To avoid the most common headache (missing or disorganized records), set a month
 
 When it is time to re-enroll, bring the folder and give an honest, practical overview: interests, what is easy, what is hard, and anything the teacher should know on day one. That small bit of clarity can prevent off-target placement and weeks of frustration.
 
-![Parent and child smiling while organizing a homeschool portfolio together.](images/Parent_and_child_smiling_while_organizing_a_homeschool_portfolio_together..png)
+![Organizing together, feeling proud](images/Parent_and_child_smiling_while_organizing_a_homeschool_portfolio_together..png)
 
 Done well, homeschool documentation becomes more than a bureaucratic hoop. It becomes a living portfolio you can both understand: proof of growth, and a flexible on-ramp to whatever comes next. With a light monthly habit, the whole system usually takes less than ten minutes a week.
 
+### Activity Menu: Recordkeeping
 
-
+- Mark **attendance** daily in under 10 seconds.
+- Save **one dated sample** per subject each month.
+- Keep a **running book list** (print or digital).
+- Write a **one-paragraph progress note** each quarter.
+- Take a **quick photo** of hands-on work and label it.
+- Do a **monthly 5-minute file sweep**.

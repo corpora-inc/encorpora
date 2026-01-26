@@ -1,0 +1,62 @@
+# Fastlane configuration for Homeschool Offline
+# Documentation: https://docs.fastlane.tools
+
+default_platform(:ios)
+
+platform :ios do
+  desc "Upload metadata to App Store Connect"
+  lane :upload_metadata do
+    deliver(
+      app_identifier: "com.corpora.homeschool",
+      skip_screenshots: true,
+      skip_binary_upload: true,
+      force: true, # Skip verification prompts
+      metadata_path: "./fastlane/metadata"
+    )
+  end
+
+  desc "Upload screenshots to App Store Connect"
+  lane :upload_screenshots do
+    deliver(
+      app_identifier: "com.corpora.homeschool",
+      skip_metadata: true,
+      skip_binary_upload: true,
+      force: true,
+      metadata_path: "./fastlane/metadata"
+    )
+  end
+
+  desc "Upload build to TestFlight"
+  lane :beta do |options|
+    # Path to your .ipa file
+    ipa_path = options[:ipa] || "../src-tauri/gen/apple/build/arm64/Homeschool Offline.ipa"
+
+    pilot(
+      ipa: ipa_path,
+      skip_waiting_for_build_processing: true,
+      changelog: options[:changelog] || "Bug fixes and improvements"
+    )
+  end
+
+  desc "Upload everything: metadata + TestFlight build"
+  lane :release do |options|
+    upload_metadata
+    beta(options)
+  end
+
+  desc "Download current metadata from App Store Connect"
+  lane :download_metadata do
+    deliver(
+      app_identifier: "com.corpora.homeschool",
+      download_metadata: true,
+      metadata_path: "./fastlane/metadata",
+      skip_binary_upload: true,
+      skip_screenshots: true
+    )
+  end
+
+  desc "Take screenshots (if you have UI tests set up)"
+  lane :screenshots do
+    capture_screenshots
+  end
+end

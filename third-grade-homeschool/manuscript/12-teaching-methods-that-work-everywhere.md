@@ -1,8 +1,8 @@
 # Teaching Methods That Work Everywhere
 
-Most homeschooling challenges aren’t really about curriculum—they come down to teaching methods. The encouraging reality is that a handful of reliable approaches can help move any child from "I don’t get it" to "I’ve got it" in almost any subject, no matter what materials you have. You don’t need a teaching degree. What you need is a steady routine: begin with something your child can see or touch, talk through your thinking step-by-step, practice together, and then hand over more responsibility as your child grows in skill. Real life becomes your classroom, and games, stories, and simple projects help reinforce learning without turning your home into a mini-school.
+Most homeschooling challenges are about method, not curriculum. A handful of reliable approaches can move a child from "I don't get it" to "I've got it" in any subject. You do not need a teaching degree. You need a steady routine: start with something real, model your thinking, practice together, then hand over responsibility. Real life becomes your classroom, and games, stories, and simple projects keep learning light and effective.
 
-Of course, some days will veer off track. Everyone gets bored or frustrated at times. Sometimes lessons fall flat. This section gives you robust strategies that work even when things aren’t perfect, along with some common pitfalls and simple solutions so you can keep moving forward without unnecessary stress. By the end, you’ll have a practical toolkit ready to build up your child’s skill, curiosity, and confidence no matter your starting point or what the day throws at you.
+Some days will veer off track. This section gives you sturdy strategies that work even when things are imperfect, plus quick fixes for common pitfalls. By the end, you will have a practical toolkit that compounds skill, curiosity, and confidence.
 
 
 ## Concrete -> Visual -> Abstract as a Universal Ladder
@@ -26,7 +26,7 @@ A few easy “launchers” you can use with almost anything:
 
 For language, the concrete step can be physical, too: make a “living sentence” by giving family members word cards and rearranging yourselves until it sounds right.
 
-![child using physical objects to learn math](images/child_using_physical_objects_to_learn_math.png)
+![Learning math with real objects](images/child_using_physical_objects_to_learn_math.png)
 
 ### 2) Visual: keep the meaning, make it easier to work with
 
@@ -112,7 +112,7 @@ A few quick examples:
 
 These are one- to two-minute moments. Over a year, they compound.
 
-![Parent reading a story aloud while pausing to explain their thinking to a curious child](images/Parent_reading_a_story_aloud_while_pausing_to_explain_their_thinking_to_a_curious_child.png)
+![Think-alouds that open the story](images/Parent_reading_a_story_aloud_while_pausing_to_explain_their_thinking_to_a_curious_child.png)
 
 ### Common snags (and quick fixes)
 
@@ -159,9 +159,10 @@ During **You Try**, your job is not to rescue. It’s to keep the work moving wi
 
 Mistakes become information, not a crisis. If your child struggles in the independent phase, you don’t push harder. You simply step back to a more supportive stage and do a few more examples together. Some skills move quickly to independence; others need a longer “We Do” season. The win is adaptability, not perfection.
 
-![Parent and child at a kitchen table moving through the four phases with a couple of rounding examples and a small “support fades” arrow.](images/Parent_and_child_at_a_kitchen_table_moving_through_the_four_phases_with_a_couple_of_rounding_examples_and_a_small_support_fades_arrow..png)
 
 ### How much practice is “enough”
+
+> **Grease the groove:** frequent, easy reps of a narrow skill so it sticks without fatigue.
 
 Short, focused sessions usually beat long, exhausting drills. Aim for **three to six problems** during the guided phases, and stop before anyone is bored or tired. Ending on a success does more for tomorrow’s motivation than one more page today.
 
@@ -207,7 +208,6 @@ To build independence, try a weekly **kid’s choice meal**. Your child selects 
 
 You can extend this with a family bake-off, or have your child rewrite a favorite recipe in their notebook with their own drawings for each step.
 
-![A parent and child cooking together, with measuring cups and a simple recipe card on the counter](images/A_parent_and_child_cooking_together_with_measuring_cups_and_a_simple_recipe_card_on_the_counter.png)
 
 ### Money (math with real stakes, small enough to be safe)
 
@@ -273,7 +273,6 @@ Rotate games every week or two to keep them fresh. Even better, invite your chil
 
 If a game turns tense, treat that as data, not failure. Make it easier, play cooperatively, or let your child help rewrite the rules. **Short, regular sessions** beat weekend marathons almost every time.
 
-![child playing a math card game at the kitchen table with a homemade score sheet](images/child_playing_a_math_card_game_at_the_kitchen_table_with_a_homemade_score_sheet.png)
 
 ### Stories: the cheapest curriculum you’ll ever buy
 
@@ -304,7 +303,7 @@ For third graders, keep timelines short. **Three to seven days** is often the sw
 
 A daily two-minute check-in prevents stall-outs: What’s done? What’s next? What’s stuck? If a project goes sideways, narrow the choices, set a clear end point, or assign roles (planner, recorder, builder). If energy drops, simplify or switch the theme.
 
-Games, stories, and projects are not “extras.” They’re the engine room of memory and mastery. When kids enjoy practice, they learn faster, retain more, and your home stays more like a steady workshop than a stress factory.
+Games, stories, and projects are not “extras.” They’re the engine room of memory and mastery. When kids enjoy practice, they learn faster, retain more, and your home stays more like a steady workshop.
 
 
 ## How to Give Feedback Without Killing Motivation
@@ -360,7 +359,7 @@ A few common patterns tend to backfire, even when you mean well:
 
 Think “check-in,” not “play-by-play.”
 
-![Parent calmly showing a child one revision in a written paragraph, both smiling, with completed and corrected work visible.](images/Parent_calmly_showing_a_child_one_revision_in_a_written_paragraph_both_smiling_with_completed_and_corrected_work_visible..png)
+![One small revision at a time](images/Parent_calmly_showing_a_child_one_revision_in_a_written_paragraph_both_smiling_with_completed_and_corrected_work_visible..png)
 
 ### Make it lighter without getting silly
 
@@ -388,5 +387,11 @@ Here are a few scripts you can borrow and adapt:
 
 Think of feedback as navigation, not judgment. When your child trusts that your input is there to help, they stay open to risk, learning, and growth. Keep your comments **brief, specific, actionable, and kind** and you’ll get the compounding effect: small improvements that stack into real confidence.
 
+### Activity Menu: Teaching Methods
 
-
+- Use **Concrete -> Visual -> Abstract** on one new skill.
+- Do a **think-aloud** once a day: goal, plan, check, adjust.
+- Run **I do / We do / You do** for a single problem.
+- Add a **real-life task** that matches the lesson.
+- Keep a **definition of done**: one clear finish line.
+- Give **one piece of feedback** and stop.

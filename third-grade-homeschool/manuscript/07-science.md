@@ -1,8 +1,8 @@
 # Science
 
-Science in third grade is, at its core, about sharpening observation and curiosity. This year, your child will get practice noticing patterns, describing what they see, measuring when it matters, and asking simple questions they can realistically investigate. The main habit you’re building is the ability to update thinking based on evidence—a valuable skill that echoes across reading, writing, and math. 
+Science in third grade is, at its core, about sharpening observation and curiosity. This year, your child will get practice noticing patterns, describing what they see, measuring when it matters, and asking simple questions they can realistically investigate. The main habit you’re building is the ability to update thinking based on evidence—a valuable skill that echoes across reading, writing, and math. Treat each experiment like a tiny sprint: plan, test, adjust.
 
-You definitely don’t need a science degree, or a closet full of specialized tools. What you’ll find most helpful are a few reliable, repeatable routines and the willingness to keep things small and accessible. Often, effective hands-on science can happen with just a bowl of water, a flashlight, a plant on the windowsill, a magnet, an outdoor walk, or even a broken appliance you’re willing to dissect together. 
+You don’t need a science degree or a closet full of tools. A few reliable routines and a willingness to keep things small are enough. Hands-on science can happen with a bowl of water, a flashlight, a plant on the windowsill, a magnet, a walk outside, or a broken appliance you’re willing to dissect together.
 
 In this section, you’ll focus on practical skills across life, earth, and physical science, along with an engineering approach: build, test, and improve. You’ll also set up a simple lab notebook so discoveries and questions don’t just drift away. With these routines, science shifts from being another subject to cover to one of the most rewarding, hands-on parts of your week—a place where learning compounds naturally and ties back to everything else you’re working on.
 
@@ -13,7 +13,7 @@ Third-grade science is less about racing through facts and more about building y
 
 Think of this as your definition of done for science this year. You do not have to touch everything every week. Aim for steady practice that turns ordinary life into a hands-on lab.
 
-![A child’s science notebook page showing a labeled sketch, a tiny data table, and one sentence starting with “I noticed…”](images/A_childs_science_notebook_page_showing_a_labeled_sketch_a_tiny_data_table_and_one_sentence_starting_with_I_noticed.png)
+![Noticing like a young scientist](images/A_childs_science_notebook_page_showing_a_labeled_sketch_a_tiny_data_table_and_one_sentence_starting_with_I_noticed.png)
 
 ### The core scientific habits (high return)
 
@@ -148,7 +148,6 @@ Some questions are too large for a quick experiment. Instead of dropping them, k
 
 This is agile science at kid scale: capture curiosity, take the next doable step, and let the learning compound over time.
 
-![A kitchen counter scene with two cups of water \(warm and cold\), a spoon, a timer, and a notebook page showing “Question → Predict → Test → Observe → Explain” in a child’s handwriting.](images/A_kitchen_counter_scene_with_two_cups_of_water_warm_and_cold_a_spoon_a_timer_and_a_notebook_page_showing_Question__Predict__Test__Observe__Explain_in_a_childs_handwriting..png)
 
 
 ## Life Science: Plants, Animals, Ecosystems
@@ -201,7 +200,6 @@ Aim for **one hands-on activity per week**, and feel free to repeat favorites. R
 - **Habitat micro-survey:** Pick one small spot (a single tree, a square of grass). List every living thing you can find in ten minutes. Sort into plant, animal, fungus, and “not sure yet.” Look for clues like holes, chewed leaves, nests, tracks.
 - **Adaptation design challenge:** Choose an environment (desert, tundra, city alley, rainforest). Design a creature to survive there. Label three adaptations and explain how each helps. If your child likes writing, make it a one-page “field guide” entry.
 
-![A simple notebook page showing a seed experiment: two cups labeled “sun” and “shade,” with quick sketches and a tiny data table](images/A_simple_notebook_page_showing_a_seed_experiment_two_cups_labeled_sun_and_shade_with_quick_sketches_and_a_tiny_data_table.png)
 
 ### Keep it lean: what to record
 
@@ -234,10 +232,11 @@ A simple plan that works all year: each week, pick one theme (rocks, soil, water
 
 You don’t need to tackle all of geology. The win is that your child can describe rocks clearly and remember the three main types.
 
-> **The three rock types (kid-level, but accurate):**
-> **Igneous** forms when melted rock cools and hardens.
-> **Sedimentary** forms when bits pile up in layers and get pressed together.
-> **Metamorphic** forms when an existing rock is changed by heat or pressure.
+**The three rock types (kid-level, but accurate):**
+
+- **Igneous** forms when melted rock cools and hardens.
+- **Sedimentary** forms when bits pile up in layers and get pressed together.
+- **Metamorphic** forms when an existing rock is changed by heat or pressure.
 
 If your child can name the three types and give one sentence on how each forms, you’ve hit the mark. After that, add the more “real life” skill: sorting a small collection by what you can actually see, even if the exact type remains a mystery.
 
@@ -279,7 +278,7 @@ That’s condensation, water vapor from the air turning back into liquid on the 
 
 If your child enjoys models, tape a sealed zip-top bag with a little water inside to a sunny window. Over time, you’ll see droplets form and “rain” down inside the bag.
 
-![A simple sketch of a zip-top bag water cycle model on a sunny window, with arrows for evaporation, condensation, and droplets falling](images/A_simple_sketch_of_a_zip-top_bag_water_cycle_model_on_a_sunny_window_with_arrows_for_evaporation_condensation_and_droplets_falling.png)
+![A tiny water cycle on the window](images/A_simple_sketch_of_a_zip-top_bag_water_cycle_model_on_a_sunny_window_with_arrows_for_evaporation_condensation_and_droplets_falling.png)
 
 ### Weather: a tiny daily log that compounds
 
@@ -361,7 +360,6 @@ A ramp test is cheap and endlessly reusable. Grab a toy car, some books, a board
 
 Talk together: did the higher ramp or smoother surface make it go farther? What slowed it down? Introduce the word **friction** when it helps, not because you are “supposed to.”
 
-![child testing a toy car on a simple book-and-board ramp and recording distances](images/child_testing_a_toy_car_on_a_simple_book-and-board_ramp_and_recording_distances.png)
 
 A single sheet of paper can become an experiment about air resistance. Drop it flat from shoulder height, then crumple it and drop it again. Same paper, different shape, different result. Ask why.
 
@@ -446,7 +444,7 @@ Remember: water filtered this way is for observing, not drinking.
 
 Failures aren’t verdicts, they’re just data for the next round. If a project doesn’t work, say, “What did we learn?” rather than, “It didn’t work.” If your child gets frustrated, shrink the round: set an easier goal, use fewer materials, or shorten the build time. The real skill isn’t grinding through every challenge. It’s learning to run the improvement loop steadily and calmly.
 
-![Parent and child testing a paper bridge with coins, marking results for V1 and V2 in a simple notebook log.](images/Parent_and_child_testing_a_paper_bridge_with_coins_marking_results_for_V1_and_V2_in_a_simple_notebook_log..png)
+![A paper bridge put to the test](images/Parent_and_child_testing_a_paper_bridge_with_coins_marking_results_for_V1_and_V2_in_a_simple_notebook_log..png)
 
 
 ## Simple Home Labs and a Lab Notebook
@@ -527,7 +525,6 @@ A simple structure that works for most kids:
 
 There’s real value in labeling pictures and drawing diagrams. If writing is hard, you can be the scribe while your child does the sketch and tells you what to write.
 
-![A simple lab notebook page showing Date, Question, Prediction, a labeled sketch of the setup, a small data table, and a short conclusion](images/A_simple_lab_notebook_page_showing_Date_Question_Prediction_a_labeled_sketch_of_the_setup_a_small_data_table_and_a_short_conclusion.png)
 
 Make the documentation feel scientific, not like school paperwork. The goal is honesty with evidence, not a “right answer.” A few prompts can keep it grounded:
 
@@ -627,7 +624,13 @@ If you’re unsure, choose the model you can keep up for four weeks. Then adjust
 
 Blends work beautifully: anchor lessons twice a week, a little inquiry on Fridays, and one unit each quarter. Use inquiry to spark interest, anchors to fill gaps, and units as your “highlight reel.” The goal isn’t a perfect model. It’s a sustainable system where observation, testing, and confidence compound over time.
 
-![A simple three-column sketch labeled Inquiry, Anchor, Unit, each with a tiny example activity: one-week weather mini-project.](images/A_simple_three-column_sketch_labeled_Inquiry_Anchor_Unit_each_with_a_tiny_example_activity_one-week_weather_mini-project..png)
 
+### Activity Menu: Science
 
-
+- Do an **I notice / I wonder** page on a walk.
+- Run a **one-variable test** (light vs. shade, warm vs. cool).
+- Make a **labeled sketch** of a plant, rock, or insect.
+- Keep a **three-line log**: question, what we did, what happened.
+- Build a **tiny model** (water cycle in a bag, paper ramp, shadow clock).
+- Do a **kitchen experiment** (dissolving, melting, mixing).
+- Ask the **next question** and plan tomorrow’s test.

@@ -1,8 +1,8 @@
 # Assessment Without Anxiety
 
-Assessment, at its core, is about finding out what your child actually understands and can do independently, as well as where they might need a little more support. In traditional schools, assessments often feel high-stakes and stressful, but at home, this can be a much gentler, almost invisible routine—a way to stay on track, make progress visible, and adjust along the way, no drama required. Throughout this section, you’ll see five practical ways to check in: quick mastery checks, monthly “show what you know” days, simple portfolios, standardized tests (if needed), and honest conversations about what any of it truly means. Each tool does something different and brings value in its own way; some assessments only take minutes, while others give your child a chance to show off their skills and discoveries from the past month. None require special training or expensive materials, just a willingness to observe and adapt.
+Assessment is simply finding out what your child understands and can do independently, and where they need support. At home, it can be low-key and continuous: a way to stay on track, make progress visible, and adjust without drama. This section covers five practical tools: quick mastery checks, monthly "show what you know" days, simple portfolios, standardized tests (if needed), and honest conversations about what it all means.
 
-The mindset here is simple and constructive: assessment is never about catching mistakes or handing out grades. It’s about discovering what’s clear, what’s still forming, and what’s ready to be built on. Good assessment is like a workout for learning—you repeat, check your form, stretch to new levels, and mix in some compound moves that exercise multiple “muscles” at once, like combining reading, writing, and science in a single project. Done well, these routines show you when to keep going, when to pause, and what to practice next, in a way that feels productive rather than pressured. Throughout, we’ll also look at common pitfalls—like a child who freezes on a “show what you know” day or a portfolio that turns into a stack of clutter—and how to handle them calmly. By the end, you’ll have a straightforward, low-stress set of options for checking progress, helping your child grow, and keeping your home far from the atmosphere of a test center.
+The mindset is simple: assessment is not about catching mistakes or handing out grades. It is about discovering what is clear, what is forming, and what is ready to build next. Done well, these routines tell you when to keep going, when to pause, and what to practice next, without turning your home into a test center.
 
 
 ## Mastery Checks You Can Do in Minutes
@@ -18,6 +18,8 @@ Unlike school tests that mix multiple skills and show up at the end of a unit, m
 Mastery checks help you catch gaps early, when they’re easy to fix, like noticing a hitch in a workout before it becomes an injury. They also reduce endless review, because you’re not guessing what’s sticking.
 
 They don’t need to be formal. You might hand your child one short math problem while making breakfast, or ask them to explain the main idea of a paragraph you just read together. Two minutes is enough to keep learning honest and steady.
+
+> **Feedback loop:** check a small skill, adjust the next step, repeat.
 
 ### The three-minute method
 
@@ -52,7 +54,6 @@ A check can feel like a challenge instead of an interrogation. A few low-effort 
 - Let your child “teach” you or explain it to a stuffed animal.
 - Use objects around the house: blocks for fractions, snacks for division, a puddle drying to talk about evaporation.
 
-![Parent and child sharing a cheerful three-minute math check at the kitchen table](images/Parent_and_child_sharing_a_cheerful_three-minute_math_check_at_the_kitchen_table.png)
 
 Teaching is one of the strongest signals of understanding, especially for third graders.
 
@@ -103,7 +104,7 @@ Homeschooling isn’t just a quiet march from lesson to lesson. Regular, intenti
 
 These check-ins can turn assessment from something tense into something shared. They also create the kind of documentation many states or districts want, without turning your kitchen table into an office.
 
-![Parent and child smiling and looking over a small portfolio of completed assignments and drawings](images/Parent_and_child_smiling_and_looking_over_a_small_portfolio_of_completed_assignments_and_drawings.png)
+![Looking back at wins](images/Parent_and_child_smiling_and_looking_over_a_small_portfolio_of_completed_assignments_and_drawings.png)
 
 ### What it is (and what it isn’t)
 
@@ -226,7 +227,6 @@ Don’t skip the “extras” that show a capable kid in the real world: art, bu
 
 If your child is proud of a messy draft or a big effort, include it. Drafts often show more learning than polished final copies.
 
-![Example portfolio pages showing a writing sample, a math page with notes, a simple science photo with caption, and a small art project sequence.](images/Example_portfolio_pages_showing_a_writing_sample_a_math_page_with_notes_a_simple_science_photo_with_caption_and_a_small_art_project_sequence..png)
 
 ### A simple assembly routine you can keep
 
@@ -353,7 +353,7 @@ When you review work, you are mainly looking for three things. This keeps you ho
 
 Trends matter because **a single score can be noise**. Three to six small samples across a few weeks are usually more trustworthy than one formal check.
 
-![Parent reviewing a simple portfolio with their child, both smiling over strengths and circling an area to work on.](images/Parent_reviewing_a_simple_portfolio_with_their_child_both_smiling_over_strengths_and_circling_an_area_to_work_on..png)
+![Celebrating strengths, choosing a next step](images/Parent_reviewing_a_simple_portfolio_with_their_child_both_smiling_over_strengths_and_circling_an_area_to_work_on..png)
 
 ### How to respond without panic
 
@@ -391,5 +391,11 @@ If your state asks for something like “progress in reading, writing, and math,
 
 When you interpret results this way, assessment stops being a source of anxiety and becomes a steering wheel. Challenges are just signposts pointing to where a little more attention will pay off next.
 
+### Activity Menu: Assessment
 
-
+- Do a **3-minute mastery check** on one skill.
+- Run a **show-what-you-know** day once a month.
+- Save **one before/after** sample per subject.
+- Use a **two-question conference**: What felt easy? What felt hard?
+- Keep a **weekly artifact** (photo, page, or short note).
+- Recheck one target after **5 to 7 days** of practice.
