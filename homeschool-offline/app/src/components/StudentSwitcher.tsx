@@ -75,7 +75,7 @@ export function StudentSwitcher() {
             className="fixed inset-0 z-10"
             onClick={() => setIsOpen(false)}
           />
-          <div className="absolute right-0 top-full mt-1 z-20 w-48 bg-popover border rounded-md shadow-lg">
+          <div className="absolute left-0 top-full mt-1 z-20 w-48 bg-popover border rounded-md shadow-lg">
             {students.map((student) => (
               <button
                 key={student.id}

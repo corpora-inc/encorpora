@@ -52,6 +52,14 @@ export function About() {
 
   return (
     <div className="flex flex-col gap-4">
+      {/* App Title */}
+      <div className="text-center py-2">
+        <h2 className="text-xl md:text-2xl font-bold">Homeschool Offline</h2>
+        <p className="text-xs md:text-sm text-muted-foreground mt-1">
+          Your private homeschool journal
+        </p>
+      </div>
+
       {/* Version Section */}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">

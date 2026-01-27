@@ -5,6 +5,7 @@ import { WelcomeScreen } from './components/WelcomeScreen';
 import { Settings } from './components/Settings';
 import { StudentSwitcher } from './components/StudentSwitcher';
 import { Button } from './components/ui/button';
+import { Badge } from './components/ui/badge';
 import { Settings as SettingsIcon } from 'lucide-react';
 import { useSettingsStore } from './store/settings';
 import { useCalendarStore } from './store/calendar';
@@ -14,11 +15,12 @@ import type { Settings as SettingsType, Day, Student } from './types/database';
 type View = 'calendar' | 'settings';
 
 function App() {
-  const { onboarded, currentStudentId, totalDays, setSettings, setStudents, setCurrentStudentId, setTotalDays } = useSettingsStore();
+  const { onboarded, currentStudentId, totalDays, setSettings, setStudents, setCurrentStudentId, setTotalDays, getCurrentStudent } = useSettingsStore();
   const { currentMonth, setDays } = useCalendarStore();
   const { setPhotoCounts } = usePhotosStore();
   const [isInitialized, setIsInitialized] = useState(false);
   const [currentView, setCurrentView] = useState<View>('calendar');
+  const currentStudent = getCurrentStudent();
 
   useEffect(() => {
     const initializeApp = async () => {
@@ -134,19 +136,17 @@ function App() {
   return (
     <div className="h-full flex flex-col safe-area-container">
       {/* Header */}
-      <div className="flex items-center justify-between px-3 md:px-4 py-2 md:py-3 border-b shrink-0">
-        <div className="flex flex-col">
-          <h1 className="text-base md:text-xl font-bold">Homeschool Offline</h1>
-          <p className="text-xs text-muted-foreground">
-            {totalDays} {totalDays === 1 ? 'day' : 'days'}
-          </p>
-        </div>
+      <div className="flex items-center justify-between px-3 md:px-4 py-3 border-b shrink-0">
         <div className="flex items-center gap-2">
           <StudentSwitcher />
-          <Button variant="outline" size="icon" onClick={() => setCurrentView('settings')}>
-            <SettingsIcon className="h-4 w-4" />
-          </Button>
+          <h1 className="text-base md:text-lg font-semibold">{currentStudent?.name || 'Student'}</h1>
+          <Badge variant="secondary" className="text-xs">
+            {totalDays} {totalDays === 1 ? 'day' : 'days'}
+          </Badge>
         </div>
+        <Button variant="outline" size="icon" onClick={() => setCurrentView('settings')}>
+          <SettingsIcon className="h-4 w-4" />
+        </Button>
       </div>
 
       {/* Main Content */}

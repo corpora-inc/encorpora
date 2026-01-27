@@ -5,6 +5,7 @@ mod photos;
 mod export;
 mod import;
 mod filetype;
+mod platform;
 
 // Database commands
 #[tauri::command]
@@ -148,10 +149,20 @@ fn get_total_homeschool_days_command(app: AppHandle, student_id: i64) -> Result<
     db::get_total_homeschool_days(&app, student_id)
 }
 
-// Export/Import commands
+// Export/Import commands (desktop - synchronous)
 #[tauri::command]
 fn export_data_command(app: AppHandle, dest_path: String) -> Result<(), String> {
     export::export_data(&app, &dest_path)
+}
+
+#[tauri::command]
+fn export_data_to_bytes_command(app: AppHandle) -> Result<Vec<u8>, String> {
+    export::export_data_to_bytes(&app)
+}
+
+#[tauri::command]
+fn export_data_to_external_command(app: AppHandle) -> Result<String, String> {
+    export::export_data_to_external(&app)
 }
 
 #[tauri::command]
@@ -159,14 +170,36 @@ fn import_data_command(app: AppHandle, source_path: String) -> Result<(), String
     import::import_data(&app, &source_path)
 }
 
+#[tauri::command]
+fn import_data_from_bytes_command(app: AppHandle, bytes: Vec<u8>) -> Result<(), String> {
+    import::import_data_from_bytes(&app, bytes)
+}
+
+// Re-export async commands and platform commands
+#[cfg(any(target_os = "android", target_os = "ios"))]
+use export::export_data_async;
+
+#[cfg(any(target_os = "android", target_os = "ios"))]
+use import::import_data_async;
+
+#[cfg(target_os = "android")]
+use platform::android::{android_share_file, android_write_content_uri};
+
+#[cfg(target_os = "ios")]
+use platform::ios::ios_share_file;
+
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
-    tauri::Builder::default()
+    let mut builder = tauri::Builder::default()
         .plugin(tauri_plugin_opener::init())
         .plugin(tauri_plugin_dialog::init())
         .plugin(tauri_plugin_fs::init())
-        .plugin(tauri_plugin_os::init())
-        .invoke_handler(tauri::generate_handler![
+        .plugin(tauri_plugin_os::init());
+
+    // Platform-specific command registration
+    #[cfg(target_os = "android")]
+    {
+        builder = builder.invoke_handler(tauri::generate_handler![
             init_db_command,
             get_settings_command,
             update_settings_command,
@@ -184,8 +217,74 @@ pub fn run() {
             delete_student_command,
             get_total_homeschool_days_command,
             export_data_command,
+            export_data_to_bytes_command,
+            export_data_to_external_command,
             import_data_command,
-        ])
-        .run(tauri::generate_context!())
+            import_data_from_bytes_command,
+            export_data_async,
+            import_data_async,
+            android_share_file,
+            android_write_content_uri,
+        ]);
+    }
+
+    #[cfg(target_os = "ios")]
+    {
+        builder = builder.invoke_handler(tauri::generate_handler![
+            init_db_command,
+            get_settings_command,
+            update_settings_command,
+            get_day,
+            get_days_in_month_command,
+            update_day,
+            add_photo_command,
+            add_photo_from_bytes_command,
+            delete_photo_command,
+            get_photos_for_date,
+            get_photo_counts_for_month_command,
+            get_students_command,
+            add_student_command,
+            update_student_command,
+            delete_student_command,
+            get_total_homeschool_days_command,
+            export_data_command,
+            export_data_to_bytes_command,
+            export_data_to_external_command,
+            import_data_command,
+            import_data_from_bytes_command,
+            export_data_async,
+            import_data_async,
+            ios_share_file,
+        ]);
+    }
+
+    #[cfg(not(any(target_os = "android", target_os = "ios")))]
+    {
+        builder = builder.invoke_handler(tauri::generate_handler![
+            init_db_command,
+            get_settings_command,
+            update_settings_command,
+            get_day,
+            get_days_in_month_command,
+            update_day,
+            add_photo_command,
+            add_photo_from_bytes_command,
+            delete_photo_command,
+            get_photos_for_date,
+            get_photo_counts_for_month_command,
+            get_students_command,
+            add_student_command,
+            update_student_command,
+            delete_student_command,
+            get_total_homeschool_days_command,
+            export_data_command,
+            export_data_to_bytes_command,
+            export_data_to_external_command,
+            import_data_command,
+            import_data_from_bytes_command,
+        ]);
+    }
+
+    builder.run(tauri::generate_context!())
         .expect("error while running tauri application");
 }

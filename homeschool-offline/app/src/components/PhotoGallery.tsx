@@ -10,6 +10,9 @@ import type { Photo } from '@/types/database';
 import { usePlatform } from '@/hooks/usePlatform';
 import { WebcamCapture } from '@/components/WebcamCapture';
 import { logger } from '@/utils/logger';
+import { open } from '@tauri-apps/plugin-dialog';
+import { readFile, writeFile, exists, mkdir } from '@tauri-apps/plugin-fs';
+import { join, appCacheDir } from '@tauri-apps/api/path';
 
 interface PhotoGalleryProps {
   date: string;
@@ -71,14 +74,55 @@ export function PhotoGallery({ date }: PhotoGalleryProps) {
   const [isLoading, setIsLoading] = useState(false);
   const [showAddMenu, setShowAddMenu] = useState(false);
   const [showWebcam, setShowWebcam] = useState(false);
+  const [menuPosition, setMenuPosition] = useState<'above' | 'below'>('below');
 
-  // Refs for hidden file inputs
+  // Refs for hidden file inputs and add button
   const cameraInputRef = useRef<HTMLInputElement>(null);
   const photoInputRef = useRef<HTMLInputElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const iosAllFilesInputRef = useRef<HTMLInputElement>(null);
+  const addButtonRef = useRef<HTMLButtonElement>(null);
 
   const photos = getPhotos(date);
+
+  // Handle ESC key and mobile back button for lightbox
+  useEffect(() => {
+    if (!selectedPhoto) return;
+
+    // ESC key handler for desktop
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setSelectedPhoto(null);
+      }
+    };
+
+    // Mobile back button handler
+    const handlePopState = () => {
+      setSelectedPhoto(null);
+    };
+
+    // Add escape key listener
+    document.addEventListener('keydown', handleEscape);
+
+    // Push a history state when lightbox opens (for mobile back button)
+    window.history.pushState({ lightboxOpen: true }, '');
+    window.addEventListener('popstate', handlePopState);
+
+    return () => {
+      document.removeEventListener('keydown', handleEscape);
+      window.removeEventListener('popstate', handlePopState);
+    };
+  }, [selectedPhoto]);
+
+  // When closing lightbox manually (via X button or click outside), go back in history
+  const closeLightbox = () => {
+    // Only go back if we're on a lightbox state
+    if (window.history.state?.lightboxOpen) {
+      window.history.back();
+    } else {
+      setSelectedPhoto(null);
+    }
+  };
 
   // Load photos when date changes
   const loadPhotosForDate = async () => {
@@ -122,7 +166,6 @@ export function PhotoGallery({ date }: PhotoGalleryProps) {
 
     try {
       setIsLoading(true);
-      const { open } = await import('@tauri-apps/plugin-dialog');
 
       let selected;
       try {
@@ -219,8 +262,6 @@ export function PhotoGallery({ date }: PhotoGalleryProps) {
           if (filePath.startsWith('content://')) {
             try {
               // Use Tauri's readFile which supports content URIs on Android
-              const { readFile } = await import('@tauri-apps/plugin-fs');
-
               const bytes = await readFile(filePath);
               logger.debug(`Read ${bytes.length} bytes from content URI`);
 
@@ -316,9 +357,6 @@ export function PhotoGallery({ date }: PhotoGalleryProps) {
         logger.debug(`Processing file ${i + 1}/${files.length}:`, file.name);
         try {
           // Save file to cache directory first using Tauri's writeFile
-          const { writeFile, exists, mkdir } = await import('@tauri-apps/plugin-fs');
-          const { join, appCacheDir } = await import('@tauri-apps/api/path');
-
           // Read file as ArrayBuffer
           const arrayBuffer = await file.arrayBuffer();
           const uint8Array = new Uint8Array(arrayBuffer);
@@ -474,6 +512,19 @@ export function PhotoGallery({ date }: PhotoGalleryProps) {
     }
   };
 
+  // Calculate menu position based on available space
+  const handleToggleAddMenu = () => {
+    if (!showAddMenu && addButtonRef.current) {
+      const buttonRect = addButtonRef.current.getBoundingClientRect();
+      const spaceBelow = window.innerHeight - buttonRect.bottom;
+      const menuHeight = 180; // Approximate height of 3-item menu
+
+      // If not enough space below, show menu above
+      setMenuPosition(spaceBelow < menuHeight ? 'above' : 'below');
+    }
+    setShowAddMenu(!showAddMenu);
+  };
+
   const getPhotoUrl = (filePath: string) => {
     // convertFileSrc will auto-detect the right protocol
     return convertFileSrc(filePath);
@@ -499,7 +550,8 @@ export function PhotoGallery({ date }: PhotoGalleryProps) {
           // Android: Button with menu for camera and file picker
           <div className="relative">
             <Button
-              onClick={() => setShowAddMenu(!showAddMenu)}
+              ref={addButtonRef}
+              onClick={handleToggleAddMenu}
               disabled={isLoading}
               size="sm"
               variant="outline"
@@ -510,7 +562,9 @@ export function PhotoGallery({ date }: PhotoGalleryProps) {
             </Button>
 
             {showAddMenu && (
-              <div className="absolute right-0 top-full mt-1 z-10 w-48 bg-popover border rounded-md shadow-lg">
+              <div className={`absolute right-0 z-10 w-48 bg-popover border rounded-md shadow-lg ${
+                menuPosition === 'above' ? 'bottom-full mb-1' : 'top-full mt-1'
+              }`}>
                 <button
                   onClick={handleTakePhoto}
                   className="w-full flex items-center gap-3 px-4 py-3 text-sm hover:bg-accent transition-colors rounded-t-md border-b"
@@ -539,7 +593,8 @@ export function PhotoGallery({ date }: PhotoGalleryProps) {
           // Desktop: 3-button menu
           <div className="relative">
             <Button
-              onClick={() => setShowAddMenu(!showAddMenu)}
+              ref={addButtonRef}
+              onClick={handleToggleAddMenu}
               disabled={isLoading}
               size="sm"
               variant="outline"
@@ -550,7 +605,9 @@ export function PhotoGallery({ date }: PhotoGalleryProps) {
             </Button>
 
             {showAddMenu && (
-              <div className="absolute right-0 top-full mt-1 z-10 w-56 md:w-48 bg-popover border rounded-md shadow-lg">
+              <div className={`absolute right-0 z-10 w-56 md:w-48 bg-popover border rounded-md shadow-lg ${
+                menuPosition === 'above' ? 'bottom-full mb-1' : 'top-full mt-1'
+              }`}>
                 <button
                   onClick={handleTakePictureDesktop}
                   className="w-full flex items-center gap-3 px-4 py-3 md:py-2 text-sm md:text-sm hover:bg-accent transition-colors rounded-t-md border-b"
@@ -635,7 +692,7 @@ export function PhotoGallery({ date }: PhotoGalleryProps) {
       {selectedPhoto && createPortal(
         <div
           className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center"
-          onClick={() => setSelectedPhoto(null)}
+          onClick={closeLightbox}
           style={{
             top: 0,
             left: 0,
@@ -649,7 +706,7 @@ export function PhotoGallery({ date }: PhotoGalleryProps) {
         >
           <button
             className="absolute p-2 text-white hover:bg-white/10 rounded-full z-10"
-            onClick={() => setSelectedPhoto(null)}
+            onClick={closeLightbox}
             style={{
               top: 'calc(env(safe-area-inset-top) + 1rem)',
               right: 'calc(env(safe-area-inset-right) + 1rem)'

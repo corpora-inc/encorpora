@@ -1,6 +1,6 @@
 [package]
 name = "homeschool-offline"
-version = "0.1.3"
+version = "0.1.5"
 description = "Offline-first calendar app for homeschooling"
 authors = ["Homeschool Offline"]
 edition = "2021"

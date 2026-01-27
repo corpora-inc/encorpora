@@ -1,13 +1,14 @@
 use std::fs::{self, File};
-use std::io::{Read, Write};
+use std::io::{Cursor, Read, Write};
 use std::path::Path;
-use tauri::{AppHandle, Manager};
+use tauri::{AppHandle, Emitter, Manager, Window};
 use zip::ZipArchive;
+use std::thread;
 
 use crate::db;
 
-/// Import data from a ZIP file
-pub fn import_data(app: &AppHandle, source_path: &str) -> Result<(), String> {
+/// Import data from bytes (in-memory ZIP)
+pub fn import_data_from_bytes(app: &AppHandle, bytes: Vec<u8>) -> Result<(), String> {
     let app_data_dir = app.path()
         .app_data_dir()
         .map_err(|e| format!("Failed to get app data dir: {}", e))?;
@@ -15,11 +16,9 @@ pub fn import_data(app: &AppHandle, source_path: &str) -> Result<(), String> {
     // Create backup of current data
     backup_current_data(app)?;
 
-    // Open ZIP file
-    let file = File::open(source_path)
-        .map_err(|e| format!("Failed to open ZIP file: {}", e))?;
-
-    let mut archive = ZipArchive::new(file)
+    // Open ZIP from bytes
+    let cursor = Cursor::new(bytes);
+    let mut archive = ZipArchive::new(cursor)
         .map_err(|e| format!("Failed to read ZIP archive: {}", e))?;
 
     // Validate ZIP structure
@@ -61,8 +60,16 @@ pub fn import_data(app: &AppHandle, source_path: &str) -> Result<(), String> {
     Ok(())
 }
 
-/// Validate ZIP structure
-fn validate_zip_structure(archive: &mut ZipArchive<File>) -> Result<(), String> {
+/// Import data from a ZIP file (reads file and uses bytes import)
+pub fn import_data(app: &AppHandle, source_path: &str) -> Result<(), String> {
+    let bytes = std::fs::read(source_path)
+        .map_err(|e| format!("Failed to read backup file: {}", e))?;
+
+    import_data_from_bytes(app, bytes)
+}
+
+/// Validate ZIP structure (generic over reader type)
+fn validate_zip_structure<R: Read + std::io::Seek>(archive: &mut ZipArchive<R>) -> Result<(), String> {
     let mut has_database = false;
     let mut has_manifest = false;
 
@@ -89,7 +96,7 @@ fn validate_zip_structure(archive: &mut ZipArchive<File>) -> Result<(), String> 
 }
 
 /// Backup current data before import
-fn backup_current_data(app: &AppHandle) -> Result<(), String> {
+pub fn backup_current_data(app: &AppHandle) -> Result<(), String> {
     let app_data_dir = app.path()
         .app_data_dir()
         .map_err(|e| format!("Failed to get app data dir: {}", e))?;
@@ -137,6 +144,80 @@ fn copy_dir_all(src: &Path, dst: &Path) -> Result<(), String> {
                 .map_err(|e| format!("Failed to copy file: {}", e))?;
         }
     }
+
+    Ok(())
+}
+
+/// Progress struct for event serialization
+#[derive(Clone, serde::Serialize)]
+struct ImportProgress {
+    percent: u8,
+    status: String,
+}
+
+/// Async import with progress events (for mobile platforms)
+#[tauri::command]
+pub async fn import_data_async(
+    app: AppHandle,
+    window: Window,
+    source_path: String
+) -> Result<String, String> {
+    let app_clone = app.clone();
+    let window_clone = window.clone();
+
+    thread::spawn(move || {
+        match import_with_progress(&app_clone, &window_clone, &source_path) {
+            Ok(_) => {
+                let _ = window_clone.emit("import_complete", ());
+            }
+            Err(e) => {
+                let _ = window_clone.emit("import_error", e);
+            }
+        }
+    });
+
+    Ok("Import started".to_string())
+}
+
+/// Import with progress events
+fn import_with_progress(
+    app: &AppHandle,
+    window: &Window,
+    source_path: &str
+) -> Result<(), String> {
+    // Emit: Reading file (0%)
+    let _ = window.emit("import_progress", ImportProgress {
+        percent: 0,
+        status: "Reading backup file...".to_string()
+    });
+
+    // Read ZIP
+    let bytes = std::fs::read(source_path)
+        .map_err(|e| format!("Failed to read backup: {}", e))?;
+
+    // Emit: Validating (20%)
+    let _ = window.emit("import_progress", ImportProgress {
+        percent: 20,
+        status: "Validating backup...".to_string()
+    });
+
+    // Backup current data
+    backup_current_data(app)?;
+
+    // Emit: Extracting (40%)
+    let _ = window.emit("import_progress", ImportProgress {
+        percent: 40,
+        status: "Extracting database...".to_string()
+    });
+
+    // Import from bytes
+    import_data_from_bytes(app, bytes)?;
+
+    // Emit: Complete (100%)
+    let _ = window.emit("import_progress", ImportProgress {
+        percent: 100,
+        status: "Import complete!".to_string()
+    });
 
     Ok(())
 }

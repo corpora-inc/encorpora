@@ -133,8 +133,8 @@ export function Settings({ onClose }: SettingsProps) {
   return (
     <div className="h-full flex flex-col safe-area-container bg-background">
       {/* Header with close button */}
-      <div className="flex items-center justify-between px-3 md:px-4 py-2 md:py-3 border-b shrink-0">
-        <h1 className="text-xl md:text-2xl font-bold">Settings</h1>
+      <div className="flex items-center justify-between px-3 md:px-4 py-3 border-b shrink-0">
+        <h1 className="text-base md:text-lg font-semibold">Settings</h1>
         <Button variant="outline" size="icon" onClick={onClose}>
           <XIcon className="h-4 w-4" />
         </Button>
