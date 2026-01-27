@@ -66,7 +66,7 @@ function getFileIcon(filePath: string) {
 export function PhotoGallery({ date }: PhotoGalleryProps) {
   const { getPhotos, setPhotos, addPhoto, deletePhoto } = usePhotosStore();
   const { currentStudentId } = useSettingsStore();
-  const { isMobile } = usePlatform();
+  const { isMobile, isIOS } = usePlatform();
   const [selectedPhoto, setSelectedPhoto] = useState<Photo | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [showAddMenu, setShowAddMenu] = useState(false);
@@ -76,6 +76,7 @@ export function PhotoGallery({ date }: PhotoGalleryProps) {
   const cameraInputRef = useRef<HTMLInputElement>(null);
   const photoInputRef = useRef<HTMLInputElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const iosAllFilesInputRef = useRef<HTMLInputElement>(null);
 
   const photos = getPhotos(date);
 
@@ -128,28 +129,46 @@ export function PhotoGallery({ date }: PhotoGalleryProps) {
         if (photosOnly) {
           // For photos/videos - use different formats for mobile vs desktop
           if (isMobile) {
-            // Mobile (iOS/Android): Use MIME types
-            // Only include formats widely supported on mobile platforms
-            selected = await open({
-              multiple: true,
-              filters: [{
-                name: 'Photos & Videos',
-                extensions: [
-                  // Images - all platforms
-                  'image/jpeg',
-                  'image/png',
-                  'image/gif',
-                  'image/webp',
-                  'image/heic',
-                  'image/heif',
-                  // Videos - widely supported formats
-                  'video/mp4',
-                  'video/quicktime',
-                  'video/mpeg',
-                  'video/3gpp'
-                ]
-              }]
-            });
+            // Mobile: Use MIME types, platform-specific formats
+            if (isIOS) {
+              // iOS supports HEIC/HEIF and QuickTime
+              selected = await open({
+                multiple: true,
+                filters: [{
+                  name: 'Photos & Videos',
+                  extensions: [
+                    'image/jpeg',
+                    'image/png',
+                    'image/gif',
+                    'image/webp',
+                    'image/heic',
+                    'image/heif',
+                    'video/mp4',
+                    'video/quicktime',
+                    'video/mpeg',
+                    'video/3gpp'
+                  ]
+                }]
+              });
+            } else {
+              // Android: Standard formats only
+              selected = await open({
+                multiple: true,
+                filters: [{
+                  name: 'Photos & Videos',
+                  extensions: [
+                    'image/jpeg',
+                    'image/png',
+                    'image/gif',
+                    'image/webp',
+                    'video/mp4',
+                    'video/mpeg',
+                    'video/3gpp',
+                    'video/webm'
+                  ]
+                }]
+              });
+            }
           } else {
             // Desktop: Use file extensions (broader support)
             selected = await open({
@@ -440,6 +459,21 @@ export function PhotoGallery({ date }: PhotoGalleryProps) {
     }
   };
 
+  // iOS-specific: Handle the unified file input change (all types)
+  const handleIOSAllFilesChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files.length > 0) {
+      await processFiles(e.target.files);
+      e.target.value = '';
+    }
+  };
+
+  // iOS-specific: Trigger the native iOS action sheet
+  const handleIOSAddButton = () => {
+    if (iosAllFilesInputRef.current) {
+      iosAllFilesInputRef.current.click();
+    }
+  };
+
   const getPhotoUrl = (filePath: string) => {
     // convertFileSrc will auto-detect the right protocol
     return convertFileSrc(filePath);
@@ -449,8 +483,20 @@ export function PhotoGallery({ date }: PhotoGalleryProps) {
     <div className="space-y-3">
       <div className="flex items-center justify-between gap-2">
         <h3 className="text-sm md:text-base font-medium">Photos & Files</h3>
-        {isMobile ? (
-          // Mobile: Button with menu for camera and file picker
+        {isIOS ? (
+          // iOS: Single button that triggers native action sheet
+          <Button
+            onClick={handleIOSAddButton}
+            disabled={isLoading}
+            size="sm"
+            variant="outline"
+            className="shrink-0"
+          >
+            <Plus className="h-4 w-4 md:mr-2" />
+            <span className="hidden md:inline">Add</span>
+          </Button>
+        ) : isMobile ? (
+          // Android: Button with menu for camera and file picker
           <div className="relative">
             <Button
               onClick={() => setShowAddMenu(!showAddMenu)}
@@ -672,29 +718,45 @@ export function PhotoGallery({ date }: PhotoGalleryProps) {
       )}
 
       {/* Hidden file inputs */}
-      <input
-        ref={cameraInputRef}
-        type="file"
-        accept="image/*"
-        capture="environment"
-        onChange={handleCameraChange}
-        style={{ display: 'none' }}
-      />
-      <input
-        ref={photoInputRef}
-        type="file"
-        accept="image/*,video/*"
-        multiple
-        onChange={handlePhotoChange}
-        style={{ display: 'none' }}
-      />
-      <input
-        ref={fileInputRef}
-        type="file"
-        multiple
-        onChange={handleFileChange}
-        style={{ display: 'none' }}
-      />
+      {isIOS ? (
+        // iOS: Single file input that triggers native action sheet with all options
+        // NO capture attribute - that would skip the action sheet and go straight to camera
+        <input
+          ref={iosAllFilesInputRef}
+          type="file"
+          accept="*/*"
+          multiple
+          onChange={handleIOSAllFilesChange}
+          style={{ display: 'none' }}
+        />
+      ) : (
+        // Android/Desktop: Separate inputs for different scenarios
+        <>
+          <input
+            ref={cameraInputRef}
+            type="file"
+            accept="image/*"
+            capture="environment"
+            onChange={handleCameraChange}
+            style={{ display: 'none' }}
+          />
+          <input
+            ref={photoInputRef}
+            type="file"
+            accept="image/*,video/*"
+            multiple
+            onChange={handlePhotoChange}
+            style={{ display: 'none' }}
+          />
+          <input
+            ref={fileInputRef}
+            type="file"
+            multiple
+            onChange={handleFileChange}
+            style={{ display: 'none' }}
+          />
+        </>
+      )}
     </div>
   );
 }
