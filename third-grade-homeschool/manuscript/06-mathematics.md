@@ -19,11 +19,11 @@ Third-grade math is when a child’s sense of **“I can do math”** often beco
 
 A few quick translations help:
 
-> **Number sense**: understanding what numbers mean, not just following routines. Kids can estimate, compare, and notice patterns.
-
-> **Regrouping** (also called carrying or borrowing): trading across place values, like swapping 10 ones for 1 ten.
-
-> **Algorithm**: a standard step-by-step method, like the classic “stacked” way of adding or subtracting.
+> **A few math terms we will use**
+>
+> - **Number sense**: understanding what numbers mean, not just following routines. Kids can estimate, compare, and notice patterns.
+> - **Regrouping** (also called carrying or borrowing): trading across place values, like swapping 10 ones for 1 ten.
+> - **Algorithm**: a standard step-by-step method, like the classic “stacked” way of adding or subtracting.
 
 Below are the core third-grade goals, with practical, bite-size teaching ideas (usually **5 to 20 minutes**).
 

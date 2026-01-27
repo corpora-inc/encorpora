@@ -26,41 +26,41 @@ If you remember nothing else, remember this: **small, consistent, high-ROI work 
 
 We use the word **compound** in two related ways. Keep both in mind.
 
-> **Compound returns**: progress that builds on itself over time, like interest.  
-
-> **Compound lifts**: a single activity that works many “muscles” at once (reading, writing, math, history, science, thinking).
+> **Compound (two useful meanings)**
+>
+> - **Compound returns**: progress that builds on itself over time, like interest.
+> - **Compound lifts**: a single activity that works many “muscles” at once (reading, writing, math, history, science, thinking).
 
 ### Agile / Bonsai: small systems that work
 
 These ideas came out of manufacturing (especially the Toyota Production System) and spread into software because they make complex systems efficient. We borrow them because homeschool is a small, real system that has to work every day.
 
-> **Bonsai**: prune what is extra, shape what matters, and keep the system small enough to run.
-
-> **Kaizen**: continuous improvement through small, regular tweaks.
-
-> **Just-in-time (JIT)**: teach or plan when it is needed or wanted, not months early.
-
-> **Overproduction**: planning or assigning more than you can actually execute.
+> **Bonsai / agile terms we will use**
+>
+> - **Bonsai**: prune what is extra, shape what matters, and keep the system small enough to run.
+> - **Kaizen**: continuous improvement through small, regular tweaks.
+> - **Just-in-time (JIT)**: teach or plan when it is needed or wanted, not months early.
+> - **Overproduction**: planning or assigning more than you can actually execute.
 
 ### Economics: choices under scarcity
 
 Thomas Sowell’s *Basic Economics* explains a simple truth: time, attention, and money are scarce, and every choice has a cost.
 
-> **Scarcity**: you never have enough time or energy for everything.
-
-> **Trade-off**: every yes creates a no.
-
-> **Opportunity cost**: the best alternative you did not choose.
+> **Economics terms that keep you honest**
+>
+> - **Scarcity**: you never have enough time or energy for everything.
+> - **Trade-off**: every yes creates a no.
+> - **Opportunity cost**: the best alternative you did not choose.
 
 ### Powerlifting: strength without burnout
 
 Powerlifting rewards **technique, consistency, and sub-maximal effort**. Pavel Tsatsouline popularized this approach: crisp form, frequent practice, never to failure.
 
-> **Sets and reps**: repeatable learning blocks (5 minutes, 5 problems, 3 sentences).
-
-> **Submaximal**: stop before exhaustion so tomorrow stays strong.
-
-> **Compound lifts**: one move that trains many muscles at once.
+> **Powerlifting terms that map well to learning**
+>
+> - **Sets and reps**: repeatable learning blocks (5 minutes, 5 problems, 3 sentences).
+> - **Submaximal**: stop before exhaustion so tomorrow stays strong.
+> - **Compound lifts**: one move that trains many muscles at once.
 
 We will define more terms in context as they show up. You do not have to memorize a glossary; the ideas will become familiar through use.
 

@@ -46,9 +46,10 @@ If you choose the four-day option, many families “make up” the total days by
 
 ### Plan in short cycles (agile, not frantic)
 
-> **Just-in-time planning:** sketch the next small chunk right before you use it.
-
-> **Opportunity cost:** every extra plan crowds out something else.
+> **Two planning anchors**
+>
+> - **Just-in-time planning:** sketch the next small chunk right before you use it.
+> - **Opportunity cost:** every extra plan crowds out something else.
 
 Instead of plotting the whole year in detail, sketch a four-week chunk with a few key goals. Run the routine. Then take fifteen minutes to review:
 
@@ -175,7 +176,6 @@ Pick one method that fits your life. You can always change it midyear.
 - **Weekly safety valve:** Keep one day each week flexible. It can be a project day, field trip day, or make-up day.
 - **Banked days:** Reserve about 20 days up front as a “day bank.” When life happens, you draw from the bank. Unused days become spring breathing room.
 
-![Planned slack for a real year](images/A_simple_year_calendar_showing_four_terms_each_capped_with_a_light_buffer_week_plus_labeled_travel_and_sick_days_as_planned_slack..png)
 
 ### Define your minimum viable school day
 

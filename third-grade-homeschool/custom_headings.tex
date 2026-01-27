@@ -1,4 +1,15 @@
-\usepackage[
+% Pandoc's template may load geometry before this header file. Use
+% \geometry{...} to override the existing settings instead of trying to
+% reload the package with options.
+\usepackage{geometry}
+\usepackage{etoolbox}
+
+% Memoir defaults to letter stock. Force both stock and trim to 6x9 so the
+% PDF page size is actually 6x9 instead of a trimmed 6x9 on letter stock.
+\setstocksize{9in}{6in}
+\settrimmedsize{9in}{6in}{*}
+\settrims{0pt}{0pt}
+\geometry{
   paperwidth=6in,
   paperheight=9in,
   left=0.6in,
@@ -6,7 +17,14 @@
   top=0.5in,
   bottom=0.85in,
   heightrounded
-]{geometry}
+}
+
+% Belt and suspenders: explicitly set the PDF page size for XeTeX.
+\AtBeginDocument{%
+  \special{papersize=6in,9in}%
+  \setlength{\pdfpagewidth}{6in}%
+  \setlength{\pdfpageheight}{9in}%
+}
 
 \raggedbottom
 

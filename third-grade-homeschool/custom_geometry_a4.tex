@@ -1,4 +1,7 @@
 % Override geometry after custom_headings.tex for full-page A4 output.
+\setstocksize{297mm}{210mm}
+\settrimmedsize{297mm}{210mm}{*}
+\settrims{0pt}{0pt}
 \geometry{
   paperwidth=210mm,
   paperheight=297mm,
@@ -7,4 +10,9 @@
   top=25mm,
   bottom=25mm,
   heightrounded
+}
+\AtBeginDocument{%
+  \special{papersize=210mm,297mm}%
+  \setlength{\pdfpagewidth}{210mm}%
+  \setlength{\pdfpageheight}{297mm}%
 }

@@ -168,9 +168,10 @@ Keep “Today” to just a few cards. Let your child move a task from left to ri
 
 ### Spend where learning compounds
 
-> **Constraints:** the limits that force choices (sleep, attention span, parent bandwidth).
-
-> **Transaction costs:** the friction of switching, setting up, and coordinating.
+> **Two economics ideas that improve a school day**
+>
+> - **Constraints:** the limits that force choices (sleep, attention span, parent bandwidth).
+> - **Transaction costs:** the friction of switching, setting up, and coordinating.
 
 One of the best “economical homeschooling” moves is to connect subjects so one good question pays for multiple skills. If your child gets curious about volcanoes, you can:
 

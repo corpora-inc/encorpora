@@ -81,9 +81,10 @@ A home is more like a workshop than a delicate machine: routine where it helps, 
 
 Rather than mapping out a master blueprint for the entire year, you need a loop you can reuse and refine. If you like agile or lean language, this is your family-sized “sprint and review.” If you don’t, skip the labels and keep the habit.
 
-> **Retro:** a short review of what worked, what dragged, and what to try next.
-
-> **WIP limit:** keep “Doing” small so work actually finishes.
+> **Two agile habits that keep things light**
+>
+> - **Retro:** a short review of what worked, what dragged, and what to try next.
+> - **WIP limit:** keep “Doing” small so work actually finishes.
 
 - **Choose** a handful of essentials (reading, writing, math, plus one “together” topic).
 - **Commit** to small blocks you can actually protect.

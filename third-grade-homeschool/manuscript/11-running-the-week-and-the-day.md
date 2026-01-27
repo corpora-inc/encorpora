@@ -107,9 +107,10 @@ Not every child, especially at this age, is built for long stretches of focused 
 
 A short-block schedule can change the tone of your homeschool mornings. Instead of bracing for a battle, you build a groove: small wins, steady progress, lots of variety. Think of it like interval training. You alternate focused effort with recovery, and the overall system gets stronger.
 
-> A short-block schedule is learning in focused intervals (often 10 to 20 minutes) with planned resets between blocks.
-
-> **High frequency / low volume:** touch core skills often in small doses instead of rare marathons.
+> **Short blocks, done well**
+>
+> - A short-block schedule is learning in focused intervals (often 10 to 20 minutes) with planned resets between blocks.
+> - **High frequency / low volume:** touch core skills often in small doses instead of rare marathons.
 
 This pattern isn’t about squeezing harder. It’s about practicing the habit of showing up, finishing a small task, and then recovering. Over time you’ll often see stamina and self-control grow, not through marathons, but through regular, attainable reps.
 

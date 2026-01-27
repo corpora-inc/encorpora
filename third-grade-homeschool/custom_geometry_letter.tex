@@ -1,4 +1,7 @@
 % Override geometry after custom_headings.tex for full-page letter output.
+\setstocksize{11in}{8.5in}
+\settrimmedsize{11in}{8.5in}{*}
+\settrims{0pt}{0pt}
 \geometry{
   paperwidth=8.5in,
   paperheight=11in,
@@ -7,4 +10,9 @@
   top=1in,
   bottom=1in,
   heightrounded
+}
+\AtBeginDocument{%
+  \special{papersize=8.5in,11in}%
+  \setlength{\pdfpagewidth}{8.5in}%
+  \setlength{\pdfpageheight}{11in}%
 }
