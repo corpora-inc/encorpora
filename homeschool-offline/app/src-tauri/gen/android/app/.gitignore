@@ -1,4 +1,4 @@
-/src/main/java/com/homeschool/offline/generated
+/src/main/java/com/corpora/homeschool/generated
 /src/main/jniLibs/**/*.so
 /src/main/assets/tauri.conf.json
 /tauri.build.gradle.kts

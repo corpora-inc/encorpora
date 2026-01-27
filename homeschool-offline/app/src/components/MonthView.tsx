@@ -18,7 +18,11 @@ const MONTH_NAMES = [
   'July', 'August', 'September', 'October', 'November', 'December'
 ];
 
-export function MonthView() {
+interface MonthViewProps {
+  compact?: boolean;
+}
+
+export function MonthView({ compact = false }: MonthViewProps) {
   const { currentMonth, selectedDate, setSelectedDate, setCurrentMonth, getDay } = useCalendarStore();
   const { getPhotoCount } = usePhotosStore();
 
@@ -52,7 +56,7 @@ export function MonthView() {
   };
 
   return (
-    <div className="flex flex-col h-full">
+    <div className={compact ? "flex flex-col" : "flex flex-col h-full"}>
       {/* Header */}
       <div className="flex items-center justify-between p-2 md:p-4 border-b shrink-0">
         <h2 className="text-base md:text-2xl font-semibold truncate mr-2">
@@ -72,7 +76,7 @@ export function MonthView() {
       </div>
 
       {/* Calendar Grid */}
-      <div className="flex-1 p-1.5 md:p-4 overflow-auto">
+      <div className={compact ? "p-1.5 md:p-4" : "flex-1 p-1.5 md:p-4 overflow-auto"}>
         {/* Days of week header */}
         <div className="grid grid-cols-7 gap-0.5 md:gap-2 mb-1 md:mb-2">
           {DAYS_OF_WEEK.map((day) => (

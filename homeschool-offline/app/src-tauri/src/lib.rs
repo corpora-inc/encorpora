@@ -4,6 +4,7 @@ mod db;
 mod photos;
 mod export;
 mod import;
+mod filetype;
 
 // Database commands
 #[tauri::command]
@@ -38,9 +39,43 @@ fn update_day(app: AppHandle, student_id: i64, date: String, updates: db::DayUpd
 
 // Photo commands
 #[tauri::command]
-fn add_photo_command(app: AppHandle, student_id: i64, date: String, source_path: String) -> Result<db::Photo, String> {
+fn add_photo_command(app: AppHandle, student_id: i64, date: String, source_path: String, original_filename: Option<String>) -> Result<db::Photo, String> {
     let file_path = photos::add_photo_file(&app, &date, &source_path)?;
-    db::add_photo(&app, student_id, &date, &file_path)
+    db::add_photo(&app, student_id, &date, &file_path, original_filename)
+}
+
+#[tauri::command]
+fn add_photo_from_bytes_command(
+    app: AppHandle,
+    student_id: i64,
+    date: String,
+    bytes: Vec<u8>,
+    extension: String,
+    original_filename: Option<String>,
+) -> Result<db::Photo, String> {
+    eprintln!("add_photo_from_bytes_command: {} bytes, claimed extension: {}", bytes.len(), extension);
+
+    // Auto-detect extension from magic bytes if the provided extension is unreliable
+    let final_extension = if extension == "bin" || extension.is_empty() {
+        eprintln!("Extension is unreliable ({}), detecting from magic bytes...", extension);
+        match filetype::detect_extension_from_bytes(&bytes) {
+            Some(detected) => {
+                eprintln!("Detected extension from magic bytes: {}", detected);
+                detected.to_string()
+            }
+            None => {
+                eprintln!("Could not detect extension from magic bytes, using provided: {}", extension);
+                extension
+            }
+        }
+    } else {
+        eprintln!("Using provided extension: {}", extension);
+        extension
+    };
+
+    eprintln!("Final extension: {}", final_extension);
+    let file_path = photos::add_photo_from_bytes(&app, &date, bytes, &final_extension)?;
+    db::add_photo(&app, student_id, &date, &file_path, original_filename)
 }
 
 #[tauri::command]
@@ -130,6 +165,7 @@ pub fn run() {
         .plugin(tauri_plugin_opener::init())
         .plugin(tauri_plugin_dialog::init())
         .plugin(tauri_plugin_fs::init())
+        .plugin(tauri_plugin_os::init())
         .invoke_handler(tauri::generate_handler![
             init_db_command,
             get_settings_command,
@@ -138,6 +174,7 @@ pub fn run() {
             get_days_in_month_command,
             update_day,
             add_photo_command,
+            add_photo_from_bytes_command,
             delete_photo_command,
             get_photos_for_date,
             get_photo_counts_for_month_command,

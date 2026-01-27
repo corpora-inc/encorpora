@@ -1,4 +1,4 @@
-package com.homeschool.offline
+package com.corpora.homeschool
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge

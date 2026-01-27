@@ -1,11 +1,15 @@
 import { useState, useEffect, useRef } from 'react';
-import { Plus, Trash2, X, File, FileText, FileImage, FileVideo, FileAudio, Paperclip, Image as ImageIcon } from 'lucide-react';
+import { createPortal } from 'react-dom';
+import { Plus, Trash2, X, File, FileText, FileImage, FileVideo, FileAudio, Paperclip, Image as ImageIcon, Camera } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { usePhotosStore } from '@/store/photos';
 import { useSettingsStore } from '@/store/settings';
 import { invoke } from '@tauri-apps/api/core';
 import { convertFileSrc } from '@tauri-apps/api/core';
 import type { Photo } from '@/types/database';
+import { usePlatform } from '@/hooks/usePlatform';
+import { WebcamCapture } from '@/components/WebcamCapture';
+import { logger } from '@/utils/logger';
 
 interface PhotoGalleryProps {
   date: string;
@@ -30,6 +34,18 @@ function getFileType(filePath: string): 'image' | 'video' | 'audio' | 'document'
   return 'other';
 }
 
+// Simple extension hint from URI - backend will do real detection from bytes
+function getExtensionHintFromUri(uri: string): string {
+  // Try to extract extension from URI
+  const match = uri.toLowerCase().match(/\.([a-z0-9]+)(?:\?|#|$)/);
+  if (match?.[1]) {
+    return match[1];
+  }
+
+  // If no extension in URI, return 'bin' - backend will detect from magic bytes
+  return 'bin';
+}
+
 // Helper to get icon for file type
 function getFileIcon(filePath: string) {
   const type = getFileType(filePath);
@@ -50,10 +66,11 @@ function getFileIcon(filePath: string) {
 export function PhotoGallery({ date }: PhotoGalleryProps) {
   const { getPhotos, setPhotos, addPhoto, deletePhoto } = usePhotosStore();
   const { currentStudentId } = useSettingsStore();
+  const { isMobile } = usePlatform();
   const [selectedPhoto, setSelectedPhoto] = useState<Photo | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [showAddMenu, setShowAddMenu] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
+  const [showWebcam, setShowWebcam] = useState(false);
 
   // Refs for hidden file inputs
   const cameraInputRef = useRef<HTMLInputElement>(null);
@@ -61,35 +78,6 @@ export function PhotoGallery({ date }: PhotoGalleryProps) {
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const photos = getPhotos(date);
-
-  // Detect if we're on mobile/tablet
-  useEffect(() => {
-    const checkMobile = () => {
-      const userAgent = navigator.userAgent.toLowerCase();
-      console.log('Full User Agent:', navigator.userAgent);
-      console.log('Platform:', navigator.platform);
-      console.log('Max Touch Points:', navigator.maxTouchPoints);
-
-      // Modern iPads might report as Mac, so check for touch support
-      const hasTouchScreen = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-      const userAgentMobile = /iphone|ipad|ipod|android/i.test(userAgent);
-
-      // Consider it mobile if either:
-      // 1. User agent indicates mobile device, OR
-      // 2. Has touch screen AND not explicitly a desktop (maxTouchPoints > 1 filters out desktop touch screens)
-      const mobile = userAgentMobile || (hasTouchScreen && navigator.maxTouchPoints > 1);
-
-      console.log('Detection results:', {
-        userAgentMobile,
-        hasTouchScreen,
-        maxTouchPoints: navigator.maxTouchPoints,
-        finalDecision: mobile ? 'MOBILE' : 'DESKTOP'
-      });
-
-      setIsMobile(mobile);
-    };
-    checkMobile();
-  }, []);
 
   // Load photos when date changes
   const loadPhotosForDate = async () => {
@@ -100,10 +88,10 @@ export function PhotoGallery({ date }: PhotoGalleryProps) {
         studentId: currentStudentId,
         date,
       });
-      console.log('Loaded photos from backend:', backendPhotos);
+      logger.debug('Loaded photos from backend:', backendPhotos);
       setPhotos(date, backendPhotos);
     } catch (error) {
-      console.error('Failed to load photos:', error);
+      logger.error('Failed to load photos:', error);
     }
   };
 
@@ -111,22 +99,194 @@ export function PhotoGallery({ date }: PhotoGalleryProps) {
     loadPhotosForDate();
   }, [date, currentStudentId]);
 
-  // Helper to process files from file input
-  const processFiles = async (files: FileList) => {
-    console.log('processFiles called with', files.length, 'files');
-    console.log('currentStudentId:', currentStudentId);
+  // Helper to process files using Tauri dialog
+  const processFilesFromDialog = async (photosOnly: boolean = false) => {
+    logger.debug('processFilesFromDialog called, photosOnly:', photosOnly);
 
     if (!currentStudentId) {
-      console.error('No currentStudentId - cannot process files');
+      logger.error('No currentStudentId - cannot process files');
+      return;
+    }
+
+    // FAIL-SAFE: Track if cleanup already executed
+    let cleanupExecuted = false;
+
+    const performCleanup = () => {
+      if (!cleanupExecuted) {
+        setIsLoading(false);
+        setShowAddMenu(false);
+        cleanupExecuted = true;
+      }
+    };
+
+    try {
+      setIsLoading(true);
+      const { open } = await import('@tauri-apps/plugin-dialog');
+
+      let selected;
+      try {
+        if (photosOnly) {
+          // For photos/videos - use different formats for mobile vs desktop
+          if (isMobile) {
+            // Mobile (iOS/Android): Use MIME types
+            // Only include formats widely supported on mobile platforms
+            selected = await open({
+              multiple: true,
+              filters: [{
+                name: 'Photos & Videos',
+                extensions: [
+                  // Images - all platforms
+                  'image/jpeg',
+                  'image/png',
+                  'image/gif',
+                  'image/webp',
+                  'image/heic',
+                  'image/heif',
+                  // Videos - widely supported formats
+                  'video/mp4',
+                  'video/quicktime',
+                  'video/mpeg',
+                  'video/3gpp'
+                ]
+              }]
+            });
+          } else {
+            // Desktop: Use file extensions (broader support)
+            selected = await open({
+              multiple: true,
+              filters: [{
+                name: 'Photos & Videos',
+                extensions: ['jpg', 'jpeg', 'png', 'gif', 'webp', 'heic', 'heif', 'bmp', 'svg', 'mp4', 'mov', 'avi', 'webm', 'mkv', 'wmv', 'flv', 'm4v', 'mpeg', '3gp']
+              }]
+            });
+          }
+        } else {
+          // For files, no filter = all file types
+          selected = await open({
+            multiple: true,
+          });
+        }
+      } catch (dialogError) {
+        logger.error('Dialog open failed:', dialogError);
+        performCleanup(); // Early cleanup on dialog error
+        return;
+      }
+
+      logger.debug('Dialog returned:', selected);
+
+      if (!selected) {
+        logger.debug('No files selected');
+        performCleanup(); // Early cleanup on cancellation
+        return;
+      }
+
+      if (Array.isArray(selected) && selected.length === 0) {
+        logger.debug('No files selected (empty array)');
+        performCleanup(); // Early cleanup on cancellation
+        return;
+      }
+
+      const paths = Array.isArray(selected) ? selected : [selected];
+      logger.debug('Processing paths:', paths);
+
+      let successCount = 0;
+      let failCount = 0;
+
+      for (const filePath of paths) {
+        try {
+          logger.debug('Processing file path:', filePath);
+
+          // Check if it's an Android content URI
+          if (filePath.startsWith('content://')) {
+            try {
+              // Use Tauri's readFile which supports content URIs on Android
+              const { readFile } = await import('@tauri-apps/plugin-fs');
+
+              const bytes = await readFile(filePath);
+              logger.debug(`Read ${bytes.length} bytes from content URI`);
+
+              // Get extension hint from URI (backend will detect from magic bytes)
+              const extensionHint = getExtensionHintFromUri(filePath);
+
+              // Try to extract filename from URI
+              let originalFilename: string | undefined = undefined;
+              const uriParts = filePath.split('/');
+              const lastPart = decodeURIComponent(uriParts[uriParts.length - 1] || '');
+              if (lastPart && !lastPart.includes(':') && lastPart.length < 100) {
+                originalFilename = lastPart;
+              }
+
+              // Send bytes to Rust - backend will detect real file type from magic bytes
+              const photo = await invoke<Photo>('add_photo_from_bytes_command', {
+                studentId: currentStudentId,
+                date,
+                bytes: Array.from(bytes),
+                extension: extensionHint,
+                originalFilename,
+              });
+              logger.debug('Photo added successfully from bytes:', photo);
+              addPhoto(photo);
+              successCount++;
+            } catch (readError) {
+              logger.error('Failed to read content URI:', readError);
+              failCount++;
+            }
+          } else {
+            // Regular file path - try to extract filename
+            let originalFilename: string | undefined = undefined;
+            const pathParts = filePath.split('/');
+            const filename = pathParts[pathParts.length - 1];
+            if (filename && filename.length < 255) {
+              originalFilename = filename;
+            }
+
+            const photo = await invoke<Photo>('add_photo_command', {
+              studentId: currentStudentId,
+              date,
+              sourcePath: filePath,
+              originalFilename,
+            });
+            logger.debug('Photo added successfully:', photo);
+            addPhoto(photo);
+            successCount++;
+          }
+        } catch (error) {
+          logger.error('Failed to add photo:', filePath, error);
+          failCount++;
+        }
+      }
+
+      logger.debug(`Finished processing. Success: ${successCount}, Failed: ${failCount}`);
+
+      if (successCount > 0) {
+        await loadPhotosForDate();
+      }
+
+      if (failCount > 0) {
+        alert(`Added ${successCount} file(s). ${failCount} failed.`);
+      }
+    } catch (error) {
+      logger.error('Failed to open file dialog or process files:', error);
+      alert(`Failed to select files: ${error instanceof Error ? error.message : String(error)}`);
+    } finally {
+      performCleanup(); // Final cleanup - always runs
+    }
+  };
+
+  // Helper to process files from HTML file input (desktop fallback)
+  const processFiles = async (files: FileList) => {
+    logger.debug('processFiles called with', files.length, 'files');
+
+    if (!currentStudentId) {
+      logger.error('No currentStudentId - cannot process files');
       return;
     }
 
     if (files.length === 0) {
-      console.log('No files to process');
+      logger.debug('No files to process');
       return;
     }
 
-    console.log('Starting file processing...');
     setIsLoading(true);
     let successCount = 0;
     let failCount = 0;
@@ -134,103 +294,92 @@ export function PhotoGallery({ date }: PhotoGalleryProps) {
     try {
       for (let i = 0; i < files.length; i++) {
         const file = files[i];
-        console.log(`Processing file ${i + 1}/${files.length}:`, file.name, file.type, file.size);
+        logger.debug(`Processing file ${i + 1}/${files.length}:`, file.name);
         try {
-
           // Save file to cache directory first using Tauri's writeFile
-          console.log('Importing Tauri file system APIs...');
           const { writeFile, exists, mkdir } = await import('@tauri-apps/plugin-fs');
           const { join, appCacheDir } = await import('@tauri-apps/api/path');
-          console.log('APIs imported successfully');
 
           // Read file as ArrayBuffer
-          console.log('Reading file as ArrayBuffer...');
           const arrayBuffer = await file.arrayBuffer();
           const uint8Array = new Uint8Array(arrayBuffer);
-          console.log(`ArrayBuffer read: ${uint8Array.length} bytes`);
 
           // Get cache directory path and ensure it exists
           const cacheDir = await appCacheDir();
-          console.log('Cache directory:', cacheDir);
 
           const cacheDirExists = await exists(cacheDir);
-          console.log('Cache directory exists:', cacheDirExists);
 
           if (!cacheDirExists) {
-            console.log('Creating cache directory...');
             await mkdir(cacheDir, { recursive: true });
-            console.log('Cache directory created');
           }
 
           // Generate temp filename
           const timestamp = Date.now();
           const sanitizedName = file.name.replace(/[^a-zA-Z0-9.-]/g, '_');
           const tempFileName = `${timestamp}_${sanitizedName}`;
-          console.log('Temp filename:', tempFileName);
 
           // Get full path for the file
           const fullPath = await join(cacheDir, tempFileName);
-          console.log('Full path for write:', fullPath);
 
           // Write file to cache directory
-          console.log('Writing file to cache directory...');
           await writeFile(fullPath, uint8Array);
-          console.log('File written to cache:', fullPath);
 
           // Add photo to database
-          console.log('Calling add_photo_command with studentId:', currentStudentId, 'date:', date);
           const photo = await invoke<Photo>('add_photo_command', {
             studentId: currentStudentId,
             date,
             sourcePath: fullPath,
+            originalFilename: file.name,
           });
-          console.log('Photo added successfully:', photo);
+          logger.debug('Photo added successfully:', photo);
           addPhoto(photo);
           successCount++;
-          console.log('Success count:', successCount);
         } catch (error) {
-          console.error('Failed to process file:', file.name, error);
-          console.error('Error details:', error);
+          logger.error('Failed to process file:', file.name, error);
           failCount++;
         }
       }
 
-      console.log(`Finished processing. Success: ${successCount}, Failed: ${failCount}`);
+      logger.debug(`Finished processing. Success: ${successCount}, Failed: ${failCount}`);
 
-      // Reload photos from backend
-      console.log('Reloading photos from backend...');
-      await loadPhotosForDate();
-      console.log('Photos reloaded');
+      // Reload photos from backend if any succeeded
+      if (successCount > 0) {
+        await loadPhotosForDate();
+      }
 
       if (failCount > 0) {
         alert(`Added ${successCount} file(s). ${failCount} failed.`);
       }
     } catch (error) {
-      console.error('Failed to process files (outer catch):', error);
-      console.error('Error details:', error);
+      logger.error('Failed to process files:', error);
       alert(`Failed to process files: ${error}`);
     } finally {
-      console.log('processFiles complete, setting isLoading to false');
       setIsLoading(false);
+      setShowAddMenu(false);
+    }
+  };
+
+  // Handle taking a photo (camera)
+  const handleTakePhoto = async () => {
+    setShowAddMenu(false);
+
+    // Use HTML input with capture attribute to trigger camera on all platforms
+    if (cameraInputRef.current) {
+      cameraInputRef.current.click();
     }
   };
 
   // Handle choosing photos from library
-  const handleChoosePhoto = () => {
-    console.log('handleChoosePhoto called');
+  const handleChoosePhoto = async () => {
     setShowAddMenu(false);
-    if (photoInputRef.current) {
-      console.log('Clicking photoInputRef');
-      photoInputRef.current.click();
-    } else {
-      console.log('photoInputRef.current is null');
-    }
+    // Use Tauri dialog with strict photo/video filter on ALL platforms
+    await processFilesFromDialog(true);
   };
 
 
   const handleCameraChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log('handleCameraChange triggered', e.target.files?.length);
     if (e.target.files && e.target.files.length > 0) {
+      // Now works on mobile too since we can handle content URIs
       await processFiles(e.target.files);
       // Reset input so same file can be selected again
       e.target.value = '';
@@ -238,7 +387,6 @@ export function PhotoGallery({ date }: PhotoGalleryProps) {
   };
 
   const handlePhotoChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log('handlePhotoChange triggered', e.target.files?.length);
     if (e.target.files && e.target.files.length > 0) {
       await processFiles(e.target.files);
       e.target.value = '';
@@ -246,23 +394,41 @@ export function PhotoGallery({ date }: PhotoGalleryProps) {
   };
 
   // Handle adding any file type
-  const handleAddFile = () => {
-    console.log('handleAddFile called');
+  const handleAddFile = async () => {
     setShowAddMenu(false);
-    if (fileInputRef.current) {
-      console.log('Clicking fileInputRef');
-      fileInputRef.current.click();
+
+    if (isMobile) {
+      // On mobile, use Tauri dialog (no filter = all files)
+      await processFilesFromDialog(false);
     } else {
-      console.log('fileInputRef.current is null');
+      // On desktop, use file input
+      if (fileInputRef.current) {
+        fileInputRef.current.click();
+      }
     }
   };
 
   const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log('handleFileChange triggered', e.target.files?.length);
     if (e.target.files && e.target.files.length > 0) {
       await processFiles(e.target.files);
       e.target.value = '';
     }
+  };
+
+  // Handle desktop camera capture
+  const handleTakePictureDesktop = () => {
+    setShowAddMenu(false);
+    setShowWebcam(true);
+  };
+
+  const handleWebcamCapture = async (file: File) => {
+    logger.debug('handleWebcamCapture called with file:', file.name);
+    setShowWebcam(false);
+
+    // Convert File to FileList using DataTransfer API
+    const dt = new DataTransfer();
+    dt.items.add(file);
+    await processFiles(dt.files);
   };
 
   const handleDeletePhoto = async (photoId: number) => {
@@ -270,46 +436,64 @@ export function PhotoGallery({ date }: PhotoGalleryProps) {
       await invoke('delete_photo_command', { id: photoId });
       deletePhoto(date, photoId);
     } catch (error) {
-      console.error('Failed to delete photo:', error);
+      logger.error('Failed to delete photo:', error);
     }
   };
 
   const getPhotoUrl = (filePath: string) => {
     // convertFileSrc will auto-detect the right protocol
-    const url = convertFileSrc(filePath);
-    console.log('Converting file path to URL:', filePath, '->', url);
-    return url;
+    return convertFileSrc(filePath);
   };
-
-  console.log('PhotoGallery render - isMobile:', isMobile);
 
   return (
     <div className="space-y-3">
       <div className="flex items-center justify-between gap-2">
         <h3 className="text-sm md:text-base font-medium">Photos & Files</h3>
         {isMobile ? (
-          // Mobile: Single button that uses native picker (shows 3 options automatically on iOS)
-          <Button
-            onClick={() => {
-              console.log('Mobile add button clicked, triggering photoInputRef');
-              photoInputRef.current?.click();
-            }}
-            disabled={isLoading}
-            size="sm"
-            variant="outline"
-            className="shrink-0"
-          >
-            <Plus className="h-4 w-4 md:mr-2" />
-            <span className="hidden md:inline">Add</span>
-          </Button>
+          // Mobile: Button with menu for camera and file picker
+          <div className="relative">
+            <Button
+              onClick={() => setShowAddMenu(!showAddMenu)}
+              disabled={isLoading}
+              size="sm"
+              variant="outline"
+              className="shrink-0"
+            >
+              <Plus className="h-4 w-4 md:mr-2" />
+              <span className="hidden md:inline">Add</span>
+            </Button>
+
+            {showAddMenu && (
+              <div className="absolute right-0 top-full mt-1 z-10 w-48 bg-popover border rounded-md shadow-lg">
+                <button
+                  onClick={handleTakePhoto}
+                  className="w-full flex items-center gap-3 px-4 py-3 text-sm hover:bg-accent transition-colors rounded-t-md border-b"
+                >
+                  <ImageIcon className="h-5 w-5 shrink-0" />
+                  <span className="font-medium">Take Photo</span>
+                </button>
+                <button
+                  onClick={handleChoosePhoto}
+                  className="w-full flex items-center gap-3 px-4 py-3 text-sm hover:bg-accent transition-colors border-b"
+                >
+                  <ImageIcon className="h-5 w-5 shrink-0" />
+                  <span className="font-medium">Choose Photos</span>
+                </button>
+                <button
+                  onClick={handleAddFile}
+                  className="w-full flex items-center gap-3 px-4 py-3 text-sm hover:bg-accent transition-colors rounded-b-md"
+                >
+                  <Paperclip className="h-5 w-5 shrink-0" />
+                  <span className="font-medium">Add Files</span>
+                </button>
+              </div>
+            )}
+          </div>
         ) : (
           // Desktop: 3-button menu
           <div className="relative">
             <Button
-              onClick={() => {
-                console.log('Desktop add button clicked, toggling menu');
-                setShowAddMenu(!showAddMenu);
-              }}
+              onClick={() => setShowAddMenu(!showAddMenu)}
               disabled={isLoading}
               size="sm"
               variant="outline"
@@ -322,8 +506,15 @@ export function PhotoGallery({ date }: PhotoGalleryProps) {
             {showAddMenu && (
               <div className="absolute right-0 top-full mt-1 z-10 w-56 md:w-48 bg-popover border rounded-md shadow-lg">
                 <button
-                  onClick={handleChoosePhoto}
+                  onClick={handleTakePictureDesktop}
                   className="w-full flex items-center gap-3 px-4 py-3 md:py-2 text-sm md:text-sm hover:bg-accent transition-colors rounded-t-md border-b"
+                >
+                  <Camera className="h-5 w-5 md:h-4 md:w-4 shrink-0" />
+                  <span className="font-medium">Take Picture</span>
+                </button>
+                <button
+                  onClick={handleChoosePhoto}
+                  className="w-full flex items-center gap-3 px-4 py-3 md:py-2 text-sm md:text-sm hover:bg-accent transition-colors border-b"
                 >
                   <ImageIcon className="h-5 w-5 md:h-4 md:w-4 shrink-0" />
                   <span className="font-medium">Choose Photos</span>
@@ -364,12 +555,15 @@ export function PhotoGallery({ date }: PhotoGalleryProps) {
                   />
                 ) : (
                   <div
-                    className="w-full h-full flex flex-col items-center justify-center bg-muted rounded-lg cursor-pointer hover:bg-muted/80 transition-colors p-2"
-                    onClick={() => setSelectedPhoto(photo)}
+                    className={`w-full h-full flex flex-col items-center justify-center bg-muted rounded-lg p-2 ${
+                      fileType === 'video' ? 'cursor-pointer hover:bg-muted/80 transition-colors' : ''
+                    }`}
+                    onClick={fileType === 'video' ? () => setSelectedPhoto(photo) : undefined}
                   >
                     {getFileIcon(photo.file_path)}
                     <p className="text-xs text-center mt-2 line-clamp-2 text-muted-foreground">
-                      {photo.file_path.split('/').pop()?.split('.').slice(0, -1).join('.')}
+                      {photo.original_filename ||
+                       photo.file_path.split('/').pop()?.split('.').slice(0, -1).join('.')}
                     </p>
                     <p className="text-[10px] text-muted-foreground">
                       {photo.file_path.split('.').pop()?.toUpperCase()}
@@ -391,49 +585,65 @@ export function PhotoGallery({ date }: PhotoGalleryProps) {
         </div>
       )}
 
-      {/* Lightbox */}
-      {selectedPhoto && (
+      {/* Lightbox - rendered via portal to bypass parent constraints */}
+      {selectedPhoto && createPortal(
         <div
-          className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center safe-area-container"
+          className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center"
           onClick={() => setSelectedPhoto(null)}
+          style={{
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            width: '100vw',
+            height: '100vh',
+            margin: 0,
+            padding: 0,
+          }}
         >
           <button
-            className="absolute top-4 right-4 p-2 text-white hover:bg-white/10 rounded-full z-10"
+            className="absolute p-2 text-white hover:bg-white/10 rounded-full z-10"
             onClick={() => setSelectedPhoto(null)}
             style={{
-              top: 'max(1rem, env(safe-area-inset-top))',
-              right: 'max(1rem, env(safe-area-inset-right))'
+              top: 'calc(env(safe-area-inset-top) + 1rem)',
+              right: 'calc(env(safe-area-inset-right) + 1rem)'
             }}
           >
             <X className="h-6 w-6" />
           </button>
 
-          <div className="max-w-full max-h-full flex flex-col items-center p-4" onClick={(e) => e.stopPropagation()}>
+          <div
+            className="max-w-full max-h-full flex flex-col items-center"
+            onClick={(e) => e.stopPropagation()}
+            style={{
+              padding: `calc(env(safe-area-inset-top) + 3rem) calc(env(safe-area-inset-right) + 1rem) calc(env(safe-area-inset-bottom) + 1rem) calc(env(safe-area-inset-left) + 1rem)`
+            }}
+          >
             {getFileType(selectedPhoto.file_path) === 'image' ? (
               <img
                 src={getPhotoUrl(selectedPhoto.file_path)}
                 alt=""
-                className="max-w-full max-h-[80vh] object-contain"
+                className="max-w-full max-h-full object-contain"
               />
             ) : getFileType(selectedPhoto.file_path) === 'video' ? (
               <video
                 src={getPhotoUrl(selectedPhoto.file_path)}
                 controls
-                className="max-w-full max-h-[80vh]"
+                className="max-w-full max-h-full"
               />
             ) : getFileType(selectedPhoto.file_path) === 'audio' ? (
               <div className="flex flex-col items-center gap-4 p-8 bg-background/10 rounded-lg">
                 <FileAudio className="h-24 w-24 text-white" />
                 <audio src={getPhotoUrl(selectedPhoto.file_path)} controls className="w-full max-w-md" />
                 <p className="text-white text-center">
-                  {selectedPhoto.file_path.split('/').pop()}
+                  {selectedPhoto.original_filename || selectedPhoto.file_path.split('/').pop()}
                 </p>
               </div>
             ) : (
               <div className="flex flex-col items-center gap-4 p-8 bg-background/10 rounded-lg">
                 {getFileIcon(selectedPhoto.file_path)}
                 <p className="text-white text-center text-lg">
-                  {selectedPhoto.file_path.split('/').pop()}
+                  {selectedPhoto.original_filename || selectedPhoto.file_path.split('/').pop()}
                 </p>
                 <p className="text-white/70 text-sm">
                   Preview not available for this file type
@@ -441,11 +651,20 @@ export function PhotoGallery({ date }: PhotoGalleryProps) {
               </div>
             )}
           </div>
-        </div>
+        </div>,
+        document.body
       )}
 
-      {/* Click outside to close menu (desktop only) */}
-      {!isMobile && showAddMenu && (
+      {/* WebcamCapture modal for desktop camera */}
+      {showWebcam && (
+        <WebcamCapture
+          onCapture={handleWebcamCapture}
+          onClose={() => setShowWebcam(false)}
+        />
+      )}
+
+      {/* Click outside to close menu */}
+      {showAddMenu && (
         <div
           className="fixed inset-0 z-0"
           onClick={() => setShowAddMenu(false)}

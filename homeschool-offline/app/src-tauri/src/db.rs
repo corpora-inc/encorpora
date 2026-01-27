@@ -37,6 +37,7 @@ pub struct Photo {
     pub date: String, // YYYY-MM-DD
     pub student_id: i64,
     pub file_path: String, // Relative path
+    pub original_filename: Option<String>, // NEW FIELD
     pub caption: String,
     pub created_at: i64,
 }
@@ -189,6 +190,7 @@ fn migrate_to_multi_student(conn: &Connection) -> Result<(), String> {
             date TEXT NOT NULL,
             student_id INTEGER NOT NULL,
             file_path TEXT NOT NULL,
+            original_filename TEXT,
             caption TEXT NOT NULL DEFAULT '',
             created_at INTEGER NOT NULL,
             FOREIGN KEY (date, student_id) REFERENCES days(date, student_id) ON DELETE CASCADE
@@ -198,8 +200,8 @@ fn migrate_to_multi_student(conn: &Connection) -> Result<(), String> {
 
     // Copy data with default student_id
     conn.execute(
-        "INSERT INTO photos (id, date, student_id, file_path, caption, created_at)
-         SELECT id, date, ?1, file_path, caption, created_at FROM photos_old",
+        "INSERT INTO photos (id, date, student_id, file_path, original_filename, caption, created_at)
+         SELECT id, date, ?1, file_path, NULL, caption, created_at FROM photos_old",
         params![default_student_id],
     ).map_err(|e| format!("Failed to copy photos data: {}", e))?;
 
@@ -283,12 +285,27 @@ fn init_db_internal(app: &AppHandle) -> Result<(), String> {
             date TEXT NOT NULL,
             student_id INTEGER NOT NULL,
             file_path TEXT NOT NULL,
+            original_filename TEXT,
             caption TEXT NOT NULL DEFAULT '',
             created_at INTEGER NOT NULL,
             FOREIGN KEY (date, student_id) REFERENCES days(date, student_id) ON DELETE CASCADE
         )",
         [],
     ).map_err(|e| format!("Failed to create photos table: {}", e))?;
+
+    // Migrate existing databases: add original_filename column if it doesn't exist
+    let has_original_filename: bool = conn.query_row(
+        "SELECT COUNT(*) FROM pragma_table_info('photos') WHERE name='original_filename'",
+        [],
+        |row| row.get::<_, i32>(0).map(|count| count > 0)
+    ).unwrap_or(false);
+
+    if !has_original_filename {
+        conn.execute(
+            "ALTER TABLE photos ADD COLUMN original_filename TEXT",
+            [],
+        ).map_err(|e| format!("Failed to add original_filename column: {}", e))?;
+    }
 
     // Create indexes
     conn.execute(
@@ -456,7 +473,7 @@ pub fn update_day(app: &AppHandle, student_id: i64, date: &str, updates: DayUpda
 }
 
 /// Add a photo
-pub fn add_photo(app: &AppHandle, student_id: i64, date: &str, file_path: &str) -> Result<Photo, String> {
+pub fn add_photo(app: &AppHandle, student_id: i64, date: &str, file_path: &str, original_filename: Option<String>) -> Result<Photo, String> {
     let conn = get_connection(app)?;
     let now = chrono::Utc::now().timestamp();
 
@@ -468,9 +485,9 @@ pub fn add_photo(app: &AppHandle, student_id: i64, date: &str, file_path: &str) 
     ).map_err(|e| format!("Failed to ensure day exists: {}", e))?;
 
     conn.execute(
-        "INSERT INTO photos (date, student_id, file_path, caption, created_at)
-         VALUES (?1, ?2, ?3, '', ?4)",
-        params![date, student_id, file_path, now],
+        "INSERT INTO photos (date, student_id, file_path, original_filename, caption, created_at)
+         VALUES (?1, ?2, ?3, ?4, '', ?5)",
+        params![date, student_id, file_path, original_filename, now],
     ).map_err(|e| format!("Failed to add photo: {}", e))?;
 
     let id = conn.last_insert_rowid();
@@ -480,6 +497,7 @@ pub fn add_photo(app: &AppHandle, student_id: i64, date: &str, file_path: &str) 
         date: date.to_string(),
         student_id,
         file_path: file_path.to_string(),
+        original_filename,
         caption: String::new(),
         created_at: now,
     })
@@ -507,7 +525,7 @@ pub fn get_photos_for_date(app: &AppHandle, student_id: i64, date: &str) -> Resu
     let conn = get_connection(app)?;
 
     let mut stmt = conn.prepare(
-        "SELECT id, date, student_id, file_path, caption, created_at
+        "SELECT id, date, student_id, file_path, original_filename, caption, created_at
          FROM photos WHERE date = ?1 AND student_id = ?2 ORDER BY created_at"
     ).map_err(|e| format!("Failed to prepare statement: {}", e))?;
 
@@ -517,8 +535,9 @@ pub fn get_photos_for_date(app: &AppHandle, student_id: i64, date: &str) -> Resu
             date: row.get(1)?,
             student_id: row.get(2)?,
             file_path: row.get(3)?,
-            caption: row.get(4)?,
-            created_at: row.get(5)?,
+            original_filename: row.get(4)?,
+            caption: row.get(5)?,
+            created_at: row.get(6)?,
         })
     }).map_err(|e| format!("Failed to query photos: {}", e))?
     .collect::<SqlResult<Vec<Photo>>>()

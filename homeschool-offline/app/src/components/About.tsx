@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { getVersion } from '@tauri-apps/api/app';
+import { platform } from '@tauri-apps/plugin-os';
 import { openUrl } from '@tauri-apps/plugin-opener';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -11,18 +12,29 @@ const BLOG_URL = 'https://free2z.com/corpora';
 const GITHUB_ISSUES = 'https://github.com/corpora-inc/encorpora/issues';
 const SUPPORT_EMAIL = 'team@encorpora.io';
 
-// iOS: https://apps.apple.com/app/idYOUR_APP_ID?action=write-review
-// For now, just link to the app page - Apple will redirect to review
-const APP_STORE_URL = 'https://apps.apple.com/app/id6738854951';
+// App Store URLs
+const IOS_APP_STORE_URL = 'https://apps.apple.com/app/id6738854951';
+const ANDROID_PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.corpora.homeschool';
 
 export function About() {
   const [appVersion, setAppVersion] = useState<string>('');
+  const [storeUrl, setStoreUrl] = useState<string>(IOS_APP_STORE_URL);
 
   useEffect(() => {
     (async () => {
       try {
         const version = await getVersion();
         setAppVersion(version);
+
+        // Detect platform and set appropriate store URL
+        const currentPlatform = platform();
+        console.log('Platform detected:', currentPlatform);
+
+        if (currentPlatform === 'android') {
+          setStoreUrl(ANDROID_PLAY_STORE_URL);
+        } else if (currentPlatform === 'ios') {
+          setStoreUrl(IOS_APP_STORE_URL);
+        }
       } catch (e) {
         console.error('Failed to get app version:', e);
         setAppVersion('N/A');
@@ -77,7 +89,7 @@ export function About() {
           variant="outline"
           size="sm"
           className="gap-1.5 hover:bg-muted cursor-pointer h-9 bg-yellow-500/10 hover:bg-yellow-500/20 border-yellow-500/30"
-          onClick={() => handleOpenUrl(APP_STORE_URL)}
+          onClick={() => handleOpenUrl(storeUrl)}
         >
           <Star className="h-4 w-4 fill-yellow-500 text-yellow-500" />
           Rate 5 Stars

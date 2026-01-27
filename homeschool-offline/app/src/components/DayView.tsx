@@ -11,7 +11,11 @@ import { formatDate, stringToDate, addDaysToString, subDaysFromString } from '@/
 import { invoke } from '@tauri-apps/api/core';
 import type { Day, DayUpdate } from '@/types/database';
 
-export function DayView() {
+interface DayViewProps {
+  compact?: boolean;
+}
+
+export function DayView({ compact = false }: DayViewProps) {
   const { selectedDate, setSelectedDate, getDay, setDay } = useCalendarStore();
   const { currentStudentId, incrementTotalDays, decrementTotalDays } = useSettingsStore();
   const [isHomeschoolDay, setIsHomeschoolDay] = useState(false);
@@ -119,7 +123,7 @@ export function DayView() {
   const displayDate = formatDate(date, 'EEEE, MMMM d, yyyy');
 
   return (
-    <div className="flex flex-col h-full">
+    <div className={compact ? "flex flex-col" : "flex flex-col h-full"}>
       {/* Header */}
       <div className="flex items-center p-2 md:p-4 border-b shrink-0">
         <Button variant="outline" size="icon" onClick={handlePrevDay} className="h-8 w-8 md:h-9 md:w-9 shrink-0">
@@ -132,7 +136,7 @@ export function DayView() {
       </div>
 
       {/* Content */}
-      <div className="flex-1 overflow-y-auto p-3 md:p-6 space-y-4 md:space-y-6">
+      <div className={compact ? "p-3 md:p-6 space-y-4 md:space-y-6" : "flex-1 overflow-y-auto p-3 md:p-6 space-y-4 md:space-y-6"}>
         {/* Homeschool Day Toggle */}
         <div className="flex items-center justify-between p-3 md:p-4 border rounded-lg">
           <Label htmlFor="homeschool-toggle" className="text-sm md:text-base font-medium">

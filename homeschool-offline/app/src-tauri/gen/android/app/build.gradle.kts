@@ -24,20 +24,6 @@ android {
         versionCode = tauriProperties.getProperty("tauri.android.versionCode", "1").toInt()
         versionName = tauriProperties.getProperty("tauri.android.versionName", "1.0")
     }
-
-    signingConfigs {
-        create("release") {
-            storeFile = file("../../upload-keystore.jks")
-            storePassword = System.console()?.readLine("\nEnter keystore password: ")
-                ?: System.getenv("KEYSTORE_PASSWORD")
-                ?: ""
-            keyAlias = "upload"
-            keyPassword = System.console()?.readLine("Enter key password: ")
-                ?: System.getenv("KEY_PASSWORD")
-                ?: storePassword
-        }
-    }
-
     buildTypes {
         getByName("debug") {
             manifestPlaceholders["usesCleartextTraffic"] = "true"
@@ -51,7 +37,6 @@ android {
             }
         }
         getByName("release") {
-            signingConfig = signingConfigs.getByName("release")
             isMinifyEnabled = true
             proguardFiles(
                 *fileTree(".") { include("**/*.pro") }

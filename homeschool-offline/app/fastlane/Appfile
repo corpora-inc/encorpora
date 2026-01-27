@@ -1,9 +1,14 @@
 # Fastlane Appfile
 # https://docs.fastlane.tools/advanced/Appfile/
 
+# iOS
 app_identifier("com.corpora.homeschool") # Bundle ID
 apple_id(ENV["APPLE_ID"]) # Your Apple ID email
 team_id("F9AV5HKF6N") # Your Apple Developer Team ID
 
 # Uncomment if you have multiple teams
 # itc_team_id("123456789") # App Store Connect Team ID (if different from developer team)
+
+# Android
+json_key_file("fastlane/google-play-key.json") # Path to Google Play service account JSON
+package_name("com.corpora.homeschool") # Android package name

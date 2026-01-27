@@ -28,6 +28,7 @@ export interface Photo {
   date: string; // YYYY-MM-DD
   student_id: number;
   file_path: string; // Relative path
+  original_filename?: string; // NEW FIELD
   caption: string;
   created_at: number;
 }

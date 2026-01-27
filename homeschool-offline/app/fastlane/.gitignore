@@ -20,6 +20,10 @@ fastlane/test_output
 *.p12
 *.mobileprovision
 
+# Google Play API key
+google-play-key.json
+*-key.json
+
 # Fastlane Session
 *_session
 

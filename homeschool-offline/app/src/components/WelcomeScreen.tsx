@@ -89,7 +89,7 @@ export function WelcomeScreen() {
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="space-y-2">
               <Label htmlFor="parent-name">
-                Parent Name <span className="text-destructive">*</span>
+                Parent Name
               </Label>
               <Input
                 id="parent-name"
@@ -103,7 +103,7 @@ export function WelcomeScreen() {
 
             <div className="space-y-3">
               <Label>
-                Students <span className="text-destructive">*</span>
+                Students
               </Label>
               {studentNames.map((name, index) => (
                 <div key={index} className="flex gap-2">

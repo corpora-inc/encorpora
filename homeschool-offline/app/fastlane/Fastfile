@@ -60,3 +60,85 @@ platform :ios do
     capture_screenshots
   end
 end
+
+platform :android do
+  desc "Upload metadata to Google Play (requires existing release)"
+  lane :upload_metadata do
+    upload_to_play_store(
+      package_name: "com.corpora.homeschool",
+      skip_upload_apk: true,
+      skip_upload_aab: true,
+      skip_upload_images: false,
+      skip_upload_screenshots: false,
+      skip_upload_changelogs: true,  # Skip changelogs for metadata-only updates
+      release_status: 'draft',  # Use draft status for unpublished apps
+      track: 'internal'  # Update internal track metadata
+    )
+  end
+
+  desc "Upload AAB to internal testing track with metadata"
+  lane :internal do |options|
+    # Path to your AAB file (Tauri generates AAB, not APK)
+    aab_path = options[:aab] || "../src-tauri/gen/android/app/build/outputs/bundle/universalRelease/app-universal-release.aab"
+
+    upload_to_play_store(
+      package_name: "com.corpora.homeschool",
+      aab: aab_path,
+      track: 'internal',
+      skip_upload_metadata: false,  # Include metadata
+      skip_upload_images: false,
+      skip_upload_screenshots: false
+    )
+  end
+
+  desc "Upload AAB to beta testing track (closed)"
+  lane :beta do |options|
+    aab_path = options[:aab] || "../src-tauri/gen/android/app/build/outputs/bundle/universalRelease/app-universal-release.aab"
+
+    upload_to_play_store(
+      package_name: "com.corpora.homeschool",
+      aab: aab_path,
+      track: 'beta',
+      skip_upload_metadata: true,
+      skip_upload_images: true,
+      skip_upload_screenshots: true
+    )
+  end
+
+  desc "Upload everything: AAB + metadata to internal testing"
+  lane :release do |options|
+    internal(options)  # internal lane already includes metadata
+  end
+
+  desc "Download current metadata from Google Play"
+  lane :download_metadata do
+    download_from_play_store(
+      package_name: "com.corpora.homeschool",
+      metadata_path: "./fastlane/metadata/android"
+    )
+  end
+
+  desc "Promote internal build to beta"
+  lane :promote_to_beta do
+    upload_to_play_store(
+      package_name: "com.corpora.homeschool",
+      track: 'internal',
+      track_promote_to: 'beta',
+      skip_upload_apk: true,
+      skip_upload_aab: true,
+      skip_upload_metadata: true
+    )
+  end
+
+  desc "Promote beta build to production"
+  lane :promote_to_production do
+    upload_to_play_store(
+      package_name: "com.corpora.homeschool",
+      track: 'beta',
+      track_promote_to: 'production',
+      skip_upload_apk: true,
+      skip_upload_aab: true,
+      skip_upload_metadata: true
+    )
+  end
+end
