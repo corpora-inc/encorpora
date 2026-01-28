@@ -95,6 +95,9 @@ export const createBottle3D = (scene: Scene, initialLevel: CEFRLevel = "A0"): Bo
   glassMaterial.backFaceCulling = false
   bottleMesh.material = glassMaterial
 
+  // Don't intercept pointer events - let word blocks be clickable
+  bottleMesh.isPickable = false
+
   // Parent to container
   bottleMesh.parent = bottleContainer
 
@@ -123,6 +126,7 @@ export const createBottle3D = (scene: Scene, initialLevel: CEFRLevel = "A0"): Bo
   )
   liquidMesh.material = liquidMaterial
   liquidMesh.parent = bottleContainer
+  liquidMesh.isPickable = false // Don't intercept pointer events
   // Position at bottom of bottle, pivot from bottom
   liquidMesh.position.y = 0.15
   liquidMesh.scaling.y = 0.001 // Start hidden
@@ -140,6 +144,7 @@ export const createBottle3D = (scene: Scene, initialLevel: CEFRLevel = "A0"): Bo
   liquidCapMesh.position.y = 0.15 // Start at bottom
   liquidCapMesh.material = liquidMaterial
   liquidCapMesh.parent = bottleContainer
+  liquidCapMesh.isPickable = false // Don't intercept pointer events
 
   // Sloshing animation for liquid surface
   let sloshPhase = 0
