@@ -60,26 +60,36 @@
     --sar: env(safe-area-inset-right, 0px);
     --sab: env(safe-area-inset-bottom, 0px);
     --sal: env(safe-area-inset-left, 0px);
+    --app-height: 100vh;
   }
 
   html {
-    height: 100%;
-    /* position: fixed prevents iOS WKWebView from miscalculating viewport height on initial render */
+    height: var(--app-height);
+    min-height: var(--app-height);
     overflow: hidden;
-    position: fixed;
     width: 100%;
   }
 
   body {
     @apply bg-background text-foreground font-sans;
     font-feature-settings: "rlig" 1, "calt" 1;
-    height: 100%;
+    height: var(--app-height);
+    min-height: var(--app-height);
     overflow: hidden;
   }
 
   #root {
     height: 100%;
+    min-height: 100%;
     width: 100%;
+  }
+}
+
+@supports (height: 100dvh) {
+  @layer base {
+    :root {
+      --app-height: 100dvh;
+    }
   }
 }
 
