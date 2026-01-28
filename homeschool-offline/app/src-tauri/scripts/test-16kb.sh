@@ -1,49 +1,71 @@
-#!/bin/bash
-set -e
+#!/usr/bin/env bash
+set -euo pipefail
 
 # Test that all .so files in AAB have correct 16KB page alignment
-# Usage: ./scripts/test-16kb.sh path/to/app.aab
+# Usage: ./scripts/test-16kb.sh [path/to/app.aab]
 
-AAB_PATH="$1"
+AAB="${1:-src-tauri/gen/android/app/build/outputs/bundle/universalRelease/app-universal-release.aab}"
 
-if [ -z "$AAB_PATH" ]; then
-  echo "Usage: $0 path/to/app.aab"
+if [ ! -f "$AAB" ]; then
+  echo "Error: AAB file not found: $AAB"
   exit 1
 fi
 
-if [ ! -f "$AAB_PATH" ]; then
-  echo "Error: AAB file not found: $AAB_PATH"
+# Auto-detect Android SDK and find llvm-readobj
+SDK="${ANDROID_SDK_ROOT:-}"
+if [ -z "$SDK" ] || [ ! -d "$SDK" ]; then
+  for CAND in "$HOME/Library/Android/sdk" "$HOME/Android"; do
+    if [ -d "$CAND/ndk" ]; then
+      SDK="$CAND"
+      break
+    fi
+  done
+fi
+
+if [ -z "$SDK" ] || [ ! -d "$SDK" ]; then
+  echo "Error: Android SDK not found. Set ANDROID_SDK_ROOT or install Android SDK."
   exit 1
 fi
 
-TEMP_DIR=$(mktemp -d)
-trap "rm -rf $TEMP_DIR" EXIT
+LLVM_READOBJ="$(find "$SDK/ndk" -path '*/toolchains/llvm/prebuilt/*/bin/llvm-readobj' -type f -print -quit 2>/dev/null)"
 
-echo "Extracting AAB to $TEMP_DIR..."
-unzip -q "$AAB_PATH" -d "$TEMP_DIR"
+if [ -z "$LLVM_READOBJ" ] || [ ! -x "$LLVM_READOBJ" ]; then
+  echo "Error: llvm-readobj not found in NDK at $SDK/ndk"
+  echo "Make sure NDK is installed"
+  exit 1
+fi
 
-echo "Checking .so files for 16KB page alignment..."
-FAILED=0
+echo "Using: $LLVM_READOBJ"
 
-find "$TEMP_DIR" -name "*.so" | while read SO_FILE; do
-  echo "Checking: $SO_FILE"
+TMP="$(mktemp -d)"
+trap "rm -rf $TMP" EXIT
 
-  # Check ELF p_align - should be 0x4000 (16384 in hex)
-  ALIGN=$(readelf -l "$SO_FILE" | grep "LOAD" | head -1 | awk '{print $NF}')
+unzip -qq "$AAB" '*/lib/*/*.so' -d "$TMP"
 
-  if [ "$ALIGN" != "0x4000" ]; then
-    echo "  ❌ FAILED: p_align = $ALIGN (expected 0x4000)"
-    FAILED=1
+echo "Checking ELF p_align == 0x4000 (16 KB) in AAB's native libs..."
+BAD=0
+
+while IFS= read -r -d '' SO; do
+  if "$LLVM_READOBJ" -l "$SO" | awk '
+      /Program Headers/ {inPH=1}
+      inPH && /LOAD/ {check=1}
+      check && /p_align:/ {
+        if ($2 != "0x4000") { bad=1 }
+        check=0
+      }
+      END { exit bad }'; then
+    echo "✅ PASS  $(basename "$SO")"
   else
-    echo "  ✅ PASSED: p_align = 0x4000"
+    echo "❌ FAIL  $(basename "$SO")  (p_align != 0x4000)"
+    BAD=1
   fi
-done
+done < <(find "$TMP" -name '*.so' -print0)
 
-if [ $FAILED -eq 1 ]; then
-  echo ""
-  echo "❌ VERIFICATION FAILED: Some .so files don't have 16KB alignment"
-  exit 1
+echo ""
+if [ "$BAD" -eq 0 ]; then
+  echo "✅ All native libs in the AAB are 16 KB-aligned (ELF)."
 else
-  echo ""
-  echo "✅ ALL CHECKS PASSED: All .so files have 16KB page alignment"
+  echo "❌ One or more libs are not 16 KB-aligned."
+  echo "Make sure .cargo/config.toml has explicit linker/ar paths to NDK 28+."
+  exit 2
 fi

@@ -3,7 +3,7 @@ import { Download, Upload, Loader2, CheckCircle, AlertCircle, X as XIcon } from 
 import { Button } from '@/components/ui/button';
 import { invoke } from '@tauri-apps/api/core';
 import { open, save } from '@tauri-apps/plugin-dialog';
-import { readFile, writeFile, exists, mkdir, remove } from '@tauri-apps/plugin-fs';
+import { readFile, writeFile, exists, remove } from '@tauri-apps/plugin-fs';
 import { appCacheDir, join } from '@tauri-apps/api/path';
 import { ImportWarningDialog } from './ImportWarningDialog';
 import { usePlatform } from '@/hooks/usePlatform';
@@ -24,6 +24,7 @@ export function ExportImport() {
   const [isImporting, setIsImporting] = useState(false);
   const [importComplete, setImportComplete] = useState(false);
   const [importError, setImportError] = useState<string | null>(null);
+  const [importConfirmed, setImportConfirmed] = useState(false);
 
   const handleExportClick = async () => {
     setIsExporting(true);
@@ -35,18 +36,13 @@ export function ExportImport() {
     await new Promise(resolve => setTimeout(resolve, 50));
 
     try {
-      console.log('Starting export...');
-
       if (isMobile) {
         // Mobile platforms
         let filePath: string;
 
         if (platformType === 'android') {
           // Android: Export to /sdcard/Download/
-          console.log('Calling export_data_to_external_command (Android)...');
           filePath = await invoke('export_data_to_external_command');
-
-          console.log('Backend created file at:', filePath);
 
           if (!filePath) {
             throw new Error('Backend returned empty path - export failed');
@@ -57,17 +53,13 @@ export function ExportImport() {
           setExportPath(filePath);
         } else if (platformType === 'ios') {
           // iOS: Export to temp, then open native share sheet
-          console.log('Calling export_data_to_ios_documents_command (iOS)...');
           filePath = await invoke('export_data_to_ios_documents_command');
-
-          console.log('Backend created file at:', filePath);
 
           if (!filePath) {
             throw new Error('Backend returned empty path - export failed');
           }
 
           // Immediately open iOS Share Sheet
-          console.log('Opening iOS Share Sheet...');
           await invoke('plugin:ios-share|share_file', { filePath });
 
           // Share Sheet is now open - user can save wherever they want
@@ -125,10 +117,9 @@ export function ExportImport() {
   };
 
   const handleImportClick = async () => {
-    // Reset any previous errors
+    // Reset any previous errors and state
     setImportError(null);
-
-    let cachePath: string | null = null;
+    setImportConfirmed(false);
 
     try {
       // Step 1: Open file dialog
@@ -145,8 +136,6 @@ export function ExportImport() {
         return;
       }
 
-      console.log('File selected:', selected);
-
       // Step 2: Show loading indicator while preparing file
       setIsPreparingImport(true);
 
@@ -155,11 +144,9 @@ export function ExportImport() {
         let fileBytes: Uint8Array;
         try {
           fileBytes = await readFile(selected);
-          console.log('File read successfully, size:', fileBytes.length, 'bytes');
         } catch (readError) {
           throw new Error(
-            `Unable to read the selected file. ${
-              readError instanceof Error ? readError.message : 'The file may have been moved or deleted.'
+            `Unable to read the selected file. ${readError instanceof Error ? readError.message : 'The file may have been moved or deleted.'
             }`
           );
         }
@@ -173,68 +160,25 @@ export function ExportImport() {
           throw new Error('The backup file is too large (over 2GB). This may not be a valid backup.');
         }
 
-        // Step 5: Ensure cache directory exists
-        let cacheDir: string;
-        try {
-          cacheDir = await appCacheDir();
-          const cacheDirExists = await exists(cacheDir);
-          if (!cacheDirExists) {
-            await mkdir(cacheDir, { recursive: true });
-          }
-        } catch (dirError) {
-          throw new Error(
-            `Unable to access app storage. ${
-              dirError instanceof Error ? dirError.message : 'Please try restarting the app.'
-            }`
-          );
-        }
-
-        // Step 6: Write to cache with timestamp to avoid conflicts
+        // Step 5: Write to app cache directory (which Rust can access with absolute path)
+        const cacheDir = await appCacheDir();
         const timestamp = Date.now();
-        const cacheFileName = `import_${timestamp}.zip`;
-        try {
-          cachePath = await join(cacheDir, cacheFileName);
-          console.log('Writing to cache:', cachePath);
-          await writeFile(cachePath, fileBytes);
-        } catch (writeError) {
-          throw new Error(
-            `Unable to prepare file for import. ${
-              writeError instanceof Error && writeError.message.includes('space')
-                ? 'You may be running out of storage space.'
-                : writeError instanceof Error
-                ? writeError.message
-                : 'Please try again.'
-            }`
-          );
+        const filename = `import_temp_${timestamp}.zip`;
+        const importPath = await join(cacheDir, filename);
+
+        await writeFile(importPath, fileBytes);
+
+        // Verify it was written
+        const fileExists = await exists(importPath);
+        if (!fileExists) {
+          throw new Error('Failed to write file to cache');
         }
 
-        // Step 7: Verify file was written correctly
-        try {
-          const cacheFileExists = await exists(cachePath);
-          if (!cacheFileExists) {
-            throw new Error('File verification failed. Please try again.');
-          }
-        } catch (verifyError) {
-          throw new Error('Unable to verify cached file. Please try again.');
-        }
-
-        console.log('File prepared successfully for import');
-
-        // Step 8: Store cache path and show confirmation dialog
-        setPendingImportCachePath(cachePath);
+        // Step 6: Store import path and show confirmation dialog
+        setPendingImportCachePath(importPath);
         setShowImportWarning(true);
 
       } catch (prepError) {
-        // Cleanup cache file on error
-        if (cachePath) {
-          try {
-            await remove(cachePath);
-            console.log('Cleaned up cache file after error');
-          } catch (cleanupError) {
-            console.error('Failed to cleanup cache file:', cleanupError);
-          }
-        }
-
         // Show user-friendly error
         const errorMessage = prepError instanceof Error
           ? prepError.message
@@ -257,42 +201,35 @@ export function ExportImport() {
   const handleImportConfirm = async () => {
     // Safety check
     if (!pendingImportCachePath) {
-      console.error('No cached file path available for import');
       setImportError('Import preparation failed. Please try selecting the file again.');
       setShowImportWarning(false);
       return;
     }
 
-    const cachePathToCleanup = pendingImportCachePath;
+    const filePathToCleanup = pendingImportCachePath;
 
+    // Mark as confirmed so the dialog close doesn't trigger cleanup
+    setImportConfirmed(true);
     setShowImportWarning(false);
     setIsImporting(true);
     setImportComplete(false);
     setImportError(null);
 
     try {
-      console.log('Starting import from cache path:', pendingImportCachePath);
-
       // Verify file still exists before attempting import
       const fileStillExists = await exists(pendingImportCachePath);
       if (!fileStillExists) {
-        throw new Error('Cached file no longer exists. Please try importing again.');
+        throw new Error('File no longer exists. Please try importing again.');
       }
 
-      // Pass the cache file path to backend (avoids IPC size limits)
+      // Pass the file path to backend (Rust will read the file and clean it up)
       await invoke('import_data_command', { sourcePath: pendingImportCachePath });
 
-      console.log('Import successful');
       setIsImporting(false);
       setImportComplete(true);
+      setImportConfirmed(false);
 
-      // Cleanup cache file after successful import
-      try {
-        await remove(cachePathToCleanup);
-        console.log('Cleaned up cache file after successful import');
-      } catch (cleanupError) {
-        console.warn('Failed to cleanup cache file (non-critical):', cleanupError);
-      }
+      // Note: Rust side cleans up the temp file after reading it
 
       // Reload app to reflect imported data
       // This is necessary because the database and all state needs to be reloaded
@@ -303,12 +240,13 @@ export function ExportImport() {
     } catch (error) {
       console.error('Import failed:', error);
       setIsImporting(false);
+      setImportConfirmed(false);
 
       // Parse error message for user-friendly display
       let errorMessage = 'Import failed. ';
 
       if (error instanceof Error) {
-        if (error.message.includes('Invalid backup file')) {
+        if (error.message.includes('Invalid backup file') || error.message.includes('missing database') || error.message.includes('missing manifest')) {
           errorMessage += 'The selected file is not a valid backup. Please choose a backup file exported from this app.';
         } else if (error.message.includes('No such file')) {
           errorMessage += 'The file could not be found. It may have been deleted.';
@@ -325,12 +263,14 @@ export function ExportImport() {
 
       setImportError(errorMessage);
 
-      // Cleanup cache file on error
+      // Cleanup temp file on error (if it still exists)
       try {
-        await remove(cachePathToCleanup);
-        console.log('Cleaned up cache file after error');
+        const fileExists = await exists(filePathToCleanup);
+        if (fileExists) {
+          await remove(filePathToCleanup);
+        }
       } catch (cleanupError) {
-        console.warn('Failed to cleanup cache file:', cleanupError);
+        // Ignore cleanup errors
       }
     }
 
@@ -338,18 +278,22 @@ export function ExportImport() {
   };
 
   const handleImportCancel = async () => {
-    // Cleanup cache file when user cancels
-    if (pendingImportCachePath) {
+    // Only cleanup if user actually cancelled (not if they confirmed and dialog closed)
+    if (pendingImportCachePath && !importConfirmed) {
       try {
-        await remove(pendingImportCachePath);
-        console.log('Cleaned up cache file after user cancellation');
+        // Check if file exists before trying to remove
+        const fileExists = await exists(pendingImportCachePath);
+        if (fileExists) {
+          await remove(pendingImportCachePath);
+        }
       } catch (cleanupError) {
-        console.warn('Failed to cleanup cache file:', cleanupError);
+        // Ignore cleanup errors
       }
     }
 
     setShowImportWarning(false);
     setPendingImportCachePath(null);
+    setImportConfirmed(false);
   };
 
   return (

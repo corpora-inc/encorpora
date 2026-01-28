@@ -62,8 +62,43 @@ pub fn import_data_from_bytes(app: &AppHandle, bytes: Vec<u8>) -> Result<(), Str
 
 /// Import data from a ZIP file (reads file and uses bytes import)
 pub fn import_data(app: &AppHandle, source_path: &str) -> Result<(), String> {
+    eprintln!("import_data: Attempting to read from: {}", source_path);
+
+    // Check if file exists
+    if !std::path::Path::new(source_path).exists() {
+        eprintln!("import_data: File does not exist at path: {}", source_path);
+        return Err(format!("File not found: {}", source_path));
+    }
+
+    // Get file metadata
+    match std::fs::metadata(source_path) {
+        Ok(metadata) => {
+            eprintln!("import_data: File exists, size: {} bytes", metadata.len());
+            if metadata.len() == 0 {
+                return Err("File is empty".to_string());
+            }
+        }
+        Err(e) => {
+            eprintln!("import_data: Failed to get file metadata: {}", e);
+            return Err(format!("Failed to access file: {}", e));
+        }
+    }
+
     let bytes = std::fs::read(source_path)
-        .map_err(|e| format!("Failed to read backup file: {}", e))?;
+        .map_err(|e| {
+            eprintln!("import_data: Failed to read file: {}", e);
+            format!("Failed to read backup file: {}", e)
+        })?;
+
+    eprintln!("import_data: Successfully read {} bytes", bytes.len());
+
+    // Clean up the temp file after reading
+    if source_path.contains("import_temp_") {
+        eprintln!("import_data: Cleaning up temporary file");
+        if let Err(e) = std::fs::remove_file(source_path) {
+            eprintln!("import_data: Warning - failed to cleanup temp file: {}", e);
+        }
+    }
 
     import_data_from_bytes(app, bytes)
 }

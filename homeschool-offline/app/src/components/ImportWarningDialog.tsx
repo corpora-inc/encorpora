@@ -11,7 +11,7 @@ export function ImportWarningDialog({ open, onCancel, onConfirm }: ImportWarning
   return (
     <AlertDialog open={open} onOpenChange={(isOpen) => !isOpen && onCancel()}>
       <AlertDialogContent>
-        <AlertDialogHeader>
+        <AlertDialogHeader className="text-left">
           <div className="flex items-center gap-3">
             <div className="p-3 rounded-full bg-red-500/10">
               <AlertTriangle className="h-6 w-6 text-red-500" />
@@ -21,11 +21,11 @@ export function ImportWarningDialog({ open, onCancel, onConfirm }: ImportWarning
             </AlertDialogTitle>
           </div>
           <AlertDialogDescription asChild>
-            <div className="text-muted-foreground text-base pt-4 space-y-3">
+            <div className="text-left text-muted-foreground text-base pt-4 space-y-3">
               <div className="font-semibold text-foreground">
                 This will completely replace:
               </div>
-              <ul className="list-disc pl-6 space-y-1">
+              <ul className="list-disc pl-6 space-y-1.5 text-foreground/90">
                 <li>All students and their information</li>
                 <li>All calendar entries and notes</li>
                 <li>All photos and media files</li>
