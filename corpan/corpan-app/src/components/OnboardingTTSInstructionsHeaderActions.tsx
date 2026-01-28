@@ -4,13 +4,15 @@ import {
     Settings,
     CheckCheck,
     MessageSquare,
+    AlertTriangle,
+    XCircle,
     // Lightbulb,
     // X,
     type LucideIcon,
 } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { DismissableTip } from "./DismissableTip";
-import { openAppleFeedback } from "@/util/tts-voices";
+import { openAppleFeedback, type TtsEngineStatus } from "@/util/tts-voices";
 
 type Props = {
     os: "android" | "ios" | "macos" | "windows" | "other";
@@ -19,6 +21,8 @@ type Props = {
     // Smart select handler + enabled state
     onSmartSelect?: () => void;
     canSmartSelect?: boolean;
+    engineStatus?: TtsEngineStatus | null;
+    engineStatusReady?: boolean;
 };
 
 type OsSpec = {
@@ -96,6 +100,8 @@ export function OnboardingTTSInstructionsHeaderActions({
     onOpenSettings,
     onSmartSelect,
     canSmartSelect,
+    engineStatus,
+    engineStatusReady,
 }: Props) {
     const { t } = useTranslation();
 
@@ -140,16 +146,70 @@ export function OnboardingTTSInstructionsHeaderActions({
         icon: <MessageSquare size={14} />,
     } : undefined;
 
+    const showAndroidStatus =
+        os === "android" &&
+        engineStatus?.supported &&
+        (!engineStatus.googleInstalled || !engineStatus.googleDefault);
+    const googleInstalled = !!engineStatus?.googleInstalled;
+    const googleDefault = !!engineStatus?.googleDefault;
+    const statusLabel = googleInstalled
+        ? t("onboarding.ttsGoogleInstalled", { defaultValue: "Google TTS installed" })
+        : t("onboarding.ttsGoogleMissing", { defaultValue: "Google TTS not installed" });
+    const StatusIcon = googleInstalled ? AlertTriangle : XCircle;
+    const statusTone = googleInstalled
+        ? "border-amber-200 bg-amber-50 text-amber-700"
+        : "border-rose-200 bg-rose-50 text-rose-700";
+
+    const hideTip = os === "android" && engineStatus?.supported && googleDefault;
+    const androidTipReady = os !== "android" || engineStatusReady === true;
+    const showTip = !hideTip && androidTipReady;
+
     return (
         <div className="w-full py-1">
             {/* {!tipDismissed && ( */}
-            <DismissableTip
-                storageKey={`tip:tts-os:${os}`}
-                title={tipTitle}
-                body={tipBody}
-                action={feedbackAction}
-            />
+            {os !== "android" ? (
+                <DismissableTip
+                    storageKey={`tip:tts-os:${os}`}
+                    title={tipTitle}
+                    body={tipBody}
+                    action={feedbackAction}
+                />
+            ) : (
+                <div
+                    className={[
+                        "overflow-hidden transition-all duration-500 ease-out",
+                        showTip
+                            ? "max-h-[320px] opacity-100 scale-100"
+                            : "max-h-0 opacity-0 scale-95 -translate-y-1 pointer-events-none",
+                    ].join(" ")}
+                    aria-hidden={!showTip}
+                >
+                    <DismissableTip
+                        storageKey={`tip:tts-os:${os}`}
+                        title={tipTitle}
+                        body={tipBody}
+                        action={feedbackAction}
+                    />
+                </div>
+            )}
             {/* )} */}
+
+            {showAndroidStatus && (
+                <div className="mt-2 flex flex-wrap items-center justify-center gap-2 text-xs">
+                    <span className={`inline-flex items-center gap-1.5 rounded-full border px-2 py-1 ${statusTone}`}>
+                        <StatusIcon size={14} />
+                        <span>{statusLabel}</span>
+                    </span>
+                    {googleInstalled && !googleDefault && (
+                        <button
+                            onClick={onOpenSettings}
+                            className="inline-flex items-center gap-1.5 rounded-full border border-gray-200 bg-white px-2 py-1 text-xs font-medium text-gray-800 shadow-sm hover:bg-gray-50 hover:cursor-pointer"
+                        >
+                            {t("onboarding.ttsSetDefault", { defaultValue: "Set as default" })}
+                        </button>
+                    )}
+                </div>
+            )}
 
             <div className="flex w-full items-center justify-center gap-2">
                 <button

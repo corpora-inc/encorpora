@@ -71,7 +71,9 @@
     "extra-large": "अतिशय मोठा",
     "testTts": "खालील बटणांसह TTS चाचणी करा:",
     "showRomanization": "रोमनीकरण दाखवा",
-    "scrollNavigation": "स्क्रोल नेव्हिगेशन"
+    "scrollNavigation": "स्क्रोल नेव्हिगेशन",
+    "packs": "Packs",
+    "stacks": "Stacks"
   },
   "onboarding": {
     "welcome": "स्वागत",
@@ -268,15 +270,15 @@
     "feedbackButton": "GitHub वर फीडबॅक शेअर करा"
   },
   "packs": {
-    "title": "पॅक्स",
-    "available": "उपलब्ध पॅक्स",
-    "emptyAvailable": "अजून पॅक्स नाहीत.",
-    "installed": "इन्स्टॉल केलेले पॅक्स",
-    "emptyInstalled": "पॅक्स इन्स्टॉल केलेले नाहीत.",
+    "title": "Packs",
+    "available": "उपलब्ध",
+    "emptyAvailable": "आत्तापर्यंत काहीही उपलब्ध नाही.",
+    "installed": "इंस्टॉल झालेले",
+    "emptyInstalled": "आत्तापर्यंत काहीही इंस्टॉल झालेले नाही.",
     "get": "मिळवा",
     "open": "उघडा",
     "remove": "काढा",
-    "version": "आवृत्ती {{version}}",
+    "version": "v{{version}}",
     "refresh": "रिफ्रेश करा",
     "free": "मोफत",
     "install": "इन्स्टॉल करा",
@@ -287,10 +289,13 @@
     "manifestTitle": "मॅनिफेस्ट URL",
     "manifestPlaceholder": "https://example.com/manifest.json",
     "manifestHint": "मॅनिफेस्ट URL पेस्ट करा.",
-    "devUnlockTitle": "डेव्हलपर पॅक्स",
+    "devUnlockTitle": "Developer Packs",
     "devUnlockHint": "मॅनिफेस्ट इन्स्टॉल अनलॉक करण्यासाठी 7 वेळा टॅप करा.",
-    "devUnlockToast": "डेव्हलपर पॅक्स अनलॉक केले.",
-    "devIntro": "Corpán पॅक वापरून पहा किंवा तुमचे स्वतःचे बनवा.",
-    "devLink": "Free2z वर अधिक जाणून घ्या"
+    "devUnlockToast": "Developer Packs अनलॉक झाले.",
+    "devIntro": "Corpán Pack वापरून पाहा किंवा स्वतःचा तयार करा.",
+    "devLink": "Free2z वर अधिक जाणून घ्या",
+    "new": "नवीन",
+    "updates": "अद्यतने",
+    "offline": "ऑफलाइन"
   }
 }

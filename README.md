@@ -10,17 +10,17 @@ This repo houses experiments that depend on Corpora. When something becomes stab
 ## Current focus
 
 - **Corpán app**: the main product experience.
-- **Corpán Games**: SDK experiments + new interactive learning formats.
-- **Hover Runner**: the reference game prototype.
+- **Corpán Packs**: SDK experiments + new interactive learning formats.
+- **Hover Runner**: 3D fun that locks in correct translations with the All-Hearing Ear.
 - **Books & publishing**
 
 ## Live Demos
 
-Browse games and content at our GitHub Pages site:
-**https://corpora-inc.github.io/encorpora/**
+Browse packs and content at:
+**https://encorpora.io/**
 
-- [Corpán Games](https://corpora-inc.github.io/encorpora/corpan/games/)
-- [Hover Runner](https://corpora-inc.github.io/encorpora/corpan/games/hover-runner/)
+- [Corpán Packs](https://encorpora.io/corpan/packs/)
+- [Hover Runner](https://encorpora.io/corpan/packs/hover-runner/)
 
 ## Local Development
 
@@ -37,7 +37,7 @@ npm run dev
 Visit **http://localhost:8000** - all changes auto-rebuild:
 - web/io/ site (Next.js hot reload)
 - Corpan pages (auto rebuild)
-- Games (auto rebuild)
+- Packs (auto rebuild)
 
 See [DEVELOPMENT.md](DEVELOPMENT.md) for detailed development guide.
 

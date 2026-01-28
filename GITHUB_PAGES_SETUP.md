@@ -8,15 +8,15 @@ The GitHub Pages site uses a **composable architecture**:
 
 1. **`web/io/` site** → Root marketing website (Next.js)
 2. **`web/pages/` templates** → Corpan app pages (static HTML)
-3. **`corpan/games/`** → Individual game builds
+3. **`corpan/packs/`** → Individual pack builds
 4. **Final deployment** → Everything composed into `web/io/out/`
 
-This allows us to scale to many apps, games, and content types - all composed into one cohesive site.
+This allows us to scale to many apps, packs, and content types - all composed into one cohesive site.
 
 ## Site Structure
 
 ```
-https://corpora-inc.github.io/encorpora/
+https://encorpora.io/
 ├── index.html                    # web/io/ root site (Next.js export)
 ├── books.html                    # web/io/ books page
 ├── privacy.html                  # web/io/ privacy page
@@ -25,20 +25,17 @@ https://corpora-inc.github.io/encorpora/
 │   └── hover-runner-avatar.png
 ├── corpan/
 │   ├── index.html                # Corpan landing page (composed)
-│   └── games/
-│       ├── index.html            # Games listing (composed)
+│   └── packs/
+│       ├── index.html            # Packs listing (composed)
 │       └── hover-runner/
-│           ├── manifest.json     # Game manifest
-│           └── ...               # Game assets
+│           ├── manifest.json     # Pack manifest
+│           └── ...               # Pack assets
 └── _next/                        # Next.js assets
 ```
 
-## Base path support
+## Base path
 
-The build supports both GitHub Pages (`/encorpora`) and a custom domain root by setting `ENCORPORA_BASE_PATH` at build time:
-
-- GitHub Pages: `ENCORPORA_BASE_PATH=/encorpora`
-- Custom domain: leave `ENCORPORA_BASE_PATH` empty
+The site is served from the domain root, so all assets and links assume `/`.
 
 ## How It Works
 
@@ -55,11 +52,11 @@ The Next.js site at `web/io/` is the source of truth for the root domain:
 Corpan-specific pages are built from templates:
 
 - **Corpan landing** (`web/pages/templates/corpan.html`): App information with logo
-- **Games listing** (`web/pages/templates/games.html`): All Corpan games
+- **Packs listing** (`web/pages/templates/packs.html`): All Corpan packs
 
 ### 3. Data Files
 
-Game metadata in `web/pages/data/games.json`:
+Pack metadata in `web/pages/data/packs.json`:
 
 ```json
 {
@@ -72,11 +69,11 @@ Game metadata in `web/pages/data/games.json`:
 
 ### 3.1 Assets
 
-Static assets are copied from canonical locations in the repo at build time (e.g., `corpan/corpan-app/src-tauri/icons/512x512.png` for the logo, and per-game avatar sources from `avatarSource`).
+Static assets are copied from canonical locations in the repo at build time (e.g., `corpan/corpan-app/src-tauri/icons/512x512.png` for the logo, and per-pack avatar sources from `avatarSource`).
 
-### 4. Games (`corpan/games/`)
+### 4. Packs (`corpan/packs/`)
 
-Each game is a standalone build:
+Each pack is a standalone build:
 
 - Own build process (npm run build)
 - Outputs to `dist/` directory
@@ -93,8 +90,8 @@ cd web/io && npm run build  # → web/io/out/
 # 2. Add Corpan pages
 node web/pages/build.js web/io/out  # → web/io/out/corpan/
 
-# 3. Add games
-cp -R corpan/games/hover-runner/dist web/io/out/corpan/games/hover-runner/
+# 3. Add packs
+cp -R corpan/packs/hover-runner/dist web/io/out/corpan/packs/hover-runner/
 
 # 4. Deploy
 # web/io/out/ is deployed to GitHub Pages
@@ -106,36 +103,36 @@ The `.github/workflows/hover-runner-pages.yml` workflow automates this:
 
 1. Builds `web/io/` site (Next.js) → `web/io/out/`
 2. Builds Corpan pages into `web/io/out/corpan/`
-3. Builds each game and copies to `web/io/out/corpan/games/`
+3. Builds each pack and copies to `web/io/out/corpan/packs/`
 4. Deploys `web/io/out/` to GitHub Pages
 
-## Adding a New Game
+## Adding a New Pack
 
-### Step 1: Create game in `corpan/games/my-game/`
+### Step 1: Create pack in `corpan/packs/my-pack/`
 
-Build your game with the Corpan Game SDK. Ensure it has:
-- `manifest.json` with game metadata
+Build your pack with the Corpan Pack SDK. Ensure it has:
+- `manifest.json` with pack metadata
 - Build script (`npm run build`) that outputs to `dist/`
 
-### Step 2: Add to games data
+### Step 2: Add to packs data
 
-Edit `web/pages/data/games.json`:
+Edit `web/pages/data/packs.json`:
 
 ```json
 {
-  "id": "my-game",
-  "name": "My Game",
-  "description": "A fun language learning game",
+  "id": "my-pack",
+  "name": "My Pack",
+  "description": "A fun language learning pack",
   "status": "beta",
   "version": "1.0.0",
-  "manifestUrl": "./my-game/manifest.json",
-  "avatarSource": "corpan/games/my-game/my-game-avatar.png",
-  "playUrl": "./my-game/",
-  "github": "https://github.com/corpora-inc/encorpora/tree/main/corpan/games/my-game"
+  "manifestUrl": "./my-pack/manifest.json",
+  "avatarSource": "corpan/packs/my-pack/my-pack-avatar.png",
+  "landingUrl": "./my-pack/",
+  "github": "https://github.com/corpora-inc/encorpora/tree/main/corpan/packs/my-pack"
 }
 ```
 
-### Step 3: (Optional) Add game avatar
+### Step 3: (Optional) Add pack avatar
 
 Point `avatarSource` at the canonical asset in the repo. The build copies it into `assets/` at publish time.
 
@@ -144,19 +141,19 @@ Point `avatarSource` at the canonical asset in the repo. The build copies it int
 Edit `.github/workflows/hover-runner-pages.yml`:
 
 ```yaml
-- name: Install My Game Dependencies
-  working-directory: corpan/games/my-game
+- name: Install My Pack Dependencies
+  working-directory: corpan/packs/my-pack
   run: npm install --legacy-peer-deps
 
-- name: Build My Game
-  working-directory: corpan/games/my-game
+- name: Build My Pack
+  working-directory: corpan/packs/my-pack
   run: npm run build
 
-- name: Copy My Game into web/io/out
+- name: Copy My Pack into web/io/out
   run: |
-    mkdir -p web/io/out/corpan/games/my-game
-    cp corpan/games/my-game/manifest.json web/io/out/corpan/games/my-game/
-    cp -R corpan/games/my-game/dist/. web/io/out/corpan/games/my-game/
+    mkdir -p web/io/out/corpan/packs/my-pack
+    cp corpan/packs/my-pack/manifest.json web/io/out/corpan/packs/my-pack/
+    cp -R corpan/packs/my-pack/dist/. web/io/out/corpan/packs/my-pack/
 ```
 
 ### Step 5: Test locally
@@ -165,7 +162,7 @@ Edit `.github/workflows/hover-runner-pages.yml`:
 ./web/scripts/serve-local.sh
 ```
 
-Open `http://localhost:8000/corpan/games/my-game/` to preview.
+Open `http://localhost:8000/corpan/packs/my-pack/` to preview.
 
 ## Adding a New App
 
@@ -208,7 +205,7 @@ The workflow runs when:
 
 - Changes are pushed to `main` branch in:
   - `web/io/**` (root site changes)
-  - `corpan/games/**` (any game changes)
+  - `corpan/packs/**` (any pack changes)
   - `web/pages/**` (Corpan page changes)
   - `.github/workflows/hover-runner-pages.yml` (workflow changes)
 - Manually triggered via `workflow_dispatch`
@@ -231,14 +228,14 @@ The `web/scripts/serve-local.sh` script builds and serves the complete composed 
 This will:
 1. Build `web/io/` site (Next.js) → `web/io/out/`
 2. Build Corpan pages into `web/io/out/corpan/`
-3. Build hover-runner into `web/io/out/corpan/games/hover-runner/`
+3. Build hover-runner into `web/io/out/corpan/packs/hover-runner/`
 4. Start server at `http://localhost:8000`
 
 Browse:
 - `http://localhost:8000/` - web/io/ root site
 - `http://localhost:8000/corpan/` - Corpan page
-- `http://localhost:8000/corpan/games/` - Games listing
-- `http://localhost:8000/corpan/games/hover-runner/` - Play hover-runner
+- `http://localhost:8000/corpan/packs/` - Packs listing
+- `http://localhost:8000/corpan/packs/hover-runner/` - Play hover-runner
 
 ### Manual Build Steps
 
@@ -258,10 +255,10 @@ npm run build  # → web/io/out/
 node web/pages/build.js /some/output/dir
 ```
 
-#### Individual game
+#### Individual pack
 
 ```bash
-cd corpan/games/hover-runner
+cd corpan/packs/hover-runner
 npm install --legacy-peer-deps
 npm run build  # → dist/
 ```
@@ -279,10 +276,10 @@ npm run build  # → dist/
 - Check browser console for JavaScript errors
 - Ensure placeholder `{{GAMES_DATA}}` or `{{APPS_DATA}}` exists in template
 
-### Game not loading
+### Pack not loading
 
 - Verify manifest.json is copied to correct location
-- Check that game paths in `games.json` match actual deployment
+- Check that pack paths in `packs.json` match actual deployment
 - Use browser DevTools Network tab to debug missing assets
 
 ## Future Improvements
@@ -290,7 +287,7 @@ npm run build  # → dist/
 Potential enhancements:
 
 1. **Static site generator**: Migrate to Astro or 11ty for more features
-2. **Search functionality**: Add search across games
-3. **Filtering/sorting**: Filter games by status, category, etc.
+2. **Search functionality**: Add search across packs
+3. **Filtering/sorting**: Filter packs by status, category, etc.
 4. **Analytics**: Add usage tracking
 5. **CI/CD improvements**: Parallel builds, caching, etc.

@@ -71,7 +71,9 @@
     "extra-large": "Extra large",
     "testTts": "Test TTS with the buttons below:",
     "showRomanization": "Show romanization",
-    "scrollNavigation": "Scroll navigation"
+    "scrollNavigation": "Scroll navigation",
+    "stacks": "Stacks",
+    "packs": "Packs"
   },
   "onboarding": {
     "welcome": "Welcome",
@@ -269,14 +271,14 @@
   },
   "packs": {
     "title": "Packs",
-    "available": "Available packs",
-    "emptyAvailable": "No packs yet.",
-    "installed": "Installed packs",
-    "emptyInstalled": "No packs installed.",
+    "available": "Available",
+    "emptyAvailable": "Nothing available yet.",
+    "installed": "Installed",
+    "emptyInstalled": "Nothing installed yet.",
     "get": "Get",
     "open": "Open",
     "remove": "Remove",
-    "version": "Version {{version}}",
+    "version": "v{{version}}",
     "refresh": "Refresh",
     "free": "Free",
     "install": "Install",
@@ -287,10 +289,13 @@
     "manifestTitle": "Manifest URL",
     "manifestPlaceholder": "https://example.com/manifest.json",
     "manifestHint": "Paste a manifest URL.",
-    "devUnlockTitle": "Developer packs",
+    "devUnlockTitle": "Developer Packs",
     "devUnlockHint": "Tap 7 times to unlock manifest installs.",
-    "devUnlockToast": "Developer packs unlocked.",
+    "devUnlockToast": "Developer Packs unlocked.",
     "devIntro": "Try a Corpán Pack or make your own.",
-    "devLink": "Learn more on Free2z"
+    "devLink": "Learn more on Free2z",
+    "new": "New",
+    "updates": "Updates",
+    "offline": "Offline"
   }
 }

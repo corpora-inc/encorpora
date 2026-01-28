@@ -1,8 +1,7 @@
 use crate::{
-    models::{SpeakArgs, VoiceInfo},
+    models::{SpeakArgs, TtsEngineStatus, VoiceInfo},
     Result, TtsExt,
 };
-use std::time::{SystemTime, UNIX_EPOCH};
 use tauri::{command, AppHandle, Runtime};
 
 /// Speak text using native TTS.
@@ -12,30 +11,13 @@ use tauri::{command, AppHandle, Runtime};
 ///   invoke("plugin:tts|speak", { args: { text, language?, rate?, voice_id? } })
 #[command]
 pub(crate) async fn speak<R: Runtime>(app: AppHandle<R>, args: SpeakArgs) -> Result<()> {
-    // Debounce state (static for plugin lifetime)
-    static mut LAST_SPEAK_TIME: u128 = 0;
-    const DEBOUNCE_MS: u128 = 500; // 500ms debounce window
-
-    let now = SystemTime::now()
-        .duration_since(UNIX_EPOCH)
-        .expect("Time went backwards")
-        .as_millis();
-
     println!(
-        "[NATIVE_TTS:DEBUG] speak invoked: text='{}', lang={:?}, rate={:?}, voice_id={:?}, time_since_last={}ms",
+        "[NATIVE_TTS:DEBUG] speak invoked: text='{}', lang={:?}, rate={:?}, voice_id={:?}",
         args.text.chars().take(50).collect::<String>(),
         args.language,
         args.rate,
-        args.voice_id,
-        now.saturating_sub(unsafe { LAST_SPEAK_TIME })
+        args.voice_id
     );
-
-    // Debounce bursty calls
-    if unsafe { now.saturating_sub(LAST_SPEAK_TIME) < DEBOUNCE_MS } {
-        println!("[NATIVE_TTS:DEBUG] speak debounced: too soon after last call");
-        return Ok(());
-    }
-    unsafe { LAST_SPEAK_TIME = now };
 
     // Single, unified backend entry point: pass optional voice_id through.
     app.tts()
@@ -63,6 +45,32 @@ pub(crate) async fn open_tts_settings<R: Runtime>(app: AppHandle<R>) -> Result<(
 pub(crate) async fn install_tts_data_if_supported<R: Runtime>(app: AppHandle<R>) -> Result<bool> {
     println!("[NATIVE_TTS:DEBUG] install_tts_data_if_supported invoked");
     app.tts().install_tts_data_if_supported()
+}
+
+/// Android engine inventory/status (supported=false on non-Android).
+#[command]
+pub(crate) async fn get_tts_engine_status<R: Runtime>(app: AppHandle<R>) -> Result<TtsEngineStatus> {
+    println!("[NATIVE_TTS:DEBUG] get_tts_engine_status invoked");
+    app.tts().get_tts_engine_status()
+}
+
+#[derive(serde::Deserialize)]
+#[serde(rename_all = "camelCase")]
+pub(crate) struct OpenEngineStoreArgs {
+    package_name: String,
+}
+
+/// Open a store listing for a given TTS engine package (Android only).
+#[command]
+pub(crate) async fn open_tts_engine_store<R: Runtime>(
+    app: AppHandle<R>,
+    args: OpenEngineStoreArgs,
+) -> Result<bool> {
+    println!(
+        "[NATIVE_TTS:DEBUG] open_tts_engine_store invoked: package={}",
+        args.package_name
+    );
+    app.tts().open_tts_engine_store(args.package_name)
 }
 
 // use tauri::{AppHandle, Runtime};

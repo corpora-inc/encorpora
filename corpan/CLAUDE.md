@@ -8,9 +8,9 @@ Corpan is a cross-platform language learning application built with:
 - **Frontend**: React + TypeScript + Vite + Tailwind CSS
 - **Backend**: Tauri (Rust) for native desktop/mobile capabilities
 - **Data Management**: Django backend (`dja/`) for content generation and SQLite database bundling
-- **Games**: Pluggable game system with SDK for standalone development
+- **Packs**: Pluggable pack system with SDK for standalone development
 
-The app delivers language learning content through mini-games packaged as downloadable content packs.
+The app delivers language learning content through mini-experiences packaged as downloadable content packs.
 
 ## Repository Structure
 
@@ -20,7 +20,7 @@ corpan-app/          # Main Tauri application
 │   ├── components/  # UI components (shadcn/ui + custom)
 │   ├── store/       # Zustand state management
 │   ├── util/        # Utilities (TTS, browser APIs)
-│   └── contentPacks/# Game pack loading logic
+│   └── contentPacks/# Pack loading logic
 ├── src-tauri/       # Rust backend
 │   ├── src/         # Main Rust code (DB queries, Tauri commands)
 │   ├── gen/         # Generated platform code (DO NOT EDIT)
@@ -36,9 +36,9 @@ dja/                 # Django content management
 └── db.sqlite3       # Development database
 └── release.sqlite3  # Production-ready database bundle
 
-games/               # Standalone game packages
-├── sdk/             # Corpan Game SDK for game development
-└── hover-runner/    # Reference game
+packs/               # Standalone pack packages
+├── sdk/             # Corpan Pack SDK for pack development
+└── hover-runner/    # Reference pack
 
 plugins/
 └── tauri-plugin-game-packs/  # Legacy plugin; MVP uses app-managed content pack installs
@@ -101,9 +101,9 @@ python make_release_sqlite.py
 ./add_translations.sh [language_code]
 ```
 
-### Games Development (games/)
+### Packs Development (packs/)
 
-Each game is a standalone package with its own build process. See `games/sdk/README.md` for SDK usage.
+Each pack is a standalone package with its own build process. See `packs/sdk/README.md` for SDK usage.
 
 ## Architecture Notes
 
@@ -137,14 +137,14 @@ Filters: `levels` (CEFR), `domains`, `language_codes`
 - `settings.ts`: User preferences, onboarding, text size, languages, TTS
 - `history.ts`: Learning history tracking
 - `rating.ts`: App rating prompts
-- `games.ts`: Installed games management
+- `games.ts`: Installed packs management
 - `translations.ts`: Translation cache
 
 ### Game System
 
 Games are loaded dynamically:
 1. Game manifests define entry point, styles, and metadata
-2. Games use the SDK (`games/sdk/`) to register with the host
+2. Packs use the SDK (`packs/sdk/`) to register with the host
 3. Host provides API (`hostApi`) for accessing entries, TTS, navigation
 4. Games render into a container and handle their own UI/logic
 
@@ -186,9 +186,9 @@ Native delivery:
 
 ### Creating a New Game
 
-1. Copy `games/sdk/` to your game directory
-2. Implement `registerGame()` with your game logic
-3. Create manifest.json with game metadata
+1. Copy `packs/sdk/` to your pack directory
+2. Implement `registerGame()` with your pack logic
+3. Create manifest.json with pack metadata
 4. Use `mountStandalone()` for browser development
 5. Package for distribution as downloadable content packs (zip + manifest)
 

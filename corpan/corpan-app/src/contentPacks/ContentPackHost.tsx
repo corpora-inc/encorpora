@@ -10,9 +10,15 @@ type ContentPackHostProps = {
   manifestUrl?: string
 }
 
-const DEV_RELOAD_INTERVAL_MS = 10000
+const DEV_RELOAD_INTERVAL_MS = 20000  // Poll every 2s for faster dev iteration
 
-const loadScript = async (src: string, id: string, type: "script" | "module", inline?: boolean) => {
+const loadScript = async (
+  src: string,
+  id: string,
+  type: "script" | "module",
+  inline?: boolean,
+  baseUrl?: string
+) => {
   if (inline) {
     // Inline mode: fetch content and inject as text
     console.log(`[loadScript] Fetching inline script from: ${src}`)
@@ -25,6 +31,10 @@ const loadScript = async (src: string, id: string, type: "script" | "module", in
       script.async = true
       script.dataset.corpGame = "true"
       script.dataset.corpGameId = id
+      if (baseUrl) {
+        script.dataset.corpGameBaseUrl = baseUrl
+      }
+      script.dataset.corpGameSrc = src
       if (type === "module") {
         script.type = "module"
       }
@@ -44,6 +54,10 @@ const loadScript = async (src: string, id: string, type: "script" | "module", in
     script.async = true
     script.dataset.corpGame = "true"
     script.dataset.corpGameId = id
+    if (baseUrl) {
+      script.dataset.corpGameBaseUrl = baseUrl
+    }
+    script.dataset.corpGameSrc = src
     if (type === "module") {
       script.type = "module"
     }
@@ -198,7 +212,7 @@ export default function ContentPackHost({
   const [error, setError] = useState<string | null>(null)
   const hasLoadedRef = useRef(false)
 
-  const hostApi = useMemo(() => createHostApi(), [])
+  const hostApi = useMemo(() => createHostApi(id), [id])
 
   useEffect(() => {
     let cancelled = false
@@ -210,7 +224,7 @@ export default function ContentPackHost({
     let isLoading = false
 
     const manifestRequestUrl =
-      manifestUrl ?? `/games/${id}/manifest.json`
+      manifestUrl ?? `/packs/${id}/manifest.json`
     const resolvedManifestUrl = new URL(
       manifestRequestUrl,
       window.location.href
@@ -400,7 +414,7 @@ export default function ContentPackHost({
           withCacheBust(new URL(manifest.entry, baseUrl).toString(), devToken)
         )
         console.log(`[ContentPackHost] Loading script: ${entryUrl}, inline=${useInlineLoad}`)
-        await loadScript(entryUrl, id, manifest.entryType ?? "script", useInlineLoad)
+        await loadScript(entryUrl, id, manifest.entryType ?? "script", useInlineLoad, baseUrl)
         console.log(`[ContentPackHost] Script loaded: ${entryUrl}`)
 
         activeModule = await waitForGameModule(manifest.id, id)

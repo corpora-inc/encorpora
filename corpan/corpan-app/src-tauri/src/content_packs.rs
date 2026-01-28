@@ -25,7 +25,7 @@ struct ContentPackIndex {
     packs: HashMap<String, ContentPackInfo>,
 }
 
-fn pack_root<R: Runtime>(app: &AppHandle<R>) -> Result<PathBuf, String> {
+pub fn pack_root<R: Runtime>(app: &AppHandle<R>) -> Result<PathBuf, String> {
     app.path()
         .app_data_dir()
         .map(|dir| dir.join("corpan-packs"))
@@ -222,17 +222,29 @@ pub async fn download_and_install<R: Runtime>(
     download_url: String,
     expected_sha256: Option<String>,
 ) -> Result<ContentPackInstallResult, String> {
+    eprintln!(
+        "[pack-install] Starting install pack_id={}, url={}",
+        pack_id, download_url
+    );
     let client = reqwest::Client::new();
     let res = client
         .get(&download_url)
         .send()
         .await
-        .map_err(|e| e.to_string())?;
+        .map_err(|e| format!("Download request failed: {e}"))?;
     let status = res.status();
     if !status.is_success() {
         return Err(format!("Download failed ({status})"));
     }
-    let bytes = res.bytes().await.map_err(|e| e.to_string())?;
+    let bytes = res
+        .bytes()
+        .await
+        .map_err(|e| format!("Download read failed: {e}"))?;
+    eprintln!(
+        "[pack-install] Downloaded {} bytes for {}",
+        bytes.len(),
+        pack_id
+    );
     if let Some(expected) = expected_sha256 {
         let actual = hash_bytes_sha256(&bytes);
         if actual != expected {
@@ -241,19 +253,22 @@ pub async fn download_and_install<R: Runtime>(
     }
 
     let root = pack_root(app)?;
-    fs::create_dir_all(&root).map_err(|e| e.to_string())?;
+    fs::create_dir_all(&root)
+        .map_err(|e| format!("Failed to create pack root: {e}"))?;
 
     let staging = root.join(format!(".{pack_id}.staging"));
     if staging.exists() {
         let _ = fs::remove_dir_all(&staging);
     }
-    fs::create_dir_all(&staging).map_err(|e| e.to_string())?;
+    fs::create_dir_all(&staging)
+        .map_err(|e| format!("Failed to create staging dir: {e}"))?;
 
     safe_extract_zip(&bytes, &staging)?;
 
     let pack_root_dir = find_pack_root(&staging).ok_or("Manifest not found in pack")?;
     let manifest_path = pack_root_dir.join("manifest.json");
-    let (manifest_id, name, version) = read_manifest_info(&manifest_path)?;
+    let (manifest_id, name, version) =
+        read_manifest_info(&manifest_path).map_err(|e| format!("Invalid manifest: {e}"))?;
     if manifest_id != pack_id {
         return Err("Pack id mismatch".to_string());
     }
@@ -264,13 +279,16 @@ pub async fn download_and_install<R: Runtime>(
         let _ = fs::remove_dir_all(&backup_dir);
     }
     if final_dir.exists() {
-        fs::rename(&final_dir, &backup_dir).map_err(|e| e.to_string())?;
+        fs::rename(&final_dir, &backup_dir)
+            .map_err(|e| format!("Failed to backup existing pack: {e}"))?;
     }
 
     if pack_root_dir == staging {
-        fs::rename(&staging, &final_dir).map_err(|e| e.to_string())?;
+        fs::rename(&staging, &final_dir)
+            .map_err(|e| format!("Failed to finalize pack install: {e}"))?;
     } else {
-        fs::rename(&pack_root_dir, &final_dir).map_err(|e| e.to_string())?;
+        fs::rename(&pack_root_dir, &final_dir)
+            .map_err(|e| format!("Failed to finalize pack install: {e}"))?;
         let _ = fs::remove_dir_all(&staging);
     }
 
@@ -289,6 +307,10 @@ pub async fn download_and_install<R: Runtime>(
     };
     index.packs.insert(info.id.clone(), info.clone());
     save_index(&root, &index)?;
+    eprintln!(
+        "[pack-install] Installed {} ({:?})",
+        info.id, info.version
+    );
 
     Ok(ContentPackInstallResult { pack: info })
 }

@@ -108,11 +108,13 @@ export function getPlatformBottomPadding(): number {
 }
 
 export function getPlatformTopPaddingButtons(): number {
-    // Mobile platforms need consistent top padding
-    if (isIOS() || isAndroid()) {
-        return 25;
+    if (isIOS()) {
+        return 35;
     }
-    return 0;
+    if (isAndroid()) {
+        return 30;
+    }
+    return 10;
 }
 
 export function getPlatformTopPaddingTranslations(): number {

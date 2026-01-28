@@ -71,7 +71,9 @@
     "extra-large": "অতিরিক্ত বড়",
     "testTts": "নিচের বোতাম দিয়ে টিটিএস পরীক্ষা করুন:",
     "showRomanization": "রোমানাইজেশন দেখান",
-    "scrollNavigation": "স্ক্রল নেভিগেশন"
+    "scrollNavigation": "স্ক্রল নেভিগেশন",
+    "packs": "Packs",
+    "stacks": "Stacks"
   },
   "onboarding": {
     "welcome": "স্বাগতম",
@@ -268,15 +270,15 @@
     "close": "বন্ধ করুন"
   },
   "packs": {
-    "title": "প্যাক",
-    "available": "উপলব্ধ প্যাক",
-    "emptyAvailable": "এখনও কোনো প্যাক নেই।",
-    "installed": "ইনস্টল করা প্যাক",
-    "emptyInstalled": "কোনো প্যাক ইনস্টল নেই।",
+    "title": "Packs",
+    "available": "উপলব্ধ",
+    "emptyAvailable": "এখনও কিছু উপলব্ধ নেই।",
+    "installed": "ইনস্টল করা",
+    "emptyInstalled": "এখনও কিছু ইনস্টল করা হয়নি।",
     "get": "নিন",
     "open": "খুলুন",
     "remove": "সরান",
-    "version": "সংস্করণ {{version}}",
+    "version": "v{{version}}",
     "refresh": "রিফ্রেশ",
     "free": "ফ্রি",
     "install": "ইনস্টল",
@@ -287,10 +289,13 @@
     "manifestTitle": "ম্যানিফেস্ট URL",
     "manifestPlaceholder": "https://example.com/manifest.json",
     "manifestHint": "ম্যানিফেস্ট URL পেস্ট করুন।",
-    "devUnlockTitle": "ডেভেলপার প্যাক",
+    "devUnlockTitle": "ডেভেলপার Packs",
     "devUnlockHint": "ম্যানিফেস্ট ইনস্টল খুলতে ৭ বার ট্যাপ করুন।",
-    "devUnlockToast": "ডেভেলপার প্যাক চালু হয়েছে।",
-    "devIntro": "একটি Corpán প্যাক চেষ্টা করুন বা নিজে বানান।",
-    "devLink": "Free2z\u001fএ আরও জানুন"
+    "devUnlockToast": "ডেভেলপার Packs আনলক হয়েছে।",
+    "devIntro": "Corpán Pack চেষ্টা করুন বা নিজেরটি তৈরি করুন।",
+    "devLink": "Free2z\u001fএ আরও জানুন",
+    "new": "নতুন",
+    "updates": "আপডেট",
+    "offline": "অফলাইন"
   }
 }

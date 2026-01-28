@@ -1,0 +1,14 @@
+{
+  "id": "hanzipan",
+  "name": "Hanzipan",
+  "version": "0.3.3",
+  "entry": "dist/app.js",
+  "styles": [
+    "dist/app.css"
+  ],
+  "entryType": "script",
+  "sdkVersion": "0.1.0",
+  "databases": {
+    "main": "data/hanzi.sqlite3"
+  }
+}

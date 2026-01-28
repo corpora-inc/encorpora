@@ -71,7 +71,9 @@
     "extra-large": "Molto grande",
     "testTts": "Prova le impostazioni TTS con i pulsanti qui sotto:",
     "showRomanization": "Mostra romanizzazione",
-    "scrollNavigation": "Navigazione a scorrimento"
+    "scrollNavigation": "Navigazione a scorrimento",
+    "packs": "Packs",
+    "stacks": "Stacks"
   },
   "onboarding": {
     "welcome": "Benvenuto",
@@ -268,15 +270,15 @@
     "feedbackButton": "Invia feedback su GitHub"
   },
   "packs": {
-    "title": "Pacchetti",
-    "available": "Pacchetti disponibili",
-    "emptyAvailable": "Nessun pacchetto disponibile.",
-    "installed": "Pacchetti installati",
-    "emptyInstalled": "Nessun pacchetto installato.",
+    "title": "Packs",
+    "available": "Disponibile",
+    "emptyAvailable": "Niente di disponibile per ora.",
+    "installed": "Installato",
+    "emptyInstalled": "Niente di installato per ora.",
     "get": "Ottieni",
     "open": "Apri",
     "remove": "Rimuovi",
-    "version": "Versione {{version}}",
+    "version": "v{{version}}",
     "refresh": "Aggiorna",
     "free": "Gratis",
     "install": "Installa",
@@ -287,10 +289,13 @@
     "manifestTitle": "URL del manifesto",
     "manifestPlaceholder": "https://esempio.com/manifest.json",
     "manifestHint": "Incolla un URL del manifesto.",
-    "devUnlockTitle": "Pacchetti per sviluppatori",
+    "devUnlockTitle": "Packs per sviluppatori",
     "devUnlockHint": "Tocca 7 volte per sbloccare le installazioni da manifesto.",
-    "devUnlockToast": "Pacchetti per sviluppatori sbloccati.",
-    "devIntro": "Prova un Pack Corpán o creane uno tuo.",
-    "devLink": "Scopri di più su Free2z"
+    "devUnlockToast": "Packs per sviluppatori sbloccati.",
+    "devIntro": "Prova un Pack di Corpán o creane uno tuo.",
+    "devLink": "Scopri di più su Free2z",
+    "new": "Nuovo",
+    "updates": "Aggiornamenti",
+    "offline": "Offline"
   }
 }

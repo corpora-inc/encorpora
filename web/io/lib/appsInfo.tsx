@@ -31,8 +31,8 @@ export const APPS_INFO: App[] = [
         icon: <FaGooglePlay />,
       },
       {
-        name: "Web Games",
-        link: "/corpan/games",
+        name: "Web Packs",
+        link: "/corpan/packs",
         icon: <FaGamepad />,
       },
     ],

@@ -1,0 +1,51 @@
+[
+  {
+    "id": "hover_runner",
+    "name": "Hover Runner",
+    "description": "3D fun in Hover Runner: lock in correct translations with the All-Hearing Ear and avoid wrong ones",
+    "status": "active",
+    "manifestUrl": "/corpan/packs/hover-runner/manifest.json",
+    "zipUrl": "/corpan/packs/hover-runner.zip",
+    "landingUrl": "/corpan/packs/hover-runner/",
+    "avatarSource": "corpan/packs/hover-runner/hover-runner-avatar.png",
+    "github": "https://github.com/corpora-inc/encorpora/tree/main/corpan/packs/hover-runner",
+    "videos": {
+      "shorts": [
+        "GnUNvb7n4hc",
+        "9rtYc8j4UQU",
+        "Rj0x7kug9oc"
+      ],
+      "demos": []
+    }
+  },
+  {
+    "id": "hanzipan",
+    "name": "Hanzipan",
+    "description": "A premium Mandarin character studio with stroke guidance, feedback, and infinite contextual examples",
+    "status": "prototype",
+    "zipUrl": "/corpan/packs/hanzipan.zip",
+    "landingUrl": "/corpan/packs/hanzipan/",
+    "avatarSource": "corpan/packs/hanzipan/hanzipan-avatar.png",
+    "github": "https://github.com/corpora-inc/encorpora/tree/main/corpan/packs/hanzipan",
+    "videos": {
+      "shorts": [],
+      "demos": []
+    }
+  },
+  {
+    "id": "juice_squeeze",
+    "name": "Juice Squeeze",
+    "description": "Fast-paced phrase building with splashy juice rewards and native audio feedback",
+    "status": "prototype",
+    "listed": false,
+    "manifestUrl": "/corpan/packs/juice-squeeze/manifest.json",
+    "zipUrl": "/corpan/packs/juice-squeeze.zip",
+    "landingUrl": "/corpan/packs/juice-squeeze/",
+    "avatarSource": "corpan/packs/juice-squeeze/juice-squeeze-avatar.svg",
+    "github": "https://github.com/corpora-inc/encorpora/tree/main/corpan/packs/juice-squeeze",
+    "videos": {
+      "shorts": [],
+      "demos": []
+    }
+  }
+]

@@ -71,7 +71,9 @@
     "extra-large": "ใหญ่มาก",
     "testTts": "ทดสอบ TTS ด้วยปุ่มด้านล่าง:",
     "showRomanization": "แสดงถอดเสียง",
-    "scrollNavigation": "การนำทางด้วยการเลื่อน"
+    "scrollNavigation": "การนำทางด้วยการเลื่อน",
+    "packs": "Packs",
+    "stacks": "Stacks"
   },
   "onboarding": {
     "welcome": "ยินดีต้อนรับ",
@@ -268,15 +270,15 @@
     "close": "ปิด"
   },
   "packs": {
-    "title": "แพ็ก",
-    "available": "แพ็กที่มี",
-    "emptyAvailable": "ยังไม่มีแพ็ก",
-    "installed": "แพ็กที่ติดตั้ง",
-    "emptyInstalled": "ยังไม่ได้ติดตั้งแพ็ก",
+    "title": "Packs",
+    "available": "พร้อมใช้งาน",
+    "emptyAvailable": "ยังไม่มีรายการที่พร้อมใช้งาน",
+    "installed": "ติดตั้งแล้ว",
+    "emptyInstalled": "ยังไม่มีรายการที่ติดตั้งแล้ว",
     "get": "รับ",
     "open": "เปิด",
     "remove": "ลบ",
-    "version": "เวอร์ชัน {{version}}",
+    "version": "v{{version}}",
     "refresh": "รีเฟรช",
     "free": "ฟรี",
     "install": "ติดตั้ง",
@@ -287,10 +289,13 @@
     "manifestTitle": "URL แมนิฟেস্ট",
     "manifestPlaceholder": "https://example.com/manifest.json",
     "manifestHint": "วาง URL แมนิฟেস্ট",
-    "devUnlockTitle": "แพ็กสำหรับนักพัฒนา",
+    "devUnlockTitle": "Packs สำหรับนักพัฒนา",
     "devUnlockHint": "แตะ 7 ครั้งเพื่อปลดล็อกการติดตั้งด้วยแมนิฟেস্ট",
-    "devUnlockToast": "ปลดล็อกแพ็กนักพัฒนาแล้ว",
-    "devIntro": "ลองแพ็ก Corpán หรือสร้างของคุณเอง",
-    "devLink": "ดูเพิ่มที่ Free2z"
+    "devUnlockToast": "ปลดล็อก Packs สำหรับนักพัฒนาแล้ว",
+    "devIntro": "ลอง Corpán Pack หรือสร้างของคุณเอง",
+    "devLink": "ดูเพิ่มที่ Free2z",
+    "new": "ใหม่",
+    "updates": "อัปเดต",
+    "offline": "ออฟไลน์"
   }
 }

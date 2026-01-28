@@ -13,7 +13,9 @@ import "./index.css";
 import { getPlatformTopPaddingButtons } from "./util/browser";
 
 import { useRatingStore } from "@/store/rating";
-import type { InstalledGame } from "@/store/games";
+import { useGamesStore, type InstalledGame } from "@/store/games";
+import { useCatalogStore } from "@/store/catalog";
+import { usePackUpdates } from "@/hooks/usePackUpdates";
 
 // In a module that always loads (e.g. App.tsx)
 if (import.meta.env.DEV) {
@@ -24,6 +26,7 @@ if (import.meta.env.DEV) {
 
 export default function App() {
   const [showSettings, setShowSettings] = useState(false);
+  const [settingsTab, setSettingsTab] = useState<"stacks" | "packs" | undefined>(undefined);
   const [activeGame, setActiveGame] = useState<{
     id: string;
     manifestUrl?: string;
@@ -37,6 +40,18 @@ export default function App() {
   });
   const onboarded = useSettingsStore((s) => s.onboarded);
   const textSize = useSettingsStore((s) => s.textSize);
+
+  // Track pack updates for badge
+  const gamesMap = useGamesStore((s) => s.games);
+  const catalog = useCatalogStore((s) => s.getCatalog());
+  const fetchCatalog = useCatalogStore((s) => s.fetchCatalog);
+  const installedGames = Object.values(gamesMap);
+  const updates = usePackUpdates(installedGames, catalog);
+
+  // Fetch catalog on mount
+  useEffect(() => {
+    fetchCatalog();
+  }, [fetchCatalog]);
 
   useEffect(() => {
     const onPop = () => {
@@ -89,6 +104,9 @@ export default function App() {
     const onExit = () => {
       setActiveGame(null);
       updateGameParam(null);
+      // Reopen settings modal to Packs tab after exiting a game
+      setShowSettings(true);
+      setSettingsTab("packs");
     };
     window.addEventListener("corpan:exit", onExit as EventListener);
     return () => window.removeEventListener("corpan:exit", onExit as EventListener);
@@ -107,27 +125,38 @@ export default function App() {
           style={{ marginTop: getPlatformTopPaddingButtons() - 3 }}
         >
           <div className="flex items-center">
-            <Button
-              variant="default"
-              size="lg"
-              className="h-10 w-12 rounded-md shadow-lg bg-white border border-gray-200 hover:bg-gray-100 transition"
-              aria-label="Settings"
-              onClick={() => setShowSettings(true)}
-            >
-              <SettingsIcon className="text-gray-600 h-5 w-5" />
-            </Button>
+            <div className="relative">
+              <Button
+                variant="default"
+                size="lg"
+                className="h-10 w-12 rounded-md shadow-lg bg-white border border-gray-200 hover:bg-gray-100 transition"
+                aria-label="Settings"
+                onClick={() => setShowSettings(true)}
+              >
+                <SettingsIcon className="text-gray-600 h-5 w-5" />
+              </Button>
+              {updates.length > 0 && (
+                <span className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-purple-600 text-xs font-semibold text-white animate-in fade-in zoom-in duration-500 animate-breathe">
+                  {updates.length}
+                </span>
+              )}
+            </div>
           </div>
         </div>
       </div>
 
       <SettingsModal
         open={showSettings}
-        onClose={() => setShowSettings(false)}
+        onClose={() => {
+          setShowSettings(false);
+          setSettingsTab(undefined);
+        }}
         onLaunchGame={(game: InstalledGame) => {
           setShowSettings(false);
           setActiveGame({ id: game.id, manifestUrl: game.manifestUrl });
           updateGameParam({ id: game.id, manifestUrl: game.manifestUrl });
         }}
+        initialTab={settingsTab}
       />
 
       <RatingPrompt />

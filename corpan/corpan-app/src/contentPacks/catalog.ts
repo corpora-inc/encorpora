@@ -11,6 +11,7 @@ export type CatalogGame = {
   version: string
   manifestUrl?: string
   description?: string
+  imageUrl?: string
   purchase?: PurchaseInfo
 }
 
@@ -19,19 +20,70 @@ const DEFAULT_CATALOG: CatalogGame[] = [
     id: "hover_runner",
     name: "Hover Runner",
     version: "0.1.0",
-    manifestUrl: "/games/hover-runner/manifest.json",
-    description: "Hoverboard runner that drills core phrases.",
+    manifestUrl: "https://encorpora.io/corpan/packs/hover-runner.zip",
+    description:
+      "3D fun in Hover Runner: lock in correct translations with the All-Hearing Ear and avoid wrong ones.",
+    purchase: { type: "free", priceLabel: "Free" },
+  },
+  {
+    id: "hanzipan",
+    name: "Hanzipan",
+    version: "0.3.0",
+    manifestUrl: "https://encorpora.io/corpan/packs/hanzipan.zip",
+    description: "Character-first handwriting studio for Mandarin.",
     purchase: { type: "free", priceLabel: "Free" },
   },
 ]
 
-const DEV_CATALOG: CatalogGame[] = [...DEFAULT_CATALOG]
+const DEV_CATALOG: CatalogGame[] = [
+  {
+    id: "hover_runner",
+    name: "Hover Runner",
+    version: "0.1.0",
+    manifestUrl: "/packs/hover-runner.zip",
+    description:
+      "3D fun in Hover Runner: lock in correct translations with the All-Hearing Ear and avoid wrong ones.",
+    purchase: { type: "free", priceLabel: "Free" },
+  },
+  {
+    id: "hanzipan",
+    name: "Hanzipan",
+    version: "0.3.0",
+    manifestUrl: "/packs/hanzipan.zip",
+    description: "Character-first handwriting studio for Mandarin.",
+    purchase: { type: "free", priceLabel: "Free" },
+  },
+]
+
+const PRODUCTION_CATALOG_URL = "https://encorpora.io/corpan/packs/catalog.json"
+
+const isTauriRuntime = () => {
+  if (typeof window === "undefined") return false
+  return (
+    "__TAURI__" in window ||
+    "__TAURI_INTERNALS__" in window ||
+    (window as any).__TAURI_IPC__ !== undefined
+  )
+}
 
 const getCatalogUrl = () => {
   const envUrl = import.meta.env.VITE_GAME_CATALOG_URL
   if (typeof envUrl === "string" && envUrl.length > 0) {
+    console.log("[catalog] Using VITE_GAME_CATALOG_URL:", envUrl)
     return envUrl
   }
+  // In production, always try to fetch from the published catalog
+  if (!import.meta.env.DEV) {
+    console.log("[catalog] Production mode, using PRODUCTION_CATALOG_URL")
+    return PRODUCTION_CATALOG_URL
+  }
+  // In dev mode on mobile/desktop (Tauri), use production catalog for testing consumer experience
+  if (isTauriRuntime()) {
+    console.log("[catalog] Dev mode + Tauri detected, using PRODUCTION_CATALOG_URL for consumer testing")
+    return PRODUCTION_CATALOG_URL
+  }
+  // In dev mode in browser, use null to get local dev catalog
+  console.log("[catalog] Dev mode in browser, using local DEV_CATALOG")
   return null
 }
 
@@ -77,6 +129,7 @@ const parseCatalog = (data: unknown): CatalogGame[] | null => {
       version,
       manifestUrl: toOptionalString(record.manifestUrl),
       description: toOptionalString(record.description),
+      imageUrl: toOptionalString(record.imageUrl),
       purchase: parsePurchase(record.purchase),
     })
   }
@@ -86,16 +139,23 @@ const parseCatalog = (data: unknown): CatalogGame[] | null => {
 export const fetchGameCatalog = async (): Promise<CatalogGame[]> => {
   const urlValue = getCatalogUrl()
   if (!urlValue) {
+    console.log("[catalog] No catalog URL, using defaults")
     return getDefaultCatalog()
   }
   try {
     const url = new URL(urlValue, window.location.href).toString()
+    console.log("[catalog] Fetching from:", url)
     const res = await fetch(url, { cache: "no-store" })
-    if (!res.ok) return getDefaultCatalog()
+    if (!res.ok) {
+      console.log("[catalog] Fetch failed with status:", res.status)
+      return getDefaultCatalog()
+    }
     const data = (await res.json()) as unknown
     const parsed = parseCatalog(data)
+    console.log("[catalog] Parsed catalog:", parsed)
     return parsed ?? getDefaultCatalog()
-  } catch {
+  } catch (error) {
+    console.error("[catalog] Fetch error:", error)
     return getDefaultCatalog()
   }
 }
@@ -115,4 +175,33 @@ export const compareVersions = (a: string, b: string) => {
     if (diff !== 0) return diff
   }
   return 0
+}
+
+export type UpdateType = "major" | "minor" | "patch"
+
+/**
+ * Determine the type of update based on semantic versioning
+ * @param remoteVersion The version available remotely
+ * @param localVersion The currently installed version
+ * @returns 'major', 'minor', or 'patch' if remote is newer, null otherwise
+ */
+export const getUpdateType = (
+  remoteVersion: string,
+  localVersion: string
+): UpdateType | null => {
+  const remote = normalizeVersion(remoteVersion)
+  const local = normalizeVersion(localVersion)
+
+  // Check major version (X.0.0)
+  if ((remote[0] ?? 0) > (local[0] ?? 0)) return "major"
+  if ((remote[0] ?? 0) < (local[0] ?? 0)) return null
+
+  // Check minor version (0.X.0)
+  if ((remote[1] ?? 0) > (local[1] ?? 0)) return "minor"
+  if ((remote[1] ?? 0) < (local[1] ?? 0)) return null
+
+  // Check patch version (0.0.X)
+  if ((remote[2] ?? 0) > (local[2] ?? 0)) return "patch"
+
+  return null // Same version or local is newer
 }

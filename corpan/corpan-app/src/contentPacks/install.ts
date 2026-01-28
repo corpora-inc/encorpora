@@ -19,6 +19,8 @@ export type InstallResult = {
   name?: string
   manifestUrl: string
   version?: string
+  description?: string
+  imageUrl?: string
   installedAt: number
   source: InstallSource
 }
@@ -66,8 +68,15 @@ const hashManifest = async (text: string) => {
   return toHex(digest)
 }
 
-const isTauriRuntime = () =>
-  typeof window !== "undefined" && "__TAURI__" in window
+export const isTauriRuntime = () => {
+  if (typeof window === "undefined") return false
+  // Check for Tauri-specific APIs
+  return (
+    "__TAURI__" in window ||
+    "__TAURI_INTERNALS__" in window ||
+    (window as any).__TAURI_IPC__ !== undefined
+  )
+}
 
 const fetchManifestText = async (url: string) => {
   if (!import.meta.env.DEV && isTauriRuntime()) {
@@ -99,12 +108,16 @@ export const installPack = async (
       throw new Error("Could not determine pack ID from ZIP filename")
     }
 
-    return installPackFromDownload({
+    const result = await installPackFromDownload({
       packId,
       downloadUrl: trimmed,
       expectedSha256: request.expectedHash,
       source: request.source,
     })
+    return {
+      ...result,
+      version: result.version ?? request.expectedVersion,
+    }
   }
 
   // Handle manifest.json URLs
@@ -124,6 +137,7 @@ export const installPack = async (
     id?: string
     name?: string
     version?: string
+    description?: string
   }
   if (!manifest.id) {
     throw new Error("Manifest missing id")
@@ -133,6 +147,7 @@ export const installPack = async (
     name: manifest.name,
     manifestUrl: resolved,
     version: manifest.version ?? request.expectedVersion,
+    description: manifest.description,
     installedAt: Date.now(),
     source: request.source,
   }
@@ -141,18 +156,38 @@ export const installPack = async (
 export const installPackFromDownload = async (
   request: DownloadInstallRequest
 ): Promise<InstallResult> => {
-  const { installContentPackFromUrl } = await import("./native")
-  const result = await installContentPackFromUrl({
-    packId: request.packId,
-    downloadUrl: request.downloadUrl,
-    expectedSha256: request.expectedSha256,
-  })
-  return {
-    packId: result.pack.id,
-    name: result.pack.name,
-    manifestUrl: result.pack.manifest_url,
-    version: result.pack.version,
-    installedAt: result.pack.installed_at,
-    source: request.source,
+  console.log("[install] Attempting to install pack:", request.packId)
+  console.log("[install] Tauri runtime detected:", isTauriRuntime())
+  console.log("[install] Window.__TAURI__:", (window as any).__TAURI__)
+
+  try {
+    const { installContentPackFromUrl } = await import("./native")
+    console.log("[install] Native module imported successfully")
+
+    const result = await installContentPackFromUrl({
+      packId: request.packId,
+      downloadUrl: request.downloadUrl,
+      expectedSha256: request.expectedSha256,
+    })
+    console.log("[install] Install successful:", result)
+
+    return {
+      packId: result.pack.id,
+      name: result.pack.name,
+      manifestUrl: result.pack.manifest_url,
+      version: result.pack.version,
+      installedAt: result.pack.installed_at,
+      source: request.source,
+    }
+  } catch (err) {
+    console.error("[install] Install failed:", err)
+    const message = err instanceof Error ? err.message : String(err)
+
+    // If the error suggests Tauri is not available, provide helpful message
+    if (message.includes("__TAURI__") || message.includes("invoke")) {
+      throw new Error("Pack downloads require the Corpán app. This feature is not available in the browser.")
+    }
+
+    throw new Error(`Pack download install failed: ${message}`)
   }
 }

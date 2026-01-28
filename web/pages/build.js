@@ -5,7 +5,7 @@
  * This script generates landing pages at each level:
  * - Root: /index.html
  * - Corpan: /corpan/index.html
- * - Games: /corpan/games/index.html
+ * - Packs: /corpan/packs/index.html
  *
  * Usage: node build.js <output-dir>
  */
@@ -27,17 +27,7 @@ const CORPAN_LOGO_SOURCE = path.join(
   '512x512.png'
 );
 
-function normalizeBasePath(value) {
-  const trimmed = (value || '').trim();
-  if (!trimmed || trimmed === '/') {
-    return '';
-  }
-  const normalized = trimmed.startsWith('/') ? trimmed : `/${trimmed}`;
-  return normalized.replace(/\/$/, '');
-}
-
-const basePath = normalizeBasePath(process.env.ENCORPORA_BASE_PATH);
-const basePathWithSlash = basePath ? `${basePath}/` : '/';
+const basePathWithSlash = '/';
 
 function readTemplate(name) {
   const templatePath = path.join(TEMPLATES_DIR, `${name}.html`);
@@ -47,6 +37,35 @@ function readTemplate(name) {
 function readData(name) {
   const dataPath = path.join(DATA_DIR, `${name}.json`);
   return JSON.parse(fs.readFileSync(dataPath, 'utf-8'));
+}
+
+function resolveManifestPath(pack) {
+  if (pack.manifestUrl && typeof pack.manifestUrl === 'string') {
+    const trimmed = pack.manifestUrl.replace(/^\//, '');
+    if (trimmed.startsWith('corpan/packs/')) {
+      return path.join(REPO_ROOT, trimmed);
+    }
+  }
+  const slug = String(pack.id || '').replace(/_/g, '-');
+  if (!slug) return null;
+  return path.join(REPO_ROOT, 'corpan', 'packs', slug, 'manifest.json');
+}
+
+function readManifestVersion(pack) {
+  const manifestPath = resolveManifestPath(pack);
+  if (!manifestPath || !fs.existsSync(manifestPath)) {
+    console.warn(`[pages] Missing manifest for ${pack.id}, using 0.0.0`);
+    return "0.0.0";
+  }
+  try {
+    const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf-8'));
+    if (manifest && typeof manifest.version === 'string' && manifest.version.trim()) {
+      return manifest.version.trim();
+    }
+  } catch (error) {
+    console.warn(`[pages] Failed to read manifest for ${pack.id}:`, error);
+  }
+  return "0.0.0";
 }
 
 function ensureDir(dir) {
@@ -74,20 +93,39 @@ function applyBasePath(html) {
   return html.replace(/\{\{BASE_PATH\}\}/g, basePathWithSlash);
 }
 
-function buildGameLandingPage(game, outputDir) {
+function resolveLandingDir(pack, outputDir) {
+  if (typeof pack.landingUrl === 'string' && pack.landingUrl.trim()) {
+    const trimmed = pack.landingUrl.replace(/^\//, '').replace(/\/$/, '');
+    if (trimmed) {
+      return path.join(outputDir, trimmed);
+    }
+  }
+  return path.join(outputDir, 'corpan', 'packs', pack.id);
+}
+
+function buildPackLandingPage(pack, outputDir) {
   const gameLandingTemplate = applyBasePath(readTemplate('game-landing'));
+  const urls = {
+    zip: pack.zipUrl || `${basePathWithSlash}corpan/packs/${pack.id}.zip`
+  };
+  if (pack.manifestUrl) {
+    urls.manifest = pack.manifestUrl;
+  }
+  const githubUrl =
+    pack.github ||
+    `https://github.com/corpora-inc/encorpora/tree/main/corpan/packs/${pack.id}`;
 
   // Build video section HTML
   let videoSectionHtml = '';
-  const hasVideos = (game.videos?.shorts && game.videos.shorts.length > 0) ||
-                     (game.videos?.demos && game.videos.demos.length > 0);
+  const hasVideos = (pack.videos?.shorts && pack.videos.shorts.length > 0) ||
+                     (pack.videos?.demos && pack.videos.demos.length > 0);
 
   if (hasVideos) {
     videoSectionHtml = '<div class="section"><h2>Watch in Action</h2><div class="videos-grid">';
 
     // Add shorts
-    if (game.videos.shorts) {
-      game.videos.shorts.forEach(videoId => {
+    if (pack.videos.shorts) {
+      pack.videos.shorts.forEach(videoId => {
         videoSectionHtml += `
           <div class="video-container">
             <iframe src="https://www.youtube.com/embed/${videoId}"
@@ -98,8 +136,8 @@ function buildGameLandingPage(game, outputDir) {
     }
 
     // Add demo videos
-    if (game.videos.demos) {
-      game.videos.demos.forEach(videoId => {
+    if (pack.videos.demos) {
+      pack.videos.demos.forEach(videoId => {
         videoSectionHtml += `
           <div class="video-container video-wide">
             <iframe src="https://www.youtube.com/embed/${videoId}"
@@ -114,32 +152,35 @@ function buildGameLandingPage(game, outputDir) {
 
   // Replace placeholders
   let html = gameLandingTemplate
-    .replace(/\{\{GAME_ID\}\}/g, game.id)
-    .replace(/\{\{GAME_NAME\}\}/g, game.name)
-    .replace(/\{\{GAME_DESCRIPTION\}\}/g, game.description)
-    .replace(/\{\{GAME_VERSION\}\}/g, game.version)
-    .replace(/\{\{GAME_AVATAR\}\}/g, game.avatarUrl || `${basePathWithSlash}assets/${game.id}-avatar.png`)
-    .replace('{{VIDEO_SECTION}}', videoSectionHtml);
+    .replace(/\{\{GAME_ID\}\}/g, pack.id)
+    .replace(/\{\{GAME_NAME\}\}/g, pack.name)
+    .replace(/\{\{GAME_DESCRIPTION\}\}/g, pack.description)
+    .replace(/\{\{GAME_VERSION\}\}/g, pack.version)
+    .replace(/\{\{GAME_AVATAR\}\}/g, pack.avatarUrl || `${basePathWithSlash}assets/${pack.id}-avatar.png`)
+    .replace(/\{\{GAME_GITHUB\}\}/g, githubUrl)
+    .replace('{{VIDEO_SECTION}}', videoSectionHtml)
+    .replace('{{URLS_JSON}}', JSON.stringify(urls));
 
   // Write file
-  const gameDir = path.join(outputDir, 'corpan', 'games', game.id);
-  ensureDir(gameDir);
-  fs.writeFileSync(path.join(gameDir, 'index.html'), html);
+  const packDir = resolveLandingDir(pack, outputDir);
+  ensureDir(packDir);
+  fs.writeFileSync(path.join(packDir, 'index.html'), html);
 }
 
 function buildPages(outputDir) {
   console.log('Building Corpan pages...');
   console.log(`Output directory: ${outputDir}`);
-  if (basePath) {
-    console.log(`Base path: ${basePath}`);
-  }
 
   // Load data
-  const gamesData = readData('games');
+  const packsData = readData('packs').map((pack) => ({
+    ...pack,
+    version: readManifestVersion(pack),
+  }));
+  const isListed = (pack) => pack.listed !== false;
 
   // Load templates
   const corpanTemplate = applyBasePath(readTemplate('corpan'));
-  const gamesTemplate = applyBasePath(readTemplate('games'));
+  const packsTemplate = applyBasePath(readTemplate('packs'));
 
   // Always write to outputDir directly - GitHub Pages handles base path routing
   const outputRoot = outputDir;
@@ -147,22 +188,22 @@ function buildPages(outputDir) {
 
   // Create directory structure for Corpan pages
   ensureDir(path.join(outputRoot, 'corpan'));
-  ensureDir(path.join(outputRoot, 'corpan', 'games'));
+  ensureDir(path.join(outputRoot, 'corpan', 'packs'));
 
   // Copy shared assets from canonical locations
   console.log('Copying assets...');
   copyFileSafe(CORPAN_LOGO_SOURCE, path.join(assetsDir, 'logo-512.png'));
 
-  const gamesWithAssets = gamesData.map((game) => {
+  const packsWithAssets = packsData.map((pack) => {
     const fallbackAvatar = path.join(
       'corpan',
-      'games',
-      game.id,
-      `${game.id}-avatar.png`
+      'packs',
+      pack.id,
+      `${pack.id}-avatar.png`
     );
-    const avatarSourcePath = resolveAssetSource(game.avatarSource || fallbackAvatar);
+    const avatarSourcePath = resolveAssetSource(pack.avatarSource || fallbackAvatar);
     const avatarExt = avatarSourcePath ? path.extname(avatarSourcePath) || '.png' : '.png';
-    const avatarFileName = `${game.id}-avatar${avatarExt}`;
+    const avatarFileName = `${pack.id}-avatar${avatarExt}`;
     const avatarDest = path.join(assetsDir, avatarFileName);
 
     if (avatarSourcePath) {
@@ -170,36 +211,70 @@ function buildPages(outputDir) {
     }
 
     return {
-      ...game,
+      ...pack,
       avatarUrl: `${basePathWithSlash}assets/${avatarFileName}`,
     };
   });
+  const listedPacks = packsWithAssets.filter(isListed);
 
   // Build Corpan page
   console.log('Building corpan/index.html...');
   fs.writeFileSync(path.join(outputRoot, 'corpan', 'index.html'), corpanTemplate);
 
-  // Build Games listing page
-  console.log('Building corpan/games/index.html...');
-  const gamesHtml = gamesTemplate.replace(
-    '{{GAMES_DATA}}',
-    JSON.stringify(gamesWithAssets)
+  // Build Packs listing page
+  console.log('Building corpan/packs/index.html...');
+  const packsHtml = packsTemplate.replace(
+    '{{PACKS_DATA}}',
+    JSON.stringify(listedPacks)
   );
-  fs.writeFileSync(path.join(outputRoot, 'corpan', 'games', 'index.html'), gamesHtml);
+  fs.writeFileSync(path.join(outputRoot, 'corpan', 'packs', 'index.html'), packsHtml);
 
-  // Build game landing pages
-  console.log('Building game landing pages...');
-  gamesWithAssets.forEach(game => {
-    console.log(`  - corpan/games/${game.id}/index.html`);
-    buildGameLandingPage(game, outputRoot);
+  // Build pack landing pages
+  console.log('Building pack landing pages...');
+  packsWithAssets.forEach(pack => {
+    const landingPath = typeof pack.landingUrl === 'string' && pack.landingUrl.trim()
+      ? pack.landingUrl.replace(/^\//, '').replace(/\/$/, '')
+      : `corpan/packs/${pack.id}`;
+    console.log(`  - ${landingPath}/index.html`);
+    buildPackLandingPage(pack, outputRoot);
   });
+
+  // Generate catalog.json for app consumption
+  console.log('Generating catalog.json...');
+  const catalogData = packsData.filter(isListed).map(pack => {
+    // Use zipUrl if available, otherwise fallback to manifest
+    const manifestUrl = pack.zipUrl
+      ? (pack.zipUrl.startsWith('/') ? `https://encorpora.io${pack.zipUrl}` : pack.zipUrl)
+      : (pack.manifestUrl
+        ? (pack.manifestUrl.startsWith('/') ? `https://encorpora.io${pack.manifestUrl}` : pack.manifestUrl)
+        : `https://encorpora.io/corpan/packs/${pack.id}.zip`);
+
+    // Get the avatar URL from the processed pack (matches what's copied to assets/)
+    const packWithAssets = packsWithAssets.find(p => p.id === pack.id);
+    const imageUrl = packWithAssets?.avatarUrl
+      ? (packWithAssets.avatarUrl.startsWith('/') ? `https://encorpora.io${packWithAssets.avatarUrl}` : packWithAssets.avatarUrl)
+      : `https://encorpora.io/assets/${pack.id}-avatar.png`;
+
+    return {
+      id: pack.id,
+      name: pack.name,
+      version: pack.version,
+      manifestUrl: manifestUrl,
+      description: pack.description,
+      imageUrl: imageUrl,
+      purchase: { type: "free", priceLabel: "Free" }
+    };
+  });
+  const catalogPath = path.join(outputRoot, 'corpan', 'packs', 'catalog.json');
+  fs.writeFileSync(catalogPath, JSON.stringify(catalogData, null, 2));
 
   console.log('✓ Corpan pages built successfully!');
   console.log('\nGenerated:');
   console.log('  - corpan/index.html');
-  console.log('  - corpan/games/index.html');
-  gamesWithAssets.forEach(game => {
-    console.log(`  - corpan/games/${game.id}/index.html`);
+  console.log('  - corpan/packs/index.html');
+  console.log('  - corpan/packs/catalog.json');
+  packsWithAssets.forEach(pack => {
+    console.log(`  - corpan/packs/${pack.id}/index.html`);
   });
   console.log('  - assets/ (images)');
 }

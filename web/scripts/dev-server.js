@@ -3,7 +3,7 @@
  * Development server that composes:
  * - Next.js dev server (web/io/) at root
  * - Static Corpan pages from web/io/out/corpan
- * - Static game builds from web/io/out/corpan/games
+ * - Static pack builds from web/io/out/corpan/packs
  */
 
 const http = require('http');
@@ -12,22 +12,14 @@ const fs = require('fs');
 const path = require('path');
 const { URL } = require('url');
 
-const DEV_PORT = 8000;
+const DEV_PORT = Number(process.env.DEV_PORT) || 8000;
 const NEXT_PORT = 3000;
 const OUT_DIR = path.join(__dirname, '..', 'io', 'out');
+const CERT_DIR = path.join(__dirname, 'dev-cert');
+const DEFAULT_CERT = path.join(CERT_DIR, 'localhost.pem');
+const DEFAULT_KEY = path.join(CERT_DIR, 'localhost-key.pem');
 
-const normalizeBasePath = (value) => {
-  const trimmed = (value || '').trim();
-  if (!trimmed || trimmed === '/') {
-    return '';
-  }
-  const normalized = trimmed.startsWith('/') ? trimmed : `/${trimmed}`;
-  return normalized.replace(/\/$/, '');
-};
-
-const basePath = normalizeBasePath(process.env.ENCORPORA_BASE_PATH);
-const basePathPrefix = basePath ? `${basePath}/` : '';
-const routePrefix = basePathPrefix || '/';
+const routePrefix = '/';
 
 // MIME types
 const MIME_TYPES = {
@@ -57,7 +49,13 @@ function serveStaticFile(filepath, res) {
     }
 
     const mimeType = getMimeType(filepath);
-    res.writeHead(200, { 'Content-Type': mimeType });
+    // Disable caching for dev - critical for hot reload
+    res.writeHead(200, {
+      'Content-Type': mimeType,
+      'Cache-Control': 'no-cache, no-store, must-revalidate',
+      'Pragma': 'no-cache',
+      'Expires': '0'
+    });
     res.end(data);
   });
 }
@@ -85,13 +83,15 @@ function proxyToNext(req, res) {
   req.pipe(proxy);
 }
 
-const server = http.createServer((req, res) => {
-  const url = new URL(req.url, `http://localhost:${DEV_PORT}`);
-  const pathname = url.pathname;
+function createHandler() {
+  return (req, res) => {
+    const scheme = req.socket.encrypted ? 'https' : 'http';
+    const url = new URL(req.url, `${scheme}://localhost:${DEV_PORT}`);
+    const pathname = url.pathname;
 
-  // Serve static files for /corpan and /assets (with optional base path)
-  const corpanPrefix = basePath ? `${basePath}/corpan` : '/corpan';
-  const assetsPrefix = basePath ? `${basePath}/assets` : '/assets';
+  // Serve static files for /corpan and /assets
+  const corpanPrefix = '/corpan';
+  const assetsPrefix = '/assets';
   if (pathname.startsWith(corpanPrefix) || pathname.startsWith(assetsPrefix)) {
     const relativePath = pathname.replace(/^\//, '');
     let filepath = path.join(OUT_DIR, relativePath);
@@ -110,21 +110,48 @@ const server = http.createServer((req, res) => {
 
   // Proxy everything else to Next.js
   console.log(`[dev-server] Proxy: ${pathname} → Next.js`);
-  proxyToNext(req, res);
-});
+    proxyToNext(req, res);
+  };
+}
+
+function resolveHttpsConfig() {
+  const certPath = process.env.DEV_HTTPS_CERT || process.env.SSL_CERT_FILE || DEFAULT_CERT;
+  const keyPath = process.env.DEV_HTTPS_KEY || process.env.SSL_KEY_FILE || DEFAULT_KEY;
+  const wantHttps =
+    String(process.env.DEV_HTTPS || '').toLowerCase() === 'true' ||
+    String(process.env.DEV_HTTPS || '') === '1' ||
+    (fs.existsSync(certPath) && fs.existsSync(keyPath));
+  if (!wantHttps) return null;
+  if (!fs.existsSync(certPath) || !fs.existsSync(keyPath)) {
+    console.error('[dev-server] HTTPS requested but cert/key not found.');
+    console.error(`[dev-server] cert: ${certPath}`);
+    console.error(`[dev-server] key:  ${keyPath}`);
+    process.exit(1);
+  }
+  return {
+    cert: fs.readFileSync(certPath),
+    key: fs.readFileSync(keyPath),
+  };
+}
+
+const httpsConfig = resolveHttpsConfig();
+const server = httpsConfig
+  ? https.createServer(httpsConfig, createHandler())
+  : http.createServer(createHandler());
 
 server.listen(DEV_PORT, () => {
+  const protocol = httpsConfig ? 'https' : 'http';
   console.log('');
   console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
   console.log('  🚀 Development server running');
   console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
   console.log('');
-  console.log(`  Local:   http://localhost:${DEV_PORT}`);
+  console.log(`  Local:   ${protocol}://localhost:${DEV_PORT}`);
   console.log('');
   console.log('  Routes:');
   console.log(`  • ${routePrefix}         → Next.js (hot reload)`);
   console.log(`  • ${routePrefix}corpan   → Static (auto rebuild)`);
-  console.log(`  • ${routePrefix}corpan/games → Static (auto rebuild)`);
+  console.log(`  • ${routePrefix}corpan/packs → Static (auto rebuild)`);
   console.log(`  • ${routePrefix}assets   → Static`);
   console.log('');
   console.log('  Press Ctrl+C to stop');

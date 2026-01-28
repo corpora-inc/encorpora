@@ -71,7 +71,9 @@
     "extra-large": "Muy grande",
     "testTts": "Prueba TTS con los botones de abajo:",
     "showRomanization": "Mostrar romanización",
-    "scrollNavigation": "Navegación con desplazamiento"
+    "scrollNavigation": "Navegación con desplazamiento",
+    "packs": "Packs",
+    "stacks": "Stacks"
   },
   "onboarding": {
     "welcome": "Bienvenido",
@@ -268,15 +270,15 @@
     "feedbackButton": "Enviar comentarios en GitHub"
   },
   "packs": {
-    "title": "Paquetes",
-    "available": "Paquetes disponibles",
-    "emptyAvailable": "Aún no hay paquetes.",
-    "installed": "Paquetes instalados",
-    "emptyInstalled": "No hay paquetes instalados.",
+    "title": "Packs",
+    "available": "Disponible",
+    "emptyAvailable": "Nada disponible todavía.",
+    "installed": "Instalado",
+    "emptyInstalled": "Nada instalado todavía.",
     "get": "Obtener",
     "open": "Abrir",
     "remove": "Eliminar",
-    "version": "Versión {{version}}",
+    "version": "v{{version}}",
     "refresh": "Actualizar",
     "free": "Gratis",
     "install": "Instalar",
@@ -287,10 +289,13 @@
     "manifestTitle": "URL del manifiesto",
     "manifestPlaceholder": "https://ejemplo.com/manifest.json",
     "manifestHint": "Pega una URL de manifiesto.",
-    "devUnlockTitle": "Paquetes de desarrollador",
+    "devUnlockTitle": "Packs de desarrollador",
     "devUnlockHint": "Toca 7 veces para desbloquear instalaciones por manifiesto.",
-    "devUnlockToast": "Paquetes de desarrollador desbloqueados.",
+    "devUnlockToast": "Packs de desarrollador desbloqueados.",
     "devIntro": "Prueba un Pack de Corpán o crea el tuyo.",
-    "devLink": "Más en Free2z"
+    "devLink": "Más en Free2z",
+    "new": "Nuevo",
+    "updates": "Actualizaciones",
+    "offline": "Sin conexión"
   }
 }

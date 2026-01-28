@@ -2,7 +2,7 @@ import { invoke } from "@tauri-apps/api/core"
 
 import { speakWithStackPrefs } from "@/util/speakWithStackPrefs"
 import { useSettingsStore } from "@/store/settings"
-import type { HostApi } from "./types"
+import type { HostApi, PackDbQuery } from "./types"
 
 const getStackSnapshot = () => {
   const {
@@ -61,33 +61,8 @@ const isSameStackSlice = (a: StackSlice, b: StackSlice) => {
   )
 }
 
-export const createHostApi = (): HostApi => {
+export const createHostApi = (packId?: string): HostApi => {
   let disposed = false
-  let running = false
-  let generation = 0
-  let queue: Array<{ uiCode: string; text: string; rate: number }> = []
-
-  const delay = (ms: number) =>
-    new Promise<void>((resolve) => {
-      window.setTimeout(resolve, ms)
-    })
-
-  const delayUnlessInterrupted = async (ms: number, gen: number) => {
-    const start = Date.now()
-    while (Date.now() - start < ms) {
-      if (disposed || gen !== generation) {
-        return
-      }
-      await delay(120)
-    }
-  }
-
-  const estimateDurationMs = (text: string, rate: number) => {
-    const words = text.trim().split(/\s+/).filter(Boolean).length
-    const wpm = 160 * Math.max(rate, 0.4)
-    const ms = (words / wpm) * 60000
-    return Math.max(1800, Math.min(ms + 600, 12000))
-  }
 
   const stopNativeSpeech = async () => {
     if (typeof window !== "undefined" && "speechSynthesis" in window) {
@@ -101,65 +76,28 @@ export const createHostApi = (): HostApi => {
   }
 
   const stopSpeech = async () => {
-    generation += 1
-    queue = []
     await stopNativeSpeech()
   }
 
-  let lastEnqueued: { uiCode: string; text: string; at: number } | null = null
-
-  const runQueue = async () => {
-    if (running) {
-      return
-    }
-    running = true
-    while (queue.length && !disposed) {
-      const currentGen = generation
-      const next = queue.shift()
-      if (!next) {
-        break
-      }
-      if (currentGen !== generation) {
-        continue
-      }
-      await speakWithStackPrefs(next.uiCode, next.text, next.rate)
-      if (currentGen !== generation) {
-        continue
-      }
-      const wait = estimateDurationMs(next.text, next.rate)
-      await delayUnlessInterrupted(wait, currentGen)
-    }
-    running = false
-  }
-
-  const speakScheduled = async (uiCode: string, text: string) => {
+  const speakImmediate = async (uiCode: string, text: string) => {
     if (disposed) {
       return
     }
     const { rate } = useSettingsStore.getState()
-    const now = Date.now()
-    if (
-      lastEnqueued &&
-      lastEnqueued.uiCode === uiCode &&
-      lastEnqueued.text === text &&
-      now - lastEnqueued.at < 600
-    ) {
-      return
-    }
-    lastEnqueued = { uiCode, text, at: now }
-    queue.push({ uiCode, text, rate })
-    void runQueue()
+    await speakWithStackPrefs(uiCode, text, rate)
   }
 
   const dispose = () => {
     disposed = true
-    queue = []
-    running = false
+  }
+
+  const resolvePackId = (query: PackDbQuery) => {
+    return query.packId ?? packId
   }
 
   return {
     speak: async (uiCode, text) => {
-      await speakScheduled(uiCode, text)
+      await speakImmediate(uiCode, text)
     },
     stopSpeech,
     dispose,
@@ -202,6 +140,33 @@ export const createHostApi = (): HostApi => {
     },
     getEntryById: async (entryId) => {
       return invoke("get_entry_by_id_with_translations", { entryId })
+    },
+    searchEntriesByText: async ({ text, languageCodes, limit, offset }) => {
+      return invoke("search_entries_by_translation_text", {
+        text,
+        languageCodes,
+        limit,
+        offset,
+      })
+    },
+    searchEntriesByTextCount: async ({ text, languageCodes }) => {
+      return invoke("search_entries_by_translation_text_count", {
+        text,
+        languageCodes,
+      })
+    },
+    queryPackDb: async (query) => {
+      const resolvedPackId = resolvePackId(query)
+      if (!resolvedPackId) {
+        throw new Error("Pack ID is required to query pack databases.")
+      }
+      return invoke("content_packs_query_db", {
+        packId: resolvedPackId,
+        dbName: query.dbName,
+        sql: query.sql,
+        params: query.params ?? [],
+        maxRows: query.maxRows,
+      })
     },
   }
 }

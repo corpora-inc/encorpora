@@ -5,7 +5,7 @@ on:
     branches: ["main"]
     paths:
       - "web/io/**"
-      - "corpan/games/**"
+      - "corpan/packs/**"
       - "web/pages/**"
       - "web/scripts/**"
       - ".github/workflows/hover-runner-pages.yml"
@@ -28,6 +28,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          lfs: true
 
       - name: Setup Node
         uses: actions/setup-node@v4
@@ -47,25 +49,65 @@ jobs:
           node web/pages/build.js web/io/out
 
       - name: Install Hover Runner Dependencies
-        working-directory: corpan/games/hover-runner
+        working-directory: corpan/packs/hover-runner
         run: npm install --legacy-peer-deps
 
       - name: Build Hover Runner
-        working-directory: corpan/games/hover-runner
+        working-directory: corpan/packs/hover-runner
         run: npm run build
 
       - name: Package Hover Runner as ZIP
         run: |
-          cd corpan/games/hover-runner
+          cd corpan/packs/hover-runner
           zip -r hover-runner.zip manifest.json dist/
+          cd ../../..
+
+      - name: Package Hanzi Atelier as ZIP
+        run: |
+          cd corpan/packs/hanzipan
+          mkdir -p dist
+          cat hanziwriter.min.js > dist/app.js
+          printf '\n;' >> dist/app.js
+          cat index.js >> dist/app.js
+          cp styles.css dist/app.css
+          zip -r hanzipan.zip manifest.json dist/ HANZIWRITER_LICENSE.txt data/
+          cd ../../..
+
+      - name: Install Juice Squeeze Dependencies
+        working-directory: corpan/packs/juice-squeeze
+        run: npm install --legacy-peer-deps
+
+      - name: Build Juice Squeeze
+        working-directory: corpan/packs/juice-squeeze
+        run: npm run build
+
+      - name: Package Juice Squeeze as ZIP
+        run: |
+          cd corpan/packs/juice-squeeze
+          zip -r juice-squeeze.zip manifest.json dist/
           cd ../../..
 
       - name: Copy Hover Runner into io/out
         run: |
-          mkdir -p "web/io/out/corpan/games/hover-runner"
-          cp corpan/games/hover-runner/manifest.json "web/io/out/corpan/games/hover-runner/"
-          cp -R corpan/games/hover-runner/dist "web/io/out/corpan/games/hover-runner/"
-          cp corpan/games/hover-runner/hover-runner.zip "web/io/out/corpan/games/hover-runner.zip"
+          mkdir -p "web/io/out/corpan/packs/hover-runner"
+          cp corpan/packs/hover-runner/manifest.json "web/io/out/corpan/packs/hover-runner/"
+          cp -R corpan/packs/hover-runner/dist "web/io/out/corpan/packs/hover-runner/"
+          cp corpan/packs/hover-runner/hover-runner.zip "web/io/out/corpan/packs/hover-runner.zip"
+
+      - name: Copy Hanzi Atelier into io/out
+        run: |
+          mkdir -p "web/io/out/corpan/packs/hanzipan"
+          cp corpan/packs/hanzipan/manifest.json "web/io/out/corpan/packs/hanzipan/"
+          cp -R corpan/packs/hanzipan/dist "web/io/out/corpan/packs/hanzipan/"
+          cp -R corpan/packs/hanzipan/data "web/io/out/corpan/packs/hanzipan/"
+          cp corpan/packs/hanzipan/hanzipan.zip "web/io/out/corpan/packs/hanzipan.zip"
+
+      - name: Copy Juice Squeeze into io/out
+        run: |
+          mkdir -p "web/io/out/corpan/packs/juice-squeeze"
+          cp corpan/packs/juice-squeeze/manifest.json "web/io/out/corpan/packs/juice-squeeze/"
+          cp -R corpan/packs/juice-squeeze/dist "web/io/out/corpan/packs/juice-squeeze/"
+          cp corpan/packs/juice-squeeze/juice-squeeze.zip "web/io/out/corpan/packs/juice-squeeze.zip"
 
       - name: Show Final Structure
         run: |

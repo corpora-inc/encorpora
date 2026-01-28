@@ -71,7 +71,9 @@
     "extra-large": "Très grand",
     "testTts": "Testez le TTS avec les boutons ci-dessous :",
     "showRomanization": "Afficher la romanisation",
-    "scrollNavigation": "Navigation par défilement"
+    "scrollNavigation": "Navigation par défilement",
+    "packs": "Packs",
+    "stacks": "Stacks"
   },
   "onboarding": {
     "welcome": "Bienvenue",
@@ -269,14 +271,14 @@
   },
   "packs": {
     "title": "Packs",
-    "available": "Packs disponibles",
-    "emptyAvailable": "Aucun pack pour le moment.",
-    "installed": "Packs installés",
-    "emptyInstalled": "Aucun pack installé.",
+    "available": "Disponible",
+    "emptyAvailable": "Rien de disponible pour l’instant.",
+    "installed": "Installé",
+    "emptyInstalled": "Rien d’installé pour l’instant.",
     "get": "Obtenir",
     "open": "Ouvrir",
     "remove": "Supprimer",
-    "version": "Version {{version}}",
+    "version": "v{{version}}",
     "refresh": "Actualiser",
     "free": "Gratuit",
     "install": "Installer",
@@ -289,8 +291,11 @@
     "manifestHint": "Collez une URL de manifeste.",
     "devUnlockTitle": "Packs développeur",
     "devUnlockHint": "Touchez 7 fois pour débloquer l’installation par manifeste.",
-    "devUnlockToast": "Packs développeur activés.",
+    "devUnlockToast": "Packs développeur déverrouillés.",
     "devIntro": "Essayez un Pack Corpán ou créez le vôtre.",
-    "devLink": "En savoir plus sur Free2z"
+    "devLink": "En savoir plus sur Free2z",
+    "new": "Nouveau",
+    "updates": "Mises à jour",
+    "offline": "Hors ligne"
   }
 }

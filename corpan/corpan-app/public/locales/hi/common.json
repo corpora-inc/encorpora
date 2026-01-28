@@ -71,7 +71,9 @@
     "extra-large": "बहुत बड़ा",
     "testTts": "नीचे दिए गए बटनों से अपनी TTS सेटिंग्स जाँचें:",
     "showRomanization": "रोमन लिप्यंतरण दिखाएँ",
-    "scrollNavigation": "स्क्रॉल नेविगेशन"
+    "scrollNavigation": "स्क्रॉल नेविगेशन",
+    "packs": "Packs",
+    "stacks": "Stacks"
   },
   "onboarding": {
     "welcome": "स्वागत है",
@@ -268,15 +270,15 @@
     "feedbackButton": "GitHub पर फ़ीडबैक भेजें"
   },
   "packs": {
-    "title": "पैक्स",
-    "available": "उपलब्ध पैक्स",
-    "emptyAvailable": "अभी कोई पैक उपलब्ध नहीं है।",
-    "installed": "इंस्टॉल किए गए पैक्स",
-    "emptyInstalled": "कोई पैक इंस्टॉल नहीं है।",
+    "title": "Packs",
+    "available": "उपलब्ध",
+    "emptyAvailable": "अभी कुछ भी उपलब्ध नहीं है।",
+    "installed": "स्थापित",
+    "emptyInstalled": "अभी कुछ भी स्थापित नहीं है।",
     "get": "प्राप्त करें",
     "open": "खोलें",
     "remove": "हटाएं",
-    "version": "संस्करण {{version}}",
+    "version": "v{{version}}",
     "refresh": "रीफ्रेश",
     "free": "मुफ़्त",
     "install": "इंस्टॉल करें",
@@ -287,10 +289,13 @@
     "manifestTitle": "मैनिफेस्ट URL",
     "manifestPlaceholder": "https://example.com/manifest.json",
     "manifestHint": "मैनिफेस्ट URL चिपकाएँ।",
-    "devUnlockTitle": "डेवलपर पैक्स",
+    "devUnlockTitle": "डेवलपर Packs",
     "devUnlockHint": "मैनिफेस्ट इंस्टॉल खोलने के लिए 7 बार टैप करें।",
-    "devUnlockToast": "डेवलपर पैक्स सक्षम हो गए।",
-    "devIntro": "एक Corpán पैक आज़माएँ या अपना बनाएं।",
-    "devLink": "Free2z पर और जानें"
+    "devUnlockToast": "डेवलपर Packs अनलॉक हो गए हैं।",
+    "devIntro": "Corpán Pack आज़माएँ या अपना बनाएं।",
+    "devLink": "Free2z पर और जानें",
+    "new": "नया",
+    "updates": "अपडेट",
+    "offline": "ऑफ़लाइन"
   }
 }

@@ -63,11 +63,13 @@ export function GamesPanel({
         name: result.name ?? result.packId,
         manifestUrl: result.manifestUrl,
         version: result.version,
+        description: result.description,
         source: result.source,
       })
       setManifestUrl("")
     } catch (err) {
-      const message = err instanceof Error ? err.message : ""
+      const message = err instanceof Error ? err.message : String(err)
+      console.error("[packs] manual install failed", err)
       setError(
         message
           ? `${t("packs.installFailed")} ${message}`
@@ -165,10 +167,12 @@ export function GamesPanel({
         name: result.name ?? entry.name ?? result.packId,
         manifestUrl: result.manifestUrl,
         version: result.version,
+        description: result.description ?? entry.description,
         source: result.source,
       })
     } catch (err) {
-      const message = err instanceof Error ? err.message : ""
+      const message = err instanceof Error ? err.message : String(err)
+      console.error("[packs] catalog install failed", err)
       setCatalogError(
         message
           ? `${t("packs.installFailed")} ${message}`
@@ -320,7 +324,7 @@ export function GamesPanel({
           </div>
           <input
             className="w-full rounded-md border border-gray-200 px-3 py-2 text-sm"
-            placeholder="https://example.com/game/manifest.json or .../game.zip"
+            placeholder="https://example.com/pack/manifest.json or .../pack.zip"
             value={manifestUrl}
             onChange={(event) => setManifestUrl(event.target.value)}
           />

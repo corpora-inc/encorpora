@@ -71,7 +71,9 @@
     "extra-large": "ਬਹੁਤ ਵੱਡਾ",
     "testTts": "ਹੇਠਲੇ ਬਟਨਾਂ ਨਾਲ TTS ਦੀ ਜਾਂਚ ਕਰੋ:",
     "showRomanization": "ਰੋਮਨ ਲਿਪੀ ਦਿਖਾਓ",
-    "scrollNavigation": "ਸਕ੍ਰੋਲ ਨੈਵੀਗੇਸ਼ਨ"
+    "scrollNavigation": "ਸਕ੍ਰੋਲ ਨੈਵੀਗੇਸ਼ਨ",
+    "packs": "Packs",
+    "stacks": "Stacks"
   },
   "onboarding": {
     "welcome": "ਸਵਾਗਤ",
@@ -268,15 +270,15 @@
     "feedbackButton": "GitHub ਤੇ ਫੀਡਬੈਕ ਸਾਂਝਾ ਕਰੋ"
   },
   "packs": {
-    "title": "ਪੈਕ",
-    "available": "ਉਪਲਬਧ ਪੈਕ",
-    "emptyAvailable": "ਹਾਲੇ ਕੋਈ ਪੈਕ ਨਹੀਂ।",
-    "installed": "ਇੰਸਟਾਲ ਕੀਤੇ ਪੈਕ",
-    "emptyInstalled": "ਕੋਈ ਪੈਕ ਇੰਸਟਾਲ ਨਹੀਂ ਹੈ।",
+    "title": "Packs",
+    "available": "ਉਪਲਬਧ",
+    "emptyAvailable": "ਹਾਲੇ ਕੁਝ ਵੀ ਉਪਲਬਧ ਨਹੀਂ।",
+    "installed": "ਇੰਸਟਾਲ ਹੋਇਆ",
+    "emptyInstalled": "ਹਾਲੇ ਕੁਝ ਵੀ ਇੰਸਟਾਲ ਨਹੀਂ ਹੋਇਆ।",
     "get": "ਲਵੋ",
     "open": "ਖੋਲ੍ਹੋ",
     "remove": "ਹਟਾਓ",
-    "version": "ਵਰਜਨ {{version}}",
+    "version": "v{{version}}",
     "refresh": "ਰਿਫ੍ਰੈਸ਼",
     "free": "ਮੁਫ਼ਤ",
     "install": "ਇੰਸਟਾਲ",
@@ -287,10 +289,13 @@
     "manifestTitle": "ਮੈਨੀਫੈਸਟ URL",
     "manifestPlaceholder": "https://example.com/manifest.json",
     "manifestHint": "ਮੈਨੀਫੈਸਟ URL ਪੇਸਟ ਕਰੋ।",
-    "devUnlockTitle": "ਡਿਵੈਲਪਰ ਪੈਕ",
+    "devUnlockTitle": "Developer Packs",
     "devUnlockHint": "ਮੈਨੀਫੈਸਟ ਇੰਸਟਾਲ ਲਈ ਅਨਲੌਕ ਕਰਨ ਲਈ 7 ਵਾਰ ਟੈਪ ਕਰੋ।",
-    "devUnlockToast": "ਡਿਵੈਲਪਰ ਪੈਕ ਅਨਲੌਕ ਹੋ ਗਏ।",
-    "devIntro": "Corpán ਪੈਕ ਆਜ਼ਮਾਓ ਜਾਂ ਆਪਣਾ ਬਣਾਓ।",
-    "devLink": "Free2z ਉੱਤੇ ਹੋਰ ਜਾਣੋ"
+    "devUnlockToast": "Developer Packs ਅਨਲੌਕ ਹੋ ਗਏ.",
+    "devIntro": "Corpán Pack ਅਜਮਾਓ ਜਾਂ ਆਪਣਾ ਬਣਾਓ.",
+    "devLink": "Free2z ਉੱਤੇ ਹੋਰ ਜਾਣੋ",
+    "new": "ਨਵਾਂ",
+    "updates": "ਅਪਡੇਟਸ",
+    "offline": "ਆਫਲਾਈਨ"
   }
 }
