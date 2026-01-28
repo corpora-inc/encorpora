@@ -30,3 +30,6 @@ src-tauri/ios/*.mobileprovision
 src-tauri/ios/*.p12
 src-tauri/ios/*.cer
 src-tauri/ios/*.certSigningRequest
+
+# Swift Package Manager build artifacts
+.build/

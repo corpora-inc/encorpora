@@ -63,13 +63,13 @@ export function MonthView({ compact = false }: MonthViewProps) {
           {MONTH_NAMES[currentMonth.month - 1]} {currentMonth.year}
         </h2>
         <div className="flex items-center gap-1 shrink-0">
-          <Button variant="outline" size="sm" onClick={handleToday} className="h-8 px-2 text-xs md:h-9 md:px-3 md:text-sm">
+          <Button variant="outline" size="sm" onClick={handleToday} className="h-9 px-3 text-xs md:h-10 md:px-4 md:text-sm">
             Today
           </Button>
-          <Button variant="outline" size="icon" onClick={handlePrevMonth} className="h-8 w-8 md:h-9 md:w-9">
+          <Button variant="outline" size="icon" onClick={handlePrevMonth} className="h-9 w-9 md:h-10 md:w-10">
             <ChevronLeft className="h-4 w-4" />
           </Button>
-          <Button variant="outline" size="icon" onClick={handleNextMonth} className="h-8 w-8 md:h-9 md:w-9">
+          <Button variant="outline" size="icon" onClick={handleNextMonth} className="h-9 w-9 md:h-10 md:w-10">
             <ChevronRight className="h-4 w-4" />
           </Button>
         </div>

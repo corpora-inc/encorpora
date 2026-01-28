@@ -126,11 +126,11 @@ export function DayView({ compact = false }: DayViewProps) {
     <div className={compact ? "flex flex-col" : "flex flex-col h-full"}>
       {/* Header */}
       <div className="flex items-center p-2 md:p-4 border-b shrink-0">
-        <Button variant="outline" size="icon" onClick={handlePrevDay} className="h-8 w-8 md:h-9 md:w-9 shrink-0">
+        <Button variant="outline" size="icon" onClick={handlePrevDay} className="h-9 w-9 md:h-10 md:w-10 shrink-0">
           <ChevronLeft className="h-4 w-4" />
         </Button>
         <h2 className="flex-1 text-xs md:text-xl font-semibold text-center px-2">{displayDate}</h2>
-        <Button variant="outline" size="icon" onClick={handleNextDay} className="h-8 w-8 md:h-9 md:w-9 shrink-0">
+        <Button variant="outline" size="icon" onClick={handleNextDay} className="h-9 w-9 md:h-10 md:w-10 shrink-0">
           <ChevronRight className="h-4 w-4" />
         </Button>
       </div>
