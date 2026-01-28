@@ -1,6 +1,44 @@
 import { create } from "zustand"
 import { persist, createJSONStorage } from "zustand/middleware"
 
+// Level-based fruit colors for juice
+export const LEVEL_FRUIT_COLORS = {
+  A0: { fruit: "🍊", name: "Orange", primary: "#FF9800", gradient: ["#FFB84D", "#FF9800", "#E65100"] },
+  A1: { fruit: "🥭", name: "Mango", primary: "#FFCC02", gradient: ["#FFE066", "#FFCC02", "#E6B800"] },
+  A2: { fruit: "🍍", name: "Pineapple", primary: "#FFD700", gradient: ["#FFEB3B", "#FFD700", "#FFC107"] },
+  B1: { fruit: "🍇", name: "Grape", primary: "#8E24AA", gradient: ["#BA68C8", "#8E24AA", "#6A1B9A"] },
+  B2: { fruit: "🩷", name: "Papaya", primary: "#FF6B9D", gradient: ["#FF8FB3", "#FF6B9D", "#E91E63"] },
+  C1: { fruit: "🫐", name: "Passion", primary: "#5C1A7A", gradient: ["#7B1FA2", "#5C1A7A", "#4A0072"] },
+} as const
+
+// Bottles required per level (based on difficulty progression)
+export const BOTTLES_PER_LEVEL = {
+  A0: 3,
+  A1: 5,
+  A2: 7,
+  B1: 10,
+  B2: 12,
+  C1: 15,
+} as const
+
+export type CEFRLevel = keyof typeof LEVEL_FRUIT_COLORS
+
+// Collected bottle data
+export type CollectedBottle = {
+  id: string
+  level: CEFRLevel
+  color: string
+  completedAt: number // timestamp
+}
+
+// Bottle progress tracking
+export type BottleProgress = {
+  currentLevel: CEFRLevel
+  phrasesInCurrentBottle: number // 0-10, resets when bottle completes
+  bottlesCompletedThisLevel: number
+  bottleCollection: CollectedBottle[]
+}
+
 // Game phrase data
 export type PhraseData = {
   id: string | null
@@ -46,20 +84,23 @@ export type GameSettings = {
 export type GameState = {
   // Current phrase data
   phrase: PhraseData
-  
+
   // Block states
   blocks: Record<string, BlockState>
-  
+
   // Game status
   hasWon: boolean
   isLoading: boolean
-  
+
   // Statistics
   stats: GameStats
-  
+
   // Settings
   settings: GameSettings
-  
+
+  // Bottle progress
+  bottleProgress: BottleProgress
+
   // Actions
   loadNewPhrase: (phrase: Omit<PhraseData, "correctWords"> & { correctWords: string[] }) => void
   placeBlock: (blockId: string, position: { x: number; y: number; z: number }) => void
@@ -74,9 +115,19 @@ export type GameState = {
   resetGame: () => void
   updateSettings: (settings: Partial<GameSettings>) => void
   resetBlocks: () => void
+  setLevel: (level: CEFRLevel) => void
+  getBottleFillPercent: () => number
+  isLevelComplete: () => boolean
 }
 
-const initialState: Omit<GameState, keyof Omit<GameState, "phrase" | "blocks" | "stats" | "settings">> = {
+const initialBottleProgress: BottleProgress = {
+  currentLevel: "A0",
+  phrasesInCurrentBottle: 0,
+  bottlesCompletedThisLevel: 0,
+  bottleCollection: [],
+}
+
+const initialState = {
   phrase: {
     id: null,
     targetText: null,
@@ -85,8 +136,8 @@ const initialState: Omit<GameState, keyof Omit<GameState, "phrase" | "blocks" | 
     blockLang: null,
     correctWords: [],
     words: [],
-  },
-  blocks: {},
+  } as PhraseData,
+  blocks: {} as Record<string, BlockState>,
   hasWon: false,
   isLoading: false,
   stats: {
@@ -98,13 +149,14 @@ const initialState: Omit<GameState, keyof Omit<GameState, "phrase" | "blocks" | 
     bestStreak: 0,
     totalPhrases: 0,
     completedPhraseIds: [],
-  },
+  } as GameStats,
   settings: {
     ttsEnabled: true,
     difficulty: "medium",
     soundEffectsEnabled: true,
     fruitsEnabled: false,
-  },
+  } as GameSettings,
+  bottleProgress: initialBottleProgress,
 }
 
 export const useGameStore = create<GameState>()(
@@ -113,7 +165,7 @@ export const useGameStore = create<GameState>()(
       ...initialState,
       
       loadNewPhrase: (phrase) => {
-        set((state) => ({
+        set(() => ({
           phrase: {
             ...phrase,
             correctWords: [...phrase.correctWords],
@@ -236,6 +288,34 @@ export const useGameStore = create<GameState>()(
           const points = wordCount
           const existingIds = state.stats.completedPhraseIds || []
 
+          // Track bottle progress
+          const bp = state.bottleProgress || initialBottleProgress
+          const newPhrasesInBottle = bp.phrasesInCurrentBottle + 1
+          const bottleComplete = newPhrasesInBottle >= 10
+
+          // If bottle complete, add to collection and reset
+          let newBottleProgress: BottleProgress
+          if (bottleComplete) {
+            const levelColors = LEVEL_FRUIT_COLORS[bp.currentLevel]
+            const newBottle: CollectedBottle = {
+              id: `bottle-${Date.now()}`,
+              level: bp.currentLevel,
+              color: levelColors.primary,
+              completedAt: Date.now(),
+            }
+            newBottleProgress = {
+              ...bp,
+              phrasesInCurrentBottle: 0,
+              bottlesCompletedThisLevel: bp.bottlesCompletedThisLevel + 1,
+              bottleCollection: [...bp.bottleCollection, newBottle],
+            }
+          } else {
+            newBottleProgress = {
+              ...bp,
+              phrasesInCurrentBottle: newPhrasesInBottle,
+            }
+          }
+
           return {
             stats: {
               ...state.stats,
@@ -243,6 +323,7 @@ export const useGameStore = create<GameState>()(
               allTimeCompletedPhrases: (state.stats.allTimeCompletedPhrases || 0) + 1,
               completedPhraseIds: [...existingIds, phraseId],
             },
+            bottleProgress: newBottleProgress,
           }
         })
       },
@@ -279,6 +360,30 @@ export const useGameStore = create<GameState>()(
           hasWon: false,
         })
       },
+
+      setLevel: (level) => {
+        set((state) => ({
+          bottleProgress: {
+            ...state.bottleProgress,
+            currentLevel: level,
+            phrasesInCurrentBottle: 0,
+            bottlesCompletedThisLevel: 0,
+          },
+        }))
+      },
+
+      getBottleFillPercent: () => {
+        const state = get()
+        const bp = state.bottleProgress || initialBottleProgress
+        return (bp.phrasesInCurrentBottle / 10) * 100
+      },
+
+      isLevelComplete: () => {
+        const state = get()
+        const bp = state.bottleProgress || initialBottleProgress
+        const bottlesNeeded = BOTTLES_PER_LEVEL[bp.currentLevel]
+        return bp.bottlesCompletedThisLevel >= bottlesNeeded
+      },
     }),
     {
       name: "juice-squeeze-game-state",
@@ -293,6 +398,7 @@ export const useGameStore = create<GameState>()(
           // Don't persist session stats (score, completedPhrases, currentStreak)
         },
         settings: state.settings,
+        bottleProgress: state.bottleProgress, // Persist bottle collection and level progress
         // Don't persist current phrase/blocks - reload fresh each session
       }),
     }
