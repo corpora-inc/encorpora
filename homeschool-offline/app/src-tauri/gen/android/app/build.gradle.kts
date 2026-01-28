@@ -15,6 +15,10 @@ val tauriProperties = Properties().apply {
 
 android {
     compileSdk = 36
+    // BEGIN IDEMPOTENT PATCH - Safe to re-apply
+    // Required for Android 15+ 16KB page size support
+    ndkVersion = "28.2.13676358"
+    // END IDEMPOTENT PATCH
     namespace = "com.corpora.homeschool"
     defaultConfig {
         manifestPlaceholders["usesCleartextTraffic"] = "false"
@@ -45,9 +49,15 @@ android {
             )
         }
     }
-    kotlinOptions {
-        jvmTarget = "1.8"
+    // BEGIN IDEMPOTENT PATCH - Safe to re-apply
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
+    kotlinOptions {
+        jvmTarget = "17"
+    }
+    // END IDEMPOTENT PATCH
     buildFeatures {
         buildConfig = true
     }
