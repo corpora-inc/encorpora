@@ -1,10 +1,14 @@
 use std::fs::File;
 use std::io::{Cursor, Read, Write};
 use std::path::Path;
-use tauri::{AppHandle, Emitter, Manager, Window};
+use tauri::{AppHandle, Manager};
+
+#[cfg(any(target_os = "android", target_os = "ios"))]
+use tauri::{Emitter, Window};
 use zip::write::SimpleFileOptions;
 use zip::ZipWriter;
 use serde_json::json;
+#[cfg(any(target_os = "android", target_os = "ios"))]
 use std::thread;
 
 use crate::db;
@@ -89,6 +93,7 @@ pub fn export_data_to_bytes(app: &AppHandle) -> Result<Vec<u8>, String> {
 }
 
 /// Export to external storage and return the path (Android)
+#[cfg(target_os = "android")]
 pub fn export_data_to_external(app: &AppHandle) -> Result<String, String> {
     eprintln!("export_data_to_external called");
 
@@ -100,53 +105,46 @@ pub fn export_data_to_external(app: &AppHandle) -> Result<String, String> {
         return Err("Created ZIP is empty!".to_string());
     }
 
-    #[cfg(target_os = "android")]
-    {
-        // Use /sdcard (external storage) which is accessible
-        // This maps to /storage/emulated/0/
-        let external_storage = std::path::PathBuf::from("/sdcard");
-        let downloads_dir = external_storage.join("Download");
+    // Use /sdcard (external storage) which is accessible
+    // This maps to /storage/emulated/0/
+    let external_storage = std::path::PathBuf::from("/sdcard");
+    let downloads_dir = external_storage.join("Download");
 
-        eprintln!("Using external storage: {:?}", external_storage);
-        eprintln!("Downloads directory: {:?}", downloads_dir);
+    eprintln!("Using external storage: {:?}", external_storage);
+    eprintln!("Downloads directory: {:?}", downloads_dir);
 
-        // Create Downloads directory if it doesn't exist
-        std::fs::create_dir_all(&downloads_dir)
-            .map_err(|e| format!("Failed to create Downloads directory: {}", e))?;
+    // Create Downloads directory if it doesn't exist
+    std::fs::create_dir_all(&downloads_dir)
+        .map_err(|e| format!("Failed to create Downloads directory: {}", e))?;
 
-        let filename = format!("homeschool-backup-{}.zip",
-            chrono::Local::now().format("%Y%m%d-%H%M%S"));
-        let output_path = downloads_dir.join(&filename);
+    let filename = format!("homeschool-backup-{}.zip",
+        chrono::Local::now().format("%Y%m%d-%H%M%S"));
+    let output_path = downloads_dir.join(&filename);
 
-        eprintln!("Writing to: {:?}", output_path);
+    eprintln!("Writing to: {:?}", output_path);
 
-        std::fs::write(&output_path, &bytes)
-            .map_err(|e| format!("Failed to write file: {}", e))?;
+    std::fs::write(&output_path, &bytes)
+        .map_err(|e| format!("Failed to write file: {}", e))?;
 
-        // Verify file was written
-        let metadata = std::fs::metadata(&output_path)
-            .map_err(|e| format!("Failed to verify file: {}", e))?;
+    // Verify file was written
+    let metadata = std::fs::metadata(&output_path)
+        .map_err(|e| format!("Failed to verify file: {}", e))?;
 
-        eprintln!("File written successfully, size: {} bytes", metadata.len());
+    eprintln!("File written successfully, size: {} bytes", metadata.len());
 
-        if metadata.len() == 0 {
-            return Err("Written file is empty!".to_string());
-        }
-
-        if metadata.len() != bytes.len() as u64 {
-            return Err(format!("File size mismatch! Expected {}, got {}", bytes.len(), metadata.len()));
-        }
-
-        Ok(output_path.to_string_lossy().to_string())
+    if metadata.len() == 0 {
+        return Err("Written file is empty!".to_string());
     }
 
-    #[cfg(not(target_os = "android"))]
-    {
-        Err("export_data_to_external is only for Android".to_string())
+    if metadata.len() != bytes.len() as u64 {
+        return Err(format!("File size mismatch! Expected {}, got {}", bytes.len(), metadata.len()));
     }
+
+    Ok(output_path.to_string_lossy().to_string())
 }
 
 /// Export to iOS Documents directory (accessible via Files app)
+#[cfg(target_os = "ios")]
 pub fn export_data_to_ios_documents(app: &AppHandle) -> Result<String, String> {
     eprintln!("export_data_to_ios_documents called");
 
@@ -156,45 +154,36 @@ pub fn export_data_to_ios_documents(app: &AppHandle) -> Result<String, String> {
         return Err("Created ZIP is empty!".to_string());
     }
 
-    #[cfg(target_os = "ios")]
-    {
-        // iOS: Save to temp directory - Share Sheet will handle final destination
-        // This is the modern iOS approach: app creates file, user chooses where to save it
-        let temp_dir = app.path().temp_dir()
-            .map_err(|e| format!("Failed to get temp dir: {}", e))?;
+    // iOS: Save to temp directory - Share Sheet will handle final destination
+    // This is the modern iOS approach: app creates file, user chooses where to save it
+    let temp_dir = app.path().temp_dir()
+        .map_err(|e| format!("Failed to get temp dir: {}", e))?;
 
-        let filename = format!("homeschool-backup-{}.zip",
-            chrono::Local::now().format("%Y%m%d-%H%M%S"));
-        let output_path = temp_dir.join(&filename);
+    let filename = format!("homeschool-backup-{}.zip",
+        chrono::Local::now().format("%Y%m%d-%H%M%S"));
+    let output_path = temp_dir.join(&filename);
 
-        eprintln!("[export_data_to_ios_documents] Writing to temp: {:?}", output_path);
+    eprintln!("[export_data_to_ios_documents] Writing to temp: {:?}", output_path);
 
-        std::fs::write(&output_path, &bytes)
-            .map_err(|e| format!("Failed to write file: {}", e))?;
+    std::fs::write(&output_path, &bytes)
+        .map_err(|e| format!("Failed to write file: {}", e))?;
 
-        // Verify file was written
-        let metadata = std::fs::metadata(&output_path)
-            .map_err(|e| format!("Failed to verify file: {}", e))?;
+    // Verify file was written
+    let metadata = std::fs::metadata(&output_path)
+        .map_err(|e| format!("Failed to verify file: {}", e))?;
 
-        eprintln!("[export_data_to_ios_documents] File written successfully, size: {} bytes", metadata.len());
+    eprintln!("[export_data_to_ios_documents] File written successfully, size: {} bytes", metadata.len());
 
-        if metadata.len() == 0 {
-            return Err("Written file is empty!".to_string());
-        }
-
-        if metadata.len() != bytes.len() as u64 {
-            return Err(format!("File size mismatch! Expected {}, got {}",
-                bytes.len(), metadata.len()));
-        }
-
-        Ok(output_path.to_string_lossy().to_string())
+    if metadata.len() == 0 {
+        return Err("Written file is empty!".to_string());
     }
 
-    #[cfg(not(target_os = "ios"))]
-    {
-        // Should never be called on non-iOS, but fail loudly if it is
-        Err("export_data_to_ios_documents should only be called on iOS".to_string())
+    if metadata.len() != bytes.len() as u64 {
+        return Err(format!("File size mismatch! Expected {}, got {}",
+            bytes.len(), metadata.len()));
     }
+
+    Ok(output_path.to_string_lossy().to_string())
 }
 
 /// Export all data to a ZIP file (uses in-memory export and writes to disk)
@@ -294,6 +283,7 @@ fn create_manifest(app: &AppHandle) -> Result<serde_json::Value, String> {
 }
 
 /// Progress struct for event serialization
+#[cfg(any(target_os = "android", target_os = "ios"))]
 #[derive(Clone, serde::Serialize)]
 struct ExportProgress {
     percent: u8,
@@ -301,6 +291,7 @@ struct ExportProgress {
 }
 
 /// Async export with progress events (for mobile platforms)
+#[cfg(any(target_os = "android", target_os = "ios"))]
 #[tauri::command]
 pub async fn export_data_async(app: AppHandle, window: Window) -> Result<String, String> {
     let app_clone = app.clone();
@@ -322,6 +313,7 @@ pub async fn export_data_async(app: AppHandle, window: Window) -> Result<String,
 }
 
 /// Export with progress events
+#[cfg(any(target_os = "android", target_os = "ios"))]
 fn export_with_progress(app: &AppHandle, window: &Window) -> Result<String, String> {
     // Emit: Starting
     let _ = window.emit("export_progress", ExportProgress {

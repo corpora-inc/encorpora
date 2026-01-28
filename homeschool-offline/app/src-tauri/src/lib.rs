@@ -170,6 +170,7 @@ async fn export_data_to_bytes_command(app: AppHandle) -> Result<Vec<u8>, String>
     .map_err(|e| format!("Failed to spawn export task: {}", e))?
 }
 
+#[cfg(target_os = "android")]
 #[tauri::command]
 async fn export_data_to_external_command(app: AppHandle) -> Result<String, String> {
     let app_clone = app.clone();
@@ -180,6 +181,7 @@ async fn export_data_to_external_command(app: AppHandle) -> Result<String, Strin
     .map_err(|e| format!("Failed to spawn export task: {}", e))?
 }
 
+#[cfg(target_os = "ios")]
 #[tauri::command]
 async fn export_data_to_ios_documents_command(app: AppHandle) -> Result<String, String> {
     let app_clone = app.clone();

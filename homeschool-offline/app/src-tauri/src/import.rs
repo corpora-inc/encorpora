@@ -1,8 +1,12 @@
 use std::fs::{self, File};
 use std::io::{Cursor, Read, Write};
 use std::path::Path;
-use tauri::{AppHandle, Emitter, Manager, Window};
+use tauri::{AppHandle, Manager};
+
+#[cfg(any(target_os = "android", target_os = "ios"))]
+use tauri::{Emitter, Window};
 use zip::ZipArchive;
+#[cfg(any(target_os = "android", target_os = "ios"))]
 use std::thread;
 
 use crate::db;
@@ -184,6 +188,7 @@ fn copy_dir_all(src: &Path, dst: &Path) -> Result<(), String> {
 }
 
 /// Progress struct for event serialization
+#[cfg(any(target_os = "android", target_os = "ios"))]
 #[derive(Clone, serde::Serialize)]
 struct ImportProgress {
     percent: u8,
@@ -191,6 +196,7 @@ struct ImportProgress {
 }
 
 /// Async import with progress events (for mobile platforms)
+#[cfg(any(target_os = "android", target_os = "ios"))]
 #[tauri::command]
 pub async fn import_data_async(
     app: AppHandle,
@@ -215,6 +221,7 @@ pub async fn import_data_async(
 }
 
 /// Import with progress events
+#[cfg(any(target_os = "android", target_os = "ios"))]
 fn import_with_progress(
     app: &AppHandle,
     window: &Window,

@@ -120,6 +120,7 @@ pub fn delete_photo_file(app: &AppHandle, file_path: &str) -> Result<(), String>
 }
 
 /// Get the full path for a photo to use with asset protocol
+#[allow(dead_code)] // Kept for potential asset-protocol usage on desktop/mobile.
 pub fn get_photo_full_path(app: &AppHandle, file_path: &str) -> Result<String, String> {
     let app_data_dir = app.path()
         .app_data_dir()

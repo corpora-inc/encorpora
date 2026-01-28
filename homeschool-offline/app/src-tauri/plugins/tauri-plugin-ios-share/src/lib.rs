@@ -1,7 +1,10 @@
 use tauri::{
     plugin::{Builder, TauriPlugin},
-    Manager, Runtime,
+    Runtime,
 };
+
+#[cfg(target_os = "ios")]
+use tauri::Manager;
 
 #[cfg(target_os = "ios")]
 mod mobile;
@@ -25,22 +28,24 @@ impl<R: Runtime, T: Manager<R>> IOSShareExt<R> for T {
 #[cfg(target_os = "ios")]
 tauri::ios_plugin_binding!(init_plugin_ios_share);
 
+#[cfg(target_os = "ios")]
 #[tauri::command]
 async fn share_file<R: Runtime>(
     app: tauri::AppHandle<R>,
     file_path: String,
 ) -> Result<(), String> {
-    #[cfg(target_os = "ios")]
-    {
-        app.ios_share()
-            .share_file(file_path)
-            .map_err(|e| e.to_string())
-    }
+    app.ios_share()
+        .share_file(file_path)
+        .map_err(|e| e.to_string())
+}
 
-    #[cfg(not(target_os = "ios"))]
-    {
-        Err("share_file is only available on iOS".to_string())
-    }
+#[cfg(not(target_os = "ios"))]
+#[tauri::command]
+async fn share_file<R: Runtime>(
+    _app: tauri::AppHandle<R>,
+    _file_path: String,
+) -> Result<(), String> {
+    Err("share_file is only available on iOS".to_string())
 }
 
 pub fn init<R: Runtime>() -> TauriPlugin<R> {
@@ -51,6 +56,10 @@ pub fn init<R: Runtime>() -> TauriPlugin<R> {
             {
                 let ios_share = mobile::init(app, api)?;
                 app.manage(ios_share);
+            }
+            #[cfg(not(target_os = "ios"))]
+            {
+                let _ = (app, api);
             }
             Ok(())
         })

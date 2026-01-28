@@ -84,6 +84,7 @@ pub fn get_connection(app: &AppHandle) -> Result<Connection, String> {
 }
 
 /// Check if database needs migration from old schema
+#[allow(dead_code)] // Reserved for future migrations; keeping logic intact.
 fn check_needs_migration(conn: &Connection) -> Result<bool, String> {
     // Check if photos table exists and if it has student_id column
     let table_exists: bool = conn.query_row(
@@ -107,6 +108,7 @@ fn check_needs_migration(conn: &Connection) -> Result<bool, String> {
 }
 
 /// Migrate from old single-student schema to new multi-student schema
+#[allow(dead_code)] // Reserved for future migrations; keeping logic intact.
 fn migrate_to_multi_student(conn: &Connection) -> Result<(), String> {
     let now = chrono::Utc::now().timestamp();
 
@@ -547,6 +549,7 @@ pub fn get_photos_for_date(app: &AppHandle, student_id: i64, date: &str) -> Resu
 }
 
 /// Get photo count for a date
+#[allow(dead_code)] // Not currently called by the app, but kept for future UI.
 pub fn get_photo_count_for_date(app: &AppHandle, student_id: i64, date: &str) -> Result<i64, String> {
     let conn = get_connection(app)?;
 
