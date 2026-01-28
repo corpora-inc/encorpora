@@ -110,7 +110,7 @@ export type GameState = {
   setWon: (won: boolean) => void
   incrementScore: (points?: number) => void
   incrementCompletedPhrases: () => void
-  recordCompletedPhrase: (phraseId: string, wordCount: number) => void
+  recordCompletedPhrase: (phraseId: string, wordCount: number, visualLevel?: CEFRLevel) => void
   toggleFruits: () => void
   resetGame: () => void
   updateSettings: (settings: Partial<GameSettings>) => void
@@ -282,7 +282,7 @@ export const useGameStore = create<GameState>()(
         })
       },
 
-      recordCompletedPhrase: (phraseId, wordCount) => {
+      recordCompletedPhrase: (phraseId, wordCount, visualLevel) => {
         set((state) => {
           // Add points based on word count (1 point per word placed)
           const points = wordCount
@@ -296,10 +296,12 @@ export const useGameStore = create<GameState>()(
           // If bottle complete, add to collection and reset
           let newBottleProgress: BottleProgress
           if (bottleComplete) {
-            const levelColors = LEVEL_FRUIT_COLORS[bp.currentLevel]
+            // Use visual level for bottle color (cycles through all colors for variety)
+            const bottleLevel = visualLevel || bp.currentLevel
+            const levelColors = LEVEL_FRUIT_COLORS[bottleLevel]
             const newBottle: CollectedBottle = {
               id: `bottle-${Date.now()}`,
-              level: bp.currentLevel,
+              level: bottleLevel,
               color: levelColors.primary,
               completedAt: Date.now(),
             }

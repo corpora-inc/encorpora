@@ -275,6 +275,11 @@ export const createJuiceSqueeze = (
   const initialBottleProgress = useGameStore.getState().bottleProgress
   const bottle3D: Bottle3D = createBottle3D(scene, initialBottleProgress?.currentLevel || "A0")
 
+  // Color cycling for visual variety between bottles
+  const juiceColors: CEFRLevel[] = ["A0", "A1", "A2", "B1", "B2", "C1"]
+  let colorIndex = juiceColors.indexOf(initialBottleProgress?.currentLevel || "A0")
+  if (colorIndex === -1) colorIndex = 0
+
   // Track current utterance for word count and TTS
   let currentUtterance: Utterance | null = null
 
@@ -1178,9 +1183,10 @@ export const createJuiceSqueeze = (
         useGameStore.getState().incrementScore()
 
         // Record completed phrase with word count for all-time score
+        // Pass the current visual color level so bottles show correct color in collection
         const phraseId = phrase.id || `phrase-${Date.now()}`
         const wordCount = wordsInSentence.length
-        useGameStore.getState().recordCompletedPhrase(phraseId, wordCount)
+        useGameStore.getState().recordCompletedPhrase(phraseId, wordCount, juiceColors[colorIndex])
 
         // WIN! Create WILD juice particles everywhere
         const currentMetrics = getLayoutMetrics()
@@ -1224,6 +1230,10 @@ export const createJuiceSqueeze = (
               bottle3D.reset()
               juiceGlass.updateFill(0)
 
+              // Cycle to next juice color for variety
+              colorIndex = (colorIndex + 1) % juiceColors.length
+              bottle3D.setColor(juiceColors[colorIndex])
+
               // Update bottle collection display
               renderBottleCollection()
 
@@ -1243,9 +1253,6 @@ export const createJuiceSqueeze = (
           juiceGlass.updateFill(newFillLevel)
           bottle3D.updateFill(newFillLevel)
         }
-
-        // Update 3D bottle color to match current level
-        bottle3D.setColor(updatedBottleProgress.currentLevel)
 
         // Update score display with animation
         const updatedStats = useGameStore.getState().stats

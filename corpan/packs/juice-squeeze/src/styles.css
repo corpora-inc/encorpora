@@ -169,12 +169,12 @@
 
 /* Navigation Arrow Buttons */
 .nav-arrow {
-  width: clamp(48px, 11vw, 56px);
-  height: clamp(48px, 11vw, 56px);
+  width: clamp(48px, 10vw, 56px);
+  height: clamp(48px, 10vw, 56px);
   border: none;
   border-radius: 50%;
   cursor: pointer;
-  font-size: clamp(22px, 5.5vw, 30px);
+  font-size: clamp(22px, 5vw, 28px);
   font-weight: bold;
   display: flex;
   align-items: center;
@@ -247,13 +247,13 @@
   transform: translateY(1px) scale(0.98);
 }
 
-/* Icon button base - circular with emoji */
+/* Icon button base - circular with emoji (same size as nav-arrow) */
 .icon-btn {
-  width: clamp(52px, 12vw, 60px);
-  height: clamp(52px, 12vw, 60px);
+  width: clamp(48px, 10vw, 56px);
+  height: clamp(48px, 10vw, 56px);
   padding: 0;
   border-radius: 50%;
-  font-size: clamp(24px, 6vw, 30px);
+  font-size: clamp(22px, 5vw, 28px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -262,7 +262,7 @@
 /* Ear button - audio only, left of eye button */
 .ear-btn {
   position: fixed;
-  right: calc(env(safe-area-inset-right) + clamp(76px, 16vw, 100px));
+  right: calc(env(safe-area-inset-right) + clamp(72px, 14vw, 100px));
   bottom: calc(env(safe-area-inset-bottom) + clamp(20px, 5vh, 40px));
   z-index: 1001;
   border: 1px solid rgba(27, 27, 31, 0.15);
@@ -285,7 +285,7 @@
 /* Fruit flip button - right of forward nav button */
 .fruit-btn {
   position: fixed;
-  left: calc(env(safe-area-inset-left) + clamp(136px, 30vw, 180px));
+  left: calc(env(safe-area-inset-left) + clamp(132px, 26vw, 176px));
   bottom: calc(env(safe-area-inset-bottom) + clamp(20px, 5vh, 40px));
   z-index: 1001;
   border: 1px solid rgba(27, 27, 31, 0.15);
@@ -485,13 +485,15 @@
 /* Bottle Collection Display */
 .bottle-collection {
   position: fixed;
-  left: calc(env(safe-area-inset-left) + clamp(8px, 2vw, 16px));
-  top: calc(env(safe-area-inset-top) + clamp(190px, 35vh, 280px));
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: calc(env(safe-area-inset-bottom) + clamp(80px, 12vh, 110px));
   z-index: 51;
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  justify-content: center;
   gap: clamp(4px, 1vw, 8px);
-  max-width: clamp(100px, 25vw, 180px);
+  max-width: 90vw;
   pointer-events: none;
 }
 
@@ -990,7 +992,13 @@
   .nav-arrow {
     width: clamp(44px, 10vw, 52px);
     height: clamp(44px, 10vw, 52px);
-    font-size: clamp(20px, 5vw, 26px);
+    font-size: clamp(18px, 4.5vw, 24px);
+  }
+
+  .icon-btn {
+    width: clamp(44px, 10vw, 52px);
+    height: clamp(44px, 10vw, 52px);
+    font-size: clamp(18px, 4.5vw, 24px);
   }
 
   .juice-glass-container {
@@ -1023,12 +1031,12 @@
   }
 
   .ear-btn {
-    right: calc(env(safe-area-inset-right) + clamp(68px, 15vw, 86px));
+    right: calc(env(safe-area-inset-right) + clamp(64px, 13vw, 84px));
     bottom: calc(env(safe-area-inset-bottom) + clamp(16px, 4vh, 32px));
   }
 
   .fruit-btn {
-    left: calc(env(safe-area-inset-left) + clamp(116px, 28vw, 160px));
+    left: calc(env(safe-area-inset-left) + clamp(118px, 24vw, 156px));
     bottom: calc(env(safe-area-inset-bottom) + clamp(16px, 4vh, 32px));
   }
 }
@@ -1072,9 +1080,15 @@
   }
 
   .nav-arrow {
-    width: clamp(44px, 10vw, 48px);
-    height: clamp(44px, 10vw, 48px);
-    font-size: clamp(20px, 5vw, 24px);
+    width: clamp(42px, 10vw, 48px);
+    height: clamp(42px, 10vw, 48px);
+    font-size: clamp(18px, 4.5vw, 22px);
+  }
+
+  .icon-btn {
+    width: clamp(42px, 10vw, 48px);
+    height: clamp(42px, 10vw, 48px);
+    font-size: clamp(18px, 4.5vw, 22px);
   }
 
   .juice-glass-container {
@@ -1108,12 +1122,12 @@
   }
 
   .ear-btn {
-    right: calc(env(safe-area-inset-right) + clamp(60px, 14vw, 76px));
+    right: calc(env(safe-area-inset-right) + clamp(58px, 13vw, 72px));
     bottom: calc(env(safe-area-inset-bottom) + clamp(12px, 3vh, 24px));
   }
 
   .fruit-btn {
-    left: calc(env(safe-area-inset-left) + clamp(104px, 26vw, 130px));
+    left: calc(env(safe-area-inset-left) + clamp(108px, 23vw, 132px));
     bottom: calc(env(safe-area-inset-bottom) + clamp(12px, 3vh, 24px));
   }
 }

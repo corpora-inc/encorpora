@@ -110,32 +110,41 @@ export const createBottle3D = (scene: Scene, initialLevel: CEFRLevel = "A0"): Bo
   liquidMaterial.alpha = 0.85
   liquidMaterial.backFaceCulling = false
 
-  // Create liquid as a cylinder that grows from bottom
-  // Max height is from bottom (0.1) to just below neck (4.5)
-  const maxLiquidHeight = 4.4 // Body height
-  const liquidRadius = 1.95 // Slightly smaller than bottle body
+  // Create liquid using lathe to match bottle interior curves
+  // Profile follows bottle shape but slightly smaller to fit inside
+  const maxLiquidHeight = 4.4 // Body height (from bottom to just below shoulder)
+  const liquidProfile = [
+    new Vector3(0, 0, 0),        // Center bottom
+    new Vector3(1.65, 0, 0),     // Bottom flat (smaller than bottle 1.8)
+    new Vector3(1.85, 0.25, 0),  // Curve up (smaller than bottle 2.0, 0.3)
+    new Vector3(1.95, 0.9, 0),   // Body start (smaller than bottle 2.1, 1.0)
+    new Vector3(1.95, maxLiquidHeight, 0), // Body top (max fill height)
+  ]
 
-  const liquidMesh = MeshBuilder.CreateCylinder(
+  const liquidMesh = MeshBuilder.CreateLathe(
     "liquid",
     {
-      height: 1, // Will be scaled
-      diameter: liquidRadius * 2,
+      shape: liquidProfile,
+      radius: 1,
       tessellation: 32,
+      sideOrientation: Mesh.DOUBLESIDE,
     },
     scene
   )
   liquidMesh.material = liquidMaterial
   liquidMesh.parent = bottleContainer
   liquidMesh.isPickable = false // Don't intercept pointer events
-  // Position at bottom of bottle, pivot from bottom
+  // Position at bottom of bottle
   liquidMesh.position.y = 0.15
   liquidMesh.scaling.y = 0.001 // Start hidden
 
   // Liquid surface cap (top of liquid) with wave animation
+  // Radius matches the body width of liquid
+  const liquidCapRadius = 1.95
   const liquidCapMesh = MeshBuilder.CreateDisc(
     "liquid-cap",
     {
-      radius: liquidRadius,
+      radius: liquidCapRadius,
       tessellation: 32,
     },
     scene
@@ -240,16 +249,26 @@ export const createBottle3D = (scene: Scene, initialLevel: CEFRLevel = "A0"): Bo
     // Calculate liquid height based on fill level
     const liquidHeight = Math.max(0.01, currentFillLevel * maxLiquidHeight)
 
-    // Scale the cylinder to match desired height
-    liquidMesh.scaling.y = liquidHeight
+    // Scale the lathe mesh - profile goes from 0 to maxLiquidHeight
+    // So scaling.y of 1.0 = full height, lower values shrink proportionally
+    const scaleY = Math.max(0.001, currentFillLevel)
+    liquidMesh.scaling.y = scaleY
 
-    // Position cylinder so it grows from bottom
-    // Cylinder pivot is at center, so we need to offset by half height
-    liquidMesh.position.y = 0.15 + liquidHeight / 2
+    // Lathe mesh pivot is at bottom (y=0 in profile), so position stays fixed
+    liquidMesh.position.y = 0.15
 
     // Update liquid cap position (top of liquid)
+    // Cap needs to be at the scaled top of the liquid
     const capY = 0.15 + liquidHeight
     liquidCapMesh.position.y = capY
+
+    // Scale cap to match the width at current fill level
+    // At low fill, liquid is narrower due to curved base
+    const capScale = currentFillLevel < 0.2
+      ? 0.8 + currentFillLevel * 1.0  // Start narrower at bottom
+      : 1.0  // Full width once in main body
+    liquidCapMesh.scaling.x = capScale
+    liquidCapMesh.scaling.z = capScale
 
     // Add subtle wave effect to the cap for natural water look
     const waveOffset = Math.sin(sloshPhase * 2) * sloshIntensity * 0.1
@@ -358,10 +377,12 @@ export const createBottle3D = (scene: Scene, initialLevel: CEFRLevel = "A0"): Bo
       targetFillLevel = 0
       fillAnimating = false
 
-      // Reset liquid mesh - cylinder at zero height
+      // Reset liquid mesh - lathe at zero height
       liquidMesh.scaling.y = 0.001
       liquidMesh.position.y = 0.15
       liquidCapMesh.position.y = 0.15
+      liquidCapMesh.scaling.x = 0.8
+      liquidCapMesh.scaling.z = 0.8
 
       // Reset glass transparency
       if (glassMaterial) {
@@ -378,14 +399,14 @@ export const createBottle3D = (scene: Scene, initialLevel: CEFRLevel = "A0"): Bo
     },
 
     updateLayout: (_worldWidth: number, worldHeight: number) => {
-      // Scale bottle to fill ~90% of screen height for immersive experience
-      const targetHeight = worldHeight * 0.9
+      // Scale bottle to fill ~120% of screen height for immersive overflow effect
+      const targetHeight = worldHeight * 1.2
       const bottleNaturalHeight = 7.4 // From profile
       const scale = targetHeight / bottleNaturalHeight
 
       // Save original layout for reset
       originalLayoutScale = new Vector3(scale, scale, scale)
-      originalLayoutY = -worldHeight * 0.05 // Center slightly lower
+      originalLayoutY = -worldHeight * 0.2 // Position lower to fill bottom half better
 
       bottleContainer.scaling = originalLayoutScale.clone()
 
