@@ -51,8 +51,8 @@ export function StudentSwitcher() {
   // If only one student, just show their name without dropdown
   if (students.length === 1) {
     return (
-      <div className="flex items-center gap-1.5 px-2 py-1.5 text-sm font-medium">
-        <Users className="h-4 w-4" />
+      <div className="flex items-center gap-2 px-3 py-2 text-sm font-medium">
+        <Users className="h-5 w-5" />
         <span className="hidden sm:inline">{currentStudent?.name}</span>
       </div>
     );
@@ -62,11 +62,11 @@ export function StudentSwitcher() {
     <div className="relative">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-1.5 px-2 py-1.5 text-sm font-medium hover:bg-accent rounded-md transition-colors"
+        className="flex items-center gap-2 px-3 py-2 text-sm font-medium hover:bg-accent rounded-md transition-colors"
       >
-        <Users className="h-4 w-4" />
+        <Users className="h-5 w-5" />
         <span className="hidden sm:inline">{currentStudent?.name || 'Select Student'}</span>
-        <ChevronDown className="h-3 w-3" />
+        <ChevronDown className="h-4 w-4" />
       </button>
 
       {isOpen && (
@@ -75,16 +75,16 @@ export function StudentSwitcher() {
             className="fixed inset-0 z-10"
             onClick={() => setIsOpen(false)}
           />
-          <div className="absolute left-0 top-full mt-1 z-20 w-48 bg-popover border rounded-md shadow-lg">
+          <div className="absolute left-0 top-full mt-1 z-20 w-52 bg-popover border rounded-md shadow-lg">
             {students.map((student) => (
               <button
                 key={student.id}
                 onClick={() => handleSwitchStudent(student.id)}
-                className={`w-full flex items-center gap-2 px-3 py-2 text-sm hover:bg-accent transition-colors text-left ${
+                className={`w-full flex items-center gap-3 px-4 py-3 text-sm hover:bg-accent transition-colors text-left ${
                   student.id === currentStudentId ? 'bg-accent font-medium' : ''
                 }`}
               >
-                <Users className="h-4 w-4" />
+                <Users className="h-5 w-5" />
                 <span>{student.name}</span>
               </button>
             ))}

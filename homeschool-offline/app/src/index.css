@@ -62,25 +62,24 @@
     --sal: env(safe-area-inset-left, 0px);
   }
 
-  html,
-  body,
-  #root {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100vh;
-    height: 100dvh;
+  html {
+    height: 100%;
+    /* position: fixed prevents iOS WKWebView from miscalculating viewport height on initial render */
     overflow: hidden;
+    position: fixed;
+    width: 100%;
   }
 
   body {
     @apply bg-background text-foreground font-sans;
     font-feature-settings: "rlig" 1, "calt" 1;
+    height: 100%;
+    overflow: hidden;
   }
 
   #root {
-    display: flex;
-    flex-direction: column;
+    height: 100%;
+    width: 100%;
   }
 }
 
@@ -97,14 +96,11 @@
   padding-top: var(--sat);
   padding-right: var(--sar);
   padding-left: var(--sal);
-  /* No bottom padding - allow content to scroll under iOS home indicator */
 }
 
 /* Mobile scroll padding - extra space at bottom of scrollable content */
-/* Buffer so content can be scrolled into view above home indicator */
 .mobile-scroll-padding {
-  padding-bottom: 3.3rem;
-  /* 56px buffer for comfortable scrolling (same as pb-14) */
+  padding-bottom: max(3.3rem, env(safe-area-inset-bottom, 0px));
 }
 
 /* Custom scrollbar */

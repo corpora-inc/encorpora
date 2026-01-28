@@ -133,7 +133,7 @@ export function PhotoGallery({ date }: PhotoGalleryProps) {
         studentId: currentStudentId,
         date,
       });
-      logger.debug('Loaded photos from backend:', backendPhotos);
+      // logger.debug('Loaded photos from backend:', backendPhotos);
       setPhotos(date, backendPhotos);
     } catch (error) {
       logger.error('Failed to load photos:', error);
@@ -512,15 +512,15 @@ export function PhotoGallery({ date }: PhotoGalleryProps) {
     }
   };
 
-  // Calculate menu position based on available space
+  // Calculate menu position based on button position relative to screen center
   const handleToggleAddMenu = () => {
     if (!showAddMenu && addButtonRef.current) {
       const buttonRect = addButtonRef.current.getBoundingClientRect();
-      const spaceBelow = window.innerHeight - buttonRect.bottom;
-      const menuHeight = 180; // Approximate height of 3-item menu
+      const buttonCenter = buttonRect.top + buttonRect.height / 2;
+      const screenMiddle = window.innerHeight / 2;
 
-      // If not enough space below, show menu above
-      setMenuPosition(spaceBelow < menuHeight ? 'above' : 'below');
+      // If button is below halfway point, show menu above
+      setMenuPosition(buttonCenter > screenMiddle ? 'above' : 'below');
     }
     setShowAddMenu(!showAddMenu);
   };
@@ -562,9 +562,8 @@ export function PhotoGallery({ date }: PhotoGalleryProps) {
             </Button>
 
             {showAddMenu && (
-              <div className={`absolute right-0 z-10 w-48 bg-popover border rounded-md shadow-lg ${
-                menuPosition === 'above' ? 'bottom-full mb-1' : 'top-full mt-1'
-              }`}>
+              <div className={`absolute right-0 z-10 w-48 bg-popover border rounded-md shadow-lg ${menuPosition === 'above' ? 'bottom-full mb-1' : 'top-full mt-1'
+                }`}>
                 <button
                   onClick={handleTakePhoto}
                   className="w-full flex items-center gap-3 px-4 py-3 text-sm hover:bg-accent transition-colors rounded-t-md border-b"
@@ -605,9 +604,8 @@ export function PhotoGallery({ date }: PhotoGalleryProps) {
             </Button>
 
             {showAddMenu && (
-              <div className={`absolute right-0 z-10 w-56 md:w-48 bg-popover border rounded-md shadow-lg ${
-                menuPosition === 'above' ? 'bottom-full mb-1' : 'top-full mt-1'
-              }`}>
+              <div className={`absolute right-0 z-10 w-56 md:w-48 bg-popover border rounded-md shadow-lg ${menuPosition === 'above' ? 'bottom-full mb-1' : 'top-full mt-1'
+                }`}>
                 <button
                   onClick={handleTakePictureDesktop}
                   className="w-full flex items-center gap-3 px-4 py-3 md:py-2 text-sm md:text-sm hover:bg-accent transition-colors rounded-t-md border-b"
@@ -658,15 +656,14 @@ export function PhotoGallery({ date }: PhotoGalleryProps) {
                   />
                 ) : (
                   <div
-                    className={`w-full h-full flex flex-col items-center justify-center bg-muted rounded-lg p-2 ${
-                      fileType === 'video' ? 'cursor-pointer hover:bg-muted/80 transition-colors' : ''
-                    }`}
+                    className={`w-full h-full flex flex-col items-center justify-center bg-muted rounded-lg p-2 ${fileType === 'video' ? 'cursor-pointer hover:bg-muted/80 transition-colors' : ''
+                      }`}
                     onClick={fileType === 'video' ? () => setSelectedPhoto(photo) : undefined}
                   >
                     {getFileIcon(photo.file_path)}
                     <p className="text-xs text-center mt-2 line-clamp-2 text-muted-foreground">
                       {photo.original_filename ||
-                       photo.file_path.split('/').pop()?.split('.').slice(0, -1).join('.')}
+                        photo.file_path.split('/').pop()?.split('.').slice(0, -1).join('.')}
                     </p>
                     <p className="text-[10px] text-muted-foreground">
                       {photo.file_path.split('.').pop()?.toUpperCase()}

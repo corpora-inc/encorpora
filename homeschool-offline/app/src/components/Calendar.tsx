@@ -1,9 +1,26 @@
+import { useState, useEffect } from 'react';
 import { MonthView } from './MonthView';
 import { DayView } from './DayView';
 
 export function Calendar() {
+  // Force re-render on resize (debounced) to recalculate layout
+  const [resizeKey, setResizeKey] = useState(0);
+
+  useEffect(() => {
+    let timeoutId: ReturnType<typeof setTimeout>;
+    const handleResize = () => {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => setResizeKey(k => k + 1), 150);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      clearTimeout(timeoutId);
+    };
+  }, []);
+
   return (
-    <>
+    <div key={resizeKey} className="h-full">
       {/* Mobile Layout - Vertical Stack (scrollable) */}
       <div className="lg:hidden flex flex-col h-full overflow-y-auto mobile-scroll-padding">
         {/* Month Grid */}
@@ -29,6 +46,6 @@ export function Calendar() {
           <DayView />
         </div>
       </div>
-    </>
+    </div>
   );
 }

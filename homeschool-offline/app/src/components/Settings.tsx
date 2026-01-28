@@ -180,11 +180,11 @@ export function Settings({ onClose }: SettingsProps) {
                         <button
                           key={student.id}
                           onClick={() => handleSwitchStudent(student.id)}
-                          className={`w-full flex items-center gap-2 px-3 py-2 text-sm hover:bg-accent transition-colors text-left ${
+                          className={`w-full flex items-center gap-3 px-4 py-3 text-sm hover:bg-accent transition-colors text-left ${
                             student.id === currentStudentId ? 'bg-accent font-medium' : ''
                           }`}
                         >
-                          <Users className="h-4 w-4" />
+                          <Users className="h-5 w-5" />
                           <span>{student.name}</span>
                         </button>
                       ))}
@@ -210,12 +210,12 @@ export function Settings({ onClose }: SettingsProps) {
             {/* Students */}
             <div className="space-y-3 pt-4 border-t">
               <h3 className="text-sm md:text-base font-medium flex items-center gap-2">
-                <Users className="h-4 w-4" />
+                <Users className="h-5 w-5" />
                 Students
               </h3>
               <div className="space-y-2">
                 {students.map((student) => (
-                  <div key={student.id} className="flex items-center gap-2 p-2 rounded border">
+                  <div key={student.id} className="flex items-center gap-3 p-3 rounded border">
                     {editingStudent === student.id ? (
                       <>
                         <Input
@@ -229,7 +229,7 @@ export function Settings({ onClose }: SettingsProps) {
                           variant="ghost"
                           onClick={() => handleEditStudent(student.id)}
                         >
-                          <Check className="h-4 w-4" />
+                          <Check className="h-5 w-5" />
                         </Button>
                         <Button
                           size="icon"
@@ -239,7 +239,7 @@ export function Settings({ onClose }: SettingsProps) {
                             setEditName('');
                           }}
                         >
-                          <XIcon className="h-4 w-4" />
+                          <XIcon className="h-5 w-5" />
                         </Button>
                       </>
                     ) : (
@@ -253,7 +253,7 @@ export function Settings({ onClose }: SettingsProps) {
                             setEditName(student.name);
                           }}
                         >
-                          <Pencil className="h-4 w-4" />
+                          <Pencil className="h-5 w-5" />
                         </Button>
                         <Button
                           size="icon"
@@ -261,7 +261,7 @@ export function Settings({ onClose }: SettingsProps) {
                           onClick={() => handleDeleteStudent(student.id)}
                           disabled={students.length === 1}
                         >
-                          <XIcon className="h-4 w-4" />
+                          <XIcon className="h-5 w-5" />
                         </Button>
                       </>
                     )}
@@ -276,7 +276,7 @@ export function Settings({ onClose }: SettingsProps) {
                     onKeyPress={(e) => e.key === 'Enter' && handleAddStudent()}
                   />
                   <Button size="sm" onClick={handleAddStudent}>
-                    <Plus className="h-4 w-4 mr-1" />
+                    <Plus className="h-5 w-5 mr-1" />
                     Add
                   </Button>
                 </div>
