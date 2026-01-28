@@ -37,6 +37,7 @@ export type BottleProgress = {
   phrasesInCurrentBottle: number // 0-10, resets when bottle completes
   bottlesCompletedThisLevel: number
   bottleCollection: CollectedBottle[]
+  currentColorIndex: number // Index into color cycle for visual variety (0-5)
 }
 
 // Game phrase data
@@ -116,6 +117,7 @@ export type GameState = {
   updateSettings: (settings: Partial<GameSettings>) => void
   resetBlocks: () => void
   setLevel: (level: CEFRLevel) => void
+  setColorIndex: (index: number) => void
   getBottleFillPercent: () => number
   isLevelComplete: () => boolean
 }
@@ -125,6 +127,7 @@ const initialBottleProgress: BottleProgress = {
   phrasesInCurrentBottle: 0,
   bottlesCompletedThisLevel: 0,
   bottleCollection: [],
+  currentColorIndex: 0,
 }
 
 const initialState = {
@@ -370,6 +373,15 @@ export const useGameStore = create<GameState>()(
             currentLevel: level,
             phrasesInCurrentBottle: 0,
             bottlesCompletedThisLevel: 0,
+          },
+        }))
+      },
+
+      setColorIndex: (index) => {
+        set((state) => ({
+          bottleProgress: {
+            ...state.bottleProgress,
+            currentColorIndex: index,
           },
         }))
       },

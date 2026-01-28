@@ -261,8 +261,8 @@ export const createJuiceSqueeze = (
     logoTexture.vScale = 8 // Repeat 8 times vertically
 
     bgMaterial.diffuseTexture = logoTexture
-    bgMaterial.emissiveTexture = logoTexture // Self-lit, no lighting needed
-    bgMaterial.alpha = 0.12 // Subtle but perceptible, ~12% opacity
+    bgMaterial.emissiveColor = new Color3(0.25, 0.25, 0.25) // Grey tint instead of orange
+    bgMaterial.alpha = 0.06 // Very subtle, ~6% opacity
     bgMaterial.disableLighting = true
     bgMaterial.backFaceCulling = false
 
@@ -277,8 +277,9 @@ export const createJuiceSqueeze = (
 
   // Color cycling for visual variety between bottles
   const juiceColors: CEFRLevel[] = ["A0", "A1", "A2", "B1", "B2", "C1"]
-  let colorIndex = juiceColors.indexOf(initialBottleProgress?.currentLevel || "A0")
-  if (colorIndex === -1) colorIndex = 0
+  // Initialize from persisted color index, or default to current level's index
+  let colorIndex = initialBottleProgress?.currentColorIndex ?? juiceColors.indexOf(initialBottleProgress?.currentLevel || "A0")
+  if (colorIndex === -1 || colorIndex >= juiceColors.length) colorIndex = 0
 
   // Track current utterance for word count and TTS
   let currentUtterance: Utterance | null = null
@@ -767,18 +768,18 @@ export const createJuiceSqueeze = (
       ctx.closePath()
     }
 
-    // Frosted glass background - subtle teal tint that contrasts with blocks
+    // Dark frosted glass background - consistent with scene background
     const areaGradient = ctx.createLinearGradient(0, 0, 0, 512)
-    areaGradient.addColorStop(0, "rgba(230, 245, 245, 0.9)") // Subtle teal tint
-    areaGradient.addColorStop(1, "rgba(220, 235, 235, 0.85)")
+    areaGradient.addColorStop(0, "rgba(40, 40, 40, 0.9)") // Dark grey
+    areaGradient.addColorStop(1, "rgba(30, 30, 30, 0.85)")
 
     // Rounded rectangle
     roundRect(16, 16, 1024 - 32, 512 - 32, 32)
     ctx.fillStyle = areaGradient
     ctx.fill()
 
-    // Subtle colored border (teal or matching accent)
-    ctx.strokeStyle = "rgba(11, 107, 111, 0.4)"
+    // Subtle grey border
+    ctx.strokeStyle = "rgba(100, 100, 100, 0.3)"
     ctx.lineWidth = 3
     ctx.stroke()
 
@@ -790,7 +791,7 @@ export const createJuiceSqueeze = (
 
     // Draw subtle row separator lines for multi-row layouts
     if (rowCount > 1) {
-      ctx.strokeStyle = "rgba(11, 107, 111, 0.2)" // Subtle teal lines
+      ctx.strokeStyle = "rgba(100, 100, 100, 0.15)" // Subtle grey lines
       ctx.lineWidth = 2
       ctx.setLineDash([10, 10]) // Dashed line
 
@@ -1230,9 +1231,11 @@ export const createJuiceSqueeze = (
               bottle3D.reset()
               juiceGlass.updateFill(0)
 
-              // Cycle to next juice color for variety
+              // Cycle to next juice color for variety and persist it
               colorIndex = (colorIndex + 1) % juiceColors.length
+              useGameStore.getState().setColorIndex(colorIndex)
               bottle3D.setColor(juiceColors[colorIndex])
+              juiceGlass.setColor(juiceColors[colorIndex])
 
               // Update bottle collection display
               renderBottleCollection()
@@ -1606,6 +1609,7 @@ export const createJuiceSqueeze = (
       if (nextLevel) {
         useGameStore.getState().setLevel(nextLevel)
         bottle3D.setColor(nextLevel)
+        juiceGlass.setColor(nextLevel)
         renderBottleCollection()
       }
       levelCompleteOverlay.style.display = "none"
@@ -1618,7 +1622,9 @@ export const createJuiceSqueeze = (
   const initialFillLevel = useGameStore.getState().getBottleFillPercent() / 100
   juiceGlass.updateFill(initialFillLevel)
   bottle3D.updateFill(initialFillLevel)
-  bottle3D.setColor(initialBottleProgress?.currentLevel || "A0")
+  // Use persisted color index for consistency across sessions
+  bottle3D.setColor(juiceColors[colorIndex])
+  juiceGlass.setColor(juiceColors[colorIndex])
 
   // Utterance history for back/forward navigation
   const utteranceHistory: Utterance[] = []

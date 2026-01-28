@@ -137,6 +137,7 @@ export const createBottle3D = (scene: Scene, initialLevel: CEFRLevel = "A0"): Bo
   // Position at bottom of bottle
   liquidMesh.position.y = 0.15
   liquidMesh.scaling.y = 0.001 // Start hidden
+  liquidMesh.isVisible = false // Hide when empty
 
   // Liquid surface cap (top of liquid) with wave animation
   // Radius matches the body width of liquid
@@ -154,6 +155,7 @@ export const createBottle3D = (scene: Scene, initialLevel: CEFRLevel = "A0"): Bo
   liquidCapMesh.material = liquidMaterial
   liquidCapMesh.parent = bottleContainer
   liquidCapMesh.isPickable = false // Don't intercept pointer events
+  liquidCapMesh.isVisible = false // Hide when empty
 
   // Sloshing animation for liquid surface
   let sloshPhase = 0
@@ -245,6 +247,11 @@ export const createBottle3D = (scene: Scene, initialLevel: CEFRLevel = "A0"): Bo
     } else {
       currentFillLevel += diff * 0.06 // Smooth interpolation
     }
+
+    // Show/hide liquid based on fill level
+    const hasLiquid = currentFillLevel > 0.01
+    liquidMesh.isVisible = hasLiquid
+    liquidCapMesh.isVisible = hasLiquid
 
     // Calculate liquid height based on fill level
     const liquidHeight = Math.max(0.01, currentFillLevel * maxLiquidHeight)
@@ -377,12 +384,14 @@ export const createBottle3D = (scene: Scene, initialLevel: CEFRLevel = "A0"): Bo
       targetFillLevel = 0
       fillAnimating = false
 
-      // Reset liquid mesh - lathe at zero height
+      // Reset liquid mesh - lathe at zero height and hidden
       liquidMesh.scaling.y = 0.001
       liquidMesh.position.y = 0.15
+      liquidMesh.isVisible = false
       liquidCapMesh.position.y = 0.15
       liquidCapMesh.scaling.x = 0.8
       liquidCapMesh.scaling.z = 0.8
+      liquidCapMesh.isVisible = false
 
       // Reset glass transparency
       if (glassMaterial) {

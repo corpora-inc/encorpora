@@ -285,7 +285,7 @@
 /* Fruit flip button - right of forward nav button */
 .fruit-btn {
   position: fixed;
-  left: calc(env(safe-area-inset-left) + clamp(132px, 26vw, 176px));
+  left: calc(env(safe-area-inset-left) + clamp(144px, 28vw, 188px));
   bottom: calc(env(safe-area-inset-bottom) + clamp(20px, 5vh, 40px));
   z-index: 1001;
   border: 1px solid rgba(27, 27, 31, 0.15);
@@ -777,7 +777,7 @@
   transition: height 0.6s ease-out, y 0.6s ease-out;
 }
 
-.orange-squeeze {
+.fruit-squeeze {
   position: absolute;
   top: -35px;
   left: 50%;
@@ -786,45 +786,18 @@
   transition: opacity 0.3s ease;
 }
 
-.orange-squeeze.squeezing {
+.fruit-squeeze.squeezing {
   opacity: 1;
 }
 
-.orange {
-  width: 40px;
-  height: 40px;
-  background: radial-gradient(circle at 35% 35%, #FFD54F, #FF9800, #E65100);
-  border-radius: 50%;
-  position: relative;
-  box-shadow: inset -4px -4px 8px rgba(0, 0, 0, 0.2),
-              inset 4px 4px 8px rgba(255, 255, 255, 0.3);
+.squeeze-fruit {
+  font-size: 36px;
+  line-height: 1;
+  text-align: center;
+  filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.3));
 }
 
-.orange::before {
-  content: "";
-  position: absolute;
-  top: -4px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 6px;
-  height: 6px;
-  background: #4CAF50;
-  border-radius: 2px;
-}
-
-.orange::after {
-  content: "";
-  position: absolute;
-  top: -8px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 8px;
-  height: 4px;
-  background: #2E7D32;
-  border-radius: 50% 50% 0 0;
-}
-
-.orange-squeeze.squeezing .orange {
+.fruit-squeeze.squeezing .squeeze-fruit {
   animation: squeeze 1.5s ease-in-out;
 }
 
@@ -840,7 +813,7 @@
   opacity: 0;
 }
 
-.orange-squeeze.squeezing .juice-stream {
+.fruit-squeeze.squeezing .juice-stream {
   animation: pour 1.5s ease-in-out;
 }
 
@@ -1036,7 +1009,7 @@
   }
 
   .fruit-btn {
-    left: calc(env(safe-area-inset-left) + clamp(118px, 24vw, 156px));
+    left: calc(env(safe-area-inset-left) + clamp(128px, 26vw, 168px));
     bottom: calc(env(safe-area-inset-bottom) + clamp(16px, 4vh, 32px));
   }
 }
@@ -1127,7 +1100,7 @@
   }
 
   .fruit-btn {
-    left: calc(env(safe-area-inset-left) + clamp(108px, 23vw, 132px));
+    left: calc(env(safe-area-inset-left) + clamp(116px, 25vw, 144px));
     bottom: calc(env(safe-area-inset-bottom) + clamp(12px, 3vh, 24px));
   }
 }
