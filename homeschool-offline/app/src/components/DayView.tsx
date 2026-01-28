@@ -136,7 +136,7 @@ export function DayView({ compact = false }: DayViewProps) {
       </div>
 
       {/* Content */}
-      <div className={compact ? "p-3 md:p-6 space-y-4 md:space-y-6" : "flex-1 overflow-y-auto p-3 md:p-6 space-y-4 md:space-y-6"}>
+      <div className={compact ? "p-3 md:p-6 space-y-4 md:space-y-6" : "flex-1 overflow-y-auto mobile-scroll-padding p-3 md:p-6 space-y-4 md:space-y-6"}>
         {/* Homeschool Day Toggle */}
         <div className="flex items-center justify-between p-3 md:p-4 border rounded-lg">
           <Label htmlFor="homeschool-toggle" className="text-sm md:text-base font-medium">

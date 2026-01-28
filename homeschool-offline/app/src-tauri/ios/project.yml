@@ -43,6 +43,11 @@ targets:
         NSCameraUsageDescription: Take photos to document your homeschool activities
         NSPhotoLibraryUsageDescription: Choose photos from your library to document your homeschool activities
         NSPhotoLibraryAddUsageDescription: Save photos to your library
+        UIFileSharingEnabled: true
+        LSSupportsOpeningDocumentsInPlace: true
+        UIViewControllerBasedStatusBarAppearance: false
+        UIStatusBarHidden: false
+        UIRequiresFullScreen: true
     entitlements:
       path: ../../gen/apple/homeschool-offline_iOS/homeschool-offline_iOS.entitlements
     scheme:

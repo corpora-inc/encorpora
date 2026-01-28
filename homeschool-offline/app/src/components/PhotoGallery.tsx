@@ -691,17 +691,14 @@ export function PhotoGallery({ date }: PhotoGalleryProps) {
       {/* Lightbox - rendered via portal to bypass parent constraints */}
       {selectedPhoto && createPortal(
         <div
-          className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center"
+          className="flex items-center justify-center bg-black/90"
           onClick={closeLightbox}
           style={{
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            width: '100vw',
-            height: '100vh',
-            margin: 0,
-            padding: 0,
+            position: 'fixed',
+            inset: 0,
+            width: '100%',
+            height: '100dvh',
+            zIndex: 50,
           }}
         >
           <button

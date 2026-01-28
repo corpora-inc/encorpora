@@ -149,30 +149,67 @@ fn get_total_homeschool_days_command(app: AppHandle, student_id: i64) -> Result<
     db::get_total_homeschool_days(&app, student_id)
 }
 
-// Export/Import commands (desktop - synchronous)
+// Export/Import commands (async to prevent blocking main thread)
 #[tauri::command]
-fn export_data_command(app: AppHandle, dest_path: String) -> Result<(), String> {
-    export::export_data(&app, &dest_path)
+async fn export_data_command(app: AppHandle, dest_path: String) -> Result<(), String> {
+    let app_clone = app.clone();
+    tokio::task::spawn_blocking(move || {
+        export::export_data(&app_clone, &dest_path)
+    })
+    .await
+    .map_err(|e| format!("Failed to spawn export task: {}", e))?
 }
 
 #[tauri::command]
-fn export_data_to_bytes_command(app: AppHandle) -> Result<Vec<u8>, String> {
-    export::export_data_to_bytes(&app)
+async fn export_data_to_bytes_command(app: AppHandle) -> Result<Vec<u8>, String> {
+    let app_clone = app.clone();
+    tokio::task::spawn_blocking(move || {
+        export::export_data_to_bytes(&app_clone)
+    })
+    .await
+    .map_err(|e| format!("Failed to spawn export task: {}", e))?
 }
 
 #[tauri::command]
-fn export_data_to_external_command(app: AppHandle) -> Result<String, String> {
-    export::export_data_to_external(&app)
+async fn export_data_to_external_command(app: AppHandle) -> Result<String, String> {
+    let app_clone = app.clone();
+    tokio::task::spawn_blocking(move || {
+        export::export_data_to_external(&app_clone)
+    })
+    .await
+    .map_err(|e| format!("Failed to spawn export task: {}", e))?
 }
 
 #[tauri::command]
-fn import_data_command(app: AppHandle, source_path: String) -> Result<(), String> {
-    import::import_data(&app, &source_path)
+async fn export_data_to_ios_documents_command(app: AppHandle) -> Result<String, String> {
+    let app_clone = app.clone();
+    tokio::task::spawn_blocking(move || {
+        export::export_data_to_ios_documents(&app_clone)
+    })
+    .await
+    .map_err(|e| format!("Failed to spawn export task: {}", e))?
 }
 
 #[tauri::command]
-fn import_data_from_bytes_command(app: AppHandle, bytes: Vec<u8>) -> Result<(), String> {
-    import::import_data_from_bytes(&app, bytes)
+async fn import_data_command(app: AppHandle, source_path: String) -> Result<(), String> {
+    // Run the blocking I/O work in a background thread to prevent iOS from killing the app
+    let app_clone = app.clone();
+    tokio::task::spawn_blocking(move || {
+        import::import_data(&app_clone, &source_path)
+    })
+    .await
+    .map_err(|e| format!("Failed to spawn import task: {}", e))?
+}
+
+#[tauri::command]
+async fn import_data_from_bytes_command(app: AppHandle, bytes: Vec<u8>) -> Result<(), String> {
+    // Run the blocking I/O work in a background thread to prevent iOS from killing the app
+    let app_clone = app.clone();
+    tokio::task::spawn_blocking(move || {
+        import::import_data_from_bytes(&app_clone, bytes)
+    })
+    .await
+    .map_err(|e| format!("Failed to spawn import task: {}", e))?
 }
 
 // Re-export async commands and platform commands
@@ -185,16 +222,14 @@ use import::import_data_async;
 #[cfg(target_os = "android")]
 use platform::android::{android_share_file, android_write_content_uri};
 
-#[cfg(target_os = "ios")]
-use platform::ios::ios_share_file;
-
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
     let mut builder = tauri::Builder::default()
         .plugin(tauri_plugin_opener::init())
         .plugin(tauri_plugin_dialog::init())
         .plugin(tauri_plugin_fs::init())
-        .plugin(tauri_plugin_os::init());
+        .plugin(tauri_plugin_os::init())
+        .plugin(tauri_plugin_ios_share::init());
 
     // Platform-specific command registration
     #[cfg(target_os = "android")]
@@ -249,12 +284,11 @@ pub fn run() {
             get_total_homeschool_days_command,
             export_data_command,
             export_data_to_bytes_command,
-            export_data_to_external_command,
+            export_data_to_ios_documents_command,
             import_data_command,
             import_data_from_bytes_command,
             export_data_async,
             import_data_async,
-            ios_share_file,
         ]);
     }
 
@@ -279,7 +313,6 @@ pub fn run() {
             get_total_homeschool_days_command,
             export_data_command,
             export_data_to_bytes_command,
-            export_data_to_external_command,
             import_data_command,
             import_data_from_bytes_command,
         ]);

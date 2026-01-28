@@ -119,7 +119,7 @@ function App() {
 
   if (!isInitialized) {
     return (
-      <div className="h-full flex items-center justify-center safe-area-container">
+      <div className="h-full flex items-center justify-center">
         <p className="text-muted-foreground">Loading...</p>
       </div>
     );
@@ -134,9 +134,9 @@ function App() {
   }
 
   return (
-    <div className="h-full flex flex-col safe-area-container">
+    <div className="h-full flex flex-col">
       {/* Header */}
-      <div className="flex items-center justify-between px-3 md:px-4 py-3 border-b shrink-0">
+      <div className="flex items-center justify-between px-3 md:px-4 py-3 border-b shrink-0" style={{ paddingTop: 'max(0.75rem, env(safe-area-inset-top))' }}>
         <div className="flex items-center gap-2">
           <StudentSwitcher />
           <h1 className="text-base md:text-lg font-semibold">{currentStudent?.name || 'Student'}</h1>

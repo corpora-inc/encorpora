@@ -76,7 +76,7 @@ export function MonthView({ compact = false }: MonthViewProps) {
       </div>
 
       {/* Calendar Grid */}
-      <div className={compact ? "p-1.5 md:p-4" : "flex-1 p-1.5 md:p-4 overflow-auto"}>
+      <div className={compact ? "p-1.5 md:p-4" : "flex-1 p-1.5 md:p-4 mobile-scroll-padding overflow-auto"}>
         {/* Days of week header */}
         <div className="grid grid-cols-7 gap-0.5 md:gap-2 mb-1 md:mb-2">
           {DAYS_OF_WEEK.map((day) => (

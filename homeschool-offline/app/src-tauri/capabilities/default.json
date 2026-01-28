@@ -8,6 +8,7 @@
     "core:path:default",
     "opener:default",
     "dialog:default",
+    "ios-share:default",
     "dialog:allow-open",
     "dialog:allow-save",
     "dialog:allow-message",

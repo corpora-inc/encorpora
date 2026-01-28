@@ -146,6 +146,57 @@ pub fn export_data_to_external(app: &AppHandle) -> Result<String, String> {
     }
 }
 
+/// Export to iOS Documents directory (accessible via Files app)
+pub fn export_data_to_ios_documents(app: &AppHandle) -> Result<String, String> {
+    eprintln!("export_data_to_ios_documents called");
+
+    let bytes = export_data_to_bytes(app)?;
+
+    if bytes.is_empty() {
+        return Err("Created ZIP is empty!".to_string());
+    }
+
+    #[cfg(target_os = "ios")]
+    {
+        // iOS: Save to temp directory - Share Sheet will handle final destination
+        // This is the modern iOS approach: app creates file, user chooses where to save it
+        let temp_dir = app.path().temp_dir()
+            .map_err(|e| format!("Failed to get temp dir: {}", e))?;
+
+        let filename = format!("homeschool-backup-{}.zip",
+            chrono::Local::now().format("%Y%m%d-%H%M%S"));
+        let output_path = temp_dir.join(&filename);
+
+        eprintln!("[export_data_to_ios_documents] Writing to temp: {:?}", output_path);
+
+        std::fs::write(&output_path, &bytes)
+            .map_err(|e| format!("Failed to write file: {}", e))?;
+
+        // Verify file was written
+        let metadata = std::fs::metadata(&output_path)
+            .map_err(|e| format!("Failed to verify file: {}", e))?;
+
+        eprintln!("[export_data_to_ios_documents] File written successfully, size: {} bytes", metadata.len());
+
+        if metadata.len() == 0 {
+            return Err("Written file is empty!".to_string());
+        }
+
+        if metadata.len() != bytes.len() as u64 {
+            return Err(format!("File size mismatch! Expected {}, got {}",
+                bytes.len(), metadata.len()));
+        }
+
+        Ok(output_path.to_string_lossy().to_string())
+    }
+
+    #[cfg(not(target_os = "ios"))]
+    {
+        // Should never be called on non-iOS, but fail loudly if it is
+        Err("export_data_to_ios_documents should only be called on iOS".to_string())
+    }
+}
+
 /// Export all data to a ZIP file (uses in-memory export and writes to disk)
 pub fn export_data(app: &AppHandle, dest_path: &str) -> Result<(), String> {
     let bytes = export_data_to_bytes(app)?;

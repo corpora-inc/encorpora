@@ -131,9 +131,9 @@ export function Settings({ onClose }: SettingsProps) {
   const currentStudent = getCurrentStudent();
 
   return (
-    <div className="h-full flex flex-col safe-area-container bg-background">
+    <div className="h-full flex flex-col bg-background">
       {/* Header with close button */}
-      <div className="flex items-center justify-between px-3 md:px-4 py-3 border-b shrink-0">
+      <div className="flex items-center justify-between px-3 md:px-4 py-3 border-b shrink-0" style={{ paddingTop: 'max(0.75rem, env(safe-area-inset-top))' }}>
         <h1 className="text-base md:text-lg font-semibold">Settings</h1>
         <Button variant="outline" size="icon" onClick={onClose}>
           <XIcon className="h-4 w-4" />
@@ -141,7 +141,7 @@ export function Settings({ onClose }: SettingsProps) {
       </div>
 
       {/* Scrollable content */}
-      <div className="flex-1 overflow-y-auto">
+      <div className="flex-1 overflow-y-auto mobile-scroll-padding">
         <div className="max-w-2xl mx-auto px-3 md:px-4 py-4 md:py-6">
           <div className="space-y-6">
             {/* Current Student Stats */}
@@ -194,20 +194,17 @@ export function Settings({ onClose }: SettingsProps) {
               </div>
             )}
 
-            {/* Personal Information */}
+            {/* Parent Name */}
             <div className="space-y-2">
-              <h3 className="text-sm md:text-base font-medium">Personal Information</h3>
-              <div className="space-y-2">
-                <Label htmlFor="parent-name" className="text-sm">Parent Name</Label>
-                <Input
-                  id="parent-name"
-                  value={parentName}
-                  onChange={(e) => setParentName(e.target.value)}
-                  onBlur={handleParentNameBlur}
-                  placeholder="Your name"
-                  className="text-sm"
-                />
-              </div>
+              <Label htmlFor="parent-name" className="text-sm">Parent Name</Label>
+              <Input
+                id="parent-name"
+                value={parentName}
+                onChange={(e) => setParentName(e.target.value)}
+                onBlur={handleParentNameBlur}
+                placeholder="Your name"
+                className="text-sm"
+              />
             </div>
 
             {/* Students */}

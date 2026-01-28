@@ -69,7 +69,7 @@ export function WelcomeScreen() {
   };
 
   return (
-    <div className="h-full bg-background flex items-center justify-center p-4 safe-area-container overflow-y-auto">
+    <div className="h-full bg-background flex items-center justify-center p-4 overflow-y-auto mobile-scroll-padding" style={{ paddingTop: 'max(1rem, env(safe-area-inset-top))' }}>
       <div className="max-w-md w-full space-y-6 md:space-y-8 my-4">
         <div className="text-center space-y-2">
           <h1 className="text-3xl md:text-4xl font-bold">Homeschool Offline</h1>

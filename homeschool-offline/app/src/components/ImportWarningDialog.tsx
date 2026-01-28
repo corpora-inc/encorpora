@@ -20,23 +20,25 @@ export function ImportWarningDialog({ open, onCancel, onConfirm }: ImportWarning
               Replace All Data?
             </AlertDialogTitle>
           </div>
-          <AlertDialogDescription className="text-base pt-4 space-y-3">
-            <p className="font-semibold text-foreground">
-              This will completely replace:
-            </p>
-            <ul className="list-disc pl-6 space-y-1">
-              <li>All students and their information</li>
-              <li>All calendar entries and notes</li>
-              <li>All photos and media files</li>
-              <li>All app settings</li>
-            </ul>
-            <p className="pt-2 text-sm text-muted-foreground">
-              Your current data will be backed up automatically before import,
-              but this backup will only be accessible if import fails.
-            </p>
-            <p className="font-semibold text-foreground pt-2">
-              Are you sure you want to continue?
-            </p>
+          <AlertDialogDescription asChild>
+            <div className="text-muted-foreground text-base pt-4 space-y-3">
+              <div className="font-semibold text-foreground">
+                This will completely replace:
+              </div>
+              <ul className="list-disc pl-6 space-y-1">
+                <li>All students and their information</li>
+                <li>All calendar entries and notes</li>
+                <li>All photos and media files</li>
+                <li>All app settings</li>
+              </ul>
+              <div className="pt-2 text-sm text-muted-foreground">
+                Your current data will be backed up automatically before import,
+                but this backup will only be accessible if import fails.
+              </div>
+              <div className="font-semibold text-foreground pt-2">
+                Are you sure you want to continue?
+              </div>
+            </div>
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>

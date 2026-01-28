@@ -5,7 +5,7 @@ export function Calendar() {
   return (
     <>
       {/* Mobile Layout - Vertical Stack (scrollable) */}
-      <div className="lg:hidden flex flex-col h-full overflow-y-auto">
+      <div className="lg:hidden flex flex-col h-full overflow-y-auto mobile-scroll-padding">
         {/* Month Grid */}
         <div className="shrink-0">
           <MonthView compact />
