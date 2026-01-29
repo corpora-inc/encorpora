@@ -27,6 +27,7 @@ export interface Note {
   hit: boolean;   // Has it been hit?
   missed: boolean; // Did it pass the line without hit?
   spawnTime: number;
+  hitTime?: number;
 }
 
 export enum GameState {

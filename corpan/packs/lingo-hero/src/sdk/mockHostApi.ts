@@ -60,14 +60,33 @@ const pickRandomPhrases = (count: number): EntryOut[] => {
 
 const speakWithBrowserTts = (uiCode: string, text: string, rate: number) => {
   if (typeof window === "undefined" || !window.speechSynthesis) {
-    console.log(`[Mock TTS ${uiCode}]`, text)
+    console.warn(`[Mock TTS] SpeechSynthesis not supported or not available. Text: "${text}"`);
     return
   }
+
+  // Ensure voices are loaded (Chrome quirk)
+  const voices = window.speechSynthesis.getVoices();
+  if (voices.length === 0) {
+      console.warn("[Mock TTS] No voices loaded yet. Retrying in 100ms...");
+      setTimeout(() => speakWithBrowserTts(uiCode, text, rate), 100);
+      return;
+  }
+
   const utterance = new SpeechSynthesisUtterance(text)
   utterance.lang = uiCode
+  
+  // Try to find a matching voice if setting lang isn't enough
+  const matchingVoice = voices.find(v => v.lang.startsWith(uiCode) || v.lang.includes(uiCode));
+  if (matchingVoice) {
+      utterance.voice = matchingVoice;
+  }
+
   if (typeof rate === "number") {
     utterance.rate = rate
   }
+  
+  console.log(`[Mock TTS] Speaking (${uiCode}): "${text}"`, matchingVoice ? `using ${matchingVoice.name}` : "using default");
+  
   window.speechSynthesis.cancel()
   window.speechSynthesis.speak(utterance)
 }
