@@ -105,7 +105,7 @@
   padding: clamp(8px, 2vw, 12px) clamp(16px, 4vw, 20px);
   max-width: 90vw;
   animation: floatIn 600ms ease-out;
-  border-radius: var(--radius-md);
+  border-radius: 0; /* Remove rounded corners to blend with juice fill */
   transition: transform 150ms ease, opacity 150ms ease;
 }
 
@@ -122,7 +122,7 @@
   font-weight: 600;
   color: rgba(255, 255, 255, 0.9);
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-  margin-bottom: 4px;
+  margin-bottom: 1px;
   letter-spacing: 0.5px;
 }
 
@@ -569,7 +569,7 @@
 .level-complete-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.85);
+  background: #000;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -709,6 +709,14 @@
   font-size: clamp(18px, 4.5vw, 24px);
   font-weight: 600;
   color: #fff;
+}
+
+.next-level-hint {
+  font-size: clamp(12px, 3vw, 14px);
+  color: rgba(255, 255, 255, 0.5);
+  margin-top: 16px;
+  font-style: italic;
+  line-height: 1.4;
 }
 
 .level-complete-max {
@@ -916,11 +924,9 @@
 /* Animations */
 @keyframes floatIn {
   from {
-    transform: translateY(12px);
     opacity: 0;
   }
   to {
-    transform: translateY(0);
     opacity: 1;
   }
 }
@@ -1103,4 +1109,108 @@
     left: calc(env(safe-area-inset-left) + clamp(116px, 25vw, 144px));
     bottom: calc(env(safe-area-inset-bottom) + clamp(12px, 3vh, 24px));
   }
+}
+
+/* Phrase Review Modal */
+.phrase-review-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1100;
+  padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+  animation: overlayFadeIn 300ms ease-out;
+}
+
+.phrase-review-content {
+  background: linear-gradient(145deg, rgba(40, 40, 40, 0.95), rgba(20, 20, 20, 0.95));
+  border-radius: 24px;
+  max-width: min(90vw, 500px);
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  border: 2px solid rgba(255, 200, 50, 0.3);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), 0 0 60px rgba(255, 200, 50, 0.1);
+  animation: contentPop 400ms ease-out;
+}
+
+.phrase-review-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: clamp(16px, 4vw, 24px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.phrase-review-header h2 {
+  margin: 0;
+  font-size: clamp(20px, 5vw, 28px);
+  color: #FFD700;
+  font-weight: 700;
+}
+
+.review-close-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 24px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.review-close-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
+.phrase-review-list {
+  overflow-y: auto;
+  padding: clamp(12px, 3vw, 20px);
+  flex: 1;
+}
+
+.review-phrase-item {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: clamp(12px, 3vw, 16px);
+  margin-bottom: 12px;
+  border-left: 3px solid rgba(255, 200, 50, 0.5);
+}
+
+.review-phrase-item:last-child {
+  margin-bottom: 0;
+}
+
+.review-phrase-target {
+  font-size: clamp(16px, 4vw, 20px);
+  color: #fff;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.review-phrase-block {
+  font-size: clamp(14px, 3.5vw, 18px);
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.review-empty {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.5);
+  padding: 40px 20px;
+  font-size: clamp(14px, 3.5vw, 18px);
+}
+
+/* Review button styling */
+.review-btn {
+  background: linear-gradient(145deg, rgba(255, 200, 50, 0.2), rgba(255, 150, 0, 0.1)) !important;
+  border-color: rgba(255, 200, 50, 0.4) !important;
+}
+
+.review-btn:hover {
+  background: linear-gradient(145deg, rgba(255, 200, 50, 0.3), rgba(255, 150, 0, 0.2)) !important;
 }
