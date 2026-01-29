@@ -22,9 +22,11 @@ import {
 import "@babylonjs/loaders/glTF"
 import type { HostApi, StackConfig } from "./sdk/types"
 import { loadUtterance, type Utterance } from "./data"
-import { useGameStore } from "./store/gameState"
+import { useGameStore, LEVEL_FRUIT_COLORS, BOTTLES_PER_LEVEL, type CEFRLevel } from "./store/gameState"
 import { createJuiceGlass, type JuiceGlass } from "./juiceAnimation"
+import { createBottle3D, type Bottle3D } from "./bottle3D"
 import successSoundUrl from "./sounds/success.mp3"
+import corpanLogoUrl from "./assets/corpan-logo.png"
 
 // Helper to darken/lighten hex colors
 const shadeColor = (color: string, percent: number): string => {
@@ -236,14 +238,48 @@ export const createJuiceSqueeze = (
   )
 
   const scene = new Scene(engine)
-  // Tropical sunset background (warm orange/pink)
-  scene.clearColor = new Color4(0, 1, 1, 1) // Cyan background
+  // Dark grey background for immersive juice experience
+  scene.clearColor = new Color4(0.1, 0.1, 0.1, 1) // Dark grey #1a1a1a
 
   // Camera setup - ORTHOGRAPHIC for 2D view
   const camera = new UniversalCamera("camera", new Vector3(0, 0, -15), scene)
   camera.mode = Camera.ORTHOGRAPHIC_CAMERA
   camera.setTarget(Vector3.Zero())
   camera.inputs.clear()
+
+  // Create subtle Corpan logo checkerboard background pattern
+  const createLogoBackground = () => {
+    const bgSize = 50 // Large plane to cover viewport
+    const bgPlane = MeshBuilder.CreatePlane("logo-background", { size: bgSize }, scene)
+    bgPlane.position = new Vector3(0, 0, 10) // Behind all game elements
+
+    const bgMaterial = new StandardMaterial("logo-bg-material", scene)
+    const logoTexture = new Texture(corpanLogoUrl, scene)
+    logoTexture.hasAlpha = true
+    // Tile the logo across the background
+    logoTexture.uScale = 8 // Repeat 8 times horizontally
+    logoTexture.vScale = 8 // Repeat 8 times vertically
+
+    bgMaterial.diffuseTexture = logoTexture
+    bgMaterial.emissiveColor = new Color3(0.25, 0.25, 0.25) // Grey tint instead of orange
+    bgMaterial.alpha = 0.06 // Very subtle, ~6% opacity
+    bgMaterial.disableLighting = true
+    bgMaterial.backFaceCulling = false
+
+    bgPlane.material = bgMaterial
+    return bgPlane
+  }
+  const logoBackground = createLogoBackground()
+
+  // Create 3D bottle with liquid animation
+  const initialBottleProgress = useGameStore.getState().bottleProgress
+  const bottle3D: Bottle3D = createBottle3D(scene, initialBottleProgress?.currentLevel || "A0")
+
+  // Color cycling for visual variety between bottles
+  const juiceColors: CEFRLevel[] = ["A0", "A1", "A2", "B1", "B2", "C1"]
+  // Initialize from persisted color index, or default to current level's index
+  let colorIndex = initialBottleProgress?.currentColorIndex ?? juiceColors.indexOf(initialBottleProgress?.currentLevel || "A0")
+  if (colorIndex === -1 || colorIndex >= juiceColors.length) colorIndex = 0
 
   // Track current utterance for word count and TTS
   let currentUtterance: Utterance | null = null
@@ -620,6 +656,9 @@ export const createJuiceSqueeze = (
   const initialMetrics = getLayoutMetrics()
   updateCamera(initialMetrics)
 
+  // Initial 3D bottle layout
+  bottle3D.updateLayout(initialMetrics.worldWidth, initialMetrics.worldHeight)
+
   // Light setup - bright tropical lighting with shadows
   const hemi = new HemisphericLight("hemi", new Vector3(0, 1, 0), scene)
   hemi.intensity = 0.9 // Slightly less ambient
@@ -729,18 +768,18 @@ export const createJuiceSqueeze = (
       ctx.closePath()
     }
 
-    // Frosted glass background - subtle teal tint that contrasts with blocks
+    // Dark frosted glass background - consistent with scene background
     const areaGradient = ctx.createLinearGradient(0, 0, 0, 512)
-    areaGradient.addColorStop(0, "rgba(230, 245, 245, 0.9)") // Subtle teal tint
-    areaGradient.addColorStop(1, "rgba(220, 235, 235, 0.85)")
+    areaGradient.addColorStop(0, "rgba(40, 40, 40, 0.9)") // Dark grey
+    areaGradient.addColorStop(1, "rgba(30, 30, 30, 0.85)")
 
     // Rounded rectangle
     roundRect(16, 16, 1024 - 32, 512 - 32, 32)
     ctx.fillStyle = areaGradient
     ctx.fill()
 
-    // Subtle colored border (teal or matching accent)
-    ctx.strokeStyle = "rgba(11, 107, 111, 0.4)"
+    // Subtle grey border
+    ctx.strokeStyle = "rgba(100, 100, 100, 0.3)"
     ctx.lineWidth = 3
     ctx.stroke()
 
@@ -752,7 +791,7 @@ export const createJuiceSqueeze = (
 
     // Draw subtle row separator lines for multi-row layouts
     if (rowCount > 1) {
-      ctx.strokeStyle = "rgba(11, 107, 111, 0.2)" // Subtle teal lines
+      ctx.strokeStyle = "rgba(100, 100, 100, 0.15)" // Subtle grey lines
       ctx.lineWidth = 2
       ctx.setLineDash([10, 10]) // Dashed line
 
@@ -1145,9 +1184,10 @@ export const createJuiceSqueeze = (
         useGameStore.getState().incrementScore()
 
         // Record completed phrase with word count for all-time score
+        // Pass the current visual color level so bottles show correct color in collection
         const phraseId = phrase.id || `phrase-${Date.now()}`
         const wordCount = wordsInSentence.length
-        useGameStore.getState().recordCompletedPhrase(phraseId, wordCount)
+        useGameStore.getState().recordCompletedPhrase(phraseId, wordCount, juiceColors[colorIndex])
 
         // WIN! Create WILD juice particles everywhere
         const currentMetrics = getLayoutMetrics()
@@ -1157,12 +1197,68 @@ export const createJuiceSqueeze = (
 
         // Trigger juice glass squeeze animation and update fill
         juiceGlass.triggerSqueeze()
-        const updatedStats = useGameStore.getState().stats
-        const allTimeCompleted = updatedStats?.allTimeCompletedPhrases || 0
-        const newFillLevel = Math.min(1, Math.max(0, allTimeCompleted / 10))
-        juiceGlass.updateFill(newFillLevel)
+        bottle3D.triggerSqueeze()
+
+        // Get fill level from bottle progress (phrases in current bottle)
+        const updatedBottleProgress = useGameStore.getState().bottleProgress
+        const newFillLevel = useGameStore.getState().getBottleFillPercent() / 100
+
+        // Check if a bottle was just completed (fill level is 0 after incrementing)
+        // This happens when phrasesInCurrentBottle was 9, then incremented to 10, then reset to 0
+        const bottleJustCompleted = newFillLevel === 0 && updatedBottleProgress.bottleCollection.length > 0
+
+        if (bottleJustCompleted) {
+          // First fill the bottle to 100%
+          bottle3D.updateFill(1.0)
+          juiceGlass.updateFill(1.0)
+
+          // Trigger completion animation after a short delay
+          setTimeout(async () => {
+            // Get target position for mini bottle (top-left collection area)
+            const metrics = getLayoutMetrics()
+            const collectionX = -metrics.worldWidth * 0.35
+            const collectionY = metrics.worldHeight * 0.35
+
+            // Trigger overflow for dramatic effect
+            bottle3D.triggerOverflow()
+            juiceGlass.triggerOverflow()
+
+            // Wait for overflow animation, then trigger completion
+            setTimeout(async () => {
+              await bottle3D.triggerCompletion(collectionX, collectionY)
+
+              // Reset bottle for next round
+              bottle3D.reset()
+              juiceGlass.updateFill(0)
+
+              // Cycle to next juice color for variety and persist it
+              colorIndex = (colorIndex + 1) % juiceColors.length
+              useGameStore.getState().setColorIndex(colorIndex)
+              bottle3D.setColor(juiceColors[colorIndex])
+              juiceGlass.setColor(juiceColors[colorIndex])
+
+              // Update bottle collection display
+              renderBottleCollection()
+
+              // Check if level is complete
+              const currentBp = useGameStore.getState().bottleProgress
+              const bottlesNeeded = BOTTLES_PER_LEVEL[currentBp.currentLevel]
+              if (currentBp.bottlesCompletedThisLevel >= bottlesNeeded) {
+                // Show level completion celebration after a short delay
+                setTimeout(() => {
+                  showLevelComplete(currentBp.currentLevel, currentBp.bottlesCompletedThisLevel)
+                }, 500)
+              }
+            }, 800)
+          }, 500)
+        } else {
+          // Normal fill update
+          juiceGlass.updateFill(newFillLevel)
+          bottle3D.updateFill(newFillLevel)
+        }
 
         // Update score display with animation
+        const updatedStats = useGameStore.getState().stats
         const newScore = updatedStats?.allTimeScore || 0
         const scoreValue = scoreDisplay.querySelector(".score-value") as HTMLElement
         const pointsAdded = wordCount
@@ -1184,6 +1280,7 @@ export const createJuiceSqueeze = (
         // Trigger overflow animation when glass is nearly full (>=90%)
         if (newFillLevel >= 0.9) {
           juiceGlass.triggerOverflow()
+          bottle3D.triggerOverflow()
         }
 
         // Play success sound instantly, then TTS after sound completes
@@ -1414,10 +1511,120 @@ export const createJuiceSqueeze = (
   `
   root.appendChild(scoreDisplay)
 
-  // Initialize fill level from persistent all-time completed phrases
-  const allTimeCompleted = initialStats?.allTimeCompletedPhrases || 0
-  const initialFillLevel = Math.min(1, Math.max(0, allTimeCompleted / 10))
+  // Create bottle collection display (below score)
+  const bottleCollection = document.createElement("div")
+  bottleCollection.className = "bottle-collection"
+  root.appendChild(bottleCollection)
+
+  // Render bottle collection from state
+  const renderBottleCollection = () => {
+    const bp = useGameStore.getState().bottleProgress
+    const bottles = bp?.bottleCollection || []
+
+    // Only show last 6 bottles to save space
+    const visibleBottles = bottles.slice(-6)
+    const hiddenCount = bottles.length - visibleBottles.length
+
+    bottleCollection.innerHTML = visibleBottles.map((bottle) => {
+      const levelColors = LEVEL_FRUIT_COLORS[bottle.level]
+      return `
+        <div class="mini-bottle" title="${levelColors.name} (${bottle.level})">
+          <div class="mini-bottle-liquid" style="background: linear-gradient(to bottom, ${levelColors.gradient[0]}, ${levelColors.gradient[1]}, ${levelColors.gradient[2]})"></div>
+          <div class="mini-bottle-glass"></div>
+        </div>
+      `
+    }).join("") + (hiddenCount > 0 ? `<div class="bottles-overflow">+${hiddenCount}</div>` : "")
+  }
+
+  // Initial render
+  renderBottleCollection()
+
+  // Create level completion overlay (hidden by default)
+  const levelCompleteOverlay = document.createElement("div")
+  levelCompleteOverlay.className = "level-complete-overlay"
+  levelCompleteOverlay.style.display = "none"
+  root.appendChild(levelCompleteOverlay)
+
+  // CEFR level order for progression
+  const LEVEL_ORDER: CEFRLevel[] = ["A0", "A1", "A2", "B1", "B2", "C1"]
+
+  // Get next level
+  const getNextLevel = (currentLevel: CEFRLevel): CEFRLevel | null => {
+    const currentIndex = LEVEL_ORDER.indexOf(currentLevel)
+    if (currentIndex === -1 || currentIndex >= LEVEL_ORDER.length - 1) {
+      return null // Already at max level
+    }
+    return LEVEL_ORDER[currentIndex + 1]
+  }
+
+  // Show level completion celebration
+  const showLevelComplete = (level: CEFRLevel, bottlesCompleted: number) => {
+    const levelColors = LEVEL_FRUIT_COLORS[level]
+    const nextLevel = getNextLevel(level)
+    const nextLevelColors = nextLevel ? LEVEL_FRUIT_COLORS[nextLevel] : null
+
+    levelCompleteOverlay.innerHTML = `
+      <div class="level-complete-content">
+        <div class="level-complete-confetti"></div>
+        <div class="level-complete-title">🎉 Level Complete! 🎉</div>
+        <div class="level-complete-fruit">${levelColors.fruit}</div>
+        <div class="level-complete-stats">
+          <div class="level-name">${levelColors.name} Juice (${level})</div>
+          <div class="bottles-count">${bottlesCompleted} bottles filled!</div>
+        </div>
+        ${nextLevel ? `
+          <div class="level-complete-next">
+            <div class="next-level-prompt">Ready for the next challenge?</div>
+            <div class="next-level-preview">
+              <span class="next-fruit">${nextLevelColors?.fruit}</span>
+              <span class="next-name">${nextLevelColors?.name} (${nextLevel})</span>
+            </div>
+          </div>
+          <div class="level-complete-buttons">
+            <button class="level-btn stay-btn">Stay at ${level}</button>
+            <button class="level-btn advance-btn">Advance to ${nextLevel}</button>
+          </div>
+        ` : `
+          <div class="level-complete-max">
+            <div class="max-level-text">🏆 You've mastered all levels! 🏆</div>
+          </div>
+          <div class="level-complete-buttons">
+            <button class="level-btn stay-btn">Continue at ${level}</button>
+          </div>
+        `}
+      </div>
+    `
+
+    // Add button event listeners
+    const stayBtn = levelCompleteOverlay.querySelector(".stay-btn")
+    const advanceBtn = levelCompleteOverlay.querySelector(".advance-btn")
+
+    stayBtn?.addEventListener("click", () => {
+      levelCompleteOverlay.style.display = "none"
+      // Reset bottles completed for this level but keep at same level
+      // (The store already handles this in recordCompletedPhrase)
+    })
+
+    advanceBtn?.addEventListener("click", () => {
+      if (nextLevel) {
+        useGameStore.getState().setLevel(nextLevel)
+        bottle3D.setColor(nextLevel)
+        juiceGlass.setColor(nextLevel)
+        renderBottleCollection()
+      }
+      levelCompleteOverlay.style.display = "none"
+    })
+
+    levelCompleteOverlay.style.display = "flex"
+  }
+
+  // Initialize fill level from bottle progress (phrases in current bottle)
+  const initialFillLevel = useGameStore.getState().getBottleFillPercent() / 100
   juiceGlass.updateFill(initialFillLevel)
+  bottle3D.updateFill(initialFillLevel)
+  // Use persisted color index for consistency across sessions
+  bottle3D.setColor(juiceColors[colorIndex])
+  juiceGlass.setColor(juiceColors[colorIndex])
 
   // Utterance history for back/forward navigation
   const utteranceHistory: Utterance[] = []
@@ -2267,6 +2474,9 @@ export const createJuiceSqueeze = (
     // Update camera
     updateCamera(metrics)
 
+    // Update 3D bottle layout
+    bottle3D.updateLayout(metrics.worldWidth, metrics.worldHeight)
+
     // If we have blocks, recalculate and reposition everything
     if (currentUtterance && wordBlocks.length > 0) {
       const wordCount = currentUtterance.words.length
@@ -2360,7 +2570,11 @@ export const createJuiceSqueeze = (
     fruitButton.remove()
     utteranceNav.remove()
     titleElement.remove()
+    scoreDisplay.remove()
+    bottleCollection.remove()
+    levelCompleteOverlay.remove()
     juiceGlass.dispose()
+    bottle3D.dispose()
 
     if (resizeFrame) {
       window.cancelAnimationFrame(resizeFrame)

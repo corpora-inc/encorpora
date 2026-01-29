@@ -4,10 +4,13 @@
  * with an orange squeeze animation on each win and overflow spill effect.
  */
 
+import { CEFRLevel, LEVEL_FRUIT_COLORS } from "./store/gameState"
+
 export type JuiceGlass = {
   updateFill: (level: number) => void
   triggerSqueeze: () => void
   triggerOverflow: () => void
+  setColor: (level: CEFRLevel) => void
   dispose: () => void
 }
 
@@ -24,8 +27,8 @@ export const createJuiceGlass = (root: HTMLElement): JuiceGlass => {
   }).join("")
 
   container.innerHTML = `
-    <div class="orange-squeeze">
-      <div class="orange"></div>
+    <div class="fruit-squeeze">
+      <div class="squeeze-fruit">🍊</div>
       <div class="juice-stream"></div>
     </div>
     <svg class="juice-glass" viewBox="0 0 100 150" preserveAspectRatio="xMidYMid meet">
@@ -63,8 +66,11 @@ export const createJuiceGlass = (root: HTMLElement): JuiceGlass => {
   root.appendChild(container)
 
   const juiceFill = container.querySelector(".juice-fill") as SVGRectElement
-  const orangeSqueeze = container.querySelector(".orange-squeeze") as HTMLElement
+  const fruitSqueeze = container.querySelector(".fruit-squeeze") as HTMLElement
+  const squeezeFruit = container.querySelector(".squeeze-fruit") as HTMLElement
+  const juiceStream = container.querySelector(".juice-stream") as HTMLElement
   const overflowEl = container.querySelector(".juice-overflow") as HTMLElement
+  const gradientStops = container.querySelectorAll("#juice-gradient stop") as NodeListOf<SVGStopElement>
 
   return {
     updateFill: (level: number) => {
@@ -76,9 +82,9 @@ export const createJuiceGlass = (root: HTMLElement): JuiceGlass => {
       juiceFill.setAttribute("y", String(fillY))
     },
     triggerSqueeze: () => {
-      orangeSqueeze.classList.add("squeezing")
+      fruitSqueeze.classList.add("squeezing")
       setTimeout(() => {
-        orangeSqueeze.classList.remove("squeezing")
+        fruitSqueeze.classList.remove("squeezing")
       }, 1500)
     },
     triggerOverflow: () => {
@@ -86,6 +92,21 @@ export const createJuiceGlass = (root: HTMLElement): JuiceGlass => {
       setTimeout(() => {
         overflowEl.classList.remove("active")
       }, 2000)
+    },
+    setColor: (level: CEFRLevel) => {
+      const colors = LEVEL_FRUIT_COLORS[level]
+      if (colors) {
+        // Update juice gradient
+        if (gradientStops.length >= 3) {
+          gradientStops[0].style.stopColor = colors.gradient[0]
+          gradientStops[1].style.stopColor = colors.gradient[1]
+          gradientStops[2].style.stopColor = colors.gradient[2]
+        }
+        // Update squeeze fruit emoji
+        squeezeFruit.textContent = colors.fruit
+        // Update juice stream color
+        juiceStream.style.background = `linear-gradient(to bottom, ${colors.gradient[0]}, ${colors.primary})`
+      }
     },
     dispose: () => {
       container.remove()
