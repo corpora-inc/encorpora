@@ -1,14 +1,69 @@
 import { create } from "zustand"
 import { persist, createJSONStorage } from "zustand/middleware"
 
-// Level-based fruit colors for juice
+// Fruit definition type
+export type FruitDef = {
+  fruit: string
+  name: string
+  primary: string
+  gradient: [string, string, string]
+  level: "A0" | "A1" | "A2" | "B1" | "B2" | "C1"
+}
+
+// Tropical fruit palette - 16 unique fruits (A0-B1 levels)
+// Each fruit has a unique emoji to avoid confusion
+export const TROPICAL_FRUITS: Record<string, FruitDef> = {
+  // A0 - Common citrus/orchard (beginner, familiar fruits)
+  orange: { fruit: "🍊", name: "Orange", primary: "#FF9800", gradient: ["#FFB84D", "#FF9800", "#E65100"], level: "A0" },
+  lemon: { fruit: "🍋", name: "Lemon", primary: "#FFF176", gradient: ["#FFFF8D", "#FFF176", "#F9A825"], level: "A0" },
+  apple: { fruit: "🍎", name: "Apple", primary: "#E53935", gradient: ["#EF5350", "#E53935", "#C62828"], level: "A0" },
+  greenApple: { fruit: "🍏", name: "Green Apple", primary: "#8BC34A", gradient: ["#AED581", "#8BC34A", "#689F38"], level: "A0" },
+
+  // A1 - Tropical basics (slightly more exotic but well-known)
+  mango: { fruit: "🥭", name: "Mango", primary: "#FFCC02", gradient: ["#FFE066", "#FFCC02", "#E6B800"], level: "A1" },
+  peach: { fruit: "🍑", name: "Peach", primary: "#FFAB91", gradient: ["#FFCCBC", "#FFAB91", "#FF8A65"], level: "A1" },
+  pear: { fruit: "🍐", name: "Pear", primary: "#C5E1A5", gradient: ["#DCEDC8", "#C5E1A5", "#9CCC65"], level: "A1" },
+  melon: { fruit: "🍈", name: "Melon", primary: "#A5D6A7", gradient: ["#C8E6C9", "#A5D6A7", "#81C784"], level: "A1" },
+
+  // A2 - Tropical fruits (more vibrant, tropical)
+  pineapple: { fruit: "🍍", name: "Pineapple", primary: "#FFD700", gradient: ["#FFEB3B", "#FFD700", "#FFC107"], level: "A2" },
+  kiwi: { fruit: "🥝", name: "Kiwi", primary: "#7CB342", gradient: ["#9CCC65", "#7CB342", "#558B2F"], level: "A2" },
+  grape: { fruit: "🍇", name: "Grape", primary: "#8E24AA", gradient: ["#BA68C8", "#8E24AA", "#6A1B9A"], level: "A2" },
+  blueberry: { fruit: "🫐", name: "Blueberry", primary: "#5C6BC0", gradient: ["#7986CB", "#5C6BC0", "#3949AB"], level: "A2" },
+
+  // B1 - Sweet berries & tropical (bold colors)
+  strawberry: { fruit: "🍓", name: "Strawberry", primary: "#E91E63", gradient: ["#F06292", "#E91E63", "#C2185B"], level: "B1" },
+  cherry: { fruit: "🍒", name: "Cherry", primary: "#D32F2F", gradient: ["#EF5350", "#D32F2F", "#B71C1C"], level: "B1" },
+  watermelon: { fruit: "🍉", name: "Watermelon", primary: "#FF6B6B", gradient: ["#FF8A8A", "#FF6B6B", "#E53935"], level: "B1" },
+  coconut: { fruit: "🥥", name: "Coconut", primary: "#BCAAA4", gradient: ["#D7CCC8", "#BCAAA4", "#8D6E63"], level: "B1" },
+
+} as const
+
+// Get fruits by level
+export const getFruitsByLevel = (level: "A0" | "A1" | "A2" | "B1" | "B2" | "C1"): FruitDef[] => {
+  return Object.values(TROPICAL_FRUITS).filter(f => f.level === level)
+}
+
+// Get all fruits (for "all levels" mode)
+export const getAllFruits = (): FruitDef[] => {
+  return Object.values(TROPICAL_FRUITS)
+}
+
+// Get fruit by cycling through available fruits based on index
+export const getFruitByIndex = (level: "A0" | "A1" | "A2" | "B1" | "B2" | "C1" | "all", index: number): FruitDef => {
+  const fruits = level === "all" ? getAllFruits() : getFruitsByLevel(level)
+  return fruits[index % fruits.length]
+}
+
+// Level-based fruit colors - uses first fruit of each level for backward compatibility
+// Note: B2/C1 reuse fruits from lower levels since we removed duplicate emojis
 export const LEVEL_FRUIT_COLORS = {
-  A0: { fruit: "🍊", name: "Orange", primary: "#FF9800", gradient: ["#FFB84D", "#FF9800", "#E65100"] },
-  A1: { fruit: "🥭", name: "Mango", primary: "#FFCC02", gradient: ["#FFE066", "#FFCC02", "#E6B800"] },
-  A2: { fruit: "🍍", name: "Pineapple", primary: "#FFD700", gradient: ["#FFEB3B", "#FFD700", "#FFC107"] },
-  B1: { fruit: "🍇", name: "Grape", primary: "#8E24AA", gradient: ["#BA68C8", "#8E24AA", "#6A1B9A"] },
-  B2: { fruit: "🩷", name: "Papaya", primary: "#FF6B9D", gradient: ["#FF8FB3", "#FF6B9D", "#E91E63"] },
-  C1: { fruit: "🫐", name: "Passion", primary: "#5C1A7A", gradient: ["#7B1FA2", "#5C1A7A", "#4A0072"] },
+  A0: TROPICAL_FRUITS.orange,
+  A1: TROPICAL_FRUITS.mango,
+  A2: TROPICAL_FRUITS.pineapple,
+  B1: TROPICAL_FRUITS.strawberry,
+  B2: TROPICAL_FRUITS.kiwi,        // Green (distinct color)
+  C1: TROPICAL_FRUITS.grape,       // Purple (distinct color)
 } as const
 
 // Bottles required per level (based on difficulty progression)
@@ -23,12 +78,24 @@ export const BOTTLES_PER_LEVEL = {
 
 export type CEFRLevel = keyof typeof LEVEL_FRUIT_COLORS
 
+// Completed phrase data for review feature
+export type CompletedPhrase = {
+  id: string
+  targetText: string
+  blockText: string
+  targetLang: string
+  blockLang: string
+  completedAt: number // timestamp
+}
+
 // Collected bottle data
 export type CollectedBottle = {
   id: string
   level: CEFRLevel
   color: string
+  gradient?: [string, string, string] // Store full gradient for accurate color display
   completedAt: number // timestamp
+  phrases: CompletedPhrase[] // Phrases completed in this bottle
 }
 
 // Bottle progress tracking
@@ -38,6 +105,7 @@ export type BottleProgress = {
   bottlesCompletedThisLevel: number
   bottleCollection: CollectedBottle[]
   currentColorIndex: number // Index into color cycle for visual variety (0-5)
+  currentBottlePhrases: CompletedPhrase[] // Phrases in current (incomplete) bottle
 }
 
 // Game phrase data
@@ -111,7 +179,13 @@ export type GameState = {
   setWon: (won: boolean) => void
   incrementScore: (points?: number) => void
   incrementCompletedPhrases: () => void
-  recordCompletedPhrase: (phraseId: string, wordCount: number, visualLevel?: CEFRLevel) => void
+  recordCompletedPhrase: (
+    phraseId: string,
+    wordCount: number,
+    visualLevel?: CEFRLevel,
+    phraseDetails?: { targetText: string; blockText: string; targetLang: string; blockLang: string },
+    fruitGradient?: [string, string, string]
+  ) => void
   toggleFruits: () => void
   resetGame: () => void
   updateSettings: (settings: Partial<GameSettings>) => void
@@ -128,6 +202,7 @@ const initialBottleProgress: BottleProgress = {
   bottlesCompletedThisLevel: 0,
   bottleCollection: [],
   currentColorIndex: 0,
+  currentBottlePhrases: [],
 }
 
 const initialState = {
@@ -285,7 +360,7 @@ export const useGameStore = create<GameState>()(
         })
       },
 
-      recordCompletedPhrase: (phraseId, wordCount, visualLevel) => {
+      recordCompletedPhrase: (phraseId, wordCount, visualLevel, phraseDetails, fruitGradient) => {
         set((state) => {
           // Add points based on word count (1 point per word placed)
           const points = wordCount
@@ -295,6 +370,22 @@ export const useGameStore = create<GameState>()(
           const bp = state.bottleProgress || initialBottleProgress
           const newPhrasesInBottle = bp.phrasesInCurrentBottle + 1
           const bottleComplete = newPhrasesInBottle >= 10
+
+          // Create completed phrase entry if details provided
+          const completedPhrase: CompletedPhrase | null = phraseDetails ? {
+            id: phraseId,
+            targetText: phraseDetails.targetText,
+            blockText: phraseDetails.blockText,
+            targetLang: phraseDetails.targetLang,
+            blockLang: phraseDetails.blockLang,
+            completedAt: Date.now(),
+          } : null
+
+          // Add phrase to current bottle's phrases (fallback for old localStorage without this field)
+          const existingPhrases = bp.currentBottlePhrases || []
+          const newCurrentBottlePhrases = completedPhrase
+            ? [...existingPhrases, completedPhrase]
+            : existingPhrases
 
           // If bottle complete, add to collection and reset
           let newBottleProgress: BottleProgress
@@ -306,18 +397,22 @@ export const useGameStore = create<GameState>()(
               id: `bottle-${Date.now()}`,
               level: bottleLevel,
               color: levelColors.primary,
+              gradient: fruitGradient || levelColors.gradient, // Store actual fruit gradient
               completedAt: Date.now(),
+              phrases: newCurrentBottlePhrases, // Include all phrases from this bottle
             }
             newBottleProgress = {
               ...bp,
               phrasesInCurrentBottle: 0,
-              bottlesCompletedThisLevel: bp.bottlesCompletedThisLevel + 1,
+              bottlesCompletedThisLevel: Math.min(bp.bottlesCompletedThisLevel + 1, 99), // Cap at 99
               bottleCollection: [...bp.bottleCollection, newBottle],
+              currentBottlePhrases: [], // Reset for next bottle
             }
           } else {
             newBottleProgress = {
               ...bp,
               phrasesInCurrentBottle: newPhrasesInBottle,
+              currentBottlePhrases: newCurrentBottlePhrases,
             }
           }
 

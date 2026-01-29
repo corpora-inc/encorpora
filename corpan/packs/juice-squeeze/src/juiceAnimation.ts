@@ -4,13 +4,13 @@
  * with an orange squeeze animation on each win and overflow spill effect.
  */
 
-import { CEFRLevel, LEVEL_FRUIT_COLORS } from "./store/gameState"
+import { CEFRLevel, LEVEL_FRUIT_COLORS, type FruitDef } from "./store/gameState"
 
 export type JuiceGlass = {
   updateFill: (level: number) => void
   triggerSqueeze: () => void
   triggerOverflow: () => void
-  setColor: (level: CEFRLevel) => void
+  setColor: (fruitOrLevel: FruitDef | CEFRLevel) => void
   dispose: () => void
 }
 
@@ -93,8 +93,11 @@ export const createJuiceGlass = (root: HTMLElement): JuiceGlass => {
         overflowEl.classList.remove("active")
       }, 2000)
     },
-    setColor: (level: CEFRLevel) => {
-      const colors = LEVEL_FRUIT_COLORS[level]
+    setColor: (fruitOrLevel: FruitDef | CEFRLevel) => {
+      // Accept either a FruitDef directly or a CEFRLevel to look up
+      const colors = typeof fruitOrLevel === "string"
+        ? LEVEL_FRUIT_COLORS[fruitOrLevel]
+        : fruitOrLevel
       if (colors) {
         // Update juice gradient
         if (gradientStops.length >= 3) {

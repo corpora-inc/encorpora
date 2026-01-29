@@ -14,12 +14,13 @@ import {
   Vector3,
   ParticleSystem,
   Texture,
+  FresnelParameters,
 } from "@babylonjs/core"
-import { LEVEL_FRUIT_COLORS, type CEFRLevel } from "./store/gameState"
+import { LEVEL_FRUIT_COLORS, type CEFRLevel, type FruitDef } from "./store/gameState"
 
 export type Bottle3D = {
   updateFill: (level: number) => void
-  setColor: (level: CEFRLevel) => void
+  setColor: (fruitOrLevel: FruitDef | CEFRLevel) => void
   triggerSqueeze: () => void
   triggerOverflow: () => void
   triggerCompletion: (targetX: number, targetY: number) => Promise<void>
@@ -86,13 +87,28 @@ export const createBottle3D = (scene: Scene, initialLevel: CEFRLevel = "A0"): Bo
     scene
   )
 
-  // Glass material - semi-transparent with refraction effect
+  // Stylized glossy glass material with Fresnel rim lighting
   const glassMaterial = new StandardMaterial("glass-material", scene)
-  glassMaterial.diffuseColor = new Color3(0.9, 0.95, 1.0)
+  glassMaterial.diffuseColor = new Color3(0.85, 0.92, 1.0) // Slight blue tint
   glassMaterial.specularColor = new Color3(1, 1, 1)
-  glassMaterial.specularPower = 128
-  glassMaterial.alpha = 0.25
+  glassMaterial.specularPower = 256 // Higher for sharper highlights
+  glassMaterial.alpha = 0.3
   glassMaterial.backFaceCulling = false
+
+  // Fresnel rim lighting - edges glow brighter (glass edge effect)
+  glassMaterial.emissiveFresnelParameters = new FresnelParameters()
+  glassMaterial.emissiveFresnelParameters.bias = 0.2
+  glassMaterial.emissiveFresnelParameters.power = 2
+  glassMaterial.emissiveFresnelParameters.leftColor = new Color3(0.8, 0.9, 1.0) // Bright rim
+  glassMaterial.emissiveFresnelParameters.rightColor = Color3.Black() // Dark center
+
+  // Opacity Fresnel - more transparent in center, opaque at edges
+  glassMaterial.opacityFresnelParameters = new FresnelParameters()
+  glassMaterial.opacityFresnelParameters.bias = 0.1
+  glassMaterial.opacityFresnelParameters.power = 1.5
+  glassMaterial.opacityFresnelParameters.leftColor = Color3.White()
+  glassMaterial.opacityFresnelParameters.rightColor = new Color3(0.3, 0.3, 0.3)
+
   bottleMesh.material = glassMaterial
 
   // Don't intercept pointer events - let word blocks be clickable
@@ -101,14 +117,22 @@ export const createBottle3D = (scene: Scene, initialLevel: CEFRLevel = "A0"): Bo
   // Parent to container
   bottleMesh.parent = bottleContainer
 
-  // Liquid material - juicy color with glow
+  // Liquid material - glossy juicy appearance with transparency for particle visibility
   const liquidMaterial = new StandardMaterial("liquid-material", scene)
   liquidMaterial.diffuseColor = currentColor
-  liquidMaterial.emissiveColor = currentColor.scale(0.3)
+  liquidMaterial.emissiveColor = currentColor.scale(0.4) // More glow to compensate for transparency
   liquidMaterial.specularColor = new Color3(1, 1, 1)
-  liquidMaterial.specularPower = 64
-  liquidMaterial.alpha = 0.85
+  liquidMaterial.specularPower = 96 // Sharper highlights
+  liquidMaterial.alpha = 0.72 // More transparent to let win particles show through
   liquidMaterial.backFaceCulling = false
+  liquidMaterial.needDepthPrePass = true // Better transparency sorting
+
+  // Fresnel for glossy surface sheen
+  liquidMaterial.emissiveFresnelParameters = new FresnelParameters()
+  liquidMaterial.emissiveFresnelParameters.bias = 0.4
+  liquidMaterial.emissiveFresnelParameters.power = 2
+  liquidMaterial.emissiveFresnelParameters.leftColor = currentColor.scale(0.5) // Surface highlight
+  liquidMaterial.emissiveFresnelParameters.rightColor = Color3.Black()
 
   // Create liquid using lathe to match bottle interior curves
   // Profile follows bottle shape but slightly smaller to fit inside
@@ -139,18 +163,17 @@ export const createBottle3D = (scene: Scene, initialLevel: CEFRLevel = "A0"): Bo
   liquidMesh.scaling.y = 0.001 // Start hidden
   liquidMesh.isVisible = false // Hide when empty
 
-  // Liquid surface cap (top of liquid) with wave animation
-  // Radius matches the body width of liquid
+  // Liquid surface cap (top of liquid) - simple disc for smooth edges
   const liquidCapRadius = 1.95
   const liquidCapMesh = MeshBuilder.CreateDisc(
     "liquid-cap",
     {
       radius: liquidCapRadius,
-      tessellation: 32,
+      tessellation: 48, // High tessellation for smooth circular edge
     },
     scene
   )
-  liquidCapMesh.rotation.x = Math.PI / 2
+  liquidCapMesh.rotation.x = Math.PI / 2 // Rotate to horizontal
   liquidCapMesh.position.y = 0.15 // Start at bottom
   liquidCapMesh.material = liquidMaterial
   liquidCapMesh.parent = bottleContainer
@@ -209,6 +232,30 @@ export const createBottle3D = (scene: Scene, initialLevel: CEFRLevel = "A0"): Bo
   overflowParticles.updateSpeed = 0.01
   overflowParticles.start()
 
+  // Splash particles - droplets that shoot up from liquid surface on impact
+  const splashParticles = new ParticleSystem("splash-particles", 150, scene)
+  splashParticles.particleTexture = squeezeParticles.particleTexture
+  // Emitter position updates dynamically based on liquid level
+  splashParticles.emitter = new Vector3(0, 2, 5)
+  splashParticles.minEmitBox = new Vector3(-1.2, 0, -1.2)
+  splashParticles.maxEmitBox = new Vector3(1.2, 0, 1.2)
+  splashParticles.color1 = new Color4(currentColor.r, currentColor.g, currentColor.b, 1)
+  splashParticles.color2 = new Color4(currentColor.r * 1.1, currentColor.g * 1.1, currentColor.b * 1.05, 1)
+  splashParticles.colorDead = new Color4(currentColor.r, currentColor.g, currentColor.b, 0)
+  splashParticles.minSize = 0.08
+  splashParticles.maxSize = 0.2
+  splashParticles.minLifeTime = 0.2
+  splashParticles.maxLifeTime = 0.6
+  splashParticles.emitRate = 0
+  splashParticles.gravity = new Vector3(0, -12, 0) // Falls back down quickly
+  // Shoot upward and outward in all directions
+  splashParticles.direction1 = new Vector3(-0.5, 1, -0.5)
+  splashParticles.direction2 = new Vector3(0.5, 1.5, 0.5)
+  splashParticles.minEmitPower = 3
+  splashParticles.maxEmitPower = 6
+  splashParticles.updateSpeed = 0.01
+  splashParticles.start()
+
   // Animation loop for sloshing and natural wave motion
   scene.registerBeforeRender(() => {
     // Decay slosh intensity (triggered by squeeze)
@@ -228,8 +275,9 @@ export const createBottle3D = (scene: Scene, initialLevel: CEFRLevel = "A0"): Bo
 
       liquidCapMesh.position.y = baseY + ambientWave + sloshWave
 
-      // Subtle rotation for more realistic water surface
-      liquidCapMesh.rotation.z = Math.sin(sloshPhase * 0.5) * sloshIntensity * 0.05
+      // Subtle rotation for more realistic water surface tilt
+      liquidCapMesh.rotation.x = Math.PI / 2 + Math.sin(sloshPhase * 0.8) * sloshIntensity * 0.08
+      liquidCapMesh.rotation.z = Math.sin(sloshPhase * 0.5) * sloshIntensity * 0.06
     }
   })
 
@@ -265,7 +313,6 @@ export const createBottle3D = (scene: Scene, initialLevel: CEFRLevel = "A0"): Bo
     liquidMesh.position.y = 0.15
 
     // Update liquid cap position (top of liquid)
-    // Cap needs to be at the scaled top of the liquid
     const capY = 0.15 + liquidHeight
     liquidCapMesh.position.y = capY
 
@@ -276,10 +323,6 @@ export const createBottle3D = (scene: Scene, initialLevel: CEFRLevel = "A0"): Bo
       : 1.0  // Full width once in main body
     liquidCapMesh.scaling.x = capScale
     liquidCapMesh.scaling.z = capScale
-
-    // Add subtle wave effect to the cap for natural water look
-    const waveOffset = Math.sin(sloshPhase * 2) * sloshIntensity * 0.1
-    liquidCapMesh.position.y = capY + waveOffset
 
     if (fillAnimating) {
       requestAnimationFrame(animateFill)
@@ -296,13 +339,21 @@ export const createBottle3D = (scene: Scene, initialLevel: CEFRLevel = "A0"): Bo
       }
     },
 
-    setColor: (level: CEFRLevel) => {
-      const levelColors = LEVEL_FRUIT_COLORS[level]
-      currentColor = hexToColor3(levelColors.primary)
+    setColor: (fruitOrLevel: FruitDef | CEFRLevel) => {
+      // Accept either a FruitDef directly or a CEFRLevel to look up
+      const fruitColors = typeof fruitOrLevel === "string"
+        ? LEVEL_FRUIT_COLORS[fruitOrLevel]
+        : fruitOrLevel
+      currentColor = hexToColor3(fruitColors.primary)
 
       // Update liquid material
       liquidMaterial.diffuseColor = currentColor
-      liquidMaterial.emissiveColor = currentColor.scale(0.3)
+      liquidMaterial.emissiveColor = currentColor.scale(0.35)
+
+      // Update liquid Fresnel for glossy sheen
+      if (liquidMaterial.emissiveFresnelParameters) {
+        liquidMaterial.emissiveFresnelParameters.leftColor = currentColor.scale(0.5)
+      }
 
       // Update particle colors
       squeezeParticles.color1 = new Color4(currentColor.r, currentColor.g, currentColor.b, 1)
@@ -312,6 +363,10 @@ export const createBottle3D = (scene: Scene, initialLevel: CEFRLevel = "A0"): Bo
       overflowParticles.color1 = new Color4(currentColor.r, currentColor.g, currentColor.b, 1)
       overflowParticles.color2 = new Color4(currentColor.r * 1.2, currentColor.g * 1.2, currentColor.b, 1)
       overflowParticles.colorDead = new Color4(currentColor.r, currentColor.g, currentColor.b, 0)
+
+      splashParticles.color1 = new Color4(currentColor.r, currentColor.g, currentColor.b, 1)
+      splashParticles.color2 = new Color4(currentColor.r * 1.1, currentColor.g * 1.1, currentColor.b * 1.05, 1)
+      splashParticles.colorDead = new Color4(currentColor.r, currentColor.g, currentColor.b, 0)
     },
 
     triggerSqueeze: () => {
@@ -323,6 +378,19 @@ export const createBottle3D = (scene: Scene, initialLevel: CEFRLevel = "A0"): Bo
 
       // Trigger sloshing
       sloshIntensity = 1.0
+
+      // Update splash emitter to current liquid level and trigger splash
+      const liquidHeight = currentFillLevel * maxLiquidHeight
+      const splashY = 0.15 + liquidHeight + (originalLayoutY || 0)
+      splashParticles.emitter = new Vector3(0, splashY * (originalLayoutScale?.y || 1), 5)
+
+      // Delayed splash when juice "lands" on surface
+      setTimeout(() => {
+        splashParticles.emitRate = 120
+        setTimeout(() => {
+          splashParticles.emitRate = 0
+        }, 300)
+      }, 250) // Delay for juice stream to reach surface
     },
 
     triggerOverflow: () => {
@@ -391,6 +459,8 @@ export const createBottle3D = (scene: Scene, initialLevel: CEFRLevel = "A0"): Bo
       liquidCapMesh.position.y = 0.15
       liquidCapMesh.scaling.x = 0.8
       liquidCapMesh.scaling.z = 0.8
+      liquidCapMesh.rotation.x = Math.PI / 2 // Horizontal disc
+      liquidCapMesh.rotation.z = 0
       liquidCapMesh.isVisible = false
 
       // Reset glass transparency
@@ -426,6 +496,7 @@ export const createBottle3D = (scene: Scene, initialLevel: CEFRLevel = "A0"): Bo
     dispose: () => {
       squeezeParticles.dispose()
       overflowParticles.dispose()
+      splashParticles.dispose()
       liquidCapMesh.dispose()
       liquidMesh.dispose()
       bottleMesh.dispose()
