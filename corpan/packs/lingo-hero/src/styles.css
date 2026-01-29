@@ -1,0 +1,167 @@
+:root {
+  --neon-blue: #00f3ff;
+  --neon-pink: #bc13fe;
+  --neon-green: #0aff0a;
+  --bg-dark: #09090b;
+  --glass-bg: rgba(20, 20, 30, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.1);
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--bg-dark);
+  color: white;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  overflow: hidden;
+}
+
+#lingo-hero-root {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.ui-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  pointer-events: none; /* Let clicks pass through to canvas if needed, but buttons need pointer-events: auto */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Common Glassmorphism */
+.glass-panel {
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  border-radius: 16px;
+  padding: 2rem;
+  text-align: center;
+  pointer-events: auto;
+}
+
+/* Menu Screen */
+.menu-screen {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.8);
+  pointer-events: auto;
+}
+
+.logo-title {
+  font-size: 4rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+  background: linear-gradient(45deg, var(--neon-blue), var(--neon-pink));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 20px rgba(188, 19, 254, 0.5);
+  letter-spacing: 4px;
+}
+
+.menu-btn {
+  background: transparent;
+  border: 2px solid var(--neon-blue);
+  color: var(--neon-blue);
+  padding: 1rem 3rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  cursor: pointer;
+  margin: 1rem;
+  transition: all 0.2s;
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0, 243, 255, 0.2);
+}
+
+.menu-btn:hover {
+  background: var(--neon-blue);
+  color: var(--bg-dark);
+  box-shadow: 0 0 30px rgba(0, 243, 255, 0.6);
+  transform: scale(1.05);
+}
+
+.menu-btn.blitz {
+  border-color: var(--neon-pink);
+  color: var(--neon-pink);
+  box-shadow: 0 0 10px rgba(188, 19, 254, 0.2);
+}
+
+.menu-btn.blitz:hover {
+  background: var(--neon-pink);
+  color: white;
+  box-shadow: 0 0 30px rgba(188, 19, 254, 0.6);
+}
+
+/* HUD */
+.hud {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.score-box {
+  font-size: 2rem;
+  font-weight: bold;
+  color: white;
+  text-shadow: 0 0 10px var(--neon-blue);
+}
+
+.combo-box {
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: var(--neon-green);
+  text-shadow: 0 0 15px var(--neon-green);
+  transform: skew(-10deg);
+}
+
+.streak-text {
+  font-size: 1rem;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* Game Over */
+.game-over-screen {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.9);
+  pointer-events: auto;
+}
+
+.hidden {
+  display: none !important;
+}
