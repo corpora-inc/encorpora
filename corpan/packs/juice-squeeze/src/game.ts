@@ -286,18 +286,26 @@ export const createJuiceSqueeze = (
 
     ttsTimeoutId = window.setTimeout(() => {
       if (!disposed) {
-        speakFast(lang, text)
+        speak(lang, text)
       }
       ttsTimeoutId = null
     }, delayMs)
   }
 
   // Fast TTS - speak immediately, canceling any queued speech
+  // Use only when interruption is desired (e.g., game init)
   const speakFast = (lang: string, text: string) => {
     // Stop any currently playing speech for instant response
     if (typeof hostApi.stopSpeech === "function") {
       hostApi.stopSpeech()
     }
+    if (typeof hostApi.speak === "function") {
+      hostApi.speak(lang, text)
+    }
+  }
+
+  // Speak without interrupting - allows audio to overlap
+  const speak = (lang: string, text: string) => {
     if (typeof hostApi.speak === "function") {
       hostApi.speak(lang, text)
     }
@@ -920,7 +928,7 @@ export const createJuiceSqueeze = (
       const phraseState = useGameStore.getState().phrase
       if (phraseState.targetText && phraseState.targetLang) {
         try {
-          speakFast(phraseState.targetLang, phraseState.targetText)
+          speak(phraseState.targetLang, phraseState.targetText)
         } catch (error) {
           console.error("[juice-squeeze] ❌ Target phrase tap TTS error:", error)
         }
@@ -1315,7 +1323,7 @@ export const createJuiceSqueeze = (
         setTimeout(() => {
           if (disposed) return
           try {
-            speakFast(blockLang, completeSentence)
+            speak(blockLang, completeSentence)
           } catch (error) {
             console.error("[juice-squeeze] ❌ TTS call error:", error)
           }
@@ -1411,7 +1419,7 @@ export const createJuiceSqueeze = (
     const { phrase } = useGameStore.getState()
     if (!phrase.correctWords.length) return
     if (phrase.blockLang) {
-      speakFast(phrase.blockLang, phrase.correctWords.join(" "))
+      speak(phrase.blockLang, phrase.correctWords.join(" "))
     }
   })
   root.appendChild(earButton)
@@ -1467,7 +1475,7 @@ export const createJuiceSqueeze = (
 
     // Play TTS for the answer
     if (phrase.blockLang) {
-      speakFast(phrase.blockLang, phrase.correctWords.join(" "))
+      speak(phrase.blockLang, phrase.correctWords.join(" "))
     }
   })
   root.appendChild(giveUpButton)
@@ -2205,11 +2213,11 @@ export const createJuiceSqueeze = (
         dragMoved = false
         dragStartPos = block.position.clone()
 
-        // Play TTS immediately on touch - stopSpeech clears queue for instant response
+        // Play TTS on touch - allows audio to overlap for rapid taps
         // Skip TTS for punctuation-only blocks
         const lang = useGameStore.getState().phrase.blockLang || "en"
         if (!isOnlyPunctuation(data.word)) {
-          speakFast(lang, data.word)
+          speak(lang, data.word)
         }
 
         // Bring block to front layer so it renders on top of other blocks
