@@ -1,14 +1,20 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { MonthView } from './MonthView';
 import { DayView } from './DayView';
 
 export function Calendar() {
   // Force re-render on resize (debounced) to recalculate layout
   const [resizeKey, setResizeKey] = useState(0);
+  const lastWidthRef = useRef<number>(typeof window !== 'undefined' ? window.innerWidth : 0);
 
   useEffect(() => {
     let timeoutId: ReturnType<typeof setTimeout>;
     const handleResize = () => {
+      const currentWidth = window.innerWidth;
+      if (Math.abs(currentWidth - lastWidthRef.current) < 1) {
+        return;
+      }
+      lastWidthRef.current = currentWidth;
       clearTimeout(timeoutId);
       timeoutId = setTimeout(() => setResizeKey(k => k + 1), 150);
     };

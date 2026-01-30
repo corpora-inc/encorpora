@@ -22,6 +22,10 @@ const setupAppHeight = () => {
     return iOSDevice || iPadOS;
   })();
 
+  if (!isIOS) {
+    return;
+  }
+
   const boostDurationMs = 1200;
 
   const getBestViewportHeight = () => {
@@ -29,6 +33,7 @@ const setupAppHeight = () => {
     const innerHeight = window.innerHeight ?? 0;
     const docHeight = document.documentElement.clientHeight ?? 0;
     const screenHeight = window.screen?.height ?? 0;
+    const screenWidth = window.screen?.width ?? 0;
     const preferred = Math.max(vvHeight, innerHeight, docHeight);
 
     if (!isIOS) {
@@ -40,12 +45,21 @@ const setupAppHeight = () => {
       (innerHeight >= (window.innerWidth ?? 0));
     const boostActive = (win.__appHeightBoostUntil ?? 0) > Date.now();
     const keyboardOpen = vvHeight > 0 && innerHeight > 0 && vvHeight < innerHeight - 80;
+    const screenOrientedHeight = isPortrait
+      ? Math.max(screenWidth, screenHeight)
+      : Math.min(screenWidth, screenHeight);
+    const gap = screenOrientedHeight - preferred;
 
-    if (isPortrait && boostActive && !keyboardOpen) {
-      return Math.max(preferred, screenHeight);
+    // If we're slightly short (common iOS cold-start bug), use screen height.
+    if (!keyboardOpen && gap >= 20 && gap <= 120) {
+      return screenOrientedHeight;
     }
 
-    return preferred || screenHeight || innerHeight || docHeight;
+    if (boostActive && !keyboardOpen) {
+      return Math.max(preferred, screenOrientedHeight);
+    }
+
+    return preferred || screenOrientedHeight || innerHeight || docHeight;
   };
 
   const applyAppHeight = () => {

@@ -271,7 +271,7 @@ fn create_manifest(app: &AppHandle) -> Result<serde_json::Value, String> {
     Ok(json!({
         "version": "1.0",
         "exported_at": now.to_rfc3339(),
-        "app_version": "0.1.0",
+        "app_version": "0.1.12",
         "parent_name": settings.parent_name,
         "total_days": total_days,
         "total_photos": total_photos,

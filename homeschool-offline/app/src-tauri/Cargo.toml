@@ -1,6 +1,6 @@
 [package]
 name = "homeschool-offline"
-version = "0.1.10"
+version = "0.1.12"
 description = "Offline-first calendar app for homeschooling"
 authors = ["Homeschool Offline"]
 edition = "2021"
@@ -31,4 +31,3 @@ zip = "2.1"
 chrono = "0.4"
 urlencoding = "2.1"
 tokio = { version = "1", features = ["rt-multi-thread"] }
-
