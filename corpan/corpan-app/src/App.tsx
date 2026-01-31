@@ -16,15 +16,57 @@ import { useRatingStore } from "@/store/rating";
 import { useGamesStore, type InstalledGame } from "@/store/games";
 import { useCatalogStore } from "@/store/catalog";
 import { usePackUpdates } from "@/hooks/usePackUpdates";
+import { LlmTest } from "./components/LlmTest";
 
 // In a module that always loads (e.g. App.tsx)
 if (import.meta.env.DEV) {
   (window as any).resetRatingState = () => {
     useRatingStore.getState().reset();
   };
+
+  // Helper to navigate to LLM test
+  (window as any).showLlmTest = () => {
+    window.location.href = "/?llmtest=true";
+  };
+
+  // Helper to navigate to main app
+  (window as any).showMainApp = () => {
+    window.location.href = "/?llmtest=false";
+  };
 }
 
 export default function App() {
+  // Check for LLM test mode (default in Tauri dev mode)
+  const [isLlmTest] = useState(() => {
+    if (typeof window === "undefined") return false;
+
+    // Check if running in Tauri
+    const isTauri = '__TAURI__' in window;
+    const isDev = import.meta.env.DEV;
+
+    // Debug logging
+    console.log('🔍 LLM Test Detection:', { isTauri, isDev });
+
+    // In dev mode with Tauri, default to LLM test
+    // Can override with ?llmtest=false
+    const params = new URLSearchParams(window.location.search);
+    const llmTestParam = params.get("llmtest");
+
+    console.log('🔍 llmtest param:', llmTestParam);
+
+    if (isDev && isTauri) {
+      // Default to true in Tauri dev, unless explicitly set to false
+      const shouldShow = llmTestParam !== "false";
+      console.log('✅ Showing LLM test:', shouldShow);
+      return shouldShow;
+    }
+
+    // In browser mode, only enable if explicitly requested
+    const showBrowser = llmTestParam === "true";
+    console.log('🌐 Browser mode, llmtest:', showBrowser);
+    return showBrowser;
+  });
+
   const [showSettings, setShowSettings] = useState(false);
   const [settingsTab, setSettingsTab] = useState<"stacks" | "packs" | undefined>(undefined);
   const [activeGame, setActiveGame] = useState<{
@@ -114,6 +156,11 @@ export default function App() {
 
   if (!onboarded) {
     return <OnboardingWizard />;
+  }
+
+  // Show LLM test in dev mode with ?llmtest=true
+  if (isLlmTest) {
+    return <LlmTest />;
   }
 
   return (

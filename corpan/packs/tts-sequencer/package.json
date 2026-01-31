@@ -1,0 +1,18 @@
+{
+  "name": "corpan-tts-sequencer",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "dev:watch": "vite build --watch",
+    "build": "vite build",
+    "typecheck": "tsc --noEmit",
+    "dev:corpan": "node scripts/dev-corpan.mjs",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@types/node": "^25.0.3",
+    "typescript": "^5.4.0",
+    "vite": "^5.4.0"
+  }
+}

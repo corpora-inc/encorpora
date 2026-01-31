@@ -1,0 +1,13 @@
+{
+  "id": "tts_sequencer",
+  "name": "TTS Sequencer",
+  "version": "0.1.0",
+  "description": "Phrase sequencer for building beats and melodies with Corpan TTS.",
+  "entry": "dist/app.js",
+  "styles": [
+    "dist/app.css"
+  ],
+  "entryType": "script",
+  "sdkVersion": "0.1.0",
+  "devRevision": "2026-01-31T03:36:22.135Z"
+}

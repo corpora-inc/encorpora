@@ -6,6 +6,7 @@
 mod content_packs;
 mod db;
 mod pack_db;
+mod llm;
 
 use rusqlite::{params_from_iter, Connection, ToSql};
 use rusqlite::types::{Value as SqlValue, ValueRef};
@@ -21,6 +22,7 @@ use crate::content_packs::{
     ContentPackInstallResult,
 };
 use crate::pack_db::{open_pack_connection, resolve_pack_db_path, PackDbState};
+use crate::llm::{LlmGenerateRequest, LlmState, resolve_model_path};
 
 const PACK_DB_DEFAULT_MAX_ROWS: usize = 500;
 const PACK_DB_HARD_MAX_ROWS: usize = 2000;
@@ -660,6 +662,37 @@ fn content_packs_get_manifest_url(app: AppHandle, pack_id: String) -> Result<Str
     get_manifest_url(&app, pack_id)
 }
 
+/// Load an LLM model from a file path
+#[command]
+fn llm_load_model(
+    app: AppHandle,
+    state: State<'_, LlmState>,
+    model_path: String,
+    model_id: String,
+) -> Result<(), String> {
+    let resolved_path = resolve_model_path(&app, &model_path)?;
+    state.inner().load_model(&resolved_path, &model_id)
+}
+
+/// Unload an LLM model
+#[command]
+fn llm_unload_model(
+    state: State<'_, LlmState>,
+    model_id: String,
+) -> Result<(), String> {
+    state.inner().unload_model(&model_id)
+}
+
+/// Generate text using an LLM model (returns array of token strings)
+#[command]
+fn llm_generate(
+    state: State<'_, LlmState>,
+    model_id: String,
+    request: LlmGenerateRequest,
+) -> Result<Vec<String>, String> {
+    state.inner().generate(&model_id, request)
+}
+
 /// Open Apple's Feedback Assistant app using the 'open' command (macOS/iOS)
 #[command]
 fn open_apple_feedback(#[allow(unused_variables)] app: AppHandle) -> Result<(), String> {
@@ -725,9 +758,11 @@ pub fn run() {
     let db_state =
         db::DbState::new().expect("failed to initialize embedded database");
     let pack_db_state = PackDbState::new();
+    let llm_state = LlmState::new().expect("failed to initialize LLM backend");
     tauri::Builder::default()
         .manage(db_state)
         .manage(pack_db_state)
+        .manage(llm_state)
         .plugin(tauri_plugin_os::init())
         .plugin(tauri_plugin_game_packs::init())
         .invoke_handler(tauri::generate_handler![
@@ -741,6 +776,9 @@ pub fn run() {
             content_packs_fetch_text,
             content_packs_list_installed,
             content_packs_get_manifest_url,
+            llm_load_model,
+            llm_unload_model,
+            llm_generate,
             open_apple_feedback
         ])
         .plugin(tauri_plugin_safe_area_insets_css::init())
