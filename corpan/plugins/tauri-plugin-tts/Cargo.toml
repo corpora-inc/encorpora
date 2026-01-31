@@ -13,6 +13,7 @@ tauri = { version = "2.1.0" }
 serde = "1.0"
 serde_json = "1"
 thiserror = "2"
+uuid = { version = "1", features = ["v4"] }
 
 # macOS-only deps (so Linux/Windows builds don't pull them)
 [target.'cfg(target_os = "macos")'.dependencies]

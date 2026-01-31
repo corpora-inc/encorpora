@@ -61,3 +61,22 @@ pub struct SpeakArgs {
     #[serde(rename = "voiceId", alias = "voice_id")]
     pub voice_id: Option<String>,
 }
+
+/// Arguments for concurrent TTS speak (same as SpeakArgs but separate type for clarity).
+#[derive(Debug, Deserialize, Serialize)]
+#[serde(rename_all = "camelCase")]
+pub struct SpeakConcurrentArgs {
+    pub text: String,
+    pub language: Option<String>,
+    pub rate: Option<f32>,
+    #[serde(rename = "voiceId", alias = "voice_id")]
+    pub voice_id: Option<String>,
+}
+
+/// Result from speak_concurrent containing the utterance ID for tracking.
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(rename_all = "camelCase")]
+pub struct SpeakResult {
+    /// Unique identifier for this utterance, used to track completion events.
+    pub utterance_id: String,
+}

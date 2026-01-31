@@ -1,5 +1,5 @@
 use crate::{
-    models::{SpeakArgs, TtsEngineStatus, VoiceInfo},
+    models::{SpeakArgs, SpeakConcurrentArgs, SpeakResult, TtsEngineStatus, VoiceInfo},
     Result, TtsExt,
 };
 use tauri::{command, AppHandle, Runtime};
@@ -21,8 +21,35 @@ pub(crate) async fn speak<R: Runtime>(app: AppHandle<R>, args: SpeakArgs) -> Res
 
     // Single, unified backend entry point: pass optional voice_id through.
     app.tts()
-        .speak(args.text, args.language, args.rate, args.voice_id)?; // <- propagate errors
+        .speak(args.text, args.language, args.rate, args.voice_id)?;
     Ok(())
+}
+
+/// Speak text concurrently using native TTS synthesizer pool.
+/// Does not debounce - allows rapid sequential and truly simultaneous playback.
+/// Returns an utterance_id for tracking completion via tts://status events.
+///
+/// Frontend must call:
+///   invoke("plugin:tts|speak_concurrent", { args: { text, language?, rate?, voice_id? } })
+#[command]
+pub(crate) async fn speak_concurrent<R: Runtime>(
+    app: AppHandle<R>,
+    args: SpeakConcurrentArgs,
+) -> Result<SpeakResult> {
+    println!(
+        "[NATIVE_TTS:DEBUG] speak_concurrent invoked: text='{}', lang={:?}, rate={:?}, voice_id={:?}",
+        args.text.chars().take(50).collect::<String>(),
+        args.language,
+        args.rate,
+        args.voice_id,
+    );
+
+    app.tts().speak_concurrent(
+        args.text,
+        args.language,
+        args.rate,
+        args.voice_id,
+    )
 }
 
 #[command]

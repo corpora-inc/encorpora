@@ -66,6 +66,144 @@ final class SpeakArgs: Decodable {
     }
 }
 
+final class SpeakConcurrentArgs: Decodable {
+    let text: String
+    let language: String?
+    let voiceId: String?
+    let rate: Double?
+
+    private enum CodingKeys: String, CodingKey {
+        case text, language, rate
+        case voiceId
+        case voice_id
+    }
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        text = try container.decode(String.self, forKey: .text)
+        language = try container.decodeIfPresent(String.self, forKey: .language)
+        rate = try container.decodeIfPresent(Double.self, forKey: .rate)
+
+        let camel = try container.decodeIfPresent(String.self, forKey: .voiceId)
+        let snake = try container.decodeIfPresent(String.self, forKey: .voice_id)
+        voiceId = camel ?? snake
+    }
+}
+
+// -----------------------------------------------------------------------------
+// Synthesizer Pool for Concurrent TTS
+// -----------------------------------------------------------------------------
+private final class SynthesizerSlot: NSObject, AVSpeechSynthesizerDelegate {
+    let synth: AVSpeechSynthesizer
+    var busy = false
+    var currentUtteranceId: String?
+    var onFinished: ((String?) -> Void)?
+
+    override init() {
+        synth = AVSpeechSynthesizer()
+        super.init()
+        synth.delegate = self
+    }
+
+    func speak(
+        text: String, voice: AVSpeechSynthesisVoice?, rate: Float,
+        pitch: Float?, volume: Float?, utteranceId: String
+    ) {
+        busy = true
+        currentUtteranceId = utteranceId
+
+        let utter = AVSpeechUtterance(string: text)
+        utter.voice = voice
+        utter.rate = rate
+        if let p = pitch { utter.pitchMultiplier = p }
+        if let v = volume { utter.volume = v }
+
+        synth.speak(utter)
+    }
+
+    // AVSpeechSynthesizerDelegate
+    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
+        let uttId = currentUtteranceId
+        busy = false
+        currentUtteranceId = nil
+        onFinished?(uttId)
+    }
+
+    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didCancel utterance: AVSpeechUtterance) {
+        let uttId = currentUtteranceId
+        busy = false
+        currentUtteranceId = nil
+        onFinished?(uttId)
+    }
+}
+
+private struct PendingUtterance {
+    let text: String
+    let voice: AVSpeechSynthesisVoice?
+    let rate: Float
+    let pitch: Float?
+    let volume: Float?
+    let utteranceId: String
+}
+
+private final class SynthesizerPool {
+    static let shared = SynthesizerPool()
+    private static let poolSize = 8
+
+    private var slots: [SynthesizerSlot] = []
+    private var pendingQueue: [PendingUtterance] = []
+    private var utteranceCounter: UInt64 = 0
+    private let queue = DispatchQueue(label: "com.corpora.tts.pool")
+
+    init() {
+        for _ in 0..<Self.poolSize {
+            let slot = SynthesizerSlot()
+            slot.onFinished = { [weak self] _ in
+                self?.processQueue()
+            }
+            slots.append(slot)
+        }
+    }
+
+    func speakConcurrent(
+        text: String, voice: AVSpeechSynthesisVoice?, rate: Float,
+        pitch: Float? = nil, volume: Float? = nil
+    ) -> String {
+        var utteranceId = ""
+        queue.sync {
+            utteranceCounter += 1
+            utteranceId = "utt_\(utteranceCounter)"
+
+            // Find an idle slot
+            if let slot = slots.first(where: { !$0.busy }) {
+                slot.speak(text: text, voice: voice, rate: rate, pitch: pitch, volume: volume, utteranceId: utteranceId)
+            } else {
+                // Queue for later
+                pendingQueue.append(PendingUtterance(
+                    text: text, voice: voice, rate: rate, pitch: pitch, volume: volume, utteranceId: utteranceId
+                ))
+            }
+        }
+        return utteranceId
+    }
+
+    private func processQueue() {
+        queue.async { [weak self] in
+            guard let self = self, !self.pendingQueue.isEmpty else { return }
+
+            if let slot = self.slots.first(where: { !$0.busy }) {
+                let pending = self.pendingQueue.removeFirst()
+                DispatchQueue.main.async {
+                    slot.speak(
+                        text: pending.text, voice: pending.voice, rate: pending.rate,
+                        pitch: pending.pitch, volume: pending.volume, utteranceId: pending.utteranceId
+                    )
+                }
+            }
+        }
+    }
+}
+
 // -----------------------------------------------------------------------------
 // Speaker (voice picking, audio session, speak/stop)
 // -----------------------------------------------------------------------------
@@ -421,6 +559,50 @@ final class Speaker: NSObject, AVSpeechSynthesizerDelegate {
         }
     }
 
+    func speakConcurrent(_ args: SpeakConcurrentArgs, invoke: Invoke) {
+        // Performance optimization: Do voice selection on background queue
+        DispatchQueue.global(qos: .userInitiated).async {
+            ttsLog(
+                "TTS speakConcurrent | lang:", args.language ?? "nil",
+                "| id:", args.voiceId ?? "nil",
+                "| rate:", args.rate ?? -1
+            )
+
+            // Voice selection on background thread
+            var selectedVoice: AVSpeechSynthesisVoice?
+
+            // Prefer explicit voice by identifier
+            if let id = args.voiceId, let v = self.getVoiceCache().usableById[id] {
+                selectedVoice = v
+                ttsLog("TTS voice | using id:", v.name, v.language, v.identifier)
+            }
+
+            // Otherwise pick by language ranking
+            if selectedVoice == nil, let best = self.pickVoice(language: args.language) {
+                selectedVoice = best
+                ttsLog(
+                    "TTS voice | picked:", best.name, best.language,
+                    "tier:", self.qualityTier(best), "avQ:", best.quality.rawValue)
+            }
+
+            let rate: Float = (args.rate != nil)
+                ? mapWebRateToAVRate(args.rate!) : AVSpeechUtteranceDefaultSpeechRate
+
+            // Use the synthesizer pool for concurrent playback
+            DispatchQueue.main.async {
+                self.prepareAudioSessionIfNeeded()
+
+                let utteranceId = SynthesizerPool.shared.speakConcurrent(
+                    text: args.text,
+                    voice: selectedVoice,
+                    rate: rate
+                )
+
+                invoke.resolve(["utteranceId": utteranceId])
+            }
+        }
+    }
+
     func stop(_ invoke: Invoke) {
         DispatchQueue.main.async {
             Self.synth.stopSpeaking(at: .immediate)
@@ -454,6 +636,11 @@ final class TTSPlugin: Plugin {
     @objc public func speak(_ invoke: Invoke) throws {
         let args = try invoke.parseArgs(SpeakArgs.self)
         Self.speaker.speak(args, invoke: invoke)
+    }
+
+    @objc public func speakConcurrent(_ invoke: Invoke) throws {
+        let args = try invoke.parseArgs(SpeakConcurrentArgs.self)
+        Self.speaker.speakConcurrent(args, invoke: invoke)
     }
 
     @objc public func stop(_ invoke: Invoke) {

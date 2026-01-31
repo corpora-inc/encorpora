@@ -1,5 +1,5 @@
 // src/mobile.rs
-use crate::models::{SpeakArgs, TtsEngineStatus, VoiceInfo};
+use crate::models::{SpeakArgs, SpeakConcurrentArgs, SpeakResult, TtsEngineStatus, VoiceInfo};
 use serde::de::DeserializeOwned;
 use tauri::{
     plugin::{PluginApi, PluginHandle},
@@ -49,6 +49,29 @@ impl<R: Runtime> Tts<R> {
             .run_mobile_plugin::<()>("speak", Some(args))
             .map_err(|e| {
                 println!("[MOBILE_TTS] speak error: {:?}", e);
+                e.into()
+            })
+    }
+
+    /// Speak concurrently using the synthesizer pool. Returns an utterance ID for tracking.
+    /// The native mobile plugins use a pool of synthesizers to allow overlapping audio.
+    pub fn speak_concurrent(
+        &self,
+        text: String,
+        language: Option<String>,
+        rate: Option<f32>,
+        voice_id: Option<String>,
+    ) -> crate::Result<SpeakResult> {
+        let args = SpeakConcurrentArgs {
+            text,
+            language,
+            rate,
+            voice_id,
+        };
+        self.0
+            .run_mobile_plugin::<SpeakResult>("speakConcurrent", Some(args))
+            .map_err(|e| {
+                println!("[MOBILE_TTS] speak_concurrent error: {:?}", e);
                 e.into()
             })
     }

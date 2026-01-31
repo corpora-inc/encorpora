@@ -23,7 +23,7 @@ import {
     getPlatformTopPaddingTranslations,
 } from "@/util/browser";
 import { useScrollNavigation } from "@/hooks/useScrollNavigation";
-import { speakWithStackPrefs } from "@/util/speakWithStackPrefs";
+import { speakConcurrentWithStackPrefs } from "@/util/speakWithStackPrefs";
 
 /* -------------------------------- Types -------------------------------- */
 
@@ -337,7 +337,7 @@ export function MainExperience() {
 
     const speak = (uiCode: string, txt: string) => {
         if (!txt) return;
-        speakWithStackPrefs(uiCode, txt, rate);
+        speakConcurrentWithStackPrefs(uiCode, txt, rate);
     };
 
     // --- UI --------------------------------------------------------------------
