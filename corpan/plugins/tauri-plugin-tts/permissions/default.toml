@@ -3,6 +3,7 @@
 description = "Default permissions for the TTS plugin"
 permissions = [
     "allow-speak",
+    "allow-speak-concurrent",
     "allow-stop",
     "allow-open-tts-settings",
     "allow-install-tts-data-if-supported",

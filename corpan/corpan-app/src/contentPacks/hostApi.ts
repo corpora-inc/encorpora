@@ -1,6 +1,6 @@
 import { invoke } from "@tauri-apps/api/core"
 
-import { speakWithStackPrefs } from "@/util/speakWithStackPrefs"
+import { speakWithStackPrefs, speakConcurrentWithStackPrefs } from "@/util/speakWithStackPrefs"
 import { useSettingsStore } from "@/store/settings"
 import type { HostApi, PackDbQuery } from "./types"
 
@@ -87,6 +87,14 @@ export const createHostApi = (packId?: string): HostApi => {
     await speakWithStackPrefs(uiCode, text, rate)
   }
 
+  const speakConcurrent = async (uiCode: string, text: string): Promise<string> => {
+    if (disposed) {
+      return ""
+    }
+    const { rate } = useSettingsStore.getState()
+    return await speakConcurrentWithStackPrefs(uiCode, text, rate)
+  }
+
   const dispose = () => {
     disposed = true
   }
@@ -98,6 +106,9 @@ export const createHostApi = (packId?: string): HostApi => {
   return {
     speak: async (uiCode, text) => {
       await speakImmediate(uiCode, text)
+    },
+    speakConcurrent: async (uiCode, text) => {
+      return await speakConcurrent(uiCode, text)
     },
     stopSpeech,
     dispose,

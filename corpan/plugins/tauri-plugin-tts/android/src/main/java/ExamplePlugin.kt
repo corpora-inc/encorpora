@@ -19,6 +19,7 @@ import org.json.JSONArray
 import org.json.JSONObject
 import java.util.Locale
 import java.util.UUID
+import java.util.concurrent.atomic.AtomicLong
 import kotlin.math.abs
 import kotlin.math.ln
 
@@ -46,7 +47,7 @@ private fun mapWebRateToAndroid(
   if (abs(w - W_DEF) < 1e-6f) return A_DEF
 
   return if (w < W_DEF) {
-    // keep the “slow” curve gentle
+    // keep the "slow" curve gentle
     val t = (ln((w / W_MIN).toDouble()) / ln((W_DEF / W_MIN).toDouble())).toFloat()
     lo + t * (A_DEF - lo)
   } else {
@@ -78,6 +79,15 @@ internal class EngineStoreArgs {
   var package_name: String? = null
 }
 
+@InvokeArg
+internal class SpeakConcurrentArgs {
+  lateinit var text: String
+  var language: String? = null    // BCP-47, e.g. "fa-IR"
+  var rate: Float? = null         // 0.1–1.5
+  var voiceId: String? = null     // Voice.name (camel)
+  var voice_id: String? = null    // Voice.name (snake)
+}
+
 /* -------------------------------------------------------------------------- */
 /*                                   Plugin                                   */
 /* -------------------------------------------------------------------------- */
@@ -93,6 +103,9 @@ class ExamplePlugin(private val activity: Activity) : Plugin(activity) {
   private var voiceCache: List<Voice>? = null
   private var voiceCacheTime: Long = 0
   private val VOICE_CACHE_TTL = 30_000L // 30 seconds like iOS
+
+  // Counter for generating utterance IDs
+  private val utteranceIdCounter = AtomicLong(0)
 
   override fun load(webView: WebView) {
     initializeTTS()
@@ -283,12 +296,103 @@ class ExamplePlugin(private val activity: Activity) : Plugin(activity) {
     }
   }
 
+  /**
+   * speakConcurrent on Android: Due to platform limitations, Android's TTS service
+   * serializes all utterances regardless of client instances. This implementation
+   * uses QUEUE_ADD (same as speak) but returns an utterance ID for API compatibility
+   * with platforms that support true concurrency (macOS/iOS).
+   */
+  @Command
+  fun speakConcurrent(invoke: Invoke) {
+    val args = try {
+      invoke.parseArgs(SpeakConcurrentArgs::class.java)
+    } catch (e: Exception) {
+      invoke.reject("Invalid args: ${e.message}")
+      return
+    }
+
+    ensureReady {
+      val t = tts
+      if (t == null) {
+        invoke.reject("TTS not initialized")
+        return@ensureReady
+      }
+
+      try {
+        val resolvedVoiceId = args.voiceId ?: args.voice_id
+        val chosenVoice: Voice? = when {
+          !resolvedVoiceId.isNullOrBlank() -> findVoiceById(t, resolvedVoiceId)
+          !args.language.isNullOrBlank() -> chooseBestVoiceForLanguage(t, args.language!!)
+          else -> null
+        }
+
+        if (chosenVoice != null) {
+          t.setVoice(chosenVoice)
+        } else if (!args.language.isNullOrBlank()) {
+          t.setLanguage(Locale.forLanguageTag(args.language))
+        }
+
+        val androidRate = mapWebRateToAndroid(args.rate ?: 1.0f, targetMax = 3.0f)
+        t.setSpeechRate(androidRate)
+
+        val utteranceId = "utt_${utteranceIdCounter.incrementAndGet()}"
+
+        t.setOnUtteranceProgressListener(object : UtteranceProgressListener() {
+          override fun onStart(id: String?) {
+            val event = JSObject().apply {
+              put("status", "started")
+              put("utteranceId", id ?: JSONObject.NULL)
+            }
+            trigger("ttsStatus", event)
+          }
+
+          override fun onDone(id: String?) {
+            val event = JSObject().apply {
+              put("status", "ended")
+              put("utteranceId", id ?: JSONObject.NULL)
+            }
+            trigger("ttsStatus", event)
+          }
+
+          @Suppress("DEPRECATION")
+          override fun onError(id: String?) {
+            val event = JSObject().apply {
+              put("status", "error")
+              put("utteranceId", id ?: JSONObject.NULL)
+            }
+            trigger("ttsStatus", event)
+          }
+
+          override fun onError(id: String?, errorCode: Int) {
+            val event = JSObject().apply {
+              put("status", "error")
+              put("utteranceId", id ?: JSONObject.NULL)
+              put("errorCode", errorCode)
+            }
+            trigger("ttsStatus", event)
+          }
+        })
+
+        // Use QUEUE_ADD - Android doesn't support true concurrent TTS
+        val res = t.speak(args.text, TextToSpeech.QUEUE_ADD, null, utteranceId)
+        if (res == TextToSpeech.ERROR) {
+          invoke.reject("Failed to queue speech")
+        } else {
+          val result = JSObject().apply {
+            put("utteranceId", utteranceId)
+          }
+          invoke.resolve(result)
+        }
+      } catch (e: Exception) {
+        invoke.reject(e.message ?: "Unknown error in speakConcurrent")
+      }
+    }
+  }
+
   @Command
   fun stop(invoke: Invoke) {
     ensureReady {
       tts?.stop()
-      // if you ever want aggressive cleanup:
-      // tts?.shutdown(); tts = null; isInitialized = false
       invoke.resolve()
     }
   }
@@ -342,7 +446,6 @@ class ExamplePlugin(private val activity: Activity) : Plugin(activity) {
         val o = JSObject()
         o.put("packageName", engine.name)
         o.put("label", engine.label?.toString() ?: JSONObject.NULL)
-        // EngineInfo.system is @hide in the SDK; report false as a safe default.
         o.put("isSystem", false)
         arr.put(o)
       }
@@ -442,9 +545,6 @@ class ExamplePlugin(private val activity: Activity) : Plugin(activity) {
         val feats = v.features ?: emptySet()
         val nameLc = v.name.lowercase(Locale.ROOT)
 
-        // Generic + Google-friendly heuristic:
-        //  - API signal: isNetworkConnectionRequired / "networkTts" feature
-        //  - Name hint: ids like "xx-YY-network"
         val networkByApi = v.isNetworkConnectionRequired || feats.contains("networkTts")
         val networkByName = nameLc.endsWith("-network") || nameLc.contains("network")
         val networkRequired = networkByApi || networkByName

@@ -96,6 +96,23 @@ async function speakNative(text: string, langPrefix: string, rate: number, voice
     });
 }
 
+/**
+ * Speak concurrently using the synthesizer pool (allows overlapping audio on macOS/iOS).
+ * On Android, falls back to sequential playback due to platform limitations.
+ * Returns an utterance ID for tracking completion.
+ */
+async function speakNativeConcurrent(text: string, langPrefix: string, rate: number, voiceId?: string): Promise<string> {
+    const result = await invoke<{ utteranceId: string }>("plugin:tts|speak_concurrent", {
+        args: {
+            text,
+            language: langPrefix,
+            rate,
+            voice_id: voiceId,
+        }
+    });
+    return result.utteranceId;
+}
+
 async function speakBrowser(text: string, langPrefix: string, rate: number, voiceId?: string) {
     if (!BROWSER_TTS) throw new Error("Web Speech API not available");
 
@@ -164,6 +181,37 @@ export function createVoiceTTS(langPrefix: string) {
         } catch (err) {
             // eslint-disable-next-line no-console
             // console.warn(`[TTS:${langPrefix}] Browser TTS failed`, err);
+        }
+    };
+}
+
+/**
+ * Factory returning a concurrent `speak` function that allows overlapping audio.
+ * On macOS/iOS: true concurrent playback via synthesizer pool.
+ * On Android: sequential playback (platform limitation) but returns utterance ID.
+ * Returns an utterance ID for tracking completion.
+ * Usage: createVoiceTTSConcurrent("en-US")(text, 0.9, "com.apple....") => Promise<string>
+ */
+export function createVoiceTTSConcurrent(langPrefix: string) {
+    return async function speakConcurrent(text: string, rate: number = 0.7, voiceId?: string): Promise<string> {
+        // 1) Prefer native concurrent on macOS/iOS/Android when in Tauri.
+        try {
+            if (await preferNativeTTS()) {
+                return await speakNativeConcurrent(text, langPrefix, rate, voiceId);
+            }
+        } catch (err) {
+            // eslint-disable-next-line no-console
+            console.warn(`[TTS:${langPrefix}] Native concurrent failed; falling back to browser`, err);
+        }
+
+        // 2) Fallback to browser (sequential - browser doesn't support concurrent easily).
+        try {
+            await speakBrowser(text, langPrefix, rate, voiceId);
+            return `browser_${Date.now()}`;
+        } catch (err) {
+            // eslint-disable-next-line no-console
+            console.warn(`[TTS:${langPrefix}] Browser TTS failed`, err);
+            return `error_${Date.now()}`;
         }
     };
 }

@@ -304,9 +304,12 @@ export const createJuiceSqueeze = (
     }
   }
 
-  // Speak without interrupting - allows audio to overlap
+  // Speak without interrupting - allows audio to overlap using concurrent TTS
   const speak = (lang: string, text: string) => {
-    if (typeof hostApi.speak === "function") {
+    // Prefer speakConcurrent for true overlapping audio
+    if (typeof hostApi.speakConcurrent === "function") {
+      hostApi.speakConcurrent(lang, text)
+    } else if (typeof hostApi.speak === "function") {
       hostApi.speak(lang, text)
     }
   }

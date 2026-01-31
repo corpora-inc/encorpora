@@ -36,6 +36,8 @@ export type PackDbQueryResult = {
 
 export type HostApi = {
   speak: (uiCode: string, text: string) => Promise<void>
+  /** Speak concurrently (allows overlapping audio). Returns utterance ID. */
+  speakConcurrent?: (uiCode: string, text: string) => Promise<string>
   stopSpeech?: () => Promise<void>
   dispose?: () => void
   getStackConfig: () => StackConfig

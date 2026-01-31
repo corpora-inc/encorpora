@@ -23,6 +23,8 @@ export type EntryOut = {
 
 export type HostApi = {
   speak: (lang: string, text: string) => void
+  /** Speak concurrently (allows overlapping audio). Returns utterance ID. */
+  speakConcurrent?: (lang: string, text: string) => Promise<string>
   stopSpeech?: () => void
   getStackConfig: () => StackConfig
   onStackConfigChange?: (listener: (next: StackConfig) => void) => () => void
