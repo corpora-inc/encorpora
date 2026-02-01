@@ -160,7 +160,9 @@
 \usepackage{fontspec}
 \usepackage{xeCJK}
 
-\setmainfont{Noto Serif}
+% Use HarfBuzz for variable fonts and fake bold if the bold face is missing.
+\defaultfontfeatures{Renderer=Harfbuzz}
+\setmainfont{Noto Serif}[AutoFakeBold=2.0]
 \setCJKmainfont{Noto Sans CJK SC}
 
 \AtBeginDocument{%

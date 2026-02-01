@@ -7,13 +7,13 @@ Keeping things economical, remember your family’s limits on attention and pati
 Children differ in how they handle the long run. Some thrive on consistent daily blocks; others sprint and rest in short cycles. Either way works if your main routines keep ticking. Low pressure and clear expectations often help children move ahead faster than you expect. This section builds the year’s structure: a flexible 36-week model, a practical overview of third-grade content, space for travel and sick days, and methods for mixing skill work with projects. The aim is a plan you can stick with and tweak as you find what truly works for your family.
 
 
-## The 180-Day / 36-Week Model and How to Adapt It
+## The 180-Day and 36-Week Model
 
 The familiar 180-day, 36-week school year is the planning standard you’ll see almost everywhere. It’s often broken into 36 weeks of five days each, which makes calendars, attendance, and progress checks simple.
 
 Treat it as a **useful skeleton**, not a commandment. Like a standard recipe or workout plan, the value is the structure. Once you understand the shape, you can flex it to match your family’s actual rhythms.
 
-### Why this model works (even with short days)
+### Why this model works
 
 Start with 180 days or 36 weeks not because your third grader needs a seven-hour school day, but because **steady, bite-sized effort compounds**. Fluency, handwriting, spelling, and multiplication facts all grow more like “regular reps” than like cramming.
 
@@ -44,7 +44,7 @@ There’s no single ideal weekly shape, but these options tend to be both sustai
 If you choose the four-day option, many families “make up” the total days by sprinkling a few light school days into break weeks, or by counting field trips and project days that still produce real work.
 
 
-### Plan in short cycles (agile, not frantic)
+### Plan in short cycles
 
 > **Two planning anchors**
 >
@@ -68,7 +68,7 @@ If your state has an hourly requirement, remember those hours usually include th
 
 Different kids will use the same calendar differently. A quick finisher may need harder books and bigger projects. A steady builder may thrive on predictable routines and visible, incremental progress. An easily overwhelmed child often does best with short, defined blocks aimed at small wins.
 
-### Keep records light (so compliance is a byproduct)
+### Keep records light
 
 Aim for a system you can maintain on tired days:
 
@@ -96,7 +96,7 @@ Rather than chasing perfect coverage, focus on visible, concrete output: a noteb
 
 Every Friday (or every other Friday), reserve ten minutes to check in. Reflect briefly: What’s getting easier? Where’s the friction? Decide together what to keep, trim, or adapt next week. Little adjustments build momentum and keep your scope realistic.
 
-### Quarter 1 (Weeks 1–9): Foundations and Calm Routines
+### Quarter 1: Foundations and Calm Routines
 
 The first quarter is about building a stable system. You’re aiming for stamina, skill fluency, and dependable daily rhythms, nothing fancy.
 
@@ -108,7 +108,7 @@ The first quarter is about building a stable system. You’re aiming for stamina
 
 Add two or three short science or social studies blocks each week around a clear theme. Science can be as simple as a nature walk and an “I notice, I wonder” notebook, small experiments about melting and floating, or measuring shadows. For social studies, start with maps (your neighborhood) and simple timelines (your child’s milestones alongside a historical segment).
 
-### Quarter 2 (Weeks 10–18): Expansion and Skill Building
+### Quarter 2: Expansion and Skill Building
 
 This quarter, keep your core loop steady but add a bit more complexity.
 
@@ -120,7 +120,7 @@ Math brings multiplication and division into daily practice, focusing on meaning
 
 In science and social studies, choose a single content spine for the quarter: plant or animal life cycles, the water cycle, or an exploration of early cultures. A small integrated project can reinforce the theme. For example, keep a two-week weather log, then write a paragraph about patterns you notice. One good question can “pay for” science, writing, and math all at once.
 
-### Quarter 3 (Weeks 19–27): Application and Longer Outputs
+### Quarter 3: Application and Longer Outputs
 
 By the third quarter, skills should feel ready to pay rent through real-world application.
 
@@ -132,7 +132,7 @@ Math explores fractions as tangible experiences: cutting food, folding paper, me
 
 Science can explore physical phenomena: matter, motion, and basic energy ideas. In social studies, touch on civics: rules, fairness, and simple community decisions. A simple project might be building a paper bridge or airplane, testing designs, recording observations, then writing a short explanation of what changed and why. That is a true compound move: reading, experimenting, writing, and analyzing in one pass.
 
-### Quarter 4 (Weeks 28–36): Synthesis, Independence, and Tidy-up
+### Quarter 4: Synthesis, Independence, and Tidy-up
 
 The last quarter is space for synthesis, independent work, and gentle catch-up.
 
@@ -144,7 +144,7 @@ Math can focus on organizing information into simple graphs (books read, birds s
 
 In science and social studies, tie things together with design challenges and community mini-units: simple engineering builds at home, or a unit on how local resources and services flow. Finish with a “Third Grade Showcase”: choose ten favorite notebook pages, a few project photos, and have your child dictate a brief reflection.
 
-### Agile Adjustments (Because Real Life Happens)
+### Agile Adjustments
 
 Stay flexible with a few steady defaults. You’re managing scarce resources, time, attention, and energy, so you’ll get the best return by protecting frequency in the basics.
 
@@ -197,7 +197,7 @@ Early in the year, if you are going to push, focus on skills that strengthen eve
 
 This is where the agile metaphor helps: keep your core skills “in progress” steadily, and let science projects, history deep-dives, and extras live in the backlog. They are ready to pull in when you have momentum, and you can pause them without guilt when you do not.
 
-### Travel counts (and it is okay to do less)
+### Travel counts
 
 Travel naturally brings in learning, so do not force extra schoolwork on the road unless it genuinely helps.
 
@@ -230,7 +230,7 @@ The key is to stop treating “skills” and “projects” as if they’re riva
 
 Done well, projects don’t replace skill practice. They reinforce and multiply it.
 
-### Your anchors: the non-negotiables (most days)
+### Your anchors: the non-negotiables
 
 Anchor your days with a small set of daily practices. If everything goes off the rails, these anchors mean you still got the essentials done. Aim for three anchors most days:
 
@@ -340,7 +340,7 @@ Examples: “Confused by regrouping, needs more base-ten blocks before pencil,�
 
 > The point of the note is not to judge the day. It’s to run a tiny experiment tomorrow.
 
-### The weekly check-in (10 minutes)
+### The weekly check-in
 
 Once a week, add a small reflection box at the bottom of your page. Keep it short: one to three things that went well, one thing that felt sticky, and the simplest plan for next week.
 

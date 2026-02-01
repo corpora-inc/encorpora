@@ -21,12 +21,7 @@ You’re aiming for a reader who can get through typical age-appropriate books w
 
 By the end of the year, most third graders can pick up a variety of age-friendly fiction or short nonfiction, read it on their own, and explain the main idea along with some details to back it up.
 
-If you want a quick way to tell whether things are on track, ask yourself:
-
-- Are they reading most words correctly (and fixing mistakes when they notice them)?
-- Do they read in phrases rather than one word at a time?
-- Can they explain what happened or what the text was mostly about, in their own words?
-- Can they stick with a text without needing constant rescue?
+If you want a quick way to tell whether things are on track, ask yourself whether they read most words correctly (and fix mistakes when they notice them), read in phrases rather than one word at a time, can explain what happened or what the text was mostly about in their own words, and can stick with a text without constant rescue.
 
 ### Concrete skills to look for by year-end
 
@@ -64,15 +59,9 @@ Vocabulary growth comes mostly from real reading, not flashcards. Most third gra
 
 This is a hidden superpower of the year. Many kids can read (or read with some help) for 20 to 30 minutes at a stretch, finish books they start, and talk about their reading without feeling like they’re taking a test.
 
-### Stretch goals (nice to have, not urgent)
+### Stretch goals
 
-Once the basics feel steady, it’s healthy to stretch. Some advanced skills to work toward, without stressing, include:
-
-- Naming a theme (“What’s the big lesson here?”)
-- Comparing two texts on a similar topic
-- Pointing to a phrase or sentence as evidence for an idea
-- Noticing author choices (“Why do you think the author wrote it this way?”)
-- Exploring point of view (how the story changes from another character’s perspective)
+Once the basics feel steady, it’s healthy to stretch. Some advanced skills to work toward, without stressing, include naming a theme, comparing two texts on a similar topic, pointing to a phrase as evidence, noticing author choices, and exploring how point of view changes a story.
 
 ### A light routine that builds these skills
 
@@ -97,25 +86,15 @@ Building fluency doesn’t require timers, charts, or pressure. What it really n
 
 > **Fluency goal:** smooth and accurate, not fast.
 
-### What fluency looks like (in real life)
+### What fluency looks like
 
-You’ll notice it in small, ordinary ways.
-
-- Less “robot voice,” more natural phrasing.
-- Pauses land in sensible places, at commas and at the end of ideas.
-- Your child self-corrects: “Wait, that didn’t sound right.”
-- They have enough energy left to tell you what happened, without you pulling meaning out of them.
+You’ll notice it in small, ordinary ways: less “robot voice” and more natural phrasing, pauses that land in sensible places, self-corrections like “Wait, that didn’t sound right,” and enough energy left to tell you what happened without you pulling meaning out of them.
 
 If you’re only tracking one thing, track *ease*. Speed tends to rise on its own once reading feels manageable.
 
 ### A daily ten-minute loop that works
 
-A reliable, low-pressure way to build fluency is a simple loop you can run most days.
-
-- Pick a short passage (about 50 to 200 words).
-- Preview a few bumps together (two to five tricky words is plenty).
-- Read with support (model, take turns, or read together).
-- End with a meaning check: one question, a quick sketch, or a connection.
+A reliable, low-pressure way to build fluency is a simple loop you can run most days: pick a short passage, preview a few bumps together, read with support, and end with a meaning check such as one question, a quick sketch, or a connection.
 
 Done consistently, these tiny sessions add up. You’re investing a small amount of time in a skill that compounds across every subject.
 
@@ -131,15 +110,11 @@ Different kids need different kinds of support, and the “right” method can c
 
 ### Rereading, but with a purpose
 
-Rereading doesn’t have to feel dull if there’s a clear reason for it. Turn a reread into a tiny “polish” project.
-
-- Practice a poem, joke, comic strip, or short scene, then “perform.”
-- Each reread improves just one thing: pausing, smoothness, or character voices.
-- Try a teaching reread: they read a chunk, then explain it to you.
+Rereading doesn’t have to feel dull if there’s a clear reason for it. Turn a reread into a tiny “polish” project: practice a poem, joke, comic strip, or short scene and then perform it; improve just one thing each pass; or do a teaching reread where they read a chunk and explain it to you.
 
 Short, playful performances can be surprisingly motivating: record a ninety-second “radio read” for a grandparent, split a script and act it out, or read a recipe step like a cooking show host. Keep it small and pressure-free.
 
-### Preview and rescue (gentle help that keeps the story moving)
+### Preview and rescue
 
 One of the most powerful tools for growing fluency is **preview and rescue**.
 
@@ -174,7 +149,7 @@ Three to five days a week is enough. Here’s one repeatable pattern: duet read 
 
 Short sessions, ten minutes, five minutes, whatever matches your real life, really do add up. What matters is showing up and keeping the experience positive.
 
-### What to avoid (because it usually backfires)
+### What to avoid
 
 Timed races usually kill enjoyment unless your child requests them. Over-correcting each wobble can sap confidence, so pick just one thing to notice and encourage each day. And avoid reading marathons that end in frustration or tears. Stop while it’s still going well so your child is willing to come back tomorrow.
 
@@ -206,7 +181,7 @@ Two quick, kid-friendly variations:
 - **Six-word headline:** write a tiny headline for each section.
 - **Bucket and marbles:** draw a bucket (main idea) and add a few marbles (key details).
 
-### Inference: connecting dots (not guessing)
+### Inference: connecting dots
 
 Inference is connecting the dots. Your child takes a clue in the text and combines it with what they already know to come up with a reasonable idea, not a wild guess.
 
@@ -242,7 +217,7 @@ A simple mapping tool is three boxes on paper:
 - Three key facts
 
 
-### Ten-minute practice options (use today’s book)
+### Ten-minute practice options
 
 Use whatever your child is already reading and choose one mini-move.
 
@@ -320,7 +295,7 @@ In third grade, many kids start shifting from *learning to read* (decoding, basi
 
 Think of these as your “reading engine.” Not because you need to optimize childhood, but because these routines create steady input, steady practice, and steady enjoyment. That’s how reading growth compounds.
 
-### The two habits (and why you want both)
+### The two habits
 
 A read-aloud is simple: you read a book out loud to your child. It’s not just for little kids. Even strong readers benefit from listening to language that’s richer than what they can comfortably read alone.
 
@@ -370,7 +345,7 @@ When you’re ready to widen their taste, nudge instead of shove. Read the first
 
 Tracking can be motivating, as long as it stays low-pressure. A simple reading log, a sticker on a calendar, or a visible stack of finished books is usually enough. Avoid turning it into a competition.
 
-### Using tech and AI (strong option)
+### Using tech and AI
 
 Technology can be a primary engine for language arts, not just a helper. AI conversations count as reading and writing: your child is parsing language, responding in words, and learning to ask better questions.
 
@@ -385,7 +360,7 @@ If you use AI chats, stay connected to the loop. Treat it like a skilled assista
 
 ![Choosing the next good story](images/Parent_and_child_using_a_tablet_device_together_to_select_new_stories..png)
 
-### Common pitfalls (and the easy fixes)
+### Common pitfalls
 
 Most reading problems at home are workflow problems, not kid problems.
 
@@ -417,7 +392,7 @@ Think of writing as three levers you pull gently all year:
 
 If you keep moving all three forward, progress compounds. If one lever is lagging (for example, great ideas but messy punctuation), you do not need to “fix writing.” You just nudge that lever for a while.
 
-### Concrete end-of-year outcomes (what “in good shape” looks like)
+### Concrete end-of-year outcomes
 
 Most third graders can do most of the following most of the time:
 
@@ -466,7 +441,7 @@ For most kids, “revise” sounds like “do the whole thing over.” Instead, 
 
 Helpful questions: “Is anything confusing?” “Where could you add just one detail?” “Can we find two easy fixes?” The point is the habit of improvement, not perfection.
 
-### Simple practice tracks (pick one and keep going)
+### Simple practice tracks
 
 You do not need every type of writing every week. Choose a track you can actually sustain.
 
@@ -491,7 +466,7 @@ A fast way to diagnose a paragraph is to ask:
 
 If you cannot answer in one sentence, the paragraph is probably doing too much.
 
-### A simple paragraph shape (without turning it into a formula)
+### A simple paragraph shape
 
 For young writers, a reliable default looks like this:
 
@@ -562,7 +537,7 @@ The goal is not perfection. You are on track when your child can usually write a
 
 Narrative writing often falls flat when it’s reduced to “write a story” and a child is left facing a blank page. But when taught as a repeatable craft, it becomes manageable and even fun: pick a character, put them somewhere, give them a problem, let a few things happen, and land the plane. You don’t need to be an expert writer yourself. Your main responsibility is to create a simple, repeatable process that helps your child finish stories rather than agonize over making a perfect one. For third grade, the goal is building a collection of finished stories. **Quantity over perfection** is where real growth takes hold.
 
-### The five-part story (your default template)
+### The five-part story
 
 If you only teach one story structure, make it this one:
 
@@ -591,7 +566,7 @@ Finally, **share the work**. Read it to a sibling, record a voice memo, or post 
 
 > **Fast definition:** A *scene* is one moment in one place where something changes. If the character walks to a new location or time jumps forward, that’s usually a new scene.
 
-### Choose a weekly track (based on your child)
+### Choose a weekly track
 
 Writing doesn’t require marathon sessions. Repetition with short, consistent efforts teaches more than the occasional epic attempt. Pick a weekly track that matches your child’s temperament.
 
@@ -618,7 +593,7 @@ Third graders often lose the flow because they’re juggling too many details in
 
 If the story gets jumbled, return to the scenes, identify which parts belong where, and rearrange as needed. This is a normal writing move, not a sign they “can’t write.”
 
-### Teach detail as seasoning (not a flood)
+### Teach detail as seasoning
 
 Details matter in stories, but too much can bog young writers down. Teach your child that **a few specific touches** work better than paragraphs of description.
 
@@ -690,7 +665,7 @@ Once or twice a week, run this quick loop:
 
 If handwriting is rough that day, you can scribe, use speech-to-text, or do it orally. The output is a paragraph, but the real win is the thinking habit getting stronger with every repetition.
 
-### Simple scaffolds (use, don’t worship)
+### Simple scaffolds
 
 Some kids benefit from a memorable pattern. One common option is **OREO**: Opinion, Reason, Example, Opinion. Two OREO cycles (two reasons, each with evidence) plus a closing makes a sturdy paragraph.
 
@@ -781,7 +756,7 @@ A dependable third grade structure:
 
 Three sections is enough to feel “real” without overwhelming them. If a topic catches fire, you can always add a fourth section later.
 
-### Teach organization by grouping (make it physical)
+### Teach organization by grouping
 
 “Organization” is mostly **grouping**. Concrete methods work best.
 
@@ -821,7 +796,7 @@ Example:
 
 If you see gaps between facts, ask, “What does that fact *do*?” or “Why would the reader care?” and help your child write one connecting line.
 
-### A tomorrow-ready mini-lesson (keep it short)
+### A tomorrow-ready mini-lesson
 
 Pick a topic your child already knows something about. Talk about it.
 
@@ -829,7 +804,7 @@ Jot down 8 to 12 fact notes, group them into three piles, then choose one pile a
 
 Short sessions work in your favor. You’re building a routine, not sprinting for distance.
 
-### Quick practice options (when you don’t want a full report)
+### Quick practice options
 
 A full “report” isn’t always necessary. Small reps compound.
 
@@ -861,7 +836,7 @@ Some children write more confidently with light scaffolds. Use sentence starters
 - “For example, …”
 - “This happens because …”
 
-### Common obstacles (and quick fixes)
+### Common obstacles
 
 A few problems show up again and again, and they’re fixable.
 
@@ -911,7 +886,7 @@ Everything beyond this is optional seasoning: helpful later, not urgent now.
 
 Aim for this: first drafts can be a bit messy, but after a quick five-minute edit, the writing is readable. You will see clear sentence starts and ends, mostly complete sentences, and it will be obvious who is speaking in any dialogue.
 
-### Ten-minute practice options (rotate, do not cram)
+### Ten-minute practice options
 
 Short sessions work well here. Pick one small move and call it done.
 
@@ -969,7 +944,7 @@ Set a timer if it helps. The point is consistency, not perfection.
 
 Third grade is about control of the basics. You can safely skip fancy comma rules, sentence diagramming, grammar vocabulary quizzes, and “gotcha” exceptions.
 
-### How to spot progress (without paperwork)
+### How to spot progress
 
 Once a month, have your child write a half-page letter, story scene, or mini-report, then watch their five-minute edit. Signs of growth include finding missing periods on their own, splitting run-ons without your prompt, formatting dialogue more clearly, and repeating fewer of the same mistakes.
 
@@ -1004,7 +979,7 @@ Typing is “good enough” when:
 
 If either tool causes lots of friction, treat that as useful data. Writing will feel like a chore even when the ideas are great. Lower the friction first, then ask for more output.
 
-### Keep ideas moving (even when hands are slow)
+### Keep ideas moving
 
 Many third graders have more to say than their hands can keep up with. When that happens, don’t let mechanics block the flow.
 
@@ -1048,7 +1023,7 @@ Good practice ideas that don’t feel like drills include copying a short, inter
 
 If you use typing games or programs, let them supplement real-life typing rather than replace it. Touch typing works well for kids who like structure, but don’t feel pressured to reach perfection. For many families, **a mix of brief lessons and meaningful typing** is the sweet spot.
 
-### A simple weekly rhythm (minimum viable included)
+### A simple weekly rhythm
 
 A small rotation keeps both tools improving without taking over your day.
 
@@ -1134,7 +1109,7 @@ The **Language Experience** approach is simple and powerful: your child dictates
 
 **Sight word practice** can be focused and brief. Pick two or three tricky, irregular words, write them on index cards, and review for a minute a day until they’re known cold.
 
-### How to choose (and when to switch)
+### How to choose
 
 Ask your child to read a short, unfamiliar passage aloud. You’re not testing them. You’re gathering data.
 
@@ -1145,7 +1120,7 @@ Ask your child to read a short, unfamiliar passage aloud. You’re not testing t
 
 When in doubt, keep it simple: try **10 minutes of direct phonics support** and **10 or more minutes of enjoyable book time** every day for two weeks, then see what’s different.
 
-### Two common problems (and calm fixes)
+### Two common problems
 
 Two issues trip up many families.
 
@@ -1183,7 +1158,7 @@ Here are a few reliable matches:
 
 It’s easy to rotate methods during the week. The best model is the one that gets you **consistent reps without daily battles**.
 
-### Model 1: Mentor texts (copy one move)
+### Model 1: Mentor texts
 
 The mentor-text approach is simple: read something short (a paragraph is enough), notice what the author did, and try a similar move in your own writing.
 
@@ -1197,7 +1172,7 @@ One good session looks like this:
 
 A “move” might be adding a zoom-in detail, using a purposeful list, improving verb choice, or writing a stronger ending. Keep it light: **one move per session** is plenty.
 
-### Model 2: Workshop (mini-lesson, write, quick conference)
+### Model 2: Workshop
 
 A workshop block is like an agile sprint for writing: a tiny plan, real work time, then a brief check-in.
 
@@ -1211,7 +1186,7 @@ For example: “Let’s add two specific details,” or “Check capitals and pe
 
 This approach shines for building independence and stamina. If your child freezes with too much freedom, it’s a sign to shift back to more structure for a while.
 
-### Model 3: Frames and templates (training wheels you remove)
+### Model 3: Frames and templates
 
 Frames are legitimate scaffolding. They help a child feel what organized writing is like before they can reliably invent that structure on their own.
 
@@ -1224,7 +1199,7 @@ A simple narrative frame might sound like:
 
 Over several weeks, you can fade support: start with the whole frame, then remove some prompts, then have your child generate the prompts, and finally shift to a simple outline.
 
-### Model 4: Shared writing (separate thinking from mechanics)
+### Model 4: Shared writing
 
 Shared writing works well when handwriting, spelling, or confidence blocks good thinking. You write together: taking dictation, scribing, or ping-ponging sentences.
 
@@ -1237,7 +1212,7 @@ One efficient version:
 
 This gives practice in composition and editing without demanding everything at once.
 
-### Model 5: Real-purpose writing (audience changes everything)
+### Model 5: Real-purpose writing
 
 Some kids write more willingly when the task has a real outcome. Instructions (“How to make a sandwich”), reviews (books, parks), thank-you notes, captions for photos, and even labels for the pantry all count.
 
@@ -1271,7 +1246,7 @@ If you only have 15 minutes, you still have plenty of options:
 
 Fifteen focused minutes is enough to build real skill if you keep showing up.
 
-### Common traps (and simple fixes)
+### Common traps
 
 A few patterns derail writing instruction, but the fixes are straightforward.
 

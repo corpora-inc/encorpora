@@ -13,7 +13,7 @@ Unlike school tests that mix multiple skills and show up at the end of a unit, m
 
 > **Mastery check:** a two to three minute “spotlight” on one skill, done close to the moment you taught or practiced it.
 
-### Why they work (and stay calm)
+### Why they work
 
 Mastery checks help you catch gaps early, when they’re easy to fix, like noticing a hitch in a workout before it becomes an injury. They also reduce endless review, because you’re not guessing what’s sticking.
 
@@ -67,7 +67,7 @@ Here are a few realistic examples:
 - In math, they can multiply and divide within 100 with growing confidence, make a reasonable estimate, and explain their thinking with words or pictures.
 - In science and social studies, they can restate a big idea in their own words and connect it to daily life.
 
-### Common pitfalls (and easy fixes)
+### Common pitfalls
 
 The biggest mistake is checking too many things at once. A story with perfect punctuation, spelling, handwriting, and a gripping plot is not one check, it’s several checks tangled together. Separate them.
 
@@ -106,7 +106,7 @@ These check-ins can turn assessment from something tense into something shared. 
 
 ![Looking back at wins](images/Parent_and_child_smiling_and_looking_over_a_small_portfolio_of_completed_assignments_and_drawings.png)
 
-### What it is (and what it isn’t)
+### What it is
 
 A “Show What You Know” day happens once a month and feels more like a friendly debrief than a test. You’re making learning visible: noticing what got stronger, spotting what’s still wobbly, and choosing a few pieces to keep.
 
@@ -114,7 +114,7 @@ A “Show What You Know” day happens once a month and feels more like a friend
 
 It’s **active review**, not a performance. The goal is progress you can see, not perfection you can grade.
 
-### The one-hour plan (30 minutes counts, too)
+### The one-hour plan
 
 If you can set aside an hour, great. If you can only do 30 minutes, still do it. Consistency beats duration.
 
@@ -123,7 +123,7 @@ If you can set aside an hour, great. If you can only do 30 minutes, still do it.
 3. **Quick demonstrations (10 to 20 minutes).** A few short “show me” moments: reading aloud, solving a couple math problems, explaining an idea.
 4. **Close the loop (2 minutes).** One sentence each: “What felt fun?” “What felt tricky?” Then mark the day in a small, pleasant way.
 
-### What to save (keep it light)
+### What to save
 
 You’re not building a museum. You’re building a **usable trail of proof**.
 
@@ -150,7 +150,7 @@ A few reliable prompts:
 
 If something goes poorly, treat it like data, not drama. You just found the next small practice target.
 
-### Why this works (economically)
+### Why this works
 
 Monthly review has a high return because it does several jobs at once:
 
@@ -206,13 +206,13 @@ Portfolios are a sturdy tool for homeschoolers because they work on three levels
 
 > A good portfolio answers one question: **“What can my child do now that they couldn’t do before, and how do we know?”**
 
-### Paper or digital (both count)
+### Paper or digital
 
 A portfolio can be traditional (paper in a binder) or completely digital (a folder on your phone or computer). Either way, it helps to keep it **organized by subject** and **lightly annotated** with a few dates, captions, or quick reflections.
 
 The goal is evidence of improvement and steady effort, not perfection. Portfolios fit any approach: structured curriculum, project-based learning, unschooling, or a blend.
 
-### What to save (so it proves growth)
+### What to save
 
 The most convincing portfolios include “before and after” work. Aim for **early, middle, and late** samples when you can.
 
@@ -265,7 +265,7 @@ Rules for homeschoolers vary widely. Some places require no standardized testing
 
 The universal principle is simple: **know your local requirement and do only what’s needed**. This is not the moment to match your neighbor’s plan or benchmark your child against every cousin. If the law sets a minimum bar, it is fine to clear that bar and move on.
 
-### What tests are good for (and what they miss)
+### What tests are good for
 
 Used wisely, a standardized test can give you a neutral read on certain basics under uniform conditions. It may flag a strength, a gap worth investigating, or a skill that needs different practice.
 
@@ -343,7 +343,7 @@ Here are a few high-return places to look:
 - **Writing:** look for one clear skill (capitalization, complete sentences, paragraphs, clarity) rather than judging the whole piece.
 - **Projects and builds:** ask them to explain what they made and why they made certain choices.
 
-### What to notice (and what it means)
+### What to notice
 
 When you review work, you are mainly looking for three things. This keeps you honest and keeps you from overreacting to one bad day.
 
@@ -366,7 +366,7 @@ Once you see the pattern, respond like a calm project manager, not an emergency 
 
 Keep scores and errors in perspective. They are not verdicts. They are information.
 
-### Make growth visible (so it feels real)
+### Make growth visible
 
 Kids often feel like they are “still bad at it” until you show them proof of change.
 
@@ -378,7 +378,7 @@ A few low-effort options:
 
 Celebrate effort and improvement, not just clean final products. Notice when your child chooses a harder book, explains their thinking more clearly, or sticks with a tricky problem longer than they used to.
 
-### Common interpretation traps (and quick corrections)
+### Common interpretation traps
 
 A few patterns tend to create unnecessary stress.
 
@@ -395,7 +395,7 @@ When you interpret results this way, assessment stops being a source of anxiety 
 
 - Do a **3-minute mastery check** on one skill.
 - Run a **show-what-you-know** day once a month.
-- Save **one before/after** sample per subject.
+- Save **one before-and-after** sample per subject.
 - Use a **two-question conference**: What felt easy? What felt hard?
 - Keep a **weekly artifact** (photo, page, or short note).
 - Recheck one target after **5 to 7 days** of practice.

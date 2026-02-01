@@ -15,7 +15,7 @@ Think of this as your definition of done for science this year. You do not have 
 
 ![Noticing like a young scientist](images/A_childs_science_notebook_page_showing_a_labeled_sketch_a_tiny_data_table_and_one_sentence_starting_with_I_noticed.png)
 
-### The core scientific habits (high return)
+### The core scientific habits
 
 The highest-return habits begin with learning to ask **testable questions** and making predictions.
 
@@ -90,7 +90,7 @@ Third grade science is at its best when it becomes part of daily life, not just 
 
 Think of the scientific method as a routine, almost as mundane and reliable as brushing teeth. Its power comes from being simple and repeated, not from being grand or complicated.
 
-### The five-step loop (do it, don’t memorize it)
+### The five-step loop
 
 The steps matter more as actions than as vocabulary words.
 
@@ -102,7 +102,7 @@ The steps matter more as actions than as vocabulary words.
 
 If the question is too big or needs tools you do not have, jot it down for later research instead of forcing it into a bad experiment.
 
-### The “fair test” rule (the skill that pays off everywhere)
+### The “fair test” rule
 
 One of the highest-impact habits to practice is fairness in testing.
 
@@ -156,7 +156,7 @@ Life science in third grade is mostly about learning to **notice**: what’s ali
 
 If you only pick two things to do all year, make them these: observe real living things often, and record what your child sees in plain language and quick sketches. This builds real science skill, like curiosity, careful observation, and pattern-finding, without drowning anyone in vocabulary.
 
-### Key concepts (without turning it into a lecture)
+### Key concepts
 
 Think of these concepts as lenses you return to all year. Your child will pick them up through repeated exposure, not one big “unit.”
 
@@ -188,7 +188,7 @@ The big idea is interdependence: when one part changes, other parts feel it too.
 
 **Human impacts** work best when they’re local and specific. Pick one visible example (litter near a creek, pollinators in a garden, lawn chemicals and worms) and talk through tradeoffs without preaching. Useful prompts include: *What might be causing this? Who benefits? Who pays the cost? What’s one improvement we could try?*
 
-### Simple labs and activities (5 to 30 minutes)
+### Simple labs and activities
 
 Aim for **one hands-on activity per week**, and feel free to repeat favorites. Repetition isn’t boring here. It’s how your child gets better at noticing.
 
@@ -331,7 +331,7 @@ A simple notebook page with the date, question, sketch, and one or two sentences
 
 > Matter is anything that takes up space and can be measured, like by weight.
 
-### Matter (solid, liquid, gas) with kitchen materials
+### Matter with kitchen materials
 
 Matter topics do not need heavy theory. They need good “look again” moments.
 
@@ -347,7 +347,7 @@ Dissolving still feels like magic at this age, which is perfect. Stir salt or su
 
 Has the salt vanished, or is it just spread out? Ask your child how you might prove it is still there. That question is the heart of science.
 
-### Force and motion (ramps, friction, gravity)
+### Force and motion
 
 With force and motion, treat every test as practice in being fair. The win is not a perfect definition of gravity. The win is learning to change **one thing at a time** and look closely.
 
@@ -363,7 +363,7 @@ Talk together: did the higher ramp or smoother surface make it go farther? What 
 
 A single sheet of paper can become an experiment about air resistance. Drop it flat from shoulder height, then crumple it and drop it again. Same paper, different shape, different result. Ask why.
 
-### Energy you can see and feel (light, heat, sound)
+### Energy you can see and feel
 
 When you reach energy, keep the idea plain: **energy is what makes things happen**. You are helping your child connect what they see (shadows, warmth, vibrations) with a cause.
 
@@ -377,7 +377,7 @@ For sound, make a “guitar” with a tissue box and rubber bands. Pluck differe
 
 Which band makes a higher note? What changes when the rubber band is tighter?
 
-### Keep it economical (and sustainable)
+### Keep it economical
 
 This is more about your sanity than your supplies. Cap experiments at 15 minutes unless your child is genuinely pulling for more. Use real words, but do not chase vocabulary lists. “It slowed down because the towel is rough” is already a strong explanation.
 
@@ -394,7 +394,7 @@ Iterative thinking, trying, observing, tweaking, and trying again, is the win at
 
 > **Iteration** means you make a small change, then try again to see if the outcome improves.
 
-### The simple loop (run it all year)
+### The simple loop
 
 Keep the cycle short enough that you can do multiple rounds in one sitting.
 
@@ -408,7 +408,7 @@ Your job as a parent is to make **improvement** the goal, not getting it right o
 
 Carefully chosen constraints are your secret weapon. They keep projects focused and prevent decision fatigue. Limiting tools, time, or materials also makes the whole thing friendlier for both your schedule and your child’s brain.
 
-### Make the test fair (and repeatable)
+### Make the test fair
 
 Tests should be consistent so you can actually see what changes make a difference: same drop height, same number of coins, same measurement process.
 
@@ -557,7 +557,7 @@ The model you choose is just a way to organize those moments so they fit into a 
 
 > **A helpful definition:** A “model” is just your default workflow for science, not your identity as a homeschooler.
 
-### Inquiry-first (question-driven)
+### Inquiry-first
 
 Inquiry-first starts with a real question and lets the answer emerge through hands-on discovery. Instead of leading with facts, you lead with noticing.
 
@@ -580,7 +580,7 @@ Two lean boundaries help:
 
 This approach tends to shine with kids who ask “why” all day and families who can tolerate small detours without feeling behind.
 
-### Textbook or video anchor (resource-driven)
+### Textbook or video anchor
 
 The anchor model begins with a short, reliable resource, then adds just enough activity to turn information into understanding. It’s steady, predictable, and often the easiest way to keep science happening during busy seasons.
 
@@ -598,7 +598,7 @@ The downside is that anchor work can drift into passive science if it becomes al
 
 If you’re new to homeschooling, an anchor is a strong default. When life goes sideways, one short lesson plus a quick follow-up still counts.
 
-### Themed unit studies (immersion-driven)
+### Themed unit studies
 
 Unit studies build a small world around one big idea for one to three weeks. Instead of skimming many topics, you circle one topic from multiple angles, which helps it stick.
 
@@ -614,7 +614,7 @@ The tradeoff is startup cost. Units usually require some gathering and a sketch 
 
 A lean rule of thumb: build units around what you already have access to, like the library, your park, a nearby museum, or today’s weather, so you don’t turn curiosity into a shopping list.
 
-### Choosing a model (and knowing when to switch)
+### Choosing a model
 
 If you’re unsure, choose the model you can keep up for four weeks. Then adjust based on what reality tells you.
 
@@ -627,7 +627,7 @@ Blends work beautifully: anchor lessons twice a week, a little inquiry on Friday
 
 ### Activity Menu: Science
 
-- Do an **I notice / I wonder** page on a walk.
+- Do an **I notice and I wonder** page on a walk.
 - Run a **one-variable test** (light vs. shade, warm vs. cool).
 - Make a **labeled sketch** of a plant, rock, or insect.
 - Keep a **three-line log**: question, what we did, what happened.

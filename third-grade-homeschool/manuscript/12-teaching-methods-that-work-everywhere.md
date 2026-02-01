@@ -55,7 +55,7 @@ Two practical guardrails:
 
 A good rule of thumb is: before you expect mastery on paper, ask your child to show their thinking with **words, sketches, or gestures**.
 
-### When it goes off track (and how to fix it quickly)
+### When it goes off track
 
 Most problems with this ladder are simple and common:
 
@@ -99,7 +99,7 @@ Here’s an easy script you can use across subjects:
 
 Think of this like a tiny “debugging session” for the brain. You’re teaching your child that getting unstuck is a skill, not a personality trait.
 
-### Where it shows up (school and life)
+### Where it shows up
 
 You can model thinking out loud during schoolwork, but the daily-life version is often the most powerful because it feels normal.
 
@@ -114,7 +114,7 @@ These are one- to two-minute moments. Over a year, they compound.
 
 ![Think-alouds that open the story](images/Parent_reading_a_story_aloud_while_pausing_to_explain_their_thinking_to_a_curious_child.png)
 
-### Common snags (and quick fixes)
+### Common snags
 
 Most problems here are “too much” or “too little.” Both are easy to adjust.
 
@@ -140,7 +140,7 @@ A common teaching misstep, at home or in a classroom, is expecting a child to ju
 
 > Gradual release means you start by modeling the skill, then do it together, then your child tries with support, and finally they practice independently.
 
-### The four phases (and what they look like at home)
+### The four phases
 
 Imagine you’re teaching rounding. Instead of explaining it once and handing over a worksheet, you move through four stages.
 
@@ -168,7 +168,7 @@ Short, focused sessions usually beat long, exhausting drills. Aim for **three to
 
 If you want a useful mental model, think of teaching a bike ride: you run alongside, hand on the seat, then you let go for a moment, then longer, until they’ve got it.
 
-### Common snags (and the easy fixes)
+### Common snags
 
 This approach is simple, but real life gets messy. Here are the typical failure modes and the calm adjustments.
 
@@ -188,11 +188,11 @@ The point is steady movement from supported work to independent work, with just 
 
 ## Real-Life Learning: Cooking, Money, Travel, Nature
 
-Learning isn’t chained to a textbook or a worksheet. Everyday life is full of valuable, memorable lessons, and the ordinary things adults do all the time are packed with skills your child can practice.
+Learning isn’t chained to a textbook or a worksheet. Everyday life is full of valuable, memorable lessons, and the ordinary things adults do all the time are packed with skills your child can practice. These are teachable moments hiding in plain sight, and homeschool gives you the freedom to notice them and use them well.
 
 When you use real-world experiences intentionally, your child gets context, confidence, and a sense of purpose. Here are four classic, low-cost ways to fold learning into a normal week.
 
-### Cooking (reading, fractions, science, responsibility)
+### Cooking
 
 Cooking is a goldmine for third graders because it turns abstract skills into a real outcome you can eat. Start simple: have your child read the recipe aloud. You’re building reading comprehension and the habit of following multi-step directions without calling it “ELA.”
 
@@ -209,7 +209,7 @@ To build independence, try a weekly **kid’s choice meal**. Your child selects 
 You can extend this with a family bake-off, or have your child rewrite a favorite recipe in their notebook with their own drawings for each step.
 
 
-### Money (math with real stakes, small enough to be safe)
+### Money
 
 Money is a natural path into math and decision-making because it forces real tradeoffs. Start small: give your child a handful of coins or a couple of bills, then let them choose how to spend it during a simple errand. They’ll compare prices, estimate totals, count change, and notice that “more” is not the same as “better.”
 
@@ -221,7 +221,7 @@ If your child is ready, add light planning:
 
 Try to avoid constant lectures. Kids need room to make **one-dollar mistakes** without stress, then try again.
 
-### Travel (planning, maps, time, flexible thinking)
+### Travel
 
 Travel doesn’t require going far. A walk to the park can teach essential skills if you bring your child into the planning: checking the weather, packing what you need, and figuring out how to get there using a map or public transport.
 
@@ -231,7 +231,7 @@ When plans change, invite your child into the pivot: “The museum is closed. Wh
 
 For extra fun, make pretend passports and stamp them for each new adventure. It’s silly in a good way, and it builds a record of places and experiences worth writing about later.
 
-### Nature (observation, data, calm attention)
+### Nature
 
 Nature, available right outside your door, is a living laboratory for noticing, sorting, and collecting evidence. Bring a notebook on a weekly walk and ask your child to draw or jot what they see: plants, animals, clouds, tracks, or small changes in the same tree over time.
 
@@ -256,7 +256,7 @@ At home, learning is often strongest when it feels like play. The good news is y
 
 Think of these as your **high-return tools**: they’re repeatable, flexible, and they naturally “hide” practice inside something your child wants to do.
 
-### Games: repeatable practice (without the grind)
+### Games: repeatable practice
 
 A well-chosen game gives you structure, clear rules, and a goal. That’s why it works so well for practice: it’s easier to repeat something that feels like a game than something that feels like a worksheet.
 
@@ -391,7 +391,7 @@ Think of feedback as navigation, not judgment. When your child trusts that your 
 
 - Use **Concrete -> Visual -> Abstract** on one new skill.
 - Do a **think-aloud** once a day: goal, plan, check, adjust.
-- Run **I do / We do / You do** for a single problem.
+- Run **I do, we do, you do** for a single problem.
 - Add a **real-life task** that matches the lesson.
 - Keep a **definition of done**: one clear finish line.
 - Give **one piece of feedback** and stop.

@@ -9,7 +9,7 @@ Think of these as life’s compound lifts. Academics answer, "What should my chi
 
 Every child deserves confidence in their own body, how it works, how it feels, what it needs, and how to care for it. This is not about trying to raise Olympians. The real goal is to help your third grader build daily habits of movement and health awareness that support energy, focus, and self-respect for the long run. You do not need to be an athlete or a doctor to guide your child here. The essentials are consistency, practicality, and a sense of enjoyment.
 
-### Age-appropriate targets (aim, do not obsess)
+### Age-appropriate targets
 
 A third grader should be able to move vigorously for **30 to 45 minutes most days**, getting a bit sweaty and out of breath. That time can be one block or several smaller ones.
 
@@ -21,7 +21,7 @@ Strength and endurance show up as simple holds and basic bodyweight skills, with
 
 They should also be learning basic body awareness: noticing when they are tired, overheated, thirsty, hungry, or just due for a break.
 
-### The movement “menu” (so you always have options)
+### The movement “menu”
 
 For most families, daily movement is not about stacking classes or signing up for multiple sports. Think of it as part of normal life: frequent, short bursts plus an occasional longer adventure.
 
@@ -57,7 +57,7 @@ For food, aim for steady energy: fruits and vegetables, proteins, and whole grai
 
 Hygiene should be automatic: handwashing before eating and after outdoor play and bathroom visits.
 
-### Common pitfalls (and what to do instead)
+### Common pitfalls
 
 Over-scheduling is rarely helpful. You do not need long, rigid workouts, and unsupervised intensive exercise is not necessary.
 
@@ -99,7 +99,7 @@ A good default script is short and repeatable:
 If your child is impulsive, add one physical anchor: “Hand on the stroller,” “hand on the cart,” or “hold my elbow” until you’re at the curb. It turns a rule into a habit.
 
 
-### Water safety (bathtub to beach)
+### Water safety
 
 Water safety is all about reliability. Set your family rules once for the places you actually go (bathtub, pool, lake, beach) and enforce them the same way every time.
 
@@ -122,7 +122,7 @@ Here’s a simple “rule of three” that most third graders can remember:
 
 > A helpful definition: **A stranger online is anyone you don’t know in real life**, even if they seem friendly or know a lot about your child.
 
-### Real-life emergencies (without drama)
+### Real-life emergencies
 
 Treat family safety plans like occasional fire drills: brief, calm, repeated. You’re not trying to make your child anxious. You’re trying to make them ready.
 
@@ -142,7 +142,7 @@ Emotional literacy matters just as much as reading, math, or science. For a thir
 
 You can teach emotional skills the same way you teach anything else: break them into small pieces, practice them often, and keep the tone calm. When your child can say, “I’m annoyed,” or “I feel nervous,” it turns an emotional mystery into something you can both work with.
 
-### Start with words (and treat feelings like information)
+### Start with words
 
 Think of feelings like dashboard lights. They signal that attention is needed, but they don’t always mean something is wrong. Your job isn’t to argue with the light. It’s to help your child read it.
 
@@ -208,7 +208,7 @@ Stuffed animals or simple puppets can help kids practice without feeling put on 
 
 ![Feelings named, calm choices ready](images/A_simple_feelings_chart_with_faces_and_a_short_list_of_calm-down_choices.png)
 
-### Common pitfalls (and simple fixes)
+### Common pitfalls
 
 A few things tend to backfire even in kind, well-meaning homes.
 
@@ -249,7 +249,7 @@ Here are high-value targets for this age.
 - **Home contribution:** dishes, sweeping, laundry sorting, feeding pets, basic meal prep
 - **Follow-through:** completing a task to “done” (clean up included), asking for help appropriately, retrying after mistakes
 
-### The “handoff” method (so you do not become the forever-manager)
+### The “handoff” method
 
 Teaching these skills does not mean running a boot camp. The goal is to gradually hand over more responsibility so your child experiences the satisfaction of meaningful work and learns persistence, sequencing, and basic planning.
 
@@ -270,7 +270,7 @@ By the end of third grade, many children can manage daily tasks with only minima
 
 Examples of realistic, age-appropriate competence include packing a basic lunch (sandwich, fruit, water), maintaining a workable desk area, following a three-step direction (“Put away your books, wipe the table, and get your pencil out”), and handling standard chores such as sweeping, loading the dishwasher, or sorting laundry.
 
-### Daily-life learning opportunities (that “pay for” multiple subjects)
+### Daily-life learning opportunities
 
 Almost every day presents a practical-life lesson that naturally folds in reading, writing, math, and executive function.
 
@@ -283,7 +283,7 @@ Almost every day presents a practical-life lesson that naturally folds in readin
 If motivation dips, add a bit of fun while keeping the goal the same. Turn tidy-up into a race against their last time, let them pick Friday lunch if they meet a weekly goal, or have them choose one recipe to master this week. Many kids respond to being trusted with real work, especially if they can see the result.
 
 
-### Common pitfalls (and small fixes)
+### Common pitfalls
 
 Doing everything yourself might feel faster, but it keeps you in charge forever. Expecting perfection leads to frustration. **Progress matters more than polish.**
 
@@ -336,7 +336,7 @@ Short, regular blocks (about 20 to 40 minutes) are usually better than occasiona
 
 Keep supplies intentionally basic so setup does not become the enemy of consistency. A pencil set, markers, watercolors, and decent paper are enough for a strong year. If you want one “special” material to spark curiosity, add something like charcoal, oil pastels, or white gel pen, then treat it like a seasonal upgrade, not a new lifestyle.
 
-### Looking at art (without turning it into a lecture)
+### Looking at art
 
 Exposure to real art matters as much as making it. Use library books, museum websites, or a couple of prints you genuinely like.
 
@@ -421,13 +421,13 @@ These playful tools do real academic work. Kids gain confidence as speakers, gro
 
 > **A good “drama lesson” is just this:** your child gets a chance to speak, move, imagine, and be understood.
 
-### What this builds (without feeling like school)
+### What this builds
 
 Making up stories and performing scenes teaches what makes a story click: how to begin, how to build tension, and how to land an ending. Kids experiment with emotion, gesture, vocabulary, and timing in a low-pressure way, then carry those instincts back into reading and writing.
 
 It also strengthens “real life” skills: taking turns, reading the room, handling mistakes, and recovering when they forget a line. That’s practical confidence.
 
-### Easy ways to start (5 to 15 minutes)
+### Easy ways to start
 
 Keep your aim modest: **not a perfect production, but regular reps in expression.** Here are a few options that work even on busy days.
 
@@ -468,7 +468,7 @@ For third grade, the mission is not checking off a list of software skills. It i
 
 > **Media literacy (third-grade level):** noticing what a message is trying to do, who made it, what it leaves out, and what you think about it.
 
-### The high-leverage principles (any tech level)
+### The high-leverage principles
 
 These are the few ideas that pay for almost everything else.
 
@@ -545,7 +545,7 @@ In the long run, media literacy is not about mastering folders or keeping up wit
 
 
 
-## Character and Virtue Practice (Light, Universal, Daily)
+## Character and Virtue Practice
 
 Raising a kind, honest, and capable child stands right alongside teaching math or reading. The routines your child practices now shape how they handle friendships, family moments, future work, and how they see their own strengths. Character is not something you pour in with long talks and instructions. It grows through steady routines, what you model, and small actions repeated until they become second nature.
 

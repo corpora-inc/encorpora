@@ -36,7 +36,7 @@ A good default is: **shrink the task, then keep the standard**. You’re not low
 
 Honest choices help, too. Let your child pick which book to start with, where to sit, or whether to do math before reading. These small decisions reduce the feeling of being controlled and create just enough buy-in to start.
 
-### Make progress visible (so effort feels worth it)
+### Make progress visible
 
 Visible progress is a powerful motivator. A simple checklist, a jar to collect mastered flashcards, or a “done” folder provides concrete evidence that effort leads somewhere. For many kids, seeing a growing pile of finished work is more convincing than any pep talk.
 
@@ -54,7 +54,7 @@ If you need a simple script to keep you out of arguments, try:
 - “Do you want to **watch me do one** first, or do one together?”
 - “After five minutes, we’ll decide what’s next.”
 
-### Common traps (and better swaps)
+### Common traps
 
 Telling your child to “try harder” rarely helps. Instead, ask what’s making the task feel hard, then shrink or remove that barrier. Don’t disguise long assignments as easy by saying, “Just finish this page,” if the page is dense. Break work into true chunks: one problem, one paragraph, one sentence.
 
@@ -86,7 +86,7 @@ Being advanced isn’t just “faster” or “older.” Often it shows up as de
 
 > **Enrichment** means going deeper, wider, or more applied, without automatically moving up a grade level.
 
-### Spot the pattern (so you can choose the right kind of challenge)
+### Spot the pattern
 
 You might see strong skills in reading, writing, or math, plus big curiosity that keeps escaping the worksheet. You might also see intense persistence, or “big questions” that turn dinner into a debate.
 
@@ -100,7 +100,7 @@ Also, resist the pressure to accelerate in every subject. Many advanced learners
 
 If you want one reliable upgrade, aim for **thoughtful work over fast work**. Ask for explanations, connections, and applications instead of more pages.
 
-### High-return enrichment moves (no elaborate program required)
+### High-return enrichment moves
 
 You don’t need to recreate a gifted academy at your kitchen table. A few small adjustments usually do more than adding hours.
 
@@ -179,7 +179,7 @@ A simple, high-return starter set looks like this:
 - **Short block plus break:** work for 10 to 20 minutes, then move for 2 to 5.
 - **Visible finish line:** a sticky note that says “Finish page 32” or “Write one paragraph.”
 
-### Make focus easier (environment and body)
+### Make focus easier
 
 Vary how your child learns. Bring in hands, bodies, and senses wherever you can. Math can happen with LEGO bricks. Spelling can happen by finger-tracing words in shaving cream. Reading can happen in the comfort of a pillow fort. You’re not “dumbing it down”, you’re removing friction.
 
@@ -256,7 +256,7 @@ Set kids up to succeed with a few reliable options:
 
 If mornings tend to be chaotic, prep these tasks the night before. “Open the tray and start” beats “Wait while I figure it out.”
 
-### Use simple physical supports (not a complicated system)
+### Use simple physical supports
 You don’t need an elaborate planner. You need fewer decisions in the moment.
 
 The basics that reduce interruptions the most:
@@ -292,7 +292,7 @@ In this book, “full time” means one or both adults working roughly 40 hours 
 
 There’s also no rule that learning must happen between 8 and 3. Evenings and weekends are not “leftovers.” They can be your most effective, calm, connected learning time.
 
-### The two-block day (most common, most sustainable)
+### The two-block day
 
 Many full-time working families settle into two main teaching blocks, with independent work in the middle.
 
@@ -342,7 +342,7 @@ Also: let life do some of the teaching. Spelling games in the car, mental math a
 
 One well-chosen project can “pay for” multiple subjects. Cooking a pork shoulder, for example, can include reading (recipes and research), math (measurement and timing), science (heat and texture), and writing (a short report or photo journal). That’s the agile and economical idea in practice: **one effort, multiple outputs**.
 
-### Common friction points (and fixes)
+### Common friction points
 
 Trying to copy school at home is the fastest path to stress. Aim for quality moments that pack value.
 
@@ -380,7 +380,7 @@ Treat these concerns as information, not disrespect. That one shift keeps the co
 
 ![Two parents, one calm plan](images/Two_parents_discussing_a_homeschool_plan_at_the_kitchen_table_with_open_books_and_a_calm_conversation..png)
 
-### Use a simple check-in routine (not a summit meeting)
+### Use a simple check-in routine
 
 Good communication is less about a grand summit and more about a repeatable routine. You are not seeking one-time approval. You are building a pattern of respectful check-ins.
 
@@ -395,7 +395,7 @@ If you need a script to keep things productive, try:
 
 Keep it short. A calm 20 minutes you repeat beats a two-hour debate you both dread.
 
-### Agree on “definition of done” (and keep it small)
+### Agree on “definition of done”
 
 Think of your non-negotiables as your shared definition of done, meaning the criteria everyone agrees counts as “we’re meeting the year’s goals.” Everything else can stay flexible and adjustable.
 
@@ -449,7 +449,7 @@ Course-correcting early pays off. Try one small change for two weeks, then check
 Homeschooling as a team works best when expectations and roles are explicit. Disagreements are normal. Steady check-ins, small experiments, and a shared definition of done keep them manageable and keep your child out of the middle.
 
 
-## When You Need Outside Help (Tutors, Online Classes)
+## When You Need Outside Help
 
 Homeschooling doesn’t mean you work in isolation. Knowing when and how to bring in outside help is a mark of a practical, confident parent, not a sign you’ve dropped the ball. Tutors, online classes, and learning groups can expand your toolkit.
 
@@ -505,7 +505,7 @@ Look for:
 
 Once you start, keep a light feedback loop. A quick weekly check-in (or even two sentences by text) is enough: what you covered, what’s still shaky, and what to practice at home.
 
-### Common pitfalls (and how to avoid them)
+### Common pitfalls
 
 Outside help can backfire when it adds complexity instead of capacity.
 

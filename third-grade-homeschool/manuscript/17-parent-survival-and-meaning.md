@@ -15,7 +15,7 @@ A ramp-up plan just means you *introduce school slowly*. Instead of leaping into
 
 In the first month, focus on building three essentials: **a reliable daily routine**, **trust** (so both of you feel safe and capable), and **a sense of your real-life rhythm**. Each week, you will add a new layer and give everyone time to adapt.
 
-### Week 1: Build the “spine” (three anchors)
+### Week 1: Build the “spine”
 
 Week one is about establishing a backbone for the day, not filling every hour. Pick three anchors you can hit almost anywhere, even on messy days.
 
@@ -33,7 +33,7 @@ Writing can be five to ten minutes. Keep it specific and doable: “Write one th
 
 Then add movement, ideally daily. A walk around the block, a bike ride, a quick game outside, or energetic play indoors all count. Physical activity resets mood and attention, which often makes the next block smoother.
 
-### Week 3: Introduce science and social studies (lightly)
+### Week 3: Introduce science and social studies
 
 Now you are ready to add content areas, but keep the format simple: read, watch, do, talk.
 
@@ -41,7 +41,7 @@ Try reading aloud from a nature book or a kid-friendly history book, then talk a
 
 The goal here is **curiosity**, not coverage. Questions and interest are a better success metric than “finished the chapter.”
 
-### Week 4: Add the extras (without overfilling the day)
+### Week 4: Add the extras
 
 In week four, fold in any remaining areas you care about: art, music, health, handwriting, typing, or special projects. By now, your child is starting to trust the daily structure, so transitions get easier.
 
@@ -49,10 +49,7 @@ Keep blocks bite-sized, usually 15 to 30 minutes, and prioritize smooth handoffs
 
 ### Two simple adjustments when things get rough
 
-If either of you starts dreading school time, do not push harder first. Adjust the plan.
-
-- **Trim by about 20 percent.** Fewer tasks or shorter blocks. Less really can be more.
-- **Shorten the blocks and add recovery.** More breaks, movement, snacks, quiet time, or a reset activity between subjects.
+If either of you starts dreading school time, do not push harder first. Adjust the plan by trimming about 20 percent and shortening the blocks with more recovery. Fewer tasks, shorter sessions, and a little more movement, snacks, or quiet time often restore momentum faster than a big push.
 
 Building your routine this way is like learning a new exercise: form and consistency matter most at first. Show up, practice the basics, and your homeschool “muscle” will grow. That is what sets you up for a sustainable year where progress is steady and home stays calm.
 
@@ -232,7 +229,7 @@ If your child struggles to name learning (common), give prompts:
 - “A project I liked because it surprised me was…”
 - “A way I got braver this year was…”
 
-### The “highlight reel” portfolio (10 to 15 pieces)
+### The “highlight reel” portfolio
 
 A homeschool portfolio works best as a **highlight reel**, not an exhaustive scrapbook. Choose a small set that shows growth over time. For example:
 
@@ -260,4 +257,3 @@ Closure, in the end, is both celebration and reset. Let go of regrets, keep the 
 - Do a **weekly reset**: keep, tweak, drop.
 - Protect one **parent recovery block** per week.
 - End the year with a **highlight reel** and a small celebration.
-

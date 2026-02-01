@@ -19,7 +19,7 @@ The real point is getting reps: making friends, working through disagreements, r
 
 In a traditional school, socialization often centers on navigating a large group of same-age peers within a system designed for crowd control. There are upsides to that, but it can also mean kids spend a lot of time sorting out cliques, pecking orders, and arbitrary rules. Homeschooling shifts the balance and lets you design the environment more intentionally. Social growth does not have to mean surviving the loudest room. It can mean learning to connect, collaborate, and handle the normal ups and downs of group life.
 
-### Healthy social development goals (third grade)
+### Healthy social development goals
 
 Think of your goals as north stars for the year. They guide your choices, but they are not another metric to chase.
 
@@ -101,7 +101,7 @@ Many clubs use badges, goals, or projects to motivate steady progress, which can
 
 Watch for culture. Some groups drift toward competition, rewarding winning over learning. For third grade, look for leaders who notice effort, kindness, and growth.
 
-### Sports (and sport-adjacent activities)
+### Sports
 
 Sports, martial arts, dance, and similar activities build movement, confidence, and “do hard things” stamina. Recreational leagues typically keep pressure low. Travel or competition teams ask for more time, money, and resilience.
 
@@ -124,7 +124,7 @@ If you are part of a faith community, it can be an anchor for multigenerational 
 Like any community, it can have rough edges. If conflict or exclusion shows up, have a direct conversation with leaders, set boundaries, or pause involvement if needed.
 
 
-### A simple way to choose (without overfilling your calendar)
+### A simple way to choose
 
 Across all these options, the same principle applies: **structure and repetition help children thrive**. For many families, one weekly anchor activity (a co-op, club, class, or library program) plus an occasional gathering or seasonal sport is more than enough.
 
@@ -151,7 +151,7 @@ A few benefits tend to show up reliably:
 
 > Think “apprenticeship,” not “competition.” In a healthy mixed-age group, kids rotate through learner and helper roles.
 
-### Easy ways to start (no big plan required)
+### Easy ways to start
 
 You do not need a huge group to get the benefits. Consistency matters more than scale.
 
@@ -177,7 +177,7 @@ Family-style volunteering works especially well because it is meaningful and nat
 
 ![Multi-age teamwork in the open air](images/Multi-age_kids_collaborating_on_a_simple_outdoor_project_such_as_building_a_fort_sorting_supplies_or_making_nature_art.png)
 
-### When it gets bumpy (and what to do)
+### When it gets bumpy
 
 Mixed-age groups are not automatically wholesome. Sometimes older kids dominate, younger kids get left behind, or cliques form. This is normal. Early on, you may need to supervise more actively, then gradually step back.
 
@@ -207,7 +207,7 @@ The good news: with a small group, it’s often more genuine and less stressful.
 
 > A **group project** is any structured activity where children work together toward a shared outcome. The product matters, but the real goal is practicing teamwork.
 
-### What group work builds (besides the poster)
+### What group work builds
 
 Group projects “compound” because one effort can pay for multiple skills at once.
 
@@ -218,7 +218,7 @@ Group projects “compound” because one effort can pay for multiple skills at 
 
 You don’t need a big group or special supplies. Two or three kids, including siblings, neighbors, cousins, or one friend from co-op, is plenty.
 
-### High-leverage project formats (easy to run)
+### High-leverage project formats
 
 Pick a format you can repeat. Repetition makes you efficient, and kids relax when the “container” is familiar.
 
@@ -241,7 +241,7 @@ Start by naming the finish line: a poster, a working model, a 2-minute skit, a s
 
 A visible timer helps some groups, especially when energy is high or attention is scattered.
 
-### Presentations that feel safe (and still build courage)
+### Presentations that feel safe
 
 Presenting is simply sharing. For most third graders, the sweet spot is **low pressure and very short**: one to two minutes. The audience can be family at dinner, a grandparent on a video call, or a small homeschool group.
 
@@ -254,7 +254,7 @@ If your child freezes, offer “training wheels” that still count as presentin
 
 ![Sharing work with a small audience](images/children_presenting_a_simple_poster_to_a_small_group.png)
 
-### Common hiccups (and what to do)
+### Common hiccups
 
 Group work gets bumpy because it’s real. You don’t need to prevent every problem. You just need a few simple moves.
 

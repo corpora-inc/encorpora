@@ -1,27 +1,32 @@
 # Outline: Third Grade at Home
 
 - 1: How to Use This Book
-  - 1: Who This Is For
-  - 2: What “Third Grade” Means Around the World
-  - 3: Your One-Page Homeschool Mission Statement
-  - 4: The Minimum You Must Do vs. the Extras You Can Add
-  - 5: How to Customize Without Getting Lost
+  - 1: The Three Lenses We Use: Agile, Economical, Powerful
+  - 2: Who This Is For
+  - 3: What “Third Grade” Means Around the World
+  - 4: Your One-Page Homeschool Mission Statement
+  - 5: The Minimum You Must Do vs. the Extras You Can Add
+  - 6: How to Customize Without Getting Lost
 - 2: Homeschool Mindset and Mission
-  - 1: Your Real Job as a Homeschool Parent
-  - 2: Curiosity, Character, Capability: Your True North
-  - 3: Progress Is Lumpy: What to Expect Emotionally
-  - 4: Building Attention, Persistence, and Independence
-  - 5: A Calm Home Beats a Perfect Schedule
-- 3: Legal and Compliance Basics (Global-First)
+  - 1: Joy, Cost, and Return
+  - 2: Chronos and Kairos: two kinds of time
+  - 3: Homeschool Program Metaphors
+  - 4: Your Role as a Homeschool Parent
+  - 5: Curiosity, Character, Capability: your true north
+  - 6: Progress is not linear
+  - 7: Building Attention, Persistence, and Independence
+  - 8: A Calm Home Beats a Perfect Schedule
+  - 9: Activity Menu: Mindset and Mission
+- 3: Legal and Compliance Basics: Global First
   - 1: The Global Minimum Compliance Checklist
   - 2: Attendance and Instructional Time: Tracking Simply
   - 3: Portfolios and Work Samples: What to Keep
   - 4: Evaluations and Testing: When and Why
-  - 5: Georgia (USA) Example
+  - 5: Georgia: USA Example
 - 4: Setting Up Your Homeschool Life
   - 1: Creating a Simple Learning Space
   - 2: Choosing Curriculum: Structured vs. Hybrid
-  - 3: Materials You Actually Need (and What You Don’t)
+  - 3: Materials You Actually Need and What You Don’t
   - 4: Routines That Run Themselves
   - 5: Screens, Media, and Attention Hygiene
   - 6: Working Parents and Multi-Kid Logistics
@@ -80,9 +85,9 @@
   - 6: Music and Rhythm: Participation Over Performance
   - 7: Drama, Play, and Storytelling
   - 8: Technology and Media Literacy: Create More Than You Consume
-  - 9: Character and Virtue Practice (Light, Universal, Daily)
+  - 9: Character and Virtue Practice: Light, Universal, Daily
 - 10: Planning the Year
-  - 1: The 180-Day / 36-Week Model and How to Adapt It
+  - 1: The 180-Day and 36-Week Model
   - 2: Quarterly Scope-and-Sequence for Third Grade
   - 3: Building in Buffer, Travel, and Sick Days
   - 4: Mixing Skill Work With Projects
@@ -91,7 +96,7 @@
   - 1: The 4.5-Hour Day Without Burnout
   - 2: Short-Block Schedule for Low-Attention Kids
   - 3: Long-Block Schedule for Deep-Work Kids
-  - 4: Sample Weekly Rhythm (Science vs. Social Studies)
+  - 4: Sample Weekly Rhythm: Science vs. Social Studies
   - 5: Breaks, Transitions, and Keeping Momentum
   - 6: What a Good Homeschool Day Feels Like
   - 7: Recovery Plans for Bad Days
@@ -125,7 +130,7 @@
   - 4: Multiple Kids at Different Levels
   - 5: Parents Working Full Time
   - 6: Conflict With a Co-Parent or Family Member
-  - 7: When You Need Outside Help (Tutors, Online Classes)
+  - 7: When You Need Outside Help: Tutors, Online Classes
 - 17: Parent Survival and Meaning
   - 1: The First 30 Days: A Gentle Ramp-Up Plan
   - 2: Measuring Progress Over Months, Not Hours

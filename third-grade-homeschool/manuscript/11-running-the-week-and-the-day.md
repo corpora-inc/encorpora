@@ -110,7 +110,7 @@ A short-block schedule can change the tone of your homeschool mornings. Instead 
 > **Short blocks, done well**
 >
 > - A short-block schedule is learning in focused intervals (often 10 to 20 minutes) with planned resets between blocks.
-> - **High frequency / low volume:** touch core skills often in small doses instead of rare marathons.
+> - **High frequency, low volume:** touch core skills often in small doses instead of rare marathons.
 
 This pattern isn’t about squeezing harder. It’s about practicing the habit of showing up, finishing a small task, and then recovering. Over time you’ll often see stamina and self-control grow, not through marathons, but through regular, attainable reps.
 
@@ -120,7 +120,7 @@ Short blocks work because they give your child more “fresh starts.” Each blo
 
 They also make it easier to stay economical with your energy. Instead of spending 30 minutes persuading a child to do 30 minutes of work, you spend 10 minutes getting one clean rep, take a reset, and come back for the next.
 
-### A sample short-block morning (about 2 hours)
+### A sample short-block morning
 
 Here’s one structure you can copy and adjust. The exact order matters less than the rhythm: focus, reset, focus, reset.
 
@@ -138,7 +138,7 @@ Here’s one structure you can copy and adjust. The exact order matters less tha
 
 Many families keep afternoons lighter: art, outdoor play, errands, audiobooks, or hands-on projects. You can also swap the order, repeat a strong block (another 10 minutes of reading), or skip a weaker one and come back tomorrow.
 
-### How to keep it smooth (and avoid power struggles)
+### How to keep it smooth
 
 A timer helps because it makes the structure “the system,” not you. Use a kitchen timer or a gentle alarm. You’re not policing; you’re running a predictable loop.
 
@@ -159,7 +159,7 @@ Try a few of these:
 - Let writing prompts get silly, or have your child dictate a story while pacing or building.
 - Turn science and social studies into quick builds: a salt-dough map, a sprouting bean, a nature documentary plus a labeled sketch.
 
-### Troubleshooting (gentle fixes)
+### Troubleshooting
 
 Most problems have a simple adjustment.
 
@@ -176,7 +176,7 @@ A long-block schedule means you cover fewer subjects each day, but spend longer 
 
 > **Long-block schedule:** Fewer transitions, longer stretches of focused work. The goal is depth, not speed.
 
-### A sample long-block day (adapt to your real life)
+### A sample long-block day
 
 This is one clean way to run it. Notice how the “academic” blocks are balanced with movement and something creative.
 
@@ -188,7 +188,7 @@ This is one clean way to run it. Notice how the “academic” blocks are balanc
 - **Independent work or creative pursuit (30 minutes):** Finish loose ends or go all-in on something self-chosen (drawing, model building, coding, music practice, garden planning).
 
 
-### Alternate patterns (same idea, different rhythm)
+### Alternate patterns
 
 Long blocks do not have to mean the same day, every day. If your child loves depth but needs a little variety, try one of these.
 
@@ -204,7 +204,7 @@ Long blocks thrive when you reduce friction and make “done” visible.
 - **Open with a three-minute preview.** Name what you’re doing, why it matters, and what “done” looks like.
 - **Close with one sentence.** “What was most interesting?” or “What was hardest?” This builds the habit of noticing what helps them learn.
 
-### When long blocks are a great fit (and how to troubleshoot)
+### When long blocks are a great fit
 
 This model tends to work well if your child regularly wants more time to finish, can stick with big projects without much pushing, and complains more about stopping than starting.
 
@@ -219,7 +219,7 @@ If things go sideways, you don’t need to abandon the whole idea, just tune it.
 The goal is not just to “cover content.” You’re building stamina, independence, and the knack for going deep, the educational version of a compound exercise where one good session can pull in reading, writing, math, and knowledge-building around a single theme. Mix in games, let your child choose some projects, and remember: long blocks can become the most memorable part of your year.
 
 
-## Sample Weekly Rhythm (Science vs. Social Studies)
+## Sample Weekly Rhythm
 
 You do not have to treat science and social studies as two separate, competing priorities every week. A lot of families make more progress, with less prep stress, by letting them take turns being the “main thread” while still leaving room for natural overlap.
 
@@ -245,7 +245,7 @@ Here is a simple pattern many families like. It is not a rule, it is a starting 
 
 If a library book, a documentary, or a conversation pulls you into a history rabbit hole on what you expected to be a science day, let it. That is not “getting off schedule.” That is the benefit of having a schedule that can bend.
 
-### Why alternating emphasis works (for kids and parents)
+### Why alternating emphasis works
 
 This rhythm is powerful for a few practical reasons:
 
@@ -314,7 +314,7 @@ A simple, repeatable transition can look like this:
 
 You are not trying to be strict. You are trying to be predictable. Predictability lowers the mental cost of switching tasks.
 
-### Keeping momentum (without pushing too hard)
+### Keeping momentum
 
 Momentum builds when one activity rolls into the next without dread or argument. Homeschooling will never be frictionless, but the goal is to lose as little steam as possible when you hit resistance.
 
@@ -409,7 +409,7 @@ Homeschooling, like any meaningful work, has rhythms. Some days glide along; oth
 
 The goal is not to be perfect. It’s to be **persistent and flexible**. When things start to slide, you want a calm system you can run without debate, guilt, or a bigger lecture.
 
-### Name the day (without making it dramatic)
+### Name the day
 A “bad day” can look like short tempers, lessons that don’t land, unexpected headaches, or a mood where motivation evaporates, even for the fun stuff. Sometimes outside stresses, appointments, tech issues, visitors, derail everything.
 
 What matters is catching it early, before frustration boils over.
@@ -423,7 +423,7 @@ Think of this like agile triage. You don’t “push through” a broken plan. Y
 - **Level 2: Half-day Core Three.** Keep only reading, math, and writing. Everything else becomes restorative or optional.
 - **Level 3: Full stop.** When emotions or life events are too big, you end formal school and protect the relationship.
 
-### Level 1: Micro-reset (15 to 30 minutes)
+### Level 1: Micro-reset
 Start with the body. Hungry, thirsty, stiff, overstimulated kids can’t “try harder” their way into learning.
 
 Then anchor the day with an easy win, something that’s almost impossible to mess up. Good options:
@@ -437,7 +437,7 @@ After the easy win, scan your plan and drop everything non-essential. Set aside 
 
 If your child drags their feet on a science experiment, pack up the supplies. Play a math card game, read something funny, nibble a snack, and move on. Connection and calm count as real learning on a hard day.
 
-### Level 2: Half-day plan (the Core Three)
+### Level 2: Half-day plan
 If the morning veers off early and the energy just isn’t there, don’t try to salvage the full academic load. Shift to a half-day “Core Three”: **reading, math, writing**.
 
 Keep it short and concrete:
@@ -450,7 +450,7 @@ For everything else, swap new instruction for something restorative: a nature do
 
 Example: after a rough wake-up, your child reads a graphic novel, logs ten minutes on a math app, and writes a silly letter. You tidy up together, share popcorn with a wildlife video, and call it a day.
 
-### Level 3: Full stop (when the best choice is “done”)
+### Level 3: Full stop
 There will be rare days when stronger emotions or outside events make any formal learning impossible. This is when you allow a full stop.
 
 Say it plainly: **“We’re done for today. Tomorrow is a fresh start.”** Then give everyone solo time and comfort options, whether that’s a cozy blanket, quiet play, music, or a familiar show.
@@ -468,6 +468,6 @@ Over time, these reset strategies turn what could feel like defeat into teamwork
 - Try a **timer rhythm**: one math problem every 20 minutes.
 - Use a **short-block burst**: 3x 15-minute blocks with movement between.
 - Do a **long-block dive**: one 45-minute subject with a real output.
-- Rotate **A/B days**: science on A, social studies on B.
+- Rotate **A and B days**: science on A, social studies on B.
 - Keep a **Core Three** fallback (reading, math, writing) for rough days.
 - End with a **two-minute shutdown**: clean up, preview tomorrow, done.

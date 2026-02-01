@@ -37,7 +37,7 @@ Try quick routines like:
 - **Which is bigger, and why?**: 3,915 versus 3,951, with explanations in place-value terms.
 - **Expanded-form scavenger hunt**: prices, addresses, or sports scores turned into “What does the 8 mean here?”
 
-### 2) Addition and Subtraction Within 1,000 (With Regrouping)
+### 2) Addition and Subtraction Within 1,000
 
 By the end of third grade, your child should add and subtract whole numbers up to 1,000 with confidence, including regrouping when needed, and use more than one method. Think problems like 627 + 356 or 804 - 275, plus word problems such as: “Maria found 472 seashells and gave away 156. How many are left?”
 
@@ -92,7 +92,7 @@ Working with data builds the habit of reading math as communication. By third gr
 Do a micro-survey (favorite fruit), tally responses, and make a simple bar graph. Then practice questions like “Which got the most?” “Which got the least?” “How many more apples than bananas?” and “What’s the total?”
 
 
-### 8) Multi-Step Word Problems (The Glue Skill)
+### 8) Multi-Step Word Problems
 
 At this stage, your child should tackle problems needing more than one operation and keep their head straight through the steps. For example: “Tom has 5 bags with 6 apples each. He gives away 8 apples. How many does he have left?”
 
@@ -104,7 +104,7 @@ Kids can approach word problems in several valid ways. If one isn’t clicking, 
 
 A powerful practice is having your child invent the story for a number sentence you give, or spot and ignore irrelevant information in a problem.
 
-### 9) Explain Reasoning (Without Turning It Into an Essay)
+### 9) Explain Reasoning
 
 For third graders, “show your work” mostly means **show your thinking**, and talking counts. The goal is to explain what happened first, next, and why, and to justify an answer by checking with an inverse operation, estimating, or asking whether the answer is reasonable in real life.
 
@@ -151,7 +151,7 @@ Build a number together, then “break” it apart by trading a hundred for ten 
 
 If you’re short on materials or energy, draw a quick place-value chart on scrap paper: thousands, hundreds, tens, ones. Your child can use dots, tallies, or stickers in each column. The act of moving or bunching items, physical or drawn, cements what each place means.
 
-### Say it three ways (and don’t fear the zero)
+### Say it three ways
 Once your child can build numbers, connect that to writing them in several ways: **standard form**, **expanded form**, and **word form**. Example: 6,109 is “six thousand one hundred nine.”
 
 Zeros are a common tripwire because they look like “nothing,” but they’re doing an important job: **holding a place open** so the other digits keep their meaning. Money language can help here. Saying “$6,109” out loud, as six thousand dollars, one hundred dollars, nine dollars, often bridges the gap between abstract place value and real-world value.
@@ -172,7 +172,7 @@ Common patterns you’ll see:
 
 When something looks off, go back to one gentle question: **“What does this digit mean?”** If needed, rewrite the number in expanded form. Expanded form is often the fastest way to untangle confusion without turning it into a big emotional event.
 
-### A few short reps each week (high return, low drama)
+### A few short reps each week
 Instead of long, repetitive worksheets, sprinkle short sessions all year. Think of these as quick reps that compound.
 
 Try a rotation like this:
@@ -253,7 +253,7 @@ Another place-value-forward option is **partial sums and differences**:
 
 These methods make thinking visible, which makes it easier to discuss and easier to correct.
 
-### Choosing a strategy (and building the habit of checking)
+### Choosing a strategy
 
 Deciding when to use mental math or paper is its own skill. Encourage mental math when numbers are tidy or the work is genuinely short. Switch to paper when things get complicated or precision matters.
 
@@ -272,7 +272,7 @@ Good checks for third grade:
 - **Use the inverse operation.** If 623 − 478 = 145, then 145 + 478 should equal 623.
 - **Solve it a second way.** Do it on an open number line after doing the algorithm, or vice versa.
 
-### Common sticking points (and simple fixes)
+### Common sticking points
 
 Many addition and subtraction struggles come down to predictable issues.
 
@@ -391,7 +391,7 @@ Teaching division in third grade is not about memorizing a brand-new set of fact
 
 A solid third-grade target is: your child can solve basic division within 100, handle simple word problems, and explain their thinking with a sentence, a quick sketch, or a few counters.
 
-### Two division stories (same numbers, different question)
+### Two division stories
 
 At its core, division means splitting a total into equal parts, but it shows up in two common situations.
 
@@ -449,7 +449,7 @@ In a sharing story, put out 24 counters, make 6 even piles, deal them out one by
 
 When your child is stuck, switching models often unlocks understanding faster than repeating the same explanation louder.
 
-### A calm practice rhythm (short beats, not marathons)
+### A calm practice rhythm
 
 Short, frequent practice, about five to twelve minutes, works better than long drills. A simple week might include:
 
@@ -470,7 +470,7 @@ Division gets interesting when it stops being only “compute the answer.” Try
 
 These problems build sense-making, not just recall.
 
-### Common mix-ups (and a simple fix)
+### Common mix-ups
 
 When your child confuses group size and number of groups, pause and ask:
 
@@ -496,7 +496,7 @@ Fractions describe equal parts of a whole, and for many third graders this is th
 
 The top number is the **numerator** (how many parts you have). The bottom number is the **denominator** (how many equal parts make the whole). Instead of memorizing rules, keep matching words and numbers to pictures and objects.
 
-### Start with unit fractions (the building blocks)
+### Start with unit fractions
 
 Unit fractions have a 1 on top, like **one half**, **one third**, **one fourth**. These are the atoms. Most other fractions are just multiple unit fractions glued together. For example, four fifths is four pieces, each the size of one fifth.
 
@@ -533,7 +533,7 @@ If your child gets stuck, go back to two questions:
 - “How many equal pieces make the whole?” (denominator)
 
 
-### Fractions on the number line (fractions as lengths)
+### Fractions on the number line
 
 Fractions are not only parts of shapes. They are locations on a number line.
 
@@ -547,7 +547,7 @@ Two high-leverage options:
 
 This is worth doing slowly. The number line does a job worksheets cannot: it helps your child feel that fractions increase smoothly, and that the “size” of the fraction is a distance.
 
-### Equivalence (different names, same value)
+### Equivalence
 
 Equivalent fractions are different fractions that land on the same point, or cover the same length.
 
@@ -695,7 +695,7 @@ You can run one repeatable loop in tiny sessions. It’s agile in the best way: 
 
 Even a 5-minute round builds spatial reasoning and the vocabulary to talk about math clearly.
 
-### A small toolkit (no special purchases)
+### A small toolkit
 
 You don’t need fancy equipment. Most activities work with ordinary household supplies.
 
@@ -727,7 +727,7 @@ Use this language naturally as you build and sketch:
 - **Symmetry**: you can fold (or mirror) and the halves match.
 
 
-### The right-angle checker (a tiny tool with big payoff)
+### The right-angle checker
 
 Fold an index card corner-to-corner, then cut it into a clean L-shape. That corner becomes your “truth tool” for right angles.
 
@@ -758,7 +758,7 @@ Quadrilaterals are four-sided shapes, and the names can get muddy. Keep it concr
 
 Build a square with sticks, then gently push it into a “slanted” shape. Ask: what changed (angle sizes)? What stayed the same (four sides, same lengths)?
 
-### Angles, parallel, perpendicular (learn by making)
+### Angles, parallel, perpendicular
 
 Angles are best learned by creating them, not just identifying them.
 
@@ -1001,7 +1001,7 @@ Before solving, ask: “Should the answer be around 10, 100, or 1,000?”
 
 After solving, ask: “Could that be true?” If Sophie has 12 apples and gives away 5, the answer must be less than 12. If your child gets 17, you both know to back up and recheck, no drama required.
 
-### Common traps (and quick fixes)
+### Common traps
 
 If word problems regularly go off the rails, it is usually one of these.
 
@@ -1116,7 +1116,7 @@ If you want conversation starters or quick, powerful problems, try these:
 
 A typical week could look like this: Monday, model multiplication with equal groups and arrays. Tuesday, do short, focused practice on a target skill. Wednesday, review old skills and introduce a new word problem. Thursday, work through a rich word problem together, drawing and explaining the steps. On Friday, do a mini-checkup with five questions and take a moment to notice what’s improved. Structure helps, but flexibility is the real superpower.
 
-### Common pitfalls (and easy fixes)
+### Common pitfalls
 
 Some common problems are easy to avoid.
 
@@ -1142,7 +1142,7 @@ In third grade, math is less about “covering everything” and more about buil
 
 Fluency means doing a key skill accurately and smoothly enough to free up brainpower. It is not speed for its own sake. When math starts to feel scary or threatening, kids stop learning.
 
-### De-escalate first (then teach)
+### De-escalate first
 
 When emotions spike, brains go into fight-or-flight. Pushing through almost always backfires. Pause without drama and name the reset:
 

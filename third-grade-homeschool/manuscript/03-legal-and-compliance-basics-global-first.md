@@ -1,6 +1,10 @@
-# Legal and Compliance Basics (Global-First)
+# Legal and Compliance Basics
 
 At first glance, the rules around homeschooling can feel confusing, but the core concerns are pretty much the same everywhere. Authorities mainly want to know who is guiding a child's education, what that education covers, and whether the child is genuinely learning and growing. These are practical questions, not trick ones—most parents can meet these expectations with straightforward routines. This section breaks down those universal requirements into clear, manageable pieces and uses Georgia as a working model to demonstrate how the basics play out in one location. Once you see the shared logic behind these rules, you'll find your own local regulations much less intimidating and much easier to work with. The goal here is not just to help you comply, but to help you do it with minimal fuss, so you can focus on what matters most: teaching your child, not getting buried in busywork.
+
+If you want the simplest possible way to start, just open **Homeschool Offline** and begin logging your days. It starts as a simple calendar and log, but it also supports portfolios, testing records, and jurisdiction-specific requirements. You can snap photos of work as you go, promote them into a portfolio, and import or export your data whenever you want. You own the data and it stays on your device. Paper binders and notebooks are still fine; this just makes it easy to keep a complete, honest record without extra friction.
+
+Shameless plug: we built **Homeschool Offline** because we are homeschoolers, we wanted this exact tool, and we use it every day. It is deliberately simple, fast, and offline-first. The core idea is to make compliance feel like a natural byproduct of teaching, not a second job. One tap to mark a day, one photo to capture a win, and your portfolio quietly builds itself in the background. When you need records, they are already there, and you can export them without begging anyone for your own data. If you love paper, keep using paper. If you want the easy path, this is the easy path.
 
 
 ## The Global Minimum Compliance Checklist
@@ -58,8 +62,6 @@ Here are a few low-stress options that work in the real world:
 
 If you are torn, start with the daily checkmark. It is the smallest habit that still produces a clear record.
 
-If you want a single digital log without accounts or cloud storage, **Homeschool Offline** is a lightweight option (iOS/Android). You can mark days complete, add quick notes or photos, and export your records when needed. Everything stays on your device.
-
 ### What counts as instructional time
 
 Instructional time stretches well beyond traditional lessons. Any time your child is intentionally learning, it counts: reading quietly, discussing questions at the kitchen table, working through math puzzles, science walks, nature observation, helping in the kitchen with measurements, art projects, documentaries, building things, library visits, even focused play.
@@ -91,7 +93,7 @@ Think in **dated samples + a short paper trail**.
 
 > **A “sample” is anything dated that shows your child doing real work.** A worksheet counts. A paragraph counts. A math page with mistakes and corrections counts.
 
-### What counts as a work sample (including non-paper learning)
+### What counts as a work sample
 
 Keep typical work, not just highlight reels. A balanced portfolio usually includes a mix like this:
 
@@ -152,7 +154,7 @@ You do not need constant measuring. A simple cadence is usually plenty.
 
 If you are seeing real struggle, assess sooner. Early support is cheaper than later rescue, in both time and stress.
 
-### Keeping it low-stress (and actually useful)
+### Keeping it low-stress
 
 The easiest way to reduce pressure is to make assessment feel like normal life: “Let’s look at what you’ve been doing and what’s getting easier.” Sit with your child, notice a few wins, name one strength, and choose **one** next step.
 
@@ -161,11 +163,11 @@ If standardized testing is required, practice the *process* more than the conten
 The stakes with routine assessments are low, and improvement is always possible next time. Done well, evaluations help you spot what’s working, address what’s not, and keep your homeschool compounding, as small gains in reading, writing, and math stack into a more capable, confident learner over time.
 
 
-## Georgia (USA) Example
+## Georgia Example
 
 Georgia is a clear, practical example of how homeschool rules often work in the U.S. Think of it less as a script to follow and more as a template for making sense of compliance wherever you are. The routines Georgia requires hint at something universal: what most governments are really checking for, even when their wording differs.
 
-### What Georgia typically asks for (in plain language)
+### What Georgia typically asks for
 
 Georgia homeschoolers generally handle a small set of recurring tasks: a yearly notice, a basic school-year expectation, a few records, and an occasional outside check.
 

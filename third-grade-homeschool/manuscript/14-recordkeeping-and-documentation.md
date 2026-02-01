@@ -13,7 +13,7 @@ It’s natural to wonder how detailed it needs to be. For most families, it’s 
 
 Attendance is your basic insurance policy. It’s minimum evidence that “we showed up,” much like recording your sets at the gym or signing a timesheet. Some parents assume it means noting every subject or hour. In practice, attendance logging almost always means simply recording which days you did school.
 
-### The one-page method (the simplest reliable tool)
+### The one-page method
 
 Set up a one-page grid with a box for every instructional day. Most families use **180 days** as a target, or the number your region requires. Print the sheet and, each day you homeschool, put an **X** in that day’s box.
 
@@ -23,7 +23,7 @@ A few easy formats that work:
 - A spreadsheet you print once and keep on a clipboard
 - A regular wall calendar with a clear mark on school days
 
-If you prefer digital but want to keep everything local, **Homeschool Offline** is a simple option (iOS/Android). It lets you check off days, add notes or photos, and export records when you want, with no login or cloud account required.
+If you prefer digital but want to keep everything local, **Homeschool Offline** is a simple option for iOS and Android. It lets you check off days, add notes or photos, and export records when you want, with no login or cloud account required.
 
 The best system is the one you’ll actually see and use. Tape it inside a kitchen cabinet, keep it by your lesson basket, or clip it to a fridge magnet.
 
@@ -42,14 +42,11 @@ If you want to keep it child-friendly (optional, not required), you can add tiny
 
 Think of these as fun accessories. The plain X is all you need.
 
-### Common pitfalls (and how to avoid them)
+### Common pitfalls
 
 Overcomplicating is the big one. Most regions do not need subject-by-subject or hourly tracking, so don’t spend energy there unless your local law tells you to.
 
-Other easy fixes:
-
-- **Don’t lose it:** snap a photo at the end of each month, or store a copy digitally
-- **Don’t panic if you forget:** fill in a missed day or two from memory and keep going
+Other easy fixes are simple: **don’t lose it** by snapping a photo at the end of each month or storing a copy digitally, and **don’t panic if you forget** by filling in a missed day or two from memory and moving on.
 
 This is a lightweight, low-stakes habit, not a forensic audit.
 
@@ -81,7 +78,7 @@ A four-part structure is enough for most families and most subjects.
 
 That same format works for language arts, math, science, social studies, and “extras” like art, technology, health, music, or physical education.
 
-### What “specific” looks like (samples)
+### What “specific” looks like
 
 Here are a few model paragraphs you can adapt.
 
@@ -131,7 +128,7 @@ Documentation in homeschooling is simply keeping a little evidence of your child
 
 You’re not collecting busywork. Think of work samples as meaningful snapshots, not stacks of old worksheets. The goal is not to archive everything. You’re building a simple timeline that shows growth across the year. Save an early writing piece next to a stronger one from later on, or keep a September multiplication page alongside an April fractions page. Each chosen sample becomes one step in a visible path of progress.
 
-### How much to keep (so it stays sustainable)
+### How much to keep
 
 You don’t need to hold onto every scrap. **Six to twelve pieces per subject for the whole year** is usually enough to show improvement without creating a monster pile.
 
@@ -152,7 +149,7 @@ The best system is the one you’ll maintain when you’re tired. Paper and digi
 
 ![Paper and digital, side by side](images/A_simple_home_portfolio_setup_with_a_few_labeled_paper_folders_and_matching_subject_folders_on_a_laptop_or_tablet..png)
 
-### What to save (variety beats volume)
+### What to save
 
 Across the main subjects, aim for a mix that shows different kinds of thinking.
 
@@ -161,13 +158,13 @@ Across the main subjects, aim for a mix that shows different kinds of thinking.
 - **Science and social studies:** lab notes, experiment photos, diagrams, maps, short research projects.
 - **Projects and art:** finished pieces, photos, and simple notes on skills being practiced.
 
-### Make it useful (and even kind of enjoyable)
+### Make it useful
 
 Let your child help pick favorites each month: “Which piece felt like a real win?” This builds ownership and helps your child see learning as something worth noticing. Every so often, flip through the collection together. Comparing “then” and “now” is often more motivating than any speech you could give.
 
 If you like, make the portfolio a little more personal: decorate folders, add funny captions, or turn highlights into a short slideshow at the end of the year.
 
-### Common pitfalls (and the easy fixes)
+### Common pitfalls
 
 Most recordkeeping stress comes from a few predictable mistakes.
 
@@ -215,7 +212,7 @@ A reliable re-entry folder usually includes:
 
 For writing and math, **recent and representative** beats “best and prettiest.” Include at least one sample that shows independent work. Handwriting does not need to be fancy, but legibility matters. If you scribed for your child sometimes, label that clearly and include at least one piece they wrote on their own.
 
-### What to expect from schools (and how to stay flexible)
+### What to expect from schools
 
 Most regions have a similar pattern: some proof of attendance, a written summary of learning, and samples that reflect the child’s abilities and thinking. Some places may ask for a declaration that you homeschooled, an attendance record, and your most recent progress report.
 
