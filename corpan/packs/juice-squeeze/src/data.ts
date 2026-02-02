@@ -7,6 +7,7 @@ import type { HostApi, EntryOut } from "./sdk/types"
 
 export type Utterance = {
   id: string
+  level: string // CEFR level (A0, A1, A2, B1, B2, C1)
   text: string
   words: string[]
   targetText?: string // Text in the OTHER language (to display at top)
@@ -221,6 +222,7 @@ export const loadUtterance = async (
     // text = block language (for blocks), targetText = target language (for display)
     const utterance: Utterance = {
       id: `entry-${entry.entry_id}`,
+      level: entry.level, // CEFR level from the entry
       text: blockText, // Block language text (for word blocks)
       words, // Words from block language
       targetText: targetText, // Target language text (to show at top)

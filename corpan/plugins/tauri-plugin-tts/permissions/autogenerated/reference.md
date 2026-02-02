@@ -5,6 +5,7 @@ Default permissions for the TTS plugin
 #### This default permission set includes the following:
 
 - `allow-speak`
+- `allow-speak-concurrent`
 - `allow-stop`
 - `allow-open-tts-settings`
 - `allow-install-tts-data-if-supported`
@@ -199,6 +200,32 @@ Enables the speak command without any pre-configured scope.
 <td>
 
 Denies the speak command without any pre-configured scope.
+
+</td>
+</tr>
+
+<tr>
+<td>
+
+`tts:allow-speak-concurrent`
+
+</td>
+<td>
+
+Enables the speak_concurrent command without any pre-configured scope.
+
+</td>
+</tr>
+
+<tr>
+<td>
+
+`tts:deny-speak-concurrent`
+
+</td>
+<td>
+
+Denies the speak_concurrent command without any pre-configured scope.
 
 </td>
 </tr>
