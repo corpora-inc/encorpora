@@ -60,6 +60,22 @@ const pickByLang = (translations: { language_code: string; text: string }[], lan
 }
 
 /**
+ * Normalize text for consistent tokenization:
+ * 1. Apply Unicode NFKC normalization (converts compatibility chars to canonical forms)
+ * 2. Normalize remaining apostrophe-like characters to standard ' (U+0027)
+ */
+const normalizeForTokenization = (text: string): string => {
+  // Step 1: NFKC normalization - converts many lookalike characters to canonical forms
+  let normalized = text.normalize("NFKC")
+
+  // Step 2: Explicitly normalize any remaining apostrophe/quote variants to standard '
+  // This catches characters that NFKC doesn't convert
+  normalized = normalized.replace(/[''ʼʻʽʹ′‚‛`ʾʿˈˊˋ˴ꞌ]/g, "'")
+
+  return normalized
+}
+
+/**
  * Split text into words and punctuation tokens
  * Handles punctuation marks as separate tokens
  * Preserves contractions like "I'm", "don't", "can't" as single tokens
@@ -72,6 +88,9 @@ const tokenizeText = (text: string): string[] => {
     return tokenizeCJK(text)
   }
 
+  // Normalize text: NFKC + apostrophe variants → standard '
+  const normalizedText = normalizeForTokenization(text)
+
   const tokens: string[] = []
 
   // Regex pattern that handles:
@@ -80,17 +99,18 @@ const tokenizeText = (text: string): string[] => {
   // 3. Regular words: "am", "hello", "the", "is" (letters, marks, numbers)
   // 4. Punctuation and symbols: ".", ",", "?", "!", etc.
 
-  // Apostrophe variants: ' (U+0027), ' (U+2019), ʼ (U+02BC), ʻ (U+02BB), ' (U+2018), ` (backtick)
+  // Apostrophe variants: ' (U+0027), ' (U+2019), ' (U+2018), ʼ (U+02BC), ʻ (U+02BB), ʽ (U+02BD), ʹ (U+02B9), ′ (U+2032), ‚ (U+201A), ‛ (U+201B), ` (backtick)
   // Hyphen variants: - (U+002D), ‐ (U+2010), − (U+2212), – (U+2013), — (U+2014)
-  const regex = /[\p{L}\p{M}\p{N}]+(?:['ʼʻ''`\-‐−–—][\p{L}\p{M}\p{N}]+)*|[\p{P}\p{S}]/gu
-  
+  // Simplified regex - only need standard apostrophe now since we normalized
+  const regex = /[\p{L}\p{M}\p{N}]+(?:['\-‐−–—][\p{L}\p{M}\p{N}]+)*|[\p{P}\p{S}]/gu
+
   let match
   let lastIndex = 0
-  
-    while ((match = regex.exec(text)) !== null) {
+
+  while ((match = regex.exec(normalizedText)) !== null) {
     // Skip whitespace between matches
     if (match.index > lastIndex) {
-      const between = text.slice(lastIndex, match.index)
+      const between = normalizedText.slice(lastIndex, match.index)
       // Only warn if there's non-whitespace content
       if (between.trim()) {
         // Commented out to reduce console noise
@@ -106,8 +126,8 @@ const tokenizeText = (text: string): string[] => {
   }
   
   // Handle any remaining text
-  if (lastIndex < text.length) {
-    const remaining = text.slice(lastIndex).trim()
+  if (lastIndex < normalizedText.length) {
+    const remaining = normalizedText.slice(lastIndex).trim()
     if (remaining) {
       // Commented out to reduce console noise
       // console.warn(`[juice-squeeze:data] Remaining text after tokenization: "${remaining}"`)
@@ -119,17 +139,30 @@ const tokenizeText = (text: string): string[] => {
   }
   
   const filtered = tokens.filter((token) => token.trim().length > 0)
-  
-  // Debug logging for problematic cases (single letter tokens that should be part of words)
-  // Commented out to reduce console noise
-  // const singleLetterWords = filtered.filter(t => t.length === 1 && /[a-zA-Z]/.test(t))
-  // if (singleLetterWords.length > 0) {
-  //   console.warn(`[juice-squeeze:data] ⚠️  WARNING: Single-letter tokens detected:`, singleLetterWords)
-  //   console.warn(`[juice-squeeze:data]    Full tokenization result:`, filtered)
-  //   console.warn(`[juice-squeeze:data]    Original text: "${text}"`)
-  // }
-  
-  return filtered
+
+  // Post-process: merge any remaining letter + punctuation + letter sequences
+  // This catches ANY edge cases - if a single punctuation is between letters, merge them
+  const merged: string[] = []
+
+  for (let i = 0; i < filtered.length; i++) {
+    const current = filtered[i]
+    const next = filtered[i + 1]
+    const afterNext = filtered[i + 2]
+
+    // Check if this is: single letter + single punctuation + word starting with letter
+    // This is a universal catch-all for apostrophes and similar contractions
+    if (current.length === 1 && /^[\p{L}]$/u.test(current) &&
+        next && next.length === 1 && /^[\p{P}\p{S}]$/u.test(next) &&
+        afterNext && /^[\p{L}]/u.test(afterNext)) {
+      // Merge all three into one token
+      merged.push(current + next + afterNext)
+      i += 2 // Skip the next two tokens
+    } else {
+      merged.push(current)
+    }
+  }
+
+  return merged
 }
 
 /**
