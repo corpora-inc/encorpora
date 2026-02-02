@@ -2075,7 +2075,7 @@ export const createJuiceSqueeze = (
     blockLang: string,
     targetLang: string,
     metrics: LayoutMetrics,
-    blockSize: { width: number; height: number; gap: number; fontSize: number; twoRowLayout?: boolean }
+    blockSize: { baseWidth: number; width: number; height: number; gap: number; fontSize: number; twoRowLayout?: boolean }
   ) => {
     const wordCount = words.length
 
