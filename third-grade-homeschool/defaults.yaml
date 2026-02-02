@@ -1,0 +1,20 @@
+pdf-engine: xelatex
+from: markdown
+to: pdf
+metadata:
+  title: Third Grade at Home
+  subtitle: An Agile, Economical, and Powerful Homeschool Plan
+  author: Skylar Saveland
+  lang: en-US
+  publisher: Corpora Inc
+variables:
+  documentclass: memoir
+  classoption:
+    - twoside
+    - 11pt
+include-in-header:
+  - custom_headings.tex
+include-before-body:
+  - custom_cover.tex
+toc: true
+toc-depth: 2

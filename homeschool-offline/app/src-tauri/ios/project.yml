@@ -1,0 +1,63 @@
+name: homeschool-offline_iOS
+options:
+  bundleIdPrefix: com.homeschool
+  deploymentTarget:
+    iOS: 14.0
+settings:
+  base:
+    CODE_SIGN_STYLE: Manual
+    DEVELOPMENT_TEAM: F9AV5HKF6N
+    CODE_SIGN_IDENTITY: "iPhone Distribution"
+    PROVISIONING_PROFILE_SPECIFIER: "4d5c5e29-f71e-4053-a7b6-fc1d5874d97a"
+    PRODUCT_BUNDLE_IDENTIFIER: com.corpora.homeschool
+    IPHONEOS_DEPLOYMENT_TARGET: 14.0
+    TARGETED_DEVICE_FAMILY: "1,2"
+    ENABLE_BITCODE: NO
+    ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+  configs:
+    debug:
+      DEBUG_INFORMATION_FORMAT: dwarf-with-dsym
+    release:
+      DEBUG_INFORMATION_FORMAT: dwarf-with-dsym
+targets:
+  homeschool-offline_iOS:
+    type: application
+    platform: iOS
+    sources:
+      - path: ../../gen/apple/homeschool-offline_iOS
+    info:
+      path: ../../gen/apple/homeschool-offline_iOS/Info.plist
+      properties:
+        LSRequiresIPhoneOS: true
+        UILaunchStoryboardName: LaunchScreen
+        UIRequiredDeviceCapabilities: [arm64, metal]
+        UISupportedInterfaceOrientations:
+          - UIInterfaceOrientationPortrait
+          - UIInterfaceOrientationLandscapeLeft
+          - UIInterfaceOrientationLandscapeRight
+        UISupportedInterfaceOrientations~ipad:
+          - UIInterfaceOrientationPortrait
+          - UIInterfaceOrientationPortraitUpsideDown
+          - UIInterfaceOrientationLandscapeLeft
+          - UIInterfaceOrientationLandscapeRight
+        NSCameraUsageDescription: Take photos to document your homeschool activities
+        NSPhotoLibraryUsageDescription: Choose photos from your library to document your homeschool activities
+        NSPhotoLibraryAddUsageDescription: Save photos to your library
+        UIFileSharingEnabled: true
+        LSSupportsOpeningDocumentsInPlace: true
+        UIViewControllerBasedStatusBarAppearance: false
+        UIStatusBarHidden: false
+        UIRequiresFullScreen: true
+    entitlements:
+      path: ../../gen/apple/homeschool-offline_iOS/homeschool-offline_iOS.entitlements
+    scheme:
+      testTargets:
+        - homeschool-offline_iOSTests
+      gatherCoverageData: false
+    settings:
+      base:
+        PRODUCT_NAME: "Homeschool Offline"
+        INFOPLIST_KEY_CFBundleDisplayName: "Homeschool Offline"
+        # Exclude arm64 simulator architecture from iphoneos SDK
+        # to fix "building for iOS, but linking in .tbd built for iOS Simulator" errors
+        EXCLUDED_ARCHS[sdk=iphoneos*]: arm64-sim
