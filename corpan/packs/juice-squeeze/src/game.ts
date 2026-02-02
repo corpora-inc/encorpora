@@ -50,8 +50,10 @@ const updateBlockText = (
   newText: string,
   fruitColor: string
 ) => {
-  const textureWidth = 1024
-  const textureHeight = 512
+  // Get actual texture dimensions (may vary by word length)
+  const textureSize = texture.getSize()
+  const textureWidth = textureSize.width
+  const textureHeight = textureSize.height
   const ctx = texture.getContext() as CanvasRenderingContext2D
 
   // Rounded rectangle helper
@@ -110,7 +112,9 @@ const updateBlockText = (
   ctx.shadowBlur = 0
   ctx.shadowOffsetY = 0
 
-  // Calculate font size to fill 80% of texture width
+  // Calculate font size to fill texture width
+  // Long text uses 90% of width, shorter text uses 80%
+  const textFillRatio = newText.length >= 12 ? 0.9 : 0.8
   let fontSize = 300
   ctx.font = `bold ${fontSize}px Arial`
   ctx.textAlign = "center"
@@ -118,7 +122,7 @@ const updateBlockText = (
 
   let textWidth = ctx.measureText(newText).width
 
-  while (textWidth > textureWidth * 0.8 && fontSize > 48) {
+  while (textWidth > textureWidth * textFillRatio && fontSize > 48) {
     fontSize -= 10
     ctx.font = `bold ${fontSize}px Arial`
     textWidth = ctx.measureText(newText).width
@@ -314,6 +318,31 @@ export const createJuiceSqueeze = (
     }
   }
 
+  // Smart join that doesn't add spaces around apostrophes
+  // Handles cases like ["d", "'", "art"] → "d'art" instead of "d ' art"
+  const smartJoinWords = (words: string[]): string => {
+    let result = ""
+    for (let i = 0; i < words.length; i++) {
+      const word = words[i]
+      const prev = words[i - 1]
+
+      // Don't add space before apostrophes or after single-letter + apostrophe
+      if (i === 0) {
+        result = word
+      } else if (word === "'" || /^['']/.test(word)) {
+        // Apostrophe - no space before
+        result += word
+      } else if (prev === "'" || /['']$/.test(prev)) {
+        // Previous was apostrophe - no space after
+        result += word
+      } else {
+        // Normal word - add space
+        result += " " + word
+      }
+    }
+    return result
+  }
+
   // Layout metrics type
   type LayoutMetrics = {
     worldWidth: number
@@ -390,6 +419,23 @@ export const createJuiceSqueeze = (
   const BASE_MIN_BLOCK_HEIGHT = 1.0 // Base minimum block height at 320px (reduced to fit more)
   const MAX_BLOCKS_PER_ROW = 5 // Force 2-row layout above this
 
+  // Get ideal width for a word proportional to character count
+  // This replaces the tiered multiplier system with a smooth proportional formula
+  // baseUnit is the width for a "standard" 6-char word
+  const getIdealWidthMultiplier = (word: string): number => {
+    const len = word.length
+
+    // Punctuation gets half-width blocks
+    if (len === 1 && /^[\p{P}]$/u.test(word)) return 0.5
+
+    // Proportional to character count: len/6, clamped to [1.0, 3.0]
+    // 6 chars → 1.0x, 12 chars → 2.0x, 18+ chars → 3.0x (capped)
+    return Math.min(3.0, Math.max(0.5, len / 6))
+  }
+
+  // Alias for backwards compatibility where getWordWidthMultiplier was used
+  const getWordWidthMultiplier = getIdealWidthMultiplier
+
   // Multi-row sentence area constants
   const MAX_SENTENCE_ROWS = 4 // Increased to fit longer phrases
   const SENTENCE_BLOCKS_PER_ROW_MOBILE = 3 // ≤480px viewport width
@@ -397,45 +443,66 @@ export const createJuiceSqueeze = (
   const SENTENCE_BLOCKS_PER_ROW_DESKTOP = 6 // >720px
   const SENTENCE_ROW_SPACING_RATIO = 0.4 // Gap between rows as ratio of block height
 
-  // Calculate dynamic block size based on word count and viewport
-  const calculateBlockSize = (wordCount: number, metrics: LayoutMetrics) => {
-    // Scale minimum block dimensions with viewport
-    // At 320px (worldWidth=20): minBlockWidth = 2.5
-    // At 640px (worldWidth=40): minBlockWidth = 5.0 (larger blocks for larger screens)
-    // At 160px (worldWidth=10): minBlockWidth = 1.25 (smaller blocks for smaller screens)
-    const viewportScale = metrics.worldWidth / 20 // 1.0 at baseline 320px
-    const minBlockWidth = BASE_MIN_BLOCK_WIDTH * viewportScale
-    const minBlockHeight = BASE_MIN_BLOCK_HEIGHT * viewportScale
+  // Calculate dynamic block size with fill-available-space algorithm
+  // Blocks ALWAYS fill 90% of available width - scaling up or down as needed
+  const calculateBlockSize = (words: string[], metrics: LayoutMetrics) => {
+    const wordCount = words.length
+    if (wordCount === 0) {
+      // Fallback for empty words array
+      return { baseWidth: 2.0, width: 2.0, height: 1.0, gap: 0.3, fontSize: 32, twoRowLayout: false }
+    }
 
-    // Blocks must fit horizontally with gaps
+    // Available space
     const availableWidth = metrics.worldWidth * 0.9 // 90% of screen width
-    const gapRatio = 0.15 // 15% of block width as gap
+    const gapRatio = 0.15 // 15% of base unit as gap
 
-    // Check if we need 2-row layout - use scaled minimum for comparison
-    const singleRowWidth = availableWidth / (wordCount + (wordCount - 1) * gapRatio)
-    const needsTwoRows = wordCount > MAX_BLOCKS_PER_ROW || singleRowWidth < minBlockWidth
+    // Calculate ideal multipliers for each word
+    const multipliers = words.map(getIdealWidthMultiplier)
+    const totalMultiplier = multipliers.reduce((sum, m) => sum + m, 0)
 
-    // Calculate effective word count for sizing (half for 2-row)
-    const effectiveWordCount = needsTwoRows ? Math.ceil(wordCount / 2) : wordCount
+    // Check if we need 2-row layout (more than 5 words)
+    const needsTwoRows = wordCount > MAX_BLOCKS_PER_ROW
 
-    // Calculate max block width that fits all words
-    const totalGaps = (effectiveWordCount - 1) * gapRatio
-    let maxBlockWidth = availableWidth / (effectiveWordCount + totalGaps)
+    let effectiveWordCount: number
+    let effectiveMultiplier: number
 
-    // Enforce scaled minimum dimensions
-    maxBlockWidth = Math.max(minBlockWidth, maxBlockWidth)
-    const blockHeight = Math.max(minBlockHeight, maxBlockWidth * 0.5)
+    if (needsTwoRows) {
+      // WORST CASE: assume all largest words end up in one row after shuffle
+      // Sort multipliers descending, sum the top N (where N = blocks per row)
+      const topRowCount = Math.ceil(wordCount / 2)
+      const sortedMultipliers = [...multipliers].sort((a, b) => b - a)
+      const worstCaseRowSum = sortedMultipliers.slice(0, topRowCount).reduce((sum, m) => sum + m, 0)
+
+      effectiveMultiplier = worstCaseRowSum
+      effectiveWordCount = topRowCount
+    } else {
+      effectiveMultiplier = totalMultiplier
+      effectiveWordCount = wordCount
+    }
+
+    // Calculate base unit that fills available space exactly
+    // totalWidth = effectiveMultiplier * baseUnit + (effectiveWordCount - 1) * gapRatio * baseUnit
+    // availableWidth = baseUnit * (effectiveMultiplier + (effectiveWordCount - 1) * gapRatio)
+    const totalGapMultiplier = (effectiveWordCount - 1) * gapRatio
+    const baseUnit = availableWidth / (effectiveMultiplier + totalGapMultiplier)
+
+    // Apply maximum bound only - let blocks shrink as needed to fit
+    const viewportScale = metrics.worldWidth / 20
+    const maxBaseUnit = BASE_MIN_BLOCK_WIDTH * viewportScale * 3.0 // Cap for few words
+    const clampedBaseUnit = Math.min(maxBaseUnit, baseUnit)
+
+    // Height is proportional to base unit
+    const blockHeight = clampedBaseUnit * 0.5
 
     // Font size = 40% of block height in pixels
-    // pixelsPerUnit is constant (16) since world scales with viewport
     const rawFontSize = Math.floor(blockHeight * metrics.pixelsPerUnit * 0.4)
-    // Clamp font size: min 16px for legibility, max 200px
     const fontSize = Math.max(16, Math.min(rawFontSize, 200))
 
     return {
-      width: maxBlockWidth,
+      baseWidth: clampedBaseUnit,  // Base width for 1x multiplier
+      width: clampedBaseUnit,      // For backwards compatibility
       height: blockHeight,
-      gap: maxBlockWidth * gapRatio,
+      gap: clampedBaseUnit * gapRatio,
       fontSize,
       twoRowLayout: needsTwoRows,
     }
@@ -513,6 +580,7 @@ export const createJuiceSqueeze = (
   }
 
   // Reflow blocks in sentence area across multiple rows
+  // Reflow sentence blocks with variable widths
   const reflowSentenceBlocks = (metrics: LayoutMetrics) => {
     // Get all blocks in sentence area with their data
     const blocksInSentence = Array.from(wordBlockData.entries())
@@ -521,19 +589,20 @@ export const createJuiceSqueeze = (
 
     if (blocksInSentence.length === 0) return
 
-    // Calculate current block size
-    const currentWordCount = currentUtterance?.words?.length || blocksInSentence.length
-    const currentBlockSize = calculateBlockSize(currentWordCount, metrics)
-    const sentenceSpacing = currentBlockSize.width * 1.15
+    // Calculate current block size for gap reference
+    const currentWords = currentUtterance?.words || []
+    const currentBlockSize = calculateBlockSize(currentWords, metrics)
+    const blockGap = currentBlockSize.gap * 1.15 // Sentence area gap
 
     // Get max blocks per row
     const canvasElement = engine.getRenderingCanvas()
     const viewportWidth = canvasElement?.width || 720
     const maxBlocksPerRow = getSentenceBlocksPerRow(viewportWidth)
 
-    // Also check available width
+    // Also check available width (use base width for estimation)
     const availableWidth = metrics.worldWidth * 0.85
-    const blocksPerRowByWidth = Math.floor(availableWidth / sentenceSpacing)
+    const avgBlockWidth = currentBlockSize.baseWidth * 1.15
+    const blocksPerRowByWidth = Math.floor(availableWidth / avgBlockWidth)
     const effectiveBlocksPerRow = Math.max(2, Math.min(maxBlocksPerRow, blocksPerRowByWidth))
 
     // Sort blocks by row first, then by X position within row (left to right)
@@ -544,31 +613,38 @@ export const createJuiceSqueeze = (
       return a.mesh.position.x - b.mesh.position.x
     })
 
-    // Redistribute blocks into rows sequentially
+    // Group blocks into rows
+    const rows: typeof blocksInSentence[] = []
     blocksInSentence.forEach((item, globalIndex) => {
       const row = Math.floor(globalIndex / effectiveBlocksPerRow)
-      const indexInRow = globalIndex % effectiveBlocksPerRow
+      if (!rows[row]) rows[row] = []
+      rows[row].push(item)
+    })
 
-      // Count how many blocks are in this row
-      const rowStartIndex = row * effectiveBlocksPerRow
-      const rowEndIndex = Math.min((row + 1) * effectiveBlocksPerRow, blocksInSentence.length)
-      const blocksInThisRow = rowEndIndex - rowStartIndex
+    // Position each row with variable widths
+    rows.forEach((rowBlocks, rowIndex) => {
+      // Get widths for blocks in this row
+      const rowWidths = rowBlocks.map((item) => item.data.baseWidth || currentBlockSize.baseWidth)
+      const rowTotalWidth = rowWidths.reduce((sum, w) => sum + w, 0) + (rowBlocks.length - 1) * blockGap
 
-      // Calculate row width and starting X
-      const rowWidth = blocksInThisRow * sentenceSpacing - (sentenceSpacing - currentBlockSize.width)
-      const rowStartX = -rowWidth / 2 + currentBlockSize.width / 2
+      // Calculate starting X for this row (centered)
+      let currentX = -rowTotalWidth / 2
 
-      // Position block
-      item.mesh.position.x = rowStartX + indexInRow * sentenceSpacing
-      item.mesh.position.y = sentenceRowYPositions[row] || metrics.sentenceAreaY
-      item.mesh.position.z = -0.5 // Keep in front
+      rowBlocks.forEach((item, indexInRow) => {
+        const thisWidth = rowWidths[indexInRow]
+        item.mesh.position.x = currentX + thisWidth / 2
+        item.mesh.position.y = sentenceRowYPositions[rowIndex] || metrics.sentenceAreaY
+        item.mesh.position.z = -0.5 // Keep in front
+        currentX += thisWidth + blockGap
 
-      // Update data
-      item.data.sentenceRow = row
+        // Update data
+        item.data.sentenceRow = rowIndex
+      })
     })
   }
 
   // Position word blocks in the word bank (NOT in sentence area)
+  // Uses stored baseWidth values directly - no position scaling
   const positionWordBlocks = (
     blocks: Mesh[],
     metrics: LayoutMetrics,
@@ -583,21 +659,35 @@ export const createJuiceSqueeze = (
     const wordCount = blocksInWordBank.length
     if (wordCount === 0) return
 
+    // Get widths for each block from stored data
+    const blockWidths = blocksInWordBank.map((block) => {
+      const data = wordBlockData.get(block)
+      return data?.baseWidth || blockSize.width
+    })
+
+    // Use gap from blockSize
+    const gap = blockSize.gap
+
     if (blockSize.twoRowLayout && wordCount > 1) {
-      // Two-row layout for many words or narrow screens
+      // Two-row layout for many words
       const topRowCount = Math.ceil(wordCount / 2)
-      const bottomRowCount = wordCount - topRowCount
-      const rowGap = blockSize.height * 0.5 // Vertical gap between rows
+      const rowGap = blockSize.height * 0.5
+
+      // Calculate widths for each row
+      const topRowWidths = blockWidths.slice(0, topRowCount)
+      const bottomRowWidths = blockWidths.slice(topRowCount)
 
       // Position top row (first half of words)
-      const topRowWidth = topRowCount * blockSize.width + (topRowCount - 1) * blockSize.gap
-      const topStartX = -topRowWidth / 2 + blockSize.width / 2
+      const topRowTotalWidth = topRowWidths.reduce((sum, w) => sum + w, 0) + (topRowCount - 1) * gap
+      let topCurrentX = -topRowTotalWidth / 2
       const topY = metrics.wordBlocksY + rowGap / 2 + blockSize.height / 2
 
       for (let i = 0; i < topRowCount; i++) {
-        blocksInWordBank[i].position.x = topStartX + i * (blockSize.width + blockSize.gap)
+        const thisWidth = topRowWidths[i]
+        blocksInWordBank[i].position.x = topCurrentX + thisWidth / 2
         blocksInWordBank[i].position.y = topY
         blocksInWordBank[i].position.z = 0
+        topCurrentX += thisWidth + gap
         const data = wordBlockData.get(blocksInWordBank[i])
         if (data) {
           data.originalPosition = blocksInWordBank[i].position.clone()
@@ -605,29 +695,36 @@ export const createJuiceSqueeze = (
       }
 
       // Position bottom row (remaining words)
-      const bottomRowWidth = bottomRowCount * blockSize.width + (bottomRowCount - 1) * blockSize.gap
-      const bottomStartX = -bottomRowWidth / 2 + blockSize.width / 2
-      const bottomY = metrics.wordBlocksY - rowGap / 2 - blockSize.height / 2
+      const bottomRowCount = bottomRowWidths.length
+      if (bottomRowCount > 0) {
+        const bottomRowTotalWidth = bottomRowWidths.reduce((sum, w) => sum + w, 0) + (bottomRowCount - 1) * gap
+        let bottomCurrentX = -bottomRowTotalWidth / 2
+        const bottomY = metrics.wordBlocksY - rowGap / 2 - blockSize.height / 2
 
-      for (let i = topRowCount; i < wordCount; i++) {
-        const j = i - topRowCount
-        blocksInWordBank[i].position.x = bottomStartX + j * (blockSize.width + blockSize.gap)
-        blocksInWordBank[i].position.y = bottomY
-        blocksInWordBank[i].position.z = 0
-        const data = wordBlockData.get(blocksInWordBank[i])
-        if (data) {
-          data.originalPosition = blocksInWordBank[i].position.clone()
+        for (let i = topRowCount; i < wordCount; i++) {
+          const j = i - topRowCount
+          const thisWidth = bottomRowWidths[j]
+          blocksInWordBank[i].position.x = bottomCurrentX + thisWidth / 2
+          blocksInWordBank[i].position.y = bottomY
+          blocksInWordBank[i].position.z = 0
+          bottomCurrentX += thisWidth + gap
+          const data = wordBlockData.get(blocksInWordBank[i])
+          if (data) {
+            data.originalPosition = blocksInWordBank[i].position.clone()
+          }
         }
       }
     } else {
-      // Single row layout (original behavior)
-      const totalWidth = wordCount * blockSize.width + (wordCount - 1) * blockSize.gap
-      const startX = -totalWidth / 2 + blockSize.width / 2
+      // Single row layout with variable widths
+      const totalWidth = blockWidths.reduce((sum, w) => sum + w, 0) + (wordCount - 1) * gap
+      let currentX = -totalWidth / 2
 
       blocksInWordBank.forEach((block, i) => {
-        block.position.x = startX + i * (blockSize.width + blockSize.gap)
+        const thisWidth = blockWidths[i]
+        block.position.x = currentX + thisWidth / 2
         block.position.y = metrics.wordBlocksY
         block.position.z = 0
+        currentX += thisWidth + gap
 
         // Update originalPosition in wordBlockData for snap-back
         const data = wordBlockData.get(block)
@@ -903,27 +1000,21 @@ export const createJuiceSqueeze = (
     const sentenceWorldY = metrics.sentenceAreaY
     const sentencePixelY = canvasRect.top + (canvasHeight / 2) - (sentenceWorldY * metrics.pixelsPerUnit)
 
-    // Position at 22% of the way from title to sentence area (lowered for better spacing)
-    const pixelY = topSpaceStart + (sentencePixelY - topSpaceStart) * 0.22
+    // Position at 25% between title and sentence area (gives more room for multi-line phrases)
+    const pixelY = topSpaceStart + (sentencePixelY - topSpaceStart) * 0.25
 
     // Responsive font sizes based on viewport percentage
     const viewportWidth = canvasElement.width
-    const labelFontSize = Math.max(14, Math.min(22, viewportWidth * 0.04)) // 4% of width
     const phraseFontSize = Math.max(20, Math.min(36, viewportWidth * 0.055)) // 5.5% of width
 
     const display = document.createElement("div")
     display.className = "target-phrase-display"
     display.style.top = `${pixelY}px`
 
-    // Create language label
-    const label = document.createElement("div")
-    label.textContent = `${languageName}:`
-
-    // Create phrase text
+    // Create phrase text (no language label - user's native language is assumed)
     const phrase = document.createElement("div")
     phrase.textContent = text
 
-    display.appendChild(label)
     display.appendChild(phrase)
 
     // Add tap-to-speak functionality
@@ -1422,7 +1513,7 @@ export const createJuiceSqueeze = (
     const { phrase } = useGameStore.getState()
     if (!phrase.correctWords.length) return
     if (phrase.blockLang) {
-      speak(phrase.blockLang, phrase.correctWords.join(" "))
+      speak(phrase.blockLang, smartJoinWords(phrase.correctWords))
     }
   })
   root.appendChild(earButton)
@@ -1450,7 +1541,7 @@ export const createJuiceSqueeze = (
 
     const answerText = document.createElement("div")
     answerText.className = "answer-text"
-    answerText.textContent = phrase.correctWords.join(" ")
+    answerText.textContent = smartJoinWords(phrase.correctWords)
 
     const continueBtn = document.createElement("button")
     continueBtn.innerHTML = "→"
@@ -1478,7 +1569,7 @@ export const createJuiceSqueeze = (
 
     // Play TTS for the answer
     if (phrase.blockLang) {
-      speak(phrase.blockLang, phrase.correctWords.join(" "))
+      speak(phrase.blockLang, smartJoinWords(phrase.correctWords))
     }
   })
   root.appendChild(giveUpButton)
@@ -1808,7 +1899,7 @@ export const createJuiceSqueeze = (
     })
 
     const metrics = getLayoutMetrics()
-    const blockSize = calculateBlockSize(words.length, metrics)
+    const blockSize = calculateBlockSize(words, metrics)
 
     if (utterance.targetText) {
       createTargetPhraseDisplay(utterance.targetText, targetLang, metrics)
@@ -1947,8 +2038,8 @@ export const createJuiceSqueeze = (
     // Get current layout metrics
     const metrics = getLayoutMetrics()
 
-    // Calculate dynamic block size based on word count
-    const blockSize = calculateBlockSize(wordCount, metrics)
+    // Calculate dynamic block size based on words
+    const blockSize = calculateBlockSize(words, metrics)
 
     // Show target phrase (target language) below title with language label
     if (utterance.targetText) {
@@ -1991,14 +2082,21 @@ export const createJuiceSqueeze = (
     // Create shuffled copy of words array for gameplay challenge!
     const shuffledWords = [...words].sort(() => Math.random() - 0.5)
 
-    // Calculate block positions - uniform width for all blocks
-    const blockPositions: { x: number; y: number; z: number }[] = []
-    const totalWidth = wordCount * blockSize.width + (wordCount - 1) * blockSize.gap
-    const startX = -totalWidth / 2 + blockSize.width / 2
+    // Calculate per-word widths based on word length
+    // calculateBlockSize already computed baseWidth to fill available space
+    const wordWidths = shuffledWords.map((word) => blockSize.baseWidth * getIdealWidthMultiplier(word))
+
+    // Calculate block positions - variable width based on word length
+    const blockPositions: { x: number; y: number; z: number; width: number }[] = []
+    const totalWidth = wordWidths.reduce((sum, w) => sum + w, 0) + (wordCount - 1) * blockSize.gap
+
+    let currentX = -totalWidth / 2
 
     shuffledWords.forEach((_, index) => {
-      const x = startX + index * (blockSize.width + blockSize.gap)
-      blockPositions.push({ x, y: metrics.wordBlocksY, z: 0 })
+      const thisWidth = wordWidths[index]
+      const x = currentX + thisWidth / 2
+      blockPositions.push({ x, y: metrics.wordBlocksY, z: 0, width: thisWidth })
+      currentX += thisWidth + blockSize.gap
     })
 
     // Create texture for each word with fruit slice colors (using shuffled order)
@@ -2013,8 +2111,11 @@ export const createJuiceSqueeze = (
         return
       }
 
-      // High-quality texture resolution (1024x512 as specified)
-      const textureWidth = 1024
+      // Texture resolution scaled with word width to maintain aspect ratio
+      // This prevents text from looking stretched on wider blocks
+      // Cap at 2048 to avoid WebGL max texture size issues
+      const widthMultiplier = getIdealWidthMultiplier(word)
+      const textureWidth = Math.min(2048, Math.floor(1024 * widthMultiplier))
       const textureHeight = 512
       const texture = new DynamicTexture(
         `word-texture-${utterance.id}-${shuffledIndex}`,
@@ -2084,8 +2185,9 @@ export const createJuiceSqueeze = (
       ctx.shadowBlur = 0
       ctx.shadowOffsetY = 0
 
-      // Calculate font size to fill 80% of texture width
-      // Start with large font size and shrink until text fits
+      // Calculate font size to fill texture width
+      // Long words use 90% of width, shorter words use 80%
+      const textFillRatio = word.length >= 12 ? 0.9 : 0.8
       let fontSize = 300 // Start big
       ctx.font = `bold ${fontSize}px Arial`
       ctx.textAlign = "center"
@@ -2093,8 +2195,8 @@ export const createJuiceSqueeze = (
 
       let textWidth = ctx.measureText(word).width
 
-      // Shrink until text fits 80% of texture width
-      while (textWidth > textureWidth * 0.8 && fontSize > 48) {
+      // Shrink until text fits the target width ratio
+      while (textWidth > textureWidth * textFillRatio && fontSize > 48) {
         fontSize -= 10
         ctx.font = `bold ${fontSize}px Arial`
         textWidth = ctx.measureText(word).width
@@ -2125,11 +2227,12 @@ export const createJuiceSqueeze = (
 
       texture.update()
 
-      // Create plane mesh for word block with uniform size
+      // Create plane mesh for word block with per-word width
+      const thisBlockWidth = pos.width
       const block = MeshBuilder.CreatePlane(
         `word-block-${utterance.id}-${shuffledIndex}`,
         {
-          width: blockSize.width,
+          width: thisBlockWidth,
           height: blockSize.height
         },
         scene
@@ -2166,7 +2269,7 @@ export const createJuiceSqueeze = (
         originalPosition,
         isInSentence: false,
         sentenceRow: -1, // -1 means not in sentence area
-        baseWidth: blockSize.width,   // Store uniform width for scaling
+        baseWidth: thisBlockWidth,    // Store per-word width for scaling
         baseHeight: blockSize.height, // Store creation-time height for scaling
         textTexture: texture,         // Store for fruit flip feature
         fruitColor,                   // Store color for texture redraw
@@ -2317,17 +2420,21 @@ export const createJuiceSqueeze = (
           let targetRow = 0
           let targetX = 0
 
+          // Get this block's width for proper spacing
+          const thisBlockWidth = data.baseWidth || 2.0
+          const blockGap = thisBlockWidth * 0.15 // 15% gap
+
           if (blocksInSentence.length > 0) {
             // Calculate max blocks per row
-            const currentWordCount = currentUtterance?.words?.length || blocksInSentence.length + 1
-            const currentBlockSize = calculateBlockSize(currentWordCount, metrics)
-            const sentenceSpacing = currentBlockSize.width * 1.15
+            const currentWords = currentUtterance?.words || []
+            const currentBlockSize = calculateBlockSize(currentWords, metrics)
+            const avgSpacing = currentBlockSize.baseWidth * 1.15
 
             const canvasElement = engine.getRenderingCanvas()
             const viewportWidth = canvasElement?.width || 720
             const maxBlocksPerRow = getSentenceBlocksPerRow(viewportWidth)
             const availableWidth = metrics.worldWidth * 0.85
-            const blocksPerRowByWidth = Math.floor(availableWidth / sentenceSpacing)
+            const blocksPerRowByWidth = Math.floor(availableWidth / avgSpacing)
             const effectiveBlocksPerRow = Math.max(2, Math.min(maxBlocksPerRow, blocksPerRowByWidth))
 
             // Sort by row, then by reading order (RTL: right-to-left, LTR: left-to-right)
@@ -2338,6 +2445,7 @@ export const createJuiceSqueeze = (
               return isBlockLangRTL ? b.mesh.position.x - a.mesh.position.x : a.mesh.position.x - b.mesh.position.x
             })
             const last = blocksInSentence[blocksInSentence.length - 1]
+            const lastWidth = last.entry.baseWidth || currentBlockSize.baseWidth
             targetRow = last.entry.sentenceRow
 
             // Count how many blocks are in the current row
@@ -2348,18 +2456,18 @@ export const createJuiceSqueeze = (
               // Move to next row
               targetRow++
               // Start at beginning of new row (right for RTL, left for LTR)
-              const rowWidth = sentenceSpacing
               if (isBlockLangRTL) {
-                targetX = rowWidth / 2 - currentBlockSize.width / 2
+                targetX = thisBlockWidth / 2
               } else {
-                targetX = -rowWidth / 2 + currentBlockSize.width / 2
+                targetX = -thisBlockWidth / 2
               }
             } else {
-              // Add to current row
-              // For RTL, add to the left (subtract spacing); for LTR, add to the right (add spacing)
+              // Add to current row, accounting for variable widths
+              // Gap is half of last block's width + gap + half of this block's width
+              const spacing = lastWidth / 2 + blockGap + thisBlockWidth / 2
               targetX = isBlockLangRTL
-                ? last.mesh.position.x - sentenceSpacing
-                : last.mesh.position.x + sentenceSpacing
+                ? last.mesh.position.x - spacing
+                : last.mesh.position.x + spacing
             }
           }
 
@@ -2534,23 +2642,17 @@ export const createJuiceSqueeze = (
     // Update 3D bottle layout
     bottle3D.updateLayout(metrics.worldWidth, metrics.worldHeight)
 
-    // If we have blocks, recalculate and reposition everything
+    // If we have blocks, reposition them (no mesh scaling to avoid mismatch)
     if (currentUtterance && wordBlocks.length > 0) {
-      const wordCount = currentUtterance.words.length
-      const blockSize = calculateBlockSize(wordCount, metrics)
+      const words = currentUtterance.words
+      const blockSize = calculateBlockSize(words, metrics)
 
-      // Scale block meshes to new calculated size
-      wordBlocks.forEach((block) => {
-        const data = wordBlockData.get(block)
-        if (data && data.baseWidth && data.baseHeight) {
-          block.scaling.x = blockSize.width / data.baseWidth
-          block.scaling.y = blockSize.height / data.baseHeight
-          // Keep Z scaling at 1
-        }
-      })
+      // Don't scale meshes - they keep their creation-time dimensions
+      // This prevents the overlap/squash bug from scaling mismatches
+      // Just reposition based on stored widths
 
       // Update sentence area first (this recalculates row positions)
-      createSentenceArea(metrics, blockSize, wordCount)
+      createSentenceArea(metrics, blockSize, words.length)
 
       // Reposition word bank blocks (blocks not in sentence)
       positionWordBlocks(wordBlocks, metrics, blockSize)
