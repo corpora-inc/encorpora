@@ -664,14 +664,20 @@ fn content_packs_get_manifest_url(app: AppHandle, pack_id: String) -> Result<Str
 
 /// Load an LLM model from a file path
 #[command]
-fn llm_load_model(
+async fn llm_load_model(
     app: AppHandle,
     state: State<'_, LlmState>,
     model_path: String,
     model_id: String,
 ) -> Result<(), String> {
     let resolved_path = resolve_model_path(&app, &model_path)?;
-    state.inner().load_model(&resolved_path, &model_id)
+    let state = state.inner().clone();
+    // Run in blocking task to avoid freezing the UI during load
+    tokio::task::spawn_blocking(move || {
+        state.load_model(&resolved_path, &model_id)
+    })
+    .await
+    .map_err(|e| format!("Task join error: {}", e))?
 }
 
 /// Unload an LLM model
@@ -685,12 +691,18 @@ fn llm_unload_model(
 
 /// Generate text using an LLM model (returns array of token strings)
 #[command]
-fn llm_generate(
+async fn llm_generate(
     state: State<'_, LlmState>,
     model_id: String,
     request: LlmGenerateRequest,
 ) -> Result<Vec<String>, String> {
-    state.inner().generate(&model_id, request)
+    let state = state.inner().clone();
+    // Run in blocking task to avoid freezing the UI
+    tokio::task::spawn_blocking(move || {
+        state.generate(&model_id, request)
+    })
+    .await
+    .map_err(|e| format!("Task join error: {}", e))?
 }
 
 /// Open Apple's Feedback Assistant app using the 'open' command (macOS/iOS)

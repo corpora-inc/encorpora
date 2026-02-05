@@ -1,12 +1,16 @@
 import { invoke } from "@tauri-apps/api/core";
 
+export interface ChatMessage {
+  role: "system" | "user" | "assistant";
+  content: string;
+}
+
 export interface LlmGenerateRequest {
-  prompt: string;
+  messages: ChatMessage[];
+  system_message?: string;
   max_tokens?: number;
   temperature?: number;
   top_p?: number;
-  repeat_penalty?: number;
-  repeat_last_n?: number;
   stop_sequences?: string[];
 }
 
@@ -40,7 +44,19 @@ export async function generate(
   modelId: string,
   request: LlmGenerateRequest
 ): Promise<string[]> {
-  return await invoke<string[]>("llm_generate", { modelId, request });
+  console.log("[LLM] Starting generation:", {
+    modelId,
+    messageCount: request.messages.length,
+    maxTokens: request.max_tokens,
+  });
+
+  const startTime = performance.now();
+  const result = await invoke<string[]>("llm_generate", { modelId, request });
+
+  const elapsed = ((performance.now() - startTime) / 1000).toFixed(2);
+  console.log(`[LLM] Completed in ${elapsed}s, received ${result.length} tokens`);
+
+  return result;
 }
 
 /**
@@ -54,5 +70,35 @@ export async function generateText(
   request: LlmGenerateRequest
 ): Promise<string> {
   const tokens = await generate(modelId, request);
-  return tokens.join("");
+  const text = tokens.join("");
+  console.log("[LLM] Generated text length:", text.length, "chars");
+  console.log("[LLM] First 100 chars:", text.substring(0, 100));
+  return text;
+}
+
+/**
+ * Generate a response in a conversation
+ * @param modelId - Identifier of the model to use
+ * @param messages - Conversation history
+ * @param systemMessage - System message/character personality
+ * @param options - Generation options
+ * @returns Assistant's response
+ */
+export async function generateChatResponse(
+  modelId: string,
+  messages: ChatMessage[],
+  systemMessage?: string,
+  options?: {
+    max_tokens?: number;
+    temperature?: number;
+    top_p?: number;
+  }
+): Promise<string> {
+  return await generateText(modelId, {
+    messages,
+    system_message: systemMessage,
+    max_tokens: options?.max_tokens ?? 100,
+    temperature: options?.temperature ?? 0.7,
+    top_p: options?.top_p ?? 0.9,
+  });
 }
