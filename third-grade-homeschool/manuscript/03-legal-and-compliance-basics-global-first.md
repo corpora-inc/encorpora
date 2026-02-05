@@ -1,8 +1,8 @@
 # Legal and Compliance Basics
 
-At first glance, the rules around homeschooling can feel confusing, but the core concerns are pretty much the same everywhere. Authorities mainly want to know who is guiding a child's education, what that education covers, and whether the child is genuinely learning and growing. These are practical questions, not trick ones—most parents can meet these expectations with straightforward routines. This section breaks down those universal requirements into clear, manageable pieces and uses Georgia as a working model to demonstrate how the basics play out in one location. Once you see the shared logic behind these rules, you'll find your own local regulations much less intimidating and much easier to work with. The goal here is not just to help you comply, but to help you do it with minimal fuss, so you can focus on what matters most: teaching your child, not getting buried in busywork.
+At first glance, the rules around homeschooling can feel confusing, but the core concerns are the same everywhere. Authorities mainly want to know who is guiding a child's education, what that education covers, and whether the child is genuinely learning and growing. These are practical questions, not trick ones—most parents can meet these expectations with straightforward routines. This section breaks down those universal requirements into clear, manageable pieces and uses Georgia as a working model to demonstrate how the basics play out in one location. Once you see the shared logic behind these rules, you'll find your own local regulations much less intimidating and much easier to work with. The goal here is not only to help you comply, but to help you do it with minimal fuss, so you can focus on what matters most: teaching your child, not getting buried in busywork.
 
-If you want the simplest possible way to start, just open **Homeschool Offline** and begin logging your days. It starts as a simple calendar and log, but it also supports portfolios, testing records, and jurisdiction-specific requirements. You can snap photos of work as you go, promote them into a portfolio, and import or export your data whenever you want. You own the data and it stays on your device. Paper binders and notebooks are still fine; this just makes it easy to keep a complete, honest record without extra friction.
+If you want the simplest possible way to start, open **Homeschool Offline** and begin logging your days. It starts as a simple calendar and log, but it also supports portfolios, testing records, and jurisdiction-specific requirements. You can snap photos of work as you go, promote them into a portfolio, and import or export your data whenever you want. You own the data and it stays on your device. Paper binders and notebooks are still fine; this makes it easy to keep a complete, honest record without extra friction.
 
 Shameless plug: we built **Homeschool Offline** because we are homeschoolers, we wanted this exact tool, and we use it every day. It is deliberately simple, fast, and offline-first. The core idea is to make compliance feel like a natural byproduct of teaching, not a second job. One tap to mark a day, one photo to capture a win, and your portfolio quietly builds itself in the background. When you need records, they are already there, and you can export them without begging anyone for your own data. If you love paper, keep using paper. If you want the easy path, this is the easy path.
 
@@ -19,7 +19,7 @@ Here’s the global “minimum viable” checklist to look for in your country o
 
 - **Notify** the relevant authority that you intend to homeschool (sometimes before you start, sometimes annually).
 - **Describe a plan** for the year (often a simple outline of subjects, resources, and goals).
-- **Provide regular instruction** (some places specify hours or days, others just expect a steady routine).
+- **Provide regular instruction** (some places specify hours or days, others expect a steady routine).
 - **Keep records** that show progress over time.
 - **Complete required reviews or assessments** if your area uses them.
 
@@ -27,7 +27,7 @@ Here’s the global “minimum viable” checklist to look for in your country o
 
 You usually do not need an elaborate curriculum document or a binder that could qualify as a piece of furniture. Most officials are not asking you to be a school. They are asking you to be a responsible adult who can show what you’re doing.
 
-> **Compliance evidence** is simply proof that learning is planned, happening, and being checked in a reasonable way.
+> **Compliance evidence** is proof that learning is planned, happening, and being checked in a reasonable way.
 
 A brief written plan, a predictable weekly rhythm, and a modest set of work samples is often enough. Think of it like keeping a workout log: track the work and the progress just enough to show consistent effort.
 
@@ -43,14 +43,13 @@ A simple setup prevents all three:
 
 ![A simple path to staying compliant](images/A_simple_global_compliance_flowchart.png)
 
-
-## Attendance and Instructional Time: Tracking Simply
+## Attendance and Instructional Time
 
 Most parents find they do not need to record every minute or log every activity in detail. The main thing officials look for is regular, honest evidence that learning is happening.
 
 Think **consistent, not constant**. A steady pattern matters more than a minute-by-minute account.
 
-### Pick a method you will actually keep
+### Pick a method you will keep
 
 Choose a recordkeeping method that fits your real life. A log stuffed with details is useless if you abandon it by October.
 
@@ -95,7 +94,7 @@ Think in **dated samples + a short paper trail**.
 
 ### What counts as a work sample
 
-Keep typical work, not just highlight reels. A balanced portfolio usually includes a mix like this:
+Keep typical work, not only highlight reels. A balanced portfolio usually includes a mix like this:
 
 - **Writing:** a journal entry, a story draft with revisions, a short report
 - **Math:** a page showing the current topic, including corrections
@@ -105,7 +104,7 @@ Keep typical work, not just highlight reels. A balanced portfolio usually includ
 
 For anything that doesn’t produce paper, take a quick photo and label it with a date and a short note (“Built a lever, tested three weights” is plenty).
 
-### A low-stress system you will actually maintain
+### A low-stress system you will maintain
 
 Pick one home for everything: a binder, an accordion folder, or a single digital folder. The win is not perfection. The win is **consistency**.
 
@@ -113,7 +112,7 @@ Here’s a practical rhythm that stays small:
 
 - Put work in a “to-file” stack during the month.
 - At month’s end, choose the **most typical** one or two pieces per subject and file them.
-- Add your quarterly note when you change seasons, finish a unit, or simply notice a shift.
+- Add your quarterly note when you change seasons, finish a unit, or notice a shift.
 
 The real payoff is twofold: you have solid evidence that instruction is happening, and you can see growth that’s easy to miss day to day. When you flip back a few months and notice handwriting smoothing out, sentences getting longer, or math work getting more independent, you’ll know where to focus next and you’ll have proof to match.
 
@@ -141,7 +140,7 @@ Assessments tend to earn their keep in three situations.
 Different regions use different systems, but most requirements land in a familiar set.
 
 - **Parent evaluation:** A short written summary of growth in the core areas. This is often enough, and it helps you spot patterns over time.
-- **Teacher or third-party review:** A licensed teacher or approved reviewer looks through your child’s work, usually as a portfolio, and gives brief written feedback. This can be required, or simply reassuring.
+- **Teacher or third-party review:** A licensed teacher or approved reviewer looks through your child’s work, usually as a portfolio, and gives brief written feedback. This can be required, or reassuring.
 - **Standardized testing:** Sometimes required every few years, usually focusing on reading and math (and occasionally science or social studies). Treat it as one data point, not “the truth.”
 
 ### Timing: think “light, often” plus “formal, when required”
@@ -165,7 +164,7 @@ The stakes with routine assessments are low, and improvement is always possible 
 
 ## Georgia Example
 
-Georgia is a clear, practical example of how homeschool rules often work in the U.S. Think of it less as a script to follow and more as a template for making sense of compliance wherever you are. The routines Georgia requires hint at something universal: what most governments are really checking for, even when their wording differs.
+Georgia is a clear, practical example of how homeschool rules often work in the U.S. Think of it less as a script to follow and more as a template for making sense of compliance wherever you are. The routines Georgia requires hint at something universal: what most governments are checking for, even when their wording differs.
 
 ### What Georgia typically asks for
 
@@ -198,7 +197,7 @@ When you look up your own regulations, sort them into a few buckets. This helps 
 - **Documentation:** What records are required, and for how long?
 - **Assessment:** Is there testing, evaluation, portfolio review, or another check-in?
 
-If something is unclear, ask what the rule is trying to ensure, then call or email the relevant office with direct questions until you can explain the requirement in plain language. Once you can say, “Here is what they want, here is how we will do it,” you are basically done.
+If something is unclear, ask what the rule is trying to ensure, then call or email the relevant office with direct questions until you can explain the requirement in plain language. Once you can say, “Here is what they want, here is how we will do it,” you are done.
 
 Think of compliance as a light warm-up before the main workout: repeatable, low-drama, and meant to support your real job, not replace it. When your documentation routine is small enough to maintain week to week, you stay both compliant and sane.
 

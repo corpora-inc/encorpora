@@ -1,6 +1,6 @@
 # Planning the Year
 
-A year plan is your set of lightweight guardrails—aiming the car once so you can spend more energy on teaching than on deciding, day after day, which way to go. With a clear map, you keep reading, writing, and math moving in steady rotation and avoid that creeping feeling in spring: “Wait, did we ever actually cover fractions?” The plan isn’t about perfect prediction or locking everything in advance; it’s about making course corrections simple and inexpensive. In agile terms, think of your year as a backlog and a cadence, not a contract. You’ll plan a little, teach a little, notice what’s working, and adjust as needed. Every few weeks, take a step back for a quick check: what’s running smoothly, what’s taking too much effort, and what just isn’t earning its keep?
+A year plan is your set of lightweight guardrails—aiming the car once so you can spend more energy on teaching than on deciding, day after day, which way to go. With a clear map, you keep reading, writing, and math moving in steady rotation and avoid that creeping feeling in spring: “Wait, did we ever cover fractions?” The plan isn’t about perfect prediction or locking everything in advance; it’s about making course corrections simple and inexpensive. In agile terms, think of your year as a backlog and a cadence, not a contract. You’ll plan a little, teach a little, notice what’s working, and adjust as needed. Every few weeks, take a step back for a quick check: what’s running smoothly, what’s taking too much effort, and what isn’t earning its keep?
 
 Keeping things economical, remember your family’s limits on attention and patience. Invest in routines that pay off repeatedly and avoid drowning in admin that doesn’t add value. Plan like bonsai: prune anything that does not earn its keep. A simple scope-and-sequence, built-in buffer days, and a minimal tracker can cover both your educational and compliance needs—keeping your home a place of learning, not paperwork. A quick glance at the standards keeps you pointed in the right direction; you adjust as needed, without bloating the plan.
 
@@ -64,7 +64,7 @@ This is agile thinking at a parent-friendly scale: plan lightly, try it, observe
 
 Most third graders make genuine progress with about **two to four hours** of focused academic work, split into short blocks.
 
-If your state has an hourly requirement, remember those hours usually include the broader learning day, not just desk work. You can honestly reach a longer total by counting read-alouds, independent reading, hands-on work, and supervised assignments. Art, music, science experiments, nature walks, map work, co-op classes, and real-life skills like cooking (measurement) or errands (money math) often count, too.
+If your state has an hourly requirement, remember those hours usually include the broader learning day, not only desk work. You can honestly reach a longer total by counting read-alouds, independent reading, hands-on work, and supervised assignments. Art, music, science experiments, nature walks, map work, co-op classes, and real-life skills like cooking (measurement) or errands (money math) often count, too.
 
 Different kids will use the same calendar differently. A quick finisher may need harder books and bigger projects. A steady builder may thrive on predictable routines and visible, incremental progress. An easily overwhelmed child often does best with short, defined blocks aimed at small wins.
 
@@ -189,7 +189,7 @@ For third grade, **10 to 20 focused minutes** can be enough.
 - Do a short, low-pressure math session.
 - If there is still energy, add a tiny writing task: one sentence about the day, a labeled drawing, or a few lines of copywork.
 
-Minimal, but mighty. Keeping the habit alive, even in its smallest form, protects continuity. Different kids respond differently: anxious perfectionists often relax when they know they “checked the box,” while energetic kids may finish in five minutes and move on. Take those wins.
+Minimal, but mighty. Keeping the habit alive, even in its smallest form, protects continuity. Different kids respond differently: anxious perfectionists often relax when they see a clear finish, while energetic kids may finish in five minutes and feel the win. Take those wins.
 
 ### Push the core, keep the rest in the backlog
 
@@ -201,7 +201,7 @@ This is where the agile metaphor helps: keep your core skills “in progress” 
 
 Travel naturally brings in learning, so do not force extra schoolwork on the road unless it genuinely helps.
 
-A few low-effort options that travel-friendly families actually keep:
+A few low-effort options that travel-friendly families keep:
 
 - A travel journal: one sentence a day plus a quick sketch.
 - A “field museum” page: tickets, leaves, labels, small notes.
@@ -218,7 +218,7 @@ When you lose time, you do not need a guilt-driven marathon. Try one of these ge
 - Switch from new content to **review and mixed practice** to rebuild confidence.
 - Pick your non-negotiables (often reading and math) and let the rest recede until everyone feels settled.
 
-If a plan requires you to become someone else just to keep up, tweak the plan, not yourself.
+If a plan requires you to become someone else to keep up, tweak the plan, not yourself.
 
 The deeper principle is to focus on actual progress, not perfection on the calendar. Your main deliverables are simple: your child’s reading, writing, and math get a bit stronger, and a brief written log plus a few work samples accumulate naturally as your routine holds. Treat your homeschool like a good workshop: keep slack in the schedule, use simple tools for rough days, and steer back to the core when life gets unpredictable. This is how you finish strong, even with travel, illness, and all the other ordinary weeks that make life real.
 
@@ -226,7 +226,7 @@ The deeper principle is to focus on actual progress, not perfection on the calen
 
 ## Mixing Skill Work With Projects
 
-The key is to stop treating “skills” and “projects” as if they’re rivals on the schedule. Think of daily skill practice, reading, writing, and math, as your essential workout: the basic moves that keep everything strong and steady. Projects are the compound exercises: they use those skills together in ways that make learning stick.
+The key is to stop treating “skills” and “projects” as if they’re rivals on the schedule. Think of daily skill practice, reading, writing, and math, as your essential workout: the basic moves that keep everything strong and steady. Projects are the compound movements: they use those skills together in ways that make learning stick.
 
 Done well, projects don’t replace skill practice. They reinforce and multiply it.
 
@@ -282,7 +282,7 @@ A simple rhythm that works in most homes:
 - **Work:** spend 20 to 40 minutes on the project after anchors, most days.
 - **Ship it:** finish, share, or file something tangible at week’s end.
 
-“Ship it” just means you produce something you can talk about. It can be rough. A finished, imperfect bit of work does more for learning than an endless almost-done masterpiece.
+“Ship it” means you produce something you can talk about. It can be rough. A finished, imperfect bit of work does more for learning than an endless almost-done masterpiece.
 
 ### Track progress without becoming a documentarian
 
@@ -292,7 +292,7 @@ It helps to keep the work visible, but you don’t need to turn your life into p
 
 The right balance depends on the kid you have.
 
-For reluctant readers, keep anchors short, use more read-aloud, and let the project create a reason to read (“We need this map legend to finish”). For strong readers who avoid writing, make writing the ticket to the next project step: one good paragraph, then you move on. For children who find math intimidating, keep daily practice tiny and consistent, and let the project use math as a low-pressure tool.
+For reluctant readers, keep anchors short, use more read-aloud, and let the project create a reason to read (“We need this map legend to finish”). For strong readers who avoid writing, make writing the ticket to the next project step: one good paragraph, then the project opens back up. For children who find math intimidating, keep daily practice tiny and consistent, and let the project use math as a low-pressure tool.
 
 If your child tends to hyperfocus, set a timer and define what “done” means for today. Leave a note about the next step so tomorrow starts smoothly.
 
@@ -302,7 +302,7 @@ When in doubt, protect your anchors, shrink the project, and keep moving. The co
 
 ## A Simple Yearlong Tracker You Can Maintain
 
-A tracker does one thing well: it makes real progress visible without demanding your time or focus. Think of it like a receipt. You just need enough record-keeping to keep your confidence up, notice patterns, and satisfy any compliance requirements where you live.
+A tracker does one thing well: it makes real progress visible without demanding your time or focus. Think of it like a receipt. You need enough record-keeping to keep your confidence up, notice patterns, and satisfy any compliance requirements where you live.
 
 If you use it consistently, this simple log becomes a quiet asset: a steady record you can consult or show as needed. Aim for **five minutes a day or less**. The habit is small, but it pays off over the long haul.
 
@@ -326,7 +326,7 @@ Here are three examples of a “good” homeschool day, in slightly different st
 - Oct 3 | Core: Math 25 min (arrays + 6s facts) + wrote 6-sentence paragraph | Extras: Watched video on volcanoes, wrote 3 questions | Note: Facts shaky. Arrays helped. Keep that model.
 - Jan 22 | Core: Audiobook 20 min + oral narration + math game 15 min | Extras: Baked muffins (fractions) | Note: Rough mood. Oral narration saved the day.
 
-Notice what’s missing: long explanations. Your future self needs only enough detail to remember what actually happened.
+Notice what’s missing: long explanations. Your future self needs only enough detail to remember what happened.
 
 ### One note that improves the system
 
@@ -344,7 +344,7 @@ Examples: “Confused by regrouping, needs more base-ten blocks before pencil,�
 
 Once a week, add a small reflection box at the bottom of your page. Keep it short: one to three things that went well, one thing that felt sticky, and the simplest plan for next week.
 
-If you want one extra line that really pays off, add a **portfolio artifact** for the week: something you might save, like a photo, worksheet, whiteboard snapshot, or writing sample.
+If you want one extra line that pays off, add a **portfolio artifact** for the week: something you might save, like a photo, worksheet, whiteboard snapshot, or writing sample.
 
 ### Portfolios without extra work
 
@@ -361,7 +361,7 @@ Store artifacts in a paper folder or a digital album sorted by month. When someo
 
 ### Fit the tracker to your child
 
-Tracking should match the child you actually have.
+Tracking should match the child you have.
 
 For steady, independent kids, keep it minimal and note when your child works without help. That’s real progress. Save only a handful of artifacts that show increasing difficulty.
 
@@ -371,7 +371,7 @@ For kids who are moving fast, track **mastery**, not grade level. Save a few mor
 
 ### Optional: a monthly standards glance
 
-If standards or curriculum guides matter in your area, do a very light check once a month. Scan a third-grade scope and sequence and add a single line to your weekly reflection, such as “on track,” “need more nonfiction reading,” or “more fractions.”
+If standards or curriculum guides matter in your area, do a light check once a month. Scan a third-grade scope and sequence and add a single line to your weekly reflection, such as “on track,” “need more nonfiction reading,” or “more fractions.”
 
 You’re not trying to hit every bullet point. You’re staying oriented while letting your child’s actual growth lead.
 

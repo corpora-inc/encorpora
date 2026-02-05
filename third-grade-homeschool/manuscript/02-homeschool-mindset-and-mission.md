@@ -20,13 +20,13 @@ Homeschool needs both. Legal requirements, annual plans, and testing live in Chr
 
 ## **Homeschool Program Metaphors**
 
-Metaphors are tools, not doctrine. They help you visualize what success looks like, which is why they belong in the same mental space as your mission statement. Athletes and lifters use visualization to perform better; homeschool benefits from the same practice. Picture the kind of day you want, then build toward it. You can mix and match by the hour.
+Metaphors are tools, not doctrine. They help you visualize what success looks like, which is why they belong in the same mental space as your mission statement. Athletes and lifters use visualization to perform better; homeschool benefits from the same practice. Picture the day you want, then build toward it. You can mix and match by the hour.
 
 **Classroom.** A classroom has a clear leader, a shared pace, and visible routines. It can be useful for direct instruction or group learning, but it is not the only model and often not the best fit at home. The point is that you can choose when you want that structure and when you want something else.
 
 **Workshop.** A workshop is about making. Tools are in reach, projects are visible, and the work feels practical. It is a good metaphor for hands-on learning and building real things, as long as you do not let productivity become the only measure of value.
 
-**Studio.** A studio is where craft grows through practice and revision. It is a strong metaphor for writing, art, and music, because the focus is on process and taste, not just output. You can visualize a calm, focused space where small improvements compound over time.
+**Studio.** A studio is where craft grows through practice and revision. It is a strong metaphor for writing, art, and music, because the focus is on process and taste, not only output. You can visualize a calm, focused space where small improvements compound over time.
 
 **Garden.** A garden is about growth, timing, and seasons. It reminds you that readiness matters, progress is uneven, and patience pays off. When you picture a garden, you allow for slow roots and sudden bursts.
 
@@ -60,7 +60,7 @@ Metaphors are tools, not doctrine. They help you visualize what success looks li
 
 **Monastery.** A monastery represents quiet, ritual, and depth. It is a good metaphor for focused reading, contemplative writing, and sustained attention. It reminds you that silence can be productive, not empty.
 
-**Marketplace.** A marketplace is about value, choice, and relevance. It pairs naturally with the economics lens: your child’s attention is a vote, and materials compete for time. This metaphor helps you choose what is actually worth the investment.
+**Marketplace.** A marketplace is about value, choice, and relevance. It pairs naturally with the economics lens: your child’s attention is a vote, and materials compete for time. This metaphor helps you choose what is worth the investment.
 
 **Game Board.** A game board has rules, feedback, and visible progress. It works well for skill practice, goal tracking, and small incentives. The idea is not to bribe, but to make progress visible and fun.
 
@@ -82,7 +82,7 @@ Clarity is making the work legible: what we are doing, why it matters, and what 
 
 ### **Consistency: reps, not perfection**
 
-Consistency is showing up for the basics most days, the way strength is built through repeated reps. This is not never missing. It is returning calmly. If you miss Tuesday, move on to Wednesday without drama. That habit builds trust.
+Consistency is showing up for the basics most days, the way strength is built through repeated reps. This is not never missing. It is returning calmly. If you miss Tuesday, return on Wednesday without drama. That habit builds trust.
 
 ### **Flexibility and novelty are part of the system**
 

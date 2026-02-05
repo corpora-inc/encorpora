@@ -2,14 +2,14 @@
 
 Homeschooling will challenge your endurance and emotional reserves as much as your teaching skills. The early weeks can feel overwhelming, and doubts can resurface even after you start. Survival is not about dodging hard days. It is about building routines and a mindset that last for the whole year.
 
-This section helps you start gently, notice real progress, and protect the energy and connection that make learning work at home. The goal is to finish the year not just with academic boxes checked, but feeling stronger, closer, and more capable.
+This section helps you start gently, notice real progress, and protect the energy and connection that make learning work at home. The goal is to finish the year not only with academic milestones met, but feeling stronger, closer, and more capable.
 
 
 ## The First 30 Days: A Gentle Ramp-Up Plan
 
 Starting homeschooling is both exciting and daunting. The first month is not about mastering every subject or sprinting ahead. It is about easing your family into a steady, workable rhythm.
 
-A ramp-up plan just means you *introduce school slowly*. Instead of leaping into a full schedule, you begin with a simple structure and add pieces as you gain confidence. That lowers stress, reduces resistance, and helps both you and your child feel more in control.
+A ramp-up plan means you *introduce school slowly*. Instead of leaping into a full schedule, you begin with a simple structure and add pieces as you gain confidence. That lowers stress, reduces resistance, and helps both you and your child feel more in control.
 
 > **Ramp-up plan:** Start with a tiny schedule you can keep, then add one new “layer” each week as the routine becomes reliable.
 
@@ -68,14 +68,14 @@ Expect good days, flat days, and some tough ones, for both you and your child. Y
 
 When you look for evidence of growth, focus on how things change across **weeks and months**.
 
-Here are the kinds of shifts that actually matter:
+Here are the kinds of shifts that matter:
 
 - **Reading:** longer stamina, less panic with unfamiliar words, better grasp of what’s happening in a story
 - **Math:** faster recall of facts, fewer prompts needed for multi-step work, strategies becoming more automatic
 - **Writing:** more sentences before running out of steam, easier starts, less coaching to build a paragraph
 - **Independence:** gets materials without reminders, tries another strategy before asking for help, starts a task on their own
 
-These “independence tells” are especially valuable. They’re evidence your child is building the real engine of learning, not just completing pages.
+These “independence tells” are especially valuable. They’re evidence your child is building the real engine of learning, not only completing pages.
 
 ### Tracking without turning it into a second job
 
@@ -87,16 +87,16 @@ Once a month, jot quick notes on what you’ve noticed. Fragments are fine. You 
 
 At home, learning isn’t about endless right answers or a string of high grades. Look for effort that becomes smoother over time, tasks that don’t scare them like they used to, and risks your child is willing to take with new material.
 
-Measure month by month, not hour by hour. You’ll get a more accurate picture, you’ll make better decisions, and your child will feel safer doing the kind of practice that actually leads to growth.
+Measure month by month, not hour by hour. You’ll get a more accurate picture, you’ll make better decisions, and your child will feel safer doing the practice that leads to growth.
 
 
 ## Keeping Your Morale Steady
 
-Homeschooling is not just about teaching your child. It’s also about taking care of yourself along the way. **Morale** (that steady sense of energy, hope, and resilience) matters as much as any lesson plan. Some days will move smoothly, while others will test your patience.
+Homeschooling is not only about teaching your child. It’s also about taking care of yourself along the way. **Morale** (that steady sense of energy, hope, and resilience) matters as much as any lesson plan. Some days will move smoothly, while others will test your patience.
 
 Steady morale doesn’t mean you’re always cheerful or immune to struggle. It means you have habits and supports that help you return to center when things get rough.
 
-It’s tempting to think you should wake up daily with fresh enthusiasm just because you chose to homeschool. In real life, motivation comes and goes, especially when you’re juggling other responsibilities. What’s more useful than constant positivity is having a handful of reliable systems: repeatable routines, small supportive habits, and boundaries you can trust.
+It’s tempting to think you should wake up daily with fresh enthusiasm because you chose to homeschool. In real life, motivation comes and goes, especially when you’re juggling other responsibilities. What’s more useful than constant positivity is having a handful of reliable systems: repeatable routines, small supportive habits, and boundaries you can trust.
 
 Think of them like the rails of a train track: they don’t prevent bumps altogether, but they keep you from derailing when the ride gets bumpy.
 
@@ -110,7 +110,7 @@ For most families, three “stabilizers” pay off all year.
 
 ### When things go sideways: the 10-Minute Reset
 
-Sometimes even a solid routine hits a wall. When a lesson falls apart, it isn’t a sign you’ve failed. It just means you hit a patch that needs a different approach.
+Sometimes even a solid routine hits a wall. When a lesson falls apart, it isn’t a sign you’ve failed. It means you hit a patch that needs a different approach.
 
 > **The 10-Minute Reset:** Stop the lesson. Water. Five minutes of movement. Then return to one small, winnable goal.
 
@@ -128,7 +128,7 @@ You are the “adult nervous system” of the room. If you’re running on fumes
 
 - **Claim one hour a week that belongs only to you.** Reading, a walk, a hobby, or doing nothing. Treat it as maintenance, not something you have to earn.
 - **Set a planning cutoff.** No planning, scrolling curriculum resources, or checking homeschool social media after 9 p.m. Protecting tomorrow by resting tonight is both kind and strategic.
-- **Have one other adult you can reach out to.** Even if it’s just a venting text and a little perspective. No apology needed.
+- **Have one other adult you can reach out to.** Even if it’s a venting text and a little perspective. No apology needed.
 
 You don’t need to perform cheerfulness or lean on empty slogans. What matters is consistency with a few steady systems. When you lose your footing, return to the routines and boundaries that work for you. Over time, showing up steadily in a way that’s sustainable will do far more good than bursts of forced enthusiasm.
 
@@ -138,7 +138,7 @@ You don’t need to perform cheerfulness or lean on empty slogans. What matters 
 
 Families thrive on a few steady routines that anchor the inner life, regardless of faith or worldview. These habits don’t require special beliefs, only a willingness to pause and connect. Even on hard days, they add perspective and help keep kindness alive.
 
-Here, **spiritual practices** simply means small, repeatable actions that turn your attention toward what matters most.
+Here, **spiritual practices** means small, repeatable actions that turn your attention toward what matters most.
 
 > Spiritual practices (in this book) are short, repeatable habits that help a family notice what’s good, stay connected, and act with care.
 
@@ -201,17 +201,17 @@ If you want an easy starting plan, choose **one anchor moment** (breakfast, the 
 
 ## Ending the Year Proud, Not Exhausted
 
-Completing a year of homeschooling is a real accomplishment, for you and your child. Closure is more than clearing away books or supplies. It means noticing growth, naming effort, and stepping forward with pride, ideally with a little more energy than when you began.
+Completing a year of homeschooling is a real accomplishment, for you and your child. Closure is more than clearing away books or supplies. It means noticing growth, naming effort, and stepping forward with pride, ideally with more energy than when you began.
 
 A good ending does quiet emotional work: it helps everyone process what happened, puts the hard days into perspective, and makes the progress feel real. Instead of drifting into summer with a vague sense of not doing enough, you finish with a clear story: **we showed up, we learned, we got stronger**.
 
-### What “closure” actually does
+### What “closure” does
 
 A distinct finish gives your homeschool year boundaries, which sounds simple but matters.
 
 For your child, it confirms that their efforts meant something. For you, it validates that your investment of time and attention paid off. Without a finish line, it’s easy to roll straight into the next season without any context for growth.
 
-> Closure turns "we did school" into "we built skills." That story is fuel for next year.
+> Closure turns “we did school” into “we built skills.” That story is fuel for next year.
 
 ### A simple three-step finish
 
@@ -240,7 +240,7 @@ A homeschool portfolio works best as a **highlight reel**, not an exhaustive scr
 - Photos of a memorable experiment, build, or field trip
 - A drawing or map that shows careful observation
 
-You’ll end up with a record you can actually maintain, and it’s often enough if you ever need documentation for official or personal reasons.
+You’ll end up with a record you can maintain, and it’s often enough if you ever need documentation for official or personal reasons.
 
 ### Ending without the “should-have” hangover
 

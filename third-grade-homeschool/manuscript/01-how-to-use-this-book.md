@@ -25,7 +25,7 @@ We use **compound** in two different ways. Keep them distinct.
 
 Agile ideas came from manufacturing and then software. Toyota used kanban to control flow and reduce waste. Software teams adopted short cycles, frequent review, and small plans. Homeschool is also a small system, so these ideas fit well.
 
-**Bonsai** is the art of shaping a small tree by careful pruning. In this book, bonsai means keeping the homeschool small enough to run, and joyful enough to sustain. “One Bonsai” in software is a philosophy of productivity that protects motivation and joy, not just output.
+**Bonsai** is the art of shaping a small tree by careful pruning. In this book, bonsai means keeping the homeschool small enough to run, and joyful enough to sustain. “One Bonsai” in software is a philosophy of productivity that protects motivation and joy, not only output.
 
 > **Agile terms we will use**
 >
@@ -101,7 +101,7 @@ This guide is about building a steady rhythm and adjusting as you see what works
 Eight-to-ten-year-olds are usually learning to:
 
 - **Sustain attention** and return to a task after a break.
-- **Explain their thinking**, not just give answers.
+- **Explain their thinking**, not only give answers.
 - **Follow multi-step instructions** and manage materials.
 - **Recover from mistakes** and try again.
 - **Work with other people** more smoothly.
@@ -126,7 +126,7 @@ Purpose can be plain: stability, a calmer pace, more time outside, a better fit 
 
 As you write it, visualize the year. Athletes and lifters use visualization because it improves performance. Homeschool can, too. Picture what a good day feels like, what your child is doing, and how you are working together. The metaphors in the next chapter help you choose an image that fits: a studio day, a garden day, a dojo day, or a playful, light day.
 
-### **Write it with your child, not just about your child**
+### **Write it with your child, not only about your child**
 
 If your child can participate even briefly, invite them in. Do it during a snack or a walk. Jot down their exact words.
 
@@ -172,7 +172,7 @@ Do not fence off subjects or overbuild plans. In lean terms, avoid **overproduct
 
 Look for **compound movements** that train multiple skills at once. Cooking is a classic example: reading directions, measuring, timing, and observing change.
 
-If a real question appears, treat it like a short project: read one short source, write a few sentences to explain it, and do a simple experiment or observation. That is agile homeschooling: notice, test, capture a little output, move on.
+If a real question appears, treat it like a short project: read one short source, write a few sentences to explain it, and do a simple experiment or observation. That is agile homeschooling: notice, test, capture a little output, then return to the day.
 
 ### **The extras: great, not required**
 

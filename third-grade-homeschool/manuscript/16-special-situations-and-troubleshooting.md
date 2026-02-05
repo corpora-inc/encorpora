@@ -9,7 +9,7 @@ Homeschooling is not about forcing your family into a mold. The tricky moments a
 
 ## The Reluctant Learner
 
-Some children simply do not take to schoolwork with ease. That’s not a sign of laziness, poor parenting, or a failing curriculum. A reluctant learner is a child who resists engaging with lessons, sometimes quietly and sometimes with open frustration. The core reasons are usually straightforward: work feels too hard, too dull, or your child is afraid to make mistakes. Your job is to lower these barriers and demonstrate that learning can fit them, not the other way around.
+Some children do not take to schoolwork with ease. That’s not a sign of laziness, poor parenting, or a failing curriculum. A reluctant learner is a child who resists engaging with lessons, sometimes quietly and sometimes with open frustration. The core reasons are usually straightforward: work feels too hard, too dull, or your child is afraid to make mistakes. Your job is to lower these barriers and demonstrate that learning can fit them, not the other way around.
 
 Reluctance is more than slow progress; it usually looks like avoidance. You may see your child daydreaming, stalling with pencil sharpening, or complaining at the table. Sometimes it leads to tears, arguments, or a quick shutdown, like hearing “I can’t” the moment a book opens. Treat reluctance as information, not a character flaw. Nearly every child passes through phases like these. It’s not permanent, and it’s not unique to your family.
 
@@ -34,7 +34,7 @@ The most effective way to counter reluctance isn’t tough talk. It’s building
 
 A good default is: **shrink the task, then keep the standard**. You’re not lowering expectations forever. You’re making success likely enough that your child can practice courage and competence at the same time.
 
-Honest choices help, too. Let your child pick which book to start with, where to sit, or whether to do math before reading. These small decisions reduce the feeling of being controlled and create just enough buy-in to start.
+Honest choices help, too. Let your child pick which book to start with, where to sit, or whether to do math before reading. These small decisions reduce the feeling of being controlled and create enough buy-in to start.
 
 ### Make progress visible
 
@@ -46,7 +46,7 @@ Beginning each session with something enjoyable or easy also helps. Think: a com
 
 ### A five-minute rescue plan for sour days
 
-Imagine a day when the mood is sour and nothing gets started. Skip the worksheet. Set a five-minute timer and suggest a game: “Let’s see how many silly sentences we can each write about penguins.” Now, participation is the goal, not perfection. Maybe your child writes just one sentence. That’s still a win, because they wrote, and you both moved forward.
+Imagine a day when the mood is sour and nothing gets started. Skip the worksheet. Set a five-minute timer and suggest a game: “Let’s see how many silly sentences we can each write about penguins.” Now, participation is the goal, not perfection. Maybe your child writes one sentence. That’s still a win, because they wrote, and you both moved forward.
 
 If you need a simple script to keep you out of arguments, try:
 
@@ -62,7 +62,7 @@ Avoid comparisons, too. Comparing your child to siblings or classmates can backf
 
 When an assignment goes wrong, don’t default to grinding. If your child completes one math problem and then stalls, pause and ask how the first one felt. Tackle the next problem together out loud, then let your child try the third solo. Praise the process rather than speed: “You stuck with it when it got tricky. You used blocks to solve it.”
 
-A reset can help when motivation collapses. Strip the task back to its simplest form (“Let’s just read this one sentence”), model the first example, practice together on the second, then let your child try one alone. Celebrate what went right, like remembering a capital letter or catching a tricky step.
+A reset can help when motivation collapses. Strip the task back to its simplest form (“Let’s read this one sentence”), model the first example, practice together on the second, then let your child try one alone. Celebrate what went right, like remembering a capital letter or catching a tricky step.
 
 ### Match the tool to the pattern you’re seeing
 
@@ -82,7 +82,7 @@ Reluctance will come and go. What matters most is responding with curiosity rath
 
 Some children breeze through regular third-grade work and seem ready for more. If this is your child, homeschooling gives you a real gift: you can stretch them without making life frantic. The goal is a year that’s **stimulating and humane**, not a race to “finish school early.”
 
-Being advanced isn’t just “faster” or “older.” Often it shows up as deeper thinking, unusual creativity, or a desire to push past the obvious answer. Your job is to feed that appetite while remembering they’re still fully in the eight-to-ten-year-old zone.
+Being advanced isn’t only “faster” or “older.” Often it shows up as deeper thinking, unusual creativity, or a desire to push past the obvious answer. Your job is to feed that appetite while remembering they’re still fully in the eight-to-ten-year-old zone.
 
 > **Enrichment** means going deeper, wider, or more applied, without automatically moving up a grade level.
 
@@ -148,18 +148,18 @@ Watch for these patterns:
 - **Social isolation:** feeling “weird,” bored with same-age peers, or lonely.
 - **Basics slipping:** spelling, handwriting, or math facts quietly getting rusty.
 
-Fixes can be simple. Model mistakes out loud. Praise persistence and revision, not just “being smart.” Look for community at libraries, clubs, co-ops, or well-moderated online groups. Keep light review of fundamentals so strong areas don’t crowd out the basics.
+Fixes can be simple. Model mistakes out loud. Praise persistence and revision, not only “being smart.” Look for community at libraries, clubs, co-ops, or well-moderated online groups. Keep light review of fundamentals so strong areas don’t crowd out the basics.
 
 ### How you’ll know you hit the right level
 
-You’ve found a good challenge level when your child sometimes struggles but recovers and tries again. They start bringing learning into daily life on their own. And they feel proud of what they can **explain, build, or create**, not just how quickly they finish.
+You’ve found a good challenge level when your child sometimes struggles but recovers and tries again. They start bringing learning into daily life on their own. And they feel proud of what they can **explain, build, or create**, not only how quickly they finish.
 
 If it helps, think like lean manufacturing: you’re not trying to maximize output. You’re trying to reduce waste, protect the system, and keep quality high. Done well, supporting an advanced learner feels less like a pressure cooker and more like a discovery zone.
 
 
 ## Attention Challenges and Neurodiversity
 
-Plenty of children have days when their attention drifts or it’s tough to stay on task. That’s part of being a kid. But for some children, these moments happen more often and with greater intensity. If you’ve come across terms like ADHD (Attention-Deficit Hyperactivity Disorder) or *neurodivergent*, it simply means brains process information differently, and some patterns are less common.
+Plenty of children have days when their attention drifts or it’s tough to stay on task. That’s part of being a kid. But for some children, these moments happen more often and with greater intensity. If you’ve come across terms like ADHD (Attention-Deficit Hyperactivity Disorder) or *neurodivergent*, it means brains process information differently, and some patterns are less common.
 
 Homeschooling can be a strong fit here, because you can shape pacing, environment, and methods to your child instead of waiting for an entire classroom to adapt. This isn’t a sign of failure. It’s an invitation to experiment. The goal is **structured flexibility**: you build a steady skeleton for the day, then you flex when real life shows up.
 
@@ -205,7 +205,7 @@ Also consider **multiple ways to show mastery**. If your child understands the m
 
 ### Teach a reset, not a fight
 
-When bodies and brains fall out of sync, teach a short routine your child can actually use in the moment. Keep it neutral, like brushing teeth.
+When bodies and brains fall out of sync, teach a short routine your child can use in the moment. Keep it neutral, like brushing teeth.
 
 “Reset and return” can be as small as: breathe in, breathe out, shake out hands, start again. Let your child help invent their version. When they own it, it’s more likely to show up when they need it.
 
@@ -356,7 +356,7 @@ Finally, close communication gaps with written instructions and a brief daily re
 - “Tell me one thing you learned.”
 - “What was hard today?”
 
-Homeschooling while working full time is challenging, but it’s doable. Consistency and clarity matter far more than perfection. Treat it like a family project: run the week, observe what needs tweaking, adjust without guilt. Over time, your child won’t just learn third grade skills. They’ll learn how capable people work: with routines, priorities, and steady effort.
+Homeschooling while working full time is challenging, but it’s doable. Consistency and clarity matter far more than perfection. Treat it like a family project: run the week, observe what needs tweaking, adjust without guilt. Over time, your child won’t only learn third grade skills. They’ll learn how capable people work: with routines, priorities, and steady effort.
 
 
 ## Conflict With a Co-Parent or Family Member
@@ -411,7 +411,7 @@ When the conversation gets tense, do a reset:
 
 ### Clarify roles so decisions stop feeling personal
 
-Many fights are really about unclear roles. Boring, clear agreements prevent most conflict.
+Many fights are about unclear roles. Boring, clear agreements prevent most conflict.
 
 Here are a few role models that work in real homes:
 
@@ -492,7 +492,7 @@ A few low-drama options that work well for third grade:
 
 Keep home as the anchor. If labs are your stress point, let a co-op handle labs, but keep your home routines for reading, writing, and math steady. You want outside help to **relieve pressure and increase progress**, not create a second school that runs your week.
 
-### Choosing a tutor or class that actually helps
+### Choosing a tutor or class that helps
 
 A good fit is less about impressive credentials and more about clarity, communication, and workload.
 

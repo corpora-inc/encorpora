@@ -2,11 +2,11 @@
 
 If the first sections were about mindset and direction, this one is about the physical and logistical scaffolding that makes the day feel easy to start. You do not need a school-shaped setup. You need a small system that reduces friction, keeps attention steady, and protects family energy. When the setup is simple and predictable, learning happens with less coaxing and more calm.
 
-Think of this section as the practical companion to the mindset work. We are not re-litigating the big ideas; we are translating them into a room, a routine, and a few tools you can actually keep up with. The theme is the same: low cost, high return.
+Think of this section as the practical companion to the mindset work. We are not re-litigating the big ideas; we are translating them into a room, a routine, and a few tools you can keep up with. The theme is the same: low cost, high return.
 
 ## Simple Learning Space
 
-A learning space is just a spot that signals focus. It can be a corner of the kitchen or a small table by a window. What matters is consistency and low clutter. When the space is always ready, starting takes less effort for both of you.
+A learning space is a spot that signals focus. It can be a corner of the kitchen or a small table by a window. What matters is consistency and low clutter. When the space is always ready, starting takes less effort for both of you.
 
 You only need a flat work surface, a chair that fits, one small supply bin within reach, and decent light. That is the whole minimum. If you want upgrades, choose the ones that reduce friction: a small whiteboard, a simple timer, a clipboard for floor work, or headphones if your home is loud. Keep extras in a drawer so the space stays calm.
 
@@ -16,7 +16,7 @@ The simplest daily ritual is a clean start. Clear the surface each morning so sc
 
 ## Choosing Curriculum
 
-Most choices boil down to two approaches: a **structured curriculum** or a **hybrid plan**. Both can produce a strong year. The right choice is the one you can actually keep doing on ordinary days.
+Most choices boil down to two approaches: a **structured curriculum** or a **hybrid plan**. Both can produce a strong year. The right choice is the one you can keep doing on ordinary days.
 
 ### Structured
 
@@ -34,7 +34,7 @@ Start with constraints, not fantasies. If time, attention, or energy is tight, u
 
 Give any plan at least six weeks before making big changes. Then do a short review: keep what works, adjust what drags, replace what consistently causes friction. This is the agile loop applied to curriculum, and it keeps you honest without keeping you stuck.
 
-## Materials You Actually Need
+## Materials You Need
 
 Third grade does not need a gear overhaul. Start with a short list, run a real week, then add only what reality proves you are missing. The backbone is steady practice and good prompts, not equipment.
 
@@ -46,7 +46,7 @@ For math, manipulatives are optional. Coins, beans, LEGO pieces, paper strips, a
 
 Geography needs only two maps, one world and one local. The habit matters more than the wall display. A quick, low-pressure map check a few times a week builds real spatial sense.
 
-Comfort upgrades are fine when they solve a real problem. A whiteboard, timer, or a few reusable sleeves can help. Skip anything that creates extra setup or cleanup. When in doubt, wait a week before buying. Your child will show you what is actually missing.
+Comfort upgrades are fine when they solve a real problem. A whiteboard, timer, or a few reusable sleeves can help. Skip anything that creates extra setup or cleanup. When in doubt, wait a week before buying. Your child will show you what is missing.
 
 If you like light planning, a simple Kanban board can teach organization without becoming a big system. Sticky notes for Backlog, This Week, Today, and Done are enough. Keep Today small, and let your child move a card to Done. It turns planning into a skill instead of a lecture.
 
@@ -128,4 +128,9 @@ Structure creates freedom. Clear routines and clear roles reduce drama, protect 
 
 ### Activity Menu
 
-Quick setup ideas: run a 15-minute space reset, build a screen parking spot, choose your curriculum stance for four weeks, draft a two-block day, keep a weekly prep menu, and remove one stubborn friction point like dull pencils or a missing supply bin.
+- Run a 15-minute space reset.
+- Build a screen parking spot.
+- Choose your curriculum stance for four weeks.
+- Draft a two-block day.
+- Keep a weekly prep menu.
+- Remove one stubborn friction point (dull pencils, missing supply bin).

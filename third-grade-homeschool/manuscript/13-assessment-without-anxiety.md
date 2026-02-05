@@ -1,6 +1,6 @@
 # Assessment Without Anxiety
 
-Assessment is simply finding out what your child understands and can do independently, and where they need support. At home, it can be low-key and continuous: a way to stay on track, make progress visible, and adjust without drama. This section covers five practical tools: quick mastery checks, monthly "show what you know" days, simple portfolios, standardized tests (if needed), and honest conversations about what it all means.
+Assessment is finding out what your child understands and can do independently, and where they need support. At home, it can be low-key and continuous: a way to stay on track, make progress visible, and adjust without drama. This section covers five practical tools: quick mastery checks, monthly “show what you know” days, simple portfolios, standardized tests (if needed), and honest conversations about what it all means.
 
 The mindset is simple: assessment is not about catching mistakes or handing out grades. It is about discovering what is clear, what is forming, and what is ready to build next. Done well, these routines tell you when to keep going, when to pause, and what to practice next, without turning your home into a test center.
 
@@ -17,7 +17,7 @@ Unlike school tests that mix multiple skills and show up at the end of a unit, m
 
 Mastery checks help you catch gaps early, when they’re easy to fix, like noticing a hitch in a workout before it becomes an injury. They also reduce endless review, because you’re not guessing what’s sticking.
 
-They don’t need to be formal. You might hand your child one short math problem while making breakfast, or ask them to explain the main idea of a paragraph you just read together. Two minutes is enough to keep learning honest and steady.
+They don’t need to be formal. You might hand your child one short math problem while making breakfast, or ask them to explain the main idea of a paragraph you read together. Two minutes is enough to keep learning honest and steady.
 
 > **Feedback loop:** check a small skill, adjust the next step, repeat.
 
@@ -44,7 +44,7 @@ Keep these in your back pocket and rotate them.
 - **Science:** “What is a food chain? Give one example from our backyard.”
 - **Social studies:** “Tell me two facts about this place or time, and one question you still have.”
 
-The point is not just the answer. Listening to the thinking is where the real data is.
+The point is not only the answer. Listening to the thinking is where the real data is.
 
 ### Make it feel lighter
 
@@ -95,14 +95,14 @@ If a mastery check reveals a gap, your child freezes, guesses, or gets frustrate
 
 Separate **checking** from **practice**. Follow up later with a short reteach, ideally in a different form: a hands-on game, a drawing, a story, or an everyday connection.
 
-The quiet win of mastery checks is the moment your child realizes, “I really know this.” Notice it. Celebrate it without making it a performance. One tiny check at a time, you’re building skill and confidence that compounds all year.
+The quiet win of mastery checks is the moment your child realizes, “I know this.” Notice it. Celebrate it without making it a performance. One tiny check at a time, you’re building skill and confidence that compounds all year.
 
 
 ## Monthly “Show What You Know” Days
 
-Homeschooling isn’t just a quiet march from lesson to lesson. Regular, intentional review is one of the simplest ways to make growth visible, for both you and your child. A monthly “Show What You Know” day offers a low-key, genuinely useful way to reflect, celebrate, and build a record of progress.
+Homeschooling isn’t a quiet march from lesson to lesson. Regular, intentional review is one of the simplest ways to make growth visible, for both you and your child. A monthly “Show What You Know” day offers a low-key, genuinely useful way to reflect, celebrate, and build a record of progress.
 
-These check-ins can turn assessment from something tense into something shared. They also create the kind of documentation many states or districts want, without turning your kitchen table into an office.
+These check-ins can turn assessment from something tense into something shared. They also create the documentation many states or districts want, without turning your kitchen table into an office.
 
 ![Looking back at wins](images/Parent_and_child_smiling_and_looking_over_a_small_portfolio_of_completed_assignments_and_drawings.png)
 
@@ -144,17 +144,17 @@ Keep demonstrations short and a little playful. Think: “Let’s show your futu
 A few reliable prompts:
 
 - “Read this paragraph like you’re telling me a story.”
-- “Teach me how to do this kind of problem.”
+- “Teach me how to do this problem.”
 - “Explain your favorite fact from this month.”
 - “Show me on the map where this happened.”
 
-If something goes poorly, treat it like data, not drama. You just found the next small practice target.
+If something goes poorly, treat it like data, not drama. You found the next small practice target.
 
 ### Why this works
 
 Monthly review has a high return because it does several jobs at once:
 
-- **Strengthens memory** through recall and explanation (talking and doing, not just rereading)
+- **Strengthens memory** through recall and explanation (talking and doing, not only rereading)
 - **Builds confidence** by making progress visible
 - **Creates a portfolio** naturally, without piles of daily paperwork
 - **Improves your plan** because you’re checking reality and adjusting (agile, but human)
@@ -181,7 +181,7 @@ If the mood tightens, lower the stakes immediately:
 - Shrink the session to 20 to 30 minutes
 - Let your child pick the format for next month
 
-A missing skill in fractions or spelling is not a verdict. It’s just a note for next month’s backlog.
+A missing skill in fractions or spelling is not a verdict. It’s a note for next month’s backlog.
 
 ### Record-keeping that stays sane
 
@@ -202,7 +202,7 @@ Monthly “Show What You Know” days make assessment calm, make progress feel r
 
 A portfolio is more than a pile of worksheets. It’s a **carefully chosen** collection of your child’s work that tells the story of learning and growth across the year. Think of it as a highlight reel: genuine progress, real effort, and the occasional messy draft that shows how your child got better.
 
-Portfolios are a sturdy tool for homeschoolers because they work on three levels at once: they help you see what’s actually happening, they help your child feel proud (and notice their own growth), and they give outsiders a clear window into the year if you ever need to show progress.
+Portfolios are a sturdy tool for homeschoolers because they work on three levels at once: they help you see what’s happening, they help your child feel proud (and notice their own growth), and they give outsiders a clear window into the year if you ever need to show progress.
 
 > A good portfolio answers one question: **“What can my child do now that they couldn’t do before, and how do we know?”**
 
@@ -238,7 +238,7 @@ Portfolios fall apart when the system is too fancy. Keep it boring and reliable.
 
 When you’re deciding what makes the cut, look for work that shows **growth, struggle, revision, or pride**. Involve your child with one quick question: “Which piece are you most proud of, and which one was hardest?” Those answers often guide better choices than your adult instincts.
 
-At the end of the year, add a brief subject summary: just a few lines on what improved, what stayed sticky, and what you’re both proud of. If your child is willing, include a short reflection from them too.
+At the end of the year, add a brief subject summary: a few lines on what improved, what stayed sticky, and what you’re both proud of. If your child is willing, include a short reflection from them too.
 
 ### Compliance without the paperwork mountain
 
@@ -246,7 +246,7 @@ In many places, a portfolio can satisfy requirements for proof of progress. But 
 
 A helpful filter is this: when you’re about to save something, ask, **“Does this show a new attempt, a real struggle, or a skill we finally mastered?”** If not, take a photo and let the paper go.
 
-Portfolios work best when they feel like celebration, not busywork. Every so often, do a casual “gallery walk” at home. You’ll both remember that the year wasn’t just days, it was progress.
+Portfolios work best when they feel like celebration, not busywork. Every so often, do a casual “gallery walk” at home. You’ll both remember that the year wasn’t only days, it was progress.
 
 At its best, a portfolio isn’t paperwork. It’s a calm reminder that consistency pays off, and that your child is steadily becoming more capable.
 
@@ -263,13 +263,13 @@ Holding that idea firmly is half of “low-stress prep.” The other half is tre
 
 Rules for homeschoolers vary widely. Some places require no standardized testing; others require it at set grades or intervals. For example, in Georgia (United States), homeschoolers take a nationally normed test in grades 3, 6, and 9 at a time the parent chooses, and families keep the results for their own records.
 
-The universal principle is simple: **know your local requirement and do only what’s needed**. This is not the moment to match your neighbor’s plan or benchmark your child against every cousin. If the law sets a minimum bar, it is fine to clear that bar and move on.
+The universal principle is simple: **know your local requirement and meet it cleanly**. This is not the moment to match your neighbor’s plan or benchmark your child against every cousin. If the law sets a minimum bar, it is fine to clear that bar and refocus on learning.
 
 ### What tests are good for
 
 Used wisely, a standardized test can give you a neutral read on certain basics under uniform conditions. It may flag a strength, a gap worth investigating, or a skill that needs different practice.
 
-What it cannot measure is the full set of things you actually care about: creativity, curiosity, kindness, motivation, perseverance, and the ability to do real work over time. Don’t let test categories become your curriculum.
+What it cannot measure is the full set of things you care about: creativity, curiosity, kindness, motivation, perseverance, and the ability to do real work over time. Don’t let test categories become your curriculum.
 
 A helpful comparison is a basic health screening: useful information, not a complete diagnosis.
 
@@ -334,7 +334,7 @@ You do not need to be a teacher to do this well. If you can look at real work, t
 
 ### What counts as “results”
 
-A test score is one kind of result, but it is not the main one. Most of your best information comes from ordinary days: listening, watching, and collecting small samples.
+A test score is one result, but it is not the main one. Most of your best information comes from ordinary days: listening, watching, and collecting small samples.
 
 Here are a few high-return places to look:
 
@@ -376,7 +376,7 @@ A few low-effort options:
 - Use a **progress wall** or folder with a few dated work samples per month.
 - Turn targeted practice into a **game** (multiplication card games, quick map labeling races, spelling with magnetic letters).
 
-Celebrate effort and improvement, not just clean final products. Notice when your child chooses a harder book, explains their thinking more clearly, or sticks with a tricky problem longer than they used to.
+Celebrate effort and improvement, not only clean final products. Notice when your child chooses a harder book, explains their thinking more clearly, or sticks with a tricky problem longer than they used to.
 
 ### Common interpretation traps
 
@@ -389,7 +389,7 @@ A few patterns tend to create unnecessary stress.
 
 If your state asks for something like “progress in reading, writing, and math,” the expectation is rarely perfection. It is **honest, visible improvement**. That mindset travels well anywhere.
 
-When you interpret results this way, assessment stops being a source of anxiety and becomes a steering wheel. Challenges are just signposts pointing to where a little more attention will pay off next.
+When you interpret results this way, assessment stops being a source of anxiety and becomes a steering wheel. Challenges are signposts pointing to where more attention will pay off next.
 
 ### Activity Menu: Assessment
 

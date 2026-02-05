@@ -1,17 +1,17 @@
 # Recordkeeping and Documentation
 
-Recordkeeping is simply an organized and reasonable way to show that learning is happening—a quiet confirmation that progress is real. For many new homeschoolers, it can feel overly complicated or intimidating, conjuring up images of overflowing binders, stacks of worksheets, and sprawling spreadsheets of grades. In reality, good documentation is both practical and light: a few clear notes about what you did, what your child worked on, and some select work samples or a basic attendance record. Requirements differ depending on where you live, but almost everywhere rewards clarity, consistency, and honesty over sheer volume. Kept well, your records do more than satisfy outside rules—they let you see growth over time, spot gaps early, and offer your child a concrete sense of progress.
+Recordkeeping is an organized and reasonable way to show that learning is happening—a quiet confirmation that progress is real. For many new homeschoolers, it can feel overly complicated or intimidating, conjuring up images of overflowing binders, stacks of worksheets, and sprawling spreadsheets of grades. In reality, good documentation is both practical and light: a few clear notes about what you did, what your child worked on, and some select work samples or a basic attendance record. Requirements differ depending on where you live, but almost everywhere rewards clarity, consistency, and honesty over sheer volume. Kept well, your records do more than satisfy outside rules—they let you see growth over time, spot gaps early, and offer your child a concrete sense of progress.
 
 
 ## Attendance Logs in One Page
 
-An attendance log is simply a record that learning took place on a given day. Many regions expect you to keep this sort of proof to show that your child is getting a regular education.
+An attendance log is a record that learning took place on a given day. Many regions expect you to keep this proof to show that your child is getting a regular education.
 
 > **Attendance log:** a dated record of which days counted as school.
 
 It’s natural to wonder how detailed it needs to be. For most families, it’s much simpler than it sounds. The real question is: **Did a valid day of learning happen?** If the answer is yes, you mark the day and move forward.
 
-Attendance is your basic insurance policy. It’s minimum evidence that “we showed up,” much like recording your sets at the gym or signing a timesheet. Some parents assume it means noting every subject or hour. In practice, attendance logging almost always means simply recording which days you did school.
+Attendance is your basic insurance policy. It’s minimum evidence that “we showed up,” much like recording your sets at the gym or signing a timesheet. Some parents assume it means noting every subject or hour. In practice, attendance logging almost always means recording which days you did school.
 
 ### The one-page method
 
@@ -23,12 +23,12 @@ A few easy formats that work:
 - A spreadsheet you print once and keep on a clipboard
 - A regular wall calendar with a clear mark on school days
 
-If you prefer digital but want to keep everything local, **Homeschool Offline** is a simple option for iOS and Android. It lets you check off days, add notes or photos, and export records when you want, with no login or cloud account required.
+If you prefer digital but want to keep everything local, **Homeschool Offline** is a simple option for iOS and Android. It lets you mark days, add notes or photos, and export records when you want, with no login or cloud account required.
 
-The best system is the one you’ll actually see and use. Tape it inside a kitchen cabinet, keep it by your lesson basket, or clip it to a fridge magnet.
+The best system is the one you’ll see and use. Tape it inside a kitchen cabinet, keep it by your lesson basket, or clip it to a fridge magnet.
 
 
-This kind of log works because it’s simple, visible, and hard to argue with. If you ever have to demonstrate attendance, you can show a clean, straightforward record of each school day, no codes, essays, or subject breakdowns needed.
+This log works because it’s simple, visible, and hard to argue with. If you ever have to demonstrate attendance, you can show a clean, straightforward record of each school day, no codes, essays, or subject breakdowns needed.
 
 ### What counts as a day?
 
@@ -55,11 +55,9 @@ One example: Georgia requires 180 instructional days of at least 4.5 hours each.
 In the end, your attendance log is meant to make life easier. By keeping it visible and simple, you save your attention for what matters: teaching your child, and keeping your home feeling like a steady workshop.
 
 
-## Writing Annual Progress Reports Simply
+## Writing Annual Progress Reports Annual progress reports are a simple but foundational part of homeschooling. They are short, written summaries of what your child worked on this year, the improvements they made, and the areas that still need attention. Requirements vary by state or country, but the core idea is nearly universal: show that real learning happened, described in a straightforward, honest way.
 
-Annual progress reports are a simple but foundational part of homeschooling. They are short, written summaries of what your child worked on this year, the improvements they made, and the areas that still need attention. Requirements vary by state or country, but the core idea is nearly universal: show that real learning happened, described in a straightforward, honest way.
-
-Think of the annual progress report as a brief narrative snapshot, usually one to three pages. It highlights your child’s growth, a few concrete achievements, and some next goals. It is not a formal gradebook or a standardized test. Depending on where you live, you might submit it to an evaluator, district, umbrella school, or homeschool group, or you might simply keep it for your own records and planning.
+Think of the annual progress report as a brief narrative snapshot, usually one to three pages. It highlights your child’s growth, a few concrete achievements, and some next goals. It is not a formal gradebook or a standardized test. Depending on where you live, you might submit it to an evaluator, district, umbrella school, or homeschool group, or you might keep it for your own records and planning.
 
 > **A useful definition:** An annual progress report is a plain-language summary of what was taught, what was practiced, and what changed over the year.
 
@@ -109,7 +107,7 @@ To fix most of these, choose **one or two real snapshots** per subject. They do 
 - A project, model, experiment, or presentation
 - A photo of something built or drawn
 
-If you get stuck, ask your child two questions: “What did you really enjoy this year?” and “What was hard?” Their answers often give you your best sentences.
+If you get stuck, ask your child two questions: “What did you enjoy this year?” and “What was hard?” Their answers often give you your best sentences.
 
 ### Make it easier by starting earlier
 
@@ -117,12 +115,12 @@ Do not wait until the last week of the year. Keep a running list of highlights, 
 
 With a little intention, the annual report can be a gentle end-of-year ritual, more like closing out a project than facing a bureaucratic hurdle. Let your child help pick which examples to include. If you like, look back at last year’s report, notice how far you have come, and choose one shared goal for the next year.
 
-Done honestly and steadily, these annual reports become a long-term record of your homeschool. They never have to be perfect. They just have to be real.
+Done honestly and steadily, these annual reports become a long-term record of your homeschool. They never have to be perfect. They have to be real.
 
 
 ## Storing Work Samples Digitally or on Paper
 
-Documentation in homeschooling is simply keeping a little evidence of your child’s learning over time. Many home education laws, as well as some online programs, require this record. Even when it isn’t mandatory, maintaining some form of documentation protects you if you’re ever asked to show what you’ve been doing. More than that, it lets you and your child look back at clear moments of growth and effort, making progress visible and real.
+Documentation in homeschooling is keeping a little evidence of your child’s learning over time. Many home education laws, as well as some online programs, require this record. Even when it isn’t mandatory, maintaining some form of documentation protects you if you’re ever asked to show what you’ve been doing. More than that, it lets you and your child look back at clear moments of growth and effort, making progress visible and real.
 
 > A work sample is any real piece of your child’s work that shows learning: a story, a math page, a science diagram, a sketch, a photo of a finished project, or a running list of books read.
 
@@ -135,9 +133,9 @@ You don’t need to hold onto every scrap. **Six to twelve pieces per subject fo
 A few subject-specific shortcuts help keep this light:
 
 - **Reading:** one ongoing book log is usually enough, plus an occasional note like “loved this” or “tough vocabulary.”
-- **Math:** keep a handful of representative pages that show the process, not just neat answers.
+- **Math:** keep a handful of representative pages that show the process, not only neat answers.
 
-### Pick a system you will actually use
+### Pick a system you will use
 
 > **One source of truth:** keep records in one trusted place so you are never hunting.
 
@@ -184,7 +182,7 @@ When you homeschool a third grader, there is always a chance that life will call
 
 Think of it like a workout log. You are not trying to impress anyone with a perfect program. You are showing steady work and real gains, so your child can be placed well and supported quickly.
 
-### What schools are really trying to decide
+### What schools are trying to decide
 
 In practice, schools (public or private) are trying to judge readiness for the next step. They want to know whether your child has the essentials in reading, writing, math, and learning habits, or whether there are gaps that need a plan.
 
