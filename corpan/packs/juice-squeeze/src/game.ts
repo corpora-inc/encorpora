@@ -391,13 +391,16 @@ export const createJuiceSqueeze = (
     // In world coords: positive Y is up, so 85% up = worldHeight * 0.35
     const targetPhraseY = worldHeight * 0.48
 
-    // Middle region: 45-70% of screen height = 60% from bottom = 40% from top
-    // In world coords: 60% up = worldHeight * 0.1
-    const sentenceAreaY = worldHeight * 0.1
+    // Sentence completion zone - percentage from center (upper zone)
+    const sentenceAreaY = worldHeight * 0.08
 
-    // Bottom region: 5-35% of screen height = 25% from bottom
-    // In world coords: 25% down = -worldHeight * 0.25
-    const wordBlocksY = -worldHeight * 0.25
+    // Word blocks - use WHICHEVER constraint is tighter:
+    // 1) Percentage-based: -worldHeight * 0.15 (stays in lower half)
+    // 2) Bottom-anchored: -worldHeight/2 + 10 (clears CSS bottles)
+    // Math.min takes the MORE NEGATIVE value (lower on screen)
+    const percentageBased = -worldHeight * 0.15
+    const bottomAnchored = -worldHeight / 2 + 10
+    const wordBlocksY = Math.min(percentageBased, bottomAnchored)
 
     // Block label: 40% from bottom
     const blockLabelY = -worldHeight * 0.4
@@ -605,12 +608,19 @@ export const createJuiceSqueeze = (
     const blocksPerRowByWidth = Math.floor(availableWidth / avgBlockWidth)
     const effectiveBlocksPerRow = Math.max(2, Math.min(maxBlocksPerRow, blocksPerRowByWidth))
 
-    // Sort blocks by row first, then by X position within row (left to right)
+    // Get current language direction for correct reading order
+    const currentBlockLang = useGameStore.getState().phrase.blockLang || "en"
+    const isBlockLangRTL = isRTL(currentBlockLang)
+
+    // Sort blocks by row first, then by X position in reading order
+    // RTL: right to left (descending X), LTR: left to right (ascending X)
     blocksInSentence.sort((a, b) => {
       if (a.data.sentenceRow !== b.data.sentenceRow) {
         return a.data.sentenceRow - b.data.sentenceRow
       }
-      return a.mesh.position.x - b.mesh.position.x
+      return isBlockLangRTL
+        ? b.mesh.position.x - a.mesh.position.x
+        : a.mesh.position.x - b.mesh.position.x
     })
 
     // Group blocks into rows
@@ -627,15 +637,22 @@ export const createJuiceSqueeze = (
       const rowWidths = rowBlocks.map((item) => item.data.baseWidth || currentBlockSize.baseWidth)
       const rowTotalWidth = rowWidths.reduce((sum, w) => sum + w, 0) + (rowBlocks.length - 1) * blockGap
 
-      // Calculate starting X for this row (centered)
-      let currentX = -rowTotalWidth / 2
+      // Calculate starting X based on reading direction
+      // RTL: start from right (positive X), move left
+      // LTR: start from left (negative X), move right
+      let currentX = isBlockLangRTL ? rowTotalWidth / 2 : -rowTotalWidth / 2
 
       rowBlocks.forEach((item, indexInRow) => {
         const thisWidth = rowWidths[indexInRow]
-        item.mesh.position.x = currentX + thisWidth / 2
+        if (isBlockLangRTL) {
+          item.mesh.position.x = currentX - thisWidth / 2
+          currentX -= thisWidth + blockGap
+        } else {
+          item.mesh.position.x = currentX + thisWidth / 2
+          currentX += thisWidth + blockGap
+        }
         item.mesh.position.y = sentenceRowYPositions[rowIndex] || metrics.sentenceAreaY
         item.mesh.position.z = -0.5 // Keep in front
-        currentX += thisWidth + blockGap
 
         // Update data
         item.data.sentenceRow = rowIndex
@@ -993,15 +1010,15 @@ export const createJuiceSqueeze = (
     const canvasRect = canvasElement.getBoundingClientRect()
     const canvasHeight = canvasElement.height
 
-    // Position in the top space: 40% down from title area to sentence area
+    // Position in the top space (title removed, just account for safe area + exit button)
     // This percentage approach works consistently across different aspect ratios
-    const titleApproxHeight = 60
-    const topSpaceStart = canvasRect.top + titleApproxHeight
+    const topPadding = 40 // Safe area + exit button clearance
+    const topSpaceStart = canvasRect.top + topPadding
     const sentenceWorldY = metrics.sentenceAreaY
     const sentencePixelY = canvasRect.top + (canvasHeight / 2) - (sentenceWorldY * metrics.pixelsPerUnit)
 
-    // Position at 25% between title and sentence area (gives more room for multi-line phrases)
-    const pixelY = topSpaceStart + (sentencePixelY - topSpaceStart) * 0.25
+    // Position at 15% between top and sentence area (higher up for more space)
+    const pixelY = topSpaceStart + (sentencePixelY - topSpaceStart) * 0.15
 
     // Responsive font sizes based on viewport percentage
     const viewportWidth = canvasElement.width
@@ -1032,7 +1049,7 @@ export const createJuiceSqueeze = (
     root.appendChild(display)
   }
 
-  // Create "Build in: [Language]" label near word blocks area (viewport-based)
+  // Create "Build in: [Language]" label in bottom control row (CSS handles positioning)
   const createBlockLanguageLabel = (languageCode: string, metrics: LayoutMetrics) => {
     // Remove old label if exists
     const oldLabel = root.querySelector(".block-language-label")
@@ -1041,27 +1058,11 @@ export const createJuiceSqueeze = (
     }
 
     const nativeName = getNativeLanguageName(languageCode)
-    const canvasElement = engine.getRenderingCanvas()
-    if (!canvasElement) return
-
-    // Get canvas bounding rect for pixel positioning
-    const canvasRect = canvasElement.getBoundingClientRect()
-    const canvasHeight = canvasElement.height
-
-    // Convert world Y coordinate to CSS pixel position
-    // World Y is positive up, CSS Y is positive down from top
-    const worldY = metrics.blockLabelY
-    const pixelY = canvasRect.top + (canvasHeight / 2) - (worldY * metrics.pixelsPerUnit)
-
-    // Responsive font size based on viewport percentage
-    const viewportWidth = canvasElement.width
-    const labelFontSize = Math.max(16, Math.min(24, viewportWidth * 0.04)) // 4% of width
-    const padding = Math.max(6, Math.min(12, viewportWidth * 0.02)) // 2% of width
 
     const label = document.createElement("div")
     label.className = "block-language-label"
     label.textContent = nativeName
-    label.style.top = `${pixelY}px`
+    // CSS handles bottom positioning - no inline style needed
     root.appendChild(label)
   }
 
@@ -1482,11 +1483,7 @@ export const createJuiceSqueeze = (
 
   createCorpanAvatar()
 
-  // Create title "Juice Squeeze" (responsive)
-  const titleElement = document.createElement("div")
-  titleElement.textContent = "🍊 JUICE SQUEEZE 🍊"
-  titleElement.className = "game-title"
-  root.appendChild(titleElement)
+  // Title removed to save vertical space - more room for game layout
 
   // Create exit button (top-right X)
   const exitButton = document.createElement("button")
@@ -2728,7 +2725,6 @@ export const createJuiceSqueeze = (
     giveUpButton.remove()
     fruitButton.remove()
     utteranceNav.remove()
-    titleElement.remove()
     scoreDisplay.remove()
     bottleCollection.remove()
     levelCompleteOverlay.remove()
