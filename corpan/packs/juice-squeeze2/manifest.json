@@ -1,0 +1,12 @@
+{
+  "id": "juice_squeeze2",
+  "name": "Juice Squeeze 2",
+  "version": "0.1.0",
+  "entry": "dist/app.js",
+  "styles": [
+    "dist/app.css"
+  ],
+  "entryType": "script",
+  "sdkVersion": "0.1.0",
+  "devRevision": "2026-02-06T16:52:50.035Z"
+}
