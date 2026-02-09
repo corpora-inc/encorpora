@@ -29,13 +29,34 @@ export const registerGame = (game) => {
   return game;
 };
 
-const speakWithBrowserTts = (uiCode, text, rate) => {
+const matchesLanguagePrefix = (voiceLang, languagePrefix) => {
+  if (!languagePrefix) return true
+  if (!voiceLang) return false
+  const lang = String(voiceLang).toLowerCase()
+  const want = String(languagePrefix).toLowerCase()
+  return lang === want || lang.startsWith(`${want}-`)
+}
+
+const speakWithBrowserTts = (uiCode, text, rate, voiceId) => {
   if (typeof window === "undefined" || !window.speechSynthesis) {
     console.log(`[Mock TTS ${uiCode}]`, text);
     return;
   }
   const utterance = new SpeechSynthesisUtterance(text);
-  utterance.lang = uiCode;
+  const voices = window.speechSynthesis.getVoices();
+  if (voiceId && voices.length > 0) {
+    const chosen = voices.find((voice) =>
+      voice.voiceURI === voiceId || voice.name === voiceId
+    )
+    if (chosen) {
+      utterance.voice = chosen
+      utterance.lang = chosen.lang || uiCode
+    } else {
+      utterance.lang = uiCode
+    }
+  } else {
+    utterance.lang = uiCode
+  }
   if (typeof rate === "number") {
     utterance.rate = rate;
   }
@@ -49,11 +70,70 @@ export const createMockHostApi = (options = {}) => {
     ...defaultStackConfig,
     ...(stackOverrides || {}),
   };
+  const mockVoices = [
+    {
+      id: "mock-es-female-sofia",
+      name: "Sofia",
+      language: "es-ES",
+      gender: "female",
+      quality: "high",
+      engine: "mock",
+      networkRequired: false,
+    },
+    {
+      id: "mock-es-female-valentina",
+      name: "Valentina",
+      language: "es-MX",
+      gender: "female",
+      quality: "normal",
+      engine: "mock",
+      networkRequired: false,
+    },
+    {
+      id: "mock-es-male-diego",
+      name: "Diego",
+      language: "es-ES",
+      gender: "male",
+      quality: "normal",
+      engine: "mock",
+      networkRequired: false,
+    },
+  ]
 
   return {
     isMock: true,
     speak: async (uiCode, text) => {
       speakWithBrowserTts(uiCode, text, stackConfig.rate);
+    },
+    speakConcurrent: async (uiCode, text) => {
+      speakWithBrowserTts(uiCode, text, stackConfig.rate)
+      return `mock-concurrent-${Date.now()}`
+    },
+    speakWithVoice: async (uiCode, text, options = {}) => {
+      speakWithBrowserTts(uiCode, text, options.rate ?? stackConfig.rate, options.voiceId)
+    },
+    speakConcurrentWithVoice: async (uiCode, text, options = {}) => {
+      speakWithBrowserTts(uiCode, text, options.rate ?? stackConfig.rate, options.voiceId)
+      return `mock-concurrent-voice-${Date.now()}`
+    },
+    listTtsVoices: async (query = {}) => {
+      let filtered = [...mockVoices]
+      if (query.languagePrefix) {
+        filtered = filtered.filter((voice) =>
+          matchesLanguagePrefix(voice.language, query.languagePrefix)
+        )
+      }
+      if (query.femaleOnly) {
+        filtered = filtered.filter((voice) => voice.gender === "female")
+      } else if (query.gender) {
+        filtered = filtered.filter((voice) => voice.gender === query.gender)
+      }
+      return filtered
+    },
+    stopSpeech: async () => {
+      if (typeof window !== "undefined" && window.speechSynthesis) {
+        window.speechSynthesis.cancel()
+      }
     },
     getStackConfig: () => ({ ...stackConfig, languages: [...stackConfig.languages] }),
     onStackConfigChange: (listener) => {
@@ -108,6 +188,65 @@ export const createMockHostApi = (options = {}) => {
       columns: [],
       rows: [],
     }),
+    resolvePackAssetPath: async (relativePath) => `/mock-pack/${relativePath}`,
+    getPackLlmConfig: async () => ({
+      runtime: "mock-local",
+      defaultModel: "mock-q4",
+      models: [
+        {
+          id: "mock-q4",
+          name: "Mock Q4",
+          relativePath: "model/mock-q4.gguf",
+          absolutePath: "/mock-pack/model/mock-q4.gguf",
+          exists: true,
+          recommended: true,
+          sizeBytes: 123456789,
+          quantType: "Q4_K_M",
+        },
+      ],
+      defaults: {
+        temperature: 0.7,
+        topP: 0.9,
+        repeatPenalty: 1.1,
+        maxTokens: 120,
+      },
+    }),
+    getLocalLlmRuntimeStatus: async () => ({
+      backend: "mock-local",
+      commandPath: "mock",
+      available: true,
+      detail: "mock runtime",
+    }),
+    startLocalLlmStream: async (request, callbacks = {}) => {
+      const requestId = `mock-${Date.now()}`
+      const tokens = [`You said: ${request.messages.at(-1)?.content ?? ""}`]
+      let done = false
+      const timer = setInterval(() => {
+        if (done) {
+          return
+        }
+        const next = tokens.shift()
+        if (!next) {
+          done = true
+          clearInterval(timer)
+          callbacks.onDone?.(`You said: ${request.messages.at(-1)?.content ?? ""}`)
+          return
+        }
+        callbacks.onDelta?.(next, next)
+      }, 60)
+      return {
+        requestId,
+        cancel: async () => {
+          clearInterval(timer)
+          if (!done) {
+            done = true
+            callbacks.onCancelled?.("")
+          }
+          return true
+        },
+      }
+    },
+    cancelLocalLlmStream: async () => true,
     ...overrides,
   };
 };

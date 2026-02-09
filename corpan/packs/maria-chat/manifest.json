@@ -1,0 +1,43 @@
+{
+  "id": "maria_chat",
+  "name": "Maria Chat",
+  "version": "0.1.0",
+  "description": "María local chat pack",
+  "entry": "dist/app.js",
+  "styles": [
+    "dist/app.css"
+  ],
+  "entryType": "script",
+  "sdkVersion": "0.1.0",
+  "llm": {
+    "runtime": "gguf-local",
+    "defaultModel": "q4_k_m",
+    "chatTemplatePath": "meta/chat_template.jinja",
+    "defaults": {
+      "temperature": 0.7,
+      "topP": 0.9,
+      "repeatPenalty": 1.1,
+      "maxTokens": 256,
+      "contextLength": 4096
+    },
+    "models": [
+      {
+        "id": "q4_k_m",
+        "name": "Maria Q4_K_M",
+        "path": "model/maria-q4_k_m.gguf",
+        "sizeBytes": 986047904,
+        "recommended": true,
+        "quantType": "Q4_K_M"
+      },
+      {
+        "id": "q5_k_m",
+        "name": "Maria Q5_K_M",
+        "path": "model/maria-q5_k_m.gguf",
+        "sizeBytes": 1125049760,
+        "recommended": false,
+        "quantType": "Q5_K_M"
+      }
+    ]
+  },
+  "devRevision": "2026-02-08T17:42:29.530Z"
+}

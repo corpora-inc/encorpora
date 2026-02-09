@@ -1,0 +1,18 @@
+{
+  "name": "corpan-maria-chat",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "dev:watch": "vite build --watch",
+    "typecheck": "tsc --noEmit",
+    "dev:corpan": "node scripts/dev-corpan.mjs",
+    "import:assets": "node scripts/import-model-assets.mjs",
+    "package:zip": "node scripts/package-zip.mjs"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.2",
+    "vite": "^6.0.3"
+  }
+}

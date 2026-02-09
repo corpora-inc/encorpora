@@ -117,7 +117,10 @@ fn read_manifest_info(path: &Path) -> Result<(String, Option<String>, Option<Str
         .and_then(|v| v.as_str())
         .ok_or("Manifest missing id")?
         .to_string();
-    let name = json.get("name").and_then(|v| v.as_str()).map(|s| s.to_string());
+    let name = json
+        .get("name")
+        .and_then(|v| v.as_str())
+        .map(|s| s.to_string());
     let version = json
         .get("version")
         .and_then(|v| v.as_str())
@@ -160,7 +163,8 @@ pub async fn fetch_text<R: Runtime>(app: &AppHandle<R>, url: String) -> Result<S
         // Parse: corpan-pack://localhost/pack_id/path/to/file
         // Strip query parameters (e.g., ?dev=timestamp)
         let url_without_query = url.split('?').next().unwrap_or(&url);
-        let path_part = url_without_query.strip_prefix("corpan-pack://localhost/")
+        let path_part = url_without_query
+            .strip_prefix("corpan-pack://localhost/")
             .ok_or("Invalid corpan-pack URL format")?;
         let mut parts = path_part.splitn(2, '/');
         let pack_id = parts.next().ok_or("Missing pack ID in corpan-pack URL")?;
@@ -169,7 +173,8 @@ pub async fn fetch_text<R: Runtime>(app: &AppHandle<R>, url: String) -> Result<S
         eprintln!("[fetch_text] Pack ID: {}, Rel path: {}", pack_id, rel_path);
 
         // Use Tauri's proper API to get app data directory - works across all platforms
-        let pack_root = app.path()
+        let pack_root = app
+            .path()
             .app_data_dir()
             .map(|dir| dir.join("corpan-packs"))
             .map_err(|e| format!("Failed to get app data dir: {}", e))?;
@@ -180,7 +185,10 @@ pub async fn fetch_text<R: Runtime>(app: &AppHandle<R>, url: String) -> Result<S
 
         let content = fs::read_to_string(&file_path)
             .map_err(|e| format!("Failed to read file {:?}: {}", file_path, e))?;
-        eprintln!("[fetch_text] Successfully read {} bytes from disk", content.len());
+        eprintln!(
+            "[fetch_text] Successfully read {} bytes from disk",
+            content.len()
+        );
         return Ok(content);
     }
 
@@ -253,15 +261,13 @@ pub async fn download_and_install<R: Runtime>(
     }
 
     let root = pack_root(app)?;
-    fs::create_dir_all(&root)
-        .map_err(|e| format!("Failed to create pack root: {e}"))?;
+    fs::create_dir_all(&root).map_err(|e| format!("Failed to create pack root: {e}"))?;
 
     let staging = root.join(format!(".{pack_id}.staging"));
     if staging.exists() {
         let _ = fs::remove_dir_all(&staging);
     }
-    fs::create_dir_all(&staging)
-        .map_err(|e| format!("Failed to create staging dir: {e}"))?;
+    fs::create_dir_all(&staging).map_err(|e| format!("Failed to create staging dir: {e}"))?;
 
     safe_extract_zip(&bytes, &staging)?;
 
@@ -307,10 +313,7 @@ pub async fn download_and_install<R: Runtime>(
     };
     index.packs.insert(info.id.clone(), info.clone());
     save_index(&root, &index)?;
-    eprintln!(
-        "[pack-install] Installed {} ({:?})",
-        info.id, info.version
-    );
+    eprintln!("[pack-install] Installed {} ({:?})", info.id, info.version);
 
     Ok(ContentPackInstallResult { pack: info })
 }
@@ -348,10 +351,7 @@ pub fn list_installed<R: Runtime>(app: &AppHandle<R>) -> Result<Vec<ContentPackI
     Ok(packs)
 }
 
-pub fn get_manifest_url<R: Runtime>(
-    app: &AppHandle<R>,
-    pack_id: String,
-) -> Result<String, String> {
+pub fn get_manifest_url<R: Runtime>(app: &AppHandle<R>, pack_id: String) -> Result<String, String> {
     let root = pack_root(app)?;
     let manifest_path = root.join(&pack_id).join("manifest.json");
     if !manifest_path.exists() {

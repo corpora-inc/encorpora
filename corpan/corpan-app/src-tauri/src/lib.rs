@@ -5,22 +5,24 @@
 
 mod content_packs;
 mod db;
+mod local_llm;
 mod pack_db;
 
-use rusqlite::{params_from_iter, Connection, ToSql};
-use rusqlite::types::{Value as SqlValue, ValueRef};
-use serde::Serialize;
-use serde_json::Value as JsonValue;
-use std::collections::HashSet;
-use std::collections::HashMap;
-use tauri::{command, AppHandle, State};
-use std::time::{SystemTime, UNIX_EPOCH};
-use tauri_plugin_opener;
 use crate::content_packs::{
     download_and_install, get_manifest_url, list_installed, ContentPackInfo,
     ContentPackInstallResult,
 };
+use crate::local_llm::LocalLlmState;
 use crate::pack_db::{open_pack_connection, resolve_pack_db_path, PackDbState};
+use rusqlite::types::{Value as SqlValue, ValueRef};
+use rusqlite::{params_from_iter, Connection, ToSql};
+use serde::Serialize;
+use serde_json::Value as JsonValue;
+use std::collections::HashMap;
+use std::collections::HashSet;
+use std::time::{SystemTime, UNIX_EPOCH};
+use tauri::{command, AppHandle, State};
+use tauri_plugin_opener;
 
 const PACK_DB_DEFAULT_MAX_ROWS: usize = 500;
 const PACK_DB_HARD_MAX_ROWS: usize = 2000;
@@ -126,9 +128,7 @@ fn sql_value_ref_to_json(value: ValueRef<'_>) -> JsonValue {
         ValueRef::Null => JsonValue::Null,
         ValueRef::Integer(i) => JsonValue::from(i),
         ValueRef::Real(f) => JsonValue::from(f),
-        ValueRef::Text(bytes) => {
-            JsonValue::from(String::from_utf8_lossy(bytes).to_string())
-        }
+        ValueRef::Text(bytes) => JsonValue::from(String::from_utf8_lossy(bytes).to_string()),
         ValueRef::Blob(bytes) => JsonValue::from(format!("0x{}", blob_to_hex(bytes))),
     }
 }
@@ -187,9 +187,7 @@ fn fetch_entry_with_translations(
     let mut translations = vec![];
     for res in trows {
         let (lang, text, romanization) = res.map_err(|e| e.to_string())?;
-        if allowed_langs
-            .map_or(true, |set| set.contains(&lang))
-        {
+        if allowed_langs.map_or(true, |set| set.contains(&lang)) {
             translations.push(TranslationOut {
                 language_code: lang,
                 text,
@@ -214,7 +212,10 @@ fn get_random_entry_with_translations(
     domains: Option<Vec<String>>,
     language_codes: Option<Vec<String>>,
 ) -> Result<EntryOut, String> {
-    let conn = state.conn.lock().map_err(|_| "DB lock poisoned".to_string())?;
+    let conn = state
+        .conn
+        .lock()
+        .map_err(|_| "DB lock poisoned".to_string())?;
 
     let mut where_clauses = vec![];
     let mut params: Vec<Box<dyn rusqlite::ToSql>> = vec![];
@@ -331,7 +332,10 @@ fn get_random_entries_with_translations(
         return Ok(vec![]);
     }
 
-    let conn = state.conn.lock().map_err(|_| "DB lock poisoned".to_string())?;
+    let conn = state
+        .conn
+        .lock()
+        .map_err(|_| "DB lock poisoned".to_string())?;
 
     let mut where_clauses = vec![];
     let mut params: Vec<Box<dyn rusqlite::ToSql>> = vec![];
@@ -399,11 +403,10 @@ fn get_random_entries_with_translations(
 
     let take = std::cmp::min(count, total) as usize;
     let mut offsets = HashSet::new();
-    let mut seed =
-        SystemTime::now()
-            .duration_since(UNIX_EPOCH)
-            .map_err(|e| e.to_string())?
-            .subsec_nanos() as u64;
+    let mut seed = SystemTime::now()
+        .duration_since(UNIX_EPOCH)
+        .map_err(|e| e.to_string())?
+        .subsec_nanos() as u64;
     let max_attempts = (take * 6).max(take + 4);
     let mut attempts = 0;
     while offsets.len() < take && attempts < max_attempts {
@@ -461,7 +464,10 @@ fn get_entry_by_id_with_translations(
     entry_id: i64,
     language_codes: Option<Vec<String>>,
 ) -> Result<EntryOut, String> {
-    let conn = state.conn.lock().map_err(|_| "DB lock poisoned".to_string())?;
+    let conn = state
+        .conn
+        .lock()
+        .map_err(|_| "DB lock poisoned".to_string())?;
     let allowed_langs: Option<HashSet<String>> = language_codes.map(|v| v.into_iter().collect());
     fetch_entry_with_translations(&conn, entry_id, allowed_langs.as_ref())
 }
@@ -486,7 +492,10 @@ fn search_entries_by_translation_text(
         _ => vec!["zh-Hans".to_string(), "zh-Hant".to_string()],
     };
 
-    let conn = state.conn.lock().map_err(|_| "DB lock poisoned".to_string())?;
+    let conn = state
+        .conn
+        .lock()
+        .map_err(|_| "DB lock poisoned".to_string())?;
 
     let lang_placeholders = vec!["?"; search_langs.len()].join(",");
     let sql = format!(
@@ -513,8 +522,7 @@ fn search_entries_by_translation_text(
         .query(params_from_iter(params.iter().map(|p| &**p)))
         .map_err(|e| e.to_string())?;
 
-    let allowed_langs: Option<HashSet<String>> =
-        language_codes.map(|v| v.into_iter().collect());
+    let allowed_langs: Option<HashSet<String>> = language_codes.map(|v| v.into_iter().collect());
     let mut results = vec![];
     while let Some(row) = rows.next().map_err(|e| e.to_string())? {
         let entry_id: i64 = row.get(0).map_err(|e| e.to_string())?;
@@ -540,7 +548,10 @@ fn search_entries_by_translation_text_count(
         _ => vec!["zh-Hans".to_string(), "zh-Hant".to_string()],
     };
 
-    let conn = state.conn.lock().map_err(|_| "DB lock poisoned".to_string())?;
+    let conn = state
+        .conn
+        .lock()
+        .map_err(|_| "DB lock poisoned".to_string())?;
 
     let lang_placeholders = vec!["?"; search_langs.len()].join(",");
     let sql = format!(
@@ -559,11 +570,9 @@ fn search_entries_by_translation_text_count(
     params.push(Box::new(pattern));
 
     let total: i64 = conn
-        .query_row(
-            &sql,
-            params_from_iter(params.iter().map(|p| &**p)),
-            |row| row.get(0),
-        )
+        .query_row(&sql, params_from_iter(params.iter().map(|p| &**p)), |row| {
+            row.get(0)
+        })
         .map_err(|e| e.to_string())?;
 
     Ok(total)
@@ -582,7 +591,11 @@ fn content_packs_query_db(
     ensure_readonly_sql(&sql)?;
 
     let db_path = resolve_pack_db_path(&app, &pack_id, db_name.as_deref())?;
-    let key = format!("{}::{}", pack_id, db_name.unwrap_or_else(|| "main".to_string()));
+    let key = format!(
+        "{}::{}",
+        pack_id,
+        db_name.unwrap_or_else(|| "main".to_string())
+    );
     let mut connections = state
         .connections
         .lock()
@@ -668,9 +681,7 @@ fn open_apple_feedback(#[allow(unused_variables)] app: AppHandle) -> Result<(), 
         use std::process::Command;
 
         // Try URL scheme first
-        let result = Command::new("open")
-            .arg("applefeedback://")
-            .output();
+        let result = Command::new("open").arg("applefeedback://").output();
 
         match result {
             Ok(output) if output.status.success() => return Ok(()),
@@ -682,8 +693,12 @@ fn open_apple_feedback(#[allow(unused_variables)] app: AppHandle) -> Result<(), 
 
                 match app_result {
                     Ok(output) if output.status.success() => return Ok(()),
-                    Ok(output) => return Err(format!("Failed to open Feedback Assistant: {}",
-                        String::from_utf8_lossy(&output.stderr))),
+                    Ok(output) => {
+                        return Err(format!(
+                            "Failed to open Feedback Assistant: {}",
+                            String::from_utf8_lossy(&output.stderr)
+                        ))
+                    }
                     Err(e) => return Err(format!("Failed to execute open command: {}", e)),
                 }
             }
@@ -699,9 +714,9 @@ fn open_apple_feedback(#[allow(unused_variables)] app: AppHandle) -> Result<(), 
         // 2. Apple Support app (most users have this)
         // 3. Web feedback form as fallback
         let urls = vec![
-            "applefeedback://new",           // Feedback app (Beta users)
-            "applefeedback://",              // Feedback app (alternative)
-            "applesupport://",               // Apple Support app
+            "applefeedback://new",             // Feedback app (Beta users)
+            "applefeedback://",                // Feedback app (alternative)
+            "applesupport://",                 // Apple Support app
             "https://www.apple.com/feedback/", // Web fallback
         ];
 
@@ -722,12 +737,13 @@ fn open_apple_feedback(#[allow(unused_variables)] app: AppHandle) -> Result<(), 
 
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
-    let db_state =
-        db::DbState::new().expect("failed to initialize embedded database");
+    let db_state = db::DbState::new().expect("failed to initialize embedded database");
     let pack_db_state = PackDbState::new();
+    let local_llm_state = LocalLlmState::new();
     tauri::Builder::default()
         .manage(db_state)
         .manage(pack_db_state)
+        .manage(local_llm_state)
         .plugin(tauri_plugin_os::init())
         .plugin(tauri_plugin_game_packs::init())
         .invoke_handler(tauri::generate_handler![
@@ -741,6 +757,11 @@ pub fn run() {
             content_packs_fetch_text,
             content_packs_list_installed,
             content_packs_get_manifest_url,
+            local_llm::content_packs_resolve_asset_path,
+            local_llm::content_packs_get_llm_config,
+            local_llm::local_llm_runtime_status,
+            local_llm::local_llm_generate_stream,
+            local_llm::local_llm_cancel,
             open_apple_feedback
         ])
         .plugin(tauri_plugin_safe_area_insets_css::init())

@@ -53,6 +53,14 @@ const DEV_CATALOG: CatalogGame[] = [
     description: "Character-first handwriting studio for Mandarin.",
     purchase: { type: "free", priceLabel: "Free" },
   },
+  {
+    id: "maria_chat",
+    name: "Maria Chat",
+    version: "0.1.0",
+    manifestUrl: "/packs/maria-chat/maria-chat.zip",
+    description: "Pack-shipped GGUF model + streaming UI demo using Corpán host runtime.",
+    purchase: { type: "free", priceLabel: "Free" },
+  },
 ]
 
 const PRODUCTION_CATALOG_URL = "https://encorpora.io/corpan/packs/catalog.json"

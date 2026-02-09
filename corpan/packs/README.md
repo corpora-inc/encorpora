@@ -24,3 +24,4 @@ Feature flags:
 ## Reference pack
 - `hover-runner` is the reference implementation.
 - `hanzipan` is the Mandarin character pack (pack-owned DB + handwriting surface).
+- `maria-chat` is the pack-side demo (GGUF assets + streaming UI) that calls the host-provided on-device runtime.

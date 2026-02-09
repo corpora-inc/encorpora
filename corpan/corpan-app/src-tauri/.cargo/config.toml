@@ -40,3 +40,11 @@ rustflags = [
     "-C",
     "link-arg=-Wl,-z,max-page-size=16384",
 ]
+
+[env]
+SDKROOT = "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk"
+BINDGEN_EXTRA_CLANG_ARGS = "-isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk"
+BINDGEN_EXTRA_CLANG_ARGS_aarch64_apple_darwin = "-isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk"
+BINDGEN_EXTRA_CLANG_ARGS_x86_64_apple_darwin = "-isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk"
+"BINDGEN_EXTRA_CLANG_ARGS_x86_64-apple-darwin" = "-isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk"
+"BINDGEN_EXTRA_CLANG_ARGS_aarch64-apple-darwin" = "-isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk"

@@ -34,6 +34,12 @@ sha2 = "0.10"
 zip = "2.2.2"
 tauri-plugin-tts = { path = "../../plugins/tauri-plugin-tts" }
 
+[target.'cfg(target_os = "macos")'.dependencies]
+llama-cpp-2 = { version = "0.1.132", default-features = false, features = ["metal"] }
+
+[target.'cfg(not(target_os = "macos"))'.dependencies]
+llama-cpp-2 = { version = "0.1.132", default-features = false }
+
 # Production optimizations for release builds
 [profile.release]
 opt-level = "z"   # Optimize for size (important for mobile apps)
