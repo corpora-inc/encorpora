@@ -1,15 +1,11 @@
 import "./styles.css"
-import type { GameModule, HostApi, StackConfig } from "./sdk/types"
+import type { GameModule } from "./sdk/types"
 import { createJuiceSqueeze } from "./game"
 
 type GlobalScope = typeof globalThis & {
   CorpanGames?: Record<string, GameModule>
   __juiceSqueeze?: { dispose: () => void }
   __corpanHostActive?: boolean
-}
-
-type InitialState = {
-  stackConfig?: StackConfig
 }
 
 const GAME_ID = "juice_squeeze"

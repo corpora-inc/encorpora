@@ -280,7 +280,7 @@ export const loadUtterance = async (
  * Load utterances for the game (legacy function - now just wraps loadUtterance)
  * @deprecated Use loadUtterance instead
  */
-export const loadUtterances = async (hostApi: HostApi, count: number = 1, minWords: number = 2): Promise<Utterance[]> => {
+export const loadUtterances = async (hostApi: HostApi, _count: number = 1, minWords: number = 2): Promise<Utterance[]> => {
   const utterance = await loadUtterance(hostApi, minWords)
   return utterance ? [utterance] : []
 }

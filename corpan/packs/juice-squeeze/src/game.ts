@@ -169,7 +169,7 @@ type InitialState = {
 export const createJuiceSqueeze = (
   container: HTMLElement,
   hostApi: HostApi,
-  initialState?: InitialState
+  _initialState?: InitialState
 ) => {
   // Stop any lingering TTS from Corpán main experience
   if (typeof hostApi.stopSpeech === "function") {
@@ -259,7 +259,7 @@ export const createJuiceSqueeze = (
     bgPlane.material = bgMaterial
     return bgPlane
   }
-  const logoBackground = createLogoBackground()
+  createLogoBackground()
 
   // Create 3D bottle with liquid animation
   const initialBottleProgress = useGameStore.getState().bottleProgress
@@ -294,18 +294,6 @@ export const createJuiceSqueeze = (
       }
       ttsTimeoutId = null
     }, delayMs)
-  }
-
-  // Fast TTS - speak immediately, canceling any queued speech
-  // Use only when interruption is desired (e.g., game init)
-  const speakFast = (lang: string, text: string) => {
-    // Stop any currently playing speech for instant response
-    if (typeof hostApi.stopSpeech === "function") {
-      hostApi.stopSpeech()
-    }
-    if (typeof hostApi.speak === "function") {
-      hostApi.speak(lang, text)
-    }
   }
 
   // Speak without interrupting - allows audio to overlap using concurrent TTS
@@ -435,9 +423,6 @@ export const createJuiceSqueeze = (
     // 6 chars → 1.0x, 12 chars → 2.0x, 18+ chars → 3.0x (capped)
     return Math.min(3.0, Math.max(0.5, len / 6))
   }
-
-  // Alias for backwards compatibility where getWordWidthMultiplier was used
-  const getWordWidthMultiplier = getIdealWidthMultiplier
 
   // Multi-row sentence area constants
   const MAX_SENTENCE_ROWS = 4 // Increased to fit longer phrases
@@ -813,8 +798,6 @@ export const createJuiceSqueeze = (
   let sentenceAreaMesh: Mesh | null = null // Store reference to update size
   let sentenceAreaWidth = 60 // Track current sentence area width for collision detection
   let sentenceAreaHeight = 5 // Track current sentence area height for collision detection
-  let sentenceRowCount = 1 // Track number of rows in sentence area
-  let sentenceRowHeight = 2 // Track height of each row
   let sentenceRowYPositions: number[] = [] // Y positions for each row
 
   // Fruit slice colors (orange, mango, papaya)
@@ -850,12 +833,10 @@ export const createJuiceSqueeze = (
     const rowCount = blockSize && wordCount
       ? calculateSentenceRows(wordCount, metrics, blockSize)
       : 1
-    sentenceRowCount = rowCount
 
     // Calculate row height (block height + spacing)
     const blockHeight = blockSize?.height || BASE_MIN_BLOCK_HEIGHT
     const rowHeightValue = blockHeight * (1 + SENTENCE_ROW_SPACING_RATIO)
-    sentenceRowHeight = rowHeightValue
 
     // Calculate total area height based on row count
     const areaHeight = rowCount === 1
@@ -874,21 +855,6 @@ export const createJuiceSqueeze = (
     const areaTexture = new DynamicTexture("sentence-area-texture", { width: 1024, height: 512 }, scene, true)
     areaTexture.hasAlpha = true
     const ctx = areaTexture.getContext() as CanvasRenderingContext2D
-
-    // Rounded rectangle helper for sentence area
-    const roundRect = (x: number, y: number, w: number, h: number, r: number) => {
-      ctx.beginPath()
-      ctx.moveTo(x + r, y)
-      ctx.lineTo(x + w - r, y)
-      ctx.quadraticCurveTo(x + w, y, x + w, y + r)
-      ctx.lineTo(x + w, y + h - r)
-      ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h)
-      ctx.lineTo(x + r, y + h)
-      ctx.quadraticCurveTo(x, y + h, x, y + h - r)
-      ctx.lineTo(x, y + r)
-      ctx.quadraticCurveTo(x, y, x + r, y)
-      ctx.closePath()
-    }
 
     // Make sentence area invisible - it's only used for collision detection
     // Word blocks float directly against the juice/bottle background
@@ -920,42 +886,6 @@ export const createJuiceSqueeze = (
 
     sentenceAreaMesh = area
     return area
-  }
-
-  // Convert language code to readable name
-  const getLanguageName = (code: string): string => {
-    const languageNames: Record<string, string> = {
-      en: "English",
-      es: "Spanish",
-      fr: "French",
-      it: "Italian",
-      "pt-BR": "Portuguese (BR)",
-      de: "German",
-      pl: "Polish",
-      ru: "Russian",
-      hu: "Hungarian",
-      tr: "Turkish",
-      ar: "Arabic",
-      fa: "Persian",
-      hi: "Hindi",
-      bn: "Bengali",
-      th: "Thai",
-      vi: "Vietnamese",
-      id: "Indonesian",
-      "zh-Hans": "Chinese (Simplified)",
-      "zh-Hant": "Chinese (Traditional)",
-      "ko-polite": "Korean (Polite)",
-      ja: "Japanese",
-      ta: "Tamil",
-      te: "Telugu",
-      kn: "Kannada",
-      mr: "Marathi",
-      gu: "Gujarati",
-      "pa-Guru": "Punjabi (Gurmukhi)",
-      "pa-Arab": "Punjabi (Shahmukhi)",
-      ur: "Urdu",
-    }
-    return languageNames[code] || code
   }
 
   // Get language name in its own language/script (for display to native speakers)
@@ -995,14 +925,13 @@ export const createJuiceSqueeze = (
   }
 
   // Create target phrase display with language label (viewport-based)
-  const createTargetPhraseDisplay = (text: string, languageCode: string, metrics: LayoutMetrics) => {
+  const createTargetPhraseDisplay = (text: string, _languageCode: string, metrics: LayoutMetrics) => {
     // Remove old display if exists
     const oldDisplay = root.querySelector(".target-phrase-display")
     if (oldDisplay) {
       oldDisplay.remove()
     }
 
-    const languageName = getLanguageName(languageCode)
     const canvasElement = engine.getRenderingCanvas()
     if (!canvasElement) return
 
@@ -1019,10 +948,6 @@ export const createJuiceSqueeze = (
 
     // Position at 15% between top and sentence area (higher up for more space)
     const pixelY = topSpaceStart + (sentencePixelY - topSpaceStart) * 0.15
-
-    // Responsive font sizes based on viewport percentage
-    const viewportWidth = canvasElement.width
-    const phraseFontSize = Math.max(20, Math.min(36, viewportWidth * 0.055)) // 5.5% of width
 
     const display = document.createElement("div")
     display.className = "target-phrase-display"
@@ -1050,7 +975,7 @@ export const createJuiceSqueeze = (
   }
 
   // Create "Build in: [Language]" label in bottom control row (CSS handles positioning)
-  const createBlockLanguageLabel = (languageCode: string, metrics: LayoutMetrics) => {
+  const createBlockLanguageLabel = (languageCode: string, _metrics: LayoutMetrics) => {
     // Remove old label if exists
     const oldLabel = root.querySelector(".block-language-label")
     if (oldLabel) {
@@ -1134,8 +1059,6 @@ export const createJuiceSqueeze = (
   // Create ABSOLUTELY WILD juice explosion - juice EVERYWHERE!
   const createCrazyJuiceExplosion = (position: Vector3, fruitColors: typeof LEVEL_FRUIT_COLORS[CEFRLevel]) => {
     try {
-      const metrics = getLayoutMetrics()
-
       // Main explosion - MASSIVE burst from center
       const mainExplosion = new ParticleSystem("mainJuiceExplosion", 2000, scene)
       mainExplosion.createSphereEmitter(3.0)
@@ -2069,8 +1992,8 @@ export const createJuiceSqueeze = (
   const buildWordBlockMeshes = async (
     utterance: Utterance,
     words: string[],
-    blockLang: string,
-    targetLang: string,
+    _blockLang: string,
+    _targetLang: string,
     metrics: LayoutMetrics,
     blockSize: { baseWidth: number; width: number; height: number; gap: number; fontSize: number; twoRowLayout?: boolean }
   ) => {
@@ -2279,7 +2202,6 @@ export const createJuiceSqueeze = (
       dragBehavior.attach(block)
 
       // Track drag state for tap detection
-      let dragStartTime = 0
       let dragMoved = false
       let dragStartPos: Vector3 | null = null
       let shrinkAnimationId: number | null = null // Track shrink animation to cancel on new drag
@@ -2312,7 +2234,6 @@ export const createJuiceSqueeze = (
           growAnimationId = null
         }
 
-        dragStartTime = Date.now()
         dragMoved = false
         dragStartPos = block.position.clone()
 
