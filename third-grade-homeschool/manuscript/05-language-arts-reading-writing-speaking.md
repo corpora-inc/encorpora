@@ -1,10 +1,10 @@
-# **Language Arts**
+# Language Arts
 
 Language arts is the engine of third grade because reading, writing, and speaking feed every other subject. The core philosophy here is simple: put in the time, keep it enjoyable, and let practice do the work. Joy lowers cost, and lower cost means you can show up more often. That is the economic win. It is also the agile win: short cycles, honest feedback, small adjustments. And it is the powerlifting win: steady reps, gradual overload, and frequent returns to lighter work so you stay strong without burning out.
 
 Your job is not to run clever games. Your job is to create enough time and enough ease that language practice becomes normal. Read a lot. Write a lot. Talk about what you read and write. That is the whole system.
 
-## **The Core Loop**
+## The Core Loop
 
 A small loop, repeated often, outperforms big plans you cannot sustain. A simple loop looks like this: read something short, talk about it, write something small, then share or teach it back. Think of each loop as a set. You do a few sets per week, not a single marathon.
 
@@ -12,7 +12,7 @@ One reliable version is the question loop: your child writes three to five quest
 
 ![Questions that turn into notes](images/A_notebook_page_showing_a_childs_question_Why_do_octopuses_change_color_a_short_reading_excerpt_three_vocabulary_words_and_a_quick_labeled_sketch.png)
 
-## **Small Practices That Keep It Moving**
+## Small Practices That Keep It Moving
 
 Use these ideas as small, repeatable reps. They are simple on purpose. The point is not novelty. The point is consistency with pleasure.
 
@@ -22,7 +22,7 @@ Another is **read with a notebook nearby**. After each paragraph or page, write 
 
 For vocabulary, keep a **word treasure list**. While reading, jot down words you are not sure about. Pick one and explore its family: related words, roots, and cognates. Greek and Latin are not taught much in public school, but they quietly power English. Treat word families like a secret society you get to join together. If you are learning other languages, use them to spot connections; it turns vocabulary into a living map.
 
-## **Reading**
+## Reading
 
 By the end of third grade, you want a reader who can handle age-appropriate texts with reasonable accuracy and understanding, explain the main idea, and stay with a book without constant rescue. Look for ease: reading in phrases, self-correcting when something sounds wrong, and being able to tell you what happened or what a passage was mostly about.
 
@@ -36,7 +36,7 @@ Choice matters. Let the market decide: the books that hold attention are the boo
 
 ![Choosing the next good story](images/Parent_and_child_using_a_tablet_device_together_to_select_new_stories..png)
 
-## **Writing**
+## Writing
 
 Writing is output. It does not need to be fancy to be effective. Put pen to paper most days. A short paragraph, a short list, or a short note is enough to build the habit. If handwriting slows things down, scribe for your child, then have them copy one or two sentences. The goal is to keep ideas moving.
 
@@ -46,21 +46,21 @@ Revision should be light: read it out loud, fix one thing, then let it rest. One
 
 ![Beginning, middle, end on one page](images/Parent_and_child_sketching_three_labeled_boxes_Beginning_Middle_End_and_turning_each_box_into_a_paragraph.png)
 
-## **Speaking and Listening**
+## Speaking and Listening
 
 Conversation is the fastest way to build language. Ask for short retells, short explanations, and short teaching moments. "Teach me" works. So does "What do you want to learn next?" Speaking makes thinking visible, and it makes writing easier because the idea already exists in words.
 
-## **Vocabulary and Mechanics**
+## Vocabulary and Mechanics
 
 Vocabulary grows best from real reading and real talk. When a new word appears, pause, guess from context, check the meaning if needed, and use it once in a sentence. Then keep reading. If you are learning multiple languages, point out roots and cognates when they appear. Tools like language apps can help, but the core engine is still reading and conversation.
 
 For mechanics, focus on clarity: complete sentences, capitalization, punctuation, and spelling that is readable. Fix one pattern at a time. Sentence combining is the highest-return move because it strengthens grammar and style without worksheets.
 
-## **Handwriting and Keyboarding**
+## Handwriting and Keyboarding
 
 Handwriting should be legible and comfortable, not perfect. Short daily practice wins. Keyboarding is a tool, not a goal. Use it when it reduces friction and lets ideas flow.
 
-## **If You Are Worried**
+## If You Are Worried
 
 If you feel behind, return to the basics for two weeks. A calm reset often fixes more than a complicated plan.
 
@@ -69,7 +69,7 @@ If you feel behind, return to the basics for two weeks. A calm reset often fixes
 - Talk about what you read and wrote.
 - Keep the work enjoyable enough that you can keep showing up.
 
-### **Activity Menu**
+### Activity Menu
 
 - Do a 15-minute read and retell.
 - Run the question loop: write three questions, read to answer one, write three sentences, then add two follow-up questions.
