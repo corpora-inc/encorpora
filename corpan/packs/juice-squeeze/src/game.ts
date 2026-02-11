@@ -6,6 +6,7 @@ import {
   DynamicTexture,
   Engine,
   HemisphericLight,
+  Material,
   Mesh,
   MeshBuilder,
   ParticleSystem,
@@ -71,7 +72,8 @@ const updateBlockText = (
     ctx.closePath()
   }
 
-  // Clear texture
+  // Clear texture and ensure alpha is enabled for transparent corners
+  texture.hasAlpha = true
   ctx.clearRect(0, 0, textureWidth, textureHeight)
 
   const padding = 16
@@ -419,7 +421,7 @@ export const createJuiceSqueeze = (
     // Punctuation gets half-width blocks
     if (len === 1 && /^[\p{P}]$/u.test(word)) return 0.5
 
-    // Proportional to character count: len/6, clamped to [1.0, 3.0]
+    // Proportional to character count: len/6, clamped to [0.5, 3.0]
     // 6 chars → 1.0x, 12 chars → 2.0x, 18+ chars → 3.0x (capped)
     return Math.min(3.0, Math.max(0.5, len / 6))
   }
@@ -486,9 +488,13 @@ export const createJuiceSqueeze = (
     const rawFontSize = Math.floor(blockHeight * metrics.pixelsPerUnit * 0.4)
     const fontSize = Math.max(16, Math.min(rawFontSize, 200))
 
+    // Average actual block width for row-fitting estimates
+    const avgMultiplier = totalMultiplier / wordCount
+    const avgBlockWidth = clampedBaseUnit * avgMultiplier
+
     return {
-      baseWidth: clampedBaseUnit,  // Base width for 1x multiplier
-      width: clampedBaseUnit,      // For backwards compatibility
+      baseWidth: clampedBaseUnit,  // Base width for 1x multiplier (per-word calc)
+      width: avgBlockWidth,        // Average actual block width (for row-fitting)
       height: blockHeight,
       gap: clampedBaseUnit * gapRatio,
       fontSize,
@@ -587,9 +593,9 @@ export const createJuiceSqueeze = (
     const viewportWidth = canvasElement?.width || 720
     const maxBlocksPerRow = getSentenceBlocksPerRow(viewportWidth)
 
-    // Also check available width (use base width for estimation)
+    // Also check available width (use average actual block width for estimation)
     const availableWidth = metrics.worldWidth * 0.85
-    const avgBlockWidth = currentBlockSize.baseWidth * 1.15
+    const avgBlockWidth = currentBlockSize.width * 1.15
     const blocksPerRowByWidth = Math.floor(availableWidth / avgBlockWidth)
     const effectiveBlocksPerRow = Math.max(2, Math.min(maxBlocksPerRow, blocksPerRowByWidth))
 
@@ -643,6 +649,217 @@ export const createJuiceSqueeze = (
         item.data.sentenceRow = rowIndex
       })
     })
+  }
+
+  // Compute where a ghost preview should appear during drag
+  const computeGhostPosition = (
+    draggedBlock: Mesh,
+    metrics: LayoutMetrics
+  ): { row: number; insertIndex: number; y: number } | null => {
+    const blockPos = draggedBlock.position
+    const sentenceAreaCenterY = metrics.sentenceAreaY
+
+    // AABB check: is the dragged block over the sentence area?
+    const isOverSentence =
+      blockPos.y >= sentenceAreaCenterY - sentenceAreaHeight / 2 &&
+      blockPos.y <= sentenceAreaCenterY + sentenceAreaHeight / 2 &&
+      Math.abs(blockPos.x) <= sentenceAreaWidth / 2
+
+    if (!isOverSentence) return null
+
+    const currentBlockLang = useGameStore.getState().phrase.blockLang || "en"
+    const isBlockLangRTL = isRTL(currentBlockLang)
+    const targetRow = getTargetRow(blockPos.y, sentenceRowYPositions)
+
+    // Get blocks in the target row (excluding the dragged block)
+    const blocksInSameRow = Array.from(wordBlockData.entries())
+      .filter(([mesh, d]) => d.isInSentence && mesh !== draggedBlock && d.sentenceRow === targetRow)
+      .map(([mesh, d]) => ({ mesh, data: d }))
+
+    // Sort by reading order
+    blocksInSameRow.sort((a, b) =>
+      isBlockLangRTL ? b.mesh.position.x - a.mesh.position.x : a.mesh.position.x - b.mesh.position.x
+    )
+
+    const dropX = blockPos.x
+    let insertIndex = blocksInSameRow.length
+
+    for (let i = 0; i < blocksInSameRow.length; i++) {
+      const existingX = blocksInSameRow[i].mesh.position.x
+      if (isBlockLangRTL) {
+        if (dropX > existingX) { insertIndex = i; break }
+      } else {
+        if (dropX < existingX) { insertIndex = i; break }
+      }
+    }
+
+    const y = sentenceRowYPositions[targetRow] || metrics.sentenceAreaY
+    return { row: targetRow, insertIndex, y }
+  }
+
+  // Animated reflow that leaves a gap for the ghost preview
+  const reflowSentenceBlocksAnimated = (
+    metrics: LayoutMetrics,
+    ghostInfo: { row: number; insertIndex: number; width: number } | null,
+    excludeBlock?: Mesh
+  ) => {
+    // Cancel any existing preview animation
+    if (previewAnimationId !== null) {
+      cancelAnimationFrame(previewAnimationId)
+      previewAnimationId = null
+    }
+
+    previewPositions.clear()
+
+    const blocksInSentence = Array.from(wordBlockData.entries())
+      .filter(([mesh, data]) => data.isInSentence && mesh !== excludeBlock)
+      .map(([mesh, data]) => ({ mesh, data }))
+
+    if (blocksInSentence.length === 0 && !ghostInfo) return
+
+    // Calculate current block size for gap reference
+    const currentWords = currentUtterance?.words || []
+    const currentBlockSize = calculateBlockSize(currentWords, metrics)
+    const blockGap = currentBlockSize.gap * 1.15
+
+    // Get max blocks per row
+    const canvasElement = engine.getRenderingCanvas()
+    const viewportWidth = canvasElement?.width || 720
+    const maxBlocksPerRow = getSentenceBlocksPerRow(viewportWidth)
+    const availableWidth = metrics.worldWidth * 0.85
+    const avgBlockWidth = currentBlockSize.width * 1.15
+    const blocksPerRowByWidth = Math.floor(availableWidth / avgBlockWidth)
+    const effectiveBlocksPerRow = Math.max(2, Math.min(maxBlocksPerRow, blocksPerRowByWidth))
+
+    const currentBlockLang = useGameStore.getState().phrase.blockLang || "en"
+    const isBlockLangRTL = isRTL(currentBlockLang)
+
+    // Sort by row then reading order
+    blocksInSentence.sort((a, b) => {
+      if (a.data.sentenceRow !== b.data.sentenceRow) {
+        return a.data.sentenceRow - b.data.sentenceRow
+      }
+      return isBlockLangRTL
+        ? b.mesh.position.x - a.mesh.position.x
+        : a.mesh.position.x - b.mesh.position.x
+    })
+
+    // Group into rows
+    const rows: typeof blocksInSentence[] = []
+    blocksInSentence.forEach((item, globalIndex) => {
+      const row = Math.floor(globalIndex / effectiveBlocksPerRow)
+      if (!rows[row]) rows[row] = []
+      rows[row].push(item)
+    })
+
+    // Ensure ghost row exists even when sentence is empty
+    if (ghostInfo && !rows[ghostInfo.row]) {
+      rows[ghostInfo.row] = []
+    }
+
+    // Position each row, inserting ghost gap where needed
+    rows.forEach((rowBlocks, rowIndex) => {
+      const rowWidths = rowBlocks.map((item) => item.data.baseWidth || currentBlockSize.baseWidth)
+
+      // Insert ghost gap if this is the ghost row
+      const hasGhost = ghostInfo && rowIndex === ghostInfo.row
+      const ghostWidth = hasGhost ? ghostInfo.width : 0
+      const ghostIdx = hasGhost ? Math.min(ghostInfo.insertIndex, rowBlocks.length) : -1
+
+      // Calculate total width including ghost gap
+      let rowTotalWidth = rowWidths.reduce((sum, w) => sum + w, 0) + (rowBlocks.length - 1) * blockGap
+      if (hasGhost) {
+        rowTotalWidth += ghostWidth + blockGap
+      }
+
+      let currentX = isBlockLangRTL ? rowTotalWidth / 2 : -rowTotalWidth / 2
+      let blockIdx = 0
+
+      for (let slot = 0; slot <= rowBlocks.length; slot++) {
+        if (hasGhost && slot === ghostIdx) {
+          // This slot is the ghost — position ghost mesh here
+          if (ghostMesh) {
+            if (isBlockLangRTL) {
+              ghostMesh.position.x = currentX - ghostWidth / 2
+              currentX -= ghostWidth + blockGap
+            } else {
+              ghostMesh.position.x = currentX + ghostWidth / 2
+              currentX += ghostWidth + blockGap
+            }
+            ghostMesh.position.y = sentenceRowYPositions[rowIndex] || metrics.sentenceAreaY
+          }
+        }
+
+        if (blockIdx < rowBlocks.length && slot <= rowBlocks.length) {
+          // Skip if this slot was the ghost and we already processed it
+          if (hasGhost && slot === ghostIdx) continue
+
+          const item = rowBlocks[blockIdx]
+          const thisWidth = rowWidths[blockIdx]
+          let targetX: number
+
+          if (isBlockLangRTL) {
+            targetX = currentX - thisWidth / 2
+            currentX -= thisWidth + blockGap
+          } else {
+            targetX = currentX + thisWidth / 2
+            currentX += thisWidth + blockGap
+          }
+
+          const targetY = sentenceRowYPositions[rowIndex] || metrics.sentenceAreaY
+          previewPositions.set(item.mesh, new Vector3(targetX, targetY, -0.5))
+          item.data.sentenceRow = rowIndex
+          blockIdx++
+        }
+      }
+    })
+
+    // Start lerp animation
+    const animateReflow = () => {
+      let allSettled = true
+      previewPositions.forEach((target, mesh) => {
+        const dx = target.x - mesh.position.x
+        const dy = target.y - mesh.position.y
+        if (Math.abs(dx) > 0.02 || Math.abs(dy) > 0.02) {
+          mesh.position.x += dx * 0.18
+          mesh.position.y += dy * 0.18
+          allSettled = false
+        } else {
+          mesh.position.x = target.x
+          mesh.position.y = target.y
+        }
+      })
+
+      if (!allSettled) {
+        previewAnimationId = requestAnimationFrame(animateReflow)
+      } else {
+        previewAnimationId = null
+      }
+    }
+    animateReflow()
+  }
+
+  // Hide ghost preview (keep mesh for reuse)
+  const hideGhost = () => {
+    if (ghostMesh) {
+      ghostMesh.isVisible = false
+    }
+    ghostInsertionIndex = -1
+    ghostTargetRow = -1
+  }
+
+  // Fully dispose ghost mesh and clean up animations
+  const disposeGhost = () => {
+    hideGhost()
+    if (ghostMesh) {
+      ghostMesh.dispose()
+      ghostMesh = null
+    }
+    if (previewAnimationId !== null) {
+      cancelAnimationFrame(previewAnimationId)
+      previewAnimationId = null
+    }
+    previewPositions.clear()
   }
 
   // Position word blocks in the word bank (NOT in sentence area)
@@ -800,6 +1017,13 @@ export const createJuiceSqueeze = (
   let sentenceAreaHeight = 5 // Track current sentence area height for collision detection
   let sentenceRowYPositions: number[] = [] // Y positions for each row
 
+  // Ghost preview state for drag-and-drop
+  let ghostMesh: Mesh | null = null
+  let ghostInsertionIndex: number = -1
+  let ghostTargetRow: number = -1
+  let previewPositions: Map<Mesh, Vector3> = new Map()
+  let previewAnimationId: number | null = null
+
   // Fruit slice colors (orange, mango, papaya)
   // Vibrant tropical fruit color palette for word blocks
   const fruitColors = [
@@ -886,6 +1110,65 @@ export const createJuiceSqueeze = (
 
     sentenceAreaMesh = area
     return area
+  }
+
+  // Create ghost preview mesh for drag-and-drop insertion indicator
+  const createGhostMesh = (width: number, height: number) => {
+    if (ghostMesh) {
+      ghostMesh.dispose()
+      ghostMesh = null
+    }
+
+    const ghost = MeshBuilder.CreatePlane("ghost-preview", { width, height }, scene)
+
+    const texW = 512
+    const texH = 256
+    const texture = new DynamicTexture("ghost-texture", { width: texW, height: texH }, scene, true)
+    texture.hasAlpha = true
+    const ctx = texture.getContext() as CanvasRenderingContext2D
+
+    ctx.clearRect(0, 0, texW, texH)
+
+    // Semi-transparent fill with rounded rect
+    const padding = 8
+    const radius = 24
+    ctx.beginPath()
+    ctx.moveTo(padding + radius, padding)
+    ctx.lineTo(texW - padding - radius, padding)
+    ctx.quadraticCurveTo(texW - padding, padding, texW - padding, padding + radius)
+    ctx.lineTo(texW - padding, texH - padding - radius)
+    ctx.quadraticCurveTo(texW - padding, texH - padding, texW - padding - radius, texH - padding)
+    ctx.lineTo(padding + radius, texH - padding)
+    ctx.quadraticCurveTo(padding, texH - padding, padding, texH - padding - radius)
+    ctx.lineTo(padding, padding + radius)
+    ctx.quadraticCurveTo(padding, padding, padding + radius, padding)
+    ctx.closePath()
+
+    ctx.fillStyle = "rgba(255, 255, 255, 0.15)"
+    ctx.fill()
+
+    ctx.setLineDash([12, 8])
+    ctx.strokeStyle = "rgba(255, 255, 255, 0.5)"
+    ctx.lineWidth = 4
+    ctx.stroke()
+
+    texture.update()
+
+    const material = new StandardMaterial("ghost-material", scene)
+    material.diffuseTexture = texture
+    material.useAlphaFromDiffuseTexture = true
+    material.emissiveTexture = texture
+    material.emissiveColor = new Color3(0.9, 0.9, 0.9)
+    material.alpha = 0.6
+    material.disableDepthWrite = true
+    material.zOffset = -3
+    ghost.material = material
+
+    ghost.renderingGroupId = 1
+    ghost.position.z = -0.3
+    ghost.isVisible = false
+
+    ghostMesh = ghost
   }
 
   // Get language name in its own language/script (for display to native speakers)
@@ -1840,6 +2123,7 @@ export const createJuiceSqueeze = (
 
   // Clear old word blocks
   const clearWordBlocks = () => {
+    disposeGhost()
     wordBlocks.forEach((block) => {
       // Detach drag behavior to unsubscribe observables
       const dragBehavior = block.getBehaviorByName("PointerDrag")
@@ -2043,7 +2327,7 @@ export const createJuiceSqueeze = (
         scene,
         true
       )
-      texture.hasAlpha = false // Blocks are fully opaque to prevent whiteout
+      texture.hasAlpha = true
       const ctx = texture.getContext() as CanvasRenderingContext2D
 
       // Use fruit slice color (cycle through colors)
@@ -2166,7 +2450,9 @@ export const createJuiceSqueeze = (
       // Apply texture material with enhanced 3D depth
       const material = new StandardMaterial(`word-material-${utterance.id}-${shuffledIndex}`, scene)
       material.diffuseTexture = texture
-      material.useAlphaFromDiffuseTexture = false // No transparency - blocks are fully opaque
+      material.useAlphaFromDiffuseTexture = true
+      material.transparencyMode = Material.MATERIAL_ALPHATEST
+      material.alphaCutOff = 0.5
       material.emissiveTexture = texture
       // Premium candy-like material - bright and vivid
       material.emissiveColor = new Color3(0.95, 0.95, 0.95) // Brighter for more pop
@@ -2266,9 +2552,13 @@ export const createJuiceSqueeze = (
           }
           animateGrow()
         }
+
+        // Prepare ghost mesh sized to this block
+        createGhostMesh(data.baseWidth, data.baseHeight)
       })
 
       // Track if block actually moved during drag (X/Y only, ignore Z lift)
+      // Also update ghost preview when dragging over sentence area
       dragBehavior.onDragObservable.add(() => {
         if (dragStartPos) {
           const dx = block.position.x - dragStartPos.x
@@ -2278,6 +2568,44 @@ export const createJuiceSqueeze = (
             dragMoved = true
           }
         }
+
+        // Ghost preview: only show after meaningful drag movement
+        if (!dragMoved) return
+
+        const dragData = wordBlockData.get(block)
+        if (!dragData) return
+
+        const currentMetrics = getLayoutMetrics()
+        const result = computeGhostPosition(block, currentMetrics)
+
+        if (result === null) {
+          // Not over sentence area — hide ghost, animate blocks back
+          if (ghostMesh?.isVisible) {
+            hideGhost()
+            reflowSentenceBlocksAnimated(currentMetrics, null, block)
+          }
+          return
+        }
+
+        // Skip if insertion position hasn't changed
+        if (result.row === ghostTargetRow && result.insertIndex === ghostInsertionIndex) {
+          return
+        }
+
+        // Update ghost state and show
+        ghostTargetRow = result.row
+        ghostInsertionIndex = result.insertIndex
+
+        if (ghostMesh) {
+          ghostMesh.isVisible = true
+        }
+
+        // Animate existing blocks to make room for ghost
+        reflowSentenceBlocksAnimated(currentMetrics, {
+          row: result.row,
+          insertIndex: result.insertIndex,
+          width: dragData.baseWidth,
+        }, block)
       })
 
       // Shrink function for this block - can be called externally when another block is touched
@@ -2312,6 +2640,14 @@ export const createJuiceSqueeze = (
       dragBehavior.onDragEndObservable.add(() => {
         isDragging = false // Clear drag state
         dragEndTime = Date.now() // Record end time for swipe lockout
+
+        // Clean up ghost preview
+        hideGhost()
+        if (previewAnimationId !== null) {
+          cancelAnimationFrame(previewAnimationId)
+          previewAnimationId = null
+        }
+        previewPositions.clear()
 
         // Restore rendering layer
         block.renderingGroupId = 1
@@ -2619,6 +2955,13 @@ export const createJuiceSqueeze = (
     visualViewport.addEventListener("scroll", scheduleResize)
   }
 
+  // ResizeObserver catches layout changes from CSS (safe-area insets, container sizing)
+  // This fixes iPhone first-load cropping where dimensions aren't ready at mount time
+  const resizeObserver = new ResizeObserver(() => {
+    scheduleResize()
+  })
+  resizeObserver.observe(root)
+
   engine.runRenderLoop(() => {
     if (!disposed) {
       scene.render()
@@ -2669,6 +3012,7 @@ export const createJuiceSqueeze = (
       visualViewport.removeEventListener("resize", scheduleResize)
       visualViewport.removeEventListener("scroll", scheduleResize)
     }
+    resizeObserver.disconnect()
     engine.stopRenderLoop()
     scene.dispose()
     engine.dispose()
