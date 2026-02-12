@@ -292,6 +292,8 @@ For small differences, counting on or back works well, like 67 − 4 = 63. But i
 
 ### Written algorithms: dependable when problems get messy
 
+Before you teach the stacked method, define the two core terms your child will hear most.
+
 > **Algorithm** is a standard step-by-step method, like the stacked way of adding or subtracting.
 >
 > **Regrouping** (carrying or borrowing) is trading across place values, like swapping 10 ones for 1 ten.
@@ -1023,6 +1025,8 @@ If your child can do those four moves, they are building a genuinely useful tool
 
 ### Tables: the “make it make sense” step
 
+Start by naming the tool clearly, then use it to organize messy real-world counts.
+
 > **Table** organizes data in rows and columns.
 
 Tables are the unsung heroes here. They are not flashy, but they bring order and prevent sloppy thinking. A table forces your child to decide what counts as “the same thing,” which is quietly one of the most important habits in math.
@@ -1036,6 +1040,8 @@ When your child gets stuck, slow down and talk through the categories and the co
 
 
 ### Bar graphs: comparison at a glance
+
+Before drawing bars, make sure your child knows what the graph is designed to compare.
 
 > **Bar graph** compares categories with bars. **Scale** is what each step on the number side counts by.
 
@@ -1057,6 +1063,8 @@ That “how many more” question is also a nice place to offer two valid strate
 Both are real math. You are building flexibility.
 
 ### Pictographs: symbols, keys, and a sneak peek at fractions
+
+Give the definition first, then keep returning to the key so symbols stay honest.
 
 > **Pictograph** compares categories with symbols and includes a **key** (legend).
 

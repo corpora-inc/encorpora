@@ -46,6 +46,8 @@ If you choose the four-day option, many families “make up” the total days by
 
 ### Plan in short cycles
 
+Keep planning light by relying on two anchors that prevent overproduction.
+
 > **Two planning anchors**
 >
 > - **Just-in-time planning:** sketch the next small chunk right before you use it.

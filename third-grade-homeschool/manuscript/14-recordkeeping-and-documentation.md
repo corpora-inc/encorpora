@@ -137,6 +137,8 @@ A few subject-specific shortcuts help keep this light:
 
 ### Pick a system you will use
 
+Before choosing paper or digital, lock in one simple recordkeeping principle.
+
 > **One source of truth:** keep records in one trusted place so you are never hunting.
 
 The best system is the one you’ll maintain when you’re tired. Paper and digital both work. Choose based on your life, not your ideals.

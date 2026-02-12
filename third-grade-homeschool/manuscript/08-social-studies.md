@@ -211,6 +211,8 @@ If your child wonders why some things work the same everywhere, but other things
 
 ### A quick note about rights
 
+Use one calm, age-appropriate sentence here so your child has a sturdy baseline.
+
 > **Rights are things people have because they are human, not prizes handed out by the government.** A big job of government is to recognize and protect rights, and to coordinate shared tasks families cannot do alone.
 
 You do not need a deep civics lecture here. The goal is a sturdy, calm baseline that supports respectful conversations later.

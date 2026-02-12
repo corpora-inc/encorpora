@@ -162,6 +162,8 @@ Mistakes become information, not a crisis. If your child struggles in the indepe
 
 ### How much practice is “enough”
 
+A practical target is frequent, low-friction reps instead of long, draining sessions.
+
 > **Grease the groove:** frequent, easy reps of a narrow skill so it sticks without fatigue.
 
 Short, focused sessions usually beat long, exhausting drills. Aim for **three to six problems** during the guided phases, and stop before anyone is bored or tired. Ending on a success does more for tomorrow’s motivation than one more page today.
