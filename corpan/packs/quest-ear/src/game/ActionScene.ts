@@ -1,12 +1,94 @@
 import Phaser from "phaser"
+import { npcCorpus } from "../data/npcCorpus"
+import type { MultiLangText, NPCEncounter, NPCResponse } from "../data/npcCorpusTypes"
+import type { HostApi } from "../sdk/types"
 
-interface NPCData {
-  id: string
-  x: number
-  type: string
-  icon: string // Emoji for now
-  dialog: string // Text they say (English for now, will translate later)
-  langCode: string // Target language
+/** Icons for each NPC vendor type */
+const NPC_ICONS: Record<string, string> = {
+  hotdog: "🌭",
+  pizza: "🍕",
+  coffee: "☕",
+  juice: "🧃",
+  tickets: "🎫",
+  newspaper: "📰",
+  pretzel: "🥨",
+  taxi: "🚕",
+  flowers: "💐",
+  fruit: "🍎",
+  riddle: "🧩",
+}
+
+/** Item emojis that float to player on accept */
+const ACCEPT_ITEMS: Record<string, string> = {
+  hotdog: "🌭",
+  pizza: "🍕",
+  coffee: "☕",
+  juice: "🥤",
+  tickets: "🎟️",
+  newspaper: "📰",
+  pretzel: "🥨",
+  taxi: "🚖",
+  flowers: "🌹",
+  fruit: "🍎",
+  riddle: "🧩",
+}
+
+/** Screens where riddle NPCs appear instead of vendors */
+const RIDDLE_SCREENS = [20, 40, 60, 80]
+
+const RIDDLE_DATA: {
+  question: MultiLangText
+  answers: [MultiLangText, MultiLangText, MultiLangText]
+  correctIndex: number
+}[] = [
+  {
+    question: { en: "I have cities but no houses, forests but no trees, water but no fish. What am I?" },
+    answers: [
+      { en: "A map" },
+      { en: "A painting" },
+      { en: "A dream" },
+    ],
+    correctIndex: 0,
+  },
+  {
+    question: { en: "The more you take, the more you leave behind. What are they?" },
+    answers: [
+      { en: "Memories" },
+      { en: "Footsteps" },
+      { en: "Breaths" },
+    ],
+    correctIndex: 1,
+  },
+  {
+    question: { en: "I speak without a mouth and hear without ears. I have no body, but I come alive with the wind. What am I?" },
+    answers: [
+      { en: "A shadow" },
+      { en: "An echo" },
+      { en: "A thought" },
+    ],
+    correctIndex: 1,
+  },
+  {
+    question: { en: "What can travel around the world while staying in a corner?" },
+    answers: [
+      { en: "A spider" },
+      { en: "The internet" },
+      { en: "A stamp" },
+    ],
+    correctIndex: 2,
+  },
+]
+
+type InteractionState = "roaming" | "interacting" | "animating"
+
+interface NPCInstance {
+  container: Phaser.GameObjects.Container
+  encounter: NPCEncounter
+  worldX: number
+  dialogBubble: Phaser.GameObjects.Container
+  dialogText: Phaser.GameObjects.Text
+  npcPerson: Phaser.GameObjects.Container
+  dialogVisible: boolean
 }
 
 export class ActionScene extends Phaser.Scene {
@@ -16,20 +98,46 @@ export class ActionScene extends Phaser.Scene {
   private returnToSceneId?: string
 
   // Constants
-  private readonly WORLD_WIDTH = 80000 // 100 screens × 800px
-  private readonly SCREEN_WIDTH = 800
+  private readonly WORLD_WIDTH = 80000
   private readonly SCREEN_HEIGHT = 600
+  private readonly INTERACT_DISTANCE = 100
+  private readonly PLAYER_BASE_Y = 474
+  private readonly GROWTH_PER_ACCEPT = 0.02
 
   // Player state
   private playerSpeed = 200
-  private health = 100
+  private acceptCount = 0
+  private interactionState: InteractionState = "roaming"
+
+  // Language
+  private activeLangCode = "en"
+  private targetLangs: string[] = ["en"]
+  private langRotationIndex = 0
+  private hostApi: HostApi | null = null
 
   // NPCs
-  private npcs: {
-    container: Phaser.GameObjects.Container
-    data: NPCData
-    dialogVisible: boolean
-  }[] = []
+  private npcs: NPCInstance[] = []
+  private passedSet = new Set<string>() // proximity-based re-trigger guard
+  private acceptedSet = new Set<string>() // tracks NPCs already accepted (no repeat growth)
+
+  // Response panel (camera-fixed UI)
+  private responsePanel!: Phaser.GameObjects.Container
+  private responseOptions: Phaser.GameObjects.Container[] = []
+  private selectedIndex = 0
+  private activeNPC: NPCInstance | null = null
+
+  // HUD
+  private langLabel!: Phaser.GameObjects.Text
+
+  // Energy bar
+  private energyBarFill!: Phaser.GameObjects.Rectangle
+  private energyBarLabel!: Phaser.GameObjects.Text
+
+  // Input keys
+  private keyUp!: Phaser.Input.Keyboard.Key
+  private keyDown!: Phaser.Input.Keyboard.Key
+  private keyEnter!: Phaser.Input.Keyboard.Key
+  private keySpace!: Phaser.Input.Keyboard.Key
 
   constructor() {
     super({ key: "ActionScene" })
@@ -38,13 +146,34 @@ export class ActionScene extends Phaser.Scene {
   create(data?: { returnToScene?: string }) {
     this.returnToSceneId = data?.returnToScene
 
+    // Reset state for scene restart
+    this.npcs = []
+    this.passedSet.clear()
+    this.acceptedSet.clear()
+    this.acceptCount = 0
+    this.interactionState = "roaming"
+    this.activeNPC = null
+    this.selectedIndex = 0
+
+    // Read languages from host API
+    this.hostApi = (globalThis as any).__questEarHostApi ?? null
+    try {
+      const config = this.hostApi?.getStackConfig?.()
+      const langs = config?.languages
+      this.targetLangs = langs && langs.length > 0 ? langs : ["en"]
+    } catch {
+      this.targetLangs = ["en"]
+    }
+    this.langRotationIndex = 0
+    this.activeLangCode = this.targetLangs[0]
+
     // Sky background - NYC evening
     this.cameras.main.setBackgroundColor(0x1a1a2e)
 
     // Enable physics
     this.physics.world.setBounds(0, 0, this.WORLD_WIDTH, this.SCREEN_HEIGHT)
 
-    // Generate procedural skyline across entire world
+    // Generate procedural skyline
     this.createSkyline()
 
     // Create player character
@@ -53,26 +182,29 @@ export class ActionScene extends Phaser.Scene {
     // Create NPCs across the world
     this.createNPCs()
 
-    // Enable physics on the container
+    // Enable physics on player
     this.physics.add.existing(this.player)
     const body = this.player.body as Phaser.Physics.Arcade.Body
-    // Character visual bounds: ~40 wide, ~77 tall (from hat top to shoe bottom)
     body.setSize(40, 77)
-    body.setOffset(-20, -45) // Align body with visual character (top at hat, centered horizontally)
+    body.setOffset(-20, -45)
     body.setCollideWorldBounds(true)
-    body.setGravityY(0) // No gravity for side-scrolling
+    body.setGravityY(0)
 
     // Camera follows player
     this.cameras.main.setBounds(0, 0, this.WORLD_WIDTH, this.SCREEN_HEIGHT)
     this.cameras.main.startFollow(this.player, true, 0.1, 0.1)
 
-    // Enable keyboard input
+    // Keyboard input
     this.cursors = this.input.keyboard!.createCursorKeys()
+    this.keyUp = this.input.keyboard!.addKey(Phaser.Input.Keyboard.KeyCodes.UP)
+    this.keyDown = this.input.keyboard!.addKey(Phaser.Input.Keyboard.KeyCodes.DOWN)
+    this.keyEnter = this.input.keyboard!.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER)
+    this.keySpace = this.input.keyboard!.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE)
 
-    // Health bar
-    this.createHealthBar()
+    // Energy bar (repurposed health bar)
+    this.createEnergyBar()
 
-    // Progress indicator (fixed to camera)
+    // Progress indicator
     this.progressText = this.add
       .text(400, 580, "", {
         fontSize: "14px",
@@ -82,71 +214,505 @@ export class ActionScene extends Phaser.Scene {
       .setOrigin(0.5)
       .setScrollFactor(0)
 
-    // Instructions (fixed to camera)
+    // Instructions
     this.add
-      .text(400, 30, "← → to move | Approach NPCs to interact", {
-        fontSize: "16px",
+      .text(400, 30, "← → move | Approach NPCs | ↑↓ choose | Enter confirm", {
+        fontSize: "14px",
         color: "#ffffff",
         fontFamily: '"Courier New", monospace',
       })
       .setOrigin(0.5)
       .setScrollFactor(0)
+
+    // Language indicator (shown during interactions)
+    this.langLabel = this.add
+      .text(20, 55, "", {
+        fontSize: "16px",
+        color: "#00ff41",
+        fontFamily: '"Courier New", monospace',
+      })
+      .setScrollFactor(0)
+      .setDepth(100)
+      .setVisible(false)
+
+    // Exit button (top-right X)
+    const exitBtn = this.add
+      .text(780, 20, "✕", {
+        fontSize: "24px",
+        color: "#ffffff",
+        fontFamily: "sans-serif",
+      })
+      .setOrigin(0.5)
+      .setScrollFactor(0)
+      .setDepth(200)
+      .setInteractive({ useHandCursor: true })
+
+    exitBtn.on("pointerover", () => exitBtn.setColor("#ff4444"))
+    exitBtn.on("pointerout", () => exitBtn.setColor("#ffffff"))
+    exitBtn.on("pointerdown", () => {
+      this.hostApi?.stopSpeech?.()
+      window.dispatchEvent(new CustomEvent("corpan:exit"))
+    })
+
+    // Create the response panel (hidden initially)
+    this.createResponsePanel()
   }
 
-  update(time: number, delta: number) {
-    const body = this.player.body as Phaser.Physics.Arcade.Body
-
-    if (this.cursors.left.isDown) {
-      body.setVelocityX(-this.playerSpeed)
-      this.player.setScale(-1, 1) // Flip to face left
-    } else if (this.cursors.right.isDown) {
-      body.setVelocityX(this.playerSpeed)
-      this.player.setScale(1, 1) // Face right
-    } else {
-      body.setVelocityX(0)
+  update(_time: number, _delta: number) {
+    if (this.interactionState === "roaming") {
+      this.handleMovement()
+      this.checkNPCProximity()
+    } else if (this.interactionState === "interacting") {
+      this.handleResponseInput()
     }
+    // "animating" state: do nothing, wait for tween callbacks
 
-    // Update progress indicator
+    // Update progress
     const progress = Math.floor((this.player.x / this.WORLD_WIDTH) * 100)
     this.progressText.setText(`${progress}% through NYC`)
 
-    // Check NPC proximity
-    const INTERACT_DISTANCE = 100
-
-    this.npcs.forEach((npc) => {
-      const distance = Math.abs(this.player.x - npc.data.x)
-
-      if (distance < INTERACT_DISTANCE && !npc.dialogVisible) {
-        // Show dialog and speak
-        const bubble = npc.container.getAt(npc.container.length - 1) as Phaser.GameObjects.Container
-        bubble.setVisible(true)
-        npc.dialogVisible = true
-        this.speakNPCDialog(npc.data)
-      } else if (distance >= INTERACT_DISTANCE && npc.dialogVisible) {
-        // Hide dialog
-        const bubble = npc.container.getAt(npc.container.length - 1) as Phaser.GameObjects.Container
-        bubble.setVisible(false)
-        npc.dialogVisible = false
-      }
-    })
-
-    // Check if reached end of world
+    // Check end of world
     if (this.player.x >= this.WORLD_WIDTH - 50) {
       this.sceneComplete()
     }
   }
 
+  // --------------- MOVEMENT ---------------
+
+  private handleMovement() {
+    const body = this.player.body as Phaser.Physics.Arcade.Body
+    const scale = 1 + this.acceptCount * this.GROWTH_PER_ACCEPT
+
+    if (this.cursors.left.isDown) {
+      body.setVelocityX(-this.playerSpeed)
+      this.player.setScale(-scale, scale)
+    } else if (this.cursors.right.isDown) {
+      body.setVelocityX(this.playerSpeed)
+      this.player.setScale(scale, scale)
+    } else {
+      body.setVelocityX(0)
+    }
+  }
+
+  // --------------- LANGUAGE HELPERS ---------------
+
+  private getText(multiLang: MultiLangText): string {
+    return (
+      multiLang[this.activeLangCode] ||
+      multiLang[this.activeLangCode.split("-")[0]] ||
+      multiLang.en ||
+      Object.values(multiLang)[0]
+    )
+  }
+
+  private getNextTargetLang(): string {
+    const lang = this.targetLangs[this.langRotationIndex % this.targetLangs.length]
+    this.langRotationIndex++
+    return lang
+  }
+
+  /** Resolve lang code for TTS (e.g. "zh-Hans" → "zh") */
+  private getTTSLang(): string {
+    // Most TTS engines use base language codes
+    return this.activeLangCode
+  }
+
+  // --------------- NPC PROXIMITY ---------------
+
+  private checkNPCProximity() {
+    for (const npc of this.npcs) {
+      const distance = Math.abs(this.player.x - npc.worldX)
+
+      // Clear passedSet once player walks far enough away
+      if (distance > this.INTERACT_DISTANCE * 2 && this.passedSet.has(npc.encounter.id)) {
+        this.passedSet.delete(npc.encounter.id)
+      }
+
+      if (
+        distance < this.INTERACT_DISTANCE &&
+        !npc.dialogVisible &&
+        !this.passedSet.has(npc.encounter.id)
+      ) {
+        this.startInteraction(npc)
+        return // Only one interaction at a time
+      }
+
+      // Hide dialog if player walks away from a visible-but-cooled-down NPC
+      if (distance >= this.INTERACT_DISTANCE && npc.dialogVisible) {
+        npc.dialogBubble.setVisible(false)
+        npc.dialogVisible = false
+      }
+    }
+  }
+
+  // --------------- INTERACTION STATE MACHINE ---------------
+
+  private startInteraction(npc: NPCInstance) {
+    this.interactionState = "interacting"
+    this.activeNPC = npc
+    this.selectedIndex = 0
+
+    // Rotate to next target language
+    this.activeLangCode = this.getNextTargetLang()
+
+    // Freeze player
+    const body = this.player.body as Phaser.Physics.Arcade.Body
+    body.setVelocityX(0)
+
+    // Show NPC dialog bubble with offering text
+    const offeringText = this.getText(npc.encounter.offering)
+    npc.dialogText.setText(offeringText)
+    npc.dialogBubble.setVisible(true)
+    npc.dialogVisible = true
+
+    // Show language indicator
+    this.langLabel.setText(this.activeLangCode.toUpperCase())
+    this.langLabel.setVisible(true)
+
+    // TTS: speak offering
+    this.speak(offeringText)
+
+    // Show response panel with 3 choices
+    this.showResponsePanel(npc)
+  }
+
+  private confirmResponse() {
+    if (!this.activeNPC) return
+
+    const npc = this.activeNPC
+    const response = npc.encounter.responses[this.selectedIndex]
+    const responseText = this.getText(response.text)
+
+    // Hide response panel
+    this.hideResponsePanel()
+    this.interactionState = "animating"
+
+    // TTS: speak selected response
+    this.speak(responseText)
+
+    // Mark as passed — player must walk away before re-triggering
+    this.passedSet.add(npc.encounter.id)
+
+    if (response.type === "accept") {
+      const alreadyAccepted = this.acceptedSet.has(npc.encounter.id)
+      this.acceptedSet.add(npc.encounter.id)
+      this.playAcceptAnimation(npc, alreadyAccepted)
+    } else if (response.type === "decline") {
+      this.playDeclineAnimation(npc)
+    } else {
+      this.playArbitraryAnimation(npc)
+    }
+  }
+
+  private endInteraction() {
+    if (this.activeNPC) {
+      // Keep bubble visible briefly then hide
+      const npc = this.activeNPC
+      this.time.delayedCall(600, () => {
+        npc.dialogBubble.setVisible(false)
+        npc.dialogVisible = false
+      })
+    }
+    this.activeNPC = null
+    this.interactionState = "roaming"
+    this.langLabel.setVisible(false)
+  }
+
+  // --------------- RESPONSE PANEL ---------------
+
+  private createResponsePanel() {
+    // Right side panel — starts offscreen, slides in
+    this.responsePanel = this.add.container(850, 280).setScrollFactor(0)
+    this.responsePanel.setVisible(false)
+    this.responsePanel.setDepth(100)
+
+    // Background — tall narrow panel on the right
+    const panelBg = this.add
+      .rectangle(0, 0, 160, 180, 0x000000, 0.9)
+      .setStrokeStyle(2, 0x00ff41)
+    this.responsePanel.add(panelBg)
+
+    // Create 3 option slots
+    for (let i = 0; i < 3; i++) {
+      const optContainer = this.add.container(0, -50 + i * 52)
+
+      const optBg = this.add.rectangle(0, 0, 140, 42, 0x1a1a2e).setStrokeStyle(1, 0x444444)
+      optContainer.add(optBg)
+
+      const optText = this.add
+        .text(0, 0, "", {
+          fontSize: "12px",
+          color: "#ffffff",
+          fontFamily: '"Courier New", monospace',
+          wordWrap: { width: 125 },
+        })
+        .setOrigin(0.5)
+      optContainer.add(optText)
+
+      // Tap input for mobile
+      optBg.setInteractive()
+      optBg.on("pointerdown", () => {
+        this.selectedIndex = i
+        this.updateResponseHighlight()
+        this.confirmResponse()
+      })
+
+      this.responsePanel.add(optContainer)
+      this.responseOptions.push(optContainer)
+    }
+  }
+
+  private showResponsePanel(npc: NPCInstance) {
+    const responses = npc.encounter.responses
+
+    for (let i = 0; i < 3; i++) {
+      const opt = this.responseOptions[i]
+      const text = opt.getAt(1) as Phaser.GameObjects.Text
+      const responseText = this.getText(responses[i].text)
+
+      // Prefix with response type indicator
+      const prefix = responses[i].type === "accept" ? "✓ " : responses[i].type === "decline" ? "✗ " : "? "
+      text.setText(prefix + responseText)
+    }
+
+    this.selectedIndex = 0
+    this.updateResponseHighlight()
+    // Slide in from right
+    this.responsePanel.setX(850)
+    this.responsePanel.setVisible(true)
+    this.tweens.add({
+      targets: this.responsePanel,
+      x: 720,
+      duration: 200,
+      ease: "Power2",
+    })
+  }
+
+  private hideResponsePanel() {
+    // Slide out to right
+    this.tweens.add({
+      targets: this.responsePanel,
+      x: 850,
+      duration: 150,
+      ease: "Power2",
+      onComplete: () => {
+        this.responsePanel.setVisible(false)
+      },
+    })
+  }
+
+  private updateResponseHighlight() {
+    for (let i = 0; i < 3; i++) {
+      const opt = this.responseOptions[i]
+      const bg = opt.getAt(0) as Phaser.GameObjects.Rectangle
+      const text = opt.getAt(1) as Phaser.GameObjects.Text
+
+      if (i === this.selectedIndex) {
+        bg.setFillStyle(0x003300)
+        bg.setStrokeStyle(2, 0x00ff41)
+        text.setColor("#00ff41")
+      } else {
+        bg.setFillStyle(0x1a1a2e)
+        bg.setStrokeStyle(1, 0x444444)
+        text.setColor("#ffffff")
+      }
+    }
+  }
+
+  // --------------- RESPONSE INPUT ---------------
+
+  private handleResponseInput() {
+    if (Phaser.Input.Keyboard.JustDown(this.keyUp)) {
+      this.selectedIndex = (this.selectedIndex + 2) % 3 // Wrap up
+      this.updateResponseHighlight()
+    } else if (Phaser.Input.Keyboard.JustDown(this.keyDown)) {
+      this.selectedIndex = (this.selectedIndex + 1) % 3 // Wrap down
+      this.updateResponseHighlight()
+    }
+
+    if (
+      Phaser.Input.Keyboard.JustDown(this.keyEnter) ||
+      Phaser.Input.Keyboard.JustDown(this.keySpace)
+    ) {
+      this.confirmResponse()
+    }
+  }
+
+  // --------------- ANIMATIONS ---------------
+
+  private playAcceptAnimation(npc: NPCInstance, skipGrowth = false) {
+    const itemEmoji = ACCEPT_ITEMS[npc.encounter.npcType] || "⭐"
+
+    // Calculate screen-space positions for item float
+    const cam = this.cameras.main
+    const npcScreenX = npc.worldX - cam.scrollX
+    const npcScreenY = npc.container.y - 60 - cam.scrollY
+    const playerScreenX = this.player.x - cam.scrollX
+    const playerScreenY = this.player.y - cam.scrollY
+
+    // Item emoji floats from NPC to player (camera-fixed)
+    const floatItem = this.add
+      .text(npcScreenX, npcScreenY, itemEmoji, { fontSize: "32px" })
+      .setOrigin(0.5)
+      .setScrollFactor(0)
+      .setDepth(200)
+
+    this.tweens.add({
+      targets: floatItem,
+      x: playerScreenX,
+      y: playerScreenY,
+      scale: { from: 1.5, to: 0.5 },
+      duration: 600,
+      ease: "Power2",
+      onComplete: () => {
+        floatItem.destroy()
+        this.playAbsorptionGlow()
+        if (!skipGrowth) {
+          this.growPlayer()
+          this.updateEnergyBar()
+        }
+        this.endInteraction()
+      },
+    })
+  }
+
+  private playAbsorptionGlow() {
+    // Green glow circle around player (camera-fixed)
+    const cam = this.cameras.main
+    const px = this.player.x - cam.scrollX
+    const py = this.player.y - cam.scrollY
+
+    const glow = this.add
+      .circle(px, py, 30, 0x00ff41, 0.6)
+      .setScrollFactor(0)
+      .setDepth(150)
+
+    this.tweens.add({
+      targets: glow,
+      scale: 2.5,
+      alpha: 0,
+      duration: 400,
+      ease: "Power2",
+      onComplete: () => glow.destroy(),
+    })
+  }
+
+  private growPlayer() {
+    this.acceptCount++
+    const scale = 1 + this.acceptCount * this.GROWTH_PER_ACCEPT
+    // Determine facing direction
+    const facingLeft = this.player.scaleX < 0
+    this.player.setScale(facingLeft ? -scale : scale, scale)
+    // Adjust Y so feet stay on ground
+    this.player.setY(this.PLAYER_BASE_Y - 77 * (scale - 1) / 2)
+
+    // Update physics body to match new scale
+    const body = this.player.body as Phaser.Physics.Arcade.Body
+    body.setSize(40, 77)
+    body.setOffset(-20, -45)
+  }
+
+  private playDeclineAnimation(npc: NPCInstance) {
+    // NPC shake animation
+    const origX = npc.container.x
+    this.tweens.add({
+      targets: npc.container,
+      x: origX + 5,
+      duration: 50,
+      yoyo: true,
+      repeat: 5,
+      onComplete: () => {
+        npc.container.x = origX
+        this.endInteraction()
+      },
+    })
+  }
+
+  private playArbitraryAnimation(npc: NPCInstance) {
+    // NPC confusion: show "?" above head, wobble
+    const cam = this.cameras.main
+    const qX = npc.worldX - cam.scrollX
+    const qY = npc.container.y - 100 - cam.scrollY
+
+    const confusionMark = this.add
+      .text(qX, qY, "❓", { fontSize: "28px" })
+      .setOrigin(0.5)
+      .setScrollFactor(0)
+      .setDepth(200)
+
+    this.tweens.add({
+      targets: confusionMark,
+      y: qY - 30,
+      alpha: 0,
+      duration: 800,
+      ease: "Power1",
+      onComplete: () => confusionMark.destroy(),
+    })
+
+    // Wobble NPC
+    const origAngle = npc.npcPerson.angle
+    this.tweens.add({
+      targets: npc.npcPerson,
+      angle: { from: -10, to: 10 },
+      duration: 100,
+      yoyo: true,
+      repeat: 3,
+      onComplete: () => {
+        npc.npcPerson.angle = origAngle
+        this.endInteraction()
+      },
+    })
+  }
+
+  // --------------- TTS ---------------
+
+  private speak(text: string) {
+    if (this.hostApi?.speak) {
+      this.hostApi.speak(this.getTTSLang(), text)
+    }
+  }
+
+  // --------------- ENERGY BAR ---------------
+
+  private createEnergyBar() {
+    // Background
+    this.add.rectangle(700, 50, 150, 20, 0x333333).setScrollFactor(0).setDepth(50)
+    // Fill (starts empty, fills with accepts)
+    this.energyBarFill = this.add
+      .rectangle(626, 50, 0, 15, 0x00ff41)
+      .setOrigin(0, 0.5)
+      .setScrollFactor(0)
+      .setDepth(51)
+    // Label
+    this.energyBarLabel = this.add
+      .text(700, 50, "ENERGY 0%", {
+        fontSize: "10px",
+        color: "#000",
+        fontFamily: "monospace",
+      })
+      .setOrigin(0.5)
+      .setScrollFactor(0)
+      .setDepth(52)
+  }
+
+  private updateEnergyBar() {
+    // Energy fills based on accepts out of total NPCs (99)
+    const pct = Math.min(this.acceptCount / 99, 1)
+    const maxWidth = 145
+    this.energyBarFill.width = maxWidth * pct
+    this.energyBarLabel.setText(`ENERGY ${Math.floor(pct * 100)}%`)
+  }
+
+  // --------------- SKYLINE ---------------
+
   private createSkyline() {
-    // Generate buildings across the entire world
     let x = 50
     while (x < this.WORLD_WIDTH) {
       const width = Phaser.Math.Between(60, 120)
       const height = Phaser.Math.Between(150, 350)
 
-      // Building silhouette
-      const building = this.add.rectangle(x, 500 - height / 2, width, height, 0x2a2a4e)
+      this.add.rectangle(x, 500 - height / 2, width, height, 0x2a2a4e)
 
-      // Windows
       for (let row = 0; row < Math.floor(height / 30); row++) {
         for (let col = 0; col < Math.floor(width / 20); col++) {
           if (Math.random() > 0.3) {
@@ -156,188 +722,179 @@ export class ActionScene extends Phaser.Scene {
                 500 - height + 15 + row * 30,
                 8,
                 12,
-                Math.random() > 0.5 ? 0xffff66 : 0xffaa33
-              ) // Yellow or orange lights
+                Math.random() > 0.5 ? 0xffff66 : 0xffaa33,
+              )
               .setAlpha(0.8)
           }
         }
       }
 
-      x += width + Phaser.Math.Between(20, 60) // Gap between buildings
+      x += width + Phaser.Math.Between(20, 60)
     }
 
-    // Extended ground across entire world
+    // Ground
     this.add.rectangle(this.WORLD_WIDTH / 2, 550, this.WORLD_WIDTH, 100, 0x444444)
   }
 
+  // --------------- PLAYER ---------------
+
   private createPlayer(): Phaser.GameObjects.Container {
-    // Character's feet (shoes) are at y=26 relative to container
-    // Ground level is at y=500 (center of ground rectangle, top at y=500-50=450)
-    // Want feet to be at y≈500, so container y = 500 - 26 = 474
-    const container = this.add.container(100, 474)
+    const container = this.add.container(100, this.PLAYER_BASE_Y)
 
-    // Colors
     const skinColor = 0xffcc99
-    const hatColor = 0x4a4a8a // Purple-ish hat
-    const shirtColor = 0x00aa66 // Green shirt
-    const pantsColor = 0x2a2a5e // Dark pants
-    const shoeColor = 0x1a1a1a // Black shoes
+    const hatColor = 0x4a4a8a
+    const shirtColor = 0x00aa66
+    const pantsColor = 0x2a2a5e
+    const shoeColor = 0x1a1a1a
 
-    // Hat (top)
+    // Hat
     container.add(this.add.rectangle(0, -45, 24, 10, hatColor))
     container.add(this.add.rectangle(0, -38, 16, 8, hatColor))
-
     // Head
     container.add(this.add.rectangle(0, -28, 16, 16, skinColor))
-
     // Eyes
     container.add(this.add.rectangle(-4, -30, 3, 3, 0x000000))
     container.add(this.add.rectangle(4, -30, 3, 3, 0x000000))
-
-    // Body/shirt
+    // Body
     container.add(this.add.rectangle(0, -8, 20, 24, shirtColor))
-
     // Arms
-    container.add(this.add.rectangle(-14, -8, 8, 20, shirtColor)) // Left arm
-    container.add(this.add.rectangle(14, -8, 8, 20, shirtColor)) // Right arm
-    container.add(this.add.rectangle(-14, 4, 6, 6, skinColor)) // Left hand
-    container.add(this.add.rectangle(14, 4, 6, 6, skinColor)) // Right hand
-
+    container.add(this.add.rectangle(-14, -8, 8, 20, shirtColor))
+    container.add(this.add.rectangle(14, -8, 8, 20, shirtColor))
+    container.add(this.add.rectangle(-14, 4, 6, 6, skinColor))
+    container.add(this.add.rectangle(14, 4, 6, 6, skinColor))
     // Pants
-    container.add(this.add.rectangle(-5, 14, 10, 16, pantsColor)) // Left leg
-    container.add(this.add.rectangle(5, 14, 10, 16, pantsColor)) // Right leg
-
+    container.add(this.add.rectangle(-5, 14, 10, 16, pantsColor))
+    container.add(this.add.rectangle(5, 14, 10, 16, pantsColor))
     // Shoes
-    container.add(this.add.rectangle(-5, 26, 12, 6, shoeColor)) // Left shoe
-    container.add(this.add.rectangle(5, 26, 12, 6, shoeColor)) // Right shoe
+    container.add(this.add.rectangle(-5, 26, 12, 6, shoeColor))
+    container.add(this.add.rectangle(5, 26, 12, 6, shoeColor))
 
     return container
   }
 
-  private createNPCs() {
-    const npcTypes = [
-      { type: "hotdog", icon: "🌭", dialog: "¿Con todo?" },
-      { type: "pizza", icon: "🍕", dialog: "¿Una porción?" },
-      { type: "coffee", icon: "☕", dialog: "¿Café caliente?" },
-      { type: "juice", icon: "🧃", dialog: "¿Jugo fresco?" },
-      { type: "tickets", icon: "🎫", dialog: "¿Boletos para el show?" },
-      { type: "newspaper", icon: "📰", dialog: "¡Noticias del día!" },
-      { type: "pretzel", icon: "🥨", dialog: "¿Pretzel con sal?" },
-      { type: "taxi", icon: "🚕", dialog: "¿A dónde va?" },
-      { type: "flowers", icon: "💐", dialog: "¿Flores para alguien especial?" },
-      { type: "fruit", icon: "🍎", dialog: "¡Frutas frescas!" },
-    ]
+  // --------------- NPCs ---------------
 
-    // One NPC per screen (every ~800px), starting at screen 2
+  private createNPCs() {
+    // Build encounter map: group corpus by npcType
+    const encountersByType = new Map<string, NPCEncounter[]>()
+    for (const enc of npcCorpus) {
+      const list = encountersByType.get(enc.npcType) || []
+      list.push(enc)
+      encountersByType.set(enc.npcType, list)
+    }
+
+    const typeOrder = [
+      "hotdog", "pizza", "coffee", "juice", "tickets",
+      "newspaper", "pretzel", "taxi", "flowers", "fruit",
+    ]
+    // Track which encounter index we're on per type
+    const typeIndex = new Map<string, number>()
+    for (const t of typeOrder) typeIndex.set(t, 0)
+
+    // 99 NPCs, one per screen (screens 1–99)
+    let riddleIdx = 0
     for (let screen = 1; screen < 100; screen++) {
-      const npcType = npcTypes[screen % npcTypes.length]
       const x = screen * 800 + Phaser.Math.Between(200, 600)
 
-      const npcData: NPCData = {
-        id: `npc_${screen}`,
-        x,
-        type: npcType.type,
-        icon: npcType.icon,
-        dialog: npcType.dialog,
-        langCode: "es", // Spanish for now
+      // Place riddle NPCs at milestone screens
+      if (RIDDLE_SCREENS.includes(screen)) {
+        const encounter = this.createRiddleEncounter(riddleIdx)
+        riddleIdx++
+        this.createNPC(encounter, x)
+        continue
       }
 
-      this.createNPC(npcData)
+      const typeKey = typeOrder[screen % typeOrder.length]
+      let encounters = encountersByType.get(typeKey) || []
+      if (encounters.length === 0) {
+        encounters = npcCorpus
+      }
+      const idx = typeIndex.get(typeKey) || 0
+      const encounter = encounters[idx % encounters.length]
+      typeIndex.set(typeKey, idx + 1)
+
+      this.createNPC(encounter, x)
     }
   }
 
-  private createNPC(data: NPCData) {
-    // NPC person's feet are at y≈8 relative to NPC person container
-    // Want feet at ground level (y≈500), similar to player
-    // Main container at y=500, NPC person at (40, 0) relative, feet at y=8, so world y = 500 + 0 + 8 = 508
-    // Actually, let's adjust: NPC person feet should be at y≈500, so if feet are at y=8 relative,
-    // and NPC person is at (40, 0), then main container should be at y = 500 - 8 = 492
-    const container = this.add.container(data.x, 492)
+  private createRiddleEncounter(riddleIdx: number): NPCEncounter {
+    const riddle = RIDDLE_DATA[riddleIdx % RIDDLE_DATA.length]
+    const responses: [NPCResponse, NPCResponse, NPCResponse] = [
+      { type: riddle.correctIndex === 0 ? "accept" : "arbitrary", text: riddle.answers[0] },
+      { type: riddle.correctIndex === 1 ? "accept" : "arbitrary", text: riddle.answers[1] },
+      { type: riddle.correctIndex === 2 ? "accept" : "arbitrary", text: riddle.answers[2] },
+    ]
+    return {
+      id: `riddle_${riddleIdx}`,
+      npcType: "riddle",
+      offering: riddle.question,
+      responses,
+    }
+  }
 
-    // Stand/cart (simple box, positioned to sit on ground)
-    // Ground is at y≈500, so cart bottom should be around y=500
-    // Cart is 40px tall, centered at y=10 relative, so bottom is at y=-10, top at y=30
-    // Adjust so cart sits on ground: container at y=492, cart at y=10 means cart center at y=502, so bottom at y=482, top at y=522
-    // Actually, let's position cart bottom at ground: if ground is y=500 and cart is 40 tall, cart center should be at y=520
-    // Relative to container at y=492, cart center should be at y=520-492=28
-    const stand = this.add.rectangle(0, 18, 60, 40, 0x8b4513) // Brown cart, positioned to sit on ground
-    container.add(stand)
+  private createNPC(encounter: NPCEncounter, worldX: number) {
+    const container = this.add.container(worldX, 492)
+    const icon = NPC_ICONS[encounter.npcType] || "❓"
 
-    // Umbrella (positioned above cart)
-    const umbrella = this.add.rectangle(0, -20, 80, 10, 0xff4444) // Red umbrella
-    container.add(umbrella)
-    const umbrellaPost = this.add.rectangle(0, -2, 4, 40, 0x666666)
-    container.add(umbrellaPost)
+    // Cart
+    container.add(this.add.rectangle(0, 18, 60, 40, 0x8b4513))
+    // Umbrella
+    container.add(this.add.rectangle(0, -20, 80, 10, 0xff4444))
+    container.add(this.add.rectangle(0, -2, 4, 40, 0x666666))
+    // Icon
+    container.add(this.add.text(0, 0, icon, { fontSize: "32px" }).setOrigin(0.5))
 
-    // Icon (using text for emoji)
-    const icon = this.add.text(0, 0, data.icon, { fontSize: "32px" }).setOrigin(0.5)
-    container.add(icon)
-
-    // NPC person (simple pixel person, different color than player)
+    // NPC person
     const npcPerson = this.createNPCPerson()
-    npcPerson.setPosition(40, 0) // Standing beside cart
+    npcPerson.setPosition(40, 0)
     container.add(npcPerson)
 
-    // Dialog bubble (hidden initially)
-    const bubble = this.add.container(0, -80)
+    // Dialog bubble (hidden)
+    const dialogBubble = this.add.container(0, -80)
     const bubbleBg = this.add
-      .rectangle(0, 0, 200, 50, 0xffffff, 0.95)
+      .rectangle(0, 0, 220, 50, 0xffffff, 0.95)
       .setStrokeStyle(2, 0x000000)
-    bubble.add(bubbleBg)
+    dialogBubble.add(bubbleBg)
     const dialogText = this.add
-      .text(0, 0, data.dialog, {
-        fontSize: "14px",
+      .text(0, 0, "", {
+        fontSize: "13px",
         color: "#000000",
         fontFamily: "monospace",
-        wordWrap: { width: 180 },
+        wordWrap: { width: 200 },
       })
       .setOrigin(0.5)
-    bubble.add(dialogText)
-    bubble.setVisible(false)
-    container.add(bubble)
+    dialogBubble.add(dialogText)
+    dialogBubble.setVisible(false)
+    container.add(dialogBubble)
 
-    this.npcs.push({ container, data, dialogVisible: false })
+    this.npcs.push({
+      container,
+      encounter,
+      worldX,
+      dialogBubble,
+      dialogText,
+      npcPerson,
+      dialogVisible: false,
+    })
   }
 
   private createNPCPerson(): Phaser.GameObjects.Container {
     const container = this.add.container(0, 0)
-
-    // Different colors than player
     const skinColor = 0xdeb887
-    const shirtColor = 0xcc3333 // Red shirt
+    const shirtColor = 0xcc3333
     const pantsColor = 0x333366
 
-    // Head
     container.add(this.add.rectangle(0, -25, 14, 14, skinColor))
-    // Body
     container.add(this.add.rectangle(0, -8, 16, 20, shirtColor))
-    // Legs
     container.add(this.add.rectangle(-4, 8, 8, 14, pantsColor))
     container.add(this.add.rectangle(4, 8, 8, 14, pantsColor))
 
     return container
   }
 
-  private speakNPCDialog(data: NPCData) {
-    const hostApi = (globalThis as any).__questEarHostApi
-    if (hostApi?.speak) {
-      hostApi.speak(data.langCode, data.dialog)
-    }
-  }
-
-  private createHealthBar() {
-    // Background (fixed to camera)
-    const bgBar = this.add.rectangle(700, 50, 150, 20, 0x333333).setScrollFactor(0)
-    // Health (will update dynamically, fixed to camera)
-    const healthBar = this.add.rectangle(700, 50, 145, 15, 0x00ff41).setScrollFactor(0)
-    this.add
-      .text(700, 50, "HEALTH", { fontSize: "10px", color: "#000", fontFamily: "monospace" })
-      .setOrigin(0.5)
-      .setScrollFactor(0)
-  }
+  // --------------- SCENE LIFECYCLE ---------------
 
   private sceneComplete() {
-    // Return to story, passing the scene ID to return to
     this.scene.start("MainScene", {
       returnToSceneId: this.returnToSceneId,
     })
