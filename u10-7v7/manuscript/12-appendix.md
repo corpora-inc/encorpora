@@ -108,7 +108,7 @@ Used when your team has sustained possession in the opponent's half. Wing strike
 - Point and Sweeper mark two most dangerous opponents
 - Wing strikers on posts (one near, one far)
 - Backs at edge of six-yard box
-- Clear it OUT — to the sideline, never through the center
+- Clear it OUT — always to the sideline
 
 ### Goal Kick (with build-out line)
 - LB and RB position near sidelines in defensive third
@@ -123,7 +123,7 @@ Used when your team has sustained possession in the opponent's half. Wing strike
 ### Throw-Ins (attacking half)
 - One player checks short, one runs up the line
 - Short throw to feet preferred
-- Never throw backward unless no forward option exists
+- Always throw forward to maintain territory
 
 ### Throw-Ins (defensive half)
 - Priority: keep possession safely

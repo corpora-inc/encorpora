@@ -30,7 +30,7 @@ Start with what you see in the first week of practice. Watch the players in scri
 
 Here are the general guidelines for matching players to positions:
 
-**Goalkeeper:** Brave, good hands, concentration. Size is a bonus but not a requirement. The kid who does not flinch when the ball is coming at them is your goalkeeper.
+**Goalkeeper:** Brave, good hands, concentration. Size is a bonus but not a requirement. The kid who stays composed and steps toward the ball when it is coming at them is your goalkeeper.
 
 **Left back / Right back:** Quick, disciplined, willing to defend. They do not need to be your most skilled players, but they need to be reliable. A back who makes simple, correct decisions is worth more than a back who has great technical skill but takes risks in the defensive third.
 
@@ -48,7 +48,7 @@ You can share the math with the team if you want. "There are almost four million
 
 The question of whether to specialize players at one position or rotate them through multiple positions is one of the most debated topics in youth coaching. Here is the practical answer: do both, weighted toward specialization.
 
-Every player has a primary position. They play that position in the majority of games. They know it deeply — the job, the demands, the scenarios, the common mistakes. That depth of knowledge is what makes the formation system work. A player who sort of knows three positions but does not truly know any of them is less useful than a player who owns one position completely.
+Every player has a primary position. They play that position in the majority of games. They know it deeply — the job, the demands, the scenarios, the common mistakes. That depth of knowledge is what makes the formation system work. A player who owns one position completely is the most valuable piece of the system.
 
 At the same time, every player should experience at least one secondary position during the season. Play your left back at left wing for a few games. Put your point at sweeper for a practice. Let your goalkeeper play in the field occasionally if you have backup goalkeeper options. This cross-training builds empathy — a forward who has played defense understands why the backs need support — and it develops versatility that will matter in future seasons at 9v9 and 11v11.
 

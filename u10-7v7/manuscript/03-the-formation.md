@@ -46,7 +46,7 @@ This system uses three formations that the team shifts between based on the game
 
 When the opponent has the ball in your half and is threatening your goal, the entire team defends. Not four players. Not five. All six field players collapse into the defensive third. This is the 6-0.
 
-![The defensive shape: 6-0 with all six field players in or near the defensive third. LB and RB pinch into the center alongside the Sweeper, Point controls the middle, LW and RW track back to defend but stay alert for the counter.](images/placeholder.png)
+![The defensive shape: 6-0 with all six field players in or near the defensive third. LB and RB pinch into the center alongside the Sweeper, Point controls the middle, LW and RW track back to defend but stay alert for the counter.](images/formation-6-0-defensive.png)
 
 **Every player on this team plays defense.** When the ball is in your end, all six field players are in the defensive third — organized, compact, and ready. Everyone gets back. Everyone gets goalside. Everyone defends.
 
@@ -54,7 +54,7 @@ The 6-0 does not mean six players standing on the goal line. It means six player
 
 The principle is simple: **deny the center, force them wide.** If the opponent has to pass out to a player near the sideline, that player is in the least dangerous position on the field. The sideline limits their options. Your wing strikers can apply pressure against the touchline. And if the ball goes out of bounds, you get a throw-in and your team resets. Let the opponent play in the corners. They are not scoring from there. What you cannot allow is a run or a pass through the center of the defense. That is where goals happen.
 
-The power of the 6-0 is density. At U10, most goals come from disorganized defenses — a player out of position, a gap in the middle, a wing striker who did not track back. When you pack six players into the defensive third, there are no gaps. The opponent has to play around the outside, take low-percentage shots, or make a mistake. A packed defense is rare at U10, and most teams are not prepared for it. When there is no space to run into, the ball stays with you.
+The power of the 6-0 is density. At U10, an organized defense stops almost everything. When you pack six players into the defensive third, there are no gaps. The opponent has to play around the outside, take low-percentage shots, or make a mistake. A packed defense is rare at U10, and your organized team has a distinct advantage. When six players fill the defensive third, the ball stays with you.
 
 But here is what makes the 6-0 different from a passive bunker: the wing strikers and the point are not just defending. They are coiled. They are playing defense with their heads up, watching for the moment possession changes. The instant your team wins the ball, those three players are ready to explode forward into a counter-attack. **The transition from 6-0 defense to a three-player counter-attack is the most dangerous weapon in this system.** The wings tracking back does not hurt your offense — it is your offense. The wing who is already goalside and sprinting forward the moment the ball turns over has momentum, has position, and has the defense scrambling to recover. That is where goals come from.
 
@@ -66,7 +66,7 @@ The trigger to come out of the 6-0 is equally simple: your team wins the ball. T
 
 The neutral shape is where your team starts and where it returns after every reset. Think of it as two interlocking triangles. The back triangle has the left back and right back at its base and the sweeper at its apex. The front triangle has the sweeper at its base, and the left wing and right wing at the top corners with the point at the apex. The sweeper is the shared vertex — the hinge that connects defense to attack.
 
-![The neutral shape: 2-1-1-2 formation with GK at the bottom, two backs (LB and RB) in the defensive third, the Sweeper in the center of the middle third, the Point in the upper middle third, and two wing strikers (LW and RW) in the attacking third.](images/placeholder.png)
+![The neutral shape: 2-1-1-2 formation with GK at the bottom, two backs (LB and RB) in the defensive third, the Sweeper in the center of the middle third, the Point in the upper middle third, and two wing strikers (LW and RW) in the attacking third.](images/formation-2-1-1-2-neutral.png)
 
 Read it bottom to top: two backs, one sweeper, one point, two wing strikers. The 2-1-1-2. You can also see it as a 3-3 — three players in the back half of the field (LB, RB, Sweeper) and three in the front half (Point, LW, RW). The two-triangle framing is more useful for coaching because it shows the connections between positions, but the 3-3 framing helps players see the balance.
 
@@ -80,13 +80,13 @@ The two-triangle structure also shows passing lanes. The sweeper can play to eit
 
 When your team has sustained possession in the opponent's half, the team stretches into the attacking shape. The backs hold their positions in the defensive third. The sweeper holds the center of the middle third as the safety valve. The point and both wing strikers push high, creating a front three in the attacking third.
 
-![The attacking shape: 2-1-3 formation with GK at the bottom, two backs (LB and RB) holding the defensive third, the Sweeper in the center of the middle third, and three attackers (LW, Point, RW) spread across the attacking third.](images/placeholder.png)
+![The attacking shape: 2-1-3 formation with GK at the bottom, two backs (LB and RB) holding the defensive third, the Sweeper in the center of the middle third, and three attackers (LW, Point, RW) spread across the attacking third.](images/formation-2-1-3-attacking.png)
 
 The 2-1-3 is your team's posture when it smells a goal. The first option is always through the center. If the point can receive a through ball from the sweeper and go straight at goal, that is the play. The center is where goals live, and the shortest path to the goal is a straight line through the middle. At U10, if nobody is stopping the ball in the center, you go straight up the middle and score. Do not complicate it.
 
 The wing strikers in the 2-1-3 are completely opportunistic. They have the full width and depth of the attacking third to work with, and they go wherever the probability of scoring is highest. If the center is open, they attack it. If the defense is bunched in the middle, they stretch wide and demand the ball in space. If the point shoots and it bounces off the goalkeeper, both wings should be trailing the play, crashing the goal for the rebound. If the ball is on one side and the defense shifts, the opposite wing reads the gap — which might be central, which might be wide — and makes a run into it. They can lure a defender into the corner and cross it back. They can receive a through ball at the top of the box and go straight at goal. They can pull wide to create a two-on-one down the flank. The wings think about probabilities and angles, not about staying in a lane.
 
-That said, the wings naturally create width by being two separate players on different sides of the field. When the whole defense collapses to the right because the ball is on the right, the left wing is open on the other side — not because they are hugging the touchline but because they read the space. The ball swings back through the sweeper or the point and finds the left wing running into the gap. Breakaway with the keeper.
+The wings naturally create width by being two separate players on different sides of the field. When the whole defense collapses to the right because the ball is on the right, the left wing is open on the other side — not because they are hugging the touchline but because they read the space. The ball swings back through the sweeper or the point and finds the left wing running into the gap. Breakaway with the keeper.
 
 The sweeper is the switchboard. If the attack stalls on one side, the ball comes back to the sweeper, who can see the whole field and redirect it through the center or swing it to the opposite wing. The sweeper's discipline in the 2-1-3 is what keeps the attack patient, composed, and central.
 
@@ -96,7 +96,7 @@ The trigger to move into the attacking shape is sustained possession in the oppo
 
 ## Transitions
 
-Transitions — the moments when possession changes and the team shifts from one shape to another — are where games are won and lost at U10. Most goals at this age come from turnovers in the midfield, not from set pieces or sustained build-up play. The team that transitions faster controls the game.
+Transitions — the moments when possession changes and the team shifts from one shape to another — are where games are won at U10. Most goals at this age come from turnovers in the midfield, not from set pieces or sustained build-up play. The team that transitions faster controls the game.
 
 There are two transitions your team needs to master: defensive transition (losing the ball and shifting to the 6-0) and attacking transition (winning the ball and launching the counter).
 
@@ -120,11 +120,11 @@ The three shapes are responses to what is happening on the field. The goal is fo
 
 The code is your team's secret language. The other team does not know what sixty means, or twenty-one twelve, or two-thirteen. Your team does. It is a small thing, but small things that make a team feel like a team matter.
 
-In the early weeks, you will call the code constantly. That is fine for installation. But by midseason, you should be calling it less. The players should be reading the triggers on their own — opponent possession in our half means sixty, our sustained possession in their half means two-thirteen, and twenty-one twelve is always the home base — and shifting without your voice. When the sweeper starts calling "sixty" before you do, the system has taken root.
+In the early weeks, you will call the code constantly — that is installation. By midseason, you should be calling it less. The players should be reading the triggers on their own — opponent possession in our half means sixty, our sustained possession in their half means two-thirteen, and twenty-one twelve is always the home base — and shifting without your voice. When the sweeper starts calling "sixty" before you do, the system has taken root.
 
 To get there, use the freeze scrimmage technique described in chapter 8. Stop play mid-action, ask the players what shape they should be in, ask them why, and then let them adjust before resuming. Over weeks, this builds the game intelligence that lets them shift without prompting.
 
-One important caveat: at U10, the shifts will never be perfect. You will have moments where a wing striker forgets to track back in the 6-0, or a back forgets to hold during the attacking shape. That is normal. The goal is not a perfect diagram on the field. The goal is that every player is thinking — processing the situation, adjusting, trying to do the best thing for the team right now. If you pause the game and see seven players who are all engaged, all in roughly the right areas, all aware of what is happening — that is the system working. If you see a player standing still and watching while the game happens around them, that is where you coach.
+At U10, the shifts will never be perfect. You will have moments where a wing striker forgets to track back in the 6-0, or a back forgets to hold during the attacking shape. That is normal. The goal is not a perfect diagram on the field. The goal is that every player is thinking — processing the situation, adjusting, trying to do the best thing for the team right now. If you pause the game and see seven players who are all engaged, all in roughly the right areas, all aware of what is happening — that is the system working. If you see a player standing still and watching while the game happens around them, that is where you coach.
 
 ## The Build-Out Line
 

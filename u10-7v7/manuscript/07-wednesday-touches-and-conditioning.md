@@ -1,6 +1,6 @@
 # Wednesday: Touches and Conditioning
 
-Wednesday is about the ball. Every drill on Wednesday involves the ball, and the fitness component is baked into the drills rather than isolated as running. There are no laps. There are no suicides. There is no "run to the fence and back." If a player is not fit enough, they will get fit by doing soccer activities, not by running in a straight line.
+Wednesday is about the ball. Every drill on Wednesday involves the ball, and the fitness component is baked into the drills rather than isolated as running. Every minute on Wednesday has the ball at the center. Players build fitness through soccer — dribbling, passing, dueling, competing — and the conditioning happens inside the work.
 
 The philosophy behind Wednesday is simple: **the more times a player touches the ball in a controlled setting, the better they get.** A player who gets 200 touches in a practice improves faster than a player who gets 50. Wednesday is designed to maximize touches through structured drills — pairs passing, individual dribbling circuits, 1v1 duels, 2v1 combinations, and competitive small-sided games that also build the fitness base your team needs for game day.
 
@@ -24,11 +24,11 @@ If you get through all five levels in fifteen minutes, your players are technica
 
 Dribbling circuits replace traditional cone-weaving drills with something more game-realistic. Set up a grid roughly twenty by twenty yards with cones scattered inside it at random intervals — eight to ten cones is enough. Every player has a ball. On the whistle, they dribble through the grid, navigating the cones and each other.
 
-**Round 1: Free dribble.** Players dribble through the grid using any part of the foot, keeping the ball close. The only rule is they must keep moving and avoid hitting cones or other players. Focus: head up. Players who stare at the ball while dribbling will collide with cones and with each other. Players who look up navigate cleanly.
+**Round 1: Free dribble.** Players dribble through the grid using any part of the foot, keeping the ball close. The only rule is they must keep moving and avoid hitting cones or other players. Focus: head up. Players who keep their head up navigate cleanly and find open space every time.
 
 **Round 2: Right foot only.** Players may only touch the ball with their right foot. Focus: comfort with the dominant foot for some, discomfort with the non-dominant foot for others. Either way, they are getting reps with a specific foot.
 
-**Round 3: Left foot only.** Same as round 2, mirrored. Most players struggle more with this round, and that is exactly why it exists.
+**Round 3: Left foot only.** Same as round 2, mirrored. This round builds the weak foot faster than any other drill, and that growth is exactly why it exists.
 
 **Round 4: Moves on command.** Players dribble through the grid, and when you call a move, they execute it on the nearest cone. Moves: pull-back (sole of the foot on top of the ball, pull it back, change direction), scissors (fake one way with a step over the ball, go the other way), inside-outside cut (push the ball with the inside of the foot, then quickly with the outside to change direction). You do not need more than three moves. Master three moves and a U10 player can beat most defenders.
 
@@ -38,11 +38,11 @@ The dribbling circuit takes about fifteen minutes if you spend two to three minu
 
 ## 1v1 Duels
 
-One-versus-one is the most fundamental situation in soccer. Every open-play moment eventually comes down to one player trying to get past another. The player who wins the 1v1 creates the advantage. The player who loses it creates the danger. Your players need to practice both sides — attacking and defending — in a structured setting.
+One-versus-one is the most fundamental situation in soccer. Every open-play moment eventually comes down to one player trying to get past another. The player who wins the 1v1 creates the advantage. Every duel is a chance to tip the game. Your players need to practice both sides — attacking and defending — in a structured setting.
 
 Set up a ten-by-fifteen-yard channel with a small cone goal at each end. One player starts with the ball at one end, the other defends from the middle. The attacker tries to score. The defender tries to win the ball and score at the opposite goal. After each rep, they switch roles.
 
-**Attacking principles:** The attacker should dribble at the defender with pace, not slow down and wait. They should use a move — pull-back, scissors, or cut — to change direction and get past the defender. If they beat the defender, they shoot. If they do not beat the defender, they shield the ball and try again. At U10, the biggest attacking error is stopping the ball when a defender approaches. Coach them to keep moving.
+**Attacking principles:** The attacker should dribble at the defender with pace, not slow down and wait. They should use a move — pull-back, scissors, or cut — to change direction and get past the defender. If they beat the defender, they shoot. If the defender holds, the attacker shields the ball and resets for the next move. At U10, the best attacking habit is keeping the ball moving when a defender closes down. Coach them to maintain pace and commit.
 
 **Defending principles:** The defender should close down the space quickly but slow down as they get within two yards of the attacker. This is called the "approach and slow" technique. Sprint to close, then shuffle to contain. The defender stays on their feet — no lunging, no diving in. They angle the attacker toward the sideline of the channel, taking away the center. If the attacker makes a move, the defender reads it and reacts. If the attacker tries to go past, the defender uses their body to stay goal-side and pokes the ball away when the opportunity comes.
 
@@ -96,15 +96,15 @@ Scenario drills simulate real game moments. Each one starts with a specific situ
 
 ## Conditioning Through Drills
 
-You will notice that no drill in this chapter involves running without a ball. That is intentional. Conditioning at U10 should come from soccer activities, not from track-and-field exercises. Here is why.
+Every drill in this chapter involves the ball. That is intentional. Conditioning at U10 should come from soccer activities, not from track-and-field exercises. Here is why.
 
-First, the fitness demands of soccer are intermittent, not steady-state. A player sprints for five seconds, jogs for fifteen seconds, sprints again, walks for ten seconds, sprints again. Running laps develops steady-state endurance, which is not what soccer requires. Small-sided games and intense drills develop the sprint-jog-sprint pattern that matches actual game demands.
+First, the fitness demands of soccer are intermittent, not steady-state. A player sprints for five seconds, jogs for fifteen seconds, sprints again, walks for ten seconds, sprints again. Running laps develops steady-state endurance, while soccer demands intermittent sprint-jog-sprint fitness. Small-sided games and intense drills develop the sprint-jog-sprint pattern that matches actual game demands.
 
-Second, conditioning with the ball develops two things at once — fitness and technical skill. A player doing 1v1 duels for ten minutes is getting both. A player running laps for ten minutes is only getting fitness and often at the wrong intensity.
+Second, conditioning with the ball develops two things at once — fitness and technical skill. A player doing 1v1 duels for ten minutes is getting both. A player doing 1v1 duels for ten minutes develops fitness at match intensity while sharpening their technique with every touch.
 
-Third, kids hate running laps. They do not hate competitive drills. A player who dreads conditioning is mentally checked out before it starts. A player who is engaged in a game of sharks is sprinting harder than they would on any lap and enjoying it. Engagement produces effort. Effort produces fitness.
+Third, kids love competitive drills. A player engaged in a game of sharks sprints harder than they would on any lap and enjoys every second of it. Engagement produces effort. Effort produces fitness.
 
-If you notice that your team is not fit enough — they fade in the second half of games — the fix is not to add running. The fix is to increase the intensity of your drills. Shorter rest between reps. More rounds of 1v1. Longer scrimmages with fewer substitutions. The fitness comes from the work, and the work has the ball.
+When you want your team even fitter — fresher in the final ten minutes, sharper in the second half — increase the intensity of your drills. Shorter rest between reps. More rounds of 1v1. Longer scrimmages with fewer substitutions. The fitness comes from the work, and the work has the ball.
 
 ## Optional Scrimmage
 

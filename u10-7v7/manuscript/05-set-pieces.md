@@ -12,7 +12,7 @@ This chapter covers every dead-ball situation your team will encounter. For each
 
 Your team has the ball to start the half or after the opponent scores. Two players stand at the center circle. The point takes the kick. The sweeper stands next to them, ready to receive the first pass.
 
-![Kickoff positions: Point and Sweeper at center, LW and RW in the attacking third ready for runs, LB and RB in the defensive third, GK in goal.](images/placeholder.png)
+![Kickoff positions: Point and Sweeper at center, LW and RW in the attacking third ready for runs, LB and RB in the defensive third, GK in goal.](images/set-piece-kickoff-offensive.png)
 
 The rest of the team sets up in the neutral 2-1-1-2 shape. The left wing and right wing are in the attacking third, ready to make runs. The left back and right back are in the defensive third. The goalkeeper is in goal.
 
@@ -26,7 +26,7 @@ The opponent has the ball. Your team sets up in the neutral 2-1-1-2 shape. The p
 
 The point and sweeper watch the ball. As soon as the opponent plays the kickoff, the nearest of the two presses the ball carrier while the other covers the passing lane. The goal is not necessarily to win the ball — though that is ideal — but to force the opponent into a hurried pass or a backwards play. If the opponent plays it long, the backs deal with it. If they play it short, the press is already on.
 
-Do not have the entire team push up to press the kickoff. The sweeper and point press. The rest of the team holds shape. A kickoff that goes over them and finds a runner behind the wing strikers is a dangerous situation you can avoid by keeping shape.
+Do not have the entire team push up to press the kickoff. The sweeper and point press. The rest of the team holds shape. Keeping shape ensures every long ball stays in front of the defense where the backs can deal with it.
 
 ## Corner Kicks
 
@@ -34,7 +34,7 @@ Do not have the entire team push up to press the kickoff. The sweeper and point 
 
 Corner kicks are one of the best scoring opportunities in U10 soccer. Many teams score more from corners than from open play. Your setup puts maximum bodies in dangerous positions while keeping enough cover to prevent a counterattack.
 
-![Corner kick setup: the kicker at the corner flag, Point and RW (or LW) in the six-yard box area, Sweeper at the penalty spot, the opposite wing at the top of the box, LB and RB at the halfway line, GK in goal.](images/placeholder.png)
+![Corner kick setup: the kicker at the corner flag, Point and RW (or LW) in the six-yard box area, Sweeper at the penalty spot, the opposite wing at the top of the box, LB and RB at the halfway line, GK in goal.](images/set-piece-corner-offensive.png)
 
 The kicker is whichever wing striker is on the side of the corner. If the corner is on the right, the right wing takes it. If it is on the left, the left wing takes it. This keeps it simple and gives both wing strikers practice with corner delivery.
 
@@ -62,7 +62,7 @@ If your league uses a build-out line, the opponent must retreat behind it when y
 
 The goalkeeper places the ball. The left back and right back position near their respective sidelines inside the defensive third. The sweeper drops into the center channel as a secondary option.
 
-The goalkeeper's first look is a back near the sideline. The sideline is the safest first pass — it puts the ball in a low-danger area where a turnover is not catastrophic. The back receives near the touchline, plays it inside to the sweeper, and the team builds from there through the center. If both backs are marked, the goalkeeper can play to the sweeper in the center, but the sideline option is always preferred.
+The goalkeeper's first look is a back near the sideline. The sideline is the safest first pass — it puts the ball in a low-danger area where the team can recover possession easily. The back receives near the touchline, plays it inside to the sweeper, and the team builds from there through the center. If both backs are marked, the goalkeeper can play to the sweeper in the center, but the sideline option is always preferred.
 
 The key is that the pass stays on the ground and goes to a teammate near the touchline. Do not kick it long when you have a build-out line giving you free space. Do not play it through the center of the defensive third. Send it to the sideline, let the back receive safely, and build from there.
 
@@ -74,7 +74,7 @@ The goalkeeper still has the option of playing short to the backs, but the backs
 
 If the opponent is pressing aggressively and the short options are all covered, the goalkeeper kicks it long. The target is the sweeper or the point in the midfield area. The wing strikers should be prepared to win the second ball — the ball that bounces off the initial contest. Positioning near the expected landing zone and reading the flight of the ball gives your team a chance to maintain possession even off a long kick.
 
-A third option is the goalkeeper carrying the ball to the edge of the box and distributing from there. This buys time for the team to get into position and can draw the opponent's press before releasing the ball to an open player. It carries risk — a turnover at the edge of your own box is dangerous — but it is viable when the opponent is pressing the short options and you do not want to kick it long.
+A third option is the goalkeeper carrying the ball to the edge of the box and distributing from there. This buys time for the team to get into position and can draw the opponent's press before releasing the ball to an open player. This option demands composure — the goalkeeper must stay calm under pressure near the box — but it is effective when the opponent is pressing the short options and you do not want to kick it long.
 
 ## Throw-Ins
 
@@ -84,11 +84,11 @@ Throw-ins are the most frequent dead-ball situation in a soccer game, and most t
 
 The player taking the throw-in looks for movement. Two teammates should be offering options: one checking toward the thrower for a short throw, one making a run up the line for a longer throw. The short option is usually safer. The thrower delivers to the feet of the checking player, who takes a touch and plays forward.
 
-If both options are covered, the thrower can throw the ball down the line into space for a teammate to chase. This is less controlled but can catch the opponent off guard. The one thing the thrower should never do is throw the ball backward into their own half unless there is absolutely no forward option. A throw-in in the opponent's half that goes backward surrenders territory for free.
+If both options are covered, the thrower can throw the ball down the line into space for a teammate to chase. This is less controlled but can catch the opponent off guard. The thrower should always look forward first — every throw-in in the opponent's half is a chance to advance. Forward throws maintain territorial advantage.
 
 ### Defensive Throw-Ins (in Your Own Half)
 
-When the throw-in is in your own half, the priority shifts from attacking to keeping possession. The safest option is a short throw to the nearest teammate who is facing the field and can play the ball forward or across the field on their first touch. Do not throw the ball into a crowd near your own goal. If the short options are covered, throw it down the line. The least risky option is always better than the most ambitious one when the throw-in is near your own goal.
+When the throw-in is in your own half, the priority shifts from attacking to keeping possession. The safest option is a short throw to the nearest teammate who is facing the field and can play the ball forward or across the field on their first touch. Find the teammate who is facing the field and can play forward on the first touch. If the short options are covered, throw it down the line. The calmest, clearest option is always the best one when the throw-in is in your own half.
 
 ### Defending Throw-Ins
 
@@ -114,7 +114,7 @@ An indirect free kick means you cannot score directly — the ball must touch a 
 
 When the opponent has a free kick near your goal, set a wall. At U10, the wall does not need to be elaborate. Two players stand shoulder to shoulder, ten yards from the ball (or wherever the referee positions them), blocking the near post. The goalkeeper positions for the far post and the area the wall does not cover. The rest of the team marks up in the box.
 
-The wall's job is to block the near side. They do not duck, turn, or flinch. They stand firm. The goalkeeper's job is everything else. If the kick goes over or around the wall, the goalkeeper is positioned to make the save. If the kick goes through the wall — because someone ducked — that is a coaching failure, not a goalkeeping failure. Drill the wall to stand still.
+The wall's job is to block the near side. They stand firm — shoulders square, feet planted. The goalkeeper's job is everything else. If the kick goes over or around the wall, the goalkeeper is positioned to make the save. If the kick goes through the wall — because someone ducked — the wall needs more drilling. Drill the wall to stand still.
 
 For free kicks farther from goal, you do not need a wall. Just mark up in your defensive shape and deal with the ball as it comes in.
 
@@ -134,7 +134,7 @@ Practice penalties regularly. Once a week, have your penalty taker take five pen
 
 The goalkeeper stands on the line, centered in the goal. At U10, the odds favor the shooter, so the goalkeeper should not feel pressure to save every penalty. The technique: stay on the line until the ball is struck, then react. Watch the ball, not the player's body. Dive to the side of the shot. Make yourself as big as possible.
 
-Some goalkeepers at this age pick a side before the kick and dive that way regardless of where the shot goes. This works about half the time and looks spectacular when it does. But it is a guess, and it means they are wrong the other half. Teaching the goalkeeper to react to the ball rather than guess is a better long-term approach, even if it means they get beaten cleanly by well-placed shots. Reacting is a skill. Guessing is luck.
+Some goalkeepers at this age pick a side before the kick and dive that way regardless of where the shot goes. This works about half the time and looks spectacular when it does. Teaching the goalkeeper to react to the ball builds a real skill that improves with every rep. A goalkeeper who reads the shot and moves to the ball develops faster than one who guesses. Reacting is a skill. Guessing is luck.
 
 ## Goalkeeper Distribution
 

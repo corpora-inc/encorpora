@@ -32,7 +32,7 @@ The freeze scrimmage lets you coach thinking in context. Instead of telling a pl
 
 The keys to an effective freeze scrimmage:
 
-**Freeze often early in the season.** In weeks one and two, you might freeze every thirty seconds. That is fine. The scrimmage will be choppy and the players will find it annoying. That is also fine. The volume of freeze-and-correct repetitions in the early weeks is what makes the later weeks smooth.
+**Freeze often early in the season.** In weeks one and two, you might freeze every thirty seconds. The scrimmage will be choppy. The volume of freeze-and-correct repetitions in the early weeks is what makes the later weeks smooth.
 
 **Freeze less as the season progresses.** By week five or six, you should be freezing once or twice in a fifteen-minute scrimmage. The players are getting it. They are finding the shape on their own. Your freezes shift from basic positioning corrections to higher-level tactical points: "Look at how much space there is on the right side. Why is nobody attacking that space?"
 
@@ -44,7 +44,7 @@ The keys to an effective freeze scrimmage:
 
 ## Visualization Exercises
 
-Visualization is underused at every level of youth soccer, and it is especially valuable at U10 because it helps players who struggle to process positioning instructions in real time. The concept is simple: close your eyes and picture the play happening in your head before you do it on the field.
+Visualization is underused at every level of youth soccer, and it is especially valuable at U10 because it gives players a way to internalize positioning before they need it in real time. The concept is simple: close your eyes and picture the play happening in your head before you do it on the field.
 
 Use visualization for two to three minutes at the start of Block 2 on Thursdays. Have the players sit in a circle, close their eyes, and listen while you describe a game scenario.
 
@@ -54,7 +54,7 @@ The scenario takes thirty seconds. But the player who visualized it has mentally
 
 Rotate the scenarios to cover different positions and situations. One Thursday it is a defensive scenario. The next it is an attacking scenario — "You are the point. You receive the ball with your back to goal. You feel the defender on your shoulder. You shield it. You see the left wing making a run. You lay it off." Another Thursday it is a set piece — "You are on the back post for our corner kick. The ball is in the air. It is coming toward you. You time your run. You make contact with your head. Goal."
 
-Players will giggle and fidget the first few times you do this. That is fine. They are nine. Keep doing it. By week four, they will settle into it, and by midseason, some of them will ask for it if you skip it.
+Players will giggle and fidget the first few times. Keep doing it. By week four, they will settle into it, and by midseason, some of them will ask for it if you skip it.
 
 ## Tactical Discussion
 
@@ -88,7 +88,7 @@ If your game is Saturday, the last ten minutes of Thursday practice shift from g
 
 If you have seen the opponent play — either in person or because other coaches have shared observations — tell your team what to expect. "This team likes to play everything through their number seven on the left wing. They are fast. Left back and right back, be ready for quick runs down the left side. Wings, track back early." Keep it to two or three observations. At U10, more than that is information overload.
 
-If you have not seen the opponent, focus on your own team's execution. "We are going to focus on our defensive transition. Last game we were slow to drop when we lost the ball. This game, the moment we lose the ball, I want to see everyone getting goalside within three seconds. We will be faster and more organized than anyone we play."
+If you have not seen the opponent, focus on your own team's execution. "We are going to focus on our defensive transition. This game, I want to see everyone getting goalside within three seconds of any turnover. Fast, organized, locked in. We will be the most disciplined team on the field."
 
 End game prep with a set piece that you expect to use in the game. If you think you will have corner kicks, run your corner. If you think you will be defending a lot, run your defensive kickoff and goal kick. The last thing the players do on Thursday is the first thing they will do on Saturday.
 

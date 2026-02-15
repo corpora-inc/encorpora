@@ -6,7 +6,7 @@ The most important thing to understand about game day is that your preparation i
 
 ## Pre-Game Routine
 
-Arrive thirty minutes before kickoff. The same routine every game, no variation. Consistency reduces anxiety and gives the players a familiar structure to settle into.
+Arrive thirty minutes before kickoff. The same routine every game, no variation. Consistency builds confidence and gives the players a familiar structure to lock into.
 
 **Minutes 30-20 before kickoff:** Players arrive, put on their gear, and start the standard pairs warm-up. Same pairs passing routine they do at every practice. By now this is muscle memory. It gets their feet moving and their minds focused. You do not need to instruct or supervise. Walk the field. Check the goals. Introduce yourself to the referee. Note the condition of the surface — is it wet, dry, bumpy, sloped? Any of these can affect how you play.
 
@@ -26,7 +26,7 @@ In a regular season game, start with a lineup that balances strength with develo
 
 In a playoff or must-win game, start your strongest lineup. Every player in their best position, your most reliable pairing at the back, your sharpest attackers up top. This is not about fairness in this single game. It is about giving the team its best chance. The players who do not start will get minutes, but the starters set the tone.
 
-The goalkeeper decision deserves special attention. If you have a dedicated goalkeeper, start them. If you are rotating goalkeepers, establish the rotation before the season starts and stick to it. Changing the goalkeeper rotation mid-game because you are losing sends a terrible message to the kid who just got pulled. Goalkeeper changes happen at halftime or at predetermined intervals, not as a reaction to goals conceded.
+The goalkeeper decision deserves special attention. If you have a dedicated goalkeeper, start them. If you are rotating goalkeepers, establish the rotation before the season starts and stick to it. Changing the goalkeeper rotation mid-game because of the score undermines the trust of the kid who just got pulled. Goalkeeper changes happen at halftime or at predetermined intervals, not as a reaction to goals conceded.
 
 Write the starting lineup in your notebook. Write the substitution plan. Know who is coming in for whom at each substitution opportunity. Do not wing it. The time pressure of a game makes it too easy to lose track of who has played where and for how long.
 
@@ -62,7 +62,7 @@ Gather the team. Let them drink water for the first sixty seconds. Then talk.
 
 Make the substitutions you planned. Tell the players coming in what position they are playing. Tell the players coming out something positive about their first half, even if it was rough. "Good work. Rest up. You will be back in."
 
-Keep feedback about the system, not individual moments. "We gave up that goal because the shape collapsed, not because one person made a mistake. We fix the shape together."
+Keep feedback about the system, not individual moments. "When we hold our shape, that goal does not get through. The shape is the whole team's job, and we fix it together."
 
 ## Reading the Opponent
 
@@ -92,11 +92,11 @@ Track minutes in your notebook. After the game, log how many minutes each player
 
 **What you say after the game sticks with the players longer than anything you say during it.** A nine-year-old who hears genuine recognition of their effort carries that confidence into the next week. Make those words count.
 
-**After a win:** Acknowledge the result without overdoing it. "We won because we executed our formation and our set pieces. The corner kick goal was exactly how we practiced it. Enjoy the win. We will keep building on Thursday." Do not spend five minutes celebrating. A quick team break and move on. Wins are expected, not extraordinary.
+**After a win:** Acknowledge the result without overdoing it. "We won because we executed our formation and our set pieces. The corner kick goal was exactly how we practiced it. Enjoy the win. We will keep building on Thursday." Celebrate briefly — a quick team break — and refocus. Wins come from executing the plan, and the plan keeps building.
 
-**After a loss:** This is the harder conversation. Be honest without being harsh. "We lost today. That is okay. We lost because our defensive transition was too slow in the second half. I saw it, and we are going to work on it this week. What I also saw was that you never gave up. You kept playing hard. That matters more than the result. We will be better on Thursday."
+**After a loss:** Be honest and forward-looking. "The result did not go our way today, and that is okay. Our defensive transition needs to be faster in the second half — I saw it, and we are going to sharpen it this week. What I also saw was that you never gave up. You kept playing hard. That matters more than the result. We will be better on Thursday."
 
-**After a draw:** Draws are often the most frustrating result for kids because nobody wins. Reframe it. "We earned a point today against a good team. I liked how we adjusted in the second half. Let us build on that."
+**After a draw:** Draws deserve the same respect as any result. "We earned a point today against a good team. I liked how we adjusted in the second half. Let us build on that."
 
 In every post-game talk, follow the same structure: **acknowledge the result, identify one thing the team did well, identify one thing to work on, and look forward to the next practice.** Keep it under two minutes. The players are tired, they want to see their parents, and their retention after a game is low.
 

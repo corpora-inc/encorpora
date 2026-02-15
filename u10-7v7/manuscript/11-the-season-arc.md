@@ -1,6 +1,6 @@
 # The Season Arc
 
-A soccer season is not a flat line. It is an arc with distinct phases, each with its own priorities and challenges. A season that looks the same every week — same drills, same talks, same expectations — misses the opportunity to build progressively toward peak performance when it matters most.
+A soccer season is not a flat line. It is an arc with distinct phases, each with its own priorities and challenges. A season that builds progressively — new challenges, deeper tactical understanding, higher intensity — reaches peak performance when it matters most.
 
 This chapter maps out a typical ten-week recreational or competitive season. Your league might be shorter or longer. Adjust the timeline proportionally, but keep the phases and their priorities intact.
 
@@ -36,7 +36,7 @@ The first three weeks are about installing the system. The formation, the positi
 
 By the end of week 3, every player should know their primary position, the team should be able to set up in the neutral shape without instruction, and the basic set pieces — kickoffs, goal kicks, and corners — should have been rehearsed at least three times each.
 
-Games during the installation phase are learning experiences. You will not play your best soccer. The formation will break down. Set pieces will be sloppy. That is fine. Use the games to identify what needs the most work at practice. After each game, write down the three biggest breakdowns and address them at the next Thursday practice.
+Games during the installation phase are learning experiences. The team is building toward its best soccer. The formation tightens with each game. Set pieces sharpen with every repetition. Use the games to see where the team is growing fastest and where the next practice should focus. After each game, write down the three areas with the most room for growth and build on them at the next Thursday practice.
 
 ## Weeks 4-6: Refinement Phase
 
