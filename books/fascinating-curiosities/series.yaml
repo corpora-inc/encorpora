@@ -1,0 +1,32 @@
+series:
+  title: "Fascinating Curiosities of Human History"
+  tagline: "The most fascinating facts about everything there is to know about anything."
+  planned_volumes: 12+
+
+  philosophy: |
+    Each volume starts with a genuine mystery or curiosity and uses it to
+    build out the world around the story — the who, what, when, where, why,
+    and how. Regional context. Global context. What was happening elsewhere
+    at the same time. Every sentence earns its place. Honest about the
+    boundaries of knowledge. Present competing theories and let the reader
+    think. Zero fluff. Maximum fascination. Ontologically clear.
+
+  audience: |
+    Universal. Fascinating for adults. Fully accessible and enjoyable for
+    a curious child as young as 9 or 10. Think: the kind of book a parent
+    and child can both be riveted by for completely different reasons.
+
+  output:
+    trim: "6x9"
+    formats: [pdf, epub, corpan-pack]
+    images: "Stable Diffusion crosshatch illustration style"
+    tts: true
+
+  editorial_rules:
+    - If it doesn't make the reader lean in, cut it.
+    - Present what we know, what we don't know, and the boundary between them.
+    - Competing scholarly theories get fair treatment — let the reader decide.
+    - Use each mystery as a doorway to contextual world knowledge.
+    - No fluff. No padding. Better 75 riveting pages than 100 with filler.
+    - Define terms. Explain frameworks. Ontological clarity.
+    - Every chapter should contain at least one moment of genuine "wait, really?"
