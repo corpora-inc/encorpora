@@ -1,0 +1,17 @@
+{
+  "title": "U10 7v7: The Playbook",
+  "subtitle": "A Complete System for the Whole Team",
+  "author": "Skylar Saveland",
+  "publisher": "Corpora Inc",
+  "language": "en-US",
+  "format": "6x9",
+  "target_pages": 100,
+  "target_words": 25000,
+  "audience": ["coaches", "players age 9-10", "families"],
+  "voice": "Dry, practical, dense with information. Plain language a 9-year-old can read. No motivational cliches. The goal is to win.",
+  "build": {
+    "tool": "pandoc",
+    "script": "build.sh",
+    "outputs": ["pdf", "epub"]
+  }
+}

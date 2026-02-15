@@ -19,7 +19,7 @@
   - 9: Activity Menu: Mindset and Mission
 - 3: Legal and Compliance Basics: Global First
   - 1: The Global Minimum Compliance Checklist
-  - 2: Attendance and Instructional Time: Tracking Simply
+  - 2: Attendance and Instructional Time
   - 3: Portfolios and Work Samples: What to Keep
   - 4: Evaluations and Testing: When and Why
   - 5: Georgia: USA Example
@@ -30,7 +30,7 @@
   - 4: Routines That Run Themselves
   - 5: Screens, Media, and Attention Hygiene
   - 6: Working Parents and Multi-Kid Logistics
-- 5: Language Arts: Reading, Writing, Speaking
+- 5: Language Arts
   - 1: Third-Grade Reading Goals
   - 2: Fluency Without Drills
   - 3: Comprehension: Main Idea, Inference, Structure
