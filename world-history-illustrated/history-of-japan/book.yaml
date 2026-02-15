@@ -1,0 +1,15 @@
+title: "History of Japan: Islands of Fire and Emperors"
+manuscript_dir: manuscript
+manuscript_glob: "[0-9][0-9]-*.md"
+image:
+  style_prompt: >
+    Pen and ink wash illustration with subtle watercolor tones,
+    history book for children ages 7-11, detailed, evocative,
+    Japanese sumi-e influenced, educational
+  negative_prompt: "blurry, low quality, distorted, deformed, text, watermark, photo"
+  backend: sd35
+  width: 1024
+  height: 1024
+  steps: 28
+  guidance_scale: 4.5
+  candidates: 4

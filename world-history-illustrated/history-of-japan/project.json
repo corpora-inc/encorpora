@@ -1,0 +1,19 @@
+{
+  "id": "f7a2c1d3-9e84-4b5f-a123-6d8e9f0b2c4a",
+  "title": "History of Japan: Islands of Fire and Emperors",
+  "subtitle": "World History Illustrated",
+  "purpose": "A vivid, story-driven history of Japan for children ages 7-11 (and fascinating for adults). Covers geography, mythology, samurai, shoguns, and modern Japan through pen-and-ink wash illustrations and engaging narrative. Part of the World History Illustrated series.",
+  "author": "Skylar Saveland",
+  "publisher": "Corpora Inc",
+  "isbn": "",
+  "language": "en-US",
+  "publication_date": "2026-02-15",
+  "instructions": "## Writer Instructions for History of Japan\n\nWrite for curious children ages 7-11, but make it fascinating for adults too. This is NOT a dry textbook. It's a story about real people, dramatic events, and a beautiful island nation.\n\n### Structure rules\n\n- Each chapter is a self-contained story arc with a beginning, middle, and end.\n- Use markdown headings (## for sections within chapters).\n- Include 2-3 illustrations per chapter using ![caption](images/name.png) syntax.\n- Each chapter should be roughly 1,500-2,000 words.\n\n### Tone and style\n\n- Story-driven and curiosity-provoking. Start chapters with a hook.\n- Vivid sensory details: what did it look, sound, smell like?\n- Use dialogue and scenes where historically appropriate.\n- Explain complex ideas through analogy and comparison.\n- Respectful of Japanese culture; include Japanese terms with explanations.\n- Age-appropriate treatment of war and conflict: honest but not graphic.\n\n### Content guidance\n\n- Connect past to present whenever possible.\n- Include \"Did You Know?\" sidebars as blockquotes for fascinating facts.\n- Show cause and effect: why did things happen, not just what happened.\n- Highlight both famous figures and everyday people.\n- Include women's contributions and perspectives where historically documented.\n",
+  "voice": "Voice = vivid storyteller who respects young readers' intelligence. The tone is wonder-filled but never condescending. Like a favorite teacher who makes history feel alive.\n\n- Sound like you're telling the most amazing true story ever.\n- Use present tense for dramatic moments to pull readers in.\n- Ask rhetorical questions to engage curiosity.\n- Compare unfamiliar things to familiar ones (a castle as tall as a 20-story building).\n- Be honest about difficult topics without being frightening.\n- Celebrate beauty, creativity, and human ingenuity across cultures.\n",
+  "has_images": true,
+  "book_size": "6x9",
+  "font_size": "11.00",
+  "output_basename": "history-of-japan",
+  "output_pdf": "history-of-japan.pdf",
+  "output_epub": "history-of-japan.epub"
+}
