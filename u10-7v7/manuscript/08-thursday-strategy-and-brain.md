@@ -26,7 +26,7 @@ Spend ten to fifteen minutes on walkthroughs. In the early weeks of the season, 
 
 The freeze scrimmage is the most powerful teaching tool in your coaching toolkit. It works like a regular scrimmage except you carry a whistle and you stop play whenever you see a teaching moment. When you blow the whistle, everyone freezes. Nobody moves. Then you coach.
 
-"Freeze. Everyone look at where you are standing. Left wing — you are watching the game from the defensive third. What does the team need from you right now? The ball is at midfield and we have possession. Where could you be to help? Think. Good — get forward, find space, give the sweeper someone to pass to. Point, you are hiding behind their defender. Move to where you can receive a pass. Good. Unfreeze."
+"Freeze. Everyone look at where you are standing. Left wing — we have possession at midfield. Where could you be to help the team right now? Think. Good — get forward, find space, give the sweeper someone to pass to. Point, show yourself — find a spot where the sweeper can see you and play you the ball. Good. Unfreeze."
 
 The freeze scrimmage lets you coach thinking in context. Instead of telling a player where to stand on a cone drill, you are asking them to process the game situation and figure out the best thing they can do right now. The ball is here, the opponent is there — what does the team need from you? That question, asked over and over in real game situations, is what builds the habit of constant adjustment. The player who hears it fifty times in practice starts asking it to themselves during games.
 

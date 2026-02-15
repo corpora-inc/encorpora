@@ -148,7 +148,7 @@ The team is in the 6-0 and the opponent plays the ball wide to a player near the
 
 Not tracking back. The wing pushes forward in attack, the team loses the ball, and the wing does not recover. Now there is a gap in the 6-0 that the opponent exploits for a goal. Coach it: the rule is simple. When we lose the ball, everyone gets goalside. The wing strikers do not jog back. They sprint back. And here is the part most kids do not understand yet: getting back is not a sacrifice. It is a setup. The wing who gets back and helps win the ball is the wing who gets the breakaway on the counter.
 
-Standing still and watching. The wing stands in one spot and waits for the ball to come to them instead of making runs. Coach it: "Move. Make a run. Get into space. If the ball does not come, make another run. You should never be standing still when we have the ball."
+Constant movement. The best wings are always in motion — making a run, finding space, creating a passing option. Coach it: "Move. Make a run. Get into space. If the ball does not come, make another run. When we have the ball, every player is moving."
 
 Not crashing the center. The point shoots and the wing is standing twenty yards from goal with no chance of getting the rebound. Coach it: "When there is a shot, get to the goal. Be there for the rebound. Garbage goals win games."
 

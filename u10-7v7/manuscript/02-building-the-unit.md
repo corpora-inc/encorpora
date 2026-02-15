@@ -6,13 +6,11 @@ A soccer team is not a collection of individuals who happen to wear the same col
 
 ## Circle Up
 
-Every practice starts and ends in a circle. Not a huddle where three kids are paying attention and the rest are picking grass. A circle where everyone can see everyone else's face, where you speak clearly, and where players learn to listen.
+Every practice starts and ends in a circle. Everyone can see everyone else's face. You speak clearly and the players listen — twelve sets of eyes locked in, ready to go. That eye contact carries onto the field. Players who are used to looking their teammates in the eye during circle communicate better during the game.
 
 The opening circle is where you set the agenda. Keep it short. Thirty seconds. Tell them what you are working on today and why. "Today we are working on defensive shape because we gave up three goals on the counter last game. By the end of practice you will know exactly where to be when we lose the ball." That is it. No speeches. No pep talks. Just the what and the why.
 
 The closing circle is where you reinforce what happened. Pick one thing that went well and one thing to work on. Ask a player to name something they learned. Rotate who you ask so everyone gets a turn over the course of a few weeks. End with a team break. Pick a word. Keep it the same all season. Make it theirs.
-
-The circle also matters because it establishes eye contact as a norm. Players who are used to looking their teammates in the eye during circle will communicate better on the field. Players who stare at the ground in circle will stare at the ground during the game.
 
 ## Pair Up and Shuffle
 

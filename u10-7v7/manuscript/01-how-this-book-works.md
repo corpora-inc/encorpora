@@ -8,7 +8,7 @@ The book assumes you have never coached before. It does not assume you played so
 
 Read the whole book. If every family reads this book cover to cover, the team will be better for it. Players who understand the system make better decisions. Parents who understand the system give better support from the sideline. Coaches who know every chapter can connect the dots between formation, practice, and game day in real time. The book is not long. Read it all.
 
-That said, if you want a starting point: coaches, start with chapters 3 through 5 on formation, positions, and set pieces, then chapter 9 on game day. Players, start with chapter 4 to learn your position and chapter 5 to learn set pieces — those chapters are written so a nine-year-old can read them. Parents, start with chapter 2 on building the unit, then chapter 4 to understand why your kid is playing the position they are playing. But come back and read the rest. It all connects.
+That said, if you want a starting point: coaches, start with chapters 3 through 5 on formation, positions, and set pieces, then chapter 9 on game day. Players, start with chapter 4 to learn your position and chapter 5 to learn set pieces — those chapters are written so a nine-year-old can read them. Parents, start with chapter 2 on building the unit, then chapter 4 to see how the positions work together. But come back and read the rest. It all connects.
 
 ## The Goal Is to Win
 

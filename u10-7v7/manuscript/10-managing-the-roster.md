@@ -62,20 +62,18 @@ Track every player's minutes in your notebook. After every game, record who play
 
 The goal is rough equity, not exact equity. Over a season, every player should have within ten to fifteen percent of the average total minutes. If the average is 500 minutes and one player has 350, that is a problem you need to fix. If the average is 500 and one player has 460, that is normal variance from game-to-game substitution patterns.
 
-In games where you are comfortably ahead, distribute minutes generously to players who have been short on time. This is the easiest context to give development minutes because the result is not at risk. In games where you are behind or in close contests, you will lean on your strongest players, and that is appropriate. The equity balances out over the course of the season, not within a single game.
+In games where your team is dominating, rotate players into new positions and try combinations you have been developing in practice. These are the best moments for experimentation — the team is playing well, confidence is high, and every player gets to contribute in a live game with real momentum. In close games, lean on your strongest lineup. The balance works itself out over the season.
 
-Be transparent about the system. At the parent meeting at the start of the season, explain that you track minutes and aim for equitable distribution. Explain that game context affects who plays when — starters in tight games, broader rotation in comfortable leads. Transparency builds trust and helps everyone understand the system.
+Share the system with families. When everyone understands how the rotation works — that every player gets meaningful time, that close games feature the strongest lineup, and that comfortable leads are where the team experiments — there is nothing to wonder about. The system is simple and it is fair.
 
-## When a Player Wants a Different Position
+## Trying New Positions
 
-You will have this player. Possibly more than one. They signed up because they want to score goals, and they view any position other than point as a demotion. This is a completely normal attitude for a nine-year-old, and it needs to be handled with honesty and specificity.
+Players will want to try different positions — and that is a good thing. A player who is curious about another role is a player who is thinking about the system. Give them the opportunity. Let a wing try point for a half. Let a back try sweeper in practice. Let anyone who wants to try goalkeeper have a turn.
 
-The conversation goes like this: "I know you love scoring goals. That is great. I need you at left wing because you are fast enough to get up and down the field, and the left wing gets to attack too. In our attacking shape, you are one of the three forwards. You will have chances to score. But more than that, the left wing is what makes the whole team work, because you connect the defense to the attack. I need someone I trust in that role, and that is you."
+What usually happens is that the experience deepens their understanding of their primary position. A wing who plays point for a game understands the central passing lanes better. A back who tries wing appreciates the defensive structure from the other side. And sometimes a player discovers they are a natural at the new position, and you adjust the plan. Be open to that — the goal is to find the best fit for each player, and trying positions is how everyone figures that out together.
 
-What this does is reframe the position as important rather than as a consolation prize. It also tells the player that you trust them, which at this age is a powerful motivator. Most kids respond well to being told they are trusted with a responsibility.
-
-If the player continues to resist, give them a game or a half at point. Let them experience it. Some players discover that they actually enjoy their primary position more once they have tried the alternative. Others perform well at point, and you may adjust your plan accordingly. Be open to being wrong about the initial assignment. The goal is to find the best fit, not to win an argument.
+As the team builds confidence and starts winning, comfortable leads create natural opportunities to experiment with new combinations. These are the moments where development accelerates — players in unfamiliar positions, solving new problems, building versatility that makes the whole team stronger.
 
 ## Position Decisions
 
-Position decisions are the coach's call. When your reasoning is clear, your communication is transparent, and every player gets meaningful time on the field, position questions rarely become issues. This book is about soccer — the system, the positions, the preparation. If the team understands why the formation works the way it does, the positions make sense on their own.
+When the team understands the system — how every position connects, why the formation works the way it does — positions make sense on their own. Players take pride in their role because they can see how it fits into the whole. That shared understanding is what makes this a team, not just a collection of individuals on the same field.
