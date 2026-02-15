@@ -1,8 +1,8 @@
 # How This Book Works
 
-This book is a complete system for coaching U10 7v7 soccer. It covers formation, positions, set pieces, practice plans, game-day management, and season planning. Everything you need is here. If you read it, internalize it, and execute it, your team will be organized, competitive, and improving every week.
+This book is a complete system for U10 7v7 soccer. It covers formation, positions, set pieces, practice plans, game-day management, and season planning. Everything the team needs is here — whether you are coaching, playing, or supporting from the sideline.
 
-The book assumes you have never coached before. It does not assume you played soccer at a high level or know what a 2-1-1-2 means yet. By the time you finish, you will know exactly what to do at every practice, every game, and every moment in between. You will also know why you are doing it, which matters more than the what because situations change and you need to adapt.
+The book starts from scratch and builds everything step by step. If you have never coached before, you will know exactly what to do at every practice, every game, and every moment in between by the time you finish. If you have coached before, the system will sharpen what you already know and give you a framework that connects every part of the game. If you are a player, you will understand your position and how the team fits together. If you are a parent, you will see what the team is building and how to support it. Everyone benefits from understanding the why behind every decision — that matters more than the what, because situations change and you need to adapt.
 
 ## Who Should Read What
 

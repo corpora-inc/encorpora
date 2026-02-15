@@ -1,8 +1,8 @@
 # Building the Unit
 
-A soccer team is not a collection of individuals who happen to wear the same color jersey. It is a unit. The players need to trust each other, communicate without thinking about it, and hold each other accountable. None of that happens by accident. You build it deliberately, starting at the first practice and reinforcing it every single session.
+A soccer team is not a collection of individuals who happen to wear the same color jersey. It is a unit. The players need to trust each other, communicate without thinking about it, and hold each other accountable. None of that happens by accident. It is built deliberately, starting at the first practice and reinforced every single session.
 
-**The culture you set in the first two weeks is the foundation for the entire season.** When every player knows every other player, when the team has a shared identity, and when families are part of the mission, everything else in the book falls into place. Start strong and the season builds momentum on its own.
+**The culture set in the first two weeks is the foundation for the entire season.** When every player knows every other player, when the team has a shared identity, and when families are part of the mission, everything else in the book falls into place. Start strong and the season builds momentum on its own.
 
 ## Circle Up
 

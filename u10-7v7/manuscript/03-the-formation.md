@@ -4,7 +4,7 @@ Soccer is a thinking game. Every second the ball is in play, every player on the
 
 Most U10 teams have not learned to think this way yet — and that is completely normal. Without a system, players default to standing in one spot or chasing the ball in a clump. The difference between standing in a spot and playing a position is thinking: processing what the team needs right now and acting on it. That is what this system teaches.
 
-Your team is going to play a position. Every player will have a home, a set of responsibilities, and the understanding that those responsibilities change second by second based on what is happening on the field. This chapter teaches you the formation system that makes that possible.
+Every player on this team plays a position. Every player will have a home, a set of responsibilities, and the understanding that those responsibilities change second by second based on what is happening on the field. This chapter teaches you the formation system that makes that possible.
 
 ## Formation as a Framework for Thinking
 

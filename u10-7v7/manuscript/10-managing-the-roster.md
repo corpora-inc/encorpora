@@ -1,6 +1,6 @@
 # Managing the Roster
 
-A U10 7v7 roster typically has between ten and sixteen players. Seven play at a time. The rest sit and wait for their turn. How you manage that rotation — who plays where, how long, and why — is one of the most consequential decisions you make as a coach. When rotation is managed well, every player feels valued, develops at their position, and contributes meaningfully when they are on the field.
+A U10 7v7 roster typically has between ten and sixteen players. Seven play at a time. The rest sit and wait for their turn. How that rotation is managed — who plays where, how long, and why — is one of the most consequential decisions of the season. When rotation is managed well, every player feels valued, develops at their position, and contributes meaningfully when they are on the field.
 
 ## The Fourteen-Player Model
 
@@ -24,7 +24,7 @@ If you have fifteen or sixteen players, you have a luxury problem. More depth an
 
 Assigning positions is equal parts art and science. The science is matching physical and mental attributes to positional demands. The art is reading the intangibles — who wants to learn, who thrives under pressure, who communicates naturally.
 
-Here is a number to put the decision in perspective. With 12 players and 7 positions in the starting lineup, there are almost 4 million possible starting lineups (12 × 11 × 10 × 9 × 8 × 7 × 6 = 3,991,680). That is how many ways the puzzle could be assembled. Your job as coach is to narrow those millions down to one — the lineup that gives the team its best chance. But you are not making that decision alone. The players narrow it with you. The kid who works on their conditioning so they can play wing. The kid who studies the sweeper role and talks on the field. The kid who wants to be goalkeeper and dives for every ball at practice. Effort and desire are how a player stands out from millions of possibilities and earns the spot that fits them best.
+Here is a number to put the decision in perspective. With 12 players and 7 positions in the starting lineup, there are almost 4 million possible starting lineups (12 × 11 × 10 × 9 × 8 × 7 × 6 = 3,991,680). That is how many ways the puzzle could be assembled. The coach's job is to narrow those millions down to one — the lineup that gives the team its best chance. But you are not making that decision alone. The players narrow it with you. The kid who works on their conditioning so they can play wing. The kid who studies the sweeper role and talks on the field. The kid who wants to be goalkeeper and dives for every ball at practice. Effort and desire are how a player stands out from millions of possibilities and earns the spot that fits them best.
 
 Start with what you see in the first week of practice. Watch the players in scrimmages and free play. Observe without preconceptions. The kid who signed up as a striker might be a natural sweeper. The kid who says they cannot play defense might be your best back. Let the attributes guide the assignment, not the player's preference.
 

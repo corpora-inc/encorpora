@@ -1,6 +1,6 @@
 # The Season Arc
 
-A soccer season is not a flat line. It is an arc with distinct phases, each with its own priorities and challenges. Coaches who treat every week the same — running the same drills, giving the same talks, expecting the same level of performance — miss the opportunity to build their team progressively toward peak performance when it matters most.
+A soccer season is not a flat line. It is an arc with distinct phases, each with its own priorities and challenges. A season that looks the same every week — same drills, same talks, same expectations — misses the opportunity to build progressively toward peak performance when it matters most.
 
 This chapter maps out a typical ten-week recreational or competitive season. Your league might be shorter or longer. Adjust the timeline proportionally, but keep the phases and their priorities intact.
 
@@ -8,13 +8,13 @@ This chapter maps out a typical ten-week recreational or competitive season. You
 
 Your season starts before you ever meet the players. The week before the first practice, do the following:
 
-**Get the roster.** Contact your league coordinator and get the full list of players and parent contact information. Review it. Note any returning players from previous seasons and any players who are new to soccer entirely. If possible, get notes from last year's coaches about individual players, though take these with a grain of salt because kids change enormously between eight and ten.
+**Get the roster.** Contact your league coordinator and get the full list of players and parent contact information. Review it. Note any returning players from previous seasons and any players who are new to soccer entirely. If possible, get notes from last year's coaches about individual players.
 
 **Set up communication.** Create a team group chat, email list, or whatever your league uses. Send the first message: introduce yourself, share the practice schedule and location, list what players need to bring (cleats, shin guards, water bottle, ball), and share your coaching philosophy in two to three sentences. Set expectations early.
 
 **Plan the first four practices.** You do not need to plan the entire season in advance, but having the first two weeks mapped out means you start with purpose. The first four practices are the installation phase — the foundation that everything else builds on. Know exactly what you are installing and in what order.
 
-**Prepare your equipment.** Cones, pinnies, balls, whistle, first-aid kit, notebook. Have everything in a bag ready to go. Showing up to the first practice fumbling for equipment does not inspire confidence.
+**Prepare your equipment.** Cones, pinnies, balls, whistle, first-aid kit, notebook. Have everything in a bag ready to go.
 
 **Walk the field.** If possible, visit the practice and game fields before the first session. Know the dimensions. Know where the goals are. Know where the parking lot is relative to the field. Know if there are lights for evening practices. Eliminate surprises.
 
@@ -98,4 +98,4 @@ Then tell the team what they accomplished as a unit. Not the win-loss record, th
 
 After the last game, send a final message to the parent group. Thank them for the season. Acknowledge the work the players did. If you are coaching again next season, say so. If you are not, recommend the next coach if one has been identified. Close the loop cleanly.
 
-Then take a week off. You have earned it. Coaching a ten-week season of twice-weekly practices plus games is a significant commitment. Decompress. Reflect on what worked and what you would change. Write a few notes in your coaching notebook for your future self. And if you decide to come back next season, start the arc again from the beginning, building on the foundation the players have already internalized.
+Then take a week off. Reflect on what worked and what you would change. Write a few notes in your coaching notebook for your future self. And if you decide to come back next season, start the arc again from the beginning, building on the foundation the players have already internalized.

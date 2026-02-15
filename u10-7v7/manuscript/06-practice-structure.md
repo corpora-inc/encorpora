@@ -2,7 +2,7 @@
 
 Every practice is sixty minutes. Not seventy. Not ninety. Sixty. This is deliberate. A focused sixty-minute practice where every second has a purpose produces more development than ninety minutes at half intensity. Respect the players' time and your own by keeping it tight.
 
-Your team practices twice a week. Wednesday is Touches and Conditioning, covered in chapter 7. Thursday is Strategy and Brain Day, covered in chapter 8. Both practices follow the same structural framework described in this chapter. The content differs, but the skeleton stays the same. Consistency in structure lets the players focus on the content because they already know what comes next.
+The team practices twice a week. Wednesday is Touches and Conditioning, covered in chapter 7. Thursday is Strategy and Brain Day, covered in chapter 8. Both practices follow the same structural framework described in this chapter. The content differs, but the skeleton stays the same. Consistency in structure lets the players focus on the content because they already know what comes next.
 
 ## The 60-Minute Framework
 
@@ -18,7 +18,7 @@ Every practice follows this timeline:
 
 This framework gives you three working blocks of roughly fifteen minutes each, bookended by the opening and closing circles, with two short water breaks. The blocks are long enough to get meaningful repetitions in a drill and short enough that attention does not wander.
 
-Print this timeline. Tape it to the inside of your coaching binder or clipboard. Before every practice, fill in the three blocks with specific activities. Do this before you arrive at the field. A coach who shows up without a plan wastes ten minutes figuring out what to do while fourteen kids run in circles. A coach who shows up with a plan starts the clock and runs.
+Print this timeline. Before every practice, fill in the three blocks with specific activities. A coach who shows up with a plan starts the clock and runs.
 
 ## The First Ten Minutes
 

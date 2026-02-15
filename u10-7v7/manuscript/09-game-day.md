@@ -1,6 +1,6 @@
 # Game Day
 
-Game day is where everything you have practiced gets tested. The formation, the set pieces, the communication, the conditioning — it all comes together in sixty minutes of competitive play. Your job as coach shifts from teacher to manager. You are no longer installing concepts. You are deploying them, adjusting them, and supporting the players who are executing them under pressure.
+Game day is where everything you have practiced gets tested. The formation, the set pieces, the communication, the conditioning — it all comes together in sixty minutes of competitive play. The coach's role shifts from teacher to manager. You are no longer installing concepts. You are deploying them, adjusting them, and supporting the players who are executing them under pressure.
 
 The most important thing to understand about game day is that your preparation is already done. If you did the work during the week, your team is ready. If you did not, no amount of sideline coaching will make up for it. The game is a test. Your practices are the studying. By the time you arrive at the field on Saturday, the studying is over.
 
@@ -32,7 +32,7 @@ Write the starting lineup in your notebook. Write the substitution plan. Know wh
 
 ## Coaching During the Game
 
-This is where discipline matters most — yours, not the players'. The temptation to coach every touch, every pass, every run from the sideline is overwhelming, especially for new coaches. Resist it. Your players cannot process real-time instructions while also playing the game. A player who is listening to the coach is not watching the ball. A player who is watching the ball is not listening to the coach. You cannot have both.
+This is where discipline matters most — yours, not the players'. The temptation to coach every touch, every pass, every run from the sideline is overwhelming. Resist it. Your players cannot process real-time instructions while also playing the game. A player who is listening to the coach is not watching the ball. A player who is watching the ball is not listening to the coach. You cannot have both.
 
 Your sideline coaching should be limited to four categories:
 
@@ -54,11 +54,11 @@ Halftime is typically five to eight minutes at U10. You have time for water, one
 
 Gather the team. Let them drink water for the first sixty seconds. Then talk.
 
-**If you are winning:** "Good first half. Our shape has been excellent and we are creating chances. One thing to focus on in the second half: stay sharp. Keep the defensive transition crisp. When we lose the ball, everyone gets goalside. If we keep doing what we are doing, we are fine."
+**If you are winning:** "Our shape has been excellent. Stay sharp — keep the defensive transition crisp and we are fine."
 
-**If you are losing:** "We are down, but here is what I noticed. We are not getting into the 6-0 fast enough. When they have the ball in our half, I need everyone back. Wing strikers, point, I need you sprinting back the instant they cross midfield. We can get back into this game if we lock down the center and counter."
+**If you are losing:** "We are not getting into the 6-0 fast enough. Everyone back the instant they cross midfield. Lock down the center and counter."
 
-**If it is close:** "This is a battle. Both teams are working hard. The difference in the second half is going to be who is more organized. Let us make sure that is us. Remember the shape. Remember the transitions. And on set pieces, we know exactly what to do. Let us execute."
+**If it is close:** "The difference in the second half is who is more organized. Remember the shape, the transitions, and the set pieces. Let us execute."
 
 Make the substitutions you planned. Tell the players coming in what position they are playing. Tell the players coming out something positive about their first half, even if it was rough. "Good work. Rest up. You will be back in."
 

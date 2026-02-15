@@ -1,6 +1,6 @@
 # Set Pieces
 
-A set piece is any restart of play from a dead ball: kickoffs, corner kicks, goal kicks, throw-ins, free kicks, and penalty kicks. At U10, set pieces account for a disproportionate number of goals because most teams do not practice them. The ball goes dead, the coach yells "just kick it," and possession immediately becomes a coin flip. Your team is going to be different. Every dead ball is an opportunity, and your players will know exactly what to do for each one.
+A set piece is any restart of play from a dead ball: kickoffs, corner kicks, goal kicks, throw-ins, free kicks, and penalty kicks. At U10, set pieces account for a disproportionate number of goals because most teams do not practice them. The ball goes dead, the coach yells "just kick it," and possession immediately becomes a coin flip. This team is going to be different. Every dead ball is an opportunity, and your players will know exactly what to do for each one.
 
 The advantage of practicing set pieces is that they are fully controllable. You cannot control what happens in open play, but you can control exactly where your players stand and what they do on a corner kick. That predictability is powerful. When your team lines up for a corner and every player is in their assigned spot, the opponent is reacting to you. When your team lines up for a goal kick and the goalkeeper knows exactly where to play it, you keep possession instead of giving it away.
 
