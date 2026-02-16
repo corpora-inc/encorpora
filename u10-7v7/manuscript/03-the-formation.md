@@ -14,13 +14,13 @@ Playing a formation is seven brains processing the game in real time, making dec
 
 ## Six Positions, Not Zones
 
-This system does not use generic zones like "left midfield" or "right midfield." It uses six distinct field positions, each with a specific name and a specific job. The positions are: left back, right back, sweeper, point, left wing, and right wing. Plus the goalkeeper, for seven total.
+This system uses six distinct field positions, each with a specific name and a specific job. The positions are: left back, right back, sweeper, point, left wing, and right wing. Plus the goalkeeper, for seven total.
 
 The sweeper and point are the spine of the formation. They occupy the center of the field, stacked vertically. The sweeper sits deeper — a defensive midfielder who anchors the middle, reads the game, distributes the ball, and organizes the defense. The point sits higher — an attacking midfielder who links the center to the front line, creates chances, and leads the press. These are the two most important positions on the field and they are not interchangeable with each other.
 
-The left wing and right wing are the most versatile players on the field. On a 7v7 pitch, the field is small enough that every player can cover nearly the whole surface — and the wings do exactly that. In the 2-1-3 attacking shape, the wings are strikers: making runs, finding angles, and creating scoring opportunities. In the 6-0, they are wide defenders: tracking back to the corners, working with the backs to trap opponents against the sideline. In the neutral 2-1-1-2, they read the game from the attacking half and go wherever the opportunity is. The wings are completely context-dependent — their role changes with the shape, and they need to be ready for all of it.
+The left wing and right wing are the most versatile players on the field. On a 7v7 pitch, the field is small enough that every player can cover nearly the whole surface — and the wings do exactly that. In the attacking shape, the wings are strikers: making runs, finding angles, and creating scoring opportunities. In the defensive shape, they are wide defenders: tracking back to the corners, working with the backs to trap opponents against the sideline. In the neutral shape, they read the game from the attacking half and go wherever the opportunity is. The wings are completely context-dependent — their role changes with the shape, and they need to be ready for all of it.
 
-The wings' full-field role is what makes this system work. A wing who tracks back into the 6-0, wins the ball wide, and explodes forward already has momentum while the opponent is still turning around. That is a breakaway — and it starts with defense. The counter-attack is at its most dangerous when the wing launches from deep — full sprint, forward momentum, the opponent still turning around. Getting back, winning the ball, and exploding forward is how wings produce goals at U10.
+The wings' full-field role is what makes this system work. A wing who tracks back into the defensive shape, wins the ball wide, and explodes forward already has momentum while the opponent is still turning around. That is a breakaway — and it starts with defense. The counter-attack is at its most dangerous when the wing launches from deep — full sprint, forward momentum, the opponent still turning around. Getting back, winning the ball, and exploding forward is how wings produce goals at U10.
 
 The left back and right back are the defensive foundation. Their primary job is to control the center of the field alongside the sweeper. They pinch in toward the middle, they clog passing lanes through the center, and they send the ball out toward the sidelines when they win it. The sidelines are the best defenders on the field — let the opponent chase the ball into the corners while your team reorganizes.
 
@@ -38,7 +38,7 @@ On offense, the center is where the goals are. The shortest distance between you
 
 ## The Three Shapes
 
-Defense comes first. No easy goals. Everyone plays defense. Being a wing does not mean only striker — sixty, sixty, sixty. That mindset is the foundation of this system, and the three shapes that follow are built on it.
+Defense comes first. No easy goals. Everyone plays defense. Being a wing means playing the full field — defense first, every time. That mindset is the foundation of this system, and the three shapes that follow are built on it.
 
 This system uses three formations that the team shifts between based on the game situation. Think of them as shapes rather than rigid positions. The players are the same. Their responsibilities shift depending on whether the team is defending, in transition, or attacking. The beauty of this system is that it is really one formation with three modes. Players do not need to learn three completely different sets of positions. They need to learn their base position and then understand how it compresses or stretches depending on the situation.
 

@@ -78,7 +78,7 @@ Start with joint mobility and basic running warm-ups to get everyone loose. Then
 
 Do the first shuffle — count off into pairs. Run a simple pairs passing drill. This gets touches going immediately and starts building the one-on-one relationships that are the foundation of the team.
 
-Circle up again. This is where you introduce the 2-1-1-2 — the positions, the two triangles, and the basic idea that every player has a home and a job. A whiteboard with magnetic dots is ideal here. Walk through where each position lives on the field and what their role is. Keep it to five minutes. The details come later. Right now you are planting the seed: this team has a system.
+Circle up again. This is where you introduce the formation — the positions, the two triangles, and the basic idea that every player has a home and a job. A whiteboard with magnetic dots is ideal here. Walk through where each position lives on the field and what their role is. Keep it to five minutes. The details come later. Right now you are planting the seed: this team has a system.
 
 Then run a scrimmage — 7v7 if you have the numbers, 6v6 or 5v5 on a half field if you do not. Two full teams, however you can manage it. Let this one run mostly free. You are observing everyone at their baseline — who moves, who communicates, who reads the game naturally. Drop in light coaching as the play develops: "Make a run." "Get back on defense." "Pinch in to the center." Between the circle explanation and these live-action cues, you are establishing the basic vocabulary and ideas that the rest of the season builds on.
 
@@ -90,6 +90,6 @@ The second practice builds on the vocabulary from the first. Now the players hav
 
 After warm-ups and the opening circle, run scenarios with slightly larger groups — 3v2 combinations, dead-ball set pieces, positional walkthroughs. This is where you start explaining roles in context. "Sweeper, you are the middle of the back triangle. When the ball is here, where do you want to be?" The players have the vocabulary from the first practice, so now you can start asking them to use it.
 
-Run a scrimmage again, but this time you can freeze play occasionally to teach. "Freeze. Look at the shape. Sweeper, where is your home? Good. Backs, are you pinched in? Good. That is the twenty-one twelve." The players have been introduced to the positions, so freezing to check their understanding now makes sense — you are reinforcing what they learned, not quizzing them on something they have never seen.
+Run a scrimmage again, but this time you can freeze play occasionally to teach. "Freeze. Look at the shape. Sweeper, where is your home? Good. Backs, are you pinched in? Good. That is our shape." The players have been introduced to the positions, so freezing to check their understanding now makes sense — you are reinforcing what they learned, not quizzing them on something they have never seen.
 
 By the end of the first week, the team has a shared language, every player knows every name, and the formation is no longer abstract — they have played in it. That foundation carries forward all season.
