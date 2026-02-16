@@ -13,3 +13,4 @@ image:
   steps: 28
   guidance_scale: 4.5
   candidates: 4
+  map_dir: maps
