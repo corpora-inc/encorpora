@@ -57,13 +57,16 @@ export const createBottle3D = (scene: Scene, initialLevel: CEFRLevel = "A0"): Bo
   const bottleProfile = [
     // Bottom base (flat)
     new Vector3(0, 0, 0),
-    new Vector3(1.8, 0, 0),
-    // Body curve up
-    new Vector3(2.0, 0.3, 0),
+    new Vector3(1.6, 0, 0),
+    // Bottom corner - smoother curve with more points
+    new Vector3(1.8, 0.05, 0),
+    new Vector3(1.95, 0.2, 0),
+    new Vector3(2.05, 0.5, 0),
     new Vector3(2.1, 1.0, 0),
     new Vector3(2.1, 4.5, 0), // Main body
-    // Shoulder curve to neck
-    new Vector3(2.0, 5.0, 0),
+    // Shoulder curve to neck - smoother
+    new Vector3(2.05, 4.8, 0),
+    new Vector3(1.9, 5.2, 0),
     new Vector3(1.5, 5.5, 0),
     new Vector3(1.0, 5.8, 0),
     // Neck
@@ -138,11 +141,13 @@ export const createBottle3D = (scene: Scene, initialLevel: CEFRLevel = "A0"): Bo
   // Profile follows bottle shape but slightly smaller to fit inside
   const maxLiquidHeight = 4.4 // Body height (from bottom to just below shoulder)
   const liquidProfile = [
-    new Vector3(0, 0, 0),        // Center bottom
-    new Vector3(1.65, 0, 0),     // Bottom flat (smaller than bottle 1.8)
-    new Vector3(1.85, 0.25, 0),  // Curve up (smaller than bottle 2.0, 0.3)
-    new Vector3(1.95, 0.9, 0),   // Body start (smaller than bottle 2.1, 1.0)
-    new Vector3(1.95, maxLiquidHeight, 0), // Body top (max fill height)
+    new Vector3(0, 0, 0),
+    new Vector3(1.45, 0, 0),
+    new Vector3(1.65, 0.05, 0),
+    new Vector3(1.8, 0.2, 0),
+    new Vector3(1.9, 0.5, 0),
+    new Vector3(1.95, 0.9, 0),
+    new Vector3(1.95, maxLiquidHeight, 0),
   ]
 
   const liquidMesh = MeshBuilder.CreateLathe(

@@ -2,7 +2,7 @@
 
 A truly world-class third grade is built on more than the core subjects. This section covers the often overlooked domains that build a capable, resilient person: health, safety, emotional skills, life skills, arts, media, and character.
 
-Think of these as life’s compound lifts. Academics answer, "What should my child know?" These answer, "What can my child do, and how do they live well?" You do not need specialized training or expensive materials. Most of these skills grow through simple, repeatable routines: movement, conversations, projects, and real-world tasks. Small, daily reps compound.
+Think of these as life’s compound movements. Academics answer, “What should my child know?” These answer, “What can my child do, and how do they live well?” You do not need specialized training or expensive materials. Most of these skills grow through simple, repeatable routines: movement, conversations, projects, and real-world tasks. Small, daily reps build interest over time.
 
 
 ## Health and PE: Daily Movement and Body Basics
@@ -19,7 +19,7 @@ Strength and endurance show up as simple holds and basic bodyweight skills, with
 - **Push-ups:** 10 to 15 total, either standard or knees-down
 - **Squat and hinge patterns:** comfortable bodyweight squats, getting up and down from the floor easily
 
-They should also be learning basic body awareness: noticing when they are tired, overheated, thirsty, hungry, or just due for a break.
+They should also be learning basic body awareness: noticing when they are tired, overheated, thirsty, hungry, or due for a break.
 
 ### The movement “menu”
 
@@ -53,7 +53,7 @@ Third graders typically need **9 to 11 hours of sleep** per night. A consistent 
 
 Water is the default drink. Encourage sips before and after movement, and practice noticing thirst early rather than waiting for a headache or meltdown.
 
-For food, aim for steady energy: fruits and vegetables, proteins, and whole grains. You are not trying to engineer perfect nutrition, just building a child who can recognize what helps them feel good.
+For food, aim for steady energy: fruits and vegetables, proteins, and whole grains. You are not trying to engineer perfect nutrition. You are building a child who can recognize what helps them feel good.
 
 Hygiene should be automatic: handwashing before eating and after outdoor play and bathroom visits.
 
@@ -86,7 +86,7 @@ Think of safety routines like warmups before a workout. Keep them simple, consis
 
 ### Road and parking-lot safety
 
-Keep modeling the essentials, especially in the places families actually get hurt: driveways, parking lots, and busy drop-off zones. Practice together at quiet intersections first, then gradually add complexity.
+Keep modeling the essentials, especially in the places families get hurt: driveways, parking lots, and busy drop-off zones. Practice together at quiet intersections first, then gradually add complexity.
 
 A good default script is short and repeatable:
 
@@ -101,7 +101,7 @@ If your child is impulsive, add one physical anchor: “Hand on the stroller,”
 
 ### Water safety
 
-Water safety is all about reliability. Set your family rules once for the places you actually go (bathtub, pool, lake, beach) and enforce them the same way every time.
+Water safety is all about reliability. Set your family rules once for the places you go (bathtub, pool, lake, beach) and enforce them the same way every time.
 
 Two ideas that prevent most problems:
 
@@ -133,12 +133,12 @@ Practice a few essentials until they’re automatic:
 - What to do if they get lost in a store (stay put, find an employee, use a loud clear voice).
 - What to do if someone comes to the door (don’t open it, get an adult).
 
-Role-play works well here. Keep it light, run the scenario for two minutes, then move on with your day.
+Role-play works well here. Keep it light, run the scenario for two minutes, then carry that calm into the rest of your day.
 
 
 ## Emotional Skills: Naming Feelings and Self-Regulation
 
-Emotional literacy matters just as much as reading, math, or science. For a third grader, it starts with having words for what’s going on inside and a few practical strategies to handle those feelings. Noticing and naming an emotion gives your child a handle on what’s happening. Choosing the next step makes hard moments easier to navigate. Over time, this becomes self-regulation: a steady, learnable skill that grows through daily practice, much like riding a bike or cooking a simple meal.
+Emotional literacy matters as much as reading, math, or science. For a third grader, it starts with having words for what’s going on inside and a few practical strategies to handle those feelings. Noticing and naming an emotion gives your child a handle on what’s happening. Choosing the next step makes hard moments easier to navigate. Over time, this becomes self-regulation: a steady, learnable skill that grows through daily practice, much like riding a bike or cooking a simple meal.
 
 You can teach emotional skills the same way you teach anything else: break them into small pieces, practice them often, and keep the tone calm. When your child can say, “I’m annoyed,” or “I feel nervous,” it turns an emotional mystery into something you can both work with.
 
@@ -159,7 +159,7 @@ Here’s a solid starter set:
 - Peaceful
 - Brave
 
-The more specific your child’s vocabulary, the less overwhelming emotions tend to feel. It also helps them ask for the right kind of help.
+The more specific your child’s vocabulary, the less overwhelming emotions tend to feel. It also helps them ask for the right help.
 
 ### Build a tiny “regulation loop” they can remember
 
@@ -185,7 +185,7 @@ By the end of the year, a realistic goal is that your child can use at least **t
 
 ### Keep a small, visible menu of calm-down tools
 
-Some of the best tools for emotional self-regulation are simple and always available. Make a short “menu” and post it where your child can see it. You don’t need dozens. You need a few that actually work in your house.
+Some of the best tools for emotional self-regulation are simple and always available. Make a short “menu” and post it where your child can see it. You don’t need dozens. You need a few that work in your house.
 
 Good options for third grade:
 
@@ -195,7 +195,7 @@ Good options for third grade:
 - Sit in a quiet spot with a timer
 - Ask for help using a simple phrase (“Can you start the first problem with me?”)
 
-Mix these into transitions, not just meltdowns. Before lessons or chores, try one deep breath or a few gentle stretches together. You’re building a routine, not a rescue mission.
+Mix these into transitions, not only meltdowns. Before lessons or chores, try one deep breath or a few gentle stretches together. You’re building a routine, not a rescue mission.
 
 ### Practice when nobody is upset
 
@@ -291,14 +291,14 @@ Also, clear steps beat vague commands. Instead of “clean your room,” try thr
 
 You do not need special supplies or a rigid program to make practical life skills part of your curriculum. Every regular day gives your child a chance to strengthen awareness, contribution, and competence.
 
-Treat these abilities as genuine lessons and they work like compound exercises: one “move” engages several skills at once, naturally fitting into real life. Over time, the benefits compound, and they ripple across every area of learning and daily living.
+Treat these abilities as genuine lessons and they work like compound movements: one “move” engages several skills at once, naturally fitting into real life. Over time, the benefits build on each other and ripple across every area of learning and daily living.
 
 
 ## Visual Art: Skills, Creativity, Appreciation
 
-When parents think about teaching art at home, they often fear one of two extremes: rigid, intimidating lessons or a wild free-for-all with glitter everywhere. Third-grade art can be simpler and richer than both. Done well, it becomes a steady, enjoyable practice, a place where your child quietly builds skill, takes creative risks, and learns to really see.
+When parents think about teaching art at home, they often fear one of two extremes: rigid, intimidating lessons or a wild free-for-all with glitter everywhere. Third-grade art can be simpler and richer than both. Done well, it becomes a steady, enjoyable practice, a place where your child quietly builds skill, takes creative risks, and learns to see.
 
-At this age, “art education” mostly means helping your child **observe, interpret, and create** with basic tools and techniques. The goal is not a prodigy. It’s visual thinking: getting ideas onto paper, noticing what’s actually there, and experimenting with how to show it.
+At this age, “art education” mostly means helping your child **observe, interpret, and create** with basic tools and techniques. The goal is not a prodigy. It’s visual thinking: getting ideas onto paper, noticing what’s there, and experimenting with how to show it.
 
 > **A useful definition:** Art in third grade is practice at *seeing* (careful observation) and *showing* (making choices with materials).
 
@@ -368,7 +368,7 @@ When frustration pops up, model how artists work: adjust, layer, cover, and try 
 
 ## Music and Rhythm: Participation Over Performance
 
-Music belongs to everyone, not just to those who seem “naturally gifted.” Third grade is not about raising a musical prodigy. It’s about helping your child feel at ease making music, noticing how much of life already has rhythm, and enjoying it.
+Music belongs to everyone, not only to those who seem “naturally gifted.” Third grade is not about raising a musical prodigy. It’s about helping your child feel at ease making music, noticing how much of life already has rhythm, and enjoying it.
 
 When you center music on participation instead of perfection, it becomes something the whole family can do together, including parents who think they “can’t sing” or “have no rhythm.” The win is not applause. The win is a child who willingly joins in.
 
@@ -388,7 +388,7 @@ If you want simple language for these ideas:
 
 ### Tiny routines that compound
 
-Formal training is optional. Consistency matters more, just like with reading or cooking. Think in **3 to 5 minute blocks**, repeated often.
+Formal training is optional. Consistency matters more, like with reading or cooking. Think in **3 to 5 minute blocks**, repeated often.
 
 Here are a few “doable tomorrow” options:
 
@@ -410,16 +410,16 @@ If a music moment gets tense, treat that as useful feedback. Simplify the task, 
 
 Motivation stays high when the atmosphere is inviting. Use music as a transition tool: a clean-up song, a morning anthem, or a funny chant to get everyone moving.
 
-A few minutes of lighthearted music most days adds up. The outcome you’re looking for by year’s end is not perfect pitch or flawless performance, but real musical confidence and a willingness to join in. That comfort becomes the foundation for everything else, whether your child studies music seriously later or simply enjoys it for life.
+A few minutes of lighthearted music most days adds up. The outcome you’re looking for by year’s end is not perfect pitch or flawless performance, but real musical confidence and a willingness to join in. That comfort becomes the foundation for everything else, whether your child studies music seriously later or enjoys it for life.
 
 
 ## Drama, Play, and Storytelling
 
-Drama, play, and storytelling can turn ordinary afternoons into workshops for imagination. They give your child easy ways to use their voice, body, and ideas to create new worlds, and to express themselves freely at home. You don’t need fancy props or scripts, just the willingness to jump into stories together.
+Drama, play, and storytelling can turn ordinary afternoons into workshops for imagination. They give your child easy ways to use their voice, body, and ideas to create new worlds, and to express themselves freely at home. You don’t need fancy props or scripts, the willingness to jump into stories together.
 
 These playful tools do real academic work. Kids gain confidence as speakers, grow as creative thinkers, and practice cooperating with other humans. Acting out a scene from a book, retelling a folktale in their own words, or inventing a story with a scarf and a cardboard box builds language, listening, social awareness, and the ability to communicate clearly.
 
-> **A good “drama lesson” is just this:** your child gets a chance to speak, move, imagine, and be understood.
+> **A good “drama lesson” is this:** your child gets a chance to speak, move, imagine, and be understood.
 
 ### What this builds
 
@@ -443,7 +443,7 @@ Simple props help kids commit to the pretend world, and commitment is where the 
 
 ![A short puppet show, big imagination](images/child_performing_a_short_puppet_show.png)
 
-If your child likes an audience, organize a tiny living room performance for a family member or a circle of stuffed animals. If they don’t, keep it private: just you two, or solo storytelling into a voice memo.
+If your child likes an audience, organize a tiny living room performance for a family member or a circle of stuffed animals. If they don’t, keep it private: you two, or solo storytelling into a voice memo.
 
 One simple way to keep this “agile” is to treat performances like tiny projects:
 
@@ -457,14 +457,14 @@ Film short skits on your phone if your child enjoys it, then watch together and 
 
 Solo play and group play both matter. When kids try on different roles (hero, narrator, comic side character), they stretch their imagination and empathy. When you join in even a little, you make creative risk feel safe.
 
-Over time, these playful moments often become the most memorable, productive parts of your homeschool year, working many “muscles” at once, like a good compound exercise.
+Over time, these playful moments often become the most memorable, productive parts of your homeschool year, working many “muscles” at once, like a good compound movement.
 
 
 ## Technology and Media Literacy: Create More Than You Consume
 
 Screens, whether phones, tablets, laptops, TVs, or game systems, are stitched into daily life. Some families go low-tech, others go tech-rich, and a few treat AI as a daily learning partner. All of these can work if you choose them on purpose and shape them toward real learning.
 
-For third grade, the mission is not checking off a list of software skills. It is deeper: helping your child see technology as a set of tools they can use, not something that uses them. At this age, the best return on screen time is simple: spark questions, support real creation, and deepen conversation. Done well, tech does not just "fill time" - it compounds learning.
+For third grade, the mission is not checking off a list of software skills. It is deeper: helping your child see technology as a set of tools they can use, not something that uses them. At this age, the best return on screen time is simple: spark questions, support real creation, and deepen conversation. Done well, tech does not only “fill time”; it compounds learning.
 
 > **Media literacy (third-grade level):** noticing what a message is trying to do, who made it, what it leaves out, and what you think about it.
 
@@ -477,9 +477,7 @@ These are the few ideas that pay for almost everything else.
 - **Bring it back to words.** After a video, game, site, or AI chat, have your child tell you what they learned in their own words.
 - **Use AI as a coach.** Let it explain, quiz, model, and stretch the conversation.
 - **People over screens.** Devices should support relationships, not replace them.
-- **Practice pause-and-ask.** Even eight-year-olds can learn: "If something feels weird, confusing, or upsetting, stop and get a grown-up."
-
-If you’re not sure what to do tomorrow, do this: keep the screen time, but require a small “creation receipt” afterward (two sentences, a sketch with labels, or a 30-second explanation).
+- **Practice pause-and-ask.** Even eight-year-olds can learn: “If something feels weird, confusing, or upsetting, stop and get a grown-up.” If you’re not sure what to do tomorrow, do this: keep the screen time, but require a small “creation receipt” afterward (two sentences, a sketch with labels, or a 30-second explanation).
 
 ### Choosing your family’s “tech stance”
 
@@ -512,19 +510,19 @@ This turns “we watched something” into reading, writing, and thinking practi
 
 A follow-up can be as small as a labeled sketch, a walk to look for examples, a tiny experiment, or finding one more source that agrees or disagrees.
 
-**Weekly creation project.** Once a week, make something that has an audience (even if the audience is just you): a short explanation video, a photo “how-to” guide, a comic, or a slide story. Creation-focused projects build confidence, communication, and the habit of finishing.
+**Weekly creation project.** Once a week, make something that has an audience (even if the audience is you): a short explanation video, a photo “how-to” guide, a comic, or a slide story. Creation-focused projects build confidence, communication, and the habit of finishing.
 
 
 ### Safety, ambiguity, and the economics of attention
 
-Every family draws the safety line differently. Some rely on heavy filtering and pre-selected content. Others allow more open access but stay closely involved. Either can work if your rules are clear and you can actually sustain them.
+Every family draws the safety line differently. Some rely on heavy filtering and pre-selected content. Others allow more open access but stay closely involved. Either can work if your rules are clear and you can sustain them.
 
 Think of this like managing money: attention is a scarce resource. You want a setup that does not require constant battles or heroic supervision, but still produces a good return in curiosity, skill, and character.
 
 A few plain-language ground rules usually cover most of what comes up:
 
 - The internet has great information and some harmful material.
-- If something feels scary, sexual, hateful, or just “off,” **close it and tell an adult**.
+- If something feels scary, sexual, hateful, or “off,” **close it and tell an adult**.
 - Don’t share personal info (full name, address, school, phone number) without a parent.
 - What you search, type, or post can be remembered by other people.
 
@@ -537,7 +535,7 @@ A few times a year, step back and ask:
 - Are screens serving curiosity and creativity, or mostly filling time?
 - Do we routinely turn digital inputs into outputs (talk, notes, projects)?
 - Is our setup sustainable for the adults in the house?
-- Is our child growing in attention and self-control, not just getting better at tapping and scrolling?
+- Is our child growing in attention and self-control, not only getting better at tapping and scrolling?
 
 There’s no forever-right answer. Third grade is an excellent time to run small experiments, observe reality, and adjust.
 

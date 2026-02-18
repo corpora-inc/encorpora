@@ -31,9 +31,6 @@
 % Switching to memoir
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{1em}
-% \chapterstyle{section}
-% \chapterstyle{default}
-% \chapterstyle{plain}
 \renewcommand{\chapnamefont}{}
 \renewcommand{\printchaptername}{}
 \renewcommand{\chapnumfont}{}
@@ -45,10 +42,9 @@
 % ==== Force format for \section*{Contents} ====
 \usepackage{titlesec}
 
-% ==== Redefine \tableofcontents with a small “Contents” header ====
+% ==== Redefine \tableofcontents with a small "Contents" header ====
 \makeatletter
 \renewcommand\tableofcontents{%
-  % \cleardoublepage
   \begingroup
     \setlength{\parskip}{1pt}%
     \setlength{\parindent}{0pt}%
@@ -109,8 +105,6 @@
 \usepackage{amssymb} % for \triangleright (reliable glyphs)
 
 \makeatletter
-% IMPORTANT: avoid \textopenbullet (often tofu under XeLaTeX/fontspec).
-% Use math glyphs for nested bullets so they always render.
 \renewcommand\labelitemii{\ensuremath{\circ}}
 \renewcommand\labelitemiii{\ensuremath{\triangleright}}
 \makeatother
@@ -148,45 +142,24 @@
 \captionsetup[table]{labelformat=empty}
 
 % ---------------------------------------------
-% Plotting and Graphics
-% ---------------------------------------------
-\usepackage{pgfplots}
-\pgfplotsset{width=10cm,compat=1.9}
-\usepgfplotslibrary{statistics}
-
-% ---------------------------------------------
-% Fonts (Latin + CJK) — keep your working setup
+% Fonts — Latin only
 % ---------------------------------------------
 \usepackage{fontspec}
-\usepackage{xeCJK}
 
-% Use HarfBuzz for variable fonts and fake bold if the bold face is missing.
 \defaultfontfeatures{Renderer=Harfbuzz}
 \setmainfont{Noto Serif}[AutoFakeBold=2.0]
-\setCJKmainfont{Noto Sans CJK SC}
 
 \AtBeginDocument{%
   \fontsize{ 11.00pt }{ 13.20pt }\selectfont
-  \XeTeXcharclass`‘=0
-  \XeTeXcharclass`’=0
-  \XeTeXcharclass`“=0
-  \XeTeXcharclass`”=0
-  \XeTeXcharclass`…=0
+  \XeTeXcharclass`'=0
+  \XeTeXcharclass`'=0
+  \XeTeXcharclass`"=0
+  \XeTeXcharclass`"=0
 }
 
 % ---------------------------------------------
-% Unicode normalization (NO ucharclasses)
+% Unicode normalization
 % ---------------------------------------------
 \usepackage{newunicodechar}
-\newunicodechar{÷}{\ensuremath{\div}}
-\newunicodechar{×}{\ensuremath{\times}}
-\newunicodechar{−}{-}
-\newunicodechar{≤}{\ensuremath{\le}}
-\newunicodechar{≥}{\ensuremath{\ge}}
-\newunicodechar{≠}{\ensuremath{\ne}}
-\newunicodechar{≈}{\ensuremath{\approx}}
-\newunicodechar{→}{\ensuremath{\rightarrow}}
-\newunicodechar{←}{\ensuremath{\leftarrow}}
-\newunicodechar{↔}{\ensuremath{\leftrightarrow}}
-\newunicodechar{⇒}{\ensuremath{\Rightarrow}}
-\newunicodechar{…}{\ldots}
+\newunicodechar{—}{\textemdash}
+\newunicodechar{–}{\textendash}
