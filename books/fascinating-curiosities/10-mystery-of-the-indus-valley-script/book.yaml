@@ -1,0 +1,27 @@
+book:
+  volume: 10
+  title: "The Mystery of the Indus Valley Script"
+  subtitle: "The Silence of Harappa"
+  target_pages: 80-90
+
+  core_mysteries:
+    primary:
+      - Over 4,000 inscribed objects bearing 400-600 distinct signs -- and no one can read them
+      - The only undeciphered script of a major Bronze Age civilization, locked behind inscriptions averaging just 4-5 signs long
+      - A civilization spanning 1.5 million square kilometers with grid-planned cities, standardized weights, and the world's first urban sanitation -- yet no palaces, no monumental art glorifying rulers, and no clear evidence of where political power resided
+    secondary:
+      - The decipherment wars -- over 100 proposed readings since the 1920s, none accepted by scholarly consensus
+      - The Dravidian hypothesis vs. the Indo-Aryan hypothesis vs. the "not writing at all" hypothesis
+      - No bilingual text (no Rosetta Stone), no known descendant script, inscriptions too short for statistical analysis
+      - The absence of warfare evidence -- a unique feature among major Bronze Age civilizations, if genuine
+      - The Aryan Question -- one of the most politically charged problems in world archaeology
+      - Mohenjo-daro's Great Bath and the question of what it meant in a civilization with no identified temples
+
+  key_scholarly_sources:
+    - "Asko Parpola -- Signs of the Indus Script (1994); Deciphering the Indus Script (1994); life's work on the Dravidian hypothesis"
+    - "Iravatham Mahadevan -- The Indus Script: Texts, Concordance and Tables (1977); computational analysis of sign frequencies"
+    - "Gregory Possehl -- The Indus Civilization: A Contemporary Perspective (2002); comprehensive synthesis"
+    - "Jonathan Mark Kenoyer -- Ancient Cities of the Indus Valley Civilization (1998); excavator of Harappa"
+    - "Michael Witzel and Steve Farmer -- 'The Collapse of the Indus-Script Thesis' (2004); the 'not writing' hypothesis"
+    - "Bryan Wells -- computational approaches to Indus script analysis"
+    - "Shereen Ratnagar -- critical perspectives on Indus civilization social organization"
