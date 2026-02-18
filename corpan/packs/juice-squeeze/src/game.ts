@@ -428,9 +428,6 @@ export const createJuiceSqueeze = (
 
   // Multi-row sentence area constants
   const MAX_SENTENCE_ROWS = 4 // Increased to fit longer phrases
-  const SENTENCE_BLOCKS_PER_ROW_MOBILE = 3 // ≤480px viewport width
-  const SENTENCE_BLOCKS_PER_ROW_TABLET = 4 // 481-720px
-  const SENTENCE_BLOCKS_PER_ROW_DESKTOP = 6 // >720px
   const SENTENCE_ROW_SPACING_RATIO = 0.4 // Gap between rows as ratio of block height
 
   // Calculate dynamic block size with fill-available-space algorithm
@@ -502,34 +499,16 @@ export const createJuiceSqueeze = (
     }
   }
 
-  // Get max blocks per row for sentence area based on viewport width
-  const getSentenceBlocksPerRow = (viewportWidth: number): number => {
-    if (viewportWidth <= 480) return SENTENCE_BLOCKS_PER_ROW_MOBILE
-    if (viewportWidth <= 720) return SENTENCE_BLOCKS_PER_ROW_TABLET
-    return SENTENCE_BLOCKS_PER_ROW_DESKTOP
-  }
-
   // Calculate number of rows needed for sentence area
   const calculateSentenceRows = (
     wordCount: number,
     metrics: LayoutMetrics,
     blockSize: { width: number }
   ): number => {
-    const canvasElement = engine.getRenderingCanvas()
-    const viewportWidth = canvasElement?.width || 720
-
-    // Get max blocks per row based on viewport
-    const maxBlocksPerRow = getSentenceBlocksPerRow(viewportWidth)
-
-    // Also check available width vs block size
     const availableWidth = metrics.worldWidth * 0.85
-    const blocksPerRowByWidth = Math.floor(availableWidth / (blockSize.width * 1.15))
-
-    // Use the more restrictive limit
-    const effectiveBlocksPerRow = Math.max(2, Math.min(maxBlocksPerRow, blocksPerRowByWidth))
-
-    // Calculate rows needed
-    const rowsNeeded = Math.ceil(wordCount / effectiveBlocksPerRow)
+    const avgBlockWidth = blockSize.width * 1.15
+    const blocksPerRowByWidth = Math.max(2, Math.floor(availableWidth / avgBlockWidth))
+    const rowsNeeded = Math.ceil(wordCount / blocksPerRowByWidth)
     return Math.min(MAX_SENTENCE_ROWS, Math.max(1, rowsNeeded))
   }
 
@@ -588,23 +567,14 @@ export const createJuiceSqueeze = (
     const currentBlockSize = calculateBlockSize(currentWords, metrics)
     const blockGap = currentBlockSize.gap * 1.15 // Sentence area gap
 
-    // Get max blocks per row
-    const canvasElement = engine.getRenderingCanvas()
-    const viewportWidth = canvasElement?.width || 720
-    const maxBlocksPerRow = getSentenceBlocksPerRow(viewportWidth)
-
-    // Also check available width (use average actual block width for estimation)
+    // Available width for row packing
     const availableWidth = metrics.worldWidth * 0.85
-    const avgBlockWidth = currentBlockSize.width * 1.15
-    const blocksPerRowByWidth = Math.floor(availableWidth / avgBlockWidth)
-    const effectiveBlocksPerRow = Math.max(2, Math.min(maxBlocksPerRow, blocksPerRowByWidth))
 
     // Get current language direction for correct reading order
     const currentBlockLang = useGameStore.getState().phrase.blockLang || "en"
     const isBlockLangRTL = isRTL(currentBlockLang)
 
     // Sort blocks by row first, then by X position in reading order
-    // RTL: right to left (descending X), LTR: left to right (ascending X)
     blocksInSentence.sort((a, b) => {
       if (a.data.sentenceRow !== b.data.sentenceRow) {
         return a.data.sentenceRow - b.data.sentenceRow
@@ -614,12 +584,19 @@ export const createJuiceSqueeze = (
         : a.mesh.position.x - b.mesh.position.x
     })
 
-    // Group blocks into rows
-    const rows: typeof blocksInSentence[] = []
-    blocksInSentence.forEach((item, globalIndex) => {
-      const row = Math.floor(globalIndex / effectiveBlocksPerRow)
-      if (!rows[row]) rows[row] = []
-      rows[row].push(item)
+    // Group blocks into rows by actual width (not fixed count)
+    const rows: typeof blocksInSentence[] = [[]]
+    let currentRowWidth = 0
+    blocksInSentence.forEach((item) => {
+      const thisWidth = item.data.baseWidth || currentBlockSize.baseWidth
+      const widthNeeded = currentRowWidth > 0 ? thisWidth + blockGap : thisWidth
+      if (currentRowWidth > 0 && currentRowWidth + widthNeeded > availableWidth) {
+        rows.push([])
+        currentRowWidth = thisWidth
+      } else {
+        currentRowWidth += widthNeeded
+      }
+      rows[rows.length - 1].push(item)
     })
 
     // Position each row with variable widths
@@ -722,35 +699,30 @@ export const createJuiceSqueeze = (
     const currentBlockSize = calculateBlockSize(currentWords, metrics)
     const blockGap = currentBlockSize.gap * 1.15
 
-    // Get max blocks per row
-    const canvasElement = engine.getRenderingCanvas()
-    const viewportWidth = canvasElement?.width || 720
-    const maxBlocksPerRow = getSentenceBlocksPerRow(viewportWidth)
-    const availableWidth = metrics.worldWidth * 0.85
-    const avgBlockWidth = currentBlockSize.width * 1.15
-    const blocksPerRowByWidth = Math.floor(availableWidth / avgBlockWidth)
-    const effectiveBlocksPerRow = Math.max(2, Math.min(maxBlocksPerRow, blocksPerRowByWidth))
-
     const currentBlockLang = useGameStore.getState().phrase.blockLang || "en"
     const isBlockLangRTL = isRTL(currentBlockLang)
 
-    // Sort by row then reading order
-    blocksInSentence.sort((a, b) => {
-      if (a.data.sentenceRow !== b.data.sentenceRow) {
-        return a.data.sentenceRow - b.data.sentenceRow
-      }
-      return isBlockLangRTL
-        ? b.mesh.position.x - a.mesh.position.x
-        : a.mesh.position.x - b.mesh.position.x
+    // Group by existing sentenceRow (preserve row assignments during drag preview)
+    const rowMap = new Map<number, typeof blocksInSentence>()
+    blocksInSentence.forEach((item) => {
+      const r = item.data.sentenceRow
+      if (!rowMap.has(r)) rowMap.set(r, [])
+      rowMap.get(r)!.push(item)
     })
 
-    // Group into rows
-    const rows: typeof blocksInSentence[] = []
-    blocksInSentence.forEach((item, globalIndex) => {
-      const row = Math.floor(globalIndex / effectiveBlocksPerRow)
-      if (!rows[row]) rows[row] = []
-      rows[row].push(item)
+    // Sort within each row by reading order
+    rowMap.forEach((blocks) => {
+      blocks.sort((a, b) =>
+        isBlockLangRTL ? b.mesh.position.x - a.mesh.position.x : a.mesh.position.x - b.mesh.position.x
+      )
     })
+
+    // Build ordered row array
+    const maxRow = rowMap.size > 0 ? Math.max(...Array.from(rowMap.keys())) : 0
+    const rows: typeof blocksInSentence[] = []
+    for (let i = 0; i <= maxRow; i++) {
+      rows.push(rowMap.get(i) || [])
+    }
 
     // Ensure ghost row exists even when sentence is empty
     if (ghostInfo && !rows[ghostInfo.row]) {
@@ -2679,17 +2651,9 @@ export const createJuiceSqueeze = (
           const blockGap = thisBlockWidth * 0.15 // 15% gap
 
           if (blocksInSentence.length > 0) {
-            // Calculate max blocks per row
             const currentWords = currentUtterance?.words || []
             const currentBlockSize = calculateBlockSize(currentWords, metrics)
-            const avgSpacing = currentBlockSize.baseWidth * 1.15
-
-            const canvasElement = engine.getRenderingCanvas()
-            const viewportWidth = canvasElement?.width || 720
-            const maxBlocksPerRow = getSentenceBlocksPerRow(viewportWidth)
             const availableWidth = metrics.worldWidth * 0.85
-            const blocksPerRowByWidth = Math.floor(availableWidth / avgSpacing)
-            const effectiveBlocksPerRow = Math.max(2, Math.min(maxBlocksPerRow, blocksPerRowByWidth))
 
             // Sort by row, then by reading order (RTL: right-to-left, LTR: left-to-right)
             blocksInSentence.sort((a, b) => {
@@ -2702,11 +2666,13 @@ export const createJuiceSqueeze = (
             const lastWidth = last.entry.baseWidth || currentBlockSize.baseWidth
             targetRow = last.entry.sentenceRow
 
-            // Count how many blocks are in the current row
-            const blocksInCurrentRow = blocksInSentence.filter(b => b.entry.sentenceRow === targetRow).length
+            // Check if current row is full by actual width
+            const blocksInCurrentRow = blocksInSentence.filter(b => b.entry.sentenceRow === targetRow)
+            const currentRowTotalWidth = blocksInCurrentRow.reduce((sum, b) =>
+              sum + (b.entry.baseWidth || currentBlockSize.baseWidth), 0)
+              + Math.max(0, blocksInCurrentRow.length - 1) * blockGap
 
-            // Check if current row is full
-            if (blocksInCurrentRow >= effectiveBlocksPerRow) {
+            if (currentRowTotalWidth + blockGap + thisBlockWidth > availableWidth) {
               // Move to next row
               targetRow++
               // Start at beginning of new row (right for RTL, left for LTR)
