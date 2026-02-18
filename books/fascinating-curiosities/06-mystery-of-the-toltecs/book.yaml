@@ -1,0 +1,27 @@
+book:
+  volume: 6
+  title: "The Mystery of the Toltecs"
+  subtitle: "The Phantom Empire"
+  target_pages: 75-85
+
+  core_mysteries:
+    primary:
+      - Everything we "know" about the Toltecs comes from Aztec sources written centuries later — and the Aztecs had political reasons to mythologize them
+      - Ce Acatl Topiltzin Quetzalcoatl — was he a historical ruler, a god, a composite figure, or a political invention?
+      - Tula and Chichen Itza — two cities 1,500 km apart with strikingly similar architecture, and no one can explain why
+    secondary:
+      - The Aztec word for "artisan" was Toltecatl — the Toltecs' name became synonymous with skilled craftsmanship
+      - Tula was burned and abandoned ~1150 CE — the same pattern as Teotihuacan (~550 CE) and Monte Alban (~700 CE)
+      - The Quetzalcoatl return prophecy — did it really shape the Spanish conquest, or was it invented afterward?
+      - The archaeological site of Tula is impressive but modest — not the paradise the Aztec sources describe
+      - The Toltecs filled the power vacuum between Teotihuacan and the Aztecs, yet remain the least understood major Mesoamerican civilization
+
+  key_scholarly_sources:
+    - "Nigel Davies — The Toltecs Until the Fall of Tula (1977) and The Toltec Heritage (1980); the foundational historical synthesis"
+    - "Richard Diehl — Tula: The Toltec Capital of Ancient Mexico (1983); the definitive archaeological monograph"
+    - "Dan Healan — excavator of Tula's residential and workshop areas; craft production specialist"
+    - "Robert Cobean — ceramics specialist for Tula and the Tula region"
+    - "Leonardo Lopez Lujan — Aztec-Toltec connections; Templo Mayor excavations"
+    - "Alfredo Lopez Austin — Mesoamerican cosmology and the Quetzalcoatl tradition"
+    - "Michael Smith — The Aztecs (2012); essential context for understanding how the Aztecs used Toltec heritage"
+    - "David Stuart — Maya epigrapher; decipherment of Toltec references in Maya inscriptions"
