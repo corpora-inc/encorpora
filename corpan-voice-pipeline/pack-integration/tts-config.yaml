@@ -1,0 +1,49 @@
+# TTS Configuration for Monte Albán Book Pack
+# books/fascinating-curiosities/01-mystery-of-monte-alban/meta/tts-config.yaml
+#
+# This configures how audio is generated and played back in the Corpán reader.
+
+generation:
+  # Voice profile used on the server
+  voice_id: "ian-narration"
+
+  # Default engine selection (auto picks best per language)
+  engine: auto
+
+  # Generation parameters (tuned for book narration)
+  # Low exaggeration = calm, steady narration voice
+  # Moderate cfg = good voice fidelity without being too fast
+  exaggeration: 0.35
+  cfg: 0.5
+
+  # Languages to generate audio for
+  languages:
+    - code: en
+      label: English
+      engine: chatterbox  # Use English-specific model for highest quality
+    - code: es
+      label: Spanish
+      engine: chatterbox_multilingual
+
+  # Audio format settings
+  output:
+    format: wav          # Generation format (always WAV for quality)
+    sample_rate: 24000   # 24kHz mono — standard TTS output
+    # Compression applied at pack build time:
+    distribution_format: opus
+    distribution_bitrate: 64k  # Good quality for speech, ~30MB/hour
+
+playback:
+  # Pause between segments (milliseconds)
+  pause_between_paragraphs: 800
+  pause_between_chapters: 2500
+  pause_between_parts: 4000
+
+  # Fallback behavior when pre-generated audio is missing
+  fallback: hostapi_speak  # Use Corpán's built-in TTS
+
+  # Playback speed (1.0 = normal)
+  default_speed: 1.0
+
+  # Auto-advance: scroll to next segment when audio finishes
+  auto_scroll: true
