@@ -1,0 +1,31 @@
+book:
+  volume: 1
+  title: "The Mystery of Monte Albán"
+  subtitle: "Sacred Mountain, Lost Script, Vanished City"
+  target_pages: 80-100
+
+  core_mysteries:
+    primary:
+      - The undeciphered Zapotec script — one of the oldest writing systems in the Americas
+      - The abandonment of a thriving 1,200-year-old capital with no clear evidence of conquest or catastrophe
+      - The Danzantes — over 300 stone carvings of contorted human figures whose meaning remains debated
+    secondary:
+      - Building J — the only misaligned structure, arrow-shaped, studded with "conquest slabs" featuring upside-down heads
+      - The Teotihuacan connection — carved ambassadors visiting from 225 miles away
+      - The 600-year gap between abandonment (~900 CE) and Spanish arrival (1520s)
+      - The Zapotec language is alive (500,000+ speakers, 50+ variants) but the ancient script died centuries before colonization
+
+  companion_mysteries_if_needed:
+    - "Tomb 7 — The Mixtec Treasure in a Zapotec Grave"
+    - "Mitla — The Place of the Dead and its geometric mosaics"
+    - "The Mesoamerican Ball Game — ritual, astronomy, or sport?"
+
+  key_scholarly_sources:
+    - "Joyce Marcus — pioneering Zapotec epigraphy since 1972 (U Michigan)"
+    - "Javier Urcid — catalog of 200+ inscriptions, logo-syllabic model (2001, 2005)"
+    - "Alfonso Caso — first excavator, discovered Tomb 7 in 1932, deciphered Mixtec codices"
+    - "Kent Flannery & Joyce Marcus — Zapotec Civilization (1996, Thames & Hudson)"
+    - "Nicholas P. Carter — 2017 reassessment of imperial-era texts"
+    - "INAH — 2018 discovery of 50-foot frieze at Atzompa with Zapotec glyphs"
+    - "Leopoldo Batres — first serious excavation, 1902"
+    - "Charles Spencer & Elsa Redmond (AMNH) — Tilcajete resistance research"
