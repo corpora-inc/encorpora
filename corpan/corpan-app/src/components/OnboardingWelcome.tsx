@@ -81,7 +81,7 @@ export function OnboardingWelcome() {
                     className="absolute w-full text-center pointer-events-none font-bold"
                     style={{
                         fontSize: "clamp(2.1rem, 7vw, 3.2rem)",
-                        color: "#222",
+                        color: "var(--foreground)",
                         opacity: fading ? 0 : 1,
                         transition: `opacity ${FADE_DURATION}ms`,
                         letterSpacing: 1,
@@ -110,7 +110,7 @@ export function OnboardingWelcome() {
                                 margin: "0 0.2em",
                                 opacity: isActive ? (fading ? 0.2 : 1) : 0.35,
                                 fontWeight: 500,
-                                color: isActive ? "#222" : "#999",
+                                color: isActive ? "var(--foreground)" : "var(--muted-foreground)",
                                 textShadow: isActive
                                     ? fading
                                         ? "0 2px 24px #fff0, 0 0px 2px #3330"

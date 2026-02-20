@@ -18,7 +18,7 @@ const LINKS = [
         key: "github",
         url: "https://github.com/corpora-inc",
         Icon: Github,
-        cls: "text-gray-900",
+        cls: "text-foreground",
     },
     {
         key: "blog",
@@ -67,7 +67,7 @@ export function OnboardingFinish() {
     return (
         <section
             id="onboarding-scroll"
-            className="flex h-dvh min-h-[100svh] w-full flex-col overflow-y-auto overscroll-contain bg-white md:bg-gray-50"
+            className="flex h-dvh min-h-[100svh] w-full flex-col overflow-y-auto overscroll-contain bg-background md:bg-muted"
             style={{
                 WebkitOverflowScrolling: "touch",
                 paddingLeft: "env(safe-area-inset-left)",
@@ -92,10 +92,10 @@ export function OnboardingFinish() {
                 <div className="mx-auto w-full max-w-xl">
                     {/* Hero text */}
                     <div className="mb-6 text-center">
-                        <h2 className="text-lg font-semibold text-gray-900">
+                        <h2 className="text-lg font-semibold text-foreground">
                             {t("onboarding.welcomeTitle", { defaultValue: "Join the community" })}
                         </h2>
-                        <p className="mt-3 mx-3 text-sm text-gray-600 text-justify">
+                        <p className="mt-3 mx-3 text-sm text-muted-foreground text-justify">
                             {t("onboarding.welcomeBody", {
                                 defaultValue:
                                     "Corpán is an open-source project created by a tiny team, not a big company, that cares deeply about language and education. We are still just getting started, so you may see rough edges, missing features, or languages that are not here yet. If something does not work for you, please reach out via GitHub or email instead of suffering in silence - feedback and bug reports really help us. We ship frequent updates, and your patience and support help us make language learning better for everyone.",
@@ -109,7 +109,7 @@ export function OnboardingFinish() {
                             <li key={key}>
                                 <button
                                     onClick={() => openExternal(url)}
-                                    className="group w-full rounded-xl border border-gray-200 bg-white p-4 text-left shadow-sm transition hover:-translate-y-[1px] hover:border-purple-400 hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-400 hover:cursor-pointer"
+                                    className="group w-full rounded-xl border border-border bg-card p-4 text-left shadow-sm transition hover:-translate-y-[1px] hover:border-purple-400 hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-400 hover:cursor-pointer"
                                     aria-label={t(`socials.${key}.cta`, { defaultValue: "Open link" })}
                                 >
                                     <div className="flex items-center gap-3">
@@ -120,7 +120,7 @@ export function OnboardingFinish() {
                                             <Icon size={20} />
                                         </span>
                                         <div className="min-w-0 flex-1">
-                                            <div className="truncate text-sm font-semibold text-gray-900">
+                                            <div className="truncate text-sm font-semibold text-foreground">
                                                 {t(`socials.${key}.title`, {
                                                     // sensible defaults per brand
                                                     defaultValue:
@@ -133,7 +133,7 @@ export function OnboardingFinish() {
                                                                     : "Website",
                                                 })}
                                             </div>
-                                            <div className="mt-0.5 line-clamp-2 text-xs text-gray-600">
+                                            <div className="mt-0.5 line-clamp-2 text-xs text-muted-foreground">
                                                 {t(`socials.${key}.desc`, {
                                                     defaultValue:
                                                         key === "youtube"
@@ -149,7 +149,7 @@ export function OnboardingFinish() {
                                         </div>
                                         <ExternalLink
                                             size={16}
-                                            className="shrink-0 text-gray-400 transition group-hover:text-gray-600"
+                                            className="shrink-0 text-muted-foreground transition group-hover:text-foreground"
                                             aria-hidden
                                         />
                                     </div>
@@ -159,7 +159,7 @@ export function OnboardingFinish() {
                     </ul>
 
                     {/* Subtle nudge */}
-                    <div className="mt-6 text-center text-xs text-gray-500 pb-20">
+                    <div className="mt-6 text-center text-xs text-muted-foreground pb-20">
                         {t("onboarding.welcomeFollowUp", {
                             defaultValue: "Thanks for being here - see you in the community!",
                         })}

@@ -99,7 +99,7 @@ export function StacksManager() {
     };
 
     return (
-        <div className="mb-2 rounded-md border border-gray-200 bg-white/80 p-2 md:p-3"
+        <div className="mb-2 rounded-md border border-border bg-card/80 p-2 md:p-3"
             //   ${dir() === "rtl" ? "text-right" : "text-left"}
             dir={dir()}
         >
@@ -136,7 +136,7 @@ export function StacksManager() {
                 </div>
             </div>
 
-            <p className="mt-1 text-[11px] text-gray-500">
+            <p className="mt-1 text-[11px] text-muted-foreground">
                 {t("stacks.note", { defaultValue: "Each stack has its own settings and history." })}
             </p>
         </div>

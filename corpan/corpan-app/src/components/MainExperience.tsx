@@ -74,12 +74,12 @@ function MetaChips({ entry }: { entry: EntryOut }) {
             className="fixed top-7 left-5 z-50 pointer-events-none"
             style={{ background: "transparent", marginTop: getPlatformTopPaddingButtons() }}
         >
-            <div className="flex flex-wrap gap-1 items-center justify-center text-gray-400 text-xs mb-1">
-                <span className="px-2 py-0.5 rounded-md border border-gray-200 bg-gray-50 text-xs">
+            <div className="flex flex-wrap gap-1 items-center justify-center text-muted-foreground text-xs mb-1">
+                <span className="px-2 py-0.5 rounded-md border border-border bg-muted text-xs">
                     {entry.level.toUpperCase()}
                 </span>
                 {entry.domains.map((d) => (
-                    <span key={d} className="px-2 py-0.5 rounded-md border border-gray-200 bg-gray-50 text-xs">
+                    <span key={d} className="px-2 py-0.5 rounded-md border border-border bg-muted text-xs">
                         {t(`categories.${d}` as any, { defaultValue: d })}
                     </span>
                 ))}
@@ -164,7 +164,7 @@ function TranslationBlock({
                     }
                 }}
             >
-                <div className="text-xs text-gray-400">{label}</div>
+                <div className="text-xs text-muted-foreground">{label}</div>
 
                 <div
                     className="text-center text-2xl md:text-2xl lg:text-3xl mt-1 my-1"
@@ -175,7 +175,7 @@ function TranslationBlock({
 
                 {showRomanization && romanization ? (
                     <div
-                        className="text-center text-xs text-gray-400 italic mt-1 mb-1 select-text"
+                        className="text-center text-xs text-muted-foreground italic mt-1 mb-1 select-text"
                         style={{ maxWidth: "80vw", wordBreak: "break-word" }}
                         dir="ltr"
                     >
@@ -385,7 +385,7 @@ export function MainExperience() {
                 style={{ background: "transparent", paddingBottom: getPlatformBottomPadding() / 3 }}
             >
                 <div
-                    className="flex flex-col gap-1 pointer-events-auto rounded-md shadow-2xl bg-white/95 px-3 py-3 border border-gray-200 items-center min-w-[270px]"
+                    className="flex flex-col gap-1 pointer-events-auto rounded-md shadow-2xl bg-background/95 px-3 py-3 border border-border items-center min-w-[270px]"
                 // ...
                 // style={{ marginBottom: "39px" }}
 
@@ -401,7 +401,7 @@ export function MainExperience() {
                             <ChevronRightIcon />
                         </Button>
                     </div>
-                    <span className="text-xs text-gray-400 mt-1">
+                    <span className="text-xs text-muted-foreground mt-1">
                         {Math.max(0, index + 1)}/{ids.length}
                     </span>
                 </div>

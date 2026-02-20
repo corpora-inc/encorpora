@@ -74,11 +74,11 @@ export function OnboardingPickPrimary() {
               className={`
                 w-full px-5 py-4
                 rounded-md shadow
-                bg-white border border-gray-200
-                text-lg font-semibold text-gray-900
+                bg-background border border-border
+                text-lg font-semibold text-foreground
                 flex items-center justify-between
                 focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-400
-                hover:bg-gray-50 hover:border-purple-400
+                hover:bg-accent hover:border-purple-400
                 transition
                 text-left
                 break-words
@@ -94,7 +94,7 @@ export function OnboardingPickPrimary() {
             >
               <span className="flex-1">{label}</span>
               <ArrowRightCircle
-                className="ml-4 shrink-0 text-gray-400"
+                className="ml-4 shrink-0 text-muted-foreground"
                 size={22}
               />
             </button>
@@ -103,7 +103,7 @@ export function OnboardingPickPrimary() {
 
         {COMING_SOON_LANGUAGES.length > 0 && (
           <div className="mt-6 space-y-2">
-            <p className="text-xs font-medium tracking-wide text-gray-400">
+            <p className="text-xs font-medium tracking-wide text-muted-foreground">
               More languages coming soon
             </p>
 
@@ -118,8 +118,8 @@ export function OnboardingPickPrimary() {
                   className={`
                     relative
                     w-full px-5 py-4
-                    rounded-md border border-dashed border-gray-300
-                    bg-gradient-to-r from-gray-50 to-gray-100
+                    rounded-md border border-dashed border-border
+                    bg-gradient-to-r from-muted to-muted
                     flex items-center
                     text-left
                     cursor-default
@@ -134,13 +134,13 @@ export function OnboardingPickPrimary() {
                   aria-hidden="true"
                 >
                   <div className="flex-1">
-                    <span className="text-base font-semibold text-gray-800">
+                    <span className="text-base font-semibold text-foreground">
                       {autonym}
                     </span>
                   </div>
 
                   {/* status pill: native-language text + right-aligned yellow dot */}
-                  <div className="absolute top-3 right-4 flex items-center gap-2 text-[11px] font-medium text-gray-500">
+                  <div className="absolute top-3 right-4 flex items-center gap-2 text-[11px] font-medium text-muted-foreground">
                     <span className="max-w-[120px] truncate text-right">
                       {statusLabel}
                     </span>

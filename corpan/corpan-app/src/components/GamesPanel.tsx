@@ -222,7 +222,7 @@ export function GamesPanel({
             availableCatalog.map((entry) => (
               <div
                 key={entry.id}
-                className="flex flex-col gap-3 rounded-md border border-gray-200 bg-white/80 p-4"
+                className="flex flex-col gap-3 rounded-md border border-border bg-card/80 p-4"
               >
                 <div>
                   <div className="text-base font-medium">{entry.name}</div>
@@ -263,7 +263,7 @@ export function GamesPanel({
           games.map((game) => (
             <div
               key={game.id}
-              className="flex flex-col gap-3 rounded-md border border-gray-200 bg-white/80 p-4"
+              className="flex flex-col gap-3 rounded-md border border-border bg-card/80 p-4"
             >
               <div>
                 <div className="text-base font-medium">{game.name}</div>
@@ -306,7 +306,7 @@ export function GamesPanel({
       </div>
 
       {showDevInstall ? (
-        <div className="mt-6 space-y-3 rounded-md border border-gray-200 bg-white/70 p-4">
+        <div className="mt-6 space-y-3 rounded-md border border-border bg-card/70 p-4">
           <div className="space-y-1">
             <div className="text-sm font-semibold">{t("packs.manifestTitle")}</div>
             <div className="text-xs text-muted-foreground">
@@ -323,7 +323,7 @@ export function GamesPanel({
             </div>
           </div>
           <input
-            className="w-full rounded-md border border-gray-200 px-3 py-2 text-sm"
+            className="w-full rounded-md border border-input px-3 py-2 text-sm"
             placeholder="https://example.com/pack/manifest.json or .../pack.zip"
             value={manifestUrl}
             onChange={(event) => setManifestUrl(event.target.value)}
@@ -361,7 +361,7 @@ export function GamesPanel({
             platformPacks.map((pack) => (
               <div
                 key={pack.id}
-                className="flex flex-col gap-3 rounded-md border border-gray-200 bg-white/80 p-4"
+                className="flex flex-col gap-3 rounded-md border border-border bg-card/80 p-4"
               >
                 <div>
                   <div className="text-base font-medium">{pack.name}</div>

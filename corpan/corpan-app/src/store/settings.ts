@@ -69,6 +69,8 @@ export const ALL_DOMAINS = [
 export const ALL_TEXT_SIZES = ["small", "medium", "large", "extra-large"] as const;
 export type TextSizeType = (typeof ALL_TEXT_SIZES)[number];
 
+export type Theme = "system" | "light" | "dark";
+
 export type StackId = string;
 
 export type VoiceMode = "cycle" | "random";
@@ -103,6 +105,7 @@ type MultiStackState = {
     // Canonical (persisted)
     stacks: Record<StackId, Stack>;
     activeStackId: StackId;
+    theme: Theme;
 
     // Mirrors of active (not persisted)
     languages: string[];
@@ -139,6 +142,8 @@ type MultiStackState = {
 
     /** Helper: pick the next voice id according to prefs + available ids, and advance cycle when needed */
     nextVoiceId: (lang: string, availableIds: string[]) => string | undefined;
+
+    setTheme: (t: Theme) => void;
 
     primaryLang: () => string;
     dir: () => "ltr" | "rtl";
@@ -337,6 +342,7 @@ export const useSettingsStore = create<MultiStackState>()(
                 // Canonical
                 stacks: boot.stacks,
                 activeStackId: boot.activeStackId,
+                theme: "system" as Theme,
 
                 // Mirrors (initialized from the boot active)
                 ...derived,
@@ -410,6 +416,8 @@ export const useSettingsStore = create<MultiStackState>()(
                     set({ _voiceCycleIndex: { ..._voiceCycleIndex, [lang]: (idx + 1) % pool.length } });
                     return id;
                 },
+
+                setTheme: (t) => set({ theme: t }),
 
                 primaryLang: () => get().languages[0],
 
@@ -514,6 +522,7 @@ export const useSettingsStore = create<MultiStackState>()(
                 activeStackId: state.activeStackId,
                 onboarded: state.onboarded,
                 onboardingStep: state.onboardingStep,
+                theme: state.theme,
             }),
         }
     )

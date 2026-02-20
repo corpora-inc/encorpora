@@ -51,7 +51,7 @@ export const OnboardingHeader = memo(function OnboaringHeader({
         <header
             ref={headerRef}
             // One blurred surface for the entire header (title/stepper + actions)
-            className="sticky top-0 z-500 isolate bg-white/80 backdrop-blur supports-[backdrop-filter]:bg-white/60"
+            className="sticky top-0 z-500 isolate bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60"
             style={{ paddingTop: "env(safe-area-inset-top)" }}
         // dir={dir()}
         >
@@ -73,7 +73,7 @@ export const OnboardingHeader = memo(function OnboaringHeader({
                         type="button"
                         onClick={onNext}
                         disabled={!canNext}
-                        className="h-10 px-3 border border-purple-400 bg-black text-white hover:bg-gray-900 disabled:cursor-not-allowed disabled:border-gray-200 disabled:bg-gray-200"
+                        className="h-10 px-3 border border-purple-400 bg-black text-white hover:bg-gray-900 disabled:cursor-not-allowed disabled:border-muted disabled:bg-muted"
                         aria-label="Next"
                         aria-disabled={!canNext}
                     >
@@ -85,7 +85,7 @@ export const OnboardingHeader = memo(function OnboaringHeader({
                 {/* Centered title + stepper */}
                 <div className="pointer-events-none absolute left-4 right-4 top-1/2 -translate-y-1/2">
                     <div className="mx-auto max-w-md px-15">
-                        <div className="truncate text-center text-sm font-semibold text-gray-900">
+                        <div className="truncate text-center text-sm font-semibold text-foreground">
                             {title}
                         </div>
                         <Stepper steps={steps} currentIndex={currentIndex} />
@@ -128,7 +128,7 @@ const Stepper = memo(function Stepper({
                                 aria-label={label}
                                 className={[
                                     "block h-1.5 rounded-full",
-                                    done ? "bg-purple-500" : active ? "bg-purple-400" : "bg-gray-200",
+                                    done ? "bg-purple-500" : active ? "bg-purple-400" : "bg-muted",
                                 ].join(" ")}
                             />
                         </li>

@@ -65,7 +65,7 @@ export function DomainPicker() {
                     );
                 })}
             </div>
-            <div className="mt-2 text-xs text-gray-400" dir={dir}>
+            <div className="mt-2 text-xs text-muted-foreground" dir={dir}>
                 {allActive
                     ? t("settings.allDomainsIncluded")
                     : `${domains.length} ${t("settings.selected")}.`}

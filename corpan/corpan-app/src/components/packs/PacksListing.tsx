@@ -120,7 +120,7 @@ export function PacksListing({
       <div className="space-y-3">
         <h4 className="text-base font-semibold">{t("packs.installed")}</h4>
         {installedGames.length === 0 ? (
-          <div className="rounded-md border border-gray-200 bg-gray-50 p-6 text-center">
+          <div className="rounded-md border border-border bg-muted p-6 text-center">
             <p className="text-sm text-muted-foreground">
               {t("packs.emptyInstalled")}
             </p>
@@ -220,12 +220,12 @@ export function PacksListing({
 
       {/* Section 4: Developer Tools (clearly separated) */}
       {showDevInstall && (
-        <div className="space-y-3 rounded-md border-2 border-dashed border-gray-300 bg-gray-50/50 p-4 mt-8">
+        <div className="space-y-3 rounded-md border-2 border-dashed border-input bg-muted/50 p-4 mt-8">
           <div className="space-y-1">
-            <div className="text-sm font-semibold text-gray-700">
+            <div className="text-sm font-semibold text-foreground">
               {t("packs.devUnlockTitle")}
             </div>
-            <div className="text-xs text-gray-600">{t("packs.devIntro")}</div>
+            <div className="text-xs text-muted-foreground">{t("packs.devIntro")}</div>
             <a
               href="https://free2z.cash/corpora"
               target="_blank"
@@ -236,15 +236,15 @@ export function PacksListing({
             </a>
           </div>
           <div className="space-y-1">
-            <div className="text-xs font-semibold text-gray-700">
+            <div className="text-xs font-semibold text-foreground">
               {t("packs.manifestTitle")}
             </div>
-            <div className="text-xs text-gray-600">
+            <div className="text-xs text-muted-foreground">
               {t("packs.manifestHint")}
             </div>
           </div>
           <input
-            className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm bg-white"
+            className="w-full rounded-md border border-input px-3 py-2 text-sm bg-background"
             placeholder={t("packs.manifestPlaceholder")}
             value={manifestUrl}
             onChange={(event) => setManifestUrl(event.target.value)}

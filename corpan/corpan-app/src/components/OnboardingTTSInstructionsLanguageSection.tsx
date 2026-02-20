@@ -120,7 +120,7 @@ function QualityIcon({ q }: { q?: VoiceInfo["quality"] }) {
             {Array.from({ length: 4 }, (_, i) => (
                 <span
                     key={i}
-                    className={`inline-block h-3 w-1 rounded-sm ${i < level ? "bg-emerald-600" : "bg-gray-300"}`}
+                    className={`inline-block h-3 w-1 rounded-sm ${i < level ? "bg-emerald-600" : "bg-muted"}`}
                 />
             ))}
         </div>
@@ -128,9 +128,9 @@ function QualityIcon({ q }: { q?: VoiceInfo["quality"] }) {
 }
 
 function GenderIcon({ g }: { g?: VoiceInfo["gender"] }) {
-    if (g === "female") return <Venus size={14} className="text-gray-600" />;
-    if (g === "male") return <Mars size={14} className="text-gray-600" />;
-    return <User size={14} className="text-gray-400" />;
+    if (g === "female") return <Venus size={14} className="text-muted-foreground" />;
+    if (g === "male") return <Mars size={14} className="text-muted-foreground" />;
+    return <User size={14} className="text-muted-foreground" />;
 }
 
 function VoiceCard({
@@ -167,20 +167,20 @@ function VoiceCard({
             onClick={onToggle}
             className={[
                 "cursor-pointer rounded-lg border p-3 shadow-sm transition focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-400",
-                checked ? "border-purple-500 ring-2 ring-purple-200" : "border-gray-200 hover:bg-gray-50",
+                checked ? "border-purple-500 ring-2 ring-purple-200" : "border-border hover:bg-accent",
                 highlightCls,
             ].join(" ")}
         >
             <div className="flex items-start justify-between gap-2">
                 <div className="min-w-0 flex-1">
-                    <div className="truncate text-sm font-semibold text-gray-900">{v.name || v.id}</div>
-                    <div className="text-xs text-gray-600">{prettyLang}</div>
+                    <div className="truncate text-sm font-semibold text-foreground">{v.name || v.id}</div>
+                    <div className="text-xs text-muted-foreground">{prettyLang}</div>
                 </div>
 
                 <div
                     className={[
                         "shrink-0 rounded-full border p-1.5",
-                        checked ? "bg-purple-600 border-purple-600 text-white" : "bg-white border-gray-300 text-gray-800",
+                        checked ? "bg-purple-600 border-purple-600 text-white" : "bg-background border-input text-foreground",
                     ].join(" ")}
                     aria-hidden
                 >
@@ -191,7 +191,7 @@ function VoiceCard({
             <div className="mt-2 flex flex-wrap items-center gap-2">
                 <QualityIcon q={v.quality} />
                 {v.engine ? (
-                    <span className="rounded border border-slate-200 bg-slate-100 px-1.5 py-0.5 text-[10px] text-slate-800">
+                    <span className="rounded border border-border bg-muted px-1.5 py-0.5 text-[10px] text-muted-foreground">
                         {v.engine}
                     </span>
                 ) : null}
@@ -204,13 +204,13 @@ function VoiceCard({
                         e.stopPropagation(); // don’t toggle when previewing
                         onPreview();
                     }}
-                    className="inline-flex items-center gap-1.5 rounded-md border bg-white px-2.5 py-1.5 text-xs font-medium text-gray-800 shadow-sm hover:bg-gray-50 hover:cursor-pointer"
+                    className="inline-flex items-center gap-1.5 rounded-md border bg-background px-2.5 py-1.5 text-xs font-medium text-foreground shadow-sm hover:bg-accent hover:cursor-pointer"
                     dir={isRTL ? "rtl" : "ltr"}
                     aria-label={ariaPreview}
                 >
                     <Volume2 size={14} className="text-purple-700" />
                 </button>
-                <div className="truncate text-[11px] text-gray-500">{v.id}</div>
+                <div className="truncate text-[11px] text-muted-foreground">{v.id}</div>
             </div>
         </div>
     );
@@ -332,8 +332,8 @@ export function OnboardingTTSInstructionsLanguageSection({
     return (
         <div
             className={[
-                "mt-3 overflow-hidden rounded-xl border bg-white shadow-sm",
-                hasVoices ? "border-gray-200" : "border-amber-300",
+                "mt-3 overflow-hidden rounded-xl border bg-card shadow-sm",
+                hasVoices ? "border-border" : "border-amber-300",
             ].join(" ")}
         >
             {/* Header: toggle + label + counts + preview (one row) */}
@@ -354,7 +354,7 @@ export function OnboardingTTSInstructionsLanguageSection({
                 <div
                     className={[
                         "flex items-center justify-between gap-2 px-3 py-2 sm:px-4 border-b",
-                        hasVoices ? "bg-gray-50 border-gray-200" : "bg-amber-50/70 border-amber-200",
+                        hasVoices ? "bg-muted border-border" : "bg-amber-50/70 border-amber-200",
                     ].join(" ")}
                 >
                     {/* Left: chevron + label */}
@@ -363,7 +363,7 @@ export function OnboardingTTSInstructionsLanguageSection({
                         <span
                             className={[
                                 "truncate text-sm font-semibold tracking-wide sm:text-base",
-                                hasVoices ? "text-gray-900" : "text-amber-900",
+                                hasVoices ? "text-foreground" : "text-amber-900",
                             ].join(" ")}
                         >
                             {sectionLabel}
@@ -382,7 +382,7 @@ export function OnboardingTTSInstructionsLanguageSection({
                             className={[
                                 "rounded-full px-2 py-[2px] text-xs font-semibold",
                                 hasVoices
-                                    ? "border border-gray-900 bg-gray-900 text-white"
+                                    ? "border border-foreground bg-foreground text-background"
                                     : "border border-amber-600 bg-amber-600 text-white",
                             ].join(" ")}
                         >
@@ -399,13 +399,13 @@ export function OnboardingTTSInstructionsLanguageSection({
                                 "cursor-pointer inline-flex items-center gap-1.5 rounded-md border px-2.5 py-1.5 text-xs font-medium shadow-sm",
                                 "focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-400",
                                 hasVoices
-                                    ? "bg-white text-gray-800 hover:bg-gray-50"
-                                    : "bg-gray-200 text-gray-500 border-gray-300 cursor-not-allowed",
+                                    ? "bg-background text-foreground hover:bg-accent"
+                                    : "bg-muted text-muted-foreground border-input cursor-not-allowed",
                             ].join(" ")}
                             dir={isRTL ? "rtl" : "ltr"}
                             aria-label={headerPreviewAria}
                         >
-                            <Volume2 size={14} className={hasVoices ? "text-purple-700" : "text-gray-500"} />
+                            <Volume2 size={14} className={hasVoices ? "text-purple-700" : "text-muted-foreground"} />
                         </button>
                     </div>
                 </div>

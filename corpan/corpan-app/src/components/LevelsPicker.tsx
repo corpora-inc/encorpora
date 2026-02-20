@@ -60,7 +60,7 @@ export function LevelsPicker() {
                     );
                 })}
             </div>
-            <div className="mt-2 text-xs text-gray-400" dir={dir}>
+            <div className="mt-2 text-xs text-muted-foreground" dir={dir}>
                 {allActive
                     ? t("settings.allLevelsIncluded")
                     : `${levels.length} ${t("settings.selected")}.`}
