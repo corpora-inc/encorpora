@@ -203,7 +203,7 @@ export function OnboardingTTSInstructionsHeaderActions({
                     {googleInstalled && !googleDefault && (
                         <button
                             onClick={onOpenSettings}
-                            className="inline-flex items-center gap-1.5 rounded-full border border-gray-200 bg-white px-2 py-1 text-xs font-medium text-gray-800 shadow-sm hover:bg-gray-50 hover:cursor-pointer"
+                            className="inline-flex items-center gap-1.5 rounded-full border border-border bg-background px-2 py-1 text-xs font-medium text-foreground shadow-sm hover:bg-accent hover:cursor-pointer"
                         >
                             {t("onboarding.ttsSetDefault", { defaultValue: "Set as default" })}
                         </button>
@@ -214,7 +214,7 @@ export function OnboardingTTSInstructionsHeaderActions({
             <div className="flex w-full items-center justify-center gap-2">
                 <button
                     onClick={handlePrimary}
-                    className="inline-flex items-center gap-2 rounded-md border border-gray-300/70 bg-transparent px-4 py-2 text-sm font-medium text-gray-900 shadow-sm transition hover:cursor-pointer hover:bg-white/50 focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-400 active:scale-[0.99]"
+                    className="inline-flex items-center gap-2 rounded-md border border-input bg-transparent px-4 py-2 text-sm font-medium text-foreground shadow-sm transition hover:cursor-pointer hover:bg-accent/50 focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-400 active:scale-[0.99]"
                     aria-label={primaryLabel}
                 >
                     <PrimaryIcon size={16} />
@@ -229,7 +229,7 @@ export function OnboardingTTSInstructionsHeaderActions({
                             "inline-flex items-center gap-2 rounded-md px-4 py-2 text-sm font-medium shadow-sm transition",
                             "focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-400 active:scale-[0.99]",
                             smartDisabled
-                                ? "border border-gray-300/70 bg-gray-200 text-gray-500 cursor-not-allowed"
+                                ? "border border-input bg-muted text-muted-foreground cursor-not-allowed"
                                 : "border border-purple-600 bg-purple-600 text-white hover:bg-purple-700",
                         ].join(" ")}
                         aria-label={smartLabel}

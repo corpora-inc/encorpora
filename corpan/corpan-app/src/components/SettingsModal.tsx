@@ -20,6 +20,7 @@ import { Button } from "./ui/button";
 import { Separator } from "./ui/separator";
 
 import About from "./About";
+import { ThemeToggle } from "./ThemeToggle";
 import { useSettingsStore } from "@/store/settings";
 import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -132,7 +133,7 @@ export function SettingsModal({
         className="
           max-w-full w-[100vw] sm:max-w-[100vw] md:max-w-[100vw] lg:max-w-[100vw] xl:max-w-[85vw] 2xl:max-w-[75vw]
           max-h-[100dvh] h-[100dvh] xl:h-auto xl:max-h-[95dvh]
-          overflow-y-auto rounded-none bg-white pb-6
+          overflow-y-auto rounded-none bg-background pb-6
           xl:rounded-md
           flex flex-col
           [&>div:first-child]:hidden
@@ -150,7 +151,7 @@ export function SettingsModal({
         <Tabs value={activeTab} onValueChange={handleTabChange} className="w-full flex flex-col flex-1 min-h-0">
           {/* Sticky header with tabs and close button */}
           <div
-            className="sticky top-0 z-[1001] bg-white border-b border-gray-200 -mx-6 px-6 pb-2"
+            className="sticky top-0 z-[1001] bg-background border-b border-border -mx-6 px-6 pb-2"
             style={{
               paddingTop: getPlatformTopPaddingButtons() + 15,
             }}
@@ -169,7 +170,7 @@ export function SettingsModal({
                   )}
                 </TabsTrigger>
               </TabsList>
-              <DialogClose className="inline-flex h-12 w-12 items-center justify-center rounded-md border bg-white shadow-sm cursor-pointer transition-shadow hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 shrink-0">
+              <DialogClose className="inline-flex h-12 w-12 items-center justify-center rounded-md border bg-background shadow-sm cursor-pointer transition-shadow hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 shrink-0">
                 <XIcon className="h-5 w-5" />
                 <span className="sr-only">Close</span>
               </DialogClose>
@@ -177,6 +178,9 @@ export function SettingsModal({
           </div>
 
           <TabsContent value="stacks" className="space-y-4 mt-8">
+            {/* Theme toggle (global) */}
+            <ThemeToggle />
+
             {/* Stacks (profiles) manager */}
             <StacksManager />
 
@@ -231,7 +235,7 @@ export function SettingsModal({
             />
 
             {!devModeEnabled && (
-              <div className="space-y-3 rounded-md border border-gray-200 bg-white/80 p-4 mt-6">
+              <div className="space-y-3 rounded-md border border-border bg-card/80 p-4 mt-6">
                 <div className="space-y-1">
                   <div className="text-md font-semibold">
                     {t("packs.devUnlockTitle")}

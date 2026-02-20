@@ -73,7 +73,11 @@
     "showRomanization": "Show romanization",
     "scrollNavigation": "Scroll navigation",
     "stacks": "Stacks",
-    "packs": "Packs"
+    "packs": "Packs",
+    "theme": "Theme",
+    "themeLight": "Light",
+    "themeSystem": "System",
+    "themeDark": "Dark"
   },
   "onboarding": {
     "welcome": "Welcome",

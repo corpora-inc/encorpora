@@ -13,7 +13,7 @@ export function ScrollNavigationToggle() {
     >
       <label
         htmlFor="toggle-scroll-navigation"
-        className="text-gray-800 text-sm font-medium select-none"
+        className="text-foreground text-sm font-medium select-none"
         style={{ minWidth: 0, flex: 1 }}
       >
         {t("settings.scrollNavigation")}

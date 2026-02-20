@@ -74,15 +74,15 @@ function LangChip({
   return (
     <div
       className={`
-        mb-1 flex items-center gap-1 rounded-md border bg-white px-3 py-1 shadow-sm select-none
-        ${isPrimary ? "bg-purple-50 border-purple-300" : ""}
+        mb-1 flex items-center gap-1 rounded-md border bg-background px-3 py-1 shadow-sm select-none
+        ${isPrimary ? "bg-purple-50 dark:bg-purple-950 border-purple-300" : ""}
         ${isDragging ? "opacity-60 border-blue-400 shadow-lg" : ""}
       `}
       style={{ minWidth: 0 }}
       {...props}
     >
       <span
-        className="mr-1 text-gray-400 cursor-grab touch-none"
+        className="mr-1 text-muted-foreground cursor-grab touch-none"
         {...dragHandleProps}
       >
         <GripVertical size={16} />
@@ -97,7 +97,7 @@ function LangChip({
       {onRemove && (
         <button
           type="button"
-          className="z-50 ml-2 p-0.5 text-gray-300 hover:text-red-400"
+          className="z-50 ml-2 p-0.5 text-muted-foreground/50 hover:text-red-400"
           aria-label={t("settings.removeLanguage", { defaultValue: "Remove language" })}
           onClick={onRemove}
         >
@@ -188,7 +188,7 @@ export function LanguageSelectOrder() {
 
       {available.length > 0 && (
         <div className="mt-4">
-          <div className="mb-2 text-xs text-gray-500">
+          <div className="mb-2 text-xs text-muted-foreground">
             {t("settings.addMoreLanguages")}
           </div>
           <div className="flex flex-wrap gap-2">

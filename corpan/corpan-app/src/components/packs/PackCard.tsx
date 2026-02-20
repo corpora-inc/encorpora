@@ -25,7 +25,7 @@ export function PackCard({
   const { t } = useTranslation()
 
   return (
-    <div className="flex flex-col rounded-lg border border-gray-200 bg-white/80 p-4 shadow-sm transition-shadow hover:shadow-md h-full min-w-[280px]">
+    <div className="flex flex-col rounded-lg border border-border bg-card/80 p-4 shadow-sm transition-shadow hover:shadow-md h-full min-w-[280px]">
       {/* Content area that grows */}
       <div className="flex flex-col gap-3 flex-1">
         {/* Header with name and badge */}

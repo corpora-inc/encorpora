@@ -16,6 +16,7 @@ import { useRatingStore } from "@/store/rating";
 import { useGamesStore, type InstalledGame } from "@/store/games";
 import { useCatalogStore } from "@/store/catalog";
 import { usePackUpdates } from "@/hooks/usePackUpdates";
+import { useThemeEffect } from "@/hooks/useThemeEffect";
 
 // In a module that always loads (e.g. App.tsx)
 if (import.meta.env.DEV) {
@@ -25,6 +26,7 @@ if (import.meta.env.DEV) {
 }
 
 export default function App() {
+  useThemeEffect();
   const [showSettings, setShowSettings] = useState(false);
   const [settingsTab, setSettingsTab] = useState<"stacks" | "packs" | undefined>(undefined);
   const [activeGame, setActiveGame] = useState<{
@@ -129,11 +131,11 @@ export default function App() {
               <Button
                 variant="default"
                 size="lg"
-                className="h-10 w-12 rounded-md shadow-lg bg-white border border-gray-200 hover:bg-gray-100 transition"
+                className="h-10 w-12 rounded-md shadow-lg bg-background border border-border hover:bg-accent transition"
                 aria-label="Settings"
                 onClick={() => setShowSettings(true)}
               >
-                <SettingsIcon className="text-gray-600 h-5 w-5" />
+                <SettingsIcon className="text-muted-foreground h-5 w-5" />
               </Button>
               {updates.length > 0 && (
                 <span className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-purple-600 text-xs font-semibold text-white animate-in fade-in zoom-in duration-500 animate-breathe">

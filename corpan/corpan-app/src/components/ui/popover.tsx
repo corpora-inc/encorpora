@@ -50,7 +50,7 @@ const PopoverContent = React.forwardRef<
                     onOpenAutoFocus={(e) => e.preventDefault()}
                     onCloseAutoFocus={(e) => e.preventDefault()}
                     className={cn(
-                        "z-[1002] rounded-md border bg-white p-3 text-gray-900 shadow-md outline-none",
+                        "z-[1002] rounded-md border bg-popover p-3 text-popover-foreground shadow-md outline-none",
                         "data-[state=open]:animate-in data-[state=closed]:animate-out",
                         "data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
                         "data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95",
