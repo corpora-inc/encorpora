@@ -5,6 +5,7 @@ on:
     branches: ["main"]
     paths:
       - "web/io/**"
+      - "web/data/**"
       - "corpan/packs/**"
       - "web/pages/**"
       - "web/scripts/**"

@@ -5,19 +5,18 @@ import { motion } from "framer-motion";
 
 const SERVICES = [
   {
-    title: "Custom Books",
-    description: "Beautiful educational materials crafted specifically for your curriculum and goals.",
+    title: "Custom Books & Content",
+    description: "AI-generated educational materials crafted specifically for your curriculum and goals.",
     icon: <FaBook className="text-white text-lg" />,
   },
   {
-    title: "Learning Solutions",
-    description: "Seamless, interactive learning experiences tailored to every need - digital or print.",
+    title: "AI & Learning Solutions",
+    description: "AI-powered pipelines, interactive learning experiences, and consulting — digital or print.",
     icon: <FaGraduationCap className="text-white text-lg" />,
-
   },
   {
     title: "Software Development",
-    description: "Modern, robust, and efficient educational software built to order.",
+    description: "Modern, robust, and efficient educational software and apps built to order.",
     icon: <FaLaptop className="text-white text-lg" />,
   },
 ];
@@ -59,10 +58,10 @@ const ContactSection: FC = () => (
           transition={{ duration: 0.5, delay: 0.4 }}
         >
           <p className="text-xl font-medium mb-4">
-            We create <span className="font-bold">custom books, next-gen learning solutions, and tailored software</span> for schools, companies, and innovators.
+            We create <span className="font-bold">custom books, AI-powered learning solutions, and tailored software</span> for schools, companies, and innovators.
           </p>
           <p className="text-gray-600 mb-12">
-            Whether you want a partnership in education technology or a fully custom learning experience, our team can help you build something exceptional.
+            Whether you need AI consulting, a partnership in education technology, or a fully custom learning experience, our team can help you build something exceptional.
           </p>
         </motion.div>
 
