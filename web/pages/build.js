@@ -17,7 +17,7 @@ const path = require('path');
 const SCRIPT_DIR = __dirname;
 const REPO_ROOT = path.join(SCRIPT_DIR, '..', '..');
 const TEMPLATES_DIR = path.join(SCRIPT_DIR, 'templates');
-const DATA_DIR = path.join(SCRIPT_DIR, 'data');
+const DATA_DIR = path.join(SCRIPT_DIR, '..', 'data');
 const CORPAN_LOGO_SOURCE = path.join(
   REPO_ROOT,
   'corpan',

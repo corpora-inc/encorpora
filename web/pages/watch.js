@@ -31,7 +31,7 @@ build();
 // Watch for changes
 const watchPaths = [
   path.join(SCRIPT_DIR, 'templates', '**', '*.html'),
-  path.join(SCRIPT_DIR, 'data', '**', '*.json'),
+  path.join(SCRIPT_DIR, '..', 'data', '**', '*.json'),
   path.join(REPO_ROOT, 'corpan', 'corpan-app', 'src-tauri', 'icons', '512x512.png'),
   path.join(REPO_ROOT, 'corpan', 'packs', '**', '*-avatar.*')
 ];

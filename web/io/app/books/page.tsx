@@ -1,68 +1,79 @@
 "use client";
 
-import { FC, useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { supabase } from "@/lib/supabase";
+import booksData from "@/data/books.json";
+import { withBasePath } from "@/lib/basePath";
 
-// Define TypeScript types for books
 interface Book {
-    id: string;
-    title: string;
-    description: string;
-    link: string;
+  id: string;
+  title: string;
+  description: string;
+  amazonUrl: string;
+  coverImage: string;
+  featured: boolean;
 }
 
-const BooksPage: FC = () => {
-    const [books, setBooks] = useState<Book[]>([]);
-    const [loading, setLoading] = useState<boolean>(true);
+export default function BooksPage() {
+  const books = booksData as Book[];
 
-    useEffect(() => {
-        const fetchBooks = async () => {
-            setLoading(true);
-            const { data, error } = await supabase.from("books").select("*");
-            if (error) {
-                console.error("Error fetching books:", error.message);
-            } else {
-                setBooks(data);
-            }
-            setLoading(false);
-        };
+  return (
+    <div className="min-h-screen bg-white flex flex-col items-center px-4 sm:px-6 py-16 sm:py-24">
+      <div className="max-w-5xl w-full">
+        <div className="text-center mb-16">
+          <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 tracking-tight">
+            Books
+          </h1>
+          <p className="text-lg text-gray-600 mt-4 max-w-2xl mx-auto">
+            Concise, fact-dense, and beautifully structured.
+          </p>
+        </div>
 
-        fetchBooks();
-    }, []);
-
-    return (
-        <div className="min-h-screen bg-gray-100 flex flex-col items-center p-6">
-            <h1 className="text-4xl font-bold text-center text-gray-900">All Books</h1>
-            <p className="text-lg text-gray-700 text-center mt-4 max-w-2xl">
-                Download high-quality educational resources for free.
-            </p>
-
-            <div className="mt-8 w-full max-w-2xl bg-white shadow-md rounded-lg p-6">
-                {loading ? (
-                    <p className="text-center text-gray-600">Loading books...</p>
-                ) : books.length === 0 ? (
-                    <p className="text-center text-gray-600">No books available.</p>
-                ) : (
-                    books.map((book) => (
-                        <div key={book.id} className="flex flex-col sm:flex-row justify-between items-start sm:items-center py-4 border-b last:border-b-0">
-                            <div>
-                                <h3 className="text-lg font-semibold text-gray-900">{book.title}</h3>
-                                <p className="text-gray-600">{book.description}</p>
-                            </div>
-                            <a href={book.link} target="_blank" rel="noopener noreferrer">
-                                <Button className="mt-3 sm:mt-0">Download</Button>
-                            </a>
-                        </div>
-                    ))
-                )}
+        {books.map((book) => (
+          <motion.div
+            key={book.id}
+            className="flex flex-col md:flex-row items-center gap-10 md:gap-16 mb-16"
+            initial={{ opacity: 0, y: 32 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
+          >
+            {/* Cover image */}
+            <div className="flex-shrink-0 w-64 sm:w-72 md:w-80">
+              <div className="relative">
+                <div className="absolute inset-0 bg-gray-200 rounded-lg transform rotate-2 scale-[1.02]" />
+                <img
+                  src={withBasePath(book.coverImage)}
+                  alt={book.title}
+                  className="relative rounded-lg shadow-xl w-full h-auto"
+                />
+              </div>
             </div>
 
-            <footer className="mt-16 text-gray-500 text-sm">
-                © {new Date().getFullYear()} Corpora Inc - All Rights Reserved.
-            </footer>
-        </div>
-    );
-};
-
-export default BooksPage;
+            {/* Book details */}
+            <div className="flex flex-col items-center md:items-start text-center md:text-left">
+              <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 tracking-tight mb-4 leading-tight">
+                {book.title}
+              </h2>
+              <p className="text-gray-600 text-lg leading-relaxed mb-8 max-w-lg">
+                {book.description}
+              </p>
+              <a
+                href={book.amazonUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button
+                  size="lg"
+                  className="bg-black hover:bg-gray-800 text-white font-medium rounded-lg px-8"
+                >
+                  Buy on Amazon <span className="ml-2">&rarr;</span>
+                </Button>
+              </a>
+            </div>
+          </motion.div>
+        ))}
+      </div>
+    </div>
+  );
+}
