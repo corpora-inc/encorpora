@@ -30,3 +30,100 @@ series:
     - No fluff. No padding. Better 75 riveting pages than 100 with filler.
     - Define terms. Explain frameworks. Ontological clarity.
     - Every chapter should contain at least one moment of genuine "wait, really?"
+
+  volumes:
+    - number: 1
+      title: "The Mystery of Monte Albán"
+      subtitle: "Sacred Mountain, Lost Script, Vanished City"
+      directory: "01-mystery-of-monte-alban"
+      region: "Oaxaca, Mexico"
+      era: "500 BCE – 900 CE"
+      leading_mystery: "The undeciphered Zapotec script"
+
+    - number: 2
+      title: "The Unconquered People"
+      subtitle: "Unconquered Nation, Unwritten Tongue, Invisible State"
+      directory: "02-the-unconquered-people"
+      region: "Chile/Argentina"
+      era: "600 BCE – present"
+      leading_mystery: "The language isolate that defeated two empires"
+
+    - number: 3
+      title: "The Mystery of the Olmec"
+      subtitle: "The Mother Culture and the Stone That Speaks Once"
+      directory: "03-mystery-of-the-olmec"
+      region: "Gulf Coast, Mexico"
+      era: "1500 – 400 BCE"
+      leading_mystery: "The Cascajal Block — 62 glyphs, never seen again"
+
+    - number: 4
+      title: "The Mystery of Cahokia"
+      subtitle: "America's Forgotten Metropolis"
+      directory: "04-mystery-of-cahokia"
+      region: "Mississippi Valley, USA"
+      era: "600 – 1400 CE"
+      leading_mystery: "Mound 72 and America's forgotten metropolis"
+
+    - number: 5
+      title: "The Mystery of Teotihuacan"
+      subtitle: "The City Where Even the Gods Were Strangers"
+      directory: "05-mystery-of-teotihuacan"
+      region: "Basin of Mexico"
+      era: "100 BCE – 550 CE"
+      leading_mystery: "The city of 200,000 with no known name"
+
+    - number: 6
+      title: "The Mystery of the Toltecs"
+      subtitle: "The Phantom Empire"
+      directory: "06-mystery-of-the-toltecs"
+      region: "Central Mexico"
+      era: "900 – 1150 CE"
+      leading_mystery: "The phantom empire — history or propaganda?"
+
+    - number: 7
+      title: "The Mystery Before the Inca"
+      subtitle: "Tiwanaku, the Gate of the Sun, and the Engineers of the Sky"
+      directory: "07-mystery-before-the-inca"
+      region: "Andes, Bolivia/Peru"
+      era: "300 – 1000 CE"
+      leading_mystery: "Puma Punku, Tiwanaku, and the Gate of the Sun"
+
+    - number: 8
+      title: "The Mysteries of the Arctic Peoples"
+      subtitle: "The Sivullirmiut, the Vanished Dorset, and the City on the Ice"
+      directory: "08-mysteries-of-the-arctic-peoples"
+      region: "Alaska/Arctic/Greenland"
+      era: "4000 BCE – present"
+      leading_mystery: "The vanishing Dorset and the city of Ipiutak"
+
+    - number: 9
+      title: "The Mystery of Göbekli Tepe"
+      subtitle: "The Temple That Rewrote Human History"
+      directory: "09-mystery-of-gobekli-tepe"
+      region: "Southeastern Turkey"
+      era: "9500 – 8000 BCE"
+      leading_mystery: "The 12,000-year-old temple that predates agriculture"
+
+    - number: 10
+      title: "The Mystery of the Indus Valley Script"
+      subtitle: "The Silence of Harappa"
+      directory: "10-mystery-of-the-indus-valley-script"
+      region: "Pakistan/NW India"
+      era: "3300 – 1300 BCE"
+      leading_mystery: "The only undeciphered script of a major Bronze Age civilization"
+
+    - number: 11
+      title: "The Mystery of Great Zimbabwe"
+      subtitle: "The Stone City They Said Couldn't Exist"
+      directory: "11-mystery-of-great-zimbabwe"
+      region: "Southern Africa"
+      era: "1100 – 1450 CE"
+      leading_mystery: "The medieval African city Europeans refused to believe Africans built"
+
+    - number: 12
+      title: "The Mystery of the Sea Peoples"
+      subtitle: "The Nameless Invaders Who Ended the Bronze Age"
+      directory: "12-mystery-of-the-sea-peoples"
+      region: "Eastern Mediterranean"
+      era: "1250 – 1150 BCE"
+      leading_mystery: "The unidentified invaders who collapsed the Bronze Age"

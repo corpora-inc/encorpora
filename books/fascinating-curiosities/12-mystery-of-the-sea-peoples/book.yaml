@@ -1,0 +1,27 @@
+book:
+  volume: 12
+  title: "The Mystery of the Sea Peoples"
+  subtitle: "The Nameless Invaders Who Ended the Bronze Age"
+  target_pages: 80-90
+
+  core_mysteries:
+    primary:
+      - Around 1200 BCE, the interconnected Bronze Age world of the Eastern Mediterranean collapsed within fifty years -- the Hittite Empire destroyed, Mycenaean Greece fallen, Ugarit burned, and dozens of cities razed
+      - Egyptian records at Medinet Habu name the attackers -- Peleset, Tjeker, Shekelesh, Denyen, Weshesh -- but these names cannot be matched with certainty to any known civilization
+      - Whether the Sea Peoples caused the collapse or were themselves a symptom of a deeper systemic failure remains the central debate
+    secondary:
+      - The Amarna Letters and the interconnected diplomatic world they reveal -- the system that collapsed
+      - The last letter from Ugarit -- a desperate plea for help that was never answered
+      - The "systems collapse" model vs. the invasion model vs. the earthquake hypothesis vs. climate change
+      - The Bronze Age Dark Age -- 300 years of lost literacy, reduced populations, simplified material culture
+      - The Trojan War connection -- Homer's Iliad as possible folk memory of the collapse
+      - The paradox of the aftermath -- the Dark Age seeded alphabetic writing, iron technology, and Classical Greece
+
+  key_scholarly_sources:
+    - "Eric Cline -- 1177 B.C.: The Year Civilization Collapsed (2014); the definitive popular synthesis"
+    - "Robert Drews -- The End of the Bronze Age (1993); the warfare-change hypothesis"
+    - "Nancy Sandars -- The Sea Peoples: Warriors of the Ancient Mediterranean (1978); foundational study"
+    - "Assaf Yasur-Landau -- The Philistines and Aegean Migration at the End of the Late Bronze Age (2010)"
+    - "Israel Finkelstein -- archaeological perspectives on the Philistine settlement"
+    - "Itamar Singer -- the Hittite perspective on the Sea Peoples"
+    - "Manfred Bietak -- Egyptian archaeology and the Sea Peoples"

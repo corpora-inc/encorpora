@@ -1,0 +1,26 @@
+book:
+  volume: 3
+  title: "The Mystery of the Olmec"
+  subtitle: "The Mother Culture and the Stone That Speaks Once"
+  target_pages: 80-90
+
+  core_mysteries:
+    primary:
+      - The Cascajal Block — a serpentine slab bearing 62 unique glyphs, possibly the oldest writing in the Western Hemisphere, found near San Lorenzo in 1999. No other examples of this script have ever been found.
+      - The colossal heads — 17 known basalt portraits, each carved from a single boulder weighing up to 50 tons, transported over 100 kilometers through swampland without wheels or draft animals
+      - The deliberate destruction at San Lorenzo — around 950–900 BCE, monuments were systematically mutilated and buried. Internal revolution? Ritual decommissioning? Rival conquest?
+    secondary:
+      - The "mother culture" debate — did the Olmec originate Mesoamerican writing, the calendar, the ball game, and cacao cultivation, or did these develop independently across multiple societies?
+      - The were-jaguar motif — half-human, half-feline figures found across Olmec art, whose meaning remains debated
+      - The absence of burials at San Lorenzo — one of the most puzzling gaps in Mesoamerican archaeology
+      - The throne-to-head recarving — why were royal thrones converted into colossal portrait heads?
+
+  key_scholarly_sources:
+    - "Michael Coe — America's First Civilization: Discovering the Olmec (1968), foundational English-language overview"
+    - "Ann Cyphers — San Lorenzo excavation director; Escultura olmeca de San Lorenzo Tenochtitlán (2004)"
+    - "Christopher Pool — Olmec Archaeology and Early Mesoamerica (Cambridge, 2007)"
+    - "Matthew Stirling — National Geographic archaeologist who excavated the first colossal head at Tres Zapotes (1938-1946)"
+    - "María del Carmen Rodríguez Martínez et al. — 'Oldest Writing in the New World' (Science, 2006), the Cascajal Block publication"
+    - "Mary Miller and Karl Taube — An Illustrated Dictionary of the Gods and Symbols of Ancient Mexico and the Mayas (1993)"
+    - "Kent Reilly III — Olmec iconography and the were-jaguar complex"
+    - "David Grove — Chalcatzingo excavations and Olmec influence in highland Mexico"

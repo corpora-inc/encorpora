@@ -1,0 +1,27 @@
+book:
+  volume: 5
+  title: "The Mystery of Teotihuacan"
+  subtitle: "The City Where Even the Gods Were Strangers"
+  target_pages: 80-90
+
+  core_mysteries:
+    primary:
+      - No name, no language, no confirmed script — one of the largest cities in the ancient world and we do not know what its builders called themselves
+      - The tunnel beneath the Temple of the Feathered Serpent — sealed for nearly 2,000 years, containing mercury, pyrite mirrors, and thousands of offerings in a miniature underworld
+      - The systematic burning of the ceremonial center (~550 CE) — internal revolution, invasion, or ritual destruction?
+    secondary:
+      - Over 200 sacrificial victims beneath the Feathered Serpent Pyramid, bound and wearing necklaces of human jawbones
+      - The absence of royal tombs — was Teotihuacan ruled by a council rather than a king?
+      - The "Entrada" at Tikal (378 CE) — Teotihuacan's apparent intervention in Maya politics
+      - Multi-ethnic neighborhoods — Zapotec, Maya, and Gulf Coast enclaves within the city
+      - The Pyramid of the Sun built over a natural cave system — sacred geography dictating urban form
+
+  key_scholarly_sources:
+    - "René Millon — The Teotihuacan Map (1973), the foundational survey of the city's grid and extent"
+    - "Saburo Sugiyama — excavator of the Feathered Serpent Pyramid sacrifices; Human Sacrifice, Militarism, and Rulership (2005)"
+    - "Sergio Gómez — discoverer and excavator of the tunnel beneath the Feathered Serpent Pyramid (2003-present)"
+    - "George Cowgill — leading synthesis scholar; Ancient Teotihuacan (Cambridge, 2015)"
+    - "David Carballo — Urbanization and Religion in Ancient Central Mexico (2016)"
+    - "Esther Pasztory — Teotihuacan: An Experiment in Living (1997); art and ideology"
+    - "Karl Taube — The Writing System of Ancient Teotihuacan (2000); iconographic analysis"
+    - "Joyce Marcus — Mesoamerican Writing Systems (1992); comparative perspective"

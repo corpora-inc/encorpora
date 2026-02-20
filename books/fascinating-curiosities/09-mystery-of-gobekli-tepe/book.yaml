@@ -1,0 +1,24 @@
+book:
+  volume: 9
+  title: "The Mystery of Göbekli Tepe"
+  subtitle: "The Temple That Rewrote Human History"
+  target_pages: 80-90
+
+  core_mysteries:
+    primary:
+      - A monumental stone temple complex built twelve thousand years ago by hunter-gatherers -- before agriculture, before pottery, before settled villages
+      - The T-shaped pillars up to 5.5 meters tall, carved with wild animals and abstract human forms, arranged in circles whose purpose remains debated
+      - The site was deliberately buried around 8000 BCE -- carefully filled in, preserved for ten thousand years, for reasons unknown
+    secondary:
+      - The old model of civilization (agriculture first, then temples) inverted -- the temple may have come first, and agriculture developed to feed the builders
+      - The pillars are covered with carved wild, dangerous animals -- a monument to the untamed world, built at the exact moment humanity was about to transform it through farming
+      - Karahan Tepe and at least twelve other similar sites in the region -- Göbekli Tepe was part of a network, not an anomaly
+      - Only 5 percent of the site has been excavated -- the vast majority remains underground
+      - The site sits 15 km from where wild einkorn wheat grows naturally -- the ancestor of domesticated wheat
+
+  key_scholarly_sources:
+    - "Klaus Schmidt -- discoverer and primary excavator of Göbekli Tepe (1995-2014); The Birth of Religion (2010)"
+    - "Lee Clare -- current director of excavations at Göbekli Tepe; German Archaeological Institute"
+    - "Joris Peters -- archaeozoologist; analysis of animal remains and feasting evidence"
+    - "Oliver Dietrich and Jens Notroff -- current research team members at the German Archaeological Institute"
+    - "Necmi Karul -- excavator of Karahan Tepe and director of the Taş Tepeler project"
