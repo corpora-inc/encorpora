@@ -14,6 +14,14 @@ import { withBasePath } from "@/lib/basePath";
 
 const PACKS = [
   {
+    id: "hover-runner",
+    name: "Hover Runner",
+    description: "3D fun in Hover Runner: lock in correct translations with the All-Hearing Ear and avoid wrong ones.",
+    avatar: "/logos/hover-runner-avatar.png",
+    landingUrl: "/corpan/packs/hover-runner/",
+    status: "live",
+  },
+  {
     id: "hanzipan",
     name: "Hanzipan",
     description: "A premium Mandarin character studio with stroke guidance, feedback, and infinite contextual examples.",
@@ -197,7 +205,7 @@ const FeaturedApps = () => {
         </div>
 
         <motion.div
-          className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-2xl mx-auto"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl mx-auto"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
