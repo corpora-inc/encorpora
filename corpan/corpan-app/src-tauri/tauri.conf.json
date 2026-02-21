@@ -25,9 +25,7 @@
   "bundle": {
     "active": true,
     "targets": "all",
-    "resources": [
-      "../../dja/db.sqlite3"
-    ],
+    "resources": [],
     "icon": [
       "icons/512x512.png"
     ],
