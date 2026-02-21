@@ -13,7 +13,7 @@ use serde::Serialize;
 use serde_json::Value as JsonValue;
 use std::collections::HashSet;
 use std::collections::HashMap;
-use tauri::{command, AppHandle, State};
+use tauri::{command, AppHandle, Manager, State};
 use std::time::{SystemTime, UNIX_EPOCH};
 use tauri_plugin_opener;
 use crate::content_packs::{
@@ -722,11 +722,8 @@ fn open_apple_feedback(#[allow(unused_variables)] app: AppHandle) -> Result<(), 
 
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
-    let db_state =
-        db::DbState::new().expect("failed to initialize embedded database");
     let pack_db_state = PackDbState::new();
     tauri::Builder::default()
-        .manage(db_state)
         .manage(pack_db_state)
         .plugin(tauri_plugin_os::init())
         .plugin(tauri_plugin_game_packs::init())
@@ -746,6 +743,16 @@ pub fn run() {
         .plugin(tauri_plugin_safe_area_insets_css::init())
         .plugin(tauri_plugin_tts::init())
         .plugin(tauri_plugin_opener::init())
+        .setup(|app| {
+            let data_dir = app
+                .path()
+                .app_data_dir()
+                .map_err(|e| format!("failed to resolve app data dir: {}", e))?;
+            let db_state = db::DbState::new(data_dir)
+                .map_err(|e| format!("failed to initialize database: {}", e))?;
+            app.manage(db_state);
+            Ok(())
+        })
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }
