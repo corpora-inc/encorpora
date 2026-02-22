@@ -1,9 +1,8 @@
-use rusqlite::{ffi, Connection};
-use std::convert::TryInto;
-use std::ffi::CString;
+use rusqlite::Connection;
+use std::path::{Path, PathBuf};
 use std::sync::Mutex;
 
-/// Embed your prebuilt SQLite at compile time.
+/// Embed the prebuilt SQLite database at compile time.
 const EMBEDDED_DB: &[u8] = include_bytes!("../../../dja/release.sqlite3");
 
 pub struct DbState {
@@ -11,57 +10,48 @@ pub struct DbState {
 }
 
 impl DbState {
-    pub fn new() -> Result<Self, String> {
+    /// Write the compiled-in DB to disk (first launch or after app update),
+    /// then open it read-only with mmap.  This avoids the 82 MB
+    /// `sqlite3_deserialize` allocation that caused startup ANRs / SIGABRT.
+    pub fn new(data_dir: PathBuf) -> Result<Self, String> {
+        let db_path = data_dir.join("release.sqlite3");
+
+        // Write or update when file is missing or size differs (app update).
+        let needs_write = match std::fs::metadata(&db_path) {
+            Ok(meta) => meta.len() != EMBEDDED_DB.len() as u64,
+            Err(_) => true,
+        };
+
+        if needs_write {
+            std::fs::create_dir_all(&data_dir)
+                .map_err(|e| format!("failed to create data dir: {}", e))?;
+            std::fs::write(&db_path, EMBEDDED_DB)
+                .map_err(|e| format!("failed to write DB to {}: {}", db_path.display(), e))?;
+        }
+
         Ok(Self {
-            conn: Mutex::new(open_connection()?),
+            conn: Mutex::new(open_connection(&db_path)?),
         })
     }
 }
 
-fn open_connection() -> Result<Connection, String> {
-    // 1) Open an in-memory connection.
-    let conn =
-        Connection::open_in_memory().map_err(|e| format!("failed to open in-memory DB: {}", e))?;
+fn open_connection(path: &Path) -> Result<Connection, String> {
+    let flags = rusqlite::OpenFlags::SQLITE_OPEN_READ_ONLY
+        | rusqlite::OpenFlags::SQLITE_OPEN_NO_MUTEX;
 
-    // 2) Deserialize the embedded bytes into "main" (zero-copy, read-only).
-    unsafe {
-        let db_handle = conn.handle();
-        let name = CString::new("main").unwrap();
+    let conn = Connection::open_with_flags(path, flags)
+        .map_err(|e| format!("failed to open DB at {}: {}", path.display(), e))?;
 
-        let ptr = EMBEDDED_DB.as_ptr() as *mut std::os::raw::c_uchar;
-        let read_bytes: i64 = EMBEDDED_DB.len().try_into().unwrap();
-        let alloc_bytes: i64 = EMBEDDED_DB.len().try_into().unwrap();
-
-        // READONLY: SQLite will not modify or resize our buffer.
-        // Do NOT pass FREEONCLOSE for include_bytes!() data.
-        let rc = ffi::sqlite3_deserialize(
-            db_handle,
-            name.as_ptr(),
-            ptr,
-            read_bytes,
-            alloc_bytes,
-            ffi::SQLITE_DESERIALIZE_READONLY,
-        );
-        if rc != ffi::SQLITE_OK {
-            return Err(format!("sqlite3_deserialize failed: code {}", rc));
-        }
-    }
-
-    // 3) Read-only + small, predictable cache & temp settings.
-    //    (Size-neutral; helps low-end devices.)
     conn.execute_batch(
         r#"
-        PRAGMA query_only=ON;        -- defensive: reject writes at SQL layer
-        PRAGMA temp_store=MEMORY;    -- no temp files
-        PRAGMA cache_size=-4096;     -- ~4 MiB page cache (tune: -2048..-8192)
+        PRAGMA query_only=ON;
+        PRAGMA temp_store=MEMORY;
+        PRAGMA cache_size=-4096;
         PRAGMA case_sensitive_like=ON;
+        PRAGMA mmap_size=67108864;
         "#,
     )
     .map_err(|e| e.to_string())?;
-
-    // Optionally: try a modest mmap for platforms where it helps (N/A for in-memory),
-    // left here harmlessly:
-    // conn.execute_batch("PRAGMA mmap_size=0;").ok();
 
     Ok(conn)
 }

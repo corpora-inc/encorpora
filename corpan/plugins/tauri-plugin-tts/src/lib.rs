@@ -1,4 +1,6 @@
 // src/lib.rs
+#![allow(unexpected_cfgs)]
+
 use tauri::{
     plugin::{Builder, TauriPlugin},
     Manager, Runtime,
