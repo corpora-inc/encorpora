@@ -1,0 +1,16 @@
+{
+  "prompt": "Detailed pen and ink illustration with sepia wash, a single Danzante carved stone slab from Monte Alban, roughly 1.5 meters tall and 0.7 meters wide, grey-tan volcanic tuff, showing a naked male figure in shallow bas-relief with bold single incised outlines, the stocky figure in a contorted limp posture with limbs splayed at odd angles, closed eyes indicating death, open mouth with lips drawn back, stylized blood scrolls emerging from wounds as curved incised lines, 2 to 4 small bar-and-dot calendar glyphs carved near the figure giving the calendrical name, rough stone surface texture visible, the carving style uses bold outlines with minimal interior detail, set into a stone wall",
+  "negative_prompt": "blurry, low quality, distorted, deformed, cartoon, anime, 3D render, text, words, letters, writing, captions",
+  "seed": 47,
+  "width": 768,
+  "height": 1024,
+  "steps": 28,
+  "guidance_scale": 4.5,
+  "model": "stabilityai/stable-diffusion-3.5-large",
+  "dtype": "float16",
+  "generation_time_s": 73.98,
+  "timestamp": "2026-02-22T06:03:23.099997+00:00",
+  "book": "The Mystery of Monte Alban",
+  "series": "Fascinating Curiosities of Human History",
+  "volume": 1
+}

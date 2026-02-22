@@ -1,0 +1,13 @@
+{
+  "id": "stargate_reader",
+  "name": "Stargate Reader",
+  "version": "0.1.0",
+  "description": "Immersive 3D audiobook: words stream through space in sync with narrated audio",
+  "entry": "dist/app.js",
+  "styles": [
+    "dist/app.css"
+  ],
+  "entryType": "script",
+  "sdkVersion": "0.1.0",
+  "devRevision": "2026-02-22T05:04:10.964Z"
+}

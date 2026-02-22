@@ -1,0 +1,16 @@
+{
+  "prompt": "Detailed pen and ink illustration with sepia wash, Monument 3 from San Jose Mogote, a flat carved stone threshold slab about one meter long set into the ground as a doorstep, viewed from directly above, showing a naked male figure in shallow bas-relief carved with simple bold incised outlines, the figure sprawled on his back with limbs at awkward angles, a puffy slitted eye shown swollen shut, open grimacing mouth, stylized blood drops carved as teardrop shapes flowing from the chest area, between the feet two small carved glyphs reading 1 Earthquake in bar-and-dot notation, grey weathered volcanic tuff stone surface, Zapotec artistic style circa 500 BCE",
+  "negative_prompt": "blurry, low quality, distorted, deformed, cartoon, anime, 3D render, text, words, letters, writing, captions",
+  "seed": 44,
+  "width": 768,
+  "height": 1024,
+  "steps": 28,
+  "guidance_scale": 4.5,
+  "model": "stabilityai/stable-diffusion-3.5-large",
+  "dtype": "float16",
+  "generation_time_s": 59.55,
+  "timestamp": "2026-02-22T05:59:36.338503+00:00",
+  "book": "The Mystery of Monte Alban",
+  "series": "Fascinating Curiosities of Human History",
+  "volume": 1
+}
