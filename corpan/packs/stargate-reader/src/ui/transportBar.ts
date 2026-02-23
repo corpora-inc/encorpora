@@ -2,7 +2,6 @@ export type TransportBar = {
   setPlaying: (playing: boolean) => void
   setChapter: (title: string) => void
   setTime: (currentMs: number, totalMs: number) => void
-  setLanguages: (languages: string[], current: string) => void
   setProgress: (fraction: number) => void
   setChapterMarkers: (fractions: number[]) => void
   onPlay: (cb: () => void) => void
@@ -14,7 +13,6 @@ export type TransportBar = {
   onScrubStart: (cb: () => void) => void
   onScrubMove: (cb: (fraction: number) => void) => void
   onScrubEnd: (cb: (fraction: number) => void) => void
-  onLanguageChange: (cb: (lang: string) => void) => void
   dispose: () => void
 }
 
@@ -27,12 +25,12 @@ function formatTime(ms: number): string {
 
 /**
  * Create the bottom transport bar with play/pause, chapter skip,
- * ±30s skip, scrub bar, and language selector.
+ * ±30s skip, and scrub bar.
  *
  * Layout:
  *   Top row:  [chapter title]              [elapsed / total]
  *   Scrub:    [═══════════●═══════════════════════════════════]
- *   Bottom:   [⏮]  [−30]  [▶/❚❚]  [+30]  [⏭]  [EN ▾]
+ *   Bottom:   [⏮]  [−30]  [▶/❚❚]  [+30]  [⏭]
  */
 export function createTransportBar(parent: HTMLElement): TransportBar {
   let playing = false
@@ -45,7 +43,6 @@ export function createTransportBar(parent: HTMLElement): TransportBar {
   let scrubStartCb: (() => void) | null = null
   let scrubMoveCb: ((fraction: number) => void) | null = null
   let scrubEndCb: ((fraction: number) => void) | null = null
-  let langCb: ((lang: string) => void) | null = null
 
   // Scrub state
   let isDragging = false
@@ -187,15 +184,6 @@ export function createTransportBar(parent: HTMLElement): TransportBar {
   nextBtn.addEventListener("click", () => nextCb?.())
   controls.appendChild(nextBtn)
 
-  // Language selector
-  const langSelect = document.createElement("select")
-  langSelect.className = "stargate-lang-select"
-  langSelect.title = "Language"
-  langSelect.addEventListener("change", () => {
-    langCb?.(langSelect.value)
-  })
-  controls.appendChild(langSelect)
-
   parent.appendChild(bar)
 
   return {
@@ -227,19 +215,6 @@ export function createTransportBar(parent: HTMLElement): TransportBar {
       }
     },
 
-    setLanguages(languages: string[], current: string) {
-      langSelect.innerHTML = ""
-      for (const lang of languages) {
-        const opt = document.createElement("option")
-        opt.value = lang
-        opt.textContent = lang.toUpperCase()
-        if (lang === current) opt.selected = true
-        langSelect.appendChild(opt)
-      }
-      // Hide when only 1 language
-      langSelect.style.display = languages.length <= 1 ? "none" : ""
-    },
-
     onPlay(cb: () => void) { playCb = cb },
     onPause(cb: () => void) { pauseCb = cb },
     onPrevChapter(cb: () => void) { prevCb = cb },
@@ -249,7 +224,6 @@ export function createTransportBar(parent: HTMLElement): TransportBar {
     onScrubStart(cb: () => void) { scrubStartCb = cb },
     onScrubMove(cb: (fraction: number) => void) { scrubMoveCb = cb },
     onScrubEnd(cb: (fraction: number) => void) { scrubEndCb = cb },
-    onLanguageChange(cb: (lang: string) => void) { langCb = cb },
 
     dispose() {
       bar.remove()

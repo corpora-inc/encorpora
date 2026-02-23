@@ -148,6 +148,7 @@ body {
 }
 
 .stargate-transport-controls {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -206,9 +207,9 @@ body {
   letter-spacing: -0.3px;
 }
 
-/* --- Close button (matches Corpan settings X: 48×48, rounded-md, border+shadow) --- */
+/* --- Settings gear button --- */
 
-.stargate-close-btn {
+.stargate-settings-btn {
   position: absolute;
   top: calc(15px + var(--safe-top));
   right: calc(16px + var(--safe-right));
@@ -228,14 +229,142 @@ body {
   transition: color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
 }
 
-.stargate-close-btn:hover {
+.stargate-settings-btn:hover {
   color: rgba(192, 208, 232, 0.8);
   background: rgba(16, 32, 64, 0.7);
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
 }
 
-.stargate-close-btn:active {
+.stargate-settings-btn:active {
   color: rgba(192, 208, 232, 1);
+}
+
+/* --- Settings dropdown --- */
+
+.stargate-settings-dropdown {
+  position: absolute;
+  top: calc(70px + var(--safe-top));
+  right: calc(16px + var(--safe-right));
+  width: 224px;
+  background: rgba(8, 16, 32, 0.92);
+  border: 1px solid rgba(127, 214, 255, 0.15);
+  border-radius: 12px;
+  padding: 16px;
+  pointer-events: auto;
+  z-index: 31;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.5), 0 0 1px rgba(127, 214, 255, 0.2);
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: visibility 0.2s, opacity 0.2s ease, transform 0.2s ease;
+}
+
+.stargate-settings-dropdown--open {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Dismiss button — hidden on desktop, visible on mobile full-screen */
+.stargate-settings-dismiss {
+  display: none;
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  color: #c0d0e8;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+}
+
+.stargate-settings-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 0;
+}
+
+.stargate-settings-label {
+  font-size: 13px;
+  color: #c0d0e8;
+  font-weight: 500;
+}
+
+.stargate-settings-toggle {
+  width: 40px;
+  height: 28px;
+  border-radius: 14px;
+  border: 1.5px solid rgba(127, 214, 255, 0.2);
+  background: rgba(8, 16, 32, 0.7);
+  color: rgba(192, 208, 232, 0.4);
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.stargate-settings-toggle--active {
+  background: rgba(127, 214, 255, 0.15);
+  border-color: rgba(127, 214, 255, 0.5);
+  color: #7fd6ff;
+}
+
+.stargate-settings-lang-select {
+  appearance: none;
+  background: rgba(8, 16, 32, 0.7);
+  border: 1.5px solid rgba(127, 214, 255, 0.3);
+  border-radius: 8px;
+  color: #7fd6ff;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 6px 24px 6px 10px;
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.15s ease;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237fd6ff' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+}
+
+.stargate-settings-lang-select:hover {
+  border-color: rgba(127, 214, 255, 0.6);
+}
+
+.stargate-settings-lang-select:focus {
+  border-color: rgba(127, 214, 255, 0.8);
+}
+
+.stargate-settings-divider {
+  height: 1px;
+  background: rgba(127, 214, 255, 0.12);
+  margin: 8px 0;
+}
+
+.stargate-settings-exit {
+  width: 100%;
+  padding: 10px 0;
+  border: 1.5px solid rgba(255, 80, 80, 0.3);
+  border-radius: 8px;
+  background: rgba(255, 60, 60, 0.08);
+  color: #ff8080;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.stargate-settings-exit:hover {
+  background: rgba(255, 60, 60, 0.15);
+  border-color: rgba(255, 80, 80, 0.5);
+}
+
+.stargate-settings-exit:active {
+  background: rgba(255, 60, 60, 0.25);
 }
 
 /* --- Chapter overlay --- */
@@ -283,34 +412,6 @@ body {
   white-space: nowrap;
 }
 
-/* --- Language selector --- */
-
-.stargate-lang-select {
-  appearance: none;
-  background: rgba(8, 16, 32, 0.7);
-  border: 1.5px solid rgba(127, 214, 255, 0.3);
-  border-radius: 8px;
-  color: #7fd6ff;
-  font-size: 13px;
-  font-weight: 600;
-  padding: 8px 28px 8px 12px;
-  cursor: pointer;
-  outline: none;
-  transition: border-color 0.15s ease;
-  /* Custom dropdown arrow */
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237fd6ff' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 10px center;
-}
-
-.stargate-lang-select:hover {
-  border-color: rgba(127, 214, 255, 0.6);
-}
-
-.stargate-lang-select:focus {
-  border-color: rgba(127, 214, 255, 0.8);
-}
-
 /* --- Responsive --- */
 
 @media (max-width: 480px) {
@@ -352,4 +453,46 @@ body {
     padding: 8px 18px;
   }
 
+  /* Settings dropdown → full-screen overlay on mobile */
+  .stargate-settings-dropdown {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 24px;
+    box-sizing: border-box;
+  }
+
+  .stargate-settings-dismiss {
+    display: inline-flex;
+  }
+
+  .stargate-settings-row {
+    padding: 12px 0;
+  }
+
+  .stargate-settings-label {
+    font-size: 15px;
+  }
+
+  .stargate-settings-toggle {
+    width: 48px;
+    height: 32px;
+    font-size: 12px;
+  }
+
+  .stargate-settings-lang-select {
+    font-size: 15px;
+    padding: 8px 28px 8px 12px;
+  }
+
+  .stargate-settings-exit {
+    padding: 14px 0;
+    font-size: 16px;
+    margin-top: 4px;
+  }
 }

@@ -22,11 +22,13 @@ import { createAudioEngine, type AudioEngine } from "./audio/audioEngine"
 import { createWaveformCache, type WaveformCache } from "./audio/waveformExtractor"
 import { createWordStream, type WordStream } from "./rendering/wordStream"
 import { createOscilloscope, type Oscilloscope } from "./rendering/oscilloscope"
+import { createWaveformStream, type WaveformStream } from "./rendering/waveformStream"
 import { createStarfield, type Starfield } from "./rendering/starfield"
 import { createTransportBar } from "./ui/transportBar"
 import { createChapterOverlay, type ChapterOverlay } from "./ui/chapterOverlay"
-import { createCloseButton } from "./ui/closeButton"
+import { createSettingsPanel } from "./ui/settingsPanel"
 import { loadBookmark, saveBookmark, type Bookmark } from "./state/bookmarkStore"
+import { loadPrefs, savePrefs, type DisplayPrefs } from "./state/prefsStore"
 
 /**
  * Create the Stargate Reader experience.
@@ -123,6 +125,7 @@ export function createStargateReader(
 
   // Rendering systems (initialized after data loads)
   let wordStream: WordStream | null = null
+  let waveformStream: WaveformStream | null = null
   let oscilloscope: Oscilloscope | null = null
   let starfield: Starfield | null = null
   let audioEngine: AudioEngine | null = null
@@ -136,10 +139,17 @@ export function createStargateReader(
   // Playback state
   let isPlaying = false
 
-  // --- Close button ---
-  // Late-bound reference so the button can call full dispose
+  // --- Display preferences (persisted per book) ---
+  const prefs: DisplayPrefs = loadPrefs(bookId)
+
+  // --- Settings panel (gear dropdown) ---
+  // Late-bound reference so the exit button can call full dispose
   let disposeFn: (() => void) | null = null
-  const closeButton = createCloseButton(ui, () => disposeFn?.())
+  const settings = createSettingsPanel(ui, {
+    initialOscilloscope: prefs.oscilloscope,
+    initialWaveform: prefs.waveform,
+    onBeforeClose: () => disposeFn?.(),
+  })
 
   // --- Chapter overlay ---
   let chapterOverlay: ChapterOverlay = createChapterOverlay(ui)
@@ -147,7 +157,7 @@ export function createStargateReader(
 
   // --- Transport bar ---
   const transport = createTransportBar(ui)
-  transport.setLanguages(availableLanguages, currentLanguage)
+  settings.setLanguages(availableLanguages, currentLanguage)
 
   transport.onPlay(() => {
     if (!audioEngine) return
@@ -237,8 +247,20 @@ export function createStargateReader(
     }
   })
 
-  transport.onLanguageChange((lang) => {
+  settings.onLanguageChange((lang) => {
     void switchLanguage(lang)
+  })
+
+  settings.onToggleOscilloscope((visible) => {
+    if (oscilloscope) oscilloscope.mesh.isVisible = visible
+    prefs.oscilloscope = visible
+    savePrefs(bookId, prefs)
+  })
+
+  settings.onToggleWaveform((visible) => {
+    if (waveformStream) waveformStream.mesh.isVisible = visible
+    prefs.waveform = visible
+    savePrefs(bookId, prefs)
   })
 
   // --- Periodic bookmark autosave (every 15s during playback) ---
@@ -329,8 +351,17 @@ export function createStargateReader(
       // Create word stream (flat planes, no waveform shaping)
       wordStream = createWordStream(scene)
 
+      // Create waveform stream (arch ribbon showing audio envelope along Z)
+      waveformStream = createWaveformStream(scene)
+      waveformStream.mesh.isVisible = prefs.waveform
+
       // Create oscilloscope — just a line, no ribbon
       oscilloscope = createOscilloscope(scene)
+      oscilloscope.mesh.isVisible = prefs.oscilloscope
+
+      // Rendering group depth clearing: words on top of stream, oscilloscope on top of all
+      scene.setRenderingAutoClearDepthStencil(1, true, true, true)
+      scene.setRenderingAutoClearDepthStencil(2, true, true, true)
 
       transport.setChapter(segments[0]?.title || "Ready")
 
@@ -350,7 +381,7 @@ export function createStargateReader(
       if (bookmark && audioEngine) {
         if (bookmark.language !== currentLanguage && availableLanguages.includes(bookmark.language)) {
           currentLanguage = bookmark.language
-          transport.setLanguages(availableLanguages, currentLanguage)
+          settings.setLanguages(availableLanguages, currentLanguage)
           // Language switch will be handled on first play; for now just seek
         }
         audioEngine.seekToMs(bookmark.timeMs)
@@ -507,8 +538,13 @@ export function createStargateReader(
       wordStream.update(currentMs, timelineWords, currentWordHint)
     }
 
+    // Update waveform stream
+    if (waveformStream && waveformStream.mesh.isVisible && timelineWords.length > 0 && waveformCache) {
+      waveformStream.update(currentMs, timelineWords, waveformCache, currentWordHint)
+    }
+
     // Update oscilloscope
-    if (oscilloscope && audioEngine) {
+    if (oscilloscope && oscilloscope.mesh.isVisible && audioEngine) {
       const analyserData = audioEngine.getAnalyserData()
       // Calculate intensity from analyser data
       let sum = 0
@@ -545,12 +581,13 @@ export function createStargateReader(
     resizeObserver.disconnect()
 
     persistBookmark()
-    closeButton.dispose()
+    settings.dispose()
     chapterOverlay.dispose()
     transport.dispose()
     audioEngine?.dispose()
     waveformCache?.dispose()
     wordStream?.dispose()
+    waveformStream?.dispose()
     oscilloscope?.dispose()
     starfield?.dispose()
     glow.dispose()

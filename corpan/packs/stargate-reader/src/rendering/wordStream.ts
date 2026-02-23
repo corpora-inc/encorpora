@@ -96,6 +96,7 @@ export function createWordStream(scene: Scene): WordStream {
     plane.billboardMode = Mesh.BILLBOARDMODE_ALL
     plane.isVisible = false
     plane.isPickable = false
+    plane.renderingGroupId = 1
 
     pool.push({
       plane,
