@@ -1,7 +1,3 @@
 # Build artifacts
 *.pdf
 *.epub
-
-# Generated audio (TTS output — large binaries, regenerable)
-pack/audio/
-pack/audio_manifest_*.json
