@@ -32,6 +32,19 @@ export type HostApi = {
   isMock?: boolean
 }
 
+/**
+ * initialState contract for Stargate Reader:
+ *
+ * Production (Tauri host provides preloaded data):
+ *   segmentsData:        SegmentsData       — preloaded segments JSON
+ *   audioManifest:       AudioManifest       — preloaded audio manifest
+ *   resolveAssetUrl:     (path) => string    — resolves relative paths to asset URLs
+ *   bookCatalog?:        BookCatalogEntry[]  — available books (optional)
+ *   availableLanguages?: string[]            — available audio languages (optional)
+ *
+ * Dev fallback:
+ *   dataUrl?:            string              — base URL for HTTP fetching
+ */
 export type GameModule = {
   mount: (
     container: HTMLElement,

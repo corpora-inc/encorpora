@@ -1,9 +1,10 @@
 import type {
   AudioManifest,
   BookSegment,
+  ChapterInfo,
   TimelineWord,
 } from "./types"
-import { MS_PER_Z_UNIT } from "./constants"
+import { CRAWL_HEIGHT, CRAWL_POWER, LOOK_AHEAD_Z, MS_PER_Z_UNIT } from "./constants"
 
 /**
  * Build a flat timeline of all words across all segments with absolute timestamps.
@@ -50,6 +51,24 @@ export function buildTimeline(
     segmentStartTimes,
     totalDurationMs: cursor,
   }
+}
+
+/**
+ * Compute the y-position for a given z.
+ *
+ * Power curve on top of a linear baseline:
+ *   y = extra * (z/L)^n + baseSlope * z
+ *
+ * - Steep at the top: words drop fast from the top of the screen
+ * - Gentler near camera: words separate enough to read as they approach
+ * - Past words (z < 0): continue at baseSlope, exiting out the bottom
+ */
+export function crawlY(z: number): number {
+  const baseSlope = 0.20
+  if (z <= 0) return baseSlope * z
+  const t = Math.min(z / LOOK_AHEAD_Z, 1)
+  const extra = CRAWL_HEIGHT - baseSlope * LOOK_AHEAD_Z
+  return extra * Math.pow(t, CRAWL_POWER) + baseSlope * z
 }
 
 /**
@@ -148,6 +167,28 @@ export function findVisibleRange(
   const endIdx = lo
 
   return [startIdx, endIdx]
+}
+
+/**
+ * Build a chapter index from segments, deduplicating by chapter number.
+ */
+export function buildChapterIndex(segments: BookSegment[]): ChapterInfo[] {
+  const chapters: ChapterInfo[] = []
+  const seen = new Set<number>()
+
+  for (let i = 0; i < segments.length; i++) {
+    const seg = segments[i]
+    if (!seen.has(seg.chapter)) {
+      seen.add(seg.chapter)
+      chapters.push({
+        chapter: seg.chapter,
+        title: seg.title,
+        firstSegmentIndex: i,
+      })
+    }
+  }
+
+  return chapters
 }
 
 /**

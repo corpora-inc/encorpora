@@ -11,16 +11,19 @@ import {
 import type { HostApi } from "./sdk/types"
 import type { AudioManifest, BookSegment, TimelineWord } from "./core/types"
 import { CAMERA_FOV, CAMERA_Z, GLOW_INTENSITY } from "./core/constants"
-import { buildTimeline, findCurrentWordIndex } from "./core/timeline"
+import { buildTimeline, findCurrentWordIndex, buildChapterIndex } from "./core/timeline"
+import type { ChapterInfo } from "./core/types"
 import {
-  loadSegments,
-  loadAudioManifest,
-  setDataBaseUrl,
-} from "./data/segmentLoader"
+  createFetchDataProvider,
+  createPreloadedDataProvider,
+  type DataProvider,
+} from "./data/dataProvider"
 import { createAudioEngine, type AudioEngine } from "./audio/audioEngine"
+import { createWaveformCache, type WaveformCache } from "./audio/waveformExtractor"
 import { createWordStream, type WordStream } from "./rendering/wordStream"
 import { createOscilloscope, type Oscilloscope } from "./rendering/oscilloscope"
 import { createStarfield, type Starfield } from "./rendering/starfield"
+import { createTransportBar } from "./ui/transportBar"
 
 /**
  * Create the Stargate Reader experience.
@@ -35,6 +38,13 @@ export function createStargateReader(
   initialState?: Record<string, unknown>
 ) {
   let disposed = false
+
+  // Module-level state for language/book switching
+  let dataProvider: DataProvider
+  let segments: BookSegment[] = []
+  let chapters: ChapterInfo[] = []
+  let currentLanguage = "en"
+  const availableLanguages = (initialState?.availableLanguages as string[]) || ["en"]
 
   // Create wrapper
   const wrapper = document.createElement("div")
@@ -94,6 +104,7 @@ export function createStargateReader(
   let oscilloscope: Oscilloscope | null = null
   let starfield: Starfield | null = null
   let audioEngine: AudioEngine | null = null
+  let waveformCache: WaveformCache | null = null
   let timelineWords: TimelineWord[] = []
   let currentWordHint = 0
 
@@ -103,37 +114,61 @@ export function createStargateReader(
   // Playback state
   let isPlaying = false
 
-  // --- UI Controls ---
-  const playBtn = document.createElement("button")
-  playBtn.className = "stargate-play-btn"
-  playBtn.textContent = "\u25B6"
-  playBtn.title = "Play / Pause"
-  ui.appendChild(playBtn)
+  // --- Transport bar ---
+  const transport = createTransportBar(ui)
+  transport.setLanguages(availableLanguages, currentLanguage)
 
-  const chapterLabel = document.createElement("div")
-  chapterLabel.className = "stargate-chapter"
-  chapterLabel.textContent = "Loading..."
-  ui.appendChild(chapterLabel)
-
-  const timeLabel = document.createElement("div")
-  timeLabel.className = "stargate-time"
-  timeLabel.textContent = "0:00"
-  ui.appendChild(timeLabel)
-
-  playBtn.addEventListener("click", () => {
+  transport.onPlay(() => {
     if (!audioEngine) return
-
     audioEngine.unlock()
+    audioEngine.play()
+    isPlaying = true
+    transport.setPlaying(true)
+  })
 
-    if (isPlaying) {
-      audioEngine.pause()
-      isPlaying = false
-      playBtn.textContent = "\u25B6"
-    } else {
-      audioEngine.play()
-      isPlaying = true
-      playBtn.textContent = "\u275A\u275A"
+  transport.onPause(() => {
+    if (!audioEngine) return
+    audioEngine.pause()
+    isPlaying = false
+    transport.setPlaying(false)
+  })
+
+  transport.onPrevChapter(() => {
+    if (!audioEngine || chapters.length === 0) return
+    const currentIdx = audioEngine.getCurrentSegmentIndex()
+    // Find current chapter
+    let chapterIdx = 0
+    for (let i = chapters.length - 1; i >= 0; i--) {
+      if (currentIdx >= chapters[i].firstSegmentIndex) {
+        chapterIdx = i
+        break
+      }
     }
+    // If we're more than 2 segments into the chapter, go to start of current
+    // Otherwise go to previous chapter
+    const threshold = chapters[chapterIdx].firstSegmentIndex + 2
+    const targetChapter = currentIdx > threshold ? chapterIdx : Math.max(0, chapterIdx - 1)
+    audioEngine.seekToSegment(chapters[targetChapter].firstSegmentIndex)
+    transport.setChapter(chapters[targetChapter].title)
+  })
+
+  transport.onNextChapter(() => {
+    if (!audioEngine || chapters.length === 0) return
+    const currentIdx = audioEngine.getCurrentSegmentIndex()
+    let chapterIdx = 0
+    for (let i = chapters.length - 1; i >= 0; i--) {
+      if (currentIdx >= chapters[i].firstSegmentIndex) {
+        chapterIdx = i
+        break
+      }
+    }
+    const targetChapter = Math.min(chapters.length - 1, chapterIdx + 1)
+    audioEngine.seekToSegment(chapters[targetChapter].firstSegmentIndex)
+    transport.setChapter(chapters[targetChapter].title)
+  })
+
+  transport.onLanguageChange((lang) => {
+    void switchLanguage(lang)
   })
 
   // --- Screen lock behavior ---
@@ -151,74 +186,168 @@ export function createStargateReader(
   // --- Data loading & initialization ---
   async function initialize() {
     try {
-      let segments: BookSegment[]
       let manifest: AudioManifest
 
       const preloadedSegments = initialState?.segmentsData as { segments: BookSegment[] } | undefined
       const preloadedManifest = initialState?.audioManifest as AudioManifest | undefined
+      const resolveAssetUrl = initialState?.resolveAssetUrl as ((path: string) => string) | undefined
 
-      if (preloadedSegments && preloadedManifest) {
+      if (preloadedSegments && preloadedManifest && resolveAssetUrl) {
+        // Production: host provides preloaded data
+        dataProvider = createPreloadedDataProvider(
+          { version: "2.0.0", book_id: "", total_segments: preloadedSegments.segments.length, segments: preloadedSegments.segments },
+          preloadedManifest,
+          resolveAssetUrl
+        )
         segments = preloadedSegments.segments
         manifest = preloadedManifest
       } else {
+        // Dev mode: fetch via HTTP
         const dataUrl =
           (initialState?.dataUrl as string) ||
           detectDataUrl()
-        setDataBaseUrl(dataUrl)
+        dataProvider = createFetchDataProvider(dataUrl)
 
-        const segData = await loadSegments()
+        const segData = await dataProvider.loadSegments()
         segments = segData.segments
-        manifest = await loadAudioManifest("en")
+        manifest = await dataProvider.loadAudioManifest(currentLanguage)
       }
 
       if (disposed) return
+
+      // Build chapter index
+      chapters = buildChapterIndex(segments)
 
       // Build timeline
       const timeline = buildTimeline(segments, manifest)
       timelineWords = timeline.words
 
-      // Create audio engine
+      // Create waveform cache
+      waveformCache = createWaveformCache()
+
+      // Create audio engine with waveform extraction callback
       audioEngine = createAudioEngine(
         segments,
         manifest,
+        dataProvider.resolveAudioUrl,
         (index) => {
           // Update chapter label
           const seg = segments[index]
           if (seg) {
-            chapterLabel.textContent = seg.title
+            transport.setChapter(seg.title)
           }
         },
         () => {
           // Playback ended
           isPlaying = false
-          playBtn.textContent = "\u25B6"
+          transport.setPlaying(false)
+        },
+        (segmentId, buffer) => {
+          // Extract waveform envelopes as audio buffers are decoded
+          const entry = manifest.segments[segmentId]
+          if (entry && waveformCache) {
+            waveformCache.extractFromBuffer(segmentId, buffer, entry.words)
+          }
         }
       )
 
-      // Create word stream
+      // Create word stream (flat planes, no waveform shaping)
       wordStream = createWordStream(scene)
 
-      // Create oscilloscope
+      // Create oscilloscope — just a line, no ribbon
       oscilloscope = createOscilloscope(scene)
 
-      chapterLabel.textContent = segments[0]?.title || "Ready"
+      transport.setChapter(segments[0]?.title || "Ready")
     } catch (err) {
       console.error("[StargateReader] Failed to initialize:", err)
-      chapterLabel.textContent = "Failed to load book data"
+      transport.setChapter("Failed to load book data")
     }
   }
 
   /**
-   * Try to detect the data URL from the current page location.
-   * In dev mode, we serve mock data from public/.
-   * In production, data comes from the pack's content directory.
+   * Detect the data URL for dev mode.
+   *
+   * - Standalone dev (npm run dev): Vite proxy at localhost:5173
+   * - Corpan dev (npm run dev:corpan): book data server at localhost:8990
+   * - Production: should never be called (preloaded data path)
    */
   function detectDataUrl(): string {
-    // Dev mode: serve from public/mock-data/
-    if (typeof window !== "undefined" && window.location.hostname === "localhost") {
-      return "/mock-data"
+    if (typeof window === "undefined") return "."
+
+    const params = new URLSearchParams(window.location.search)
+    const bookId = params.get("book") || "book_monte_alban"
+
+    if (window.location.hostname === "localhost") {
+      // Vite dev server: use book data proxy
+      return `/data/books/${bookId}`
     }
-    return "."
+
+    // Corpan dev mode (Tauri webview) — fall back to book data HTTP server
+    return `http://localhost:8990/data/books/${bookId}`
+  }
+
+  /**
+   * Switch audio language: reload manifest, rebuild timeline and audio engine.
+   */
+  async function switchLanguage(newLang: string) {
+    if (newLang === currentLanguage || !dataProvider) return
+
+    try {
+      const wasPlaying = isPlaying
+      const savedSegmentIndex = audioEngine?.getCurrentSegmentIndex() ?? 0
+
+      // Dispose current audio
+      audioEngine?.dispose()
+      audioEngine = null
+      waveformCache?.dispose()
+      waveformCache = null
+
+      currentLanguage = newLang
+
+      // Load new manifest
+      const manifest = await dataProvider.loadAudioManifest(newLang)
+      if (disposed) return
+
+      // Rebuild timeline
+      const timeline = buildTimeline(segments, manifest)
+      timelineWords = timeline.words
+      currentWordHint = 0
+
+      // Recreate waveform cache + audio engine
+      waveformCache = createWaveformCache()
+      audioEngine = createAudioEngine(
+        segments,
+        manifest,
+        dataProvider.resolveAudioUrl,
+        (index) => {
+          const seg = segments[index]
+          if (seg) transport.setChapter(seg.title)
+        },
+        () => {
+          isPlaying = false
+          transport.setPlaying(false)
+        },
+        (segmentId, buffer) => {
+          const entry = manifest.segments[segmentId]
+          if (entry && waveformCache) {
+            waveformCache.extractFromBuffer(segmentId, buffer, entry.words)
+          }
+        }
+      )
+
+      // Seek to approximate position
+      audioEngine.seekToSegment(savedSegmentIndex)
+
+      // Resume if was playing
+      if (wasPlaying) {
+        audioEngine.unlock()
+        audioEngine.play()
+        isPlaying = true
+        transport.setPlaying(true)
+      }
+    } catch (err) {
+      console.error("[StargateReader] Failed to switch language:", err)
+    }
   }
 
   // --- Render loop ---
@@ -226,12 +355,10 @@ export function createStargateReader(
     if (disposed) return
 
     const currentMs = audioEngine?.getCurrentTimeMs() ?? 0
+    const totalMs = audioEngine?.getTotalDurationMs() ?? 0
 
     // Update time display
-    const totalSeconds = Math.floor(currentMs / 1000)
-    const minutes = Math.floor(totalSeconds / 60)
-    const seconds = totalSeconds % 60
-    timeLabel.textContent = `${minutes}:${seconds.toString().padStart(2, "0")}`
+    transport.setTime(currentMs, totalMs)
 
     // Find current word
     if (timelineWords.length > 0) {
@@ -254,7 +381,7 @@ export function createStargateReader(
         sum += v * v
       }
       const rms = Math.sqrt(sum / analyserData.length)
-      const intensity = Math.min(rms * 3, 1)
+      const intensity = Math.max(Math.min(rms * 5, 1), 0.15)
       oscilloscope.update(analyserData, intensity)
     }
 
@@ -280,7 +407,9 @@ export function createStargateReader(
       document.removeEventListener("visibilitychange", handleVisibilityChange)
       resizeObserver.disconnect()
 
+      transport.dispose()
       audioEngine?.dispose()
+      waveformCache?.dispose()
       wordStream?.dispose()
       oscilloscope?.dispose()
       starfield?.dispose()

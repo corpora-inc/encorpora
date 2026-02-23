@@ -6,28 +6,23 @@ import {
   Scene,
   StandardMaterial,
   TransformNode,
-  Vector3,
 } from "@babylonjs/core"
 import type { TimelineWord } from "../core/types"
 import {
-  CRAWL_CURVE_STRENGTH,
   CURRENT_WORD_SCALE,
   FADE_IN_Z,
   FADE_OUT_Z,
-  LINE_SPACING_Y,
   LOOK_AHEAD_Z,
   LOOK_BEHIND_Z,
   MS_PER_Z_UNIT,
-  WORD_BASE_Y,
   WORD_FONT,
   WORD_FONT_SIZE,
+  WORD_MAX_PLANE_WIDTH,
   WORD_POOL_SIZE,
   WORD_SCALE,
-  WORD_SPACING_X,
   WORD_TEXTURE_SIZE,
-  WORDS_PER_LINE,
 } from "../core/constants"
-import { findVisibleRange, wordToZ } from "../core/timeline"
+import { crawlY, findVisibleRange, wordToZ } from "../core/timeline"
 
 type WordMesh = {
   plane: Mesh
@@ -35,6 +30,8 @@ type WordMesh = {
   material: StandardMaterial
   active: boolean
   assignedWord: string
+  /** Current plane width set by text measurement */
+  planeWidth: number
 }
 
 export type WordStream = {
@@ -54,9 +51,10 @@ function measureTextWidth(text: string, ctx: CanvasRenderingContext2D): number {
 /**
  * Create the word stream renderer.
  *
- * Uses a pool of plane meshes with DynamicTextures. Words are assigned to meshes
- * from the pool and positioned along the z-axis based on their precomputed timestamps.
- * Includes Star Wars crawl curve and fade zones.
+ * Uses a pool of billboard plane meshes with DynamicTextures. Words flow
+ * single-file down the center of the screen (x=0), descending from top
+ * to bottom via a waterslide power curve, positioned along the z-axis based
+ * on precomputed timestamps.
  */
 export function createWordStream(scene: Scene): WordStream {
   const root = new TransformNode("word-stream", scene)
@@ -71,11 +69,11 @@ export function createWordStream(scene: Scene): WordStream {
   const currentColor = new Color3(0.5, 0.85, 1.0)
   const dimColor = new Color3(0.4, 0.5, 0.65)
 
-  // Create mesh pool
+  // Create mesh pool — each mesh is a simple plane in the x-y plane
   for (let i = 0; i < WORD_POOL_SIZE; i++) {
     const texture = new DynamicTexture(
       `word-tex-${i}`,
-      { width: WORD_TEXTURE_SIZE, height: WORD_TEXTURE_SIZE / 2 },
+      { width: WORD_TEXTURE_SIZE, height: 384 },
       scene,
       false
     )
@@ -90,11 +88,12 @@ export function createWordStream(scene: Scene): WordStream {
 
     const plane = MeshBuilder.CreatePlane(
       `word-plane-${i}`,
-      { width: 2, height: 1 },
+      { width: 1, height: 0.75, updatable: false },
       scene
     )
     plane.material = material
     plane.parent = root
+    plane.billboardMode = Mesh.BILLBOARDMODE_ALL
     plane.isVisible = false
     plane.isPickable = false
 
@@ -104,6 +103,7 @@ export function createWordStream(scene: Scene): WordStream {
       material,
       active: false,
       assignedWord: "",
+      planeWidth: 1,
     })
   }
 
@@ -116,7 +116,7 @@ export function createWordStream(scene: Scene): WordStream {
 
     const ctx = mesh.texture.getContext() as unknown as CanvasRenderingContext2D
     const w = WORD_TEXTURE_SIZE
-    const h = WORD_TEXTURE_SIZE / 2
+    const h = 384
 
     ctx.clearRect(0, 0, w, h)
     ctx.font = WORD_FONT
@@ -126,34 +126,15 @@ export function createWordStream(scene: Scene): WordStream {
     ctx.fillText(text, w / 2, h / 2)
     mesh.texture.update()
 
-    // Scale plane width to match text proportions
+    // Measure text width for x-scaling, cap at max to compress long words
     const textWidth = measureTextWidth(text, measureCtx)
     const aspect = textWidth / WORD_FONT_SIZE
-    const planeHeight = 1.0
-    const planeWidth = Math.max(0.5, planeHeight * aspect * 1.1)
-    mesh.plane.scaling.x = planeWidth
-  }
-
-  /**
-   * Compute x,y layout position for a word based on its index within the visible window.
-   * Words flow left-to-right, wrapping to new lines.
-   */
-  function layoutPosition(
-    _wordIndex: number,
-    lineWordIndex: number,
-    lineIndex: number,
-    _totalInLine: number
-  ): { x: number; y: number } {
-    // Center each line horizontally
-    const x = (lineWordIndex - (WORDS_PER_LINE - 1) / 2) * WORD_SPACING_X
-    const y = WORD_BASE_Y - lineIndex * LINE_SPACING_Y
-    return { x, y }
+    mesh.planeWidth = Math.min(WORD_MAX_PLANE_WIDTH, Math.max(0.5, aspect * 1.0))
   }
 
   let poolIndex = 0
 
   function acquireMesh(): WordMesh | null {
-    // Find an inactive mesh in the pool
     for (let i = 0; i < WORD_POOL_SIZE; i++) {
       const idx = (poolIndex + i) % WORD_POOL_SIZE
       if (!pool[idx].active) {
@@ -192,9 +173,6 @@ export function createWordStream(scene: Scene): WordStream {
       }
 
       // Assign/update meshes for visible words
-      let lineIndex = 0
-      let lineWordCount = 0
-
       for (let i = visStart; i < visEnd; i++) {
         const word = words[i]
         const midpointMs = (word.absoluteStartMs + word.absoluteEndMs) / 2
@@ -212,32 +190,21 @@ export function createWordStream(scene: Scene): WordStream {
           assignedMeshes.set(i, mesh)
         }
 
-        // Render text
+        // Render text (only on assignment change)
         renderWord(mesh, word.word)
         mesh.plane.isVisible = true
 
-        // Layout: group words into lines
-        const posInStream = i - visStart
-        lineIndex = Math.floor(posInStream / WORDS_PER_LINE)
-        lineWordCount = posInStream % WORDS_PER_LINE
-
-        const { x, y } = layoutPosition(
-          posInStream,
-          lineWordCount,
-          lineIndex,
-          WORDS_PER_LINE
-        )
-
-        // Star Wars crawl curve: y drops as z increases
-        const curvedY = y - CRAWL_CURVE_STRENGTH * z * z
-
-        mesh.plane.position = new Vector3(x, curvedY, z)
+        // Single-file layout: centered on x, y rises with z so distant words
+        // appear at top of screen and descend toward camera (like 3read)
+        mesh.plane.position.x = 0
+        mesh.plane.position.y = crawlY(z)
+        mesh.plane.position.z = z
 
         // Scale: current word gets a boost
         const isCurrent = i === currentWordIndex
         const scale = isCurrent ? CURRENT_WORD_SCALE : WORD_SCALE
         mesh.plane.scaling.y = scale
-        // x scaling is set by renderWord based on text width
+        mesh.plane.scaling.x = mesh.planeWidth * scale
 
         // Color & opacity
         const alpha = computeFade(z)

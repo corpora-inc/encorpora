@@ -1,5 +1,4 @@
 import type { AudioManifest, BookSegment } from "../core/types"
-import { resolveAudioUrl } from "../data/segmentLoader"
 import { PRELOAD_AHEAD, OSCILLOSCOPE_SAMPLES } from "../core/constants"
 
 export type AudioEngine = {
@@ -9,6 +8,8 @@ export type AudioEngine = {
   stop: () => void
   seekToSegment: (index: number) => void
   getCurrentTimeMs: () => number
+  getCurrentSegmentIndex: () => number
+  getTotalDurationMs: () => number
   isPlaying: () => boolean
   getAnalyserData: () => Uint8Array
   getFrequencyData: () => Uint8Array
@@ -30,8 +31,10 @@ const isIOS =
 export function createAudioEngine(
   segments: BookSegment[],
   manifest: AudioManifest,
+  resolveAudioUrl: (relativePath: string) => string,
   onSegmentChange?: (index: number) => void,
-  onPlaybackEnd?: () => void
+  onPlaybackEnd?: () => void,
+  onBufferDecoded?: (segmentId: string, buffer: AudioBuffer) => void
 ): AudioEngine {
   const AudioCtx =
     typeof window !== "undefined"
@@ -80,7 +83,7 @@ export function createAudioEngine(
       ctx = new AudioCtx()
       analyser = ctx.createAnalyser()
       analyser.fftSize = OSCILLOSCOPE_SAMPLES * 2
-      analyser.smoothingTimeConstant = 0.8
+      analyser.smoothingTimeConstant = 0.92
 
       gainNode = ctx.createGain()
       gainNode.gain.value = isIOS ? 1.5 : 1.0
@@ -112,6 +115,7 @@ export function createAudioEngine(
       .then((buffer) => {
         bufferCache.set(segmentId, buffer)
         loadingPromises.delete(segmentId)
+        onBufferDecoded?.(segmentId, buffer)
         return buffer
       })
       .catch((err) => {
@@ -176,8 +180,13 @@ export function createAudioEngine(
 
     source.onended = () => {
       if (disposed || !playing) return
-      // Add this segment's duration + pause to accumulated time
-      accumulatedTimeMs += entry.duration_ms + entry.pause_after_ms
+
+      // Reset timing so getCurrentTimeMs() smoothly advances through the pause.
+      // Set accumulated to the exact moment the segment audio ended,
+      // and reset the clock reference so elapsed starts from 0.
+      accumulatedTimeMs = segmentAbsoluteStartMs[index] + entry.duration_ms
+      segmentPlaybackOffset = 0
+      if (ctx) segmentStartedAtCtxTime = ctx.currentTime
 
       // Schedule next segment after pause
       if (entry.pause_after_ms > 0) {
@@ -274,6 +283,10 @@ export function createAudioEngine(
       const elapsed = (ctx.currentTime - segmentStartedAtCtxTime) * 1000
       return accumulatedTimeMs + segmentPlaybackOffset + elapsed
     },
+
+    getCurrentSegmentIndex: () => currentSegmentIndex,
+
+    getTotalDurationMs: () => totalDurationMs,
 
     isPlaying: () => playing,
 
