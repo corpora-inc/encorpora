@@ -93,7 +93,6 @@ export function createWordStream(scene: Scene): WordStream {
     )
     plane.material = material
     plane.parent = root
-    plane.billboardMode = Mesh.BILLBOARDMODE_ALL
     plane.isVisible = false
     plane.isPickable = false
     plane.renderingGroupId = 1
@@ -204,8 +203,8 @@ export function createWordStream(scene: Scene): WordStream {
         // Scale: current word gets a boost
         const isCurrent = i === currentWordIndex
         const scale = isCurrent ? CURRENT_WORD_SCALE : WORD_SCALE
-        mesh.plane.scaling.y = scale
         mesh.plane.scaling.x = mesh.planeWidth * scale
+        mesh.plane.scaling.y = mesh.planeWidth * scale
 
         // Color & opacity
         const alpha = computeFade(z)
