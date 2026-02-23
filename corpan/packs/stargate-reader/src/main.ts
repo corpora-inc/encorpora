@@ -65,6 +65,14 @@ const mountForDev = () => {
     return
   }
   module.mount(root, hostApi)
+
+  // Dev mode: handle corpan:exit by disposing the game
+  window.addEventListener("corpan:exit", () => {
+    if (scope.__stargateReader) {
+      scope.__stargateReader.dispose()
+      scope.__stargateReader = undefined
+    }
+  })
 }
 
 registerGame()

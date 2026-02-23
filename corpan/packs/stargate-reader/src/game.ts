@@ -24,6 +24,9 @@ import { createWordStream, type WordStream } from "./rendering/wordStream"
 import { createOscilloscope, type Oscilloscope } from "./rendering/oscilloscope"
 import { createStarfield, type Starfield } from "./rendering/starfield"
 import { createTransportBar } from "./ui/transportBar"
+import { createChapterOverlay, type ChapterOverlay } from "./ui/chapterOverlay"
+import { createCloseButton } from "./ui/closeButton"
+import { loadBookmark, saveBookmark, type Bookmark } from "./state/bookmarkStore"
 
 /**
  * Create the Stargate Reader experience.
@@ -45,6 +48,25 @@ export function createStargateReader(
   let chapters: ChapterInfo[] = []
   let currentLanguage = "en"
   const availableLanguages = (initialState?.availableLanguages as string[]) || ["en"]
+
+  // Book ID for bookmark namespacing
+  const bookId =
+    (initialState?.bookId as string) ||
+    (typeof window !== "undefined"
+      ? new URLSearchParams(window.location.search).get("book") || "book_monte_alban"
+      : "unknown")
+
+  // Bookmark persistence
+  function persistBookmark() {
+    if (!audioEngine) return
+    const bm: Bookmark = {
+      timeMs: audioEngine.getCurrentTimeMs(),
+      segmentIndex: audioEngine.getCurrentSegmentIndex(),
+      language: currentLanguage,
+      savedAt: Date.now(),
+    }
+    saveBookmark(bookId, bm)
+  }
 
   // Create wrapper
   const wrapper = document.createElement("div")
@@ -114,6 +136,15 @@ export function createStargateReader(
   // Playback state
   let isPlaying = false
 
+  // --- Close button ---
+  // Late-bound reference so the button can call full dispose
+  let disposeFn: (() => void) | null = null
+  const closeButton = createCloseButton(ui, () => disposeFn?.())
+
+  // --- Chapter overlay ---
+  let chapterOverlay: ChapterOverlay = createChapterOverlay(ui)
+  let lastChapterIndex = -1
+
   // --- Transport bar ---
   const transport = createTransportBar(ui)
   transport.setLanguages(availableLanguages, currentLanguage)
@@ -131,6 +162,7 @@ export function createStargateReader(
     audioEngine.pause()
     isPlaying = false
     transport.setPlaying(false)
+    persistBookmark()
   })
 
   transport.onPrevChapter(() => {
@@ -167,14 +199,57 @@ export function createStargateReader(
     transport.setChapter(chapters[targetChapter].title)
   })
 
+  transport.onSkipBack(() => {
+    if (!audioEngine) return
+    const target = Math.max(0, audioEngine.getCurrentTimeMs() - 30000)
+    audioEngine.seekToMs(target)
+  })
+
+  transport.onSkipForward(() => {
+    if (!audioEngine) return
+    const target = Math.min(audioEngine.getTotalDurationMs(), audioEngine.getCurrentTimeMs() + 30000)
+    audioEngine.seekToMs(target)
+  })
+
+  // --- Scrub lifecycle ---
+  let wasPlayingBeforeScrub = false
+
+  transport.onScrubStart(() => {
+    wasPlayingBeforeScrub = audioEngine?.isPlaying() ?? false
+    if (wasPlayingBeforeScrub && audioEngine) {
+      audioEngine.pause()
+      isPlaying = false
+    }
+  })
+
+  transport.onScrubMove((fraction) => {
+    if (!audioEngine) return
+    audioEngine.seekToMsPreview(fraction * audioEngine.getTotalDurationMs())
+  })
+
+  transport.onScrubEnd((fraction) => {
+    if (!audioEngine) return
+    audioEngine.seekToMsPreview(fraction * audioEngine.getTotalDurationMs())
+    if (wasPlayingBeforeScrub) {
+      audioEngine.play()
+      isPlaying = true
+      transport.setPlaying(true)
+    }
+  })
+
   transport.onLanguageChange((lang) => {
     void switchLanguage(lang)
   })
 
+  // --- Periodic bookmark autosave (every 15s during playback) ---
+  let lastAutosaveMs = 0
+  const AUTOSAVE_INTERVAL_MS = 15000
+
   // --- Screen lock behavior ---
   function handleVisibilityChange() {
     if (document.hidden) {
-      // Screen locked / tab hidden: stop render loop but keep audio
+      // Screen locked / tab hidden: save bookmark, stop render loop but keep audio
+      persistBookmark()
       engine.stopRenderLoop()
     } else {
       // Screen visible: resume render loop
@@ -258,6 +333,28 @@ export function createStargateReader(
       oscilloscope = createOscilloscope(scene)
 
       transport.setChapter(segments[0]?.title || "Ready")
+
+      // Set chapter markers on scrub bar
+      if (audioEngine && chapters.length > 0) {
+        const starts = audioEngine.getSegmentAbsoluteStartMs()
+        const total = audioEngine.getTotalDurationMs()
+        if (total > 0) {
+          transport.setChapterMarkers(
+            chapters.map(c => starts[c.firstSegmentIndex] / total)
+          )
+        }
+      }
+
+      // Restore bookmark (resume where the user left off)
+      const bookmark = loadBookmark(bookId)
+      if (bookmark && audioEngine) {
+        if (bookmark.language !== currentLanguage && availableLanguages.includes(bookmark.language)) {
+          currentLanguage = bookmark.language
+          transport.setLanguages(availableLanguages, currentLanguage)
+          // Language switch will be handled on first play; for now just seek
+        }
+        audioEngine.seekToMs(bookmark.timeMs)
+      }
     } catch (err) {
       console.error("[StargateReader] Failed to initialize:", err)
       transport.setChapter("Failed to load book data")
@@ -335,6 +432,20 @@ export function createStargateReader(
         }
       )
 
+      // Reset chapter tracking
+      lastChapterIndex = -1
+
+      // Update chapter markers for new manifest
+      if (chapters.length > 0) {
+        const starts = audioEngine.getSegmentAbsoluteStartMs()
+        const total = audioEngine.getTotalDurationMs()
+        if (total > 0) {
+          transport.setChapterMarkers(
+            chapters.map(c => starts[c.firstSegmentIndex] / total)
+          )
+        }
+      }
+
       // Seek to approximate position
       audioEngine.seekToSegment(savedSegmentIndex)
 
@@ -357,8 +468,33 @@ export function createStargateReader(
     const currentMs = audioEngine?.getCurrentTimeMs() ?? 0
     const totalMs = audioEngine?.getTotalDurationMs() ?? 0
 
-    // Update time display
+    // Update time display and scrub bar progress
     transport.setTime(currentMs, totalMs)
+    if (totalMs > 0) {
+      transport.setProgress(currentMs / totalMs)
+    }
+
+    // Autosave bookmark during playback
+    if (isPlaying && currentMs - lastAutosaveMs > AUTOSAVE_INTERVAL_MS) {
+      lastAutosaveMs = currentMs
+      persistBookmark()
+    }
+
+    // Chapter transition detection
+    if (audioEngine && chapters.length > 0) {
+      const segIdx = audioEngine.getCurrentSegmentIndex()
+      let chapterIdx = 0
+      for (let i = chapters.length - 1; i >= 0; i--) {
+        if (segIdx >= chapters[i].firstSegmentIndex) {
+          chapterIdx = i
+          break
+        }
+      }
+      if (chapterIdx !== lastChapterIndex) {
+        lastChapterIndex = chapterIdx
+        chapterOverlay.show(chapters[chapterIdx].title)
+      }
+    }
 
     // Find current word
     if (timelineWords.length > 0) {
@@ -400,24 +536,32 @@ export function createStargateReader(
   // Kick off data loading
   void initialize()
 
-  // --- Return dispose handle ---
-  return {
-    dispose: () => {
-      disposed = true
-      document.removeEventListener("visibilitychange", handleVisibilityChange)
-      resizeObserver.disconnect()
+  // --- Dispose (named so we can late-bind to the close button) ---
+  function dispose() {
+    if (disposed) return
+    disposed = true
 
-      transport.dispose()
-      audioEngine?.dispose()
-      waveformCache?.dispose()
-      wordStream?.dispose()
-      oscilloscope?.dispose()
-      starfield?.dispose()
-      glow.dispose()
-      engine.stopRenderLoop()
-      scene.dispose()
-      engine.dispose()
-      wrapper.remove()
-    },
+    document.removeEventListener("visibilitychange", handleVisibilityChange)
+    resizeObserver.disconnect()
+
+    persistBookmark()
+    closeButton.dispose()
+    chapterOverlay.dispose()
+    transport.dispose()
+    audioEngine?.dispose()
+    waveformCache?.dispose()
+    wordStream?.dispose()
+    oscilloscope?.dispose()
+    starfield?.dispose()
+    glow.dispose()
+    engine.stopRenderLoop()
+    scene.dispose()
+    engine.dispose()
+    wrapper.remove()
   }
+
+  // Wire close button to full dispose
+  disposeFn = dispose
+
+  return { dispose }
 }

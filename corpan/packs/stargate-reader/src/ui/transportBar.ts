@@ -3,10 +3,17 @@ export type TransportBar = {
   setChapter: (title: string) => void
   setTime: (currentMs: number, totalMs: number) => void
   setLanguages: (languages: string[], current: string) => void
+  setProgress: (fraction: number) => void
+  setChapterMarkers: (fractions: number[]) => void
   onPlay: (cb: () => void) => void
   onPause: (cb: () => void) => void
   onPrevChapter: (cb: () => void) => void
   onNextChapter: (cb: () => void) => void
+  onSkipBack: (cb: () => void) => void
+  onSkipForward: (cb: () => void) => void
+  onScrubStart: (cb: () => void) => void
+  onScrubMove: (cb: (fraction: number) => void) => void
+  onScrubEnd: (cb: (fraction: number) => void) => void
   onLanguageChange: (cb: (lang: string) => void) => void
   dispose: () => void
 }
@@ -19,11 +26,13 @@ function formatTime(ms: number): string {
 }
 
 /**
- * Create the bottom transport bar with play/pause, chapter skip, and language selector.
+ * Create the bottom transport bar with play/pause, chapter skip,
+ * ±30s skip, scrub bar, and language selector.
  *
  * Layout:
  *   Top row:  [chapter title]              [elapsed / total]
- *   Bottom:   [|◀]  [▶/❚❚]  [▶|]  [EN ▾]
+ *   Scrub:    [═══════════●═══════════════════════════════════]
+ *   Bottom:   [⏮]  [−30]  [▶/❚❚]  [+30]  [⏭]  [EN ▾]
  */
 export function createTransportBar(parent: HTMLElement): TransportBar {
   let playing = false
@@ -31,7 +40,15 @@ export function createTransportBar(parent: HTMLElement): TransportBar {
   let pauseCb: (() => void) | null = null
   let prevCb: (() => void) | null = null
   let nextCb: (() => void) | null = null
+  let skipBackCb: (() => void) | null = null
+  let skipForwardCb: (() => void) | null = null
+  let scrubStartCb: (() => void) | null = null
+  let scrubMoveCb: ((fraction: number) => void) | null = null
+  let scrubEndCb: ((fraction: number) => void) | null = null
   let langCb: ((lang: string) => void) | null = null
+
+  // Scrub state
+  let isDragging = false
 
   // --- Container ---
   const bar = document.createElement("div")
@@ -52,6 +69,73 @@ export function createTransportBar(parent: HTMLElement): TransportBar {
   timeLabel.textContent = "0:00 / 0:00"
   topRow.appendChild(timeLabel)
 
+  // --- Scrub bar ---
+  const scrub = document.createElement("div")
+  scrub.className = "stargate-scrub"
+  bar.appendChild(scrub)
+
+  const scrubTrack = document.createElement("div")
+  scrubTrack.className = "stargate-scrub-track"
+  scrub.appendChild(scrubTrack)
+
+  const scrubFill = document.createElement("div")
+  scrubFill.className = "stargate-scrub-fill"
+  scrubTrack.appendChild(scrubFill)
+
+  const scrubChapters = document.createElement("div")
+  scrubChapters.className = "stargate-scrub-chapters"
+  scrubTrack.appendChild(scrubChapters)
+
+  const scrubThumb = document.createElement("div")
+  scrubThumb.className = "stargate-scrub-thumb"
+  scrub.appendChild(scrubThumb)
+
+  function fractionFromPointer(e: PointerEvent): number {
+    const rect = scrubTrack.getBoundingClientRect()
+    return Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width))
+  }
+
+  function updateScrubVisual(fraction: number) {
+    const pct = (fraction * 100).toFixed(2) + "%"
+    scrubFill.style.width = pct
+    scrubThumb.style.left = pct
+  }
+
+  scrub.addEventListener("pointerdown", (e) => {
+    isDragging = true
+    scrub.setPointerCapture(e.pointerId)
+    scrubStartCb?.()
+    const f = fractionFromPointer(e)
+    updateScrubVisual(f)
+    scrubMoveCb?.(f)
+    scrubThumb.classList.add("stargate-scrub-thumb--active")
+  })
+
+  scrub.addEventListener("pointermove", (e) => {
+    if (!isDragging) return
+    const f = fractionFromPointer(e)
+    updateScrubVisual(f)
+    scrubMoveCb?.(f)
+  })
+
+  scrub.addEventListener("pointerup", (e) => {
+    if (!isDragging) return
+    isDragging = false
+    scrub.releasePointerCapture(e.pointerId)
+    const f = fractionFromPointer(e)
+    scrubEndCb?.(f)
+    scrubThumb.classList.remove("stargate-scrub-thumb--active")
+  })
+
+  scrub.addEventListener("pointercancel", (e) => {
+    if (!isDragging) return
+    isDragging = false
+    scrub.releasePointerCapture(e.pointerId)
+    const f = fractionFromPointer(e)
+    scrubEndCb?.(f)
+    scrubThumb.classList.remove("stargate-scrub-thumb--active")
+  })
+
   // --- Bottom row (controls) ---
   const controls = document.createElement("div")
   controls.className = "stargate-transport-controls"
@@ -64,6 +148,14 @@ export function createTransportBar(parent: HTMLElement): TransportBar {
   prevBtn.title = "Previous chapter"
   prevBtn.addEventListener("click", () => prevCb?.())
   controls.appendChild(prevBtn)
+
+  // Skip back 30s
+  const skipBackBtn = document.createElement("button")
+  skipBackBtn.className = "stargate-transport-btn stargate-skip-btn"
+  skipBackBtn.textContent = "\u221230"
+  skipBackBtn.title = "Back 30 seconds"
+  skipBackBtn.addEventListener("click", () => skipBackCb?.())
+  controls.appendChild(skipBackBtn)
 
   // Play / Pause
   const playBtn = document.createElement("button")
@@ -78,6 +170,14 @@ export function createTransportBar(parent: HTMLElement): TransportBar {
     }
   })
   controls.appendChild(playBtn)
+
+  // Skip forward 30s
+  const skipForwardBtn = document.createElement("button")
+  skipForwardBtn.className = "stargate-transport-btn stargate-skip-btn"
+  skipForwardBtn.textContent = "+30"
+  skipForwardBtn.title = "Forward 30 seconds"
+  skipForwardBtn.addEventListener("click", () => skipForwardCb?.())
+  controls.appendChild(skipForwardBtn)
 
   // Next chapter
   const nextBtn = document.createElement("button")
@@ -112,6 +212,21 @@ export function createTransportBar(parent: HTMLElement): TransportBar {
       timeLabel.textContent = `${formatTime(currentMs)} / ${formatTime(totalMs)}`
     },
 
+    setProgress(fraction: number) {
+      if (isDragging) return
+      updateScrubVisual(fraction)
+    },
+
+    setChapterMarkers(fractions: number[]) {
+      scrubChapters.innerHTML = ""
+      for (const f of fractions) {
+        const marker = document.createElement("div")
+        marker.className = "stargate-scrub-marker"
+        marker.style.left = (f * 100).toFixed(2) + "%"
+        scrubChapters.appendChild(marker)
+      }
+    },
+
     setLanguages(languages: string[], current: string) {
       langSelect.innerHTML = ""
       for (const lang of languages) {
@@ -129,6 +244,11 @@ export function createTransportBar(parent: HTMLElement): TransportBar {
     onPause(cb: () => void) { pauseCb = cb },
     onPrevChapter(cb: () => void) { prevCb = cb },
     onNextChapter(cb: () => void) { nextCb = cb },
+    onSkipBack(cb: () => void) { skipBackCb = cb },
+    onSkipForward(cb: () => void) { skipForwardCb = cb },
+    onScrubStart(cb: () => void) { scrubStartCb = cb },
+    onScrubMove(cb: (fraction: number) => void) { scrubMoveCb = cb },
+    onScrubEnd(cb: (fraction: number) => void) { scrubEndCb = cb },
     onLanguageChange(cb: (lang: string) => void) { langCb = cb },
 
     dispose() {

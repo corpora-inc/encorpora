@@ -50,14 +50,14 @@ export const OSCILLOSCOPE_WIDTH = 12
 export const OSCILLOSCOPE_SEGMENTS = 128
 
 /** Oscilloscope max amplitude (world units) — swings wildly across the screen */
-export const OSCILLOSCOPE_AMPLITUDE = 50.0
+export const OSCILLOSCOPE_AMPLITUDE = 33.0
 
 /** Oscilloscope trace width (world units) — thin ribbon band */
 export const OSCILLOSCOPE_TRACE_WIDTH = 0.08
 
 
-/** Oscilloscope vertical position (world units) — at the now-plane */
-export const OSCILLOSCOPE_Y = 0
+/** Oscilloscope vertical position (world units) — shifted ~10% below center */
+export const OSCILLOSCOPE_Y = -0.05
 
 /** Number of background starfield particles */
 export const STARFIELD_COUNT = 2000
