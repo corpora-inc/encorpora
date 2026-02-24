@@ -16,6 +16,7 @@ export type AudioEngine = {
   getSegmentAbsoluteStartMs: () => number[]
   isPlaying: () => boolean
   getAnalyserData: () => Uint8Array
+  getFloatTimeDomain: () => Float32Array
   getFrequencyData: () => Uint8Array
   dispose: () => void
 }
@@ -83,6 +84,7 @@ export function createAudioEngine(
 
   // Analyser data buffers
   const timeDomainData = new Uint8Array(OSCILLOSCOPE_SAMPLES)
+  const floatTimeDomainData = new Float32Array(OSCILLOSCOPE_SAMPLES)
   const frequencyData = new Uint8Array(OSCILLOSCOPE_SAMPLES)
 
   function ensureContext(): AudioContext | null {
@@ -91,7 +93,7 @@ export function createAudioEngine(
       ctx = new AudioCtx()
       analyser = ctx.createAnalyser()
       analyser.fftSize = OSCILLOSCOPE_SAMPLES * 2
-      analyser.smoothingTimeConstant = 0.92
+      analyser.smoothingTimeConstant = 0
 
       gainNode = ctx.createGain()
       gainNode.gain.value = isIOS ? 1.5 : 1.0
@@ -402,6 +404,13 @@ export function createAudioEngine(
         analyser.getByteTimeDomainData(timeDomainData)
       }
       return timeDomainData
+    },
+
+    getFloatTimeDomain: (): Float32Array => {
+      if (analyser) {
+        analyser.getFloatTimeDomainData(floatTimeDomainData)
+      }
+      return floatTimeDomainData
     },
 
     getFrequencyData: (): Uint8Array => {

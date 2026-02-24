@@ -23,6 +23,7 @@ import { createWaveformCache, type WaveformCache } from "./audio/waveformExtract
 import { createWordStream, type WordStream } from "./rendering/wordStream"
 import { createOscilloscope, type Oscilloscope } from "./rendering/oscilloscope"
 import { createWaveformStream, type WaveformStream } from "./rendering/waveformStream"
+import { createPulseRing, type PulseRing } from "./rendering/pulseRing"
 import { createStarfield, type Starfield } from "./rendering/starfield"
 import { createTransportBar } from "./ui/transportBar"
 import { createChapterOverlay, type ChapterOverlay } from "./ui/chapterOverlay"
@@ -127,6 +128,7 @@ export function createStargateReader(
   let wordStream: WordStream | null = null
   let waveformStream: WaveformStream | null = null
   let oscilloscope: Oscilloscope | null = null
+  let pulseRing: PulseRing | null = null
   let starfield: Starfield | null = null
   let audioEngine: AudioEngine | null = null
   let waveformCache: WaveformCache | null = null
@@ -359,6 +361,9 @@ export function createStargateReader(
       oscilloscope = createOscilloscope(scene)
       oscilloscope.mesh.isVisible = prefs.oscilloscope
 
+      // Create pulse ring — amplitude circle at the NOW plane
+      pulseRing = createPulseRing(scene)
+
       // Rendering group depth clearing: words on top of stream, oscilloscope on top of all
       scene.setRenderingAutoClearDepthStencil(1, true, true, true)
       scene.setRenderingAutoClearDepthStencil(2, true, true, true)
@@ -543,18 +548,22 @@ export function createStargateReader(
       waveformStream.update(currentMs, timelineWords, waveformCache, currentWordHint)
     }
 
-    // Update oscilloscope
-    if (oscilloscope && oscilloscope.mesh.isVisible && audioEngine) {
+    // Update oscilloscope + pulse ring
+    if (audioEngine && (oscilloscope?.mesh.isVisible || pulseRing)) {
       const analyserData = audioEngine.getAnalyserData()
-      // Calculate intensity from analyser data
-      let sum = 0
-      for (let i = 0; i < analyserData.length; i++) {
-        const v = (analyserData[i] - 128) / 128
-        sum += v * v
+
+      // Byte-based intensity for oscilloscope
+      const instant = Math.abs(analyserData[analyserData.length - 1] - 128) / 128
+
+      if (oscilloscope?.mesh.isVisible) {
+        oscilloscope.update(analyserData, Math.max(instant, 0.15))
       }
-      const rms = Math.sqrt(sum / analyserData.length)
-      const intensity = Math.max(Math.min(rms * 5, 1), 0.15)
-      oscilloscope.update(analyserData, intensity)
+      if (pulseRing) {
+        // Float32 time domain — full precision, no 8-bit quantization
+        const floatData = audioEngine.getFloatTimeDomain()
+        const sample = Math.abs(floatData[floatData.length - 1])
+        pulseRing.update(Math.min(sample * 5, 1))
+      }
     }
 
     scene.render()
@@ -589,6 +598,7 @@ export function createStargateReader(
     wordStream?.dispose()
     waveformStream?.dispose()
     oscilloscope?.dispose()
+    pulseRing?.dispose()
     starfield?.dispose()
     glow.dispose()
     engine.stopRenderLoop()

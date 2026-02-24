@@ -15,9 +15,7 @@ import {
   LOOK_AHEAD_Z,
   LOOK_BEHIND_Z,
   MS_PER_Z_UNIT,
-  WORD_FONT,
   WORD_FONT_SIZE,
-  WORD_MAX_PLANE_WIDTH,
   WORD_POOL_SIZE,
   WORD_SCALE,
   WORD_TEXTURE_SIZE,
@@ -30,22 +28,12 @@ type WordMesh = {
   material: StandardMaterial
   active: boolean
   assignedWord: string
-  /** Current plane width set by text measurement */
-  planeWidth: number
 }
 
 export type WordStream = {
   root: TransformNode
   update: (currentMs: number, words: TimelineWord[], currentWordIndex: number) => void
   dispose: () => void
-}
-
-/**
- * Measure text width using a shared canvas context for layout calculations.
- */
-function measureTextWidth(text: string, ctx: CanvasRenderingContext2D): number {
-  ctx.font = WORD_FONT
-  return ctx.measureText(text).width
 }
 
 /**
@@ -59,10 +47,6 @@ function measureTextWidth(text: string, ctx: CanvasRenderingContext2D): number {
 export function createWordStream(scene: Scene): WordStream {
   const root = new TransformNode("word-stream", scene)
   const pool: WordMesh[] = []
-
-  // Shared measurement canvas
-  const measureCanvas = document.createElement("canvas")
-  const measureCtx = measureCanvas.getContext("2d")!
 
   // Color palette
   const normalColor = new Color3(0.85, 0.92, 1.0)
@@ -103,7 +87,6 @@ export function createWordStream(scene: Scene): WordStream {
       material,
       active: false,
       assignedWord: "",
-      planeWidth: 1,
     })
   }
 
@@ -119,17 +102,22 @@ export function createWordStream(scene: Scene): WordStream {
     const h = 384
 
     ctx.clearRect(0, 0, w, h)
-    ctx.font = WORD_FONT
+
+    // Start at default font size, shrink if text overflows texture width
+    let fontSize = WORD_FONT_SIZE
+    const pad = w * 0.05
+    ctx.font = `bold ${fontSize}px 'Trebuchet MS', 'Lucida Sans Unicode', sans-serif`
+    let textWidth = ctx.measureText(text).width
+    if (textWidth > w - pad) {
+      fontSize = Math.floor(fontSize * (w - pad) / textWidth)
+      ctx.font = `bold ${fontSize}px 'Trebuchet MS', 'Lucida Sans Unicode', sans-serif`
+    }
+
     ctx.fillStyle = "#ffffff"
     ctx.textAlign = "center"
     ctx.textBaseline = "middle"
     ctx.fillText(text, w / 2, h / 2)
     mesh.texture.update()
-
-    // Measure text width for x-scaling, cap at max to compress long words
-    const textWidth = measureTextWidth(text, measureCtx)
-    const aspect = textWidth / WORD_FONT_SIZE
-    mesh.planeWidth = Math.min(WORD_MAX_PLANE_WIDTH, Math.max(0.5, aspect * 1.0))
   }
 
   let poolIndex = 0
@@ -203,8 +191,8 @@ export function createWordStream(scene: Scene): WordStream {
         // Scale: current word gets a boost
         const isCurrent = i === currentWordIndex
         const scale = isCurrent ? CURRENT_WORD_SCALE : WORD_SCALE
-        mesh.plane.scaling.x = mesh.planeWidth * scale
-        mesh.plane.scaling.y = mesh.planeWidth * scale
+        mesh.plane.scaling.x = scale
+        mesh.plane.scaling.y = scale
 
         // Color & opacity
         const alpha = computeFade(z)

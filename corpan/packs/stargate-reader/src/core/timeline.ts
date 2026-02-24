@@ -64,7 +64,7 @@ export function buildTimeline(
  * - Past words (z < 0): continue at baseSlope, exiting out the bottom
  */
 export function crawlY(z: number): number {
-  const baseSlope = 0.20
+  const baseSlope = 0.35
   if (z <= 0) return baseSlope * z
   const t = Math.min(z / LOOK_AHEAD_Z, 1)
   const extra = CRAWL_HEIGHT - baseSlope * LOOK_AHEAD_Z
