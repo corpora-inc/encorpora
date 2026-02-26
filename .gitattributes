@@ -1,1 +1,2 @@
 *.sqlite3 filter=lfs diff=lfs merge=lfs -text
+u10-7v7/images/*.png filter=lfs diff=lfs merge=lfs -text

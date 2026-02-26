@@ -1,0 +1,13 @@
+title: "U10 7v7: The Playbook"
+manuscript_dir: manuscript
+manuscript_glob: "[0-9][0-9]-*.md"
+image:
+  style_prompt: ""
+  negative_prompt: ""
+  backend: sd35
+  width: 1024
+  height: 1024
+  steps: 28
+  guidance_scale: 4.5
+  candidates: 4
+  map_dir: maps
