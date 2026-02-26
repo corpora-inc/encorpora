@@ -78,7 +78,7 @@ In Europe, Charlemagne was crowned Holy Roman Emperor in 800 CE and was trying t
 
 That last parallel is important. Monte Albán did not collapse in isolation. Across Mesoamerica, from the highlands of Oaxaca to the lowlands of Guatemala, major cities were being abandoned during the eighth and ninth centuries. Something was happening on a continental scale — some combination of drought, warfare, political instability, and environmental exhaustion — that undermined the foundations of Classic-period civilization across a vast region.
 
-![World contemporaries timeline](../images/placeholders/15-world-timeline.png)
+![The Grand Plaza of Monte Alban in its prime](../images/placeholders/15-monte-alban-peak.png)
 
 The point of these comparisons is not to rank civilizations or to argue about who was "ahead" or "behind." The point is simpler and more important: the Zapotecs who built Monte Albán were part of the human story. They were working with the same raw materials — intelligence, ambition, stone, water, language, belief — as everyone else on Earth. They produced a civilization that, during its twelve centuries of existence, was the peer of any civilization on the planet.
 

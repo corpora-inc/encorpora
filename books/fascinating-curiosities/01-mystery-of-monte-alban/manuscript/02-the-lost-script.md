@@ -92,7 +92,7 @@ Most real-world writing systems are messy combinations of these types. Chinese c
 
 The Zapotec script, according to the model developed by the epigrapher Javier Urcid in his landmark 2001 study *Zapotec Hieroglyphic Writing*, is a **logo-syllabic** system. This means it combines logograms — symbols that stand for whole words — with syllabograms — symbols that represent syllables or sounds. The texts are read in columns, from top to bottom.
 
-![Diagram comparing logographic, syllabic, and alphabetic writing](../images/placeholders/09-script-comparison.png)
+![A Zapotec stone inscription with carved glyphs](../images/placeholders/09-zapotec-glyphs.png)
 
 The parts of the system that scholars *can* read are the calendrical signs. The 260-day ritual calendar used across Mesoamerica — called the *piye* in Zapotec — combines twenty day names with thirteen numbers, creating 260 unique day designations. These day names and numbers appear throughout the Zapotec inscriptions and are reasonably well understood. When a stone reads "3 Monkey" or "12 Earthquake," scholars are confident in the interpretation.
 
@@ -139,7 +139,7 @@ But they did not kill the Zapotec script, because it was already dead.
 
 Monte Albán was abandoned around 900 CE. The Spanish arrived around 1521. That is a gap of roughly six hundred years. Six centuries during which the mountaintop city sat empty, its plazas slowly filling with dirt and vegetation, its carved stones baking and cracking in the sun. By the time a Spanish soldier first climbed that mountain, the Zapotec script had been out of use for as long as the time between the fall of the Roman Empire and the Italian Renaissance.
 
-![Timeline showing the 600-year gap](../images/placeholders/10-timeline-gap.png)
+![A weathered stone inscription being reclaimed by nature](../images/placeholders/10-weathered-stone.png)
 
 So how does a writing system die without being killed?
 
@@ -190,7 +190,7 @@ And then there are the discoveries that keep the field moving.
 
 In 2018, researchers from Mexico's National Institute of Anthropology and History — known by its Spanish acronym, INAH (ee-NAH) — announced the discovery of a massive stucco frieze at Atzompa (aht-SOHM-pah), a hilltop site about a kilometer northwest of Monte Albán that served as a satellite community during the city's height. The frieze stretches roughly fifteen meters — about fifty feet — and dates to between 650 and 850 CE. It features quetzal birds, jaguars, monkeys, and supernatural figures, along with Zapotec glyphs. It is one of the longest continuous examples of Zapotec writing ever found in the Oaxaca Valley.
 
-![Portraits of Caso, Marcus, and Urcid with a Zapotec glyph](../images/placeholders/11-scholars.png)
+![An archaeologist documenting a carved stone inscription](../images/placeholders/11-archaeologist.png)
 
 Discoveries like the Atzompa frieze matter because they expand the corpus — the total body of material available for study. Decipherment is partly a numbers game. The more texts you have, the more patterns you can identify. The more patterns you identify, the more likely you are to crack individual signs. Maya decipherment accelerated dramatically as more inscriptions were discovered and published. The Zapotec corpus is still small by comparison, but it is growing.
 

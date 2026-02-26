@@ -47,7 +47,7 @@ And they traded. Magnetite mirrors — polished stones made from a naturally mag
 
 San José Mogote also showed the first clear signs of social inequality in the Valley of Oaxaca. Some houses were larger and better built than others. Some burials contained more grave goods. Certain families seem to have had preferential access to the imported prestige items — the magnetite mirrors, the finest obsidian, the shell ornaments. A hierarchy was forming. And at some point, the people at the top of that hierarchy began carving things into stone.
 
-![Map of the Valley of Oaxaca showing its three arms](../images/placeholders/02-valley-map.png)
+![The Valley of Oaxaca stretching to the horizon](../images/placeholders/02-valley-landscape.png)
 
 This brings us to one of the most important objects in the story of Mesoamerican writing.
 
@@ -100,7 +100,7 @@ The political theory rests on geography. Marcus and Flannery emphasized that Mon
 
 The honest answer is that we do not know for certain which motive was primary. It was probably some combination of all three, in proportions that shifted over time. The defensive wall suggests real fear. The astronomical alignments suggest religious purpose. The geography suggests political calculation. These are not mutually exclusive.
 
-![The mountaintop being terraced and leveled](../images/placeholders/04-construction.png)
+![Stone terraces cascading down the hillside](../images/placeholders/04-stone-terraces.png)
 
 What we do know is the result. Within two or three centuries, Monte Albán had become the undisputed capital of the Valley of Oaxaca. It would remain so for over a thousand years.
 
@@ -129,7 +129,7 @@ They traded, too. Monte Albán was not an isolated mountaintop fortress. Despite
 
 They also played the Mesoamerican ball game. The ball court at Monte Albán sits in the northeast corner of the Grand Plaza — a long, narrow, I-shaped enclosure flanked by sloping stone walls. Players used their hips to strike a heavy rubber ball, attempting to drive it through stone rings or into scoring zones at either end of the court. The game was played across Mesoamerica for over three thousand years, from the Olmecs to the Aztecs, and it was never just a sport. It was ritual, political theater, and possibly astronomical allegory — all at once. We will return to the ball game later.
 
-![Daily life on the terraces with the ball court visible](../images/placeholders/05-daily-life.png)
+![A woman grinding corn on a stone metate](../images/placeholders/05-woman-metate.png)
 
 But the thing that makes Monte Albán's story different from the stories of a thousand other ancient settlements — the thing that makes it a genuine mystery — is not the terraces or the temples or the food. It is the writing.
 
