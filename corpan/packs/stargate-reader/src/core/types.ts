@@ -60,6 +60,23 @@ export type TimelineWord = {
   wordIndex: number
 }
 
+/** Chapter info derived from segments */
+export type ChapterInfo = {
+  chapter: number
+  title: string
+  firstSegmentIndex: number
+}
+
+/** Book catalog entry for multi-book support */
+export type BookCatalogEntry = {
+  id: string
+  name: string
+  volume: number
+  series: string
+  hasAudio: boolean
+  availableLanguages: string[]
+}
+
 /** Playback state */
 export type PlaybackState = "stopped" | "playing" | "paused"
 

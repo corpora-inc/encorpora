@@ -1,5 +1,4 @@
 import type { AudioManifest, BookSegment } from "../core/types"
-import { resolveAudioUrl } from "../data/segmentLoader"
 import { PRELOAD_AHEAD, OSCILLOSCOPE_SAMPLES } from "../core/constants"
 
 export type AudioEngine = {
@@ -8,10 +7,18 @@ export type AudioEngine = {
   pause: () => void
   stop: () => void
   seekToSegment: (index: number) => void
+  seekToMs: (targetMs: number) => void
+  /** Update position state without starting audio — for scrub preview */
+  seekToMsPreview: (targetMs: number) => void
   getCurrentTimeMs: () => number
+  getCurrentSegmentIndex: () => number
+  getTotalDurationMs: () => number
+  getSegmentAbsoluteStartMs: () => number[]
   isPlaying: () => boolean
   getAnalyserData: () => Uint8Array
+  getFloatTimeDomain: () => Float32Array
   getFrequencyData: () => Uint8Array
+  checkHealth: () => void
   dispose: () => void
 }
 
@@ -30,8 +37,10 @@ const isIOS =
 export function createAudioEngine(
   segments: BookSegment[],
   manifest: AudioManifest,
+  resolveAudioUrl: (relativePath: string) => string,
   onSegmentChange?: (index: number) => void,
-  onPlaybackEnd?: () => void
+  onPlaybackEnd?: () => void,
+  onBufferDecoded?: (segmentId: string, buffer: AudioBuffer) => void
 ): AudioEngine {
   const AudioCtx =
     typeof window !== "undefined"
@@ -70,8 +79,13 @@ export function createAudioEngine(
     totalDurationMs = cursor
   }
 
+  // Generation counter — incremented on every seek/stop/pause to invalidate
+  // stale async playSegment calls and pending onended/setTimeout callbacks
+  let playbackGeneration = 0
+
   // Analyser data buffers
   const timeDomainData = new Uint8Array(OSCILLOSCOPE_SAMPLES)
+  const floatTimeDomainData = new Float32Array(OSCILLOSCOPE_SAMPLES)
   const frequencyData = new Uint8Array(OSCILLOSCOPE_SAMPLES)
 
   function ensureContext(): AudioContext | null {
@@ -80,14 +94,32 @@ export function createAudioEngine(
       ctx = new AudioCtx()
       analyser = ctx.createAnalyser()
       analyser.fftSize = OSCILLOSCOPE_SAMPLES * 2
-      analyser.smoothingTimeConstant = 0.8
+      analyser.smoothingTimeConstant = 0
 
       gainNode = ctx.createGain()
       gainNode.gain.value = isIOS ? 1.5 : 1.0
       gainNode.connect(analyser)
       analyser.connect(ctx.destination)
+
+      // Monitor for OS-level suspend/resume (screen lock, Bluetooth, etc.)
+      ctx.onstatechange = () => {
+        const state: string = ctx?.state ?? ""
+        if (state === "running" && playing && !currentSource) {
+          playSegment(currentSegmentIndex, segmentPlaybackOffset)
+        }
+      }
     }
     return ctx
+  }
+
+  async function resumeContext(context: AudioContext): Promise<boolean> {
+    if (context.state === "running") return true
+    try {
+      await context.resume()
+      return (context.state as string) === "running"
+    } catch {
+      return false
+    }
   }
 
   async function loadBuffer(segmentId: string): Promise<AudioBuffer | null> {
@@ -112,6 +144,7 @@ export function createAudioEngine(
       .then((buffer) => {
         bufferCache.set(segmentId, buffer)
         loadingPromises.delete(segmentId)
+        onBufferDecoded?.(segmentId, buffer)
         return buffer
       })
       .catch((err) => {
@@ -134,15 +167,36 @@ export function createAudioEngine(
     }
   }
 
+  function stopSource() {
+    if (currentSource) {
+      try { currentSource.stop() } catch { /* already stopped */ }
+      try { currentSource.disconnect() } catch { /* already disconnected */ }
+      currentSource = null
+    }
+  }
+
   async function playSegment(index: number, offset: number = 0) {
+    const gen = ++playbackGeneration
+
     if (disposed || index >= segments.length) {
       playing = false
       onPlaybackEnd?.()
       return
     }
 
+    stopSource()
+
     const context = ensureContext()
     if (!context || !gainNode) return
+
+    // Resume context if suspended (browser autoplay policy, tab switch, etc.)
+    if (context.state !== "running") {
+      const resumed = await resumeContext(context)
+      if (!resumed) {
+        // Context couldn't resume — onstatechange will retry when it recovers
+        return
+      }
+    }
 
     currentSegmentIndex = index
     onSegmentChange?.(index)
@@ -157,13 +211,32 @@ export function createAudioEngine(
     }
 
     const buffer = await loadBuffer(seg.id)
-    if (!buffer || disposed) return
+    if (!buffer || disposed || gen !== playbackGeneration) return
 
-    // Stop previous source
-    if (currentSource) {
-      try { currentSource.stop() } catch { /* already stopped */ }
-      currentSource.disconnect()
-      currentSource = null
+    // Re-check after async — another seek may have started a new source
+    stopSource()
+
+    // Clamp offset against actual buffer duration (manifest duration_ms
+    // can differ slightly from decoded buffer length)
+    const bufferDurationMs = buffer.duration * 1000
+    const clampedOffset = Math.min(offset, bufferDurationMs)
+
+    // If less than 50ms of audio remains, skip to next segment
+    // instead of playing a near-zero-length sound
+    if (bufferDurationMs - clampedOffset < 50) {
+      accumulatedTimeMs = segmentAbsoluteStartMs[index] + entry.duration_ms
+      segmentPlaybackOffset = 0
+      if (entry.pause_after_ms > 0) {
+        segmentStartedAtCtxTime = context.currentTime
+        setTimeout(() => {
+          if (!disposed && playing && gen === playbackGeneration) {
+            playSegment(index + 1)
+          }
+        }, entry.pause_after_ms)
+      } else {
+        playSegment(index + 1)
+      }
+      return
     }
 
     const source = context.createBufferSource()
@@ -171,18 +244,19 @@ export function createAudioEngine(
     source.connect(gainNode)
 
     segmentStartedAtCtxTime = context.currentTime
-    segmentPlaybackOffset = offset
+    segmentPlaybackOffset = clampedOffset
     accumulatedTimeMs = segmentAbsoluteStartMs[index]
 
     source.onended = () => {
-      if (disposed || !playing) return
-      // Add this segment's duration + pause to accumulated time
-      accumulatedTimeMs += entry.duration_ms + entry.pause_after_ms
+      if (disposed || !playing || gen !== playbackGeneration) return
 
-      // Schedule next segment after pause
+      accumulatedTimeMs = segmentAbsoluteStartMs[index] + entry.duration_ms
+      segmentPlaybackOffset = 0
+      if (ctx) segmentStartedAtCtxTime = ctx.currentTime
+
       if (entry.pause_after_ms > 0) {
         setTimeout(() => {
-          if (!disposed && playing) {
+          if (!disposed && playing && gen === playbackGeneration) {
             playSegment(index + 1)
           }
         }, entry.pause_after_ms)
@@ -191,18 +265,17 @@ export function createAudioEngine(
       }
     }
 
-    source.start(0, offset / 1000)
+    source.start(0, clampedOffset / 1000)
     currentSource = source
 
-    // Preload upcoming segments
     preloadAhead()
   }
 
   return {
     unlock: () => {
       const context = ensureContext()
-      if (context && context.state === "suspended") {
-        void context.resume()
+      if (context && context.state !== "running") {
+        resumeContext(context).catch(() => {})
       }
       preloadAhead()
     },
@@ -212,8 +285,14 @@ export function createAudioEngine(
       playing = true
 
       const context = ensureContext()
-      if (context && context.state === "suspended") {
-        void context.resume()
+      if (context && context.state !== "running") {
+        // Attempt resume — if it fails, onstatechange will restart playback
+        resumeContext(context).then((ok) => {
+          if (ok && playing) {
+            playSegment(currentSegmentIndex, segmentPlaybackOffset)
+          }
+        }).catch(() => {})
+        return
       }
 
       playSegment(currentSegmentIndex, segmentPlaybackOffset)
@@ -222,6 +301,7 @@ export function createAudioEngine(
     pause: () => {
       if (!playing) return
       playing = false
+      playbackGeneration++
 
       // Calculate how far into the current segment we are
       if (ctx && currentSource) {
@@ -229,34 +309,24 @@ export function createAudioEngine(
         segmentPlaybackOffset += elapsed
       }
 
-      if (currentSource) {
-        try { currentSource.stop() } catch { /* already stopped */ }
-        currentSource.disconnect()
-        currentSource = null
-      }
+      stopSource()
     },
 
     stop: () => {
       playing = false
+      playbackGeneration++
       currentSegmentIndex = 0
       segmentPlaybackOffset = 0
       accumulatedTimeMs = 0
-
-      if (currentSource) {
-        try { currentSource.stop() } catch { /* already stopped */ }
-        currentSource.disconnect()
-        currentSource = null
-      }
+      stopSource()
     },
 
     seekToSegment: (index: number) => {
       const wasPlaying = playing
-      if (currentSource) {
-        try { currentSource.stop() } catch { /* already stopped */ }
-        currentSource.disconnect()
-        currentSource = null
-      }
       playing = false
+      playbackGeneration++
+      stopSource()
+
       currentSegmentIndex = Math.max(0, Math.min(index, segments.length - 1))
       segmentPlaybackOffset = 0
       accumulatedTimeMs = segmentAbsoluteStartMs[currentSegmentIndex] ?? 0
@@ -267,6 +337,81 @@ export function createAudioEngine(
       }
     },
 
+    seekToMs: (targetMs: number) => {
+      const clamped = Math.max(0, Math.min(targetMs, totalDurationMs))
+      const wasPlaying = playing
+
+      playing = false
+      playbackGeneration++
+      stopSource()
+
+      // Binary search for the segment containing targetMs
+      let lo = 0
+      let hi = segments.length - 1
+      let segIdx = 0
+      while (lo <= hi) {
+        const mid = (lo + hi) >>> 1
+        if (segmentAbsoluteStartMs[mid] <= clamped) {
+          segIdx = mid
+          lo = mid + 1
+        } else {
+          hi = mid - 1
+        }
+      }
+
+      // Calculate offset within the segment
+      const entry = manifest.segments[segments[segIdx].id]
+      let offsetWithinSegment = clamped - segmentAbsoluteStartMs[segIdx]
+      if (entry) {
+        offsetWithinSegment = Math.min(offsetWithinSegment, entry.duration_ms)
+      }
+
+      currentSegmentIndex = segIdx
+      segmentPlaybackOffset = offsetWithinSegment
+      accumulatedTimeMs = segmentAbsoluteStartMs[segIdx]
+
+      if (wasPlaying) {
+        playing = true
+        playSegment(segIdx, offsetWithinSegment)
+      }
+    },
+
+    seekToMsPreview: (targetMs: number) => {
+      const clamped = Math.max(0, Math.min(targetMs, totalDurationMs))
+
+      // Invalidate any pending async playback
+      playbackGeneration++
+      stopSource()
+
+      // Binary search for the segment containing targetMs
+      let lo = 0
+      let hi = segments.length - 1
+      let segIdx = 0
+      while (lo <= hi) {
+        const mid = (lo + hi) >>> 1
+        if (segmentAbsoluteStartMs[mid] <= clamped) {
+          segIdx = mid
+          lo = mid + 1
+        } else {
+          hi = mid - 1
+        }
+      }
+
+      const entry = manifest.segments[segments[segIdx].id]
+      let offsetWithinSegment = clamped - segmentAbsoluteStartMs[segIdx]
+      if (entry) {
+        offsetWithinSegment = Math.min(offsetWithinSegment, entry.duration_ms)
+      }
+
+      currentSegmentIndex = segIdx
+      segmentPlaybackOffset = offsetWithinSegment
+      accumulatedTimeMs = segmentAbsoluteStartMs[segIdx]
+
+      // Don't touch `playing` — don't start audio.
+      // getCurrentTimeMs() will return the previewed position
+      // because playing is false (caller paused before scrub).
+    },
+
     getCurrentTimeMs: (): number => {
       if (!ctx || !playing) {
         return accumulatedTimeMs + segmentPlaybackOffset
@@ -274,6 +419,12 @@ export function createAudioEngine(
       const elapsed = (ctx.currentTime - segmentStartedAtCtxTime) * 1000
       return accumulatedTimeMs + segmentPlaybackOffset + elapsed
     },
+
+    getCurrentSegmentIndex: () => currentSegmentIndex,
+
+    getTotalDurationMs: () => totalDurationMs,
+
+    getSegmentAbsoluteStartMs: () => segmentAbsoluteStartMs,
 
     isPlaying: () => playing,
 
@@ -284,6 +435,13 @@ export function createAudioEngine(
       return timeDomainData
     },
 
+    getFloatTimeDomain: (): Float32Array => {
+      if (analyser) {
+        analyser.getFloatTimeDomainData(floatTimeDomainData)
+      }
+      return floatTimeDomainData
+    },
+
     getFrequencyData: (): Uint8Array => {
       if (analyser) {
         analyser.getByteFrequencyData(frequencyData)
@@ -291,15 +449,22 @@ export function createAudioEngine(
       return frequencyData
     },
 
+    checkHealth: () => {
+      if (!playing || !ctx) return
+      if (ctx.state !== "running") {
+        ctx.resume().then(() => {
+          if (playing && !currentSource && ctx?.state === "running") {
+            playSegment(currentSegmentIndex, segmentPlaybackOffset)
+          }
+        }).catch(() => {})
+      }
+    },
+
     dispose: () => {
       disposed = true
       playing = false
-
-      if (currentSource) {
-        try { currentSource.stop() } catch { /* already stopped */ }
-        currentSource.disconnect()
-        currentSource = null
-      }
+      playbackGeneration++
+      stopSource()
       if (ctx) {
         void ctx.close().catch(() => {})
       }
