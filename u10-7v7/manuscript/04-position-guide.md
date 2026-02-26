@@ -1,6 +1,6 @@
 # Position Guide
 
-This chapter describes every position in the 7v7 system. Each section covers the job description, what the position demands physically and mentally, common scenarios the player will face, and the areas every player develops over the season. Players should read their own position section. Coaches should read all of them.
+This chapter describes every position in the 7v7 system. Each section covers the job, what the position asks of the player, key actions on defense and offense, and the areas every player develops over the season. Players should read their own position section. Coaches should read all of them.
 
 Every position in this system follows the same principle: your position gives you a home and a set of responsibilities. The game tells you how to handle those responsibilities second by second. A back who stands on the sideline while a runner breaks through the center is not playing the position — they are standing in a spot. A back who sees the runner, comes to the center, and stops the ball is playing the position. The difference is thinking. Every scenario in this chapter is designed to show what thinking looks like at each position.
 
@@ -12,29 +12,23 @@ One note before diving in: at U10, players should experience multiple positions 
 
 > **Job:** Stop shots. Organize the defense. Start the attack.
 
-The goalkeeper is the only player on the field who can use their hands, and that distinction changes everything about how the position works. The goalkeeper's primary job is stopping the ball from going into the net. Their secondary job is organizing the defenders in front of them — they can see the whole field and should be the loudest voice on the team. Their third job is starting attacks through distribution.
+The goalkeeper is the only player who can use their hands, and that changes everything about the position. Their primary job is stopping the ball from going into the net. Their secondary job is organizing the defense — they can see the whole field and should be the loudest voice on the team. Their third job is starting attacks through distribution. The position demands quick reflexes, bravery, and concentration. A goalkeeper may go five minutes without touching the ball and then face a breakaway — they need to be ready for that moment after minutes of inaction, and they need the strongest reset ability on the team. Five seconds after any moment, they are already focused on the next play.
 
-At U10, the goalkeeper position is unique because many leagues rotate goalkeepers or allow players to volunteer. Whether you have a dedicated goalkeeper or rotate players through the position, every player who steps between the posts needs to understand the basics. A goalkeeper who understands positioning and distribution gives the team a chance to win every game.
+The single most important skill for a U10 goalkeeper is positioning. A goalkeeper who is in the right spot does not need to make spectacular saves — the ball just hits them. The principle is simple: stay on a line between the ball and the center of the goal, one to two yards off the goal line. As the ball moves, the goalkeeper shifts with it. As the ball gets closer, the goalkeeper comes off the line to narrow the angle. A goalkeeper who has come off their line three yards cuts the shooter's angle in half. Teach this with a simple drill: put the ball at different spots around the box and have the goalkeeper move to the correct position. No shots needed — just positioning.
 
-**Physical demands:** The goalkeeper needs quick reflexes and reasonable hand-eye coordination. They do not need to be the most athletic player on the team, but they need to be brave — willing to dive, willing to come out and face a shooter one-on-one, willing to get hit by the ball. Size is an advantage but not a requirement at this age. A goalkeeper who is brave, composed, and well-positioned stops more shots than one who relies on size alone.
+**On defense:**
 
-**Mental demands:** The goalkeeper needs concentration. They may go five minutes without touching the ball, then suddenly face a breakaway. They need to be ready for that moment even after minutes of inaction. They also need the strongest reset ability on the team. The best goalkeepers move on instantly. Five seconds after any moment, they are already focused on the next play. That resilience keeps the team in every game.
+- Narrow the angle — come off the line to cut the shooter's target in half
+- Breakaways — stay on your feet, make yourself big, force the attacker to decide
+- Crosses — if you can get to the ball, come get it and yell "keeper"; if you cannot reach it, stay on your line and be ready for the shot that follows
+- Parry saves wide — every save should send the ball away from the center of the goal, out to the sides
 
-**Positioning:** The single most important thing a U10 goalkeeper can learn is positioning. A goalkeeper who is in the right spot does not need to make spectacular saves — the ball just hits them. The basic positioning principle is simple: the goalkeeper should be on a line between the ball and the center of the goal, about one to two yards off the goal line. As the ball moves left, the goalkeeper shifts left. As the ball moves right, the goalkeeper shifts right. As the ball gets closer, the goalkeeper comes off the line to cut down the angle. As the ball moves farther away, the goalkeeper drops back to protect the full width of the goal.
+**On distribution:**
 
-This is called narrowing the angle, and it is the foundation of goalkeeping. A goalkeeper who is on their line when a shooter is eight yards out presents a huge target. A goalkeeper who has come off their line three yards cuts the shooter's angle in half. Teach this concept with a simple drill: put the ball at different spots around the box, and have the goalkeeper move to the correct position for each one. No shots needed. Just positioning.
-
-**Distribution:** When the goalkeeper has the ball, it goes to the sideline. Not the center. The sideline is the safest first pass on the field. A throw to a back near the touchline gives your team possession in a low-danger area. A throw to the sideline keeps possession in the safest area of the field. The center is congested — the sideline gives the receiver space and time.
-
-At U10, throwing is almost always better than kicking. A throw is more accurate, easier to control for the receiver, and less likely to turn into a 50-50 ball. The goalkeeper should look for the backs near the sidelines first — a short throw to the left back or right back who has positioned near the touchline. From there, the back plays it to the sweeper, and the attack builds through the center. If the league uses a build-out line, there is time to make this decision calmly. If there is no build-out line, the decision needs to be quick because the opponent can press immediately, but the answer is the same: send it to the sideline.
-
-If the opponent is pressing the short options, the goalkeeper kicks it long. The target is down the sideline, not the center of the field. A long kick toward the touchline gives the wing striker a ball to chase in a low-danger area. A long kick to the center is a coin flip that can go either way.
-
-**Common scenarios:**
-
-A one-on-one breakaway. The opponent's attacker is coming straight at the goal with the ball. The goalkeeper comes off the line — aggressively but under control — to narrow the angle. They stay on their feet as long as possible. They do not dive early. They make themselves big and force the attacker to make a decision. If the attacker shoots, the goalkeeper is in position to save it. If the attacker tries to go around, the goalkeeper adjusts. The key in a one-on-one is staying on your feet. A standing goalkeeper controls the situation. A goalkeeper on the ground has given the attacker the choice.
-
-A cross comes into the box. The goalkeeper has to decide whether to come out and catch it or stay on the line. The rule at U10 is simple: if you can get to the ball, come get it. Yell "keeper" so your defenders know to clear out. Catch the ball at the highest point you can. If you cannot get to the ball — it is too far away or too high — stay on your line and be ready for the shot or header that follows. Staying on the line and making the save is always the right choice when the ball is out of reach.
+- Throw to the sideline — the sideline is the safest first pass on the field
+- Look for the backs near the touchline first; from there, the back sends it up the sideline to the wing — that is the connection that starts the counter
+- Know your goalkeeper's punt. If they can consistently hit a wing at midfield down the sideline, punting is a real weapon — it skips the press entirely. If the punt is not there yet, rolling it out to a back with good placement and timing is the better play. Do not ask a goalkeeper to do something they cannot do consistently — adjust to the personnel
+- If punting, aim down the sideline — not the center; a punt toward the touchline gives a wing a ball to chase with the sideline protecting one side
 
 **Areas to develop:**
 
@@ -48,29 +42,22 @@ Directing saves to safety. Every save should send the ball away from the center 
 
 > **Job:** Control the center. Stop the ball. Send it out.
 
-The backs — left back and right back — are the defensive foundation. Their primary job is not to defend the sideline. The sideline defends itself — it is the best defender on the field. The backs' primary job is to control the center of the defensive third alongside the sweeper. In the neutral shape, they form the base of the back triangle, one on each side. But the moment the opponent threatens, both backs pinch in toward the center. The center is where the danger is. At U10, almost every goal comes through the middle. The backs exist to make sure nothing comes through.
+The backs — left back and right back — are the defensive foundation. Their primary job is not to defend the sideline — the sideline defends itself. Their primary job is to control the center of the defensive third alongside the sweeper. In the neutral shape, they form the base of the back triangle. The moment the opponent threatens, both backs pinch toward the center, because the center is where the danger is. At U10, almost every goal comes through the middle. The backs need to resist the instinct to stay wide — most youth coaches teach backs to "hold the flank," but this system does the opposite. The backs pinch in and control the center. The touchline is already there. The center is their home.
 
-In the 6-0 defensive shape, the backs pinch all the way into the center. If the opponent is running a 3v2 against the two backs, they stack in the center and can switch sides to match up with runners. They slow the attack down, they cover the middle, and they stop the ball. No one comes through the center while the backs are doing their job.
+Because the two backs share the same responsibility, they work as a unit. In a 3v2, they stack and switch. In a 2v1, the closer back engages while the other covers. They need quick footwork in short bursts — closing down attackers, shuffling laterally, recovering position. Composure matters: when they win the ball, the instinct is to boot it forward, but the correct play is always to send it out toward the sideline, where it is safe. Communication holds the pairing together: "I have the ball." "Cover center." "Send it out."
 
-Because the two backs share the same primary responsibility — the center — they need to work as a unit. In a 3v2, they stack and switch. In a 2v1, whichever back is closer to the ball engages while the other covers. They need to communicate constantly: "I have the ball." "Cover center." "I am going wide." "Send it out." When the backs communicate, the defensive pairing stays locked together.
+**On defense:**
 
-When a back wins the ball, they send it out. Out means toward the sideline — a pass to their wing up the sideline, a clearance toward the touchline, even a deliberate kick out of bounds if that is the safest option. **The backs always play the ball toward the sideline.** The sideline is safe territory. The ball goes out, toward the sideline, where the wing striker can collect it and go, or where the opponent has to chase it into the corner and deal with the touchline as an extra defender.
+- Pinch to center — both backs control the middle alongside the sweeper; deny the center channel
+- Stack and switch in a 3v2 — stagger in the center and switch sides to match runners
+- If the attacker is wide, pin them to the corner and force a bad cross or a turnover
+- Communicate constantly — "I have ball." "Cover center." "Go wide." "Send it out."
 
-If an opponent has the ball out wide, the nearest back does need to recognize it. They go challenge, they pin the attacker to the corner, they force a bad cross or a turnover. But that is a secondary responsibility. The primary read is always the center first. If there is no threat wide, the backs stay pinched in. Let the opponent kick it to the open player in the corner. That player is in the least threatening spot on the field. A nine-year-old crossing from the corner under pressure gives your center time to set up. Let them try. The center stays locked down.
+**With the ball:**
 
-**Physical demands:** The backs need to be quick in short bursts — closing down attackers who threaten the center and recovering position after a challenge. Footwork matters more than top speed. A back who stays balanced and shuffles laterally controls every attacker they face.
-
-**Mental demands:** The backs need to resist the instinct to stay wide. Most youth coaches teach backs to "hold the flank." This system does the opposite: the backs pinch in and control the center. They need to understand that the sideline takes care of itself — the touchline is there. The center is their home — that is where the team wins. The backs also need composure when they win the ball. The instinct is to boot it forward. The correct play is to send it out toward the sideline, where it is safe.
-
-**Common scenarios:**
-
-The opponent has the ball in the center of the field and two attackers are making runs toward goal. Both backs pinch into the center, side by side or staggered, with the sweeper. Three defenders covering the center channel. The opponent's only option is to play it wide. They do. Their wide player receives near the touchline, under pressure, with limited options. That is exactly where you want the ball.
-
-The opponent plays a long ball over the top to a player out wide. The nearest back goes to challenge, pins them to the corner, and forces a rushed cross or a turnover. If the cross comes in, the other back and the sweeper are already in the center to deal with it. If the attacker beats the back, the sideline is right there to limit where they can go.
-
-A back wins the ball in the defensive third. They look up and send it out — a firm pass to the wing up the sideline. The wing striker collects it and goes. Counter-attack started from a safe pass. Alternatively, if the wing is not open, the back clears it toward the touchline. The ball goes out of bounds. Your team gets a throw-in. Everyone resets. That is a good outcome.
-
-If the opponent favors one side — "their number seven always goes down the left" — communicate that to the back on that side so they can be ready to go challenge wide when needed. But even then, the default is pinched in. They only go wide when the threat is actually wide.
+- Send it out to the sideline — always; a firm pass to the wing starts the counter
+- If the wing is not open, clear it toward the touchline; out of bounds is a good outcome — the team resets
+- The sideline is safe territory; the ball goes out, the wing collects and goes, or the opponent chases it into a corner
 
 **Areas to develop:**
 
@@ -86,25 +73,23 @@ Talking constantly. The backs who communicate hold the center together. "I have 
 
 > **Job:** Anchor the center. Organize the defense. Distribute the ball. See everything.
 
-**The sweeper is the most important position on the field.** In the neutral 2-1-1-2, the sweeper is the apex of the back triangle — sitting in the center of the middle third, behind the point and ahead of the two backs. They are the hinge between defense and attack, the shared vertex of the two interlocking triangles that define this formation.
+In the neutral 2-1-1-2, the sweeper is the apex of the back triangle — the hinge between defense and attack. Their first job is defensive: they own the center of the field, the most dangerous channel on the pitch. Anything that comes through the middle, the sweeper deals with it alongside the backs. Their second job is distribution — when the team wins the ball, the sweeper receives it and looks through the center first. A through ball to the point is the highest-percentage attacking play in the system. If the center is blocked, the sweeper swings it wide to a wing. They are the switchboard. Their third job is communication — the loudest voice on the field after the goalkeeper, constantly directing the backs, warning of runners, and calling for the ball.
 
-The sweeper's first job is defensive. They own the center of the field, which is the most dangerous channel on the pitch. Anything that comes through the middle — a dribble, a pass, a through ball — the sweeper deals with it, alongside the two backs who pinch in to help. The sweeper is the senior partner in this center-controlling trio. They read the game earlier than anyone else because they can see the whole field from their central position. When the team is in the 6-0 defensive shape, the sweeper anchors the center of the packed defense, directing the backs to pinch or go wide, telling the point and wing strikers where to position.
+This is the thinking position. The sweeper shuttles between thirds constantly — dropping deep to receive, pushing up to support the point, sprinting back into the 6-0 when possession is lost. They need endurance more than pure speed. They need to read the game constantly — where is the ball, where is the space, where is the danger — and process the game constantly because they are the decision-maker. The sweeper who communicates makes every player around them better.
 
-The sweeper's second job is distribution, and this is where the center-control philosophy flips from defense to offense. When the team wins the ball, the sweeper receives it and looks through the center first. If the point is making a run through the middle and the lane is open, the sweeper plays the through ball. That is the highest-percentage attacking play in the system. If the center is blocked, the sweeper plays it wide to a wing striker along the sideline. If the ball needs to go from one side of the field to the other, it goes through the sweeper — they are the switchboard that swings the ball from the left wing through the center to the right wing for a breakaway.
+**On defense:**
 
-The sweeper's third job is communication. They can see the whole field. When they use that voice, the whole team sees through their eyes. The sweeper should be the loudest voice on the field after the goalkeeper, constantly directing the backs, warning of runners, and calling for the ball.
+- Anchor the center of the 6-0; direct the backs to pinch or go wide
+- Call out runners — "Runner, center, LB shift"; prevent goals through communication alone
+- Read the game from the central position; see the whole field and tell the team what you see
+- Own the most dangerous channel on the pitch — nothing comes through the center
 
-**Physical demands:** The sweeper runs the most of any field player. They shuttle between the defensive and attacking thirds constantly — dropping deep to receive the ball, pushing up to support the point, sprinting back into the 6-0 when possession is lost. They need endurance more than pure speed, though a burst of acceleration to close down space or intercept a through ball is valuable.
+**On offense:**
 
-**Mental demands:** This is the thinking position. The sweeper needs to read the game constantly: where is the ball, where is the space, where is the danger, where should they be in two seconds? They need to process faster than anyone else on the field because they are the decision-maker. The sweeper who communicates constantly is the most valuable player on the field. This position requires a player who talks, who understands the formation, and who can direct traffic under pressure.
-
-**Common scenarios:**
-
-The goalkeeper throws to the right back near the sideline. The right back plays it inside to the sweeper. The sweeper receives, turns, and looks through the center: is the point open for a through ball? If yes, play it — that is the highest-value pass on the field. If the center is blocked, the sweeper swings the ball to the left wing on the opposite sideline. The team has just moved the ball from one side of the field to the other, through the center, and the left wing has a breakaway opportunity because the opponent's defense shifted to the right. This is the sweeper at their best — the switchboard that turns a safe sideline pass into a dangerous central attack.
-
-The team is in the 6-0 and the opponent is building an attack. The sweeper is anchoring the center of the defensive block. They see a runner making a diagonal run from the opponent's right side toward the center. The sweeper calls it: "Runner, center, LB shift." The left back adjusts. The run is covered. The sweeper did not touch the ball but they prevented a goal through communication alone.
-
-Your team wins the ball in the 6-0 and the sweeper receives it. They look up immediately — through the center first. The point is making a run. The sweeper plays a through ball and the point is in on goal. If the center is covered, the sweeper finds a wing striker sprinting forward into space. Counter-attack launched. This is the transition moment the system is built for, and the sweeper is the one who triggers it.
+- Look through center first — a through ball to the point is the highest-value pass
+- If center is blocked, swing to the opposite wing for a breakaway
+- Be the switchboard — move the ball from one side of the field to the other, through the center
+- Trigger the counter-attack: receive in the 6-0, look up immediately, find the runners
 
 **Areas to develop:**
 
@@ -116,33 +101,26 @@ Distributing through the formation. The sweeper who finds the passing lanes the 
 
 ## Wings
 
-> **Job:** Play the full field. Score goals in attack. Trap opponents wide in defense. Cover more ground than anyone.
+> **Job:** Play the full field. Score goals in attack. Trap opponents wide in defense.
 
-The wings — left wing and right wing — are the most versatile position on the field. On a 7v7 pitch, the field is compact enough that the wings cover nearly the whole surface over the course of a game. In the 2-1-1-2, they are the top corners of the attacking triangle, reading the game and looking for opportunities. In the 2-1-3, they are strikers — making runs, finding angles, and creating scoring chances. In the 6-0, they are wide defenders — tracking all the way back to the corners and working with the backs to trap opponents against the sideline.
+The wings — left wing and right wing — cover nearly the whole surface of a 7v7 pitch over the course of a game. In the 2-1-1-2, they are the top corners of the attacking triangle, reading the game and looking for opportunities. In the 2-1-3, they are strikers — making runs, finding angles, creating scoring chances. In the 6-0, they are wide defenders — tracking all the way back to the corners and working with the backs to trap opponents against the sideline. They need speed to make runs and close down opponents, and stamina to cover the full length of the field over and over. The wing who gets back, wins the ball, and explodes forward produces goals — that is how this system scores. Getting back IS the setup.
 
-**The wing who plays the full field is the most dangerous player in this system.** In the 6-0, they defend wide — pressuring opponents toward the sideline, working with the nearest back to trap them against the touchline. The moment possession changes, that same wing explodes forward with momentum while the opponent is still turning around. That is a breakaway, and it starts with defense. The wings' full-field commitment is what makes the counter-attack lethal. A wing who gets back, wins the ball, and launches forward produces more goals than a wing who waits at midfield for a long ball that rarely comes.
+In attack, the front three — point and both wings — have complete freedom to interchange, overload one side, or criss-cross through the center. Both wings can attack the same flank. A wing can swap with the point and play centrally. They communicate, they read each other, and they go wherever the scoring opportunity is. The wings read probabilities constantly — where is the space, what run makes me the best passing option, where should I be if a shot rebounds? They are completely opportunistic. **One rule: when the team falls back to the sixty, every player returns to their designated side.** Left wing goes left, right wing goes right. Attack with freedom, defend with structure.
 
-On offense, the wings are reading probabilities. Where is the space? What run makes them the most dangerous target for a pass? Where should they be if a shot goes in — or if it bounces off the keeper? The wings have the full width and depth of the attacking third to work with. They can come all the way to the center to crash for a rebound. They can stretch wide to pull a defender out of position. They can take the ball into the corner, lure two defenders, and cross it back. They can receive a through ball at the top of the box and go straight at goal. The wings are completely opportunistic — they go wherever the highest-probability opportunity is, not to a predetermined spot. The only caution near the touchline is that a misplaced touch or pass goes out of bounds, which is a free turnover. Play the sideline when it gives you an advantage, but respect the line.
+**On defense:**
 
-When the ball is on one side and the opponent's defense shifts that way, the opposite wing reads the space. That space might be central, it might be wide — it depends on how the defense reacts. The ball swings through the sweeper or the point to find the wing running into whatever gap the defense has left. If the defense has bunched to one side and left a gap in the center, the wing attacks that gap. If the defense has left the entire opposite flank open, the wing takes the space and goes at goal. The wing reads the game and goes where the opportunity is. This is the power of two wing strikers who read the game: the defense cannot cover both sides and the center at the same time.
+- Sprint back to 6-0 on your designated side — every time, full speed
+- Trap the ball carrier against the sideline with the nearest back; cut off the inside pass
+- Stay coiled — defend with your head up, watching for the turnover; the counter starts in defense
+- When ball is on opposite side, hold your position and stay alert for a switch of play
 
-When the team drops into the 6-0, the wings own the wide areas. Their job is to push opponents out of the center and toward the sideline, working with the nearest back to trap the ball carrier against the touchline. This is the wings' defensive specialty — using the sideline as an extra defender to force turnovers in the corners. The moment possession changes, the wings release forward and attack the goal. **Defense IS offense.** The wing who wins the ball in the corner and explodes forward has a head start on every defender on the field.
+**On offense:**
 
-The differences between the left wing and right wing come down to the individual player rather than the position. Some coaches put their faster wing on the side where the opponent's defense is weaker. Some put their more physical wing on the side where the opponent's back is smaller. The system works either way as long as both wings understand the full role — defend wide in the 6-0, read the game in the neutral shape, and attack with everything in the 2-1-3.
-
-**Physical demands:** The wings need speed and stamina. Speed to make runs behind the defense, to close down opponents on the sideline, and to transition from defense to attack in seconds. Stamina because they cover the full length of the field — defending wide in one moment, sprinting forward to attack in the next, and doing it over and over for an entire game. The wings run the second-most distance behind the sweeper.
-
-**Mental demands:** The wings need to read probabilities. Every time the ball moves, the opportunities on the field change. The wing who is standing still and waiting for the ball to come to them is not reading the game. The wing who is constantly scanning — where is the space, where is the defender looking, what run would make me the best passing option right now — is the one who scores. On defense, they track back and use the sideline to trap opponents. The switch between these two modes happens instantly at every turnover.
-
-**Common scenarios:**
-
-The sweeper wins the ball in the 6-0 and looks up. The left wing is already sprinting forward into space. The sweeper plays a through ball and the wing runs onto it at full speed with only the opponent's back to beat. One-on-one against a defender with momentum — the wing striker's dream scenario.
-
-The point receives the ball centrally and shoots. It bounces off the goalkeeper. The right wing has been trailing the play, crashing toward the center of the goal, and arrives to put in the rebound. This is not luck. This is positioning. The wing striker who trails every shot and every through ball toward the center of the goal scores garbage-time goals that win games.
-
-The ball is on the right side. The opponent's defense shifts right. The left wing sees a gap opening on the opposite side and makes a run into it. The sweeper swings the ball across, and the left wing receives in space with a clear look at the goal.
-
-The team is in the 6-0 and the opponent plays the ball wide to a player near the touchline. The nearest wing pressures them against the sideline, cutting off the inside pass, forcing them to cross under pressure or dribble it out of bounds. That is the defensive use of the sideline — trapping the opponent, not the wing striker.
+- Read the space and make yourself the best passing option — do not stand still waiting for the ball
+- Interchange freely with the point and opposite wing; overload a flank, criss-cross through the center, drift wherever the opportunity is
+- Trail every shot and crash for rebounds — garbage goals win games
+- When the ball is on the opposite side, read where the defense left space and attack that gap
+- On counter from 6-0, explode forward — you already have momentum from getting back
 
 **Areas to develop:**
 
@@ -156,31 +134,23 @@ Crashing the center for rebounds. The wing who trails every shot and arrives at 
 
 > **Job:** Link the center to the attack. Create chances. Lead the press. Score goals. Save the day on defense.
 
-The point is the attacking counterpart to the sweeper. In the neutral 2-1-1-2, the point sits in the upper middle third — the base of the attacking triangle, with the two wing strikers ahead and wide. Where the sweeper looks back and organizes, the point looks forward and creates. This is your best player. The one who can do everything — attack, defend, press, finish, track back, and make the team better by being on the field.
+The point is the attacking counterpart to the sweeper. In the neutral 2-1-1-2, the point sits in the upper middle third — the base of the attacking triangle, with the two wings ahead and wide. Their first job is to connect the sweeper to the front line: receive in the center and decide — play it wide to a wing, take a touch forward and shoot, or combine to break through the defense. Their second job is to lead the press: close down the ball carrier, cut off passing lanes, force the opponent backward. The point needs acceleration, a clean shot from eight to twelve yards, and a short memory — chances come in bunches for a player who stays ready. Press when the ball carrier takes a bad touch or receives with their back to goal; otherwise hold position and cut off the most dangerous passing lane.
 
-The point's first job is to connect the sweeper to the wing strikers. They receive the ball from the sweeper in the center of the field and make the decision: play it wide to a wing, take a touch forward and shoot, or combine with a wing striker to break through the defense. The point is the player most likely to be in a position to shoot from central areas and the player most responsible for creating the final pass.
+The point's third job is critical: defense. When the team drops into the 6-0, **the point comes ALL the way back** — to the goal line if that is where the danger is. No half-tracking, no loitering at midfield. The point who sprints the full length of the field to save a goal and then explodes forward on the counter is the player who wins games. In the 2-1-3, the point is part of the front three. The same freedom applies — interchange with the wings, drift wide, let a wing come central. The rule is the same: sixty means home position.
 
-The point's second job is to lead the press. When the opponent has the ball and your team is pressing — not in the 6-0, but in the neutral shape where you are applying pressure to the opponent's build-up — the point is the first defender. They close down the ball carrier, cut off passing lanes, and force the opponent backward or into a mistake. The press starts with the point, and the rest of the team follows their cue.
+**On defense:**
 
-The point's third job, and this is critical, is defense. When the team drops into the 6-0, **the point comes ALL the way back** — even to the goal line if that is where the danger is. The point does not half-track back and loiter at midfield. They commit fully to the defensive shape, pinching into the center alongside the sweeper, adding a second body to control the most dangerous zone on the field. The point who does not track back leaves the sweeper alone in the center, and a single sweeper cannot cover the width of the field against a competent attack. The point who does track back — who sprints the full length of the field to save a goal and then explodes forward on the counter — is the player who wins games. That is what makes the point the most demanding position on the field and why it belongs to your best player.
+- Track back ALL the way into the 6-0 — to the goal line if needed
+- Pinch into center alongside the sweeper; communicate who has ball, who covers
+- Lead the press when the opponent builds out — close down the ball carrier, force errors
+- On the goal line if necessary — sprint the full length of the field to save the day
 
-**Physical demands:** The point needs speed — not just straight-line speed but acceleration, the ability to go from standing to sprinting in a step. They make sharp runs to get behind the defense or to close down in the press. They also need a strong shot. At U10, most goals are scored from close range, so the ability to strike the ball cleanly and on target from eight to twelve yards matters more than having a rocket from distance. The point also needs the stamina to press, track back all the way into the 6-0, and then burst forward on the counter, repeatedly, for an entire game. This is the most physically demanding position on the field.
+**On offense:**
 
-**Mental demands:** The point needs a short memory. Chances come in bunches for a player who stays ready. The best points reset instantly — every touch is a fresh opportunity. That reset speed is what makes the position dangerous.
-
-The point also needs to understand when to press and when to hold. Pressing every ball is exhausting and often counterproductive. The point should press when the ball carrier is receiving with their back to goal, when the ball carrier takes a bad touch, or when there is a realistic chance of winning the ball or forcing an error. Otherwise, the point holds position and cuts off the most dangerous passing lane.
-
-**Common scenarios:**
-
-The sweeper plays a through ball into the space between the opponent's defense and goalkeeper. The point times their run to arrive at the ball at full speed, takes a touch to set it, and shoots. This is the primary central attacking pattern in the system. The sweeper distributes, the point finishes.
-
-The opponent's goalkeeper has the ball and is looking to distribute. The point presses the keeper — not to win the ball, that almost never happens, but to force a rushed kick. The point positions to cut off the keeper's easiest pass, making the distribution go long or go to the weak side. A forced long ball from a goalkeeper under pressure is much easier for your defense to deal with than a calm short pass.
-
-The team is in the 6-0 and the opponent is attacking through the center. The point is pinched in alongside the sweeper. They step to challenge the ball carrier while the sweeper covers the space behind. Communication determines who does what: "I have ball. You cover." The double coverage in the center is what makes the 6-0 so hard to break through.
-
-The opponent breaks through and is bearing down on goal. The point is on the goal line, having sprinted the full length of the field to get back. They make the tackle, win the ball, and the sweeper is already calling for it. The point lays it off one-touch and explodes forward. Ten seconds later, the point is at the other end of the field, finishing a counter-attack. That is the full range of this position.
-
-Your team wins the ball in the 6-0. The point sees the wing strikers releasing. Instead of carrying the ball, the point plays a quick one-touch pass to the sweeper and sprints forward into the center channel. The sweeper plays it wide to the wing, and the point continues their run toward goal, arriving in the box for a cross or a cut-back. This is the counter-attack in full flow — defense to attack in three touches.
+- Receive from the sweeper and decide — play wide, shoot, or combine
+- Interchange with the wings freely; drift wide, let a wing come central, overload a flank
+- Time runs onto through balls at full speed — the sweeper distributes, the point finishes
+- On counter from 6-0, explode forward; the counter-attack is more explosive because you tracked back
 
 **Areas to develop:**
 
@@ -188,4 +158,4 @@ Tracking back fully. The point who commits to the 6-0 every time gives the team 
 
 Getting close before shooting. At U10, close-range shots convert at a far higher rate. The point who works the ball into the shooting zone before pulling the trigger scores more goals. Coach it: in practice scrimmages, set a rule that shots must be taken from inside a certain zone. This trains the point to work the ball closer before shooting.
 
-Combining with the wings. The point who plays the wing strikers into the game creates more chances than any solo run. Coach it: reinforce that the point has two wing strikers making runs for a reason. Play them. Combine with them. The pass to the open wing is the highest-percentage play in the system.
+Combining with the front three. The point who plays the wings into the game — and lets them play the point into the game — creates more chances than any solo run. Coach it: reinforce that the front three interchange for a reason. Play the open wing. Let a wing come central. The pass to the player in space is the highest-percentage play in the system.

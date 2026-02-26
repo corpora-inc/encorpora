@@ -34,7 +34,7 @@ Here are the general guidelines for matching players to positions:
 
 **Left back / Right back:** Quick, disciplined, willing to defend. They do not need to be your most skilled players, but they need to be reliable. A back who makes simple, correct decisions is worth more than a back who has great technical skill but takes risks in the defensive third.
 
-**Sweeper:** Your smartest player. The one who reads the game, talks to teammates, and understands where to be before the ball gets there. Fitness is important because the sweeper covers the most ground. This is your captain, even if you do not formally name a captain.
+**Sweeper:** Your smartest player. The one who reads the game, talks to teammates, and understands where to be before the ball gets there. Fitness is important because the sweeper shuttles between thirds throughout the game. This is a natural leadership position.
 
 **Left wing / Right wing:** Athletic, versatile, and ready to play the full field — attacking in one moment, defending wide in the next. Speed is useful. Stamina is essential. The wings who are still running in the final ten minutes of a game are the ones who win it.
 

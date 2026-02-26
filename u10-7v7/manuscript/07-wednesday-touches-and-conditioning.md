@@ -76,7 +76,7 @@ Scenario drills simulate real game moments. Each one starts with a specific situ
 
 **Why it matters:** This is the full build-out sequence — the chain of passes that turns a goalkeeper save into an attacking opportunity. Every position in the chain needs to know where to be and when to move.
 
-**Setup:** Goalkeeper starts with the ball. A back positions near the sideline. The sweeper drops into the center as the secondary option. The point positions in the upper middle third. The opposite wing is high and wide. The goalkeeper throws to the back on the sideline. The back plays it inside to the sweeper. The sweeper looks through the center — if the point is open, through ball. If not, the sweeper swings it to the opposite wing for a breakaway. Run the full sequence five times, then rotate positions so every player experiences each role in the chain.
+**Setup:** Goalkeeper starts with the ball. A back positions near the sideline. The wing on that side is high and wide up the sideline. The sweeper and point show as secondary options. The goalkeeper throws to the back on the sideline. The back looks up the line — the wing is making a run. The back sends it up the sideline to the wing, who receives with momentum and goes at goal. If the wing is covered, the back finds the sweeper or point showing for a pass. Run the full sequence five times, then rotate positions so every player experiences each role in the chain.
 
 ### Wing Recovery and Counter
 

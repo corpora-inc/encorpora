@@ -62,7 +62,7 @@ If your league uses a build-out line, the opponent must retreat behind it when y
 
 The goalkeeper places the ball. The left back and right back position near their respective sidelines inside the defensive third. The sweeper drops into the center channel as a secondary option.
 
-The goalkeeper's first look is a back near the sideline. The sideline is the safest first pass — it puts the ball in a low-danger area where the team can recover possession easily. The back receives near the touchline, plays it inside to the sweeper, and the team builds from there through the center. If both backs are marked, the goalkeeper can play to the sweeper in the center, but the sideline option is always preferred.
+The goalkeeper's first look is a back near the sideline. The sideline is the safest first pass — it puts the ball in a low-danger area where the team can recover possession easily. The back receives near the touchline and looks up the sideline for the wing on their side. A firm pass up the line to the wing gets the ball out of the defensive third and into the attacking half. If the wing is not open, the back can find the sweeper or the point showing for a pass, but the first look is always up the sideline.
 
 The key is that the pass stays on the ground and goes to a teammate near the touchline. Do not kick it long when you have a build-out line giving you free space. Do not play it through the center of the defensive third. Send it to the sideline, let the back receive safely, and build from there.
 
@@ -144,10 +144,10 @@ This is not technically a "set piece" in the traditional sense, but it functions
 
 The goalkeeper looks up immediately. Quick distribution after a save catches the opponent out of position because they were attacking and have players committed forward. The first look is a back near the touchline — a quick throw to a back on the sideline gets the ball out of the danger zone safely. If a wing striker has already turned and is sprinting forward into space, the goalkeeper can throw it ahead of them to launch a counter-attack, but the safe option is always the back near the sideline first.
 
-If no one is open for a quick counter, the goalkeeper takes a moment. The backs position near the sidelines. The goalkeeper distributes with a throw to a back near the touchline. Not to the center. The sideline is the best defender. Get the ball out of the danger zone and let the sweeper build from there.
+If no one is open for a quick counter, the goalkeeper takes a moment. The backs position near the sidelines. The goalkeeper distributes with a throw to a back near the touchline. Not to the center. The sideline is the best defender. Get the ball out of the danger zone — the back looks up the sideline for the wing and sends it forward.
 
 ### After a Back Pass
 
 When a defender passes the ball back to the goalkeeper, the opponent typically has time to set up their press. The goalkeeper picks the ball up (if it was a deliberate pass with the feet, they cannot pick it up — rules of the game — so they must play it with their feet). They look for the backs near the sidelines. Play it short to the touchline if possible. Play it long down the sideline if the press is too tight.
 
-The principle across all goalkeeper distribution is the same: send it to the sideline. A throw to a back near the touchline is always the safest option. A throw into the center of the defensive third is always the most dangerous. The only time to punt is when every short option is covered, and even then, punt it toward the sideline, not into the center of the field where it becomes a coin flip.
+The principle across all goalkeeper distribution is the same: send it to the sideline, never the center. Know your goalkeeper's punt — if they can consistently hit a wing at midfield down the sideline, punting is a real weapon that skips the press entirely. If the punt is not there yet, rolling it out to a back with good placement and timing is the better play. Either way, the target is the sideline. A punt to the center of the field is a coin flip. A punt down the touchline gives your wing a ball to chase with the sideline protecting one side.
