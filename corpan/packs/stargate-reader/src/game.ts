@@ -50,7 +50,7 @@ export function createStargateReader(
   let segments: BookSegment[] = []
   let chapters: ChapterInfo[] = []
   let currentLanguage = "en"
-  const availableLanguages = (initialState?.availableLanguages as string[]) || ["en"]
+  let availableLanguages = (initialState?.availableLanguages as string[]) || ["en"]
 
   // Book ID for bookmark namespacing
   const bookId =
@@ -342,7 +342,16 @@ export function createStargateReader(
           detectDataUrl()
         dataProvider = createFetchDataProvider(dataUrl)
 
-        const segData = await dataProvider.loadSegments()
+        // Auto-detect available languages in dev mode
+        if (availableLanguages.length <= 1 && dataProvider.detectLanguages) {
+          const detected = await dataProvider.detectLanguages()
+          if (detected.length > 1) {
+            availableLanguages = detected
+            settings.setLanguages(availableLanguages, currentLanguage)
+          }
+        }
+
+        const segData = await dataProvider.loadSegments(currentLanguage)
         segments = segData.segments
         manifest = await dataProvider.loadAudioManifest(currentLanguage)
       }
@@ -476,9 +485,15 @@ export function createStargateReader(
 
       currentLanguage = newLang
 
-      // Load new manifest
-      const manifest = await dataProvider.loadAudioManifest(newLang)
+      // Load new segments and manifest in parallel
+      const [segData, manifest] = await Promise.all([
+        dataProvider.loadSegments(newLang),
+        dataProvider.loadAudioManifest(newLang),
+      ])
       if (disposed) return
+
+      segments = segData.segments
+      chapters = buildChapterIndex(segments)
 
       // Rebuild timeline
       const timeline = buildTimeline(segments, manifest)
