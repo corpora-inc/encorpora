@@ -150,6 +150,10 @@ export function createStargateReader(
   const settings = createSettingsPanel(ui, {
     initialOscilloscope: prefs.oscilloscope,
     initialWaveform: prefs.waveform,
+    initialPulseRing: prefs.pulseRing,
+    initialOscilloscopeConfig: prefs.oscilloscopeConfig,
+    initialWaveformConfig: prefs.waveformConfig,
+    initialPulseRingConfig: prefs.pulseRingConfig,
     onBeforeClose: () => disposeFn?.(),
   })
 
@@ -265,9 +269,36 @@ export function createStargateReader(
     savePrefs(bookId, prefs)
   })
 
+  settings.onTogglePulseRing((visible) => {
+    if (pulseRing) pulseRing.setVisible(visible)
+    prefs.pulseRing = visible
+    savePrefs(bookId, prefs)
+  })
+
+  settings.onOscilloscopeConfig((key, value) => {
+    oscilloscope?.configure({ [key]: value })
+    ;(prefs.oscilloscopeConfig as Record<string, number>)[key] = value
+    savePrefs(bookId, prefs)
+  })
+
+  settings.onWaveformConfig((key, value) => {
+    waveformStream?.configure({ [key]: value })
+    ;(prefs.waveformConfig as Record<string, number>)[key] = value
+    savePrefs(bookId, prefs)
+  })
+
+  settings.onPulseRingConfig((key, value) => {
+    pulseRing?.configure({ [key]: value })
+    ;(prefs.pulseRingConfig as Record<string, number>)[key] = value
+    savePrefs(bookId, prefs)
+  })
+
   // --- Periodic bookmark autosave (every 15s during playback) ---
   let lastAutosaveMs = 0
   const AUTOSAVE_INTERVAL_MS = 15000
+
+  // --- Audio health check counter ---
+  let frameCount = 0
 
   // --- Screen lock behavior ---
   function handleVisibilityChange() {
@@ -278,6 +309,10 @@ export function createStargateReader(
     } else {
       // Screen visible: resume render loop
       engine.runRenderLoop(renderLoop)
+      // Nudge audio context back to life after screen unlock
+      if (audioEngine && isPlaying) {
+        audioEngine.checkHealth()
+      }
     }
   }
   document.addEventListener("visibilitychange", handleVisibilityChange)
@@ -356,13 +391,17 @@ export function createStargateReader(
       // Create waveform stream (arch ribbon showing audio envelope along Z)
       waveformStream = createWaveformStream(scene)
       waveformStream.mesh.isVisible = prefs.waveform
+      waveformStream.configure(prefs.waveformConfig)
 
       // Create oscilloscope — just a line, no ribbon
       oscilloscope = createOscilloscope(scene)
       oscilloscope.mesh.isVisible = prefs.oscilloscope
+      oscilloscope.configure(prefs.oscilloscopeConfig)
 
       // Create pulse ring — amplitude circle at the NOW plane
       pulseRing = createPulseRing(scene)
+      pulseRing.configure(prefs.pulseRingConfig)
+      pulseRing.setVisible(prefs.pulseRing)
 
       // Rendering group depth clearing: words on top of stream, oscilloscope on top of all
       scene.setRenderingAutoClearDepthStencil(1, true, true, true)
@@ -501,6 +540,12 @@ export function createStargateReader(
   function renderLoop() {
     if (disposed) return
 
+    // Periodic audio health check (~once per second at 60fps)
+    frameCount++
+    if (audioEngine && isPlaying && frameCount % 60 === 0) {
+      audioEngine.checkHealth()
+    }
+
     const currentMs = audioEngine?.getCurrentTimeMs() ?? 0
     const totalMs = audioEngine?.getTotalDurationMs() ?? 0
 
@@ -549,7 +594,7 @@ export function createStargateReader(
     }
 
     // Update oscilloscope + pulse ring
-    if (audioEngine && (oscilloscope?.mesh.isVisible || pulseRing)) {
+    if (audioEngine && (oscilloscope?.mesh.isVisible || pulseRing?.mesh.isVisible)) {
       const analyserData = audioEngine.getAnalyserData()
 
       // Byte-based intensity for oscilloscope
@@ -558,7 +603,7 @@ export function createStargateReader(
       if (oscilloscope?.mesh.isVisible) {
         oscilloscope.update(analyserData, Math.max(instant, 0.15))
       }
-      if (pulseRing) {
+      if (pulseRing?.mesh.isVisible) {
         // Float32 time domain — full precision, no 8-bit quantization
         const floatData = audioEngine.getFloatTimeDomain()
         const sample = Math.abs(floatData[floatData.length - 1])

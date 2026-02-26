@@ -14,10 +14,13 @@ import {
   OSCILLOSCOPE_Y,
 } from "../core/constants"
 
+export type OscilloscopeConfig = Partial<{ amplitude: number; width: number; alpha: number }>
+
 export type Oscilloscope = {
   /** The ribbon mesh */
   mesh: Mesh
   update: (analyserData: Uint8Array, intensity: number) => void
+  configure: (overrides: OscilloscopeConfig) => void
   dispose: () => void
 }
 
@@ -90,6 +93,11 @@ export function createOscilloscope(scene: Scene): Oscilloscope {
   const halfWidth = OSCILLOSCOPE_TRACE_WIDTH / 2
   const RAW_COUNT = OSCILLOSCOPE_SEGMENTS + 1
 
+  // Mutable config — overridden via configure()
+  let cfgAmplitude = OSCILLOSCOPE_AMPLITUDE
+  let cfgWidth = OSCILLOSCOPE_WIDTH
+  let cfgAlpha = 0.35
+
   // Pre-allocate all reusable Vector3 arrays
   const rawPoints = allocVector3Array(RAW_COUNT)
   const smoothPoints = allocVector3Array(SMOOTH_COUNT)
@@ -124,7 +132,7 @@ export function createOscilloscope(scene: Scene): Oscilloscope {
   mat.emissiveColor = new Color3(0.8, 1.0, 1.0)
   mat.disableLighting = true
   mat.backFaceCulling = false
-  mat.alpha = 0.35
+  mat.alpha = cfgAlpha
   ribbonMesh.material = mat
   ribbonMesh.isPickable = false
   ribbonMesh.renderingGroupId = 2
@@ -139,8 +147,8 @@ export function createOscilloscope(scene: Scene): Oscilloscope {
       for (let i = 0; i < RAW_COUNT; i++) {
         const sampleIndex = Math.floor((i / OSCILLOSCOPE_SEGMENTS) * (len - 1))
         const normalized = (analyserData[sampleIndex] - 128) / 128
-        const y = OSCILLOSCOPE_Y + normalized * OSCILLOSCOPE_AMPLITUDE * intensity
-        const x = (i / OSCILLOSCOPE_SEGMENTS - 0.5) * OSCILLOSCOPE_WIDTH
+        const y = OSCILLOSCOPE_Y + normalized * cfgAmplitude * intensity
+        const x = (i / OSCILLOSCOPE_SEGMENTS - 0.5) * cfgWidth
         rawPoints[i].set(x, y, 0)
       }
 
@@ -167,6 +175,15 @@ export function createOscilloscope(scene: Scene): Oscilloscope {
       const g = 0.85 + intensity * 0.15
       const b = 1.0
       mat.emissiveColor.set(r, g, b)
+    },
+
+    configure(overrides: OscilloscopeConfig) {
+      if (overrides.amplitude !== undefined) cfgAmplitude = overrides.amplitude
+      if (overrides.width !== undefined) cfgWidth = overrides.width
+      if (overrides.alpha !== undefined) {
+        cfgAlpha = overrides.alpha
+        mat.alpha = cfgAlpha
+      }
     },
 
     dispose: () => {

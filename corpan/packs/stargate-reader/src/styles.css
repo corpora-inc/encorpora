@@ -245,7 +245,9 @@ body {
   position: absolute;
   top: calc(70px + var(--safe-top));
   right: calc(16px + var(--safe-right));
-  width: 224px;
+  width: 280px;
+  max-height: calc(100vh - 100px - var(--safe-top));
+  overflow-y: auto;
   background: rgba(8, 16, 32, 0.92);
   border: 1px solid rgba(127, 214, 255, 0.15);
   border-radius: 12px;
@@ -337,6 +339,120 @@ body {
 
 .stargate-settings-lang-select:focus {
   border-color: rgba(127, 214, 255, 0.8);
+}
+
+/* --- Advanced sections (sliders under each toggle) --- */
+
+.stargate-settings-advanced {
+  overflow: hidden;
+}
+
+.stargate-settings-advanced-btn {
+  display: block;
+  width: 100%;
+  padding: 4px 0 4px 2px;
+  background: none;
+  border: none;
+  color: rgba(127, 214, 255, 0.5);
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: left;
+  transition: color 0.15s ease;
+}
+
+.stargate-settings-advanced-btn:hover {
+  color: rgba(127, 214, 255, 0.8);
+}
+
+.stargate-settings-sliders {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  padding: 4px 0 8px 0;
+}
+
+.stargate-settings-sliders--open {
+  display: flex;
+}
+
+.stargate-settings-slider-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 2px 0;
+}
+
+.stargate-settings-slider-label {
+  font-size: 11px;
+  color: rgba(192, 208, 232, 0.6);
+  min-width: 54px;
+  flex-shrink: 0;
+}
+
+.stargate-settings-slider {
+  flex: 1;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 3px;
+  border-radius: 1.5px;
+  background: rgba(127, 214, 255, 0.15);
+  outline: none;
+  cursor: pointer;
+}
+
+.stargate-settings-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #7fd6ff;
+  border: 1.5px solid rgba(127, 214, 255, 0.4);
+  box-shadow: 0 0 4px rgba(127, 214, 255, 0.3);
+  cursor: pointer;
+  transition: box-shadow 0.15s ease;
+}
+
+.stargate-settings-slider::-webkit-slider-thumb:hover {
+  box-shadow: 0 0 8px rgba(127, 214, 255, 0.5);
+}
+
+.stargate-settings-slider::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #7fd6ff;
+  border: 1.5px solid rgba(127, 214, 255, 0.4);
+  box-shadow: 0 0 4px rgba(127, 214, 255, 0.3);
+  cursor: pointer;
+}
+
+.stargate-settings-slider-value {
+  font-size: 11px;
+  color: rgba(127, 214, 255, 0.7);
+  font-variant-numeric: tabular-nums;
+  min-width: 36px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.stargate-settings-reset-btn {
+  display: block;
+  margin: 2px 0 0 0;
+  padding: 3px 8px;
+  background: none;
+  border: none;
+  color: rgba(192, 208, 232, 0.35);
+  font-size: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: left;
+  transition: color 0.15s ease;
+}
+
+.stargate-settings-reset-btn:hover {
+  color: rgba(192, 208, 232, 0.7);
 }
 
 .stargate-settings-divider {
@@ -459,12 +575,14 @@ body {
     inset: 0;
     width: 100%;
     height: 100%;
+    max-height: 100%;
     border-radius: 0;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    padding: 24px;
+    justify-content: flex-start;
+    padding: 60px 24px 24px 24px;
     box-sizing: border-box;
+    overflow-y: auto;
   }
 
   .stargate-settings-dismiss {
@@ -494,5 +612,33 @@ body {
     padding: 14px 0;
     font-size: 16px;
     margin-top: 4px;
+  }
+
+  /* Mobile slider adjustments — generous touch targets */
+  .stargate-settings-slider {
+    height: 6px;
+    border-radius: 3px;
+  }
+
+  .stargate-settings-slider::-webkit-slider-thumb {
+    width: 24px;
+    height: 24px;
+  }
+
+  .stargate-settings-slider::-moz-range-thumb {
+    width: 24px;
+    height: 24px;
+  }
+
+  .stargate-settings-slider-row {
+    padding: 8px 0;
+  }
+
+  .stargate-settings-slider-label {
+    font-size: 12px;
+  }
+
+  .stargate-settings-slider-value {
+    font-size: 12px;
   }
 }

@@ -16,9 +16,13 @@ import {
   PULSE_RING_SEGMENTS,
 } from "../core/constants"
 
+export type PulseRingConfig = Partial<{ maxRadius: number; fadeMs: number }>
+
 export type PulseRing = {
   mesh: LinesMesh
   update: (intensity: number) => void
+  configure: (overrides: PulseRingConfig) => void
+  setVisible: (visible: boolean) => void
   dispose: () => void
 }
 
@@ -42,6 +46,10 @@ export function createPulseRing(scene: Scene): PulseRing {
     PULSE_RING_COLOR_G,
     PULSE_RING_COLOR_B,
   )
+
+  // Mutable config — overridden via configure()
+  let cfgMaxRadius = PULSE_RING_MAX_RADIUS
+  let cfgFadeMs = PULSE_RING_FADE_MS
 
   // Pre-compute unit circle
   const cosTable = new Float32Array(SEGMENTS + 1)
@@ -95,7 +103,7 @@ export function createPulseRing(scene: Scene): PulseRing {
 
     update(intensity: number) {
       const now = performance.now()
-      const r = intensity * PULSE_RING_MAX_RADIUS
+      const r = intensity * cfgMaxRadius
 
       // Update live ring
       for (let i = 0; i <= SEGMENTS; i++) {
@@ -124,14 +132,31 @@ export function createPulseRing(scene: Scene): PulseRing {
       lastRadius = r
 
       // Fade ghosts
+      const fadeDuration = Math.max(1, cfgFadeMs)
       for (const ghost of ghosts) {
         if (!ghost.active) continue
         const age = now - ghost.birthTime
-        if (age >= PULSE_RING_FADE_MS) {
+        if (age >= fadeDuration) {
           ghost.active = false
           ghost.mesh.alpha = 0
         } else {
-          ghost.mesh.alpha = 1 - age / PULSE_RING_FADE_MS
+          ghost.mesh.alpha = 1 - age / fadeDuration
+        }
+      }
+    },
+
+    configure(overrides: PulseRingConfig) {
+      if (overrides.maxRadius !== undefined) cfgMaxRadius = overrides.maxRadius
+      if (overrides.fadeMs !== undefined) cfgFadeMs = overrides.fadeMs
+    },
+
+    setVisible(visible: boolean) {
+      liveMesh.isVisible = visible
+      for (const ghost of ghosts) {
+        ghost.mesh.isVisible = visible
+        if (!visible) {
+          ghost.active = false
+          ghost.mesh.alpha = 0
         }
       }
     },

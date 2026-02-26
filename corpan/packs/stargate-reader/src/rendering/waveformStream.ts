@@ -27,6 +27,8 @@ import {
   WAVEFORM_STREAM_TESSELLATION,
 } from "../core/constants"
 
+export type WaveformStreamConfig = Partial<{ maxRadius: number; alpha: number; minRadius: number }>
+
 export type WaveformStream = {
   mesh: Mesh
   update: (
@@ -35,6 +37,7 @@ export type WaveformStream = {
     waveformCache: WaveformCache,
     currentWordHint: number
   ) => void
+  configure: (overrides: WaveformStreamConfig) => void
   dispose: () => void
 }
 
@@ -63,8 +66,9 @@ function computeFade(z: number): number {
  */
 export function createWaveformStream(scene: Scene): WaveformStream {
   const SAMPLES = WAVEFORM_STREAM_SAMPLES
-  const MIN_RADIUS = WAVEFORM_STREAM_MIN_RADIUS
-  const MAX_RADIUS = WAVEFORM_STREAM_MAX_RADIUS
+  let cfgMinRadius = WAVEFORM_STREAM_MIN_RADIUS
+  let cfgMaxRadius = WAVEFORM_STREAM_MAX_RADIUS
+  let cfgAlpha = WAVEFORM_STREAM_ALPHA
   const TESSELLATION = WAVEFORM_STREAM_TESSELLATION
   const zStep = (LOOK_AHEAD_Z + LOOK_BEHIND_Z) / (SAMPLES - 1)
   // "Now" plane sits just in front of the camera — peak hits right before the screen
@@ -77,7 +81,7 @@ export function createWaveformStream(scene: Scene): WaveformStream {
 
   // Radii array — updated each frame
   const radii = new Float32Array(SAMPLES)
-  radii.fill(MIN_RADIUS)
+  radii.fill(cfgMinRadius)
 
   // Pre-compute Z positions (constant — never changes)
   const zPositions = new Float32Array(SAMPLES)
@@ -117,7 +121,7 @@ export function createWaveformStream(scene: Scene): WaveformStream {
   mat.emissiveColor = new Color3(0.3, 0.7, 0.85)
   mat.disableLighting = true
   mat.backFaceCulling = false
-  mat.alpha = WAVEFORM_STREAM_ALPHA
+  mat.alpha = cfgAlpha
 
   tubeMesh.material = mat
   tubeMesh.renderingGroupId = 0
@@ -240,9 +244,9 @@ export function createWaveformStream(scene: Scene): WaveformStream {
       // --- Compute radii ---
       for (let i = 0; i < SAMPLES; i++) {
         const z = zPositions[i]
-        const swell = smoothA[i] * MAX_RADIUS
+        const swell = smoothA[i] * cfgMaxRadius
         const distFade = computeFade(z)
-        radii[i] = MIN_RADIUS + swell * distFade
+        radii[i] = cfgMinRadius + swell * distFade
       }
 
       // --- Direct vertex buffer write ---
@@ -269,6 +273,15 @@ export function createWaveformStream(scene: Scene): WaveformStream {
       }
 
       tubeMesh.updateVerticesData(VertexBuffer.PositionKind, positions)
+    },
+
+    configure(overrides: WaveformStreamConfig) {
+      if (overrides.maxRadius !== undefined) cfgMaxRadius = overrides.maxRadius
+      if (overrides.minRadius !== undefined) cfgMinRadius = overrides.minRadius
+      if (overrides.alpha !== undefined) {
+        cfgAlpha = overrides.alpha
+        mat.alpha = cfgAlpha
+      }
     },
 
     dispose() {
