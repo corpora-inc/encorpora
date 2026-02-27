@@ -1,0 +1,23 @@
+{
+  "prompt": "Detailed pen and ink illustration with sepia wash, the Grand Plaza of Monte Alban being abandoned circa 900 CE, the same low broad grey-tan stone platforms and wide staircases as when it was active but now with dry grass growing between the paving stones, small scrubby mesquite trees and prickly pear cactus encroaching on the stepped platforms, a handful of small figures walking away down a dirt path on the hillside carrying bundles on their backs, scattered small settlements of houses visible in the Valley of Oaxaca far below, the stone architecture still standing but neglected, a quiet melancholy late afternoon light, semi-arid brown landscape, highly detailed crosshatch ink drawing, warm sepia and earth tones, clean linework, no text or writing overlaid on the image",
+  "prompt_2": "pen and ink illustration, sepia wash, crosshatch drawing, warm earth tones, clean linework, book illustration",
+  "negative_prompt": "Egyptian style, classical Greek sculpture, Roman sculpture, Egyptian hieroglyphs, pharaoh, sphinx, columns, toga, blurry, low quality, distorted, deformed, cartoon, anime, 3D render, photorealistic, photograph, text, words, letters, writing, captions, watermark, signature",
+  "negative_prompt_2": "Egyptian, Greek, Roman, blurry, low quality, deformed, 3D render, photograph, text, watermark",
+  "seed": 53,
+  "width": 1024,
+  "height": 768,
+  "steps": 50,
+  "guidance_scale": 7.5,
+  "model": "stabilityai/stable-diffusion-xl-base-1.0",
+  "refiner_model": null,
+  "refiner_frac": null,
+  "mode": "text_only",
+  "scheduler": "DPMSolverMultistepScheduler",
+  "dtype": "float16",
+  "license": "CreativeML OpenRAIL++-M",
+  "generation_time_s": 14.47,
+  "timestamp": "2026-02-23T03:53:09.914258+00:00",
+  "book": "The Mystery of Monte Alban",
+  "series": "Fascinating Curiosities of Human History",
+  "volume": 1
+}

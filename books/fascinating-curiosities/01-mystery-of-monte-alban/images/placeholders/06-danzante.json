@@ -1,0 +1,23 @@
+{
+  "prompt": "Detailed pen and ink illustration with sepia wash, a single Danzante carved stone slab from Monte Alban in Oaxaca Mexico, roughly 1.5 meters tall and 0.7 meters wide, grey-tan volcanic tuff stone, showing a naked male figure in shallow bas-relief with bold single incised outlines, Zapotec Mesoamerican carving style, the stocky figure in a contorted limp posture with limbs splayed at odd angles, closed eyes indicating death, open mouth with lips drawn back, stylized blood scrolls emerging from wounds as curved incised lines, 2 to 4 small bar-and-dot calendar glyphs carved near the figure giving the calendrical name, rough stone surface texture visible, bold outlines with minimal interior detail, set into a stone wall, highly detailed crosshatch ink drawing, warm sepia and earth tones, clean linework, no text or writing overlaid on the image",
+  "prompt_2": "pen and ink illustration, sepia wash, crosshatch drawing, warm earth tones, clean linework, book illustration",
+  "negative_prompt": "Egyptian style, classical Greek sculpture, Roman sculpture, Egyptian hieroglyphs, pharaoh, sphinx, columns, toga, blurry, low quality, distorted, deformed, cartoon, anime, 3D render, photorealistic, photograph, text, words, letters, writing, captions, watermark, signature",
+  "negative_prompt_2": "Egyptian, Greek, Roman, blurry, low quality, deformed, 3D render, photograph, text, watermark",
+  "seed": 47,
+  "width": 768,
+  "height": 1024,
+  "steps": 50,
+  "guidance_scale": 7.5,
+  "model": "stabilityai/stable-diffusion-xl-base-1.0",
+  "refiner_model": null,
+  "refiner_frac": null,
+  "mode": "text_only",
+  "scheduler": "DPMSolverMultistepScheduler",
+  "dtype": "float16",
+  "license": "CreativeML OpenRAIL++-M",
+  "generation_time_s": 14.37,
+  "timestamp": "2026-02-23T03:51:32.388046+00:00",
+  "book": "The Mystery of Monte Alban",
+  "series": "Fascinating Curiosities of Human History",
+  "volume": 1
+}

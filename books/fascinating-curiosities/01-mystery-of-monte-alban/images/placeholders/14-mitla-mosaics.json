@@ -1,0 +1,23 @@
+{
+  "prompt": "Detailed pen and ink illustration with sepia wash, the geometric stone mosaic walls of Mitla in Oaxaca Mexico, a close-up view of a palace wall facade covered in horizontal bands of intricate stepped fret grecas patterns, each band made of thousands of small individually shaped grey-tan stone pieces fitted together without mortar like a jigsaw puzzle, the patterns are interlocking rectangular spirals and zigzag stepped designs similar to Greek key meander but with angular right-angle steps, the fitted stones create three-dimensional relief, traces of red stucco visible behind the stone pieces, multiple horizontal registers of different geometric patterns stacked on the wall, precise craftsmanship, highly detailed crosshatch ink drawing, warm sepia and earth tones, clean linework, no text or writing overlaid on the image",
+  "prompt_2": "pen and ink illustration, sepia wash, crosshatch drawing, warm earth tones, clean linework, book illustration",
+  "negative_prompt": "Egyptian style, classical Greek sculpture, Roman sculpture, Egyptian hieroglyphs, pharaoh, sphinx, columns, toga, blurry, low quality, distorted, deformed, cartoon, anime, 3D render, photorealistic, photograph, text, words, letters, writing, captions, watermark, signature",
+  "negative_prompt_2": "Egyptian, Greek, Roman, blurry, low quality, deformed, 3D render, photograph, text, watermark",
+  "seed": 55,
+  "width": 1024,
+  "height": 1024,
+  "steps": 50,
+  "guidance_scale": 7.5,
+  "model": "stabilityai/stable-diffusion-xl-base-1.0",
+  "refiner_model": null,
+  "refiner_frac": null,
+  "mode": "text_only",
+  "scheduler": "DPMSolverMultistepScheduler",
+  "dtype": "float16",
+  "license": "CreativeML OpenRAIL++-M",
+  "generation_time_s": 19.52,
+  "timestamp": "2026-02-23T03:53:44.189277+00:00",
+  "book": "The Mystery of Monte Alban",
+  "series": "Fascinating Curiosities of Human History",
+  "volume": 1
+}

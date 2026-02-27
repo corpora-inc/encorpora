@@ -1,0 +1,23 @@
+{
+  "prompt": "Detailed pen and ink illustration with sepia wash, a single conquest slab from Building J at Monte Alban, a carved stone panel roughly 1 meter tall embedded in a wall, showing in shallow bas-relief an upside-down human head at the bottom with closed eyes and horizontal face paint bands indicating a dead ruler, above the head a torso with outstretched arms and clenched hands, at the top a stylized hill-shaped place glyph representing the conquered town with a small temple shape on top and identifying dots, bar-and-dot numerals for a calendar date, all carved as bold incised outlines in grey volcanic tuff stone, Zapotec Mesoamerican artistic style, highly detailed crosshatch ink drawing, warm sepia and earth tones, clean linework, no text or writing overlaid on the image",
+  "prompt_2": "pen and ink illustration, sepia wash, crosshatch drawing, warm earth tones, clean linework, book illustration",
+  "negative_prompt": "Egyptian style, classical Greek sculpture, Roman sculpture, Egyptian hieroglyphs, pharaoh, sphinx, columns, toga, blurry, low quality, distorted, deformed, cartoon, anime, 3D render, photorealistic, photograph, text, words, letters, writing, captions, watermark, signature",
+  "negative_prompt_2": "Egyptian, Greek, Roman, blurry, low quality, deformed, 3D render, photograph, text, watermark",
+  "seed": 49,
+  "width": 768,
+  "height": 1024,
+  "steps": 50,
+  "guidance_scale": 7.5,
+  "model": "stabilityai/stable-diffusion-xl-base-1.0",
+  "refiner_model": null,
+  "refiner_frac": null,
+  "mode": "text_only",
+  "scheduler": "DPMSolverMultistepScheduler",
+  "dtype": "float16",
+  "license": "CreativeML OpenRAIL++-M",
+  "generation_time_s": 14.4,
+  "timestamp": "2026-02-23T03:52:06.499439+00:00",
+  "book": "The Mystery of Monte Alban",
+  "series": "Fascinating Curiosities of Human History",
+  "volume": 1
+}
