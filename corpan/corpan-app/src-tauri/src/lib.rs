@@ -651,6 +651,11 @@ async fn content_packs_fetch_text(app: AppHandle, url: String) -> Result<String,
 }
 
 #[command]
+fn content_packs_fetch_bytes(app: AppHandle, url: String) -> Result<tauri::ipc::Response, String> {
+    content_packs::fetch_bytes(&app, url).map(tauri::ipc::Response::new)
+}
+
+#[command]
 fn content_packs_list_installed(app: AppHandle) -> Result<Vec<ContentPackInfo>, String> {
     list_installed(&app)
 }
@@ -736,6 +741,7 @@ pub fn run() {
             content_packs_query_db,
             content_packs_install_from_url,
             content_packs_fetch_text,
+            content_packs_fetch_bytes,
             content_packs_list_installed,
             content_packs_get_manifest_url,
             open_apple_feedback

@@ -348,6 +348,38 @@ pub fn list_installed<R: Runtime>(app: &AppHandle<R>) -> Result<Vec<ContentPackI
     Ok(packs)
 }
 
+pub fn fetch_bytes<R: Runtime>(app: &AppHandle<R>, url: String) -> Result<Vec<u8>, String> {
+    eprintln!("[fetch_bytes] Fetching URL: {}", url);
+
+    if !url.starts_with("corpan-pack://") {
+        return Err("fetch_bytes only supports corpan-pack:// URLs".to_string());
+    }
+
+    let url_without_query = url.split('?').next().unwrap_or(&url);
+    let path_part = url_without_query
+        .strip_prefix("corpan-pack://localhost/")
+        .ok_or("Invalid corpan-pack URL format")?;
+    let mut parts = path_part.splitn(2, '/');
+    let pack_id = parts.next().ok_or("Missing pack ID in corpan-pack URL")?;
+    let rel_path = parts.next().ok_or("Missing file path in corpan-pack URL")?;
+
+    eprintln!("[fetch_bytes] Pack ID: {}, Rel path: {}", pack_id, rel_path);
+
+    let pack_root = app
+        .path()
+        .app_data_dir()
+        .map(|dir| dir.join("corpan-packs"))
+        .map_err(|e| format!("Failed to get app data dir: {}", e))?;
+
+    let file_path = pack_root.join(pack_id).join(rel_path);
+    eprintln!("[fetch_bytes] Reading file: {:?}", file_path);
+
+    let content = fs::read(&file_path)
+        .map_err(|e| format!("Failed to read file {:?}: {}", file_path, e))?;
+    eprintln!("[fetch_bytes] Successfully read {} bytes from disk", content.len());
+    Ok(content)
+}
+
 pub fn get_manifest_url<R: Runtime>(
     app: &AppHandle<R>,
     pack_id: String,
