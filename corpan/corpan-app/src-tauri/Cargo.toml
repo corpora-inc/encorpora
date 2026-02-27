@@ -33,6 +33,7 @@ reqwest = { version = "0.12", default-features = false, features = [
 sha2 = "0.10"
 zip = "2.2.2"
 tauri-plugin-tts = { path = "../../plugins/tauri-plugin-tts" }
+tauri-plugin-audio-keepalive = { path = "../../plugins/tauri-plugin-audio-keepalive" }
 
 # Production optimizations for release builds
 [profile.release]

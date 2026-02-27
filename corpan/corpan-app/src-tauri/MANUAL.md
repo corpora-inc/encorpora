@@ -36,6 +36,37 @@ Added beyond the default `onCreate`:
   `loadUrl("about:blank")` + detach + `destroy()`) to avoid `destroyFunctor` SIGSEGV
 - `OnBackPressedCallback` in `onCreate` that calls `finish()` to prevent back-press ANR
 
+### gen/apple/corpan_iOS/Info.plist (UIBackgroundModes)
+
+Add:
+```xml
+<key>UIBackgroundModes</key>
+<array>
+    <string>audio</string>
+</array>
+```
+Required for Stargate Reader background audio playback. Also added to
+`ios/project.yml` template so it survives Xcode project regeneration.
+
+### gen/android/app/src/main/AndroidManifest.xml (background audio)
+
+Add permissions:
+```xml
+<uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+<uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK" />
+<uses-permission android:name="android.permission.WAKE_LOCK" />
+```
+
+Add service inside `<application>`:
+```xml
+<service
+    android:name=".AudioKeepAliveService"
+    android:foregroundServiceType="mediaPlayback"
+    android:exported="false" />
+```
+
+Required for Stargate Reader background audio playback via foreground service.
+
 ### gen/android/app/build.gradle.kts
 
 Added to `release` build type:

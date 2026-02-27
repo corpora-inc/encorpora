@@ -748,6 +748,7 @@ pub fn run() {
         ])
         .plugin(tauri_plugin_safe_area_insets_css::init())
         .plugin(tauri_plugin_tts::init())
+        .plugin(tauri_plugin_audio_keepalive::init())
         .plugin(tauri_plugin_opener::init())
         .setup(|app| {
             let data_dir = app

@@ -30,6 +30,7 @@ import { createChapterOverlay, type ChapterOverlay } from "./ui/chapterOverlay"
 import { createSettingsPanel, type LanguageInfo } from "./ui/settingsPanel"
 import { loadBookmark, saveBookmark, type Bookmark } from "./state/bookmarkStore"
 import { loadPrefs, savePrefs, type DisplayPrefs } from "./state/prefsStore"
+import { startNativeKeepAlive, stopNativeKeepAlive, updateNativeNowPlaying } from "./audio/nativeKeepAlive"
 
 /**
  * Create the Stargate Reader experience.
@@ -63,6 +64,10 @@ export function createStargateReader(
 
   // --- Background audio keepalive ---
   let bgKeepAlive: ReturnType<typeof setInterval> | null = null
+
+  // --- Background recovery timing ---
+  let backgroundedAt = 0        // wall-clock ms when app went to background
+  let backgroundedAudioMs = 0   // audio position ms when app went to background
 
   // Module-level state for language/book switching
   let dataProvider: DataProvider
@@ -200,6 +205,12 @@ export function createStargateReader(
     isPlaying = true
     transport.setPlaying(true)
     void requestWakeLock()
+    setupMediaSession()
+    void startNativeKeepAlive(
+      segments[audioEngine.getCurrentSegmentIndex()]?.title || "Stargate Reader",
+      VOICE_NAMES[voiceMap[currentLanguage] || ""] || "Narrator",
+      bookId
+    )
   })
 
   transport.onPause(() => {
@@ -209,6 +220,7 @@ export function createStargateReader(
     transport.setPlaying(false)
     persistBookmark()
     releaseWakeLock()
+    void stopNativeKeepAlive()
   })
 
   transport.onPrevChapter(() => {
@@ -323,6 +335,59 @@ export function createStargateReader(
     savePrefs(bookId, prefs)
   })
 
+  // --- Media Session API (lock screen controls) ---
+  function setupMediaSession() {
+    if (!("mediaSession" in navigator)) return
+
+    navigator.mediaSession.metadata = new MediaMetadata({
+      title: segments[0]?.title || "Stargate Reader",
+      artist: VOICE_NAMES[voiceMap[currentLanguage] || ""] || "Narrator",
+      album: bookId,
+    })
+
+    navigator.mediaSession.setActionHandler("play", () => {
+      if (!audioEngine) return
+      audioEngine.unlock()
+      audioEngine.play()
+      isPlaying = true
+      transport.setPlaying(true)
+      void requestWakeLock()
+    })
+    navigator.mediaSession.setActionHandler("pause", () => {
+      if (!audioEngine) return
+      audioEngine.pause()
+      isPlaying = false
+      transport.setPlaying(false)
+      persistBookmark()
+      releaseWakeLock()
+    })
+    navigator.mediaSession.setActionHandler("seekbackward", () => {
+      if (!audioEngine) return
+      audioEngine.seekToMs(Math.max(0, audioEngine.getCurrentTimeMs() - 30000))
+    })
+    navigator.mediaSession.setActionHandler("seekforward", () => {
+      if (!audioEngine) return
+      audioEngine.seekToMs(Math.min(audioEngine.getTotalDurationMs(), audioEngine.getCurrentTimeMs() + 30000))
+    })
+  }
+
+  function updateMediaSessionPosition() {
+    if (!("mediaSession" in navigator) || !audioEngine) return
+    const seg = segments[audioEngine.getCurrentSegmentIndex()]
+    if (seg) {
+      navigator.mediaSession.metadata = new MediaMetadata({
+        title: seg.title || "Stargate Reader",
+        artist: VOICE_NAMES[voiceMap[currentLanguage] || ""] || "Narrator",
+        album: bookId,
+      })
+    }
+    navigator.mediaSession.setPositionState({
+      duration: audioEngine.getTotalDurationMs() / 1000,
+      playbackRate: 1.0,
+      position: audioEngine.getCurrentTimeMs() / 1000,
+    })
+  }
+
   // --- Periodic bookmark autosave (every 15s during playback) ---
   let lastAutosaveMs = 0
   const AUTOSAVE_INTERVAL_MS = 15000
@@ -334,6 +399,10 @@ export function createStargateReader(
   function handleVisibilityChange() {
     if (document.hidden) {
       // Screen locked / tab hidden: save bookmark, stop render loop but keep audio
+      if (audioEngine && isPlaying) {
+        backgroundedAt = Date.now()
+        backgroundedAudioMs = audioEngine.getCurrentTimeMs()
+      }
       persistBookmark()
       engine.stopRenderLoop()
       // Keep AudioContext alive in background
@@ -344,11 +413,25 @@ export function createStargateReader(
       // Screen visible: clear keepalive, resume render loop
       if (bgKeepAlive) { clearInterval(bgKeepAlive); bgKeepAlive = null }
       engine.runRenderLoop(renderLoop)
-      // Nudge audio context back to life after screen unlock
-      if (audioEngine && isPlaying) {
+
+      // Recovery: if we were playing, check if audio froze while backgrounded
+      if (audioEngine && isPlaying && backgroundedAt > 0) {
+        const wallElapsed = Date.now() - backgroundedAt
+        const expectedMs = backgroundedAudioMs + wallElapsed
+        const actualMs = audioEngine.getCurrentTimeMs()
+        const totalMs = audioEngine.getTotalDurationMs()
+
+        // If audio drifted by more than 2 seconds, JS was likely frozen by the OS
+        if (Math.abs(expectedMs - actualMs) > 2000 && expectedMs < totalMs) {
+          audioEngine.seekToMs(Math.min(expectedMs, totalMs))
+          audioEngine.play()
+        }
+
         audioEngine.unlock()
         void requestWakeLock()
       }
+
+      backgroundedAt = 0
     }
   }
   document.addEventListener("visibilitychange", handleVisibilityChange)
@@ -442,6 +525,7 @@ export function createStargateReader(
           isPlaying = false
           transport.setPlaying(false)
           releaseWakeLock()
+          void stopNativeKeepAlive()
         },
         (segmentId, buffer) => {
           // Extract waveform envelopes as audio buffers are decoded
@@ -576,6 +660,7 @@ export function createStargateReader(
           isPlaying = false
           transport.setPlaying(false)
           releaseWakeLock()
+          void stopNativeKeepAlive()
         },
         (segmentId, buffer) => {
           const entry = manifest.segments[segmentId]
@@ -634,10 +719,17 @@ export function createStargateReader(
       transport.setProgress(currentMs / totalMs)
     }
 
-    // Autosave bookmark during playback
+    // Autosave bookmark + update lock screen metadata during playback
     if (isPlaying && currentMs - lastAutosaveMs > AUTOSAVE_INTERVAL_MS) {
       lastAutosaveMs = currentMs
       persistBookmark()
+      updateMediaSessionPosition()
+      void updateNativeNowPlaying(
+        segments[audioEngine?.getCurrentSegmentIndex() ?? 0]?.title || "Stargate Reader",
+        VOICE_NAMES[voiceMap[currentLanguage] || ""] || "Narrator",
+        currentMs,
+        totalMs
+      )
     }
 
     // Chapter transition detection
@@ -711,6 +803,7 @@ export function createStargateReader(
     disposed = true
 
     releaseWakeLock()
+    void stopNativeKeepAlive()
     if (bgKeepAlive) { clearInterval(bgKeepAlive); bgKeepAlive = null }
 
     document.removeEventListener("visibilitychange", handleVisibilityChange)
