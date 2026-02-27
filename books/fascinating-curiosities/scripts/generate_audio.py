@@ -71,13 +71,36 @@ def save_manifest(manifest: dict, manifest_path: str):
     os.replace(tmp_path, manifest_path)
 
 
+def build_mastering_chain() -> str:
+    """Build the ffmpeg audio filter chain for mastering TTS output.
+
+    Chain order:
+        1. highpass  — remove sub-80Hz rumble/DC offset
+        2. adeclick  — interpolate over pops/clicks
+        3. afftdn    — FFT spectral denoising (gentle, adaptive)
+        4. agate     — noise gate for clean silences
+        5. acompressor — gentle 2:1 compression to even out levels
+        6. alimiter  — true peak safety limiter at -3 dBTP
+    """
+    return ",".join([
+        "highpass=f=80:width_type=q:width=0.7",
+        "adeclick=window=55:overlap=75:threshold=2",
+        "afftdn=nr=12:nf=-40:tn=1",
+        "agate=threshold=0.018:range=0.01:attack=5:release=50",
+        "acompressor=threshold=0.1:ratio=2:attack=10:release=100:makeup=1",
+        "alimiter=limit=0.708:level=false",
+    ])
+
+
 def encode_audio(wav_path: str, output_path: str, fmt: str = "opus"):
-    """Encode WAV to target format using ffmpeg."""
+    """Encode WAV to target format using ffmpeg with mastering filter chain."""
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
+    af_chain = build_mastering_chain()
 
     if fmt == "opus":
         cmd = [
             "ffmpeg", "-y", "-i", wav_path,
+            "-af", af_chain,
             "-c:a", "libopus",
             "-b:a", "48000",
             "-application", "voip",
@@ -87,6 +110,7 @@ def encode_audio(wav_path: str, output_path: str, fmt: str = "opus"):
     elif fmt == "aac":
         cmd = [
             "ffmpeg", "-y", "-i", wav_path,
+            "-af", af_chain,
             "-c:a", "aac",
             "-b:a", "64000",
             output_path,
