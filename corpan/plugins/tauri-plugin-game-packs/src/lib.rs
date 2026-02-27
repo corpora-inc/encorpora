@@ -157,6 +157,8 @@ fn content_type_for_path(path: &Path) -> &'static str {
         "webp" => "image/webp",
         "mp3" => "audio/mpeg",
         "wav" => "audio/wav",
+        "opus" => "audio/opus",
+        "ogg" => "audio/ogg",
         "mp4" => "video/mp4",
         "webm" => "video/webm",
         "wasm" => "application/wasm",

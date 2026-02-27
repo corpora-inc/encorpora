@@ -24,10 +24,21 @@ const registerGame = () => {
         scope.__stargateReader = undefined
       }
 
+      // Read baseUrl from the host-injected script tag
+      const scriptEl = document.querySelector(
+        `script[data-corp-game-id="${GAME_ID}"]`
+      ) as HTMLScriptElement | null
+      const baseUrl = scriptEl?.dataset.corpGameBaseUrl
+
+      const state = {
+        ...(initialState as Record<string, unknown>),
+        ...(baseUrl ? { baseUrl } : {}),
+      }
+
       const instance = createStargateReader(
         container,
         hostApi,
-        initialState as Record<string, unknown>
+        state
       )
       scope.__stargateReader = instance
 
