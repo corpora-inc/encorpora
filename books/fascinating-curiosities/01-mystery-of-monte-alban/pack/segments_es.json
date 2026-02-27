@@ -768,10 +768,10 @@
       "sentence_index": 0,
       "block_type": "text",
       "title": "Capítulo 1 — La vista desde arriba",
-      "text": "La ciudad de la que estamos hablando se llama Monte Albán (MON-teh al-BAHN).",
-      "text_markdown": "La ciudad de la que estamos hablando se llama Monte Albán (MON-teh al-BAHN).",
+      "text": "La ciudad de la que estamos hablando se llama Monte Albán.",
+      "text_markdown": "La ciudad de la que estamos hablando se llama Monte Albán.",
       "tts": {
-        "text": "La ciudad de la que estamos hablando se llama Monte Albán (MON-teh al-BAHN).",
+        "text": "La ciudad de la que estamos hablando se llama Monte Albán.",
         "pause_after_ms": 500
       }
     },
@@ -783,10 +783,10 @@
       "sentence_index": 1,
       "block_type": "text",
       "title": "Capítulo 1 — La vista desde arriba",
-      "text": "Se encuentra en el estado de Oaxaca (wah-HAH-kah), en las tierras altas del sur de México, a unos 350 kilómetros al sureste de la Ciudad de México.",
-      "text_markdown": "Se encuentra en el estado de Oaxaca (wah-HAH-kah), en las tierras altas del sur de México, a unos 350 kilómetros al sureste de la Ciudad de México.",
+      "text": "Se encuentra en el estado de Oaxaca, en las tierras altas del sur de México, a unos 350 kilómetros al sureste de la Ciudad de México.",
+      "text_markdown": "Se encuentra en el estado de Oaxaca, en las tierras altas del sur de México, a unos 350 kilómetros al sureste de la Ciudad de México.",
       "tts": {
-        "text": "Se encuentra en el estado de Oaxaca (wah-HAH-kah), en las tierras altas del sur de México, a unos 350 kilómetros al sureste de la Ciudad de México.",
+        "text": "Se encuentra en el estado de Oaxaca, en las tierras altas del sur de México, a unos 350 kilómetros al sureste de la Ciudad de México.",
         "pause_after_ms": 800
       }
     },
@@ -858,10 +858,10 @@
       "sentence_index": 4,
       "block_type": "text",
       "title": "Capítulo 1 — La vista desde arriba",
-      "text": "Los más citados son Danipaguache (dah-nee-pah-GWAH-cheh), que significa «Montaña Sagrada», y Danibaan, que significa algo cercano a «Cerro Sagrado». Pero incluso estos nombres provienen de la tradición oral registrada siglos después de que la ciudad fue abandonada.",
-      "text_markdown": "Los más citados son Danipaguache (dah-nee-pah-GWAH-cheh), que significa «Montaña Sagrada», y Danibaan, que significa algo cercano a «Cerro Sagrado». Pero incluso estos nombres provienen de la tradición oral registrada siglos después de que la ciudad fue abandonada.",
+      "text": "Los más citados son Danipaguache, que significa «Montaña Sagrada», y Danibaan, que significa algo cercano a «Cerro Sagrado». Pero incluso estos nombres provienen de la tradición oral registrada siglos después de que la ciudad fue abandonada.",
+      "text_markdown": "Los más citados son Danipaguache, que significa «Montaña Sagrada», y Danibaan, que significa algo cercano a «Cerro Sagrado». Pero incluso estos nombres provienen de la tradición oral registrada siglos después de que la ciudad fue abandonada.",
       "tts": {
-        "text": "Los más citados son Danipaguache (dah-nee-pah-GWAH-cheh), que significa «Montaña Sagrada», y Danibaan, que significa algo cercano a «Cerro Sagrado». Pero incluso estos nombres provienen de la tradición oral registrada siglos después de que la ciudad fue abandonada.",
+        "text": "Los más citados son Danipaguache, que significa «Montaña Sagrada», y Danibaan, que significa algo cercano a «Cerro Sagrado». Pero incluso estos nombres provienen de la tradición oral registrada siglos después de que la ciudad fue abandonada.",
         "pause_after_ms": 500
       }
     },
@@ -1247,10 +1247,10 @@
       "sentence_index": 0,
       "block_type": "text",
       "title": "Capítulo 2 — Antes de la montaña",
-      "text": "Hacia 1500 a. C. — unos mil años antes de la fundación de Monte Albán — el asentamiento más grande del valle era un lugar llamado San José Mogote (san ho-ZAY mo-GO-teh), en el brazo de Etla.",
-      "text_markdown": "Hacia 1500 a. C. — unos mil años antes de la fundación de Monte Albán — el asentamiento más grande del valle era un lugar llamado San José Mogote (san ho-ZAY mo-GO-teh), en el brazo de Etla.",
+      "text": "Hacia 1500 a. C. — unos mil años antes de la fundación de Monte Albán — el asentamiento más grande del valle era un lugar llamado San José Mogote, en el brazo de Etla.",
+      "text_markdown": "Hacia 1500 a. C. — unos mil años antes de la fundación de Monte Albán — el asentamiento más grande del valle era un lugar llamado San José Mogote, en el brazo de Etla.",
       "tts": {
-        "text": "Hacia 1500 a. C. — unos mil años antes de la fundación de Monte Albán — el asentamiento más grande del valle era un lugar llamado San José Mogote (san ho-ZAY mo-GO-teh), en el brazo de Etla.",
+        "text": "Hacia 1500 a. C. — unos mil años antes de la fundación de Monte Albán — el asentamiento más grande del valle era un lugar llamado San José Mogote, en el brazo de Etla.",
         "pause_after_ms": 500
       }
     },
@@ -2388,10 +2388,10 @@
       "sentence_index": 0,
       "block_type": "text",
       "title": "Capítulo 3 — La fundación",
-      "text": "Los arqueólogos Charles Spencer y Elsa Redmond, trabajando desde el Museo Americano de Historia Natural en Nueva York, han dedicado años a estudiar un sitio llamado Tilcajete (til-kah-HEH-teh) en el brazo sur del valle.",
-      "text_markdown": "Los arqueólogos Charles Spencer y Elsa Redmond, trabajando desde el Museo Americano de Historia Natural en Nueva York, han dedicado años a estudiar un sitio llamado Tilcajete (til-kah-HEH-teh) en el brazo sur del valle.",
+      "text": "Los arqueólogos Charles Spencer y Elsa Redmond, trabajando desde el Museo Americano de Historia Natural en Nueva York, han dedicado años a estudiar un sitio llamado Tilcajete en el brazo sur del valle.",
+      "text_markdown": "Los arqueólogos Charles Spencer y Elsa Redmond, trabajando desde el Museo Americano de Historia Natural en Nueva York, han dedicado años a estudiar un sitio llamado Tilcajete en el brazo sur del valle.",
       "tts": {
-        "text": "Los arqueólogos Charles Spencer y Elsa Redmond, trabajando desde el Museo Americano de Historia Natural en Nueva York, han dedicado años a estudiar un sitio llamado Tilcajete (til-kah-HEH-teh) en el brazo sur del valle.",
+        "text": "Los arqueólogos Charles Spencer y Elsa Redmond, trabajando desde el Museo Americano de Historia Natural en Nueva York, han dedicado años a estudiar un sitio llamado Tilcajete en el brazo sur del valle.",
         "pause_after_ms": 500
       }
     },
@@ -3272,10 +3272,10 @@
       "sentence_index": 2,
       "block_type": "text",
       "title": "Capítulo 4 — ¿Qué tipo de lugar era este?",
-      "text": "El calendario ritual de 260 días, llamado piye (PEE-yeh) en zapoteco, combinaba veinte nombres de días con trece números, creando un ciclo de 260 designaciones de días únicas.",
-      "text_markdown": "El calendario ritual de 260 días, llamado *piye* (PEE-yeh) en zapoteco, combinaba veinte nombres de días con trece números, creando un ciclo de 260 designaciones de días únicas.",
+      "text": "El calendario ritual de 260 días, llamado piye en zapoteco, combinaba veinte nombres de días con trece números, creando un ciclo de 260 designaciones de días únicas.",
+      "text_markdown": "El calendario ritual de 260 días, llamado *piye* en zapoteco, combinaba veinte nombres de días con trece números, creando un ciclo de 260 designaciones de días únicas.",
       "tts": {
-        "text": "El calendario ritual de 260 días, llamado piye (PEE-yeh) en zapoteco, combinaba veinte nombres de días con trece números, creando un ciclo de 260 designaciones de días únicas.",
+        "text": "El calendario ritual de 260 días, llamado piye en zapoteco, combinaba veinte nombres de días con trece números, creando un ciclo de 260 designaciones de días únicas.",
         "pause_after_ms": 500
       }
     },
@@ -3542,10 +3542,10 @@
       "sentence_index": 1,
       "block_type": "text",
       "title": "Capítulo 4 — ¿Qué tipo de lugar era este?",
-      "text": "Tortillas hechas de maíz molido que había sido remojado en agua de cal, un proceso llamado nixtamalización (nix-tah-mah-lee-ZAY-shun) que libera nutrientes encerrados dentro del grano de maíz y se ha utilizado en Mesoamérica durante al menos tres mil años.",
-      "text_markdown": "Tortillas hechas de maíz molido que había sido remojado en agua de cal, un proceso llamado nixtamalización (nix-tah-mah-lee-ZAY-shun) que libera nutrientes encerrados dentro del grano de maíz y se ha utilizado en Mesoamérica durante al menos tres mil años.",
+      "text": "Tortillas hechas de maíz molido que había sido remojado en agua de cal, un proceso llamado nixtamalización que libera nutrientes encerrados dentro del grano de maíz y se ha utilizado en Mesoamérica durante al menos tres mil años.",
+      "text_markdown": "Tortillas hechas de maíz molido que había sido remojado en agua de cal, un proceso llamado nixtamalización que libera nutrientes encerrados dentro del grano de maíz y se ha utilizado en Mesoamérica durante al menos tres mil años.",
       "tts": {
-        "text": "Tortillas hechas de maíz molido que había sido remojado en agua de cal, un proceso llamado nixtamalización (nix-tah-mah-lee-ZAY-shun) que libera nutrientes encerrados dentro del grano de maíz y se ha utilizado en Mesoamérica durante al menos tres mil años.",
+        "text": "Tortillas hechas de maíz molido que había sido remojado en agua de cal, un proceso llamado nixtamalización que libera nutrientes encerrados dentro del grano de maíz y se ha utilizado en Mesoamérica durante al menos tres mil años.",
         "pause_after_ms": 500
       }
     },
@@ -6074,10 +6074,10 @@
       "sentence_index": 1,
       "block_type": "text",
       "title": "Capítulo 6 — El Edificio J y las losas de conquista",
-      "text": "El glifo que los estudiosos leen como \"Lugar del Canto\" ha sido identificado con Cuicatlán (kwee-kaht-LAHN), un pueblo a unos 80 kilómetros al norte de Monte Albán en la región de la Cañada.",
-      "text_markdown": "El glifo que los estudiosos leen como \"Lugar del Canto\" ha sido identificado con Cuicatlán (kwee-kaht-LAHN), un pueblo a unos 80 kilómetros al norte de Monte Albán en la región de la Cañada.",
+      "text": "El glifo que los estudiosos leen como \"Lugar del Canto\" ha sido identificado con Cuicatlán, un pueblo a unos 80 kilómetros al norte de Monte Albán en la región de la Cañada.",
+      "text_markdown": "El glifo que los estudiosos leen como \"Lugar del Canto\" ha sido identificado con Cuicatlán, un pueblo a unos 80 kilómetros al norte de Monte Albán en la región de la Cañada.",
       "tts": {
-        "text": "El glifo que los estudiosos leen como \"Lugar del Canto\" ha sido identificado con Cuicatlán (kwee-kaht-LAHN), un pueblo a unos 80 kilómetros al norte de Monte Albán en la región de la Cañada.",
+        "text": "El glifo que los estudiosos leen como \"Lugar del Canto\" ha sido identificado con Cuicatlán, un pueblo a unos 80 kilómetros al norte de Monte Albán en la región de la Cañada.",
         "pause_after_ms": 500
       }
     },
@@ -6418,10 +6418,10 @@
       "sentence_index": 1,
       "block_type": "text",
       "title": "Capítulo 7 — Lo que la escritura realmente es (y no es)",
-      "text": "El hiragana japonés es un silabario: el símbolo か representa la sílaba \"ka\", no los sonidos individuales \"k\" y \"a\". La escritura cheroqui, inventada por Sequoyah en la década de 1820, también es un silabario.",
-      "text_markdown": "El hiragana japonés es un silabario: el símbolo か representa la sílaba \"ka\", no los sonidos individuales \"k\" y \"a\". La escritura cheroqui, inventada por Sequoyah en la década de 1820, también es un silabario.",
+      "text": "El hiragana japonés es un silabario: el símbolo ka representa la sílaba \"ka\", no los sonidos individuales \"k\" y \"a\". La escritura cheroqui, inventada por Sequoyah en la década de 1820, también es un silabario.",
+      "text_markdown": "El hiragana japonés es un silabario: el símbolo ka representa la sílaba \"ka\", no los sonidos individuales \"k\" y \"a\". La escritura cheroqui, inventada por Sequoyah en la década de 1820, también es un silabario.",
       "tts": {
-        "text": "El hiragana japonés es un silabario: el símbolo か representa la sílaba \"ka\", no los sonidos individuales \"k\" y \"a\". La escritura cheroqui, inventada por Sequoyah en la década de 1820, también es un silabario.",
+        "text": "El hiragana japonés es un silabario: el símbolo ka representa la sílaba \"ka\", no los sonidos individuales \"k\" y \"a\". La escritura cheroqui, inventada por Sequoyah en la década de 1820, también es un silabario.",
         "pause_after_ms": 800
       }
     },
@@ -6448,10 +6448,10 @@
       "sentence_index": 1,
       "block_type": "text",
       "title": "Capítulo 7 — Lo que la escritura realmente es (y no es)",
-      "text": "Los caracteres chinos son en gran parte logográficos: el carácter 山 significa \"montaña\" independientemente del idioma que hables o de cómo lo pronuncies.",
-      "text_markdown": "Los caracteres chinos son en gran parte logográficos: el carácter 山 significa \"montaña\" independientemente del idioma que hables o de cómo lo pronuncies.",
+      "text": "Los caracteres chinos son en gran parte logográficos: el carácter shan significa \"montaña\" independientemente del idioma que hables o de cómo lo pronuncies.",
+      "text_markdown": "Los caracteres chinos son en gran parte logográficos: el carácter shan significa \"montaña\" independientemente del idioma que hables o de cómo lo pronuncies.",
       "tts": {
-        "text": "Los caracteres chinos son en gran parte logográficos: el carácter 山 significa \"montaña\" independientemente del idioma que hables o de cómo lo pronuncies.",
+        "text": "Los caracteres chinos son en gran parte logográficos: el carácter shan significa \"montaña\" independientemente del idioma que hables o de cómo lo pronuncies.",
         "pause_after_ms": 800
       }
     },
@@ -7113,7 +7113,7 @@
       "text": "No es como la escritura del Valle del Indo, un sistema de escritura no descifrado del antiguo Pakistán y noroeste de India (aproximadamente 2600-1900 a. C.), que presenta un enigma aún más difícil: nadie sabe siquiera qué lengua hablaba la gente del Indo, y los textos sobrevivientes son tan cortos —la mayoría tiene menos de cinco signos— que el análisis estadístico casi no tiene con qué trabajar.",
       "text_markdown": "No es como la escritura del Valle del Indo, un sistema de escritura no descifrado del antiguo Pakistán y noroeste de India (aproximadamente 2600-1900 a. C.), que presenta un enigma aún más difícil: nadie sabe siquiera qué lengua hablaba la gente del Indo, y los textos sobrevivientes son tan cortos —la mayoría tiene menos de cinco signos— que el análisis estadístico casi no tiene con qué trabajar.",
       "tts": {
-        "text": "No es como la escritura del Valle del Indo, un sistema de escritura no descifrado del antiguo Pakistán y noroeste de India (aproximadamente 2600-1900 a. C.), que presenta un enigma aún más difícil: nadie sabe siquiera qué lengua hablaba la gente del Indo, y los textos sobrevivientes son tan cortos —la mayoría tiene menos de cinco signos— que el análisis estadístico casi no tiene con qué trabajar.",
+        "text": "No es como la escritura del Valle del Indo, un sistema de escritura no descifrado del antiguo Pakistán y noroeste de India (aproximadamente dos mil seiscientos a mil novecientos antes de Cristo), que presenta un enigma aún más difícil: nadie sabe siquiera qué lengua hablaba la gente del Indo, y los textos sobrevivientes son tan cortos —la mayoría tiene menos de cinco signos— que el análisis estadístico casi no tiene con qué trabajar.",
         "pause_after_ms": 800
       }
     },
@@ -8651,10 +8651,10 @@
       "sentence_index": 0,
       "block_type": "text",
       "title": "Capítulo 9 — La carrera por el desciframiento",
-      "text": "En 2018, investigadores del Instituto Nacional de Antropología e Historia de México — conocido por sus siglas, INAH (ee-NAH) — anunciaron el descubrimiento de un enorme friso de estuco en Atzompa (aht-SOHM-pah), un sitio en la cima de una colina a aproximadamente un kilómetro al noroeste de Monte Albán que sirvió como comunidad satélite durante el apogeo de la ciudad.",
-      "text_markdown": "En 2018, investigadores del Instituto Nacional de Antropología e Historia de México — conocido por sus siglas, INAH (ee-NAH) — anunciaron el descubrimiento de un enorme friso de estuco en Atzompa (aht-SOHM-pah), un sitio en la cima de una colina a aproximadamente un kilómetro al noroeste de Monte Albán que sirvió como comunidad satélite durante el apogeo de la ciudad.",
+      "text": "En 2018, investigadores del Instituto Nacional de Antropología e Historia de México — conocido por sus siglas, INAH — anunciaron el descubrimiento de un enorme friso de estuco en Atzompa, un sitio en la cima de una colina a aproximadamente un kilómetro al noroeste de Monte Albán que sirvió como comunidad satélite durante el apogeo de la ciudad.",
+      "text_markdown": "En 2018, investigadores del Instituto Nacional de Antropología e Historia de México — conocido por sus siglas, INAH — anunciaron el descubrimiento de un enorme friso de estuco en Atzompa, un sitio en la cima de una colina a aproximadamente un kilómetro al noroeste de Monte Albán que sirvió como comunidad satélite durante el apogeo de la ciudad.",
       "tts": {
-        "text": "En 2018, investigadores del Instituto Nacional de Antropología e Historia de México — conocido por sus siglas, INAH (ee-NAH) — anunciaron el descubrimiento de un enorme friso de estuco en Atzompa (aht-SOHM-pah), un sitio en la cima de una colina a aproximadamente un kilómetro al noroeste de Monte Albán que sirvió como comunidad satélite durante el apogeo de la ciudad.",
+        "text": "En 2018, investigadores del Instituto Nacional de Antropología e Historia de México — conocido por sus siglas, INAH — anunciaron el descubrimiento de un enorme friso de estuco en Atzompa, un sitio en la cima de una colina a aproximadamente un kilómetro al noroeste de Monte Albán que sirvió como comunidad satélite durante el apogeo de la ciudad.",
         "pause_after_ms": 500
       }
     },
@@ -9307,10 +9307,10 @@
       "sentence_index": 0,
       "block_type": "text",
       "title": "Capítulo 10 — El declive",
-      "text": "Durante esta edad dorada, Monte Albán mantuvo diplomacia con la mayor potencia de toda Mesoamérica: Teotihuacan (teh-oh-tee-wah-KAHN).",
-      "text_markdown": "Durante esta edad dorada, Monte Albán mantuvo diplomacia con la mayor potencia de toda Mesoamérica: Teotihuacan (teh-oh-tee-wah-KAHN).",
+      "text": "Durante esta edad dorada, Monte Albán mantuvo diplomacia con la mayor potencia de toda Mesoamérica: Teotihuacan.",
+      "text_markdown": "Durante esta edad dorada, Monte Albán mantuvo diplomacia con la mayor potencia de toda Mesoamérica: Teotihuacan.",
       "tts": {
-        "text": "Durante esta edad dorada, Monte Albán mantuvo diplomacia con la mayor potencia de toda Mesoamérica: Teotihuacan (teh-oh-tee-wah-KAHN).",
+        "text": "Durante esta edad dorada, Monte Albán mantuvo diplomacia con la mayor potencia de toda Mesoamérica: Teotihuacan.",
         "pause_after_ms": 800
       }
     },
@@ -11118,10 +11118,10 @@
       "sentence_index": 0,
       "block_type": "text",
       "title": "Capítulo 12 — La vida después de una ciudad",
-      "text": "Los mixtecas (MEESH-teks) eran un pueblo de las tierras altas de la región montañosa al oeste y noroeste del Valle de Oaxaca — una región conocida como la Mixteca.",
-      "text_markdown": "Los mixtecas (MEESH-teks) eran un pueblo de las tierras altas de la región montañosa al oeste y noroeste del Valle de Oaxaca — una región conocida como la Mixteca.",
+      "text": "Los mixtecas eran un pueblo de las tierras altas de la región montañosa al oeste y noroeste del Valle de Oaxaca — una región conocida como la Mixteca.",
+      "text_markdown": "Los mixtecas eran un pueblo de las tierras altas de la región montañosa al oeste y noroeste del Valle de Oaxaca — una región conocida como la Mixteca.",
       "tts": {
-        "text": "Los mixtecas (MEESH-teks) eran un pueblo de las tierras altas de la región montañosa al oeste y noroeste del Valle de Oaxaca — una región conocida como la Mixteca.",
+        "text": "Los mixtecas eran un pueblo de las tierras altas de la región montañosa al oeste y noroeste del Valle de Oaxaca — una región conocida como la Mixteca.",
         "pause_after_ms": 500
       }
     },
@@ -11984,10 +11984,10 @@
       "sentence_index": 0,
       "block_type": "text",
       "title": "Capítulo 13 — Mitla: El lugar de los muertos",
-      "text": "El nombre zapoteco era Lyobaa (lyoh-BAH), que significa «Lugar de descanso» o «Lugar de reposo». Los aztecas, que lo encontraron más tarde, lo llamaron Mictlán (meek-TLAHN) — «Lugar de los muertos». Los españoles lo simplificaron a Mitla (MEET-lah), y el nombre se quedó.",
-      "text_markdown": "El nombre zapoteco era Lyobaa (lyoh-BAH), que significa «Lugar de descanso» o «Lugar de reposo». Los aztecas, que lo encontraron más tarde, lo llamaron Mictlán (meek-TLAHN) — «Lugar de los muertos». Los españoles lo simplificaron a Mitla (MEET-lah), y el nombre se quedó.",
+      "text": "El nombre zapoteco era Lyobaa, que significa «Lugar de descanso» o «Lugar de reposo». Los aztecas, que lo encontraron más tarde, lo llamaron Mictlán — «Lugar de los muertos». Los españoles lo simplificaron a Mitla, y el nombre se quedó.",
+      "text_markdown": "El nombre zapoteco era Lyobaa, que significa «Lugar de descanso» o «Lugar de reposo». Los aztecas, que lo encontraron más tarde, lo llamaron Mictlán — «Lugar de los muertos». Los españoles lo simplificaron a Mitla, y el nombre se quedó.",
       "tts": {
-        "text": "El nombre zapoteco era Lyobaa (lyoh-BAH), que significa «Lugar de descanso» o «Lugar de reposo». Los aztecas, que lo encontraron más tarde, lo llamaron Mictlán (meek-TLAHN) — «Lugar de los muertos». Los españoles lo simplificaron a Mitla (MEET-lah), y el nombre se quedó.",
+        "text": "El nombre zapoteco era Lyobaa, que significa «Lugar de descanso» o «Lugar de reposo». Los aztecas, que lo encontraron más tarde, lo llamaron Mictlán — «Lugar de los muertos». Los españoles lo simplificaron a Mitla, y el nombre se quedó.",
         "pause_after_ms": 800
       }
     },
@@ -12284,10 +12284,10 @@
       "sentence_index": 2,
       "block_type": "text",
       "title": "Capítulo 13 — Mitla: El lugar de los muertos",
-      "text": "Los relatos coloniales españoles lo describen como la sede de un poderoso sumo sacerdote — una figura llamada el Uija-tào (wee-hah-TAH-oh), o «Gran Vidente» — que ejercía autoridad espiritual en todo el mundo zapoteco incluso mientras el poder político se fragmentaba.",
-      "text_markdown": "Los relatos coloniales españoles lo describen como la sede de un poderoso sumo sacerdote — una figura llamada el *Uija-tào* (wee-hah-TAH-oh), o «Gran Vidente» — que ejercía autoridad espiritual en todo el mundo zapoteco incluso mientras el poder político se fragmentaba.",
+      "text": "Los relatos coloniales españoles lo describen como la sede de un poderoso sumo sacerdote — una figura llamada el Uija-tào, o «Gran Vidente» — que ejercía autoridad espiritual en todo el mundo zapoteco incluso mientras el poder político se fragmentaba.",
+      "text_markdown": "Los relatos coloniales españoles lo describen como la sede de un poderoso sumo sacerdote — una figura llamada el *Uija-tào*, o «Gran Vidente» — que ejercía autoridad espiritual en todo el mundo zapoteco incluso mientras el poder político se fragmentaba.",
       "tts": {
-        "text": "Los relatos coloniales españoles lo describen como la sede de un poderoso sumo sacerdote — una figura llamada el Uija-tào (wee-hah-TAH-oh), o «Gran Vidente» — que ejercía autoridad espiritual en todo el mundo zapoteco incluso mientras el poder político se fragmentaba.",
+        "text": "Los relatos coloniales españoles lo describen como la sede de un poderoso sumo sacerdote — una figura llamada el Uija-tào, o «Gran Vidente» — que ejercía autoridad espiritual en todo el mundo zapoteco incluso mientras el poder político se fragmentaba.",
         "pause_after_ms": 800
       }
     },
@@ -13273,7 +13273,7 @@
       "text": "En la India, Siddhartha Gautama — el Buda — había muerto recientemente, y sus enseñanzas se estaban extendiendo por el subcontinente.",
       "text_markdown": "En la India, Siddhartha Gautama — el Buda — había muerto recientemente, y sus enseñanzas se estaban extendiendo por el subcontinente.",
       "tts": {
-        "text": "En la India, Siddhartha Gautama — el Buda — había muerto recientemente, y sus enseñanzas se estaban extendiendo por el subcontinente.",
+        "text": "En la India, Siddhartha Gautama, el Buda, había muerto recientemente, y sus enseñanzas se estaban extendiendo por el subcontinente.",
         "pause_after_ms": 500
       }
     },
@@ -14316,10 +14316,10 @@
       "sentence_index": 0,
       "block_type": "text",
       "title": "Nombres y términos clave",
-      "text": "Atzompa (aht-SOHM-pah) — Un sitio en la cima de un cerro a un kilómetro al noroeste de Monte Albán, que servía como comunidad satélite.",
-      "text_markdown": "**Atzompa** (aht-SOHM-pah) — Un sitio en la cima de un cerro a un kilómetro al noroeste de Monte Albán, que servía como comunidad satélite.",
+      "text": "Atzompa — Un sitio en la cima de un cerro a un kilómetro al noroeste de Monte Albán, que servía como comunidad satélite.",
+      "text_markdown": "**Atzompa** — Un sitio en la cima de un cerro a un kilómetro al noroeste de Monte Albán, que servía como comunidad satélite.",
       "tts": {
-        "text": "Atzompa (aht-SOHM-pah) — Un sitio en la cima de un cerro a un kilómetro al noroeste de Monte Albán, que servía como comunidad satélite.",
+        "text": "Atzompa — Un sitio en la cima de un cerro a un kilómetro al noroeste de Monte Albán, que servía como comunidad satélite.",
         "pause_after_ms": 500
       }
     },
@@ -14436,10 +14436,10 @@
       "sentence_index": 0,
       "block_type": "text",
       "title": "Nombres y términos clave",
-      "text": "Danzantes (dahn-SAHN-tes) — «Los Danzantes». Más de trescientas figuras talladas en piedra en Monte Albán, ahora entendidas como representaciones de prisioneros de guerra sacrificados.",
-      "text_markdown": "**Danzantes** (dahn-SAHN-tes) — «Los Danzantes». Más de trescientas figuras talladas en piedra en Monte Albán, ahora entendidas como representaciones de prisioneros de guerra sacrificados.",
+      "text": "Danzantes — «Los Danzantes». Más de trescientas figuras talladas en piedra en Monte Albán, ahora entendidas como representaciones de prisioneros de guerra sacrificados.",
+      "text_markdown": "**Danzantes** — «Los Danzantes». Más de trescientas figuras talladas en piedra en Monte Albán, ahora entendidas como representaciones de prisioneros de guerra sacrificados.",
       "tts": {
-        "text": "Danzantes (dahn-SAHN-tes) — «Los Danzantes». Más de trescientas figuras talladas en piedra en Monte Albán, ahora entendidas como representaciones de prisioneros de guerra sacrificados.",
+        "text": "Danzantes — «Los Danzantes». Más de trescientas figuras talladas en piedra en Monte Albán, ahora entendidas como representaciones de prisioneros de guerra sacrificados.",
         "pause_after_ms": 500
       }
     },
@@ -14466,10 +14466,10 @@
       "sentence_index": 0,
       "block_type": "text",
       "title": "Nombres y términos clave",
-      "text": "Danibaan / Danipaguache (dah-nee-pah-GWAH-cheh) — Nombres zapotecas de Monte Albán, que significan aproximadamente «Cerro Sagrado» y «Montaña Sagrada». Son nombres tradicionales posteriores; el original es desconocido.",
-      "text_markdown": "**Danibaan** / **Danipaguache** (dah-nee-pah-GWAH-cheh) — Nombres zapotecas de Monte Albán, que significan aproximadamente «Cerro Sagrado» y «Montaña Sagrada». Son nombres tradicionales posteriores; el original es desconocido.",
+      "text": "Danibaan / Danipaguache — Nombres zapotecas de Monte Albán, que significan aproximadamente «Cerro Sagrado» y «Montaña Sagrada». Son nombres tradicionales posteriores; el original es desconocido.",
+      "text_markdown": "**Danibaan** / **Danipaguache** — Nombres zapotecas de Monte Albán, que significan aproximadamente «Cerro Sagrado» y «Montaña Sagrada». Son nombres tradicionales posteriores; el original es desconocido.",
       "tts": {
-        "text": "Danibaan / Danipaguache (dah-nee-pah-GWAH-cheh) — Nombres zapotecas de Monte Albán, que significan aproximadamente «Cerro Sagrado» y «Montaña Sagrada». Son nombres tradicionales posteriores; el original es desconocido.",
+        "text": "Danibaan / Danipaguache — Nombres zapotecas de Monte Albán, que significan aproximadamente «Cerro Sagrado» y «Montaña Sagrada». Son nombres tradicionales posteriores; el original es desconocido.",
         "pause_after_ms": 800
       }
     },
@@ -14496,10 +14496,10 @@
       "sentence_index": 0,
       "block_type": "text",
       "title": "Nombres y términos clave",
-      "text": "INAH (ee-NAH) — Instituto Nacional de Antropología e Historia.",
-      "text_markdown": "**INAH** (ee-NAH) — Instituto Nacional de Antropología e Historia.",
+      "text": "INAH — Instituto Nacional de Antropología e Historia.",
+      "text_markdown": "**INAH** — Instituto Nacional de Antropología e Historia.",
       "tts": {
-        "text": "INAH (ee-NAH) — Instituto Nacional de Antropología e Historia.",
+        "text": "INAH — Instituto Nacional de Antropología e Historia.",
         "pause_after_ms": 500
       }
     },
@@ -14601,10 +14601,10 @@
       "sentence_index": 0,
       "block_type": "text",
       "title": "Nombres y términos clave",
-      "text": "Mitla (MEET-lah) — En zapoteco: Lyobaa, «Lugar de descanso». Un importante centro religioso zapoteca a cuarenta kilómetros al este de Monte Albán, famoso por sus mosaicos geométricos de piedra.",
-      "text_markdown": "**Mitla** (MEET-lah) — En zapoteco: *Lyobaa*, «Lugar de descanso». Un importante centro religioso zapoteca a cuarenta kilómetros al este de Monte Albán, famoso por sus mosaicos geométricos de piedra.",
+      "text": "Mitla — En zapoteco: Lyobaa, «Lugar de descanso». Un importante centro religioso zapoteca a cuarenta kilómetros al este de Monte Albán, famoso por sus mosaicos geométricos de piedra.",
+      "text_markdown": "**Mitla** — En zapoteco: *Lyobaa*, «Lugar de descanso». Un importante centro religioso zapoteca a cuarenta kilómetros al este de Monte Albán, famoso por sus mosaicos geométricos de piedra.",
       "tts": {
-        "text": "Mitla (MEET-lah) — En zapoteco: Lyobaa, «Lugar de descanso». Un importante centro religioso zapoteca a cuarenta kilómetros al este de Monte Albán, famoso por sus mosaicos geométricos de piedra.",
+        "text": "Mitla — En zapoteco: Lyobaa, «Lugar de descanso». Un importante centro religioso zapoteca a cuarenta kilómetros al este de Monte Albán, famoso por sus mosaicos geométricos de piedra.",
         "pause_after_ms": 800
       }
     },
@@ -14616,10 +14616,10 @@
       "sentence_index": 0,
       "block_type": "text",
       "title": "Nombres y términos clave",
-      "text": "Mixteca (MEESH-tek) — Un pueblo de las tierras altas de la región de la Mixteca al oeste del Valle de Oaxaca, que se expandió al valle tras el abandono de Monte Albán y produjo brillantes códices pintados y orfebrería.",
-      "text_markdown": "**Mixtec** (MEESH-tek) — Un pueblo de las tierras altas de la región de la Mixteca al oeste del Valle de Oaxaca, que se expandió al valle tras el abandono de Monte Albán y produjo brillantes códices pintados y orfebrería.",
+      "text": "Mixteca — Un pueblo de las tierras altas de la región de la Mixteca al oeste del Valle de Oaxaca, que se expandió al valle tras el abandono de Monte Albán y produjo brillantes códices pintados y orfebrería.",
+      "text_markdown": "**Mixtec** — Un pueblo de las tierras altas de la región de la Mixteca al oeste del Valle de Oaxaca, que se expandió al valle tras el abandono de Monte Albán y produjo brillantes códices pintados y orfebrería.",
       "tts": {
-        "text": "Mixteca (MEESH-tek) — Un pueblo de las tierras altas de la región de la Mixteca al oeste del Valle de Oaxaca, que se expandió al valle tras el abandono de Monte Albán y produjo brillantes códices pintados y orfebrería.",
+        "text": "Mixteca — Un pueblo de las tierras altas de la región de la Mixteca al oeste del Valle de Oaxaca, que se expandió al valle tras el abandono de Monte Albán y produjo brillantes códices pintados y orfebrería.",
         "pause_after_ms": 800
       }
     },
@@ -14631,10 +14631,10 @@
       "sentence_index": 0,
       "block_type": "text",
       "title": "Nombres y términos clave",
-      "text": "Monte Albán (MON-teh al-BAHN) — La capital en la cima de una montaña de la civilización zapoteca en el Valle de Oaxaca, ocupada aproximadamente entre el 500 a.C. y el 900 d.C.",
-      "text_markdown": "**Monte Albán** (MON-teh al-BAHN) — La capital en la cima de una montaña de la civilización zapoteca en el Valle de Oaxaca, ocupada aproximadamente entre el 500 a.C. y el 900 d.C.",
+      "text": "Monte Albán — La capital en la cima de una montaña de la civilización zapoteca en el Valle de Oaxaca, ocupada aproximadamente entre el 500 a.C. y el 900 d.C.",
+      "text_markdown": "**Monte Albán** — La capital en la cima de una montaña de la civilización zapoteca en el Valle de Oaxaca, ocupada aproximadamente entre el 500 a.C. y el 900 d.C.",
       "tts": {
-        "text": "Monte Albán (MON-teh al-BAHN) — La capital en la cima de una montaña de la civilización zapoteca en el Valle de Oaxaca, ocupada aproximadamente entre el 500 a.C. y el 900 d.C.",
+        "text": "Monte Albán — La capital en la cima de una montaña de la civilización zapoteca en el Valle de Oaxaca, ocupada aproximadamente entre el 500 a.C. y el 900 d.C.",
         "pause_after_ms": 800
       }
     },
@@ -14646,10 +14646,10 @@
       "sentence_index": 0,
       "block_type": "text",
       "title": "Nombres y términos clave",
-      "text": "Oaxaca (wah-HAH-kah) — Un estado en el sur de México; también el nombre de su ciudad capital.",
-      "text_markdown": "**Oaxaca** (wah-HAH-kah) — Un estado en el sur de México; también el nombre de su ciudad capital.",
+      "text": "Oaxaca — Un estado en el sur de México; también el nombre de su ciudad capital.",
+      "text_markdown": "**Oaxaca** — Un estado en el sur de México; también el nombre de su ciudad capital.",
       "tts": {
-        "text": "Oaxaca (wah-HAH-kah) — Un estado en el sur de México; también el nombre de su ciudad capital.",
+        "text": "Oaxaca — Un estado en el sur de México; también el nombre de su ciudad capital.",
         "pause_after_ms": 500
       }
     },
@@ -14691,10 +14691,10 @@
       "sentence_index": 0,
       "block_type": "text",
       "title": "Nombres y términos clave",
-      "text": "Piye (PEE-yeh) — El nombre zapoteca del calendario ritual de 260 días utilizado en toda Mesoamérica, que combina veinte nombres de días con trece números.",
-      "text_markdown": "**Piye** (PEE-yeh) — El nombre zapoteca del calendario ritual de 260 días utilizado en toda Mesoamérica, que combina veinte nombres de días con trece números.",
+      "text": "Piye — El nombre zapoteca del calendario ritual de 260 días utilizado en toda Mesoamérica, que combina veinte nombres de días con trece números.",
+      "text_markdown": "**Piye** — El nombre zapoteca del calendario ritual de 260 días utilizado en toda Mesoamérica, que combina veinte nombres de días con trece números.",
       "tts": {
-        "text": "Piye (PEE-yeh) — El nombre zapoteca del calendario ritual de 260 días utilizado en toda Mesoamérica, que combina veinte nombres de días con trece números.",
+        "text": "Piye — El nombre zapoteca del calendario ritual de 260 días utilizado en toda Mesoamérica, que combina veinte nombres de días con trece números.",
         "pause_after_ms": 800
       }
     },
@@ -14706,10 +14706,10 @@
       "sentence_index": 0,
       "block_type": "text",
       "title": "Nombres y términos clave",
-      "text": "San José Mogote (san ho-ZAY mo-GO-teh) — El asentamiento dominante en el Valle de Oaxaca durante aproximadamente mil años antes de la fundación de Monte Albán.",
-      "text_markdown": "**San José Mogote** (san ho-ZAY mo-GO-teh) — El asentamiento dominante en el Valle de Oaxaca durante aproximadamente mil años antes de la fundación de Monte Albán.",
+      "text": "San José Mogote — El asentamiento dominante en el Valle de Oaxaca durante aproximadamente mil años antes de la fundación de Monte Albán.",
+      "text_markdown": "**San José Mogote** — El asentamiento dominante en el Valle de Oaxaca durante aproximadamente mil años antes de la fundación de Monte Albán.",
       "tts": {
-        "text": "San José Mogote (san ho-ZAY mo-GO-teh) — El asentamiento dominante en el Valle de Oaxaca durante aproximadamente mil años antes de la fundación de Monte Albán.",
+        "text": "San José Mogote — El asentamiento dominante en el Valle de Oaxaca durante aproximadamente mil años antes de la fundación de Monte Albán.",
         "pause_after_ms": 500
       }
     },
@@ -14781,10 +14781,10 @@
       "sentence_index": 0,
       "block_type": "text",
       "title": "Nombres y términos clave",
-      "text": "Teotihuacan (teh-oh-tee-wah-KAHN) — Una ciudad masiva en la Cuenca de México, cerca de la actual Ciudad de México, que fue la potencia dominante en Mesoamérica aproximadamente entre el 100 a.C. y el 550 d.C.",
-      "text_markdown": "**Teotihuacan** (teh-oh-tee-wah-KAHN) — Una ciudad masiva en la Cuenca de México, cerca de la actual Ciudad de México, que fue la potencia dominante en Mesoamérica aproximadamente entre el 100 a.C. y el 550 d.C.",
+      "text": "Teotihuacan — Una ciudad masiva en la Cuenca de México, cerca de la actual Ciudad de México, que fue la potencia dominante en Mesoamérica aproximadamente entre el 100 a.C. y el 550 d.C.",
+      "text_markdown": "**Teotihuacan** — Una ciudad masiva en la Cuenca de México, cerca de la actual Ciudad de México, que fue la potencia dominante en Mesoamérica aproximadamente entre el 100 a.C. y el 550 d.C.",
       "tts": {
-        "text": "Teotihuacan (teh-oh-tee-wah-KAHN) — Una ciudad masiva en la Cuenca de México, cerca de la actual Ciudad de México, que fue la potencia dominante en Mesoamérica aproximadamente entre el 100 a.C. y el 550 d.C.",
+        "text": "Teotihuacan — Una ciudad masiva en la Cuenca de México, cerca de la actual Ciudad de México, que fue la potencia dominante en Mesoamérica aproximadamente entre el 100 a.C. y el 550 d.C.",
         "pause_after_ms": 800
       }
     },
@@ -14856,10 +14856,10 @@
       "sentence_index": 0,
       "block_type": "text",
       "title": "Nombres y términos clave",
-      "text": "Zapoteca (ZAH-po-tek) — El pueblo indígena del Valle de Oaxaca y las tierras altas circundantes.",
-      "text_markdown": "**Zapotec** (ZAH-po-tek) — El pueblo indígena del Valle de Oaxaca y las tierras altas circundantes.",
+      "text": "Zapoteca — El pueblo indígena del Valle de Oaxaca y las tierras altas circundantes.",
+      "text_markdown": "**Zapotec** — El pueblo indígena del Valle de Oaxaca y las tierras altas circundantes.",
       "tts": {
-        "text": "Zapoteca (ZAH-po-tek) — El pueblo indígena del Valle de Oaxaca y las tierras altas circundantes.",
+        "text": "Zapoteca — El pueblo indígena del Valle de Oaxaca y las tierras altas circundantes.",
         "pause_after_ms": 500
       }
     },

@@ -1,0 +1,367 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_monte_alban",
+  "total_segments": 24,
+  "segments": [
+    {
+      "id": "ch01-052",
+      "part": 1,
+      "chapter": 1,
+      "title": "Chapter 1 — The View from Above",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The city we are talking about is called Monte Albán.",
+      "text_markdown": "The city we are talking about is called Monte Albán.",
+      "tts": {
+        "text": "The city we are talking about is called Monte Albán.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-219",
+      "part": 1,
+      "chapter": 4,
+      "title": "Chapter 4 — What Kind of Place Was This?",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The 260-day ritual calendar, called the piye in Zapotec, combined twenty named days with thirteen numbers, creating a cycle of 260 unique day-designations.",
+      "text_markdown": "The 260-day ritual calendar, called the *piye* in Zapotec, combined twenty named days with thirteen numbers, creating a cycle of 260 unique day-designations.",
+      "tts": {
+        "text": "The 260 day ritual calendar, called the piye in Zapotec, combined twenty named days with thirteen numbers, creating a cycle of two hundred and sixty unique day-designations.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-231",
+      "part": 1,
+      "chapter": 4,
+      "title": "Chapter 4 — What Kind of Place Was This?",
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "They cultivated maguey, the agave plant whose fibers made rope and whose fermented sap made pulque, a mildly alcoholic drink still consumed in Mexico today.",
+      "text_markdown": "They cultivated maguey, the agave plant whose fibers made rope and whose fermented sap made pulque, a mildly alcoholic drink still consumed in Mexico today.",
+      "tts": {
+        "text": "They cultivated mahgay, the agave plant whose fibers made rope and whose fermented sap made pulque, a mildly alcoholic drink still consumed in Mexico today.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-237",
+      "part": 1,
+      "chapter": 4,
+      "title": "Chapter 4 — What Kind of Place Was This?",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tortillas made from ground corn that had been soaked in lime water — a process called nixtamalization that releases nutrients locked inside the corn kernel and has been used in Mesoamerica for at least three thousand years.",
+      "text_markdown": "Tortillas made from ground corn that had been soaked in lime water — a process called nixtamalization that releases nutrients locked inside the corn kernel and has been used in Mesoamerica for at least three thousand years.",
+      "tts": {
+        "text": "Tortillas made from ground corn that had been soaked in lime water — a process called nixtamalization that releases nutrients locked inside the corn kernel and has been used in Mesoamerica for at least three thousand years.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-240",
+      "part": 1,
+      "chapter": 4,
+      "title": "Chapter 4 — What Kind of Place Was This?",
+      "paragraph_id": "p66",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Roasted chapulines — grasshoppers — seasoned with salt and lime and garlic, eaten by the handful like popcorn.",
+      "text_markdown": "Roasted chapulines — grasshoppers — seasoned with salt and lime and garlic, eaten by the handful like popcorn.",
+      "tts": {
+        "text": "Roasted chahpoolinehs — grasshoppers — seasoned with salt and lime and garlic, eaten by the handful like popcorn.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-245",
+      "part": 1,
+      "chapter": 4,
+      "title": "Chapter 4 — What Kind of Place Was This?",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Walk through the Benito Juárez market in the modern city of Oaxaca, a thirty-minute drive from Monte Albán, and you will find chapulines piled in baskets, maguey worms sold by the scoop, fresh tortillas slapped out by hand and cooked on clay griddles, and seven varieties of mole sauce that trace their roots back centuries.",
+      "text_markdown": "Walk through the Benito Juárez market in the modern city of Oaxaca, a thirty-minute drive from Monte Albán, and you will find chapulines piled in baskets, maguey worms sold by the scoop, fresh tortillas slapped out by hand and cooked on clay griddles, and seven varieties of mole sauce that trace their roots back centuries.",
+      "tts": {
+        "text": "Walk through the Benito Juárez market in the modern city of Oaxaca, a thirty-minute drive from Monte Albán, and you will find chahpoolinehs piled in baskets, mahgay worms sold by the scoop, fresh tortillas slapped out by hand and cooked on clay griddles, and seven varieties of molay sauce that trace their roots back centuries.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-247",
+      "part": 1,
+      "chapter": 4,
+      "title": "Chapter 4 — What Kind of Place Was This?",
+      "paragraph_id": "p67",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "This is one of the longest unbroken culinary traditions anywhere on Earth.",
+      "text_markdown": "This is one of the longest unbroken culinary traditions anywhere on Earth.",
+      "tts": {
+        "text": "This is one of the longest unbroken culinary traditions anywhere on Earth.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-271",
+      "part": 1,
+      "chapter": 4,
+      "title": "Chapter 4 — What Kind of Place Was This?",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "And then they lost it.",
+      "text_markdown": "And then they lost it.",
+      "tts": {
+        "text": "And then they lost it.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-332",
+      "part": 2,
+      "chapter": 5,
+      "title": "Chapter 5 — The Danzantes",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Why would they do that?",
+      "text_markdown": "Why would they do that?",
+      "tts": {
+        "text": "Why would they do that?",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch07-429",
+      "part": 2,
+      "chapter": 7,
+      "title": "Chapter 7 — What the Script Actually Is (And Isn't)",
+      "paragraph_id": "p121",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Japanese hiragana is a syllabary: the symbol か represents the syllable \"ka,\" not the individual sounds \"k\" and \"a.\" Cherokee writing, invented by Sequoyah in the 1820s, is also a syllabary.",
+      "text_markdown": "Japanese hiragana is a syllabary: the symbol か represents the syllable \"ka,\" not the individual sounds \"k\" and \"a.\" Cherokee writing, invented by Sequoyah in the 1820s, is also a syllabary.",
+      "tts": {
+        "text": "Japanese hiragana is a syllabary: the symbol ka represents the syllable \"ka,\" not the individual sounds \"k\" and \"a.\" Cherokee writing, invented by Sequoyah in the 1820s, is also a syllabary.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch07-431",
+      "part": 2,
+      "chapter": 7,
+      "title": "Chapter 7 — What the Script Actually Is (And Isn't)",
+      "paragraph_id": "p122",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Chinese characters are largely logographic: the character 山 means \"mountain\" regardless of what language you speak or how you pronounce it.",
+      "text_markdown": "Chinese characters are largely logographic: the character 山 means \"mountain\" regardless of what language you speak or how you pronounce it.",
+      "tts": {
+        "text": "Chinese characters are largely logographic: the character shan means \"mountain\" regardless of what language you speak or how you pronounce it.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch07-475",
+      "part": 2,
+      "chapter": 7,
+      "title": "Chapter 7 — What the Script Actually Is (And Isn't)",
+      "paragraph_id": "p139",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "It is not like the Indus Valley script, an undeciphered writing system from ancient Pakistan and northwestern India (roughly 2600-1900 BCE), which presents an even harder puzzle: no one even knows what language the Indus people spoke, and the surviving texts are so short — most are fewer than five signs — that statistical analysis has almost nothing to work with.",
+      "text_markdown": "It is not like the Indus Valley script, an undeciphered writing system from ancient Pakistan and northwestern India (roughly 2600-1900 BCE), which presents an even harder puzzle: no one even knows what language the Indus people spoke, and the surviving texts are so short — most are fewer than five signs — that statistical analysis has almost nothing to work with.",
+      "tts": {
+        "text": "It is not like the Indus Valley script, an undeciphered writing system from ancient Pakistan and northwestern India (roughly twenty six hundred to nineteen hundred BCE), which presents an even harder puzzle: no one even knows what language the Indus people spoke, and the surviving texts are so short — most are fewer than five signs — that statistical analysis has almost nothing to work with.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch08-497",
+      "part": 2,
+      "chapter": 8,
+      "title": "Chapter 8 — How Writing Dies",
+      "paragraph_id": "p147",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "By the time a Spanish soldier first climbed that mountain, the Zapotec script had been out of use for as long as the time between the fall of the Roman Empire and the Italian Renaissance.",
+      "text_markdown": "By the time a Spanish soldier first climbed that mountain, the Zapotec script had been out of use for as long as the time between the fall of the Roman Empire and the Italian Renaissance.",
+      "tts": {
+        "text": "By the time a Spanish soldier first climbed that mountain, the Zapotec script had been out of use for as long as the time between the fall of the Roman Empire and the Italian Renaissance.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch09-553",
+      "part": 2,
+      "chapter": 9,
+      "title": "Chapter 9 — The Decipherment Race",
+      "paragraph_id": "p164",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "It spans nearly a century and it is not over.",
+      "text_markdown": "It spans nearly a century and it is not over.",
+      "tts": {
+        "text": "It spans nearly a century and it is not over.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch11-728",
+      "part": 3,
+      "chapter": 11,
+      "title": "Chapter 11 — The Walk Away",
+      "paragraph_id": "p214",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "There was no single cause.",
+      "text_markdown": "There was no single cause.",
+      "tts": {
+        "text": "There was no single cause.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch12-762",
+      "part": 3,
+      "chapter": 12,
+      "title": "Chapter 12 — The Afterlife of a City",
+      "paragraph_id": "p227",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Beyond the gold, there were carved jaguar bones inscribed with scenes from Mixtec mythology — tiny, intricate narratives scratched into bone with obsidian tools.",
+      "text_markdown": "Beyond the gold, there were carved jaguar bones inscribed with scenes from Mixtec mythology — tiny, intricate narratives scratched into bone with obsidian tools.",
+      "tts": {
+        "text": "Beyond the gold, there were carved jagwar bones inscribed with scenes from Mixtec mythology — tiny, intricate narratives scratched into bone with obsidian tools.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch14-850",
+      "part": 4,
+      "chapter": 14,
+      "title": "Chapter 14 — The Ball Game",
+      "paragraph_id": "p254",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "They struck the ball with their hips, sometimes with their forearms or knees, using thick protective belts and pads made from leather and cotton.",
+      "text_markdown": "They struck the ball with their hips, sometimes with their forearms or knees, using thick protective belts and pads made from leather and cotton.",
+      "tts": {
+        "text": "They struck the ball with their hips, sometimes with their forearms or knees, using thick protective belts and pads made from leather and cotton.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch15-887",
+      "part": 4,
+      "chapter": 15,
+      "title": "Chapter 15 — What Was Happening Elsewhere",
+      "paragraph_id": "p267",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "In India, Siddhartha Gautama — the Buddha — had recently died, and his teachings were spreading across the subcontinent.",
+      "text_markdown": "In India, Siddhartha Gautama — the Buddha — had recently died, and his teachings were spreading across the subcontinent.",
+      "tts": {
+        "text": "In India, Siddhartha Gautama, the Buddha, had recently died, and his teachings were spreading across the subcontinent.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch15-888",
+      "part": 4,
+      "chapter": 15,
+      "title": "Chapter 15 — What Was Happening Elsewhere",
+      "paragraph_id": "p267",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "In China, Confucius had been dead for only a few decades, and his students were compiling his sayings into the Analerta.",
+      "text_markdown": "In China, Confucius had been dead for only a few decades, and his students were compiling his sayings into the *Analerta*.",
+      "tts": {
+        "text": "In China, Confucius had been dead for only a few decades, and his students were compiling his sayings into the Analerta.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch15-894",
+      "part": 4,
+      "chapter": 15,
+      "title": "Chapter 15 — What Was Happening Elsewhere",
+      "paragraph_id": "p268",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "When the earliest conquest slabs were installed on Building J, Alexander the Great was conquering Persia.",
+      "text_markdown": "When the earliest conquest slabs were installed on Building J, Alexander the Great was conquering Persia.",
+      "tts": {
+        "text": "When the earliest conquest slabs were installed on Building J, Alexander the Great was conquering Persia.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch15-965",
+      "part": 4,
+      "chapter": 15,
+      "title": "Key Names and Terms",
+      "paragraph_id": "p297",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Danzantes — \"The Dancers.\" Over three hundred carved stone figures at Monte Albán, now understood to depict sacrificed war captives.",
+      "text_markdown": "**Danzantes** — \"The Dancers.\" Over three hundred carved stone figures at Monte Albán, now understood to depict sacrificed war captives.",
+      "tts": {
+        "text": "Dahnsahntess — \"The Dancers.\" Over three hundred carved stone figures at Monte Albán, now understood to depict sacrificed war captives.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch15-977",
+      "part": 4,
+      "chapter": 15,
+      "title": "Key Names and Terms",
+      "paragraph_id": "p305",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mixtec — A highland people from the Mixteca region west of the Valley of Oaxaca, who expanded into the valley after Monte Albán's abandonment and produced brilliant painted codices and metalwork.",
+      "text_markdown": "**Mixtec** — A highland people from the Mixteca region west of the Valley of Oaxaca, who expanded into the valley after Monte Albán's abandonment and produced brilliant painted codices and metalwork.",
+      "tts": {
+        "text": "Meeshtek — A highland people from the Meeshteka region west of the Valley of Oaxaca, who expanded into the valley after Monte Albán's abandonment and produced brilliant painted codices and metalwork.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch15-978",
+      "part": 4,
+      "chapter": 15,
+      "title": "Key Names and Terms",
+      "paragraph_id": "p306",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Monte Albán — The mountaintop capital of the Zapotec civilization in the Valley of Oaxaca, occupied from approximately 500 BCE to 900 CE.",
+      "text_markdown": "**Monte Albán** — The mountaintop capital of the Zapotec civilization in the Valley of Oaxaca, occupied from approximately 500 BCE to 900 CE.",
+      "tts": {
+        "text": "Monte Albán — The mountaintop capital of the Zapotec civilization in the Valley of Oaxaca, occupied from approximately 500 BCE to 900 CE.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch15-993",
+      "part": 4,
+      "chapter": 15,
+      "title": "Key Names and Terms",
+      "paragraph_id": "p316",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Zapotec — The indigenous people of the Valley of Oaxaca and surrounding highlands.",
+      "text_markdown": "**Zapotec** — The indigenous people of the Valley of Oaxaca and surrounding highlands.",
+      "tts": {
+        "text": "Sahpotek — The indigenous people of the Valley of Oaxaca and surrounding highlands.",
+        "pause_after_ms": 500
+      }
+    }
+  ]
+}
