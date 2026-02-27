@@ -470,25 +470,33 @@ export function createStargateReader(
   }
 
   /**
-   * Detect the data URL for dev mode.
+   * Detect the data URL based on runtime context.
    *
-   * - Standalone dev (npm run dev): Vite proxy at localhost:5173
-   * - Corpan dev (npm run dev:corpan): book data server at localhost:8990
-   * - Production: should never be called (preloaded data path)
+   * Priority:
+   * 1. baseUrl from host (corpan-pack:// on device, https:// from web)
+   * 2. Vite dev server proxy (localhost)
+   * 3. Fallback to localhost:8990 (Corpan dev mode)
    */
   function detectDataUrl(): string {
     if (typeof window === "undefined") return "."
 
     const params = new URLSearchParams(window.location.search)
-    const bookId = params.get("book") || "book_monte_alban"
+    const bid = params.get("book") || "book_monte_alban"
 
+    // Production: baseUrl provided by host via script tag
+    const baseUrl = initialState?.baseUrl as string | undefined
+    if (baseUrl) {
+      const base = baseUrl.replace(/\/$/, "")
+      return `${base}/data/books/${bid}`
+    }
+
+    // Dev mode: Vite proxy
     if (window.location.hostname === "localhost") {
-      // Vite dev server: use book data proxy
-      return `/data/books/${bookId}`
+      return `/data/books/${bid}`
     }
 
     // Corpan dev mode (Tauri webview) — fall back to book data HTTP server
-    return `http://localhost:8990/data/books/${bookId}`
+    return `http://localhost:8990/data/books/${bid}`
   }
 
   /**
