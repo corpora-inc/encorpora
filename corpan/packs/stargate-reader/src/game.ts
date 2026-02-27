@@ -10,7 +10,7 @@ import {
 } from "@babylonjs/core"
 import type { HostApi } from "./sdk/types"
 import type { AudioManifest, BookSegment, TimelineWord } from "./core/types"
-import { CAMERA_FOV, CAMERA_Z, GLOW_INTENSITY } from "./core/constants"
+import { CAMERA_FOV, CAMERA_Z, GLOW_INTENSITY, LANGUAGE_NAMES, VOICE_NAMES } from "./core/constants"
 import { buildTimeline, findCurrentWordIndex, buildChapterIndex } from "./core/timeline"
 import type { ChapterInfo } from "./core/types"
 import {
@@ -27,7 +27,7 @@ import { createPulseRing, type PulseRing } from "./rendering/pulseRing"
 import { createStarfield, type Starfield } from "./rendering/starfield"
 import { createTransportBar } from "./ui/transportBar"
 import { createChapterOverlay, type ChapterOverlay } from "./ui/chapterOverlay"
-import { createSettingsPanel } from "./ui/settingsPanel"
+import { createSettingsPanel, type LanguageInfo } from "./ui/settingsPanel"
 import { loadBookmark, saveBookmark, type Bookmark } from "./state/bookmarkStore"
 import { loadPrefs, savePrefs, type DisplayPrefs } from "./state/prefsStore"
 
@@ -50,7 +50,16 @@ export function createStargateReader(
   let segments: BookSegment[] = []
   let chapters: ChapterInfo[] = []
   let currentLanguage = "en"
-  const availableLanguages = (initialState?.availableLanguages as string[]) || ["en"]
+  let availableLanguages = (initialState?.availableLanguages as string[]) || ["en"]
+  const voiceMap: Record<string, string> = {}
+
+  function buildLanguageInfos(): LanguageInfo[] {
+    return availableLanguages.map(code => ({
+      code,
+      displayName: LANGUAGE_NAMES[code] || code.toUpperCase(),
+      narrator: VOICE_NAMES[voiceMap[code] || ""] || "",
+    }))
+  }
 
   // Book ID for bookmark namespacing
   const bookId =
@@ -150,6 +159,10 @@ export function createStargateReader(
   const settings = createSettingsPanel(ui, {
     initialOscilloscope: prefs.oscilloscope,
     initialWaveform: prefs.waveform,
+    initialPulseRing: prefs.pulseRing,
+    initialOscilloscopeConfig: prefs.oscilloscopeConfig,
+    initialWaveformConfig: prefs.waveformConfig,
+    initialPulseRingConfig: prefs.pulseRingConfig,
     onBeforeClose: () => disposeFn?.(),
   })
 
@@ -159,7 +172,7 @@ export function createStargateReader(
 
   // --- Transport bar ---
   const transport = createTransportBar(ui)
-  settings.setLanguages(availableLanguages, currentLanguage)
+  settings.setLanguages(buildLanguageInfos(), currentLanguage)
 
   transport.onPlay(() => {
     if (!audioEngine) return
@@ -265,9 +278,36 @@ export function createStargateReader(
     savePrefs(bookId, prefs)
   })
 
+  settings.onTogglePulseRing((visible) => {
+    pulseRing?.setVisible(visible)
+    prefs.pulseRing = visible
+    savePrefs(bookId, prefs)
+  })
+
+  settings.onOscilloscopeConfig((key, value) => {
+    oscilloscope?.configure({ [key]: value })
+    ;(prefs.oscilloscopeConfig as Record<string, number>)[key] = value
+    savePrefs(bookId, prefs)
+  })
+
+  settings.onWaveformConfig((key, value) => {
+    waveformStream?.configure({ [key]: value })
+    ;(prefs.waveformConfig as Record<string, number>)[key] = value
+    savePrefs(bookId, prefs)
+  })
+
+  settings.onPulseRingConfig((key, value) => {
+    pulseRing?.configure({ [key]: value })
+    ;(prefs.pulseRingConfig as Record<string, number>)[key] = value
+    savePrefs(bookId, prefs)
+  })
+
   // --- Periodic bookmark autosave (every 15s during playback) ---
   let lastAutosaveMs = 0
   const AUTOSAVE_INTERVAL_MS = 15000
+
+  // --- Audio health check counter ---
+  let frameCount = 0
 
   // --- Screen lock behavior ---
   function handleVisibilityChange() {
@@ -278,6 +318,10 @@ export function createStargateReader(
     } else {
       // Screen visible: resume render loop
       engine.runRenderLoop(renderLoop)
+      // Nudge audio context back to life after screen unlock
+      if (audioEngine && isPlaying) {
+        audioEngine.unlock()
+      }
     }
   }
   document.addEventListener("visibilitychange", handleVisibilityChange)
@@ -286,6 +330,9 @@ export function createStargateReader(
   async function initialize() {
     try {
       let manifest: AudioManifest
+
+      // Load bookmark early so persisted language is used for initial data load
+      const bookmark = loadBookmark(bookId)
 
       const preloadedSegments = initialState?.segmentsData as { segments: BookSegment[] } | undefined
       const preloadedManifest = initialState?.audioManifest as AudioManifest | undefined
@@ -307,12 +354,39 @@ export function createStargateReader(
           detectDataUrl()
         dataProvider = createFetchDataProvider(dataUrl)
 
-        const segData = await dataProvider.loadSegments()
+        // Auto-detect available languages in dev mode
+        if (availableLanguages.length <= 1 && dataProvider.detectLanguages) {
+          const detected = await dataProvider.detectLanguages()
+          if (detected.length > 1) {
+            availableLanguages = detected
+          }
+        }
+
+        // Apply bookmarked language now that available languages are known
+        if (bookmark && availableLanguages.includes(bookmark.language)) {
+          currentLanguage = bookmark.language
+        }
+
+        const segData = await dataProvider.loadSegments(currentLanguage)
         segments = segData.segments
         manifest = await dataProvider.loadAudioManifest(currentLanguage)
       }
 
       if (disposed) return
+
+      // Record voice for current language and update settings display
+      voiceMap[currentLanguage] = manifest.voice
+      settings.setLanguages(buildLanguageInfos(), currentLanguage)
+
+      // Fire background fetches for other languages to populate voiceMap
+      for (const lang of availableLanguages) {
+        if (lang !== currentLanguage) {
+          dataProvider.loadAudioManifest(lang).then(m => {
+            voiceMap[lang] = m.voice
+            settings.setLanguages(buildLanguageInfos(), currentLanguage)
+          }).catch(() => {})
+        }
+      }
 
       // Build chapter index
       chapters = buildChapterIndex(segments)
@@ -356,13 +430,17 @@ export function createStargateReader(
       // Create waveform stream (arch ribbon showing audio envelope along Z)
       waveformStream = createWaveformStream(scene)
       waveformStream.mesh.isVisible = prefs.waveform
+      waveformStream.configure(prefs.waveformConfig)
 
       // Create oscilloscope — just a line, no ribbon
       oscilloscope = createOscilloscope(scene)
       oscilloscope.mesh.isVisible = prefs.oscilloscope
+      oscilloscope.configure(prefs.oscilloscopeConfig)
 
       // Create pulse ring — amplitude circle at the NOW plane
       pulseRing = createPulseRing(scene)
+      pulseRing.configure(prefs.pulseRingConfig)
+      pulseRing.setVisible(prefs.pulseRing)
 
       // Rendering group depth clearing: words on top of stream, oscilloscope on top of all
       scene.setRenderingAutoClearDepthStencil(1, true, true, true)
@@ -381,14 +459,8 @@ export function createStargateReader(
         }
       }
 
-      // Restore bookmark (resume where the user left off)
-      const bookmark = loadBookmark(bookId)
+      // Restore bookmark position (language already applied before data load)
       if (bookmark && audioEngine) {
-        if (bookmark.language !== currentLanguage && availableLanguages.includes(bookmark.language)) {
-          currentLanguage = bookmark.language
-          settings.setLanguages(availableLanguages, currentLanguage)
-          // Language switch will be handled on first play; for now just seek
-        }
         audioEngine.seekToMs(bookmark.timeMs)
       }
     } catch (err) {
@@ -420,7 +492,7 @@ export function createStargateReader(
   }
 
   /**
-   * Switch audio language: reload manifest, rebuild timeline and audio engine.
+   * Switch audio language: reload segments + manifest, rebuild timeline and audio engine.
    */
   async function switchLanguage(newLang: string) {
     if (newLang === currentLanguage || !dataProvider) return
@@ -437,9 +509,17 @@ export function createStargateReader(
 
       currentLanguage = newLang
 
-      // Load new manifest
-      const manifest = await dataProvider.loadAudioManifest(newLang)
+      // Load new segments and manifest in parallel
+      const [segData, manifest] = await Promise.all([
+        dataProvider.loadSegments(newLang),
+        dataProvider.loadAudioManifest(newLang),
+      ])
       if (disposed) return
+
+      segments = segData.segments
+      voiceMap[newLang] = manifest.voice
+      settings.setLanguages(buildLanguageInfos(), newLang)
+      chapters = buildChapterIndex(segments)
 
       // Rebuild timeline
       const timeline = buildTimeline(segments, manifest)
@@ -501,6 +581,13 @@ export function createStargateReader(
   function renderLoop() {
     if (disposed) return
 
+    // Periodic audio context resume (~once per second at 60fps)
+    // Some browsers suspend the AudioContext after inactivity
+    frameCount++
+    if (audioEngine && isPlaying && frameCount % 60 === 0) {
+      audioEngine.unlock()
+    }
+
     const currentMs = audioEngine?.getCurrentTimeMs() ?? 0
     const totalMs = audioEngine?.getTotalDurationMs() ?? 0
 
@@ -549,7 +636,7 @@ export function createStargateReader(
     }
 
     // Update oscilloscope + pulse ring
-    if (audioEngine && (oscilloscope?.mesh.isVisible || pulseRing)) {
+    if (audioEngine && (oscilloscope?.mesh.isVisible || pulseRing?.mesh.isVisible)) {
       const analyserData = audioEngine.getAnalyserData()
 
       // Byte-based intensity for oscilloscope
@@ -558,7 +645,7 @@ export function createStargateReader(
       if (oscilloscope?.mesh.isVisible) {
         oscilloscope.update(analyserData, Math.max(instant, 0.15))
       }
-      if (pulseRing) {
+      if (pulseRing?.mesh.isVisible) {
         // Float32 time domain — full precision, no 8-bit quantization
         const floatData = audioEngine.getFloatTimeDomain()
         const sample = Math.abs(floatData[floatData.length - 1])

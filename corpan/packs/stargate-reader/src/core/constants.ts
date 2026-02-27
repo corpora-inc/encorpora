@@ -67,7 +67,7 @@ export const OSCILLOSCOPE_WIDTH = 12
 export const OSCILLOSCOPE_SEGMENTS = 64
 
 /** Max amplitude swing (world units) */
-export const OSCILLOSCOPE_AMPLITUDE = 23.0
+export const OSCILLOSCOPE_AMPLITUDE = 5.0
 
 /** Ribbon trace thickness (world units) */
 export const OSCILLOSCOPE_TRACE_WIDTH = 0.023
@@ -127,3 +127,15 @@ export const PRELOAD_AHEAD = 2
 
 /** Amplitude bins per word envelope */
 export const ENVELOPE_BINS = 64
+
+// ── Display name maps ────────────────────────────────────────────
+
+export const LANGUAGE_NAMES: Record<string, string> = {
+  en: "English", es: "Español", fr: "Français", de: "Deutsch",
+  it: "Italiano", pt: "Português", ja: "日本語", ko: "한국어",
+  zh: "中文", ar: "العربية", ru: "Русский", hi: "हिन्दी",
+}
+
+export const VOICE_NAMES: Record<string, string> = {
+  "ian-narration": "Ian",
+}

@@ -18,6 +18,7 @@ export type Oscilloscope = {
   /** The ribbon mesh */
   mesh: Mesh
   update: (analyserData: Uint8Array, intensity: number) => void
+  configure: (config: { amplitude?: number; width?: number; alpha?: number }) => void
   dispose: () => void
 }
 
@@ -89,6 +90,8 @@ function allocVector3Array(count: number): Vector3[] {
 export function createOscilloscope(scene: Scene): Oscilloscope {
   const halfWidth = OSCILLOSCOPE_TRACE_WIDTH / 2
   const RAW_COUNT = OSCILLOSCOPE_SEGMENTS + 1
+  let amplitude = OSCILLOSCOPE_AMPLITUDE
+  let width = OSCILLOSCOPE_WIDTH
 
   // Pre-allocate all reusable Vector3 arrays
   const rawPoints = allocVector3Array(RAW_COUNT)
@@ -139,8 +142,8 @@ export function createOscilloscope(scene: Scene): Oscilloscope {
       for (let i = 0; i < RAW_COUNT; i++) {
         const sampleIndex = Math.floor((i / OSCILLOSCOPE_SEGMENTS) * (len - 1))
         const normalized = (analyserData[sampleIndex] - 128) / 128
-        const y = OSCILLOSCOPE_Y + normalized * OSCILLOSCOPE_AMPLITUDE * intensity
-        const x = (i / OSCILLOSCOPE_SEGMENTS - 0.5) * OSCILLOSCOPE_WIDTH
+        const y = OSCILLOSCOPE_Y + normalized * amplitude * intensity
+        const x = (i / OSCILLOSCOPE_SEGMENTS - 0.5) * width
         rawPoints[i].set(x, y, 0)
       }
 
@@ -167,6 +170,12 @@ export function createOscilloscope(scene: Scene): Oscilloscope {
       const g = 0.85 + intensity * 0.15
       const b = 1.0
       mat.emissiveColor.set(r, g, b)
+    },
+
+    configure(config: { amplitude?: number; width?: number; alpha?: number }) {
+      if (config.amplitude !== undefined) amplitude = config.amplitude
+      if (config.width !== undefined) width = config.width
+      if (config.alpha !== undefined) mat.alpha = config.alpha
     },
 
     dispose: () => {

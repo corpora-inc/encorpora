@@ -19,6 +19,8 @@ import {
 export type PulseRing = {
   mesh: LinesMesh
   update: (intensity: number) => void
+  configure: (config: { maxRadius?: number; fadeMs?: number }) => void
+  setVisible: (visible: boolean) => void
   dispose: () => void
 }
 
@@ -37,6 +39,8 @@ type Ghost = {
 export function createPulseRing(scene: Scene): PulseRing {
   const nowZ = CAMERA_Z + 1
   const SEGMENTS = PULSE_RING_SEGMENTS
+  let maxRadius = PULSE_RING_MAX_RADIUS
+  let fadeMs = PULSE_RING_FADE_MS
   const color = new Color3(
     PULSE_RING_COLOR_R,
     PULSE_RING_COLOR_G,
@@ -95,7 +99,7 @@ export function createPulseRing(scene: Scene): PulseRing {
 
     update(intensity: number) {
       const now = performance.now()
-      const r = intensity * PULSE_RING_MAX_RADIUS
+      const r = intensity * maxRadius
 
       // Update live ring
       for (let i = 0; i <= SEGMENTS; i++) {
@@ -127,13 +131,23 @@ export function createPulseRing(scene: Scene): PulseRing {
       for (const ghost of ghosts) {
         if (!ghost.active) continue
         const age = now - ghost.birthTime
-        if (age >= PULSE_RING_FADE_MS) {
+        if (age >= fadeMs) {
           ghost.active = false
           ghost.mesh.alpha = 0
         } else {
-          ghost.mesh.alpha = 1 - age / PULSE_RING_FADE_MS
+          ghost.mesh.alpha = 1 - age / fadeMs
         }
       }
+    },
+
+    configure(config: { maxRadius?: number; fadeMs?: number }) {
+      if (config.maxRadius !== undefined) maxRadius = config.maxRadius
+      if (config.fadeMs !== undefined) fadeMs = config.fadeMs
+    },
+
+    setVisible(visible: boolean) {
+      liveMesh.setEnabled(visible)
+      for (const ghost of ghosts) ghost.mesh.setEnabled(visible)
     },
 
     dispose() {

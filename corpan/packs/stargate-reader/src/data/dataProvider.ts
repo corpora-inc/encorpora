@@ -1,9 +1,10 @@
 import type { SegmentsData, AudioManifest } from "../core/types"
 
 export type DataProvider = {
-  loadSegments: () => Promise<SegmentsData>
+  loadSegments: (language?: string) => Promise<SegmentsData>
   loadAudioManifest: (language: string) => Promise<AudioManifest>
   resolveAudioUrl: (relativePath: string) => string
+  detectLanguages?: () => Promise<string[]>
 }
 
 /**
@@ -14,8 +15,9 @@ export function createFetchDataProvider(baseUrl: string): DataProvider {
   const base = baseUrl.replace(/\/$/, "")
 
   return {
-    async loadSegments(): Promise<SegmentsData> {
-      const resp = await fetch(`${base}/segments.json`)
+    async loadSegments(language?: string): Promise<SegmentsData> {
+      const file = language && language !== "en" ? `segments_${language}.json` : "segments.json"
+      const resp = await fetch(`${base}/${file}`)
       if (!resp.ok) {
         throw new Error(`Failed to load segments: ${resp.status} ${resp.statusText}`)
       }
@@ -33,6 +35,20 @@ export function createFetchDataProvider(baseUrl: string): DataProvider {
     resolveAudioUrl(relativePath: string): string {
       return `${base}/${relativePath}`
     },
+
+    async detectLanguages(): Promise<string[]> {
+      const catalogUrl = base.replace(/\/books\/[^/]+$/, "/catalog.json")
+      const bookId = base.split("/").pop() || ""
+      try {
+        const resp = await fetch(catalogUrl)
+        if (!resp.ok) return []
+        const catalog = (await resp.json()) as { id: string; availableLanguages?: string[] }[]
+        const entry = catalog.find((e) => e.id === bookId)
+        return entry?.availableLanguages || []
+      } catch {
+        return []
+      }
+    },
   }
 }
 
@@ -46,8 +62,19 @@ export function createPreloadedDataProvider(
   resolveUrl: (path: string) => string
 ): DataProvider {
   return {
-    async loadSegments(): Promise<SegmentsData> {
-      return segments
+    async loadSegments(language?: string): Promise<SegmentsData> {
+      // For the initially-provided language (or default), return preloaded segments
+      if (!language || language === (manifest.language || "en")) {
+        return segments
+      }
+      // For other languages, fetch via the host's URL resolver
+      const file = language !== "en" ? `segments_${language}.json` : "segments.json"
+      const url = resolveUrl(file)
+      const resp = await fetch(url)
+      if (!resp.ok) {
+        throw new Error(`Failed to load segments for ${language}: ${resp.status}`)
+      }
+      return resp.json()
     },
 
     async loadAudioManifest(language: string): Promise<AudioManifest> {

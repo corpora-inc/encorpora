@@ -35,6 +35,7 @@ export type WaveformStream = {
     waveformCache: WaveformCache,
     currentWordHint: number
   ) => void
+  configure: (config: { maxRadius?: number; alpha?: number; minRadius?: number }) => void
   dispose: () => void
 }
 
@@ -63,8 +64,8 @@ function computeFade(z: number): number {
  */
 export function createWaveformStream(scene: Scene): WaveformStream {
   const SAMPLES = WAVEFORM_STREAM_SAMPLES
-  const MIN_RADIUS = WAVEFORM_STREAM_MIN_RADIUS
-  const MAX_RADIUS = WAVEFORM_STREAM_MAX_RADIUS
+  let minRadius = WAVEFORM_STREAM_MIN_RADIUS
+  let maxRadius = WAVEFORM_STREAM_MAX_RADIUS
   const TESSELLATION = WAVEFORM_STREAM_TESSELLATION
   const zStep = (LOOK_AHEAD_Z + LOOK_BEHIND_Z) / (SAMPLES - 1)
   // "Now" plane sits just in front of the camera — peak hits right before the screen
@@ -77,7 +78,7 @@ export function createWaveformStream(scene: Scene): WaveformStream {
 
   // Radii array — updated each frame
   const radii = new Float32Array(SAMPLES)
-  radii.fill(MIN_RADIUS)
+  radii.fill(minRadius)
 
   // Pre-compute Z positions (constant — never changes)
   const zPositions = new Float32Array(SAMPLES)
@@ -240,9 +241,9 @@ export function createWaveformStream(scene: Scene): WaveformStream {
       // --- Compute radii ---
       for (let i = 0; i < SAMPLES; i++) {
         const z = zPositions[i]
-        const swell = smoothA[i] * MAX_RADIUS
+        const swell = smoothA[i] * maxRadius
         const distFade = computeFade(z)
-        radii[i] = MIN_RADIUS + swell * distFade
+        radii[i] = minRadius + swell * distFade
       }
 
       // --- Direct vertex buffer write ---
@@ -269,6 +270,12 @@ export function createWaveformStream(scene: Scene): WaveformStream {
       }
 
       tubeMesh.updateVerticesData(VertexBuffer.PositionKind, positions)
+    },
+
+    configure(config: { maxRadius?: number; alpha?: number; minRadius?: number }) {
+      if (config.maxRadius !== undefined) maxRadius = config.maxRadius
+      if (config.alpha !== undefined) mat.alpha = config.alpha
+      if (config.minRadius !== undefined) minRadius = config.minRadius
     },
 
     dispose() {
