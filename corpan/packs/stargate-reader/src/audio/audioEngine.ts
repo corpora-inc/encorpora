@@ -18,7 +18,6 @@ export type AudioEngine = {
   getAnalyserData: () => Uint8Array
   getFloatTimeDomain: () => Float32Array
   getFrequencyData: () => Uint8Array
-  checkHealth: () => void
   dispose: () => void
 }
 
@@ -100,26 +99,8 @@ export function createAudioEngine(
       gainNode.gain.value = isIOS ? 1.5 : 1.0
       gainNode.connect(analyser)
       analyser.connect(ctx.destination)
-
-      // Monitor for OS-level suspend/resume (screen lock, Bluetooth, etc.)
-      ctx.onstatechange = () => {
-        const state: string = ctx?.state ?? ""
-        if (state === "running" && playing && !currentSource) {
-          playSegment(currentSegmentIndex, segmentPlaybackOffset)
-        }
-      }
     }
     return ctx
-  }
-
-  async function resumeContext(context: AudioContext): Promise<boolean> {
-    if (context.state === "running") return true
-    try {
-      await context.resume()
-      return (context.state as string) === "running"
-    } catch {
-      return false
-    }
   }
 
   async function loadBuffer(segmentId: string): Promise<AudioBuffer | null> {
@@ -190,12 +171,8 @@ export function createAudioEngine(
     if (!context || !gainNode) return
 
     // Resume context if suspended (browser autoplay policy, tab switch, etc.)
-    if (context.state !== "running") {
-      const resumed = await resumeContext(context)
-      if (!resumed) {
-        // Context couldn't resume — onstatechange will retry when it recovers
-        return
-      }
+    if (context.state === "suspended") {
+      void context.resume()
     }
 
     currentSegmentIndex = index
@@ -274,8 +251,8 @@ export function createAudioEngine(
   return {
     unlock: () => {
       const context = ensureContext()
-      if (context && context.state !== "running") {
-        resumeContext(context).catch(() => {})
+      if (context && context.state === "suspended") {
+        void context.resume()
       }
       preloadAhead()
     },
@@ -285,14 +262,8 @@ export function createAudioEngine(
       playing = true
 
       const context = ensureContext()
-      if (context && context.state !== "running") {
-        // Attempt resume — if it fails, onstatechange will restart playback
-        resumeContext(context).then((ok) => {
-          if (ok && playing) {
-            playSegment(currentSegmentIndex, segmentPlaybackOffset)
-          }
-        }).catch(() => {})
-        return
+      if (context && context.state === "suspended") {
+        void context.resume()
       }
 
       playSegment(currentSegmentIndex, segmentPlaybackOffset)
@@ -447,17 +418,6 @@ export function createAudioEngine(
         analyser.getByteFrequencyData(frequencyData)
       }
       return frequencyData
-    },
-
-    checkHealth: () => {
-      if (!playing || !ctx) return
-      if (ctx.state !== "running") {
-        ctx.resume().then(() => {
-          if (playing && !currentSource && ctx?.state === "running") {
-            playSegment(currentSegmentIndex, segmentPlaybackOffset)
-          }
-        }).catch(() => {})
-      }
     },
 
     dispose: () => {

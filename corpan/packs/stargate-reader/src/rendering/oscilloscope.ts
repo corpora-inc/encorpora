@@ -14,13 +14,11 @@ import {
   OSCILLOSCOPE_Y,
 } from "../core/constants"
 
-export type OscilloscopeConfig = Partial<{ amplitude: number; width: number; alpha: number }>
-
 export type Oscilloscope = {
   /** The ribbon mesh */
   mesh: Mesh
   update: (analyserData: Uint8Array, intensity: number) => void
-  configure: (overrides: OscilloscopeConfig) => void
+  configure: (config: { amplitude?: number; width?: number; alpha?: number }) => void
   dispose: () => void
 }
 
@@ -92,11 +90,8 @@ function allocVector3Array(count: number): Vector3[] {
 export function createOscilloscope(scene: Scene): Oscilloscope {
   const halfWidth = OSCILLOSCOPE_TRACE_WIDTH / 2
   const RAW_COUNT = OSCILLOSCOPE_SEGMENTS + 1
-
-  // Mutable config — overridden via configure()
-  let cfgAmplitude = OSCILLOSCOPE_AMPLITUDE
-  let cfgWidth = OSCILLOSCOPE_WIDTH
-  let cfgAlpha = 0.35
+  let amplitude = OSCILLOSCOPE_AMPLITUDE
+  let width = OSCILLOSCOPE_WIDTH
 
   // Pre-allocate all reusable Vector3 arrays
   const rawPoints = allocVector3Array(RAW_COUNT)
@@ -132,7 +127,7 @@ export function createOscilloscope(scene: Scene): Oscilloscope {
   mat.emissiveColor = new Color3(0.8, 1.0, 1.0)
   mat.disableLighting = true
   mat.backFaceCulling = false
-  mat.alpha = cfgAlpha
+  mat.alpha = 0.35
   ribbonMesh.material = mat
   ribbonMesh.isPickable = false
   ribbonMesh.renderingGroupId = 2
@@ -147,8 +142,8 @@ export function createOscilloscope(scene: Scene): Oscilloscope {
       for (let i = 0; i < RAW_COUNT; i++) {
         const sampleIndex = Math.floor((i / OSCILLOSCOPE_SEGMENTS) * (len - 1))
         const normalized = (analyserData[sampleIndex] - 128) / 128
-        const y = OSCILLOSCOPE_Y + normalized * cfgAmplitude * intensity
-        const x = (i / OSCILLOSCOPE_SEGMENTS - 0.5) * cfgWidth
+        const y = OSCILLOSCOPE_Y + normalized * amplitude * intensity
+        const x = (i / OSCILLOSCOPE_SEGMENTS - 0.5) * width
         rawPoints[i].set(x, y, 0)
       }
 
@@ -177,13 +172,10 @@ export function createOscilloscope(scene: Scene): Oscilloscope {
       mat.emissiveColor.set(r, g, b)
     },
 
-    configure(overrides: OscilloscopeConfig) {
-      if (overrides.amplitude !== undefined) cfgAmplitude = overrides.amplitude
-      if (overrides.width !== undefined) cfgWidth = overrides.width
-      if (overrides.alpha !== undefined) {
-        cfgAlpha = overrides.alpha
-        mat.alpha = cfgAlpha
-      }
+    configure(config: { amplitude?: number; width?: number; alpha?: number }) {
+      if (config.amplitude !== undefined) amplitude = config.amplitude
+      if (config.width !== undefined) width = config.width
+      if (config.alpha !== undefined) mat.alpha = config.alpha
     },
 
     dispose: () => {

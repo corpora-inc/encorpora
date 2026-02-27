@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#1a1a2e"/>
+      <stop offset="100%" stop-color="#0a0a14"/>
+    </radialGradient>
+    <radialGradient id="glow" cx="50%" cy="50%" r="40%">
+      <stop offset="0%" stop-color="#7c3aed" stop-opacity="0.6"/>
+      <stop offset="60%" stop-color="#4c1d95" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#0a0a14" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <!-- Background circle -->
+  <circle cx="100" cy="100" r="100" fill="url(#bg)"/>
+  <!-- Warp glow -->
+  <circle cx="100" cy="100" r="80" fill="url(#glow)"/>
+  <!-- Converging lines (warp streaks) -->
+  <g stroke="#a78bfa" stroke-opacity="0.5" stroke-width="1.5" stroke-linecap="round">
+    <line x1="100" y1="30" x2="100" y2="60"/>
+    <line x1="140" y1="38" x2="120" y2="62"/>
+    <line x1="165" y1="65" x2="135" y2="78"/>
+    <line x1="170" y1="100" x2="140" y2="100"/>
+    <line x1="165" y1="135" x2="135" y2="122"/>
+    <line x1="140" y1="162" x2="120" y2="138"/>
+    <line x1="100" y1="170" x2="100" y2="140"/>
+    <line x1="60" y1="162" x2="80" y2="138"/>
+    <line x1="35" y1="135" x2="65" y2="122"/>
+    <line x1="30" y1="100" x2="60" y2="100"/>
+    <line x1="35" y1="65" x2="65" y2="78"/>
+    <line x1="60" y1="38" x2="80" y2="62"/>
+  </g>
+  <!-- Central star -->
+  <circle cx="100" cy="100" r="8" fill="#e9d5ff"/>
+  <circle cx="100" cy="100" r="4" fill="#ffffff"/>
+  <!-- Text lines streaming outward -->
+  <g fill="#c4b5fd" font-family="monospace" font-size="7" opacity="0.7">
+    <text x="108" y="88" transform="rotate(-30,108,88)">words</text>
+    <text x="112" y="108" transform="rotate(15,112,108)">flow</text>
+    <text x="78" y="115" transform="rotate(-10,78,115)">through</text>
+    <text x="82" y="90" transform="rotate(25,82,90)">space</text>
+  </g>
+</svg>

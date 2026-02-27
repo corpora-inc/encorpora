@@ -16,12 +16,10 @@ import {
   PULSE_RING_SEGMENTS,
 } from "../core/constants"
 
-export type PulseRingConfig = Partial<{ maxRadius: number; fadeMs: number }>
-
 export type PulseRing = {
   mesh: LinesMesh
   update: (intensity: number) => void
-  configure: (overrides: PulseRingConfig) => void
+  configure: (config: { maxRadius?: number; fadeMs?: number }) => void
   setVisible: (visible: boolean) => void
   dispose: () => void
 }
@@ -41,15 +39,13 @@ type Ghost = {
 export function createPulseRing(scene: Scene): PulseRing {
   const nowZ = CAMERA_Z + 1
   const SEGMENTS = PULSE_RING_SEGMENTS
+  let maxRadius = PULSE_RING_MAX_RADIUS
+  let fadeMs = PULSE_RING_FADE_MS
   const color = new Color3(
     PULSE_RING_COLOR_R,
     PULSE_RING_COLOR_G,
     PULSE_RING_COLOR_B,
   )
-
-  // Mutable config — overridden via configure()
-  let cfgMaxRadius = PULSE_RING_MAX_RADIUS
-  let cfgFadeMs = PULSE_RING_FADE_MS
 
   // Pre-compute unit circle
   const cosTable = new Float32Array(SEGMENTS + 1)
@@ -103,7 +99,7 @@ export function createPulseRing(scene: Scene): PulseRing {
 
     update(intensity: number) {
       const now = performance.now()
-      const r = intensity * cfgMaxRadius
+      const r = intensity * maxRadius
 
       // Update live ring
       for (let i = 0; i <= SEGMENTS; i++) {
@@ -132,33 +128,26 @@ export function createPulseRing(scene: Scene): PulseRing {
       lastRadius = r
 
       // Fade ghosts
-      const fadeDuration = Math.max(1, cfgFadeMs)
       for (const ghost of ghosts) {
         if (!ghost.active) continue
         const age = now - ghost.birthTime
-        if (age >= fadeDuration) {
+        if (age >= fadeMs) {
           ghost.active = false
           ghost.mesh.alpha = 0
         } else {
-          ghost.mesh.alpha = 1 - age / fadeDuration
+          ghost.mesh.alpha = 1 - age / fadeMs
         }
       }
     },
 
-    configure(overrides: PulseRingConfig) {
-      if (overrides.maxRadius !== undefined) cfgMaxRadius = overrides.maxRadius
-      if (overrides.fadeMs !== undefined) cfgFadeMs = overrides.fadeMs
+    configure(config: { maxRadius?: number; fadeMs?: number }) {
+      if (config.maxRadius !== undefined) maxRadius = config.maxRadius
+      if (config.fadeMs !== undefined) fadeMs = config.fadeMs
     },
 
     setVisible(visible: boolean) {
-      liveMesh.isVisible = visible
-      for (const ghost of ghosts) {
-        ghost.mesh.isVisible = visible
-        if (!visible) {
-          ghost.active = false
-          ghost.mesh.alpha = 0
-        }
-      }
+      liveMesh.setEnabled(visible)
+      for (const ghost of ghosts) ghost.mesh.setEnabled(visible)
     },
 
     dispose() {

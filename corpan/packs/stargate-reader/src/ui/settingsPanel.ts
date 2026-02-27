@@ -1,7 +1,9 @@
 import type { OscilloscopeConfig, PulseRingConfig, WaveformConfig } from "../state/prefsStore"
 
+export type LanguageInfo = { code: string; displayName: string; narrator: string }
+
 export type SettingsPanel = {
-  setLanguages: (languages: string[], current: string) => void
+  setLanguages: (languages: LanguageInfo[], current: string) => void
   onToggleOscilloscope: (cb: (visible: boolean) => void) => void
   onToggleWaveform: (cb: (visible: boolean) => void) => void
   onTogglePulseRing: (cb: (visible: boolean) => void) => void
@@ -153,12 +155,28 @@ export function createSettingsPanel(
   dropdown.className = "stargate-settings-dropdown"
   parent.appendChild(dropdown)
 
-  // Dismiss button (visible on mobile full-screen)
+  // 1. Dismiss button row (block-level, right-aligned — hidden on desktop via CSS)
+  const dismissRow = document.createElement("div")
+  dismissRow.className = "stargate-settings-dismiss-row"
   const dismissBtn = document.createElement("button")
   dismissBtn.className = "stargate-settings-dismiss"
   dismissBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>`
   dismissBtn.addEventListener("click", close)
-  dropdown.appendChild(dismissBtn)
+  dismissRow.appendChild(dismissBtn)
+  dropdown.appendChild(dismissRow)
+
+  // 2. Language select (full width, no label — self-documenting with "English – Ian")
+  const langSelect = document.createElement("select")
+  langSelect.className = "stargate-settings-lang-select"
+  langSelect.addEventListener("change", () => {
+    langCb?.(langSelect.value)
+  })
+  dropdown.appendChild(langSelect)
+
+  // Divider before toggles
+  const divider1 = document.createElement("div")
+  divider1.className = "stargate-settings-divider"
+  dropdown.appendChild(divider1)
 
   // --- Oscilloscope toggle row ---
   const oscRow = document.createElement("div")
@@ -180,12 +198,12 @@ export function createSettingsPanel(
   dropdown.appendChild(oscRow)
 
   // Oscilloscope advanced sliders
-  const oscConfig = options?.initialOscilloscopeConfig ?? { amplitude: 23, width: 12, alpha: 0.35 }
+  const oscConfig = options?.initialOscilloscopeConfig ?? { amplitude: 5, width: 12, alpha: 0.35 }
   createAdvancedSection(
     dropdown,
     [
-      { key: "amplitude", label: "Swing", min: 1, max: 50, step: 1, initial: 23 },
-      { key: "width", label: "Width", min: 2, max: 24, step: 1, initial: 12 },
+      { key: "amplitude", label: "Swing", min: 1, max: 20, step: 1, initial: 5 },
+      { key: "width", label: "Width", min: 1, max: 12, step: 1, initial: 12 },
       { key: "alpha", label: "Opacity", min: 0.05, max: 1.0, step: 0.05, initial: 0.35 },
     ],
     oscConfig as Record<string, number>,
@@ -248,32 +266,17 @@ export function createSettingsPanel(
   createAdvancedSection(
     dropdown,
     [
-      { key: "maxRadius", label: "Ring Size", min: 0.1, max: 3, step: 0.1, initial: 1 },
+      { key: "maxRadius", label: "Ring Size", min: 0.1, max: 1, step: 0.1, initial: 0.5 },
       { key: "fadeMs", label: "Trail", min: 50, max: 2000, step: 50, initial: 200 },
     ],
     pulseConfig as Record<string, number>,
     (key, value) => { pulseConfigCb?.(key, value) },
   )
 
-  // Language row
-  const langRow = document.createElement("div")
-  langRow.className = "stargate-settings-row"
-  const langLabel = document.createElement("span")
-  langLabel.className = "stargate-settings-label"
-  langLabel.textContent = "Language"
-  const langSelect = document.createElement("select")
-  langSelect.className = "stargate-settings-lang-select"
-  langSelect.addEventListener("change", () => {
-    langCb?.(langSelect.value)
-  })
-  langRow.appendChild(langLabel)
-  langRow.appendChild(langSelect)
-  dropdown.appendChild(langRow)
-
-  // Divider
-  const divider = document.createElement("div")
-  divider.className = "stargate-settings-divider"
-  dropdown.appendChild(divider)
+  // Divider before exit
+  const divider2 = document.createElement("div")
+  divider2.className = "stargate-settings-divider"
+  dropdown.appendChild(divider2)
 
   // Exit button
   const exitBtn = document.createElement("button")
@@ -314,17 +317,20 @@ export function createSettingsPanel(
   })
 
   return {
-    setLanguages(languages: string[], current: string) {
+    setLanguages(languages: LanguageInfo[], current: string) {
       langSelect.innerHTML = ""
       for (const lang of languages) {
         const opt = document.createElement("option")
-        opt.value = lang
-        opt.textContent = lang.toUpperCase()
-        if (lang === current) opt.selected = true
+        opt.value = lang.code
+        opt.textContent = lang.narrator
+          ? `${lang.displayName} \u2013 ${lang.narrator}`
+          : lang.displayName
+        if (lang.code === current) opt.selected = true
         langSelect.appendChild(opt)
       }
-      // Hide row when only 1 language
-      langRow.style.display = languages.length <= 1 ? "none" : ""
+      // Hide select when only 1 language
+      langSelect.style.display = languages.length <= 1 ? "none" : ""
+      divider1.style.display = languages.length <= 1 ? "none" : ""
     },
 
     onToggleOscilloscope(cb: (visible: boolean) => void) { toggleOscCb = cb },

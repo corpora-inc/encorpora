@@ -47,5 +47,21 @@
       "shorts": [],
       "demos": []
     }
+  },
+  {
+    "id": "stargate_reader",
+    "name": "Stargate Reader",
+    "description": "Immersive 3D audiobook: words stream through space in sync with narrated audio",
+    "status": "preview",
+    "listed": false,
+    "manifestUrl": "/corpan/packs/stargate-reader/manifest.json",
+    "zipUrl": "/corpan/packs/stargate-reader.zip",
+    "landingUrl": "/corpan/packs/stargate-reader/",
+    "avatarSource": "corpan/packs/stargate-reader/stargate-reader-avatar.svg",
+    "github": "https://github.com/corpora-inc/encorpora/tree/main/corpan/packs/stargate-reader",
+    "videos": {
+      "shorts": [],
+      "demos": []
+    }
   }
 ]

@@ -767,10 +767,10 @@
       "paragraph_id": "p14",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "The city we are talking about is called Monte Albán (MON-teh al-BAHN).",
-      "text_markdown": "The city we are talking about is called Monte Albán (MON-teh al-BAHN).",
+      "text": "The city we are talking about is called Monte Albán.",
+      "text_markdown": "The city we are talking about is called Monte Albán.",
       "tts": {
-        "text": "The city we are talking about is called Monte Albán (MON-teh al-BAHN).",
+        "text": "The city we are talking about is called Monte Albán.",
         "pause_after_ms": 500
       }
     },
@@ -782,10 +782,10 @@
       "paragraph_id": "p14",
       "sentence_index": 1,
       "block_type": "text",
-      "text": "It is located in the state of Oaxaca (wah-HAH-kah), in the highlands of southern Mexico, about 350 kilometers southeast of Mexico City.",
-      "text_markdown": "It is located in the state of Oaxaca (wah-HAH-kah), in the highlands of southern Mexico, about 350 kilometers southeast of Mexico City.",
+      "text": "It is located in the state of Oaxaca, in the highlands of southern Mexico, about 350 kilometers southeast of Mexico City.",
+      "text_markdown": "It is located in the state of Oaxaca, in the highlands of southern Mexico, about 350 kilometers southeast of Mexico City.",
       "tts": {
-        "text": "It is located in the state of Oaxaca (wah-HAH-kah), in the highlands of southern Mexico, about 350 kilometers southeast of Mexico City.",
+        "text": "It is located in the state of Oaxaca, in the highlands of southern Mexico, about 350 kilometers southeast of Mexico City.",
         "pause_after_ms": 800
       }
     },
@@ -857,10 +857,10 @@
       "paragraph_id": "p15",
       "sentence_index": 4,
       "block_type": "text",
-      "text": "The most commonly cited are Danipaguache (dah-nee-pah-GWAH-cheh), meaning \"Sacred Mountain,\" and Danibaan, meaning something close to \"Sacred Hill.\" But even these names come from oral tradition recorded centuries after the city was abandoned.",
-      "text_markdown": "The most commonly cited are Danipaguache (dah-nee-pah-GWAH-cheh), meaning \"Sacred Mountain,\" and Danibaan, meaning something close to \"Sacred Hill.\" But even these names come from oral tradition recorded centuries after the city was abandoned.",
+      "text": "The most commonly cited are Danipaguache, meaning \"Sacred Mountain,\" and Danibaan, meaning something close to \"Sacred Hill.\" But even these names come from oral tradition recorded centuries after the city was abandoned.",
+      "text_markdown": "The most commonly cited are Danipaguache, meaning \"Sacred Mountain,\" and Danibaan, meaning something close to \"Sacred Hill.\" But even these names come from oral tradition recorded centuries after the city was abandoned.",
       "tts": {
-        "text": "The most commonly cited are Danipaguache (dah-nee-pah-GWAH-cheh), meaning \"Sacred Mountain,\" and Danibaan, meaning something close to \"Sacred Hill.\" But even these names come from oral tradition recorded centuries after the city was abandoned.",
+        "text": "The most commonly cited are Danipaguache, meaning \"Sacred Mountain,\" and Danibaan, meaning something close to \"Sacred Hill.\" But even these names come from oral tradition recorded centuries after the city was abandoned.",
         "pause_after_ms": 500
       }
     },
@@ -2387,10 +2387,10 @@
       "paragraph_id": "p49",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "The archaeologists Charles Spencer and Elsa Redmond, working from the American Museum of Natural History in New York, have spent years studying a site called Tilcajete (til-kah-HEH-teh) in the southern arm of the valley.",
-      "text_markdown": "The archaeologists Charles Spencer and Elsa Redmond, working from the American Museum of Natural History in New York, have spent years studying a site called Tilcajete (til-kah-HEH-teh) in the southern arm of the valley.",
+      "text": "The archaeologists Charles Spencer and Elsa Redmond, working from the American Museum of Natural History in New York, have spent years studying a site called Tilcajete in the southern arm of the valley.",
+      "text_markdown": "The archaeologists Charles Spencer and Elsa Redmond, working from the American Museum of Natural History in New York, have spent years studying a site called Tilcajete in the southern arm of the valley.",
       "tts": {
-        "text": "The archaeologists Charles Spencer and Elsa Redmond, working from the American Museum of Natural History in New York, have spent years studying a site called Tilcajete (til-kah-HEH-teh) in the southern arm of the valley.",
+        "text": "The archaeologists Charles Spencer and Elsa Redmond, working from the American Museum of Natural History in New York, have spent years studying a site called Tilcajete in the southern arm of the valley.",
         "pause_after_ms": 500
       }
     },
@@ -3271,10 +3271,10 @@
       "paragraph_id": "p63",
       "sentence_index": 2,
       "block_type": "text",
-      "text": "The 260-day ritual calendar, called the piye (PEE-yeh) in Zapotec, combined twenty named days with thirteen numbers, creating a cycle of 260 unique day-designations.",
-      "text_markdown": "The 260-day ritual calendar, called the *piye* (PEE-yeh) in Zapotec, combined twenty named days with thirteen numbers, creating a cycle of 260 unique day-designations.",
+      "text": "The 260-day ritual calendar, called the piye in Zapotec, combined twenty named days with thirteen numbers, creating a cycle of 260 unique day-designations.",
+      "text_markdown": "The 260-day ritual calendar, called the *piye* in Zapotec, combined twenty named days with thirteen numbers, creating a cycle of 260 unique day-designations.",
       "tts": {
-        "text": "The 260-day ritual calendar, called the piye (PEE-yeh) in Zapotec, combined twenty named days with thirteen numbers, creating a cycle of 260 unique day-designations.",
+        "text": "The 260 day ritual calendar, called the piye in Zapotec, combined twenty named days with thirteen numbers, creating a cycle of two hundred and sixty unique day-designations.",
         "pause_after_ms": 500
       }
     },
@@ -3454,7 +3454,7 @@
       "text": "They cultivated maguey, the agave plant whose fibers made rope and whose fermented sap made pulque, a mildly alcoholic drink still consumed in Mexico today.",
       "text_markdown": "They cultivated maguey, the agave plant whose fibers made rope and whose fermented sap made pulque, a mildly alcoholic drink still consumed in Mexico today.",
       "tts": {
-        "text": "They cultivated maguey, the agave plant whose fibers made rope and whose fermented sap made pulque, a mildly alcoholic drink still consumed in Mexico today.",
+        "text": "They cultivated mahgay, the agave plant whose fibers made rope and whose fermented sap made pulque, a mildly alcoholic drink still consumed in Mexico today.",
         "pause_after_ms": 500
       }
     },
@@ -3541,10 +3541,10 @@
       "paragraph_id": "p66",
       "sentence_index": 1,
       "block_type": "text",
-      "text": "Tortillas made from ground corn that had been soaked in lime water — a process called nixtamalization (nix-tah-mah-lee-ZAY-shun) that releases nutrients locked inside the corn kernel and has been used in Mesoamerica for at least three thousand years.",
-      "text_markdown": "Tortillas made from ground corn that had been soaked in lime water — a process called nixtamalization (nix-tah-mah-lee-ZAY-shun) that releases nutrients locked inside the corn kernel and has been used in Mesoamerica for at least three thousand years.",
+      "text": "Tortillas made from ground corn that had been soaked in lime water — a process called nixtamalization that releases nutrients locked inside the corn kernel and has been used in Mesoamerica for at least three thousand years.",
+      "text_markdown": "Tortillas made from ground corn that had been soaked in lime water — a process called nixtamalization that releases nutrients locked inside the corn kernel and has been used in Mesoamerica for at least three thousand years.",
       "tts": {
-        "text": "Tortillas made from ground corn that had been soaked in lime water — a process called nixtamalization (nix-tah-mah-lee-ZAY-shun) that releases nutrients locked inside the corn kernel and has been used in Mesoamerica for at least three thousand years.",
+        "text": "Tortillas made from ground corn that had been soaked in lime water — a process called nixtamalization that releases nutrients locked inside the corn kernel and has been used in Mesoamerica for at least three thousand years.",
         "pause_after_ms": 500
       }
     },
@@ -3589,7 +3589,7 @@
       "text": "Roasted chapulines — grasshoppers — seasoned with salt and lime and garlic, eaten by the handful like popcorn.",
       "text_markdown": "Roasted chapulines — grasshoppers — seasoned with salt and lime and garlic, eaten by the handful like popcorn.",
       "tts": {
-        "text": "Roasted chapulines — grasshoppers — seasoned with salt and lime and garlic, eaten by the handful like popcorn.",
+        "text": "Roasted chahpoolinehs — grasshoppers — seasoned with salt and lime and garlic, eaten by the handful like popcorn.",
         "pause_after_ms": 500
       }
     },
@@ -3664,7 +3664,7 @@
       "text": "Walk through the Benito Juárez market in the modern city of Oaxaca, a thirty-minute drive from Monte Albán, and you will find chapulines piled in baskets, maguey worms sold by the scoop, fresh tortillas slapped out by hand and cooked on clay griddles, and seven varieties of mole sauce that trace their roots back centuries.",
       "text_markdown": "Walk through the Benito Juárez market in the modern city of Oaxaca, a thirty-minute drive from Monte Albán, and you will find chapulines piled in baskets, maguey worms sold by the scoop, fresh tortillas slapped out by hand and cooked on clay griddles, and seven varieties of mole sauce that trace their roots back centuries.",
       "tts": {
-        "text": "Walk through the Benito Juárez market in the modern city of Oaxaca, a thirty-minute drive from Monte Albán, and you will find chapulines piled in baskets, maguey worms sold by the scoop, fresh tortillas slapped out by hand and cooked on clay griddles, and seven varieties of mole sauce that trace their roots back centuries.",
+        "text": "Walk through the Benito Juárez market in the modern city of Oaxaca, a thirty-minute drive from Monte Albán, and you will find chahpoolinehs piled in baskets, mahgay worms sold by the scoop, fresh tortillas slapped out by hand and cooked on clay griddles, and seven varieties of molay sauce that trace their roots back centuries.",
         "pause_after_ms": 500
       }
     },
@@ -6073,10 +6073,10 @@
       "paragraph_id": "p114",
       "sentence_index": 1,
       "block_type": "text",
-      "text": "The glyph that scholars read as \"Place of Song\" has been identified with Cuicatlán (kwee-kaht-LAHN), a town about 80 kilometers north of Monte Albán in the Cañada region.",
-      "text_markdown": "The glyph that scholars read as \"Place of Song\" has been identified with Cuicatlán (kwee-kaht-LAHN), a town about 80 kilometers north of Monte Albán in the Cañada region.",
+      "text": "The glyph that scholars read as \"Place of Song\" has been identified with Cuicatlán, a town about 80 kilometers north of Monte Albán in the Cañada region.",
+      "text_markdown": "The glyph that scholars read as \"Place of Song\" has been identified with Cuicatlán, a town about 80 kilometers north of Monte Albán in the Cañada region.",
       "tts": {
-        "text": "The glyph that scholars read as \"Place of Song\" has been identified with Cuicatlán (kwee-kaht-LAHN), a town about 80 kilometers north of Monte Albán in the Cañada region.",
+        "text": "The glyph that scholars read as \"Place of Song\" has been identified with Cuicatlán, a town about 80 kilometers north of Monte Albán in the Cañada region.",
         "pause_after_ms": 500
       }
     },
@@ -6420,7 +6420,7 @@
       "text": "Japanese hiragana is a syllabary: the symbol か represents the syllable \"ka,\" not the individual sounds \"k\" and \"a.\" Cherokee writing, invented by Sequoyah in the 1820s, is also a syllabary.",
       "text_markdown": "Japanese hiragana is a syllabary: the symbol か represents the syllable \"ka,\" not the individual sounds \"k\" and \"a.\" Cherokee writing, invented by Sequoyah in the 1820s, is also a syllabary.",
       "tts": {
-        "text": "Japanese hiragana is a syllabary: the symbol か represents the syllable \"ka,\" not the individual sounds \"k\" and \"a.\" Cherokee writing, invented by Sequoyah in the 1820s, is also a syllabary.",
+        "text": "Japanese hiragana is a syllabary: the symbol ka represents the syllable \"ka,\" not the individual sounds \"k\" and \"a.\" Cherokee writing, invented by Sequoyah in the 1820s, is also a syllabary.",
         "pause_after_ms": 800
       }
     },
@@ -6450,7 +6450,7 @@
       "text": "Chinese characters are largely logographic: the character 山 means \"mountain\" regardless of what language you speak or how you pronounce it.",
       "text_markdown": "Chinese characters are largely logographic: the character 山 means \"mountain\" regardless of what language you speak or how you pronounce it.",
       "tts": {
-        "text": "Chinese characters are largely logographic: the character 山 means \"mountain\" regardless of what language you speak or how you pronounce it.",
+        "text": "Chinese characters are largely logographic: the character shan means \"mountain\" regardless of what language you speak or how you pronounce it.",
         "pause_after_ms": 800
       }
     },
@@ -7112,7 +7112,7 @@
       "text": "It is not like the Indus Valley script, an undeciphered writing system from ancient Pakistan and northwestern India (roughly 2600-1900 BCE), which presents an even harder puzzle: no one even knows what language the Indus people spoke, and the surviving texts are so short — most are fewer than five signs — that statistical analysis has almost nothing to work with.",
       "text_markdown": "It is not like the Indus Valley script, an undeciphered writing system from ancient Pakistan and northwestern India (roughly 2600-1900 BCE), which presents an even harder puzzle: no one even knows what language the Indus people spoke, and the surviving texts are so short — most are fewer than five signs — that statistical analysis has almost nothing to work with.",
       "tts": {
-        "text": "It is not like the Indus Valley script, an undeciphered writing system from ancient Pakistan and northwestern India (roughly 2600-1900 BCE), which presents an even harder puzzle: no one even knows what language the Indus people spoke, and the surviving texts are so short — most are fewer than five signs — that statistical analysis has almost nothing to work with.",
+        "text": "It is not like the Indus Valley script, an undeciphered writing system from ancient Pakistan and northwestern India (roughly twenty six hundred to nineteen hundred BCE), which presents an even harder puzzle: no one even knows what language the Indus people spoke, and the surviving texts are so short — most are fewer than five signs — that statistical analysis has almost nothing to work with.",
         "pause_after_ms": 800
       }
     },
@@ -8650,10 +8650,10 @@
       "paragraph_id": "p172",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "In 2018, researchers from Mexico's National Institute of Anthropology and History — known by its Spanish acronym, INAH (ee-NAH) — announced the discovery of a massive stucco frieze at Atzompa (aht-SOHM-pah), a hilltop site about a kilometer northwest of Monte Albán that served as a satellite community during the city's height.",
-      "text_markdown": "In 2018, researchers from Mexico's National Institute of Anthropology and History — known by its Spanish acronym, INAH (ee-NAH) — announced the discovery of a massive stucco frieze at Atzompa (aht-SOHM-pah), a hilltop site about a kilometer northwest of Monte Albán that served as a satellite community during the city's height.",
+      "text": "In 2018, researchers from Mexico's National Institute of Anthropology and History — known by its Spanish acronym, INAH — announced the discovery of a massive stucco frieze at Atzompa, a hilltop site about a kilometer northwest of Monte Albán that served as a satellite community during the city's height.",
+      "text_markdown": "In 2018, researchers from Mexico's National Institute of Anthropology and History — known by its Spanish acronym, INAH — announced the discovery of a massive stucco frieze at Atzompa, a hilltop site about a kilometer northwest of Monte Albán that served as a satellite community during the city's height.",
       "tts": {
-        "text": "In 2018, researchers from Mexico's National Institute of Anthropology and History — known by its Spanish acronym, INAH (ee-NAH) — announced the discovery of a massive stucco frieze at Atzompa (aht-SOHM-pah), a hilltop site about a kilometer northwest of Monte Albán that served as a satellite community during the city's height.",
+        "text": "In 2018, researchers from Mexico's National Institute of Anthropology and History — known by its Spanish acronym, INAH — announced the discovery of a massive stucco frieze at Atzompa, a hilltop site about a kilometer northwest of Monte Albán that served as a satellite community during the city's height.",
         "pause_after_ms": 500
       }
     },
@@ -9306,10 +9306,10 @@
       "paragraph_id": "p184",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "During this golden age, Monte Albán conducted diplomacy with the greatest power in all of Mesoamerica: Teotihuacan (teh-oh-tee-wah-KAHN).",
-      "text_markdown": "During this golden age, Monte Albán conducted diplomacy with the greatest power in all of Mesoamerica: Teotihuacan (teh-oh-tee-wah-KAHN).",
+      "text": "During this golden age, Monte Albán conducted diplomacy with the greatest power in all of Mesoamerica: Teotihuacan.",
+      "text_markdown": "During this golden age, Monte Albán conducted diplomacy with the greatest power in all of Mesoamerica: Teotihuacan.",
       "tts": {
-        "text": "During this golden age, Monte Albán conducted diplomacy with the greatest power in all of Mesoamerica: Teotihuacan (teh-oh-tee-wah-KAHN).",
+        "text": "During this golden age, Monte Albán conducted diplomacy with the greatest power in all of Mesoamerica: Teotihuacan.",
         "pause_after_ms": 800
       }
     },
@@ -11117,10 +11117,10 @@
       "paragraph_id": "p220",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "The Mixtecs (MEESH-teks) were a highland people from the mountainous region to the west and northwest of the Valley of Oaxaca — a region known as the Mixteca.",
-      "text_markdown": "The Mixtecs (MEESH-teks) were a highland people from the mountainous region to the west and northwest of the Valley of Oaxaca — a region known as the Mixteca.",
+      "text": "The Mixtecs were a highland people from the mountainous region to the west and northwest of the Valley of Oaxaca — a region known as the Mixteca.",
+      "text_markdown": "The Mixtecs were a highland people from the mountainous region to the west and northwest of the Valley of Oaxaca — a region known as the Mixteca.",
       "tts": {
-        "text": "The Mixtecs (MEESH-teks) were a highland people from the mountainous region to the west and northwest of the Valley of Oaxaca — a region known as the Mixteca.",
+        "text": "The Mixtecs were a highland people from the mountainous region to the west and northwest of the Valley of Oaxaca — a region known as the Mixteca.",
         "pause_after_ms": 500
       }
     },
@@ -11405,7 +11405,7 @@
       "text": "Beyond the gold, there were carved jaguar bones inscribed with scenes from Mixtec mythology — tiny, intricate narratives scratched into bone with obsidian tools.",
       "text_markdown": "Beyond the gold, there were carved jaguar bones inscribed with scenes from Mixtec mythology — tiny, intricate narratives scratched into bone with obsidian tools.",
       "tts": {
-        "text": "Beyond the gold, there were carved jaguar bones inscribed with scenes from Mixtec mythology — tiny, intricate narratives scratched into bone with obsidian tools.",
+        "text": "Beyond the gold, there were carved jagwar bones inscribed with scenes from Mixtec mythology — tiny, intricate narratives scratched into bone with obsidian tools.",
         "pause_after_ms": 500
       }
     },
@@ -11983,10 +11983,10 @@
       "paragraph_id": "p240",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "The Zapotec name for it was Lyobaa (lyoh-BAH), meaning \"Place of Rest\" or \"Place of Repose.\" The Aztecs, who encountered it later, called it Mictlán (meek-TLAHN) — \"Place of the Dead.\" The Spanish simplified that to Mitla (MEET-lah), and the name stuck.",
-      "text_markdown": "The Zapotec name for it was Lyobaa (lyoh-BAH), meaning \"Place of Rest\" or \"Place of Repose.\" The Aztecs, who encountered it later, called it Mictlán (meek-TLAHN) — \"Place of the Dead.\" The Spanish simplified that to Mitla (MEET-lah), and the name stuck.",
+      "text": "The Zapotec name for it was Lyobaa, meaning \"Place of Rest\" or \"Place of Repose.\" The Aztecs, who encountered it later, called it Mictlán — \"Place of the Dead.\" The Spanish simplified that to Mitla, and the name stuck.",
+      "text_markdown": "The Zapotec name for it was Lyobaa, meaning \"Place of Rest\" or \"Place of Repose.\" The Aztecs, who encountered it later, called it Mictlán — \"Place of the Dead.\" The Spanish simplified that to Mitla, and the name stuck.",
       "tts": {
-        "text": "The Zapotec name for it was Lyobaa (lyoh-BAH), meaning \"Place of Rest\" or \"Place of Repose.\" The Aztecs, who encountered it later, called it Mictlán (meek-TLAHN) — \"Place of the Dead.\" The Spanish simplified that to Mitla (MEET-lah), and the name stuck.",
+        "text": "The Zapotec name for it was Lyobaa, meaning \"Place of Rest\" or \"Place of Repose.\" The Aztecs, who encountered it later, called it Mictlán — \"Place of the Dead.\" The Spanish simplified that to Mitla, and the name stuck.",
         "pause_after_ms": 800
       }
     },
@@ -12283,10 +12283,10 @@
       "paragraph_id": "p245",
       "sentence_index": 2,
       "block_type": "text",
-      "text": "Spanish colonial accounts describe it as the seat of a powerful high priest — a figure called the Uija-tào (wee-hah-TAH-oh), or \"Great Seer\" — who exercised spiritual authority across the Zapotec world even as political power fragmented.",
-      "text_markdown": "Spanish colonial accounts describe it as the seat of a powerful high priest — a figure called the *Uija-tào* (wee-hah-TAH-oh), or \"Great Seer\" — who exercised spiritual authority across the Zapotec world even as political power fragmented.",
+      "text": "Spanish colonial accounts describe it as the seat of a powerful high priest — a figure called the Uija-tào, or \"Great Seer\" — who exercised spiritual authority across the Zapotec world even as political power fragmented.",
+      "text_markdown": "Spanish colonial accounts describe it as the seat of a powerful high priest — a figure called the *Uija-tào*, or \"Great Seer\" — who exercised spiritual authority across the Zapotec world even as political power fragmented.",
       "tts": {
-        "text": "Spanish colonial accounts describe it as the seat of a powerful high priest — a figure called the Uija-tào (wee-hah-TAH-oh), or \"Great Seer\" — who exercised spiritual authority across the Zapotec world even as political power fragmented.",
+        "text": "Spanish colonial accounts describe it as the seat of a powerful high priest — a figure called the Uija-tào, or \"Great Seer\" — who exercised spiritual authority across the Zapotec world even as political power fragmented.",
         "pause_after_ms": 800
       }
     },
@@ -13272,7 +13272,7 @@
       "text": "In India, Siddhartha Gautama — the Buddha — had recently died, and his teachings were spreading across the subcontinent.",
       "text_markdown": "In India, Siddhartha Gautama — the Buddha — had recently died, and his teachings were spreading across the subcontinent.",
       "tts": {
-        "text": "In India, Siddhartha Gautama — the Buddha — had recently died, and his teachings were spreading across the subcontinent.",
+        "text": "In India, Siddhartha Gautama, the Buddha, had recently died, and his teachings were spreading across the subcontinent.",
         "pause_after_ms": 500
       }
     },
@@ -14315,10 +14315,10 @@
       "paragraph_id": "p292",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "Atzompa (aht-SOHM-pah) — A hilltop site one kilometer northwest of Monte Albán, serving as a satellite community.",
-      "text_markdown": "**Atzompa** (aht-SOHM-pah) — A hilltop site one kilometer northwest of Monte Albán, serving as a satellite community.",
+      "text": "Atzompa — A hilltop site one kilometer northwest of Monte Albán, serving as a satellite community.",
+      "text_markdown": "**Atzompa** — A hilltop site one kilometer northwest of Monte Albán, serving as a satellite community.",
       "tts": {
-        "text": "Atzompa (aht-SOHM-pah) — A hilltop site one kilometer northwest of Monte Albán, serving as a satellite community.",
+        "text": "Atzompa — A hilltop site one kilometer northwest of Monte Albán, serving as a satellite community.",
         "pause_after_ms": 500
       }
     },
@@ -14435,10 +14435,10 @@
       "paragraph_id": "p297",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "Danzantes (dahn-SAHN-tes) — \"The Dancers.\" Over three hundred carved stone figures at Monte Albán, now understood to depict sacrificed war captives.",
-      "text_markdown": "**Danzantes** (dahn-SAHN-tes) — \"The Dancers.\" Over three hundred carved stone figures at Monte Albán, now understood to depict sacrificed war captives.",
+      "text": "Danzantes — \"The Dancers.\" Over three hundred carved stone figures at Monte Albán, now understood to depict sacrificed war captives.",
+      "text_markdown": "**Danzantes** — \"The Dancers.\" Over three hundred carved stone figures at Monte Albán, now understood to depict sacrificed war captives.",
       "tts": {
-        "text": "Danzantes (dahn-SAHN-tes) — \"The Dancers.\" Over three hundred carved stone figures at Monte Albán, now understood to depict sacrificed war captives.",
+        "text": "Dahnsahntess — \"The Dancers.\" Over three hundred carved stone figures at Monte Albán, now understood to depict sacrificed war captives.",
         "pause_after_ms": 500
       }
     },
@@ -14465,10 +14465,10 @@
       "paragraph_id": "p298",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "Danibaan / Danipaguache (dah-nee-pah-GWAH-cheh) — Zapotec names for Monte Albán, meaning roughly \"Sacred Hill\" and \"Sacred Mountain.\" These are later traditional names; the original is unknown.",
-      "text_markdown": "**Danibaan** / **Danipaguache** (dah-nee-pah-GWAH-cheh) — Zapotec names for Monte Albán, meaning roughly \"Sacred Hill\" and \"Sacred Mountain.\" These are later traditional names; the original is unknown.",
+      "text": "Danibaan / Danipaguache — Zapotec names for Monte Albán, meaning roughly \"Sacred Hill\" and \"Sacred Mountain.\" These are later traditional names; the original is unknown.",
+      "text_markdown": "**Danibaan** / **Danipaguache** — Zapotec names for Monte Albán, meaning roughly \"Sacred Hill\" and \"Sacred Mountain.\" These are later traditional names; the original is unknown.",
       "tts": {
-        "text": "Danibaan / Danipaguache (dah-nee-pah-GWAH-cheh) — Zapotec names for Monte Albán, meaning roughly \"Sacred Hill\" and \"Sacred Mountain.\" These are later traditional names; the original is unknown.",
+        "text": "Danibaan / Danipaguache — Zapotec names for Monte Albán, meaning roughly \"Sacred Hill\" and \"Sacred Mountain.\" These are later traditional names; the original is unknown.",
         "pause_after_ms": 800
       }
     },
@@ -14495,10 +14495,10 @@
       "paragraph_id": "p300",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "INAH (ee-NAH) — Instituto Nacional de Antropología e Historia.",
-      "text_markdown": "**INAH** (ee-NAH) — Instituto Nacional de Antropología e Historia.",
+      "text": "INAH — Instituto Nacional de Antropología e Historia.",
+      "text_markdown": "**INAH** — Instituto Nacional de Antropología e Historia.",
       "tts": {
-        "text": "INAH (ee-NAH) — Instituto Nacional de Antropología e Historia.",
+        "text": "INAH — Instituto Nacional de Antropología e Historia.",
         "pause_after_ms": 500
       }
     },
@@ -14600,10 +14600,10 @@
       "paragraph_id": "p304",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "Mitla (MEET-lah) — Zapotec: Lyobaa, \"Place of Rest.\" An important Zapotec religious center forty kilometers east of Monte Albán, famous for its geometric stone mosaics.",
-      "text_markdown": "**Mitla** (MEET-lah) — Zapotec: *Lyobaa*, \"Place of Rest.\" An important Zapotec religious center forty kilometers east of Monte Albán, famous for its geometric stone mosaics.",
+      "text": "Mitla — Zapotec: Lyobaa, \"Place of Rest.\" An important Zapotec religious center forty kilometers east of Monte Albán, famous for its geometric stone mosaics.",
+      "text_markdown": "**Mitla** — Zapotec: *Lyobaa*, \"Place of Rest.\" An important Zapotec religious center forty kilometers east of Monte Albán, famous for its geometric stone mosaics.",
       "tts": {
-        "text": "Mitla (MEET-lah) — Zapotec: Lyobaa, \"Place of Rest.\" An important Zapotec religious center forty kilometers east of Monte Albán, famous for its geometric stone mosaics.",
+        "text": "Mitla — Zapotec: Lyobaa, \"Place of Rest.\" An important Zapotec religious center forty kilometers east of Monte Albán, famous for its geometric stone mosaics.",
         "pause_after_ms": 800
       }
     },
@@ -14615,10 +14615,10 @@
       "paragraph_id": "p305",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "Mixtec (MEESH-tek) — A highland people from the Mixteca region west of the Valley of Oaxaca, who expanded into the valley after Monte Albán's abandonment and produced brilliant painted codices and metalwork.",
-      "text_markdown": "**Mixtec** (MEESH-tek) — A highland people from the Mixteca region west of the Valley of Oaxaca, who expanded into the valley after Monte Albán's abandonment and produced brilliant painted codices and metalwork.",
+      "text": "Mixtec — A highland people from the Mixteca region west of the Valley of Oaxaca, who expanded into the valley after Monte Albán's abandonment and produced brilliant painted codices and metalwork.",
+      "text_markdown": "**Mixtec** — A highland people from the Mixteca region west of the Valley of Oaxaca, who expanded into the valley after Monte Albán's abandonment and produced brilliant painted codices and metalwork.",
       "tts": {
-        "text": "Mixtec (MEESH-tek) — A highland people from the Mixteca region west of the Valley of Oaxaca, who expanded into the valley after Monte Albán's abandonment and produced brilliant painted codices and metalwork.",
+        "text": "Meeshtek — A highland people from the Meeshteka region west of the Valley of Oaxaca, who expanded into the valley after Monte Albán's abandonment and produced brilliant painted codices and metalwork.",
         "pause_after_ms": 800
       }
     },
@@ -14630,10 +14630,10 @@
       "paragraph_id": "p306",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "Monte Albán (MON-teh al-BAHN) — The mountaintop capital of the Zapotec civilization in the Valley of Oaxaca, occupied from approximately 500 BCE to 900 CE.",
-      "text_markdown": "**Monte Albán** (MON-teh al-BAHN) — The mountaintop capital of the Zapotec civilization in the Valley of Oaxaca, occupied from approximately 500 BCE to 900 CE.",
+      "text": "Monte Albán — The mountaintop capital of the Zapotec civilization in the Valley of Oaxaca, occupied from approximately 500 BCE to 900 CE.",
+      "text_markdown": "**Monte Albán** — The mountaintop capital of the Zapotec civilization in the Valley of Oaxaca, occupied from approximately 500 BCE to 900 CE.",
       "tts": {
-        "text": "Monte Albán (MON-teh al-BAHN) — The mountaintop capital of the Zapotec civilization in the Valley of Oaxaca, occupied from approximately 500 BCE to 900 CE.",
+        "text": "Monte Albán — The mountaintop capital of the Zapotec civilization in the Valley of Oaxaca, occupied from approximately 500 BCE to 900 CE.",
         "pause_after_ms": 800
       }
     },
@@ -14645,10 +14645,10 @@
       "paragraph_id": "p307",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "Oaxaca (wah-HAH-kah) — A state in southern Mexico; also the name of its capital city.",
-      "text_markdown": "**Oaxaca** (wah-HAH-kah) — A state in southern Mexico; also the name of its capital city.",
+      "text": "Oaxaca — A state in southern Mexico; also the name of its capital city.",
+      "text_markdown": "**Oaxaca** — A state in southern Mexico; also the name of its capital city.",
       "tts": {
-        "text": "Oaxaca (wah-HAH-kah) — A state in southern Mexico; also the name of its capital city.",
+        "text": "Oaxaca — A state in southern Mexico; also the name of its capital city.",
         "pause_after_ms": 500
       }
     },
@@ -14690,10 +14690,10 @@
       "paragraph_id": "p309",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "Piye (PEE-yeh) — The Zapotec name for the 260-day ritual calendar used across Mesoamerica, combining twenty day names with thirteen numbers.",
-      "text_markdown": "**Piye** (PEE-yeh) — The Zapotec name for the 260-day ritual calendar used across Mesoamerica, combining twenty day names with thirteen numbers.",
+      "text": "Piye — The Zapotec name for the 260-day ritual calendar used across Mesoamerica, combining twenty day names with thirteen numbers.",
+      "text_markdown": "**Piye** — The Zapotec name for the 260-day ritual calendar used across Mesoamerica, combining twenty day names with thirteen numbers.",
       "tts": {
-        "text": "Piye (PEE-yeh) — The Zapotec name for the 260-day ritual calendar used across Mesoamerica, combining twenty day names with thirteen numbers.",
+        "text": "Piye — The Zapotec name for the 260-day ritual calendar used across Mesoamerica, combining twenty day names with thirteen numbers.",
         "pause_after_ms": 800
       }
     },
@@ -14780,10 +14780,10 @@
       "paragraph_id": "p313",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "Teotihuacan (teh-oh-tee-wah-KAHN) — A massive city in the Basin of Mexico, near present-day Mexico City, that was the dominant power in Mesoamerica from roughly 100 BCE to 550 CE.",
-      "text_markdown": "**Teotihuacan** (teh-oh-tee-wah-KAHN) — A massive city in the Basin of Mexico, near present-day Mexico City, that was the dominant power in Mesoamerica from roughly 100 BCE to 550 CE.",
+      "text": "Teotihuacan — A massive city in the Basin of Mexico, near present-day Mexico City, that was the dominant power in Mesoamerica from roughly 100 BCE to 550 CE.",
+      "text_markdown": "**Teotihuacan** — A massive city in the Basin of Mexico, near present-day Mexico City, that was the dominant power in Mesoamerica from roughly 100 BCE to 550 CE.",
       "tts": {
-        "text": "Teotihuacan (teh-oh-tee-wah-KAHN) — A massive city in the Basin of Mexico, near present-day Mexico City, that was the dominant power in Mesoamerica from roughly 100 BCE to 550 CE.",
+        "text": "Teotihuacan — A massive city in the Basin of Mexico, near present-day Mexico City, that was the dominant power in Mesoamerica from roughly 100 BCE to 550 CE.",
         "pause_after_ms": 800
       }
     },
@@ -14855,10 +14855,10 @@
       "paragraph_id": "p316",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "Zapotec (ZAH-po-tek) — The indigenous people of the Valley of Oaxaca and surrounding highlands.",
-      "text_markdown": "**Zapotec** (ZAH-po-tek) — The indigenous people of the Valley of Oaxaca and surrounding highlands.",
+      "text": "Zapotec — The indigenous people of the Valley of Oaxaca and surrounding highlands.",
+      "text_markdown": "**Zapotec** — The indigenous people of the Valley of Oaxaca and surrounding highlands.",
       "tts": {
-        "text": "Zapotec (ZAH-po-tek) — The indigenous people of the Valley of Oaxaca and surrounding highlands.",
+        "text": "Sahpotek — The indigenous people of the Valley of Oaxaca and surrounding highlands.",
         "pause_after_ms": 500
       }
     },

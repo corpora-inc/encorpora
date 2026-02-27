@@ -9,6 +9,7 @@ on:
       - "corpan/packs/**"
       - "web/pages/**"
       - "web/scripts/**"
+      - "books/fascinating-curiosities/**"
       - ".github/workflows/hover-runner-pages.yml"
   workflow_dispatch: {}
 
@@ -88,6 +89,29 @@ jobs:
           zip -r juice-squeeze.zip manifest.json dist/
           cd ../../..
 
+      - name: Install Stargate Reader Dependencies
+        working-directory: corpan/packs/stargate-reader
+        run: npm install --legacy-peer-deps
+
+      - name: Build Stargate Reader
+        working-directory: corpan/packs/stargate-reader
+        run: npm run build
+
+      - name: Package Stargate Reader with Book Data
+        run: |
+          cd corpan/packs/stargate-reader
+          mkdir -p data/books/book_monte_alban/audio
+          BOOK_PACK=../../../books/fascinating-curiosities/01-mystery-of-monte-alban/pack
+          cp "$BOOK_PACK/segments.json" data/books/book_monte_alban/
+          cp "$BOOK_PACK/segments_es.json" data/books/book_monte_alban/
+          cp "$BOOK_PACK/audio_manifest_en.json" data/books/book_monte_alban/
+          cp "$BOOK_PACK/audio_manifest_es.json" data/books/book_monte_alban/
+          cp -r "$BOOK_PACK/audio/en" data/books/book_monte_alban/audio/
+          cp -r "$BOOK_PACK/audio/es" data/books/book_monte_alban/audio/
+          echo '[{"id":"book_monte_alban","name":"The Mystery of Monte Albán","volume":1,"series":"Fascinating Curiosities of Human History","hasAudio":true,"availableLanguages":["en","es"]}]' > data/catalog.json
+          zip -r stargate-reader.zip manifest.json dist/ data/
+          cd ../../..
+
       - name: Copy Hover Runner into io/out
         run: |
           mkdir -p "web/io/out/corpan/packs/hover-runner"
@@ -109,6 +133,14 @@ jobs:
           cp corpan/packs/juice-squeeze/manifest.json "web/io/out/corpan/packs/juice-squeeze/"
           cp -R corpan/packs/juice-squeeze/dist "web/io/out/corpan/packs/juice-squeeze/"
           cp corpan/packs/juice-squeeze/juice-squeeze.zip "web/io/out/corpan/packs/juice-squeeze.zip"
+
+      - name: Copy Stargate Reader into io/out
+        run: |
+          mkdir -p "web/io/out/corpan/packs/stargate-reader"
+          cp corpan/packs/stargate-reader/manifest.json "web/io/out/corpan/packs/stargate-reader/"
+          cp -R corpan/packs/stargate-reader/dist "web/io/out/corpan/packs/stargate-reader/"
+          cp -R corpan/packs/stargate-reader/data "web/io/out/corpan/packs/stargate-reader/"
+          cp corpan/packs/stargate-reader/stargate-reader.zip "web/io/out/corpan/packs/stargate-reader.zip"
 
       - name: Show Final Structure
         run: |
