@@ -1,5 +1,6 @@
 import type { AudioManifest, BookSegment } from "../core/types"
 import { PRELOAD_AHEAD, OSCILLOSCOPE_SAMPLES } from "../core/constants"
+import { packFetchArrayBuffer } from "../data/packFetch"
 
 export type AudioEngine = {
   unlock: () => void
@@ -116,11 +117,7 @@ export function createAudioEngine(
     if (!context) return null
 
     const url = resolveAudioUrl(entry.file)
-    const promise = fetch(url)
-      .then((resp) => {
-        if (!resp.ok) throw new Error(`HTTP ${resp.status}`)
-        return resp.arrayBuffer()
-      })
+    const promise = packFetchArrayBuffer(url)
       .then((data) => context.decodeAudioData(data))
       .then((buffer) => {
         bufferCache.set(segmentId, buffer)

@@ -45,6 +45,25 @@ export function createStargateReader(
 ) {
   let disposed = false
 
+  // --- Screen Wake Lock ---
+  let wakeLock: WakeLockSentinel | null = null
+
+  async function requestWakeLock() {
+    if (!("wakeLock" in navigator)) return
+    try {
+      wakeLock = await navigator.wakeLock.request("screen")
+      wakeLock.addEventListener("release", () => { wakeLock = null })
+    } catch { /* user denied or API unsupported */ }
+  }
+
+  function releaseWakeLock() {
+    wakeLock?.release()
+    wakeLock = null
+  }
+
+  // --- Background audio keepalive ---
+  let bgKeepAlive: ReturnType<typeof setInterval> | null = null
+
   // Module-level state for language/book switching
   let dataProvider: DataProvider
   let segments: BookSegment[] = []
@@ -180,6 +199,7 @@ export function createStargateReader(
     audioEngine.play()
     isPlaying = true
     transport.setPlaying(true)
+    void requestWakeLock()
   })
 
   transport.onPause(() => {
@@ -188,6 +208,7 @@ export function createStargateReader(
     isPlaying = false
     transport.setPlaying(false)
     persistBookmark()
+    releaseWakeLock()
   })
 
   transport.onPrevChapter(() => {
@@ -315,12 +336,18 @@ export function createStargateReader(
       // Screen locked / tab hidden: save bookmark, stop render loop but keep audio
       persistBookmark()
       engine.stopRenderLoop()
+      // Keep AudioContext alive in background
+      if (audioEngine && isPlaying) {
+        bgKeepAlive = setInterval(() => { audioEngine?.unlock() }, 5000)
+      }
     } else {
-      // Screen visible: resume render loop
+      // Screen visible: clear keepalive, resume render loop
+      if (bgKeepAlive) { clearInterval(bgKeepAlive); bgKeepAlive = null }
       engine.runRenderLoop(renderLoop)
       // Nudge audio context back to life after screen unlock
       if (audioEngine && isPlaying) {
         audioEngine.unlock()
+        void requestWakeLock()
       }
     }
   }
@@ -414,6 +441,7 @@ export function createStargateReader(
           // Playback ended
           isPlaying = false
           transport.setPlaying(false)
+          releaseWakeLock()
         },
         (segmentId, buffer) => {
           // Extract waveform envelopes as audio buffers are decoded
@@ -547,6 +575,7 @@ export function createStargateReader(
         () => {
           isPlaying = false
           transport.setPlaying(false)
+          releaseWakeLock()
         },
         (segmentId, buffer) => {
           const entry = manifest.segments[segmentId]
@@ -680,6 +709,9 @@ export function createStargateReader(
   function dispose() {
     if (disposed) return
     disposed = true
+
+    releaseWakeLock()
+    if (bgKeepAlive) { clearInterval(bgKeepAlive); bgKeepAlive = null }
 
     document.removeEventListener("visibilitychange", handleVisibilityChange)
     resizeObserver.disconnect()

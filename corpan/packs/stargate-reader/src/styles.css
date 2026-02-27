@@ -537,7 +537,7 @@ body {
     border-radius: 0;
     box-sizing: border-box;
     overflow-y: auto;
-    padding: 24px;
+    padding: calc(24px + var(--safe-top)) calc(24px + var(--safe-right)) calc(24px + var(--safe-bottom)) calc(24px + var(--safe-left));
   }
 
   .stargate-settings-dismiss-row {
