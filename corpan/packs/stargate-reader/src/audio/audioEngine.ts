@@ -83,6 +83,9 @@ export function createAudioEngine(
   // stale async playSegment calls and pending onended/setTimeout callbacks
   let playbackGeneration = 0
 
+  // Track whether AudioContext has been fully unlocked on iOS
+  let contextUnlocked = false
+
   // Analyser data buffers
   const timeDomainData = new Uint8Array(OSCILLOSCOPE_SAMPLES)
   const floatTimeDomainData = new Float32Array(OSCILLOSCOPE_SAMPLES)
@@ -92,6 +95,12 @@ export function createAudioEngine(
     if (!AudioCtx) return null
     if (!ctx) {
       ctx = new AudioCtx()
+
+      // Route Web Audio through media channel on iOS — bypasses mute switch
+      if ("audioSession" in navigator) {
+        ;(navigator as any).audioSession.type = "playback"
+      }
+
       analyser = ctx.createAnalyser()
       analyser.fftSize = OSCILLOSCOPE_SAMPLES * 2
       analyser.smoothingTimeConstant = 0
@@ -133,6 +142,22 @@ export function createAudioEngine(
 
     loadingPromises.set(segmentId, promise)
     return promise
+  }
+
+  /** Inject a hidden <audio> element to force WKWebView media channel on older iOS */
+  function ensureMediaChannel() {
+    if (!isIOS) return
+    if (document.getElementById("sr-silent-audio")) return
+    const audio = document.createElement("audio")
+    audio.id = "sr-silent-audio"
+    // Tiny silent MP3 (~100 bytes) — forces iOS audio session to media channel
+    audio.src =
+      "data:audio/mp3;base64,SUQzBAAAAAAAI1RTU0UAAAAPAAADTGF2ZjU4Ljc2LjEwMAAAAAAAAAAAAAAA//tQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAWGluZwAAAA8AAAACAAABhgC7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7//////////////////////////////////////////////////////////////////8AAAAATGF2YzU4LjEzAAAAAAAAAAAAAAAAJAAAAAAAAAAAAYYoRwAAAAAAAAAAAAAAAAD/+0DEAAAA0gAl6AAACAAADSAMAAATIAXB7wAAMAAAAA/8+D5B0Hw/BAMf/Lh/5cEAQBAEAQ/lg+X////8uCAIAgCH/y4f//5cEAQBAEP/Lh/////+XBAMf/Lg//8uD///5cH///////+XBAEAQBD/5cP////8uCAIAh/8uH//+XB/8uH/////////////8AAAAAAAAAAAAAAAAAAAAAAA=="
+    audio.loop = true
+    audio.volume = 0.01
+    audio.setAttribute("playsinline", "")
+    document.body.appendChild(audio)
+    audio.play().catch(() => {})
   }
 
   function preloadAhead() {
@@ -248,8 +273,18 @@ export function createAudioEngine(
   return {
     unlock: () => {
       const context = ensureContext()
-      if (context && context.state === "suspended") {
+      if (!context) return
+      if (context.state === "suspended") {
         void context.resume()
+      }
+      if (!contextUnlocked) {
+        // Play silent buffer to fully unlock AudioContext on iOS
+        const buf = context.createBuffer(1, 1, 22050)
+        const src = context.createBufferSource()
+        src.buffer = buf
+        src.connect(context.destination)
+        src.start(0)
+        contextUnlocked = true
       }
       preloadAhead()
     },
@@ -263,6 +298,7 @@ export function createAudioEngine(
         void context.resume()
       }
 
+      ensureMediaChannel()
       playSegment(currentSegmentIndex, segmentPlaybackOffset)
     },
 
@@ -428,8 +464,12 @@ export function createAudioEngine(
       ctx = null
       analyser = null
       gainNode = null
+      contextUnlocked = false
       bufferCache.clear()
       loadingPromises.clear()
+      // Clean up hidden audio element
+      const silentAudio = document.getElementById("sr-silent-audio")
+      if (silentAudio) silentAudio.remove()
     },
   }
 }

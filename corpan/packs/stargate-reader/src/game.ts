@@ -595,21 +595,22 @@ export function createStargateReader(
     const params = new URLSearchParams(window.location.search)
     const bid = params.get("book") || "book_monte_alban"
 
-    // Production: baseUrl provided by host (corpan-pack:// scheme only)
-    // HTTP baseUrls from the host are for pack assets, not book data
     const baseUrl = initialState?.baseUrl as string | undefined
+
+    // Production: baseUrl with corpan-pack:// scheme
     if (baseUrl && baseUrl.startsWith("corpan-pack://")) {
       const base = baseUrl.replace(/\/$/, "")
       return `${base}/data/books/${bid}`
     }
 
-    // Dev mode: Vite proxy
-    if (window.location.hostname === "localhost") {
-      return `/data/books/${bid}`
+    // Corpan dev mode: host provided an HTTP baseUrl for pack assets,
+    // but book data is served separately on port 8990
+    if (baseUrl) {
+      return `http://127.0.0.1:8990/data/books/${bid}`
     }
 
-    // Corpan dev mode (Tauri webview) — fall back to book data HTTP server
-    return `http://localhost:8990/data/books/${bid}`
+    // Standalone dev mode (npm run dev): Vite proxy handles /data/books/
+    return `/data/books/${bid}`
   }
 
   /**

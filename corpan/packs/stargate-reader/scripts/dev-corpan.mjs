@@ -170,7 +170,7 @@ async function startBookDataServer() {
       }
       res.writeHead(200, {
         "Content-Type": contentTypes[ext] || "application/octet-stream",
-        "Cache-Control": "public, max-age=3600",
+        "Cache-Control": "no-cache, no-store, must-revalidate",
       })
       res.end(data)
     } catch {
