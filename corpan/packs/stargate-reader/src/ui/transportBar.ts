@@ -141,7 +141,7 @@ export function createTransportBar(parent: HTMLElement): TransportBar {
   // Prev chapter
   const prevBtn = document.createElement("button")
   prevBtn.className = "stargate-transport-btn"
-  prevBtn.textContent = "\u23EE"
+  prevBtn.innerHTML = '<svg viewBox="0 0 24 24" width="1em" height="1em" fill="currentColor" style="display:block"><rect x="3" y="5" width="3" height="14"/><polygon points="21,5 9,12 21,19"/></svg>'
   prevBtn.title = "Previous chapter"
   prevBtn.addEventListener("click", () => prevCb?.())
   controls.appendChild(prevBtn)
@@ -157,7 +157,7 @@ export function createTransportBar(parent: HTMLElement): TransportBar {
   // Play / Pause
   const playBtn = document.createElement("button")
   playBtn.className = "stargate-transport-btn stargate-play-btn"
-  playBtn.textContent = "\u25B6"
+  playBtn.innerHTML = '<svg viewBox="0 0 24 24" width="1em" height="1em" fill="currentColor" style="display:block"><polygon points="6,4 20,12 6,20"/></svg>'
   playBtn.title = "Play / Pause"
   playBtn.addEventListener("click", () => {
     if (playing) {
@@ -179,7 +179,7 @@ export function createTransportBar(parent: HTMLElement): TransportBar {
   // Next chapter
   const nextBtn = document.createElement("button")
   nextBtn.className = "stargate-transport-btn"
-  nextBtn.textContent = "\u23ED"
+  nextBtn.innerHTML = '<svg viewBox="0 0 24 24" width="1em" height="1em" fill="currentColor" style="display:block"><polygon points="3,5 15,12 3,19"/><rect x="18" y="5" width="3" height="14"/></svg>'
   nextBtn.title = "Next chapter"
   nextBtn.addEventListener("click", () => nextCb?.())
   controls.appendChild(nextBtn)
@@ -189,7 +189,9 @@ export function createTransportBar(parent: HTMLElement): TransportBar {
   return {
     setPlaying(state: boolean) {
       playing = state
-      playBtn.textContent = state ? "\u275A\u275A" : "\u25B6"
+      playBtn.innerHTML = state
+        ? '<svg viewBox="0 0 24 24" width="1em" height="1em" fill="currentColor" style="display:block"><rect x="5" y="4" width="4" height="16"/><rect x="15" y="4" width="4" height="16"/></svg>'
+        : '<svg viewBox="0 0 24 24" width="1em" height="1em" fill="currentColor" style="display:block"><polygon points="6,4 20,12 6,20"/></svg>'
     },
 
     setChapter(title: string) {

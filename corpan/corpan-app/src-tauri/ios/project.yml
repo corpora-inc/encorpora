@@ -52,6 +52,8 @@ targets:
           - UIInterfaceOrientationPortraitUpsideDown
           - UIInterfaceOrientationLandscapeLeft
           - UIInterfaceOrientationLandscapeRight
+        UIBackgroundModes:
+          - audio
         CFBundleShortVersionString: 0.1.0
         CFBundleVersion: 0.1.0
     entitlements:

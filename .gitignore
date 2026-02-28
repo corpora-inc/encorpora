@@ -12,7 +12,8 @@ Cargo.lock
 .pages-temp/
 web/io/out/
 web/io/.next/
-corpan/plugins/tauri-plugin-game-packs/ios/.build/
+corpan/plugins/*/ios/.build/
 corpan/games/
 .DS_Store
+.claude/
 
