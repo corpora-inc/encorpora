@@ -30,7 +30,14 @@ import { createChapterOverlay, type ChapterOverlay } from "./ui/chapterOverlay"
 import { createSettingsPanel, type LanguageInfo } from "./ui/settingsPanel"
 import { loadBookmark, saveBookmark, type Bookmark } from "./state/bookmarkStore"
 import { loadPrefs, savePrefs, type DisplayPrefs } from "./state/prefsStore"
-import { startNativeKeepAlive, stopNativeKeepAlive, updateNativeNowPlaying } from "./audio/nativeKeepAlive"
+import {
+  startNativeKeepAlive,
+  stopNativeKeepAlive,
+  pauseNativeKeepAlive,
+  resumeNativeKeepAlive,
+  updateNativeNowPlaying,
+  listenForRemoteCommands,
+} from "./audio/nativeKeepAlive"
 
 /**
  * Create the Stargate Reader experience.
@@ -64,6 +71,8 @@ export function createStargateReader(
 
   // --- Background audio keepalive ---
   let bgKeepAlive: ReturnType<typeof setInterval> | null = null
+  let nativeSessionActive = false
+  let removeRemoteListeners: (() => void) | null = null
 
   // --- Background recovery timing ---
   let backgroundedAt = 0        // wall-clock ms when app went to background
@@ -206,11 +215,16 @@ export function createStargateReader(
     transport.setPlaying(true)
     void requestWakeLock()
     setupMediaSession()
-    void startNativeKeepAlive(
-      segments[audioEngine.getCurrentSegmentIndex()]?.title || "Stargate Reader",
-      VOICE_NAMES[voiceMap[currentLanguage] || ""] || "Narrator",
-      bookId
-    )
+    if (nativeSessionActive) {
+      void resumeNativeKeepAlive()
+    } else {
+      void startNativeKeepAlive(
+        segments[audioEngine.getCurrentSegmentIndex()]?.title || "Stargate Reader",
+        VOICE_NAMES[voiceMap[currentLanguage] || ""] || "Narrator",
+        bookId
+      )
+      nativeSessionActive = true
+    }
   })
 
   transport.onPause(() => {
@@ -220,7 +234,7 @@ export function createStargateReader(
     transport.setPlaying(false)
     persistBookmark()
     releaseWakeLock()
-    void stopNativeKeepAlive()
+    void pauseNativeKeepAlive()
   })
 
   transport.onPrevChapter(() => {
@@ -333,6 +347,67 @@ export function createStargateReader(
     pulseRing?.configure({ [key]: value })
     ;(prefs.pulseRingConfig as Record<string, number>)[key] = value
     savePrefs(bookId, prefs)
+  })
+
+  // --- Native remote command listeners (lock screen / notification) ---
+  removeRemoteListeners = listenForRemoteCommands({
+    onPlay: () => {
+      if (!audioEngine) return
+      audioEngine.unlock()
+      audioEngine.play()
+      isPlaying = true
+      transport.setPlaying(true)
+      void requestWakeLock()
+      void resumeNativeKeepAlive()
+    },
+    onPause: () => {
+      if (!audioEngine) return
+      audioEngine.pause()
+      isPlaying = false
+      transport.setPlaying(false)
+      persistBookmark()
+      releaseWakeLock()
+      void pauseNativeKeepAlive()
+    },
+    onSkipForward: () => {
+      if (!audioEngine) return
+      const target = Math.min(audioEngine.getTotalDurationMs(), audioEngine.getCurrentTimeMs() + 30000)
+      audioEngine.seekToMs(target)
+    },
+    onSkipBack: () => {
+      if (!audioEngine) return
+      const target = Math.max(0, audioEngine.getCurrentTimeMs() - 30000)
+      audioEngine.seekToMs(target)
+    },
+    onNextChapter: () => {
+      if (!audioEngine || chapters.length === 0) return
+      const currentIdx = audioEngine.getCurrentSegmentIndex()
+      let chapterIdx = 0
+      for (let i = chapters.length - 1; i >= 0; i--) {
+        if (currentIdx >= chapters[i].firstSegmentIndex) {
+          chapterIdx = i
+          break
+        }
+      }
+      const targetChapter = Math.min(chapters.length - 1, chapterIdx + 1)
+      audioEngine.seekToSegment(chapters[targetChapter].firstSegmentIndex)
+      transport.setChapter(chapters[targetChapter].title)
+    },
+    onPrevChapter: () => {
+      if (!audioEngine || chapters.length === 0) return
+      const currentIdx = audioEngine.getCurrentSegmentIndex()
+      let chapterIdx = 0
+      for (let i = chapters.length - 1; i >= 0; i--) {
+        if (currentIdx >= chapters[i].firstSegmentIndex) {
+          chapterIdx = i
+          break
+        }
+      }
+      const threshold = chapters[chapterIdx].firstSegmentIndex + 2
+      const targetChapter = currentIdx > threshold ? chapterIdx : Math.max(0, chapterIdx - 1)
+      audioEngine.seekToSegment(chapters[targetChapter].firstSegmentIndex)
+      transport.setChapter(chapters[targetChapter].title)
+    },
   })
 
   // --- Media Session API (lock screen controls) ---
@@ -527,6 +602,7 @@ export function createStargateReader(
           transport.setPlaying(false)
           releaseWakeLock()
           void stopNativeKeepAlive()
+          nativeSessionActive = false
         },
         (segmentId, buffer) => {
           // Extract waveform envelopes as audio buffers are decoded
@@ -669,6 +745,7 @@ export function createStargateReader(
           transport.setPlaying(false)
           releaseWakeLock()
           void stopNativeKeepAlive()
+          nativeSessionActive = false
         },
         (segmentId, buffer) => {
           const entry = manifest.segments[segmentId]
@@ -812,6 +889,8 @@ export function createStargateReader(
 
     releaseWakeLock()
     void stopNativeKeepAlive()
+    nativeSessionActive = false
+    if (removeRemoteListeners) { removeRemoteListeners(); removeRemoteListeners = null }
     if (bgKeepAlive) { clearInterval(bgKeepAlive); bgKeepAlive = null }
 
     document.removeEventListener("visibilitychange", handleVisibilityChange)

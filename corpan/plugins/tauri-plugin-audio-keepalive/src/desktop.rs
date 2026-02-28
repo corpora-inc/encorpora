@@ -29,4 +29,12 @@ impl<R: Runtime> AudioKeepAlive<R> {
     pub fn update_now_playing(&self, _args: NowPlayingArgs) -> crate::Result<()> {
         Ok(())
     }
+
+    pub fn pause(&self) -> crate::Result<()> {
+        Ok(())
+    }
+
+    pub fn resume(&self) -> crate::Result<()> {
+        Ok(())
+    }
 }

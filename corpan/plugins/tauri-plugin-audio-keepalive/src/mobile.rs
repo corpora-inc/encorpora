@@ -50,4 +50,22 @@ impl<R: Runtime> AudioKeepAlive<R> {
                 e.into()
             })
     }
+
+    pub fn pause(&self) -> crate::Result<()> {
+        self.0
+            .run_mobile_plugin::<()>("pauseAudioKeepalive", Some(()))
+            .map_err(|e| {
+                println!("[AUDIO_KEEPALIVE] pause error: {:?}", e);
+                e.into()
+            })
+    }
+
+    pub fn resume(&self) -> crate::Result<()> {
+        self.0
+            .run_mobile_plugin::<()>("resumeAudioKeepalive", Some(()))
+            .map_err(|e| {
+                println!("[AUDIO_KEEPALIVE] resume error: {:?}", e);
+                e.into()
+            })
+    }
 }

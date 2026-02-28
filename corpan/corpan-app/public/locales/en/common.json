@@ -300,6 +300,19 @@
     "devLink": "Learn more on Free2z",
     "new": "New",
     "updates": "Updates",
-    "offline": "Offline"
+    "offline": "Offline",
+    "progressDownloading": "Downloading",
+    "progressVerifying": "Verifying",
+    "progressExtracting": "Extracting",
+    "progressFinalizing": "Finalizing",
+    "progressComplete": "Installed",
+    "progressFailed": "Installation Failed",
+    "progressPreparing": "Preparing...",
+    "progressReady": "{{name}} is ready to use.",
+    "progressWait": "Please wait while the pack is installed.",
+    "progressErrorDesc": "Something went wrong during installation.",
+    "progressStuck": "Installation appears to be stuck. Please try again.",
+    "retry": "Retry",
+    "close": "Close"
   }
 }
