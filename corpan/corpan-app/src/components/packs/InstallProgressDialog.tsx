@@ -1,4 +1,3 @@
-import { useTranslation } from "react-i18next"
 import { motion, AnimatePresence } from "framer-motion"
 import {
   Download,
@@ -9,6 +8,9 @@ import {
   AlertCircle,
   Loader2,
   Check,
+  RefreshCw,
+  ExternalLink,
+  X,
 } from "lucide-react"
 import {
   Dialog,
@@ -44,31 +46,23 @@ function formatBytes(bytes: number): string {
 }
 
 function StageIndicator({ currentStage }: { currentStage: InstallStage }) {
-  const { t } = useTranslation()
   const currentIdx = STAGE_ORDER[currentStage] ?? -1
 
-  const stageLabels: Record<string, string> = {
-    downloading: t("packs.progressDownloading"),
-    verifying: t("packs.progressVerifying"),
-    extracting: t("packs.progressExtracting"),
-    finalizing: t("packs.progressFinalizing"),
-  }
-
   return (
-    <div className="flex items-center justify-center gap-3">
+    <div className="flex items-center justify-center gap-2">
       {STAGES.map((s, idx) => {
         const Icon = s.icon
         const isCompleted = currentIdx > idx
         const isActive = currentIdx === idx
 
         return (
-          <div key={s.key} className="flex flex-col items-center gap-1.5">
+          <div key={s.key} className="flex items-center gap-2">
             <div
               className={`
                 flex h-10 w-10 items-center justify-center rounded-full transition-colors
-                ${isCompleted ? "bg-green-100 text-green-600" : ""}
+                ${isCompleted ? "bg-green-100 text-green-600 dark:bg-green-900/30 dark:text-green-400" : ""}
                 ${isActive ? "bg-primary/10 text-primary" : ""}
-                ${!isCompleted && !isActive ? "bg-muted text-muted-foreground/40" : ""}
+                ${!isCompleted && !isActive ? "bg-muted text-muted-foreground/30" : ""}
               `}
             >
               {isCompleted ? (
@@ -79,13 +73,13 @@ function StageIndicator({ currentStage }: { currentStage: InstallStage }) {
                 <Icon className="h-5 w-5" />
               )}
             </div>
-            <span
-              className={`text-[10px] font-medium ${
-                isActive ? "text-primary" : isCompleted ? "text-green-600" : "text-muted-foreground/40"
-              }`}
-            >
-              {stageLabels[s.key]}
-            </span>
+            {idx < STAGES.length - 1 && (
+              <div
+                className={`h-0.5 w-4 rounded-full transition-colors ${
+                  currentIdx > idx ? "bg-green-400 dark:bg-green-500" : "bg-muted"
+                }`}
+              />
+            )}
           </div>
         )
       })}
@@ -117,15 +111,13 @@ function ProgressBar({
           <div className="h-full w-full animate-pulse bg-primary/30 rounded-full" />
         )}
       </div>
-      {determinate ? (
-        <p className="text-xs text-muted-foreground text-center">
-          {formatBytes(progress)} / {formatBytes(total)}
-        </p>
-      ) : (
-        <p className="text-xs text-muted-foreground text-center">
-          {progress > 0 ? formatBytes(progress) : ""}
-        </p>
-      )}
+      <p className="text-xs text-muted-foreground text-center tabular-nums">
+        {determinate
+          ? `${formatBytes(progress)} / ${formatBytes(total)}`
+          : progress > 0
+            ? formatBytes(progress)
+            : "\u00A0"}
+      </p>
     </div>
   )
 }
@@ -141,8 +133,6 @@ export function InstallProgressDialog({
   onRetry?: () => void
   onOpen?: () => void
 }) {
-  const { t } = useTranslation()
-
   const isTerminal = state.stage === "complete" || state.stage === "error"
   const isDownloading = state.stage === "downloading"
   const isInProgress =
@@ -151,16 +141,11 @@ export function InstallProgressDialog({
     state.stage === "extracting" ||
     state.stage === "finalizing"
 
-  const errorMessage =
-    state.error === "stuck"
-      ? t("packs.progressStuck")
-      : state.error ?? t("packs.progressErrorDesc")
-
   return (
     <Dialog open={state.active} onOpenChange={(open) => !open && isTerminal && onClose()}>
       <DialogContent
         hideCloseButton={!isTerminal}
-        className="max-w-sm"
+        className="max-w-xs"
         onInteractOutside={(e) => {
           if (!isTerminal) e.preventDefault()
         }}
@@ -169,14 +154,10 @@ export function InstallProgressDialog({
         }}
       >
         <DialogTitle className="sr-only">
-          {state.stage === "complete"
-            ? t("packs.progressComplete")
-            : state.stage === "error"
-              ? t("packs.progressFailed")
-              : t("packs.installing")}
+          {state.packName || "Pack install"}
         </DialogTitle>
         <DialogDescription className="sr-only">
-          {isInProgress ? t("packs.progressWait") : ""}
+          {state.stage}
         </DialogDescription>
 
         <div className="flex flex-col items-center gap-5 py-4">
@@ -188,7 +169,7 @@ export function InstallProgressDialog({
                 animate={{ scale: 1, opacity: 1 }}
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
               >
-                <CheckCircle2 className="h-14 w-14 text-green-500" />
+                <CheckCircle2 className="h-16 w-16 text-green-500" />
               </motion.div>
             )}
             {state.stage === "error" && (
@@ -198,7 +179,7 @@ export function InstallProgressDialog({
                 animate={{ scale: 1, opacity: 1 }}
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
               >
-                <AlertCircle className="h-14 w-14 text-red-500" />
+                <AlertCircle className="h-16 w-16 text-red-500" />
               </motion.div>
             )}
             {isInProgress && (
@@ -213,29 +194,12 @@ export function InstallProgressDialog({
             )}
           </AnimatePresence>
 
-          {/* Title text */}
-          <div className="text-center space-y-1">
-            <h3 className="text-lg font-semibold">
-              {state.stage === "complete"
-                ? t("packs.progressComplete")
-                : state.stage === "error"
-                  ? t("packs.progressFailed")
-                  : t("packs.progressPreparing")}
-            </h3>
-            {state.stage === "complete" && state.packName && (
-              <p className="text-sm text-muted-foreground">
-                {t("packs.progressReady", { name: state.packName })}
-              </p>
-            )}
-            {state.stage === "error" && (
-              <p className="text-sm text-red-600">{errorMessage}</p>
-            )}
-            {isInProgress && (
-              <p className="text-sm text-muted-foreground">
-                {t("packs.progressWait")}
-              </p>
-            )}
-          </div>
+          {/* Pack name */}
+          {state.packName && (
+            <p className="text-sm font-medium text-muted-foreground text-center truncate max-w-full">
+              {state.packName}
+            </p>
+          )}
 
           {/* Progress bar (only during download) */}
           {isDownloading && (
@@ -249,37 +213,47 @@ export function InstallProgressDialog({
             <Loader2 className="h-6 w-6 animate-spin text-primary" />
           )}
 
-          {/* Action buttons */}
+          {/* Action buttons — icon-only */}
           {state.stage === "complete" && (
-            <div className="flex gap-2 w-full">
+            <div className="flex gap-3 justify-center">
               {onOpen && (
-                <Button onClick={onOpen} className="flex-1">
-                  {t("packs.open")}
+                <Button
+                  size="icon"
+                  onClick={onOpen}
+                  className="h-12 w-12 rounded-full"
+                >
+                  <ExternalLink className="h-5 w-5" />
                 </Button>
               )}
               <Button
-                variant={onOpen ? "outline" : "default"}
+                size="icon"
+                variant="outline"
                 onClick={onClose}
-                className={onOpen ? "" : "flex-1"}
+                className="h-12 w-12 rounded-full"
               >
-                {t("packs.close")}
+                <X className="h-5 w-5" />
               </Button>
             </div>
           )}
 
           {state.stage === "error" && (
-            <div className="flex gap-2 w-full">
+            <div className="flex gap-3 justify-center">
               {onRetry && (
-                <Button onClick={onRetry} className="flex-1">
-                  {t("packs.retry")}
+                <Button
+                  size="icon"
+                  onClick={onRetry}
+                  className="h-12 w-12 rounded-full"
+                >
+                  <RefreshCw className="h-5 w-5" />
                 </Button>
               )}
               <Button
-                variant={onRetry ? "outline" : "default"}
+                size="icon"
+                variant="outline"
                 onClick={onClose}
-                className={onRetry ? "" : "flex-1"}
+                className="h-12 w-12 rounded-full"
               >
-                {t("packs.close")}
+                <X className="h-5 w-5" />
               </Button>
             </div>
           )}

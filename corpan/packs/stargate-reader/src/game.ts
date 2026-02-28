@@ -78,6 +78,38 @@ export function createStargateReader(
   let backgroundedAt = 0        // wall-clock ms when app went to background
   let backgroundedAudioMs = 0   // audio position ms when app went to background
 
+  // --- Centralized play/pause helpers (background-aware) ---
+  function doPlay() {
+    if (!audioEngine) return
+    audioEngine.unlock()
+    audioEngine.play()
+    isPlaying = true
+    transport.setPlaying(true)
+    void requestWakeLock()
+    // If backgrounded, reset tracking baseline and ensure keepalive
+    if (document.hidden) {
+      backgroundedAt = Date.now()
+      backgroundedAudioMs = audioEngine.getCurrentTimeMs()
+      if (!bgKeepAlive) {
+        bgKeepAlive = setInterval(() => { audioEngine?.unlock() }, 5000)
+      }
+    }
+  }
+
+  function doPause() {
+    if (!audioEngine) return
+    audioEngine.pause()
+    isPlaying = false
+    transport.setPlaying(false)
+    persistBookmark()
+    releaseWakeLock()
+    // If backgrounded, clear keepalive and reset tracking
+    if (document.hidden) {
+      if (bgKeepAlive) { clearInterval(bgKeepAlive); bgKeepAlive = null }
+      backgroundedAt = 0
+    }
+  }
+
   // Module-level state for language/book switching
   let dataProvider: DataProvider
   let segments: BookSegment[] = []
@@ -208,32 +240,24 @@ export function createStargateReader(
   settings.setLanguages(buildLanguageInfos(), currentLanguage)
 
   transport.onPlay(() => {
-    if (!audioEngine) return
-    audioEngine.unlock()
-    audioEngine.play()
-    isPlaying = true
-    transport.setPlaying(true)
-    void requestWakeLock()
+    doPlay()
     setupMediaSession()
     if (nativeSessionActive) {
       void resumeNativeKeepAlive()
     } else {
-      void startNativeKeepAlive(
-        segments[audioEngine.getCurrentSegmentIndex()]?.title || "Stargate Reader",
-        VOICE_NAMES[voiceMap[currentLanguage] || ""] || "Narrator",
-        bookId
-      )
-      nativeSessionActive = true
+      if (audioEngine) {
+        void startNativeKeepAlive(
+          segments[audioEngine.getCurrentSegmentIndex()]?.title || "Stargate Reader",
+          VOICE_NAMES[voiceMap[currentLanguage] || ""] || "Narrator",
+          bookId
+        )
+        nativeSessionActive = true
+      }
     }
   })
 
   transport.onPause(() => {
-    if (!audioEngine) return
-    audioEngine.pause()
-    isPlaying = false
-    transport.setPlaying(false)
-    persistBookmark()
-    releaseWakeLock()
+    doPause()
     void pauseNativeKeepAlive()
   })
 
@@ -351,24 +375,8 @@ export function createStargateReader(
 
   // --- Native remote command listeners (lock screen / notification) ---
   removeRemoteListeners = listenForRemoteCommands({
-    onPlay: () => {
-      if (!audioEngine) return
-      audioEngine.unlock()
-      audioEngine.play()
-      isPlaying = true
-      transport.setPlaying(true)
-      void requestWakeLock()
-      void resumeNativeKeepAlive()
-    },
-    onPause: () => {
-      if (!audioEngine) return
-      audioEngine.pause()
-      isPlaying = false
-      transport.setPlaying(false)
-      persistBookmark()
-      releaseWakeLock()
-      void pauseNativeKeepAlive()
-    },
+    onPlay: () => { doPlay(); void resumeNativeKeepAlive() },
+    onPause: () => { doPause(); void pauseNativeKeepAlive() },
     onSkipForward: () => {
       if (!audioEngine) return
       const target = Math.min(audioEngine.getTotalDurationMs(), audioEngine.getCurrentTimeMs() + 30000)
@@ -420,22 +428,8 @@ export function createStargateReader(
       album: bookId,
     })
 
-    navigator.mediaSession.setActionHandler("play", () => {
-      if (!audioEngine) return
-      audioEngine.unlock()
-      audioEngine.play()
-      isPlaying = true
-      transport.setPlaying(true)
-      void requestWakeLock()
-    })
-    navigator.mediaSession.setActionHandler("pause", () => {
-      if (!audioEngine) return
-      audioEngine.pause()
-      isPlaying = false
-      transport.setPlaying(false)
-      persistBookmark()
-      releaseWakeLock()
-    })
+    navigator.mediaSession.setActionHandler("play", () => { doPlay() })
+    navigator.mediaSession.setActionHandler("pause", () => { doPause() })
     navigator.mediaSession.setActionHandler("seekbackward", () => {
       if (!audioEngine) return
       audioEngine.seekToMs(Math.max(0, audioEngine.getCurrentTimeMs() - 30000))
@@ -489,21 +483,39 @@ export function createStargateReader(
       if (bgKeepAlive) { clearInterval(bgKeepAlive); bgKeepAlive = null }
       engine.runRenderLoop(renderLoop)
 
-      // Recovery: if we were playing, check if audio froze while backgrounded
-      if (audioEngine && isPlaying && backgroundedAt > 0) {
-        const wallElapsed = Date.now() - backgroundedAt
-        const expectedMs = backgroundedAudioMs + wallElapsed
-        const actualMs = audioEngine.getCurrentTimeMs()
-        const totalMs = audioEngine.getTotalDurationMs()
-
-        // If audio drifted by more than 2 seconds, JS was likely frozen by the OS
-        if (Math.abs(expectedMs - actualMs) > 2000 && expectedMs < totalMs) {
-          audioEngine.seekToMs(Math.min(expectedMs, totalMs))
-          audioEngine.play()
+      // Recovery: if playing, check for audio drift from OS suspension
+      if (audioEngine && isPlaying) {
+        if (backgroundedAt > 0) {
+          const wallElapsed = Date.now() - backgroundedAt
+          const expectedMs = backgroundedAudioMs + wallElapsed
+          const actualMs = audioEngine.getCurrentTimeMs()
+          const totalMs = audioEngine.getTotalDurationMs()
+          if (Math.abs(expectedMs - actualMs) > 2000 && expectedMs < totalMs) {
+            audioEngine.seekToMs(Math.min(expectedMs, totalMs))
+            audioEngine.play()
+          }
         }
-
+        // Always unlock and re-acquire wake lock when foregrounding while playing
         audioEngine.unlock()
         void requestWakeLock()
+        // Refresh native metadata (recovers from OS teardown under memory pressure)
+        if (nativeSessionActive) {
+          void updateNativeNowPlaying(
+            segments[audioEngine.getCurrentSegmentIndex()]?.title || "Stargate Reader",
+            VOICE_NAMES[voiceMap[currentLanguage] || ""] || "Narrator",
+            audioEngine.getCurrentTimeMs(),
+            audioEngine.getTotalDurationMs()
+          )
+        }
+      }
+
+      // Force transport UI sync (eliminates any single-frame inconsistency)
+      transport.setPlaying(isPlaying)
+      if (audioEngine) {
+        const ms = audioEngine.getCurrentTimeMs()
+        const total = audioEngine.getTotalDurationMs()
+        transport.setTime(ms, total)
+        if (total > 0) transport.setProgress(ms / total)
       }
 
       backgroundedAt = 0
@@ -601,6 +613,8 @@ export function createStargateReader(
           isPlaying = false
           transport.setPlaying(false)
           releaseWakeLock()
+          if (bgKeepAlive) { clearInterval(bgKeepAlive); bgKeepAlive = null }
+          backgroundedAt = 0
           void stopNativeKeepAlive()
           nativeSessionActive = false
         },
@@ -744,6 +758,8 @@ export function createStargateReader(
           isPlaying = false
           transport.setPlaying(false)
           releaseWakeLock()
+          if (bgKeepAlive) { clearInterval(bgKeepAlive); bgKeepAlive = null }
+          backgroundedAt = 0
           void stopNativeKeepAlive()
           nativeSessionActive = false
         },
