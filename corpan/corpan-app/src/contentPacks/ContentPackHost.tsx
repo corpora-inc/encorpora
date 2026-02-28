@@ -17,7 +17,8 @@ const loadScript = async (
   id: string,
   type: "script" | "module",
   inline?: boolean,
-  baseUrl?: string
+  baseUrl?: string,
+  contentRevision?: string
 ) => {
   if (inline) {
     // Inline mode: fetch content and inject as text
@@ -33,6 +34,9 @@ const loadScript = async (
       script.dataset.corpGameId = id
       if (baseUrl) {
         script.dataset.corpGameBaseUrl = baseUrl
+      }
+      if (contentRevision) {
+        script.dataset.corpGameContentRevision = contentRevision
       }
       script.dataset.corpGameSrc = src
       if (type === "module") {
@@ -56,6 +60,9 @@ const loadScript = async (
     script.dataset.corpGameId = id
     if (baseUrl) {
       script.dataset.corpGameBaseUrl = baseUrl
+    }
+    if (contentRevision) {
+      script.dataset.corpGameContentRevision = contentRevision
     }
     script.dataset.corpGameSrc = src
     if (type === "module") {
@@ -392,7 +399,8 @@ export default function ContentPackHost({
         const baseUrl = manifest.baseUrl
           ? new URL(manifest.baseUrl, activeManifestSourceUrl).toString()
           : new URL(".", activeManifestSourceUrl).toString()
-        const devToken = shouldDevReload ? manifest.devRevision : undefined
+        const isLocalInstall = baseUrl.startsWith('corpan-pack://')
+        const devToken = isLocalInstall ? undefined : (manifest.devRevision || manifest.version)
 
         // corpan-pack:// URLs must be fetched via Tauri commands and injected inline
         const useInlineLoad = baseUrl.startsWith('corpan-pack://')
@@ -414,7 +422,7 @@ export default function ContentPackHost({
           withCacheBust(new URL(manifest.entry, baseUrl).toString(), devToken)
         )
         console.log(`[ContentPackHost] Loading script: ${entryUrl}, inline=${useInlineLoad}`)
-        await loadScript(entryUrl, id, manifest.entryType ?? "script", useInlineLoad, baseUrl)
+        await loadScript(entryUrl, id, manifest.entryType ?? "script", useInlineLoad, baseUrl, devToken)
         console.log(`[ContentPackHost] Script loaded: ${entryUrl}`)
 
         activeModule = await waitForGameModule(manifest.id, id)

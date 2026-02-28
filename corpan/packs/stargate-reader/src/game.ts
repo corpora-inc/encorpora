@@ -458,11 +458,12 @@ export function createStargateReader(
         segments = preloadedSegments.segments
         manifest = preloadedManifest
       } else {
-        // Dev mode: fetch via HTTP
+        // Fetch via HTTP (dev mode or manifest.json install)
         const dataUrl =
           (initialState?.dataUrl as string) ||
           detectDataUrl()
-        dataProvider = createFetchDataProvider(dataUrl)
+        const contentRevision = initialState?.contentRevision as string | undefined
+        dataProvider = createFetchDataProvider(dataUrl, contentRevision)
 
         // Auto-detect available languages in dev mode
         if (availableLanguages.length <= 1 && dataProvider.detectLanguages) {
@@ -586,8 +587,8 @@ export function createStargateReader(
    *
    * Priority:
    * 1. baseUrl from host with corpan-pack:// scheme (on-device production)
-   * 2. Vite dev server proxy (localhost standalone dev)
-   * 3. Fallback to localhost:8990 (Corpan dev mode via Tauri webview)
+   * 2. baseUrl from host with HTTP scheme — local = dev, remote = production
+   * 3. Vite dev server proxy (localhost standalone dev)
    */
   function detectDataUrl(): string {
     if (typeof window === "undefined") return "."
@@ -597,16 +598,21 @@ export function createStargateReader(
 
     const baseUrl = initialState?.baseUrl as string | undefined
 
-    // Production: baseUrl with corpan-pack:// scheme
-    if (baseUrl && baseUrl.startsWith("corpan-pack://")) {
-      const base = baseUrl.replace(/\/$/, "")
-      return `${base}/data/books/${bid}`
+    // On-device production (zip install)
+    if (baseUrl?.startsWith("corpan-pack://")) {
+      return `${baseUrl.replace(/\/$/, "")}/data/books/${bid}`
     }
 
-    // Corpan dev mode: host provided an HTTP baseUrl for pack assets,
-    // but book data is served separately on port 8990
+    // Remote HTTP base (manifest.json install, e.g. GitHub Pages)
+    // Detect dev mode: localhost/127.0.0.1 = dev, anything else = production HTTP
     if (baseUrl) {
-      return `http://127.0.0.1:8990/data/books/${bid}`
+      const isLocal = /^https?:\/\/(localhost|127\.0\.0\.1)(:|\/|$)/.test(baseUrl)
+      if (isLocal) {
+        // Corpan dev mode: book data served separately on port 8990
+        return `http://127.0.0.1:8990/data/books/${bid}`
+      }
+      // Production HTTP: data lives alongside pack assets
+      return `${baseUrl.replace(/\/$/, "")}/data/books/${bid}`
     }
 
     // Standalone dev mode (npm run dev): Vite proxy handles /data/books/

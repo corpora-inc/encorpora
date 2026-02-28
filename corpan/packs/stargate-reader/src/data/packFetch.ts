@@ -7,6 +7,12 @@
  * In dev mode (no Tauri), they fall through to regular fetch().
  */
 
+export function withRevision(url: string, revision?: string): string {
+  if (!revision || url.startsWith("corpan-pack://")) return url
+  const sep = url.includes("?") ? "&" : "?"
+  return `${url}${sep}v=${encodeURIComponent(revision)}`
+}
+
 const tauriInvoke = (): ((cmd: string, args?: Record<string, unknown>) => Promise<unknown>) | undefined =>
   (window as unknown as { __TAURI_INTERNALS__?: { invoke: (cmd: string, args?: Record<string, unknown>) => Promise<unknown> } })
     .__TAURI_INTERNALS__?.invoke

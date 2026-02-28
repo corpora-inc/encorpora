@@ -29,10 +29,12 @@ const registerGame = () => {
         `script[data-corp-game-id="${GAME_ID}"]`
       ) as HTMLScriptElement | null
       const baseUrl = scriptEl?.dataset.corpGameBaseUrl
+      const contentRevision = scriptEl?.dataset.corpGameContentRevision
 
       const state = {
         ...(initialState as Record<string, unknown>),
         ...(baseUrl ? { baseUrl } : {}),
+        ...(contentRevision ? { contentRevision } : {}),
       }
 
       const instance = createStargateReader(
