@@ -8,11 +8,10 @@
     "dev:corpan": "node scripts/dev-corpan.mjs"
   },
   "dependencies": {
-    "phaser": "^3.80.1",
-    "zustand": "^4.5.2"
+    "phaser": "^3.80.1"
   },
   "devDependencies": {
     "typescript": "^5.4.5",
-    "vite": "^5.4.21"
+    "vite": "^6.0.3"
   }
 }

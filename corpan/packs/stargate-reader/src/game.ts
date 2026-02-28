@@ -585,9 +585,9 @@ export function createStargateReader(
    * Detect the data URL based on runtime context.
    *
    * Priority:
-   * 1. baseUrl from host (corpan-pack:// on device, https:// from web)
-   * 2. Vite dev server proxy (localhost)
-   * 3. Fallback to localhost:8990 (Corpan dev mode)
+   * 1. baseUrl from host with corpan-pack:// scheme (on-device production)
+   * 2. Vite dev server proxy (localhost standalone dev)
+   * 3. Fallback to localhost:8990 (Corpan dev mode via Tauri webview)
    */
   function detectDataUrl(): string {
     if (typeof window === "undefined") return "."
@@ -595,9 +595,10 @@ export function createStargateReader(
     const params = new URLSearchParams(window.location.search)
     const bid = params.get("book") || "book_monte_alban"
 
-    // Production: baseUrl provided by host via script tag
+    // Production: baseUrl provided by host (corpan-pack:// scheme only)
+    // HTTP baseUrls from the host are for pack assets, not book data
     const baseUrl = initialState?.baseUrl as string | undefined
-    if (baseUrl) {
+    if (baseUrl && baseUrl.startsWith("corpan-pack://")) {
       const base = baseUrl.replace(/\/$/, "")
       return `${base}/data/books/${bid}`
     }
