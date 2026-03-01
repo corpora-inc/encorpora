@@ -182,6 +182,7 @@ export function createAudioEngine(
   }
 
   async function playSegment(index: number, offset: number = 0) {
+    console.log(`[SR:audio] playSegment(${index}, offset=${offset.toFixed(1)}) ctx.state=${ctx?.state ?? "null"}`)
     const gen = ++playbackGeneration
 
     if (disposed || index >= segments.length) {
@@ -269,6 +270,7 @@ export function createAudioEngine(
 
     source.start(0, clampedOffset / 1000)
     currentSource = source
+    console.log(`[SR:audio] source.start() ok — seg=${index}, ctx.state=${context.state}`)
 
     preloadAhead()
   }
@@ -293,6 +295,7 @@ export function createAudioEngine(
     },
 
     play: () => {
+      console.log(`[SR:audio] play() — playing=${playing}, ctx.state=${ctx?.state ?? "null"}`)
       if (playing) return
       playing = true
 
@@ -457,12 +460,16 @@ export function createAudioEngine(
     },
 
     recoverContext: async (): Promise<boolean> => {
+      console.log(`[SR:audio] recoverContext() — ctx.state=${ctx?.state ?? "null"}`)
       if (!AudioCtx) return false
       const context = ensureContext()
       if (!context) return false
 
       // Already running — no recovery needed
-      if (context.state === "running") return true
+      if (context.state === "running") {
+        console.log("[SR:audio] recoverContext: already running")
+        return true
+      }
 
       // Try to resume the existing context (500ms timeout)
       try {
@@ -474,9 +481,13 @@ export function createAudioEngine(
         // resume failed or timed out
       }
 
-      if (context.state === "running") return true
+      if (context.state === "running") {
+        console.log("[SR:audio] recoverContext: resumed successfully")
+        return true
+      }
 
       // Context is dead — close it and create a fresh one
+      console.log("[SR:audio] recoverContext: context dead, recreating")
       try { await context.close() } catch { /* already closed */ }
       ctx = null
       analyser = null
@@ -500,6 +511,7 @@ export function createAudioEngine(
         try { await newCtx.resume() } catch { /* best effort */ }
       }
 
+      console.log(`[SR:audio] recoverContext: new ctx.state=${newCtx.state}`)
       return newCtx.state === "running"
     },
 

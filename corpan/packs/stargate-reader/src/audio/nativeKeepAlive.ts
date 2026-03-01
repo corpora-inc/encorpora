@@ -29,11 +29,13 @@ export async function startNativeKeepAlive(
   const internals = getTauriInternals()
   if (!internals) return
   try {
+    console.log("[SR:native] startNativeKeepAlive → invoking")
     await internals.invoke("plugin:audio-keepalive|start_audio_keepalive", {
       args: { title, artist, bookTitle, positionMs, durationMs },
     })
-  } catch {
-    // Plugin not available or call failed — non-fatal
+    console.log("[SR:native] startNativeKeepAlive → resolved")
+  } catch (e) {
+    console.warn("[SR:native] startNativeKeepAlive failed:", e)
   }
 }
 
@@ -41,9 +43,11 @@ export async function stopNativeKeepAlive(): Promise<void> {
   const internals = getTauriInternals()
   if (!internals) return
   try {
+    console.log("[SR:native] stopNativeKeepAlive → invoking")
     await internals.invoke("plugin:audio-keepalive|stop_audio_keepalive")
-  } catch {
-    // Non-fatal
+    console.log("[SR:native] stopNativeKeepAlive → resolved")
+  } catch (e) {
+    console.warn("[SR:native] stopNativeKeepAlive failed:", e)
   }
 }
 
@@ -51,9 +55,11 @@ export async function pauseNativeKeepAlive(): Promise<void> {
   const internals = getTauriInternals()
   if (!internals) return
   try {
+    console.log("[SR:native] pauseNativeKeepAlive → invoking")
     await internals.invoke("plugin:audio-keepalive|pause_audio_keepalive")
-  } catch {
-    // Non-fatal
+    console.log("[SR:native] pauseNativeKeepAlive → resolved")
+  } catch (e) {
+    console.warn("[SR:native] pauseNativeKeepAlive failed:", e)
   }
 }
 
@@ -61,9 +67,11 @@ export async function resumeNativeKeepAlive(): Promise<void> {
   const internals = getTauriInternals()
   if (!internals) return
   try {
+    console.log("[SR:native] resumeNativeKeepAlive → invoking")
     await internals.invoke("plugin:audio-keepalive|resume_audio_keepalive")
-  } catch {
-    // Non-fatal
+    console.log("[SR:native] resumeNativeKeepAlive → resolved")
+  } catch (e) {
+    console.warn("[SR:native] resumeNativeKeepAlive failed:", e)
   }
 }
 
@@ -77,11 +85,13 @@ export async function updateNativeNowPlaying(
   const internals = getTauriInternals()
   if (!internals) return
   try {
+    console.log("[SR:native] updateNativeNowPlaying → invoking")
     await internals.invoke("plugin:audio-keepalive|update_now_playing", {
       args: { title, artist, positionMs, durationMs, isPlaying },
     })
-  } catch {
-    // Non-fatal
+    console.log("[SR:native] updateNativeNowPlaying → resolved")
+  } catch (e) {
+    console.warn("[SR:native] updateNativeNowPlaying failed:", e)
   }
 }
 

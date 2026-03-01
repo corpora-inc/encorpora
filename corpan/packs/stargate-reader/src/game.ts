@@ -113,16 +113,15 @@ export function createStargateReader(
   // --- Centralized play/pause helpers (background-aware) ---
   async function doPlay() {
     if (!audioEngine) return
-    await audioEngine.recoverContext()
-    audioEngine.unlock()
-    audioEngine.play()
-    isPlaying = true
-    transport.setPlaying(true)
-    void requestWakeLock()
+    const t0 = performance.now()
+    console.log(`[SR:doPlay] start — ctx.state=${audioEngine.getContextState()}`)
 
-    // Ensure native session exists
+    // Configure native audio session FIRST — before any AudioContext exists.
+    // Swift's AVAudioSession.setCategory + setActive interrupts any running
+    // AudioContext, so the session must be stable before we create/resume one.
     if (!nativeSessionActive) {
-      void startNativeKeepAlive(
+      console.log(`[SR:doPlay] awaiting startNativeKeepAlive +${(performance.now() - t0).toFixed(1)}ms`)
+      await startNativeKeepAlive(
         segments[audioEngine.getCurrentSegmentIndex()]?.title || "Stargate Reader",
         VOICE_NAMES[voiceMap[currentLanguage] || ""] || "Narrator",
         bookDisplayName,
@@ -130,10 +129,28 @@ export function createStargateReader(
         audioEngine.getTotalDurationMs()
       )
       nativeSessionActive = true
+      console.log(`[SR:doPlay] startNativeKeepAlive resolved +${(performance.now() - t0).toFixed(1)}ms`)
     } else {
-      void resumeNativeKeepAlive()
+      console.log(`[SR:doPlay] awaiting resumeNativeKeepAlive +${(performance.now() - t0).toFixed(1)}ms`)
+      await resumeNativeKeepAlive()
+      console.log(`[SR:doPlay] resumeNativeKeepAlive resolved +${(performance.now() - t0).toFixed(1)}ms`)
     }
-    // Always sync — sets exact position + rate
+
+    // NOW create/resume AudioContext — native session is stable
+    await audioEngine.recoverContext()
+    console.log(`[SR:doPlay] recoverContext done +${(performance.now() - t0).toFixed(1)}ms ctx.state=${audioEngine.getContextState()}`)
+
+    audioEngine.unlock()
+    console.log(`[SR:doPlay] unlock done +${(performance.now() - t0).toFixed(1)}ms`)
+
+    audioEngine.play()
+    console.log(`[SR:doPlay] audioEngine.play() done +${(performance.now() - t0).toFixed(1)}ms ctx.state=${audioEngine.getContextState()}`)
+
+    isPlaying = true
+    transport.setPlaying(true)
+    void requestWakeLock()
+
+    // Fire-and-forget — just metadata, no audio session changes
     syncNativeNowPlaying()
 
     // Background timers
@@ -869,6 +886,13 @@ export function createStargateReader(
     frameCount++
     if (audioEngine && isPlaying && frameCount % 60 === 0) {
       audioEngine.unlock()
+      // Log AudioContext state every ~2s if not running (diagnostic)
+      if (frameCount % 120 === 0) {
+        const ctxState = audioEngine.getContextState()
+        if (ctxState !== "running") {
+          console.warn(`[SR:renderLoop] AudioContext state="${ctxState}" while isPlaying — frame ${frameCount}`)
+        }
+      }
     }
 
     const currentMs = audioEngine?.getCurrentTimeMs() ?? 0

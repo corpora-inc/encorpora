@@ -42,8 +42,11 @@ class AudioKeepAlivePlugin: Plugin {
     private func configureAudioSession() {
         do {
             let session = AVAudioSession.sharedInstance()
+            print("[AUDIO_KEEPALIVE] configureAudioSession: before setCategory")
             try session.setCategory(.playback, mode: .default, options: [])
+            print("[AUDIO_KEEPALIVE] configureAudioSession: after setCategory, before setActive")
             try session.setActive(true, options: [])
+            print("[AUDIO_KEEPALIVE] configureAudioSession: after setActive — done")
 
             // Listen for interruptions (phone calls, Siri, etc.)
             NotificationCenter.default.addObserver(
@@ -157,12 +160,14 @@ class AudioKeepAlivePlugin: Plugin {
 
         do {
             engine.prepare()
+            print("[AUDIO_KEEPALIVE] startSilentLoop: before engine.start()")
             try engine.start()
+            print("[AUDIO_KEEPALIVE] startSilentLoop: engine.start() ok, before player.play()")
             player.play()
 
             self.audioEngine = engine
             self.playerNode = player
-            print("[AUDIO_KEEPALIVE] Silent loop started")
+            print("[AUDIO_KEEPALIVE] startSilentLoop: done — engine.isRunning=\(engine.isRunning)")
         } catch {
             print("[AUDIO_KEEPALIVE] Engine start failed: \(error.localizedDescription)")
         }
@@ -302,9 +307,11 @@ class AudioKeepAlivePlugin: Plugin {
 
     @objc func startAudioKeepalive(_ invoke: Invoke) throws {
         let args = try invoke.parseArgs(StartKeepAliveArgs.self)
+        print("[AUDIO_KEEPALIVE] startAudioKeepalive: entry, isActive=\(isActive)")
 
         if isActive {
             // Already running — just update metadata
+            print("[AUDIO_KEEPALIVE] startAudioKeepalive: already active, updating metadata only")
             bookTitle = args.bookTitle
             currentlyPlaying = true
             updateNowPlayingInfo(title: args.title, artist: args.artist,
@@ -321,8 +328,11 @@ class AudioKeepAlivePlugin: Plugin {
             artwork = MPMediaItemArtwork(boundsSize: img.size) { _ in img }
         }
 
+        print("[AUDIO_KEEPALIVE] startAudioKeepalive: before configureAudioSession")
         configureAudioSession()
+        print("[AUDIO_KEEPALIVE] startAudioKeepalive: before startSilentLoop")
         startSilentLoop()
+        print("[AUDIO_KEEPALIVE] startAudioKeepalive: before setupRemoteCommands")
         setupRemoteCommands()
 
         updateNowPlayingInfo(
@@ -333,6 +343,7 @@ class AudioKeepAlivePlugin: Plugin {
         )
 
         isActive = true
+        print("[AUDIO_KEEPALIVE] startAudioKeepalive: done, resolving")
         invoke.resolve()
     }
 
