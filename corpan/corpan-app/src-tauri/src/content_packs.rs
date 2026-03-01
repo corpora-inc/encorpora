@@ -1,10 +1,20 @@
+use futures_util::StreamExt;
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
 use std::fs;
 use std::io::Cursor;
 use std::path::{Path, PathBuf};
 use std::time::{SystemTime, UNIX_EPOCH};
-use tauri::{AppHandle, Manager, Runtime};
+use tauri::{AppHandle, Emitter, Manager, Runtime};
+
+#[derive(Debug, Clone, Serialize)]
+pub struct InstallProgressEvent {
+    pub pack_id: String,
+    pub stage: String,
+    pub progress: u64,
+    pub total: u64,
+    pub message: String,
+}
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct ContentPackInfo {
@@ -226,52 +236,110 @@ pub async fn download_and_install<R: Runtime>(
         "[pack-install] Starting install pack_id={}, url={}",
         pack_id, download_url
     );
+
+    let emit_progress = |stage: &str, progress: u64, total: u64, message: &str| {
+        let _ = app.emit(
+            "pack-install-progress",
+            InstallProgressEvent {
+                pack_id: pack_id.clone(),
+                stage: stage.to_string(),
+                progress,
+                total,
+                message: message.to_string(),
+            },
+        );
+    };
+
+    emit_progress("downloading", 0, 0, "Starting download");
+
     let client = reqwest::Client::new();
     let res = client
         .get(&download_url)
         .send()
         .await
-        .map_err(|e| format!("Download request failed: {e}"))?;
+        .map_err(|e| {
+            emit_progress("error", 0, 0, &format!("Download request failed: {e}"));
+            format!("Download request failed: {e}")
+        })?;
     let status = res.status();
     if !status.is_success() {
-        return Err(format!("Download failed ({status})"));
+        let msg = format!("Download failed ({status})");
+        emit_progress("error", 0, 0, &msg);
+        return Err(msg);
     }
-    let bytes = res
-        .bytes()
-        .await
-        .map_err(|e| format!("Download read failed: {e}"))?;
+
+    let total = res.content_length().unwrap_or(0);
+    let mut downloaded: u64 = 0;
+    let mut buf = Vec::with_capacity(total as usize);
+    let mut stream = res.bytes_stream();
+
+    while let Some(chunk_result) = stream.next().await {
+        let chunk = chunk_result.map_err(|e| {
+            emit_progress("error", downloaded, total, &format!("Download read failed: {e}"));
+            format!("Download read failed: {e}")
+        })?;
+        downloaded += chunk.len() as u64;
+        buf.extend_from_slice(&chunk);
+        emit_progress("downloading", downloaded, total, "Downloading");
+    }
+
+    let bytes = buf;
     eprintln!(
         "[pack-install] Downloaded {} bytes for {}",
         bytes.len(),
         pack_id
     );
+
+    emit_progress("verifying", downloaded, total, "Verifying integrity");
+
     if let Some(expected) = expected_sha256 {
         let actual = hash_bytes_sha256(&bytes);
         if actual != expected {
+            emit_progress("error", 0, 0, "Pack hash mismatch");
             return Err("Pack hash mismatch".to_string());
         }
     }
 
+    emit_progress("extracting", 0, 0, "Extracting pack");
+
     let root = pack_root(app)?;
     fs::create_dir_all(&root)
-        .map_err(|e| format!("Failed to create pack root: {e}"))?;
+        .map_err(|e| {
+            emit_progress("error", 0, 0, &format!("Failed to create pack root: {e}"));
+            format!("Failed to create pack root: {e}")
+        })?;
 
     let staging = root.join(format!(".{pack_id}.staging"));
     if staging.exists() {
         let _ = fs::remove_dir_all(&staging);
     }
     fs::create_dir_all(&staging)
-        .map_err(|e| format!("Failed to create staging dir: {e}"))?;
+        .map_err(|e| {
+            emit_progress("error", 0, 0, &format!("Failed to create staging dir: {e}"));
+            format!("Failed to create staging dir: {e}")
+        })?;
 
-    safe_extract_zip(&bytes, &staging)?;
+    safe_extract_zip(&bytes, &staging).map_err(|e| {
+        emit_progress("error", 0, 0, &format!("Extract failed: {e}"));
+        e
+    })?;
 
-    let pack_root_dir = find_pack_root(&staging).ok_or("Manifest not found in pack")?;
+    let pack_root_dir = find_pack_root(&staging).ok_or_else(|| {
+        emit_progress("error", 0, 0, "Manifest not found in pack");
+        "Manifest not found in pack".to_string()
+    })?;
     let manifest_path = pack_root_dir.join("manifest.json");
     let (manifest_id, name, version) =
-        read_manifest_info(&manifest_path).map_err(|e| format!("Invalid manifest: {e}"))?;
+        read_manifest_info(&manifest_path).map_err(|e| {
+            emit_progress("error", 0, 0, &format!("Invalid manifest: {e}"));
+            format!("Invalid manifest: {e}")
+        })?;
     if manifest_id != pack_id {
+        emit_progress("error", 0, 0, "Pack id mismatch");
         return Err("Pack id mismatch".to_string());
     }
+
+    emit_progress("finalizing", 0, 0, "Finalizing install");
 
     let final_dir = root.join(&pack_id);
     let backup_dir = root.join(format!(".{pack_id}.backup"));
@@ -280,15 +348,24 @@ pub async fn download_and_install<R: Runtime>(
     }
     if final_dir.exists() {
         fs::rename(&final_dir, &backup_dir)
-            .map_err(|e| format!("Failed to backup existing pack: {e}"))?;
+            .map_err(|e| {
+                emit_progress("error", 0, 0, &format!("Failed to backup existing pack: {e}"));
+                format!("Failed to backup existing pack: {e}")
+            })?;
     }
 
     if pack_root_dir == staging {
         fs::rename(&staging, &final_dir)
-            .map_err(|e| format!("Failed to finalize pack install: {e}"))?;
+            .map_err(|e| {
+                emit_progress("error", 0, 0, &format!("Failed to finalize pack install: {e}"));
+                format!("Failed to finalize pack install: {e}")
+            })?;
     } else {
         fs::rename(&pack_root_dir, &final_dir)
-            .map_err(|e| format!("Failed to finalize pack install: {e}"))?;
+            .map_err(|e| {
+                emit_progress("error", 0, 0, &format!("Failed to finalize pack install: {e}"));
+                format!("Failed to finalize pack install: {e}")
+            })?;
         let _ = fs::remove_dir_all(&staging);
     }
 
@@ -299,7 +376,7 @@ pub async fn download_and_install<R: Runtime>(
     let manifest_url = manifest_url_for(&pack_id);
     let mut index = load_index(&root);
     let info = ContentPackInfo {
-        id: pack_id,
+        id: pack_id.clone(),
         name,
         version,
         manifest_url: manifest_url.clone(),
@@ -311,6 +388,8 @@ pub async fn download_and_install<R: Runtime>(
         "[pack-install] Installed {} ({:?})",
         info.id, info.version
     );
+
+    emit_progress("complete", 0, 0, "Installation complete");
 
     Ok(ContentPackInstallResult { pack: info })
 }
@@ -348,36 +427,67 @@ pub fn list_installed<R: Runtime>(app: &AppHandle<R>) -> Result<Vec<ContentPackI
     Ok(packs)
 }
 
-pub fn fetch_bytes<R: Runtime>(app: &AppHandle<R>, url: String) -> Result<Vec<u8>, String> {
+pub async fn fetch_bytes<R: Runtime>(app: &AppHandle<R>, url: String) -> Result<Vec<u8>, String> {
     eprintln!("[fetch_bytes] Fetching URL: {}", url);
 
-    if !url.starts_with("corpan-pack://") {
-        return Err("fetch_bytes only supports corpan-pack:// URLs".to_string());
+    // Handle corpan-pack:// URLs by reading from local filesystem
+    if url.starts_with("corpan-pack://") {
+        let url_without_query = url.split('?').next().unwrap_or(&url);
+        let path_part = url_without_query
+            .strip_prefix("corpan-pack://localhost/")
+            .ok_or("Invalid corpan-pack URL format")?;
+        let mut parts = path_part.splitn(2, '/');
+        let pack_id = parts.next().ok_or("Missing pack ID in corpan-pack URL")?;
+        let rel_path = parts.next().ok_or("Missing file path in corpan-pack URL")?;
+
+        eprintln!("[fetch_bytes] Pack ID: {}, Rel path: {}", pack_id, rel_path);
+
+        let pack_root = app
+            .path()
+            .app_data_dir()
+            .map(|dir| dir.join("corpan-packs"))
+            .map_err(|e| format!("Failed to get app data dir: {}", e))?;
+
+        let file_path = pack_root.join(pack_id).join(rel_path);
+        eprintln!("[fetch_bytes] Reading file: {:?}", file_path);
+
+        let content = fs::read(&file_path)
+            .map_err(|e| format!("Failed to read file {:?}: {}", file_path, e))?;
+        eprintln!("[fetch_bytes] Successfully read {} bytes from disk", content.len());
+        return Ok(content);
     }
 
-    let url_without_query = url.split('?').next().unwrap_or(&url);
-    let path_part = url_without_query
-        .strip_prefix("corpan-pack://localhost/")
-        .ok_or("Invalid corpan-pack URL format")?;
-    let mut parts = path_part.splitn(2, '/');
-    let pack_id = parts.next().ok_or("Missing pack ID in corpan-pack URL")?;
-    let rel_path = parts.next().ok_or("Missing file path in corpan-pack URL")?;
-
-    eprintln!("[fetch_bytes] Pack ID: {}, Rel path: {}", pack_id, rel_path);
-
-    let pack_root = app
-        .path()
-        .app_data_dir()
-        .map(|dir| dir.join("corpan-packs"))
-        .map_err(|e| format!("Failed to get app data dir: {}", e))?;
-
-    let file_path = pack_root.join(pack_id).join(rel_path);
-    eprintln!("[fetch_bytes] Reading file: {:?}", file_path);
-
-    let content = fs::read(&file_path)
-        .map_err(|e| format!("Failed to read file {:?}: {}", file_path, e))?;
-    eprintln!("[fetch_bytes] Successfully read {} bytes from disk", content.len());
-    Ok(content)
+    // Handle HTTP/HTTPS URLs via reqwest (no CORS restrictions)
+    let parsed = reqwest::Url::parse(&url).map_err(|e| e.to_string())?;
+    let scheme = parsed.scheme();
+    eprintln!("[fetch_bytes] URL scheme: {}", scheme);
+    if scheme != "https" && scheme != "http" {
+        eprintln!("[fetch_bytes] Unsupported URL scheme: {}", scheme);
+        return Err("Unsupported URL scheme".to_string());
+    }
+    if scheme == "http" {
+        let host = parsed.host_str().unwrap_or("");
+        if !is_private_host(host) {
+            eprintln!("[fetch_bytes] Insecure HTTP not allowed for host: {}", host);
+            return Err("Insecure HTTP is only allowed for localhost/private hosts".to_string());
+        }
+    }
+    let client = reqwest::Client::new();
+    let res = client.get(parsed).send().await.map_err(|e| {
+        eprintln!("[fetch_bytes] Request error: {}", e);
+        e.to_string()
+    })?;
+    let status = res.status();
+    eprintln!("[fetch_bytes] Response status: {}", status);
+    if !status.is_success() {
+        return Err(format!("Request failed ({status})"));
+    }
+    let bytes = res.bytes().await.map_err(|e| {
+        eprintln!("[fetch_bytes] Bytes decode error: {}", e);
+        e.to_string()
+    })?;
+    eprintln!("[fetch_bytes] Successfully fetched {} bytes", bytes.len());
+    Ok(bytes.to_vec())
 }
 
 pub fn get_manifest_url<R: Runtime>(

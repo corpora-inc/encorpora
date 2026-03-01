@@ -6,7 +6,7 @@ import { useGamesStore, type InstalledGame } from "@/store/games"
 import { useCatalogStore } from "@/store/catalog"
 import { usePackUpdates } from "@/hooks/usePackUpdates"
 import { PackCard } from "./PackCard"
-import { installPack } from "@/contentPacks/install"
+import { useInstallContext } from "@/contentPacks/InstallContext"
 
 export function PacksListing({
   showDevInstall = false,
@@ -17,15 +17,14 @@ export function PacksListing({
 }) {
   const { t } = useTranslation()
   const gamesMap = useGamesStore((s) => s.games)
-  const addGame = useGamesStore((s) => s.addGame)
 
   const catalog = useCatalogStore((s) => s.getCatalog())
   const fetchCatalog = useCatalogStore((s) => s.fetchCatalog)
   const isOnline = useCatalogStore((s) => s.isOnline)
   const isFetching = useCatalogStore((s) => s.isFetching)
   const [manifestUrl, setManifestUrl] = useState("")
-  const [installing, setInstalling] = useState(false)
-  const [error, setError] = useState<string | null>(null)
+
+  const { installDevPack, isInstalling } = useInstallContext()
 
   const installedGames = useMemo(() => {
     return Object.values(gamesMap).sort((a, b) => a.name.localeCompare(b.name))
@@ -49,39 +48,10 @@ export function PacksListing({
     await fetchCatalog(true) // Force refresh
   }
 
-  const handleDevInstall = async () => {
-    if (!manifestUrl.trim()) {
-      setError(t("packs.manifestHint"))
-      return
-    }
-    setInstalling(true)
-    setError(null)
-    try {
-      const result = await installPack({
-        manifestUrl,
-        source: "manual",
-      })
-      addGame({
-        id: result.packId,
-        name: result.name ?? result.packId,
-        manifestUrl: result.manifestUrl,
-        version: result.version,
-        description: result.description,
-        imageUrl: result.imageUrl,
-        source: result.source,
-      })
-      setManifestUrl("")
-    } catch (err) {
-      const message = err instanceof Error ? err.message : String(err)
-      console.error("[packs] manual install failed", err)
-      setError(
-        message
-          ? `${t("packs.installFailed")} ${message}`
-          : t("packs.installFailed")
-      )
-    } finally {
-      setInstalling(false)
-    }
+  const handleDevInstall = () => {
+    if (!manifestUrl.trim()) return
+    installDevPack(manifestUrl)
+    setManifestUrl("")
   }
 
 
@@ -244,17 +214,16 @@ export function PacksListing({
             </div>
           </div>
           <input
-            className="w-full rounded-md border border-input px-3 py-2 text-sm bg-background"
+            className="w-full rounded-md border border-input px-3 py-2 text-base bg-background"
             placeholder={t("packs.manifestPlaceholder")}
             value={manifestUrl}
             onChange={(event) => setManifestUrl(event.target.value)}
           />
           <div className="flex flex-wrap items-center gap-3">
-            <Button onClick={handleDevInstall} disabled={installing} size="sm">
-              {installing ? t("packs.installing") : t("packs.install")}
+            <Button onClick={handleDevInstall} disabled={isInstalling} size="sm">
+              {isInstalling ? t("packs.installing") : t("packs.install")}
             </Button>
           </div>
-          {error && <div className="text-sm text-red-600">{error}</div>}
         </div>
       )}
     </div>

@@ -55,12 +55,13 @@ Add permissions:
 <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK" />
 <uses-permission android:name="android.permission.WAKE_LOCK" />
+<uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 ```
 
 Add service inside `<application>`:
 ```xml
 <service
-    android:name=".AudioKeepAliveService"
+    android:name="com.corpora.audio_keepalive.AudioKeepAliveService"
     android:foregroundServiceType="mediaPlayback"
     android:exported="false" />
 ```

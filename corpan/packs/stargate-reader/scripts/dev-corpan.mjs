@@ -79,11 +79,36 @@ async function detectLanguages(dirName) {
   return languages
 }
 
-// --- Book data HTTP server on port 8990 ---
+// --- Content type map ---
 
-async function startBookDataServer() {
+const contentTypes = {
+  ".json": "application/json",
+  ".js": "application/javascript",
+  ".mjs": "application/javascript",
+  ".css": "text/css",
+  ".html": "text/html",
+  ".htm": "text/html",
+  ".png": "image/png",
+  ".jpg": "image/jpeg",
+  ".jpeg": "image/jpeg",
+  ".gif": "image/gif",
+  ".svg": "image/svg+xml",
+  ".webp": "image/webp",
+  ".mp3": "audio/mpeg",
+  ".wav": "audio/wav",
+  ".ogg": "audio/ogg",
+  ".m4a": "audio/mp4",
+  ".aac": "audio/aac",
+  ".woff": "font/woff",
+  ".woff2": "font/woff2",
+  ".ttf": "font/ttf",
+}
+
+// --- Unified dev server on port 8989 ---
+
+async function startUnifiedServer() {
   const bookMap = await scanBooks()
-  console.log(`[book-data] Found ${bookMap.size} books: ${[...bookMap.keys()].join(", ")}`)
+  console.log(`[dev-server] Found ${bookMap.size} books: ${[...bookMap.keys()].join(", ")}`)
 
   const server = createServer(async (req, res) => {
     res.setHeader("Access-Control-Allow-Origin", "*")
@@ -96,10 +121,12 @@ async function startBookDataServer() {
       return
     }
 
-    const url = req.url || "/"
+    const url = (req.url || "/").split("?")[0]
+
+    // --- Book data routes (under /stargate-reader/data/) ---
 
     // Catalog
-    if (url === "/data/catalog.json") {
+    if (url === "/stargate-reader/data/catalog.json") {
       const catalog = []
       for (const [id, dirName] of bookMap) {
         const manifestFile = path.join(booksDir, dirName, "pack", "manifest.json")
@@ -124,27 +151,58 @@ async function startBookDataServer() {
       return
     }
 
-    // Book data: /data/books/{bookId}/*
-    const bookMatch = url.match(/^\/data\/books\/([^/]+)\/(.+)$/)
-    if (!bookMatch) {
-      res.writeHead(404)
-      res.end("Not found")
+    // Book data: /stargate-reader/data/books/{bookId}/*
+    const bookMatch = url.match(/^\/stargate-reader\/data\/books\/([^/]+)\/(.+)$/)
+    if (bookMatch) {
+      const [, bookId, filePath] = bookMatch
+      const dirName = bookMap.get(bookId)
+      if (!dirName) {
+        res.writeHead(404)
+        res.end(`Book not found: ${bookId}`)
+        return
+      }
+
+      const fullPath = path.join(booksDir, dirName, "pack", filePath)
+      const resolved = path.resolve(fullPath)
+      const packDir = path.resolve(path.join(booksDir, dirName, "pack"))
+
+      if (!resolved.startsWith(packDir)) {
+        res.writeHead(403)
+        res.end("Forbidden")
+        return
+      }
+
+      try {
+        const fileStat = await stat(resolved)
+        if (!fileStat.isFile()) {
+          res.writeHead(404)
+          res.end("Not found")
+          return
+        }
+
+        const data = await readFile(resolved)
+        const ext = path.extname(resolved).toLowerCase()
+        res.writeHead(200, {
+          "Content-Type": contentTypes[ext] || "application/octet-stream",
+          "Cache-Control": "no-cache, no-store, must-revalidate",
+        })
+        res.end(data)
+      } catch {
+        res.writeHead(404)
+        res.end("Not found")
+      }
       return
     }
 
-    const [, bookId, filePath] = bookMatch
-    const dirName = bookMap.get(bookId)
-    if (!dirName) {
-      res.writeHead(404)
-      res.end(`Book not found: ${bookId}`)
-      return
-    }
+    // --- Static pack files (serve from packsRoot, replaces Python http.server) ---
 
-    const fullPath = path.join(booksDir, dirName, "pack", filePath)
-    const resolved = path.resolve(fullPath)
-    const packDir = path.resolve(path.join(booksDir, dirName, "pack"))
+    // Decode URL-encoded characters and resolve to filesystem
+    const decodedUrl = decodeURIComponent(url)
+    const filePath = path.join(packsRoot, decodedUrl)
+    const resolved = path.resolve(filePath)
 
-    if (!resolved.startsWith(packDir)) {
+    // Security: prevent directory traversal
+    if (!resolved.startsWith(path.resolve(packsRoot))) {
       res.writeHead(403)
       res.end("Forbidden")
       return
@@ -152,6 +210,21 @@ async function startBookDataServer() {
 
     try {
       const fileStat = await stat(resolved)
+
+      // Serve index.html for directories
+      if (fileStat.isDirectory()) {
+        const indexPath = path.join(resolved, "index.html")
+        try {
+          const data = await readFile(indexPath)
+          res.writeHead(200, { "Content-Type": "text/html" })
+          res.end(data)
+        } catch {
+          res.writeHead(404)
+          res.end("Not found")
+        }
+        return
+      }
+
       if (!fileStat.isFile()) {
         res.writeHead(404)
         res.end("Not found")
@@ -160,14 +233,6 @@ async function startBookDataServer() {
 
       const data = await readFile(resolved)
       const ext = path.extname(resolved).toLowerCase()
-      const contentTypes = {
-        ".json": "application/json",
-        ".mp3": "audio/mpeg",
-        ".wav": "audio/wav",
-        ".ogg": "audio/ogg",
-        ".m4a": "audio/mp4",
-        ".aac": "audio/aac",
-      }
       res.writeHead(200, {
         "Content-Type": contentTypes[ext] || "application/octet-stream",
         "Cache-Control": "no-cache, no-store, must-revalidate",
@@ -179,8 +244,10 @@ async function startBookDataServer() {
     }
   })
 
-  server.listen(8990, "0.0.0.0", () => {
-    console.log("[book-data] Serving book data on http://localhost:8990")
+  server.listen(8989, "0.0.0.0", () => {
+    console.log("[dev-server] Unified dev server on http://localhost:8989")
+    console.log("[dev-server]   Pack files from:", packsRoot)
+    console.log("[dev-server]   Book data from:", booksDir)
   })
 
   return server
@@ -206,22 +273,14 @@ const buildWatcher = run(
   "build:watch"
 )
 
-const packsServer = run(
-  "python3",
-  ["-m", "http.server", "8989", "--bind", "0.0.0.0"],
-  packsRoot,
-  "packs-server"
-)
-
-const bookDataServer = await startBookDataServer()
+const devServer = await startUnifiedServer()
 
 watchDist()
 scheduleManifestUpdate()
 
 const shutdown = () => {
   buildWatcher.kill("SIGINT")
-  packsServer.kill("SIGINT")
-  bookDataServer.close()
+  devServer.close()
   process.exit(0)
 }
 

@@ -1,9 +1,8 @@
-import { useState } from "react"
 import { useTranslation } from "react-i18next"
 import { Button } from "@/components/ui/button"
-import { installPack } from "@/contentPacks/install"
 import { useGamesStore, type InstalledGame } from "@/store/games"
 import type { CatalogGame } from "@/contentPacks/catalog"
+import { useInstallContext } from "@/contentPacks/InstallContext"
 
 export type PackActionState = "available" | "installed" | "update" | "offline"
 
@@ -23,52 +22,11 @@ export function PackActions({
   updateVersion?: string
 }) {
   const { t } = useTranslation()
-  const addGame = useGamesStore((s) => s.addGame)
   const removeGame = useGamesStore((s) => s.removeGame)
-  const [installing, setInstalling] = useState(false)
-  const [error, setError] = useState<string | null>(null)
+  const { installCatalogPack, isInstalling } = useInstallContext()
 
-  const handleInstall = async () => {
-    console.log("[PackActions] handleInstall called for pack:", pack.id)
-    console.log("[PackActions] manifestUrl:", pack.manifestUrl)
-
-    if (!pack.manifestUrl) {
-      setError(t("packs.installFailed"))
-      return
-    }
-
-    setInstalling(true)
-    setError(null)
-
-    try {
-      console.log("[PackActions] Calling installPack with URL:", pack.manifestUrl)
-      const result = await installPack({
-        manifestUrl: pack.manifestUrl,
-        source: "catalog",
-        expectedVersion: pack.version,
-      })
-      console.log("[PackActions] Install successful:", result)
-
-      addGame({
-        id: result.packId,
-        name: result.name ?? pack.name ?? result.packId,
-        manifestUrl: result.manifestUrl,
-        version: result.version,
-        description: result.description ?? pack.description,
-        imageUrl: pack.imageUrl,
-        source: result.source,
-      })
-    } catch (err) {
-      const message = err instanceof Error ? err.message : String(err)
-      console.error("[packs] install failed", err)
-      setError(
-        message
-          ? `${t("packs.installFailed")} ${message}`
-          : t("packs.installFailed")
-      )
-    } finally {
-      setInstalling(false)
-    }
+  const handleInstall = () => {
+    installCatalogPack(pack)
   }
 
   const handleRemove = () => {
@@ -102,11 +60,11 @@ export function PackActions({
         <div className="flex gap-2">
           <Button
             onClick={handleInstall}
-            disabled={installing}
+            disabled={isInstalling}
             className="flex-1"
             size="sm"
           >
-            {installing
+            {isInstalling
               ? t("packs.updating")
               : t("packs.update")}
           </Button>
@@ -118,7 +76,6 @@ export function PackActions({
             {t("packs.open")}
           </Button>
         </div>
-        {error && <p className="text-xs text-red-600">{error}</p>}
       </div>
     )
   }
@@ -149,15 +106,14 @@ export function PackActions({
     <div className="space-y-2">
       <Button
         onClick={handleInstall}
-        disabled={installing || isOffline}
+        disabled={isInstalling || isOffline}
         className="w-full"
         size="sm"
       >
-        {installing
+        {isInstalling
           ? t("packs.installing")
           : t("packs.get")}
       </Button>
-      {error && <p className="text-xs text-red-600">{error}</p>}
       <div className="flex items-center justify-between text-xs text-muted-foreground">
         <span>{pack.purchase?.priceLabel ?? t("packs.free")}</span>
         {isOffline ? <span>{t("packs.offline")}</span> : null}

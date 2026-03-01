@@ -27,6 +27,7 @@ import { useTranslation } from "react-i18next";
 import StacksManager from "./StacksManager";
 import { JumpToTTSButton } from "./JumpToTTSButton";
 import { PacksListing } from "./packs/PacksListing";
+import { InstallProvider } from "@/contentPacks/InstallContext";
 import type { InstalledGame } from "@/store/games";
 import { useGamesStore } from "@/store/games";
 import { useCatalogStore } from "@/store/catalog";
@@ -226,6 +227,12 @@ export function SettingsModal({
           </TabsContent>
 
           <TabsContent value="packs" className="space-y-4 mt-8 pb-16">
+            <InstallProvider
+              onLaunchGame={(game) => {
+                onClose();
+                onLaunchGame?.(game);
+              }}
+            >
             <PacksListing
               showDevInstall={devModeEnabled}
               onLaunchGame={(game) => {
@@ -254,6 +261,7 @@ export function SettingsModal({
                 </Button>
               </div>
             )}
+            </InstallProvider>
           </TabsContent>
         </Tabs>
 

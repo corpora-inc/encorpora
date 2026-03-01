@@ -1,4 +1,4 @@
-import type { OscilloscopeConfig, PulseRingConfig, WaveformConfig } from "../state/prefsStore"
+import type { OscilloscopeConfig, PulseRingConfig, WaveformConfig, WordHoldConfig } from "../state/prefsStore"
 
 export type LanguageInfo = { code: string; displayName: string; narrator: string }
 
@@ -7,6 +7,8 @@ export type SettingsPanel = {
   onToggleOscilloscope: (cb: (visible: boolean) => void) => void
   onToggleWaveform: (cb: (visible: boolean) => void) => void
   onTogglePulseRing: (cb: (visible: boolean) => void) => void
+  onToggleWordHold: (cb: (enabled: boolean) => void) => void
+  onWordHoldConfig: (cb: (key: string, value: number) => void) => void
   onOscilloscopeConfig: (cb: (key: string, value: number) => void) => void
   onWaveformConfig: (cb: (key: string, value: number) => void) => void
   onPulseRingConfig: (cb: (key: string, value: number) => void) => void
@@ -18,6 +20,8 @@ export type SettingsPanelOptions = {
   initialOscilloscope?: boolean
   initialWaveform?: boolean
   initialPulseRing?: boolean
+  initialWordHold?: boolean
+  initialWordHoldConfig?: WordHoldConfig
   initialOscilloscopeConfig?: OscilloscopeConfig
   initialWaveformConfig?: WaveformConfig
   initialPulseRingConfig?: PulseRingConfig
@@ -53,12 +57,15 @@ export function createSettingsPanel(
   let toggleOscCb: ((visible: boolean) => void) | null = null
   let toggleWaveCb: ((visible: boolean) => void) | null = null
   let togglePulseCb: ((visible: boolean) => void) | null = null
+  let toggleWordHoldCb: ((enabled: boolean) => void) | null = null
+  let wordHoldConfigCb: ((key: string, value: number) => void) | null = null
   let oscConfigCb: ((key: string, value: number) => void) | null = null
   let waveConfigCb: ((key: string, value: number) => void) | null = null
   let pulseConfigCb: ((key: string, value: number) => void) | null = null
   let oscVisible = options?.initialOscilloscope ?? true
   let waveVisible = options?.initialWaveform ?? true
   let pulseVisible = options?.initialPulseRing ?? true
+  let wordHoldEnabled = options?.initialWordHold ?? true
   let isOpen = false
 
   /**
@@ -165,6 +172,21 @@ export function createSettingsPanel(
   dismissRow.appendChild(dismissBtn)
   dropdown.appendChild(dismissRow)
 
+  // Exit button (at top for easy access)
+  const exitBtn = document.createElement("button")
+  exitBtn.className = "stargate-settings-exit"
+  exitBtn.textContent = "Exit"
+  exitBtn.addEventListener("click", () => {
+    onBeforeClose?.()
+    window.dispatchEvent(new Event("corpan:exit"))
+  })
+  dropdown.appendChild(exitBtn)
+
+  // Divider after exit
+  const divider0 = document.createElement("div")
+  divider0.className = "stargate-settings-divider"
+  dropdown.appendChild(divider0)
+
   // 2. Language select (full width, no label — self-documenting with "English – Ian")
   const langSelect = document.createElement("select")
   langSelect.className = "stargate-settings-lang-select"
@@ -266,27 +288,43 @@ export function createSettingsPanel(
   createAdvancedSection(
     dropdown,
     [
-      { key: "maxRadius", label: "Ring Size", min: 0.1, max: 1, step: 0.1, initial: 0.5 },
+      { key: "maxRadius", label: "Ring Size", min: 0.05, max: 0.5, step: 0.05, initial: 0.5 },
       { key: "fadeMs", label: "Trail", min: 50, max: 2000, step: 50, initial: 200 },
     ],
     pulseConfig as Record<string, number>,
     (key, value) => { pulseConfigCb?.(key, value) },
   )
 
-  // Divider before exit
-  const divider2 = document.createElement("div")
-  divider2.className = "stargate-settings-divider"
-  dropdown.appendChild(divider2)
-
-  // Exit button
-  const exitBtn = document.createElement("button")
-  exitBtn.className = "stargate-settings-exit"
-  exitBtn.textContent = "Exit"
-  exitBtn.addEventListener("click", () => {
-    onBeforeClose?.()
-    window.dispatchEvent(new Event("corpan:exit"))
+  // --- Word Hold toggle row ---
+  const holdRow = document.createElement("div")
+  holdRow.className = "stargate-settings-row"
+  const holdLabel = document.createElement("span")
+  holdLabel.className = "stargate-settings-label"
+  holdLabel.textContent = "Word Hold"
+  const holdBtn = document.createElement("button")
+  holdBtn.className = "stargate-settings-toggle" + (wordHoldEnabled ? " stargate-settings-toggle--active" : "")
+  holdBtn.textContent = wordHoldEnabled ? "ON" : "OFF"
+  holdBtn.addEventListener("click", () => {
+    wordHoldEnabled = !wordHoldEnabled
+    holdBtn.classList.toggle("stargate-settings-toggle--active", wordHoldEnabled)
+    holdBtn.textContent = wordHoldEnabled ? "ON" : "OFF"
+    toggleWordHoldCb?.(wordHoldEnabled)
   })
-  dropdown.appendChild(exitBtn)
+  holdRow.appendChild(holdLabel)
+  holdRow.appendChild(holdBtn)
+  dropdown.appendChild(holdRow)
+
+  // Word Hold advanced sliders
+  const wordHoldConfig = options?.initialWordHoldConfig ?? { holdY: 0, zPull: 0.4 }
+  createAdvancedSection(
+    dropdown,
+    [
+      { key: "holdY", label: "Height", min: -0.2, max: 0.2, step: 0.02, initial: 0 },
+      { key: "zPull", label: "Depth", min: 0, max: 2, step: 0.1, initial: 0.4 },
+    ],
+    wordHoldConfig as Record<string, number>,
+    (key, value) => { wordHoldConfigCb?.(key, value) },
+  )
 
   // --- Open/close logic ---
   function open() {
@@ -336,6 +374,8 @@ export function createSettingsPanel(
     onToggleOscilloscope(cb: (visible: boolean) => void) { toggleOscCb = cb },
     onToggleWaveform(cb: (visible: boolean) => void) { toggleWaveCb = cb },
     onTogglePulseRing(cb: (visible: boolean) => void) { togglePulseCb = cb },
+    onToggleWordHold(cb: (enabled: boolean) => void) { toggleWordHoldCb = cb },
+    onWordHoldConfig(cb: (key: string, value: number) => void) { wordHoldConfigCb = cb },
     onOscilloscopeConfig(cb: (key: string, value: number) => void) { oscConfigCb = cb },
     onWaveformConfig(cb: (key: string, value: number) => void) { waveConfigCb = cb },
     onPulseRingConfig(cb: (key: string, value: number) => void) { pulseConfigCb = cb },

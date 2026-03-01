@@ -651,8 +651,8 @@ async fn content_packs_fetch_text(app: AppHandle, url: String) -> Result<String,
 }
 
 #[command]
-fn content_packs_fetch_bytes(app: AppHandle, url: String) -> Result<tauri::ipc::Response, String> {
-    content_packs::fetch_bytes(&app, url).map(tauri::ipc::Response::new)
+async fn content_packs_fetch_bytes(app: AppHandle, url: String) -> Result<tauri::ipc::Response, String> {
+    content_packs::fetch_bytes(&app, url).await.map(tauri::ipc::Response::new)
 }
 
 #[command]

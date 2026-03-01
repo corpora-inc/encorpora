@@ -19,6 +19,9 @@ export type AudioEngine = {
   getAnalyserData: () => Uint8Array
   getFloatTimeDomain: () => Float32Array
   getFrequencyData: () => Uint8Array
+  /** Recover AudioContext after background suspension. Returns true if running. */
+  recoverContext: () => Promise<boolean>
+  getContextState: () => string
   dispose: () => void
 }
 
@@ -451,6 +454,57 @@ export function createAudioEngine(
         analyser.getByteFrequencyData(frequencyData)
       }
       return frequencyData
+    },
+
+    recoverContext: async (): Promise<boolean> => {
+      if (!AudioCtx) return false
+      const context = ensureContext()
+      if (!context) return false
+
+      // Already running — no recovery needed
+      if (context.state === "running") return true
+
+      // Try to resume the existing context (500ms timeout)
+      try {
+        await Promise.race([
+          context.resume(),
+          new Promise((_, reject) => setTimeout(() => reject(new Error("timeout")), 500)),
+        ])
+      } catch {
+        // resume failed or timed out
+      }
+
+      if (context.state === "running") return true
+
+      // Context is dead — close it and create a fresh one
+      try { await context.close() } catch { /* already closed */ }
+      ctx = null
+      analyser = null
+      gainNode = null
+      bufferCache.clear()
+      loadingPromises.clear()
+      contextUnlocked = false
+
+      const newCtx = ensureContext()
+      if (!newCtx) return false
+
+      // Play silent buffer to unlock the new context on iOS
+      const buf = newCtx.createBuffer(1, 1, 22050)
+      const src = newCtx.createBufferSource()
+      src.buffer = buf
+      src.connect(newCtx.destination)
+      src.start(0)
+      contextUnlocked = true
+
+      if (newCtx.state === "suspended") {
+        try { await newCtx.resume() } catch { /* best effort */ }
+      }
+
+      return newCtx.state === "running"
+    },
+
+    getContextState: (): string => {
+      return ctx?.state ?? "closed"
     },
 
     dispose: () => {
