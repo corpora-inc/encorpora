@@ -4,6 +4,7 @@ import { readFile, readdir, writeFile, stat } from "node:fs/promises"
 import { watch } from "node:fs"
 import path from "node:path"
 import { fileURLToPath } from "node:url"
+import os from "node:os"
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const packRoot = path.resolve(__dirname, "..")
@@ -245,7 +246,21 @@ async function startUnifiedServer() {
   })
 
   server.listen(8989, "0.0.0.0", () => {
+    let lanIp = ""
+    try {
+      const nets = os.networkInterfaces()
+      for (const ifaces of Object.values(nets)) {
+        for (const iface of ifaces || []) {
+          if (iface.family === "IPv4" && !iface.internal) {
+            lanIp = iface.address
+            break
+          }
+        }
+        if (lanIp) break
+      }
+    } catch { /* ignore */ }
     console.log("[dev-server] Unified dev server on http://localhost:8989")
+    if (lanIp) console.log(`[dev-server]   LAN: http://${lanIp}:8989`)
     console.log("[dev-server]   Pack files from:", packsRoot)
     console.log("[dev-server]   Book data from:", booksDir)
   })

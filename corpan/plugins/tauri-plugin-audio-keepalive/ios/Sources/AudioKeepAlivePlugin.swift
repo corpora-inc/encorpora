@@ -30,6 +30,9 @@ class AudioKeepAlivePlugin: Plugin {
     // Stored book title for metadata
     private var bookTitle: String?
 
+    // Lock screen artwork (loaded once from app icon)
+    private var artwork: MPMediaItemArtwork?
+
     override init() {
         super.init()
     }
@@ -115,6 +118,11 @@ class AudioKeepAlivePlugin: Plugin {
     // MARK: - Near-Silent Audio Loop
 
     private func startSilentLoop() {
+        // Stop existing engine before creating new one (prevents noise if called twice)
+        if audioEngine != nil {
+            stopSilentLoop()
+        }
+
         let engine = AVAudioEngine()
         let player = AVAudioPlayerNode()
 
@@ -173,6 +181,7 @@ class AudioKeepAlivePlugin: Plugin {
     private func setupRemoteCommands() {
         let center = MPRemoteCommandCenter.shared()
 
+        center.playCommand.isEnabled = true
         playTarget = center.playCommand.addTarget { [weak self] _ in
             guard let self = self else { return .commandFailed }
             self.currentlyPlaying = true
@@ -183,6 +192,7 @@ class AudioKeepAlivePlugin: Plugin {
             return .success
         }
 
+        center.pauseCommand.isEnabled = true
         pauseTarget = center.pauseCommand.addTarget { [weak self] _ in
             guard let self = self else { return .commandFailed }
             self.currentlyPlaying = false
@@ -193,28 +203,33 @@ class AudioKeepAlivePlugin: Plugin {
             return .success
         }
 
+        center.skipForwardCommand.isEnabled = true
+        center.skipForwardCommand.preferredIntervals = [30]
         skipForwardTarget = center.skipForwardCommand.addTarget { [weak self] _ in
             self?.triggerWebViewEvent("audio-keepalive:skipForward")
             return .success
         }
-        center.skipForwardCommand.preferredIntervals = [30]
 
+        center.skipBackwardCommand.isEnabled = true
+        center.skipBackwardCommand.preferredIntervals = [30]
         skipBackTarget = center.skipBackwardCommand.addTarget { [weak self] _ in
             self?.triggerWebViewEvent("audio-keepalive:skipBack")
             return .success
         }
-        center.skipBackwardCommand.preferredIntervals = [30]
 
+        center.previousTrackCommand.isEnabled = true
         prevTrackTarget = center.previousTrackCommand.addTarget { [weak self] _ in
             self?.triggerWebViewEvent("audio-keepalive:prevChapter")
             return .success
         }
 
+        center.nextTrackCommand.isEnabled = true
         nextTrackTarget = center.nextTrackCommand.addTarget { [weak self] _ in
             self?.triggerWebViewEvent("audio-keepalive:nextChapter")
             return .success
         }
 
+        center.changePlaybackPositionCommand.isEnabled = true
         seekTarget = center.changePlaybackPositionCommand.addTarget { [weak self] event in
             guard let posEvent = event as? MPChangePlaybackPositionCommandEvent else { return .commandFailed }
             self?.triggerWebViewEvent("audio-keepalive:seek", data: ["positionMs": posEvent.positionTime * 1000.0])
@@ -258,11 +273,29 @@ class AudioKeepAlivePlugin: Plugin {
         if let bookTitle = bookTitle {
             info[MPMediaItemPropertyAlbumTitle] = bookTitle
         }
+        if let artwork = artwork {
+            info[MPMediaItemPropertyArtwork] = artwork
+        }
         // Always set duration and position — iOS needs these for seek bar + time display
-        info[MPMediaItemPropertyPlaybackDuration] = (durationMs ?? 0.0) / 1000.0
+        // Floor duration to 1.0s minimum — iOS greys out skip buttons when duration is 0
+        info[MPMediaItemPropertyPlaybackDuration] = max((durationMs ?? 0.0) / 1000.0, 1.0)
         info[MPNowPlayingInfoPropertyElapsedPlaybackTime] = (positionMs ?? 0.0) / 1000.0
 
         MPNowPlayingInfoCenter.default().nowPlayingInfo = info
+    }
+
+    // MARK: - App Icon Loader
+
+    private func loadAppIcon() -> UIImage? {
+        if let img = UIImage(named: "AppIcon60x60") { return img }
+        if let img = UIImage(named: "AppIcon") { return img }
+        // Fallback: load via Info.plist CFBundleIcons
+        if let icons = Bundle.main.infoDictionary?["CFBundleIcons"] as? [String: Any],
+           let primary = icons["CFBundlePrimaryIcon"] as? [String: Any],
+           let files = primary["CFBundleIconFiles"] as? [String],
+           let name = files.last,
+           let img = UIImage(named: name) { return img }
+        return nil
     }
 
     // MARK: - Plugin Commands
@@ -270,8 +303,23 @@ class AudioKeepAlivePlugin: Plugin {
     @objc func startAudioKeepalive(_ invoke: Invoke) throws {
         let args = try invoke.parseArgs(StartKeepAliveArgs.self)
 
+        if isActive {
+            // Already running — just update metadata
+            bookTitle = args.bookTitle
+            currentlyPlaying = true
+            updateNowPlayingInfo(title: args.title, artist: args.artist,
+                                positionMs: args.positionMs, durationMs: args.durationMs)
+            invoke.resolve()
+            return
+        }
+
         bookTitle = args.bookTitle
         currentlyPlaying = true
+
+        // Load artwork once from app icon
+        if artwork == nil, let img = loadAppIcon() {
+            artwork = MPMediaItemArtwork(boundsSize: img.size) { _ in img }
+        }
 
         configureAudioSession()
         startSilentLoop()

@@ -24,7 +24,7 @@ export const MS_PER_Z_UNIT = 200
 export const LOOK_AHEAD_Z = 60
 
 /** How far behind (z-units) to keep words before recycling */
-export const LOOK_BEHIND_Z = 10
+export const LOOK_BEHIND_Z = 30
 
 /** Crawl curve max height (world units) at the far end of look-ahead */
 export const CRAWL_HEIGHT = 30
@@ -36,7 +36,7 @@ export const CRAWL_POWER = 2.5
 export const FADE_IN_Z = 50
 
 /** Fade-out end (z-units behind now-plane, fully transparent) */
-export const FADE_OUT_Z = -8
+export const FADE_OUT_Z = -25
 
 // ── Word Stream ────────────────────────────────────────────────────
 

@@ -9,6 +9,7 @@
     "core:default",
     "opener:default",
     "tts:allow-speak",
-    "tts:default"
+    "tts:default",
+    "audio-keepalive:default"
   ]
 }

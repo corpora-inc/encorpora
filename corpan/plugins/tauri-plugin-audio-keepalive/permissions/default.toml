@@ -1,0 +1,11 @@
+[default]
+description = "Default permissions for the audio-keepalive plugin"
+permissions = [
+    "allow-start-audio-keepalive",
+    "allow-stop-audio-keepalive",
+    "allow-update-now-playing",
+    "allow-pause-audio-keepalive",
+    "allow-resume-audio-keepalive",
+    "allow-register-listener",
+    "allow-remove-listener",
+]

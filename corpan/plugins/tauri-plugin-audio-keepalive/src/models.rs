@@ -20,3 +20,17 @@ pub struct NowPlayingArgs {
     pub book_title: Option<String>,
     pub is_playing: Option<bool>,
 }
+
+#[derive(Debug, Deserialize, Serialize)]
+#[serde(rename_all = "camelCase")]
+pub struct RegisterListenerArgs {
+    pub event: String,
+    pub handler: String,
+}
+
+#[derive(Debug, Deserialize, Serialize)]
+#[serde(rename_all = "camelCase")]
+pub struct RemoveListenerArgs {
+    pub event: String,
+    pub channel_id: Option<u64>,
+}

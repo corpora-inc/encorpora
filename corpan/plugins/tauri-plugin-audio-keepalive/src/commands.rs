@@ -1,5 +1,5 @@
 use crate::{
-    models::{NowPlayingArgs, StartKeepAliveArgs},
+    models::{NowPlayingArgs, RegisterListenerArgs, RemoveListenerArgs, StartKeepAliveArgs},
     AudioKeepAliveExt, Result,
 };
 use tauri::{command, AppHandle, Runtime};
@@ -40,4 +40,20 @@ pub(crate) async fn pause_audio_keepalive<R: Runtime>(app: AppHandle<R>) -> Resu
 pub(crate) async fn resume_audio_keepalive<R: Runtime>(app: AppHandle<R>) -> Result<()> {
     println!("[AUDIO_KEEPALIVE] resume");
     app.audio_keepalive().resume()
+}
+
+#[command]
+pub(crate) async fn register_listener<R: Runtime>(
+    app: AppHandle<R>,
+    args: RegisterListenerArgs,
+) -> Result<()> {
+    app.audio_keepalive().register_listener(args)
+}
+
+#[command]
+pub(crate) async fn remove_listener<R: Runtime>(
+    app: AppHandle<R>,
+    args: RemoveListenerArgs,
+) -> Result<()> {
+    app.audio_keepalive().remove_listener(args)
 }

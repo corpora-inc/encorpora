@@ -1,3 +1,17 @@
+## Default Permission
+
+Default permissions for the audio-keepalive plugin
+
+#### This default permission set includes the following:
+
+- `allow-start-audio-keepalive`
+- `allow-stop-audio-keepalive`
+- `allow-update-now-playing`
+- `allow-pause-audio-keepalive`
+- `allow-resume-audio-keepalive`
+- `allow-register-listener`
+- `allow-remove-listener`
+
 ## Permission Table
 
 <table>
@@ -6,6 +20,110 @@
 <th>Description</th>
 </tr>
 
+
+<tr>
+<td>
+
+`audio-keepalive:allow-pause-audio-keepalive`
+
+</td>
+<td>
+
+Enables the pause_audio_keepalive command without any pre-configured scope.
+
+</td>
+</tr>
+
+<tr>
+<td>
+
+`audio-keepalive:deny-pause-audio-keepalive`
+
+</td>
+<td>
+
+Denies the pause_audio_keepalive command without any pre-configured scope.
+
+</td>
+</tr>
+
+<tr>
+<td>
+
+`audio-keepalive:allow-register-listener`
+
+</td>
+<td>
+
+Enables the register_listener command without any pre-configured scope.
+
+</td>
+</tr>
+
+<tr>
+<td>
+
+`audio-keepalive:deny-register-listener`
+
+</td>
+<td>
+
+Denies the register_listener command without any pre-configured scope.
+
+</td>
+</tr>
+
+<tr>
+<td>
+
+`audio-keepalive:allow-remove-listener`
+
+</td>
+<td>
+
+Enables the remove_listener command without any pre-configured scope.
+
+</td>
+</tr>
+
+<tr>
+<td>
+
+`audio-keepalive:deny-remove-listener`
+
+</td>
+<td>
+
+Denies the remove_listener command without any pre-configured scope.
+
+</td>
+</tr>
+
+<tr>
+<td>
+
+`audio-keepalive:allow-resume-audio-keepalive`
+
+</td>
+<td>
+
+Enables the resume_audio_keepalive command without any pre-configured scope.
+
+</td>
+</tr>
+
+<tr>
+<td>
+
+`audio-keepalive:deny-resume-audio-keepalive`
+
+</td>
+<td>
+
+Denies the resume_audio_keepalive command without any pre-configured scope.
+
+</td>
+</tr>
 
 <tr>
 <td>

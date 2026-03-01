@@ -65,7 +65,11 @@ export function buildTimeline(
  */
 export function crawlY(z: number): number {
   const baseSlope = 0.35
-  if (z <= 0) return baseSlope * z
+  if (z <= 0) {
+    const absZ = Math.abs(z)
+    // Gentle drop to clear now-word, then steady drift so past words don't bunch
+    return -(0.4 * (1 - Math.exp(-absZ * 1.0)) + 0.05 * absZ)
+  }
   const t = Math.min(z / LOOK_AHEAD_Z, 1)
   const extra = CRAWL_HEIGHT - baseSlope * LOOK_AHEAD_Z
   return extra * Math.pow(t, CRAWL_POWER) + baseSlope * z

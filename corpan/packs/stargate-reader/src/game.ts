@@ -103,7 +103,7 @@ export function createStargateReader(
     if (!nativeSessionActive || !audioEngine) return
     void updateNativeNowPlaying(
       segments[audioEngine.getCurrentSegmentIndex()]?.title || "Stargate Reader",
-      bookDisplayName,
+      VOICE_NAMES[voiceMap[currentLanguage] || ""] || "Narrator",
       audioEngine.getCurrentTimeMs(),
       audioEngine.getTotalDurationMs(),
       isPlaying
@@ -124,8 +124,8 @@ export function createStargateReader(
     if (!nativeSessionActive) {
       void startNativeKeepAlive(
         segments[audioEngine.getCurrentSegmentIndex()]?.title || "Stargate Reader",
-        bookDisplayName,
         VOICE_NAMES[voiceMap[currentLanguage] || ""] || "Narrator",
+        bookDisplayName,
         audioEngine.getCurrentTimeMs(),
         audioEngine.getTotalDurationMs()
       )
@@ -133,8 +133,7 @@ export function createStargateReader(
     } else {
       void resumeNativeKeepAlive()
     }
-
-    // Sync native immediately (sets rate=1.0 + exact position)
+    // Always sync — sets exact position + rate
     syncNativeNowPlaying()
 
     // Background timers

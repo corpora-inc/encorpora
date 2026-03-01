@@ -125,10 +125,11 @@ export function listenForRemoteCommands(handlers: {
       handler()
     })
 
-    internals.invoke("plugin:audio-keepalive|registerListener", {
-      event,
-      handler: `__CHANNEL__:${channelId}`,
-    }).catch(() => {})
+    internals.invoke("plugin:audio-keepalive|register_listener", {
+      args: { event, handler: `__CHANNEL__:${channelId}` },
+    }).catch((err) => {
+      console.error(`[SR] FAILED to register listener for ${event}:`, err)
+    })
 
     registeredChannels.push({ event, channelId })
   }
@@ -141,10 +142,11 @@ export function listenForRemoteCommands(handlers: {
       onSeek(data?.positionMs ?? 0)
     })
 
-    internals.invoke("plugin:audio-keepalive|registerListener", {
-      event: "audio-keepalive:seek",
-      handler: `__CHANNEL__:${channelId}`,
-    }).catch(() => {})
+    internals.invoke("plugin:audio-keepalive|register_listener", {
+      args: { event: "audio-keepalive:seek", handler: `__CHANNEL__:${channelId}` },
+    }).catch((err) => {
+      console.error("[SR] FAILED to register listener for audio-keepalive:seek:", err)
+    })
 
     registeredChannels.push({ event: "audio-keepalive:seek", channelId })
   }
@@ -157,10 +159,11 @@ export function listenForRemoteCommands(handlers: {
       onInterruptionEnded(data?.shouldResume ?? false)
     })
 
-    internals.invoke("plugin:audio-keepalive|registerListener", {
-      event: "audio-keepalive:interruptionEnded",
-      handler: `__CHANNEL__:${channelId}`,
-    }).catch(() => {})
+    internals.invoke("plugin:audio-keepalive|register_listener", {
+      args: { event: "audio-keepalive:interruptionEnded", handler: `__CHANNEL__:${channelId}` },
+    }).catch((err) => {
+      console.error("[SR] FAILED to register listener for audio-keepalive:interruptionEnded:", err)
+    })
 
     registeredChannels.push({ event: "audio-keepalive:interruptionEnded", channelId })
   }
@@ -168,9 +171,8 @@ export function listenForRemoteCommands(handlers: {
   // Return cleanup function
   return () => {
     for (const { event, channelId } of registeredChannels) {
-      internals.invoke("plugin:audio-keepalive|removeListener", {
-        event,
-        channelId,
+      internals.invoke("plugin:audio-keepalive|remove_listener", {
+        args: { event, channelId },
       }).catch(() => {})
     }
   }
