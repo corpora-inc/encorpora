@@ -22,6 +22,11 @@ class AudioKeepAlivePlugin: Plugin {
     private var prevTrackTarget: Any?
     private var nextTrackTarget: Any?
 
+    private var seekTarget: Any?
+
+    // Play/pause state for correct playbackRate in now-playing info
+    private var currentlyPlaying = true
+
     // Stored book title for metadata
     private var bookTitle: String?
 
@@ -44,6 +49,14 @@ class AudioKeepAlivePlugin: Plugin {
                 name: AVAudioSession.interruptionNotification,
                 object: session
             )
+
+            // Listen for route changes (headphone disconnect, etc.)
+            NotificationCenter.default.addObserver(
+                self,
+                selector: #selector(handleRouteChange(_:)),
+                name: AVAudioSession.routeChangeNotification,
+                object: session
+            )
         } catch {
             print("[AUDIO_KEEPALIVE] Audio session setup failed: \(error.localizedDescription)")
         }
@@ -58,6 +71,11 @@ class AudioKeepAlivePlugin: Plugin {
         switch type {
         case .began:
             print("[AUDIO_KEEPALIVE] Interruption began (phone call, Siri, etc.)")
+            currentlyPlaying = false
+            var nowPlaying = MPNowPlayingInfoCenter.default().nowPlayingInfo ?? [:]
+            nowPlaying[MPNowPlayingInfoPropertyPlaybackRate] = 0.0
+            MPNowPlayingInfoCenter.default().nowPlayingInfo = nowPlaying
+            triggerWebViewEvent("audio-keepalive:interruptionBegan")
         case .ended:
             print("[AUDIO_KEEPALIVE] Interruption ended, resuming keepalive")
             // Re-activate session and restart engine
@@ -68,8 +86,29 @@ class AudioKeepAlivePlugin: Plugin {
             } catch {
                 print("[AUDIO_KEEPALIVE] Resume after interruption failed: \(error)")
             }
+            let canResume: Bool
+            if let optionsRaw = info[AVAudioSessionInterruptionOptionKey] as? UInt {
+                canResume = AVAudioSession.InterruptionOptions(rawValue: optionsRaw).contains(.shouldResume)
+            } else {
+                canResume = false
+            }
+            triggerWebViewEvent("audio-keepalive:interruptionEnded", data: ["shouldResume": canResume])
         @unknown default:
             break
+        }
+    }
+
+    @objc private func handleRouteChange(_ notification: Notification) {
+        guard let info = notification.userInfo,
+              let reasonRaw = info[AVAudioSessionRouteChangeReasonKey] as? UInt,
+              let reason = AVAudioSession.RouteChangeReason(rawValue: reasonRaw)
+        else { return }
+        if reason == .oldDeviceUnavailable {
+            currentlyPlaying = false
+            var nowPlaying = MPNowPlayingInfoCenter.default().nowPlayingInfo ?? [:]
+            nowPlaying[MPNowPlayingInfoPropertyPlaybackRate] = 0.0
+            MPNowPlayingInfoCenter.default().nowPlayingInfo = nowPlaying
+            triggerWebViewEvent("audio-keepalive:pause")
         }
     }
 
@@ -165,6 +204,12 @@ class AudioKeepAlivePlugin: Plugin {
             self?.triggerWebViewEvent("audio-keepalive:nextChapter")
             return .success
         }
+
+        seekTarget = center.changePlaybackPositionCommand.addTarget { [weak self] event in
+            guard let posEvent = event as? MPChangePlaybackPositionCommandEvent else { return .commandFailed }
+            self?.triggerWebViewEvent("audio-keepalive:seek", data: ["positionMs": posEvent.positionTime * 1000.0])
+            return .success
+        }
     }
 
     private func teardownRemoteCommands() {
@@ -175,23 +220,24 @@ class AudioKeepAlivePlugin: Plugin {
         if let t = skipBackTarget { center.skipBackwardCommand.removeTarget(t) }
         if let t = prevTrackTarget { center.previousTrackCommand.removeTarget(t) }
         if let t = nextTrackTarget { center.nextTrackCommand.removeTarget(t) }
+        if let t = seekTarget { center.changePlaybackPositionCommand.removeTarget(t) }
         playTarget = nil
         pauseTarget = nil
         skipForwardTarget = nil
         skipBackTarget = nil
         prevTrackTarget = nil
         nextTrackTarget = nil
+        seekTarget = nil
     }
 
-    private func triggerWebViewEvent(_ eventName: String) {
-        // Dispatch JavaScript event to the WebView so the pack can respond
-        trigger(eventName, data: [:])
+    private func triggerWebViewEvent(_ eventName: String, data: JSObject = [:]) {
+        trigger(eventName, data: data)
     }
 
     private func updateNowPlayingInfo(title: String?, artist: String?, positionMs: Double?, durationMs: Double?) {
         var info = MPNowPlayingInfoCenter.default().nowPlayingInfo ?? [String: Any]()
 
-        info[MPNowPlayingInfoPropertyPlaybackRate] = 1.0
+        info[MPNowPlayingInfoPropertyPlaybackRate] = currentlyPlaying ? 1.0 : 0.0
 
         if let title = title {
             info[MPMediaItemPropertyTitle] = title
@@ -218,6 +264,7 @@ class AudioKeepAlivePlugin: Plugin {
         let args = try invoke.parseArgs(StartKeepAliveArgs.self)
 
         bookTitle = args.bookTitle
+        currentlyPlaying = true
 
         configureAudioSession()
         startSilentLoop()
@@ -226,8 +273,8 @@ class AudioKeepAlivePlugin: Plugin {
         updateNowPlayingInfo(
             title: args.title,
             artist: args.artist,
-            positionMs: nil,
-            durationMs: nil
+            positionMs: args.positionMs,
+            durationMs: args.durationMs
         )
 
         isActive = true
@@ -248,13 +295,14 @@ class AudioKeepAlivePlugin: Plugin {
         }
 
         NotificationCenter.default.removeObserver(self, name: AVAudioSession.interruptionNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: AVAudioSession.routeChangeNotification, object: nil)
 
         isActive = false
         invoke.resolve()
     }
 
     @objc func pauseAudioKeepalive(_ invoke: Invoke) throws {
-        // Set playback rate to 0 so lock screen shows a play button (widget stays visible)
+        currentlyPlaying = false
         var info = MPNowPlayingInfoCenter.default().nowPlayingInfo ?? [String: Any]()
         info[MPNowPlayingInfoPropertyPlaybackRate] = 0.0
         MPNowPlayingInfoCenter.default().nowPlayingInfo = info
@@ -263,7 +311,7 @@ class AudioKeepAlivePlugin: Plugin {
     }
 
     @objc func resumeAudioKeepalive(_ invoke: Invoke) throws {
-        // Set playback rate back to 1.0 so lock screen shows a pause button
+        currentlyPlaying = true
         var info = MPNowPlayingInfoCenter.default().nowPlayingInfo ?? [String: Any]()
         info[MPNowPlayingInfoPropertyPlaybackRate] = 1.0
         MPNowPlayingInfoCenter.default().nowPlayingInfo = info
@@ -276,6 +324,9 @@ class AudioKeepAlivePlugin: Plugin {
 
         if let bt = args.bookTitle {
             bookTitle = bt
+        }
+        if let playing = args.isPlaying {
+            currentlyPlaying = playing
         }
 
         updateNowPlayingInfo(
@@ -295,6 +346,8 @@ struct StartKeepAliveArgs: Decodable {
     let title: String?
     let artist: String?
     let bookTitle: String?
+    let positionMs: Double?
+    let durationMs: Double?
 }
 
 struct NowPlayingArgs: Decodable {
@@ -303,6 +356,7 @@ struct NowPlayingArgs: Decodable {
     let positionMs: Double?
     let durationMs: Double?
     let bookTitle: String?
+    let isPlaying: Bool?
 }
 
 @_cdecl("init_plugin_audio_keepalive")

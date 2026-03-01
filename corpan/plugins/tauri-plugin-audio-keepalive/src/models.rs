@@ -6,6 +6,8 @@ pub struct StartKeepAliveArgs {
     pub title: Option<String>,
     pub artist: Option<String>,
     pub book_title: Option<String>,
+    pub position_ms: Option<f64>,
+    pub duration_ms: Option<f64>,
 }
 
 #[derive(Debug, Deserialize, Serialize)]
