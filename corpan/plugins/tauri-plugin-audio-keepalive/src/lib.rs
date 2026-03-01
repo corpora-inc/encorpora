@@ -44,6 +44,8 @@ pub fn init<R: Runtime>() -> TauriPlugin<R> {
             commands::start_audio_keepalive,
             commands::stop_audio_keepalive,
             commands::update_now_playing,
+            commands::pause_audio_keepalive,
+            commands::resume_audio_keepalive,
         ])
         .setup(|app, api| {
             #[cfg(mobile)]

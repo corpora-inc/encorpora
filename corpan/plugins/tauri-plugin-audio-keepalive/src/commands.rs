@@ -29,3 +29,15 @@ pub(crate) async fn update_now_playing<R: Runtime>(
 ) -> Result<()> {
     app.audio_keepalive().update_now_playing(args)
 }
+
+#[command]
+pub(crate) async fn pause_audio_keepalive<R: Runtime>(app: AppHandle<R>) -> Result<()> {
+    println!("[AUDIO_KEEPALIVE] pause");
+    app.audio_keepalive().pause()
+}
+
+#[command]
+pub(crate) async fn resume_audio_keepalive<R: Runtime>(app: AppHandle<R>) -> Result<()> {
+    println!("[AUDIO_KEEPALIVE] resume");
+    app.audio_keepalive().resume()
+}

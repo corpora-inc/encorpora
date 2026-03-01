@@ -1,5 +1,5 @@
 import type { SegmentsData, AudioManifest } from "../core/types"
-import { packFetchJson } from "./packFetch"
+import { packFetchJson, withRevision } from "./packFetch"
 
 export type DataProvider = {
   loadSegments: (language?: string) => Promise<SegmentsData>
@@ -12,28 +12,28 @@ export type DataProvider = {
  * Create a DataProvider that fetches data via HTTP.
  * Used in dev mode (Vite dev server or dev:corpan HTTP server).
  */
-export function createFetchDataProvider(baseUrl: string): DataProvider {
+export function createFetchDataProvider(baseUrl: string, revision?: string): DataProvider {
   const base = baseUrl.replace(/\/$/, "")
 
   return {
     async loadSegments(language?: string): Promise<SegmentsData> {
       const file = language && language !== "en" ? `segments_${language}.json` : "segments.json"
-      return packFetchJson(`${base}/${file}`) as Promise<SegmentsData>
+      return packFetchJson(withRevision(`${base}/${file}`, revision)) as Promise<SegmentsData>
     },
 
     async loadAudioManifest(language: string): Promise<AudioManifest> {
-      return packFetchJson(`${base}/audio_manifest_${language}.json`) as Promise<AudioManifest>
+      return packFetchJson(withRevision(`${base}/audio_manifest_${language}.json`, revision)) as Promise<AudioManifest>
     },
 
     resolveAudioUrl(relativePath: string): string {
-      return `${base}/${relativePath}`
+      return withRevision(`${base}/${relativePath}`, revision)
     },
 
     async detectLanguages(): Promise<string[]> {
       const catalogUrl = base.replace(/\/books\/[^/]+$/, "/catalog.json")
       const bookId = base.split("/").pop() || ""
       try {
-        const catalog = (await packFetchJson(catalogUrl)) as { id: string; availableLanguages?: string[] }[]
+        const catalog = (await packFetchJson(withRevision(catalogUrl, revision))) as { id: string; availableLanguages?: string[] }[]
         const entry = catalog.find((e) => e.id === bookId)
         return entry?.availableLanguages || []
       } catch {

@@ -55,6 +55,18 @@ export const CURRENT_WORD_SCALE = 1.0
 /** Scale for non-current words */
 export const WORD_SCALE = 1.0
 
+/** Y position the active word holds at (dead center on oscilloscope) */
+export const HOLD_Y = 0
+
+/** Z pull toward camera at peak effect (subtle ~10% perspective bump) */
+export const HOLD_Z_PULL = -0.4
+
+/** Envelope attack: fraction of word duration for ease-in */
+export const HOLD_ATTACK = 0.15
+
+/** Envelope release: fraction of word duration for ease-out */
+export const HOLD_RELEASE = 0.15
+
 // ── Oscilloscope ───────────────────────────────────────────────────
 
 /** FFT sample count (powers of 2) */

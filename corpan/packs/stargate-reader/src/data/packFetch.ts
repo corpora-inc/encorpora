@@ -7,16 +7,23 @@
  * In dev mode (no Tauri), they fall through to regular fetch().
  */
 
+export function withRevision(url: string, revision?: string): string {
+  if (!revision || url.startsWith("corpan-pack://")) return url
+  const sep = url.includes("?") ? "&" : "?"
+  return `${url}${sep}v=${encodeURIComponent(revision)}`
+}
+
 const tauriInvoke = (): ((cmd: string, args?: Record<string, unknown>) => Promise<unknown>) | undefined =>
   (window as unknown as { __TAURI_INTERNALS__?: { invoke: (cmd: string, args?: Record<string, unknown>) => Promise<unknown> } })
     .__TAURI_INTERNALS__?.invoke
 
 export async function packFetchJson(url: string): Promise<unknown> {
   const invoke = tauriInvoke()
-  if (invoke && url.startsWith("corpan-pack://")) {
+  if (invoke) {
     const text = (await invoke("content_packs_fetch_text", { url })) as string
     return JSON.parse(text)
   }
+  // Fallback: browser fetch (standalone dev mode, no Tauri)
   const resp = await fetch(url)
   if (!resp.ok) throw new Error(`HTTP ${resp.status} ${resp.statusText}`)
   return resp.json()
@@ -24,9 +31,10 @@ export async function packFetchJson(url: string): Promise<unknown> {
 
 export async function packFetchArrayBuffer(url: string): Promise<ArrayBuffer> {
   const invoke = tauriInvoke()
-  if (invoke && url.startsWith("corpan-pack://")) {
+  if (invoke) {
     return (await invoke("content_packs_fetch_bytes", { url })) as ArrayBuffer
   }
+  // Fallback: browser fetch (standalone dev mode, no Tauri)
   const resp = await fetch(url)
   if (!resp.ok) throw new Error(`HTTP ${resp.status} ${resp.statusText}`)
   return resp.arrayBuffer()

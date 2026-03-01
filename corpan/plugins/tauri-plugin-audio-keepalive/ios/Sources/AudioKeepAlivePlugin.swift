@@ -19,6 +19,11 @@ class AudioKeepAlivePlugin: Plugin {
     private var pauseTarget: Any?
     private var skipForwardTarget: Any?
     private var skipBackTarget: Any?
+    private var prevTrackTarget: Any?
+    private var nextTrackTarget: Any?
+
+    // Stored book title for metadata
+    private var bookTitle: String?
 
     override init() {
         super.init()
@@ -150,6 +155,16 @@ class AudioKeepAlivePlugin: Plugin {
             return .success
         }
         center.skipBackwardCommand.preferredIntervals = [30]
+
+        prevTrackTarget = center.previousTrackCommand.addTarget { [weak self] _ in
+            self?.triggerWebViewEvent("audio-keepalive:prevChapter")
+            return .success
+        }
+
+        nextTrackTarget = center.nextTrackCommand.addTarget { [weak self] _ in
+            self?.triggerWebViewEvent("audio-keepalive:nextChapter")
+            return .success
+        }
     }
 
     private func teardownRemoteCommands() {
@@ -158,10 +173,14 @@ class AudioKeepAlivePlugin: Plugin {
         if let t = pauseTarget { center.pauseCommand.removeTarget(t) }
         if let t = skipForwardTarget { center.skipForwardCommand.removeTarget(t) }
         if let t = skipBackTarget { center.skipBackwardCommand.removeTarget(t) }
+        if let t = prevTrackTarget { center.previousTrackCommand.removeTarget(t) }
+        if let t = nextTrackTarget { center.nextTrackCommand.removeTarget(t) }
         playTarget = nil
         pauseTarget = nil
         skipForwardTarget = nil
         skipBackTarget = nil
+        prevTrackTarget = nil
+        nextTrackTarget = nil
     }
 
     private func triggerWebViewEvent(_ eventName: String) {
@@ -170,15 +189,18 @@ class AudioKeepAlivePlugin: Plugin {
     }
 
     private func updateNowPlayingInfo(title: String?, artist: String?, positionMs: Double?, durationMs: Double?) {
-        var info: [String: Any] = [
-            MPNowPlayingInfoPropertyPlaybackRate: 1.0,
-        ]
+        var info = MPNowPlayingInfoCenter.default().nowPlayingInfo ?? [String: Any]()
+
+        info[MPNowPlayingInfoPropertyPlaybackRate] = 1.0
 
         if let title = title {
             info[MPMediaItemPropertyTitle] = title
         }
         if let artist = artist {
             info[MPMediaItemPropertyArtist] = artist
+        }
+        if let bookTitle = bookTitle {
+            info[MPMediaItemPropertyAlbumTitle] = bookTitle
         }
         if let durationMs = durationMs {
             info[MPMediaItemPropertyPlaybackDuration] = durationMs / 1000.0
@@ -194,6 +216,8 @@ class AudioKeepAlivePlugin: Plugin {
 
     @objc func startAudioKeepalive(_ invoke: Invoke) throws {
         let args = try invoke.parseArgs(StartKeepAliveArgs.self)
+
+        bookTitle = args.bookTitle
 
         configureAudioSession()
         startSilentLoop()
@@ -229,8 +253,30 @@ class AudioKeepAlivePlugin: Plugin {
         invoke.resolve()
     }
 
+    @objc func pauseAudioKeepalive(_ invoke: Invoke) throws {
+        // Set playback rate to 0 so lock screen shows a play button (widget stays visible)
+        var info = MPNowPlayingInfoCenter.default().nowPlayingInfo ?? [String: Any]()
+        info[MPNowPlayingInfoPropertyPlaybackRate] = 0.0
+        MPNowPlayingInfoCenter.default().nowPlayingInfo = info
+
+        invoke.resolve()
+    }
+
+    @objc func resumeAudioKeepalive(_ invoke: Invoke) throws {
+        // Set playback rate back to 1.0 so lock screen shows a pause button
+        var info = MPNowPlayingInfoCenter.default().nowPlayingInfo ?? [String: Any]()
+        info[MPNowPlayingInfoPropertyPlaybackRate] = 1.0
+        MPNowPlayingInfoCenter.default().nowPlayingInfo = info
+
+        invoke.resolve()
+    }
+
     @objc func updateNowPlaying(_ invoke: Invoke) throws {
         let args = try invoke.parseArgs(NowPlayingArgs.self)
+
+        if let bt = args.bookTitle {
+            bookTitle = bt
+        }
 
         updateNowPlayingInfo(
             title: args.title,
@@ -256,6 +302,7 @@ struct NowPlayingArgs: Decodable {
     let artist: String?
     let positionMs: Double?
     let durationMs: Double?
+    let bookTitle: String?
 }
 
 @_cdecl("init_plugin_audio_keepalive")

@@ -32,6 +32,8 @@ class AudioKeepAliveService : Service() {
     private var wakeLock: PowerManager.WakeLock? = null
     private var currentTitle = "Stargate Reader"
     private var currentArtist = "Narrator"
+    private var currentBookTitle = ""
+    private var isPlaying = true
 
     override fun onBind(intent: Intent?): IBinder? = null
 
@@ -47,15 +49,28 @@ class AudioKeepAliveService : Service() {
             "UPDATE_NOW_PLAYING" -> {
                 intent.getStringExtra("title")?.let { currentTitle = it }
                 intent.getStringExtra("artist")?.let { currentArtist = it }
+                intent.getStringExtra("bookTitle")?.let { currentBookTitle = it }
                 val positionMs = if (intent.hasExtra("positionMs")) intent.getDoubleExtra("positionMs", 0.0) else null
                 val durationMs = if (intent.hasExtra("durationMs")) intent.getDoubleExtra("durationMs", 0.0) else null
                 updateMediaSession(positionMs, durationMs)
+                updateNotification()
+            }
+            "PAUSE_PLAYBACK" -> {
+                isPlaying = false
+                updateMediaSession(null, null)
+                updateNotification()
+            }
+            "RESUME_PLAYBACK" -> {
+                isPlaying = true
+                updateMediaSession(null, null)
                 updateNotification()
             }
             else -> {
                 // Initial start
                 intent?.getStringExtra("title")?.let { currentTitle = it }
                 intent?.getStringExtra("artist")?.let { currentArtist = it }
+                intent?.getStringExtra("bookTitle")?.let { currentBookTitle = it }
+                isPlaying = true
                 updateMediaSession(null, null)
                 startForeground(NOTIFICATION_ID, buildNotification())
             }
@@ -94,16 +109,16 @@ class AudioKeepAliveService : Service() {
             )
             setCallback(object : MediaSessionCompat.Callback() {
                 override fun onPlay() {
-                    // TODO: relay to WebView via Tauri event
+                    AudioKeepAlivePlugin.onMediaCommand?.invoke("audio-keepalive:play")
                 }
                 override fun onPause() {
-                    // TODO: relay to WebView via Tauri event
+                    AudioKeepAlivePlugin.onMediaCommand?.invoke("audio-keepalive:pause")
                 }
                 override fun onSkipToNext() {
-                    // TODO: relay to WebView
+                    AudioKeepAlivePlugin.onMediaCommand?.invoke("audio-keepalive:skipForward")
                 }
                 override fun onSkipToPrevious() {
-                    // TODO: relay to WebView
+                    AudioKeepAlivePlugin.onMediaCommand?.invoke("audio-keepalive:skipBack")
                 }
             })
             isActive = true
@@ -116,12 +131,18 @@ class AudioKeepAliveService : Service() {
                 .putString(MediaMetadataCompat.METADATA_KEY_TITLE, currentTitle)
                 .putString(MediaMetadataCompat.METADATA_KEY_ARTIST, currentArtist)
                 .apply {
+                    if (currentBookTitle.isNotEmpty()) {
+                        putString(MediaMetadataCompat.METADATA_KEY_ALBUM, currentBookTitle)
+                    }
                     durationMs?.let {
                         putLong(MediaMetadataCompat.METADATA_KEY_DURATION, it.toLong())
                     }
                 }
                 .build()
         )
+
+        val state = if (isPlaying) PlaybackStateCompat.STATE_PLAYING else PlaybackStateCompat.STATE_PAUSED
+        val rate = if (isPlaying) 1.0f else 0.0f
 
         val stateBuilder = PlaybackStateCompat.Builder()
             .setActions(
@@ -131,9 +152,9 @@ class AudioKeepAliveService : Service() {
                 PlaybackStateCompat.ACTION_SKIP_TO_PREVIOUS
             )
             .setState(
-                PlaybackStateCompat.STATE_PLAYING,
+                state,
                 positionMs?.toLong() ?: PlaybackStateCompat.PLAYBACK_POSITION_UNKNOWN,
-                1.0f
+                rate
             )
 
         mediaSession?.setPlaybackState(stateBuilder.build())

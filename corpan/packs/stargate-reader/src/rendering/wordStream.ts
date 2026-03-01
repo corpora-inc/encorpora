@@ -12,6 +12,10 @@ import {
   CURRENT_WORD_SCALE,
   FADE_IN_Z,
   FADE_OUT_Z,
+  HOLD_ATTACK,
+  HOLD_RELEASE,
+  HOLD_Y,
+  HOLD_Z_PULL,
   LOOK_AHEAD_Z,
   LOOK_BEHIND_Z,
   MS_PER_Z_UNIT,
@@ -30,9 +34,12 @@ type WordMesh = {
   assignedWord: string
 }
 
+export type WordHoldConfig = { holdY?: number; zPull?: number }
+
 export type WordStream = {
   root: TransformNode
-  update: (currentMs: number, words: TimelineWord[], currentWordIndex: number) => void
+  update: (currentMs: number, words: TimelineWord[], currentWordIndex: number, wordHold?: boolean) => void
+  configure: (config: WordHoldConfig) => void
   dispose: () => void
 }
 
@@ -48,10 +55,14 @@ export function createWordStream(scene: Scene): WordStream {
   const root = new TransformNode("word-stream", scene)
   const pool: WordMesh[] = []
 
+  // Mutable hold config (overridden via configure())
+  let holdY = HOLD_Y
+  let holdZPull = Math.abs(HOLD_Z_PULL)
+
   // Color palette
-  const normalColor = new Color3(0.85, 0.92, 1.0)
-  const currentColor = new Color3(0.5, 0.85, 1.0)
-  const dimColor = new Color3(0.4, 0.5, 0.65)
+  const approachColor = new Color3(0.5, 0.85, 1.0)   // cyan while traveling down
+  const currentColor = new Color3(1.0, 1.0, 1.0)      // white when spoken
+  const dimColor = new Color3(0.4, 0.3, 0.55)         // purple fade after passing
 
   // Create mesh pool — each mesh is a simple plane in the x-y plane
   for (let i = 0; i < WORD_POOL_SIZE; i++) {
@@ -64,7 +75,7 @@ export function createWordStream(scene: Scene): WordStream {
     texture.hasAlpha = true
 
     const material = new StandardMaterial(`word-mat-${i}`, scene)
-    material.emissiveColor = normalColor.clone()
+    material.emissiveColor = approachColor.clone()
     material.diffuseTexture = texture
     material.opacityTexture = texture
     material.disableLighting = true
@@ -140,7 +151,7 @@ export function createWordStream(scene: Scene): WordStream {
   return {
     root,
 
-    update: (currentMs: number, words: TimelineWord[], currentWordIndex: number) => {
+    update: (currentMs: number, words: TimelineWord[], currentWordIndex: number, wordHold = true) => {
       const lookAheadMs = LOOK_AHEAD_Z * MS_PER_Z_UNIT
       const lookBehindMs = LOOK_BEHIND_Z * MS_PER_Z_UNIT
 
@@ -182,14 +193,20 @@ export function createWordStream(scene: Scene): WordStream {
         renderWord(mesh, word.word)
         mesh.plane.isVisible = true
 
-        // Single-file layout: centered on x, y rises with z so distant words
-        // appear at top of screen and descend toward camera (like 3read)
         mesh.plane.position.x = 0
-        mesh.plane.position.y = crawlY(z)
-        mesh.plane.position.z = z
-
-        // Scale: current word gets a boost
         const isCurrent = i === currentWordIndex
+
+        if (isCurrent && wordHold && word.durationMs > 0) {
+          const t = (currentMs - word.absoluteStartMs) / word.durationMs
+          const env = holdEnvelope(t, HOLD_ATTACK, HOLD_RELEASE)
+          const naturalY = crawlY(z)
+          mesh.plane.position.y = naturalY + env * (holdY - naturalY)
+          mesh.plane.position.z = z + env * -holdZPull
+        } else {
+          mesh.plane.position.y = crawlY(z)
+          mesh.plane.position.z = z
+        }
+
         const scale = isCurrent ? CURRENT_WORD_SCALE : WORD_SCALE
         mesh.plane.scaling.x = scale
         mesh.plane.scaling.y = scale
@@ -203,9 +220,14 @@ export function createWordStream(scene: Scene): WordStream {
         } else if (z < 0) {
           mesh.material.emissiveColor = dimColor
         } else {
-          mesh.material.emissiveColor = normalColor
+          mesh.material.emissiveColor = approachColor
         }
       }
+    },
+
+    configure: (config: WordHoldConfig) => {
+      if (config.holdY !== undefined) holdY = config.holdY
+      if (config.zPull !== undefined) holdZPull = config.zPull
     },
 
     dispose: () => {
@@ -224,6 +246,17 @@ export function createWordStream(scene: Scene): WordStream {
  * Compute fade alpha based on z-position.
  * Fade in from far to FADE_IN_Z, fully visible in the middle, fade out behind FADE_OUT_Z.
  */
+function holdEnvelope(t: number, attack: number, release: number): number {
+  if (t <= 0 || t >= 1) return 0
+  const totalRamp = attack + release
+  const s = totalRamp > 1 ? 1 / totalRamp : 1
+  const a = attack * s
+  const r = release * s
+  if (t < a) { const u = t / a; return u * u * (3 - 2 * u) }
+  if (t > 1 - r) { const u = (1 - t) / r; return u * u * (3 - 2 * u) }
+  return 1
+}
+
 function computeFade(z: number): number {
   if (z > FADE_IN_Z) {
     return 0

@@ -60,7 +60,7 @@ Add permissions:
 Add service inside `<application>`:
 ```xml
 <service
-    android:name=".AudioKeepAliveService"
+    android:name="com.corpora.audio_keepalive.AudioKeepAliveService"
     android:foregroundServiceType="mediaPlayback"
     android:exported="false" />
 ```
