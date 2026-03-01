@@ -10,7 +10,7 @@ import {
 } from "@babylonjs/core"
 import type { HostApi } from "./sdk/types"
 import type { AudioManifest, BookSegment, TimelineWord } from "./core/types"
-import { CAMERA_FOV, CAMERA_Z, GLOW_INTENSITY, LANGUAGE_NAMES, VOICE_NAMES } from "./core/constants"
+import { CAMERA_FOV, CAMERA_Z, GLOW_INTENSITY, LANGUAGE_NAMES, VOICE_NAMES, BOOK_NAMES } from "./core/constants"
 import { buildTimeline, findCurrentWordIndex, buildChapterIndex } from "./core/timeline"
 import type { ChapterInfo } from "./core/types"
 import {
@@ -33,6 +33,8 @@ import { loadPrefs, savePrefs, type DisplayPrefs } from "./state/prefsStore"
 import {
   startNativeKeepAlive,
   stopNativeKeepAlive,
+  pauseNativeKeepAlive,
+  resumeNativeKeepAlive,
   updateNativeNowPlaying,
   listenForRemoteCommands,
 } from "./audio/nativeKeepAlive"
@@ -101,7 +103,7 @@ export function createStargateReader(
     if (!nativeSessionActive || !audioEngine) return
     void updateNativeNowPlaying(
       segments[audioEngine.getCurrentSegmentIndex()]?.title || "Stargate Reader",
-      VOICE_NAMES[voiceMap[currentLanguage] || ""] || "Narrator",
+      bookDisplayName,
       audioEngine.getCurrentTimeMs(),
       audioEngine.getTotalDurationMs(),
       isPlaying
@@ -122,12 +124,14 @@ export function createStargateReader(
     if (!nativeSessionActive) {
       void startNativeKeepAlive(
         segments[audioEngine.getCurrentSegmentIndex()]?.title || "Stargate Reader",
+        bookDisplayName,
         VOICE_NAMES[voiceMap[currentLanguage] || ""] || "Narrator",
-        bookId,
         audioEngine.getCurrentTimeMs(),
         audioEngine.getTotalDurationMs()
       )
       nativeSessionActive = true
+    } else {
+      void resumeNativeKeepAlive()
     }
 
     // Sync native immediately (sets rate=1.0 + exact position)
@@ -148,11 +152,8 @@ export function createStargateReader(
     transport.setPlaying(false)
     persistBookmark()
     releaseWakeLock()
-
-    // Sync native immediately (sets rate=0.0 + exact pause position)
+    void pauseNativeKeepAlive()
     syncNativeNowPlaying()
-
-    // Clear background timers
     stopBackgroundTimers()
     if (document.hidden) backgroundedAt = 0
   }
@@ -179,6 +180,8 @@ export function createStargateReader(
     (typeof window !== "undefined"
       ? new URLSearchParams(window.location.search).get("book") || "book_monte_alban"
       : "unknown")
+
+  const bookDisplayName = BOOK_NAMES[bookId] || bookId
 
   // Bookmark persistence
   function persistBookmark() {
@@ -482,8 +485,8 @@ export function createStargateReader(
 
     navigator.mediaSession.metadata = new MediaMetadata({
       title: segments[0]?.title || "Stargate Reader",
-      artist: VOICE_NAMES[voiceMap[currentLanguage] || ""] || "Narrator",
-      album: bookId,
+      artist: bookDisplayName,
+      album: VOICE_NAMES[voiceMap[currentLanguage] || ""] || "Narrator",
     })
 
     navigator.mediaSession.setActionHandler("play", () => { doPlay() })
@@ -504,8 +507,8 @@ export function createStargateReader(
     if (seg) {
       navigator.mediaSession.metadata = new MediaMetadata({
         title: seg.title || "Stargate Reader",
-        artist: VOICE_NAMES[voiceMap[currentLanguage] || ""] || "Narrator",
-        album: bookId,
+        artist: bookDisplayName,
+        album: VOICE_NAMES[voiceMap[currentLanguage] || ""] || "Narrator",
       })
     }
     navigator.mediaSession.setPositionState({

@@ -151,3 +151,7 @@ export const LANGUAGE_NAMES: Record<string, string> = {
 export const VOICE_NAMES: Record<string, string> = {
   "ian-narration": "Ian",
 }
+
+export const BOOK_NAMES: Record<string, string> = {
+  book_monte_alban: "The Mystery of Monte Albán",
+}

@@ -174,12 +174,22 @@ class AudioKeepAlivePlugin: Plugin {
         let center = MPRemoteCommandCenter.shared()
 
         playTarget = center.playCommand.addTarget { [weak self] _ in
-            self?.triggerWebViewEvent("audio-keepalive:play")
+            guard let self = self else { return .commandFailed }
+            self.currentlyPlaying = true
+            var info = MPNowPlayingInfoCenter.default().nowPlayingInfo ?? [String: Any]()
+            info[MPNowPlayingInfoPropertyPlaybackRate] = 1.0
+            MPNowPlayingInfoCenter.default().nowPlayingInfo = info
+            self.triggerWebViewEvent("audio-keepalive:play")
             return .success
         }
 
         pauseTarget = center.pauseCommand.addTarget { [weak self] _ in
-            self?.triggerWebViewEvent("audio-keepalive:pause")
+            guard let self = self else { return .commandFailed }
+            self.currentlyPlaying = false
+            var info = MPNowPlayingInfoCenter.default().nowPlayingInfo ?? [String: Any]()
+            info[MPNowPlayingInfoPropertyPlaybackRate] = 0.0
+            MPNowPlayingInfoCenter.default().nowPlayingInfo = info
+            self.triggerWebViewEvent("audio-keepalive:pause")
             return .success
         }
 
@@ -248,12 +258,9 @@ class AudioKeepAlivePlugin: Plugin {
         if let bookTitle = bookTitle {
             info[MPMediaItemPropertyAlbumTitle] = bookTitle
         }
-        if let durationMs = durationMs {
-            info[MPMediaItemPropertyPlaybackDuration] = durationMs / 1000.0
-        }
-        if let positionMs = positionMs {
-            info[MPNowPlayingInfoPropertyElapsedPlaybackTime] = positionMs / 1000.0
-        }
+        // Always set duration and position — iOS needs these for seek bar + time display
+        info[MPMediaItemPropertyPlaybackDuration] = (durationMs ?? 0.0) / 1000.0
+        info[MPNowPlayingInfoPropertyElapsedPlaybackTime] = (positionMs ?? 0.0) / 1000.0
 
         MPNowPlayingInfoCenter.default().nowPlayingInfo = info
     }
