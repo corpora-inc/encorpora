@@ -214,7 +214,7 @@ export function PacksListing({
             </div>
           </div>
           <input
-            className="w-full rounded-md border border-input px-3 py-2 text-sm bg-background"
+            className="w-full rounded-md border border-input px-3 py-2 text-base bg-background"
             placeholder={t("packs.manifestPlaceholder")}
             value={manifestUrl}
             onChange={(event) => setManifestUrl(event.target.value)}

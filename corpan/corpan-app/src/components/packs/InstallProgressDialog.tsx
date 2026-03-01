@@ -196,7 +196,7 @@ export function InstallProgressDialog({
 
           {/* Pack name */}
           {state.packName && (
-            <p className="text-sm font-medium text-muted-foreground text-center truncate max-w-full">
+            <p className="text-sm font-medium text-muted-foreground text-center break-all max-w-full">
               {state.packName}
             </p>
           )}
