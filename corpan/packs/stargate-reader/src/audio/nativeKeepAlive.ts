@@ -22,13 +22,15 @@ function getTauriInternals(): TauriInternals | undefined {
 export async function startNativeKeepAlive(
   title: string,
   artist: string,
-  bookTitle: string
+  bookTitle: string,
+  positionMs?: number,
+  durationMs?: number
 ): Promise<void> {
   const internals = getTauriInternals()
   if (!internals) return
   try {
     await internals.invoke("plugin:audio-keepalive|start_audio_keepalive", {
-      args: { title, artist, bookTitle },
+      args: { title, artist, bookTitle, positionMs, durationMs },
     })
   } catch {
     // Plugin not available or call failed — non-fatal
@@ -69,13 +71,14 @@ export async function updateNativeNowPlaying(
   title: string,
   artist: string,
   positionMs: number,
-  durationMs: number
+  durationMs: number,
+  isPlaying?: boolean
 ): Promise<void> {
   const internals = getTauriInternals()
   if (!internals) return
   try {
     await internals.invoke("plugin:audio-keepalive|update_now_playing", {
-      args: { title, artist, positionMs, durationMs },
+      args: { title, artist, positionMs, durationMs, isPlaying },
     })
   } catch {
     // Non-fatal
@@ -95,22 +98,27 @@ export function listenForRemoteCommands(handlers: {
   onSkipBack?: () => void
   onNextChapter?: () => void
   onPrevChapter?: () => void
+  onSeek?: (positionMs: number) => void
+  onInterruptionBegan?: () => void
+  onInterruptionEnded?: (shouldResume: boolean) => void
 }): (() => void) | null {
   const internals = getTauriInternals()
   if (!internals?.transformCallback) return null
 
-  const eventMap: Record<string, (() => void) | undefined> = {
+  const registeredChannels: { event: string; channelId: number }[] = []
+
+  // Simple events (no data payload)
+  const simpleEventMap: Record<string, (() => void) | undefined> = {
     "audio-keepalive:play": handlers.onPlay,
     "audio-keepalive:pause": handlers.onPause,
     "audio-keepalive:skipForward": handlers.onSkipForward,
     "audio-keepalive:skipBack": handlers.onSkipBack,
     "audio-keepalive:nextChapter": handlers.onNextChapter,
     "audio-keepalive:prevChapter": handlers.onPrevChapter,
+    "audio-keepalive:interruptionBegan": handlers.onInterruptionBegan,
   }
 
-  const registeredChannels: { event: string; channelId: number }[] = []
-
-  for (const [event, handler] of Object.entries(eventMap)) {
+  for (const [event, handler] of Object.entries(simpleEventMap)) {
     if (!handler) continue
 
     const channelId = internals.transformCallback(() => {
@@ -120,11 +128,41 @@ export function listenForRemoteCommands(handlers: {
     internals.invoke("plugin:audio-keepalive|registerListener", {
       event,
       handler: `__CHANNEL__:${channelId}`,
-    }).catch(() => {
-      // Non-fatal: plugin may not support registerListener
-    })
+    }).catch(() => {})
 
     registeredChannels.push({ event, channelId })
+  }
+
+  // Seek event (carries positionMs)
+  if (handlers.onSeek) {
+    const onSeek = handlers.onSeek
+    const channelId = internals.transformCallback((response: unknown) => {
+      const data = response as { positionMs?: number }
+      onSeek(data?.positionMs ?? 0)
+    })
+
+    internals.invoke("plugin:audio-keepalive|registerListener", {
+      event: "audio-keepalive:seek",
+      handler: `__CHANNEL__:${channelId}`,
+    }).catch(() => {})
+
+    registeredChannels.push({ event: "audio-keepalive:seek", channelId })
+  }
+
+  // Interruption ended event (carries shouldResume)
+  if (handlers.onInterruptionEnded) {
+    const onInterruptionEnded = handlers.onInterruptionEnded
+    const channelId = internals.transformCallback((response: unknown) => {
+      const data = response as { shouldResume?: boolean }
+      onInterruptionEnded(data?.shouldResume ?? false)
+    })
+
+    internals.invoke("plugin:audio-keepalive|registerListener", {
+      event: "audio-keepalive:interruptionEnded",
+      handler: `__CHANNEL__:${channelId}`,
+    }).catch(() => {})
+
+    registeredChannels.push({ event: "audio-keepalive:interruptionEnded", channelId })
   }
 
   // Return cleanup function

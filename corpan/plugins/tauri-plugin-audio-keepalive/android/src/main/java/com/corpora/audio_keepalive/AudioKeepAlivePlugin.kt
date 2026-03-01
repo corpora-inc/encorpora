@@ -15,6 +15,8 @@ internal class StartKeepAliveArgs {
     var title: String? = null
     var artist: String? = null
     var bookTitle: String? = null
+    var positionMs: Double? = null
+    var durationMs: Double? = null
 }
 
 @InvokeArg
@@ -24,13 +26,14 @@ internal class NowPlayingArgs {
     var positionMs: Double? = null
     var durationMs: Double? = null
     var bookTitle: String? = null
+    var isPlaying: Boolean? = null
 }
 
 @TauriPlugin
 class AudioKeepAlivePlugin(private val activity: Activity) : Plugin(activity) {
 
     companion object {
-        var onMediaCommand: ((String) -> Unit)? = null
+        var onMediaCommand: ((String, JSObject) -> Unit)? = null
     }
 
     private var isActive = false
@@ -49,6 +52,8 @@ class AudioKeepAlivePlugin(private val activity: Activity) : Plugin(activity) {
                 putExtra("title", args.title ?: "Stargate Reader")
                 putExtra("artist", args.artist ?: "Narrator")
                 putExtra("bookTitle", args.bookTitle ?: "")
+                args.positionMs?.let { putExtra("positionMs", it) }
+                args.durationMs?.let { putExtra("durationMs", it) }
             }
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -57,7 +62,7 @@ class AudioKeepAlivePlugin(private val activity: Activity) : Plugin(activity) {
                 activity.startService(serviceIntent)
             }
 
-            onMediaCommand = { cmd -> trigger(cmd, JSObject()) }
+            onMediaCommand = { cmd, data -> trigger(cmd, data) }
             isActive = true
             invoke.resolve()
         } catch (e: Exception) {
@@ -121,6 +126,7 @@ class AudioKeepAlivePlugin(private val activity: Activity) : Plugin(activity) {
                 args.positionMs?.let { putExtra("positionMs", it) }
                 args.durationMs?.let { putExtra("durationMs", it) }
                 args.bookTitle?.let { putExtra("bookTitle", it) }
+                args.isPlaying?.let { putExtra("isPlaying", it) }
             }
             activity.startService(updateIntent)
             invoke.resolve()

@@ -33,8 +33,6 @@ import { loadPrefs, savePrefs, type DisplayPrefs } from "./state/prefsStore"
 import {
   startNativeKeepAlive,
   stopNativeKeepAlive,
-  pauseNativeKeepAlive,
-  resumeNativeKeepAlive,
   updateNativeNowPlaying,
   listenForRemoteCommands,
 } from "./audio/nativeKeepAlive"
@@ -71,6 +69,7 @@ export function createStargateReader(
 
   // --- Background audio keepalive ---
   let bgKeepAlive: ReturnType<typeof setInterval> | null = null
+  let bgNowPlayingTimer: ReturnType<typeof setInterval> | null = null
   let nativeSessionActive = false
   let removeRemoteListeners: (() => void) | null = null
 
@@ -78,21 +77,67 @@ export function createStargateReader(
   let backgroundedAt = 0        // wall-clock ms when app went to background
   let backgroundedAudioMs = 0   // audio position ms when app went to background
 
+  // --- Background timer management ---
+  function startBackgroundTimers() {
+    if (!bgKeepAlive) {
+      bgKeepAlive = setInterval(() => { audioEngine?.unlock() }, 5000)
+    }
+    if (!bgNowPlayingTimer) {
+      bgNowPlayingTimer = setInterval(() => {
+        if (!audioEngine || !isPlaying) return
+        syncNativeNowPlaying()
+        persistBookmark()
+      }, 10000)
+    }
+  }
+
+  function stopBackgroundTimers() {
+    if (bgKeepAlive) { clearInterval(bgKeepAlive); bgKeepAlive = null }
+    if (bgNowPlayingTimer) { clearInterval(bgNowPlayingTimer); bgNowPlayingTimer = null }
+  }
+
+  // --- Single source of truth for native now-playing sync ---
+  function syncNativeNowPlaying() {
+    if (!nativeSessionActive || !audioEngine) return
+    void updateNativeNowPlaying(
+      segments[audioEngine.getCurrentSegmentIndex()]?.title || "Stargate Reader",
+      VOICE_NAMES[voiceMap[currentLanguage] || ""] || "Narrator",
+      audioEngine.getCurrentTimeMs(),
+      audioEngine.getTotalDurationMs(),
+      isPlaying
+    )
+  }
+
   // --- Centralized play/pause helpers (background-aware) ---
-  function doPlay() {
+  async function doPlay() {
     if (!audioEngine) return
+    await audioEngine.recoverContext()
     audioEngine.unlock()
     audioEngine.play()
     isPlaying = true
     transport.setPlaying(true)
     void requestWakeLock()
-    // If backgrounded, reset tracking baseline and ensure keepalive
+
+    // Ensure native session exists
+    if (!nativeSessionActive) {
+      void startNativeKeepAlive(
+        segments[audioEngine.getCurrentSegmentIndex()]?.title || "Stargate Reader",
+        VOICE_NAMES[voiceMap[currentLanguage] || ""] || "Narrator",
+        bookId,
+        audioEngine.getCurrentTimeMs(),
+        audioEngine.getTotalDurationMs()
+      )
+      nativeSessionActive = true
+    }
+
+    // Sync native immediately (sets rate=1.0 + exact position)
+    syncNativeNowPlaying()
+
+    // Background timers
     if (document.hidden) {
       backgroundedAt = Date.now()
       backgroundedAudioMs = audioEngine.getCurrentTimeMs()
-      if (!bgKeepAlive) {
-        bgKeepAlive = setInterval(() => { audioEngine?.unlock() }, 5000)
-      }
+      startBackgroundTimers()
     }
   }
 
@@ -103,11 +148,13 @@ export function createStargateReader(
     transport.setPlaying(false)
     persistBookmark()
     releaseWakeLock()
-    // If backgrounded, clear keepalive and reset tracking
-    if (document.hidden) {
-      if (bgKeepAlive) { clearInterval(bgKeepAlive); bgKeepAlive = null }
-      backgroundedAt = 0
-    }
+
+    // Sync native immediately (sets rate=0.0 + exact pause position)
+    syncNativeNowPlaying()
+
+    // Clear background timers
+    stopBackgroundTimers()
+    if (document.hidden) backgroundedAt = 0
   }
 
   // Module-level state for language/book switching
@@ -242,31 +289,17 @@ export function createStargateReader(
   settings.setLanguages(buildLanguageInfos(), currentLanguage)
 
   transport.onPlay(() => {
-    doPlay()
+    void doPlay()
     setupMediaSession()
-    if (nativeSessionActive) {
-      void resumeNativeKeepAlive()
-    } else {
-      if (audioEngine) {
-        void startNativeKeepAlive(
-          segments[audioEngine.getCurrentSegmentIndex()]?.title || "Stargate Reader",
-          VOICE_NAMES[voiceMap[currentLanguage] || ""] || "Narrator",
-          bookId
-        )
-        nativeSessionActive = true
-      }
-    }
   })
 
   transport.onPause(() => {
     doPause()
-    void pauseNativeKeepAlive()
   })
 
   transport.onPrevChapter(() => {
     if (!audioEngine || chapters.length === 0) return
     const currentIdx = audioEngine.getCurrentSegmentIndex()
-    // Find current chapter
     let chapterIdx = 0
     for (let i = chapters.length - 1; i >= 0; i--) {
       if (currentIdx >= chapters[i].firstSegmentIndex) {
@@ -274,12 +307,11 @@ export function createStargateReader(
         break
       }
     }
-    // If we're more than 2 segments into the chapter, go to start of current
-    // Otherwise go to previous chapter
     const threshold = chapters[chapterIdx].firstSegmentIndex + 2
     const targetChapter = currentIdx > threshold ? chapterIdx : Math.max(0, chapterIdx - 1)
     audioEngine.seekToSegment(chapters[targetChapter].firstSegmentIndex)
     transport.setChapter(chapters[targetChapter].title)
+    syncNativeNowPlaying()
   })
 
   transport.onNextChapter(() => {
@@ -295,29 +327,27 @@ export function createStargateReader(
     const targetChapter = Math.min(chapters.length - 1, chapterIdx + 1)
     audioEngine.seekToSegment(chapters[targetChapter].firstSegmentIndex)
     transport.setChapter(chapters[targetChapter].title)
+    syncNativeNowPlaying()
   })
 
   transport.onSkipBack(() => {
     if (!audioEngine) return
-    const target = Math.max(0, audioEngine.getCurrentTimeMs() - 30000)
-    audioEngine.seekToMs(target)
+    audioEngine.seekToMs(Math.max(0, audioEngine.getCurrentTimeMs() - 30000))
+    syncNativeNowPlaying()
   })
 
   transport.onSkipForward(() => {
     if (!audioEngine) return
-    const target = Math.min(audioEngine.getTotalDurationMs(), audioEngine.getCurrentTimeMs() + 30000)
-    audioEngine.seekToMs(target)
+    audioEngine.seekToMs(Math.min(audioEngine.getTotalDurationMs(), audioEngine.getCurrentTimeMs() + 30000))
+    syncNativeNowPlaying()
   })
 
   // --- Scrub lifecycle ---
   let wasPlayingBeforeScrub = false
 
   transport.onScrubStart(() => {
-    wasPlayingBeforeScrub = audioEngine?.isPlaying() ?? false
-    if (wasPlayingBeforeScrub && audioEngine) {
-      audioEngine.pause()
-      isPlaying = false
-    }
+    wasPlayingBeforeScrub = isPlaying
+    if (wasPlayingBeforeScrub) doPause()
   })
 
   transport.onScrubMove((fraction) => {
@@ -328,11 +358,8 @@ export function createStargateReader(
   transport.onScrubEnd((fraction) => {
     if (!audioEngine) return
     audioEngine.seekToMsPreview(fraction * audioEngine.getTotalDurationMs())
-    if (wasPlayingBeforeScrub) {
-      audioEngine.play()
-      isPlaying = true
-      transport.setPlaying(true)
-    }
+    if (wasPlayingBeforeScrub) void doPlay()
+    else syncNativeNowPlaying()
   })
 
   settings.onLanguageChange((lang) => {
@@ -391,17 +418,17 @@ export function createStargateReader(
 
   // --- Native remote command listeners (lock screen / notification) ---
   removeRemoteListeners = listenForRemoteCommands({
-    onPlay: () => { doPlay(); void resumeNativeKeepAlive() },
-    onPause: () => { doPause(); void pauseNativeKeepAlive() },
+    onPlay: () => { void doPlay() },
+    onPause: () => { doPause() },
     onSkipForward: () => {
       if (!audioEngine) return
-      const target = Math.min(audioEngine.getTotalDurationMs(), audioEngine.getCurrentTimeMs() + 30000)
-      audioEngine.seekToMs(target)
+      audioEngine.seekToMs(Math.min(audioEngine.getTotalDurationMs(), audioEngine.getCurrentTimeMs() + 30000))
+      syncNativeNowPlaying()
     },
     onSkipBack: () => {
       if (!audioEngine) return
-      const target = Math.max(0, audioEngine.getCurrentTimeMs() - 30000)
-      audioEngine.seekToMs(target)
+      audioEngine.seekToMs(Math.max(0, audioEngine.getCurrentTimeMs() - 30000))
+      syncNativeNowPlaying()
     },
     onNextChapter: () => {
       if (!audioEngine || chapters.length === 0) return
@@ -416,6 +443,7 @@ export function createStargateReader(
       const targetChapter = Math.min(chapters.length - 1, chapterIdx + 1)
       audioEngine.seekToSegment(chapters[targetChapter].firstSegmentIndex)
       transport.setChapter(chapters[targetChapter].title)
+      syncNativeNowPlaying()
     },
     onPrevChapter: () => {
       if (!audioEngine || chapters.length === 0) return
@@ -431,6 +459,20 @@ export function createStargateReader(
       const targetChapter = currentIdx > threshold ? chapterIdx : Math.max(0, chapterIdx - 1)
       audioEngine.seekToSegment(chapters[targetChapter].firstSegmentIndex)
       transport.setChapter(chapters[targetChapter].title)
+      syncNativeNowPlaying()
+    },
+    onSeek: (positionMs: number) => {
+      if (!audioEngine) return
+      audioEngine.seekToMs(positionMs)
+      syncNativeNowPlaying()
+    },
+    onInterruptionBegan: () => {
+      if (!audioEngine || !isPlaying) return
+      doPause()
+    },
+    onInterruptionEnded: (shouldResume: boolean) => {
+      if (!audioEngine) return
+      if (shouldResume) void doPlay()
     },
   })
 
@@ -490,39 +532,42 @@ export function createStargateReader(
       }
       persistBookmark()
       engine.stopRenderLoop()
-      // Keep AudioContext alive in background
+      // Keep AudioContext alive and sync now-playing in background
       if (audioEngine && isPlaying) {
-        bgKeepAlive = setInterval(() => { audioEngine?.unlock() }, 5000)
+        startBackgroundTimers()
       }
     } else {
-      // Screen visible: clear keepalive, resume render loop
-      if (bgKeepAlive) { clearInterval(bgKeepAlive); bgKeepAlive = null }
+      // Foregrounded
+      stopBackgroundTimers()
       engine.runRenderLoop(renderLoop)
 
-      // Recovery: if playing, check for audio drift from OS suspension
-      if (audioEngine && isPlaying) {
-        if (backgroundedAt > 0) {
-          const wallElapsed = Date.now() - backgroundedAt
-          const expectedMs = backgroundedAudioMs + wallElapsed
-          const actualMs = audioEngine.getCurrentTimeMs()
-          const totalMs = audioEngine.getTotalDurationMs()
-          if (Math.abs(expectedMs - actualMs) > 2000 && expectedMs < totalMs) {
-            audioEngine.seekToMs(Math.min(expectedMs, totalMs))
-            audioEngine.play()
+      if (audioEngine) {
+        // ALWAYS attempt recovery, not just when isPlaying
+        void audioEngine.recoverContext().then(() => {
+          if (!audioEngine) return
+
+          if (isPlaying) {
+            // Drift detection
+            if (backgroundedAt > 0) {
+              const wallElapsed = Date.now() - backgroundedAt
+              const expectedMs = backgroundedAudioMs + wallElapsed
+              const actualMs = audioEngine.getCurrentTimeMs()
+              const totalMs = audioEngine.getTotalDurationMs()
+              if (Math.abs(expectedMs - actualMs) > 2000 && expectedMs < totalMs) {
+                audioEngine.seekToMs(Math.min(expectedMs, totalMs))
+              }
+            }
+            // Ensure audio is actually playing after recovery
+            if (!audioEngine.isPlaying()) {
+              audioEngine.play()
+            }
+            audioEngine.unlock()
+            void requestWakeLock()
           }
-        }
-        // Always unlock and re-acquire wake lock when foregrounding while playing
-        audioEngine.unlock()
-        void requestWakeLock()
-        // Refresh native metadata (recovers from OS teardown under memory pressure)
-        if (nativeSessionActive) {
-          void updateNativeNowPlaying(
-            segments[audioEngine.getCurrentSegmentIndex()]?.title || "Stargate Reader",
-            VOICE_NAMES[voiceMap[currentLanguage] || ""] || "Narrator",
-            audioEngine.getCurrentTimeMs(),
-            audioEngine.getTotalDurationMs()
-          )
-        }
+
+          // Sync native with actual state
+          syncNativeNowPlaying()
+        })
       }
 
       // Force transport UI sync (eliminates any single-frame inconsistency)
@@ -618,10 +663,10 @@ export function createStargateReader(
         manifest,
         dataProvider.resolveAudioUrl,
         (index) => {
-          // Update chapter label
           const seg = segments[index]
           if (seg) {
             transport.setChapter(seg.title)
+            syncNativeNowPlaying()
           }
         },
         () => {
@@ -629,7 +674,7 @@ export function createStargateReader(
           isPlaying = false
           transport.setPlaying(false)
           releaseWakeLock()
-          if (bgKeepAlive) { clearInterval(bgKeepAlive); bgKeepAlive = null }
+          stopBackgroundTimers()
           backgroundedAt = 0
           void stopNativeKeepAlive()
           nativeSessionActive = false
@@ -762,13 +807,16 @@ export function createStargateReader(
         dataProvider.resolveAudioUrl,
         (index) => {
           const seg = segments[index]
-          if (seg) transport.setChapter(seg.title)
+          if (seg) {
+            transport.setChapter(seg.title)
+            syncNativeNowPlaying()
+          }
         },
         () => {
           isPlaying = false
           transport.setPlaying(false)
           releaseWakeLock()
-          if (bgKeepAlive) { clearInterval(bgKeepAlive); bgKeepAlive = null }
+          stopBackgroundTimers()
           backgroundedAt = 0
           void stopNativeKeepAlive()
           nativeSessionActive = false
@@ -835,12 +883,7 @@ export function createStargateReader(
       lastAutosaveMs = currentMs
       persistBookmark()
       updateMediaSessionPosition()
-      void updateNativeNowPlaying(
-        segments[audioEngine?.getCurrentSegmentIndex() ?? 0]?.title || "Stargate Reader",
-        VOICE_NAMES[voiceMap[currentLanguage] || ""] || "Narrator",
-        currentMs,
-        totalMs
-      )
+      syncNativeNowPlaying()
     }
 
     // Chapter transition detection
@@ -917,7 +960,7 @@ export function createStargateReader(
     void stopNativeKeepAlive()
     nativeSessionActive = false
     if (removeRemoteListeners) { removeRemoteListeners(); removeRemoteListeners = null }
-    if (bgKeepAlive) { clearInterval(bgKeepAlive); bgKeepAlive = null }
+    stopBackgroundTimers()
 
     document.removeEventListener("visibilitychange", handleVisibilityChange)
     resizeObserver.disconnect()

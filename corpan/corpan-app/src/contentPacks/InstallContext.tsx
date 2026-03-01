@@ -134,7 +134,20 @@ export function InstallProvider({
     async (manifestUrl: string) => {
       if (!manifestUrl.trim()) return
       retryRef.current = { type: "dev", manifestUrl }
-      await doInstall(manifestUrl, "manual", manifestUrl)
+      const packName = (() => {
+        try {
+          const url = new URL(manifestUrl, window.location.href)
+          const segments = url.pathname.split("/").filter(Boolean)
+          const name =
+            segments.length > 1
+              ? segments[segments.length - 2]
+              : segments[0] || manifestUrl
+          return name.replace(/[-_]/g, " ")
+        } catch {
+          return manifestUrl
+        }
+      })()
+      await doInstall(manifestUrl, "manual", packName)
     },
     [doInstall]
   )
