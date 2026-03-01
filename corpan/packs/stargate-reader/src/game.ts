@@ -225,6 +225,8 @@ export function createStargateReader(
     initialOscilloscope: prefs.oscilloscope,
     initialWaveform: prefs.waveform,
     initialPulseRing: prefs.pulseRing,
+    initialWordHold: prefs.wordHold,
+    initialWordHoldConfig: prefs.wordHoldConfig,
     initialOscilloscopeConfig: prefs.oscilloscopeConfig,
     initialWaveformConfig: prefs.waveformConfig,
     initialPulseRingConfig: prefs.pulseRingConfig,
@@ -335,6 +337,20 @@ export function createStargateReader(
 
   settings.onLanguageChange((lang) => {
     void switchLanguage(lang)
+  })
+
+  let wordHoldEnabled = prefs.wordHold
+
+  settings.onToggleWordHold((enabled) => {
+    wordHoldEnabled = enabled
+    prefs.wordHold = enabled
+    savePrefs(bookId, prefs)
+  })
+
+  settings.onWordHoldConfig((key, value) => {
+    wordStream?.configure({ [key]: value })
+    ;(prefs.wordHoldConfig as Record<string, number>)[key] = value
+    savePrefs(bookId, prefs)
   })
 
   settings.onToggleOscilloscope((visible) => {
@@ -629,6 +645,7 @@ export function createStargateReader(
 
       // Create word stream (flat planes, no waveform shaping)
       wordStream = createWordStream(scene)
+      wordStream.configure(prefs.wordHoldConfig)
 
       // Create waveform stream (arch ribbon showing audio envelope along Z)
       waveformStream = createWaveformStream(scene)
@@ -693,15 +710,8 @@ export function createStargateReader(
       return `${baseUrl.replace(/\/$/, "")}/data/books/${bid}`
     }
 
-    // Remote HTTP base (manifest.json install, e.g. GitHub Pages)
-    // Detect dev mode: localhost/127.0.0.1 = dev, anything else = production HTTP
+    // HTTP base (manifest.json install — local dev server or remote)
     if (baseUrl) {
-      const isLocal = /^https?:\/\/(localhost|127\.0\.0\.1)(:|\/|$)/.test(baseUrl)
-      if (isLocal) {
-        // Corpan dev mode: book data served separately on port 8990
-        return `http://127.0.0.1:8990/data/books/${bid}`
-      }
-      // Production HTTP: data lives alongside pack assets
       return `${baseUrl.replace(/\/$/, "")}/data/books/${bid}`
     }
 
@@ -857,7 +867,7 @@ export function createStargateReader(
 
     // Update word stream
     if (wordStream && timelineWords.length > 0) {
-      wordStream.update(currentMs, timelineWords, currentWordHint)
+      wordStream.update(currentMs, timelineWords, currentWordHint, wordHoldEnabled)
     }
 
     // Update waveform stream

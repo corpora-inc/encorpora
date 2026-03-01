@@ -427,36 +427,67 @@ pub fn list_installed<R: Runtime>(app: &AppHandle<R>) -> Result<Vec<ContentPackI
     Ok(packs)
 }
 
-pub fn fetch_bytes<R: Runtime>(app: &AppHandle<R>, url: String) -> Result<Vec<u8>, String> {
+pub async fn fetch_bytes<R: Runtime>(app: &AppHandle<R>, url: String) -> Result<Vec<u8>, String> {
     eprintln!("[fetch_bytes] Fetching URL: {}", url);
 
-    if !url.starts_with("corpan-pack://") {
-        return Err("fetch_bytes only supports corpan-pack:// URLs".to_string());
+    // Handle corpan-pack:// URLs by reading from local filesystem
+    if url.starts_with("corpan-pack://") {
+        let url_without_query = url.split('?').next().unwrap_or(&url);
+        let path_part = url_without_query
+            .strip_prefix("corpan-pack://localhost/")
+            .ok_or("Invalid corpan-pack URL format")?;
+        let mut parts = path_part.splitn(2, '/');
+        let pack_id = parts.next().ok_or("Missing pack ID in corpan-pack URL")?;
+        let rel_path = parts.next().ok_or("Missing file path in corpan-pack URL")?;
+
+        eprintln!("[fetch_bytes] Pack ID: {}, Rel path: {}", pack_id, rel_path);
+
+        let pack_root = app
+            .path()
+            .app_data_dir()
+            .map(|dir| dir.join("corpan-packs"))
+            .map_err(|e| format!("Failed to get app data dir: {}", e))?;
+
+        let file_path = pack_root.join(pack_id).join(rel_path);
+        eprintln!("[fetch_bytes] Reading file: {:?}", file_path);
+
+        let content = fs::read(&file_path)
+            .map_err(|e| format!("Failed to read file {:?}: {}", file_path, e))?;
+        eprintln!("[fetch_bytes] Successfully read {} bytes from disk", content.len());
+        return Ok(content);
     }
 
-    let url_without_query = url.split('?').next().unwrap_or(&url);
-    let path_part = url_without_query
-        .strip_prefix("corpan-pack://localhost/")
-        .ok_or("Invalid corpan-pack URL format")?;
-    let mut parts = path_part.splitn(2, '/');
-    let pack_id = parts.next().ok_or("Missing pack ID in corpan-pack URL")?;
-    let rel_path = parts.next().ok_or("Missing file path in corpan-pack URL")?;
-
-    eprintln!("[fetch_bytes] Pack ID: {}, Rel path: {}", pack_id, rel_path);
-
-    let pack_root = app
-        .path()
-        .app_data_dir()
-        .map(|dir| dir.join("corpan-packs"))
-        .map_err(|e| format!("Failed to get app data dir: {}", e))?;
-
-    let file_path = pack_root.join(pack_id).join(rel_path);
-    eprintln!("[fetch_bytes] Reading file: {:?}", file_path);
-
-    let content = fs::read(&file_path)
-        .map_err(|e| format!("Failed to read file {:?}: {}", file_path, e))?;
-    eprintln!("[fetch_bytes] Successfully read {} bytes from disk", content.len());
-    Ok(content)
+    // Handle HTTP/HTTPS URLs via reqwest (no CORS restrictions)
+    let parsed = reqwest::Url::parse(&url).map_err(|e| e.to_string())?;
+    let scheme = parsed.scheme();
+    eprintln!("[fetch_bytes] URL scheme: {}", scheme);
+    if scheme != "https" && scheme != "http" {
+        eprintln!("[fetch_bytes] Unsupported URL scheme: {}", scheme);
+        return Err("Unsupported URL scheme".to_string());
+    }
+    if scheme == "http" {
+        let host = parsed.host_str().unwrap_or("");
+        if !is_private_host(host) {
+            eprintln!("[fetch_bytes] Insecure HTTP not allowed for host: {}", host);
+            return Err("Insecure HTTP is only allowed for localhost/private hosts".to_string());
+        }
+    }
+    let client = reqwest::Client::new();
+    let res = client.get(parsed).send().await.map_err(|e| {
+        eprintln!("[fetch_bytes] Request error: {}", e);
+        e.to_string()
+    })?;
+    let status = res.status();
+    eprintln!("[fetch_bytes] Response status: {}", status);
+    if !status.is_success() {
+        return Err(format!("Request failed ({status})"));
+    }
+    let bytes = res.bytes().await.map_err(|e| {
+        eprintln!("[fetch_bytes] Bytes decode error: {}", e);
+        e.to_string()
+    })?;
+    eprintln!("[fetch_bytes] Successfully fetched {} bytes", bytes.len());
+    Ok(bytes.to_vec())
 }
 
 pub fn get_manifest_url<R: Runtime>(

@@ -19,10 +19,11 @@ const tauriInvoke = (): ((cmd: string, args?: Record<string, unknown>) => Promis
 
 export async function packFetchJson(url: string): Promise<unknown> {
   const invoke = tauriInvoke()
-  if (invoke && url.startsWith("corpan-pack://")) {
+  if (invoke) {
     const text = (await invoke("content_packs_fetch_text", { url })) as string
     return JSON.parse(text)
   }
+  // Fallback: browser fetch (standalone dev mode, no Tauri)
   const resp = await fetch(url)
   if (!resp.ok) throw new Error(`HTTP ${resp.status} ${resp.statusText}`)
   return resp.json()
@@ -30,9 +31,10 @@ export async function packFetchJson(url: string): Promise<unknown> {
 
 export async function packFetchArrayBuffer(url: string): Promise<ArrayBuffer> {
   const invoke = tauriInvoke()
-  if (invoke && url.startsWith("corpan-pack://")) {
+  if (invoke) {
     return (await invoke("content_packs_fetch_bytes", { url })) as ArrayBuffer
   }
+  // Fallback: browser fetch (standalone dev mode, no Tauri)
   const resp = await fetch(url)
   if (!resp.ok) throw new Error(`HTTP ${resp.status} ${resp.statusText}`)
   return resp.arrayBuffer()
