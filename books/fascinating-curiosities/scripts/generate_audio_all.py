@@ -35,6 +35,13 @@ Usage:
     # Override defaults:
     python generate_audio_all.py all --device cuda --workers 10
 
+    # Force regeneration (delete existing audio first):
+    python generate_audio_all.py all --force
+
+    # Per-language voice selection:
+    python generate_audio_all.py tts --voice ian-new-narration-try-more-chill-clear.wav
+    python generate_audio_all.py tts --voice-zh ian-new-narration-try-chinese.wav
+
 Requires:
     - PyTorch cu130 (for DGX Spark GB10)
     - chatterbox-tts (with chatterbox.mtl_tts for multilingual)
@@ -42,6 +49,21 @@ Requires:
     - soundfile, numpy
     - ffmpeg (system package, for AAC/M4A encoding + LUFS measurement)
 """
+
+# ---------------------------------------------------------------------------
+# Suppress noisy upstream warnings before any imports touch them
+# ---------------------------------------------------------------------------
+import logging
+import warnings
+
+warnings.filterwarnings("ignore", message="pkg_resources is deprecated")
+warnings.filterwarnings("ignore", message="Found GPU")
+warnings.filterwarnings("ignore", message="LoRACompatibleLinear")
+warnings.filterwarnings("ignore", message=".*sdp_kernel.*")
+warnings.filterwarnings("ignore", message=".*generation flags are not valid.*")
+logging.getLogger("chatterbox.models.t3.inference.alignment_stream_analyzer").setLevel(
+    logging.ERROR
+)
 
 # Patch Llama attention BEFORE any model loading — the multilingual model's
 # AlignmentStreamAnalyzer requires output_attentions=True, which is incompatible
@@ -71,7 +93,15 @@ import torch
 SCRIPT_DIR = Path(__file__).resolve().parent
 BOOK_DIR = SCRIPT_DIR.parent / "01-mystery-of-monte-alban"
 PACK_DIR = BOOK_DIR / "pack"
-VOICE_PATH = SCRIPT_DIR.parent.parent.parent / "voices" / "data" / "ian-narration.wav"
+VOICES_DIR = SCRIPT_DIR.parent.parent.parent / "voices" / "data"
+
+# Default voice per language — override with --voice or --voice-{lang} CLI args.
+# After A/B comparison, update these to the best voice for each language.
+DEFAULT_VOICE_PATHS = {
+    "en": VOICES_DIR / "ian-new-narration-try-more-chill-clear.wav",
+    "es": VOICES_DIR / "ian-new-narration-spanish-loud.wav",
+    "zh": VOICES_DIR / "ian-new-narration-spanish-loud.wav",
+}
 
 LANGUAGES = ["en", "es", "zh"]
 
@@ -99,6 +129,91 @@ TARGET_TP = -3.0  # dBTP
 # ---------------------------------------------------------------------------
 # Helpers
 # ---------------------------------------------------------------------------
+
+
+def trim_tts_output(
+    audio: np.ndarray, sample_rate: int,
+    text_len: int, lang: str,
+) -> np.ndarray:
+    """Trim garbage tails from TTS output.
+
+    Chatterbox sometimes keeps generating past real speech, producing
+    loud artifacts. Two independent strategies; the shorter result wins:
+
+    Strategy 1 — ZCR anomaly detection:
+        Voiced speech has moderate ZCR; noise/babble has high ZCR. Find
+        the first run of 3+ consecutive 500ms windows with ZCR > 2.5×
+        the speech median. Once found, doesn't reset on brief dips.
+
+    Strategy 2 — Text-length hard cap:
+        Estimate max duration from text length and language. Applies a
+        fade-out to avoid clicks. This is the primary safety net.
+
+    Returns trimmed audio.
+    """
+    if len(audio) == 0:
+        return audio
+
+    # --- Strategy 1: ZCR anomaly detection ---
+    window_ms = 500
+    window_samples = int(sample_rate * window_ms / 1000)
+    if window_samples > 0 and len(audio) > window_samples * 8:
+        n_windows = len(audio) // window_samples
+
+        zcr = np.array([
+            np.sum(np.abs(np.diff(np.sign(
+                audio[i * window_samples:(i + 1) * window_samples]
+            )))) / 2 / (window_ms / 1000)
+            for i in range(n_windows)
+        ])
+
+        # Speech reference: median ZCR of first 50%
+        speech_ref_end = max(1, int(n_windows * 0.5))
+        speech_zcr = np.median(zcr[:speech_ref_end])
+
+        if speech_zcr > 0:
+            scan_start = max(speech_ref_end, int(n_windows * 0.6))
+            threshold = speech_zcr * 2.5
+            anomaly_start = None
+            consecutive = 0
+
+            for i in range(scan_start, n_windows):
+                if zcr[i] > threshold:
+                    consecutive += 1
+                    if consecutive >= 3 and anomaly_start is None:
+                        anomaly_start = i - 2  # back up to first bad window
+                else:
+                    # Once anomaly is found, brief dips don't cancel it.
+                    if anomaly_start is None:
+                        consecutive = 0
+
+            if anomaly_start is not None:
+                buffer_samples = int(sample_rate * 0.3)
+                trim_point = anomaly_start * window_samples + buffer_samples
+                trim_point = min(trim_point, len(audio))
+                if len(audio) - trim_point > sample_rate:
+                    audio = audio[:trim_point]
+
+    # --- Strategy 2: Text-length hard cap ---
+    # Per-language max seconds/char.
+    # Observed rates: zh 0.17-0.32 s/char (proper names push higher),
+    # en/es ~0.06-0.10 s/char. Use generous margin to avoid clipping
+    # legitimate speech while catching obviously excessive output.
+    max_sec_per_char = {"en": 0.12, "es": 0.12, "zh": 0.25}
+    base_buffer = {"en": 5.0, "es": 5.0, "zh": 5.0}
+    rate = max_sec_per_char.get(lang, 0.12)
+    buf = base_buffer.get(lang, 5.0)
+    max_duration_s = text_len * rate + buf
+    max_samples = int(max_duration_s * sample_rate)
+
+    if len(audio) > max_samples:
+        fade_samples = int(sample_rate * 0.05)
+        audio = audio[:max_samples]
+        if fade_samples > 0 and len(audio) > fade_samples:
+            fade = np.linspace(1.0, 0.0, fade_samples)
+            audio[-fade_samples:] *= fade
+
+    return audio
 
 
 def check_ffmpeg():
@@ -159,11 +274,31 @@ def alignment_path(lang: str) -> Path:
 # ---------------------------------------------------------------------------
 
 
-def phase_tts(langs: list[str], device: str = "cuda"):
+def phase_tts(langs: list[str], voice_paths: dict[str, Path],
+              device: str = "cuda", force: bool = False):
     """Generate raw WAVs for all segments using ChatterboxMultilingualTTS."""
     print("\n" + "=" * 60)
     print("PHASE 1: TTS Generation")
     print("=" * 60)
+
+    # Validate voice files
+    for lang in langs:
+        vp = voice_paths[lang]
+        if not vp.exists():
+            print(f"ERROR: Voice file not found for {lang}: {vp}")
+            sys.exit(1)
+        print(f"  Voice [{lang}]: {vp.name}")
+
+    # Force mode: delete existing WAVs so everything regenerates
+    if force:
+        for lang in langs:
+            wdir = wav_dir(lang)
+            if wdir.exists():
+                count = len(list(wdir.glob("*.wav")))
+                if count > 0:
+                    print(f"  [force] Deleting {count} existing WAVs in {wdir}")
+                    shutil.rmtree(wdir)
+                    wdir.mkdir(parents=True, exist_ok=True)
 
     # Load model once
     print(f"\nLoading ChatterboxMultilingualTTS on {device}...")
@@ -172,11 +307,6 @@ def phase_tts(langs: list[str], device: str = "cuda"):
     tts_model = ChatterboxMultilingualTTS.from_pretrained(device=device)
     sample_rate = tts_model.sr
     print(f"Model loaded in {time.time() - t0:.1f}s (sr={sample_rate})")
-
-    voice = str(VOICE_PATH)
-    if not os.path.exists(voice):
-        print(f"ERROR: Voice file not found: {voice}")
-        sys.exit(1)
 
     total_generated = 0
     total_skipped = 0
@@ -190,6 +320,7 @@ def phase_tts(langs: list[str], device: str = "cuda"):
 
         # Language ID for Chatterbox multilingual model
         lang_id = lang
+        voice = str(voice_paths[lang])
 
         skipped = 0
         generated = 0
@@ -222,6 +353,14 @@ def phase_tts(langs: list[str], device: str = "cuda"):
                 else:
                     audio_np = np.array(wav_tensor).squeeze()
 
+                # Trim trailing garbage from TTS output
+                raw_len = len(audio_np)
+                audio_np = trim_tts_output(
+                    audio_np, sample_rate,
+                    text_len=len(tts_text), lang=lang,
+                )
+                trimmed = raw_len - len(audio_np)
+
                 sf.write(str(wav_path), audio_np, sample_rate)
                 dur_ms = int(len(audio_np) / sample_rate * 1000)
                 elapsed = time.time() - t0
@@ -240,9 +379,10 @@ def phase_tts(langs: list[str], device: str = "cuda"):
                         f"~{eta:.0f}min left"
                     )
                 else:
+                    trim_info = f", trimmed {trimmed/sample_rate:.1f}s" if trimmed > 0 else ""
                     print(
                         f"    [{seg_id}] {dur_ms}ms audio in {elapsed:.1f}s "
-                        f"({len(tts_text)} chars)"
+                        f"({len(tts_text)} chars{trim_info})"
                     )
 
             except Exception as e:
@@ -275,11 +415,19 @@ def phase_tts(langs: list[str], device: str = "cuda"):
 
 
 def phase_align(langs: list[str], device: str = "cuda",
-                whisper_size: str = "base"):
+                whisper_size: str = "base", force: bool = False):
     """Run stable-ts forced alignment on all WAVs."""
     print("\n" + "=" * 60)
     print("PHASE 2: Forced Alignment")
     print("=" * 60)
+
+    # Force mode: delete existing alignment files
+    if force:
+        for lang in langs:
+            apath = alignment_path(lang)
+            if apath.exists():
+                print(f"  [force] Deleting {apath.name}")
+                apath.unlink()
 
     print(f"\nLoading Whisper {whisper_size} on {device}...")
     t0 = time.time()
@@ -466,13 +614,28 @@ def master_one_segment(
     }
 
 
-def phase_master(langs: list[str], workers: int = 10):
+def phase_master(langs: list[str], voice_paths: dict[str, Path],
+                 workers: int = 10, force: bool = False):
     """Measure LUFS on WAV → apply gain + mastering + m4a encode (ONE pass)."""
     print("\n" + "=" * 60)
     print("PHASE 3: Master + Encode to M4A (single-pass, CPU parallel)")
     print("=" * 60)
 
     check_ffmpeg()
+
+    # Force mode: delete existing m4a files and manifests
+    if force:
+        for lang in langs:
+            adir = audio_dir(lang)
+            m4a_files = list(adir.glob("*.m4a"))
+            if m4a_files:
+                print(f"  [force] Deleting {len(m4a_files)} m4a files in {adir}")
+                for f in m4a_files:
+                    f.unlink()
+            mpath = manifest_path(lang)
+            if mpath.exists():
+                print(f"  [force] Deleting {mpath.name}")
+                mpath.unlink()
 
     total_mastered = 0
     total_skipped = 0
@@ -540,9 +703,10 @@ def phase_master(langs: list[str], workers: int = 10):
                     )
 
         # Build manifest by merging alignment data + duration info
+        voice_name = voice_paths[lang].stem  # e.g. "ian-narration"
         manifest = {
             "language": lang,
-            "voice": "ian-narration",
+            "voice": voice_name,
             "sample_rate": 24000,  # Will be updated from WAV info
             "segments": {},
         }
@@ -626,6 +790,37 @@ def parse_langs(args_lang: str | None) -> list[str]:
     return langs
 
 
+def resolve_voice_paths(args) -> dict[str, Path]:
+    """Build per-language voice path dict from CLI args.
+
+    Priority (highest to lowest):
+        1. --voice-en / --voice-es / --voice-zh  (per-language override)
+        2. --voice  (override all languages)
+        3. DEFAULT_VOICE_PATHS  (from constants at top of file)
+    """
+    paths = dict(DEFAULT_VOICE_PATHS)
+
+    # Global override
+    if args.voice:
+        vp = Path(args.voice)
+        if not vp.is_absolute():
+            vp = VOICES_DIR / vp
+        for lang in LANGUAGES:
+            paths[lang] = vp
+
+    # Per-language overrides
+    for lang in LANGUAGES:
+        attr = f"voice_{lang}"
+        val = getattr(args, attr, None)
+        if val:
+            vp = Path(val)
+            if not vp.is_absolute():
+                vp = VOICES_DIR / vp
+            paths[lang] = vp
+
+    return paths
+
+
 def main():
     parser = argparse.ArgumentParser(
         description="Unified 3-phase audio generation pipeline (all languages)",
@@ -636,6 +831,9 @@ Examples:
   python generate_audio_all.py tts --lang zh    # TTS only, Chinese
   python generate_audio_all.py align            # Alignment only, all languages
   python generate_audio_all.py master --workers 15  # Master/encode, 15 threads
+  python generate_audio_all.py all --force      # Delete old audio, regenerate all
+  python generate_audio_all.py tts --voice ian-new-narration-try-more-chill-clear.wav
+  python generate_audio_all.py tts --voice-zh ian-new-narration-try-chinese.wav
         """,
     )
     parser.add_argument(
@@ -660,26 +858,55 @@ Examples:
         "--whisper-model", default="base",
         help="Whisper model size for alignment (default: base)",
     )
+    parser.add_argument(
+        "--force", action="store_true",
+        help="Delete existing WAVs/m4a/alignments before regenerating "
+             "(no resume — full redo)",
+    )
+    parser.add_argument(
+        "--voice", default=None,
+        help="Voice WAV file to use for ALL languages "
+             "(filename in voices/data/ or absolute path)",
+    )
+    parser.add_argument(
+        "--voice-en", default=None,
+        help="Voice WAV override for English",
+    )
+    parser.add_argument(
+        "--voice-es", default=None,
+        help="Voice WAV override for Spanish",
+    )
+    parser.add_argument(
+        "--voice-zh", default=None,
+        help="Voice WAV override for Chinese",
+    )
     args = parser.parse_args()
 
     langs = parse_langs(args.lang)
+    voice_paths = resolve_voice_paths(args)
     check_ffmpeg()
 
     print(f"Pipeline: phase={args.phase}, langs={langs}, device={args.device}")
     print(f"Book: {BOOK_DIR.name}")
-    print(f"Voice: {VOICE_PATH.name}")
+    if args.force:
+        print(f"FORCE MODE: deleting existing audio before regenerating")
+    for lang in langs:
+        print(f"  Voice [{lang}]: {voice_paths[lang].name}")
     print(f"TTS params: {TTS_PARAMS}")
 
     t_total = time.time()
 
     if args.phase in ("tts", "all"):
-        phase_tts(langs, device=args.device)
+        phase_tts(langs, voice_paths=voice_paths, device=args.device,
+                  force=args.force)
 
     if args.phase in ("align", "all"):
-        phase_align(langs, device=args.device, whisper_size=args.whisper_model)
+        phase_align(langs, device=args.device, whisper_size=args.whisper_model,
+                    force=args.force)
 
     if args.phase in ("master", "all"):
-        phase_master(langs, workers=args.workers)
+        phase_master(langs, voice_paths=voice_paths, workers=args.workers,
+                     force=args.force)
 
     total_elapsed = time.time() - t_total
     print(f"\n{'=' * 60}")
