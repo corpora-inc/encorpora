@@ -17,3 +17,9 @@ corpan/games/
 .DS_Store
 .claude/
 
+# Raw TTS WAV files (large, kept locally for A/B comparison only)
+**/audio/*/wav/
+
+# Voice comparison A/B test outputs (local only)
+**/audio/voice-comparison/
+
