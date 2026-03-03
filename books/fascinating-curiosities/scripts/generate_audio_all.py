@@ -72,6 +72,7 @@ import chatterbox.models.t3.llama_configs as _llama_cfg
 _llama_cfg.LLAMA_520M_CONFIG_DICT["attn_implementation"] = "eager"
 
 import argparse
+import gc
 import json
 import os
 import re
@@ -129,6 +130,44 @@ TARGET_TP = -3.0  # dBTP
 # ---------------------------------------------------------------------------
 # Helpers
 # ---------------------------------------------------------------------------
+
+
+def cleanup_tts_memory(tts_model):
+    """Clean up accumulated state from ChatterboxMultilingualTTS.generate().
+
+    The T3 model has a critical memory leak: each generate() call creates a
+    new AlignmentStreamAnalyzer that registers 3 forward hooks on the
+    transformer layers but NEVER removes them. After ~958 calls, 2874 stale
+    hooks accumulate, each holding closure references to attention tensors,
+    growing RSS by ~72MB/call until OOM.
+
+    This function:
+    1. Removes all forward hooks from T3 transformer layers
+    2. Resets the compiled flag so a fresh analyzer is created next call
+    3. Clears CUDA cache to reclaim fragmented memory
+    """
+    t3 = getattr(tts_model, "t3", None)
+    if t3 is None:
+        return
+
+    # Remove all forward hooks from transformer layers to stop the leak.
+    tfmr = getattr(t3, "tfmr", None)
+    if tfmr is not None:
+        for layer in getattr(tfmr, "layers", []):
+            attn = getattr(layer, "self_attn", None)
+            if attn is not None and hasattr(attn, "_forward_hooks"):
+                attn._forward_hooks.clear()
+
+    # Reset compiled flag so next generate() creates a fresh patched_model
+    # with a fresh AlignmentStreamAnalyzer (and fresh hooks).
+    t3.compiled = False
+    if hasattr(t3, "patched_model"):
+        t3.patched_model = None
+
+    # Let Python collect any orphaned tensors, then free CUDA cache.
+    gc.collect()
+    if torch.cuda.is_available():
+        torch.cuda.empty_cache()
 
 
 def trim_tts_output(
@@ -348,10 +387,13 @@ def phase_tts(langs: list[str], voice_paths: dict[str, Path],
                     **TTS_PARAMS,
                 )
 
+                # Move output off GPU and clean up leaked model state
                 if isinstance(wav_tensor, torch.Tensor):
                     audio_np = wav_tensor.squeeze().cpu().numpy()
                 else:
                     audio_np = np.array(wav_tensor).squeeze()
+                del wav_tensor
+                cleanup_tts_memory(tts_model)
 
                 # Trim trailing garbage from TTS output
                 raw_len = len(audio_np)
