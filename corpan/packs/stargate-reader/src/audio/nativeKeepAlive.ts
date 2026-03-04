@@ -113,7 +113,14 @@ export function listenForRemoteCommands(handlers: {
   onInterruptionEnded?: (shouldResume: boolean) => void
 }): (() => void) | null {
   const internals = getTauriInternals()
-  if (!internals?.transformCallback) return null
+  if (!internals) {
+    console.warn("[SR:native] listenForRemoteCommands: no Tauri internals available")
+    return null
+  }
+  if (!internals.transformCallback) {
+    console.warn("[SR:native] listenForRemoteCommands: transformCallback unavailable")
+    return null
+  }
 
   const registeredChannels: { event: string; channelId: number }[] = []
 

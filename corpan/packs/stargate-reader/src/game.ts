@@ -39,6 +39,14 @@ import {
   listenForRemoteCommands,
 } from "./audio/nativeKeepAlive"
 
+type StargateRemoteCommand = "play" | "pause"
+
+declare global {
+  interface Window {
+    __stargateCmd?: (cmd: StargateRemoteCommand) => void
+  }
+}
+
 /**
  * Create the Stargate Reader experience.
  *
@@ -74,6 +82,7 @@ export function createStargateReader(
   let bgNowPlayingTimer: ReturnType<typeof setInterval> | null = null
   let nativeSessionActive = false
   let removeRemoteListeners: (() => void) | null = null
+  let playInFlight = false
 
   // --- Background recovery timing ---
   let backgroundedAt = 0        // wall-clock ms when app went to background
@@ -112,57 +121,62 @@ export function createStargateReader(
 
   // --- Centralized play/pause helpers (background-aware) ---
   async function doPlay() {
-    if (!audioEngine) return
+    if (!audioEngine || isPlaying || playInFlight) return
+    playInFlight = true
     const t0 = performance.now()
     console.log(`[SR:doPlay] start — ctx.state=${audioEngine.getContextState()}`)
 
     // Configure native audio session FIRST — before any AudioContext exists.
     // Swift's AVAudioSession.setCategory + setActive interrupts any running
     // AudioContext, so the session must be stable before we create/resume one.
-    if (!nativeSessionActive) {
-      console.log(`[SR:doPlay] awaiting startNativeKeepAlive +${(performance.now() - t0).toFixed(1)}ms`)
-      await startNativeKeepAlive(
-        segments[audioEngine.getCurrentSegmentIndex()]?.title || "Stargate Reader",
-        VOICE_NAMES[voiceMap[currentLanguage] || ""] || "Narrator",
-        bookDisplayName,
-        audioEngine.getCurrentTimeMs(),
-        audioEngine.getTotalDurationMs()
-      )
-      nativeSessionActive = true
-      console.log(`[SR:doPlay] startNativeKeepAlive resolved +${(performance.now() - t0).toFixed(1)}ms`)
-    } else {
-      console.log(`[SR:doPlay] awaiting resumeNativeKeepAlive +${(performance.now() - t0).toFixed(1)}ms`)
-      await resumeNativeKeepAlive()
-      console.log(`[SR:doPlay] resumeNativeKeepAlive resolved +${(performance.now() - t0).toFixed(1)}ms`)
-    }
+    try {
+      if (!nativeSessionActive) {
+        console.log(`[SR:doPlay] awaiting startNativeKeepAlive +${(performance.now() - t0).toFixed(1)}ms`)
+        await startNativeKeepAlive(
+          segments[audioEngine.getCurrentSegmentIndex()]?.title || "Stargate Reader",
+          VOICE_NAMES[voiceMap[currentLanguage] || ""] || "Narrator",
+          bookDisplayName,
+          audioEngine.getCurrentTimeMs(),
+          audioEngine.getTotalDurationMs()
+        )
+        nativeSessionActive = true
+        console.log(`[SR:doPlay] startNativeKeepAlive resolved +${(performance.now() - t0).toFixed(1)}ms`)
+      } else {
+        console.log(`[SR:doPlay] awaiting resumeNativeKeepAlive +${(performance.now() - t0).toFixed(1)}ms`)
+        await resumeNativeKeepAlive()
+        console.log(`[SR:doPlay] resumeNativeKeepAlive resolved +${(performance.now() - t0).toFixed(1)}ms`)
+      }
 
-    // NOW create/resume AudioContext — native session is stable
-    await audioEngine.recoverContext()
-    console.log(`[SR:doPlay] recoverContext done +${(performance.now() - t0).toFixed(1)}ms ctx.state=${audioEngine.getContextState()}`)
+      // NOW create/resume AudioContext — native session is stable
+      await audioEngine.recoverContext()
+      console.log(`[SR:doPlay] recoverContext done +${(performance.now() - t0).toFixed(1)}ms ctx.state=${audioEngine.getContextState()}`)
 
-    audioEngine.unlock()
-    console.log(`[SR:doPlay] unlock done +${(performance.now() - t0).toFixed(1)}ms`)
+      audioEngine.unlock()
+      console.log(`[SR:doPlay] unlock done +${(performance.now() - t0).toFixed(1)}ms`)
 
-    audioEngine.play()
-    console.log(`[SR:doPlay] audioEngine.play() done +${(performance.now() - t0).toFixed(1)}ms ctx.state=${audioEngine.getContextState()}`)
+      audioEngine.play()
+      console.log(`[SR:doPlay] audioEngine.play() done +${(performance.now() - t0).toFixed(1)}ms ctx.state=${audioEngine.getContextState()}`)
 
-    isPlaying = true
-    transport.setPlaying(true)
-    void requestWakeLock()
+      isPlaying = true
+      transport.setPlaying(true)
+      void requestWakeLock()
 
-    // Fire-and-forget — just metadata, no audio session changes
-    syncNativeNowPlaying()
+      // Fire-and-forget — just metadata, no audio session changes
+      syncNativeNowPlaying()
 
-    // Background timers
-    if (document.hidden) {
-      backgroundedAt = Date.now()
-      backgroundedAudioMs = audioEngine.getCurrentTimeMs()
-      startBackgroundTimers()
+      // Background timers
+      if (document.hidden) {
+        backgroundedAt = Date.now()
+        backgroundedAudioMs = audioEngine.getCurrentTimeMs()
+        startBackgroundTimers()
+      }
+    } finally {
+      playInFlight = false
     }
   }
 
   function doPause() {
-    if (!audioEngine) return
+    if (!audioEngine || !isPlaying) return
     audioEngine.pause()
     isPlaying = false
     transport.setPlaying(false)
@@ -384,6 +398,16 @@ export function createStargateReader(
   settings.onLanguageChange((lang) => {
     void switchLanguage(lang)
   })
+
+  window.__stargateCmd = (cmd: StargateRemoteCommand) => {
+    if (cmd === "play") {
+      void doPlay()
+      return
+    }
+    if (cmd === "pause") {
+      doPause()
+    }
+  }
 
   let wordHoldEnabled = prefs.wordHold
 
@@ -986,6 +1010,9 @@ export function createStargateReader(
     void stopNativeKeepAlive()
     nativeSessionActive = false
     if (removeRemoteListeners) { removeRemoteListeners(); removeRemoteListeners = null }
+    if (window.__stargateCmd) {
+      delete window.__stargateCmd
+    }
     stopBackgroundTimers()
 
     document.removeEventListener("visibilitychange", handleVisibilityChange)

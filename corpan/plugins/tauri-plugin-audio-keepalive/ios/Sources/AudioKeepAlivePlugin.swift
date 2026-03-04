@@ -10,6 +10,7 @@ import WebKit
 /// preventing iOS from suspending the app (and WKWebView) in the background.
 /// Also provides MPNowPlayingInfoCenter integration for lock screen controls.
 class AudioKeepAlivePlugin: Plugin {
+    private weak var webView: WKWebView?
     private var audioEngine: AVAudioEngine?
     private var playerNode: AVAudioPlayerNode?
     private var isActive = false
@@ -35,6 +36,11 @@ class AudioKeepAlivePlugin: Plugin {
 
     override init() {
         super.init()
+    }
+
+    override func load(webview: WKWebView) {
+        self.webView = webview
+        super.load(webview: webview)
     }
 
     // MARK: - Audio Session
@@ -194,6 +200,7 @@ class AudioKeepAlivePlugin: Plugin {
             info[MPNowPlayingInfoPropertyPlaybackRate] = 1.0
             MPNowPlayingInfoCenter.default().nowPlayingInfo = info
             self.triggerWebViewEvent("audio-keepalive:play")
+            self.dispatchCommandToJS("play")
             return .success
         }
 
@@ -205,6 +212,7 @@ class AudioKeepAlivePlugin: Plugin {
             info[MPNowPlayingInfoPropertyPlaybackRate] = 0.0
             MPNowPlayingInfoCenter.default().nowPlayingInfo = info
             self.triggerWebViewEvent("audio-keepalive:pause")
+            self.dispatchCommandToJS("pause")
             return .success
         }
 
@@ -262,6 +270,18 @@ class AudioKeepAlivePlugin: Plugin {
 
     private func triggerWebViewEvent(_ eventName: String, data: JSObject = [:]) {
         trigger(eventName, data: data)
+    }
+
+    private func dispatchCommandToJS(_ command: String) {
+        guard let webView else { return }
+        let script = "window.__stargateCmd && window.__stargateCmd('\(command)')"
+        DispatchQueue.main.async {
+            webView.evaluateJavaScript(script) { _, error in
+                if let error {
+                    print("[AUDIO_KEEPALIVE] dispatchCommandToJS(\(command)) failed: \(error.localizedDescription)")
+                }
+            }
+        }
     }
 
     private func updateNowPlayingInfo(title: String?, artist: String?, positionMs: Double?, durationMs: Double?) {
