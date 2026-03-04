@@ -119,6 +119,15 @@ export function createStargateReader(
     )
   }
 
+  function syncMediaSessionPlaybackState(state: MediaSessionPlaybackState) {
+    if (!("mediaSession" in navigator)) return
+    try {
+      navigator.mediaSession.playbackState = state
+    } catch {
+      // Best effort only
+    }
+  }
+
   // --- Centralized play/pause helpers (background-aware) ---
   async function doPlay() {
     if (!audioEngine || isPlaying || playInFlight) return
@@ -159,6 +168,7 @@ export function createStargateReader(
 
       isPlaying = true
       transport.setPlaying(true)
+      syncMediaSessionPlaybackState("playing")
       void requestWakeLock()
 
       // Fire-and-forget — just metadata, no audio session changes
@@ -180,6 +190,7 @@ export function createStargateReader(
     audioEngine.pause()
     isPlaying = false
     transport.setPlaying(false)
+    syncMediaSessionPlaybackState("paused")
     persistBookmark()
     releaseWakeLock()
     void pauseNativeKeepAlive()
@@ -722,6 +733,7 @@ export function createStargateReader(
           // Playback ended
           isPlaying = false
           transport.setPlaying(false)
+          syncMediaSessionPlaybackState("paused")
           releaseWakeLock()
           stopBackgroundTimers()
           backgroundedAt = 0
@@ -864,6 +876,7 @@ export function createStargateReader(
         () => {
           isPlaying = false
           transport.setPlaying(false)
+          syncMediaSessionPlaybackState("paused")
           releaseWakeLock()
           stopBackgroundTimers()
           backgroundedAt = 0

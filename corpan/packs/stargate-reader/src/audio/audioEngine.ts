@@ -150,7 +150,15 @@ export function createAudioEngine(
   /** Inject a hidden <audio> element to force WKWebView media channel on older iOS */
   function ensureMediaChannel() {
     if (!isIOS) return
-    if (document.getElementById("sr-silent-audio")) return
+    const existing = document.getElementById("sr-silent-audio") as HTMLAudioElement | null
+    if (existing) {
+      if (existing.paused) {
+        existing.play().then(() => {
+          console.log("[SR:audio] media-channel resumed")
+        }).catch(() => {})
+      }
+      return
+    }
     const audio = document.createElement("audio")
     audio.id = "sr-silent-audio"
     // Tiny silent MP3 (~100 bytes) — forces iOS audio session to media channel
@@ -160,7 +168,9 @@ export function createAudioEngine(
     audio.volume = 0.01
     audio.setAttribute("playsinline", "")
     document.body.appendChild(audio)
-    audio.play().catch(() => {})
+    audio.play().then(() => {
+      console.log("[SR:audio] media-channel started")
+    }).catch(() => {})
   }
 
   function preloadAhead() {
@@ -320,6 +330,14 @@ export function createAudioEngine(
       }
 
       stopSource()
+
+      // Pause iOS media-channel element when app playback is paused.
+      // Leaving it running keeps WebKit's media session in a "playing" state.
+      const silentAudio = document.getElementById("sr-silent-audio") as HTMLAudioElement | null
+      if (silentAudio && !silentAudio.paused) {
+        silentAudio.pause()
+        console.log("[SR:audio] media-channel paused")
+      }
     },
 
     stop: () => {
