@@ -55,6 +55,7 @@ export function createAudioEngine(
   let gainNode: GainNode | null = null
   let currentSource: AudioBufferSourceNode | null = null
   let playing = false
+  let suspendedWithLiveSource = false
   let disposed = false
 
   // Timing state
@@ -189,6 +190,24 @@ export function createAudioEngine(
       try { currentSource.disconnect() } catch { /* already disconnected */ }
       currentSource = null
     }
+    suspendedWithLiveSource = false
+  }
+
+  /**
+   * WebKit can suspend/resume AudioContext from lockscreen commands without
+   * flowing through JS handlers. Mirror that into our internal playing state.
+   */
+  function syncContextPlaybackState() {
+    if (!ctx || !currentSource) return
+    if (ctx.state === "suspended" && playing) {
+      playing = false
+      suspendedWithLiveSource = true
+      return
+    }
+    if (ctx.state === "running" && suspendedWithLiveSource && !playing) {
+      playing = true
+      suspendedWithLiveSource = false
+    }
   }
 
   async function playSegment(index: number, offset: number = 0) {
@@ -307,7 +326,6 @@ export function createAudioEngine(
     play: () => {
       console.log(`[SR:audio] play() — playing=${playing}, ctx.state=${ctx?.state ?? "null"}`)
       if (playing) return
-      playing = true
 
       const context = ensureContext()
       if (context && context.state === "suspended") {
@@ -315,6 +333,15 @@ export function createAudioEngine(
       }
 
       ensureMediaChannel()
+
+      // Fast resume path: we paused by suspending context and kept source alive.
+      if (currentSource && suspendedWithLiveSource) {
+        playing = true
+        suspendedWithLiveSource = false
+        return
+      }
+
+      playing = true
       playSegment(currentSegmentIndex, segmentPlaybackOffset)
     },
 
@@ -323,13 +350,21 @@ export function createAudioEngine(
       playing = false
       playbackGeneration++
 
-      // Calculate how far into the current segment we are
-      if (ctx && currentSource) {
-        const elapsed = (ctx.currentTime - segmentStartedAtCtxTime) * 1000
-        segmentPlaybackOffset += elapsed
+      // Prefer suspending the context so lockscreen Play can resume without
+      // needing JS command delivery.
+      if (ctx && currentSource && ctx.state === "running") {
+        void ctx.suspend().then(() => {
+          console.log("[SR:audio] context suspended for pause")
+        }).catch(() => {})
+        suspendedWithLiveSource = true
+      } else {
+        // Fallback: calculate offset and stop source
+        if (ctx && currentSource) {
+          const elapsed = (ctx.currentTime - segmentStartedAtCtxTime) * 1000
+          segmentPlaybackOffset += elapsed
+        }
+        stopSource()
       }
-
-      stopSource()
 
       // Pause iOS media-channel element when app playback is paused.
       // Leaving it running keeps WebKit's media session in a "playing" state.
@@ -343,6 +378,7 @@ export function createAudioEngine(
     stop: () => {
       playing = false
       playbackGeneration++
+      suspendedWithLiveSource = false
       currentSegmentIndex = 0
       segmentPlaybackOffset = 0
       accumulatedTimeMs = 0
@@ -353,6 +389,7 @@ export function createAudioEngine(
       const wasPlaying = playing
       playing = false
       playbackGeneration++
+      suspendedWithLiveSource = false
       stopSource()
 
       currentSegmentIndex = Math.max(0, Math.min(index, segments.length - 1))
@@ -371,6 +408,7 @@ export function createAudioEngine(
 
       playing = false
       playbackGeneration++
+      suspendedWithLiveSource = false
       stopSource()
 
       // Binary search for the segment containing targetMs
@@ -409,6 +447,7 @@ export function createAudioEngine(
 
       // Invalidate any pending async playback
       playbackGeneration++
+      suspendedWithLiveSource = false
       stopSource()
 
       // Binary search for the segment containing targetMs
@@ -441,6 +480,7 @@ export function createAudioEngine(
     },
 
     getCurrentTimeMs: (): number => {
+      syncContextPlaybackState()
       if (!ctx || !playing) {
         return accumulatedTimeMs + segmentPlaybackOffset
       }
@@ -454,7 +494,10 @@ export function createAudioEngine(
 
     getSegmentAbsoluteStartMs: () => segmentAbsoluteStartMs,
 
-    isPlaying: () => playing,
+    isPlaying: () => {
+      syncContextPlaybackState()
+      return playing
+    },
 
     getAnalyserData: (): Uint8Array => {
       if (analyser) {
@@ -541,6 +584,7 @@ export function createAudioEngine(
       disposed = true
       playing = false
       playbackGeneration++
+      suspendedWithLiveSource = false
       stopSource()
       if (ctx) {
         void ctx.close().catch(() => {})

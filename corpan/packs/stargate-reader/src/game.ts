@@ -82,6 +82,7 @@ export function createStargateReader(
   let nativeSessionActive = false
   let removeRemoteListeners: (() => void) | null = null
   let playInFlight = false
+  let mediaArtworkUrl: string | undefined
 
   // --- Background recovery timing ---
   let backgroundedAt = 0        // wall-clock ms when app went to background
@@ -109,6 +110,10 @@ export function createStargateReader(
 
   // --- Single source of truth for native now-playing sync ---
   function syncNativeNowPlaying() {
+    syncMediaSessionNowPlaying()
+    // Avoid dual-writer contention while playback is active:
+    // WebKit owns the active card, native owns paused/stopped state.
+    if (isPlaying) return
     if (!nativeSessionActive || !audioEngine) return
     void updateNativeNowPlaying(
       segments[audioEngine.getCurrentSegmentIndex()]?.title || "Stargate Reader",
@@ -123,6 +128,33 @@ export function createStargateReader(
     if (!("mediaSession" in navigator)) return
     try {
       navigator.mediaSession.playbackState = state
+    } catch {
+      // Best effort only
+    }
+  }
+
+  function syncMediaSessionNowPlaying() {
+    if (!("mediaSession" in navigator) || !audioEngine) return
+    const seg = segments[audioEngine.getCurrentSegmentIndex()]
+    try {
+      navigator.mediaSession.metadata = new MediaMetadata({
+        title: seg?.title || "Stargate Reader",
+        artist: VOICE_NAMES[voiceMap[currentLanguage] || ""] || "Narrator",
+        album: bookDisplayName,
+        artwork: mediaArtworkUrl
+          ? [{ src: mediaArtworkUrl, sizes: "200x200", type: "image/png" }]
+          : undefined,
+      })
+
+      const durationS = audioEngine.getTotalDurationMs() / 1000
+      if (Number.isFinite(durationS) && durationS > 0) {
+        const positionS = Math.max(0, Math.min(audioEngine.getCurrentTimeMs() / 1000, durationS))
+        navigator.mediaSession.setPositionState({
+          duration: durationS,
+          playbackRate: 1,
+          position: positionS,
+        })
+      }
     } catch {
       // Best effort only
     }
@@ -540,40 +572,30 @@ export function createStargateReader(
   // --- Media Session API (lock screen controls) ---
   function setupMediaSession() {
     if (!("mediaSession" in navigator)) return
+    syncMediaSessionNowPlaying()
 
-    navigator.mediaSession.metadata = new MediaMetadata({
-      title: segments[0]?.title || "Stargate Reader",
-      artist: bookDisplayName,
-      album: VOICE_NAMES[voiceMap[currentLanguage] || ""] || "Narrator",
-    })
+    const handlers: [MediaSessionAction, MediaSessionActionHandler][] = [
+      ["play", () => { void doPlay() }],
+      ["pause", () => { doPause() }],
+      ["seekbackward", () => {
+        if (!audioEngine) return
+        audioEngine.seekToMs(Math.max(0, audioEngine.getCurrentTimeMs() - 30000))
+        syncNativeNowPlaying()
+      }],
+      ["seekforward", () => {
+        if (!audioEngine) return
+        audioEngine.seekToMs(Math.min(audioEngine.getTotalDurationMs(), audioEngine.getCurrentTimeMs() + 30000))
+        syncNativeNowPlaying()
+      }],
+    ]
 
-    navigator.mediaSession.setActionHandler("play", () => { doPlay() })
-    navigator.mediaSession.setActionHandler("pause", () => { doPause() })
-    navigator.mediaSession.setActionHandler("seekbackward", () => {
-      if (!audioEngine) return
-      audioEngine.seekToMs(Math.max(0, audioEngine.getCurrentTimeMs() - 30000))
-    })
-    navigator.mediaSession.setActionHandler("seekforward", () => {
-      if (!audioEngine) return
-      audioEngine.seekToMs(Math.min(audioEngine.getTotalDurationMs(), audioEngine.getCurrentTimeMs() + 30000))
-    })
-  }
-
-  function updateMediaSessionPosition() {
-    if (!("mediaSession" in navigator) || !audioEngine) return
-    const seg = segments[audioEngine.getCurrentSegmentIndex()]
-    if (seg) {
-      navigator.mediaSession.metadata = new MediaMetadata({
-        title: seg.title || "Stargate Reader",
-        artist: bookDisplayName,
-        album: VOICE_NAMES[voiceMap[currentLanguage] || ""] || "Narrator",
-      })
+    for (const [action, handler] of handlers) {
+      try {
+        navigator.mediaSession.setActionHandler(action, handler)
+      } catch {
+        // iOS/WebKit support differs by action and version.
+      }
     }
-    navigator.mediaSession.setPositionState({
-      duration: audioEngine.getTotalDurationMs() / 1000,
-      playbackRate: 1.0,
-      position: audioEngine.getCurrentTimeMs() / 1000,
-    })
   }
 
   // --- Periodic bookmark autosave (every 15s during playback) ---
@@ -655,6 +677,10 @@ export function createStargateReader(
       const preloadedSegments = initialState?.segmentsData as { segments: BookSegment[] } | undefined
       const preloadedManifest = initialState?.audioManifest as AudioManifest | undefined
       const resolveAssetUrl = initialState?.resolveAssetUrl as ((path: string) => string) | undefined
+      const baseUrl = initialState?.baseUrl as string | undefined
+      mediaArtworkUrl = resolveAssetUrl
+        ? resolveAssetUrl("stargate-reader-avatar.png")
+        : (baseUrl ? `${baseUrl.replace(/\/$/, "")}/stargate-reader-avatar.png` : "stargate-reader-avatar.png")
 
       if (preloadedSegments && preloadedManifest && resolveAssetUrl) {
         // Production: host provides preloaded data
@@ -789,6 +815,9 @@ export function createStargateReader(
       if (bookmark && audioEngine) {
         audioEngine.seekToMs(bookmark.timeMs)
       }
+
+      setupMediaSession()
+      syncNativeNowPlaying()
     } catch (err) {
       console.error("[StargateReader] Failed to initialize:", err)
       transport.setChapter("Failed to load book data")
@@ -924,6 +953,25 @@ export function createStargateReader(
   function renderLoop() {
     if (disposed) return
 
+    // Lockscreen controls can pause/resume WebAudio via WebKit without
+    // delivering JS action handlers. Reconcile app state with engine state.
+    if (audioEngine) {
+      const enginePlaying = audioEngine.isPlaying()
+      if (enginePlaying !== isPlaying) {
+        isPlaying = enginePlaying
+        transport.setPlaying(isPlaying)
+        syncMediaSessionPlaybackState(isPlaying ? "playing" : "paused")
+        if (isPlaying) {
+          void requestWakeLock()
+        } else {
+          releaseWakeLock()
+          stopBackgroundTimers()
+          if (document.hidden) backgroundedAt = 0
+        }
+        syncNativeNowPlaying()
+      }
+    }
+
     const currentMs = audioEngine?.getCurrentTimeMs() ?? 0
     const totalMs = audioEngine?.getTotalDurationMs() ?? 0
 
@@ -937,7 +985,6 @@ export function createStargateReader(
     if (isPlaying && currentMs - lastAutosaveMs > AUTOSAVE_INTERVAL_MS) {
       lastAutosaveMs = currentMs
       persistBookmark()
-      updateMediaSessionPosition()
       syncNativeNowPlaying()
     }
 
