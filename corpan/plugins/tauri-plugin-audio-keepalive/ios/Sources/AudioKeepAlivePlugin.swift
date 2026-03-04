@@ -273,12 +273,18 @@ class AudioKeepAlivePlugin: Plugin {
     }
 
     private func dispatchCommandToJS(_ command: String) {
-        guard let webView else { return }
+        guard let webView else {
+            print("[AUDIO_KEEPALIVE] dispatchCommandToJS(\(command)) skipped: no webView")
+            return
+        }
         let script = "window.__stargateCmd && window.__stargateCmd('\(command)')"
+        print("[AUDIO_KEEPALIVE] dispatchCommandToJS(\(command)) evaluating")
         DispatchQueue.main.async {
             webView.evaluateJavaScript(script) { _, error in
                 if let error {
                     print("[AUDIO_KEEPALIVE] dispatchCommandToJS(\(command)) failed: \(error.localizedDescription)")
+                } else {
+                    print("[AUDIO_KEEPALIVE] dispatchCommandToJS(\(command)) ok")
                 }
             }
         }

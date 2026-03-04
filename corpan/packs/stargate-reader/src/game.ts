@@ -78,7 +78,6 @@ export function createStargateReader(
   }
 
   // --- Background audio keepalive ---
-  let bgKeepAlive: ReturnType<typeof setInterval> | null = null
   let bgNowPlayingTimer: ReturnType<typeof setInterval> | null = null
   let nativeSessionActive = false
   let removeRemoteListeners: (() => void) | null = null
@@ -90,10 +89,8 @@ export function createStargateReader(
 
   // --- Background timer management ---
   function startBackgroundTimers() {
-    if (!bgKeepAlive) {
-      bgKeepAlive = setInterval(() => { audioEngine?.unlock() }, 5000)
-    }
     if (!bgNowPlayingTimer) {
+      console.log("[SR:bg] start background now-playing timer")
       bgNowPlayingTimer = setInterval(() => {
         if (!audioEngine || !isPlaying) return
         syncNativeNowPlaying()
@@ -103,8 +100,11 @@ export function createStargateReader(
   }
 
   function stopBackgroundTimers() {
-    if (bgKeepAlive) { clearInterval(bgKeepAlive); bgKeepAlive = null }
-    if (bgNowPlayingTimer) { clearInterval(bgNowPlayingTimer); bgNowPlayingTimer = null }
+    if (bgNowPlayingTimer) {
+      console.log("[SR:bg] stop background now-playing timer")
+      clearInterval(bgNowPlayingTimer)
+      bgNowPlayingTimer = null
+    }
   }
 
   // --- Single source of truth for native now-playing sync ---
@@ -400,6 +400,7 @@ export function createStargateReader(
   })
 
   window.__stargateCmd = (cmd: StargateRemoteCommand) => {
+    console.log(`[SR:cmd] window.__stargateCmd(${cmd})`)
     if (cmd === "play") {
       void doPlay()
       return
@@ -461,8 +462,14 @@ export function createStargateReader(
 
   // --- Native remote command listeners (lock screen / notification) ---
   removeRemoteListeners = listenForRemoteCommands({
-    onPlay: () => { void doPlay() },
-    onPause: () => { doPause() },
+    onPlay: () => {
+      console.log("[SR:cmd] native listener onPlay")
+      void doPlay()
+    },
+    onPause: () => {
+      console.log("[SR:cmd] native listener onPause")
+      doPause()
+    },
     onSkipForward: () => {
       if (!audioEngine) return
       audioEngine.seekToMs(Math.min(audioEngine.getTotalDurationMs(), audioEngine.getCurrentTimeMs() + 30000))
@@ -562,12 +569,10 @@ export function createStargateReader(
   let lastAutosaveMs = 0
   const AUTOSAVE_INTERVAL_MS = 15000
 
-  // --- Audio health check counter ---
-  let frameCount = 0
-
   // --- Screen lock behavior ---
   function handleVisibilityChange() {
     if (document.hidden) {
+      console.log(`[SR:vis] hidden (isPlaying=${isPlaying})`)
       // Screen locked / tab hidden: save bookmark, stop render loop but keep audio
       if (audioEngine && isPlaying) {
         backgroundedAt = Date.now()
@@ -580,6 +585,7 @@ export function createStargateReader(
         startBackgroundTimers()
       }
     } else {
+      console.log(`[SR:vis] visible (isPlaying=${isPlaying})`)
       // Foregrounded
       stopBackgroundTimers()
       engine.runRenderLoop(renderLoop)
@@ -904,20 +910,6 @@ export function createStargateReader(
   // --- Render loop ---
   function renderLoop() {
     if (disposed) return
-
-    // Periodic audio context resume (~once per second at 60fps)
-    // Some browsers suspend the AudioContext after inactivity
-    frameCount++
-    if (audioEngine && isPlaying && frameCount % 60 === 0) {
-      audioEngine.unlock()
-      // Log AudioContext state every ~2s if not running (diagnostic)
-      if (frameCount % 120 === 0) {
-        const ctxState = audioEngine.getContextState()
-        if (ctxState !== "running") {
-          console.warn(`[SR:renderLoop] AudioContext state="${ctxState}" while isPlaying — frame ${frameCount}`)
-        }
-      }
-    }
 
     const currentMs = audioEngine?.getCurrentTimeMs() ?? 0
     const totalMs = audioEngine?.getTotalDurationMs() ?? 0
