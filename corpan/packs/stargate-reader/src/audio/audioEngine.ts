@@ -58,6 +58,10 @@ export function createAudioEngine(
   let suspendedWithLiveSource = false
   let sourceClearedAt = 0
   let stallRecoveryInFlight = false
+  let waitingForNextSegment = false
+  let nextSegmentTimer: ReturnType<typeof setTimeout> | null = null
+  let pendingNextSegmentStartMs: number | null = null
+  let pendingNextSegmentFromCtxTime: number | null = null
   let disposed = false
 
   // Timing state
@@ -187,6 +191,14 @@ export function createAudioEngine(
   }
 
   function stopSource() {
+    if (nextSegmentTimer) {
+      clearTimeout(nextSegmentTimer)
+      nextSegmentTimer = null
+    }
+    waitingForNextSegment = false
+    pendingNextSegmentStartMs = null
+    pendingNextSegmentFromCtxTime = null
+
     if (currentSource) {
       try { currentSource.stop() } catch { /* already stopped */ }
       try { currentSource.disconnect() } catch { /* already disconnected */ }
@@ -205,7 +217,7 @@ export function createAudioEngine(
 
     // Self-heal: if we are "playing" but there is no active source for too long,
     // restart playback from the preserved offset.
-    if (playing && ctx.state === "running" && !currentSource && !disposed) {
+    if (playing && ctx.state === "running" && !currentSource && !waitingForNextSegment && !disposed) {
       const nowPerf = typeof performance !== "undefined" ? performance.now() : Date.now()
       const seg = segments[currentSegmentIndex]
       const entry = seg ? manifest.segments[seg.id] : undefined
@@ -249,6 +261,34 @@ export function createAudioEngine(
     }
   }
 
+  function scheduleNextSegment(nextIndex: number, delayMs: number, gen: number) {
+    waitingForNextSegment = true
+    pendingNextSegmentStartMs = segmentAbsoluteStartMs[nextIndex] ?? totalDurationMs
+    pendingNextSegmentFromCtxTime = ctx ? ctx.currentTime : null
+    if (nextSegmentTimer) {
+      clearTimeout(nextSegmentTimer)
+      nextSegmentTimer = null
+    }
+
+    const run = () => {
+      nextSegmentTimer = null
+      const shouldContinue = !disposed && playing && gen === playbackGeneration
+      if (shouldContinue) {
+        playSegment(nextIndex)
+      } else {
+        waitingForNextSegment = false
+        pendingNextSegmentStartMs = null
+        pendingNextSegmentFromCtxTime = null
+      }
+    }
+
+    if (delayMs > 0) {
+      nextSegmentTimer = setTimeout(run, delayMs)
+      return
+    }
+    run()
+  }
+
   async function playSegment(index: number, offset: number = 0) {
     console.log(`[SR:audio] playSegment(${index}, offset=${offset.toFixed(1)}) ctx.state=${ctx?.state ?? "null"}`)
     const gen = ++playbackGeneration
@@ -277,9 +317,17 @@ export function createAudioEngine(
     if (!entry) {
       // Skip segments without audio (e.g. image-only)
       accumulatedTimeMs = segmentAbsoluteStartMs[index + 1] ?? totalDurationMs
+      waitingForNextSegment = false
       playSegment(index + 1)
       return
     }
+
+    // Segment handoff can involve timer waits and async buffer decode/fetch.
+    // Keep timeline clamped during this phase to avoid visible rewind snaps.
+    waitingForNextSegment = true
+    pendingNextSegmentStartMs =
+      (segmentAbsoluteStartMs[index] ?? totalDurationMs) + Math.max(0, Math.min(offset, entry.duration_ms))
+    pendingNextSegmentFromCtxTime = context.currentTime
 
     const buffer = await loadBuffer(seg.id)
     if (!buffer) {
@@ -287,15 +335,7 @@ export function createAudioEngine(
         // Skip corrupt/missing segment instead of stalling in a "playing but silent" state.
         accumulatedTimeMs = segmentAbsoluteStartMs[index] + entry.duration_ms
         segmentPlaybackOffset = 0
-        if (entry.pause_after_ms > 0) {
-          setTimeout(() => {
-            if (!disposed && playing && gen === playbackGeneration) {
-              playSegment(index + 1)
-            }
-          }, entry.pause_after_ms)
-        } else {
-          playSegment(index + 1)
-        }
+        scheduleNextSegment(index + 1, entry.pause_after_ms, gen)
       }
       return
     }
@@ -314,16 +354,8 @@ export function createAudioEngine(
     if (bufferDurationMs - clampedOffset < 50) {
       accumulatedTimeMs = segmentAbsoluteStartMs[index] + entry.duration_ms
       segmentPlaybackOffset = 0
-      if (entry.pause_after_ms > 0) {
-        segmentStartedAtCtxTime = context.currentTime
-        setTimeout(() => {
-          if (!disposed && playing && gen === playbackGeneration) {
-            playSegment(index + 1)
-          }
-        }, entry.pause_after_ms)
-      } else {
-        playSegment(index + 1)
-      }
+      segmentStartedAtCtxTime = context.currentTime
+      scheduleNextSegment(index + 1, entry.pause_after_ms, gen)
       return
     }
 
@@ -350,21 +382,15 @@ export function createAudioEngine(
       accumulatedTimeMs = segmentAbsoluteStartMs[index] + entry.duration_ms
       segmentPlaybackOffset = 0
       if (ctx) segmentStartedAtCtxTime = ctx.currentTime
-
-      if (entry.pause_after_ms > 0) {
-        setTimeout(() => {
-          if (!disposed && playing && gen === playbackGeneration) {
-            playSegment(index + 1)
-          }
-        }, entry.pause_after_ms)
-      } else {
-        playSegment(index + 1)
-      }
+      scheduleNextSegment(index + 1, entry.pause_after_ms, gen)
     }
 
     source.start(0, clampedOffset / 1000)
     currentSource = source
     sourceClearedAt = 0
+    waitingForNextSegment = false
+    pendingNextSegmentStartMs = null
+    pendingNextSegmentFromCtxTime = null
     console.log(`[SR:audio] source.start() ok — seg=${index}, ctx.state=${context.state}`)
 
     preloadAhead()
@@ -556,6 +582,18 @@ export function createAudioEngine(
       if (!ctx || !playing) {
         return accumulatedTimeMs + segmentPlaybackOffset
       }
+      if (!currentSource) {
+        const baseMs = accumulatedTimeMs + segmentPlaybackOffset
+        if (
+          waitingForNextSegment &&
+          pendingNextSegmentStartMs !== null &&
+          pendingNextSegmentFromCtxTime !== null
+        ) {
+          const elapsedMs = Math.max(0, (ctx.currentTime - pendingNextSegmentFromCtxTime) * 1000)
+          return Math.min(baseMs + elapsedMs, pendingNextSegmentStartMs)
+        }
+        return baseMs
+      }
       const elapsed = (ctx.currentTime - segmentStartedAtCtxTime) * 1000
       return accumulatedTimeMs + segmentPlaybackOffset + elapsed
     },
@@ -657,6 +695,11 @@ export function createAudioEngine(
       playing = false
       playbackGeneration++
       suspendedWithLiveSource = false
+      if (nextSegmentTimer) {
+        clearTimeout(nextSegmentTimer)
+        nextSegmentTimer = null
+      }
+      waitingForNextSegment = false
       stopSource()
       if (ctx) {
         void ctx.close().catch(() => {})

@@ -96,7 +96,7 @@ export function createStargateReader(
   let pendingEngineState: MediaSessionPlaybackState | null = null
   let pendingEngineStateSince = 0
   const MEDIA_SESSION_RESYNC_INTERVAL_MS = 1000
-  const EXTERNAL_STATE_DEBOUNCE_MS = 250
+  const EXTERNAL_STATE_DEBOUNCE_MS = 900
 
   // --- Background recovery timing ---
   let backgroundedAt = 0        // wall-clock ms when app went to background
@@ -529,19 +529,30 @@ export function createStargateReader(
 
   transport.onScrubStart(() => {
     wasPlayingBeforeScrub = isPlaying
-    if (wasPlayingBeforeScrub) doPause()
+    // Do not pause/resume around scrub while playing.
+    // The pause/play round-trip is race-prone on iOS and can strand audio.
   })
 
   transport.onScrubMove((fraction) => {
     if (!audioEngine) return
-    audioEngine.seekToMsPreview(fraction * audioEngine.getTotalDurationMs())
+    const targetMs = fraction * audioEngine.getTotalDurationMs()
+    // Preview-only seek is for paused mode. While playing, defer real seek to scrub end.
+    if (!wasPlayingBeforeScrub) {
+      audioEngine.seekToMsPreview(targetMs)
+    }
   })
 
   transport.onScrubEnd((fraction) => {
     if (!audioEngine) return
-    audioEngine.seekToMsPreview(fraction * audioEngine.getTotalDurationMs())
-    if (wasPlayingBeforeScrub) void doPlay()
-    else syncNativeNowPlaying()
+    const targetMs = fraction * audioEngine.getTotalDurationMs()
+    audioEngine.seekToMs(targetMs)
+    // Keep state stable: if scrub started while playing, stay playing.
+    // If scrub started paused, stay paused.
+    if (wasPlayingBeforeScrub && !isPlaying) {
+      void doPlay()
+      return
+    }
+    syncNativeNowPlaying()
   })
 
   settings.onLanguageChange((lang) => {
@@ -790,8 +801,8 @@ export function createStargateReader(
       const resolveAssetUrl = initialState?.resolveAssetUrl as ((path: string) => string) | undefined
       const baseUrl = initialState?.baseUrl as string | undefined
       mediaArtworkUrl = resolveAssetUrl
-        ? resolveAssetUrl("stargate-reader-avatar.png")
-        : (baseUrl ? `${baseUrl.replace(/\/$/, "")}/stargate-reader-avatar.png` : "stargate-reader-avatar.png")
+        ? resolveAssetUrl("corpan-logo.png")
+        : (baseUrl ? `${baseUrl.replace(/\/$/, "")}/corpan-logo.png` : "corpan-logo.png")
 
       if (preloadedSegments && preloadedManifest && resolveAssetUrl) {
         // Production: host provides preloaded data
@@ -1088,14 +1099,11 @@ export function createStargateReader(
           syncMediaSessionPlaybackState(isPlaying ? "playing" : "paused")
           if (isPlaying) {
             void requestWakeLock()
-            syncNativePlaybackState(true)
           } else {
             releaseWakeLock()
             stopBackgroundTimers()
-            syncNativePlaybackState(false)
             if (document.hidden) backgroundedAt = 0
           }
-          syncNativeNowPlaying()
         }
       } else {
         pendingEngineState = null
