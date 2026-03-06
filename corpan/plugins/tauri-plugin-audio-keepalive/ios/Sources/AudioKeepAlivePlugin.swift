@@ -16,6 +16,7 @@ class AudioKeepAlivePlugin: Plugin {
     private var isActive = false
     private let useSilentLoop = false
     private let mirrorCommandsToWindowBridge = false
+    private let enableExtendedTransportControls = false
 
     // Remote command targets (stored for removal)
     private var playTarget: Any?
@@ -222,37 +223,45 @@ class AudioKeepAlivePlugin: Plugin {
             return .success
         }
 
-        center.skipForwardCommand.isEnabled = true
-        center.skipForwardCommand.preferredIntervals = [30]
-        skipForwardTarget = center.skipForwardCommand.addTarget { [weak self] _ in
-            self?.triggerWebViewEvent("audio-keepalive:skipForward")
-            return .success
-        }
+        if enableExtendedTransportControls {
+            center.skipForwardCommand.isEnabled = true
+            center.skipForwardCommand.preferredIntervals = [30]
+            skipForwardTarget = center.skipForwardCommand.addTarget { [weak self] _ in
+                self?.triggerWebViewEvent("audio-keepalive:skipForward")
+                return .success
+            }
 
-        center.skipBackwardCommand.isEnabled = true
-        center.skipBackwardCommand.preferredIntervals = [30]
-        skipBackTarget = center.skipBackwardCommand.addTarget { [weak self] _ in
-            self?.triggerWebViewEvent("audio-keepalive:skipBack")
-            return .success
-        }
+            center.skipBackwardCommand.isEnabled = true
+            center.skipBackwardCommand.preferredIntervals = [30]
+            skipBackTarget = center.skipBackwardCommand.addTarget { [weak self] _ in
+                self?.triggerWebViewEvent("audio-keepalive:skipBack")
+                return .success
+            }
 
-        center.previousTrackCommand.isEnabled = true
-        prevTrackTarget = center.previousTrackCommand.addTarget { [weak self] _ in
-            self?.triggerWebViewEvent("audio-keepalive:prevChapter")
-            return .success
-        }
+            center.previousTrackCommand.isEnabled = true
+            prevTrackTarget = center.previousTrackCommand.addTarget { [weak self] _ in
+                self?.triggerWebViewEvent("audio-keepalive:prevChapter")
+                return .success
+            }
 
-        center.nextTrackCommand.isEnabled = true
-        nextTrackTarget = center.nextTrackCommand.addTarget { [weak self] _ in
-            self?.triggerWebViewEvent("audio-keepalive:nextChapter")
-            return .success
-        }
+            center.nextTrackCommand.isEnabled = true
+            nextTrackTarget = center.nextTrackCommand.addTarget { [weak self] _ in
+                self?.triggerWebViewEvent("audio-keepalive:nextChapter")
+                return .success
+            }
 
-        center.changePlaybackPositionCommand.isEnabled = true
-        seekTarget = center.changePlaybackPositionCommand.addTarget { [weak self] event in
-            guard let posEvent = event as? MPChangePlaybackPositionCommandEvent else { return .commandFailed }
-            self?.triggerWebViewEvent("audio-keepalive:seek", data: ["positionMs": posEvent.positionTime * 1000.0])
-            return .success
+            center.changePlaybackPositionCommand.isEnabled = true
+            seekTarget = center.changePlaybackPositionCommand.addTarget { [weak self] event in
+                guard let posEvent = event as? MPChangePlaybackPositionCommandEvent else { return .commandFailed }
+                self?.triggerWebViewEvent("audio-keepalive:seek", data: ["positionMs": posEvent.positionTime * 1000.0])
+                return .success
+            }
+        } else {
+            center.skipForwardCommand.isEnabled = false
+            center.skipBackwardCommand.isEnabled = false
+            center.previousTrackCommand.isEnabled = false
+            center.nextTrackCommand.isEnabled = false
+            center.changePlaybackPositionCommand.isEnabled = false
         }
     }
 
@@ -265,6 +274,11 @@ class AudioKeepAlivePlugin: Plugin {
         if let t = prevTrackTarget { center.previousTrackCommand.removeTarget(t) }
         if let t = nextTrackTarget { center.nextTrackCommand.removeTarget(t) }
         if let t = seekTarget { center.changePlaybackPositionCommand.removeTarget(t) }
+        center.skipForwardCommand.isEnabled = false
+        center.skipBackwardCommand.isEnabled = false
+        center.previousTrackCommand.isEnabled = false
+        center.nextTrackCommand.isEnabled = false
+        center.changePlaybackPositionCommand.isEnabled = false
         playTarget = nil
         pauseTarget = nil
         skipForwardTarget = nil

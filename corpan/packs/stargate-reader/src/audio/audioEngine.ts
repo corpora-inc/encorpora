@@ -56,6 +56,8 @@ export function createAudioEngine(
   let currentSource: AudioBufferSourceNode | null = null
   let playing = false
   let suspendedWithLiveSource = false
+  let sourceClearedAt = 0
+  let stallRecoveryInFlight = false
   let disposed = false
 
   // Timing state
@@ -189,6 +191,7 @@ export function createAudioEngine(
       try { currentSource.stop() } catch { /* already stopped */ }
       try { currentSource.disconnect() } catch { /* already disconnected */ }
       currentSource = null
+      sourceClearedAt = typeof performance !== "undefined" ? performance.now() : Date.now()
     }
     suspendedWithLiveSource = false
   }
@@ -198,13 +201,49 @@ export function createAudioEngine(
    * flowing through JS handlers. Mirror that into our internal playing state.
    */
   function syncContextPlaybackState() {
+    if (!ctx) return
+
+    // Self-heal: if we are "playing" but there is no active source for too long,
+    // restart playback from the preserved offset.
+    if (playing && ctx.state === "running" && !currentSource && !disposed) {
+      const nowPerf = typeof performance !== "undefined" ? performance.now() : Date.now()
+      const seg = segments[currentSegmentIndex]
+      const entry = seg ? manifest.segments[seg.id] : undefined
+      const expectedGapMs = Math.max(2500, (entry?.pause_after_ms ?? 0) + 2500)
+      if (sourceClearedAt > 0 && nowPerf - sourceClearedAt > expectedGapMs && !stallRecoveryInFlight) {
+        const stalledForMs = nowPerf - sourceClearedAt
+        stallRecoveryInFlight = true
+        sourceClearedAt = nowPerf
+        console.warn(
+          `[SR:audio] stall detected (no source for ${stalledForMs.toFixed(0)}ms), restarting seg=${currentSegmentIndex} offset=${segmentPlaybackOffset.toFixed(1)}`
+        )
+        void playSegment(currentSegmentIndex, segmentPlaybackOffset).finally(() => {
+          stallRecoveryInFlight = false
+        })
+      }
+    }
+
     if (!ctx || !currentSource) return
     if (ctx.state === "suspended" && playing) {
+      // External pause path (e.g. lockscreen command handled by WebKit C++).
+      // Capture elapsed time before flipping to paused so timeline does not jump backwards.
+      const elapsed = (ctx.currentTime - segmentStartedAtCtxTime) * 1000
+      segmentPlaybackOffset += Math.max(0, elapsed)
+      // Re-anchor for any future resume path.
+      segmentStartedAtCtxTime = ctx.currentTime
       playing = false
       suspendedWithLiveSource = true
+      // Keep iOS media-channel state aligned with externally-triggered pause.
+      const silentAudio = document.getElementById("sr-silent-audio") as HTMLAudioElement | null
+      if (silentAudio && !silentAudio.paused) {
+        silentAudio.pause()
+      }
       return
     }
     if (ctx.state === "running" && suspendedWithLiveSource && !playing) {
+      // External resume path — keep timeline continuous from preserved offset.
+      ensureMediaChannel()
+      segmentStartedAtCtxTime = ctx.currentTime
       playing = true
       suspendedWithLiveSource = false
     }
@@ -299,6 +338,12 @@ export function createAudioEngine(
     source.onended = () => {
       if (currentSource === source) {
         currentSource = null
+        sourceClearedAt = typeof performance !== "undefined" ? performance.now() : Date.now()
+        // If the kept-live source ended while we were suspended/paused, we can no
+        // longer fast-resume that source.
+        if (!playing) {
+          suspendedWithLiveSource = false
+        }
       }
       if (disposed || !playing || gen !== playbackGeneration) return
 
@@ -319,6 +364,7 @@ export function createAudioEngine(
 
     source.start(0, clampedOffset / 1000)
     currentSource = source
+    sourceClearedAt = 0
     console.log(`[SR:audio] source.start() ok — seg=${index}, ctx.state=${context.state}`)
 
     preloadAhead()

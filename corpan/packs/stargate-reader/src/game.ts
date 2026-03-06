@@ -40,6 +40,11 @@ import {
 } from "./audio/nativeKeepAlive"
 
 type StargateRemoteCommand = "play" | "pause"
+type NowPlayingMetadata = {
+  title: string
+  artist: string
+  album: string
+}
 
 declare global {
   interface Window {
@@ -82,6 +87,8 @@ export function createStargateReader(
   let nativeSessionActive = false
   let removeRemoteListeners: (() => void) | null = null
   let playInFlight = false
+  let desiredPlaying = false
+  let playRequestSeq = 0
   let mediaArtworkUrl: string | undefined
   let lastMediaSessionSyncAt = 0
   const MEDIA_SESSION_RESYNC_INTERVAL_MS = 1000
@@ -96,7 +103,7 @@ export function createStargateReader(
       console.log("[SR:bg] start background now-playing timer")
       bgNowPlayingTimer = setInterval(() => {
         if (!audioEngine || !isPlaying) return
-        syncNativeNowPlaying()
+        syncNativeNowPlaying("periodic")
         persistBookmark()
       }, 10000)
     }
@@ -111,15 +118,16 @@ export function createStargateReader(
   }
 
   // --- Single source of truth for native now-playing sync ---
-  function syncNativeNowPlaying() {
+  function syncNativeNowPlaying(mode: "state" | "periodic" = "state") {
     syncMediaSessionNowPlaying()
-    // Avoid dual-writer contention while playback is active:
-    // WebKit owns the active card, native owns paused/stopped state.
-    if (isPlaying) return
     if (!nativeSessionActive || !audioEngine) return
+    // Avoid high-frequency dual-writer contention while active playback is ongoing.
+    // Still allow state transitions (play/pause/seek/chapter changes) to update native.
+    if (mode === "periodic" && isPlaying) return
+    const metadata = getNowPlayingMetadata()
     void updateNativeNowPlaying(
-      segments[audioEngine.getCurrentSegmentIndex()]?.title || "Stargate Reader",
-      VOICE_NAMES[voiceMap[currentLanguage] || ""] || "Narrator",
+      metadata.title,
+      metadata.artist,
       audioEngine.getCurrentTimeMs(),
       audioEngine.getTotalDurationMs(),
       isPlaying
@@ -137,12 +145,12 @@ export function createStargateReader(
 
   function syncMediaSessionNowPlaying() {
     if (!("mediaSession" in navigator) || !audioEngine) return
-    const seg = segments[audioEngine.getCurrentSegmentIndex()]
+    const metadata = getNowPlayingMetadata()
     try {
       navigator.mediaSession.metadata = new MediaMetadata({
-        title: seg?.title || "Stargate Reader",
-        artist: VOICE_NAMES[voiceMap[currentLanguage] || ""] || "Narrator",
-        album: bookDisplayName,
+        title: metadata.title,
+        artist: metadata.artist,
+        album: metadata.album,
         artwork: mediaArtworkUrl
           ? [{ src: mediaArtworkUrl, sizes: "200x200", type: "image/png" }]
           : undefined,
@@ -164,6 +172,8 @@ export function createStargateReader(
 
   // --- Centralized play/pause helpers (background-aware) ---
   async function doPlay() {
+    desiredPlaying = true
+    const requestId = ++playRequestSeq
     if (!audioEngine || isPlaying || playInFlight) return
     playInFlight = true
     const t0 = performance.now()
@@ -174,25 +184,47 @@ export function createStargateReader(
     // AudioContext, so the session must be stable before we create/resume one.
     try {
       if (!nativeSessionActive) {
+        const metadata = getNowPlayingMetadata()
         console.log(`[SR:doPlay] awaiting startNativeKeepAlive +${(performance.now() - t0).toFixed(1)}ms`)
         await startNativeKeepAlive(
-          segments[audioEngine.getCurrentSegmentIndex()]?.title || "Stargate Reader",
-          VOICE_NAMES[voiceMap[currentLanguage] || ""] || "Narrator",
-          bookDisplayName,
+          metadata.title,
+          metadata.artist,
+          metadata.album,
           audioEngine.getCurrentTimeMs(),
           audioEngine.getTotalDurationMs()
         )
         nativeSessionActive = true
         console.log(`[SR:doPlay] startNativeKeepAlive resolved +${(performance.now() - t0).toFixed(1)}ms`)
+        if (requestId !== playRequestSeq || !desiredPlaying || disposed) {
+          console.log("[SR:doPlay] canceled after startNativeKeepAlive")
+          syncMediaSessionPlaybackState("paused")
+          if (nativeSessionActive) void pauseNativeKeepAlive()
+          syncNativeNowPlaying()
+          return
+        }
       } else {
         console.log(`[SR:doPlay] awaiting resumeNativeKeepAlive +${(performance.now() - t0).toFixed(1)}ms`)
         await resumeNativeKeepAlive()
         console.log(`[SR:doPlay] resumeNativeKeepAlive resolved +${(performance.now() - t0).toFixed(1)}ms`)
+        if (requestId !== playRequestSeq || !desiredPlaying || disposed) {
+          console.log("[SR:doPlay] canceled after resumeNativeKeepAlive")
+          syncMediaSessionPlaybackState("paused")
+          if (nativeSessionActive) void pauseNativeKeepAlive()
+          syncNativeNowPlaying()
+          return
+        }
       }
 
       // NOW create/resume AudioContext — native session is stable
       await audioEngine.recoverContext()
       console.log(`[SR:doPlay] recoverContext done +${(performance.now() - t0).toFixed(1)}ms ctx.state=${audioEngine.getContextState()}`)
+      if (requestId !== playRequestSeq || !desiredPlaying || disposed) {
+        console.log("[SR:doPlay] canceled after recoverContext")
+        syncMediaSessionPlaybackState("paused")
+        if (nativeSessionActive) void pauseNativeKeepAlive()
+        syncNativeNowPlaying()
+        return
+      }
 
       // Re-register after context/session churn.
       setupMediaSession()
@@ -201,12 +233,24 @@ export function createStargateReader(
 
       audioEngine.play()
       console.log(`[SR:doPlay] audioEngine.play() done +${(performance.now() - t0).toFixed(1)}ms ctx.state=${audioEngine.getContextState()}`)
+      if (requestId !== playRequestSeq || !desiredPlaying || disposed) {
+        console.log("[SR:doPlay] canceled after audioEngine.play(); forcing pause")
+        audioEngine.pause()
+        syncMediaSessionPlaybackState("paused")
+        if (nativeSessionActive) void pauseNativeKeepAlive()
+        syncNativeNowPlaying()
+        return
+      }
 
-      isPlaying = true
-      transport.setPlaying(true)
-      syncMediaSessionPlaybackState("playing")
+      isPlaying = audioEngine.isPlaying()
+      transport.setPlaying(isPlaying)
+      syncMediaSessionPlaybackState(isPlaying ? "playing" : "paused")
       lastMediaSessionSyncAt = performance.now()
-      void requestWakeLock()
+      if (isPlaying) {
+        void requestWakeLock()
+      } else {
+        releaseWakeLock()
+      }
 
       // Fire-and-forget — just metadata, no audio session changes
       syncNativeNowPlaying()
@@ -223,7 +267,20 @@ export function createStargateReader(
   }
 
   function doPause() {
-    if (!audioEngine || !isPlaying) return
+    desiredPlaying = false
+    playRequestSeq += 1
+    if (!audioEngine) return
+    if (!isPlaying) {
+      transport.setPlaying(false)
+      syncMediaSessionPlaybackState("paused")
+      lastMediaSessionSyncAt = 0
+      releaseWakeLock()
+      void pauseNativeKeepAlive()
+      syncNativeNowPlaying()
+      stopBackgroundTimers()
+      if (document.hidden) backgroundedAt = 0
+      return
+    }
     audioEngine.pause()
     isPlaying = false
     transport.setPlaying(false)
@@ -261,6 +318,24 @@ export function createStargateReader(
       : "unknown")
 
   const bookDisplayName = BOOK_NAMES[bookId] || bookId
+
+  function getResolvedBookTitle(): string {
+    // Prefer explicit display name, but avoid exposing raw IDs as metadata.
+    if (bookDisplayName && bookDisplayName !== bookId) return bookDisplayName
+    return BOOK_NAMES.book_monte_alban || "The Mystery of Monte Albán"
+  }
+
+  function getNowPlayingMetadata(): NowPlayingMetadata {
+    const resolvedBookTitle = getResolvedBookTitle()
+    const segTitle = audioEngine
+      ? segments[audioEngine.getCurrentSegmentIndex()]?.title
+      : undefined
+    return {
+      title: segTitle || resolvedBookTitle,
+      artist: resolvedBookTitle,
+      album: resolvedBookTitle,
+    }
+  }
 
   // Bookmark persistence
   function persistBookmark() {
@@ -580,57 +655,24 @@ export function createStargateReader(
     if (!("mediaSession" in navigator)) return
     syncMediaSessionNowPlaying()
 
+    const disabledActions: MediaSessionAction[] = [
+      "seekbackward",
+      "seekforward",
+      "seekto",
+      "nexttrack",
+      "previoustrack",
+    ]
+    for (const action of disabledActions) {
+      try {
+        navigator.mediaSession.setActionHandler(action, null)
+      } catch {
+        // Best effort: unsupported action on this platform.
+      }
+    }
+
     const handlers: [MediaSessionAction, MediaSessionActionHandler][] = [
       ["play", () => { void doPlay() }],
       ["pause", () => { doPause() }],
-      ["seekbackward", (details) => {
-        if (!audioEngine) return
-        const deltaMs = ((details?.seekOffset ?? 30) * 1000)
-        audioEngine.seekToMs(Math.max(0, audioEngine.getCurrentTimeMs() - deltaMs))
-        syncNativeNowPlaying()
-      }],
-      ["seekforward", (details) => {
-        if (!audioEngine) return
-        const deltaMs = ((details?.seekOffset ?? 30) * 1000)
-        audioEngine.seekToMs(Math.min(audioEngine.getTotalDurationMs(), audioEngine.getCurrentTimeMs() + deltaMs))
-        syncNativeNowPlaying()
-      }],
-      ["seekto", (details) => {
-        if (!audioEngine || details?.seekTime == null) return
-        audioEngine.seekToMs(Math.max(0, details.seekTime * 1000))
-        syncNativeNowPlaying()
-      }],
-      ["nexttrack", () => {
-        if (!audioEngine || chapters.length === 0) return
-        const currentIdx = audioEngine.getCurrentSegmentIndex()
-        let chapterIdx = 0
-        for (let i = chapters.length - 1; i >= 0; i--) {
-          if (currentIdx >= chapters[i].firstSegmentIndex) {
-            chapterIdx = i
-            break
-          }
-        }
-        const targetChapter = Math.min(chapters.length - 1, chapterIdx + 1)
-        audioEngine.seekToSegment(chapters[targetChapter].firstSegmentIndex)
-        transport.setChapter(chapters[targetChapter].title)
-        syncNativeNowPlaying()
-      }],
-      ["previoustrack", () => {
-        if (!audioEngine || chapters.length === 0) return
-        const currentIdx = audioEngine.getCurrentSegmentIndex()
-        let chapterIdx = 0
-        for (let i = chapters.length - 1; i >= 0; i--) {
-          if (currentIdx >= chapters[i].firstSegmentIndex) {
-            chapterIdx = i
-            break
-          }
-        }
-        const threshold = chapters[chapterIdx].firstSegmentIndex + 2
-        const targetChapter = currentIdx > threshold ? chapterIdx : Math.max(0, chapterIdx - 1)
-        audioEngine.seekToSegment(chapters[targetChapter].firstSegmentIndex)
-        transport.setChapter(chapters[targetChapter].title)
-        syncNativeNowPlaying()
-      }],
     ]
 
     for (const [action, handler] of handlers) {
@@ -802,6 +844,7 @@ export function createStargateReader(
         () => {
           // Playback ended
           isPlaying = false
+          desiredPlaying = false
           transport.setPlaying(false)
           syncMediaSessionPlaybackState("paused")
           releaseWakeLock()
@@ -948,6 +991,7 @@ export function createStargateReader(
         },
         () => {
           isPlaying = false
+          desiredPlaying = false
           transport.setPlaying(false)
           syncMediaSessionPlaybackState("paused")
           releaseWakeLock()
@@ -1002,14 +1046,18 @@ export function createStargateReader(
     if (audioEngine) {
       const enginePlaying = audioEngine.isPlaying()
       if (enginePlaying !== isPlaying) {
+        console.log(`[SR:sync] engine/app mismatch -> engine=${enginePlaying} app=${isPlaying}`)
         isPlaying = enginePlaying
+        desiredPlaying = enginePlaying
         transport.setPlaying(isPlaying)
         syncMediaSessionPlaybackState(isPlaying ? "playing" : "paused")
         if (isPlaying) {
           void requestWakeLock()
+          if (nativeSessionActive) void resumeNativeKeepAlive()
         } else {
           releaseWakeLock()
           stopBackgroundTimers()
+          if (nativeSessionActive) void pauseNativeKeepAlive()
           if (document.hidden) backgroundedAt = 0
         }
         syncNativeNowPlaying()
@@ -1029,7 +1077,7 @@ export function createStargateReader(
     if (isPlaying && currentMs - lastAutosaveMs > AUTOSAVE_INTERVAL_MS) {
       lastAutosaveMs = currentMs
       persistBookmark()
-      syncNativeNowPlaying()
+      syncNativeNowPlaying("periodic")
     }
 
     // Keep active WebKit card pinned to the app's timeline/metadata.
