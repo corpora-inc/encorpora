@@ -91,7 +91,12 @@ export function createStargateReader(
   let playRequestSeq = 0
   let mediaArtworkUrl: string | undefined
   let lastMediaSessionSyncAt = 0
+  let lastMediaMetadataKey = ""
+  let nativePlaybackStateHint: MediaSessionPlaybackState | "unknown" = "unknown"
+  let pendingEngineState: MediaSessionPlaybackState | null = null
+  let pendingEngineStateSince = 0
   const MEDIA_SESSION_RESYNC_INTERVAL_MS = 1000
+  const EXTERNAL_STATE_DEBOUNCE_MS = 250
 
   // --- Background recovery timing ---
   let backgroundedAt = 0        // wall-clock ms when app went to background
@@ -143,18 +148,34 @@ export function createStargateReader(
     }
   }
 
+  function syncNativePlaybackState(playing: boolean) {
+    if (!nativeSessionActive) return
+    const target: MediaSessionPlaybackState = playing ? "playing" : "paused"
+    if (nativePlaybackStateHint === target) return
+    nativePlaybackStateHint = target
+    if (playing) {
+      void resumeNativeKeepAlive()
+    } else {
+      void pauseNativeKeepAlive()
+    }
+  }
+
   function syncMediaSessionNowPlaying() {
     if (!("mediaSession" in navigator) || !audioEngine) return
     const metadata = getNowPlayingMetadata()
     try {
-      navigator.mediaSession.metadata = new MediaMetadata({
-        title: metadata.title,
-        artist: metadata.artist,
-        album: metadata.album,
-        artwork: mediaArtworkUrl
-          ? [{ src: mediaArtworkUrl, sizes: "200x200", type: "image/png" }]
-          : undefined,
-      })
+      const metadataKey = `${metadata.title}|${metadata.artist}|${metadata.album}|${mediaArtworkUrl ?? ""}`
+      if (metadataKey !== lastMediaMetadataKey) {
+        navigator.mediaSession.metadata = new MediaMetadata({
+          title: metadata.title,
+          artist: metadata.artist,
+          album: metadata.album,
+          artwork: mediaArtworkUrl
+            ? [{ src: mediaArtworkUrl, sizes: "200x200", type: "image/png" }]
+            : undefined,
+        })
+        lastMediaMetadataKey = metadataKey
+      }
 
       const durationS = audioEngine.getTotalDurationMs() / 1000
       if (Number.isFinite(durationS) && durationS > 0) {
@@ -194,22 +215,24 @@ export function createStargateReader(
           audioEngine.getTotalDurationMs()
         )
         nativeSessionActive = true
+        nativePlaybackStateHint = "playing"
         console.log(`[SR:doPlay] startNativeKeepAlive resolved +${(performance.now() - t0).toFixed(1)}ms`)
         if (requestId !== playRequestSeq || !desiredPlaying || disposed) {
           console.log("[SR:doPlay] canceled after startNativeKeepAlive")
           syncMediaSessionPlaybackState("paused")
-          if (nativeSessionActive) void pauseNativeKeepAlive()
+          syncNativePlaybackState(false)
           syncNativeNowPlaying()
           return
         }
       } else {
         console.log(`[SR:doPlay] awaiting resumeNativeKeepAlive +${(performance.now() - t0).toFixed(1)}ms`)
         await resumeNativeKeepAlive()
+        nativePlaybackStateHint = "playing"
         console.log(`[SR:doPlay] resumeNativeKeepAlive resolved +${(performance.now() - t0).toFixed(1)}ms`)
         if (requestId !== playRequestSeq || !desiredPlaying || disposed) {
           console.log("[SR:doPlay] canceled after resumeNativeKeepAlive")
           syncMediaSessionPlaybackState("paused")
-          if (nativeSessionActive) void pauseNativeKeepAlive()
+          syncNativePlaybackState(false)
           syncNativeNowPlaying()
           return
         }
@@ -221,7 +244,7 @@ export function createStargateReader(
       if (requestId !== playRequestSeq || !desiredPlaying || disposed) {
         console.log("[SR:doPlay] canceled after recoverContext")
         syncMediaSessionPlaybackState("paused")
-        if (nativeSessionActive) void pauseNativeKeepAlive()
+        syncNativePlaybackState(false)
         syncNativeNowPlaying()
         return
       }
@@ -237,7 +260,7 @@ export function createStargateReader(
         console.log("[SR:doPlay] canceled after audioEngine.play(); forcing pause")
         audioEngine.pause()
         syncMediaSessionPlaybackState("paused")
-        if (nativeSessionActive) void pauseNativeKeepAlive()
+        syncNativePlaybackState(false)
         syncNativeNowPlaying()
         return
       }
@@ -248,8 +271,10 @@ export function createStargateReader(
       lastMediaSessionSyncAt = performance.now()
       if (isPlaying) {
         void requestWakeLock()
+        syncNativePlaybackState(true)
       } else {
         releaseWakeLock()
+        syncNativePlaybackState(false)
       }
 
       // Fire-and-forget — just metadata, no audio session changes
@@ -275,7 +300,7 @@ export function createStargateReader(
       syncMediaSessionPlaybackState("paused")
       lastMediaSessionSyncAt = 0
       releaseWakeLock()
-      void pauseNativeKeepAlive()
+      syncNativePlaybackState(false)
       syncNativeNowPlaying()
       stopBackgroundTimers()
       if (document.hidden) backgroundedAt = 0
@@ -288,7 +313,7 @@ export function createStargateReader(
     lastMediaSessionSyncAt = 0
     persistBookmark()
     releaseWakeLock()
-    void pauseNativeKeepAlive()
+    syncNativePlaybackState(false)
     syncNativeNowPlaying()
     stopBackgroundTimers()
     if (document.hidden) backgroundedAt = 0
@@ -852,6 +877,7 @@ export function createStargateReader(
           backgroundedAt = 0
           void stopNativeKeepAlive()
           nativeSessionActive = false
+          nativePlaybackStateHint = "unknown"
         },
         (segmentId, buffer) => {
           // Extract waveform envelopes as audio buffers are decoded
@@ -999,6 +1025,7 @@ export function createStargateReader(
           backgroundedAt = 0
           void stopNativeKeepAlive()
           nativeSessionActive = false
+          nativePlaybackStateHint = "unknown"
         },
         (segmentId, buffer) => {
           const entry = manifest.segments[segmentId]
@@ -1046,21 +1073,32 @@ export function createStargateReader(
     if (audioEngine) {
       const enginePlaying = audioEngine.isPlaying()
       if (enginePlaying !== isPlaying) {
-        console.log(`[SR:sync] engine/app mismatch -> engine=${enginePlaying} app=${isPlaying}`)
-        isPlaying = enginePlaying
-        desiredPlaying = enginePlaying
-        transport.setPlaying(isPlaying)
-        syncMediaSessionPlaybackState(isPlaying ? "playing" : "paused")
-        if (isPlaying) {
-          void requestWakeLock()
-          if (nativeSessionActive) void resumeNativeKeepAlive()
-        } else {
-          releaseWakeLock()
-          stopBackgroundTimers()
-          if (nativeSessionActive) void pauseNativeKeepAlive()
-          if (document.hidden) backgroundedAt = 0
+        const nextState: MediaSessionPlaybackState = enginePlaying ? "playing" : "paused"
+        const now = performance.now()
+        if (pendingEngineState !== nextState) {
+          pendingEngineState = nextState
+          pendingEngineStateSince = now
         }
-        syncNativeNowPlaying()
+        if (now - pendingEngineStateSince >= EXTERNAL_STATE_DEBOUNCE_MS) {
+          console.log(`[SR:sync] reconciled engine/app mismatch -> engine=${enginePlaying} app=${isPlaying}`)
+          isPlaying = enginePlaying
+          desiredPlaying = enginePlaying
+          pendingEngineState = null
+          transport.setPlaying(isPlaying)
+          syncMediaSessionPlaybackState(isPlaying ? "playing" : "paused")
+          if (isPlaying) {
+            void requestWakeLock()
+            syncNativePlaybackState(true)
+          } else {
+            releaseWakeLock()
+            stopBackgroundTimers()
+            syncNativePlaybackState(false)
+            if (document.hidden) backgroundedAt = 0
+          }
+          syncNativeNowPlaying()
+        }
+      } else {
+        pendingEngineState = null
       }
     }
 
@@ -1159,6 +1197,7 @@ export function createStargateReader(
     releaseWakeLock()
     void stopNativeKeepAlive()
     nativeSessionActive = false
+    nativePlaybackStateHint = "unknown"
     if (removeRemoteListeners) { removeRemoteListeners(); removeRemoteListeners = null }
     if (window.__stargateCmd) {
       delete window.__stargateCmd
