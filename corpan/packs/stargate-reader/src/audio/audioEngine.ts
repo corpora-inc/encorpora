@@ -243,7 +243,24 @@ export function createAudioEngine(
     }
 
     const buffer = await loadBuffer(seg.id)
-    if (!buffer || disposed || gen !== playbackGeneration) return
+    if (!buffer) {
+      if (!disposed && playing && gen === playbackGeneration) {
+        // Skip corrupt/missing segment instead of stalling in a "playing but silent" state.
+        accumulatedTimeMs = segmentAbsoluteStartMs[index] + entry.duration_ms
+        segmentPlaybackOffset = 0
+        if (entry.pause_after_ms > 0) {
+          setTimeout(() => {
+            if (!disposed && playing && gen === playbackGeneration) {
+              playSegment(index + 1)
+            }
+          }, entry.pause_after_ms)
+        } else {
+          playSegment(index + 1)
+        }
+      }
+      return
+    }
+    if (disposed || gen !== playbackGeneration) return
 
     // Re-check after async — another seek may have started a new source
     stopSource()
@@ -280,6 +297,9 @@ export function createAudioEngine(
     accumulatedTimeMs = segmentAbsoluteStartMs[index]
 
     source.onended = () => {
+      if (currentSource === source) {
+        currentSource = null
+      }
       if (disposed || !playing || gen !== playbackGeneration) return
 
       accumulatedTimeMs = segmentAbsoluteStartMs[index] + entry.duration_ms
@@ -336,6 +356,10 @@ export function createAudioEngine(
 
       // Fast resume path: we paused by suspending context and kept source alive.
       if (currentSource && suspendedWithLiveSource) {
+        if (context) {
+          // Re-anchor timeline to "now" when resuming a live suspended source.
+          segmentStartedAtCtxTime = context.currentTime
+        }
         playing = true
         suspendedWithLiveSource = false
         return
@@ -350,6 +374,12 @@ export function createAudioEngine(
       playing = false
       playbackGeneration++
 
+      // Capture accurate paused position for fallback resume.
+      if (ctx && currentSource) {
+        const elapsed = (ctx.currentTime - segmentStartedAtCtxTime) * 1000
+        segmentPlaybackOffset += Math.max(0, elapsed)
+      }
+
       // Prefer suspending the context so lockscreen Play can resume without
       // needing JS command delivery.
       if (ctx && currentSource && ctx.state === "running") {
@@ -358,11 +388,7 @@ export function createAudioEngine(
         }).catch(() => {})
         suspendedWithLiveSource = true
       } else {
-        // Fallback: calculate offset and stop source
-        if (ctx && currentSource) {
-          const elapsed = (ctx.currentTime - segmentStartedAtCtxTime) * 1000
-          segmentPlaybackOffset += elapsed
-        }
+        // Fallback: stop source and restart from preserved offset on next play.
         stopSource()
       }
 

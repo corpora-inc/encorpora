@@ -83,6 +83,8 @@ export function createStargateReader(
   let removeRemoteListeners: (() => void) | null = null
   let playInFlight = false
   let mediaArtworkUrl: string | undefined
+  let lastMediaSessionSyncAt = 0
+  const MEDIA_SESSION_RESYNC_INTERVAL_MS = 1000
 
   // --- Background recovery timing ---
   let backgroundedAt = 0        // wall-clock ms when app went to background
@@ -192,6 +194,8 @@ export function createStargateReader(
       await audioEngine.recoverContext()
       console.log(`[SR:doPlay] recoverContext done +${(performance.now() - t0).toFixed(1)}ms ctx.state=${audioEngine.getContextState()}`)
 
+      // Re-register after context/session churn.
+      setupMediaSession()
       audioEngine.unlock()
       console.log(`[SR:doPlay] unlock done +${(performance.now() - t0).toFixed(1)}ms`)
 
@@ -201,6 +205,7 @@ export function createStargateReader(
       isPlaying = true
       transport.setPlaying(true)
       syncMediaSessionPlaybackState("playing")
+      lastMediaSessionSyncAt = performance.now()
       void requestWakeLock()
 
       // Fire-and-forget — just metadata, no audio session changes
@@ -223,6 +228,7 @@ export function createStargateReader(
     isPlaying = false
     transport.setPlaying(false)
     syncMediaSessionPlaybackState("paused")
+    lastMediaSessionSyncAt = 0
     persistBookmark()
     releaseWakeLock()
     void pauseNativeKeepAlive()
@@ -577,14 +583,52 @@ export function createStargateReader(
     const handlers: [MediaSessionAction, MediaSessionActionHandler][] = [
       ["play", () => { void doPlay() }],
       ["pause", () => { doPause() }],
-      ["seekbackward", () => {
+      ["seekbackward", (details) => {
         if (!audioEngine) return
-        audioEngine.seekToMs(Math.max(0, audioEngine.getCurrentTimeMs() - 30000))
+        const deltaMs = ((details?.seekOffset ?? 30) * 1000)
+        audioEngine.seekToMs(Math.max(0, audioEngine.getCurrentTimeMs() - deltaMs))
         syncNativeNowPlaying()
       }],
-      ["seekforward", () => {
+      ["seekforward", (details) => {
         if (!audioEngine) return
-        audioEngine.seekToMs(Math.min(audioEngine.getTotalDurationMs(), audioEngine.getCurrentTimeMs() + 30000))
+        const deltaMs = ((details?.seekOffset ?? 30) * 1000)
+        audioEngine.seekToMs(Math.min(audioEngine.getTotalDurationMs(), audioEngine.getCurrentTimeMs() + deltaMs))
+        syncNativeNowPlaying()
+      }],
+      ["seekto", (details) => {
+        if (!audioEngine || details?.seekTime == null) return
+        audioEngine.seekToMs(Math.max(0, details.seekTime * 1000))
+        syncNativeNowPlaying()
+      }],
+      ["nexttrack", () => {
+        if (!audioEngine || chapters.length === 0) return
+        const currentIdx = audioEngine.getCurrentSegmentIndex()
+        let chapterIdx = 0
+        for (let i = chapters.length - 1; i >= 0; i--) {
+          if (currentIdx >= chapters[i].firstSegmentIndex) {
+            chapterIdx = i
+            break
+          }
+        }
+        const targetChapter = Math.min(chapters.length - 1, chapterIdx + 1)
+        audioEngine.seekToSegment(chapters[targetChapter].firstSegmentIndex)
+        transport.setChapter(chapters[targetChapter].title)
+        syncNativeNowPlaying()
+      }],
+      ["previoustrack", () => {
+        if (!audioEngine || chapters.length === 0) return
+        const currentIdx = audioEngine.getCurrentSegmentIndex()
+        let chapterIdx = 0
+        for (let i = chapters.length - 1; i >= 0; i--) {
+          if (currentIdx >= chapters[i].firstSegmentIndex) {
+            chapterIdx = i
+            break
+          }
+        }
+        const threshold = chapters[chapterIdx].firstSegmentIndex + 2
+        const targetChapter = currentIdx > threshold ? chapterIdx : Math.max(0, chapterIdx - 1)
+        audioEngine.seekToSegment(chapters[targetChapter].firstSegmentIndex)
+        transport.setChapter(chapters[targetChapter].title)
         syncNativeNowPlaying()
       }],
     ]
@@ -986,6 +1030,12 @@ export function createStargateReader(
       lastAutosaveMs = currentMs
       persistBookmark()
       syncNativeNowPlaying()
+    }
+
+    // Keep active WebKit card pinned to the app's timeline/metadata.
+    if (isPlaying && performance.now() - lastMediaSessionSyncAt > MEDIA_SESSION_RESYNC_INTERVAL_MS) {
+      lastMediaSessionSyncAt = performance.now()
+      syncMediaSessionNowPlaying()
     }
 
     // Chapter transition detection
