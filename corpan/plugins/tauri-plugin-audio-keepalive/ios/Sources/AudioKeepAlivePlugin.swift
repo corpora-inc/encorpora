@@ -14,6 +14,8 @@ class AudioKeepAlivePlugin: Plugin {
     private var audioEngine: AVAudioEngine?
     private var playerNode: AVAudioPlayerNode?
     private var isActive = false
+    private let useSilentLoop = false
+    private let mirrorCommandsToWindowBridge = false
 
     // Remote command targets (stored for removal)
     private var playTarget: Any?
@@ -200,7 +202,9 @@ class AudioKeepAlivePlugin: Plugin {
             info[MPNowPlayingInfoPropertyPlaybackRate] = 1.0
             MPNowPlayingInfoCenter.default().nowPlayingInfo = info
             self.triggerWebViewEvent("audio-keepalive:play")
-            self.dispatchCommandToJS("play")
+            if self.mirrorCommandsToWindowBridge {
+                self.dispatchCommandToJS("play")
+            }
             return .success
         }
 
@@ -212,7 +216,9 @@ class AudioKeepAlivePlugin: Plugin {
             info[MPNowPlayingInfoPropertyPlaybackRate] = 0.0
             MPNowPlayingInfoCenter.default().nowPlayingInfo = info
             self.triggerWebViewEvent("audio-keepalive:pause")
-            self.dispatchCommandToJS("pause")
+            if self.mirrorCommandsToWindowBridge {
+                self.dispatchCommandToJS("pause")
+            }
             return .success
         }
 
@@ -356,8 +362,12 @@ class AudioKeepAlivePlugin: Plugin {
 
         print("[AUDIO_KEEPALIVE] startAudioKeepalive: before configureAudioSession")
         configureAudioSession()
-        print("[AUDIO_KEEPALIVE] startAudioKeepalive: before startSilentLoop")
-        startSilentLoop()
+        if useSilentLoop {
+            print("[AUDIO_KEEPALIVE] startAudioKeepalive: before startSilentLoop")
+            startSilentLoop()
+        } else {
+            print("[AUDIO_KEEPALIVE] startAudioKeepalive: silent loop disabled")
+        }
         print("[AUDIO_KEEPALIVE] startAudioKeepalive: before setupRemoteCommands")
         setupRemoteCommands()
 
