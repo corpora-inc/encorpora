@@ -1,6 +1,6 @@
 import type { HostApi } from "./sdk/types"
 import type { AudioManifest, BookSegment, TimelineWord } from "./core/types"
-import { VOICE_NAMES, BOOK_NAMES } from "./core/constants"
+import { VOICE_NAMES, BOOK_NAMES, LANGUAGE_NAMES } from "./core/constants"
 import { buildTimeline, findCurrentWordIndex, buildChapterIndex } from "./core/timeline"
 import type { ChapterInfo } from "./core/types"
 import {
@@ -10,6 +10,7 @@ import {
 } from "./data/dataProvider"
 import { createAudioEngine, type AudioEngine } from "./audio/audioEngine"
 import { createTransportBar } from "./ui/transportBar"
+import { createSettingsPanel, type LanguageInfo } from "./ui/settingsPanel"
 import { createChapterOverlay, type ChapterOverlay } from "./ui/chapterOverlay"
 import { createParagraphView, type ParagraphView } from "./rendering/paragraphView"
 import { loadBookmark, saveBookmark, type Bookmark } from "./state/bookmarkStore"
@@ -21,6 +22,10 @@ import {
   updateNativeNowPlaying,
   listenForRemoteCommands,
 } from "./audio/nativeKeepAlive"
+
+type TauriBridgeWindow = Window & {
+  __TAURI_INTERNALS__?: unknown
+}
 
 type EarthgateRemoteCommand = "play" | "pause"
 
@@ -41,6 +46,10 @@ export function createEarthgateReader(
   _hostApi: HostApi,
   initialState?: Record<string, unknown>
 ) {
+  const hasNativeBridge = Boolean((window as TauriBridgeWindow).__TAURI_INTERNALS__)
+  const isAndroid = /Android/i.test(navigator.userAgent)
+  const nativeOwnsMediaSession = hasNativeBridge && isAndroid
+
   let disposed = false
 
   // --- Screen Wake Lock ---
@@ -74,7 +83,7 @@ export function createEarthgateReader(
     if (!bgNowPlayingTimer) {
       bgNowPlayingTimer = setInterval(() => {
         if (!audioEngine || !isPlaying) return
-        syncNativeNowPlaying()
+        syncNativeNowPlaying("periodic")
         persistBookmark()
       }, 10000)
     }
@@ -87,10 +96,12 @@ export function createEarthgateReader(
     }
   }
 
-  function syncNativeNowPlaying() {
+  function syncNativeNowPlaying(mode: "state" | "periodic" = "state") {
     syncMediaSessionNowPlaying()
-    if (isPlaying) return
     if (!nativeSessionActive || !audioEngine) return
+    // Avoid high-frequency contention during active playback.
+    // Still allow state transitions to update native.
+    if (mode === "periodic" && isPlaying) return
     void updateNativeNowPlaying(
       segments[audioEngine.getCurrentSegmentIndex()]?.title || "Earthgate Reader",
       VOICE_NAMES[voiceMap[currentLanguage] || ""] || "Narrator",
@@ -101,6 +112,7 @@ export function createEarthgateReader(
   }
 
   function syncMediaSessionPlaybackState(state: MediaSessionPlaybackState) {
+    if (nativeOwnsMediaSession) return
     if (!("mediaSession" in navigator)) return
     try {
       navigator.mediaSession.playbackState = state
@@ -108,6 +120,7 @@ export function createEarthgateReader(
   }
 
   function syncMediaSessionNowPlaying() {
+    if (nativeOwnsMediaSession) return
     if (!("mediaSession" in navigator) || !audioEngine) return
     const seg = segments[audioEngine.getCurrentSegmentIndex()]
     try {
@@ -202,6 +215,14 @@ export function createEarthgateReader(
 
   const bookDisplayName = BOOK_NAMES[bookId] || bookId
 
+  function buildLanguageInfos(): LanguageInfo[] {
+    return availableLanguages.map(code => ({
+      code,
+      displayName: LANGUAGE_NAMES[code] || code.toUpperCase(),
+      narrator: VOICE_NAMES[voiceMap[code] || ""] || "",
+    }))
+  }
+
   function persistBookmark() {
     if (!audioEngine) return
     const bm: Bookmark = {
@@ -236,9 +257,14 @@ export function createEarthgateReader(
   let chapterOverlay: ChapterOverlay = createChapterOverlay(ui)
   let lastChapterIndex = -1
 
+  // Settings panel
+  const settings = createSettingsPanel(ui, {
+    onBeforeClose: () => persistBookmark(),
+  })
+  settings.setLanguages(buildLanguageInfos(), currentLanguage)
+
   // Transport bar
   const transport = createTransportBar(ui)
-  transport.setLanguages(availableLanguages, currentLanguage)
 
   // --- Swipe navigation ---
   paragraphView.onNext(() => {
@@ -332,7 +358,7 @@ export function createEarthgateReader(
     else syncNativeNowPlaying()
   })
 
-  transport.onLanguageChange((lang) => {
+  settings.onLanguageChange((lang) => {
     void switchLanguage(lang)
   })
 
@@ -545,14 +571,14 @@ export function createEarthgateReader(
       if (disposed) return
 
       voiceMap[currentLanguage] = manifest.voice
-      transport.setLanguages(availableLanguages, currentLanguage)
+      settings.setLanguages(buildLanguageInfos(), currentLanguage)
 
       // Background fetch other language voice info
       for (const lang of availableLanguages) {
         if (lang !== currentLanguage) {
           dataProvider.loadAudioManifest(lang).then(m => {
             voiceMap[lang] = m.voice
-            transport.setLanguages(availableLanguages, currentLanguage)
+            settings.setLanguages(buildLanguageInfos(), currentLanguage)
           }).catch(() => {})
         }
       }
@@ -661,7 +687,7 @@ export function createEarthgateReader(
       segments = segData.segments
       manifest = newManifest
       voiceMap[newLang] = newManifest.voice
-      transport.setLanguages(availableLanguages, newLang)
+      settings.setLanguages(buildLanguageInfos(), newLang)
       chapters = buildChapterIndex(segments)
 
       const timeline = buildTimeline(segments, newManifest)
@@ -757,7 +783,7 @@ export function createEarthgateReader(
     if (isPlaying && currentMs - lastAutosaveMs > AUTOSAVE_INTERVAL_MS) {
       lastAutosaveMs = currentMs
       persistBookmark()
-      syncNativeNowPlaying()
+      syncNativeNowPlaying("periodic")
     }
 
     // Chapter transition detection
@@ -825,6 +851,7 @@ export function createEarthgateReader(
 
     persistBookmark()
     chapterOverlay.dispose()
+    settings.dispose()
     transport.dispose()
     paragraphView.dispose()
     audioEngine?.dispose()

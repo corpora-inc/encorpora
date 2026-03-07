@@ -70,26 +70,32 @@ class AudioKeepAliveService : Service() {
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         when (intent?.action) {
             ACTION_SKIP_BACK -> {
-                mediaSession?.controller?.transportControls?.skipToPrevious()
+                Log.d(TAG, "ACTION_SKIP_BACK")
+                handleSkipBackCommand("notification")
             }
             ACTION_PLAY_PAUSE -> {
+                Log.d(TAG, "ACTION_PLAY_PAUSE isPlaying=$isPlaying")
                 if (isPlaying) {
-                    mediaSession?.controller?.transportControls?.pause()
+                    handlePauseCommand("notification")
                 } else {
-                    mediaSession?.controller?.transportControls?.play()
+                    handlePlayCommand("notification")
                 }
             }
             ACTION_SKIP_FORWARD -> {
-                mediaSession?.controller?.transportControls?.skipToNext()
+                Log.d(TAG, "ACTION_SKIP_FORWARD")
+                handleSkipForwardCommand("notification")
             }
             "PAUSE_PLAYBACK" -> {
-                mediaSession?.controller?.transportControls?.pause()
+                Log.d(TAG, "PAUSE_PLAYBACK")
+                handlePauseCommand("plugin")
             }
             "RESUME_PLAYBACK" -> {
-                mediaSession?.controller?.transportControls?.play()
+                Log.d(TAG, "RESUME_PLAYBACK")
+                handlePlayCommand("plugin")
             }
             ACTION_SYNC_PLAYBACK_STATE -> {
                 val requestedPlaying = intent.getBooleanExtra("isPlaying", isPlaying)
+                Log.d(TAG, "ACTION_SYNC_PLAYBACK_STATE requestedPlaying=$requestedPlaying current=$isPlaying")
                 if (requestedPlaying != isPlaying) {
                     if (isPlaying && !requestedPlaying) {
                         snapshotPositionNow()
@@ -192,29 +198,23 @@ class AudioKeepAliveService : Service() {
             )
             setCallback(object : MediaSessionCompat.Callback() {
                 override fun onPlay() {
-                    if (isPlaying) return
-                    isPlaying = true
-                    lastPositionUpdateTime = SystemClock.elapsedRealtime()
-                    updateMediaSession()
-                    updateNotification()
-                    fireEvent("audio-keepalive:play")
+                    Log.d(TAG, "MediaSession onPlay")
+                    handlePlayCommand("mediaSession")
                 }
 
                 override fun onPause() {
-                    if (!isPlaying) return
-                    snapshotPositionNow()
-                    isPlaying = false
-                    updateMediaSession()
-                    updateNotification()
-                    fireEvent("audio-keepalive:pause")
+                    Log.d(TAG, "MediaSession onPause")
+                    handlePauseCommand("mediaSession")
                 }
 
                 override fun onSkipToNext() {
-                    fireEvent("audio-keepalive:skipForward")
+                    Log.d(TAG, "MediaSession onSkipToNext")
+                    handleSkipForwardCommand("mediaSession")
                 }
 
                 override fun onSkipToPrevious() {
-                    fireEvent("audio-keepalive:skipBack")
+                    Log.d(TAG, "MediaSession onSkipToPrevious")
+                    handleSkipBackCommand("mediaSession")
                 }
 
                 override fun onSeekTo(pos: Long) {
@@ -233,6 +233,42 @@ class AudioKeepAliveService : Service() {
             })
             isActive = true
         }
+    }
+
+    private fun handlePlayCommand(source: String) {
+        if (isPlaying) {
+            Log.d(TAG, "handlePlayCommand($source) ignored: already playing")
+            return
+        }
+        isPlaying = true
+        lastPositionUpdateTime = SystemClock.elapsedRealtime()
+        updateMediaSession()
+        updateNotification()
+        Log.d(TAG, "handlePlayCommand($source) -> fireEvent(audio-keepalive:play)")
+        fireEvent("audio-keepalive:play")
+    }
+
+    private fun handlePauseCommand(source: String) {
+        if (!isPlaying) {
+            Log.d(TAG, "handlePauseCommand($source) ignored: already paused")
+            return
+        }
+        snapshotPositionNow()
+        isPlaying = false
+        updateMediaSession()
+        updateNotification()
+        Log.d(TAG, "handlePauseCommand($source) -> fireEvent(audio-keepalive:pause)")
+        fireEvent("audio-keepalive:pause")
+    }
+
+    private fun handleSkipForwardCommand(source: String) {
+        Log.d(TAG, "handleSkipForwardCommand($source) -> fireEvent(audio-keepalive:skipForward)")
+        fireEvent("audio-keepalive:skipForward")
+    }
+
+    private fun handleSkipBackCommand(source: String) {
+        Log.d(TAG, "handleSkipBackCommand($source) -> fireEvent(audio-keepalive:skipBack)")
+        fireEvent("audio-keepalive:skipBack")
     }
 
     private fun updateMediaSession() {
@@ -423,6 +459,7 @@ class AudioKeepAliveService : Service() {
     // ── Event Bridge ────────────────────────────────────────────────────
 
     private fun fireEvent(event: String, data: JSObject = JSObject()) {
+        Log.d(TAG, "fireEvent($event)")
         AudioKeepAlivePlugin.onMediaCommand?.invoke(event, data)
     }
 

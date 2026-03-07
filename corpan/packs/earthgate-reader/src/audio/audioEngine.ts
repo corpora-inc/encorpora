@@ -151,17 +151,17 @@ export function createAudioEngine(
   /** Inject a hidden <audio> element to force WKWebView media channel on older iOS */
   function ensureMediaChannel() {
     if (!isIOS) return
-    const existing = document.getElementById("sr-silent-audio") as HTMLAudioElement | null
+    const existing = document.getElementById("er-silent-audio") as HTMLAudioElement | null
     if (existing) {
       if (existing.paused) {
         existing.play().then(() => {
-          console.log("[SR:audio] media-channel resumed")
+          console.log("[ER:audio] media-channel resumed")
         }).catch(() => {})
       }
       return
     }
     const audio = document.createElement("audio")
-    audio.id = "sr-silent-audio"
+    audio.id = "er-silent-audio"
     // Tiny silent MP3 (~100 bytes) — forces iOS audio session to media channel
     audio.src =
       "data:audio/mp3;base64,SUQzBAAAAAAAI1RTU0UAAAAPAAADTGF2ZjU4Ljc2LjEwMAAAAAAAAAAAAAAA//tQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAWGluZwAAAA8AAAACAAABhgC7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7//////////////////////////////////////////////////////////////////8AAAAATGF2YzU4LjEzAAAAAAAAAAAAAAAAJAAAAAAAAAAAAYYoRwAAAAAAAAAAAAAAAAD/+0DEAAAA0gAl6AAACAAADSAMAAATIAXB7wAAMAAAAA/8+D5B0Hw/BAMf/Lh/5cEAQBAEAQ/lg+X////8uCAIAgCH/y4f//5cEAQBAEP/Lh/////+XBAMf/Lg//8uD///5cH///////+XBAEAQBD/5cP////8uCAIAh/8uH//+XB/8uH/////////////8AAAAAAAAAAAAAAAAAAAAAAA=="
@@ -170,7 +170,7 @@ export function createAudioEngine(
     audio.setAttribute("playsinline", "")
     document.body.appendChild(audio)
     audio.play().then(() => {
-      console.log("[SR:audio] media-channel started")
+      console.log("[ER:audio] media-channel started")
     }).catch(() => {})
   }
 
@@ -211,7 +211,7 @@ export function createAudioEngine(
   }
 
   async function playSegment(index: number, offset: number = 0) {
-    console.log(`[SR:audio] playSegment(${index}, offset=${offset.toFixed(1)}) ctx.state=${ctx?.state ?? "null"}`)
+    console.log(`[ER:audio] playSegment(${index}, offset=${offset.toFixed(1)}) ctx.state=${ctx?.state ?? "null"}`)
     const gen = ++playbackGeneration
 
     if (disposed || index >= segments.length) {
@@ -299,7 +299,7 @@ export function createAudioEngine(
 
     source.start(0, clampedOffset / 1000)
     currentSource = source
-    console.log(`[SR:audio] source.start() ok — seg=${index}, ctx.state=${context.state}`)
+    console.log(`[ER:audio] source.start() ok — seg=${index}, ctx.state=${context.state}`)
 
     preloadAhead()
   }
@@ -324,7 +324,7 @@ export function createAudioEngine(
     },
 
     play: () => {
-      console.log(`[SR:audio] play() — playing=${playing}, ctx.state=${ctx?.state ?? "null"}`)
+      console.log(`[ER:audio] play() — playing=${playing}, ctx.state=${ctx?.state ?? "null"}`)
       if (playing) return
 
       const context = ensureContext()
@@ -354,7 +354,7 @@ export function createAudioEngine(
       // needing JS command delivery.
       if (ctx && currentSource && ctx.state === "running") {
         void ctx.suspend().then(() => {
-          console.log("[SR:audio] context suspended for pause")
+          console.log("[ER:audio] context suspended for pause")
         }).catch(() => {})
         suspendedWithLiveSource = true
       } else {
@@ -368,10 +368,10 @@ export function createAudioEngine(
 
       // Pause iOS media-channel element when app playback is paused.
       // Leaving it running keeps WebKit's media session in a "playing" state.
-      const silentAudio = document.getElementById("sr-silent-audio") as HTMLAudioElement | null
+      const silentAudio = document.getElementById("er-silent-audio") as HTMLAudioElement | null
       if (silentAudio && !silentAudio.paused) {
         silentAudio.pause()
-        console.log("[SR:audio] media-channel paused")
+        console.log("[ER:audio] media-channel paused")
       }
     },
 
@@ -521,14 +521,14 @@ export function createAudioEngine(
     },
 
     recoverContext: async (): Promise<boolean> => {
-      console.log(`[SR:audio] recoverContext() — ctx.state=${ctx?.state ?? "null"}`)
+      console.log(`[ER:audio] recoverContext() — ctx.state=${ctx?.state ?? "null"}`)
       if (!AudioCtx) return false
       const context = ensureContext()
       if (!context) return false
 
       // Already running — no recovery needed
       if (context.state === "running") {
-        console.log("[SR:audio] recoverContext: already running")
+        console.log("[ER:audio] recoverContext: already running")
         return true
       }
 
@@ -543,12 +543,12 @@ export function createAudioEngine(
       }
 
       if (context.state === "running") {
-        console.log("[SR:audio] recoverContext: resumed successfully")
+        console.log("[ER:audio] recoverContext: resumed successfully")
         return true
       }
 
       // Context is dead — close it and create a fresh one
-      console.log("[SR:audio] recoverContext: context dead, recreating")
+      console.log("[ER:audio] recoverContext: context dead, recreating")
       try { await context.close() } catch { /* already closed */ }
       ctx = null
       analyser = null
@@ -572,7 +572,7 @@ export function createAudioEngine(
         try { await newCtx.resume() } catch { /* best effort */ }
       }
 
-      console.log(`[SR:audio] recoverContext: new ctx.state=${newCtx.state}`)
+      console.log(`[ER:audio] recoverContext: new ctx.state=${newCtx.state}`)
       return newCtx.state === "running"
     },
 
@@ -596,7 +596,7 @@ export function createAudioEngine(
       bufferCache.clear()
       loadingPromises.clear()
       // Clean up hidden audio element
-      const silentAudio = document.getElementById("sr-silent-audio")
+      const silentAudio = document.getElementById("er-silent-audio")
       if (silentAudio) silentAudio.remove()
     },
   }

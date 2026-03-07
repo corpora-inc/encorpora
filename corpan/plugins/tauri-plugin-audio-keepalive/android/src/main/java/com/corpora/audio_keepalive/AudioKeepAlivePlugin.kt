@@ -3,6 +3,7 @@ package com.corpora.audio_keepalive
 import android.app.Activity
 import android.content.Intent
 import android.os.Build
+import android.webkit.WebView
 import app.tauri.annotation.Command
 import app.tauri.annotation.InvokeArg
 import app.tauri.annotation.TauriPlugin
@@ -46,6 +47,41 @@ class AudioKeepAlivePlugin(private val activity: Activity) : Plugin(activity) {
     }
 
     private var isActive = false
+    private var webView: WebView? = null
+
+    override fun load(webview: WebView) {
+        webView = webview
+    }
+
+    override fun onDestroy() {
+        webView = null
+        onMediaCommand = null
+        isActive = false
+    }
+
+    private fun dispatchDirectCommand(event: String) {
+        val js = when (event) {
+            "audio-keepalive:play" -> "window.__stargateNativeCmd && window.__stargateNativeCmd('play');"
+            "audio-keepalive:pause" -> "window.__stargateNativeCmd && window.__stargateNativeCmd('pause');"
+            "audio-keepalive:skipForward" -> "window.__stargateNativeCmd && window.__stargateNativeCmd('skipForward');"
+            "audio-keepalive:skipBack" -> "window.__stargateNativeCmd && window.__stargateNativeCmd('skipBack');"
+            else -> null
+        } ?: return
+
+        webView?.evaluateJavascript(js, null)
+    }
+
+    private fun dispatchEventToWeb(event: String, data: JSObject) {
+        activity.runOnUiThread {
+            try {
+                android.util.Log.d("AudioKeepAlive", "Dispatching event to web: $event")
+                dispatchDirectCommand(event)
+                trigger(event, data)
+            } catch (t: Throwable) {
+                android.util.Log.e("AudioKeepAlive", "Failed to dispatch event $event: ${t.message}", t)
+            }
+        }
+    }
 
     @Command
     fun startAudioKeepalive(invoke: Invoke) {
@@ -71,7 +107,7 @@ class AudioKeepAlivePlugin(private val activity: Activity) : Plugin(activity) {
                 activity.startService(serviceIntent)
             }
 
-            onMediaCommand = { cmd, data -> trigger(cmd, data) }
+            onMediaCommand = { cmd, data -> dispatchEventToWeb(cmd, data) }
             isActive = true
             invoke.resolve()
         } catch (e: Exception) {

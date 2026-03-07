@@ -41,6 +41,8 @@ import {
 import { srTrace, type TraceFields } from "./diagnostics/trace"
 
 type StargateRemoteCommand = "play" | "pause"
+type StargateNativeCommand = StargateRemoteCommand | "skipForward" | "skipBack"
+type RemotePlayPauseSource = "window" | "native" | "webms"
 type NowPlayingMetadata = {
   title: string
   artist: string
@@ -53,6 +55,7 @@ type TauriBridgeWindow = Window & {
 declare global {
   interface Window {
     __stargateCmd?: (cmd: StargateRemoteCommand) => void
+    __stargateNativeCmd?: (cmd: StargateNativeCommand) => void
   }
 }
 
@@ -572,6 +575,32 @@ export function createStargateReader(
 
   // Playback state
   let isPlaying = false
+  let lastRemotePlayPauseCmd: StargateRemoteCommand | null = null
+  let lastRemotePlayPauseAt = 0
+  const REMOTE_PLAY_PAUSE_DEDUPE_MS = 250
+
+  function dispatchRemotePlayPause(cmd: StargateRemoteCommand, source: RemotePlayPauseSource) {
+    const now = performance.now()
+    if (
+      lastRemotePlayPauseCmd === cmd &&
+      now - lastRemotePlayPauseAt < REMOTE_PLAY_PAUSE_DEDUPE_MS
+    ) {
+      tracePlayback("cmd:deduped", {
+        cmd,
+        source,
+        deltaMs: Math.round(now - lastRemotePlayPauseAt),
+      }, true)
+      return
+    }
+    lastRemotePlayPauseCmd = cmd
+    lastRemotePlayPauseAt = now
+    tracePlayback("cmd:dispatch", { cmd, source }, true)
+    if (cmd === "play") {
+      void doPlay()
+      return
+    }
+    doPause()
+  }
 
   // --- Display preferences (persisted per book) ---
   const prefs: DisplayPrefs = loadPrefs(bookId)
@@ -686,13 +715,24 @@ export function createStargateReader(
 
   window.__stargateCmd = (cmd: StargateRemoteCommand) => {
     console.log(`[SR:cmd] window.__stargateCmd(${cmd})`)
-    tracePlayback("cmd:window", { cmd }, true)
-    if (cmd === "play") {
-      void doPlay()
-      return
-    }
-    if (cmd === "pause") {
-      doPause()
+    dispatchRemotePlayPause(cmd, "window")
+  }
+
+  window.__stargateNativeCmd = (cmd: StargateNativeCommand) => {
+    console.log(`[SR:cmd] window.__stargateNativeCmd(${cmd})`)
+    switch (cmd) {
+      case "play":
+      case "pause":
+        dispatchRemotePlayPause(cmd, "native")
+        break
+      case "skipForward":
+        if (!audioEngine) return
+        seekToMsAndSync(Math.min(audioEngine.getTotalDurationMs(), audioEngine.getCurrentTimeMs() + 30000))
+        break
+      case "skipBack":
+        if (!audioEngine) return
+        seekToMsAndSync(Math.max(0, audioEngine.getCurrentTimeMs() - 30000))
+        break
     }
   }
 
@@ -750,13 +790,11 @@ export function createStargateReader(
   removeRemoteListeners = listenForRemoteCommands({
     onPlay: () => {
       console.log("[SR:cmd] native listener onPlay")
-      tracePlayback("cmd:native:onPlay", {}, true)
-      void doPlay()
+      dispatchRemotePlayPause("play", "native")
     },
     onPause: () => {
       console.log("[SR:cmd] native listener onPause")
-      tracePlayback("cmd:native:onPause", {}, true)
-      doPause()
+      dispatchRemotePlayPause("pause", "native")
     },
     onSkipForward: () => {
       if (!audioEngine) return
@@ -807,7 +845,6 @@ export function createStargateReader(
 
   // --- Media Session API (lock screen controls) ---
   function setupMediaSession() {
-    if (nativeOwnsMediaSession) return
     if (!("mediaSession" in navigator)) return
     syncMediaSessionNowPlaying()
 
@@ -818,9 +855,8 @@ export function createStargateReader(
       "nexttrack",
       "previoustrack",
     ]
-    if (hasNativeBridge) {
-      // In Tauri builds, native plugin is the sole inbound command path.
-      // Clear web action handlers to avoid duplicate play/pause command ingress.
+    if (hasNativeBridge && !isAndroid) {
+      // iOS Tauri: native plugin is sole inbound play/pause path.
       disabledActions.push("play", "pause")
     }
 
@@ -832,11 +868,11 @@ export function createStargateReader(
       }
     }
 
-    if (hasNativeBridge) return
+    if (hasNativeBridge && !isAndroid) return
 
     const handlers: [MediaSessionAction, MediaSessionActionHandler][] = [
-      ["play", () => { void doPlay() }],
-      ["pause", () => { doPause() }],
+      ["play", () => { dispatchRemotePlayPause("play", "webms") }],
+      ["pause", () => { dispatchRemotePlayPause("pause", "webms") }],
     ]
 
     for (const [action, handler] of handlers) {
@@ -1396,6 +1432,9 @@ export function createStargateReader(
     if (removeRemoteListeners) { removeRemoteListeners(); removeRemoteListeners = null }
     if (window.__stargateCmd) {
       delete window.__stargateCmd
+    }
+    if (window.__stargateNativeCmd) {
+      delete window.__stargateNativeCmd
     }
     stopBackgroundTimers()
 
