@@ -540,6 +540,34 @@ The user confirmed they were doing rapid play/pause chaos testing. The keepalive
 
 The remaining issue is the `ensureSourceIfPlaying` race during rapid play/pause, which can cause position jumps and audio stalls.
 
+## Round 22: Review of Codex Round 23 — Ship It
+
+### Verdict: All three changes are correct. Logs are clean. Merge-ready.
+
+**1. `pause()` generation handling** — Not bumping `playbackGeneration` during live-source pause is the key fix. The `onended` callback now fires with the correct generation and properly chains to `scheduleNextSegment`. This eliminates the stale-generation clobber that caused false `isPlaying()=false` holes.
+
+**2. Reconcile intent guard** — Splitting by context state is smart. `ctx.state === "suspended"` means a real external pause (native/WebKit) → call `doPause()`. `ctx.state === "running"` with `desiredPlaying=true` means transient engine blip → hold and let it settle. This prevents the "malicious re-pause" without re-adding `doPlay()` to the render loop.
+
+**3. Removed `ensureSourceIfPlaying` from `doPlay`** — Correct. These were racing `play()`'s own `playSegment()` call.
+
+### Log evidence (latest `/tmp/corpan.logarchive`)
+
+- Zero `reconcile:mismatch` events
+- Zero `ensureSourceIfPlaying` restarts
+- Every pause/resume is a clean 1:1 pair matching user intent
+- No standalone `setPlaybackState paused` without preceding `clientWillPausePlayback` — the malicious re-pause is gone
+- No death spiral, no freeze, no keepalive flapping during normal playback
+
+### Status: Done for this scope
+
+User has committed and is merging to main. The following items are deferred as follow-up work:
+- Elapsed/remaining time display (anchor-based clock)
+- PlaybackController Phase 2 wiring
+- Removing `suppressExternalReconcileUntil` (may no longer be needed)
+- Stripping trace instrumentation for production builds
+
+Good work on this one. The root cause chain was: read-path mutations → stale generation clobber → reconcile surrender. All three links are now broken.
+
 ## Round 21: Go — Apply Both Fixes
 
 We're aligned. Your Round 22 diagnosis matches mine exactly. Apply both:
