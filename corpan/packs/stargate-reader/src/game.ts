@@ -195,7 +195,23 @@ export function createStargateReader(
   async function doPlay() {
     desiredPlaying = true
     const requestId = ++playRequestSeq
-    if (!audioEngine || isPlaying || playInFlight) return
+    if (!audioEngine || playInFlight) return
+    const engineAlreadyPlaying = audioEngine.isPlaying()
+    if (engineAlreadyPlaying || isPlaying) {
+      isPlaying = true
+      transport.setPlaying(true)
+      syncMediaSessionPlaybackState("playing")
+      lastMediaSessionSyncAt = performance.now()
+      void requestWakeLock()
+      syncNativePlaybackState(true)
+      syncNativeNowPlaying()
+      if (document.hidden) {
+        backgroundedAt = Date.now()
+        backgroundedAudioMs = audioEngine.getCurrentTimeMs()
+        startBackgroundTimers()
+      }
+      return
+    }
     playInFlight = true
     const t0 = performance.now()
     console.log(`[SR:doPlay] start — ctx.state=${audioEngine.getContextState()}`)
@@ -295,7 +311,8 @@ export function createStargateReader(
     desiredPlaying = false
     playRequestSeq += 1
     if (!audioEngine) return
-    if (!isPlaying) {
+    const enginePlaying = audioEngine.isPlaying()
+    if (!isPlaying && !enginePlaying) {
       transport.setPlaying(false)
       syncMediaSessionPlaybackState("paused")
       lastMediaSessionSyncAt = 0
@@ -306,7 +323,9 @@ export function createStargateReader(
       if (document.hidden) backgroundedAt = 0
       return
     }
-    audioEngine.pause()
+    if (enginePlaying) {
+      audioEngine.pause()
+    }
     isPlaying = false
     transport.setPlaying(false)
     syncMediaSessionPlaybackState("paused")
@@ -360,6 +379,28 @@ export function createStargateReader(
       artist: resolvedBookTitle,
       album: resolvedBookTitle,
     }
+  }
+
+  function syncChapterFromEnginePosition() {
+    if (!audioEngine) return
+    const seg = segments[audioEngine.getCurrentSegmentIndex()]
+    if (seg) {
+      transport.setChapter(seg.title)
+    }
+  }
+
+  function seekToMsAndSync(targetMs: number) {
+    if (!audioEngine) return
+    audioEngine.seekToMs(targetMs)
+    syncChapterFromEnginePosition()
+    syncNativeNowPlaying()
+  }
+
+  function seekToSegmentAndSync(index: number) {
+    if (!audioEngine) return
+    audioEngine.seekToSegment(index)
+    syncChapterFromEnginePosition()
+    syncNativeNowPlaying()
   }
 
   // Bookmark persistence
@@ -491,9 +532,7 @@ export function createStargateReader(
     }
     const threshold = chapters[chapterIdx].firstSegmentIndex + 2
     const targetChapter = currentIdx > threshold ? chapterIdx : Math.max(0, chapterIdx - 1)
-    audioEngine.seekToSegment(chapters[targetChapter].firstSegmentIndex)
-    transport.setChapter(chapters[targetChapter].title)
-    syncNativeNowPlaying()
+    seekToSegmentAndSync(chapters[targetChapter].firstSegmentIndex)
   })
 
   transport.onNextChapter(() => {
@@ -507,28 +546,24 @@ export function createStargateReader(
       }
     }
     const targetChapter = Math.min(chapters.length - 1, chapterIdx + 1)
-    audioEngine.seekToSegment(chapters[targetChapter].firstSegmentIndex)
-    transport.setChapter(chapters[targetChapter].title)
-    syncNativeNowPlaying()
+    seekToSegmentAndSync(chapters[targetChapter].firstSegmentIndex)
   })
 
   transport.onSkipBack(() => {
     if (!audioEngine) return
-    audioEngine.seekToMs(Math.max(0, audioEngine.getCurrentTimeMs() - 30000))
-    syncNativeNowPlaying()
+    seekToMsAndSync(Math.max(0, audioEngine.getCurrentTimeMs() - 30000))
   })
 
   transport.onSkipForward(() => {
     if (!audioEngine) return
-    audioEngine.seekToMs(Math.min(audioEngine.getTotalDurationMs(), audioEngine.getCurrentTimeMs() + 30000))
-    syncNativeNowPlaying()
+    seekToMsAndSync(Math.min(audioEngine.getTotalDurationMs(), audioEngine.getCurrentTimeMs() + 30000))
   })
 
   // --- Scrub lifecycle ---
   let wasPlayingBeforeScrub = false
 
   transport.onScrubStart(() => {
-    wasPlayingBeforeScrub = isPlaying
+    wasPlayingBeforeScrub = audioEngine?.isPlaying() ?? isPlaying
     // Do not pause/resume around scrub while playing.
     // The pause/play round-trip is race-prone on iOS and can strand audio.
   })
@@ -545,14 +580,13 @@ export function createStargateReader(
   transport.onScrubEnd((fraction) => {
     if (!audioEngine) return
     const targetMs = fraction * audioEngine.getTotalDurationMs()
-    audioEngine.seekToMs(targetMs)
+    seekToMsAndSync(targetMs)
     // Keep state stable: if scrub started while playing, stay playing.
     // If scrub started paused, stay paused.
     if (wasPlayingBeforeScrub && !isPlaying) {
       void doPlay()
       return
     }
-    syncNativeNowPlaying()
   })
 
   settings.onLanguageChange((lang) => {
@@ -632,13 +666,11 @@ export function createStargateReader(
     },
     onSkipForward: () => {
       if (!audioEngine) return
-      audioEngine.seekToMs(Math.min(audioEngine.getTotalDurationMs(), audioEngine.getCurrentTimeMs() + 30000))
-      syncNativeNowPlaying()
+      seekToMsAndSync(Math.min(audioEngine.getTotalDurationMs(), audioEngine.getCurrentTimeMs() + 30000))
     },
     onSkipBack: () => {
       if (!audioEngine) return
-      audioEngine.seekToMs(Math.max(0, audioEngine.getCurrentTimeMs() - 30000))
-      syncNativeNowPlaying()
+      seekToMsAndSync(Math.max(0, audioEngine.getCurrentTimeMs() - 30000))
     },
     onNextChapter: () => {
       if (!audioEngine || chapters.length === 0) return
@@ -651,9 +683,7 @@ export function createStargateReader(
         }
       }
       const targetChapter = Math.min(chapters.length - 1, chapterIdx + 1)
-      audioEngine.seekToSegment(chapters[targetChapter].firstSegmentIndex)
-      transport.setChapter(chapters[targetChapter].title)
-      syncNativeNowPlaying()
+      seekToSegmentAndSync(chapters[targetChapter].firstSegmentIndex)
     },
     onPrevChapter: () => {
       if (!audioEngine || chapters.length === 0) return
@@ -667,14 +697,11 @@ export function createStargateReader(
       }
       const threshold = chapters[chapterIdx].firstSegmentIndex + 2
       const targetChapter = currentIdx > threshold ? chapterIdx : Math.max(0, chapterIdx - 1)
-      audioEngine.seekToSegment(chapters[targetChapter].firstSegmentIndex)
-      transport.setChapter(chapters[targetChapter].title)
-      syncNativeNowPlaying()
+      seekToSegmentAndSync(chapters[targetChapter].firstSegmentIndex)
     },
     onSeek: (positionMs: number) => {
       if (!audioEngine) return
-      audioEngine.seekToMs(positionMs)
-      syncNativeNowPlaying()
+      seekToMsAndSync(positionMs)
     },
     onInterruptionBegan: () => {
       if (!audioEngine || !isPlaying) return
@@ -758,7 +785,7 @@ export function createStargateReader(
               const actualMs = audioEngine.getCurrentTimeMs()
               const totalMs = audioEngine.getTotalDurationMs()
               if (Math.abs(expectedMs - actualMs) > 2000 && expectedMs < totalMs) {
-                audioEngine.seekToMs(Math.min(expectedMs, totalMs))
+                seekToMsAndSync(Math.min(expectedMs, totalMs))
               }
             }
             // Ensure audio is actually playing after recovery
@@ -874,7 +901,8 @@ export function createStargateReader(
           const seg = segments[index]
           if (seg) {
             transport.setChapter(seg.title)
-            syncNativeNowPlaying()
+            // Avoid native bridge work on every segment boundary; it can hitch playback.
+            // Play/pause/seek/chapter controls still trigger explicit now-playing updates.
           }
         },
         () => {
@@ -1023,7 +1051,8 @@ export function createStargateReader(
           const seg = segments[index]
           if (seg) {
             transport.setChapter(seg.title)
-            syncNativeNowPlaying()
+            // Avoid native bridge work on every segment boundary; it can hitch playback.
+            // Play/pause/seek/chapter controls still trigger explicit now-playing updates.
           }
         },
         () => {
@@ -1099,11 +1128,14 @@ export function createStargateReader(
           syncMediaSessionPlaybackState(isPlaying ? "playing" : "paused")
           if (isPlaying) {
             void requestWakeLock()
+            syncNativePlaybackState(true)
           } else {
             releaseWakeLock()
             stopBackgroundTimers()
+            syncNativePlaybackState(false)
             if (document.hidden) backgroundedAt = 0
           }
+          syncNativeNowPlaying()
         }
       } else {
         pendingEngineState = null
