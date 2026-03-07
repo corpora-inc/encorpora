@@ -677,8 +677,8 @@ export function createEarthgateReader(
       const resolveAssetUrl = initialState?.resolveAssetUrl as ((path: string) => string) | undefined
       const baseUrl = initialState?.baseUrl as string | undefined
       mediaArtworkUrl = resolveAssetUrl
-        ? resolveAssetUrl("earthgate-reader-avatar.png")
-        : (baseUrl ? `${baseUrl.replace(/\/$/, "")}/earthgate-reader-avatar.png` : "earthgate-reader-avatar.png")
+        ? resolveAssetUrl("corpan-logo.png")
+        : (baseUrl ? `${baseUrl.replace(/\/$/, "")}/corpan-logo.png` : "corpan-logo.png")
 
       if (preloadedSegments && preloadedManifest && resolveAssetUrl) {
         dataProvider = createPreloadedDataProvider(
@@ -955,6 +955,7 @@ export function createEarthgateReader(
       const segIdx = audioEngine.getCurrentSegmentIndex()
       if (segIdx !== lastSegmentIndex) {
         updateParagraphForSegment(segIdx)
+        currentWordHint = 0
       }
     }
 
