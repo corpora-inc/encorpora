@@ -101,6 +101,18 @@ jobs:
         working-directory: corpan/packs/stargate-reader
         run: node scripts/pack.mjs
 
+      - name: Install Earthgate Reader Dependencies
+        working-directory: corpan/packs/earthgate-reader
+        run: npm install --legacy-peer-deps
+
+      - name: Build Earthgate Reader
+        working-directory: corpan/packs/earthgate-reader
+        run: npm run build
+
+      - name: Package Earthgate Reader with Book Data
+        working-directory: corpan/packs/earthgate-reader
+        run: node scripts/pack.mjs
+
       - name: Copy Hover Runner into io/out
         run: |
           mkdir -p "web/io/out/corpan/packs/hover-runner"
@@ -130,6 +142,14 @@ jobs:
           cp -R corpan/packs/stargate-reader/dist "web/io/out/corpan/packs/stargate-reader/"
           cp -R corpan/packs/stargate-reader/data "web/io/out/corpan/packs/stargate-reader/"
           cp corpan/packs/stargate-reader/stargate-reader.zip "web/io/out/corpan/packs/stargate-reader.zip"
+
+      - name: Copy Earthgate Reader into io/out
+        run: |
+          mkdir -p "web/io/out/corpan/packs/earthgate-reader"
+          cp corpan/packs/earthgate-reader/manifest.json "web/io/out/corpan/packs/earthgate-reader/"
+          cp -R corpan/packs/earthgate-reader/dist "web/io/out/corpan/packs/earthgate-reader/"
+          cp -R corpan/packs/earthgate-reader/data "web/io/out/corpan/packs/earthgate-reader/"
+          cp corpan/packs/earthgate-reader/earthgate-reader.zip "web/io/out/corpan/packs/earthgate-reader.zip"
 
       - name: Show Final Structure
         run: |
