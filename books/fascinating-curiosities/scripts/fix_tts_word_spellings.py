@@ -36,6 +36,8 @@ TTS_WORD_CORRECTIONS = {
     "Meeshtek": "Mixtec",
     "Meeshteka": "Mixteca",
     "Sahpotek": "Zapotec",
+    "Hohzay": "José",
+    "Mogoteh": "Mogote",
     "Wahaka": "Oaxaca",
     "Wahocken": "Oaxacan",
     "Wahockens": "Oaxacans",

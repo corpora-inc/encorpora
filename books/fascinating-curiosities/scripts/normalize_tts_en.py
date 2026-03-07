@@ -31,6 +31,7 @@ SEGMENTS_PATH = (
 # ---------------------------------------------------------------------------
 
 PRONUNCIATION_MAP: list[tuple[str, str]] = [
+    ("San José Mogote", "San Hohzay Mogoteh"),
     ("Oaxacans", "Wahockens"),
     ("Oaxacan", "Wahocken"),
     ("Oaxaca", "Wahaka"),

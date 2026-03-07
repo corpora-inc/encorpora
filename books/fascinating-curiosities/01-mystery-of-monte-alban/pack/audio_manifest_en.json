@@ -5728,183 +5728,168 @@
     },
     "ch02-084": {
       "file": "audio/en/ch02-084.m4a",
-      "duration_ms": 14320,
+      "duration_ms": 12680,
       "pause_after_ms": 500,
       "words": [
         {
           "word": "By",
-          "start_ms": 300,
-          "end_ms": 300
+          "start_ms": 380,
+          "end_ms": 380
         },
         {
           "word": "fifteen",
-          "start_ms": 300,
-          "end_ms": 700
+          "start_ms": 380,
+          "end_ms": 900
         },
         {
           "word": "hundred",
-          "start_ms": 700,
-          "end_ms": 1100
+          "start_ms": 900,
+          "end_ms": 1460
         },
         {
           "word": "BCE",
-          "start_ms": 1100,
-          "end_ms": 1800
-        },
-        {
-          "word": "—",
-          "start_ms": 2120,
+          "start_ms": 1460,
           "end_ms": 2220
         },
         {
-          "word": "about",
+          "word": "—",
           "start_ms": 2220,
-          "end_ms": 2380
+          "end_ms": 2720
+        },
+        {
+          "word": "about",
+          "start_ms": 2880,
+          "end_ms": 2980
         },
         {
           "word": "a",
-          "start_ms": 2380,
-          "end_ms": 2500
+          "start_ms": 2980,
+          "end_ms": 3080
         },
         {
           "word": "thousand",
-          "start_ms": 2500,
-          "end_ms": 2840
+          "start_ms": 3080,
+          "end_ms": 3460
         },
         {
           "word": "years",
-          "start_ms": 2840,
-          "end_ms": 3200
+          "start_ms": 3460,
+          "end_ms": 3780
         },
         {
           "word": "before",
-          "start_ms": 3200,
-          "end_ms": 3600
+          "start_ms": 3780,
+          "end_ms": 4180
         },
         {
           "word": "Monte",
-          "start_ms": 3600,
-          "end_ms": 3940
+          "start_ms": 4180,
+          "end_ms": 4560
         },
         {
           "word": "Albán",
-          "start_ms": 3940,
-          "end_ms": 4420
-        },
-        {
-          "word": "was",
-          "start_ms": 4420,
-          "end_ms": 4620
-        },
-        {
-          "word": "founded",
-          "start_ms": 4620,
+          "start_ms": 4560,
           "end_ms": 5020
         },
         {
-          "word": "—",
+          "word": "was",
           "start_ms": 5020,
-          "end_ms": 5440
+          "end_ms": 5200
+        },
+        {
+          "word": "founded",
+          "start_ms": 5200,
+          "end_ms": 5640
+        },
+        {
+          "word": "—",
+          "start_ms": 5640,
+          "end_ms": 6080
         },
         {
           "word": "the",
-          "start_ms": 5520,
-          "end_ms": 5620
+          "start_ms": 6100,
+          "end_ms": 6200
         },
         {
           "word": "largest",
-          "start_ms": 5620,
-          "end_ms": 5980
+          "start_ms": 6200,
+          "end_ms": 6600
         },
         {
           "word": "settlement",
-          "start_ms": 5980,
-          "end_ms": 6380
+          "start_ms": 6600,
+          "end_ms": 7000
         },
         {
           "word": "in",
-          "start_ms": 6380,
-          "end_ms": 6620
+          "start_ms": 7000,
+          "end_ms": 7280
         },
         {
           "word": "the",
-          "start_ms": 6620,
-          "end_ms": 6720
-        },
-        {
-          "word": "valley",
-          "start_ms": 6720,
-          "end_ms": 7040
-        },
-        {
-          "word": "was",
-          "start_ms": 7040,
-          "end_ms": 7260
-        },
-        {
-          "word": "a",
-          "start_ms": 7260,
+          "start_ms": 7280,
           "end_ms": 7380
         },
         {
-          "word": "place",
+          "word": "valley",
           "start_ms": 7380,
-          "end_ms": 7560
+          "end_ms": 7700
+        },
+        {
+          "word": "was",
+          "start_ms": 7700,
+          "end_ms": 8119
+        },
+        {
+          "word": "a",
+          "start_ms": 8119,
+          "end_ms": 8260
+        },
+        {
+          "word": "place",
+          "start_ms": 8260,
+          "end_ms": 8480
         },
         {
           "word": "called",
-          "start_ms": 7560,
-          "end_ms": 8000
+          "start_ms": 8480,
+          "end_ms": 9060
         },
         {
           "word": "San",
-          "start_ms": 8000,
-          "end_ms": 8520
+          "start_ms": 9060,
+          "end_ms": 9600
         },
         {
           "word": "José",
-          "start_ms": 8520,
-          "end_ms": 8920
+          "start_ms": 9600,
+          "end_ms": 10140
         },
         {
-          "word": "Mogote",
-          "start_ms": 9440,
-          "end_ms": 9540
-        },
-        {
-          "word": "(san",
-          "start_ms": 9540,
-          "end_ms": 10000
-        },
-        {
-          "word": "ho-ZAY",
-          "start_ms": 10000,
-          "end_ms": 10960
-        },
-        {
-          "word": "mo-GO-teh),",
-          "start_ms": 10960,
-          "end_ms": 11820
+          "word": "Mogote,",
+          "start_ms": 10140,
+          "end_ms": 10840
         },
         {
           "word": "in",
-          "start_ms": 12140,
-          "end_ms": 12140
+          "start_ms": 11280,
+          "end_ms": 11280
         },
         {
           "word": "the",
-          "start_ms": 12140,
-          "end_ms": 12280
+          "start_ms": 11280,
+          "end_ms": 11400
         },
         {
           "word": "Etla",
-          "start_ms": 12280,
-          "end_ms": 12600
+          "start_ms": 11400,
+          "end_ms": 11780
         },
         {
           "word": "arm.",
-          "start_ms": 12600,
-          "end_ms": 13000
+          "start_ms": 11780,
+          "end_ms": 12300
         }
       ]
     },
@@ -6196,235 +6181,235 @@
     },
     "ch02-088": {
       "file": "audio/en/ch02-088.m4a",
-      "duration_ms": 7120,
+      "duration_ms": 7600,
       "pause_after_ms": 800,
       "words": [
         {
           "word": "San",
-          "start_ms": 460,
-          "end_ms": 460
+          "start_ms": 580,
+          "end_ms": 580
         },
         {
           "word": "José",
-          "start_ms": 460,
-          "end_ms": 880
+          "start_ms": 580,
+          "end_ms": 1500
         },
         {
           "word": "Mogote",
-          "start_ms": 880,
-          "end_ms": 1540
+          "start_ms": 1820,
+          "end_ms": 2700
         },
         {
           "word": "was",
-          "start_ms": 1540,
-          "end_ms": 2000
+          "start_ms": 2840,
+          "end_ms": 2940
         },
         {
           "word": "the",
-          "start_ms": 2000,
-          "end_ms": 2180
+          "start_ms": 2940,
+          "end_ms": 3120
         },
         {
           "word": "dominant",
-          "start_ms": 2180,
-          "end_ms": 2640
+          "start_ms": 3120,
+          "end_ms": 3520
         },
         {
           "word": "community",
-          "start_ms": 2640,
-          "end_ms": 3300
+          "start_ms": 3520,
+          "end_ms": 4160
         },
         {
           "word": "in",
-          "start_ms": 3300,
-          "end_ms": 3540
+          "start_ms": 4160,
+          "end_ms": 4340
         },
         {
           "word": "the",
-          "start_ms": 3540,
-          "end_ms": 3660
+          "start_ms": 4340,
+          "end_ms": 4420
         },
         {
           "word": "Valley",
-          "start_ms": 3660,
-          "end_ms": 4019
+          "start_ms": 4420,
+          "end_ms": 4780
         },
         {
           "word": "of",
-          "start_ms": 4019,
-          "end_ms": 4220
+          "start_ms": 4780,
+          "end_ms": 4980
         },
         {
           "word": "Oaxaca",
-          "start_ms": 4220,
-          "end_ms": 4680
+          "start_ms": 4980,
+          "end_ms": 5420
         },
         {
           "word": "for",
-          "start_ms": 5040,
-          "end_ms": 5140
+          "start_ms": 5420,
+          "end_ms": 5640
         },
         {
           "word": "about",
-          "start_ms": 5140,
-          "end_ms": 5600
+          "start_ms": 5640,
+          "end_ms": 5980
         },
         {
           "word": "a",
-          "start_ms": 5600,
-          "end_ms": 5700
+          "start_ms": 5980,
+          "end_ms": 6060
         },
         {
           "word": "thousand",
-          "start_ms": 5700,
-          "end_ms": 6160
+          "start_ms": 6060,
+          "end_ms": 6560
         },
         {
           "word": "years.",
-          "start_ms": 6160,
-          "end_ms": 6700
+          "start_ms": 6560,
+          "end_ms": 7320
         }
       ]
     },
     "ch02-089": {
       "file": "audio/en/ch02-089.m4a",
-      "duration_ms": 9720,
+      "duration_ms": 10680,
       "pause_after_ms": 500,
       "words": [
         {
           "word": "The",
-          "start_ms": 120,
-          "end_ms": 160
+          "start_ms": 300,
+          "end_ms": 300
         },
         {
           "word": "people",
-          "start_ms": 160,
-          "end_ms": 380
+          "start_ms": 360,
+          "end_ms": 580
         },
         {
           "word": "of",
-          "start_ms": 380,
-          "end_ms": 540
-        },
-        {
-          "word": "San",
-          "start_ms": 540,
+          "start_ms": 580,
           "end_ms": 760
         },
         {
-          "word": "José",
+          "word": "San",
           "start_ms": 760,
-          "end_ms": 1020
+          "end_ms": 1000
+        },
+        {
+          "word": "José",
+          "start_ms": 1000,
+          "end_ms": 1400
         },
         {
           "word": "Mogote",
-          "start_ms": 1020,
-          "end_ms": 1480
-        },
-        {
-          "word": "grew",
-          "start_ms": 1480,
-          "end_ms": 1720
-        },
-        {
-          "word": "corn,",
-          "start_ms": 1720,
+          "start_ms": 1400,
           "end_ms": 2180
         },
         {
+          "word": "grew",
+          "start_ms": 2200,
+          "end_ms": 2300
+        },
+        {
+          "word": "corn,",
+          "start_ms": 2300,
+          "end_ms": 2900
+        },
+        {
           "word": "beans,",
-          "start_ms": 2580,
-          "end_ms": 2920
+          "start_ms": 3040,
+          "end_ms": 3600
         },
         {
           "word": "and",
-          "start_ms": 3140,
-          "end_ms": 3140
+          "start_ms": 3680,
+          "end_ms": 3680
         },
         {
           "word": "squash",
-          "start_ms": 3320,
-          "end_ms": 3500
-        },
-        {
-          "word": "—",
-          "start_ms": 3500,
+          "start_ms": 3920,
           "end_ms": 4100
         },
         {
+          "word": "—",
+          "start_ms": 4100,
+          "end_ms": 4740
+        },
+        {
           "word": "the",
-          "start_ms": 4180,
-          "end_ms": 4280
+          "start_ms": 4780,
+          "end_ms": 4880
         },
         {
           "word": "Mesoamerican",
-          "start_ms": 4280,
-          "end_ms": 4980
+          "start_ms": 4880,
+          "end_ms": 5560
         },
         {
           "word": "trinity",
-          "start_ms": 4980,
-          "end_ms": 5320
+          "start_ms": 5560,
+          "end_ms": 5920
         },
         {
           "word": "of",
-          "start_ms": 5320,
-          "end_ms": 5500
+          "start_ms": 5920,
+          "end_ms": 6120
         },
         {
           "word": "crops",
-          "start_ms": 5500,
-          "end_ms": 5740
-        },
-        {
-          "word": "that",
-          "start_ms": 5740,
-          "end_ms": 6040
-        },
-        {
-          "word": "sustained",
-          "start_ms": 6100,
+          "start_ms": 6120,
           "end_ms": 6380
         },
         {
+          "word": "that",
+          "start_ms": 6380,
+          "end_ms": 6700
+        },
+        {
+          "word": "sustained",
+          "start_ms": 6700,
+          "end_ms": 7060
+        },
+        {
           "word": "civilizations",
-          "start_ms": 6510,
-          "end_ms": 7160
-        },
-        {
-          "word": "across",
-          "start_ms": 7160,
-          "end_ms": 7480
-        },
-        {
-          "word": "the",
-          "start_ms": 7480,
-          "end_ms": 7680
-        },
-        {
-          "word": "region",
-          "start_ms": 7680,
+          "start_ms": 7120,
           "end_ms": 7920
         },
         {
+          "word": "across",
+          "start_ms": 8160,
+          "end_ms": 8260
+        },
+        {
+          "word": "the",
+          "start_ms": 8260,
+          "end_ms": 8500
+        },
+        {
+          "word": "region",
+          "start_ms": 8500,
+          "end_ms": 8820
+        },
+        {
           "word": "for",
-          "start_ms": 7920,
-          "end_ms": 8100
+          "start_ms": 8820,
+          "end_ms": 9040
         },
         {
           "word": "thousands",
-          "start_ms": 8220,
-          "end_ms": 8480
+          "start_ms": 9240,
+          "end_ms": 9560
         },
         {
           "word": "of",
-          "start_ms": 8580,
-          "end_ms": 8700
+          "start_ms": 9560,
+          "end_ms": 9820
         },
         {
           "word": "years.",
-          "start_ms": 8700,
-          "end_ms": 9020
+          "start_ms": 9820,
+          "end_ms": 10140
         }
       ]
     },
@@ -6646,233 +6631,233 @@
     },
     "ch02-093": {
       "file": "audio/en/ch02-093.m4a",
-      "duration_ms": 16440,
+      "duration_ms": 16560,
       "pause_after_ms": 500,
       "words": [
         {
           "word": "Magnetite",
-          "start_ms": 220,
-          "end_ms": 700
+          "start_ms": 380,
+          "end_ms": 1000
         },
         {
           "word": "mirrors",
-          "start_ms": 700,
-          "end_ms": 1100
+          "start_ms": 1300,
+          "end_ms": 1580
         },
         {
           "word": "—",
-          "start_ms": 1100,
-          "end_ms": 1740
+          "start_ms": 1580,
+          "end_ms": 2120
         },
         {
           "word": "polished",
-          "start_ms": 1800,
-          "end_ms": 2160
+          "start_ms": 2260,
+          "end_ms": 2520
         },
         {
           "word": "stones",
-          "start_ms": 2160,
-          "end_ms": 2640
+          "start_ms": 2520,
+          "end_ms": 3060
         },
         {
           "word": "made",
-          "start_ms": 2640,
-          "end_ms": 3120
+          "start_ms": 3060,
+          "end_ms": 3460
         },
         {
           "word": "from",
-          "start_ms": 3120,
-          "end_ms": 3420
+          "start_ms": 3460,
+          "end_ms": 3720
         },
         {
           "word": "a",
-          "start_ms": 3420,
-          "end_ms": 3540
+          "start_ms": 3720,
+          "end_ms": 3860
         },
         {
           "word": "naturally",
-          "start_ms": 3540,
-          "end_ms": 3960
+          "start_ms": 3860,
+          "end_ms": 4280
         },
         {
           "word": "magnetic",
-          "start_ms": 3960,
-          "end_ms": 4480
+          "start_ms": 4280,
+          "end_ms": 4820
         },
         {
           "word": "iron",
-          "start_ms": 4480,
-          "end_ms": 4980
+          "start_ms": 4820,
+          "end_ms": 5240
         },
         {
           "word": "ore",
-          "start_ms": 4980,
-          "end_ms": 5400
+          "start_ms": 5240,
+          "end_ms": 5640
         },
         {
           "word": "that",
-          "start_ms": 5400,
-          "end_ms": 5940
+          "start_ms": 5640,
+          "end_ms": 6080
         },
         {
           "word": "can",
-          "start_ms": 5940,
-          "end_ms": 6120
+          "start_ms": 6080,
+          "end_ms": 6220
         },
         {
           "word": "reflect",
-          "start_ms": 6120,
-          "end_ms": 6460
+          "start_ms": 6220,
+          "end_ms": 6520
         },
         {
           "word": "an",
-          "start_ms": 6460,
-          "end_ms": 6680
+          "start_ms": 6520,
+          "end_ms": 6780
         },
         {
           "word": "image",
-          "start_ms": 6680,
-          "end_ms": 7020
+          "start_ms": 6780,
+          "end_ms": 7040
         },
         {
           "word": "like",
-          "start_ms": 7020,
-          "end_ms": 7340
+          "start_ms": 7040,
+          "end_ms": 7320
         },
         {
           "word": "a",
-          "start_ms": 7340,
-          "end_ms": 7500
+          "start_ms": 7320,
+          "end_ms": 7420
         },
         {
           "word": "dark",
-          "start_ms": 7500,
-          "end_ms": 7720
+          "start_ms": 7420,
+          "end_ms": 7640
         },
         {
           "word": "glass",
-          "start_ms": 7720,
-          "end_ms": 8180
+          "start_ms": 7640,
+          "end_ms": 8300
         },
         {
           "word": "—",
-          "start_ms": 8180,
-          "end_ms": 8640
+          "start_ms": 8300,
+          "end_ms": 8600
         },
         {
           "word": "have",
-          "start_ms": 8660,
-          "end_ms": 8760
+          "start_ms": 8700,
+          "end_ms": 8800
         },
         {
           "word": "been",
-          "start_ms": 8760,
-          "end_ms": 8920
+          "start_ms": 8800,
+          "end_ms": 8940
         },
         {
           "word": "found",
-          "start_ms": 8920,
+          "start_ms": 8940,
           "end_ms": 9300
         },
         {
           "word": "at",
           "start_ms": 9300,
-          "end_ms": 9500
+          "end_ms": 9540
         },
         {
           "word": "San",
           "start_ms": 9540,
-          "end_ms": 9760
+          "end_ms": 9800
         },
         {
           "word": "José",
-          "start_ms": 9760,
-          "end_ms": 10040
+          "start_ms": 9800,
+          "end_ms": 10220
         },
         {
           "word": "Mogote,",
-          "start_ms": 10040,
-          "end_ms": 10590
+          "start_ms": 10220,
+          "end_ms": 10870
         },
         {
           "word": "and",
-          "start_ms": 11260,
-          "end_ms": 11260
+          "start_ms": 11300,
+          "end_ms": 11300
         },
         {
           "word": "the",
-          "start_ms": 11260,
-          "end_ms": 11360
+          "start_ms": 11300,
+          "end_ms": 11400
         },
         {
           "word": "nearest",
-          "start_ms": 11360,
-          "end_ms": 11680
+          "start_ms": 11400,
+          "end_ms": 11700
         },
         {
           "word": "source",
-          "start_ms": 11680,
-          "end_ms": 12100
+          "start_ms": 11700,
+          "end_ms": 12080
         },
         {
           "word": "of",
-          "start_ms": 12100,
-          "end_ms": 12320
+          "start_ms": 12080,
+          "end_ms": 12280
         },
         {
           "word": "magnetite",
-          "start_ms": 12320,
-          "end_ms": 12980
+          "start_ms": 12280,
+          "end_ms": 12920
         },
         {
           "word": "is",
-          "start_ms": 12980,
-          "end_ms": 13120
+          "start_ms": 12920,
+          "end_ms": 13100
         },
         {
           "word": "hundreds",
-          "start_ms": 13120,
-          "end_ms": 13480
+          "start_ms": 13100,
+          "end_ms": 13460
         },
         {
           "word": "of",
-          "start_ms": 13480,
-          "end_ms": 13700
+          "start_ms": 13460,
+          "end_ms": 13660
         },
         {
           "word": "kilometers",
-          "start_ms": 13700,
-          "end_ms": 14180
+          "start_ms": 13660,
+          "end_ms": 14100
         },
         {
           "word": "away",
-          "start_ms": 14180,
-          "end_ms": 14540
+          "start_ms": 14100,
+          "end_ms": 14520
         },
         {
           "word": "in",
-          "start_ms": 14540,
-          "end_ms": 14780
+          "start_ms": 14520,
+          "end_ms": 15040
         },
         {
           "word": "the",
-          "start_ms": 14780,
-          "end_ms": 14840
+          "start_ms": 15040,
+          "end_ms": 15160
         },
         {
           "word": "Valley",
-          "start_ms": 14840,
-          "end_ms": 15120
+          "start_ms": 15160,
+          "end_ms": 15480
         },
         {
           "word": "of",
-          "start_ms": 15120,
-          "end_ms": 15260
+          "start_ms": 15480,
+          "end_ms": 15620
         },
         {
           "word": "Mexico.",
-          "start_ms": 15260,
-          "end_ms": 15500
+          "start_ms": 15620,
+          "end_ms": 16180
         }
       ]
     },
@@ -7186,93 +7171,93 @@
     },
     "ch02-098": {
       "file": "audio/en/ch02-098.m4a",
-      "duration_ms": 8119,
+      "duration_ms": 6800,
       "pause_after_ms": 500,
       "words": [
         {
           "word": "San",
-          "start_ms": 520,
-          "end_ms": 520
+          "start_ms": 500,
+          "end_ms": 500
         },
         {
           "word": "José",
-          "start_ms": 520,
-          "end_ms": 920
+          "start_ms": 500,
+          "end_ms": 1160
         },
         {
           "word": "Mogote",
-          "start_ms": 920,
-          "end_ms": 1680
+          "start_ms": 1160,
+          "end_ms": 1940
         },
         {
           "word": "also",
-          "start_ms": 1680,
-          "end_ms": 2420
+          "start_ms": 2240,
+          "end_ms": 2460
         },
         {
           "word": "showed",
-          "start_ms": 2420,
-          "end_ms": 2900
+          "start_ms": 2460,
+          "end_ms": 2800
         },
         {
           "word": "the",
-          "start_ms": 3160,
-          "end_ms": 3260
+          "start_ms": 2800,
+          "end_ms": 2980
         },
         {
           "word": "first",
-          "start_ms": 3260,
-          "end_ms": 3680
+          "start_ms": 2980,
+          "end_ms": 3240
         },
         {
           "word": "clear",
-          "start_ms": 3820,
-          "end_ms": 4080
+          "start_ms": 3240,
+          "end_ms": 3560
         },
         {
           "word": "signs",
-          "start_ms": 4080,
-          "end_ms": 4600
+          "start_ms": 3560,
+          "end_ms": 3940
         },
         {
           "word": "of",
-          "start_ms": 4600,
-          "end_ms": 4840
+          "start_ms": 4040,
+          "end_ms": 4140
         },
         {
           "word": "social",
-          "start_ms": 4840,
-          "end_ms": 5240
+          "start_ms": 4140,
+          "end_ms": 4480
         },
         {
           "word": "inequality",
-          "start_ms": 5240,
-          "end_ms": 6020
+          "start_ms": 4480,
+          "end_ms": 5180
         },
         {
           "word": "in",
-          "start_ms": 6020,
-          "end_ms": 6500
+          "start_ms": 5240,
+          "end_ms": 5500
         },
         {
           "word": "the",
-          "start_ms": 6500,
-          "end_ms": 6620
+          "start_ms": 5500,
+          "end_ms": 5600
         },
         {
           "word": "Valley",
-          "start_ms": 6620,
-          "end_ms": 7020
+          "start_ms": 5600,
+          "end_ms": 5920
         },
         {
           "word": "of",
-          "start_ms": 7020,
-          "end_ms": 7280
+          "start_ms": 5920,
+          "end_ms": 6100
         },
         {
           "word": "Oaxaca.",
-          "start_ms": 7280,
-          "end_ms": 7880
+          "start_ms": 6100,
+          "end_ms": 6320
         }
       ]
     },
@@ -7752,163 +7737,163 @@
     },
     "ch02-106": {
       "file": "audio/en/ch02-106.m4a",
-      "duration_ms": 12200,
+      "duration_ms": 13520,
       "pause_after_ms": 500,
       "words": [
         {
           "word": "In",
           "start_ms": 500,
-          "end_ms": 580
+          "end_ms": 540
         },
         {
           "word": "nineteen",
-          "start_ms": 580,
-          "end_ms": 900
+          "start_ms": 540,
+          "end_ms": 920
         },
         {
           "word": "seventy",
-          "start_ms": 900,
-          "end_ms": 1420
+          "start_ms": 920,
+          "end_ms": 1380
         },
         {
           "word": "five,",
-          "start_ms": 1420,
-          "end_ms": 2080
+          "start_ms": 1380,
+          "end_ms": 2200
         },
         {
           "word": "the",
-          "start_ms": 2160,
-          "end_ms": 2160
+          "start_ms": 2260,
+          "end_ms": 2260
         },
         {
           "word": "archaeologist",
-          "start_ms": 2160,
-          "end_ms": 2860
+          "start_ms": 2260,
+          "end_ms": 2980
         },
         {
           "word": "Joyce",
-          "start_ms": 2860,
-          "end_ms": 3240
+          "start_ms": 2980,
+          "end_ms": 3360
         },
         {
           "word": "Marcus",
-          "start_ms": 3240,
-          "end_ms": 3680
+          "start_ms": 3360,
+          "end_ms": 3840
         },
         {
           "word": "and",
-          "start_ms": 3780,
-          "end_ms": 3980
+          "start_ms": 3840,
+          "end_ms": 4120
         },
         {
           "word": "her",
-          "start_ms": 3980,
-          "end_ms": 4140
+          "start_ms": 4120,
+          "end_ms": 4260
         },
         {
           "word": "colleague",
-          "start_ms": 4140,
-          "end_ms": 4560
+          "start_ms": 4260,
+          "end_ms": 4660
         },
         {
           "word": "Kent",
-          "start_ms": 4560,
-          "end_ms": 4960
+          "start_ms": 4660,
+          "end_ms": 5020
         },
         {
           "word": "Flannery",
-          "start_ms": 4970,
-          "end_ms": 5520
+          "start_ms": 5020,
+          "end_ms": 5560
         },
         {
           "word": "were",
-          "start_ms": 5600,
-          "end_ms": 5720
+          "start_ms": 5560,
+          "end_ms": 5980
         },
         {
           "word": "excavating",
-          "start_ms": 5720,
-          "end_ms": 6360
+          "start_ms": 5980,
+          "end_ms": 6700
         },
         {
           "word": "at",
-          "start_ms": 6360,
-          "end_ms": 6520
+          "start_ms": 6700,
+          "end_ms": 6860
         },
         {
           "word": "San",
-          "start_ms": 6520,
-          "end_ms": 6740
+          "start_ms": 7000,
+          "end_ms": 7140
         },
         {
           "word": "José",
-          "start_ms": 6740,
-          "end_ms": 7060
+          "start_ms": 7140,
+          "end_ms": 7560
         },
         {
           "word": "Mogote",
-          "start_ms": 7060,
-          "end_ms": 7620
+          "start_ms": 7560,
+          "end_ms": 8340
         },
         {
           "word": "when",
-          "start_ms": 8119,
-          "end_ms": 8220
+          "start_ms": 8480,
+          "end_ms": 8580
         },
         {
           "word": "they",
-          "start_ms": 8220,
-          "end_ms": 8360
-        },
-        {
-          "word": "uncovered",
-          "start_ms": 8360,
+          "start_ms": 8580,
           "end_ms": 8700
         },
         {
-          "word": "a",
+          "word": "uncovered",
           "start_ms": 8700,
-          "end_ms": 8900
+          "end_ms": 9140
+        },
+        {
+          "word": "a",
+          "start_ms": 9140,
+          "end_ms": 9380
         },
         {
           "word": "carved",
-          "start_ms": 8900,
-          "end_ms": 9320
+          "start_ms": 9520,
+          "end_ms": 9880
         },
         {
           "word": "stone",
-          "start_ms": 9540,
-          "end_ms": 9680
+          "start_ms": 9880,
+          "end_ms": 10280
         },
         {
           "word": "slab",
-          "start_ms": 9680,
-          "end_ms": 10120
+          "start_ms": 10280,
+          "end_ms": 10820
         },
         {
           "word": "set",
-          "start_ms": 10120,
-          "end_ms": 10520
+          "start_ms": 10820,
+          "end_ms": 11440
         },
         {
           "word": "into",
-          "start_ms": 10520,
-          "end_ms": 10760
+          "start_ms": 11440,
+          "end_ms": 11780
         },
         {
           "word": "a",
-          "start_ms": 10760,
-          "end_ms": 10880
+          "start_ms": 11780,
+          "end_ms": 11920
         },
         {
           "word": "doorway",
-          "start_ms": 10880,
-          "end_ms": 11180
+          "start_ms": 11920,
+          "end_ms": 12280
         },
         {
           "word": "threshold.",
-          "start_ms": 11180,
-          "end_ms": 11620
+          "start_ms": 12280,
+          "end_ms": 12980
         }
       ]
     },
@@ -8658,38 +8643,38 @@
     },
     "ch02-114": {
       "file": "audio/en/ch02-114.m4a",
-      "duration_ms": 3320,
+      "duration_ms": 3400,
       "pause_after_ms": 1200,
       "words": [
         {
           "word": "Monument",
-          "start_ms": 160,
-          "end_ms": 580
+          "start_ms": 200,
+          "end_ms": 600
         },
         {
           "word": "three",
-          "start_ms": 580,
-          "end_ms": 1060
+          "start_ms": 600,
+          "end_ms": 1040
         },
         {
           "word": "from",
-          "start_ms": 1060,
-          "end_ms": 1480
+          "start_ms": 1340,
+          "end_ms": 1460
         },
         {
           "word": "San",
-          "start_ms": 1480,
-          "end_ms": 1800
+          "start_ms": 1460,
+          "end_ms": 1880
         },
         {
           "word": "José",
-          "start_ms": 1800,
-          "end_ms": 2240
+          "start_ms": 1880,
+          "end_ms": 2560
         },
         {
           "word": "Mogote",
-          "start_ms": 2240,
-          "end_ms": 2880
+          "start_ms": 2560,
+          "end_ms": 3160
         }
       ]
     },
@@ -9765,108 +9750,108 @@
     },
     "ch02-125": {
       "file": "audio/en/ch02-125.m4a",
-      "duration_ms": 9680,
+      "duration_ms": 8840,
       "pause_after_ms": 500,
       "words": [
         {
           "word": "Around",
-          "start_ms": 720,
-          "end_ms": 720
+          "start_ms": 560,
+          "end_ms": 560
         },
         {
           "word": "five",
-          "start_ms": 720,
-          "end_ms": 1040
+          "start_ms": 560,
+          "end_ms": 880
         },
         {
           "word": "hundred",
-          "start_ms": 1040,
-          "end_ms": 1580
+          "start_ms": 880,
+          "end_ms": 1380
         },
         {
           "word": "BCE,",
-          "start_ms": 1580,
-          "end_ms": 2500
+          "start_ms": 1380,
+          "end_ms": 2200
         },
         {
           "word": "the",
-          "start_ms": 3180,
-          "end_ms": 3180
+          "start_ms": 2540,
+          "end_ms": 2540
         },
         {
           "word": "people",
-          "start_ms": 3180,
-          "end_ms": 3500
+          "start_ms": 2540,
+          "end_ms": 2880
         },
         {
           "word": "of",
-          "start_ms": 3500,
-          "end_ms": 3740
+          "start_ms": 2880,
+          "end_ms": 3120
         },
         {
           "word": "San",
-          "start_ms": 3740,
-          "end_ms": 4019
+          "start_ms": 3120,
+          "end_ms": 3400
         },
         {
           "word": "José",
-          "start_ms": 4019,
-          "end_ms": 4380
+          "start_ms": 3400,
+          "end_ms": 3900
         },
         {
           "word": "Mogote",
-          "start_ms": 4900,
-          "end_ms": 5000
+          "start_ms": 3900,
+          "end_ms": 4680
         },
         {
           "word": "abandoned",
-          "start_ms": 5000,
-          "end_ms": 5980
+          "start_ms": 4680,
+          "end_ms": 5140
         },
         {
           "word": "the",
-          "start_ms": 5980,
-          "end_ms": 6380
+          "start_ms": 5140,
+          "end_ms": 5400
         },
         {
           "word": "settlement",
-          "start_ms": 6380,
-          "end_ms": 6760
+          "start_ms": 5400,
+          "end_ms": 5800
         },
         {
           "word": "they",
-          "start_ms": 6760,
-          "end_ms": 7040
+          "start_ms": 5800,
+          "end_ms": 6100
         },
         {
           "word": "had",
-          "start_ms": 7040,
-          "end_ms": 7160
+          "start_ms": 6100,
+          "end_ms": 6260
         },
         {
           "word": "occupied",
-          "start_ms": 7160,
-          "end_ms": 7680
+          "start_ms": 6260,
+          "end_ms": 6760
         },
         {
           "word": "for",
-          "start_ms": 7680,
-          "end_ms": 8060
+          "start_ms": 6760,
+          "end_ms": 7080
         },
         {
           "word": "a",
-          "start_ms": 8060,
-          "end_ms": 8180
+          "start_ms": 7080,
+          "end_ms": 7240
         },
         {
           "word": "thousand",
-          "start_ms": 8180,
-          "end_ms": 8700
+          "start_ms": 7240,
+          "end_ms": 7800
         },
         {
           "word": "years.",
-          "start_ms": 8700,
-          "end_ms": 9220
+          "start_ms": 7800,
+          "end_ms": 8360
         }
       ]
     },
@@ -10162,93 +10147,93 @@
     },
     "ch02-131": {
       "file": "audio/en/ch02-131.m4a",
-      "duration_ms": 8280,
+      "duration_ms": 9600,
       "pause_after_ms": 500,
       "words": [
         {
           "word": "San",
-          "start_ms": 120,
-          "end_ms": 160
+          "start_ms": 480,
+          "end_ms": 480
         },
         {
           "word": "José",
-          "start_ms": 160,
-          "end_ms": 400
-        },
-        {
-          "word": "Mogote",
-          "start_ms": 400,
-          "end_ms": 960
-        },
-        {
-          "word": "had",
-          "start_ms": 960,
+          "start_ms": 480,
           "end_ms": 1200
         },
         {
-          "word": "water,",
+          "word": "Mogote",
           "start_ms": 1200,
-          "end_ms": 1640
+          "end_ms": 2080
+        },
+        {
+          "word": "had",
+          "start_ms": 2300,
+          "end_ms": 2420
+        },
+        {
+          "word": "water,",
+          "start_ms": 2420,
+          "end_ms": 3000
         },
         {
           "word": "flat",
-          "start_ms": 2060,
-          "end_ms": 2120
+          "start_ms": 3300,
+          "end_ms": 3420
         },
         {
           "word": "farmland,",
-          "start_ms": 2120,
-          "end_ms": 2760
+          "start_ms": 3420,
+          "end_ms": 4320
         },
         {
           "word": "established",
-          "start_ms": 3120,
-          "end_ms": 3520
+          "start_ms": 4440,
+          "end_ms": 4940
         },
         {
           "word": "trade",
-          "start_ms": 3520,
-          "end_ms": 3880
-        },
-        {
-          "word": "connections,",
-          "start_ms": 3880,
-          "end_ms": 4500
-        },
-        {
-          "word": "and",
-          "start_ms": 4800,
-          "end_ms": 4880
-        },
-        {
-          "word": "a",
-          "start_ms": 4880,
-          "end_ms": 4960
-        },
-        {
-          "word": "thousand",
-          "start_ms": 4960,
+          "start_ms": 4940,
           "end_ms": 5340
         },
         {
-          "word": "years",
+          "word": "connections,",
           "start_ms": 5340,
-          "end_ms": 5660
+          "end_ms": 5740
+        },
+        {
+          "word": "and",
+          "start_ms": 6400,
+          "end_ms": 6500
+        },
+        {
+          "word": "a",
+          "start_ms": 6500,
+          "end_ms": 6600
+        },
+        {
+          "word": "thousand",
+          "start_ms": 6600,
+          "end_ms": 7120
+        },
+        {
+          "word": "years",
+          "start_ms": 7120,
+          "end_ms": 7540
         },
         {
           "word": "of",
-          "start_ms": 5660,
-          "end_ms": 5900
+          "start_ms": 7540,
+          "end_ms": 7820
         },
         {
           "word": "accumulated",
-          "start_ms": 5900,
-          "end_ms": 6380
+          "start_ms": 7820,
+          "end_ms": 8320
         },
         {
           "word": "infrastructure.",
-          "start_ms": 6380,
-          "end_ms": 7180
+          "start_ms": 8320,
+          "end_ms": 9370
         }
       ]
     },
@@ -10493,68 +10478,68 @@
     },
     "ch02-134": {
       "file": "audio/en/ch02-134.m4a",
-      "duration_ms": 5200,
+      "duration_ms": 5640,
       "pause_after_ms": 500,
       "words": [
         {
           "word": "One",
-          "start_ms": 180,
-          "end_ms": 180
+          "start_ms": 460,
+          "end_ms": 460
         },
         {
           "word": "clue",
-          "start_ms": 180,
-          "end_ms": 540
+          "start_ms": 460,
+          "end_ms": 800
         },
         {
           "word": "comes",
-          "start_ms": 540,
-          "end_ms": 920
+          "start_ms": 800,
+          "end_ms": 1200
         },
         {
           "word": "from",
-          "start_ms": 920,
-          "end_ms": 1180
+          "start_ms": 1200,
+          "end_ms": 1460
         },
         {
           "word": "the",
-          "start_ms": 1180,
-          "end_ms": 1340
+          "start_ms": 1460,
+          "end_ms": 1620
         },
         {
           "word": "archaeological",
-          "start_ms": 1340,
-          "end_ms": 1900
+          "start_ms": 1620,
+          "end_ms": 2140
         },
         {
           "word": "record",
-          "start_ms": 1900,
-          "end_ms": 2620
+          "start_ms": 2140,
+          "end_ms": 2900
         },
         {
           "word": "at",
-          "start_ms": 2620,
-          "end_ms": 2920
+          "start_ms": 2900,
+          "end_ms": 3280
         },
         {
           "word": "San",
-          "start_ms": 2960,
-          "end_ms": 3180
+          "start_ms": 3420,
+          "end_ms": 3560
         },
         {
           "word": "José",
-          "start_ms": 3180,
-          "end_ms": 3480
+          "start_ms": 3560,
+          "end_ms": 4080
         },
         {
           "word": "Mogote",
-          "start_ms": 3480,
-          "end_ms": 4040
+          "start_ms": 4080,
+          "end_ms": 4880
         },
         {
           "word": "itself.",
-          "start_ms": 4040,
-          "end_ms": 4540
+          "start_ms": 4880,
+          "end_ms": 5220
         }
       ]
     },
@@ -11951,38 +11936,38 @@
     },
     "ch03-154": {
       "file": "audio/en/ch03-154.m4a",
-      "duration_ms": 2280,
+      "duration_ms": 2920,
       "pause_after_ms": 500,
       "words": [
         {
           "word": "Some",
-          "start_ms": 60,
-          "end_ms": 180
+          "start_ms": 360,
+          "end_ms": 360
         },
         {
           "word": "came",
-          "start_ms": 180,
-          "end_ms": 440
+          "start_ms": 360,
+          "end_ms": 700
         },
         {
           "word": "from",
-          "start_ms": 440,
-          "end_ms": 680
+          "start_ms": 700,
+          "end_ms": 1020
         },
         {
           "word": "San",
-          "start_ms": 680,
-          "end_ms": 920
+          "start_ms": 1020,
+          "end_ms": 1380
         },
         {
           "word": "José",
-          "start_ms": 920,
-          "end_ms": 1240
+          "start_ms": 1380,
+          "end_ms": 1960
         },
         {
           "word": "Mogote.",
-          "start_ms": 1240,
-          "end_ms": 1890
+          "start_ms": 1960,
+          "end_ms": 2660
         }
       ]
     },
@@ -12110,7 +12095,7 @@
     },
     "ch03-156": {
       "file": "audio/en/ch03-156.m4a",
-      "duration_ms": 5920,
+      "duration_ms": 6240,
       "pause_after_ms": 500,
       "words": [
         {
@@ -12120,58 +12105,58 @@
         },
         {
           "word": "San",
-          "start_ms": 340,
-          "end_ms": 700
+          "start_ms": 540,
+          "end_ms": 680
         },
         {
           "word": "José",
-          "start_ms": 700,
-          "end_ms": 1120
+          "start_ms": 680,
+          "end_ms": 1380
         },
         {
           "word": "Mogote",
-          "start_ms": 1120,
-          "end_ms": 1780
+          "start_ms": 1380,
+          "end_ms": 2180
         },
         {
           "word": "alone",
-          "start_ms": 1780,
-          "end_ms": 2240
+          "start_ms": 2180,
+          "end_ms": 2560
         },
         {
           "word": "could",
-          "start_ms": 2240,
-          "end_ms": 2700
+          "start_ms": 2560,
+          "end_ms": 3280
         },
         {
           "word": "not",
-          "start_ms": 2700,
-          "end_ms": 2960
+          "start_ms": 3280,
+          "end_ms": 3520
         },
         {
           "word": "have",
-          "start_ms": 2960,
-          "end_ms": 3180
+          "start_ms": 3520,
+          "end_ms": 3720
         },
         {
           "word": "supplied",
-          "start_ms": 3180,
-          "end_ms": 3660
+          "start_ms": 3720,
+          "end_ms": 4140
         },
         {
           "word": "five",
-          "start_ms": 3660,
-          "end_ms": 4240
+          "start_ms": 4140,
+          "end_ms": 4680
         },
         {
           "word": "thousand",
-          "start_ms": 4240,
-          "end_ms": 4980
+          "start_ms": 4680,
+          "end_ms": 5420
         },
         {
           "word": "people.",
-          "start_ms": 4980,
-          "end_ms": 5460
+          "start_ms": 5420,
+          "end_ms": 5840
         }
       ]
     },
@@ -86280,128 +86265,113 @@
     },
     "ch15-983": {
       "file": "audio/en/ch15-983.m4a",
-      "duration_ms": 12400,
+      "duration_ms": 9760,
       "pause_after_ms": 500,
       "words": [
         {
           "word": "San",
-          "start_ms": 560,
-          "end_ms": 560
+          "start_ms": 520,
+          "end_ms": 520
         },
         {
           "word": "José",
-          "start_ms": 560,
-          "end_ms": 1080
+          "start_ms": 520,
+          "end_ms": 1280
         },
         {
           "word": "Mogote",
-          "start_ms": 1080,
-          "end_ms": 1860
-        },
-        {
-          "word": "(san",
-          "start_ms": 2220,
-          "end_ms": 2420
-        },
-        {
-          "word": "ho-ZAY",
-          "start_ms": 2420,
-          "end_ms": 3780
-        },
-        {
-          "word": "mo-GO-teh)",
-          "start_ms": 3780,
-          "end_ms": 5520
+          "start_ms": 1580,
+          "end_ms": 2500
         },
         {
           "word": "—",
-          "start_ms": 6360,
-          "end_ms": 6400
+          "start_ms": 2500,
+          "end_ms": 3040
         },
         {
           "word": "The",
-          "start_ms": 6400,
-          "end_ms": 6400
+          "start_ms": 3040,
+          "end_ms": 3120
         },
         {
           "word": "dominant",
-          "start_ms": 6400,
-          "end_ms": 6860
+          "start_ms": 3120,
+          "end_ms": 3540
         },
         {
           "word": "settlement",
-          "start_ms": 6860,
-          "end_ms": 7340
+          "start_ms": 3540,
+          "end_ms": 4059
         },
         {
           "word": "in",
-          "start_ms": 7340,
-          "end_ms": 7660
+          "start_ms": 4059,
+          "end_ms": 4340
         },
         {
           "word": "the",
-          "start_ms": 7660,
-          "end_ms": 7780
+          "start_ms": 4340,
+          "end_ms": 4460
         },
         {
           "word": "Valley",
-          "start_ms": 7780,
-          "end_ms": 8100
+          "start_ms": 4460,
+          "end_ms": 4760
         },
         {
           "word": "of",
-          "start_ms": 8100,
-          "end_ms": 8340
+          "start_ms": 4760,
+          "end_ms": 4960
         },
         {
           "word": "Oaxaca",
-          "start_ms": 8340,
-          "end_ms": 8760
+          "start_ms": 4960,
+          "end_ms": 5380
         },
         {
           "word": "for",
-          "start_ms": 8760,
-          "end_ms": 8960
+          "start_ms": 5500,
+          "end_ms": 5600
         },
         {
           "word": "roughly",
-          "start_ms": 8960,
-          "end_ms": 9360
+          "start_ms": 5600,
+          "end_ms": 6020
         },
         {
           "word": "a",
-          "start_ms": 9360,
-          "end_ms": 9500
+          "start_ms": 6020,
+          "end_ms": 6160
         },
         {
           "word": "thousand",
-          "start_ms": 9500,
-          "end_ms": 9900
+          "start_ms": 6160,
+          "end_ms": 6640
         },
         {
           "word": "years",
-          "start_ms": 9900,
-          "end_ms": 10320
+          "start_ms": 6640,
+          "end_ms": 7100
         },
         {
           "word": "before",
-          "start_ms": 10320,
-          "end_ms": 10680
+          "start_ms": 7100,
+          "end_ms": 7720
         },
         {
           "word": "Monte",
-          "start_ms": 10680,
-          "end_ms": 11040
+          "start_ms": 7720,
+          "end_ms": 8180
         },
         {
           "word": "Albán's",
-          "start_ms": 11040,
-          "end_ms": 11600
+          "start_ms": 8180,
+          "end_ms": 8840
         },
         {
           "word": "founding.",
-          "start_ms": 11600,
-          "end_ms": 11700
+          "start_ms": 8840,
+          "end_ms": 9380
         }
       ]
     },
