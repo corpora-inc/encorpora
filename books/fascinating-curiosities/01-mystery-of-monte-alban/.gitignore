@@ -1,3 +1,6 @@
 # Build artifacts
 *.pdf
 *.epub
+
+# Raw TTS WAV files — intermediate build artifacts, never commit
+*.wav
