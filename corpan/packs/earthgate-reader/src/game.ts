@@ -115,7 +115,7 @@ export function createEarthgateReader(
     const nowPlayingToken = nextNowPlayingToken()
     void updateNativeNowPlaying(
       segments[audioEngine.getCurrentSegmentIndex()]?.title || "Earthgate Reader",
-      VOICE_NAMES[voiceMap[currentLanguage] || ""] || "Narrator",
+      bookDisplayName,
       audioEngine.getCurrentTimeMs(),
       audioEngine.getTotalDurationMs(),
       isPlaying,
@@ -162,13 +162,12 @@ export function createEarthgateReader(
     if (nativeOwnsMediaSession) return
     if (!("mediaSession" in navigator) || !audioEngine) return
     const seg = segments[audioEngine.getCurrentSegmentIndex()]
-    const artist = VOICE_NAMES[voiceMap[currentLanguage] || ""] || "Narrator"
     try {
-      const metadataKey = `${seg?.title}|${artist}|${bookDisplayName}|${mediaArtworkUrl ?? ""}`
+      const metadataKey = `${seg?.title}|${bookDisplayName}|${mediaArtworkUrl ?? ""}`
       if (metadataKey !== lastMediaMetadataKey) {
         navigator.mediaSession.metadata = new MediaMetadata({
           title: seg?.title || "Earthgate Reader",
-          artist,
+          artist: bookDisplayName,
           album: bookDisplayName,
           artwork: mediaArtworkUrl
             ? [{ src: mediaArtworkUrl, sizes: "200x200", type: "image/png" }]
@@ -221,7 +220,7 @@ export function createEarthgateReader(
       if (!nativeSessionActive) {
         await startNativeKeepAlive(
           segments[audioEngine.getCurrentSegmentIndex()]?.title || "Earthgate Reader",
-          VOICE_NAMES[voiceMap[currentLanguage] || ""] || "Narrator",
+          bookDisplayName,
           bookDisplayName,
           audioEngine.getCurrentTimeMs(),
           audioEngine.getTotalDurationMs()
