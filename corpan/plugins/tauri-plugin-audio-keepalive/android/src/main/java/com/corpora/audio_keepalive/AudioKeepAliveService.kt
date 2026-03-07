@@ -12,6 +12,8 @@ import android.content.IntentFilter
 import android.media.AudioAttributes
 import android.media.AudioFocusRequest
 import android.media.AudioManager
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.os.Build
 import android.os.IBinder
 import android.os.PowerManager
@@ -33,6 +35,7 @@ class AudioKeepAliveService : Service() {
         private const val ACTION_SKIP_BACK = "com.corpora.audio_keepalive.SKIP_BACK"
         private const val ACTION_PLAY_PAUSE = "com.corpora.audio_keepalive.PLAY_PAUSE"
         private const val ACTION_SKIP_FORWARD = "com.corpora.audio_keepalive.SKIP_FORWARD"
+        private const val ACTION_SYNC_PLAYBACK_STATE = "SYNC_PLAYBACK_STATE"
     }
 
     private var mediaSession: MediaSessionCompat? = null
@@ -45,6 +48,8 @@ class AudioKeepAliveService : Service() {
     private var currentPositionMs: Double = 0.0
     private var currentDurationMs: Double = 0.0
     private var lastPositionUpdateTime: Long = 0L
+    private var lastNowPlayingToken: Long = Long.MIN_VALUE
+    private var appIconBitmap: Bitmap? = null
 
     private var audioManager: AudioManager? = null
     private var audioFocusRequest: AudioFocusRequest? = null
@@ -55,6 +60,7 @@ class AudioKeepAliveService : Service() {
     override fun onCreate() {
         super.onCreate()
         createNotificationChannel()
+        appIconBitmap = loadAppIconBitmap()
         setupMediaSession()
         acquireWakeLock()
         requestAudioFocus()
@@ -82,7 +88,29 @@ class AudioKeepAliveService : Service() {
             "RESUME_PLAYBACK" -> {
                 mediaSession?.controller?.transportControls?.play()
             }
+            ACTION_SYNC_PLAYBACK_STATE -> {
+                val requestedPlaying = intent.getBooleanExtra("isPlaying", isPlaying)
+                if (requestedPlaying != isPlaying) {
+                    if (isPlaying && !requestedPlaying) {
+                        snapshotPositionNow()
+                    }
+                    isPlaying = requestedPlaying
+                    if (isPlaying) {
+                        lastPositionUpdateTime = SystemClock.elapsedRealtime()
+                    }
+                }
+                updateMediaSession()
+                updateNotification()
+            }
             "UPDATE_NOW_PLAYING" -> {
+                if (intent.hasExtra("nowPlayingToken")) {
+                    val token = intent.getLongExtra("nowPlayingToken", Long.MIN_VALUE)
+                    if (token < lastNowPlayingToken) {
+                        Log.d(TAG, "Dropping stale now-playing token=$token last=$lastNowPlayingToken")
+                        return START_STICKY
+                    }
+                    lastNowPlayingToken = token
+                }
                 intent.getStringExtra("title")?.let { currentTitle = it }
                 intent.getStringExtra("artist")?.let { currentArtist = it }
                 intent.getStringExtra("bookTitle")?.let { currentBookTitle = it }
@@ -94,7 +122,14 @@ class AudioKeepAliveService : Service() {
                     currentDurationMs = intent.getDoubleExtra("durationMs", 0.0)
                 }
                 if (intent.hasExtra("isPlaying")) {
-                    isPlaying = intent.getBooleanExtra("isPlaying", true)
+                    val requestedPlaying = intent.getBooleanExtra("isPlaying", isPlaying)
+                    if (isPlaying && !requestedPlaying && !intent.hasExtra("positionMs")) {
+                        snapshotPositionNow()
+                    }
+                    isPlaying = requestedPlaying
+                    if (isPlaying && !intent.hasExtra("positionMs")) {
+                        lastPositionUpdateTime = SystemClock.elapsedRealtime()
+                    }
                 }
                 updateMediaSession()
                 updateNotification()
@@ -112,6 +147,7 @@ class AudioKeepAliveService : Service() {
                     currentDurationMs = intent.getDoubleExtra("durationMs", 0.0)
                 }
                 isPlaying = true
+                lastPositionUpdateTime = SystemClock.elapsedRealtime()
                 updateMediaSession()
                 startForeground(NOTIFICATION_ID, buildNotification())
             }
@@ -156,6 +192,7 @@ class AudioKeepAliveService : Service() {
             )
             setCallback(object : MediaSessionCompat.Callback() {
                 override fun onPlay() {
+                    if (isPlaying) return
                     isPlaying = true
                     lastPositionUpdateTime = SystemClock.elapsedRealtime()
                     updateMediaSession()
@@ -164,8 +201,9 @@ class AudioKeepAliveService : Service() {
                 }
 
                 override fun onPause() {
+                    if (!isPlaying) return
+                    snapshotPositionNow()
                     isPlaying = false
-                    lastPositionUpdateTime = SystemClock.elapsedRealtime()
                     updateMediaSession()
                     updateNotification()
                     fireEvent("audio-keepalive:pause")
@@ -198,6 +236,8 @@ class AudioKeepAliveService : Service() {
     }
 
     private fun updateMediaSession() {
+        val durationLong = currentDurationMs.toLong()
+        val positionLong = effectivePositionMs()
         mediaSession?.setMetadata(
             MediaMetadataCompat.Builder()
                 .putString(MediaMetadataCompat.METADATA_KEY_TITLE, currentTitle)
@@ -206,8 +246,12 @@ class AudioKeepAliveService : Service() {
                     if (currentBookTitle.isNotEmpty()) {
                         putString(MediaMetadataCompat.METADATA_KEY_ALBUM, currentBookTitle)
                     }
-                    if (currentDurationMs > 0) {
-                        putLong(MediaMetadataCompat.METADATA_KEY_DURATION, currentDurationMs.toLong())
+                    if (durationLong > 0) {
+                        putLong(MediaMetadataCompat.METADATA_KEY_DURATION, durationLong)
+                    }
+                    appIconBitmap?.let { icon ->
+                        putBitmap(MediaMetadataCompat.METADATA_KEY_ALBUM_ART, icon)
+                        putBitmap(MediaMetadataCompat.METADATA_KEY_DISPLAY_ICON, icon)
                     }
                 }
                 .build()
@@ -228,9 +272,9 @@ class AudioKeepAliveService : Service() {
             )
             .setState(
                 state,
-                currentPositionMs.toLong(),
+                positionLong,
                 rate,
-                lastPositionUpdateTime
+                SystemClock.elapsedRealtime()
             )
 
         mediaSession?.setPlaybackState(stateBuilder.build())
@@ -280,6 +324,7 @@ class AudioKeepAliveService : Service() {
             .setContentText(if (currentBookTitle.isNotEmpty()) currentBookTitle else currentArtist)
             .setSubText(if (currentBookTitle.isNotEmpty()) currentArtist else null)
             .setSmallIcon(android.R.drawable.ic_media_play)
+            .setLargeIcon(appIconBitmap)
             .setContentIntent(contentPending)
             .setOngoing(true)
             .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
@@ -398,5 +443,34 @@ class AudioKeepAliveService : Service() {
             if (it.isHeld) it.release()
         }
         wakeLock = null
+    }
+
+    // ── Position / Artwork Helpers ──────────────────────────────────────
+
+    private fun effectivePositionMs(): Long {
+        val base = currentPositionMs.toLong().coerceAtLeast(0L)
+        val driftAdjusted = if (isPlaying && lastPositionUpdateTime > 0L) {
+            val elapsed = (SystemClock.elapsedRealtime() - lastPositionUpdateTime).coerceAtLeast(0L)
+            base + elapsed
+        } else {
+            base
+        }
+        val duration = currentDurationMs.toLong()
+        return if (duration > 0L) driftAdjusted.coerceIn(0L, duration) else driftAdjusted
+    }
+
+    private fun snapshotPositionNow() {
+        currentPositionMs = effectivePositionMs().toDouble()
+        lastPositionUpdateTime = SystemClock.elapsedRealtime()
+    }
+
+    private fun loadAppIconBitmap(): Bitmap? {
+        val iconRes = applicationInfo.icon
+        if (iconRes == 0) return null
+        return try {
+            BitmapFactory.decodeResource(resources, iconRes)
+        } catch (_: Exception) {
+            null
+        }
     }
 }

@@ -101,6 +101,9 @@ export function createStargateReader(
   let pendingEngineState: MediaSessionPlaybackState | null = null
   let pendingEngineStateSince = 0
   let suppressExternalReconcileUntil = 0
+  const hasNativeBridge = Boolean((window as TauriBridgeWindow).__TAURI_INTERNALS__)
+  const isAndroid = /Android/i.test(navigator.userAgent)
+  const nativeOwnsMediaSession = hasNativeBridge && isAndroid
   const MEDIA_SESSION_RESYNC_INTERVAL_MS = 1000
   const EXTERNAL_STATE_DEBOUNCE_MS = 900
 
@@ -171,6 +174,7 @@ export function createStargateReader(
   }
 
   function syncMediaSessionPlaybackState(state: MediaSessionPlaybackState) {
+    if (nativeOwnsMediaSession) return
     if (!("mediaSession" in navigator)) return
     try {
       navigator.mediaSession.playbackState = state
@@ -192,6 +196,7 @@ export function createStargateReader(
   }
 
   function syncMediaSessionNowPlaying() {
+    if (nativeOwnsMediaSession) return
     if (!("mediaSession" in navigator) || !audioEngine) return
     const metadata = getNowPlayingMetadata()
     try {
@@ -802,10 +807,9 @@ export function createStargateReader(
 
   // --- Media Session API (lock screen controls) ---
   function setupMediaSession() {
+    if (nativeOwnsMediaSession) return
     if (!("mediaSession" in navigator)) return
     syncMediaSessionNowPlaying()
-
-    const hasNativeBridge = Boolean((window as TauriBridgeWindow).__TAURI_INTERNALS__)
 
     const disabledActions: MediaSessionAction[] = [
       "seekbackward",
