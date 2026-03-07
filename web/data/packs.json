@@ -49,6 +49,22 @@
     }
   },
   {
+    "id": "earthgate_reader",
+    "name": "Earthgate Reader",
+    "description": "Calm, earth-toned audiobook reader with word-level highlighting synced to narrated audio",
+    "status": "preview",
+    "listed": false,
+    "manifestUrl": "/corpan/packs/earthgate-reader/manifest.json",
+    "zipUrl": "/corpan/packs/earthgate-reader.zip",
+    "landingUrl": "/corpan/packs/earthgate-reader/",
+    "avatarSource": "corpan/packs/earthgate-reader/earthgate-reader-avatar.png",
+    "github": "https://github.com/corpora-inc/encorpora/tree/main/corpan/packs/earthgate-reader",
+    "videos": {
+      "shorts": [],
+      "demos": []
+    }
+  },
+  {
     "id": "stargate_reader",
     "name": "Stargate Reader",
     "description": "Immersive 3D audiobook: words stream through space in sync with narrated audio",
