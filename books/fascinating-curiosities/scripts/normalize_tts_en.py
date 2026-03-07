@@ -27,10 +27,15 @@ SEGMENTS_PATH = (
 )
 
 # ---------------------------------------------------------------------------
-# Pronunciation map (empty for now -- no tested substitutions for English yet)
+# Pronunciation map — phonetic respellings for Chatterbox TTS
 # ---------------------------------------------------------------------------
 
-PRONUNCIATION_MAP: list[tuple[str, str]] = []
+PRONUNCIATION_MAP: list[tuple[str, str]] = [
+    ("San José Mogote", "San Hohzay Mogoteh"),
+    ("Oaxacans", "Wahockens"),
+    ("Oaxacan", "Wahocken"),
+    ("Oaxaca", "Wahaka"),
+]
 
 # ---------------------------------------------------------------------------
 # Manual TTS rewrites for segments needing structural simplification
@@ -402,6 +407,9 @@ def needs_normalization(text: str) -> bool:
         return True
     if re.search(r"\bBuilding\s+[A-Z]\b", text):
         return True
+    for old, _new in PRONUNCIATION_MAP:
+        if old in text:
+            return True
     return False
 
 

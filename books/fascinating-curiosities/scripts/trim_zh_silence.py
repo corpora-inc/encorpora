@@ -44,7 +44,7 @@ TARGET_TP = -3.0  # dBTP
 # Trim parameters
 TAIL_MS = 500       # keep 500ms after last word
 FADE_MS = 50        # fade-out duration
-THRESHOLD_MS = 5000  # only trim if trailing silence > 5s
+THRESHOLD_MS = 3000  # only trim if trailing silence > 3s
 
 
 def load_json(path: Path) -> dict | None:

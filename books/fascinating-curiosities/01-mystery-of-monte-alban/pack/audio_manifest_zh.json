@@ -895,7 +895,7 @@
     },
     "ch00-012": {
       "file": "audio/zh/ch00-012.m4a",
-      "duration_ms": 5480,
+      "duration_ms": 1580,
       "pause_after_ms": 800,
       "words": [
         {
@@ -922,7 +922,7 @@
     },
     "ch00-013": {
       "file": "audio/zh/ch00-013.m4a",
-      "duration_ms": 10960,
+      "duration_ms": 6760,
       "pause_after_ms": 500,
       "words": [
         {
@@ -1743,7 +1743,7 @@
     },
     "ch01-023": {
       "file": "audio/zh/ch01-023.m4a",
-      "duration_ms": 12680,
+      "duration_ms": 8360,
       "pause_after_ms": 500,
       "words": [
         {
@@ -2078,7 +2078,7 @@
     },
     "ch01-028": {
       "file": "audio/zh/ch01-028.m4a",
-      "duration_ms": 9320,
+      "duration_ms": 5440,
       "pause_after_ms": 800,
       "words": [
         {
@@ -6129,7 +6129,7 @@
     },
     "ch01-066": {
       "file": "audio/zh/ch01-066.m4a",
-      "duration_ms": 13300,
+      "duration_ms": 9820,
       "pause_after_ms": 800,
       "words": [
         {
@@ -10328,7 +10328,7 @@
     },
     "ch02-099": {
       "file": "audio/zh/ch02-099.m4a",
-      "duration_ms": 7600,
+      "duration_ms": 3740,
       "pause_after_ms": 500,
       "words": [
         {
@@ -10982,7 +10982,7 @@
     },
     "ch02-106": {
       "file": "audio/zh/ch02-106.m4a",
-      "duration_ms": 13360,
+      "duration_ms": 10240,
       "pause_after_ms": 500,
       "words": [
         {
@@ -12293,7 +12293,7 @@
     },
     "ch02-114": {
       "file": "audio/zh/ch02-114.m4a",
-      "duration_ms": 7300,
+      "duration_ms": 2960,
       "pause_after_ms": 1200,
       "words": [
         {
@@ -14824,7 +14824,7 @@
     },
     "ch02-132": {
       "file": "audio/zh/ch02-132.m4a",
-      "duration_ms": 4760,
+      "duration_ms": 1960,
       "pause_after_ms": 500,
       "words": [
         {
@@ -15173,7 +15173,7 @@
     },
     "ch02-134": {
       "file": "audio/zh/ch02-134.m4a",
-      "duration_ms": 7720,
+      "duration_ms": 4360,
       "pause_after_ms": 500,
       "words": [
         {
@@ -17809,7 +17809,7 @@
     },
     "ch03-158": {
       "file": "audio/zh/ch03-158.m4a",
-      "duration_ms": 11120,
+      "duration_ms": 7700,
       "pause_after_ms": 800,
       "words": [
         {
@@ -19768,7 +19768,7 @@
     },
     "ch03-175": {
       "file": "audio/zh/ch03-175.m4a",
-      "duration_ms": 14600,
+      "duration_ms": 10760,
       "pause_after_ms": 500,
       "words": [
         {
@@ -23524,7 +23524,7 @@
     },
     "ch04-209": {
       "file": "audio/zh/ch04-209.m4a",
-      "duration_ms": 10920,
+      "duration_ms": 7920,
       "pause_after_ms": 500,
       "words": [
         {
@@ -24578,7 +24578,7 @@
     },
     "ch04-216": {
       "file": "audio/zh/ch04-216.m4a",
-      "duration_ms": 11300,
+      "duration_ms": 8619,
       "pause_after_ms": 800,
       "words": [
         {
@@ -27437,7 +27437,7 @@
     },
     "ch04-233": {
       "file": "audio/zh/ch04-233.m4a",
-      "duration_ms": 7160,
+      "duration_ms": 2720,
       "pause_after_ms": 500,
       "words": [
         {
@@ -29585,7 +29585,7 @@
     },
     "ch04-247": {
       "file": "audio/zh/ch04-247.m4a",
-      "duration_ms": 8000,
+      "duration_ms": 4880,
       "pause_after_ms": 800,
       "words": [
         {
@@ -33775,7 +33775,7 @@
     },
     "ch04-287": {
       "file": "audio/zh/ch04-287.m4a",
-      "duration_ms": 7640,
+      "duration_ms": 4240,
       "pause_after_ms": 500,
       "words": [
         {
@@ -34956,7 +34956,7 @@
     },
     "ch05-302": {
       "file": "audio/zh/ch05-302.m4a",
-      "duration_ms": 11480,
+      "duration_ms": 7220,
       "pause_after_ms": 500,
       "words": [
         {
@@ -36195,7 +36195,7 @@
     },
     "ch05-314": {
       "file": "audio/zh/ch05-314.m4a",
-      "duration_ms": 16040,
+      "duration_ms": 13060,
       "pause_after_ms": 500,
       "words": [
         {
@@ -40952,7 +40952,7 @@
     },
     "ch05-350": {
       "file": "audio/zh/ch05-350.m4a",
-      "duration_ms": 7300,
+      "duration_ms": 3060,
       "pause_after_ms": 500,
       "words": [
         {
@@ -42567,7 +42567,7 @@
     },
     "ch05-360": {
       "file": "audio/zh/ch05-360.m4a",
-      "duration_ms": 9600,
+      "duration_ms": 6200,
       "pause_after_ms": 800,
       "words": [
         {
@@ -43181,7 +43181,7 @@
     },
     "ch06-368": {
       "file": "audio/zh/ch06-368.m4a",
-      "duration_ms": 13520,
+      "duration_ms": 9020,
       "pause_after_ms": 500,
       "words": [
         {
@@ -48253,7 +48253,7 @@
     },
     "ch06-399": {
       "file": "audio/zh/ch06-399.m4a",
-      "duration_ms": 5800,
+      "duration_ms": 2100,
       "pause_after_ms": 500,
       "words": [
         {
@@ -50940,7 +50940,7 @@
     },
     "ch06-420": {
       "file": "audio/zh/ch06-420.m4a",
-      "duration_ms": 10480,
+      "duration_ms": 7580,
       "pause_after_ms": 800,
       "words": [
         {
@@ -55303,7 +55303,7 @@
     },
     "ch07-450": {
       "file": "audio/zh/ch07-450.m4a",
-      "duration_ms": 6080,
+      "duration_ms": 2680,
       "pause_after_ms": 500,
       "words": [
         {
@@ -55980,7 +55980,7 @@
     },
     "ch07-456": {
       "file": "audio/zh/ch07-456.m4a",
-      "duration_ms": 14280,
+      "duration_ms": 9860,
       "pause_after_ms": 500,
       "words": [
         {
@@ -63505,7 +63505,7 @@
     },
     "ch08-502": {
       "file": "audio/zh/ch08-502.m4a",
-      "duration_ms": 11480,
+      "duration_ms": 8080,
       "pause_after_ms": 500,
       "words": [
         {
@@ -63687,7 +63687,7 @@
     },
     "ch08-503": {
       "file": "audio/zh/ch08-503.m4a",
-      "duration_ms": 16079,
+      "duration_ms": 12310,
       "pause_after_ms": 500,
       "words": [
         {
@@ -66205,7 +66205,7 @@
     },
     "ch08-522": {
       "file": "audio/zh/ch08-522.m4a",
-      "duration_ms": 10560,
+      "duration_ms": 7740,
       "pause_after_ms": 500,
       "words": [
         {
@@ -71188,7 +71188,7 @@
     },
     "ch09-557": {
       "file": "audio/zh/ch09-557.m4a",
-      "duration_ms": 9400,
+      "duration_ms": 6780,
       "pause_after_ms": 500,
       "words": [
         {
@@ -71951,7 +71951,7 @@
     },
     "ch09-561": {
       "file": "audio/zh/ch09-561.m4a",
-      "duration_ms": 11280,
+      "duration_ms": 6820,
       "pause_after_ms": 500,
       "words": [
         {
@@ -77476,7 +77476,7 @@
     },
     "ch09-591": {
       "file": "audio/zh/ch09-591.m4a",
-      "duration_ms": 11800,
+      "duration_ms": 8539,
       "pause_after_ms": 500,
       "words": [
         {
@@ -78308,7 +78308,7 @@
     },
     "ch09-597": {
       "file": "audio/zh/ch09-597.m4a",
-      "duration_ms": 11920,
+      "duration_ms": 8920,
       "pause_after_ms": 800,
       "words": [
         {
@@ -93443,7 +93443,7 @@
     },
     "ch11-720": {
       "file": "audio/zh/ch11-720.m4a",
-      "duration_ms": 18800,
+      "duration_ms": 14800,
       "pause_after_ms": 500,
       "words": [
         {
@@ -95438,7 +95438,7 @@
     },
     "ch11-735": {
       "file": "audio/zh/ch11-735.m4a",
-      "duration_ms": 16200,
+      "duration_ms": 11880,
       "pause_after_ms": 500,
       "words": [
         {
@@ -98944,7 +98944,7 @@
     },
     "ch12-759": {
       "file": "audio/zh/ch12-759.m4a",
-      "duration_ms": 8119,
+      "duration_ms": 5520,
       "pause_after_ms": 500,
       "words": [
         {
@@ -101889,7 +101889,7 @@
     },
     "ch12-779": {
       "file": "audio/zh/ch12-779.m4a",
-      "duration_ms": 12680,
+      "duration_ms": 9380,
       "pause_after_ms": 500,
       "words": [
         {
@@ -104111,7 +104111,7 @@
     },
     "ch12-790": {
       "file": "audio/zh/ch12-790.m4a",
-      "duration_ms": 11800,
+      "duration_ms": 8560,
       "pause_after_ms": 800,
       "words": [
         {
@@ -107095,7 +107095,7 @@
     },
     "ch13-814": {
       "file": "audio/zh/ch13-814.m4a",
-      "duration_ms": 8800,
+      "duration_ms": 6220,
       "pause_after_ms": 800,
       "words": [
         {
@@ -108910,7 +108910,7 @@
     },
     "ch13-824": {
       "file": "audio/zh/ch13-824.m4a",
-      "duration_ms": 14480,
+      "duration_ms": 10160,
       "pause_after_ms": 800,
       "words": [
         {
@@ -110263,7 +110263,7 @@
     },
     "ch13-833": {
       "file": "audio/zh/ch13-833.m4a",
-      "duration_ms": 6240,
+      "duration_ms": 3660,
       "pause_after_ms": 500,
       "words": [
         {
@@ -110666,7 +110666,7 @@
     },
     "ch13-837": {
       "file": "audio/zh/ch13-837.m4a",
-      "duration_ms": 11320,
+      "duration_ms": 7640,
       "pause_after_ms": 500,
       "words": [
         {
@@ -113769,7 +113769,7 @@
     },
     "ch14-857": {
       "file": "audio/zh/ch14-857.m4a",
-      "duration_ms": 12960,
+      "duration_ms": 10280,
       "pause_after_ms": 500,
       "words": [
         {
@@ -114733,7 +114733,7 @@
     },
     "ch14-864": {
       "file": "audio/zh/ch14-864.m4a",
-      "duration_ms": 9080,
+      "duration_ms": 6380,
       "pause_after_ms": 500,
       "words": [
         {
@@ -114895,7 +114895,7 @@
     },
     "ch14-865": {
       "file": "audio/zh/ch14-865.m4a",
-      "duration_ms": 9800,
+      "duration_ms": 6400,
       "pause_after_ms": 500,
       "words": [
         {
@@ -120575,7 +120575,7 @@
     },
     "ch15-906": {
       "file": "audio/zh/ch15-906.m4a",
-      "duration_ms": 12300,
+      "duration_ms": 9740,
       "pause_after_ms": 500,
       "words": [
         {
@@ -125502,7 +125502,7 @@
     },
     "ch15-943": {
       "file": "audio/zh/ch15-943.m4a",
-      "duration_ms": 8720,
+      "duration_ms": 4920,
       "pause_after_ms": 800,
       "words": [
         {
@@ -130730,7 +130730,7 @@
     },
     "ch15-978": {
       "file": "audio/zh/ch15-978.m4a",
-      "duration_ms": 12200,
+      "duration_ms": 8580,
       "pause_after_ms": 800,
       "words": [
         {
@@ -131166,7 +131166,7 @@
     },
     "ch15-981": {
       "file": "audio/zh/ch15-981.m4a",
-      "duration_ms": 23800,
+      "duration_ms": 20300,
       "pause_after_ms": 800,
       "words": [
         {
@@ -136203,7 +136203,7 @@
     },
     "ch15-1008": {
       "file": "audio/zh/ch15-1008.m4a",
-      "duration_ms": 15880,
+      "duration_ms": 12140,
       "pause_after_ms": 800,
       "words": [
         {
