@@ -2,6 +2,11 @@ const COMMANDS: &[&str] = &[
     "start_audio_keepalive",
     "stop_audio_keepalive",
     "update_now_playing",
+    "pause_audio_keepalive",
+    "resume_audio_keepalive",
+    "register_listener",
+    "remove_listener",
+    "trace_event",
 ];
 
 fn main() {

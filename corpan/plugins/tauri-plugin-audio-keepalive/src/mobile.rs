@@ -1,4 +1,4 @@
-use crate::models::{NowPlayingArgs, StartKeepAliveArgs};
+use crate::models::{NowPlayingArgs, RegisterListenerArgs, RemoveListenerArgs, StartKeepAliveArgs, TraceEventArgs};
 use serde::de::DeserializeOwned;
 use tauri::{
     plugin::{PluginApi, PluginHandle},
@@ -65,6 +65,33 @@ impl<R: Runtime> AudioKeepAlive<R> {
             .run_mobile_plugin::<()>("resumeAudioKeepalive", Some(()))
             .map_err(|e| {
                 println!("[AUDIO_KEEPALIVE] resume error: {:?}", e);
+                e.into()
+            })
+    }
+
+    pub fn register_listener(&self, args: RegisterListenerArgs) -> crate::Result<()> {
+        self.0
+            .run_mobile_plugin::<()>("registerListener", Some(args))
+            .map_err(|e| {
+                println!("[AUDIO_KEEPALIVE] register_listener error: {:?}", e);
+                e.into()
+            })
+    }
+
+    pub fn remove_listener(&self, args: RemoveListenerArgs) -> crate::Result<()> {
+        self.0
+            .run_mobile_plugin::<()>("removeListener", Some(args))
+            .map_err(|e| {
+                println!("[AUDIO_KEEPALIVE] remove_listener error: {:?}", e);
+                e.into()
+            })
+    }
+
+    pub fn trace_event(&self, args: TraceEventArgs) -> crate::Result<()> {
+        self.0
+            .run_mobile_plugin::<()>("traceEvent", Some(args))
+            .map_err(|e| {
+                println!("[AUDIO_KEEPALIVE] trace_event error: {:?}", e);
                 e.into()
             })
     }

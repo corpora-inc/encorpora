@@ -10,9 +10,13 @@ import WebKit
 /// preventing iOS from suspending the app (and WKWebView) in the background.
 /// Also provides MPNowPlayingInfoCenter integration for lock screen controls.
 class AudioKeepAlivePlugin: Plugin {
+    private weak var webView: WKWebView?
     private var audioEngine: AVAudioEngine?
     private var playerNode: AVAudioPlayerNode?
     private var isActive = false
+    private let useSilentLoop = false
+    private let mirrorCommandsToWindowBridge = false
+    private let enableExtendedTransportControls = false
 
     // Remote command targets (stored for removal)
     private var playTarget: Any?
@@ -26,12 +30,21 @@ class AudioKeepAlivePlugin: Plugin {
 
     // Play/pause state for correct playbackRate in now-playing info
     private var currentlyPlaying = true
+    private var lastNowPlayingToken: Int64 = -1
 
     // Stored book title for metadata
     private var bookTitle: String?
 
+    // Lock screen artwork (loaded once from app icon)
+    private var artwork: MPMediaItemArtwork?
+
     override init() {
         super.init()
+    }
+
+    override func load(webview: WKWebView) {
+        self.webView = webview
+        super.load(webview: webview)
     }
 
     // MARK: - Audio Session
@@ -39,8 +52,11 @@ class AudioKeepAlivePlugin: Plugin {
     private func configureAudioSession() {
         do {
             let session = AVAudioSession.sharedInstance()
+            print("[AUDIO_KEEPALIVE] configureAudioSession: before setCategory")
             try session.setCategory(.playback, mode: .default, options: [])
+            print("[AUDIO_KEEPALIVE] configureAudioSession: after setCategory, before setActive")
             try session.setActive(true, options: [])
+            print("[AUDIO_KEEPALIVE] configureAudioSession: after setActive — done")
 
             // Listen for interruptions (phone calls, Siri, etc.)
             NotificationCenter.default.addObserver(
@@ -115,6 +131,11 @@ class AudioKeepAlivePlugin: Plugin {
     // MARK: - Near-Silent Audio Loop
 
     private func startSilentLoop() {
+        // Stop existing engine before creating new one (prevents noise if called twice)
+        if audioEngine != nil {
+            stopSilentLoop()
+        }
+
         let engine = AVAudioEngine()
         let player = AVAudioPlayerNode()
 
@@ -149,12 +170,14 @@ class AudioKeepAlivePlugin: Plugin {
 
         do {
             engine.prepare()
+            print("[AUDIO_KEEPALIVE] startSilentLoop: before engine.start()")
             try engine.start()
+            print("[AUDIO_KEEPALIVE] startSilentLoop: engine.start() ok, before player.play()")
             player.play()
 
             self.audioEngine = engine
             self.playerNode = player
-            print("[AUDIO_KEEPALIVE] Silent loop started")
+            print("[AUDIO_KEEPALIVE] startSilentLoop: done — engine.isRunning=\(engine.isRunning)")
         } catch {
             print("[AUDIO_KEEPALIVE] Engine start failed: \(error.localizedDescription)")
         }
@@ -173,42 +196,73 @@ class AudioKeepAlivePlugin: Plugin {
     private func setupRemoteCommands() {
         let center = MPRemoteCommandCenter.shared()
 
+        center.playCommand.isEnabled = true
         playTarget = center.playCommand.addTarget { [weak self] _ in
-            self?.triggerWebViewEvent("audio-keepalive:play")
+            guard let self = self else { return .commandFailed }
+            self.currentlyPlaying = true
+            var info = MPNowPlayingInfoCenter.default().nowPlayingInfo ?? [String: Any]()
+            info[MPNowPlayingInfoPropertyPlaybackRate] = 1.0
+            MPNowPlayingInfoCenter.default().nowPlayingInfo = info
+            self.triggerWebViewEvent("audio-keepalive:play")
+            if self.mirrorCommandsToWindowBridge {
+                self.dispatchCommandToJS("play")
+            }
             return .success
         }
 
+        center.pauseCommand.isEnabled = true
         pauseTarget = center.pauseCommand.addTarget { [weak self] _ in
-            self?.triggerWebViewEvent("audio-keepalive:pause")
+            guard let self = self else { return .commandFailed }
+            self.currentlyPlaying = false
+            var info = MPNowPlayingInfoCenter.default().nowPlayingInfo ?? [String: Any]()
+            info[MPNowPlayingInfoPropertyPlaybackRate] = 0.0
+            MPNowPlayingInfoCenter.default().nowPlayingInfo = info
+            self.triggerWebViewEvent("audio-keepalive:pause")
+            if self.mirrorCommandsToWindowBridge {
+                self.dispatchCommandToJS("pause")
+            }
             return .success
         }
 
-        skipForwardTarget = center.skipForwardCommand.addTarget { [weak self] _ in
-            self?.triggerWebViewEvent("audio-keepalive:skipForward")
-            return .success
-        }
-        center.skipForwardCommand.preferredIntervals = [30]
+        if enableExtendedTransportControls {
+            center.skipForwardCommand.isEnabled = true
+            center.skipForwardCommand.preferredIntervals = [30]
+            skipForwardTarget = center.skipForwardCommand.addTarget { [weak self] _ in
+                self?.triggerWebViewEvent("audio-keepalive:skipForward")
+                return .success
+            }
 
-        skipBackTarget = center.skipBackwardCommand.addTarget { [weak self] _ in
-            self?.triggerWebViewEvent("audio-keepalive:skipBack")
-            return .success
-        }
-        center.skipBackwardCommand.preferredIntervals = [30]
+            center.skipBackwardCommand.isEnabled = true
+            center.skipBackwardCommand.preferredIntervals = [30]
+            skipBackTarget = center.skipBackwardCommand.addTarget { [weak self] _ in
+                self?.triggerWebViewEvent("audio-keepalive:skipBack")
+                return .success
+            }
 
-        prevTrackTarget = center.previousTrackCommand.addTarget { [weak self] _ in
-            self?.triggerWebViewEvent("audio-keepalive:prevChapter")
-            return .success
-        }
+            center.previousTrackCommand.isEnabled = true
+            prevTrackTarget = center.previousTrackCommand.addTarget { [weak self] _ in
+                self?.triggerWebViewEvent("audio-keepalive:prevChapter")
+                return .success
+            }
 
-        nextTrackTarget = center.nextTrackCommand.addTarget { [weak self] _ in
-            self?.triggerWebViewEvent("audio-keepalive:nextChapter")
-            return .success
-        }
+            center.nextTrackCommand.isEnabled = true
+            nextTrackTarget = center.nextTrackCommand.addTarget { [weak self] _ in
+                self?.triggerWebViewEvent("audio-keepalive:nextChapter")
+                return .success
+            }
 
-        seekTarget = center.changePlaybackPositionCommand.addTarget { [weak self] event in
-            guard let posEvent = event as? MPChangePlaybackPositionCommandEvent else { return .commandFailed }
-            self?.triggerWebViewEvent("audio-keepalive:seek", data: ["positionMs": posEvent.positionTime * 1000.0])
-            return .success
+            center.changePlaybackPositionCommand.isEnabled = true
+            seekTarget = center.changePlaybackPositionCommand.addTarget { [weak self] event in
+                guard let posEvent = event as? MPChangePlaybackPositionCommandEvent else { return .commandFailed }
+                self?.triggerWebViewEvent("audio-keepalive:seek", data: ["positionMs": posEvent.positionTime * 1000.0])
+                return .success
+            }
+        } else {
+            center.skipForwardCommand.isEnabled = false
+            center.skipBackwardCommand.isEnabled = false
+            center.previousTrackCommand.isEnabled = false
+            center.nextTrackCommand.isEnabled = false
+            center.changePlaybackPositionCommand.isEnabled = false
         }
     }
 
@@ -221,6 +275,11 @@ class AudioKeepAlivePlugin: Plugin {
         if let t = prevTrackTarget { center.previousTrackCommand.removeTarget(t) }
         if let t = nextTrackTarget { center.nextTrackCommand.removeTarget(t) }
         if let t = seekTarget { center.changePlaybackPositionCommand.removeTarget(t) }
+        center.skipForwardCommand.isEnabled = false
+        center.skipBackwardCommand.isEnabled = false
+        center.previousTrackCommand.isEnabled = false
+        center.nextTrackCommand.isEnabled = false
+        center.changePlaybackPositionCommand.isEnabled = false
         playTarget = nil
         pauseTarget = nil
         skipForwardTarget = nil
@@ -232,6 +291,24 @@ class AudioKeepAlivePlugin: Plugin {
 
     private func triggerWebViewEvent(_ eventName: String, data: JSObject = [:]) {
         trigger(eventName, data: data)
+    }
+
+    private func dispatchCommandToJS(_ command: String) {
+        guard let webView else {
+            print("[AUDIO_KEEPALIVE] dispatchCommandToJS(\(command)) skipped: no webView")
+            return
+        }
+        let script = "window.__stargateCmd && window.__stargateCmd('\(command)')"
+        print("[AUDIO_KEEPALIVE] dispatchCommandToJS(\(command)) evaluating")
+        DispatchQueue.main.async {
+            webView.evaluateJavaScript(script) { _, error in
+                if let error {
+                    print("[AUDIO_KEEPALIVE] dispatchCommandToJS(\(command)) failed: \(error.localizedDescription)")
+                } else {
+                    print("[AUDIO_KEEPALIVE] dispatchCommandToJS(\(command)) ok")
+                }
+            }
+        }
     }
 
     private func updateNowPlayingInfo(title: String?, artist: String?, positionMs: Double?, durationMs: Double?) {
@@ -248,26 +325,67 @@ class AudioKeepAlivePlugin: Plugin {
         if let bookTitle = bookTitle {
             info[MPMediaItemPropertyAlbumTitle] = bookTitle
         }
-        if let durationMs = durationMs {
-            info[MPMediaItemPropertyPlaybackDuration] = durationMs / 1000.0
+        if let artwork = artwork {
+            info[MPMediaItemPropertyArtwork] = artwork
         }
-        if let positionMs = positionMs {
-            info[MPNowPlayingInfoPropertyElapsedPlaybackTime] = positionMs / 1000.0
-        }
+        // Always set duration and position — iOS needs these for seek bar + time display
+        // Floor duration to 1.0s minimum — iOS greys out skip buttons when duration is 0
+        info[MPMediaItemPropertyPlaybackDuration] = max((durationMs ?? 0.0) / 1000.0, 1.0)
+        info[MPNowPlayingInfoPropertyElapsedPlaybackTime] = (positionMs ?? 0.0) / 1000.0
 
         MPNowPlayingInfoCenter.default().nowPlayingInfo = info
+    }
+
+    // MARK: - App Icon Loader
+
+    private func loadAppIcon() -> UIImage? {
+        if let img = UIImage(named: "AppIcon60x60") { return img }
+        if let img = UIImage(named: "AppIcon") { return img }
+        // Fallback: load via Info.plist CFBundleIcons
+        if let icons = Bundle.main.infoDictionary?["CFBundleIcons"] as? [String: Any],
+           let primary = icons["CFBundlePrimaryIcon"] as? [String: Any],
+           let files = primary["CFBundleIconFiles"] as? [String],
+           let name = files.last,
+           let img = UIImage(named: name) { return img }
+        return nil
     }
 
     // MARK: - Plugin Commands
 
     @objc func startAudioKeepalive(_ invoke: Invoke) throws {
         let args = try invoke.parseArgs(StartKeepAliveArgs.self)
+        print("[AUDIO_KEEPALIVE] startAudioKeepalive: entry, isActive=\(isActive)")
+        // New session boundary: reset stale-update guard.
+        lastNowPlayingToken = -1
+
+        if isActive {
+            // Already running — just update metadata
+            print("[AUDIO_KEEPALIVE] startAudioKeepalive: already active, updating metadata only")
+            bookTitle = args.bookTitle
+            currentlyPlaying = true
+            updateNowPlayingInfo(title: args.title, artist: args.artist,
+                                positionMs: args.positionMs, durationMs: args.durationMs)
+            invoke.resolve()
+            return
+        }
 
         bookTitle = args.bookTitle
         currentlyPlaying = true
 
+        // Load artwork once from app icon
+        if artwork == nil, let img = loadAppIcon() {
+            artwork = MPMediaItemArtwork(boundsSize: img.size) { _ in img }
+        }
+
+        print("[AUDIO_KEEPALIVE] startAudioKeepalive: before configureAudioSession")
         configureAudioSession()
-        startSilentLoop()
+        if useSilentLoop {
+            print("[AUDIO_KEEPALIVE] startAudioKeepalive: before startSilentLoop")
+            startSilentLoop()
+        } else {
+            print("[AUDIO_KEEPALIVE] startAudioKeepalive: silent loop disabled")
+        }
+        print("[AUDIO_KEEPALIVE] startAudioKeepalive: before setupRemoteCommands")
         setupRemoteCommands()
 
         updateNowPlayingInfo(
@@ -278,6 +396,7 @@ class AudioKeepAlivePlugin: Plugin {
         )
 
         isActive = true
+        print("[AUDIO_KEEPALIVE] startAudioKeepalive: done, resolving")
         invoke.resolve()
     }
 
@@ -298,6 +417,7 @@ class AudioKeepAlivePlugin: Plugin {
         NotificationCenter.default.removeObserver(self, name: AVAudioSession.routeChangeNotification, object: nil)
 
         isActive = false
+        lastNowPlayingToken = -1
         invoke.resolve()
     }
 
@@ -320,7 +440,20 @@ class AudioKeepAlivePlugin: Plugin {
     }
 
     @objc func updateNowPlaying(_ invoke: Invoke) throws {
+        if !isActive {
+            invoke.resolve()
+            return
+        }
         let args = try invoke.parseArgs(NowPlayingArgs.self)
+
+        if let token = args.nowPlayingToken {
+            if token < lastNowPlayingToken {
+                print("[AUDIO_KEEPALIVE] updateNowPlaying: dropped stale token=\(token) last=\(lastNowPlayingToken)")
+                invoke.resolve()
+                return
+            }
+            lastNowPlayingToken = token
+        }
 
         if let bt = args.bookTitle {
             bookTitle = bt
@@ -336,6 +469,16 @@ class AudioKeepAlivePlugin: Plugin {
             durationMs: args.durationMs
         )
 
+        invoke.resolve()
+    }
+
+    @objc func traceEvent(_ invoke: Invoke) throws {
+        let args = try invoke.parseArgs(TraceEventArgs.self)
+        if let details = args.details, !details.isEmpty {
+            print("[AUDIO_KEEPALIVE][TRACE] seq=\(args.seq) t=\(String(format: "%.1f", args.elapsedMs))ms event=\(args.event) details=\(details)")
+        } else {
+            print("[AUDIO_KEEPALIVE][TRACE] seq=\(args.seq) t=\(String(format: "%.1f", args.elapsedMs))ms event=\(args.event)")
+        }
         invoke.resolve()
     }
 }
@@ -357,6 +500,14 @@ struct NowPlayingArgs: Decodable {
     let durationMs: Double?
     let bookTitle: String?
     let isPlaying: Bool?
+    let nowPlayingToken: Int64?
+}
+
+struct TraceEventArgs: Decodable {
+    let seq: UInt64
+    let elapsedMs: Double
+    let event: String
+    let details: String?
 }
 
 @_cdecl("init_plugin_audio_keepalive")

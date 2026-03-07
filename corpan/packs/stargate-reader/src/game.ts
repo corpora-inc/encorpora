@@ -10,7 +10,7 @@ import {
 } from "@babylonjs/core"
 import type { HostApi } from "./sdk/types"
 import type { AudioManifest, BookSegment, TimelineWord } from "./core/types"
-import { CAMERA_FOV, CAMERA_Z, GLOW_INTENSITY, LANGUAGE_NAMES, VOICE_NAMES } from "./core/constants"
+import { CAMERA_FOV, CAMERA_Z, GLOW_INTENSITY, LANGUAGE_NAMES, VOICE_NAMES, BOOK_NAMES } from "./core/constants"
 import { buildTimeline, findCurrentWordIndex, buildChapterIndex } from "./core/timeline"
 import type { ChapterInfo } from "./core/types"
 import {
@@ -33,9 +33,28 @@ import { loadPrefs, savePrefs, type DisplayPrefs } from "./state/prefsStore"
 import {
   startNativeKeepAlive,
   stopNativeKeepAlive,
+  pauseNativeKeepAlive,
+  resumeNativeKeepAlive,
   updateNativeNowPlaying,
   listenForRemoteCommands,
 } from "./audio/nativeKeepAlive"
+import { srTrace, type TraceFields } from "./diagnostics/trace"
+
+type StargateRemoteCommand = "play" | "pause"
+type NowPlayingMetadata = {
+  title: string
+  artist: string
+  album: string
+}
+type TauriBridgeWindow = Window & {
+  __TAURI_INTERNALS__?: unknown
+}
+
+declare global {
+  interface Window {
+    __stargateCmd?: (cmd: StargateRemoteCommand) => void
+  }
+}
 
 /**
  * Create the Stargate Reader experience.
@@ -68,10 +87,45 @@ export function createStargateReader(
   }
 
   // --- Background audio keepalive ---
-  let bgKeepAlive: ReturnType<typeof setInterval> | null = null
   let bgNowPlayingTimer: ReturnType<typeof setInterval> | null = null
   let nativeSessionActive = false
   let removeRemoteListeners: (() => void) | null = null
+  let playInFlight = false
+  let desiredPlaying = false
+  let playRequestSeq = 0
+  let mediaArtworkUrl: string | undefined
+  let lastMediaSessionSyncAt = 0
+  let lastMediaMetadataKey = ""
+  let lastNowPlayingToken = 0
+  let nativePlaybackStateHint: MediaSessionPlaybackState | "unknown" = "unknown"
+  let pendingEngineState: MediaSessionPlaybackState | null = null
+  let pendingEngineStateSince = 0
+  let suppressExternalReconcileUntil = 0
+  const MEDIA_SESSION_RESYNC_INTERVAL_MS = 1000
+  const EXTERNAL_STATE_DEBOUNCE_MS = 900
+
+  function tracePlayback(event: string, fields: TraceFields = {}, native = false) {
+    const base: TraceFields = {
+      appPlaying: isPlaying,
+      desiredPlaying,
+      playInFlight,
+      nativeSessionActive,
+      nativeHint: nativePlaybackStateHint,
+    }
+    if (audioEngine) {
+      base.enginePlaying = audioEngine.isPlaying()
+      base.ctx = audioEngine.getContextState()
+      base.seg = audioEngine.getCurrentSegmentIndex()
+      base.posMs = Math.round(audioEngine.getCurrentTimeMs())
+    }
+    srTrace(event, { ...base, ...fields }, { native })
+  }
+
+  function nextNowPlayingToken(): number {
+    const now = Date.now()
+    lastNowPlayingToken = Math.max(now, lastNowPlayingToken + 1)
+    return lastNowPlayingToken
+  }
 
   // --- Background recovery timing ---
   let backgroundedAt = 0        // wall-clock ms when app went to background
@@ -79,82 +133,284 @@ export function createStargateReader(
 
   // --- Background timer management ---
   function startBackgroundTimers() {
-    if (!bgKeepAlive) {
-      bgKeepAlive = setInterval(() => { audioEngine?.unlock() }, 5000)
-    }
     if (!bgNowPlayingTimer) {
+      console.log("[SR:bg] start background now-playing timer")
       bgNowPlayingTimer = setInterval(() => {
         if (!audioEngine || !isPlaying) return
-        syncNativeNowPlaying()
+        syncNativeNowPlaying("periodic")
         persistBookmark()
       }, 10000)
     }
   }
 
   function stopBackgroundTimers() {
-    if (bgKeepAlive) { clearInterval(bgKeepAlive); bgKeepAlive = null }
-    if (bgNowPlayingTimer) { clearInterval(bgNowPlayingTimer); bgNowPlayingTimer = null }
+    if (bgNowPlayingTimer) {
+      console.log("[SR:bg] stop background now-playing timer")
+      clearInterval(bgNowPlayingTimer)
+      bgNowPlayingTimer = null
+    }
   }
 
   // --- Single source of truth for native now-playing sync ---
-  function syncNativeNowPlaying() {
+  function syncNativeNowPlaying(mode: "state" | "periodic" = "state") {
+    syncMediaSessionNowPlaying()
     if (!nativeSessionActive || !audioEngine) return
+    // Avoid high-frequency dual-writer contention while active playback is ongoing.
+    // Still allow state transitions (play/pause/seek/chapter changes) to update native.
+    if (mode === "periodic" && isPlaying) return
+    const metadata = getNowPlayingMetadata()
+    const nowPlayingToken = nextNowPlayingToken()
     void updateNativeNowPlaying(
-      segments[audioEngine.getCurrentSegmentIndex()]?.title || "Stargate Reader",
-      VOICE_NAMES[voiceMap[currentLanguage] || ""] || "Narrator",
+      metadata.title,
+      metadata.artist,
       audioEngine.getCurrentTimeMs(),
       audioEngine.getTotalDurationMs(),
-      isPlaying
+      isPlaying,
+      nowPlayingToken
     )
+  }
+
+  function syncMediaSessionPlaybackState(state: MediaSessionPlaybackState) {
+    if (!("mediaSession" in navigator)) return
+    try {
+      navigator.mediaSession.playbackState = state
+    } catch {
+      // Best effort only
+    }
+  }
+
+  function syncNativePlaybackState(playing: boolean) {
+    if (!nativeSessionActive) return
+    const target: MediaSessionPlaybackState = playing ? "playing" : "paused"
+    if (nativePlaybackStateHint === target) return
+    nativePlaybackStateHint = target
+    if (playing) {
+      void resumeNativeKeepAlive("syncNativePlaybackState")
+    } else {
+      void pauseNativeKeepAlive("syncNativePlaybackState")
+    }
+  }
+
+  function syncMediaSessionNowPlaying() {
+    if (!("mediaSession" in navigator) || !audioEngine) return
+    const metadata = getNowPlayingMetadata()
+    try {
+      const metadataKey = `${metadata.title}|${metadata.artist}|${metadata.album}|${mediaArtworkUrl ?? ""}`
+      if (metadataKey !== lastMediaMetadataKey) {
+        navigator.mediaSession.metadata = new MediaMetadata({
+          title: metadata.title,
+          artist: metadata.artist,
+          album: metadata.album,
+          artwork: mediaArtworkUrl
+            ? [{ src: mediaArtworkUrl, sizes: "200x200", type: "image/png" }]
+            : undefined,
+        })
+        lastMediaMetadataKey = metadataKey
+      }
+
+      const durationS = audioEngine.getTotalDurationMs() / 1000
+      if (Number.isFinite(durationS) && durationS > 0) {
+        const positionS = Math.max(0, Math.min(audioEngine.getCurrentTimeMs() / 1000, durationS))
+        navigator.mediaSession.setPositionState({
+          duration: durationS,
+          playbackRate: 1,
+          position: positionS,
+        })
+      }
+    } catch {
+      // Best effort only
+    }
   }
 
   // --- Centralized play/pause helpers (background-aware) ---
   async function doPlay() {
-    if (!audioEngine) return
-    await audioEngine.recoverContext()
-    audioEngine.unlock()
-    audioEngine.play()
-    isPlaying = true
-    transport.setPlaying(true)
-    void requestWakeLock()
-
-    // Ensure native session exists
-    if (!nativeSessionActive) {
-      void startNativeKeepAlive(
-        segments[audioEngine.getCurrentSegmentIndex()]?.title || "Stargate Reader",
-        VOICE_NAMES[voiceMap[currentLanguage] || ""] || "Narrator",
-        bookId,
-        audioEngine.getCurrentTimeMs(),
-        audioEngine.getTotalDurationMs()
-      )
-      nativeSessionActive = true
+    desiredPlaying = true
+    const requestId = ++playRequestSeq
+    if (!audioEngine || playInFlight) return
+    tracePlayback("doPlay:start", { requestId }, true)
+    const shouldCancelPlayRequest = (): { canceled: boolean; staleSuperseded: boolean } => {
+      const staleSuperseded = requestId !== playRequestSeq && desiredPlaying && !disposed
+      const canceled = staleSuperseded || !desiredPlaying || disposed
+      return { canceled, staleSuperseded }
     }
+    const engineAlreadyPlaying = audioEngine.isPlaying()
+    if (engineAlreadyPlaying) {
+      isPlaying = true
+      transport.setPlaying(true)
+      syncMediaSessionPlaybackState("playing")
+      lastMediaSessionSyncAt = performance.now()
+      void requestWakeLock()
+      syncNativePlaybackState(true)
+      syncNativeNowPlaying()
+      if (document.hidden) {
+        backgroundedAt = Date.now()
+        backgroundedAudioMs = audioEngine.getCurrentTimeMs()
+        startBackgroundTimers()
+      }
+      return
+    }
+    playInFlight = true
+    const t0 = performance.now()
+    console.log(`[SR:doPlay] start — ctx.state=${audioEngine.getContextState()}`)
 
-    // Sync native immediately (sets rate=1.0 + exact position)
-    syncNativeNowPlaying()
+    // Configure native audio session FIRST — before any AudioContext exists.
+    // Swift's AVAudioSession.setCategory + setActive interrupts any running
+    // AudioContext, so the session must be stable before we create/resume one.
+    try {
+      if (!nativeSessionActive) {
+        const metadata = getNowPlayingMetadata()
+        console.log(`[SR:doPlay] awaiting startNativeKeepAlive +${(performance.now() - t0).toFixed(1)}ms`)
+        await startNativeKeepAlive(
+          metadata.title,
+          metadata.artist,
+          metadata.album,
+          audioEngine.getCurrentTimeMs(),
+          audioEngine.getTotalDurationMs()
+        )
+        nativeSessionActive = true
+        nativePlaybackStateHint = "playing"
+        console.log(`[SR:doPlay] startNativeKeepAlive resolved +${(performance.now() - t0).toFixed(1)}ms`)
+        const afterStart = shouldCancelPlayRequest()
+        if (afterStart.canceled) {
+          console.log("[SR:doPlay] canceled after startNativeKeepAlive")
+          tracePlayback("doPlay:canceled-after-start", {
+            requestId,
+            staleSuperseded: afterStart.staleSuperseded,
+          }, true)
+          if (afterStart.staleSuperseded) {
+            return
+          }
+          syncMediaSessionPlaybackState("paused")
+          syncNativePlaybackState(false)
+          syncNativeNowPlaying()
+          return
+        }
+      } else {
+        console.log(`[SR:doPlay] awaiting resumeNativeKeepAlive +${(performance.now() - t0).toFixed(1)}ms`)
+        await resumeNativeKeepAlive("doPlay")
+        nativePlaybackStateHint = "playing"
+        console.log(`[SR:doPlay] resumeNativeKeepAlive resolved +${(performance.now() - t0).toFixed(1)}ms`)
+        const afterResume = shouldCancelPlayRequest()
+        if (afterResume.canceled) {
+          console.log("[SR:doPlay] canceled after resumeNativeKeepAlive")
+          tracePlayback("doPlay:canceled-after-resume", {
+            requestId,
+            staleSuperseded: afterResume.staleSuperseded,
+          }, true)
+          if (afterResume.staleSuperseded) {
+            return
+          }
+          syncMediaSessionPlaybackState("paused")
+          syncNativePlaybackState(false)
+          syncNativeNowPlaying()
+          return
+        }
+      }
 
-    // Background timers
-    if (document.hidden) {
-      backgroundedAt = Date.now()
-      backgroundedAudioMs = audioEngine.getCurrentTimeMs()
-      startBackgroundTimers()
+      // NOW create/resume AudioContext — native session is stable
+      await audioEngine.recoverContext()
+      console.log(`[SR:doPlay] recoverContext done +${(performance.now() - t0).toFixed(1)}ms ctx.state=${audioEngine.getContextState()}`)
+      const afterRecover = shouldCancelPlayRequest()
+      if (afterRecover.canceled) {
+        console.log("[SR:doPlay] canceled after recoverContext")
+        tracePlayback("doPlay:canceled-after-recover", {
+          requestId,
+          staleSuperseded: afterRecover.staleSuperseded,
+        }, true)
+        if (afterRecover.staleSuperseded) {
+          return
+        }
+        syncMediaSessionPlaybackState("paused")
+        syncNativePlaybackState(false)
+        syncNativeNowPlaying()
+        return
+      }
+
+      // Re-register after context/session churn.
+      setupMediaSession()
+      audioEngine.unlock()
+      console.log(`[SR:doPlay] unlock done +${(performance.now() - t0).toFixed(1)}ms`)
+
+      audioEngine.play()
+      console.log(`[SR:doPlay] audioEngine.play() done +${(performance.now() - t0).toFixed(1)}ms ctx.state=${audioEngine.getContextState()}`)
+      const afterPlay = shouldCancelPlayRequest()
+      if (afterPlay.canceled) {
+        console.log("[SR:doPlay] canceled after audioEngine.play(); forcing pause")
+        tracePlayback("doPlay:canceled-after-engine-play", {
+          requestId,
+          staleSuperseded: afterPlay.staleSuperseded,
+        }, true)
+        if (afterPlay.staleSuperseded) {
+          return
+        }
+        audioEngine.pause()
+        syncMediaSessionPlaybackState("paused")
+        syncNativePlaybackState(false)
+        syncNativeNowPlaying()
+        return
+      }
+
+      isPlaying = audioEngine.isPlaying()
+      transport.setPlaying(isPlaying)
+      syncMediaSessionPlaybackState(isPlaying ? "playing" : "paused")
+      lastMediaSessionSyncAt = performance.now()
+      if (isPlaying) {
+        void requestWakeLock()
+        syncNativePlaybackState(true)
+      } else {
+        releaseWakeLock()
+        syncNativePlaybackState(false)
+      }
+
+      // Fire-and-forget — just metadata, no audio session changes
+      syncNativeNowPlaying()
+
+      // Background timers
+      if (document.hidden) {
+        backgroundedAt = Date.now()
+        backgroundedAudioMs = audioEngine.getCurrentTimeMs()
+        startBackgroundTimers()
+      }
+      tracePlayback("doPlay:done", { requestId, latencyMs: Math.round(performance.now() - t0) }, true)
+    } finally {
+      playInFlight = false
+      tracePlayback("doPlay:finally", { requestId }, false)
     }
   }
 
   function doPause() {
+    desiredPlaying = false
+    playRequestSeq += 1
     if (!audioEngine) return
-    audioEngine.pause()
+    const requestId = playRequestSeq
+    tracePlayback("doPause:start", { requestId }, true)
+    const enginePlaying = audioEngine.isPlaying()
+    if (!isPlaying && !enginePlaying) {
+      transport.setPlaying(false)
+      syncMediaSessionPlaybackState("paused")
+      lastMediaSessionSyncAt = 0
+      releaseWakeLock()
+      syncNativePlaybackState(false)
+      syncNativeNowPlaying()
+      stopBackgroundTimers()
+      if (document.hidden) backgroundedAt = 0
+      tracePlayback("doPause:no-op", { requestId }, true)
+      return
+    }
+    if (enginePlaying) {
+      audioEngine.pause()
+    }
     isPlaying = false
     transport.setPlaying(false)
+    syncMediaSessionPlaybackState("paused")
+    lastMediaSessionSyncAt = 0
     persistBookmark()
     releaseWakeLock()
-
-    // Sync native immediately (sets rate=0.0 + exact pause position)
+    syncNativePlaybackState(false)
     syncNativeNowPlaying()
-
-    // Clear background timers
     stopBackgroundTimers()
     if (document.hidden) backgroundedAt = 0
+    tracePlayback("doPause:done", { requestId }, true)
   }
 
   // Module-level state for language/book switching
@@ -179,6 +435,56 @@ export function createStargateReader(
     (typeof window !== "undefined"
       ? new URLSearchParams(window.location.search).get("book") || "book_monte_alban"
       : "unknown")
+
+  const bookDisplayName = BOOK_NAMES[bookId] || bookId
+
+  function getResolvedBookTitle(): string {
+    // Prefer explicit display name, but avoid exposing raw IDs as metadata.
+    if (bookDisplayName && bookDisplayName !== bookId) return bookDisplayName
+    return BOOK_NAMES.book_monte_alban || "The Mystery of Monte Albán"
+  }
+
+  function getNowPlayingMetadata(): NowPlayingMetadata {
+    const resolvedBookTitle = getResolvedBookTitle()
+    const segTitle = audioEngine
+      ? segments[audioEngine.getCurrentSegmentIndex()]?.title
+      : undefined
+    return {
+      title: segTitle || resolvedBookTitle,
+      artist: resolvedBookTitle,
+      album: resolvedBookTitle,
+    }
+  }
+
+  function syncChapterFromEnginePosition() {
+    if (!audioEngine) return
+    const seg = segments[audioEngine.getCurrentSegmentIndex()]
+    if (seg) {
+      transport.setChapter(seg.title)
+    }
+  }
+
+  function seekToMsAndSync(targetMs: number) {
+    if (!audioEngine) return
+    playRequestSeq += 1
+    tracePlayback("seek:ms", { targetMs: Math.round(targetMs), requestId: playRequestSeq }, true)
+    suppressExternalReconcileUntil = performance.now() + SEEK_RECONCILE_SUPPRESSION_MS
+    audioEngine.seekToMs(targetMs)
+    syncChapterFromEnginePosition()
+    syncNativeNowPlaying()
+    audioEngine.ensureSourceIfPlaying("seekToMsAndSync")
+  }
+
+  function seekToSegmentAndSync(index: number) {
+    if (!audioEngine) return
+    playRequestSeq += 1
+    tracePlayback("seek:segment", { targetSeg: index, requestId: playRequestSeq }, true)
+    suppressExternalReconcileUntil = performance.now() + SEEK_RECONCILE_SUPPRESSION_MS
+    audioEngine.seekToSegment(index)
+    syncChapterFromEnginePosition()
+    syncNativeNowPlaying()
+    audioEngine.ensureSourceIfPlaying("seekToSegmentAndSync")
+  }
 
   // Bookmark persistence
   function persistBookmark() {
@@ -290,7 +596,6 @@ export function createStargateReader(
 
   transport.onPlay(() => {
     void doPlay()
-    setupMediaSession()
   })
 
   transport.onPause(() => {
@@ -309,9 +614,7 @@ export function createStargateReader(
     }
     const threshold = chapters[chapterIdx].firstSegmentIndex + 2
     const targetChapter = currentIdx > threshold ? chapterIdx : Math.max(0, chapterIdx - 1)
-    audioEngine.seekToSegment(chapters[targetChapter].firstSegmentIndex)
-    transport.setChapter(chapters[targetChapter].title)
-    syncNativeNowPlaying()
+    seekToSegmentAndSync(chapters[targetChapter].firstSegmentIndex)
   })
 
   transport.onNextChapter(() => {
@@ -325,46 +628,68 @@ export function createStargateReader(
       }
     }
     const targetChapter = Math.min(chapters.length - 1, chapterIdx + 1)
-    audioEngine.seekToSegment(chapters[targetChapter].firstSegmentIndex)
-    transport.setChapter(chapters[targetChapter].title)
-    syncNativeNowPlaying()
+    seekToSegmentAndSync(chapters[targetChapter].firstSegmentIndex)
   })
 
   transport.onSkipBack(() => {
     if (!audioEngine) return
-    audioEngine.seekToMs(Math.max(0, audioEngine.getCurrentTimeMs() - 30000))
-    syncNativeNowPlaying()
+    seekToMsAndSync(Math.max(0, audioEngine.getCurrentTimeMs() - 30000))
   })
 
   transport.onSkipForward(() => {
     if (!audioEngine) return
-    audioEngine.seekToMs(Math.min(audioEngine.getTotalDurationMs(), audioEngine.getCurrentTimeMs() + 30000))
-    syncNativeNowPlaying()
+    seekToMsAndSync(Math.min(audioEngine.getTotalDurationMs(), audioEngine.getCurrentTimeMs() + 30000))
   })
 
   // --- Scrub lifecycle ---
   let wasPlayingBeforeScrub = false
 
   transport.onScrubStart(() => {
-    wasPlayingBeforeScrub = isPlaying
-    if (wasPlayingBeforeScrub) doPause()
+    wasPlayingBeforeScrub = audioEngine?.isPlaying() ?? isPlaying
+    tracePlayback("scrub:start", { wasPlayingBeforeScrub }, true)
+    suppressExternalReconcileUntil = performance.now() + SEEK_RECONCILE_SUPPRESSION_MS
+    // Do not pause/resume around scrub while playing.
+    // The pause/play round-trip is race-prone on iOS and can strand audio.
   })
 
   transport.onScrubMove((fraction) => {
     if (!audioEngine) return
-    audioEngine.seekToMsPreview(fraction * audioEngine.getTotalDurationMs())
+    const targetMs = fraction * audioEngine.getTotalDurationMs()
+    // Preview-only seek is for paused mode. While playing, defer real seek to scrub end.
+    if (!wasPlayingBeforeScrub) {
+      audioEngine.seekToMsPreview(targetMs)
+    }
   })
 
   transport.onScrubEnd((fraction) => {
     if (!audioEngine) return
-    audioEngine.seekToMsPreview(fraction * audioEngine.getTotalDurationMs())
-    if (wasPlayingBeforeScrub) void doPlay()
-    else syncNativeNowPlaying()
+    const targetMs = fraction * audioEngine.getTotalDurationMs()
+    tracePlayback("scrub:end", { fraction: fraction.toFixed(3), targetMs: Math.round(targetMs), wasPlayingBeforeScrub }, true)
+    suppressExternalReconcileUntil = performance.now() + SEEK_RECONCILE_SUPPRESSION_MS
+    seekToMsAndSync(targetMs)
+    // Keep state stable: if scrub started while playing, stay playing.
+    // If scrub started paused, stay paused.
+    if (wasPlayingBeforeScrub && !isPlaying) {
+      void doPlay()
+      return
+    }
   })
 
   settings.onLanguageChange((lang) => {
     void switchLanguage(lang)
   })
+
+  window.__stargateCmd = (cmd: StargateRemoteCommand) => {
+    console.log(`[SR:cmd] window.__stargateCmd(${cmd})`)
+    tracePlayback("cmd:window", { cmd }, true)
+    if (cmd === "play") {
+      void doPlay()
+      return
+    }
+    if (cmd === "pause") {
+      doPause()
+    }
+  }
 
   let wordHoldEnabled = prefs.wordHold
 
@@ -418,17 +743,23 @@ export function createStargateReader(
 
   // --- Native remote command listeners (lock screen / notification) ---
   removeRemoteListeners = listenForRemoteCommands({
-    onPlay: () => { void doPlay() },
-    onPause: () => { doPause() },
+    onPlay: () => {
+      console.log("[SR:cmd] native listener onPlay")
+      tracePlayback("cmd:native:onPlay", {}, true)
+      void doPlay()
+    },
+    onPause: () => {
+      console.log("[SR:cmd] native listener onPause")
+      tracePlayback("cmd:native:onPause", {}, true)
+      doPause()
+    },
     onSkipForward: () => {
       if (!audioEngine) return
-      audioEngine.seekToMs(Math.min(audioEngine.getTotalDurationMs(), audioEngine.getCurrentTimeMs() + 30000))
-      syncNativeNowPlaying()
+      seekToMsAndSync(Math.min(audioEngine.getTotalDurationMs(), audioEngine.getCurrentTimeMs() + 30000))
     },
     onSkipBack: () => {
       if (!audioEngine) return
-      audioEngine.seekToMs(Math.max(0, audioEngine.getCurrentTimeMs() - 30000))
-      syncNativeNowPlaying()
+      seekToMsAndSync(Math.max(0, audioEngine.getCurrentTimeMs() - 30000))
     },
     onNextChapter: () => {
       if (!audioEngine || chapters.length === 0) return
@@ -441,9 +772,7 @@ export function createStargateReader(
         }
       }
       const targetChapter = Math.min(chapters.length - 1, chapterIdx + 1)
-      audioEngine.seekToSegment(chapters[targetChapter].firstSegmentIndex)
-      transport.setChapter(chapters[targetChapter].title)
-      syncNativeNowPlaying()
+      seekToSegmentAndSync(chapters[targetChapter].firstSegmentIndex)
     },
     onPrevChapter: () => {
       if (!audioEngine || chapters.length === 0) return
@@ -457,74 +786,75 @@ export function createStargateReader(
       }
       const threshold = chapters[chapterIdx].firstSegmentIndex + 2
       const targetChapter = currentIdx > threshold ? chapterIdx : Math.max(0, chapterIdx - 1)
-      audioEngine.seekToSegment(chapters[targetChapter].firstSegmentIndex)
-      transport.setChapter(chapters[targetChapter].title)
-      syncNativeNowPlaying()
+      seekToSegmentAndSync(chapters[targetChapter].firstSegmentIndex)
     },
     onSeek: (positionMs: number) => {
       if (!audioEngine) return
-      audioEngine.seekToMs(positionMs)
-      syncNativeNowPlaying()
+      seekToMsAndSync(positionMs)
     },
     onInterruptionBegan: () => {
-      if (!audioEngine || !isPlaying) return
-      doPause()
+      console.log("[SR:int] interruptionBegan ignored")
     },
     onInterruptionEnded: (shouldResume: boolean) => {
-      if (!audioEngine) return
-      if (shouldResume) void doPlay()
+      console.log(`[SR:int] interruptionEnded(shouldResume=${shouldResume}) ignored`)
     },
   })
 
   // --- Media Session API (lock screen controls) ---
   function setupMediaSession() {
     if (!("mediaSession" in navigator)) return
+    syncMediaSessionNowPlaying()
 
-    navigator.mediaSession.metadata = new MediaMetadata({
-      title: segments[0]?.title || "Stargate Reader",
-      artist: VOICE_NAMES[voiceMap[currentLanguage] || ""] || "Narrator",
-      album: bookId,
-    })
+    const hasNativeBridge = Boolean((window as TauriBridgeWindow).__TAURI_INTERNALS__)
 
-    navigator.mediaSession.setActionHandler("play", () => { doPlay() })
-    navigator.mediaSession.setActionHandler("pause", () => { doPause() })
-    navigator.mediaSession.setActionHandler("seekbackward", () => {
-      if (!audioEngine) return
-      audioEngine.seekToMs(Math.max(0, audioEngine.getCurrentTimeMs() - 30000))
-    })
-    navigator.mediaSession.setActionHandler("seekforward", () => {
-      if (!audioEngine) return
-      audioEngine.seekToMs(Math.min(audioEngine.getTotalDurationMs(), audioEngine.getCurrentTimeMs() + 30000))
-    })
-  }
-
-  function updateMediaSessionPosition() {
-    if (!("mediaSession" in navigator) || !audioEngine) return
-    const seg = segments[audioEngine.getCurrentSegmentIndex()]
-    if (seg) {
-      navigator.mediaSession.metadata = new MediaMetadata({
-        title: seg.title || "Stargate Reader",
-        artist: VOICE_NAMES[voiceMap[currentLanguage] || ""] || "Narrator",
-        album: bookId,
-      })
+    const disabledActions: MediaSessionAction[] = [
+      "seekbackward",
+      "seekforward",
+      "seekto",
+      "nexttrack",
+      "previoustrack",
+    ]
+    if (hasNativeBridge) {
+      // In Tauri builds, native plugin is the sole inbound command path.
+      // Clear web action handlers to avoid duplicate play/pause command ingress.
+      disabledActions.push("play", "pause")
     }
-    navigator.mediaSession.setPositionState({
-      duration: audioEngine.getTotalDurationMs() / 1000,
-      playbackRate: 1.0,
-      position: audioEngine.getCurrentTimeMs() / 1000,
-    })
+
+    for (const action of disabledActions) {
+      try {
+        navigator.mediaSession.setActionHandler(action, null)
+      } catch {
+        // Best effort: unsupported action on this platform.
+      }
+    }
+
+    if (hasNativeBridge) return
+
+    const handlers: [MediaSessionAction, MediaSessionActionHandler][] = [
+      ["play", () => { void doPlay() }],
+      ["pause", () => { doPause() }],
+    ]
+
+    for (const [action, handler] of handlers) {
+      try {
+        navigator.mediaSession.setActionHandler(action, handler)
+      } catch {
+        // iOS/WebKit support differs by action and version.
+      }
+    }
   }
 
   // --- Periodic bookmark autosave (every 15s during playback) ---
   let lastAutosaveMs = 0
   const AUTOSAVE_INTERVAL_MS = 15000
-
-  // --- Audio health check counter ---
-  let frameCount = 0
+  const SEEK_RECONCILE_SUPPRESSION_MS = 2000
+  const DRIFT_CORRECTION_MIN_BACKGROUND_MS = 5000
 
   // --- Screen lock behavior ---
   function handleVisibilityChange() {
     if (document.hidden) {
+      console.log(`[SR:vis] hidden (isPlaying=${isPlaying})`)
+      tracePlayback("visibility:hidden", {}, true)
       // Screen locked / tab hidden: save bookmark, stop render loop but keep audio
       if (audioEngine && isPlaying) {
         backgroundedAt = Date.now()
@@ -537,9 +867,21 @@ export function createStargateReader(
         startBackgroundTimers()
       }
     } else {
+      console.log(`[SR:vis] visible (isPlaying=${isPlaying})`)
+      tracePlayback("visibility:visible", {}, true)
       // Foregrounded
       stopBackgroundTimers()
       engine.runRenderLoop(renderLoop)
+
+      const wasBackgroundedAt = backgroundedAt
+      const hiddenDurationMs =
+        wasBackgroundedAt > 0 ? Math.max(0, Date.now() - wasBackgroundedAt) : 0
+      const shouldApplyDriftCorrection =
+        isPlaying &&
+        wasBackgroundedAt > 0 &&
+        hiddenDurationMs >= DRIFT_CORRECTION_MIN_BACKGROUND_MS
+      const expectedMsAfterBackground = backgroundedAudioMs + hiddenDurationMs
+      backgroundedAt = 0
 
       if (audioEngine) {
         // ALWAYS attempt recovery, not just when isPlaying
@@ -547,22 +889,27 @@ export function createStargateReader(
           if (!audioEngine) return
 
           if (isPlaying) {
+            audioEngine.ensureSourceIfPlaying("visibility:recover")
             // Drift detection
-            if (backgroundedAt > 0) {
-              const wallElapsed = Date.now() - backgroundedAt
-              const expectedMs = backgroundedAudioMs + wallElapsed
+            if (shouldApplyDriftCorrection) {
               const actualMs = audioEngine.getCurrentTimeMs()
               const totalMs = audioEngine.getTotalDurationMs()
-              if (Math.abs(expectedMs - actualMs) > 2000 && expectedMs < totalMs) {
-                audioEngine.seekToMs(Math.min(expectedMs, totalMs))
+              if (
+                Math.abs(expectedMsAfterBackground - actualMs) > 2000 &&
+                expectedMsAfterBackground < totalMs
+              ) {
+                seekToMsAndSync(Math.min(expectedMsAfterBackground, totalMs))
               }
             }
-            // Ensure audio is actually playing after recovery
+            // Ensure recovery flows through one top-level orchestration path.
             if (!audioEngine.isPlaying()) {
-              audioEngine.play()
+              console.log("[SR:vis] engine paused while app expects playing; routing through doPlay()")
+              tracePlayback("visibility:recover-route-doPlay", {}, true)
+              void doPlay()
+              return
             }
-            audioEngine.unlock()
             void requestWakeLock()
+            syncNativePlaybackState(true)
           }
 
           // Sync native with actual state
@@ -579,7 +926,6 @@ export function createStargateReader(
         if (total > 0) transport.setProgress(ms / total)
       }
 
-      backgroundedAt = 0
     }
   }
   document.addEventListener("visibilitychange", handleVisibilityChange)
@@ -587,6 +933,7 @@ export function createStargateReader(
   // --- Data loading & initialization ---
   async function initialize() {
     try {
+      tracePlayback("session:initialize:start", { bookId, language: currentLanguage }, true)
       let manifest: AudioManifest
 
       // Load bookmark early so persisted language is used for initial data load
@@ -595,6 +942,10 @@ export function createStargateReader(
       const preloadedSegments = initialState?.segmentsData as { segments: BookSegment[] } | undefined
       const preloadedManifest = initialState?.audioManifest as AudioManifest | undefined
       const resolveAssetUrl = initialState?.resolveAssetUrl as ((path: string) => string) | undefined
+      const baseUrl = initialState?.baseUrl as string | undefined
+      mediaArtworkUrl = resolveAssetUrl
+        ? resolveAssetUrl("corpan-logo.png")
+        : (baseUrl ? `${baseUrl.replace(/\/$/, "")}/corpan-logo.png` : "corpan-logo.png")
 
       if (preloadedSegments && preloadedManifest && resolveAssetUrl) {
         // Production: host provides preloaded data
@@ -666,18 +1017,22 @@ export function createStargateReader(
           const seg = segments[index]
           if (seg) {
             transport.setChapter(seg.title)
-            syncNativeNowPlaying()
+            // Avoid native bridge work on every segment boundary; it can hitch playback.
+            // Play/pause/seek/chapter controls still trigger explicit now-playing updates.
           }
         },
         () => {
           // Playback ended
           isPlaying = false
+          desiredPlaying = false
           transport.setPlaying(false)
+          syncMediaSessionPlaybackState("paused")
           releaseWakeLock()
           stopBackgroundTimers()
           backgroundedAt = 0
           void stopNativeKeepAlive()
           nativeSessionActive = false
+          nativePlaybackStateHint = "unknown"
         },
         (segmentId, buffer) => {
           // Extract waveform envelopes as audio buffers are decoded
@@ -728,8 +1083,13 @@ export function createStargateReader(
       if (bookmark && audioEngine) {
         audioEngine.seekToMs(bookmark.timeMs)
       }
+
+      setupMediaSession()
+      syncNativeNowPlaying()
+      tracePlayback("session:initialize:ready", { segments: segments.length, language: currentLanguage }, true)
     } catch (err) {
       console.error("[StargateReader] Failed to initialize:", err)
+      tracePlayback("session:initialize:error", { error: String(err) }, true)
       transport.setChapter("Failed to load book data")
     }
   }
@@ -809,17 +1169,21 @@ export function createStargateReader(
           const seg = segments[index]
           if (seg) {
             transport.setChapter(seg.title)
-            syncNativeNowPlaying()
+            // Avoid native bridge work on every segment boundary; it can hitch playback.
+            // Play/pause/seek/chapter controls still trigger explicit now-playing updates.
           }
         },
         () => {
           isPlaying = false
+          desiredPlaying = false
           transport.setPlaying(false)
+          syncMediaSessionPlaybackState("paused")
           releaseWakeLock()
           stopBackgroundTimers()
           backgroundedAt = 0
           void stopNativeKeepAlive()
           nativeSessionActive = false
+          nativePlaybackStateHint = "unknown"
         },
         (segmentId, buffer) => {
           const entry = manifest.segments[segmentId]
@@ -862,11 +1226,71 @@ export function createStargateReader(
   function renderLoop() {
     if (disposed) return
 
-    // Periodic audio context resume (~once per second at 60fps)
-    // Some browsers suspend the AudioContext after inactivity
-    frameCount++
-    if (audioEngine && isPlaying && frameCount % 60 === 0) {
-      audioEngine.unlock()
+    // Lockscreen controls can pause/resume WebAudio via WebKit without
+    // delivering JS action handlers. Reconcile app state with engine state.
+    if (audioEngine) {
+      const now = performance.now()
+      if (now < suppressExternalReconcileUntil) {
+        pendingEngineState = null
+      } else {
+        const enginePlaying = audioEngine.isPlaying()
+        if (enginePlaying !== isPlaying) {
+          const nextState: MediaSessionPlaybackState = enginePlaying ? "playing" : "paused"
+          if (pendingEngineState !== nextState) {
+            pendingEngineState = nextState
+            pendingEngineStateSince = now
+          }
+          if (now - pendingEngineStateSince >= EXTERNAL_STATE_DEBOUNCE_MS) {
+            pendingEngineState = null
+
+            if (!enginePlaying && desiredPlaying) {
+              const ctxState = audioEngine.getContextState()
+              if (ctxState === "suspended") {
+                // Native/OS pause can suspend context without delivering JS
+                // action handlers. Treat it as authoritative pause.
+                tracePlayback("reconcile:external-pause-detected", {
+                  enginePlaying,
+                  appPlayingBefore: isPlaying,
+                  pendingState: nextState,
+                  ctxState,
+                }, true)
+                if (!playInFlight) {
+                  doPause()
+                }
+              } else {
+                // Running context + no source is a recoverable seam hole.
+                tracePlayback("reconcile:hold-desired-playing", {
+                  enginePlaying,
+                  appPlayingBefore: isPlaying,
+                  pendingState: nextState,
+                  ctxState,
+                }, true)
+                audioEngine.ensureSourceIfPlaying("reconcile:hold-desired-playing")
+              }
+            } else {
+              console.log(`[SR:sync] reconciled engine/app mismatch -> engine=${enginePlaying} app=${isPlaying}`)
+              tracePlayback("reconcile:mismatch", {
+                enginePlaying,
+                appPlayingBefore: isPlaying,
+                pendingState: nextState,
+              }, true)
+              isPlaying = enginePlaying
+              transport.setPlaying(isPlaying)
+              syncMediaSessionPlaybackState(isPlaying ? "playing" : "paused")
+              if (isPlaying) {
+                void requestWakeLock()
+              } else {
+                releaseWakeLock()
+                stopBackgroundTimers()
+                if (document.hidden) backgroundedAt = 0
+              }
+              syncNativeNowPlaying()
+            }
+          }
+        } else {
+          pendingEngineState = null
+        }
+      }
     }
 
     const currentMs = audioEngine?.getCurrentTimeMs() ?? 0
@@ -882,8 +1306,13 @@ export function createStargateReader(
     if (isPlaying && currentMs - lastAutosaveMs > AUTOSAVE_INTERVAL_MS) {
       lastAutosaveMs = currentMs
       persistBookmark()
-      updateMediaSessionPosition()
-      syncNativeNowPlaying()
+      syncNativeNowPlaying("periodic")
+    }
+
+    // Keep active WebKit card pinned to the app's timeline/metadata.
+    if (isPlaying && performance.now() - lastMediaSessionSyncAt > MEDIA_SESSION_RESYNC_INTERVAL_MS) {
+      lastMediaSessionSyncAt = performance.now()
+      syncMediaSessionNowPlaying()
     }
 
     // Chapter transition detection
@@ -959,7 +1388,11 @@ export function createStargateReader(
     releaseWakeLock()
     void stopNativeKeepAlive()
     nativeSessionActive = false
+    nativePlaybackStateHint = "unknown"
     if (removeRemoteListeners) { removeRemoteListeners(); removeRemoteListeners = null }
+    if (window.__stargateCmd) {
+      delete window.__stargateCmd
+    }
     stopBackgroundTimers()
 
     document.removeEventListener("visibilitychange", handleVisibilityChange)

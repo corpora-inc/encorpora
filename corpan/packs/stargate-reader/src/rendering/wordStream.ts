@@ -196,15 +196,18 @@ export function createWordStream(scene: Scene): WordStream {
         mesh.plane.position.x = 0
         const isCurrent = i === currentWordIndex
 
+        // Soft z-cap: past words asymptotically approach z=-3 instead of racing to near-clip
+        const posZ = z < 0 ? -3 * (1 - Math.exp(z / 8)) : z
+
         if (isCurrent && wordHold && word.durationMs > 0) {
           const t = (currentMs - word.absoluteStartMs) / word.durationMs
           const env = holdEnvelope(t, HOLD_ATTACK, HOLD_RELEASE)
           const naturalY = crawlY(z)
           mesh.plane.position.y = naturalY + env * (holdY - naturalY)
-          mesh.plane.position.z = z + env * -holdZPull
+          mesh.plane.position.z = posZ + env * -holdZPull
         } else {
           mesh.plane.position.y = crawlY(z)
-          mesh.plane.position.z = z
+          mesh.plane.position.z = posZ
         }
 
         const scale = isCurrent ? CURRENT_WORD_SCALE : WORD_SCALE
@@ -267,8 +270,8 @@ function computeFade(z: number): number {
   if (z < FADE_OUT_Z) {
     return 0
   }
-  if (z < FADE_OUT_Z + 3) {
-    return (z - FADE_OUT_Z) / 3
+  if (z < FADE_OUT_Z + 10) {
+    return (z - FADE_OUT_Z) / 10
   }
   return 1
 }

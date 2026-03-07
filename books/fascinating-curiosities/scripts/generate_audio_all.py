@@ -127,9 +127,41 @@ TTS_PARAMS = {
 TARGET_LUFS = -20.0
 TARGET_TP = -3.0  # dBTP
 
+# TTS phonetic spelling → correct display spelling.
+# The TTS pipeline uses phonetic misspellings for pronunciation (e.g. "Oahaca"
+# for "Oaxaca"). Whisper alignment picks these up in word entries. This map
+# corrects them so manifest word entries match the display text.
+TTS_WORD_CORRECTIONS = {
+    "mahgay": "maguey",
+    "chahpoolinehs": "chapulines",
+    "molay": "mole",
+    "jagwar": "jaguar",
+    "Dahnsahntess": "Danzantes",
+    "Meeshtek": "Mixtec",
+    "Meeshteka": "Mixteca",
+    "Sahpotek": "Zapotec",
+    "ka": "か",
+    "shan": "山",
+    "Oahaca": "Oaxaca",
+    "oahaqueño": "oaxaqueño",
+    "Oahaqueño": "Oaxaqueño",
+    "oahaqueños": "oaxaqueños",
+    "Teotiguacán": "Teotihuacán",
+    "teotiguacana": "teotihuacana",
+}
+
 # ---------------------------------------------------------------------------
 # Helpers
 # ---------------------------------------------------------------------------
+
+
+def fix_tts_word(word: str) -> str:
+    """Replace TTS phonetic spelling in a word entry, preserving trailing punct."""
+    m = re.match(r'^(.+?)([\.\,\;\:\!\?\"\'\"\"\—\–]+)$', word)
+    base, punct = (m.group(1), m.group(2)) if m else (word, "")
+    if base in TTS_WORD_CORRECTIONS:
+        return TTS_WORD_CORRECTIONS[base] + punct
+    return word
 
 
 def cleanup_tts_memory(tts_model):
@@ -770,9 +802,11 @@ def phase_master(langs: list[str], voice_paths: dict[str, Path],
                 except Exception:
                     pass
 
-            # Get alignment words
+            # Get alignment words, correcting TTS phonetic misspellings
             align_entry = alignment_data.get(seg_id, {})
             words = align_entry.get("words", [])
+            for w in words:
+                w["word"] = fix_tts_word(w["word"])
 
             pause_after_ms = seg.get("tts", {}).get("pause_after_ms", 800)
 

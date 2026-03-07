@@ -27,6 +27,7 @@ internal class NowPlayingArgs {
     var durationMs: Double? = null
     var bookTitle: String? = null
     var isPlaying: Boolean? = null
+    var nowPlayingToken: Long? = null
 }
 
 @TauriPlugin
@@ -111,6 +112,10 @@ class AudioKeepAlivePlugin(private val activity: Activity) : Plugin(activity) {
 
     @Command
     fun updateNowPlaying(invoke: Invoke) {
+        if (!isActive) {
+            invoke.resolve()
+            return
+        }
         val args = try {
             invoke.parseArgs(NowPlayingArgs::class.java)
         } catch (e: Exception) {
@@ -127,6 +132,7 @@ class AudioKeepAlivePlugin(private val activity: Activity) : Plugin(activity) {
                 args.durationMs?.let { putExtra("durationMs", it) }
                 args.bookTitle?.let { putExtra("bookTitle", it) }
                 args.isPlaying?.let { putExtra("isPlaying", it) }
+                args.nowPlayingToken?.let { putExtra("nowPlayingToken", it) }
             }
             activity.startService(updateIntent)
             invoke.resolve()

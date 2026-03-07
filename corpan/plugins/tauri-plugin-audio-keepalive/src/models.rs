@@ -19,4 +19,28 @@ pub struct NowPlayingArgs {
     pub duration_ms: Option<f64>,
     pub book_title: Option<String>,
     pub is_playing: Option<bool>,
+    pub now_playing_token: Option<i64>,
+}
+
+#[derive(Debug, Deserialize, Serialize)]
+#[serde(rename_all = "camelCase")]
+pub struct RegisterListenerArgs {
+    pub event: String,
+    pub handler: String,
+}
+
+#[derive(Debug, Deserialize, Serialize)]
+#[serde(rename_all = "camelCase")]
+pub struct RemoveListenerArgs {
+    pub event: String,
+    pub channel_id: Option<u64>,
+}
+
+#[derive(Debug, Deserialize, Serialize)]
+#[serde(rename_all = "camelCase")]
+pub struct TraceEventArgs {
+    pub seq: u64,
+    pub elapsed_ms: f64,
+    pub event: String,
+    pub details: Option<String>,
 }

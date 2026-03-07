@@ -1,12 +1,15 @@
 import type { AudioManifest, BookSegment } from "../core/types"
 import { PRELOAD_AHEAD, OSCILLOSCOPE_SAMPLES } from "../core/constants"
 import { packFetchArrayBuffer } from "../data/packFetch"
+import { srTrace } from "../diagnostics/trace"
 
 export type AudioEngine = {
   unlock: () => void
   play: () => void
   pause: () => void
   stop: () => void
+  /** Ensure a live source exists when playback is expected (safe-point recovery only). */
+  ensureSourceIfPlaying: (reason?: string) => void
   seekToSegment: (index: number) => void
   seekToMs: (targetMs: number) => void
   /** Update position state without starting audio — for scrub preview */
@@ -55,6 +58,13 @@ export function createAudioEngine(
   let gainNode: GainNode | null = null
   let currentSource: AudioBufferSourceNode | null = null
   let playing = false
+  let suspendedWithLiveSource = false
+  let sourceClearedAt = 0
+  let waitingForNextSegment = false
+  let waitingOwnerGeneration: number | null = null
+  let nextSegmentTimer: ReturnType<typeof setTimeout> | null = null
+  let pendingNextSegmentStartMs: number | null = null
+  let pendingNextSegmentFromCtxTime: number | null = null
   let disposed = false
 
   // Timing state
@@ -150,7 +160,15 @@ export function createAudioEngine(
   /** Inject a hidden <audio> element to force WKWebView media channel on older iOS */
   function ensureMediaChannel() {
     if (!isIOS) return
-    if (document.getElementById("sr-silent-audio")) return
+    const existing = document.getElementById("sr-silent-audio") as HTMLAudioElement | null
+    if (existing) {
+      if (existing.paused) {
+        existing.play().then(() => {
+          console.log("[SR:audio] media-channel resumed")
+        }).catch(() => {})
+      }
+      return
+    }
     const audio = document.createElement("audio")
     audio.id = "sr-silent-audio"
     // Tiny silent MP3 (~100 bytes) — forces iOS audio session to media channel
@@ -160,7 +178,9 @@ export function createAudioEngine(
     audio.volume = 0.01
     audio.setAttribute("playsinline", "")
     document.body.appendChild(audio)
-    audio.play().catch(() => {})
+    audio.play().then(() => {
+      console.log("[SR:audio] media-channel started")
+    }).catch(() => {})
   }
 
   function preloadAhead() {
@@ -173,19 +193,163 @@ export function createAudioEngine(
     }
   }
 
+  /**
+   * Map an absolute timeline time to a concrete segment+offset.
+   *
+   * If target falls into a segment's trailing pause_after_ms gap, snap to the
+   * next segment start so chapter/title state updates immediately after scrub.
+   */
+  function resolveSeekTarget(targetMs: number): { index: number; offsetMs: number } {
+    const clamped = Math.max(0, Math.min(targetMs, totalDurationMs))
+
+    // Binary search for the segment start at or before clamped time
+    let lo = 0
+    let hi = segments.length - 1
+    let segIdx = 0
+    while (lo <= hi) {
+      const mid = (lo + hi) >>> 1
+      if (segmentAbsoluteStartMs[mid] <= clamped) {
+        segIdx = mid
+        lo = mid + 1
+      } else {
+        hi = mid - 1
+      }
+    }
+
+    const entry = manifest.segments[segments[segIdx].id]
+    if (!entry) return { index: segIdx, offsetMs: 0 }
+
+    const segStartMs = segmentAbsoluteStartMs[segIdx]
+    const segAudioEndMs = segStartMs + entry.duration_ms
+
+    // In pause gap between this segment and the next: snap forward to next start.
+    if (clamped >= segAudioEndMs && segIdx < segments.length - 1) {
+      return { index: segIdx + 1, offsetMs: 0 }
+    }
+
+    const offsetMs = Math.max(0, Math.min(clamped - segStartMs, entry.duration_ms))
+    return { index: segIdx, offsetMs }
+  }
+
   function stopSource() {
+    if (nextSegmentTimer) {
+      clearTimeout(nextSegmentTimer)
+      nextSegmentTimer = null
+    }
+    waitingForNextSegment = false
+    waitingOwnerGeneration = null
+    pendingNextSegmentStartMs = null
+    pendingNextSegmentFromCtxTime = null
+
     if (currentSource) {
       try { currentSource.stop() } catch { /* already stopped */ }
       try { currentSource.disconnect() } catch { /* already disconnected */ }
       currentSource = null
+      sourceClearedAt = typeof performance !== "undefined" ? performance.now() : Date.now()
     }
+    suspendedWithLiveSource = false
+  }
+
+  /**
+   * Intentionally no-op: getters must be read-only and never mutate playback state.
+   * Playback state transitions happen only through explicit engine commands.
+   */
+  function syncContextPlaybackState() {
+    // no-op by design
+  }
+
+  function ensureSourceIfPlaying(reason: string = "unknown") {
+    if (disposed || !playing) return
+    const context = ensureContext()
+    if (!context) return
+    if (context.state !== "running") return
+    if (currentSource || waitingForNextSegment) return
+    srTrace("audio:ensureSourceIfPlaying", {
+      reason,
+      seg: currentSegmentIndex,
+      offsetMs: Math.round(segmentPlaybackOffset),
+      currentGen: playbackGeneration,
+      ctx: context.state,
+    }, { level: "warn" })
+    console.warn(
+      `[SR:audio] ensureSourceIfPlaying(${reason}) restarting seg=${currentSegmentIndex} offset=${segmentPlaybackOffset.toFixed(1)}`
+    )
+    void playSegment(currentSegmentIndex, segmentPlaybackOffset)
+  }
+
+  function scheduleNextSegment(nextIndex: number, delayMs: number, gen: number) {
+    srTrace("audio:scheduleNextSegment", {
+      nextIndex,
+      delayMs: Math.round(delayMs),
+      gen,
+      currentGen: playbackGeneration,
+      playing,
+      waitingForNextSegment,
+      waitingOwnerGeneration,
+    })
+    waitingForNextSegment = true
+    waitingOwnerGeneration = gen
+    pendingNextSegmentStartMs = segmentAbsoluteStartMs[nextIndex] ?? totalDurationMs
+    pendingNextSegmentFromCtxTime = ctx ? ctx.currentTime : null
+    if (nextSegmentTimer) {
+      clearTimeout(nextSegmentTimer)
+      nextSegmentTimer = null
+    }
+
+    const run = () => {
+      nextSegmentTimer = null
+      const shouldContinue = !disposed && playing && gen === playbackGeneration
+      if (shouldContinue) {
+        srTrace("audio:scheduleNextSegment:run", {
+          nextIndex,
+          gen,
+          currentGen: playbackGeneration,
+          waitingOwnerGeneration,
+        })
+        playSegment(nextIndex)
+      } else {
+        const ownsWaitingState = waitingOwnerGeneration === gen
+        srTrace("audio:scheduleNextSegment:dropped", {
+          nextIndex,
+          gen,
+          currentGen: playbackGeneration,
+          disposed,
+          playing,
+          waitingOwnerGeneration,
+          ownsWaitingState,
+        }, { level: "warn" })
+        if (ownsWaitingState) {
+          waitingForNextSegment = false
+          waitingOwnerGeneration = null
+          pendingNextSegmentStartMs = null
+          pendingNextSegmentFromCtxTime = null
+        }
+      }
+    }
+
+    if (delayMs > 0) {
+      nextSegmentTimer = setTimeout(run, delayMs)
+      return
+    }
+    run()
   }
 
   async function playSegment(index: number, offset: number = 0) {
     const gen = ++playbackGeneration
+    srTrace("audio:playSegment:start", {
+      index,
+      offsetMs: Math.round(offset),
+      gen,
+      ctx: ctx?.state ?? "null",
+      playing,
+      waitingForNextSegment,
+      hasSource: currentSource !== null,
+    })
+    console.log(`[SR:audio] playSegment(${index}, offset=${offset.toFixed(1)}) ctx.state=${ctx?.state ?? "null"}`)
 
     if (disposed || index >= segments.length) {
       playing = false
+      srTrace("audio:playSegment:end-of-stream", { index, gen, disposed, totalSegments: segments.length }, { level: "warn" })
       onPlaybackEnd?.()
       return
     }
@@ -208,12 +372,41 @@ export function createAudioEngine(
     if (!entry) {
       // Skip segments without audio (e.g. image-only)
       accumulatedTimeMs = segmentAbsoluteStartMs[index + 1] ?? totalDurationMs
+      waitingForNextSegment = false
+      waitingOwnerGeneration = null
       playSegment(index + 1)
       return
     }
 
+    // Segment handoff can involve timer waits and async buffer decode/fetch.
+    // Keep timeline clamped during this phase to avoid visible rewind snaps.
+    waitingForNextSegment = true
+    waitingOwnerGeneration = gen
+    pendingNextSegmentStartMs =
+      (segmentAbsoluteStartMs[index] ?? totalDurationMs) + Math.max(0, Math.min(offset, entry.duration_ms))
+    pendingNextSegmentFromCtxTime = context.currentTime
+
     const buffer = await loadBuffer(seg.id)
-    if (!buffer || disposed || gen !== playbackGeneration) return
+    if (!buffer) {
+      srTrace("audio:playSegment:buffer-missing", { index, segId: seg.id, gen }, { level: "warn" })
+      if (!disposed && playing && gen === playbackGeneration) {
+        // Skip corrupt/missing segment instead of stalling in a "playing but silent" state.
+        accumulatedTimeMs = segmentAbsoluteStartMs[index] + entry.duration_ms
+        segmentPlaybackOffset = 0
+        scheduleNextSegment(index + 1, entry.pause_after_ms, gen)
+      }
+      return
+    }
+    if (disposed || gen !== playbackGeneration) {
+      srTrace("audio:playSegment:stale-after-buffer", {
+        index,
+        segId: seg.id,
+        gen,
+        currentGen: playbackGeneration,
+        disposed,
+      }, { level: "warn" })
+      return
+    }
 
     // Re-check after async — another seek may have started a new source
     stopSource()
@@ -228,16 +421,8 @@ export function createAudioEngine(
     if (bufferDurationMs - clampedOffset < 50) {
       accumulatedTimeMs = segmentAbsoluteStartMs[index] + entry.duration_ms
       segmentPlaybackOffset = 0
-      if (entry.pause_after_ms > 0) {
-        segmentStartedAtCtxTime = context.currentTime
-        setTimeout(() => {
-          if (!disposed && playing && gen === playbackGeneration) {
-            playSegment(index + 1)
-          }
-        }, entry.pause_after_ms)
-      } else {
-        playSegment(index + 1)
-      }
+      segmentStartedAtCtxTime = context.currentTime
+      scheduleNextSegment(index + 1, entry.pause_after_ms, gen)
       return
     }
 
@@ -250,25 +435,44 @@ export function createAudioEngine(
     accumulatedTimeMs = segmentAbsoluteStartMs[index]
 
     source.onended = () => {
+      srTrace("audio:source:onended", {
+        index,
+        gen,
+        currentGen: playbackGeneration,
+        playing,
+        isCurrentSource: currentSource === source,
+      })
+      if (currentSource === source) {
+        currentSource = null
+        sourceClearedAt = typeof performance !== "undefined" ? performance.now() : Date.now()
+        // If the kept-live source ended while we were suspended/paused, we can no
+        // longer fast-resume that source.
+        if (!playing) {
+          suspendedWithLiveSource = false
+        }
+      }
       if (disposed || !playing || gen !== playbackGeneration) return
 
       accumulatedTimeMs = segmentAbsoluteStartMs[index] + entry.duration_ms
       segmentPlaybackOffset = 0
       if (ctx) segmentStartedAtCtxTime = ctx.currentTime
-
-      if (entry.pause_after_ms > 0) {
-        setTimeout(() => {
-          if (!disposed && playing && gen === playbackGeneration) {
-            playSegment(index + 1)
-          }
-        }, entry.pause_after_ms)
-      } else {
-        playSegment(index + 1)
-      }
+      scheduleNextSegment(index + 1, entry.pause_after_ms, gen)
     }
 
     source.start(0, clampedOffset / 1000)
     currentSource = source
+    sourceClearedAt = 0
+    waitingForNextSegment = false
+    waitingOwnerGeneration = null
+    pendingNextSegmentStartMs = null
+    pendingNextSegmentFromCtxTime = null
+    srTrace("audio:source:start-ok", {
+      index,
+      gen,
+      offsetMs: Math.round(clampedOffset),
+      ctx: context.state,
+    })
+    console.log(`[SR:audio] source.start() ok — seg=${index}, ctx.state=${context.state}`)
 
     preloadAhead()
   }
@@ -293,8 +497,14 @@ export function createAudioEngine(
     },
 
     play: () => {
+      srTrace("audio:play", {
+        playing,
+        ctx: ctx?.state ?? "null",
+        hasSource: currentSource !== null,
+        suspendedWithLiveSource,
+      })
+      console.log(`[SR:audio] play() — playing=${playing}, ctx.state=${ctx?.state ?? "null"}`)
       if (playing) return
-      playing = true
 
       const context = ensureContext()
       if (context && context.state === "suspended") {
@@ -302,26 +512,70 @@ export function createAudioEngine(
       }
 
       ensureMediaChannel()
+
+      // Fast resume path: we paused by suspending context and kept source alive.
+      if (currentSource && suspendedWithLiveSource) {
+        if (context) {
+          // Re-anchor timeline to "now" when resuming a live suspended source.
+          segmentStartedAtCtxTime = context.currentTime
+        }
+        playing = true
+        suspendedWithLiveSource = false
+        srTrace("audio:play:fast-resume", {
+          seg: currentSegmentIndex,
+          offsetMs: Math.round(segmentPlaybackOffset),
+        })
+        return
+      }
+
+      playing = true
       playSegment(currentSegmentIndex, segmentPlaybackOffset)
     },
 
     pause: () => {
+      srTrace("audio:pause", {
+        playing,
+        ctx: ctx?.state ?? "null",
+        hasSource: currentSource !== null,
+      })
       if (!playing) return
       playing = false
-      playbackGeneration++
 
-      // Calculate how far into the current segment we are
+      // Capture accurate paused position for fallback resume.
       if (ctx && currentSource) {
         const elapsed = (ctx.currentTime - segmentStartedAtCtxTime) * 1000
-        segmentPlaybackOffset += elapsed
+        segmentPlaybackOffset += Math.max(0, elapsed)
       }
 
-      stopSource()
+      // Keep a live source for fast resume when possible. Do not advance the
+      // playback generation in this path or source.onended becomes stale and
+      // segment chaining breaks after resume.
+      if (currentSource) {
+        if (ctx && ctx.state === "running") {
+          void ctx.suspend().then(() => {
+            console.log("[SR:audio] context suspended for pause")
+          }).catch(() => {})
+        }
+        suspendedWithLiveSource = true
+      } else {
+        // Fallback: no live source to resume, so invalidate async callbacks.
+        playbackGeneration++
+        stopSource()
+      }
+
+      // Pause iOS media-channel element when app playback is paused.
+      // Leaving it running keeps WebKit's media session in a "playing" state.
+      const silentAudio = document.getElementById("sr-silent-audio") as HTMLAudioElement | null
+      if (silentAudio && !silentAudio.paused) {
+        silentAudio.pause()
+        console.log("[SR:audio] media-channel paused")
+      }
     },
 
     stop: () => {
       playing = false
       playbackGeneration++
+      suspendedWithLiveSource = false
       currentSegmentIndex = 0
       segmentPlaybackOffset = 0
       accumulatedTimeMs = 0
@@ -329,9 +583,15 @@ export function createAudioEngine(
     },
 
     seekToSegment: (index: number) => {
+      srTrace("audio:seekToSegment", {
+        targetSeg: index,
+        wasPlaying: playing,
+        currentSeg: currentSegmentIndex,
+      })
       const wasPlaying = playing
       playing = false
       playbackGeneration++
+      suspendedWithLiveSource = false
       stopSource()
 
       currentSegmentIndex = Math.max(0, Math.min(index, segments.length - 1))
@@ -345,33 +605,19 @@ export function createAudioEngine(
     },
 
     seekToMs: (targetMs: number) => {
-      const clamped = Math.max(0, Math.min(targetMs, totalDurationMs))
+      srTrace("audio:seekToMs", {
+        targetMs: Math.round(targetMs),
+        wasPlaying: playing,
+        currentSeg: currentSegmentIndex,
+      })
       const wasPlaying = playing
 
       playing = false
       playbackGeneration++
+      suspendedWithLiveSource = false
       stopSource()
 
-      // Binary search for the segment containing targetMs
-      let lo = 0
-      let hi = segments.length - 1
-      let segIdx = 0
-      while (lo <= hi) {
-        const mid = (lo + hi) >>> 1
-        if (segmentAbsoluteStartMs[mid] <= clamped) {
-          segIdx = mid
-          lo = mid + 1
-        } else {
-          hi = mid - 1
-        }
-      }
-
-      // Calculate offset within the segment
-      const entry = manifest.segments[segments[segIdx].id]
-      let offsetWithinSegment = clamped - segmentAbsoluteStartMs[segIdx]
-      if (entry) {
-        offsetWithinSegment = Math.min(offsetWithinSegment, entry.duration_ms)
-      }
+      const { index: segIdx, offsetMs: offsetWithinSegment } = resolveSeekTarget(targetMs)
 
       currentSegmentIndex = segIdx
       segmentPlaybackOffset = offsetWithinSegment
@@ -384,31 +630,16 @@ export function createAudioEngine(
     },
 
     seekToMsPreview: (targetMs: number) => {
-      const clamped = Math.max(0, Math.min(targetMs, totalDurationMs))
-
+      srTrace("audio:seekToMsPreview", {
+        targetMs: Math.round(targetMs),
+        currentSeg: currentSegmentIndex,
+      })
       // Invalidate any pending async playback
       playbackGeneration++
+      suspendedWithLiveSource = false
       stopSource()
 
-      // Binary search for the segment containing targetMs
-      let lo = 0
-      let hi = segments.length - 1
-      let segIdx = 0
-      while (lo <= hi) {
-        const mid = (lo + hi) >>> 1
-        if (segmentAbsoluteStartMs[mid] <= clamped) {
-          segIdx = mid
-          lo = mid + 1
-        } else {
-          hi = mid - 1
-        }
-      }
-
-      const entry = manifest.segments[segments[segIdx].id]
-      let offsetWithinSegment = clamped - segmentAbsoluteStartMs[segIdx]
-      if (entry) {
-        offsetWithinSegment = Math.min(offsetWithinSegment, entry.duration_ms)
-      }
+      const { index: segIdx, offsetMs: offsetWithinSegment } = resolveSeekTarget(targetMs)
 
       currentSegmentIndex = segIdx
       segmentPlaybackOffset = offsetWithinSegment
@@ -419,9 +650,26 @@ export function createAudioEngine(
       // because playing is false (caller paused before scrub).
     },
 
+    ensureSourceIfPlaying: (reason?: string) => {
+      ensureSourceIfPlaying(reason)
+    },
+
     getCurrentTimeMs: (): number => {
+      syncContextPlaybackState()
       if (!ctx || !playing) {
         return accumulatedTimeMs + segmentPlaybackOffset
+      }
+      if (!currentSource) {
+        const baseMs = accumulatedTimeMs + segmentPlaybackOffset
+        if (
+          waitingForNextSegment &&
+          pendingNextSegmentStartMs !== null &&
+          pendingNextSegmentFromCtxTime !== null
+        ) {
+          const elapsedMs = Math.max(0, (ctx.currentTime - pendingNextSegmentFromCtxTime) * 1000)
+          return Math.min(baseMs + elapsedMs, pendingNextSegmentStartMs)
+        }
+        return baseMs
       }
       const elapsed = (ctx.currentTime - segmentStartedAtCtxTime) * 1000
       return accumulatedTimeMs + segmentPlaybackOffset + elapsed
@@ -433,7 +681,14 @@ export function createAudioEngine(
 
     getSegmentAbsoluteStartMs: () => segmentAbsoluteStartMs,
 
-    isPlaying: () => playing,
+    isPlaying: () => {
+      syncContextPlaybackState()
+      return (
+        playing &&
+        ctx?.state === "running" &&
+        (currentSource !== null || waitingForNextSegment)
+      )
+    },
 
     getAnalyserData: (): Uint8Array => {
       if (analyser) {
@@ -457,12 +712,20 @@ export function createAudioEngine(
     },
 
     recoverContext: async (): Promise<boolean> => {
+      srTrace("audio:recoverContext:start", {
+        ctx: ctx?.state ?? "null",
+      })
+      console.log(`[SR:audio] recoverContext() — ctx.state=${ctx?.state ?? "null"}`)
       if (!AudioCtx) return false
       const context = ensureContext()
       if (!context) return false
 
       // Already running — no recovery needed
-      if (context.state === "running") return true
+      if (context.state === "running") {
+        srTrace("audio:recoverContext:already-running", {})
+        console.log("[SR:audio] recoverContext: already running")
+        return true
+      }
 
       // Try to resume the existing context (500ms timeout)
       try {
@@ -474,9 +737,15 @@ export function createAudioEngine(
         // resume failed or timed out
       }
 
-      if (context.state === "running") return true
+      if (context.state === "running") {
+        srTrace("audio:recoverContext:resumed", {})
+        console.log("[SR:audio] recoverContext: resumed successfully")
+        return true
+      }
 
       // Context is dead — close it and create a fresh one
+      console.log("[SR:audio] recoverContext: context dead, recreating")
+      srTrace("audio:recoverContext:recreate", {}, { level: "warn" })
       try { await context.close() } catch { /* already closed */ }
       ctx = null
       analyser = null
@@ -500,6 +769,8 @@ export function createAudioEngine(
         try { await newCtx.resume() } catch { /* best effort */ }
       }
 
+      console.log(`[SR:audio] recoverContext: new ctx.state=${newCtx.state}`)
+      srTrace("audio:recoverContext:done", { newCtx: newCtx.state })
       return newCtx.state === "running"
     },
 
@@ -511,6 +782,12 @@ export function createAudioEngine(
       disposed = true
       playing = false
       playbackGeneration++
+      suspendedWithLiveSource = false
+      if (nextSegmentTimer) {
+        clearTimeout(nextSegmentTimer)
+        nextSegmentTimer = null
+      }
+      waitingForNextSegment = false
       stopSource()
       if (ctx) {
         void ctx.close().catch(() => {})
