@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 /**
- * Package stargate-reader.zip with all available book data.
+ * Package earthgate-reader.zip with all available book data.
  *
  * Scans books/fascinating-curiosities/ for books with segments + audio,
  * copies them into data/books/{bookId}/, generates data/catalog.json,
- * and zips manifest.json + dist/ + data/ into stargate-reader.zip.
+ * and zips manifest.json + dist/ + data/ into earthgate-reader.zip.
  *
  * Usage:
  *   node scripts/pack.mjs          # package only (assumes dist/ exists)
@@ -158,19 +158,19 @@ async function main() {
   console.log(`\nWrote catalog.json with ${catalog.length} book(s)`)
 
   // Clean previous zip
-  const zipPath = path.join(packRoot, "stargate-reader.zip")
+  const zipPath = path.join(packRoot, "earthgate-reader.zip")
   if (existsSync(zipPath)) {
     await rm(zipPath)
   }
 
   // Create zip
-  console.log("Creating stargate-reader.zip...")
-  execSync("zip -r stargate-reader.zip manifest.json dist/ data/", {
+  console.log("Creating earthgate-reader.zip...")
+  execSync("zip -r earthgate-reader.zip manifest.json dist/ data/", {
     cwd: packRoot,
     stdio: "inherit",
   })
 
-  console.log("\nDone! stargate-reader.zip is ready.")
+  console.log("\nDone! earthgate-reader.zip is ready.")
 }
 
 main()

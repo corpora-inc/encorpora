@@ -706,6 +706,67 @@ Concerns:
 2. Keep `ensureSourceIfPlaying` in all current call sites — it's a valid safety net once the clobber bug is fixed
 3. Collect one more trace-enabled test run to verify `ensureSourceIfPlaying` stops firing during normal playback
 
+## Round 23: Review of Codex Round 24 — Android Hardening
+
+### Verdict: Good direction. A few issues to fix before testing.
+
+The overall shape is correct: `SYNC_PLAYBACK_STATE` as a state-mirror-only action (no JS command echo), `nativeOwnsMediaSession` to prevent Chromium WebView + `MediaSessionCompat` dual-writer contention, stale token guard, position drift correction, artwork. These are all the right moves for Android parity.
+
+### What's correct
+
+**1. `SYNC_PLAYBACK_STATE` action** (AudioKeepAlivePlugin.kt:96-121, AudioKeepAliveService.kt:91-104)
+App-driven pause/resume now updates native MediaSession state without re-firing JS play/pause commands. This breaks the echo loop that would occur if `pauseAudioKeepalive` triggered `onPause()` callback which triggered `doPause()` which triggered `pauseAudioKeepalive` again. Correct.
+
+**2. `nativeOwnsMediaSession` flag** (game.ts:106)
+On Android, the native `MediaSessionCompat` owns the system media session. The WebView's Chromium media session would fight it. Gating `syncMediaSessionPlaybackState`, `syncMediaSessionNowPlaying`, and `setupMediaSession` behind `!nativeOwnsMediaSession` is the right approach. This mirrors what we did on iOS with Edit B (disabling JS mediaSession handlers in Tauri) but goes further — on Android we don't even write metadata from JS.
+
+**3. `effectivePositionMs()` + `snapshotPositionNow()`** (AudioKeepAliveService.kt:450-465)
+Drift-corrected position using `elapsedRealtime` anchor is exactly the right pattern — same concept as the `TimelineAnchor` we discussed for the JS controller. Position snapshots on pause transitions prevent notification seekbar from drifting.
+
+**4. MediaSession callback guards** (AudioKeepAliveService.kt:194-209)
+`onPlay()` returns early if already playing, `onPause()` returns early if already paused. Correct — prevents redundant JS command fires.
+
+**5. Stale token guard** (AudioKeepAliveService.kt:106-113)
+`lastNowPlayingToken` drops out-of-order updates. Correct.
+
+### Issues to address
+
+**A. `PAUSE_PLAYBACK` and `RESUME_PLAYBACK` actions are dead code** (AudioKeepAliveService.kt:85-90)
+
+These still exist and still route through `mediaSession.controller.transportControls.pause()/play()` — the old echo-loop path. Since `pauseAudioKeepalive`/`resumeAudioKeepalive` now send `SYNC_PLAYBACK_STATE`, these two actions are unreachable. Delete them to avoid confusion and prevent accidental use.
+
+**B. `AUDIOFOCUS_LOSS_TRANSIENT` sets `isPlaying=false` directly** (AudioKeepAliveService.kt:358)
+
+This flips native `isPlaying` without going through `SYNC_PLAYBACK_STATE` and without notifying JS of the state change. When focus returns (`AUDIOFOCUS_GAIN`), it fires `interruptionEnded` to JS but doesn't restore `isPlaying=true` natively. This creates a desync: native thinks paused, JS thinks playing.
+
+Fix options:
+- Option 1: Make `AUDIOFOCUS_LOSS_TRANSIENT` go through the same `SYNC_PLAYBACK_STATE` path
+- Option 2: Add `isPlaying = true` + `lastPositionUpdateTime = SystemClock.elapsedRealtime()` in the `AUDIOFOCUS_GAIN` handler before firing `interruptionEnded`
+
+I'd go with Option 2 — simpler, and the JS side already handles `interruptionEnded` → `doPlay()` which will call `resumeNativeKeepAlive()` → `SYNC_PLAYBACK_STATE(isPlaying=true)`. But there's a timing gap where native shows paused until the JS round-trip completes. Adding the native-side restore closes that gap.
+
+**C. `TraceEventArgs` uses `Long` for `seq` but trace.ts sends a JS `number`**
+
+JS `number` is a 64-bit float. For values up to ~9 quadrillion this is fine, but Tauri's `@InvokeArg` deserializer may truncate or reject large values depending on the JSON parser. Since `seq` is a monotonic counter that will never exceed a few million in a session, this is practically safe, but worth noting.
+
+**D. App icon bitmap: no null check on `applicationInfo.icon`** (AudioKeepAliveService.kt:467-475)
+
+`applicationInfo.icon` returns 0 when no icon is set (checked, line 469). The `BitmapFactory.decodeResource` call with a valid resource ID should work, but on some OEM ROMs the app icon may be an adaptive icon that doesn't decode cleanly to a `Bitmap`. The `try/catch` handles this, so it's safe. No action needed — just flagging.
+
+### Missing piece: `setupMediaSession` on iOS still uses `hasNativeBridge`
+
+The `setupMediaSession()` function (game.ts:810-848) has two gates:
+- Line 810: `if (nativeOwnsMediaSession) return` — this exits on Android
+- Line 821-835: `if (hasNativeBridge)` — this disables play/pause handlers and returns early on iOS
+
+This means on iOS, we still write metadata via `syncMediaSessionNowPlaying()` (line 812) but don't register play/pause handlers. That's the existing iOS behavior from Edit B — correct. Just confirming no regression.
+
+### Next steps
+
+1. Delete `PAUSE_PLAYBACK`/`RESUME_PLAYBACK` dead code in AudioKeepAliveService.kt
+2. Fix `AUDIOFOCUS_GAIN` to restore `isPlaying=true` natively (Option 2 above)
+3. We need the `tauri android dev` tooling working before we can test any of this — see the Tauri CLI upgrade thread
+
 ## Round 16: Cleanup Item A — Removed `schedulePostSeekPlaybackHeal`
 
 ### Change made

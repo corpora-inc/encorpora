@@ -1,4 +1,4 @@
-const STORAGE_PREFIX = "stargate-reader-prefs"
+const STORAGE_PREFIX = "earthgate-reader-prefs"
 
 export type OscilloscopeConfig = { amplitude: number; width: number; alpha: number }
 export type WaveformConfig = { maxRadius: number; alpha: number; minRadius: number }

@@ -1,7 +1,7 @@
 import type { HostApi, StackConfig } from "./types"
 
 const defaultStackConfig: StackConfig = {
-  activeStackId: "mock-stargate",
+  activeStackId: "mock-earthgate",
   languages: ["en"],
   domains: [],
   levels: [],

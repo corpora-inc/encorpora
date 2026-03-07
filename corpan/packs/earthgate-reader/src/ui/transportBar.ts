@@ -1,12 +1,9 @@
-import { LANGUAGE_NAMES } from "../core/constants"
-
 export type TransportBar = {
   setPlaying: (playing: boolean) => void
   setChapter: (title: string) => void
   setTime: (currentMs: number, totalMs: number) => void
   setProgress: (fraction: number) => void
   setChapterMarkers: (fractions: number[]) => void
-  setLanguages: (langs: string[], current: string) => void
   onPlay: (cb: () => void) => void
   onPause: (cb: () => void) => void
   onPrevChapter: (cb: () => void) => void
@@ -16,7 +13,6 @@ export type TransportBar = {
   onScrubStart: (cb: () => void) => void
   onScrubMove: (cb: (fraction: number) => void) => void
   onScrubEnd: (cb: (fraction: number) => void) => void
-  onLanguageChange: (cb: (lang: string) => void) => void
   dispose: () => void
 }
 
@@ -42,11 +38,6 @@ export function createTransportBar(parent: HTMLElement): TransportBar {
   let scrubStartCb: (() => void) | null = null
   let scrubMoveCb: ((fraction: number) => void) | null = null
   let scrubEndCb: ((fraction: number) => void) | null = null
-  let langChangeCb: ((lang: string) => void) | null = null
-
-  // Language state
-  let languages: string[] = []
-  let currentLang = "en"
 
   // Scrub state
   let isDragging = false
@@ -54,19 +45,6 @@ export function createTransportBar(parent: HTMLElement): TransportBar {
   // --- Container ---
   const bar = document.createElement("div")
   bar.className = "earthgate-transport"
-
-  // --- Language toggle button (top-right, absolute) ---
-  const langBtn = document.createElement("button")
-  langBtn.className = "earthgate-lang-btn"
-  langBtn.textContent = "EN"
-  langBtn.title = "Switch language"
-  langBtn.addEventListener("click", () => {
-    if (languages.length < 2) return
-    const idx = languages.indexOf(currentLang)
-    const nextIdx = (idx + 1) % languages.length
-    langChangeCb?.(languages[nextIdx])
-  })
-  parent.appendChild(langBtn)
 
   // --- Top row ---
   const topRow = document.createElement("div")
@@ -234,14 +212,6 @@ export function createTransportBar(parent: HTMLElement): TransportBar {
       }
     },
 
-    setLanguages(langs: string[], current: string) {
-      languages = langs
-      currentLang = current
-      const name = LANGUAGE_NAMES[current] || current.toUpperCase()
-      langBtn.textContent = name
-      langBtn.style.display = langs.length > 1 ? "" : "none"
-    },
-
     onPlay(cb: () => void) { playCb = cb },
     onPause(cb: () => void) { pauseCb = cb },
     onPrevChapter(cb: () => void) { prevCb = cb },
@@ -251,11 +221,9 @@ export function createTransportBar(parent: HTMLElement): TransportBar {
     onScrubStart(cb: () => void) { scrubStartCb = cb },
     onScrubMove(cb: (fraction: number) => void) { scrubMoveCb = cb },
     onScrubEnd(cb: (fraction: number) => void) { scrubEndCb = cb },
-    onLanguageChange(cb: (lang: string) => void) { langChangeCb = cb },
 
     dispose() {
       bar.remove()
-      langBtn.remove()
     },
   }
 }

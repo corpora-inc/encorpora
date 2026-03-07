@@ -28,7 +28,7 @@ const scheduleManifestUpdate = () => {
       manifest.devRevision = new Date().toISOString()
       await writeFile(manifestPath, `${JSON.stringify(manifest, null, 2)}\n`)
     } catch (err) {
-      console.error("[stargate-reader] Failed to update dev manifest:", err)
+      console.error("[earthgate-reader] Failed to update dev manifest:", err)
     }
   }, 150)
 }
@@ -42,7 +42,7 @@ const watchDist = () => {
       }
     })
   } catch (err) {
-    console.warn("[stargate-reader] Dist watcher unavailable:", err)
+    console.warn("[earthgate-reader] Dist watcher unavailable:", err)
   }
 }
 
@@ -63,7 +63,7 @@ async function scanBooks() {
       }
     }
   } catch {
-    console.warn("[stargate-reader] Books directory not found:", booksDir)
+    console.warn("[earthgate-reader] Books directory not found:", booksDir)
   }
   return map
 }
@@ -124,10 +124,10 @@ async function startUnifiedServer() {
 
     const url = (req.url || "/").split("?")[0]
 
-    // --- Book data routes (under /stargate-reader/data/) ---
+    // --- Book data routes (under /earthgate-reader/data/) ---
 
     // Catalog
-    if (url === "/stargate-reader/data/catalog.json") {
+    if (url === "/earthgate-reader/data/catalog.json") {
       const catalog = []
       for (const [id, dirName] of bookMap) {
         const manifestFile = path.join(booksDir, dirName, "pack", "manifest.json")
@@ -152,8 +152,8 @@ async function startUnifiedServer() {
       return
     }
 
-    // Book data: /stargate-reader/data/books/{bookId}/*
-    const bookMatch = url.match(/^\/stargate-reader\/data\/books\/([^/]+)\/(.+)$/)
+    // Book data: /earthgate-reader/data/books/{bookId}/*
+    const bookMatch = url.match(/^\/earthgate-reader\/data\/books\/([^/]+)\/(.+)$/)
     if (bookMatch) {
       const [, bookId, filePath] = bookMatch
       const dirName = bookMap.get(bookId)
@@ -245,7 +245,7 @@ async function startUnifiedServer() {
     }
   })
 
-  server.listen(8989, "0.0.0.0", () => {
+  server.listen(8990, "0.0.0.0", () => {
     let lanIp = ""
     try {
       const nets = os.networkInterfaces()
@@ -259,8 +259,8 @@ async function startUnifiedServer() {
         if (lanIp) break
       }
     } catch { /* ignore */ }
-    console.log("[dev-server] Unified dev server on http://localhost:8989")
-    if (lanIp) console.log(`[dev-server]   LAN: http://${lanIp}:8989`)
+    console.log("[dev-server] Unified dev server on http://localhost:8990")
+    if (lanIp) console.log(`[dev-server]   LAN: http://${lanIp}:8990`)
     console.log("[dev-server]   Pack files from:", packsRoot)
     console.log("[dev-server]   Book data from:", booksDir)
   })
@@ -274,7 +274,7 @@ const run = (cmd, args, cwd, name) => {
   const child = spawn(cmd, args, { cwd, stdio: "inherit" })
   child.on("exit", (code) => {
     if (code && code !== 0) {
-      console.error(`[stargate-reader] ${name} exited with ${code}`)
+      console.error(`[earthgate-reader] ${name} exited with ${code}`)
     }
     process.exit(code ?? 0)
   })

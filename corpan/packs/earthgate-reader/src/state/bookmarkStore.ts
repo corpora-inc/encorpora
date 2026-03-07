@@ -1,4 +1,4 @@
-const STORAGE_PREFIX = "stargate-reader"
+const STORAGE_PREFIX = "earthgate-reader"
 
 export type Bookmark = {
   timeMs: number

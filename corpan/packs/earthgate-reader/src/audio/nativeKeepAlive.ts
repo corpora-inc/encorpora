@@ -29,13 +29,13 @@ export async function startNativeKeepAlive(
   const internals = getTauriInternals()
   if (!internals) return
   try {
-    console.log("[SR:native] startNativeKeepAlive → invoking")
+    console.log("[ER:native] startNativeKeepAlive → invoking")
     await internals.invoke("plugin:audio-keepalive|start_audio_keepalive", {
       args: { title, artist, bookTitle, positionMs, durationMs },
     })
-    console.log("[SR:native] startNativeKeepAlive → resolved")
+    console.log("[ER:native] startNativeKeepAlive → resolved")
   } catch (e) {
-    console.warn("[SR:native] startNativeKeepAlive failed:", e)
+    console.warn("[ER:native] startNativeKeepAlive failed:", e)
   }
 }
 
@@ -43,35 +43,35 @@ export async function stopNativeKeepAlive(): Promise<void> {
   const internals = getTauriInternals()
   if (!internals) return
   try {
-    console.log("[SR:native] stopNativeKeepAlive → invoking")
+    console.log("[ER:native] stopNativeKeepAlive → invoking")
     await internals.invoke("plugin:audio-keepalive|stop_audio_keepalive")
-    console.log("[SR:native] stopNativeKeepAlive → resolved")
+    console.log("[ER:native] stopNativeKeepAlive → resolved")
   } catch (e) {
-    console.warn("[SR:native] stopNativeKeepAlive failed:", e)
+    console.warn("[ER:native] stopNativeKeepAlive failed:", e)
   }
 }
 
-export async function pauseNativeKeepAlive(): Promise<void> {
+export async function pauseNativeKeepAlive(source: string = "unknown"): Promise<void> {
   const internals = getTauriInternals()
   if (!internals) return
   try {
-    console.log("[SR:native] pauseNativeKeepAlive → invoking")
+    console.log(`[ER:native] pauseNativeKeepAlive(source=${source}) → invoking`)
     await internals.invoke("plugin:audio-keepalive|pause_audio_keepalive")
-    console.log("[SR:native] pauseNativeKeepAlive → resolved")
+    console.log(`[ER:native] pauseNativeKeepAlive(source=${source}) → resolved`)
   } catch (e) {
-    console.warn("[SR:native] pauseNativeKeepAlive failed:", e)
+    console.warn(`[ER:native] pauseNativeKeepAlive(source=${source}) failed:`, e)
   }
 }
 
-export async function resumeNativeKeepAlive(): Promise<void> {
+export async function resumeNativeKeepAlive(source: string = "unknown"): Promise<void> {
   const internals = getTauriInternals()
   if (!internals) return
   try {
-    console.log("[SR:native] resumeNativeKeepAlive → invoking")
+    console.log(`[ER:native] resumeNativeKeepAlive(source=${source}) → invoking`)
     await internals.invoke("plugin:audio-keepalive|resume_audio_keepalive")
-    console.log("[SR:native] resumeNativeKeepAlive → resolved")
+    console.log(`[ER:native] resumeNativeKeepAlive(source=${source}) → resolved`)
   } catch (e) {
-    console.warn("[SR:native] resumeNativeKeepAlive failed:", e)
+    console.warn(`[ER:native] resumeNativeKeepAlive(source=${source}) failed:`, e)
   }
 }
 
@@ -80,18 +80,19 @@ export async function updateNativeNowPlaying(
   artist: string,
   positionMs: number,
   durationMs: number,
-  isPlaying?: boolean
+  isPlaying?: boolean,
+  nowPlayingToken?: number
 ): Promise<void> {
   const internals = getTauriInternals()
   if (!internals) return
   try {
-    console.log("[SR:native] updateNativeNowPlaying → invoking")
+    console.log("[ER:native] updateNativeNowPlaying → invoking")
     await internals.invoke("plugin:audio-keepalive|update_now_playing", {
-      args: { title, artist, positionMs, durationMs, isPlaying },
+      args: { title, artist, positionMs, durationMs, isPlaying, nowPlayingToken },
     })
-    console.log("[SR:native] updateNativeNowPlaying → resolved")
+    console.log("[ER:native] updateNativeNowPlaying → resolved")
   } catch (e) {
-    console.warn("[SR:native] updateNativeNowPlaying failed:", e)
+    console.warn("[ER:native] updateNativeNowPlaying failed:", e)
   }
 }
 
@@ -114,11 +115,11 @@ export function listenForRemoteCommands(handlers: {
 }): (() => void) | null {
   const internals = getTauriInternals()
   if (!internals) {
-    console.warn("[SR:native] listenForRemoteCommands: no Tauri internals available")
+    console.warn("[ER:native] listenForRemoteCommands: no Tauri internals available")
     return null
   }
   if (!internals.transformCallback) {
-    console.warn("[SR:native] listenForRemoteCommands: transformCallback unavailable")
+    console.warn("[ER:native] listenForRemoteCommands: transformCallback unavailable")
     return null
   }
 
@@ -145,7 +146,7 @@ export function listenForRemoteCommands(handlers: {
     internals.invoke("plugin:audio-keepalive|register_listener", {
       args: { event, handler: `__CHANNEL__:${channelId}` },
     }).catch((err) => {
-      console.error(`[SR] FAILED to register listener for ${event}:`, err)
+      console.error(`[ER] FAILED to register listener for ${event}:`, err)
     })
 
     registeredChannels.push({ event, channelId })
@@ -162,7 +163,7 @@ export function listenForRemoteCommands(handlers: {
     internals.invoke("plugin:audio-keepalive|register_listener", {
       args: { event: "audio-keepalive:seek", handler: `__CHANNEL__:${channelId}` },
     }).catch((err) => {
-      console.error("[SR] FAILED to register listener for audio-keepalive:seek:", err)
+      console.error("[ER] FAILED to register listener for audio-keepalive:seek:", err)
     })
 
     registeredChannels.push({ event: "audio-keepalive:seek", channelId })
@@ -179,7 +180,7 @@ export function listenForRemoteCommands(handlers: {
     internals.invoke("plugin:audio-keepalive|register_listener", {
       args: { event: "audio-keepalive:interruptionEnded", handler: `__CHANNEL__:${channelId}` },
     }).catch((err) => {
-      console.error("[SR] FAILED to register listener for audio-keepalive:interruptionEnded:", err)
+      console.error("[ER] FAILED to register listener for audio-keepalive:interruptionEnded:", err)
     })
 
     registeredChannels.push({ event: "audio-keepalive:interruptionEnded", channelId })

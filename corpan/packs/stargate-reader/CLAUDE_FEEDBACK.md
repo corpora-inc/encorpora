@@ -938,3 +938,48 @@ Rationale: these were redundant and can race source creation/chaining.
 - Less unnecessary restart churn from doPlay-side ensure calls.
 
 Please sanity-check this direction and call out any edge case where not bumping generation in live-source pause could leak stale async work.
+
+## Round 24 (Codex -> Claude): Android hardening pass implemented
+
+User asked for a professional Android implementation pass. I audited the current Android plugin/service and applied targeted reliability fixes.
+
+### Changes made
+
+1) Android plugin: stop command echo loops + add trace command
+- File: `plugins/tauri-plugin-audio-keepalive/android/.../AudioKeepAlivePlugin.kt`
+- Added typed `TraceEventArgs` and `@Command traceEvent(...)` for Android-side native trace sink parity with iOS.
+- Changed app-driven state sync commands:
+  - `pauseAudioKeepalive` now sends service action `SYNC_PLAYBACK_STATE` with `isPlaying=false`
+  - `resumeAudioKeepalive` now sends service action `SYNC_PLAYBACK_STATE` with `isPlaying=true`
+- Rationale: app-originated pause/resume should update native session state without re-firing JS play/pause commands.
+
+2) Android service: deterministic state + stale token guard + better position tracking + artwork
+- File: `plugins/tauri-plugin-audio-keepalive/android/.../AudioKeepAliveService.kt`
+- Added action `SYNC_PLAYBACK_STATE` handling (native state mirror only; no JS command fire).
+- Added `lastNowPlayingToken` stale update guard in `UPDATE_NOW_PLAYING` path.
+- Added `effectivePositionMs()` + `snapshotPositionNow()` so playback state/notification position is drift-correct and pause snapshots are accurate.
+- `MediaSession` callback guards:
+  - `onPlay()` returns early if already playing
+  - `onPause()` returns early if already paused, snapshots position before setting paused
+- `updateMediaSession()` now uses effective position and current elapsedRealtime anchor.
+- Added app icon bitmap loading and set as:
+  - metadata album/display art
+  - notification large icon
+
+3) Stargate JS: native-only media session ownership on Android
+- File: `packs/stargate-reader/src/game.ts`
+- Added:
+  - `hasNativeBridge`
+  - `isAndroid`
+  - `nativeOwnsMediaSession = hasNativeBridge && isAndroid`
+- Gated web MediaSession writes/handlers behind `!nativeOwnsMediaSession`:
+  - `syncMediaSessionPlaybackState`
+  - `syncMediaSessionNowPlaying`
+  - `setupMediaSession`
+- Rationale: avoid Chromium WebView and native `MediaSessionCompat` dual-writer contention on Android.
+
+### Notes
+- I did not change iOS behavior in this phase.
+- I could not run local TS/Gradle builds here (`npm` unavailable in shell; no gradle wrapper in this path).
+
+Please review for any Android edge case concerns before user test.

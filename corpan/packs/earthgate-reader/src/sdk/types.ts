@@ -33,7 +33,7 @@ export type HostApi = {
 }
 
 /**
- * initialState contract for Stargate Reader:
+ * initialState contract for Earthgate Reader:
  *
  * Production (Tauri host provides preloaded data):
  *   segmentsData:        SegmentsData       — preloaded segments JSON

@@ -3,6 +3,7 @@ package com.corpora.audio_keepalive
 import android.app.Activity
 import android.content.Intent
 import android.os.Build
+import android.webkit.WebView
 import app.tauri.annotation.Command
 import app.tauri.annotation.InvokeArg
 import app.tauri.annotation.TauriPlugin
@@ -30,6 +31,14 @@ internal class NowPlayingArgs {
     var nowPlayingToken: Long? = null
 }
 
+@InvokeArg
+internal class TraceEventArgs {
+    var seq: Long = 0L
+    var elapsedMs: Double = 0.0
+    var event: String = ""
+    var details: String? = null
+}
+
 @TauriPlugin
 class AudioKeepAlivePlugin(private val activity: Activity) : Plugin(activity) {
 
@@ -38,6 +47,46 @@ class AudioKeepAlivePlugin(private val activity: Activity) : Plugin(activity) {
     }
 
     private var isActive = false
+    private var webView: WebView? = null
+
+    override fun load(webview: WebView) {
+        webView = webview
+    }
+
+    override fun onDestroy() {
+        webView = null
+        onMediaCommand = null
+        isActive = false
+    }
+
+    private fun dispatchDirectCommand(event: String) {
+        val cmd = when (event) {
+            "audio-keepalive:play" -> "play"
+            "audio-keepalive:pause" -> "pause"
+            "audio-keepalive:skipForward" -> "skipForward"
+            "audio-keepalive:skipBack" -> "skipBack"
+            else -> null
+        } ?: return
+
+        val js = """
+            if (window.__stargateNativeCmd) window.__stargateNativeCmd('$cmd');
+            if (window.__corpanNativeCmd) window.__corpanNativeCmd('$cmd');
+        """.trimIndent()
+
+        webView?.evaluateJavascript(js, null)
+    }
+
+    private fun dispatchEventToWeb(event: String, data: JSObject) {
+        activity.runOnUiThread {
+            try {
+                android.util.Log.d("AudioKeepAlive", "Dispatching event to web: $event")
+                dispatchDirectCommand(event)
+                trigger(event, data)
+            } catch (t: Throwable) {
+                android.util.Log.e("AudioKeepAlive", "Failed to dispatch event $event: ${t.message}", t)
+            }
+        }
+    }
 
     @Command
     fun startAudioKeepalive(invoke: Invoke) {
@@ -63,7 +112,7 @@ class AudioKeepAlivePlugin(private val activity: Activity) : Plugin(activity) {
                 activity.startService(serviceIntent)
             }
 
-            onMediaCommand = { cmd, data -> trigger(cmd, data) }
+            onMediaCommand = { cmd, data -> dispatchEventToWeb(cmd, data) }
             isActive = true
             invoke.resolve()
         } catch (e: Exception) {
@@ -88,7 +137,8 @@ class AudioKeepAlivePlugin(private val activity: Activity) : Plugin(activity) {
     fun pauseAudioKeepalive(invoke: Invoke) {
         try {
             val serviceIntent = Intent(activity, AudioKeepAliveService::class.java).apply {
-                action = "PAUSE_PLAYBACK"
+                action = "SYNC_PLAYBACK_STATE"
+                putExtra("isPlaying", false)
             }
             activity.startService(serviceIntent)
             invoke.resolve()
@@ -101,7 +151,8 @@ class AudioKeepAlivePlugin(private val activity: Activity) : Plugin(activity) {
     fun resumeAudioKeepalive(invoke: Invoke) {
         try {
             val serviceIntent = Intent(activity, AudioKeepAliveService::class.java).apply {
-                action = "RESUME_PLAYBACK"
+                action = "SYNC_PLAYBACK_STATE"
+                putExtra("isPlaying", true)
             }
             activity.startService(serviceIntent)
             invoke.resolve()
@@ -139,5 +190,20 @@ class AudioKeepAlivePlugin(private val activity: Activity) : Plugin(activity) {
         } catch (e: Exception) {
             invoke.reject("Failed to update now playing: ${e.message}")
         }
+    }
+
+    @Command
+    fun traceEvent(invoke: Invoke) {
+        val args = try {
+            invoke.parseArgs(TraceEventArgs::class.java)
+        } catch (e: Exception) {
+            invoke.reject("Invalid args: ${e.message}")
+            return
+        }
+
+        val base = "[AUDIO_KEEPALIVE][TRACE] seq=${args.seq} t=${String.format("%.1f", args.elapsedMs)}ms event=${args.event}"
+        val message = if (args.details.isNullOrBlank()) base else "$base details=${args.details}"
+        android.util.Log.d("AudioKeepAlive", message)
+        invoke.resolve()
     }
 }
