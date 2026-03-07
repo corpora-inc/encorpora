@@ -471,6 +471,16 @@ class AudioKeepAlivePlugin: Plugin {
 
         invoke.resolve()
     }
+
+    @objc func traceEvent(_ invoke: Invoke) throws {
+        let args = try invoke.parseArgs(TraceEventArgs.self)
+        if let details = args.details, !details.isEmpty {
+            print("[AUDIO_KEEPALIVE][TRACE] seq=\(args.seq) t=\(String(format: "%.1f", args.elapsedMs))ms event=\(args.event) details=\(details)")
+        } else {
+            print("[AUDIO_KEEPALIVE][TRACE] seq=\(args.seq) t=\(String(format: "%.1f", args.elapsedMs))ms event=\(args.event)")
+        }
+        invoke.resolve()
+    }
 }
 
 // MARK: - Argument Types
@@ -491,6 +501,13 @@ struct NowPlayingArgs: Decodable {
     let bookTitle: String?
     let isPlaying: Bool?
     let nowPlayingToken: Int64?
+}
+
+struct TraceEventArgs: Decodable {
+    let seq: UInt64
+    let elapsedMs: Double
+    let event: String
+    let details: String?
 }
 
 @_cdecl("init_plugin_audio_keepalive")

@@ -3,7 +3,7 @@
 use serde::de::DeserializeOwned;
 use tauri::{plugin::PluginApi, AppHandle, Runtime};
 
-use crate::models::{NowPlayingArgs, RegisterListenerArgs, RemoveListenerArgs, StartKeepAliveArgs};
+use crate::models::{NowPlayingArgs, RegisterListenerArgs, RemoveListenerArgs, StartKeepAliveArgs, TraceEventArgs};
 
 pub fn init<R: Runtime, C: DeserializeOwned>(
     app: &AppHandle<R>,
@@ -43,6 +43,10 @@ impl<R: Runtime> AudioKeepAlive<R> {
     }
 
     pub fn remove_listener(&self, _args: RemoveListenerArgs) -> crate::Result<()> {
+        Ok(())
+    }
+
+    pub fn trace_event(&self, _args: TraceEventArgs) -> crate::Result<()> {
         Ok(())
     }
 }

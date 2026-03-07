@@ -6,6 +6,7 @@ const COMMANDS: &[&str] = &[
     "resume_audio_keepalive",
     "register_listener",
     "remove_listener",
+    "trace_event",
 ];
 
 fn main() {

@@ -11,6 +11,7 @@ Default permissions for the audio-keepalive plugin
 - `allow-resume-audio-keepalive`
 - `allow-register-listener`
 - `allow-remove-listener`
+- `allow-trace-event`
 
 ## Permission Table
 
@@ -173,6 +174,32 @@ Enables the stop_audio_keepalive command without any pre-configured scope.
 <td>
 
 Denies the stop_audio_keepalive command without any pre-configured scope.
+
+</td>
+</tr>
+
+<tr>
+<td>
+
+`audio-keepalive:allow-trace-event`
+
+</td>
+<td>
+
+Enables the trace_event command without any pre-configured scope.
+
+</td>
+</tr>
+
+<tr>
+<td>
+
+`audio-keepalive:deny-trace-event`
+
+</td>
+<td>
+
+Denies the trace_event command without any pre-configured scope.
 
 </td>
 </tr>

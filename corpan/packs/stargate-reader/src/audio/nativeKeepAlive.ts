@@ -11,6 +11,13 @@ interface TauriInternals {
   transformCallback?: TauriTransformCallback
 }
 
+export type NativeTraceEventArgs = {
+  seq: number
+  elapsedMs: number
+  event: string
+  details?: string
+}
+
 function getTauriInternals(): TauriInternals | undefined {
   return (
     window as unknown as {
@@ -51,27 +58,27 @@ export async function stopNativeKeepAlive(): Promise<void> {
   }
 }
 
-export async function pauseNativeKeepAlive(): Promise<void> {
+export async function pauseNativeKeepAlive(source: string = "unknown"): Promise<void> {
   const internals = getTauriInternals()
   if (!internals) return
   try {
-    console.log("[SR:native] pauseNativeKeepAlive → invoking")
+    console.log(`[SR:native] pauseNativeKeepAlive(source=${source}) → invoking`)
     await internals.invoke("plugin:audio-keepalive|pause_audio_keepalive")
-    console.log("[SR:native] pauseNativeKeepAlive → resolved")
+    console.log(`[SR:native] pauseNativeKeepAlive(source=${source}) → resolved`)
   } catch (e) {
-    console.warn("[SR:native] pauseNativeKeepAlive failed:", e)
+    console.warn(`[SR:native] pauseNativeKeepAlive(source=${source}) failed:`, e)
   }
 }
 
-export async function resumeNativeKeepAlive(): Promise<void> {
+export async function resumeNativeKeepAlive(source: string = "unknown"): Promise<void> {
   const internals = getTauriInternals()
   if (!internals) return
   try {
-    console.log("[SR:native] resumeNativeKeepAlive → invoking")
+    console.log(`[SR:native] resumeNativeKeepAlive(source=${source}) → invoking`)
     await internals.invoke("plugin:audio-keepalive|resume_audio_keepalive")
-    console.log("[SR:native] resumeNativeKeepAlive → resolved")
+    console.log(`[SR:native] resumeNativeKeepAlive(source=${source}) → resolved`)
   } catch (e) {
-    console.warn("[SR:native] resumeNativeKeepAlive failed:", e)
+    console.warn(`[SR:native] resumeNativeKeepAlive(source=${source}) failed:`, e)
   }
 }
 
@@ -93,6 +100,16 @@ export async function updateNativeNowPlaying(
     console.log("[SR:native] updateNativeNowPlaying → resolved")
   } catch (e) {
     console.warn("[SR:native] updateNativeNowPlaying failed:", e)
+  }
+}
+
+export async function traceNativeEvent(args: NativeTraceEventArgs): Promise<void> {
+  const internals = getTauriInternals()
+  if (!internals) return
+  try {
+    await internals.invoke("plugin:audio-keepalive|trace_event", { args })
+  } catch {
+    // Best-effort observability path — never throw.
   }
 }
 

@@ -1,5 +1,5 @@
 use crate::{
-    models::{NowPlayingArgs, RegisterListenerArgs, RemoveListenerArgs, StartKeepAliveArgs},
+    models::{NowPlayingArgs, RegisterListenerArgs, RemoveListenerArgs, StartKeepAliveArgs, TraceEventArgs},
     AudioKeepAliveExt, Result,
 };
 use tauri::{command, AppHandle, Runtime};
@@ -56,4 +56,12 @@ pub(crate) async fn remove_listener<R: Runtime>(
     args: RemoveListenerArgs,
 ) -> Result<()> {
     app.audio_keepalive().remove_listener(args)
+}
+
+#[command]
+pub(crate) async fn trace_event<R: Runtime>(
+    app: AppHandle<R>,
+    args: TraceEventArgs,
+) -> Result<()> {
+    app.audio_keepalive().trace_event(args)
 }

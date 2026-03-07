@@ -8,4 +8,5 @@ permissions = [
     "allow-resume-audio-keepalive",
     "allow-register-listener",
     "allow-remove-listener",
+    "allow-trace-event",
 ]

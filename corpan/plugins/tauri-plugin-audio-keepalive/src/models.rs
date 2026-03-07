@@ -35,3 +35,12 @@ pub struct RemoveListenerArgs {
     pub event: String,
     pub channel_id: Option<u64>,
 }
+
+#[derive(Debug, Deserialize, Serialize)]
+#[serde(rename_all = "camelCase")]
+pub struct TraceEventArgs {
+    pub seq: u64,
+    pub elapsed_ms: f64,
+    pub event: String,
+    pub details: Option<String>,
+}
