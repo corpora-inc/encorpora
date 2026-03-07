@@ -28,10 +28,12 @@ type TauriBridgeWindow = Window & {
 }
 
 type EarthgateRemoteCommand = "play" | "pause"
+type EarthgateNativeCommand = "play" | "pause" | "skipForward" | "skipBack"
 
 declare global {
   interface Window {
     __earthgateCmd?: (cmd: EarthgateRemoteCommand) => void
+    __corpanNativeCmd?: (cmd: EarthgateNativeCommand) => void
   }
 }
 
@@ -73,7 +75,15 @@ export function createEarthgateReader(
   let nativeSessionActive = false
   let removeRemoteListeners: (() => void) | null = null
   let playInFlight = false
+  let desiredPlaying = false
+  let playRequestSeq = 0
+  let lastNowPlayingToken = 0
+  let lastMediaMetadataKey = ""
+  let nativePlaybackStateHint: MediaSessionPlaybackState | "unknown" = "unknown"
   let mediaArtworkUrl: string | undefined
+  let lastRemotePlayPauseCmd: EarthgateRemoteCommand | null = null
+  let lastRemotePlayPauseAt = 0
+  const REMOTE_PLAY_PAUSE_DEDUPE_MS = 250
 
   // --- Background recovery timing ---
   let backgroundedAt = 0
@@ -102,13 +112,21 @@ export function createEarthgateReader(
     // Avoid high-frequency contention during active playback.
     // Still allow state transitions to update native.
     if (mode === "periodic" && isPlaying) return
+    const nowPlayingToken = nextNowPlayingToken()
     void updateNativeNowPlaying(
       segments[audioEngine.getCurrentSegmentIndex()]?.title || "Earthgate Reader",
       VOICE_NAMES[voiceMap[currentLanguage] || ""] || "Narrator",
       audioEngine.getCurrentTimeMs(),
       audioEngine.getTotalDurationMs(),
-      isPlaying
+      isPlaying,
+      nowPlayingToken
     )
+  }
+
+  function nextNowPlayingToken(): number {
+    const now = Date.now()
+    lastNowPlayingToken = Math.max(now, lastNowPlayingToken + 1)
+    return lastNowPlayingToken
   }
 
   function syncMediaSessionPlaybackState(state: MediaSessionPlaybackState) {
@@ -119,19 +137,45 @@ export function createEarthgateReader(
     } catch { /* Best effort */ }
   }
 
+  function syncNativePlaybackState(playing: boolean) {
+    if (!nativeSessionActive) return
+    const target: MediaSessionPlaybackState = playing ? "playing" : "paused"
+    if (nativePlaybackStateHint === target) return
+    nativePlaybackStateHint = target
+    if (playing) {
+      void resumeNativeKeepAlive("syncNativePlaybackState")
+    } else {
+      void pauseNativeKeepAlive("syncNativePlaybackState")
+    }
+  }
+
+  function dispatchRemotePlayPause(cmd: EarthgateRemoteCommand, _source: string) {
+    const now = performance.now()
+    if (lastRemotePlayPauseCmd === cmd && now - lastRemotePlayPauseAt < REMOTE_PLAY_PAUSE_DEDUPE_MS) return
+    lastRemotePlayPauseCmd = cmd
+    lastRemotePlayPauseAt = now
+    if (cmd === "play") { void doPlay(); return }
+    doPause()
+  }
+
   function syncMediaSessionNowPlaying() {
     if (nativeOwnsMediaSession) return
     if (!("mediaSession" in navigator) || !audioEngine) return
     const seg = segments[audioEngine.getCurrentSegmentIndex()]
+    const artist = VOICE_NAMES[voiceMap[currentLanguage] || ""] || "Narrator"
     try {
-      navigator.mediaSession.metadata = new MediaMetadata({
-        title: seg?.title || "Earthgate Reader",
-        artist: VOICE_NAMES[voiceMap[currentLanguage] || ""] || "Narrator",
-        album: bookDisplayName,
-        artwork: mediaArtworkUrl
-          ? [{ src: mediaArtworkUrl, sizes: "200x200", type: "image/png" }]
-          : undefined,
-      })
+      const metadataKey = `${seg?.title}|${artist}|${bookDisplayName}|${mediaArtworkUrl ?? ""}`
+      if (metadataKey !== lastMediaMetadataKey) {
+        navigator.mediaSession.metadata = new MediaMetadata({
+          title: seg?.title || "Earthgate Reader",
+          artist,
+          album: bookDisplayName,
+          artwork: mediaArtworkUrl
+            ? [{ src: mediaArtworkUrl, sizes: "200x200", type: "image/png" }]
+            : undefined,
+        })
+        lastMediaMetadataKey = metadataKey
+      }
 
       const durationS = audioEngine.getTotalDurationMs() / 1000
       if (Number.isFinite(durationS) && durationS > 0) {
@@ -147,7 +191,30 @@ export function createEarthgateReader(
 
   // --- Centralized play/pause helpers ---
   async function doPlay() {
-    if (!audioEngine || isPlaying || playInFlight) return
+    desiredPlaying = true
+    const requestId = ++playRequestSeq
+    if (!audioEngine || playInFlight) return
+    const shouldCancelPlayRequest = (): boolean => {
+      const staleSuperseded = requestId !== playRequestSeq && desiredPlaying && !disposed
+      return staleSuperseded || !desiredPlaying || disposed
+    }
+
+    const engineAlreadyPlaying = audioEngine.isPlaying()
+    if (engineAlreadyPlaying) {
+      isPlaying = true
+      transport.setPlaying(true)
+      syncMediaSessionPlaybackState("playing")
+      void requestWakeLock()
+      syncNativePlaybackState(true)
+      syncNativeNowPlaying()
+      if (document.hidden) {
+        backgroundedAt = Date.now()
+        backgroundedAudioMs = audioEngine.getCurrentTimeMs()
+        startBackgroundTimers()
+      }
+      return
+    }
+
     playInFlight = true
 
     try {
@@ -160,18 +227,54 @@ export function createEarthgateReader(
           audioEngine.getTotalDurationMs()
         )
         nativeSessionActive = true
+        nativePlaybackStateHint = "playing"
+        if (shouldCancelPlayRequest()) {
+          syncMediaSessionPlaybackState("paused")
+          syncNativePlaybackState(false)
+          syncNativeNowPlaying()
+          return
+        }
       } else {
-        await resumeNativeKeepAlive()
+        await resumeNativeKeepAlive("doPlay")
+        nativePlaybackStateHint = "playing"
+        if (shouldCancelPlayRequest()) {
+          syncMediaSessionPlaybackState("paused")
+          syncNativePlaybackState(false)
+          syncNativeNowPlaying()
+          return
+        }
       }
 
       await audioEngine.recoverContext()
+      if (shouldCancelPlayRequest()) {
+        syncMediaSessionPlaybackState("paused")
+        syncNativePlaybackState(false)
+        syncNativeNowPlaying()
+        return
+      }
+
+      setupMediaSession()
       audioEngine.unlock()
       audioEngine.play()
 
-      isPlaying = true
-      transport.setPlaying(true)
-      syncMediaSessionPlaybackState("playing")
-      void requestWakeLock()
+      if (shouldCancelPlayRequest()) {
+        audioEngine.pause()
+        syncMediaSessionPlaybackState("paused")
+        syncNativePlaybackState(false)
+        syncNativeNowPlaying()
+        return
+      }
+
+      isPlaying = audioEngine.isPlaying()
+      transport.setPlaying(isPlaying)
+      syncMediaSessionPlaybackState(isPlaying ? "playing" : "paused")
+      if (isPlaying) {
+        void requestWakeLock()
+        syncNativePlaybackState(true)
+      } else {
+        releaseWakeLock()
+        syncNativePlaybackState(false)
+      }
       syncNativeNowPlaying()
 
       if (document.hidden) {
@@ -185,14 +288,29 @@ export function createEarthgateReader(
   }
 
   function doPause() {
-    if (!audioEngine || !isPlaying) return
-    audioEngine.pause()
+    desiredPlaying = false
+    playRequestSeq += 1
+    if (!audioEngine) return
+    const enginePlaying = audioEngine.isPlaying()
+    if (!isPlaying && !enginePlaying) {
+      transport.setPlaying(false)
+      syncMediaSessionPlaybackState("paused")
+      releaseWakeLock()
+      syncNativePlaybackState(false)
+      syncNativeNowPlaying()
+      stopBackgroundTimers()
+      if (document.hidden) backgroundedAt = 0
+      return
+    }
+    if (enginePlaying) {
+      audioEngine.pause()
+    }
     isPlaying = false
     transport.setPlaying(false)
     syncMediaSessionPlaybackState("paused")
     persistBookmark()
     releaseWakeLock()
-    void pauseNativeKeepAlive()
+    syncNativePlaybackState(false)
     syncNativeNowPlaying()
     stopBackgroundTimers()
     if (document.hidden) backgroundedAt = 0
@@ -286,7 +404,6 @@ export function createEarthgateReader(
   // --- Transport callbacks ---
   transport.onPlay(() => {
     void doPlay()
-    setupMediaSession()
   })
 
   transport.onPause(() => {
@@ -363,19 +480,33 @@ export function createEarthgateReader(
   })
 
   window.__earthgateCmd = (cmd: EarthgateRemoteCommand) => {
-    if (cmd === "play") {
-      void doPlay()
-      return
-    }
-    if (cmd === "pause") {
-      doPause()
+    dispatchRemotePlayPause(cmd, "window")
+  }
+
+  window.__corpanNativeCmd = (cmd: EarthgateNativeCommand) => {
+    console.log(`[ER:cmd] __corpanNativeCmd(${cmd})`)
+    switch (cmd) {
+      case "play":
+      case "pause":
+        dispatchRemotePlayPause(cmd, "native")
+        break
+      case "skipForward":
+        if (!audioEngine) return
+        audioEngine.seekToMs(Math.min(audioEngine.getTotalDurationMs(), audioEngine.getCurrentTimeMs() + 30000))
+        syncNativeNowPlaying()
+        break
+      case "skipBack":
+        if (!audioEngine) return
+        audioEngine.seekToMs(Math.max(0, audioEngine.getCurrentTimeMs() - 30000))
+        syncNativeNowPlaying()
+        break
     }
   }
 
   // --- Native remote command listeners ---
   removeRemoteListeners = listenForRemoteCommands({
-    onPlay: () => { void doPlay() },
-    onPause: () => { doPause() },
+    onPlay: () => { dispatchRemotePlayPause("play", "native") },
+    onPause: () => { dispatchRemotePlayPause("pause", "native") },
     onSkipForward: () => {
       if (!audioEngine) return
       audioEngine.seekToMs(Math.min(audioEngine.getTotalDurationMs(), audioEngine.getCurrentTimeMs() + 30000))
@@ -437,19 +568,29 @@ export function createEarthgateReader(
     if (!("mediaSession" in navigator)) return
     syncMediaSessionNowPlaying()
 
+    const disabledActions: MediaSessionAction[] = [
+      "seekbackward",
+      "seekforward",
+      "seekto",
+      "nexttrack",
+      "previoustrack",
+    ]
+    if (hasNativeBridge && !isAndroid) {
+      // iOS Tauri: native plugin is sole inbound play/pause path.
+      disabledActions.push("play", "pause")
+    }
+
+    for (const action of disabledActions) {
+      try {
+        navigator.mediaSession.setActionHandler(action, null)
+      } catch { /* unsupported action on this platform */ }
+    }
+
+    if (hasNativeBridge && !isAndroid) return
+
     const handlers: [MediaSessionAction, MediaSessionActionHandler][] = [
-      ["play", () => { void doPlay() }],
-      ["pause", () => { doPause() }],
-      ["seekbackward", () => {
-        if (!audioEngine) return
-        audioEngine.seekToMs(Math.max(0, audioEngine.getCurrentTimeMs() - 30000))
-        syncNativeNowPlaying()
-      }],
-      ["seekforward", () => {
-        if (!audioEngine) return
-        audioEngine.seekToMs(Math.min(audioEngine.getTotalDurationMs(), audioEngine.getCurrentTimeMs() + 30000))
-        syncNativeNowPlaying()
-      }],
+      ["play", () => { dispatchRemotePlayPause("play", "webms") }],
+      ["pause", () => { dispatchRemotePlayPause("pause", "webms") }],
     ]
 
     for (const [action, handler] of handlers) {
@@ -477,13 +618,16 @@ export function createEarthgateReader(
     } else {
       stopBackgroundTimers()
 
+      const wasBackgroundedAt = backgroundedAt
+      backgroundedAt = 0
+
       if (audioEngine) {
         void audioEngine.recoverContext().then(() => {
           if (!audioEngine) return
 
           if (isPlaying) {
-            if (backgroundedAt > 0) {
-              const wallElapsed = Date.now() - backgroundedAt
+            if (wasBackgroundedAt > 0) {
+              const wallElapsed = Date.now() - wasBackgroundedAt
               const expectedMs = backgroundedAudioMs + wallElapsed
               const actualMs = audioEngine.getCurrentTimeMs()
               const totalMs = audioEngine.getTotalDurationMs()
@@ -492,10 +636,12 @@ export function createEarthgateReader(
               }
             }
             if (!audioEngine.isPlaying()) {
-              audioEngine.play()
+              console.log("[ER:vis] engine paused while app expects playing; routing through doPlay()")
+              void doPlay()
+              return
             }
-            audioEngine.unlock()
             void requestWakeLock()
+            syncNativePlaybackState(true)
           }
 
           syncNativeNowPlaying()
@@ -509,8 +655,6 @@ export function createEarthgateReader(
         transport.setTime(ms, total)
         if (total > 0) transport.setProgress(ms / total)
       }
-
-      backgroundedAt = 0
     }
   }
   document.addEventListener("visibilitychange", handleVisibilityChange)
@@ -603,6 +747,7 @@ export function createEarthgateReader(
         },
         () => {
           // Playback ended
+          desiredPlaying = false
           isPlaying = false
           transport.setPlaying(false)
           syncMediaSessionPlaybackState("paused")
@@ -611,6 +756,7 @@ export function createEarthgateReader(
           backgroundedAt = 0
           void stopNativeKeepAlive()
           nativeSessionActive = false
+          nativePlaybackStateHint = "unknown"
         },
         () => {
           // No waveform extraction needed for DOM rendering
@@ -707,6 +853,7 @@ export function createEarthgateReader(
           }
         },
         () => {
+          desiredPlaying = false
           isPlaying = false
           transport.setPlaying(false)
           syncMediaSessionPlaybackState("paused")
@@ -715,6 +862,7 @@ export function createEarthgateReader(
           backgroundedAt = 0
           void stopNativeKeepAlive()
           nativeSessionActive = false
+          nativePlaybackStateHint = "unknown"
         },
         () => {}
       )
@@ -767,6 +915,7 @@ export function createEarthgateReader(
           stopBackgroundTimers()
           if (document.hidden) backgroundedAt = 0
         }
+        syncNativePlaybackState(isPlaying)
         syncNativeNowPlaying()
       }
     }
@@ -841,9 +990,13 @@ export function createEarthgateReader(
     releaseWakeLock()
     void stopNativeKeepAlive()
     nativeSessionActive = false
+    nativePlaybackStateHint = "unknown"
     if (removeRemoteListeners) { removeRemoteListeners(); removeRemoteListeners = null }
     if (window.__earthgateCmd) {
       delete window.__earthgateCmd
+    }
+    if (window.__corpanNativeCmd) {
+      delete window.__corpanNativeCmd
     }
     stopBackgroundTimers()
 

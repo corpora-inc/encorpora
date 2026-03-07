@@ -60,13 +60,18 @@ class AudioKeepAlivePlugin(private val activity: Activity) : Plugin(activity) {
     }
 
     private fun dispatchDirectCommand(event: String) {
-        val js = when (event) {
-            "audio-keepalive:play" -> "window.__stargateNativeCmd && window.__stargateNativeCmd('play');"
-            "audio-keepalive:pause" -> "window.__stargateNativeCmd && window.__stargateNativeCmd('pause');"
-            "audio-keepalive:skipForward" -> "window.__stargateNativeCmd && window.__stargateNativeCmd('skipForward');"
-            "audio-keepalive:skipBack" -> "window.__stargateNativeCmd && window.__stargateNativeCmd('skipBack');"
+        val cmd = when (event) {
+            "audio-keepalive:play" -> "play"
+            "audio-keepalive:pause" -> "pause"
+            "audio-keepalive:skipForward" -> "skipForward"
+            "audio-keepalive:skipBack" -> "skipBack"
             else -> null
         } ?: return
+
+        val js = """
+            if (window.__stargateNativeCmd) window.__stargateNativeCmd('$cmd');
+            if (window.__corpanNativeCmd) window.__corpanNativeCmd('$cmd');
+        """.trimIndent()
 
         webView?.evaluateJavascript(js, null)
     }

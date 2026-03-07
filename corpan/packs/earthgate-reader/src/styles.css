@@ -59,8 +59,8 @@ body {
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
   padding: calc(40px + var(--safe-top)) calc(24px + var(--safe-right)) 40px calc(24px + var(--safe-left));
   color: var(--eg-text);
 }
@@ -71,6 +71,7 @@ body {
   font-size: 32px;
   line-height: 1.7;
   text-align: center;
+  margin: auto 0;
 }
 
 .earthgate-word {

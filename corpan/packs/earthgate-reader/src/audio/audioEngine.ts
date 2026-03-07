@@ -201,12 +201,6 @@ export function createAudioEngine(
     if (!ctx || !currentSource) return
     if (ctx.state === "suspended" && playing) {
       playing = false
-      suspendedWithLiveSource = true
-      return
-    }
-    if (ctx.state === "running" && suspendedWithLiveSource && !playing) {
-      playing = true
-      suspendedWithLiveSource = false
     }
   }
 
@@ -334,13 +328,6 @@ export function createAudioEngine(
 
       ensureMediaChannel()
 
-      // Fast resume path: we paused by suspending context and kept source alive.
-      if (currentSource && suspendedWithLiveSource) {
-        playing = true
-        suspendedWithLiveSource = false
-        return
-      }
-
       playing = true
       playSegment(currentSegmentIndex, segmentPlaybackOffset)
     },
@@ -350,21 +337,12 @@ export function createAudioEngine(
       playing = false
       playbackGeneration++
 
-      // Prefer suspending the context so lockscreen Play can resume without
-      // needing JS command delivery.
-      if (ctx && currentSource && ctx.state === "running") {
-        void ctx.suspend().then(() => {
-          console.log("[ER:audio] context suspended for pause")
-        }).catch(() => {})
-        suspendedWithLiveSource = true
-      } else {
-        // Fallback: calculate offset and stop source
-        if (ctx && currentSource) {
-          const elapsed = (ctx.currentTime - segmentStartedAtCtxTime) * 1000
-          segmentPlaybackOffset += elapsed
-        }
-        stopSource()
+      // Save current offset within segment, then stop the source
+      if (ctx && currentSource) {
+        const elapsed = (ctx.currentTime - segmentStartedAtCtxTime) * 1000
+        segmentPlaybackOffset += elapsed
       }
+      stopSource()
 
       // Pause iOS media-channel element when app playback is paused.
       // Leaving it running keeps WebKit's media session in a "playing" state.

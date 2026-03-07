@@ -51,27 +51,27 @@ export async function stopNativeKeepAlive(): Promise<void> {
   }
 }
 
-export async function pauseNativeKeepAlive(): Promise<void> {
+export async function pauseNativeKeepAlive(source: string = "unknown"): Promise<void> {
   const internals = getTauriInternals()
   if (!internals) return
   try {
-    console.log("[ER:native] pauseNativeKeepAlive → invoking")
+    console.log(`[ER:native] pauseNativeKeepAlive(source=${source}) → invoking`)
     await internals.invoke("plugin:audio-keepalive|pause_audio_keepalive")
-    console.log("[ER:native] pauseNativeKeepAlive → resolved")
+    console.log(`[ER:native] pauseNativeKeepAlive(source=${source}) → resolved`)
   } catch (e) {
-    console.warn("[ER:native] pauseNativeKeepAlive failed:", e)
+    console.warn(`[ER:native] pauseNativeKeepAlive(source=${source}) failed:`, e)
   }
 }
 
-export async function resumeNativeKeepAlive(): Promise<void> {
+export async function resumeNativeKeepAlive(source: string = "unknown"): Promise<void> {
   const internals = getTauriInternals()
   if (!internals) return
   try {
-    console.log("[ER:native] resumeNativeKeepAlive → invoking")
+    console.log(`[ER:native] resumeNativeKeepAlive(source=${source}) → invoking`)
     await internals.invoke("plugin:audio-keepalive|resume_audio_keepalive")
-    console.log("[ER:native] resumeNativeKeepAlive → resolved")
+    console.log(`[ER:native] resumeNativeKeepAlive(source=${source}) → resolved`)
   } catch (e) {
-    console.warn("[ER:native] resumeNativeKeepAlive failed:", e)
+    console.warn(`[ER:native] resumeNativeKeepAlive(source=${source}) failed:`, e)
   }
 }
 
@@ -80,14 +80,15 @@ export async function updateNativeNowPlaying(
   artist: string,
   positionMs: number,
   durationMs: number,
-  isPlaying?: boolean
+  isPlaying?: boolean,
+  nowPlayingToken?: number
 ): Promise<void> {
   const internals = getTauriInternals()
   if (!internals) return
   try {
     console.log("[ER:native] updateNativeNowPlaying → invoking")
     await internals.invoke("plugin:audio-keepalive|update_now_playing", {
-      args: { title, artist, positionMs, durationMs, isPlaying },
+      args: { title, artist, positionMs, durationMs, isPlaying, nowPlayingToken },
     })
     console.log("[ER:native] updateNativeNowPlaying → resolved")
   } catch (e) {
