@@ -30,6 +30,7 @@ class AudioKeepAlivePlugin: Plugin {
 
     // Play/pause state for correct playbackRate in now-playing info
     private var currentlyPlaying = true
+    private var lastNowPlayingToken: Int64 = -1
 
     // Stored book title for metadata
     private var bookTitle: String?
@@ -354,6 +355,8 @@ class AudioKeepAlivePlugin: Plugin {
     @objc func startAudioKeepalive(_ invoke: Invoke) throws {
         let args = try invoke.parseArgs(StartKeepAliveArgs.self)
         print("[AUDIO_KEEPALIVE] startAudioKeepalive: entry, isActive=\(isActive)")
+        // New session boundary: reset stale-update guard.
+        lastNowPlayingToken = -1
 
         if isActive {
             // Already running — just update metadata
@@ -414,6 +417,7 @@ class AudioKeepAlivePlugin: Plugin {
         NotificationCenter.default.removeObserver(self, name: AVAudioSession.routeChangeNotification, object: nil)
 
         isActive = false
+        lastNowPlayingToken = -1
         invoke.resolve()
     }
 
@@ -436,7 +440,20 @@ class AudioKeepAlivePlugin: Plugin {
     }
 
     @objc func updateNowPlaying(_ invoke: Invoke) throws {
+        if !isActive {
+            invoke.resolve()
+            return
+        }
         let args = try invoke.parseArgs(NowPlayingArgs.self)
+
+        if let token = args.nowPlayingToken {
+            if token < lastNowPlayingToken {
+                print("[AUDIO_KEEPALIVE] updateNowPlaying: dropped stale token=\(token) last=\(lastNowPlayingToken)")
+                invoke.resolve()
+                return
+            }
+            lastNowPlayingToken = token
+        }
 
         if let bt = args.bookTitle {
             bookTitle = bt
@@ -473,6 +490,7 @@ struct NowPlayingArgs: Decodable {
     let durationMs: Double?
     let bookTitle: String?
     let isPlaying: Bool?
+    let nowPlayingToken: Int64?
 }
 
 @_cdecl("init_plugin_audio_keepalive")

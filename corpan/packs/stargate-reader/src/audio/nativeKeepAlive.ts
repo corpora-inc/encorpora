@@ -80,14 +80,15 @@ export async function updateNativeNowPlaying(
   artist: string,
   positionMs: number,
   durationMs: number,
-  isPlaying?: boolean
+  isPlaying?: boolean,
+  nowPlayingToken?: number
 ): Promise<void> {
   const internals = getTauriInternals()
   if (!internals) return
   try {
     console.log("[SR:native] updateNativeNowPlaying → invoking")
     await internals.invoke("plugin:audio-keepalive|update_now_playing", {
-      args: { title, artist, positionMs, durationMs, isPlaying },
+      args: { title, artist, positionMs, durationMs, isPlaying, nowPlayingToken },
     })
     console.log("[SR:native] updateNativeNowPlaying → resolved")
   } catch (e) {

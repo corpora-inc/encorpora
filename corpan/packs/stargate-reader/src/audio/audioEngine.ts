@@ -58,6 +58,7 @@ export function createAudioEngine(
   let suspendedWithLiveSource = false
   let sourceClearedAt = 0
   let stallRecoveryInFlight = false
+  let lastStallRecoveryAt = 0
   let waitingForNextSegment = false
   let nextSegmentTimer: ReturnType<typeof setTimeout> | null = null
   let pendingNextSegmentStartMs: number | null = null
@@ -92,6 +93,9 @@ export function createAudioEngine(
   // Generation counter — incremented on every seek/stop/pause to invalidate
   // stale async playSegment calls and pending onended/setTimeout callbacks
   let playbackGeneration = 0
+
+  const STALL_RECOVERY_MIN_GAP_MS = 12000
+  const STALL_RECOVERY_COOLDOWN_MS = 15000
 
   // Track whether AudioContext has been fully unlocked on iOS
   let contextUnlocked = false
@@ -190,6 +194,63 @@ export function createAudioEngine(
     }
   }
 
+  /**
+   * Map an absolute timeline time to a concrete segment+offset.
+   *
+   * If target falls into a segment's trailing pause_after_ms gap, snap to the
+   * next segment start so chapter/title state updates immediately after scrub.
+   */
+  function resolveSeekTarget(targetMs: number): { index: number; offsetMs: number } {
+    const clamped = Math.max(0, Math.min(targetMs, totalDurationMs))
+
+    // Binary search for the segment start at or before clamped time
+    let lo = 0
+    let hi = segments.length - 1
+    let segIdx = 0
+    while (lo <= hi) {
+      const mid = (lo + hi) >>> 1
+      if (segmentAbsoluteStartMs[mid] <= clamped) {
+        segIdx = mid
+        lo = mid + 1
+      } else {
+        hi = mid - 1
+      }
+    }
+
+    const entry = manifest.segments[segments[segIdx].id]
+    if (!entry) return { index: segIdx, offsetMs: 0 }
+
+    const segStartMs = segmentAbsoluteStartMs[segIdx]
+    const segAudioEndMs = segStartMs + entry.duration_ms
+
+    // In pause gap between this segment and the next: snap forward to next start.
+    if (clamped >= segAudioEndMs && segIdx < segments.length - 1) {
+      return { index: segIdx + 1, offsetMs: 0 }
+    }
+
+    const offsetMs = Math.max(0, Math.min(clamped - segStartMs, entry.duration_ms))
+    return { index: segIdx, offsetMs }
+  }
+
+  /**
+   * Estimate absolute timeline position from current engine state.
+   *
+   * Used for stall recovery when source nodes disappear unexpectedly.
+   */
+  function estimateAbsolutePositionMs(nowPerf: number): number {
+    let estimated = accumulatedTimeMs + segmentPlaybackOffset
+
+    if (ctx && currentSource) {
+      const elapsedMs = Math.max(0, (ctx.currentTime - segmentStartedAtCtxTime) * 1000)
+      estimated += elapsedMs
+    } else if (playing && sourceClearedAt > 0) {
+      const stalledElapsedMs = Math.max(0, nowPerf - sourceClearedAt)
+      estimated += stalledElapsedMs
+    }
+
+    return Math.max(0, Math.min(estimated, totalDurationMs))
+  }
+
   function stopSource() {
     if (nextSegmentTimer) {
       clearTimeout(nextSegmentTimer)
@@ -221,15 +282,19 @@ export function createAudioEngine(
       const nowPerf = typeof performance !== "undefined" ? performance.now() : Date.now()
       const seg = segments[currentSegmentIndex]
       const entry = seg ? manifest.segments[seg.id] : undefined
-      const expectedGapMs = Math.max(2500, (entry?.pause_after_ms ?? 0) + 2500)
-      if (sourceClearedAt > 0 && nowPerf - sourceClearedAt > expectedGapMs && !stallRecoveryInFlight) {
+      const expectedGapMs = Math.max(STALL_RECOVERY_MIN_GAP_MS, (entry?.pause_after_ms ?? 0) + 2500)
+      const pastCooldown = nowPerf - lastStallRecoveryAt >= STALL_RECOVERY_COOLDOWN_MS
+      if (sourceClearedAt > 0 && nowPerf - sourceClearedAt > expectedGapMs && pastCooldown && !stallRecoveryInFlight) {
         const stalledForMs = nowPerf - sourceClearedAt
         stallRecoveryInFlight = true
         sourceClearedAt = nowPerf
+        lastStallRecoveryAt = nowPerf
+        const resumeAtMs = estimateAbsolutePositionMs(nowPerf)
+        const { index: resumeIndex, offsetMs: resumeOffsetMs } = resolveSeekTarget(resumeAtMs)
         console.warn(
-          `[SR:audio] stall detected (no source for ${stalledForMs.toFixed(0)}ms), restarting seg=${currentSegmentIndex} offset=${segmentPlaybackOffset.toFixed(1)}`
+          `[SR:audio] stall detected (no source for ${stalledForMs.toFixed(0)}ms), resumeAt=${resumeAtMs.toFixed(1)} seg=${resumeIndex} offset=${resumeOffsetMs.toFixed(1)}`
         )
-        void playSegment(currentSegmentIndex, segmentPlaybackOffset).finally(() => {
+        void playSegment(resumeIndex, resumeOffsetMs).finally(() => {
           stallRecoveryInFlight = false
         })
       }
@@ -501,7 +566,6 @@ export function createAudioEngine(
     },
 
     seekToMs: (targetMs: number) => {
-      const clamped = Math.max(0, Math.min(targetMs, totalDurationMs))
       const wasPlaying = playing
 
       playing = false
@@ -509,26 +573,7 @@ export function createAudioEngine(
       suspendedWithLiveSource = false
       stopSource()
 
-      // Binary search for the segment containing targetMs
-      let lo = 0
-      let hi = segments.length - 1
-      let segIdx = 0
-      while (lo <= hi) {
-        const mid = (lo + hi) >>> 1
-        if (segmentAbsoluteStartMs[mid] <= clamped) {
-          segIdx = mid
-          lo = mid + 1
-        } else {
-          hi = mid - 1
-        }
-      }
-
-      // Calculate offset within the segment
-      const entry = manifest.segments[segments[segIdx].id]
-      let offsetWithinSegment = clamped - segmentAbsoluteStartMs[segIdx]
-      if (entry) {
-        offsetWithinSegment = Math.min(offsetWithinSegment, entry.duration_ms)
-      }
+      const { index: segIdx, offsetMs: offsetWithinSegment } = resolveSeekTarget(targetMs)
 
       currentSegmentIndex = segIdx
       segmentPlaybackOffset = offsetWithinSegment
@@ -541,32 +586,12 @@ export function createAudioEngine(
     },
 
     seekToMsPreview: (targetMs: number) => {
-      const clamped = Math.max(0, Math.min(targetMs, totalDurationMs))
-
       // Invalidate any pending async playback
       playbackGeneration++
       suspendedWithLiveSource = false
       stopSource()
 
-      // Binary search for the segment containing targetMs
-      let lo = 0
-      let hi = segments.length - 1
-      let segIdx = 0
-      while (lo <= hi) {
-        const mid = (lo + hi) >>> 1
-        if (segmentAbsoluteStartMs[mid] <= clamped) {
-          segIdx = mid
-          lo = mid + 1
-        } else {
-          hi = mid - 1
-        }
-      }
-
-      const entry = manifest.segments[segments[segIdx].id]
-      let offsetWithinSegment = clamped - segmentAbsoluteStartMs[segIdx]
-      if (entry) {
-        offsetWithinSegment = Math.min(offsetWithinSegment, entry.duration_ms)
-      }
+      const { index: segIdx, offsetMs: offsetWithinSegment } = resolveSeekTarget(targetMs)
 
       currentSegmentIndex = segIdx
       segmentPlaybackOffset = offsetWithinSegment

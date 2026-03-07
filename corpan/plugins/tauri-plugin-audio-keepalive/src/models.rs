@@ -19,6 +19,7 @@ pub struct NowPlayingArgs {
     pub duration_ms: Option<f64>,
     pub book_title: Option<String>,
     pub is_playing: Option<bool>,
+    pub now_playing_token: Option<i64>,
 }
 
 #[derive(Debug, Deserialize, Serialize)]

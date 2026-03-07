@@ -92,11 +92,18 @@ export function createStargateReader(
   let mediaArtworkUrl: string | undefined
   let lastMediaSessionSyncAt = 0
   let lastMediaMetadataKey = ""
+  let lastNowPlayingToken = 0
   let nativePlaybackStateHint: MediaSessionPlaybackState | "unknown" = "unknown"
   let pendingEngineState: MediaSessionPlaybackState | null = null
   let pendingEngineStateSince = 0
   const MEDIA_SESSION_RESYNC_INTERVAL_MS = 1000
   const EXTERNAL_STATE_DEBOUNCE_MS = 900
+
+  function nextNowPlayingToken(): number {
+    const now = Date.now()
+    lastNowPlayingToken = Math.max(now, lastNowPlayingToken + 1)
+    return lastNowPlayingToken
+  }
 
   // --- Background recovery timing ---
   let backgroundedAt = 0        // wall-clock ms when app went to background
@@ -130,12 +137,14 @@ export function createStargateReader(
     // Still allow state transitions (play/pause/seek/chapter changes) to update native.
     if (mode === "periodic" && isPlaying) return
     const metadata = getNowPlayingMetadata()
+    const nowPlayingToken = nextNowPlayingToken()
     void updateNativeNowPlaying(
       metadata.title,
       metadata.artist,
       audioEngine.getCurrentTimeMs(),
       audioEngine.getTotalDurationMs(),
-      isPlaying
+      isPlaying,
+      nowPlayingToken
     )
   }
 
