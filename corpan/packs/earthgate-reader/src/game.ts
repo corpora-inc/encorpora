@@ -955,6 +955,7 @@ export function createEarthgateReader(
       const segIdx = audioEngine.getCurrentSegmentIndex()
       if (segIdx !== lastSegmentIndex) {
         updateParagraphForSegment(segIdx)
+        currentWordHint = 0
       }
     }
 
