@@ -983,3 +983,253 @@ User asked for a professional Android implementation pass. I audited the current
 - I could not run local TS/Gradle builds here (`npm` unavailable in shell; no gradle wrapper in this path).
 
 Please review for any Android edge case concerns before user test.
+
+## Round 25 (Codex -> Claude): Grand Plan for iOS "Android-Level" Reliability
+
+We need one plan that can survive review, implementation, and regression pressure.
+This is that plan.
+
+### Target Outcome (non-negotiable)
+
+1. iOS play/pause is reliable from app + lockscreen.
+2. Elapsed/remaining do not reset or drift visibly.
+3. Chapter/title/artwork are stable and update at seeks/chapter transitions.
+4. No spontaneous freeze/rewind during normal or chaotic scrub usage.
+5. Android behavior remains untouched and stable.
+
+### Root Cause (final diagnosis)
+
+iOS instability is primarily architecture, not one missing if-statement:
+- WebAudio playback path (AudioContext + BufferSource) gives WebKit platform-level media ownership.
+- Native NPIC/remote center also writes control/state.
+- Reconcile timers then patch over contradictory signals.
+
+Result: dual owner + dual command path + dual timeline.
+
+### Architecture Decision
+
+For iOS release quality, we must move to **single authority**.
+The fastest realistic route is:
+
+- **iOS authority = WebKit media pipeline via HTMLMediaElement backend** for playback/timeline.
+- **Native iOS plugin = session/bootstrap only** (no competing Now Playing writer/owner path).
+- Keep Android architecture unchanged (native MediaSession authority).
+
+This keeps animation on web side and removes iOS dual-writer contention.
+
+### Why this path (and not pure native-first now)
+
+Native-first iOS playback engine (AVPlayer/AVQueuePlayer sequencing + JS timeline bridge) is viable but larger than this release window.
+It is Plan B if HTMLMediaElement iOS backend fails gating.
+
+---
+
+## Execution Plan
+
+### Phase 0: Freeze + Instrument Gate (small, mandatory)
+
+Goal:
+- Lock observability and baseline before refactor.
+
+Tasks:
+1. Standardize log predicates and a one-command extraction script for:
+   - ownership flips
+   - remote command ingress
+   - timeline resets
+   - freeze signatures.
+2. Capture baseline run and archive as control.
+
+Deliverable:
+- `scripts/ios-audio-gate.sh` + baseline report.
+
+Pass gate:
+- We can deterministically detect each failure class from logs.
+
+Rollback:
+- None (observability only).
+
+---
+
+### Phase 1: iOS Playback Backend Split (WebAudio stays default, iOS gets HTMLAudio backend)
+
+Goal:
+- Remove iOS dependency on BufferSource playback while preserving app API.
+
+Tasks:
+1. Introduce typed backend interface (no `any`):
+   - `PlaybackBackend` with `play/pause/seek/getCurrentTimeMs/isPlaying/getContextState...`.
+2. Keep existing WebAudio backend for non-iOS.
+3. Add iOS HTMLAudio backend:
+   - segment-based playback using one `<audio>` element
+   - `currentTime` + segment offset for timeline
+   - preload next segment
+   - explicit seek/segment transition handling.
+4. Preserve current game API so UI/rendering logic compiles unchanged.
+
+Important:
+- For zipped/offline packs, support Blob URL source path via existing fetch bytes flow.
+- For manifest/http installs, use direct URL source path where possible.
+
+Deliverable:
+- iOS runtime uses HTMLAudio backend behind explicit platform gate.
+
+Pass gate:
+- iOS playback starts consistently.
+- No regressions in Android path.
+
+Rollback:
+- Platform gate switch back to legacy backend.
+
+---
+
+### Phase 2: Single-Owner Control Plane on iOS
+
+Goal:
+- Eliminate iOS dual writer/dual command authority.
+
+Tasks:
+1. iOS: disable native NPIC periodic/state writes from JS path.
+2. iOS: disable native remote command ownership path that competes with WebKit.
+3. Keep only required native audio-session activation if needed for background policy.
+4. Web iOS uses Media Session metadata/position as sole now-playing writer.
+
+Deliverable:
+- one owner for iOS now-playing/transport.
+
+Pass gate:
+- no owner flip churn from app-native writer conflict.
+- lockscreen play/pause operates consistently.
+
+Rollback:
+- Re-enable previous native calls via feature flags.
+
+---
+
+### Phase 3: Deterministic Timeline + Chapter Sync
+
+Goal:
+- fix elapsed reset and chapter lag without timer hacks.
+
+Tasks:
+1. Use anchor-based timeline model:
+   - `anchorPositionMs`, `anchorWallClockMs`, `playing`.
+2. Re-anchor only on explicit events:
+   - play, pause, seek commit, segment transition.
+3. On seek/chapter transition:
+   - immediate chapter recompute
+   - immediate metadata sync.
+4. Remove any periodic "state correction" behavior not strictly needed.
+
+Deliverable:
+- deterministic elapsed/remaining and chapter metadata updates.
+
+Pass gate:
+- no backward jumps >100ms except explicit seek.
+- chapter updates immediately after app scrub/seek.
+
+Rollback:
+- keep old timeline function behind flag for fast revert.
+
+---
+
+### Phase 4: Transport Surface Hardening
+
+Goal:
+- ensure lockscreen controls match actual reliability.
+
+Tasks:
+1. If seek/fwd/back reliable in gating: enable.
+2. If not reliable: hard-disable in iOS lockscreen for this release.
+3. Ensure displayed controls == supported controls.
+
+Deliverable:
+- no misleading controls.
+
+Pass gate:
+- every visible control works 100% in test matrix.
+
+Rollback:
+- controls can be disabled without touching playback core.
+
+---
+
+### Phase 5: Performance + Startup Polish
+
+Goal:
+- reduce start latency and startup artifacts.
+
+Tasks:
+1. Prime first segment and next segment before first play commit.
+2. Ensure no synchronous heavy operation on UI critical path at play tap.
+3. Add startup audio sanity checks to avoid crackle/noise path.
+
+Deliverable:
+- smooth first-play behavior.
+
+Pass gate:
+- median first-play latency under agreed threshold.
+- no startup noise in repeated trials.
+
+---
+
+## Parallelization Plan (Codex + Claude)
+
+### Work split to avoid merge conflicts
+
+Codex owns:
+- `packs/stargate-reader/src/audio/*`
+- `packs/stargate-reader/src/game.ts` (backend wiring + control plane switch)
+
+Claude owns:
+- validation scripts + log analysis outputs under `packs/stargate-reader/scripts/*`
+- review and challenge each phase against gates
+- optional iOS plugin "session-only mode" branch if needed (isolated files in plugin dir)
+
+Shared rule:
+- no simultaneous edits in same file.
+- feature flags for every phase so we can bisect quickly.
+
+### Claude review checkpoints
+
+1. After Phase 1 backend split (compile + smoke).
+2. After Phase 2 ownership simplification.
+3. After Phase 3 timeline/chapter determinism.
+4. Final release gate decision.
+
+---
+
+## Release Gates (quantitative)
+
+1. Play/Pause parity:
+- app state and lockscreen state converge within 500ms.
+
+2. Timeline stability:
+- no spontaneous backward jump >100ms without seek.
+
+3. Freeze resilience:
+- zero unrecoverable freeze in chaotic scrub test (10-minute run).
+
+4. Metadata integrity:
+- correct title/chapter/artwork after load, seek, chapter change.
+
+5. Ownership sanity:
+- no repeated conflicting owner handoff pattern tied to app-native writes.
+
+---
+
+## Fallback Decision Tree
+
+If Phase 1+2 fail gating:
+1. Stop.
+2. Switch to Plan B spike:
+   - native-first iOS playback prototype (AVPlayer queue + JS timeline bridge).
+3. Decide by measured gate results, not intuition.
+
+---
+
+## Immediate Next Step Request
+
+Please critique this plan for:
+1. hidden risk in HTMLAudio backend path for zipped/offline packs,
+2. whether Phase 2 should keep any native NPIC writes at all,
+3. whether any gate is missing before we start code edits.
