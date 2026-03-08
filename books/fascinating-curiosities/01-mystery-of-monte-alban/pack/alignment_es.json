@@ -16409,101 +16409,6 @@
     ],
     "word_count": 28
   },
-  "ch04-205": {
-    "words": [
-      {
-        "word": "Para",
-        "start_ms": 20,
-        "end_ms": 140
-      },
-      {
-        "word": "ponerlo",
-        "start_ms": 140,
-        "end_ms": 600
-      },
-      {
-        "word": "en",
-        "start_ms": 600,
-        "end_ms": 660
-      },
-      {
-        "word": "perspectiva:",
-        "start_ms": 660,
-        "end_ms": 1760
-      },
-      {
-        "word": "Londres",
-        "start_ms": 1900,
-        "end_ms": 2120
-      },
-      {
-        "word": "en",
-        "start_ms": 2120,
-        "end_ms": 2280
-      },
-      {
-        "word": "el",
-        "start_ms": 2280,
-        "end_ms": 2420
-      },
-      {
-        "word": "a\u00f1o",
-        "start_ms": 2420,
-        "end_ms": 2620
-      },
-      {
-        "word": "quinientos",
-        "start_ms": 2620,
-        "end_ms": 3120
-      },
-      {
-        "word": "de",
-        "start_ms": 3180,
-        "end_ms": 3360
-      },
-      {
-        "word": "la",
-        "start_ms": 3360,
-        "end_ms": 3500
-      },
-      {
-        "word": "era",
-        "start_ms": 3500,
-        "end_ms": 3640
-      },
-      {
-        "word": "com\u00fan",
-        "start_ms": 3640,
-        "end_ms": 4059
-      },
-      {
-        "word": "ten\u00eda",
-        "start_ms": 4059,
-        "end_ms": 4460
-      },
-      {
-        "word": "quiz\u00e1s",
-        "start_ms": 4460,
-        "end_ms": 4960
-      },
-      {
-        "word": "diez",
-        "start_ms": 4960,
-        "end_ms": 5240
-      },
-      {
-        "word": "cero",
-        "start_ms": 5240,
-        "end_ms": 5600
-      },
-      {
-        "word": "habitantes.",
-        "start_ms": 5600,
-        "end_ms": 6000
-      }
-    ],
-    "word_count": 18
-  },
   "ch04-206": {
     "words": [
       {
@@ -94768,5 +94673,99 @@
       }
     ],
     "word_count": 30
+  },
+  "ch04-205": {
+    "words": [
+      {
+        "word": "Para",
+        "start_ms": 0,
+        "end_ms": 140
+      },
+      {
+        "word": "ponerlo",
+        "start_ms": 140,
+        "end_ms": 640
+      },
+      {
+        "word": "en",
+        "start_ms": 640,
+        "end_ms": 740
+      },
+      {
+        "word": "perspectiva:",
+        "start_ms": 740,
+        "end_ms": 2000
+      },
+      {
+        "word": "Londres",
+        "start_ms": 2160,
+        "end_ms": 2340
+      },
+      {
+        "word": "en",
+        "start_ms": 2340,
+        "end_ms": 2520
+      },
+      {
+        "word": "el",
+        "start_ms": 2520,
+        "end_ms": 2660
+      },
+      {
+        "word": "a\u00f1o",
+        "start_ms": 2660,
+        "end_ms": 2840
+      },
+      {
+        "word": "quinientos",
+        "start_ms": 2840,
+        "end_ms": 3290
+      },
+      {
+        "word": "de",
+        "start_ms": 3420,
+        "end_ms": 3620
+      },
+      {
+        "word": "la",
+        "start_ms": 3620,
+        "end_ms": 3740
+      },
+      {
+        "word": "era",
+        "start_ms": 3740,
+        "end_ms": 3880
+      },
+      {
+        "word": "com\u00fan",
+        "start_ms": 3880,
+        "end_ms": 4240
+      },
+      {
+        "word": "ten\u00eda",
+        "start_ms": 4240,
+        "end_ms": 4860
+      },
+      {
+        "word": "quiz\u00e1s",
+        "start_ms": 4860,
+        "end_ms": 5300
+      },
+      {
+        "word": "diez",
+        "start_ms": 5300,
+        "end_ms": 5520
+      },
+      {
+        "word": "mil",
+        "start_ms": 5520,
+        "end_ms": 5760
+      },
+      {
+        "word": "habitantes.",
+        "start_ms": 5760,
+        "end_ms": 6280
+      }
+    ]
   }
 }

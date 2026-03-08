@@ -20521,53 +20521,6 @@
         }
       ]
     },
-    "ch04-256": {
-      "file": "audio/en/ch04-256.m4a",
-      "duration_ms": 9680,
-      "pause_after_ms": 800,
-      "words": [
-        {
-          "word": "It",
-          "start_ms": 160,
-          "end_ms": 160
-        },
-        {
-          "word": "was",
-          "start_ms": 160,
-          "end_ms": 340
-        },
-        {
-          "word": "a",
-          "start_ms": 340,
-          "end_ms": 480
-        },
-        {
-          "word": "node",
-          "start_ms": 480,
-          "end_ms": 880
-        },
-        {
-          "word": "in",
-          "start_ms": 880,
-          "end_ms": 1140
-        },
-        {
-          "word": "a",
-          "start_ms": 1140,
-          "end_ms": 1260
-        },
-        {
-          "word": "continental",
-          "start_ms": 1260,
-          "end_ms": 1760
-        },
-        {
-          "word": "network.",
-          "start_ms": 1760,
-          "end_ms": 2410
-        }
-      ]
-    },
     "ch04-257": {
       "file": "audio/en/ch04-257.m4a",
       "duration_ms": 2680,
@@ -90097,6 +90050,53 @@
           "word": "repository.",
           "start_ms": 7660,
           "end_ms": 8460
+        }
+      ]
+    },
+    "ch04-256": {
+      "file": "audio/en/ch04-256.m4a",
+      "duration_ms": 2920,
+      "pause_after_ms": 800,
+      "words": [
+        {
+          "word": "It",
+          "start_ms": 220,
+          "end_ms": 320
+        },
+        {
+          "word": "was",
+          "start_ms": 320,
+          "end_ms": 500
+        },
+        {
+          "word": "a",
+          "start_ms": 500,
+          "end_ms": 600
+        },
+        {
+          "word": "node",
+          "start_ms": 600,
+          "end_ms": 1000
+        },
+        {
+          "word": "in",
+          "start_ms": 1000,
+          "end_ms": 1260
+        },
+        {
+          "word": "a",
+          "start_ms": 1260,
+          "end_ms": 1340
+        },
+        {
+          "word": "continental",
+          "start_ms": 1340,
+          "end_ms": 1820
+        },
+        {
+          "word": "network.",
+          "start_ms": 1820,
+          "end_ms": 2470
         }
       ]
     }

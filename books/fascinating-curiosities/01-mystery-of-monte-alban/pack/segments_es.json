@@ -3062,10 +3062,10 @@
       "sentence_index": 1,
       "block_type": "text",
       "title": "Capítulo 4 — ¿Qué tipo de lugar era este?",
-      "text": "Para ponerlo en perspectiva: Londres en el año 500 e.c. tenía quizás 10 000 habitantes.",
-      "text_markdown": "Para ponerlo en perspectiva: Londres en el año 500 e.c. tenía quizás 10 000 habitantes.",
+      "text": "Para ponerlo en perspectiva: Londres en el año 500 e.c. tenía quizás 10.000 habitantes.",
+      "text_markdown": "Para ponerlo en perspectiva: Londres en el año 500 e.c. tenía quizás 10.000 habitantes.",
       "tts": {
-        "text": "Para ponerlo en perspectiva: Londres en el año quinientos de la era común tenía quizás diez cero habitantes.",
+        "text": "Para ponerlo en perspectiva: Londres en el año quinientos de la era común tenía quizás diez mil habitantes.",
         "pause_after_ms": 500
       }
     },
