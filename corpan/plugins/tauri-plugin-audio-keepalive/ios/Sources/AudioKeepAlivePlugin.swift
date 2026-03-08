@@ -15,7 +15,7 @@ class AudioKeepAlivePlugin: Plugin {
     private var playerNode: AVAudioPlayerNode?
     private var isActive = false
     private let useSilentLoop = false
-    private let mirrorCommandsToWindowBridge = false
+    private let mirrorCommandsToWindowBridge = true
     private let enableExtendedTransportControls = false
 
     // Remote command targets (stored for removal)
@@ -199,6 +199,7 @@ class AudioKeepAlivePlugin: Plugin {
         center.playCommand.isEnabled = true
         playTarget = center.playCommand.addTarget { [weak self] _ in
             guard let self = self else { return .commandFailed }
+            print("[AUDIO_KEEPALIVE] remote play command received")
             self.currentlyPlaying = true
             var info = MPNowPlayingInfoCenter.default().nowPlayingInfo ?? [String: Any]()
             info[MPNowPlayingInfoPropertyPlaybackRate] = 1.0
@@ -213,6 +214,7 @@ class AudioKeepAlivePlugin: Plugin {
         center.pauseCommand.isEnabled = true
         pauseTarget = center.pauseCommand.addTarget { [weak self] _ in
             guard let self = self else { return .commandFailed }
+            print("[AUDIO_KEEPALIVE] remote pause command received")
             self.currentlyPlaying = false
             var info = MPNowPlayingInfoCenter.default().nowPlayingInfo ?? [String: Any]()
             info[MPNowPlayingInfoPropertyPlaybackRate] = 0.0
@@ -298,7 +300,12 @@ class AudioKeepAlivePlugin: Plugin {
             print("[AUDIO_KEEPALIVE] dispatchCommandToJS(\(command)) skipped: no webView")
             return
         }
-        let script = "window.__stargateCmd && window.__stargateCmd('\(command)')"
+        let script = """
+        if (window.__stargateNativeCmd) window.__stargateNativeCmd('\(command)');
+        if (window.__corpanNativeCmd) window.__corpanNativeCmd('\(command)');
+        if (window.__stargateCmd) window.__stargateCmd('\(command)');
+        if (window.__earthgateCmd) window.__earthgateCmd('\(command)');
+        """
         print("[AUDIO_KEEPALIVE] dispatchCommandToJS(\(command)) evaluating")
         DispatchQueue.main.async {
             webView.evaluateJavaScript(script) { _, error in
@@ -387,6 +394,10 @@ class AudioKeepAlivePlugin: Plugin {
         }
         print("[AUDIO_KEEPALIVE] startAudioKeepalive: before setupRemoteCommands")
         setupRemoteCommands()
+        DispatchQueue.main.async {
+            UIApplication.shared.beginReceivingRemoteControlEvents()
+            print("[AUDIO_KEEPALIVE] startAudioKeepalive: beginReceivingRemoteControlEvents")
+        }
 
         updateNowPlayingInfo(
             title: args.title,
@@ -403,6 +414,10 @@ class AudioKeepAlivePlugin: Plugin {
     @objc func stopAudioKeepalive(_ invoke: Invoke) throws {
         teardownRemoteCommands()
         stopSilentLoop()
+        DispatchQueue.main.async {
+            UIApplication.shared.endReceivingRemoteControlEvents()
+            print("[AUDIO_KEEPALIVE] stopAudioKeepalive: endReceivingRemoteControlEvents")
+        }
 
         MPNowPlayingInfoCenter.default().nowPlayingInfo = nil
 
