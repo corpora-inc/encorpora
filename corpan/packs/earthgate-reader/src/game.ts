@@ -84,6 +84,9 @@ export function createEarthgateReader(
   let lastRemotePlayPauseCmd: EarthgateRemoteCommand | null = null
   let lastRemotePlayPauseAt = 0
   const REMOTE_PLAY_PAUSE_DEDUPE_MS = 250
+  let pendingEngineState: MediaSessionPlaybackState | null = null
+  let pendingEngineStateSince = 0
+  const EXTERNAL_STATE_DEBOUNCE_MS = 900
 
   // --- Background recovery timing ---
   let backgroundedAt = 0
@@ -625,6 +628,7 @@ export function createEarthgateReader(
           if (!audioEngine) return
 
           if (isPlaying) {
+            audioEngine.ensureSourceIfPlaying("visibility:recover")
             if (wasBackgroundedAt > 0) {
               const wallElapsed = Date.now() - wasBackgroundedAt
               const expectedMs = backgroundedAudioMs + wallElapsed
@@ -900,22 +904,49 @@ export function createEarthgateReader(
     if (disposed) return
     rafId = requestAnimationFrame(renderLoop)
 
-    // Reconcile play state with engine
+    // Reconcile play state with engine (debounced to avoid transient mismatches)
     if (audioEngine) {
+      const now = performance.now()
       const enginePlaying = audioEngine.isPlaying()
       if (enginePlaying !== isPlaying) {
-        isPlaying = enginePlaying
-        transport.setPlaying(isPlaying)
-        syncMediaSessionPlaybackState(isPlaying ? "playing" : "paused")
-        if (isPlaying) {
-          void requestWakeLock()
-        } else {
-          releaseWakeLock()
-          stopBackgroundTimers()
-          if (document.hidden) backgroundedAt = 0
+        const nextState: MediaSessionPlaybackState = enginePlaying ? "playing" : "paused"
+        if (pendingEngineState !== nextState) {
+          pendingEngineState = nextState
+          pendingEngineStateSince = now
         }
-        syncNativePlaybackState(isPlaying)
-        syncNativeNowPlaying()
+        if (now - pendingEngineStateSince >= EXTERNAL_STATE_DEBOUNCE_MS) {
+          pendingEngineState = null
+
+          if (!enginePlaying && desiredPlaying) {
+            const ctxState = audioEngine.getContextState()
+            if (ctxState === "suspended") {
+              // Native/OS pause can suspend context without delivering JS
+              // action handlers. Treat it as authoritative pause.
+              if (!playInFlight) {
+                doPause()
+              }
+            } else {
+              // Running context + no source is a recoverable seam hole.
+              audioEngine.ensureSourceIfPlaying("reconcile:hold-desired-playing")
+            }
+          } else {
+            console.log(`[ER:sync] reconciled engine/app mismatch -> engine=${enginePlaying} app=${isPlaying}`)
+            isPlaying = enginePlaying
+            transport.setPlaying(isPlaying)
+            syncMediaSessionPlaybackState(isPlaying ? "playing" : "paused")
+            if (isPlaying) {
+              void requestWakeLock()
+            } else {
+              releaseWakeLock()
+              stopBackgroundTimers()
+              if (document.hidden) backgroundedAt = 0
+            }
+            syncNativePlaybackState(isPlaying)
+            syncNativeNowPlaying()
+          }
+        }
+      } else {
+        pendingEngineState = null
       }
     }
 
