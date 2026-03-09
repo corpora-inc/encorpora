@@ -172,3 +172,138 @@ resource "aws_apigatewayv2_api_mapping" "verify" {
   domain_name = aws_apigatewayv2_domain_name.verify[0].domain_name
   stage       = aws_apigatewayv2_stage.verify.name
 }
+
+# ---------------------------------------------------------------------------
+# CloudFront CDN for narration artifacts
+# ---------------------------------------------------------------------------
+
+resource "aws_cloudfront_origin_access_control" "packs" {
+  count                             = var.enable_cdn ? 1 : 0
+  name                              = "${var.project_name}-packs-oac"
+  origin_access_control_origin_type = "s3"
+  signing_behavior                  = "always"
+  signing_protocol                  = "sigv4"
+}
+
+resource "aws_acm_certificate" "cdn" {
+  count             = var.enable_cdn && var.cdn_domain_name != "" ? 1 : 0
+  provider          = aws.us_east_1
+  domain_name       = var.cdn_domain_name
+  validation_method = "DNS"
+  lifecycle {
+    create_before_destroy = true
+  }
+}
+
+resource "aws_cloudfront_distribution" "packs" {
+  count   = var.enable_cdn ? 1 : 0
+  enabled = true
+  comment = "${var.project_name} narration artifact CDN"
+
+  default_root_object = "catalog.json"
+  price_class         = "PriceClass_100"
+
+  aliases = var.cdn_domain_name != "" ? [var.cdn_domain_name] : []
+
+  origin {
+    domain_name              = aws_s3_bucket.packs.bucket_regional_domain_name
+    origin_id                = "s3-packs"
+    origin_path              = "/artifacts"
+    origin_access_control_id = aws_cloudfront_origin_access_control.packs[0].id
+  }
+
+  default_cache_behavior {
+    allowed_methods        = ["GET", "HEAD"]
+    cached_methods         = ["GET", "HEAD"]
+    target_origin_id       = "s3-packs"
+    viewer_protocol_policy = "redirect-to-https"
+    compress               = true
+
+    cache_policy_id = "658327ea-f89d-4fab-a63d-7e88639e58f6" # CachingOptimized
+  }
+
+  dynamic "viewer_certificate" {
+    for_each = var.cdn_domain_name != "" ? [1] : []
+    content {
+      acm_certificate_arn      = aws_acm_certificate.cdn[0].arn
+      ssl_support_method       = "sni-only"
+      minimum_protocol_version = "TLSv1.2_2021"
+    }
+  }
+
+  dynamic "viewer_certificate" {
+    for_each = var.cdn_domain_name == "" ? [1] : []
+    content {
+      cloudfront_default_certificate = true
+    }
+  }
+
+  restrictions {
+    geo_restriction {
+      restriction_type = "none"
+    }
+  }
+}
+
+resource "aws_s3_bucket_policy" "cloudfront_access" {
+  count  = var.enable_cdn ? 1 : 0
+  bucket = aws_s3_bucket.packs.id
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Sid       = "AllowCloudFrontOAC"
+        Effect    = "Allow"
+        Principal = { Service = "cloudfront.amazonaws.com" }
+        Action    = "s3:GetObject"
+        Resource  = "${aws_s3_bucket.packs.arn}/artifacts/*"
+        Condition = {
+          StringEquals = {
+            "AWS:SourceArn" = aws_cloudfront_distribution.packs[0].arn
+          }
+        }
+      }
+    ]
+  })
+}
+
+# ---------------------------------------------------------------------------
+# IAM user for DGX publisher (uploads from Spark to S3)
+# ---------------------------------------------------------------------------
+
+resource "aws_iam_user" "dgx_publisher" {
+  name = "${var.project_name}-dgx-publisher"
+}
+
+resource "aws_iam_user_policy" "dgx_publisher" {
+  name = "${var.project_name}-dgx-publisher-policy"
+  user = aws_iam_user.dgx_publisher.name
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Effect = "Allow"
+        Action = ["s3:PutObject", "s3:GetObject", "s3:DeleteObject"]
+        Resource = [
+          "${aws_s3_bucket.packs.arn}/staging/*",
+          "${aws_s3_bucket.packs.arn}/artifacts/*"
+        ]
+      },
+      {
+        Effect   = "Allow"
+        Action   = ["s3:ListBucket"]
+        Resource = aws_s3_bucket.packs.arn
+        Condition = {
+          StringLike = {
+            "s3:prefix" = ["staging/*", "artifacts/*"]
+          }
+        }
+      },
+      {
+        Effect   = "Allow"
+        Action   = ["cloudfront:CreateInvalidation"]
+        Resource = var.enable_cdn ? aws_cloudfront_distribution.packs[0].arn : "*"
+      }
+    ]
+  })
+}

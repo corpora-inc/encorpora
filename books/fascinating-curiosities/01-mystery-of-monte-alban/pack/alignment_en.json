@@ -71020,108 +71020,108 @@
     },
     {
       "word": "ball",
-      "start_ms": 100,
+      "start_ms": 160,
       "end_ms": 360
     },
     {
       "word": "court",
       "start_ms": 360,
-      "end_ms": 660
+      "end_ms": 640
     },
     {
       "word": "at",
-      "start_ms": 660,
-      "end_ms": 940
+      "start_ms": 800,
+      "end_ms": 900
     },
     {
       "word": "Monte",
-      "start_ms": 980,
-      "end_ms": 1300
+      "start_ms": 900,
+      "end_ms": 1220
     },
     {
-      "word": "Alban",
-      "start_ms": 1300,
-      "end_ms": 1680
+      "word": "Alb\u00e1n",
+      "start_ms": 1220,
+      "end_ms": 1820
     },
     {
       "word": "is",
-      "start_ms": 1720,
-      "end_ms": 2440
+      "start_ms": 1820,
+      "end_ms": 2080
     },
     {
       "word": "relatively",
-      "start_ms": 2440,
-      "end_ms": 2920
+      "start_ms": 2080,
+      "end_ms": 2560
     },
     {
       "word": "modest",
-      "start_ms": 2920,
-      "end_ms": 3420
+      "start_ms": 2560,
+      "end_ms": 3080
     },
     {
       "word": "compared",
-      "start_ms": 3420,
-      "end_ms": 3940
+      "start_ms": 3080,
+      "end_ms": 3600
     },
     {
       "word": "to",
-      "start_ms": 3940,
-      "end_ms": 4140
+      "start_ms": 3600,
+      "end_ms": 3840
     },
     {
       "word": "the",
-      "start_ms": 4140,
-      "end_ms": 4240
+      "start_ms": 3840,
+      "end_ms": 3960
     },
     {
       "word": "enormous",
-      "start_ms": 4240,
-      "end_ms": 4580
+      "start_ms": 3960,
+      "end_ms": 4280
     },
     {
       "word": "courts",
-      "start_ms": 4580,
-      "end_ms": 5100
+      "start_ms": 4280,
+      "end_ms": 4780
     },
     {
       "word": "found",
-      "start_ms": 5100,
-      "end_ms": 5500
+      "start_ms": 4780,
+      "end_ms": 5120
     },
     {
       "word": "at",
-      "start_ms": 5500,
-      "end_ms": 5720
+      "start_ms": 5120,
+      "end_ms": 5300
     },
     {
       "word": "other",
-      "start_ms": 5720,
-      "end_ms": 5960
+      "start_ms": 5300,
+      "end_ms": 5520
     },
     {
       "word": "sites",
-      "start_ms": 5960,
-      "end_ms": 6300
+      "start_ms": 5520,
+      "end_ms": 5860
     },
     {
       "word": "in",
-      "start_ms": 6300,
-      "end_ms": 6700
+      "start_ms": 5860,
+      "end_ms": 6100
     },
     {
       "word": "the",
-      "start_ms": 6700,
-      "end_ms": 6800
+      "start_ms": 6100,
+      "end_ms": 6180
     },
     {
       "word": "Maya",
-      "start_ms": 6800,
-      "end_ms": 7060
+      "start_ms": 6180,
+      "end_ms": 6440
     },
     {
       "word": "lowlands.",
-      "start_ms": 7060,
-      "end_ms": 7600
+      "start_ms": 6440,
+      "end_ms": 7020
     }
   ],
   "ch14-866": [
