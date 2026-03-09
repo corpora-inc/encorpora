@@ -389,51 +389,6 @@
     ],
     "word_count": 12
   },
-  "ch00-008": {
-    "words": [
-      {
-        "word": "Su",
-        "start_ms": 140,
-        "end_ms": 240
-      },
-      {
-        "word": "ciudad",
-        "start_ms": 240,
-        "end_ms": 520
-      },
-      {
-        "word": "prosper\u00f3",
-        "start_ms": 520,
-        "end_ms": 1140
-      },
-      {
-        "word": "durante",
-        "start_ms": 1140,
-        "end_ms": 1440
-      },
-      {
-        "word": "m\u00e1s",
-        "start_ms": 1440,
-        "end_ms": 1660
-      },
-      {
-        "word": "de",
-        "start_ms": 1660,
-        "end_ms": 1860
-      },
-      {
-        "word": "mil",
-        "start_ms": 1860,
-        "end_ms": 2000
-      },
-      {
-        "word": "a\u00f1os.",
-        "start_ms": 2000,
-        "end_ms": 2180
-      }
-    ],
-    "word_count": 8
-  },
   "ch00-009": {
     "words": [
       {
@@ -598,26 +553,6 @@
       }
     ],
     "word_count": 20
-  },
-  "ch00-011": {
-    "words": [
-      {
-        "word": "La",
-        "start_ms": 100,
-        "end_ms": 180
-      },
-      {
-        "word": "lengua",
-        "start_ms": 180,
-        "end_ms": 520
-      },
-      {
-        "word": "sobrevivi\u00f3.",
-        "start_ms": 520,
-        "end_ms": 1220
-      }
-    ],
-    "word_count": 3
   },
   "ch00-012": {
     "words": [
@@ -1469,36 +1404,6 @@
     ],
     "word_count": 5
   },
-  "ch01-026": {
-    "words": [
-      {
-        "word": "Ni",
-        "start_ms": 220,
-        "end_ms": 240
-      },
-      {
-        "word": "manantial.",
-        "start_ms": 240,
-        "end_ms": 860
-      }
-    ],
-    "word_count": 2
-  },
-  "ch01-027": {
-    "words": [
-      {
-        "word": "Ni",
-        "start_ms": 240,
-        "end_ms": 300
-      },
-      {
-        "word": "lago.",
-        "start_ms": 300,
-        "end_ms": 740
-      }
-    ],
-    "word_count": 2
-  },
   "ch01-028": {
     "words": [
       {
@@ -1929,46 +1834,6 @@
     ],
     "word_count": 6
   },
-  "ch01-034": {
-    "words": [
-      {
-        "word": "Sin",
-        "start_ms": 120,
-        "end_ms": 180
-      },
-      {
-        "word": "ruedas.",
-        "start_ms": 180,
-        "end_ms": 660
-      }
-    ],
-    "word_count": 2
-  },
-  "ch01-035": {
-    "words": [
-      {
-        "word": "Sin",
-        "start_ms": 20,
-        "end_ms": 180
-      },
-      {
-        "word": "animales",
-        "start_ms": 180,
-        "end_ms": 520
-      },
-      {
-        "word": "de",
-        "start_ms": 520,
-        "end_ms": 780
-      },
-      {
-        "word": "carga.",
-        "start_ms": 780,
-        "end_ms": 1140
-      }
-    ],
-    "word_count": 4
-  },
   "ch01-036": {
     "words": [
       {
@@ -2233,36 +2098,6 @@
       }
     ],
     "word_count": 7
-  },
-  "ch01-042": {
-    "words": [
-      {
-        "word": "La",
-        "start_ms": 80,
-        "end_ms": 180
-      },
-      {
-        "word": "distribuci\u00f3n",
-        "start_ms": 180,
-        "end_ms": 760
-      },
-      {
-        "word": "no",
-        "start_ms": 760,
-        "end_ms": 1040
-      },
-      {
-        "word": "era",
-        "start_ms": 1040,
-        "end_ms": 1280
-      },
-      {
-        "word": "arbitraria.",
-        "start_ms": 1280,
-        "end_ms": 1840
-      }
-    ],
-    "word_count": 5
   },
   "ch01-043": {
     "words": [
@@ -3624,26 +3459,6 @@
     ],
     "word_count": 29
   },
-  "ch01-056": {
-    "words": [
-      {
-        "word": "Nadie",
-        "start_ms": 200,
-        "end_ms": 620
-      },
-      {
-        "word": "est\u00e1",
-        "start_ms": 620,
-        "end_ms": 920
-      },
-      {
-        "word": "seguro.",
-        "start_ms": 920,
-        "end_ms": 1360
-      }
-    ],
-    "word_count": 3
-  },
   "ch01-057": {
     "words": [
       {
@@ -4133,36 +3948,6 @@
       }
     ],
     "word_count": 8
-  },
-  "ch01-062": {
-    "words": [
-      {
-        "word": "Y",
-        "start_ms": 80,
-        "end_ms": 180
-      },
-      {
-        "word": "el",
-        "start_ms": 180,
-        "end_ms": 280
-      },
-      {
-        "word": "lugar",
-        "start_ms": 280,
-        "end_ms": 480
-      },
-      {
-        "word": "es",
-        "start_ms": 480,
-        "end_ms": 900
-      },
-      {
-        "word": "extraordinario.",
-        "start_ms": 900,
-        "end_ms": 1400
-      }
-    ],
-    "word_count": 5
   },
   "ch01-063": {
     "words": [
@@ -5009,31 +4794,6 @@
     ],
     "word_count": 11
   },
-  "ch01-073": {
-    "words": [
-      {
-        "word": "Algo",
-        "start_ms": 100,
-        "end_ms": 380
-      },
-      {
-        "word": "los",
-        "start_ms": 380,
-        "end_ms": 560
-      },
-      {
-        "word": "hizo",
-        "start_ms": 560,
-        "end_ms": 780
-      },
-      {
-        "word": "ascender.",
-        "start_ms": 780,
-        "end_ms": 1340
-      }
-    ],
-    "word_count": 4
-  },
   "ch02-075": {
     "words": [
       {
@@ -5604,31 +5364,6 @@
     ],
     "word_count": 15
   },
-  "ch02-079": {
-    "words": [
-      {
-        "word": "El",
-        "start_ms": 0,
-        "end_ms": 140
-      },
-      {
-        "word": "suelo",
-        "start_ms": 280,
-        "end_ms": 560
-      },
-      {
-        "word": "es",
-        "start_ms": 560,
-        "end_ms": 960
-      },
-      {
-        "word": "bueno.",
-        "start_ms": 960,
-        "end_ms": 1360
-      }
-    ],
-    "word_count": 4
-  },
   "ch02-080": {
     "words": [
       {
@@ -5788,36 +5523,6 @@
       }
     ],
     "word_count": 17
-  },
-  "ch02-082": {
-    "words": [
-      {
-        "word": "Y",
-        "start_ms": 0,
-        "end_ms": 60
-      },
-      {
-        "word": "la",
-        "start_ms": 60,
-        "end_ms": 160
-      },
-      {
-        "word": "gente",
-        "start_ms": 160,
-        "end_ms": 360
-      },
-      {
-        "word": "vivi\u00f3",
-        "start_ms": 360,
-        "end_ms": 800
-      },
-      {
-        "word": "aqu\u00ed.",
-        "start_ms": 800,
-        "end_ms": 920
-      }
-    ],
-    "word_count": 5
   },
   "ch02-083": {
     "words": [
@@ -6734,21 +6439,6 @@
     ],
     "word_count": 22
   },
-  "ch02-092": {
-    "words": [
-      {
-        "word": "Y",
-        "start_ms": 60,
-        "end_ms": 180
-      },
-      {
-        "word": "comerciaban.",
-        "start_ms": 180,
-        "end_ms": 940
-      }
-    ],
-    "word_count": 2
-  },
   "ch02-093": {
     "words": [
       {
@@ -7234,36 +6924,6 @@
     ],
     "word_count": 11
   },
-  "ch02-096": {
-    "words": [
-      {
-        "word": "Estos",
-        "start_ms": 120,
-        "end_ms": 400
-      },
-      {
-        "word": "no",
-        "start_ms": 400,
-        "end_ms": 520
-      },
-      {
-        "word": "eran",
-        "start_ms": 520,
-        "end_ms": 660
-      },
-      {
-        "word": "hallazgos",
-        "start_ms": 660,
-        "end_ms": 1100
-      },
-      {
-        "word": "casuales.",
-        "start_ms": 1100,
-        "end_ms": 1560
-      }
-    ],
-    "word_count": 5
-  },
   "ch02-097": {
     "words": [
       {
@@ -7693,36 +7353,6 @@
       }
     ],
     "word_count": 26
-  },
-  "ch02-102": {
-    "words": [
-      {
-        "word": "Se",
-        "start_ms": 20,
-        "end_ms": 180
-      },
-      {
-        "word": "estaba",
-        "start_ms": 260,
-        "end_ms": 380
-      },
-      {
-        "word": "formando",
-        "start_ms": 380,
-        "end_ms": 860
-      },
-      {
-        "word": "una",
-        "start_ms": 860,
-        "end_ms": 1000
-      },
-      {
-        "word": "jerarqu\u00eda.",
-        "start_ms": 1000,
-        "end_ms": 1320
-      }
-    ],
-    "word_count": 5
   },
   "ch02-103": {
     "words": [
@@ -8313,31 +7943,6 @@
       }
     ],
     "word_count": 29
-  },
-  "ch02-109": {
-    "words": [
-      {
-        "word": "Su",
-        "start_ms": 0,
-        "end_ms": 120
-      },
-      {
-        "word": "cuerpo",
-        "start_ms": 220,
-        "end_ms": 400
-      },
-      {
-        "word": "est\u00e1",
-        "start_ms": 400,
-        "end_ms": 660
-      },
-      {
-        "word": "laxo.",
-        "start_ms": 660,
-        "end_ms": 1200
-      }
-    ],
-    "word_count": 4
   },
   "ch02-110": {
     "words": [
@@ -10503,66 +10108,6 @@
       }
     ],
     "word_count": 18
-  },
-  "ch02-129": {
-    "words": [
-      {
-        "word": "\u00bfQu\u00e9",
-        "start_ms": 80,
-        "end_ms": 180
-      },
-      {
-        "word": "pudo",
-        "start_ms": 180,
-        "end_ms": 500
-      },
-      {
-        "word": "haberlos",
-        "start_ms": 500,
-        "end_ms": 820
-      },
-      {
-        "word": "motivado?",
-        "start_ms": 820,
-        "end_ms": 1320
-      }
-    ],
-    "word_count": 4
-  },
-  "ch02-130": {
-    "words": [
-      {
-        "word": "El",
-        "start_ms": 100,
-        "end_ms": 200
-      },
-      {
-        "word": "traslado",
-        "start_ms": 200,
-        "end_ms": 680
-      },
-      {
-        "word": "no",
-        "start_ms": 680,
-        "end_ms": 800
-      },
-      {
-        "word": "tiene",
-        "start_ms": 800,
-        "end_ms": 980
-      },
-      {
-        "word": "sentido",
-        "start_ms": 980,
-        "end_ms": 1400
-      },
-      {
-        "word": "pr\u00e1ctico.",
-        "start_ms": 1400,
-        "end_ms": 1520
-      }
-    ],
-    "word_count": 6
   },
   "ch02-131": {
     "words": [
@@ -12899,41 +12444,6 @@
     ],
     "word_count": 26
   },
-  "ch03-159": {
-    "words": [
-      {
-        "word": "No",
-        "start_ms": 180,
-        "end_ms": 300
-      },
-      {
-        "word": "todos",
-        "start_ms": 300,
-        "end_ms": 700
-      },
-      {
-        "word": "vinieron",
-        "start_ms": 700,
-        "end_ms": 1220
-      },
-      {
-        "word": "por",
-        "start_ms": 1220,
-        "end_ms": 1420
-      },
-      {
-        "word": "voluntad",
-        "start_ms": 1420,
-        "end_ms": 1900
-      },
-      {
-        "word": "propia.",
-        "start_ms": 1900,
-        "end_ms": 2200
-      }
-    ],
-    "word_count": 6
-  },
   "ch03-160": {
     "words": [
       {
@@ -13228,16 +12738,6 @@
       }
     ],
     "word_count": 24
-  },
-  "ch03-162": {
-    "words": [
-      {
-        "word": "Creci\u00f3.",
-        "start_ms": 80,
-        "end_ms": 700
-      }
-    ],
-    "word_count": 1
   },
   "ch03-163": {
     "words": [
@@ -15380,36 +14880,6 @@
         "word": "pol\u00edtico.",
         "start_ms": 1580,
         "end_ms": 1960
-      }
-    ],
-    "word_count": 5
-  },
-  "ch03-192": {
-    "words": [
-      {
-        "word": "Estos",
-        "start_ms": 100,
-        "end_ms": 540
-      },
-      {
-        "word": "no",
-        "start_ms": 540,
-        "end_ms": 780
-      },
-      {
-        "word": "son",
-        "start_ms": 780,
-        "end_ms": 1060
-      },
-      {
-        "word": "mutuamente",
-        "start_ms": 1060,
-        "end_ms": 1500
-      },
-      {
-        "word": "excluyentes.",
-        "start_ms": 1500,
-        "end_ms": 2220
       }
     ],
     "word_count": 5
@@ -18659,56 +18129,6 @@
     ],
     "word_count": 14
   },
-  "ch04-229": {
-    "words": [
-      {
-        "word": "Los",
-        "start_ms": 80,
-        "end_ms": 180
-      },
-      {
-        "word": "habitantes",
-        "start_ms": 180,
-        "end_ms": 620
-      },
-      {
-        "word": "de",
-        "start_ms": 620,
-        "end_ms": 840
-      },
-      {
-        "word": "Monte",
-        "start_ms": 840,
-        "end_ms": 1020
-      },
-      {
-        "word": "Alb\u00e1n",
-        "start_ms": 1020,
-        "end_ms": 1480
-      },
-      {
-        "word": "eran",
-        "start_ms": 1480,
-        "end_ms": 1780
-      },
-      {
-        "word": "ante",
-        "start_ms": 1780,
-        "end_ms": 2100
-      },
-      {
-        "word": "todo",
-        "start_ms": 2200,
-        "end_ms": 2340
-      },
-      {
-        "word": "agricultores.",
-        "start_ms": 2340,
-        "end_ms": 2660
-      }
-    ],
-    "word_count": 9
-  },
   "ch04-230": {
     "words": [
       {
@@ -20644,21 +20064,6 @@
     ],
     "word_count": 14
   },
-  "ch04-248": {
-    "words": [
-      {
-        "word": "Tambi\u00e9n",
-        "start_ms": 380,
-        "end_ms": 400
-      },
-      {
-        "word": "comerciaban.",
-        "start_ms": 400,
-        "end_ms": 1180
-      }
-    ],
-    "word_count": 2
-  },
   "ch04-249": {
     "words": [
       {
@@ -21329,86 +20734,6 @@
     ],
     "word_count": 8
   },
-  "ch04-256": {
-    "words": [
-      {
-        "word": "Era",
-        "start_ms": 120,
-        "end_ms": 280
-      },
-      {
-        "word": "un",
-        "start_ms": 280,
-        "end_ms": 420
-      },
-      {
-        "word": "nodo",
-        "start_ms": 420,
-        "end_ms": 880
-      },
-      {
-        "word": "en",
-        "start_ms": 880,
-        "end_ms": 1040
-      },
-      {
-        "word": "una",
-        "start_ms": 1040,
-        "end_ms": 1200
-      },
-      {
-        "word": "red",
-        "start_ms": 1200,
-        "end_ms": 1440
-      },
-      {
-        "word": "continental.",
-        "start_ms": 1440,
-        "end_ms": 1840
-      }
-    ],
-    "word_count": 7
-  },
-  "ch04-257": {
-    "words": [
-      {
-        "word": "Tambi\u00e9n",
-        "start_ms": 120,
-        "end_ms": 360
-      },
-      {
-        "word": "jugaban",
-        "start_ms": 360,
-        "end_ms": 840
-      },
-      {
-        "word": "al",
-        "start_ms": 840,
-        "end_ms": 1000
-      },
-      {
-        "word": "juego",
-        "start_ms": 1000,
-        "end_ms": 1180
-      },
-      {
-        "word": "de",
-        "start_ms": 1180,
-        "end_ms": 1380
-      },
-      {
-        "word": "pelota",
-        "start_ms": 1380,
-        "end_ms": 1780
-      },
-      {
-        "word": "mesoamericano.",
-        "start_ms": 1780,
-        "end_ms": 2380
-      }
-    ],
-    "word_count": 7
-  },
   "ch04-258": {
     "words": [
       {
@@ -21944,46 +21269,6 @@
     ],
     "word_count": 12
   },
-  "ch04-262": {
-    "words": [
-      {
-        "word": "Volveremos",
-        "start_ms": 120,
-        "end_ms": 580
-      },
-      {
-        "word": "al",
-        "start_ms": 580,
-        "end_ms": 740
-      },
-      {
-        "word": "juego",
-        "start_ms": 740,
-        "end_ms": 920
-      },
-      {
-        "word": "de",
-        "start_ms": 920,
-        "end_ms": 1140
-      },
-      {
-        "word": "pelota",
-        "start_ms": 1140,
-        "end_ms": 1500
-      },
-      {
-        "word": "m\u00e1s",
-        "start_ms": 1500,
-        "end_ms": 1720
-      },
-      {
-        "word": "adelante.",
-        "start_ms": 1720,
-        "end_ms": 2260
-      }
-    ],
-    "word_count": 7
-  },
   "ch04-263": {
     "words": [
       {
@@ -22249,66 +21534,6 @@
     ],
     "word_count": 38
   },
-  "ch04-265": {
-    "words": [
-      {
-        "word": "Es",
-        "start_ms": 120,
-        "end_ms": 240
-      },
-      {
-        "word": "la",
-        "start_ms": 240,
-        "end_ms": 380
-      },
-      {
-        "word": "escritura.",
-        "start_ms": 380,
-        "end_ms": 730
-      }
-    ],
-    "word_count": 3
-  },
-  "ch04-266": {
-    "words": [
-      {
-        "word": "Dejaron",
-        "start_ms": 100,
-        "end_ms": 420
-      },
-      {
-        "word": "cosas",
-        "start_ms": 420,
-        "end_ms": 780
-      },
-      {
-        "word": "por",
-        "start_ms": 780,
-        "end_ms": 1060
-      },
-      {
-        "word": "escrito.",
-        "start_ms": 1060,
-        "end_ms": 1480
-      }
-    ],
-    "word_count": 4
-  },
-  "ch04-267": {
-    "words": [
-      {
-        "word": "En",
-        "start_ms": 80,
-        "end_ms": 260
-      },
-      {
-        "word": "piedra.",
-        "start_ms": 260,
-        "end_ms": 760
-      }
-    ],
-    "word_count": 2
-  },
   "ch04-268": {
     "words": [
       {
@@ -22518,31 +21743,6 @@
       }
     ],
     "word_count": 12
-  },
-  "ch04-271": {
-    "words": [
-      {
-        "word": "Y",
-        "start_ms": 0,
-        "end_ms": 80
-      },
-      {
-        "word": "luego",
-        "start_ms": 80,
-        "end_ms": 220
-      },
-      {
-        "word": "lo",
-        "start_ms": 220,
-        "end_ms": 420
-      },
-      {
-        "word": "perdieron.",
-        "start_ms": 420,
-        "end_ms": 920
-      }
-    ],
-    "word_count": 4
   },
   "ch04-272": {
     "words": [
@@ -23369,31 +22569,6 @@
     ],
     "word_count": 12
   },
-  "ch04-284": {
-    "words": [
-      {
-        "word": "El",
-        "start_ms": 100,
-        "end_ms": 220
-      },
-      {
-        "word": "lugar",
-        "start_ms": 220,
-        "end_ms": 440
-      },
-      {
-        "word": "a\u00fan",
-        "start_ms": 440,
-        "end_ms": 660
-      },
-      {
-        "word": "funciona.",
-        "start_ms": 660,
-        "end_ms": 1180
-      }
-    ],
-    "word_count": 4
-  },
   "ch04-285": {
     "words": [
       {
@@ -23869,26 +23044,6 @@
     ],
     "word_count": 25
   },
-  "ch05-292": {
-    "words": [
-      {
-        "word": "M\u00e1s",
-        "start_ms": 120,
-        "end_ms": 340
-      },
-      {
-        "word": "de",
-        "start_ms": 340,
-        "end_ms": 480
-      },
-      {
-        "word": "trescientas.",
-        "start_ms": 480,
-        "end_ms": 1030
-      }
-    ],
-    "word_count": 3
-  },
   "ch05-293": {
     "words": [
       {
@@ -24238,56 +23393,6 @@
       }
     ],
     "word_count": 19
-  },
-  "ch05-299": {
-    "words": [
-      {
-        "word": "Los",
-        "start_ms": 100,
-        "end_ms": 240
-      },
-      {
-        "word": "llamaron",
-        "start_ms": 240,
-        "end_ms": 780
-      },
-      {
-        "word": "\"Los",
-        "start_ms": 780,
-        "end_ms": 1260
-      },
-      {
-        "word": "Danzantes\".",
-        "start_ms": 1260,
-        "end_ms": 1640
-      }
-    ],
-    "word_count": 4
-  },
-  "ch05-300": {
-    "words": [
-      {
-        "word": "El",
-        "start_ms": 120,
-        "end_ms": 240
-      },
-      {
-        "word": "nombre",
-        "start_ms": 240,
-        "end_ms": 540
-      },
-      {
-        "word": "se",
-        "start_ms": 540,
-        "end_ms": 760
-      },
-      {
-        "word": "qued\u00f3.",
-        "start_ms": 760,
-        "end_ms": 1180
-      }
-    ],
-    "word_count": 4
   },
   "ch05-301": {
     "words": [
@@ -24764,46 +23869,6 @@
     ],
     "word_count": 41
   },
-  "ch05-307": {
-    "words": [
-      {
-        "word": "Esto",
-        "start_ms": 80,
-        "end_ms": 380
-      },
-      {
-        "word": "no",
-        "start_ms": 380,
-        "end_ms": 500
-      },
-      {
-        "word": "estaba",
-        "start_ms": 500,
-        "end_ms": 780
-      },
-      {
-        "word": "oculto.",
-        "start_ms": 780,
-        "end_ms": 1160
-      }
-    ],
-    "word_count": 4
-  },
-  "ch05-308": {
-    "words": [
-      {
-        "word": "Era",
-        "start_ms": 80,
-        "end_ms": 300
-      },
-      {
-        "word": "arquitectura.",
-        "start_ms": 300,
-        "end_ms": 1100
-      }
-    ],
-    "word_count": 2
-  },
   "ch05-309": {
     "words": [
       {
@@ -24973,31 +24038,6 @@
       }
     ],
     "word_count": 12
-  },
-  "ch05-311": {
-    "words": [
-      {
-        "word": "La",
-        "start_ms": 100,
-        "end_ms": 200
-      },
-      {
-        "word": "mayor\u00eda",
-        "start_ms": 200,
-        "end_ms": 480
-      },
-      {
-        "word": "son",
-        "start_ms": 480,
-        "end_ms": 860
-      },
-      {
-        "word": "hombres.",
-        "start_ms": 860,
-        "end_ms": 1240
-      }
-    ],
-    "word_count": 4
   },
   "ch05-312": {
     "words": [
@@ -25879,36 +24919,6 @@
     ],
     "word_count": 3
   },
-  "ch05-320": {
-    "words": [
-      {
-        "word": "No",
-        "start_ms": 160,
-        "end_ms": 260
-      },
-      {
-        "word": "eran",
-        "start_ms": 260,
-        "end_ms": 440
-      },
-      {
-        "word": "decoraciones",
-        "start_ms": 440,
-        "end_ms": 1080
-      },
-      {
-        "word": "al",
-        "start_ms": 1080,
-        "end_ms": 1240
-      },
-      {
-        "word": "azar.",
-        "start_ms": 1240,
-        "end_ms": 1500
-      }
-    ],
-    "word_count": 5
-  },
   "ch05-321": {
     "words": [
       {
@@ -26764,46 +25774,6 @@
     ],
     "word_count": 4
   },
-  "ch05-330": {
-    "words": [
-      {
-        "word": "Podemos",
-        "start_ms": 100,
-        "end_ms": 400
-      },
-      {
-        "word": "ver",
-        "start_ms": 400,
-        "end_ms": 620
-      },
-      {
-        "word": "las",
-        "start_ms": 620,
-        "end_ms": 800
-      },
-      {
-        "word": "figuras",
-        "start_ms": 800,
-        "end_ms": 1260
-      },
-      {
-        "word": "y",
-        "start_ms": 1260,
-        "end_ms": 1420
-      },
-      {
-        "word": "los",
-        "start_ms": 1420,
-        "end_ms": 1540
-      },
-      {
-        "word": "glifos.",
-        "start_ms": 1540,
-        "end_ms": 1840
-      }
-    ],
-    "word_count": 7
-  },
   "ch05-331": {
     "words": [
       {
@@ -26903,31 +25873,6 @@
       }
     ],
     "word_count": 19
-  },
-  "ch05-332": {
-    "words": [
-      {
-        "word": "\u00bfPor",
-        "start_ms": 60,
-        "end_ms": 200
-      },
-      {
-        "word": "qu\u00e9",
-        "start_ms": 340,
-        "end_ms": 440
-      },
-      {
-        "word": "har\u00edan",
-        "start_ms": 440,
-        "end_ms": 760
-      },
-      {
-        "word": "eso?",
-        "start_ms": 760,
-        "end_ms": 920
-      }
-    ],
-    "word_count": 4
   },
   "ch05-333": {
     "words": [
@@ -28088,36 +27033,6 @@
       }
     ],
     "word_count": 14
-  },
-  "ch05-344": {
-    "words": [
-      {
-        "word": "Los",
-        "start_ms": 120,
-        "end_ms": 220
-      },
-      {
-        "word": "s\u00edmbolos",
-        "start_ms": 320,
-        "end_ms": 880
-      },
-      {
-        "word": "son",
-        "start_ms": 920,
-        "end_ms": 1040
-      },
-      {
-        "word": "bastante",
-        "start_ms": 1040,
-        "end_ms": 1540
-      },
-      {
-        "word": "claros.",
-        "start_ms": 1540,
-        "end_ms": 1960
-      }
-    ],
-    "word_count": 5
   },
   "ch05-345": {
     "words": [
@@ -31509,26 +30424,6 @@
     ],
     "word_count": 17
   },
-  "ch06-381": {
-    "words": [
-      {
-        "word": "El",
-        "start_ms": 120,
-        "end_ms": 240
-      },
-      {
-        "word": "debate",
-        "start_ms": 240,
-        "end_ms": 500
-      },
-      {
-        "word": "contin\u00faa.",
-        "start_ms": 500,
-        "end_ms": 1150
-      }
-    ],
-    "word_count": 3
-  },
   "ch06-382": {
     "words": [
       {
@@ -32994,41 +31889,6 @@
     ],
     "word_count": 41
   },
-  "ch06-394": {
-    "words": [
-      {
-        "word": "El",
-        "start_ms": 100,
-        "end_ms": 220
-      },
-      {
-        "word": "prop\u00f3sito",
-        "start_ms": 220,
-        "end_ms": 780
-      },
-      {
-        "word": "pol\u00edtico",
-        "start_ms": 780,
-        "end_ms": 1260
-      },
-      {
-        "word": "es",
-        "start_ms": 1260,
-        "end_ms": 1660
-      },
-      {
-        "word": "bastante",
-        "start_ms": 1660,
-        "end_ms": 1980
-      },
-      {
-        "word": "claro.",
-        "start_ms": 1980,
-        "end_ms": 2500
-      }
-    ],
-    "word_count": 6
-  },
   "ch06-395": {
     "words": [
       {
@@ -33338,41 +32198,6 @@
       }
     ],
     "word_count": 10
-  },
-  "ch06-397": {
-    "words": [
-      {
-        "word": "Tu",
-        "start_ms": 60,
-        "end_ms": 160
-      },
-      {
-        "word": "comunidad",
-        "start_ms": 160,
-        "end_ms": 620
-      },
-      {
-        "word": "puede",
-        "start_ms": 620,
-        "end_ms": 1000
-      },
-      {
-        "word": "ser",
-        "start_ms": 1000,
-        "end_ms": 1260
-      },
-      {
-        "word": "la",
-        "start_ms": 1260,
-        "end_ms": 1460
-      },
-      {
-        "word": "siguiente.",
-        "start_ms": 1460,
-        "end_ms": 1820
-      }
-    ],
-    "word_count": 6
   },
   "ch06-398": {
     "words": [
@@ -37964,46 +36789,6 @@
     ],
     "word_count": 22
   },
-  "ch07-450": {
-    "words": [
-      {
-        "word": "Pero",
-        "start_ms": 0,
-        "end_ms": 200
-      },
-      {
-        "word": "no",
-        "start_ms": 200,
-        "end_ms": 360
-      },
-      {
-        "word": "puedes",
-        "start_ms": 360,
-        "end_ms": 700
-      },
-      {
-        "word": "leer",
-        "start_ms": 700,
-        "end_ms": 1000
-      },
-      {
-        "word": "el",
-        "start_ms": 1000,
-        "end_ms": 1200
-      },
-      {
-        "word": "tejido",
-        "start_ms": 1220,
-        "end_ms": 1540
-      },
-      {
-        "word": "conectivo.",
-        "start_ms": 1540,
-        "end_ms": 1840
-      }
-    ],
-    "word_count": 7
-  },
   "ch07-451": {
     "words": [
       {
@@ -40058,21 +38843,6 @@
       }
     ],
     "word_count": 7
-  },
-  "ch07-468": {
-    "words": [
-      {
-        "word": "Son",
-        "start_ms": 100,
-        "end_ms": 300
-      },
-      {
-        "word": "hom\u00f3nimos.",
-        "start_ms": 300,
-        "end_ms": 960
-      }
-    ],
-    "word_count": 2
   },
   "ch07-469": {
     "words": [
@@ -42158,21 +40928,6 @@
       }
     ],
     "word_count": 3
-  },
-  "ch08-489": {
-    "words": [
-      {
-        "word": "Destrozaron",
-        "start_ms": 100,
-        "end_ms": 880
-      },
-      {
-        "word": "\u00eddolos.",
-        "start_ms": 880,
-        "end_ms": 1460
-      }
-    ],
-    "word_count": 2
   },
   "ch08-490": {
     "words": [
@@ -45049,36 +43804,6 @@
     ],
     "word_count": 8
   },
-  "ch08-519": {
-    "words": [
-      {
-        "word": "Una",
-        "start_ms": 100,
-        "end_ms": 260
-      },
-      {
-        "word": "tradici\u00f3n",
-        "start_ms": 260,
-        "end_ms": 760
-      },
-      {
-        "word": "escribal",
-        "start_ms": 760,
-        "end_ms": 1280
-      },
-      {
-        "word": "es",
-        "start_ms": 1280,
-        "end_ms": 1620
-      },
-      {
-        "word": "costosa.",
-        "start_ms": 1620,
-        "end_ms": 2060
-      }
-    ],
-    "word_count": 5
-  },
   "ch08-520": {
     "words": [
       {
@@ -45638,16 +44363,6 @@
       }
     ],
     "word_count": 14
-  },
-  "ch08-526": {
-    "words": [
-      {
-        "word": "Evolucion\u00f3.",
-        "start_ms": 60,
-        "end_ms": 820
-      }
-    ],
-    "word_count": 1
   },
   "ch08-527": {
     "words": [
@@ -46868,36 +45583,6 @@
       }
     ],
     "word_count": 16
-  },
-  "ch08-537": {
-    "words": [
-      {
-        "word": "El",
-        "start_ms": 80,
-        "end_ms": 260
-      },
-      {
-        "word": "idioma",
-        "start_ms": 260,
-        "end_ms": 600
-      },
-      {
-        "word": "zapoteco",
-        "start_ms": 600,
-        "end_ms": 1300
-      },
-      {
-        "word": "no",
-        "start_ms": 1300,
-        "end_ms": 1620
-      },
-      {
-        "word": "muri\u00f3.",
-        "start_ms": 1620,
-        "end_ms": 2060
-      }
-    ],
-    "word_count": 5
   },
   "ch08-538": {
     "words": [
@@ -48338,51 +47023,6 @@
       }
     ],
     "word_count": 32
-  },
-  "ch09-553": {
-    "words": [
-      {
-        "word": "Abarca",
-        "start_ms": 130,
-        "end_ms": 480
-      },
-      {
-        "word": "casi",
-        "start_ms": 640,
-        "end_ms": 740
-      },
-      {
-        "word": "un",
-        "start_ms": 740,
-        "end_ms": 880
-      },
-      {
-        "word": "siglo",
-        "start_ms": 880,
-        "end_ms": 1220
-      },
-      {
-        "word": "y",
-        "start_ms": 1220,
-        "end_ms": 1440
-      },
-      {
-        "word": "no",
-        "start_ms": 1440,
-        "end_ms": 1560
-      },
-      {
-        "word": "ha",
-        "start_ms": 1560,
-        "end_ms": 1640
-      },
-      {
-        "word": "terminado.",
-        "start_ms": 1640,
-        "end_ms": 1740
-      }
-    ],
-    "word_count": 8
   },
   "ch09-554": {
     "words": [
@@ -52359,36 +50999,6 @@
     ],
     "word_count": 11
   },
-  "ch09-589": {
-    "words": [
-      {
-        "word": "Hay",
-        "start_ms": 100,
-        "end_ms": 260
-      },
-      {
-        "word": "otra",
-        "start_ms": 260,
-        "end_ms": 440
-      },
-      {
-        "word": "v\u00eda",
-        "start_ms": 440,
-        "end_ms": 740
-      },
-      {
-        "word": "de",
-        "start_ms": 740,
-        "end_ms": 820
-      },
-      {
-        "word": "esperanza.",
-        "start_ms": 820,
-        "end_ms": 1270
-      }
-    ],
-    "word_count": 5
-  },
   "ch09-590": {
     "words": [
       {
@@ -54448,36 +53058,6 @@
       }
     ],
     "word_count": 26
-  },
-  "ch09-613": {
-    "words": [
-      {
-        "word": "La",
-        "start_ms": 0,
-        "end_ms": 180
-      },
-      {
-        "word": "carrera",
-        "start_ms": 200,
-        "end_ms": 580
-      },
-      {
-        "word": "no",
-        "start_ms": 580,
-        "end_ms": 780
-      },
-      {
-        "word": "ha",
-        "start_ms": 780,
-        "end_ms": 860
-      },
-      {
-        "word": "terminado.",
-        "start_ms": 860,
-        "end_ms": 1300
-      }
-    ],
-    "word_count": 5
   },
   "ch09-614": {
     "words": [
@@ -57184,136 +55764,6 @@
     ],
     "word_count": 22
   },
-  "ch10-642": {
-    "words": [
-      {
-        "word": "Obsidiana",
-        "start_ms": 100,
-        "end_ms": 740
-      },
-      {
-        "word": "de",
-        "start_ms": 740,
-        "end_ms": 920
-      },
-      {
-        "word": "las",
-        "start_ms": 920,
-        "end_ms": 1120
-      },
-      {
-        "word": "tierras",
-        "start_ms": 1200,
-        "end_ms": 1480
-      },
-      {
-        "word": "altas",
-        "start_ms": 1480,
-        "end_ms": 1960
-      },
-      {
-        "word": "centrales.",
-        "start_ms": 1960,
-        "end_ms": 2060
-      }
-    ],
-    "word_count": 6
-  },
-  "ch10-643": {
-    "words": [
-      {
-        "word": "Cacao",
-        "start_ms": 320,
-        "end_ms": 520
-      },
-      {
-        "word": "de",
-        "start_ms": 520,
-        "end_ms": 700
-      },
-      {
-        "word": "las",
-        "start_ms": 700,
-        "end_ms": 840
-      },
-      {
-        "word": "tierras",
-        "start_ms": 840,
-        "end_ms": 1240
-      },
-      {
-        "word": "bajas",
-        "start_ms": 1240,
-        "end_ms": 1640
-      },
-      {
-        "word": "tropicales.",
-        "start_ms": 1640,
-        "end_ms": 1740
-      }
-    ],
-    "word_count": 6
-  },
-  "ch10-644": {
-    "words": [
-      {
-        "word": "Piedra",
-        "start_ms": 60,
-        "end_ms": 340
-      },
-      {
-        "word": "verde",
-        "start_ms": 340,
-        "end_ms": 680
-      },
-      {
-        "word": "y",
-        "start_ms": 680,
-        "end_ms": 980
-      },
-      {
-        "word": "jade",
-        "start_ms": 980,
-        "end_ms": 1360
-      },
-      {
-        "word": "de",
-        "start_ms": 1360,
-        "end_ms": 1480
-      },
-      {
-        "word": "Guatemala.",
-        "start_ms": 1480,
-        "end_ms": 2020
-      }
-    ],
-    "word_count": 6
-  },
-  "ch10-645": {
-    "words": [
-      {
-        "word": "Plumas",
-        "start_ms": 0,
-        "end_ms": 380
-      },
-      {
-        "word": "de",
-        "start_ms": 380,
-        "end_ms": 520
-      },
-      {
-        "word": "aves",
-        "start_ms": 520,
-        "end_ms": 780
-      },
-      {
-        "word": "ex\u00f3ticas.",
-        "start_ms": 780,
-        "end_ms": 880
-      }
-    ],
-    "word_count": 4
-  },
   "ch10-646": {
     "words": [
       {
@@ -58694,21 +57144,6 @@
     ],
     "word_count": 12
   },
-  "ch10-660": {
-    "words": [
-      {
-        "word": "\u00bfPor",
-        "start_ms": 0,
-        "end_ms": 140
-      },
-      {
-        "word": "qu\u00e9?",
-        "start_ms": 140,
-        "end_ms": 480
-      }
-    ],
-    "word_count": 2
-  },
   "ch11-662": {
     "words": [
       {
@@ -58808,76 +57243,6 @@
       }
     ],
     "word_count": 19
-  },
-  "ch11-663": {
-    "words": [
-      {
-        "word": "No",
-        "start_ms": 160,
-        "end_ms": 260
-      },
-      {
-        "word": "hay",
-        "start_ms": 260,
-        "end_ms": 460
-      },
-      {
-        "word": "una",
-        "start_ms": 460,
-        "end_ms": 640
-      },
-      {
-        "word": "historia",
-        "start_ms": 640,
-        "end_ms": 980
-      },
-      {
-        "word": "dram\u00e1tica",
-        "start_ms": 980,
-        "end_ms": 1660
-      },
-      {
-        "word": "que",
-        "start_ms": 1660,
-        "end_ms": 1900
-      },
-      {
-        "word": "contar.",
-        "start_ms": 1900,
-        "end_ms": 2200
-      }
-    ],
-    "word_count": 7
-  },
-  "ch11-664": {
-    "words": [
-      {
-        "word": "Ning\u00fan",
-        "start_ms": 100,
-        "end_ms": 480
-      },
-      {
-        "word": "asedio.",
-        "start_ms": 480,
-        "end_ms": 960
-      }
-    ],
-    "word_count": 2
-  },
-  "ch11-665": {
-    "words": [
-      {
-        "word": "Ning\u00fan",
-        "start_ms": 200,
-        "end_ms": 420
-      },
-      {
-        "word": "incendio.",
-        "start_ms": 420,
-        "end_ms": 1060
-      }
-    ],
-    "word_count": 2
   },
   "ch11-666": {
     "words": [
@@ -59499,81 +57864,6 @@
     ],
     "word_count": 26
   },
-  "ch11-675": {
-    "words": [
-      {
-        "word": "La",
-        "start_ms": 80,
-        "end_ms": 180
-      },
-      {
-        "word": "gente",
-        "start_ms": 180,
-        "end_ms": 460
-      },
-      {
-        "word": "no",
-        "start_ms": 460,
-        "end_ms": 760
-      },
-      {
-        "word": "muri\u00f3.",
-        "start_ms": 760,
-        "end_ms": 1160
-      }
-    ],
-    "word_count": 4
-  },
-  "ch11-676": {
-    "words": [
-      {
-        "word": "Se",
-        "start_ms": 40,
-        "end_ms": 140
-      },
-      {
-        "word": "mud\u00f3.",
-        "start_ms": 140,
-        "end_ms": 600
-      }
-    ],
-    "word_count": 2
-  },
-  "ch11-677": {
-    "words": [
-      {
-        "word": "Monta\u00f1a",
-        "start_ms": 220,
-        "end_ms": 600
-      },
-      {
-        "word": "abajo.",
-        "start_ms": 600,
-        "end_ms": 940
-      }
-    ],
-    "word_count": 2
-  },
-  "ch11-678": {
-    "words": [
-      {
-        "word": "Hacia",
-        "start_ms": 0,
-        "end_ms": 260
-      },
-      {
-        "word": "el",
-        "start_ms": 260,
-        "end_ms": 400
-      },
-      {
-        "word": "valle.",
-        "start_ms": 400,
-        "end_ms": 800
-      }
-    ],
-    "word_count": 3
-  },
   "ch11-679": {
     "words": [
       {
@@ -59943,21 +58233,6 @@
       }
     ],
     "word_count": 4
-  },
-  "ch11-683": {
-    "words": [
-      {
-        "word": "Se",
-        "start_ms": 20,
-        "end_ms": 120
-      },
-      {
-        "word": "dispers\u00f3.",
-        "start_ms": 120,
-        "end_ms": 820
-      }
-    ],
-    "word_count": 2
   },
   "ch11-684": {
     "words": [
@@ -60593,21 +58868,6 @@
       }
     ],
     "word_count": 4
-  },
-  "ch11-691": {
-    "words": [
-      {
-        "word": "\u00bfPero",
-        "start_ms": 100,
-        "end_ms": 260
-      },
-      {
-        "word": "qu\u00e9?",
-        "start_ms": 260,
-        "end_ms": 620
-      }
-    ],
-    "word_count": 2
   },
   "ch11-692": {
     "words": [
@@ -64619,66 +62879,6 @@
     ],
     "word_count": 23
   },
-  "ch11-728": {
-    "words": [
-      {
-        "word": "No",
-        "start_ms": 100,
-        "end_ms": 300
-      },
-      {
-        "word": "hubo",
-        "start_ms": 300,
-        "end_ms": 600
-      },
-      {
-        "word": "una",
-        "start_ms": 600,
-        "end_ms": 740
-      },
-      {
-        "word": "causa",
-        "start_ms": 740,
-        "end_ms": 1020
-      },
-      {
-        "word": "\u00fanica.",
-        "start_ms": 1020,
-        "end_ms": 1420
-      }
-    ],
-    "word_count": 5
-  },
-  "ch11-729": {
-    "words": [
-      {
-        "word": "No",
-        "start_ms": 100,
-        "end_ms": 300
-      },
-      {
-        "word": "hubo",
-        "start_ms": 300,
-        "end_ms": 580
-      },
-      {
-        "word": "un",
-        "start_ms": 580,
-        "end_ms": 700
-      },
-      {
-        "word": "momento",
-        "start_ms": 700,
-        "end_ms": 1000
-      },
-      {
-        "word": "\u00fanico.",
-        "start_ms": 1000,
-        "end_ms": 1420
-      }
-    ],
-    "word_count": 5
-  },
   "ch11-730": {
     "words": [
       {
@@ -66969,36 +65169,6 @@
     ],
     "word_count": 18
   },
-  "ch12-754": {
-    "words": [
-      {
-        "word": "Solo",
-        "start_ms": 60,
-        "end_ms": 360
-      },
-      {
-        "word": "el",
-        "start_ms": 360,
-        "end_ms": 680
-      },
-      {
-        "word": "oro",
-        "start_ms": 680,
-        "end_ms": 940
-      },
-      {
-        "word": "era",
-        "start_ms": 940,
-        "end_ms": 1340
-      },
-      {
-        "word": "asombroso.",
-        "start_ms": 1340,
-        "end_ms": 1900
-      }
-    ],
-    "word_count": 5
-  },
   "ch12-755": {
     "words": [
       {
@@ -68089,51 +66259,6 @@
     ],
     "word_count": 13
   },
-  "ch12-765": {
-    "words": [
-      {
-        "word": "Ornamentos",
-        "start_ms": 460,
-        "end_ms": 760
-      },
-      {
-        "word": "de",
-        "start_ms": 760,
-        "end_ms": 840
-      },
-      {
-        "word": "perla",
-        "start_ms": 840,
-        "end_ms": 1220
-      },
-      {
-        "word": "de",
-        "start_ms": 1220,
-        "end_ms": 1320
-      },
-      {
-        "word": "la",
-        "start_ms": 1320,
-        "end_ms": 1440
-      },
-      {
-        "word": "costa",
-        "start_ms": 1440,
-        "end_ms": 1820
-      },
-      {
-        "word": "del",
-        "start_ms": 1820,
-        "end_ms": 1920
-      },
-      {
-        "word": "Pac\u00edfico.",
-        "start_ms": 1920,
-        "end_ms": 2020
-      }
-    ],
-    "word_count": 8
-  },
   "ch12-766": {
     "words": [
       {
@@ -69198,31 +67323,6 @@
       }
     ],
     "word_count": 20
-  },
-  "ch12-776": {
-    "words": [
-      {
-        "word": "Pero",
-        "start_ms": 0,
-        "end_ms": 180
-      },
-      {
-        "word": "observa",
-        "start_ms": 180,
-        "end_ms": 700
-      },
-      {
-        "word": "la",
-        "start_ms": 700,
-        "end_ms": 800
-      },
-      {
-        "word": "iron\u00eda.",
-        "start_ms": 800,
-        "end_ms": 1260
-      }
-    ],
-    "word_count": 4
   },
   "ch12-777": {
     "words": [
@@ -71449,26 +69549,6 @@
     ],
     "word_count": 50
   },
-  "ch12-794": {
-    "words": [
-      {
-        "word": "La",
-        "start_ms": 100,
-        "end_ms": 180
-      },
-      {
-        "word": "ciudad",
-        "start_ms": 180,
-        "end_ms": 540
-      },
-      {
-        "word": "permanece.",
-        "start_ms": 540,
-        "end_ms": 1320
-      }
-    ],
-    "word_count": 3
-  },
   "ch12-795": {
     "words": [
       {
@@ -71485,26 +69565,6 @@
         "word": "permanecen.",
         "start_ms": 700,
         "end_ms": 1480
-      }
-    ],
-    "word_count": 3
-  },
-  "ch12-796": {
-    "words": [
-      {
-        "word": "Los",
-        "start_ms": 120,
-        "end_ms": 240
-      },
-      {
-        "word": "grabados",
-        "start_ms": 240,
-        "end_ms": 740
-      },
-      {
-        "word": "permanecen.",
-        "start_ms": 740,
-        "end_ms": 1400
       }
     ],
     "word_count": 3
@@ -74704,26 +72764,6 @@
     ],
     "word_count": 12
   },
-  "ch13-830": {
-    "words": [
-      {
-        "word": "La",
-        "start_ms": 120,
-        "end_ms": 200
-      },
-      {
-        "word": "lengua",
-        "start_ms": 200,
-        "end_ms": 560
-      },
-      {
-        "word": "persisti\u00f3.",
-        "start_ms": 560,
-        "end_ms": 1340
-      }
-    ],
-    "word_count": 3
-  },
   "ch13-831": {
     "words": [
       {
@@ -75128,26 +73168,6 @@
       }
     ],
     "word_count": 33
-  },
-  "ch13-836": {
-    "words": [
-      {
-        "word": "Fue",
-        "start_ms": 160,
-        "end_ms": 260
-      },
-      {
-        "word": "una",
-        "start_ms": 260,
-        "end_ms": 440
-      },
-      {
-        "word": "transformaci\u00f3n.",
-        "start_ms": 440,
-        "end_ms": 890
-      }
-    ],
-    "word_count": 3
   },
   "ch13-837": {
     "words": [
@@ -77553,61 +75573,6 @@
       }
     ],
     "word_count": 35
-  },
-  "ch14-856": {
-    "words": [
-      {
-        "word": "Pero",
-        "start_ms": 0,
-        "end_ms": 180
-      },
-      {
-        "word": "el",
-        "start_ms": 180,
-        "end_ms": 300
-      },
-      {
-        "word": "juego",
-        "start_ms": 360,
-        "end_ms": 480
-      },
-      {
-        "word": "de",
-        "start_ms": 480,
-        "end_ms": 660
-      },
-      {
-        "word": "pelota",
-        "start_ms": 660,
-        "end_ms": 1020
-      },
-      {
-        "word": "nunca",
-        "start_ms": 1020,
-        "end_ms": 1340
-      },
-      {
-        "word": "fue",
-        "start_ms": 1340,
-        "end_ms": 1660
-      },
-      {
-        "word": "solo",
-        "start_ms": 1660,
-        "end_ms": 1940
-      },
-      {
-        "word": "un",
-        "start_ms": 1940,
-        "end_ms": 2140
-      },
-      {
-        "word": "deporte.",
-        "start_ms": 2140,
-        "end_ms": 2480
-      }
-    ],
-    "word_count": 10
   },
   "ch14-857": {
     "words": [
@@ -80679,26 +78644,6 @@
     ],
     "word_count": 41
   },
-  "ch15-881": {
-    "words": [
-      {
-        "word": "No",
-        "start_ms": 220,
-        "end_ms": 320
-      },
-      {
-        "word": "fue",
-        "start_ms": 320,
-        "end_ms": 520
-      },
-      {
-        "word": "as\u00ed.",
-        "start_ms": 520,
-        "end_ms": 960
-      }
-    ],
-    "word_count": 3
-  },
   "ch15-882": {
     "words": [
       {
@@ -81544,26 +79489,6 @@
     ],
     "word_count": 17
   },
-  "ch15-891": {
-    "words": [
-      {
-        "word": "Pero",
-        "start_ms": 40,
-        "end_ms": 140
-      },
-      {
-        "word": "eran",
-        "start_ms": 140,
-        "end_ms": 460
-      },
-      {
-        "word": "contempor\u00e1neos.",
-        "start_ms": 460,
-        "end_ms": 1260
-      }
-    ],
-    "word_count": 3
-  },
   "ch15-892": {
     "words": [
       {
@@ -82019,46 +79944,6 @@
     ],
     "word_count": 16
   },
-  "ch15-897": {
-    "words": [
-      {
-        "word": "No",
-        "start_ms": 80,
-        "end_ms": 280
-      },
-      {
-        "word": "tuvieron",
-        "start_ms": 280,
-        "end_ms": 680
-      },
-      {
-        "word": "acceso",
-        "start_ms": 680,
-        "end_ms": 1040
-      },
-      {
-        "word": "a",
-        "start_ms": 1040,
-        "end_ms": 1440
-      },
-      {
-        "word": "la",
-        "start_ms": 1440,
-        "end_ms": 1520
-      },
-      {
-        "word": "tecnolog\u00eda",
-        "start_ms": 1520,
-        "end_ms": 1860
-      },
-      {
-        "word": "china.",
-        "start_ms": 1860,
-        "end_ms": 1960
-      }
-    ],
-    "word_count": 7
-  },
   "ch15-898": {
     "words": [
       {
@@ -82403,51 +80288,6 @@
       }
     ],
     "word_count": 17
-  },
-  "ch15-901": {
-    "words": [
-      {
-        "word": "Ocurri\u00f3,",
-        "start_ms": 40,
-        "end_ms": 540
-      },
-      {
-        "word": "a",
-        "start_ms": 700,
-        "end_ms": 720
-      },
-      {
-        "word": "lo",
-        "start_ms": 720,
-        "end_ms": 820
-      },
-      {
-        "word": "sumo,",
-        "start_ms": 820,
-        "end_ms": 1280
-      },
-      {
-        "word": "cuatro",
-        "start_ms": 1460,
-        "end_ms": 1660
-      },
-      {
-        "word": "o",
-        "start_ms": 1660,
-        "end_ms": 1900
-      },
-      {
-        "word": "cinco",
-        "start_ms": 1900,
-        "end_ms": 2200
-      },
-      {
-        "word": "veces.",
-        "start_ms": 2200,
-        "end_ms": 2500
-      }
-    ],
-    "word_count": 8
   },
   "ch15-902": {
     "words": [
@@ -83183,46 +81023,6 @@
       }
     ],
     "word_count": 21
-  },
-  "ch15-909": {
-    "words": [
-      {
-        "word": "Monte",
-        "start_ms": 220,
-        "end_ms": 340
-      },
-      {
-        "word": "Alb\u00e1n",
-        "start_ms": 340,
-        "end_ms": 640
-      },
-      {
-        "word": "no",
-        "start_ms": 640,
-        "end_ms": 900
-      },
-      {
-        "word": "era",
-        "start_ms": 900,
-        "end_ms": 1040
-      },
-      {
-        "word": "un",
-        "start_ms": 1040,
-        "end_ms": 1140
-      },
-      {
-        "word": "lugar",
-        "start_ms": 1140,
-        "end_ms": 1340
-      },
-      {
-        "word": "atrasado.",
-        "start_ms": 1340,
-        "end_ms": 1840
-      }
-    ],
-    "word_count": 7
   },
   "ch15-910": {
     "words": [
@@ -84953,26 +82753,6 @@
       }
     ],
     "word_count": 5
-  },
-  "ch15-927": {
-    "words": [
-      {
-        "word": "Organizaron",
-        "start_ms": 160,
-        "end_ms": 740
-      },
-      {
-        "word": "un",
-        "start_ms": 740,
-        "end_ms": 900
-      },
-      {
-        "word": "estado.",
-        "start_ms": 900,
-        "end_ms": 1380
-      }
-    ],
-    "word_count": 3
   },
   "ch15-928": {
     "words": [
@@ -87078,51 +84858,6 @@
       }
     ],
     "word_count": 24
-  },
-  "ch15-951": {
-    "words": [
-      {
-        "word": "Estos",
-        "start_ms": 100,
-        "end_ms": 460
-      },
-      {
-        "word": "no",
-        "start_ms": 460,
-        "end_ms": 620
-      },
-      {
-        "word": "son",
-        "start_ms": 620,
-        "end_ms": 820
-      },
-      {
-        "word": "fracasos.",
-        "start_ms": 820,
-        "end_ms": 1280
-      }
-    ],
-    "word_count": 4
-  },
-  "ch15-952": {
-    "words": [
-      {
-        "word": "Son",
-        "start_ms": 180,
-        "end_ms": 280
-      },
-      {
-        "word": "la",
-        "start_ms": 280,
-        "end_ms": 440
-      },
-      {
-        "word": "frontera.",
-        "start_ms": 440,
-        "end_ms": 840
-      }
-    ],
-    "word_count": 3
   },
   "ch15-953": {
     "words": [
@@ -92549,31 +90284,6 @@
     ],
     "word_count": 35
   },
-  "ch15-1002": {
-    "words": [
-      {
-        "word": "Para",
-        "start_ms": 0,
-        "end_ms": 120
-      },
-      {
-        "word": "la",
-        "start_ms": 120,
-        "end_ms": 260
-      },
-      {
-        "word": "escritura",
-        "start_ms": 260,
-        "end_ms": 700
-      },
-      {
-        "word": "espec\u00edficamente:",
-        "start_ms": 700,
-        "end_ms": 1440
-      }
-    ],
-    "word_count": 4
-  },
   "ch15-1003": {
     "words": [
       {
@@ -94767,5 +92477,2295 @@
         "end_ms": 6280
       }
     ]
+  },
+  "ch00-008": {
+    "words": [
+      {
+        "word": "Su",
+        "start_ms": 140,
+        "end_ms": 240
+      },
+      {
+        "word": "ciudad",
+        "start_ms": 240,
+        "end_ms": 520
+      },
+      {
+        "word": "prosper\u00f3",
+        "start_ms": 520,
+        "end_ms": 1140
+      },
+      {
+        "word": "durante",
+        "start_ms": 1140,
+        "end_ms": 1440
+      },
+      {
+        "word": "m\u00e1s",
+        "start_ms": 1440,
+        "end_ms": 1660
+      },
+      {
+        "word": "de",
+        "start_ms": 1660,
+        "end_ms": 1860
+      },
+      {
+        "word": "mil",
+        "start_ms": 1860,
+        "end_ms": 2000
+      },
+      {
+        "word": "a\u00f1os.",
+        "start_ms": 2000,
+        "end_ms": 2360
+      }
+    ],
+    "word_count": 8
+  },
+  "ch00-011": {
+    "words": [
+      {
+        "word": "La",
+        "start_ms": 100,
+        "end_ms": 180
+      },
+      {
+        "word": "lengua",
+        "start_ms": 180,
+        "end_ms": 520
+      },
+      {
+        "word": "sobrevivi\u00f3.",
+        "start_ms": 520,
+        "end_ms": 1220
+      }
+    ],
+    "word_count": 3
+  },
+  "ch01-026": {
+    "words": [
+      {
+        "word": "Ni",
+        "start_ms": 220,
+        "end_ms": 240
+      },
+      {
+        "word": "manantial.",
+        "start_ms": 240,
+        "end_ms": 840
+      }
+    ],
+    "word_count": 2
+  },
+  "ch01-027": {
+    "words": [
+      {
+        "word": "Ni",
+        "start_ms": 240,
+        "end_ms": 300
+      },
+      {
+        "word": "lago.",
+        "start_ms": 300,
+        "end_ms": 720
+      }
+    ],
+    "word_count": 2
+  },
+  "ch01-034": {
+    "words": [
+      {
+        "word": "Sin",
+        "start_ms": 120,
+        "end_ms": 180
+      },
+      {
+        "word": "ruedas.",
+        "start_ms": 180,
+        "end_ms": 640
+      }
+    ],
+    "word_count": 2
+  },
+  "ch01-035": {
+    "words": [
+      {
+        "word": "Sin",
+        "start_ms": 20,
+        "end_ms": 180
+      },
+      {
+        "word": "animales",
+        "start_ms": 180,
+        "end_ms": 520
+      },
+      {
+        "word": "de",
+        "start_ms": 520,
+        "end_ms": 780
+      },
+      {
+        "word": "carga.",
+        "start_ms": 780,
+        "end_ms": 1160
+      }
+    ],
+    "word_count": 4
+  },
+  "ch01-042": {
+    "words": [
+      {
+        "word": "La",
+        "start_ms": 80,
+        "end_ms": 180
+      },
+      {
+        "word": "distribuci\u00f3n",
+        "start_ms": 180,
+        "end_ms": 780
+      },
+      {
+        "word": "no",
+        "start_ms": 780,
+        "end_ms": 1040
+      },
+      {
+        "word": "era",
+        "start_ms": 1040,
+        "end_ms": 1260
+      },
+      {
+        "word": "arbitraria.",
+        "start_ms": 1260,
+        "end_ms": 1840
+      }
+    ],
+    "word_count": 5
+  },
+  "ch01-056": {
+    "words": [
+      {
+        "word": "Nadie",
+        "start_ms": 80,
+        "end_ms": 620
+      },
+      {
+        "word": "est\u00e1",
+        "start_ms": 620,
+        "end_ms": 920
+      },
+      {
+        "word": "seguro.",
+        "start_ms": 920,
+        "end_ms": 1400
+      }
+    ],
+    "word_count": 3
+  },
+  "ch01-062": {
+    "words": [
+      {
+        "word": "Y",
+        "start_ms": 80,
+        "end_ms": 180
+      },
+      {
+        "word": "el",
+        "start_ms": 180,
+        "end_ms": 280
+      },
+      {
+        "word": "lugar",
+        "start_ms": 280,
+        "end_ms": 480
+      },
+      {
+        "word": "es",
+        "start_ms": 480,
+        "end_ms": 900
+      },
+      {
+        "word": "extraordinario.",
+        "start_ms": 900,
+        "end_ms": 1400
+      }
+    ],
+    "word_count": 5
+  },
+  "ch01-073": {
+    "words": [
+      {
+        "word": "Algo",
+        "start_ms": 100,
+        "end_ms": 380
+      },
+      {
+        "word": "los",
+        "start_ms": 380,
+        "end_ms": 560
+      },
+      {
+        "word": "hizo",
+        "start_ms": 560,
+        "end_ms": 780
+      },
+      {
+        "word": "ascender.",
+        "start_ms": 780,
+        "end_ms": 1340
+      }
+    ],
+    "word_count": 4
+  },
+  "ch02-079": {
+    "words": [
+      {
+        "word": "El",
+        "start_ms": 0,
+        "end_ms": 140
+      },
+      {
+        "word": "suelo",
+        "start_ms": 280,
+        "end_ms": 560
+      },
+      {
+        "word": "es",
+        "start_ms": 560,
+        "end_ms": 960
+      },
+      {
+        "word": "bueno.",
+        "start_ms": 960,
+        "end_ms": 1420
+      }
+    ],
+    "word_count": 4
+  },
+  "ch02-082": {
+    "words": [
+      {
+        "word": "Y",
+        "start_ms": 0,
+        "end_ms": 60
+      },
+      {
+        "word": "la",
+        "start_ms": 60,
+        "end_ms": 160
+      },
+      {
+        "word": "gente",
+        "start_ms": 160,
+        "end_ms": 360
+      },
+      {
+        "word": "vivi\u00f3",
+        "start_ms": 360,
+        "end_ms": 800
+      },
+      {
+        "word": "aqu\u00ed.",
+        "start_ms": 800,
+        "end_ms": 1120
+      }
+    ],
+    "word_count": 5
+  },
+  "ch02-092": {
+    "words": [
+      {
+        "word": "Y",
+        "start_ms": 80,
+        "end_ms": 180
+      },
+      {
+        "word": "comerciaban.",
+        "start_ms": 180,
+        "end_ms": 940
+      }
+    ],
+    "word_count": 2
+  },
+  "ch02-096": {
+    "words": [
+      {
+        "word": "Estos",
+        "start_ms": 100,
+        "end_ms": 400
+      },
+      {
+        "word": "no",
+        "start_ms": 400,
+        "end_ms": 520
+      },
+      {
+        "word": "eran",
+        "start_ms": 520,
+        "end_ms": 660
+      },
+      {
+        "word": "hallazgos",
+        "start_ms": 660,
+        "end_ms": 1100
+      },
+      {
+        "word": "casuales.",
+        "start_ms": 1100,
+        "end_ms": 1580
+      }
+    ],
+    "word_count": 5
+  },
+  "ch02-102": {
+    "words": [
+      {
+        "word": "Se",
+        "start_ms": 120,
+        "end_ms": 180
+      },
+      {
+        "word": "estaba",
+        "start_ms": 240,
+        "end_ms": 380
+      },
+      {
+        "word": "formando",
+        "start_ms": 380,
+        "end_ms": 860
+      },
+      {
+        "word": "una",
+        "start_ms": 860,
+        "end_ms": 1000
+      },
+      {
+        "word": "jerarqu\u00eda.",
+        "start_ms": 1000,
+        "end_ms": 1340
+      }
+    ],
+    "word_count": 5
+  },
+  "ch02-109": {
+    "words": [
+      {
+        "word": "Su",
+        "start_ms": 0,
+        "end_ms": 120
+      },
+      {
+        "word": "cuerpo",
+        "start_ms": 220,
+        "end_ms": 400
+      },
+      {
+        "word": "est\u00e1",
+        "start_ms": 400,
+        "end_ms": 660
+      },
+      {
+        "word": "laxo.",
+        "start_ms": 660,
+        "end_ms": 1200
+      }
+    ],
+    "word_count": 4
+  },
+  "ch02-129": {
+    "words": [
+      {
+        "word": "\u00bfQu\u00e9",
+        "start_ms": 80,
+        "end_ms": 180
+      },
+      {
+        "word": "pudo",
+        "start_ms": 300,
+        "end_ms": 500
+      },
+      {
+        "word": "haberlos",
+        "start_ms": 500,
+        "end_ms": 800
+      },
+      {
+        "word": "motivado?",
+        "start_ms": 800,
+        "end_ms": 1260
+      }
+    ],
+    "word_count": 4
+  },
+  "ch02-130": {
+    "words": [
+      {
+        "word": "El",
+        "start_ms": 120,
+        "end_ms": 200
+      },
+      {
+        "word": "traslado",
+        "start_ms": 200,
+        "end_ms": 680
+      },
+      {
+        "word": "no",
+        "start_ms": 680,
+        "end_ms": 800
+      },
+      {
+        "word": "tiene",
+        "start_ms": 800,
+        "end_ms": 980
+      },
+      {
+        "word": "sentido",
+        "start_ms": 980,
+        "end_ms": 1380
+      },
+      {
+        "word": "pr\u00e1ctico.",
+        "start_ms": 1380,
+        "end_ms": 1480
+      }
+    ],
+    "word_count": 6
+  },
+  "ch03-159": {
+    "words": [
+      {
+        "word": "No",
+        "start_ms": 100,
+        "end_ms": 300
+      },
+      {
+        "word": "todos",
+        "start_ms": 300,
+        "end_ms": 720
+      },
+      {
+        "word": "vinieron",
+        "start_ms": 720,
+        "end_ms": 1220
+      },
+      {
+        "word": "por",
+        "start_ms": 1220,
+        "end_ms": 1420
+      },
+      {
+        "word": "voluntad",
+        "start_ms": 1420,
+        "end_ms": 1940
+      },
+      {
+        "word": "propia.",
+        "start_ms": 1940,
+        "end_ms": 2220
+      }
+    ],
+    "word_count": 6
+  },
+  "ch03-162": {
+    "words": [
+      {
+        "word": "Creci\u00f3.",
+        "start_ms": 80,
+        "end_ms": 720
+      }
+    ],
+    "word_count": 1
+  },
+  "ch03-192": {
+    "words": [
+      {
+        "word": "Estos",
+        "start_ms": 100,
+        "end_ms": 540
+      },
+      {
+        "word": "no",
+        "start_ms": 540,
+        "end_ms": 780
+      },
+      {
+        "word": "son",
+        "start_ms": 780,
+        "end_ms": 1060
+      },
+      {
+        "word": "mutuamente",
+        "start_ms": 1060,
+        "end_ms": 1500
+      },
+      {
+        "word": "excluyentes.",
+        "start_ms": 1500,
+        "end_ms": 2220
+      }
+    ],
+    "word_count": 5
+  },
+  "ch04-229": {
+    "words": [
+      {
+        "word": "Los",
+        "start_ms": 80,
+        "end_ms": 180
+      },
+      {
+        "word": "habitantes",
+        "start_ms": 180,
+        "end_ms": 680
+      },
+      {
+        "word": "de",
+        "start_ms": 680,
+        "end_ms": 840
+      },
+      {
+        "word": "Monte",
+        "start_ms": 840,
+        "end_ms": 1020
+      },
+      {
+        "word": "Alb\u00e1n",
+        "start_ms": 1020,
+        "end_ms": 1540
+      },
+      {
+        "word": "eran",
+        "start_ms": 1600,
+        "end_ms": 1780
+      },
+      {
+        "word": "ante",
+        "start_ms": 1780,
+        "end_ms": 2100
+      },
+      {
+        "word": "todo",
+        "start_ms": 2100,
+        "end_ms": 2340
+      },
+      {
+        "word": "agricultores.",
+        "start_ms": 2340,
+        "end_ms": 2940
+      }
+    ],
+    "word_count": 9
+  },
+  "ch04-248": {
+    "words": [
+      {
+        "word": "Tambi\u00e9n",
+        "start_ms": 360,
+        "end_ms": 400
+      },
+      {
+        "word": "comerciaban.",
+        "start_ms": 400,
+        "end_ms": 1020
+      }
+    ],
+    "word_count": 2
+  },
+  "ch04-256": {
+    "words": [
+      {
+        "word": "Era",
+        "start_ms": 120,
+        "end_ms": 280
+      },
+      {
+        "word": "un",
+        "start_ms": 280,
+        "end_ms": 440
+      },
+      {
+        "word": "nodo",
+        "start_ms": 440,
+        "end_ms": 880
+      },
+      {
+        "word": "en",
+        "start_ms": 900,
+        "end_ms": 1040
+      },
+      {
+        "word": "una",
+        "start_ms": 1040,
+        "end_ms": 1200
+      },
+      {
+        "word": "red",
+        "start_ms": 1200,
+        "end_ms": 1440
+      },
+      {
+        "word": "continental.",
+        "start_ms": 1440,
+        "end_ms": 1840
+      }
+    ],
+    "word_count": 7
+  },
+  "ch04-257": {
+    "words": [
+      {
+        "word": "Tambi\u00e9n",
+        "start_ms": 140,
+        "end_ms": 360
+      },
+      {
+        "word": "jugaban",
+        "start_ms": 360,
+        "end_ms": 840
+      },
+      {
+        "word": "al",
+        "start_ms": 840,
+        "end_ms": 1000
+      },
+      {
+        "word": "juego",
+        "start_ms": 1000,
+        "end_ms": 1180
+      },
+      {
+        "word": "de",
+        "start_ms": 1180,
+        "end_ms": 1380
+      },
+      {
+        "word": "pelota",
+        "start_ms": 1380,
+        "end_ms": 1780
+      },
+      {
+        "word": "mesoamericano.",
+        "start_ms": 1780,
+        "end_ms": 2330
+      }
+    ],
+    "word_count": 7
+  },
+  "ch04-262": {
+    "words": [
+      {
+        "word": "Volveremos",
+        "start_ms": 120,
+        "end_ms": 580
+      },
+      {
+        "word": "al",
+        "start_ms": 580,
+        "end_ms": 740
+      },
+      {
+        "word": "juego",
+        "start_ms": 740,
+        "end_ms": 920
+      },
+      {
+        "word": "de",
+        "start_ms": 920,
+        "end_ms": 1140
+      },
+      {
+        "word": "pelota",
+        "start_ms": 1140,
+        "end_ms": 1520
+      },
+      {
+        "word": "m\u00e1s",
+        "start_ms": 1520,
+        "end_ms": 1720
+      },
+      {
+        "word": "adelante.",
+        "start_ms": 1720,
+        "end_ms": 2260
+      }
+    ],
+    "word_count": 7
+  },
+  "ch04-265": {
+    "words": [
+      {
+        "word": "Es",
+        "start_ms": 120,
+        "end_ms": 240
+      },
+      {
+        "word": "la",
+        "start_ms": 240,
+        "end_ms": 380
+      },
+      {
+        "word": "escritura.",
+        "start_ms": 380,
+        "end_ms": 730
+      }
+    ],
+    "word_count": 3
+  },
+  "ch04-266": {
+    "words": [
+      {
+        "word": "Dejaron",
+        "start_ms": 100,
+        "end_ms": 420
+      },
+      {
+        "word": "cosas",
+        "start_ms": 420,
+        "end_ms": 780
+      },
+      {
+        "word": "por",
+        "start_ms": 780,
+        "end_ms": 1060
+      },
+      {
+        "word": "escrito.",
+        "start_ms": 1060,
+        "end_ms": 1480
+      }
+    ],
+    "word_count": 4
+  },
+  "ch04-267": {
+    "words": [
+      {
+        "word": "En",
+        "start_ms": 100,
+        "end_ms": 260
+      },
+      {
+        "word": "piedra.",
+        "start_ms": 260,
+        "end_ms": 820
+      }
+    ],
+    "word_count": 2
+  },
+  "ch04-271": {
+    "words": [
+      {
+        "word": "Y",
+        "start_ms": 0,
+        "end_ms": 80
+      },
+      {
+        "word": "luego",
+        "start_ms": 80,
+        "end_ms": 220
+      },
+      {
+        "word": "lo",
+        "start_ms": 220,
+        "end_ms": 420
+      },
+      {
+        "word": "perdieron.",
+        "start_ms": 420,
+        "end_ms": 920
+      }
+    ],
+    "word_count": 4
+  },
+  "ch04-284": {
+    "words": [
+      {
+        "word": "El",
+        "start_ms": 100,
+        "end_ms": 220
+      },
+      {
+        "word": "lugar",
+        "start_ms": 220,
+        "end_ms": 440
+      },
+      {
+        "word": "a\u00fan",
+        "start_ms": 440,
+        "end_ms": 660
+      },
+      {
+        "word": "funciona.",
+        "start_ms": 660,
+        "end_ms": 1210
+      }
+    ],
+    "word_count": 4
+  },
+  "ch05-292": {
+    "words": [
+      {
+        "word": "M\u00e1s",
+        "start_ms": 80,
+        "end_ms": 340
+      },
+      {
+        "word": "de",
+        "start_ms": 340,
+        "end_ms": 480
+      },
+      {
+        "word": "trescientas.",
+        "start_ms": 480,
+        "end_ms": 1000
+      }
+    ],
+    "word_count": 3
+  },
+  "ch05-299": {
+    "words": [
+      {
+        "word": "Los",
+        "start_ms": 100,
+        "end_ms": 240
+      },
+      {
+        "word": "llamaron",
+        "start_ms": 240,
+        "end_ms": 780
+      },
+      {
+        "word": "\"Los",
+        "start_ms": 780,
+        "end_ms": 1260
+      },
+      {
+        "word": "Danzantes\".",
+        "start_ms": 1260,
+        "end_ms": 1740
+      }
+    ],
+    "word_count": 4
+  },
+  "ch05-300": {
+    "words": [
+      {
+        "word": "El",
+        "start_ms": 120,
+        "end_ms": 240
+      },
+      {
+        "word": "nombre",
+        "start_ms": 240,
+        "end_ms": 540
+      },
+      {
+        "word": "se",
+        "start_ms": 540,
+        "end_ms": 760
+      },
+      {
+        "word": "qued\u00f3.",
+        "start_ms": 760,
+        "end_ms": 1160
+      }
+    ],
+    "word_count": 4
+  },
+  "ch05-307": {
+    "words": [
+      {
+        "word": "Esto",
+        "start_ms": 180,
+        "end_ms": 380
+      },
+      {
+        "word": "no",
+        "start_ms": 380,
+        "end_ms": 500
+      },
+      {
+        "word": "estaba",
+        "start_ms": 500,
+        "end_ms": 780
+      },
+      {
+        "word": "oculto.",
+        "start_ms": 780,
+        "end_ms": 1180
+      }
+    ],
+    "word_count": 4
+  },
+  "ch05-308": {
+    "words": [
+      {
+        "word": "Era",
+        "start_ms": 120,
+        "end_ms": 300
+      },
+      {
+        "word": "arquitectura.",
+        "start_ms": 300,
+        "end_ms": 1060
+      }
+    ],
+    "word_count": 2
+  },
+  "ch05-311": {
+    "words": [
+      {
+        "word": "La",
+        "start_ms": 80,
+        "end_ms": 180
+      },
+      {
+        "word": "mayor\u00eda",
+        "start_ms": 180,
+        "end_ms": 480
+      },
+      {
+        "word": "son",
+        "start_ms": 480,
+        "end_ms": 860
+      },
+      {
+        "word": "hombres.",
+        "start_ms": 860,
+        "end_ms": 1140
+      }
+    ],
+    "word_count": 4
+  },
+  "ch05-320": {
+    "words": [
+      {
+        "word": "No",
+        "start_ms": 140,
+        "end_ms": 260
+      },
+      {
+        "word": "eran",
+        "start_ms": 260,
+        "end_ms": 440
+      },
+      {
+        "word": "decoraciones",
+        "start_ms": 440,
+        "end_ms": 1080
+      },
+      {
+        "word": "al",
+        "start_ms": 1080,
+        "end_ms": 1240
+      },
+      {
+        "word": "azar.",
+        "start_ms": 1240,
+        "end_ms": 1560
+      }
+    ],
+    "word_count": 5
+  },
+  "ch05-330": {
+    "words": [
+      {
+        "word": "Podemos",
+        "start_ms": 100,
+        "end_ms": 400
+      },
+      {
+        "word": "ver",
+        "start_ms": 400,
+        "end_ms": 620
+      },
+      {
+        "word": "las",
+        "start_ms": 620,
+        "end_ms": 800
+      },
+      {
+        "word": "figuras",
+        "start_ms": 800,
+        "end_ms": 1280
+      },
+      {
+        "word": "y",
+        "start_ms": 1280,
+        "end_ms": 1420
+      },
+      {
+        "word": "los",
+        "start_ms": 1420,
+        "end_ms": 1540
+      },
+      {
+        "word": "glifos.",
+        "start_ms": 1540,
+        "end_ms": 1820
+      }
+    ],
+    "word_count": 7
+  },
+  "ch05-332": {
+    "words": [
+      {
+        "word": "\u00bfPor",
+        "start_ms": 40,
+        "end_ms": 200
+      },
+      {
+        "word": "qu\u00e9",
+        "start_ms": 340,
+        "end_ms": 440
+      },
+      {
+        "word": "har\u00edan",
+        "start_ms": 440,
+        "end_ms": 780
+      },
+      {
+        "word": "eso?",
+        "start_ms": 780,
+        "end_ms": 960
+      }
+    ],
+    "word_count": 4
+  },
+  "ch05-344": {
+    "words": [
+      {
+        "word": "Los",
+        "start_ms": 100,
+        "end_ms": 220
+      },
+      {
+        "word": "s\u00edmbolos",
+        "start_ms": 220,
+        "end_ms": 900
+      },
+      {
+        "word": "son",
+        "start_ms": 920,
+        "end_ms": 1040
+      },
+      {
+        "word": "bastante",
+        "start_ms": 1040,
+        "end_ms": 1520
+      },
+      {
+        "word": "claros.",
+        "start_ms": 1520,
+        "end_ms": 1980
+      }
+    ],
+    "word_count": 5
+  },
+  "ch06-381": {
+    "words": [
+      {
+        "word": "El",
+        "start_ms": 120,
+        "end_ms": 240
+      },
+      {
+        "word": "debate",
+        "start_ms": 240,
+        "end_ms": 520
+      },
+      {
+        "word": "contin\u00faa.",
+        "start_ms": 520,
+        "end_ms": 1200
+      }
+    ],
+    "word_count": 3
+  },
+  "ch06-394": {
+    "words": [
+      {
+        "word": "El",
+        "start_ms": 100,
+        "end_ms": 220
+      },
+      {
+        "word": "prop\u00f3sito",
+        "start_ms": 220,
+        "end_ms": 780
+      },
+      {
+        "word": "pol\u00edtico",
+        "start_ms": 780,
+        "end_ms": 1280
+      },
+      {
+        "word": "es",
+        "start_ms": 1280,
+        "end_ms": 1660
+      },
+      {
+        "word": "bastante",
+        "start_ms": 1660,
+        "end_ms": 1980
+      },
+      {
+        "word": "claro.",
+        "start_ms": 1980,
+        "end_ms": 2500
+      }
+    ],
+    "word_count": 6
+  },
+  "ch06-397": {
+    "words": [
+      {
+        "word": "Tu",
+        "start_ms": 0,
+        "end_ms": 160
+      },
+      {
+        "word": "comunidad",
+        "start_ms": 220,
+        "end_ms": 620
+      },
+      {
+        "word": "puede",
+        "start_ms": 620,
+        "end_ms": 1000
+      },
+      {
+        "word": "ser",
+        "start_ms": 1000,
+        "end_ms": 1260
+      },
+      {
+        "word": "la",
+        "start_ms": 1260,
+        "end_ms": 1460
+      },
+      {
+        "word": "siguiente.",
+        "start_ms": 1460,
+        "end_ms": 1960
+      }
+    ],
+    "word_count": 6
+  },
+  "ch07-450": {
+    "words": [
+      {
+        "word": "Pero",
+        "start_ms": 0,
+        "end_ms": 200
+      },
+      {
+        "word": "no",
+        "start_ms": 200,
+        "end_ms": 360
+      },
+      {
+        "word": "puedes",
+        "start_ms": 360,
+        "end_ms": 700
+      },
+      {
+        "word": "leer",
+        "start_ms": 700,
+        "end_ms": 1000
+      },
+      {
+        "word": "el",
+        "start_ms": 1000,
+        "end_ms": 1200
+      },
+      {
+        "word": "tejido",
+        "start_ms": 1400,
+        "end_ms": 1540
+      },
+      {
+        "word": "conectivo.",
+        "start_ms": 1540,
+        "end_ms": 2040
+      }
+    ],
+    "word_count": 7
+  },
+  "ch07-468": {
+    "words": [
+      {
+        "word": "Son",
+        "start_ms": 180,
+        "end_ms": 300
+      },
+      {
+        "word": "hom\u00f3nimos.",
+        "start_ms": 300,
+        "end_ms": 960
+      }
+    ],
+    "word_count": 2
+  },
+  "ch08-489": {
+    "words": [
+      {
+        "word": "Destrozaron",
+        "start_ms": 100,
+        "end_ms": 880
+      },
+      {
+        "word": "\u00eddolos.",
+        "start_ms": 880,
+        "end_ms": 1460
+      }
+    ],
+    "word_count": 2
+  },
+  "ch08-519": {
+    "words": [
+      {
+        "word": "Una",
+        "start_ms": 120,
+        "end_ms": 260
+      },
+      {
+        "word": "tradici\u00f3n",
+        "start_ms": 260,
+        "end_ms": 760
+      },
+      {
+        "word": "escribal",
+        "start_ms": 760,
+        "end_ms": 1280
+      },
+      {
+        "word": "es",
+        "start_ms": 1280,
+        "end_ms": 1620
+      },
+      {
+        "word": "costosa.",
+        "start_ms": 1620,
+        "end_ms": 2060
+      }
+    ],
+    "word_count": 5
+  },
+  "ch08-526": {
+    "words": [
+      {
+        "word": "Evolucion\u00f3.",
+        "start_ms": 80,
+        "end_ms": 840
+      }
+    ],
+    "word_count": 1
+  },
+  "ch08-537": {
+    "words": [
+      {
+        "word": "El",
+        "start_ms": 100,
+        "end_ms": 240
+      },
+      {
+        "word": "idioma",
+        "start_ms": 240,
+        "end_ms": 600
+      },
+      {
+        "word": "zapoteco",
+        "start_ms": 600,
+        "end_ms": 1300
+      },
+      {
+        "word": "no",
+        "start_ms": 1300,
+        "end_ms": 1620
+      },
+      {
+        "word": "muri\u00f3.",
+        "start_ms": 1620,
+        "end_ms": 2060
+      }
+    ],
+    "word_count": 5
+  },
+  "ch09-553": {
+    "words": [
+      {
+        "word": "Abarca",
+        "start_ms": 120,
+        "end_ms": 480
+      },
+      {
+        "word": "casi",
+        "start_ms": 480,
+        "end_ms": 740
+      },
+      {
+        "word": "un",
+        "start_ms": 740,
+        "end_ms": 880
+      },
+      {
+        "word": "siglo",
+        "start_ms": 880,
+        "end_ms": 1220
+      },
+      {
+        "word": "y",
+        "start_ms": 1220,
+        "end_ms": 1440
+      },
+      {
+        "word": "no",
+        "start_ms": 1440,
+        "end_ms": 1560
+      },
+      {
+        "word": "ha",
+        "start_ms": 1560,
+        "end_ms": 1640
+      },
+      {
+        "word": "terminado.",
+        "start_ms": 1640,
+        "end_ms": 2180
+      }
+    ],
+    "word_count": 8
+  },
+  "ch09-589": {
+    "words": [
+      {
+        "word": "Hay",
+        "start_ms": 120,
+        "end_ms": 260
+      },
+      {
+        "word": "otra",
+        "start_ms": 260,
+        "end_ms": 440
+      },
+      {
+        "word": "v\u00eda",
+        "start_ms": 440,
+        "end_ms": 740
+      },
+      {
+        "word": "de",
+        "start_ms": 740,
+        "end_ms": 820
+      },
+      {
+        "word": "esperanza.",
+        "start_ms": 820,
+        "end_ms": 1270
+      }
+    ],
+    "word_count": 5
+  },
+  "ch09-613": {
+    "words": [
+      {
+        "word": "La",
+        "start_ms": 0,
+        "end_ms": 180
+      },
+      {
+        "word": "carrera",
+        "start_ms": 220,
+        "end_ms": 580
+      },
+      {
+        "word": "no",
+        "start_ms": 580,
+        "end_ms": 780
+      },
+      {
+        "word": "ha",
+        "start_ms": 780,
+        "end_ms": 860
+      },
+      {
+        "word": "terminado.",
+        "start_ms": 860,
+        "end_ms": 1340
+      }
+    ],
+    "word_count": 5
+  },
+  "ch10-642": {
+    "words": [
+      {
+        "word": "Obsidiana",
+        "start_ms": 100,
+        "end_ms": 740
+      },
+      {
+        "word": "de",
+        "start_ms": 740,
+        "end_ms": 920
+      },
+      {
+        "word": "las",
+        "start_ms": 920,
+        "end_ms": 1080
+      },
+      {
+        "word": "tierras",
+        "start_ms": 1080,
+        "end_ms": 1500
+      },
+      {
+        "word": "altas",
+        "start_ms": 1500,
+        "end_ms": 1940
+      },
+      {
+        "word": "centrales.",
+        "start_ms": 1940,
+        "end_ms": 2400
+      }
+    ],
+    "word_count": 6
+  },
+  "ch10-643": {
+    "words": [
+      {
+        "word": "Cacao",
+        "start_ms": 320,
+        "end_ms": 520
+      },
+      {
+        "word": "de",
+        "start_ms": 520,
+        "end_ms": 700
+      },
+      {
+        "word": "las",
+        "start_ms": 700,
+        "end_ms": 840
+      },
+      {
+        "word": "tierras",
+        "start_ms": 840,
+        "end_ms": 1240
+      },
+      {
+        "word": "bajas",
+        "start_ms": 1240,
+        "end_ms": 1640
+      },
+      {
+        "word": "tropicales.",
+        "start_ms": 1640,
+        "end_ms": 1740
+      }
+    ],
+    "word_count": 6
+  },
+  "ch10-644": {
+    "words": [
+      {
+        "word": "Piedra",
+        "start_ms": 40,
+        "end_ms": 340
+      },
+      {
+        "word": "verde",
+        "start_ms": 340,
+        "end_ms": 680
+      },
+      {
+        "word": "y",
+        "start_ms": 680,
+        "end_ms": 980
+      },
+      {
+        "word": "jade",
+        "start_ms": 980,
+        "end_ms": 1360
+      },
+      {
+        "word": "de",
+        "start_ms": 1360,
+        "end_ms": 1480
+      },
+      {
+        "word": "Guatemala.",
+        "start_ms": 1480,
+        "end_ms": 1980
+      }
+    ],
+    "word_count": 6
+  },
+  "ch10-645": {
+    "words": [
+      {
+        "word": "Plumas",
+        "start_ms": 100,
+        "end_ms": 380
+      },
+      {
+        "word": "de",
+        "start_ms": 420,
+        "end_ms": 520
+      },
+      {
+        "word": "aves",
+        "start_ms": 520,
+        "end_ms": 780
+      },
+      {
+        "word": "ex\u00f3ticas.",
+        "start_ms": 780,
+        "end_ms": 1160
+      }
+    ],
+    "word_count": 4
+  },
+  "ch10-660": {
+    "words": [
+      {
+        "word": "\u00bfPor",
+        "start_ms": 0,
+        "end_ms": 140
+      },
+      {
+        "word": "qu\u00e9?",
+        "start_ms": 140,
+        "end_ms": 500
+      }
+    ],
+    "word_count": 2
+  },
+  "ch11-663": {
+    "words": [
+      {
+        "word": "No",
+        "start_ms": 80,
+        "end_ms": 260
+      },
+      {
+        "word": "hay",
+        "start_ms": 260,
+        "end_ms": 460
+      },
+      {
+        "word": "una",
+        "start_ms": 460,
+        "end_ms": 640
+      },
+      {
+        "word": "historia",
+        "start_ms": 640,
+        "end_ms": 980
+      },
+      {
+        "word": "dram\u00e1tica",
+        "start_ms": 980,
+        "end_ms": 1680
+      },
+      {
+        "word": "que",
+        "start_ms": 1680,
+        "end_ms": 1900
+      },
+      {
+        "word": "contar.",
+        "start_ms": 1900,
+        "end_ms": 2200
+      }
+    ],
+    "word_count": 7
+  },
+  "ch11-664": {
+    "words": [
+      {
+        "word": "Ning\u00fan",
+        "start_ms": 220,
+        "end_ms": 480
+      },
+      {
+        "word": "asedio.",
+        "start_ms": 480,
+        "end_ms": 880
+      }
+    ],
+    "word_count": 2
+  },
+  "ch11-665": {
+    "words": [
+      {
+        "word": "Ning\u00fan",
+        "start_ms": 200,
+        "end_ms": 420
+      },
+      {
+        "word": "incendio.",
+        "start_ms": 420,
+        "end_ms": 1020
+      }
+    ],
+    "word_count": 2
+  },
+  "ch11-675": {
+    "words": [
+      {
+        "word": "La",
+        "start_ms": 80,
+        "end_ms": 180
+      },
+      {
+        "word": "gente",
+        "start_ms": 180,
+        "end_ms": 460
+      },
+      {
+        "word": "no",
+        "start_ms": 460,
+        "end_ms": 760
+      },
+      {
+        "word": "muri\u00f3.",
+        "start_ms": 760,
+        "end_ms": 1120
+      }
+    ],
+    "word_count": 4
+  },
+  "ch11-676": {
+    "words": [
+      {
+        "word": "Se",
+        "start_ms": 40,
+        "end_ms": 140
+      },
+      {
+        "word": "mud\u00f3.",
+        "start_ms": 140,
+        "end_ms": 600
+      }
+    ],
+    "word_count": 2
+  },
+  "ch11-677": {
+    "words": [
+      {
+        "word": "Monta\u00f1a",
+        "start_ms": 100,
+        "end_ms": 600
+      },
+      {
+        "word": "abajo.",
+        "start_ms": 600,
+        "end_ms": 920
+      }
+    ],
+    "word_count": 2
+  },
+  "ch11-678": {
+    "words": [
+      {
+        "word": "Hacia",
+        "start_ms": 0,
+        "end_ms": 260
+      },
+      {
+        "word": "el",
+        "start_ms": 260,
+        "end_ms": 400
+      },
+      {
+        "word": "valle.",
+        "start_ms": 400,
+        "end_ms": 840
+      }
+    ],
+    "word_count": 3
+  },
+  "ch11-683": {
+    "words": [
+      {
+        "word": "Se",
+        "start_ms": 20,
+        "end_ms": 120
+      },
+      {
+        "word": "dispers\u00f3.",
+        "start_ms": 120,
+        "end_ms": 840
+      }
+    ],
+    "word_count": 2
+  },
+  "ch11-691": {
+    "words": [
+      {
+        "word": "\u00bfPero",
+        "start_ms": 100,
+        "end_ms": 260
+      },
+      {
+        "word": "qu\u00e9?",
+        "start_ms": 260,
+        "end_ms": 620
+      }
+    ],
+    "word_count": 2
+  },
+  "ch11-728": {
+    "words": [
+      {
+        "word": "No",
+        "start_ms": 100,
+        "end_ms": 300
+      },
+      {
+        "word": "hubo",
+        "start_ms": 300,
+        "end_ms": 600
+      },
+      {
+        "word": "una",
+        "start_ms": 600,
+        "end_ms": 740
+      },
+      {
+        "word": "causa",
+        "start_ms": 740,
+        "end_ms": 1020
+      },
+      {
+        "word": "\u00fanica.",
+        "start_ms": 1020,
+        "end_ms": 1460
+      }
+    ],
+    "word_count": 5
+  },
+  "ch11-729": {
+    "words": [
+      {
+        "word": "No",
+        "start_ms": 120,
+        "end_ms": 300
+      },
+      {
+        "word": "hubo",
+        "start_ms": 300,
+        "end_ms": 580
+      },
+      {
+        "word": "un",
+        "start_ms": 580,
+        "end_ms": 700
+      },
+      {
+        "word": "momento",
+        "start_ms": 700,
+        "end_ms": 1000
+      },
+      {
+        "word": "\u00fanico.",
+        "start_ms": 1000,
+        "end_ms": 1100
+      }
+    ],
+    "word_count": 5
+  },
+  "ch12-754": {
+    "words": [
+      {
+        "word": "Solo",
+        "start_ms": 60,
+        "end_ms": 360
+      },
+      {
+        "word": "el",
+        "start_ms": 360,
+        "end_ms": 700
+      },
+      {
+        "word": "oro",
+        "start_ms": 700,
+        "end_ms": 940
+      },
+      {
+        "word": "era",
+        "start_ms": 940,
+        "end_ms": 1340
+      },
+      {
+        "word": "asombroso.",
+        "start_ms": 1340,
+        "end_ms": 1900
+      }
+    ],
+    "word_count": 5
+  },
+  "ch12-765": {
+    "words": [
+      {
+        "word": "Ornamentos",
+        "start_ms": 460,
+        "end_ms": 760
+      },
+      {
+        "word": "de",
+        "start_ms": 760,
+        "end_ms": 840
+      },
+      {
+        "word": "perla",
+        "start_ms": 840,
+        "end_ms": 1200
+      },
+      {
+        "word": "de",
+        "start_ms": 1200,
+        "end_ms": 1320
+      },
+      {
+        "word": "la",
+        "start_ms": 1320,
+        "end_ms": 1440
+      },
+      {
+        "word": "costa",
+        "start_ms": 1720,
+        "end_ms": 1820
+      },
+      {
+        "word": "del",
+        "start_ms": 1820,
+        "end_ms": 1920
+      },
+      {
+        "word": "Pac\u00edfico.",
+        "start_ms": 1920,
+        "end_ms": 2140
+      }
+    ],
+    "word_count": 8
+  },
+  "ch12-776": {
+    "words": [
+      {
+        "word": "Pero",
+        "start_ms": 0,
+        "end_ms": 180
+      },
+      {
+        "word": "observa",
+        "start_ms": 180,
+        "end_ms": 700
+      },
+      {
+        "word": "la",
+        "start_ms": 700,
+        "end_ms": 800
+      },
+      {
+        "word": "iron\u00eda.",
+        "start_ms": 800,
+        "end_ms": 1260
+      }
+    ],
+    "word_count": 4
+  },
+  "ch12-794": {
+    "words": [
+      {
+        "word": "La",
+        "start_ms": 100,
+        "end_ms": 180
+      },
+      {
+        "word": "ciudad",
+        "start_ms": 180,
+        "end_ms": 540
+      },
+      {
+        "word": "permanece.",
+        "start_ms": 540,
+        "end_ms": 1120
+      }
+    ],
+    "word_count": 3
+  },
+  "ch12-796": {
+    "words": [
+      {
+        "word": "Los",
+        "start_ms": 120,
+        "end_ms": 240
+      },
+      {
+        "word": "grabados",
+        "start_ms": 240,
+        "end_ms": 740
+      },
+      {
+        "word": "permanecen.",
+        "start_ms": 740,
+        "end_ms": 1340
+      }
+    ],
+    "word_count": 3
+  },
+  "ch13-830": {
+    "words": [
+      {
+        "word": "La",
+        "start_ms": 120,
+        "end_ms": 200
+      },
+      {
+        "word": "lengua",
+        "start_ms": 200,
+        "end_ms": 560
+      },
+      {
+        "word": "persisti\u00f3.",
+        "start_ms": 560,
+        "end_ms": 1380
+      }
+    ],
+    "word_count": 3
+  },
+  "ch13-836": {
+    "words": [
+      {
+        "word": "Fue",
+        "start_ms": 160,
+        "end_ms": 260
+      },
+      {
+        "word": "una",
+        "start_ms": 260,
+        "end_ms": 440
+      },
+      {
+        "word": "transformaci\u00f3n.",
+        "start_ms": 440,
+        "end_ms": 890
+      }
+    ],
+    "word_count": 3
+  },
+  "ch14-856": {
+    "words": [
+      {
+        "word": "Pero",
+        "start_ms": 0,
+        "end_ms": 180
+      },
+      {
+        "word": "el",
+        "start_ms": 180,
+        "end_ms": 300
+      },
+      {
+        "word": "juego",
+        "start_ms": 360,
+        "end_ms": 480
+      },
+      {
+        "word": "de",
+        "start_ms": 480,
+        "end_ms": 660
+      },
+      {
+        "word": "pelota",
+        "start_ms": 660,
+        "end_ms": 1040
+      },
+      {
+        "word": "nunca",
+        "start_ms": 1040,
+        "end_ms": 1320
+      },
+      {
+        "word": "fue",
+        "start_ms": 1320,
+        "end_ms": 1660
+      },
+      {
+        "word": "solo",
+        "start_ms": 1660,
+        "end_ms": 1940
+      },
+      {
+        "word": "un",
+        "start_ms": 1940,
+        "end_ms": 2140
+      },
+      {
+        "word": "deporte.",
+        "start_ms": 2140,
+        "end_ms": 2460
+      }
+    ],
+    "word_count": 10
+  },
+  "ch15-881": {
+    "words": [
+      {
+        "word": "No",
+        "start_ms": 220,
+        "end_ms": 320
+      },
+      {
+        "word": "fue",
+        "start_ms": 320,
+        "end_ms": 520
+      },
+      {
+        "word": "as\u00ed.",
+        "start_ms": 520,
+        "end_ms": 980
+      }
+    ],
+    "word_count": 3
+  },
+  "ch15-891": {
+    "words": [
+      {
+        "word": "Pero",
+        "start_ms": 40,
+        "end_ms": 140
+      },
+      {
+        "word": "eran",
+        "start_ms": 140,
+        "end_ms": 460
+      },
+      {
+        "word": "contempor\u00e1neos.",
+        "start_ms": 460,
+        "end_ms": 1260
+      }
+    ],
+    "word_count": 3
+  },
+  "ch15-897": {
+    "words": [
+      {
+        "word": "No",
+        "start_ms": 80,
+        "end_ms": 280
+      },
+      {
+        "word": "tuvieron",
+        "start_ms": 280,
+        "end_ms": 680
+      },
+      {
+        "word": "acceso",
+        "start_ms": 680,
+        "end_ms": 1040
+      },
+      {
+        "word": "a",
+        "start_ms": 1040,
+        "end_ms": 1440
+      },
+      {
+        "word": "la",
+        "start_ms": 1440,
+        "end_ms": 1520
+      },
+      {
+        "word": "tecnolog\u00eda",
+        "start_ms": 1520,
+        "end_ms": 2000
+      },
+      {
+        "word": "china.",
+        "start_ms": 2000,
+        "end_ms": 2440
+      }
+    ],
+    "word_count": 7
+  },
+  "ch15-901": {
+    "words": [
+      {
+        "word": "Ocurri\u00f3,",
+        "start_ms": 80,
+        "end_ms": 540
+      },
+      {
+        "word": "a",
+        "start_ms": 660,
+        "end_ms": 720
+      },
+      {
+        "word": "lo",
+        "start_ms": 720,
+        "end_ms": 820
+      },
+      {
+        "word": "sumo,",
+        "start_ms": 820,
+        "end_ms": 1240
+      },
+      {
+        "word": "cuatro",
+        "start_ms": 1360,
+        "end_ms": 1660
+      },
+      {
+        "word": "o",
+        "start_ms": 1660,
+        "end_ms": 1900
+      },
+      {
+        "word": "cinco",
+        "start_ms": 2100,
+        "end_ms": 2200
+      },
+      {
+        "word": "veces.",
+        "start_ms": 2200,
+        "end_ms": 2760
+      }
+    ],
+    "word_count": 8
+  },
+  "ch15-909": {
+    "words": [
+      {
+        "word": "Monte",
+        "start_ms": 80,
+        "end_ms": 340
+      },
+      {
+        "word": "Alb\u00e1n",
+        "start_ms": 340,
+        "end_ms": 680
+      },
+      {
+        "word": "no",
+        "start_ms": 680,
+        "end_ms": 900
+      },
+      {
+        "word": "era",
+        "start_ms": 900,
+        "end_ms": 1040
+      },
+      {
+        "word": "un",
+        "start_ms": 1040,
+        "end_ms": 1140
+      },
+      {
+        "word": "lugar",
+        "start_ms": 1140,
+        "end_ms": 1340
+      },
+      {
+        "word": "atrasado.",
+        "start_ms": 1340,
+        "end_ms": 1840
+      }
+    ],
+    "word_count": 7
+  },
+  "ch15-927": {
+    "words": [
+      {
+        "word": "Organizaron",
+        "start_ms": 100,
+        "end_ms": 760
+      },
+      {
+        "word": "un",
+        "start_ms": 760,
+        "end_ms": 900
+      },
+      {
+        "word": "estado.",
+        "start_ms": 900,
+        "end_ms": 1380
+      }
+    ],
+    "word_count": 3
+  },
+  "ch15-951": {
+    "words": [
+      {
+        "word": "Estos",
+        "start_ms": 100,
+        "end_ms": 460
+      },
+      {
+        "word": "no",
+        "start_ms": 460,
+        "end_ms": 620
+      },
+      {
+        "word": "son",
+        "start_ms": 620,
+        "end_ms": 820
+      },
+      {
+        "word": "fracasos.",
+        "start_ms": 820,
+        "end_ms": 1280
+      }
+    ],
+    "word_count": 4
+  },
+  "ch15-952": {
+    "words": [
+      {
+        "word": "Son",
+        "start_ms": 160,
+        "end_ms": 280
+      },
+      {
+        "word": "la",
+        "start_ms": 280,
+        "end_ms": 440
+      },
+      {
+        "word": "frontera.",
+        "start_ms": 440,
+        "end_ms": 840
+      }
+    ],
+    "word_count": 3
+  },
+  "ch15-1002": {
+    "words": [
+      {
+        "word": "Para",
+        "start_ms": 0,
+        "end_ms": 120
+      },
+      {
+        "word": "la",
+        "start_ms": 120,
+        "end_ms": 260
+      },
+      {
+        "word": "escritura",
+        "start_ms": 260,
+        "end_ms": 700
+      },
+      {
+        "word": "espec\u00edficamente:",
+        "start_ms": 700,
+        "end_ms": 1540
+      }
+    ],
+    "word_count": 4
   }
 }
