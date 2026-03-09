@@ -1519,7 +1519,7 @@
     },
     "ch01-026": {
       "file": "audio/es/ch01-026.m4a",
-      "duration_ms": 1360,
+      "duration_ms": 1146,
       "pause_after_ms": 500,
       "words": [
         {
@@ -1536,7 +1536,7 @@
     },
     "ch01-027": {
       "file": "audio/es/ch01-027.m4a",
-      "duration_ms": 1240,
+      "duration_ms": 986,
       "pause_after_ms": 800,
       "words": [
         {
@@ -1995,7 +1995,7 @@
     },
     "ch01-034": {
       "file": "audio/es/ch01-034.m4a",
-      "duration_ms": 1160,
+      "duration_ms": 880,
       "pause_after_ms": 500,
       "words": [
         {
@@ -2012,7 +2012,7 @@
     },
     "ch01-035": {
       "file": "audio/es/ch01-035.m4a",
-      "duration_ms": 1640,
+      "duration_ms": 1520,
       "pause_after_ms": 500,
       "words": [
         {
@@ -5949,7 +5949,7 @@
     },
     "ch02-082": {
       "file": "audio/es/ch02-082.m4a",
-      "duration_ms": 1420,
+      "duration_ms": 1226,
       "pause_after_ms": 500,
       "words": [
         {
@@ -6914,7 +6914,7 @@
     },
     "ch02-092": {
       "file": "audio/es/ch02-092.m4a",
-      "duration_ms": 1440,
+      "duration_ms": 1253,
       "pause_after_ms": 500,
       "words": [
         {
@@ -13547,7 +13547,7 @@
     },
     "ch03-162": {
       "file": "audio/es/ch03-162.m4a",
-      "duration_ms": 1120,
+      "duration_ms": 933,
       "pause_after_ms": 500,
       "words": [
         {
@@ -22769,7 +22769,7 @@
     },
     "ch04-265": {
       "file": "audio/es/ch04-265.m4a",
-      "duration_ms": 1230,
+      "duration_ms": 973,
       "pause_after_ms": 800,
       "words": [
         {
@@ -22818,7 +22818,7 @@
     },
     "ch04-267": {
       "file": "audio/es/ch04-267.m4a",
-      "duration_ms": 1260,
+      "duration_ms": 1012,
       "pause_after_ms": 800,
       "words": [
         {
@@ -23051,7 +23051,7 @@
     },
     "ch04-271": {
       "file": "audio/es/ch04-271.m4a",
-      "duration_ms": 1420,
+      "duration_ms": 1226,
       "pause_after_ms": 800,
       "words": [
         {
@@ -24439,7 +24439,7 @@
     },
     "ch05-292": {
       "file": "audio/es/ch05-292.m4a",
-      "duration_ms": 1530,
+      "duration_ms": 1373,
       "pause_after_ms": 500,
       "words": [
         {
@@ -25364,7 +25364,7 @@
     },
     "ch05-307": {
       "file": "audio/es/ch05-307.m4a",
-      "duration_ms": 1660,
+      "duration_ms": 1546,
       "pause_after_ms": 500,
       "words": [
         {
@@ -25391,7 +25391,7 @@
     },
     "ch05-308": {
       "file": "audio/es/ch05-308.m4a",
-      "duration_ms": 1600,
+      "duration_ms": 1466,
       "pause_after_ms": 500,
       "words": [
         {
@@ -27554,7 +27554,7 @@
     },
     "ch05-332": {
       "file": "audio/es/ch05-332.m4a",
-      "duration_ms": 1420,
+      "duration_ms": 1226,
       "pause_after_ms": 500,
       "words": [
         {
@@ -32255,7 +32255,7 @@
     },
     "ch06-381": {
       "file": "audio/es/ch06-381.m4a",
-      "duration_ms": 1650,
+      "duration_ms": 1533,
       "pause_after_ms": 500,
       "words": [
         {
@@ -40977,7 +40977,7 @@
     },
     "ch07-468": {
       "file": "audio/es/ch07-468.m4a",
-      "duration_ms": 1460,
+      "duration_ms": 1280,
       "pause_after_ms": 800,
       "words": [
         {
@@ -46671,7 +46671,7 @@
     },
     "ch08-526": {
       "file": "audio/es/ch08-526.m4a",
-      "duration_ms": 1320,
+      "duration_ms": 1093,
       "pause_after_ms": 500,
       "words": [
         {
@@ -58553,7 +58553,7 @@
     },
     "ch10-645": {
       "file": "audio/es/ch10-645.m4a",
-      "duration_ms": 1380,
+      "duration_ms": 1173,
       "pause_after_ms": 500,
       "words": [
         {
@@ -59988,7 +59988,7 @@
     },
     "ch10-660": {
       "file": "audio/es/ch10-660.m4a",
-      "duration_ms": 880,
+      "duration_ms": 640,
       "pause_after_ms": 800,
       "words": [
         {
@@ -60149,7 +60149,7 @@
     },
     "ch11-664": {
       "file": "audio/es/ch11-664.m4a",
-      "duration_ms": 1460,
+      "duration_ms": 1280,
       "pause_after_ms": 500,
       "words": [
         {
@@ -60166,7 +60166,7 @@
     },
     "ch11-665": {
       "file": "audio/es/ch11-665.m4a",
-      "duration_ms": 1560,
+      "duration_ms": 1413,
       "pause_after_ms": 500,
       "words": [
         {
@@ -60821,7 +60821,7 @@
     },
     "ch11-675": {
       "file": "audio/es/ch11-675.m4a",
-      "duration_ms": 1660,
+      "duration_ms": 1546,
       "pause_after_ms": 500,
       "words": [
         {
@@ -60848,7 +60848,7 @@
     },
     "ch11-676": {
       "file": "audio/es/ch11-676.m4a",
-      "duration_ms": 1100,
+      "duration_ms": 800,
       "pause_after_ms": 500,
       "words": [
         {
@@ -60865,7 +60865,7 @@
     },
     "ch11-677": {
       "file": "audio/es/ch11-677.m4a",
-      "duration_ms": 1440,
+      "duration_ms": 1253,
       "pause_after_ms": 500,
       "words": [
         {
@@ -60882,7 +60882,7 @@
     },
     "ch11-678": {
       "file": "audio/es/ch11-678.m4a",
-      "duration_ms": 1300,
+      "duration_ms": 1066,
       "pause_after_ms": 500,
       "words": [
         {
@@ -61282,7 +61282,7 @@
     },
     "ch11-683": {
       "file": "audio/es/ch11-683.m4a",
-      "duration_ms": 1320,
+      "duration_ms": 1093,
       "pause_after_ms": 800,
       "words": [
         {
@@ -61948,7 +61948,7 @@
     },
     "ch11-691": {
       "file": "audio/es/ch11-691.m4a",
-      "duration_ms": 1120,
+      "duration_ms": 826,
       "pause_after_ms": 800,
       "words": [
         {
@@ -76767,7 +76767,7 @@
     },
     "ch13-836": {
       "file": "audio/es/ch13-836.m4a",
-      "duration_ms": 1390,
+      "duration_ms": 1186,
       "pause_after_ms": 500,
       "words": [
         {
@@ -82403,7 +82403,7 @@
     },
     "ch15-881": {
       "file": "audio/es/ch15-881.m4a",
-      "duration_ms": 1460,
+      "duration_ms": 1280,
       "pause_after_ms": 500,
       "words": [
         {
@@ -88968,7 +88968,7 @@
     },
     "ch15-952": {
       "file": "audio/es/ch15-952.m4a",
-      "duration_ms": 1340,
+      "duration_ms": 1120,
       "pause_after_ms": 500,
       "words": [
         {
