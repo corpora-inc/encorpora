@@ -510,7 +510,7 @@
           "end_ms": 1480
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 1480,
           "end_ms": 1800
         },
@@ -573,7 +573,7 @@
     },
     "ch00-011": {
       "file": "audio/en/ch00-011.m4a",
-      "duration_ms": 1840,
+      "duration_ms": 1780,
       "pause_after_ms": 500,
       "words": [
         {
@@ -902,7 +902,7 @@
           "end_ms": 1680
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 1680,
           "end_ms": 2220
         },
@@ -957,7 +957,7 @@
           "end_ms": 4480
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 4480,
           "end_ms": 4900
         },
@@ -1302,7 +1302,7 @@
           "end_ms": 3140
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 3140,
           "end_ms": 3600
         },
@@ -1372,7 +1372,7 @@
           "end_ms": 7220
         },
         {
-          "word": "Zimatlán",
+          "word": "Zimatl\u00e1n",
           "start_ms": 7220,
           "end_ms": 7780
         },
@@ -1437,7 +1437,7 @@
     },
     "ch01-025": {
       "file": "audio/en/ch01-025.m4a",
-      "duration_ms": 3080,
+      "duration_ms": 2140,
       "pause_after_ms": 500,
       "words": [
         {
@@ -1491,7 +1491,7 @@
     },
     "ch01-027": {
       "file": "audio/en/ch01-027.m4a",
-      "duration_ms": 1480,
+      "duration_ms": 1060,
       "pause_after_ms": 800,
       "words": [
         {
@@ -1701,7 +1701,7 @@
           "end_ms": 2420
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 2420,
           "end_ms": 3080
         },
@@ -1975,7 +1975,7 @@
     },
     "ch01-034": {
       "file": "audio/en/ch01-034.m4a",
-      "duration_ms": 1680,
+      "duration_ms": 1460,
       "pause_after_ms": 500,
       "words": [
         {
@@ -2271,7 +2271,7 @@
     },
     "ch01-042": {
       "file": "audio/en/ch01-042.m4a",
-      "duration_ms": 5560,
+      "duration_ms": 2320,
       "pause_after_ms": 500,
       "words": [
         {
@@ -2390,7 +2390,7 @@
     },
     "ch01-044": {
       "file": "audio/en/ch01-044.m4a",
-      "duration_ms": 12680,
+      "duration_ms": 12880,
       "pause_after_ms": 500,
       "words": [
         {
@@ -2464,7 +2464,7 @@
           "end_ms": 5740
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 5740,
           "end_ms": 6180
         },
@@ -2489,7 +2489,7 @@
           "end_ms": 7420
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 7420,
           "end_ms": 7880
         },
@@ -2631,7 +2631,7 @@
           "end_ms": 6400
         },
         {
-          "word": "Albán",
+          "word": "Alb\u00e1n",
           "start_ms": 6400,
           "end_ms": 6940
         },
@@ -2703,7 +2703,7 @@
           "end_ms": 2180
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 2180,
           "end_ms": 2620
         },
@@ -2801,7 +2801,7 @@
     },
     "ch01-047": {
       "file": "audio/en/ch01-047.m4a",
-      "duration_ms": 3800,
+      "duration_ms": 5640,
       "pause_after_ms": 800,
       "words": [
         {
@@ -3265,7 +3265,7 @@
           "end_ms": 2240
         },
         {
-          "word": "Albán.",
+          "word": "Alb\u00e1n.",
           "start_ms": 2240,
           "end_ms": 2820
         }
@@ -3273,7 +3273,7 @@
     },
     "ch01-053": {
       "file": "audio/en/ch01-053.m4a",
-      "duration_ms": 8880,
+      "duration_ms": 8640,
       "pause_after_ms": 800,
       "words": [
         {
@@ -3449,7 +3449,7 @@
           "end_ms": 3740
         },
         {
-          "word": "Albán\"",
+          "word": "Alb\u00e1n\"",
           "start_ms": 3740,
           "end_ms": 4480
         },
@@ -3541,7 +3541,7 @@
           "end_ms": 4660
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 4660,
           "end_ms": 5080
         },
@@ -3601,7 +3601,7 @@
           "end_ms": 8800
         },
         {
-          "word": "Montalbán.",
+          "word": "Montalb\u00e1n.",
           "start_ms": 8800,
           "end_ms": 9600
         }
@@ -3969,7 +3969,7 @@
           "end_ms": 3660
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 3660,
           "end_ms": 4120
         },
@@ -4054,7 +4054,7 @@
     },
     "ch01-061": {
       "file": "audio/en/ch01-061.m4a",
-      "duration_ms": 3000,
+      "duration_ms": 2400,
       "pause_after_ms": 500,
       "words": [
         {
@@ -4091,7 +4091,7 @@
     },
     "ch01-062": {
       "file": "audio/en/ch01-062.m4a",
-      "duration_ms": 2000,
+      "duration_ms": 1670,
       "pause_after_ms": 800,
       "words": [
         {
@@ -4319,7 +4319,7 @@
     },
     "ch01-066": {
       "file": "audio/en/ch01-066.m4a",
-      "duration_ms": 11840,
+      "duration_ms": 11720,
       "pause_after_ms": 800,
       "words": [
         {
@@ -4761,7 +4761,7 @@
           "end_ms": 2620
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 2620,
           "end_ms": 3240
         },
@@ -4938,7 +4938,7 @@
     },
     "ch01-073": {
       "file": "audio/en/ch01-073.m4a",
-      "duration_ms": 2000,
+      "duration_ms": 1880,
       "pause_after_ms": 800,
       "words": [
         {
@@ -5082,7 +5082,7 @@
     },
     "ch02-076": {
       "file": "audio/en/ch02-076.m4a",
-      "duration_ms": 17000,
+      "duration_ms": 14680,
       "pause_after_ms": 500,
       "words": [
         {
@@ -5146,7 +5146,7 @@
           "end_ms": 4620
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 4620,
           "end_ms": 5000
         },
@@ -5221,7 +5221,7 @@
           "end_ms": 9740
         },
         {
-          "word": "Zimatlán",
+          "word": "Zimatl\u00e1n",
           "start_ms": 9740,
           "end_ms": 10440
         },
@@ -5261,7 +5261,7 @@
           "end_ms": 12620
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 12620,
           "end_ms": 13140
         },
@@ -5296,7 +5296,7 @@
           "end_ms": 15180
         },
         {
-          "word": "Albán's",
+          "word": "Alb\u00e1n's",
           "start_ms": 15180,
           "end_ms": 15700
         },
@@ -5616,7 +5616,7 @@
           "end_ms": 1860
         },
         {
-          "word": "Albán",
+          "word": "Alb\u00e1n",
           "start_ms": 1860,
           "end_ms": 2260
         },
@@ -5664,7 +5664,7 @@
     },
     "ch02-082": {
       "file": "audio/en/ch02-082.m4a",
-      "duration_ms": 1840,
+      "duration_ms": 1520,
       "pause_after_ms": 500,
       "words": [
         {
@@ -5696,7 +5696,7 @@
     },
     "ch02-083": {
       "file": "audio/en/ch02-083.m4a",
-      "duration_ms": 2440,
+      "duration_ms": 1280,
       "pause_after_ms": 800,
       "words": [
         {
@@ -5728,7 +5728,7 @@
     },
     "ch02-084": {
       "file": "audio/en/ch02-084.m4a",
-      "duration_ms": 12680,
+      "duration_ms": 14320,
       "pause_after_ms": 500,
       "words": [
         {
@@ -5752,7 +5752,7 @@
           "end_ms": 2220
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 2220,
           "end_ms": 2720
         },
@@ -5787,7 +5787,7 @@
           "end_ms": 4560
         },
         {
-          "word": "Albán",
+          "word": "Alb\u00e1n",
           "start_ms": 4560,
           "end_ms": 5020
         },
@@ -5802,7 +5802,7 @@
           "end_ms": 5640
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 5640,
           "end_ms": 6080
         },
@@ -5862,7 +5862,7 @@
           "end_ms": 9600
         },
         {
-          "word": "José",
+          "word": "Jos\u00e9",
           "start_ms": 9600,
           "end_ms": 10140
         },
@@ -6181,7 +6181,7 @@
     },
     "ch02-088": {
       "file": "audio/en/ch02-088.m4a",
-      "duration_ms": 7600,
+      "duration_ms": 6320,
       "pause_after_ms": 800,
       "words": [
         {
@@ -6190,7 +6190,7 @@
           "end_ms": 580
         },
         {
-          "word": "José",
+          "word": "Jos\u00e9",
           "start_ms": 580,
           "end_ms": 1500
         },
@@ -6273,7 +6273,7 @@
     },
     "ch02-089": {
       "file": "audio/en/ch02-089.m4a",
-      "duration_ms": 10680,
+      "duration_ms": 9720,
       "pause_after_ms": 500,
       "words": [
         {
@@ -6297,7 +6297,7 @@
           "end_ms": 1000
         },
         {
-          "word": "José",
+          "word": "Jos\u00e9",
           "start_ms": 1000,
           "end_ms": 1400
         },
@@ -6332,7 +6332,7 @@
           "end_ms": 4100
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 4100,
           "end_ms": 4740
         },
@@ -6551,7 +6551,7 @@
           "end_ms": 3900
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 3900,
           "end_ms": 4460
         },
@@ -6609,7 +6609,7 @@
     },
     "ch02-092": {
       "file": "audio/en/ch02-092.m4a",
-      "duration_ms": 2200,
+      "duration_ms": 1220,
       "pause_after_ms": 500,
       "words": [
         {
@@ -6631,7 +6631,7 @@
     },
     "ch02-093": {
       "file": "audio/en/ch02-093.m4a",
-      "duration_ms": 16560,
+      "duration_ms": 16440,
       "pause_after_ms": 500,
       "words": [
         {
@@ -6645,7 +6645,7 @@
           "end_ms": 1580
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 1580,
           "end_ms": 2120
         },
@@ -6740,7 +6740,7 @@
           "end_ms": 8300
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 8300,
           "end_ms": 8600
         },
@@ -6770,7 +6770,7 @@
           "end_ms": 9800
         },
         {
-          "word": "José",
+          "word": "Jos\u00e9",
           "start_ms": 9800,
           "end_ms": 10220
         },
@@ -7171,7 +7171,7 @@
     },
     "ch02-098": {
       "file": "audio/en/ch02-098.m4a",
-      "duration_ms": 6800,
+      "duration_ms": 6880,
       "pause_after_ms": 500,
       "words": [
         {
@@ -7180,7 +7180,7 @@
           "end_ms": 500
         },
         {
-          "word": "José",
+          "word": "Jos\u00e9",
           "start_ms": 500,
           "end_ms": 1160
         },
@@ -7421,7 +7421,7 @@
           "end_ms": 4460
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 4520,
           "end_ms": 5040
         },
@@ -7593,7 +7593,7 @@
     },
     "ch02-104": {
       "file": "audio/en/ch02-104.m4a",
-      "duration_ms": 4960,
+      "duration_ms": 4160,
       "pause_after_ms": 1200,
       "words": [
         {
@@ -7737,7 +7737,7 @@
     },
     "ch02-106": {
       "file": "audio/en/ch02-106.m4a",
-      "duration_ms": 13520,
+      "duration_ms": 12200,
       "pause_after_ms": 500,
       "words": [
         {
@@ -7826,7 +7826,7 @@
           "end_ms": 7140
         },
         {
-          "word": "José",
+          "word": "Jos\u00e9",
           "start_ms": 7140,
           "end_ms": 7560
         },
@@ -8078,7 +8078,7 @@
     },
     "ch02-109": {
       "file": "audio/en/ch02-109.m4a",
-      "duration_ms": 1720,
+      "duration_ms": 1680,
       "pause_after_ms": 500,
       "words": [
         {
@@ -8124,7 +8124,7 @@
           "end_ms": 640
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 640,
           "end_ms": 1240
         },
@@ -8301,7 +8301,7 @@
           "end_ms": 10160
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 10160,
           "end_ms": 10860
         },
@@ -8381,7 +8381,7 @@
           "end_ms": 15120
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 15120,
           "end_ms": 15460
         },
@@ -8500,7 +8500,7 @@
           "end_ms": 3200
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 3200,
           "end_ms": 3760
         },
@@ -8525,7 +8525,7 @@
           "end_ms": 4920
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 4920,
           "end_ms": 5420
         },
@@ -8643,7 +8643,7 @@
     },
     "ch02-114": {
       "file": "audio/en/ch02-114.m4a",
-      "duration_ms": 3400,
+      "duration_ms": 3320,
       "pause_after_ms": 1200,
       "words": [
         {
@@ -8667,7 +8667,7 @@
           "end_ms": 1880
         },
         {
-          "word": "José",
+          "word": "Jos\u00e9",
           "start_ms": 1880,
           "end_ms": 2560
         },
@@ -8908,7 +8908,7 @@
           "end_ms": 3780
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 3780,
           "end_ms": 4040
         },
@@ -9038,7 +9038,7 @@
           "end_ms": 13900
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 13900,
           "end_ms": 14460
         },
@@ -9081,7 +9081,7 @@
     },
     "ch02-118": {
       "file": "audio/en/ch02-118.m4a",
-      "duration_ms": 2800,
+      "duration_ms": 5560,
       "pause_after_ms": 500,
       "words": [
         {
@@ -9321,7 +9321,7 @@
           "end_ms": 2300
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 2300,
           "end_ms": 2700
         },
@@ -9346,7 +9346,7 @@
           "end_ms": 5280
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 5280,
           "end_ms": 5760
         },
@@ -9409,7 +9409,7 @@
     },
     "ch02-122": {
       "file": "audio/en/ch02-122.m4a",
-      "duration_ms": 12480,
+      "duration_ms": 13400,
       "pause_after_ms": 500,
       "words": [
         {
@@ -9581,7 +9581,7 @@
     },
     "ch02-123": {
       "file": "audio/en/ch02-123.m4a",
-      "duration_ms": 9300,
+      "duration_ms": 11880,
       "pause_after_ms": 800,
       "words": [
         {
@@ -9615,7 +9615,7 @@
           "end_ms": 2120
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 2120,
           "end_ms": 2540
         },
@@ -9750,7 +9750,7 @@
     },
     "ch02-125": {
       "file": "audio/en/ch02-125.m4a",
-      "duration_ms": 8840,
+      "duration_ms": 9680,
       "pause_after_ms": 500,
       "words": [
         {
@@ -9794,7 +9794,7 @@
           "end_ms": 3400
         },
         {
-          "word": "José",
+          "word": "Jos\u00e9",
           "start_ms": 3400,
           "end_ms": 3900
         },
@@ -9948,7 +9948,7 @@
           "end_ms": 4019
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 4019,
           "end_ms": 4540
         },
@@ -10147,7 +10147,7 @@
     },
     "ch02-131": {
       "file": "audio/en/ch02-131.m4a",
-      "duration_ms": 9600,
+      "duration_ms": 8280,
       "pause_after_ms": 500,
       "words": [
         {
@@ -10156,7 +10156,7 @@
           "end_ms": 480
         },
         {
-          "word": "José",
+          "word": "Jos\u00e9",
           "start_ms": 480,
           "end_ms": 1200
         },
@@ -10360,7 +10360,7 @@
           "end_ms": 5000
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 5000,
           "end_ms": 5500
         },
@@ -10478,7 +10478,7 @@
     },
     "ch02-134": {
       "file": "audio/en/ch02-134.m4a",
-      "duration_ms": 5640,
+      "duration_ms": 5200,
       "pause_after_ms": 500,
       "words": [
         {
@@ -10527,7 +10527,7 @@
           "end_ms": 3560
         },
         {
-          "word": "José",
+          "word": "Jos\u00e9",
           "start_ms": 3560,
           "end_ms": 4080
         },
@@ -10644,7 +10644,7 @@
     },
     "ch02-137": {
       "file": "audio/en/ch02-137.m4a",
-      "duration_ms": 1800,
+      "duration_ms": 1660,
       "pause_after_ms": 500,
       "words": [
         {
@@ -10703,7 +10703,7 @@
     },
     "ch02-139": {
       "file": "audio/en/ch02-139.m4a",
-      "duration_ms": 2200,
+      "duration_ms": 1920,
       "pause_after_ms": 500,
       "words": [
         {
@@ -10856,7 +10856,7 @@
           "end_ms": 2140
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 2400,
           "end_ms": 2500
         },
@@ -10921,7 +10921,7 @@
           "end_ms": 7740
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 7740,
           "end_ms": 8300
         },
@@ -11021,7 +11021,7 @@
     },
     "ch02-143": {
       "file": "audio/en/ch02-143.m4a",
-      "duration_ms": 3000,
+      "duration_ms": 2040,
       "pause_after_ms": 800,
       "words": [
         {
@@ -11045,7 +11045,7 @@
           "end_ms": 1020
         },
         {
-          "word": "Albán.",
+          "word": "Alb\u00e1n.",
           "start_ms": 1020,
           "end_ms": 1540
         }
@@ -11316,7 +11316,7 @@
           "end_ms": 1440
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 2160,
           "end_ms": 2160
         },
@@ -11515,7 +11515,7 @@
           "end_ms": 440
         },
         {
-          "word": "Albán",
+          "word": "Alb\u00e1n",
           "start_ms": 440,
           "end_ms": 920
         },
@@ -11582,7 +11582,7 @@
           "end_ms": 2780
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 2940,
           "end_ms": 3580
         },
@@ -11612,7 +11612,7 @@
           "end_ms": 5700
         },
         {
-          "word": "Albán",
+          "word": "Alb\u00e1n",
           "start_ms": 5700,
           "end_ms": 6220
         },
@@ -11667,7 +11667,7 @@
           "end_ms": 10140
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 10160,
           "end_ms": 11020
         },
@@ -11836,7 +11836,7 @@
           "end_ms": 2520
         },
         {
-          "word": "Albán",
+          "word": "Alb\u00e1n",
           "start_ms": 2520,
           "end_ms": 3080
         },
@@ -11936,7 +11936,7 @@
     },
     "ch03-154": {
       "file": "audio/en/ch03-154.m4a",
-      "duration_ms": 2920,
+      "duration_ms": 2280,
       "pause_after_ms": 500,
       "words": [
         {
@@ -11960,7 +11960,7 @@
           "end_ms": 1380
         },
         {
-          "word": "José",
+          "word": "Jos\u00e9",
           "start_ms": 1380,
           "end_ms": 1960
         },
@@ -12047,7 +12047,7 @@
           "end_ms": 5600
         },
         {
-          "word": "Albán",
+          "word": "Alb\u00e1n",
           "start_ms": 5600,
           "end_ms": 6220
         },
@@ -12095,7 +12095,7 @@
     },
     "ch03-156": {
       "file": "audio/en/ch03-156.m4a",
-      "duration_ms": 6240,
+      "duration_ms": 5920,
       "pause_after_ms": 500,
       "words": [
         {
@@ -12109,7 +12109,7 @@
           "end_ms": 680
         },
         {
-          "word": "José",
+          "word": "Jos\u00e9",
           "start_ms": 680,
           "end_ms": 1380
         },
@@ -12258,7 +12258,7 @@
           "end_ms": 2540
         },
         {
-          "word": "Zimatlán",
+          "word": "Zimatl\u00e1n",
           "start_ms": 2540,
           "end_ms": 3140
         },
@@ -12298,7 +12298,7 @@
           "end_ms": 5540
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 5540,
           "end_ms": 6180
         },
@@ -12599,7 +12599,7 @@
           "end_ms": 3640
         },
         {
-          "word": "Albán",
+          "word": "Alb\u00e1n",
           "start_ms": 3640,
           "end_ms": 4000
         },
@@ -12672,7 +12672,7 @@
     },
     "ch03-162": {
       "file": "audio/en/ch03-162.m4a",
-      "duration_ms": 1080,
+      "duration_ms": 800,
       "pause_after_ms": 500,
       "words": [
         {
@@ -12689,7 +12689,7 @@
     },
     "ch03-163": {
       "file": "audio/en/ch03-163.m4a",
-      "duration_ms": 1840,
+      "duration_ms": 1600,
       "pause_after_ms": 500,
       "words": [
         {
@@ -12760,7 +12760,7 @@
           "end_ms": 3320
         },
         {
-          "word": "Albán's",
+          "word": "Alb\u00e1n's",
           "start_ms": 3320,
           "end_ms": 3960
         },
@@ -12834,7 +12834,7 @@
           "end_ms": 480
         },
         {
-          "word": "Albán's",
+          "word": "Alb\u00e1n's",
           "start_ms": 480,
           "end_ms": 1100
         },
@@ -12874,7 +12874,7 @@
           "end_ms": 3940
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 3940,
           "end_ms": 4500
         },
@@ -12919,7 +12919,7 @@
           "end_ms": 7160
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 7160,
           "end_ms": 7720
         },
@@ -13006,7 +13006,7 @@
           "end_ms": 2960
         },
         {
-          "word": "Albán's",
+          "word": "Alb\u00e1n's",
           "start_ms": 2960,
           "end_ms": 3640
         },
@@ -13138,7 +13138,7 @@
     },
     "ch03-170": {
       "file": "audio/en/ch03-170.m4a",
-      "duration_ms": 2040,
+      "duration_ms": 1920,
       "pause_after_ms": 500,
       "words": [
         {
@@ -13162,7 +13162,7 @@
           "end_ms": 920
         },
         {
-          "word": "Albán?",
+          "word": "Alb\u00e1n?",
           "start_ms": 920,
           "end_ms": 1420
         }
@@ -13417,7 +13417,7 @@
           "end_ms": 1540
         },
         {
-          "word": "Albán",
+          "word": "Alb\u00e1n",
           "start_ms": 1540,
           "end_ms": 2080
         },
@@ -13447,7 +13447,7 @@
           "end_ms": 4460
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 4460,
           "end_ms": 5000
         },
@@ -13472,7 +13472,7 @@
           "end_ms": 6380
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 6380,
           "end_ms": 6920
         },
@@ -13624,7 +13624,7 @@
           "end_ms": 5560
         },
         {
-          "word": "Albán",
+          "word": "Alb\u00e1n",
           "start_ms": 5560,
           "end_ms": 6080
         },
@@ -13771,7 +13771,7 @@
     },
     "ch03-179": {
       "file": "audio/en/ch03-179.m4a",
-      "duration_ms": 3720,
+      "duration_ms": 2460,
       "pause_after_ms": 500,
       "words": [
         {
@@ -13842,7 +13842,7 @@
           "end_ms": 3320
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 3320,
           "end_ms": 3840
         },
@@ -14134,7 +14134,7 @@
     },
     "ch03-183": {
       "file": "audio/en/ch03-183.m4a",
-      "duration_ms": 5240,
+      "duration_ms": 3570,
       "pause_after_ms": 500,
       "words": [
         {
@@ -14205,7 +14205,7 @@
           "end_ms": 2400
         },
         {
-          "word": "Albán",
+          "word": "Alb\u00e1n",
           "start_ms": 2400,
           "end_ms": 3120
         },
@@ -14305,7 +14305,7 @@
     },
     "ch03-186": {
       "file": "audio/en/ch03-186.m4a",
-      "duration_ms": 10800,
+      "duration_ms": 14000,
       "pause_after_ms": 800,
       "words": [
         {
@@ -14379,7 +14379,7 @@
           "end_ms": 5520
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 5520,
           "end_ms": 6140
         },
@@ -14742,7 +14742,7 @@
     },
     "ch03-192": {
       "file": "audio/en/ch03-192.m4a",
-      "duration_ms": 2040,
+      "duration_ms": 1820,
       "pause_after_ms": 800,
       "words": [
         {
@@ -14853,7 +14853,7 @@
     },
     "ch03-195": {
       "file": "audio/en/ch03-195.m4a",
-      "duration_ms": 7320,
+      "duration_ms": 6920,
       "pause_after_ms": 500,
       "words": [
         {
@@ -14887,7 +14887,7 @@
           "end_ms": 2820
         },
         {
-          "word": "Albán",
+          "word": "Alb\u00e1n",
           "start_ms": 2820,
           "end_ms": 3380
         },
@@ -15044,7 +15044,7 @@
     },
     "ch03-198": {
       "file": "audio/en/ch03-198.m4a",
-      "duration_ms": 14760,
+      "duration_ms": 15360,
       "pause_after_ms": 500,
       "words": [
         {
@@ -15083,7 +15083,7 @@
           "end_ms": 2180
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 2180,
           "end_ms": 2740
         },
@@ -15118,7 +15118,7 @@
           "end_ms": 4900
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 4900,
           "end_ms": 5520
         },
@@ -15451,7 +15451,7 @@
           "end_ms": 2540
         },
         {
-          "word": "Albán,",
+          "word": "Alb\u00e1n,",
           "start_ms": 2540,
           "end_ms": 3220
         },
@@ -15648,7 +15648,7 @@
           "end_ms": 4600
         },
         {
-          "word": "Albán",
+          "word": "Alb\u00e1n",
           "start_ms": 4600,
           "end_ms": 5160
         },
@@ -15822,7 +15822,7 @@
           "end_ms": 320
         },
         {
-          "word": "Albán",
+          "word": "Alb\u00e1n",
           "start_ms": 320,
           "end_ms": 860
         },
@@ -15894,7 +15894,7 @@
           "end_ms": 1240
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 1240,
           "end_ms": 1860
         },
@@ -16063,7 +16063,7 @@
           "end_ms": 5420
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 5420,
           "end_ms": 6080
         },
@@ -16506,7 +16506,7 @@
           "end_ms": 3520
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 3520,
           "end_ms": 4080
         },
@@ -16859,7 +16859,7 @@
           "end_ms": 2200
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 2600,
           "end_ms": 2700
         },
@@ -17275,7 +17275,7 @@
           "end_ms": 9500
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 9500,
           "end_ms": 9880
         },
@@ -17514,7 +17514,7 @@
     },
     "ch04-224": {
       "file": "audio/en/ch04-224.m4a",
-      "duration_ms": 9300,
+      "duration_ms": 12040,
       "pause_after_ms": 500,
       "words": [
         {
@@ -17568,7 +17568,7 @@
           "end_ms": 3900
         },
         {
-          "word": "Albán,",
+          "word": "Alb\u00e1n,",
           "start_ms": 3900,
           "end_ms": 4240
         },
@@ -17792,7 +17792,7 @@
           "end_ms": 4320
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 4840,
           "end_ms": 4940
         },
@@ -18023,7 +18023,7 @@
           "end_ms": 840
         },
         {
-          "word": "Albán",
+          "word": "Alb\u00e1n",
           "start_ms": 840,
           "end_ms": 1400
         },
@@ -18675,7 +18675,7 @@
           "end_ms": 5020
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 5020,
           "end_ms": 5440
         },
@@ -18748,7 +18748,7 @@
     },
     "ch04-236": {
       "file": "audio/en/ch04-236.m4a",
-      "duration_ms": 4760,
+      "duration_ms": 5200,
       "pause_after_ms": 500,
       "words": [
         {
@@ -18879,7 +18879,7 @@
           "end_ms": 3620
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 3620,
           "end_ms": 4040
         },
@@ -19110,7 +19110,7 @@
           "end_ms": 1380
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 1380,
           "end_ms": 1740
         },
@@ -19120,7 +19120,7 @@
           "end_ms": 2560
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 2560,
           "end_ms": 2980
         },
@@ -19361,7 +19361,7 @@
           "end_ms": 2120
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 2120,
           "end_ms": 2480
         },
@@ -19476,7 +19476,7 @@
     },
     "ch04-245": {
       "file": "audio/en/ch04-245.m4a",
-      "duration_ms": 22400,
+      "duration_ms": 19040,
       "pause_after_ms": 500,
       "words": [
         {
@@ -19500,7 +19500,7 @@
           "end_ms": 1440
         },
         {
-          "word": "Juárez",
+          "word": "Ju\u00e1rez",
           "start_ms": 1440,
           "end_ms": 1820
         },
@@ -19565,7 +19565,7 @@
           "end_ms": 6460
         },
         {
-          "word": "Albán,",
+          "word": "Alb\u00e1n,",
           "start_ms": 6460,
           "end_ms": 6960
         },
@@ -19758,7 +19758,7 @@
     },
     "ch04-246": {
       "file": "audio/en/ch04-246.m4a",
-      "duration_ms": 7840,
+      "duration_ms": 6440,
       "pause_after_ms": 500,
       "words": [
         {
@@ -19782,7 +19782,7 @@
           "end_ms": 1160
         },
         {
-          "word": "Albán",
+          "word": "Alb\u00e1n",
           "start_ms": 1160,
           "end_ms": 1780
         },
@@ -19953,7 +19953,7 @@
           "end_ms": 340
         },
         {
-          "word": "Albán",
+          "word": "Alb\u00e1n",
           "start_ms": 340,
           "end_ms": 860
         },
@@ -20097,7 +20097,7 @@
           "end_ms": 600
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 600,
           "end_ms": 1220
         },
@@ -20167,7 +20167,7 @@
           "end_ms": 5880
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 6300,
           "end_ms": 6400
         },
@@ -20220,7 +20220,7 @@
     },
     "ch04-252": {
       "file": "audio/en/ch04-252.m4a",
-      "duration_ms": 5040,
+      "duration_ms": 3730,
       "pause_after_ms": 500,
       "words": [
         {
@@ -20351,7 +20351,7 @@
           "end_ms": 4120
         },
         {
-          "word": "Albán's",
+          "word": "Alb\u00e1n's",
           "start_ms": 4120,
           "end_ms": 4660
         },
@@ -20594,7 +20594,7 @@
           "end_ms": 1040
         },
         {
-          "word": "Albán",
+          "word": "Alb\u00e1n",
           "start_ms": 1040,
           "end_ms": 1560
         },
@@ -20644,7 +20644,7 @@
           "end_ms": 4140
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 4140,
           "end_ms": 4720
         },
@@ -21020,7 +21020,7 @@
           "end_ms": 4880
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 5100,
           "end_ms": 5200
         },
@@ -21090,7 +21090,7 @@
     },
     "ch04-263": {
       "file": "audio/en/ch04-263.m4a",
-      "duration_ms": 4000,
+      "duration_ms": 3240,
       "pause_after_ms": 1200,
       "words": [
         {
@@ -21181,7 +21181,7 @@
           "end_ms": 1380
         },
         {
-          "word": "Albán's",
+          "word": "Alb\u00e1n's",
           "start_ms": 1380,
           "end_ms": 2140
         },
@@ -21241,7 +21241,7 @@
           "end_ms": 5500
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 5500,
           "end_ms": 5960
         },
@@ -21286,7 +21286,7 @@
           "end_ms": 8000
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 8000,
           "end_ms": 8500
         },
@@ -21511,7 +21511,7 @@
           "end_ms": 2120
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 2120,
           "end_ms": 2600
         },
@@ -21651,7 +21651,7 @@
     },
     "ch04-271": {
       "file": "audio/en/ch04-271.m4a",
-      "duration_ms": 2360,
+      "duration_ms": 1600,
       "pause_after_ms": 800,
       "words": [
         {
@@ -21940,7 +21940,7 @@
           "end_ms": 900
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 900,
           "end_ms": 1260
         },
@@ -21975,7 +21975,7 @@
           "end_ms": 2660
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 2660,
           "end_ms": 3140
         },
@@ -22013,7 +22013,7 @@
     },
     "ch04-277": {
       "file": "audio/en/ch04-277.m4a",
-      "duration_ms": 5320,
+      "duration_ms": 4040,
       "pause_after_ms": 500,
       "words": [
         {
@@ -22089,7 +22089,7 @@
           "end_ms": 1020
         },
         {
-          "word": "Albán",
+          "word": "Alb\u00e1n",
           "start_ms": 1020,
           "end_ms": 1600
         },
@@ -22172,7 +22172,7 @@
     },
     "ch04-279": {
       "file": "audio/en/ch04-279.m4a",
-      "duration_ms": 9600,
+      "duration_ms": 9800,
       "pause_after_ms": 500,
       "words": [
         {
@@ -22334,7 +22334,7 @@
     },
     "ch04-280": {
       "file": "audio/en/ch04-280.m4a",
-      "duration_ms": 1760,
+      "duration_ms": 1700,
       "pause_after_ms": 500,
       "words": [
         {
@@ -22398,7 +22398,7 @@
     },
     "ch04-282": {
       "file": "audio/en/ch04-282.m4a",
-      "duration_ms": 1920,
+      "duration_ms": 1600,
       "pause_after_ms": 500,
       "words": [
         {
@@ -22482,7 +22482,7 @@
     },
     "ch04-284": {
       "file": "audio/en/ch04-284.m4a",
-      "duration_ms": 2040,
+      "duration_ms": 1880,
       "pause_after_ms": 500,
       "words": [
         {
@@ -22620,7 +22620,7 @@
           "end_ms": 2160
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 2160,
           "end_ms": 2760
         },
@@ -22891,7 +22891,7 @@
           "end_ms": 1640
         },
         {
-          "word": "Albán's",
+          "word": "Alb\u00e1n's",
           "start_ms": 1640,
           "end_ms": 2360
         },
@@ -22984,7 +22984,7 @@
     },
     "ch05-292": {
       "file": "audio/en/ch05-292.m4a",
-      "duration_ms": 2880,
+      "duration_ms": 1800,
       "pause_after_ms": 500,
       "words": [
         {
@@ -23055,7 +23055,7 @@
           "end_ms": 2660
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 2660,
           "end_ms": 3140
         },
@@ -23093,7 +23093,7 @@
     },
     "ch05-294": {
       "file": "audio/en/ch05-294.m4a",
-      "duration_ms": 1800,
+      "duration_ms": 1750,
       "pause_after_ms": 500,
       "words": [
         {
@@ -23392,7 +23392,7 @@
           "end_ms": 2560
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 2800,
           "end_ms": 2840
         },
@@ -23410,7 +23410,7 @@
     },
     "ch05-300": {
       "file": "audio/en/ch05-300.m4a",
-      "duration_ms": 2200,
+      "duration_ms": 1360,
       "pause_after_ms": 800,
       "words": [
         {
@@ -23432,7 +23432,7 @@
     },
     "ch05-301": {
       "file": "audio/en/ch05-301.m4a",
-      "duration_ms": 1680,
+      "duration_ms": 1500,
       "pause_after_ms": 800,
       "words": [
         {
@@ -23571,7 +23571,7 @@
     },
     "ch05-303": {
       "file": "audio/en/ch05-303.m4a",
-      "duration_ms": 4200,
+      "duration_ms": 2900,
       "pause_after_ms": 500,
       "words": [
         {
@@ -23781,7 +23781,7 @@
           "end_ms": 3940
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 3940,
           "end_ms": 4500
         },
@@ -23909,7 +23909,7 @@
     },
     "ch05-307": {
       "file": "audio/en/ch05-307.m4a",
-      "duration_ms": 1480,
+      "duration_ms": 1400,
       "pause_after_ms": 500,
       "words": [
         {
@@ -23936,7 +23936,7 @@
     },
     "ch05-308": {
       "file": "audio/en/ch05-308.m4a",
-      "duration_ms": 2680,
+      "duration_ms": 1360,
       "pause_after_ms": 500,
       "words": [
         {
@@ -24032,7 +24032,7 @@
           "end_ms": 3800
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 3800,
           "end_ms": 4380
         },
@@ -24163,7 +24163,7 @@
           "end_ms": 820
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 820,
           "end_ms": 1260
         },
@@ -24367,7 +24367,7 @@
           "end_ms": 4460
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 4460,
           "end_ms": 4860
         },
@@ -24417,7 +24417,7 @@
           "end_ms": 8160
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 8160,
           "end_ms": 8600
         },
@@ -24699,7 +24699,7 @@
     },
     "ch05-317": {
       "file": "audio/en/ch05-317.m4a",
-      "duration_ms": 10800,
+      "duration_ms": 9300,
       "pause_after_ms": 500,
       "words": [
         {
@@ -24748,7 +24748,7 @@
           "end_ms": 3440
         },
         {
-          "word": "Albán,",
+          "word": "Alb\u00e1n,",
           "start_ms": 3440,
           "end_ms": 4059
         },
@@ -24773,7 +24773,7 @@
           "end_ms": 5700
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 5700,
           "end_ms": 6040
         },
@@ -24973,7 +24973,7 @@
     },
     "ch05-319": {
       "file": "audio/en/ch05-319.m4a",
-      "duration_ms": 3120,
+      "duration_ms": 1700,
       "pause_after_ms": 500,
       "words": [
         {
@@ -24995,7 +24995,7 @@
     },
     "ch05-320": {
       "file": "audio/en/ch05-320.m4a",
-      "duration_ms": 2400,
+      "duration_ms": 2090,
       "pause_after_ms": 500,
       "words": [
         {
@@ -25116,7 +25116,7 @@
           "end_ms": 6720
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 6720,
           "end_ms": 7160
         },
@@ -25251,7 +25251,7 @@
     },
     "ch05-323": {
       "file": "audio/en/ch05-323.m4a",
-      "duration_ms": 2520,
+      "duration_ms": 2160,
       "pause_after_ms": 800,
       "words": [
         {
@@ -25628,7 +25628,7 @@
           "end_ms": 1160
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 1260,
           "end_ms": 1600
         },
@@ -25678,7 +25678,7 @@
           "end_ms": 4760
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 4760,
           "end_ms": 5320
         },
@@ -25820,7 +25820,7 @@
           "end_ms": 5540
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 5540,
           "end_ms": 5800
         },
@@ -25845,7 +25845,7 @@
           "end_ms": 7260
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 7260,
           "end_ms": 7800
         },
@@ -26036,7 +26036,7 @@
           "end_ms": 4800
         },
         {
-          "word": "Albán",
+          "word": "Alb\u00e1n",
           "start_ms": 4800,
           "end_ms": 5420
         },
@@ -26150,7 +26150,7 @@
           "end_ms": 3480
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 3480,
           "end_ms": 4059
         },
@@ -26190,7 +26190,7 @@
           "end_ms": 5560
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 5980,
           "end_ms": 5980
         },
@@ -26220,7 +26220,7 @@
           "end_ms": 7660
         },
         {
-          "word": "Albán's",
+          "word": "Alb\u00e1n's",
           "start_ms": 7660,
           "end_ms": 8240
         },
@@ -26541,7 +26541,7 @@
           "end_ms": 4760
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 4760,
           "end_ms": 5080
         },
@@ -26797,7 +26797,7 @@
           "end_ms": 2120
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 2120,
           "end_ms": 2660
         },
@@ -27088,7 +27088,7 @@
           "end_ms": 1560
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 2060,
           "end_ms": 2160
         },
@@ -27598,7 +27598,7 @@
           "end_ms": 2220
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 2540,
           "end_ms": 2640
         },
@@ -27656,7 +27656,7 @@
     },
     "ch05-353": {
       "file": "audio/en/ch05-353.m4a",
-      "duration_ms": 2000,
+      "duration_ms": 1660,
       "pause_after_ms": 500,
       "words": [
         {
@@ -27678,7 +27678,7 @@
     },
     "ch05-354": {
       "file": "audio/en/ch05-354.m4a",
-      "duration_ms": 10760,
+      "duration_ms": 10600,
       "pause_after_ms": 500,
       "words": [
         {
@@ -27722,7 +27722,7 @@
           "end_ms": 2620
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 2620,
           "end_ms": 3220
         },
@@ -27777,7 +27777,7 @@
           "end_ms": 6660
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 6660,
           "end_ms": 7220
         },
@@ -27869,7 +27869,7 @@
           "end_ms": 3000
         },
         {
-          "word": "Albán",
+          "word": "Alb\u00e1n",
           "start_ms": 3000,
           "end_ms": 3560
         },
@@ -27959,7 +27959,7 @@
           "end_ms": 9900
         },
         {
-          "word": "Cañada",
+          "word": "Ca\u00f1ada",
           "start_ms": 9900,
           "end_ms": 10320
         },
@@ -27969,7 +27969,7 @@
           "end_ms": 10800
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 10800,
           "end_ms": 11320
         },
@@ -28345,7 +28345,7 @@
           "end_ms": 4040
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 4040,
           "end_ms": 4660
         },
@@ -28395,7 +28395,7 @@
           "end_ms": 8480
         },
         {
-          "word": "Albán",
+          "word": "Alb\u00e1n",
           "start_ms": 8480,
           "end_ms": 9060
         },
@@ -28846,7 +28846,7 @@
           "end_ms": 1880
         },
         {
-          "word": "Albán",
+          "word": "Alb\u00e1n",
           "start_ms": 1880,
           "end_ms": 2460
         },
@@ -29097,7 +29097,7 @@
           "end_ms": 1640
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 1640,
           "end_ms": 2100
         },
@@ -29615,7 +29615,7 @@
           "end_ms": 5780
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 5780,
           "end_ms": 6220
         },
@@ -30091,7 +30091,7 @@
           "end_ms": 8300
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 8300,
           "end_ms": 8820
         },
@@ -30283,7 +30283,7 @@
           "end_ms": 7260
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 7700,
           "end_ms": 7800
         },
@@ -30510,7 +30510,7 @@
     },
     "ch06-381": {
       "file": "audio/en/ch06-381.m4a",
-      "duration_ms": 1680,
+      "duration_ms": 1660,
       "pause_after_ms": 500,
       "words": [
         {
@@ -30715,7 +30715,7 @@
           "end_ms": 1180
         },
         {
-          "word": "Albán",
+          "word": "Alb\u00e1n",
           "start_ms": 1180,
           "end_ms": 1760
         },
@@ -30770,7 +30770,7 @@
           "end_ms": 5960
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 5960,
           "end_ms": 6460
         },
@@ -30912,7 +30912,7 @@
           "end_ms": 8720
         },
         {
-          "word": "Albán",
+          "word": "Alb\u00e1n",
           "start_ms": 8720,
           "end_ms": 9220
         },
@@ -31098,7 +31098,7 @@
           "end_ms": 2620
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 2620,
           "end_ms": 2960
         },
@@ -31509,7 +31509,7 @@
           "end_ms": 7660
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 7660,
           "end_ms": 8119
         },
@@ -31693,7 +31693,7 @@
           "end_ms": 3320
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 3320,
           "end_ms": 3760
         },
@@ -31733,7 +31733,7 @@
           "end_ms": 6480
         },
         {
-          "word": "Albán",
+          "word": "Alb\u00e1n",
           "start_ms": 6480,
           "end_ms": 7040
         },
@@ -31907,7 +31907,7 @@
           "end_ms": 1620
         },
         {
-          "word": "Albán",
+          "word": "Alb\u00e1n",
           "start_ms": 1620,
           "end_ms": 2140
         },
@@ -31932,7 +31932,7 @@
           "end_ms": 3100
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 3100,
           "end_ms": 3620
         },
@@ -32012,7 +32012,7 @@
           "end_ms": 9340
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 9520,
           "end_ms": 9620
         },
@@ -32117,7 +32117,7 @@
           "end_ms": 15340
         },
         {
-          "word": "Albán's",
+          "word": "Alb\u00e1n's",
           "start_ms": 15360,
           "end_ms": 15880
         },
@@ -32313,7 +32313,7 @@
     },
     "ch06-400": {
       "file": "audio/en/ch06-400.m4a",
-      "duration_ms": 2680,
+      "duration_ms": 2070,
       "pause_after_ms": 500,
       "words": [
         {
@@ -32655,7 +32655,7 @@
           "end_ms": 6020
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 6020,
           "end_ms": 6520
         },
@@ -32904,7 +32904,7 @@
           "end_ms": 5000
         },
         {
-          "word": "Cuicatlán,",
+          "word": "Cuicatl\u00e1n,",
           "start_ms": 5000,
           "end_ms": 5700
         },
@@ -32949,7 +32949,7 @@
           "end_ms": 8680
         },
         {
-          "word": "Albán",
+          "word": "Alb\u00e1n",
           "start_ms": 8680,
           "end_ms": 9340
         },
@@ -32964,7 +32964,7 @@
           "end_ms": 9800
         },
         {
-          "word": "Cañada",
+          "word": "Ca\u00f1ada",
           "start_ms": 9800,
           "end_ms": 10220
         },
@@ -33016,7 +33016,7 @@
           "end_ms": 2300
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 2300,
           "end_ms": 3000
         },
@@ -33036,7 +33036,7 @@
           "end_ms": 4720
         },
         {
-          "word": "Cuicatlán",
+          "word": "Cuicatl\u00e1n",
           "start_ms": 4720,
           "end_ms": 5520
         },
@@ -33221,7 +33221,7 @@
     },
     "ch06-409": {
       "file": "audio/en/ch06-409.m4a",
-      "duration_ms": 3360,
+      "duration_ms": 2780,
       "pause_after_ms": 500,
       "words": [
         {
@@ -33325,7 +33325,7 @@
     },
     "ch06-411": {
       "file": "audio/en/ch06-411.m4a",
-      "duration_ms": 5800,
+      "duration_ms": 7360,
       "pause_after_ms": 500,
       "words": [
         {
@@ -33776,7 +33776,7 @@
           "end_ms": 1980
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 1980,
           "end_ms": 2440
         },
@@ -33938,7 +33938,7 @@
           "end_ms": 2200
         },
         {
-          "word": "Albán",
+          "word": "Alb\u00e1n",
           "start_ms": 2200,
           "end_ms": 2660
         },
@@ -34087,7 +34087,7 @@
           "end_ms": 1320
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 1320,
           "end_ms": 1580
         },
@@ -34102,7 +34102,7 @@
           "end_ms": 2060
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 2060,
           "end_ms": 2460
         },
@@ -34296,7 +34296,7 @@
           "end_ms": 3220
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 3220,
           "end_ms": 3820
         },
@@ -34706,7 +34706,7 @@
           "end_ms": 2780
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 2780,
           "end_ms": 3500
         },
@@ -34778,7 +34778,7 @@
           "end_ms": 3580
         },
         {
-          "word": "か",
+          "word": "\u304b",
           "start_ms": 3580,
           "end_ms": 4140
         },
@@ -35007,7 +35007,7 @@
           "end_ms": 3060
         },
         {
-          "word": "山",
+          "word": "\u5c71",
           "start_ms": 3060,
           "end_ms": 3440
         },
@@ -35233,7 +35233,7 @@
           "end_ms": 3140
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 3160,
           "end_ms": 3660
         },
@@ -35467,7 +35467,7 @@
           "end_ms": 2780
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 2780,
           "end_ms": 3100
         },
@@ -35502,7 +35502,7 @@
           "end_ms": 5260
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 5260,
           "end_ms": 5840
         },
@@ -35517,7 +35517,7 @@
           "end_ms": 7180
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 7180,
           "end_ms": 7440
         },
@@ -35780,7 +35780,7 @@
           "end_ms": 4240
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 4240,
           "end_ms": 4400
         },
@@ -35810,7 +35810,7 @@
           "end_ms": 6580
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 6940,
           "end_ms": 7040
         },
@@ -36133,7 +36133,7 @@
           "end_ms": 560
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 560,
           "end_ms": 1180
         },
@@ -36173,7 +36173,7 @@
           "end_ms": 3420
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 3420,
           "end_ms": 3700
         },
@@ -36275,7 +36275,7 @@
           "end_ms": 1080
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 1080,
           "end_ms": 1680
         },
@@ -36320,7 +36320,7 @@
           "end_ms": 4760
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 4760,
           "end_ms": 5060
         },
@@ -36343,7 +36343,7 @@
     },
     "ch07-446": {
       "file": "audio/en/ch07-446.m4a",
-      "duration_ms": 2440,
+      "duration_ms": 2070,
       "pause_after_ms": 800,
       "words": [
         {
@@ -36768,7 +36768,7 @@
           "end_ms": 2860
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 2860,
           "end_ms": 3420
         },
@@ -37178,7 +37178,7 @@
           "end_ms": 1600
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 1600,
           "end_ms": 2120
         },
@@ -37248,7 +37248,7 @@
           "end_ms": 6440
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 6460,
           "end_ms": 6880
         },
@@ -37621,7 +37621,7 @@
           "end_ms": 1920
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 1920,
           "end_ms": 2240
         },
@@ -37681,7 +37681,7 @@
           "end_ms": 5500
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 5500,
           "end_ms": 5980
         },
@@ -38000,7 +38000,7 @@
           "end_ms": 1620
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 1920,
           "end_ms": 2020
         },
@@ -38190,7 +38190,7 @@
     },
     "ch07-462": {
       "file": "audio/en/ch07-462.m4a",
-      "duration_ms": 16640,
+      "duration_ms": 15440,
       "pause_after_ms": 500,
       "words": [
         {
@@ -38239,7 +38239,7 @@
           "end_ms": 3460
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 3460,
           "end_ms": 3880
         },
@@ -38349,7 +38349,7 @@
           "end_ms": 11680
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 11680,
           "end_ms": 12140
         },
@@ -38578,7 +38578,7 @@
           "end_ms": 6960
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 6960,
           "end_ms": 7500
         },
@@ -38690,7 +38690,7 @@
           "end_ms": 2540
         },
         {
-          "word": "Albán,",
+          "word": "Alb\u00e1n,",
           "start_ms": 2540,
           "end_ms": 3540
         },
@@ -38827,7 +38827,7 @@
           "end_ms": 6500
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 6500,
           "end_ms": 6800
         },
@@ -38857,7 +38857,7 @@
           "end_ms": 7980
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 7980,
           "end_ms": 8460
         },
@@ -38972,7 +38972,7 @@
     },
     "ch07-468": {
       "file": "audio/en/ch07-468.m4a",
-      "duration_ms": 1560,
+      "duration_ms": 1210,
       "pause_after_ms": 800,
       "words": [
         {
@@ -39650,7 +39650,7 @@
           "end_ms": 17320
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 17320,
           "end_ms": 17760
         },
@@ -39685,7 +39685,7 @@
           "end_ms": 19580
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 19580,
           "end_ms": 20020
         },
@@ -39844,7 +39844,7 @@
           "end_ms": 1620
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 1620,
           "end_ms": 2220
         },
@@ -39869,7 +39869,7 @@
           "end_ms": 3340
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 3340,
           "end_ms": 3800
         },
@@ -40121,7 +40121,7 @@
           "end_ms": 8119
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 8119,
           "end_ms": 8560
         },
@@ -40703,7 +40703,7 @@
     },
     "ch08-487": {
       "file": "audio/en/ch08-487.m4a",
-      "duration_ms": 9840,
+      "duration_ms": 9240,
       "pause_after_ms": 500,
       "words": [
         {
@@ -41084,7 +41084,7 @@
           "end_ms": 340
         },
         {
-          "word": "Albán",
+          "word": "Alb\u00e1n",
           "start_ms": 340,
           "end_ms": 940
         },
@@ -41952,7 +41952,7 @@
           "end_ms": 2140
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 2140,
           "end_ms": 2700
         },
@@ -42251,7 +42251,7 @@
           "end_ms": 4380
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 4380,
           "end_ms": 4960
         },
@@ -42818,7 +42818,7 @@
           "end_ms": 4540
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 4600,
           "end_ms": 5160
         },
@@ -42927,7 +42927,7 @@
           "end_ms": 1040
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 1100,
           "end_ms": 1460
         },
@@ -43057,7 +43057,7 @@
           "end_ms": 8740
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 8740,
           "end_ms": 9180
         },
@@ -43125,7 +43125,7 @@
     },
     "ch08-513": {
       "file": "audio/en/ch08-513.m4a",
-      "duration_ms": 5520,
+      "duration_ms": 3580,
       "pause_after_ms": 500,
       "words": [
         {
@@ -43274,7 +43274,7 @@
     },
     "ch08-515": {
       "file": "audio/en/ch08-515.m4a",
-      "duration_ms": 10840,
+      "duration_ms": 11480,
       "pause_after_ms": 500,
       "words": [
         {
@@ -43298,7 +43298,7 @@
           "end_ms": 2780
         },
         {
-          "word": "Albán's",
+          "word": "Alb\u00e1n's",
           "start_ms": 2780,
           "end_ms": 3300
         },
@@ -43522,7 +43522,7 @@
           "end_ms": 2400
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 2400,
           "end_ms": 2720
         },
@@ -43760,7 +43760,7 @@
           "end_ms": 820
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 820,
           "end_ms": 1280
         },
@@ -43807,7 +43807,7 @@
           "end_ms": 1300
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 1300,
           "end_ms": 1800
         },
@@ -44154,7 +44154,7 @@
     },
     "ch08-525": {
       "file": "audio/en/ch08-525.m4a",
-      "duration_ms": 5880,
+      "duration_ms": 6040,
       "pause_after_ms": 500,
       "words": [
         {
@@ -44327,7 +44327,7 @@
           "end_ms": 7100
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 7100,
           "end_ms": 7720
         },
@@ -44773,7 +44773,7 @@
     },
     "ch08-532": {
       "file": "audio/en/ch08-532.m4a",
-      "duration_ms": 4440,
+      "duration_ms": 3600,
       "pause_after_ms": 500,
       "words": [
         {
@@ -45046,7 +45046,7 @@
           "end_ms": 9560
         },
         {
-          "word": "Albán",
+          "word": "Alb\u00e1n",
           "start_ms": 9560,
           "end_ms": 10020
         },
@@ -45114,7 +45114,7 @@
     },
     "ch08-535": {
       "file": "audio/en/ch08-535.m4a",
-      "duration_ms": 10840,
+      "duration_ms": 11280,
       "pause_after_ms": 500,
       "words": [
         {
@@ -45133,7 +45133,7 @@
           "end_ms": 1280
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 1280,
           "end_ms": 1820
         },
@@ -45615,7 +45615,7 @@
           "end_ms": 1440
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 1440,
           "end_ms": 2100
         },
@@ -45777,7 +45777,7 @@
           "end_ms": 1400
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 1400,
           "end_ms": 1920
         },
@@ -46070,7 +46070,7 @@
           "end_ms": 5460
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 5460,
           "end_ms": 6080
         },
@@ -46257,7 +46257,7 @@
           "end_ms": 6800
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 6800,
           "end_ms": 7340
         },
@@ -46865,7 +46865,7 @@
     },
     "ch09-554": {
       "file": "audio/en/ch09-554.m4a",
-      "duration_ms": 3280,
+      "duration_ms": 2740,
       "pause_after_ms": 500,
       "words": [
         {
@@ -46951,7 +46951,7 @@
           "end_ms": 4540
         },
         {
-          "word": "Albán",
+          "word": "Alb\u00e1n",
           "start_ms": 4540,
           "end_ms": 5140
         },
@@ -47098,7 +47098,7 @@
           "end_ms": 8220
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 8220,
           "end_ms": 8760
         },
@@ -47230,7 +47230,7 @@
           "end_ms": 6900
         },
         {
-          "word": "Albán",
+          "word": "Alb\u00e1n",
           "start_ms": 6900,
           "end_ms": 7500
         },
@@ -47397,7 +47397,7 @@
           "end_ms": 11440
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 11440,
           "end_ms": 11840
         },
@@ -47782,7 +47782,7 @@
           "end_ms": 3640
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 3720,
           "end_ms": 4120
         },
@@ -47832,7 +47832,7 @@
           "end_ms": 8480
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 8480,
           "end_ms": 8960
         },
@@ -48021,7 +48021,7 @@
           "end_ms": 1520
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 1520,
           "end_ms": 2040
         },
@@ -48086,7 +48086,7 @@
           "end_ms": 7000
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 7000,
           "end_ms": 7420
         },
@@ -48114,7 +48114,7 @@
     },
     "ch09-566": {
       "file": "audio/en/ch09-566.m4a",
-      "duration_ms": 13960,
+      "duration_ms": 14360,
       "pause_after_ms": 500,
       "words": [
         {
@@ -48544,7 +48544,7 @@
           "end_ms": 7840
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 7840,
           "end_ms": 8140
         },
@@ -48863,7 +48863,7 @@
           "end_ms": 12020
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 15930,
           "end_ms": 15930
         },
@@ -49184,7 +49184,7 @@
           "end_ms": 1320
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 1320,
           "end_ms": 1900
         },
@@ -49224,7 +49224,7 @@
           "end_ms": 3460
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 3460,
           "end_ms": 4040
         },
@@ -49326,7 +49326,7 @@
           "end_ms": 6160
         },
         {
-          "word": "Albán's",
+          "word": "Alb\u00e1n's",
           "start_ms": 6160,
           "end_ms": 6800
         },
@@ -49662,7 +49662,7 @@
           "end_ms": 6240
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 6240,
           "end_ms": 6540
         },
@@ -49697,7 +49697,7 @@
           "end_ms": 9840
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 10120,
           "end_ms": 10220
         },
@@ -49797,7 +49797,7 @@
           "end_ms": 16860
         },
         {
-          "word": "Albán",
+          "word": "Alb\u00e1n",
           "start_ms": 16860,
           "end_ms": 17320
         },
@@ -49889,7 +49889,7 @@
           "end_ms": 2560
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 2940,
           "end_ms": 3040
         },
@@ -49909,7 +49909,7 @@
           "end_ms": 3820
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 4240,
           "end_ms": 4340
         },
@@ -50049,7 +50049,7 @@
     },
     "ch09-581": {
       "file": "audio/en/ch09-581.m4a",
-      "duration_ms": 6760,
+      "duration_ms": 5960,
       "pause_after_ms": 800,
       "words": [
         {
@@ -50257,7 +50257,7 @@
           "end_ms": 3740
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 3740,
           "end_ms": 4200
         },
@@ -50671,7 +50671,7 @@
           "end_ms": 2180
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 2180,
           "end_ms": 2580
         },
@@ -50751,7 +50751,7 @@
           "end_ms": 7600
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 7600,
           "end_ms": 8039
         },
@@ -50811,7 +50811,7 @@
           "end_ms": 11560
         },
         {
-          "word": "Albán's",
+          "word": "Alb\u00e1n's",
           "start_ms": 11560,
           "end_ms": 12160
         },
@@ -51015,7 +51015,7 @@
           "end_ms": 3560
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 3560,
           "end_ms": 3940
         },
@@ -51068,7 +51068,7 @@
     },
     "ch09-593": {
       "file": "audio/en/ch09-593.m4a",
-      "duration_ms": 1840,
+      "duration_ms": 1630,
       "pause_after_ms": 500,
       "words": [
         {
@@ -51095,7 +51095,7 @@
     },
     "ch09-594": {
       "file": "audio/en/ch09-594.m4a",
-      "duration_ms": 2560,
+      "duration_ms": 2220,
       "pause_after_ms": 500,
       "words": [
         {
@@ -51380,7 +51380,7 @@
           "end_ms": 4480
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 4480,
           "end_ms": 4940
         },
@@ -51405,7 +51405,7 @@
           "end_ms": 7000
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 7000,
           "end_ms": 7400
         },
@@ -51608,7 +51608,7 @@
     },
     "ch09-603": {
       "file": "audio/en/ch09-603.m4a",
-      "duration_ms": 4300,
+      "duration_ms": 7880,
       "pause_after_ms": 800,
       "words": [
         {
@@ -51627,7 +51627,7 @@
           "end_ms": 860
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 860,
           "end_ms": 860
         },
@@ -51667,7 +51667,7 @@
           "end_ms": 3180
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 3180,
           "end_ms": 3640
         },
@@ -51797,7 +51797,7 @@
     },
     "ch09-605": {
       "file": "audio/en/ch09-605.m4a",
-      "duration_ms": 6800,
+      "duration_ms": 9880,
       "pause_after_ms": 500,
       "words": [
         {
@@ -51856,7 +51856,7 @@
           "end_ms": 4900
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 4900,
           "end_ms": 5480
         },
@@ -52005,7 +52005,7 @@
           "end_ms": 940
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 940,
           "end_ms": 1280
         },
@@ -52035,7 +52035,7 @@
           "end_ms": 3540
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 3760,
           "end_ms": 3860
         },
@@ -52147,7 +52147,7 @@
           "end_ms": 5560
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 5560,
           "end_ms": 6020
         },
@@ -52182,7 +52182,7 @@
           "end_ms": 9820
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 9820,
           "end_ms": 10140
         },
@@ -52277,7 +52277,7 @@
     },
     "ch09-610": {
       "file": "audio/en/ch09-610.m4a",
-      "duration_ms": 14800,
+      "duration_ms": 14040,
       "pause_after_ms": 500,
       "words": [
         {
@@ -52346,7 +52346,7 @@
           "end_ms": 4500
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 4500,
           "end_ms": 4960
         },
@@ -52436,7 +52436,7 @@
           "end_ms": 11300
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 11300,
           "end_ms": 11680
         },
@@ -52489,7 +52489,7 @@
     },
     "ch09-611": {
       "file": "audio/en/ch09-611.m4a",
-      "duration_ms": 2280,
+      "duration_ms": 2080,
       "pause_after_ms": 500,
       "words": [
         {
@@ -52821,7 +52821,7 @@
           "end_ms": 6700
         },
         {
-          "word": "Albán",
+          "word": "Alb\u00e1n",
           "start_ms": 6700,
           "end_ms": 7380
         },
@@ -53034,7 +53034,7 @@
           "end_ms": 2820
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 2820,
           "end_ms": 3440
         },
@@ -53156,7 +53156,7 @@
           "end_ms": 2160
         },
         {
-          "word": "Albán",
+          "word": "Alb\u00e1n",
           "start_ms": 2160,
           "end_ms": 2740
         },
@@ -53313,7 +53313,7 @@
           "end_ms": 6560
         },
         {
-          "word": "Albán,",
+          "word": "Alb\u00e1n,",
           "start_ms": 6560,
           "end_ms": 7360
         },
@@ -53512,7 +53512,7 @@
           "end_ms": 1460
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 1460,
           "end_ms": 1920
         },
@@ -53572,7 +53572,7 @@
           "end_ms": 4680
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 4680,
           "end_ms": 5280
         },
@@ -53786,7 +53786,7 @@
           "end_ms": 1400
         },
         {
-          "word": "Albán",
+          "word": "Alb\u00e1n",
           "start_ms": 1400,
           "end_ms": 1960
         },
@@ -53903,7 +53903,7 @@
           "end_ms": 2760
         },
         {
-          "word": "Albán",
+          "word": "Alb\u00e1n",
           "start_ms": 2760,
           "end_ms": 3300
         },
@@ -53943,7 +53943,7 @@
           "end_ms": 8100
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 8100,
           "end_ms": 8620
         },
@@ -54021,7 +54021,7 @@
     },
     "ch10-629": {
       "file": "audio/en/ch10-629.m4a",
-      "duration_ms": 8039,
+      "duration_ms": 7840,
       "pause_after_ms": 800,
       "words": [
         {
@@ -54110,7 +54110,7 @@
           "end_ms": 6820
         },
         {
-          "word": "Albán",
+          "word": "Alb\u00e1n",
           "start_ms": 6820,
           "end_ms": 7420
         },
@@ -54400,7 +54400,7 @@
           "end_ms": 1420
         },
         {
-          "word": "Albán",
+          "word": "Alb\u00e1n",
           "start_ms": 1420,
           "end_ms": 1940
         },
@@ -54445,7 +54445,7 @@
           "end_ms": 6360
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 6360,
           "end_ms": 6700
         },
@@ -54475,7 +54475,7 @@
           "end_ms": 8160
         },
         {
-          "word": "Albán",
+          "word": "Alb\u00e1n",
           "start_ms": 8160,
           "end_ms": 8700
         },
@@ -54824,7 +54824,7 @@
     },
     "ch10-638": {
       "file": "audio/en/ch10-638.m4a",
-      "duration_ms": 22600,
+      "duration_ms": 22520,
       "pause_after_ms": 500,
       "words": [
         {
@@ -54988,7 +54988,7 @@
           "end_ms": 14360
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 14360,
           "end_ms": 14580
         },
@@ -55224,7 +55224,7 @@
           "end_ms": 2660
         },
         {
-          "word": "Albán",
+          "word": "Alb\u00e1n",
           "start_ms": 2660,
           "end_ms": 3140
         },
@@ -55341,7 +55341,7 @@
     },
     "ch10-644": {
       "file": "audio/en/ch10-644.m4a",
-      "duration_ms": 2880,
+      "duration_ms": 2340,
       "pause_after_ms": 500,
       "words": [
         {
@@ -55464,7 +55464,7 @@
           "end_ms": 4059
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 4059,
           "end_ms": 4560
         },
@@ -55934,7 +55934,7 @@
           "end_ms": 8760
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 8760,
           "end_ms": 9260
         },
@@ -55989,7 +55989,7 @@
           "end_ms": 13700
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 14240,
           "end_ms": 14340
         },
@@ -56007,7 +56007,7 @@
     },
     "ch10-652": {
       "file": "audio/en/ch10-652.m4a",
-      "duration_ms": 2320,
+      "duration_ms": 2100,
       "pause_after_ms": 500,
       "words": [
         {
@@ -56165,7 +56165,7 @@
           "end_ms": 2480
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 2480,
           "end_ms": 3060
         },
@@ -56240,7 +56240,7 @@
           "end_ms": 7320
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 7320,
           "end_ms": 7660
         },
@@ -56297,7 +56297,7 @@
           "end_ms": 2800
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 2840,
           "end_ms": 3340
         },
@@ -56337,7 +56337,7 @@
           "end_ms": 6060
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 6060,
           "end_ms": 6460
         },
@@ -56558,7 +56558,7 @@
           "end_ms": 1060
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 1060,
           "end_ms": 1580
         },
@@ -56593,7 +56593,7 @@
           "end_ms": 3340
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 3380,
           "end_ms": 3560
         },
@@ -56749,7 +56749,7 @@
           "end_ms": 5560
         },
         {
-          "word": "Albán",
+          "word": "Alb\u00e1n",
           "start_ms": 5560,
           "end_ms": 6120
         },
@@ -56821,7 +56821,7 @@
     },
     "ch11-665": {
       "file": "audio/en/ch11-665.m4a",
-      "duration_ms": 1840,
+      "duration_ms": 1240,
       "pause_after_ms": 500,
       "words": [
         {
@@ -56966,7 +56966,7 @@
           "end_ms": 1700
         },
         {
-          "word": "Albán",
+          "word": "Alb\u00e1n",
           "start_ms": 1700,
           "end_ms": 2340
         },
@@ -57438,7 +57438,7 @@
     },
     "ch11-676": {
       "file": "audio/en/ch11-676.m4a",
-      "duration_ms": 1400,
+      "duration_ms": 1060,
       "pause_after_ms": 500,
       "words": [
         {
@@ -57477,7 +57477,7 @@
     },
     "ch11-678": {
       "file": "audio/en/ch11-678.m4a",
-      "duration_ms": 1400,
+      "duration_ms": 1380,
       "pause_after_ms": 500,
       "words": [
         {
@@ -57499,7 +57499,7 @@
     },
     "ch11-679": {
       "file": "audio/en/ch11-679.m4a",
-      "duration_ms": 6320,
+      "duration_ms": 5480,
       "pause_after_ms": 500,
       "words": [
         {
@@ -57645,7 +57645,7 @@
           "end_ms": 2900
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 2900,
           "end_ms": 3600
         },
@@ -57835,7 +57835,7 @@
     },
     "ch11-682": {
       "file": "audio/en/ch11-682.m4a",
-      "duration_ms": 2240,
+      "duration_ms": 2000,
       "pause_after_ms": 500,
       "words": [
         {
@@ -57844,7 +57844,7 @@
           "end_ms": 300
         },
         {
-          "word": "Albán",
+          "word": "Alb\u00e1n",
           "start_ms": 300,
           "end_ms": 820
         },
@@ -57867,7 +57867,7 @@
     },
     "ch11-683": {
       "file": "audio/en/ch11-683.m4a",
-      "duration_ms": 1400,
+      "duration_ms": 1260,
       "pause_after_ms": 800,
       "words": [
         {
@@ -57975,7 +57975,7 @@
           "end_ms": 3060
         },
         {
-          "word": "Albán.",
+          "word": "Alb\u00e1n.",
           "start_ms": 3060,
           "end_ms": 3160
         }
@@ -58079,7 +58079,7 @@
           "end_ms": 2600
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 2600,
           "end_ms": 2900
         },
@@ -58089,7 +58089,7 @@
           "end_ms": 3360
         },
         {
-          "word": "Copán,",
+          "word": "Cop\u00e1n,",
           "start_ms": 3820,
           "end_ms": 4560
         },
@@ -58104,7 +58104,7 @@
           "end_ms": 5740
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 5740,
           "end_ms": 6020
         },
@@ -58686,7 +58686,7 @@
           "end_ms": 11320
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 11320,
           "end_ms": 11560
         },
@@ -59004,7 +59004,7 @@
           "end_ms": 560
         },
         {
-          "word": "Albán",
+          "word": "Alb\u00e1n",
           "start_ms": 560,
           "end_ms": 1240
         },
@@ -59660,7 +59660,7 @@
           "end_ms": 2420
         },
         {
-          "word": "Albán",
+          "word": "Alb\u00e1n",
           "start_ms": 2420,
           "end_ms": 2940
         },
@@ -59690,7 +59690,7 @@
           "end_ms": 5140
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 5140,
           "end_ms": 5720
         },
@@ -59867,7 +59867,7 @@
           "end_ms": 6880
         },
         {
-          "word": "Albán's",
+          "word": "Alb\u00e1n's",
           "start_ms": 6880,
           "end_ms": 7500
         },
@@ -60103,7 +60103,7 @@
           "end_ms": 6060
         },
         {
-          "word": "Albán",
+          "word": "Alb\u00e1n",
           "start_ms": 6060,
           "end_ms": 6480
         },
@@ -60302,7 +60302,7 @@
           "end_ms": 2840
         },
         {
-          "word": "Albán",
+          "word": "Alb\u00e1n",
           "start_ms": 2840,
           "end_ms": 3320
         },
@@ -60497,7 +60497,7 @@
     },
     "ch11-713": {
       "file": "audio/en/ch11-713.m4a",
-      "duration_ms": 8300,
+      "duration_ms": 9960,
       "pause_after_ms": 500,
       "words": [
         {
@@ -60827,7 +60827,7 @@
           "end_ms": 1480
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 1480,
           "end_ms": 1860
         },
@@ -60902,7 +60902,7 @@
           "end_ms": 6520
         },
         {
-          "word": "Albán",
+          "word": "Alb\u00e1n",
           "start_ms": 6520,
           "end_ms": 7020
         },
@@ -60912,7 +60912,7 @@
           "end_ms": 7520
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 7520,
           "end_ms": 7980
         },
@@ -61091,7 +61091,7 @@
           "end_ms": 1520
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 1520,
           "end_ms": 2040
         },
@@ -61126,7 +61126,7 @@
           "end_ms": 5260
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 5260,
           "end_ms": 5740
         },
@@ -61159,7 +61159,7 @@
     },
     "ch11-719": {
       "file": "audio/en/ch11-719.m4a",
-      "duration_ms": 2300,
+      "duration_ms": 4160,
       "pause_after_ms": 500,
       "words": [
         {
@@ -61370,7 +61370,7 @@
           "end_ms": 12540
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 12540,
           "end_ms": 12720
         },
@@ -61463,7 +61463,7 @@
     },
     "ch11-721": {
       "file": "audio/en/ch11-721.m4a",
-      "duration_ms": 5300,
+      "duration_ms": 6120,
       "pause_after_ms": 500,
       "words": [
         {
@@ -61698,7 +61698,7 @@
           "end_ms": 1900
         },
         {
-          "word": "Albán,",
+          "word": "Alb\u00e1n,",
           "start_ms": 1900,
           "end_ms": 2560
         },
@@ -61880,7 +61880,7 @@
           "end_ms": 6080
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 6080,
           "end_ms": 6720
         },
@@ -62194,7 +62194,7 @@
     },
     "ch11-729": {
       "file": "audio/en/ch11-729.m4a",
-      "duration_ms": 1960,
+      "duration_ms": 1840,
       "pause_after_ms": 500,
       "words": [
         {
@@ -62568,7 +62568,7 @@
           "end_ms": 360
         },
         {
-          "word": "Albán",
+          "word": "Alb\u00e1n",
           "start_ms": 360,
           "end_ms": 840
         },
@@ -62635,7 +62635,7 @@
           "end_ms": 2700
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 3180,
           "end_ms": 3280
         },
@@ -62869,7 +62869,7 @@
           "end_ms": 260
         },
         {
-          "word": "Albán",
+          "word": "Alb\u00e1n",
           "start_ms": 260,
           "end_ms": 720
         },
@@ -63130,7 +63130,7 @@
           "end_ms": 1900
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 1900,
           "end_ms": 2420
         },
@@ -63170,7 +63170,7 @@
           "end_ms": 4820
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 4820,
           "end_ms": 5260
         },
@@ -63270,7 +63270,7 @@
     },
     "ch12-743": {
       "file": "audio/en/ch12-743.m4a",
-      "duration_ms": 8600,
+      "duration_ms": 8760,
       "pause_after_ms": 500,
       "words": [
         {
@@ -63374,7 +63374,7 @@
           "end_ms": 5920
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 5920,
           "end_ms": 6340
         },
@@ -63469,7 +63469,7 @@
     },
     "ch12-745": {
       "file": "audio/en/ch12-745.m4a",
-      "duration_ms": 14920,
+      "duration_ms": 11300,
       "pause_after_ms": 800,
       "words": [
         {
@@ -63660,7 +63660,7 @@
           "end_ms": 2000
         },
         {
-          "word": "Albán.",
+          "word": "Alb\u00e1n.",
           "start_ms": 2000,
           "end_ms": 2640
         }
@@ -63712,7 +63712,7 @@
           "end_ms": 1620
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 1620,
           "end_ms": 2320
         },
@@ -63757,7 +63757,7 @@
           "end_ms": 5480
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 5480,
           "end_ms": 6080
         },
@@ -63906,7 +63906,7 @@
           "end_ms": 3680
         },
         {
-          "word": "Albán,",
+          "word": "Alb\u00e1n,",
           "start_ms": 3680,
           "end_ms": 4360
         },
@@ -63998,7 +63998,7 @@
           "end_ms": 2800
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 2800,
           "end_ms": 3200
         },
@@ -64063,7 +64063,7 @@
           "end_ms": 6500
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 7220,
           "end_ms": 7320
         },
@@ -64548,7 +64548,7 @@
           "end_ms": 4100
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 4100,
           "end_ms": 4500
         },
@@ -64568,7 +64568,7 @@
           "end_ms": 5320
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 5320,
           "end_ms": 5700
         },
@@ -64696,7 +64696,7 @@
     },
     "ch12-756": {
       "file": "audio/en/ch12-756.m4a",
-      "duration_ms": 2360,
+      "duration_ms": 2150,
       "pause_after_ms": 500,
       "words": [
         {
@@ -65103,7 +65103,7 @@
           "end_ms": 3580
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 3580,
           "end_ms": 4340
         },
@@ -65357,7 +65357,7 @@
           "end_ms": 5180
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 5180,
           "end_ms": 5780
         },
@@ -65472,7 +65472,7 @@
     },
     "ch12-764": {
       "file": "audio/en/ch12-764.m4a",
-      "duration_ms": 4600,
+      "duration_ms": 3660,
       "pause_after_ms": 500,
       "words": [
         {
@@ -65625,7 +65625,7 @@
           "end_ms": 4000
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 4000,
           "end_ms": 4560
         },
@@ -65936,7 +65936,7 @@
           "end_ms": 1740
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 1740,
           "end_ms": 2360
         },
@@ -65981,7 +65981,7 @@
           "end_ms": 6020
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 6420,
           "end_ms": 6520
         },
@@ -66192,7 +66192,7 @@
           "end_ms": 360
         },
         {
-          "word": "Albán",
+          "word": "Alb\u00e1n",
           "start_ms": 360,
           "end_ms": 1000
         },
@@ -66461,7 +66461,7 @@
           "end_ms": 6320
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 6320,
           "end_ms": 6860
         },
@@ -66811,12 +66811,12 @@
           "end_ms": 2860
         },
         {
-          "word": "Albán",
+          "word": "Alb\u00e1n",
           "start_ms": 2880,
           "end_ms": 3380
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 3380,
           "end_ms": 4000
         },
@@ -66876,7 +66876,7 @@
           "end_ms": 6480
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 6480,
           "end_ms": 6740
         },
@@ -66961,7 +66961,7 @@
     },
     "ch12-781": {
       "file": "audio/en/ch12-781.m4a",
-      "duration_ms": 9440,
+      "duration_ms": 9040,
       "pause_after_ms": 500,
       "words": [
         {
@@ -67045,7 +67045,7 @@
           "end_ms": 5420
         },
         {
-          "word": "Albán",
+          "word": "Alb\u00e1n",
           "start_ms": 5420,
           "end_ms": 6100
         },
@@ -67463,7 +67463,7 @@
           "end_ms": 2980
         },
         {
-          "word": "Albán",
+          "word": "Alb\u00e1n",
           "start_ms": 2980,
           "end_ms": 3560
         },
@@ -67543,7 +67543,7 @@
           "end_ms": 9020
         },
         {
-          "word": "Díaz.",
+          "word": "D\u00edaz.",
           "start_ms": 9020,
           "end_ms": 9320
         }
@@ -67630,7 +67630,7 @@
           "end_ms": 5800
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 5800,
           "end_ms": 6260
         },
@@ -67807,7 +67807,7 @@
           "end_ms": 7900
         },
         {
-          "word": "Albán",
+          "word": "Alb\u00e1n",
           "start_ms": 7900,
           "end_ms": 8300
         },
@@ -67844,7 +67844,7 @@
           "end_ms": 1360
         },
         {
-          "word": "Albán",
+          "word": "Alb\u00e1n",
           "start_ms": 1360,
           "end_ms": 1840
         },
@@ -67869,7 +67869,7 @@
           "end_ms": 3480
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 3480,
           "end_ms": 3740
         },
@@ -67904,7 +67904,7 @@
           "end_ms": 6860
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 6860,
           "end_ms": 7240
         },
@@ -68362,7 +68362,7 @@
           "end_ms": 3420
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 3720,
           "end_ms": 3820
         },
@@ -68377,7 +68377,7 @@
           "end_ms": 5300
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 5620,
           "end_ms": 5720
         },
@@ -68564,7 +68564,7 @@
           "end_ms": 4840
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 4840,
           "end_ms": 5400
         },
@@ -68664,7 +68664,7 @@
           "end_ms": 12760
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 12760,
           "end_ms": 13420
         },
@@ -68790,7 +68790,7 @@
     },
     "ch13-800": {
       "file": "audio/en/ch13-800.m4a",
-      "duration_ms": 9840,
+      "duration_ms": 8840,
       "pause_after_ms": 800,
       "words": [
         {
@@ -68819,7 +68819,7 @@
           "end_ms": 2240
         },
         {
-          "word": "Albán,",
+          "word": "Alb\u00e1n,",
           "start_ms": 2240,
           "end_ms": 2560
         },
@@ -69051,12 +69051,12 @@
           "end_ms": 8700
         },
         {
-          "word": "Mictlán",
+          "word": "Mictl\u00e1n",
           "start_ms": 8740,
           "end_ms": 9400
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 9400,
           "end_ms": 9680
         },
@@ -69188,7 +69188,7 @@
           "end_ms": 3560
         },
         {
-          "word": "Albán.",
+          "word": "Alb\u00e1n.",
           "start_ms": 3560,
           "end_ms": 4120
         }
@@ -69466,7 +69466,7 @@
           "end_ms": 1620
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 1620,
           "end_ms": 2260
         },
@@ -69486,7 +69486,7 @@
           "end_ms": 4460
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 4460,
           "end_ms": 4780
         },
@@ -69805,7 +69805,7 @@
     },
     "ch13-810": {
       "file": "audio/en/ch13-810.m4a",
-      "duration_ms": 2120,
+      "duration_ms": 1720,
       "pause_after_ms": 500,
       "words": [
         {
@@ -69837,7 +69837,7 @@
     },
     "ch13-811": {
       "file": "audio/en/ch13-811.m4a",
-      "duration_ms": 2440,
+      "duration_ms": 2200,
       "pause_after_ms": 500,
       "words": [
         {
@@ -69923,7 +69923,7 @@
           "end_ms": 3340
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 3340,
           "end_ms": 3920
         },
@@ -70204,7 +70204,7 @@
           "end_ms": 2920
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 3060,
           "end_ms": 3540
         },
@@ -70480,7 +70480,7 @@
           "end_ms": 8500
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 8500,
           "end_ms": 8960
         },
@@ -70545,7 +70545,7 @@
           "end_ms": 12940
         },
         {
-          "word": "Albán's",
+          "word": "Alb\u00e1n's",
           "start_ms": 13020,
           "end_ms": 13500
         },
@@ -70592,7 +70592,7 @@
           "end_ms": 2280
         },
         {
-          "word": "Albán",
+          "word": "Alb\u00e1n",
           "start_ms": 2280,
           "end_ms": 2860
         },
@@ -70605,7 +70605,7 @@
     },
     "ch13-820": {
       "file": "audio/en/ch13-820.m4a",
-      "duration_ms": 13040,
+      "duration_ms": 12920,
       "pause_after_ms": 500,
       "words": [
         {
@@ -70634,7 +70634,7 @@
           "end_ms": 1860
         },
         {
-          "word": "Albán's",
+          "word": "Alb\u00e1n's",
           "start_ms": 1860,
           "end_ms": 2500
         },
@@ -70846,7 +70846,7 @@
           "end_ms": 4460
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 4460,
           "end_ms": 4940
         },
@@ -70871,7 +70871,7 @@
           "end_ms": 5800
         },
         {
-          "word": "Uija-tào,",
+          "word": "Uija-t\u00e0o,",
           "start_ms": 5800,
           "end_ms": 6750
         },
@@ -70891,7 +70891,7 @@
           "end_ms": 8400
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 8560,
           "end_ms": 8560
         },
@@ -71033,7 +71033,7 @@
           "end_ms": 6000
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 6000,
           "end_ms": 6380
         },
@@ -71073,7 +71073,7 @@
           "end_ms": 8740
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 8740,
           "end_ms": 9120
         },
@@ -71623,7 +71623,7 @@
           "end_ms": 6600
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 6600,
           "end_ms": 6940
         },
@@ -71728,7 +71728,7 @@
           "end_ms": 13880
         },
         {
-          "word": "Albán",
+          "word": "Alb\u00e1n",
           "start_ms": 13880,
           "end_ms": 14280
         },
@@ -71832,7 +71832,7 @@
           "end_ms": 4840
         },
         {
-          "word": "Albán.",
+          "word": "Alb\u00e1n.",
           "start_ms": 4840,
           "end_ms": 5420
         }
@@ -71908,7 +71908,7 @@
           "end_ms": 1080
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 1080,
           "end_ms": 1300
         },
@@ -71933,7 +71933,7 @@
           "end_ms": 2460
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 2940,
           "end_ms": 3040
         },
@@ -72179,7 +72179,7 @@
           "end_ms": 7200
         },
         {
-          "word": "Albán",
+          "word": "Alb\u00e1n",
           "start_ms": 7220,
           "end_ms": 7760
         },
@@ -72222,7 +72222,7 @@
     },
     "ch13-836": {
       "file": "audio/en/ch13-836.m4a",
-      "duration_ms": 1520,
+      "duration_ms": 1360,
       "pause_after_ms": 500,
       "words": [
         {
@@ -72249,7 +72249,7 @@
     },
     "ch13-837": {
       "file": "audio/en/ch13-837.m4a",
-      "duration_ms": 9600,
+      "duration_ms": 10160,
       "pause_after_ms": 500,
       "words": [
         {
@@ -72410,7 +72410,7 @@
           "end_ms": 1400
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 1400,
           "end_ms": 1940
         },
@@ -72709,7 +72709,7 @@
           "end_ms": 1740
         },
         {
-          "word": "Albán's",
+          "word": "Alb\u00e1n's",
           "start_ms": 1740,
           "end_ms": 2460
         },
@@ -73000,7 +73000,7 @@
           "end_ms": 2240
         },
         {
-          "word": "Albán",
+          "word": "Alb\u00e1n",
           "start_ms": 2240,
           "end_ms": 2800
         },
@@ -73538,7 +73538,7 @@
           "end_ms": 1900
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 1900,
           "end_ms": 2480
         },
@@ -73949,7 +73949,7 @@
           "end_ms": 6320
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 6320,
           "end_ms": 6760
         },
@@ -74287,7 +74287,7 @@
           "end_ms": 980
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 980,
           "end_ms": 1300
         },
@@ -74332,7 +74332,7 @@
           "end_ms": 3860
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 3860,
           "end_ms": 4300
         },
@@ -74551,7 +74551,7 @@
           "end_ms": 6320
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 6320,
           "end_ms": 7000
         },
@@ -74879,7 +74879,7 @@
           "end_ms": 1020
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 1020,
           "end_ms": 1300
         },
@@ -74929,7 +74929,7 @@
           "end_ms": 4200
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 4200,
           "end_ms": 4880
         },
@@ -75210,7 +75210,7 @@
           "end_ms": 1380
         },
         {
-          "word": "Albán",
+          "word": "Alb\u00e1n",
           "start_ms": 1380,
           "end_ms": 2000
         },
@@ -75297,7 +75297,7 @@
           "end_ms": 1080
         },
         {
-          "word": "Albán",
+          "word": "Alb\u00e1n",
           "start_ms": 1080,
           "end_ms": 1640
         },
@@ -75362,12 +75362,12 @@
           "end_ms": 5300
         },
         {
-          "word": "Chichén",
+          "word": "Chich\u00e9n",
           "start_ms": 5300,
           "end_ms": 5300
         },
         {
-          "word": "Itzá",
+          "word": "Itz\u00e1",
           "start_ms": 5300,
           "end_ms": 5300
         },
@@ -75434,7 +75434,7 @@
           "end_ms": 1880
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 1880,
           "end_ms": 2400
         },
@@ -75479,7 +75479,7 @@
           "end_ms": 4680
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 4680,
           "end_ms": 5080
         },
@@ -75663,7 +75663,7 @@
           "end_ms": 3480
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 3480,
           "end_ms": 3780
         },
@@ -75842,7 +75842,7 @@
           "end_ms": 2180
         },
         {
-          "word": "Albán",
+          "word": "Alb\u00e1n",
           "start_ms": 2180,
           "end_ms": 2620
         },
@@ -76027,7 +76027,7 @@
     },
     "ch14-872": {
       "file": "audio/en/ch14-872.m4a",
-      "duration_ms": 5640,
+      "duration_ms": 5920,
       "pause_after_ms": 500,
       "words": [
         {
@@ -76225,7 +76225,7 @@
           "end_ms": 2960
         },
         {
-          "word": "Albán's",
+          "word": "Alb\u00e1n's",
           "start_ms": 2960,
           "end_ms": 3640
         },
@@ -76260,7 +76260,7 @@
           "end_ms": 5400
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 5400,
           "end_ms": 5820
         },
@@ -76596,7 +76596,7 @@
           "end_ms": 4520
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 4520,
           "end_ms": 5080
         },
@@ -76768,7 +76768,7 @@
           "end_ms": 2300
         },
         {
-          "word": "Albán",
+          "word": "Alb\u00e1n",
           "start_ms": 2300,
           "end_ms": 2780
         },
@@ -76883,7 +76883,7 @@
           "end_ms": 10940
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 10940,
           "end_ms": 11800
         },
@@ -77246,7 +77246,7 @@
           "end_ms": 1200
         },
         {
-          "word": "Albán,",
+          "word": "Alb\u00e1n,",
           "start_ms": 1200,
           "end_ms": 1900
         },
@@ -77318,7 +77318,7 @@
           "end_ms": 680
         },
         {
-          "word": "Albán",
+          "word": "Alb\u00e1n",
           "start_ms": 680,
           "end_ms": 1180
         },
@@ -77512,7 +77512,7 @@
           "end_ms": 2700
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 2700,
           "end_ms": 3300
         },
@@ -77843,7 +77843,7 @@
           "end_ms": 1440
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 1440,
           "end_ms": 2120
         },
@@ -77960,7 +77960,7 @@
           "end_ms": 2060
         },
         {
-          "word": "Albán",
+          "word": "Alb\u00e1n",
           "start_ms": 2080,
           "end_ms": 2440
         },
@@ -77980,7 +77980,7 @@
           "end_ms": 3840
         },
         {
-          "word": "Albán",
+          "word": "Alb\u00e1n",
           "start_ms": 3840,
           "end_ms": 4300
         },
@@ -78008,7 +78008,7 @@
     },
     "ch15-891": {
       "file": "audio/en/ch15-891.m4a",
-      "duration_ms": 3240,
+      "duration_ms": 1410,
       "pause_after_ms": 500,
       "words": [
         {
@@ -78035,7 +78035,7 @@
     },
     "ch15-892": {
       "file": "audio/en/ch15-892.m4a",
-      "duration_ms": 4800,
+      "duration_ms": 6800,
       "pause_after_ms": 500,
       "words": [
         {
@@ -78079,7 +78079,7 @@
           "end_ms": 2140
         },
         {
-          "word": "Albán's",
+          "word": "Alb\u00e1n's",
           "start_ms": 2140,
           "end_ms": 2740
         },
@@ -78532,7 +78532,7 @@
     },
     "ch15-898": {
       "file": "audio/en/ch15-898.m4a",
-      "duration_ms": 4300,
+      "duration_ms": 7400,
       "pause_after_ms": 500,
       "words": [
         {
@@ -78648,7 +78648,7 @@
           "end_ms": 960
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 960,
           "end_ms": 1380
         },
@@ -78698,7 +78698,7 @@
           "end_ms": 5300
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 5300,
           "end_ms": 5700
         },
@@ -78956,7 +78956,7 @@
           "end_ms": 680
         },
         {
-          "word": "Albán",
+          "word": "Alb\u00e1n",
           "start_ms": 680,
           "end_ms": 1240
         },
@@ -79170,7 +79170,7 @@
           "end_ms": 4560
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 4560,
           "end_ms": 5100
         },
@@ -79205,7 +79205,7 @@
           "end_ms": 6380
         },
         {
-          "word": "Albán's",
+          "word": "Alb\u00e1n's",
           "start_ms": 6380,
           "end_ms": 7000
         },
@@ -79598,7 +79598,7 @@
           "end_ms": 300
         },
         {
-          "word": "Albán",
+          "word": "Alb\u00e1n",
           "start_ms": 300,
           "end_ms": 800
         },
@@ -79717,7 +79717,7 @@
           "end_ms": 700
         },
         {
-          "word": "Albán",
+          "word": "Alb\u00e1n",
           "start_ms": 700,
           "end_ms": 1220
         },
@@ -79976,7 +79976,7 @@
           "end_ms": 4320
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 4320,
           "end_ms": 4720
         },
@@ -80218,7 +80218,7 @@
           "end_ms": 9880
         },
         {
-          "word": "Albán's",
+          "word": "Alb\u00e1n's",
           "start_ms": 9900,
           "end_ms": 10540
         },
@@ -80347,7 +80347,7 @@
           "end_ms": 3700
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 3960,
           "end_ms": 4059
         },
@@ -80357,7 +80357,7 @@
           "end_ms": 4440
         },
         {
-          "word": "Copán,",
+          "word": "Cop\u00e1n,",
           "start_ms": 4760,
           "end_ms": 5300
         },
@@ -80427,7 +80427,7 @@
           "end_ms": 9660
         },
         {
-          "word": "Albán.",
+          "word": "Alb\u00e1n.",
           "start_ms": 9660,
           "end_ms": 10140
         }
@@ -80435,7 +80435,7 @@
     },
     "ch15-917": {
       "file": "audio/en/ch15-917.m4a",
-      "duration_ms": 2640,
+      "duration_ms": 2180,
       "pause_after_ms": 500,
       "words": [
         {
@@ -80476,7 +80476,7 @@
           "end_ms": 300
         },
         {
-          "word": "Albán",
+          "word": "Alb\u00e1n",
           "start_ms": 300,
           "end_ms": 820
         },
@@ -80509,7 +80509,7 @@
     },
     "ch15-919": {
       "file": "audio/en/ch15-919.m4a",
-      "duration_ms": 10440,
+      "duration_ms": 8800,
       "pause_after_ms": 500,
       "words": [
         {
@@ -80670,7 +80670,7 @@
           "end_ms": 2680
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 2680,
           "end_ms": 3040
         },
@@ -80725,7 +80725,7 @@
           "end_ms": 8740
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 8740,
           "end_ms": 9360
         },
@@ -80969,7 +80969,7 @@
           "end_ms": 11800
         },
         {
-          "word": "Albán",
+          "word": "Alb\u00e1n",
           "start_ms": 11800,
           "end_ms": 12260
         },
@@ -81051,7 +81051,7 @@
           "end_ms": 2060
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 2440,
           "end_ms": 2540
         },
@@ -81086,7 +81086,7 @@
           "end_ms": 6400
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 6400,
           "end_ms": 6780
         },
@@ -81394,7 +81394,7 @@
     },
     "ch15-929": {
       "file": "audio/en/ch15-929.m4a",
-      "duration_ms": 7800,
+      "duration_ms": 8600,
       "pause_after_ms": 800,
       "words": [
         {
@@ -81536,7 +81536,7 @@
     },
     "ch15-930": {
       "file": "audio/en/ch15-930.m4a",
-      "duration_ms": 4680,
+      "duration_ms": 2400,
       "pause_after_ms": 500,
       "words": [
         {
@@ -81578,7 +81578,7 @@
     },
     "ch15-931": {
       "file": "audio/en/ch15-931.m4a",
-      "duration_ms": 4480,
+      "duration_ms": 3420,
       "pause_after_ms": 500,
       "words": [
         {
@@ -81644,7 +81644,7 @@
           "end_ms": 1720
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 1720,
           "end_ms": 2360
         },
@@ -81821,7 +81821,7 @@
           "end_ms": 2040
         },
         {
-          "word": "Albán",
+          "word": "Alb\u00e1n",
           "start_ms": 2040,
           "end_ms": 2620
         },
@@ -81911,7 +81911,7 @@
     },
     "ch15-936": {
       "file": "audio/en/ch15-936.m4a",
-      "duration_ms": 2200,
+      "duration_ms": 1960,
       "pause_after_ms": 500,
       "words": [
         {
@@ -81987,7 +81987,7 @@
           "end_ms": 2800
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 2800,
           "end_ms": 3300
         },
@@ -82104,7 +82104,7 @@
           "end_ms": 1900
         },
         {
-          "word": "Albán?",
+          "word": "Alb\u00e1n?",
           "start_ms": 1900,
           "end_ms": 2500
         },
@@ -82181,7 +82181,7 @@
           "end_ms": 780
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 780,
           "end_ms": 1160
         },
@@ -82241,7 +82241,7 @@
           "end_ms": 4360
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 4360,
           "end_ms": 4580
         },
@@ -82564,7 +82564,7 @@
           "end_ms": 1080
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 1080,
           "end_ms": 1580
         },
@@ -82594,7 +82594,7 @@
           "end_ms": 3900
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 4260,
           "end_ms": 4360
         },
@@ -82877,7 +82877,7 @@
           "end_ms": 1060
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 1060,
           "end_ms": 1420
         },
@@ -82902,7 +82902,7 @@
           "end_ms": 2960
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 3060,
           "end_ms": 3160
         },
@@ -83228,7 +83228,7 @@
           "end_ms": 7260
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 7260,
           "end_ms": 7860
         },
@@ -83281,7 +83281,7 @@
     },
     "ch15-951": {
       "file": "audio/en/ch15-951.m4a",
-      "duration_ms": 1880,
+      "duration_ms": 1540,
       "pause_after_ms": 500,
       "words": [
         {
@@ -83308,7 +83308,7 @@
     },
     "ch15-952": {
       "file": "audio/en/ch15-952.m4a",
-      "duration_ms": 2000,
+      "duration_ms": 1520,
       "pause_after_ms": 500,
       "words": [
         {
@@ -83505,7 +83505,7 @@
           "end_ms": 640
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 640,
           "end_ms": 1060
         },
@@ -83550,7 +83550,7 @@
           "end_ms": 3780
         },
         {
-          "word": "Albán,",
+          "word": "Alb\u00e1n,",
           "start_ms": 3780,
           "end_ms": 4340
         },
@@ -83669,7 +83669,7 @@
           "end_ms": 1140
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 1140,
           "end_ms": 1600
         },
@@ -83719,7 +83719,7 @@
           "end_ms": 5740
         },
         {
-          "word": "Albán's",
+          "word": "Alb\u00e1n's",
           "start_ms": 5740,
           "end_ms": 6420
         },
@@ -83848,7 +83848,7 @@
           "end_ms": 3740
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 4840,
           "end_ms": 4840
         },
@@ -83893,7 +83893,7 @@
           "end_ms": 8400
         },
         {
-          "word": "Albán",
+          "word": "Alb\u00e1n",
           "start_ms": 8400,
           "end_ms": 8960
         },
@@ -84020,7 +84020,7 @@
           "end_ms": 2240
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 2880,
           "end_ms": 2880
         },
@@ -84155,7 +84155,7 @@
     },
     "ch15-964": {
       "file": "audio/en/ch15-964.m4a",
-      "duration_ms": 16320,
+      "duration_ms": 10440,
       "pause_after_ms": 800,
       "words": [
         {
@@ -84169,7 +84169,7 @@
           "end_ms": 1220
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 1220,
           "end_ms": 1820
         },
@@ -84281,7 +84281,7 @@
           "end_ms": 1020
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 1020,
           "end_ms": 1500
         },
@@ -84336,7 +84336,7 @@
           "end_ms": 5400
         },
         {
-          "word": "Albán,",
+          "word": "Alb\u00e1n,",
           "start_ms": 5400,
           "end_ms": 6020
         },
@@ -84440,7 +84440,7 @@
           "end_ms": 1920
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 1920,
           "end_ms": 2520
         },
@@ -84465,7 +84465,7 @@
           "end_ms": 4000
         },
         {
-          "word": "Albán,",
+          "word": "Alb\u00e1n,",
           "start_ms": 4000,
           "end_ms": 4880
         },
@@ -84567,7 +84567,7 @@
           "end_ms": 1080
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 1080,
           "end_ms": 1500
         },
@@ -84654,7 +84654,7 @@
           "end_ms": 780
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 780,
           "end_ms": 880
         },
@@ -84674,7 +84674,7 @@
           "end_ms": 2280
         },
         {
-          "word": "Antropología",
+          "word": "Antropolog\u00eda",
           "start_ms": 2280,
           "end_ms": 2940
         },
@@ -84778,7 +84778,7 @@
           "end_ms": 1100
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 1100,
           "end_ms": 1460
         },
@@ -84871,7 +84871,7 @@
     },
     "ch15-972": {
       "file": "audio/en/ch15-972.m4a",
-      "duration_ms": 2300,
+      "duration_ms": 4720,
       "pause_after_ms": 800,
       "words": [
         {
@@ -84942,7 +84942,7 @@
           "end_ms": 1300
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 1300,
           "end_ms": 1920
         },
@@ -85076,7 +85076,7 @@
           "end_ms": 960
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 960,
           "end_ms": 1380
         },
@@ -85203,7 +85203,7 @@
           "end_ms": 500
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 500,
           "end_ms": 860
         },
@@ -85283,7 +85283,7 @@
           "end_ms": 7420
         },
         {
-          "word": "Albán,",
+          "word": "Alb\u00e1n,",
           "start_ms": 7420,
           "end_ms": 8080
         },
@@ -85321,7 +85321,7 @@
     },
     "ch15-977": {
       "file": "audio/en/ch15-977.m4a",
-      "duration_ms": 11520,
+      "duration_ms": 12040,
       "pause_after_ms": 800,
       "words": [
         {
@@ -85330,7 +85330,7 @@
           "end_ms": 860
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 1180,
           "end_ms": 1280
         },
@@ -85435,7 +85435,7 @@
           "end_ms": 7100
         },
         {
-          "word": "Albán's",
+          "word": "Alb\u00e1n's",
           "start_ms": 7100,
           "end_ms": 7680
         },
@@ -85483,7 +85483,7 @@
     },
     "ch15-978": {
       "file": "audio/en/ch15-978.m4a",
-      "duration_ms": 12120,
+      "duration_ms": 12080,
       "pause_after_ms": 800,
       "words": [
         {
@@ -85492,12 +85492,12 @@
           "end_ms": 580
         },
         {
-          "word": "Albán",
+          "word": "Alb\u00e1n",
           "start_ms": 580,
           "end_ms": 1280
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 1280,
           "end_ms": 1740
         },
@@ -85615,7 +85615,7 @@
     },
     "ch15-979": {
       "file": "audio/en/ch15-979.m4a",
-      "duration_ms": 4840,
+      "duration_ms": 5520,
       "pause_after_ms": 500,
       "words": [
         {
@@ -85624,7 +85624,7 @@
           "end_ms": 740
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 740,
           "end_ms": 1160
         },
@@ -85692,7 +85692,7 @@
     },
     "ch15-980": {
       "file": "audio/en/ch15-980.m4a",
-      "duration_ms": 6920,
+      "duration_ms": 5920,
       "pause_after_ms": 800,
       "words": [
         {
@@ -85783,7 +85783,7 @@
           "end_ms": 1520
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 1520,
           "end_ms": 1840
         },
@@ -85793,7 +85793,7 @@
           "end_ms": 2260
         },
         {
-          "word": "Albán's",
+          "word": "Alb\u00e1n's",
           "start_ms": 2260,
           "end_ms": 2720
         },
@@ -86105,7 +86105,7 @@
           "end_ms": 780
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 780,
           "end_ms": 1240
         },
@@ -86218,7 +86218,7 @@
     },
     "ch15-983": {
       "file": "audio/en/ch15-983.m4a",
-      "duration_ms": 9760,
+      "duration_ms": 9520,
       "pause_after_ms": 500,
       "words": [
         {
@@ -86227,7 +86227,7 @@
           "end_ms": 520
         },
         {
-          "word": "José",
+          "word": "Jos\u00e9",
           "start_ms": 520,
           "end_ms": 1280
         },
@@ -86237,7 +86237,7 @@
           "end_ms": 2500
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 2500,
           "end_ms": 3040
         },
@@ -86317,7 +86317,7 @@
           "end_ms": 8180
         },
         {
-          "word": "Albán's",
+          "word": "Alb\u00e1n's",
           "start_ms": 8180,
           "end_ms": 8840
         },
@@ -86436,7 +86436,7 @@
           "end_ms": 2460
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 2460,
           "end_ms": 2920
         },
@@ -86521,7 +86521,7 @@
           "end_ms": 8940
         },
         {
-          "word": "Albán's",
+          "word": "Alb\u00e1n's",
           "start_ms": 8940,
           "end_ms": 9460
         },
@@ -86558,7 +86558,7 @@
           "end_ms": 740
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 740,
           "end_ms": 980
         },
@@ -86705,7 +86705,7 @@
           "end_ms": 2760
         },
         {
-          "word": "Albán's",
+          "word": "Alb\u00e1n's",
           "start_ms": 2760,
           "end_ms": 3400
         },
@@ -86727,7 +86727,7 @@
           "end_ms": 1220
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 1220,
           "end_ms": 1680
         },
@@ -86894,7 +86894,7 @@
           "end_ms": 920
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 920,
           "end_ms": 1440
         },
@@ -86944,7 +86944,7 @@
           "end_ms": 3960
         },
         {
-          "word": "Albán,",
+          "word": "Alb\u00e1n,",
           "start_ms": 3960,
           "end_ms": 4760
         },
@@ -87103,7 +87103,7 @@
           "end_ms": 1360
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 1360,
           "end_ms": 1760
         },
@@ -87243,7 +87243,7 @@
     },
     "ch15-993": {
       "file": "audio/en/ch15-993.m4a",
-      "duration_ms": 5520,
+      "duration_ms": 6120,
       "pause_after_ms": 500,
       "words": [
         {
@@ -87252,7 +87252,7 @@
           "end_ms": 1000
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 1000,
           "end_ms": 1340
         },
@@ -87566,7 +87566,7 @@
     },
     "ch15-998": {
       "file": "audio/en/ch15-998.m4a",
-      "duration_ms": 2680,
+      "duration_ms": 1540,
       "pause_after_ms": 800,
       "words": [
         {
@@ -87593,7 +87593,7 @@
     },
     "ch15-999": {
       "file": "audio/en/ch15-999.m4a",
-      "duration_ms": 18400,
+      "duration_ms": 17760,
       "pause_after_ms": 800,
       "words": [
         {
@@ -87707,7 +87707,7 @@
           "end_ms": 12400
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 13540,
           "end_ms": 13540
         },
@@ -87914,7 +87914,7 @@
           "end_ms": 12000
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 12440,
           "end_ms": 12440
         },
@@ -87939,7 +87939,7 @@
           "end_ms": 13700
         },
         {
-          "word": "Albán,",
+          "word": "Alb\u00e1n,",
           "start_ms": 13700,
           "end_ms": 14160
         },
@@ -88017,7 +88017,7 @@
     },
     "ch15-1001": {
       "file": "audio/en/ch15-1001.m4a",
-      "duration_ms": 14440,
+      "duration_ms": 16200,
       "pause_after_ms": 800,
       "words": [
         {
@@ -88121,7 +88121,7 @@
           "end_ms": 8700
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 9180,
           "end_ms": 9180
         },
@@ -88184,7 +88184,7 @@
     },
     "ch15-1002": {
       "file": "audio/en/ch15-1002.m4a",
-      "duration_ms": 1880,
+      "duration_ms": 1600,
       "pause_after_ms": 800,
       "words": [
         {
@@ -88310,7 +88310,7 @@
           "end_ms": 10120
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 10740,
           "end_ms": 10740
         },
@@ -88452,7 +88452,7 @@
           "end_ms": 10620
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 11140,
           "end_ms": 11140
         },
@@ -88596,7 +88596,7 @@
           "end_ms": 2800
         },
         {
-          "word": "Albán",
+          "word": "Alb\u00e1n",
           "start_ms": 2800,
           "end_ms": 3180
         },
@@ -88621,7 +88621,7 @@
           "end_ms": 4340
         },
         {
-          "word": "Albán).",
+          "word": "Alb\u00e1n).",
           "start_ms": 4340,
           "end_ms": 4620
         },
@@ -88646,7 +88646,7 @@
           "end_ms": 6800
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 7280,
           "end_ms": 7440
         },
@@ -88850,7 +88850,7 @@
           "end_ms": 8880
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 9520,
           "end_ms": 9520
         },
@@ -89007,7 +89007,7 @@
           "end_ms": 8680
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 9900,
           "end_ms": 9900
         },
@@ -89291,7 +89291,7 @@
           "end_ms": 5700
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 5700,
           "end_ms": 6000
         },
@@ -89629,12 +89629,12 @@
           "end_ms": 3300
         },
         {
-          "word": "Albán",
+          "word": "Alb\u00e1n",
           "start_ms": 3300,
           "end_ms": 3960
         },
         {
-          "word": "—",
+          "word": "\u2014",
           "start_ms": 3960,
           "end_ms": 4300
         },
@@ -89801,7 +89801,7 @@
     },
     "ch15-1020": {
       "file": "audio/en/ch15-1020.m4a",
-      "duration_ms": 12080,
+      "duration_ms": 11600,
       "pause_after_ms": 800,
       "words": [
         {
@@ -89825,7 +89825,7 @@
           "end_ms": 1740
         },
         {
-          "word": "Albán,",
+          "word": "Alb\u00e1n,",
           "start_ms": 1740,
           "end_ms": 2260
         },
@@ -90055,7 +90055,7 @@
     },
     "ch04-256": {
       "file": "audio/en/ch04-256.m4a",
-      "duration_ms": 2920,
+      "duration_ms": 2970,
       "pause_after_ms": 800,
       "words": [
         {
