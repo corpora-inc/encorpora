@@ -1,4 +1,8 @@
-import type { OscilloscopeConfig, PulseRingConfig, WaveformConfig, WordHoldConfig } from "../state/prefsStore"
+// Stargate-specific display config types (kept local, not in shared)
+export type OscilloscopeConfig = { amplitude: number; width: number; alpha: number }
+export type WaveformConfig = { maxRadius: number; alpha: number; minRadius: number }
+export type PulseRingConfig = { maxRadius: number; fadeMs: number }
+export type WordHoldConfig = { holdY: number; zPull: number }
 
 export type LanguageInfo = { code: string; displayName: string; narrator: string }
 

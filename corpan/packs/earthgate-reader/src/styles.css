@@ -12,6 +12,19 @@
   --eg-brown: #6b4c2a;
   --eg-accent: #8b6914;
   --eg-muted: #a89279;
+
+  /* Catalog browser theme — warm/serif */
+  --catalog-bg: rgba(245, 240, 232, 0.97);
+  --catalog-surface: rgba(235, 225, 210, 0.9);
+  --catalog-text: #3d2b1f;
+  --catalog-text-dim: #8b7355;
+  --catalog-accent: #8b6914;
+  --catalog-accent-hover: #a07818;
+  --catalog-success: #4a8c3f;
+  --catalog-error: #8b4513;
+  --catalog-border: rgba(107, 76, 42, 0.15);
+  --catalog-font: Georgia, "Times New Roman", serif;
+  --catalog-radius: 10px;
 }
 
 html,

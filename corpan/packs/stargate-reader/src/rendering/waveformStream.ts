@@ -7,8 +7,8 @@ import {
   Vector3,
   VertexBuffer,
 } from "@babylonjs/core"
-import type { TimelineWord } from "../core/types"
-import type { WaveformCache } from "../audio/waveformExtractor"
+import type { TimelineWord } from "@shared/core"
+import type { WaveformCache } from "@shared/audio"
 import {
   ENVELOPE_BINS,
   FADE_IN_Z,
@@ -25,7 +25,7 @@ import {
   WAVEFORM_STREAM_SMOOTH_PASSES,
   WAVEFORM_STREAM_SMOOTH_RADIUS,
   WAVEFORM_STREAM_TESSELLATION,
-} from "../core/constants"
+} from "@shared/core"
 
 export type WaveformStream = {
   mesh: Mesh

@@ -5,6 +5,19 @@
   --safe-bottom: env(safe-area-inset-bottom, 0px);
   --safe-left: env(safe-area-inset-left, 0px);
   --safe-right: env(safe-area-inset-right, 0px);
+
+  /* Catalog browser theme — dark/cyan */
+  --catalog-bg: rgba(2, 4, 9, 0.96);
+  --catalog-surface: rgba(15, 25, 45, 0.85);
+  --catalog-text: #c0d0e8;
+  --catalog-text-dim: #6080a0;
+  --catalog-accent: #7fd6ff;
+  --catalog-accent-hover: #a0e4ff;
+  --catalog-success: #4cff9f;
+  --catalog-error: #ff6060;
+  --catalog-border: rgba(127, 214, 255, 0.12);
+  --catalog-font: system-ui, -apple-system, sans-serif;
+  --catalog-radius: 12px;
 }
 
 html,

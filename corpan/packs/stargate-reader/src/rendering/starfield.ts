@@ -5,7 +5,7 @@ import {
   Texture,
   Vector3,
 } from "@babylonjs/core"
-import { STARFIELD_COUNT, STARFIELD_SIZE } from "../core/constants"
+import { STARFIELD_COUNT, STARFIELD_SIZE } from "@shared/core"
 
 export type Starfield = {
   system: ParticleSystem

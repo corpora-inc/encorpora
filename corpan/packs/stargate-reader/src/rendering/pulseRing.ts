@@ -14,7 +14,7 @@ import {
   PULSE_RING_GHOST_COUNT,
   PULSE_RING_MAX_RADIUS,
   PULSE_RING_SEGMENTS,
-} from "../core/constants"
+} from "@shared/core"
 
 export type PulseRing = {
   mesh: LinesMesh

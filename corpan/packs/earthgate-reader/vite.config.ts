@@ -169,6 +169,17 @@ export default defineConfig({
   define: {
     "process.env": {},
   },
+  resolve: {
+    alias: {
+      "@shared/catalog": path.resolve(__dirname, "../shared/catalog"),
+      "@shared/core": path.resolve(__dirname, "../shared/core"),
+      "@shared/sdk": path.resolve(__dirname, "../shared/sdk"),
+      "@shared/data": path.resolve(__dirname, "../shared/data"),
+      "@shared/audio": path.resolve(__dirname, "../shared/audio"),
+      "@shared/state": path.resolve(__dirname, "../shared/state"),
+      "@shared/ui": path.resolve(__dirname, "../shared/ui"),
+    },
+  },
   plugins: [updateManifestPlugin(), bookDataProxyPlugin()],
   build: {
     outDir: "dist",

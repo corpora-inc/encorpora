@@ -1,4 +1,4 @@
-import type { BookSegment, ManifestSegment } from "../core/types"
+import type { BookSegment, ManifestSegment } from "@shared/core"
 
 export type ParagraphView = {
   setSegment: (seg: BookSegment, manifestSeg: ManifestSegment | undefined) => void

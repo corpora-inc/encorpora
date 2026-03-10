@@ -8,28 +8,17 @@ import {
   Scene,
   Vector3,
 } from "@babylonjs/core"
-import type { HostApi } from "./sdk/types"
-import type { AudioManifest, BookSegment, TimelineWord } from "./core/types"
-import { CAMERA_FOV, CAMERA_Z, GLOW_INTENSITY, LANGUAGE_NAMES, VOICE_NAMES, BOOK_NAMES } from "./core/constants"
-import { buildTimeline, findCurrentWordIndex, buildChapterIndex } from "./core/timeline"
-import type { ChapterInfo } from "./core/types"
-import {
-  createFetchDataProvider,
-  createPreloadedDataProvider,
-  type DataProvider,
-} from "./data/dataProvider"
-import { createAudioEngine, type AudioEngine } from "./audio/audioEngine"
-import { createWaveformCache, type WaveformCache } from "./audio/waveformExtractor"
-import { createWordStream, type WordStream } from "./rendering/wordStream"
-import { createOscilloscope, type Oscilloscope } from "./rendering/oscilloscope"
-import { createWaveformStream, type WaveformStream } from "./rendering/waveformStream"
-import { createPulseRing, type PulseRing } from "./rendering/pulseRing"
-import { createStarfield, type Starfield } from "./rendering/starfield"
-import { createTransportBar } from "./ui/transportBar"
-import { createChapterOverlay, type ChapterOverlay } from "./ui/chapterOverlay"
-import { createSettingsPanel, type LanguageInfo } from "./ui/settingsPanel"
-import { loadBookmark, saveBookmark, type Bookmark } from "./state/bookmarkStore"
-import { loadPrefs, savePrefs, type DisplayPrefs } from "./state/prefsStore"
+import type { HostApi } from "@shared/sdk"
+import type { AudioManifest, BookSegment, TimelineWord, ChapterInfo } from "@shared/core"
+import { CAMERA_FOV, CAMERA_Z, GLOW_INTENSITY, LANGUAGE_NAMES, VOICE_NAMES, BOOK_NAMES } from "@shared/core"
+import { buildTimeline, findCurrentWordIndex, buildChapterIndex } from "@shared/core"
+import { createFetchDataProvider, createPreloadedDataProvider, type DataProvider } from "@shared/data"
+import { createAudioEngine, type AudioEngine } from "@shared/audio"
+import { createWaveformCache, type WaveformCache } from "@shared/audio"
+import { createTransportBar } from "@shared/ui"
+import { createChapterOverlay, type ChapterOverlay } from "@shared/ui"
+import { createBookmarkStore, type Bookmark } from "@shared/state"
+import { createPrefsStore } from "@shared/state"
 import {
   startNativeKeepAlive,
   stopNativeKeepAlive,
@@ -37,8 +26,40 @@ import {
   resumeNativeKeepAlive,
   updateNativeNowPlaying,
   listenForRemoteCommands,
-} from "./audio/nativeKeepAlive"
+} from "@shared/audio"
+import { createWordStream, type WordStream } from "./rendering/wordStream"
+import { createOscilloscope, type Oscilloscope } from "./rendering/oscilloscope"
+import { createWaveformStream, type WaveformStream } from "./rendering/waveformStream"
+import { createPulseRing, type PulseRing } from "./rendering/pulseRing"
+import { createStarfield, type Starfield } from "./rendering/starfield"
+import { createSettingsPanel, type LanguageInfo, type OscilloscopeConfig, type WaveformConfig, type PulseRingConfig, type WordHoldConfig } from "./ui/settingsPanel"
 import { srTrace, type TraceFields } from "./diagnostics/trace"
+
+// Stargate-specific display preferences
+type DisplayPrefs = {
+  oscilloscope: boolean
+  waveform: boolean
+  pulseRing: boolean
+  wordHold: boolean
+  oscilloscopeConfig: OscilloscopeConfig
+  waveformConfig: WaveformConfig
+  pulseRingConfig: PulseRingConfig
+  wordHoldConfig: WordHoldConfig
+}
+
+const STARGATE_PREFS_DEFAULTS: DisplayPrefs = {
+  oscilloscope: true,
+  waveform: true,
+  pulseRing: true,
+  wordHold: true,
+  oscilloscopeConfig: { amplitude: 5, width: 12, alpha: 0.35 },
+  waveformConfig: { maxRadius: 1, alpha: 0.005, minRadius: 0 },
+  pulseRingConfig: { maxRadius: 1, fadeMs: 200 },
+  wordHoldConfig: { holdY: 0, zPull: 0.4 },
+}
+
+const bookmarks = createBookmarkStore("stargate-reader")
+const prefsStore = createPrefsStore("stargate-reader-prefs", STARGATE_PREFS_DEFAULTS)
 
 type StargateRemoteCommand = "play" | "pause"
 type StargateNativeCommand = StargateRemoteCommand | "skipForward" | "skipBack"
@@ -503,7 +524,7 @@ export function createStargateReader(
       language: currentLanguage,
       savedAt: Date.now(),
     }
-    saveBookmark(bookId, bm)
+    bookmarks.save(bookId, bm)
   }
 
   // Create wrapper
@@ -603,7 +624,7 @@ export function createStargateReader(
   }
 
   // --- Display preferences (persisted per book) ---
-  const prefs: DisplayPrefs = loadPrefs(bookId)
+  const prefs: DisplayPrefs = prefsStore.load(bookId)
 
   // --- Settings panel (gear dropdown) ---
   // Late-bound reference so the exit button can call full dispose
@@ -621,11 +642,11 @@ export function createStargateReader(
   })
 
   // --- Chapter overlay ---
-  let chapterOverlay: ChapterOverlay = createChapterOverlay(ui)
+  let chapterOverlay: ChapterOverlay = createChapterOverlay(ui, "stargate")
   let lastChapterIndex = -1
 
   // --- Transport bar ---
-  const transport = createTransportBar(ui)
+  const transport = createTransportBar(ui, "stargate")
   settings.setLanguages(buildLanguageInfos(), currentLanguage)
 
   transport.onPlay(() => {
@@ -741,49 +762,49 @@ export function createStargateReader(
   settings.onToggleWordHold((enabled) => {
     wordHoldEnabled = enabled
     prefs.wordHold = enabled
-    savePrefs(bookId, prefs)
+    prefsStore.save(bookId, prefs)
   })
 
   settings.onWordHoldConfig((key, value) => {
     wordStream?.configure({ [key]: value })
     ;(prefs.wordHoldConfig as Record<string, number>)[key] = value
-    savePrefs(bookId, prefs)
+    prefsStore.save(bookId, prefs)
   })
 
   settings.onToggleOscilloscope((visible) => {
     if (oscilloscope) oscilloscope.mesh.isVisible = visible
     prefs.oscilloscope = visible
-    savePrefs(bookId, prefs)
+    prefsStore.save(bookId, prefs)
   })
 
   settings.onToggleWaveform((visible) => {
     if (waveformStream) waveformStream.mesh.isVisible = visible
     prefs.waveform = visible
-    savePrefs(bookId, prefs)
+    prefsStore.save(bookId, prefs)
   })
 
   settings.onTogglePulseRing((visible) => {
     pulseRing?.setVisible(visible)
     prefs.pulseRing = visible
-    savePrefs(bookId, prefs)
+    prefsStore.save(bookId, prefs)
   })
 
   settings.onOscilloscopeConfig((key, value) => {
     oscilloscope?.configure({ [key]: value })
     ;(prefs.oscilloscopeConfig as Record<string, number>)[key] = value
-    savePrefs(bookId, prefs)
+    prefsStore.save(bookId, prefs)
   })
 
   settings.onWaveformConfig((key, value) => {
     waveformStream?.configure({ [key]: value })
     ;(prefs.waveformConfig as Record<string, number>)[key] = value
-    savePrefs(bookId, prefs)
+    prefsStore.save(bookId, prefs)
   })
 
   settings.onPulseRingConfig((key, value) => {
     pulseRing?.configure({ [key]: value })
     ;(prefs.pulseRingConfig as Record<string, number>)[key] = value
-    savePrefs(bookId, prefs)
+    prefsStore.save(bookId, prefs)
   })
 
   // --- Native remote command listeners (lock screen / notification) ---
@@ -977,7 +998,7 @@ export function createStargateReader(
       let manifest: AudioManifest
 
       // Load bookmark early so persisted language is used for initial data load
-      const bookmark = loadBookmark(bookId)
+      const bookmark = bookmarks.load(bookId)
 
       const preloadedSegments = initialState?.segmentsData as { segments: BookSegment[] } | undefined
       const preloadedManifest = initialState?.audioManifest as AudioManifest | undefined

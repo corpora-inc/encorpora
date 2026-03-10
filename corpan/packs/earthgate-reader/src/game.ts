@@ -1,19 +1,12 @@
-import type { HostApi } from "./sdk/types"
-import type { AudioManifest, BookSegment, TimelineWord } from "./core/types"
-import { VOICE_NAMES, BOOK_NAMES, LANGUAGE_NAMES } from "./core/constants"
-import { buildTimeline, findCurrentWordIndex, buildChapterIndex } from "./core/timeline"
-import type { ChapterInfo } from "./core/types"
-import {
-  createFetchDataProvider,
-  createPreloadedDataProvider,
-  type DataProvider,
-} from "./data/dataProvider"
-import { createAudioEngine, type AudioEngine } from "./audio/audioEngine"
-import { createTransportBar } from "./ui/transportBar"
-import { createSettingsPanel, type LanguageInfo } from "./ui/settingsPanel"
-import { createChapterOverlay, type ChapterOverlay } from "./ui/chapterOverlay"
-import { createParagraphView, type ParagraphView } from "./rendering/paragraphView"
-import { loadBookmark, saveBookmark, type Bookmark } from "./state/bookmarkStore"
+import type { HostApi } from "@shared/sdk"
+import type { AudioManifest, BookSegment, TimelineWord, ChapterInfo } from "@shared/core"
+import { VOICE_NAMES, BOOK_NAMES, LANGUAGE_NAMES } from "@shared/core"
+import { buildTimeline, findCurrentWordIndex, buildChapterIndex } from "@shared/core"
+import { createFetchDataProvider, createPreloadedDataProvider, type DataProvider } from "@shared/data"
+import { createAudioEngine, type AudioEngine } from "@shared/audio"
+import { createTransportBar } from "@shared/ui"
+import { createChapterOverlay, type ChapterOverlay } from "@shared/ui"
+import { createBookmarkStore, type Bookmark } from "@shared/state"
 import {
   startNativeKeepAlive,
   stopNativeKeepAlive,
@@ -21,7 +14,11 @@ import {
   resumeNativeKeepAlive,
   updateNativeNowPlaying,
   listenForRemoteCommands,
-} from "./audio/nativeKeepAlive"
+} from "@shared/audio"
+import { createSettingsPanel, type LanguageInfo } from "./ui/settingsPanel"
+import { createParagraphView, type ParagraphView } from "./rendering/paragraphView"
+
+const bookmarks = createBookmarkStore("earthgate-reader")
 
 type TauriBridgeWindow = Window & {
   __TAURI_INTERNALS__?: unknown
@@ -370,7 +367,7 @@ export function createEarthgateReader(
       language: currentLanguage,
       savedAt: Date.now(),
     }
-    saveBookmark(bookId, bm)
+    bookmarks.save(bookId, bm)
   }
 
   // --- DOM structure ---
@@ -393,7 +390,7 @@ export function createEarthgateReader(
   const paragraphView: ParagraphView = createParagraphView(ui)
 
   // Chapter overlay
-  let chapterOverlay: ChapterOverlay = createChapterOverlay(ui)
+  let chapterOverlay: ChapterOverlay = createChapterOverlay(ui, "earthgate")
   let lastChapterIndex = -1
 
   // Settings panel
@@ -403,7 +400,7 @@ export function createEarthgateReader(
   settings.setLanguages(buildLanguageInfos(), currentLanguage)
 
   // Transport bar
-  const transport = createTransportBar(ui)
+  const transport = createTransportBar(ui, "earthgate")
 
   // --- Swipe navigation ---
   paragraphView.onNext(() => {
@@ -687,7 +684,7 @@ export function createEarthgateReader(
   // --- Data loading & initialization ---
   async function initialize() {
     try {
-      const bookmark = loadBookmark(bookId)
+      const bookmark = bookmarks.load(bookId)
 
       const preloadedSegments = initialState?.segmentsData as { segments: BookSegment[] } | undefined
       const preloadedManifest = initialState?.audioManifest as AudioManifest | undefined

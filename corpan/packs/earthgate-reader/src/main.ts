@@ -1,7 +1,8 @@
 import "./styles.css"
-import type { GameModule, HostApi } from "./sdk/types"
-import { createMockHostApi } from "./sdk/mockHostApi"
+import type { GameModule, HostApi } from "@shared/sdk"
+import { createMockHostApi } from "@shared/sdk"
 import { createEarthgateReader } from "./game"
+import { createAppShell, type ReaderFactory } from "@shared/catalog"
 
 type GlobalScope = typeof globalThis & {
   CorpanGames?: Record<string, GameModule>
@@ -10,6 +11,9 @@ type GlobalScope = typeof globalThis & {
 }
 
 const GAME_ID = "earthgate_reader"
+
+const readerFactory: ReaderFactory = (container, hostApi, initialState) =>
+  createEarthgateReader(container, hostApi as HostApi, initialState)
 
 const registerGame = () => {
   const scope = globalThis as GlobalScope
@@ -37,16 +41,16 @@ const registerGame = () => {
         ...(contentRevision ? { contentRevision } : {}),
       }
 
-      const instance = createEarthgateReader(
-        container,
+      const shell = createAppShell(container, {
+        createReader: readerFactory,
         hostApi,
-        state
-      )
-      scope.__earthgateReader = instance
+        initialState: state,
+      })
+      scope.__earthgateReader = shell
 
       return {
         unmount: () => {
-          instance.dispose()
+          shell.dispose()
           scope.__earthgateReader = undefined
         },
       }

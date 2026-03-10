@@ -7,7 +7,7 @@ import {
   StandardMaterial,
   TransformNode,
 } from "@babylonjs/core"
-import type { TimelineWord } from "../core/types"
+import type { TimelineWord } from "@shared/core"
 import {
   CURRENT_WORD_SCALE,
   FADE_IN_Z,
@@ -23,8 +23,8 @@ import {
   WORD_POOL_SIZE,
   WORD_SCALE,
   WORD_TEXTURE_SIZE,
-} from "../core/constants"
-import { crawlY, findVisibleRange, wordToZ } from "../core/timeline"
+} from "@shared/core"
+import { crawlY, findVisibleRange, wordToZ } from "@shared/core"
 
 type WordMesh = {
   plane: Mesh

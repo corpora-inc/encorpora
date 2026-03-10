@@ -1,7 +1,8 @@
 import "./styles.css"
-import type { GameModule, HostApi } from "./sdk/types"
-import { createMockHostApi } from "./sdk/mockHostApi"
+import type { GameModule, HostApi } from "@shared/sdk"
+import { createMockHostApi } from "@shared/sdk"
 import { createStargateReader } from "./game"
+import { createAppShell, type ReaderFactory } from "@shared/catalog"
 
 type GlobalScope = typeof globalThis & {
   CorpanGames?: Record<string, GameModule>
@@ -10,6 +11,9 @@ type GlobalScope = typeof globalThis & {
 }
 
 const GAME_ID = "stargate_reader"
+
+const readerFactory: ReaderFactory = (container, hostApi, initialState) =>
+  createStargateReader(container, hostApi as HostApi, initialState)
 
 const registerGame = () => {
   const scope = globalThis as GlobalScope
@@ -37,16 +41,16 @@ const registerGame = () => {
         ...(contentRevision ? { contentRevision } : {}),
       }
 
-      const instance = createStargateReader(
-        container,
+      const shell = createAppShell(container, {
+        createReader: readerFactory,
         hostApi,
-        state
-      )
-      scope.__stargateReader = instance
+        initialState: state,
+      })
+      scope.__stargateReader = shell
 
       return {
         unmount: () => {
-          instance.dispose()
+          shell.dispose()
           scope.__stargateReader = undefined
         },
       }
