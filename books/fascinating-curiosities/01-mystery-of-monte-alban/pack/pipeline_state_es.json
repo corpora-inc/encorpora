@@ -744,10 +744,10 @@
     "validation_errors": []
   },
   "ch02-107": {
-    "status": "DONE",
+    "status": "PENDING",
     "retry_count": 0,
     "error": null,
-    "last_updated": "2026-03-09T19:30:47.851562+00:00",
+    "last_updated": "2026-03-10T03:33:15.560255+00:00",
     "validation_errors": []
   },
   "ch02-108": {
@@ -4522,13 +4522,11 @@
     ]
   },
   "ch10-645": {
-    "status": "DONE",
+    "status": "PENDING",
     "retry_count": 0,
     "error": null,
-    "last_updated": "2026-03-09T19:34:42.207763+00:00",
-    "validation_errors": [
-      "trailing_silence: 0.55 (1080ms)"
-    ]
+    "last_updated": "2026-03-10T03:33:15.560255+00:00",
+    "validation_errors": []
   },
   "ch10-646": {
     "status": "DONE",
@@ -5069,10 +5067,10 @@
     "validation_errors": []
   },
   "ch11-721": {
-    "status": "DONE",
+    "status": "PENDING",
     "retry_count": 0,
     "error": null,
-    "last_updated": "2026-03-09T19:30:47.862514+00:00",
+    "last_updated": "2026-03-10T03:33:15.560255+00:00",
     "validation_errors": []
   },
   "ch11-722": {
@@ -6290,13 +6288,11 @@
     "validation_errors": []
   },
   "ch15-897": {
-    "status": "DONE",
+    "status": "PENDING",
     "retry_count": 0,
     "error": null,
-    "last_updated": "2026-03-09T19:34:45.489357+00:00",
-    "validation_errors": [
-      "trailing_silence: 0.36 (1120ms)"
-    ]
+    "last_updated": "2026-03-10T03:33:15.560255+00:00",
+    "validation_errors": []
   },
   "ch15-898": {
     "status": "DONE",
@@ -7109,10 +7105,10 @@
     "validation_errors": []
   },
   "ch15-1016": {
-    "status": "DONE",
+    "status": "PENDING",
     "retry_count": 0,
     "error": null,
-    "last_updated": "2026-03-09T19:30:47.867295+00:00",
+    "last_updated": "2026-03-10T03:33:15.560255+00:00",
     "validation_errors": []
   },
   "ch15-1017": {
