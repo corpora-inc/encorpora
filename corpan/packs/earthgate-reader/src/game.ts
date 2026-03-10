@@ -343,8 +343,8 @@ export function createEarthgateReader(
   let segments: BookSegment[] = []
   let manifest: AudioManifest | null = null
   let chapters: ChapterInfo[] = []
-  let currentLanguage = "en"
-  let availableLanguages = (initialState?.availableLanguages as string[]) || ["en"]
+  let currentLanguage = (initialState?.language as string) || "en"
+  let availableLanguages = (initialState?.availableLanguages as string[]) || [currentLanguage]
   const voiceMap: Record<string, string> = {}
 
   const bookId =
@@ -818,8 +818,9 @@ export function createEarthgateReader(
 
     const baseUrl = initialState?.baseUrl as string | undefined
 
+    // On-device production (zip install) — pack root IS the data directory
     if (baseUrl?.startsWith("corpan-pack://")) {
-      return `${baseUrl.replace(/\/$/, "")}/data/books/${bid}`
+      return baseUrl.replace(/\/$/, "")
     }
 
     if (baseUrl) {

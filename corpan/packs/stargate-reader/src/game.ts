@@ -446,8 +446,8 @@ export function createStargateReader(
   let dataProvider: DataProvider
   let segments: BookSegment[] = []
   let chapters: ChapterInfo[] = []
-  let currentLanguage = "en"
-  let availableLanguages = (initialState?.availableLanguages as string[]) || ["en"]
+  let currentLanguage = (initialState?.language as string) || "en"
+  let availableLanguages = (initialState?.availableLanguages as string[]) || [currentLanguage]
   const voiceMap: Record<string, string> = {}
 
   function buildLanguageInfos(): LanguageInfo[] {
@@ -1173,9 +1173,9 @@ export function createStargateReader(
 
     const baseUrl = initialState?.baseUrl as string | undefined
 
-    // On-device production (zip install)
+    // On-device production (zip install) — pack root IS the data directory
     if (baseUrl?.startsWith("corpan-pack://")) {
-      return `${baseUrl.replace(/\/$/, "")}/data/books/${bid}`
+      return baseUrl.replace(/\/$/, "")
     }
 
     // HTTP base (manifest.json install — local dev server or remote)

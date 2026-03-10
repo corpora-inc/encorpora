@@ -108,7 +108,10 @@ function parseCatalogV2(data: unknown): CatalogV2 | null {
 export async function fetchCatalog(cdnUrl: string): Promise<CatalogV2> {
   // Try cache first
   const cached = readCache()
-  if (cached) return cached.catalog
+  if (cached) {
+    console.log("[reader-catalog] Using cached catalog:", cached.catalog.narrations.length, "narrations")
+    return cached.catalog
+  }
 
   const empty: CatalogV2 = {
     version: 2,
@@ -118,14 +121,23 @@ export async function fetchCatalog(cdnUrl: string): Promise<CatalogV2> {
   }
 
   try {
+    console.log("[reader-catalog] Fetching catalog from:", cdnUrl)
     const res = await fetch(cdnUrl, { cache: "no-store" })
-    if (!res.ok) return empty
+    if (!res.ok) {
+      console.warn("[reader-catalog] Fetch failed:", res.status, res.statusText)
+      return empty
+    }
     const data = await res.json()
     const catalog = parseCatalogV2(data)
-    if (!catalog) return empty
+    if (!catalog) {
+      console.warn("[reader-catalog] Failed to parse catalog data")
+      return empty
+    }
+    console.log("[reader-catalog] Fetched catalog:", catalog.narrations.length, "narrations")
     writeCache(catalog)
     return catalog
-  } catch {
+  } catch (err) {
+    console.error("[reader-catalog] Fetch error:", err)
     return empty
   }
 }

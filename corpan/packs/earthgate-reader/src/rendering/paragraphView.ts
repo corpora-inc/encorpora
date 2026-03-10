@@ -27,6 +27,7 @@ export function createParagraphView(parent: HTMLElement): ParagraphView {
 
   const inner = document.createElement("div")
   inner.className = "earthgate-paragraph-inner"
+  inner.dir = "auto"
   container.appendChild(inner)
 
   // --- Swipe detection ---

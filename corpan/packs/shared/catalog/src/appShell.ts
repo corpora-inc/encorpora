@@ -148,6 +148,7 @@ export function createAppShell(
       ...opts.initialState,
       baseUrl: packUrl,
       bookId: info.bookId,
+      language: info.language,
     }
 
     // Close catalog and remount reader with new book
