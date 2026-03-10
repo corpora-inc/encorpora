@@ -195,6 +195,27 @@ resource "aws_acm_certificate" "cdn" {
   }
 }
 
+resource "aws_cloudfront_response_headers_policy" "cors" {
+  count   = var.enable_cdn ? 1 : 0
+  name    = "${var.project_name}-cors-policy"
+  comment = "CORS headers for browser-based catalog/narration access"
+
+  cors_config {
+    access_control_allow_origins {
+      items = ["*"]
+    }
+    access_control_allow_methods {
+      items = ["GET", "HEAD"]
+    }
+    access_control_allow_headers {
+      items = ["*"]
+    }
+    access_control_allow_credentials = false
+    access_control_max_age_sec       = 86400
+    origin_override                  = true
+  }
+}
+
 resource "aws_cloudfront_distribution" "packs" {
   count   = var.enable_cdn ? 1 : 0
   enabled = true
@@ -219,7 +240,8 @@ resource "aws_cloudfront_distribution" "packs" {
     viewer_protocol_policy = "redirect-to-https"
     compress               = true
 
-    cache_policy_id = "658327ea-f89d-4fab-a63d-7e88639e58f6" # CachingOptimized
+    cache_policy_id            = "658327ea-f89d-4fab-a63d-7e88639e58f6" # CachingOptimized
+    response_headers_policy_id = aws_cloudfront_response_headers_policy.cors[0].id
   }
 
   dynamic "viewer_certificate" {
