@@ -83492,8 +83492,8 @@
   "ch10-660": [
     {
       "word": "\u4e3a\u4ec0\u4e48\uff1f",
-      "start_ms": 0,
-      "end_ms": 100
+      "start_ms": 180,
+      "end_ms": 600
     }
   ],
   "ch11-662": [
@@ -90603,183 +90603,183 @@
   "ch11-724": [
     {
       "word": "\u8499",
-      "start_ms": 120,
-      "end_ms": 240
+      "start_ms": 80,
+      "end_ms": 260
     },
     {
       "word": "\u7279",
-      "start_ms": 240,
-      "end_ms": 440
+      "start_ms": 260,
+      "end_ms": 500
     },
     {
       "word": "\u963f",
-      "start_ms": 440,
-      "end_ms": 640
+      "start_ms": 500,
+      "end_ms": 780
     },
     {
       "word": "\u5c14",
-      "start_ms": 640,
-      "end_ms": 840
+      "start_ms": 780,
+      "end_ms": 920
     },
     {
       "word": "\u73ed",
-      "start_ms": 840,
-      "end_ms": 900
+      "start_ms": 920,
+      "end_ms": 1040
     },
     {
       "word": "\u7684\u4eba",
-      "start_ms": 900,
-      "end_ms": 1220
+      "start_ms": 1040,
+      "end_ms": 1360
     },
     {
       "word": "\u53e3",
-      "start_ms": 1220,
-      "end_ms": 1420
+      "start_ms": 1360,
+      "end_ms": 1560
     },
     {
       "word": "\u4e0b",
-      "start_ms": 1420,
-      "end_ms": 1640
+      "start_ms": 1560,
+      "end_ms": 1820
     },
     {
       "word": "\u964d\u3001",
-      "start_ms": 1640,
-      "end_ms": 1940
+      "start_ms": 1820,
+      "end_ms": 2120
     },
     {
       "word": "\u7ecf",
-      "start_ms": 2340,
-      "end_ms": 2340
+      "start_ms": 2560,
+      "end_ms": 2560
     },
     {
       "word": "\u5178",
-      "start_ms": 2340,
-      "end_ms": 2620
+      "start_ms": 2560,
+      "end_ms": 2820
     },
     {
       "word": "\u739b",
-      "start_ms": 2620,
-      "end_ms": 2800
+      "start_ms": 2820,
+      "end_ms": 3000
     },
     {
       "word": "\u96c5",
-      "start_ms": 2800,
-      "end_ms": 2940
+      "start_ms": 3000,
+      "end_ms": 3160
     },
     {
       "word": "\u5927",
-      "start_ms": 2940,
-      "end_ms": 3140
-    },
-    {
-      "word": "\u5d29",
-      "start_ms": 3140,
+      "start_ms": 3160,
       "end_ms": 3380
     },
     {
-      "word": "\u6e83",
+      "word": "\u5d29",
       "start_ms": 3380,
-      "end_ms": 3600
+      "end_ms": 3620
+    },
+    {
+      "word": "\u6e83",
+      "start_ms": 3620,
+      "end_ms": 3820
     },
     {
       "word": "\u4ee5\u53ca",
-      "start_ms": 3600,
-      "end_ms": 4000
+      "start_ms": 3820,
+      "end_ms": 4220
     },
     {
       "word": "\u5176",
-      "start_ms": 4000,
-      "end_ms": 4300
-    },
-    {
-      "word": "\u4ed6",
-      "start_ms": 4300,
+      "start_ms": 4220,
       "end_ms": 4500
     },
     {
-      "word": "\u4e2d",
+      "word": "\u4ed6",
       "start_ms": 4500,
       "end_ms": 4680
     },
     {
-      "word": "\u7f8e",
+      "word": "\u4e2d",
       "start_ms": 4680,
-      "end_ms": 4860
+      "end_ms": 4840
+    },
+    {
+      "word": "\u7f8e",
+      "start_ms": 4840,
+      "end_ms": 5020
     },
     {
       "word": "\u6d32",
-      "start_ms": 4860,
-      "end_ms": 5060
+      "start_ms": 5020,
+      "end_ms": 5180
     },
     {
       "word": "\u653f",
-      "start_ms": 5060,
-      "end_ms": 5220
+      "start_ms": 5180,
+      "end_ms": 5340
     },
     {
       "word": "\u4f53",
-      "start_ms": 5220,
-      "end_ms": 5440
+      "start_ms": 5340,
+      "end_ms": 5560
     },
     {
       "word": "\u7684",
-      "start_ms": 5440,
-      "end_ms": 5580
+      "start_ms": 5580,
+      "end_ms": 5680
     },
     {
       "word": "\u788e",
-      "start_ms": 5580,
-      "end_ms": 5740
+      "start_ms": 5680,
+      "end_ms": 5840
     },
     {
       "word": "\u7247",
-      "start_ms": 5740,
-      "end_ms": 5920
+      "start_ms": 5840,
+      "end_ms": 6000
     },
     {
       "word": "\u5316",
-      "start_ms": 5920,
-      "end_ms": 6140
+      "start_ms": 6000,
+      "end_ms": 6200
     },
     {
       "word": "\u90fd",
-      "start_ms": 6140,
-      "end_ms": 6360
+      "start_ms": 6200,
+      "end_ms": 6420
     },
     {
       "word": "\u96c6",
-      "start_ms": 6360,
-      "end_ms": 6560
+      "start_ms": 6420,
+      "end_ms": 6640
     },
     {
       "word": "\u4e2d",
-      "start_ms": 6560,
-      "end_ms": 6700
+      "start_ms": 6680,
+      "end_ms": 6780
     },
     {
       "word": "\u5728",
-      "start_ms": 6700,
-      "end_ms": 6900
+      "start_ms": 6780,
+      "end_ms": 7000
     },
     {
       "word": "\u540c",
-      "start_ms": 6900,
-      "end_ms": 7100
+      "start_ms": 7000,
+      "end_ms": 7200
     },
     {
       "word": "\u4e00",
-      "start_ms": 7100,
-      "end_ms": 7260
+      "start_ms": 7240,
+      "end_ms": 7380
     },
     {
       "word": "\u65f6",
-      "start_ms": 7260,
-      "end_ms": 7420
+      "start_ms": 7380,
+      "end_ms": 7540
     },
     {
       "word": "\u671f\u3002",
-      "start_ms": 7420,
-      "end_ms": 7760
+      "start_ms": 7540,
+      "end_ms": 7880
     }
   ],
   "ch11-725": [
@@ -120621,102 +120621,102 @@
     {
       "word": "\u534f",
       "start_ms": 220,
-      "end_ms": 340
+      "end_ms": 360
     },
     {
       "word": "\u5c45",
-      "start_ms": 340,
-      "end_ms": 560
+      "start_ms": 360,
+      "end_ms": 620
     },
     {
       "word": "\u5236",
-      "start_ms": 560,
-      "end_ms": 720
+      "start_ms": 620,
+      "end_ms": 780
     },
     {
       "word": "\u5047",
-      "start_ms": 720,
-      "end_ms": 900
+      "start_ms": 780,
+      "end_ms": 980
     },
     {
       "word": "\u8bf4",
-      "start_ms": 900,
-      "end_ms": 1100
+      "start_ms": 980,
+      "end_ms": 1220
     },
     {
       "word": "\u89e3",
-      "start_ms": 1100,
-      "end_ms": 1340
+      "start_ms": 1220,
+      "end_ms": 1460
     },
     {
       "word": "\u91ca",
-      "start_ms": 1340,
-      "end_ms": 1500
+      "start_ms": 1460,
+      "end_ms": 1660
     },
     {
       "word": "\u4e86",
-      "start_ms": 1500,
-      "end_ms": 1620
+      "start_ms": 1660,
+      "end_ms": 1820
     },
     {
       "word": "\u201c",
-      "start_ms": 1700,
-      "end_ms": 1800
+      "start_ms": 1820,
+      "end_ms": 2040
     },
     {
       "word": "\u662f",
-      "start_ms": 1800,
-      "end_ms": 1900
-    },
-    {
-      "word": "\u4ec0\u4e48",
-      "start_ms": 1900,
+      "start_ms": 2040,
       "end_ms": 2160
     },
     {
-      "word": "\u201d\uff0c",
+      "word": "\u4ec0\u4e48",
       "start_ms": 2160,
-      "end_ms": 2700
+      "end_ms": 2460
+    },
+    {
+      "word": "\u201d\uff0c",
+      "start_ms": 2460,
+      "end_ms": 2940
     },
     {
       "word": "\u4f46",
-      "start_ms": 2720,
-      "end_ms": 2740
+      "start_ms": 2940,
+      "end_ms": 2980
     },
     {
       "word": "\u6ca1\u6709",
-      "start_ms": 2740,
-      "end_ms": 3060
+      "start_ms": 2980,
+      "end_ms": 3280
     },
     {
       "word": "\u5b8c\u5168",
-      "start_ms": 3060,
-      "end_ms": 3420
+      "start_ms": 3280,
+      "end_ms": 3620
     },
     {
       "word": "\u89e3",
-      "start_ms": 3440,
-      "end_ms": 3720
+      "start_ms": 3620,
+      "end_ms": 3900
     },
     {
       "word": "\u91ca",
-      "start_ms": 3720,
-      "end_ms": 3940
+      "start_ms": 3900,
+      "end_ms": 4080
     },
     {
       "word": "\u201c",
-      "start_ms": 3940,
-      "end_ms": 4440
+      "start_ms": 4080,
+      "end_ms": 4540
     },
     {
       "word": "\u4e3a\u4ec0\u4e48",
-      "start_ms": 4440,
-      "end_ms": 4440
+      "start_ms": 4540,
+      "end_ms": 4580
     },
     {
       "word": "\u201d\u3002",
-      "start_ms": 4440,
-      "end_ms": 4860
+      "start_ms": 4580,
+      "end_ms": 4680
     }
   ],
   "ch15-942": [

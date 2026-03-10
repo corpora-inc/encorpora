@@ -7511,23 +7511,23 @@
   "ch02-107": [
     {
       "word": "Se",
-      "start_ms": 40,
-      "end_ms": 140
+      "start_ms": 20,
+      "end_ms": 120
     },
     {
       "word": "llama",
-      "start_ms": 140,
-      "end_ms": 420
+      "start_ms": 120,
+      "end_ms": 360
     },
     {
       "word": "Monumento",
-      "start_ms": 420,
-      "end_ms": 1120
+      "start_ms": 360,
+      "end_ms": 1040
     },
     {
       "word": "tres.",
-      "start_ms": 1120,
-      "end_ms": 1620
+      "start_ms": 1040,
+      "end_ms": 1340
     }
   ],
   "ch02-108": [
@@ -60226,22 +60226,22 @@
   "ch11-721": [
     {
       "word": "Para",
-      "start_ms": 100,
-      "end_ms": 240
+      "start_ms": 80,
+      "end_ms": 220
     },
     {
       "word": "una",
-      "start_ms": 240,
-      "end_ms": 440
+      "start_ms": 220,
+      "end_ms": 420
     },
     {
       "word": "ciudad",
-      "start_ms": 440,
-      "end_ms": 740
+      "start_ms": 420,
+      "end_ms": 720
     },
     {
       "word": "que",
-      "start_ms": 740,
+      "start_ms": 720,
       "end_ms": 960
     },
     {
@@ -60257,67 +60257,67 @@
     {
       "word": "agua",
       "start_ms": 1700,
-      "end_ms": 1880
+      "end_ms": 1900
     },
     {
       "word": "de",
-      "start_ms": 1880,
-      "end_ms": 2040
+      "start_ms": 1900,
+      "end_ms": 2060
     },
     {
       "word": "lluvia",
-      "start_ms": 2040,
-      "end_ms": 2360
+      "start_ms": 2060,
+      "end_ms": 2400
     },
     {
       "word": "recolectada,",
-      "start_ms": 2360,
-      "end_ms": 2910
+      "start_ms": 2400,
+      "end_ms": 3000
     },
     {
       "word": "incluso",
       "start_ms": 3520,
-      "end_ms": 3820
+      "end_ms": 3860
     },
     {
       "word": "unos",
-      "start_ms": 3820,
-      "end_ms": 4100
+      "start_ms": 3860,
+      "end_ms": 4120
     },
     {
       "word": "pocos",
-      "start_ms": 4100,
-      "end_ms": 4480
+      "start_ms": 4120,
+      "end_ms": 4580
     },
     {
       "word": "a\u00f1os",
-      "start_ms": 4480,
-      "end_ms": 4700
+      "start_ms": 4580,
+      "end_ms": 4800
     },
     {
       "word": "secos",
-      "start_ms": 4700,
-      "end_ms": 5140
+      "start_ms": 4800,
+      "end_ms": 5260
     },
     {
       "word": "consecutivos",
-      "start_ms": 5220,
-      "end_ms": 5920
+      "start_ms": 5260,
+      "end_ms": 6020
     },
     {
       "word": "pod\u00edan",
-      "start_ms": 5920,
-      "end_ms": 6280
-    },
-    {
-      "word": "ser",
-      "start_ms": 6280,
+      "start_ms": 6020,
       "end_ms": 6440
     },
     {
-      "word": "catastr\u00f3ficos.",
+      "word": "ser",
       "start_ms": 6440,
-      "end_ms": 6780
+      "end_ms": 6620
+    },
+    {
+      "word": "catastr\u00f3ficos.",
+      "start_ms": 6620,
+      "end_ms": 7220
     }
   ],
   "ch11-722": [
@@ -89105,73 +89105,73 @@
   "ch15-1016": [
     {
       "word": "Volumen",
-      "start_ms": 240,
-      "end_ms": 580
+      "start_ms": 120,
+      "end_ms": 420
     },
     {
       "word": "uno:",
-      "start_ms": 580,
-      "end_ms": 1040
+      "start_ms": 420,
+      "end_ms": 700
     },
     {
       "word": "*El",
-      "start_ms": 1680,
-      "end_ms": 1680
+      "start_ms": 1280,
+      "end_ms": 1320
     },
     {
       "word": "misterio",
-      "start_ms": 1680,
-      "end_ms": 2260
+      "start_ms": 1320,
+      "end_ms": 1840
     },
     {
       "word": "de",
-      "start_ms": 2260,
-      "end_ms": 2360
+      "start_ms": 1840,
+      "end_ms": 1940
     },
     {
       "word": "Monte",
-      "start_ms": 2360,
-      "end_ms": 2660
+      "start_ms": 1940,
+      "end_ms": 2140
     },
     {
       "word": "Alb\u00e1n*",
-      "start_ms": 2660,
-      "end_ms": 3560
+      "start_ms": 2140,
+      "end_ms": 2880
     },
     {
       "word": "\u2014",
-      "start_ms": 3560,
-      "end_ms": 3560
+      "start_ms": 2880,
+      "end_ms": 2880
     },
     {
       "word": "Monta\u00f1a",
-      "start_ms": 3560,
-      "end_ms": 4000
+      "start_ms": 2920,
+      "end_ms": 3240
     },
     {
       "word": "sagrada,",
-      "start_ms": 4000,
-      "end_ms": 4600
+      "start_ms": 3240,
+      "end_ms": 3760
     },
     {
       "word": "escritura",
-      "start_ms": 5100,
-      "end_ms": 5280
+      "start_ms": 3760,
+      "end_ms": 4140
     },
     {
       "word": "perdida,",
-      "start_ms": 5280,
-      "end_ms": 5840
+      "start_ms": 4140,
+      "end_ms": 4680
     },
     {
       "word": "ciudad",
-      "start_ms": 6120,
-      "end_ms": 6220
+      "start_ms": 4880,
+      "end_ms": 5020
     },
     {
       "word": "desaparecida",
-      "start_ms": 6220,
-      "end_ms": 6280
+      "start_ms": 5020,
+      "end_ms": 5780
     }
   ],
   "ch15-1017": [
@@ -91109,23 +91109,23 @@
   "ch10-645": [
     {
       "word": "Plumas",
-      "start_ms": 100,
-      "end_ms": 380
+      "start_ms": 0,
+      "end_ms": 360
     },
     {
       "word": "de",
-      "start_ms": 420,
-      "end_ms": 520
+      "start_ms": 360,
+      "end_ms": 500
     },
     {
       "word": "aves",
-      "start_ms": 520,
-      "end_ms": 780
+      "start_ms": 500,
+      "end_ms": 820
     },
     {
       "word": "ex\u00f3ticas.",
-      "start_ms": 780,
-      "end_ms": 1160
+      "start_ms": 820,
+      "end_ms": 1460
     }
   ],
   "ch10-660": [
@@ -91590,38 +91590,38 @@
   "ch15-897": [
     {
       "word": "No",
-      "start_ms": 80,
+      "start_ms": 100,
       "end_ms": 280
     },
     {
       "word": "tuvieron",
       "start_ms": 280,
-      "end_ms": 680
+      "end_ms": 700
     },
     {
       "word": "acceso",
-      "start_ms": 680,
-      "end_ms": 1040
+      "start_ms": 700,
+      "end_ms": 1060
     },
     {
       "word": "a",
-      "start_ms": 1040,
-      "end_ms": 1440
+      "start_ms": 1060,
+      "end_ms": 1340
     },
     {
       "word": "la",
-      "start_ms": 1440,
-      "end_ms": 1520
+      "start_ms": 1340,
+      "end_ms": 1400
     },
     {
       "word": "tecnolog\u00eda",
-      "start_ms": 1520,
-      "end_ms": 2000
+      "start_ms": 1400,
+      "end_ms": 1900
     },
     {
       "word": "china.",
-      "start_ms": 2000,
-      "end_ms": 2440
+      "start_ms": 1900,
+      "end_ms": 2400
     }
   ],
   "ch15-901": [

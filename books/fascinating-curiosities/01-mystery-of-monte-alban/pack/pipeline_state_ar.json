@@ -1376,8 +1376,8 @@
   "ch03-172": {
     "status": "DONE",
     "retry_count": 0,
-    "error": null,
-    "last_updated": "2026-03-10T03:02:27.097122+00:00",
+    "error": "min_trailing_silence: truncation detected",
+    "last_updated": "2026-03-10T03:38:04.012528+00:00",
     "validation_errors": []
   },
   "ch03-173": {
@@ -2610,11 +2610,9 @@
   "ch05-325": {
     "status": "DONE",
     "retry_count": 0,
-    "error": null,
-    "last_updated": "2026-03-10T03:03:11.235865+00:00",
-    "validation_errors": [
-      "too_long: 8000ms > 6950ms max"
-    ]
+    "error": "min_trailing_silence: truncation detected",
+    "last_updated": "2026-03-10T03:38:04.357506+00:00",
+    "validation_errors": []
   },
   "ch05-326": {
     "status": "DONE",
@@ -2723,11 +2721,9 @@
   "ch05-338": {
     "status": "DONE",
     "retry_count": 0,
-    "error": null,
-    "last_updated": "2026-03-10T03:03:15.360556+00:00",
-    "validation_errors": [
-      "too_long: 8000ms > 7250ms max"
-    ]
+    "error": "min_trailing_silence: truncation detected",
+    "last_updated": "2026-03-10T03:38:04.707044+00:00",
+    "validation_errors": []
   },
   "ch05-339": {
     "status": "DONE",
@@ -4365,11 +4361,9 @@
   "ch08-541": {
     "status": "DONE",
     "retry_count": 0,
-    "error": null,
-    "last_updated": "2026-03-10T03:04:14.316487+00:00",
-    "validation_errors": [
-      "too_long: 10000ms > 8000ms max"
-    ]
+    "error": "min_trailing_silence: truncation detected",
+    "last_updated": "2026-03-10T03:38:05.018103+00:00",
+    "validation_errors": []
   },
   "ch08-542": {
     "status": "DONE",
@@ -4540,11 +4534,9 @@
   "ch09-562": {
     "status": "DONE",
     "retry_count": 0,
-    "error": null,
-    "last_updated": "2026-03-10T03:04:21.452026+00:00",
-    "validation_errors": [
-      "too_long: 13400ms > 5750ms max"
-    ]
+    "error": "min_trailing_silence: truncation detected",
+    "last_updated": "2026-03-10T03:38:05.193661+00:00",
+    "validation_errors": []
   },
   "ch09-563": {
     "status": "DONE",
@@ -5164,11 +5156,9 @@
   "ch10-636": {
     "status": "DONE",
     "retry_count": 0,
-    "error": null,
-    "last_updated": "2026-03-10T03:04:45.652403+00:00",
-    "validation_errors": [
-      "too_long: 9300ms > 7550ms max"
-    ]
+    "error": "min_trailing_silence: truncation detected",
+    "last_updated": "2026-03-10T03:38:05.586251+00:00",
+    "validation_errors": []
   },
   "ch10-637": {
     "status": "DONE",
@@ -5360,8 +5350,8 @@
   "ch10-660": {
     "status": "DONE",
     "retry_count": 0,
-    "error": null,
-    "last_updated": "2026-03-10T03:04:52.938776+00:00",
+    "error": "min_trailing_silence: truncation detected",
+    "last_updated": "2026-03-10T03:38:05.700311+00:00",
     "validation_errors": [
       "trailing_silence: 0.91 (1060ms)"
     ]
@@ -6043,11 +6033,9 @@
   "ch12-743": {
     "status": "DONE",
     "retry_count": 0,
-    "error": null,
-    "last_updated": "2026-03-10T03:05:16.526653+00:00",
-    "validation_errors": [
-      "too_long: 9300ms > 8300ms max"
-    ]
+    "error": "min_trailing_silence: truncation detected",
+    "last_updated": "2026-03-10T03:38:06.103068+00:00",
+    "validation_errors": []
   },
   "ch12-744": {
     "status": "DONE",
@@ -6221,9 +6209,9 @@
   },
   "ch12-764": {
     "status": "DONE",
-    "retry_count": 0,
-    "error": null,
-    "last_updated": "2026-03-10T03:05:23.330921+00:00",
+    "retry_count": 1,
+    "error": "min_trailing_silence: 0ms < 50ms",
+    "last_updated": "2026-03-10T03:40:44.336678+00:00",
     "validation_errors": []
   },
   "ch12-765": {
@@ -6430,11 +6418,9 @@
   "ch12-789": {
     "status": "DONE",
     "retry_count": 0,
-    "error": null,
-    "last_updated": "2026-03-10T03:05:32.856308+00:00",
-    "validation_errors": [
-      "too_long: 40000ms > 9500ms max"
-    ]
+    "error": "min_trailing_silence: truncation detected",
+    "last_updated": "2026-03-10T03:38:06.633300+00:00",
+    "validation_errors": []
   },
   "ch12-790": {
     "status": "DONE",
@@ -7162,11 +7148,9 @@
   "ch14-877": {
     "status": "DONE",
     "retry_count": 1,
-    "error": "stacked_words: 6 words at tail with zero duration; too_long: 37640ms > 8600ms max",
-    "last_updated": "2026-03-10T03:14:43.022636+00:00",
-    "validation_errors": [
-      "too_long: 11800ms > 8600ms max"
-    ]
+    "error": "min_trailing_silence: truncation detected",
+    "last_updated": "2026-03-10T03:38:07.071867+00:00",
+    "validation_errors": []
   },
   "ch14-878": {
     "status": "DONE",
@@ -8285,11 +8269,11 @@
   },
   "ch15-1012": {
     "status": "DONE",
-    "retry_count": 0,
-    "error": null,
-    "last_updated": "2026-03-10T03:06:43.366481+00:00",
+    "retry_count": 1,
+    "error": "min_trailing_silence: 20ms < 50ms",
+    "last_updated": "2026-03-10T03:40:44.693281+00:00",
     "validation_errors": [
-      "too_long: 8800ms > 7700ms max"
+      "trailing_silence: 0.33 (4740ms)"
     ]
   },
   "ch15-1013": {
@@ -8302,8 +8286,8 @@
   "ch15-1014": {
     "status": "DONE",
     "retry_count": 0,
-    "error": null,
-    "last_updated": "2026-03-10T03:06:43.885137+00:00",
+    "error": "min_trailing_silence: truncation detected",
+    "last_updated": "2026-03-10T03:38:07.404579+00:00",
     "validation_errors": []
   },
   "ch15-1015": {
@@ -8317,12 +8301,10 @@
   },
   "ch15-1016": {
     "status": "DONE",
-    "retry_count": 0,
-    "error": null,
-    "last_updated": "2026-03-10T03:06:44.484413+00:00",
-    "validation_errors": [
-      "too_long: 7800ms > 7400ms max"
-    ]
+    "retry_count": 1,
+    "error": "min_trailing_silence: 20ms < 50ms",
+    "last_updated": "2026-03-10T03:40:45.035782+00:00",
+    "validation_errors": []
   },
   "ch15-1017": {
     "status": "DONE",

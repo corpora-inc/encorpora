@@ -10109,38 +10109,38 @@
   "ch03-172": [
     {
       "word": "\u062d\u064e\u0631\u064e\u0643\u064e\u0629\u064c",
-      "start_ms": 180,
-      "end_ms": 780
+      "start_ms": 200,
+      "end_ms": 740
     },
     {
       "word": "\u062f\u0650\u064a\u0646\u0650\u064a\u064e\u0651\u0629\u064c",
-      "start_ms": 780,
-      "end_ms": 1560
+      "start_ms": 740,
+      "end_ms": 1400
     },
     {
       "word": "\u062a\u064e\u062a\u064e\u0645\u064e\u062d\u0652\u0648\u064e\u0631\u064f",
-      "start_ms": 1560,
-      "end_ms": 2360
+      "start_ms": 1400,
+      "end_ms": 2120
     },
     {
       "word": "\u062d\u064e\u0648\u0652\u0644\u064e",
-      "start_ms": 2360,
-      "end_ms": 2740
+      "start_ms": 2120,
+      "end_ms": 2440
     },
     {
       "word": "\u0642\u0650\u0645\u064e\u0651\u0629\u0650",
-      "start_ms": 2740,
-      "end_ms": 3200
+      "start_ms": 2440,
+      "end_ms": 2920
     },
     {
       "word": "\u062c\u064e\u0628\u064e\u0644\u064d",
-      "start_ms": 3200,
-      "end_ms": 3640
+      "start_ms": 2920,
+      "end_ms": 3400
     },
     {
       "word": "\u0645\u064f\u0642\u064e\u062f\u064e\u0651\u0633\u064e\u0629\u064d\u061f",
-      "start_ms": 3640,
-      "end_ms": 4280
+      "start_ms": 3400,
+      "end_ms": 4320
     }
   ],
   "ch03-173": [
@@ -19650,68 +19650,68 @@
   "ch05-325": [
     {
       "word": "\u0627\u0646\u0652\u062a\u064e\u0632\u064e\u0639\u064f\u0648\u0627",
-      "start_ms": 280,
+      "start_ms": 80,
       "end_ms": 680
     },
     {
       "word": "\u0627\u0644\u0652\u062d\u0650\u062c\u064e\u0627\u0631\u064e\u0629\u064e",
       "start_ms": 680,
-      "end_ms": 1260
+      "end_ms": 1300
     },
     {
       "word": "\u0645\u0650\u0646\u0652",
-      "start_ms": 1260,
-      "end_ms": 1520
+      "start_ms": 1300,
+      "end_ms": 1580
     },
     {
       "word": "\u0645\u064e\u0639\u0652\u0628\u064e\u062f\u0650",
-      "start_ms": 1520,
-      "end_ms": 1900
+      "start_ms": 1580,
+      "end_ms": 1920
     },
     {
       "word": "\u0627\u0644\u062f\u064e\u0651\u0627\u0646\u0652\u0632\u064e\u0627\u0646\u0652\u062a\u0650\u0633\u0652",
-      "start_ms": 1900,
-      "end_ms": 2740
+      "start_ms": 1920,
+      "end_ms": 2780
     },
     {
       "word": "\u0648\u064e\u0623\u064e\u0639\u064e\u0627\u062f\u064f\u0648\u0627",
-      "start_ms": 2760,
-      "end_ms": 3320
+      "start_ms": 2780,
+      "end_ms": 3360
     },
     {
       "word": "\u0627\u0633\u0652\u062a\u0650\u062e\u0652\u062f\u064e\u0627\u0645\u064e\u0647\u064e\u0627",
-      "start_ms": 3620,
-      "end_ms": 4100
+      "start_ms": 3360,
+      "end_ms": 4120
     },
     {
       "word": "\u0643\u064e\u0645\u064e\u0648\u064e\u0627\u062f\u0650\u0651",
-      "start_ms": 4100,
-      "end_ms": 4700
+      "start_ms": 4120,
+      "end_ms": 4740
     },
     {
       "word": "\u0628\u0650\u0646\u064e\u0627\u0621\u064d",
-      "start_ms": 4730,
-      "end_ms": 5280
+      "start_ms": 4740,
+      "end_ms": 5360
     },
     {
       "word": "\u0641\u0650\u064a",
-      "start_ms": 5280,
-      "end_ms": 5500
+      "start_ms": 5660,
+      "end_ms": 5760
     },
     {
       "word": "\u0645\u064e\u0634\u064e\u0627\u0631\u0650\u064a\u0639\u064e",
-      "start_ms": 5500,
-      "end_ms": 7980
+      "start_ms": 5760,
+      "end_ms": 6460
     },
     {
       "word": "\u0625\u0650\u0646\u0652\u0634\u064e\u0627\u0626\u0650\u064a\u064e\u0651\u0629\u064d",
-      "start_ms": 8000,
-      "end_ms": 8000
+      "start_ms": 6460,
+      "end_ms": 7260
     },
     {
       "word": "\u062c\u064e\u062f\u0650\u064a\u062f\u064e\u0629\u064d.",
-      "start_ms": 8000,
-      "end_ms": 8000
+      "start_ms": 7260,
+      "end_ms": 7700
     }
   ],
   "ch05-326": [
@@ -20736,78 +20736,78 @@
   "ch05-338": [
     {
       "word": "\u0623\u064e\u0633\u0652\u0645\u064e\u0627\u0621\u064f",
-      "start_ms": 100,
-      "end_ms": 540
+      "start_ms": 80,
+      "end_ms": 560
     },
     {
       "word": "\u0627\u0644\u0652\u0623\u064e\u064a\u064e\u0651\u0627\u0645\u0650",
-      "start_ms": 540,
-      "end_ms": 1060
+      "start_ms": 560,
+      "end_ms": 1160
     },
     {
       "word": "\u0645\u0650\u0646\u064e",
-      "start_ms": 1060,
-      "end_ms": 1280
+      "start_ms": 1160,
+      "end_ms": 1380
     },
     {
       "word": "\u0627\u0644\u062a\u064e\u0651\u0642\u0652\u0648\u0650\u064a\u0645\u0650",
-      "start_ms": 1280,
-      "end_ms": 1820
+      "start_ms": 1380,
+      "end_ms": 2040
     },
     {
       "word": "\u0627\u0644\u0637\u064e\u0651\u0642\u0652\u0633\u0650\u064a\u0650\u0651",
-      "start_ms": 1820,
-      "end_ms": 2540
+      "start_ms": 2040,
+      "end_ms": 2820
     },
     {
       "word": "\u0630\u0650\u064a",
-      "start_ms": 2540,
-      "end_ms": 2660
+      "start_ms": 2820,
+      "end_ms": 2940
     },
     {
       "word": "\u0627\u0644\u0652\u0645\u0650\u0626\u064e\u062a\u064e\u064a\u0652\u0646\u0650",
-      "start_ms": 2660,
-      "end_ms": 3200
+      "start_ms": 2940,
+      "end_ms": 3480
     },
     {
       "word": "\u0648\u064e\u0627\u0644\u0633\u0650\u0651\u062a\u0650\u0651\u064a\u0646\u064e",
-      "start_ms": 3200,
-      "end_ms": 3860
+      "start_ms": 3480,
+      "end_ms": 4140
     },
     {
       "word": "\u064a\u064e\u0648\u0652\u0645\u064b\u0627",
-      "start_ms": 3860,
-      "end_ms": 4260
+      "start_ms": 4140,
+      "end_ms": 4560
     },
     {
       "word": "\u0641\u0650\u064a",
-      "start_ms": 4260,
-      "end_ms": 4440
+      "start_ms": 4560,
+      "end_ms": 4760
     },
     {
       "word": "\u0623\u064e\u0645\u0652\u0631\u0650\u064a\u0643\u064e\u0627",
-      "start_ms": 4440,
-      "end_ms": 4940
+      "start_ms": 4760,
+      "end_ms": 5280
     },
     {
       "word": "\u0627\u0644\u0652\u0648\u064f\u0633\u0652\u0637\u064e\u0649",
-      "start_ms": 4940,
-      "end_ms": 5480
+      "start_ms": 5280,
+      "end_ms": 5780
     },
     {
       "word": "\u062a\u064e\u0638\u0652\u0647\u064e\u0631\u064f",
-      "start_ms": 5820,
-      "end_ms": 7980
+      "start_ms": 6320,
+      "end_ms": 6640
     },
     {
       "word": "\u0628\u0650\u0634\u064e\u0643\u0652\u0644\u064d",
-      "start_ms": 8000,
-      "end_ms": 8000
+      "start_ms": 6640,
+      "end_ms": 7180
     },
     {
       "word": "\u0645\u064f\u062a\u064e\u0643\u064e\u0631\u0650\u0651\u0631\u064d.",
-      "start_ms": 8000,
-      "end_ms": 8000
+      "start_ms": 7180,
+      "end_ms": 7680
     }
   ],
   "ch05-339": [
@@ -34362,88 +34362,88 @@
   "ch08-541": [
     {
       "word": "\u0627\u0644\u0644\u064f\u0651\u063a\u064e\u0629\u064f",
-      "start_ms": 100,
-      "end_ms": 680
+      "start_ms": 80,
+      "end_ms": 620
     },
     {
       "word": "\u0646\u0650\u0638\u064e\u0627\u0645\u064c",
-      "start_ms": 680,
-      "end_ms": 1180
+      "start_ms": 620,
+      "end_ms": 1100
     },
     {
       "word": "\u062d\u064e\u064a\u064c\u0651",
-      "start_ms": 1180,
-      "end_ms": 1720
+      "start_ms": 1100,
+      "end_ms": 1580
     },
     {
       "word": "\u2014",
-      "start_ms": 1720,
-      "end_ms": 1920
+      "start_ms": 1580,
+      "end_ms": 1800
     },
     {
       "word": "\u062a\u064f\u0648\u062c\u064e\u062f\u064f",
-      "start_ms": 2160,
-      "end_ms": 2540
+      "start_ms": 2040,
+      "end_ms": 2420
     },
     {
       "word": "\u0641\u0650\u064a",
-      "start_ms": 2540,
-      "end_ms": 2760
+      "start_ms": 2420,
+      "end_ms": 2660
     },
     {
       "word": "\u0623\u064e\u0641\u0652\u0648\u064e\u0627\u0647\u0650",
-      "start_ms": 2760,
-      "end_ms": 3280
+      "start_ms": 2660,
+      "end_ms": 3160
     },
     {
       "word": "\u0648\u064e\u0639\u064f\u0642\u064f\u0648\u0644\u0650",
-      "start_ms": 3280,
-      "end_ms": 3860
+      "start_ms": 3160,
+      "end_ms": 3700
     },
     {
       "word": "\u0627\u0644\u0646\u064e\u0651\u0627\u0637\u0650\u0642\u0650\u064a\u0646\u064e",
-      "start_ms": 3860,
-      "end_ms": 4620
+      "start_ms": 3700,
+      "end_ms": 4400
     },
     {
       "word": "\u0628\u0650\u0647\u064e\u0627\u060c",
-      "start_ms": 4620,
-      "end_ms": 5380
+      "start_ms": 4400,
+      "end_ms": 5080
     },
     {
       "word": "\u0648\u064e\u0637\u064e\u0627\u0644\u064e\u0645\u064e\u0627",
-      "start_ms": 5560,
-      "end_ms": 6020
+      "start_ms": 5260,
+      "end_ms": 5720
     },
     {
       "word": "\u0623\u064e\u0646\u064e\u0651",
-      "start_ms": 6020,
-      "end_ms": 6260
+      "start_ms": 5720,
+      "end_ms": 5900
     },
     {
       "word": "\u0627\u0644\u0652\u0622\u0628\u064e\u0627\u0621\u064e",
-      "start_ms": 6260,
-      "end_ms": 6840
+      "start_ms": 5900,
+      "end_ms": 6480
     },
     {
       "word": "\u064a\u064f\u0639\u064e\u0644\u0650\u0651\u0645\u064f\u0648\u0646\u064e",
-      "start_ms": 6840,
-      "end_ms": 7560
+      "start_ms": 6480,
+      "end_ms": 7100
     },
     {
       "word": "\u0627\u0644\u0652\u0623\u064e\u0628\u0652\u0646\u064e\u0627\u0621\u064e\u060c",
-      "start_ms": 7560,
-      "end_ms": 9980
+      "start_ms": 7100,
+      "end_ms": 7720
     },
     {
       "word": "\u0641\u064e\u0625\u0650\u0646\u064e\u0651\u0647\u064e\u0627",
-      "start_ms": 10000,
-      "end_ms": 10000
+      "start_ms": 7760,
+      "end_ms": 8220
     },
     {
       "word": "\u062a\u064e\u0633\u0652\u062a\u064e\u0645\u0650\u0631\u064f\u0651.",
-      "start_ms": 10000,
-      "end_ms": 10000
+      "start_ms": 8220,
+      "end_ms": 8760
     }
   ],
   "ch08-542": [
@@ -35969,28 +35969,28 @@
   "ch09-562": [
     {
       "word": "\u0643\u064e\u0627\u0646\u064e\u062a\u0652",
-      "start_ms": 160,
-      "end_ms": 520
+      "start_ms": 140,
+      "end_ms": 480
     },
     {
       "word": "\u0625\u0650\u0633\u0652\u0647\u064e\u0627\u0645\u064e\u0627\u062a\u064f\u0647\u064e\u0627",
-      "start_ms": 680,
-      "end_ms": 1300
+      "start_ms": 560,
+      "end_ms": 1260
     },
     {
       "word": "\u0627\u0644\u0631\u064e\u0651\u0626\u0650\u064a\u0633\u0650\u064a\u064e\u0651\u0629\u064f",
-      "start_ms": 1300,
-      "end_ms": 2140
+      "start_ms": 1260,
+      "end_ms": 2080
     },
     {
       "word": "\u0630\u064e\u0627\u062a\u064e",
-      "start_ms": 12320,
-      "end_ms": 12720
+      "start_ms": 2080,
+      "end_ms": 2520
     },
     {
       "word": "\u0634\u0650\u0642\u064e\u0651\u064a\u0652\u0646\u0650.",
-      "start_ms": 12720,
-      "end_ms": 13380
+      "start_ms": 2520,
+      "end_ms": 3040
     }
   ],
   "ch09-563": [
@@ -41412,78 +41412,78 @@
   "ch10-636": [
     {
       "word": "\u0628\u064e\u062f\u064e\u0644\u064b\u0627",
-      "start_ms": 120,
-      "end_ms": 540
+      "start_ms": 200,
+      "end_ms": 600
     },
     {
       "word": "\u0645\u0650\u0646\u0652",
-      "start_ms": 540,
+      "start_ms": 600,
       "end_ms": 840
     },
     {
       "word": "\u0630\u064e\u0644\u0650\u0643\u064e\u060c",
-      "start_ms": 1460,
-      "end_ms": 1560
+      "start_ms": 1600,
+      "end_ms": 1700
     },
     {
       "word": "\u064a\u064e\u0628\u0652\u062f\u064f\u0648",
-      "start_ms": 1560,
-      "end_ms": 2000
+      "start_ms": 1700,
+      "end_ms": 2080
     },
     {
       "word": "\u0623\u064e\u0646\u064e\u0651\u0647\u064f\u0645\u064e\u0627",
-      "start_ms": 2000,
-      "end_ms": 2520
+      "start_ms": 2080,
+      "end_ms": 2560
     },
     {
       "word": "\u062d\u064e\u0627\u0641\u064e\u0638\u064e\u062a\u064e\u0627",
-      "start_ms": 2520,
-      "end_ms": 3200
+      "start_ms": 2560,
+      "end_ms": 3240
     },
     {
       "word": "\u0639\u064e\u0644\u064e\u0649",
-      "start_ms": 3200,
+      "start_ms": 3240,
       "end_ms": 3500
     },
     {
       "word": "\u0645\u064e\u0633\u064e\u0627\u0641\u064e\u0629\u064d",
       "start_ms": 3500,
-      "end_ms": 4100
+      "end_ms": 4120
     },
     {
       "word": "\u0645\u064f\u062d\u0652\u062a\u064e\u0631\u064e\u0645\u064e\u0629\u064d\u060c",
-      "start_ms": 4100,
-      "end_ms": 5240
+      "start_ms": 4120,
+      "end_ms": 5280
     },
     {
       "word": "\u062a\u064e\u062a\u064e\u0628\u064e\u0627\u062f\u064e\u0644\u064e\u0627\u0646\u0650",
-      "start_ms": 5260,
-      "end_ms": 6060
+      "start_ms": 5460,
+      "end_ms": 6120
     },
     {
       "word": "\u0627\u0644\u0652\u0628\u064e\u0636\u064e\u0627\u0626\u0650\u0639\u064e",
-      "start_ms": 6060,
-      "end_ms": 6740
+      "start_ms": 6120,
+      "end_ms": 6780
     },
     {
       "word": "\u0648\u064e\u0627\u0644\u0652\u0645\u064f\u062c\u064e\u0627\u0645\u064e\u0644\u064e\u0627\u062a\u0650",
-      "start_ms": 6740,
-      "end_ms": 7560
+      "start_ms": 6780,
+      "end_ms": 7640
     },
     {
       "word": "\u0627\u0644\u062f\u0650\u0651\u0628\u0652\u0644\u064f\u0648\u0645\u064e\u0627\u0633\u0650\u064a\u064e\u0651\u0629\u064e",
-      "start_ms": 7560,
-      "end_ms": 8560
+      "start_ms": 7640,
+      "end_ms": 8840
     },
     {
       "word": "\u0639\u064e\u0628\u0652\u0631\u064e",
-      "start_ms": 8580,
-      "end_ms": 8860
+      "start_ms": 9000,
+      "end_ms": 9300
     },
     {
       "word": "\u0627\u0644\u0652\u0645\u064f\u0631\u0652\u062a\u064e\u0641\u064e\u0639\u064e\u0627\u062a\u0650.",
-      "start_ms": 8860,
-      "end_ms": 9280
+      "start_ms": 9300,
+      "end_ms": 10020
     }
   ],
   "ch10-637": [
@@ -48526,108 +48526,108 @@
   "ch12-743": [
     {
       "word": "\u0643\u064e\u0627\u0646\u064e",
-      "start_ms": 100,
-      "end_ms": 400
+      "start_ms": 120,
+      "end_ms": 360
     },
     {
       "word": "\u0627\u0644\u0652\u0645\u0650\u064a\u0634\u0652\u062a\u0650\u064a\u0643\u064f",
-      "start_ms": 400,
-      "end_ms": 1020
+      "start_ms": 360,
+      "end_ms": 980
     },
     {
       "word": "\u0634\u064e\u0639\u0652\u0628\u064b\u0627",
-      "start_ms": 1040,
-      "end_ms": 1460
+      "start_ms": 980,
+      "end_ms": 1380
     },
     {
       "word": "\u0645\u0650\u0646\u064e",
-      "start_ms": 1460,
-      "end_ms": 1680
+      "start_ms": 1380,
+      "end_ms": 1600
     },
     {
       "word": "\u0627\u0644\u0652\u0645\u064f\u0631\u0652\u062a\u064e\u0641\u064e\u0639\u064e\u0627\u062a\u0650",
-      "start_ms": 1680,
-      "end_ms": 2580
+      "start_ms": 1600,
+      "end_ms": 2440
     },
     {
       "word": "\u0645\u0650\u0646\u064e",
-      "start_ms": 2580,
-      "end_ms": 2820
+      "start_ms": 2440,
+      "end_ms": 2700
     },
     {
       "word": "\u0627\u0644\u0652\u0645\u0650\u0646\u0652\u0637\u064e\u0642\u064e\u0629\u0650",
-      "start_ms": 2820,
-      "end_ms": 3500
+      "start_ms": 2700,
+      "end_ms": 3300
     },
     {
       "word": "\u0627\u0644\u0652\u062c\u064e\u0628\u064e\u0644\u0650\u064a\u064e\u0651\u0629\u0650",
-      "start_ms": 3500,
-      "end_ms": 4240
+      "start_ms": 3300,
+      "end_ms": 4040
     },
     {
       "word": "\u0625\u0650\u0644\u064e\u0649",
-      "start_ms": 4240,
-      "end_ms": 4540
+      "start_ms": 4040,
+      "end_ms": 4360
     },
     {
       "word": "\u0627\u0644\u0652\u063a\u064e\u0631\u0652\u0628\u0650",
-      "start_ms": 4540,
-      "end_ms": 4880
+      "start_ms": 4360,
+      "end_ms": 4660
     },
     {
       "word": "\u0648\u064e\u0627\u0644\u0634\u064e\u0651\u0645\u064e\u0627\u0644\u0650",
-      "start_ms": 4880,
-      "end_ms": 5560
+      "start_ms": 4660,
+      "end_ms": 5280
     },
     {
       "word": "\u0627\u0644\u0652\u063a\u064e\u0631\u0652\u0628\u0650\u064a\u0650\u0651",
-      "start_ms": 5560,
-      "end_ms": 6240
+      "start_ms": 5280,
+      "end_ms": 6180
     },
     {
       "word": "\u0645\u0650\u0646\u0652",
-      "start_ms": 6240,
-      "end_ms": 6480
+      "start_ms": 6200,
+      "end_ms": 6380
     },
     {
       "word": "\u0648\u064e\u0627\u062f\u0650\u064a",
-      "start_ms": 6480,
-      "end_ms": 6860
+      "start_ms": 6380,
+      "end_ms": 6760
     },
     {
       "word": "\u0648\u064e\u0627\u0647\u064e\u0627\u0643\u064e\u0627",
-      "start_ms": 6860,
-      "end_ms": 7500
+      "start_ms": 6760,
+      "end_ms": 7340
     },
     {
       "word": "\u2014",
-      "start_ms": 7500,
-      "end_ms": 7680
+      "start_ms": 7340,
+      "end_ms": 7600
     },
     {
       "word": "\u0648\u064e\u0647\u0650\u064a\u064e",
-      "start_ms": 7700,
-      "end_ms": 7940
+      "start_ms": 7620,
+      "end_ms": 7840
     },
     {
       "word": "\u0645\u0650\u0646\u0652\u0637\u064e\u0642\u064e\u0629\u064c",
-      "start_ms": 7940,
-      "end_ms": 8560
+      "start_ms": 7840,
+      "end_ms": 8520
     },
     {
       "word": "\u062a\u064f\u0639\u0652\u0631\u064e\u0641\u064f",
-      "start_ms": 8560,
-      "end_ms": 9120
+      "start_ms": 8520,
+      "end_ms": 9040
     },
     {
       "word": "\u0628\u0650\u0627\u0633\u0652\u0645\u0650",
-      "start_ms": 9300,
-      "end_ms": 9300
+      "start_ms": 9040,
+      "end_ms": 9360
     },
     {
       "word": "\u0627\u0644\u0652\u0645\u0650\u064a\u0634\u0652\u062a\u0650\u064a\u0643\u064e\u0627.",
-      "start_ms": 9300,
-      "end_ms": 9300
+      "start_ms": 9360,
+      "end_ms": 9840
     }
   ],
   "ch12-744": [
@@ -50258,48 +50258,48 @@
   "ch12-764": [
     {
       "word": "\u0643\u064f\u0624\u064f\u0648\u0633\u064c",
-      "start_ms": 280,
-      "end_ms": 640
+      "start_ms": 240,
+      "end_ms": 620
     },
     {
       "word": "\u0628\u0650\u0644\u064e\u0651\u0648\u0652\u0631\u0650\u064a\u064e\u0651\u0629\u064c",
-      "start_ms": 640,
-      "end_ms": 1440
+      "start_ms": 620,
+      "end_ms": 1480
     },
     {
       "word": "\u0645\u064e\u0646\u0652\u062d\u064f\u0648\u062a\u064e\u0629\u064c",
-      "start_ms": 1440,
-      "end_ms": 2200
+      "start_ms": 1480,
+      "end_ms": 2280
     },
     {
       "word": "\u0645\u0650\u0646\u0652",
-      "start_ms": 2200,
-      "end_ms": 2520
+      "start_ms": 2280,
+      "end_ms": 2600
     },
     {
       "word": "\u0642\u0650\u0637\u064e\u0639\u064d",
-      "start_ms": 2520,
-      "end_ms": 2900
+      "start_ms": 2620,
+      "end_ms": 2980
     },
     {
       "word": "\u0645\u064f\u0641\u0652\u0631\u064e\u062f\u064e\u0629\u064d",
-      "start_ms": 2900,
-      "end_ms": 3560
+      "start_ms": 2980,
+      "end_ms": 3660
     },
     {
       "word": "\u0645\u0650\u0646\u064e",
-      "start_ms": 3560,
-      "end_ms": 3900
+      "start_ms": 3660,
+      "end_ms": 3920
     },
     {
       "word": "\u0627\u0644\u0652\u0643\u0650\u0631\u0650\u064a\u0633\u0652\u062a\u064e\u0627\u0644\u0650",
-      "start_ms": 4300,
-      "end_ms": 4300
+      "start_ms": 3920,
+      "end_ms": 4660
     },
     {
       "word": "\u0627\u0644\u0635\u064e\u0651\u062e\u0652\u0631\u0650\u064a\u0650\u0651.",
-      "start_ms": 4300,
-      "end_ms": 4300
+      "start_ms": 4660,
+      "end_ms": 5180
     }
   ],
   "ch12-765": [
@@ -52273,148 +52273,148 @@
   "ch12-789": [
     {
       "word": "\u0623\u064e\u0635\u0652\u0628\u064e\u062d\u064e\u062a\u0652",
-      "start_ms": 100,
-      "end_ms": 660
+      "start_ms": 80,
+      "end_ms": 620
     },
     {
       "word": "\u0645\u064e\u0648\u0652\u0642\u0650\u0639\u064b\u0627",
-      "start_ms": 660,
-      "end_ms": 1180
+      "start_ms": 620,
+      "end_ms": 1100
     },
     {
       "word": "\u0644\u0650\u0644\u062a\u064f\u0651\u0631\u064e\u0627\u062b\u0650",
-      "start_ms": 1180,
-      "end_ms": 1740
+      "start_ms": 1100,
+      "end_ms": 1660
     },
     {
       "word": "\u0627\u0644\u0652\u0639\u064e\u0627\u0644\u064e\u0645\u0650\u064a\u0650\u0651",
-      "start_ms": 1740,
-      "end_ms": 2420
+      "start_ms": 1660,
+      "end_ms": 2320
     },
     {
       "word": "\u0644\u0650\u0644\u0652\u064a\u064f\u0648\u0646\u0650\u0633\u0652\u0643\u064f\u0648",
-      "start_ms": 2420,
-      "end_ms": 3240
+      "start_ms": 2320,
+      "end_ms": 3140
     },
     {
       "word": "\u0639\u064e\u0627\u0645\u064e",
-      "start_ms": 3240,
-      "end_ms": 3500
+      "start_ms": 3360,
+      "end_ms": 3600
     },
     {
       "word": "\u0623\u064e\u0644\u0652\u0641\u064d",
-      "start_ms": 3500,
-      "end_ms": 3900
+      "start_ms": 3600,
+      "end_ms": 4019
     },
     {
       "word": "\u0648\u064e\u062a\u0650\u0633\u0652\u0639\u0650\u0645\u0650\u0626\u064e\u0629\u064d",
-      "start_ms": 3900,
-      "end_ms": 4760
+      "start_ms": 4019,
+      "end_ms": 4860
     },
     {
       "word": "\u0648\u064e\u0633\u064e\u0628\u0652\u0639\u064e\u0629\u064d",
-      "start_ms": 32659,
-      "end_ms": 32759
+      "start_ms": 4860,
+      "end_ms": 5480
     },
     {
       "word": "\u0648\u064e\u062b\u064e\u0645\u064e\u0627\u0646\u0650\u064a\u0646\u064e\u060c",
-      "start_ms": 32759,
-      "end_ms": 33140
+      "start_ms": 5680,
+      "end_ms": 6600
     },
     {
       "word": "\u0648\u064e\u0647\u064f\u0648\u064e",
-      "start_ms": 33140,
-      "end_ms": 33140
+      "start_ms": 6640,
+      "end_ms": 6900
     },
     {
       "word": "\u062a\u064e\u0635\u0652\u0646\u0650\u064a\u0641\u064c",
-      "start_ms": 33140,
-      "end_ms": 33180
+      "start_ms": 6900,
+      "end_ms": 7460
     },
     {
       "word": "\u0633\u064e\u0627\u0639\u064e\u062f\u064e",
-      "start_ms": 33180,
-      "end_ms": 33180
+      "start_ms": 7460,
+      "end_ms": 7880
     },
     {
       "word": "\u0641\u0650\u064a",
-      "start_ms": 33180,
-      "end_ms": 33180
+      "start_ms": 7880,
+      "end_ms": 8140
     },
     {
       "word": "\u062d\u0650\u0645\u064e\u0627\u064a\u064e\u062a\u0650\u0647\u064e\u0627",
-      "start_ms": 33180,
-      "end_ms": 33280
+      "start_ms": 8140,
+      "end_ms": 8820
     },
     {
       "word": "\u0645\u0650\u0646\u064e",
-      "start_ms": 33360,
-      "end_ms": 33520
+      "start_ms": 8820,
+      "end_ms": 9000
     },
     {
       "word": "\u0627\u0644\u062a\u064e\u0651\u0637\u0652\u0648\u0650\u064a\u0631\u0650",
-      "start_ms": 33520,
-      "end_ms": 34020
+      "start_ms": 9000,
+      "end_ms": 9480
     },
     {
       "word": "\u0627\u0644\u0652\u0639\u064f\u0645\u0652\u0631\u064e\u0627\u0646\u0650\u064a\u0650\u0651",
-      "start_ms": 34020,
-      "end_ms": 34680
+      "start_ms": 9480,
+      "end_ms": 10240
     },
     {
       "word": "\u0645\u064e\u0639\u064e",
-      "start_ms": 34680,
-      "end_ms": 34900
+      "start_ms": 10260,
+      "end_ms": 10420
     },
     {
       "word": "\u062c\u064e\u0639\u0652\u0644\u0650\u0647\u064e\u0627",
-      "start_ms": 34920,
-      "end_ms": 35360
+      "start_ms": 10420,
+      "end_ms": 11020
     },
     {
       "word": "\u0623\u064e\u064a\u0652\u0636\u064b\u0627",
-      "start_ms": 35360,
-      "end_ms": 35740
+      "start_ms": 11100,
+      "end_ms": 11360
     },
     {
       "word": "\u0648\u064e\u0627\u062d\u0650\u062f\u064e\u0629\u064b",
-      "start_ms": 36180,
-      "end_ms": 36620
+      "start_ms": 11360,
+      "end_ms": 11960
     },
     {
       "word": "\u0645\u0650\u0646\u0652",
-      "start_ms": 36820,
-      "end_ms": 37420
+      "start_ms": 11960,
+      "end_ms": 12280
     },
     {
       "word": "\u0623\u064e\u0643\u0652\u062b\u064e\u0631\u0650",
-      "start_ms": 37420,
-      "end_ms": 37660
+      "start_ms": 12280,
+      "end_ms": 12600
     },
     {
       "word": "\u0627\u0644\u0652\u0645\u064e\u0648\u064e\u0627\u0642\u0650\u0639\u0650",
-      "start_ms": 37660,
-      "end_ms": 37660
+      "start_ms": 12600,
+      "end_ms": 13160
     },
     {
       "word": "\u0627\u0644\u0652\u0623\u064e\u062b\u064e\u0631\u0650\u064a\u064e\u0651\u0629\u0650",
-      "start_ms": 37660,
-      "end_ms": 38340
+      "start_ms": 13160,
+      "end_ms": 13800
     },
     {
       "word": "\u0632\u0650\u064a\u064e\u0627\u0631\u064e\u0629\u064b",
-      "start_ms": 38340,
-      "end_ms": 39920
+      "start_ms": 13800,
+      "end_ms": 14480
     },
     {
       "word": "\u0641\u0650\u064a",
-      "start_ms": 40000,
-      "end_ms": 40000
+      "start_ms": 14480,
+      "end_ms": 14640
     },
     {
       "word": "\u0627\u0644\u0652\u0645\u064e\u0643\u0652\u0633\u0650\u064a\u0643\u0650.",
-      "start_ms": 40000,
-      "end_ms": 40000
+      "start_ms": 14640,
+      "end_ms": 15100
     }
   ],
   "ch12-790": [
@@ -58889,103 +58889,103 @@
   "ch14-877": [
     {
       "word": "\u0627\u0644\u0652\u0643\u064f\u0631\u064e\u0629\u064f",
-      "start_ms": 80,
-      "end_ms": 620
+      "start_ms": 100,
+      "end_ms": 660
     },
     {
       "word": "\u0627\u0644\u0652\u0645\u064e\u0637\u064e\u0651\u0627\u0637\u0650\u064a\u064e\u0651\u0629\u064f\u060c",
-      "start_ms": 620,
-      "end_ms": 1640
+      "start_ms": 660,
+      "end_ms": 1740
     },
     {
       "word": "\u0648\u064e\u0627\u0644\u0652\u062c\u064f\u062f\u0652\u0631\u064e\u0627\u0646\u064f",
-      "start_ms": 1760,
-      "end_ms": 2360
+      "start_ms": 1900,
+      "end_ms": 2440
     },
     {
       "word": "\u0627\u0644\u0652\u062d\u064e\u062c\u064e\u0631\u0650\u064a\u064e\u0651\u0629\u064f",
-      "start_ms": 2980,
-      "end_ms": 3080
+      "start_ms": 2440,
+      "end_ms": 3160
     },
     {
       "word": "\u0627\u0644\u0652\u0645\u064e\u0627\u0626\u0650\u0644\u064e\u0629\u064f\u060c",
-      "start_ms": 3080,
-      "end_ms": 3880
+      "start_ms": 3160,
+      "end_ms": 4000
     },
     {
       "word": "\u0648\u064e\u0623\u064e\u062d\u0652\u0632\u0650\u0645\u064e\u0629\u064f",
-      "start_ms": 4140,
-      "end_ms": 4700
+      "start_ms": 4160,
+      "end_ms": 4800
     },
     {
       "word": "\u0627\u0644\u0652\u0648\u064e\u0631\u0650\u0643\u0650",
-      "start_ms": 4700,
-      "end_ms": 5060
+      "start_ms": 4800,
+      "end_ms": 5200
     },
     {
       "word": "\u0627\u0644\u062b\u064e\u0651\u0642\u0650\u064a\u0644\u064e\u0629\u064f\u060c",
-      "start_ms": 5900,
-      "end_ms": 6000
+      "start_ms": 5200,
+      "end_ms": 6140
     },
     {
       "word": "\u0648\u064e\u0627\u0644\u0631\u0650\u0651\u0647\u064e\u0627\u0646\u064e\u0627\u062a\u064f",
-      "start_ms": 6000,
-      "end_ms": 6660
+      "start_ms": 6160,
+      "end_ms": 6880
     },
     {
       "word": "\u0627\u0644\u0652\u0643\u064e\u0648\u0652\u0646\u0650\u064a\u064e\u0651\u0629\u064f",
-      "start_ms": 6820,
-      "end_ms": 7700
+      "start_ms": 7040,
+      "end_ms": 7840
     },
     {
       "word": "\u2014",
-      "start_ms": 7700,
-      "end_ms": 7700
+      "start_ms": 7840,
+      "end_ms": 7840
     },
     {
       "word": "\u0644\u064f\u0639\u0652\u0628\u064e\u0629\u064f",
-      "start_ms": 7860,
-      "end_ms": 8260
+      "start_ms": 8020,
+      "end_ms": 8420
     },
     {
       "word": "\u0627\u0644\u0652\u0643\u064f\u0631\u064e\u0629\u0650",
-      "start_ms": 8260,
-      "end_ms": 8720
+      "start_ms": 8420,
+      "end_ms": 8860
     },
     {
       "word": "\u0646\u064e\u0627\u0641\u0650\u0630\u064e\u0629\u064c",
-      "start_ms": 8720,
-      "end_ms": 9360
+      "start_ms": 8860,
+      "end_ms": 9540
     },
     {
       "word": "\u0645\u0650\u062b\u064e\u0627\u0644\u0650\u064a\u064e\u0651\u0629\u064c",
-      "start_ms": 9360,
-      "end_ms": 10200
+      "start_ms": 9540,
+      "end_ms": 10360
     },
     {
       "word": "\u0639\u064e\u0644\u064e\u0649",
-      "start_ms": 10200,
-      "end_ms": 10520
+      "start_ms": 10360,
+      "end_ms": 10660
     },
     {
       "word": "\u0627\u0644\u0652\u062d\u064e\u064a\u064e\u0627\u0629\u0650",
-      "start_ms": 10600,
-      "end_ms": 11000
+      "start_ms": 10660,
+      "end_ms": 11120
     },
     {
       "word": "\u0641\u0650\u064a",
-      "start_ms": 11100,
-      "end_ms": 11220
+      "start_ms": 11120,
+      "end_ms": 11340
     },
     {
       "word": "\u0623\u064e\u0645\u0652\u0631\u0650\u064a\u0643\u064e\u0627",
-      "start_ms": 11800,
-      "end_ms": 11800
+      "start_ms": 11340,
+      "end_ms": 11780
     },
     {
       "word": "\u0627\u0644\u0652\u0648\u064f\u0633\u0652\u0637\u064e\u0649.",
-      "start_ms": 11800,
-      "end_ms": 11800
+      "start_ms": 11780,
+      "end_ms": 11980
     }
   ],
   "ch14-878": [
@@ -69299,88 +69299,88 @@
   "ch15-1012": [
     {
       "word": "\u064a\u064e\u0628\u0652\u062f\u064e\u0623\u064f",
-      "start_ms": 80,
-      "end_ms": 560
+      "start_ms": 100,
+      "end_ms": 580
     },
     {
       "word": "\u0643\u064f\u0644\u064f\u0651",
-      "start_ms": 640,
-      "end_ms": 960
+      "start_ms": 580,
+      "end_ms": 1000
     },
     {
       "word": "\u0645\u064f\u062c\u064e\u0644\u064e\u0651\u062f\u064d",
-      "start_ms": 960,
-      "end_ms": 1520
+      "start_ms": 1000,
+      "end_ms": 1560
     },
     {
       "word": "\u0628\u0650\u0644\u064f\u063a\u0652\u0632\u064d",
-      "start_ms": 1520,
-      "end_ms": 2060
+      "start_ms": 1560,
+      "end_ms": 2080
     },
     {
       "word": "\u062d\u064e\u0642\u0650\u064a\u0642\u0650\u064a\u064d\u0651",
-      "start_ms": 2060,
-      "end_ms": 2800
+      "start_ms": 2080,
+      "end_ms": 2880
     },
     {
       "word": "\u0648\u064e\u064a\u064e\u0633\u0652\u062a\u064e\u062e\u0652\u062f\u0650\u0645\u064f\u0647\u064f",
-      "start_ms": 2800,
-      "end_ms": 3660
+      "start_ms": 2880,
+      "end_ms": 3780
     },
     {
       "word": "\u0628\u064e\u0648\u064e\u0651\u0627\u0628\u064e\u0629\u064b",
-      "start_ms": 3660,
-      "end_ms": 4300
+      "start_ms": 3780,
+      "end_ms": 4480
     },
     {
       "word": "\u0625\u0650\u0644\u064e\u0649",
-      "start_ms": 4300,
-      "end_ms": 4660
+      "start_ms": 4480,
+      "end_ms": 4880
     },
     {
       "word": "\u0639\u064e\u0627\u0644\u064e\u0645\u064d",
-      "start_ms": 4660,
-      "end_ms": 5060
-    },
-    {
-      "word": "\u0645\u0650\u0646\u064e",
-      "start_ms": 5060,
+      "start_ms": 4880,
       "end_ms": 5300
     },
     {
-      "word": "\u0627\u0644\u0652\u0645\u064e\u0639\u0652\u0631\u0650\u0641\u064e\u0629\u0650",
+      "word": "\u0645\u0650\u0646\u064e",
       "start_ms": 5300,
-      "end_ms": 5940
+      "end_ms": 5520
+    },
+    {
+      "word": "\u0627\u0644\u0652\u0645\u064e\u0639\u0652\u0631\u0650\u0641\u064e\u0629\u0650",
+      "start_ms": 5520,
+      "end_ms": 6480
     },
     {
       "word": "\u2014",
-      "start_ms": 5940,
-      "end_ms": 6080
+      "start_ms": 6580,
+      "end_ms": 6580
     },
     {
       "word": "\u0627\u064e\u0644\u0646\u064e\u0651\u0627\u0633\u064f",
-      "start_ms": 6440,
-      "end_ms": 6940
+      "start_ms": 6580,
+      "end_ms": 7020
     },
     {
       "word": "\u0648\u064e\u0627\u0644\u0652\u0623\u064e\u0645\u064e\u0627\u0643\u0650\u0646\u064f",
-      "start_ms": 6940,
-      "end_ms": 7660
+      "start_ms": 7020,
+      "end_ms": 7700
     },
     {
       "word": "\u0648\u064e\u0627\u0644\u0633\u0650\u0651\u064a\u064e\u0627\u0642\u064f",
-      "start_ms": 7660,
-      "end_ms": 8300
+      "start_ms": 7700,
+      "end_ms": 8360
     },
     {
       "word": "\u0648\u064e\u0627\u0644\u0652\u0623\u064e\u0633\u0652\u0626\u0650\u0644\u064e\u0629\u064f",
-      "start_ms": 8800,
-      "end_ms": 8800
+      "start_ms": 8360,
+      "end_ms": 9040
     },
     {
       "word": "\u0627\u0644\u0652\u0645\u064e\u0641\u0652\u062a\u064f\u0648\u062d\u064e\u0629.",
-      "start_ms": 8800,
-      "end_ms": 8800
+      "start_ms": 9040,
+      "end_ms": 9560
     }
   ],
   "ch15-1013": [
@@ -69423,88 +69423,88 @@
   "ch15-1014": [
     {
       "word": "\u064a\u064e\u0646\u0652\u0628\u064e\u063a\u0650\u064a",
-      "start_ms": 100,
-      "end_ms": 560
+      "start_ms": 80,
+      "end_ms": 600
     },
     {
       "word": "\u0623\u064e\u0646\u0652",
-      "start_ms": 560,
+      "start_ms": 600,
       "end_ms": 780
     },
     {
       "word": "\u062a\u064e\u0643\u064f\u0648\u0646\u064e",
-      "start_ms": 780,
-      "end_ms": 1120
+      "start_ms": 800,
+      "end_ms": 1180
     },
     {
       "word": "\u0643\u064f\u0644\u064f\u0651",
-      "start_ms": 1120,
-      "end_ms": 1540
+      "start_ms": 1180,
+      "end_ms": 1620
     },
     {
       "word": "\u062c\u064f\u0645\u0652\u0644\u064e\u0629\u064d",
-      "start_ms": 1540,
-      "end_ms": 2020
+      "start_ms": 1620,
+      "end_ms": 2120
     },
     {
       "word": "\u0641\u0650\u064a",
-      "start_ms": 2020,
-      "end_ms": 2220
+      "start_ms": 2120,
+      "end_ms": 2360
     },
     {
       "word": "\u0645\u064f\u062a\u064e\u0646\u064e\u0627\u0648\u064e\u0644\u0650",
-      "start_ms": 2220,
-      "end_ms": 2860
+      "start_ms": 2360,
+      "end_ms": 3020
     },
     {
       "word": "\u0637\u0650\u0641\u0652\u0644\u064d",
-      "start_ms": 2860,
-      "end_ms": 3340
+      "start_ms": 3020,
+      "end_ms": 3460
     },
     {
       "word": "\u0630\u064e\u0643\u0650\u064a\u064d\u0651",
-      "start_ms": 3340,
-      "end_ms": 3920
+      "start_ms": 3460,
+      "end_ms": 4040
     },
     {
       "word": "\u0641\u0650\u064a",
-      "start_ms": 3920,
-      "end_ms": 4080
+      "start_ms": 4040,
+      "end_ms": 4180
     },
     {
       "word": "\u0627\u0644\u0652\u0639\u064e\u0627\u0634\u0650\u0631\u064e\u0629\u0650",
-      "start_ms": 4080,
-      "end_ms": 4680
+      "start_ms": 4180,
+      "end_ms": 4780
     },
     {
       "word": "\u0645\u0650\u0646\u0652",
-      "start_ms": 4680,
-      "end_ms": 4900
+      "start_ms": 4780,
+      "end_ms": 5000
     },
     {
       "word": "\u0639\u064f\u0645\u064f\u0631\u0650\u0647\u0650",
-      "start_ms": 4900,
-      "end_ms": 5380
+      "start_ms": 5000,
+      "end_ms": 5720
     },
     {
       "word": "\u0648\u064e\u0645\u064f\u062b\u0650\u064a\u0631\u064e\u0629\u064b",
-      "start_ms": 5500,
-      "end_ms": 6100
+      "start_ms": 5900,
+      "end_ms": 6580
     },
     {
       "word": "\u0644\u0650\u0627\u0647\u0652\u062a\u0650\u0645\u064e\u0627\u0645\u0650",
-      "start_ms": 6100,
-      "end_ms": 6720
+      "start_ms": 6580,
+      "end_ms": 7260
     },
     {
       "word": "\u0634\u064e\u062e\u0652\u0635\u064d",
-      "start_ms": 6800,
-      "end_ms": 6800
+      "start_ms": 7260,
+      "end_ms": 7780
     },
     {
       "word": "\u0628\u064e\u0627\u0644\u0650\u063a.",
-      "start_ms": 6800,
-      "end_ms": 6800
+      "start_ms": 7780,
+      "end_ms": 8180
     }
   ],
   "ch15-1015": [
@@ -69582,63 +69582,63 @@
   "ch15-1016": [
     {
       "word": "\u0627\u064e\u0644\u0652\u0645\u064f\u062c\u064e\u0644\u064e\u0651\u062f\u064f",
-      "start_ms": 120,
-      "end_ms": 900
+      "start_ms": 140,
+      "end_ms": 920
     },
     {
       "word": "\u0627\u0644\u0652\u0623\u064e\u0648\u064e\u0651\u0644:",
-      "start_ms": 900,
-      "end_ms": 1320
+      "start_ms": 920,
+      "end_ms": 1420
     },
     {
       "word": "\u0644\u064f\u063a\u0652\u0632\u064f",
-      "start_ms": 1940,
-      "end_ms": 2260
+      "start_ms": 1860,
+      "end_ms": 2140
     },
     {
       "word": "\u0645\u064f\u0648\u0646\u0652\u062a\u0650\u064a",
-      "start_ms": 2260,
-      "end_ms": 2780
+      "start_ms": 2140,
+      "end_ms": 2680
     },
     {
       "word": "\u0623\u064e\u0644\u0652\u0628\u064e\u0627\u0646",
-      "start_ms": 2780,
-      "end_ms": 3280
+      "start_ms": 2680,
+      "end_ms": 3180
     },
     {
       "word": "\u2014",
-      "start_ms": 3280,
-      "end_ms": 3620
+      "start_ms": 3180,
+      "end_ms": 3440
     },
     {
       "word": "\u0627\u064e\u0644\u0652\u062c\u064e\u0628\u064e\u0644\u064f",
-      "start_ms": 3680,
-      "end_ms": 4200
+      "start_ms": 3600,
+      "end_ms": 4160
     },
     {
       "word": "\u0627\u0644\u0652\u0645\u064f\u0642\u064e\u062f\u064e\u0651\u0633\u060c",
-      "start_ms": 4200,
-      "end_ms": 5140
+      "start_ms": 4160,
+      "end_ms": 4980
     },
     {
       "word": "\u0627\u064e\u0644\u0652\u0643\u0650\u062a\u064e\u0627\u0628\u064e\u0629\u064f",
-      "start_ms": 5520,
-      "end_ms": 5880
+      "start_ms": 4980,
+      "end_ms": 5660
     },
     {
       "word": "\u0627\u0644\u0652\u0645\u064e\u0641\u0652\u0642\u064f\u0648\u062f\u064e\u0629\u060c",
-      "start_ms": 5880,
-      "end_ms": 6800
+      "start_ms": 5660,
+      "end_ms": 6500
     },
     {
       "word": "\u0627\u064e\u0644\u0652\u0645\u064e\u062f\u0650\u064a\u0646\u064e\u0629\u064f",
-      "start_ms": 6920,
-      "end_ms": 7580
+      "start_ms": 6840,
+      "end_ms": 7200
     },
     {
       "word": "\u0627\u0644\u0652\u0645\u064f\u0646\u0652\u062f\u064e\u062b\u0650\u0631\u064e\u0629.",
-      "start_ms": 7580,
-      "end_ms": 7780
+      "start_ms": 7200,
+      "end_ms": 7760
     }
   ],
   "ch15-1017": [

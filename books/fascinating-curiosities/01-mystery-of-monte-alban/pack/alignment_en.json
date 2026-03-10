@@ -138,118 +138,118 @@
   "ch00-005": [
     {
       "word": "About",
-      "start_ms": 600,
-      "end_ms": 600
+      "start_ms": 100,
+      "end_ms": 280
     },
     {
       "word": "two",
-      "start_ms": 600,
-      "end_ms": 880
+      "start_ms": 280,
+      "end_ms": 520
     },
     {
       "word": "thousand",
-      "start_ms": 880,
-      "end_ms": 1360
+      "start_ms": 520,
+      "end_ms": 840
     },
     {
       "word": "five",
-      "start_ms": 1360,
-      "end_ms": 1700
+      "start_ms": 840,
+      "end_ms": 1080
     },
     {
       "word": "hundred",
-      "start_ms": 1700,
-      "end_ms": 2120
+      "start_ms": 1080,
+      "end_ms": 1400
     },
     {
       "word": "years",
-      "start_ms": 2120,
-      "end_ms": 2400
+      "start_ms": 1400,
+      "end_ms": 1640
     },
     {
       "word": "ago,",
-      "start_ms": 2400,
-      "end_ms": 2880
+      "start_ms": 1640,
+      "end_ms": 2080
     },
     {
       "word": "people",
-      "start_ms": 3440,
-      "end_ms": 3580
+      "start_ms": 2520,
+      "end_ms": 2740
     },
     {
       "word": "in",
-      "start_ms": 3580,
-      "end_ms": 3780
+      "start_ms": 2740,
+      "end_ms": 2940
     },
     {
       "word": "southern",
-      "start_ms": 3780,
-      "end_ms": 4100
+      "start_ms": 2940,
+      "end_ms": 3220
     },
     {
       "word": "Mexico",
-      "start_ms": 4560,
-      "end_ms": 4660
+      "start_ms": 3220,
+      "end_ms": 3760
     },
     {
       "word": "flattened",
-      "start_ms": 4660,
-      "end_ms": 5320
+      "start_ms": 3760,
+      "end_ms": 4380
     },
     {
       "word": "the",
-      "start_ms": 5320,
-      "end_ms": 5380
+      "start_ms": 4380,
+      "end_ms": 4440
     },
     {
       "word": "top",
-      "start_ms": 5380,
-      "end_ms": 5660
+      "start_ms": 4440,
+      "end_ms": 4660
     },
     {
       "word": "of",
-      "start_ms": 5660,
-      "end_ms": 5900
+      "start_ms": 4660,
+      "end_ms": 4820
     },
     {
       "word": "a",
-      "start_ms": 5900,
-      "end_ms": 5960
+      "start_ms": 4820,
+      "end_ms": 4880
     },
     {
       "word": "mountain",
-      "start_ms": 6260,
-      "end_ms": 6360
+      "start_ms": 4880,
+      "end_ms": 5240
     },
     {
       "word": "and",
-      "start_ms": 6360,
-      "end_ms": 6880
+      "start_ms": 5240,
+      "end_ms": 5600
     },
     {
       "word": "built",
-      "start_ms": 6880,
-      "end_ms": 7120
+      "start_ms": 5600,
+      "end_ms": 5800
     },
     {
       "word": "a",
-      "start_ms": 7120,
-      "end_ms": 7340
+      "start_ms": 5800,
+      "end_ms": 6000
     },
     {
       "word": "city",
-      "start_ms": 7340,
-      "end_ms": 7620
+      "start_ms": 6000,
+      "end_ms": 6260
     },
     {
       "word": "on",
-      "start_ms": 7620,
-      "end_ms": 7860
+      "start_ms": 6340,
+      "end_ms": 6440
     },
     {
       "word": "it.",
-      "start_ms": 7860,
-      "end_ms": 8300
+      "start_ms": 6440,
+      "end_ms": 6580
     }
   ],
   "ch00-006": [
@@ -1103,38 +1103,38 @@
   "ch01-022": [
     {
       "word": "In",
-      "start_ms": 80,
-      "end_ms": 180
+      "start_ms": 40,
+      "end_ms": 140
     },
     {
       "word": "every",
-      "start_ms": 180,
-      "end_ms": 420
+      "start_ms": 140,
+      "end_ms": 460
     },
     {
       "word": "direction,",
-      "start_ms": 420,
-      "end_ms": 1020
+      "start_ms": 460,
+      "end_ms": 1120
     },
     {
       "word": "the",
-      "start_ms": 1640,
-      "end_ms": 1740
+      "start_ms": 1520,
+      "end_ms": 1600
     },
     {
       "word": "land",
-      "start_ms": 1740,
-      "end_ms": 2180
+      "start_ms": 1600,
+      "end_ms": 1920
     },
     {
       "word": "falls",
-      "start_ms": 2180,
-      "end_ms": 2800
+      "start_ms": 1920,
+      "end_ms": 2260
     },
     {
       "word": "away.",
-      "start_ms": 2800,
-      "end_ms": 3460
+      "start_ms": 2260,
+      "end_ms": 2780
     }
   ],
   "ch01-023": [
@@ -2051,28 +2051,28 @@
   "ch01-041": [
     {
       "word": "Tombs",
-      "start_ms": 0,
-      "end_ms": 620
+      "start_ms": 100,
+      "end_ms": 760
     },
     {
       "word": "honeycombed",
-      "start_ms": 720,
-      "end_ms": 1340
+      "start_ms": 760,
+      "end_ms": 1560
     },
     {
       "word": "the",
-      "start_ms": 1340,
-      "end_ms": 1400
+      "start_ms": 1560,
+      "end_ms": 1640
     },
     {
       "word": "ground",
-      "start_ms": 1440,
-      "end_ms": 1700
+      "start_ms": 1640,
+      "end_ms": 1900
     },
     {
       "word": "beneath.",
-      "start_ms": 1700,
-      "end_ms": 2120
+      "start_ms": 1900,
+      "end_ms": 2380
     }
   ],
   "ch01-042": [
@@ -4724,12 +4724,12 @@
   "ch02-076": [
     {
       "word": "The",
-      "start_ms": 300,
-      "end_ms": 300
+      "start_ms": 220,
+      "end_ms": 280
     },
     {
       "word": "Valley",
-      "start_ms": 300,
+      "start_ms": 280,
       "end_ms": 580
     },
     {
@@ -4738,214 +4738,214 @@
       "end_ms": 760
     },
     {
-      "word": "Oaxaca",
+      "word": "Wahaka",
       "start_ms": 760,
-      "end_ms": 1220
+      "end_ms": 1260
     },
     {
       "word": "is",
-      "start_ms": 1220,
-      "end_ms": 1540
+      "start_ms": 1260,
+      "end_ms": 1560
     },
     {
       "word": "shaped",
-      "start_ms": 1540,
-      "end_ms": 1860
+      "start_ms": 1560,
+      "end_ms": 1720
     },
     {
       "word": "like",
-      "start_ms": 1860,
-      "end_ms": 2080
+      "start_ms": 1720,
+      "end_ms": 1920
     },
     {
       "word": "a",
-      "start_ms": 2080,
-      "end_ms": 2220
+      "start_ms": 1920,
+      "end_ms": 2040
     },
     {
       "word": "crooked",
-      "start_ms": 2280,
-      "end_ms": 2460
+      "start_ms": 2080,
+      "end_ms": 2320
     },
     {
       "word": "Y.",
-      "start_ms": 2460,
-      "end_ms": 2900
+      "start_ms": 2320,
+      "end_ms": 2740
     },
     {
       "word": "Three",
-      "start_ms": 3520,
-      "end_ms": 3640
+      "start_ms": 3280,
+      "end_ms": 3420
     },
     {
       "word": "sub-valleys",
-      "start_ms": 3640,
+      "start_ms": 3420,
+      "end_ms": 4280
+    },
+    {
+      "word": "\u2014",
+      "start_ms": 4280,
+      "end_ms": 4500
+    },
+    {
+      "word": "the",
+      "start_ms": 4500,
       "end_ms": 4620
     },
     {
-      "word": "\u2014",
-      "start_ms": 4620,
-      "end_ms": 5000
-    },
-    {
-      "word": "the",
-      "start_ms": 5140,
-      "end_ms": 5240
-    },
-    {
       "word": "Etla",
-      "start_ms": 5240,
-      "end_ms": 5560
+      "start_ms": 4660,
+      "end_ms": 4920
     },
     {
       "word": "arm",
-      "start_ms": 5560,
-      "end_ms": 5920
+      "start_ms": 4920,
+      "end_ms": 5220
     },
     {
       "word": "to",
-      "start_ms": 5920,
-      "end_ms": 6100
+      "start_ms": 5220,
+      "end_ms": 5420
     },
     {
       "word": "the",
-      "start_ms": 6100,
-      "end_ms": 6220
+      "start_ms": 5420,
+      "end_ms": 5540
     },
     {
       "word": "northwest,",
-      "start_ms": 6220,
-      "end_ms": 6760
+      "start_ms": 5540,
+      "end_ms": 6090
     },
     {
       "word": "the",
-      "start_ms": 7360,
-      "end_ms": 7420
+      "start_ms": 6560,
+      "end_ms": 6660
     },
     {
       "word": "Tlacolula",
-      "start_ms": 7420,
-      "end_ms": 7980
+      "start_ms": 6740,
+      "end_ms": 7120
     },
     {
       "word": "arm",
-      "start_ms": 7980,
-      "end_ms": 8280
+      "start_ms": 7120,
+      "end_ms": 7360
     },
     {
       "word": "to",
-      "start_ms": 8280,
-      "end_ms": 8460
+      "start_ms": 7360,
+      "end_ms": 7560
     },
     {
       "word": "the",
-      "start_ms": 8460,
-      "end_ms": 8580
+      "start_ms": 7560,
+      "end_ms": 7680
     },
     {
       "word": "east,",
-      "start_ms": 8580,
-      "end_ms": 8980
+      "start_ms": 7680,
+      "end_ms": 7780
     },
     {
       "word": "and",
-      "start_ms": 9540,
-      "end_ms": 9640
+      "start_ms": 8380,
+      "end_ms": 8500
     },
     {
       "word": "the",
-      "start_ms": 9640,
-      "end_ms": 9740
+      "start_ms": 8500,
+      "end_ms": 8620
     },
     {
       "word": "Zimatl\u00e1n",
-      "start_ms": 9740,
-      "end_ms": 10440
+      "start_ms": 8620,
+      "end_ms": 9240
     },
     {
       "word": "or",
-      "start_ms": 10440,
-      "end_ms": 10620
+      "start_ms": 9240,
+      "end_ms": 9380
     },
     {
       "word": "Valle",
-      "start_ms": 10620,
-      "end_ms": 10980
+      "start_ms": 9380,
+      "end_ms": 9700
     },
     {
       "word": "Grande",
-      "start_ms": 10980,
-      "end_ms": 11260
+      "start_ms": 9700,
+      "end_ms": 10000
     },
     {
       "word": "arm",
-      "start_ms": 11260,
-      "end_ms": 11840
+      "start_ms": 10000,
+      "end_ms": 10420
     },
     {
       "word": "to",
-      "start_ms": 11840,
-      "end_ms": 12060
+      "start_ms": 10420,
+      "end_ms": 10620
     },
     {
       "word": "the",
-      "start_ms": 12060,
-      "end_ms": 12160
+      "start_ms": 10620,
+      "end_ms": 10720
     },
     {
       "word": "south",
-      "start_ms": 12160,
-      "end_ms": 12620
+      "start_ms": 10720,
+      "end_ms": 11160
     },
     {
       "word": "\u2014",
-      "start_ms": 12620,
-      "end_ms": 13140
+      "start_ms": 11160,
+      "end_ms": 11380
     },
     {
       "word": "converge",
-      "start_ms": 13160,
-      "end_ms": 13500
+      "start_ms": 11400,
+      "end_ms": 11660
     },
     {
       "word": "near",
-      "start_ms": 13500,
-      "end_ms": 13860
+      "start_ms": 11660,
+      "end_ms": 11940
     },
     {
       "word": "the",
-      "start_ms": 13860,
-      "end_ms": 14020
+      "start_ms": 11940,
+      "end_ms": 12080
     },
     {
       "word": "center,",
-      "start_ms": 14020,
-      "end_ms": 14360
+      "start_ms": 12080,
+      "end_ms": 12600
     },
     {
       "word": "where",
-      "start_ms": 14800,
-      "end_ms": 14880
+      "start_ms": 12860,
+      "end_ms": 12940
     },
     {
       "word": "Monte",
-      "start_ms": 14880,
-      "end_ms": 15180
+      "start_ms": 12940,
+      "end_ms": 13260
     },
     {
       "word": "Alb\u00e1n's",
-      "start_ms": 15180,
-      "end_ms": 15700
+      "start_ms": 13380,
+      "end_ms": 13860
     },
     {
       "word": "mountain",
-      "start_ms": 15700,
-      "end_ms": 16020
+      "start_ms": 13860,
+      "end_ms": 14160
     },
     {
       "word": "rises.",
-      "start_ms": 16020,
-      "end_ms": 16580
+      "start_ms": 14160,
+      "end_ms": 14580
     }
   ],
   "ch02-077": [
@@ -5554,133 +5554,133 @@
   "ch02-086": [
     {
       "word": "It",
-      "start_ms": 240,
-      "end_ms": 260
+      "start_ms": 140,
+      "end_ms": 160
     },
     {
       "word": "was",
-      "start_ms": 260,
-      "end_ms": 400
+      "start_ms": 160,
+      "end_ms": 300
     },
     {
       "word": "a",
-      "start_ms": 400,
-      "end_ms": 540
+      "start_ms": 300,
+      "end_ms": 420
     },
     {
       "word": "cluster",
-      "start_ms": 600,
-      "end_ms": 880
+      "start_ms": 420,
+      "end_ms": 740
     },
     {
       "word": "of",
-      "start_ms": 880,
-      "end_ms": 1120
+      "start_ms": 760,
+      "end_ms": 1000
     },
     {
       "word": "villages",
-      "start_ms": 1120,
-      "end_ms": 1400
+      "start_ms": 1000,
+      "end_ms": 1320
     },
     {
       "word": "and",
-      "start_ms": 1400,
-      "end_ms": 1780
+      "start_ms": 1320,
+      "end_ms": 1700
     },
     {
       "word": "hamlets",
-      "start_ms": 1780,
-      "end_ms": 2320
+      "start_ms": 1700,
+      "end_ms": 2200
     },
     {
       "word": "spread",
-      "start_ms": 2380,
-      "end_ms": 2680
+      "start_ms": 2220,
+      "end_ms": 2560
     },
     {
       "word": "across",
-      "start_ms": 2680,
-      "end_ms": 3020
+      "start_ms": 2560,
+      "end_ms": 2920
     },
     {
       "word": "roughly",
-      "start_ms": 3020,
-      "end_ms": 3520
+      "start_ms": 2920,
+      "end_ms": 3400
     },
     {
       "word": "seventy",
-      "start_ms": 3520,
-      "end_ms": 4000
+      "start_ms": 3400,
+      "end_ms": 3900
     },
     {
       "word": "hectares,",
-      "start_ms": 4000,
-      "end_ms": 4800
+      "start_ms": 3900,
+      "end_ms": 4640
     },
     {
       "word": "with",
-      "start_ms": 5240,
-      "end_ms": 5260
+      "start_ms": 4700,
+      "end_ms": 4740
     },
     {
       "word": "a",
-      "start_ms": 5260,
-      "end_ms": 5360
+      "start_ms": 4740,
+      "end_ms": 4840
     },
     {
       "word": "population",
-      "start_ms": 5360,
-      "end_ms": 5800
+      "start_ms": 4840,
+      "end_ms": 5220
     },
     {
       "word": "that",
-      "start_ms": 5800,
-      "end_ms": 6240
+      "start_ms": 5520,
+      "end_ms": 5620
     },
     {
       "word": "may",
-      "start_ms": 6240,
-      "end_ms": 6440
+      "start_ms": 5620,
+      "end_ms": 5800
     },
     {
       "word": "have",
-      "start_ms": 6440,
-      "end_ms": 6640
+      "start_ms": 5800,
+      "end_ms": 5940
     },
     {
       "word": "reached",
-      "start_ms": 6640,
-      "end_ms": 6960
+      "start_ms": 5940,
+      "end_ms": 6220
     },
     {
       "word": "one",
-      "start_ms": 6960,
-      "end_ms": 7240
+      "start_ms": 6220,
+      "end_ms": 6460
     },
     {
       "word": "thousand",
-      "start_ms": 7240,
-      "end_ms": 7700
+      "start_ms": 6460,
+      "end_ms": 6840
     },
     {
       "word": "people",
-      "start_ms": 7700,
-      "end_ms": 8119
+      "start_ms": 6840,
+      "end_ms": 7200
     },
     {
       "word": "at",
-      "start_ms": 8119,
-      "end_ms": 8320
+      "start_ms": 7220,
+      "end_ms": 7380
     },
     {
       "word": "its",
-      "start_ms": 8320,
-      "end_ms": 8500
+      "start_ms": 7480,
+      "end_ms": 7580
     },
     {
       "word": "height.",
-      "start_ms": 8500,
-      "end_ms": 9060
+      "start_ms": 7580,
+      "end_ms": 7860
     }
   ],
   "ch02-087": [
@@ -5763,225 +5763,225 @@
   "ch02-088": [
     {
       "word": "San",
-      "start_ms": 580,
-      "end_ms": 580
+      "start_ms": 120,
+      "end_ms": 200
     },
     {
-      "word": "Jos\u00e9",
-      "start_ms": 580,
-      "end_ms": 1500
+      "word": "Hohzay",
+      "start_ms": 200,
+      "end_ms": 700
     },
     {
-      "word": "Mogote",
-      "start_ms": 1820,
-      "end_ms": 2700
+      "word": "Mogoteh",
+      "start_ms": 700,
+      "end_ms": 1680
     },
     {
       "word": "was",
-      "start_ms": 2840,
-      "end_ms": 2940
+      "start_ms": 1700,
+      "end_ms": 1800
     },
     {
       "word": "the",
-      "start_ms": 2940,
-      "end_ms": 3120
+      "start_ms": 1800,
+      "end_ms": 1980
     },
     {
       "word": "dominant",
-      "start_ms": 3120,
-      "end_ms": 3520
+      "start_ms": 1980,
+      "end_ms": 2300
     },
     {
       "word": "community",
-      "start_ms": 3520,
-      "end_ms": 4160
+      "start_ms": 2300,
+      "end_ms": 2920
     },
     {
       "word": "in",
-      "start_ms": 4160,
-      "end_ms": 4340
+      "start_ms": 2920,
+      "end_ms": 3080
     },
     {
       "word": "the",
-      "start_ms": 4340,
-      "end_ms": 4420
+      "start_ms": 3080,
+      "end_ms": 3160
     },
     {
       "word": "Valley",
-      "start_ms": 4420,
-      "end_ms": 4780
+      "start_ms": 3160,
+      "end_ms": 3440
     },
     {
       "word": "of",
-      "start_ms": 4780,
-      "end_ms": 4980
+      "start_ms": 3440,
+      "end_ms": 3620
     },
     {
-      "word": "Oaxaca",
-      "start_ms": 4980,
-      "end_ms": 5420
+      "word": "Wahaka",
+      "start_ms": 3640,
+      "end_ms": 4080
     },
     {
       "word": "for",
-      "start_ms": 5420,
-      "end_ms": 5640
+      "start_ms": 4080,
+      "end_ms": 4320
     },
     {
       "word": "about",
-      "start_ms": 5640,
-      "end_ms": 5980
+      "start_ms": 4320,
+      "end_ms": 4540
     },
     {
       "word": "a",
-      "start_ms": 5980,
-      "end_ms": 6060
+      "start_ms": 4540,
+      "end_ms": 4660
     },
     {
       "word": "thousand",
-      "start_ms": 6060,
-      "end_ms": 6560
+      "start_ms": 4660,
+      "end_ms": 5020
     },
     {
       "word": "years.",
-      "start_ms": 6560,
-      "end_ms": 7320
+      "start_ms": 5020,
+      "end_ms": 5620
     }
   ],
   "ch02-089": [
     {
       "word": "The",
-      "start_ms": 300,
-      "end_ms": 300
+      "start_ms": 80,
+      "end_ms": 120
     },
     {
       "word": "people",
-      "start_ms": 360,
-      "end_ms": 580
+      "start_ms": 140,
+      "end_ms": 340
     },
     {
       "word": "of",
-      "start_ms": 580,
-      "end_ms": 760
+      "start_ms": 340,
+      "end_ms": 500
     },
     {
       "word": "San",
-      "start_ms": 760,
-      "end_ms": 1000
+      "start_ms": 500,
+      "end_ms": 740
     },
     {
-      "word": "Jos\u00e9",
-      "start_ms": 1000,
-      "end_ms": 1400
+      "word": "Hohzay",
+      "start_ms": 740,
+      "end_ms": 1200
     },
     {
-      "word": "Mogote",
-      "start_ms": 1400,
-      "end_ms": 2180
+      "word": "Mogoteh",
+      "start_ms": 1200,
+      "end_ms": 1880
     },
     {
       "word": "grew",
-      "start_ms": 2200,
-      "end_ms": 2300
+      "start_ms": 1880,
+      "end_ms": 2000
     },
     {
       "word": "corn,",
-      "start_ms": 2300,
-      "end_ms": 2900
+      "start_ms": 2000,
+      "end_ms": 2600
     },
     {
       "word": "beans,",
-      "start_ms": 3040,
-      "end_ms": 3600
+      "start_ms": 2700,
+      "end_ms": 3160
     },
     {
       "word": "and",
-      "start_ms": 3680,
-      "end_ms": 3680
+      "start_ms": 3240,
+      "end_ms": 3240
     },
     {
       "word": "squash",
-      "start_ms": 3920,
-      "end_ms": 4100
+      "start_ms": 3240,
+      "end_ms": 3620
     },
     {
       "word": "\u2014",
-      "start_ms": 4100,
-      "end_ms": 4740
+      "start_ms": 3620,
+      "end_ms": 4300
     },
     {
       "word": "the",
-      "start_ms": 4780,
-      "end_ms": 4880
+      "start_ms": 4380,
+      "end_ms": 4480
     },
     {
       "word": "Mesoamerican",
-      "start_ms": 4880,
-      "end_ms": 5560
+      "start_ms": 4480,
+      "end_ms": 5220
     },
     {
       "word": "trinity",
-      "start_ms": 5560,
-      "end_ms": 5920
+      "start_ms": 5220,
+      "end_ms": 5600
     },
     {
       "word": "of",
-      "start_ms": 5920,
-      "end_ms": 6120
+      "start_ms": 5600,
+      "end_ms": 5800
     },
     {
       "word": "crops",
-      "start_ms": 6120,
-      "end_ms": 6380
+      "start_ms": 5800,
+      "end_ms": 6040
     },
     {
       "word": "that",
-      "start_ms": 6380,
-      "end_ms": 6700
+      "start_ms": 6040,
+      "end_ms": 6380
     },
     {
       "word": "sustained",
-      "start_ms": 6700,
-      "end_ms": 7060
+      "start_ms": 6500,
+      "end_ms": 6740
     },
     {
       "word": "civilizations",
-      "start_ms": 7120,
-      "end_ms": 7920
+      "start_ms": 6930,
+      "end_ms": 7580
     },
     {
       "word": "across",
-      "start_ms": 8160,
-      "end_ms": 8260
+      "start_ms": 7580,
+      "end_ms": 7920
     },
     {
       "word": "the",
-      "start_ms": 8260,
-      "end_ms": 8500
+      "start_ms": 7920,
+      "end_ms": 8140
     },
     {
       "word": "region",
-      "start_ms": 8500,
-      "end_ms": 8820
+      "start_ms": 8180,
+      "end_ms": 8400
     },
     {
       "word": "for",
-      "start_ms": 8820,
-      "end_ms": 9040
+      "start_ms": 8400,
+      "end_ms": 8600
     },
     {
       "word": "thousands",
-      "start_ms": 9240,
-      "end_ms": 9560
+      "start_ms": 8700,
+      "end_ms": 8960
     },
     {
       "word": "of",
-      "start_ms": 9560,
-      "end_ms": 9820
+      "start_ms": 8960,
+      "end_ms": 9180
     },
     {
       "word": "years.",
-      "start_ms": 9820,
-      "end_ms": 10140
+      "start_ms": 9180,
+      "end_ms": 9600
     }
   ],
   "ch02-090": [
@@ -7095,53 +7095,53 @@
   "ch02-104": [
     {
       "word": "Map",
-      "start_ms": 140,
-      "end_ms": 440
+      "start_ms": 20,
+      "end_ms": 260
     },
     {
       "word": "of",
-      "start_ms": 440,
-      "end_ms": 740
+      "start_ms": 260,
+      "end_ms": 520
     },
     {
       "word": "the",
-      "start_ms": 740,
-      "end_ms": 880
+      "start_ms": 520,
+      "end_ms": 640
     },
     {
       "word": "Valley",
-      "start_ms": 880,
-      "end_ms": 1340
+      "start_ms": 640,
+      "end_ms": 960
     },
     {
       "word": "of",
-      "start_ms": 1340,
-      "end_ms": 1640
+      "start_ms": 960,
+      "end_ms": 1140
     },
     {
-      "word": "Oaxaca",
-      "start_ms": 1640,
-      "end_ms": 2240
+      "word": "Wahaka",
+      "start_ms": 1160,
+      "end_ms": 1660
     },
     {
       "word": "showing",
-      "start_ms": 2680,
-      "end_ms": 3040
+      "start_ms": 1660,
+      "end_ms": 2080
     },
     {
       "word": "its",
-      "start_ms": 3040,
-      "end_ms": 3440
+      "start_ms": 2080,
+      "end_ms": 2380
     },
     {
       "word": "three",
-      "start_ms": 3440,
-      "end_ms": 3760
+      "start_ms": 2380,
+      "end_ms": 2680
     },
     {
       "word": "arms",
-      "start_ms": 3760,
-      "end_ms": 4400
+      "start_ms": 2680,
+      "end_ms": 3200
     }
   ],
   "ch02-105": [
@@ -7229,158 +7229,158 @@
   "ch02-106": [
     {
       "word": "In",
-      "start_ms": 500,
-      "end_ms": 540
+      "start_ms": 80,
+      "end_ms": 160
     },
     {
       "word": "nineteen",
-      "start_ms": 540,
-      "end_ms": 920
+      "start_ms": 160,
+      "end_ms": 480
     },
     {
       "word": "seventy",
-      "start_ms": 920,
-      "end_ms": 1380
+      "start_ms": 480,
+      "end_ms": 980
     },
     {
       "word": "five,",
-      "start_ms": 1380,
-      "end_ms": 2200
+      "start_ms": 980,
+      "end_ms": 1540
     },
     {
       "word": "the",
-      "start_ms": 2260,
-      "end_ms": 2260
+      "start_ms": 2200,
+      "end_ms": 2240
     },
     {
       "word": "archaeologist",
-      "start_ms": 2260,
-      "end_ms": 2980
+      "start_ms": 2240,
+      "end_ms": 2880
     },
     {
       "word": "Joyce",
-      "start_ms": 2980,
-      "end_ms": 3360
+      "start_ms": 2880,
+      "end_ms": 3240
     },
     {
       "word": "Marcus",
-      "start_ms": 3360,
-      "end_ms": 3840
+      "start_ms": 3240,
+      "end_ms": 3700
     },
     {
       "word": "and",
-      "start_ms": 3840,
-      "end_ms": 4120
+      "start_ms": 3800,
+      "end_ms": 4000
     },
     {
       "word": "her",
-      "start_ms": 4120,
-      "end_ms": 4260
+      "start_ms": 4000,
+      "end_ms": 4140
     },
     {
       "word": "colleague",
-      "start_ms": 4260,
-      "end_ms": 4660
+      "start_ms": 4140,
+      "end_ms": 4560
     },
     {
       "word": "Kent",
-      "start_ms": 4660,
-      "end_ms": 5020
+      "start_ms": 4560,
+      "end_ms": 5120
     },
     {
       "word": "Flannery",
-      "start_ms": 5020,
-      "end_ms": 5560
+      "start_ms": 5120,
+      "end_ms": 5720
     },
     {
       "word": "were",
-      "start_ms": 5560,
-      "end_ms": 5980
+      "start_ms": 5720,
+      "end_ms": 5940
     },
     {
       "word": "excavating",
-      "start_ms": 5980,
-      "end_ms": 6700
+      "start_ms": 5940,
+      "end_ms": 6640
     },
     {
       "word": "at",
-      "start_ms": 6700,
-      "end_ms": 6860
+      "start_ms": 6640,
+      "end_ms": 6800
     },
     {
       "word": "San",
-      "start_ms": 7000,
-      "end_ms": 7140
+      "start_ms": 6800,
+      "end_ms": 7060
     },
     {
-      "word": "Jos\u00e9",
-      "start_ms": 7140,
-      "end_ms": 7560
+      "word": "Hohzay",
+      "start_ms": 7060,
+      "end_ms": 7520
     },
     {
-      "word": "Mogote",
-      "start_ms": 7560,
+      "word": "Mogoteh",
+      "start_ms": 7520,
       "end_ms": 8340
     },
     {
       "word": "when",
-      "start_ms": 8480,
-      "end_ms": 8580
+      "start_ms": 8540,
+      "end_ms": 8640
     },
     {
       "word": "they",
-      "start_ms": 8580,
-      "end_ms": 8700
+      "start_ms": 8640,
+      "end_ms": 8800
     },
     {
       "word": "uncovered",
-      "start_ms": 8700,
-      "end_ms": 9140
+      "start_ms": 8800,
+      "end_ms": 9160
     },
     {
       "word": "a",
-      "start_ms": 9140,
-      "end_ms": 9380
+      "start_ms": 9160,
+      "end_ms": 9360
     },
     {
       "word": "carved",
-      "start_ms": 9520,
-      "end_ms": 9880
+      "start_ms": 9440,
+      "end_ms": 9760
     },
     {
       "word": "stone",
-      "start_ms": 9880,
-      "end_ms": 10280
+      "start_ms": 9760,
+      "end_ms": 10100
     },
     {
       "word": "slab",
-      "start_ms": 10280,
-      "end_ms": 10820
+      "start_ms": 10100,
+      "end_ms": 10560
     },
     {
       "word": "set",
-      "start_ms": 10820,
-      "end_ms": 11440
+      "start_ms": 10560,
+      "end_ms": 10920
     },
     {
       "word": "into",
-      "start_ms": 11440,
-      "end_ms": 11780
+      "start_ms": 10920,
+      "end_ms": 11160
     },
     {
       "word": "a",
-      "start_ms": 11780,
-      "end_ms": 11920
+      "start_ms": 11160,
+      "end_ms": 11300
     },
     {
       "word": "doorway",
-      "start_ms": 11920,
-      "end_ms": 12280
+      "start_ms": 11300,
+      "end_ms": 11620
     },
     {
       "word": "threshold.",
-      "start_ms": 12280,
-      "end_ms": 12980
+      "start_ms": 11620,
+      "end_ms": 12160
     }
   ],
   "ch02-107": [
@@ -9514,88 +9514,88 @@
   "ch02-131": [
     {
       "word": "San",
-      "start_ms": 480,
-      "end_ms": 480
+      "start_ms": 260,
+      "end_ms": 260
     },
     {
-      "word": "Jos\u00e9",
-      "start_ms": 480,
-      "end_ms": 1200
+      "word": "Hohzay",
+      "start_ms": 260,
+      "end_ms": 820
     },
     {
-      "word": "Mogote",
-      "start_ms": 1200,
-      "end_ms": 2080
+      "word": "Mogoteh",
+      "start_ms": 820,
+      "end_ms": 1640
     },
     {
       "word": "had",
-      "start_ms": 2300,
-      "end_ms": 2420
+      "start_ms": 1640,
+      "end_ms": 1740
     },
     {
       "word": "water,",
-      "start_ms": 2420,
-      "end_ms": 3000
+      "start_ms": 1740,
+      "end_ms": 2160
     },
     {
       "word": "flat",
-      "start_ms": 3300,
-      "end_ms": 3420
+      "start_ms": 2640,
+      "end_ms": 2700
     },
     {
       "word": "farmland,",
-      "start_ms": 3420,
-      "end_ms": 4320
+      "start_ms": 2700,
+      "end_ms": 3420
     },
     {
       "word": "established",
-      "start_ms": 4440,
-      "end_ms": 4940
+      "start_ms": 3920,
+      "end_ms": 4320
     },
     {
       "word": "trade",
-      "start_ms": 4940,
-      "end_ms": 5340
+      "start_ms": 4320,
+      "end_ms": 4660
     },
     {
       "word": "connections,",
-      "start_ms": 5340,
-      "end_ms": 5740
+      "start_ms": 4660,
+      "end_ms": 5380
     },
     {
       "word": "and",
-      "start_ms": 6400,
-      "end_ms": 6500
+      "start_ms": 5740,
+      "end_ms": 5820
     },
     {
       "word": "a",
-      "start_ms": 6500,
-      "end_ms": 6600
+      "start_ms": 5820,
+      "end_ms": 5880
     },
     {
       "word": "thousand",
-      "start_ms": 6600,
-      "end_ms": 7120
+      "start_ms": 5880,
+      "end_ms": 6280
     },
     {
       "word": "years",
-      "start_ms": 7120,
-      "end_ms": 7540
+      "start_ms": 6280,
+      "end_ms": 6600
     },
     {
       "word": "of",
-      "start_ms": 7540,
-      "end_ms": 7820
+      "start_ms": 6600,
+      "end_ms": 6840
     },
     {
       "word": "accumulated",
-      "start_ms": 7820,
-      "end_ms": 8320
+      "start_ms": 6840,
+      "end_ms": 7320
     },
     {
       "word": "infrastructure.",
-      "start_ms": 8320,
-      "end_ms": 9370
+      "start_ms": 7320,
+      "end_ms": 8119
     }
   ],
   "ch02-132": [
@@ -9830,63 +9830,63 @@
   "ch02-134": [
     {
       "word": "One",
-      "start_ms": 460,
-      "end_ms": 460
+      "start_ms": 240,
+      "end_ms": 240
     },
     {
       "word": "clue",
-      "start_ms": 460,
-      "end_ms": 800
+      "start_ms": 240,
+      "end_ms": 620
     },
     {
       "word": "comes",
-      "start_ms": 800,
-      "end_ms": 1200
+      "start_ms": 620,
+      "end_ms": 1040
     },
     {
       "word": "from",
-      "start_ms": 1200,
-      "end_ms": 1460
+      "start_ms": 1040,
+      "end_ms": 1340
     },
     {
       "word": "the",
-      "start_ms": 1460,
-      "end_ms": 1620
+      "start_ms": 1340,
+      "end_ms": 1460
     },
     {
       "word": "archaeological",
-      "start_ms": 1620,
-      "end_ms": 2140
+      "start_ms": 1460,
+      "end_ms": 1960
     },
     {
       "word": "record",
-      "start_ms": 2140,
-      "end_ms": 2900
+      "start_ms": 1960,
+      "end_ms": 2640
     },
     {
       "word": "at",
-      "start_ms": 2900,
-      "end_ms": 3280
+      "start_ms": 2640,
+      "end_ms": 2880
     },
     {
       "word": "San",
-      "start_ms": 3420,
-      "end_ms": 3560
+      "start_ms": 2960,
+      "end_ms": 3200
     },
     {
-      "word": "Jos\u00e9",
-      "start_ms": 3560,
-      "end_ms": 4080
+      "word": "Hohzay",
+      "start_ms": 3200,
+      "end_ms": 3760
     },
     {
-      "word": "Mogote",
-      "start_ms": 4080,
-      "end_ms": 4880
+      "word": "Mogoteh",
+      "start_ms": 3760,
+      "end_ms": 4380
     },
     {
       "word": "itself.",
-      "start_ms": 4880,
-      "end_ms": 5220
+      "start_ms": 4380,
+      "end_ms": 4800
     }
   ],
   "ch02-135": [
@@ -11193,33 +11193,33 @@
   "ch03-154": [
     {
       "word": "Some",
-      "start_ms": 360,
-      "end_ms": 360
+      "start_ms": 60,
+      "end_ms": 180
     },
     {
       "word": "came",
-      "start_ms": 360,
-      "end_ms": 700
+      "start_ms": 180,
+      "end_ms": 540
     },
     {
       "word": "from",
-      "start_ms": 700,
-      "end_ms": 1020
+      "start_ms": 540,
+      "end_ms": 940
     },
     {
       "word": "San",
-      "start_ms": 1020,
-      "end_ms": 1380
+      "start_ms": 940,
+      "end_ms": 1660
     },
     {
-      "word": "Jos\u00e9",
-      "start_ms": 1380,
-      "end_ms": 1960
+      "word": "Hohzay",
+      "start_ms": 1660,
+      "end_ms": 2580
     },
     {
-      "word": "Mogote.",
-      "start_ms": 1960,
-      "end_ms": 2660
+      "word": "Mogoteh.",
+      "start_ms": 2580,
+      "end_ms": 3440
     }
   ],
   "ch03-155": [
@@ -12164,73 +12164,73 @@
   "ch03-167": [
     {
       "word": "But",
-      "start_ms": 20,
-      "end_ms": 140
+      "start_ms": 0,
+      "end_ms": 120
     },
     {
       "word": "Tilcajete's",
-      "start_ms": 260,
-      "end_ms": 1000
+      "start_ms": 180,
+      "end_ms": 880
     },
     {
       "word": "resistance",
-      "start_ms": 1000,
-      "end_ms": 1440
+      "start_ms": 880,
+      "end_ms": 1320
     },
     {
       "word": "suggests",
-      "start_ms": 1440,
-      "end_ms": 2040
+      "start_ms": 1320,
+      "end_ms": 1880
     },
     {
       "word": "that",
-      "start_ms": 2040,
-      "end_ms": 2580
+      "start_ms": 1880,
+      "end_ms": 2320
     },
     {
       "word": "Monte",
-      "start_ms": 2580,
-      "end_ms": 2960
+      "start_ms": 2320,
+      "end_ms": 2640
     },
     {
       "word": "Alb\u00e1n's",
-      "start_ms": 2960,
-      "end_ms": 3640
+      "start_ms": 2640,
+      "end_ms": 3300
     },
     {
       "word": "founding",
-      "start_ms": 3640,
-      "end_ms": 4000
+      "start_ms": 3360,
+      "end_ms": 3680
     },
     {
       "word": "involved",
-      "start_ms": 4000,
-      "end_ms": 4520
+      "start_ms": 3680,
+      "end_ms": 4080
     },
     {
       "word": "coercion",
-      "start_ms": 4520,
-      "end_ms": 5180
+      "start_ms": 4080,
+      "end_ms": 4820
     },
     {
       "word": "as",
-      "start_ms": 5180,
-      "end_ms": 5600
+      "start_ms": 4820,
+      "end_ms": 5320
     },
     {
       "word": "well",
-      "start_ms": 5600,
-      "end_ms": 5760
+      "start_ms": 5320,
+      "end_ms": 5460
     },
     {
       "word": "as",
-      "start_ms": 5760,
-      "end_ms": 5980
+      "start_ms": 5460,
+      "end_ms": 5620
     },
     {
       "word": "cooperation.",
-      "start_ms": 5980,
-      "end_ms": 6820
+      "start_ms": 5620,
+      "end_ms": 6420
     }
   ],
   "ch03-168": [
@@ -12273,43 +12273,43 @@
   "ch03-169": [
     {
       "word": "Others",
-      "start_ms": 220,
-      "end_ms": 220
+      "start_ms": 260,
+      "end_ms": 300
     },
     {
       "word": "may",
-      "start_ms": 220,
-      "end_ms": 440
+      "start_ms": 300,
+      "end_ms": 520
     },
     {
       "word": "have",
-      "start_ms": 440,
-      "end_ms": 580
+      "start_ms": 520,
+      "end_ms": 660
     },
     {
       "word": "been",
-      "start_ms": 580,
-      "end_ms": 720
+      "start_ms": 680,
+      "end_ms": 800
     },
     {
       "word": "brought",
-      "start_ms": 720,
-      "end_ms": 980
+      "start_ms": 800,
+      "end_ms": 1040
     },
     {
       "word": "in",
-      "start_ms": 980,
-      "end_ms": 1260
+      "start_ms": 1040,
+      "end_ms": 1300
     },
     {
       "word": "by",
-      "start_ms": 1260,
-      "end_ms": 1520
+      "start_ms": 1300,
+      "end_ms": 1580
     },
     {
       "word": "force.",
-      "start_ms": 1520,
-      "end_ms": 2140
+      "start_ms": 1580,
+      "end_ms": 2180
     }
   ],
   "ch03-170": [
@@ -12794,63 +12794,63 @@
   "ch03-177": [
     {
       "word": "You",
-      "start_ms": 60,
-      "end_ms": 180
+      "start_ms": 40,
+      "end_ms": 140
     },
     {
       "word": "do",
-      "start_ms": 180,
-      "end_ms": 320
+      "start_ms": 140,
+      "end_ms": 280
     },
     {
       "word": "not",
-      "start_ms": 320,
-      "end_ms": 520
+      "start_ms": 280,
+      "end_ms": 460
     },
     {
       "word": "build",
-      "start_ms": 520,
-      "end_ms": 800
+      "start_ms": 460,
+      "end_ms": 840
     },
     {
       "word": "a",
-      "start_ms": 800,
-      "end_ms": 1040
+      "start_ms": 840,
+      "end_ms": 1080
     },
     {
       "word": "three-kilometer",
-      "start_ms": 1040,
-      "end_ms": 1640
+      "start_ms": 1080,
+      "end_ms": 1680
     },
     {
       "word": "defensive",
-      "start_ms": 2060,
-      "end_ms": 2300
+      "start_ms": 1760,
+      "end_ms": 2320
     },
     {
       "word": "wall",
-      "start_ms": 2300,
-      "end_ms": 2720
+      "start_ms": 2320,
+      "end_ms": 2660
     },
     {
       "word": "as",
-      "start_ms": 2720,
-      "end_ms": 3060
+      "start_ms": 2660,
+      "end_ms": 2960
     },
     {
       "word": "a",
-      "start_ms": 3060,
-      "end_ms": 3140
+      "start_ms": 2960,
+      "end_ms": 3060
     },
     {
       "word": "symbolic",
-      "start_ms": 3300,
-      "end_ms": 3300
+      "start_ms": 3060,
+      "end_ms": 3460
     },
     {
       "word": "gesture.",
-      "start_ms": 3300,
-      "end_ms": 3300
+      "start_ms": 3460,
+      "end_ms": 4040
     }
   ],
   "ch03-178": [
@@ -12941,102 +12941,102 @@
     {
       "word": "were",
       "start_ms": 500,
-      "end_ms": 880
+      "end_ms": 860
     },
     {
       "word": "sacred",
-      "start_ms": 880,
+      "start_ms": 860,
       "end_ms": 1360
     },
     {
       "word": "in",
       "start_ms": 1360,
-      "end_ms": 1680
+      "end_ms": 1600
     },
     {
       "word": "Mesoamerican",
-      "start_ms": 1680,
-      "end_ms": 2580
+      "start_ms": 1600,
+      "end_ms": 2480
     },
     {
       "word": "cosmology",
-      "start_ms": 2580,
-      "end_ms": 3320
+      "start_ms": 2480,
+      "end_ms": 3240
     },
     {
       "word": "\u2014",
-      "start_ms": 3320,
+      "start_ms": 3240,
+      "end_ms": 3740
+    },
+    {
+      "word": "the",
+      "start_ms": 3740,
       "end_ms": 3840
     },
     {
-      "word": "the",
-      "start_ms": 3920,
-      "end_ms": 4019
-    },
-    {
       "word": "dwelling",
-      "start_ms": 4019,
-      "end_ms": 4320
+      "start_ms": 3840,
+      "end_ms": 4120
     },
     {
       "word": "places",
-      "start_ms": 4320,
-      "end_ms": 4820
+      "start_ms": 4120,
+      "end_ms": 4560
     },
     {
       "word": "of",
-      "start_ms": 4820,
-      "end_ms": 5080
+      "start_ms": 4560,
+      "end_ms": 4800
     },
     {
       "word": "rain",
-      "start_ms": 5080,
-      "end_ms": 5300
+      "start_ms": 4800,
+      "end_ms": 5000
     },
     {
       "word": "gods,",
-      "start_ms": 5300,
+      "start_ms": 5000,
+      "end_ms": 5480
+    },
+    {
+      "word": "the",
+      "start_ms": 6040,
       "end_ms": 6040
     },
     {
-      "word": "the",
-      "start_ms": 6260,
-      "end_ms": 6320
-    },
-    {
       "word": "connection",
-      "start_ms": 6320,
-      "end_ms": 6660
+      "start_ms": 6100,
+      "end_ms": 6340
     },
     {
       "word": "points",
-      "start_ms": 6660,
-      "end_ms": 7080
+      "start_ms": 6340,
+      "end_ms": 6720
     },
     {
       "word": "between",
-      "start_ms": 7080,
-      "end_ms": 7500
+      "start_ms": 6720,
+      "end_ms": 7120
     },
     {
       "word": "the",
-      "start_ms": 7500,
-      "end_ms": 7680
+      "start_ms": 7120,
+      "end_ms": 7300
     },
     {
       "word": "earth",
-      "start_ms": 7680,
-      "end_ms": 8039
+      "start_ms": 7300,
+      "end_ms": 7520
     },
     {
       "word": "and",
-      "start_ms": 8080,
-      "end_ms": 8180
+      "start_ms": 7520,
+      "end_ms": 7720
     },
     {
       "word": "sky.",
-      "start_ms": 8180,
-      "end_ms": 8780
+      "start_ms": 7720,
+      "end_ms": 8220
     }
   ],
   "ch03-181": [
@@ -13751,32 +13751,32 @@
     {
       "word": "The",
       "start_ms": 80,
-      "end_ms": 140
+      "end_ms": 120
     },
     {
       "word": "astronomical",
-      "start_ms": 140,
-      "end_ms": 740
+      "start_ms": 120,
+      "end_ms": 700
     },
     {
       "word": "alignments",
-      "start_ms": 740,
-      "end_ms": 1560
+      "start_ms": 700,
+      "end_ms": 1500
     },
     {
       "word": "suggest",
-      "start_ms": 1560,
-      "end_ms": 1920
+      "start_ms": 1500,
+      "end_ms": 1860
     },
     {
       "word": "religious",
-      "start_ms": 1920,
-      "end_ms": 2500
+      "start_ms": 1860,
+      "end_ms": 2460
     },
     {
       "word": "purpose.",
-      "start_ms": 2500,
-      "end_ms": 3260
+      "start_ms": 2460,
+      "end_ms": 3240
     }
   ],
   "ch03-191": [
@@ -14429,168 +14429,168 @@
   "ch03-202": [
     {
       "word": "Whatever",
-      "start_ms": 60,
-      "end_ms": 340
+      "start_ms": 320,
+      "end_ms": 320
     },
     {
       "word": "forces",
-      "start_ms": 340,
-      "end_ms": 960
+      "start_ms": 320,
+      "end_ms": 860
     },
     {
       "word": "drove",
-      "start_ms": 960,
-      "end_ms": 1360
+      "start_ms": 860,
+      "end_ms": 1260
     },
     {
       "word": "the",
-      "start_ms": 1360,
-      "end_ms": 1580
+      "start_ms": 1260,
+      "end_ms": 1460
     },
     {
       "word": "creation",
-      "start_ms": 1580,
-      "end_ms": 2040
+      "start_ms": 1560,
+      "end_ms": 1900
     },
     {
       "word": "of",
-      "start_ms": 2040,
-      "end_ms": 2240
+      "start_ms": 1900,
+      "end_ms": 2080
     },
     {
       "word": "Monte",
-      "start_ms": 2260,
-      "end_ms": 2540
+      "start_ms": 2080,
+      "end_ms": 2360
     },
     {
       "word": "Alb\u00e1n,",
-      "start_ms": 2540,
-      "end_ms": 3220
+      "start_ms": 2360,
+      "end_ms": 2960
     },
     {
       "word": "they",
-      "start_ms": 3760,
-      "end_ms": 3820
+      "start_ms": 3420,
+      "end_ms": 3520
     },
     {
       "word": "were",
-      "start_ms": 3820,
-      "end_ms": 3960
+      "start_ms": 3520,
+      "end_ms": 3620
     },
     {
       "word": "powerful",
-      "start_ms": 3960,
-      "end_ms": 4480
+      "start_ms": 3620,
+      "end_ms": 4080
     },
     {
       "word": "enough",
-      "start_ms": 4480,
-      "end_ms": 4780
+      "start_ms": 4080,
+      "end_ms": 4380
     },
     {
       "word": "to",
-      "start_ms": 4780,
-      "end_ms": 5020
+      "start_ms": 4380,
+      "end_ms": 4620
     },
     {
       "word": "reshape",
-      "start_ms": 5020,
-      "end_ms": 5480
+      "start_ms": 4620,
+      "end_ms": 5060
     },
     {
       "word": "an",
-      "start_ms": 5480,
-      "end_ms": 5700
+      "start_ms": 5060,
+      "end_ms": 5300
     },
     {
       "word": "entire",
-      "start_ms": 5700,
-      "end_ms": 6100
+      "start_ms": 5300,
+      "end_ms": 5720
     },
     {
       "word": "region's",
-      "start_ms": 6100,
-      "end_ms": 6740
+      "start_ms": 5720,
+      "end_ms": 6280
     },
     {
       "word": "political",
-      "start_ms": 7040,
-      "end_ms": 7140
+      "start_ms": 6320,
+      "end_ms": 6660
     },
     {
       "word": "geography",
-      "start_ms": 7660,
-      "end_ms": 7760
+      "start_ms": 7160,
+      "end_ms": 7260
     },
     {
       "word": "in",
-      "start_ms": 7760,
-      "end_ms": 8039
+      "start_ms": 7260,
+      "end_ms": 7540
     },
     {
       "word": "what",
-      "start_ms": 8039,
-      "end_ms": 8200
+      "start_ms": 7540,
+      "end_ms": 7680
     },
     {
       "word": "amounts,",
-      "start_ms": 8200,
-      "end_ms": 8660
+      "start_ms": 7680,
+      "end_ms": 8080
     },
     {
       "word": "on",
-      "start_ms": 9240,
-      "end_ms": 9320
+      "start_ms": 8620,
+      "end_ms": 8720
     },
     {
       "word": "the",
-      "start_ms": 9320,
-      "end_ms": 9440
+      "start_ms": 8720,
+      "end_ms": 8820
     },
     {
       "word": "timescale",
-      "start_ms": 9440,
-      "end_ms": 10060
+      "start_ms": 8820,
+      "end_ms": 9380
     },
     {
       "word": "of",
-      "start_ms": 10060,
-      "end_ms": 10300
+      "start_ms": 9380,
+      "end_ms": 9540
     },
     {
       "word": "civilizations,",
-      "start_ms": 10300,
-      "end_ms": 10900
+      "start_ms": 9540,
+      "end_ms": 9940
     },
     {
       "word": "to",
-      "start_ms": 11660,
-      "end_ms": 11700
+      "start_ms": 10840,
+      "end_ms": 10900
     },
     {
       "word": "the",
-      "start_ms": 11700,
-      "end_ms": 11800
+      "start_ms": 10900,
+      "end_ms": 11000
     },
     {
       "word": "blink",
-      "start_ms": 11800,
-      "end_ms": 12020
+      "start_ms": 11000,
+      "end_ms": 11220
     },
     {
       "word": "of",
-      "start_ms": 12020,
-      "end_ms": 12260
+      "start_ms": 11220,
+      "end_ms": 11400
     },
     {
       "word": "an",
-      "start_ms": 12260,
-      "end_ms": 12420
+      "start_ms": 11400,
+      "end_ms": 11560
     },
     {
       "word": "eye.",
-      "start_ms": 12420,
-      "end_ms": 12860
+      "start_ms": 11560,
+      "end_ms": 11940
     }
   ],
   "ch04-204": [
@@ -16568,58 +16568,58 @@
   "ch04-225": [
     {
       "word": "The",
-      "start_ms": 60,
+      "start_ms": 40,
       "end_ms": 100
     },
     {
       "word": "dead",
       "start_ms": 100,
-      "end_ms": 400
+      "end_ms": 340
     },
     {
       "word": "were",
-      "start_ms": 400,
-      "end_ms": 620
+      "start_ms": 340,
+      "end_ms": 560
     },
     {
       "word": "buried",
-      "start_ms": 620,
-      "end_ms": 1000
+      "start_ms": 560,
+      "end_ms": 840
     },
     {
       "word": "with",
-      "start_ms": 1000,
-      "end_ms": 1280
+      "start_ms": 840,
+      "end_ms": 1060
     },
     {
       "word": "pottery,",
-      "start_ms": 1280,
-      "end_ms": 1840
+      "start_ms": 1060,
+      "end_ms": 1160
     },
     {
       "word": "jade",
-      "start_ms": 2520,
-      "end_ms": 2800
+      "start_ms": 1920,
+      "end_ms": 2240
     },
     {
       "word": "ornaments,",
-      "start_ms": 2800,
-      "end_ms": 3560
+      "start_ms": 2240,
+      "end_ms": 2940
     },
     {
       "word": "and",
-      "start_ms": 3560,
-      "end_ms": 3620
+      "start_ms": 3040,
+      "end_ms": 3120
     },
     {
       "word": "carved",
-      "start_ms": 3620,
-      "end_ms": 4019
+      "start_ms": 3120,
+      "end_ms": 3540
     },
     {
       "word": "bones.",
-      "start_ms": 4019,
-      "end_ms": 4700
+      "start_ms": 3540,
+      "end_ms": 4140
     }
   ],
   "ch04-226": [
@@ -18273,370 +18273,370 @@
   "ch04-245": [
     {
       "word": "Walk",
-      "start_ms": 260,
-      "end_ms": 440
+      "start_ms": 200,
+      "end_ms": 320
     },
     {
       "word": "through",
-      "start_ms": 440,
-      "end_ms": 820
+      "start_ms": 320,
+      "end_ms": 680
     },
     {
       "word": "the",
-      "start_ms": 820,
-      "end_ms": 1060
+      "start_ms": 680,
+      "end_ms": 900
     },
     {
       "word": "Benito",
-      "start_ms": 1060,
-      "end_ms": 1440
+      "start_ms": 900,
+      "end_ms": 1240
     },
     {
       "word": "Ju\u00e1rez",
-      "start_ms": 1440,
-      "end_ms": 1820
+      "start_ms": 1240,
+      "end_ms": 1720
     },
     {
       "word": "market",
-      "start_ms": 1820,
-      "end_ms": 2300
+      "start_ms": 1720,
+      "end_ms": 2200
     },
     {
       "word": "in",
-      "start_ms": 2300,
-      "end_ms": 2580
+      "start_ms": 2380,
+      "end_ms": 2480
     },
     {
       "word": "the",
-      "start_ms": 2580,
-      "end_ms": 2680
+      "start_ms": 2480,
+      "end_ms": 2560
     },
     {
       "word": "modern",
-      "start_ms": 2680,
-      "end_ms": 2960
+      "start_ms": 2560,
+      "end_ms": 2840
     },
     {
       "word": "city",
-      "start_ms": 2960,
-      "end_ms": 3360
+      "start_ms": 2840,
+      "end_ms": 3220
     },
     {
       "word": "of",
-      "start_ms": 3360,
-      "end_ms": 3640
+      "start_ms": 3220,
+      "end_ms": 3420
     },
     {
-      "word": "Oaxaca,",
-      "start_ms": 3640,
-      "end_ms": 3920
+      "word": "Wahaka,",
+      "start_ms": 3420,
+      "end_ms": 3780
     },
     {
       "word": "a",
-      "start_ms": 4700,
-      "end_ms": 4780
+      "start_ms": 4500,
+      "end_ms": 4500
     },
     {
       "word": "thirty-minute",
-      "start_ms": 4780,
-      "end_ms": 5360
+      "start_ms": 4600,
+      "end_ms": 5060
     },
     {
       "word": "drive",
-      "start_ms": 5360,
-      "end_ms": 5740
+      "start_ms": 5060,
+      "end_ms": 5420
     },
     {
       "word": "from",
-      "start_ms": 5740,
-      "end_ms": 6060
+      "start_ms": 5420,
+      "end_ms": 5760
     },
     {
       "word": "Monte",
-      "start_ms": 6060,
-      "end_ms": 6460
+      "start_ms": 5980,
+      "end_ms": 6080
     },
     {
       "word": "Alb\u00e1n,",
-      "start_ms": 6460,
-      "end_ms": 6960
+      "start_ms": 6080,
+      "end_ms": 6640
     },
     {
       "word": "and",
-      "start_ms": 7600,
-      "end_ms": 7700
+      "start_ms": 7160,
+      "end_ms": 7260
     },
     {
       "word": "you",
-      "start_ms": 7700,
-      "end_ms": 7860
+      "start_ms": 7260,
+      "end_ms": 7380
     },
     {
       "word": "will",
-      "start_ms": 7860,
-      "end_ms": 7980
+      "start_ms": 7380,
+      "end_ms": 7480
     },
     {
       "word": "find",
-      "start_ms": 7980,
-      "end_ms": 8340
+      "start_ms": 7480,
+      "end_ms": 7800
     },
     {
       "word": "chapulines",
-      "start_ms": 8340,
-      "end_ms": 9300
+      "start_ms": 7800,
+      "end_ms": 8660
     },
     {
       "word": "piled",
-      "start_ms": 9300,
-      "end_ms": 9800
+      "start_ms": 8660,
+      "end_ms": 9140
     },
     {
       "word": "in",
-      "start_ms": 9800,
-      "end_ms": 9880
+      "start_ms": 9140,
+      "end_ms": 9220
     },
     {
       "word": "baskets,",
-      "start_ms": 9880,
-      "end_ms": 10100
+      "start_ms": 9220,
+      "end_ms": 9580
     },
     {
       "word": "maguey",
-      "start_ms": 11020,
-      "end_ms": 11320
+      "start_ms": 10260,
+      "end_ms": 10560
     },
     {
       "word": "worms",
-      "start_ms": 11320,
-      "end_ms": 11660
+      "start_ms": 10560,
+      "end_ms": 10860
     },
     {
       "word": "sold",
-      "start_ms": 11660,
-      "end_ms": 12040
+      "start_ms": 10860,
+      "end_ms": 11240
     },
     {
       "word": "by",
-      "start_ms": 12040,
-      "end_ms": 12320
+      "start_ms": 11240,
+      "end_ms": 11480
     },
     {
       "word": "the",
-      "start_ms": 12320,
-      "end_ms": 12460
+      "start_ms": 11480,
+      "end_ms": 11620
     },
     {
       "word": "scoop,",
-      "start_ms": 12460,
-      "end_ms": 12820
+      "start_ms": 11620,
+      "end_ms": 11900
     },
     {
       "word": "fresh",
-      "start_ms": 13300,
-      "end_ms": 13460
+      "start_ms": 12600,
+      "end_ms": 12740
     },
     {
       "word": "tortillas",
-      "start_ms": 13460,
-      "end_ms": 14040
+      "start_ms": 12740,
+      "end_ms": 13280
     },
     {
       "word": "slapped",
-      "start_ms": 14040,
-      "end_ms": 14740
+      "start_ms": 13280,
+      "end_ms": 13740
     },
     {
       "word": "out",
-      "start_ms": 14740,
-      "end_ms": 15040
+      "start_ms": 13740,
+      "end_ms": 13980
     },
     {
       "word": "by",
-      "start_ms": 15040,
-      "end_ms": 15220
+      "start_ms": 13980,
+      "end_ms": 14160
     },
     {
       "word": "hand",
-      "start_ms": 15220,
-      "end_ms": 15600
+      "start_ms": 14160,
+      "end_ms": 14540
     },
     {
       "word": "and",
-      "start_ms": 15600,
-      "end_ms": 15840
+      "start_ms": 14540,
+      "end_ms": 14740
     },
     {
       "word": "cooked",
-      "start_ms": 15840,
-      "end_ms": 16100
+      "start_ms": 14740,
+      "end_ms": 14980
     },
     {
       "word": "on",
-      "start_ms": 16100,
-      "end_ms": 16440
+      "start_ms": 14980,
+      "end_ms": 15280
     },
     {
       "word": "clay",
-      "start_ms": 16440,
-      "end_ms": 16740
+      "start_ms": 15280,
+      "end_ms": 15540
     },
     {
       "word": "griddles,",
-      "start_ms": 16740,
-      "end_ms": 17180
+      "start_ms": 15540,
+      "end_ms": 16059
     },
     {
       "word": "and",
-      "start_ms": 17660,
-      "end_ms": 17760
+      "start_ms": 16440,
+      "end_ms": 16520
     },
     {
       "word": "seven",
-      "start_ms": 17760,
-      "end_ms": 18120
+      "start_ms": 16520,
+      "end_ms": 16820
     },
     {
       "word": "varieties",
-      "start_ms": 18120,
-      "end_ms": 18700
+      "start_ms": 16820,
+      "end_ms": 17360
     },
     {
       "word": "of",
-      "start_ms": 18700,
-      "end_ms": 19060
+      "start_ms": 17360,
+      "end_ms": 17720
     },
     {
       "word": "mole",
-      "start_ms": 19060,
-      "end_ms": 19420
+      "start_ms": 17720,
+      "end_ms": 18040
     },
     {
       "word": "sauce",
-      "start_ms": 19420,
-      "end_ms": 19660
+      "start_ms": 18040,
+      "end_ms": 18260
     },
     {
       "word": "that",
-      "start_ms": 19660,
-      "end_ms": 20040
+      "start_ms": 18260,
+      "end_ms": 18640
     },
     {
       "word": "trace",
-      "start_ms": 20040,
-      "end_ms": 20320
+      "start_ms": 18640,
+      "end_ms": 18860
     },
     {
       "word": "their",
-      "start_ms": 20320,
-      "end_ms": 20600
+      "start_ms": 18860,
+      "end_ms": 19120
     },
     {
       "word": "roots",
-      "start_ms": 20600,
-      "end_ms": 20840
+      "start_ms": 19120,
+      "end_ms": 19360
     },
     {
       "word": "back",
-      "start_ms": 20840,
-      "end_ms": 21220
+      "start_ms": 19360,
+      "end_ms": 19720
     },
     {
       "word": "centuries.",
-      "start_ms": 21220,
-      "end_ms": 22000
+      "start_ms": 19720,
+      "end_ms": 20340
     }
   ],
   "ch04-246": [
     {
       "word": "The",
-      "start_ms": 300,
-      "end_ms": 360
+      "start_ms": 0,
+      "end_ms": 100
     },
     {
       "word": "food",
-      "start_ms": 360,
-      "end_ms": 680
+      "start_ms": 240,
+      "end_ms": 400
     },
     {
       "word": "of",
-      "start_ms": 680,
-      "end_ms": 860
+      "start_ms": 400,
+      "end_ms": 600
     },
     {
       "word": "Monte",
-      "start_ms": 860,
-      "end_ms": 1160
+      "start_ms": 600,
+      "end_ms": 860
     },
     {
       "word": "Alb\u00e1n",
-      "start_ms": 1160,
-      "end_ms": 1780
+      "start_ms": 860,
+      "end_ms": 1420
     },
     {
       "word": "is",
-      "start_ms": 1780,
-      "end_ms": 2000
+      "start_ms": 1420,
+      "end_ms": 1660
     },
     {
       "word": "the",
-      "start_ms": 2000,
-      "end_ms": 2180
+      "start_ms": 1660,
+      "end_ms": 1800
     },
     {
       "word": "food",
-      "start_ms": 2180,
-      "end_ms": 2500
+      "start_ms": 1800,
+      "end_ms": 2000
     },
     {
       "word": "of",
-      "start_ms": 2500,
-      "end_ms": 2760
+      "start_ms": 2000,
+      "end_ms": 2200
     },
     {
-      "word": "Oaxaca",
-      "start_ms": 2760,
-      "end_ms": 3200
+      "word": "Wahaka",
+      "start_ms": 2200,
+      "end_ms": 2600
     },
     {
       "word": "today,",
-      "start_ms": 3200,
-      "end_ms": 3780
+      "start_ms": 2600,
+      "end_ms": 3100
     },
     {
       "word": "largely",
-      "start_ms": 4340,
-      "end_ms": 4700
+      "start_ms": 3700,
+      "end_ms": 3980
     },
     {
       "word": "unchanged",
-      "start_ms": 4700,
-      "end_ms": 5560
+      "start_ms": 3980,
+      "end_ms": 4660
     },
     {
       "word": "in",
-      "start_ms": 5560,
-      "end_ms": 5720
+      "start_ms": 4660,
+      "end_ms": 4940
     },
     {
       "word": "over",
-      "start_ms": 5720,
-      "end_ms": 6020
+      "start_ms": 4940,
+      "end_ms": 5140
     },
     {
       "word": "two",
-      "start_ms": 6020,
-      "end_ms": 6280
+      "start_ms": 5140,
+      "end_ms": 5360
     },
     {
       "word": "thousand",
-      "start_ms": 6280,
-      "end_ms": 6840
+      "start_ms": 5360,
+      "end_ms": 5760
     },
     {
       "word": "years.",
-      "start_ms": 6840,
-      "end_ms": 7460
+      "start_ms": 5760,
+      "end_ms": 6340
     }
   ],
   "ch04-247": [
@@ -19693,68 +19693,68 @@
   "ch04-261": [
     {
       "word": "It",
-      "start_ms": 80,
+      "start_ms": 40,
       "end_ms": 160
     },
     {
       "word": "was",
-      "start_ms": 200,
-      "end_ms": 320
+      "start_ms": 180,
+      "end_ms": 300
     },
     {
       "word": "ritual,",
-      "start_ms": 320,
-      "end_ms": 620
+      "start_ms": 300,
+      "end_ms": 600
     },
     {
       "word": "political",
-      "start_ms": 1240,
-      "end_ms": 1560
+      "start_ms": 1120,
+      "end_ms": 1460
     },
     {
       "word": "theater,",
-      "start_ms": 1560,
-      "end_ms": 2640
+      "start_ms": 1460,
+      "end_ms": 2320
     },
     {
       "word": "and",
-      "start_ms": 2640,
-      "end_ms": 2920
+      "start_ms": 2320,
+      "end_ms": 2380
     },
     {
       "word": "possibly",
-      "start_ms": 2920,
-      "end_ms": 3400
+      "start_ms": 2380,
+      "end_ms": 2860
     },
     {
       "word": "astronomical",
-      "start_ms": 3400,
-      "end_ms": 4080
+      "start_ms": 2860,
+      "end_ms": 3520
     },
     {
       "word": "allegory",
-      "start_ms": 4080,
-      "end_ms": 4880
+      "start_ms": 3520,
+      "end_ms": 4300
     },
     {
       "word": "\u2014",
-      "start_ms": 5100,
-      "end_ms": 5200
+      "start_ms": 4300,
+      "end_ms": 4780
     },
     {
       "word": "all",
-      "start_ms": 5200,
-      "end_ms": 5340
+      "start_ms": 4800,
+      "end_ms": 4900
     },
     {
       "word": "at",
-      "start_ms": 5340,
-      "end_ms": 5520
+      "start_ms": 4900,
+      "end_ms": 5060
     },
     {
       "word": "once.",
-      "start_ms": 5520,
-      "end_ms": 5940
+      "start_ms": 5060,
+      "end_ms": 5400
     }
   ],
   "ch04-262": [
@@ -21032,58 +21032,58 @@
   "ch04-283": [
     {
       "word": "The",
-      "start_ms": 60,
+      "start_ms": 0,
       "end_ms": 120
     },
     {
       "word": "three",
-      "start_ms": 180,
-      "end_ms": 400
+      "start_ms": 200,
+      "end_ms": 340
     },
     {
       "word": "valleys",
-      "start_ms": 400,
-      "end_ms": 780
+      "start_ms": 340,
+      "end_ms": 660
     },
     {
       "word": "spread",
-      "start_ms": 780,
-      "end_ms": 1200
+      "start_ms": 660,
+      "end_ms": 1060
     },
     {
       "word": "out",
-      "start_ms": 1200,
-      "end_ms": 1420
+      "start_ms": 1060,
+      "end_ms": 1240
     },
     {
       "word": "below",
-      "start_ms": 1420,
-      "end_ms": 1700
+      "start_ms": 1240,
+      "end_ms": 1540
     },
     {
       "word": "you",
-      "start_ms": 1700,
-      "end_ms": 2060
+      "start_ms": 1540,
+      "end_ms": 1840
     },
     {
       "word": "like",
-      "start_ms": 2520,
-      "end_ms": 2620
+      "start_ms": 1840,
+      "end_ms": 2200
     },
     {
       "word": "an",
-      "start_ms": 2620,
-      "end_ms": 2800
+      "start_ms": 2200,
+      "end_ms": 2360
     },
     {
       "word": "open",
-      "start_ms": 2800,
-      "end_ms": 3080
+      "start_ms": 2360,
+      "end_ms": 2600
     },
     {
       "word": "hand.",
-      "start_ms": 3080,
-      "end_ms": 3660
+      "start_ms": 2600,
+      "end_ms": 3040
     }
   ],
   "ch04-284": [
@@ -21300,58 +21300,58 @@
   "ch04-287": [
     {
       "word": "The",
-      "start_ms": 100,
+      "start_ms": 0,
       "end_ms": 100
     },
     {
       "word": "Danzantes",
       "start_ms": 100,
-      "end_ms": 740
+      "end_ms": 580
     },
     {
       "word": "still",
-      "start_ms": 740,
-      "end_ms": 1140
+      "start_ms": 580,
+      "end_ms": 1000
     },
     {
       "word": "stare",
-      "start_ms": 1140,
-      "end_ms": 1520
+      "start_ms": 1000,
+      "end_ms": 1340
     },
     {
       "word": "from",
-      "start_ms": 1520,
-      "end_ms": 1760
+      "start_ms": 1340,
+      "end_ms": 1560
     },
     {
       "word": "the",
-      "start_ms": 1760,
-      "end_ms": 1900
+      "start_ms": 1560,
+      "end_ms": 1700
     },
     {
       "word": "walls",
-      "start_ms": 1900,
-      "end_ms": 2200
+      "start_ms": 1700,
+      "end_ms": 1940
     },
     {
       "word": "with",
-      "start_ms": 2200,
-      "end_ms": 2400
+      "start_ms": 1940,
+      "end_ms": 2180
     },
     {
       "word": "their",
-      "start_ms": 2460,
-      "end_ms": 2560
+      "start_ms": 2180,
+      "end_ms": 2320
     },
     {
       "word": "closed",
-      "start_ms": 2560,
-      "end_ms": 2880
+      "start_ms": 2320,
+      "end_ms": 2620
     },
     {
       "word": "eyes.",
-      "start_ms": 2880,
-      "end_ms": 3580
+      "start_ms": 2620,
+      "end_ms": 2980
     }
   ],
   "ch04-288": [
@@ -21786,7 +21786,7 @@
   "ch05-297": [
     {
       "word": "A",
-      "start_ms": 120,
+      "start_ms": 40,
       "end_ms": 120
     },
     {
@@ -21802,32 +21802,32 @@
     {
       "word": "what",
       "start_ms": 820,
-      "end_ms": 1100
+      "end_ms": 1160
     },
     {
       "word": "appears",
-      "start_ms": 1100,
-      "end_ms": 1420
+      "start_ms": 1160,
+      "end_ms": 1520
     },
     {
       "word": "to",
-      "start_ms": 1420,
-      "end_ms": 1660
+      "start_ms": 1520,
+      "end_ms": 1740
     },
     {
       "word": "be",
-      "start_ms": 1660,
-      "end_ms": 1780
+      "start_ms": 1740,
+      "end_ms": 1860
     },
     {
       "word": "genital",
-      "start_ms": 1780,
-      "end_ms": 2280
+      "start_ms": 1860,
+      "end_ms": 2380
     },
     {
       "word": "mutilation.",
-      "start_ms": 2280,
-      "end_ms": 3020
+      "start_ms": 2380,
+      "end_ms": 3100
     }
   ],
   "ch05-298": [
@@ -22547,58 +22547,58 @@
   "ch05-310": [
     {
       "word": "The",
-      "start_ms": 60,
-      "end_ms": 120
+      "start_ms": 100,
+      "end_ms": 100
     },
     {
       "word": "figures",
-      "start_ms": 200,
-      "end_ms": 400
+      "start_ms": 100,
+      "end_ms": 340
     },
     {
       "word": "vary",
-      "start_ms": 400,
-      "end_ms": 760
+      "start_ms": 340,
+      "end_ms": 680
     },
     {
       "word": "in",
-      "start_ms": 760,
+      "start_ms": 680,
       "end_ms": 1020
     },
     {
       "word": "size",
       "start_ms": 1020,
-      "end_ms": 1360
+      "end_ms": 1380
     },
     {
       "word": "and",
-      "start_ms": 1360,
+      "start_ms": 1380,
       "end_ms": 1680
     },
     {
       "word": "detail,",
       "start_ms": 1680,
-      "end_ms": 2180
+      "end_ms": 2100
     },
     {
       "word": "but",
-      "start_ms": 2500,
-      "end_ms": 2580
+      "start_ms": 2600,
+      "end_ms": 2680
     },
     {
       "word": "certain",
-      "start_ms": 2580,
-      "end_ms": 2980
+      "start_ms": 2700,
+      "end_ms": 3000
     },
     {
       "word": "elements",
-      "start_ms": 2980,
-      "end_ms": 3340
+      "start_ms": 3000,
+      "end_ms": 3300
     },
     {
       "word": "recur.",
-      "start_ms": 3340,
-      "end_ms": 4019
+      "start_ms": 3300,
+      "end_ms": 3920
     }
   ],
   "ch05-311": [
@@ -23151,138 +23151,148 @@
   "ch05-317": [
     {
       "word": "The",
-      "start_ms": 120,
+      "start_ms": 80,
       "end_ms": 120
     },
     {
       "word": "Danzantes",
-      "start_ms": 160,
-      "end_ms": 760
+      "start_ms": 120,
+      "end_ms": 640
     },
     {
       "word": "are",
-      "start_ms": 760,
-      "end_ms": 1020
+      "start_ms": 640,
+      "end_ms": 840
     },
     {
       "word": "among",
-      "start_ms": 1020,
-      "end_ms": 1240
+      "start_ms": 840,
+      "end_ms": 1060
     },
     {
       "word": "the",
-      "start_ms": 1240,
-      "end_ms": 1460
+      "start_ms": 1060,
+      "end_ms": 1260
     },
     {
       "word": "oldest",
-      "start_ms": 1460,
-      "end_ms": 1860
+      "start_ms": 1320,
+      "end_ms": 1580
     },
     {
       "word": "carvings",
-      "start_ms": 1860,
-      "end_ms": 2540
+      "start_ms": 1580,
+      "end_ms": 2220
     },
     {
       "word": "at",
-      "start_ms": 2540,
-      "end_ms": 2620
+      "start_ms": 2220,
+      "end_ms": 2300
     },
     {
       "word": "Monte",
-      "start_ms": 2680,
-      "end_ms": 2920
+      "start_ms": 2300,
+      "end_ms": 2580
     },
     {
       "word": "Alb\u00e1n,",
-      "start_ms": 2920,
-      "end_ms": 3570
+      "start_ms": 2580,
+      "end_ms": 3230
     },
     {
       "word": "dating",
-      "start_ms": 3900,
-      "end_ms": 3980
+      "start_ms": 3680,
+      "end_ms": 3800
     },
     {
       "word": "to",
-      "start_ms": 3980,
-      "end_ms": 4200
+      "start_ms": 3800,
+      "end_ms": 4000
     },
     {
       "word": "Period",
-      "start_ms": 4200,
-      "end_ms": 4540
+      "start_ms": 4000,
+      "end_ms": 4260
     },
     {
-      "word": "I",
-      "start_ms": 4540,
-      "end_ms": 4980
+      "word": "one",
+      "start_ms": 4260,
+      "end_ms": 4660
     },
     {
       "word": "\u2014",
-      "start_ms": 5180,
-      "end_ms": 5280
+      "start_ms": 4660,
+      "end_ms": 5080
     },
     {
       "word": "roughly",
-      "start_ms": 5280,
-      "end_ms": 5520
+      "start_ms": 5120,
+      "end_ms": 5360
     },
     {
-      "word": "500",
-      "start_ms": 5520,
-      "end_ms": 6220
+      "word": "five",
+      "start_ms": 5360,
+      "end_ms": 5660
+    },
+    {
+      "word": "hundred",
+      "start_ms": 5660,
+      "end_ms": 6000
     },
     {
       "word": "to",
-      "start_ms": 6220,
-      "end_ms": 6440
+      "start_ms": 6000,
+      "end_ms": 6220
     },
     {
-      "word": "100",
-      "start_ms": 6440,
-      "end_ms": 6860
+      "word": "one",
+      "start_ms": 6220,
+      "end_ms": 6360
+    },
+    {
+      "word": "hundred",
+      "start_ms": 6360,
+      "end_ms": 6620
     },
     {
       "word": "BCE,",
-      "start_ms": 6860,
-      "end_ms": 7500
+      "start_ms": 6620,
+      "end_ms": 7000
     },
     {
       "word": "the",
-      "start_ms": 7740,
-      "end_ms": 7860
+      "start_ms": 7400,
+      "end_ms": 7480
     },
     {
       "word": "first",
-      "start_ms": 8000,
-      "end_ms": 8100
+      "start_ms": 7580,
+      "end_ms": 7680
     },
     {
       "word": "centuries",
-      "start_ms": 8100,
-      "end_ms": 8580
+      "start_ms": 7680,
+      "end_ms": 8119
     },
     {
       "word": "of",
-      "start_ms": 8580,
-      "end_ms": 8880
+      "start_ms": 8119,
+      "end_ms": 8360
     },
     {
       "word": "the",
-      "start_ms": 8880,
-      "end_ms": 9020
+      "start_ms": 8360,
+      "end_ms": 8480
     },
     {
       "word": "city's",
-      "start_ms": 9020,
-      "end_ms": 9200
+      "start_ms": 8480,
+      "end_ms": 8860
     },
     {
       "word": "existence.",
-      "start_ms": 9200,
-      "end_ms": 9280
+      "start_ms": 8860,
+      "end_ms": 9160
     }
   ],
   "ch05-318": [
@@ -28654,73 +28664,73 @@
   "ch06-382": [
     {
       "word": "What",
-      "start_ms": 180,
-      "end_ms": 200
+      "start_ms": 80,
+      "end_ms": 220
     },
     {
       "word": "is",
-      "start_ms": 200,
-      "end_ms": 360
+      "start_ms": 220,
+      "end_ms": 380
     },
     {
       "word": "carved",
-      "start_ms": 360,
-      "end_ms": 740
+      "start_ms": 380,
+      "end_ms": 840
     },
     {
       "word": "into",
-      "start_ms": 860,
-      "end_ms": 1020
+      "start_ms": 840,
+      "end_ms": 1200
     },
     {
       "word": "the",
-      "start_ms": 1020,
-      "end_ms": 1160
+      "start_ms": 1280,
+      "end_ms": 1380
     },
     {
       "word": "building's",
-      "start_ms": 1160,
-      "end_ms": 1660
+      "start_ms": 1380,
+      "end_ms": 1960
     },
     {
       "word": "exterior",
-      "start_ms": 1720,
-      "end_ms": 2140
+      "start_ms": 1960,
+      "end_ms": 2440
     },
     {
       "word": "walls,",
-      "start_ms": 2140,
-      "end_ms": 2880
+      "start_ms": 2440,
+      "end_ms": 3200
     },
     {
       "word": "however,",
-      "start_ms": 2880,
-      "end_ms": 3300
+      "start_ms": 3260,
+      "end_ms": 3700
     },
     {
       "word": "is",
-      "start_ms": 3700,
-      "end_ms": 3760
+      "start_ms": 4140,
+      "end_ms": 4180
     },
     {
       "word": "much",
-      "start_ms": 3760,
-      "end_ms": 3960
+      "start_ms": 4180,
+      "end_ms": 4380
     },
     {
       "word": "easier",
-      "start_ms": 3960,
-      "end_ms": 4200
+      "start_ms": 4380,
+      "end_ms": 4940
     },
     {
       "word": "to",
-      "start_ms": 4200,
-      "end_ms": 4200
+      "start_ms": 4940,
+      "end_ms": 5120
     },
     {
       "word": "discuss.",
-      "start_ms": 4200,
-      "end_ms": 4280
+      "start_ms": 5120,
+      "end_ms": 5620
     }
   ],
   "ch06-383": [
@@ -29141,17 +29151,17 @@
   "ch06-388": [
     {
       "word": "At",
-      "start_ms": 40,
+      "start_ms": 20,
       "end_ms": 140
     },
     {
       "word": "the",
-      "start_ms": 160,
-      "end_ms": 260
+      "start_ms": 140,
+      "end_ms": 280
     },
     {
       "word": "center",
-      "start_ms": 260,
+      "start_ms": 320,
       "end_ms": 620
     },
     {
@@ -29162,77 +29172,77 @@
     {
       "word": "a",
       "start_ms": 900,
-      "end_ms": 1040
+      "end_ms": 1020
     },
     {
       "word": "\"hill\"",
-      "start_ms": 1040,
+      "start_ms": 1020,
       "end_ms": 1660
     },
     {
       "word": "or",
       "start_ms": 1720,
-      "end_ms": 1800
+      "end_ms": 1720
     },
     {
       "word": "\"place\"",
-      "start_ms": 1800,
-      "end_ms": 2360
+      "start_ms": 1720,
+      "end_ms": 2300
     },
     {
       "word": "sign",
-      "start_ms": 2520,
-      "end_ms": 2620
+      "start_ms": 2560,
+      "end_ms": 2740
     },
     {
       "word": "\u2014",
-      "start_ms": 2620,
-      "end_ms": 2960
+      "start_ms": 2740,
+      "end_ms": 3360
     },
     {
       "word": "a",
-      "start_ms": 2960,
-      "end_ms": 3060
+      "start_ms": 3420,
+      "end_ms": 3520
     },
     {
       "word": "stylized",
-      "start_ms": 3060,
-      "end_ms": 3660
+      "start_ms": 3520,
+      "end_ms": 4220
     },
     {
       "word": "mountain",
-      "start_ms": 3660,
-      "end_ms": 3920
+      "start_ms": 4280,
+      "end_ms": 4580
     },
     {
       "word": "shape",
-      "start_ms": 3920,
-      "end_ms": 4240
+      "start_ms": 4580,
+      "end_ms": 4980
     },
     {
       "word": "that",
-      "start_ms": 4240,
-      "end_ms": 4460
+      "start_ms": 4980,
+      "end_ms": 5240
     },
     {
       "word": "represents",
-      "start_ms": 4460,
-      "end_ms": 4880
+      "start_ms": 5240,
+      "end_ms": 5700
     },
     {
       "word": "a",
-      "start_ms": 4880,
-      "end_ms": 5160
+      "start_ms": 5700,
+      "end_ms": 5980
     },
     {
       "word": "specific",
-      "start_ms": 5160,
-      "end_ms": 5600
+      "start_ms": 5980,
+      "end_ms": 6440
     },
     {
       "word": "location.",
-      "start_ms": 5600,
-      "end_ms": 6280
+      "start_ms": 6440,
+      "end_ms": 7020
     }
   ],
   "ch06-389": [
@@ -32512,43 +32522,43 @@
   "ch07-427": [
     {
       "word": "English,",
-      "start_ms": 260,
-      "end_ms": 880
+      "start_ms": 220,
+      "end_ms": 860
     },
     {
       "word": "Arabic,",
-      "start_ms": 900,
-      "end_ms": 1560
+      "start_ms": 860,
+      "end_ms": 1320
     },
     {
       "word": "Greek,",
       "start_ms": 1600,
-      "end_ms": 2100
+      "end_ms": 2060
     },
     {
       "word": "and",
-      "start_ms": 2100,
-      "end_ms": 2200
+      "start_ms": 2060,
+      "end_ms": 2160
     },
     {
       "word": "Russian",
-      "start_ms": 2200,
-      "end_ms": 2520
+      "start_ms": 2160,
+      "end_ms": 2480
     },
     {
       "word": "all",
-      "start_ms": 2520,
-      "end_ms": 2900
+      "start_ms": 2480,
+      "end_ms": 2960
     },
     {
       "word": "use",
-      "start_ms": 2900,
-      "end_ms": 3200
+      "start_ms": 2960,
+      "end_ms": 3340
     },
     {
       "word": "alphabets.",
-      "start_ms": 3200,
-      "end_ms": 3980
+      "start_ms": 3340,
+      "end_ms": 3940
     }
   ],
   "ch07-428": [
@@ -35907,213 +35917,213 @@
   "ch07-462": [
     {
       "word": "And",
-      "start_ms": 220,
+      "start_ms": 80,
       "end_ms": 440
     },
     {
       "word": "while",
-      "start_ms": 440,
+      "start_ms": 500,
       "end_ms": 680
     },
     {
       "word": "the",
       "start_ms": 680,
-      "end_ms": 920
+      "end_ms": 880
     },
     {
       "word": "Zapotec",
-      "start_ms": 920,
-      "end_ms": 1580
+      "start_ms": 880,
+      "end_ms": 1500
     },
     {
       "word": "language",
-      "start_ms": 1580,
-      "end_ms": 1960
+      "start_ms": 1500,
+      "end_ms": 1840
     },
     {
       "word": "is",
-      "start_ms": 1960,
-      "end_ms": 2260
+      "start_ms": 1840,
+      "end_ms": 2140
     },
     {
       "word": "very",
-      "start_ms": 2260,
-      "end_ms": 2660
+      "start_ms": 2140,
+      "end_ms": 2420
     },
     {
       "word": "much",
-      "start_ms": 2660,
-      "end_ms": 2900
+      "start_ms": 2420,
+      "end_ms": 2680
     },
     {
       "word": "alive",
-      "start_ms": 2900,
-      "end_ms": 3460
+      "start_ms": 2680,
+      "end_ms": 3260
     },
     {
       "word": "\u2014",
-      "start_ms": 3460,
-      "end_ms": 3880
+      "start_ms": 3260,
+      "end_ms": 3660
     },
     {
       "word": "spoken",
-      "start_ms": 3980,
-      "end_ms": 4300
+      "start_ms": 3960,
+      "end_ms": 4059
     },
     {
       "word": "by",
-      "start_ms": 4300,
-      "end_ms": 4560
+      "start_ms": 4059,
+      "end_ms": 4300
     },
     {
       "word": "over",
-      "start_ms": 4560,
-      "end_ms": 4920
+      "start_ms": 4300,
+      "end_ms": 4580
     },
     {
       "word": "five",
-      "start_ms": 4920,
-      "end_ms": 5260
+      "start_ms": 4580,
+      "end_ms": 4820
     },
     {
       "word": "hundred",
-      "start_ms": 5260,
-      "end_ms": 5800
+      "start_ms": 4820,
+      "end_ms": 5220
     },
     {
       "word": "thousand",
-      "start_ms": 5800,
-      "end_ms": 6260
+      "start_ms": 5220,
+      "end_ms": 5600
     },
     {
       "word": "people",
-      "start_ms": 6260,
-      "end_ms": 6580
+      "start_ms": 5600,
+      "end_ms": 5920
     },
     {
       "word": "today",
-      "start_ms": 6580,
-      "end_ms": 6980
+      "start_ms": 6100,
+      "end_ms": 6320
     },
     {
       "word": "in",
-      "start_ms": 6980,
-      "end_ms": 7460
+      "start_ms": 6320,
+      "end_ms": 6660
     },
     {
       "word": "more",
-      "start_ms": 7460,
-      "end_ms": 7660
+      "start_ms": 6660,
+      "end_ms": 6880
     },
     {
       "word": "than",
-      "start_ms": 7660,
-      "end_ms": 7840
+      "start_ms": 6880,
+      "end_ms": 7040
     },
     {
       "word": "fifty",
-      "start_ms": 7840,
-      "end_ms": 8300
+      "start_ms": 7040,
+      "end_ms": 7400
     },
     {
       "word": "regional",
-      "start_ms": 8300,
-      "end_ms": 8840
+      "start_ms": 7480,
+      "end_ms": 7960
     },
     {
       "word": "variants",
-      "start_ms": 8840,
-      "end_ms": 9340
+      "start_ms": 7960,
+      "end_ms": 8480
     },
     {
       "word": "across",
-      "start_ms": 9340,
-      "end_ms": 9700
+      "start_ms": 8480,
+      "end_ms": 8840
     },
     {
       "word": "the",
-      "start_ms": 9700,
-      "end_ms": 9960
+      "start_ms": 8840,
+      "end_ms": 9080
     },
     {
       "word": "mountains",
-      "start_ms": 9960,
-      "end_ms": 10320
+      "start_ms": 9080,
+      "end_ms": 9440
     },
     {
       "word": "and",
-      "start_ms": 10320,
-      "end_ms": 10580
+      "start_ms": 9440,
+      "end_ms": 9740
     },
     {
       "word": "valleys",
-      "start_ms": 10580,
-      "end_ms": 10960
+      "start_ms": 9740,
+      "end_ms": 10080
     },
     {
       "word": "of",
-      "start_ms": 10960,
-      "end_ms": 11220
+      "start_ms": 10080,
+      "end_ms": 10320
     },
     {
-      "word": "Oaxaca",
-      "start_ms": 11220,
-      "end_ms": 11680
+      "word": "Wahaka",
+      "start_ms": 10320,
+      "end_ms": 10820
     },
     {
       "word": "\u2014",
-      "start_ms": 11680,
-      "end_ms": 12140
+      "start_ms": 10820,
+      "end_ms": 11360
     },
     {
       "word": "the",
-      "start_ms": 12240,
-      "end_ms": 12340
+      "start_ms": 11560,
+      "end_ms": 11660
     },
     {
       "word": "ancient",
-      "start_ms": 12340,
-      "end_ms": 12780
+      "start_ms": 11660,
+      "end_ms": 12000
     },
     {
       "word": "language",
-      "start_ms": 12780,
-      "end_ms": 13280
+      "start_ms": 12000,
+      "end_ms": 12520
     },
     {
       "word": "may",
-      "start_ms": 13280,
-      "end_ms": 13560
+      "start_ms": 12520,
+      "end_ms": 12780
     },
     {
       "word": "differ",
-      "start_ms": 13560,
-      "end_ms": 13880
+      "start_ms": 12780,
+      "end_ms": 13060
     },
     {
       "word": "significantly",
-      "start_ms": 13880,
-      "end_ms": 14640
+      "start_ms": 13060,
+      "end_ms": 13740
     },
     {
       "word": "from",
-      "start_ms": 14940,
-      "end_ms": 15040
+      "start_ms": 13740,
+      "end_ms": 14160
     },
     {
       "word": "any",
-      "start_ms": 15040,
-      "end_ms": 15320
+      "start_ms": 14160,
+      "end_ms": 14480
     },
     {
       "word": "modern",
-      "start_ms": 15320,
-      "end_ms": 15680
+      "start_ms": 14480,
+      "end_ms": 14820
     },
     {
       "word": "variety.",
-      "start_ms": 15680,
-      "end_ms": 16160
+      "start_ms": 14820,
+      "end_ms": 15620
     }
   ],
   "ch07-463": [
@@ -38038,42 +38048,42 @@
     {
       "word": "Etruscan,",
       "start_ms": 360,
-      "end_ms": 1140
+      "end_ms": 1080
     },
     {
       "word": "the",
-      "start_ms": 1640,
-      "end_ms": 1740
+      "start_ms": 1600,
+      "end_ms": 1700
     },
     {
       "word": "language",
-      "start_ms": 1740,
-      "end_ms": 2080
+      "start_ms": 1700,
+      "end_ms": 2060
     },
     {
       "word": "it",
-      "start_ms": 2080,
-      "end_ms": 2400
+      "start_ms": 2060,
+      "end_ms": 2300
     },
     {
       "word": "encodes",
-      "start_ms": 2400,
-      "end_ms": 3020
+      "start_ms": 2300,
+      "end_ms": 2860
     },
     {
       "word": "has",
-      "start_ms": 3020,
-      "end_ms": 3220
+      "start_ms": 2860,
+      "end_ms": 3060
     },
     {
       "word": "living",
-      "start_ms": 3300,
-      "end_ms": 3300
+      "start_ms": 3060,
+      "end_ms": 3380
     },
     {
       "word": "descendants.",
-      "start_ms": 3300,
-      "end_ms": 3300
+      "start_ms": 3380,
+      "end_ms": 4080
     }
   ],
   "ch07-483": [
@@ -38300,123 +38310,123 @@
   "ch08-487": [
     {
       "word": "When",
-      "start_ms": 220,
-      "end_ms": 360
+      "start_ms": 60,
+      "end_ms": 160
     },
     {
       "word": "the",
-      "start_ms": 360,
-      "end_ms": 520
+      "start_ms": 160,
+      "end_ms": 260
     },
     {
       "word": "Spanish",
-      "start_ms": 520,
-      "end_ms": 1040
+      "start_ms": 260,
+      "end_ms": 580
     },
     {
       "word": "conquistadors",
-      "start_ms": 1040,
-      "end_ms": 2040
+      "start_ms": 580,
+      "end_ms": 1300
     },
     {
       "word": "arrived",
-      "start_ms": 2040,
-      "end_ms": 2620
+      "start_ms": 1300,
+      "end_ms": 1760
     },
     {
       "word": "in",
-      "start_ms": 2620,
-      "end_ms": 2920
+      "start_ms": 1760,
+      "end_ms": 2020
     },
     {
       "word": "the",
-      "start_ms": 2920,
-      "end_ms": 3020
+      "start_ms": 2020,
+      "end_ms": 2120
     },
     {
       "word": "Valley",
-      "start_ms": 3020,
-      "end_ms": 3380
+      "start_ms": 2120,
+      "end_ms": 2340
     },
     {
       "word": "of",
-      "start_ms": 3380,
-      "end_ms": 3580
+      "start_ms": 2340,
+      "end_ms": 2520
     },
     {
-      "word": "Oaxaca",
-      "start_ms": 3620,
-      "end_ms": 4059
+      "word": "Wahaka",
+      "start_ms": 2520,
+      "end_ms": 2980
     },
     {
       "word": "in",
-      "start_ms": 4160,
-      "end_ms": 4260
+      "start_ms": 2980,
+      "end_ms": 3120
     },
     {
       "word": "the",
-      "start_ms": 4260,
-      "end_ms": 4360
+      "start_ms": 3120,
+      "end_ms": 3180
     },
     {
       "word": "fifteen",
-      "start_ms": 4360,
-      "end_ms": 4720
+      "start_ms": 3180,
+      "end_ms": 3520
     },
     {
       "word": "twenties,",
-      "start_ms": 4720,
-      "end_ms": 5300
+      "start_ms": 3520,
+      "end_ms": 4070
     },
     {
       "word": "they",
-      "start_ms": 5820,
-      "end_ms": 5880
+      "start_ms": 4680,
+      "end_ms": 4740
     },
     {
       "word": "brought",
-      "start_ms": 5880,
-      "end_ms": 6140
+      "start_ms": 4740,
+      "end_ms": 4980
     },
     {
       "word": "with",
-      "start_ms": 6140,
-      "end_ms": 6400
+      "start_ms": 4980,
+      "end_ms": 5200
     },
     {
       "word": "them",
-      "start_ms": 6400,
-      "end_ms": 6620
+      "start_ms": 5200,
+      "end_ms": 5360
     },
     {
       "word": "a",
-      "start_ms": 6620,
-      "end_ms": 6800
+      "start_ms": 5360,
+      "end_ms": 5480
     },
     {
       "word": "systematic",
-      "start_ms": 6800,
-      "end_ms": 7240
+      "start_ms": 5480,
+      "end_ms": 5820
     },
     {
       "word": "program",
-      "start_ms": 7240,
-      "end_ms": 7960
+      "start_ms": 5820,
+      "end_ms": 6500
     },
     {
       "word": "of",
-      "start_ms": 7960,
-      "end_ms": 8200
+      "start_ms": 6500,
+      "end_ms": 6700
     },
     {
       "word": "cultural",
-      "start_ms": 8280,
-      "end_ms": 8660
+      "start_ms": 6960,
+      "end_ms": 7060
     },
     {
       "word": "destruction.",
-      "start_ms": 8660,
-      "end_ms": 9310
+      "start_ms": 7060,
+      "end_ms": 7610
     }
   ],
   "ch08-488": [
@@ -44080,53 +44090,53 @@
   "ch09-553": [
     {
       "word": "It",
-      "start_ms": 60,
-      "end_ms": 140
+      "start_ms": 80,
+      "end_ms": 160
     },
     {
       "word": "spans",
-      "start_ms": 200,
-      "end_ms": 520
+      "start_ms": 160,
+      "end_ms": 580
     },
     {
       "word": "nearly",
-      "start_ms": 520,
-      "end_ms": 940
+      "start_ms": 580,
+      "end_ms": 980
     },
     {
       "word": "a",
-      "start_ms": 940,
-      "end_ms": 1160
+      "start_ms": 980,
+      "end_ms": 1240
     },
     {
       "word": "century",
-      "start_ms": 1160,
-      "end_ms": 1600
+      "start_ms": 1240,
+      "end_ms": 1700
     },
     {
       "word": "and",
-      "start_ms": 1600,
-      "end_ms": 2380
+      "start_ms": 1700,
+      "end_ms": 2080
     },
     {
       "word": "it",
-      "start_ms": 2380,
-      "end_ms": 2520
+      "start_ms": 2080,
+      "end_ms": 2240
     },
     {
       "word": "is",
-      "start_ms": 2520,
-      "end_ms": 2640
+      "start_ms": 2240,
+      "end_ms": 2380
     },
     {
       "word": "not",
-      "start_ms": 2640,
-      "end_ms": 2800
+      "start_ms": 2380,
+      "end_ms": 2540
     },
     {
       "word": "over.",
-      "start_ms": 2800,
-      "end_ms": 3300
+      "start_ms": 2540,
+      "end_ms": 3060
     }
   ],
   "ch09-554": [
@@ -47181,88 +47191,88 @@
   "ch09-581": [
     {
       "word": "It",
-      "start_ms": 340,
-      "end_ms": 340
+      "start_ms": 160,
+      "end_ms": 160
     },
     {
       "word": "is",
-      "start_ms": 340,
-      "end_ms": 440
+      "start_ms": 160,
+      "end_ms": 240
     },
     {
       "word": "one",
-      "start_ms": 440,
-      "end_ms": 680
+      "start_ms": 240,
+      "end_ms": 420
     },
     {
       "word": "of",
-      "start_ms": 680,
-      "end_ms": 800
+      "start_ms": 420,
+      "end_ms": 520
     },
     {
       "word": "the",
-      "start_ms": 800,
-      "end_ms": 940
+      "start_ms": 540,
+      "end_ms": 640
     },
     {
       "word": "longest",
-      "start_ms": 940,
-      "end_ms": 1380
+      "start_ms": 640,
+      "end_ms": 1000
     },
     {
       "word": "continuous",
-      "start_ms": 1380,
-      "end_ms": 2140
+      "start_ms": 1000,
+      "end_ms": 1580
     },
     {
       "word": "examples",
-      "start_ms": 2140,
-      "end_ms": 2820
+      "start_ms": 1580,
+      "end_ms": 2100
     },
     {
       "word": "of",
-      "start_ms": 2820,
-      "end_ms": 3080
+      "start_ms": 2100,
+      "end_ms": 2360
     },
     {
       "word": "Zapotec",
-      "start_ms": 3080,
-      "end_ms": 3700
+      "start_ms": 2360,
+      "end_ms": 2920
     },
     {
       "word": "writing",
-      "start_ms": 3700,
-      "end_ms": 3900
+      "start_ms": 2920,
+      "end_ms": 3120
     },
     {
       "word": "ever",
-      "start_ms": 3900,
-      "end_ms": 4460
+      "start_ms": 3120,
+      "end_ms": 3600
     },
     {
       "word": "found",
-      "start_ms": 4460,
-      "end_ms": 4920
+      "start_ms": 3600,
+      "end_ms": 3920
     },
     {
       "word": "in",
-      "start_ms": 5340,
-      "end_ms": 5440
+      "start_ms": 3920,
+      "end_ms": 4100
     },
     {
       "word": "the",
-      "start_ms": 5440,
-      "end_ms": 5560
+      "start_ms": 4100,
+      "end_ms": 4200
     },
     {
-      "word": "Oaxaca",
-      "start_ms": 5560,
-      "end_ms": 6000
+      "word": "Wahaka",
+      "start_ms": 4480,
+      "end_ms": 4580
     },
     {
       "word": "Valley.",
-      "start_ms": 6000,
-      "end_ms": 6440
+      "start_ms": 4580,
+      "end_ms": 5000
     }
   ],
   "ch09-582": [
@@ -47703,11 +47713,11 @@
     {
       "word": "There",
       "start_ms": 80,
-      "end_ms": 160
+      "end_ms": 140
     },
     {
       "word": "is",
-      "start_ms": 160,
+      "start_ms": 140,
       "end_ms": 300
     },
     {
@@ -47718,17 +47728,17 @@
     {
       "word": "avenue",
       "start_ms": 620,
-      "end_ms": 1040
+      "end_ms": 1120
     },
     {
       "word": "of",
-      "start_ms": 1040,
-      "end_ms": 1260
+      "start_ms": 1120,
+      "end_ms": 1500
     },
     {
       "word": "hope.",
-      "start_ms": 1260,
-      "end_ms": 1740
+      "start_ms": 1500,
+      "end_ms": 1760
     }
   ],
   "ch09-590": [
@@ -49264,208 +49274,208 @@
   "ch09-610": [
     {
       "word": "It",
-      "start_ms": 260,
-      "end_ms": 340
+      "start_ms": 60,
+      "end_ms": 180
     },
     {
       "word": "would",
-      "start_ms": 340,
-      "end_ms": 460
+      "start_ms": 180,
+      "end_ms": 280
     },
     {
       "word": "allow",
-      "start_ms": 460,
-      "end_ms": 760
+      "start_ms": 280,
+      "end_ms": 520
     },
     {
       "word": "scholars",
-      "start_ms": 760,
-      "end_ms": 1260
+      "start_ms": 520,
+      "end_ms": 1000
     },
     {
       "word": "to",
-      "start_ms": 1260,
-      "end_ms": 1560
+      "start_ms": 1000,
+      "end_ms": 1220
     },
     {
       "word": "reconstruct",
-      "start_ms": 1560,
-      "end_ms": 2120
+      "start_ms": 1220,
+      "end_ms": 1640
     },
     {
       "word": "the",
-      "start_ms": 2120,
-      "end_ms": 2480
+      "start_ms": 1640,
+      "end_ms": 1920
     },
     {
       "word": "history",
-      "start_ms": 2540,
-      "end_ms": 2880
+      "start_ms": 1920,
+      "end_ms": 2240
     },
     {
       "word": "of",
-      "start_ms": 2880,
-      "end_ms": 3320
+      "start_ms": 2240,
+      "end_ms": 2420
     },
     {
       "word": "the",
-      "start_ms": 3320,
-      "end_ms": 3460
+      "start_ms": 2440,
+      "end_ms": 2540
     },
     {
       "word": "Valley",
-      "start_ms": 3460,
-      "end_ms": 3800
+      "start_ms": 2540,
+      "end_ms": 2800
     },
     {
       "word": "of",
-      "start_ms": 3800,
-      "end_ms": 4040
+      "start_ms": 2800,
+      "end_ms": 2960
     },
     {
-      "word": "Oaxaca",
-      "start_ms": 4040,
-      "end_ms": 4500
+      "word": "Wahaka",
+      "start_ms": 2980,
+      "end_ms": 3380
     },
     {
       "word": "\u2014",
-      "start_ms": 4500,
-      "end_ms": 4960
+      "start_ms": 3380,
+      "end_ms": 3920
     },
     {
       "word": "the",
-      "start_ms": 5120,
-      "end_ms": 5220
+      "start_ms": 4019,
+      "end_ms": 4120
     },
     {
       "word": "sequence",
-      "start_ms": 5220,
-      "end_ms": 5560
+      "start_ms": 4120,
+      "end_ms": 4440
     },
     {
       "word": "of",
-      "start_ms": 5560,
-      "end_ms": 5840
+      "start_ms": 4440,
+      "end_ms": 4720
     },
     {
       "word": "rulers,",
-      "start_ms": 5840,
-      "end_ms": 6300
+      "start_ms": 4720,
+      "end_ms": 5260
     },
     {
       "word": "the",
-      "start_ms": 6640,
-      "end_ms": 6660
+      "start_ms": 5360,
+      "end_ms": 5380
     },
     {
       "word": "pattern",
-      "start_ms": 6660,
-      "end_ms": 7020
+      "start_ms": 5400,
+      "end_ms": 5680
     },
     {
       "word": "of",
-      "start_ms": 7020,
-      "end_ms": 7180
+      "start_ms": 5680,
+      "end_ms": 5880
     },
     {
       "word": "alliances",
-      "start_ms": 7180,
-      "end_ms": 7600
+      "start_ms": 5880,
+      "end_ms": 6220
     },
     {
       "word": "and",
-      "start_ms": 7600,
-      "end_ms": 8060
+      "start_ms": 6220,
+      "end_ms": 6540
     },
     {
       "word": "conflicts,",
-      "start_ms": 8060,
-      "end_ms": 8660
+      "start_ms": 6540,
+      "end_ms": 7240
     },
     {
       "word": "the",
-      "start_ms": 9000,
-      "end_ms": 9100
+      "start_ms": 7520,
+      "end_ms": 7620
     },
     {
       "word": "rise",
-      "start_ms": 9100,
-      "end_ms": 9460
+      "start_ms": 7620,
+      "end_ms": 7920
     },
     {
       "word": "and",
-      "start_ms": 9460,
-      "end_ms": 9720
+      "start_ms": 7920,
+      "end_ms": 8160
     },
     {
       "word": "fall",
-      "start_ms": 9720,
-      "end_ms": 10060
+      "start_ms": 8160,
+      "end_ms": 8460
     },
     {
       "word": "of",
-      "start_ms": 10060,
-      "end_ms": 10280
+      "start_ms": 8460,
+      "end_ms": 8660
     },
     {
       "word": "specific",
-      "start_ms": 10280,
-      "end_ms": 10620
+      "start_ms": 8660,
+      "end_ms": 9020
     },
     {
       "word": "communities",
-      "start_ms": 10620,
-      "end_ms": 11300
+      "start_ms": 9020,
+      "end_ms": 9660
     },
     {
       "word": "\u2014",
-      "start_ms": 11300,
-      "end_ms": 11680
+      "start_ms": 9660,
+      "end_ms": 10040
     },
     {
       "word": "in",
-      "start_ms": 11760,
-      "end_ms": 11860
+      "start_ms": 10140,
+      "end_ms": 10240
     },
     {
       "word": "the",
-      "start_ms": 11860,
-      "end_ms": 11960
+      "start_ms": 10240,
+      "end_ms": 10340
     },
     {
       "word": "kind",
-      "start_ms": 11960,
-      "end_ms": 12220
+      "start_ms": 10340,
+      "end_ms": 10540
     },
     {
       "word": "of",
-      "start_ms": 12220,
-      "end_ms": 12420
+      "start_ms": 10540,
+      "end_ms": 10700
     },
     {
       "word": "detail",
-      "start_ms": 12420,
-      "end_ms": 12820
+      "start_ms": 10700,
+      "end_ms": 11040
     },
     {
       "word": "that",
-      "start_ms": 12820,
-      "end_ms": 13080
+      "start_ms": 11040,
+      "end_ms": 11300
     },
     {
       "word": "is",
-      "start_ms": 13080,
-      "end_ms": 13200
+      "start_ms": 11300,
+      "end_ms": 11400
     },
     {
       "word": "currently",
-      "start_ms": 13200,
-      "end_ms": 13620
+      "start_ms": 11400,
+      "end_ms": 11800
     },
     {
       "word": "impossible.",
-      "start_ms": 13620,
-      "end_ms": 14270
+      "start_ms": 11800,
+      "end_ms": 12450
     }
   ],
   "ch09-611": [
@@ -50923,98 +50933,98 @@
   "ch10-629": [
     {
       "word": "These",
-      "start_ms": 560,
-      "end_ms": 560
+      "start_ms": 180,
+      "end_ms": 200
     },
     {
       "word": "figures",
-      "start_ms": 560,
-      "end_ms": 980
+      "start_ms": 200,
+      "end_ms": 540
     },
     {
       "word": "are",
-      "start_ms": 980,
-      "end_ms": 1280
+      "start_ms": 540,
+      "end_ms": 720
     },
     {
       "word": "shown",
-      "start_ms": 1280,
-      "end_ms": 1680
+      "start_ms": 720,
+      "end_ms": 1040
     },
     {
       "word": "traveling",
-      "start_ms": 1680,
-      "end_ms": 2140
+      "start_ms": 1040,
+      "end_ms": 1480
     },
     {
       "word": "to",
-      "start_ms": 2140,
-      "end_ms": 2440
+      "start_ms": 1480,
+      "end_ms": 1740
     },
     {
-      "word": "Oaxaca,",
-      "start_ms": 2440,
-      "end_ms": 3100
+      "word": "Wahaka,",
+      "start_ms": 1740,
+      "end_ms": 2300
     },
     {
       "word": "apparently",
-      "start_ms": 3440,
-      "end_ms": 3900
+      "start_ms": 2600,
+      "end_ms": 2880
     },
     {
       "word": "for",
-      "start_ms": 3900,
-      "end_ms": 4180
+      "start_ms": 2880,
+      "end_ms": 3100
     },
     {
       "word": "a",
-      "start_ms": 4180,
-      "end_ms": 4300
+      "start_ms": 3100,
+      "end_ms": 3200
     },
     {
       "word": "specific",
-      "start_ms": 4300,
-      "end_ms": 4640
+      "start_ms": 3320,
+      "end_ms": 3560
     },
     {
       "word": "event:",
-      "start_ms": 4640,
-      "end_ms": 5160
+      "start_ms": 3560,
+      "end_ms": 3980
     },
     {
       "word": "the",
-      "start_ms": 5440,
-      "end_ms": 5480
+      "start_ms": 4600,
+      "end_ms": 4620
     },
     {
       "word": "inauguration",
-      "start_ms": 5480,
-      "end_ms": 6200
+      "start_ms": 4620,
+      "end_ms": 5260
     },
     {
       "word": "of",
-      "start_ms": 6200,
-      "end_ms": 6380
+      "start_ms": 5260,
+      "end_ms": 5460
     },
     {
       "word": "a",
-      "start_ms": 6380,
-      "end_ms": 6480
+      "start_ms": 5460,
+      "end_ms": 5540
     },
     {
       "word": "Monte",
-      "start_ms": 6480,
-      "end_ms": 6820
+      "start_ms": 5540,
+      "end_ms": 5840
     },
     {
       "word": "Alb\u00e1n",
-      "start_ms": 6820,
-      "end_ms": 7420
+      "start_ms": 5840,
+      "end_ms": 6420
     },
     {
       "word": "ruler.",
-      "start_ms": 7420,
-      "end_ms": 7840
+      "start_ms": 6420,
+      "end_ms": 6840
     }
   ],
   "ch10-630": [
@@ -53415,8 +53425,8 @@
   "ch10-660": [
     {
       "word": "Why?",
-      "start_ms": 180,
-      "end_ms": 580
+      "start_ms": 80,
+      "end_ms": 500
     }
   ],
   "ch11-662": [
@@ -54156,83 +54166,83 @@
   "ch11-679": [
     {
       "word": "Into",
-      "start_ms": 220,
-      "end_ms": 440
+      "start_ms": 40,
+      "end_ms": 260
     },
     {
       "word": "the",
-      "start_ms": 440,
-      "end_ms": 600
+      "start_ms": 260,
+      "end_ms": 400
     },
     {
       "word": "dozens",
-      "start_ms": 600,
-      "end_ms": 960
+      "start_ms": 400,
+      "end_ms": 780
     },
     {
       "word": "of",
-      "start_ms": 960,
-      "end_ms": 1260
+      "start_ms": 780,
+      "end_ms": 1180
     },
     {
       "word": "smaller",
-      "start_ms": 1260,
-      "end_ms": 1700
+      "start_ms": 1180,
+      "end_ms": 1520
     },
     {
       "word": "communities",
-      "start_ms": 1700,
-      "end_ms": 2380
+      "start_ms": 1520,
+      "end_ms": 2180
     },
     {
       "word": "scattered",
-      "start_ms": 2380,
-      "end_ms": 2900
+      "start_ms": 2180,
+      "end_ms": 2660
     },
     {
       "word": "across",
-      "start_ms": 2900,
-      "end_ms": 3320
+      "start_ms": 2660,
+      "end_ms": 3060
     },
     {
       "word": "the",
-      "start_ms": 3320,
-      "end_ms": 3620
+      "start_ms": 3060,
+      "end_ms": 3300
     },
     {
       "word": "three",
-      "start_ms": 3620,
-      "end_ms": 3880
+      "start_ms": 3380,
+      "end_ms": 3560
     },
     {
       "word": "arms",
-      "start_ms": 3880,
-      "end_ms": 4440
+      "start_ms": 3560,
+      "end_ms": 4019
     },
     {
       "word": "of",
-      "start_ms": 4440,
-      "end_ms": 4600
+      "start_ms": 4019,
+      "end_ms": 4220
     },
     {
       "word": "the",
-      "start_ms": 4600,
-      "end_ms": 4740
+      "start_ms": 4240,
+      "end_ms": 4340
     },
     {
       "word": "Valley",
-      "start_ms": 4740,
-      "end_ms": 5140
+      "start_ms": 4340,
+      "end_ms": 4640
     },
     {
       "word": "of",
-      "start_ms": 5140,
-      "end_ms": 5460
+      "start_ms": 4640,
+      "end_ms": 4840
     },
     {
-      "word": "Oaxaca.",
-      "start_ms": 5460,
-      "end_ms": 5900
+      "word": "Wahaka.",
+      "start_ms": 4840,
+      "end_ms": 5440
     }
   ],
   "ch11-680": [
@@ -58380,73 +58390,73 @@
   "ch11-726": [
     {
       "word": "A",
-      "start_ms": 120,
-      "end_ms": 120
+      "start_ms": 100,
+      "end_ms": 100
     },
     {
       "word": "mountaintop",
-      "start_ms": 120,
-      "end_ms": 700
+      "start_ms": 100,
+      "end_ms": 600
     },
     {
       "word": "city",
-      "start_ms": 700,
-      "end_ms": 1120
+      "start_ms": 600,
+      "end_ms": 920
     },
     {
       "word": "with",
-      "start_ms": 1120,
-      "end_ms": 1360
+      "start_ms": 920,
+      "end_ms": 1080
     },
     {
       "word": "no",
-      "start_ms": 1360,
-      "end_ms": 1560
+      "start_ms": 1080,
+      "end_ms": 1240
     },
     {
       "word": "river",
-      "start_ms": 1560,
-      "end_ms": 1900
+      "start_ms": 1240,
+      "end_ms": 1540
     },
     {
       "word": "is",
-      "start_ms": 2340,
-      "end_ms": 2440
+      "start_ms": 1540,
+      "end_ms": 1780
     },
     {
       "word": "about",
-      "start_ms": 2440,
-      "end_ms": 2720
+      "start_ms": 1780,
+      "end_ms": 1960
     },
     {
       "word": "as",
-      "start_ms": 2720,
-      "end_ms": 2940
+      "start_ms": 1960,
+      "end_ms": 2140
     },
     {
       "word": "environmentally",
-      "start_ms": 2940,
-      "end_ms": 3500
+      "start_ms": 2140,
+      "end_ms": 2600
     },
     {
       "word": "fragile",
-      "start_ms": 3500,
-      "end_ms": 4160
+      "start_ms": 2600,
+      "end_ms": 3160
     },
     {
       "word": "as",
-      "start_ms": 4160,
-      "end_ms": 4440
+      "start_ms": 3160,
+      "end_ms": 3380
     },
     {
       "word": "it",
-      "start_ms": 4440,
-      "end_ms": 4580
+      "start_ms": 3380,
+      "end_ms": 3500
     },
     {
       "word": "gets.",
-      "start_ms": 4580,
-      "end_ms": 5020
+      "start_ms": 3500,
+      "end_ms": 3740
     }
   ],
   "ch11-727": [
@@ -59801,153 +59811,153 @@
   "ch12-745": [
     {
       "word": "Beginning",
-      "start_ms": 500,
-      "end_ms": 500
+      "start_ms": 280,
+      "end_ms": 280
     },
     {
       "word": "around",
-      "start_ms": 500,
-      "end_ms": 800
+      "start_ms": 280,
+      "end_ms": 660
     },
     {
       "word": "the",
-      "start_ms": 800,
-      "end_ms": 980
+      "start_ms": 660,
+      "end_ms": 860
     },
     {
       "word": "tenth",
-      "start_ms": 980,
-      "end_ms": 1220
+      "start_ms": 940,
+      "end_ms": 1080
     },
     {
       "word": "century",
-      "start_ms": 1220,
-      "end_ms": 1820
+      "start_ms": 1080,
+      "end_ms": 1560
     },
     {
       "word": "CE,",
-      "start_ms": 1820,
-      "end_ms": 2180
+      "start_ms": 1560,
+      "end_ms": 1960
     },
     {
       "word": "Mixtec",
-      "start_ms": 2920,
-      "end_ms": 3300
+      "start_ms": 2620,
+      "end_ms": 2900
     },
     {
       "word": "communities",
-      "start_ms": 3300,
-      "end_ms": 3900
+      "start_ms": 2900,
+      "end_ms": 3460
     },
     {
       "word": "began",
-      "start_ms": 3900,
-      "end_ms": 4300
+      "start_ms": 3460,
+      "end_ms": 3860
     },
     {
       "word": "expanding",
-      "start_ms": 4300,
-      "end_ms": 4940
+      "start_ms": 3860,
+      "end_ms": 4400
     },
     {
       "word": "into",
-      "start_ms": 4940,
-      "end_ms": 5220
+      "start_ms": 4400,
+      "end_ms": 4700
     },
     {
       "word": "the",
-      "start_ms": 5220,
-      "end_ms": 5360
+      "start_ms": 4740,
+      "end_ms": 4840
     },
     {
       "word": "Valley",
-      "start_ms": 5360,
-      "end_ms": 5700
+      "start_ms": 4840,
+      "end_ms": 5080
     },
     {
       "word": "of",
-      "start_ms": 5700,
-      "end_ms": 5920
+      "start_ms": 5080,
+      "end_ms": 5240
     },
     {
-      "word": "Oaxaca,",
-      "start_ms": 5920,
-      "end_ms": 6020
+      "word": "Wahaka,",
+      "start_ms": 5240,
+      "end_ms": 5580
     },
     {
       "word": "sometimes",
-      "start_ms": 6940,
-      "end_ms": 7260
+      "start_ms": 6220,
+      "end_ms": 6540
     },
     {
       "word": "through",
-      "start_ms": 7260,
-      "end_ms": 7700
+      "start_ms": 6540,
+      "end_ms": 6880
     },
     {
       "word": "conquest,",
-      "start_ms": 7700,
-      "end_ms": 8760
+      "start_ms": 6880,
+      "end_ms": 7730
     },
     {
       "word": "sometimes",
-      "start_ms": 8780,
-      "end_ms": 9160
+      "start_ms": 7800,
+      "end_ms": 8080
     },
     {
       "word": "through",
-      "start_ms": 9160,
-      "end_ms": 9520
+      "start_ms": 8080,
+      "end_ms": 8380
     },
     {
       "word": "marriage",
-      "start_ms": 9520,
-      "end_ms": 9860
+      "start_ms": 8380,
+      "end_ms": 8680
     },
     {
       "word": "alliances",
-      "start_ms": 9860,
-      "end_ms": 10420
+      "start_ms": 8680,
+      "end_ms": 9220
     },
     {
       "word": "with",
-      "start_ms": 10440,
-      "end_ms": 10720
+      "start_ms": 9220,
+      "end_ms": 9520
     },
     {
       "word": "Zapotec",
-      "start_ms": 10720,
-      "end_ms": 11360
+      "start_ms": 9520,
+      "end_ms": 10100
     },
     {
       "word": "ruling",
-      "start_ms": 11360,
-      "end_ms": 11540
+      "start_ms": 10140,
+      "end_ms": 10280
     },
     {
       "word": "families,",
-      "start_ms": 11540,
-      "end_ms": 12260
+      "start_ms": 10280,
+      "end_ms": 10720
     },
     {
       "word": "sometimes",
-      "start_ms": 12620,
-      "end_ms": 13020
+      "start_ms": 11320,
+      "end_ms": 11600
     },
     {
       "word": "through",
-      "start_ms": 13020,
-      "end_ms": 13440
+      "start_ms": 11600,
+      "end_ms": 11920
     },
     {
       "word": "gradual",
-      "start_ms": 13440,
-      "end_ms": 13840
+      "start_ms": 11920,
+      "end_ms": 12280
     },
     {
       "word": "migration.",
-      "start_ms": 13840,
-      "end_ms": 14560
+      "start_ms": 12280,
+      "end_ms": 13020
     }
   ],
   "ch12-746": [
@@ -61199,108 +61209,108 @@
   "ch12-759": [
     {
       "word": "The",
-      "start_ms": 80,
+      "start_ms": 100,
       "end_ms": 100
     },
     {
       "word": "clay",
-      "start_ms": 120,
-      "end_ms": 340
+      "start_ms": 240,
+      "end_ms": 380
     },
     {
       "word": "mold",
-      "start_ms": 340,
-      "end_ms": 660
+      "start_ms": 380,
+      "end_ms": 820
     },
     {
       "word": "is",
-      "start_ms": 660,
-      "end_ms": 1020
+      "start_ms": 820,
+      "end_ms": 1120
     },
     {
       "word": "heated,",
-      "start_ms": 1020,
-      "end_ms": 1480
+      "start_ms": 1120,
+      "end_ms": 1560
     },
     {
       "word": "the",
-      "start_ms": 1940,
-      "end_ms": 2040
+      "start_ms": 2120,
+      "end_ms": 2180
     },
     {
       "word": "wax",
-      "start_ms": 2040,
-      "end_ms": 2280
+      "start_ms": 2180,
+      "end_ms": 2540
     },
     {
       "word": "melts",
-      "start_ms": 2280,
-      "end_ms": 2580
+      "start_ms": 2560,
+      "end_ms": 2900
     },
     {
       "word": "and",
-      "start_ms": 2580,
-      "end_ms": 2880
+      "start_ms": 2900,
+      "end_ms": 3260
     },
     {
       "word": "drains",
-      "start_ms": 2880,
-      "end_ms": 3160
+      "start_ms": 3260,
+      "end_ms": 3520
     },
     {
       "word": "out,",
-      "start_ms": 3160,
-      "end_ms": 3660
+      "start_ms": 3520,
+      "end_ms": 3980
     },
     {
       "word": "and",
-      "start_ms": 3980,
-      "end_ms": 4080
+      "start_ms": 4380,
+      "end_ms": 4520
     },
     {
       "word": "molten",
-      "start_ms": 4080,
-      "end_ms": 4380
+      "start_ms": 4520,
+      "end_ms": 4860
     },
     {
       "word": "gold",
-      "start_ms": 4380,
-      "end_ms": 4740
+      "start_ms": 4860,
+      "end_ms": 5240
     },
     {
       "word": "is",
-      "start_ms": 4740,
-      "end_ms": 5020
+      "start_ms": 5240,
+      "end_ms": 5540
     },
     {
       "word": "poured",
-      "start_ms": 5020,
-      "end_ms": 5280
+      "start_ms": 5540,
+      "end_ms": 5840
     },
     {
       "word": "into",
-      "start_ms": 5280,
-      "end_ms": 5580
+      "start_ms": 5840,
+      "end_ms": 6160
     },
     {
       "word": "the",
-      "start_ms": 5580,
-      "end_ms": 5720
+      "start_ms": 6180,
+      "end_ms": 6320
     },
     {
       "word": "void",
-      "start_ms": 5720,
-      "end_ms": 5980
+      "start_ms": 6320,
+      "end_ms": 6620
     },
     {
       "word": "left",
-      "start_ms": 5980,
-      "end_ms": 6240
+      "start_ms": 6620,
+      "end_ms": 6900
     },
     {
       "word": "behind.",
-      "start_ms": 6240,
-      "end_ms": 6940
+      "start_ms": 6900,
+      "end_ms": 7540
     }
   ],
   "ch12-760": [
@@ -64857,138 +64867,138 @@
   "ch13-800": [
     {
       "word": "Forty",
-      "start_ms": 460,
-      "end_ms": 660
+      "start_ms": 40,
+      "end_ms": 320
     },
     {
       "word": "kilometers",
-      "start_ms": 660,
-      "end_ms": 1160
+      "start_ms": 340,
+      "end_ms": 700
     },
     {
       "word": "east",
-      "start_ms": 1240,
-      "end_ms": 1740
+      "start_ms": 920,
+      "end_ms": 1080
     },
     {
       "word": "of",
-      "start_ms": 1740,
-      "end_ms": 1960
+      "start_ms": 1080,
+      "end_ms": 1280
     },
     {
       "word": "Monte",
-      "start_ms": 2000,
-      "end_ms": 2240
+      "start_ms": 1280,
+      "end_ms": 1520
     },
     {
       "word": "Alb\u00e1n,",
-      "start_ms": 2240,
-      "end_ms": 2560
+      "start_ms": 1520,
+      "end_ms": 2100
     },
     {
       "word": "tucked",
-      "start_ms": 3320,
-      "end_ms": 3540
+      "start_ms": 2520,
+      "end_ms": 2660
     },
     {
       "word": "into",
-      "start_ms": 3600,
-      "end_ms": 3820
+      "start_ms": 2660,
+      "end_ms": 2980
     },
     {
       "word": "the",
-      "start_ms": 3820,
-      "end_ms": 3980
+      "start_ms": 2980,
+      "end_ms": 3160
     },
     {
       "word": "Tlacolula",
-      "start_ms": 3980,
-      "end_ms": 4600
+      "start_ms": 3160,
+      "end_ms": 3720
     },
     {
       "word": "arm",
-      "start_ms": 4600,
-      "end_ms": 4940
+      "start_ms": 3720,
+      "end_ms": 4019
     },
     {
       "word": "of",
-      "start_ms": 4940,
-      "end_ms": 5180
+      "start_ms": 4019,
+      "end_ms": 4220
     },
     {
       "word": "the",
-      "start_ms": 5180,
-      "end_ms": 5300
+      "start_ms": 4220,
+      "end_ms": 4340
     },
     {
       "word": "Valley",
-      "start_ms": 5300,
-      "end_ms": 5640
+      "start_ms": 4340,
+      "end_ms": 4620
     },
     {
       "word": "of",
-      "start_ms": 5640,
-      "end_ms": 5840
+      "start_ms": 4620,
+      "end_ms": 4800
     },
     {
-      "word": "Oaxaca,",
-      "start_ms": 5840,
-      "end_ms": 6180
+      "word": "Wahaka,",
+      "start_ms": 4800,
+      "end_ms": 5360
     },
     {
       "word": "there",
-      "start_ms": 6820,
-      "end_ms": 6920
+      "start_ms": 5720,
+      "end_ms": 5820
     },
     {
       "word": "is",
-      "start_ms": 6920,
-      "end_ms": 7060
+      "start_ms": 5820,
+      "end_ms": 5920
     },
     {
       "word": "a",
-      "start_ms": 7060,
-      "end_ms": 7160
+      "start_ms": 5920,
+      "end_ms": 6020
     },
     {
       "word": "place",
-      "start_ms": 7160,
-      "end_ms": 7360
+      "start_ms": 6020,
+      "end_ms": 6220
     },
     {
       "word": "that",
-      "start_ms": 7360,
-      "end_ms": 7640
+      "start_ms": 6220,
+      "end_ms": 6440
     },
     {
       "word": "looks",
-      "start_ms": 7640,
-      "end_ms": 7820
+      "start_ms": 6440,
+      "end_ms": 6600
     },
     {
       "word": "like",
-      "start_ms": 7820,
-      "end_ms": 8080
+      "start_ms": 6600,
+      "end_ms": 6820
     },
     {
       "word": "nothing",
-      "start_ms": 8080,
-      "end_ms": 8480
+      "start_ms": 6820,
+      "end_ms": 7100
     },
     {
       "word": "else",
-      "start_ms": 8480,
-      "end_ms": 8780
+      "start_ms": 7100,
+      "end_ms": 7300
     },
     {
       "word": "on",
-      "start_ms": 8900,
-      "end_ms": 9040
+      "start_ms": 7300,
+      "end_ms": 7480
     },
     {
       "word": "Earth.",
-      "start_ms": 9040,
-      "end_ms": 9240
+      "start_ms": 7480,
+      "end_ms": 7800
     }
   ],
   "ch13-801": [
@@ -71836,33 +71846,33 @@
   "ch14-873": [
     {
       "word": "It",
-      "start_ms": 100,
-      "end_ms": 160
+      "start_ms": 40,
+      "end_ms": 140
     },
     {
       "word": "is",
-      "start_ms": 160,
-      "end_ms": 280
+      "start_ms": 140,
+      "end_ms": 240
     },
     {
       "word": "a",
-      "start_ms": 280,
-      "end_ms": 360
+      "start_ms": 240,
+      "end_ms": 320
     },
     {
       "word": "tropical",
-      "start_ms": 360,
-      "end_ms": 800
+      "start_ms": 320,
+      "end_ms": 780
     },
     {
       "word": "lowland",
-      "start_ms": 800,
-      "end_ms": 1400
+      "start_ms": 780,
+      "end_ms": 1320
     },
     {
       "word": "species.",
-      "start_ms": 1400,
-      "end_ms": 2340
+      "start_ms": 1320,
+      "end_ms": 1780
     }
   ],
   "ch14-874": [
@@ -74566,78 +74576,78 @@
   "ch15-904": [
     {
       "word": "The",
-      "start_ms": 100,
+      "start_ms": 80,
       "end_ms": 100
     },
     {
       "word": "Roman",
       "start_ms": 100,
-      "end_ms": 380
+      "end_ms": 420
     },
     {
       "word": "Empire",
-      "start_ms": 380,
-      "end_ms": 840
+      "start_ms": 420,
+      "end_ms": 880
     },
     {
       "word": "was",
-      "start_ms": 840,
-      "end_ms": 1180
+      "start_ms": 880,
+      "end_ms": 1200
     },
     {
       "word": "splitting",
-      "start_ms": 1180,
-      "end_ms": 1620
+      "start_ms": 1200,
+      "end_ms": 1600
     },
     {
       "word": "in",
       "start_ms": 1620,
-      "end_ms": 1860
+      "end_ms": 1840
     },
     {
       "word": "two",
-      "start_ms": 1860,
-      "end_ms": 2200
+      "start_ms": 1840,
+      "end_ms": 2180
     },
     {
       "word": "and",
-      "start_ms": 2200,
-      "end_ms": 2920
+      "start_ms": 2180,
+      "end_ms": 2980
     },
     {
       "word": "then",
-      "start_ms": 2920,
-      "end_ms": 3100
+      "start_ms": 2980,
+      "end_ms": 3220
     },
     {
       "word": "falling",
-      "start_ms": 3100,
-      "end_ms": 3480
+      "start_ms": 3220,
+      "end_ms": 3560
     },
     {
       "word": "apart",
-      "start_ms": 3480,
-      "end_ms": 3980
+      "start_ms": 3560,
+      "end_ms": 3940
     },
     {
       "word": "entirely",
-      "start_ms": 3980,
-      "end_ms": 4920
+      "start_ms": 3940,
+      "end_ms": 4620
     },
     {
       "word": "in",
-      "start_ms": 4920,
-      "end_ms": 5160
+      "start_ms": 4620,
+      "end_ms": 4840
     },
     {
       "word": "the",
-      "start_ms": 5160,
-      "end_ms": 5260
+      "start_ms": 4840,
+      "end_ms": 4940
     },
     {
       "word": "west.",
-      "start_ms": 5260,
-      "end_ms": 5720
+      "start_ms": 4940,
+      "end_ms": 5420
     }
   ],
   "ch15-905": [
@@ -75981,118 +75991,118 @@
   "ch15-919": [
     {
       "word": "Across",
-      "start_ms": 580,
-      "end_ms": 580
+      "start_ms": 320,
+      "end_ms": 320
     },
     {
       "word": "Mesoamerica,",
-      "start_ms": 580,
-      "end_ms": 1760
+      "start_ms": 320,
+      "end_ms": 1360
     },
     {
       "word": "from",
-      "start_ms": 2120,
-      "end_ms": 2220
+      "start_ms": 1620,
+      "end_ms": 1700
     },
     {
       "word": "the",
-      "start_ms": 2220,
-      "end_ms": 2360
+      "start_ms": 1700,
+      "end_ms": 1840
     },
     {
       "word": "highlands",
-      "start_ms": 2360,
-      "end_ms": 2860
+      "start_ms": 1840,
+      "end_ms": 2260
     },
     {
       "word": "of",
-      "start_ms": 2860,
-      "end_ms": 3060
+      "start_ms": 2260,
+      "end_ms": 2420
     },
     {
-      "word": "Oaxaca",
-      "start_ms": 3060,
-      "end_ms": 3580
+      "word": "Wahaka",
+      "start_ms": 2420,
+      "end_ms": 2900
     },
     {
       "word": "to",
-      "start_ms": 3580,
-      "end_ms": 4059
+      "start_ms": 2900,
+      "end_ms": 3480
     },
     {
       "word": "the",
-      "start_ms": 4059,
-      "end_ms": 4200
+      "start_ms": 3500,
+      "end_ms": 3600
     },
     {
       "word": "lowlands",
-      "start_ms": 4200,
-      "end_ms": 4740
+      "start_ms": 3600,
+      "end_ms": 4080
     },
     {
       "word": "of",
-      "start_ms": 4740,
-      "end_ms": 4940
+      "start_ms": 4080,
+      "end_ms": 4220
     },
     {
       "word": "Guatemala,",
-      "start_ms": 4940,
-      "end_ms": 6100
+      "start_ms": 4220,
+      "end_ms": 5270
     },
     {
       "word": "major",
-      "start_ms": 6100,
-      "end_ms": 6340
+      "start_ms": 5520,
+      "end_ms": 5700
     },
     {
       "word": "cities",
-      "start_ms": 6340,
-      "end_ms": 6780
+      "start_ms": 5700,
+      "end_ms": 6120
     },
     {
       "word": "were",
-      "start_ms": 6780,
-      "end_ms": 7020
+      "start_ms": 6120,
+      "end_ms": 6340
     },
     {
       "word": "being",
-      "start_ms": 7020,
-      "end_ms": 7280
+      "start_ms": 6340,
+      "end_ms": 6560
     },
     {
       "word": "abandoned",
-      "start_ms": 7280,
-      "end_ms": 7800
+      "start_ms": 6560,
+      "end_ms": 6980
     },
     {
       "word": "during",
-      "start_ms": 7800,
-      "end_ms": 8140
+      "start_ms": 6980,
+      "end_ms": 7360
     },
     {
       "word": "the",
-      "start_ms": 8140,
-      "end_ms": 8320
+      "start_ms": 7360,
+      "end_ms": 7520
     },
     {
       "word": "eighth",
-      "start_ms": 8320,
-      "end_ms": 8760
+      "start_ms": 7520,
+      "end_ms": 7860
     },
     {
       "word": "and",
-      "start_ms": 9020,
-      "end_ms": 9120
+      "start_ms": 7880,
+      "end_ms": 7980
     },
     {
       "word": "ninth",
-      "start_ms": 9120,
-      "end_ms": 9420
+      "start_ms": 7980,
+      "end_ms": 8200
     },
     {
       "word": "centuries.",
-      "start_ms": 9420,
-      "end_ms": 10040
+      "start_ms": 8200,
+      "end_ms": 8750
     }
   ],
   "ch15-920": [
@@ -77734,52 +77744,52 @@
     {
       "word": "synoikism",
       "start_ms": 120,
-      "end_ms": 780
+      "end_ms": 720
     },
     {
       "word": "hypothesis",
-      "start_ms": 780,
-      "end_ms": 1340
+      "start_ms": 720,
+      "end_ms": 1260
     },
     {
       "word": "explains",
-      "start_ms": 1340,
+      "start_ms": 1260,
       "end_ms": 1920
     },
     {
       "word": "the",
       "start_ms": 1920,
-      "end_ms": 2220
+      "end_ms": 2320
     },
     {
       "word": "what",
-      "start_ms": 2220,
-      "end_ms": 2440
+      "start_ms": 2320,
+      "end_ms": 2520
     },
     {
       "word": "but",
-      "start_ms": 2440,
-      "end_ms": 2720
+      "start_ms": 2520,
+      "end_ms": 2760
     },
     {
       "word": "not",
-      "start_ms": 2800,
-      "end_ms": 2940
+      "start_ms": 2760,
+      "end_ms": 2960
     },
     {
       "word": "fully",
-      "start_ms": 2940,
-      "end_ms": 3380
+      "start_ms": 2960,
+      "end_ms": 3400
     },
     {
       "word": "the",
-      "start_ms": 3380,
-      "end_ms": 3540
+      "start_ms": 3400,
+      "end_ms": 3560
     },
     {
       "word": "why.",
-      "start_ms": 3540,
-      "end_ms": 4019
+      "start_ms": 3560,
+      "end_ms": 3980
     }
   ],
   "ch15-942": [
@@ -80869,73 +80879,73 @@
   "ch15-980": [
     {
       "word": "The",
-      "start_ms": 220,
-      "end_ms": 300
+      "start_ms": 0,
+      "end_ms": 100
     },
     {
       "word": "Valley",
-      "start_ms": 300,
-      "end_ms": 720
+      "start_ms": 100,
+      "end_ms": 400
     },
     {
       "word": "of",
-      "start_ms": 720,
-      "end_ms": 1020
+      "start_ms": 400,
+      "end_ms": 560
     },
     {
-      "word": "Oaxaca,",
-      "start_ms": 1020,
-      "end_ms": 1620
+      "word": "Wahaka,",
+      "start_ms": 560,
+      "end_ms": 1220
     },
     {
       "word": "a",
-      "start_ms": 2120,
-      "end_ms": 2140
+      "start_ms": 1520,
+      "end_ms": 1540
     },
     {
       "word": "Y-shaped",
-      "start_ms": 2140,
-      "end_ms": 2820
+      "start_ms": 1540,
+      "end_ms": 2120
     },
     {
       "word": "highland",
-      "start_ms": 2820,
-      "end_ms": 3340
+      "start_ms": 2160,
+      "end_ms": 2520
     },
     {
       "word": "valley,",
-      "start_ms": 3340,
-      "end_ms": 3820
+      "start_ms": 2520,
+      "end_ms": 2960
     },
     {
       "word": "was",
-      "start_ms": 4180,
-      "end_ms": 4300
+      "start_ms": 3360,
+      "end_ms": 3460
     },
     {
       "word": "the",
-      "start_ms": 4300,
-      "end_ms": 4440
+      "start_ms": 3460,
+      "end_ms": 3580
     },
     {
       "word": "heartland",
-      "start_ms": 4440,
-      "end_ms": 4980
+      "start_ms": 3580,
+      "end_ms": 4019
     },
     {
       "word": "of",
-      "start_ms": 4980,
-      "end_ms": 5220
+      "start_ms": 4019,
+      "end_ms": 4240
     },
     {
       "word": "Zapotec",
-      "start_ms": 5720,
-      "end_ms": 5820
+      "start_ms": 4740,
+      "end_ms": 4840
     },
     {
       "word": "civilization.",
-      "start_ms": 5820,
-      "end_ms": 6420
+      "start_ms": 4840,
+      "end_ms": 5390
     }
   ],
   "ch15-981": [
@@ -82680,178 +82690,178 @@
   "ch15-999": [
     {
       "word": "Marcus,",
-      "start_ms": 600,
-      "end_ms": 1280
+      "start_ms": 620,
+      "end_ms": 720
     },
     {
       "word": "Joyce,",
-      "start_ms": 1340,
-      "end_ms": 1640
+      "start_ms": 1300,
+      "end_ms": 2080
     },
     {
       "word": "and",
-      "start_ms": 2040,
-      "end_ms": 2040
+      "start_ms": 2100,
+      "end_ms": 2180
     },
     {
       "word": "Kent",
-      "start_ms": 2040,
-      "end_ms": 2360
+      "start_ms": 2180,
+      "end_ms": 2480
     },
     {
       "word": "V.",
-      "start_ms": 2360,
-      "end_ms": 2920
+      "start_ms": 2480,
+      "end_ms": 2940
     },
     {
       "word": "Flannery.",
-      "start_ms": 2940,
-      "end_ms": 3120
+      "start_ms": 3220,
+      "end_ms": 4260
     },
     {
       "word": "Zapotec",
-      "start_ms": 4140,
-      "end_ms": 4640
+      "start_ms": 4700,
+      "end_ms": 4800
     },
     {
       "word": "Civilization:",
-      "start_ms": 4640,
-      "end_ms": 5480
+      "start_ms": 4800,
+      "end_ms": 5800
     },
     {
       "word": "How",
-      "start_ms": 6040,
-      "end_ms": 6120
+      "start_ms": 6320,
+      "end_ms": 6400
     },
     {
       "word": "Urban",
-      "start_ms": 6120,
-      "end_ms": 6460
+      "start_ms": 6400,
+      "end_ms": 6740
     },
     {
       "word": "Society",
-      "start_ms": 6460,
-      "end_ms": 6900
+      "start_ms": 6740,
+      "end_ms": 7180
     },
     {
       "word": "Evolved",
-      "start_ms": 6900,
-      "end_ms": 7720
+      "start_ms": 7180,
+      "end_ms": 7940
     },
     {
       "word": "in",
-      "start_ms": 7720,
-      "end_ms": 7880
+      "start_ms": 7940,
+      "end_ms": 8119
     },
     {
       "word": "Mexico's",
-      "start_ms": 7880,
-      "end_ms": 8580
+      "start_ms": 8119,
+      "end_ms": 8740
     },
     {
-      "word": "Oaxaca",
-      "start_ms": 8580,
-      "end_ms": 9020
+      "word": "Wahaka",
+      "start_ms": 8760,
+      "end_ms": 9160
     },
     {
       "word": "Valley.",
-      "start_ms": 9020,
-      "end_ms": 9380
+      "start_ms": 9160,
+      "end_ms": 9560
     },
     {
       "word": "Thames",
-      "start_ms": 9940,
-      "end_ms": 10840
+      "start_ms": 10020,
+      "end_ms": 10220
     },
     {
       "word": "and",
-      "start_ms": 10840,
-      "end_ms": 11020
+      "start_ms": 10220,
+      "end_ms": 10460
     },
     {
       "word": "Hudson,",
-      "start_ms": 11020,
-      "end_ms": 11600
+      "start_ms": 10460,
+      "end_ms": 10900
     },
     {
       "word": "nineteen",
-      "start_ms": 11760,
-      "end_ms": 11860
+      "start_ms": 11140,
+      "end_ms": 11300
     },
     {
       "word": "ninety",
-      "start_ms": 11860,
-      "end_ms": 12300
+      "start_ms": 11320,
+      "end_ms": 11620
     },
     {
       "word": "six.",
-      "start_ms": 12300,
-      "end_ms": 12400
+      "start_ms": 11620,
+      "end_ms": 11960
     },
     {
       "word": "\u2014",
-      "start_ms": 13540,
-      "end_ms": 13540
+      "start_ms": 13020,
+      "end_ms": 13040
     },
     {
       "word": "The",
-      "start_ms": 13540,
-      "end_ms": 13600
+      "start_ms": 13040,
+      "end_ms": 13120
     },
     {
       "word": "most",
-      "start_ms": 13600,
-      "end_ms": 13820
+      "start_ms": 13120,
+      "end_ms": 13320
     },
     {
       "word": "comprehensive",
-      "start_ms": 13820,
-      "end_ms": 14440
+      "start_ms": 13320,
+      "end_ms": 13800
     },
     {
       "word": "and",
-      "start_ms": 14440,
-      "end_ms": 14740
+      "start_ms": 13800,
+      "end_ms": 14220
     },
     {
       "word": "readable",
-      "start_ms": 14740,
-      "end_ms": 15040
+      "start_ms": 14220,
+      "end_ms": 14520
     },
     {
       "word": "single",
-      "start_ms": 15040,
-      "end_ms": 15360
+      "start_ms": 14520,
+      "end_ms": 14860
     },
     {
       "word": "account",
-      "start_ms": 15360,
-      "end_ms": 15840
+      "start_ms": 14860,
+      "end_ms": 15340
     },
     {
       "word": "of",
-      "start_ms": 15840,
-      "end_ms": 16020
+      "start_ms": 15340,
+      "end_ms": 15520
     },
     {
       "word": "Zapotec",
-      "start_ms": 16100,
-      "end_ms": 16600
+      "start_ms": 15520,
+      "end_ms": 16079
     },
     {
       "word": "history",
-      "start_ms": 16680,
-      "end_ms": 16900
+      "start_ms": 16079,
+      "end_ms": 16440
     },
     {
       "word": "and",
-      "start_ms": 16920,
-      "end_ms": 17340
+      "start_ms": 16440,
+      "end_ms": 16680
     },
     {
       "word": "archaeology.",
-      "start_ms": 17340,
-      "end_ms": 17940
+      "start_ms": 16680,
+      "end_ms": 17280
     }
   ],
   "ch15-1000": [
@@ -84793,143 +84803,143 @@
   "ch15-1020": [
     {
       "word": "Reference",
-      "start_ms": 300,
-      "end_ms": 600
+      "start_ms": 100,
+      "end_ms": 440
     },
     {
       "word": "photographs",
-      "start_ms": 600,
-      "end_ms": 1060
+      "start_ms": 440,
+      "end_ms": 1000
     },
     {
       "word": "of",
-      "start_ms": 1060,
-      "end_ms": 1460
+      "start_ms": 1000,
+      "end_ms": 1340
     },
     {
       "word": "Monte",
-      "start_ms": 1460,
-      "end_ms": 1740
+      "start_ms": 1340,
+      "end_ms": 1600
     },
     {
       "word": "Alb\u00e1n,",
-      "start_ms": 1740,
-      "end_ms": 2260
+      "start_ms": 1600,
+      "end_ms": 2220
     },
     {
       "word": "the",
-      "start_ms": 2620,
-      "end_ms": 2680
+      "start_ms": 2560,
+      "end_ms": 2560
     },
     {
       "word": "Valley",
-      "start_ms": 2680,
-      "end_ms": 3020
+      "start_ms": 2560,
+      "end_ms": 2820
     },
     {
       "word": "of",
-      "start_ms": 3020,
-      "end_ms": 3220
+      "start_ms": 2820,
+      "end_ms": 3020
     },
     {
-      "word": "Oaxaca,",
-      "start_ms": 3220,
-      "end_ms": 3600
+      "word": "Wahaka,",
+      "start_ms": 3020,
+      "end_ms": 3380
     },
     {
       "word": "and",
-      "start_ms": 4059,
-      "end_ms": 4160
+      "start_ms": 4100,
+      "end_ms": 4200
     },
     {
       "word": "the",
-      "start_ms": 4160,
-      "end_ms": 4260
+      "start_ms": 4200,
+      "end_ms": 4300
     },
     {
       "word": "Zapotec",
-      "start_ms": 4260,
+      "start_ms": 4300,
       "end_ms": 4820
     },
     {
       "word": "inscriptions",
       "start_ms": 4820,
-      "end_ms": 5320
+      "end_ms": 5340
     },
     {
       "word": "were",
-      "start_ms": 5320,
+      "start_ms": 5340,
       "end_ms": 5620
     },
     {
       "word": "used",
       "start_ms": 5620,
-      "end_ms": 5980
+      "end_ms": 5880
     },
     {
       "word": "to",
-      "start_ms": 5980,
-      "end_ms": 6180
+      "start_ms": 5880,
+      "end_ms": 6080
     },
     {
       "word": "guide",
-      "start_ms": 6180,
-      "end_ms": 6460
+      "start_ms": 6080,
+      "end_ms": 6300
     },
     {
       "word": "composition",
-      "start_ms": 6460,
-      "end_ms": 6960
+      "start_ms": 6300,
+      "end_ms": 6800
     },
     {
       "word": "and",
-      "start_ms": 6960,
-      "end_ms": 7480
+      "start_ms": 6800,
+      "end_ms": 7200
     },
     {
       "word": "accuracy,",
-      "start_ms": 7480,
-      "end_ms": 8220
+      "start_ms": 7200,
+      "end_ms": 7820
     },
     {
       "word": "but",
-      "start_ms": 8500,
-      "end_ms": 8660
+      "start_ms": 8400,
+      "end_ms": 8500
     },
     {
       "word": "all",
-      "start_ms": 8740,
-      "end_ms": 8900
+      "start_ms": 8500,
+      "end_ms": 8740
     },
     {
       "word": "final",
-      "start_ms": 8900,
-      "end_ms": 9280
+      "start_ms": 8740,
+      "end_ms": 9140
     },
     {
       "word": "images",
-      "start_ms": 9280,
-      "end_ms": 9700
+      "start_ms": 9140,
+      "end_ms": 9540
     },
     {
       "word": "are",
-      "start_ms": 9700,
-      "end_ms": 10020
+      "start_ms": 9540,
+      "end_ms": 9840
     },
     {
       "word": "original",
-      "start_ms": 10020,
-      "end_ms": 10480
+      "start_ms": 9840,
+      "end_ms": 10320
     },
     {
       "word": "generated",
-      "start_ms": 10480,
-      "end_ms": 11080
+      "start_ms": 10320,
+      "end_ms": 10920
     },
     {
       "word": "artworks.",
-      "start_ms": 11080,
-      "end_ms": 11920
+      "start_ms": 10920,
+      "end_ms": 11500
     }
   ],
   "ch15-1021": [

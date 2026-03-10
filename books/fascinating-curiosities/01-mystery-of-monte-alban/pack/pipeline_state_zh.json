@@ -4650,11 +4650,13 @@
     "validation_errors": []
   },
   "ch10-660": {
-    "status": "PENDING",
+    "status": "DONE",
     "retry_count": 0,
     "error": null,
-    "last_updated": "2026-03-10T03:33:15.601442+00:00",
-    "validation_errors": []
+    "last_updated": "2026-03-10T03:47:06.053908+00:00",
+    "validation_errors": [
+      "trailing_silence: 0.44 (480ms)"
+    ]
   },
   "ch11-662": {
     "status": "DONE",
@@ -5110,11 +5112,13 @@
     "validation_errors": []
   },
   "ch11-724": {
-    "status": "PENDING",
+    "status": "DONE",
     "retry_count": 0,
     "error": null,
-    "last_updated": "2026-03-10T03:33:15.601442+00:00",
-    "validation_errors": []
+    "last_updated": "2026-03-10T03:47:06.404105+00:00",
+    "validation_errors": [
+      "trailing_silence: 0.33 (3920ms)"
+    ]
   },
   "ch11-725": {
     "status": "DONE",
@@ -6639,10 +6643,10 @@
     ]
   },
   "ch15-941": {
-    "status": "PENDING",
+    "status": "DONE",
     "retry_count": 0,
     "error": null,
-    "last_updated": "2026-03-10T03:33:15.601442+00:00",
+    "last_updated": "2026-03-10T03:47:06.651136+00:00",
     "validation_errors": []
   },
   "ch15-942": {
