@@ -498,10 +498,14 @@ export function createStargateReader(
     playRequestSeq += 1
     tracePlayback("seek:ms", { targetMs: Math.round(targetMs), requestId: playRequestSeq }, true)
     suppressExternalReconcileUntil = performance.now() + SEEK_RECONCILE_SUPPRESSION_MS
-    audioEngine.seekToMs(targetMs)
+    if (isPlaying) {
+      audioEngine.seekToMs(targetMs)
+      audioEngine.ensureSourceIfPlaying("seekToMsAndSync")
+    } else {
+      audioEngine.seekToMsPreview(targetMs)
+    }
     syncChapterFromEnginePosition()
     syncNativeNowPlaying()
-    audioEngine.ensureSourceIfPlaying("seekToMsAndSync")
   }
 
   function seekToSegmentAndSync(index: number) {
@@ -944,38 +948,36 @@ export function createStargateReader(
       const expectedMsAfterBackground = backgroundedAudioMs + hiddenDurationMs
       backgroundedAt = 0
 
-      if (audioEngine) {
-        // ALWAYS attempt recovery, not just when isPlaying
+      if (audioEngine && isPlaying) {
         void audioEngine.recoverContext().then(() => {
           if (!audioEngine) return
 
-          if (isPlaying) {
-            audioEngine.ensureSourceIfPlaying("visibility:recover")
-            // Drift detection
-            if (shouldApplyDriftCorrection) {
-              const actualMs = audioEngine.getCurrentTimeMs()
-              const totalMs = audioEngine.getTotalDurationMs()
-              if (
-                Math.abs(expectedMsAfterBackground - actualMs) > 2000 &&
-                expectedMsAfterBackground < totalMs
-              ) {
-                seekToMsAndSync(Math.min(expectedMsAfterBackground, totalMs))
-              }
+          audioEngine.ensureSourceIfPlaying("visibility:recover")
+          // Drift detection
+          if (shouldApplyDriftCorrection) {
+            const actualMs = audioEngine.getCurrentTimeMs()
+            const totalMs = audioEngine.getTotalDurationMs()
+            if (
+              Math.abs(expectedMsAfterBackground - actualMs) > 2000 &&
+              expectedMsAfterBackground < totalMs
+            ) {
+              seekToMsAndSync(Math.min(expectedMsAfterBackground, totalMs))
             }
-            // Ensure recovery flows through one top-level orchestration path.
-            if (!audioEngine.isPlaying()) {
-              console.log("[SR:vis] engine paused while app expects playing; routing through doPlay()")
-              tracePlayback("visibility:recover-route-doPlay", {}, true)
-              void doPlay()
-              return
-            }
-            void requestWakeLock()
-            syncNativePlaybackState(true)
           }
-
-          // Sync native with actual state
+          // Ensure recovery flows through one top-level orchestration path.
+          if (!audioEngine.isPlaying()) {
+            console.log("[SR:vis] engine paused while app expects playing; routing through doPlay()")
+            tracePlayback("visibility:recover-route-doPlay", {}, true)
+            void doPlay()
+            return
+          }
+          void requestWakeLock()
+          syncNativePlaybackState(true)
           syncNativeNowPlaying()
         })
+      } else if (audioEngine) {
+        // Paused: just sync native state, do NOT recoverContext
+        syncNativeNowPlaying()
       }
 
       // Force transport UI sync (eliminates any single-frame inconsistency)

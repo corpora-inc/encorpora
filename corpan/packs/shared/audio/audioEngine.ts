@@ -243,6 +243,7 @@ export function createAudioEngine(
       try { currentSource.stop() } catch { /* already stopped */ }
       try { currentSource.disconnect() } catch { /* already disconnected */ }
       currentSource = null
+
     }
     suspendedWithLiveSource = false
   }
@@ -253,6 +254,49 @@ export function createAudioEngine(
    */
   function syncContextPlaybackState() {
     // no-op by design
+  }
+
+  /**
+   * Get the audio output latency in seconds.
+   * This is the delay between when audio is rendered (ctx.currentTime)
+   * and when it actually reaches the speakers.
+   */
+  let lastOutputLatencyS = 0
+  let outputLatencyLoggedOnce = false
+
+  function getOutputLatencyS(): number {
+    if (!ctx) return 0
+
+    // Prefer getOutputTimestamp() — gives the exact context time being heard
+    try {
+      const ts = (ctx as any).getOutputTimestamp?.()
+      if (ts && typeof ts.contextTime === "number" && ts.contextTime > 0) {
+        const latency = ctx.currentTime - ts.contextTime
+        if (latency >= 0 && latency < 5) {
+          lastOutputLatencyS = latency
+          if (!outputLatencyLoggedOnce) {
+            outputLatencyLoggedOnce = true
+            console.log(`[audio] output latency: ${(latency * 1000).toFixed(1)}ms (getOutputTimestamp)`)
+          }
+          return latency
+        }
+      }
+    } catch { /* not supported */ }
+
+    // Fallback: use baseLatency + outputLatency properties
+    const base = (ctx as any).baseLatency ?? 0
+    const output = (ctx as any).outputLatency ?? 0
+    const fallback = base + output
+    if (fallback > 0) {
+      lastOutputLatencyS = fallback
+      if (!outputLatencyLoggedOnce) {
+        outputLatencyLoggedOnce = true
+        console.log(`[audio] output latency: ${(fallback * 1000).toFixed(1)}ms (baseLatency+outputLatency)`)
+      }
+      return fallback
+    }
+
+    return lastOutputLatencyS
   }
 
   function ensureSourceIfPlaying(reason: string = "unknown") {
@@ -385,6 +429,7 @@ export function createAudioEngine(
     source.onended = () => {
       if (currentSource === source) {
         currentSource = null
+  
         // If the kept-live source ended while we were suspended/paused, we can no
         // longer fast-resume that source.
         if (!playing) {
@@ -401,6 +446,7 @@ export function createAudioEngine(
 
     source.start(0, clampedOffset / 1000)
     currentSource = source
+
     waitingForNextSegment = false
     waitingOwnerGeneration = null
     pendingNextSegmentStartMs = null
@@ -563,6 +609,9 @@ export function createAudioEngine(
       if (!ctx || !playing) {
         return accumulatedTimeMs + segmentPlaybackOffset
       }
+      // Compensate for audio pipeline latency so visuals match what's heard
+      const latencyS = getOutputLatencyS()
+      const outputCtxTime = ctx.currentTime - latencyS
       if (!currentSource) {
         const baseMs = accumulatedTimeMs + segmentPlaybackOffset
         if (
@@ -570,12 +619,12 @@ export function createAudioEngine(
           pendingNextSegmentStartMs !== null &&
           pendingNextSegmentFromCtxTime !== null
         ) {
-          const elapsedMs = Math.max(0, (ctx.currentTime - pendingNextSegmentFromCtxTime) * 1000)
+          const elapsedMs = Math.max(0, (outputCtxTime - pendingNextSegmentFromCtxTime) * 1000)
           return Math.min(baseMs + elapsedMs, pendingNextSegmentStartMs)
         }
         return baseMs
       }
-      const elapsed = (ctx.currentTime - segmentStartedAtCtxTime) * 1000
+      const elapsed = Math.max(0, (outputCtxTime - segmentStartedAtCtxTime) * 1000)
       return accumulatedTimeMs + segmentPlaybackOffset + elapsed
     },
 
@@ -648,6 +697,19 @@ export function createAudioEngine(
       ctx = null
       analyser = null
       gainNode = null
+      // Invalidate stale source/state from dead context
+      outputLatencyLoggedOnce = false
+      suspendedWithLiveSource = false
+      currentSource = null
+
+      waitingForNextSegment = false
+      waitingOwnerGeneration = null
+      pendingNextSegmentStartMs = null
+      pendingNextSegmentFromCtxTime = null
+      if (nextSegmentTimer) {
+        clearTimeout(nextSegmentTimer)
+        nextSegmentTimer = null
+      }
       bufferCache.clear()
       loadingPromises.clear()
       contextUnlocked = false

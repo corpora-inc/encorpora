@@ -155,9 +155,13 @@ export function createEarthgateReader(
   function seekToMsAndSync(targetMs: number) {
     if (!audioEngine) return
     suppressExternalReconcileUntil = performance.now() + SEEK_RECONCILE_SUPPRESSION_MS
-    audioEngine.seekToMs(targetMs)
+    if (isPlaying) {
+      audioEngine.seekToMs(targetMs)
+      audioEngine.ensureSourceIfPlaying("seekToMsAndSync")
+    } else {
+      audioEngine.seekToMsPreview(targetMs)
+    }
     syncNativeNowPlaying()
-    audioEngine.ensureSourceIfPlaying("seekToMsAndSync")
   }
 
   function seekToSegmentAndSync(index: number) {
@@ -629,36 +633,36 @@ export function createEarthgateReader(
       const wasBackgroundedAt = backgroundedAt
       backgroundedAt = 0
 
-      if (audioEngine) {
+      if (audioEngine && isPlaying) {
         void audioEngine.recoverContext().then(() => {
           if (!audioEngine) return
 
-          if (isPlaying) {
-            audioEngine.ensureSourceIfPlaying("visibility:recover")
-            const hiddenDurationMs = wasBackgroundedAt > 0 ? Math.max(0, Date.now() - wasBackgroundedAt) : 0
-            const shouldApplyDriftCorrection =
-              wasBackgroundedAt > 0 &&
-              hiddenDurationMs >= DRIFT_CORRECTION_MIN_BACKGROUND_MS
-            if (shouldApplyDriftCorrection) {
-              const wallElapsed = Date.now() - wasBackgroundedAt
-              const expectedMs = backgroundedAudioMs + wallElapsed
-              const actualMs = audioEngine.getCurrentTimeMs()
-              const totalMs = audioEngine.getTotalDurationMs()
-              if (Math.abs(expectedMs - actualMs) > 2000 && expectedMs < totalMs) {
-                seekToMsAndSync(Math.min(expectedMs, totalMs))
-              }
+          audioEngine.ensureSourceIfPlaying("visibility:recover")
+          const hiddenDurationMs = wasBackgroundedAt > 0 ? Math.max(0, Date.now() - wasBackgroundedAt) : 0
+          const shouldApplyDriftCorrection =
+            wasBackgroundedAt > 0 &&
+            hiddenDurationMs >= DRIFT_CORRECTION_MIN_BACKGROUND_MS
+          if (shouldApplyDriftCorrection) {
+            const wallElapsed = Date.now() - wasBackgroundedAt
+            const expectedMs = backgroundedAudioMs + wallElapsed
+            const actualMs = audioEngine.getCurrentTimeMs()
+            const totalMs = audioEngine.getTotalDurationMs()
+            if (Math.abs(expectedMs - actualMs) > 2000 && expectedMs < totalMs) {
+              seekToMsAndSync(Math.min(expectedMs, totalMs))
             }
-            if (!audioEngine.isPlaying()) {
-              console.log("[ER:vis] engine paused while app expects playing; routing through doPlay()")
-              void doPlay()
-              return
-            }
-            void requestWakeLock()
-            syncNativePlaybackState(true)
           }
-
+          if (!audioEngine.isPlaying()) {
+            console.log("[ER:vis] engine paused while app expects playing; routing through doPlay()")
+            void doPlay()
+            return
+          }
+          void requestWakeLock()
+          syncNativePlaybackState(true)
           syncNativeNowPlaying()
         })
+      } else if (audioEngine) {
+        // Paused: just sync native state, do NOT recoverContext
+        syncNativeNowPlaying()
       }
 
       transport.setPlaying(isPlaying)
