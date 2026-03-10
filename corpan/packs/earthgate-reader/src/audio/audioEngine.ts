@@ -651,6 +651,18 @@ export function createAudioEngine(
       ctx = null
       analyser = null
       gainNode = null
+      // Invalidate stale source/state from dead context
+      suspendedWithLiveSource = false
+      currentSource = null
+      sourceClearedAt = typeof performance !== "undefined" ? performance.now() : Date.now()
+      waitingForNextSegment = false
+      waitingOwnerGeneration = null
+      pendingNextSegmentStartMs = null
+      pendingNextSegmentFromCtxTime = null
+      if (nextSegmentTimer) {
+        clearTimeout(nextSegmentTimer)
+        nextSegmentTimer = null
+      }
       bufferCache.clear()
       loadingPromises.clear()
       contextUnlocked = false

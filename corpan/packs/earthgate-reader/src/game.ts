@@ -87,6 +87,9 @@ export function createEarthgateReader(
   let pendingEngineState: MediaSessionPlaybackState | null = null
   let pendingEngineStateSince = 0
   const EXTERNAL_STATE_DEBOUNCE_MS = 900
+  let suppressExternalReconcileUntil = 0
+  const SEEK_RECONCILE_SUPPRESSION_MS = 2000
+  const DRIFT_CORRECTION_MIN_BACKGROUND_MS = 5000
 
   // --- Background recovery timing ---
   let backgroundedAt = 0
@@ -150,6 +153,22 @@ export function createEarthgateReader(
     } else {
       void pauseNativeKeepAlive("syncNativePlaybackState")
     }
+  }
+
+  function seekToMsAndSync(targetMs: number) {
+    if (!audioEngine) return
+    suppressExternalReconcileUntil = performance.now() + SEEK_RECONCILE_SUPPRESSION_MS
+    audioEngine.seekToMs(targetMs)
+    syncNativeNowPlaying()
+    audioEngine.ensureSourceIfPlaying("seekToMsAndSync")
+  }
+
+  function seekToSegmentAndSync(index: number) {
+    if (!audioEngine) return
+    suppressExternalReconcileUntil = performance.now() + SEEK_RECONCILE_SUPPRESSION_MS
+    audioEngine.seekToSegment(index)
+    syncNativeNowPlaying()
+    audioEngine.ensureSourceIfPlaying("seekToSegmentAndSync")
   }
 
   function dispatchRemotePlayPause(cmd: EarthgateRemoteCommand, _source: string) {
@@ -424,9 +443,8 @@ export function createEarthgateReader(
     }
     const threshold = chapters[chapterIdx].firstSegmentIndex + 2
     const targetChapter = currentIdx > threshold ? chapterIdx : Math.max(0, chapterIdx - 1)
-    audioEngine.seekToSegment(chapters[targetChapter].firstSegmentIndex)
+    seekToSegmentAndSync(chapters[targetChapter].firstSegmentIndex)
     transport.setChapter(chapters[targetChapter].title)
-    syncNativeNowPlaying()
   })
 
   transport.onNextChapter(() => {
@@ -440,27 +458,25 @@ export function createEarthgateReader(
       }
     }
     const targetChapter = Math.min(chapters.length - 1, chapterIdx + 1)
-    audioEngine.seekToSegment(chapters[targetChapter].firstSegmentIndex)
+    seekToSegmentAndSync(chapters[targetChapter].firstSegmentIndex)
     transport.setChapter(chapters[targetChapter].title)
-    syncNativeNowPlaying()
   })
 
   transport.onSkipBack(() => {
     if (!audioEngine) return
-    audioEngine.seekToMs(Math.max(0, audioEngine.getCurrentTimeMs() - 30000))
-    syncNativeNowPlaying()
+    seekToMsAndSync(Math.max(0, audioEngine.getCurrentTimeMs() - 30000))
   })
 
   transport.onSkipForward(() => {
     if (!audioEngine) return
-    audioEngine.seekToMs(Math.min(audioEngine.getTotalDurationMs(), audioEngine.getCurrentTimeMs() + 30000))
-    syncNativeNowPlaying()
+    seekToMsAndSync(Math.min(audioEngine.getTotalDurationMs(), audioEngine.getCurrentTimeMs() + 30000))
   })
 
   // --- Scrub lifecycle ---
   let wasPlayingBeforeScrub = false
 
   transport.onScrubStart(() => {
+    suppressExternalReconcileUntil = performance.now() + SEEK_RECONCILE_SUPPRESSION_MS
     wasPlayingBeforeScrub = isPlaying
     if (wasPlayingBeforeScrub) doPause()
   })
@@ -472,9 +488,8 @@ export function createEarthgateReader(
 
   transport.onScrubEnd((fraction) => {
     if (!audioEngine) return
-    audioEngine.seekToMsPreview(fraction * audioEngine.getTotalDurationMs())
+    seekToMsAndSync(fraction * audioEngine.getTotalDurationMs())
     if (wasPlayingBeforeScrub) void doPlay()
-    else syncNativeNowPlaying()
   })
 
   settings.onLanguageChange((lang) => {
@@ -494,13 +509,11 @@ export function createEarthgateReader(
         break
       case "skipForward":
         if (!audioEngine) return
-        audioEngine.seekToMs(Math.min(audioEngine.getTotalDurationMs(), audioEngine.getCurrentTimeMs() + 30000))
-        syncNativeNowPlaying()
+        seekToMsAndSync(Math.min(audioEngine.getTotalDurationMs(), audioEngine.getCurrentTimeMs() + 30000))
         break
       case "skipBack":
         if (!audioEngine) return
-        audioEngine.seekToMs(Math.max(0, audioEngine.getCurrentTimeMs() - 30000))
-        syncNativeNowPlaying()
+        seekToMsAndSync(Math.max(0, audioEngine.getCurrentTimeMs() - 30000))
         break
     }
   }
@@ -511,13 +524,11 @@ export function createEarthgateReader(
     onPause: () => { dispatchRemotePlayPause("pause", "native") },
     onSkipForward: () => {
       if (!audioEngine) return
-      audioEngine.seekToMs(Math.min(audioEngine.getTotalDurationMs(), audioEngine.getCurrentTimeMs() + 30000))
-      syncNativeNowPlaying()
+      seekToMsAndSync(Math.min(audioEngine.getTotalDurationMs(), audioEngine.getCurrentTimeMs() + 30000))
     },
     onSkipBack: () => {
       if (!audioEngine) return
-      audioEngine.seekToMs(Math.max(0, audioEngine.getCurrentTimeMs() - 30000))
-      syncNativeNowPlaying()
+      seekToMsAndSync(Math.max(0, audioEngine.getCurrentTimeMs() - 30000))
     },
     onNextChapter: () => {
       if (!audioEngine || chapters.length === 0) return
@@ -530,9 +541,8 @@ export function createEarthgateReader(
         }
       }
       const targetChapter = Math.min(chapters.length - 1, chapterIdx + 1)
-      audioEngine.seekToSegment(chapters[targetChapter].firstSegmentIndex)
+      seekToSegmentAndSync(chapters[targetChapter].firstSegmentIndex)
       transport.setChapter(chapters[targetChapter].title)
-      syncNativeNowPlaying()
     },
     onPrevChapter: () => {
       if (!audioEngine || chapters.length === 0) return
@@ -546,14 +556,12 @@ export function createEarthgateReader(
       }
       const threshold = chapters[chapterIdx].firstSegmentIndex + 2
       const targetChapter = currentIdx > threshold ? chapterIdx : Math.max(0, chapterIdx - 1)
-      audioEngine.seekToSegment(chapters[targetChapter].firstSegmentIndex)
+      seekToSegmentAndSync(chapters[targetChapter].firstSegmentIndex)
       transport.setChapter(chapters[targetChapter].title)
-      syncNativeNowPlaying()
     },
     onSeek: (positionMs: number) => {
       if (!audioEngine) return
-      audioEngine.seekToMs(positionMs)
-      syncNativeNowPlaying()
+      seekToMsAndSync(positionMs)
     },
     onInterruptionBegan: () => {
       if (!audioEngine || !isPlaying) return
@@ -619,6 +627,7 @@ export function createEarthgateReader(
       }
     } else {
       stopBackgroundTimers()
+      suppressExternalReconcileUntil = performance.now() + SEEK_RECONCILE_SUPPRESSION_MS
 
       const wasBackgroundedAt = backgroundedAt
       backgroundedAt = 0
@@ -629,13 +638,17 @@ export function createEarthgateReader(
 
           if (isPlaying) {
             audioEngine.ensureSourceIfPlaying("visibility:recover")
-            if (wasBackgroundedAt > 0) {
+            const hiddenDurationMs = wasBackgroundedAt > 0 ? Math.max(0, Date.now() - wasBackgroundedAt) : 0
+            const shouldApplyDriftCorrection =
+              wasBackgroundedAt > 0 &&
+              hiddenDurationMs >= DRIFT_CORRECTION_MIN_BACKGROUND_MS
+            if (shouldApplyDriftCorrection) {
               const wallElapsed = Date.now() - wasBackgroundedAt
               const expectedMs = backgroundedAudioMs + wallElapsed
               const actualMs = audioEngine.getCurrentTimeMs()
               const totalMs = audioEngine.getTotalDurationMs()
               if (Math.abs(expectedMs - actualMs) > 2000 && expectedMs < totalMs) {
-                audioEngine.seekToMs(Math.min(expectedMs, totalMs))
+                seekToMsAndSync(Math.min(expectedMs, totalMs))
               }
             }
             if (!audioEngine.isPlaying()) {
@@ -907,46 +920,51 @@ export function createEarthgateReader(
     // Reconcile play state with engine (debounced to avoid transient mismatches)
     if (audioEngine) {
       const now = performance.now()
-      const enginePlaying = audioEngine.isPlaying()
-      if (enginePlaying !== isPlaying) {
-        const nextState: MediaSessionPlaybackState = enginePlaying ? "playing" : "paused"
-        if (pendingEngineState !== nextState) {
-          pendingEngineState = nextState
-          pendingEngineStateSince = now
-        }
-        if (now - pendingEngineStateSince >= EXTERNAL_STATE_DEBOUNCE_MS) {
-          pendingEngineState = null
+      if (now < suppressExternalReconcileUntil) {
+        // Suppressed during seeks, scrubs, and visibility recovery
+        pendingEngineState = null
+      } else {
+        const enginePlaying = audioEngine.isPlaying()
+        if (enginePlaying !== isPlaying) {
+          const nextState: MediaSessionPlaybackState = enginePlaying ? "playing" : "paused"
+          if (pendingEngineState !== nextState) {
+            pendingEngineState = nextState
+            pendingEngineStateSince = now
+          }
+          if (now - pendingEngineStateSince >= EXTERNAL_STATE_DEBOUNCE_MS) {
+            pendingEngineState = null
 
-          if (!enginePlaying && desiredPlaying) {
-            const ctxState = audioEngine.getContextState()
-            if (ctxState === "suspended") {
-              // Native/OS pause can suspend context without delivering JS
-              // action handlers. Treat it as authoritative pause.
-              if (!playInFlight) {
-                doPause()
+            if (!enginePlaying && desiredPlaying) {
+              const ctxState = audioEngine.getContextState()
+              if (ctxState === "suspended") {
+                // Native/OS pause can suspend context without delivering JS
+                // action handlers. Treat it as authoritative pause.
+                if (!playInFlight) {
+                  doPause()
+                }
+              } else {
+                // Running context + no source is a recoverable seam hole.
+                audioEngine.ensureSourceIfPlaying("reconcile:hold-desired-playing")
               }
             } else {
-              // Running context + no source is a recoverable seam hole.
-              audioEngine.ensureSourceIfPlaying("reconcile:hold-desired-playing")
+              console.log(`[ER:sync] reconciled engine/app mismatch -> engine=${enginePlaying} app=${isPlaying}`)
+              isPlaying = enginePlaying
+              transport.setPlaying(isPlaying)
+              syncMediaSessionPlaybackState(isPlaying ? "playing" : "paused")
+              if (isPlaying) {
+                void requestWakeLock()
+              } else {
+                releaseWakeLock()
+                stopBackgroundTimers()
+                if (document.hidden) backgroundedAt = 0
+              }
+              syncNativePlaybackState(isPlaying)
+              syncNativeNowPlaying()
             }
-          } else {
-            console.log(`[ER:sync] reconciled engine/app mismatch -> engine=${enginePlaying} app=${isPlaying}`)
-            isPlaying = enginePlaying
-            transport.setPlaying(isPlaying)
-            syncMediaSessionPlaybackState(isPlaying ? "playing" : "paused")
-            if (isPlaying) {
-              void requestWakeLock()
-            } else {
-              releaseWakeLock()
-              stopBackgroundTimers()
-              if (document.hidden) backgroundedAt = 0
-            }
-            syncNativePlaybackState(isPlaying)
-            syncNativeNowPlaying()
           }
+        } else {
+          pendingEngineState = null
         }
-      } else {
-        pendingEngineState = null
       }
     }
 
