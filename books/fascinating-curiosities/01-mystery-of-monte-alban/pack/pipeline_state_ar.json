@@ -461,10 +461,8 @@
     "status": "DONE",
     "retry_count": 0,
     "error": null,
-    "last_updated": "2026-03-10T03:01:55.581520+00:00",
-    "validation_errors": [
-      "too_long: 24080ms > 7550ms max"
-    ]
+    "last_updated": "2026-03-10T20:42:12.972406+00:00",
+    "validation_errors": []
   },
   "ch01-060": {
     "status": "DONE",
@@ -1067,10 +1065,8 @@
     "status": "DONE",
     "retry_count": 0,
     "error": null,
-    "last_updated": "2026-03-10T03:02:17.071439+00:00",
-    "validation_errors": [
-      "too_long: 19100ms > 6500ms max"
-    ]
+    "last_updated": "2026-03-10T20:42:13.245743+00:00",
+    "validation_errors": []
   },
   "ch02-135": {
     "status": "DONE",
@@ -1407,10 +1403,8 @@
     "status": "DONE",
     "retry_count": 0,
     "error": null,
-    "last_updated": "2026-03-10T03:02:28.766406+00:00",
-    "validation_errors": [
-      "too_long: 28400ms > 7700ms max"
-    ]
+    "last_updated": "2026-03-10T20:42:13.632135+00:00",
+    "validation_errors": []
   },
   "ch03-177": {
     "status": "DONE",
@@ -4682,10 +4676,8 @@
     "status": "DONE",
     "retry_count": 0,
     "error": null,
-    "last_updated": "2026-03-10T03:04:28.459756+00:00",
-    "validation_errors": [
-      "too_long: 35599ms > 8750ms max"
-    ]
+    "last_updated": "2026-03-10T20:42:14.089980+00:00",
+    "validation_errors": []
   },
   "ch09-580": {
     "status": "DONE",
@@ -5572,10 +5564,8 @@
     "status": "DONE",
     "retry_count": 0,
     "error": null,
-    "last_updated": "2026-03-10T03:04:58.788477+00:00",
-    "validation_errors": [
-      "too_long: 19800ms > 9200ms max"
-    ]
+    "last_updated": "2026-03-10T20:42:14.606196+00:00",
+    "validation_errors": []
   },
   "ch11-688": {
     "status": "DONE",
@@ -6401,9 +6391,9 @@
     "status": "DONE",
     "retry_count": 0,
     "error": null,
-    "last_updated": "2026-03-10T03:05:31.302623+00:00",
+    "last_updated": "2026-03-10T20:42:15.002625+00:00",
     "validation_errors": [
-      "too_long: 30040ms > 8900ms max"
+      "trailing_silence: 0.26 (4000ms)"
     ]
   },
   "ch12-788": {
