@@ -9,7 +9,6 @@ on:
       - "corpan/packs/**"
       - "web/pages/**"
       - "web/scripts/**"
-      - "books/fascinating-curiosities/**"
       - ".github/workflows/hover-runner-pages.yml"
   workflow_dispatch: {}
 
@@ -30,8 +29,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        with:
-          lfs: true
 
       - name: Setup Node
         uses: actions/setup-node@v4
@@ -97,7 +94,7 @@ jobs:
         working-directory: corpan/packs/stargate-reader
         run: npm run build
 
-      - name: Package Stargate Reader with Book Data
+      - name: Package Stargate Reader
         working-directory: corpan/packs/stargate-reader
         run: node scripts/pack.mjs
 
@@ -109,7 +106,7 @@ jobs:
         working-directory: corpan/packs/earthgate-reader
         run: npm run build
 
-      - name: Package Earthgate Reader with Book Data
+      - name: Package Earthgate Reader
         working-directory: corpan/packs/earthgate-reader
         run: node scripts/pack.mjs
 
@@ -140,7 +137,6 @@ jobs:
           mkdir -p "web/io/out/corpan/packs/stargate-reader"
           cp corpan/packs/stargate-reader/manifest.json "web/io/out/corpan/packs/stargate-reader/"
           cp -R corpan/packs/stargate-reader/dist "web/io/out/corpan/packs/stargate-reader/"
-          cp -R corpan/packs/stargate-reader/data "web/io/out/corpan/packs/stargate-reader/"
           cp corpan/packs/stargate-reader/stargate-reader.zip "web/io/out/corpan/packs/stargate-reader.zip"
 
       - name: Copy Earthgate Reader into io/out
@@ -148,7 +144,6 @@ jobs:
           mkdir -p "web/io/out/corpan/packs/earthgate-reader"
           cp corpan/packs/earthgate-reader/manifest.json "web/io/out/corpan/packs/earthgate-reader/"
           cp -R corpan/packs/earthgate-reader/dist "web/io/out/corpan/packs/earthgate-reader/"
-          cp -R corpan/packs/earthgate-reader/data "web/io/out/corpan/packs/earthgate-reader/"
           cp corpan/packs/earthgate-reader/earthgate-reader.zip "web/io/out/corpan/packs/earthgate-reader.zip"
 
       - name: Show Final Structure
