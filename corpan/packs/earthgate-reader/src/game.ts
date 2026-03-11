@@ -1,6 +1,6 @@
 import type { HostApi } from "@shared/sdk"
 import type { AudioManifest, BookSegment, TimelineWord, ChapterInfo } from "@shared/core"
-import { VOICE_NAMES, BOOK_NAMES, LANGUAGE_NAMES, resolveVoiceName } from "@shared/core"
+import { BOOK_NAMES, LANGUAGE_NAMES, resolveVoiceName } from "@shared/core"
 import { buildTimeline, findCurrentWordIndex, buildChapterIndex } from "@shared/core"
 import { createFetchDataProvider, createPreloadedDataProvider, type DataProvider } from "@shared/data"
 import { createAudioEngine, type AudioEngine } from "@shared/audio"
@@ -15,7 +15,6 @@ import {
   updateNativeNowPlaying,
   listenForRemoteCommands,
 } from "@shared/audio"
-export type LanguageInfo = { code: string; displayName: string; narrator: string }
 import { createParagraphView, type ParagraphView } from "./rendering/paragraphView"
 
 const bookmarks = createBookmarkStore("earthgate-reader")
@@ -344,8 +343,6 @@ export function createEarthgateReader(
   let manifest: AudioManifest | null = null
   let chapters: ChapterInfo[] = []
   let currentLanguage = (initialState?.language as string) || "en"
-  let availableLanguages = (initialState?.availableLanguages as string[]) || [currentLanguage]
-  const voiceMap: Record<string, string> = {}
 
   const bookId =
     (initialState?.bookId as string) ||
@@ -354,14 +351,6 @@ export function createEarthgateReader(
       : "unknown")
 
   const bookDisplayName = BOOK_NAMES[bookId] || bookId
-
-  function buildLanguageInfos(): LanguageInfo[] {
-    return availableLanguages.map(code => ({
-      code,
-      displayName: LANGUAGE_NAMES[code] || code.toUpperCase(),
-      narrator: resolveVoiceName(voiceMap[code] || ""),
-    }))
-  }
 
   function persistBookmark() {
     if (!audioEngine) return
@@ -705,17 +694,6 @@ export function createEarthgateReader(
         const contentRevision = initialState?.contentRevision as string | undefined
         dataProvider = createFetchDataProvider(dataUrl, contentRevision)
 
-        if (availableLanguages.length <= 1 && dataProvider.detectLanguages) {
-          const detected = await dataProvider.detectLanguages()
-          if (detected.length > 1) {
-            availableLanguages = detected
-          }
-        }
-
-        if (bookmark && availableLanguages.includes(bookmark.language)) {
-          currentLanguage = bookmark.language
-        }
-
         const segData = await dataProvider.loadSegments(currentLanguage)
         segments = segData.segments
         manifest = await dataProvider.loadAudioManifest(currentLanguage)
@@ -723,19 +701,15 @@ export function createEarthgateReader(
 
       if (disposed) return
 
-      voiceMap[currentLanguage] = manifest.voice
-      drawerStore.setState({ languages: buildLanguageInfos(), currentLanguage })
+      drawerStore.setState({
+        languages: [{
+          code: currentLanguage,
+          displayName: LANGUAGE_NAMES[currentLanguage] || currentLanguage.toUpperCase(),
+          narrator: resolveVoiceName(manifest.voice),
+        }],
+        currentLanguage,
+      })
       drawerStore.setState({ nowPlaying: { bookTitle: bookDisplayName, narrator: resolveVoiceName(manifest.voice) } })
-
-      // Background fetch other language voice info
-      for (const lang of availableLanguages) {
-        if (lang !== currentLanguage) {
-          dataProvider.loadAudioManifest(lang).then(m => {
-            voiceMap[lang] = m.voice
-            drawerStore.setState({ languages: buildLanguageInfos() })
-          }).catch(() => {})
-        }
-      }
 
       chapters = buildChapterIndex(segments)
 
@@ -821,89 +795,6 @@ export function createEarthgateReader(
     }
 
     return `/data/books/${bid}`
-  }
-
-  async function switchLanguage(newLang: string) {
-    if (newLang === currentLanguage || !dataProvider) return
-
-    try {
-      const wasPlaying = isPlaying
-      const savedSegmentIndex = audioEngine?.getCurrentSegmentIndex() ?? 0
-
-      audioEngine?.dispose()
-      audioEngine = null
-
-      currentLanguage = newLang
-
-      const [segData, newManifest] = await Promise.all([
-        dataProvider.loadSegments(newLang),
-        dataProvider.loadAudioManifest(newLang),
-      ])
-      if (disposed) return
-
-      segments = segData.segments
-      manifest = newManifest
-      voiceMap[newLang] = newManifest.voice
-      drawerStore.setState({ languages: buildLanguageInfos(), currentLanguage: newLang })
-      drawerStore.setState({ nowPlaying: { bookTitle: bookDisplayName, narrator: resolveVoiceName(newManifest.voice) } })
-      chapters = buildChapterIndex(segments)
-
-      const timeline = buildTimeline(segments, newManifest)
-      timelineWords = timeline.words
-      currentWordHint = 0
-
-      audioEngine = createAudioEngine(
-        segments,
-        newManifest,
-        dataProvider.resolveAudioUrl,
-        (index) => {
-          const seg = segments[index]
-          if (seg) {
-            transport.setChapter(seg.title)
-            syncNativeNowPlaying()
-            updateParagraphForSegment(index)
-          }
-        },
-        () => {
-          desiredPlaying = false
-          isPlaying = false
-          transport.setPlaying(false)
-          syncMediaSessionPlaybackState("paused")
-          releaseWakeLock()
-          stopBackgroundTimers()
-          backgroundedAt = 0
-          void stopNativeKeepAlive()
-          nativeSessionActive = false
-          nativePlaybackStateHint = "unknown"
-        },
-        () => {}
-      )
-
-      lastChapterIndex = -1
-      lastSegmentIndex = -1
-
-      if (chapters.length > 0) {
-        const starts = audioEngine.getSegmentAbsoluteStartMs()
-        const total = audioEngine.getTotalDurationMs()
-        if (total > 0) {
-          transport.setChapterMarkers(
-            chapters.map(c => starts[c.firstSegmentIndex] / total)
-          )
-        }
-      }
-
-      audioEngine.seekToSegment(savedSegmentIndex)
-      updateParagraphForSegment(savedSegmentIndex)
-
-      if (wasPlaying) {
-        audioEngine.unlock()
-        audioEngine.play()
-        isPlaying = true
-        transport.setPlaying(true)
-      }
-    } catch (err) {
-      console.error("[EarthgateReader] Failed to switch language:", err)
-    }
   }
 
   // --- Render loop (RAF-based, no Babylon) ---
@@ -1057,8 +948,6 @@ export function createEarthgateReader(
 
   return {
     dispose,
-    /** Called by appShell/drawer to switch language */
-    switchLanguage: (lang: string) => { void switchLanguage(lang) },
     /** Persist bookmark (called by appShell before exit) */
     persistBookmark,
   }

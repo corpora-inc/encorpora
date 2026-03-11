@@ -144,10 +144,10 @@
       "sentence_index": 2,
       "block_type": "text",
       "title": "Nota para el lector",
-      "text": "Los Mapuche (mah-POO-cheh) lucharon contra ellos durante más de trescientos años.",
-      "text_markdown": "Los Mapuche (mah-POO-cheh) lucharon contra ellos durante más de trescientos años.",
+      "text": "Los Mapuche lucharon contra ellos durante más de trescientos años.",
+      "text_markdown": "Los Mapuche lucharon contra ellos durante más de trescientos años.",
       "tts": {
-        "text": "Los Mapuche (mah-POO-cheh) lucharon contra ellos durante más de trescientos años.",
+        "text": "Los Mapuche lucharon contra ellos durante más de trescientos años.",
         "pause_after_ms": 500
       }
     },
@@ -393,10 +393,10 @@
       "sentence_index": 1,
       "block_type": "text",
       "title": "Capítulo 1 — La tierra entre dos imperios",
-      "text": "Las araucarias — llamadas pewen (peh-WEN) por la gente que vive entre ellas — alcanzan cuarenta metros de altura, con ramas que se extienden en capas rígidas y geométricas como enormes candelabros verdes.",
-      "text_markdown": "Las araucarias — llamadas pewen (peh-WEN) por la gente que vive entre ellas — alcanzan cuarenta metros de altura, con ramas que se extienden en capas rígidas y geométricas como enormes candelabros verdes.",
+      "text": "Las araucarias — llamadas pewen por la gente que vive entre ellas — alcanzan cuarenta metros de altura, con ramas que se extienden en capas rígidas y geométricas como enormes candelabros verdes.",
+      "text_markdown": "Las araucarias — llamadas pewen por la gente que vive entre ellas — alcanzan cuarenta metros de altura, con ramas que se extienden en capas rígidas y geométricas como enormes candelabros verdes.",
       "tts": {
-        "text": "Las araucarias — llamadas pewen (peh-WEN) por la gente que vive entre ellas — alcanzan cuarenta metros de altura, con ramas que se extienden en capas rígidas y geométricas como enormes candelabros verdes.",
+        "text": "Las araucarias — llamadas pewen por la gente que vive entre ellas — alcanzan cuarenta metros de altura, con ramas que se extienden en capas rígidas y geométricas como enormes candelabros verdes.",
         "pause_after_ms": 500
       }
     },
@@ -423,10 +423,10 @@
       "sentence_index": 3,
       "block_type": "text",
       "title": "Capítulo 1 — La tierra entre dos imperios",
-      "text": "Sus semillas, el piñón (pee-NYOHN), son ricas en almidón y grasa, y han alimentado a la gente de esta región durante milenios.",
-      "text_markdown": "Sus semillas, el piñón (pee-NYOHN), son ricas en almidón y grasa, y han alimentado a la gente de esta región durante milenios.",
+      "text": "Sus semillas, el piñón, son ricas en almidón y grasa, y han alimentado a la gente de esta región durante milenios.",
+      "text_markdown": "Sus semillas, el piñón, son ricas en almidón y grasa, y han alimentado a la gente de esta región durante milenios.",
       "tts": {
-        "text": "Sus semillas, el piñón (pee-NYOHN), son ricas en almidón y grasa, y han alimentado a la gente de esta región durante milenios.",
+        "text": "Sus semillas, el piñón, son ricas en almidón y grasa, y han alimentado a la gente de esta región durante milenios.",
         "pause_after_ms": 500
       }
     },
@@ -530,10 +530,10 @@
       "sentence_index": 0,
       "block_type": "text",
       "title": "Capítulo 1 — La tierra entre dos imperios",
-      "text": "La gente que vivía aquí lo llamaba Wallmapu (wahl-MAH-poo) — \"la tierra circundante\". Se extendía desde el río Itata en el norte hasta la isla de Chiloé en el sur, y a través de los Andes hacia las Pampas argentinas al este.",
-      "text_markdown": "La gente que vivía aquí lo llamaba Wallmapu (wahl-MAH-poo) — \"la tierra circundante\". Se extendía desde el río Itata en el norte hasta la isla de Chiloé en el sur, y a través de los Andes hacia las Pampas argentinas al este.",
+      "text": "La gente que vivía aquí lo llamaba Wallmapu — \"la tierra circundante\". Se extendía desde el río Itata en el norte hasta la isla de Chiloé en el sur, y a través de los Andes hacia las Pampas argentinas al este.",
+      "text_markdown": "La gente que vivía aquí lo llamaba Wallmapu — \"la tierra circundante\". Se extendía desde el río Itata en el norte hasta la isla de Chiloé en el sur, y a través de los Andes hacia las Pampas argentinas al este.",
       "tts": {
-        "text": "La gente que vivía aquí lo llamaba Wallmapu (wahl-MAH-poo) — \"la tierra circundante\". Se extendía desde el río Itata en el norte hasta la isla de Chiloé en el sur, y a través de los Andes hacia las Pampas argentinas al este.",
+        "text": "La gente que vivía aquí lo llamaba Wallmapu — \"la tierra circundante\". Se extendía desde el río Itata en el norte hasta la isla de Chiloé en el sur, y a través de los Andes hacia las Pampas argentinas al este.",
         "pause_after_ms": 500
       }
     },
@@ -710,10 +710,10 @@
       "sentence_index": 0,
       "block_type": "text",
       "title": "Capítulo 1 — La tierra entre dos imperios",
-      "text": "El primero en intentarlo fue el Imperio inca — el Tawantinsuyu (tah-wahn-teen-SOO-yoo), \"los Cuatro Suyos\", el estado más grande jamás construido en las Américas precolombinas.",
-      "text_markdown": "El primero en intentarlo fue el Imperio inca — el Tawantinsuyu (tah-wahn-teen-SOO-yoo), \"los Cuatro Suyos\", el estado más grande jamás construido en las Américas precolombinas.",
+      "text": "El primero en intentarlo fue el Imperio inca — el Tawantinsuyu, \"los Cuatro Suyos\", el estado más grande jamás construido en las Américas precolombinas.",
+      "text_markdown": "El primero en intentarlo fue el Imperio inca — el Tawantinsuyu, \"los Cuatro Suyos\", el estado más grande jamás construido en las Américas precolombinas.",
       "tts": {
-        "text": "El primero en intentarlo fue el Imperio inca — el Tawantinsuyu (tah-wahn-teen-SOO-yoo), \"los Cuatro Suyos\", el estado más grande jamás construido en las Américas precolombinas.",
+        "text": "El primero en intentarlo fue el Imperio inca — el Tawantinsuyu, \"los Cuatro Suyos\", el estado más grande jamás construido en las Américas precolombinas.",
         "pause_after_ms": 500
       }
     },
@@ -725,10 +725,10 @@
       "sentence_index": 1,
       "block_type": "text",
       "title": "Capítulo 1 — La tierra entre dos imperios",
-      "text": "A fines del siglo quince, los incas controlaban un territorio que se extendía desde la actual Colombia hasta el centro de Chile, abarcando doce millones de súbditos, conectados por más de 30.000 kilómetros de caminos, administrados por una burocracia que registraba población, trabajo y recursos usando cuerdas anudadas llamadas quipu (KEE-poo).",
-      "text_markdown": "A fines del siglo quince, los incas controlaban un territorio que se extendía desde la actual Colombia hasta el centro de Chile, abarcando doce millones de súbditos, conectados por más de 30.000 kilómetros de caminos, administrados por una burocracia que registraba población, trabajo y recursos usando cuerdas anudadas llamadas quipu (KEE-poo).",
+      "text": "A fines del siglo quince, los incas controlaban un territorio que se extendía desde la actual Colombia hasta el centro de Chile, abarcando doce millones de súbditos, conectados por más de 30.000 kilómetros de caminos, administrados por una burocracia que registraba población, trabajo y recursos usando cuerdas anudadas llamadas quipu.",
+      "text_markdown": "A fines del siglo quince, los incas controlaban un territorio que se extendía desde la actual Colombia hasta el centro de Chile, abarcando doce millones de súbditos, conectados por más de 30.000 kilómetros de caminos, administrados por una burocracia que registraba población, trabajo y recursos usando cuerdas anudadas llamadas quipu.",
       "tts": {
-        "text": "A fines del siglo quince, los incas controlaban un territorio que se extendía desde la actual Colombia hasta el centro de Chile, abarcando doce millones de súbditos, conectados por más de 30.000 kilómetros de caminos, administrados por una burocracia que registraba población, trabajo y recursos usando cuerdas anudadas llamadas quipu (KEE-poo).",
+        "text": "A fines del siglo quince, los incas controlaban un territorio que se extendía desde la actual Colombia hasta el centro de Chile, abarcando doce millones de súbditos, conectados por más de 30.000 kilómetros de caminos, administrados por una burocracia que registraba población, trabajo y recursos usando cuerdas anudadas llamadas quipu.",
         "pause_after_ms": 500
       }
     },
@@ -1054,10 +1054,10 @@
       "sentence_index": 0,
       "block_type": "text",
       "title": "Capítulo 2 — Antes de la palabra «mapuche»",
-      "text": "La gente que los españoles encontraron al sur del Maule se llamaba a sí misma reche (reh-CHEH) — \"gente auténtica\" o \"gente verdadera\". La palabra Mapuche — mapu (tierra) + che (gente), \"gente de la tierra\" — surgió después, durante el período colonial, cuando comunidades dispersas forjaron una identidad colectiva bajo la presión de la invasión.",
-      "text_markdown": "La gente que los españoles encontraron al sur del Maule se llamaba a sí misma *reche* (reh-CHEH) — \"gente auténtica\" o \"gente verdadera\". La palabra *Mapuche* — *mapu* (tierra) + *che* (gente), \"gente de la tierra\" — surgió después, durante el período colonial, cuando comunidades dispersas forjaron una identidad colectiva bajo la presión de la invasión.",
+      "text": "La gente que los españoles encontraron al sur del Maule se llamaba a sí misma reche — \"gente auténtica\" o \"gente verdadera\". La palabra Mapuche — mapu (tierra) + che (gente), \"gente de la tierra\" — surgió después, durante el período colonial, cuando comunidades dispersas forjaron una identidad colectiva bajo la presión de la invasión.",
+      "text_markdown": "La gente que los españoles encontraron al sur del Maule se llamaba a sí misma *reche* — \"gente auténtica\" o \"gente verdadera\". La palabra *Mapuche* — *mapu* (tierra) + *che* (gente), \"gente de la tierra\" — surgió después, durante el período colonial, cuando comunidades dispersas forjaron una identidad colectiva bajo la presión de la invasión.",
       "tts": {
-        "text": "La gente que los españoles encontraron al sur del Maule se llamaba a sí misma reche (reh-CHEH) — \"gente auténtica\" o \"gente verdadera\". La palabra Mapuche — mapu (tierra) + che (gente), \"gente de la tierra\" — surgió después, durante el período colonial, cuando comunidades dispersas forjaron una identidad colectiva bajo la presión de la invasión.",
+        "text": "La gente que los españoles encontraron al sur del Maule se llamaba a sí misma reche — \"gente auténtica\" o \"gente verdadera\". La palabra Mapuche — mapu (tierra) + che (gente), \"gente de la tierra\" — surgió después, durante el período colonial, cuando comunidades dispersas forjaron una identidad colectiva bajo la presión de la invasión.",
         "pause_after_ms": 500
       }
     },
@@ -1144,10 +1144,10 @@
       "sentence_index": 1,
       "block_type": "text",
       "title": "Capítulo 2 — Antes de la palabra «mapuche»",
-      "text": "La unidad más pequeña era el lof — un grupo familiar extenso de quizás cincuenta a cien personas, liderado por un lonko (LONG-koh), un jefe cuya autoridad descansaba en el prestigio personal, la habilidad oratoria y la generosidad, más que en el derecho hereditario.",
-      "text_markdown": "La unidad más pequeña era el *lof* — un grupo familiar extenso de quizás cincuenta a cien personas, liderado por un *lonko* (LONG-koh), un jefe cuya autoridad descansaba en el prestigio personal, la habilidad oratoria y la generosidad, más que en el derecho hereditario.",
+      "text": "La unidad más pequeña era el lof — un grupo familiar extenso de quizás cincuenta a cien personas, liderado por un lonko, un jefe cuya autoridad descansaba en el prestigio personal, la habilidad oratoria y la generosidad, más que en el derecho hereditario.",
+      "text_markdown": "La unidad más pequeña era el *lof* — un grupo familiar extenso de quizás cincuenta a cien personas, liderado por un *lonko*, un jefe cuya autoridad descansaba en el prestigio personal, la habilidad oratoria y la generosidad, más que en el derecho hereditario.",
       "tts": {
-        "text": "La unidad más pequeña era el lof — un grupo familiar extenso de quizás cincuenta a cien personas, liderado por un lonko (LONG-koh), un jefe cuya autoridad descansaba en el prestigio personal, la habilidad oratoria y la generosidad, más que en el derecho hereditario.",
+        "text": "La unidad más pequeña era el lof — un grupo familiar extenso de quizás cincuenta a cien personas, liderado por un lonko, un jefe cuya autoridad descansaba en el prestigio personal, la habilidad oratoria y la generosidad, más que en el derecho hereditario.",
         "pause_after_ms": 500
       }
     },
@@ -1159,10 +1159,10 @@
       "sentence_index": 2,
       "block_type": "text",
       "title": "Capítulo 2 — Antes de la palabra «mapuche»",
-      "text": "Varios lof vinculados entre sí formaban un rewe (REH-weh), una alianza ceremonial y política centrada en un espacio ritual compartido.",
-      "text_markdown": "Varios lof vinculados entre sí formaban un *rewe* (REH-weh), una alianza ceremonial y política centrada en un espacio ritual compartido.",
+      "text": "Varios lof vinculados entre sí formaban un rewe, una alianza ceremonial y política centrada en un espacio ritual compartido.",
+      "text_markdown": "Varios lof vinculados entre sí formaban un *rewe*, una alianza ceremonial y política centrada en un espacio ritual compartido.",
       "tts": {
-        "text": "Varios lof vinculados entre sí formaban un rewe (REH-weh), una alianza ceremonial y política centrada en un espacio ritual compartido.",
+        "text": "Varios lof vinculados entre sí formaban un rewe, una alianza ceremonial y política centrada en un espacio ritual compartido.",
         "pause_after_ms": 500
       }
     },
@@ -1174,10 +1174,10 @@
       "sentence_index": 3,
       "block_type": "text",
       "title": "Capítulo 2 — Antes de la palabra «mapuche»",
-      "text": "Varios rewe se agrupaban en un ayllarewe (eye-yah-REH-weh), una confederación mayor de aproximadamente nueve rewe que podía coordinar acciones en un territorio más amplio.",
-      "text_markdown": "Varios rewe se agrupaban en un *ayllarewe* (eye-yah-REH-weh), una confederación mayor de aproximadamente nueve rewe que podía coordinar acciones en un territorio más amplio.",
+      "text": "Varios rewe se agrupaban en un ayllarewe, una confederación mayor de aproximadamente nueve rewe que podía coordinar acciones en un territorio más amplio.",
+      "text_markdown": "Varios rewe se agrupaban en un *ayllarewe*, una confederación mayor de aproximadamente nueve rewe que podía coordinar acciones en un territorio más amplio.",
       "tts": {
-        "text": "Varios rewe se agrupaban en un ayllarewe (eye-yah-REH-weh), una confederación mayor de aproximadamente nueve rewe que podía coordinar acciones en un territorio más amplio.",
+        "text": "Varios rewe se agrupaban en un ayllarewe, una confederación mayor de aproximadamente nueve rewe que podía coordinar acciones en un territorio más amplio.",
         "pause_after_ms": 500
       }
     },
@@ -1189,10 +1189,10 @@
       "sentence_index": 4,
       "block_type": "text",
       "title": "Capítulo 2 — Antes de la palabra «mapuche»",
-      "text": "Y en tiempos de guerra, múltiples ayllarewe podían reunirse bajo un toqui (TOH-kee), un jefe de guerra elegido específicamente por la duración de una campaña.",
-      "text_markdown": "Y en tiempos de guerra, múltiples ayllarewe podían reunirse bajo un *toqui* (TOH-kee), un jefe de guerra elegido específicamente por la duración de una campaña.",
+      "text": "Y en tiempos de guerra, múltiples ayllarewe podían reunirse bajo un toqui, un jefe de guerra elegido específicamente por la duración de una campaña.",
+      "text_markdown": "Y en tiempos de guerra, múltiples ayllarewe podían reunirse bajo un *toqui*, un jefe de guerra elegido específicamente por la duración de una campaña.",
       "tts": {
-        "text": "Y en tiempos de guerra, múltiples ayllarewe podían reunirse bajo un toqui (TOH-kee), un jefe de guerra elegido específicamente por la duración de una campaña.",
+        "text": "Y en tiempos de guerra, múltiples ayllarewe podían reunirse bajo un toqui, un jefe de guerra elegido específicamente por la duración de una campaña.",
         "pause_after_ms": 800
       }
     },
@@ -1354,10 +1354,10 @@
       "sentence_index": 4,
       "block_type": "text",
       "title": "Capítulo 2 — Antes de la palabra «mapuche»",
-      "text": "A lo largo de la costa, los Lafkenche (lahf-KEN-cheh) — la \"gente del mar\" — pescaban y recolectaban mariscos.",
-      "text_markdown": "A lo largo de la costa, los Lafkenche (lahf-KEN-cheh) — la \"gente del mar\" — pescaban y recolectaban mariscos.",
+      "text": "A lo largo de la costa, los Lafkenche — la \"gente del mar\" — pescaban y recolectaban mariscos.",
+      "text_markdown": "A lo largo de la costa, los Lafkenche — la \"gente del mar\" — pescaban y recolectaban mariscos.",
       "tts": {
-        "text": "A lo largo de la costa, los Lafkenche (lahf-KEN-cheh) — la \"gente del mar\" — pescaban y recolectaban mariscos.",
+        "text": "A lo largo de la costa, los Lafkenche — la \"gente del mar\" — pescaban y recolectaban mariscos.",
         "pause_after_ms": 500
       }
     },
@@ -1369,10 +1369,10 @@
       "sentence_index": 5,
       "block_type": "text",
       "title": "Capítulo 2 — Antes de la palabra «mapuche»",
-      "text": "En las montañas, los Pewenche (peh-WEN-cheh) — la \"gente de la araucaria\" — vivían entre los bosques antiguos y controlaban los pasos de montaña que conectaban Chile con las Pampas argentinas.",
-      "text_markdown": "En las montañas, los Pewenche (peh-WEN-cheh) — la \"gente de la araucaria\" — vivían entre los bosques antiguos y controlaban los pasos de montaña que conectaban Chile con las Pampas argentinas.",
+      "text": "En las montañas, los Pewenche — la \"gente de la araucaria\" — vivían entre los bosques antiguos y controlaban los pasos de montaña que conectaban Chile con las Pampas argentinas.",
+      "text_markdown": "En las montañas, los Pewenche — la \"gente de la araucaria\" — vivían entre los bosques antiguos y controlaban los pasos de montaña que conectaban Chile con las Pampas argentinas.",
       "tts": {
-        "text": "En las montañas, los Pewenche (peh-WEN-cheh) — la \"gente de la araucaria\" — vivían entre los bosques antiguos y controlaban los pasos de montaña que conectaban Chile con las Pampas argentinas.",
+        "text": "En las montañas, los Pewenche — la \"gente de la araucaria\" — vivían entre los bosques antiguos y controlaban los pasos de montaña que conectaban Chile con las Pampas argentinas.",
         "pause_after_ms": 500
       }
     },
@@ -1414,10 +1414,10 @@
       "sentence_index": 0,
       "block_type": "text",
       "title": "Capítulo 2 — Antes de la palabra «mapuche»",
-      "text": "Vivían en ruka (ROO-kah) — grandes casas de paja, algunas de hasta veinte metros de largo, construidas con armazones de madera cubiertas con capas de junco y pasto.",
-      "text_markdown": "Vivían en *ruka* (ROO-kah) — grandes casas de paja, algunas de hasta veinte metros de largo, construidas con armazones de madera cubiertas con capas de junco y pasto.",
+      "text": "Vivían en ruka — grandes casas de paja, algunas de hasta veinte metros de largo, construidas con armazones de madera cubiertas con capas de junco y pasto.",
+      "text_markdown": "Vivían en *ruka* — grandes casas de paja, algunas de hasta veinte metros de largo, construidas con armazones de madera cubiertas con capas de junco y pasto.",
       "tts": {
-        "text": "Vivían en ruka (ROO-kah) — grandes casas de paja, algunas de hasta veinte metros de largo, construidas con armazones de madera cubiertas con capas de junco y pasto.",
+        "text": "Vivían en ruka — grandes casas de paja, algunas de hasta veinte metros de largo, construidas con armazones de madera cubiertas con capas de junco y pasto.",
         "pause_after_ms": 500
       }
     },
@@ -1656,10 +1656,10 @@
       "sentence_index": 1,
       "block_type": "text",
       "title": "Capítulo 2 — Antes de la palabra «mapuche»",
-      "text": "El tejido Mapuche, realizado en un telar vertical llamado witral (wee-TRAHL), producía telas de notable complejidad — patrones geométricos en lana teñida con pigmentos naturales, cada diseño portando significado social sobre la comunidad, el estatus y las relaciones espirituales de la tejedora.",
-      "text_markdown": "El tejido Mapuche, realizado en un telar vertical llamado *witral* (wee-TRAHL), producía telas de notable complejidad — patrones geométricos en lana teñida con pigmentos naturales, cada diseño portando significado social sobre la comunidad, el estatus y las relaciones espirituales de la tejedora.",
+      "text": "El tejido Mapuche, realizado en un telar vertical llamado witral, producía telas de notable complejidad — patrones geométricos en lana teñida con pigmentos naturales, cada diseño portando significado social sobre la comunidad, el estatus y las relaciones espirituales de la tejedora.",
+      "text_markdown": "El tejido Mapuche, realizado en un telar vertical llamado *witral*, producía telas de notable complejidad — patrones geométricos en lana teñida con pigmentos naturales, cada diseño portando significado social sobre la comunidad, el estatus y las relaciones espirituales de la tejedora.",
       "tts": {
-        "text": "El tejido Mapuche, realizado en un telar vertical llamado witral (wee-TRAHL), producía telas de notable complejidad — patrones geométricos en lana teñida con pigmentos naturales, cada diseño portando significado social sobre la comunidad, el estatus y las relaciones espirituales de la tejedora.",
+        "text": "El tejido Mapuche, realizado en un telar vertical llamado witral, producía telas de notable complejidad — patrones geométricos en lana teñida con pigmentos naturales, cada diseño portando significado social sobre la comunidad, el estatus y las relaciones espirituales de la tejedora.",
         "pause_after_ms": 500
       }
     },
@@ -1686,10 +1686,10 @@
       "sentence_index": 0,
       "block_type": "text",
       "title": "Capítulo 2 — Antes de la palabra «mapuche»",
-      "text": "Y hablaban una sola lengua — Mapudungun (mah-poo-DOON-goon), \"el habla de la tierra\" — en todo el territorio.",
-      "text_markdown": "Y hablaban una sola lengua — Mapudungun (mah-poo-DOON-goon), \"el habla de la tierra\" — en todo el territorio.",
+      "text": "Y hablaban una sola lengua — Mapudungun, \"el habla de la tierra\" — en todo el territorio.",
+      "text_markdown": "Y hablaban una sola lengua — Mapudungun, \"el habla de la tierra\" — en todo el territorio.",
       "tts": {
-        "text": "Y hablaban una sola lengua — Mapudungun (mah-poo-DOON-goon), \"el habla de la tierra\" — en todo el territorio.",
+        "text": "Y hablaban una sola lengua — Mapudungun, \"el habla de la tierra\" — en todo el territorio.",
         "pause_after_ms": 500
       }
     },
@@ -2567,10 +2567,10 @@
       "sentence_index": 1,
       "block_type": "text",
       "title": "Capítulo 4 — Lautaro y el punto de inflexión",
-      "text": "Los españoles lo llamaron \"Alonso\". Su nombre Mapuche era Lautaro (lah-oo-TAH-roh), o Leftraru (lef-TRAH-roo) en Mapudungun, que significa \"halcón veloz\".",
-      "text_markdown": "Los españoles lo llamaron \"Alonso\". Su nombre Mapuche era Lautaro (lah-oo-TAH-roh), o Leftraru (lef-TRAH-roo) en Mapudungun, que significa \"halcón veloz\".",
+      "text": "Los españoles lo llamaron \"Alonso\". Su nombre Mapuche era Lautaro, o Leftraru en Mapudungun, que significa \"halcón veloz\".",
+      "text_markdown": "Los españoles lo llamaron \"Alonso\". Su nombre Mapuche era Lautaro, o Leftraru en Mapudungun, que significa \"halcón veloz\".",
       "tts": {
-        "text": "Los españoles lo llamaron \"Alonso\". Su nombre Mapuche era Lautaro (lah-oo-TAH-roh), o Leftraru (lef-TRAH-roo) en Mapudungun, que significa \"halcón veloz\".",
+        "text": "Los españoles lo llamaron \"Alonso\". Su nombre Mapuche era Lautaro, o Leftraru en Mapudungun, que significa \"halcón veloz\".",
         "pause_after_ms": 800
       }
     },
@@ -5184,10 +5184,10 @@
       "sentence_index": 2,
       "block_type": "text",
       "title": "Capítulo 7 — Lo que codifica la lengua",
-      "text": "La palabra mawida (mah-WEE-dah) significa \"bosque\", pero también conlleva connotaciones de una entidad viva con su propio carácter y agencia.",
-      "text_markdown": "La palabra *mawida* (mah-WEE-dah) significa \"bosque\", pero también conlleva connotaciones de una entidad viva con su propio carácter y agencia.",
+      "text": "La palabra mawida significa \"bosque\", pero también conlleva connotaciones de una entidad viva con su propio carácter y agencia.",
+      "text_markdown": "La palabra *mawida* significa \"bosque\", pero también conlleva connotaciones de una entidad viva con su propio carácter y agencia.",
       "tts": {
-        "text": "La palabra mawida (mah-WEE-dah) significa \"bosque\", pero también conlleva connotaciones de una entidad viva con su propio carácter y agencia.",
+        "text": "La palabra mawida significa \"bosque\", pero también conlleva connotaciones de una entidad viva con su propio carácter y agencia.",
         "pause_after_ms": 500
       }
     },
@@ -5364,10 +5364,10 @@
       "sentence_index": 0,
       "block_type": "text",
       "title": "Capítulo 7 — Lo que codifica la lengua",
-      "text": "El ser espiritual supremo, Ngünechen (ngoo-neh-CHEN), encarna un principio fundamental de dualidad.",
-      "text_markdown": "El ser espiritual supremo, *Ngünechen* (ngoo-neh-CHEN), encarna un principio fundamental de dualidad.",
+      "text": "El ser espiritual supremo, Ngünechen, encarna un principio fundamental de dualidad.",
+      "text_markdown": "El ser espiritual supremo, *Ngünechen*, encarna un principio fundamental de dualidad.",
       "tts": {
-        "text": "El ser espiritual supremo, Ngünechen (ngoo-neh-CHEN), encarna un principio fundamental de dualidad.",
+        "text": "El ser espiritual supremo, Ngünechen, encarna un principio fundamental de dualidad.",
         "pause_after_ms": 500
       }
     },
@@ -5486,10 +5486,10 @@
       "sentence_index": 0,
       "block_type": "text",
       "title": "Capítulo 7 — Lo que codifica la lengua",
-      "text": "La machi (mah-CHEE) — la especialista espiritual, casi siempre una mujer — es la persona responsable de diagnosticar y restaurar el equilibrio.",
-      "text_markdown": "La *machi* (mah-CHEE) — la especialista espiritual, casi siempre una mujer — es la persona responsable de diagnosticar y restaurar el equilibrio.",
+      "text": "La machi — la especialista espiritual, casi siempre una mujer — es la persona responsable de diagnosticar y restaurar el equilibrio.",
+      "text_markdown": "La *machi* — la especialista espiritual, casi siempre una mujer — es la persona responsable de diagnosticar y restaurar el equilibrio.",
       "tts": {
-        "text": "La machi (mah-CHEE) — la especialista espiritual, casi siempre una mujer — es la persona responsable de diagnosticar y restaurar el equilibrio.",
+        "text": "La machi — la especialista espiritual, casi siempre una mujer — es la persona responsable de diagnosticar y restaurar el equilibrio.",
         "pause_after_ms": 500
       }
     },
@@ -5516,10 +5516,10 @@
       "sentence_index": 2,
       "block_type": "text",
       "title": "Capítulo 7 — Lo que codifica la lengua",
-      "text": "Su instrumento principal es el kultrun (kool-TROON), un tambor ceremonial cuya superficie plana está pintada con una representación del cosmos Mapuche — los cuatro puntos cardinales, el sol, la luna, las estrellas, divididos en los cuatro cuartos del mundo.",
-      "text_markdown": "Su instrumento principal es el *kultrun* (kool-TROON), un tambor ceremonial cuya superficie plana está pintada con una representación del cosmos Mapuche — los cuatro puntos cardinales, el sol, la luna, las estrellas, divididos en los cuatro cuartos del mundo.",
+      "text": "Su instrumento principal es el kultrun, un tambor ceremonial cuya superficie plana está pintada con una representación del cosmos Mapuche — los cuatro puntos cardinales, el sol, la luna, las estrellas, divididos en los cuatro cuartos del mundo.",
+      "text_markdown": "Su instrumento principal es el *kultrun*, un tambor ceremonial cuya superficie plana está pintada con una representación del cosmos Mapuche — los cuatro puntos cardinales, el sol, la luna, las estrellas, divididos en los cuatro cuartos del mundo.",
       "tts": {
-        "text": "Su instrumento principal es el kultrun (kool-TROON), un tambor ceremonial cuya superficie plana está pintada con una representación del cosmos Mapuche — los cuatro puntos cardinales, el sol, la luna, las estrellas, divididos en los cuatro cuartos del mundo.",
+        "text": "Su instrumento principal es el kultrun, un tambor ceremonial cuya superficie plana está pintada con una representación del cosmos Mapuche — los cuatro puntos cardinales, el sol, la luna, las estrellas, divididos en los cuatro cuartos del mundo.",
         "pause_after_ms": 500
       }
     },
@@ -5546,10 +5546,10 @@
       "sentence_index": 0,
       "block_type": "text",
       "title": "Capítulo 7 — Lo que codifica la lengua",
-      "text": "El rewe (REH-weh), un poste de madera tallado que se encuentra cerca de la casa de la machi, funciona como un eje vertical que conecta las capas del cosmos Mapuche — el mundo de arriba (Wenu Mapu), el mundo de los vivos (Nag Mapu) y el mundo de abajo (Minche Mapu).",
-      "text_markdown": "El *rewe* (REH-weh), un poste de madera tallado que se encuentra cerca de la casa de la machi, funciona como un eje vertical que conecta las capas del cosmos Mapuche — el mundo de arriba (*Wenu Mapu*), el mundo de los vivos (*Nag Mapu*) y el mundo de abajo (*Minche Mapu*).",
+      "text": "El rewe, un poste de madera tallado que se encuentra cerca de la casa de la machi, funciona como un eje vertical que conecta las capas del cosmos Mapuche — el mundo de arriba (Wenu Mapu), el mundo de los vivos (Nag Mapu) y el mundo de abajo (Minche Mapu).",
+      "text_markdown": "El *rewe*, un poste de madera tallado que se encuentra cerca de la casa de la machi, funciona como un eje vertical que conecta las capas del cosmos Mapuche — el mundo de arriba (*Wenu Mapu*), el mundo de los vivos (*Nag Mapu*) y el mundo de abajo (*Minche Mapu*).",
       "tts": {
-        "text": "El rewe (REH-weh), un poste de madera tallado que se encuentra cerca de la casa de la machi, funciona como un eje vertical que conecta las capas del cosmos Mapuche — el mundo de arriba (Wenu Mapu), el mundo de los vivos (Nag Mapu) y el mundo de abajo (Minche Mapu).",
+        "text": "El rewe, un poste de madera tallado que se encuentra cerca de la casa de la machi, funciona como un eje vertical que conecta las capas del cosmos Mapuche — el mundo de arriba (Wenu Mapu), el mundo de los vivos (Nag Mapu) y el mundo de abajo (Minche Mapu).",
         "pause_after_ms": 500
       }
     },
@@ -5561,10 +5561,10 @@
       "sentence_index": 1,
       "block_type": "text",
       "title": "Capítulo 7 — Lo que codifica la lengua",
-      "text": "Durante el nguillatun (ngee-yah-TOON), la ceremonia colectiva más importante, la machi asciende el rewe — literalmente subiendo sus escalones tallados — como una representación física del viaje espiritual entre mundos.",
-      "text_markdown": "Durante el *nguillatun* (ngee-yah-TOON), la ceremonia colectiva más importante, la machi asciende el rewe — literalmente subiendo sus escalones tallados — como una representación física del viaje espiritual entre mundos.",
+      "text": "Durante el nguillatun, la ceremonia colectiva más importante, la machi asciende el rewe — literalmente subiendo sus escalones tallados — como una representación física del viaje espiritual entre mundos.",
+      "text_markdown": "Durante el *nguillatun*, la ceremonia colectiva más importante, la machi asciende el rewe — literalmente subiendo sus escalones tallados — como una representación física del viaje espiritual entre mundos.",
       "tts": {
-        "text": "Durante el nguillatun (ngee-yah-TOON), la ceremonia colectiva más importante, la machi asciende el rewe — literalmente subiendo sus escalones tallados — como una representación física del viaje espiritual entre mundos.",
+        "text": "Durante el nguillatun, la ceremonia colectiva más importante, la machi asciende el rewe — literalmente subiendo sus escalones tallados — como una representación física del viaje espiritual entre mundos.",
         "pause_after_ms": 800
       }
     },
@@ -5843,10 +5843,10 @@
       "sentence_index": 2,
       "block_type": "text",
       "title": "Capítulo 8 — Por qué sobrevivió",
-      "text": "Los gobernadores españoles traían intérpretes llamados lenguaraces (len-gwah-RAH-sehs) — \"gente de lengua\" — que habían aprendido Mapudungun a través de años de inmersión.",
-      "text_markdown": "Los gobernadores españoles traían intérpretes llamados *lenguaraces* (len-gwah-RAH-sehs) — \"gente de lengua\" — que habían aprendido Mapudungun a través de años de inmersión.",
+      "text": "Los gobernadores españoles traían intérpretes llamados lenguaraces — \"gente de lengua\" — que habían aprendido Mapudungun a través de años de inmersión.",
+      "text_markdown": "Los gobernadores españoles traían intérpretes llamados *lenguaraces* — \"gente de lengua\" — que habían aprendido Mapudungun a través de años de inmersión.",
       "tts": {
-        "text": "Los gobernadores españoles traían intérpretes llamados lenguaraces (len-gwah-RAH-sehs) — \"gente de lengua\" — que habían aprendido Mapudungun a través de años de inmersión.",
+        "text": "Los gobernadores españoles traían intérpretes llamados lenguaraces — \"gente de lengua\" — que habían aprendido Mapudungun a través de años de inmersión.",
         "pause_after_ms": 500
       }
     },
@@ -7409,10 +7409,10 @@
       "sentence_index": 0,
       "block_type": "text",
       "title": "Capítulo 10 — Cómo ganar una guerra sin ejército",
-      "text": "El toqui Pelantaru (peh-lahn-TAH-roo) organizó un levantamiento coordinado en todo el territorio Mapuche.",
-      "text_markdown": "El toqui Pelantaru (peh-lahn-TAH-roo) organizó un levantamiento coordinado en todo el territorio Mapuche.",
+      "text": "El toqui Pelantaru organizó un levantamiento coordinado en todo el territorio Mapuche.",
+      "text_markdown": "El toqui Pelantaru organizó un levantamiento coordinado en todo el territorio Mapuche.",
       "tts": {
-        "text": "El toqui Pelantaru (peh-lahn-TAH-roo) organizó un levantamiento coordinado en todo el territorio Mapuche.",
+        "text": "El toqui Pelantaru organizó un levantamiento coordinado en todo el territorio Mapuche.",
         "pause_after_ms": 500
       }
     },
@@ -7454,10 +7454,10 @@
       "sentence_index": 0,
       "block_type": "text",
       "title": "Capítulo 10 — Cómo ganar una guerra sin ejército",
-      "text": "El 23 de diciembre de 1598, las fuerzas Mapuche emboscaron y destruyeron una columna española en la Batalla de Curalaba (koo-rah-LAH-bah), cerca de la actual ciudad de Lumaco.",
-      "text_markdown": "El 23 de diciembre de 1598, las fuerzas Mapuche emboscaron y destruyeron una columna española en la Batalla de Curalaba (koo-rah-LAH-bah), cerca de la actual ciudad de Lumaco.",
+      "text": "El 23 de diciembre de 1598, las fuerzas Mapuche emboscaron y destruyeron una columna española en la Batalla de Curalaba, cerca de la actual ciudad de Lumaco.",
+      "text_markdown": "El 23 de diciembre de 1598, las fuerzas Mapuche emboscaron y destruyeron una columna española en la Batalla de Curalaba, cerca de la actual ciudad de Lumaco.",
       "tts": {
-        "text": "El 23 de diciembre de 1598, las fuerzas Mapuche emboscaron y destruyeron una columna española en la Batalla de Curalaba (koo-rah-LAH-bah), cerca de la actual ciudad de Lumaco.",
+        "text": "El 23 de diciembre de 1598, las fuerzas Mapuche emboscaron y destruyeron una columna española en la Batalla de Curalaba, cerca de la actual ciudad de Lumaco.",
         "pause_after_ms": 500
       }
     },
@@ -8355,10 +8355,10 @@
       "sentence_index": 0,
       "block_type": "text",
       "title": "Capítulo 11 — El sistema parlamentario",
-      "text": "El parlamento surgió de una institución Mapuche llamada koyagtun (koh-yag-TOON) — una asamblea deliberativa donde los líderes se reunían para discutir asuntos de interés colectivo.",
-      "text_markdown": "El parlamento surgió de una institución Mapuche llamada *koyagtun* (koh-yag-TOON) — una asamblea deliberativa donde los líderes se reunían para discutir asuntos de interés colectivo.",
+      "text": "El parlamento surgió de una institución Mapuche llamada koyagtun — una asamblea deliberativa donde los líderes se reunían para discutir asuntos de interés colectivo.",
+      "text_markdown": "El parlamento surgió de una institución Mapuche llamada *koyagtun* — una asamblea deliberativa donde los líderes se reunían para discutir asuntos de interés colectivo.",
       "tts": {
-        "text": "El parlamento surgió de una institución Mapuche llamada koyagtun (koh-yag-TOON) — una asamblea deliberativa donde los líderes se reunían para discutir asuntos de interés colectivo.",
+        "text": "El parlamento surgió de una institución Mapuche llamada koyagtun — una asamblea deliberativa donde los líderes se reunían para discutir asuntos de interés colectivo.",
         "pause_after_ms": 500
       }
     },
@@ -8552,10 +8552,10 @@
       "sentence_index": 1,
       "block_type": "text",
       "title": "Capítulo 11 — El sistema parlamentario",
-      "text": "La delegación española se acercó portando ramas de foye (FOH-yeh), el canelo (Drimys winteri), sagrado en la cultura Mapuche — un gesto de paz que los Mapuche exigían como condición previa para las conversaciones.",
-      "text_markdown": "La delegación española se acercó portando ramas de *foye* (FOH-yeh), el canelo (*Drimys winteri*), sagrado en la cultura Mapuche — un gesto de paz que los Mapuche exigían como condición previa para las conversaciones.",
+      "text": "La delegación española se acercó portando ramas de foye, el canelo (Drimys winteri), sagrado en la cultura Mapuche — un gesto de paz que los Mapuche exigían como condición previa para las conversaciones.",
+      "text_markdown": "La delegación española se acercó portando ramas de *foye*, el canelo (*Drimys winteri*), sagrado en la cultura Mapuche — un gesto de paz que los Mapuche exigían como condición previa para las conversaciones.",
       "tts": {
-        "text": "La delegación española se acercó portando ramas de foye (FOH-yeh), el canelo (Drimys winteri), sagrado en la cultura Mapuche — un gesto de paz que los Mapuche exigían como condición previa para las conversaciones.",
+        "text": "La delegación española se acercó portando ramas de foye, el canelo (Drimys winteri), sagrado en la cultura Mapuche — un gesto de paz que los Mapuche exigían como condición previa para las conversaciones.",
         "pause_after_ms": 500
       }
     },
@@ -9239,10 +9239,10 @@
       "sentence_index": 0,
       "block_type": "text",
       "title": "Capítulo 12 — Una nación sin capital",
-      "text": "El lonko (LONG-koh) — el líder de un lof, el grupo de parentesco básico — era un jefe cuya autoridad derivaba del prestigio.",
-      "text_markdown": "El *lonko* (LONG-koh) — el líder de un lof, el grupo de parentesco básico — era un jefe cuya autoridad derivaba del prestigio.",
+      "text": "El lonko — el líder de un lof, el grupo de parentesco básico — era un jefe cuya autoridad derivaba del prestigio.",
+      "text_markdown": "El *lonko* — el líder de un lof, el grupo de parentesco básico — era un jefe cuya autoridad derivaba del prestigio.",
       "tts": {
-        "text": "El lonko (LONG-koh) — el líder de un lof, el grupo de parentesco básico — era un jefe cuya autoridad derivaba del prestigio.",
+        "text": "El lonko — el líder de un lof, el grupo de parentesco básico — era un jefe cuya autoridad derivaba del prestigio.",
         "pause_after_ms": 500
       }
     },
@@ -9254,10 +9254,10 @@
       "sentence_index": 1,
       "block_type": "text",
       "title": "Capítulo 12 — Una nación sin capital",
-      "text": "Un lonko era típicamente un hombre mayor conocido por su habilidad oratoria, su generosidad, su juicio y su conocimiento del ad mapu (ahd MAH-poo) — el derecho consuetudinario que regía la vida social Mapuche.",
-      "text_markdown": "Un lonko era típicamente un hombre mayor conocido por su habilidad oratoria, su generosidad, su juicio y su conocimiento del *ad mapu* (ahd MAH-poo) — el derecho consuetudinario que regía la vida social Mapuche.",
+      "text": "Un lonko era típicamente un hombre mayor conocido por su habilidad oratoria, su generosidad, su juicio y su conocimiento del ad mapu — el derecho consuetudinario que regía la vida social Mapuche.",
+      "text_markdown": "Un lonko era típicamente un hombre mayor conocido por su habilidad oratoria, su generosidad, su juicio y su conocimiento del *ad mapu* — el derecho consuetudinario que regía la vida social Mapuche.",
       "tts": {
-        "text": "Un lonko era típicamente un hombre mayor conocido por su habilidad oratoria, su generosidad, su juicio y su conocimiento del ad mapu (ahd MAH-poo) — el derecho consuetudinario que regía la vida social Mapuche.",
+        "text": "Un lonko era típicamente un hombre mayor conocido por su habilidad oratoria, su generosidad, su juicio y su conocimiento del ad mapu — el derecho consuetudinario que regía la vida social Mapuche.",
         "pause_after_ms": 500
       }
     },
@@ -9314,10 +9314,10 @@
       "sentence_index": 0,
       "block_type": "text",
       "title": "Capítulo 12 — Una nación sin capital",
-      "text": "El toqui (TOH-kee) — el jefe de guerra — era elegido para una campaña específica.",
-      "text_markdown": "El *toqui* (TOH-kee) — el jefe de guerra — era elegido para una campaña específica.",
+      "text": "El toqui — el jefe de guerra — era elegido para una campaña específica.",
+      "text_markdown": "El *toqui* — el jefe de guerra — era elegido para una campaña específica.",
       "tts": {
-        "text": "El toqui (TOH-kee) — el jefe de guerra — era elegido para una campaña específica.",
+        "text": "El toqui — el jefe de guerra — era elegido para una campaña específica.",
         "pause_after_ms": 500
       }
     },
@@ -9419,10 +9419,10 @@
       "sentence_index": 0,
       "block_type": "text",
       "title": "Capítulo 12 — Una nación sin capital",
-      "text": "La machi (mah-CHEE) — la especialista espiritual — poseía una forma de autoridad que existía completamente fuera del dominio político.",
-      "text_markdown": "La *machi* (mah-CHEE) — la especialista espiritual — poseía una forma de autoridad que existía completamente fuera del dominio político.",
+      "text": "La machi — la especialista espiritual — poseía una forma de autoridad que existía completamente fuera del dominio político.",
+      "text_markdown": "La *machi* — la especialista espiritual — poseía una forma de autoridad que existía completamente fuera del dominio político.",
       "tts": {
-        "text": "La machi (mah-CHEE) — la especialista espiritual — poseía una forma de autoridad que existía completamente fuera del dominio político.",
+        "text": "La machi — la especialista espiritual — poseía una forma de autoridad que existía completamente fuera del dominio político.",
         "pause_after_ms": 500
       }
     },
@@ -11606,10 +11606,10 @@
       "sentence_index": 2,
       "block_type": "text",
       "title": "Capítulo 14 — Los mapuche hoy",
-      "text": "La bandera Mapuche — la Wenufoye (weh-noo-FOH-yeh) — estaba en todas partes.",
-      "text_markdown": "La bandera Mapuche — la *Wenufoye* (weh-noo-FOH-yeh) — estaba en todas partes.",
+      "text": "La bandera Mapuche — la Wenufoye — estaba en todas partes.",
+      "text_markdown": "La bandera Mapuche — la *Wenufoye* — estaba en todas partes.",
       "tts": {
-        "text": "La bandera Mapuche — la Wenufoye (weh-noo-FOH-yeh) — estaba en todas partes.",
+        "text": "La bandera Mapuche — la Wenufoye — estaba en todas partes.",
         "pause_after_ms": 500
       }
     },
@@ -13279,10 +13279,10 @@
       "sentence_index": 0,
       "block_type": "text",
       "title": "Nombres y términos clave",
-      "text": "Ad mapu (ahd MAH-poo) — Derecho consuetudinario Mapuche, transmitido oralmente y que rige el comportamiento social, la resolución de disputas y las obligaciones comunitarias.",
-      "text_markdown": "**Ad mapu** (ahd MAH-poo) — Derecho consuetudinario Mapuche, transmitido oralmente y que rige el comportamiento social, la resolución de disputas y las obligaciones comunitarias.",
+      "text": "Ad mapu — Derecho consuetudinario Mapuche, transmitido oralmente y que rige el comportamiento social, la resolución de disputas y las obligaciones comunitarias.",
+      "text_markdown": "**Ad mapu** — Derecho consuetudinario Mapuche, transmitido oralmente y que rige el comportamiento social, la resolución de disputas y las obligaciones comunitarias.",
       "tts": {
-        "text": "Ad mapu (ahd MAH-poo) — Derecho consuetudinario Mapuche, transmitido oralmente y que rige el comportamiento social, la resolución de disputas y las obligaciones comunitarias.",
+        "text": "Ad mapu — Derecho consuetudinario Mapuche, transmitido oralmente y que rige el comportamiento social, la resolución de disputas y las obligaciones comunitarias.",
         "pause_after_ms": 800
       }
     },
@@ -13294,10 +13294,10 @@
       "sentence_index": 0,
       "block_type": "text",
       "title": "Nombres y términos clave",
-      "text": "Ayllarewe (eye-yah-REH-weh) — Confederación de nueve rewe, la unidad política más grande en tiempos de paz en la sociedad Mapuche.",
-      "text_markdown": "**Ayllarewe** (eye-yah-REH-weh) — Confederación de nueve rewe, la unidad política más grande en tiempos de paz en la sociedad Mapuche.",
+      "text": "Ayllarewe — Confederación de nueve rewe, la unidad política más grande en tiempos de paz en la sociedad Mapuche.",
+      "text_markdown": "**Ayllarewe** — Confederación de nueve rewe, la unidad política más grande en tiempos de paz en la sociedad Mapuche.",
       "tts": {
-        "text": "Ayllarewe (eye-yah-REH-weh) — Confederación de nueve rewe, la unidad política más grande en tiempos de paz en la sociedad Mapuche.",
+        "text": "Ayllarewe — Confederación de nueve rewe, la unidad política más grande en tiempos de paz en la sociedad Mapuche.",
         "pause_after_ms": 500
       }
     },
@@ -13594,10 +13594,10 @@
       "sentence_index": 0,
       "block_type": "text",
       "title": "Nombres y términos clave",
-      "text": "Foye (FOH-yeh) — El canelo (Drimys winteri), sagrado en la cultura Mapuche.",
-      "text_markdown": "**Foye** (FOH-yeh) — El canelo (*Drimys winteri*), sagrado en la cultura Mapuche.",
+      "text": "Foye — El canelo (Drimys winteri), sagrado en la cultura Mapuche.",
+      "text_markdown": "**Foye** — El canelo (*Drimys winteri*), sagrado en la cultura Mapuche.",
       "tts": {
-        "text": "Foye (FOH-yeh) — El canelo (Drimys winteri), sagrado en la cultura Mapuche.",
+        "text": "Foye — El canelo (Drimys winteri), sagrado en la cultura Mapuche.",
         "pause_after_ms": 500
       }
     },
@@ -13624,10 +13624,10 @@
       "sentence_index": 0,
       "block_type": "text",
       "title": "Nombres y términos clave",
-      "text": "Koyagtun (koh-yag-TOON) — La asamblea deliberativa indígena Mapuche, precursora y fundamento del sistema de parlamentos.",
-      "text_markdown": "**Koyagtun** (koh-yag-TOON) — La asamblea deliberativa indígena Mapuche, precursora y fundamento del sistema de parlamentos.",
+      "text": "Koyagtun — La asamblea deliberativa indígena Mapuche, precursora y fundamento del sistema de parlamentos.",
+      "text_markdown": "**Koyagtun** — La asamblea deliberativa indígena Mapuche, precursora y fundamento del sistema de parlamentos.",
       "tts": {
-        "text": "Koyagtun (koh-yag-TOON) — La asamblea deliberativa indígena Mapuche, precursora y fundamento del sistema de parlamentos.",
+        "text": "Koyagtun — La asamblea deliberativa indígena Mapuche, precursora y fundamento del sistema de parlamentos.",
         "pause_after_ms": 800
       }
     },
@@ -13639,10 +13639,10 @@
       "sentence_index": 0,
       "block_type": "text",
       "title": "Nombres y términos clave",
-      "text": "Kultrun (kool-TROON) — El tambor ceremonial de la machi, pintado con un mapa cosmológico que muestra los cuatro puntos cardinales, el sol, la luna y las estrellas.",
-      "text_markdown": "**Kultrun** (kool-TROON) — El tambor ceremonial de la machi, pintado con un mapa cosmológico que muestra los cuatro puntos cardinales, el sol, la luna y las estrellas.",
+      "text": "Kultrun — El tambor ceremonial de la machi, pintado con un mapa cosmológico que muestra los cuatro puntos cardinales, el sol, la luna y las estrellas.",
+      "text_markdown": "**Kultrun** — El tambor ceremonial de la machi, pintado con un mapa cosmológico que muestra los cuatro puntos cardinales, el sol, la luna y las estrellas.",
       "tts": {
-        "text": "Kultrun (kool-TROON) — El tambor ceremonial de la machi, pintado con un mapa cosmológico que muestra los cuatro puntos cardinales, el sol, la luna y las estrellas.",
+        "text": "Kultrun — El tambor ceremonial de la machi, pintado con un mapa cosmológico que muestra los cuatro puntos cardinales, el sol, la luna y las estrellas.",
         "pause_after_ms": 800
       }
     },
@@ -13654,10 +13654,10 @@
       "sentence_index": 0,
       "block_type": "text",
       "title": "Nombres y términos clave",
-      "text": "Lafkenche (lahf-KEN-cheh) — \"Gente del mar\". Comunidades Mapuche a lo largo de la costa del Pacífico.",
-      "text_markdown": "**Lafkenche** (lahf-KEN-cheh) — \"Gente del mar\". Comunidades Mapuche a lo largo de la costa del Pacífico.",
+      "text": "Lafkenche — \"Gente del mar\". Comunidades Mapuche a lo largo de la costa del Pacífico.",
+      "text_markdown": "**Lafkenche** — \"Gente del mar\". Comunidades Mapuche a lo largo de la costa del Pacífico.",
       "tts": {
-        "text": "Lafkenche (lahf-KEN-cheh) — \"Gente del mar\". Comunidades Mapuche a lo largo de la costa del Pacífico.",
+        "text": "Lafkenche — \"Gente del mar\". Comunidades Mapuche a lo largo de la costa del Pacífico.",
         "pause_after_ms": 800
       }
     },
@@ -13669,10 +13669,10 @@
       "sentence_index": 0,
       "block_type": "text",
       "title": "Nombres y términos clave",
-      "text": "Lautaro (lah-oo-TAH-roh) — Toqui (jefe de guerra) Mapuche, c.",
-      "text_markdown": "**Lautaro** (lah-oo-TAH-roh) — Toqui (jefe de guerra) Mapuche, c.",
+      "text": "Lautaro — Toqui (jefe de guerra) Mapuche, c.",
+      "text_markdown": "**Lautaro** — Toqui (jefe de guerra) Mapuche, c.",
       "tts": {
-        "text": "Lautaro (lah-oo-TAH-roh) — Toqui (jefe de guerra) Mapuche, c.",
+        "text": "Lautaro — Toqui (jefe de guerra) Mapuche, c.",
         "pause_after_ms": 500
       }
     },
@@ -13744,10 +13744,10 @@
       "sentence_index": 0,
       "block_type": "text",
       "title": "Nombres y términos clave",
-      "text": "Lonko (LONG-koh) — El líder de un lof, cuya autoridad descansaba en el prestigio, la oratoria y la generosidad, más que en el derecho hereditario.",
-      "text_markdown": "**Lonko** (LONG-koh) — El líder de un lof, cuya autoridad descansaba en el prestigio, la oratoria y la generosidad, más que en el derecho hereditario.",
+      "text": "Lonko — El líder de un lof, cuya autoridad descansaba en el prestigio, la oratoria y la generosidad, más que en el derecho hereditario.",
+      "text_markdown": "**Lonko** — El líder de un lof, cuya autoridad descansaba en el prestigio, la oratoria y la generosidad, más que en el derecho hereditario.",
       "tts": {
-        "text": "Lonko (LONG-koh) — El líder de un lof, cuya autoridad descansaba en el prestigio, la oratoria y la generosidad, más que en el derecho hereditario.",
+        "text": "Lonko — El líder de un lof, cuya autoridad descansaba en el prestigio, la oratoria y la generosidad, más que en el derecho hereditario.",
         "pause_after_ms": 800
       }
     },
@@ -13759,10 +13759,10 @@
       "sentence_index": 0,
       "block_type": "text",
       "title": "Nombres y términos clave",
-      "text": "Machi (mah-CHEE) — Especialista espiritual Mapuche, casi siempre mujer.",
-      "text_markdown": "**Machi** (mah-CHEE) — Especialista espiritual Mapuche, casi siempre mujer.",
+      "text": "Machi — Especialista espiritual Mapuche, casi siempre mujer.",
+      "text_markdown": "**Machi** — Especialista espiritual Mapuche, casi siempre mujer.",
       "tts": {
-        "text": "Machi (mah-CHEE) — Especialista espiritual Mapuche, casi siempre mujer.",
+        "text": "Machi — Especialista espiritual Mapuche, casi siempre mujer.",
         "pause_after_ms": 500
       }
     },
@@ -13789,10 +13789,10 @@
       "sentence_index": 0,
       "block_type": "text",
       "title": "Nombres y términos clave",
-      "text": "Mapu (MAH-poo) — Tierra, territorio.",
-      "text_markdown": "**Mapu** (MAH-poo) — Tierra, territorio.",
+      "text": "Mapu — Tierra, territorio.",
+      "text_markdown": "**Mapu** — Tierra, territorio.",
       "tts": {
-        "text": "Mapu (MAH-poo) — Tierra, territorio.",
+        "text": "Mapu — Tierra, territorio.",
         "pause_after_ms": 500
       }
     },
@@ -13819,10 +13819,10 @@
       "sentence_index": 0,
       "block_type": "text",
       "title": "Nombres y términos clave",
-      "text": "Mapuche (mah-POO-cheh) — \"Gente de la tierra\". El pueblo indígena del centro-sur de Chile y el suroeste de Argentina.",
-      "text_markdown": "**Mapuche** (mah-POO-cheh) — \"Gente de la tierra\". El pueblo indígena del centro-sur de Chile y el suroeste de Argentina.",
+      "text": "Mapuche — \"Gente de la tierra\". El pueblo indígena del centro-sur de Chile y el suroeste de Argentina.",
+      "text_markdown": "**Mapuche** — \"Gente de la tierra\". El pueblo indígena del centro-sur de Chile y el suroeste de Argentina.",
       "tts": {
-        "text": "Mapuche (mah-POO-cheh) — \"Gente de la tierra\". El pueblo indígena del centro-sur de Chile y el suroeste de Argentina.",
+        "text": "Mapuche — \"Gente de la tierra\". El pueblo indígena del centro-sur de Chile y el suroeste de Argentina.",
         "pause_after_ms": 500
       }
     },
@@ -13849,10 +13849,10 @@
       "sentence_index": 0,
       "block_type": "text",
       "title": "Nombres y términos clave",
-      "text": "Mapudungun (mah-poo-DOON-goon) — \"El habla de la tierra\". La lengua Mapuche, una lengua aislada sin parientes conocidos.",
-      "text_markdown": "**Mapudungun** (mah-poo-DOON-goon) — \"El habla de la tierra\". La lengua Mapuche, una lengua aislada sin parientes conocidos.",
+      "text": "Mapudungun — \"El habla de la tierra\". La lengua Mapuche, una lengua aislada sin parientes conocidos.",
+      "text_markdown": "**Mapudungun** — \"El habla de la tierra\". La lengua Mapuche, una lengua aislada sin parientes conocidos.",
       "tts": {
-        "text": "Mapudungun (mah-poo-DOON-goon) — \"El habla de la tierra\". La lengua Mapuche, una lengua aislada sin parientes conocidos.",
+        "text": "Mapudungun — \"El habla de la tierra\". La lengua Mapuche, una lengua aislada sin parientes conocidos.",
         "pause_after_ms": 800
       }
     },
@@ -13894,10 +13894,10 @@
       "sentence_index": 0,
       "block_type": "text",
       "title": "Nombres y términos clave",
-      "text": "Ngünechen (ngoo-neh-CHEN) — El ser espiritual supremo en la cosmología Mapuche, que encarna simultáneamente cuatro aspectos: anciano, anciana, joven hombre, joven mujer.",
-      "text_markdown": "**Ngünechen** (ngoo-neh-CHEN) — El ser espiritual supremo en la cosmología Mapuche, que encarna simultáneamente cuatro aspectos: anciano, anciana, joven hombre, joven mujer.",
+      "text": "Ngünechen — El ser espiritual supremo en la cosmología Mapuche, que encarna simultáneamente cuatro aspectos: anciano, anciana, joven hombre, joven mujer.",
+      "text_markdown": "**Ngünechen** — El ser espiritual supremo en la cosmología Mapuche, que encarna simultáneamente cuatro aspectos: anciano, anciana, joven hombre, joven mujer.",
       "tts": {
-        "text": "Ngünechen (ngoo-neh-CHEN) — El ser espiritual supremo en la cosmología Mapuche, que encarna simultáneamente cuatro aspectos: anciano, anciana, joven hombre, joven mujer.",
+        "text": "Ngünechen — El ser espiritual supremo en la cosmología Mapuche, que encarna simultáneamente cuatro aspectos: anciano, anciana, joven hombre, joven mujer.",
         "pause_after_ms": 800
       }
     },
@@ -13909,10 +13909,10 @@
       "sentence_index": 0,
       "block_type": "text",
       "title": "Nombres y términos clave",
-      "text": "Nguillatun (ngee-yah-TOON) — La ceremonia colectiva más importante de la cultura Mapuche, que involucra oración, sacrificio y reunión comunitaria.",
-      "text_markdown": "**Nguillatun** (ngee-yah-TOON) — La ceremonia colectiva más importante de la cultura Mapuche, que involucra oración, sacrificio y reunión comunitaria.",
+      "text": "Nguillatun — La ceremonia colectiva más importante de la cultura Mapuche, que involucra oración, sacrificio y reunión comunitaria.",
+      "text_markdown": "**Nguillatun** — La ceremonia colectiva más importante de la cultura Mapuche, que involucra oración, sacrificio y reunión comunitaria.",
       "tts": {
-        "text": "Nguillatun (ngee-yah-TOON) — La ceremonia colectiva más importante de la cultura Mapuche, que involucra oración, sacrificio y reunión comunitaria.",
+        "text": "Nguillatun — La ceremonia colectiva más importante de la cultura Mapuche, que involucra oración, sacrificio y reunión comunitaria.",
         "pause_after_ms": 800
       }
     },
@@ -13954,10 +13954,10 @@
       "sentence_index": 0,
       "block_type": "text",
       "title": "Nombres y términos clave",
-      "text": "Pelantaru (peh-lahn-TAH-roo) — Toqui Mapuche que lideró el levantamiento de 1598, destruyendo las Siete Ciudades y estableciendo la frontera del Bío-Bío.",
-      "text_markdown": "**Pelantaru** (peh-lahn-TAH-roo) — Toqui Mapuche que lideró el levantamiento de 1598, destruyendo las Siete Ciudades y estableciendo la frontera del Bío-Bío.",
+      "text": "Pelantaru — Toqui Mapuche que lideró el levantamiento de 1598, destruyendo las Siete Ciudades y estableciendo la frontera del Bío-Bío.",
+      "text_markdown": "**Pelantaru** — Toqui Mapuche que lideró el levantamiento de 1598, destruyendo las Siete Ciudades y estableciendo la frontera del Bío-Bío.",
       "tts": {
-        "text": "Pelantaru (peh-lahn-TAH-roo) — Toqui Mapuche que lideró el levantamiento de 1598, destruyendo las Siete Ciudades y estableciendo la frontera del Bío-Bío.",
+        "text": "Pelantaru — Toqui Mapuche que lideró el levantamiento de 1598, destruyendo las Siete Ciudades y estableciendo la frontera del Bío-Bío.",
         "pause_after_ms": 800
       }
     },
@@ -13969,10 +13969,10 @@
       "sentence_index": 0,
       "block_type": "text",
       "title": "Nombres y términos clave",
-      "text": "Pewenche (peh-WEN-cheh) — \"Gente de la araucaria\". Comunidades Mapuche de las tierras altas andinas.",
-      "text_markdown": "**Pewenche** (peh-WEN-cheh) — \"Gente de la araucaria\". Comunidades Mapuche de las tierras altas andinas.",
+      "text": "Pewenche — \"Gente de la araucaria\". Comunidades Mapuche de las tierras altas andinas.",
+      "text_markdown": "**Pewenche** — \"Gente de la araucaria\". Comunidades Mapuche de las tierras altas andinas.",
       "tts": {
-        "text": "Pewenche (peh-WEN-cheh) — \"Gente de la araucaria\". Comunidades Mapuche de las tierras altas andinas.",
+        "text": "Pewenche — \"Gente de la araucaria\". Comunidades Mapuche de las tierras altas andinas.",
         "pause_after_ms": 800
       }
     },
@@ -14014,10 +14014,10 @@
       "sentence_index": 0,
       "block_type": "text",
       "title": "Nombres y términos clave",
-      "text": "Reche (reh-CHEH) — \"Gente auténtica\" o \"gente verdadera\". La autodesignación precolonial de los pueblos que luego serían conocidos como Mapuche.",
-      "text_markdown": "**Reche** (reh-CHEH) — \"Gente auténtica\" o \"gente verdadera\". La autodesignación precolonial de los pueblos que luego serían conocidos como Mapuche.",
+      "text": "Reche — \"Gente auténtica\" o \"gente verdadera\". La autodesignación precolonial de los pueblos que luego serían conocidos como Mapuche.",
+      "text_markdown": "**Reche** — \"Gente auténtica\" o \"gente verdadera\". La autodesignación precolonial de los pueblos que luego serían conocidos como Mapuche.",
       "tts": {
-        "text": "Reche (reh-CHEH) — \"Gente auténtica\" o \"gente verdadera\". La autodesignación precolonial de los pueblos que luego serían conocidos como Mapuche.",
+        "text": "Reche — \"Gente auténtica\" o \"gente verdadera\". La autodesignación precolonial de los pueblos que luego serían conocidos como Mapuche.",
         "pause_after_ms": 800
       }
     },
@@ -14044,10 +14044,10 @@
       "sentence_index": 0,
       "block_type": "text",
       "title": "Nombres y términos clave",
-      "text": "Rewe (REH-weh) — (1) Una alianza de varios lof con fines ceremoniales y políticos.",
-      "text_markdown": "**Rewe** (REH-weh) — (1) Una alianza de varios lof con fines ceremoniales y políticos.",
+      "text": "Rewe — (1) Una alianza de varios lof con fines ceremoniales y políticos.",
+      "text_markdown": "**Rewe** — (1) Una alianza de varios lof con fines ceremoniales y políticos.",
       "tts": {
-        "text": "Rewe (REH-weh) — (1) Una alianza de varios lof con fines ceremoniales y políticos.",
+        "text": "Rewe — (1) Una alianza de varios lof con fines ceremoniales y políticos.",
         "pause_after_ms": 500
       }
     },
@@ -14119,10 +14119,10 @@
       "sentence_index": 0,
       "block_type": "text",
       "title": "Nombres y términos clave",
-      "text": "Toqui (TOH-kee) — Jefe de guerra elegido para una campaña militar específica, cuya autoridad terminaba cuando la campaña terminaba.",
-      "text_markdown": "**Toqui** (TOH-kee) — Jefe de guerra elegido para una campaña militar específica, cuya autoridad terminaba cuando la campaña terminaba.",
+      "text": "Toqui — Jefe de guerra elegido para una campaña militar específica, cuya autoridad terminaba cuando la campaña terminaba.",
+      "text_markdown": "**Toqui** — Jefe de guerra elegido para una campaña militar específica, cuya autoridad terminaba cuando la campaña terminaba.",
       "tts": {
-        "text": "Toqui (TOH-kee) — Jefe de guerra elegido para una campaña militar específica, cuya autoridad terminaba cuando la campaña terminaba.",
+        "text": "Toqui — Jefe de guerra elegido para una campaña militar específica, cuya autoridad terminaba cuando la campaña terminaba.",
         "pause_after_ms": 800
       }
     },
@@ -14224,10 +14224,10 @@
       "sentence_index": 0,
       "block_type": "text",
       "title": "Nombres y términos clave",
-      "text": "Wallmapu (wahl-MAH-poo) — \"La tierra circundante\". El territorio tradicional Mapuche, que se extendía desde el río Itata hasta la isla de Chiloé y a través de los Andes hacia las Pampas argentinas.",
-      "text_markdown": "**Wallmapu** (wahl-MAH-poo) — \"La tierra circundante\". El territorio tradicional Mapuche, que se extendía desde el río Itata hasta la isla de Chiloé y a través de los Andes hacia las Pampas argentinas.",
+      "text": "Wallmapu — \"La tierra circundante\". El territorio tradicional Mapuche, que se extendía desde el río Itata hasta la isla de Chiloé y a través de los Andes hacia las Pampas argentinas.",
+      "text_markdown": "**Wallmapu** — \"La tierra circundante\". El territorio tradicional Mapuche, que se extendía desde el río Itata hasta la isla de Chiloé y a través de los Andes hacia las Pampas argentinas.",
       "tts": {
-        "text": "Wallmapu (wahl-MAH-poo) — \"La tierra circundante\". El territorio tradicional Mapuche, que se extendía desde el río Itata hasta la isla de Chiloé y a través de los Andes hacia las Pampas argentinas.",
+        "text": "Wallmapu — \"La tierra circundante\". El territorio tradicional Mapuche, que se extendía desde el río Itata hasta la isla de Chiloé y a través de los Andes hacia las Pampas argentinas.",
         "pause_after_ms": 800
       }
     },
@@ -14239,10 +14239,10 @@
       "sentence_index": 0,
       "block_type": "text",
       "title": "Nombres y términos clave",
-      "text": "Wenufoye (weh-noo-FOH-yeh) — La bandera Mapuche, creada en 1992 por el Consejo de Todas las Tierras.",
-      "text_markdown": "**Wenufoye** (weh-noo-FOH-yeh) — La bandera Mapuche, creada en 1992 por el Consejo de Todas las Tierras.",
+      "text": "Wenufoye — La bandera Mapuche, creada en 1992 por el Consejo de Todas las Tierras.",
+      "text_markdown": "**Wenufoye** — La bandera Mapuche, creada en 1992 por el Consejo de Todas las Tierras.",
       "tts": {
-        "text": "Wenufoye (weh-noo-FOH-yeh) — La bandera Mapuche, creada en 1992 por el Consejo de Todas las Tierras.",
+        "text": "Wenufoye — La bandera Mapuche, creada en 1992 por el Consejo de Todas las Tierras.",
         "pause_after_ms": 500
       }
     },
@@ -14269,10 +14269,10 @@
       "sentence_index": 0,
       "block_type": "text",
       "title": "Nombres y términos clave",
-      "text": "Witral (wee-TRAHL) — El telar vertical tradicional Mapuche, usado para tejer textiles.",
-      "text_markdown": "**Witral** (wee-TRAHL) — El telar vertical tradicional Mapuche, usado para tejer textiles.",
+      "text": "Witral — El telar vertical tradicional Mapuche, usado para tejer textiles.",
+      "text_markdown": "**Witral** — El telar vertical tradicional Mapuche, usado para tejer textiles.",
       "tts": {
-        "text": "Witral (wee-TRAHL) — El telar vertical tradicional Mapuche, usado para tejer textiles.",
+        "text": "Witral — El telar vertical tradicional Mapuche, usado para tejer textiles.",
         "pause_after_ms": 800
       }
     },

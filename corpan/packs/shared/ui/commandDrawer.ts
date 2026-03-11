@@ -6,6 +6,7 @@ export type LanguageInfo = {
   code: string
   displayName: string
   narrator?: string
+  narrationId?: string
 }
 
 /** Custom section injected by readers (e.g. stargate display settings) */
@@ -159,12 +160,15 @@ export function createCommandDrawer(
 
   // --- Render language pills ---
   function renderLanguagePills() {
-    const { languages, currentLanguage } = drawerStore.getState()
+    const { languages, currentLanguage, currentNarrationId } = drawerStore.getState()
     langContainer.innerHTML = ""
     for (const lang of languages) {
       const pill = document.createElement("button")
       pill.className = "command-drawer-lang-pill"
-      if (lang.code === currentLanguage) {
+      const isActive = lang.narrationId
+        ? lang.narrationId === currentNarrationId
+        : lang.code === currentLanguage
+      if (isActive) {
         pill.classList.add("command-drawer-lang-pill--active")
       }
       pill.textContent = lang.displayName
@@ -172,8 +176,14 @@ export function createCommandDrawer(
         pill.disabled = true
       } else {
         pill.addEventListener("click", () => {
-          if (lang.code === drawerStore.getState().currentLanguage) return
-          drawerStore.setState({ currentLanguage: lang.code })
+          const s = drawerStore.getState()
+          if (lang.narrationId) {
+            if (lang.narrationId === s.currentNarrationId) return
+            drawerStore.setState({ currentNarrationId: lang.narrationId, currentLanguage: lang.code })
+          } else {
+            if (lang.code === s.currentLanguage) return
+            drawerStore.setState({ currentLanguage: lang.code })
+          }
         })
       }
       langContainer.appendChild(pill)
@@ -184,7 +194,7 @@ export function createCommandDrawer(
 
   // Subscribe to store changes
   const storeUnsub = drawerStore.subscribe((state, prev) => {
-    if (state.languages !== prev.languages || state.currentLanguage !== prev.currentLanguage) {
+    if (state.languages !== prev.languages || state.currentLanguage !== prev.currentLanguage || state.currentNarrationId !== prev.currentNarrationId) {
       renderLanguagePills()
     }
     if (state.nowPlaying !== prev.nowPlaying) {

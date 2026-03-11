@@ -10,7 +10,7 @@ import {
 } from "@babylonjs/core"
 import type { HostApi } from "@shared/sdk"
 import type { AudioManifest, BookSegment, TimelineWord, ChapterInfo } from "@shared/core"
-import { CAMERA_FOV, CAMERA_Z, GLOW_INTENSITY, LANGUAGE_NAMES, VOICE_NAMES, BOOK_NAMES, resolveVoiceName } from "@shared/core"
+import { CAMERA_FOV, CAMERA_Z, GLOW_INTENSITY, LANGUAGE_NAMES, BOOK_NAMES, resolveVoiceName } from "@shared/core"
 import { buildTimeline, findCurrentWordIndex, buildChapterIndex } from "@shared/core"
 import { createFetchDataProvider, createPreloadedDataProvider, type DataProvider } from "@shared/data"
 import { createAudioEngine, type AudioEngine } from "@shared/audio"
@@ -32,7 +32,7 @@ import { createOscilloscope, type Oscilloscope } from "./rendering/oscilloscope"
 import { createWaveformStream, type WaveformStream } from "./rendering/waveformStream"
 import { createPulseRing, type PulseRing } from "./rendering/pulseRing"
 import { createStarfield, type Starfield } from "./rendering/starfield"
-import { renderStargateDisplaySettings, type LanguageInfo, type OscilloscopeConfig, type WaveformConfig, type PulseRingConfig, type WordHoldConfig } from "./ui/settingsPanel"
+import { renderStargateDisplaySettings, type OscilloscopeConfig, type WaveformConfig, type PulseRingConfig, type WordHoldConfig } from "./ui/settingsPanel"
 import type { DrawerSectionDef } from "@shared/ui"
 import { srTrace, type TraceFields } from "./diagnostics/trace"
 
@@ -448,16 +448,6 @@ export function createStargateReader(
   let segments: BookSegment[] = []
   let chapters: ChapterInfo[] = []
   let currentLanguage = (initialState?.language as string) || "en"
-  let availableLanguages = (initialState?.availableLanguages as string[]) || [currentLanguage]
-  const voiceMap: Record<string, string> = {}
-
-  function buildLanguageInfos(): LanguageInfo[] {
-    return availableLanguages.map(code => ({
-      code,
-      displayName: LANGUAGE_NAMES[code] || code.toUpperCase(),
-      narrator: resolveVoiceName(voiceMap[code] || ""),
-    }))
-  }
 
   // Book ID for bookmark namespacing
   const bookId =
@@ -1008,19 +998,6 @@ export function createStargateReader(
         const contentRevision = initialState?.contentRevision as string | undefined
         dataProvider = createFetchDataProvider(dataUrl, contentRevision)
 
-        // Auto-detect available languages in dev mode
-        if (availableLanguages.length <= 1 && dataProvider.detectLanguages) {
-          const detected = await dataProvider.detectLanguages()
-          if (detected.length > 1) {
-            availableLanguages = detected
-          }
-        }
-
-        // Apply bookmarked language now that available languages are known
-        if (bookmark && availableLanguages.includes(bookmark.language)) {
-          currentLanguage = bookmark.language
-        }
-
         const segData = await dataProvider.loadSegments(currentLanguage)
         segments = segData.segments
         manifest = await dataProvider.loadAudioManifest(currentLanguage)
@@ -1028,20 +1005,15 @@ export function createStargateReader(
 
       if (disposed) return
 
-      // Record voice for current language and update settings display
-      voiceMap[currentLanguage] = manifest.voice
-      drawerStore.setState({ languages: buildLanguageInfos(), currentLanguage })
+      drawerStore.setState({
+        languages: [{
+          code: currentLanguage,
+          displayName: LANGUAGE_NAMES[currentLanguage] || currentLanguage.toUpperCase(),
+          narrator: resolveVoiceName(manifest.voice),
+        }],
+        currentLanguage,
+      })
       drawerStore.setState({ nowPlaying: { bookTitle: bookDisplayName, narrator: resolveVoiceName(manifest.voice) } })
-
-      // Fire background fetches for other languages to populate voiceMap
-      for (const lang of availableLanguages) {
-        if (lang !== currentLanguage) {
-          dataProvider.loadAudioManifest(lang).then(m => {
-            voiceMap[lang] = m.voice
-            drawerStore.setState({ languages: buildLanguageInfos() })
-          }).catch(() => {})
-        }
-      }
 
       // Build chapter index
       chapters = buildChapterIndex(segments)
@@ -1167,105 +1139,6 @@ export function createStargateReader(
 
     // Standalone dev mode (npm run dev): Vite proxy handles /data/books/
     return `/data/books/${bid}`
-  }
-
-  /**
-   * Switch audio language: reload segments + manifest, rebuild timeline and audio engine.
-   */
-  async function switchLanguage(newLang: string) {
-    if (newLang === currentLanguage || !dataProvider) return
-
-    try {
-      const wasPlaying = isPlaying
-      const savedSegmentIndex = audioEngine?.getCurrentSegmentIndex() ?? 0
-
-      // Dispose current audio
-      audioEngine?.dispose()
-      audioEngine = null
-      waveformCache?.dispose()
-      waveformCache = null
-
-      currentLanguage = newLang
-
-      // Load new segments and manifest in parallel
-      const [segData, manifest] = await Promise.all([
-        dataProvider.loadSegments(newLang),
-        dataProvider.loadAudioManifest(newLang),
-      ])
-      if (disposed) return
-
-      segments = segData.segments
-      voiceMap[newLang] = manifest.voice
-      drawerStore.setState({ languages: buildLanguageInfos(), currentLanguage: newLang })
-      drawerStore.setState({ nowPlaying: { bookTitle: bookDisplayName, narrator: resolveVoiceName(manifest.voice) } })
-      chapters = buildChapterIndex(segments)
-
-      // Rebuild timeline
-      const timeline = buildTimeline(segments, manifest)
-      timelineWords = timeline.words
-      currentWordHint = 0
-
-      // Recreate waveform cache + audio engine
-      waveformCache = createWaveformCache()
-      audioEngine = createAudioEngine(
-        segments,
-        manifest,
-        dataProvider.resolveAudioUrl,
-        (index) => {
-          const seg = segments[index]
-          if (seg) {
-            transport.setChapter(seg.title)
-            // Avoid native bridge work on every segment boundary; it can hitch playback.
-            // Play/pause/seek/chapter controls still trigger explicit now-playing updates.
-          }
-        },
-        () => {
-          isPlaying = false
-          desiredPlaying = false
-          transport.setPlaying(false)
-          syncMediaSessionPlaybackState("paused")
-          releaseWakeLock()
-          stopBackgroundTimers()
-          backgroundedAt = 0
-          void stopNativeKeepAlive()
-          nativeSessionActive = false
-          nativePlaybackStateHint = "unknown"
-        },
-        (segmentId, buffer) => {
-          const entry = manifest.segments[segmentId]
-          if (entry && waveformCache) {
-            waveformCache.extractFromBuffer(segmentId, buffer, entry.words)
-          }
-        }
-      )
-
-      // Reset chapter tracking
-      lastChapterIndex = -1
-
-      // Update chapter markers for new manifest
-      if (chapters.length > 0) {
-        const starts = audioEngine.getSegmentAbsoluteStartMs()
-        const total = audioEngine.getTotalDurationMs()
-        if (total > 0) {
-          transport.setChapterMarkers(
-            chapters.map(c => starts[c.firstSegmentIndex] / total)
-          )
-        }
-      }
-
-      // Seek to approximate position
-      audioEngine.seekToSegment(savedSegmentIndex)
-
-      // Resume if was playing
-      if (wasPlaying) {
-        audioEngine.unlock()
-        audioEngine.play()
-        isPlaying = true
-        transport.setPlaying(true)
-      }
-    } catch (err) {
-      console.error("[StargateReader] Failed to switch language:", err)
-    }
   }
 
   // --- Render loop ---
@@ -1466,8 +1339,6 @@ export function createStargateReader(
 
   return {
     dispose,
-    /** Called by appShell/drawer to switch language */
-    switchLanguage: (lang: string) => { void switchLanguage(lang) },
     /** Persist bookmark (called by appShell before exit) */
     persistBookmark,
     /** Get display settings DrawerSectionDef for injection into command drawer */

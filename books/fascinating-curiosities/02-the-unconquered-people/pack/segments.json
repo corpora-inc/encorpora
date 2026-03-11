@@ -143,10 +143,10 @@
       "paragraph_id": "p4",
       "sentence_index": 2,
       "block_type": "text",
-      "text": "The Mapuche (mah-POO-cheh) fought them for over three hundred years.",
-      "text_markdown": "The Mapuche (mah-POO-cheh) fought them for over three hundred years.",
+      "text": "The Mapuche fought them for over three hundred years.",
+      "text_markdown": "The Mapuche fought them for over three hundred years.",
       "tts": {
-        "text": "The Mapuche (mah-POO-cheh) fought them for over three hundred years.",
+        "text": "The Mapuche fought them for over three hundred years.",
         "pause_after_ms": 500
       }
     },
@@ -392,10 +392,10 @@
       "paragraph_id": "p10",
       "sentence_index": 1,
       "block_type": "text",
-      "text": "Araucaria trees — called pewen (peh-WEN) by the people who live among them — stand forty meters tall, their branches spreading in stiff, geometric layers like enormous green candelabras.",
-      "text_markdown": "Araucaria trees — called pewen (peh-WEN) by the people who live among them — stand forty meters tall, their branches spreading in stiff, geometric layers like enormous green candelabras.",
+      "text": "Araucaria trees — called pewen by the people who live among them — stand forty meters tall, their branches spreading in stiff, geometric layers like enormous green candelabras.",
+      "text_markdown": "Araucaria trees — called pewen by the people who live among them — stand forty meters tall, their branches spreading in stiff, geometric layers like enormous green candelabras.",
       "tts": {
-        "text": "Araucaria trees — called pewen (peh-WEN) by the people who live among them — stand forty meters tall, their branches spreading in stiff, geometric layers like enormous green candelabras.",
+        "text": "Araucaria trees — called pewen by the people who live among them — stand forty meters tall, their branches spreading in stiff, geometric layers like enormous green candelabras.",
         "pause_after_ms": 500
       }
     },
@@ -422,10 +422,10 @@
       "paragraph_id": "p10",
       "sentence_index": 3,
       "block_type": "text",
-      "text": "Their seeds, the piñón (pee-NYOHN), are rich in starch and fat, and have fed the people of this region for millennia.",
-      "text_markdown": "Their seeds, the piñón (pee-NYOHN), are rich in starch and fat, and have fed the people of this region for millennia.",
+      "text": "Their seeds, the piñón, are rich in starch and fat, and have fed the people of this region for millennia.",
+      "text_markdown": "Their seeds, the piñón, are rich in starch and fat, and have fed the people of this region for millennia.",
       "tts": {
-        "text": "Their seeds, the piñón (pee-NYOHN), are rich in starch and fat, and have fed the people of this region for millennia.",
+        "text": "Their seeds, the piñón, are rich in starch and fat, and have fed the people of this region for millennia.",
         "pause_after_ms": 500
       }
     },
@@ -529,10 +529,10 @@
       "paragraph_id": "p12",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "The people who lived here called it Wallmapu (wahl-MAH-poo) — \"the surrounding land.\" It stretched from the Itata River in the north to the island of Chiloé in the south, and across the Andes into the Argentine Pampas to the east.",
-      "text_markdown": "The people who lived here called it Wallmapu (wahl-MAH-poo) — \"the surrounding land.\" It stretched from the Itata River in the north to the island of Chiloé in the south, and across the Andes into the Argentine Pampas to the east.",
+      "text": "The people who lived here called it Wallmapu — \"the surrounding land.\" It stretched from the Itata River in the north to the island of Chiloé in the south, and across the Andes into the Argentine Pampas to the east.",
+      "text_markdown": "The people who lived here called it Wallmapu — \"the surrounding land.\" It stretched from the Itata River in the north to the island of Chiloé in the south, and across the Andes into the Argentine Pampas to the east.",
       "tts": {
-        "text": "The people who lived here called it Wallmapu (wahl-MAH-poo) — \"the surrounding land.\" It stretched from the Itata River in the north to the island of Chiloé in the south, and across the Andes into the Argentine Pampas to the east.",
+        "text": "The people who lived here called it Wallmapu — \"the surrounding land.\" It stretched from the Itata River in the north to the island of Chiloé in the south, and across the Andes into the Argentine Pampas to the east.",
         "pause_after_ms": 500
       }
     },
@@ -709,10 +709,10 @@
       "paragraph_id": "p15",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "The first to try was the Inca Empire — the Tawantinsuyu (tah-wahn-teen-SOO-yoo), \"the Four Quarters,\" the largest state ever built in the pre-Columbian Americas.",
-      "text_markdown": "The first to try was the Inca Empire — the Tawantinsuyu (tah-wahn-teen-SOO-yoo), \"the Four Quarters,\" the largest state ever built in the pre-Columbian Americas.",
+      "text": "The first to try was the Inca Empire — the Tawantinsuyu, \"the Four Quarters,\" the largest state ever built in the pre-Columbian Americas.",
+      "text_markdown": "The first to try was the Inca Empire — the Tawantinsuyu, \"the Four Quarters,\" the largest state ever built in the pre-Columbian Americas.",
       "tts": {
-        "text": "The first to try was the Inca Empire — the Tawantinsuyu (tah-wahn-teen-SOO-yoo), \"the Four Quarters,\" the largest state ever built in the pre-Columbian Americas.",
+        "text": "The first to try was the Inca Empire — the Tawantinsuyu, \"the Four Quarters,\" the largest state ever built in the pre-Columbian Americas.",
         "pause_after_ms": 500
       }
     },
@@ -724,10 +724,10 @@
       "paragraph_id": "p15",
       "sentence_index": 1,
       "block_type": "text",
-      "text": "By the late fifteenth century, the Inca controlled a territory stretching from modern Colombia to central Chile, encompassing twelve million subjects, connected by over 30,000 kilometers of roads, administered by a bureaucracy that tracked population, labor, and resources using knotted cords called quipu (KEE-poo).",
-      "text_markdown": "By the late fifteenth century, the Inca controlled a territory stretching from modern Colombia to central Chile, encompassing twelve million subjects, connected by over 30,000 kilometers of roads, administered by a bureaucracy that tracked population, labor, and resources using knotted cords called quipu (KEE-poo).",
+      "text": "By the late fifteenth century, the Inca controlled a territory stretching from modern Colombia to central Chile, encompassing twelve million subjects, connected by over 30,000 kilometers of roads, administered by a bureaucracy that tracked population, labor, and resources using knotted cords called quipu.",
+      "text_markdown": "By the late fifteenth century, the Inca controlled a territory stretching from modern Colombia to central Chile, encompassing twelve million subjects, connected by over 30,000 kilometers of roads, administered by a bureaucracy that tracked population, labor, and resources using knotted cords called quipu.",
       "tts": {
-        "text": "By the late fifteenth century, the Inca controlled a territory stretching from modern Colombia to central Chile, encompassing twelve million subjects, connected by over 30,000 kilometers of roads, administered by a bureaucracy that tracked population, labor, and resources using knotted cords called quipu (KEE-poo).",
+        "text": "By the late fifteenth century, the Inca controlled a territory stretching from modern Colombia to central Chile, encompassing twelve million subjects, connected by over 30,000 kilometers of roads, administered by a bureaucracy that tracked population, labor, and resources using knotted cords called quipu.",
         "pause_after_ms": 500
       }
     },
@@ -1053,10 +1053,10 @@
       "paragraph_id": "p24",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "The people the Spanish encountered south of the Maule called themselves reche (reh-CHEH) — \"authentic people\" or \"true people.\" The word Mapuche — mapu (land) + che (people), \"people of the land\" — emerged later, during the colonial period, as scattered communities forged a collective identity under the pressure of invasion.",
-      "text_markdown": "The people the Spanish encountered south of the Maule called themselves *reche* (reh-CHEH) — \"authentic people\" or \"true people.\" The word *Mapuche* — *mapu* (land) + *che* (people), \"people of the land\" — emerged later, during the colonial period, as scattered communities forged a collective identity under the pressure of invasion.",
+      "text": "The people the Spanish encountered south of the Maule called themselves reche — \"authentic people\" or \"true people.\" The word Mapuche — mapu (land) + che (people), \"people of the land\" — emerged later, during the colonial period, as scattered communities forged a collective identity under the pressure of invasion.",
+      "text_markdown": "The people the Spanish encountered south of the Maule called themselves *reche* — \"authentic people\" or \"true people.\" The word *Mapuche* — *mapu* (land) + *che* (people), \"people of the land\" — emerged later, during the colonial period, as scattered communities forged a collective identity under the pressure of invasion.",
       "tts": {
-        "text": "The people the Spanish encountered south of the Maule called themselves reche (reh-CHEH) — \"authentic people\" or \"true people.\" The word Mapuche — mapu (land) + che (people), \"people of the land\" — emerged later, during the colonial period, as scattered communities forged a collective identity under the pressure of invasion.",
+        "text": "The people the Spanish encountered south of the Maule called themselves reche — \"authentic people\" or \"true people.\" The word Mapuche — mapu (land) + che (people), \"people of the land\" — emerged later, during the colonial period, as scattered communities forged a collective identity under the pressure of invasion.",
         "pause_after_ms": 500
       }
     },
@@ -1143,10 +1143,10 @@
       "paragraph_id": "p26",
       "sentence_index": 1,
       "block_type": "text",
-      "text": "The smallest unit was the lof — an extended family group of perhaps fifty to a hundred people, led by a lonko (LONG-koh), a chief whose authority rested on personal prestige, skill in oratory, and generosity rather than hereditary right.",
-      "text_markdown": "The smallest unit was the *lof* — an extended family group of perhaps fifty to a hundred people, led by a *lonko* (LONG-koh), a chief whose authority rested on personal prestige, skill in oratory, and generosity rather than hereditary right.",
+      "text": "The smallest unit was the lof — an extended family group of perhaps fifty to a hundred people, led by a lonko, a chief whose authority rested on personal prestige, skill in oratory, and generosity rather than hereditary right.",
+      "text_markdown": "The smallest unit was the *lof* — an extended family group of perhaps fifty to a hundred people, led by a *lonko*, a chief whose authority rested on personal prestige, skill in oratory, and generosity rather than hereditary right.",
       "tts": {
-        "text": "The smallest unit was the lof — an extended family group of perhaps fifty to a hundred people, led by a lonko (LONG-koh), a chief whose authority rested on personal prestige, skill in oratory, and generosity rather than hereditary right.",
+        "text": "The smallest unit was the lof — an extended family group of perhaps fifty to a hundred people, led by a lonko, a chief whose authority rested on personal prestige, skill in oratory, and generosity rather than hereditary right.",
         "pause_after_ms": 500
       }
     },
@@ -1158,10 +1158,10 @@
       "paragraph_id": "p26",
       "sentence_index": 2,
       "block_type": "text",
-      "text": "Several lof linked together formed a rewe (REH-weh), a ceremonial and political alliance centered on a shared ritual space.",
-      "text_markdown": "Several lof linked together formed a *rewe* (REH-weh), a ceremonial and political alliance centered on a shared ritual space.",
+      "text": "Several lof linked together formed a rewe, a ceremonial and political alliance centered on a shared ritual space.",
+      "text_markdown": "Several lof linked together formed a *rewe*, a ceremonial and political alliance centered on a shared ritual space.",
       "tts": {
-        "text": "Several lof linked together formed a rewe (REH-weh), a ceremonial and political alliance centered on a shared ritual space.",
+        "text": "Several lof linked together formed a rewe, a ceremonial and political alliance centered on a shared ritual space.",
         "pause_after_ms": 500
       }
     },
@@ -1173,10 +1173,10 @@
       "paragraph_id": "p26",
       "sentence_index": 3,
       "block_type": "text",
-      "text": "Several rewe grouped into an ayllarewe (eye-yah-REH-weh), a larger confederation of roughly nine rewe that could coordinate action across a wider territory.",
-      "text_markdown": "Several rewe grouped into an *ayllarewe* (eye-yah-REH-weh), a larger confederation of roughly nine rewe that could coordinate action across a wider territory.",
+      "text": "Several rewe grouped into an ayllarewe, a larger confederation of roughly nine rewe that could coordinate action across a wider territory.",
+      "text_markdown": "Several rewe grouped into an *ayllarewe*, a larger confederation of roughly nine rewe that could coordinate action across a wider territory.",
       "tts": {
-        "text": "Several rewe grouped into an ayllarewe (eye-yah-REH-weh), a larger confederation of roughly nine rewe that could coordinate action across a wider territory.",
+        "text": "Several rewe grouped into an ayllarewe, a larger confederation of roughly nine rewe that could coordinate action across a wider territory.",
         "pause_after_ms": 500
       }
     },
@@ -1188,10 +1188,10 @@
       "paragraph_id": "p26",
       "sentence_index": 4,
       "block_type": "text",
-      "text": "And in times of war, multiple ayllarewe could come together under a toqui (TOH-kee), a war chief elected specifically for the duration of a campaign.",
-      "text_markdown": "And in times of war, multiple ayllarewe could come together under a *toqui* (TOH-kee), a war chief elected specifically for the duration of a campaign.",
+      "text": "And in times of war, multiple ayllarewe could come together under a toqui, a war chief elected specifically for the duration of a campaign.",
+      "text_markdown": "And in times of war, multiple ayllarewe could come together under a *toqui*, a war chief elected specifically for the duration of a campaign.",
       "tts": {
-        "text": "And in times of war, multiple ayllarewe could come together under a toqui (TOH-kee), a war chief elected specifically for the duration of a campaign.",
+        "text": "And in times of war, multiple ayllarewe could come together under a toqui, a war chief elected specifically for the duration of a campaign.",
         "pause_after_ms": 800
       }
     },
@@ -1353,10 +1353,10 @@
       "paragraph_id": "p28",
       "sentence_index": 4,
       "block_type": "text",
-      "text": "Along the coast, the Lafkenche (lahf-KEN-cheh) — the \"people of the sea\" — fished and gathered shellfish.",
-      "text_markdown": "Along the coast, the Lafkenche (lahf-KEN-cheh) — the \"people of the sea\" — fished and gathered shellfish.",
+      "text": "Along the coast, the Lafkenche — the \"people of the sea\" — fished and gathered shellfish.",
+      "text_markdown": "Along the coast, the Lafkenche — the \"people of the sea\" — fished and gathered shellfish.",
       "tts": {
-        "text": "Along the coast, the Lafkenche (lahf-KEN-cheh) — the \"people of the sea\" — fished and gathered shellfish.",
+        "text": "Along the coast, the Lafkenche — the \"people of the sea\" — fished and gathered shellfish.",
         "pause_after_ms": 500
       }
     },
@@ -1368,10 +1368,10 @@
       "paragraph_id": "p28",
       "sentence_index": 5,
       "block_type": "text",
-      "text": "In the mountains, the Pewenche (peh-WEN-cheh) — the \"people of the araucaria\" — lived among the ancient forests and controlled the mountain passes connecting Chile to the Argentine Pampas.",
-      "text_markdown": "In the mountains, the Pewenche (peh-WEN-cheh) — the \"people of the araucaria\" — lived among the ancient forests and controlled the mountain passes connecting Chile to the Argentine Pampas.",
+      "text": "In the mountains, the Pewenche — the \"people of the araucaria\" — lived among the ancient forests and controlled the mountain passes connecting Chile to the Argentine Pampas.",
+      "text_markdown": "In the mountains, the Pewenche — the \"people of the araucaria\" — lived among the ancient forests and controlled the mountain passes connecting Chile to the Argentine Pampas.",
       "tts": {
-        "text": "In the mountains, the Pewenche (peh-WEN-cheh) — the \"people of the araucaria\" — lived among the ancient forests and controlled the mountain passes connecting Chile to the Argentine Pampas.",
+        "text": "In the mountains, the Pewenche — the \"people of the araucaria\" — lived among the ancient forests and controlled the mountain passes connecting Chile to the Argentine Pampas.",
         "pause_after_ms": 500
       }
     },
@@ -1413,10 +1413,10 @@
       "paragraph_id": "p29",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "They lived in ruka (ROO-kah) — large thatched houses, some up to twenty meters long, built from timber frames covered with layers of reed and grass.",
-      "text_markdown": "They lived in *ruka* (ROO-kah) — large thatched houses, some up to twenty meters long, built from timber frames covered with layers of reed and grass.",
+      "text": "They lived in ruka — large thatched houses, some up to twenty meters long, built from timber frames covered with layers of reed and grass.",
+      "text_markdown": "They lived in *ruka* — large thatched houses, some up to twenty meters long, built from timber frames covered with layers of reed and grass.",
       "tts": {
-        "text": "They lived in ruka (ROO-kah) — large thatched houses, some up to twenty meters long, built from timber frames covered with layers of reed and grass.",
+        "text": "They lived in ruka — large thatched houses, some up to twenty meters long, built from timber frames covered with layers of reed and grass.",
         "pause_after_ms": 500
       }
     },
@@ -1655,10 +1655,10 @@
       "paragraph_id": "p33",
       "sentence_index": 1,
       "block_type": "text",
-      "text": "Mapuche weaving, done on a vertical loom called a witral (wee-TRAHL), produced fabrics of remarkable complexity — geometric patterns in wool dyed with natural pigments, each design carrying social meaning about the weaver's community, status, and spiritual relationships.",
-      "text_markdown": "Mapuche weaving, done on a vertical loom called a *witral* (wee-TRAHL), produced fabrics of remarkable complexity — geometric patterns in wool dyed with natural pigments, each design carrying social meaning about the weaver's community, status, and spiritual relationships.",
+      "text": "Mapuche weaving, done on a vertical loom called a witral, produced fabrics of remarkable complexity — geometric patterns in wool dyed with natural pigments, each design carrying social meaning about the weaver's community, status, and spiritual relationships.",
+      "text_markdown": "Mapuche weaving, done on a vertical loom called a *witral*, produced fabrics of remarkable complexity — geometric patterns in wool dyed with natural pigments, each design carrying social meaning about the weaver's community, status, and spiritual relationships.",
       "tts": {
-        "text": "Mapuche weaving, done on a vertical loom called a witral (wee-TRAHL), produced fabrics of remarkable complexity — geometric patterns in wool dyed with natural pigments, each design carrying social meaning about the weaver's community, status, and spiritual relationships.",
+        "text": "Mapuche weaving, done on a vertical loom called a witral, produced fabrics of remarkable complexity — geometric patterns in wool dyed with natural pigments, each design carrying social meaning about the weaver's community, status, and spiritual relationships.",
         "pause_after_ms": 500
       }
     },
@@ -1685,10 +1685,10 @@
       "paragraph_id": "p34",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "And they spoke a single language — Mapudungun (mah-poo-DOON-goon), \"the speech of the land\" — across the entire territory.",
-      "text_markdown": "And they spoke a single language — Mapudungun (mah-poo-DOON-goon), \"the speech of the land\" — across the entire territory.",
+      "text": "And they spoke a single language — Mapudungun, \"the speech of the land\" — across the entire territory.",
+      "text_markdown": "And they spoke a single language — Mapudungun, \"the speech of the land\" — across the entire territory.",
       "tts": {
-        "text": "And they spoke a single language — Mapudungun (mah-poo-DOON-goon), \"the speech of the land\" — across the entire territory.",
+        "text": "And they spoke a single language — Mapudungun, \"the speech of the land\" — across the entire territory.",
         "pause_after_ms": 500
       }
     },
@@ -2566,10 +2566,10 @@
       "paragraph_id": "p50",
       "sentence_index": 1,
       "block_type": "text",
-      "text": "The Spanish called him \"Alonso.\" His Mapuche name was Lautaro (lah-oo-TAH-roh), or Leftraru (lef-TRAH-roo) in Mapudungun, meaning \"swift hawk.\"",
-      "text_markdown": "The Spanish called him \"Alonso.\" His Mapuche name was Lautaro (lah-oo-TAH-roh), or Leftraru (lef-TRAH-roo) in Mapudungun, meaning \"swift hawk.\"",
+      "text": "The Spanish called him \"Alonso.\" His Mapuche name was Lautaro, or Leftraru in Mapudungun, meaning \"swift hawk.\"",
+      "text_markdown": "The Spanish called him \"Alonso.\" His Mapuche name was Lautaro, or Leftraru in Mapudungun, meaning \"swift hawk.\"",
       "tts": {
-        "text": "The Spanish called him \"Alonso.\" His Mapuche name was Lautaro (lah-oo-TAH-roh), or Leftraru (lef-TRAH-roo) in Mapudungun, meaning \"swift hawk.\"",
+        "text": "The Spanish called him \"Alonso.\" His Mapuche name was Lautaro, or Leftraru in Mapudungun, meaning \"swift hawk.\"",
         "pause_after_ms": 800
       }
     },
@@ -5183,10 +5183,10 @@
       "paragraph_id": "p99",
       "sentence_index": 2,
       "block_type": "text",
-      "text": "The word mawida (mah-WEE-dah) means \"forest,\" but it also carries connotations of a living entity with its own character and agency.",
-      "text_markdown": "The word *mawida* (mah-WEE-dah) means \"forest,\" but it also carries connotations of a living entity with its own character and agency.",
+      "text": "The word mawida means \"forest,\" but it also carries connotations of a living entity with its own character and agency.",
+      "text_markdown": "The word *mawida* means \"forest,\" but it also carries connotations of a living entity with its own character and agency.",
       "tts": {
-        "text": "The word mawida (mah-WEE-dah) means \"forest,\" but it also carries connotations of a living entity with its own character and agency.",
+        "text": "The word mawida means \"forest,\" but it also carries connotations of a living entity with its own character and agency.",
         "pause_after_ms": 500
       }
     },
@@ -5363,10 +5363,10 @@
       "paragraph_id": "p101",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "The supreme spiritual being, Ngünechen (ngoo-neh-CHEN), embodies a fundamental principle of duality.",
-      "text_markdown": "The supreme spiritual being, *Ngünechen* (ngoo-neh-CHEN), embodies a fundamental principle of duality.",
+      "text": "The supreme spiritual being, Ngünechen, embodies a fundamental principle of duality.",
+      "text_markdown": "The supreme spiritual being, *Ngünechen*, embodies a fundamental principle of duality.",
       "tts": {
-        "text": "The supreme spiritual being, Ngünechen (ngoo-neh-CHEN), embodies a fundamental principle of duality.",
+        "text": "The supreme spiritual being, Ngünechen, embodies a fundamental principle of duality.",
         "pause_after_ms": 500
       }
     },
@@ -5485,10 +5485,10 @@
       "paragraph_id": "p103",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "The machi (mah-CHEE) — the spiritual specialist, almost always a woman — is the person responsible for diagnosing and restoring balance.",
-      "text_markdown": "The *machi* (mah-CHEE) — the spiritual specialist, almost always a woman — is the person responsible for diagnosing and restoring balance.",
+      "text": "The machi — the spiritual specialist, almost always a woman — is the person responsible for diagnosing and restoring balance.",
+      "text_markdown": "The *machi* — the spiritual specialist, almost always a woman — is the person responsible for diagnosing and restoring balance.",
       "tts": {
-        "text": "The machi (mah-CHEE) — the spiritual specialist, almost always a woman — is the person responsible for diagnosing and restoring balance.",
+        "text": "The machi — the spiritual specialist, almost always a woman — is the person responsible for diagnosing and restoring balance.",
         "pause_after_ms": 500
       }
     },
@@ -5515,10 +5515,10 @@
       "paragraph_id": "p103",
       "sentence_index": 2,
       "block_type": "text",
-      "text": "Her primary instrument is the kultrun (kool-TROON), a ceremonial drum whose flat surface is painted with a representation of the Mapuche cosmos — the four cardinal directions, the sun, the moon, the stars, divided into the four quarters of the world.",
-      "text_markdown": "Her primary instrument is the *kultrun* (kool-TROON), a ceremonial drum whose flat surface is painted with a representation of the Mapuche cosmos — the four cardinal directions, the sun, the moon, the stars, divided into the four quarters of the world.",
+      "text": "Her primary instrument is the kultrun, a ceremonial drum whose flat surface is painted with a representation of the Mapuche cosmos — the four cardinal directions, the sun, the moon, the stars, divided into the four quarters of the world.",
+      "text_markdown": "Her primary instrument is the *kultrun*, a ceremonial drum whose flat surface is painted with a representation of the Mapuche cosmos — the four cardinal directions, the sun, the moon, the stars, divided into the four quarters of the world.",
       "tts": {
-        "text": "Her primary instrument is the kultrun (kool-TROON), a ceremonial drum whose flat surface is painted with a representation of the Mapuche cosmos — the four cardinal directions, the sun, the moon, the stars, divided into the four quarters of the world.",
+        "text": "Her primary instrument is the kultrun, a ceremonial drum whose flat surface is painted with a representation of the Mapuche cosmos — the four cardinal directions, the sun, the moon, the stars, divided into the four quarters of the world.",
         "pause_after_ms": 500
       }
     },
@@ -5545,10 +5545,10 @@
       "paragraph_id": "p104",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "The rewe (REH-weh), a carved wooden post that stands near the machi's home, functions as a vertical axis connecting the layers of the Mapuche cosmos — the world above (Wenu Mapu), the world of the living (Nag Mapu), and the world below (Minche Mapu).",
-      "text_markdown": "The *rewe* (REH-weh), a carved wooden post that stands near the machi's home, functions as a vertical axis connecting the layers of the Mapuche cosmos — the world above (*Wenu Mapu*), the world of the living (*Nag Mapu*), and the world below (*Minche Mapu*).",
+      "text": "The rewe, a carved wooden post that stands near the machi's home, functions as a vertical axis connecting the layers of the Mapuche cosmos — the world above (Wenu Mapu), the world of the living (Nag Mapu), and the world below (Minche Mapu).",
+      "text_markdown": "The *rewe*, a carved wooden post that stands near the machi's home, functions as a vertical axis connecting the layers of the Mapuche cosmos — the world above (*Wenu Mapu*), the world of the living (*Nag Mapu*), and the world below (*Minche Mapu*).",
       "tts": {
-        "text": "The rewe (REH-weh), a carved wooden post that stands near the machi's home, functions as a vertical axis connecting the layers of the Mapuche cosmos — the world above (Wenu Mapu), the world of the living (Nag Mapu), and the world below (Minche Mapu).",
+        "text": "The rewe, a carved wooden post that stands near the machi's home, functions as a vertical axis connecting the layers of the Mapuche cosmos — the world above (Wenu Mapu), the world of the living (Nag Mapu), and the world below (Minche Mapu).",
         "pause_after_ms": 500
       }
     },
@@ -5560,10 +5560,10 @@
       "paragraph_id": "p104",
       "sentence_index": 1,
       "block_type": "text",
-      "text": "During the nguillatun (ngee-yah-TOON), the most important collective ceremony, the machi ascends the rewe — literally climbing its carved steps — as a physical enactment of spiritual travel between worlds.",
-      "text_markdown": "During the *nguillatun* (ngee-yah-TOON), the most important collective ceremony, the machi ascends the rewe — literally climbing its carved steps — as a physical enactment of spiritual travel between worlds.",
+      "text": "During the nguillatun, the most important collective ceremony, the machi ascends the rewe — literally climbing its carved steps — as a physical enactment of spiritual travel between worlds.",
+      "text_markdown": "During the *nguillatun*, the most important collective ceremony, the machi ascends the rewe — literally climbing its carved steps — as a physical enactment of spiritual travel between worlds.",
       "tts": {
-        "text": "During the nguillatun (ngee-yah-TOON), the most important collective ceremony, the machi ascends the rewe — literally climbing its carved steps — as a physical enactment of spiritual travel between worlds.",
+        "text": "During the nguillatun, the most important collective ceremony, the machi ascends the rewe — literally climbing its carved steps — as a physical enactment of spiritual travel between worlds.",
         "pause_after_ms": 800
       }
     },
@@ -5842,10 +5842,10 @@
       "paragraph_id": "p110",
       "sentence_index": 2,
       "block_type": "text",
-      "text": "The Spanish governors brought interpreters called lenguaraces (len-gwah-RAH-sehs) — \"tongue-people\" — who had learned Mapudungun through years of immersion.",
-      "text_markdown": "The Spanish governors brought interpreters called *lenguaraces* (len-gwah-RAH-sehs) — \"tongue-people\" — who had learned Mapudungun through years of immersion.",
+      "text": "The Spanish governors brought interpreters called lenguaraces — \"tongue-people\" — who had learned Mapudungun through years of immersion.",
+      "text_markdown": "The Spanish governors brought interpreters called *lenguaraces* — \"tongue-people\" — who had learned Mapudungun through years of immersion.",
       "tts": {
-        "text": "The Spanish governors brought interpreters called lenguaraces (len-gwah-RAH-sehs) — \"tongue-people\" — who had learned Mapudungun through years of immersion.",
+        "text": "The Spanish governors brought interpreters called lenguaraces — \"tongue-people\" — who had learned Mapudungun through years of immersion.",
         "pause_after_ms": 500
       }
     },
@@ -7408,10 +7408,10 @@
       "paragraph_id": "p136",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "The toqui Pelantaru (peh-lahn-TAH-roo) organized a coordinated uprising across the entire Mapuche territory.",
-      "text_markdown": "The toqui Pelantaru (peh-lahn-TAH-roo) organized a coordinated uprising across the entire Mapuche territory.",
+      "text": "The toqui Pelantaru organized a coordinated uprising across the entire Mapuche territory.",
+      "text_markdown": "The toqui Pelantaru organized a coordinated uprising across the entire Mapuche territory.",
       "tts": {
-        "text": "The toqui Pelantaru (peh-lahn-TAH-roo) organized a coordinated uprising across the entire Mapuche territory.",
+        "text": "The toqui Pelantaru organized a coordinated uprising across the entire Mapuche territory.",
         "pause_after_ms": 500
       }
     },
@@ -7453,10 +7453,10 @@
       "paragraph_id": "p137",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "On December 23, 1598, Mapuche forces ambushed and destroyed a Spanish column at the Battle of Curalaba (koo-rah-LAH-bah), near the modern city of Lumaco.",
-      "text_markdown": "On December 23, 1598, Mapuche forces ambushed and destroyed a Spanish column at the Battle of Curalaba (koo-rah-LAH-bah), near the modern city of Lumaco.",
+      "text": "On December 23, 1598, Mapuche forces ambushed and destroyed a Spanish column at the Battle of Curalaba, near the modern city of Lumaco.",
+      "text_markdown": "On December 23, 1598, Mapuche forces ambushed and destroyed a Spanish column at the Battle of Curalaba, near the modern city of Lumaco.",
       "tts": {
-        "text": "On December 23, 1598, Mapuche forces ambushed and destroyed a Spanish column at the Battle of Curalaba (koo-rah-LAH-bah), near the modern city of Lumaco.",
+        "text": "On December 23, 1598, Mapuche forces ambushed and destroyed a Spanish column at the Battle of Curalaba, near the modern city of Lumaco.",
         "pause_after_ms": 500
       }
     },
@@ -8354,10 +8354,10 @@
       "paragraph_id": "p154",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "The parlamento grew from a Mapuche institution called the koyagtun (koh-yag-TOON) — a deliberative assembly where leaders gathered to discuss matters of collective concern.",
-      "text_markdown": "The parlamento grew from a Mapuche institution called the *koyagtun* (koh-yag-TOON) — a deliberative assembly where leaders gathered to discuss matters of collective concern.",
+      "text": "The parlamento grew from a Mapuche institution called the koyagtun — a deliberative assembly where leaders gathered to discuss matters of collective concern.",
+      "text_markdown": "The parlamento grew from a Mapuche institution called the *koyagtun* — a deliberative assembly where leaders gathered to discuss matters of collective concern.",
       "tts": {
-        "text": "The parlamento grew from a Mapuche institution called the koyagtun (koh-yag-TOON) — a deliberative assembly where leaders gathered to discuss matters of collective concern.",
+        "text": "The parlamento grew from a Mapuche institution called the koyagtun — a deliberative assembly where leaders gathered to discuss matters of collective concern.",
         "pause_after_ms": 500
       }
     },
@@ -8551,10 +8551,10 @@
       "paragraph_id": "p158",
       "sentence_index": 1,
       "block_type": "text",
-      "text": "The Spanish delegation approached bearing branches of the foye (FOH-yeh), the cinnamon tree (Drimys winteri) that was sacred in Mapuche culture — a gesture of peace that the Mapuche required as a precondition for talks.",
-      "text_markdown": "The Spanish delegation approached bearing branches of the *foye* (FOH-yeh), the cinnamon tree (*Drimys winteri*) that was sacred in Mapuche culture — a gesture of peace that the Mapuche required as a precondition for talks.",
+      "text": "The Spanish delegation approached bearing branches of the foye, the cinnamon tree (Drimys winteri) that was sacred in Mapuche culture — a gesture of peace that the Mapuche required as a precondition for talks.",
+      "text_markdown": "The Spanish delegation approached bearing branches of the *foye*, the cinnamon tree (*Drimys winteri*) that was sacred in Mapuche culture — a gesture of peace that the Mapuche required as a precondition for talks.",
       "tts": {
-        "text": "The Spanish delegation approached bearing branches of the foye (FOH-yeh), the cinnamon tree (Drimys winteri) that was sacred in Mapuche culture — a gesture of peace that the Mapuche required as a precondition for talks.",
+        "text": "The Spanish delegation approached bearing branches of the foye, the cinnamon tree (Drimys winteri) that was sacred in Mapuche culture — a gesture of peace that the Mapuche required as a precondition for talks.",
         "pause_after_ms": 500
       }
     },
@@ -9238,10 +9238,10 @@
       "paragraph_id": "p170",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "The lonko (LONG-koh) — the leader of a lof, the basic kinship group — was a chief whose authority derived from prestige.",
-      "text_markdown": "The *lonko* (LONG-koh) — the leader of a lof, the basic kinship group — was a chief whose authority derived from prestige.",
+      "text": "The lonko — the leader of a lof, the basic kinship group — was a chief whose authority derived from prestige.",
+      "text_markdown": "The *lonko* — the leader of a lof, the basic kinship group — was a chief whose authority derived from prestige.",
       "tts": {
-        "text": "The lonko (LONG-koh) — the leader of a lof, the basic kinship group — was a chief whose authority derived from prestige.",
+        "text": "The lonko — the leader of a lof, the basic kinship group — was a chief whose authority derived from prestige.",
         "pause_after_ms": 500
       }
     },
@@ -9253,10 +9253,10 @@
       "paragraph_id": "p170",
       "sentence_index": 1,
       "block_type": "text",
-      "text": "A lonko was typically an older man known for his skill in oratory, his generosity, his judgment, and his knowledge of ad mapu (ahd MAH-poo) — the customary law that governed Mapuche social life.",
-      "text_markdown": "A lonko was typically an older man known for his skill in oratory, his generosity, his judgment, and his knowledge of *ad mapu* (ahd MAH-poo) — the customary law that governed Mapuche social life.",
+      "text": "A lonko was typically an older man known for his skill in oratory, his generosity, his judgment, and his knowledge of ad mapu — the customary law that governed Mapuche social life.",
+      "text_markdown": "A lonko was typically an older man known for his skill in oratory, his generosity, his judgment, and his knowledge of *ad mapu* — the customary law that governed Mapuche social life.",
       "tts": {
-        "text": "A lonko was typically an older man known for his skill in oratory, his generosity, his judgment, and his knowledge of ad mapu (ahd MAH-poo) — the customary law that governed Mapuche social life.",
+        "text": "A lonko was typically an older man known for his skill in oratory, his generosity, his judgment, and his knowledge of ad mapu — the customary law that governed Mapuche social life.",
         "pause_after_ms": 500
       }
     },
@@ -9313,10 +9313,10 @@
       "paragraph_id": "p171",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "The toqui (TOH-kee) — the war chief — was elected for a specific campaign.",
-      "text_markdown": "The *toqui* (TOH-kee) — the war chief — was elected for a specific campaign.",
+      "text": "The toqui — the war chief — was elected for a specific campaign.",
+      "text_markdown": "The *toqui* — the war chief — was elected for a specific campaign.",
       "tts": {
-        "text": "The toqui (TOH-kee) — the war chief — was elected for a specific campaign.",
+        "text": "The toqui — the war chief — was elected for a specific campaign.",
         "pause_after_ms": 500
       }
     },
@@ -9418,10 +9418,10 @@
       "paragraph_id": "p172",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "The machi (mah-CHEE) — the spiritual specialist — held a form of authority that existed outside the political domain entirely.",
-      "text_markdown": "The *machi* (mah-CHEE) — the spiritual specialist — held a form of authority that existed outside the political domain entirely.",
+      "text": "The machi — the spiritual specialist — held a form of authority that existed outside the political domain entirely.",
+      "text_markdown": "The *machi* — the spiritual specialist — held a form of authority that existed outside the political domain entirely.",
       "tts": {
-        "text": "The machi (mah-CHEE) — the spiritual specialist — held a form of authority that existed outside the political domain entirely.",
+        "text": "The machi — the spiritual specialist — held a form of authority that existed outside the political domain entirely.",
         "pause_after_ms": 500
       }
     },
@@ -11605,10 +11605,10 @@
       "paragraph_id": "p212",
       "sentence_index": 2,
       "block_type": "text",
-      "text": "The Mapuche flag — the Wenufoye (weh-noo-FOH-yeh) — was everywhere.",
-      "text_markdown": "The Mapuche flag — the *Wenufoye* (weh-noo-FOH-yeh) — was everywhere.",
+      "text": "The Mapuche flag — the Wenufoye — was everywhere.",
+      "text_markdown": "The Mapuche flag — the *Wenufoye* — was everywhere.",
       "tts": {
-        "text": "The Mapuche flag — the Wenufoye (weh-noo-FOH-yeh) — was everywhere.",
+        "text": "The Mapuche flag — the Wenufoye — was everywhere.",
         "pause_after_ms": 500
       }
     },
@@ -13278,10 +13278,10 @@
       "paragraph_id": "p250",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "Ad mapu (ahd MAH-poo) — Mapuche customary law, transmitted orally and governing social behavior, dispute resolution, and community obligations.",
-      "text_markdown": "**Ad mapu** (ahd MAH-poo) — Mapuche customary law, transmitted orally and governing social behavior, dispute resolution, and community obligations.",
+      "text": "Ad mapu — Mapuche customary law, transmitted orally and governing social behavior, dispute resolution, and community obligations.",
+      "text_markdown": "**Ad mapu** — Mapuche customary law, transmitted orally and governing social behavior, dispute resolution, and community obligations.",
       "tts": {
-        "text": "Ad mapu (ahd MAH-poo) — Mapuche customary law, transmitted orally and governing social behavior, dispute resolution, and community obligations.",
+        "text": "Ad mapu — Mapuche customary law, transmitted orally and governing social behavior, dispute resolution, and community obligations.",
         "pause_after_ms": 800
       }
     },
@@ -13293,10 +13293,10 @@
       "paragraph_id": "p251",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "Ayllarewe (eye-yah-REH-weh) — A confederation of nine rewe, the largest peacetime political unit in Mapuche society.",
-      "text_markdown": "**Ayllarewe** (eye-yah-REH-weh) — A confederation of nine rewe, the largest peacetime political unit in Mapuche society.",
+      "text": "Ayllarewe — A confederation of nine rewe, the largest peacetime political unit in Mapuche society.",
+      "text_markdown": "**Ayllarewe** — A confederation of nine rewe, the largest peacetime political unit in Mapuche society.",
       "tts": {
-        "text": "Ayllarewe (eye-yah-REH-weh) — A confederation of nine rewe, the largest peacetime political unit in Mapuche society.",
+        "text": "Ayllarewe — A confederation of nine rewe, the largest peacetime political unit in Mapuche society.",
         "pause_after_ms": 500
       }
     },
@@ -13593,10 +13593,10 @@
       "paragraph_id": "p262",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "Foye (FOH-yeh) — The cinnamon tree (Drimys winteri), sacred in Mapuche culture.",
-      "text_markdown": "**Foye** (FOH-yeh) — The cinnamon tree (*Drimys winteri*), sacred in Mapuche culture.",
+      "text": "Foye — The cinnamon tree (Drimys winteri), sacred in Mapuche culture.",
+      "text_markdown": "**Foye** — The cinnamon tree (*Drimys winteri*), sacred in Mapuche culture.",
       "tts": {
-        "text": "Foye (FOH-yeh) — The cinnamon tree (Drimys winteri), sacred in Mapuche culture.",
+        "text": "Foye — The cinnamon tree (Drimys winteri), sacred in Mapuche culture.",
         "pause_after_ms": 500
       }
     },
@@ -13623,10 +13623,10 @@
       "paragraph_id": "p263",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "Koyagtun (koh-yag-TOON) — The indigenous Mapuche deliberative assembly, the precursor and foundation of the parlamento system.",
-      "text_markdown": "**Koyagtun** (koh-yag-TOON) — The indigenous Mapuche deliberative assembly, the precursor and foundation of the parlamento system.",
+      "text": "Koyagtun — The indigenous Mapuche deliberative assembly, the precursor and foundation of the parlamento system.",
+      "text_markdown": "**Koyagtun** — The indigenous Mapuche deliberative assembly, the precursor and foundation of the parlamento system.",
       "tts": {
-        "text": "Koyagtun (koh-yag-TOON) — The indigenous Mapuche deliberative assembly, the precursor and foundation of the parlamento system.",
+        "text": "Koyagtun — The indigenous Mapuche deliberative assembly, the precursor and foundation of the parlamento system.",
         "pause_after_ms": 800
       }
     },
@@ -13638,10 +13638,10 @@
       "paragraph_id": "p264",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "Kultrun (kool-TROON) — The ceremonial drum of the machi, painted with a cosmological map showing the four cardinal directions, sun, moon, and stars.",
-      "text_markdown": "**Kultrun** (kool-TROON) — The ceremonial drum of the machi, painted with a cosmological map showing the four cardinal directions, sun, moon, and stars.",
+      "text": "Kultrun — The ceremonial drum of the machi, painted with a cosmological map showing the four cardinal directions, sun, moon, and stars.",
+      "text_markdown": "**Kultrun** — The ceremonial drum of the machi, painted with a cosmological map showing the four cardinal directions, sun, moon, and stars.",
       "tts": {
-        "text": "Kultrun (kool-TROON) — The ceremonial drum of the machi, painted with a cosmological map showing the four cardinal directions, sun, moon, and stars.",
+        "text": "Kultrun — The ceremonial drum of the machi, painted with a cosmological map showing the four cardinal directions, sun, moon, and stars.",
         "pause_after_ms": 800
       }
     },
@@ -13653,10 +13653,10 @@
       "paragraph_id": "p265",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "Lafkenche (lahf-KEN-cheh) — \"People of the sea.\" Mapuche communities along the Pacific coast.",
-      "text_markdown": "**Lafkenche** (lahf-KEN-cheh) — \"People of the sea.\" Mapuche communities along the Pacific coast.",
+      "text": "Lafkenche — \"People of the sea.\" Mapuche communities along the Pacific coast.",
+      "text_markdown": "**Lafkenche** — \"People of the sea.\" Mapuche communities along the Pacific coast.",
       "tts": {
-        "text": "Lafkenche (lahf-KEN-cheh) — \"People of the sea.\" Mapuche communities along the Pacific coast.",
+        "text": "Lafkenche — \"People of the sea.\" Mapuche communities along the Pacific coast.",
         "pause_after_ms": 800
       }
     },
@@ -13668,10 +13668,10 @@
       "paragraph_id": "p266",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "Lautaro (lah-oo-TAH-roh) — Mapuche toqui (war chief), c.",
-      "text_markdown": "**Lautaro** (lah-oo-TAH-roh) — Mapuche toqui (war chief), c.",
+      "text": "Lautaro — Mapuche toqui (war chief), c.",
+      "text_markdown": "**Lautaro** — Mapuche toqui (war chief), c.",
       "tts": {
-        "text": "Lautaro (lah-oo-TAH-roh) — Mapuche toqui (war chief), c.",
+        "text": "Lautaro — Mapuche toqui (war chief), c.",
         "pause_after_ms": 500
       }
     },
@@ -13743,10 +13743,10 @@
       "paragraph_id": "p268",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "Lonko (LONG-koh) — The leader of a lof, whose authority rested on prestige, oratory, and generosity rather than hereditary right.",
-      "text_markdown": "**Lonko** (LONG-koh) — The leader of a lof, whose authority rested on prestige, oratory, and generosity rather than hereditary right.",
+      "text": "Lonko — The leader of a lof, whose authority rested on prestige, oratory, and generosity rather than hereditary right.",
+      "text_markdown": "**Lonko** — The leader of a lof, whose authority rested on prestige, oratory, and generosity rather than hereditary right.",
       "tts": {
-        "text": "Lonko (LONG-koh) — The leader of a lof, whose authority rested on prestige, oratory, and generosity rather than hereditary right.",
+        "text": "Lonko — The leader of a lof, whose authority rested on prestige, oratory, and generosity rather than hereditary right.",
         "pause_after_ms": 800
       }
     },
@@ -13758,10 +13758,10 @@
       "paragraph_id": "p269",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "Machi (mah-CHEE) — Mapuche spiritual specialist, almost always a woman.",
-      "text_markdown": "**Machi** (mah-CHEE) — Mapuche spiritual specialist, almost always a woman.",
+      "text": "Machi — Mapuche spiritual specialist, almost always a woman.",
+      "text_markdown": "**Machi** — Mapuche spiritual specialist, almost always a woman.",
       "tts": {
-        "text": "Machi (mah-CHEE) — Mapuche spiritual specialist, almost always a woman.",
+        "text": "Machi — Mapuche spiritual specialist, almost always a woman.",
         "pause_after_ms": 500
       }
     },
@@ -13788,10 +13788,10 @@
       "paragraph_id": "p270",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "Mapu (MAH-poo) — Land, territory, earth.",
-      "text_markdown": "**Mapu** (MAH-poo) — Land, territory, earth.",
+      "text": "Mapu — Land, territory, earth.",
+      "text_markdown": "**Mapu** — Land, territory, earth.",
       "tts": {
-        "text": "Mapu (MAH-poo) — Land, territory, earth.",
+        "text": "Mapu — Land, territory, earth.",
         "pause_after_ms": 500
       }
     },
@@ -13818,10 +13818,10 @@
       "paragraph_id": "p271",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "Mapuche (mah-POO-cheh) — \"People of the land.\" The indigenous people of south-central Chile and southwestern Argentina.",
-      "text_markdown": "**Mapuche** (mah-POO-cheh) — \"People of the land.\" The indigenous people of south-central Chile and southwestern Argentina.",
+      "text": "Mapuche — \"People of the land.\" The indigenous people of south-central Chile and southwestern Argentina.",
+      "text_markdown": "**Mapuche** — \"People of the land.\" The indigenous people of south-central Chile and southwestern Argentina.",
       "tts": {
-        "text": "Mapuche (mah-POO-cheh) — \"People of the land.\" The indigenous people of south-central Chile and southwestern Argentina.",
+        "text": "Mapuche — \"People of the land.\" The indigenous people of south-central Chile and southwestern Argentina.",
         "pause_after_ms": 500
       }
     },
@@ -13848,10 +13848,10 @@
       "paragraph_id": "p272",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "Mapudungun (mah-poo-DOON-goon) — \"The speech of the land.\" The Mapuche language, a language isolate with no known relatives.",
-      "text_markdown": "**Mapudungun** (mah-poo-DOON-goon) — \"The speech of the land.\" The Mapuche language, a language isolate with no known relatives.",
+      "text": "Mapudungun — \"The speech of the land.\" The Mapuche language, a language isolate with no known relatives.",
+      "text_markdown": "**Mapudungun** — \"The speech of the land.\" The Mapuche language, a language isolate with no known relatives.",
       "tts": {
-        "text": "Mapudungun (mah-poo-DOON-goon) — \"The speech of the land.\" The Mapuche language, a language isolate with no known relatives.",
+        "text": "Mapudungun — \"The speech of the land.\" The Mapuche language, a language isolate with no known relatives.",
         "pause_after_ms": 800
       }
     },
@@ -13893,10 +13893,10 @@
       "paragraph_id": "p274",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "Ngünechen (ngoo-neh-CHEN) — The supreme spiritual being in Mapuche cosmology, simultaneously embodying four aspects: old man, old woman, young man, young woman.",
-      "text_markdown": "**Ngünechen** (ngoo-neh-CHEN) — The supreme spiritual being in Mapuche cosmology, simultaneously embodying four aspects: old man, old woman, young man, young woman.",
+      "text": "Ngünechen — The supreme spiritual being in Mapuche cosmology, simultaneously embodying four aspects: old man, old woman, young man, young woman.",
+      "text_markdown": "**Ngünechen** — The supreme spiritual being in Mapuche cosmology, simultaneously embodying four aspects: old man, old woman, young man, young woman.",
       "tts": {
-        "text": "Ngünechen (ngoo-neh-CHEN) — The supreme spiritual being in Mapuche cosmology, simultaneously embodying four aspects: old man, old woman, young man, young woman.",
+        "text": "Ngünechen — The supreme spiritual being in Mapuche cosmology, simultaneously embodying four aspects: old man, old woman, young man, young woman.",
         "pause_after_ms": 800
       }
     },
@@ -13908,10 +13908,10 @@
       "paragraph_id": "p275",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "Nguillatun (ngee-yah-TOON) — The most important collective ceremony in Mapuche culture, involving prayer, sacrifice, and community gathering.",
-      "text_markdown": "**Nguillatun** (ngee-yah-TOON) — The most important collective ceremony in Mapuche culture, involving prayer, sacrifice, and community gathering.",
+      "text": "Nguillatun — The most important collective ceremony in Mapuche culture, involving prayer, sacrifice, and community gathering.",
+      "text_markdown": "**Nguillatun** — The most important collective ceremony in Mapuche culture, involving prayer, sacrifice, and community gathering.",
       "tts": {
-        "text": "Nguillatun (ngee-yah-TOON) — The most important collective ceremony in Mapuche culture, involving prayer, sacrifice, and community gathering.",
+        "text": "Nguillatun — The most important collective ceremony in Mapuche culture, involving prayer, sacrifice, and community gathering.",
         "pause_after_ms": 800
       }
     },
@@ -13953,10 +13953,10 @@
       "paragraph_id": "p277",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "Pelantaru (peh-lahn-TAH-roo) — Mapuche toqui who led the uprising of 1598, destroying the Seven Cities and establishing the Bío-Bío frontier.",
-      "text_markdown": "**Pelantaru** (peh-lahn-TAH-roo) — Mapuche toqui who led the uprising of 1598, destroying the Seven Cities and establishing the Bío-Bío frontier.",
+      "text": "Pelantaru — Mapuche toqui who led the uprising of 1598, destroying the Seven Cities and establishing the Bío-Bío frontier.",
+      "text_markdown": "**Pelantaru** — Mapuche toqui who led the uprising of 1598, destroying the Seven Cities and establishing the Bío-Bío frontier.",
       "tts": {
-        "text": "Pelantaru (peh-lahn-TAH-roo) — Mapuche toqui who led the uprising of 1598, destroying the Seven Cities and establishing the Bío-Bío frontier.",
+        "text": "Pelantaru — Mapuche toqui who led the uprising of 1598, destroying the Seven Cities and establishing the Bío-Bío frontier.",
         "pause_after_ms": 800
       }
     },
@@ -13968,10 +13968,10 @@
       "paragraph_id": "p278",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "Pewenche (peh-WEN-cheh) — \"People of the araucaria.\" Mapuche communities of the Andean highlands.",
-      "text_markdown": "**Pewenche** (peh-WEN-cheh) — \"People of the araucaria.\" Mapuche communities of the Andean highlands.",
+      "text": "Pewenche — \"People of the araucaria.\" Mapuche communities of the Andean highlands.",
+      "text_markdown": "**Pewenche** — \"People of the araucaria.\" Mapuche communities of the Andean highlands.",
       "tts": {
-        "text": "Pewenche (peh-WEN-cheh) — \"People of the araucaria.\" Mapuche communities of the Andean highlands.",
+        "text": "Pewenche — \"People of the araucaria.\" Mapuche communities of the Andean highlands.",
         "pause_after_ms": 800
       }
     },
@@ -14013,10 +14013,10 @@
       "paragraph_id": "p280",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "Reche (reh-CHEH) — \"Authentic people\" or \"true people.\" The pre-colonial self-designation of the peoples who would later become known as Mapuche.",
-      "text_markdown": "**Reche** (reh-CHEH) — \"Authentic people\" or \"true people.\" The pre-colonial self-designation of the peoples who would later become known as Mapuche.",
+      "text": "Reche — \"Authentic people\" or \"true people.\" The pre-colonial self-designation of the peoples who would later become known as Mapuche.",
+      "text_markdown": "**Reche** — \"Authentic people\" or \"true people.\" The pre-colonial self-designation of the peoples who would later become known as Mapuche.",
       "tts": {
-        "text": "Reche (reh-CHEH) — \"Authentic people\" or \"true people.\" The pre-colonial self-designation of the peoples who would later become known as Mapuche.",
+        "text": "Reche — \"Authentic people\" or \"true people.\" The pre-colonial self-designation of the peoples who would later become known as Mapuche.",
         "pause_after_ms": 800
       }
     },
@@ -14043,10 +14043,10 @@
       "paragraph_id": "p282",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "Rewe (REH-weh) — (1) An alliance of several lof for ceremonial and political purposes.",
-      "text_markdown": "**Rewe** (REH-weh) — (1) An alliance of several lof for ceremonial and political purposes.",
+      "text": "Rewe — (1) An alliance of several lof for ceremonial and political purposes.",
+      "text_markdown": "**Rewe** — (1) An alliance of several lof for ceremonial and political purposes.",
       "tts": {
-        "text": "Rewe (REH-weh) — (1) An alliance of several lof for ceremonial and political purposes.",
+        "text": "Rewe — (1) An alliance of several lof for ceremonial and political purposes.",
         "pause_after_ms": 500
       }
     },
@@ -14118,10 +14118,10 @@
       "paragraph_id": "p285",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "Toqui (TOH-kee) — A war chief elected for a specific military campaign, whose authority ended when the campaign ended.",
-      "text_markdown": "**Toqui** (TOH-kee) — A war chief elected for a specific military campaign, whose authority ended when the campaign ended.",
+      "text": "Toqui — A war chief elected for a specific military campaign, whose authority ended when the campaign ended.",
+      "text_markdown": "**Toqui** — A war chief elected for a specific military campaign, whose authority ended when the campaign ended.",
       "tts": {
-        "text": "Toqui (TOH-kee) — A war chief elected for a specific military campaign, whose authority ended when the campaign ended.",
+        "text": "Toqui — A war chief elected for a specific military campaign, whose authority ended when the campaign ended.",
         "pause_after_ms": 800
       }
     },
@@ -14223,10 +14223,10 @@
       "paragraph_id": "p289",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "Wallmapu (wahl-MAH-poo) — \"The surrounding land.\" The traditional Mapuche territory, spanning from the Itata River to the island of Chiloé and across the Andes into the Argentine Pampas.",
-      "text_markdown": "**Wallmapu** (wahl-MAH-poo) — \"The surrounding land.\" The traditional Mapuche territory, spanning from the Itata River to the island of Chiloé and across the Andes into the Argentine Pampas.",
+      "text": "Wallmapu — \"The surrounding land.\" The traditional Mapuche territory, spanning from the Itata River to the island of Chiloé and across the Andes into the Argentine Pampas.",
+      "text_markdown": "**Wallmapu** — \"The surrounding land.\" The traditional Mapuche territory, spanning from the Itata River to the island of Chiloé and across the Andes into the Argentine Pampas.",
       "tts": {
-        "text": "Wallmapu (wahl-MAH-poo) — \"The surrounding land.\" The traditional Mapuche territory, spanning from the Itata River to the island of Chiloé and across the Andes into the Argentine Pampas.",
+        "text": "Wallmapu — \"The surrounding land.\" The traditional Mapuche territory, spanning from the Itata River to the island of Chiloé and across the Andes into the Argentine Pampas.",
         "pause_after_ms": 800
       }
     },
@@ -14238,10 +14238,10 @@
       "paragraph_id": "p290",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "Wenufoye (weh-noo-FOH-yeh) — The Mapuche flag, created in 1992 by the Consejo de Todas las Tierras.",
-      "text_markdown": "**Wenufoye** (weh-noo-FOH-yeh) — The Mapuche flag, created in 1992 by the Consejo de Todas las Tierras.",
+      "text": "Wenufoye — The Mapuche flag, created in 1992 by the Consejo de Todas las Tierras.",
+      "text_markdown": "**Wenufoye** — The Mapuche flag, created in 1992 by the Consejo de Todas las Tierras.",
       "tts": {
-        "text": "Wenufoye (weh-noo-FOH-yeh) — The Mapuche flag, created in 1992 by the Consejo de Todas las Tierras.",
+        "text": "Wenufoye — The Mapuche flag, created in 1992 by the Consejo de Todas las Tierras.",
         "pause_after_ms": 500
       }
     },
@@ -14268,10 +14268,10 @@
       "paragraph_id": "p291",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "Witral (wee-TRAHL) — The traditional Mapuche vertical loom, used for weaving textiles.",
-      "text_markdown": "**Witral** (wee-TRAHL) — The traditional Mapuche vertical loom, used for weaving textiles.",
+      "text": "Witral — The traditional Mapuche vertical loom, used for weaving textiles.",
+      "text_markdown": "**Witral** — The traditional Mapuche vertical loom, used for weaving textiles.",
       "tts": {
-        "text": "Witral (wee-TRAHL) — The traditional Mapuche vertical loom, used for weaving textiles.",
+        "text": "Witral — The traditional Mapuche vertical loom, used for weaving textiles.",
         "pause_after_ms": 800
       }
     },

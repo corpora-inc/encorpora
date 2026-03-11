@@ -12,7 +12,7 @@
 import "./catalog.css"
 import type { CatalogNarrationEntry, DownloadState } from "./types"
 import { fetchCatalog } from "./catalogFetch"
-import { isInstalled, getInstalled, listInstalled } from "./libraryStore"
+import { isInstalled, getInstalled, listInstalled, listInstalledForBook } from "./libraryStore"
 import { startListening } from "./downloadProgress"
 import { getPackUrl, isTauriAvailable, installNarration, deleteNarration } from "./installManager"
 import { subscribe as subscribeProgress, getState as getProgressState } from "./downloadProgress"
@@ -117,14 +117,31 @@ export function createAppShell(
     }
   })
 
+  // Subscribe for pill-triggered narration switches
+  const narrUnsub = drawerStore.subscribe((state, prev) => {
+    if (
+      state.currentNarrationId !== prev.currentNarrationId &&
+      state.currentNarrationId &&
+      state.currentNarrationId !== activeNarrationId
+    ) {
+      switchToNarration(state.currentNarrationId)
+    }
+  })
+
   // --- Check if we should start with catalog or reader ---
   const installed = listInstalled()
   const hasInstalledBooks = installed.length > 0
   const hasInitialBook = Boolean(opts.initialState?.baseUrl || opts.initialState?.bookId)
 
-  // Mount reader if we have data to show
-  if (hasInitialBook || hasInstalledBooks) {
+  // Restore persisted narration or pick most recent installed
+  if (hasInitialBook) {
     mountReader(opts.initialState)
+  } else if (hasInstalledBooks) {
+    const persistedNarrId = drawerStore.getState().currentNarrationId
+    const targetNarr = (persistedNarrId && isInstalled(persistedNarrId))
+      ? persistedNarrId
+      : installed[0].narrationId
+    switchToNarration(targetNarr)
   }
 
   // If no books at all, open drawer to Browse immediately
@@ -171,9 +188,41 @@ export function createAppShell(
       language: info.language,
     }
 
+    drawerStore.setState({ currentNarrationId: narrationId, currentLanguage: info.language })
+
     // Close drawer and remount reader with new book
     drawer.close()
     mountReader(newState)
+    updateDrawerNarrationPills(info.bookId)
+  }
+
+  function updateDrawerNarrationPills(bookId: string): void {
+    const installed = listInstalledForBook(bookId)
+    if (installed.length === 0) return
+
+    // Count narrations per language to decide label format
+    const langCounts = new Map<string, number>()
+    for (const n of installed) {
+      langCounts.set(n.language, (langCounts.get(n.language) || 0) + 1)
+    }
+
+    const pills: import("../../ui/commandDrawer").LanguageInfo[] = installed.map(n => {
+      const multiVoice = (langCounts.get(n.language) || 0) > 1
+      return {
+        code: n.language,
+        displayName: multiVoice
+          ? `${getLanguageName(n.language)} \u00B7 ${n.voiceName}`
+          : getLanguageName(n.language),
+        narrator: n.voiceName,
+        narrationId: n.narrationId,
+      }
+    })
+
+    drawerStore.setState({
+      languages: pills,
+      currentNarrationId: activeNarrationId || "",
+      currentLanguage: getInstalled(activeNarrationId || "")?.language || "",
+    })
   }
 
   // --- Library section rendering ---
@@ -220,7 +269,14 @@ export function createAppShell(
 
       const lang = document.createElement("div")
       lang.className = "command-drawer-library-card-lang"
-      lang.textContent = narrations.map(n => getLanguageName(n.language)).join(", ")
+      const langCounts = new Map<string, number>()
+      for (const n of narrations) {
+        const name = getLanguageName(n.language)
+        langCounts.set(name, (langCounts.get(name) || 0) + 1)
+      }
+      lang.textContent = [...langCounts.entries()]
+        .map(([name, count]) => count > 1 ? `${name} (${count})` : name)
+        .join(", ")
 
       card.append(title, lang)
 
@@ -451,15 +507,10 @@ export function createAppShell(
     const installedNarrs = narrations.filter(n => isInstalled(n.id))
     const availableNarrs = narrations.filter(n => !isInstalled(n.id))
 
-    // Is this the currently-playing book? If so, language taps switch language in-place.
-    // If it's a different book, language taps switch to that narration (remount).
-    const isCurrentBook = installedNarrs.some(n => n.id === activeNarrationId)
-    const currentLanguage = drawerStore.getState().currentLanguage
-
     for (const narr of installedNarrs) {
       const row = document.createElement("div")
       row.className = "catalog-narration-row catalog-narration-row--installed"
-      if (isCurrentBook && narr.language === currentLanguage) {
+      if (narr.id === activeNarrationId) {
         row.classList.add("catalog-narration-row--active")
       }
       row.style.cursor = "pointer"
@@ -478,8 +529,8 @@ export function createAppShell(
       info.append(lang, voice)
       row.appendChild(info)
 
-      // Active indicator (only for current book)
-      if (isCurrentBook && narr.language === currentLanguage) {
+      // Active indicator
+      if (narr.id === activeNarrationId) {
         const check = document.createElement("div")
         check.className = "catalog-narration-active-indicator"
         check.textContent = "\u2713"
@@ -493,7 +544,24 @@ export function createAppShell(
       delBtn.title = "Delete"
       delBtn.addEventListener("click", async (e) => {
         e.stopPropagation()
+        const wasActive = narr.id === activeNarrationId
         await deleteNarration(narr.id)
+
+        if (wasActive) {
+          // Switch to another installed narration or clear
+          const remaining = listInstalled()
+          if (remaining.length > 0) {
+            switchToNarration(remaining[0].narrationId)
+          } else {
+            activeNarrationId = undefined
+            if (readerInstance) {
+              readerInstance.dispose()
+              readerInstance = null
+            }
+            drawerStore.setState({ currentNarrationId: "", currentLanguage: "", languages: [], nowPlaying: { bookTitle: "" } })
+          }
+        }
+
         browseShowingDetail = false
         detailNarrations = []
         refreshBrowseSection()
@@ -502,14 +570,8 @@ export function createAppShell(
       row.appendChild(delBtn)
 
       row.addEventListener("click", () => {
-        if (isCurrentBook) {
-          // Same book — switch language in-place (drawer stays open)
-          if (narr.language === drawerStore.getState().currentLanguage) return
-          drawerStore.setState({ currentLanguage: narr.language })
-        } else {
-          // Different book — remount reader with this narration
-          switchToNarration(narr.id)
-        }
+        if (narr.id === activeNarrationId) return
+        switchToNarration(narr.id)
       })
 
       detail.appendChild(row)
@@ -637,6 +699,7 @@ export function createAppShell(
     if (disposed) return
     disposed = true
     storeUnsub()
+    narrUnsub()
     cleanupProgressSubs()
     drawer.dispose()
     readerInstance?.dispose()

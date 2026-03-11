@@ -3,7 +3,6 @@ import type { GameModule, HostApi } from "@shared/sdk"
 import { createMockHostApi } from "@shared/sdk"
 import { createEarthgateReader } from "./game"
 import { createAppShell, type ReaderFactory } from "@shared/catalog"
-import { drawerStore } from "@shared/state"
 
 type GlobalScope = typeof globalThis & {
   CorpanGames?: Record<string, GameModule>
@@ -58,16 +57,8 @@ const registerGame = () => {
       })
       scope.__earthgateReader = shell
 
-      // Subscribe to store for language switching
-      const langUnsub = drawerStore.subscribe((state, prev) => {
-        if (state.currentLanguage !== prev.currentLanguage && state.currentLanguage) {
-          lastReader?.switchLanguage(state.currentLanguage)
-        }
-      })
-
       return {
         unmount: () => {
-          langUnsub()
           shell.dispose()
           scope.__earthgateReader = undefined
         },
