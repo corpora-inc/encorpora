@@ -13,7 +13,8 @@
     "pack:all": "npm run build && node scripts/pack.mjs"
   },
   "dependencies": {
-    "@babylonjs/core": "^6.48.0"
+    "@babylonjs/core": "^6.48.0",
+    "zustand": "^5.0.0"
   },
   "devDependencies": {
     "@types/node": "^25.0.3",

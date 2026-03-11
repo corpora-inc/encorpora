@@ -1,3 +1,4 @@
+import { createStore } from "zustand/vanilla"
 import type { LanguageInfo } from "../ui/commandDrawer"
 
 export type DrawerState = {
@@ -7,68 +8,25 @@ export type DrawerState = {
   nowPlaying: { bookTitle: string; narrator?: string }
 }
 
-type Listener = (state: DrawerState, prev: DrawerState) => void
-
-const LS_KEY = "drawerStore:currentLanguage"
-const LS_NARR_KEY = "drawerStore:currentNarrationId"
-
-function loadPersistedLanguage(): string {
+// Migrate from old two-key format (one-time, on module load)
+function readLegacy() {
   try {
-    return localStorage.getItem(LS_KEY) || ""
+    const lang = localStorage.getItem("drawerStore:currentLanguage") || ""
+    const narrId = localStorage.getItem("drawerStore:currentNarrationId") || ""
+    if (lang || narrId) {
+      localStorage.removeItem("drawerStore:currentLanguage")
+      localStorage.removeItem("drawerStore:currentNarrationId")
+    }
+    return { currentLanguage: lang, currentNarrationId: narrId }
   } catch {
-    return ""
+    return { currentLanguage: "", currentNarrationId: "" }
   }
 }
+const legacy = readLegacy()
 
-function loadPersistedNarrationId(): string {
-  try {
-    return localStorage.getItem(LS_NARR_KEY) || ""
-  } catch {
-    return ""
-  }
-}
-
-let state: DrawerState = {
-  currentLanguage: loadPersistedLanguage(),
-  currentNarrationId: loadPersistedNarrationId(),
+export const drawerStore = createStore<DrawerState>()(() => ({
+  currentLanguage: legacy.currentLanguage,
+  currentNarrationId: legacy.currentNarrationId,
   languages: [],
   nowPlaying: { bookTitle: "" },
-}
-
-const listeners = new Set<Listener>()
-
-function getState(): DrawerState {
-  return state
-}
-
-function setState(partial: Partial<DrawerState>): void {
-  const prev = state
-  state = { ...state, ...partial }
-
-  if (partial.currentLanguage !== undefined && partial.currentLanguage !== prev.currentLanguage) {
-    try {
-      localStorage.setItem(LS_KEY, partial.currentLanguage)
-    } catch {
-      // Storage unavailable
-    }
-  }
-
-  if (partial.currentNarrationId !== undefined && partial.currentNarrationId !== prev.currentNarrationId) {
-    try {
-      localStorage.setItem(LS_NARR_KEY, partial.currentNarrationId)
-    } catch {
-      // Storage unavailable
-    }
-  }
-
-  for (const cb of listeners) {
-    cb(state, prev)
-  }
-}
-
-function subscribe(cb: Listener): () => void {
-  listeners.add(cb)
-  return () => { listeners.delete(cb) }
-}
-
-export const drawerStore = { getState, setState, subscribe }
+}))

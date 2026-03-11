@@ -44,6 +44,7 @@ const readerFactory: ReaderFactory = (container, hostApi, initialState) => {
 
   // If the drawer already rendered the section container before the reader was ready, fill it now
   if (displayContainer) {
+    displayContainer.innerHTML = ""
     pendingDisplayRender(displayContainer)
   }
 
@@ -77,6 +78,7 @@ const registerGame = () => {
       }
 
       const shell = createAppShell(container, {
+        readerId: "stargate",
         createReader: readerFactory,
         hostApi,
         initialState: state,
