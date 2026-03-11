@@ -152,6 +152,21 @@ export const VOICE_NAMES: Record<string, string> = {
   "ian-narration": "Ian",
 }
 
+/** Resolve a voice ID to a display name.
+ *  Tries exact match first, then prefix match, then extracts the first word. */
+export function resolveVoiceName(voiceId: string): string {
+  if (VOICE_NAMES[voiceId]) return VOICE_NAMES[voiceId]
+  // Prefix match: "ian-new-narration-spanish-loud" starts with "ian-narration"? No.
+  // Better: extract first segment before "-" and capitalize.
+  for (const [key, name] of Object.entries(VOICE_NAMES)) {
+    const prefix = key.split("-")[0]
+    if (voiceId.startsWith(prefix + "-")) return name
+  }
+  // Fallback: capitalize first word
+  const first = voiceId.split("-")[0]
+  return first.charAt(0).toUpperCase() + first.slice(1)
+}
+
 export const BOOK_NAMES: Record<string, string> = {
   book_monte_alban: "The Mystery of Monte Albán",
 }

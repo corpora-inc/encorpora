@@ -69,5 +69,6 @@ export {
   ENVELOPE_BINS,
   LANGUAGE_NAMES,
   VOICE_NAMES,
+  resolveVoiceName,
   BOOK_NAMES,
 } from "./constants"

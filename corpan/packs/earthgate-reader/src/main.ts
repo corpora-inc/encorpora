@@ -12,8 +12,26 @@ type GlobalScope = typeof globalThis & {
 
 const GAME_ID = "earthgate_reader"
 
-const readerFactory: ReaderFactory = (container, hostApi, initialState) =>
-  createEarthgateReader(container, hostApi as HostApi, initialState)
+// Track the last mounted reader instance for language/bookmark callbacks
+let lastReader: ReturnType<typeof createEarthgateReader> | null = null
+let lastShell: ReturnType<typeof createAppShell> | null = null
+
+const readerFactory: ReaderFactory = (container, hostApi, initialState) => {
+  const reader = createEarthgateReader(container, hostApi as HostApi, initialState)
+  lastReader = reader
+
+  // When reader discovers languages, update the drawer
+  reader.onLanguagesReady((langs, current) => {
+    lastShell?.setLanguages(langs, current)
+  })
+
+  // When reader loads a book, update now-playing in the drawer
+  reader.onNowPlayingChange((info) => {
+    lastShell?.setNowPlaying(info)
+  })
+
+  return reader
+}
 
 const registerGame = () => {
   const scope = globalThis as GlobalScope
@@ -45,7 +63,14 @@ const registerGame = () => {
         createReader: readerFactory,
         hostApi,
         initialState: state,
+        onLanguageChange: (lang) => {
+          lastReader?.switchLanguage(lang)
+        },
+        onBeforeExit: () => {
+          lastReader?.persistBookmark()
+        },
       })
+      lastShell = shell
       scope.__earthgateReader = shell
 
       return {

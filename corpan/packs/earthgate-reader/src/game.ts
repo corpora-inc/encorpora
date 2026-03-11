@@ -1,6 +1,6 @@
 import type { HostApi } from "@shared/sdk"
 import type { AudioManifest, BookSegment, TimelineWord, ChapterInfo } from "@shared/core"
-import { VOICE_NAMES, BOOK_NAMES, LANGUAGE_NAMES } from "@shared/core"
+import { VOICE_NAMES, BOOK_NAMES, LANGUAGE_NAMES, resolveVoiceName } from "@shared/core"
 import { buildTimeline, findCurrentWordIndex, buildChapterIndex } from "@shared/core"
 import { createFetchDataProvider, createPreloadedDataProvider, type DataProvider } from "@shared/data"
 import { createAudioEngine, type AudioEngine } from "@shared/audio"
@@ -15,7 +15,7 @@ import {
   updateNativeNowPlaying,
   listenForRemoteCommands,
 } from "@shared/audio"
-import { createSettingsPanel, type LanguageInfo } from "./ui/settingsPanel"
+export type LanguageInfo = { code: string; displayName: string; narrator: string }
 import { createParagraphView, type ParagraphView } from "./rendering/paragraphView"
 
 const bookmarks = createBookmarkStore("earthgate-reader")
@@ -359,7 +359,7 @@ export function createEarthgateReader(
     return availableLanguages.map(code => ({
       code,
       displayName: LANGUAGE_NAMES[code] || code.toUpperCase(),
-      narrator: VOICE_NAMES[voiceMap[code] || ""] || "",
+      narrator: resolveVoiceName(voiceMap[code] || ""),
     }))
   }
 
@@ -397,11 +397,9 @@ export function createEarthgateReader(
   let chapterOverlay: ChapterOverlay = createChapterOverlay(ui, "earthgate")
   let lastChapterIndex = -1
 
-  // Settings panel
-  const settings = createSettingsPanel(ui, {
-    onBeforeClose: () => persistBookmark(),
-  })
-  settings.setLanguages(buildLanguageInfos(), currentLanguage)
+  // Language change callback (set by appShell via onLanguageChange option)
+  let externalLangChangeCb: ((langs: LanguageInfo[], current: string) => void) | null = null
+  let externalNowPlayingCb: ((info: { bookTitle: string; narrator?: string }) => void) | null = null
 
   // Transport bar
   const transport = createTransportBar(ui, "earthgate")
@@ -493,9 +491,7 @@ export function createEarthgateReader(
     if (wasPlayingBeforeScrub) void doPlay()
   })
 
-  settings.onLanguageChange((lang) => {
-    void switchLanguage(lang)
-  })
+  // Language switching is triggered by the command drawer via appShell
 
   window.__earthgateCmd = (cmd: EarthgateRemoteCommand) => {
     dispatchRemotePlayPause(cmd, "window")
@@ -732,14 +728,15 @@ export function createEarthgateReader(
       if (disposed) return
 
       voiceMap[currentLanguage] = manifest.voice
-      settings.setLanguages(buildLanguageInfos(), currentLanguage)
+      externalLangChangeCb?.(buildLanguageInfos(), currentLanguage)
+      externalNowPlayingCb?.({ bookTitle: bookDisplayName, narrator: resolveVoiceName(manifest.voice) })
 
       // Background fetch other language voice info
       for (const lang of availableLanguages) {
         if (lang !== currentLanguage) {
           dataProvider.loadAudioManifest(lang).then(m => {
             voiceMap[lang] = m.voice
-            settings.setLanguages(buildLanguageInfos(), currentLanguage)
+            externalLangChangeCb?.(buildLanguageInfos(), currentLanguage)
           }).catch(() => {})
         }
       }
@@ -851,7 +848,8 @@ export function createEarthgateReader(
       segments = segData.segments
       manifest = newManifest
       voiceMap[newLang] = newManifest.voice
-      settings.setLanguages(buildLanguageInfos(), newLang)
+      externalLangChangeCb?.(buildLanguageInfos(), newLang)
+      externalNowPlayingCb?.({ bookTitle: bookDisplayName, narrator: resolveVoiceName(newManifest.voice) })
       chapters = buildChapterIndex(segments)
 
       const timeline = buildTimeline(segments, newManifest)
@@ -1055,12 +1053,25 @@ export function createEarthgateReader(
 
     persistBookmark()
     chapterOverlay.dispose()
-    settings.dispose()
     transport.dispose()
     paragraphView.dispose()
     audioEngine?.dispose()
     wrapper.remove()
   }
 
-  return { dispose }
+  return {
+    dispose,
+    /** Called by appShell/drawer to switch language */
+    switchLanguage: (lang: string) => { void switchLanguage(lang) },
+    /** Register callback for when reader updates languages (discovery + voice info) */
+    onLanguagesReady(cb: (langs: LanguageInfo[], current: string) => void) {
+      externalLangChangeCb = cb
+    },
+    /** Register callback for now-playing info (book title + narrator) */
+    onNowPlayingChange(cb: (info: { bookTitle: string; narrator?: string }) => void) {
+      externalNowPlayingCb = cb
+    },
+    /** Persist bookmark (called by appShell before exit) */
+    persistBookmark,
+  }
 }

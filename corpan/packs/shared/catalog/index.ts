@@ -66,3 +66,6 @@ export {
   type AppShellOptions,
   type ReaderFactory,
 } from "./src/appShell"
+
+// Re-export drawer types used by readers
+export type { DrawerSectionDef, LanguageInfo } from "../ui/commandDrawer"

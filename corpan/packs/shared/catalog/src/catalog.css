@@ -177,6 +177,13 @@
   font-weight: 600;
 }
 
+.catalog-filter-pill--active:hover {
+  background: var(--catalog-accent);
+  border-color: var(--catalog-accent);
+  color: var(--catalog-bg);
+  opacity: 0.85;
+}
+
 /* --- Scrollable content area --- */
 
 .catalog-content {
@@ -243,6 +250,10 @@
 
 .catalog-card:active {
   transform: translateY(0);
+}
+
+.catalog-card--active {
+  border-color: var(--catalog-accent);
 }
 
 .catalog-card-title {
@@ -523,6 +534,29 @@
   background: var(--catalog-accent);
   transition: width 200ms ease;
   border-radius: 0 0 var(--catalog-radius) var(--catalog-radius);
+}
+
+/* --- Active narration row (language picker) --- */
+
+.catalog-narration-row--installed {
+  transition: border-color 150ms ease, background 150ms ease;
+}
+
+.catalog-narration-row--installed:hover {
+  border-color: var(--catalog-accent);
+}
+
+.catalog-narration-row--active {
+  border-color: var(--catalog-accent);
+  background: color-mix(in srgb, var(--catalog-accent) 8%, transparent);
+}
+
+.catalog-narration-active-indicator {
+  flex-shrink: 0;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--catalog-accent);
+  margin-right: 4px;
 }
 
 /* --- Installed narration row extras --- */

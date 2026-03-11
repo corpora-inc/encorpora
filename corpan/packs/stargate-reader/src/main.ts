@@ -3,6 +3,7 @@ import type { GameModule, HostApi } from "@shared/sdk"
 import { createMockHostApi } from "@shared/sdk"
 import { createStargateReader } from "./game"
 import { createAppShell, type ReaderFactory } from "@shared/catalog"
+import type { DrawerSectionDef } from "@shared/ui"
 
 type GlobalScope = typeof globalThis & {
   CorpanGames?: Record<string, GameModule>
@@ -12,8 +13,45 @@ type GlobalScope = typeof globalThis & {
 
 const GAME_ID = "stargate_reader"
 
-const readerFactory: ReaderFactory = (container, hostApi, initialState) =>
-  createStargateReader(container, hostApi as HostApi, initialState)
+// Track the last mounted reader instance for language/settings callbacks
+let lastReader: ReturnType<typeof createStargateReader> | null = null
+let lastShell: ReturnType<typeof createAppShell> | null = null
+
+// The display section def — render is deferred until the reader provides its callbacks
+let pendingDisplayRender: ((container: HTMLElement) => void) | null = null
+
+const displaySection: DrawerSectionDef = {
+  id: "display",
+  title: "Display",
+  priority: 40,
+  render: (container) => {
+    // The actual render is deferred — the reader sets it after mount
+    if (pendingDisplayRender) {
+      pendingDisplayRender(container)
+    }
+  },
+}
+
+const readerFactory: ReaderFactory = (container, hostApi, initialState) => {
+  const reader = createStargateReader(container, hostApi as HostApi, initialState)
+  lastReader = reader
+
+  // Get the display section from the reader (has live callbacks to 3D objects)
+  const readerSection = reader.getDisplaySection()
+  pendingDisplayRender = readerSection.render
+
+  // When reader discovers languages, update the drawer
+  reader.onLanguagesReady((langs, current) => {
+    lastShell?.setLanguages(langs, current)
+  })
+
+  // When reader loads a book, update now-playing in the drawer
+  reader.onNowPlayingChange((info) => {
+    lastShell?.setNowPlaying(info)
+  })
+
+  return reader
+}
 
 const registerGame = () => {
   const scope = globalThis as GlobalScope
@@ -45,7 +83,15 @@ const registerGame = () => {
         createReader: readerFactory,
         hostApi,
         initialState: state,
+        customSections: [displaySection],
+        onLanguageChange: (lang) => {
+          lastReader?.switchLanguage(lang)
+        },
+        onBeforeExit: () => {
+          lastReader?.persistBookmark()
+        },
       })
+      lastShell = shell
       scope.__stargateReader = shell
 
       return {

@@ -10,7 +10,7 @@ import {
 } from "@babylonjs/core"
 import type { HostApi } from "@shared/sdk"
 import type { AudioManifest, BookSegment, TimelineWord, ChapterInfo } from "@shared/core"
-import { CAMERA_FOV, CAMERA_Z, GLOW_INTENSITY, LANGUAGE_NAMES, VOICE_NAMES, BOOK_NAMES } from "@shared/core"
+import { CAMERA_FOV, CAMERA_Z, GLOW_INTENSITY, LANGUAGE_NAMES, VOICE_NAMES, BOOK_NAMES, resolveVoiceName } from "@shared/core"
 import { buildTimeline, findCurrentWordIndex, buildChapterIndex } from "@shared/core"
 import { createFetchDataProvider, createPreloadedDataProvider, type DataProvider } from "@shared/data"
 import { createAudioEngine, type AudioEngine } from "@shared/audio"
@@ -32,7 +32,8 @@ import { createOscilloscope, type Oscilloscope } from "./rendering/oscilloscope"
 import { createWaveformStream, type WaveformStream } from "./rendering/waveformStream"
 import { createPulseRing, type PulseRing } from "./rendering/pulseRing"
 import { createStarfield, type Starfield } from "./rendering/starfield"
-import { createSettingsPanel, type LanguageInfo, type OscilloscopeConfig, type WaveformConfig, type PulseRingConfig, type WordHoldConfig } from "./ui/settingsPanel"
+import { renderStargateDisplaySettings, type LanguageInfo, type OscilloscopeConfig, type WaveformConfig, type PulseRingConfig, type WordHoldConfig } from "./ui/settingsPanel"
+import type { DrawerSectionDef } from "@shared/ui"
 import { srTrace, type TraceFields } from "./diagnostics/trace"
 
 // Stargate-specific display preferences
@@ -454,7 +455,7 @@ export function createStargateReader(
     return availableLanguages.map(code => ({
       code,
       displayName: LANGUAGE_NAMES[code] || code.toUpperCase(),
-      narrator: VOICE_NAMES[voiceMap[code] || ""] || "",
+      narrator: resolveVoiceName(voiceMap[code] || ""),
     }))
   }
 
@@ -630,20 +631,9 @@ export function createStargateReader(
   // --- Display preferences (persisted per book) ---
   const prefs: DisplayPrefs = prefsStore.load(bookId)
 
-  // --- Settings panel (gear dropdown) ---
-  // Late-bound reference so the exit button can call full dispose
-  let disposeFn: (() => void) | null = null
-  const settings = createSettingsPanel(ui, {
-    initialOscilloscope: prefs.oscilloscope,
-    initialWaveform: prefs.waveform,
-    initialPulseRing: prefs.pulseRing,
-    initialWordHold: prefs.wordHold,
-    initialWordHoldConfig: prefs.wordHoldConfig,
-    initialOscilloscopeConfig: prefs.oscilloscopeConfig,
-    initialWaveformConfig: prefs.waveformConfig,
-    initialPulseRingConfig: prefs.pulseRingConfig,
-    onBeforeClose: () => disposeFn?.(),
-  })
+  // --- Language/settings change callbacks (set by appShell) ---
+  let externalLangChangeCb: ((langs: LanguageInfo[], current: string) => void) | null = null
+  let externalNowPlayingCb: ((info: { bookTitle: string; narrator?: string }) => void) | null = null
 
   // --- Chapter overlay ---
   let chapterOverlay: ChapterOverlay = createChapterOverlay(ui, "stargate")
@@ -651,7 +641,6 @@ export function createStargateReader(
 
   // --- Transport bar ---
   const transport = createTransportBar(ui, "stargate")
-  settings.setLanguages(buildLanguageInfos(), currentLanguage)
 
   transport.onPlay(() => {
     void doPlay()
@@ -734,9 +723,7 @@ export function createStargateReader(
     }
   })
 
-  settings.onLanguageChange((lang) => {
-    void switchLanguage(lang)
-  })
+  // Language switching is triggered by the command drawer via appShell
 
   window.__stargateCmd = (cmd: StargateRemoteCommand) => {
     console.log(`[SR:cmd] window.__stargateCmd(${cmd})`)
@@ -763,53 +750,49 @@ export function createStargateReader(
 
   let wordHoldEnabled = prefs.wordHold
 
-  settings.onToggleWordHold((enabled) => {
-    wordHoldEnabled = enabled
-    prefs.wordHold = enabled
-    prefsStore.save(bookId, prefs)
-  })
-
-  settings.onWordHoldConfig((key, value) => {
-    wordStream?.configure({ [key]: value })
-    ;(prefs.wordHoldConfig as Record<string, number>)[key] = value
-    prefsStore.save(bookId, prefs)
-  })
-
-  settings.onToggleOscilloscope((visible) => {
-    if (oscilloscope) oscilloscope.mesh.isVisible = visible
-    prefs.oscilloscope = visible
-    prefsStore.save(bookId, prefs)
-  })
-
-  settings.onToggleWaveform((visible) => {
-    if (waveformStream) waveformStream.mesh.isVisible = visible
-    prefs.waveform = visible
-    prefsStore.save(bookId, prefs)
-  })
-
-  settings.onTogglePulseRing((visible) => {
-    pulseRing?.setVisible(visible)
-    prefs.pulseRing = visible
-    prefsStore.save(bookId, prefs)
-  })
-
-  settings.onOscilloscopeConfig((key, value) => {
-    oscilloscope?.configure({ [key]: value })
-    ;(prefs.oscilloscopeConfig as Record<string, number>)[key] = value
-    prefsStore.save(bookId, prefs)
-  })
-
-  settings.onWaveformConfig((key, value) => {
-    waveformStream?.configure({ [key]: value })
-    ;(prefs.waveformConfig as Record<string, number>)[key] = value
-    prefsStore.save(bookId, prefs)
-  })
-
-  settings.onPulseRingConfig((key, value) => {
-    pulseRing?.configure({ [key]: value })
-    ;(prefs.pulseRingConfig as Record<string, number>)[key] = value
-    prefsStore.save(bookId, prefs)
-  })
+  // Display settings callbacks — used by the drawer's Display section
+  const displaySettingsCallbacks = {
+    onToggleWordHold: (enabled: boolean) => {
+      wordHoldEnabled = enabled
+      prefs.wordHold = enabled
+      prefsStore.save(bookId, prefs)
+    },
+    onWordHoldConfig: (key: string, value: number) => {
+      wordStream?.configure({ [key]: value })
+      ;(prefs.wordHoldConfig as Record<string, number>)[key] = value
+      prefsStore.save(bookId, prefs)
+    },
+    onToggleOscilloscope: (visible: boolean) => {
+      if (oscilloscope) oscilloscope.mesh.isVisible = visible
+      prefs.oscilloscope = visible
+      prefsStore.save(bookId, prefs)
+    },
+    onToggleWaveform: (visible: boolean) => {
+      if (waveformStream) waveformStream.mesh.isVisible = visible
+      prefs.waveform = visible
+      prefsStore.save(bookId, prefs)
+    },
+    onTogglePulseRing: (visible: boolean) => {
+      pulseRing?.setVisible(visible)
+      prefs.pulseRing = visible
+      prefsStore.save(bookId, prefs)
+    },
+    onOscilloscopeConfig: (key: string, value: number) => {
+      oscilloscope?.configure({ [key]: value })
+      ;(prefs.oscilloscopeConfig as Record<string, number>)[key] = value
+      prefsStore.save(bookId, prefs)
+    },
+    onWaveformConfig: (key: string, value: number) => {
+      waveformStream?.configure({ [key]: value })
+      ;(prefs.waveformConfig as Record<string, number>)[key] = value
+      prefsStore.save(bookId, prefs)
+    },
+    onPulseRingConfig: (key: string, value: number) => {
+      pulseRing?.configure({ [key]: value })
+      ;(prefs.pulseRingConfig as Record<string, number>)[key] = value
+      prefsStore.save(bookId, prefs)
+    },
+  }
 
   // --- Native remote command listeners (lock screen / notification) ---
   removeRemoteListeners = listenForRemoteCommands({
@@ -1049,14 +1032,15 @@ export function createStargateReader(
 
       // Record voice for current language and update settings display
       voiceMap[currentLanguage] = manifest.voice
-      settings.setLanguages(buildLanguageInfos(), currentLanguage)
+      externalLangChangeCb?.(buildLanguageInfos(), currentLanguage)
+      externalNowPlayingCb?.({ bookTitle: bookDisplayName, narrator: resolveVoiceName(manifest.voice) })
 
       // Fire background fetches for other languages to populate voiceMap
       for (const lang of availableLanguages) {
         if (lang !== currentLanguage) {
           dataProvider.loadAudioManifest(lang).then(m => {
             voiceMap[lang] = m.voice
-            settings.setLanguages(buildLanguageInfos(), currentLanguage)
+            externalLangChangeCb?.(buildLanguageInfos(), currentLanguage)
           }).catch(() => {})
         }
       }
@@ -1214,7 +1198,8 @@ export function createStargateReader(
 
       segments = segData.segments
       voiceMap[newLang] = manifest.voice
-      settings.setLanguages(buildLanguageInfos(), newLang)
+      externalLangChangeCb?.(buildLanguageInfos(), newLang)
+      externalNowPlayingCb?.({ bookTitle: bookDisplayName, narrator: resolveVoiceName(manifest.voice) })
       chapters = buildChapterIndex(segments)
 
       // Rebuild timeline
@@ -1465,7 +1450,6 @@ export function createStargateReader(
     resizeObserver.disconnect()
 
     persistBookmark()
-    settings.dispose()
     chapterOverlay.dispose()
     transport.dispose()
     audioEngine?.dispose()
@@ -1482,8 +1466,40 @@ export function createStargateReader(
     wrapper.remove()
   }
 
-  // Wire close button to full dispose
-  disposeFn = dispose
-
-  return { dispose }
+  return {
+    dispose,
+    /** Called by appShell/drawer to switch language */
+    switchLanguage: (lang: string) => { void switchLanguage(lang) },
+    /** Register callback for when reader updates languages */
+    onLanguagesReady(cb: (langs: LanguageInfo[], current: string) => void) {
+      externalLangChangeCb = cb
+    },
+    /** Register callback for now-playing info (book title + narrator) */
+    onNowPlayingChange(cb: (info: { bookTitle: string; narrator?: string }) => void) {
+      externalNowPlayingCb = cb
+    },
+    /** Persist bookmark (called by appShell before exit) */
+    persistBookmark,
+    /** Get display settings DrawerSectionDef for injection into command drawer */
+    getDisplaySection(): DrawerSectionDef {
+      return {
+        id: "display",
+        title: "Display",
+        priority: 40,
+        render: (container) => {
+          renderStargateDisplaySettings(container, {
+            initialOscilloscope: prefs.oscilloscope,
+            initialWaveform: prefs.waveform,
+            initialPulseRing: prefs.pulseRing,
+            initialWordHold: prefs.wordHold,
+            initialWordHoldConfig: prefs.wordHoldConfig,
+            initialOscilloscopeConfig: prefs.oscilloscopeConfig,
+            initialWaveformConfig: prefs.waveformConfig,
+            initialPulseRingConfig: prefs.pulseRingConfig,
+            callbacks: displaySettingsCallbacks,
+          })
+        },
+      }
+    },
+  }
 }

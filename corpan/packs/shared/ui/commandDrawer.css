@@ -1,0 +1,437 @@
+/* ============================================================
+   Command Drawer — unified bottom sheet (mobile) / side panel (desktop)
+   Themed via var(--catalog-*) custom properties
+   ============================================================ */
+
+/* --- Backdrop --- */
+
+.command-drawer-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 49;
+  background: var(--drawer-backdrop, rgba(0, 0, 0, 0.4));
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 400ms ease;
+}
+
+.command-drawer-backdrop--open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* --- Trigger button (top-right) --- */
+
+.command-drawer-trigger {
+  position: absolute;
+  top: calc(15px + env(safe-area-inset-top, 0px));
+  right: calc(16px + env(safe-area-inset-right, 0px));
+  width: 48px;
+  height: 48px;
+  border-radius: var(--catalog-radius, 12px);
+  border: 1px solid var(--catalog-border);
+  background: var(--catalog-surface);
+  color: var(--catalog-text-dim);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  pointer-events: auto;
+  z-index: 30;
+  transition: color 200ms ease, background 200ms ease, border-color 200ms ease;
+}
+
+.command-drawer-trigger:hover {
+  color: var(--catalog-accent);
+  border-color: var(--catalog-accent);
+}
+
+.command-drawer-trigger:active {
+  color: var(--catalog-text);
+}
+
+.command-drawer-trigger svg {
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* --- Sheet (bottom on mobile) --- */
+
+.command-drawer-sheet {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 50;
+  max-height: 85vh;
+  background: var(--catalog-bg);
+  font-family: var(--catalog-font);
+  color: var(--catalog-text);
+  border-radius: 16px 16px 0 0;
+  display: flex;
+  flex-direction: column;
+  transform: translateY(100%);
+  pointer-events: none;
+  transition: transform 450ms cubic-bezier(0.22, 1, 0.36, 1);
+  overflow: hidden;
+  box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.2);
+}
+
+.command-drawer-sheet--open {
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.command-drawer-sheet--closing {
+  transition: transform 350ms cubic-bezier(0.55, 0, 1, 0.45);
+}
+
+/* --- Handle --- */
+
+.command-drawer-handle {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  padding: 12px 0 8px;
+  cursor: grab;
+  touch-action: none;
+}
+
+.command-drawer-handle-bar {
+  width: 40px;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--drawer-handle, var(--catalog-border));
+}
+
+/* --- Sticky header (Now Playing + Language) --- */
+
+.command-drawer-sticky {
+  flex-shrink: 0;
+  padding: 16px 20px 16px;
+  border-bottom: 1px solid var(--catalog-border);
+}
+
+/* --- Now Playing --- */
+
+.command-drawer-now-playing {
+  margin-bottom: 12px;
+}
+
+.command-drawer-now-playing-title {
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--catalog-text);
+  line-height: 1.3;
+}
+
+.command-drawer-now-playing-narrator {
+  font-size: 13px;
+  color: var(--catalog-text-dim);
+  margin-top: 2px;
+}
+
+/* --- Language pills --- */
+
+.command-drawer-languages {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.command-drawer-lang-pill {
+  padding: 8px 18px;
+  border: 1.5px solid var(--catalog-border);
+  border-radius: 20px;
+  background: transparent;
+  color: var(--catalog-text-dim);
+  font-family: var(--catalog-font);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 200ms ease, border-color 200ms ease, color 200ms ease;
+  white-space: nowrap;
+}
+
+.command-drawer-lang-pill:hover {
+  border-color: var(--catalog-accent);
+  color: var(--catalog-accent);
+}
+
+.command-drawer-lang-pill--active {
+  background: var(--catalog-accent);
+  border-color: var(--catalog-accent);
+  color: var(--catalog-bg);
+}
+
+.command-drawer-lang-pill--active:hover {
+  background: var(--catalog-accent);
+  border-color: var(--catalog-accent);
+  color: var(--catalog-bg);
+  opacity: 0.85;
+}
+
+.command-drawer-lang-pill:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+/* --- Scrollable body --- */
+
+.command-drawer-body {
+  flex: 1;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 0 20px calc(env(safe-area-inset-bottom, 0px));
+}
+
+/* --- Section --- */
+
+.command-drawer-section {
+  padding: 20px 0;
+  border-bottom: 1px solid var(--catalog-border);
+}
+
+.command-drawer-section:last-child {
+  border-bottom: none;
+}
+
+.command-drawer-section-title {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--catalog-text-dim);
+  margin-bottom: 12px;
+}
+
+/* --- Library grid (installed books) --- */
+
+.command-drawer-library-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.command-drawer-library-card {
+  padding: 14px;
+  border: 1px solid var(--catalog-border);
+  border-radius: var(--catalog-radius);
+  background: var(--catalog-surface);
+  cursor: pointer;
+  transition: border-color 150ms ease, transform 150ms ease;
+}
+
+.command-drawer-library-card:hover {
+  border-color: var(--catalog-accent);
+  transform: translateY(-1px);
+}
+
+.command-drawer-library-card--active {
+  border-color: var(--catalog-accent);
+}
+
+.command-drawer-library-card-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--catalog-text);
+  line-height: 1.3;
+  margin-bottom: 4px;
+}
+
+.command-drawer-library-card-lang {
+  font-size: 11px;
+  color: var(--catalog-text-dim);
+}
+
+.command-drawer-library-card-playing {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--catalog-accent);
+  margin-top: 4px;
+}
+
+/* --- Browse section --- */
+
+.command-drawer-browse-header {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.command-drawer-browse-search {
+  flex: 1;
+  padding: 8px 14px;
+  border: 1px solid var(--catalog-border);
+  border-radius: var(--catalog-radius);
+  background: var(--catalog-surface);
+  color: var(--catalog-text);
+  font-family: var(--catalog-font);
+  font-size: 14px;
+  outline: none;
+  transition: border-color 150ms ease;
+}
+
+.command-drawer-browse-search::placeholder {
+  color: var(--catalog-text-dim);
+}
+
+.command-drawer-browse-search:focus {
+  border-color: var(--catalog-accent);
+}
+
+.command-drawer-browse-filters {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+
+.command-drawer-browse-empty {
+  text-align: center;
+  padding: 24px;
+  color: var(--catalog-text-dim);
+  font-size: 14px;
+}
+
+/* --- Inline book detail (replaces browse grid) --- */
+
+.command-drawer-detail {
+  animation: drawer-detail-in 300ms ease forwards;
+}
+
+@keyframes drawer-detail-in {
+  from { opacity: 0; transform: translateX(12px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.command-drawer-detail-back {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border: 1px solid var(--catalog-border);
+  border-radius: var(--catalog-radius);
+  background: var(--catalog-surface);
+  color: var(--catalog-text);
+  font-family: var(--catalog-font);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  margin-bottom: 12px;
+  transition: border-color 150ms ease;
+}
+
+.command-drawer-detail-back:hover {
+  border-color: var(--catalog-accent);
+}
+
+.command-drawer-detail-back svg {
+  width: 14px;
+  height: 14px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.command-drawer-detail-title {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.command-drawer-detail-subtitle {
+  font-size: 13px;
+  color: var(--catalog-text-dim);
+  margin-bottom: 16px;
+}
+
+/* --- Exit footer --- */
+
+.command-drawer-footer {
+  flex-shrink: 0;
+  padding: 12px 20px calc(12px + env(safe-area-inset-bottom, 0px));
+  border-top: 1px solid var(--catalog-border);
+}
+
+.command-drawer-exit {
+  width: 100%;
+  padding: 12px 0;
+  border: 1.5px solid var(--catalog-error);
+  border-radius: var(--catalog-radius);
+  background: transparent;
+  color: var(--catalog-error);
+  font-family: var(--catalog-font);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 150ms ease, border-color 150ms ease;
+}
+
+.command-drawer-exit:hover {
+  background: color-mix(in srgb, var(--catalog-error) 10%, transparent);
+}
+
+/* ============================================================
+   Desktop: side panel (>768px)
+   ============================================================ */
+
+@media (min-width: 769px) {
+  .command-drawer-sheet {
+    left: auto;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: min(560px, 45vw);
+    max-height: none;
+    border-radius: 0;
+    transform: translateX(100%);
+    box-shadow: -4px 0 24px rgba(0, 0, 0, 0.15);
+  }
+
+  /* Inside the drawer panel, catalog cards should be single column */
+  .command-drawer-body .catalog-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .command-drawer-sheet--open {
+    transform: translateX(0);
+  }
+
+  .command-drawer-handle {
+    display: none;
+  }
+}
+
+/* ============================================================
+   Phone: compact
+   ============================================================ */
+
+@media (max-width: 480px) {
+  .command-drawer-trigger {
+    width: 42px;
+    height: 42px;
+  }
+
+  .command-drawer-trigger svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .command-drawer-lang-pill {
+    padding: 7px 14px;
+    font-size: 13px;
+  }
+
+  .command-drawer-library-grid {
+    grid-template-columns: 1fr;
+  }
+}
