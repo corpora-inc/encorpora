@@ -1005,14 +1005,7 @@ export function createStargateReader(
 
       if (disposed) return
 
-      drawerStore.setState({
-        languages: [{
-          code: currentLanguage,
-          displayName: LANGUAGE_NAMES[currentLanguage] || currentLanguage.toUpperCase(),
-          narrator: resolveVoiceName(manifest.voice),
-        }],
-        currentLanguage,
-      })
+      // Only set nowPlaying — languages/currentLanguage are managed by appShell
       drawerStore.setState({ nowPlaying: { bookTitle: bookDisplayName, narrator: resolveVoiceName(manifest.voice) } })
 
       // Build chapter index
@@ -1097,13 +1090,20 @@ export function createStargateReader(
       }
 
       // Restore bookmark position (language already applied before data load)
-      if (bookmark && audioEngine) {
+      if (initialState?.startAtSegmentStart && bookmark && audioEngine) {
+        audioEngine.seekToSegment(bookmark.segmentIndex)
+      } else if (bookmark && audioEngine) {
         audioEngine.seekToMs(bookmark.timeMs)
       }
 
       setupMediaSession()
       syncNativeNowPlaying()
       tracePlayback("session:initialize:ready", { segments: segments.length, language: currentLanguage }, true)
+
+      // Auto-play if requested (after all setup is complete)
+      if (initialState?.autoPlay) {
+        void doPlay()
+      }
     } catch (err) {
       console.error("[StargateReader] Failed to initialize:", err)
       tracePlayback("session:initialize:error", { error: String(err) }, true)
@@ -1304,6 +1304,9 @@ export function createStargateReader(
     if (disposed) return
     disposed = true
 
+    // Stop audio immediately — before any other cleanup
+    doPause()
+
     releaseWakeLock()
     void stopNativeKeepAlive()
     nativeSessionActive = false
@@ -1319,6 +1322,15 @@ export function createStargateReader(
 
     document.removeEventListener("visibilitychange", handleVisibilityChange)
     resizeObserver.disconnect()
+
+    // Clear MediaSession so lock screen doesn't show stale player
+    if ("mediaSession" in navigator) {
+      try {
+        navigator.mediaSession.metadata = null
+        navigator.mediaSession.setActionHandler("play", null)
+        navigator.mediaSession.setActionHandler("pause", null)
+      } catch { /* best effort */ }
+    }
 
     persistBookmark()
     chapterOverlay.dispose()
@@ -1341,6 +1353,8 @@ export function createStargateReader(
     dispose,
     /** Persist bookmark (called by appShell before exit) */
     persistBookmark,
+    /** Whether audio is currently playing */
+    isPlaying: () => isPlaying,
     /** Get display settings DrawerSectionDef for injection into command drawer */
     getDisplaySection(): DrawerSectionDef {
       return {

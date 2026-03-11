@@ -48,6 +48,7 @@ const registerGame = () => {
       }
 
       const shell = createAppShell(container, {
+        readerId: "earthgate",
         createReader: readerFactory,
         hostApi,
         initialState: state,

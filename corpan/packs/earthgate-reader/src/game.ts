@@ -701,14 +701,7 @@ export function createEarthgateReader(
 
       if (disposed) return
 
-      drawerStore.setState({
-        languages: [{
-          code: currentLanguage,
-          displayName: LANGUAGE_NAMES[currentLanguage] || currentLanguage.toUpperCase(),
-          narrator: resolveVoiceName(manifest.voice),
-        }],
-        currentLanguage,
-      })
+      // Only set nowPlaying — languages/currentLanguage are managed by appShell
       drawerStore.setState({ nowPlaying: { bookTitle: bookDisplayName, narrator: resolveVoiceName(manifest.voice) } })
 
       chapters = buildChapterIndex(segments)
@@ -765,12 +758,19 @@ export function createEarthgateReader(
       updateParagraphForSegment(initialSegIndex)
 
       // Restore bookmark position
-      if (bookmark && audioEngine) {
+      if (initialState?.startAtSegmentStart && bookmark && audioEngine) {
+        audioEngine.seekToSegment(bookmark.segmentIndex)
+      } else if (bookmark && audioEngine) {
         audioEngine.seekToMs(bookmark.timeMs)
       }
 
       setupMediaSession()
       syncNativeNowPlaying()
+
+      // Auto-play if requested (after all setup is complete)
+      if (initialState?.autoPlay) {
+        void doPlay()
+      }
     } catch (err) {
       console.error("[EarthgateReader] Failed to initialize:", err)
       transport.setChapter("Failed to load book data")
@@ -918,6 +918,9 @@ export function createEarthgateReader(
     if (disposed) return
     disposed = true
 
+    // Stop audio immediately — before any other cleanup
+    doPause()
+
     if (rafId !== null) {
       cancelAnimationFrame(rafId)
       rafId = null
@@ -938,6 +941,15 @@ export function createEarthgateReader(
 
     document.removeEventListener("visibilitychange", handleVisibilityChange)
 
+    // Clear MediaSession so lock screen doesn't show stale player
+    if ("mediaSession" in navigator) {
+      try {
+        navigator.mediaSession.metadata = null
+        navigator.mediaSession.setActionHandler("play", null)
+        navigator.mediaSession.setActionHandler("pause", null)
+      } catch { /* best effort */ }
+    }
+
     persistBookmark()
     chapterOverlay.dispose()
     transport.dispose()
@@ -950,5 +962,7 @@ export function createEarthgateReader(
     dispose,
     /** Persist bookmark (called by appShell before exit) */
     persistBookmark,
+    /** Whether audio is currently playing */
+    isPlaying: () => isPlaying,
   }
 }
