@@ -17,7 +17,7 @@ import { createAudioEngine, type AudioEngine } from "@shared/audio"
 import { createWaveformCache, type WaveformCache } from "@shared/audio"
 import { createTransportBar } from "@shared/ui"
 import { createChapterOverlay, type ChapterOverlay } from "@shared/ui"
-import { createBookmarkStore, type Bookmark } from "@shared/state"
+import { createBookmarkStore, type Bookmark, drawerStore } from "@shared/state"
 import { createPrefsStore } from "@shared/state"
 import {
   startNativeKeepAlive,
@@ -632,8 +632,6 @@ export function createStargateReader(
   const prefs: DisplayPrefs = prefsStore.load(bookId)
 
   // --- Language/settings change callbacks (set by appShell) ---
-  let externalLangChangeCb: ((langs: LanguageInfo[], current: string) => void) | null = null
-  let externalNowPlayingCb: ((info: { bookTitle: string; narrator?: string }) => void) | null = null
 
   // --- Chapter overlay ---
   let chapterOverlay: ChapterOverlay = createChapterOverlay(ui, "stargate")
@@ -1032,15 +1030,15 @@ export function createStargateReader(
 
       // Record voice for current language and update settings display
       voiceMap[currentLanguage] = manifest.voice
-      externalLangChangeCb?.(buildLanguageInfos(), currentLanguage)
-      externalNowPlayingCb?.({ bookTitle: bookDisplayName, narrator: resolveVoiceName(manifest.voice) })
+      drawerStore.setState({ languages: buildLanguageInfos(), currentLanguage })
+      drawerStore.setState({ nowPlaying: { bookTitle: bookDisplayName, narrator: resolveVoiceName(manifest.voice) } })
 
       // Fire background fetches for other languages to populate voiceMap
       for (const lang of availableLanguages) {
         if (lang !== currentLanguage) {
           dataProvider.loadAudioManifest(lang).then(m => {
             voiceMap[lang] = m.voice
-            externalLangChangeCb?.(buildLanguageInfos(), currentLanguage)
+            drawerStore.setState({ languages: buildLanguageInfos() })
           }).catch(() => {})
         }
       }
@@ -1198,8 +1196,8 @@ export function createStargateReader(
 
       segments = segData.segments
       voiceMap[newLang] = manifest.voice
-      externalLangChangeCb?.(buildLanguageInfos(), newLang)
-      externalNowPlayingCb?.({ bookTitle: bookDisplayName, narrator: resolveVoiceName(manifest.voice) })
+      drawerStore.setState({ languages: buildLanguageInfos(), currentLanguage: newLang })
+      drawerStore.setState({ nowPlaying: { bookTitle: bookDisplayName, narrator: resolveVoiceName(manifest.voice) } })
       chapters = buildChapterIndex(segments)
 
       // Rebuild timeline
@@ -1470,14 +1468,6 @@ export function createStargateReader(
     dispose,
     /** Called by appShell/drawer to switch language */
     switchLanguage: (lang: string) => { void switchLanguage(lang) },
-    /** Register callback for when reader updates languages */
-    onLanguagesReady(cb: (langs: LanguageInfo[], current: string) => void) {
-      externalLangChangeCb = cb
-    },
-    /** Register callback for now-playing info (book title + narrator) */
-    onNowPlayingChange(cb: (info: { bookTitle: string; narrator?: string }) => void) {
-      externalNowPlayingCb = cb
-    },
     /** Persist bookmark (called by appShell before exit) */
     persistBookmark,
     /** Get display settings DrawerSectionDef for injection into command drawer */

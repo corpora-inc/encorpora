@@ -6,7 +6,7 @@ import { createFetchDataProvider, createPreloadedDataProvider, type DataProvider
 import { createAudioEngine, type AudioEngine } from "@shared/audio"
 import { createTransportBar } from "@shared/ui"
 import { createChapterOverlay, type ChapterOverlay } from "@shared/ui"
-import { createBookmarkStore, type Bookmark } from "@shared/state"
+import { createBookmarkStore, type Bookmark, drawerStore } from "@shared/state"
 import {
   startNativeKeepAlive,
   stopNativeKeepAlive,
@@ -397,10 +397,6 @@ export function createEarthgateReader(
   let chapterOverlay: ChapterOverlay = createChapterOverlay(ui, "earthgate")
   let lastChapterIndex = -1
 
-  // Language change callback (set by appShell via onLanguageChange option)
-  let externalLangChangeCb: ((langs: LanguageInfo[], current: string) => void) | null = null
-  let externalNowPlayingCb: ((info: { bookTitle: string; narrator?: string }) => void) | null = null
-
   // Transport bar
   const transport = createTransportBar(ui, "earthgate")
 
@@ -728,15 +724,15 @@ export function createEarthgateReader(
       if (disposed) return
 
       voiceMap[currentLanguage] = manifest.voice
-      externalLangChangeCb?.(buildLanguageInfos(), currentLanguage)
-      externalNowPlayingCb?.({ bookTitle: bookDisplayName, narrator: resolveVoiceName(manifest.voice) })
+      drawerStore.setState({ languages: buildLanguageInfos(), currentLanguage })
+      drawerStore.setState({ nowPlaying: { bookTitle: bookDisplayName, narrator: resolveVoiceName(manifest.voice) } })
 
       // Background fetch other language voice info
       for (const lang of availableLanguages) {
         if (lang !== currentLanguage) {
           dataProvider.loadAudioManifest(lang).then(m => {
             voiceMap[lang] = m.voice
-            externalLangChangeCb?.(buildLanguageInfos(), currentLanguage)
+            drawerStore.setState({ languages: buildLanguageInfos() })
           }).catch(() => {})
         }
       }
@@ -848,8 +844,8 @@ export function createEarthgateReader(
       segments = segData.segments
       manifest = newManifest
       voiceMap[newLang] = newManifest.voice
-      externalLangChangeCb?.(buildLanguageInfos(), newLang)
-      externalNowPlayingCb?.({ bookTitle: bookDisplayName, narrator: resolveVoiceName(newManifest.voice) })
+      drawerStore.setState({ languages: buildLanguageInfos(), currentLanguage: newLang })
+      drawerStore.setState({ nowPlaying: { bookTitle: bookDisplayName, narrator: resolveVoiceName(newManifest.voice) } })
       chapters = buildChapterIndex(segments)
 
       const timeline = buildTimeline(segments, newManifest)
@@ -1063,14 +1059,6 @@ export function createEarthgateReader(
     dispose,
     /** Called by appShell/drawer to switch language */
     switchLanguage: (lang: string) => { void switchLanguage(lang) },
-    /** Register callback for when reader updates languages (discovery + voice info) */
-    onLanguagesReady(cb: (langs: LanguageInfo[], current: string) => void) {
-      externalLangChangeCb = cb
-    },
-    /** Register callback for now-playing info (book title + narrator) */
-    onNowPlayingChange(cb: (info: { bookTitle: string; narrator?: string }) => void) {
-      externalNowPlayingCb = cb
-    },
     /** Persist bookmark (called by appShell before exit) */
     persistBookmark,
   }

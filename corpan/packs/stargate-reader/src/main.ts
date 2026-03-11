@@ -4,6 +4,7 @@ import { createMockHostApi } from "@shared/sdk"
 import { createStargateReader } from "./game"
 import { createAppShell, type ReaderFactory } from "@shared/catalog"
 import type { DrawerSectionDef } from "@shared/ui"
+import { drawerStore } from "@shared/state"
 
 type GlobalScope = typeof globalThis & {
   CorpanGames?: Record<string, GameModule>
@@ -15,17 +16,19 @@ const GAME_ID = "stargate_reader"
 
 // Track the last mounted reader instance for language/settings callbacks
 let lastReader: ReturnType<typeof createStargateReader> | null = null
-let lastShell: ReturnType<typeof createAppShell> | null = null
 
-// The display section def — render is deferred until the reader provides its callbacks
+// The display section def — render is deferred until the reader provides its callbacks.
+// The drawer calls render() during construction (before the reader mounts), so we stash
+// the container and render into it once the reader is ready.
 let pendingDisplayRender: ((container: HTMLElement) => void) | null = null
+let displayContainer: HTMLElement | null = null
 
 const displaySection: DrawerSectionDef = {
   id: "display",
   title: "Display",
   priority: 40,
   render: (container) => {
-    // The actual render is deferred — the reader sets it after mount
+    displayContainer = container
     if (pendingDisplayRender) {
       pendingDisplayRender(container)
     }
@@ -40,15 +43,10 @@ const readerFactory: ReaderFactory = (container, hostApi, initialState) => {
   const readerSection = reader.getDisplaySection()
   pendingDisplayRender = readerSection.render
 
-  // When reader discovers languages, update the drawer
-  reader.onLanguagesReady((langs, current) => {
-    lastShell?.setLanguages(langs, current)
-  })
-
-  // When reader loads a book, update now-playing in the drawer
-  reader.onNowPlayingChange((info) => {
-    lastShell?.setNowPlaying(info)
-  })
+  // If the drawer already rendered the section container before the reader was ready, fill it now
+  if (displayContainer) {
+    pendingDisplayRender(displayContainer)
+  }
 
   return reader
 }
@@ -84,18 +82,22 @@ const registerGame = () => {
         hostApi,
         initialState: state,
         customSections: [displaySection],
-        onLanguageChange: (lang) => {
-          lastReader?.switchLanguage(lang)
-        },
         onBeforeExit: () => {
           lastReader?.persistBookmark()
         },
       })
-      lastShell = shell
       scope.__stargateReader = shell
+
+      // Subscribe to store for language switching
+      const langUnsub = drawerStore.subscribe((state, prev) => {
+        if (state.currentLanguage !== prev.currentLanguage && state.currentLanguage) {
+          lastReader?.switchLanguage(state.currentLanguage)
+        }
+      })
 
       return {
         unmount: () => {
+          langUnsub()
           shell.dispose()
           scope.__stargateReader = undefined
         },

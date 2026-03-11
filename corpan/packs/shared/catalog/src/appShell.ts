@@ -27,8 +27,8 @@ import {
   createCommandDrawer,
   type CommandDrawer,
   type DrawerSectionDef,
-  type LanguageInfo,
 } from "../../ui/commandDrawer"
+import { drawerStore } from "../../state/drawerStore"
 
 const DEFAULT_CDN_URL = "https://d38iwc9748jekz.cloudfront.net/catalog.json"
 
@@ -45,18 +45,12 @@ export type AppShellOptions = {
   initialState?: Record<string, unknown>
   /** Custom drawer sections injected by readers (e.g. stargate display settings) */
   customSections?: DrawerSectionDef[]
-  /** Called when user taps a language pill in the drawer */
-  onLanguageChange?: (lang: string) => void
   /** Called before exit */
   onBeforeExit?: () => void
 }
 
 export type AppShell = {
   dispose: () => void
-  /** Update drawer language pills (call after reader discovers languages) */
-  setLanguages: (languages: LanguageInfo[], current: string) => void
-  /** Update now playing info in drawer */
-  setNowPlaying: (info: { bookTitle: string; narrator?: string }) => void
   /** Get the command drawer instance */
   getDrawer: () => CommandDrawer
 }
@@ -73,9 +67,6 @@ export function createAppShell(
   // All narrations from the last catalog fetch
   let allNarrations: CatalogNarrationEntry[] = []
   const progressUnsubs: (() => void)[] = []
-
-  // Track current language for active highlighting in book detail
-  let currentLanguage = ""
 
   // Start listening for download progress events
   void startListening()
@@ -113,17 +104,17 @@ export function createAppShell(
   const drawer = createCommandDrawer(container, {
     cdnUrl,
     customSections: allSections,
-    onLanguageChange: (lang) => {
-      currentLanguage = lang
-      opts.onLanguageChange?.(lang)
-    },
     onExit: () => {
       opts.onBeforeExit?.()
       window.dispatchEvent(new Event("corpan:exit"))
     },
-    languages: [],
-    currentLanguage: "",
-    nowPlaying: { bookTitle: "", narrator: "" },
+  })
+
+  // Subscribe to store for book detail re-rendering
+  const storeUnsub = drawerStore.subscribe((state, prev) => {
+    if (state.currentLanguage !== prev.currentLanguage && browseShowingDetail && detailNarrations.length > 0) {
+      renderBookDetail()
+    }
   })
 
   // --- Check if we should start with catalog or reader ---
@@ -463,6 +454,7 @@ export function createAppShell(
     // Is this the currently-playing book? If so, language taps switch language in-place.
     // If it's a different book, language taps switch to that narration (remount).
     const isCurrentBook = installedNarrs.some(n => n.id === activeNarrationId)
+    const currentLanguage = drawerStore.getState().currentLanguage
 
     for (const narr of installedNarrs) {
       const row = document.createElement("div")
@@ -512,10 +504,8 @@ export function createAppShell(
       row.addEventListener("click", () => {
         if (isCurrentBook) {
           // Same book — switch language in-place (drawer stays open)
-          if (narr.language === currentLanguage) return
-          currentLanguage = narr.language
-          opts.onLanguageChange?.(narr.language)
-          renderBookDetail()
+          if (narr.language === drawerStore.getState().currentLanguage) return
+          drawerStore.setState({ currentLanguage: narr.language })
         } else {
           // Different book — remount reader with this narration
           switchToNarration(narr.id)
@@ -646,6 +636,7 @@ export function createAppShell(
   function dispose(): void {
     if (disposed) return
     disposed = true
+    storeUnsub()
     cleanupProgressSubs()
     drawer.dispose()
     readerInstance?.dispose()
@@ -653,11 +644,6 @@ export function createAppShell(
 
   return {
     dispose,
-    setLanguages: (languages, current) => {
-      currentLanguage = current
-      drawer.setLanguages(languages, current)
-    },
-    setNowPlaying: (info) => drawer.setNowPlaying(info),
     getDrawer: () => drawer,
   }
 }

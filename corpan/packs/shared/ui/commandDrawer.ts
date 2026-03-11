@@ -1,4 +1,5 @@
 import "./commandDrawer.css"
+import { drawerStore } from "../state/drawerStore"
 
 /** Language info for pill buttons */
 export type LanguageInfo = {
@@ -20,13 +21,9 @@ export type DrawerSectionDef = {
 export type CommandDrawerOptions = {
   cdnUrl?: string
   customSections?: DrawerSectionDef[]
-  onLanguageChange?: (lang: string) => void
   onPlayNarration?: (narrationId: string) => void
   onSelectBook?: (bookId: string) => void
   onExit?: () => void
-  languages?: LanguageInfo[]
-  currentLanguage?: string
-  nowPlaying?: { bookTitle: string; narrator?: string }
 }
 
 export type CommandDrawer = {
@@ -34,8 +31,6 @@ export type CommandDrawer = {
   close: () => void
   toggle: () => void
   isOpen: () => boolean
-  setLanguages: (languages: LanguageInfo[], current: string) => void
-  setNowPlaying: (info: { bookTitle: string; narrator?: string }) => void
   /** Get the trigger button element (for reader positioning) */
   getTrigger: () => HTMLElement
   dispose: () => void
@@ -48,9 +43,6 @@ export function createCommandDrawer(
   opts: CommandDrawerOptions
 ): CommandDrawer {
   let isOpenState = false
-  let currentLanguage = opts.currentLanguage || ""
-  let languages = opts.languages || []
-  let nowPlaying = opts.nowPlaying || { bookTitle: "", narrator: "" }
 
   // --- DOM: Backdrop ---
   const backdrop = document.createElement("div")
@@ -85,6 +77,7 @@ export function createCommandDrawer(
 
   // Only show now-playing block when there's a book title
   function updateNowPlayingVisibility() {
+    const { nowPlaying } = drawerStore.getState()
     if (nowPlaying.bookTitle) {
       nowPlayingEl.style.display = ""
       npTitle.textContent = nowPlaying.bookTitle
@@ -166,6 +159,7 @@ export function createCommandDrawer(
 
   // --- Render language pills ---
   function renderLanguagePills() {
+    const { languages, currentLanguage } = drawerStore.getState()
     langContainer.innerHTML = ""
     for (const lang of languages) {
       const pill = document.createElement("button")
@@ -178,10 +172,8 @@ export function createCommandDrawer(
         pill.disabled = true
       } else {
         pill.addEventListener("click", () => {
-          if (lang.code === currentLanguage) return
-          currentLanguage = lang.code
-          renderLanguagePills()
-          opts.onLanguageChange?.(lang.code)
+          if (lang.code === drawerStore.getState().currentLanguage) return
+          drawerStore.setState({ currentLanguage: lang.code })
         })
       }
       langContainer.appendChild(pill)
@@ -189,6 +181,16 @@ export function createCommandDrawer(
   }
 
   renderLanguagePills()
+
+  // Subscribe to store changes
+  const storeUnsub = drawerStore.subscribe((state, prev) => {
+    if (state.languages !== prev.languages || state.currentLanguage !== prev.currentLanguage) {
+      renderLanguagePills()
+    }
+    if (state.nowPlaying !== prev.nowPlaying) {
+      updateNowPlayingVisibility()
+    }
+  })
 
   // --- Gesture dismiss (swipe down on handle) ---
   let dragStartY = 0
@@ -257,19 +259,9 @@ export function createCommandDrawer(
     else open()
   }
 
-  function setLanguages(langs: LanguageInfo[], current: string) {
-    languages = langs
-    currentLanguage = current
-    renderLanguagePills()
-  }
-
-  function setNowPlaying(info: { bookTitle: string; narrator?: string }) {
-    nowPlaying = info
-    updateNowPlayingVisibility()
-  }
-
   function dispose() {
     close()
+    storeUnsub()
     for (const { def } of sectionEls) {
       def.dispose?.()
     }
@@ -283,8 +275,6 @@ export function createCommandDrawer(
     close,
     toggle,
     isOpen: () => isOpenState,
-    setLanguages,
-    setNowPlaying,
     getTrigger: () => trigger,
     dispose,
   }
