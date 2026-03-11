@@ -1,6 +1,6 @@
 # Narration Pack Publishing — Operations Guide
 
-Last updated: 2026-03-09
+Last updated: 2026-03-11
 
 ## Overview
 
@@ -44,9 +44,16 @@ s3://corpan-prod/
 ├── artifacts/
 │   ├── catalog.json                              # CatalogV2 — app fetches this
 │   └── narrations/
-│       ├── monte-alban-ian-en-0.1.0.zip          # English narration
-│       ├── monte-alban-ian-es-0.1.0.zip          # Spanish narration
-│       └── monte-alban-ian-zh-0.1.0.zip          # Chinese narration
+│       ├── monte-alban-ian-en-0.1.0.zip          # Book 01 narrations (5 langs)
+│       ├── monte-alban-ian-es-0.1.0.zip
+│       ├── monte-alban-ian-zh-0.1.0.zip
+│       ├── monte-alban-ian-ar-0.1.0.zip
+│       ├── monte-alban-ian-fr-0.1.0.zip
+│       ├── the-unconquered-people-ian-en-0.1.0.zip  # Book 02 narrations (5 langs)
+│       └── ...
+├── sources/
+│   └── voices/data/                               # Voice reference WAVs backup
+│       └── *.wav
 └── staging/                                       # Temp uploads (future use)
 ```
 
@@ -90,13 +97,22 @@ AWS_SECRET_ACCESS_KEY=...
   ```
 
 ### 2. Publisher credentials (`~/.aws/credentials`)
+
+Created by Terraform. Populate from env or secrets manager — never hardcode:
+```bash
+# One-time setup (get values from Terraform output or team vault)
+aws configure --profile corpan-publisher
+# prompts for: aws_access_key_id, aws_secret_access_key, region (us-east-2)
+```
+
+Resulting `~/.aws/credentials` entry:
 ```ini
 [corpan-publisher]
-aws_access_key_id = AKIA5P76LLFZQEJPGUDE
-aws_secret_access_key = ...
+aws_access_key_id = <from terraform output or secrets manager>
+aws_secret_access_key = <from terraform output or secrets manager>
 ```
 - IAM user: `corpan-dgx-publisher`
-- Scoped permissions: S3 PutObject/GetObject/DeleteObject on `staging/*` and `artifacts/*`, plus CloudFront invalidation
+- Scoped permissions: S3 PutObject/GetObject/DeleteObject on `staging/*`, `artifacts/*`, and `sources/*`, plus CloudFront invalidation
 - Used by: `ttsctl publish --profile corpan-publisher`
 
 Region config in `~/.aws/config`:
@@ -247,16 +263,51 @@ Logic: strip `book_` prefix, replace `_` with `-`, strip `-narration` from voice
 
 ZIP filename: `{packId}-{version}.zip` → `monte-alban-ian-en-0.1.0.zip`
 
-## Published Narrations (as of 2026-03-09)
+## Published Narrations (as of 2026-03-11)
 
-| Pack ID | Language | Size | SHA256 |
-|---------|----------|------|--------|
-| monte-alban-ian-en | English | 58.3 MB | f8c24e61d00d9af6... |
-| monte-alban-ian-es | Spanish | 59.0 MB | ebff974e984a2724... |
-| monte-alban-ian-zh | Chinese | 49.7 MB | d07ce06d45cf1def... |
+| Pack ID | Book | Language | Size |
+|---------|------|----------|------|
+| monte-alban-ian-en | Book 01 | English | 58.5 MB |
+| monte-alban-ian-es | Book 01 | Spanish | 59.2 MB |
+| monte-alban-ian-zh | Book 01 | Chinese | 49.8 MB |
+| monte-alban-ian-ar | Book 01 | Arabic | 63.3 MB |
+| monte-alban-ian-fr | Book 01 | French | 60.3 MB |
+| the-unconquered-people-ian-en | Book 02 | English | 59.4 MB |
+| the-unconquered-people-ian-es | Book 02 | Spanish | 59.0 MB |
+| the-unconquered-people-ian-zh | Book 02 | Chinese | 52.2 MB |
+| the-unconquered-people-ian-ar | Book 02 | Arabic | 66.0 MB |
+| the-unconquered-people-ian-fr | Book 02 | French | 61.0 MB |
 
-Source: `~/encorpora/books/fascinating-curiosities/01-mystery-of-monte-alban/pack/`
-Voice: Chatterbox TTS (Ian), 996 segments per language, all pass validation.
+Voice: Chatterbox TTS (Ian), all pass validation.
+
+## Fresh Clone Setup
+
+Audio files and voice WAVs are **not stored in git**. They are served from CloudFront
+(narrations) and S3 (voice references). After a fresh clone, run the hydration scripts
+to populate local directories:
+
+### Audio files (for Vite dev server)
+```bash
+# Downloads narration ZIPs from CloudFront and extracts audio/*.m4a to local pack dirs
+./corpan/infra/hydrate-audio.sh
+
+# Filter by book or language
+./corpan/infra/hydrate-audio.sh --book book_monte_alban --lang en
+```
+
+### Voice reference WAVs (for TTS generation)
+```bash
+# Requires AWS CLI + corpan-publisher profile
+./corpan/infra/hydrate-voices.sh
+```
+
+### Voice backup (upload new voices to S3)
+```bash
+./corpan/infra/sync-voices-to-s3.sh
+```
+
+These scripts live in `~/encorpora/corpan/infra/`. Audio dirs are gitignored via
+`**/pack/audio/` and voice WAVs via `voices/data/*.wav`.
 
 ## Code Locations
 

@@ -1404,6 +1404,68 @@
         }
       ]
     },
+    "ch00-019": {
+      "file": "audio/en/ch00-019.m4a",
+      "duration_ms": 3480,
+      "pause_after_ms": 800,
+      "words": [
+        {
+          "word": "When",
+          "start_ms": 40,
+          "end_ms": 140
+        },
+        {
+          "word": "we",
+          "start_ms": 140,
+          "end_ms": 300
+        },
+        {
+          "word": "genuinely",
+          "start_ms": 300,
+          "end_ms": 700
+        },
+        {
+          "word": "do",
+          "start_ms": 700,
+          "end_ms": 1060
+        },
+        {
+          "word": "not",
+          "start_ms": 1060,
+          "end_ms": 1240
+        },
+        {
+          "word": "know,",
+          "start_ms": 1240,
+          "end_ms": 1580
+        },
+        {
+          "word": "we",
+          "start_ms": 2000,
+          "end_ms": 2060
+        },
+        {
+          "word": "will",
+          "start_ms": 2060,
+          "end_ms": 2180
+        },
+        {
+          "word": "say",
+          "start_ms": 2180,
+          "end_ms": 2400
+        },
+        {
+          "word": "that",
+          "start_ms": 2400,
+          "end_ms": 2580
+        },
+        {
+          "word": "too.",
+          "start_ms": 2580,
+          "end_ms": 2960
+        }
+      ]
+    },
     "ch00-020": {
       "file": "audio/en/ch00-020.m4a",
       "duration_ms": 2280,
@@ -5078,6 +5140,98 @@
         }
       ]
     },
+    "ch01-062": {
+      "file": "audio/en/ch01-062.m4a",
+      "duration_ms": 6240,
+      "pause_after_ms": 800,
+      "words": [
+        {
+          "word": "Others",
+          "start_ms": 200,
+          "end_ms": 260
+        },
+        {
+          "word": "point",
+          "start_ms": 260,
+          "end_ms": 540
+        },
+        {
+          "word": "to",
+          "start_ms": 540,
+          "end_ms": 760
+        },
+        {
+          "word": "archaeological",
+          "start_ms": 800,
+          "end_ms": 1180
+        },
+        {
+          "word": "evidence",
+          "start_ms": 1180,
+          "end_ms": 1920
+        },
+        {
+          "word": "of",
+          "start_ms": 1920,
+          "end_ms": 2140
+        },
+        {
+          "word": "fortified",
+          "start_ms": 2140,
+          "end_ms": 2700
+        },
+        {
+          "word": "Inca",
+          "start_ms": 2700,
+          "end_ms": 3000
+        },
+        {
+          "word": "positions",
+          "start_ms": 3000,
+          "end_ms": 3340
+        },
+        {
+          "word": "near",
+          "start_ms": 3340,
+          "end_ms": 3660
+        },
+        {
+          "word": "the",
+          "start_ms": 3660,
+          "end_ms": 3800
+        },
+        {
+          "word": "Maule",
+          "start_ms": 3800,
+          "end_ms": 4160
+        },
+        {
+          "word": "that",
+          "start_ms": 4160,
+          "end_ms": 4280
+        },
+        {
+          "word": "suggest",
+          "start_ms": 4320,
+          "end_ms": 4580
+        },
+        {
+          "word": "real",
+          "start_ms": 4580,
+          "end_ms": 4900
+        },
+        {
+          "word": "military",
+          "start_ms": 4900,
+          "end_ms": 5320
+        },
+        {
+          "word": "confrontation.",
+          "start_ms": 5320,
+          "end_ms": 6120
+        }
+      ]
+    },
     "ch01-063": {
       "file": "audio/en/ch01-063.m4a",
       "duration_ms": 4560,
@@ -6887,6 +7041,133 @@
         }
       ]
     },
+    "ch02-080": {
+      "file": "audio/en/ch02-080.m4a",
+      "duration_ms": 8039,
+      "pause_after_ms": 800,
+      "words": [
+        {
+          "word": "And",
+          "start_ms": 40,
+          "end_ms": 380
+        },
+        {
+          "word": "in",
+          "start_ms": 380,
+          "end_ms": 500
+        },
+        {
+          "word": "times",
+          "start_ms": 500,
+          "end_ms": 760
+        },
+        {
+          "word": "of",
+          "start_ms": 760,
+          "end_ms": 960
+        },
+        {
+          "word": "war,",
+          "start_ms": 960,
+          "end_ms": 1610
+        },
+        {
+          "word": "multiple",
+          "start_ms": 1720,
+          "end_ms": 2020
+        },
+        {
+          "word": "ayllarewe",
+          "start_ms": 2020,
+          "end_ms": 2600
+        },
+        {
+          "word": "could",
+          "start_ms": 2600,
+          "end_ms": 2760
+        },
+        {
+          "word": "come",
+          "start_ms": 2880,
+          "end_ms": 2980
+        },
+        {
+          "word": "together",
+          "start_ms": 2980,
+          "end_ms": 3320
+        },
+        {
+          "word": "under",
+          "start_ms": 3320,
+          "end_ms": 3520
+        },
+        {
+          "word": "a",
+          "start_ms": 3520,
+          "end_ms": 3660
+        },
+        {
+          "word": "toqui,",
+          "start_ms": 3660,
+          "end_ms": 4160
+        },
+        {
+          "word": "a",
+          "start_ms": 4580,
+          "end_ms": 4640
+        },
+        {
+          "word": "war",
+          "start_ms": 4640,
+          "end_ms": 4840
+        },
+        {
+          "word": "chief",
+          "start_ms": 4840,
+          "end_ms": 5100
+        },
+        {
+          "word": "elected",
+          "start_ms": 5100,
+          "end_ms": 5480
+        },
+        {
+          "word": "specifically",
+          "start_ms": 5600,
+          "end_ms": 6000
+        },
+        {
+          "word": "for",
+          "start_ms": 6000,
+          "end_ms": 6380
+        },
+        {
+          "word": "the",
+          "start_ms": 6380,
+          "end_ms": 6460
+        },
+        {
+          "word": "duration",
+          "start_ms": 6460,
+          "end_ms": 6760
+        },
+        {
+          "word": "of",
+          "start_ms": 6760,
+          "end_ms": 6940
+        },
+        {
+          "word": "a",
+          "start_ms": 6940,
+          "end_ms": 7020
+        },
+        {
+          "word": "campaign.",
+          "start_ms": 7020,
+          "end_ms": 7580
+        }
+      ]
+    },
     "ch02-081": {
       "file": "audio/en/ch02-081.m4a",
       "duration_ms": 2960,
@@ -7669,6 +7950,153 @@
         }
       ]
     },
+    "ch02-092": {
+      "file": "audio/en/ch02-092.m4a",
+      "duration_ms": 9880,
+      "pause_after_ms": 500,
+      "words": [
+        {
+          "word": "In",
+          "start_ms": 120,
+          "end_ms": 140
+        },
+        {
+          "word": "the",
+          "start_ms": 140,
+          "end_ms": 240
+        },
+        {
+          "word": "mountains,",
+          "start_ms": 240,
+          "end_ms": 490
+        },
+        {
+          "word": "the",
+          "start_ms": 1080,
+          "end_ms": 1080
+        },
+        {
+          "word": "Pewenche",
+          "start_ms": 1140,
+          "end_ms": 1640
+        },
+        {
+          "word": "\u2014",
+          "start_ms": 1640,
+          "end_ms": 1960
+        },
+        {
+          "word": "the",
+          "start_ms": 2180,
+          "end_ms": 2280
+        },
+        {
+          "word": "\"people",
+          "start_ms": 2280,
+          "end_ms": 2560
+        },
+        {
+          "word": "of",
+          "start_ms": 2560,
+          "end_ms": 2760
+        },
+        {
+          "word": "the",
+          "start_ms": 2760,
+          "end_ms": 2880
+        },
+        {
+          "word": "araucaria\"",
+          "start_ms": 2880,
+          "end_ms": 4080
+        },
+        {
+          "word": "\u2014",
+          "start_ms": 4100,
+          "end_ms": 4100
+        },
+        {
+          "word": "lived",
+          "start_ms": 4100,
+          "end_ms": 4260
+        },
+        {
+          "word": "among",
+          "start_ms": 4260,
+          "end_ms": 4520
+        },
+        {
+          "word": "the",
+          "start_ms": 4520,
+          "end_ms": 4720
+        },
+        {
+          "word": "ancient",
+          "start_ms": 4720,
+          "end_ms": 5000
+        },
+        {
+          "word": "forests",
+          "start_ms": 5000,
+          "end_ms": 5460
+        },
+        {
+          "word": "and",
+          "start_ms": 5460,
+          "end_ms": 5960
+        },
+        {
+          "word": "controlled",
+          "start_ms": 5960,
+          "end_ms": 6400
+        },
+        {
+          "word": "the",
+          "start_ms": 6400,
+          "end_ms": 6620
+        },
+        {
+          "word": "mountain",
+          "start_ms": 6620,
+          "end_ms": 6880
+        },
+        {
+          "word": "passes",
+          "start_ms": 6880,
+          "end_ms": 7300
+        },
+        {
+          "word": "connecting",
+          "start_ms": 7320,
+          "end_ms": 7700
+        },
+        {
+          "word": "Chile",
+          "start_ms": 7700,
+          "end_ms": 8200
+        },
+        {
+          "word": "to",
+          "start_ms": 8200,
+          "end_ms": 8520
+        },
+        {
+          "word": "the",
+          "start_ms": 8520,
+          "end_ms": 8620
+        },
+        {
+          "word": "Argentine",
+          "start_ms": 8620,
+          "end_ms": 9180
+        },
+        {
+          "word": "Pampas.",
+          "start_ms": 9180,
+          "end_ms": 9680
+        }
+      ]
+    },
     "ch02-093": {
       "file": "audio/en/ch02-093.m4a",
       "duration_ms": 5080,
@@ -7850,6 +8278,240 @@
           "word": "steppe.",
           "start_ms": 9440,
           "end_ms": 9660
+        }
+      ]
+    },
+    "ch02-095": {
+      "file": "audio/en/ch02-095.m4a",
+      "duration_ms": 8600,
+      "pause_after_ms": 500,
+      "words": [
+        {
+          "word": "They",
+          "start_ms": 140,
+          "end_ms": 140
+        },
+        {
+          "word": "lived",
+          "start_ms": 140,
+          "end_ms": 440
+        },
+        {
+          "word": "in",
+          "start_ms": 440,
+          "end_ms": 660
+        },
+        {
+          "word": "ruka",
+          "start_ms": 660,
+          "end_ms": 1060
+        },
+        {
+          "word": "\u2014",
+          "start_ms": 1060,
+          "end_ms": 1480
+        },
+        {
+          "word": "large",
+          "start_ms": 1500,
+          "end_ms": 1860
+        },
+        {
+          "word": "thatched",
+          "start_ms": 1860,
+          "end_ms": 2300
+        },
+        {
+          "word": "houses,",
+          "start_ms": 2300,
+          "end_ms": 2740
+        },
+        {
+          "word": "some",
+          "start_ms": 3180,
+          "end_ms": 3400
+        },
+        {
+          "word": "up",
+          "start_ms": 3400,
+          "end_ms": 3620
+        },
+        {
+          "word": "to",
+          "start_ms": 3620,
+          "end_ms": 3760
+        },
+        {
+          "word": "twenty",
+          "start_ms": 3760,
+          "end_ms": 4059
+        },
+        {
+          "word": "meters",
+          "start_ms": 4059,
+          "end_ms": 4380
+        },
+        {
+          "word": "long,",
+          "start_ms": 4380,
+          "end_ms": 4880
+        },
+        {
+          "word": "built",
+          "start_ms": 5320,
+          "end_ms": 5480
+        },
+        {
+          "word": "from",
+          "start_ms": 5480,
+          "end_ms": 5700
+        },
+        {
+          "word": "timber",
+          "start_ms": 5700,
+          "end_ms": 6020
+        },
+        {
+          "word": "frames",
+          "start_ms": 6020,
+          "end_ms": 6420
+        },
+        {
+          "word": "covered",
+          "start_ms": 6420,
+          "end_ms": 6760
+        },
+        {
+          "word": "with",
+          "start_ms": 6760,
+          "end_ms": 7020
+        },
+        {
+          "word": "layers",
+          "start_ms": 7020,
+          "end_ms": 7280
+        },
+        {
+          "word": "of",
+          "start_ms": 7280,
+          "end_ms": 7500
+        },
+        {
+          "word": "reed",
+          "start_ms": 7500,
+          "end_ms": 7900
+        },
+        {
+          "word": "and",
+          "start_ms": 7900,
+          "end_ms": 8020
+        },
+        {
+          "word": "grass.",
+          "start_ms": 8020,
+          "end_ms": 8460
+        }
+      ]
+    },
+    "ch02-096": {
+      "file": "audio/en/ch02-096.m4a",
+      "duration_ms": 8480,
+      "pause_after_ms": 500,
+      "words": [
+        {
+          "word": "A",
+          "start_ms": 80,
+          "end_ms": 160
+        },
+        {
+          "word": "ruka",
+          "start_ms": 160,
+          "end_ms": 520
+        },
+        {
+          "word": "housed",
+          "start_ms": 520,
+          "end_ms": 920
+        },
+        {
+          "word": "an",
+          "start_ms": 920,
+          "end_ms": 1100
+        },
+        {
+          "word": "entire",
+          "start_ms": 1100,
+          "end_ms": 1520
+        },
+        {
+          "word": "extended",
+          "start_ms": 1520,
+          "end_ms": 2060
+        },
+        {
+          "word": "family",
+          "start_ms": 2060,
+          "end_ms": 2640
+        },
+        {
+          "word": "\u2014",
+          "start_ms": 2640,
+          "end_ms": 3060
+        },
+        {
+          "word": "grandparents,",
+          "start_ms": 3060,
+          "end_ms": 3760
+        },
+        {
+          "word": "parents,",
+          "start_ms": 4400,
+          "end_ms": 4580
+        },
+        {
+          "word": "children,",
+          "start_ms": 4860,
+          "end_ms": 5300
+        },
+        {
+          "word": "sometimes",
+          "start_ms": 5840,
+          "end_ms": 6160
+        },
+        {
+          "word": "thirty",
+          "start_ms": 6160,
+          "end_ms": 6580
+        },
+        {
+          "word": "or",
+          "start_ms": 6600,
+          "end_ms": 6740
+        },
+        {
+          "word": "more",
+          "start_ms": 6740,
+          "end_ms": 6900
+        },
+        {
+          "word": "people",
+          "start_ms": 6900,
+          "end_ms": 7240
+        },
+        {
+          "word": "under",
+          "start_ms": 7240,
+          "end_ms": 7520
+        },
+        {
+          "word": "one",
+          "start_ms": 7520,
+          "end_ms": 7760
+        },
+        {
+          "word": "roof.",
+          "start_ms": 7760,
+          "end_ms": 8100
         }
       ]
     },
@@ -13744,6 +14406,103 @@
         }
       ]
     },
+    "ch03-165": {
+      "file": "audio/en/ch03-165.m4a",
+      "duration_ms": 7000,
+      "pause_after_ms": 500,
+      "words": [
+        {
+          "word": "They",
+          "start_ms": 60,
+          "end_ms": 140
+        },
+        {
+          "word": "learned",
+          "start_ms": 140,
+          "end_ms": 380
+        },
+        {
+          "word": "to",
+          "start_ms": 380,
+          "end_ms": 580
+        },
+        {
+          "word": "fight",
+          "start_ms": 680,
+          "end_ms": 820
+        },
+        {
+          "word": "in",
+          "start_ms": 820,
+          "end_ms": 1060
+        },
+        {
+          "word": "terrain",
+          "start_ms": 1060,
+          "end_ms": 1360
+        },
+        {
+          "word": "where",
+          "start_ms": 1360,
+          "end_ms": 1680
+        },
+        {
+          "word": "cavalry",
+          "start_ms": 1680,
+          "end_ms": 2220
+        },
+        {
+          "word": "could",
+          "start_ms": 2220,
+          "end_ms": 2440
+        },
+        {
+          "word": "not",
+          "start_ms": 2440,
+          "end_ms": 2600
+        },
+        {
+          "word": "maneuver",
+          "start_ms": 2600,
+          "end_ms": 3020
+        },
+        {
+          "word": "\u2014",
+          "start_ms": 3020,
+          "end_ms": 3580
+        },
+        {
+          "word": "dense",
+          "start_ms": 3600,
+          "end_ms": 3820
+        },
+        {
+          "word": "forest,",
+          "start_ms": 3820,
+          "end_ms": 4660
+        },
+        {
+          "word": "steep",
+          "start_ms": 4720,
+          "end_ms": 4860
+        },
+        {
+          "word": "ravines,",
+          "start_ms": 4860,
+          "end_ms": 5660
+        },
+        {
+          "word": "marshy",
+          "start_ms": 5680,
+          "end_ms": 5960
+        },
+        {
+          "word": "ground.",
+          "start_ms": 5960,
+          "end_ms": 6520
+        }
+      ]
+    },
     "ch03-166": {
       "file": "audio/en/ch03-166.m4a",
       "duration_ms": 5920,
@@ -15353,6 +16112,123 @@
         {
           "word": "possible.",
           "start_ms": 8360,
+          "end_ms": 8920
+        }
+      ]
+    },
+    "ch04-190": {
+      "file": "audio/en/ch04-190.m4a",
+      "duration_ms": 10120,
+      "pause_after_ms": 800,
+      "words": [
+        {
+          "word": "What",
+          "start_ms": 120,
+          "end_ms": 200
+        },
+        {
+          "word": "mattered",
+          "start_ms": 200,
+          "end_ms": 620
+        },
+        {
+          "word": "was",
+          "start_ms": 620,
+          "end_ms": 860
+        },
+        {
+          "word": "competence,",
+          "start_ms": 860,
+          "end_ms": 1300
+        },
+        {
+          "word": "and",
+          "start_ms": 2160,
+          "end_ms": 2220
+        },
+        {
+          "word": "Lautaro",
+          "start_ms": 2220,
+          "end_ms": 2700
+        },
+        {
+          "word": "had",
+          "start_ms": 2700,
+          "end_ms": 2880
+        },
+        {
+          "word": "something",
+          "start_ms": 2880,
+          "end_ms": 3260
+        },
+        {
+          "word": "no",
+          "start_ms": 3260,
+          "end_ms": 3540
+        },
+        {
+          "word": "other",
+          "start_ms": 3540,
+          "end_ms": 3800
+        },
+        {
+          "word": "Mapuche",
+          "start_ms": 3800,
+          "end_ms": 4280
+        },
+        {
+          "word": "leader",
+          "start_ms": 4280,
+          "end_ms": 4540
+        },
+        {
+          "word": "possessed:",
+          "start_ms": 4590,
+          "end_ms": 5540
+        },
+        {
+          "word": "intimate",
+          "start_ms": 5560,
+          "end_ms": 5760
+        },
+        {
+          "word": "knowledge",
+          "start_ms": 5760,
+          "end_ms": 6240
+        },
+        {
+          "word": "of",
+          "start_ms": 6240,
+          "end_ms": 6520
+        },
+        {
+          "word": "the",
+          "start_ms": 6540,
+          "end_ms": 6640
+        },
+        {
+          "word": "enemy's",
+          "start_ms": 6640,
+          "end_ms": 7100
+        },
+        {
+          "word": "methods,",
+          "start_ms": 7100,
+          "end_ms": 7480
+        },
+        {
+          "word": "weaknesses,",
+          "start_ms": 8000,
+          "end_ms": 8460
+        },
+        {
+          "word": "and",
+          "start_ms": 8540,
+          "end_ms": 8540
+        },
+        {
+          "word": "habits.",
+          "start_ms": 8540,
           "end_ms": 8920
         }
       ]
@@ -24606,6 +25482,58 @@
         }
       ]
     },
+    "ch06-298": {
+      "file": "audio/en/ch06-298.m4a",
+      "duration_ms": 3680,
+      "pause_after_ms": 500,
+      "words": [
+        {
+          "word": "Mapudungun",
+          "start_ms": 160,
+          "end_ms": 680
+        },
+        {
+          "word": "is",
+          "start_ms": 680,
+          "end_ms": 1000
+        },
+        {
+          "word": "among",
+          "start_ms": 1000,
+          "end_ms": 1180
+        },
+        {
+          "word": "the",
+          "start_ms": 1180,
+          "end_ms": 1340
+        },
+        {
+          "word": "most",
+          "start_ms": 1340,
+          "end_ms": 1540
+        },
+        {
+          "word": "polysynthetic",
+          "start_ms": 1540,
+          "end_ms": 2320
+        },
+        {
+          "word": "languages",
+          "start_ms": 2320,
+          "end_ms": 2620
+        },
+        {
+          "word": "on",
+          "start_ms": 2620,
+          "end_ms": 2880
+        },
+        {
+          "word": "Earth.",
+          "start_ms": 2880,
+          "end_ms": 3120
+        }
+      ]
+    },
     "ch06-299": {
       "file": "audio/en/ch06-299.m4a",
       "duration_ms": 16400,
@@ -25221,6 +26149,158 @@
           "word": "languages.",
           "start_ms": 6000,
           "end_ms": 6360
+        }
+      ]
+    },
+    "ch06-303": {
+      "file": "audio/en/ch06-303.m4a",
+      "duration_ms": 10920,
+      "pause_after_ms": 500,
+      "words": [
+        {
+          "word": "In",
+          "start_ms": 120,
+          "end_ms": 180
+        },
+        {
+          "word": "English,",
+          "start_ms": 180,
+          "end_ms": 800
+        },
+        {
+          "word": "the",
+          "start_ms": 920,
+          "end_ms": 920
+        },
+        {
+          "word": "sentence",
+          "start_ms": 920,
+          "end_ms": 1220
+        },
+        {
+          "word": "\"The",
+          "start_ms": 1220,
+          "end_ms": 1800
+        },
+        {
+          "word": "dog",
+          "start_ms": 1800,
+          "end_ms": 2220
+        },
+        {
+          "word": "bit",
+          "start_ms": 2220,
+          "end_ms": 2500
+        },
+        {
+          "word": "the",
+          "start_ms": 2500,
+          "end_ms": 2700
+        },
+        {
+          "word": "man\"",
+          "start_ms": 2700,
+          "end_ms": 3200
+        },
+        {
+          "word": "and",
+          "start_ms": 3480,
+          "end_ms": 3680
+        },
+        {
+          "word": "\"The",
+          "start_ms": 3680,
+          "end_ms": 3880
+        },
+        {
+          "word": "man",
+          "start_ms": 3880,
+          "end_ms": 4160
+        },
+        {
+          "word": "bit",
+          "start_ms": 4160,
+          "end_ms": 4420
+        },
+        {
+          "word": "the",
+          "start_ms": 4420,
+          "end_ms": 4600
+        },
+        {
+          "word": "dog\"",
+          "start_ms": 4600,
+          "end_ms": 5300
+        },
+        {
+          "word": "differ",
+          "start_ms": 5440,
+          "end_ms": 5600
+        },
+        {
+          "word": "in",
+          "start_ms": 5620,
+          "end_ms": 5800
+        },
+        {
+          "word": "meaning",
+          "start_ms": 5800,
+          "end_ms": 6060
+        },
+        {
+          "word": "because",
+          "start_ms": 6060,
+          "end_ms": 6400
+        },
+        {
+          "word": "of",
+          "start_ms": 6460,
+          "end_ms": 6600
+        },
+        {
+          "word": "word",
+          "start_ms": 6600,
+          "end_ms": 6820
+        },
+        {
+          "word": "order",
+          "start_ms": 6820,
+          "end_ms": 7080
+        },
+        {
+          "word": "\u2014",
+          "start_ms": 7080,
+          "end_ms": 7460
+        },
+        {
+          "word": "subject",
+          "start_ms": 7540,
+          "end_ms": 7820
+        },
+        {
+          "word": "first,",
+          "start_ms": 7820,
+          "end_ms": 8340
+        },
+        {
+          "word": "then",
+          "start_ms": 8680,
+          "end_ms": 8780
+        },
+        {
+          "word": "verb,",
+          "start_ms": 8780,
+          "end_ms": 9200
+        },
+        {
+          "word": "then",
+          "start_ms": 9440,
+          "end_ms": 9540
+        },
+        {
+          "word": "object.",
+          "start_ms": 9540,
+          "end_ms": 10040
         }
       ]
     },
@@ -27021,6 +28101,133 @@
         }
       ]
     },
+    "ch06-325": {
+      "file": "audio/en/ch06-325.m4a",
+      "duration_ms": 10080,
+      "pause_after_ms": 500,
+      "words": [
+        {
+          "word": "For",
+          "start_ms": 20,
+          "end_ms": 120
+        },
+        {
+          "word": "a",
+          "start_ms": 120,
+          "end_ms": 220
+        },
+        {
+          "word": "society",
+          "start_ms": 220,
+          "end_ms": 700
+        },
+        {
+          "word": "that",
+          "start_ms": 700,
+          "end_ms": 920
+        },
+        {
+          "word": "operated",
+          "start_ms": 1000,
+          "end_ms": 1380
+        },
+        {
+          "word": "entirely",
+          "start_ms": 1380,
+          "end_ms": 2180
+        },
+        {
+          "word": "through",
+          "start_ms": 2180,
+          "end_ms": 2480
+        },
+        {
+          "word": "oral",
+          "start_ms": 2480,
+          "end_ms": 2820
+        },
+        {
+          "word": "communication",
+          "start_ms": 2820,
+          "end_ms": 3580
+        },
+        {
+          "word": "\u2014",
+          "start_ms": 3580,
+          "end_ms": 4059
+        },
+        {
+          "word": "no",
+          "start_ms": 4240,
+          "end_ms": 4420
+        },
+        {
+          "word": "written",
+          "start_ms": 4420,
+          "end_ms": 4680
+        },
+        {
+          "word": "contracts,",
+          "start_ms": 4680,
+          "end_ms": 5520
+        },
+        {
+          "word": "no",
+          "start_ms": 5560,
+          "end_ms": 5620
+        },
+        {
+          "word": "legal",
+          "start_ms": 5620,
+          "end_ms": 5880
+        },
+        {
+          "word": "codes,",
+          "start_ms": 5880,
+          "end_ms": 6440
+        },
+        {
+          "word": "no",
+          "start_ms": 6480,
+          "end_ms": 6520
+        },
+        {
+          "word": "records",
+          "start_ms": 6520,
+          "end_ms": 6900
+        },
+        {
+          "word": "\u2014",
+          "start_ms": 6900,
+          "end_ms": 7480
+        },
+        {
+          "word": "this",
+          "start_ms": 7500,
+          "end_ms": 7600
+        },
+        {
+          "word": "system",
+          "start_ms": 7600,
+          "end_ms": 8039
+        },
+        {
+          "word": "makes",
+          "start_ms": 8039,
+          "end_ms": 8240
+        },
+        {
+          "word": "pragmatic",
+          "start_ms": 8240,
+          "end_ms": 8760
+        },
+        {
+          "word": "sense.",
+          "start_ms": 8760,
+          "end_ms": 9280
+        }
+      ]
+    },
     "ch06-326": {
       "file": "audio/en/ch06-326.m4a",
       "duration_ms": 11120,
@@ -27908,6 +29115,163 @@
           "word": "specificity.",
           "start_ms": 5900,
           "end_ms": 6720
+        }
+      ]
+    },
+    "ch06-336": {
+      "file": "audio/en/ch06-336.m4a",
+      "duration_ms": 10760,
+      "pause_after_ms": 500,
+      "words": [
+        {
+          "word": "A",
+          "start_ms": 180,
+          "end_ms": 180
+        },
+        {
+          "word": "verb",
+          "start_ms": 180,
+          "end_ms": 540
+        },
+        {
+          "word": "can",
+          "start_ms": 540,
+          "end_ms": 760
+        },
+        {
+          "word": "absorb",
+          "start_ms": 760,
+          "end_ms": 1080
+        },
+        {
+          "word": "a",
+          "start_ms": 1080,
+          "end_ms": 1260
+        },
+        {
+          "word": "noun",
+          "start_ms": 1260,
+          "end_ms": 1560
+        },
+        {
+          "word": "to",
+          "start_ms": 1560,
+          "end_ms": 1780
+        },
+        {
+          "word": "create",
+          "start_ms": 1880,
+          "end_ms": 2040
+        },
+        {
+          "word": "a",
+          "start_ms": 2040,
+          "end_ms": 2180
+        },
+        {
+          "word": "single",
+          "start_ms": 2180,
+          "end_ms": 2520
+        },
+        {
+          "word": "compound",
+          "start_ms": 2520,
+          "end_ms": 3060
+        },
+        {
+          "word": "word",
+          "start_ms": 3060,
+          "end_ms": 3460
+        },
+        {
+          "word": "meaning",
+          "start_ms": 3460,
+          "end_ms": 3740
+        },
+        {
+          "word": "something",
+          "start_ms": 3740,
+          "end_ms": 4200
+        },
+        {
+          "word": "highly",
+          "start_ms": 4200,
+          "end_ms": 4500
+        },
+        {
+          "word": "particular",
+          "start_ms": 4500,
+          "end_ms": 5220
+        },
+        {
+          "word": "\u2014",
+          "start_ms": 5220,
+          "end_ms": 5520
+        },
+        {
+          "word": "where",
+          "start_ms": 5700,
+          "end_ms": 5800
+        },
+        {
+          "word": "English",
+          "start_ms": 5800,
+          "end_ms": 6160
+        },
+        {
+          "word": "would",
+          "start_ms": 6160,
+          "end_ms": 6420
+        },
+        {
+          "word": "need",
+          "start_ms": 6420,
+          "end_ms": 6560
+        },
+        {
+          "word": "a",
+          "start_ms": 6560,
+          "end_ms": 6680
+        },
+        {
+          "word": "phrase",
+          "start_ms": 6780,
+          "end_ms": 7000
+        },
+        {
+          "word": "or",
+          "start_ms": 7000,
+          "end_ms": 7260
+        },
+        {
+          "word": "a",
+          "start_ms": 7260,
+          "end_ms": 7400
+        },
+        {
+          "word": "sentence,",
+          "start_ms": 7400,
+          "end_ms": 7640
+        },
+        {
+          "word": "Mapudungun",
+          "start_ms": 8420,
+          "end_ms": 9000
+        },
+        {
+          "word": "creates",
+          "start_ms": 9000,
+          "end_ms": 9320
+        },
+        {
+          "word": "a",
+          "start_ms": 9320,
+          "end_ms": 9540
+        },
+        {
+          "word": "word.",
+          "start_ms": 9540,
+          "end_ms": 9900
         }
       ]
     },
@@ -30009,6 +31373,83 @@
         }
       ]
     },
+    "ch07-361": {
+      "file": "audio/en/ch07-361.m4a",
+      "duration_ms": 5920,
+      "pause_after_ms": 500,
+      "words": [
+        {
+          "word": "Male",
+          "start_ms": 20,
+          "end_ms": 320
+        },
+        {
+          "word": "and",
+          "start_ms": 320,
+          "end_ms": 740
+        },
+        {
+          "word": "female,",
+          "start_ms": 740,
+          "end_ms": 1500
+        },
+        {
+          "word": "old",
+          "start_ms": 2080,
+          "end_ms": 2160
+        },
+        {
+          "word": "and",
+          "start_ms": 2160,
+          "end_ms": 2360
+        },
+        {
+          "word": "young",
+          "start_ms": 2360,
+          "end_ms": 2700
+        },
+        {
+          "word": "\u2014",
+          "start_ms": 2700,
+          "end_ms": 3160
+        },
+        {
+          "word": "all",
+          "start_ms": 3280,
+          "end_ms": 3420
+        },
+        {
+          "word": "present",
+          "start_ms": 3420,
+          "end_ms": 3840
+        },
+        {
+          "word": "in",
+          "start_ms": 3840,
+          "end_ms": 4160
+        },
+        {
+          "word": "a",
+          "start_ms": 4160,
+          "end_ms": 4280
+        },
+        {
+          "word": "single",
+          "start_ms": 4280,
+          "end_ms": 4600
+        },
+        {
+          "word": "divine",
+          "start_ms": 4600,
+          "end_ms": 5080
+        },
+        {
+          "word": "entity.",
+          "start_ms": 5080,
+          "end_ms": 5880
+        }
+      ]
+    },
     "ch07-362": {
       "file": "audio/en/ch07-362.m4a",
       "duration_ms": 3720,
@@ -30197,6 +31638,103 @@
           "word": "well-being.",
           "start_ms": 3360,
           "end_ms": 4000
+        }
+      ]
+    },
+    "ch07-365": {
+      "file": "audio/en/ch07-365.m4a",
+      "duration_ms": 7680,
+      "pause_after_ms": 800,
+      "words": [
+        {
+          "word": "Imbalance",
+          "start_ms": 120,
+          "end_ms": 840
+        },
+        {
+          "word": "\u2014",
+          "start_ms": 840,
+          "end_ms": 1180
+        },
+        {
+          "word": "in",
+          "start_ms": 1320,
+          "end_ms": 1420
+        },
+        {
+          "word": "a",
+          "start_ms": 1420,
+          "end_ms": 1520
+        },
+        {
+          "word": "person,",
+          "start_ms": 1520,
+          "end_ms": 2100
+        },
+        {
+          "word": "a",
+          "start_ms": 2440,
+          "end_ms": 2520
+        },
+        {
+          "word": "community,",
+          "start_ms": 2520,
+          "end_ms": 3360
+        },
+        {
+          "word": "or",
+          "start_ms": 3380,
+          "end_ms": 3440
+        },
+        {
+          "word": "the",
+          "start_ms": 3440,
+          "end_ms": 3540
+        },
+        {
+          "word": "cosmos",
+          "start_ms": 3540,
+          "end_ms": 4019
+        },
+        {
+          "word": "\u2014",
+          "start_ms": 4480,
+          "end_ms": 4580
+        },
+        {
+          "word": "is",
+          "start_ms": 4580,
+          "end_ms": 4700
+        },
+        {
+          "word": "the",
+          "start_ms": 4700,
+          "end_ms": 4860
+        },
+        {
+          "word": "root",
+          "start_ms": 4860,
+          "end_ms": 5100
+        },
+        {
+          "word": "of",
+          "start_ms": 5100,
+          "end_ms": 5420
+        },
+        {
+          "word": "illness",
+          "start_ms": 5420,
+          "end_ms": 5780
+        },
+        {
+          "word": "and",
+          "start_ms": 5780,
+          "end_ms": 6140
+        },
+        {
+          "word": "misfortune.",
+          "start_ms": 6140,
+          "end_ms": 6740
         }
       ]
     },
@@ -30974,6 +32512,148 @@
           "word": "Mapu).",
           "start_ms": 14520,
           "end_ms": 14800
+        }
+      ]
+    },
+    "ch07-372": {
+      "file": "audio/en/ch07-372.m4a",
+      "duration_ms": 12280,
+      "pause_after_ms": 800,
+      "words": [
+        {
+          "word": "During",
+          "start_ms": 100,
+          "end_ms": 240
+        },
+        {
+          "word": "the",
+          "start_ms": 240,
+          "end_ms": 460
+        },
+        {
+          "word": "nweeyatoon,",
+          "start_ms": 460,
+          "end_ms": 1010
+        },
+        {
+          "word": "the",
+          "start_ms": 1580,
+          "end_ms": 1580
+        },
+        {
+          "word": "most",
+          "start_ms": 1580,
+          "end_ms": 1780
+        },
+        {
+          "word": "important",
+          "start_ms": 1780,
+          "end_ms": 2300
+        },
+        {
+          "word": "collective",
+          "start_ms": 2300,
+          "end_ms": 2760
+        },
+        {
+          "word": "ceremony,",
+          "start_ms": 2760,
+          "end_ms": 3440
+        },
+        {
+          "word": "the",
+          "start_ms": 3920,
+          "end_ms": 3980
+        },
+        {
+          "word": "mahchee",
+          "start_ms": 3980,
+          "end_ms": 4480
+        },
+        {
+          "word": "ascends",
+          "start_ms": 4480,
+          "end_ms": 5000
+        },
+        {
+          "word": "the",
+          "start_ms": 5000,
+          "end_ms": 5180
+        },
+        {
+          "word": "rayweh,",
+          "start_ms": 5180,
+          "end_ms": 6060
+        },
+        {
+          "word": "literally",
+          "start_ms": 6060,
+          "end_ms": 6340
+        },
+        {
+          "word": "climbing",
+          "start_ms": 6340,
+          "end_ms": 6800
+        },
+        {
+          "word": "its",
+          "start_ms": 6800,
+          "end_ms": 7060
+        },
+        {
+          "word": "carved",
+          "start_ms": 7260,
+          "end_ms": 7440
+        },
+        {
+          "word": "steps,",
+          "start_ms": 7440,
+          "end_ms": 8080
+        },
+        {
+          "word": "as",
+          "start_ms": 8540,
+          "end_ms": 8640
+        },
+        {
+          "word": "a",
+          "start_ms": 8640,
+          "end_ms": 8720
+        },
+        {
+          "word": "physical",
+          "start_ms": 8720,
+          "end_ms": 9080
+        },
+        {
+          "word": "enactment",
+          "start_ms": 9080,
+          "end_ms": 9660
+        },
+        {
+          "word": "of",
+          "start_ms": 9660,
+          "end_ms": 9840
+        },
+        {
+          "word": "spiritual",
+          "start_ms": 10040,
+          "end_ms": 10220
+        },
+        {
+          "word": "travel",
+          "start_ms": 10420,
+          "end_ms": 10720
+        },
+        {
+          "word": "between",
+          "start_ms": 10720,
+          "end_ms": 11080
+        },
+        {
+          "word": "worlds.",
+          "start_ms": 11080,
+          "end_ms": 11740
         }
       ]
     },
@@ -32255,6 +33935,98 @@
         }
       ]
     },
+    "ch08-387": {
+      "file": "audio/en/ch08-387.m4a",
+      "duration_ms": 6800,
+      "pause_after_ms": 500,
+      "words": [
+        {
+          "word": "South",
+          "start_ms": 100,
+          "end_ms": 220
+        },
+        {
+          "word": "of",
+          "start_ms": 220,
+          "end_ms": 400
+        },
+        {
+          "word": "that",
+          "start_ms": 400,
+          "end_ms": 540
+        },
+        {
+          "word": "line,",
+          "start_ms": 540,
+          "end_ms": 990
+        },
+        {
+          "word": "Mapudungun",
+          "start_ms": 1440,
+          "end_ms": 2120
+        },
+        {
+          "word": "was",
+          "start_ms": 2120,
+          "end_ms": 2400
+        },
+        {
+          "word": "the",
+          "start_ms": 2400,
+          "end_ms": 2560
+        },
+        {
+          "word": "language",
+          "start_ms": 2560,
+          "end_ms": 2860
+        },
+        {
+          "word": "of",
+          "start_ms": 2860,
+          "end_ms": 3060
+        },
+        {
+          "word": "daily",
+          "start_ms": 3060,
+          "end_ms": 3240
+        },
+        {
+          "word": "life,",
+          "start_ms": 3240,
+          "end_ms": 3640
+        },
+        {
+          "word": "of",
+          "start_ms": 3980,
+          "end_ms": 4100
+        },
+        {
+          "word": "trade,",
+          "start_ms": 4100,
+          "end_ms": 4720
+        },
+        {
+          "word": "of",
+          "start_ms": 4740,
+          "end_ms": 4840
+        },
+        {
+          "word": "ceremony,",
+          "start_ms": 4840,
+          "end_ms": 5260
+        },
+        {
+          "word": "of",
+          "start_ms": 5260,
+          "end_ms": 5620
+        },
+        {
+          "word": "diplomacy.",
+          "start_ms": 5620,
+          "end_ms": 6320
+        }
+      ]
+    },
     "ch08-388": {
       "file": "audio/en/ch08-388.m4a",
       "duration_ms": 4240,
@@ -32782,6 +34554,58 @@
           "word": "Americas.",
           "start_ms": 9580,
           "end_ms": 9980
+        }
+      ]
+    },
+    "ch08-393": {
+      "file": "audio/en/ch08-393.m4a",
+      "duration_ms": 4040,
+      "pause_after_ms": 500,
+      "words": [
+        {
+          "word": "This",
+          "start_ms": 140,
+          "end_ms": 200
+        },
+        {
+          "word": "linguistic",
+          "start_ms": 200,
+          "end_ms": 540
+        },
+        {
+          "word": "sovereignty",
+          "start_ms": 540,
+          "end_ms": 1280
+        },
+        {
+          "word": "had",
+          "start_ms": 1280,
+          "end_ms": 1540
+        },
+        {
+          "word": "consequences",
+          "start_ms": 1540,
+          "end_ms": 2040
+        },
+        {
+          "word": "that",
+          "start_ms": 2040,
+          "end_ms": 2420
+        },
+        {
+          "word": "extended",
+          "start_ms": 2420,
+          "end_ms": 2860
+        },
+        {
+          "word": "beyond",
+          "start_ms": 2860,
+          "end_ms": 3160
+        },
+        {
+          "word": "communication.",
+          "start_ms": 3160,
+          "end_ms": 4019
         }
       ]
     },
@@ -37740,6 +39564,225 @@
         }
       ]
     },
+    "ch09-454": {
+      "file": "audio/en/ch09-454.m4a",
+      "duration_ms": 8400,
+      "pause_after_ms": 500,
+      "words": [
+        {
+          "word": "Digital",
+          "start_ms": 140,
+          "end_ms": 300
+        },
+        {
+          "word": "media",
+          "start_ms": 300,
+          "end_ms": 680
+        },
+        {
+          "word": "created",
+          "start_ms": 680,
+          "end_ms": 1060
+        },
+        {
+          "word": "new",
+          "start_ms": 1060,
+          "end_ms": 1280
+        },
+        {
+          "word": "spaces",
+          "start_ms": 1280,
+          "end_ms": 1800
+        },
+        {
+          "word": "\u2014",
+          "start_ms": 2100,
+          "end_ms": 2200
+        },
+        {
+          "word": "Mapudungun-language",
+          "start_ms": 2200,
+          "end_ms": 3420
+        },
+        {
+          "word": "podcasts,",
+          "start_ms": 3420,
+          "end_ms": 4360
+        },
+        {
+          "word": "YouTube",
+          "start_ms": 4420,
+          "end_ms": 4540
+        },
+        {
+          "word": "channels,",
+          "start_ms": 4540,
+          "end_ms": 5120
+        },
+        {
+          "word": "social",
+          "start_ms": 5380,
+          "end_ms": 5460
+        },
+        {
+          "word": "media",
+          "start_ms": 5460,
+          "end_ms": 5760
+        },
+        {
+          "word": "accounts,",
+          "start_ms": 5760,
+          "end_ms": 6240
+        },
+        {
+          "word": "and",
+          "start_ms": 6600,
+          "end_ms": 6700
+        },
+        {
+          "word": "apps",
+          "start_ms": 6700,
+          "end_ms": 6960
+        },
+        {
+          "word": "for",
+          "start_ms": 6960,
+          "end_ms": 7160
+        },
+        {
+          "word": "language",
+          "start_ms": 7160,
+          "end_ms": 7460
+        },
+        {
+          "word": "learning.",
+          "start_ms": 7460,
+          "end_ms": 7820
+        }
+      ]
+    },
+    "ch09-455": {
+      "file": "audio/en/ch09-455.m4a",
+      "duration_ms": 9600,
+      "pause_after_ms": 800,
+      "words": [
+        {
+          "word": "Young",
+          "start_ms": 300,
+          "end_ms": 300
+        },
+        {
+          "word": "urban",
+          "start_ms": 300,
+          "end_ms": 760
+        },
+        {
+          "word": "Mapuche",
+          "start_ms": 760,
+          "end_ms": 1300
+        },
+        {
+          "word": "who",
+          "start_ms": 1740,
+          "end_ms": 1840
+        },
+        {
+          "word": "had",
+          "start_ms": 1840,
+          "end_ms": 2020
+        },
+        {
+          "word": "grown",
+          "start_ms": 2020,
+          "end_ms": 2240
+        },
+        {
+          "word": "up",
+          "start_ms": 2240,
+          "end_ms": 2420
+        },
+        {
+          "word": "speaking",
+          "start_ms": 2620,
+          "end_ms": 2760
+        },
+        {
+          "word": "only",
+          "start_ms": 2760,
+          "end_ms": 3080
+        },
+        {
+          "word": "Spanish",
+          "start_ms": 3080,
+          "end_ms": 3680
+        },
+        {
+          "word": "began",
+          "start_ms": 3680,
+          "end_ms": 4320
+        },
+        {
+          "word": "seeking",
+          "start_ms": 4580,
+          "end_ms": 4680
+        },
+        {
+          "word": "out",
+          "start_ms": 4680,
+          "end_ms": 4940
+        },
+        {
+          "word": "language",
+          "start_ms": 4940,
+          "end_ms": 5320
+        },
+        {
+          "word": "instruction,",
+          "start_ms": 5320,
+          "end_ms": 6120
+        },
+        {
+          "word": "driven",
+          "start_ms": 6620,
+          "end_ms": 6740
+        },
+        {
+          "word": "by",
+          "start_ms": 6740,
+          "end_ms": 6960
+        },
+        {
+          "word": "a",
+          "start_ms": 6960,
+          "end_ms": 7100
+        },
+        {
+          "word": "resurgent",
+          "start_ms": 7100,
+          "end_ms": 7640
+        },
+        {
+          "word": "sense",
+          "start_ms": 7640,
+          "end_ms": 7820
+        },
+        {
+          "word": "of",
+          "start_ms": 7820,
+          "end_ms": 8080
+        },
+        {
+          "word": "cultural",
+          "start_ms": 8080,
+          "end_ms": 8440
+        },
+        {
+          "word": "identity.",
+          "start_ms": 8440,
+          "end_ms": 9090
+        }
+      ]
+    },
     "ch09-456": {
       "file": "audio/en/ch09-456.m4a",
       "duration_ms": 4960,
@@ -39515,6 +41558,280 @@
         }
       ]
     },
+    "ch09-476": {
+      "file": "audio/en/ch09-476.m4a",
+      "duration_ms": 11320,
+      "pause_after_ms": 800,
+      "words": [
+        {
+          "word": "The",
+          "start_ms": 120,
+          "end_ms": 120
+        },
+        {
+          "word": "language",
+          "start_ms": 120,
+          "end_ms": 460
+        },
+        {
+          "word": "is",
+          "start_ms": 460,
+          "end_ms": 660
+        },
+        {
+          "word": "becoming,",
+          "start_ms": 660,
+          "end_ms": 1220
+        },
+        {
+          "word": "for",
+          "start_ms": 1780,
+          "end_ms": 1820
+        },
+        {
+          "word": "a",
+          "start_ms": 1820,
+          "end_ms": 1920
+        },
+        {
+          "word": "new",
+          "start_ms": 1920,
+          "end_ms": 2100
+        },
+        {
+          "word": "generation,",
+          "start_ms": 2100,
+          "end_ms": 2550
+        },
+        {
+          "word": "a",
+          "start_ms": 3060,
+          "end_ms": 3120
+        },
+        {
+          "word": "deliberate",
+          "start_ms": 3120,
+          "end_ms": 3480
+        },
+        {
+          "word": "choice",
+          "start_ms": 3480,
+          "end_ms": 3900
+        },
+        {
+          "word": "rather",
+          "start_ms": 3900,
+          "end_ms": 4380
+        },
+        {
+          "word": "than",
+          "start_ms": 4380,
+          "end_ms": 4620
+        },
+        {
+          "word": "an",
+          "start_ms": 4620,
+          "end_ms": 4780
+        },
+        {
+          "word": "inherited",
+          "start_ms": 4780,
+          "end_ms": 5200
+        },
+        {
+          "word": "habit",
+          "start_ms": 5240,
+          "end_ms": 5640
+        },
+        {
+          "word": "\u2014",
+          "start_ms": 5640,
+          "end_ms": 6240
+        },
+        {
+          "word": "a",
+          "start_ms": 6260,
+          "end_ms": 6360
+        },
+        {
+          "word": "way",
+          "start_ms": 6360,
+          "end_ms": 6540
+        },
+        {
+          "word": "of",
+          "start_ms": 6540,
+          "end_ms": 6680
+        },
+        {
+          "word": "asserting",
+          "start_ms": 6680,
+          "end_ms": 7000
+        },
+        {
+          "word": "identity",
+          "start_ms": 7010,
+          "end_ms": 7660
+        },
+        {
+          "word": "in",
+          "start_ms": 7740,
+          "end_ms": 7880
+        },
+        {
+          "word": "a",
+          "start_ms": 7880,
+          "end_ms": 7940
+        },
+        {
+          "word": "society",
+          "start_ms": 7940,
+          "end_ms": 8460
+        },
+        {
+          "word": "that",
+          "start_ms": 8460,
+          "end_ms": 8740
+        },
+        {
+          "word": "spent",
+          "start_ms": 8740,
+          "end_ms": 9000
+        },
+        {
+          "word": "a",
+          "start_ms": 9000,
+          "end_ms": 9120
+        },
+        {
+          "word": "century",
+          "start_ms": 9120,
+          "end_ms": 9520
+        },
+        {
+          "word": "trying",
+          "start_ms": 9520,
+          "end_ms": 9840
+        },
+        {
+          "word": "to",
+          "start_ms": 9900,
+          "end_ms": 10000
+        },
+        {
+          "word": "erase",
+          "start_ms": 10000,
+          "end_ms": 10260
+        },
+        {
+          "word": "it.",
+          "start_ms": 10260,
+          "end_ms": 10420
+        }
+      ]
+    },
+    "ch09-477": {
+      "file": "audio/en/ch09-477.m4a",
+      "duration_ms": 6920,
+      "pause_after_ms": 500,
+      "words": [
+        {
+          "word": "What",
+          "start_ms": 160,
+          "end_ms": 180
+        },
+        {
+          "word": "is",
+          "start_ms": 180,
+          "end_ms": 300
+        },
+        {
+          "word": "certain",
+          "start_ms": 300,
+          "end_ms": 740
+        },
+        {
+          "word": "is",
+          "start_ms": 740,
+          "end_ms": 1420
+        },
+        {
+          "word": "that",
+          "start_ms": 1420,
+          "end_ms": 1580
+        },
+        {
+          "word": "the",
+          "start_ms": 1580,
+          "end_ms": 1720
+        },
+        {
+          "word": "loss",
+          "start_ms": 1720,
+          "end_ms": 1960
+        },
+        {
+          "word": "of",
+          "start_ms": 1960,
+          "end_ms": 2220
+        },
+        {
+          "word": "Mapudungun",
+          "start_ms": 2220,
+          "end_ms": 3120
+        },
+        {
+          "word": "would",
+          "start_ms": 3480,
+          "end_ms": 3580
+        },
+        {
+          "word": "be",
+          "start_ms": 3580,
+          "end_ms": 3740
+        },
+        {
+          "word": "the",
+          "start_ms": 3740,
+          "end_ms": 3860
+        },
+        {
+          "word": "loss",
+          "start_ms": 3860,
+          "end_ms": 4100
+        },
+        {
+          "word": "of",
+          "start_ms": 4100,
+          "end_ms": 4300
+        },
+        {
+          "word": "something",
+          "start_ms": 4300,
+          "end_ms": 4640
+        },
+        {
+          "word": "that",
+          "start_ms": 4640,
+          "end_ms": 4800
+        },
+        {
+          "word": "exists",
+          "start_ms": 4800,
+          "end_ms": 5180
+        },
+        {
+          "word": "nowhere",
+          "start_ms": 5180,
+          "end_ms": 5760
+        },
+        {
+          "word": "else.",
+          "start_ms": 5760,
+          "end_ms": 6360
+        }
+      ]
+    },
     "ch09-478": {
       "file": "audio/en/ch09-478.m4a",
       "duration_ms": 3040,
@@ -41171,6 +43488,173 @@
           "word": "Lumaco.",
           "start_ms": 8340,
           "end_ms": 8620
+        }
+      ]
+    },
+    "ch10-500": {
+      "file": "audio/en/ch10-500.m4a",
+      "duration_ms": 10640,
+      "pause_after_ms": 800,
+      "words": [
+        {
+          "word": "The",
+          "start_ms": 80,
+          "end_ms": 100
+        },
+        {
+          "word": "Spanish",
+          "start_ms": 100,
+          "end_ms": 480
+        },
+        {
+          "word": "governor",
+          "start_ms": 480,
+          "end_ms": 880
+        },
+        {
+          "word": "Mart\u00edn",
+          "start_ms": 880,
+          "end_ms": 1380
+        },
+        {
+          "word": "Garc\u00eda",
+          "start_ms": 1380,
+          "end_ms": 1840
+        },
+        {
+          "word": "\u00d3\u00f1ez",
+          "start_ms": 1840,
+          "end_ms": 2400
+        },
+        {
+          "word": "de",
+          "start_ms": 2400,
+          "end_ms": 2540
+        },
+        {
+          "word": "Loyola",
+          "start_ms": 2540,
+          "end_ms": 3020
+        },
+        {
+          "word": "\u2014",
+          "start_ms": 3020,
+          "end_ms": 3520
+        },
+        {
+          "word": "a",
+          "start_ms": 3520,
+          "end_ms": 3620
+        },
+        {
+          "word": "nephew",
+          "start_ms": 3820,
+          "end_ms": 3920
+        },
+        {
+          "word": "by",
+          "start_ms": 3920,
+          "end_ms": 4180
+        },
+        {
+          "word": "marriage",
+          "start_ms": 4180,
+          "end_ms": 4520
+        },
+        {
+          "word": "of",
+          "start_ms": 4520,
+          "end_ms": 4720
+        },
+        {
+          "word": "the",
+          "start_ms": 4740,
+          "end_ms": 4840
+        },
+        {
+          "word": "Jesuit",
+          "start_ms": 4840,
+          "end_ms": 5220
+        },
+        {
+          "word": "founder",
+          "start_ms": 5220,
+          "end_ms": 5560
+        },
+        {
+          "word": "Ignatius",
+          "start_ms": 5560,
+          "end_ms": 6200
+        },
+        {
+          "word": "of",
+          "start_ms": 6200,
+          "end_ms": 6360
+        },
+        {
+          "word": "Loyola",
+          "start_ms": 6400,
+          "end_ms": 6840
+        },
+        {
+          "word": "\u2014",
+          "start_ms": 6840,
+          "end_ms": 7180
+        },
+        {
+          "word": "was",
+          "start_ms": 7180,
+          "end_ms": 7280
+        },
+        {
+          "word": "killed",
+          "start_ms": 7280,
+          "end_ms": 7560
+        },
+        {
+          "word": "in",
+          "start_ms": 7560,
+          "end_ms": 7740
+        },
+        {
+          "word": "the",
+          "start_ms": 7740,
+          "end_ms": 7820
+        },
+        {
+          "word": "fighting,",
+          "start_ms": 7820,
+          "end_ms": 8280
+        },
+        {
+          "word": "along",
+          "start_ms": 8440,
+          "end_ms": 8580
+        },
+        {
+          "word": "with",
+          "start_ms": 8580,
+          "end_ms": 8820
+        },
+        {
+          "word": "nearly",
+          "start_ms": 8820,
+          "end_ms": 9040
+        },
+        {
+          "word": "his",
+          "start_ms": 9040,
+          "end_ms": 9300
+        },
+        {
+          "word": "entire",
+          "start_ms": 9300,
+          "end_ms": 9640
+        },
+        {
+          "word": "force.",
+          "start_ms": 9640,
+          "end_ms": 9780
         }
       ]
     },
@@ -43872,6 +46356,148 @@
         }
       ]
     },
+    "ch10-540": {
+      "file": "audio/en/ch10-540.m4a",
+      "duration_ms": 9720,
+      "pause_after_ms": 500,
+      "words": [
+        {
+          "word": "The",
+          "start_ms": 80,
+          "end_ms": 120
+        },
+        {
+          "word": "warriors",
+          "start_ms": 120,
+          "end_ms": 480
+        },
+        {
+          "word": "they",
+          "start_ms": 480,
+          "end_ms": 740
+        },
+        {
+          "word": "defeated",
+          "start_ms": 740,
+          "end_ms": 1120
+        },
+        {
+          "word": "would",
+          "start_ms": 1120,
+          "end_ms": 1360
+        },
+        {
+          "word": "disperse",
+          "start_ms": 1360,
+          "end_ms": 1940
+        },
+        {
+          "word": "to",
+          "start_ms": 1940,
+          "end_ms": 2060
+        },
+        {
+          "word": "their",
+          "start_ms": 2060,
+          "end_ms": 2180
+        },
+        {
+          "word": "home",
+          "start_ms": 2180,
+          "end_ms": 2380
+        },
+        {
+          "word": "communities,",
+          "start_ms": 2380,
+          "end_ms": 3030
+        },
+        {
+          "word": "recover,",
+          "start_ms": 3420,
+          "end_ms": 4120
+        },
+        {
+          "word": "rearm,",
+          "start_ms": 4160,
+          "end_ms": 4700
+        },
+        {
+          "word": "and",
+          "start_ms": 4700,
+          "end_ms": 4780
+        },
+        {
+          "word": "return",
+          "start_ms": 4780,
+          "end_ms": 5140
+        },
+        {
+          "word": "\u2014",
+          "start_ms": 5140,
+          "end_ms": 5740
+        },
+        {
+          "word": "or",
+          "start_ms": 5740,
+          "end_ms": 5820
+        },
+        {
+          "word": "be",
+          "start_ms": 5820,
+          "end_ms": 5960
+        },
+        {
+          "word": "replaced",
+          "start_ms": 5960,
+          "end_ms": 6300
+        },
+        {
+          "word": "by",
+          "start_ms": 6300,
+          "end_ms": 6520
+        },
+        {
+          "word": "others",
+          "start_ms": 6520,
+          "end_ms": 6800
+        },
+        {
+          "word": "from",
+          "start_ms": 6800,
+          "end_ms": 7060
+        },
+        {
+          "word": "communities",
+          "start_ms": 7060,
+          "end_ms": 7600
+        },
+        {
+          "word": "untouched",
+          "start_ms": 7600,
+          "end_ms": 8220
+        },
+        {
+          "word": "by",
+          "start_ms": 8280,
+          "end_ms": 8380
+        },
+        {
+          "word": "the",
+          "start_ms": 8380,
+          "end_ms": 8480
+        },
+        {
+          "word": "recent",
+          "start_ms": 8480,
+          "end_ms": 8720
+        },
+        {
+          "word": "fighting.",
+          "start_ms": 8720,
+          "end_ms": 9140
+        }
+      ]
+    },
     "ch10-541": {
       "file": "audio/en/ch10-541.m4a",
       "duration_ms": 3920,
@@ -44155,6 +46781,128 @@
           "word": "riders.",
           "start_ms": 12580,
           "end_ms": 13100
+        }
+      ]
+    },
+    "ch10-544": {
+      "file": "audio/en/ch10-544.m4a",
+      "duration_ms": 8480,
+      "pause_after_ms": 500,
+      "words": [
+        {
+          "word": "Mapuche",
+          "start_ms": 120,
+          "end_ms": 360
+        },
+        {
+          "word": "warriors",
+          "start_ms": 360,
+          "end_ms": 780
+        },
+        {
+          "word": "learned",
+          "start_ms": 780,
+          "end_ms": 1140
+        },
+        {
+          "word": "to",
+          "start_ms": 1140,
+          "end_ms": 1360
+        },
+        {
+          "word": "fight",
+          "start_ms": 1460,
+          "end_ms": 1600
+        },
+        {
+          "word": "in",
+          "start_ms": 1600,
+          "end_ms": 1780
+        },
+        {
+          "word": "terrain",
+          "start_ms": 1780,
+          "end_ms": 2100
+        },
+        {
+          "word": "that",
+          "start_ms": 2100,
+          "end_ms": 2360
+        },
+        {
+          "word": "negated",
+          "start_ms": 2360,
+          "end_ms": 2840
+        },
+        {
+          "word": "cavalry",
+          "start_ms": 2840,
+          "end_ms": 3260
+        },
+        {
+          "word": "advantage:",
+          "start_ms": 3260,
+          "end_ms": 3740
+        },
+        {
+          "word": "forests,",
+          "start_ms": 4180,
+          "end_ms": 4880
+        },
+        {
+          "word": "ravines,",
+          "start_ms": 4920,
+          "end_ms": 5400
+        },
+        {
+          "word": "riverbanks,",
+          "start_ms": 5460,
+          "end_ms": 6000
+        },
+        {
+          "word": "and",
+          "start_ms": 6000,
+          "end_ms": 6040
+        },
+        {
+          "word": "hillsides",
+          "start_ms": 6040,
+          "end_ms": 6580
+        },
+        {
+          "word": "where",
+          "start_ms": 6680,
+          "end_ms": 6780
+        },
+        {
+          "word": "horses",
+          "start_ms": 6780,
+          "end_ms": 7100
+        },
+        {
+          "word": "could",
+          "start_ms": 7100,
+          "end_ms": 7300
+        },
+        {
+          "word": "not",
+          "start_ms": 7300,
+          "end_ms": 7420
+        },
+        {
+          "word": "charge",
+          "start_ms": 7420,
+          "end_ms": 7760
+        },
+        {
+          "word": "in",
+          "start_ms": 7760,
+          "end_ms": 7920
+        },
+        {
+          "word": "formation.",
+          "start_ms": 7920,
+          "end_ms": 8400
         }
       ]
     },
@@ -45456,6 +48204,128 @@
         }
       ]
     },
+    "ch11-559": {
+      "file": "audio/en/ch11-559.m4a",
+      "duration_ms": 10480,
+      "pause_after_ms": 500,
+      "words": [
+        {
+          "word": "The",
+          "start_ms": 100,
+          "end_ms": 100
+        },
+        {
+          "word": "parlamento",
+          "start_ms": 140,
+          "end_ms": 760
+        },
+        {
+          "word": "grew",
+          "start_ms": 760,
+          "end_ms": 1120
+        },
+        {
+          "word": "from",
+          "start_ms": 1120,
+          "end_ms": 1400
+        },
+        {
+          "word": "a",
+          "start_ms": 1400,
+          "end_ms": 1540
+        },
+        {
+          "word": "Mapuche",
+          "start_ms": 1540,
+          "end_ms": 1940
+        },
+        {
+          "word": "institution",
+          "start_ms": 1940,
+          "end_ms": 2840
+        },
+        {
+          "word": "called",
+          "start_ms": 2840,
+          "end_ms": 3260
+        },
+        {
+          "word": "the",
+          "start_ms": 3260,
+          "end_ms": 3520
+        },
+        {
+          "word": "koyagtun",
+          "start_ms": 3520,
+          "end_ms": 4320
+        },
+        {
+          "word": "\u2014",
+          "start_ms": 4320,
+          "end_ms": 4760
+        },
+        {
+          "word": "a",
+          "start_ms": 4940,
+          "end_ms": 5040
+        },
+        {
+          "word": "deliberative",
+          "start_ms": 5040,
+          "end_ms": 5660
+        },
+        {
+          "word": "assembly",
+          "start_ms": 5660,
+          "end_ms": 6200
+        },
+        {
+          "word": "where",
+          "start_ms": 6200,
+          "end_ms": 6500
+        },
+        {
+          "word": "leaders",
+          "start_ms": 6500,
+          "end_ms": 6800
+        },
+        {
+          "word": "gathered",
+          "start_ms": 6800,
+          "end_ms": 7200
+        },
+        {
+          "word": "to",
+          "start_ms": 7200,
+          "end_ms": 7460
+        },
+        {
+          "word": "discuss",
+          "start_ms": 7500,
+          "end_ms": 7760
+        },
+        {
+          "word": "matters",
+          "start_ms": 7760,
+          "end_ms": 8260
+        },
+        {
+          "word": "of",
+          "start_ms": 8260,
+          "end_ms": 8500
+        },
+        {
+          "word": "collective",
+          "start_ms": 8620,
+          "end_ms": 8900
+        },
+        {
+          "word": "concern.",
+          "start_ms": 8900,
+          "end_ms": 9580
+        }
+      ]
+    },
     "ch11-560": {
       "file": "audio/en/ch11-560.m4a",
       "duration_ms": 3520,
@@ -46679,6 +49549,58 @@
           "word": "talks.",
           "start_ms": 11720,
           "end_ms": 12080
+        }
+      ]
+    },
+    "ch11-573": {
+      "file": "audio/en/ch11-573.m4a",
+      "duration_ms": 4400,
+      "pause_after_ms": 500,
+      "words": [
+        {
+          "word": "Speeches",
+          "start_ms": 80,
+          "end_ms": 360
+        },
+        {
+          "word": "were",
+          "start_ms": 360,
+          "end_ms": 540
+        },
+        {
+          "word": "delivered",
+          "start_ms": 540,
+          "end_ms": 940
+        },
+        {
+          "word": "in",
+          "start_ms": 940,
+          "end_ms": 1260
+        },
+        {
+          "word": "Mapudungun",
+          "start_ms": 1260,
+          "end_ms": 2120
+        },
+        {
+          "word": "and",
+          "start_ms": 2120,
+          "end_ms": 2360
+        },
+        {
+          "word": "translated",
+          "start_ms": 2360,
+          "end_ms": 2860
+        },
+        {
+          "word": "into",
+          "start_ms": 2860,
+          "end_ms": 3280
+        },
+        {
+          "word": "Spanish.",
+          "start_ms": 3280,
+          "end_ms": 3900
         }
       ]
     },
@@ -52161,6 +55083,108 @@
         }
       ]
     },
+    "ch12-636": {
+      "file": "audio/en/ch12-636.m4a",
+      "duration_ms": 8800,
+      "pause_after_ms": 500,
+      "words": [
+        {
+          "word": "The",
+          "start_ms": 200,
+          "end_ms": 200
+        },
+        {
+          "word": "ad",
+          "start_ms": 200,
+          "end_ms": 540
+        },
+        {
+          "word": "mapu",
+          "start_ms": 540,
+          "end_ms": 1120
+        },
+        {
+          "word": "\u2014",
+          "start_ms": 1120,
+          "end_ms": 1480
+        },
+        {
+          "word": "customary",
+          "start_ms": 1540,
+          "end_ms": 2000
+        },
+        {
+          "word": "law",
+          "start_ms": 2000,
+          "end_ms": 2260
+        },
+        {
+          "word": "\u2014",
+          "start_ms": 2260,
+          "end_ms": 2820
+        },
+        {
+          "word": "governed",
+          "start_ms": 2900,
+          "end_ms": 3080
+        },
+        {
+          "word": "everything",
+          "start_ms": 3080,
+          "end_ms": 3620
+        },
+        {
+          "word": "from",
+          "start_ms": 3620,
+          "end_ms": 3860
+        },
+        {
+          "word": "marriage",
+          "start_ms": 3860,
+          "end_ms": 4260
+        },
+        {
+          "word": "and",
+          "start_ms": 4260,
+          "end_ms": 4620
+        },
+        {
+          "word": "inheritance",
+          "start_ms": 4620,
+          "end_ms": 5120
+        },
+        {
+          "word": "to",
+          "start_ms": 5140,
+          "end_ms": 5480
+        },
+        {
+          "word": "conflict",
+          "start_ms": 5580,
+          "end_ms": 5880
+        },
+        {
+          "word": "resolution",
+          "start_ms": 6120,
+          "end_ms": 6440
+        },
+        {
+          "word": "and",
+          "start_ms": 6440,
+          "end_ms": 6980
+        },
+        {
+          "word": "resource",
+          "start_ms": 6980,
+          "end_ms": 7360
+        },
+        {
+          "word": "management.",
+          "start_ms": 7360,
+          "end_ms": 7840
+        }
+      ]
+    },
     "ch12-637": {
       "file": "audio/en/ch12-637.m4a",
       "duration_ms": 11040,
@@ -56301,6 +59325,78 @@
         }
       ]
     },
+    "ch13-682": {
+      "file": "audio/en/ch13-682.m4a",
+      "duration_ms": 4880,
+      "pause_after_ms": 500,
+      "words": [
+        {
+          "word": "The",
+          "start_ms": 80,
+          "end_ms": 120
+        },
+        {
+          "word": "railroad",
+          "start_ms": 120,
+          "end_ms": 520
+        },
+        {
+          "word": "could",
+          "start_ms": 520,
+          "end_ms": 800
+        },
+        {
+          "word": "move",
+          "start_ms": 800,
+          "end_ms": 1040
+        },
+        {
+          "word": "troops",
+          "start_ms": 1040,
+          "end_ms": 1440
+        },
+        {
+          "word": "and",
+          "start_ms": 1440,
+          "end_ms": 1700
+        },
+        {
+          "word": "supplies",
+          "start_ms": 1700,
+          "end_ms": 2180
+        },
+        {
+          "word": "faster",
+          "start_ms": 2180,
+          "end_ms": 2620
+        },
+        {
+          "word": "than",
+          "start_ms": 2620,
+          "end_ms": 2980
+        },
+        {
+          "word": "Mapuche",
+          "start_ms": 2980,
+          "end_ms": 3400
+        },
+        {
+          "word": "warriors",
+          "start_ms": 3400,
+          "end_ms": 3820
+        },
+        {
+          "word": "could",
+          "start_ms": 3820,
+          "end_ms": 4080
+        },
+        {
+          "word": "respond.",
+          "start_ms": 4080,
+          "end_ms": 4820
+        }
+      ]
+    },
     "ch13-683": {
       "file": "audio/en/ch13-683.m4a",
       "duration_ms": 9680,
@@ -57418,6 +60514,83 @@
           "word": "territory.",
           "start_ms": 4580,
           "end_ms": 5280
+        }
+      ]
+    },
+    "ch13-693": {
+      "file": "audio/en/ch13-693.m4a",
+      "duration_ms": 5400,
+      "pause_after_ms": 800,
+      "words": [
+        {
+          "word": "The",
+          "start_ms": 60,
+          "end_ms": 100
+        },
+        {
+          "word": "repeating",
+          "start_ms": 100,
+          "end_ms": 440
+        },
+        {
+          "word": "rifle",
+          "start_ms": 440,
+          "end_ms": 780
+        },
+        {
+          "word": "eliminated",
+          "start_ms": 780,
+          "end_ms": 1340
+        },
+        {
+          "word": "the",
+          "start_ms": 1340,
+          "end_ms": 1620
+        },
+        {
+          "word": "tactical",
+          "start_ms": 1880,
+          "end_ms": 1980
+        },
+        {
+          "word": "viability",
+          "start_ms": 1980,
+          "end_ms": 2600
+        },
+        {
+          "word": "of",
+          "start_ms": 2600,
+          "end_ms": 2800
+        },
+        {
+          "word": "cavalry",
+          "start_ms": 2840,
+          "end_ms": 3180
+        },
+        {
+          "word": "charges",
+          "start_ms": 3180,
+          "end_ms": 3620
+        },
+        {
+          "word": "and",
+          "start_ms": 3620,
+          "end_ms": 3840
+        },
+        {
+          "word": "massed",
+          "start_ms": 3840,
+          "end_ms": 4260
+        },
+        {
+          "word": "infantry",
+          "start_ms": 4280,
+          "end_ms": 4640
+        },
+        {
+          "word": "assaults.",
+          "start_ms": 4640,
+          "end_ms": 5320
         }
       ]
     },
@@ -60497,6 +63670,118 @@
         }
       ]
     },
+    "ch13-732": {
+      "file": "audio/en/ch13-732.m4a",
+      "duration_ms": 8600,
+      "pause_after_ms": 800,
+      "words": [
+        {
+          "word": "And",
+          "start_ms": 80,
+          "end_ms": 180
+        },
+        {
+          "word": "the",
+          "start_ms": 180,
+          "end_ms": 260
+        },
+        {
+          "word": "conditions",
+          "start_ms": 260,
+          "end_ms": 640
+        },
+        {
+          "word": "that",
+          "start_ms": 640,
+          "end_ms": 960
+        },
+        {
+          "word": "had",
+          "start_ms": 1000,
+          "end_ms": 1100
+        },
+        {
+          "word": "sustained",
+          "start_ms": 1100,
+          "end_ms": 1540
+        },
+        {
+          "word": "Mapudungun",
+          "start_ms": 1540,
+          "end_ms": 2480
+        },
+        {
+          "word": "\u2014",
+          "start_ms": 2480,
+          "end_ms": 2660
+        },
+        {
+          "word": "territorial",
+          "start_ms": 2760,
+          "end_ms": 3140
+        },
+        {
+          "word": "sovereignty,",
+          "start_ms": 3140,
+          "end_ms": 4160
+        },
+        {
+          "word": "diplomatic",
+          "start_ms": 4160,
+          "end_ms": 4500
+        },
+        {
+          "word": "prestige,",
+          "start_ms": 4500,
+          "end_ms": 5340
+        },
+        {
+          "word": "practical",
+          "start_ms": 5340,
+          "end_ms": 5580
+        },
+        {
+          "word": "necessity",
+          "start_ms": 5620,
+          "end_ms": 6080
+        },
+        {
+          "word": "\u2014",
+          "start_ms": 6080,
+          "end_ms": 6560
+        },
+        {
+          "word": "were",
+          "start_ms": 6580,
+          "end_ms": 6680
+        },
+        {
+          "word": "eliminated",
+          "start_ms": 6680,
+          "end_ms": 7080
+        },
+        {
+          "word": "in",
+          "start_ms": 7080,
+          "end_ms": 7340
+        },
+        {
+          "word": "a",
+          "start_ms": 7340,
+          "end_ms": 7400
+        },
+        {
+          "word": "single",
+          "start_ms": 7400,
+          "end_ms": 7620
+        },
+        {
+          "word": "generation.",
+          "start_ms": 7620,
+          "end_ms": 8180
+        }
+      ]
+    },
     "ch13-733": {
       "file": "audio/en/ch13-733.m4a",
       "duration_ms": 2160,
@@ -63432,6 +66717,133 @@
         }
       ]
     },
+    "ch14-768": {
+      "file": "audio/en/ch14-768.m4a",
+      "duration_ms": 8160,
+      "pause_after_ms": 800,
+      "words": [
+        {
+          "word": "Land",
+          "start_ms": 100,
+          "end_ms": 380
+        },
+        {
+          "word": "purchase",
+          "start_ms": 380,
+          "end_ms": 780
+        },
+        {
+          "word": "programs",
+          "start_ms": 780,
+          "end_ms": 1360
+        },
+        {
+          "word": "began",
+          "start_ms": 1360,
+          "end_ms": 1680
+        },
+        {
+          "word": "transferring",
+          "start_ms": 1680,
+          "end_ms": 2220
+        },
+        {
+          "word": "some",
+          "start_ms": 2220,
+          "end_ms": 2520
+        },
+        {
+          "word": "properties",
+          "start_ms": 2520,
+          "end_ms": 2960
+        },
+        {
+          "word": "back",
+          "start_ms": 2960,
+          "end_ms": 3280
+        },
+        {
+          "word": "to",
+          "start_ms": 3280,
+          "end_ms": 3460
+        },
+        {
+          "word": "Mapuche",
+          "start_ms": 3460,
+          "end_ms": 3800
+        },
+        {
+          "word": "communities,",
+          "start_ms": 3800,
+          "end_ms": 4420
+        },
+        {
+          "word": "though",
+          "start_ms": 4960,
+          "end_ms": 5040
+        },
+        {
+          "word": "the",
+          "start_ms": 5040,
+          "end_ms": 5160
+        },
+        {
+          "word": "pace",
+          "start_ms": 5160,
+          "end_ms": 5340
+        },
+        {
+          "word": "has",
+          "start_ms": 5340,
+          "end_ms": 5540
+        },
+        {
+          "word": "been",
+          "start_ms": 5540,
+          "end_ms": 5680
+        },
+        {
+          "word": "slow",
+          "start_ms": 5680,
+          "end_ms": 6020
+        },
+        {
+          "word": "and",
+          "start_ms": 6020,
+          "end_ms": 6260
+        },
+        {
+          "word": "the",
+          "start_ms": 6260,
+          "end_ms": 6340
+        },
+        {
+          "word": "demand",
+          "start_ms": 6340,
+          "end_ms": 6620
+        },
+        {
+          "word": "far",
+          "start_ms": 6620,
+          "end_ms": 6960
+        },
+        {
+          "word": "exceeds",
+          "start_ms": 6960,
+          "end_ms": 7300
+        },
+        {
+          "word": "the",
+          "start_ms": 7300,
+          "end_ms": 7580
+        },
+        {
+          "word": "supply.",
+          "start_ms": 7580,
+          "end_ms": 8119
+        }
+      ]
+    },
     "ch14-769": {
       "file": "audio/en/ch14-769.m4a",
       "duration_ms": 3000,
@@ -63884,6 +67296,53 @@
           "word": "divisive.",
           "start_ms": 7280,
           "end_ms": 7820
+        }
+      ]
+    },
+    "ch14-774": {
+      "file": "audio/en/ch14-774.m4a",
+      "duration_ms": 4240,
+      "pause_after_ms": 500,
+      "words": [
+        {
+          "word": "In",
+          "start_ms": 120,
+          "end_ms": 140
+        },
+        {
+          "word": "2019,",
+          "start_ms": 140,
+          "end_ms": 1080
+        },
+        {
+          "word": "a",
+          "start_ms": 1480,
+          "end_ms": 1520
+        },
+        {
+          "word": "massive",
+          "start_ms": 1520,
+          "end_ms": 1940
+        },
+        {
+          "word": "social",
+          "start_ms": 1940,
+          "end_ms": 2420
+        },
+        {
+          "word": "uprising",
+          "start_ms": 2420,
+          "end_ms": 2900
+        },
+        {
+          "word": "swept",
+          "start_ms": 2900,
+          "end_ms": 3320
+        },
+        {
+          "word": "Chile.",
+          "start_ms": 3320,
+          "end_ms": 4000
         }
       ]
     },
@@ -65036,6 +68495,123 @@
           "word": "injustice.",
           "start_ms": 9660,
           "end_ms": 10240
+        }
+      ]
+    },
+    "ch14-786": {
+      "file": "audio/en/ch14-786.m4a",
+      "duration_ms": 8480,
+      "pause_after_ms": 800,
+      "words": [
+        {
+          "word": "The",
+          "start_ms": 100,
+          "end_ms": 120
+        },
+        {
+          "word": "Mapuche,",
+          "start_ms": 120,
+          "end_ms": 720
+        },
+        {
+          "word": "who",
+          "start_ms": 1240,
+          "end_ms": 1300
+        },
+        {
+          "word": "had",
+          "start_ms": 1300,
+          "end_ms": 1420
+        },
+        {
+          "word": "fought",
+          "start_ms": 1420,
+          "end_ms": 1600
+        },
+        {
+          "word": "Spain",
+          "start_ms": 1600,
+          "end_ms": 2040
+        },
+        {
+          "word": "and",
+          "start_ms": 2040,
+          "end_ms": 2340
+        },
+        {
+          "word": "Chile",
+          "start_ms": 2340,
+          "end_ms": 2640
+        },
+        {
+          "word": "for",
+          "start_ms": 2640,
+          "end_ms": 2900
+        },
+        {
+          "word": "centuries,",
+          "start_ms": 2900,
+          "end_ms": 3650
+        },
+        {
+          "word": "found",
+          "start_ms": 4300,
+          "end_ms": 4420
+        },
+        {
+          "word": "their",
+          "start_ms": 4420,
+          "end_ms": 4640
+        },
+        {
+          "word": "banner",
+          "start_ms": 4640,
+          "end_ms": 4980
+        },
+        {
+          "word": "carried",
+          "start_ms": 4980,
+          "end_ms": 5400
+        },
+        {
+          "word": "by",
+          "start_ms": 5400,
+          "end_ms": 5600
+        },
+        {
+          "word": "the",
+          "start_ms": 5600,
+          "end_ms": 5720
+        },
+        {
+          "word": "very",
+          "start_ms": 5720,
+          "end_ms": 5960
+        },
+        {
+          "word": "society",
+          "start_ms": 5960,
+          "end_ms": 6580
+        },
+        {
+          "word": "that",
+          "start_ms": 6580,
+          "end_ms": 6900
+        },
+        {
+          "word": "had",
+          "start_ms": 6900,
+          "end_ms": 7100
+        },
+        {
+          "word": "dispossessed",
+          "start_ms": 7100,
+          "end_ms": 7780
+        },
+        {
+          "word": "them.",
+          "start_ms": 7780,
+          "end_ms": 7880
         }
       ]
     },
@@ -69281,6 +72857,118 @@
           "word": "intact.",
           "start_ms": 6120,
           "end_ms": 6920
+        }
+      ]
+    },
+    "ch15-832": {
+      "file": "audio/en/ch15-832.m4a",
+      "duration_ms": 8680,
+      "pause_after_ms": 500,
+      "words": [
+        {
+          "word": "The",
+          "start_ms": 80,
+          "end_ms": 120
+        },
+        {
+          "word": "Mapuche",
+          "start_ms": 120,
+          "end_ms": 460
+        },
+        {
+          "word": "traded",
+          "start_ms": 460,
+          "end_ms": 960
+        },
+        {
+          "word": "with",
+          "start_ms": 960,
+          "end_ms": 1200
+        },
+        {
+          "word": "the",
+          "start_ms": 1200,
+          "end_ms": 1380
+        },
+        {
+          "word": "new",
+          "start_ms": 1380,
+          "end_ms": 1620
+        },
+        {
+          "word": "Chilean",
+          "start_ms": 1620,
+          "end_ms": 2160
+        },
+        {
+          "word": "state,",
+          "start_ms": 2160,
+          "end_ms": 2960
+        },
+        {
+          "word": "maintained",
+          "start_ms": 3080,
+          "end_ms": 3460
+        },
+        {
+          "word": "diplomatic",
+          "start_ms": 3460,
+          "end_ms": 4000
+        },
+        {
+          "word": "relations,",
+          "start_ms": 4000,
+          "end_ms": 4940
+        },
+        {
+          "word": "and",
+          "start_ms": 5200,
+          "end_ms": 5300
+        },
+        {
+          "word": "continued",
+          "start_ms": 5300,
+          "end_ms": 5760
+        },
+        {
+          "word": "to",
+          "start_ms": 5760,
+          "end_ms": 5980
+        },
+        {
+          "word": "govern",
+          "start_ms": 5980,
+          "end_ms": 6240
+        },
+        {
+          "word": "themselves",
+          "start_ms": 6240,
+          "end_ms": 6700
+        },
+        {
+          "word": "as",
+          "start_ms": 6700,
+          "end_ms": 7080
+        },
+        {
+          "word": "they",
+          "start_ms": 7080,
+          "end_ms": 7260
+        },
+        {
+          "word": "had",
+          "start_ms": 7260,
+          "end_ms": 7420
+        },
+        {
+          "word": "for",
+          "start_ms": 7420,
+          "end_ms": 7600
+        },
+        {
+          "word": "centuries.",
+          "start_ms": 7600,
+          "end_ms": 8250
         }
       ]
     },
@@ -75036,6 +78724,88 @@
         }
       ]
     },
+    "ch15-889": {
+      "file": "audio/en/ch15-889.m4a",
+      "duration_ms": 7080,
+      "pause_after_ms": 500,
+      "words": [
+        {
+          "word": "Ayllarewe",
+          "start_ms": 180,
+          "end_ms": 640
+        },
+        {
+          "word": "\u2014",
+          "start_ms": 640,
+          "end_ms": 960
+        },
+        {
+          "word": "A",
+          "start_ms": 960,
+          "end_ms": 1240
+        },
+        {
+          "word": "confederation",
+          "start_ms": 1300,
+          "end_ms": 1880
+        },
+        {
+          "word": "of",
+          "start_ms": 1880,
+          "end_ms": 2100
+        },
+        {
+          "word": "nine",
+          "start_ms": 2100,
+          "end_ms": 2440
+        },
+        {
+          "word": "rewe,",
+          "start_ms": 2440,
+          "end_ms": 3040
+        },
+        {
+          "word": "the",
+          "start_ms": 3440,
+          "end_ms": 3540
+        },
+        {
+          "word": "largest",
+          "start_ms": 3540,
+          "end_ms": 3920
+        },
+        {
+          "word": "peacetime",
+          "start_ms": 3920,
+          "end_ms": 4560
+        },
+        {
+          "word": "political",
+          "start_ms": 4560,
+          "end_ms": 4900
+        },
+        {
+          "word": "unit",
+          "start_ms": 4900,
+          "end_ms": 5320
+        },
+        {
+          "word": "in",
+          "start_ms": 5320,
+          "end_ms": 5560
+        },
+        {
+          "word": "Mapuche",
+          "start_ms": 5560,
+          "end_ms": 5920
+        },
+        {
+          "word": "society.",
+          "start_ms": 5920,
+          "end_ms": 6520
+        }
+      ]
+    },
     "ch15-890": {
       "file": "audio/en/ch15-890.m4a",
       "duration_ms": 4000,
@@ -75207,6 +78977,123 @@
         }
       ]
     },
+    "ch15-893": {
+      "file": "audio/en/ch15-893.m4a",
+      "duration_ms": 9320,
+      "pause_after_ms": 500,
+      "words": [
+        {
+          "word": "Arauco",
+          "start_ms": 340,
+          "end_ms": 680
+        },
+        {
+          "word": "War.",
+          "start_ms": 680,
+          "end_ms": 1180
+        },
+        {
+          "word": "The",
+          "start_ms": 1900,
+          "end_ms": 1900
+        },
+        {
+          "word": "prolonged",
+          "start_ms": 1900,
+          "end_ms": 2320
+        },
+        {
+          "word": "military",
+          "start_ms": 2320,
+          "end_ms": 2940
+        },
+        {
+          "word": "conflict",
+          "start_ms": 2940,
+          "end_ms": 3620
+        },
+        {
+          "word": "between",
+          "start_ms": 3620,
+          "end_ms": 4040
+        },
+        {
+          "word": "the",
+          "start_ms": 4040,
+          "end_ms": 4200
+        },
+        {
+          "word": "Mapuche",
+          "start_ms": 4200,
+          "end_ms": 4560
+        },
+        {
+          "word": "people",
+          "start_ms": 4560,
+          "end_ms": 4860
+        },
+        {
+          "word": "and",
+          "start_ms": 4860,
+          "end_ms": 5040
+        },
+        {
+          "word": "Spain.",
+          "start_ms": 5040,
+          "end_ms": 5580
+        },
+        {
+          "word": "It",
+          "start_ms": 6000,
+          "end_ms": 6040
+        },
+        {
+          "word": "lasted",
+          "start_ms": 6040,
+          "end_ms": 6320
+        },
+        {
+          "word": "from",
+          "start_ms": 6320,
+          "end_ms": 6660
+        },
+        {
+          "word": "the",
+          "start_ms": 6660,
+          "end_ms": 6780
+        },
+        {
+          "word": "fifteen",
+          "start_ms": 6780,
+          "end_ms": 7080
+        },
+        {
+          "word": "fifties",
+          "start_ms": 7080,
+          "end_ms": 7700
+        },
+        {
+          "word": "to",
+          "start_ms": 7700,
+          "end_ms": 7840
+        },
+        {
+          "word": "the",
+          "start_ms": 7840,
+          "end_ms": 7960
+        },
+        {
+          "word": "eighteen",
+          "start_ms": 7960,
+          "end_ms": 8220
+        },
+        {
+          "word": "twenties.",
+          "start_ms": 8220,
+          "end_ms": 8760
+        }
+      ]
+    },
     "ch15-894": {
       "file": "audio/en/ch15-894.m4a",
       "duration_ms": 3180,
@@ -75283,6 +79170,113 @@
           "word": "historian.",
           "start_ms": 2280,
           "end_ms": 2920
+        }
+      ]
+    },
+    "ch15-896": {
+      "file": "audio/en/ch15-896.m4a",
+      "duration_ms": 12520,
+      "pause_after_ms": 500,
+      "words": [
+        {
+          "word": "Author",
+          "start_ms": 300,
+          "end_ms": 400
+        },
+        {
+          "word": "of",
+          "start_ms": 400,
+          "end_ms": 700
+        },
+        {
+          "word": "Historia",
+          "start_ms": 700,
+          "end_ms": 1260
+        },
+        {
+          "word": "del",
+          "start_ms": 1260,
+          "end_ms": 1460
+        },
+        {
+          "word": "pueblo",
+          "start_ms": 1460,
+          "end_ms": 1800
+        },
+        {
+          "word": "mapuche",
+          "start_ms": 1800,
+          "end_ms": 2520
+        },
+        {
+          "word": "(siglo",
+          "start_ms": 2520,
+          "end_ms": 3140
+        },
+        {
+          "word": "XIX",
+          "start_ms": 3140,
+          "end_ms": 3540
+        },
+        {
+          "word": "y",
+          "start_ms": 3540,
+          "end_ms": 3940
+        },
+        {
+          "word": "XX)",
+          "start_ms": 3940,
+          "end_ms": 5640
+        },
+        {
+          "word": "(1985/2000)",
+          "start_ms": 5640,
+          "end_ms": 6640
+        },
+        {
+          "word": "and",
+          "start_ms": 8380,
+          "end_ms": 8480
+        },
+        {
+          "word": "Historia",
+          "start_ms": 8480,
+          "end_ms": 9000
+        },
+        {
+          "word": "de",
+          "start_ms": 9000,
+          "end_ms": 9140
+        },
+        {
+          "word": "los",
+          "start_ms": 9140,
+          "end_ms": 9240
+        },
+        {
+          "word": "antiguos",
+          "start_ms": 9240,
+          "end_ms": 9860
+        },
+        {
+          "word": "mapuches",
+          "start_ms": 9860,
+          "end_ms": 10380
+        },
+        {
+          "word": "del",
+          "start_ms": 10380,
+          "end_ms": 10600
+        },
+        {
+          "word": "sur",
+          "start_ms": 10600,
+          "end_ms": 10900
+        },
+        {
+          "word": "(2008).",
+          "start_ms": 10900,
+          "end_ms": 11650
         }
       ]
     },
@@ -75676,6 +79670,230 @@
         }
       ]
     },
+    "ch15-902": {
+      "file": "audio/en/ch15-902.m4a",
+      "duration_ms": 6560,
+      "pause_after_ms": 800,
+      "words": [
+        {
+          "word": "Chile's",
+          "start_ms": 160,
+          "end_ms": 460
+        },
+        {
+          "word": "National",
+          "start_ms": 460,
+          "end_ms": 860
+        },
+        {
+          "word": "Corporation",
+          "start_ms": 860,
+          "end_ms": 1300
+        },
+        {
+          "word": "for",
+          "start_ms": 1640,
+          "end_ms": 1740
+        },
+        {
+          "word": "Indigenous",
+          "start_ms": 1740,
+          "end_ms": 2080
+        },
+        {
+          "word": "Development,",
+          "start_ms": 2080,
+          "end_ms": 2860
+        },
+        {
+          "word": "created",
+          "start_ms": 3520,
+          "end_ms": 3720
+        },
+        {
+          "word": "by",
+          "start_ms": 3720,
+          "end_ms": 3920
+        },
+        {
+          "word": "the",
+          "start_ms": 3920,
+          "end_ms": 4019
+        },
+        {
+          "word": "1993",
+          "start_ms": 4019,
+          "end_ms": 4880
+        },
+        {
+          "word": "Indigenous",
+          "start_ms": 4880,
+          "end_ms": 5460
+        },
+        {
+          "word": "Law.",
+          "start_ms": 5460,
+          "end_ms": 6060
+        }
+      ]
+    },
+    "ch15-903": {
+      "file": "audio/en/ch15-903.m4a",
+      "duration_ms": 11800,
+      "pause_after_ms": 800,
+      "words": [
+        {
+          "word": "Curalaba,",
+          "start_ms": 0,
+          "end_ms": 100
+        },
+        {
+          "word": "Battle",
+          "start_ms": 880,
+          "end_ms": 1060
+        },
+        {
+          "word": "of",
+          "start_ms": 1060,
+          "end_ms": 1220
+        },
+        {
+          "word": "(1598)",
+          "start_ms": 1220,
+          "end_ms": 1670
+        },
+        {
+          "word": "\u2014",
+          "start_ms": 2800,
+          "end_ms": 2800
+        },
+        {
+          "word": "The",
+          "start_ms": 2800,
+          "end_ms": 2880
+        },
+        {
+          "word": "battle",
+          "start_ms": 2880,
+          "end_ms": 3160
+        },
+        {
+          "word": "in",
+          "start_ms": 3160,
+          "end_ms": 3320
+        },
+        {
+          "word": "which",
+          "start_ms": 3320,
+          "end_ms": 3500
+        },
+        {
+          "word": "toqui",
+          "start_ms": 3500,
+          "end_ms": 3920
+        },
+        {
+          "word": "Pelantaru",
+          "start_ms": 3920,
+          "end_ms": 4580
+        },
+        {
+          "word": "destroyed",
+          "start_ms": 4580,
+          "end_ms": 4960
+        },
+        {
+          "word": "a",
+          "start_ms": 4960,
+          "end_ms": 5180
+        },
+        {
+          "word": "Spanish",
+          "start_ms": 5180,
+          "end_ms": 5480
+        },
+        {
+          "word": "column",
+          "start_ms": 5480,
+          "end_ms": 5820
+        },
+        {
+          "word": "and",
+          "start_ms": 5820,
+          "end_ms": 6140
+        },
+        {
+          "word": "killed",
+          "start_ms": 6140,
+          "end_ms": 6400
+        },
+        {
+          "word": "Governor",
+          "start_ms": 6400,
+          "end_ms": 6840
+        },
+        {
+          "word": "Mart\u00edn",
+          "start_ms": 6840,
+          "end_ms": 7220
+        },
+        {
+          "word": "Garc\u00eda",
+          "start_ms": 7220,
+          "end_ms": 7620
+        },
+        {
+          "word": "\u00d3\u00f1ez",
+          "start_ms": 7620,
+          "end_ms": 8180
+        },
+        {
+          "word": "de",
+          "start_ms": 8180,
+          "end_ms": 8320
+        },
+        {
+          "word": "Loyola,",
+          "start_ms": 8320,
+          "end_ms": 9270
+        },
+        {
+          "word": "triggering",
+          "start_ms": 9300,
+          "end_ms": 9500
+        },
+        {
+          "word": "the",
+          "start_ms": 9500,
+          "end_ms": 9760
+        },
+        {
+          "word": "Destruction",
+          "start_ms": 9760,
+          "end_ms": 10240
+        },
+        {
+          "word": "of",
+          "start_ms": 10240,
+          "end_ms": 10400
+        },
+        {
+          "word": "the",
+          "start_ms": 10400,
+          "end_ms": 10520
+        },
+        {
+          "word": "Seven",
+          "start_ms": 10520,
+          "end_ms": 10740
+        },
+        {
+          "word": "Cities.",
+          "start_ms": 10740,
+          "end_ms": 11060
+        }
+      ]
+    },
     "ch15-904": {
       "file": "audio/en/ch15-904.m4a",
       "duration_ms": 5280,
@@ -75725,6 +79943,68 @@
           "word": "University.",
           "start_ms": 4200,
           "end_ms": 4980
+        }
+      ]
+    },
+    "ch15-905": {
+      "file": "audio/en/ch15-905.m4a",
+      "duration_ms": 5300,
+      "pause_after_ms": 800,
+      "words": [
+        {
+          "word": "Leading",
+          "start_ms": 120,
+          "end_ms": 340
+        },
+        {
+          "word": "English-language",
+          "start_ms": 340,
+          "end_ms": 1220
+        },
+        {
+          "word": "scholar",
+          "start_ms": 1220,
+          "end_ms": 1620
+        },
+        {
+          "word": "of",
+          "start_ms": 1620,
+          "end_ms": 1840
+        },
+        {
+          "word": "Mapuche",
+          "start_ms": 1840,
+          "end_ms": 2240
+        },
+        {
+          "word": "political",
+          "start_ms": 2240,
+          "end_ms": 2720
+        },
+        {
+          "word": "organization",
+          "start_ms": 2740,
+          "end_ms": 3560
+        },
+        {
+          "word": "and",
+          "start_ms": 3600,
+          "end_ms": 4120
+        },
+        {
+          "word": "the",
+          "start_ms": 4120,
+          "end_ms": 4300
+        },
+        {
+          "word": "parlamento",
+          "start_ms": 4300,
+          "end_ms": 4820
+        },
+        {
+          "word": "system.",
+          "start_ms": 4820,
+          "end_ms": 5080
         }
       ]
     },
@@ -77782,6 +82062,108 @@
         }
       ]
     },
+    "ch15-933": {
+      "file": "audio/en/ch15-933.m4a",
+      "duration_ms": 8600,
+      "pause_after_ms": 800,
+      "words": [
+        {
+          "word": "Pelantaru",
+          "start_ms": 120,
+          "end_ms": 580
+        },
+        {
+          "word": "\u2014",
+          "start_ms": 580,
+          "end_ms": 1120
+        },
+        {
+          "word": "Mapuche",
+          "start_ms": 1260,
+          "end_ms": 1660
+        },
+        {
+          "word": "toqui",
+          "start_ms": 1660,
+          "end_ms": 2100
+        },
+        {
+          "word": "who",
+          "start_ms": 2100,
+          "end_ms": 2380
+        },
+        {
+          "word": "led",
+          "start_ms": 2380,
+          "end_ms": 2540
+        },
+        {
+          "word": "the",
+          "start_ms": 2540,
+          "end_ms": 2700
+        },
+        {
+          "word": "uprising",
+          "start_ms": 2700,
+          "end_ms": 3060
+        },
+        {
+          "word": "of",
+          "start_ms": 3060,
+          "end_ms": 3320
+        },
+        {
+          "word": "1598,",
+          "start_ms": 3320,
+          "end_ms": 4320
+        },
+        {
+          "word": "destroying",
+          "start_ms": 4740,
+          "end_ms": 5100
+        },
+        {
+          "word": "the",
+          "start_ms": 5100,
+          "end_ms": 5280
+        },
+        {
+          "word": "Seven",
+          "start_ms": 5280,
+          "end_ms": 5500
+        },
+        {
+          "word": "Cities",
+          "start_ms": 5760,
+          "end_ms": 5860
+        },
+        {
+          "word": "and",
+          "start_ms": 5860,
+          "end_ms": 6140
+        },
+        {
+          "word": "establishing",
+          "start_ms": 6140,
+          "end_ms": 6620
+        },
+        {
+          "word": "the",
+          "start_ms": 6620,
+          "end_ms": 6920
+        },
+        {
+          "word": "B\u00edo-B\u00edo",
+          "start_ms": 6920,
+          "end_ms": 7500
+        },
+        {
+          "word": "frontier.",
+          "start_ms": 7500,
+          "end_ms": 8140
+        }
+      ]
+    },
     "ch15-934": {
       "file": "audio/en/ch15-934.m4a",
       "duration_ms": 6760,
@@ -79328,6 +83710,88 @@
         }
       ]
     },
+    "ch15-952": {
+      "file": "audio/en/ch15-952.m4a",
+      "duration_ms": 6760,
+      "pause_after_ms": 500,
+      "words": [
+        {
+          "word": "Wenufoye",
+          "start_ms": 550,
+          "end_ms": 1400
+        },
+        {
+          "word": "\u2014",
+          "start_ms": 1400,
+          "end_ms": 1440
+        },
+        {
+          "word": "The",
+          "start_ms": 1440,
+          "end_ms": 1520
+        },
+        {
+          "word": "Mapuche",
+          "start_ms": 1520,
+          "end_ms": 1920
+        },
+        {
+          "word": "flag,",
+          "start_ms": 1920,
+          "end_ms": 2280
+        },
+        {
+          "word": "created",
+          "start_ms": 3000,
+          "end_ms": 3080
+        },
+        {
+          "word": "in",
+          "start_ms": 3080,
+          "end_ms": 3300
+        },
+        {
+          "word": "1992",
+          "start_ms": 3300,
+          "end_ms": 3940
+        },
+        {
+          "word": "by",
+          "start_ms": 3940,
+          "end_ms": 4440
+        },
+        {
+          "word": "the",
+          "start_ms": 4440,
+          "end_ms": 4580
+        },
+        {
+          "word": "Consejo",
+          "start_ms": 4580,
+          "end_ms": 5100
+        },
+        {
+          "word": "de",
+          "start_ms": 5100,
+          "end_ms": 5260
+        },
+        {
+          "word": "Todas",
+          "start_ms": 5260,
+          "end_ms": 5600
+        },
+        {
+          "word": "las",
+          "start_ms": 5600,
+          "end_ms": 5800
+        },
+        {
+          "word": "Tierras.",
+          "start_ms": 5800,
+          "end_ms": 6580
+        }
+      ]
+    },
     "ch15-953": {
       "file": "audio/en/ch15-953.m4a",
       "duration_ms": 3100,
@@ -80291,6 +84755,203 @@
           "word": "system.",
           "start_ms": 19840,
           "end_ms": 20420
+        }
+      ]
+    },
+    "ch15-966": {
+      "file": "audio/en/ch15-966.m4a",
+      "duration_ms": 14160,
+      "pause_after_ms": 800,
+      "words": [
+        {
+          "word": "Ercilla,",
+          "start_ms": 350,
+          "end_ms": 900
+        },
+        {
+          "word": "Alonso",
+          "start_ms": 980,
+          "end_ms": 1260
+        },
+        {
+          "word": "de.",
+          "start_ms": 1260,
+          "end_ms": 1780
+        },
+        {
+          "word": "La",
+          "start_ms": 1820,
+          "end_ms": 1860
+        },
+        {
+          "word": "Araucana.",
+          "start_ms": 1860,
+          "end_ms": 2540
+        },
+        {
+          "word": "1569/1578/1589.",
+          "start_ms": 4950,
+          "end_ms": 5700
+        },
+        {
+          "word": "\u2014",
+          "start_ms": 5880,
+          "end_ms": 5880
+        },
+        {
+          "word": "The",
+          "start_ms": 5880,
+          "end_ms": 5940
+        },
+        {
+          "word": "Spanish",
+          "start_ms": 5940,
+          "end_ms": 6200
+        },
+        {
+          "word": "epic",
+          "start_ms": 6200,
+          "end_ms": 6500
+        },
+        {
+          "word": "poem",
+          "start_ms": 6500,
+          "end_ms": 6820
+        },
+        {
+          "word": "about",
+          "start_ms": 6820,
+          "end_ms": 7060
+        },
+        {
+          "word": "the",
+          "start_ms": 7060,
+          "end_ms": 7220
+        },
+        {
+          "word": "Arauco",
+          "start_ms": 7220,
+          "end_ms": 7620
+        },
+        {
+          "word": "War,",
+          "start_ms": 7620,
+          "end_ms": 8119
+        },
+        {
+          "word": "written",
+          "start_ms": 8119,
+          "end_ms": 8240
+        },
+        {
+          "word": "by",
+          "start_ms": 8240,
+          "end_ms": 8400
+        },
+        {
+          "word": "a",
+          "start_ms": 8400,
+          "end_ms": 8500
+        },
+        {
+          "word": "soldier",
+          "start_ms": 8500,
+          "end_ms": 8780
+        },
+        {
+          "word": "who",
+          "start_ms": 8780,
+          "end_ms": 8980
+        },
+        {
+          "word": "fought",
+          "start_ms": 8980,
+          "end_ms": 9180
+        },
+        {
+          "word": "in",
+          "start_ms": 9180,
+          "end_ms": 9360
+        },
+        {
+          "word": "it.",
+          "start_ms": 9360,
+          "end_ms": 9480
+        },
+        {
+          "word": "Available",
+          "start_ms": 9780,
+          "end_ms": 10000
+        },
+        {
+          "word": "in",
+          "start_ms": 10000,
+          "end_ms": 10200
+        },
+        {
+          "word": "English",
+          "start_ms": 10200,
+          "end_ms": 10460
+        },
+        {
+          "word": "translation,",
+          "start_ms": 10460,
+          "end_ms": 11110
+        },
+        {
+          "word": "though",
+          "start_ms": 11380,
+          "end_ms": 11460
+        },
+        {
+          "word": "much",
+          "start_ms": 11460,
+          "end_ms": 11660
+        },
+        {
+          "word": "of",
+          "start_ms": 11660,
+          "end_ms": 11760
+        },
+        {
+          "word": "the",
+          "start_ms": 11760,
+          "end_ms": 11840
+        },
+        {
+          "word": "poetry's",
+          "start_ms": 11840,
+          "end_ms": 12280
+        },
+        {
+          "word": "power",
+          "start_ms": 12320,
+          "end_ms": 12560
+        },
+        {
+          "word": "is",
+          "start_ms": 12560,
+          "end_ms": 12760
+        },
+        {
+          "word": "in",
+          "start_ms": 12760,
+          "end_ms": 12840
+        },
+        {
+          "word": "the",
+          "start_ms": 12840,
+          "end_ms": 12920
+        },
+        {
+          "word": "original",
+          "start_ms": 12920,
+          "end_ms": 13200
+        },
+        {
+          "word": "Spanish.",
+          "start_ms": 13200,
+          "end_ms": 13700
         }
       ]
     },
