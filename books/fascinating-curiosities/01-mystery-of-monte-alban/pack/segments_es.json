@@ -69,8 +69,8 @@
       "sentence_index": 0,
       "block_type": "text",
       "title": "Nota para el lector",
-      "text": "Hace unos 2.500 años, unas personas en el sur de México aplanaron la cima de una montaña y construyeron una ciudad sobre ella.",
-      "text_markdown": "Hace unos 2.500 años, unas personas en el sur de México aplanaron la cima de una montaña y construyeron una ciudad sobre ella.",
+      "text": "Hace unos dos mil quinientos años, unas personas en el sur de México aplanaron la cima de una montaña y construyeron una ciudad sobre ella.",
+      "text_markdown": "Hace unos dos mil quinientos años, unas personas en el sur de México aplanaron la cima de una montaña y construyeron una ciudad sobre ella.",
       "tts": {
         "text": "Hace unos dos mil quinientos años, unas personas en el sur de México aplanaron la cima de una montaña y construyeron una ciudad sobre ella.",
         "pause_after_ms": 500
@@ -303,8 +303,8 @@
       "sentence_index": 0,
       "block_type": "text",
       "title": "Capítulo 1 — La vista desde arriba",
-      "text": "Imagina que estás de pie en el punto más alto de una montaña en el sur de México, a 400 metros sobre el fondo del valle.",
-      "text_markdown": "Imagina que estás de pie en el punto más alto de una montaña en el sur de México, a 400 metros sobre el fondo del valle.",
+      "text": "Imagina que estás de pie en el punto más alto de una montaña en el sur de México, a cuatrocientos metros sobre el fondo del valle.",
+      "text_markdown": "Imagina que estás de pie en el punto más alto de una montaña en el sur de México, a cuatrocientos metros sobre el fondo del valle.",
       "tts": {
         "text": "Imagina que estás de pie en el punto más alto de una montaña en el sur de México, a cuatrocientos metros sobre el fondo del valle.",
         "pause_after_ms": 500
@@ -408,8 +408,8 @@
       "sentence_index": 0,
       "block_type": "text",
       "title": "Capítulo 1 — La vista desde arriba",
-      "text": "Y sin embargo alguien, hace aproximadamente 2.500 años, miró esta cima y decidió nivelarla.",
-      "text_markdown": "Y sin embargo alguien, hace aproximadamente 2.500 años, miró esta cima y decidió nivelarla.",
+      "text": "Y sin embargo alguien, hace aproximadamente dos mil quinientos años, miró esta cima y decidió nivelarla.",
+      "text_markdown": "Y sin embargo alguien, hace aproximadamente dos mil quinientos años, miró esta cima y decidió nivelarla.",
       "tts": {
         "text": "Y sin embargo alguien, hace aproximadamente dos mil quinientos años, miró esta cima y decidió nivelarla.",
         "pause_after_ms": 800
@@ -438,8 +438,8 @@
       "sentence_index": 1,
       "block_type": "text",
       "title": "Capítulo 1 — La vista desde arriba",
-      "text": "Tallaron terrazas en las laderas — más de 2.100, descendiendo por las faldas de la montaña como una escalera gigante.",
-      "text_markdown": "Tallaron terrazas en las laderas — más de 2.100, descendiendo por las faldas de la montaña como una escalera gigante.",
+      "text": "Tallaron terrazas en las laderas — más de dos mil cien, descendiendo por las faldas de la montaña como una escalera gigante.",
+      "text_markdown": "Tallaron terrazas en las laderas — más de dos mil cien, descendiendo por las faldas de la montaña como una escalera gigante.",
       "tts": {
         "text": "Tallaron terrazas en las laderas — más de dos mil cien, descendiendo por las faldas de la montaña como una escalera gigante.",
         "pause_after_ms": 500
@@ -453,8 +453,8 @@
       "sentence_index": 2,
       "block_type": "text",
       "title": "Capítulo 1 — La vista desde arriba",
-      "text": "En la cumbre, crearon una meseta plana de aproximadamente 300 metros de largo y 200 metros de ancho.",
-      "text_markdown": "En la cumbre, crearon una meseta plana de aproximadamente 300 metros de largo y 200 metros de ancho.",
+      "text": "En la cumbre, crearon una meseta plana de aproximadamente trescientos metros de largo y doscientos metros de ancho.",
+      "text_markdown": "En la cumbre, crearon una meseta plana de aproximadamente trescientos metros de largo y doscientos metros de ancho.",
       "tts": {
         "text": "En la cumbre, crearon una meseta plana de aproximadamente trescientos metros de largo y doscientos metros de ancho.",
         "pause_after_ms": 500
@@ -648,8 +648,8 @@
       "sentence_index": 2,
       "block_type": "text",
       "title": "Capítulo 1 — La vista desde arriba",
-      "text": "Oaxaca se encuentra a unos 17 grados de latitud norte, lo que significa que dos veces al año — en mayo y agosto — el sol pasa directamente sobre la vertical al mediodía, sin proyectar ninguna sombra.",
-      "text_markdown": "Oaxaca se encuentra a unos 17 grados de latitud norte, lo que significa que dos veces al año — en mayo y agosto — el sol pasa directamente sobre la vertical al mediodía, sin proyectar ninguna sombra.",
+      "text": "Oaxaca se encuentra a unos diecisiete grados de latitud norte, lo que significa que dos veces al año — en mayo y agosto — el sol pasa directamente sobre la vertical al mediodía, sin proyectar ninguna sombra.",
+      "text_markdown": "Oaxaca se encuentra a unos diecisiete grados de latitud norte, lo que significa que dos veces al año — en mayo y agosto — el sol pasa directamente sobre la vertical al mediodía, sin proyectar ninguna sombra.",
       "tts": {
         "text": "Oahaca se encuentra a unos diecisiete grados de latitud norte, lo que significa que dos veces al año — en mayo y agosto — el sol pasa directamente sobre la vertical al mediodía, sin proyectar ninguna sombra.",
         "pause_after_ms": 500
@@ -783,8 +783,8 @@
       "sentence_index": 1,
       "block_type": "text",
       "title": "Capítulo 1 — La vista desde arriba",
-      "text": "Se encuentra en el estado de Oaxaca, en las tierras altas del sur de México, a unos 350 kilómetros al sureste de la Ciudad de México.",
-      "text_markdown": "Se encuentra en el estado de Oaxaca, en las tierras altas del sur de México, a unos 350 kilómetros al sureste de la Ciudad de México.",
+      "text": "Se encuentra en el estado de Oaxaca, en las tierras altas del sur de México, a unos trescientos cincuenta kilómetros al sureste de la Ciudad de México.",
+      "text_markdown": "Se encuentra en el estado de Oaxaca, en las tierras altas del sur de México, a unos trescientos cincuenta kilómetros al sureste de la Ciudad de México.",
       "tts": {
         "text": "Se encuentra en el estado de Oahaca, en las tierras altas del sur de México, a unos trescientos cincuenta kilómetros al sureste de la Ciudad de México.",
         "pause_after_ms": 800
@@ -1142,8 +1142,8 @@
       "sentence_index": 1,
       "block_type": "text",
       "title": "Capítulo 2 — Antes de la montaña",
-      "text": "El fondo del valle se encuentra a unos 1.500 metros sobre el nivel del mar, rodeado de montañas por todos lados.",
-      "text_markdown": "El fondo del valle se encuentra a unos 1.500 metros sobre el nivel del mar, rodeado de montañas por todos lados.",
+      "text": "El fondo del valle se encuentra a unos mil quinientos metros sobre el nivel del mar, rodeado de montañas por todos lados.",
+      "text_markdown": "El fondo del valle se encuentra a unos mil quinientos metros sobre el nivel del mar, rodeado de montañas por todos lados.",
       "tts": {
         "text": "El fondo del valle se encuentra a unos mil quinientos metros sobre el nivel del mar, rodeado de montañas por todos lados.",
         "pause_after_ms": 500
@@ -1247,8 +1247,8 @@
       "sentence_index": 0,
       "block_type": "text",
       "title": "Capítulo 2 — Antes de la montaña",
-      "text": "Hacia 1500 a.e.c. — unos mil años antes de la fundación de Monte Albán — el asentamiento más grande del valle era un lugar llamado San José Mogote, en el brazo de Etla.",
-      "text_markdown": "Hacia 1500 a.e.c. — unos mil años antes de la fundación de Monte Albán — el asentamiento más grande del valle era un lugar llamado San José Mogote, en el brazo de Etla.",
+      "text": "Hacia mil quinientos a.e.c. — unos mil años antes de la fundación de Monte Albán — el asentamiento más grande del valle era un lugar llamado San José Mogote, en el brazo de Etla.",
+      "text_markdown": "Hacia mil quinientos a.e.c. — unos mil años antes de la fundación de Monte Albán — el asentamiento más grande del valle era un lugar llamado San José Mogote, en el brazo de Etla.",
       "tts": {
         "text": "Hacia mil quinientos antes de la era común — unos mil años antes de la fundación de Monte Albán — el asentamiento más grande del valle era un lugar llamado San José Mogote, en el brazo de Etla.",
         "pause_after_ms": 500
@@ -1277,8 +1277,8 @@
       "sentence_index": 2,
       "block_type": "text",
       "title": "Capítulo 2 — Antes de la montaña",
-      "text": "Era un conjunto de aldeas y caseríos repartidos en unas 70 hectáreas, con una población que pudo haber alcanzado las 1.000 personas en su apogeo.",
-      "text_markdown": "Era un conjunto de aldeas y caseríos repartidos en unas 70 hectáreas, con una población que pudo haber alcanzado las 1.000 personas en su apogeo.",
+      "text": "Era un conjunto de aldeas y caseríos repartidos en unas setenta hectáreas, con una población que pudo haber alcanzado las mil personas en su apogeo.",
+      "text_markdown": "Era un conjunto de aldeas y caseríos repartidos en unas setenta hectáreas, con una población que pudo haber alcanzado las mil personas en su apogeo.",
       "tts": {
         "text": "Era un conjunto de aldeas y caseríos repartidos en unas setenta hectáreas, con una población que pudo haber alcanzado las mil personas en su apogeo.",
         "pause_after_ms": 500
@@ -1579,8 +1579,8 @@
       "sentence_index": 0,
       "block_type": "text",
       "title": "Capítulo 2 — Antes de la montaña",
-      "text": "En 1975, la arqueóloga Joyce Marcus y su colega Kent Flannery estaban excavando en San José Mogote cuando descubrieron una losa de piedra tallada empotrada en el umbral de una puerta.",
-      "text_markdown": "En 1975, la arqueóloga Joyce Marcus y su colega Kent Flannery estaban excavando en San José Mogote cuando descubrieron una losa de piedra tallada empotrada en el umbral de una puerta.",
+      "text": "En mil novecientos setenta y cinco, la arqueóloga Joyce Marcus y su colega Kent Flannery estaban excavando en San José Mogote cuando descubrieron una losa de piedra tallada empotrada en el umbral de una puerta.",
+      "text_markdown": "En mil novecientos setenta y cinco, la arqueóloga Joyce Marcus y su colega Kent Flannery estaban excavando en San José Mogote cuando descubrieron una losa de piedra tallada empotrada en el umbral de una puerta.",
       "tts": {
         "text": "En mil novecientos setenta y cinco, la arqueóloga Joyce Marcus y su colega Kent Flannery estaban excavando en San José Mogote cuando descubrieron una losa de piedra tallada empotrada en el umbral de una puerta.",
         "pause_after_ms": 500
@@ -1716,8 +1716,8 @@
       "sentence_index": 0,
       "block_type": "text",
       "title": "Capítulo 2 — Antes de la montaña",
-      "text": "El Monumento 3 data de algún momento antes del 500 a.e.c., lo que lo convierte en uno de los ejemplos más antiguos de escritura en todas las Américas.",
-      "text_markdown": "El Monumento 3 data de algún momento antes del 500 a.e.c., lo que lo convierte en uno de los ejemplos más antiguos de escritura en todas las Américas.",
+      "text": "El Monumento 3 data de algún momento antes del quinientos a.e.c., lo que lo convierte en uno de los ejemplos más antiguos de escritura en todas las Américas.",
+      "text_markdown": "El Monumento 3 data de algún momento antes del quinientos a.e.c., lo que lo convierte en uno de los ejemplos más antiguos de escritura en todas las Américas.",
       "tts": {
         "text": "El Monumento tres data de algún momento antes del quinientos antes de la era común, lo que lo convierte en uno de los ejemplos más antiguos de escritura en todas las Américas.",
         "pause_after_ms": 500
@@ -1746,8 +1746,8 @@
       "sentence_index": 2,
       "block_type": "text",
       "title": "Capítulo 2 — Antes de la montaña",
-      "text": "Otros señalan tallas de la región olmeca a lo largo de la costa del Golfo — en particular el Bloque de Cascajal, una tableta de serpentina descubierta en 1999 cerca del corazón olmeca, que algunos investigadores datan antes del 900 a.e.c. — y dicen que la cuestión sigue abierta.",
-      "text_markdown": "Otros señalan tallas de la región olmeca a lo largo de la costa del Golfo — en particular el Bloque de Cascajal, una tableta de serpentina descubierta en 1999 cerca del corazón olmeca, que algunos investigadores datan antes del 900 a.e.c. — y dicen que la cuestión sigue abierta.",
+      "text": "Otros señalan tallas de la región olmeca a lo largo de la costa del Golfo — en particular el Bloque de Cascajal, una tableta de serpentina descubierta en mil novecientos noventa y nueve cerca del corazón olmeca, que algunos investigadores datan antes del novecientos a.e.c. — y dicen que la cuestión sigue abierta.",
+      "text_markdown": "Otros señalan tallas de la región olmeca a lo largo de la costa del Golfo — en particular el Bloque de Cascajal, una tableta de serpentina descubierta en mil novecientos noventa y nueve cerca del corazón olmeca, que algunos investigadores datan antes del novecientos a.e.c. — y dicen que la cuestión sigue abierta.",
       "tts": {
         "text": "Otros señalan tallas de la región olmeca a lo largo de la costa del Golfo — en particular el Bloque de Cascajal, una tableta de serpentina descubierta en mil novecientos noventa y nueve cerca del corazón olmeca, que algunos investigadores datan antes del novecientos antes de la era común — y dicen que la cuestión sigue abierta.",
         "pause_after_ms": 800
@@ -1866,8 +1866,8 @@
       "sentence_index": 0,
       "block_type": "text",
       "title": "Capítulo 2 — Antes de la montaña",
-      "text": "Alrededor del 500 a.e.c., los habitantes de San José Mogote abandonaron el asentamiento que habían ocupado durante mil años.",
-      "text_markdown": "Alrededor del 500 a.e.c., los habitantes de San José Mogote abandonaron el asentamiento que habían ocupado durante mil años.",
+      "text": "Alrededor del quinientos a.e.c., los habitantes de San José Mogote abandonaron el asentamiento que habían ocupado durante mil años.",
+      "text_markdown": "Alrededor del quinientos a.e.c., los habitantes de San José Mogote abandonaron el asentamiento que habían ocupado durante mil años.",
       "tts": {
         "text": "Alrededor del quinientos antes de la era común, los habitantes de San José Mogote abandonaron el asentamiento que habían ocupado durante mil años.",
         "pause_after_ms": 500
@@ -2238,8 +2238,8 @@
       "sentence_index": 1,
       "block_type": "text",
       "title": "Capítulo 3 — La fundación",
-      "text": "Dentro del primer siglo de existencia de la ciudad — el período que los arqueólogos llaman Monte Albán Fase Ia, aproximadamente del 500 al 300 a.e.c. — la población alcanzó unas 5.200 personas.",
-      "text_markdown": "Dentro del primer siglo de existencia de la ciudad — el período que los arqueólogos llaman Monte Albán Fase Ia, aproximadamente del 500 al 300 a.e.c. — la población alcanzó unas 5.200 personas.",
+      "text": "Dentro del primer siglo de existencia de la ciudad — el período que los arqueólogos llaman Monte Albán Fase Ia, aproximadamente del quinientos al trescientos a.e.c. — la población alcanzó unas cinco mil doscientos personas.",
+      "text_markdown": "Dentro del primer siglo de existencia de la ciudad — el período que los arqueólogos llaman Monte Albán Fase Ia, aproximadamente del quinientos al trescientos a.e.c. — la población alcanzó unas cinco mil doscientos personas.",
       "tts": {
         "text": "Dentro del primer siglo de existencia de la ciudad — el período que los arqueólogos llaman Monte Albán Fase uno a, aproximadamente del quinientos al trescientos antes de la era común — la población alcanzó unas cinco mil doscientas personas.",
         "pause_after_ms": 500
@@ -2253,8 +2253,8 @@
       "sentence_index": 2,
       "block_type": "text",
       "title": "Capítulo 3 — La fundación",
-      "text": "Para el 100 a.e.c., había crecido a alrededor de 17.200.",
-      "text_markdown": "Para el 100 a.e.c., había crecido a alrededor de 17.200.",
+      "text": "Para el cien a.e.c., había crecido a alrededor de diecisiete mil doscientos.",
+      "text_markdown": "Para el cien a.e.c., había crecido a alrededor de diecisiete mil doscientos.",
       "tts": {
         "text": "Para el cien antes de la era común, había crecido a alrededor de diecisiete mil doscientas.",
         "pause_after_ms": 500
@@ -2328,8 +2328,8 @@
       "sentence_index": 2,
       "block_type": "text",
       "title": "Capítulo 3 — La fundación",
-      "text": "Pero San José Mogote por sí solo no podría haber aportado 5.000 personas.",
-      "text_markdown": "Pero San José Mogote por sí solo no podría haber aportado 5.000 personas.",
+      "text": "Pero San José Mogote por sí solo no podría haber aportado cinco mil personas.",
+      "text_markdown": "Pero San José Mogote por sí solo no podría haber aportado cinco mil personas.",
       "tts": {
         "text": "Pero San José Mogote por sí solo no podría haber aportado cinco mil personas.",
         "pause_after_ms": 500
@@ -3047,8 +3047,8 @@
       "sentence_index": 0,
       "block_type": "text",
       "title": "Capítulo 4 — ¿Qué tipo de lugar era este?",
-      "text": "En su apogeo, entre aproximadamente 300 y 700 e.c., Monte Albán albergaba a una población estimada de 25 000 a 35 000 personas.",
-      "text_markdown": "En su apogeo, entre aproximadamente 300 y 700 e.c., Monte Albán albergaba a una población estimada de 25 000 a 35 000 personas.",
+      "text": "En su apogeo, entre aproximadamente trescientos y setecientos e.c., Monte Albán albergaba a una población estimada de veinticinco mil a treinta y cinco mil personas.",
+      "text_markdown": "En su apogeo, entre aproximadamente trescientos y setecientos e.c., Monte Albán albergaba a una población estimada de veinticinco mil a treinta y cinco mil personas.",
       "tts": {
         "text": "En su apogeo, entre aproximadamente trescientos y setecientos de la era común, Monte Albán albergaba a una población estimada de veinticinco mil a treinta y cinco mil personas.",
         "pause_after_ms": 500
@@ -3062,8 +3062,8 @@
       "sentence_index": 1,
       "block_type": "text",
       "title": "Capítulo 4 — ¿Qué tipo de lugar era este?",
-      "text": "Para ponerlo en perspectiva: Londres en el año 500 e.c. tenía quizás 10.000 habitantes.",
-      "text_markdown": "Para ponerlo en perspectiva: Londres en el año 500 e.c. tenía quizás 10.000 habitantes.",
+      "text": "Para ponerlo en perspectiva: Londres en el año quinientos e.c. tenía quizás diez mil habitantes.",
+      "text_markdown": "Para ponerlo en perspectiva: Londres en el año quinientos e.c. tenía quizás diez mil habitantes.",
       "tts": {
         "text": "Para ponerlo en perspectiva: Londres en el año quinientos de la era común tenía quizás diez mil habitantes.",
         "pause_after_ms": 500
@@ -3167,8 +3167,8 @@
       "sentence_index": 4,
       "block_type": "text",
       "title": "Capítulo 4 — ¿Qué tipo de lugar era este?",
-      "text": "Se han documentado más de 2100 terrazas, extendiéndose desde la cumbre en todas las direcciones, cada una de ellas una pequeña plataforma nivelada tallada en la pendiente y reforzada con muros de contención de piedra.",
-      "text_markdown": "Se han documentado más de 2100 terrazas, extendiéndose desde la cumbre en todas las direcciones, cada una de ellas una pequeña plataforma nivelada tallada en la pendiente y reforzada con muros de contención de piedra.",
+      "text": "Se han documentado más de dos mil cien terrazas, extendiéndose desde la cumbre en todas las direcciones, cada una de ellas una pequeña plataforma nivelada tallada en la pendiente y reforzada con muros de contención de piedra.",
+      "text_markdown": "Se han documentado más de dos mil cien terrazas, extendiéndose desde la cumbre en todas las direcciones, cada una de ellas una pequeña plataforma nivelada tallada en la pendiente y reforzada con muros de contención de piedra.",
       "tts": {
         "text": "Se han documentado más de dos mil cien terrazas, extendiéndose desde la cumbre en todas las direcciones, cada una de ellas una pequeña plataforma nivelada tallada en la pendiente y reforzada con muros de contención de piedra.",
         "pause_after_ms": 800
@@ -3272,8 +3272,8 @@
       "sentence_index": 2,
       "block_type": "text",
       "title": "Capítulo 4 — ¿Qué tipo de lugar era este?",
-      "text": "El calendario ritual de 260 días, llamado piye en zapoteco, combinaba veinte nombres de días con trece números, creando un ciclo de 260 designaciones de días únicas.",
-      "text_markdown": "El calendario ritual de 260 días, llamado *piye* en zapoteco, combinaba veinte nombres de días con trece números, creando un ciclo de 260 designaciones de días únicas.",
+      "text": "El calendario ritual de doscientos sesenta días, llamado piye en zapoteco, combinaba veinte nombres de días con trece números, creando un ciclo de doscientos sesenta designaciones de días únicas.",
+      "text_markdown": "El calendario ritual de doscientos sesenta días, llamado *piye* en zapoteco, combinaba veinte nombres de días con trece números, creando un ciclo de doscientos sesenta designaciones de días únicas.",
       "tts": {
         "text": "El calendario ritual de doscientos sesenta días, llamado piye en zapoteco, combinaba veinte nombres de días con trece números, creando un ciclo de doscientos sesenta designaciones de días únicas.",
         "pause_after_ms": 500
@@ -3287,8 +3287,8 @@
       "sentence_index": 3,
       "block_type": "text",
       "title": "Capítulo 4 — ¿Qué tipo de lugar era este?",
-      "text": "Este calendario se entrelazaba con un calendario solar de 365 días, y los dos ciclos juntos creaban una \"Rueda Calendárica\" de 52 años, tras la cual la combinación de fechas se repetiría.",
-      "text_markdown": "Este calendario se entrelazaba con un calendario solar de 365 días, y los dos ciclos juntos creaban una \"Rueda Calendárica\" de 52 años, tras la cual la combinación de fechas se repetiría.",
+      "text": "Este calendario se entrelazaba con un calendario solar de trescientos sesenta y cinco días, y los dos ciclos juntos creaban una \"Rueda Calendárica\" de cincuenta y dos años, tras la cual la combinación de fechas se repetiría.",
+      "text_markdown": "Este calendario se entrelazaba con un calendario solar de trescientos sesenta y cinco días, y los dos ciclos juntos creaban una \"Rueda Calendárica\" de cincuenta y dos años, tras la cual la combinación de fechas se repetiría.",
       "tts": {
         "text": "Este calendario se entrelazaba con un calendario solar de trescientos sesenta y cinco días, y los dos ciclos juntos creaban una \"Rueda Calendárica\" de cincuenta y dos años, tras la cual la combinación de fechas se repetiría.",
         "pause_after_ms": 500
@@ -3347,8 +3347,8 @@
       "sentence_index": 1,
       "block_type": "text",
       "title": "Capítulo 4 — ¿Qué tipo de lugar era este?",
-      "text": "Se han documentado más de 170 tumbas en Monte Albán, muchas con murales pintados en sus paredes interiores que muestran procesiones de figuras ricamente vestidas, seres sobrenaturales e inscripciones calendáricas.",
-      "text_markdown": "Se han documentado más de 170 tumbas en Monte Albán, muchas con murales pintados en sus paredes interiores que muestran procesiones de figuras ricamente vestidas, seres sobrenaturales e inscripciones calendáricas.",
+      "text": "Se han documentado más de ciento setenta tumbas en Monte Albán, muchas con murales pintados en sus paredes interiores que muestran procesiones de figuras ricamente vestidas, seres sobrenaturales e inscripciones calendáricas.",
+      "text_markdown": "Se han documentado más de ciento setenta tumbas en Monte Albán, muchas con murales pintados en sus paredes interiores que muestran procesiones de figuras ricamente vestidas, seres sobrenaturales e inscripciones calendáricas.",
       "tts": {
         "text": "Se han documentado más de ciento setenta tumbas en Monte Albán, muchas con murales pintados en sus paredes interiores que muestran procesiones de figuras ricamente vestidas, seres sobrenaturales e inscripciones calendáricas.",
         "pause_after_ms": 500
@@ -3512,8 +3512,8 @@
       "sentence_index": 6,
       "block_type": "text",
       "title": "Capítulo 4 — ¿Qué tipo de lugar era este?",
-      "text": "La ingeniería necesaria para sustentar a 25 000 personas en estas condiciones era extraordinaria, y tenía que funcionar cada año, sin falta, durante doce siglos.",
-      "text_markdown": "La ingeniería necesaria para sustentar a 25 000 personas en estas condiciones era extraordinaria, y tenía que funcionar cada año, sin falta, durante doce siglos.",
+      "text": "La ingeniería necesaria para sustentar a veinticinco mil personas en estas condiciones era extraordinaria, y tenía que funcionar cada año, sin falta, durante doce siglos.",
+      "text_markdown": "La ingeniería necesaria para sustentar a veinticinco mil personas en estas condiciones era extraordinaria, y tenía que funcionar cada año, sin falta, durante doce siglos.",
       "tts": {
         "text": "La ingeniería necesaria para sustentar a veinticinco mil personas en estas condiciones era extraordinaria, y tenía que funcionar cada año, sin falta, durante doce siglos.",
         "pause_after_ms": 800
@@ -4738,8 +4738,8 @@
       "sentence_index": 0,
       "block_type": "text",
       "title": "Capítulo 5 — Los Danzantes",
-      "text": "Los Danzantes se encuentran entre los grabados más antiguos de Monte Albán, y datan del Período I, aproximadamente del 500 al 100 a.e.c., los primeros siglos de existencia de la ciudad.",
-      "text_markdown": "Los Danzantes se encuentran entre los grabados más antiguos de Monte Albán, y datan del Período I, aproximadamente del 500 al 100 a.e.c., los primeros siglos de existencia de la ciudad.",
+      "text": "Los Danzantes se encuentran entre los grabados más antiguos de Monte Albán, y datan del Período I, aproximadamente del quinientos al cien a.e.c., los primeros siglos de existencia de la ciudad.",
+      "text_markdown": "Los Danzantes se encuentran entre los grabados más antiguos de Monte Albán, y datan del Período I, aproximadamente del quinientos al cien a.e.c., los primeros siglos de existencia de la ciudad.",
       "tts": {
         "text": "Los Danzantes se encuentran entre los grabados más antiguos de Monte Albán, y datan del Período uno, aproximadamente del quinientos al cien antes de la era común, los primeros siglos de existencia de la ciudad.",
         "pause_after_ms": 500
@@ -5055,8 +5055,8 @@
       "sentence_index": 1,
       "block_type": "text",
       "title": "Capítulo 5 — Los Danzantes",
-      "text": "Los nombres de los días del calendario ritual mesoamericano de 260 días aparecen repetidamente.",
-      "text_markdown": "Los nombres de los días del calendario ritual mesoamericano de 260 días aparecen repetidamente.",
+      "text": "Los nombres de los días del calendario ritual mesoamericano de doscientos sesenta días aparecen repetidamente.",
+      "text_markdown": "Los nombres de los días del calendario ritual mesoamericano de doscientos sesenta días aparecen repetidamente.",
       "tts": {
         "text": "Los nombres de los días del calendario ritual mesoamericano de doscientos sesenta días aparecen repetidamente.",
         "pause_after_ms": 500
@@ -5547,8 +5547,8 @@
       "sentence_index": 1,
       "block_type": "text",
       "title": "Capítulo 6 — El Edificio J y las losas de conquista",
-      "text": "Su eje longitudinal está girado aproximadamente 45 grados respecto a la alineación de todo lo que lo rodea.",
-      "text_markdown": "Su eje longitudinal está girado aproximadamente 45 grados respecto a la alineación de todo lo que lo rodea.",
+      "text": "Su eje longitudinal está girado aproximadamente cuarenta y cinco grados respecto a la alineación de todo lo que lo rodea.",
+      "text_markdown": "Su eje longitudinal está girado aproximadamente cuarenta y cinco grados respecto a la alineación de todo lo que lo rodea.",
       "tts": {
         "text": "Su eje longitudinal está girado aproximadamente cuarenta y cinco grados respecto a la alineación de todo lo que lo rodea.",
         "pause_after_ms": 500
@@ -5742,8 +5742,8 @@
       "sentence_index": 1,
       "block_type": "text",
       "title": "Capítulo 6 — El Edificio J y las losas de conquista",
-      "text": "Datan del Período II de Monte Albán, aproximadamente del 100 a.e.c. al 200 e.c., varios siglos después de los Danzantes.",
-      "text_markdown": "Datan del Período II de Monte Albán, aproximadamente del 100 a.e.c. al 200 e.c., varios siglos después de los Danzantes.",
+      "text": "Datan del Período II de Monte Albán, aproximadamente del cien a.e.c. al doscientos e.c., varios siglos después de los Danzantes.",
+      "text_markdown": "Datan del Período II de Monte Albán, aproximadamente del cien a.e.c. al doscientos e.c., varios siglos después de los Danzantes.",
       "tts": {
         "text": "Datan del Período dos de Monte Albán, aproximadamente del cien antes de la era común al doscientos de la era común, varios siglos después de los Danzantes.",
         "pause_after_ms": 500
@@ -5757,8 +5757,8 @@
       "sentence_index": 2,
       "block_type": "text",
       "title": "Capítulo 6 — El Edificio J y las losas de conquista",
-      "text": "Cada losa está tallada con un conjunto de símbolos que Alfonso Caso, el arqueólogo mexicano pionero que estudió sistemáticamente Monte Albán por primera vez en la década de 1930, identificó como \"registros de conquista\".",
-      "text_markdown": "Cada losa está tallada con un conjunto de símbolos que Alfonso Caso, el arqueólogo mexicano pionero que estudió sistemáticamente Monte Albán por primera vez en la década de 1930, identificó como \"registros de conquista\".",
+      "text": "Cada losa está tallada con un conjunto de símbolos que Alfonso Caso, el arqueólogo mexicano pionero que estudió sistemáticamente Monte Albán por primera vez en la década de mil novecientos treinta, identificó como \"registros de conquista\".",
+      "text_markdown": "Cada losa está tallada con un conjunto de símbolos que Alfonso Caso, el arqueólogo mexicano pionero que estudió sistemáticamente Monte Albán por primera vez en la década de mil novecientos treinta, identificó como \"registros de conquista\".",
       "tts": {
         "text": "Cada losa está tallada con un conjunto de símbolos que Alfonso Caso, el arqueólogo mexicano pionero que estudió sistemáticamente Monte Albán por primera vez en la década de mil novecientos treinta, identificó como \"registros de conquista\".",
         "pause_after_ms": 800
@@ -6074,8 +6074,8 @@
       "sentence_index": 1,
       "block_type": "text",
       "title": "Capítulo 6 — El Edificio J y las losas de conquista",
-      "text": "El glifo que los estudiosos leen como \"Lugar del Canto\" ha sido identificado con Cuicatlán, un pueblo a unos 80 kilómetros al norte de Monte Albán en la región de la Cañada.",
-      "text_markdown": "El glifo que los estudiosos leen como \"Lugar del Canto\" ha sido identificado con Cuicatlán, un pueblo a unos 80 kilómetros al norte de Monte Albán en la región de la Cañada.",
+      "text": "El glifo que los estudiosos leen como \"Lugar del Canto\" ha sido identificado con Cuicatlán, un pueblo a unos ochenta kilómetros al norte de Monte Albán en la región de la Cañada.",
+      "text_markdown": "El glifo que los estudiosos leen como \"Lugar del Canto\" ha sido identificado con Cuicatlán, un pueblo a unos ochenta kilómetros al norte de Monte Albán en la región de la Cañada.",
       "tts": {
         "text": "El glifo que los estudiosos leen como \"Lugar del Canto\" ha sido identificado con Cuicatlán, un pueblo a unos ochenta kilómetros al norte de Monte Albán en la región de la Cañada.",
         "pause_after_ms": 500
@@ -6149,8 +6149,8 @@
       "sentence_index": 2,
       "block_type": "text",
       "title": "Capítulo 6 — El Edificio J y las losas de conquista",
-      "text": "\"Cerro del Pájaro\" podría ser Tututepec, un sitio a 150 kilómetros al suroeste en la costa del Pacífico.",
-      "text_markdown": "\"Cerro del Pájaro\" podría ser Tututepec, un sitio a 150 kilómetros al suroeste en la costa del Pacífico.",
+      "text": "\"Cerro del Pájaro\" podría ser Tututepec, un sitio a ciento cincuenta kilómetros al suroeste en la costa del Pacífico.",
+      "text_markdown": "\"Cerro del Pájaro\" podría ser Tututepec, un sitio a ciento cincuenta kilómetros al suroeste en la costa del Pacífico.",
       "tts": {
         "text": "\"Cerro del Pájaro\" podría ser Tututepec, un sitio a ciento cincuenta kilómetros al suroeste en la costa del Pacífico.",
         "pause_after_ms": 500
@@ -6418,8 +6418,8 @@
       "sentence_index": 1,
       "block_type": "text",
       "title": "Capítulo 7 — Lo que la escritura realmente es (y no es)",
-      "text": "El hiragana japonés es un silabario: el símbolo ka representa la sílaba \"ka\", no los sonidos individuales \"k\" y \"a\". La escritura cheroqui, inventada por Sequoyah en la década de 1820, también es un silabario.",
-      "text_markdown": "El hiragana japonés es un silabario: el símbolo ka representa la sílaba \"ka\", no los sonidos individuales \"k\" y \"a\". La escritura cheroqui, inventada por Sequoyah en la década de 1820, también es un silabario.",
+      "text": "El hiragana japonés es un silabario: el símbolo ka representa la sílaba \"ka\", no los sonidos individuales \"k\" y \"a\". La escritura cheroqui, inventada por Sequoyah en la década de mil ochocientos veinte, también es un silabario.",
+      "text_markdown": "El hiragana japonés es un silabario: el símbolo ka representa la sílaba \"ka\", no los sonidos individuales \"k\" y \"a\". La escritura cheroqui, inventada por Sequoyah en la década de mil ochocientos veinte, también es un silabario.",
       "tts": {
         "text": "El hiragana japonés es un silabario: el símbolo ka representa la sílaba \"ka\", no los sonidos individuales \"k\" y \"a\". La escritura cheroqui, inventada por Sequoyah en la década de mil ochocientos veinte, también es un silabario.",
         "pause_after_ms": 800
@@ -6508,8 +6508,8 @@
       "sentence_index": 0,
       "block_type": "text",
       "title": "Capítulo 7 — Lo que la escritura realmente es (y no es)",
-      "text": "La escritura zapoteca, según el modelo desarrollado por el epigrafista Javier Urcid en su estudio fundamental de 2001 Zapotec Hieroglyphic Writing, es un sistema logosilábico.",
-      "text_markdown": "La escritura zapoteca, según el modelo desarrollado por el epigrafista Javier Urcid en su estudio fundamental de 2001 *Zapotec Hieroglyphic Writing*, es un sistema **logosilábico**.",
+      "text": "La escritura zapoteca, según el modelo desarrollado por el epigrafista Javier Urcid en su estudio fundamental de dos mil uno Zapotec Hieroglyphic Writing, es un sistema logosilábico.",
+      "text_markdown": "La escritura zapoteca, según el modelo desarrollado por el epigrafista Javier Urcid en su estudio fundamental de dos mil uno *Zapotec Hieroglyphic Writing*, es un sistema **logosilábico**.",
       "tts": {
         "text": "La escritura zapoteca, según el modelo desarrollado por el epigrafista Javier Urcid en su estudio fundamental de dos mil uno Zapotec Hieroglyphic Writing, es un sistema logosilábico.",
         "pause_after_ms": 500
@@ -6585,8 +6585,8 @@
       "sentence_index": 1,
       "block_type": "text",
       "title": "Capítulo 7 — Lo que la escritura realmente es (y no es)",
-      "text": "El calendario ritual de 260 días usado en toda Mesoamérica —llamado piye en zapoteco— combina veinte nombres de días con trece números, creando 260 designaciones de días únicas.",
-      "text_markdown": "El calendario ritual de 260 días usado en toda Mesoamérica —llamado *piye* en zapoteco— combina veinte nombres de días con trece números, creando 260 designaciones de días únicas.",
+      "text": "El calendario ritual de doscientos sesenta días usado en toda Mesoamérica —llamado piye en zapoteco— combina veinte nombres de días con trece números, creando doscientos sesenta designaciones de días únicas.",
+      "text_markdown": "El calendario ritual de doscientos sesenta días usado en toda Mesoamérica —llamado *piye* en zapoteco— combina veinte nombres de días con trece números, creando doscientos sesenta designaciones de días únicas.",
       "tts": {
         "text": "El calendario ritual de doscientos sesenta días usado en toda Mesoamérica —llamado piye en zapoteco— combina veinte nombres de días con trece números, creando doscientos sesenta designaciones de días únicas.",
         "pause_after_ms": 500
@@ -6615,8 +6615,8 @@
       "sentence_index": 3,
       "block_type": "text",
       "title": "Capítulo 7 — Lo que la escritura realmente es (y no es)",
-      "text": "Cuando una piedra dice \"3 Mono\" o \"12 Terremoto\", los estudiosos tienen confianza en la interpretación.",
-      "text_markdown": "Cuando una piedra dice \"3 Mono\" o \"12 Terremoto\", los estudiosos tienen confianza en la interpretación.",
+      "text": "Cuando una piedra dice \"3 Mono\" o \"doce Terremoto\", los estudiosos tienen confianza en la interpretación.",
+      "text_markdown": "Cuando una piedra dice \"3 Mono\" o \"doce Terremoto\", los estudiosos tienen confianza en la interpretación.",
       "tts": {
         "text": "Cuando una piedra dice \"tres Mono\" o \"doce Terremoto\", los estudiosos tienen confianza en la interpretación.",
         "pause_after_ms": 800
@@ -6855,8 +6855,8 @@
       "sentence_index": 0,
       "block_type": "text",
       "title": "Capítulo 7 — Lo que la escritura realmente es (y no es)",
-      "text": "Los glifos mayas fueron descifrados —un proceso que tomó más de un siglo y aún continúa— porque hay miles de textos mayas sobrevivientes, porque las lenguas mayas aún son habladas por millones de personas con fuerte continuidad respecto a las formas antiguas, y porque un avance crucial del lingüista ruso Yuri Knorosov en la década de 1950 demostró que los signos eran en gran parte silábicos.",
-      "text_markdown": "Los glifos mayas fueron descifrados —un proceso que tomó más de un siglo y aún continúa— porque hay miles de textos mayas sobrevivientes, porque las lenguas mayas aún son habladas por millones de personas con fuerte continuidad respecto a las formas antiguas, y porque un avance crucial del lingüista ruso Yuri Knorosov en la década de 1950 demostró que los signos eran en gran parte silábicos.",
+      "text": "Los glifos mayas fueron descifrados —un proceso que tomó más de un siglo y aún continúa— porque hay miles de textos mayas sobrevivientes, porque las lenguas mayas aún son habladas por millones de personas con fuerte continuidad respecto a las formas antiguas, y porque un avance crucial del lingüista ruso Yuri Knorosov en la década de mil novecientos cincuenta demostró que los signos eran en gran parte silábicos.",
+      "text_markdown": "Los glifos mayas fueron descifrados —un proceso que tomó más de un siglo y aún continúa— porque hay miles de textos mayas sobrevivientes, porque las lenguas mayas aún son habladas por millones de personas con fuerte continuidad respecto a las formas antiguas, y porque un avance crucial del lingüista ruso Yuri Knorosov en la década de mil novecientos cincuenta demostró que los signos eran en gran parte silábicos.",
       "tts": {
         "text": "Los glifos mayas fueron descifrados —un proceso que tomó más de un siglo y aún continúa— porque hay miles de textos mayas sobrevivientes, porque las lenguas mayas aún son habladas por millones de personas con fuerte continuidad respecto a las formas antiguas, y porque un avance crucial del lingüista ruso Yuri Knorosov en la década de mil novecientos cincuenta demostró que los signos eran en gran parte silábicos.",
         "pause_after_ms": 800
@@ -6900,8 +6900,8 @@
       "sentence_index": 2,
       "block_type": "text",
       "title": "Capítulo 7 — Lo que la escritura realmente es (y no es)",
-      "text": "El número de inscripciones sobrevivientes es relativamente pequeño: Urcid ha catalogado más de 200, pero muchas son fragmentarias, y el corpus total es una fracción de lo que existe para la escritura maya.",
-      "text_markdown": "El número de inscripciones sobrevivientes es relativamente pequeño: Urcid ha catalogado más de 200, pero muchas son fragmentarias, y el corpus total es una fracción de lo que existe para la escritura maya.",
+      "text": "El número de inscripciones sobrevivientes es relativamente pequeño: Urcid ha catalogado más de doscientos, pero muchas son fragmentarias, y el corpus total es una fracción de lo que existe para la escritura maya.",
+      "text_markdown": "El número de inscripciones sobrevivientes es relativamente pequeño: Urcid ha catalogado más de doscientos, pero muchas son fragmentarias, y el corpus total es una fracción de lo que existe para la escritura maya.",
       "tts": {
         "text": "El número de inscripciones sobrevivientes es relativamente pequeño: Urcid ha catalogado más de doscientos, pero muchas son fragmentarias, y el corpus total es una fracción de lo que existe para la escritura maya.",
         "pause_after_ms": 500
@@ -6915,8 +6915,8 @@
       "sentence_index": 3,
       "block_type": "text",
       "title": "Capítulo 7 — Lo que la escritura realmente es (y no es)",
-      "text": "Y aunque la lengua zapoteca está muy viva —hablada por más de 500 000 personas hoy en más de cincuenta variantes regionales en las montañas y valles de Oaxaca— el idioma antiguo podría diferir significativamente de cualquier variedad moderna.",
-      "text_markdown": "Y aunque la lengua zapoteca está muy viva —hablada por más de 500 000 personas hoy en más de cincuenta variantes regionales en las montañas y valles de Oaxaca— el idioma antiguo podría diferir significativamente de cualquier variedad moderna.",
+      "text": "Y aunque la lengua zapoteca está muy viva —hablada por más de quinientos mil personas hoy en más de cincuenta variantes regionales en las montañas y valles de Oaxaca— el idioma antiguo podría diferir significativamente de cualquier variedad moderna.",
+      "text_markdown": "Y aunque la lengua zapoteca está muy viva —hablada por más de quinientos mil personas hoy en más de cincuenta variantes regionales en las montañas y valles de Oaxaca— el idioma antiguo podría diferir significativamente de cualquier variedad moderna.",
       "tts": {
         "text": "Y aunque la lengua zapoteca está muy viva —hablada por más de quinientas mil personas hoy en más de cincuenta variantes regionales en las montañas y valles de Oahaca— el idioma antiguo podría diferir significativamente de cualquier variedad moderna.",
         "pause_after_ms": 500
@@ -6960,8 +6960,8 @@
       "sentence_index": 0,
       "block_type": "text",
       "title": "Capítulo 7 — Lo que la escritura realmente es (y no es)",
-      "text": "En las Estelas 12 y 13 de Monte Albán, Joyce Marcus identificó un juego de palabras visual.",
-      "text_markdown": "En las Estelas 12 y 13 de Monte Albán, Joyce Marcus identificó un juego de palabras visual.",
+      "text": "En las Estelas doce y trece de Monte Albán, Joyce Marcus identificó un juego de palabras visual.",
+      "text_markdown": "En las Estelas doce y trece de Monte Albán, Joyce Marcus identificó un juego de palabras visual.",
       "tts": {
         "text": "En las Estelas doce y trece de Monte Albán, Joyce Marcus identificó un juego de palabras visual.",
         "pause_after_ms": 500
@@ -7065,8 +7065,8 @@
       "sentence_index": 3,
       "block_type": "text",
       "title": "Capítulo 7 — Lo que la escritura realmente es (y no es)",
-      "text": "Esta única observación, publicada por Marcus en su obra pionera de 1980, ancla todo el campo de estudio.",
-      "text_markdown": "Esta única observación, publicada por Marcus en su obra pionera de 1980, ancla todo el campo de estudio.",
+      "text": "Esta única observación, publicada por Marcus en su obra pionera de mil novecientos ochenta, ancla todo el campo de estudio.",
+      "text_markdown": "Esta única observación, publicada por Marcus en su obra pionera de mil novecientos ochenta, ancla todo el campo de estudio.",
       "tts": {
         "text": "Esta única observación, publicada por Marcus en su obra pionera de mil novecientos ochenta, ancla todo el campo de estudio.",
         "pause_after_ms": 500
@@ -7110,8 +7110,8 @@
       "sentence_index": 0,
       "block_type": "text",
       "title": "Capítulo 7 — Lo que la escritura realmente es (y no es)",
-      "text": "No es como la escritura del Valle del Indo, un sistema de escritura no descifrado del antiguo Pakistán y noroeste de India (aproximadamente 2600-1900 a.e.c.), que presenta un enigma aún más difícil: nadie sabe siquiera qué lengua hablaba la gente del Indo, y los textos sobrevivientes son tan cortos —la mayoría tiene menos de cinco signos— que el análisis estadístico casi no tiene con qué trabajar.",
-      "text_markdown": "No es como la escritura del Valle del Indo, un sistema de escritura no descifrado del antiguo Pakistán y noroeste de India (aproximadamente 2600-1900 a.e.c.), que presenta un enigma aún más difícil: nadie sabe siquiera qué lengua hablaba la gente del Indo, y los textos sobrevivientes son tan cortos —la mayoría tiene menos de cinco signos— que el análisis estadístico casi no tiene con qué trabajar.",
+      "text": "No es como la escritura del Valle del Indo, un sistema de escritura no descifrado del antiguo Pakistán y noroeste de India (aproximadamente dos mil seiscientos a mil novecientos a.e.c.), que presenta un enigma aún más difícil: nadie sabe siquiera qué lengua hablaba la gente del Indo, y los textos sobrevivientes son tan cortos —la mayoría tiene menos de cinco signos— que el análisis estadístico casi no tiene con qué trabajar.",
+      "text_markdown": "No es como la escritura del Valle del Indo, un sistema de escritura no descifrado del antiguo Pakistán y noroeste de India (aproximadamente dos mil seiscientos a mil novecientos a.e.c.), que presenta un enigma aún más difícil: nadie sabe siquiera qué lengua hablaba la gente del Indo, y los textos sobrevivientes son tan cortos —la mayoría tiene menos de cinco signos— que el análisis estadístico casi no tiene con qué trabajar.",
       "tts": {
         "text": "No es como la escritura del Valle del Indo, un sistema de escritura no descifrado del antiguo Pakistán y noroeste de India (aproximadamente dos mil seiscientos a mil novecientos antes de Cristo), que presenta un enigma aún más difícil: nadie sabe siquiera qué lengua hablaba la gente del Indo, y los textos sobrevivientes son tan cortos —la mayoría tiene menos de cinco signos— que el análisis estadístico casi no tiene con qué trabajar.",
         "pause_after_ms": 800
@@ -7155,8 +7155,8 @@
       "sentence_index": 0,
       "block_type": "text",
       "title": "Capítulo 7 — Lo que la escritura realmente es (y no es)",
-      "text": "No es como el Lineal A, la escritura de la Creta minoica (aproximadamente 1800-1450 a.e.c.), que fue reemplazada por el Lineal B, una escritura que fue descifrada en 1952 por Michael Ventris y resultó codificar una forma temprana del griego.",
-      "text_markdown": "No es como el Lineal A, la escritura de la Creta minoica (aproximadamente 1800-1450 a.e.c.), que fue reemplazada por el Lineal B, una escritura que fue descifrada en 1952 por Michael Ventris y resultó codificar una forma temprana del griego.",
+      "text": "No es como el Lineal A, la escritura de la Creta minoica (aproximadamente mil ochocientos a mil cuatrocientos cincuenta a.e.c.), que fue reemplazada por el Lineal B, una escritura que fue descifrada en mil novecientos cincuenta y dos por Michael Ventris y resultó codificar una forma temprana del griego.",
+      "text_markdown": "No es como el Lineal A, la escritura de la Creta minoica (aproximadamente mil ochocientos a mil cuatrocientos cincuenta a.e.c.), que fue reemplazada por el Lineal B, una escritura que fue descifrada en mil novecientos cincuenta y dos por Michael Ventris y resultó codificar una forma temprana del griego.",
       "tts": {
         "text": "No es como el Lineal A, la escritura de la Creta minoica (aproximadamente mil ochocientos-mil cuatrocientos cincuenta antes de la era común), que fue reemplazada por el Lineal B, una escritura que fue descifrada en mil novecientos cincuenta y dos por Michael Ventris y resultó codificar una forma temprana del griego.",
         "pause_after_ms": 500
@@ -7287,8 +7287,8 @@
       "sentence_index": 0,
       "block_type": "text",
       "title": "Capítulo 8 — Cómo muere una escritura",
-      "text": "Cuando los conquistadores españoles llegaron al Valle de Oaxaca en la década de 1520, trajeron consigo un programa sistemático de destrucción cultural.",
-      "text_markdown": "Cuando los conquistadores españoles llegaron al Valle de Oaxaca en la década de 1520, trajeron consigo un programa sistemático de destrucción cultural.",
+      "text": "Cuando los conquistadores españoles llegaron al Valle de Oaxaca en la década de mil quinientos veinte, trajeron consigo un programa sistemático de destrucción cultural.",
+      "text_markdown": "Cuando los conquistadores españoles llegaron al Valle de Oaxaca en la década de mil quinientos veinte, trajeron consigo un programa sistemático de destrucción cultural.",
       "tts": {
         "text": "Cuando los conquistadores españoles llegaron al Valle de Oahaca en la década de mil quinientos veinte, trajeron consigo un programa sistemático de destrucción cultural.",
         "pause_after_ms": 500
@@ -7377,8 +7377,8 @@
       "sentence_index": 0,
       "block_type": "text",
       "title": "Capítulo 8 — Cómo muere una escritura",
-      "text": "Monte Albán fue abandonado alrededor del 900 e.c.",
-      "text_markdown": "Monte Albán fue abandonado alrededor del 900 e.c.",
+      "text": "Monte Albán fue abandonado alrededor del novecientos e.c.",
+      "text_markdown": "Monte Albán fue abandonado alrededor del novecientos e.c.",
       "tts": {
         "text": "Monte Albán fue abandonado alrededor del novecientos de la era común",
         "pause_after_ms": 500
@@ -7392,8 +7392,8 @@
       "sentence_index": 1,
       "block_type": "text",
       "title": "Capítulo 8 — Cómo muere una escritura",
-      "text": "Los españoles llegaron alrededor de 1521.",
-      "text_markdown": "Los españoles llegaron alrededor de 1521.",
+      "text": "Los españoles llegaron alrededor de mil quinientos veintiuno.",
+      "text_markdown": "Los españoles llegaron alrededor de mil quinientos veintiuno.",
       "tts": {
         "text": "Los españoles llegaron alrededor de mil quinientos veintiuno.",
         "pause_after_ms": 500
@@ -7453,8 +7453,8 @@
       "block_type": "image",
       "image": "../images/placeholders/10-timeline-gap.png",
       "title": "Capítulo 8 — Cómo muere una escritura",
-      "text": "Línea de tiempo mostrando la brecha de 600 años",
-      "text_markdown": "![Línea de tiempo mostrando la brecha de 600 años](../images/placeholders/10-timeline-gap.png)",
+      "text": "Línea de tiempo mostrando la brecha de seiscientos años",
+      "text_markdown": "![Línea de tiempo mostrando la brecha de seiscientos años](../images/placeholders/10-timeline-gap.png)",
       "image_alt": "Línea de tiempo mostrando la brecha de 600 años",
       "tts": {
         "text": "Línea de tiempo mostrando la brecha de seiscientos años",
@@ -7709,8 +7709,8 @@
       "sentence_index": 0,
       "block_type": "text",
       "title": "Capítulo 8 — Cómo muere una escritura",
-      "text": "Fragmentación política. A medida que el poder de Monte Albán declinó después de aproximadamente el 700 e.c., el Valle de Oaxaca se fragmentó en estados más pequeños y rivales.",
-      "text_markdown": "**Fragmentación política.** A medida que el poder de Monte Albán declinó después de aproximadamente el 700 e.c., el Valle de Oaxaca se fragmentó en estados más pequeños y rivales.",
+      "text": "Fragmentación política. A medida que el poder de Monte Albán declinó después de aproximadamente el setecientos e.c., el Valle de Oaxaca se fragmentó en estados más pequeños y rivales.",
+      "text_markdown": "**Fragmentación política.** A medida que el poder de Monte Albán declinó después de aproximadamente el setecientos e.c., el Valle de Oaxaca se fragmentó en estados más pequeños y rivales.",
       "tts": {
         "text": "Fragmentación política. A medida que el poder de Monte Albán declinó después de aproximadamente el setecientos de la era común, el Valle de Oahaca se fragmentó en estados más pequeños y rivales.",
         "pause_after_ms": 500
@@ -8306,8 +8306,8 @@
       "sentence_index": 1,
       "block_type": "text",
       "title": "Capítulo 9 — La carrera por el desciframiento",
-      "text": "Arqueólogo y abogado mexicano, Caso comenzó a excavar Monte Albán en 1931.",
-      "text_markdown": "Arqueólogo y abogado mexicano, Caso comenzó a excavar Monte Albán en 1931.",
+      "text": "Arqueólogo y abogado mexicano, Caso comenzó a excavar Monte Albán en mil novecientos treinta y uno.",
+      "text_markdown": "Arqueólogo y abogado mexicano, Caso comenzó a excavar Monte Albán en mil novecientos treinta y uno.",
       "tts": {
         "text": "Arqueólogo y abogado mexicano, Caso comenzó a excavar Monte Albán en mil novecientos treinta y uno.",
         "pause_after_ms": 500
@@ -8321,8 +8321,8 @@
       "sentence_index": 2,
       "block_type": "text",
       "title": "Capítulo 9 — La carrera por el desciframiento",
-      "text": "En 1932, abrió la Tumba 7 y descubrió uno de los hallazgos funerarios más espectaculares en la historia de las Américas — pero llegaremos a eso más adelante.",
-      "text_markdown": "En 1932, abrió la Tumba 7 y descubrió uno de los hallazgos funerarios más espectaculares en la historia de las Américas — pero llegaremos a eso más adelante.",
+      "text": "En mil novecientos treinta y dos, abrió la Tumba 7 y descubrió uno de los hallazgos funerarios más espectaculares en la historia de las Américas — pero llegaremos a eso más adelante.",
+      "text_markdown": "En mil novecientos treinta y dos, abrió la Tumba 7 y descubrió uno de los hallazgos funerarios más espectaculares en la historia de las Américas — pero llegaremos a eso más adelante.",
       "tts": {
         "text": "En mil novecientos treinta y dos, abrió la Tumba siete y descubrió uno de los hallazgos funerarios más espectaculares en la historia de las Américas — pero llegaremos a eso más adelante.",
         "pause_after_ms": 500
@@ -8366,8 +8366,8 @@
       "sentence_index": 5,
       "block_type": "text",
       "title": "Capítulo 9 — La carrera por el desciframiento",
-      "text": "Caso murió en 1970, habiendo sentado los cimientos sobre los cuales todos los demás construirían.",
-      "text_markdown": "Caso murió en 1970, habiendo sentado los cimientos sobre los cuales todos los demás construirían.",
+      "text": "Caso murió en mil novecientos setenta, habiendo sentado los cimientos sobre los cuales todos los demás construirían.",
+      "text_markdown": "Caso murió en mil novecientos setenta, habiendo sentado los cimientos sobre los cuales todos los demás construirían.",
       "tts": {
         "text": "Caso murió en mil novecientos setenta, habiendo sentado los cimientos sobre los cuales todos los demás construirían.",
         "pause_after_ms": 800
@@ -8396,8 +8396,8 @@
       "sentence_index": 1,
       "block_type": "text",
       "title": "Capítulo 9 — La carrera por el desciframiento",
-      "text": "Profesora en la Universidad de Michigan, Marcus publicó su primera obra importante sobre la escritura zapoteca en 1980.",
-      "text_markdown": "Profesora en la Universidad de Michigan, Marcus publicó su primera obra importante sobre la escritura zapoteca en 1980.",
+      "text": "Profesora en la Universidad de Michigan, Marcus publicó su primera obra importante sobre la escritura zapoteca en mil novecientos ochenta.",
+      "text_markdown": "Profesora en la Universidad de Michigan, Marcus publicó su primera obra importante sobre la escritura zapoteca en mil novecientos ochenta.",
       "tts": {
         "text": "Profesora en la Universidad de Michigan, Marcus publicó su primera obra importante sobre la escritura zapoteca en mil novecientos ochenta.",
         "pause_after_ms": 500
@@ -8426,8 +8426,8 @@
       "sentence_index": 3,
       "block_type": "text",
       "title": "Capítulo 9 — La carrera por el desciframiento",
-      "text": "Primero, demostró mediante evidencia lingüística interna — incluyendo el juego de palabras pulgar/primogénito en las Estelas 12 y 13 — que la escritura codificaba específicamente el idioma zapoteco.",
-      "text_markdown": "Primero, demostró mediante evidencia lingüística interna — incluyendo el juego de palabras pulgar/primogénito en las Estelas 12 y 13 — que la escritura codificaba específicamente el idioma zapoteco.",
+      "text": "Primero, demostró mediante evidencia lingüística interna — incluyendo el juego de palabras pulgar/primogénito en las Estelas doce y trece — que la escritura codificaba específicamente el idioma zapoteco.",
+      "text_markdown": "Primero, demostró mediante evidencia lingüística interna — incluyendo el juego de palabras pulgar/primogénito en las Estelas doce y trece — que la escritura codificaba específicamente el idioma zapoteco.",
       "tts": {
         "text": "Primero, demostró mediante evidencia lingüística interna — incluyendo el juego de palabras pulgar/primogénito en las Estelas doce y trece — que la escritura codificaba específicamente el idioma zapoteco.",
         "pause_after_ms": 500
@@ -8471,8 +8471,8 @@
       "sentence_index": 0,
       "block_type": "text",
       "title": "Capítulo 9 — La carrera por el desciframiento",
-      "text": "Marcus y su colaborador de toda la vida, Kent Flannery, publicaron Zapotec Civilization: How Urban Society Evolved in Mexico's Oaxaca Valley en 1996 a través de Thames and Hudson.",
-      "text_markdown": "Marcus y su colaborador de toda la vida, Kent Flannery, publicaron *Zapotec Civilization: How Urban Society Evolved in Mexico's Oaxaca Valley* en 1996 a través de Thames and Hudson.",
+      "text": "Marcus y su colaborador de toda la vida, Kent Flannery, publicaron Zapotec Civilization: How Urban Society Evolved in Mexico's Oaxaca Valley en mil novecientos noventa y seis a través de Thames and Hudson.",
+      "text_markdown": "Marcus y su colaborador de toda la vida, Kent Flannery, publicaron *Zapotec Civilization: How Urban Society Evolved in Mexico's Oaxaca Valley* en mil novecientos noventa y seis a través de Thames and Hudson.",
       "tts": {
         "text": "Marcus y su colaborador de toda la vida, Kent Flannery, publicaron Zapotec Civilization: How Urban Society Evolved in Mexico's Oahaca Valley en mil novecientos noventa y seis a través de Thames and Hudson.",
         "pause_after_ms": 500
@@ -8516,8 +8516,8 @@
       "sentence_index": 1,
       "block_type": "text",
       "title": "Capítulo 9 — La carrera por el desciframiento",
-      "text": "Trabajando en la Universidad de Brandeis, Urcid pasó años construyendo un catálogo de más de 200 inscripciones zapotecas — fotografiando, dibujando, midiendo y analizando cada texto legible que pudo encontrar.",
-      "text_markdown": "Trabajando en la Universidad de Brandeis, Urcid pasó años construyendo un catálogo de más de 200 inscripciones zapotecas — fotografiando, dibujando, midiendo y analizando cada texto legible que pudo encontrar.",
+      "text": "Trabajando en la Universidad de Brandeis, Urcid pasó años construyendo un catálogo de más de doscientos inscripciones zapotecas — fotografiando, dibujando, midiendo y analizando cada texto legible que pudo encontrar.",
+      "text_markdown": "Trabajando en la Universidad de Brandeis, Urcid pasó años construyendo un catálogo de más de doscientos inscripciones zapotecas — fotografiando, dibujando, midiendo y analizando cada texto legible que pudo encontrar.",
       "tts": {
         "text": "Trabajando en la Universidad de Brandeis, Urcid pasó años construyendo un catálogo de más de doscientas inscripciones zapotecas — fotografiando, dibujando, midiendo y analizando cada texto legible que pudo encontrar.",
         "pause_after_ms": 500
@@ -8531,8 +8531,8 @@
       "sentence_index": 2,
       "block_type": "text",
       "title": "Capítulo 9 — La carrera por el desciframiento",
-      "text": "Su monografía de 2001, Zapotec Hieroglyphic Writing, publicada por Dumbarton Oaks en Washington, D.C., es la referencia fundamental del campo.",
-      "text_markdown": "Su monografía de 2001, *Zapotec Hieroglyphic Writing*, publicada por Dumbarton Oaks en Washington, D.C., es la referencia fundamental del campo.",
+      "text": "Su monografía de dos mil uno, Zapotec Hieroglyphic Writing, publicada por Dumbarton Oaks en Washington, D.C., es la referencia fundamental del campo.",
+      "text_markdown": "Su monografía de dos mil uno, *Zapotec Hieroglyphic Writing*, publicada por Dumbarton Oaks en Washington, D.C., es la referencia fundamental del campo.",
       "tts": {
         "text": "Su monografía de dos mil uno, Zapotec Hieroglyphic Writing, publicada por Dumbarton Oaks en Wáshington de ce, es la referencia fundamental del campo.",
         "pause_after_ms": 500
@@ -8606,8 +8606,8 @@
       "sentence_index": 0,
       "block_type": "text",
       "title": "Capítulo 9 — La carrera por el desciframiento",
-      "text": "Nicholas P. Carter, trabajando más recientemente, publicó en 2017 una reevaluación de los textos de la era imperial de Monte Albán que refinó nuestra comprensión de cómo funcionaban los nombres de lugares (topónimos) y los títulos en las inscripciones posteriores.",
-      "text_markdown": "**Nicholas P. Carter**, trabajando más recientemente, publicó en 2017 una reevaluación de los textos de la era imperial de Monte Albán que refinó nuestra comprensión de cómo funcionaban los nombres de lugares (topónimos) y los títulos en las inscripciones posteriores.",
+      "text": "Nicholas P. Carter, trabajando más recientemente, publicó en dos mil diecisiete una reevaluación de los textos de la era imperial de Monte Albán que refinó nuestra comprensión de cómo funcionaban los nombres de lugares (topónimos) y los títulos en las inscripciones posteriores.",
+      "text_markdown": "**Nicholas P. Carter**, trabajando más recientemente, publicó en dos mil diecisiete una reevaluación de los textos de la era imperial de Monte Albán que refinó nuestra comprensión de cómo funcionaban los nombres de lugares (topónimos) y los títulos en las inscripciones posteriores.",
       "tts": {
         "text": "Nicholas P. Carter, trabajando más recientemente, publicó en dos mil diecisiete una reevaluación de los textos de la era imperial de Monte Albán que refinó nuestra comprensión de cómo funcionaban los nombres de lugares (topónimos) y los títulos en las inscripciones posteriores.",
         "pause_after_ms": 500
@@ -8651,8 +8651,8 @@
       "sentence_index": 0,
       "block_type": "text",
       "title": "Capítulo 9 — La carrera por el desciframiento",
-      "text": "En 2018, investigadores del Instituto Nacional de Antropología e Historia de México — conocido por sus siglas, INAH — anunciaron el descubrimiento de un enorme friso de estuco en Atzompa, un sitio en la cima de una colina a aproximadamente un kilómetro al noroeste de Monte Albán que sirvió como comunidad satélite durante el apogeo de la ciudad.",
-      "text_markdown": "En 2018, investigadores del Instituto Nacional de Antropología e Historia de México — conocido por sus siglas, INAH — anunciaron el descubrimiento de un enorme friso de estuco en Atzompa, un sitio en la cima de una colina a aproximadamente un kilómetro al noroeste de Monte Albán que sirvió como comunidad satélite durante el apogeo de la ciudad.",
+      "text": "En dos mil dieciocho, investigadores del Instituto Nacional de Antropología e Historia de México — conocido por sus siglas, INAH — anunciaron el descubrimiento de un enorme friso de estuco en Atzompa, un sitio en la cima de una colina a aproximadamente un kilómetro al noroeste de Monte Albán que sirvió como comunidad satélite durante el apogeo de la ciudad.",
+      "text_markdown": "En dos mil dieciocho, investigadores del Instituto Nacional de Antropología e Historia de México — conocido por sus siglas, INAH — anunciaron el descubrimiento de un enorme friso de estuco en Atzompa, un sitio en la cima de una colina a aproximadamente un kilómetro al noroeste de Monte Albán que sirvió como comunidad satélite durante el apogeo de la ciudad.",
       "tts": {
         "text": "En dos mil dieciocho, investigadores del Instituto Nacional de Antropología e Historia de México — conocido por sus siglas, INAH — anunciaron el descubrimiento de un enorme friso de estuco en Atzompa, un sitio en la cima de una colina a aproximadamente un kilómetro al noroeste de Monte Albán que sirvió como comunidad satélite durante el apogeo de la ciudad.",
         "pause_after_ms": 500
@@ -8666,8 +8666,8 @@
       "sentence_index": 1,
       "block_type": "text",
       "title": "Capítulo 9 — La carrera por el desciframiento",
-      "text": "El friso se extiende aproximadamente quince metros — unos cincuenta pies — y data de entre el 650 y el 850 e.c.",
-      "text_markdown": "El friso se extiende aproximadamente quince metros — unos cincuenta pies — y data de entre el 650 y el 850 e.c.",
+      "text": "El friso se extiende aproximadamente quince metros — unos cincuenta pies — y data de entre el seiscientos cincuenta y el ochocientos cincuenta e.c.",
+      "text_markdown": "El friso se extiende aproximadamente quince metros — unos cincuenta pies — y data de entre el seiscientos cincuenta y el ochocientos cincuenta e.c.",
       "tts": {
         "text": "El friso se extiende aproximadamente quince metros — unos cincuenta pies — y data de entre el seiscientos cincuenta y el ochocientos cincuenta de la era común",
         "pause_after_ms": 500
@@ -9221,8 +9221,8 @@
       "block_type": "heading",
       "heading_level": 2,
       "title": "Capítulo 10 — El declive",
-      "text": "Capítulo 10 — El declive",
-      "text_markdown": "Capítulo 10 — El declive"
+      "text": "Capítulo diez — El declive",
+      "text_markdown": "Capítulo diez — El declive"
     },
     {
       "id": "ch10-617",
@@ -9232,8 +9232,8 @@
       "sentence_index": 0,
       "block_type": "text",
       "title": "Capítulo 10 — El declive",
-      "text": "Durante aproximadamente doscientos años, entre el 300 y el 500 e.c., Monte Albán estaba en la cúspide de su poder.",
-      "text_markdown": "Durante aproximadamente doscientos años, entre el 300 y el 500 e.c., Monte Albán estaba en la cúspide de su poder.",
+      "text": "Durante aproximadamente doscientos años, entre el trescientos y el quinientos e.c., Monte Albán estaba en la cúspide de su poder.",
+      "text_markdown": "Durante aproximadamente doscientos años, entre el trescientos y el quinientos e.c., Monte Albán estaba en la cúspide de su poder.",
       "tts": {
         "text": "Durante aproximadamente doscientos años, entre el trescientos y el quinientos de la era común, Monte Albán estaba en la cúspide de su poder.",
         "pause_after_ms": 500
@@ -9322,8 +9322,8 @@
       "sentence_index": 0,
       "block_type": "text",
       "title": "Capítulo 10 — El declive",
-      "text": "Teotihuacan era una ciudad en la Cuenca de México, a unos 360 kilómetros al noroeste de Monte Albán, cerca de lo que hoy es la Ciudad de México.",
-      "text_markdown": "Teotihuacan era una ciudad en la Cuenca de México, a unos 360 kilómetros al noroeste de Monte Albán, cerca de lo que hoy es la Ciudad de México.",
+      "text": "Teotihuacan era una ciudad en la Cuenca de México, a unos trescientos sesenta kilómetros al noroeste de Monte Albán, cerca de lo que hoy es la Ciudad de México.",
+      "text_markdown": "Teotihuacan era una ciudad en la Cuenca de México, a unos trescientos sesenta kilómetros al noroeste de Monte Albán, cerca de lo que hoy es la Ciudad de México.",
       "tts": {
         "text": "Teotiguacán era una ciudad en la Cuenca de México, a unos trescientos sesenta kilómetros al noroeste de Monte Albán, cerca de lo que hoy es la Ciudad de México.",
         "pause_after_ms": 500
@@ -9337,8 +9337,8 @@
       "sentence_index": 1,
       "block_type": "text",
       "title": "Capítulo 10 — El declive",
-      "text": "En su apogeo, pudo haber albergado entre 100.000 y 200.000 personas, convirtiéndola en una de las ciudades más grandes de la Tierra en aquella época.",
-      "text_markdown": "En su apogeo, pudo haber albergado entre 100.000 y 200.000 personas, convirtiéndola en una de las ciudades más grandes de la Tierra en aquella época.",
+      "text": "En su apogeo, pudo haber albergado entre cien mil y doscientos mil personas, convirtiéndola en una de las ciudades más grandes de la Tierra en aquella época.",
+      "text_markdown": "En su apogeo, pudo haber albergado entre cien mil y doscientos mil personas, convirtiéndola en una de las ciudades más grandes de la Tierra en aquella época.",
       "tts": {
         "text": "En su apogeo, pudo haber albergado entre cien mil y doscientas mil personas, convirtiéndola en una de las ciudades más grandes de la Tierra en aquella época.",
         "pause_after_ms": 500
@@ -9502,8 +9502,8 @@
       "sentence_index": 1,
       "block_type": "text",
       "title": "Capítulo 10 — El declive",
-      "text": "Las dos ciudades estaban separadas por 360 kilómetros de terreno montañoso escarpado, y no hay evidencia de que ninguna ciudad intentara conquistar a la otra.",
-      "text_markdown": "Las dos ciudades estaban separadas por 360 kilómetros de terreno montañoso escarpado, y no hay evidencia de que ninguna ciudad intentara conquistar a la otra.",
+      "text": "Las dos ciudades estaban separadas por trescientos sesenta kilómetros de terreno montañoso escarpado, y no hay evidencia de que ninguna ciudad intentara conquistar a la otra.",
+      "text_markdown": "Las dos ciudades estaban separadas por trescientos sesenta kilómetros de terreno montañoso escarpado, y no hay evidencia de que ninguna ciudad intentara conquistar a la otra.",
       "tts": {
         "text": "Las dos ciudades estaban separadas por trescientos sesenta kilómetros de terreno montañoso escarpado, y no hay evidencia de que ninguna ciudad intentara conquistar a la otra.",
         "pause_after_ms": 500
@@ -9712,8 +9712,8 @@
       "sentence_index": 0,
       "block_type": "text",
       "title": "Capítulo 10 — El declive",
-      "text": "Pero después de aproximadamente el 500 e.c., algo cambió.",
-      "text_markdown": "Pero después de aproximadamente el 500 e.c., algo cambió.",
+      "text": "Pero después de aproximadamente el quinientos e.c., algo cambió.",
+      "text_markdown": "Pero después de aproximadamente el quinientos e.c., algo cambió.",
       "tts": {
         "text": "Pero después de aproximadamente el quinientos de la era común, algo cambió.",
         "pause_after_ms": 800
@@ -9742,8 +9742,8 @@
       "sentence_index": 1,
       "block_type": "text",
       "title": "Capítulo 10 — El declive",
-      "text": "Javier Urcid, quien ha estudiado las inscripciones con más cuidado que quizás cualquier otra persona viva, describe lo que le sucedió al sistema de escritura durante el siguiente período — Período IIIB, aproximadamente del 500 al 800 e.c. — como \"devastador\".",
-      "text_markdown": "Javier Urcid, quien ha estudiado las inscripciones con más cuidado que quizás cualquier otra persona viva, describe lo que le sucedió al sistema de escritura durante el siguiente período — Período IIIB, aproximadamente del 500 al 800 e.c. — como \"devastador\".",
+      "text": "Javier Urcid, quien ha estudiado las inscripciones con más cuidado que quizás cualquier otra persona viva, describe lo que le sucedió al sistema de escritura durante el siguiente período — Período IIIB, aproximadamente del quinientos al ochocientos e.c. — como \"devastador\".",
+      "text_markdown": "Javier Urcid, quien ha estudiado las inscripciones con más cuidado que quizás cualquier otra persona viva, describe lo que le sucedió al sistema de escritura durante el siguiente período — Período IIIB, aproximadamente del quinientos al ochocientos e.c. — como \"devastador\".",
       "tts": {
         "text": "Javier Urcid, quien ha estudiado las inscripciones con más cuidado que quizás cualquier otra persona viva, describe lo que le sucedió al sistema de escritura durante el siguiente período — Período tres be, aproximadamente del quinientos al ochocientos de la era común — como \"devastador\".",
         "pause_after_ms": 800
@@ -9893,8 +9893,8 @@
       "block_type": "heading",
       "heading_level": 2,
       "title": "Capítulo 11 — El abandono",
-      "text": "Capítulo 11 — La partida",
-      "text_markdown": "Capítulo 11 — La partida"
+      "text": "Capítulo once — La partida",
+      "text_markdown": "Capítulo once — La partida"
     },
     {
       "id": "ch11-662",
@@ -9904,8 +9904,8 @@
       "sentence_index": 0,
       "block_type": "text",
       "title": "Capítulo 11 — El abandono",
-      "text": "Entre aproximadamente el 750 y el 900 e.c., la gente de Monte Albán se fue.",
-      "text_markdown": "Entre aproximadamente el 750 y el 900 e.c., la gente de Monte Albán se fue.",
+      "text": "Entre aproximadamente el setecientos cincuenta y el novecientos e.c., la gente de Monte Albán se fue.",
+      "text_markdown": "Entre aproximadamente el setecientos cincuenta y el novecientos e.c., la gente de Monte Albán se fue.",
       "tts": {
         "text": "Entre aproximadamente el setecientos cincuenta y el novecientos de la era común, la gente de Monte Albán se fue.",
         "pause_after_ms": 800
@@ -10084,8 +10084,8 @@
       "sentence_index": 4,
       "block_type": "text",
       "title": "Capítulo 11 — El abandono",
-      "text": "Para el 900 e.c., la cima de la montaña que había sido hogar de 25.000 o 30.000 personas estaba esencialmente vacía.",
-      "text_markdown": "Para el 900 e.c., la cima de la montaña que había sido hogar de 25.000 o 30.000 personas estaba esencialmente vacía.",
+      "text": "Para el novecientos e.c., la cima de la montaña que había sido hogar de veinticinco mil o treinta mil personas estaba esencialmente vacía.",
+      "text_markdown": "Para el novecientos e.c., la cima de la montaña que había sido hogar de veinticinco mil o treinta mil personas estaba esencialmente vacía.",
       "tts": {
         "text": "Para el novecientos de la era común, la cima de la montaña que había sido hogar de veinticinco mil o treinta mil personas estaba esencialmente vacía.",
         "pause_after_ms": 800
@@ -10296,8 +10296,8 @@
       "sentence_index": 3,
       "block_type": "text",
       "title": "Capítulo 11 — El abandono",
-      "text": "Teotihuacan ya había caído, alrededor del 550 e.c., en un evento que pudo haber involucrado una rebelión interna y la quema deliberada del centro de la ciudad.",
-      "text_markdown": "Teotihuacan ya había caído, alrededor del 550 e.c., en un evento que pudo haber involucrado una rebelión interna y la quema deliberada del centro de la ciudad.",
+      "text": "Teotihuacan ya había caído, alrededor del quinientos cincuenta e.c., en un evento que pudo haber involucrado una rebelión interna y la quema deliberada del centro de la ciudad.",
+      "text_markdown": "Teotihuacan ya había caído, alrededor del quinientos cincuenta e.c., en un evento que pudo haber involucrado una rebelión interna y la quema deliberada del centro de la ciudad.",
       "tts": {
         "text": "Teotiguacán ya había caído, alrededor del quinientos cincuenta de la era común, en un evento que pudo haber involucrado una rebelión interna y la quema deliberada del centro de la ciudad.",
         "pause_after_ms": 500
@@ -10446,8 +10446,8 @@
       "sentence_index": 0,
       "block_type": "text",
       "title": "Capítulo 11 — El abandono",
-      "text": "Degradación ambiental. Mantener una ciudad de 25.000 personas en la cima de una montaña sin fuente natural de agua durante más de mil años cobra un precio enorme.",
-      "text_markdown": "**Degradación ambiental.** Mantener una ciudad de 25.000 personas en la cima de una montaña sin fuente natural de agua durante más de mil años cobra un precio enorme.",
+      "text": "Degradación ambiental. Mantener una ciudad de veinticinco mil personas en la cima de una montaña sin fuente natural de agua durante más de mil años cobra un precio enorme.",
+      "text_markdown": "**Degradación ambiental.** Mantener una ciudad de veinticinco mil personas en la cima de una montaña sin fuente natural de agua durante más de mil años cobra un precio enorme.",
       "tts": {
         "text": "Degradación ambiental. Mantener una ciudad de veinticinco mil personas en la cima de una montaña sin fuente natural de agua durante más de mil años cobra un precio enorme.",
         "pause_after_ms": 500
@@ -10611,8 +10611,8 @@
       "sentence_index": 0,
       "block_type": "text",
       "title": "Capítulo 11 — El abandono",
-      "text": "El colapso de las redes comerciales. Cuando Teotihuacan cayó alrededor del 550 e.c., Monte Albán perdió a su socio diplomático y económico más importante.",
-      "text_markdown": "**El colapso de las redes comerciales.** Cuando Teotihuacan cayó alrededor del 550 e.c., Monte Albán perdió a su socio diplomático y económico más importante.",
+      "text": "El colapso de las redes comerciales. Cuando Teotihuacan cayó alrededor del quinientos cincuenta e.c., Monte Albán perdió a su socio diplomático y económico más importante.",
+      "text_markdown": "**El colapso de las redes comerciales.** Cuando Teotihuacan cayó alrededor del quinientos cincuenta e.c., Monte Albán perdió a su socio diplomático y económico más importante.",
       "tts": {
         "text": "El colapso de las redes comerciales. Cuando Teotiguacán cayó alrededor del quinientos cincuenta de la era común, Monte Albán perdió a su socio diplomático y económico más importante.",
         "pause_after_ms": 500
@@ -10776,8 +10776,8 @@
       "sentence_index": 1,
       "block_type": "text",
       "title": "Capítulo 11 — El abandono",
-      "text": "Estudios de isótopos de oxígeno en estalagmitas de cuevas del sur de México revelan que el período entre aproximadamente el 750 y el 900 e.c. estuvo marcado por una serie de sequías severas — no una única sequía continua, sino episodios repetidos de lluvias excepcionalmente bajas, cada uno con una duración de años o décadas.",
-      "text_markdown": "Estudios de isótopos de oxígeno en estalagmitas de cuevas del sur de México revelan que el período entre aproximadamente el 750 y el 900 e.c. estuvo marcado por una serie de sequías severas — no una única sequía continua, sino episodios repetidos de lluvias excepcionalmente bajas, cada uno con una duración de años o décadas.",
+      "text": "Estudios de isótopos de oxígeno en estalagmitas de cuevas del sur de México revelan que el período entre aproximadamente el setecientos cincuenta y el novecientos e.c. estuvo marcado por una serie de sequías severas — no una única sequía continua, sino episodios repetidos de lluvias excepcionalmente bajas, cada uno con una duración de años o décadas.",
+      "text_markdown": "Estudios de isótopos de oxígeno en estalagmitas de cuevas del sur de México revelan que el período entre aproximadamente el setecientos cincuenta y el novecientos e.c. estuvo marcado por una serie de sequías severas — no una única sequía continua, sino episodios repetidos de lluvias excepcionalmente bajas, cada uno con una duración de años o décadas.",
       "tts": {
         "text": "Estudios de isótopos de oxígeno en estalagmitas de cuevas del sur de México revelan que el período entre aproximadamente el setecientos cincuenta y el novecientos de la era común estuvo marcado por una serie de sequías severas — no una única sequía continua, sino episodios repetidos de lluvias excepcionalmente bajas, cada uno con una duración de años o décadas.",
         "pause_after_ms": 500
@@ -11032,8 +11032,8 @@
       "block_type": "heading",
       "heading_level": 2,
       "title": "Capítulo 12 — La vida después de una ciudad",
-      "text": "Capítulo 12 — La vida después de una ciudad",
-      "text_markdown": "Capítulo 12 — La vida después de una ciudad"
+      "text": "Capítulo doce — La vida después de una ciudad",
+      "text_markdown": "Capítulo doce — La vida después de una ciudad"
     },
     {
       "id": "ch12-738",
@@ -11238,8 +11238,8 @@
       "sentence_index": 0,
       "block_type": "text",
       "title": "Capítulo 12 — La vida después de una ciudad",
-      "text": "Alfonso Caso descubrió la Tumba 7 el 9 de enero de 1932.",
-      "text_markdown": "Alfonso Caso descubrió la Tumba 7 el 9 de enero de 1932.",
+      "text": "Alfonso Caso descubrió la Tumba 7 el 9 de enero de mil novecientos treinta y dos.",
+      "text_markdown": "Alfonso Caso descubrió la Tumba 7 el 9 de enero de mil novecientos treinta y dos.",
       "tts": {
         "text": "Alfonso Caso descubrió la Tumba siete el nueve de enero de mil novecientos treinta y dos.",
         "pause_after_ms": 500
@@ -11690,8 +11690,8 @@
       "sentence_index": 0,
       "block_type": "text",
       "title": "Capítulo 12 — La vida después de una ciudad",
-      "text": "Cuando los españoles finalmente llegaron al Valle de Oaxaca a principios de la década de 1520, Monte Albán había sido una ruina durante seiscientos años.",
-      "text_markdown": "Cuando los españoles finalmente llegaron al Valle de Oaxaca a principios de la década de 1520, Monte Albán había sido una ruina durante seiscientos años.",
+      "text": "Cuando los españoles finalmente llegaron al Valle de Oaxaca a principios de la década de mil quinientos veinte, Monte Albán había sido una ruina durante seiscientos años.",
+      "text_markdown": "Cuando los españoles finalmente llegaron al Valle de Oaxaca a principios de la década de mil quinientos veinte, Monte Albán había sido una ruina durante seiscientos años.",
       "tts": {
         "text": "Cuando los españoles finalmente llegaron al Valle de Oahaca a principios de la década de mil quinientos veinte, Monte Albán había sido una ruina durante seiscientos años.",
         "pause_after_ms": 500
@@ -11705,8 +11705,8 @@
       "sentence_index": 1,
       "block_type": "text",
       "title": "Capítulo 12 — La vida después de una ciudad",
-      "text": "El conquistador Francisco de Orozco encabezó una expedición militar al valle en 1521 y encontró comunidades zapotecas y mixtecas viviendo en el fondo del valle, en pueblos como Zaachila y Mitla.",
-      "text_markdown": "El conquistador Francisco de Orozco encabezó una expedición militar al valle en 1521 y encontró comunidades zapotecas y mixtecas viviendo en el fondo del valle, en pueblos como Zaachila y Mitla.",
+      "text": "El conquistador Francisco de Orozco encabezó una expedición militar al valle en mil quinientos veintiuno y encontró comunidades zapotecas y mixtecas viviendo en el fondo del valle, en pueblos como Zaachila y Mitla.",
+      "text_markdown": "El conquistador Francisco de Orozco encabezó una expedición militar al valle en mil quinientos veintiuno y encontró comunidades zapotecas y mixtecas viviendo en el fondo del valle, en pueblos como Zaachila y Mitla.",
       "tts": {
         "text": "El conquistador Francisco de Orozco encabezó una expedición militar al valle en mil quinientos veintiuno y encontró comunidades zapotecas y mixtecas viviendo en el fondo del valle, en pueblos como Zaachila y Mitla.",
         "pause_after_ms": 500
@@ -11750,8 +11750,8 @@
       "sentence_index": 0,
       "block_type": "text",
       "title": "Capítulo 12 — La vida después de una ciudad",
-      "text": "El primer trabajo arqueológico serio en Monte Albán fue emprendido por Leopoldo Batres en 1902, durante el gobierno del presidente Porfirio Díaz.",
-      "text_markdown": "El primer trabajo arqueológico serio en Monte Albán fue emprendido por Leopoldo Batres en 1902, durante el gobierno del presidente Porfirio Díaz.",
+      "text": "El primer trabajo arqueológico serio en Monte Albán fue emprendido por Leopoldo Batres en mil novecientos dos, durante el gobierno del presidente Porfirio Díaz.",
+      "text_markdown": "El primer trabajo arqueológico serio en Monte Albán fue emprendido por Leopoldo Batres en mil novecientos dos, durante el gobierno del presidente Porfirio Díaz.",
       "tts": {
         "text": "El primer trabajo arqueológico serio en Monte Albán fue emprendido por Leopoldo Batres en mil novecientos dos, durante el gobierno del presidente Porfirio Díaz.",
         "pause_after_ms": 500
@@ -11780,8 +11780,8 @@
       "sentence_index": 2,
       "block_type": "text",
       "title": "Capítulo 12 — La vida después de una ciudad",
-      "text": "Fue Caso, a partir de 1931, quien aportó rigor científico al sitio y transformó nuestra comprensión de lo que había sido Monte Albán.",
-      "text_markdown": "Fue Caso, a partir de 1931, quien aportó rigor científico al sitio y transformó nuestra comprensión de lo que había sido Monte Albán.",
+      "text": "Fue Caso, a partir de mil novecientos treinta y uno, quien aportó rigor científico al sitio y transformó nuestra comprensión de lo que había sido Monte Albán.",
+      "text_markdown": "Fue Caso, a partir de mil novecientos treinta y uno, quien aportó rigor científico al sitio y transformó nuestra comprensión de lo que había sido Monte Albán.",
       "tts": {
         "text": "Fue Caso, a partir de mil novecientos treinta y uno, quien aportó rigor científico al sitio y transformó nuestra comprensión de lo que había sido Monte Albán.",
         "pause_after_ms": 800
@@ -11810,8 +11810,8 @@
       "sentence_index": 1,
       "block_type": "text",
       "title": "Capítulo 12 — La vida después de una ciudad",
-      "text": "Se convirtió en Patrimonio de la Humanidad de la UNESCO en 1987, una designación que ha ayudado a protegerlo del desarrollo urbano y al mismo tiempo lo ha convertido en uno de los sitios arqueológicos más visitados de México.",
-      "text_markdown": "Se convirtió en Patrimonio de la Humanidad de la UNESCO en 1987, una designación que ha ayudado a protegerlo del desarrollo urbano y al mismo tiempo lo ha convertido en uno de los sitios arqueológicos más visitados de México.",
+      "text": "Se convirtió en Patrimonio de la Humanidad de la UNESCO en mil novecientos ochenta y siete, una designación que ha ayudado a protegerlo del desarrollo urbano y al mismo tiempo lo ha convertido en uno de los sitios arqueológicos más visitados de México.",
+      "text_markdown": "Se convirtió en Patrimonio de la Humanidad de la UNESCO en mil novecientos ochenta y siete, una designación que ha ayudado a protegerlo del desarrollo urbano y al mismo tiempo lo ha convertido en uno de los sitios arqueológicos más visitados de México.",
       "tts": {
         "text": "Se convirtió en Patrimonio de la Humanidad de la UNESCO en mil novecientos ochenta y siete, una designación que ha ayudado a protegerlo del desarrollo urbano y al mismo tiempo lo ha convertido en uno de los sitios arqueológicos más visitados de México.",
         "pause_after_ms": 500
@@ -11825,8 +11825,8 @@
       "sentence_index": 2,
       "block_type": "text",
       "title": "Capítulo 12 — La vida después de una ciudad",
-      "text": "Hoy, más de 350.000 personas visitan el sitio cada año, subiendo la misma montaña que los fundadores zapotecas escalaron hace 2.500 años.",
-      "text_markdown": "Hoy, más de 350.000 personas visitan el sitio cada año, subiendo la misma montaña que los fundadores zapotecas escalaron hace 2.500 años.",
+      "text": "Hoy, más de trescientos cincuenta mil personas visitan el sitio cada año, subiendo la misma montaña que los fundadores zapotecas escalaron hace dos mil quinientos años.",
+      "text_markdown": "Hoy, más de trescientos cincuenta mil personas visitan el sitio cada año, subiendo la misma montaña que los fundadores zapotecas escalaron hace dos mil quinientos años.",
       "tts": {
         "text": "Hoy, más de trescientas cincuenta mil personas visitan el sitio cada año, subiendo la misma montaña que los fundadores zapotecas escalaron hace dos mil quinientos años.",
         "pause_after_ms": 800
@@ -11958,8 +11958,8 @@
       "block_type": "heading",
       "heading_level": 2,
       "title": "Capítulo 13 — Mitla: El lugar de los muertos",
-      "text": "Capítulo 13 — Mitla: El lugar de los muertos",
-      "text_markdown": "Capítulo 13 — Mitla: El lugar de los muertos"
+      "text": "Capítulo trece — Mitla: El lugar de los muertos",
+      "text_markdown": "Capítulo trece — Mitla: El lugar de los muertos"
     },
     {
       "id": "ch13-800",
@@ -12572,8 +12572,8 @@
       "block_type": "heading",
       "heading_level": 2,
       "title": "Capítulo 14 — El juego de pelota",
-      "text": "Capítulo 14 — El juego de pelota",
-      "text_markdown": "Capítulo 14 — El juego de pelota"
+      "text": "Capítulo catorce — El juego de pelota",
+      "text_markdown": "Capítulo catorce — El juego de pelota"
     },
     {
       "id": "ch14-841",
@@ -12598,8 +12598,8 @@
       "sentence_index": 1,
       "block_type": "text",
       "title": "Capítulo 14 — El juego de pelota",
-      "text": "El campo de juego mide unos 25 metros de largo.",
-      "text_markdown": "El campo de juego mide unos 25 metros de largo.",
+      "text": "El campo de juego mide unos veinticinco metros de largo.",
+      "text_markdown": "El campo de juego mide unos veinticinco metros de largo.",
       "tts": {
         "text": "El campo de juego mide unos veinticinco metros de largo.",
         "pause_after_ms": 500
@@ -12643,8 +12643,8 @@
       "sentence_index": 0,
       "block_type": "text",
       "title": "Capítulo 14 — El juego de pelota",
-      "text": "El juego de pelota mesoamericano se jugó durante más de tres mil años, desde al menos el 1400 a.e.c. hasta la conquista española en el siglo XVI, a lo largo de un territorio que se extendía desde Honduras hasta Arizona.",
-      "text_markdown": "El juego de pelota mesoamericano se jugó durante más de tres mil años, desde al menos el 1400 a.e.c. hasta la conquista española en el siglo XVI, a lo largo de un territorio que se extendía desde Honduras hasta Arizona.",
+      "text": "El juego de pelota mesoamericano se jugó durante más de tres mil años, desde al menos el mil cuatrocientos a.e.c. hasta la conquista española en el siglo XVI, a lo largo de un territorio que se extendía desde Honduras hasta Arizona.",
+      "text_markdown": "El juego de pelota mesoamericano se jugó durante más de tres mil años, desde al menos el mil cuatrocientos a.e.c. hasta la conquista española en el siglo XVI, a lo largo de un territorio que se extendía desde Honduras hasta Arizona.",
       "tts": {
         "text": "El juego de pelota mesoamericano se jugó durante más de tres mil años, desde al menos el mil cuatrocientos antes de la era común hasta la conquista española en el siglo dieciséis, a lo largo de un territorio que se extendía desde Honduras hasta Arizona.",
         "pause_after_ms": 500
@@ -13138,8 +13138,8 @@
       "sentence_index": 1,
       "block_type": "text",
       "title": "Capítulo 14 — El juego de pelota",
-      "text": "Cuando te encuentras en la cancha de juego de pelota de Monte Albán e imaginas el sonido de una pesada pelota de caucho golpeando la piedra, los gritos de jugadores y espectadores, el peso de la expectativa ritual — la distancia entre el 500 e.c. y hoy se reduce a casi nada.",
-      "text_markdown": "Cuando te encuentras en la cancha de juego de pelota de Monte Albán e imaginas el sonido de una pesada pelota de caucho golpeando la piedra, los gritos de jugadores y espectadores, el peso de la expectativa ritual — la distancia entre el 500 e.c. y hoy se reduce a casi nada.",
+      "text": "Cuando te encuentras en la cancha de juego de pelota de Monte Albán e imaginas el sonido de una pesada pelota de caucho golpeando la piedra, los gritos de jugadores y espectadores, el peso de la expectativa ritual — la distancia entre el quinientos e.c. y hoy se reduce a casi nada.",
+      "text_markdown": "Cuando te encuentras en la cancha de juego de pelota de Monte Albán e imaginas el sonido de una pesada pelota de caucho golpeando la piedra, los gritos de jugadores y espectadores, el peso de la expectativa ritual — la distancia entre el quinientos e.c. y hoy se reduce a casi nada.",
       "tts": {
         "text": "Cuando te encuentras en la cancha de juego de pelota de Monte Albán e imaginas el sonido de una pesada pelota de caucho golpeando la piedra, los gritos de jugadores y espectadores, el peso de la expectativa ritual — la distancia entre el quinientos de la era común y hoy se reduce a casi nada.",
         "pause_after_ms": 800
@@ -13154,8 +13154,8 @@
       "block_type": "heading",
       "heading_level": 2,
       "title": "Capítulo 15 — Lo que sucedía en el resto del mundo",
-      "text": "Capítulo 15 — Lo que estaba pasando en el resto del mundo",
-      "text_markdown": "Capítulo 15 — Lo que estaba pasando en el resto del mundo"
+      "text": "Capítulo quince — Lo que estaba pasando en el resto del mundo",
+      "text_markdown": "Capítulo quince — Lo que estaba pasando en el resto del mundo"
     },
     {
       "id": "ch15-880",
@@ -13225,8 +13225,8 @@
       "sentence_index": 0,
       "block_type": "text",
       "title": "Capítulo 15 — Lo que sucedía en el resto del mundo",
-      "text": "Cuando Monte Albán fue fundado (~500 a.e.c.):",
-      "text_markdown": "**Cuando Monte Albán fue fundado (~500 a.e.c.):**",
+      "text": "Cuando Monte Albán fue fundado (~quinientos a.e.c.):",
+      "text_markdown": "**Cuando Monte Albán fue fundado (~quinientos a.e.c.):**",
       "tts": {
         "text": "Cuando Monte Albán fue fundado (aproximadamente quinientos antes de la era común):",
         "pause_after_ms": 800
@@ -13510,8 +13510,8 @@
       "sentence_index": 0,
       "block_type": "text",
       "title": "Capítulo 15 — Lo que sucedía en el resto del mundo",
-      "text": "Cuando Monte Albán estaba en su apogeo (~300-500 e.c.):",
-      "text_markdown": "**Cuando Monte Albán estaba en su apogeo (~300-500 e.c.):**",
+      "text": "Cuando Monte Albán estaba en su apogeo (~trescientos a quinientos e.c.):",
+      "text_markdown": "**Cuando Monte Albán estaba en su apogeo (~trescientos a quinientos e.c.):**",
       "tts": {
         "text": "Cuando Monte Albán estaba en su apogeo (aproximadamente trescientos-quinientos de la era común):",
         "pause_after_ms": 800
@@ -13540,8 +13540,8 @@
       "sentence_index": 1,
       "block_type": "text",
       "title": "Capítulo 15 — Lo que sucedía en el resto del mundo",
-      "text": "El último emperador romano de Occidente fue depuesto en el 476 e.c. — justo en medio de la edad de oro de Monte Albán.",
-      "text_markdown": "El último emperador romano de Occidente fue depuesto en el 476 e.c. — justo en medio de la edad de oro de Monte Albán.",
+      "text": "El último emperador romano de Occidente fue depuesto en el cuatrocientos setenta y seis e.c. — justo en medio de la edad de oro de Monte Albán.",
+      "text_markdown": "El último emperador romano de Occidente fue depuesto en el cuatrocientos setenta y seis e.c. — justo en medio de la edad de oro de Monte Albán.",
       "tts": {
         "text": "El último emperador romano de Occidente fue depuesto en el cuatrocientos setenta y seis de la era común — justo en medio de la edad de oro de Monte Albán.",
         "pause_after_ms": 500
@@ -13630,8 +13630,8 @@
       "sentence_index": 0,
       "block_type": "text",
       "title": "Capítulo 15 — Lo que sucedía en el resto del mundo",
-      "text": "Cuando Monte Albán fue abandonado (~750-900 e.c.):",
-      "text_markdown": "**Cuando Monte Albán fue abandonado (~750-900 e.c.):**",
+      "text": "Cuando Monte Albán fue abandonado (~setecientos cincuenta a novecientos e.c.):",
+      "text_markdown": "**Cuando Monte Albán fue abandonado (~setecientos cincuenta a novecientos e.c.):**",
       "tts": {
         "text": "Cuando Monte Albán fue abandonado (aproximadamente setecientos cincuenta-novecientos de la era común):",
         "pause_after_ms": 800
@@ -13645,8 +13645,8 @@
       "sentence_index": 0,
       "block_type": "text",
       "title": "Capítulo 15 — Lo que sucedía en el resto del mundo",
-      "text": "En Europa, Carlomagno fue coronado Emperador del Sacro Imperio Romano en el 800 e.c. e intentaba reconstruir una Europa cristiana unificada a partir de las ruinas de Roma.",
-      "text_markdown": "En Europa, Carlomagno fue coronado Emperador del Sacro Imperio Romano en el 800 e.c. e intentaba reconstruir una Europa cristiana unificada a partir de las ruinas de Roma.",
+      "text": "En Europa, Carlomagno fue coronado Emperador del Sacro Imperio Romano en el ochocientos e.c. e intentaba reconstruir una Europa cristiana unificada a partir de las ruinas de Roma.",
+      "text_markdown": "En Europa, Carlomagno fue coronado Emperador del Sacro Imperio Romano en el ochocientos e.c. e intentaba reconstruir una Europa cristiana unificada a partir de las ruinas de Roma.",
       "tts": {
         "text": "En Europa, Carlomagno fue coronado Emperador del Sacro Imperio Romano en el ochocientos de la era común e intentaba reconstruir una Europa cristiana unificada a partir de las ruinas de Roma.",
         "pause_after_ms": 500
@@ -14331,8 +14331,8 @@
       "sentence_index": 1,
       "block_type": "text",
       "title": "Nombres y términos clave",
-      "text": "Aquí se descubrió un importante friso de estuco con glifos zapotecas en 2018.",
-      "text_markdown": "Aquí se descubrió un importante friso de estuco con glifos zapotecas en 2018.",
+      "text": "Aquí se descubrió un importante friso de estuco con glifos zapotecas en dos mil dieciocho.",
+      "text_markdown": "Aquí se descubrió un importante friso de estuco con glifos zapotecas en dos mil dieciocho.",
       "tts": {
         "text": "Aquí se descubrió un importante friso de estuco con glifos zapotecas en dos mil dieciocho.",
         "pause_after_ms": 800
@@ -14376,8 +14376,8 @@
       "sentence_index": 0,
       "block_type": "text",
       "title": "Nombres y términos clave",
-      "text": "Caso, Alfonso (1896–1970) — Arqueólogo mexicano que comenzó la excavación sistemática de Monte Albán en 1931, descubrió la Tumba 7 en 1932 y sentó las bases de la epigrafía zapoteca y mixteca.",
-      "text_markdown": "**Caso, Alfonso** (1896–1970) — Arqueólogo mexicano que comenzó la excavación sistemática de Monte Albán en 1931, descubrió la Tumba 7 en 1932 y sentó las bases de la epigrafía zapoteca y mixteca.",
+      "text": "Caso, Alfonso (mil ochocientos noventa y seis–mil novecientos setenta) — Arqueólogo mexicano que comenzó la excavación sistemática de Monte Albán en mil novecientos treinta y uno, descubrió la Tumba 7 en mil novecientos treinta y dos y sentó las bases de la epigrafía zapoteca y mixteca.",
+      "text_markdown": "**Caso, Alfonso** (mil ochocientos noventa y seis–mil novecientos setenta) — Arqueólogo mexicano que comenzó la excavación sistemática de Monte Albán en mil novecientos treinta y uno, descubrió la Tumba 7 en mil novecientos treinta y dos y sentó las bases de la epigrafía zapoteca y mixteca.",
       "tts": {
         "text": "Caso, Alfonso (mil ochocientos noventa y seis–mil novecientos setenta) — Arqueólogo mexicano que comenzó la excavación sistemática de Monte Albán en mil novecientos treinta y uno, descubrió la Tumba siete en mil novecientos treinta y dos y sentó las bases de la epigrafía zapoteca y mixteca.",
         "pause_after_ms": 800
@@ -14481,8 +14481,8 @@
       "sentence_index": 0,
       "block_type": "text",
       "title": "Nombres y términos clave",
-      "text": "Flannery, Kent — Arqueólogo estadounidense, colaborador de larga data de Joyce Marcus, coautor de *Zapotec Civilization* (1996).",
-      "text_markdown": "**Flannery, Kent** — Arqueólogo estadounidense, colaborador de larga data de Joyce Marcus, coautor de *Zapotec Civilization* (1996).",
+      "text": "Flannery, Kent — Arqueólogo estadounidense, colaborador de larga data de Joyce Marcus, coautor de *Zapotec Civilization* (mil novecientos noventa y seis).",
+      "text_markdown": "**Flannery, Kent** — Arqueólogo estadounidense, colaborador de larga data de Joyce Marcus, coautor de *Zapotec Civilization* (mil novecientos noventa y seis).",
       "tts": {
         "text": "Flannery, Kent — Arqueólogo estadounidense, colaborador de larga data de Joyce Marcus, coautor de *Zapotec Civilization* (mil novecientos noventa y seis).",
         "pause_after_ms": 800
@@ -14631,8 +14631,8 @@
       "sentence_index": 0,
       "block_type": "text",
       "title": "Nombres y términos clave",
-      "text": "Monte Albán — La capital en la cima de una montaña de la civilización zapoteca en el Valle de Oaxaca, ocupada aproximadamente entre el 500 a.e.c. y el 900 e.c.",
-      "text_markdown": "**Monte Albán** — La capital en la cima de una montaña de la civilización zapoteca en el Valle de Oaxaca, ocupada aproximadamente entre el 500 a.e.c. y el 900 e.c.",
+      "text": "Monte Albán — La capital en la cima de una montaña de la civilización zapoteca en el Valle de Oaxaca, ocupada aproximadamente entre el quinientos a.e.c. y el novecientos e.c.",
+      "text_markdown": "**Monte Albán** — La capital en la cima de una montaña de la civilización zapoteca en el Valle de Oaxaca, ocupada aproximadamente entre el quinientos a.e.c. y el novecientos e.c.",
       "tts": {
         "text": "Monte Albán — La capital en la cima de una montaña de la civilización zapoteca en el Valle de Oahaca, ocupada aproximadamente entre el quinientos antes de la era común y el novecientos de la era común",
         "pause_after_ms": 800
@@ -14676,8 +14676,8 @@
       "sentence_index": 0,
       "block_type": "text",
       "title": "Nombres y términos clave",
-      "text": "Clasificación por periodos — La historia de Monte Albán es dividida por los arqueólogos en fases: Periodo I (500–100 a.e.c.), Periodo II (100 a.e.c.–200 e.c.), Periodo IIIA (200–500 e.c.), Periodo IIIB (500–800 e.c.), Periodo IV (800–1300 e.c.), Periodo V (1300–1521 e.c.).",
-      "text_markdown": "**Clasificación por periodos** — La historia de Monte Albán es dividida por los arqueólogos en fases: Periodo I (500–100 a.e.c.), Periodo II (100 a.e.c.–200 e.c.), Periodo IIIA (200–500 e.c.), Periodo IIIB (500–800 e.c.), Periodo IV (800–1300 e.c.), Periodo V (1300–1521 e.c.).",
+      "text": "Clasificación por periodos — La historia de Monte Albán es dividida por los arqueólogos en fases: Periodo I (quinientos–cien a.e.c.), Periodo II (cien a.e.c.–doscientos e.c.), Periodo IIIA (doscientos–quinientos e.c.), Periodo IIIB (quinientos–ochocientos e.c.), Periodo IV (ochocientos–mil trescientos e.c.), Periodo V (mil trescientos–mil quinientos veintiuno e.c.).",
+      "text_markdown": "**Clasificación por periodos** — La historia de Monte Albán es dividida por los arqueólogos en fases: Periodo I (quinientos–cien a.e.c.), Periodo II (cien a.e.c.–doscientos e.c.), Periodo IIIA (doscientos–quinientos e.c.), Periodo IIIB (quinientos–ochocientos e.c.), Periodo IV (ochocientos–mil trescientos e.c.), Periodo V (mil trescientos–mil quinientos veintiuno e.c.).",
       "tts": {
         "text": "Clasificación por periodos — La historia de Monte Albán es dividida por los arqueólogos en fases: Periodo uno (quinientos–cien antes de la era común), Periodo dos (cien antes de la era común–doscientos de la era común), Periodo tres a (doscientos–quinientos de la era común), Periodo tres be (quinientos–ochocientos de la era común), Periodo cuatro (ochocientos–mil trescientos de la era común), Periodo cinco (mil trescientos–mil quinientos veintiuno de la era común).",
         "pause_after_ms": 800
@@ -14691,8 +14691,8 @@
       "sentence_index": 0,
       "block_type": "text",
       "title": "Nombres y términos clave",
-      "text": "Piye — El nombre zapoteca del calendario ritual de 260 días utilizado en toda Mesoamérica, que combina veinte nombres de días con trece números.",
-      "text_markdown": "**Piye** — El nombre zapoteca del calendario ritual de 260 días utilizado en toda Mesoamérica, que combina veinte nombres de días con trece números.",
+      "text": "Piye — El nombre zapoteca del calendario ritual de doscientos sesenta días utilizado en toda Mesoamérica, que combina veinte nombres de días con trece números.",
+      "text_markdown": "**Piye** — El nombre zapoteca del calendario ritual de doscientos sesenta días utilizado en toda Mesoamérica, que combina veinte nombres de días con trece números.",
       "tts": {
         "text": "Piye — El nombre zapoteca del calendario ritual de doscientos sesenta días utilizado en toda Mesoamérica, que combina veinte nombres de días con trece números.",
         "pause_after_ms": 800
@@ -14781,8 +14781,8 @@
       "sentence_index": 0,
       "block_type": "text",
       "title": "Nombres y términos clave",
-      "text": "Teotihuacan — Una ciudad masiva en la Cuenca de México, cerca de la actual Ciudad de México, que fue la potencia dominante en Mesoamérica aproximadamente entre el 100 a.e.c. y el 550 e.c.",
-      "text_markdown": "**Teotihuacan** — Una ciudad masiva en la Cuenca de México, cerca de la actual Ciudad de México, que fue la potencia dominante en Mesoamérica aproximadamente entre el 100 a.e.c. y el 550 e.c.",
+      "text": "Teotihuacan — Una ciudad masiva en la Cuenca de México, cerca de la actual Ciudad de México, que fue la potencia dominante en Mesoamérica aproximadamente entre el cien a.e.c. y el quinientos cincuenta e.c.",
+      "text_markdown": "**Teotihuacan** — Una ciudad masiva en la Cuenca de México, cerca de la actual Ciudad de México, que fue la potencia dominante en Mesoamérica aproximadamente entre el cien a.e.c. y el quinientos cincuenta e.c.",
       "tts": {
         "text": "Teotiguacán — Una ciudad masiva en la Cuenca de México, cerca de la actual Ciudad de México, que fue la potencia dominante en Mesoamérica aproximadamente entre el cien antes de la era común y el quinientos cincuenta de la era común",
         "pause_after_ms": 800
@@ -14811,8 +14811,8 @@
       "sentence_index": 1,
       "block_type": "text",
       "title": "Nombres y términos clave",
-      "text": "Descubierta por Alfonso Caso en 1932, contenía espectaculares ofrendas funerarias de oro, turquesa y cristal.",
-      "text_markdown": "Descubierta por Alfonso Caso en 1932, contenía espectaculares ofrendas funerarias de oro, turquesa y cristal.",
+      "text": "Descubierta por Alfonso Caso en mil novecientos treinta y dos, contenía espectaculares ofrendas funerarias de oro, turquesa y cristal.",
+      "text_markdown": "Descubierta por Alfonso Caso en mil novecientos treinta y dos, contenía espectaculares ofrendas funerarias de oro, turquesa y cristal.",
       "tts": {
         "text": "Descubierta por Alfonso Caso en mil novecientos treinta y dos, contenía espectaculares ofrendas funerarias de oro, turquesa y cristal.",
         "pause_after_ms": 800
@@ -14826,8 +14826,8 @@
       "sentence_index": 0,
       "block_type": "text",
       "title": "Nombres y términos clave",
-      "text": "Urcid, Javier — Epigrafista que catalogó más de 200 inscripciones zapotecas y propuso el modelo logo-silábico de la escritura zapoteca.",
-      "text_markdown": "**Urcid, Javier** — Epigrafista que catalogó más de 200 inscripciones zapotecas y propuso el modelo logo-silábico de la escritura zapoteca.",
+      "text": "Urcid, Javier — Epigrafista que catalogó más de doscientos inscripciones zapotecas y propuso el modelo logo-silábico de la escritura zapoteca.",
+      "text_markdown": "**Urcid, Javier** — Epigrafista que catalogó más de doscientos inscripciones zapotecas y propuso el modelo logo-silábico de la escritura zapoteca.",
       "tts": {
         "text": "Urcid, Javier — Epigrafista que catalogó más de doscientas inscripciones zapotecas y propuso el modelo logo-silábico de la escritura zapoteca.",
         "pause_after_ms": 500
@@ -14841,8 +14841,8 @@
       "sentence_index": 1,
       "block_type": "text",
       "title": "Nombres y términos clave",
-      "text": "Autor de *Zapotec Hieroglyphic Writing* (2001).",
-      "text_markdown": "Autor de *Zapotec Hieroglyphic Writing* (2001).",
+      "text": "Autor de *Zapotec Hieroglyphic Writing* (dos mil uno).",
+      "text_markdown": "Autor de *Zapotec Hieroglyphic Writing* (dos mil uno).",
       "tts": {
         "text": "Autor de *Zapotec Hieroglyphic Writing* (dos mil uno).",
         "pause_after_ms": 800
@@ -14871,8 +14871,8 @@
       "sentence_index": 1,
       "block_type": "text",
       "title": "Nombres y términos clave",
-      "text": "La lengua zapoteca todavía es hablada por más de 500.000 personas en más de cincuenta variantes regionales.",
-      "text_markdown": "La lengua zapoteca todavía es hablada por más de 500.000 personas en más de cincuenta variantes regionales.",
+      "text": "La lengua zapoteca todavía es hablada por más de quinientos mil personas en más de cincuenta variantes regionales.",
+      "text_markdown": "La lengua zapoteca todavía es hablada por más de quinientos mil personas en más de cincuenta variantes regionales.",
       "tts": {
         "text": "La lengua zapoteca todavía es hablada por más de quinientas mil personas en más de cincuenta variantes regionales.",
         "pause_after_ms": 800
@@ -14945,8 +14945,8 @@
       "list_type": "unordered",
       "list_index": 0,
       "title": "Lecturas recomendadas",
-      "text": "Marcus, Joyce, and Kent V. Flannery. *Zapotec Civilization: How Urban Society Evolved in Mexico's Oaxaca Valley*. Thames and Hudson, 1996. — El relato individual más completo y legible de la historia y la arqueología zapoteca.",
-      "text_markdown": "Marcus, Joyce, and Kent V. Flannery. *Zapotec Civilization: How Urban Society Evolved in Mexico's Oaxaca Valley*. Thames and Hudson, 1996. — El relato individual más completo y legible de la historia y la arqueología zapoteca.",
+      "text": "Marcus, Joyce, and Kent V. Flannery. *Zapotec Civilization: How Urban Society Evolved in Mexico's Oaxaca Valley*. Thames and Hudson, mil novecientos noventa y seis. — El relato individual más completo y legible de la historia y la arqueología zapoteca.",
+      "text_markdown": "Marcus, Joyce, and Kent V. Flannery. *Zapotec Civilization: How Urban Society Evolved in Mexico's Oaxaca Valley*. Thames and Hudson, mil novecientos noventa y seis. — El relato individual más completo y legible de la historia y la arqueología zapoteca.",
       "tts": {
         "text": "Marcus, Joyce, and Kent V. Flannery. *Zapotec Civilization: How Urban Society Evolved in Mexico's Oahaca Valley*. Thames and Hudson, mil novecientos noventa y seis. — El relato individual más completo y legible de la historia y la arqueología zapoteca.",
         "pause_after_ms": 800
@@ -14962,8 +14962,8 @@
       "list_type": "unordered",
       "list_index": 0,
       "title": "Lecturas recomendadas",
-      "text": "Flannery, Kent V., and Joyce Marcus. *The Creation of Inequality: How Our Prehistoric Ancestors Set the Stage for Monarchy, Slavery, and Empire*. Harvard University Press, 2012. — No es específicamente sobre Monte Albán, pero lo utiliza como caso de estudio clave en el desarrollo de sociedades complejas.",
-      "text_markdown": "Flannery, Kent V., and Joyce Marcus. *The Creation of Inequality: How Our Prehistoric Ancestors Set the Stage for Monarchy, Slavery, and Empire*. Harvard University Press, 2012. — No es específicamente sobre Monte Albán, pero lo utiliza como caso de estudio clave en el desarrollo de sociedades complejas.",
+      "text": "Flannery, Kent V., and Joyce Marcus. *The Creation of Inequality: How Our Prehistoric Ancestors Set the Stage for Monarchy, Slavery, and Empire*. Harvard University Press, dos mil doce. — No es específicamente sobre Monte Albán, pero lo utiliza como caso de estudio clave en el desarrollo de sociedades complejas.",
+      "text_markdown": "Flannery, Kent V., and Joyce Marcus. *The Creation of Inequality: How Our Prehistoric Ancestors Set the Stage for Monarchy, Slavery, and Empire*. Harvard University Press, dos mil doce. — No es específicamente sobre Monte Albán, pero lo utiliza como caso de estudio clave en el desarrollo de sociedades complejas.",
       "tts": {
         "text": "Flannery, Kent V., and Joyce Marcus. *The Creation of Inequality: How Our Prehistoric Ancestors Set the Stage for Monarchy, Slavery, and Empire*. Harvard University Press, dos mil doce. — No es específicamente sobre Monte Albán, pero lo utiliza como caso de estudio clave en el desarrollo de sociedades complejas.",
         "pause_after_ms": 800
@@ -14979,8 +14979,8 @@
       "list_type": "unordered",
       "list_index": 0,
       "title": "Lecturas recomendadas",
-      "text": "Coe, Michael D., and Rex Koontz. *Mexico: From the Olmecs to the Aztecs*. Thames and Hudson, 7th edition, 2013. — Excelente panorama de todas las civilizaciones mesoamericanas, con una sólida cobertura de Oaxaca.",
-      "text_markdown": "Coe, Michael D., and Rex Koontz. *Mexico: From the Olmecs to the Aztecs*. Thames and Hudson, 7th edition, 2013. — Excelente panorama de todas las civilizaciones mesoamericanas, con una sólida cobertura de Oaxaca.",
+      "text": "Coe, Michael D., and Rex Koontz. *Mexico: From the Olmecs to the Aztecs*. Thames and Hudson, 7th edition, dos mil trece. — Excelente panorama de todas las civilizaciones mesoamericanas, con una sólida cobertura de Oaxaca.",
+      "text_markdown": "Coe, Michael D., and Rex Koontz. *Mexico: From the Olmecs to the Aztecs*. Thames and Hudson, 7th edition, dos mil trece. — Excelente panorama de todas las civilizaciones mesoamericanas, con una sólida cobertura de Oaxaca.",
       "tts": {
         "text": "Coe, Michael D., and Rex Koontz. *Mexico: From the Olmecs to the Aztecs*. Thames and Hudson, séptima edición, dos mil trece. — Excelente panorama de todas las civilizaciones mesoamericanas, con una sólida cobertura de Oahaca.",
         "pause_after_ms": 800
@@ -15011,8 +15011,8 @@
       "list_type": "unordered",
       "list_index": 0,
       "title": "Lecturas recomendadas",
-      "text": "Urcid, Javier. *Zapotec Hieroglyphic Writing*. Studies in Pre-Columbian Art and Archaeology, No. 34. Dumbarton Oaks, 2001. — La referencia técnica fundamental. Denso pero esencial.",
-      "text_markdown": "Urcid, Javier. *Zapotec Hieroglyphic Writing*. Studies in Pre-Columbian Art and Archaeology, No. 34. Dumbarton Oaks, 2001. — La referencia técnica fundamental. Denso pero esencial.",
+      "text": "Urcid, Javier. *Zapotec Hieroglyphic Writing*. Studies in Pre-Columbian Art and Archaeology, No. treinta y cuatro. Dumbarton Oaks, dos mil uno. — La referencia técnica fundamental. Denso pero esencial.",
+      "text_markdown": "Urcid, Javier. *Zapotec Hieroglyphic Writing*. Studies in Pre-Columbian Art and Archaeology, No. treinta y cuatro. Dumbarton Oaks, dos mil uno. — La referencia técnica fundamental. Denso pero esencial.",
       "tts": {
         "text": "Urcid, Javier. *Zapotec Hieroglyphic Writing*. Studies in Pre-Columbian Art and Archaeology, No. treinta y cuatro. Dumbarton Oaks, dos mil uno. — La referencia técnica fundamental. Denso pero esencial.",
         "pause_after_ms": 800
@@ -15028,8 +15028,8 @@
       "list_type": "unordered",
       "list_index": 0,
       "title": "Lecturas recomendadas",
-      "text": "Marcus, Joyce. *Mesoamerican Writing Systems: Propaganda, Myth, and History in Four Ancient Civilizations*. Princeton University Press, 1992. — Estudio comparativo que sitúa la escritura zapoteca junto a la maya, mixteca y azteca.",
-      "text_markdown": "Marcus, Joyce. *Mesoamerican Writing Systems: Propaganda, Myth, and History in Four Ancient Civilizations*. Princeton University Press, 1992. — Estudio comparativo que sitúa la escritura zapoteca junto a la maya, mixteca y azteca.",
+      "text": "Marcus, Joyce. *Mesoamerican Writing Systems: Propaganda, Myth, and History in Four Ancient Civilizations*. Princeton University Press, mil novecientos noventa y dos. — Estudio comparativo que sitúa la escritura zapoteca junto a la maya, mixteca y azteca.",
+      "text_markdown": "Marcus, Joyce. *Mesoamerican Writing Systems: Propaganda, Myth, and History in Four Ancient Civilizations*. Princeton University Press, mil novecientos noventa y dos. — Estudio comparativo que sitúa la escritura zapoteca junto a la maya, mixteca y azteca.",
       "tts": {
         "text": "Marcus, Joyce. *Mesoamerican Writing Systems: Propaganda, Myth, and History in Four Ancient Civilizations*. Princeton University Press, mil novecientos noventa y dos. — Estudio comparativo que sitúa la escritura zapoteca junto a la maya, mixteca y azteca.",
         "pause_after_ms": 800
@@ -15060,8 +15060,8 @@
       "list_type": "unordered",
       "list_index": 0,
       "title": "Lecturas recomendadas",
-      "text": "Caso, Alfonso. *El Tesoro de Monte Albán* (The Treasure of Monte Albán). INAH, 1969. — El propio relato de Caso sobre el descubrimiento de la Tumba 7 y su contenido. En español.",
-      "text_markdown": "Caso, Alfonso. *El Tesoro de Monte Albán* (The Treasure of Monte Albán). INAH, 1969. — El propio relato de Caso sobre el descubrimiento de la Tumba 7 y su contenido. En español.",
+      "text": "Caso, Alfonso. *El Tesoro de Monte Albán* (The Treasure of Monte Albán). INAH, mil novecientos sesenta y nueve. — El propio relato de Caso sobre el descubrimiento de la Tumba 7 y su contenido. En español.",
+      "text_markdown": "Caso, Alfonso. *El Tesoro de Monte Albán* (The Treasure of Monte Albán). INAH, mil novecientos sesenta y nueve. — El propio relato de Caso sobre el descubrimiento de la Tumba 7 y su contenido. En español.",
       "tts": {
         "text": "Caso, Alfonso. *El Tesoro de Monte Albán* (The Treasure of Monte Albán). INAH, mil novecientos sesenta y nueve. — El propio relato de Caso sobre el descubrimiento de la Tumba siete y su contenido. En español.",
         "pause_after_ms": 800
@@ -15092,8 +15092,8 @@
       "list_type": "unordered",
       "list_index": 0,
       "title": "Lecturas recomendadas",
-      "text": "Houston, Stephen D., ed. *The First Writing: Script Invention as History and Process*. Cambridge University Press, 2004. — Estudio comparativo de los orígenes de la escritura en todo el mundo, incluida Mesoamérica.",
-      "text_markdown": "Houston, Stephen D., ed. *The First Writing: Script Invention as History and Process*. Cambridge University Press, 2004. — Estudio comparativo de los orígenes de la escritura en todo el mundo, incluida Mesoamérica.",
+      "text": "Houston, Stephen D., ed. *The First Writing: Script Invention as History and Process*. Cambridge University Press, dos mil cuatro. — Estudio comparativo de los orígenes de la escritura en todo el mundo, incluida Mesoamérica.",
+      "text_markdown": "Houston, Stephen D., ed. *The First Writing: Script Invention as History and Process*. Cambridge University Press, dos mil cuatro. — Estudio comparativo de los orígenes de la escritura en todo el mundo, incluida Mesoamérica.",
       "tts": {
         "text": "Houston, Stephen D., ed. *The First Writing: Script Invention as History and Process*. Cambridge University Press, dos mil cuatro. — Estudio comparativo de los orígenes de la escritura en todo el mundo, incluida Mesoamérica.",
         "pause_after_ms": 800
@@ -15109,8 +15109,8 @@
       "list_type": "unordered",
       "list_index": 0,
       "title": "Lecturas recomendadas",
-      "text": "Christenson, Allen J., trans. *Popol Vuh: The Sacred Book of the Maya*. University of Oklahoma Press, 2007. — La narrativa de la creación de los k'iche' mayas, incluyendo la mitología del juego de pelota.",
-      "text_markdown": "Christenson, Allen J., trans. *Popol Vuh: The Sacred Book of the Maya*. University of Oklahoma Press, 2007. — La narrativa de la creación de los k'iche' mayas, incluyendo la mitología del juego de pelota.",
+      "text": "Christenson, Allen J., trans. *Popol Vuh: The Sacred Book of the Maya*. University of Oklahoma Press, dos mil siete. — La narrativa de la creación de los k'iche' mayas, incluyendo la mitología del juego de pelota.",
+      "text_markdown": "Christenson, Allen J., trans. *Popol Vuh: The Sacred Book of the Maya*. University of Oklahoma Press, dos mil siete. — La narrativa de la creación de los k'iche' mayas, incluyendo la mitología del juego de pelota.",
       "tts": {
         "text": "Christenson, Allen J., trans. *Popol Vuh: The Sacred Book of the Maya*. University of Oklahoma Press, dos mil siete. — La narrativa de la creación de los k'iche' mayas, incluyendo la mitología del juego de pelota.",
         "pause_after_ms": 800
