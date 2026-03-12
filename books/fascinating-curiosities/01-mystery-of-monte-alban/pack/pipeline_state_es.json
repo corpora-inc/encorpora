@@ -1044,17 +1044,17 @@
     "validation_errors": []
   },
   "ch03-150": {
-    "status": "DONE",
+    "status": "ALIGNED",
     "retry_count": 0,
     "error": null,
-    "last_updated": "2026-03-09T19:30:47.852285+00:00",
+    "last_updated": "2026-03-12T00:36:05.958499+00:00",
     "validation_errors": []
   },
   "ch03-151": {
-    "status": "DONE",
+    "status": "ALIGNED",
     "retry_count": 0,
     "error": null,
-    "last_updated": "2026-03-09T19:30:47.852303+00:00",
+    "last_updated": "2026-03-12T00:36:06.229338+00:00",
     "validation_errors": []
   },
   "ch03-152": {
@@ -2702,10 +2702,10 @@
     "validation_errors": []
   },
   "ch06-384": {
-    "status": "DONE",
+    "status": "ALIGNED",
     "retry_count": 0,
     "error": null,
-    "last_updated": "2026-03-09T19:30:47.856259+00:00",
+    "last_updated": "2026-03-12T00:36:06.391658+00:00",
     "validation_errors": []
   },
   "ch06-385": {
@@ -3247,10 +3247,10 @@
     "validation_errors": []
   },
   "ch07-462": {
-    "status": "DONE",
+    "status": "ALIGNED",
     "retry_count": 0,
     "error": null,
-    "last_updated": "2026-03-10T02:45:32.936731+00:00",
+    "last_updated": "2026-03-12T00:36:06.594175+00:00",
     "validation_errors": []
   },
   "ch07-463": {
@@ -3994,10 +3994,10 @@
     "validation_errors": []
   },
   "ch09-569": {
-    "status": "DONE",
+    "status": "ALIGNED",
     "retry_count": 0,
     "error": null,
-    "last_updated": "2026-03-09T19:30:47.859313+00:00",
+    "last_updated": "2026-03-12T00:36:06.768284+00:00",
     "validation_errors": []
   },
   "ch09-570": {
@@ -4369,10 +4369,10 @@
     "validation_errors": []
   },
   "ch10-624": {
-    "status": "DONE",
+    "status": "ALIGNED",
     "retry_count": 0,
     "error": null,
-    "last_updated": "2026-03-09T19:30:47.860195+00:00",
+    "last_updated": "2026-03-12T00:36:06.964845+00:00",
     "validation_errors": []
   },
   "ch10-625": {
@@ -4829,10 +4829,10 @@
     "validation_errors": []
   },
   "ch11-687": {
-    "status": "DONE",
+    "status": "ALIGNED",
     "retry_count": 0,
     "error": null,
-    "last_updated": "2026-03-09T19:30:47.861237+00:00",
+    "last_updated": "2026-03-12T00:36:07.152584+00:00",
     "validation_errors": []
   },
   "ch11-688": {
@@ -4873,10 +4873,10 @@
     "validation_errors": []
   },
   "ch11-693": {
-    "status": "DONE",
+    "status": "ALIGNED",
     "retry_count": 0,
     "error": null,
-    "last_updated": "2026-03-09T19:30:47.861337+00:00",
+    "last_updated": "2026-03-12T00:36:07.340749+00:00",
     "validation_errors": []
   },
   "ch11-694": {
@@ -5269,10 +5269,10 @@
     "validation_errors": []
   },
   "ch12-750": {
-    "status": "DONE",
+    "status": "ALIGNED",
     "retry_count": 0,
     "error": null,
-    "last_updated": "2026-03-09T19:30:47.862980+00:00",
+    "last_updated": "2026-03-12T00:36:07.894180+00:00",
     "validation_errors": []
   },
   "ch12-751": {
@@ -5555,10 +5555,10 @@
     "validation_errors": []
   },
   "ch12-790": {
-    "status": "DONE",
+    "status": "ALIGNED",
     "retry_count": 0,
     "error": null,
-    "last_updated": "2026-03-09T19:30:47.863652+00:00",
+    "last_updated": "2026-03-12T00:36:08.083834+00:00",
     "validation_errors": []
   },
   "ch12-791": {
@@ -6448,10 +6448,10 @@
     "validation_errors": []
   },
   "ch15-919": {
-    "status": "DONE",
+    "status": "ALIGNED",
     "retry_count": 0,
     "error": null,
-    "last_updated": "2026-03-09T19:30:47.865752+00:00",
+    "last_updated": "2026-03-12T00:36:08.299479+00:00",
     "validation_errors": []
   },
   "ch15-920": {
@@ -6944,10 +6944,10 @@
     "validation_errors": []
   },
   "ch15-991": {
-    "status": "DONE",
+    "status": "ALIGNED",
     "retry_count": 0,
     "error": null,
-    "last_updated": "2026-03-09T19:30:47.866911+00:00",
+    "last_updated": "2026-03-12T00:36:08.490027+00:00",
     "validation_errors": []
   },
   "ch15-992": {
@@ -6965,10 +6965,10 @@
     "validation_errors": []
   },
   "ch15-994": {
-    "status": "DONE",
+    "status": "ALIGNED",
     "retry_count": 0,
     "error": null,
-    "last_updated": "2026-03-09T19:30:47.866960+00:00",
+    "last_updated": "2026-03-12T00:36:08.648989+00:00",
     "validation_errors": []
   },
   "ch15-996": {
@@ -7007,10 +7007,10 @@
     "validation_errors": []
   },
   "ch15-1001": {
-    "status": "DONE",
+    "status": "ALIGNED",
     "retry_count": 0,
     "error": null,
-    "last_updated": "2026-03-09T19:30:47.867061+00:00",
+    "last_updated": "2026-03-12T00:36:08.843457+00:00",
     "validation_errors": []
   },
   "ch15-1002": {
