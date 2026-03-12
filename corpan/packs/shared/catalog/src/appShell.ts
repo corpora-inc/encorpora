@@ -333,8 +333,12 @@ export function createAppShell(
       const first = narrations[0]
       const card = document.createElement("div")
       card.className = "command-drawer-library-card"
-      if (narrations.some(n => n.narrationId === active)) {
+      const isActiveBook = narrations.some(n => n.narrationId === active)
+      if (isActiveBook) {
         card.classList.add("command-drawer-library-card--active")
+        if (narrations.length === 1) {
+          card.classList.add("command-drawer-library-card--current")
+        }
       }
 
       const title = document.createElement("div")
@@ -354,7 +358,7 @@ export function createAppShell(
 
       card.append(title, lang)
 
-      if (narrations.some(n => n.narrationId === active)) {
+      if (isActiveBook) {
         const playing = document.createElement("div")
         playing.className = "command-drawer-library-card-playing"
         playing.textContent = "\u25B6"
@@ -362,8 +366,9 @@ export function createAppShell(
       }
 
       card.addEventListener("click", () => {
-        // If only one narration, play it directly
+        // If only one narration, play it directly (skip if already active)
         if (narrations.length === 1) {
+          if (narrations[0].narrationId === active) return
           switchToNarration(narrations[0].narrationId)
         } else {
           // Show book detail inline in browse section for picking narration

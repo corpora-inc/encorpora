@@ -234,6 +234,17 @@
 
 .command-drawer-library-card--active {
   border-color: var(--catalog-accent);
+  background: color-mix(in srgb, var(--catalog-accent) 6%, var(--catalog-surface));
+}
+
+/* Fully inert — single narration, already playing */
+.command-drawer-library-card--current {
+  cursor: default;
+}
+
+.command-drawer-library-card--current:hover {
+  transform: none;
+  border-color: var(--catalog-accent);
 }
 
 .command-drawer-library-card-title {
@@ -416,6 +427,26 @@
    ============================================================ */
 
 @media (max-width: 480px) {
+  .command-drawer-sheet {
+    max-height: 92vh;
+  }
+
+  .command-drawer-handle {
+    padding: 8px 0 4px;
+  }
+
+  .command-drawer-sticky {
+    padding: 10px 16px;
+  }
+
+  .command-drawer-now-playing {
+    margin-bottom: 8px;
+  }
+
+  .command-drawer-now-playing-title {
+    font-size: 15px;
+  }
+
   .command-drawer-trigger {
     width: 42px;
     height: 42px;
@@ -426,8 +457,25 @@
     height: 20px;
   }
 
+  .command-drawer-languages {
+    gap: 6px;
+  }
+
   .command-drawer-lang-pill {
-    padding: 7px 14px;
+    padding: 5px 12px;
+    font-size: 12px;
+  }
+
+  .command-drawer-section {
+    padding: 14px 0;
+  }
+
+  .command-drawer-footer {
+    padding: 8px 16px calc(8px + env(safe-area-inset-bottom, 0px));
+  }
+
+  .command-drawer-exit {
+    padding: 9px 0;
     font-size: 13px;
   }
 
