@@ -1,22 +1,23 @@
-import type { OscilloscopeConfig, PulseRingConfig, WaveformConfig, WordHoldConfig } from "../state/prefsStore"
+// Stargate-specific display config types (kept local, not in shared)
+export type OscilloscopeConfig = { amplitude: number; width: number; alpha: number }
+export type WaveformConfig = { maxRadius: number; alpha: number; minRadius: number }
+export type PulseRingConfig = { maxRadius: number; fadeMs: number }
+export type WordHoldConfig = { holdY: number; zPull: number }
 
 export type LanguageInfo = { code: string; displayName: string; narrator: string }
 
-export type SettingsPanel = {
-  setLanguages: (languages: LanguageInfo[], current: string) => void
-  onToggleOscilloscope: (cb: (visible: boolean) => void) => void
-  onToggleWaveform: (cb: (visible: boolean) => void) => void
-  onTogglePulseRing: (cb: (visible: boolean) => void) => void
-  onToggleWordHold: (cb: (enabled: boolean) => void) => void
-  onWordHoldConfig: (cb: (key: string, value: number) => void) => void
-  onOscilloscopeConfig: (cb: (key: string, value: number) => void) => void
-  onWaveformConfig: (cb: (key: string, value: number) => void) => void
-  onPulseRingConfig: (cb: (key: string, value: number) => void) => void
-  onLanguageChange: (cb: (lang: string) => void) => void
-  dispose: () => void
+export type DisplaySettingsCallbacks = {
+  onToggleOscilloscope: (visible: boolean) => void
+  onToggleWaveform: (visible: boolean) => void
+  onTogglePulseRing: (visible: boolean) => void
+  onToggleWordHold: (enabled: boolean) => void
+  onWordHoldConfig: (key: string, value: number) => void
+  onOscilloscopeConfig: (key: string, value: number) => void
+  onWaveformConfig: (key: string, value: number) => void
+  onPulseRingConfig: (key: string, value: number) => void
 }
 
-export type SettingsPanelOptions = {
+export type DisplaySettingsOptions = {
   initialOscilloscope?: boolean
   initialWaveform?: boolean
   initialPulseRing?: boolean
@@ -25,7 +26,7 @@ export type SettingsPanelOptions = {
   initialOscilloscopeConfig?: OscilloscopeConfig
   initialWaveformConfig?: WaveformConfig
   initialPulseRingConfig?: PulseRingConfig
-  onBeforeClose?: () => void
+  callbacks: DisplaySettingsCallbacks
 }
 
 type SliderDef = {
@@ -44,161 +45,100 @@ function formatSliderValue(value: number, step: number): string {
 }
 
 /**
- * Create a gear button (top-right) that opens a dropdown settings panel.
- * Contains oscilloscope/waveform/pulse ring toggles with advanced sliders,
- * language selector, and exit.
+ * Helper: create an "Advanced" collapsible section with sliders + Reset.
  */
-export function createSettingsPanel(
-  parent: HTMLElement,
-  options?: SettingsPanelOptions
-): SettingsPanel {
-  const onBeforeClose = options?.onBeforeClose
-  let langCb: ((lang: string) => void) | null = null
-  let toggleOscCb: ((visible: boolean) => void) | null = null
-  let toggleWaveCb: ((visible: boolean) => void) | null = null
-  let togglePulseCb: ((visible: boolean) => void) | null = null
-  let toggleWordHoldCb: ((enabled: boolean) => void) | null = null
-  let wordHoldConfigCb: ((key: string, value: number) => void) | null = null
-  let oscConfigCb: ((key: string, value: number) => void) | null = null
-  let waveConfigCb: ((key: string, value: number) => void) | null = null
-  let pulseConfigCb: ((key: string, value: number) => void) | null = null
-  let oscVisible = options?.initialOscilloscope ?? true
-  let waveVisible = options?.initialWaveform ?? true
-  let pulseVisible = options?.initialPulseRing ?? true
-  let wordHoldEnabled = options?.initialWordHold ?? true
-  let isOpen = false
+function createAdvancedSection(
+  parentEl: HTMLElement,
+  sliderDefs: SliderDef[],
+  currentValues: Record<string, number>,
+  onChange: (key: string, value: number) => void,
+) {
+  const wrapper = document.createElement("div")
+  wrapper.className = "stargate-settings-advanced"
 
-  /**
-   * Helper: create an "Advanced" collapsible section with sliders + Reset.
-   */
-  function createAdvancedSection(
-    parentEl: HTMLElement,
-    sliderDefs: SliderDef[],
-    currentValues: Record<string, number>,
-    onChange: (key: string, value: number) => void,
-  ) {
-    const wrapper = document.createElement("div")
-    wrapper.className = "stargate-settings-advanced"
+  const advBtn = document.createElement("button")
+  advBtn.className = "stargate-settings-advanced-btn"
+  advBtn.textContent = "Advanced \u25B8"
+  wrapper.appendChild(advBtn)
 
-    const advBtn = document.createElement("button")
-    advBtn.className = "stargate-settings-advanced-btn"
-    advBtn.textContent = "Advanced \u25B8"
-    wrapper.appendChild(advBtn)
+  const slidersDiv = document.createElement("div")
+  slidersDiv.className = "stargate-settings-sliders"
+  wrapper.appendChild(slidersDiv)
 
-    const slidersDiv = document.createElement("div")
-    slidersDiv.className = "stargate-settings-sliders"
-    wrapper.appendChild(slidersDiv)
+  const inputs: { def: SliderDef; input: HTMLInputElement; valueEl: HTMLSpanElement }[] = []
 
-    const inputs: { def: SliderDef; input: HTMLInputElement; valueEl: HTMLSpanElement }[] = []
+  for (const def of sliderDefs) {
+    const row = document.createElement("div")
+    row.className = "stargate-settings-slider-row"
 
-    for (const def of sliderDefs) {
-      const row = document.createElement("div")
-      row.className = "stargate-settings-slider-row"
+    const label = document.createElement("span")
+    label.className = "stargate-settings-slider-label"
+    label.textContent = def.label
 
-      const label = document.createElement("span")
-      label.className = "stargate-settings-slider-label"
-      label.textContent = def.label
+    const input = document.createElement("input")
+    input.type = "range"
+    input.className = "stargate-settings-slider"
+    input.min = String(def.min)
+    input.max = String(def.max)
+    input.step = String(def.step)
+    const currentVal = currentValues[def.key] ?? def.initial
+    input.value = String(currentVal)
 
-      const input = document.createElement("input")
-      input.type = "range"
-      input.className = "stargate-settings-slider"
-      input.min = String(def.min)
-      input.max = String(def.max)
-      input.step = String(def.step)
-      const currentVal = currentValues[def.key] ?? def.initial
-      input.value = String(currentVal)
+    const valueEl = document.createElement("span")
+    valueEl.className = "stargate-settings-slider-value"
+    valueEl.textContent = formatSliderValue(currentVal, def.step)
 
-      const valueEl = document.createElement("span")
-      valueEl.className = "stargate-settings-slider-value"
-      valueEl.textContent = formatSliderValue(currentVal, def.step)
-
-      input.addEventListener("input", () => {
-        const v = parseFloat(input.value)
-        valueEl.textContent = formatSliderValue(v, def.step)
-        onChange(def.key, v)
-      })
-
-      row.appendChild(label)
-      row.appendChild(input)
-      row.appendChild(valueEl)
-      slidersDiv.appendChild(row)
-
-      inputs.push({ def, input, valueEl })
-    }
-
-    // Reset button
-    const resetBtn = document.createElement("button")
-    resetBtn.className = "stargate-settings-reset-btn"
-    resetBtn.textContent = "Reset"
-    resetBtn.addEventListener("click", () => {
-      for (const { def, input, valueEl } of inputs) {
-        input.value = String(def.initial)
-        valueEl.textContent = formatSliderValue(def.initial, def.step)
-        onChange(def.key, def.initial)
-      }
-    })
-    slidersDiv.appendChild(resetBtn)
-
-    // Toggle open/close
-    let expanded = false
-    advBtn.addEventListener("click", () => {
-      expanded = !expanded
-      slidersDiv.classList.toggle("stargate-settings-sliders--open", expanded)
-      advBtn.textContent = expanded ? "Advanced \u25BE" : "Advanced \u25B8"
+    input.addEventListener("input", () => {
+      const v = parseFloat(input.value)
+      valueEl.textContent = formatSliderValue(v, def.step)
+      onChange(def.key, v)
     })
 
-    parentEl.appendChild(wrapper)
+    row.appendChild(label)
+    row.appendChild(input)
+    row.appendChild(valueEl)
+    slidersDiv.appendChild(row)
+
+    inputs.push({ def, input, valueEl })
   }
 
-  // --- Gear button ---
-  const gearBtn = document.createElement("button")
-  gearBtn.className = "stargate-settings-btn"
-  gearBtn.title = "Settings"
-  gearBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>`
-  parent.appendChild(gearBtn)
-
-  // --- Dropdown ---
-  const dropdown = document.createElement("div")
-  dropdown.className = "stargate-settings-dropdown"
-  parent.appendChild(dropdown)
-
-  // 1. Dismiss button row (block-level, right-aligned — hidden on desktop via CSS)
-  const dismissRow = document.createElement("div")
-  dismissRow.className = "stargate-settings-dismiss-row"
-  const dismissBtn = document.createElement("button")
-  dismissBtn.className = "stargate-settings-dismiss"
-  dismissBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>`
-  dismissBtn.addEventListener("click", close)
-  dismissRow.appendChild(dismissBtn)
-  dropdown.appendChild(dismissRow)
-
-  // Exit button (at top for easy access)
-  const exitBtn = document.createElement("button")
-  exitBtn.className = "stargate-settings-exit"
-  exitBtn.textContent = "Exit"
-  exitBtn.addEventListener("click", () => {
-    onBeforeClose?.()
-    window.dispatchEvent(new Event("corpan:exit"))
+  // Reset button
+  const resetBtn = document.createElement("button")
+  resetBtn.className = "stargate-settings-reset-btn"
+  resetBtn.textContent = "Reset"
+  resetBtn.addEventListener("click", () => {
+    for (const { def, input, valueEl } of inputs) {
+      input.value = String(def.initial)
+      valueEl.textContent = formatSliderValue(def.initial, def.step)
+      onChange(def.key, def.initial)
+    }
   })
-  dropdown.appendChild(exitBtn)
+  slidersDiv.appendChild(resetBtn)
 
-  // Divider after exit
-  const divider0 = document.createElement("div")
-  divider0.className = "stargate-settings-divider"
-  dropdown.appendChild(divider0)
-
-  // 2. Language select (full width, no label — self-documenting with "English – Ian")
-  const langSelect = document.createElement("select")
-  langSelect.className = "stargate-settings-lang-select"
-  langSelect.addEventListener("change", () => {
-    langCb?.(langSelect.value)
+  // Toggle open/close
+  let expanded = false
+  advBtn.addEventListener("click", () => {
+    expanded = !expanded
+    slidersDiv.classList.toggle("stargate-settings-sliders--open", expanded)
+    advBtn.textContent = expanded ? "Advanced \u25BE" : "Advanced \u25B8"
   })
-  dropdown.appendChild(langSelect)
 
-  // Divider before toggles
-  const divider1 = document.createElement("div")
-  divider1.className = "stargate-settings-divider"
-  dropdown.appendChild(divider1)
+  parentEl.appendChild(wrapper)
+}
+
+/**
+ * Render stargate display settings (toggles + sliders) into a container.
+ * Used as a custom section in the command drawer.
+ */
+export function renderStargateDisplaySettings(
+  container: HTMLElement,
+  options: DisplaySettingsOptions
+): void {
+  const cbs = options.callbacks
+  let oscVisible = options.initialOscilloscope ?? true
+  let waveVisible = options.initialWaveform ?? true
+  let pulseVisible = options.initialPulseRing ?? true
+  let wordHoldEnabled = options.initialWordHold ?? true
 
   // --- Oscilloscope toggle row ---
   const oscRow = document.createElement("div")
@@ -213,23 +153,23 @@ export function createSettingsPanel(
     oscVisible = !oscVisible
     oscBtn.classList.toggle("stargate-settings-toggle--active", oscVisible)
     oscBtn.textContent = oscVisible ? "ON" : "OFF"
-    toggleOscCb?.(oscVisible)
+    cbs.onToggleOscilloscope(oscVisible)
   })
   oscRow.appendChild(oscLabel)
   oscRow.appendChild(oscBtn)
-  dropdown.appendChild(oscRow)
+  container.appendChild(oscRow)
 
   // Oscilloscope advanced sliders
-  const oscConfig = options?.initialOscilloscopeConfig ?? { amplitude: 5, width: 12, alpha: 0.35 }
+  const oscConfig = options.initialOscilloscopeConfig ?? { amplitude: 5, width: 2, alpha: 0.35 }
   createAdvancedSection(
-    dropdown,
+    container,
     [
       { key: "amplitude", label: "Swing", min: 1, max: 20, step: 1, initial: 5 },
-      { key: "width", label: "Width", min: 1, max: 12, step: 1, initial: 12 },
+      { key: "width", label: "Width", min: 1, max: 12, step: 1, initial: 2 },
       { key: "alpha", label: "Opacity", min: 0.05, max: 1.0, step: 0.05, initial: 0.35 },
     ],
     oscConfig as Record<string, number>,
-    (key, value) => { oscConfigCb?.(key, value) },
+    (key, value) => { cbs.onOscilloscopeConfig(key, value) },
   )
 
   // --- Waveform toggle row ---
@@ -245,23 +185,23 @@ export function createSettingsPanel(
     waveVisible = !waveVisible
     waveBtn.classList.toggle("stargate-settings-toggle--active", waveVisible)
     waveBtn.textContent = waveVisible ? "ON" : "OFF"
-    toggleWaveCb?.(waveVisible)
+    cbs.onToggleWaveform(waveVisible)
   })
   waveRow.appendChild(waveLabel)
   waveRow.appendChild(waveBtn)
-  dropdown.appendChild(waveRow)
+  container.appendChild(waveRow)
 
   // Waveform advanced sliders
-  const waveConfig = options?.initialWaveformConfig ?? { maxRadius: 1, alpha: 0.005, minRadius: 0 }
+  const waveConfig = options.initialWaveformConfig ?? { maxRadius: 1, alpha: 0.005, minRadius: 0 }
   createAdvancedSection(
-    dropdown,
+    container,
     [
       { key: "maxRadius", label: "Peak Size", min: 0.1, max: 2, step: 0.1, initial: 1 },
       { key: "alpha", label: "Opacity", min: 0.001, max: 0.05, step: 0.001, initial: 0.005 },
       { key: "minRadius", label: "Base Size", min: 0, max: 1, step: 0.05, initial: 0 },
     ],
     waveConfig as Record<string, number>,
-    (key, value) => { waveConfigCb?.(key, value) },
+    (key, value) => { cbs.onWaveformConfig(key, value) },
   )
 
   // --- Pulse Ring toggle row ---
@@ -277,22 +217,22 @@ export function createSettingsPanel(
     pulseVisible = !pulseVisible
     pulseBtn.classList.toggle("stargate-settings-toggle--active", pulseVisible)
     pulseBtn.textContent = pulseVisible ? "ON" : "OFF"
-    togglePulseCb?.(pulseVisible)
+    cbs.onTogglePulseRing(pulseVisible)
   })
   pulseRow.appendChild(pulseLabel)
   pulseRow.appendChild(pulseBtn)
-  dropdown.appendChild(pulseRow)
+  container.appendChild(pulseRow)
 
   // Pulse Ring advanced sliders
-  const pulseConfig = options?.initialPulseRingConfig ?? { maxRadius: 1, fadeMs: 200 }
+  const pulseConfig = options.initialPulseRingConfig ?? { maxRadius: 0.2, fadeMs: 200 }
   createAdvancedSection(
-    dropdown,
+    container,
     [
-      { key: "maxRadius", label: "Ring Size", min: 0.05, max: 0.5, step: 0.05, initial: 0.5 },
+      { key: "maxRadius", label: "Ring Size", min: 0.05, max: 0.5, step: 0.05, initial: 0.2 },
       { key: "fadeMs", label: "Trail", min: 50, max: 2000, step: 50, initial: 200 },
     ],
     pulseConfig as Record<string, number>,
-    (key, value) => { pulseConfigCb?.(key, value) },
+    (key, value) => { cbs.onPulseRingConfig(key, value) },
   )
 
   // --- Word Hold toggle row ---
@@ -308,83 +248,21 @@ export function createSettingsPanel(
     wordHoldEnabled = !wordHoldEnabled
     holdBtn.classList.toggle("stargate-settings-toggle--active", wordHoldEnabled)
     holdBtn.textContent = wordHoldEnabled ? "ON" : "OFF"
-    toggleWordHoldCb?.(wordHoldEnabled)
+    cbs.onToggleWordHold(wordHoldEnabled)
   })
   holdRow.appendChild(holdLabel)
   holdRow.appendChild(holdBtn)
-  dropdown.appendChild(holdRow)
+  container.appendChild(holdRow)
 
   // Word Hold advanced sliders
-  const wordHoldConfig = options?.initialWordHoldConfig ?? { holdY: 0, zPull: 0.4 }
+  const wordHoldConfig = options.initialWordHoldConfig ?? { holdY: 0, zPull: 0.4 }
   createAdvancedSection(
-    dropdown,
+    container,
     [
       { key: "holdY", label: "Height", min: -0.2, max: 0.2, step: 0.02, initial: 0 },
       { key: "zPull", label: "Depth", min: 0, max: 2, step: 0.1, initial: 0.4 },
     ],
     wordHoldConfig as Record<string, number>,
-    (key, value) => { wordHoldConfigCb?.(key, value) },
+    (key, value) => { cbs.onWordHoldConfig(key, value) },
   )
-
-  // --- Open/close logic ---
-  function open() {
-    isOpen = true
-    dropdown.classList.add("stargate-settings-dropdown--open")
-    document.addEventListener("pointerdown", onOutsideClick, true)
-  }
-
-  function close() {
-    isOpen = false
-    dropdown.classList.remove("stargate-settings-dropdown--open")
-    document.removeEventListener("pointerdown", onOutsideClick, true)
-  }
-
-  function onOutsideClick(e: PointerEvent) {
-    const target = e.target as Node
-    if (!dropdown.contains(target) && target !== gearBtn && !gearBtn.contains(target)) {
-      close()
-    }
-  }
-
-  gearBtn.addEventListener("click", () => {
-    if (isOpen) {
-      close()
-    } else {
-      open()
-    }
-  })
-
-  return {
-    setLanguages(languages: LanguageInfo[], current: string) {
-      langSelect.innerHTML = ""
-      for (const lang of languages) {
-        const opt = document.createElement("option")
-        opt.value = lang.code
-        opt.textContent = lang.narrator
-          ? `${lang.displayName} \u2013 ${lang.narrator}`
-          : lang.displayName
-        if (lang.code === current) opt.selected = true
-        langSelect.appendChild(opt)
-      }
-      // Hide select when only 1 language
-      langSelect.style.display = languages.length <= 1 ? "none" : ""
-      divider1.style.display = languages.length <= 1 ? "none" : ""
-    },
-
-    onToggleOscilloscope(cb: (visible: boolean) => void) { toggleOscCb = cb },
-    onToggleWaveform(cb: (visible: boolean) => void) { toggleWaveCb = cb },
-    onTogglePulseRing(cb: (visible: boolean) => void) { togglePulseCb = cb },
-    onToggleWordHold(cb: (enabled: boolean) => void) { toggleWordHoldCb = cb },
-    onWordHoldConfig(cb: (key: string, value: number) => void) { wordHoldConfigCb = cb },
-    onOscilloscopeConfig(cb: (key: string, value: number) => void) { oscConfigCb = cb },
-    onWaveformConfig(cb: (key: string, value: number) => void) { waveConfigCb = cb },
-    onPulseRingConfig(cb: (key: string, value: number) => void) { pulseConfigCb = cb },
-    onLanguageChange(cb: (lang: string) => void) { langCb = cb },
-
-    dispose() {
-      close()
-      gearBtn.remove()
-      dropdown.remove()
-    },
-  }
 }

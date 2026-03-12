@@ -1,19 +1,12 @@
-import type { HostApi } from "./sdk/types"
-import type { AudioManifest, BookSegment, TimelineWord } from "./core/types"
-import { VOICE_NAMES, BOOK_NAMES, LANGUAGE_NAMES } from "./core/constants"
-import { buildTimeline, findCurrentWordIndex, buildChapterIndex } from "./core/timeline"
-import type { ChapterInfo } from "./core/types"
-import {
-  createFetchDataProvider,
-  createPreloadedDataProvider,
-  type DataProvider,
-} from "./data/dataProvider"
-import { createAudioEngine, type AudioEngine } from "./audio/audioEngine"
-import { createTransportBar } from "./ui/transportBar"
-import { createSettingsPanel, type LanguageInfo } from "./ui/settingsPanel"
-import { createChapterOverlay, type ChapterOverlay } from "./ui/chapterOverlay"
-import { createParagraphView, type ParagraphView } from "./rendering/paragraphView"
-import { loadBookmark, saveBookmark, type Bookmark } from "./state/bookmarkStore"
+import type { HostApi } from "@shared/sdk"
+import type { AudioManifest, BookSegment, TimelineWord, ChapterInfo } from "@shared/core"
+import { BOOK_NAMES, LANGUAGE_NAMES, resolveVoiceName } from "@shared/core"
+import { buildTimeline, findCurrentWordIndex, buildChapterIndex } from "@shared/core"
+import { createFetchDataProvider, createPreloadedDataProvider, type DataProvider } from "@shared/data"
+import { createAudioEngine, type AudioEngine } from "@shared/audio"
+import { createTransportBar } from "@shared/ui"
+import { createChapterOverlay, type ChapterOverlay } from "@shared/ui"
+import { createBookmarkStore, type Bookmark, drawerStore } from "@shared/state"
 import {
   startNativeKeepAlive,
   stopNativeKeepAlive,
@@ -21,7 +14,10 @@ import {
   resumeNativeKeepAlive,
   updateNativeNowPlaying,
   listenForRemoteCommands,
-} from "./audio/nativeKeepAlive"
+} from "@shared/audio"
+import { createParagraphView, type ParagraphView } from "./rendering/paragraphView"
+
+const bookmarks = createBookmarkStore("earthgate-reader")
 
 type TauriBridgeWindow = Window & {
   __TAURI_INTERNALS__?: unknown
@@ -84,6 +80,12 @@ export function createEarthgateReader(
   let lastRemotePlayPauseCmd: EarthgateRemoteCommand | null = null
   let lastRemotePlayPauseAt = 0
   const REMOTE_PLAY_PAUSE_DEDUPE_MS = 250
+  let pendingEngineState: MediaSessionPlaybackState | null = null
+  let pendingEngineStateSince = 0
+  const EXTERNAL_STATE_DEBOUNCE_MS = 900
+  let suppressExternalReconcileUntil = 0
+  const SEEK_RECONCILE_SUPPRESSION_MS = 2000
+  const DRIFT_CORRECTION_MIN_BACKGROUND_MS = 5000
 
   // --- Background recovery timing ---
   let backgroundedAt = 0
@@ -147,6 +149,26 @@ export function createEarthgateReader(
     } else {
       void pauseNativeKeepAlive("syncNativePlaybackState")
     }
+  }
+
+  function seekToMsAndSync(targetMs: number) {
+    if (!audioEngine) return
+    suppressExternalReconcileUntil = performance.now() + SEEK_RECONCILE_SUPPRESSION_MS
+    if (isPlaying) {
+      audioEngine.seekToMs(targetMs)
+      audioEngine.ensureSourceIfPlaying("seekToMsAndSync")
+    } else {
+      audioEngine.seekToMsPreview(targetMs)
+    }
+    syncNativeNowPlaying()
+  }
+
+  function seekToSegmentAndSync(index: number) {
+    if (!audioEngine) return
+    suppressExternalReconcileUntil = performance.now() + SEEK_RECONCILE_SUPPRESSION_MS
+    audioEngine.seekToSegment(index)
+    syncNativeNowPlaying()
+    audioEngine.ensureSourceIfPlaying("seekToSegmentAndSync")
   }
 
   function dispatchRemotePlayPause(cmd: EarthgateRemoteCommand, _source: string) {
@@ -320,9 +342,7 @@ export function createEarthgateReader(
   let segments: BookSegment[] = []
   let manifest: AudioManifest | null = null
   let chapters: ChapterInfo[] = []
-  let currentLanguage = "en"
-  let availableLanguages = (initialState?.availableLanguages as string[]) || ["en"]
-  const voiceMap: Record<string, string> = {}
+  let currentLanguage = (initialState?.language as string) || "en"
 
   const bookId =
     (initialState?.bookId as string) ||
@@ -332,14 +352,6 @@ export function createEarthgateReader(
 
   const bookDisplayName = BOOK_NAMES[bookId] || bookId
 
-  function buildLanguageInfos(): LanguageInfo[] {
-    return availableLanguages.map(code => ({
-      code,
-      displayName: LANGUAGE_NAMES[code] || code.toUpperCase(),
-      narrator: VOICE_NAMES[voiceMap[code] || ""] || "",
-    }))
-  }
-
   function persistBookmark() {
     if (!audioEngine) return
     const bm: Bookmark = {
@@ -348,7 +360,7 @@ export function createEarthgateReader(
       language: currentLanguage,
       savedAt: Date.now(),
     }
-    saveBookmark(bookId, bm)
+    bookmarks.save(bookId, bm)
   }
 
   // --- DOM structure ---
@@ -371,17 +383,11 @@ export function createEarthgateReader(
   const paragraphView: ParagraphView = createParagraphView(ui)
 
   // Chapter overlay
-  let chapterOverlay: ChapterOverlay = createChapterOverlay(ui)
+  let chapterOverlay: ChapterOverlay = createChapterOverlay(ui, "earthgate")
   let lastChapterIndex = -1
 
-  // Settings panel
-  const settings = createSettingsPanel(ui, {
-    onBeforeClose: () => persistBookmark(),
-  })
-  settings.setLanguages(buildLanguageInfos(), currentLanguage)
-
   // Transport bar
-  const transport = createTransportBar(ui)
+  const transport = createTransportBar(ui, "earthgate")
 
   // --- Swipe navigation ---
   paragraphView.onNext(() => {
@@ -421,9 +427,8 @@ export function createEarthgateReader(
     }
     const threshold = chapters[chapterIdx].firstSegmentIndex + 2
     const targetChapter = currentIdx > threshold ? chapterIdx : Math.max(0, chapterIdx - 1)
-    audioEngine.seekToSegment(chapters[targetChapter].firstSegmentIndex)
+    seekToSegmentAndSync(chapters[targetChapter].firstSegmentIndex)
     transport.setChapter(chapters[targetChapter].title)
-    syncNativeNowPlaying()
   })
 
   transport.onNextChapter(() => {
@@ -437,27 +442,25 @@ export function createEarthgateReader(
       }
     }
     const targetChapter = Math.min(chapters.length - 1, chapterIdx + 1)
-    audioEngine.seekToSegment(chapters[targetChapter].firstSegmentIndex)
+    seekToSegmentAndSync(chapters[targetChapter].firstSegmentIndex)
     transport.setChapter(chapters[targetChapter].title)
-    syncNativeNowPlaying()
   })
 
   transport.onSkipBack(() => {
     if (!audioEngine) return
-    audioEngine.seekToMs(Math.max(0, audioEngine.getCurrentTimeMs() - 30000))
-    syncNativeNowPlaying()
+    seekToMsAndSync(Math.max(0, audioEngine.getCurrentTimeMs() - 30000))
   })
 
   transport.onSkipForward(() => {
     if (!audioEngine) return
-    audioEngine.seekToMs(Math.min(audioEngine.getTotalDurationMs(), audioEngine.getCurrentTimeMs() + 30000))
-    syncNativeNowPlaying()
+    seekToMsAndSync(Math.min(audioEngine.getTotalDurationMs(), audioEngine.getCurrentTimeMs() + 30000))
   })
 
   // --- Scrub lifecycle ---
   let wasPlayingBeforeScrub = false
 
   transport.onScrubStart(() => {
+    suppressExternalReconcileUntil = performance.now() + SEEK_RECONCILE_SUPPRESSION_MS
     wasPlayingBeforeScrub = isPlaying
     if (wasPlayingBeforeScrub) doPause()
   })
@@ -469,14 +472,11 @@ export function createEarthgateReader(
 
   transport.onScrubEnd((fraction) => {
     if (!audioEngine) return
-    audioEngine.seekToMsPreview(fraction * audioEngine.getTotalDurationMs())
+    seekToMsAndSync(fraction * audioEngine.getTotalDurationMs())
     if (wasPlayingBeforeScrub) void doPlay()
-    else syncNativeNowPlaying()
   })
 
-  settings.onLanguageChange((lang) => {
-    void switchLanguage(lang)
-  })
+  // Language switching is triggered by the command drawer via appShell
 
   window.__earthgateCmd = (cmd: EarthgateRemoteCommand) => {
     dispatchRemotePlayPause(cmd, "window")
@@ -491,13 +491,11 @@ export function createEarthgateReader(
         break
       case "skipForward":
         if (!audioEngine) return
-        audioEngine.seekToMs(Math.min(audioEngine.getTotalDurationMs(), audioEngine.getCurrentTimeMs() + 30000))
-        syncNativeNowPlaying()
+        seekToMsAndSync(Math.min(audioEngine.getTotalDurationMs(), audioEngine.getCurrentTimeMs() + 30000))
         break
       case "skipBack":
         if (!audioEngine) return
-        audioEngine.seekToMs(Math.max(0, audioEngine.getCurrentTimeMs() - 30000))
-        syncNativeNowPlaying()
+        seekToMsAndSync(Math.max(0, audioEngine.getCurrentTimeMs() - 30000))
         break
     }
   }
@@ -508,13 +506,11 @@ export function createEarthgateReader(
     onPause: () => { dispatchRemotePlayPause("pause", "native") },
     onSkipForward: () => {
       if (!audioEngine) return
-      audioEngine.seekToMs(Math.min(audioEngine.getTotalDurationMs(), audioEngine.getCurrentTimeMs() + 30000))
-      syncNativeNowPlaying()
+      seekToMsAndSync(Math.min(audioEngine.getTotalDurationMs(), audioEngine.getCurrentTimeMs() + 30000))
     },
     onSkipBack: () => {
       if (!audioEngine) return
-      audioEngine.seekToMs(Math.max(0, audioEngine.getCurrentTimeMs() - 30000))
-      syncNativeNowPlaying()
+      seekToMsAndSync(Math.max(0, audioEngine.getCurrentTimeMs() - 30000))
     },
     onNextChapter: () => {
       if (!audioEngine || chapters.length === 0) return
@@ -527,9 +523,8 @@ export function createEarthgateReader(
         }
       }
       const targetChapter = Math.min(chapters.length - 1, chapterIdx + 1)
-      audioEngine.seekToSegment(chapters[targetChapter].firstSegmentIndex)
+      seekToSegmentAndSync(chapters[targetChapter].firstSegmentIndex)
       transport.setChapter(chapters[targetChapter].title)
-      syncNativeNowPlaying()
     },
     onPrevChapter: () => {
       if (!audioEngine || chapters.length === 0) return
@@ -543,14 +538,12 @@ export function createEarthgateReader(
       }
       const threshold = chapters[chapterIdx].firstSegmentIndex + 2
       const targetChapter = currentIdx > threshold ? chapterIdx : Math.max(0, chapterIdx - 1)
-      audioEngine.seekToSegment(chapters[targetChapter].firstSegmentIndex)
+      seekToSegmentAndSync(chapters[targetChapter].firstSegmentIndex)
       transport.setChapter(chapters[targetChapter].title)
-      syncNativeNowPlaying()
     },
     onSeek: (positionMs: number) => {
       if (!audioEngine) return
-      audioEngine.seekToMs(positionMs)
-      syncNativeNowPlaying()
+      seekToMsAndSync(positionMs)
     },
     onInterruptionBegan: () => {
       if (!audioEngine || !isPlaying) return
@@ -616,35 +609,41 @@ export function createEarthgateReader(
       }
     } else {
       stopBackgroundTimers()
+      suppressExternalReconcileUntil = performance.now() + SEEK_RECONCILE_SUPPRESSION_MS
 
       const wasBackgroundedAt = backgroundedAt
       backgroundedAt = 0
 
-      if (audioEngine) {
+      if (audioEngine && isPlaying) {
         void audioEngine.recoverContext().then(() => {
           if (!audioEngine) return
 
-          if (isPlaying) {
-            if (wasBackgroundedAt > 0) {
-              const wallElapsed = Date.now() - wasBackgroundedAt
-              const expectedMs = backgroundedAudioMs + wallElapsed
-              const actualMs = audioEngine.getCurrentTimeMs()
-              const totalMs = audioEngine.getTotalDurationMs()
-              if (Math.abs(expectedMs - actualMs) > 2000 && expectedMs < totalMs) {
-                audioEngine.seekToMs(Math.min(expectedMs, totalMs))
-              }
+          audioEngine.ensureSourceIfPlaying("visibility:recover")
+          const hiddenDurationMs = wasBackgroundedAt > 0 ? Math.max(0, Date.now() - wasBackgroundedAt) : 0
+          const shouldApplyDriftCorrection =
+            wasBackgroundedAt > 0 &&
+            hiddenDurationMs >= DRIFT_CORRECTION_MIN_BACKGROUND_MS
+          if (shouldApplyDriftCorrection) {
+            const wallElapsed = Date.now() - wasBackgroundedAt
+            const expectedMs = backgroundedAudioMs + wallElapsed
+            const actualMs = audioEngine.getCurrentTimeMs()
+            const totalMs = audioEngine.getTotalDurationMs()
+            if (Math.abs(expectedMs - actualMs) > 2000 && expectedMs < totalMs) {
+              seekToMsAndSync(Math.min(expectedMs, totalMs))
             }
-            if (!audioEngine.isPlaying()) {
-              console.log("[ER:vis] engine paused while app expects playing; routing through doPlay()")
-              void doPlay()
-              return
-            }
-            void requestWakeLock()
-            syncNativePlaybackState(true)
           }
-
+          if (!audioEngine.isPlaying()) {
+            console.log("[ER:vis] engine paused while app expects playing; routing through doPlay()")
+            void doPlay()
+            return
+          }
+          void requestWakeLock()
+          syncNativePlaybackState(true)
           syncNativeNowPlaying()
         })
+      } else if (audioEngine) {
+        // Paused: just sync native state, do NOT recoverContext
+        syncNativeNowPlaying()
       }
 
       transport.setPlaying(isPlaying)
@@ -670,7 +669,7 @@ export function createEarthgateReader(
   // --- Data loading & initialization ---
   async function initialize() {
     try {
-      const bookmark = loadBookmark(bookId)
+      const bookmark = bookmarks.load(bookId)
 
       const preloadedSegments = initialState?.segmentsData as { segments: BookSegment[] } | undefined
       const preloadedManifest = initialState?.audioManifest as AudioManifest | undefined
@@ -695,17 +694,6 @@ export function createEarthgateReader(
         const contentRevision = initialState?.contentRevision as string | undefined
         dataProvider = createFetchDataProvider(dataUrl, contentRevision)
 
-        if (availableLanguages.length <= 1 && dataProvider.detectLanguages) {
-          const detected = await dataProvider.detectLanguages()
-          if (detected.length > 1) {
-            availableLanguages = detected
-          }
-        }
-
-        if (bookmark && availableLanguages.includes(bookmark.language)) {
-          currentLanguage = bookmark.language
-        }
-
         const segData = await dataProvider.loadSegments(currentLanguage)
         segments = segData.segments
         manifest = await dataProvider.loadAudioManifest(currentLanguage)
@@ -713,18 +701,8 @@ export function createEarthgateReader(
 
       if (disposed) return
 
-      voiceMap[currentLanguage] = manifest.voice
-      settings.setLanguages(buildLanguageInfos(), currentLanguage)
-
-      // Background fetch other language voice info
-      for (const lang of availableLanguages) {
-        if (lang !== currentLanguage) {
-          dataProvider.loadAudioManifest(lang).then(m => {
-            voiceMap[lang] = m.voice
-            settings.setLanguages(buildLanguageInfos(), currentLanguage)
-          }).catch(() => {})
-        }
-      }
+      // Only set nowPlaying — languages/currentLanguage are managed by appShell
+      drawerStore.setState({ nowPlaying: { bookTitle: bookDisplayName, narrator: resolveVoiceName(manifest.voice) } })
 
       chapters = buildChapterIndex(segments)
 
@@ -780,12 +758,19 @@ export function createEarthgateReader(
       updateParagraphForSegment(initialSegIndex)
 
       // Restore bookmark position
-      if (bookmark && audioEngine) {
+      if (initialState?.startAtSegmentStart && bookmark && audioEngine) {
+        audioEngine.seekToSegment(bookmark.segmentIndex)
+      } else if (bookmark && audioEngine) {
         audioEngine.seekToMs(bookmark.timeMs)
       }
 
       setupMediaSession()
       syncNativeNowPlaying()
+
+      // Auto-play if requested (after all setup is complete)
+      if (initialState?.autoPlay) {
+        void doPlay()
+      }
     } catch (err) {
       console.error("[EarthgateReader] Failed to initialize:", err)
       transport.setChapter("Failed to load book data")
@@ -800,8 +785,9 @@ export function createEarthgateReader(
 
     const baseUrl = initialState?.baseUrl as string | undefined
 
+    // On-device production (zip install) — pack root IS the data directory
     if (baseUrl?.startsWith("corpan-pack://")) {
-      return `${baseUrl.replace(/\/$/, "")}/data/books/${bid}`
+      return baseUrl.replace(/\/$/, "")
     }
 
     if (baseUrl) {
@@ -811,88 +797,6 @@ export function createEarthgateReader(
     return `/data/books/${bid}`
   }
 
-  async function switchLanguage(newLang: string) {
-    if (newLang === currentLanguage || !dataProvider) return
-
-    try {
-      const wasPlaying = isPlaying
-      const savedSegmentIndex = audioEngine?.getCurrentSegmentIndex() ?? 0
-
-      audioEngine?.dispose()
-      audioEngine = null
-
-      currentLanguage = newLang
-
-      const [segData, newManifest] = await Promise.all([
-        dataProvider.loadSegments(newLang),
-        dataProvider.loadAudioManifest(newLang),
-      ])
-      if (disposed) return
-
-      segments = segData.segments
-      manifest = newManifest
-      voiceMap[newLang] = newManifest.voice
-      settings.setLanguages(buildLanguageInfos(), newLang)
-      chapters = buildChapterIndex(segments)
-
-      const timeline = buildTimeline(segments, newManifest)
-      timelineWords = timeline.words
-      currentWordHint = 0
-
-      audioEngine = createAudioEngine(
-        segments,
-        newManifest,
-        dataProvider.resolveAudioUrl,
-        (index) => {
-          const seg = segments[index]
-          if (seg) {
-            transport.setChapter(seg.title)
-            syncNativeNowPlaying()
-            updateParagraphForSegment(index)
-          }
-        },
-        () => {
-          desiredPlaying = false
-          isPlaying = false
-          transport.setPlaying(false)
-          syncMediaSessionPlaybackState("paused")
-          releaseWakeLock()
-          stopBackgroundTimers()
-          backgroundedAt = 0
-          void stopNativeKeepAlive()
-          nativeSessionActive = false
-          nativePlaybackStateHint = "unknown"
-        },
-        () => {}
-      )
-
-      lastChapterIndex = -1
-      lastSegmentIndex = -1
-
-      if (chapters.length > 0) {
-        const starts = audioEngine.getSegmentAbsoluteStartMs()
-        const total = audioEngine.getTotalDurationMs()
-        if (total > 0) {
-          transport.setChapterMarkers(
-            chapters.map(c => starts[c.firstSegmentIndex] / total)
-          )
-        }
-      }
-
-      audioEngine.seekToSegment(savedSegmentIndex)
-      updateParagraphForSegment(savedSegmentIndex)
-
-      if (wasPlaying) {
-        audioEngine.unlock()
-        audioEngine.play()
-        isPlaying = true
-        transport.setPlaying(true)
-      }
-    } catch (err) {
-      console.error("[EarthgateReader] Failed to switch language:", err)
-    }
-  }
-
   // --- Render loop (RAF-based, no Babylon) ---
   let rafId: number | null = null
 
@@ -900,22 +804,54 @@ export function createEarthgateReader(
     if (disposed) return
     rafId = requestAnimationFrame(renderLoop)
 
-    // Reconcile play state with engine
+    // Reconcile play state with engine (debounced to avoid transient mismatches)
     if (audioEngine) {
-      const enginePlaying = audioEngine.isPlaying()
-      if (enginePlaying !== isPlaying) {
-        isPlaying = enginePlaying
-        transport.setPlaying(isPlaying)
-        syncMediaSessionPlaybackState(isPlaying ? "playing" : "paused")
-        if (isPlaying) {
-          void requestWakeLock()
+      const now = performance.now()
+      if (now < suppressExternalReconcileUntil) {
+        // Suppressed during seeks, scrubs, and visibility recovery
+        pendingEngineState = null
+      } else {
+        const enginePlaying = audioEngine.isPlaying()
+        if (enginePlaying !== isPlaying) {
+          const nextState: MediaSessionPlaybackState = enginePlaying ? "playing" : "paused"
+          if (pendingEngineState !== nextState) {
+            pendingEngineState = nextState
+            pendingEngineStateSince = now
+          }
+          if (now - pendingEngineStateSince >= EXTERNAL_STATE_DEBOUNCE_MS) {
+            pendingEngineState = null
+
+            if (!enginePlaying && desiredPlaying) {
+              const ctxState = audioEngine.getContextState()
+              if (ctxState === "suspended") {
+                // Native/OS pause can suspend context without delivering JS
+                // action handlers. Treat it as authoritative pause.
+                if (!playInFlight) {
+                  doPause()
+                }
+              } else {
+                // Running context + no source is a recoverable seam hole.
+                audioEngine.ensureSourceIfPlaying("reconcile:hold-desired-playing")
+              }
+            } else {
+              console.log(`[ER:sync] reconciled engine/app mismatch -> engine=${enginePlaying} app=${isPlaying}`)
+              isPlaying = enginePlaying
+              transport.setPlaying(isPlaying)
+              syncMediaSessionPlaybackState(isPlaying ? "playing" : "paused")
+              if (isPlaying) {
+                void requestWakeLock()
+              } else {
+                releaseWakeLock()
+                stopBackgroundTimers()
+                if (document.hidden) backgroundedAt = 0
+              }
+              syncNativePlaybackState(isPlaying)
+              syncNativeNowPlaying()
+            }
+          }
         } else {
-          releaseWakeLock()
-          stopBackgroundTimers()
-          if (document.hidden) backgroundedAt = 0
+          pendingEngineState = null
         }
-        syncNativePlaybackState(isPlaying)
-        syncNativeNowPlaying()
       }
     }
 
@@ -982,6 +918,9 @@ export function createEarthgateReader(
     if (disposed) return
     disposed = true
 
+    // Stop audio immediately — before any other cleanup
+    doPause()
+
     if (rafId !== null) {
       cancelAnimationFrame(rafId)
       rafId = null
@@ -1002,14 +941,28 @@ export function createEarthgateReader(
 
     document.removeEventListener("visibilitychange", handleVisibilityChange)
 
+    // Clear MediaSession so lock screen doesn't show stale player
+    if ("mediaSession" in navigator) {
+      try {
+        navigator.mediaSession.metadata = null
+        navigator.mediaSession.setActionHandler("play", null)
+        navigator.mediaSession.setActionHandler("pause", null)
+      } catch { /* best effort */ }
+    }
+
     persistBookmark()
     chapterOverlay.dispose()
-    settings.dispose()
     transport.dispose()
     paragraphView.dispose()
     audioEngine?.dispose()
     wrapper.remove()
   }
 
-  return { dispose }
+  return {
+    dispose,
+    /** Persist bookmark (called by appShell before exit) */
+    persistBookmark,
+    /** Whether audio is currently playing */
+    isPlaying: () => isPlaying,
+  }
 }

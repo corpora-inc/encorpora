@@ -1,7 +1,8 @@
 import "./styles.css"
-import type { GameModule, HostApi } from "./sdk/types"
-import { createMockHostApi } from "./sdk/mockHostApi"
+import type { GameModule, HostApi } from "@shared/sdk"
+import { createMockHostApi } from "@shared/sdk"
 import { createEarthgateReader } from "./game"
+import { createAppShell, type ReaderFactory } from "@shared/catalog"
 
 type GlobalScope = typeof globalThis & {
   CorpanGames?: Record<string, GameModule>
@@ -10,6 +11,15 @@ type GlobalScope = typeof globalThis & {
 }
 
 const GAME_ID = "earthgate_reader"
+
+// Track the last mounted reader instance for language/bookmark callbacks
+let lastReader: ReturnType<typeof createEarthgateReader> | null = null
+
+const readerFactory: ReaderFactory = (container, hostApi, initialState) => {
+  const reader = createEarthgateReader(container, hostApi as HostApi, initialState)
+  lastReader = reader
+  return reader
+}
 
 const registerGame = () => {
   const scope = globalThis as GlobalScope
@@ -37,16 +47,20 @@ const registerGame = () => {
         ...(contentRevision ? { contentRevision } : {}),
       }
 
-      const instance = createEarthgateReader(
-        container,
+      const shell = createAppShell(container, {
+        readerId: "earthgate",
+        createReader: readerFactory,
         hostApi,
-        state
-      )
-      scope.__earthgateReader = instance
+        initialState: state,
+        onBeforeExit: () => {
+          lastReader?.persistBookmark()
+        },
+      })
+      scope.__earthgateReader = shell
 
       return {
         unmount: () => {
-          instance.dispose()
+          shell.dispose()
           scope.__earthgateReader = undefined
         },
       }

@@ -1,4 +1,4 @@
-import { traceNativeEvent } from "../audio/nativeKeepAlive"
+import { traceNativeEvent } from "@shared/audio"
 
 type TraceScalar = string | number | boolean | null | undefined
 export type TraceFields = Record<string, TraceScalar>

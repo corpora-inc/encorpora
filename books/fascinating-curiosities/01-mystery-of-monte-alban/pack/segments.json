@@ -12942,10 +12942,10 @@
       "paragraph_id": "p259",
       "sentence_index": 1,
       "block_type": "text",
-      "text": "The ball court at Monte Albán is relatively modest compared to the enormous courts found at sites like Chichén Itzá in the Maya lowlands.",
-      "text_markdown": "The ball court at Monte Albán is relatively modest compared to the enormous courts found at sites like Chichén Itzá in the Maya lowlands.",
+      "text": "The ball court at Monte Albán is relatively modest compared to the enormous courts found at other sites in the Maya lowlands.",
+      "text_markdown": "The ball court at Monte Albán is relatively modest compared to the enormous courts found at other sites in the Maya lowlands.",
       "tts": {
-        "text": "The ball court at Monte Albán is relatively modest compared to the enormous courts found at sites like Chichén Itzá in the Maya lowlands.",
+        "text": "The ball court at Monte Albán is relatively modest compared to the enormous courts found at other sites in the Maya lowlands.",
         "pause_after_ms": 500
       }
     },

@@ -1,4 +1,4 @@
-import type { BookSegment, ManifestSegment } from "../core/types"
+import type { BookSegment, ManifestSegment } from "@shared/core"
 
 export type ParagraphView = {
   setSegment: (seg: BookSegment, manifestSeg: ManifestSegment | undefined) => void
@@ -27,6 +27,7 @@ export function createParagraphView(parent: HTMLElement): ParagraphView {
 
   const inner = document.createElement("div")
   inner.className = "earthgate-paragraph-inner"
+  inner.dir = "auto"
   container.appendChild(inner)
 
   // --- Swipe detection ---

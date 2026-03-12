@@ -57,3 +57,15 @@ variable "dev_bypass_token" {
   description = "Header token to enable dev bypass on verify endpoint."
   default     = ""
 }
+
+variable "cdn_domain_name" {
+  type        = string
+  description = "Custom domain for CDN e.g. cdn.encorpora.io"
+  default     = ""
+}
+
+variable "enable_cdn" {
+  type        = bool
+  description = "Whether to provision CloudFront CDN for narration artifacts."
+  default     = false
+}

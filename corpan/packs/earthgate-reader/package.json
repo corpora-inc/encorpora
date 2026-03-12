@@ -12,7 +12,9 @@
     "pack": "node scripts/pack.mjs",
     "pack:all": "npm run build && node scripts/pack.mjs"
   },
-  "dependencies": {},
+  "dependencies": {
+    "zustand": "^5.0.0"
+  },
   "devDependencies": {
     "@types/node": "^25.0.3",
     "typescript": "^5.4.0",

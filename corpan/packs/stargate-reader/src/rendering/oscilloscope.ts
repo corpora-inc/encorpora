@@ -12,7 +12,7 @@ import {
   OSCILLOSCOPE_TRACE_WIDTH,
   OSCILLOSCOPE_WIDTH,
   OSCILLOSCOPE_Y,
-} from "../core/constants"
+} from "@shared/core"
 
 export type Oscilloscope = {
   /** The ribbon mesh */

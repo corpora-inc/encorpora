@@ -15,6 +15,38 @@ export type CatalogGame = {
   purchase?: PurchaseInfo
 }
 
+export type CatalogNarrationEntry = {
+  id: string
+  bookId: string
+  bookTitle: string
+  language: string
+  voiceId: string
+  voiceName: string
+  version: string
+  downloadUrl: string
+  sha256: string
+  sizeMb: number
+  series?: string
+  volume?: number
+  tier: "public" | "premium"
+  purchase: PurchaseInfo
+}
+
+export type CatalogGamePack = {
+  id: string
+  type: "game"
+  version: string
+  downloadUrl: string
+  purchase: PurchaseInfo
+}
+
+export type CatalogV2 = {
+  version: 2
+  generatedAt: string
+  narrations: CatalogNarrationEntry[]
+  gamePacks: CatalogGamePack[]
+}
+
 const DEFAULT_CATALOG: CatalogGame[] = [
   {
     id: "hover_runner",
@@ -97,6 +129,11 @@ const toOptionalString = (value: unknown) => {
   return undefined
 }
 
+const toNumber = (value: unknown) => {
+  if (typeof value === "number" && Number.isFinite(value)) return value
+  return undefined
+}
+
 const parsePurchase = (value: unknown): PurchaseInfo | undefined => {
   if (!value || typeof value !== "object") return undefined
   const record = value as Record<string, unknown>
@@ -136,6 +173,103 @@ const parseCatalog = (data: unknown): CatalogGame[] | null => {
   return parsed
 }
 
+const parseNarration = (item: unknown): CatalogNarrationEntry | null => {
+  if (!item || typeof item !== "object") return null
+  const r = item as Record<string, unknown>
+  const id = toStringValue(r.id)
+  const bookId = toStringValue(r.bookId)
+  const bookTitle = toStringValue(r.bookTitle)
+  const language = toStringValue(r.language)
+  const voiceId = toStringValue(r.voiceId)
+  const voiceName = toStringValue(r.voiceName)
+  const version = toStringValue(r.version)
+  const downloadUrl = toStringValue(r.downloadUrl)
+  const sha256 = toStringValue(r.sha256)
+  const sizeMb = toNumber(r.sizeMb)
+  if (!id || !bookId || !version || !downloadUrl) return null
+  const tierRaw = toStringValue(r.tier)
+  const tier: "public" | "premium" =
+    tierRaw === "premium" ? "premium" : "public"
+  return {
+    id,
+    bookId,
+    bookTitle: bookTitle || bookId,
+    language: language || "en",
+    voiceId: voiceId || "default",
+    voiceName: voiceName || voiceId || "Default",
+    version,
+    downloadUrl,
+    sha256: sha256 || "",
+    sizeMb: sizeMb ?? 0,
+    series: toOptionalString(r.series),
+    volume: toNumber(r.volume),
+    tier,
+    purchase: parsePurchase(r.purchase) ?? { type: "free" },
+  }
+}
+
+/**
+ * Parse a v2 catalog (object with version, narrations, gamePacks).
+ * Also handles v1 format (plain array) for backward compatibility:
+ * v1 arrays are treated as game catalogs with empty narrations.
+ */
+export const parseCatalogV2 = (data: unknown): CatalogV2 | null => {
+  // v1 backward compat: plain array = game-only catalog
+  if (Array.isArray(data)) {
+    const games = parseCatalog(data)
+    if (!games) return null
+    return {
+      version: 2,
+      generatedAt: new Date().toISOString(),
+      narrations: [],
+      gamePacks: games.map((g) => ({
+        id: g.id,
+        type: "game" as const,
+        version: g.version,
+        downloadUrl: g.manifestUrl ?? "",
+        purchase: g.purchase ?? { type: "free" },
+      })),
+    }
+  }
+
+  if (!data || typeof data !== "object") return null
+  const record = data as Record<string, unknown>
+
+  const narrations: CatalogNarrationEntry[] = []
+  if (Array.isArray(record.narrations)) {
+    for (const item of record.narrations) {
+      const parsed = parseNarration(item)
+      if (parsed) narrations.push(parsed)
+    }
+  }
+
+  const gamePacks: CatalogGamePack[] = []
+  if (Array.isArray(record.gamePacks)) {
+    for (const item of record.gamePacks) {
+      if (!item || typeof item !== "object") continue
+      const r = item as Record<string, unknown>
+      const id = toStringValue(r.id)
+      const version = toStringValue(r.version)
+      const downloadUrl = toStringValue(r.downloadUrl)
+      if (!id || !version) continue
+      gamePacks.push({
+        id,
+        type: "game",
+        version,
+        downloadUrl: downloadUrl || "",
+        purchase: parsePurchase(r.purchase) ?? { type: "free" },
+      })
+    }
+  }
+
+  return {
+    version: 2,
+    generatedAt: toStringValue(record.generatedAt) || new Date().toISOString(),
+    narrations,
+    gamePacks,
+  }
+}
+
 export const fetchGameCatalog = async (): Promise<CatalogGame[]> => {
   const urlValue = getCatalogUrl()
   if (!urlValue) {
@@ -151,12 +285,50 @@ export const fetchGameCatalog = async (): Promise<CatalogGame[]> => {
       return getDefaultCatalog()
     }
     const data = (await res.json()) as unknown
+    // Try v2 first, fall back to v1 parsing for game catalog
+    const v2 = parseCatalogV2(data)
+    if (v2) {
+      console.log("[catalog] Parsed v2 catalog:", v2.narrations.length, "narrations,", v2.gamePacks.length, "game packs")
+      // For backward compat, fetchGameCatalog still returns CatalogGame[]
+      // Convert gamePacks back to CatalogGame format
+      const games: CatalogGame[] = v2.gamePacks.map((gp) => ({
+        id: gp.id,
+        name: gp.id,
+        version: gp.version,
+        manifestUrl: gp.downloadUrl,
+        purchase: gp.purchase,
+      }))
+      // If v2 had no gamePacks but we got data, fall back to v1 parsing
+      if (games.length === 0) {
+        const parsed = parseCatalog(data)
+        return parsed ?? getDefaultCatalog()
+      }
+      return games
+    }
     const parsed = parseCatalog(data)
-    console.log("[catalog] Parsed catalog:", parsed)
+    console.log("[catalog] Parsed v1 catalog:", parsed)
     return parsed ?? getDefaultCatalog()
   } catch (error) {
     console.error("[catalog] Fetch error:", error)
     return getDefaultCatalog()
+  }
+}
+
+/**
+ * Fetch the full v2 catalog including narrations.
+ * Returns null if fetch fails or data is unparseable.
+ */
+export const fetchCatalogV2 = async (): Promise<CatalogV2 | null> => {
+  const urlValue = getCatalogUrl()
+  if (!urlValue) return null
+  try {
+    const url = new URL(urlValue, window.location.href).toString()
+    const res = await fetch(url, { cache: "no-store" })
+    if (!res.ok) return null
+    const data = (await res.json()) as unknown
+    return parseCatalogV2(data)
+  } catch {
+    return null
   }
 }
 

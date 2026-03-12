@@ -23,3 +23,9 @@ corpan/games/
 # Voice comparison A/B test outputs (local only)
 **/audio/voice-comparison/
 
+# Audio files — served from CloudFront, hydrate locally with corpan/infra/hydrate-audio.sh
+**/pack/audio/
+
+# Voice reference wavs — backed up to S3, not tracked in git
+voices/data/*.wav
+

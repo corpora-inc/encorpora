@@ -1,7 +1,9 @@
 import "./styles.css"
-import type { GameModule, HostApi } from "./sdk/types"
-import { createMockHostApi } from "./sdk/mockHostApi"
+import type { GameModule, HostApi } from "@shared/sdk"
+import { createMockHostApi } from "@shared/sdk"
 import { createStargateReader } from "./game"
+import { createAppShell, type ReaderFactory } from "@shared/catalog"
+import type { DrawerSectionDef } from "@shared/ui"
 
 type GlobalScope = typeof globalThis & {
   CorpanGames?: Record<string, GameModule>
@@ -10,6 +12,44 @@ type GlobalScope = typeof globalThis & {
 }
 
 const GAME_ID = "stargate_reader"
+
+// Track the last mounted reader instance for language/settings callbacks
+let lastReader: ReturnType<typeof createStargateReader> | null = null
+
+// The display section def — render is deferred until the reader provides its callbacks.
+// The drawer calls render() during construction (before the reader mounts), so we stash
+// the container and render into it once the reader is ready.
+let pendingDisplayRender: ((container: HTMLElement) => void) | null = null
+let displayContainer: HTMLElement | null = null
+
+const displaySection: DrawerSectionDef = {
+  id: "display",
+  title: "Display",
+  priority: 40,
+  render: (container) => {
+    displayContainer = container
+    if (pendingDisplayRender) {
+      pendingDisplayRender(container)
+    }
+  },
+}
+
+const readerFactory: ReaderFactory = (container, hostApi, initialState) => {
+  const reader = createStargateReader(container, hostApi as HostApi, initialState)
+  lastReader = reader
+
+  // Get the display section from the reader (has live callbacks to 3D objects)
+  const readerSection = reader.getDisplaySection()
+  pendingDisplayRender = readerSection.render
+
+  // If the drawer already rendered the section container before the reader was ready, fill it now
+  if (displayContainer) {
+    displayContainer.innerHTML = ""
+    pendingDisplayRender(displayContainer)
+  }
+
+  return reader
+}
 
 const registerGame = () => {
   const scope = globalThis as GlobalScope
@@ -37,16 +77,21 @@ const registerGame = () => {
         ...(contentRevision ? { contentRevision } : {}),
       }
 
-      const instance = createStargateReader(
-        container,
+      const shell = createAppShell(container, {
+        readerId: "stargate",
+        createReader: readerFactory,
         hostApi,
-        state
-      )
-      scope.__stargateReader = instance
+        initialState: state,
+        customSections: [displaySection],
+        onBeforeExit: () => {
+          lastReader?.persistBookmark()
+        },
+      })
+      scope.__stargateReader = shell
 
       return {
         unmount: () => {
-          instance.dispose()
+          shell.dispose()
           scope.__stargateReader = undefined
         },
       }
