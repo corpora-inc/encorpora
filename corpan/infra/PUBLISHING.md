@@ -327,9 +327,7 @@ These scripts live in `~/encorpora/corpan/infra/`. Audio dirs are gitignored via
 
 Public URLs (browser-accessible, no auth needed):
 - **Catalog**: `https://d38iwc9748jekz.cloudfront.net/catalog.json`
-- **EN ZIP**: `https://d38iwc9748jekz.cloudfront.net/narrations/monte-alban-ian-en-0.1.0.zip`
-- **ES ZIP**: `https://d38iwc9748jekz.cloudfront.net/narrations/monte-alban-ian-es-0.1.0.zip`
-- **ZH ZIP**: `https://d38iwc9748jekz.cloudfront.net/narrations/monte-alban-ian-zh-0.1.0.zip`
+- Download URLs are version-stamped in catalog.json — always check catalog for current URLs
 
 To test in the Corpan app:
 1. Set `VITE_GAME_CATALOG_URL=https://d38iwc9748jekz.cloudfront.net/catalog.json`
@@ -338,14 +336,24 @@ To test in the Corpan app:
 
 ## Adding a New Book's Narrations
 
-1. Complete TTS pipeline: `ttsctl generate <pack> --lang en/es/zh`
-2. Validate: `ttsctl validate <pack> --lang en/es/zh`
-3. Master: `ttsctl master <pack> --lang en/es/zh --all`
-4. Publish all 3 languages:
+1. Complete TTS pipeline: `ttsctl generate <pack> --lang en/es/zh/ar/fr --device cuda`
+2. Validate: `ttsctl validate <pack> --lang $L`
+3. Master: `ttsctl master <pack> --lang $L --all`
+4. Publish all 5 languages:
    ```bash
-   ttsctl publish <pack> --lang en --voice-id <id> --voice-name <name>
-   ttsctl publish <pack> --lang es --voice-id <id> --voice-name <name>
-   ttsctl publish <pack> --lang zh --voice-id <id> --voice-name <name>
+   for L in en es zh ar fr; do
+     ttsctl publish <pack> --lang $L --voice-id ian-narration --voice-name Ian
+   done
    ```
-5. Invalidate CDN cache if updating existing packs
-6. Verify catalog.json has correct entries
+5. Invalidate CDN cache (boto3 — see snippet above)
+6. Add book display name to `BOOK_NAMES` in `corpan/packs/shared/core/constants.ts`
+7. Verify catalog.json has correct entries
+
+### Updating existing narrations (partial re-generation)
+
+```bash
+# Edit tts.text in segments_{lang}.json, then:
+ttsctl resync <pack> --lang $L --segments ch03-150,ch04-200 --device cuda
+ttsctl publish <pack> --lang $L --voice-id ian-narration --voice-name Ian --version 0.1.1
+# Invalidate CDN (boto3 snippet above)
+```

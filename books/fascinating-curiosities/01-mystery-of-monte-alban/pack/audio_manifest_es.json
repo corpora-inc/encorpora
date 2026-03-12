@@ -12540,88 +12540,88 @@
     },
     "ch03-151": {
       "file": "audio/es/ch03-151.m4a",
-      "duration_ms": 4300,
+      "duration_ms": 5880,
       "pause_after_ms": 500,
       "words": [
         {
           "word": "Para",
-          "start_ms": 80,
+          "start_ms": 240,
           "end_ms": 240
         },
         {
           "word": "el",
           "start_ms": 240,
-          "end_ms": 380
+          "end_ms": 400
         },
         {
           "word": "cien",
-          "start_ms": 380,
-          "end_ms": 660
+          "start_ms": 400,
+          "end_ms": 680
         },
         {
           "word": "antes",
-          "start_ms": 660,
-          "end_ms": 920
+          "start_ms": 680,
+          "end_ms": 940
         },
         {
           "word": "de",
-          "start_ms": 1000,
+          "start_ms": 940,
           "end_ms": 1100
         },
         {
           "word": "la",
           "start_ms": 1100,
-          "end_ms": 1200
+          "end_ms": 1220
         },
         {
           "word": "era",
-          "start_ms": 1200,
-          "end_ms": 1340
+          "start_ms": 1220,
+          "end_ms": 1360
         },
         {
           "word": "com\u00fan,",
-          "start_ms": 1340,
-          "end_ms": 1740
+          "start_ms": 1360,
+          "end_ms": 1760
         },
         {
           "word": "hab\u00eda",
-          "start_ms": 2440,
-          "end_ms": 2560
+          "start_ms": 2160,
+          "end_ms": 2280
         },
         {
           "word": "crecido",
-          "start_ms": 2560,
-          "end_ms": 3040
+          "start_ms": 2280,
+          "end_ms": 2840
         },
         {
           "word": "a",
-          "start_ms": 3040,
-          "end_ms": 3140
+          "start_ms": 2840,
+          "end_ms": 2960
         },
         {
           "word": "alrededor",
-          "start_ms": 3140,
-          "end_ms": 3380
+          "start_ms": 2960,
+          "end_ms": 3200
         },
         {
           "word": "de",
-          "start_ms": 3380,
-          "end_ms": 3820
+          "start_ms": 3200,
+          "end_ms": 3600
         },
         {
           "word": "diecisiete",
-          "start_ms": 4300,
-          "end_ms": 4300
+          "start_ms": 3600,
+          "end_ms": 4180
         },
         {
           "word": "mil",
-          "start_ms": 4300,
-          "end_ms": 4300
+          "start_ms": 4180,
+          "end_ms": 4400
         },
         {
           "word": "doscientas.",
-          "start_ms": 4300,
-          "end_ms": 4300
+          "start_ms": 4400,
+          "end_ms": 4900
         }
       ]
     },
@@ -67894,308 +67894,308 @@
     },
     "ch12-750": {
       "file": "audio/es/ch12-750.m4a",
-      "duration_ms": 40000,
+      "duration_ms": 25480,
       "pause_after_ms": 800,
       "words": [
         {
           "word": "En",
-          "start_ms": 200,
+          "start_ms": 100,
           "end_ms": 200
         },
         {
           "word": "alg\u00fan",
           "start_ms": 200,
-          "end_ms": 440
+          "end_ms": 460
         },
         {
           "word": "momento",
-          "start_ms": 440,
-          "end_ms": 840
+          "start_ms": 460,
+          "end_ms": 760
         },
         {
           "word": "del",
-          "start_ms": 840,
-          "end_ms": 1100
+          "start_ms": 760,
+          "end_ms": 1080
         },
         {
           "word": "siglo",
-          "start_ms": 1100,
-          "end_ms": 1340
+          "start_ms": 1080,
+          "end_ms": 1320
         },
         {
           "word": "catorce",
-          "start_ms": 1340,
-          "end_ms": 1840
+          "start_ms": 1320,
+          "end_ms": 1880
         },
         {
           "word": "o",
-          "start_ms": 1840,
+          "start_ms": 1880,
           "end_ms": 1980
         },
         {
           "word": "quince",
           "start_ms": 1980,
-          "end_ms": 2320
+          "end_ms": 2360
         },
         {
           "word": "\u2014",
-          "start_ms": 2320,
-          "end_ms": 2540
+          "start_ms": 2360,
+          "end_ms": 2600
         },
         {
           "word": "quinientos",
-          "start_ms": 2620,
-          "end_ms": 2880
+          "start_ms": 2640,
+          "end_ms": 2960
         },
         {
           "word": "a\u00f1os",
-          "start_ms": 2880,
-          "end_ms": 3200
+          "start_ms": 2960,
+          "end_ms": 3340
         },
         {
           "word": "despu\u00e9s",
-          "start_ms": 3200,
-          "end_ms": 3540
+          "start_ms": 3340,
+          "end_ms": 3740
         },
         {
           "word": "de",
-          "start_ms": 3540,
-          "end_ms": 3720
-        },
-        {
-          "word": "que",
-          "start_ms": 3720,
-          "end_ms": 3820
-        },
-        {
-          "word": "la",
-          "start_ms": 3820,
+          "start_ms": 3740,
           "end_ms": 3940
         },
         {
-          "word": "ciudad",
+          "word": "que",
           "start_ms": 3940,
+          "end_ms": 4059
+        },
+        {
+          "word": "la",
+          "start_ms": 4059,
           "end_ms": 4160
         },
         {
-          "word": "fuera",
+          "word": "ciudad",
           "start_ms": 4160,
-          "end_ms": 4480
+          "end_ms": 4420
+        },
+        {
+          "word": "fuera",
+          "start_ms": 4420,
+          "end_ms": 4760
         },
         {
           "word": "abandonada",
-          "start_ms": 4480,
-          "end_ms": 4960
+          "start_ms": 4760,
+          "end_ms": 5280
         },
         {
           "word": "por",
-          "start_ms": 4960,
-          "end_ms": 5140
+          "start_ms": 5280,
+          "end_ms": 5460
         },
         {
           "word": "sus",
-          "start_ms": 5140,
-          "end_ms": 5340
+          "start_ms": 5460,
+          "end_ms": 5620
         },
         {
           "word": "constructores",
-          "start_ms": 5780,
-          "end_ms": 6040
+          "start_ms": 6120,
+          "end_ms": 6380
         },
         {
           "word": "\u2014",
-          "start_ms": 6420,
-          "end_ms": 6520
+          "start_ms": 6380,
+          "end_ms": 6760
         },
         {
           "word": "las",
-          "start_ms": 6520,
-          "end_ms": 6700
+          "start_ms": 6780,
+          "end_ms": 6880
         },
         {
           "word": "\u00e9lites",
-          "start_ms": 6780,
-          "end_ms": 7120
+          "start_ms": 6880,
+          "end_ms": 7280
         },
         {
           "word": "mixtecas",
-          "start_ms": 7120,
-          "end_ms": 7840
+          "start_ms": 7280,
+          "end_ms": 7960
         },
         {
           "word": "reabrieron",
-          "start_ms": 8160,
-          "end_ms": 8580
+          "start_ms": 7960,
+          "end_ms": 8460
         },
         {
           "word": "esta",
-          "start_ms": 8580,
-          "end_ms": 8820
+          "start_ms": 8460,
+          "end_ms": 8720
         },
         {
           "word": "tumba",
-          "start_ms": 8820,
-          "end_ms": 9160
+          "start_ms": 8720,
+          "end_ms": 9060
         },
         {
           "word": "zapoteca,",
-          "start_ms": 9160,
+          "start_ms": 9060,
           "end_ms": 10000
         },
         {
           "word": "retiraron",
-          "start_ms": 10000,
-          "end_ms": 10400
+          "start_ms": 10040,
+          "end_ms": 10500
         },
         {
           "word": "o",
-          "start_ms": 10400,
-          "end_ms": 10660
+          "start_ms": 10500,
+          "end_ms": 10740
         },
         {
           "word": "reordenaron",
-          "start_ms": 10660,
-          "end_ms": 11180
+          "start_ms": 10740,
+          "end_ms": 11280
         },
         {
           "word": "parte",
-          "start_ms": 11180,
-          "end_ms": 11540
+          "start_ms": 11280,
+          "end_ms": 11560
         },
         {
           "word": "del",
           "start_ms": 11560,
-          "end_ms": 11740
+          "end_ms": 11820
         },
         {
           "word": "contenido",
-          "start_ms": 11740,
-          "end_ms": 12100
+          "start_ms": 11820,
+          "end_ms": 12220
         },
         {
           "word": "funerario",
-          "start_ms": 12100,
-          "end_ms": 12640
+          "start_ms": 12220,
+          "end_ms": 12740
         },
         {
           "word": "original,",
-          "start_ms": 12640,
-          "end_ms": 13160
+          "start_ms": 12740,
+          "end_ms": 13320
         },
         {
           "word": "y",
-          "start_ms": 13540,
-          "end_ms": 13560
+          "start_ms": 13600,
+          "end_ms": 13640
         },
         {
           "word": "colocaron",
-          "start_ms": 13640,
-          "end_ms": 14040
+          "start_ms": 13700,
+          "end_ms": 14100
         },
         {
           "word": "a",
-          "start_ms": 14040,
-          "end_ms": 14140
+          "start_ms": 14100,
+          "end_ms": 14220
         },
         {
           "word": "sus",
-          "start_ms": 14140,
-          "end_ms": 14300
+          "start_ms": 14220,
+          "end_ms": 14360
         },
         {
           "word": "propios",
-          "start_ms": 14380,
-          "end_ms": 14660
+          "start_ms": 14460,
+          "end_ms": 14720
         },
         {
           "word": "muertos",
-          "start_ms": 14880,
-          "end_ms": 14980
+          "start_ms": 14720,
+          "end_ms": 15060
         },
         {
           "word": "dentro",
-          "start_ms": 14980,
-          "end_ms": 15440
+          "start_ms": 15060,
+          "end_ms": 15340
         },
         {
           "word": "junto",
-          "start_ms": 15440,
-          "end_ms": 15780
+          "start_ms": 15340,
+          "end_ms": 15860
         },
         {
           "word": "con",
-          "start_ms": 15780,
-          "end_ms": 16020
+          "start_ms": 15860,
+          "end_ms": 16079
         },
         {
           "word": "una",
-          "start_ms": 16020,
-          "end_ms": 16200
+          "start_ms": 16079,
+          "end_ms": 16239
         },
         {
           "word": "de",
-          "start_ms": 16200,
-          "end_ms": 16280
+          "start_ms": 16239,
+          "end_ms": 16340
         },
         {
           "word": "las",
-          "start_ms": 16280,
-          "end_ms": 16440
+          "start_ms": 16340,
+          "end_ms": 16460
         },
         {
           "word": "colecciones",
-          "start_ms": 16440,
-          "end_ms": 16880
+          "start_ms": 16460,
+          "end_ms": 16940
         },
         {
           "word": "m\u00e1s",
-          "start_ms": 16880,
-          "end_ms": 17200
+          "start_ms": 16940,
+          "end_ms": 17260
         },
         {
           "word": "espectaculares",
-          "start_ms": 17200,
-          "end_ms": 18040
+          "start_ms": 17260,
+          "end_ms": 18160
         },
         {
           "word": "de",
-          "start_ms": 18040,
-          "end_ms": 18140
+          "start_ms": 18160,
+          "end_ms": 18260
         },
         {
           "word": "ofrendas",
-          "start_ms": 18140,
-          "end_ms": 18540
+          "start_ms": 18260,
+          "end_ms": 18680
         },
         {
           "word": "funerarias",
-          "start_ms": 18660,
-          "end_ms": 19100
+          "start_ms": 18680,
+          "end_ms": 19220
         },
         {
           "word": "jam\u00e1s",
-          "start_ms": 36340,
-          "end_ms": 38000
+          "start_ms": 19220,
+          "end_ms": 19640
         },
         {
           "word": "halladas",
-          "start_ms": 40000,
-          "end_ms": 40000
+          "start_ms": 19640,
+          "end_ms": 20000
         },
         {
           "word": "en",
-          "start_ms": 40000,
-          "end_ms": 40000
+          "start_ms": 20020,
+          "end_ms": 20180
         },
         {
           "word": "las",
-          "start_ms": 40000,
-          "end_ms": 40000
+          "start_ms": 20180,
+          "end_ms": 20280
         },
         {
           "word": "Am\u00e9ricas.",
-          "start_ms": 40000,
-          "end_ms": 40000
+          "start_ms": 20280,
+          "end_ms": 20540
         }
       ]
     },
