@@ -459,9 +459,7 @@ export function createStargateReader(
   const bookDisplayName = BOOK_NAMES[bookId] || bookId
 
   function getResolvedBookTitle(): string {
-    // Prefer explicit display name, but avoid exposing raw IDs as metadata.
-    if (bookDisplayName && bookDisplayName !== bookId) return bookDisplayName
-    return BOOK_NAMES.book_monte_alban || "The Mystery of Monte Albán"
+    return bookDisplayName
   }
 
   function getNowPlayingMetadata(): NowPlayingMetadata {

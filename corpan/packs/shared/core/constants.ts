@@ -169,4 +169,5 @@ export function resolveVoiceName(voiceId: string): string {
 
 export const BOOK_NAMES: Record<string, string> = {
   book_monte_alban: "The Mystery of Monte Albán",
+  book_the_unconquered_people: "The Unconquered People",
 }
