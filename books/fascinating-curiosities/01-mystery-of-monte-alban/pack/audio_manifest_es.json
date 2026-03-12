@@ -448,7 +448,7 @@
         {
           "word": "a\u00f1os.",
           "start_ms": 2000,
-          "end_ms": 2180
+          "end_ms": 2360
         }
       ]
     },
@@ -1530,7 +1530,7 @@
         {
           "word": "manantial.",
           "start_ms": 240,
-          "end_ms": 860
+          "end_ms": 840
         }
       ]
     },
@@ -1547,7 +1547,7 @@
         {
           "word": "lago.",
           "start_ms": 300,
-          "end_ms": 740
+          "end_ms": 720
         }
       ]
     },
@@ -2006,7 +2006,7 @@
         {
           "word": "ruedas.",
           "start_ms": 180,
-          "end_ms": 660
+          "end_ms": 640
         }
       ]
     },
@@ -2033,7 +2033,7 @@
         {
           "word": "carga.",
           "start_ms": 780,
-          "end_ms": 1140
+          "end_ms": 1160
         }
       ]
     },
@@ -2327,21 +2327,21 @@
         {
           "word": "distribuci\u00f3n",
           "start_ms": 180,
-          "end_ms": 760
+          "end_ms": 780
         },
         {
           "word": "no",
-          "start_ms": 760,
+          "start_ms": 780,
           "end_ms": 1040
         },
         {
           "word": "era",
           "start_ms": 1040,
-          "end_ms": 1280
+          "end_ms": 1260
         },
         {
           "word": "arbitraria.",
-          "start_ms": 1280,
+          "start_ms": 1260,
           "end_ms": 1840
         }
       ]
@@ -3739,7 +3739,7 @@
       "words": [
         {
           "word": "Nadie",
-          "start_ms": 200,
+          "start_ms": 80,
           "end_ms": 620
         },
         {
@@ -3750,7 +3750,7 @@
         {
           "word": "seguro.",
           "start_ms": 920,
-          "end_ms": 1360
+          "end_ms": 1400
         }
       ]
     },
@@ -5779,7 +5779,7 @@
         {
           "word": "bueno.",
           "start_ms": 960,
-          "end_ms": 1360
+          "end_ms": 1420
         }
       ]
     },
@@ -5975,7 +5975,7 @@
         {
           "word": "aqu\u00ed.",
           "start_ms": 800,
-          "end_ms": 920
+          "end_ms": 1120
         }
       ]
     },
@@ -6919,7 +6919,7 @@
       "words": [
         {
           "word": "Y",
-          "start_ms": 60,
+          "start_ms": 80,
           "end_ms": 180
         },
         {
@@ -7427,7 +7427,7 @@
       "words": [
         {
           "word": "Estos",
-          "start_ms": 120,
+          "start_ms": 100,
           "end_ms": 400
         },
         {
@@ -7448,7 +7448,7 @@
         {
           "word": "casuales.",
           "start_ms": 1100,
-          "end_ms": 1560
+          "end_ms": 1580
         }
       ]
     },
@@ -7899,12 +7899,12 @@
       "words": [
         {
           "word": "Se",
-          "start_ms": 20,
+          "start_ms": 120,
           "end_ms": 180
         },
         {
           "word": "estaba",
-          "start_ms": 260,
+          "start_ms": 240,
           "end_ms": 380
         },
         {
@@ -7920,7 +7920,7 @@
         {
           "word": "jerarqu\u00eda.",
           "start_ms": 1000,
-          "end_ms": 1320
+          "end_ms": 1340
         }
       ]
     },
@@ -8349,28 +8349,28 @@
     },
     "ch02-107": {
       "file": "audio/es/ch02-107.m4a",
-      "duration_ms": 1640,
+      "duration_ms": 1560,
       "pause_after_ms": 500,
       "words": [
         {
           "word": "Se",
-          "start_ms": 40,
-          "end_ms": 140
+          "start_ms": 20,
+          "end_ms": 120
         },
         {
           "word": "llama",
-          "start_ms": 140,
-          "end_ms": 420
+          "start_ms": 120,
+          "end_ms": 360
         },
         {
           "word": "Monumento",
-          "start_ms": 420,
-          "end_ms": 1120
+          "start_ms": 360,
+          "end_ms": 1040
         },
         {
           "word": "tres.",
-          "start_ms": 1120,
-          "end_ms": 1620
+          "start_ms": 1040,
+          "end_ms": 1340
         }
       ]
     },
@@ -10768,18 +10768,18 @@
         },
         {
           "word": "pudo",
-          "start_ms": 180,
+          "start_ms": 300,
           "end_ms": 500
         },
         {
           "word": "haberlos",
           "start_ms": 500,
-          "end_ms": 820
+          "end_ms": 800
         },
         {
           "word": "motivado?",
-          "start_ms": 820,
-          "end_ms": 1320
+          "start_ms": 800,
+          "end_ms": 1260
         }
       ]
     },
@@ -10790,7 +10790,7 @@
       "words": [
         {
           "word": "El",
-          "start_ms": 100,
+          "start_ms": 120,
           "end_ms": 200
         },
         {
@@ -10811,12 +10811,12 @@
         {
           "word": "sentido",
           "start_ms": 980,
-          "end_ms": 1400
+          "end_ms": 1380
         },
         {
           "word": "pr\u00e1ctico.",
-          "start_ms": 1400,
-          "end_ms": 1520
+          "start_ms": 1380,
+          "end_ms": 1480
         }
       ]
     },
@@ -12540,7 +12540,7 @@
     },
     "ch03-151": {
       "file": "audio/es/ch03-151.m4a",
-      "duration_ms": 4300,
+      "duration_ms": 5900,
       "pause_after_ms": 500,
       "words": [
         {
@@ -13216,17 +13216,17 @@
       "words": [
         {
           "word": "No",
-          "start_ms": 180,
+          "start_ms": 100,
           "end_ms": 300
         },
         {
           "word": "todos",
           "start_ms": 300,
-          "end_ms": 700
+          "end_ms": 720
         },
         {
           "word": "vinieron",
-          "start_ms": 700,
+          "start_ms": 720,
           "end_ms": 1220
         },
         {
@@ -13237,12 +13237,12 @@
         {
           "word": "voluntad",
           "start_ms": 1420,
-          "end_ms": 1900
+          "end_ms": 1940
         },
         {
           "word": "propia.",
-          "start_ms": 1900,
-          "end_ms": 2200
+          "start_ms": 1940,
+          "end_ms": 2220
         }
       ]
     },
@@ -13553,7 +13553,7 @@
         {
           "word": "Creci\u00f3.",
           "start_ms": 80,
-          "end_ms": 700
+          "end_ms": 720
         }
       ]
     },
@@ -16664,7 +16664,7 @@
     },
     "ch04-204": {
       "file": "audio/es/ch04-204.m4a",
-      "duration_ms": 11240,
+      "duration_ms": 11700,
       "pause_after_ms": 500,
       "words": [
         {
@@ -16684,128 +16684,225 @@
         },
         {
           "word": "entre",
-          "start_ms": 1460,
-          "end_ms": 1660
+          "start_ms": 1420,
+          "end_ms": 1580
         },
         {
           "word": "aproximadamente",
-          "start_ms": 1660,
-          "end_ms": 2340
+          "start_ms": 1580,
+          "end_ms": 2320
         },
         {
           "word": "trescientos",
-          "start_ms": 2340,
+          "start_ms": 2320,
           "end_ms": 3220
         },
         {
           "word": "y",
           "start_ms": 3220,
-          "end_ms": 3320
+          "end_ms": 3360
         },
         {
           "word": "setecientos",
-          "start_ms": 3320,
-          "end_ms": 3980
+          "start_ms": 3360,
+          "end_ms": 4000
         },
         {
           "word": "de",
-          "start_ms": 3980,
-          "end_ms": 4059
+          "start_ms": 4000,
+          "end_ms": 4100
         },
         {
           "word": "la",
-          "start_ms": 4059,
-          "end_ms": 4180
+          "start_ms": 4100,
+          "end_ms": 4220
         },
         {
           "word": "era",
-          "start_ms": 4180,
-          "end_ms": 4280
+          "start_ms": 4220,
+          "end_ms": 4420
         },
         {
           "word": "com\u00fan,",
-          "start_ms": 4280,
-          "end_ms": 4780
+          "start_ms": 4420,
+          "end_ms": 4920
         },
         {
           "word": "Monte",
-          "start_ms": 5260,
-          "end_ms": 5440
-        },
-        {
-          "word": "Alb\u00e1n",
-          "start_ms": 5440,
+          "start_ms": 5540,
           "end_ms": 5760
         },
         {
-          "word": "albergaba",
+          "word": "Alb\u00e1n",
           "start_ms": 5760,
-          "end_ms": 6440
+          "end_ms": 6080
+        },
+        {
+          "word": "albergaba",
+          "start_ms": 6080,
+          "end_ms": 6800
         },
         {
           "word": "a",
-          "start_ms": 6440,
-          "end_ms": 6660
+          "start_ms": 6800,
+          "end_ms": 6980
         },
         {
           "word": "una",
-          "start_ms": 6660,
-          "end_ms": 6840
+          "start_ms": 6980,
+          "end_ms": 7160
         },
         {
           "word": "poblaci\u00f3n",
-          "start_ms": 6840,
-          "end_ms": 7100
+          "start_ms": 7160,
+          "end_ms": 7460
         },
         {
           "word": "estimada",
-          "start_ms": 7100,
-          "end_ms": 7760
+          "start_ms": 7460,
+          "end_ms": 8220
         },
         {
           "word": "de",
-          "start_ms": 7760,
-          "end_ms": 7960
+          "start_ms": 8220,
+          "end_ms": 8400
         },
         {
           "word": "veinticinco",
-          "start_ms": 8050,
-          "end_ms": 8600
+          "start_ms": 8490,
+          "end_ms": 9040
         },
         {
-          "word": "cero",
-          "start_ms": 8700,
-          "end_ms": 8900
+          "word": "mil",
+          "start_ms": 9040,
+          "end_ms": 9260
         },
         {
           "word": "a",
-          "start_ms": 8900,
-          "end_ms": 9100
+          "start_ms": 9260,
+          "end_ms": 9520
         },
         {
           "word": "treinta",
-          "start_ms": 9220,
-          "end_ms": 9400
+          "start_ms": 9600,
+          "end_ms": 9820
         },
         {
           "word": "y",
-          "start_ms": 9400,
-          "end_ms": 9480
+          "start_ms": 9820,
+          "end_ms": 9920
         },
         {
           "word": "cinco",
-          "start_ms": 9520,
-          "end_ms": 9740
+          "start_ms": 10080,
+          "end_ms": 10180
         },
         {
-          "word": "cero",
-          "start_ms": 9740,
-          "end_ms": 10040
+          "word": "mil",
+          "start_ms": 10180,
+          "end_ms": 10380
         },
         {
           "word": "personas.",
-          "start_ms": 10040,
-          "end_ms": 10540
+          "start_ms": 10380,
+          "end_ms": 10930
+        }
+      ]
+    },
+    "ch04-205": {
+      "file": "audio/es/ch04-205.m4a",
+      "duration_ms": 6920,
+      "pause_after_ms": 500,
+      "words": [
+        {
+          "word": "Para",
+          "start_ms": 0,
+          "end_ms": 140
+        },
+        {
+          "word": "ponerlo",
+          "start_ms": 140,
+          "end_ms": 640
+        },
+        {
+          "word": "en",
+          "start_ms": 640,
+          "end_ms": 740
+        },
+        {
+          "word": "perspectiva:",
+          "start_ms": 740,
+          "end_ms": 2000
+        },
+        {
+          "word": "Londres",
+          "start_ms": 2160,
+          "end_ms": 2340
+        },
+        {
+          "word": "en",
+          "start_ms": 2340,
+          "end_ms": 2520
+        },
+        {
+          "word": "el",
+          "start_ms": 2520,
+          "end_ms": 2660
+        },
+        {
+          "word": "a\u00f1o",
+          "start_ms": 2660,
+          "end_ms": 2840
+        },
+        {
+          "word": "quinientos",
+          "start_ms": 2840,
+          "end_ms": 3290
+        },
+        {
+          "word": "de",
+          "start_ms": 3420,
+          "end_ms": 3620
+        },
+        {
+          "word": "la",
+          "start_ms": 3620,
+          "end_ms": 3740
+        },
+        {
+          "word": "era",
+          "start_ms": 3740,
+          "end_ms": 3880
+        },
+        {
+          "word": "com\u00fan",
+          "start_ms": 3880,
+          "end_ms": 4240
+        },
+        {
+          "word": "ten\u00eda",
+          "start_ms": 4240,
+          "end_ms": 4860
+        },
+        {
+          "word": "quiz\u00e1s",
+          "start_ms": 4860,
+          "end_ms": 5300
+        },
+        {
+          "word": "diez",
+          "start_ms": 5300,
+          "end_ms": 5520
+        },
+        {
+          "word": "mil",
+          "start_ms": 5520,
+          "end_ms": 5760
+        },
+        {
+          "word": "habitantes.",
+          "start_ms": 5760,
+          "end_ms": 6280
         }
       ]
     },
@@ -19118,11 +19215,11 @@
         {
           "word": "habitantes",
           "start_ms": 180,
-          "end_ms": 620
+          "end_ms": 680
         },
         {
           "word": "de",
-          "start_ms": 620,
+          "start_ms": 680,
           "end_ms": 840
         },
         {
@@ -19133,11 +19230,11 @@
         {
           "word": "Alb\u00e1n",
           "start_ms": 1020,
-          "end_ms": 1480
+          "end_ms": 1540
         },
         {
           "word": "eran",
-          "start_ms": 1480,
+          "start_ms": 1600,
           "end_ms": 1780
         },
         {
@@ -19147,13 +19244,13 @@
         },
         {
           "word": "todo",
-          "start_ms": 2200,
+          "start_ms": 2100,
           "end_ms": 2340
         },
         {
           "word": "agricultores.",
           "start_ms": 2340,
-          "end_ms": 2660
+          "end_ms": 2940
         }
       ]
     },
@@ -19769,7 +19866,7 @@
     },
     "ch04-235": {
       "file": "audio/es/ch04-235.m4a",
-      "duration_ms": 10480,
+      "duration_ms": 10000,
       "pause_after_ms": 800,
       "words": [
         {
@@ -19780,122 +19877,122 @@
         {
           "word": "ingenier\u00eda",
           "start_ms": 200,
-          "end_ms": 780
+          "end_ms": 760
         },
         {
           "word": "necesaria",
-          "start_ms": 780,
+          "start_ms": 760,
           "end_ms": 1380
         },
         {
           "word": "para",
           "start_ms": 1380,
-          "end_ms": 1640
+          "end_ms": 1620
         },
         {
           "word": "sustentar",
-          "start_ms": 1640,
-          "end_ms": 2200
+          "start_ms": 1620,
+          "end_ms": 2080
         },
         {
           "word": "a",
-          "start_ms": 2200,
-          "end_ms": 2320
+          "start_ms": 2080,
+          "end_ms": 2180
         },
         {
           "word": "veinticinco",
-          "start_ms": 2320,
-          "end_ms": 2960
+          "start_ms": 2180,
+          "end_ms": 2720
         },
         {
-          "word": "cero",
-          "start_ms": 2960,
-          "end_ms": 3260
+          "word": "mil",
+          "start_ms": 2720,
+          "end_ms": 2880
         },
         {
           "word": "personas",
-          "start_ms": 3260,
-          "end_ms": 3680
+          "start_ms": 2880,
+          "end_ms": 3220
         },
         {
           "word": "en",
-          "start_ms": 3680,
-          "end_ms": 3960
+          "start_ms": 3220,
+          "end_ms": 3520
         },
         {
           "word": "estas",
-          "start_ms": 3960,
-          "end_ms": 4180
+          "start_ms": 3520,
+          "end_ms": 3720
         },
         {
           "word": "condiciones",
-          "start_ms": 4180,
-          "end_ms": 4740
+          "start_ms": 3720,
+          "end_ms": 4280
         },
         {
           "word": "era",
-          "start_ms": 4740,
-          "end_ms": 5160
+          "start_ms": 4280,
+          "end_ms": 4780
         },
         {
           "word": "extraordinaria,",
-          "start_ms": 5160,
-          "end_ms": 5840
+          "start_ms": 4780,
+          "end_ms": 5630
         },
         {
           "word": "y",
-          "start_ms": 6340,
-          "end_ms": 6420
+          "start_ms": 5860,
+          "end_ms": 5920
         },
         {
           "word": "ten\u00eda",
-          "start_ms": 6460,
-          "end_ms": 6620
+          "start_ms": 5940,
+          "end_ms": 6120
         },
         {
           "word": "que",
-          "start_ms": 6620,
-          "end_ms": 6760
+          "start_ms": 6120,
+          "end_ms": 6280
         },
         {
           "word": "funcionar",
-          "start_ms": 6760,
-          "end_ms": 7220
+          "start_ms": 6280,
+          "end_ms": 6800
         },
         {
           "word": "cada",
-          "start_ms": 7220,
-          "end_ms": 7480
+          "start_ms": 6800,
+          "end_ms": 7040
         },
         {
           "word": "a\u00f1o,",
-          "start_ms": 7480,
-          "end_ms": 7900
+          "start_ms": 7040,
+          "end_ms": 7440
         },
         {
           "word": "sin",
-          "start_ms": 8060,
-          "end_ms": 8080
+          "start_ms": 7560,
+          "end_ms": 7580
         },
         {
           "word": "falta,",
-          "start_ms": 8080,
-          "end_ms": 8640
+          "start_ms": 7580,
+          "end_ms": 8119
         },
         {
           "word": "durante",
-          "start_ms": 8920,
-          "end_ms": 9080
+          "start_ms": 8200,
+          "end_ms": 8340
         },
         {
           "word": "doce",
-          "start_ms": 9080,
-          "end_ms": 9420
+          "start_ms": 8340,
+          "end_ms": 8680
         },
         {
           "word": "siglos.",
-          "start_ms": 9420,
-          "end_ms": 9780
+          "start_ms": 8680,
+          "end_ms": 8940
         }
       ]
     },
@@ -20728,7 +20825,7 @@
           "end_ms": 3320
         },
         {
-          "word": "Oaxaca,",
+          "word": "Oahaca,",
           "start_ms": 3320,
           "end_ms": 3620
         },
@@ -21135,13 +21232,13 @@
       "words": [
         {
           "word": "Tambi\u00e9n",
-          "start_ms": 380,
+          "start_ms": 360,
           "end_ms": 400
         },
         {
           "word": "comerciaban.",
           "start_ms": 400,
-          "end_ms": 1180
+          "end_ms": 1020
         }
       ]
     },
@@ -21842,16 +21939,16 @@
         {
           "word": "un",
           "start_ms": 280,
-          "end_ms": 420
+          "end_ms": 440
         },
         {
           "word": "nodo",
-          "start_ms": 420,
+          "start_ms": 440,
           "end_ms": 880
         },
         {
           "word": "en",
-          "start_ms": 880,
+          "start_ms": 900,
           "end_ms": 1040
         },
         {
@@ -21878,7 +21975,7 @@
       "words": [
         {
           "word": "Tambi\u00e9n",
-          "start_ms": 120,
+          "start_ms": 140,
           "end_ms": 360
         },
         {
@@ -21909,7 +22006,7 @@
         {
           "word": "mesoamericano.",
           "start_ms": 1780,
-          "end_ms": 2380
+          "end_ms": 2330
         }
       ]
     },
@@ -22484,11 +22581,11 @@
         {
           "word": "pelota",
           "start_ms": 1140,
-          "end_ms": 1500
+          "end_ms": 1520
         },
         {
           "word": "m\u00e1s",
-          "start_ms": 1500,
+          "start_ms": 1520,
           "end_ms": 1720
         },
         {
@@ -22823,13 +22920,13 @@
       "words": [
         {
           "word": "En",
-          "start_ms": 80,
+          "start_ms": 100,
           "end_ms": 260
         },
         {
           "word": "piedra.",
           "start_ms": 260,
-          "end_ms": 760
+          "end_ms": 820
         }
       ]
     },
@@ -23948,7 +24045,7 @@
         {
           "word": "funciona.",
           "start_ms": 660,
-          "end_ms": 1180
+          "end_ms": 1210
         }
       ]
     },
@@ -24444,7 +24541,7 @@
       "words": [
         {
           "word": "M\u00e1s",
-          "start_ms": 120,
+          "start_ms": 80,
           "end_ms": 340
         },
         {
@@ -24455,7 +24552,7 @@
         {
           "word": "trescientas.",
           "start_ms": 480,
-          "end_ms": 1030
+          "end_ms": 1000
         }
       ]
     },
@@ -24844,7 +24941,7 @@
         {
           "word": "Danzantes\".",
           "start_ms": 1260,
-          "end_ms": 1640
+          "end_ms": 1740
         }
       ]
     },
@@ -24871,7 +24968,7 @@
         {
           "word": "qued\u00f3.",
           "start_ms": 760,
-          "end_ms": 1180
+          "end_ms": 1160
         }
       ]
     },
@@ -25369,7 +25466,7 @@
       "words": [
         {
           "word": "Esto",
-          "start_ms": 80,
+          "start_ms": 180,
           "end_ms": 380
         },
         {
@@ -25385,7 +25482,7 @@
         {
           "word": "oculto.",
           "start_ms": 780,
-          "end_ms": 1160
+          "end_ms": 1180
         }
       ]
     },
@@ -25396,13 +25493,13 @@
       "words": [
         {
           "word": "Era",
-          "start_ms": 80,
+          "start_ms": 120,
           "end_ms": 300
         },
         {
           "word": "arquitectura.",
           "start_ms": 300,
-          "end_ms": 1100
+          "end_ms": 1060
         }
       ]
     },
@@ -25587,12 +25684,12 @@
       "words": [
         {
           "word": "La",
-          "start_ms": 100,
-          "end_ms": 200
+          "start_ms": 80,
+          "end_ms": 180
         },
         {
           "word": "mayor\u00eda",
-          "start_ms": 200,
+          "start_ms": 180,
           "end_ms": 480
         },
         {
@@ -25603,7 +25700,7 @@
         {
           "word": "hombres.",
           "start_ms": 860,
-          "end_ms": 1240
+          "end_ms": 1140
         }
       ]
     },
@@ -26510,7 +26607,7 @@
       "words": [
         {
           "word": "No",
-          "start_ms": 160,
+          "start_ms": 140,
           "end_ms": 260
         },
         {
@@ -26531,7 +26628,7 @@
         {
           "word": "azar.",
           "start_ms": 1240,
-          "end_ms": 1500
+          "end_ms": 1560
         }
       ]
     },
@@ -27431,11 +27528,11 @@
         {
           "word": "figuras",
           "start_ms": 800,
-          "end_ms": 1260
+          "end_ms": 1280
         },
         {
           "word": "y",
-          "start_ms": 1260,
+          "start_ms": 1280,
           "end_ms": 1420
         },
         {
@@ -27446,7 +27543,7 @@
         {
           "word": "glifos.",
           "start_ms": 1540,
-          "end_ms": 1840
+          "end_ms": 1820
         }
       ]
     },
@@ -27559,7 +27656,7 @@
       "words": [
         {
           "word": "\u00bfPor",
-          "start_ms": 60,
+          "start_ms": 40,
           "end_ms": 200
         },
         {
@@ -27570,12 +27667,12 @@
         {
           "word": "har\u00edan",
           "start_ms": 440,
-          "end_ms": 760
+          "end_ms": 780
         },
         {
           "word": "eso?",
-          "start_ms": 760,
-          "end_ms": 920
+          "start_ms": 780,
+          "end_ms": 960
         }
       ]
     },
@@ -28768,13 +28865,13 @@
       "words": [
         {
           "word": "Los",
-          "start_ms": 120,
+          "start_ms": 100,
           "end_ms": 220
         },
         {
           "word": "s\u00edmbolos",
-          "start_ms": 320,
-          "end_ms": 880
+          "start_ms": 220,
+          "end_ms": 900
         },
         {
           "word": "son",
@@ -28784,12 +28881,12 @@
         {
           "word": "bastante",
           "start_ms": 1040,
-          "end_ms": 1540
+          "end_ms": 1520
         },
         {
           "word": "claros.",
-          "start_ms": 1540,
-          "end_ms": 1960
+          "start_ms": 1520,
+          "end_ms": 1980
         }
       ]
     },
@@ -32266,12 +32363,12 @@
         {
           "word": "debate",
           "start_ms": 240,
-          "end_ms": 500
+          "end_ms": 520
         },
         {
           "word": "contin\u00faa.",
-          "start_ms": 500,
-          "end_ms": 1150
+          "start_ms": 520,
+          "end_ms": 1200
         }
       ]
     },
@@ -32461,7 +32558,7 @@
     },
     "ch06-384": {
       "file": "audio/es/ch06-384.m4a",
-      "duration_ms": 10360,
+      "duration_ms": 10400,
       "pause_after_ms": 500,
       "words": [
         {
@@ -33787,11 +33884,11 @@
         {
           "word": "pol\u00edtico",
           "start_ms": 780,
-          "end_ms": 1260
+          "end_ms": 1280
         },
         {
           "word": "es",
-          "start_ms": 1260,
+          "start_ms": 1280,
           "end_ms": 1660
         },
         {
@@ -34127,12 +34224,12 @@
       "words": [
         {
           "word": "Tu",
-          "start_ms": 60,
+          "start_ms": 0,
           "end_ms": 160
         },
         {
           "word": "comunidad",
-          "start_ms": 160,
+          "start_ms": 220,
           "end_ms": 620
         },
         {
@@ -34153,7 +34250,7 @@
         {
           "word": "siguiente.",
           "start_ms": 1460,
-          "end_ms": 1820
+          "end_ms": 1960
         }
       ]
     },
@@ -38881,13 +38978,13 @@
         },
         {
           "word": "tejido",
-          "start_ms": 1220,
+          "start_ms": 1400,
           "end_ms": 1540
         },
         {
           "word": "conectivo.",
           "start_ms": 1540,
-          "end_ms": 1840
+          "end_ms": 2040
         }
       ]
     },
@@ -40987,7 +41084,7 @@
       "words": [
         {
           "word": "Son",
-          "start_ms": 100,
+          "start_ms": 180,
           "end_ms": 300
         },
         {
@@ -46077,7 +46174,7 @@
       "words": [
         {
           "word": "Una",
-          "start_ms": 100,
+          "start_ms": 120,
           "end_ms": 260
         },
         {
@@ -46681,8 +46778,8 @@
       "words": [
         {
           "word": "Evolucion\u00f3.",
-          "start_ms": 60,
-          "end_ms": 820
+          "start_ms": 80,
+          "end_ms": 840
         }
       ]
     },
@@ -47933,12 +48030,12 @@
       "words": [
         {
           "word": "El",
-          "start_ms": 80,
-          "end_ms": 260
+          "start_ms": 100,
+          "end_ms": 240
         },
         {
           "word": "idioma",
-          "start_ms": 260,
+          "start_ms": 240,
           "end_ms": 600
         },
         {
@@ -49433,12 +49530,12 @@
       "words": [
         {
           "word": "Abarca",
-          "start_ms": 130,
+          "start_ms": 120,
           "end_ms": 480
         },
         {
           "word": "casi",
-          "start_ms": 640,
+          "start_ms": 480,
           "end_ms": 740
         },
         {
@@ -49469,7 +49566,7 @@
         {
           "word": "terminado.",
           "start_ms": 1640,
-          "end_ms": 1740
+          "end_ms": 2180
         }
       ]
     },
@@ -51210,7 +51307,7 @@
     },
     "ch09-569": {
       "file": "audio/es/ch09-569.m4a",
-      "duration_ms": 13440,
+      "duration_ms": 13500,
       "pause_after_ms": 500,
       "words": [
         {
@@ -53525,7 +53622,7 @@
       "words": [
         {
           "word": "Hay",
-          "start_ms": 100,
+          "start_ms": 120,
           "end_ms": 260
         },
         {
@@ -55668,7 +55765,7 @@
         },
         {
           "word": "carrera",
-          "start_ms": 200,
+          "start_ms": 220,
           "end_ms": 580
         },
         {
@@ -55684,7 +55781,7 @@
         {
           "word": "terminado.",
           "start_ms": 860,
-          "end_ms": 1300
+          "end_ms": 1340
         }
       ]
     },
@@ -56381,7 +56478,7 @@
     },
     "ch10-624": {
       "file": "audio/es/ch10-624.m4a",
-      "duration_ms": 10120,
+      "duration_ms": 10200,
       "pause_after_ms": 500,
       "words": [
         {
@@ -58463,22 +58560,22 @@
         {
           "word": "las",
           "start_ms": 920,
-          "end_ms": 1120
+          "end_ms": 1080
         },
         {
           "word": "tierras",
-          "start_ms": 1200,
-          "end_ms": 1480
+          "start_ms": 1080,
+          "end_ms": 1500
         },
         {
           "word": "altas",
-          "start_ms": 1480,
-          "end_ms": 1960
+          "start_ms": 1500,
+          "end_ms": 1940
         },
         {
           "word": "centrales.",
-          "start_ms": 1960,
-          "end_ms": 2060
+          "start_ms": 1940,
+          "end_ms": 2400
         }
       ]
     },
@@ -58526,7 +58623,7 @@
       "words": [
         {
           "word": "Piedra",
-          "start_ms": 60,
+          "start_ms": 40,
           "end_ms": 340
         },
         {
@@ -58552,34 +58649,34 @@
         {
           "word": "Guatemala.",
           "start_ms": 1480,
-          "end_ms": 2020
+          "end_ms": 1980
         }
       ]
     },
     "ch10-645": {
       "file": "audio/es/ch10-645.m4a",
-      "duration_ms": 1173,
+      "duration_ms": 1946,
       "pause_after_ms": 500,
       "words": [
         {
           "word": "Plumas",
           "start_ms": 0,
-          "end_ms": 380
+          "end_ms": 360
         },
         {
           "word": "de",
-          "start_ms": 380,
-          "end_ms": 520
+          "start_ms": 360,
+          "end_ms": 500
         },
         {
           "word": "aves",
-          "start_ms": 520,
-          "end_ms": 780
+          "start_ms": 500,
+          "end_ms": 820
         },
         {
           "word": "ex\u00f3ticas.",
-          "start_ms": 780,
-          "end_ms": 880
+          "start_ms": 820,
+          "end_ms": 1460
         }
       ]
     },
@@ -60004,7 +60101,7 @@
         {
           "word": "qu\u00e9?",
           "start_ms": 140,
-          "end_ms": 480
+          "end_ms": 500
         }
       ]
     },
@@ -60117,7 +60214,7 @@
       "words": [
         {
           "word": "No",
-          "start_ms": 160,
+          "start_ms": 80,
           "end_ms": 260
         },
         {
@@ -60138,11 +60235,11 @@
         {
           "word": "dram\u00e1tica",
           "start_ms": 980,
-          "end_ms": 1660
+          "end_ms": 1680
         },
         {
           "word": "que",
-          "start_ms": 1660,
+          "start_ms": 1680,
           "end_ms": 1900
         },
         {
@@ -60159,13 +60256,13 @@
       "words": [
         {
           "word": "Ning\u00fan",
-          "start_ms": 100,
+          "start_ms": 220,
           "end_ms": 480
         },
         {
           "word": "asedio.",
           "start_ms": 480,
-          "end_ms": 960
+          "end_ms": 880
         }
       ]
     },
@@ -60182,7 +60279,7 @@
         {
           "word": "incendio.",
           "start_ms": 420,
-          "end_ms": 1060
+          "end_ms": 1020
         }
       ]
     },
@@ -60847,7 +60944,7 @@
         {
           "word": "muri\u00f3.",
           "start_ms": 760,
-          "end_ms": 1160
+          "end_ms": 1120
         }
       ]
     },
@@ -60875,13 +60972,13 @@
       "words": [
         {
           "word": "Monta\u00f1a",
-          "start_ms": 220,
+          "start_ms": 100,
           "end_ms": 600
         },
         {
           "word": "abajo.",
           "start_ms": 600,
-          "end_ms": 940
+          "end_ms": 920
         }
       ]
     },
@@ -60903,7 +61000,7 @@
         {
           "word": "valle.",
           "start_ms": 400,
-          "end_ms": 800
+          "end_ms": 840
         }
       ]
     },
@@ -61298,7 +61395,7 @@
         {
           "word": "dispers\u00f3.",
           "start_ms": 120,
-          "end_ms": 820
+          "end_ms": 840
         }
       ]
     },
@@ -61651,7 +61748,7 @@
       "pause_after_ms": 500,
       "words": [
         {
-          "word": "Teotihuac\u00e1n",
+          "word": "Teotiguac\u00e1n",
           "start_ms": 200,
           "end_ms": 800
         },
@@ -62017,7 +62114,7 @@
     },
     "ch11-693": {
       "file": "audio/es/ch11-693.m4a",
-      "duration_ms": 14520,
+      "duration_ms": 14600,
       "pause_after_ms": 500,
       "words": [
         {
@@ -65293,27 +65390,27 @@
     },
     "ch11-721": {
       "file": "audio/es/ch11-721.m4a",
-      "duration_ms": 6800,
+      "duration_ms": 8200,
       "pause_after_ms": 500,
       "words": [
         {
           "word": "Para",
-          "start_ms": 100,
-          "end_ms": 240
+          "start_ms": 80,
+          "end_ms": 220
         },
         {
           "word": "una",
-          "start_ms": 240,
-          "end_ms": 440
+          "start_ms": 220,
+          "end_ms": 420
         },
         {
           "word": "ciudad",
-          "start_ms": 440,
-          "end_ms": 740
+          "start_ms": 420,
+          "end_ms": 720
         },
         {
           "word": "que",
-          "start_ms": 740,
+          "start_ms": 720,
           "end_ms": 960
         },
         {
@@ -65329,67 +65426,67 @@
         {
           "word": "agua",
           "start_ms": 1700,
-          "end_ms": 1880
+          "end_ms": 1900
         },
         {
           "word": "de",
-          "start_ms": 1880,
-          "end_ms": 2040
+          "start_ms": 1900,
+          "end_ms": 2060
         },
         {
           "word": "lluvia",
-          "start_ms": 2040,
-          "end_ms": 2360
+          "start_ms": 2060,
+          "end_ms": 2400
         },
         {
           "word": "recolectada,",
-          "start_ms": 2360,
-          "end_ms": 2910
+          "start_ms": 2400,
+          "end_ms": 3000
         },
         {
           "word": "incluso",
           "start_ms": 3520,
-          "end_ms": 3820
+          "end_ms": 3860
         },
         {
           "word": "unos",
-          "start_ms": 3820,
-          "end_ms": 4100
+          "start_ms": 3860,
+          "end_ms": 4120
         },
         {
           "word": "pocos",
-          "start_ms": 4100,
-          "end_ms": 4480
+          "start_ms": 4120,
+          "end_ms": 4580
         },
         {
           "word": "a\u00f1os",
-          "start_ms": 4480,
-          "end_ms": 4700
+          "start_ms": 4580,
+          "end_ms": 4800
         },
         {
           "word": "secos",
-          "start_ms": 4700,
-          "end_ms": 5140
+          "start_ms": 4800,
+          "end_ms": 5260
         },
         {
           "word": "consecutivos",
-          "start_ms": 5220,
-          "end_ms": 5920
+          "start_ms": 5260,
+          "end_ms": 6020
         },
         {
           "word": "pod\u00edan",
-          "start_ms": 5920,
-          "end_ms": 6280
-        },
-        {
-          "word": "ser",
-          "start_ms": 6280,
+          "start_ms": 6020,
           "end_ms": 6440
         },
         {
-          "word": "catastr\u00f3ficos.",
+          "word": "ser",
           "start_ms": 6440,
-          "end_ms": 6780
+          "end_ms": 6620
+        },
+        {
+          "word": "catastr\u00f3ficos.",
+          "start_ms": 6620,
+          "end_ms": 7220
         }
       ]
     },
@@ -66078,7 +66175,7 @@
         {
           "word": "\u00fanica.",
           "start_ms": 1020,
-          "end_ms": 1420
+          "end_ms": 1460
         }
       ]
     },
@@ -66089,7 +66186,7 @@
       "words": [
         {
           "word": "No",
-          "start_ms": 100,
+          "start_ms": 120,
           "end_ms": 300
         },
         {
@@ -66110,7 +66207,7 @@
         {
           "word": "\u00fanico.",
           "start_ms": 1000,
-          "end_ms": 1420
+          "end_ms": 1100
         }
       ]
     },
@@ -67894,7 +67991,7 @@
     },
     "ch12-750": {
       "file": "audio/es/ch12-750.m4a",
-      "duration_ms": 40000,
+      "duration_ms": 25500,
       "pause_after_ms": 800,
       "words": [
         {
@@ -68463,11 +68560,11 @@
         {
           "word": "el",
           "start_ms": 360,
-          "end_ms": 680
+          "end_ms": 700
         },
         {
           "word": "oro",
-          "start_ms": 680,
+          "start_ms": 700,
           "end_ms": 940
         },
         {
@@ -69610,11 +69707,11 @@
         {
           "word": "perla",
           "start_ms": 840,
-          "end_ms": 1220
+          "end_ms": 1200
         },
         {
           "word": "de",
-          "start_ms": 1220,
+          "start_ms": 1200,
           "end_ms": 1320
         },
         {
@@ -69624,7 +69721,7 @@
         },
         {
           "word": "costa",
-          "start_ms": 1440,
+          "start_ms": 1720,
           "end_ms": 1820
         },
         {
@@ -69635,7 +69732,7 @@
         {
           "word": "Pac\u00edfico.",
           "start_ms": 1920,
-          "end_ms": 2020
+          "end_ms": 2140
         }
       ]
     },
@@ -72344,7 +72441,7 @@
     },
     "ch12-790": {
       "file": "audio/es/ch12-790.m4a",
-      "duration_ms": 10640,
+      "duration_ms": 10700,
       "pause_after_ms": 800,
       "words": [
         {
@@ -73028,7 +73125,7 @@
         {
           "word": "permanece.",
           "start_ms": 540,
-          "end_ms": 1320
+          "end_ms": 1120
         }
       ]
     },
@@ -73072,7 +73169,7 @@
         {
           "word": "permanecen.",
           "start_ms": 740,
-          "end_ms": 1400
+          "end_ms": 1340
         }
       ]
     },
@@ -76351,7 +76448,7 @@
         {
           "word": "persisti\u00f3.",
           "start_ms": 560,
-          "end_ms": 1340
+          "end_ms": 1380
         }
       ]
     },
@@ -76843,7 +76940,7 @@
           "end_ms": 3060
         },
         {
-          "word": "Oaxaca,",
+          "word": "Oahaca,",
           "start_ms": 3060,
           "end_ms": 3220
         },
@@ -79261,16 +79358,16 @@
         {
           "word": "pelota",
           "start_ms": 660,
-          "end_ms": 1020
+          "end_ms": 1040
         },
         {
           "word": "nunca",
-          "start_ms": 1020,
-          "end_ms": 1340
+          "start_ms": 1040,
+          "end_ms": 1320
         },
         {
           "word": "fue",
-          "start_ms": 1340,
+          "start_ms": 1320,
           "end_ms": 1660
         },
         {
@@ -79286,7 +79383,7 @@
         {
           "word": "deporte.",
           "start_ms": 2140,
-          "end_ms": 2480
+          "end_ms": 2460
         }
       ]
     },
@@ -82194,6 +82291,2601 @@
         }
       ]
     },
+    "ch15-1000": {
+      "file": "audio/es/ch15-1000.m4a",
+      "duration_ms": 19000,
+      "pause_after_ms": 800,
+      "words": [
+        {
+          "word": "Flannery,",
+          "start_ms": 260,
+          "end_ms": 820
+        },
+        {
+          "word": "Kent",
+          "start_ms": 860,
+          "end_ms": 960
+        },
+        {
+          "word": "V.,",
+          "start_ms": 960,
+          "end_ms": 1320
+        },
+        {
+          "word": "and",
+          "start_ms": 1840,
+          "end_ms": 1880
+        },
+        {
+          "word": "Joyce",
+          "start_ms": 1880,
+          "end_ms": 2140
+        },
+        {
+          "word": "Marcus.",
+          "start_ms": 2140,
+          "end_ms": 2480
+        },
+        {
+          "word": "*The",
+          "start_ms": 3400,
+          "end_ms": 3400
+        },
+        {
+          "word": "Creation",
+          "start_ms": 3400,
+          "end_ms": 3740
+        },
+        {
+          "word": "of",
+          "start_ms": 3740,
+          "end_ms": 3980
+        },
+        {
+          "word": "Inequality:",
+          "start_ms": 3980,
+          "end_ms": 4720
+        },
+        {
+          "word": "How",
+          "start_ms": 5000,
+          "end_ms": 5000
+        },
+        {
+          "word": "Our",
+          "start_ms": 5000,
+          "end_ms": 5320
+        },
+        {
+          "word": "Prehistoric",
+          "start_ms": 5320,
+          "end_ms": 5840
+        },
+        {
+          "word": "Ancestors",
+          "start_ms": 5840,
+          "end_ms": 6460
+        },
+        {
+          "word": "Set",
+          "start_ms": 6460,
+          "end_ms": 6800
+        },
+        {
+          "word": "the",
+          "start_ms": 6800,
+          "end_ms": 6960
+        },
+        {
+          "word": "Stage",
+          "start_ms": 6960,
+          "end_ms": 7280
+        },
+        {
+          "word": "for",
+          "start_ms": 7280,
+          "end_ms": 7480
+        },
+        {
+          "word": "Monarchy,",
+          "start_ms": 7480,
+          "end_ms": 7900
+        },
+        {
+          "word": "Slavery,",
+          "start_ms": 8220,
+          "end_ms": 8780
+        },
+        {
+          "word": "and",
+          "start_ms": 8780,
+          "end_ms": 8880
+        },
+        {
+          "word": "Empire*.",
+          "start_ms": 8880,
+          "end_ms": 9240
+        },
+        {
+          "word": "Harvard",
+          "start_ms": 9720,
+          "end_ms": 9980
+        },
+        {
+          "word": "University",
+          "start_ms": 9980,
+          "end_ms": 10540
+        },
+        {
+          "word": "Press,",
+          "start_ms": 10540,
+          "end_ms": 11100
+        },
+        {
+          "word": "dos",
+          "start_ms": 11320,
+          "end_ms": 11420
+        },
+        {
+          "word": "mil",
+          "start_ms": 11420,
+          "end_ms": 11560
+        },
+        {
+          "word": "doce.",
+          "start_ms": 11560,
+          "end_ms": 11840
+        },
+        {
+          "word": "\u2014",
+          "start_ms": 12200,
+          "end_ms": 12240
+        },
+        {
+          "word": "No",
+          "start_ms": 12240,
+          "end_ms": 12300
+        },
+        {
+          "word": "es",
+          "start_ms": 12300,
+          "end_ms": 12400
+        },
+        {
+          "word": "espec\u00edficamente",
+          "start_ms": 12400,
+          "end_ms": 13120
+        },
+        {
+          "word": "sobre",
+          "start_ms": 13120,
+          "end_ms": 13420
+        },
+        {
+          "word": "Monte",
+          "start_ms": 13420,
+          "end_ms": 13720
+        },
+        {
+          "word": "Alb\u00e1n,",
+          "start_ms": 13720,
+          "end_ms": 14100
+        },
+        {
+          "word": "pero",
+          "start_ms": 14320,
+          "end_ms": 14420
+        },
+        {
+          "word": "lo",
+          "start_ms": 14420,
+          "end_ms": 14540
+        },
+        {
+          "word": "utiliza",
+          "start_ms": 14540,
+          "end_ms": 14960
+        },
+        {
+          "word": "como",
+          "start_ms": 14960,
+          "end_ms": 15180
+        },
+        {
+          "word": "caso",
+          "start_ms": 15180,
+          "end_ms": 15460
+        },
+        {
+          "word": "de",
+          "start_ms": 15460,
+          "end_ms": 15620
+        },
+        {
+          "word": "estudio",
+          "start_ms": 15620,
+          "end_ms": 15940
+        },
+        {
+          "word": "clave",
+          "start_ms": 15940,
+          "end_ms": 16360
+        },
+        {
+          "word": "en",
+          "start_ms": 16360,
+          "end_ms": 16560
+        },
+        {
+          "word": "el",
+          "start_ms": 16560,
+          "end_ms": 16680
+        },
+        {
+          "word": "desarrollo",
+          "start_ms": 16680,
+          "end_ms": 17040
+        },
+        {
+          "word": "de",
+          "start_ms": 17040,
+          "end_ms": 17300
+        },
+        {
+          "word": "sociedades",
+          "start_ms": 17300,
+          "end_ms": 17780
+        },
+        {
+          "word": "complejas.",
+          "start_ms": 17780,
+          "end_ms": 17900
+        }
+      ]
+    },
+    "ch15-1001": {
+      "file": "audio/es/ch15-1001.m4a",
+      "duration_ms": 14300,
+      "pause_after_ms": 800,
+      "words": [
+        {
+          "word": "Coe,",
+          "start_ms": 220,
+          "end_ms": 620
+        },
+        {
+          "word": "Michael",
+          "start_ms": 760,
+          "end_ms": 860
+        },
+        {
+          "word": "D.,",
+          "start_ms": 860,
+          "end_ms": 1300
+        },
+        {
+          "word": "and",
+          "start_ms": 1600,
+          "end_ms": 1600
+        },
+        {
+          "word": "Rex",
+          "start_ms": 1600,
+          "end_ms": 1880
+        },
+        {
+          "word": "Koontz.",
+          "start_ms": 1880,
+          "end_ms": 2760
+        },
+        {
+          "word": "*Mexico:",
+          "start_ms": 2840,
+          "end_ms": 3240
+        },
+        {
+          "word": "From",
+          "start_ms": 3340,
+          "end_ms": 3440
+        },
+        {
+          "word": "the",
+          "start_ms": 3440,
+          "end_ms": 3600
+        },
+        {
+          "word": "Olmecs",
+          "start_ms": 3600,
+          "end_ms": 4019
+        },
+        {
+          "word": "to",
+          "start_ms": 4100,
+          "end_ms": 4200
+        },
+        {
+          "word": "the",
+          "start_ms": 4200,
+          "end_ms": 4400
+        },
+        {
+          "word": "Aztecs*.",
+          "start_ms": 4400,
+          "end_ms": 4560
+        },
+        {
+          "word": "Thames",
+          "start_ms": 5500,
+          "end_ms": 5660
+        },
+        {
+          "word": "and",
+          "start_ms": 5660,
+          "end_ms": 5920
+        },
+        {
+          "word": "Hudson,",
+          "start_ms": 5920,
+          "end_ms": 6120
+        },
+        {
+          "word": "s\u00e9ptima",
+          "start_ms": 6180,
+          "end_ms": 6800
+        },
+        {
+          "word": "edici\u00f3n,",
+          "start_ms": 6800,
+          "end_ms": 7460
+        },
+        {
+          "word": "dos",
+          "start_ms": 7480,
+          "end_ms": 7600
+        },
+        {
+          "word": "mil",
+          "start_ms": 7600,
+          "end_ms": 7800
+        },
+        {
+          "word": "trece.",
+          "start_ms": 7800,
+          "end_ms": 8300
+        },
+        {
+          "word": "\u2014",
+          "start_ms": 8500,
+          "end_ms": 8500
+        },
+        {
+          "word": "Excelente",
+          "start_ms": 8620,
+          "end_ms": 8900
+        },
+        {
+          "word": "panorama",
+          "start_ms": 8900,
+          "end_ms": 9320
+        },
+        {
+          "word": "de",
+          "start_ms": 9320,
+          "end_ms": 9540
+        },
+        {
+          "word": "todas",
+          "start_ms": 9540,
+          "end_ms": 9760
+        },
+        {
+          "word": "las",
+          "start_ms": 9760,
+          "end_ms": 10000
+        },
+        {
+          "word": "civilizaciones",
+          "start_ms": 10000,
+          "end_ms": 10580
+        },
+        {
+          "word": "mesoamericanas,",
+          "start_ms": 10580,
+          "end_ms": 11280
+        },
+        {
+          "word": "con",
+          "start_ms": 11720,
+          "end_ms": 11740
+        },
+        {
+          "word": "una",
+          "start_ms": 11740,
+          "end_ms": 11920
+        },
+        {
+          "word": "s\u00f3lida",
+          "start_ms": 11920,
+          "end_ms": 12300
+        },
+        {
+          "word": "cobertura",
+          "start_ms": 12300,
+          "end_ms": 12840
+        },
+        {
+          "word": "de",
+          "start_ms": 12840,
+          "end_ms": 13000
+        },
+        {
+          "word": "Oaxaca.",
+          "start_ms": 13000,
+          "end_ms": 13220
+        }
+      ]
+    },
+    "ch15-1002": {
+      "file": "audio/es/ch15-1002.m4a",
+      "duration_ms": 1940,
+      "pause_after_ms": 800,
+      "words": [
+        {
+          "word": "Para",
+          "start_ms": 0,
+          "end_ms": 120
+        },
+        {
+          "word": "la",
+          "start_ms": 120,
+          "end_ms": 260
+        },
+        {
+          "word": "escritura",
+          "start_ms": 260,
+          "end_ms": 700
+        },
+        {
+          "word": "espec\u00edficamente:",
+          "start_ms": 700,
+          "end_ms": 1540
+        }
+      ]
+    },
+    "ch15-1003": {
+      "file": "audio/es/ch15-1003.m4a",
+      "duration_ms": 12960,
+      "pause_after_ms": 800,
+      "words": [
+        {
+          "word": "Urcid,",
+          "start_ms": 120,
+          "end_ms": 700
+        },
+        {
+          "word": "Javier.",
+          "start_ms": 800,
+          "end_ms": 1060
+        },
+        {
+          "word": "*Zapotec",
+          "start_ms": 1780,
+          "end_ms": 2080
+        },
+        {
+          "word": "Hieroglyphic",
+          "start_ms": 2180,
+          "end_ms": 2880
+        },
+        {
+          "word": "Writing*.",
+          "start_ms": 2880,
+          "end_ms": 3320
+        },
+        {
+          "word": "Studies",
+          "start_ms": 3700,
+          "end_ms": 3820
+        },
+        {
+          "word": "in",
+          "start_ms": 3820,
+          "end_ms": 4000
+        },
+        {
+          "word": "Pre-Columbian",
+          "start_ms": 4000,
+          "end_ms": 4600
+        },
+        {
+          "word": "Art",
+          "start_ms": 4600,
+          "end_ms": 4900
+        },
+        {
+          "word": "and",
+          "start_ms": 5040,
+          "end_ms": 5140
+        },
+        {
+          "word": "Archaeology,",
+          "start_ms": 5140,
+          "end_ms": 5890
+        },
+        {
+          "word": "No.",
+          "start_ms": 6020,
+          "end_ms": 6280
+        },
+        {
+          "word": "treinta",
+          "start_ms": 6520,
+          "end_ms": 6740
+        },
+        {
+          "word": "y",
+          "start_ms": 6740,
+          "end_ms": 6840
+        },
+        {
+          "word": "cuatro.",
+          "start_ms": 6840,
+          "end_ms": 6940
+        },
+        {
+          "word": "Dumbarton",
+          "start_ms": 7620,
+          "end_ms": 8100
+        },
+        {
+          "word": "Oaks,",
+          "start_ms": 8100,
+          "end_ms": 8360
+        },
+        {
+          "word": "dos",
+          "start_ms": 8600,
+          "end_ms": 8720
+        },
+        {
+          "word": "mil",
+          "start_ms": 8720,
+          "end_ms": 8860
+        },
+        {
+          "word": "uno.",
+          "start_ms": 8860,
+          "end_ms": 9140
+        },
+        {
+          "word": "\u2014",
+          "start_ms": 9540,
+          "end_ms": 9540
+        },
+        {
+          "word": "La",
+          "start_ms": 9540,
+          "end_ms": 9620
+        },
+        {
+          "word": "referencia",
+          "start_ms": 9620,
+          "end_ms": 10100
+        },
+        {
+          "word": "t\u00e9cnica",
+          "start_ms": 10100,
+          "end_ms": 10440
+        },
+        {
+          "word": "fundamental.",
+          "start_ms": 10440,
+          "end_ms": 11290
+        },
+        {
+          "word": "Denso",
+          "start_ms": 11580,
+          "end_ms": 11800
+        },
+        {
+          "word": "pero",
+          "start_ms": 11800,
+          "end_ms": 12000
+        },
+        {
+          "word": "esencial.",
+          "start_ms": 12000,
+          "end_ms": 12550
+        }
+      ]
+    },
+    "ch15-1004": {
+      "file": "audio/es/ch15-1004.m4a",
+      "duration_ms": 15480,
+      "pause_after_ms": 800,
+      "words": [
+        {
+          "word": "Marcus,",
+          "start_ms": 440,
+          "end_ms": 620
+        },
+        {
+          "word": "Joyce.",
+          "start_ms": 960,
+          "end_ms": 1600
+        },
+        {
+          "word": "*Mesoamerican",
+          "start_ms": 1640,
+          "end_ms": 2240
+        },
+        {
+          "word": "Writing",
+          "start_ms": 2240,
+          "end_ms": 2480
+        },
+        {
+          "word": "Systems:",
+          "start_ms": 2480,
+          "end_ms": 3240
+        },
+        {
+          "word": "Propaganda,",
+          "start_ms": 3340,
+          "end_ms": 3720
+        },
+        {
+          "word": "Myth,",
+          "start_ms": 3720,
+          "end_ms": 4200
+        },
+        {
+          "word": "and",
+          "start_ms": 4200,
+          "end_ms": 4280
+        },
+        {
+          "word": "History",
+          "start_ms": 4280,
+          "end_ms": 4620
+        },
+        {
+          "word": "in",
+          "start_ms": 4620,
+          "end_ms": 4880
+        },
+        {
+          "word": "Four",
+          "start_ms": 4880,
+          "end_ms": 5140
+        },
+        {
+          "word": "Ancient",
+          "start_ms": 5140,
+          "end_ms": 5480
+        },
+        {
+          "word": "Civilizations*.",
+          "start_ms": 5480,
+          "end_ms": 6220
+        },
+        {
+          "word": "Princeton",
+          "start_ms": 7060,
+          "end_ms": 7340
+        },
+        {
+          "word": "University",
+          "start_ms": 7340,
+          "end_ms": 7840
+        },
+        {
+          "word": "Press,",
+          "start_ms": 7840,
+          "end_ms": 8500
+        },
+        {
+          "word": "mil",
+          "start_ms": 8560,
+          "end_ms": 8580
+        },
+        {
+          "word": "novecientos",
+          "start_ms": 8580,
+          "end_ms": 9140
+        },
+        {
+          "word": "noventa",
+          "start_ms": 9140,
+          "end_ms": 9540
+        },
+        {
+          "word": "y",
+          "start_ms": 9540,
+          "end_ms": 9600
+        },
+        {
+          "word": "dos.",
+          "start_ms": 9600,
+          "end_ms": 9800
+        },
+        {
+          "word": "\u2014",
+          "start_ms": 10420,
+          "end_ms": 10420
+        },
+        {
+          "word": "Estudio",
+          "start_ms": 10580,
+          "end_ms": 10760
+        },
+        {
+          "word": "comparativo",
+          "start_ms": 10760,
+          "end_ms": 11360
+        },
+        {
+          "word": "que",
+          "start_ms": 11360,
+          "end_ms": 11520
+        },
+        {
+          "word": "sit\u00faa",
+          "start_ms": 11520,
+          "end_ms": 11820
+        },
+        {
+          "word": "la",
+          "start_ms": 11820,
+          "end_ms": 11920
+        },
+        {
+          "word": "escritura",
+          "start_ms": 11920,
+          "end_ms": 12300
+        },
+        {
+          "word": "zapoteca",
+          "start_ms": 12300,
+          "end_ms": 12860
+        },
+        {
+          "word": "junto",
+          "start_ms": 12860,
+          "end_ms": 13040
+        },
+        {
+          "word": "a",
+          "start_ms": 13040,
+          "end_ms": 13240
+        },
+        {
+          "word": "la",
+          "start_ms": 13240,
+          "end_ms": 13320
+        },
+        {
+          "word": "maya,",
+          "start_ms": 13320,
+          "end_ms": 13800
+        },
+        {
+          "word": "mixteca",
+          "start_ms": 13800,
+          "end_ms": 14260
+        },
+        {
+          "word": "y",
+          "start_ms": 14260,
+          "end_ms": 14400
+        },
+        {
+          "word": "azteca.",
+          "start_ms": 14400,
+          "end_ms": 14740
+        }
+      ]
+    },
+    "ch15-1005": {
+      "file": "audio/es/ch15-1005.m4a",
+      "duration_ms": 3000,
+      "pause_after_ms": 800,
+      "words": [
+        {
+          "word": "Para",
+          "start_ms": 0,
+          "end_ms": 100
+        },
+        {
+          "word": "la",
+          "start_ms": 100,
+          "end_ms": 240
+        },
+        {
+          "word": "Tumba",
+          "start_ms": 240,
+          "end_ms": 540
+        },
+        {
+          "word": "siete",
+          "start_ms": 540,
+          "end_ms": 900
+        },
+        {
+          "word": "y",
+          "start_ms": 900,
+          "end_ms": 1220
+        },
+        {
+          "word": "la",
+          "start_ms": 1220,
+          "end_ms": 1320
+        },
+        {
+          "word": "conexi\u00f3n",
+          "start_ms": 1320,
+          "end_ms": 1880
+        },
+        {
+          "word": "mixteca:",
+          "start_ms": 1880,
+          "end_ms": 2400
+        }
+      ]
+    },
+    "ch15-1006": {
+      "file": "audio/es/ch15-1006.m4a",
+      "duration_ms": 14280,
+      "pause_after_ms": 800,
+      "words": [
+        {
+          "word": "Caso,",
+          "start_ms": 220,
+          "end_ms": 320
+        },
+        {
+          "word": "Alfonso.",
+          "start_ms": 680,
+          "end_ms": 1060
+        },
+        {
+          "word": "*El",
+          "start_ms": 1700,
+          "end_ms": 1800
+        },
+        {
+          "word": "Tesoro",
+          "start_ms": 1800,
+          "end_ms": 2200
+        },
+        {
+          "word": "de",
+          "start_ms": 2200,
+          "end_ms": 2360
+        },
+        {
+          "word": "Monte",
+          "start_ms": 2540,
+          "end_ms": 2640
+        },
+        {
+          "word": "Alb\u00e1n*",
+          "start_ms": 3360,
+          "end_ms": 3460
+        },
+        {
+          "word": "(The",
+          "start_ms": 3460,
+          "end_ms": 3540
+        },
+        {
+          "word": "Treasure",
+          "start_ms": 3540,
+          "end_ms": 3920
+        },
+        {
+          "word": "of",
+          "start_ms": 3920,
+          "end_ms": 4260
+        },
+        {
+          "word": "Monte",
+          "start_ms": 4260,
+          "end_ms": 4600
+        },
+        {
+          "word": "Alb\u00e1n).",
+          "start_ms": 4600,
+          "end_ms": 5060
+        },
+        {
+          "word": "INAH,",
+          "start_ms": 5440,
+          "end_ms": 5940
+        },
+        {
+          "word": "mil",
+          "start_ms": 5960,
+          "end_ms": 6040
+        },
+        {
+          "word": "novecientos",
+          "start_ms": 6040,
+          "end_ms": 6820
+        },
+        {
+          "word": "sesenta",
+          "start_ms": 6820,
+          "end_ms": 7360
+        },
+        {
+          "word": "y",
+          "start_ms": 7360,
+          "end_ms": 7480
+        },
+        {
+          "word": "nueve.",
+          "start_ms": 7480,
+          "end_ms": 7680
+        },
+        {
+          "word": "\u2014",
+          "start_ms": 8560,
+          "end_ms": 8640
+        },
+        {
+          "word": "El",
+          "start_ms": 8640,
+          "end_ms": 8680
+        },
+        {
+          "word": "propio",
+          "start_ms": 8740,
+          "end_ms": 8980
+        },
+        {
+          "word": "relato",
+          "start_ms": 8980,
+          "end_ms": 9400
+        },
+        {
+          "word": "de",
+          "start_ms": 9400,
+          "end_ms": 9560
+        },
+        {
+          "word": "Caso",
+          "start_ms": 9560,
+          "end_ms": 9960
+        },
+        {
+          "word": "sobre",
+          "start_ms": 9960,
+          "end_ms": 10200
+        },
+        {
+          "word": "el",
+          "start_ms": 10200,
+          "end_ms": 10320
+        },
+        {
+          "word": "descubrimiento",
+          "start_ms": 10320,
+          "end_ms": 11020
+        },
+        {
+          "word": "de",
+          "start_ms": 11020,
+          "end_ms": 11140
+        },
+        {
+          "word": "la",
+          "start_ms": 11140,
+          "end_ms": 11220
+        },
+        {
+          "word": "Tumba",
+          "start_ms": 11220,
+          "end_ms": 11540
+        },
+        {
+          "word": "siete",
+          "start_ms": 11540,
+          "end_ms": 11860
+        },
+        {
+          "word": "y",
+          "start_ms": 11860,
+          "end_ms": 12060
+        },
+        {
+          "word": "su",
+          "start_ms": 12060,
+          "end_ms": 12180
+        },
+        {
+          "word": "contenido.",
+          "start_ms": 12180,
+          "end_ms": 12700
+        },
+        {
+          "word": "En",
+          "start_ms": 12900,
+          "end_ms": 12980
+        },
+        {
+          "word": "espa\u00f1ol.",
+          "start_ms": 12980,
+          "end_ms": 13480
+        }
+      ]
+    },
+    "ch15-1007": {
+      "file": "audio/es/ch15-1007.m4a",
+      "duration_ms": 3040,
+      "pause_after_ms": 800,
+      "words": [
+        {
+          "word": "Para",
+          "start_ms": 0,
+          "end_ms": 120
+        },
+        {
+          "word": "el",
+          "start_ms": 120,
+          "end_ms": 240
+        },
+        {
+          "word": "contexto",
+          "start_ms": 240,
+          "end_ms": 800
+        },
+        {
+          "word": "mesoamericano",
+          "start_ms": 800,
+          "end_ms": 1660
+        },
+        {
+          "word": "m\u00e1s",
+          "start_ms": 1660,
+          "end_ms": 1920
+        },
+        {
+          "word": "amplio:",
+          "start_ms": 1920,
+          "end_ms": 2460
+        }
+      ]
+    },
+    "ch15-1008": {
+      "file": "audio/es/ch15-1008.m4a",
+      "duration_ms": 11680,
+      "pause_after_ms": 800,
+      "words": [
+        {
+          "word": "Houston,",
+          "start_ms": 300,
+          "end_ms": 540
+        },
+        {
+          "word": "Stephen",
+          "start_ms": 840,
+          "end_ms": 1000
+        },
+        {
+          "word": "D.,",
+          "start_ms": 1000,
+          "end_ms": 1340
+        },
+        {
+          "word": "ed.",
+          "start_ms": 1380,
+          "end_ms": 1480
+        },
+        {
+          "word": "*The",
+          "start_ms": 1540,
+          "end_ms": 1540
+        },
+        {
+          "word": "First",
+          "start_ms": 1540,
+          "end_ms": 1820
+        },
+        {
+          "word": "Writing:",
+          "start_ms": 1820,
+          "end_ms": 2300
+        },
+        {
+          "word": "Script",
+          "start_ms": 2700,
+          "end_ms": 2700
+        },
+        {
+          "word": "Invention",
+          "start_ms": 2700,
+          "end_ms": 3180
+        },
+        {
+          "word": "as",
+          "start_ms": 3180,
+          "end_ms": 3400
+        },
+        {
+          "word": "History",
+          "start_ms": 3400,
+          "end_ms": 3640
+        },
+        {
+          "word": "and",
+          "start_ms": 3640,
+          "end_ms": 3800
+        },
+        {
+          "word": "Process*.",
+          "start_ms": 3800,
+          "end_ms": 4080
+        },
+        {
+          "word": "Cambridge",
+          "start_ms": 4560,
+          "end_ms": 4720
+        },
+        {
+          "word": "University",
+          "start_ms": 4720,
+          "end_ms": 5220
+        },
+        {
+          "word": "Press,",
+          "start_ms": 5220,
+          "end_ms": 5740
+        },
+        {
+          "word": "dos",
+          "start_ms": 5820,
+          "end_ms": 5960
+        },
+        {
+          "word": "mil",
+          "start_ms": 5960,
+          "end_ms": 6100
+        },
+        {
+          "word": "cuatro.",
+          "start_ms": 6100,
+          "end_ms": 6400
+        },
+        {
+          "word": "\u2014",
+          "start_ms": 6940,
+          "end_ms": 6940
+        },
+        {
+          "word": "Estudio",
+          "start_ms": 7120,
+          "end_ms": 7280
+        },
+        {
+          "word": "comparativo",
+          "start_ms": 7280,
+          "end_ms": 7840
+        },
+        {
+          "word": "de",
+          "start_ms": 7840,
+          "end_ms": 7980
+        },
+        {
+          "word": "los",
+          "start_ms": 7980,
+          "end_ms": 8100
+        },
+        {
+          "word": "or\u00edgenes",
+          "start_ms": 8100,
+          "end_ms": 8500
+        },
+        {
+          "word": "de",
+          "start_ms": 8560,
+          "end_ms": 8640
+        },
+        {
+          "word": "la",
+          "start_ms": 8640,
+          "end_ms": 8700
+        },
+        {
+          "word": "escritura",
+          "start_ms": 8700,
+          "end_ms": 9060
+        },
+        {
+          "word": "en",
+          "start_ms": 9060,
+          "end_ms": 9200
+        },
+        {
+          "word": "todo",
+          "start_ms": 9200,
+          "end_ms": 9280
+        },
+        {
+          "word": "el",
+          "start_ms": 9280,
+          "end_ms": 9420
+        },
+        {
+          "word": "mundo,",
+          "start_ms": 9420,
+          "end_ms": 9720
+        },
+        {
+          "word": "incluida",
+          "start_ms": 9880,
+          "end_ms": 10220
+        },
+        {
+          "word": "Mesoam\u00e9rica.",
+          "start_ms": 10220,
+          "end_ms": 10770
+        }
+      ]
+    },
+    "ch15-1009": {
+      "file": "audio/es/ch15-1009.m4a",
+      "duration_ms": 12520,
+      "pause_after_ms": 800,
+      "words": [
+        {
+          "word": "Christenson,",
+          "start_ms": 300,
+          "end_ms": 1000
+        },
+        {
+          "word": "Allen",
+          "start_ms": 1160,
+          "end_ms": 1180
+        },
+        {
+          "word": "J.,",
+          "start_ms": 1180,
+          "end_ms": 1560
+        },
+        {
+          "word": "trans.",
+          "start_ms": 1600,
+          "end_ms": 1800
+        },
+        {
+          "word": "*Popol",
+          "start_ms": 1940,
+          "end_ms": 2020
+        },
+        {
+          "word": "Vuh:",
+          "start_ms": 2020,
+          "end_ms": 2520
+        },
+        {
+          "word": "The",
+          "start_ms": 2520,
+          "end_ms": 2580
+        },
+        {
+          "word": "Sacred",
+          "start_ms": 2580,
+          "end_ms": 2940
+        },
+        {
+          "word": "Book",
+          "start_ms": 2940,
+          "end_ms": 3220
+        },
+        {
+          "word": "of",
+          "start_ms": 3220,
+          "end_ms": 3500
+        },
+        {
+          "word": "the",
+          "start_ms": 3520,
+          "end_ms": 3620
+        },
+        {
+          "word": "Maya*.",
+          "start_ms": 3620,
+          "end_ms": 4000
+        },
+        {
+          "word": "University",
+          "start_ms": 4680,
+          "end_ms": 5040
+        },
+        {
+          "word": "of",
+          "start_ms": 5040,
+          "end_ms": 5400
+        },
+        {
+          "word": "Oklahoma",
+          "start_ms": 5580,
+          "end_ms": 5740
+        },
+        {
+          "word": "Press,",
+          "start_ms": 5740,
+          "end_ms": 6320
+        },
+        {
+          "word": "dos",
+          "start_ms": 6540,
+          "end_ms": 6660
+        },
+        {
+          "word": "mil",
+          "start_ms": 6660,
+          "end_ms": 6820
+        },
+        {
+          "word": "siete.",
+          "start_ms": 6820,
+          "end_ms": 7220
+        },
+        {
+          "word": "\u2014",
+          "start_ms": 7580,
+          "end_ms": 7580
+        },
+        {
+          "word": "La",
+          "start_ms": 7580,
+          "end_ms": 7640
+        },
+        {
+          "word": "narrativa",
+          "start_ms": 7640,
+          "end_ms": 8119
+        },
+        {
+          "word": "de",
+          "start_ms": 8119,
+          "end_ms": 8260
+        },
+        {
+          "word": "la",
+          "start_ms": 8260,
+          "end_ms": 8380
+        },
+        {
+          "word": "creaci\u00f3n",
+          "start_ms": 8380,
+          "end_ms": 8760
+        },
+        {
+          "word": "de",
+          "start_ms": 8760,
+          "end_ms": 8900
+        },
+        {
+          "word": "los",
+          "start_ms": 8900,
+          "end_ms": 9020
+        },
+        {
+          "word": "k'iche'",
+          "start_ms": 9020,
+          "end_ms": 9120
+        },
+        {
+          "word": "mayas,",
+          "start_ms": 9420,
+          "end_ms": 9720
+        },
+        {
+          "word": "incluyendo",
+          "start_ms": 9820,
+          "end_ms": 10260
+        },
+        {
+          "word": "la",
+          "start_ms": 10260,
+          "end_ms": 10380
+        },
+        {
+          "word": "mitolog\u00eda",
+          "start_ms": 10380,
+          "end_ms": 10860
+        },
+        {
+          "word": "del",
+          "start_ms": 10860,
+          "end_ms": 11160
+        },
+        {
+          "word": "juego",
+          "start_ms": 11160,
+          "end_ms": 11360
+        },
+        {
+          "word": "de",
+          "start_ms": 11360,
+          "end_ms": 11520
+        },
+        {
+          "word": "pelota.",
+          "start_ms": 11520,
+          "end_ms": 11860
+        }
+      ]
+    },
+    "ch15-1011": {
+      "file": "audio/es/ch15-1011.m4a",
+      "duration_ms": 12640,
+      "pause_after_ms": 500,
+      "words": [
+        {
+          "word": "Curiosidades",
+          "start_ms": 380,
+          "end_ms": 780
+        },
+        {
+          "word": "fascinantes",
+          "start_ms": 780,
+          "end_ms": 1500
+        },
+        {
+          "word": "de",
+          "start_ms": 1500,
+          "end_ms": 1660
+        },
+        {
+          "word": "la",
+          "start_ms": 1660,
+          "end_ms": 1760
+        },
+        {
+          "word": "historia",
+          "start_ms": 1880,
+          "end_ms": 1980
+        },
+        {
+          "word": "humana",
+          "start_ms": 1980,
+          "end_ms": 2520
+        },
+        {
+          "word": "es",
+          "start_ms": 2920,
+          "end_ms": 3040
+        },
+        {
+          "word": "una",
+          "start_ms": 3040,
+          "end_ms": 3220
+        },
+        {
+          "word": "serie",
+          "start_ms": 3220,
+          "end_ms": 3500
+        },
+        {
+          "word": "de",
+          "start_ms": 3500,
+          "end_ms": 3680
+        },
+        {
+          "word": "libros",
+          "start_ms": 3680,
+          "end_ms": 4080
+        },
+        {
+          "word": "breves",
+          "start_ms": 4080,
+          "end_ms": 4420
+        },
+        {
+          "word": "e",
+          "start_ms": 4420,
+          "end_ms": 4580
+        },
+        {
+          "word": "intensos",
+          "start_ms": 4580,
+          "end_ms": 5220
+        },
+        {
+          "word": "sobre",
+          "start_ms": 5540,
+          "end_ms": 5720
+        },
+        {
+          "word": "las",
+          "start_ms": 5720,
+          "end_ms": 5920
+        },
+        {
+          "word": "cosas",
+          "start_ms": 5920,
+          "end_ms": 6220
+        },
+        {
+          "word": "m\u00e1s",
+          "start_ms": 6220,
+          "end_ms": 6540
+        },
+        {
+          "word": "interesantes",
+          "start_ms": 6540,
+          "end_ms": 7380
+        },
+        {
+          "word": "que",
+          "start_ms": 7380,
+          "end_ms": 7600
+        },
+        {
+          "word": "la",
+          "start_ms": 7600,
+          "end_ms": 7720
+        },
+        {
+          "word": "humanidad",
+          "start_ms": 7720,
+          "end_ms": 8140
+        },
+        {
+          "word": "ha",
+          "start_ms": 8140,
+          "end_ms": 8340
+        },
+        {
+          "word": "hecho,",
+          "start_ms": 8340,
+          "end_ms": 8520
+        },
+        {
+          "word": "construido,",
+          "start_ms": 8860,
+          "end_ms": 9500
+        },
+        {
+          "word": "escrito",
+          "start_ms": 9980,
+          "end_ms": 10260
+        },
+        {
+          "word": "y",
+          "start_ms": 10260,
+          "end_ms": 10640
+        },
+        {
+          "word": "sobre",
+          "start_ms": 10640,
+          "end_ms": 10840
+        },
+        {
+          "word": "las",
+          "start_ms": 10840,
+          "end_ms": 11020
+        },
+        {
+          "word": "que",
+          "start_ms": 11020,
+          "end_ms": 11180
+        },
+        {
+          "word": "se",
+          "start_ms": 11180,
+          "end_ms": 11320
+        },
+        {
+          "word": "ha",
+          "start_ms": 11320,
+          "end_ms": 11400
+        },
+        {
+          "word": "preguntado.",
+          "start_ms": 11400,
+          "end_ms": 11900
+        }
+      ]
+    },
+    "ch15-1012": {
+      "file": "audio/es/ch15-1012.m4a",
+      "duration_ms": 11360,
+      "pause_after_ms": 800,
+      "words": [
+        {
+          "word": "Cada",
+          "start_ms": 80,
+          "end_ms": 260
+        },
+        {
+          "word": "volumen",
+          "start_ms": 260,
+          "end_ms": 720
+        },
+        {
+          "word": "comienza",
+          "start_ms": 720,
+          "end_ms": 1300
+        },
+        {
+          "word": "con",
+          "start_ms": 1300,
+          "end_ms": 1500
+        },
+        {
+          "word": "un",
+          "start_ms": 1500,
+          "end_ms": 1660
+        },
+        {
+          "word": "misterio",
+          "start_ms": 1660,
+          "end_ms": 2080
+        },
+        {
+          "word": "genuino",
+          "start_ms": 2080,
+          "end_ms": 2640
+        },
+        {
+          "word": "y",
+          "start_ms": 2640,
+          "end_ms": 2900
+        },
+        {
+          "word": "lo",
+          "start_ms": 2900,
+          "end_ms": 3000
+        },
+        {
+          "word": "utiliza",
+          "start_ms": 3000,
+          "end_ms": 3480
+        },
+        {
+          "word": "como",
+          "start_ms": 3480,
+          "end_ms": 3740
+        },
+        {
+          "word": "puerta",
+          "start_ms": 3740,
+          "end_ms": 4120
+        },
+        {
+          "word": "de",
+          "start_ms": 4120,
+          "end_ms": 4360
+        },
+        {
+          "word": "entrada",
+          "start_ms": 4360,
+          "end_ms": 4780
+        },
+        {
+          "word": "a",
+          "start_ms": 4780,
+          "end_ms": 5080
+        },
+        {
+          "word": "un",
+          "start_ms": 5080,
+          "end_ms": 5220
+        },
+        {
+          "word": "mundo",
+          "start_ms": 5220,
+          "end_ms": 5440
+        },
+        {
+          "word": "de",
+          "start_ms": 5440,
+          "end_ms": 5660
+        },
+        {
+          "word": "conocimiento",
+          "start_ms": 5660,
+          "end_ms": 6480
+        },
+        {
+          "word": "\u2014",
+          "start_ms": 6480,
+          "end_ms": 6600
+        },
+        {
+          "word": "las",
+          "start_ms": 6840,
+          "end_ms": 6940
+        },
+        {
+          "word": "personas,",
+          "start_ms": 6940,
+          "end_ms": 7540
+        },
+        {
+          "word": "los",
+          "start_ms": 7940,
+          "end_ms": 7980
+        },
+        {
+          "word": "lugares,",
+          "start_ms": 7980,
+          "end_ms": 8600
+        },
+        {
+          "word": "el",
+          "start_ms": 8780,
+          "end_ms": 8860
+        },
+        {
+          "word": "contexto",
+          "start_ms": 9000,
+          "end_ms": 9220
+        },
+        {
+          "word": "y",
+          "start_ms": 9220,
+          "end_ms": 9620
+        },
+        {
+          "word": "las",
+          "start_ms": 9620,
+          "end_ms": 9720
+        },
+        {
+          "word": "preguntas",
+          "start_ms": 9720,
+          "end_ms": 10080
+        },
+        {
+          "word": "abiertas.",
+          "start_ms": 10080,
+          "end_ms": 10500
+        }
+      ]
+    },
+    "ch15-1013": {
+      "file": "audio/es/ch15-1013.m4a",
+      "duration_ms": 4040,
+      "pause_after_ms": 500,
+      "words": [
+        {
+          "word": "La",
+          "start_ms": 120,
+          "end_ms": 200
+        },
+        {
+          "word": "serie",
+          "start_ms": 200,
+          "end_ms": 500
+        },
+        {
+          "word": "est\u00e1",
+          "start_ms": 500,
+          "end_ms": 760
+        },
+        {
+          "word": "dise\u00f1ada",
+          "start_ms": 760,
+          "end_ms": 1320
+        },
+        {
+          "word": "para",
+          "start_ms": 1320,
+          "end_ms": 1540
+        },
+        {
+          "word": "lectores",
+          "start_ms": 1540,
+          "end_ms": 2000
+        },
+        {
+          "word": "curiosos",
+          "start_ms": 2000,
+          "end_ms": 2600
+        },
+        {
+          "word": "de",
+          "start_ms": 2600,
+          "end_ms": 2680
+        },
+        {
+          "word": "todas",
+          "start_ms": 2680,
+          "end_ms": 2900
+        },
+        {
+          "word": "las",
+          "start_ms": 2900,
+          "end_ms": 3100
+        },
+        {
+          "word": "edades.",
+          "start_ms": 3100,
+          "end_ms": 3420
+        }
+      ]
+    },
+    "ch15-1014": {
+      "file": "audio/es/ch15-1014.m4a",
+      "duration_ms": 6480,
+      "pause_after_ms": 500,
+      "words": [
+        {
+          "word": "Cada",
+          "start_ms": 100,
+          "end_ms": 280
+        },
+        {
+          "word": "oraci\u00f3n",
+          "start_ms": 280,
+          "end_ms": 720
+        },
+        {
+          "word": "debe",
+          "start_ms": 720,
+          "end_ms": 1160
+        },
+        {
+          "word": "ser",
+          "start_ms": 1160,
+          "end_ms": 1420
+        },
+        {
+          "word": "accesible",
+          "start_ms": 1420,
+          "end_ms": 2040
+        },
+        {
+          "word": "para",
+          "start_ms": 2040,
+          "end_ms": 2260
+        },
+        {
+          "word": "un",
+          "start_ms": 2260,
+          "end_ms": 2440
+        },
+        {
+          "word": "ni\u00f1o",
+          "start_ms": 2440,
+          "end_ms": 2720
+        },
+        {
+          "word": "brillante",
+          "start_ms": 2720,
+          "end_ms": 3280
+        },
+        {
+          "word": "de",
+          "start_ms": 3280,
+          "end_ms": 3440
+        },
+        {
+          "word": "diez",
+          "start_ms": 3440,
+          "end_ms": 3640
+        },
+        {
+          "word": "a\u00f1os",
+          "start_ms": 3640,
+          "end_ms": 4000
+        },
+        {
+          "word": "y",
+          "start_ms": 4000,
+          "end_ms": 4480
+        },
+        {
+          "word": "fascinante",
+          "start_ms": 4560,
+          "end_ms": 5120
+        },
+        {
+          "word": "para",
+          "start_ms": 5200,
+          "end_ms": 5320
+        },
+        {
+          "word": "un",
+          "start_ms": 5320,
+          "end_ms": 5500
+        },
+        {
+          "word": "adulto.",
+          "start_ms": 5500,
+          "end_ms": 5820
+        }
+      ]
+    },
+    "ch15-1015": {
+      "file": "audio/es/ch15-1015.m4a",
+      "duration_ms": 7600,
+      "pause_after_ms": 800,
+      "words": [
+        {
+          "word": "Nunca",
+          "start_ms": 100,
+          "end_ms": 500
+        },
+        {
+          "word": "hablamos",
+          "start_ms": 500,
+          "end_ms": 880
+        },
+        {
+          "word": "con",
+          "start_ms": 880,
+          "end_ms": 1100
+        },
+        {
+          "word": "condescendencia,",
+          "start_ms": 1100,
+          "end_ms": 2100
+        },
+        {
+          "word": "nunca",
+          "start_ms": 2120,
+          "end_ms": 2340
+        },
+        {
+          "word": "rellenamos",
+          "start_ms": 2340,
+          "end_ms": 3000
+        },
+        {
+          "word": "y",
+          "start_ms": 3000,
+          "end_ms": 3300
+        },
+        {
+          "word": "siempre",
+          "start_ms": 3300,
+          "end_ms": 3720
+        },
+        {
+          "word": "somos",
+          "start_ms": 3720,
+          "end_ms": 4019
+        },
+        {
+          "word": "honestos",
+          "start_ms": 4019,
+          "end_ms": 4640
+        },
+        {
+          "word": "sobre",
+          "start_ms": 4640,
+          "end_ms": 4920
+        },
+        {
+          "word": "lo",
+          "start_ms": 4920,
+          "end_ms": 5100
+        },
+        {
+          "word": "que",
+          "start_ms": 5100,
+          "end_ms": 5220
+        },
+        {
+          "word": "sabemos",
+          "start_ms": 5340,
+          "end_ms": 5560
+        },
+        {
+          "word": "y",
+          "start_ms": 5560,
+          "end_ms": 5920
+        },
+        {
+          "word": "lo",
+          "start_ms": 5920,
+          "end_ms": 6020
+        },
+        {
+          "word": "que",
+          "start_ms": 6020,
+          "end_ms": 6160
+        },
+        {
+          "word": "no",
+          "start_ms": 6160,
+          "end_ms": 6300
+        },
+        {
+          "word": "sabemos.",
+          "start_ms": 6300,
+          "end_ms": 6680
+        }
+      ]
+    },
+    "ch15-1016": {
+      "file": "audio/es/ch15-1016.m4a",
+      "duration_ms": 6400,
+      "pause_after_ms": 800,
+      "words": [
+        {
+          "word": "Volumen",
+          "start_ms": 120,
+          "end_ms": 420
+        },
+        {
+          "word": "uno:",
+          "start_ms": 420,
+          "end_ms": 700
+        },
+        {
+          "word": "*El",
+          "start_ms": 1280,
+          "end_ms": 1320
+        },
+        {
+          "word": "misterio",
+          "start_ms": 1320,
+          "end_ms": 1840
+        },
+        {
+          "word": "de",
+          "start_ms": 1840,
+          "end_ms": 1940
+        },
+        {
+          "word": "Monte",
+          "start_ms": 1940,
+          "end_ms": 2140
+        },
+        {
+          "word": "Alb\u00e1n*",
+          "start_ms": 2140,
+          "end_ms": 2880
+        },
+        {
+          "word": "\u2014",
+          "start_ms": 2880,
+          "end_ms": 2880
+        },
+        {
+          "word": "Monta\u00f1a",
+          "start_ms": 2920,
+          "end_ms": 3240
+        },
+        {
+          "word": "sagrada,",
+          "start_ms": 3240,
+          "end_ms": 3760
+        },
+        {
+          "word": "escritura",
+          "start_ms": 3760,
+          "end_ms": 4140
+        },
+        {
+          "word": "perdida,",
+          "start_ms": 4140,
+          "end_ms": 4680
+        },
+        {
+          "word": "ciudad",
+          "start_ms": 4880,
+          "end_ms": 5020
+        },
+        {
+          "word": "desaparecida",
+          "start_ms": 5020,
+          "end_ms": 5780
+        }
+      ]
+    },
+    "ch15-1017": {
+      "file": "audio/es/ch15-1017.m4a",
+      "duration_ms": 3040,
+      "pause_after_ms": 800,
+      "words": [
+        {
+          "word": "Los",
+          "start_ms": 100,
+          "end_ms": 240
+        },
+        {
+          "word": "vol\u00famenes",
+          "start_ms": 240,
+          "end_ms": 860
+        },
+        {
+          "word": "futuros",
+          "start_ms": 860,
+          "end_ms": 1340
+        },
+        {
+          "word": "est\u00e1n",
+          "start_ms": 1340,
+          "end_ms": 1720
+        },
+        {
+          "word": "en",
+          "start_ms": 1720,
+          "end_ms": 1860
+        },
+        {
+          "word": "desarrollo.",
+          "start_ms": 1860,
+          "end_ms": 2420
+        }
+      ]
+    },
+    "ch15-1019": {
+      "file": "audio/es/ch15-1019.m4a",
+      "duration_ms": 9600,
+      "pause_after_ms": 500,
+      "words": [
+        {
+          "word": "Todas",
+          "start_ms": 100,
+          "end_ms": 420
+        },
+        {
+          "word": "las",
+          "start_ms": 420,
+          "end_ms": 600
+        },
+        {
+          "word": "ilustraciones",
+          "start_ms": 600,
+          "end_ms": 1160
+        },
+        {
+          "word": "de",
+          "start_ms": 1160,
+          "end_ms": 1500
+        },
+        {
+          "word": "este",
+          "start_ms": 1500,
+          "end_ms": 1740
+        },
+        {
+          "word": "volumen",
+          "start_ms": 1740,
+          "end_ms": 2140
+        },
+        {
+          "word": "son",
+          "start_ms": 2140,
+          "end_ms": 2360
+        },
+        {
+          "word": "obras",
+          "start_ms": 2360,
+          "end_ms": 2640
+        },
+        {
+          "word": "originales",
+          "start_ms": 2640,
+          "end_ms": 3380
+        },
+        {
+          "word": "generadas",
+          "start_ms": 3400,
+          "end_ms": 3800
+        },
+        {
+          "word": "con",
+          "start_ms": 3800,
+          "end_ms": 4059
+        },
+        {
+          "word": "Stable",
+          "start_ms": 4220,
+          "end_ms": 4440
+        },
+        {
+          "word": "Diffusion",
+          "start_ms": 4440,
+          "end_ms": 4980
+        },
+        {
+          "word": "en",
+          "start_ms": 4980,
+          "end_ms": 5540
+        },
+        {
+          "word": "un",
+          "start_ms": 5540,
+          "end_ms": 5700
+        },
+        {
+          "word": "estilo",
+          "start_ms": 5700,
+          "end_ms": 6120
+        },
+        {
+          "word": "de",
+          "start_ms": 6120,
+          "end_ms": 6320
+        },
+        {
+          "word": "ilustraci\u00f3n",
+          "start_ms": 6320,
+          "end_ms": 6900
+        },
+        {
+          "word": "de",
+          "start_ms": 6900,
+          "end_ms": 7100
+        },
+        {
+          "word": "trama",
+          "start_ms": 7100,
+          "end_ms": 7460
+        },
+        {
+          "word": "cruzada",
+          "start_ms": 7460,
+          "end_ms": 8060
+        },
+        {
+          "word": "a",
+          "start_ms": 8060,
+          "end_ms": 8240
+        },
+        {
+          "word": "pluma",
+          "start_ms": 8320,
+          "end_ms": 8480
+        },
+        {
+          "word": "y",
+          "start_ms": 8480,
+          "end_ms": 8600
+        },
+        {
+          "word": "tinta.",
+          "start_ms": 8600,
+          "end_ms": 8860
+        }
+      ]
+    },
+    "ch15-1020": {
+      "file": "audio/es/ch15-1020.m4a",
+      "duration_ms": 13280,
+      "pause_after_ms": 800,
+      "words": [
+        {
+          "word": "Se",
+          "start_ms": 100,
+          "end_ms": 200
+        },
+        {
+          "word": "utilizaron",
+          "start_ms": 200,
+          "end_ms": 760
+        },
+        {
+          "word": "fotograf\u00edas",
+          "start_ms": 760,
+          "end_ms": 1480
+        },
+        {
+          "word": "de",
+          "start_ms": 1480,
+          "end_ms": 1680
+        },
+        {
+          "word": "referencia",
+          "start_ms": 1680,
+          "end_ms": 2260
+        },
+        {
+          "word": "de",
+          "start_ms": 2260,
+          "end_ms": 2400
+        },
+        {
+          "word": "Monte",
+          "start_ms": 2400,
+          "end_ms": 2640
+        },
+        {
+          "word": "Alb\u00e1n,",
+          "start_ms": 2640,
+          "end_ms": 3160
+        },
+        {
+          "word": "el",
+          "start_ms": 3500,
+          "end_ms": 3500
+        },
+        {
+          "word": "Valle",
+          "start_ms": 3520,
+          "end_ms": 3720
+        },
+        {
+          "word": "de",
+          "start_ms": 3720,
+          "end_ms": 3880
+        },
+        {
+          "word": "Oaxaca",
+          "start_ms": 3880,
+          "end_ms": 4300
+        },
+        {
+          "word": "y",
+          "start_ms": 4300,
+          "end_ms": 4580
+        },
+        {
+          "word": "las",
+          "start_ms": 4580,
+          "end_ms": 4700
+        },
+        {
+          "word": "inscripciones",
+          "start_ms": 4700,
+          "end_ms": 5340
+        },
+        {
+          "word": "zapotecas",
+          "start_ms": 5340,
+          "end_ms": 5980
+        },
+        {
+          "word": "para",
+          "start_ms": 5980,
+          "end_ms": 6220
+        },
+        {
+          "word": "guiar",
+          "start_ms": 6220,
+          "end_ms": 6500
+        },
+        {
+          "word": "la",
+          "start_ms": 6500,
+          "end_ms": 6660
+        },
+        {
+          "word": "composici\u00f3n",
+          "start_ms": 6660,
+          "end_ms": 7300
+        },
+        {
+          "word": "y",
+          "start_ms": 7300,
+          "end_ms": 7440
+        },
+        {
+          "word": "la",
+          "start_ms": 7440,
+          "end_ms": 7560
+        },
+        {
+          "word": "precisi\u00f3n,",
+          "start_ms": 7560,
+          "end_ms": 8119
+        },
+        {
+          "word": "pero",
+          "start_ms": 8740,
+          "end_ms": 8860
+        },
+        {
+          "word": "todas",
+          "start_ms": 8860,
+          "end_ms": 9080
+        },
+        {
+          "word": "las",
+          "start_ms": 9080,
+          "end_ms": 9360
+        },
+        {
+          "word": "im\u00e1genes",
+          "start_ms": 9360,
+          "end_ms": 9700
+        },
+        {
+          "word": "finales",
+          "start_ms": 9700,
+          "end_ms": 10300
+        },
+        {
+          "word": "son",
+          "start_ms": 10300,
+          "end_ms": 10460
+        },
+        {
+          "word": "obras",
+          "start_ms": 10460,
+          "end_ms": 10740
+        },
+        {
+          "word": "de",
+          "start_ms": 10740,
+          "end_ms": 10960
+        },
+        {
+          "word": "arte",
+          "start_ms": 10960,
+          "end_ms": 11180
+        },
+        {
+          "word": "originales",
+          "start_ms": 11180,
+          "end_ms": 11880
+        },
+        {
+          "word": "generadas.",
+          "start_ms": 11880,
+          "end_ms": 12340
+        }
+      ]
+    },
+    "ch15-1021": {
+      "file": "audio/es/ch15-1021.m4a",
+      "duration_ms": 11680,
+      "pause_after_ms": 800,
+      "words": [
+        {
+          "word": "Las",
+          "start_ms": 160,
+          "end_ms": 280
+        },
+        {
+          "word": "notas",
+          "start_ms": 280,
+          "end_ms": 660
+        },
+        {
+          "word": "de",
+          "start_ms": 660,
+          "end_ms": 780
+        },
+        {
+          "word": "generaci\u00f3n",
+          "start_ms": 780,
+          "end_ms": 1280
+        },
+        {
+          "word": "espec\u00edficas",
+          "start_ms": 1280,
+          "end_ms": 2260
+        },
+        {
+          "word": "y",
+          "start_ms": 2440,
+          "end_ms": 2540
+        },
+        {
+          "word": "los",
+          "start_ms": 2540,
+          "end_ms": 2720
+        },
+        {
+          "word": "cr\u00e9ditos",
+          "start_ms": 2720,
+          "end_ms": 3200
+        },
+        {
+          "word": "de",
+          "start_ms": 3200,
+          "end_ms": 3340
+        },
+        {
+          "word": "referencia",
+          "start_ms": 3340,
+          "end_ms": 3960
+        },
+        {
+          "word": "para",
+          "start_ms": 3960,
+          "end_ms": 4240
+        },
+        {
+          "word": "cada",
+          "start_ms": 4240,
+          "end_ms": 4520
+        },
+        {
+          "word": "ilustraci\u00f3n",
+          "start_ms": 4520,
+          "end_ms": 5180
+        },
+        {
+          "word": "se",
+          "start_ms": 5180,
+          "end_ms": 5660
+        },
+        {
+          "word": "mantienen",
+          "start_ms": 5660,
+          "end_ms": 6220
+        },
+        {
+          "word": "en",
+          "start_ms": 6220,
+          "end_ms": 6380
+        },
+        {
+          "word": "los",
+          "start_ms": 6380,
+          "end_ms": 6480
+        },
+        {
+          "word": "archivos",
+          "start_ms": 6480,
+          "end_ms": 6960
+        },
+        {
+          "word": "de",
+          "start_ms": 6960,
+          "end_ms": 7120
+        },
+        {
+          "word": "marcadores",
+          "start_ms": 7120,
+          "end_ms": 7700
+        },
+        {
+          "word": "de",
+          "start_ms": 7700,
+          "end_ms": 8119
+        },
+        {
+          "word": "posici\u00f3n",
+          "start_ms": 8119,
+          "end_ms": 8580
+        },
+        {
+          "word": "de",
+          "start_ms": 8580,
+          "end_ms": 8780
+        },
+        {
+          "word": "im\u00e1genes",
+          "start_ms": 8780,
+          "end_ms": 9240
+        },
+        {
+          "word": "en",
+          "start_ms": 9240,
+          "end_ms": 9520
+        },
+        {
+          "word": "el",
+          "start_ms": 9520,
+          "end_ms": 9680
+        },
+        {
+          "word": "repositorio",
+          "start_ms": 9680,
+          "end_ms": 10360
+        },
+        {
+          "word": "del",
+          "start_ms": 10360,
+          "end_ms": 10460
+        },
+        {
+          "word": "c\u00f3digo",
+          "start_ms": 10460,
+          "end_ms": 10720
+        },
+        {
+          "word": "fuente.",
+          "start_ms": 10720,
+          "end_ms": 10900
+        }
+      ]
+    },
     "ch15-880": {
       "file": "audio/es/ch15-880.m4a",
       "duration_ms": 12800,
@@ -82424,7 +85116,7 @@
         {
           "word": "as\u00ed.",
           "start_ms": 520,
-          "end_ms": 960
+          "end_ms": 980
         }
       ]
     },
@@ -83780,43 +86472,43 @@
     },
     "ch15-897": {
       "file": "audio/es/ch15-897.m4a",
-      "duration_ms": 2460,
+      "duration_ms": 3000,
       "pause_after_ms": 500,
       "words": [
         {
           "word": "No",
-          "start_ms": 80,
+          "start_ms": 100,
           "end_ms": 280
         },
         {
           "word": "tuvieron",
           "start_ms": 280,
-          "end_ms": 680
+          "end_ms": 700
         },
         {
           "word": "acceso",
-          "start_ms": 680,
-          "end_ms": 1040
+          "start_ms": 700,
+          "end_ms": 1060
         },
         {
           "word": "a",
-          "start_ms": 1040,
-          "end_ms": 1440
+          "start_ms": 1060,
+          "end_ms": 1340
         },
         {
           "word": "la",
-          "start_ms": 1440,
-          "end_ms": 1520
+          "start_ms": 1340,
+          "end_ms": 1400
         },
         {
           "word": "tecnolog\u00eda",
-          "start_ms": 1520,
-          "end_ms": 1860
+          "start_ms": 1400,
+          "end_ms": 1900
         },
         {
           "word": "china.",
-          "start_ms": 1860,
-          "end_ms": 1960
+          "start_ms": 1900,
+          "end_ms": 2400
         }
       ]
     },
@@ -84178,12 +86870,12 @@
       "words": [
         {
           "word": "Ocurri\u00f3,",
-          "start_ms": 40,
+          "start_ms": 80,
           "end_ms": 540
         },
         {
           "word": "a",
-          "start_ms": 700,
+          "start_ms": 660,
           "end_ms": 720
         },
         {
@@ -84194,11 +86886,11 @@
         {
           "word": "sumo,",
           "start_ms": 820,
-          "end_ms": 1280
+          "end_ms": 1240
         },
         {
           "word": "cuatro",
-          "start_ms": 1460,
+          "start_ms": 1360,
           "end_ms": 1660
         },
         {
@@ -84208,13 +86900,13 @@
         },
         {
           "word": "cinco",
-          "start_ms": 1900,
+          "start_ms": 2100,
           "end_ms": 2200
         },
         {
           "word": "veces.",
           "start_ms": 2200,
-          "end_ms": 2500
+          "end_ms": 2760
         }
       ]
     },
@@ -84974,17 +87666,17 @@
       "words": [
         {
           "word": "Monte",
-          "start_ms": 220,
+          "start_ms": 80,
           "end_ms": 340
         },
         {
           "word": "Alb\u00e1n",
           "start_ms": 340,
-          "end_ms": 640
+          "end_ms": 680
         },
         {
           "word": "no",
-          "start_ms": 640,
+          "start_ms": 680,
           "end_ms": 900
         },
         {
@@ -86780,12 +89472,12 @@
       "words": [
         {
           "word": "Organizaron",
-          "start_ms": 160,
-          "end_ms": 740
+          "start_ms": 100,
+          "end_ms": 760
         },
         {
           "word": "un",
-          "start_ms": 740,
+          "start_ms": 760,
           "end_ms": 900
         },
         {
@@ -88978,7 +91670,7 @@
       "words": [
         {
           "word": "Son",
-          "start_ms": 180,
+          "start_ms": 160,
           "end_ms": 280
         },
         {
@@ -93369,7 +96061,7 @@
     },
     "ch15-991": {
       "file": "audio/es/ch15-991.m4a",
-      "duration_ms": 8440,
+      "duration_ms": 8500,
       "pause_after_ms": 500,
       "words": [
         {
@@ -93600,7 +96292,7 @@
     },
     "ch15-994": {
       "file": "audio/es/ch15-994.m4a",
-      "duration_ms": 6560,
+      "duration_ms": 6600,
       "pause_after_ms": 800,
       "words": [
         {
@@ -93952,7 +96644,7 @@
           "end_ms": 5600
         },
         {
-          "word": "Oaxaca",
+          "word": "Oahaca",
           "start_ms": 5640,
           "end_ms": 5980
         },
@@ -94075,2698 +96767,6 @@
           "word": "zapoteca.",
           "start_ms": 12120,
           "end_ms": 12360
-        }
-      ]
-    },
-    "ch15-1000": {
-      "file": "audio/es/ch15-1000.m4a",
-      "duration_ms": 19000,
-      "pause_after_ms": 800,
-      "words": [
-        {
-          "word": "Flannery,",
-          "start_ms": 260,
-          "end_ms": 820
-        },
-        {
-          "word": "Kent",
-          "start_ms": 860,
-          "end_ms": 960
-        },
-        {
-          "word": "V.,",
-          "start_ms": 960,
-          "end_ms": 1320
-        },
-        {
-          "word": "and",
-          "start_ms": 1840,
-          "end_ms": 1880
-        },
-        {
-          "word": "Joyce",
-          "start_ms": 1880,
-          "end_ms": 2140
-        },
-        {
-          "word": "Marcus.",
-          "start_ms": 2140,
-          "end_ms": 2480
-        },
-        {
-          "word": "*The",
-          "start_ms": 3400,
-          "end_ms": 3400
-        },
-        {
-          "word": "Creation",
-          "start_ms": 3400,
-          "end_ms": 3740
-        },
-        {
-          "word": "of",
-          "start_ms": 3740,
-          "end_ms": 3980
-        },
-        {
-          "word": "Inequality:",
-          "start_ms": 3980,
-          "end_ms": 4720
-        },
-        {
-          "word": "How",
-          "start_ms": 5000,
-          "end_ms": 5000
-        },
-        {
-          "word": "Our",
-          "start_ms": 5000,
-          "end_ms": 5320
-        },
-        {
-          "word": "Prehistoric",
-          "start_ms": 5320,
-          "end_ms": 5840
-        },
-        {
-          "word": "Ancestors",
-          "start_ms": 5840,
-          "end_ms": 6460
-        },
-        {
-          "word": "Set",
-          "start_ms": 6460,
-          "end_ms": 6800
-        },
-        {
-          "word": "the",
-          "start_ms": 6800,
-          "end_ms": 6960
-        },
-        {
-          "word": "Stage",
-          "start_ms": 6960,
-          "end_ms": 7280
-        },
-        {
-          "word": "for",
-          "start_ms": 7280,
-          "end_ms": 7480
-        },
-        {
-          "word": "Monarchy,",
-          "start_ms": 7480,
-          "end_ms": 7900
-        },
-        {
-          "word": "Slavery,",
-          "start_ms": 8220,
-          "end_ms": 8780
-        },
-        {
-          "word": "and",
-          "start_ms": 8780,
-          "end_ms": 8880
-        },
-        {
-          "word": "Empire*.",
-          "start_ms": 8880,
-          "end_ms": 9240
-        },
-        {
-          "word": "Harvard",
-          "start_ms": 9720,
-          "end_ms": 9980
-        },
-        {
-          "word": "University",
-          "start_ms": 9980,
-          "end_ms": 10540
-        },
-        {
-          "word": "Press,",
-          "start_ms": 10540,
-          "end_ms": 11100
-        },
-        {
-          "word": "dos",
-          "start_ms": 11320,
-          "end_ms": 11420
-        },
-        {
-          "word": "mil",
-          "start_ms": 11420,
-          "end_ms": 11560
-        },
-        {
-          "word": "doce.",
-          "start_ms": 11560,
-          "end_ms": 11840
-        },
-        {
-          "word": "\u2014",
-          "start_ms": 12200,
-          "end_ms": 12240
-        },
-        {
-          "word": "No",
-          "start_ms": 12240,
-          "end_ms": 12300
-        },
-        {
-          "word": "es",
-          "start_ms": 12300,
-          "end_ms": 12400
-        },
-        {
-          "word": "espec\u00edficamente",
-          "start_ms": 12400,
-          "end_ms": 13120
-        },
-        {
-          "word": "sobre",
-          "start_ms": 13120,
-          "end_ms": 13420
-        },
-        {
-          "word": "Monte",
-          "start_ms": 13420,
-          "end_ms": 13720
-        },
-        {
-          "word": "Alb\u00e1n,",
-          "start_ms": 13720,
-          "end_ms": 14100
-        },
-        {
-          "word": "pero",
-          "start_ms": 14320,
-          "end_ms": 14420
-        },
-        {
-          "word": "lo",
-          "start_ms": 14420,
-          "end_ms": 14540
-        },
-        {
-          "word": "utiliza",
-          "start_ms": 14540,
-          "end_ms": 14960
-        },
-        {
-          "word": "como",
-          "start_ms": 14960,
-          "end_ms": 15180
-        },
-        {
-          "word": "caso",
-          "start_ms": 15180,
-          "end_ms": 15460
-        },
-        {
-          "word": "de",
-          "start_ms": 15460,
-          "end_ms": 15620
-        },
-        {
-          "word": "estudio",
-          "start_ms": 15620,
-          "end_ms": 15940
-        },
-        {
-          "word": "clave",
-          "start_ms": 15940,
-          "end_ms": 16360
-        },
-        {
-          "word": "en",
-          "start_ms": 16360,
-          "end_ms": 16560
-        },
-        {
-          "word": "el",
-          "start_ms": 16560,
-          "end_ms": 16680
-        },
-        {
-          "word": "desarrollo",
-          "start_ms": 16680,
-          "end_ms": 17040
-        },
-        {
-          "word": "de",
-          "start_ms": 17040,
-          "end_ms": 17300
-        },
-        {
-          "word": "sociedades",
-          "start_ms": 17300,
-          "end_ms": 17780
-        },
-        {
-          "word": "complejas.",
-          "start_ms": 17780,
-          "end_ms": 17900
-        }
-      ]
-    },
-    "ch15-1001": {
-      "file": "audio/es/ch15-1001.m4a",
-      "duration_ms": 14280,
-      "pause_after_ms": 800,
-      "words": [
-        {
-          "word": "Coe,",
-          "start_ms": 220,
-          "end_ms": 620
-        },
-        {
-          "word": "Michael",
-          "start_ms": 760,
-          "end_ms": 860
-        },
-        {
-          "word": "D.,",
-          "start_ms": 860,
-          "end_ms": 1300
-        },
-        {
-          "word": "and",
-          "start_ms": 1600,
-          "end_ms": 1600
-        },
-        {
-          "word": "Rex",
-          "start_ms": 1600,
-          "end_ms": 1880
-        },
-        {
-          "word": "Koontz.",
-          "start_ms": 1880,
-          "end_ms": 2760
-        },
-        {
-          "word": "*Mexico:",
-          "start_ms": 2840,
-          "end_ms": 3240
-        },
-        {
-          "word": "From",
-          "start_ms": 3340,
-          "end_ms": 3440
-        },
-        {
-          "word": "the",
-          "start_ms": 3440,
-          "end_ms": 3600
-        },
-        {
-          "word": "Olmecs",
-          "start_ms": 3600,
-          "end_ms": 4019
-        },
-        {
-          "word": "to",
-          "start_ms": 4100,
-          "end_ms": 4200
-        },
-        {
-          "word": "the",
-          "start_ms": 4200,
-          "end_ms": 4400
-        },
-        {
-          "word": "Aztecs*.",
-          "start_ms": 4400,
-          "end_ms": 4560
-        },
-        {
-          "word": "Thames",
-          "start_ms": 5500,
-          "end_ms": 5660
-        },
-        {
-          "word": "and",
-          "start_ms": 5660,
-          "end_ms": 5920
-        },
-        {
-          "word": "Hudson,",
-          "start_ms": 5920,
-          "end_ms": 6120
-        },
-        {
-          "word": "s\u00e9ptima",
-          "start_ms": 6180,
-          "end_ms": 6800
-        },
-        {
-          "word": "edici\u00f3n,",
-          "start_ms": 6800,
-          "end_ms": 7460
-        },
-        {
-          "word": "dos",
-          "start_ms": 7480,
-          "end_ms": 7600
-        },
-        {
-          "word": "mil",
-          "start_ms": 7600,
-          "end_ms": 7800
-        },
-        {
-          "word": "trece.",
-          "start_ms": 7800,
-          "end_ms": 8300
-        },
-        {
-          "word": "\u2014",
-          "start_ms": 8500,
-          "end_ms": 8500
-        },
-        {
-          "word": "Excelente",
-          "start_ms": 8620,
-          "end_ms": 8900
-        },
-        {
-          "word": "panorama",
-          "start_ms": 8900,
-          "end_ms": 9320
-        },
-        {
-          "word": "de",
-          "start_ms": 9320,
-          "end_ms": 9540
-        },
-        {
-          "word": "todas",
-          "start_ms": 9540,
-          "end_ms": 9760
-        },
-        {
-          "word": "las",
-          "start_ms": 9760,
-          "end_ms": 10000
-        },
-        {
-          "word": "civilizaciones",
-          "start_ms": 10000,
-          "end_ms": 10580
-        },
-        {
-          "word": "mesoamericanas,",
-          "start_ms": 10580,
-          "end_ms": 11280
-        },
-        {
-          "word": "con",
-          "start_ms": 11720,
-          "end_ms": 11740
-        },
-        {
-          "word": "una",
-          "start_ms": 11740,
-          "end_ms": 11920
-        },
-        {
-          "word": "s\u00f3lida",
-          "start_ms": 11920,
-          "end_ms": 12300
-        },
-        {
-          "word": "cobertura",
-          "start_ms": 12300,
-          "end_ms": 12840
-        },
-        {
-          "word": "de",
-          "start_ms": 12840,
-          "end_ms": 13000
-        },
-        {
-          "word": "Oaxaca.",
-          "start_ms": 13000,
-          "end_ms": 13220
-        }
-      ]
-    },
-    "ch15-1002": {
-      "file": "audio/es/ch15-1002.m4a",
-      "duration_ms": 1940,
-      "pause_after_ms": 800,
-      "words": [
-        {
-          "word": "Para",
-          "start_ms": 0,
-          "end_ms": 120
-        },
-        {
-          "word": "la",
-          "start_ms": 120,
-          "end_ms": 260
-        },
-        {
-          "word": "escritura",
-          "start_ms": 260,
-          "end_ms": 700
-        },
-        {
-          "word": "espec\u00edficamente:",
-          "start_ms": 700,
-          "end_ms": 1440
-        }
-      ]
-    },
-    "ch15-1003": {
-      "file": "audio/es/ch15-1003.m4a",
-      "duration_ms": 12960,
-      "pause_after_ms": 800,
-      "words": [
-        {
-          "word": "Urcid,",
-          "start_ms": 120,
-          "end_ms": 700
-        },
-        {
-          "word": "Javier.",
-          "start_ms": 800,
-          "end_ms": 1060
-        },
-        {
-          "word": "*Zapotec",
-          "start_ms": 1780,
-          "end_ms": 2080
-        },
-        {
-          "word": "Hieroglyphic",
-          "start_ms": 2180,
-          "end_ms": 2880
-        },
-        {
-          "word": "Writing*.",
-          "start_ms": 2880,
-          "end_ms": 3320
-        },
-        {
-          "word": "Studies",
-          "start_ms": 3700,
-          "end_ms": 3820
-        },
-        {
-          "word": "in",
-          "start_ms": 3820,
-          "end_ms": 4000
-        },
-        {
-          "word": "Pre-Columbian",
-          "start_ms": 4000,
-          "end_ms": 4600
-        },
-        {
-          "word": "Art",
-          "start_ms": 4600,
-          "end_ms": 4900
-        },
-        {
-          "word": "and",
-          "start_ms": 5040,
-          "end_ms": 5140
-        },
-        {
-          "word": "Archaeology,",
-          "start_ms": 5140,
-          "end_ms": 5890
-        },
-        {
-          "word": "No.",
-          "start_ms": 6020,
-          "end_ms": 6280
-        },
-        {
-          "word": "treinta",
-          "start_ms": 6520,
-          "end_ms": 6740
-        },
-        {
-          "word": "y",
-          "start_ms": 6740,
-          "end_ms": 6840
-        },
-        {
-          "word": "cuatro.",
-          "start_ms": 6840,
-          "end_ms": 6940
-        },
-        {
-          "word": "Dumbarton",
-          "start_ms": 7620,
-          "end_ms": 8100
-        },
-        {
-          "word": "Oaks,",
-          "start_ms": 8100,
-          "end_ms": 8360
-        },
-        {
-          "word": "dos",
-          "start_ms": 8600,
-          "end_ms": 8720
-        },
-        {
-          "word": "mil",
-          "start_ms": 8720,
-          "end_ms": 8860
-        },
-        {
-          "word": "uno.",
-          "start_ms": 8860,
-          "end_ms": 9140
-        },
-        {
-          "word": "\u2014",
-          "start_ms": 9540,
-          "end_ms": 9540
-        },
-        {
-          "word": "La",
-          "start_ms": 9540,
-          "end_ms": 9620
-        },
-        {
-          "word": "referencia",
-          "start_ms": 9620,
-          "end_ms": 10100
-        },
-        {
-          "word": "t\u00e9cnica",
-          "start_ms": 10100,
-          "end_ms": 10440
-        },
-        {
-          "word": "fundamental.",
-          "start_ms": 10440,
-          "end_ms": 11290
-        },
-        {
-          "word": "Denso",
-          "start_ms": 11580,
-          "end_ms": 11800
-        },
-        {
-          "word": "pero",
-          "start_ms": 11800,
-          "end_ms": 12000
-        },
-        {
-          "word": "esencial.",
-          "start_ms": 12000,
-          "end_ms": 12550
-        }
-      ]
-    },
-    "ch15-1004": {
-      "file": "audio/es/ch15-1004.m4a",
-      "duration_ms": 15480,
-      "pause_after_ms": 800,
-      "words": [
-        {
-          "word": "Marcus,",
-          "start_ms": 440,
-          "end_ms": 620
-        },
-        {
-          "word": "Joyce.",
-          "start_ms": 960,
-          "end_ms": 1600
-        },
-        {
-          "word": "*Mesoamerican",
-          "start_ms": 1640,
-          "end_ms": 2240
-        },
-        {
-          "word": "Writing",
-          "start_ms": 2240,
-          "end_ms": 2480
-        },
-        {
-          "word": "Systems:",
-          "start_ms": 2480,
-          "end_ms": 3240
-        },
-        {
-          "word": "Propaganda,",
-          "start_ms": 3340,
-          "end_ms": 3720
-        },
-        {
-          "word": "Myth,",
-          "start_ms": 3720,
-          "end_ms": 4200
-        },
-        {
-          "word": "and",
-          "start_ms": 4200,
-          "end_ms": 4280
-        },
-        {
-          "word": "History",
-          "start_ms": 4280,
-          "end_ms": 4620
-        },
-        {
-          "word": "in",
-          "start_ms": 4620,
-          "end_ms": 4880
-        },
-        {
-          "word": "Four",
-          "start_ms": 4880,
-          "end_ms": 5140
-        },
-        {
-          "word": "Ancient",
-          "start_ms": 5140,
-          "end_ms": 5480
-        },
-        {
-          "word": "Civilizations*.",
-          "start_ms": 5480,
-          "end_ms": 6220
-        },
-        {
-          "word": "Princeton",
-          "start_ms": 7060,
-          "end_ms": 7340
-        },
-        {
-          "word": "University",
-          "start_ms": 7340,
-          "end_ms": 7840
-        },
-        {
-          "word": "Press,",
-          "start_ms": 7840,
-          "end_ms": 8500
-        },
-        {
-          "word": "mil",
-          "start_ms": 8560,
-          "end_ms": 8580
-        },
-        {
-          "word": "novecientos",
-          "start_ms": 8580,
-          "end_ms": 9140
-        },
-        {
-          "word": "noventa",
-          "start_ms": 9140,
-          "end_ms": 9540
-        },
-        {
-          "word": "y",
-          "start_ms": 9540,
-          "end_ms": 9600
-        },
-        {
-          "word": "dos.",
-          "start_ms": 9600,
-          "end_ms": 9800
-        },
-        {
-          "word": "\u2014",
-          "start_ms": 10420,
-          "end_ms": 10420
-        },
-        {
-          "word": "Estudio",
-          "start_ms": 10580,
-          "end_ms": 10760
-        },
-        {
-          "word": "comparativo",
-          "start_ms": 10760,
-          "end_ms": 11360
-        },
-        {
-          "word": "que",
-          "start_ms": 11360,
-          "end_ms": 11520
-        },
-        {
-          "word": "sit\u00faa",
-          "start_ms": 11520,
-          "end_ms": 11820
-        },
-        {
-          "word": "la",
-          "start_ms": 11820,
-          "end_ms": 11920
-        },
-        {
-          "word": "escritura",
-          "start_ms": 11920,
-          "end_ms": 12300
-        },
-        {
-          "word": "zapoteca",
-          "start_ms": 12300,
-          "end_ms": 12860
-        },
-        {
-          "word": "junto",
-          "start_ms": 12860,
-          "end_ms": 13040
-        },
-        {
-          "word": "a",
-          "start_ms": 13040,
-          "end_ms": 13240
-        },
-        {
-          "word": "la",
-          "start_ms": 13240,
-          "end_ms": 13320
-        },
-        {
-          "word": "maya,",
-          "start_ms": 13320,
-          "end_ms": 13800
-        },
-        {
-          "word": "mixteca",
-          "start_ms": 13800,
-          "end_ms": 14260
-        },
-        {
-          "word": "y",
-          "start_ms": 14260,
-          "end_ms": 14400
-        },
-        {
-          "word": "azteca.",
-          "start_ms": 14400,
-          "end_ms": 14740
-        }
-      ]
-    },
-    "ch15-1005": {
-      "file": "audio/es/ch15-1005.m4a",
-      "duration_ms": 3000,
-      "pause_after_ms": 800,
-      "words": [
-        {
-          "word": "Para",
-          "start_ms": 0,
-          "end_ms": 100
-        },
-        {
-          "word": "la",
-          "start_ms": 100,
-          "end_ms": 240
-        },
-        {
-          "word": "Tumba",
-          "start_ms": 240,
-          "end_ms": 540
-        },
-        {
-          "word": "siete",
-          "start_ms": 540,
-          "end_ms": 900
-        },
-        {
-          "word": "y",
-          "start_ms": 900,
-          "end_ms": 1220
-        },
-        {
-          "word": "la",
-          "start_ms": 1220,
-          "end_ms": 1320
-        },
-        {
-          "word": "conexi\u00f3n",
-          "start_ms": 1320,
-          "end_ms": 1880
-        },
-        {
-          "word": "mixteca:",
-          "start_ms": 1880,
-          "end_ms": 2400
-        }
-      ]
-    },
-    "ch15-1006": {
-      "file": "audio/es/ch15-1006.m4a",
-      "duration_ms": 14280,
-      "pause_after_ms": 800,
-      "words": [
-        {
-          "word": "Caso,",
-          "start_ms": 220,
-          "end_ms": 320
-        },
-        {
-          "word": "Alfonso.",
-          "start_ms": 680,
-          "end_ms": 1060
-        },
-        {
-          "word": "*El",
-          "start_ms": 1700,
-          "end_ms": 1800
-        },
-        {
-          "word": "Tesoro",
-          "start_ms": 1800,
-          "end_ms": 2200
-        },
-        {
-          "word": "de",
-          "start_ms": 2200,
-          "end_ms": 2360
-        },
-        {
-          "word": "Monte",
-          "start_ms": 2540,
-          "end_ms": 2640
-        },
-        {
-          "word": "Alb\u00e1n*",
-          "start_ms": 3360,
-          "end_ms": 3460
-        },
-        {
-          "word": "(The",
-          "start_ms": 3460,
-          "end_ms": 3540
-        },
-        {
-          "word": "Treasure",
-          "start_ms": 3540,
-          "end_ms": 3920
-        },
-        {
-          "word": "of",
-          "start_ms": 3920,
-          "end_ms": 4260
-        },
-        {
-          "word": "Monte",
-          "start_ms": 4260,
-          "end_ms": 4600
-        },
-        {
-          "word": "Alb\u00e1n).",
-          "start_ms": 4600,
-          "end_ms": 5060
-        },
-        {
-          "word": "INAH,",
-          "start_ms": 5440,
-          "end_ms": 5940
-        },
-        {
-          "word": "mil",
-          "start_ms": 5960,
-          "end_ms": 6040
-        },
-        {
-          "word": "novecientos",
-          "start_ms": 6040,
-          "end_ms": 6820
-        },
-        {
-          "word": "sesenta",
-          "start_ms": 6820,
-          "end_ms": 7360
-        },
-        {
-          "word": "y",
-          "start_ms": 7360,
-          "end_ms": 7480
-        },
-        {
-          "word": "nueve.",
-          "start_ms": 7480,
-          "end_ms": 7680
-        },
-        {
-          "word": "\u2014",
-          "start_ms": 8560,
-          "end_ms": 8640
-        },
-        {
-          "word": "El",
-          "start_ms": 8640,
-          "end_ms": 8680
-        },
-        {
-          "word": "propio",
-          "start_ms": 8740,
-          "end_ms": 8980
-        },
-        {
-          "word": "relato",
-          "start_ms": 8980,
-          "end_ms": 9400
-        },
-        {
-          "word": "de",
-          "start_ms": 9400,
-          "end_ms": 9560
-        },
-        {
-          "word": "Caso",
-          "start_ms": 9560,
-          "end_ms": 9960
-        },
-        {
-          "word": "sobre",
-          "start_ms": 9960,
-          "end_ms": 10200
-        },
-        {
-          "word": "el",
-          "start_ms": 10200,
-          "end_ms": 10320
-        },
-        {
-          "word": "descubrimiento",
-          "start_ms": 10320,
-          "end_ms": 11020
-        },
-        {
-          "word": "de",
-          "start_ms": 11020,
-          "end_ms": 11140
-        },
-        {
-          "word": "la",
-          "start_ms": 11140,
-          "end_ms": 11220
-        },
-        {
-          "word": "Tumba",
-          "start_ms": 11220,
-          "end_ms": 11540
-        },
-        {
-          "word": "siete",
-          "start_ms": 11540,
-          "end_ms": 11860
-        },
-        {
-          "word": "y",
-          "start_ms": 11860,
-          "end_ms": 12060
-        },
-        {
-          "word": "su",
-          "start_ms": 12060,
-          "end_ms": 12180
-        },
-        {
-          "word": "contenido.",
-          "start_ms": 12180,
-          "end_ms": 12700
-        },
-        {
-          "word": "En",
-          "start_ms": 12900,
-          "end_ms": 12980
-        },
-        {
-          "word": "espa\u00f1ol.",
-          "start_ms": 12980,
-          "end_ms": 13480
-        }
-      ]
-    },
-    "ch15-1007": {
-      "file": "audio/es/ch15-1007.m4a",
-      "duration_ms": 3040,
-      "pause_after_ms": 800,
-      "words": [
-        {
-          "word": "Para",
-          "start_ms": 0,
-          "end_ms": 120
-        },
-        {
-          "word": "el",
-          "start_ms": 120,
-          "end_ms": 240
-        },
-        {
-          "word": "contexto",
-          "start_ms": 240,
-          "end_ms": 800
-        },
-        {
-          "word": "mesoamericano",
-          "start_ms": 800,
-          "end_ms": 1660
-        },
-        {
-          "word": "m\u00e1s",
-          "start_ms": 1660,
-          "end_ms": 1920
-        },
-        {
-          "word": "amplio:",
-          "start_ms": 1920,
-          "end_ms": 2460
-        }
-      ]
-    },
-    "ch15-1008": {
-      "file": "audio/es/ch15-1008.m4a",
-      "duration_ms": 11680,
-      "pause_after_ms": 800,
-      "words": [
-        {
-          "word": "Houston,",
-          "start_ms": 300,
-          "end_ms": 540
-        },
-        {
-          "word": "Stephen",
-          "start_ms": 840,
-          "end_ms": 1000
-        },
-        {
-          "word": "D.,",
-          "start_ms": 1000,
-          "end_ms": 1340
-        },
-        {
-          "word": "ed.",
-          "start_ms": 1380,
-          "end_ms": 1480
-        },
-        {
-          "word": "*The",
-          "start_ms": 1540,
-          "end_ms": 1540
-        },
-        {
-          "word": "First",
-          "start_ms": 1540,
-          "end_ms": 1820
-        },
-        {
-          "word": "Writing:",
-          "start_ms": 1820,
-          "end_ms": 2300
-        },
-        {
-          "word": "Script",
-          "start_ms": 2700,
-          "end_ms": 2700
-        },
-        {
-          "word": "Invention",
-          "start_ms": 2700,
-          "end_ms": 3180
-        },
-        {
-          "word": "as",
-          "start_ms": 3180,
-          "end_ms": 3400
-        },
-        {
-          "word": "History",
-          "start_ms": 3400,
-          "end_ms": 3640
-        },
-        {
-          "word": "and",
-          "start_ms": 3640,
-          "end_ms": 3800
-        },
-        {
-          "word": "Process*.",
-          "start_ms": 3800,
-          "end_ms": 4080
-        },
-        {
-          "word": "Cambridge",
-          "start_ms": 4560,
-          "end_ms": 4720
-        },
-        {
-          "word": "University",
-          "start_ms": 4720,
-          "end_ms": 5220
-        },
-        {
-          "word": "Press,",
-          "start_ms": 5220,
-          "end_ms": 5740
-        },
-        {
-          "word": "dos",
-          "start_ms": 5820,
-          "end_ms": 5960
-        },
-        {
-          "word": "mil",
-          "start_ms": 5960,
-          "end_ms": 6100
-        },
-        {
-          "word": "cuatro.",
-          "start_ms": 6100,
-          "end_ms": 6400
-        },
-        {
-          "word": "\u2014",
-          "start_ms": 6940,
-          "end_ms": 6940
-        },
-        {
-          "word": "Estudio",
-          "start_ms": 7120,
-          "end_ms": 7280
-        },
-        {
-          "word": "comparativo",
-          "start_ms": 7280,
-          "end_ms": 7840
-        },
-        {
-          "word": "de",
-          "start_ms": 7840,
-          "end_ms": 7980
-        },
-        {
-          "word": "los",
-          "start_ms": 7980,
-          "end_ms": 8100
-        },
-        {
-          "word": "or\u00edgenes",
-          "start_ms": 8100,
-          "end_ms": 8500
-        },
-        {
-          "word": "de",
-          "start_ms": 8560,
-          "end_ms": 8640
-        },
-        {
-          "word": "la",
-          "start_ms": 8640,
-          "end_ms": 8700
-        },
-        {
-          "word": "escritura",
-          "start_ms": 8700,
-          "end_ms": 9060
-        },
-        {
-          "word": "en",
-          "start_ms": 9060,
-          "end_ms": 9200
-        },
-        {
-          "word": "todo",
-          "start_ms": 9200,
-          "end_ms": 9280
-        },
-        {
-          "word": "el",
-          "start_ms": 9280,
-          "end_ms": 9420
-        },
-        {
-          "word": "mundo,",
-          "start_ms": 9420,
-          "end_ms": 9720
-        },
-        {
-          "word": "incluida",
-          "start_ms": 9880,
-          "end_ms": 10220
-        },
-        {
-          "word": "Mesoam\u00e9rica.",
-          "start_ms": 10220,
-          "end_ms": 10770
-        }
-      ]
-    },
-    "ch15-1009": {
-      "file": "audio/es/ch15-1009.m4a",
-      "duration_ms": 12520,
-      "pause_after_ms": 800,
-      "words": [
-        {
-          "word": "Christenson,",
-          "start_ms": 300,
-          "end_ms": 1000
-        },
-        {
-          "word": "Allen",
-          "start_ms": 1160,
-          "end_ms": 1180
-        },
-        {
-          "word": "J.,",
-          "start_ms": 1180,
-          "end_ms": 1560
-        },
-        {
-          "word": "trans.",
-          "start_ms": 1600,
-          "end_ms": 1800
-        },
-        {
-          "word": "*Popol",
-          "start_ms": 1940,
-          "end_ms": 2020
-        },
-        {
-          "word": "Vuh:",
-          "start_ms": 2020,
-          "end_ms": 2520
-        },
-        {
-          "word": "The",
-          "start_ms": 2520,
-          "end_ms": 2580
-        },
-        {
-          "word": "Sacred",
-          "start_ms": 2580,
-          "end_ms": 2940
-        },
-        {
-          "word": "Book",
-          "start_ms": 2940,
-          "end_ms": 3220
-        },
-        {
-          "word": "of",
-          "start_ms": 3220,
-          "end_ms": 3500
-        },
-        {
-          "word": "the",
-          "start_ms": 3520,
-          "end_ms": 3620
-        },
-        {
-          "word": "Maya*.",
-          "start_ms": 3620,
-          "end_ms": 4000
-        },
-        {
-          "word": "University",
-          "start_ms": 4680,
-          "end_ms": 5040
-        },
-        {
-          "word": "of",
-          "start_ms": 5040,
-          "end_ms": 5400
-        },
-        {
-          "word": "Oklahoma",
-          "start_ms": 5580,
-          "end_ms": 5740
-        },
-        {
-          "word": "Press,",
-          "start_ms": 5740,
-          "end_ms": 6320
-        },
-        {
-          "word": "dos",
-          "start_ms": 6540,
-          "end_ms": 6660
-        },
-        {
-          "word": "mil",
-          "start_ms": 6660,
-          "end_ms": 6820
-        },
-        {
-          "word": "siete.",
-          "start_ms": 6820,
-          "end_ms": 7220
-        },
-        {
-          "word": "\u2014",
-          "start_ms": 7580,
-          "end_ms": 7580
-        },
-        {
-          "word": "La",
-          "start_ms": 7580,
-          "end_ms": 7640
-        },
-        {
-          "word": "narrativa",
-          "start_ms": 7640,
-          "end_ms": 8119
-        },
-        {
-          "word": "de",
-          "start_ms": 8119,
-          "end_ms": 8260
-        },
-        {
-          "word": "la",
-          "start_ms": 8260,
-          "end_ms": 8380
-        },
-        {
-          "word": "creaci\u00f3n",
-          "start_ms": 8380,
-          "end_ms": 8760
-        },
-        {
-          "word": "de",
-          "start_ms": 8760,
-          "end_ms": 8900
-        },
-        {
-          "word": "los",
-          "start_ms": 8900,
-          "end_ms": 9020
-        },
-        {
-          "word": "k'iche'",
-          "start_ms": 9020,
-          "end_ms": 9120
-        },
-        {
-          "word": "mayas,",
-          "start_ms": 9420,
-          "end_ms": 9720
-        },
-        {
-          "word": "incluyendo",
-          "start_ms": 9820,
-          "end_ms": 10260
-        },
-        {
-          "word": "la",
-          "start_ms": 10260,
-          "end_ms": 10380
-        },
-        {
-          "word": "mitolog\u00eda",
-          "start_ms": 10380,
-          "end_ms": 10860
-        },
-        {
-          "word": "del",
-          "start_ms": 10860,
-          "end_ms": 11160
-        },
-        {
-          "word": "juego",
-          "start_ms": 11160,
-          "end_ms": 11360
-        },
-        {
-          "word": "de",
-          "start_ms": 11360,
-          "end_ms": 11520
-        },
-        {
-          "word": "pelota.",
-          "start_ms": 11520,
-          "end_ms": 11860
-        }
-      ]
-    },
-    "ch15-1011": {
-      "file": "audio/es/ch15-1011.m4a",
-      "duration_ms": 12640,
-      "pause_after_ms": 500,
-      "words": [
-        {
-          "word": "Curiosidades",
-          "start_ms": 380,
-          "end_ms": 780
-        },
-        {
-          "word": "fascinantes",
-          "start_ms": 780,
-          "end_ms": 1500
-        },
-        {
-          "word": "de",
-          "start_ms": 1500,
-          "end_ms": 1660
-        },
-        {
-          "word": "la",
-          "start_ms": 1660,
-          "end_ms": 1760
-        },
-        {
-          "word": "historia",
-          "start_ms": 1880,
-          "end_ms": 1980
-        },
-        {
-          "word": "humana",
-          "start_ms": 1980,
-          "end_ms": 2520
-        },
-        {
-          "word": "es",
-          "start_ms": 2920,
-          "end_ms": 3040
-        },
-        {
-          "word": "una",
-          "start_ms": 3040,
-          "end_ms": 3220
-        },
-        {
-          "word": "serie",
-          "start_ms": 3220,
-          "end_ms": 3500
-        },
-        {
-          "word": "de",
-          "start_ms": 3500,
-          "end_ms": 3680
-        },
-        {
-          "word": "libros",
-          "start_ms": 3680,
-          "end_ms": 4080
-        },
-        {
-          "word": "breves",
-          "start_ms": 4080,
-          "end_ms": 4420
-        },
-        {
-          "word": "e",
-          "start_ms": 4420,
-          "end_ms": 4580
-        },
-        {
-          "word": "intensos",
-          "start_ms": 4580,
-          "end_ms": 5220
-        },
-        {
-          "word": "sobre",
-          "start_ms": 5540,
-          "end_ms": 5720
-        },
-        {
-          "word": "las",
-          "start_ms": 5720,
-          "end_ms": 5920
-        },
-        {
-          "word": "cosas",
-          "start_ms": 5920,
-          "end_ms": 6220
-        },
-        {
-          "word": "m\u00e1s",
-          "start_ms": 6220,
-          "end_ms": 6540
-        },
-        {
-          "word": "interesantes",
-          "start_ms": 6540,
-          "end_ms": 7380
-        },
-        {
-          "word": "que",
-          "start_ms": 7380,
-          "end_ms": 7600
-        },
-        {
-          "word": "la",
-          "start_ms": 7600,
-          "end_ms": 7720
-        },
-        {
-          "word": "humanidad",
-          "start_ms": 7720,
-          "end_ms": 8140
-        },
-        {
-          "word": "ha",
-          "start_ms": 8140,
-          "end_ms": 8340
-        },
-        {
-          "word": "hecho,",
-          "start_ms": 8340,
-          "end_ms": 8520
-        },
-        {
-          "word": "construido,",
-          "start_ms": 8860,
-          "end_ms": 9500
-        },
-        {
-          "word": "escrito",
-          "start_ms": 9980,
-          "end_ms": 10260
-        },
-        {
-          "word": "y",
-          "start_ms": 10260,
-          "end_ms": 10640
-        },
-        {
-          "word": "sobre",
-          "start_ms": 10640,
-          "end_ms": 10840
-        },
-        {
-          "word": "las",
-          "start_ms": 10840,
-          "end_ms": 11020
-        },
-        {
-          "word": "que",
-          "start_ms": 11020,
-          "end_ms": 11180
-        },
-        {
-          "word": "se",
-          "start_ms": 11180,
-          "end_ms": 11320
-        },
-        {
-          "word": "ha",
-          "start_ms": 11320,
-          "end_ms": 11400
-        },
-        {
-          "word": "preguntado.",
-          "start_ms": 11400,
-          "end_ms": 11900
-        }
-      ]
-    },
-    "ch15-1012": {
-      "file": "audio/es/ch15-1012.m4a",
-      "duration_ms": 11360,
-      "pause_after_ms": 800,
-      "words": [
-        {
-          "word": "Cada",
-          "start_ms": 80,
-          "end_ms": 260
-        },
-        {
-          "word": "volumen",
-          "start_ms": 260,
-          "end_ms": 720
-        },
-        {
-          "word": "comienza",
-          "start_ms": 720,
-          "end_ms": 1300
-        },
-        {
-          "word": "con",
-          "start_ms": 1300,
-          "end_ms": 1500
-        },
-        {
-          "word": "un",
-          "start_ms": 1500,
-          "end_ms": 1660
-        },
-        {
-          "word": "misterio",
-          "start_ms": 1660,
-          "end_ms": 2080
-        },
-        {
-          "word": "genuino",
-          "start_ms": 2080,
-          "end_ms": 2640
-        },
-        {
-          "word": "y",
-          "start_ms": 2640,
-          "end_ms": 2900
-        },
-        {
-          "word": "lo",
-          "start_ms": 2900,
-          "end_ms": 3000
-        },
-        {
-          "word": "utiliza",
-          "start_ms": 3000,
-          "end_ms": 3480
-        },
-        {
-          "word": "como",
-          "start_ms": 3480,
-          "end_ms": 3740
-        },
-        {
-          "word": "puerta",
-          "start_ms": 3740,
-          "end_ms": 4120
-        },
-        {
-          "word": "de",
-          "start_ms": 4120,
-          "end_ms": 4360
-        },
-        {
-          "word": "entrada",
-          "start_ms": 4360,
-          "end_ms": 4780
-        },
-        {
-          "word": "a",
-          "start_ms": 4780,
-          "end_ms": 5080
-        },
-        {
-          "word": "un",
-          "start_ms": 5080,
-          "end_ms": 5220
-        },
-        {
-          "word": "mundo",
-          "start_ms": 5220,
-          "end_ms": 5440
-        },
-        {
-          "word": "de",
-          "start_ms": 5440,
-          "end_ms": 5660
-        },
-        {
-          "word": "conocimiento",
-          "start_ms": 5660,
-          "end_ms": 6480
-        },
-        {
-          "word": "\u2014",
-          "start_ms": 6480,
-          "end_ms": 6600
-        },
-        {
-          "word": "las",
-          "start_ms": 6840,
-          "end_ms": 6940
-        },
-        {
-          "word": "personas,",
-          "start_ms": 6940,
-          "end_ms": 7540
-        },
-        {
-          "word": "los",
-          "start_ms": 7940,
-          "end_ms": 7980
-        },
-        {
-          "word": "lugares,",
-          "start_ms": 7980,
-          "end_ms": 8600
-        },
-        {
-          "word": "el",
-          "start_ms": 8780,
-          "end_ms": 8860
-        },
-        {
-          "word": "contexto",
-          "start_ms": 9000,
-          "end_ms": 9220
-        },
-        {
-          "word": "y",
-          "start_ms": 9220,
-          "end_ms": 9620
-        },
-        {
-          "word": "las",
-          "start_ms": 9620,
-          "end_ms": 9720
-        },
-        {
-          "word": "preguntas",
-          "start_ms": 9720,
-          "end_ms": 10080
-        },
-        {
-          "word": "abiertas.",
-          "start_ms": 10080,
-          "end_ms": 10500
-        }
-      ]
-    },
-    "ch15-1013": {
-      "file": "audio/es/ch15-1013.m4a",
-      "duration_ms": 4040,
-      "pause_after_ms": 500,
-      "words": [
-        {
-          "word": "La",
-          "start_ms": 120,
-          "end_ms": 200
-        },
-        {
-          "word": "serie",
-          "start_ms": 200,
-          "end_ms": 500
-        },
-        {
-          "word": "est\u00e1",
-          "start_ms": 500,
-          "end_ms": 760
-        },
-        {
-          "word": "dise\u00f1ada",
-          "start_ms": 760,
-          "end_ms": 1320
-        },
-        {
-          "word": "para",
-          "start_ms": 1320,
-          "end_ms": 1540
-        },
-        {
-          "word": "lectores",
-          "start_ms": 1540,
-          "end_ms": 2000
-        },
-        {
-          "word": "curiosos",
-          "start_ms": 2000,
-          "end_ms": 2600
-        },
-        {
-          "word": "de",
-          "start_ms": 2600,
-          "end_ms": 2680
-        },
-        {
-          "word": "todas",
-          "start_ms": 2680,
-          "end_ms": 2900
-        },
-        {
-          "word": "las",
-          "start_ms": 2900,
-          "end_ms": 3100
-        },
-        {
-          "word": "edades.",
-          "start_ms": 3100,
-          "end_ms": 3420
-        }
-      ]
-    },
-    "ch15-1014": {
-      "file": "audio/es/ch15-1014.m4a",
-      "duration_ms": 6480,
-      "pause_after_ms": 500,
-      "words": [
-        {
-          "word": "Cada",
-          "start_ms": 100,
-          "end_ms": 280
-        },
-        {
-          "word": "oraci\u00f3n",
-          "start_ms": 280,
-          "end_ms": 720
-        },
-        {
-          "word": "debe",
-          "start_ms": 720,
-          "end_ms": 1160
-        },
-        {
-          "word": "ser",
-          "start_ms": 1160,
-          "end_ms": 1420
-        },
-        {
-          "word": "accesible",
-          "start_ms": 1420,
-          "end_ms": 2040
-        },
-        {
-          "word": "para",
-          "start_ms": 2040,
-          "end_ms": 2260
-        },
-        {
-          "word": "un",
-          "start_ms": 2260,
-          "end_ms": 2440
-        },
-        {
-          "word": "ni\u00f1o",
-          "start_ms": 2440,
-          "end_ms": 2720
-        },
-        {
-          "word": "brillante",
-          "start_ms": 2720,
-          "end_ms": 3280
-        },
-        {
-          "word": "de",
-          "start_ms": 3280,
-          "end_ms": 3440
-        },
-        {
-          "word": "diez",
-          "start_ms": 3440,
-          "end_ms": 3640
-        },
-        {
-          "word": "a\u00f1os",
-          "start_ms": 3640,
-          "end_ms": 4000
-        },
-        {
-          "word": "y",
-          "start_ms": 4000,
-          "end_ms": 4480
-        },
-        {
-          "word": "fascinante",
-          "start_ms": 4560,
-          "end_ms": 5120
-        },
-        {
-          "word": "para",
-          "start_ms": 5200,
-          "end_ms": 5320
-        },
-        {
-          "word": "un",
-          "start_ms": 5320,
-          "end_ms": 5500
-        },
-        {
-          "word": "adulto.",
-          "start_ms": 5500,
-          "end_ms": 5820
-        }
-      ]
-    },
-    "ch15-1015": {
-      "file": "audio/es/ch15-1015.m4a",
-      "duration_ms": 7600,
-      "pause_after_ms": 800,
-      "words": [
-        {
-          "word": "Nunca",
-          "start_ms": 100,
-          "end_ms": 500
-        },
-        {
-          "word": "hablamos",
-          "start_ms": 500,
-          "end_ms": 880
-        },
-        {
-          "word": "con",
-          "start_ms": 880,
-          "end_ms": 1100
-        },
-        {
-          "word": "condescendencia,",
-          "start_ms": 1100,
-          "end_ms": 2100
-        },
-        {
-          "word": "nunca",
-          "start_ms": 2120,
-          "end_ms": 2340
-        },
-        {
-          "word": "rellenamos",
-          "start_ms": 2340,
-          "end_ms": 3000
-        },
-        {
-          "word": "y",
-          "start_ms": 3000,
-          "end_ms": 3300
-        },
-        {
-          "word": "siempre",
-          "start_ms": 3300,
-          "end_ms": 3720
-        },
-        {
-          "word": "somos",
-          "start_ms": 3720,
-          "end_ms": 4019
-        },
-        {
-          "word": "honestos",
-          "start_ms": 4019,
-          "end_ms": 4640
-        },
-        {
-          "word": "sobre",
-          "start_ms": 4640,
-          "end_ms": 4920
-        },
-        {
-          "word": "lo",
-          "start_ms": 4920,
-          "end_ms": 5100
-        },
-        {
-          "word": "que",
-          "start_ms": 5100,
-          "end_ms": 5220
-        },
-        {
-          "word": "sabemos",
-          "start_ms": 5340,
-          "end_ms": 5560
-        },
-        {
-          "word": "y",
-          "start_ms": 5560,
-          "end_ms": 5920
-        },
-        {
-          "word": "lo",
-          "start_ms": 5920,
-          "end_ms": 6020
-        },
-        {
-          "word": "que",
-          "start_ms": 6020,
-          "end_ms": 6160
-        },
-        {
-          "word": "no",
-          "start_ms": 6160,
-          "end_ms": 6300
-        },
-        {
-          "word": "sabemos.",
-          "start_ms": 6300,
-          "end_ms": 6680
-        }
-      ]
-    },
-    "ch15-1016": {
-      "file": "audio/es/ch15-1016.m4a",
-      "duration_ms": 6300,
-      "pause_after_ms": 800,
-      "words": [
-        {
-          "word": "Volumen",
-          "start_ms": 240,
-          "end_ms": 580
-        },
-        {
-          "word": "uno:",
-          "start_ms": 580,
-          "end_ms": 1040
-        },
-        {
-          "word": "*El",
-          "start_ms": 1680,
-          "end_ms": 1680
-        },
-        {
-          "word": "misterio",
-          "start_ms": 1680,
-          "end_ms": 2260
-        },
-        {
-          "word": "de",
-          "start_ms": 2260,
-          "end_ms": 2360
-        },
-        {
-          "word": "Monte",
-          "start_ms": 2360,
-          "end_ms": 2660
-        },
-        {
-          "word": "Alb\u00e1n*",
-          "start_ms": 2660,
-          "end_ms": 3560
-        },
-        {
-          "word": "\u2014",
-          "start_ms": 3560,
-          "end_ms": 3560
-        },
-        {
-          "word": "Monta\u00f1a",
-          "start_ms": 3560,
-          "end_ms": 4000
-        },
-        {
-          "word": "sagrada,",
-          "start_ms": 4000,
-          "end_ms": 4600
-        },
-        {
-          "word": "escritura",
-          "start_ms": 5100,
-          "end_ms": 5280
-        },
-        {
-          "word": "perdida,",
-          "start_ms": 5280,
-          "end_ms": 5840
-        },
-        {
-          "word": "ciudad",
-          "start_ms": 6120,
-          "end_ms": 6220
-        },
-        {
-          "word": "desaparecida",
-          "start_ms": 6220,
-          "end_ms": 6280
-        }
-      ]
-    },
-    "ch15-1017": {
-      "file": "audio/es/ch15-1017.m4a",
-      "duration_ms": 3040,
-      "pause_after_ms": 800,
-      "words": [
-        {
-          "word": "Los",
-          "start_ms": 100,
-          "end_ms": 240
-        },
-        {
-          "word": "vol\u00famenes",
-          "start_ms": 240,
-          "end_ms": 860
-        },
-        {
-          "word": "futuros",
-          "start_ms": 860,
-          "end_ms": 1340
-        },
-        {
-          "word": "est\u00e1n",
-          "start_ms": 1340,
-          "end_ms": 1720
-        },
-        {
-          "word": "en",
-          "start_ms": 1720,
-          "end_ms": 1860
-        },
-        {
-          "word": "desarrollo.",
-          "start_ms": 1860,
-          "end_ms": 2420
-        }
-      ]
-    },
-    "ch15-1019": {
-      "file": "audio/es/ch15-1019.m4a",
-      "duration_ms": 9600,
-      "pause_after_ms": 500,
-      "words": [
-        {
-          "word": "Todas",
-          "start_ms": 100,
-          "end_ms": 420
-        },
-        {
-          "word": "las",
-          "start_ms": 420,
-          "end_ms": 600
-        },
-        {
-          "word": "ilustraciones",
-          "start_ms": 600,
-          "end_ms": 1160
-        },
-        {
-          "word": "de",
-          "start_ms": 1160,
-          "end_ms": 1500
-        },
-        {
-          "word": "este",
-          "start_ms": 1500,
-          "end_ms": 1740
-        },
-        {
-          "word": "volumen",
-          "start_ms": 1740,
-          "end_ms": 2140
-        },
-        {
-          "word": "son",
-          "start_ms": 2140,
-          "end_ms": 2360
-        },
-        {
-          "word": "obras",
-          "start_ms": 2360,
-          "end_ms": 2640
-        },
-        {
-          "word": "originales",
-          "start_ms": 2640,
-          "end_ms": 3380
-        },
-        {
-          "word": "generadas",
-          "start_ms": 3400,
-          "end_ms": 3800
-        },
-        {
-          "word": "con",
-          "start_ms": 3800,
-          "end_ms": 4059
-        },
-        {
-          "word": "Stable",
-          "start_ms": 4220,
-          "end_ms": 4440
-        },
-        {
-          "word": "Diffusion",
-          "start_ms": 4440,
-          "end_ms": 4980
-        },
-        {
-          "word": "en",
-          "start_ms": 4980,
-          "end_ms": 5540
-        },
-        {
-          "word": "un",
-          "start_ms": 5540,
-          "end_ms": 5700
-        },
-        {
-          "word": "estilo",
-          "start_ms": 5700,
-          "end_ms": 6120
-        },
-        {
-          "word": "de",
-          "start_ms": 6120,
-          "end_ms": 6320
-        },
-        {
-          "word": "ilustraci\u00f3n",
-          "start_ms": 6320,
-          "end_ms": 6900
-        },
-        {
-          "word": "de",
-          "start_ms": 6900,
-          "end_ms": 7100
-        },
-        {
-          "word": "trama",
-          "start_ms": 7100,
-          "end_ms": 7460
-        },
-        {
-          "word": "cruzada",
-          "start_ms": 7460,
-          "end_ms": 8060
-        },
-        {
-          "word": "a",
-          "start_ms": 8060,
-          "end_ms": 8240
-        },
-        {
-          "word": "pluma",
-          "start_ms": 8320,
-          "end_ms": 8480
-        },
-        {
-          "word": "y",
-          "start_ms": 8480,
-          "end_ms": 8600
-        },
-        {
-          "word": "tinta.",
-          "start_ms": 8600,
-          "end_ms": 8860
-        }
-      ]
-    },
-    "ch15-1020": {
-      "file": "audio/es/ch15-1020.m4a",
-      "duration_ms": 13280,
-      "pause_after_ms": 800,
-      "words": [
-        {
-          "word": "Se",
-          "start_ms": 100,
-          "end_ms": 200
-        },
-        {
-          "word": "utilizaron",
-          "start_ms": 200,
-          "end_ms": 760
-        },
-        {
-          "word": "fotograf\u00edas",
-          "start_ms": 760,
-          "end_ms": 1480
-        },
-        {
-          "word": "de",
-          "start_ms": 1480,
-          "end_ms": 1680
-        },
-        {
-          "word": "referencia",
-          "start_ms": 1680,
-          "end_ms": 2260
-        },
-        {
-          "word": "de",
-          "start_ms": 2260,
-          "end_ms": 2400
-        },
-        {
-          "word": "Monte",
-          "start_ms": 2400,
-          "end_ms": 2640
-        },
-        {
-          "word": "Alb\u00e1n,",
-          "start_ms": 2640,
-          "end_ms": 3160
-        },
-        {
-          "word": "el",
-          "start_ms": 3500,
-          "end_ms": 3500
-        },
-        {
-          "word": "Valle",
-          "start_ms": 3520,
-          "end_ms": 3720
-        },
-        {
-          "word": "de",
-          "start_ms": 3720,
-          "end_ms": 3880
-        },
-        {
-          "word": "Oaxaca",
-          "start_ms": 3880,
-          "end_ms": 4300
-        },
-        {
-          "word": "y",
-          "start_ms": 4300,
-          "end_ms": 4580
-        },
-        {
-          "word": "las",
-          "start_ms": 4580,
-          "end_ms": 4700
-        },
-        {
-          "word": "inscripciones",
-          "start_ms": 4700,
-          "end_ms": 5340
-        },
-        {
-          "word": "zapotecas",
-          "start_ms": 5340,
-          "end_ms": 5980
-        },
-        {
-          "word": "para",
-          "start_ms": 5980,
-          "end_ms": 6220
-        },
-        {
-          "word": "guiar",
-          "start_ms": 6220,
-          "end_ms": 6500
-        },
-        {
-          "word": "la",
-          "start_ms": 6500,
-          "end_ms": 6660
-        },
-        {
-          "word": "composici\u00f3n",
-          "start_ms": 6660,
-          "end_ms": 7300
-        },
-        {
-          "word": "y",
-          "start_ms": 7300,
-          "end_ms": 7440
-        },
-        {
-          "word": "la",
-          "start_ms": 7440,
-          "end_ms": 7560
-        },
-        {
-          "word": "precisi\u00f3n,",
-          "start_ms": 7560,
-          "end_ms": 8119
-        },
-        {
-          "word": "pero",
-          "start_ms": 8740,
-          "end_ms": 8860
-        },
-        {
-          "word": "todas",
-          "start_ms": 8860,
-          "end_ms": 9080
-        },
-        {
-          "word": "las",
-          "start_ms": 9080,
-          "end_ms": 9360
-        },
-        {
-          "word": "im\u00e1genes",
-          "start_ms": 9360,
-          "end_ms": 9700
-        },
-        {
-          "word": "finales",
-          "start_ms": 9700,
-          "end_ms": 10300
-        },
-        {
-          "word": "son",
-          "start_ms": 10300,
-          "end_ms": 10460
-        },
-        {
-          "word": "obras",
-          "start_ms": 10460,
-          "end_ms": 10740
-        },
-        {
-          "word": "de",
-          "start_ms": 10740,
-          "end_ms": 10960
-        },
-        {
-          "word": "arte",
-          "start_ms": 10960,
-          "end_ms": 11180
-        },
-        {
-          "word": "originales",
-          "start_ms": 11180,
-          "end_ms": 11880
-        },
-        {
-          "word": "generadas.",
-          "start_ms": 11880,
-          "end_ms": 12340
-        }
-      ]
-    },
-    "ch15-1021": {
-      "file": "audio/es/ch15-1021.m4a",
-      "duration_ms": 11680,
-      "pause_after_ms": 800,
-      "words": [
-        {
-          "word": "Las",
-          "start_ms": 160,
-          "end_ms": 280
-        },
-        {
-          "word": "notas",
-          "start_ms": 280,
-          "end_ms": 660
-        },
-        {
-          "word": "de",
-          "start_ms": 660,
-          "end_ms": 780
-        },
-        {
-          "word": "generaci\u00f3n",
-          "start_ms": 780,
-          "end_ms": 1280
-        },
-        {
-          "word": "espec\u00edficas",
-          "start_ms": 1280,
-          "end_ms": 2260
-        },
-        {
-          "word": "y",
-          "start_ms": 2440,
-          "end_ms": 2540
-        },
-        {
-          "word": "los",
-          "start_ms": 2540,
-          "end_ms": 2720
-        },
-        {
-          "word": "cr\u00e9ditos",
-          "start_ms": 2720,
-          "end_ms": 3200
-        },
-        {
-          "word": "de",
-          "start_ms": 3200,
-          "end_ms": 3340
-        },
-        {
-          "word": "referencia",
-          "start_ms": 3340,
-          "end_ms": 3960
-        },
-        {
-          "word": "para",
-          "start_ms": 3960,
-          "end_ms": 4240
-        },
-        {
-          "word": "cada",
-          "start_ms": 4240,
-          "end_ms": 4520
-        },
-        {
-          "word": "ilustraci\u00f3n",
-          "start_ms": 4520,
-          "end_ms": 5180
-        },
-        {
-          "word": "se",
-          "start_ms": 5180,
-          "end_ms": 5660
-        },
-        {
-          "word": "mantienen",
-          "start_ms": 5660,
-          "end_ms": 6220
-        },
-        {
-          "word": "en",
-          "start_ms": 6220,
-          "end_ms": 6380
-        },
-        {
-          "word": "los",
-          "start_ms": 6380,
-          "end_ms": 6480
-        },
-        {
-          "word": "archivos",
-          "start_ms": 6480,
-          "end_ms": 6960
-        },
-        {
-          "word": "de",
-          "start_ms": 6960,
-          "end_ms": 7120
-        },
-        {
-          "word": "marcadores",
-          "start_ms": 7120,
-          "end_ms": 7700
-        },
-        {
-          "word": "de",
-          "start_ms": 7700,
-          "end_ms": 8119
-        },
-        {
-          "word": "posici\u00f3n",
-          "start_ms": 8119,
-          "end_ms": 8580
-        },
-        {
-          "word": "de",
-          "start_ms": 8580,
-          "end_ms": 8780
-        },
-        {
-          "word": "im\u00e1genes",
-          "start_ms": 8780,
-          "end_ms": 9240
-        },
-        {
-          "word": "en",
-          "start_ms": 9240,
-          "end_ms": 9520
-        },
-        {
-          "word": "el",
-          "start_ms": 9520,
-          "end_ms": 9680
-        },
-        {
-          "word": "repositorio",
-          "start_ms": 9680,
-          "end_ms": 10360
-        },
-        {
-          "word": "del",
-          "start_ms": 10360,
-          "end_ms": 10460
-        },
-        {
-          "word": "c\u00f3digo",
-          "start_ms": 10460,
-          "end_ms": 10720
-        },
-        {
-          "word": "fuente.",
-          "start_ms": 10720,
-          "end_ms": 10900
-        }
-      ]
-    },
-    "ch04-205": {
-      "file": "audio/es/ch04-205.m4a",
-      "duration_ms": 6920,
-      "pause_after_ms": 500,
-      "words": [
-        {
-          "word": "Para",
-          "start_ms": 0,
-          "end_ms": 140
-        },
-        {
-          "word": "ponerlo",
-          "start_ms": 140,
-          "end_ms": 640
-        },
-        {
-          "word": "en",
-          "start_ms": 640,
-          "end_ms": 740
-        },
-        {
-          "word": "perspectiva:",
-          "start_ms": 740,
-          "end_ms": 2000
-        },
-        {
-          "word": "Londres",
-          "start_ms": 2160,
-          "end_ms": 2340
-        },
-        {
-          "word": "en",
-          "start_ms": 2340,
-          "end_ms": 2520
-        },
-        {
-          "word": "el",
-          "start_ms": 2520,
-          "end_ms": 2660
-        },
-        {
-          "word": "a\u00f1o",
-          "start_ms": 2660,
-          "end_ms": 2840
-        },
-        {
-          "word": "quinientos",
-          "start_ms": 2840,
-          "end_ms": 3290
-        },
-        {
-          "word": "de",
-          "start_ms": 3420,
-          "end_ms": 3620
-        },
-        {
-          "word": "la",
-          "start_ms": 3620,
-          "end_ms": 3740
-        },
-        {
-          "word": "era",
-          "start_ms": 3740,
-          "end_ms": 3880
-        },
-        {
-          "word": "com\u00fan",
-          "start_ms": 3880,
-          "end_ms": 4240
-        },
-        {
-          "word": "ten\u00eda",
-          "start_ms": 4240,
-          "end_ms": 4860
-        },
-        {
-          "word": "quiz\u00e1s",
-          "start_ms": 4860,
-          "end_ms": 5300
-        },
-        {
-          "word": "diez",
-          "start_ms": 5300,
-          "end_ms": 5520
-        },
-        {
-          "word": "mil",
-          "start_ms": 5520,
-          "end_ms": 5760
-        },
-        {
-          "word": "habitantes.",
-          "start_ms": 5760,
-          "end_ms": 6280
         }
       ]
     }
