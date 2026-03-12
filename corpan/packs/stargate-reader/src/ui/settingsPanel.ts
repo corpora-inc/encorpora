@@ -160,12 +160,12 @@ export function renderStargateDisplaySettings(
   container.appendChild(oscRow)
 
   // Oscilloscope advanced sliders
-  const oscConfig = options.initialOscilloscopeConfig ?? { amplitude: 5, width: 12, alpha: 0.35 }
+  const oscConfig = options.initialOscilloscopeConfig ?? { amplitude: 5, width: 2, alpha: 0.35 }
   createAdvancedSection(
     container,
     [
       { key: "amplitude", label: "Swing", min: 1, max: 20, step: 1, initial: 5 },
-      { key: "width", label: "Width", min: 1, max: 12, step: 1, initial: 12 },
+      { key: "width", label: "Width", min: 1, max: 12, step: 1, initial: 2 },
       { key: "alpha", label: "Opacity", min: 0.05, max: 1.0, step: 0.05, initial: 0.35 },
     ],
     oscConfig as Record<string, number>,
@@ -224,11 +224,11 @@ export function renderStargateDisplaySettings(
   container.appendChild(pulseRow)
 
   // Pulse Ring advanced sliders
-  const pulseConfig = options.initialPulseRingConfig ?? { maxRadius: 1, fadeMs: 200 }
+  const pulseConfig = options.initialPulseRingConfig ?? { maxRadius: 0.2, fadeMs: 200 }
   createAdvancedSection(
     container,
     [
-      { key: "maxRadius", label: "Ring Size", min: 0.05, max: 0.5, step: 0.05, initial: 0.5 },
+      { key: "maxRadius", label: "Ring Size", min: 0.05, max: 0.5, step: 0.05, initial: 0.2 },
       { key: "fadeMs", label: "Trail", min: 50, max: 2000, step: 50, initial: 200 },
     ],
     pulseConfig as Record<string, number>,

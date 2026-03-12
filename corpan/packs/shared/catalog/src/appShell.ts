@@ -142,8 +142,9 @@ export function createAppShell(
 
   // Subscribe to store for minimal active-row update (avoids full re-render FUOC)
   const storeUnsub = drawerStore.subscribe((state, prev) => {
-    if (state.currentNarrationId !== prev.currentNarrationId && browseShowingDetail) {
-      updateDetailActiveRow(state.currentNarrationId)
+    if (state.currentNarrationId !== prev.currentNarrationId) {
+      if (browseShowingDetail) updateDetailActiveRow(state.currentNarrationId)
+      refreshLibrarySection()
     }
   })
 

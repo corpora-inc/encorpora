@@ -53,9 +53,9 @@ const STARGATE_PREFS_DEFAULTS: DisplayPrefs = {
   waveform: true,
   pulseRing: true,
   wordHold: true,
-  oscilloscopeConfig: { amplitude: 5, width: 12, alpha: 0.35 },
+  oscilloscopeConfig: { amplitude: 5, width: 2, alpha: 0.35 },
   waveformConfig: { maxRadius: 1, alpha: 0.005, minRadius: 0 },
-  pulseRingConfig: { maxRadius: 1, fadeMs: 200 },
+  pulseRingConfig: { maxRadius: 0.2, fadeMs: 200 },
   wordHoldConfig: { holdY: 0, zPull: 0.4 },
 }
 
