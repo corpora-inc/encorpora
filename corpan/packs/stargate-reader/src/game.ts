@@ -12,8 +12,8 @@ import type { HostApi } from "@shared/sdk"
 import type { AudioManifest, BookSegment, TimelineWord, ChapterInfo } from "@shared/core"
 import { CAMERA_FOV, CAMERA_Z, GLOW_INTENSITY, LANGUAGE_NAMES, BOOK_NAMES, resolveVoiceName } from "@shared/core"
 import { buildTimeline, findCurrentWordIndex, buildChapterIndex } from "@shared/core"
-import { createFetchDataProvider, createPreloadedDataProvider, type DataProvider } from "@shared/data"
-import { createAudioEngine, type AudioEngine } from "@shared/audio"
+import { createFetchDataProvider, createPreloadedDataProvider, type DataProvider, packFetchArrayBuffer } from "@shared/data"
+import { createAudioEngine, type AudioEngine, createMediaSessionAnchor, type MediaSessionAnchor } from "@shared/audio"
 import { createWaveformCache, type WaveformCache } from "@shared/audio"
 import { createTransportBar } from "@shared/ui"
 import { createChapterOverlay, type ChapterOverlay } from "@shared/ui"
@@ -62,8 +62,7 @@ const STARGATE_PREFS_DEFAULTS: DisplayPrefs = {
 const bookmarks = createBookmarkStore("stargate-reader")
 const prefsStore = createPrefsStore("stargate-reader-prefs", STARGATE_PREFS_DEFAULTS)
 
-type StargateRemoteCommand = "play" | "pause"
-type StargateNativeCommand = StargateRemoteCommand | "skipForward" | "skipBack"
+type ReaderNativeCommand = "play" | "pause" | "skipForward" | "skipBack" | "seek" | "prevChapter" | "nextChapter"
 type RemotePlayPauseSource = "window" | "native" | "webms"
 type NowPlayingMetadata = {
   title: string
@@ -76,8 +75,7 @@ type TauriBridgeWindow = Window & {
 
 declare global {
   interface Window {
-    __stargateCmd?: (cmd: StargateRemoteCommand) => void
-    __stargateNativeCmd?: (cmd: StargateNativeCommand) => void
+    __readerCmd?: (cmd: ReaderNativeCommand, data?: { positionMs?: number }) => void
   }
 }
 
@@ -103,7 +101,7 @@ export function createStargateReader(
     try {
       wakeLock = await navigator.wakeLock.request("screen")
       wakeLock.addEventListener("release", () => { wakeLock = null })
-    } catch { /* user denied or API unsupported */ }
+    } catch (e) { console.warn("[SR] wakeLock request:", e) }
   }
 
   function releaseWakeLock() {
@@ -115,6 +113,7 @@ export function createStargateReader(
   let bgNowPlayingTimer: ReturnType<typeof setInterval> | null = null
   let nativeSessionActive = false
   let removeRemoteListeners: (() => void) | null = null
+  let mediaAnchor: MediaSessionAnchor | null = null
   let playInFlight = false
   let desiredPlaying = false
   let playRequestSeq = 0
@@ -167,7 +166,7 @@ export function createStargateReader(
         if (!audioEngine || !isPlaying) return
         syncNativeNowPlaying("periodic")
         persistBookmark()
-      }, 10000)
+      }, 3000)
     }
   }
 
@@ -180,12 +179,9 @@ export function createStargateReader(
   }
 
   // --- Single source of truth for native now-playing sync ---
-  function syncNativeNowPlaying(mode: "state" | "periodic" = "state") {
+  function syncNativeNowPlaying(_mode: "state" | "periodic" = "state") {
     syncMediaSessionNowPlaying()
     if (!nativeSessionActive || !audioEngine) return
-    // Avoid high-frequency dual-writer contention while active playback is ongoing.
-    // Still allow state transitions (play/pause/seek/chapter changes) to update native.
-    if (mode === "periodic" && isPlaying) return
     const metadata = getNowPlayingMetadata()
     const nowPlayingToken = nextNowPlayingToken()
     void updateNativeNowPlaying(
@@ -203,8 +199,9 @@ export function createStargateReader(
     if (!("mediaSession" in navigator)) return
     try {
       navigator.mediaSession.playbackState = state
-    } catch {
-      // Best effort only
+      console.log(`[MS] playbackState → ${state}`)
+    } catch (err) {
+      console.error("[MS] playbackState set failed:", err)
     }
   }
 
@@ -236,6 +233,7 @@ export function createStargateReader(
             : undefined,
         })
         lastMediaMetadataKey = metadataKey
+        console.log(`[MS] metadata: "${metadata.title}" - "${metadata.artist}"`)
       }
 
       const durationS = audioEngine.getTotalDurationMs() / 1000
@@ -246,9 +244,10 @@ export function createStargateReader(
           playbackRate: 1,
           position: positionS,
         })
+        console.log(`[MS] setPositionState dur=${durationS.toFixed(1)}s pos=${positionS.toFixed(1)}s rate=1`)
       }
-    } catch {
-      // Best effort only
+    } catch (err) {
+      console.error("[MS] syncMediaSessionNowPlaying failed:", err)
     }
   }
 
@@ -269,6 +268,10 @@ export function createStargateReader(
       transport.setPlaying(true)
       syncMediaSessionPlaybackState("playing")
       lastMediaSessionSyncAt = performance.now()
+      if (!nativeOwnsMediaSession && !mediaAnchor) {
+        mediaAnchor = createMediaSessionAnchor()
+      }
+      mediaAnchor?.play()
       void requestWakeLock()
       syncNativePlaybackState(true)
       syncNativeNowPlaying()
@@ -358,6 +361,10 @@ export function createStargateReader(
 
       // Re-register after context/session churn.
       setupMediaSession()
+      if (!nativeOwnsMediaSession && !mediaAnchor) {
+        mediaAnchor = createMediaSessionAnchor()
+      }
+      mediaAnchor?.play()
       audioEngine.unlock()
       console.log(`[SR:doPlay] unlock done +${(performance.now() - t0).toFixed(1)}ms`)
 
@@ -430,6 +437,7 @@ export function createStargateReader(
     if (enginePlaying) {
       audioEngine.pause()
     }
+    mediaAnchor?.pause()
     isPlaying = false
     transport.setPlaying(false)
     syncMediaSessionPlaybackState("paused")
@@ -589,11 +597,11 @@ export function createStargateReader(
 
   // Playback state
   let isPlaying = false
-  let lastRemotePlayPauseCmd: StargateRemoteCommand | null = null
+  let lastRemotePlayPauseCmd: "play" | "pause" | null = null
   let lastRemotePlayPauseAt = 0
   const REMOTE_PLAY_PAUSE_DEDUPE_MS = 250
 
-  function dispatchRemotePlayPause(cmd: StargateRemoteCommand, source: RemotePlayPauseSource) {
+  function dispatchRemotePlayPause(cmd: "play" | "pause", source: RemotePlayPauseSource) {
     const now = performance.now()
     if (
       lastRemotePlayPauseCmd === cmd &&
@@ -711,13 +719,8 @@ export function createStargateReader(
 
   // Language switching is triggered by the command drawer via appShell
 
-  window.__stargateCmd = (cmd: StargateRemoteCommand) => {
-    console.log(`[SR:cmd] window.__stargateCmd(${cmd})`)
-    dispatchRemotePlayPause(cmd, "window")
-  }
-
-  window.__stargateNativeCmd = (cmd: StargateNativeCommand) => {
-    console.log(`[SR:cmd] window.__stargateNativeCmd(${cmd})`)
+  window.__readerCmd = (cmd: ReaderNativeCommand, data?: { positionMs?: number }) => {
+    console.log(`[SR:cmd] __readerCmd(${cmd})`)
     switch (cmd) {
       case "play":
       case "pause":
@@ -730,6 +733,35 @@ export function createStargateReader(
       case "skipBack":
         if (!audioEngine) return
         seekToMsAndSync(Math.max(0, audioEngine.getCurrentTimeMs() - 30000))
+        break
+      case "seek":
+        if (!audioEngine || data?.positionMs == null) return
+        seekToMsAndSync(data.positionMs)
+        break
+      case "nextChapter":
+        if (!audioEngine || chapters.length === 0) return
+        {
+          const currentIdx = audioEngine.getCurrentSegmentIndex()
+          let chapterIdx = 0
+          for (let i = chapters.length - 1; i >= 0; i--) {
+            if (currentIdx >= chapters[i].firstSegmentIndex) { chapterIdx = i; break }
+          }
+          const targetChapter = Math.min(chapters.length - 1, chapterIdx + 1)
+          seekToSegmentAndSync(chapters[targetChapter].firstSegmentIndex)
+        }
+        break
+      case "prevChapter":
+        if (!audioEngine || chapters.length === 0) return
+        {
+          const currentIdx = audioEngine.getCurrentSegmentIndex()
+          let chapterIdx = 0
+          for (let i = chapters.length - 1; i >= 0; i--) {
+            if (currentIdx >= chapters[i].firstSegmentIndex) { chapterIdx = i; break }
+          }
+          const threshold = chapters[chapterIdx].firstSegmentIndex + 2
+          const targetChapter = currentIdx > threshold ? chapterIdx : Math.max(0, chapterIdx - 1)
+          seekToSegmentAndSync(chapters[targetChapter].firstSegmentIndex)
+        }
         break
     }
   }
@@ -838,42 +870,68 @@ export function createStargateReader(
   })
 
   // --- Media Session API (lock screen controls) ---
+  // On iOS/macOS/browser: WebKit owns MPNowPlayingInfoCenter via navigator.mediaSession.
+  // On Android: native MediaSession is sole owner (unchanged).
   function setupMediaSession() {
     if (!("mediaSession" in navigator)) return
+    if (nativeOwnsMediaSession) return  // Android: native Kotlin service handles everything
     syncMediaSessionNowPlaying()
 
-    const disabledActions: MediaSessionAction[] = [
-      "seekbackward",
-      "seekforward",
-      "seekto",
-      "nexttrack",
-      "previoustrack",
-    ]
-    if (hasNativeBridge && !isAndroid) {
-      // iOS Tauri: native plugin is sole inbound play/pause path.
-      disabledActions.push("play", "pause")
-    }
-
-    for (const action of disabledActions) {
-      try {
-        navigator.mediaSession.setActionHandler(action, null)
-      } catch {
-        // Best effort: unsupported action on this platform.
-      }
-    }
-
-    if (hasNativeBridge && !isAndroid) return
-
     const handlers: [MediaSessionAction, MediaSessionActionHandler][] = [
-      ["play", () => { dispatchRemotePlayPause("play", "webms") }],
-      ["pause", () => { dispatchRemotePlayPause("pause", "webms") }],
+      ["play", () => {
+        console.log("[MS] actionHandler(play) fired")
+        dispatchRemotePlayPause("play", "webms")
+      }],
+      ["pause", () => {
+        console.log("[MS] actionHandler(pause) fired")
+        dispatchRemotePlayPause("pause", "webms")
+      }],
+      ["seekto", (details) => {
+        if (!audioEngine || details?.seekTime == null) return
+        console.log(`[MS] actionHandler(seekto) seekTime=${details.seekTime}s fastSeek=${details.fastSeek}`)
+        seekToMsAndSync(details.seekTime * 1000)
+      }],
+      ["seekforward", () => {
+        if (!audioEngine) return
+        console.log("[MS] actionHandler(seekforward)")
+        seekToMsAndSync(Math.min(audioEngine.getTotalDurationMs(), audioEngine.getCurrentTimeMs() + 30000))
+      }],
+      ["seekbackward", () => {
+        if (!audioEngine) return
+        console.log("[MS] actionHandler(seekbackward)")
+        seekToMsAndSync(Math.max(0, audioEngine.getCurrentTimeMs() - 30000))
+      }],
+      ["nexttrack", () => {
+        if (!audioEngine || chapters.length === 0) return
+        console.log("[MS] actionHandler(nexttrack)")
+        const currentIdx = audioEngine.getCurrentSegmentIndex()
+        let chapterIdx = 0
+        for (let i = chapters.length - 1; i >= 0; i--) {
+          if (currentIdx >= chapters[i].firstSegmentIndex) { chapterIdx = i; break }
+        }
+        const targetChapter = Math.min(chapters.length - 1, chapterIdx + 1)
+        seekToSegmentAndSync(chapters[targetChapter].firstSegmentIndex)
+      }],
+      ["previoustrack", () => {
+        if (!audioEngine || chapters.length === 0) return
+        console.log("[MS] actionHandler(previoustrack)")
+        const currentIdx = audioEngine.getCurrentSegmentIndex()
+        let chapterIdx = 0
+        for (let i = chapters.length - 1; i >= 0; i--) {
+          if (currentIdx >= chapters[i].firstSegmentIndex) { chapterIdx = i; break }
+        }
+        const threshold = chapters[chapterIdx].firstSegmentIndex + 2
+        const targetChapter = currentIdx > threshold ? chapterIdx : Math.max(0, chapterIdx - 1)
+        seekToSegmentAndSync(chapters[targetChapter].firstSegmentIndex)
+      }],
     ]
 
     for (const [action, handler] of handlers) {
       try {
         navigator.mediaSession.setActionHandler(action, handler)
-      } catch {
-        // iOS/WebKit support differs by action and version.
+        console.log(`[MS] setActionHandler(${action}) registered`)
+      } catch (err) {
+        console.error(`[MS] setActionHandler(${action}) failed:`, err)
       }
     }
   }
@@ -978,6 +1036,20 @@ export function createStargateReader(
       mediaArtworkUrl = resolveAssetUrl
         ? resolveAssetUrl("corpan-logo.png")
         : (baseUrl ? `${baseUrl.replace(/\/$/, "")}/corpan-logo.png` : "corpan-logo.png")
+
+      // Convert artwork to blob URL so WebKit's MediaMetadata can load it
+      // (corpan-pack:// is Tauri IPC, not fetchable by WebKit's image loader)
+      if (mediaArtworkUrl) {
+        try {
+          const bytes = await packFetchArrayBuffer(mediaArtworkUrl)
+          const blob = new Blob([bytes], { type: "image/png" })
+          mediaArtworkUrl = URL.createObjectURL(blob)
+          console.log("[MS] artwork converted to blob URL")
+        } catch (err) {
+          console.error("[MS] Failed to convert artwork to blob URL:", err)
+          mediaArtworkUrl = undefined
+        }
+      }
 
       if (preloadedSegments && preloadedManifest && resolveAssetUrl) {
         // Production: host provides preloaded data
@@ -1310,11 +1382,8 @@ export function createStargateReader(
     nativeSessionActive = false
     nativePlaybackStateHint = "unknown"
     if (removeRemoteListeners) { removeRemoteListeners(); removeRemoteListeners = null }
-    if (window.__stargateCmd) {
-      delete window.__stargateCmd
-    }
-    if (window.__stargateNativeCmd) {
-      delete window.__stargateNativeCmd
+    if (window.__readerCmd) {
+      delete window.__readerCmd
     }
     stopBackgroundTimers()
 
@@ -1325,14 +1394,17 @@ export function createStargateReader(
     if ("mediaSession" in navigator) {
       try {
         navigator.mediaSession.metadata = null
-        navigator.mediaSession.setActionHandler("play", null)
-        navigator.mediaSession.setActionHandler("pause", null)
-      } catch { /* best effort */ }
+        for (const action of ["play", "pause", "seekto", "seekforward", "seekbackward", "nexttrack", "previoustrack"] as MediaSessionAction[]) {
+          try { navigator.mediaSession.setActionHandler(action, null) } catch (e) { console.warn("[SR] clearActionHandler:", e) }
+        }
+      } catch (e) { console.warn("[SR] dispose mediaSession cleanup:", e) }
     }
 
     persistBookmark()
     chapterOverlay.dispose()
     transport.dispose()
+    mediaAnchor?.dispose()
+    mediaAnchor = null
     audioEngine?.dispose()
     waveformCache?.dispose()
     wordStream?.dispose()
