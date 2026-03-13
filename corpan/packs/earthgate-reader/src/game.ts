@@ -1,6 +1,6 @@
 import type { HostApi } from "@shared/sdk"
 import type { AudioManifest, BookSegment, TimelineWord, ChapterInfo } from "@shared/core"
-import { BOOK_NAMES, LANGUAGE_NAMES, resolveVoiceName } from "@shared/core"
+import { BOOK_NAMES, resolveVoiceName } from "@shared/core"
 import { buildTimeline, findCurrentWordIndex, buildChapterIndex } from "@shared/core"
 import { createFetchDataProvider, createPreloadedDataProvider, type DataProvider } from "@shared/data"
 import { createAudioEngine, type AudioEngine, createMediaSessionAnchor, type MediaSessionAnchor, getMediaSessionArtworkUrl } from "@shared/audio"

@@ -10,7 +10,7 @@ import {
 } from "@babylonjs/core"
 import type { HostApi } from "@shared/sdk"
 import type { AudioManifest, BookSegment, TimelineWord, ChapterInfo } from "@shared/core"
-import { CAMERA_FOV, CAMERA_Z, GLOW_INTENSITY, LANGUAGE_NAMES, BOOK_NAMES, resolveVoiceName } from "@shared/core"
+import { CAMERA_FOV, CAMERA_Z, GLOW_INTENSITY, BOOK_NAMES, resolveVoiceName } from "@shared/core"
 import { buildTimeline, findCurrentWordIndex, buildChapterIndex } from "@shared/core"
 import { createFetchDataProvider, createPreloadedDataProvider, type DataProvider } from "@shared/data"
 import { createAudioEngine, type AudioEngine, createMediaSessionAnchor, type MediaSessionAnchor, getMediaSessionArtworkUrl } from "@shared/audio"
