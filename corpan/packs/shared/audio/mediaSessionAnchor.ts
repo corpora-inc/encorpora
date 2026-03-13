@@ -74,7 +74,12 @@ export function createMediaSessionAnchor(): MediaSessionAnchor {
   return {
     play() {
       const audio = ensureElement()
-      audio.play().catch((err) => {
+      audio.play().then(() => {
+        // Crawl: takes 2000s to finish the 2s clip.
+        // Prevents timeupdate / loop events from feeding WebKit
+        // a conflicting currentTime that overrides setPositionState().
+        audio.playbackRate = 0.001
+      }).catch((err) => {
         console.warn("[MS:anchor] play failed:", err)
       })
     },
