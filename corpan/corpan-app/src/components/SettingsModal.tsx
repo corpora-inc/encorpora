@@ -115,6 +115,7 @@ export function SettingsModal({
       } catch {
         // Ignore localStorage failures.
       }
+      useCatalogStore.getState().setDevMode(true);
       setDevToastVisible(true);
       if (devToastTimeoutRef.current !== null) {
         window.clearTimeout(devToastTimeoutRef.current);

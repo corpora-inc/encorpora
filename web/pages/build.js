@@ -239,9 +239,10 @@ function buildPages(outputDir) {
     buildPackLandingPage(pack, outputRoot);
   });
 
-  // Generate catalog.json for app consumption
+  // Generate catalog.json (v1) for app consumption — only games for 0.9.x
   console.log('Generating catalog.json...');
-  const catalogData = packsData.filter(isListed).map(pack => {
+  const isV1Pack = (pack) => isListed(pack) && pack.packType !== 'reader';
+  const catalogData = packsData.filter(isV1Pack).map(pack => {
     // Use zipUrl if available, otherwise fallback to manifest
     const manifestUrl = pack.zipUrl
       ? (pack.zipUrl.startsWith('/') ? `https://encorpora.io${pack.zipUrl}` : pack.zipUrl)
@@ -268,11 +269,47 @@ function buildPages(outputDir) {
   const catalogPath = path.join(outputRoot, 'corpan', 'packs', 'catalog.json');
   fs.writeFileSync(catalogPath, JSON.stringify(catalogData, null, 2));
 
+  // Generate catalog-v3.json — includes ALL packs (filtering is client-side)
+  console.log('Generating catalog-v3.json...');
+  const catalogV3Packs = packsWithAssets.map(pack => {
+    const zipUrl = pack.zipUrl
+      ? (pack.zipUrl.startsWith('/') ? `https://encorpora.io${pack.zipUrl}` : pack.zipUrl)
+      : `https://encorpora.io/corpan/packs/${pack.id}.zip`;
+    const manifestUrl = pack.manifestUrl
+      ? (pack.manifestUrl.startsWith('/') ? `https://encorpora.io${pack.manifestUrl}` : pack.manifestUrl)
+      : undefined;
+    const imageUrl = pack.avatarUrl
+      ? (pack.avatarUrl.startsWith('/') ? `https://encorpora.io${pack.avatarUrl}` : pack.avatarUrl)
+      : `https://encorpora.io/assets/${pack.id}-avatar.png`;
+
+    return {
+      id: pack.id,
+      name: pack.name,
+      version: pack.version,
+      manifestUrl: manifestUrl,
+      zipUrl: zipUrl,
+      description: pack.description,
+      imageUrl: imageUrl,
+      purchase: { type: "free", priceLabel: "Free" },
+      minAppVersion: pack.minAppVersion || "0.9.0",
+      channel: pack.channel || "stable",
+      packType: pack.packType || "game",
+    };
+  });
+  const catalogV3 = {
+    version: 3,
+    generatedAt: new Date().toISOString(),
+    packs: catalogV3Packs,
+  };
+  const catalogV3Path = path.join(outputRoot, 'corpan', 'packs', 'catalog-v3.json');
+  fs.writeFileSync(catalogV3Path, JSON.stringify(catalogV3, null, 2));
+
   console.log('✓ Corpan pages built successfully!');
   console.log('\nGenerated:');
   console.log('  - corpan/index.html');
   console.log('  - corpan/packs/index.html');
   console.log('  - corpan/packs/catalog.json');
+  console.log('  - corpan/packs/catalog-v3.json');
   packsWithAssets.forEach(pack => {
     console.log(`  - corpan/packs/${pack.id}/index.html`);
   });

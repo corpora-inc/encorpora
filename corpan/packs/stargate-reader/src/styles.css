@@ -415,7 +415,7 @@ body {
 /* --- Responsive: tablet/phone settings overlay --- */
 
 /* Responsive: display settings inside drawer */
-@media (max-width: 768px) {
+@media (max-width: 1023px) {
   .stargate-settings-label {
     font-size: 15px;
   }

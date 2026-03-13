@@ -1,9 +1,9 @@
 import type { HostApi } from "@shared/sdk"
 import type { AudioManifest, BookSegment, TimelineWord, ChapterInfo } from "@shared/core"
-import { BOOK_NAMES, LANGUAGE_NAMES, resolveVoiceName } from "@shared/core"
+import { BOOK_NAMES, resolveVoiceName } from "@shared/core"
 import { buildTimeline, findCurrentWordIndex, buildChapterIndex } from "@shared/core"
 import { createFetchDataProvider, createPreloadedDataProvider, type DataProvider } from "@shared/data"
-import { createAudioEngine, type AudioEngine } from "@shared/audio"
+import { createAudioEngine, type AudioEngine, createMediaSessionAnchor, type MediaSessionAnchor, getMediaSessionArtworkUrl } from "@shared/audio"
 import { createTransportBar } from "@shared/ui"
 import { createChapterOverlay, type ChapterOverlay } from "@shared/ui"
 import { createBookmarkStore, type Bookmark, drawerStore } from "@shared/state"
@@ -23,13 +23,11 @@ type TauriBridgeWindow = Window & {
   __TAURI_INTERNALS__?: unknown
 }
 
-type EarthgateRemoteCommand = "play" | "pause"
-type EarthgateNativeCommand = "play" | "pause" | "skipForward" | "skipBack"
+type ReaderNativeCommand = "play" | "pause" | "skipForward" | "skipBack" | "seek" | "prevChapter" | "nextChapter"
 
 declare global {
   interface Window {
-    __earthgateCmd?: (cmd: EarthgateRemoteCommand) => void
-    __corpanNativeCmd?: (cmd: EarthgateNativeCommand) => void
+    __readerCmd?: (cmd: ReaderNativeCommand, data?: { positionMs?: number }) => void
   }
 }
 
@@ -58,7 +56,7 @@ export function createEarthgateReader(
     try {
       wakeLock = await navigator.wakeLock.request("screen")
       wakeLock.addEventListener("release", () => { wakeLock = null })
-    } catch { /* user denied or API unsupported */ }
+    } catch (e) { console.warn("[ER] wakeLock request:", e) }
   }
 
   function releaseWakeLock() {
@@ -70,6 +68,7 @@ export function createEarthgateReader(
   let bgNowPlayingTimer: ReturnType<typeof setInterval> | null = null
   let nativeSessionActive = false
   let removeRemoteListeners: (() => void) | null = null
+  let mediaAnchor: MediaSessionAnchor | null = null
   let playInFlight = false
   let desiredPlaying = false
   let playRequestSeq = 0
@@ -77,7 +76,7 @@ export function createEarthgateReader(
   let lastMediaMetadataKey = ""
   let nativePlaybackStateHint: MediaSessionPlaybackState | "unknown" = "unknown"
   let mediaArtworkUrl: string | undefined
-  let lastRemotePlayPauseCmd: EarthgateRemoteCommand | null = null
+  let lastRemotePlayPauseCmd: "play" | "pause" | null = null
   let lastRemotePlayPauseAt = 0
   const REMOTE_PLAY_PAUSE_DEDUPE_MS = 250
   let pendingEngineState: MediaSessionPlaybackState | null = null
@@ -97,7 +96,7 @@ export function createEarthgateReader(
         if (!audioEngine || !isPlaying) return
         syncNativeNowPlaying("periodic")
         persistBookmark()
-      }, 10000)
+      }, 3000)
     }
   }
 
@@ -108,12 +107,9 @@ export function createEarthgateReader(
     }
   }
 
-  function syncNativeNowPlaying(mode: "state" | "periodic" = "state") {
+  function syncNativeNowPlaying(_mode: "state" | "periodic" = "state") {
     syncMediaSessionNowPlaying()
     if (!nativeSessionActive || !audioEngine) return
-    // Avoid high-frequency contention during active playback.
-    // Still allow state transitions to update native.
-    if (mode === "periodic" && isPlaying) return
     const nowPlayingToken = nextNowPlayingToken()
     void updateNativeNowPlaying(
       segments[audioEngine.getCurrentSegmentIndex()]?.title || "Earthgate Reader",
@@ -136,7 +132,10 @@ export function createEarthgateReader(
     if (!("mediaSession" in navigator)) return
     try {
       navigator.mediaSession.playbackState = state
-    } catch { /* Best effort */ }
+      console.log(`[MS] playbackState → ${state}`)
+    } catch (err) {
+      console.error("[MS] playbackState set failed:", err)
+    }
   }
 
   function syncNativePlaybackState(playing: boolean) {
@@ -171,7 +170,7 @@ export function createEarthgateReader(
     audioEngine.ensureSourceIfPlaying("seekToSegmentAndSync")
   }
 
-  function dispatchRemotePlayPause(cmd: EarthgateRemoteCommand, _source: string) {
+  function dispatchRemotePlayPause(cmd: "play" | "pause", _source: string) {
     const now = performance.now()
     if (lastRemotePlayPauseCmd === cmd && now - lastRemotePlayPauseAt < REMOTE_PLAY_PAUSE_DEDUPE_MS) return
     lastRemotePlayPauseCmd = cmd
@@ -192,10 +191,11 @@ export function createEarthgateReader(
           artist: bookDisplayName,
           album: bookDisplayName,
           artwork: mediaArtworkUrl
-            ? [{ src: mediaArtworkUrl, sizes: "200x200", type: "image/png" }]
+            ? [{ src: mediaArtworkUrl, sizes: "434x434", type: "image/webp" }]
             : undefined,
         })
         lastMediaMetadataKey = metadataKey
+        console.log(`[MS] metadata: "${seg?.title || "Earthgate Reader"}" - "${bookDisplayName}"`)
       }
 
       const durationS = audioEngine.getTotalDurationMs() / 1000
@@ -206,8 +206,11 @@ export function createEarthgateReader(
           playbackRate: 1,
           position: positionS,
         })
+        console.log(`[MS] setPositionState dur=${durationS.toFixed(1)}s pos=${positionS.toFixed(1)}s rate=1`)
       }
-    } catch { /* Best effort */ }
+    } catch (err) {
+      console.error("[MS] syncMediaSessionNowPlaying failed:", err)
+    }
   }
 
   // --- Centralized play/pause helpers ---
@@ -225,6 +228,11 @@ export function createEarthgateReader(
       isPlaying = true
       transport.setPlaying(true)
       syncMediaSessionPlaybackState("playing")
+      lastMediaSessionSyncAt = performance.now()
+      if (!nativeOwnsMediaSession && !mediaAnchor) {
+        mediaAnchor = createMediaSessionAnchor()
+      }
+      mediaAnchor?.play()
       void requestWakeLock()
       syncNativePlaybackState(true)
       syncNativeNowPlaying()
@@ -275,6 +283,10 @@ export function createEarthgateReader(
       }
 
       setupMediaSession()
+      if (!nativeOwnsMediaSession && !mediaAnchor) {
+        mediaAnchor = createMediaSessionAnchor()
+      }
+      mediaAnchor?.play()
       audioEngine.unlock()
       audioEngine.play()
 
@@ -289,6 +301,7 @@ export function createEarthgateReader(
       isPlaying = audioEngine.isPlaying()
       transport.setPlaying(isPlaying)
       syncMediaSessionPlaybackState(isPlaying ? "playing" : "paused")
+      lastMediaSessionSyncAt = performance.now()
       if (isPlaying) {
         void requestWakeLock()
         syncNativePlaybackState(true)
@@ -316,6 +329,7 @@ export function createEarthgateReader(
     if (!isPlaying && !enginePlaying) {
       transport.setPlaying(false)
       syncMediaSessionPlaybackState("paused")
+      lastMediaSessionSyncAt = 0
       releaseWakeLock()
       syncNativePlaybackState(false)
       syncNativeNowPlaying()
@@ -326,9 +340,11 @@ export function createEarthgateReader(
     if (enginePlaying) {
       audioEngine.pause()
     }
+    mediaAnchor?.pause()
     isPlaying = false
     transport.setPlaying(false)
     syncMediaSessionPlaybackState("paused")
+    lastMediaSessionSyncAt = 0
     persistBookmark()
     releaseWakeLock()
     syncNativePlaybackState(false)
@@ -478,12 +494,8 @@ export function createEarthgateReader(
 
   // Language switching is triggered by the command drawer via appShell
 
-  window.__earthgateCmd = (cmd: EarthgateRemoteCommand) => {
-    dispatchRemotePlayPause(cmd, "window")
-  }
-
-  window.__corpanNativeCmd = (cmd: EarthgateNativeCommand) => {
-    console.log(`[ER:cmd] __corpanNativeCmd(${cmd})`)
+  window.__readerCmd = (cmd: ReaderNativeCommand, data?: { positionMs?: number }) => {
+    console.log(`[ER:cmd] __readerCmd(${cmd})`)
     switch (cmd) {
       case "play":
       case "pause":
@@ -496,6 +508,37 @@ export function createEarthgateReader(
       case "skipBack":
         if (!audioEngine) return
         seekToMsAndSync(Math.max(0, audioEngine.getCurrentTimeMs() - 30000))
+        break
+      case "seek":
+        if (!audioEngine || data?.positionMs == null) return
+        seekToMsAndSync(data.positionMs)
+        break
+      case "nextChapter":
+        if (!audioEngine || chapters.length === 0) return
+        {
+          const currentIdx = audioEngine.getCurrentSegmentIndex()
+          let chapterIdx = 0
+          for (let i = chapters.length - 1; i >= 0; i--) {
+            if (currentIdx >= chapters[i].firstSegmentIndex) { chapterIdx = i; break }
+          }
+          const targetChapter = Math.min(chapters.length - 1, chapterIdx + 1)
+          seekToSegmentAndSync(chapters[targetChapter].firstSegmentIndex)
+          transport.setChapter(chapters[targetChapter].title)
+        }
+        break
+      case "prevChapter":
+        if (!audioEngine || chapters.length === 0) return
+        {
+          const currentIdx = audioEngine.getCurrentSegmentIndex()
+          let chapterIdx = 0
+          for (let i = chapters.length - 1; i >= 0; i--) {
+            if (currentIdx >= chapters[i].firstSegmentIndex) { chapterIdx = i; break }
+          }
+          const threshold = chapters[chapterIdx].firstSegmentIndex + 2
+          const targetChapter = currentIdx > threshold ? chapterIdx : Math.max(0, chapterIdx - 1)
+          seekToSegmentAndSync(chapters[targetChapter].firstSegmentIndex)
+          transport.setChapter(chapters[targetChapter].title)
+        }
         break
     }
   }
@@ -555,46 +598,82 @@ export function createEarthgateReader(
     },
   })
 
-  // --- Media Session API ---
+  // --- Media Session API (lock screen controls) ---
+  // On iOS/macOS/browser: WebKit owns MPNowPlayingInfoCenter via navigator.mediaSession.
+  // On Android: native MediaSession is sole owner (unchanged).
   function setupMediaSession() {
     if (!("mediaSession" in navigator)) return
+    if (nativeOwnsMediaSession) return  // Android: native Kotlin service handles everything
     syncMediaSessionNowPlaying()
 
-    const disabledActions: MediaSessionAction[] = [
-      "seekbackward",
-      "seekforward",
-      "seekto",
-      "nexttrack",
-      "previoustrack",
-    ]
-    if (hasNativeBridge && !isAndroid) {
-      // iOS Tauri: native plugin is sole inbound play/pause path.
-      disabledActions.push("play", "pause")
-    }
-
-    for (const action of disabledActions) {
-      try {
-        navigator.mediaSession.setActionHandler(action, null)
-      } catch { /* unsupported action on this platform */ }
-    }
-
-    if (hasNativeBridge && !isAndroid) return
-
     const handlers: [MediaSessionAction, MediaSessionActionHandler][] = [
-      ["play", () => { dispatchRemotePlayPause("play", "webms") }],
-      ["pause", () => { dispatchRemotePlayPause("pause", "webms") }],
+      ["play", () => {
+        console.log("[MS] actionHandler(play) fired")
+        dispatchRemotePlayPause("play", "webms")
+      }],
+      ["pause", () => {
+        console.log("[MS] actionHandler(pause) fired")
+        dispatchRemotePlayPause("pause", "webms")
+      }],
+      ["seekto", (details) => {
+        if (!audioEngine || details?.seekTime == null) return
+        console.log(`[MS] actionHandler(seekto) seekTime=${details.seekTime}s fastSeek=${details.fastSeek}`)
+        seekToMsAndSync(details.seekTime * 1000)
+      }],
+      ["seekforward", () => {
+        if (!audioEngine) return
+        console.log("[MS] actionHandler(seekforward)")
+        seekToMsAndSync(Math.min(audioEngine.getTotalDurationMs(), audioEngine.getCurrentTimeMs() + 30000))
+      }],
+      ["seekbackward", () => {
+        if (!audioEngine) return
+        console.log("[MS] actionHandler(seekbackward)")
+        seekToMsAndSync(Math.max(0, audioEngine.getCurrentTimeMs() - 30000))
+      }],
+      ["nexttrack", () => {
+        if (!audioEngine || chapters.length === 0) return
+        console.log("[MS] actionHandler(nexttrack)")
+        const currentIdx = audioEngine.getCurrentSegmentIndex()
+        let chapterIdx = 0
+        for (let i = chapters.length - 1; i >= 0; i--) {
+          if (currentIdx >= chapters[i].firstSegmentIndex) { chapterIdx = i; break }
+        }
+        const targetChapter = Math.min(chapters.length - 1, chapterIdx + 1)
+        seekToSegmentAndSync(chapters[targetChapter].firstSegmentIndex)
+        transport.setChapter(chapters[targetChapter].title)
+      }],
+      ["previoustrack", () => {
+        if (!audioEngine || chapters.length === 0) return
+        console.log("[MS] actionHandler(previoustrack)")
+        const currentIdx = audioEngine.getCurrentSegmentIndex()
+        let chapterIdx = 0
+        for (let i = chapters.length - 1; i >= 0; i--) {
+          if (currentIdx >= chapters[i].firstSegmentIndex) { chapterIdx = i; break }
+        }
+        const threshold = chapters[chapterIdx].firstSegmentIndex + 2
+        const targetChapter = currentIdx > threshold ? chapterIdx : Math.max(0, chapterIdx - 1)
+        seekToSegmentAndSync(chapters[targetChapter].firstSegmentIndex)
+        transport.setChapter(chapters[targetChapter].title)
+      }],
     ]
 
     for (const [action, handler] of handlers) {
       try {
         navigator.mediaSession.setActionHandler(action, handler)
-      } catch { /* iOS/WebKit support differs */ }
+        console.log(`[MS] setActionHandler(${action}) registered`)
+      } catch (err) {
+        console.error(`[MS] setActionHandler(${action}) failed:`, err)
+      }
     }
   }
 
   // --- Periodic bookmark autosave ---
   let lastAutosaveMs = 0
   const AUTOSAVE_INTERVAL_MS = 15000
+
+  // --- Periodic MediaSession resync (matches stargate pattern) ---
+  let lastMediaSessionSyncAt = 0
+  const MEDIA_SESSION_RESYNC_INTERVAL_MS = 1000
 
   // --- Visibility change ---
   function handleVisibilityChange() {
@@ -674,10 +753,7 @@ export function createEarthgateReader(
       const preloadedSegments = initialState?.segmentsData as { segments: BookSegment[] } | undefined
       const preloadedManifest = initialState?.audioManifest as AudioManifest | undefined
       const resolveAssetUrl = initialState?.resolveAssetUrl as ((path: string) => string) | undefined
-      const baseUrl = initialState?.baseUrl as string | undefined
-      mediaArtworkUrl = resolveAssetUrl
-        ? resolveAssetUrl("corpan-logo.png")
-        : (baseUrl ? `${baseUrl.replace(/\/$/, "")}/corpan-logo.png` : "corpan-logo.png")
+      mediaArtworkUrl = getMediaSessionArtworkUrl()
 
       if (preloadedSegments && preloadedManifest && resolveAssetUrl) {
         dataProvider = createPreloadedDataProvider(
@@ -870,6 +946,12 @@ export function createEarthgateReader(
       syncNativeNowPlaying("periodic")
     }
 
+    // Keep active WebKit card pinned to the app's timeline/metadata.
+    if (isPlaying && performance.now() - lastMediaSessionSyncAt > MEDIA_SESSION_RESYNC_INTERVAL_MS) {
+      lastMediaSessionSyncAt = performance.now()
+      syncMediaSessionNowPlaying()
+    }
+
     // Chapter transition detection
     if (audioEngine && chapters.length > 0) {
       const segIdx = audioEngine.getCurrentSegmentIndex()
@@ -931,11 +1013,8 @@ export function createEarthgateReader(
     nativeSessionActive = false
     nativePlaybackStateHint = "unknown"
     if (removeRemoteListeners) { removeRemoteListeners(); removeRemoteListeners = null }
-    if (window.__earthgateCmd) {
-      delete window.__earthgateCmd
-    }
-    if (window.__corpanNativeCmd) {
-      delete window.__corpanNativeCmd
+    if (window.__readerCmd) {
+      delete window.__readerCmd
     }
     stopBackgroundTimers()
 
@@ -945,15 +1024,18 @@ export function createEarthgateReader(
     if ("mediaSession" in navigator) {
       try {
         navigator.mediaSession.metadata = null
-        navigator.mediaSession.setActionHandler("play", null)
-        navigator.mediaSession.setActionHandler("pause", null)
-      } catch { /* best effort */ }
+        for (const action of ["play", "pause", "seekto", "seekforward", "seekbackward", "nexttrack", "previoustrack"] as MediaSessionAction[]) {
+          try { navigator.mediaSession.setActionHandler(action, null) } catch (e) { console.warn("[ER] clearActionHandler:", e) }
+        }
+      } catch (e) { console.warn("[ER] dispose mediaSession cleanup:", e) }
     }
 
     persistBookmark()
     chapterOverlay.dispose()
     transport.dispose()
     paragraphView.dispose()
+    mediaAnchor?.dispose()
+    mediaAnchor = null
     audioEngine?.dispose()
     wrapper.remove()
   }

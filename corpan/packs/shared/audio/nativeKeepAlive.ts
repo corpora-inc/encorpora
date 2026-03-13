@@ -41,7 +41,7 @@ export async function startNativeKeepAlive(
       args: { title, artist, bookTitle, positionMs, durationMs },
     })
   } catch (e) {
-    console.warn("[native] startNativeKeepAlive failed:", e)
+    console.error("[native] startNativeKeepAlive failed:", e)
   }
 }
 
@@ -52,7 +52,7 @@ export async function stopNativeKeepAlive(): Promise<void> {
     console.log("[native] stopNativeKeepAlive")
     await internals.invoke("plugin:audio-keepalive|stop_audio_keepalive")
   } catch (e) {
-    console.warn("[native] stopNativeKeepAlive failed:", e)
+    console.error("[native] stopNativeKeepAlive failed:", e)
   }
 }
 
@@ -63,7 +63,7 @@ export async function pauseNativeKeepAlive(source: string = "unknown"): Promise<
     console.log(`[native] pauseNativeKeepAlive(source=${source})`)
     await internals.invoke("plugin:audio-keepalive|pause_audio_keepalive")
   } catch (e) {
-    console.warn(`[native] pauseNativeKeepAlive(source=${source}) failed:`, e)
+    console.error(`[native] pauseNativeKeepAlive(source=${source}) failed:`, e)
   }
 }
 
@@ -74,7 +74,7 @@ export async function resumeNativeKeepAlive(source: string = "unknown"): Promise
     console.log(`[native] resumeNativeKeepAlive(source=${source})`)
     await internals.invoke("plugin:audio-keepalive|resume_audio_keepalive")
   } catch (e) {
-    console.warn(`[native] resumeNativeKeepAlive(source=${source}) failed:`, e)
+    console.error(`[native] resumeNativeKeepAlive(source=${source}) failed:`, e)
   }
 }
 
@@ -93,7 +93,7 @@ export async function updateNativeNowPlaying(
       args: { title, artist, positionMs, durationMs, isPlaying, nowPlayingToken },
     })
   } catch (e) {
-    console.warn("[native] updateNativeNowPlaying failed:", e)
+    console.error("[native] updateNativeNowPlaying failed:", e)
   }
 }
 
@@ -126,11 +126,11 @@ export function listenForRemoteCommands(handlers: {
 }): (() => void) | null {
   const internals = getTauriInternals()
   if (!internals) {
-    console.warn("[native] listenForRemoteCommands: no Tauri internals available")
+    console.error("[native] listenForRemoteCommands: no Tauri internals available")
     return null
   }
   if (!internals.transformCallback) {
-    console.warn("[native] listenForRemoteCommands: transformCallback unavailable")
+    console.error("[native] listenForRemoteCommands: transformCallback unavailable")
     return null
   }
 

@@ -9,6 +9,9 @@
     "landingUrl": "/corpan/packs/hover-runner/",
     "avatarSource": "corpan/packs/hover-runner/hover-runner-avatar.png",
     "github": "https://github.com/corpora-inc/encorpora/tree/main/corpan/packs/hover-runner",
+    "minAppVersion": "0.9.0",
+    "channel": "stable",
+    "packType": "game",
     "videos": {
       "shorts": [
         "GnUNvb7n4hc",
@@ -27,6 +30,9 @@
     "landingUrl": "/corpan/packs/hanzipan/",
     "avatarSource": "corpan/packs/hanzipan/hanzipan-avatar.png",
     "github": "https://github.com/corpora-inc/encorpora/tree/main/corpan/packs/hanzipan",
+    "minAppVersion": "0.9.0",
+    "channel": "stable",
+    "packType": "game",
     "videos": {
       "shorts": [],
       "demos": []
@@ -43,6 +49,9 @@
     "landingUrl": "/corpan/packs/juice-squeeze/",
     "avatarSource": "corpan/packs/juice-squeeze/juice-squeeze-avatar.svg",
     "github": "https://github.com/corpora-inc/encorpora/tree/main/corpan/packs/juice-squeeze",
+    "minAppVersion": "0.9.0",
+    "channel": "stable",
+    "packType": "game",
     "videos": {
       "shorts": [],
       "demos": []
@@ -52,13 +61,16 @@
     "id": "earthgate_reader",
     "name": "Earthgate Reader",
     "description": "Calm, earth-toned audiobook reader with word-level highlighting synced to narrated audio",
-    "status": "preview",
-    "listed": false,
+    "status": "active",
+    "listed": true,
     "manifestUrl": "/corpan/packs/earthgate-reader/manifest.json",
     "zipUrl": "/corpan/packs/earthgate-reader.zip",
     "landingUrl": "/corpan/packs/earthgate-reader/",
     "avatarSource": "corpan/packs/earthgate-reader/earthgate-reader-avatar.png",
     "github": "https://github.com/corpora-inc/encorpora/tree/main/corpan/packs/earthgate-reader",
+    "minAppVersion": "0.10.0",
+    "channel": "stable",
+    "packType": "reader",
     "videos": {
       "shorts": [],
       "demos": []
@@ -68,13 +80,16 @@
     "id": "stargate_reader",
     "name": "Stargate Reader",
     "description": "Immersive 3D audiobook: words stream through space in sync with narrated audio",
-    "status": "preview",
-    "listed": false,
+    "status": "active",
+    "listed": true,
     "manifestUrl": "/corpan/packs/stargate-reader/manifest.json",
     "zipUrl": "/corpan/packs/stargate-reader.zip",
     "landingUrl": "/corpan/packs/stargate-reader/",
     "avatarSource": "corpan/packs/stargate-reader/stargate-reader-avatar.svg",
     "github": "https://github.com/corpora-inc/encorpora/tree/main/corpan/packs/stargate-reader",
+    "minAppVersion": "0.10.0",
+    "channel": "stable",
+    "packType": "reader",
     "videos": {
       "shorts": [],
       "demos": []

@@ -22,7 +22,13 @@ export function PacksListing({
   const fetchCatalog = useCatalogStore((s) => s.fetchCatalog)
   const isOnline = useCatalogStore((s) => s.isOnline)
   const isFetching = useCatalogStore((s) => s.isFetching)
+  const setDevMode = useCatalogStore((s) => s.setDevMode)
   const [manifestUrl, setManifestUrl] = useState("")
+
+  // Sync dev mode from props into catalog store
+  useEffect(() => {
+    setDevMode(showDevInstall)
+  }, [showDevInstall, setDevMode])
 
   const { installDevPack, isInstalling } = useInstallContext()
 

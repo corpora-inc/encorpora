@@ -27,10 +27,6 @@ export type AudioEngine = {
   dispose: () => void
 }
 
-const isIOS =
-  typeof navigator !== "undefined" &&
-  /iPhone|iPad|iPod|iOS/i.test(navigator.userAgent)
-
 /**
  * Create the audio engine for sequential segment playback with Web Audio API.
  *
@@ -57,7 +53,6 @@ export function createAudioEngine(
   let gainNode: GainNode | null = null
   let currentSource: AudioBufferSourceNode | null = null
   let playing = false
-  let suspendedWithLiveSource = false
   let waitingForNextSegment = false
   let waitingOwnerGeneration: number | null = null
   let nextSegmentTimer: ReturnType<typeof setTimeout> | null = null
@@ -117,7 +112,7 @@ export function createAudioEngine(
       analyser.smoothingTimeConstant = 0
 
       gainNode = ctx.createGain()
-      gainNode.gain.value = isIOS ? 1.5 : 1.0
+      gainNode.gain.value = 1.0
       gainNode.connect(analyser)
       analyser.connect(ctx.destination)
     }
@@ -153,32 +148,6 @@ export function createAudioEngine(
 
     loadingPromises.set(segmentId, promise)
     return promise
-  }
-
-  /** Inject a hidden <audio> element to force WKWebView media channel on older iOS */
-  function ensureMediaChannel() {
-    if (!isIOS) return
-    const existing = document.getElementById("shared-silent-audio") as HTMLAudioElement | null
-    if (existing) {
-      if (existing.paused) {
-        existing.play().then(() => {
-          console.log("[audio] media-channel resumed")
-        }).catch(() => {})
-      }
-      return
-    }
-    const audio = document.createElement("audio")
-    audio.id = "shared-silent-audio"
-    // Tiny silent MP3 (~100 bytes) — forces iOS audio session to media channel
-    audio.src =
-      "data:audio/mp3;base64,SUQzBAAAAAAAI1RTU0UAAAAPAAADTGF2ZjU4Ljc2LjEwMAAAAAAAAAAAAAAA//tQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAWGluZwAAAA8AAAACAAABhgC7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7//////////////////////////////////////////////////////////////////8AAAAATGF2YzU4LjEzAAAAAAAAAAAAAAAAJAAAAAAAAAAAAYYoRwAAAAAAAAAAAAAAAAD/+0DEAAAA0gAl6AAACAAADSAMAAATIAXB7wAAMAAAAA/8+D5B0Hw/BAMf/Lh/5cEAQBAEAQ/lg+X////8uCAIAgCH/y4f//5cEAQBAEP/Lh/////+XBAMf/Lg//8uD///5cH///////+XBAEAQBD/5cP////8uCAIAh/8uH//+XB/8uH/////////////8AAAAAAAAAAAAAAAAAAAAAAA=="
-    audio.loop = true
-    audio.volume = 0.01
-    audio.setAttribute("playsinline", "")
-    document.body.appendChild(audio)
-    audio.play().then(() => {
-      console.log("[audio] media-channel started")
-    }).catch(() => {})
   }
 
   function preloadAhead() {
@@ -240,12 +209,10 @@ export function createAudioEngine(
     pendingNextSegmentFromCtxTime = null
 
     if (currentSource) {
-      try { currentSource.stop() } catch { /* already stopped */ }
-      try { currentSource.disconnect() } catch { /* already disconnected */ }
+      try { currentSource.stop() } catch (e) { console.warn("[audio] source.stop():", e) }
+      try { currentSource.disconnect() } catch (e) { console.warn("[audio] source.disconnect():", e) }
       currentSource = null
-
     }
-    suspendedWithLiveSource = false
   }
 
   /**
@@ -281,7 +248,7 @@ export function createAudioEngine(
           return latency
         }
       }
-    } catch { /* not supported */ }
+    } catch (e) { console.warn("[audio] getOutputTimestamp not supported:", e) }
 
     // Fallback: use baseLatency + outputLatency properties
     const base = (ctx as any).baseLatency ?? 0
@@ -429,12 +396,6 @@ export function createAudioEngine(
     source.onended = () => {
       if (currentSource === source) {
         currentSource = null
-  
-        // If the kept-live source ended while we were suspended/paused, we can no
-        // longer fast-resume that source.
-        if (!playing) {
-          suspendedWithLiveSource = false
-        }
       }
       if (disposed || !playing || gen !== playbackGeneration) return
 
@@ -484,19 +445,6 @@ export function createAudioEngine(
         void context.resume()
       }
 
-      ensureMediaChannel()
-
-      // Fast resume path: we paused by suspending context and kept source alive.
-      if (currentSource && suspendedWithLiveSource) {
-        if (context) {
-          // Re-anchor timeline to "now" when resuming a live suspended source.
-          segmentStartedAtCtxTime = context.currentTime
-        }
-        playing = true
-        suspendedWithLiveSource = false
-        return
-      }
-
       playing = true
       playSegment(currentSegmentIndex, segmentPlaybackOffset)
     },
@@ -505,41 +453,22 @@ export function createAudioEngine(
       if (!playing) return
       playing = false
 
-      // Capture accurate paused position for fallback resume.
+      // Capture accurate paused position
       if (ctx && currentSource) {
         const elapsed = (ctx.currentTime - segmentStartedAtCtxTime) * 1000
         segmentPlaybackOffset += Math.max(0, elapsed)
       }
 
-      // Keep a live source for fast resume when possible. Do not advance the
-      // playback generation in this path or source.onended becomes stale and
-      // segment chaining breaks after resume.
-      if (currentSource) {
-        if (ctx && ctx.state === "running") {
-          void ctx.suspend().then(() => {
-            console.log("[audio] context suspended for pause")
-          }).catch(() => {})
-        }
-        suspendedWithLiveSource = true
-      } else {
-        // Fallback: no live source to resume, so invalidate async callbacks.
-        playbackGeneration++
-        stopSource()
-      }
-
-      // Pause iOS media-channel element when app playback is paused.
-      // Leaving it running keeps WebKit's media session in a "playing" state.
-      const silentAudio = document.getElementById("shared-silent-audio") as HTMLAudioElement | null
-      if (silentAudio && !silentAudio.paused) {
-        silentAudio.pause()
-        console.log("[audio] media-channel paused")
-      }
+      // Stop source but keep context running — WebKit drops the
+      // Now Playing widget if the context is suspended.
+      playbackGeneration++
+      stopSource()
     },
 
     stop: () => {
       playing = false
       playbackGeneration++
-      suspendedWithLiveSource = false
+
       currentSegmentIndex = 0
       segmentPlaybackOffset = 0
       accumulatedTimeMs = 0
@@ -550,7 +479,7 @@ export function createAudioEngine(
       const wasPlaying = playing
       playing = false
       playbackGeneration++
-      suspendedWithLiveSource = false
+
       stopSource()
 
       currentSegmentIndex = Math.max(0, Math.min(index, segments.length - 1))
@@ -568,7 +497,7 @@ export function createAudioEngine(
 
       playing = false
       playbackGeneration++
-      suspendedWithLiveSource = false
+
       stopSource()
 
       const { index: segIdx, offsetMs: offsetWithinSegment } = resolveSeekTarget(targetMs)
@@ -586,7 +515,7 @@ export function createAudioEngine(
     seekToMsPreview: (targetMs: number) => {
       // Invalidate any pending async playback
       playbackGeneration++
-      suspendedWithLiveSource = false
+
       stopSource()
 
       const { index: segIdx, offsetMs: offsetWithinSegment } = resolveSeekTarget(targetMs)
@@ -682,8 +611,8 @@ export function createAudioEngine(
           context.resume(),
           new Promise((_, reject) => setTimeout(() => reject(new Error("timeout")), 500)),
         ])
-      } catch {
-        // resume failed or timed out
+      } catch (e) {
+        console.warn("[audio] recoverContext resume failed:", e)
       }
 
       if ((context.state as string) === "running") {
@@ -693,13 +622,12 @@ export function createAudioEngine(
 
       // Context is dead — close it and create a fresh one
       console.log("[audio] recoverContext: context dead, recreating")
-      try { await context.close() } catch { /* already closed */ }
+      try { await context.close() } catch (e) { console.warn("[audio] context.close():", e) }
       ctx = null
       analyser = null
       gainNode = null
       // Invalidate stale source/state from dead context
       outputLatencyLoggedOnce = false
-      suspendedWithLiveSource = false
       currentSource = null
 
       waitingForNextSegment = false
@@ -726,7 +654,7 @@ export function createAudioEngine(
       contextUnlocked = true
 
       if (newCtx.state === "suspended") {
-        try { await newCtx.resume() } catch { /* best effort */ }
+        try { await newCtx.resume() } catch (e) { console.warn("[audio] new context resume:", e) }
       }
 
       console.log(`[audio] recoverContext: new ctx.state=${newCtx.state}`)
@@ -741,7 +669,7 @@ export function createAudioEngine(
       disposed = true
       playing = false
       playbackGeneration++
-      suspendedWithLiveSource = false
+
       if (nextSegmentTimer) {
         clearTimeout(nextSegmentTimer)
         nextSegmentTimer = null
@@ -749,7 +677,7 @@ export function createAudioEngine(
       waitingForNextSegment = false
       stopSource()
       if (ctx) {
-        void ctx.close().catch(() => {})
+        void ctx.close().catch((e) => { console.warn("[audio] dispose ctx.close():", e) })
       }
       ctx = null
       analyser = null
@@ -757,9 +685,6 @@ export function createAudioEngine(
       contextUnlocked = false
       bufferCache.clear()
       loadingPromises.clear()
-      // Clean up hidden audio element
-      const silentAudio = document.getElementById("shared-silent-audio")
-      if (silentAudio) silentAudio.remove()
     },
   }
 }

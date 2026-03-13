@@ -47,6 +47,30 @@ export type CatalogV2 = {
   gamePacks: CatalogGamePack[]
 }
 
+// --- V3 catalog types ---
+
+export type PackChannel = "stable" | "preview"
+
+export type CatalogV3Entry = {
+  id: string
+  name: string
+  version: string
+  manifestUrl?: string
+  zipUrl?: string
+  description?: string
+  imageUrl?: string
+  purchase?: PurchaseInfo
+  minAppVersion: string
+  channel: PackChannel
+  packType?: string
+}
+
+export type CatalogV3 = {
+  version: 3
+  generatedAt: string
+  packs: CatalogV3Entry[]
+}
+
 const DEFAULT_CATALOG: CatalogGame[] = [
   {
     id: "hover_runner",
@@ -55,6 +79,7 @@ const DEFAULT_CATALOG: CatalogGame[] = [
     manifestUrl: "https://encorpora.io/corpan/packs/hover-runner.zip",
     description:
       "3D fun in Hover Runner: lock in correct translations with the All-Hearing Ear and avoid wrong ones.",
+    imageUrl: "https://encorpora.io/assets/hover_runner-avatar.png",
     purchase: { type: "free", priceLabel: "Free" },
   },
   {
@@ -63,6 +88,7 @@ const DEFAULT_CATALOG: CatalogGame[] = [
     version: "0.3.0",
     manifestUrl: "https://encorpora.io/corpan/packs/hanzipan.zip",
     description: "Character-first handwriting studio for Mandarin.",
+    imageUrl: "https://encorpora.io/assets/hanzipan-avatar.png",
     purchase: { type: "free", priceLabel: "Free" },
   },
 ]
@@ -75,6 +101,7 @@ const DEV_CATALOG: CatalogGame[] = [
     manifestUrl: "/packs/hover-runner.zip",
     description:
       "3D fun in Hover Runner: lock in correct translations with the All-Hearing Ear and avoid wrong ones.",
+    imageUrl: "https://encorpora.io/assets/hover_runner-avatar.png",
     purchase: { type: "free", priceLabel: "Free" },
   },
   {
@@ -83,6 +110,7 @@ const DEV_CATALOG: CatalogGame[] = [
     version: "0.3.0",
     manifestUrl: "/packs/hanzipan.zip",
     description: "Character-first handwriting studio for Mandarin.",
+    imageUrl: "https://encorpora.io/assets/hanzipan-avatar.png",
     purchase: { type: "free", priceLabel: "Free" },
   },
 ]
@@ -270,7 +298,107 @@ export const parseCatalogV2 = (data: unknown): CatalogV2 | null => {
   }
 }
 
-export const fetchGameCatalog = async (): Promise<CatalogGame[]> => {
+// --- V3 catalog logic ---
+
+const CATALOG_V3_URL = "https://encorpora.io/corpan/packs/catalog-v3.json"
+
+const parseV3Entry = (item: unknown): CatalogV3Entry | null => {
+  if (!item || typeof item !== "object") return null
+  const r = item as Record<string, unknown>
+  const id = toStringValue(r.id)
+  const name = toStringValue(r.name)
+  const version = toStringValue(r.version)
+  const minAppVersion = toStringValue(r.minAppVersion)
+  const channelRaw = toStringValue(r.channel)
+  if (!id || !version || !minAppVersion) return null
+  const channel: PackChannel =
+    channelRaw === "preview" ? "preview" : "stable"
+  return {
+    id,
+    name: name || id,
+    version,
+    manifestUrl: toOptionalString(r.manifestUrl),
+    zipUrl: toOptionalString(r.zipUrl),
+    description: toOptionalString(r.description),
+    imageUrl: toOptionalString(r.imageUrl),
+    purchase: parsePurchase(r.purchase),
+    minAppVersion,
+    channel,
+    packType: toOptionalString(r.packType),
+  }
+}
+
+export const parseCatalogV3 = (data: unknown): CatalogV3 | null => {
+  if (!data || typeof data !== "object" || Array.isArray(data)) return null
+  const record = data as Record<string, unknown>
+  if (record.version !== 3) return null
+  if (!Array.isArray(record.packs)) return null
+  const packs: CatalogV3Entry[] = []
+  for (const item of record.packs) {
+    const parsed = parseV3Entry(item)
+    if (parsed) packs.push(parsed)
+  }
+  return {
+    version: 3,
+    generatedAt:
+      toStringValue(record.generatedAt) || new Date().toISOString(),
+    packs,
+  }
+}
+
+export const filterCatalogForApp = (
+  v3: CatalogV3,
+  appVersion: string,
+  devMode: boolean,
+): CatalogGame[] => {
+  return v3.packs
+    .filter((entry) => {
+      if (compareVersions(appVersion, entry.minAppVersion) < 0) return false
+      if (!devMode && entry.channel === "preview") return false
+      return true
+    })
+    .map((entry) => ({
+      id: entry.id,
+      name: entry.name,
+      version: entry.version,
+      manifestUrl: entry.zipUrl ?? entry.manifestUrl,
+      description: entry.description,
+      imageUrl: entry.imageUrl,
+      purchase: entry.purchase,
+    }))
+}
+
+const fetchCatalogV3Raw = async (): Promise<CatalogV3 | null> => {
+  try {
+    const res = await fetch(CATALOG_V3_URL, { cache: "no-store" })
+    if (!res.ok) return null
+    const data = (await res.json()) as unknown
+    return parseCatalogV3(data)
+  } catch {
+    return null
+  }
+}
+
+export const fetchGameCatalog = async (
+  appVersion?: string,
+  devMode?: boolean,
+): Promise<CatalogGame[]> => {
+  // Try V3 catalog when app version is 0.10.0+
+  if (appVersion && compareVersions(appVersion, "0.10.0") >= 0) {
+    try {
+      console.log("[catalog] App version", appVersion, ">= 0.10.0, trying V3 catalog")
+      const v3 = await fetchCatalogV3Raw()
+      if (v3) {
+        const filtered = filterCatalogForApp(v3, appVersion, devMode ?? false)
+        console.log("[catalog] V3 catalog:", v3.packs.length, "total,", filtered.length, "after filtering")
+        if (filtered.length > 0) return filtered
+      }
+    } catch (error) {
+      console.warn("[catalog] V3 fetch failed, falling back to V1:", error)
+    }
+  }
+
+  // V1 fallback
   const urlValue = getCatalogUrl()
   if (!urlValue) {
     console.log("[catalog] No catalog URL, using defaults")
@@ -285,12 +413,17 @@ export const fetchGameCatalog = async (): Promise<CatalogGame[]> => {
       return getDefaultCatalog()
     }
     const data = (await res.json()) as unknown
-    // Try v2 first, fall back to v1 parsing for game catalog
+    // v1 format is a plain array — parse directly to preserve all fields
+    // (imageUrl, description, name). Routing through parseCatalogV2 is lossy.
+    if (Array.isArray(data)) {
+      const parsed = parseCatalog(data)
+      console.log("[catalog] Parsed v1 catalog:", parsed?.length, "games")
+      return parsed ?? getDefaultCatalog()
+    }
+    // v2 format is an object with narrations + gamePacks
     const v2 = parseCatalogV2(data)
     if (v2) {
       console.log("[catalog] Parsed v2 catalog:", v2.narrations.length, "narrations,", v2.gamePacks.length, "game packs")
-      // For backward compat, fetchGameCatalog still returns CatalogGame[]
-      // Convert gamePacks back to CatalogGame format
       const games: CatalogGame[] = v2.gamePacks.map((gp) => ({
         id: gp.id,
         name: gp.id,
@@ -298,16 +431,12 @@ export const fetchGameCatalog = async (): Promise<CatalogGame[]> => {
         manifestUrl: gp.downloadUrl,
         purchase: gp.purchase,
       }))
-      // If v2 had no gamePacks but we got data, fall back to v1 parsing
       if (games.length === 0) {
-        const parsed = parseCatalog(data)
-        return parsed ?? getDefaultCatalog()
+        return getDefaultCatalog()
       }
       return games
     }
-    const parsed = parseCatalog(data)
-    console.log("[catalog] Parsed v1 catalog:", parsed)
-    return parsed ?? getDefaultCatalog()
+    return getDefaultCatalog()
   } catch (error) {
     console.error("[catalog] Fetch error:", error)
     return getDefaultCatalog()
