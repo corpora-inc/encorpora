@@ -5,16 +5,20 @@ import {
   type CatalogGame,
 } from "../contentPacks/catalog"
 import { getNetworkStatus, listenToNetworkChanges } from "../utils/network"
+import { getAppVersion } from "../lib/appVersion"
 
 type CatalogState = {
   catalog: CatalogGame[]
   lastFetched: number | null
   isOnline: boolean
   isFetching: boolean
+  appVersion: string | null
+  devMode: boolean
 
   fetchCatalog: (force?: boolean) => Promise<void>
   getCatalog: () => CatalogGame[]
   setOnlineStatus: (online: boolean) => void
+  setDevMode: (enabled: boolean) => void
   clearCache: () => void
 }
 
@@ -27,6 +31,14 @@ export const useCatalogStore = create<CatalogState>()(
       lastFetched: null,
       isOnline: getNetworkStatus(),
       isFetching: false,
+      appVersion: null,
+      devMode: (() => {
+        try {
+          return localStorage.getItem("corpan:dev-packs") === "true"
+        } catch {
+          return false
+        }
+      })(),
 
       fetchCatalog: async (force = false) => {
         const state = get()
@@ -57,8 +69,16 @@ export const useCatalogStore = create<CatalogState>()(
         set({ isFetching: true })
 
         try {
-          console.log("[catalog] Fetching from remote...")
-          const catalog = await fetchGameCatalog()
+          // Resolve app version once
+          let { appVersion } = get()
+          if (!appVersion) {
+            appVersion = await getAppVersion()
+            set({ appVersion })
+          }
+
+          const { devMode } = get()
+          console.log("[catalog] Fetching from remote... appVersion:", appVersion, "devMode:", devMode)
+          const catalog = await fetchGameCatalog(appVersion, devMode)
           console.log("[catalog] Fetched catalog:", catalog)
           set({
             catalog,
@@ -94,6 +114,12 @@ export const useCatalogStore = create<CatalogState>()(
         }
       },
 
+      setDevMode: (enabled: boolean) => {
+        set({ devMode: enabled })
+        // Re-fetch to apply new filtering
+        get().fetchCatalog(true)
+      },
+
       clearCache: () => {
         set({
           catalog: [],
@@ -104,7 +130,7 @@ export const useCatalogStore = create<CatalogState>()(
       },
     }),
     {
-      name: "corpan-catalog-v1",
+      name: "corpan-catalog-v2",
       storage: createJSONStorage(() => localStorage),
       partialize: (state) => ({
         catalog: state.catalog,

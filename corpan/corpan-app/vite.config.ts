@@ -6,6 +6,8 @@ import fs from "fs";
 import path from "path";
 import { fileURLToPath, URL } from "url";
 
+const pkg = JSON.parse(fs.readFileSync("./package.json", "utf-8"));
+
 // We *can* still read TAURI_DEV_HOST for iOS / future,
 // but we always fall back to 0.0.0.0 so Android can reach us.
 const rawHost = process.env.TAURI_DEV_HOST;
@@ -80,6 +82,9 @@ const servePacks = () => ({
 // https://vitejs.dev/config/
 export default defineConfig(async () => ({
   plugins: [react(), tailwind(), servePacks()],
+  define: {
+    __APP_VERSION__: JSON.stringify(pkg.version),
+  },
   resolve: {
     alias: {
       "@": fileURLToPath(new URL("./src", import.meta.url)),
