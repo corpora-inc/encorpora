@@ -55,6 +55,7 @@ const DEFAULT_CATALOG: CatalogGame[] = [
     manifestUrl: "https://encorpora.io/corpan/packs/hover-runner.zip",
     description:
       "3D fun in Hover Runner: lock in correct translations with the All-Hearing Ear and avoid wrong ones.",
+    imageUrl: "https://encorpora.io/assets/hover_runner-avatar.png",
     purchase: { type: "free", priceLabel: "Free" },
   },
   {
@@ -63,6 +64,7 @@ const DEFAULT_CATALOG: CatalogGame[] = [
     version: "0.3.0",
     manifestUrl: "https://encorpora.io/corpan/packs/hanzipan.zip",
     description: "Character-first handwriting studio for Mandarin.",
+    imageUrl: "https://encorpora.io/assets/hanzipan-avatar.png",
     purchase: { type: "free", priceLabel: "Free" },
   },
 ]
@@ -75,6 +77,7 @@ const DEV_CATALOG: CatalogGame[] = [
     manifestUrl: "/packs/hover-runner.zip",
     description:
       "3D fun in Hover Runner: lock in correct translations with the All-Hearing Ear and avoid wrong ones.",
+    imageUrl: "https://encorpora.io/assets/hover_runner-avatar.png",
     purchase: { type: "free", priceLabel: "Free" },
   },
   {
@@ -83,6 +86,7 @@ const DEV_CATALOG: CatalogGame[] = [
     version: "0.3.0",
     manifestUrl: "/packs/hanzipan.zip",
     description: "Character-first handwriting studio for Mandarin.",
+    imageUrl: "https://encorpora.io/assets/hanzipan-avatar.png",
     purchase: { type: "free", priceLabel: "Free" },
   },
 ]
@@ -285,12 +289,17 @@ export const fetchGameCatalog = async (): Promise<CatalogGame[]> => {
       return getDefaultCatalog()
     }
     const data = (await res.json()) as unknown
-    // Try v2 first, fall back to v1 parsing for game catalog
+    // v1 format is a plain array — parse directly to preserve all fields
+    // (imageUrl, description, name). Routing through parseCatalogV2 is lossy.
+    if (Array.isArray(data)) {
+      const parsed = parseCatalog(data)
+      console.log("[catalog] Parsed v1 catalog:", parsed?.length, "games")
+      return parsed ?? getDefaultCatalog()
+    }
+    // v2 format is an object with narrations + gamePacks
     const v2 = parseCatalogV2(data)
     if (v2) {
       console.log("[catalog] Parsed v2 catalog:", v2.narrations.length, "narrations,", v2.gamePacks.length, "game packs")
-      // For backward compat, fetchGameCatalog still returns CatalogGame[]
-      // Convert gamePacks back to CatalogGame format
       const games: CatalogGame[] = v2.gamePacks.map((gp) => ({
         id: gp.id,
         name: gp.id,
@@ -298,16 +307,12 @@ export const fetchGameCatalog = async (): Promise<CatalogGame[]> => {
         manifestUrl: gp.downloadUrl,
         purchase: gp.purchase,
       }))
-      // If v2 had no gamePacks but we got data, fall back to v1 parsing
       if (games.length === 0) {
-        const parsed = parseCatalog(data)
-        return parsed ?? getDefaultCatalog()
+        return getDefaultCatalog()
       }
       return games
     }
-    const parsed = parseCatalog(data)
-    console.log("[catalog] Parsed v1 catalog:", parsed)
-    return parsed ?? getDefaultCatalog()
+    return getDefaultCatalog()
   } catch (error) {
     console.error("[catalog] Fetch error:", error)
     return getDefaultCatalog()
