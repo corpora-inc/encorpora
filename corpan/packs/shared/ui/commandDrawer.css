@@ -392,10 +392,10 @@
 }
 
 /* ============================================================
-   Desktop: side panel (>768px)
+   Desktop: side panel (>=1024px)
    ============================================================ */
 
-@media (min-width: 769px) {
+@media (min-width: 1024px) {
   .command-drawer-sheet {
     left: auto;
     right: 0;

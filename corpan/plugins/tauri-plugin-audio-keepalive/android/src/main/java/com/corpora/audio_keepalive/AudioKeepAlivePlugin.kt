@@ -68,10 +68,7 @@ class AudioKeepAlivePlugin(private val activity: Activity) : Plugin(activity) {
             else -> null
         } ?: return
 
-        val js = """
-            if (window.__stargateNativeCmd) window.__stargateNativeCmd('$cmd');
-            if (window.__corpanNativeCmd) window.__corpanNativeCmd('$cmd');
-        """.trimIndent()
+        val js = "if (window.__readerCmd) window.__readerCmd('$cmd');"
 
         webView?.evaluateJavascript(js, null)
     }
