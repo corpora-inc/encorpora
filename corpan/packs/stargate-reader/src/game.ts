@@ -12,8 +12,8 @@ import type { HostApi } from "@shared/sdk"
 import type { AudioManifest, BookSegment, TimelineWord, ChapterInfo } from "@shared/core"
 import { CAMERA_FOV, CAMERA_Z, GLOW_INTENSITY, LANGUAGE_NAMES, BOOK_NAMES, resolveVoiceName } from "@shared/core"
 import { buildTimeline, findCurrentWordIndex, buildChapterIndex } from "@shared/core"
-import { createFetchDataProvider, createPreloadedDataProvider, type DataProvider, packFetchArrayBuffer } from "@shared/data"
-import { createAudioEngine, type AudioEngine, createMediaSessionAnchor, type MediaSessionAnchor } from "@shared/audio"
+import { createFetchDataProvider, createPreloadedDataProvider, type DataProvider } from "@shared/data"
+import { createAudioEngine, type AudioEngine, createMediaSessionAnchor, type MediaSessionAnchor, getMediaSessionArtworkUrl } from "@shared/audio"
 import { createWaveformCache, type WaveformCache } from "@shared/audio"
 import { createTransportBar } from "@shared/ui"
 import { createChapterOverlay, type ChapterOverlay } from "@shared/ui"
@@ -229,7 +229,7 @@ export function createStargateReader(
           artist: metadata.artist,
           album: metadata.album,
           artwork: mediaArtworkUrl
-            ? [{ src: mediaArtworkUrl, sizes: "200x200", type: "image/png" }]
+            ? [{ src: mediaArtworkUrl, sizes: "434x434", type: "image/webp" }]
             : undefined,
         })
         lastMediaMetadataKey = metadataKey
@@ -1032,24 +1032,7 @@ export function createStargateReader(
       const preloadedSegments = initialState?.segmentsData as { segments: BookSegment[] } | undefined
       const preloadedManifest = initialState?.audioManifest as AudioManifest | undefined
       const resolveAssetUrl = initialState?.resolveAssetUrl as ((path: string) => string) | undefined
-      const baseUrl = initialState?.baseUrl as string | undefined
-      mediaArtworkUrl = resolveAssetUrl
-        ? resolveAssetUrl("corpan-logo.png")
-        : (baseUrl ? `${baseUrl.replace(/\/$/, "")}/corpan-logo.png` : "corpan-logo.png")
-
-      // Convert artwork to blob URL so WebKit's MediaMetadata can load it
-      // (corpan-pack:// is Tauri IPC, not fetchable by WebKit's image loader)
-      if (mediaArtworkUrl) {
-        try {
-          const bytes = await packFetchArrayBuffer(mediaArtworkUrl)
-          const blob = new Blob([bytes], { type: "image/png" })
-          mediaArtworkUrl = URL.createObjectURL(blob)
-          console.log("[MS] artwork converted to blob URL")
-        } catch (err) {
-          console.error("[MS] Failed to convert artwork to blob URL:", err)
-          mediaArtworkUrl = undefined
-        }
-      }
+      mediaArtworkUrl = getMediaSessionArtworkUrl()
 
       if (preloadedSegments && preloadedManifest && resolveAssetUrl) {
         // Production: host provides preloaded data

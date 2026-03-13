@@ -7,6 +7,8 @@ export { createWaveformCache } from "./waveformExtractor"
 export type { MediaSessionAnchor } from "./mediaSessionAnchor"
 export { createMediaSessionAnchor } from "./mediaSessionAnchor"
 
+export { getMediaSessionArtworkUrl } from "./mediaSessionArtwork"
+
 export type { NativeTraceEventArgs } from "./nativeKeepAlive"
 export {
   startNativeKeepAlive,

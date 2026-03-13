@@ -4,9 +4,23 @@
  * WebKit requires an actively-playing HTMLMediaElement for the MediaSession API
  * to accept setPositionState() values and fire seek action handlers. Without one,
  * only play/pause work and the elapsed time extrapolates from the first call.
+ * This is a WebKit-specific constraint — Chromium does not require it.
  *
- * This module creates a hidden <audio loop> element playing a 2-second silent WAV.
- * The WAV PCM data is all zeros — no audible output.
+ * This module creates a hidden <audio loop> element playing a 2-second silent WAV
+ * (generated in JS via ArrayBuffer + DataView — no network request). The WAV PCM
+ * data is all zeros — no audible output.
+ *
+ * IMPORTANT — playbackRate = 0.001 ("crawl mode"):
+ * At normal playback rate, the anchor's `timeupdate` events feed WebKit a competing
+ * `currentTime` (cycling 0→2s as the clip loops). WebKit reads this between
+ * setPositionState() calls and briefly shows it in Now Playing, causing the position
+ * to flicker between the correct elapsed time and 0:00 roughly every second.
+ * Setting playbackRate to 0.001 after play() keeps the element in "playing" state
+ * (satisfying WebKit) while taking ~2000s to finish the 2s clip, so currentTime
+ * barely advances and setPositionState() remains the sole authority for position.
+ *
+ * Used on macOS desktop and iOS (where WebKit owns MediaSession).
+ * NOT used on Android (native Kotlin MediaSessionCompat is sole owner).
  */
 
 export type MediaSessionAnchor = {
