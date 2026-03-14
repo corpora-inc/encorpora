@@ -59,7 +59,16 @@ class AudioKeepAlivePlugin(private val activity: Activity) : Plugin(activity) {
         isActive = false
     }
 
-    private fun dispatchDirectCommand(event: String) {
+    private fun dispatchDirectCommand(event: String, data: JSObject = JSObject()) {
+        if (event == "audio-keepalive:seek") {
+            val positionMs = data.optDouble("positionMs", -1.0)
+            if (positionMs >= 0.0) {
+                val js = "if (window.__readerCmd) window.__readerCmd('seek', { positionMs: $positionMs });"
+                webView?.evaluateJavascript(js, null)
+            }
+            return
+        }
+
         val cmd = when (event) {
             "audio-keepalive:play" -> "play"
             "audio-keepalive:pause" -> "pause"
@@ -77,7 +86,7 @@ class AudioKeepAlivePlugin(private val activity: Activity) : Plugin(activity) {
         activity.runOnUiThread {
             try {
                 android.util.Log.d("AudioKeepAlive", "Dispatching event to web: $event")
-                dispatchDirectCommand(event)
+                dispatchDirectCommand(event, data)
                 trigger(event, data)
             } catch (t: Throwable) {
                 android.util.Log.e("AudioKeepAlive", "Failed to dispatch event $event: ${t.message}", t)
