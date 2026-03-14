@@ -109,12 +109,49 @@
   background: var(--drawer-handle, var(--catalog-border));
 }
 
+/* --- Close button (mobile only) --- */
+
+.command-drawer-close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 50%;
+  background: var(--catalog-surface);
+  color: var(--catalog-text-dim);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: color 150ms ease, background 150ms ease;
+  z-index: 1;
+}
+
+.command-drawer-close:hover {
+  color: var(--catalog-text);
+  background: var(--catalog-border);
+}
+
+.command-drawer-close svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
 /* --- Sticky header (Now Playing + Language) --- */
 
 .command-drawer-sticky {
+  position: relative;
   flex-shrink: 0;
   padding: 16px 20px 16px;
   border-bottom: 1px solid var(--catalog-border);
+  touch-action: pan-x;
+  cursor: grab;
 }
 
 /* --- Now Playing --- */
@@ -420,6 +457,15 @@
   .command-drawer-handle {
     display: none;
   }
+
+  .command-drawer-close {
+    display: none;
+  }
+
+  .command-drawer-sticky {
+    touch-action: auto;
+    cursor: default;
+  }
 }
 
 /* ============================================================
@@ -477,6 +523,18 @@
   .command-drawer-exit {
     padding: 9px 0;
     font-size: 13px;
+  }
+
+  .command-drawer-close {
+    width: 32px;
+    height: 32px;
+    top: 4px;
+    right: 4px;
+  }
+
+  .command-drawer-close svg {
+    width: 16px;
+    height: 16px;
   }
 
   .command-drawer-library-grid {

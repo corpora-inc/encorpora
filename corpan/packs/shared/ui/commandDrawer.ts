@@ -38,6 +38,7 @@ export type CommandDrawer = {
 }
 
 const SVG_MENU = `<svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>`
+const SVG_CLOSE = `<svg viewBox="0 0 24 24"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>`
 
 export function createCommandDrawer(
   parent: HTMLElement,
@@ -94,7 +95,14 @@ export function createCommandDrawer(
   const langContainer = document.createElement("div")
   langContainer.className = "command-drawer-languages"
 
-  sticky.append(nowPlayingEl, langContainer)
+  // Close button (mobile only — hidden on desktop via CSS)
+  const closeBtn = document.createElement("button")
+  closeBtn.className = "command-drawer-close"
+  closeBtn.title = "Close"
+  closeBtn.innerHTML = SVG_CLOSE
+  closeBtn.addEventListener("click", () => close())
+
+  sticky.append(closeBtn, nowPlayingEl, langContainer)
   sheet.appendChild(sticky)
 
   // --- Scrollable body ---
@@ -202,46 +210,56 @@ export function createCommandDrawer(
     }
   })
 
-  // --- Gesture dismiss (swipe down on handle) ---
+  // --- Gesture dismiss (swipe down on handle + sticky header) ---
   let dragStartY = 0
-  let dragCurrentY = 0
+  let dragStartTime = 0
   let isDragging = false
 
-  handle.addEventListener("pointerdown", (e: PointerEvent) => {
-    isDragging = true
-    dragStartY = e.clientY
-    dragCurrentY = e.clientY
-    handle.setPointerCapture(e.pointerId)
-    sheet.style.transition = "none"
-  })
+  const desktopMq = window.matchMedia("(min-width: 1024px)")
 
-  handle.addEventListener("pointermove", (e: PointerEvent) => {
-    if (!isDragging) return
-    dragCurrentY = e.clientY
-    const dy = Math.max(0, dragCurrentY - dragStartY)
-    sheet.style.transform = `translateY(${dy}px)`
-  })
+  function attachDragListeners(el: HTMLElement, guardButtons: boolean) {
+    el.addEventListener("pointerdown", (e: PointerEvent) => {
+      if (guardButtons && (e.target as HTMLElement).closest("button")) return
+      if (guardButtons && desktopMq.matches) return
+      isDragging = true
+      dragStartY = e.clientY
+      dragStartTime = Date.now()
+      el.setPointerCapture(e.pointerId)
+      sheet.style.transition = "none"
+    })
 
-  handle.addEventListener("pointerup", (e: PointerEvent) => {
-    if (!isDragging) return
-    isDragging = false
-    handle.releasePointerCapture(e.pointerId)
-    sheet.style.transition = ""
-    sheet.style.transform = ""
+    el.addEventListener("pointermove", (e: PointerEvent) => {
+      if (!isDragging) return
+      const dy = Math.max(0, e.clientY - dragStartY)
+      sheet.style.transform = `translateY(${dy}px)`
+    })
 
-    const dy = dragCurrentY - dragStartY
-    const threshold = sheet.offsetHeight * 0.3
-    if (dy > threshold) {
-      close()
-    }
-  })
+    el.addEventListener("pointerup", (e: PointerEvent) => {
+      if (!isDragging) return
+      isDragging = false
+      el.releasePointerCapture(e.pointerId)
+      sheet.style.transition = ""
+      sheet.style.transform = ""
 
-  handle.addEventListener("pointercancel", () => {
-    if (!isDragging) return
-    isDragging = false
-    sheet.style.transition = ""
-    sheet.style.transform = ""
-  })
+      const dy = e.clientY - dragStartY
+      const elapsed = Date.now() - dragStartTime
+      const velocity = elapsed > 0 ? dy / elapsed : 0
+      const threshold = sheet.offsetHeight * 0.15
+      if (dy > threshold || (velocity > 0.5 && dy > 20)) {
+        close()
+      }
+    })
+
+    el.addEventListener("pointercancel", () => {
+      if (!isDragging) return
+      isDragging = false
+      sheet.style.transition = ""
+      sheet.style.transform = ""
+    })
+  }
+
+  attachDragListeners(handle, false)
+  attachDragListeners(sticky, true)
 
   // --- Open / Close ---
   function open() {
