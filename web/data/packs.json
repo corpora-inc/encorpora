@@ -85,7 +85,7 @@
     "manifestUrl": "/corpan/packs/stargate-reader/manifest.json",
     "zipUrl": "/corpan/packs/stargate-reader.zip",
     "landingUrl": "/corpan/packs/stargate-reader/",
-    "avatarSource": "corpan/packs/stargate-reader/stargate-reader-avatar.svg",
+    "avatarSource": "corpan/packs/stargate-reader/stargate-reader-avatar.png",
     "github": "https://github.com/corpora-inc/encorpora/tree/main/corpan/packs/stargate-reader",
     "minAppVersion": "0.10.0",
     "channel": "stable",

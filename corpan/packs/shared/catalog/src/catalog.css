@@ -222,6 +222,16 @@
   .catalog-grid {
     grid-template-columns: 1fr;
   }
+
+  .catalog-narration-row {
+    gap: 8px;
+    padding: 10px 12px;
+  }
+
+  .catalog-btn {
+    padding: 7px 10px;
+    font-size: 12px;
+  }
 }
 
 @media (min-width: 768px) {
@@ -466,7 +476,12 @@
 
 .catalog-btn {
   flex-shrink: 0;
-  padding: 8px 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 8px 14px;
+  min-width: 105px;
   border: 1.5px solid var(--catalog-accent);
   border-radius: var(--catalog-radius);
   background: transparent;
@@ -478,8 +493,18 @@
   transition: all 150ms ease;
   position: relative;
   overflow: hidden;
-  min-width: 100px;
   text-align: center;
+}
+
+.catalog-btn-icon {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex-shrink: 0;
 }
 
 .catalog-btn:hover {

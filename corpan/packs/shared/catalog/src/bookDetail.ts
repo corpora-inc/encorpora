@@ -82,7 +82,7 @@ export function createBookDetail(
 
       const delBtn = document.createElement("button")
       delBtn.className = "catalog-btn catalog-btn--danger"
-      delBtn.innerHTML = `\uD83D\uDDD1`
+      delBtn.innerHTML = `<svg class="catalog-btn-icon" viewBox="0 0 24 24"><path d="M3 6h18"/><path d="M8 6V4a2 2 0 012-2h4a2 2 0 012 2v2"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/></svg>`
       delBtn.title = "Delete"
       delBtn.onclick = async (e) => {
         e.stopPropagation()
@@ -118,7 +118,7 @@ export function createBookDetail(
       switch (ds.stage) {
         case "idle":
           btn.className = "catalog-btn"
-          btn.innerHTML = `Download ${narration.sizeMb} MB`
+          btn.innerHTML = `<svg class="catalog-btn-icon" viewBox="0 0 24 24"><path d="M12 4v12m0 0l-4-4m4 4l4-4"/><path d="M4 17v2a1 1 0 001 1h14a1 1 0 001-1v-2"/></svg>${Math.round(narration.sizeMb)} MB`
           btn.onclick = async (e) => {
             e.stopPropagation()
             btn.className = "catalog-btn catalog-btn--disabled"
@@ -146,7 +146,7 @@ export function createBookDetail(
           break
         case "error":
           btn.className = "catalog-btn"
-          btn.innerHTML = `\u21BB Retry ${narration.sizeMb} MB`
+          btn.innerHTML = `\u21BB ${Math.round(narration.sizeMb)} MB`
           btn.style.borderColor = "var(--catalog-error)"
           btn.style.color = "var(--catalog-error)"
           btn.onclick = async (e) => {
@@ -257,11 +257,7 @@ export function createBookDetail(
 
         info.append(lang, voice)
 
-        const size = document.createElement("div")
-        size.className = "catalog-narration-size"
-        size.textContent = `${narr.sizeMb} MB`
-
-        row.append(info, size)
+        row.append(info)
         renderButton(narr, row)
         section.append(row)
       }

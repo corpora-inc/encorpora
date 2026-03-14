@@ -651,7 +651,7 @@ dependencies = [
 
 [[package]]
 name = "corpan"
-version = "0.9.10"
+version = "0.10.0"
 dependencies = [
  "futures-util",
  "reqwest 0.12.28",
