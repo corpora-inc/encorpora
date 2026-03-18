@@ -1,7 +1,7 @@
 {
   "id": "bible_genesis",
   "name": "Genesis (בראשית)",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "type": "book",
   "primary_language": "he",
   "metadata": {
