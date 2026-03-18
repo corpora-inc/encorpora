@@ -35,6 +35,7 @@ export function addInstalled(entry: CatalogNarrationEntry): void {
         bookId: entry.bookId,
         bookTitle: entry.bookTitle,
         language: entry.language,
+        languageName: entry.languageName,
         voiceId: entry.voiceId,
         voiceName: entry.voiceName,
         version: entry.version,

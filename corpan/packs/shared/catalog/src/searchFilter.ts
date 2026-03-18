@@ -94,8 +94,16 @@ const LANG_NAMES: Record<string, string> = {
   ar: "العربية",
   hi: "हिन्दी",
   ru: "Русский",
+  he: "עברית",
+  tr: "Türkçe",
+  nl: "Nederlands",
+  pl: "Polski",
+  sv: "Svenska",
+  da: "Dansk",
+  fi: "Suomi",
+  uk: "Українська",
 }
 
-export function getLanguageName(code: string): string {
-  return LANG_NAMES[code] || code.toUpperCase()
+export function getLanguageName(code: string, catalogName?: string): string {
+  return catalogName || LANG_NAMES[code] || code.toUpperCase()
 }
