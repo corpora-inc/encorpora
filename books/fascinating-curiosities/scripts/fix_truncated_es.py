@@ -75,7 +75,7 @@ WAV_DIR = AUDIO_DIR / "wav"
 # Keep voice/exaggeration conservative.
 RETRY_TTS_PARAMS = {
     **TTS_PARAMS,
-    "cfg_weight": 1.2,  # cranked up from 0.8
+    "cfg_weight": 1.0,  # max valid (Chatterbox hard max is 1.0)
 }
 
 MAX_RETRIES = 3

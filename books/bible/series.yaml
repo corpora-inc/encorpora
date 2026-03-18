@@ -1,0 +1,8 @@
+title: "The Bible"
+description: "Canonical texts in original languages with translations to 23 languages"
+volumes:
+  - id: 01-genesis
+    title: "Genesis (בראשית)"
+    source_language: he
+    chapters: 50
+    verses: 1533

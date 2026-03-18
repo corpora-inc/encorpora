@@ -12,6 +12,7 @@ export type CatalogNarrationEntry = {
   bookId: string
   bookTitle: string
   language: string
+  languageName?: string
   voiceId: string
   voiceName: string
   version: string
@@ -47,6 +48,7 @@ export type InstalledNarration = {
   bookId: string
   bookTitle: string
   language: string
+  languageName?: string
   voiceId: string
   voiceName: string
   version: string

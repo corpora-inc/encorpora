@@ -257,6 +257,7 @@ export function createAppShell(
       ...opts.initialState,
       baseUrl: packUrl,
       bookId: info.bookId,
+      bookTitle: info.bookTitle,
       language: info.language,
       autoPlay: wasPlaying,
       startAtSegmentStart: true,

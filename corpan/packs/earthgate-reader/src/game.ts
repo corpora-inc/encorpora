@@ -366,7 +366,8 @@ export function createEarthgateReader(
       ? new URLSearchParams(window.location.search).get("book") || "book_monte_alban"
       : "unknown")
 
-  const bookDisplayName = BOOK_NAMES[bookId] || bookId
+  const bookDisplayName =
+    (initialState?.bookTitle as string) || BOOK_NAMES[bookId] || bookId
 
   function persistBookmark() {
     if (!audioEngine) return

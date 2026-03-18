@@ -68,6 +68,7 @@ function parseNarration(item: unknown): CatalogNarrationEntry | null {
     bookId,
     bookTitle: toString(r.bookTitle) || bookId,
     language: toString(r.language) || "en",
+    languageName: toOptString(r.languageName),
     voiceId: toString(r.voiceId) || "default",
     voiceName: toString(r.voiceName) || "Default",
     version,
