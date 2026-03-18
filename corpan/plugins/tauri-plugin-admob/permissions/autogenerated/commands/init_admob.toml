@@ -1,0 +1,13 @@
+# Automatically generated - DO NOT EDIT!
+
+"$schema" = "../../schemas/schema.json"
+
+[[permission]]
+identifier = "allow-init-admob"
+description = "Enables the init_admob command without any pre-configured scope."
+commands.allow = ["init_admob"]
+
+[[permission]]
+identifier = "deny-init-admob"
+description = "Denies the init_admob command without any pre-configured scope."
+commands.deny = ["init_admob"]

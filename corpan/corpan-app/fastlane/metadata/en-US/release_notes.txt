@@ -1,0 +1,40 @@
+Audiobooks arrive in Corpan.
+
+Two new reader packs turn Corpan into an audiobook platform with word-level synchronization across five languages.
+
+STARGATE READER
+Words stream through 3D space in sync with narrated audio. A waveform ribbon pulses beneath the text. Stars drift past. You listen, you follow, you read — all at once.
+
+EARTHGATE READER
+A calm, earth-toned paragraph reader. Words highlight one by one as the narrator speaks. Warm cream, dark brown, gold accents, serif type. Screen stays awake. Bookmarks persist. Controls live in a quiet transport bar at the bottom. Designed for focus.
+
+Both readers support background audio playback, lock screen controls, and Now Playing integration with book artwork.
+
+FIRST BOOK: THE MYSTERY OF MONTE ALBÁN
+"Fascinating Curiosities of Human History, Vol. 1" — a real book about the sacred Zapotec capital in Oaxaca, the undeciphered script carved into its stones, and the 300 contorted figures nobody can fully explain. Narrated in five languages:
+
+  • English
+  • Spanish
+  • French
+  • Arabic
+  • Mandarin Chinese
+
+Pick a language, open either reader, listen. Words highlight as they're spoken.
+
+SECOND BOOK: THE UNCONQUERED PEOPLE
+Vol. 2 of the series. The Mapuche — the nation that defeated the Inca, fought the Spanish to a treaty, and speaks a language no one has been able to classify. Also narrated in all five languages.
+
+À LA CARTE NARRATION DOWNLOADS
+Audio narrations download individually per language. Choose the languages you want, skip the rest.
+
+DYNAMIC PACK CATALOG
+New books and packs appear in your catalog automatically — no app update required.
+
+AUDIO QUALITY
+All narrations have been carefully mastered for consistent volume and clean endings across nearly 2,000 audio segments. Pronunciations of numbers, dates, and place names like Oaxaca and Chichén Itzá have been tuned for accuracy in every language.
+
+ALSO IN THIS UPDATE
+  • Improved background audio stability on iOS
+  • Pack installation progress tracking
+  • Better handling of native audio controls
+  • General polish and performance improvements

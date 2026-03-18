@@ -29,6 +29,10 @@ export type HostApi = {
   getRandomEntry?: () => Promise<EntryOut>
   getRandomEntries?: (count: number) => Promise<EntryOut[]>
   getEntryById?: (entryId: number) => Promise<EntryOut>
+  showInterstitial?: () => Promise<{ shown: boolean; error?: string }>
+  showRewarded?: () => Promise<{ shown: boolean; rewarded: boolean; error?: string }>
+  showBanner?: (opts: { position?: "top" | "bottom"; size?: string }) => Promise<{ shown: boolean; error?: string }>
+  hideBanner?: () => Promise<{ shown: boolean; error?: string }>
   isMock?: boolean
 }
 

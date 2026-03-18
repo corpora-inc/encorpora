@@ -61,8 +61,18 @@ const isSameStackSlice = (a: StackSlice, b: StackSlice) => {
   )
 }
 
+let admobInitStarted = false
+const ensureAdmobInit = () => {
+  if (admobInitStarted) return
+  admobInitStarted = true
+  invoke("plugin:admob|init_admob", { args: {} }).catch(() => {
+    // AdMob init failed (desktop or missing SDK) — ad methods will gracefully fail
+  })
+}
+
 export const createHostApi = (packId?: string): HostApi => {
   let disposed = false
+  ensureAdmobInit()
 
   const stopNativeSpeech = async () => {
     if (typeof window !== "undefined" && "speechSynthesis" in window) {
@@ -178,6 +188,34 @@ export const createHostApi = (packId?: string): HostApi => {
         params: query.params ?? [],
         maxRows: query.maxRows,
       })
+    },
+    showInterstitial: async () => {
+      try {
+        return await invoke("plugin:admob|show_interstitial")
+      } catch (e) {
+        return { shown: false, error: String(e) }
+      }
+    },
+    showRewarded: async () => {
+      try {
+        return await invoke("plugin:admob|show_rewarded")
+      } catch (e) {
+        return { shown: false, rewarded: false, error: String(e) }
+      }
+    },
+    showBanner: async (opts: { position?: "top" | "bottom"; size?: string }) => {
+      try {
+        return await invoke("plugin:admob|show_banner", { args: opts })
+      } catch (e) {
+        return { shown: false, error: String(e) }
+      }
+    },
+    hideBanner: async () => {
+      try {
+        return await invoke("plugin:admob|hide_banner")
+      } catch (e) {
+        return { shown: false, error: String(e) }
+      }
     },
   }
 }

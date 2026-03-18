@@ -1,0 +1,13 @@
+# Automatically generated - DO NOT EDIT!
+
+"$schema" = "../../schemas/schema.json"
+
+[[permission]]
+identifier = "allow-load-rewarded"
+description = "Enables the load_rewarded command without any pre-configured scope."
+commands.allow = ["load_rewarded"]
+
+[[permission]]
+identifier = "deny-load-rewarded"
+description = "Denies the load_rewarded command without any pre-configured scope."
+commands.deny = ["load_rewarded"]

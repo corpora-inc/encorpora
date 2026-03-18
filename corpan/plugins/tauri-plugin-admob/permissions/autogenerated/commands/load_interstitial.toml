@@ -1,0 +1,13 @@
+# Automatically generated - DO NOT EDIT!
+
+"$schema" = "../../schemas/schema.json"
+
+[[permission]]
+identifier = "allow-load-interstitial"
+description = "Enables the load_interstitial command without any pre-configured scope."
+commands.allow = ["load_interstitial"]
+
+[[permission]]
+identifier = "deny-load-interstitial"
+description = "Denies the load_interstitial command without any pre-configured scope."
+commands.deny = ["load_interstitial"]

@@ -56,6 +56,10 @@ export type HostApi = {
     languageCodes?: string[]
   }) => Promise<number>
   queryPackDb?: (query: PackDbQuery) => Promise<PackDbQueryResult>
+  showInterstitial?: () => Promise<{ shown: boolean; error?: string }>
+  showRewarded?: () => Promise<{ shown: boolean; rewarded: boolean; error?: string }>
+  showBanner?: (opts: { position?: "top" | "bottom"; size?: string }) => Promise<{ shown: boolean; error?: string }>
+  hideBanner?: () => Promise<{ shown: boolean; error?: string }>
   isMock?: boolean
 }
 

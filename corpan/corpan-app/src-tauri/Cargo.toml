@@ -35,6 +35,7 @@ sha2 = "0.10"
 zip = "2.2.2"
 tauri-plugin-tts = { path = "../../plugins/tauri-plugin-tts" }
 tauri-plugin-audio-keepalive = { path = "../../plugins/tauri-plugin-audio-keepalive" }
+tauri-plugin-admob = { path = "../../plugins/tauri-plugin-admob" }
 futures-util = "0.3"
 
 # Production optimizations for release builds

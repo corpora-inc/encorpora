@@ -10,6 +10,13 @@
     "opener:default",
     "tts:allow-speak",
     "tts:default",
-    "audio-keepalive:default"
+    "audio-keepalive:default",
+    "admob:allow-init-admob",
+    "admob:allow-load-interstitial",
+    "admob:allow-show-interstitial",
+    "admob:allow-load-rewarded",
+    "admob:allow-show-rewarded",
+    "admob:allow-show-banner",
+    "admob:allow-hide-banner"
   ]
 }

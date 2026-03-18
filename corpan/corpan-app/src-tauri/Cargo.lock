@@ -661,6 +661,7 @@ dependencies = [
  "sha2",
  "tauri",
  "tauri-build",
+ "tauri-plugin-admob",
  "tauri-plugin-audio-keepalive",
  "tauri-plugin-game-packs",
  "tauri-plugin-opener",
@@ -4287,6 +4288,18 @@ dependencies = [
  "tauri-utils",
  "toml 0.9.12+spec-1.1.0",
  "walkdir",
+]
+
+[[package]]
+name = "tauri-plugin-admob"
+version = "0.1.0"
+dependencies = [
+ "serde",
+ "serde_json",
+ "tauri",
+ "tauri-build",
+ "tauri-plugin",
+ "thiserror 2.0.18",
 ]
 
 [[package]]
