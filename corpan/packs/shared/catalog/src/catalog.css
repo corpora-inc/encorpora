@@ -597,6 +597,38 @@
   color: var(--catalog-text-dim);
 }
 
+.catalog-installed-version--update {
+  color: var(--catalog-accent);
+  font-weight: 600;
+}
+
+/* --- Narration version (inline in appShell detail rows) --- */
+
+.catalog-narration-version {
+  font-size: 11px;
+  color: var(--catalog-text-dim);
+  margin-top: 2px;
+}
+
+.catalog-narration-version--update {
+  color: var(--catalog-accent);
+  font-weight: 600;
+}
+
+/* --- Update button --- */
+
+.catalog-btn--update {
+  border-color: var(--catalog-accent);
+  color: var(--catalog-accent);
+  padding: 8px 12px;
+  min-width: auto;
+}
+
+.catalog-btn--update:hover {
+  background: var(--catalog-accent);
+  color: var(--catalog-bg);
+}
+
 /* --- Library button (placed by the reader in the top-left) --- */
 
 .catalog-library-btn {

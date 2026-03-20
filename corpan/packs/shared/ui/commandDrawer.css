@@ -256,6 +256,7 @@
 }
 
 .command-drawer-library-card {
+  position: relative;
   padding: 14px;
   border: 1px solid var(--catalog-border);
   border-radius: var(--catalog-radius);
@@ -303,6 +304,16 @@
   font-weight: 700;
   color: var(--catalog-accent);
   margin-top: 4px;
+}
+
+.command-drawer-library-card-update {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--catalog-accent);
 }
 
 /* --- Browse section --- */

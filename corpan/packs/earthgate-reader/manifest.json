@@ -1,7 +1,7 @@
 {
   "id": "earthgate_reader",
   "name": "Earthgate Reader",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Calm, earth-toned audiobook reader with word-level highlighting synced to narrated audio",
   "entry": "dist/app.js",
   "styles": [
@@ -9,5 +9,5 @@
   ],
   "entryType": "script",
   "sdkVersion": "0.1.0",
-  "devRevision": "2026-03-18T02:38:56.604Z"
+  "devRevision": "2026-03-19T00:00:00.000Z"
 }
