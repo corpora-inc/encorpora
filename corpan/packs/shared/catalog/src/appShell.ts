@@ -23,6 +23,7 @@ import {
   getAvailableLanguages,
   getLanguageName,
 } from "./searchFilter"
+import { hasUpdate } from "./versionUtil"
 import {
   createCommandDrawer,
   type CommandDrawer,
@@ -359,6 +360,19 @@ export function createAppShell(
 
       card.append(title, lang)
 
+      // Update dot — if any installed narration has a newer version in the catalog
+      if (allNarrations.length > 0) {
+        const hasAnyUpdate = narrations.some(inst => {
+          const catalogNarr = allNarrations.find(cn => cn.id === inst.narrationId)
+          return catalogNarr && hasUpdate(catalogNarr.version, inst.version)
+        })
+        if (hasAnyUpdate) {
+          const dot = document.createElement("div")
+          dot.className = "command-drawer-library-card-update"
+          card.appendChild(dot)
+        }
+      }
+
       if (isActiveBook) {
         const playing = document.createElement("div")
         playing.className = "command-drawer-library-card-playing"
@@ -610,7 +624,17 @@ export function createAppShell(
       voice.className = "catalog-narration-voice"
       voice.textContent = narr.voiceName
 
-      info.append(lang, voice)
+      const installedInfo = getInstalled(narr.id)
+      const versionDiv = document.createElement("div")
+      if (installedInfo && hasUpdate(narr.version, installedInfo.version)) {
+        versionDiv.className = "catalog-narration-version catalog-narration-version--update"
+        versionDiv.textContent = `v${installedInfo.version} → v${narr.version}`
+      } else if (installedInfo) {
+        versionDiv.className = "catalog-narration-version"
+        versionDiv.textContent = `v${installedInfo.version}`
+      }
+
+      info.append(lang, voice, versionDiv)
       row.appendChild(info)
 
       // Active indicator
@@ -619,6 +643,37 @@ export function createAppShell(
         check.className = "catalog-narration-active-indicator"
         check.textContent = "\u2713"
         row.appendChild(check)
+      }
+
+      // Update button (when catalog has newer version)
+      if (installedInfo && hasUpdate(narr.version, installedInfo.version)) {
+        const updateBtn = document.createElement("button")
+        updateBtn.className = "catalog-btn catalog-btn--update"
+        updateBtn.innerHTML = `<svg class="catalog-btn-icon" viewBox="0 0 24 24"><path d="M12 4v12m0 0l-4-4m4 4l4-4"/><path d="M4 17v2a1 1 0 001 1h14a1 1 0 001-1v-2"/></svg>`
+        updateBtn.title = "Update"
+        updateBtn.addEventListener("click", async (e) => {
+          e.stopPropagation()
+          updateBtn.className = "catalog-btn catalog-btn--disabled"
+          updateBtn.textContent = "Updating..."
+          const unsub = subscribeProgress(narr.id, (ds) => {
+            if (ds.stage === "downloading") {
+              const pct = ds.total > 0 ? Math.round((ds.progress / ds.total) * 100) : 0
+              updateBtn.innerHTML = `<span>${pct}%</span><div class="catalog-btn-progress" style="width:${pct}%"></div>`
+            } else if (ds.stage === "verifying") {
+              updateBtn.textContent = "Verifying..."
+            } else if (ds.stage === "extracting") {
+              updateBtn.textContent = "Installing..."
+            } else if (ds.stage === "complete") {
+              renderBookDetail()
+              refreshLibrarySection()
+            }
+          })
+          progressUnsubs.push(unsub)
+          await installNarration(narr)
+          renderBookDetail()
+          refreshLibrarySection()
+        })
+        row.appendChild(updateBtn)
       }
 
       // Delete button

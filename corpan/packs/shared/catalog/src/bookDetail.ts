@@ -3,6 +3,7 @@ import { isInstalled, getInstalled, listInstalledForBook as _listInstalledForBoo
 import { getLanguageName } from "./searchFilter"
 import { installNarration, deleteNarration, isTauriAvailable } from "./installManager"
 import { subscribe as subscribeProgress, getState as getProgressState } from "./downloadProgress"
+import { hasUpdate } from "./versionUtil"
 
 export type BookDetailOptions = {
   onPlay: (narrationId: string) => void
@@ -93,9 +94,43 @@ export function createBookDetail(
       const info = getInstalled(narration.id)
       if (info) {
         const ver = document.createElement("span")
-        ver.className = "catalog-installed-version"
-        ver.textContent = `v${info.version}`
+        if (hasUpdate(narration.version, info.version)) {
+          ver.className = "catalog-installed-version catalog-installed-version--update"
+          ver.textContent = `v${info.version} → v${narration.version}`
+        } else {
+          ver.className = "catalog-installed-version"
+          ver.textContent = `v${info.version}`
+        }
         actions.append(ver)
+      }
+
+      // Update button (when catalog has newer version)
+      if (info && hasUpdate(narration.version, info.version)) {
+        const updateBtn = document.createElement("button")
+        updateBtn.className = "catalog-btn catalog-btn--update"
+        updateBtn.innerHTML = `<svg class="catalog-btn-icon" viewBox="0 0 24 24"><path d="M12 4v12m0 0l-4-4m4 4l4-4"/><path d="M4 17v2a1 1 0 001 1h14a1 1 0 001-1v-2"/></svg>`
+        updateBtn.title = "Update"
+        updateBtn.onclick = async (e) => {
+          e.stopPropagation()
+          updateBtn.className = "catalog-btn catalog-btn--disabled"
+          updateBtn.textContent = "Updating..."
+          const unsub = subscribeProgress(narration.id, (ds) => {
+            if (ds.stage === "downloading") {
+              const pct = ds.total > 0 ? Math.round((ds.progress / ds.total) * 100) : 0
+              updateBtn.innerHTML = `<span>${pct}%</span><div class="catalog-btn-progress" style="width:${pct}%"></div>`
+            } else if (ds.stage === "verifying") {
+              updateBtn.textContent = "Verifying..."
+            } else if (ds.stage === "extracting") {
+              updateBtn.textContent = "Installing..."
+            } else if (ds.stage === "complete") {
+              render()
+            }
+          })
+          progressUnsubs.push(unsub)
+          await installNarration(narration)
+          render()
+        }
+        actions.append(updateBtn)
       }
 
       actions.append(playBtn, delBtn)
