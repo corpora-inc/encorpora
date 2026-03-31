@@ -309,7 +309,8 @@ resource "aws_iam_user_policy" "dgx_publisher" {
         Resource = [
           "${aws_s3_bucket.packs.arn}/staging/*",
           "${aws_s3_bucket.packs.arn}/artifacts/*",
-          "${aws_s3_bucket.packs.arn}/sources/*"
+          "${aws_s3_bucket.packs.arn}/sources/*",
+          "${aws_s3_bucket.packs.arn}/pack-store/*"
         ]
       },
       {
@@ -318,7 +319,7 @@ resource "aws_iam_user_policy" "dgx_publisher" {
         Resource = aws_s3_bucket.packs.arn
         Condition = {
           StringLike = {
-            "s3:prefix" = ["staging/*", "artifacts/*", "sources/*"]
+            "s3:prefix" = ["staging/*", "artifacts/*", "sources/*", "pack-store/*"]
           }
         }
       },
