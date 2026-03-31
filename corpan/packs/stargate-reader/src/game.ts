@@ -593,6 +593,109 @@ export function createStargateReader(
   let timelineWords: TimelineWord[] = []
   let currentWordHint = 0
 
+  // --- Swipe-to-navigate segment gesture ---
+  let swipeStartY = 0
+  let swipeStartX = 0
+  let swipeDeltaY = 0
+  let swipeActive = false
+  let swipeLocked = false          // true once we confirm vertical intent
+  let swipeVisualOffsetMs = 0      // visual time shift during drag + ease-out
+  let swipeAnimating = false
+  let swipeAnimStart = 0
+  let swipeAnimFrom = 0
+  const SWIPE_MS_PER_PX = 80
+  const SWIPE_THRESHOLD_PX = 30
+  const SWIPE_LOCK_PX = 10        // min movement before locking direction
+  const SWIPE_ANIM_DURATION_MS = 300
+
+  function onSwipeTouchStart(e: TouchEvent) {
+    if (!audioEngine || e.touches.length !== 1) return
+    swipeStartY = e.touches[0].clientY
+    swipeStartX = e.touches[0].clientX
+    swipeDeltaY = 0
+    swipeActive = true
+    swipeLocked = false
+    // Cancel any in-progress ease-out so finger takes over
+    if (swipeAnimating) {
+      swipeAnimating = false
+      swipeVisualOffsetMs = 0
+    }
+  }
+
+  function onSwipeTouchMove(e: TouchEvent) {
+    if (!swipeActive || !audioEngine || e.touches.length !== 1) return
+    const dy = e.touches[0].clientY - swipeStartY
+    const dx = e.touches[0].clientX - swipeStartX
+
+    // Lock direction once movement exceeds threshold
+    if (!swipeLocked) {
+      if (Math.abs(dy) < SWIPE_LOCK_PX && Math.abs(dx) < SWIPE_LOCK_PX) return
+      if (Math.abs(dx) > Math.abs(dy)) {
+        // Horizontal swipe — abandon
+        swipeActive = false
+        return
+      }
+      swipeLocked = true
+    }
+
+    e.preventDefault()
+    swipeDeltaY = dy
+    swipeVisualOffsetMs = dy * SWIPE_MS_PER_PX
+  }
+
+  function onSwipeTouchEnd(_e: TouchEvent) {
+    if (!swipeActive || !audioEngine) {
+      swipeActive = false
+      return
+    }
+    swipeActive = false
+
+    const absDelta = Math.abs(swipeDeltaY)
+    if (!swipeLocked || absDelta < SWIPE_THRESHOLD_PX) {
+      // Below threshold — snap back
+      if (Math.abs(swipeVisualOffsetMs) > 0.5) {
+        swipeAnimFrom = swipeVisualOffsetMs
+        swipeAnimating = true
+        swipeAnimStart = performance.now()
+      } else {
+        swipeVisualOffsetMs = 0
+      }
+      return
+    }
+
+    // Determine target segment
+    const currentIdx = audioEngine.getCurrentSegmentIndex()
+    const direction = swipeDeltaY > 0 ? 1 : -1
+    const targetIdx = Math.max(0, Math.min(segments.length - 1, currentIdx + direction))
+
+    if (targetIdx === currentIdx) {
+      // Already at boundary — snap back
+      swipeAnimFrom = swipeVisualOffsetMs
+      swipeAnimating = true
+      swipeAnimStart = performance.now()
+      return
+    }
+
+    // Calculate the time jump the engine is about to make
+    const segStarts = audioEngine.getSegmentAbsoluteStartMs()
+    const beforeMs = audioEngine.getCurrentTimeMs()
+    const afterMs = segStarts[targetIdx] ?? beforeMs
+    const jumpMs = afterMs - beforeMs
+
+    // After seekToSegmentAndSync, currentMs will jump by jumpMs instantly.
+    // To make words appear to scroll smoothly, set the visual offset so the
+    // total visual position stays the same, then ease it to 0.
+    swipeAnimFrom = swipeVisualOffsetMs - jumpMs
+    seekToSegmentAndSync(targetIdx)
+    swipeAnimating = true
+    swipeAnimStart = performance.now()
+  }
+
+  canvas.addEventListener("touchstart", onSwipeTouchStart, { passive: true })
+  canvas.addEventListener("touchmove", onSwipeTouchMove, { passive: false })
+  canvas.addEventListener("touchend", onSwipeTouchEnd, { passive: true })
+  canvas.addEventListener("touchcancel", onSwipeTouchEnd, { passive: true })
+
   // Create starfield immediately (doesn't need data)
   starfield = createStarfield(scene)
 
@@ -1269,6 +1372,20 @@ export function createStargateReader(
     const currentMs = audioEngine?.getCurrentTimeMs() ?? 0
     const totalMs = audioEngine?.getTotalDurationMs() ?? 0
 
+    // Apply swipe visual offset (drag preview + ease-out animation)
+    if (swipeAnimating) {
+      const elapsed = performance.now() - swipeAnimStart
+      if (elapsed >= SWIPE_ANIM_DURATION_MS) {
+        swipeVisualOffsetMs = 0
+        swipeAnimating = false
+      } else {
+        const t = elapsed / SWIPE_ANIM_DURATION_MS
+        const ease = 1 - (1 - t) * (1 - t) // ease-out quadratic
+        swipeVisualOffsetMs = swipeAnimFrom * (1 - ease)
+      }
+    }
+    const visualMs = currentMs + swipeVisualOffsetMs
+
     // Update time display and scrub bar progress
     transport.setTime(currentMs, totalMs)
     if (totalMs > 0) {
@@ -1304,20 +1421,20 @@ export function createStargateReader(
       }
     }
 
-    // Find current word
+    // Find current word (use visualMs so highlight tracks the visual position)
     if (timelineWords.length > 0) {
-      const idx = findCurrentWordIndex(timelineWords, currentMs, currentWordHint)
+      const idx = findCurrentWordIndex(timelineWords, visualMs, currentWordHint)
       if (idx >= 0) currentWordHint = idx
     }
 
-    // Update word stream
+    // Update word stream (visualMs for smooth swipe animation)
     if (wordStream && timelineWords.length > 0) {
-      wordStream.update(currentMs, timelineWords, currentWordHint, wordHoldEnabled)
+      wordStream.update(visualMs, timelineWords, currentWordHint, wordHoldEnabled)
     }
 
-    // Update waveform stream
+    // Update waveform stream (visualMs for smooth swipe animation)
     if (waveformStream && waveformStream.mesh.isVisible && timelineWords.length > 0 && waveformCache) {
-      waveformStream.update(currentMs, timelineWords, waveformCache, currentWordHint)
+      waveformStream.update(visualMs, timelineWords, waveformCache, currentWordHint)
     }
 
     // Update oscilloscope + pulse ring
@@ -1372,6 +1489,10 @@ export function createStargateReader(
     stopBackgroundTimers()
 
     document.removeEventListener("visibilitychange", handleVisibilityChange)
+    canvas.removeEventListener("touchstart", onSwipeTouchStart)
+    canvas.removeEventListener("touchmove", onSwipeTouchMove)
+    canvas.removeEventListener("touchend", onSwipeTouchEnd)
+    canvas.removeEventListener("touchcancel", onSwipeTouchEnd)
     resizeObserver.disconnect()
 
     // Clear MediaSession so lock screen doesn't show stale player
