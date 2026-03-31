@@ -1,0 +1,17 @@
+{
+  "title": "1-2-3: A U10 Field Guide",
+  "subtitle": "What Five Games Actually Taught Me",
+  "author": "Skylar Saveland",
+  "publisher": "Corpora Inc",
+  "language": "en-US",
+  "format": "6x9",
+  "target_pages": 25,
+  "target_words": 6000,
+  "audience": ["coaches", "players age 9-10", "families"],
+  "voice": "Direct, practical, personal. First-person where it helps. Written from real experience, not theory.",
+  "build": {
+    "tool": "pandoc",
+    "script": "build.sh",
+    "outputs": ["pdf", "epub"]
+  }
+}
