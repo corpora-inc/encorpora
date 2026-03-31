@@ -20,7 +20,7 @@ Working with personalities is harder than drawing formations. You can explain th
 
 Give the Boss the sweeper role. Let the Boss run the team from the back. The other players should listen to the Boss because the Boss usually knows what is happening on the field. The Boss has the right instincts. The Boss just needs coaching on delivery. Help the Boss grow from directing to leading. A real leader does not point out mistakes. A real leader helps teammates make the next play better.
 
-**The Lefty Striker.** Most kids are right-footed. A left-footed player is a rare weapon. The Lefty Striker sees the field differently and creates angles that right-footed players cannot. Put the Lefty Striker on the left wing. The Lefty can cut inside on their strong foot and shoot. The Lefty can cross the ball with natural curl toward the goal.
+**The Lefty Striker.** Most kids are right-footed. A left-footed player is a rare weapon. The Lefty Striker sees the field differently and creates passing and shooting lanes that right-footed players cannot reach. Put the Lefty Striker on the left wing. The Lefty can cut inside on their strong foot and shoot. The Lefty can cross the ball with natural curl toward the goal.
 
 The connection between the sweeper and the Lefty Striker becomes a signature play. The sweeper collects the ball, looks left, and sends a long ball to the Lefty Striker running up the wing. The Lefty receives on the strong foot and attacks the goal. Practice this combination every week until the players can execute it without thinking.
 
