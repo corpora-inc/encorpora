@@ -1,0 +1,130 @@
+version: 1
+tts:
+  cfg_weight: 0.85
+  exaggeration: 0.3
+  temperature: 0.3
+  top_p: 0.85
+  min_p: 0.10
+  repetition_penalty: 2.0
+voices:
+  en: ian-new-narration-try-more-chill-clear.wav
+  es: ian-new-narration-spanish-loud.wav
+  pt: ian-new-narration-spanish-loud.wav
+  it: ian-new-narration-try-more-chill-clear.wav
+  fr: ian-new-narration-try-more-chill-clear.wav
+  de: ian-new-narration-try-more-chill-clear.wav
+mastering:
+  target_lufs: -22.0
+  target_tp: -3.0
+  audio_codec: aac
+  audio_bitrate: '64000'
+  output_ext: .m4a
+filter_chain:
+  highpass:
+    enabled: true
+    frequency: 80
+    width_type: q
+    width: 0.7
+  adeclick:
+    enabled: true
+    window: 55
+    overlap: 75
+    threshold: 1.5
+  afftdn:
+    enabled: true
+    nr: 15
+    nf: -35
+    tn: 1
+  agate:
+    enabled: true
+    threshold: 0.018
+    range: 0.01
+    attack: 5
+    release: 50
+  acompressor:
+    enabled: true
+    threshold: 0.1
+    ratio: 2
+    attack: 10
+    release: 100
+    makeup: 1
+  alimiter:
+    enabled: true
+    limit: 0.708
+    level: false
+denoise:
+  enabled: false
+trimming:
+  zcr_window_ms: 500
+  zcr_multiplier: 2.5
+  consecutive_windows: 3
+  scan_start_ratio: 0.6
+  buffer_sec: 0.3
+  tail_ms: 500
+  fade_ms: 50
+  fade_sec: 0.05
+  max_sec_per_char:
+    en: 0.12
+    es: 0.12
+    pt: 0.12
+    it: 0.12
+    fr: 0.12
+    de: 0.12
+  base_buffer_sec:
+    en: 5.0
+    es: 5.0
+    pt: 5.0
+    it: 5.0
+    fr: 5.0
+    de: 5.0
+validation:
+  min_word_ratio: 0.8
+  max_trailing_silence_ratio: 0.25
+  max_stacked_words: 3
+  min_trailing_silence_ms: 75
+  max_inter_word_gap_ms: 3000
+  max_sec_per_char:
+    en: 0.12
+    es: 0.12
+    pt: 0.12
+    it: 0.12
+    fr: 0.12
+    de: 0.12
+  min_sec_per_char:
+    en: 0.02
+    es: 0.02
+    pt: 0.02
+    it: 0.02
+    fr: 0.02
+    de: 0.02
+  base_buffer_sec:
+    en: 5.0
+    es: 5.0
+    pt: 5.0
+    it: 5.0
+    fr: 5.0
+    de: 5.0
+retry:
+  max_retries: 20
+  jitter: 0.05
+  schedules:
+  - {}
+  - cfg_weight: 0.8
+    temperature: 0.5
+  - cfg_weight: 0.5
+    temperature: 0.3
+    exaggeration: 0.2
+  - cfg_weight: 0.6
+    temperature: 0.7
+    exaggeration: 0.6
+  - cfg_weight: 1.0
+    temperature: 0.2
+overrides:
+  ch01-066:
+    tts:
+      repetition_penalty: 3.0
+      temperature: 0.2
+  ch08-603:
+    tts:
+      repetition_penalty: 3.0
+      temperature: 0.2

@@ -1,20 +1,13 @@
 import type { CatalogV2, CatalogNarrationEntry, PurchaseInfo } from "./types"
 
 const CACHE_KEY = "reader-catalog-cache"
-const CACHE_TTL_MS = 60 * 60 * 1000 // 1 hour
 
-type CachedCatalog = {
-  catalog: CatalogV2
-  fetchedAt: number
-}
-
-function readCache(): CachedCatalog | null {
+function readCache(): CatalogV2 | null {
   try {
     const raw = localStorage.getItem(CACHE_KEY)
     if (!raw) return null
-    const cached = JSON.parse(raw) as CachedCatalog
-    if (Date.now() - cached.fetchedAt > CACHE_TTL_MS) return null
-    return cached
+    const cached = JSON.parse(raw) as { catalog: CatalogV2 }
+    return cached.catalog ?? null
   } catch {
     return null
   }
@@ -22,8 +15,7 @@ function readCache(): CachedCatalog | null {
 
 function writeCache(catalog: CatalogV2): void {
   try {
-    const entry: CachedCatalog = { catalog, fetchedAt: Date.now() }
-    localStorage.setItem(CACHE_KEY, JSON.stringify(entry))
+    localStorage.setItem(CACHE_KEY, JSON.stringify({ catalog }))
   } catch {
     // localStorage full or unavailable — ignore
   }
@@ -104,16 +96,13 @@ function parseCatalogV2(data: unknown): CatalogV2 | null {
 
 /**
  * Fetch the narration catalog from CDN.
- * Returns cached data if fresh, otherwise fetches and caches.
+ *
+ * Always attempts a fresh fetch (cache-busted) so the reader sees
+ * new narrations within a minute of publish.  On success the result
+ * is written to localStorage so it can serve as an offline fallback
+ * when the network is unavailable.
  */
 export async function fetchCatalog(cdnUrl: string): Promise<CatalogV2> {
-  // Try cache first
-  const cached = readCache()
-  if (cached) {
-    console.log("[reader-catalog] Using cached catalog:", cached.catalog.narrations.length, "narrations")
-    return cached.catalog
-  }
-
   const empty: CatalogV2 = {
     version: 2,
     generatedAt: new Date().toISOString(),
@@ -122,28 +111,35 @@ export async function fetchCatalog(cdnUrl: string): Promise<CatalogV2> {
   }
 
   try {
-    console.log("[reader-catalog] Fetching catalog from:", cdnUrl)
-    const res = await fetch(cdnUrl, { cache: "no-store" })
+    const bustUrl = cdnUrl + (cdnUrl.includes("?") ? "&" : "?") + "_t=" + Date.now()
+    console.log("[reader-catalog] Fetching catalog:", bustUrl)
+    const res = await fetch(bustUrl, { cache: "no-store" })
     if (!res.ok) {
       console.warn("[reader-catalog] Fetch failed:", res.status, res.statusText)
-      return empty
+      return readCache() ?? empty
     }
     const data = await res.json()
     const catalog = parseCatalogV2(data)
     if (!catalog) {
       console.warn("[reader-catalog] Failed to parse catalog data")
-      return empty
+      return readCache() ?? empty
     }
     console.log("[reader-catalog] Fetched catalog:", catalog.narrations.length, "narrations")
     writeCache(catalog)
     return catalog
   } catch (err) {
     console.error("[reader-catalog] Fetch error:", err)
+    // Offline or network error — fall back to last known good catalog
+    const cached = readCache()
+    if (cached) {
+      console.log("[reader-catalog] Using offline cache:", cached.narrations.length, "narrations")
+      return cached
+    }
     return empty
   }
 }
 
-/** Clear the catalog cache (force fresh fetch next time) */
+/** Clear the catalog cache */
 export function clearCatalogCache(): void {
   try {
     localStorage.removeItem(CACHE_KEY)
