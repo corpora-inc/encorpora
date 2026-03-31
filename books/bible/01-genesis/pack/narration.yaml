@@ -8,6 +8,12 @@ tts:
   repetition_penalty: 2.0
 voices:
   he: ian-new-narration-spanish-loud.wav
+  en: ian-new-narration-spanish-loud.wav
+  es: ian-new-narration-spanish-loud.wav
+  fr: ian-new-narration-spanish-loud.wav
+  de: ian-new-narration-spanish-loud.wav
+  ar: ian-new-narration-spanish-loud.wav
+  ko: ian-new-narration-spanish-loud.wav
 mastering:
   target_lufs: -22.0
   target_tp: -3.0
@@ -100,7 +106,8 @@ validation:
     fr: 5.0
     he: 5.0
 retry:
-  max_retries: 4
+  max_retries: 20
+  jitter: 0.05
   schedules:
   - {}
   - cfg_weight: 0.8
