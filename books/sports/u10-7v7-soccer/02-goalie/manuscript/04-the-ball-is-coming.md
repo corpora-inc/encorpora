@@ -12,7 +12,7 @@ Make yourself big as the shooter prepares to strike. Spread your arms wide. Bend
 
 Stay on the balls of your feet. Keep your weight forward. Lean slightly toward the ball. Your hands should be in front of your body, not at your sides. Ready hands catch the ball faster than hands that start from a resting position.
 
-Stay on your feet as long as you can. Going to the ground too early gives the attacker an easy option. The attacker can chip the ball over a goalkeeper who is already on the ground. The attacker can pass the ball around a goalkeeper who has committed too soon. Patient goalkeepers save more shots.
+Stay on your feet as long as you can. Going to the ground too early gives the attacker an easy option. The attacker can kick the ball over a goalkeeper who is already on the ground. The attacker can go around a goalkeeper who has committed too soon. Patient goalkeepers save more shots.
 
 Watch the ball, not the attacker's feet. The attacker might fake a shot or do a fancy move. None of that matters. The ball tells you the truth. Follow the ball with your eyes and your body will follow.
 

@@ -22,7 +22,7 @@ The near post is the goalpost closest to you. The far post is the goalpost farth
 
 A near post shot is quick and catches the goalkeeper off guard. You whip the ball across the goalkeeper's body to the near side. A far post shot uses the full width of the goal. The ball travels into the far corner. The goalkeeper has to cover a long distance.
 
-Read the goalkeeper's position. If the goalkeeper cheats toward the near post, shoot far post. If the goalkeeper stands central, either post works. If the goalkeeper comes off the line, chip the ball over the goalkeeper's head.
+Read the goalkeeper's position before you shoot. If the goalkeeper leans toward the near post, shoot far post. If the goalkeeper stands in the center, either post works. If the goalkeeper rushes toward you, stay calm and place the ball to one side. A calm finish beats a rushing goalkeeper.
 
 ## One on One
 

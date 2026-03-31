@@ -16,7 +16,7 @@ Talk to your defenders constantly. Your defenders are watching the ball. Your de
 
 Use simple words when you talk to your defenders. Say "left shoulder" to warn a defender about a player behind them on the left. Say "drop" to tell a defender to move closer to you. Say "hold" to tell your defenders to stay where they are. Say "push up" to tell your defenders to move forward with the team. Clear words help your defenders react quickly.
 
-Be a passing option for your defenders. Sometimes a defender is under pressure and has no one to pass to going forward. You are always behind the defender. You are always open. Call for the ball. Receive the pass with your feet. Reset the play by passing to the other side of the field. Your feet are part of your game.
+Stay ready to collect any ball that comes back toward your goal. Sometimes a defender clears the ball backward to get out of trouble. Sometimes a pass goes wrong and the ball rolls toward you. Be ready to pick the ball up with your hands if no teammate played the ball to you on purpose. When the ball is in your hands, you are safe and your team can reset.
 
 Keep your feet moving even when the ball is far away. Stay on the balls of your feet. Bounce lightly. Keep your muscles warm and your reactions sharp. A goalkeeper who is standing still and flat-footed is a goalkeeper who is not ready.
 

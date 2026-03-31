@@ -16,11 +16,11 @@ You do not always need to make a fancy play. Sometimes the best thing you can do
 
 ## Overlapping Runs
 
-An overlapping run is when you sprint past your own teammate on the outside. Picture your winger on the ball near the sideline. You run from behind, past the winger, and into the space ahead. Now the winger has two choices: dribble inside or pass the ball to you on the overlap.
+As you grow as a player, you will learn to make overlapping runs. An overlapping run is when you sprint past your own teammate on the outside. Picture your winger on the ball near the sideline. You run from behind, past the winger, and into the space ahead. Now the winger has two choices: dribble inside or pass the ball to you on the overlap.
 
 Overlapping runs surprise the other team. The other team expects defenders to stay back. When a defender suddenly appears on the wing at full speed, the other team scrambles to adjust. That confusion can create a chance to cross the ball or take a shot.
 
-Do not overlap every time. Pick your moments. Overlap when you see open space on the wing. A well-timed overlap can change the game.
+Do not overlap every time. Pick your moments. Overlap when you see open space on the wing and you are sure the sweeper can cover for you. This is an advanced move to work toward over the season.
 
 ## Know When to Get Back
 

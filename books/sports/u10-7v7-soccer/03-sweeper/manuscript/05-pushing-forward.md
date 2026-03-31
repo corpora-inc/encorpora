@@ -18,9 +18,9 @@ The extra player in the center changes the math. Your presence pulls a defender 
 
 ## Overlapping Runs
 
-Sometimes the moment calls for a bold run. Your defender has the ball on the right side. You sprint past the defender on the outside. The defender plays the ball into the space ahead of you. You are running into the attacking third with the ball at your feet.
+As you gain experience, you will learn to make overlapping runs. An overlapping run is when you sprint past your own teammate on the outside. Your defender has the ball on the right side. You sprint past the defender on the outside. The defender plays the ball into the space ahead of you. You are running into the attacking third with the ball at your feet.
 
-The overlapping run surprises the other team. The confusion creates space and time for a cross or a shot. Use the overlapping run sparingly. Save the overlap for the right moment. The surprise is what makes the run work.
+The overlapping run surprises the other team. The confusion creates space and time for a cross or a shot. Use the overlapping run sparingly. Save the overlap for the right moment. The surprise is what makes the run work. This is an advanced move that takes practice and good communication with your teammates.
 
 ## Scoring Goals
 

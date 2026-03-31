@@ -6,7 +6,7 @@ Distribution is the word for how you deliver the ball to your teammates. Good di
 
 Look up immediately after you secure the ball. Scan the field. Find your teammates. Find the open player. The faster you look up, the faster you find the best option. Speed matters because the other team is still recovering from their missed chance.
 
-Roll the ball to a nearby defender. The roll is the simplest and most accurate distribution. Bend down and roll the ball along the ground with your hand. Aim for your defender's feet. A clean roll to a defender keeps possession safe and lets your team build from the back.
+Roll the ball to a nearby defender. The roll is the simplest and most accurate distribution. Bend down and roll the ball along the ground with your hand. Aim for your defender's feet. A clean roll to a defender keeps the ball safe and lets your team start moving forward.
 
 Use the roll when a defender is close and has time on the ball. The roll is low risk and high accuracy. Your defender receives the ball with no bounce and no surprise. The roll is your most common distribution.
 
