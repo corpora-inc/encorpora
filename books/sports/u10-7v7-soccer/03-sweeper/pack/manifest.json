@@ -1,0 +1,17 @@
+{
+  "id": "book_u10_sweeper",
+  "name": "You Are the Sweeper",
+  "version": "0.1.0",
+  "type": "book",
+  "entry": "dist/reader.js",
+  "styles": ["dist/reader.css"],
+  "entryType": "script",
+  "sdkVersion": "0.1.0",
+  "metadata": {
+    "series": "U10 7v7 Soccer",
+    "author": "Skylar Saveland",
+    "tts": true,
+    "estimatedReadTime": "25-35 minutes",
+    "estimatedListenTime": "20-25 minutes"
+  }
+}

@@ -25,6 +25,7 @@ export type CommandDrawerOptions = {
   onPlayNarration?: (narrationId: string) => void
   onSelectBook?: (bookId: string) => void
   onExit?: () => void
+  onOpen?: () => void
 }
 
 export type CommandDrawer = {
@@ -268,6 +269,7 @@ export function createCommandDrawer(
     sheet.classList.remove("command-drawer-sheet--closing")
     backdrop.classList.add("command-drawer-backdrop--open")
     sheet.classList.add("command-drawer-sheet--open")
+    opts.onOpen?.()
   }
 
   function close() {

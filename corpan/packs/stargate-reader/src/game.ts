@@ -663,28 +663,50 @@ export function createStargateReader(
       return
     }
 
-    // Determine target segment
+    // Determine target segment — always round in direction of travel
     const currentIdx = audioEngine.getCurrentSegmentIndex()
-    const direction = swipeDeltaY > 0 ? 1 : -1
-    const targetIdx = Math.max(0, Math.min(segments.length - 1, currentIdx + direction))
+    const segStarts = audioEngine.getSegmentAbsoluteStartMs()
+    const beforeMs = audioEngine.getCurrentTimeMs()
+    const visualMs = beforeMs + swipeVisualOffsetMs
+
+    let targetIdx: number
+    if (swipeDeltaY > 0) {
+      // Scrolling forward — ceil: first segment boundary at or past visual position
+      targetIdx = segments.length - 1
+      for (let i = currentIdx + 1; i < segments.length; i++) {
+        if (segStarts[i] >= visualMs) {
+          targetIdx = i
+          break
+        }
+      }
+    } else {
+      // Scrolling backward — floor: last segment boundary at or before visual position
+      targetIdx = 0
+      for (let i = currentIdx - 1; i >= 0; i--) {
+        if (segStarts[i] <= visualMs) {
+          targetIdx = i
+          break
+        }
+      }
+    }
+    targetIdx = Math.max(0, Math.min(segments.length - 1, targetIdx))
 
     if (targetIdx === currentIdx) {
-      // Already at boundary — snap back
+      // At boundary — snap back (unavoidable at first/last segment)
       swipeAnimFrom = swipeVisualOffsetMs
       swipeAnimating = true
       swipeAnimStart = performance.now()
       return
     }
 
-    // Calculate the time jump the engine is about to make
-    const segStarts = audioEngine.getSegmentAbsoluteStartMs()
-    const beforeMs = audioEngine.getCurrentTimeMs()
     const afterMs = segStarts[targetIdx] ?? beforeMs
     const jumpMs = afterMs - beforeMs
 
     // After seekToSegmentAndSync, currentMs will jump by jumpMs instantly.
     // To make words appear to scroll smoothly, set the visual offset so the
     // total visual position stays the same, then ease it to 0.
+    // The ceil/floor logic above guarantees swipeAnimFrom has the right sign
+    // so the animation always continues in the swipe direction.
     swipeAnimFrom = swipeVisualOffsetMs - jumpMs
     seekToSegmentAndSync(targetIdx)
     swipeAnimating = true

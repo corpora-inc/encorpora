@@ -244,6 +244,7 @@
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--catalog-text-dim);
+  padding-top: 16px;
   margin-bottom: 12px;
 }
 

@@ -97,12 +97,17 @@ function parseCatalogV2(data: unknown): CatalogV2 | null {
 /**
  * Fetch the narration catalog from CDN.
  *
- * Always attempts a fresh fetch (cache-busted) so the reader sees
- * new narrations within a minute of publish.  On success the result
- * is written to localStorage so it can serve as an offline fallback
- * when the network is unavailable.
+ * By default lets CloudFront serve a cached copy (fast, cheap).
+ * Pass `forceRefresh: true` to bypass CDN/browser cache and hit origin,
+ * e.g. when the user explicitly opens the catalog drawer.
+ *
+ * On success the result is written to localStorage so it can serve as
+ * an offline fallback when the network is unavailable.
  */
-export async function fetchCatalog(cdnUrl: string): Promise<CatalogV2> {
+export async function fetchCatalog(
+  cdnUrl: string,
+  opts?: { forceRefresh?: boolean },
+): Promise<CatalogV2> {
   const empty: CatalogV2 = {
     version: 2,
     generatedAt: new Date().toISOString(),
@@ -111,9 +116,13 @@ export async function fetchCatalog(cdnUrl: string): Promise<CatalogV2> {
   }
 
   try {
-    const bustUrl = cdnUrl + (cdnUrl.includes("?") ? "&" : "?") + "_t=" + Date.now()
-    console.log("[reader-catalog] Fetching catalog:", bustUrl)
-    const res = await fetch(bustUrl, { cache: "no-store" })
+    const force = opts?.forceRefresh ?? false
+    const url = force
+      ? cdnUrl + (cdnUrl.includes("?") ? "&" : "?") + "_t=" + Date.now()
+      : cdnUrl
+    const fetchOpts: RequestInit = force ? { cache: "no-store" } : {}
+    console.log("[reader-catalog] Fetching catalog:", url, force ? "(force)" : "(cached ok)")
+    const res = await fetch(url, fetchOpts)
     if (!res.ok) {
       console.warn("[reader-catalog] Fetch failed:", res.status, res.statusText)
       return readCache() ?? empty
