@@ -139,6 +139,14 @@ export function createAppShell(
       dispose()  // Stop audio NOW — don't rely on external handlers
       window.dispatchEvent(new Event("corpan:exit"))
     },
+    onOpen: () => {
+      // Bypass CDN cache on drawer open so user sees latest publishes
+      void fetchCatalog(cdnUrl, { forceRefresh: true }).then((catalog) => {
+        allNarrations = catalog.narrations
+        refreshBrowseSection()
+        refreshLibrarySection()
+      })
+    },
   })
 
   // Subscribe to store for minimal active-row update (avoids full re-render FUOC)
