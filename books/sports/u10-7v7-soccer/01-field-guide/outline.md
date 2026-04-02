@@ -1,8 +1,8 @@
-# 1-2-3: A U10 Field Guide — Outline
+# Under 10 Soccer 7v7 — Outline
 
 ## Chapter 1: Before and After (~2 pages)
 - Wrote a 100-page playbook before coaching a practice
-- Five games taught more than months of planning
+- Real coaching taught more than months of planning
 - This pamphlet is what survived
 - Audience: coaches, parents, players — read the whole thing
 - The goal is to win by keeping it simple
@@ -10,15 +10,15 @@
 ## Chapter 2: The 1-2-3 (~5 pages)
 - The formation: 1 sweeper, 2 defenders, 3 attackers, plus goalkeeper
 - Kids understand "1-2-3" instantly
-- The sweeper is the key: best touch and IQ plays all the way back
-- Moving the best player to sweeper produced the first win
+- The sweeper is the key position: good touch and sharp decisions
+- Moving a player from striker to sweeper transforms the team
 - Push forward as a unit, but defense comes first
 - Direct play: sweeper to most open attacker
 
 ## Chapter 3: Know Your Players (~5 pages)
 - Kids are at wildly different levels — deploy the differences
 - Match strengths to game-day roles
-- Personality archetypes: The Boss, The Lefty, The Speedster, The Wall, The Sensitive One, The Cannon
+- Personality archetypes: Bosses, Lefties, Speedsters, Walls, Sensitives, Big Legs
 - Squash beefs, acknowledge differences, build chemistry
 - Working with personalities is harder than tactics
 
@@ -34,7 +34,7 @@
 - Game-like drills over cones and lines
 - Individual and pairs touch work for beginners
 - Practice dead balls in game-like settings
-- The 6v4 Shape Game (signature drill)
+- The 6v3 Shape Game (signature drill)
 - 60-minute structure
 - Let game day inform practice day
 
@@ -42,5 +42,5 @@
 - No plan survives contact with real nine-year-olds
 - Read the game and adjust
 - Read your kids and adjust
-- This pamphlet is a snapshot — five games in
+- This pamphlet is a snapshot — keep learning
 - The best coaching at U10 is parenting in cleats

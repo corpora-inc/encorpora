@@ -603,7 +603,7 @@ export function createStargateReader(
   let swipeAnimating = false
   let swipeAnimStart = 0
   let swipeAnimFrom = 0
-  const SWIPE_MS_PER_PX = 80
+  const SWIPE_MS_PER_PX = 50
   const SWIPE_THRESHOLD_PX = 30
   const SWIPE_LOCK_PX = 10        // min movement before locking direction
   const SWIPE_ANIM_DURATION_MS = 300

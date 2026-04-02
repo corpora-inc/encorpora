@@ -9,7 +9,7 @@ The book is preserved as-is with a preface added for context. It represents mont
 ## The Book Series
 
 1. **The Playbook** (this book) — Written before coaching. The theory.
-2. **1-2-3: A U10 Field Guide** (`../01-field-guide/`) — Written during the first season, after five games. The practice.
+2. **Under 10 Soccer 7v7** (`../01-field-guide/`) — Written during the first season. The practice.
 3. **Book Three** — Planned for after a full season. The reflection.
 
 ## Building

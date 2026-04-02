@@ -11,7 +11,7 @@ LIST=false
 BUILD_PDF=true
 BUILD_EPUB=true
 
-TITLE='1-2-3: A U10 Field Guide'
+TITLE='Under 10 Soccer 7v7'
 AUTHOR='Skylar Saveland'
 LANG='en-US'
 PUBLISHER='Corpora Inc'

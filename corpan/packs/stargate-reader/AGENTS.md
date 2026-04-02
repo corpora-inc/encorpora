@@ -87,6 +87,25 @@ From `stargate-reader/` to `books/`: **THREE levels up** (`../../../books/fascin
 8. **Crawl slope too shallow**: `CRAWL_SLOPE` 0.12 → 0.25 for more vertical spread (words descend more dramatically toward camera).
 9. **Visual overhaul**: Replaced linear `CRAWL_SLOPE` with waterslide power curve (`crawlY()`). Added `BILLBOARDMODE_ALL` so words always face camera. Moved oscilloscope to `y=0` (now-plane) so words collide with it as they're highlighted. Boosted oscilloscope amplitude (2.0), brightness (white-hot pulse), and sensitivity (`rms*5`, floor 0.15).
 
+## Deployment
+
+**Reader code and narration audio are deployed independently.**
+
+- **Reader code** (`dist/app.js`, `dist/app.css`) deploys to **GitHub Pages** via the
+  `hover-runner-pages.yml` workflow. Push to `main` with changes under `corpan/packs/**`
+  triggers build + deploy automatically. No narration re-publishing needed.
+
+- **Narration audio** (ZIPs with segments, timestamps, M4A files) deploys to **S3/CloudFront**
+  via `ttsctl publish`. See `infra/PUBLISHING.md`. Only re-publish narrations when audio
+  or book data changes — NOT for reader code changes.
+
+To ship a reader-only change (e.g. a UI tweak or gesture tuning):
+1. Make the change in `src/`
+2. `npm run build` — verify it builds
+3. Bump `version` in `manifest.json`
+4. Commit and push to `main`
+5. GH Actions deploys automatically
+
 ## Dev Commands
 
 ```bash

@@ -63,7 +63,7 @@ CloudFront origin_path is `/artifacts`, so CDN URLs map:
 
 ## ZIP Contents
 
-Each narration ZIP is self-contained:
+Each narration ZIP contains audio and book data only — **not** the reader code:
 
 ```
 {packId}/
@@ -72,13 +72,16 @@ Each narration ZIP is self-contained:
 ├── segments_es.json           # Spanish translated segments
 ├── segments_zh.json           # Chinese translated segments
 ├── audio_manifest_{lang}.json # Word-level timestamps for this voice/language
-├── dist/
-│   ├── app.js                 # Stargate reader bundle (~3.9MB)
-│   └── app.css                # Stargate reader styles (~9.6KB)
 └── audio/
     └── {lang}/
         └── *.m4a              # 996 mastered M4A audio files
 ```
+
+> **Reader code is deployed separately.** The Stargate Reader JS/CSS bundle
+> (`dist/app.js`, `dist/app.css`) is deployed to GitHub Pages via the
+> `hover-runner-pages.yml` workflow, triggered automatically on push to `main`
+> when files under `corpan/packs/**` change. Narration ZIPs do NOT need to be
+> re-published when the reader code changes — only when audio or book data changes.
 
 ## AWS Credentials
 
@@ -140,7 +143,7 @@ ttsctl publish <pack_dir>
   --version TEXT           Narration version (default: 0.1.0)
   --bucket TEXT            S3 bucket (default: corpan-prod)
   --profile TEXT           AWS profile (default: corpan-publisher)
-  --reader-dist PATH       Stargate reader dist/ (auto-detected from ~/encorpora/corpan/packs/stargate-reader/dist/)
+  --reader-dist PATH       [LEGACY] Stargate reader dist/ — reader code now deploys via GH Pages, not narration ZIPs
   --tier [public|premium]  (default: public)
   --cdn-domain TEXT        CloudFront domain (default: d38iwc9748jekz.cloudfront.net)
 ```
@@ -320,7 +323,7 @@ These scripts live in `~/encorpora/corpan/infra/`. Audio dirs are gitignored via
 | CatalogV2 TypeScript types | `corpan-app/src/contentPacks/catalog.ts:18-48` |
 | Rust download code | `corpan-app/src-tauri/src/` (download_and_install) |
 | Terraform config | `~/encorpora/corpan/infra/terraform/` |
-| Stargate reader dist | `~/encorpora/corpan/packs/stargate-reader/dist/` |
+| Stargate reader dist | `~/encorpora/corpan/packs/stargate-reader/dist/` (deployed via GH Pages, NOT bundled in narration ZIPs) |
 | Book pack (Monte Albán) | `~/encorpora/books/fascinating-curiosities/01-mystery-of-monte-alban/pack/` |
 
 ## App Integration

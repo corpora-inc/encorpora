@@ -1,8 +1,8 @@
-# 1-2-3: A U10 Field Guide — Style Guide
+# Under 10 Soccer 7v7 — Style Guide
 
 ## Voice
 
-Direct, practical, personal. First-person where it helps. Written from real experience coaching real kids, not from a textbook. Plain language a nine-year-old can read. No motivational cliches. No preaching.
+Direct, practical, personal. First-person where it helps. Written from real experience coaching real kids, not from a textbook. Plain language the players can read. No motivational cliches. No preaching.
 
 ## Sentence Quality
 
