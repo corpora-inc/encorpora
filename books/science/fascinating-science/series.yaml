@@ -1,0 +1,670 @@
+series:
+  title: "Fascinating Science"
+  tagline: "The natural world in clear sentences."
+  planned_volumes: 100+
+
+  philosophy: |
+    Each volume is a ~45-minute deep dive into one foundational science
+    topic. Assume no prior knowledge. Every concept builds from zero.
+    The vocabulary is basic but precise — the real words scientists use,
+    defined clearly in context. Every sentence stands alone as a
+    language-learning utterance. The books double as Corpan narration packs.
+
+    A curious eight-year-old can follow every page. A smart adult reading
+    in a second language is learning real science and real vocabulary at
+    the same time. A native-speaking adult will still find something
+    genuinely interesting — a fact they did not know, a connection they
+    had not made.
+
+    The topics are unordered. Any volume can be read independently.
+    Together they form a complete foundation in natural science.
+
+  audience: |
+    Universal. Written for a third-grade reading level. Fully accessible
+    to a language learner at any age. Interesting enough that an adult
+    in their native language learns something real.
+
+  voice: |
+    Clear. Direct. Present tense where possible. Short sentences.
+    No jargon without definition. No filler. No metaphors that
+    obscure the science. Let the facts be fascinating on their own.
+
+  output:
+    trim: "6x9"
+    target_words: 2500-3500
+    target_time: "~45 minutes"
+    formats: [pdf, epub, corpan-pack]
+    tts: true
+
+  editorial_rules:
+    - Every sentence must stand alone as a language-learning utterance.
+    - Define every technical term in plain language the first time it appears.
+    - Assume no prior knowledge. Build from zero every time.
+    - State facts. Let the facts be interesting. No hype.
+    - If a number makes it concrete, use the number.
+    - Timeless content only. No references to current events or recent discoveries.
+    - Every chapter should contain at least one genuine moment of wonder.
+
+  disciplines:
+    - chemistry
+    - biology
+    - botany
+    - marine-biology
+    - earth-science
+    - physics
+    - astronomy
+    - weather
+    - ecology
+    - anatomy
+    - microbiology
+    - zoology
+
+  volumes:
+    # ── Chemistry ──────────────────────────────────────────────
+    - number: 1
+      title: "What Is an Atom"
+      directory: "001-what-is-an-atom"
+      discipline: chemistry
+      core_concepts: [atom, proton, neutron, electron, nucleus, element, molecule]
+
+    - number: 2
+      title: "The Periodic Table"
+      directory: "002-the-periodic-table"
+      discipline: chemistry
+      core_concepts: [element, group, period, metal, nonmetal, noble gas]
+
+    - number: 3
+      title: "States of Matter"
+      directory: "003-states-of-matter"
+      discipline: chemistry
+      core_concepts: [solid, liquid, gas, plasma, melting, boiling, condensation]
+
+    - number: 4
+      title: "Chemical Reactions"
+      directory: "004-chemical-reactions"
+      discipline: chemistry
+      core_concepts: [reactant, product, equation, catalyst, exothermic, endothermic]
+
+    - number: 5
+      title: "Acids and Bases"
+      directory: "005-acids-and-bases"
+      discipline: chemistry
+      core_concepts: [acid, base, pH, neutral, indicator, reaction]
+
+    - number: 6
+      title: "Water"
+      directory: "006-water"
+      discipline: chemistry
+      core_concepts: [H2O, solvent, freezing, boiling, density, surface tension]
+
+    - number: 7
+      title: "Mixtures and Solutions"
+      directory: "007-mixtures-and-solutions"
+      discipline: chemistry
+      core_concepts: [mixture, solution, solute, solvent, suspension, concentration]
+
+    - number: 8
+      title: "Metals"
+      directory: "008-metals"
+      discipline: chemistry
+      core_concepts: [metal, alloy, conductor, ore, smelting, corrosion]
+
+    - number: 9
+      title: "Carbon"
+      directory: "009-carbon"
+      discipline: chemistry
+      core_concepts: [carbon, organic, diamond, graphite, fossil fuel, carbon cycle]
+
+    - number: 10
+      title: "Fire and Combustion"
+      directory: "010-fire-and-combustion"
+      discipline: chemistry
+      core_concepts: [combustion, oxygen, fuel, heat, flame, ash]
+
+    - number: 11
+      title: "Crystals"
+      directory: "011-crystals"
+      discipline: chemistry
+      core_concepts: [crystal, lattice, symmetry, mineral, growth, facet]
+
+    - number: 12
+      title: "Salt"
+      directory: "012-salt"
+      discipline: chemistry
+      core_concepts: [sodium chloride, ionic bond, dissolve, evaporation, mineral, brine]
+
+    # ── Biology ────────────────────────────────────────────────
+    - number: 13
+      title: "What Is a Cell"
+      directory: "013-what-is-a-cell"
+      discipline: biology
+      core_concepts: [cell, membrane, nucleus, organelle, mitochondria, division]
+
+    - number: 14
+      title: "DNA"
+      directory: "014-dna"
+      discipline: biology
+      core_concepts: [DNA, gene, chromosome, base pair, helix, protein]
+
+    - number: 15
+      title: "Photosynthesis"
+      directory: "015-photosynthesis"
+      discipline: biology
+      core_concepts: [chlorophyll, sunlight, carbon dioxide, glucose, oxygen, leaf]
+
+    - number: 16
+      title: "The Human Heart"
+      directory: "016-the-human-heart"
+      discipline: anatomy
+      core_concepts: [heart, chamber, valve, artery, vein, pulse, circulation]
+
+    - number: 17
+      title: "Blood"
+      directory: "017-blood"
+      discipline: anatomy
+      core_concepts: [red blood cell, white blood cell, platelet, plasma, hemoglobin, oxygen]
+
+    - number: 18
+      title: "Bones and Muscles"
+      directory: "018-bones-and-muscles"
+      discipline: anatomy
+      core_concepts: [skeleton, bone, muscle, joint, tendon, marrow]
+
+    - number: 19
+      title: "The Brain"
+      directory: "019-the-brain"
+      discipline: anatomy
+      core_concepts: [neuron, synapse, hemisphere, cortex, signal, memory]
+
+    - number: 20
+      title: "How You Breathe"
+      directory: "020-how-you-breathe"
+      discipline: anatomy
+      core_concepts: [lung, diaphragm, trachea, alveoli, oxygen, carbon dioxide]
+
+    - number: 21
+      title: "How You See"
+      directory: "021-how-you-see"
+      discipline: anatomy
+      core_concepts: [eye, retina, pupil, lens, optic nerve, light]
+
+    - number: 22
+      title: "How You Hear"
+      directory: "022-how-you-hear"
+      discipline: anatomy
+      core_concepts: [ear, eardrum, cochlea, sound wave, vibration, nerve]
+
+    - number: 23
+      title: "Digestion"
+      directory: "023-digestion"
+      discipline: anatomy
+      core_concepts: [stomach, intestine, enzyme, nutrient, absorption, bacteria]
+
+    - number: 24
+      title: "Bacteria"
+      directory: "024-bacteria"
+      discipline: microbiology
+      core_concepts: [bacterium, cell, reproduction, antibiotic, colony, decomposition]
+
+    - number: 25
+      title: "Viruses"
+      directory: "025-viruses"
+      discipline: microbiology
+      core_concepts: [virus, host, replication, vaccine, immune system, mutation]
+
+    # ── Botany ─────────────────────────────────────────────────
+    - number: 26
+      title: "How Plants Grow"
+      directory: "026-how-plants-grow"
+      discipline: botany
+      core_concepts: [germination, root, stem, leaf, sunlight, water]
+
+    - number: 27
+      title: "Seeds"
+      directory: "027-seeds"
+      discipline: botany
+      core_concepts: [seed, embryo, coat, dispersal, dormancy, germination]
+
+    - number: 28
+      title: "Roots"
+      directory: "028-roots"
+      discipline: botany
+      core_concepts: [root, taproot, fibrous, absorption, anchor, nutrient]
+
+    - number: 29
+      title: "Leaves and Sunlight"
+      directory: "029-leaves-and-sunlight"
+      discipline: botany
+      core_concepts: [leaf, chlorophyll, stomata, transpiration, vein, photosynthesis]
+
+    - number: 30
+      title: "Flowers and Pollination"
+      directory: "030-flowers-and-pollination"
+      discipline: botany
+      core_concepts: [flower, pollen, stamen, pistil, pollinator, fertilization]
+
+    - number: 31
+      title: "Trees"
+      directory: "031-trees"
+      discipline: botany
+      core_concepts: [tree, bark, ring, canopy, root system, oxygen]
+
+    - number: 32
+      title: "Fruit"
+      directory: "032-fruit"
+      discipline: botany
+      core_concepts: [fruit, seed, ripening, sugar, dispersal, ovary]
+
+    - number: 33
+      title: "Forests"
+      directory: "033-forests"
+      discipline: ecology
+      core_concepts: [forest, canopy, understory, biodiversity, carbon, ecosystem]
+
+    - number: 34
+      title: "Cacti and Deserts"
+      directory: "034-cacti-and-deserts"
+      discipline: botany
+      core_concepts: [cactus, spine, succulent, drought, adaptation, desert]
+
+    - number: 35
+      title: "Algae"
+      directory: "035-algae"
+      discipline: botany
+      core_concepts: [algae, photosynthesis, oxygen, aquatic, bloom, chlorophyll]
+
+    # ── Marine Biology ─────────────────────────────────────────
+    - number: 36
+      title: "The Ocean"
+      directory: "036-the-ocean"
+      discipline: marine-biology
+      core_concepts: [ocean, salt water, depth, current, pressure, zone]
+
+    - number: 37
+      title: "Coral Reefs"
+      directory: "037-coral-reefs"
+      discipline: marine-biology
+      core_concepts: [coral, polyp, reef, symbiosis, calcium carbonate, bleaching]
+
+    - number: 38
+      title: "Sharks"
+      directory: "038-sharks"
+      discipline: marine-biology
+      core_concepts: [shark, cartilage, electroreception, predator, species, evolution]
+
+    - number: 39
+      title: "Whales"
+      directory: "039-whales"
+      discipline: marine-biology
+      core_concepts: [whale, mammal, blowhole, migration, echolocation, baleen]
+
+    - number: 40
+      title: "Jellyfish"
+      directory: "040-jellyfish"
+      discipline: marine-biology
+      core_concepts: [jellyfish, tentacle, sting, plankton, invertebrate, bioluminescence]
+
+    - number: 41
+      title: "Tides and Currents"
+      directory: "041-tides-and-currents"
+      discipline: marine-biology
+      core_concepts: [tide, current, moon, gravity, high tide, low tide]
+
+    - number: 42
+      title: "The Deep Sea"
+      directory: "042-the-deep-sea"
+      discipline: marine-biology
+      core_concepts: [deep sea, pressure, bioluminescence, hydrothermal vent, trench, darkness]
+
+    - number: 43
+      title: "Plankton"
+      directory: "043-plankton"
+      discipline: marine-biology
+      core_concepts: [plankton, phytoplankton, zooplankton, food chain, ocean, photosynthesis]
+
+    - number: 44
+      title: "Octopuses"
+      directory: "044-octopuses"
+      discipline: marine-biology
+      core_concepts: [octopus, tentacle, camouflage, intelligence, invertebrate, ink]
+
+    - number: 45
+      title: "Sea Turtles"
+      directory: "045-sea-turtles"
+      discipline: marine-biology
+      core_concepts: [sea turtle, migration, nesting, shell, endangered, navigation]
+
+    - number: 46
+      title: "Fish"
+      directory: "046-fish"
+      discipline: marine-biology
+      core_concepts: [fish, gill, scale, fin, swim bladder, lateral line]
+
+    - number: 47
+      title: "Kelp Forests"
+      directory: "047-kelp-forests"
+      discipline: marine-biology
+      core_concepts: [kelp, forest, holdfast, canopy, ecosystem, sea otter]
+
+    # ── Earth Science ──────────────────────────────────────────
+    - number: 48
+      title: "Rocks and Minerals"
+      directory: "048-rocks-and-minerals"
+      discipline: earth-science
+      core_concepts: [rock, mineral, igneous, sedimentary, metamorphic, crystal]
+
+    - number: 49
+      title: "Volcanoes"
+      directory: "049-volcanoes"
+      discipline: earth-science
+      core_concepts: [volcano, magma, lava, eruption, tectonic plate, crater]
+
+    - number: 50
+      title: "Earthquakes"
+      directory: "050-earthquakes"
+      discipline: earth-science
+      core_concepts: [earthquake, fault, seismic wave, epicenter, magnitude, tectonic plate]
+
+    - number: 51
+      title: "Fossils"
+      directory: "051-fossils"
+      discipline: earth-science
+      core_concepts: [fossil, sediment, mineralization, extinction, paleontology, stratum]
+
+    - number: 52
+      title: "Soil"
+      directory: "052-soil"
+      discipline: earth-science
+      core_concepts: [soil, humus, clay, sand, nutrient, erosion, horizon]
+
+    - number: 53
+      title: "The Water Cycle"
+      directory: "053-the-water-cycle"
+      discipline: earth-science
+      core_concepts: [evaporation, condensation, precipitation, groundwater, runoff, cloud]
+
+    - number: 54
+      title: "Caves"
+      directory: "054-caves"
+      discipline: earth-science
+      core_concepts: [cave, stalactite, stalagmite, limestone, erosion, underground]
+
+    - number: 55
+      title: "Mountains"
+      directory: "055-mountains"
+      discipline: earth-science
+      core_concepts: [mountain, tectonic plate, erosion, summit, range, altitude]
+
+    - number: 56
+      title: "Rivers"
+      directory: "056-rivers"
+      discipline: earth-science
+      core_concepts: [river, source, mouth, tributary, delta, erosion, sediment]
+
+    - number: 57
+      title: "Glaciers"
+      directory: "057-glaciers"
+      discipline: earth-science
+      core_concepts: [glacier, ice, moraine, crevasse, melt, sea level]
+
+    - number: 58
+      title: "Erosion"
+      directory: "058-erosion"
+      discipline: earth-science
+      core_concepts: [erosion, weathering, wind, water, ice, sediment, canyon]
+
+    - number: 59
+      title: "The Layers of the Earth"
+      directory: "059-the-layers-of-the-earth"
+      discipline: earth-science
+      core_concepts: [crust, mantle, core, iron, convection, seismic wave]
+
+    - number: 60
+      title: "Gemstones"
+      directory: "060-gemstones"
+      discipline: earth-science
+      core_concepts: [gemstone, mineral, crystal, hardness, diamond, ruby, formation]
+
+    # ── Physics ────────────────────────────────────────────────
+    - number: 61
+      title: "Gravity"
+      directory: "061-gravity"
+      discipline: physics
+      core_concepts: [gravity, mass, weight, orbit, free fall, Newton]
+
+    - number: 62
+      title: "Light"
+      directory: "062-light"
+      discipline: physics
+      core_concepts: [light, photon, wavelength, spectrum, reflection, refraction]
+
+    - number: 63
+      title: "Sound"
+      directory: "063-sound"
+      discipline: physics
+      core_concepts: [sound, vibration, wave, frequency, pitch, volume, medium]
+
+    - number: 64
+      title: "Heat and Temperature"
+      directory: "064-heat-and-temperature"
+      discipline: physics
+      core_concepts: [heat, temperature, conduction, convection, radiation, thermometer]
+
+    - number: 65
+      title: "Electricity"
+      directory: "065-electricity"
+      discipline: physics
+      core_concepts: [electricity, electron, current, voltage, circuit, conductor]
+
+    - number: 66
+      title: "Magnets"
+      directory: "066-magnets"
+      discipline: physics
+      core_concepts: [magnet, pole, field, attraction, repulsion, compass, iron]
+
+    - number: 67
+      title: "Force and Motion"
+      directory: "067-force-and-motion"
+      discipline: physics
+      core_concepts: [force, motion, inertia, acceleration, Newton, mass]
+
+    - number: 68
+      title: "Simple Machines"
+      directory: "068-simple-machines"
+      discipline: physics
+      core_concepts: [lever, pulley, wheel, inclined plane, screw, wedge, force]
+
+    - number: 69
+      title: "Waves"
+      directory: "069-waves"
+      discipline: physics
+      core_concepts: [wave, amplitude, frequency, wavelength, crest, trough, medium]
+
+    - number: 70
+      title: "Friction"
+      directory: "070-friction"
+      discipline: physics
+      core_concepts: [friction, surface, heat, resistance, lubricant, grip]
+
+    - number: 71
+      title: "Pressure"
+      directory: "071-pressure"
+      discipline: physics
+      core_concepts: [pressure, force, area, atmosphere, Pascal, depth]
+
+    - number: 72
+      title: "Energy"
+      directory: "072-energy"
+      discipline: physics
+      core_concepts: [energy, kinetic, potential, conservation, transfer, joule]
+
+    # ── Astronomy ──────────────────────────────────────────────
+    - number: 73
+      title: "The Sun"
+      directory: "073-the-sun"
+      discipline: astronomy
+      core_concepts: [sun, star, fusion, hydrogen, helium, solar system, light]
+
+    - number: 74
+      title: "The Moon"
+      directory: "074-the-moon"
+      discipline: astronomy
+      core_concepts: [moon, orbit, phase, crater, tide, eclipse, gravity]
+
+    - number: 75
+      title: "Earth in Space"
+      directory: "075-earth-in-space"
+      discipline: astronomy
+      core_concepts: [Earth, rotation, orbit, tilt, season, day, year]
+
+    - number: 76
+      title: "The Planets"
+      directory: "076-the-planets"
+      discipline: astronomy
+      core_concepts: [planet, Mercury, Venus, Mars, Jupiter, Saturn, orbit]
+
+    - number: 77
+      title: "Stars"
+      directory: "077-stars"
+      discipline: astronomy
+      core_concepts: [star, fusion, brightness, color, temperature, constellation]
+
+    - number: 78
+      title: "Galaxies"
+      directory: "078-galaxies"
+      discipline: astronomy
+      core_concepts: [galaxy, Milky Way, spiral, elliptical, billion, light year]
+
+    - number: 79
+      title: "Black Holes"
+      directory: "079-black-holes"
+      discipline: astronomy
+      core_concepts: [black hole, gravity, event horizon, singularity, mass, light]
+
+    - number: 80
+      title: "Comets and Asteroids"
+      directory: "080-comets-and-asteroids"
+      discipline: astronomy
+      core_concepts: [comet, asteroid, orbit, tail, impact, belt, ice]
+
+    - number: 81
+      title: "The Big Bang"
+      directory: "081-the-big-bang"
+      discipline: astronomy
+      core_concepts: [Big Bang, expansion, cosmic background, hydrogen, helium, billion]
+
+    - number: 82
+      title: "Light Years and Distance"
+      directory: "082-light-years-and-distance"
+      discipline: astronomy
+      core_concepts: [light year, distance, speed of light, parsec, galaxy, scale]
+
+    - number: 83
+      title: "Orbits"
+      directory: "083-orbits"
+      discipline: astronomy
+      core_concepts: [orbit, gravity, ellipse, satellite, velocity, Kepler]
+
+    - number: 84
+      title: "Telescopes"
+      directory: "084-telescopes"
+      discipline: astronomy
+      core_concepts: [telescope, lens, mirror, magnification, wavelength, observatory]
+
+    # ── Weather and Climate ────────────────────────────────────
+    - number: 85
+      title: "Clouds"
+      directory: "085-clouds"
+      discipline: weather
+      core_concepts: [cloud, condensation, water vapor, cumulus, stratus, cirrus]
+
+    - number: 86
+      title: "Rain"
+      directory: "086-rain"
+      discipline: weather
+      core_concepts: [rain, precipitation, droplet, condensation, water cycle, gauge]
+
+    - number: 87
+      title: "Wind"
+      directory: "087-wind"
+      discipline: weather
+      core_concepts: [wind, pressure, atmosphere, breeze, gust, Coriolis]
+
+    - number: 88
+      title: "Storms"
+      directory: "088-storms"
+      discipline: weather
+      core_concepts: [storm, thunder, hurricane, tornado, pressure, energy]
+
+    - number: 89
+      title: "Snow and Ice"
+      directory: "089-snow-and-ice"
+      discipline: weather
+      core_concepts: [snow, ice, crystal, freezing, glacier, permafrost]
+
+    - number: 90
+      title: "Seasons"
+      directory: "090-seasons"
+      discipline: weather
+      core_concepts: [season, tilt, equinox, solstice, hemisphere, sunlight]
+
+    - number: 91
+      title: "The Atmosphere"
+      directory: "091-the-atmosphere"
+      discipline: weather
+      core_concepts: [atmosphere, layer, troposphere, stratosphere, ozone, nitrogen]
+
+    - number: 92
+      title: "Lightning"
+      directory: "092-lightning"
+      discipline: weather
+      core_concepts: [lightning, charge, discharge, thunder, static, plasma]
+
+    - number: 93
+      title: "Rainbows"
+      directory: "093-rainbows"
+      discipline: weather
+      core_concepts: [rainbow, refraction, spectrum, prism, wavelength, droplet]
+
+    # ── Ecology ────────────────────────────────────────────────
+    - number: 94
+      title: "Food Chains"
+      directory: "094-food-chains"
+      discipline: ecology
+      core_concepts: [food chain, producer, consumer, decomposer, energy, trophic level]
+
+    - number: 95
+      title: "Ecosystems"
+      directory: "095-ecosystems"
+      discipline: ecology
+      core_concepts: [ecosystem, habitat, community, population, biome, balance]
+
+    - number: 96
+      title: "Decomposition"
+      directory: "096-decomposition"
+      discipline: ecology
+      core_concepts: [decomposition, fungus, bacterium, nutrient, cycle, decay]
+
+    - number: 97
+      title: "Migration"
+      directory: "097-migration"
+      discipline: ecology
+      core_concepts: [migration, navigation, season, instinct, route, survival]
+
+    - number: 98
+      title: "Symbiosis"
+      directory: "098-symbiosis"
+      discipline: ecology
+      core_concepts: [symbiosis, mutualism, parasitism, commensalism, host, relationship]
+
+    - number: 99
+      title: "Adaptation"
+      directory: "099-adaptation"
+      discipline: ecology
+      core_concepts: [adaptation, natural selection, trait, environment, survival, generation]
+
+    - number: 100
+      title: "Biodiversity"
+      directory: "100-biodiversity"
+      discipline: ecology
+      core_concepts: [biodiversity, species, extinction, habitat, conservation, gene pool]
