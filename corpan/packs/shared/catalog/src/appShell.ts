@@ -109,8 +109,17 @@ export function createAppShell(
   let browseSearchQuery = ""
   let browseShowingDetail = false
 
+  // --- Now-playing section state ---
+  let nowPlayingSectionEl: HTMLElement | null = null
+
   // --- Build drawer sections ---
   const builtinSections: DrawerSectionDef[] = [
+    {
+      id: "now-playing",
+      title: "",
+      priority: 10,
+      render: (container) => renderNowPlayingSection(container),
+    },
     {
       id: "library",
       title: "My Library",
@@ -143,6 +152,7 @@ export function createAppShell(
       // Bypass CDN cache on drawer open so user sees latest publishes
       void fetchCatalog(cdnUrl, { forceRefresh: true }).then((catalog) => {
         allNarrations = catalog.narrations
+        refreshNowPlayingSection()
         refreshBrowseSection()
         refreshLibrarySection()
       })
@@ -154,6 +164,7 @@ export function createAppShell(
     if (state.currentNarrationId !== prev.currentNarrationId) {
       if (browseShowingDetail) updateDetailActiveRow(state.currentNarrationId)
       refreshLibrarySection()
+      refreshNowPlayingSection()
     }
   })
 
@@ -219,7 +230,8 @@ export function createAppShell(
     // Pick most recently installed
     switchToNarration(installed[0].narrationId)
   } else {
-    // Nothing installed — onboard
+    // Nothing installed — onboard to browse screen
+    drawerStore.setState({ activeScreen: "browse" })
     drawer.open()
     void fetchCatalog(cdnUrl).then((catalog) => {
       allNarrations = catalog.narrations
@@ -307,6 +319,192 @@ export function createAppShell(
     drawerStore.setState({ languages: pills })
   }
 
+  // --- Now Playing section rendering ---
+  function renderNowPlayingSection(container: HTMLElement): void {
+    nowPlayingSectionEl = container
+    refreshNowPlayingSection()
+  }
+
+  function refreshNowPlayingSection(): void {
+    if (!nowPlayingSectionEl) return
+    nowPlayingSectionEl.innerHTML = ""
+
+    const activeId = getActive()
+    if (!activeId) {
+      const empty = document.createElement("div")
+      empty.className = "command-drawer-browse-empty"
+      empty.textContent = "No book selected"
+      nowPlayingSectionEl.appendChild(empty)
+      return
+    }
+
+    // Find the current book's narrations from the catalog
+    const installedInfo = getInstalled(activeId)
+    if (!installedInfo) return
+    const bookId = installedInfo.bookId
+
+    const bookNarrations = allNarrations.filter(n => n.bookId === bookId)
+
+    if (bookNarrations.length === 0) {
+      // Catalog not loaded yet — show just installed info
+      const title = document.createElement("div")
+      title.className = "command-drawer-detail-title"
+      title.textContent = installedInfo.bookTitle
+      nowPlayingSectionEl.appendChild(title)
+      return
+    }
+
+    // Render the same detail UI used by the browse detail screen
+    const detail = document.createElement("div")
+    detail.className = "command-drawer-detail"
+
+    const first = bookNarrations[0]
+
+    // Title
+    const title = document.createElement("div")
+    title.className = "command-drawer-detail-title"
+    title.textContent = first.bookTitle
+    detail.appendChild(title)
+
+    if (first.series) {
+      const subtitle = document.createElement("div")
+      subtitle.className = "command-drawer-detail-subtitle"
+      subtitle.textContent = first.series + (first.volume ? ` \u00B7 Vol. ${first.volume}` : "")
+      detail.appendChild(subtitle)
+    }
+
+    // Installed narrations
+    const installedNarrs = bookNarrations.filter(n => isInstalled(n.id))
+    const availableNarrs = bookNarrations.filter(n => !isInstalled(n.id))
+    const active = getActive()
+
+    for (const narr of installedNarrs) {
+      const row = document.createElement("div")
+      row.className = "catalog-narration-row catalog-narration-row--installed"
+      row.dataset.narrationId = narr.id
+      if (narr.id === active) {
+        row.classList.add("catalog-narration-row--active")
+      }
+      row.style.cursor = "pointer"
+
+      const info = document.createElement("div")
+      info.className = "catalog-narration-info"
+
+      const lang = document.createElement("div")
+      lang.className = "catalog-narration-lang"
+      lang.textContent = getLanguageName(narr.language)
+
+      const voice = document.createElement("div")
+      voice.className = "catalog-narration-voice"
+      voice.textContent = narr.voiceName
+
+      const instInfo = getInstalled(narr.id)
+      const versionDiv = document.createElement("div")
+      if (instInfo && hasUpdate(narr.version, instInfo.version)) {
+        versionDiv.className = "catalog-narration-version catalog-narration-version--update"
+        versionDiv.textContent = `v${instInfo.version} \u2192 v${narr.version}`
+      } else if (instInfo) {
+        versionDiv.className = "catalog-narration-version"
+        versionDiv.textContent = `v${instInfo.version}`
+      }
+
+      info.append(lang, voice, versionDiv)
+      row.appendChild(info)
+
+      // Active indicator
+      if (narr.id === active) {
+        const check = document.createElement("div")
+        check.className = "catalog-narration-active-indicator"
+        check.textContent = "\u2713"
+        row.appendChild(check)
+      }
+
+      // Update button
+      if (instInfo && hasUpdate(narr.version, instInfo.version)) {
+        const updateBtn = document.createElement("button")
+        updateBtn.className = "catalog-btn catalog-btn--update"
+        updateBtn.innerHTML = `<svg class="catalog-btn-icon" viewBox="0 0 24 24"><path d="M12 4v12m0 0l-4-4m4 4l4-4"/><path d="M4 17v2a1 1 0 001 1h14a1 1 0 001-1v-2"/></svg>`
+        updateBtn.title = "Update"
+        updateBtn.addEventListener("click", async (e) => {
+          e.stopPropagation()
+          updateBtn.className = "catalog-btn catalog-btn--downloading"
+          updateBtn.innerHTML = `<div class="catalog-btn-indeterminate"></div><span class="catalog-btn-label">Connecting\u2026</span>`
+          const unsub = subscribeProgress(narr.id, (ds) => {
+            if (ds.stage === "downloading") {
+              const pct = ds.total > 0 ? Math.round((ds.progress / ds.total) * 100) : 0
+              const downloaded = ds.progress > 0 ? (ds.progress / 1048576).toFixed(1) : "0"
+              const total = ds.total > 0 ? (ds.total / 1048576).toFixed(0) : "?"
+              updateBtn.innerHTML = `<span class="catalog-btn-label">${pct}% \u00B7 ${downloaded}/${total} MB</span><div class="catalog-btn-progress" style="width:${pct}%"></div>`
+            } else if (ds.stage === "verifying") {
+              updateBtn.innerHTML = `<div class="catalog-btn-indeterminate"></div><span class="catalog-btn-label">Verifying\u2026</span>`
+            } else if (ds.stage === "extracting") {
+              updateBtn.innerHTML = `<div class="catalog-btn-indeterminate"></div><span class="catalog-btn-label">Installing\u2026</span>`
+            } else if (ds.stage === "complete") {
+              refreshNowPlayingSection()
+            }
+          })
+          progressUnsubs.push(unsub)
+          await installNarration(narr)
+          refreshNowPlayingSection()
+        })
+        row.appendChild(updateBtn)
+      }
+
+      // Delete button
+      const delBtn = document.createElement("button")
+      delBtn.className = "catalog-btn catalog-btn--danger"
+      delBtn.innerHTML = `<svg class="catalog-btn-icon" viewBox="0 0 24 24"><path d="M3 6h18"/><path d="M8 6V4a2 2 0 012-2h4a2 2 0 012 2v2"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/></svg>`
+      delBtn.title = "Delete"
+      delBtn.addEventListener("click", async (e) => {
+        e.stopPropagation()
+        const wasActive = narr.id === getActive()
+        await deleteNarration(narr.id)
+
+        if (wasActive) {
+          const remaining = listInstalled()
+          if (remaining.length > 0) {
+            switchToNarration(remaining[0].narrationId)
+          } else {
+            switching = true
+            drawerStore.setState({ currentNarrationId: "", currentLanguage: "", languages: [], nowPlaying: { bookTitle: "" } })
+            switching = false
+            if (readerInstance) {
+              readerInstance.dispose()
+              readerInstance = null
+            }
+          }
+        }
+
+        refreshNowPlayingSection()
+        refreshLibrarySection()
+      })
+      row.appendChild(delBtn)
+
+      row.addEventListener("click", () => {
+        if (narr.id === getActive()) return
+        switchToNarration(narr.id)
+        refreshNowPlayingSection()
+      })
+
+      detail.appendChild(row)
+    }
+
+    // Available (not downloaded) narrations
+    if (availableNarrs.length > 0) {
+      const sTitle = document.createElement("div")
+      sTitle.className = "catalog-detail-section-title"
+      sTitle.textContent = "Available"
+      sTitle.style.marginTop = "16px"
+      detail.appendChild(sTitle)
+
+      for (const narr of availableNarrs) {
+        detail.appendChild(renderNarrationRow(narr, false))
+      }
+    }
+
+    nowPlayingSectionEl.appendChild(detail)
+  }
+
   // --- Library section rendering ---
   function renderLibrarySection(container: HTMLElement): void {
     librarySectionEl = container
@@ -389,18 +587,21 @@ export function createAppShell(
       }
 
       card.addEventListener("click", () => {
-        // If only one narration, play it directly (skip if already active)
+        // If only one narration, play it directly and go to now-playing
         if (narrations.length === 1) {
-          if (narrations[0].narrationId === active) return
-          switchToNarration(narrations[0].narrationId)
+          if (narrations[0].narrationId !== active) {
+            switchToNarration(narrations[0].narrationId)
+          }
+          drawerStore.setState({ activeScreen: "now-playing" })
         } else {
-          // Show book detail inline in browse section for picking narration
+          // Show book detail screen for picking narration
           const catalogNarrations = allNarrations.filter(n => n.bookId === first.bookId)
           if (catalogNarrations.length > 0) {
             showInlineBookDetail(catalogNarrations)
           } else {
-            // Fallback: play first narration
+            // Fallback: play first narration and go to now-playing
             switchToNarration(narrations[0].narrationId)
+            drawerStore.setState({ activeScreen: "now-playing" })
           }
         }
       })
@@ -426,7 +627,18 @@ export function createAppShell(
   }
 
   function refreshBrowseSection(): void {
-    if (!browseSectionEl || browseShowingDetail) return
+    // When detail screen is active, browseSectionEl points at the detail screen.
+    // Restore it to the browse screen container for refresh.
+    if (browseShowingDetail) {
+      const browseScreen = drawer.getScreen("browse")
+      if (browseScreen) {
+        const container = browseScreen.querySelector(".command-drawer-screen-content") as HTMLElement
+        if (container) browseSectionEl = container
+      }
+      browseShowingDetail = false
+      detailNarrations = []
+    }
+    if (!browseSectionEl) return
     cleanupProgressSubs()
     browseSectionEl.innerHTML = ""
 
@@ -566,10 +778,16 @@ export function createAppShell(
   let detailNarrations: CatalogNarrationEntry[] = []
 
   function showInlineBookDetail(narrations: CatalogNarrationEntry[]): void {
-    if (!browseSectionEl || narrations.length === 0) return
+    if (narrations.length === 0) return
     detailNarrations = narrations
     browseShowingDetail = true
+    // Render into the detail screen and navigate to it
+    const detailScreen = drawer.getScreen("detail")
+    if (detailScreen) {
+      browseSectionEl = detailScreen
+    }
     renderBookDetail()
+    drawerStore.setState({ activeScreen: "detail" })
   }
 
   function renderBookDetail(): void {
@@ -588,7 +806,13 @@ export function createAppShell(
     backBtn.addEventListener("click", () => {
       browseShowingDetail = false
       detailNarrations = []
-      refreshBrowseSection()
+      // Restore browseSectionEl to the browse screen container
+      const browseScreen = drawer.getScreen("browse")
+      if (browseScreen) {
+        const container = browseScreen.querySelector(".command-drawer-screen-content") as HTMLElement
+        if (container) browseSectionEl = container
+      }
+      drawerStore.setState({ activeScreen: "browse" })
     })
     detail.appendChild(backBtn)
 
@@ -661,25 +885,29 @@ export function createAppShell(
         updateBtn.title = "Update"
         updateBtn.addEventListener("click", async (e) => {
           e.stopPropagation()
-          updateBtn.className = "catalog-btn catalog-btn--disabled"
-          updateBtn.textContent = "Updating..."
+          updateBtn.className = "catalog-btn catalog-btn--downloading"
+          updateBtn.innerHTML = `<div class="catalog-btn-indeterminate"></div><span class="catalog-btn-label">Connecting\u2026</span>`
           const unsub = subscribeProgress(narr.id, (ds) => {
             if (ds.stage === "downloading") {
               const pct = ds.total > 0 ? Math.round((ds.progress / ds.total) * 100) : 0
-              updateBtn.innerHTML = `<span>${pct}%</span><div class="catalog-btn-progress" style="width:${pct}%"></div>`
+              const downloaded = ds.progress > 0 ? (ds.progress / 1048576).toFixed(1) : "0"
+              const total = ds.total > 0 ? (ds.total / 1048576).toFixed(0) : "?"
+              updateBtn.innerHTML = `<span class="catalog-btn-label">${pct}% \u00B7 ${downloaded}/${total} MB</span><div class="catalog-btn-progress" style="width:${pct}%"></div>`
             } else if (ds.stage === "verifying") {
-              updateBtn.textContent = "Verifying..."
+              updateBtn.innerHTML = `<div class="catalog-btn-indeterminate"></div><span class="catalog-btn-label">Verifying\u2026</span>`
             } else if (ds.stage === "extracting") {
-              updateBtn.textContent = "Installing..."
+              updateBtn.innerHTML = `<div class="catalog-btn-indeterminate"></div><span class="catalog-btn-label">Installing\u2026</span>`
             } else if (ds.stage === "complete") {
               renderBookDetail()
               refreshLibrarySection()
+              refreshNowPlayingSection()
             }
           })
           progressUnsubs.push(unsub)
           await installNarration(narr)
           renderBookDetail()
           refreshLibrarySection()
+          refreshNowPlayingSection()
         })
         row.appendChild(updateBtn)
       }
@@ -712,6 +940,13 @@ export function createAppShell(
 
         browseShowingDetail = false
         detailNarrations = []
+        // Navigate back to browse screen after delete
+        const browseScreen = drawer.getScreen("browse")
+        if (browseScreen) {
+          const container = browseScreen.querySelector(".command-drawer-screen-content") as HTMLElement
+          if (container) browseSectionEl = container
+        }
+        drawerStore.setState({ activeScreen: "browse" })
         refreshBrowseSection()
         refreshLibrarySection()
       })
@@ -720,6 +955,7 @@ export function createAppShell(
       row.addEventListener("click", () => {
         if (narr.id === getActive()) return
         switchToNarration(narr.id)
+        drawerStore.setState({ activeScreen: "now-playing" })
       })
 
       detail.appendChild(row)
@@ -778,52 +1014,63 @@ export function createAppShell(
 
     const state = getProgressState(narration.id)
 
+    function startDownload(e: MouseEvent) {
+      e.stopPropagation()
+      // Show indeterminate progress immediately
+      btn.className = "catalog-btn catalog-btn--downloading"
+      btn.innerHTML = `<div class="catalog-btn-indeterminate"></div><span class="catalog-btn-label">Connecting\u2026</span><div class="catalog-btn-progress" style="width:0%"></div>`
+      btn.onclick = null
+      // Fire and forget — progress subscription handles all UI updates
+      installNarration(narration).then((ok) => {
+        if (ok) {
+          if (browseShowingDetail) renderBookDetail()
+          else refreshBrowseSection()
+          refreshLibrarySection()
+          refreshNowPlayingSection()
+        }
+      })
+    }
+
     function updateBtn(ds: DownloadState): void {
       switch (ds.stage) {
         case "idle":
           btn.className = "catalog-btn"
+          btn.style.borderColor = ""
+          btn.style.color = ""
           btn.innerHTML = `<svg class="catalog-btn-icon" viewBox="0 0 24 24"><path d="M12 4v12m0 0l-4-4m4 4l4-4"/><path d="M4 17v2a1 1 0 001 1h14a1 1 0 001-1v-2"/></svg>${Math.round(narration.sizeMb)} MB`
-          btn.onclick = async (e) => {
-            e.stopPropagation()
-            btn.className = "catalog-btn catalog-btn--disabled"
-            btn.textContent = "Starting..."
-            await installNarration(narration)
-            // Stay on detail view — re-render with newly installed narration
-            renderBookDetail()
-            refreshLibrarySection()
-          }
+          btn.onclick = startDownload
           break
         case "downloading": {
-          btn.className = "catalog-btn catalog-btn--disabled"
           const pct = ds.total > 0 ? Math.round((ds.progress / ds.total) * 100) : 0
-          btn.innerHTML = `<span>${pct}%</span><div class="catalog-btn-progress" style="width:${pct}%"></div>`
+          const downloaded = ds.progress > 0 ? (ds.progress / 1048576).toFixed(1) : "0"
+          const total = ds.total > 0 ? (ds.total / 1048576).toFixed(0) : Math.round(narration.sizeMb).toString()
+          btn.className = "catalog-btn catalog-btn--downloading"
+          btn.innerHTML = `<span class="catalog-btn-label">${pct}% \u00B7 ${downloaded}/${total} MB</span><div class="catalog-btn-progress" style="width:${pct}%"></div>`
+          btn.onclick = null
           break
         }
         case "verifying":
-          btn.className = "catalog-btn catalog-btn--disabled"
-          btn.textContent = "Verifying..."
+          btn.className = "catalog-btn catalog-btn--downloading"
+          btn.innerHTML = `<div class="catalog-btn-indeterminate"></div><span class="catalog-btn-label">Verifying\u2026</span>`
+          btn.onclick = null
           break
         case "extracting":
-          btn.className = "catalog-btn catalog-btn--disabled"
-          btn.textContent = "Installing..."
+          btn.className = "catalog-btn catalog-btn--downloading"
+          btn.innerHTML = `<div class="catalog-btn-indeterminate"></div><span class="catalog-btn-label">Installing\u2026</span>`
+          btn.onclick = null
           break
         case "complete":
-          if (browseShowingDetail) {
-            renderBookDetail()
-          } else {
-            refreshBrowseSection()
-          }
+          if (browseShowingDetail) renderBookDetail()
+          else refreshBrowseSection()
           refreshLibrarySection()
+          refreshNowPlayingSection()
           break
         case "error":
-          btn.className = "catalog-btn"
-          btn.innerHTML = `\u21BB ${Math.round(narration.sizeMb)} MB`
-          btn.style.borderColor = "var(--catalog-error)"
-          btn.style.color = "var(--catalog-error)"
-          btn.onclick = async (e) => {
-            e.stopPropagation()
-            await installNarration(narration)
-          }
+          btn.className = "catalog-btn catalog-btn--error"
+          btn.innerHTML = `<svg class="catalog-btn-icon" viewBox="0 0 24 24"><path d="M1 4v6h6"/><path d="M3.51 15a9 9 0 105.64-11.36L3 10"/></svg>Retry \u00B7 ${Math.round(narration.sizeMb)} MB`
+          btn.style.borderColor = ""
+          btn.style.color = ""
+          btn.onclick = startDownload
           break
       }
     }

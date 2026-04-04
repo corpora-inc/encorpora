@@ -71,3 +71,4 @@ export { compareVersions, hasUpdate } from "./src/versionUtil"
 
 // Re-export drawer types used by readers
 export type { DrawerSectionDef, LanguageInfo } from "../ui/commandDrawer"
+export type { DrawerScreen } from "../state/drawerStore"

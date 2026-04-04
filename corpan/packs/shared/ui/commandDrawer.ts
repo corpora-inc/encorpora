@@ -1,5 +1,5 @@
 import "./commandDrawer.css"
-import { drawerStore } from "../state/drawerStore"
+import { drawerStore, type DrawerScreen } from "../state/drawerStore"
 
 /** Language info for pill buttons */
 export type LanguageInfo = {
@@ -35,6 +35,10 @@ export type CommandDrawer = {
   isOpen: () => boolean
   /** Get the trigger button element (for reader positioning) */
   getTrigger: () => HTMLElement
+  /** Navigate to a specific screen within the drawer */
+  navigateTo: (screen: DrawerScreen) => void
+  /** Get the screen container element for a given screen (for direct rendering) */
+  getScreen: (screen: DrawerScreen) => HTMLElement | undefined
   dispose: () => void
 }
 
@@ -106,19 +110,64 @@ export function createCommandDrawer(
   sticky.append(closeBtn, nowPlayingEl, langContainer)
   sheet.appendChild(sticky)
 
-  // --- Scrollable body ---
-  const body = document.createElement("div")
-  body.className = "command-drawer-body"
-  sheet.appendChild(body)
+  // --- Screen nav tabs ---
+  const screenNav = document.createElement("div")
+  screenNav.className = "command-drawer-screen-nav"
 
-  // --- Custom sections ---
+  const SCREENS: { id: DrawerScreen; label: string }[] = [
+    { id: "now-playing", label: "Now Playing" },
+    { id: "library", label: "Library" },
+    { id: "browse", label: "Browse" },
+  ]
+
+  const screenTabs = new Map<DrawerScreen, HTMLButtonElement>()
+  for (const { id, label } of SCREENS) {
+    const tab = document.createElement("button")
+    tab.className = "command-drawer-screen-tab"
+    tab.textContent = label
+    tab.dataset.screen = id
+    tab.addEventListener("click", () => navigateToScreen(id))
+    screenNav.appendChild(tab)
+    screenTabs.set(id, tab)
+  }
+  sheet.appendChild(screenNav)
+
+  // --- Screen container (shows one screen at a time) ---
+  const screenContainer = document.createElement("div")
+  screenContainer.className = "command-drawer-screen-container"
+
+  // Create screen elements
+  const screens = new Map<DrawerScreen, HTMLElement>()
+  for (const { id } of SCREENS) {
+    const screen = document.createElement("div")
+    screen.className = "command-drawer-screen"
+    screen.dataset.screen = id
+    screenContainer.appendChild(screen)
+    screens.set(id, screen)
+  }
+  // Detail screen (sub-screen of browse, not in nav)
+  const detailScreen = document.createElement("div")
+  detailScreen.className = "command-drawer-screen"
+  detailScreen.dataset.screen = "detail"
+  screenContainer.appendChild(detailScreen)
+  screens.set("detail", detailScreen)
+
+  sheet.appendChild(screenContainer)
+
+  // --- Render custom sections into "now-playing" screen ---
   const sectionEls: { def: DrawerSectionDef; el: HTMLElement }[] = []
 
   function renderCustomSections() {
+    const nowPlayingScreen = screens.get("now-playing")
+    if (!nowPlayingScreen) return
+
     const sorted = [...(opts.customSections || [])].sort(
       (a, b) => (a.priority ?? 50) - (b.priority ?? 50)
     )
     for (const def of sorted) {
+      // Skip sections that have dedicated screens
+      if (def.id === "library" || def.id === "browse" || def.id === "now-playing") continue
+
       const section = document.createElement("div")
       section.className = "command-drawer-section"
       section.dataset.sectionId = def.id
@@ -132,12 +181,75 @@ export function createCommandDrawer(
       section.appendChild(container)
       def.render(container)
 
-      body.appendChild(section)
+      nowPlayingScreen.appendChild(section)
       sectionEls.push({ def, el: section })
     }
   }
 
+  // Render screen-level sections into their dedicated screens
+  function renderScreenSections() {
+    const sorted = [...(opts.customSections || [])].sort(
+      (a, b) => (a.priority ?? 50) - (b.priority ?? 50)
+    )
+    for (const def of sorted) {
+      if (def.id === "now-playing") {
+        const npScreen = screens.get("now-playing")
+        if (npScreen) {
+          const container = document.createElement("div")
+          container.className = "command-drawer-screen-content"
+          // Insert at the TOP of the now-playing screen (before custom sections like Display)
+          npScreen.insertBefore(container, npScreen.firstChild)
+          def.render(container)
+          sectionEls.push({ def, el: container })
+        }
+      } else if (def.id === "library") {
+        const libraryScreen = screens.get("library")
+        if (libraryScreen) {
+          const container = document.createElement("div")
+          container.className = "command-drawer-screen-content"
+          libraryScreen.appendChild(container)
+          def.render(container)
+          sectionEls.push({ def, el: container })
+        }
+      } else if (def.id === "browse") {
+        const browseScreen = screens.get("browse")
+        if (browseScreen) {
+          const container = document.createElement("div")
+          container.className = "command-drawer-screen-content"
+          browseScreen.appendChild(container)
+          def.render(container)
+          sectionEls.push({ def, el: container })
+        }
+      }
+    }
+  }
+
   renderCustomSections()
+  renderScreenSections()
+
+  // --- Screen navigation ---
+  function navigateToScreen(screen: DrawerScreen) {
+    drawerStore.setState({ activeScreen: screen })
+  }
+
+  function updateActiveScreen() {
+    const { activeScreen } = drawerStore.getState()
+    // Update tabs
+    for (const [id, tab] of screenTabs) {
+      tab.classList.toggle("command-drawer-screen-tab--active", id === activeScreen)
+    }
+    // Show/hide screens
+    for (const [id, el] of screens) {
+      const isActive = id === activeScreen
+      el.classList.toggle("command-drawer-screen--active", isActive)
+    }
+    // Hide browse tab highlight when on detail (detail is a sub-screen of browse)
+    if (activeScreen === "detail") {
+      screenTabs.get("browse")?.classList.add("command-drawer-screen-tab--active")
+    }
+  }
+
+  updateActiveScreen()
 
   // --- Footer: Exit ---
   const footer = document.createElement("div")
@@ -208,6 +320,9 @@ export function createCommandDrawer(
     }
     if (state.nowPlaying !== prev.nowPlaying) {
       updateNowPlayingVisibility()
+    }
+    if (state.activeScreen !== prev.activeScreen) {
+      updateActiveScreen()
     }
   })
 
@@ -306,6 +421,8 @@ export function createCommandDrawer(
     toggle,
     isOpen: () => isOpenState,
     getTrigger: () => trigger,
+    navigateTo: navigateToScreen,
+    getScreen: (screen: DrawerScreen) => screens.get(screen),
     dispose,
   }
 }

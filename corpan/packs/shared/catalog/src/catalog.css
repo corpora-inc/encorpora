@@ -558,8 +558,56 @@
   bottom: 0;
   height: 3px;
   background: var(--catalog-accent);
-  transition: width 200ms ease;
+  transition: width 300ms ease;
   border-radius: 0 0 var(--catalog-radius) var(--catalog-radius);
+}
+
+.catalog-btn-label {
+  position: relative;
+  z-index: 1;
+}
+
+/* Downloading state — active, not disabled-looking */
+.catalog-btn--downloading {
+  border-color: var(--catalog-accent);
+  color: var(--catalog-accent);
+  cursor: default;
+  pointer-events: none;
+}
+
+/* Indeterminate shimmer for connecting/verifying/installing */
+.catalog-btn-indeterminate {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: inherit;
+}
+
+.catalog-btn-indeterminate::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--catalog-accent) 12%, transparent), transparent);
+  animation: catalog-shimmer 1.5s ease infinite;
+}
+
+@keyframes catalog-shimmer {
+  0% { left: -60%; }
+  100% { left: 100%; }
+}
+
+/* Error state — distinct from idle */
+.catalog-btn--error {
+  border-color: var(--catalog-error);
+  color: var(--catalog-error);
+}
+
+.catalog-btn--error:hover {
+  background: var(--catalog-error);
+  color: var(--catalog-bg);
 }
 
 /* --- Active narration row (language picker) --- */
