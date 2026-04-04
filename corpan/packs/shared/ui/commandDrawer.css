@@ -218,7 +218,64 @@
   cursor: default;
 }
 
-/* --- Scrollable body --- */
+/* --- Screen nav tabs --- */
+
+.command-drawer-screen-nav {
+  flex-shrink: 0;
+  display: flex;
+  border-bottom: 1px solid var(--catalog-border);
+  padding: 0 20px;
+  gap: 0;
+}
+
+.command-drawer-screen-tab {
+  flex: 1;
+  padding: 10px 0;
+  border: none;
+  border-bottom: 2px solid transparent;
+  background: transparent;
+  color: var(--catalog-text-dim);
+  font-family: var(--catalog-font);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: color 150ms ease, border-color 150ms ease;
+  text-align: center;
+}
+
+.command-drawer-screen-tab:hover {
+  color: var(--catalog-text);
+}
+
+.command-drawer-screen-tab--active {
+  color: var(--catalog-accent);
+  border-bottom-color: var(--catalog-accent);
+}
+
+/* --- Screen container --- */
+
+.command-drawer-screen-container {
+  flex: 1;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  position: relative;
+}
+
+.command-drawer-screen {
+  display: none;
+  padding: 16px 20px calc(env(safe-area-inset-bottom, 0px));
+  min-height: 100%;
+}
+
+.command-drawer-screen--active {
+  display: block;
+}
+
+.command-drawer-screen-content {
+  padding: 16px 0;
+}
+
+/* --- Scrollable body (legacy, kept for compat) --- */
 
 .command-drawer-body {
   flex: 1;
@@ -457,9 +514,9 @@
     box-shadow: -4px 0 24px rgba(0, 0, 0, 0.15);
   }
 
-  /* Inside the drawer panel, catalog cards should be single column */
-  .command-drawer-body .catalog-grid {
-    grid-template-columns: 1fr;
+  /* Inside the drawer panel, cap at 2 columns */
+  .command-drawer-screen-container .catalog-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .command-drawer-sheet--open {
@@ -551,5 +608,18 @@
 
   .command-drawer-library-grid {
     grid-template-columns: 1fr;
+  }
+
+  .command-drawer-screen-nav {
+    padding: 0 16px;
+  }
+
+  .command-drawer-screen-tab {
+    padding: 8px 0;
+    font-size: 12px;
+  }
+
+  .command-drawer-screen {
+    padding: 12px 16px calc(env(safe-area-inset-bottom, 0px));
   }
 }

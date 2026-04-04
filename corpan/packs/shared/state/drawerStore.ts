@@ -1,11 +1,14 @@
 import { createStore } from "zustand/vanilla"
 import type { LanguageInfo } from "../ui/commandDrawer"
 
+export type DrawerScreen = "now-playing" | "library" | "browse" | "detail"
+
 export type DrawerState = {
   currentLanguage: string
   currentNarrationId: string
   languages: LanguageInfo[]
   nowPlaying: { bookTitle: string; narrator?: string }
+  activeScreen: DrawerScreen
 }
 
 // Migrate from old two-key format (one-time, on module load)
@@ -29,4 +32,5 @@ export const drawerStore = createStore<DrawerState>()(() => ({
   currentNarrationId: legacy.currentNarrationId,
   languages: [],
   nowPlaying: { bookTitle: "" },
+  activeScreen: "now-playing",
 }))
