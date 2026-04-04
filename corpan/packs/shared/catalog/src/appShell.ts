@@ -938,17 +938,10 @@ export function createAppShell(
           }
         }
 
-        browseShowingDetail = false
-        detailNarrations = []
-        // Navigate back to browse screen after delete
-        const browseScreen = drawer.getScreen("browse")
-        if (browseScreen) {
-          const container = browseScreen.querySelector(".command-drawer-screen-content") as HTMLElement
-          if (container) browseSectionEl = container
-        }
-        drawerStore.setState({ activeScreen: "browse" })
-        refreshBrowseSection()
+        // Re-render current detail view in place (don't navigate away)
+        renderBookDetail()
         refreshLibrarySection()
+        refreshNowPlayingSection()
       })
       row.appendChild(delBtn)
 
