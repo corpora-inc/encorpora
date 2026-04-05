@@ -99,10 +99,10 @@
       "paragraph_id": "p4",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "Your team plays the 1-2-3 formation.",
-      "text_markdown": "Your team plays the 1-2-3 formation.",
+      "text": "Your team plays the one-two-three formation.",
+      "text_markdown": "Your team plays the one-two-three formation.",
       "tts": {
-        "text": "Your team plays the 1-2-3 formation.",
+        "text": "Your team plays the one, two, three formation on the field.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -1510,7 +1510,7 @@
       "text": "A gap between a defender and the sideline is a runway to sprint into.",
       "text_markdown": "A gap between a defender and the sideline is a runway to sprint into.",
       "tts": {
-        "text": "A gap between a defender and the sideline is a runway to sprint into.",
+        "text": "A gap between a defender and the sideline is a clear runway to sprint into at top speed.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.89
       }
@@ -2710,7 +2710,7 @@
       "text": "A striker who receives the ball with an open body can see the goal, the defenders, and the other attackers all at once.",
       "text_markdown": "A striker who receives the ball with an open body can see the goal, the defenders, and the other attackers all at once.",
       "tts": {
-        "text": "A striker who receives the ball with an open body can see the goal, the defenders, and the other attackers all at once.",
+        "text": "A striker who gets the ball with an open body can see the goal, the defenders, and all the other attackers at the very same moment.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -5738,7 +5738,7 @@
       "text": "\"Switch it.\" \"Over here.\" \"Turn.\" Short words are enough.",
       "text_markdown": "\"Switch it.\" \"Over here.\" \"Turn.\" Short words are enough.",
       "tts": {
-        "text": "\"Switch it.\" \"Over here.\" \"Turn.\" Short words are enough.",
+        "text": "Commands like switch it, over here, or turn are enough. Short words are all you need.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -8426,7 +8426,7 @@
       "text": "A missed shot is already in the past.",
       "text_markdown": "A missed shot is already in the past.",
       "tts": {
-        "text": "A missed shot is already in the past.",
+        "text": "A missed shot is already in the past now.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -9446,7 +9446,7 @@
       "text": "Playing striker is a joy.",
       "text_markdown": "Playing striker is a joy.",
       "tts": {
-        "text": "Playing striker is a joy.",
+        "text": "Playing the striker position is a real joy.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }

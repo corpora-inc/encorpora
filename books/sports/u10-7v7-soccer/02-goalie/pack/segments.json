@@ -954,7 +954,7 @@
       "text": "You stay on your toes.",
       "text_markdown": "You stay on your toes.",
       "tts": {
-        "text": "You stay on your toes.",
+        "text": "You stay on your toes, ready to move.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -1862,7 +1862,7 @@
       "text": "Find your range.",
       "text_markdown": "Find your range.",
       "tts": {
-        "text": "Find your range.",
+        "text": "Find your range today.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -2914,7 +2914,7 @@
       "text": "Standing on your line when the ball is far away leaves too much space between you and your defenders.",
       "text_markdown": "Standing on your line when the ball is far away leaves too much space between you and your defenders.",
       "tts": {
-        "text": "Standing on your line when the ball is far away leaves too much space between you and your defenders.",
+        "text": "Standing on your line when the ball is far away will leave too much open ground between you and your defenders.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.96
       }
@@ -2946,7 +2946,7 @@
       "text": "You are the sweeper behind the sweeper.",
       "text_markdown": "You are the sweeper behind the sweeper.",
       "tts": {
-        "text": "You are the sweeper behind the sweeper.",
+        "text": "You are the sweeper behind the sweeper on your team.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.77
       }
@@ -3554,7 +3554,7 @@
       "text": "Read the game from the back.",
       "text_markdown": "Read the game from the back.",
       "tts": {
-        "text": "Reed the game from the back.",
+        "text": "Read the game from the back.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.87
       }
@@ -3810,7 +3810,7 @@
       "text": "You are covering space.",
       "text_markdown": "You are covering space.",
       "tts": {
-        "text": "You are covering space.",
+        "text": "You are covering the open ground.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -4190,7 +4190,7 @@
       "text": "Picture what the shooter sees.",
       "text_markdown": "Picture what the shooter sees.",
       "tts": {
-        "text": "Picture what the shooter sees.",
+        "text": "Picture what the shooter can see from that spot.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -4270,7 +4270,7 @@
       "text": "Two steps forward can take away half of what the shooter sees.",
       "text_markdown": "Two steps forward can take away half of what the shooter sees.",
       "tts": {
-        "text": "Two steps forward can take away half of what the shooter sees.",
+        "text": "Two forward steps can take away half of what the shooter can see from that angle.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -5370,7 +5370,7 @@
       "text": "The cleanest save is a catch.",
       "text_markdown": "The cleanest save is a catch.",
       "tts": {
-        "text": "The cleanest save is a catch.",
+        "text": "The cleanest kind of save is to catch it cleanly.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -5818,7 +5818,7 @@
       "text": "A save does not have to be a catch.",
       "text_markdown": "A save does not have to be a catch.",
       "tts": {
-        "text": "A save does not have to be a catch.",
+        "text": "A save does not always have to be a clean catch of the ball.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.91
       }
@@ -5882,7 +5882,7 @@
       "text": "Follow through with your arm.",
       "text_markdown": "Follow through with your arm.",
       "tts": {
-        "text": "Follow through with your arm.",
+        "text": "Follow through with your arm on every save.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -8834,7 +8834,7 @@
       "text": "Say \"near post\" or \"mark ten\" or \"push up.\" Your defenders will understand.",
       "text_markdown": "Say \"near post\" or \"mark ten\" or \"push up.\" Your defenders will understand.",
       "tts": {
-        "text": "Say \"near post\" or \"mark ten\" or \"push up.\" Your defenders will understand.",
+        "text": "Say near post, mark ten, or push up. Your defenders will understand.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.94
       }
@@ -9598,7 +9598,7 @@
       "text": "Trust your preparation.",
       "text_markdown": "Trust your preparation.",
       "tts": {
-        "text": "Trust your preparation.",
+        "text": "Trust your preparation every day.",
         "pause_after_ms": 800,
         "repetition_penalty": 2.0
       }
@@ -10078,7 +10078,7 @@
       "text": "You gave everything you had.",
       "text_markdown": "You gave everything you had.",
       "tts": {
-        "text": "You gave everything you had.",
+        "text": "You gave everything that you had.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.84
       }

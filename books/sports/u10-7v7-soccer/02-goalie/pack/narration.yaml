@@ -1,130 +1,323 @@
-version: 1
-tts:
-  cfg_weight: 0.85
-  exaggeration: 0.3
-  temperature: 0.3
-  top_p: 0.85
-  min_p: 0.10
-  repetition_penalty: 2.0
-voices:
-  en: ian-new-narration-try-more-chill-clear.wav
-  es: ian-new-narration-spanish-loud.wav
-  pt: ian-new-narration-spanish-loud.wav
-  it: ian-new-narration-try-more-chill-clear.wav
-  fr: ian-new-narration-try-more-chill-clear.wav
-  de: ian-new-narration-try-more-chill-clear.wav
-mastering:
-  target_lufs: -22.0
-  target_tp: -3.0
-  audio_codec: aac
-  audio_bitrate: '64000'
-  output_ext: .m4a
+denoise:
+  enabled: false
 filter_chain:
+  acompressor:
+    attack: 10
+    enabled: true
+    makeup: 1
+    ratio: 2
+    release: 100
+    threshold: 0.1
+  adeclick:
+    enabled: true
+    overlap: 75
+    threshold: 1.5
+    window: 55
+  afftdn:
+    enabled: true
+    nf: -35
+    nr: 15
+    tn: 1
+  agate:
+    attack: 5
+    enabled: true
+    range: 0.01
+    release: 50
+    threshold: 0.018
+  alimiter:
+    enabled: true
+    level: false
+    limit: 0.708
   highpass:
     enabled: true
     frequency: 80
-    width_type: q
     width: 0.7
-  adeclick:
-    enabled: true
-    window: 55
-    overlap: 75
-    threshold: 1.5
-  afftdn:
-    enabled: true
-    nr: 15
-    nf: -35
-    tn: 1
-  agate:
-    enabled: true
-    threshold: 0.018
-    range: 0.01
-    attack: 5
-    release: 50
-  acompressor:
-    enabled: true
-    threshold: 0.1
-    ratio: 2
-    attack: 10
-    release: 100
-    makeup: 1
-  alimiter:
-    enabled: true
-    limit: 0.708
-    level: false
-denoise:
-  enabled: false
-trimming:
-  zcr_window_ms: 500
-  zcr_multiplier: 2.5
-  consecutive_windows: 3
-  scan_start_ratio: 0.6
-  buffer_sec: 0.3
-  tail_ms: 500
-  fade_ms: 50
-  fade_sec: 0.05
-  max_sec_per_char:
-    en: 0.12
-    es: 0.12
-    pt: 0.12
-    it: 0.12
-    fr: 0.12
-    de: 0.12
-  base_buffer_sec:
-    en: 5.0
-    es: 5.0
-    pt: 5.0
-    it: 5.0
-    fr: 5.0
-    de: 5.0
-validation:
-  min_word_ratio: 0.8
-  max_trailing_silence_ratio: 0.25
-  max_stacked_words: 3
-  min_trailing_silence_ms: 75
-  max_inter_word_gap_ms: 3000
-  max_sec_per_char:
-    en: 0.12
-    es: 0.12
-    pt: 0.12
-    it: 0.12
-    fr: 0.12
-    de: 0.12
-  min_sec_per_char:
-    en: 0.02
-    es: 0.02
-    pt: 0.02
-    it: 0.02
-    fr: 0.02
-    de: 0.02
-  base_buffer_sec:
-    en: 5.0
-    es: 5.0
-    pt: 5.0
-    it: 5.0
-    fr: 5.0
-    de: 5.0
+    width_type: q
+mastering:
+  audio_bitrate: '64000'
+  audio_codec: aac
+  output_ext: .m4a
+  target_lufs: -22.0
+  target_tp: -3.0
+overrides:
+  ch01-021:
+    tts:
+      cfg_weight: 0.5
+      temperature: 0.4
+  ch01-060:
+    tts:
+      cfg_weight: 0.7
+      exaggeration: 0.4
+      temperature: 0.2
+  ch01-066:
+    tts:
+      repetition_penalty: 3.0
+      temperature: 0.2
+  ch01-075:
+    tts:
+      cfg_weight: 0.5
+      temperature: 0.4
+  ch02-091:
+    tts:
+      cfg_weight: 0.5
+      temperature: 0.4
+  ch03-173:
+    tts:
+      cfg_weight: 0.5
+      temperature: 0.4
+  ch03-239:
+    tts:
+      cfg_weight: 0.5
+      exaggeration: 0.4
+      temperature: 0.4
+  ch04-245:
+    tts:
+      cfg_weight: 0.5
+      temperature: 0.4
+  ch04-246:
+    tts:
+      cfg_weight: 0.7
+      exaggeration: 0.4
+      temperature: 0.2
+  ch04-263:
+    tts:
+      cfg_weight: 0.7
+      exaggeration: 0.4
+      temperature: 0.2
+  ch04-268:
+    tts:
+      cfg_weight: 0.7
+      exaggeration: 0.4
+      temperature: 0.2
+  ch04-273:
+    tts:
+      cfg_weight: 0.7
+      exaggeration: 0.4
+      temperature: 0.2
+  ch04-274:
+    tts:
+      cfg_weight: 0.7
+      exaggeration: 0.4
+      temperature: 0.2
+  ch04-276:
+    tts:
+      cfg_weight: 0.5
+      temperature: 0.4
+  ch04-299:
+    tts:
+      cfg_weight: 0.7
+      exaggeration: 0.4
+      temperature: 0.2
+  ch04-301:
+    tts:
+      cfg_weight: 0.5
+      temperature: 0.4
+  ch04-326:
+    tts:
+      cfg_weight: 0.7
+      exaggeration: 0.4
+      temperature: 0.2
+  ch05-337:
+    tts:
+      cfg_weight: 0.7
+      exaggeration: 0.4
+      temperature: 0.2
+  ch05-365:
+    tts:
+      cfg_weight: 0.7
+      exaggeration: 0.4
+      temperature: 0.2
+  ch05-377:
+    tts:
+      cfg_weight: 0.7
+      exaggeration: 0.4
+      temperature: 0.2
+  ch05-380:
+    tts:
+      cfg_weight: 0.7
+      exaggeration: 0.4
+      temperature: 0.2
+  ch05-404:
+    tts:
+      cfg_weight: 0.7
+      exaggeration: 0.4
+      temperature: 0.2
+  ch06-413:
+    tts:
+      cfg_weight: 0.5
+      temperature: 0.4
+  ch06-439:
+    tts:
+      cfg_weight: 0.5
+      temperature: 0.4
+  ch06-449:
+    tts:
+      cfg_weight: 0.5
+      temperature: 0.4
+  ch06-457:
+    tts:
+      cfg_weight: 0.5
+      temperature: 0.4
+  ch07-479:
+    tts:
+      cfg_weight: 0.7
+      exaggeration: 0.4
+      temperature: 0.2
+  ch07-486:
+    tts:
+      cfg_weight: 0.5
+      temperature: 0.4
+  ch07-493:
+    tts:
+      cfg_weight: 0.5
+      temperature: 0.4
+  ch07-495:
+    tts:
+      cfg_weight: 0.5
+      temperature: 0.4
+  ch07-521:
+    tts:
+      cfg_weight: 0.7
+      exaggeration: 0.4
+      temperature: 0.2
+  ch07-531:
+    tts:
+      cfg_weight: 0.7
+      exaggeration: 0.4
+      temperature: 0.2
+  ch07-532:
+    tts:
+      cfg_weight: 0.7
+      exaggeration: 0.4
+      temperature: 0.2
+  ch07-544:
+    tts:
+      cfg_weight: 0.5
+      temperature: 0.4
+  ch08-571:
+    tts:
+      cfg_weight: 0.5
+      temperature: 0.4
+  ch08-598:
+    tts:
+      cfg_weight: 0.5
+      temperature: 0.4
+  ch08-600:
+    tts:
+      cfg_weight: 0.5
+      exaggeration: 0.4
+      temperature: 0.4
+  ch08-603:
+    tts:
+      repetition_penalty: 3.0
+      temperature: 0.2
+  ch08-626:
+    tts:
+      cfg_weight: 0.7
+      exaggeration: 0.4
+      temperature: 0.2
+  ch08-632:
+    tts:
+      cfg_weight: 0.7
+      exaggeration: 0.4
+      temperature: 0.2
+  ch08-636:
+    tts:
+      cfg_weight: 0.7
+      exaggeration: 0.4
+      temperature: 0.2
 retry:
-  max_retries: 20
-  jitter: 0.05
+  jitter: 0.25
+  max_retries: 40
   schedules:
   - {}
   - cfg_weight: 0.8
     temperature: 0.5
   - cfg_weight: 0.5
-    temperature: 0.3
     exaggeration: 0.2
+    temperature: 0.3
   - cfg_weight: 0.6
-    temperature: 0.7
     exaggeration: 0.6
+    temperature: 0.7
   - cfg_weight: 1.0
     temperature: 0.2
-overrides:
-  ch01-066:
-    tts:
-      repetition_penalty: 3.0
-      temperature: 0.2
-  ch08-603:
-    tts:
-      repetition_penalty: 3.0
-      temperature: 0.2
+  - cfg_weight: 0.4
+    exaggeration: 0.5
+    temperature: 0.5
+  - cfg_weight: 0.7
+    exaggeration: 0.1
+    temperature: 0.1
+  - cfg_weight: 0.3
+    exaggeration: 0.3
+    temperature: 0.6
+  - cfg_weight: 0.9
+    exaggeration: 0.4
+    temperature: 0.4
+  - cfg_weight: 0.2
+    exaggeration: 0.7
+    temperature: 0.8
+trimming:
+  base_buffer_sec:
+    de: 5.0
+    en: 5.0
+    es: 5.0
+    fr: 5.0
+    it: 5.0
+    pt: 5.0
+  buffer_sec: 0.3
+  consecutive_windows: 3
+  fade_ms: 50
+  fade_sec: 0.05
+  max_sec_per_char:
+    de: 0.12
+    en: 0.12
+    es: 0.12
+    fr: 0.12
+    it: 0.12
+    pt: 0.12
+  scan_start_ratio: 0.6
+  tail_ms: 500
+  zcr_multiplier: 2.5
+  zcr_window_ms: 500
+tts:
+  cfg_weight: 0.85
+  exaggeration: 0.3
+  min_p: 0.1
+  repetition_penalty: 2.0
+  temperature: 0.3
+  top_p: 0.85
+validation:
+  base_buffer_sec:
+    de: 5.0
+    en: 5.0
+    es: 5.0
+    fr: 5.0
+    it: 5.0
+    pt: 5.0
+  max_inter_word_gap_ms: 3000
+  max_sec_per_char:
+    de: 0.12
+    en: 0.12
+    es: 0.12
+    fr: 0.12
+    it: 0.12
+    pt: 0.12
+  max_stacked_words: 3
+  max_trailing_silence_ratio: 0.25
+  min_sec_per_char:
+    de: 0.02
+    en: 0.02
+    es: 0.02
+    fr: 0.02
+    it: 0.02
+    pt: 0.02
+  min_trailing_silence_ms: 75
+  min_word_ratio: 0.8
+version: 1
+voices:
+  de: ian-new-narration-try-more-chill-clear.wav
+  en: ian-new-narration-try-more-chill-clear.wav
+  es: ian-new-narration-spanish-loud.wav
+  fr: ian-new-narration-try-more-chill-clear.wav
+  it: ian-new-narration-try-more-chill-clear.wav
+  pt: ian-new-narration-spanish-loud.wav

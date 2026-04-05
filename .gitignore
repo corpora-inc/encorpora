@@ -29,6 +29,9 @@ corpan/games/
 # Voice reference wavs — backed up to S3, not tracked in git
 voices/data/*.wav
 
+# Voice candidate samples (large, local only)
+voices/samples/
+
 # Derived pack data — managed by ttsctl push/pull (S3 pack-store)
 **/pack/segments_*.json
 **/pack/alignment_*.json
