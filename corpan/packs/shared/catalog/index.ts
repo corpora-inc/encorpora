@@ -45,7 +45,6 @@ export {
   stopListening,
   subscribe as subscribeProgress,
   getState as getProgressState,
-  setStarting as setProgressStarting,
 } from "./src/downloadProgress"
 
 export {

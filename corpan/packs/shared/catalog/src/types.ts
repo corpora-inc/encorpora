@@ -60,7 +60,7 @@ export type InstalledNarration = {
 
 /** Download progress state for a single narration */
 export type DownloadState = {
-  stage: "idle" | "starting" | "downloading" | "verifying" | "extracting" | "complete" | "error"
+  stage: "idle" | "downloading" | "verifying" | "extracting" | "complete" | "error"
   progress: number
   total: number
   message: string

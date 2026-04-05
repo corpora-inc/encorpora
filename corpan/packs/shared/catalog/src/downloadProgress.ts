@@ -121,11 +121,3 @@ export function getState(narrationId: string): DownloadState {
   return getTracker(narrationId).state
 }
 
-/** Mark a narration as starting download — notifies all subscribers immediately */
-export function setStarting(narrationId: string): void {
-  const tracker = getTracker(narrationId)
-  tracker.state = { stage: "starting", progress: 0, total: 0, message: "" }
-  for (const cb of tracker.listeners) {
-    cb(tracker.state)
-  }
-}

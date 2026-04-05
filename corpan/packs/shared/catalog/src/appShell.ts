@@ -10,12 +10,10 @@
  */
 
 import "./catalog.css"
-import type { CatalogNarrationEntry, DownloadState } from "./types"
+import type { CatalogNarrationEntry } from "./types"
 import { fetchCatalog } from "./catalogFetch"
 import { libraryStore, isInstalled, getInstalled, listInstalled, listInstalledForBook } from "./libraryStore"
-import { startListening } from "./downloadProgress"
 import { getPackUrl, isTauriAvailable, installNarration, deleteNarration } from "./installManager"
-import { subscribe as subscribeProgress, getState as getProgressState, setStarting as setProgressStarting } from "./downloadProgress"
 import {
   groupBySeries,
   filterByLanguage,
@@ -96,11 +94,6 @@ export function createAppShell(
 
   // All narrations from the last catalog fetch
   let allNarrations: CatalogNarrationEntry[] = []
-  const browseProgressUnsubs: (() => void)[] = []
-  const nowPlayingProgressUnsubs: (() => void)[] = []
-
-  // Start listening for download progress events
-  void startListening()
 
   // --- State for section renderers (must be before createCommandDrawer,
   //     which calls render() immediately during construction) ---
@@ -402,7 +395,6 @@ export function createAppShell(
     }
 
     nowPlayingBookId = bookId
-    cleanupNowPlayingProgressSubs()
     nowPlayingSectionEl.innerHTML = ""
 
     const bookNarrations = allNarrations.filter(n => n.bookId === bookId)
@@ -483,30 +475,7 @@ export function createAppShell(
 
       // Update button
       if (instInfo && hasUpdate(narr.version, instInfo.version)) {
-        const updateBtn = document.createElement("button")
-        updateBtn.className = "catalog-btn catalog-btn--update"
-        updateBtn.innerHTML = `<svg class="catalog-btn-icon" viewBox="0 0 24 24"><path d="M12 4v12m0 0l-4-4m4 4l4-4"/><path d="M4 17v2a1 1 0 001 1h14a1 1 0 001-1v-2"/></svg>`
-        updateBtn.title = "Update"
-        updateBtn.addEventListener("click", (e) => {
-          e.stopPropagation()
-          setProgressStarting(narr.id)
-          installNarration(narr)
-        })
-        const unsub = subscribeProgress(narr.id, (ds) => {
-          if (ds.stage === "starting" || ds.stage === "verifying" || ds.stage === "extracting") {
-            updateBtn.className = "catalog-btn catalog-btn--downloading"
-            updateBtn.innerHTML = `<svg class="catalog-btn-icon catalog-btn-spinner" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2.5" stroke-dasharray="50 20" stroke-linecap="round"/></svg>`
-          } else if (ds.stage === "downloading") {
-            const pct = ds.total > 0 ? Math.round((ds.progress / ds.total) * 100) : 0
-            updateBtn.className = "catalog-btn catalog-btn--downloading"
-            updateBtn.innerHTML = `<span class="catalog-btn-label">${pct}%</span><div class="catalog-btn-progress" style="width:${pct}%"></div>`
-          } else if (ds.stage === "complete") {
-            nowPlayingBookId = ""
-            refreshNowPlayingSection()
-          }
-        })
-        nowPlayingProgressUnsubs.push(unsub)
-        row.appendChild(updateBtn)
+        row.appendChild(createUpdateButton(narr))
       }
 
       // Delete button
@@ -558,7 +527,7 @@ export function createAppShell(
       detail.appendChild(sTitle)
 
       for (const narr of availableNarrs) {
-        detail.appendChild(renderNarrationRow(narr, false, "now-playing"))
+        detail.appendChild(renderNarrationRow(narr))
       }
     }
 
@@ -699,7 +668,6 @@ export function createAppShell(
       detailNarrations = []
     }
     if (!browseSectionEl) return
-    cleanupBrowseProgressSubs()
     browseSectionEl.innerHTML = ""
 
     if (allNarrations.length === 0) {
@@ -863,7 +831,6 @@ export function createAppShell(
     }
 
     detailBookId = bookId
-    cleanupBrowseProgressSubs()
     browseSectionEl.innerHTML = ""
 
     const detail = document.createElement("div")
@@ -949,33 +916,7 @@ export function createAppShell(
 
       // Update button (when catalog has newer version)
       if (installedInfo && hasUpdate(narr.version, installedInfo.version)) {
-        const updateBtn = document.createElement("button")
-        updateBtn.className = "catalog-btn catalog-btn--update"
-        updateBtn.innerHTML = `<svg class="catalog-btn-icon" viewBox="0 0 24 24"><path d="M12 4v12m0 0l-4-4m4 4l4-4"/><path d="M4 17v2a1 1 0 001 1h14a1 1 0 001-1v-2"/></svg>`
-        updateBtn.title = "Update"
-        updateBtn.addEventListener("click", (e) => {
-          e.stopPropagation()
-          setProgressStarting(narr.id)
-          installNarration(narr)
-        })
-        const unsub = subscribeProgress(narr.id, (ds) => {
-          if (ds.stage === "starting" || ds.stage === "verifying" || ds.stage === "extracting") {
-            updateBtn.className = "catalog-btn catalog-btn--downloading"
-            updateBtn.innerHTML = `<svg class="catalog-btn-icon catalog-btn-spinner" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2.5" stroke-dasharray="50 20" stroke-linecap="round"/></svg>`
-          } else if (ds.stage === "downloading") {
-            const pct = ds.total > 0 ? Math.round((ds.progress / ds.total) * 100) : 0
-            updateBtn.className = "catalog-btn catalog-btn--downloading"
-            updateBtn.innerHTML = `<span class="catalog-btn-label">${pct}%</span><div class="catalog-btn-progress" style="width:${pct}%"></div>`
-          } else if (ds.stage === "complete") {
-            detailBookId = ""
-            nowPlayingBookId = ""
-            renderBookDetail()
-            refreshLibrarySection()
-            refreshNowPlayingSection()
-          }
-        })
-        browseProgressUnsubs.push(unsub)
-        row.appendChild(updateBtn)
+        row.appendChild(createUpdateButton(narr))
       }
 
       // Delete button
@@ -1031,14 +972,81 @@ export function createAppShell(
       detail.appendChild(sTitle)
 
       for (const narr of availableNarrs) {
-        detail.appendChild(renderNarrationRow(narr, false))
+        detail.appendChild(renderNarrationRow(narr))
       }
     }
 
     browseSectionEl.appendChild(detail)
   }
 
-  function renderNarrationRow(narration: CatalogNarrationEntry, _installed: boolean, scope: "browse" | "now-playing" = "browse"): HTMLElement {
+  const SVG_DOWNLOAD = `<svg class="catalog-btn-icon" viewBox="0 0 24 24"><path d="M12 4v12m0 0l-4-4m4 4l4-4"/><path d="M4 17v2a1 1 0 001 1h14a1 1 0 001-1v-2"/></svg>`
+  const SVG_RETRY = `<svg class="catalog-btn-icon" viewBox="0 0 24 24"><path d="M1 4v6h6"/><path d="M3.51 15a9 9 0 105.64-11.36L3 10"/></svg>`
+  const SVG_SPINNER = `<svg class="catalog-btn-icon catalog-btn-spinner" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2.5" stroke-dasharray="50 20" stroke-linecap="round"/></svg>`
+
+  function rebuildAll(): void {
+    nowPlayingBookId = ""
+    detailBookId = ""
+    if (browseShowingDetail) renderBookDetail()
+    else refreshBrowseSection()
+    refreshLibrarySection()
+    refreshNowPlayingSection()
+  }
+
+  /** Simple download button: click → spinner → await → rebuild. No subscriptions. */
+  function createDownloadButton(narration: CatalogNarrationEntry): HTMLButtonElement {
+    const btn = document.createElement("button")
+    btn.className = "catalog-btn"
+
+    if (!isTauriAvailable()) {
+      btn.className = "catalog-btn catalog-btn--disabled"
+      btn.textContent = "Desktop only"
+      return btn
+    }
+
+    btn.innerHTML = `${SVG_DOWNLOAD}${Math.round(narration.sizeMb)} MB`
+    btn.addEventListener("click", async (e) => {
+      e.stopPropagation()
+      btn.className = "catalog-btn catalog-btn--downloading"
+      btn.innerHTML = SVG_SPINNER
+      btn.style.pointerEvents = "none"
+      const ok = await installNarration(narration)
+      if (ok) {
+        rebuildAll()
+      } else {
+        btn.className = "catalog-btn catalog-btn--error"
+        btn.innerHTML = `${SVG_RETRY}${Math.round(narration.sizeMb)} MB`
+        btn.style.pointerEvents = ""
+        btn.onclick = async (e2) => {
+          e2.stopPropagation()
+          btn.className = "catalog-btn catalog-btn--downloading"
+          btn.innerHTML = SVG_SPINNER
+          btn.style.pointerEvents = "none"
+          const retry = await installNarration(narration)
+          if (retry) rebuildAll()
+        }
+      }
+    })
+    return btn
+  }
+
+  /** Simple update button: click → spinner → await → rebuild. No subscriptions. */
+  function createUpdateButton(narration: CatalogNarrationEntry): HTMLButtonElement {
+    const btn = document.createElement("button")
+    btn.className = "catalog-btn catalog-btn--update"
+    btn.innerHTML = `<svg class="catalog-btn-icon" viewBox="0 0 24 24"><path d="M12 4v12m0 0l-4-4m4 4l4-4"/><path d="M4 17v2a1 1 0 001 1h14a1 1 0 001-1v-2"/></svg>`
+    btn.title = "Update"
+    btn.addEventListener("click", async (e) => {
+      e.stopPropagation()
+      btn.className = "catalog-btn catalog-btn--downloading"
+      btn.innerHTML = SVG_SPINNER
+      btn.style.pointerEvents = "none"
+      const ok = await installNarration(narration)
+      if (ok) rebuildAll()
+    })
+    return btn
+  }
+
+  function renderNarrationRow(narration: CatalogNarrationEntry): HTMLElement {
     const row = document.createElement("div")
     row.className = "catalog-narration-row"
 
@@ -1056,102 +1064,8 @@ export function createAppShell(
     info.append(lang, voice)
     row.appendChild(info)
 
-    renderActionButton(narration, row, scope)
+    row.appendChild(createDownloadButton(narration))
     return row
-  }
-
-  function renderActionButton(narration: CatalogNarrationEntry, container: HTMLElement, scope: "browse" | "now-playing" = "browse"): void {
-    const hasTauri = isTauriAvailable()
-
-    const btn = document.createElement("button")
-    btn.className = "catalog-btn"
-
-    if (!hasTauri) {
-      btn.className = "catalog-btn catalog-btn--disabled"
-      btn.textContent = "Desktop only"
-      container.appendChild(btn)
-      return
-    }
-
-    const state = getProgressState(narration.id)
-
-    const SVG_DOWNLOAD = `<svg class="catalog-btn-icon" viewBox="0 0 24 24"><path d="M12 4v12m0 0l-4-4m4 4l4-4"/><path d="M4 17v2a1 1 0 001 1h14a1 1 0 001-1v-2"/></svg>`
-    const SVG_RETRY = `<svg class="catalog-btn-icon" viewBox="0 0 24 24"><path d="M1 4v6h6"/><path d="M3.51 15a9 9 0 105.64-11.36L3 10"/></svg>`
-    const SVG_SPINNER = `<svg class="catalog-btn-icon catalog-btn-spinner" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2.5" stroke-dasharray="50 20" stroke-linecap="round"/></svg>`
-
-    function startDownload(e: MouseEvent) {
-      e.stopPropagation()
-      // Push "starting" into the tracker — all subscribers on every screen get notified
-      setProgressStarting(narration.id)
-      // Fire and forget — Tauri events drive all further UI updates via the tracker
-      installNarration(narration)
-    }
-
-    function updateBtn(ds: DownloadState): void {
-      switch (ds.stage) {
-        case "idle":
-          btn.className = "catalog-btn"
-          btn.style.borderColor = ""
-          btn.style.color = ""
-          btn.innerHTML = `${SVG_DOWNLOAD}${Math.round(narration.sizeMb)} MB`
-          btn.onclick = startDownload
-          break
-        case "starting":
-          btn.className = "catalog-btn catalog-btn--downloading"
-          btn.innerHTML = `${SVG_SPINNER}`
-          btn.onclick = null
-          break
-        case "downloading": {
-          const pct = ds.total > 0 ? Math.round((ds.progress / ds.total) * 100) : 0
-          btn.className = "catalog-btn catalog-btn--downloading"
-          btn.innerHTML = `<span class="catalog-btn-label">${pct}%</span><div class="catalog-btn-progress" style="width:${pct}%"></div>`
-          btn.onclick = null
-          break
-        }
-        case "verifying":
-          btn.className = "catalog-btn catalog-btn--downloading"
-          btn.innerHTML = SVG_SPINNER
-          btn.onclick = null
-          break
-        case "extracting":
-          btn.className = "catalog-btn catalog-btn--downloading"
-          btn.innerHTML = SVG_SPINNER
-          btn.onclick = null
-          break
-        case "complete":
-          // Force full rebuild to show the narration as installed
-          nowPlayingBookId = ""
-          detailBookId = ""
-          if (browseShowingDetail) renderBookDetail()
-          else refreshBrowseSection()
-          refreshLibrarySection()
-          refreshNowPlayingSection()
-          break
-        case "error":
-          btn.className = "catalog-btn catalog-btn--error"
-          btn.innerHTML = `${SVG_RETRY}${Math.round(narration.sizeMb)} MB`
-          btn.style.borderColor = ""
-          btn.style.color = ""
-          btn.onclick = startDownload
-          break
-      }
-    }
-
-    updateBtn(state)
-    const unsub = subscribeProgress(narration.id, updateBtn)
-    ;(scope === "now-playing" ? nowPlayingProgressUnsubs : browseProgressUnsubs).push(unsub)
-
-    container.appendChild(btn)
-  }
-
-  function cleanupBrowseProgressSubs(): void {
-    for (const unsub of browseProgressUnsubs) unsub()
-    browseProgressUnsubs.length = 0
-  }
-
-  function cleanupNowPlayingProgressSubs(): void {
-    for (const unsub of nowPlayingProgressUnsubs) unsub()
-    nowPlayingProgressUnsubs.length = 0
   }
 
   // --- Dispose ---
@@ -1161,8 +1075,6 @@ export function createAppShell(
     storeUnsub()
     narrUnsub()
     persistUnsub()
-    cleanupBrowseProgressSubs()
-    cleanupNowPlayingProgressSubs()
     drawer.dispose()
     readerInstance?.dispose()
   }
