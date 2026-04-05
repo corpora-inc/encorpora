@@ -79,22 +79,18 @@ export function createCommandDrawer(
   const npTitle = document.createElement("div")
   npTitle.className = "command-drawer-now-playing-title"
 
-  const npNarrator = document.createElement("div")
-  npNarrator.className = "command-drawer-now-playing-narrator"
-
   // Only show now-playing block when there's a book title
   function updateNowPlayingVisibility() {
     const { nowPlaying } = drawerStore.getState()
     if (nowPlaying.bookTitle) {
       nowPlayingEl.style.display = ""
       npTitle.textContent = nowPlaying.bookTitle
-      npNarrator.textContent = nowPlaying.narrator || ""
     } else {
       nowPlayingEl.style.display = "none"
     }
   }
 
-  nowPlayingEl.append(npTitle, npNarrator)
+  nowPlayingEl.append(npTitle)
   updateNowPlayingVisibility()
 
   const langContainer = document.createElement("div")
