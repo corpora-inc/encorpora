@@ -32,7 +32,11 @@ export async function packFetchJson(url: string): Promise<unknown> {
 export async function packFetchArrayBuffer(url: string): Promise<ArrayBuffer> {
   const invoke = tauriInvoke()
   if (invoke) {
-    return (await invoke("content_packs_fetch_bytes", { url })) as ArrayBuffer
+    const raw = await invoke("content_packs_fetch_bytes", { url })
+    // Tauri invoke may return Uint8Array, plain array, or ArrayBuffer depending on platform
+    if (raw instanceof ArrayBuffer) return raw
+    if (ArrayBuffer.isView(raw)) return raw.buffer.slice(raw.byteOffset, raw.byteOffset + raw.byteLength)
+    return new Uint8Array(raw as number[]).buffer
   }
   // Fallback: browser fetch (standalone dev mode, no Tauri)
   const resp = await fetch(url)
