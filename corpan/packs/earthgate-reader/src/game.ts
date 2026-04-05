@@ -132,7 +132,6 @@ export function createEarthgateReader(
     if (!("mediaSession" in navigator)) return
     try {
       navigator.mediaSession.playbackState = state
-      console.log(`[MS] playbackState → ${state}`)
     } catch (err) {
       console.error("[MS] playbackState set failed:", err)
     }
@@ -195,7 +194,6 @@ export function createEarthgateReader(
             : undefined,
         })
         lastMediaMetadataKey = metadataKey
-        console.log(`[MS] metadata: "${seg?.title || "Earthgate Reader"}" - "${bookDisplayName}"`)
       }
 
       const durationS = audioEngine.getTotalDurationMs() / 1000
@@ -206,7 +204,6 @@ export function createEarthgateReader(
           playbackRate: 1,
           position: positionS,
         })
-        console.log(`[MS] setPositionState dur=${durationS.toFixed(1)}s pos=${positionS.toFixed(1)}s rate=1`)
       }
     } catch (err) {
       console.error("[MS] syncMediaSessionNowPlaying failed:", err)
@@ -609,31 +606,25 @@ export function createEarthgateReader(
 
     const handlers: [MediaSessionAction, MediaSessionActionHandler][] = [
       ["play", () => {
-        console.log("[MS] actionHandler(play) fired")
         dispatchRemotePlayPause("play", "webms")
       }],
       ["pause", () => {
-        console.log("[MS] actionHandler(pause) fired")
         dispatchRemotePlayPause("pause", "webms")
       }],
       ["seekto", (details) => {
         if (!audioEngine || details?.seekTime == null) return
-        console.log(`[MS] actionHandler(seekto) seekTime=${details.seekTime}s fastSeek=${details.fastSeek}`)
         seekToMsAndSync(details.seekTime * 1000)
       }],
       ["seekforward", () => {
         if (!audioEngine) return
-        console.log("[MS] actionHandler(seekforward)")
         seekToMsAndSync(Math.min(audioEngine.getTotalDurationMs(), audioEngine.getCurrentTimeMs() + 30000))
       }],
       ["seekbackward", () => {
         if (!audioEngine) return
-        console.log("[MS] actionHandler(seekbackward)")
         seekToMsAndSync(Math.max(0, audioEngine.getCurrentTimeMs() - 30000))
       }],
       ["nexttrack", () => {
         if (!audioEngine || chapters.length === 0) return
-        console.log("[MS] actionHandler(nexttrack)")
         const currentIdx = audioEngine.getCurrentSegmentIndex()
         let chapterIdx = 0
         for (let i = chapters.length - 1; i >= 0; i--) {
@@ -645,7 +636,6 @@ export function createEarthgateReader(
       }],
       ["previoustrack", () => {
         if (!audioEngine || chapters.length === 0) return
-        console.log("[MS] actionHandler(previoustrack)")
         const currentIdx = audioEngine.getCurrentSegmentIndex()
         let chapterIdx = 0
         for (let i = chapters.length - 1; i >= 0; i--) {
@@ -661,7 +651,6 @@ export function createEarthgateReader(
     for (const [action, handler] of handlers) {
       try {
         navigator.mediaSession.setActionHandler(action, handler)
-        console.log(`[MS] setActionHandler(${action}) registered`)
       } catch (err) {
         console.error(`[MS] setActionHandler(${action}) failed:`, err)
       }
