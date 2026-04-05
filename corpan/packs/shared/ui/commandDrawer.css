@@ -417,15 +417,10 @@
   font-size: 14px;
 }
 
-/* --- Inline book detail (replaces browse grid) --- */
+/* --- Inline book detail --- */
 
 .command-drawer-detail {
-  animation: drawer-detail-in 300ms ease forwards;
-}
-
-@keyframes drawer-detail-in {
-  from { opacity: 0; transform: translateX(12px); }
-  to { opacity: 1; transform: translateX(0); }
+  /* No entry animation — updates are surgical, not full rebuilds */
 }
 
 .command-drawer-detail-back {

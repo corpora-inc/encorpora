@@ -111,6 +111,10 @@ export function createAppShell(
 
   // --- Now-playing section state ---
   let nowPlayingSectionEl: HTMLElement | null = null
+  let nowPlayingBookId = ""   // track displayed book to avoid full rebuild
+
+  // --- Detail section state ---
+  let detailBookId = ""       // track displayed book in detail screen
 
   // --- Build drawer sections ---
   const builtinSections: DrawerSectionDef[] = [
@@ -188,6 +192,52 @@ export function createAppShell(
         } else {
           el.appendChild(check)
         }
+      } else if (!isActive && existing) {
+        existing.remove()
+      }
+    }
+  }
+
+  /** Surgical update of narration rows within a container — no teardown/rebuild.
+   *  Handles active indicator toggling and installed-state class updates.
+   *  Falls back to full rebuild if row count has changed (install/delete). */
+  function updateNarrationRows(container: HTMLElement, activeId: string): void {
+    const rows = container.querySelectorAll("[data-narration-id]")
+    if (rows.length === 0) return
+
+    // Check if installed count changed (a narration was added or removed)
+    const installedRows = container.querySelectorAll(".catalog-narration-row--installed")
+    const currentInstalledCount = [...new Set(
+      Array.from(installedRows).map(r => (r as HTMLElement).dataset.narrationId)
+    )].filter(id => id && isInstalled(id)).length
+
+    if (currentInstalledCount !== installedRows.length) {
+      // Installed state changed — need full rebuild to add/remove rows
+      if (container === nowPlayingSectionEl) {
+        nowPlayingBookId = "" // force full rebuild
+        refreshNowPlayingSection()
+      } else {
+        detailBookId = "" // force full rebuild
+        renderBookDetail()
+      }
+      return
+    }
+
+    // Same rows — just update active state
+    for (const row of rows) {
+      const el = row as HTMLElement
+      const isActive = el.dataset.narrationId === activeId
+      el.classList.toggle("catalog-narration-row--active", isActive)
+
+      // Toggle checkmark
+      const existing = el.querySelector(".catalog-narration-active-indicator")
+      if (isActive && !existing) {
+        const check = document.createElement("div")
+        check.className = "catalog-narration-active-indicator"
+        check.textContent = "\u2713"
+        const delBtn = el.querySelector(".catalog-btn--danger")
+        if (delBtn) el.insertBefore(check, delBtn)
+        else el.appendChild(check)
       } else if (!isActive && existing) {
         existing.remove()
       }
@@ -327,10 +377,11 @@ export function createAppShell(
 
   function refreshNowPlayingSection(): void {
     if (!nowPlayingSectionEl) return
-    nowPlayingSectionEl.innerHTML = ""
 
     const activeId = getActive()
     if (!activeId) {
+      nowPlayingBookId = ""
+      nowPlayingSectionEl.innerHTML = ""
       const empty = document.createElement("div")
       empty.className = "command-drawer-browse-empty"
       empty.textContent = "No book selected"
@@ -342,6 +393,15 @@ export function createAppShell(
     const installedInfo = getInstalled(activeId)
     if (!installedInfo) return
     const bookId = installedInfo.bookId
+
+    // Same book — surgical row update instead of full rebuild
+    if (bookId === nowPlayingBookId && nowPlayingSectionEl.querySelector("[data-narration-id]")) {
+      updateNarrationRows(nowPlayingSectionEl, activeId)
+      return
+    }
+
+    nowPlayingBookId = bookId
+    nowPlayingSectionEl.innerHTML = ""
 
     const bookNarrations = allNarrations.filter(n => n.bookId === bookId)
 
@@ -475,6 +535,8 @@ export function createAppShell(
           }
         }
 
+        // Force full rebuild since a row was removed
+        nowPlayingBookId = ""
         refreshNowPlayingSection()
         refreshLibrarySection()
       })
@@ -483,7 +545,6 @@ export function createAppShell(
       row.addEventListener("click", () => {
         if (narr.id === getActive()) return
         switchToNarration(narr.id)
-        refreshNowPlayingSection()
       })
 
       detail.appendChild(row)
@@ -792,10 +853,20 @@ export function createAppShell(
 
   function renderBookDetail(): void {
     if (!browseSectionEl || detailNarrations.length === 0) return
+    const narrations = detailNarrations
+    const bookId = narrations[0].bookId
+    const activeId = getActive()
+
+    // Same book — surgical row update instead of full rebuild
+    if (bookId === detailBookId && browseSectionEl.querySelector("[data-narration-id]")) {
+      updateNarrationRows(browseSectionEl, activeId)
+      return
+    }
+
+    detailBookId = bookId
     cleanupProgressSubs()
     browseSectionEl.innerHTML = ""
 
-    const narrations = detailNarrations
     const detail = document.createElement("div")
     detail.className = "command-drawer-detail"
 
@@ -938,7 +1009,9 @@ export function createAppShell(
           }
         }
 
-        // Re-render current detail view in place (don't navigate away)
+        // Force full rebuild since a row was removed
+        detailBookId = ""
+        nowPlayingBookId = ""
         renderBookDetail()
         refreshLibrarySection()
         refreshNowPlayingSection()
