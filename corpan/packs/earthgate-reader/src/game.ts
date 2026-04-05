@@ -779,7 +779,7 @@ export function createEarthgateReader(
       if (disposed) return
 
       // Only set nowPlaying — languages/currentLanguage are managed by appShell
-      drawerStore.setState({ nowPlaying: { bookTitle: bookDisplayName, narrator: resolveVoiceName(manifest.voice) } })
+      drawerStore.setState({ nowPlaying: { bookTitle: bookDisplayName } })
 
       chapters = buildChapterIndex(segments)
 

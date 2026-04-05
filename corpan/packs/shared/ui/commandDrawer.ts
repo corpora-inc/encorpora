@@ -79,22 +79,18 @@ export function createCommandDrawer(
   const npTitle = document.createElement("div")
   npTitle.className = "command-drawer-now-playing-title"
 
-  const npNarrator = document.createElement("div")
-  npNarrator.className = "command-drawer-now-playing-narrator"
-
   // Only show now-playing block when there's a book title
   function updateNowPlayingVisibility() {
     const { nowPlaying } = drawerStore.getState()
     if (nowPlaying.bookTitle) {
       nowPlayingEl.style.display = ""
       npTitle.textContent = nowPlaying.bookTitle
-      npNarrator.textContent = nowPlaying.narrator || ""
     } else {
       nowPlayingEl.style.display = "none"
     }
   }
 
-  nowPlayingEl.append(npTitle, npNarrator)
+  nowPlayingEl.append(npTitle)
   updateNowPlayingVisibility()
 
   const langContainer = document.createElement("div")
@@ -354,15 +350,20 @@ export function createCommandDrawer(
       if (!isDragging) return
       isDragging = false
       el.releasePointerCapture(e.pointerId)
-      sheet.style.transition = ""
-      sheet.style.transform = ""
 
       const dy = e.clientY - dragStartY
       const elapsed = Date.now() - dragStartTime
       const velocity = elapsed > 0 ? dy / elapsed : 0
       const threshold = sheet.offsetHeight * 0.15
       if (dy > threshold || (velocity > 0.5 && dy > 20)) {
+        // Let close() handle the transition — clear inline transform first
+        sheet.style.transition = ""
+        sheet.style.transform = ""
         close()
+      } else {
+        // Snap back — restore transition and reset transform
+        sheet.style.transition = ""
+        sheet.style.transform = ""
       }
     })
 
@@ -390,12 +391,15 @@ export function createCommandDrawer(
   function close() {
     if (!isOpenState) return
     isOpenState = false
+    // Immediately block touch on sheet so it doesn't eat taps during close animation
+    sheet.style.pointerEvents = "none"
     sheet.classList.add("command-drawer-sheet--closing")
     backdrop.classList.remove("command-drawer-backdrop--open")
     sheet.classList.remove("command-drawer-sheet--open")
     // Remove closing class after animation
     setTimeout(() => {
       sheet.classList.remove("command-drawer-sheet--closing")
+      sheet.style.pointerEvents = ""
     }, 350)
   }
 

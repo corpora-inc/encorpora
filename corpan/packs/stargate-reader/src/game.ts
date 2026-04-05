@@ -1185,7 +1185,7 @@ export function createStargateReader(
       if (disposed) return
 
       // Only set nowPlaying — languages/currentLanguage are managed by appShell
-      drawerStore.setState({ nowPlaying: { bookTitle: bookDisplayName, narrator: resolveVoiceName(manifest.voice) } })
+      drawerStore.setState({ nowPlaying: { bookTitle: bookDisplayName } })
 
       // Build chapter index
       chapters = buildChapterIndex(segments)
