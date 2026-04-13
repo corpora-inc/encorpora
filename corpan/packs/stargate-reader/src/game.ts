@@ -54,7 +54,7 @@ const STARGATE_PREFS_DEFAULTS: DisplayPrefs = {
   pulseRing: true,
   wordHold: true,
   oscilloscopeConfig: { amplitude: 5, width: 2, alpha: 0.35 },
-  waveformConfig: { maxRadius: 1, alpha: 0.005, minRadius: 0 },
+  waveformConfig: { maxRadius: 1, alpha: 0.005, minRadius: 0, reversed: false },
   pulseRingConfig: { maxRadius: 0.2, fadeMs: 200 },
   wordHoldConfig: { holdY: 0, zPull: 0.4 },
 }
@@ -552,10 +552,7 @@ export function createStargateReader(
 
   const scene = new Scene(engine)
   scene.clearColor = new Color4(0.02, 0.03, 0.06, 1)
-  // Skip unnecessary scene features for a text reader
   scene.skipPointerMovePicking = true
-  scene.autoClear = false  // we fill the background with clearColor anyway
-  scene.blockMaterialDirtyMechanism = true
 
   // Camera — looking down the z-axis
   const camera = new ArcRotateCamera(
@@ -929,13 +926,29 @@ export function createStargateReader(
       prefsStore.save(bookId, prefs)
     },
     onWaveformConfig: (key: string, value: number) => {
-      waveformStream?.configure({ [key]: value })
-      ;(prefs.waveformConfig as Record<string, number>)[key] = value
+      if (key === "reversed") {
+        const rev = value === 1
+        waveformStream?.configure({ reversed: rev })
+        prefs.waveformConfig.reversed = rev
+      } else {
+        waveformStream?.configure({ [key]: value })
+        ;(prefs.waveformConfig as Record<string, number>)[key] = value
+        // Link maxRadius to pulse ring
+        if (key === "maxRadius") {
+          pulseRing?.configure({ maxRadius: value })
+          prefs.pulseRingConfig.maxRadius = value
+        }
+      }
       prefsStore.save(bookId, prefs)
     },
     onPulseRingConfig: (key: string, value: number) => {
       pulseRing?.configure({ [key]: value })
       ;(prefs.pulseRingConfig as Record<string, number>)[key] = value
+      // Link maxRadius to waveform
+      if (key === "maxRadius") {
+        waveformStream?.configure({ maxRadius: value })
+        prefs.waveformConfig.maxRadius = value
+      }
       prefsStore.save(bookId, prefs)
     },
   }
