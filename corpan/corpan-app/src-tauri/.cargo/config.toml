@@ -1,4 +1,17 @@
 # src-tauri/.cargo/config.toml
+
+# macOS: Swift runtime for tauri-plugin-iap's Swift bridge.
+# System Swift is in the dyld shared cache; /usr/lib/swift resolves there.
+[target.x86_64-apple-darwin]
+rustflags = [
+    "-C", "link-arg=-Wl,-rpath,/usr/lib/swift",
+]
+
+[target.aarch64-apple-darwin]
+rustflags = [
+    "-C", "link-arg=-Wl,-rpath,/usr/lib/swift",
+]
+
 # Force NDK linkers + 16 KB page size for ALL Android ABIs.
 
 [target.aarch64-linux-android]

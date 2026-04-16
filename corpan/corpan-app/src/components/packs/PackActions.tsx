@@ -6,7 +6,6 @@ import { useEntitlementStore } from "@/store/entitlements"
 import type { CatalogGame } from "@/contentPacks/catalog"
 import { useInstallContext } from "@/contentPacks/InstallContext"
 import {
-  isIapAvailable,
   purchaseAndVerify,
 } from "@/contentPacks/purchase"
 
@@ -30,6 +29,7 @@ export function PackActions({
   const { t } = useTranslation()
   const removeGame = useGamesStore((s) => s.removeGame)
   const isEntitled = useEntitlementStore((s) => s.isEntitled)
+  const iapAvailable = useEntitlementStore((s) => s.iapAvailable)
   const { installCatalogPack, isInstalling } = useInstallContext()
   const [isPurchasing, setIsPurchasing] = useState(false)
 
@@ -131,7 +131,7 @@ export function PackActions({
 
   // Available (not installed)
   // Premium + not entitled + IAP available → show buy button
-  if (isPremium && !entitled && isIapAvailable()) {
+  if (isPremium && !entitled && iapAvailable) {
     return (
       <div className="space-y-2">
         <Button
@@ -156,7 +156,7 @@ export function PackActions({
   }
 
   // Premium + not entitled + no IAP → show unavailable
-  if (isPremium && !entitled && !isIapAvailable()) {
+  if (isPremium && !entitled && !iapAvailable) {
     return (
       <div className="space-y-2">
         <Button disabled className="w-full" size="sm">

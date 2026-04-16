@@ -56,6 +56,7 @@ export async function getPlatform(): Promise<PurchasePlatform> {
 
   if (!isTauriRuntime()) {
     detectedPlatform = "desktop"
+    useEntitlementStore.getState().setPlatform("desktop")
     return detectedPlatform
   }
 
@@ -70,11 +71,12 @@ export async function getPlatform(): Promise<PurchasePlatform> {
     detectedPlatform = "desktop"
   }
 
+  useEntitlementStore.getState().setPlatform(detectedPlatform)
   return detectedPlatform
 }
 
+/** @deprecated Use `useEntitlementStore(s => s.iapAvailable)` in React components */
 export function isIapAvailable(): boolean {
-  // IAP is available on mobile platforms and macOS (via Mac App Store)
   const p = detectedPlatform
   return p === "ios" || p === "android" || p === "macos" || p === "windows"
 }

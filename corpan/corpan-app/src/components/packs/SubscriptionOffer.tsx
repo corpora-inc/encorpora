@@ -3,7 +3,6 @@ import { useTranslation } from "react-i18next"
 import { Button } from "@/components/ui/button"
 import { useEntitlementStore } from "@/store/entitlements"
 import {
-  isIapAvailable,
   fetchProducts,
   purchaseAndVerify,
   SUBSCRIPTION_MONTHLY,
@@ -18,21 +17,23 @@ import {
 export function SubscriptionOffer() {
   const { t } = useTranslation()
   const subscriptionActive = useEntitlementStore((s) => s.subscription.active)
+  const iapAvailable = useEntitlementStore((s) => s.iapAvailable)
   const [products, setProducts] = useState<StoreProduct[]>([])
   const [selectedPlan, setSelectedPlan] = useState<"monthly" | "annual">("annual")
   const [isPurchasing, setIsPurchasing] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
-  // Don't render if already subscribed or IAP not available
-  if (subscriptionActive || !isIapAvailable()) return null
-
   // Fetch subscription product prices from the store
   useEffect(() => {
+    if (!iapAvailable || subscriptionActive) return
     fetchProducts(
       [SUBSCRIPTION_MONTHLY, SUBSCRIPTION_ANNUAL],
       "subs"
     ).then(setProducts)
-  }, [])
+  }, [iapAvailable, subscriptionActive])
+
+  // Don't render if already subscribed or IAP not available
+  if (subscriptionActive || !iapAvailable) return null
 
   const monthlyProduct = products.find((p) => p.productId === SUBSCRIPTION_MONTHLY)
   const annualProduct = products.find((p) => p.productId === SUBSCRIPTION_ANNUAL)

@@ -17,11 +17,16 @@ type EntitlementState = {
   subscription: SubscriptionState
   /** Timestamp of last entitlement refresh */
   lastRefreshed: number | null
+  /** Detected platform — null until getPlatform() resolves */
+  platform: string | null
+  /** Whether IAP is available on this platform */
+  iapAvailable: boolean
 
   // Actions
   addPurchasedProduct: (productId: string) => void
   setSubscription: (sub: SubscriptionState) => void
   setLastRefreshed: (ts: number) => void
+  setPlatform: (platform: string) => void
 
   /** Check if user is entitled to a product (purchased or subscribed) */
   isEntitled: (productId: string) => boolean
@@ -29,6 +34,8 @@ type EntitlementState = {
   /** Clear all entitlements (for testing/debug) */
   clearEntitlements: () => void
 }
+
+const IAP_PLATFORMS = new Set(["ios", "android", "macos", "windows"])
 
 const EMPTY_SUBSCRIPTION: SubscriptionState = {
   active: false,
@@ -43,6 +50,12 @@ export const useEntitlementStore = create<EntitlementState>()(
       purchasedProducts: [],
       subscription: EMPTY_SUBSCRIPTION,
       lastRefreshed: null,
+      platform: null,
+      iapAvailable: false,
+
+      setPlatform: (platform) => {
+        set({ platform, iapAvailable: IAP_PLATFORMS.has(platform) })
+      },
 
       addPurchasedProduct: (productId) => {
         set((state) => {
@@ -84,6 +97,7 @@ export const useEntitlementStore = create<EntitlementState>()(
         purchasedProducts: state.purchasedProducts,
         subscription: state.subscription,
         lastRefreshed: state.lastRefreshed,
+        // platform and iapAvailable are NOT persisted — detected fresh each launch
       }),
     }
   )

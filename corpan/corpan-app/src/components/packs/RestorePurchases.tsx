@@ -1,7 +1,8 @@
 import { useState } from "react"
 import { useTranslation } from "react-i18next"
 import { Button } from "@/components/ui/button"
-import { isIapAvailable, restoreAndSync } from "@/contentPacks/purchase"
+import { restoreAndSync } from "@/contentPacks/purchase"
+import { useEntitlementStore } from "@/store/entitlements"
 
 /**
  * Restore Purchases button for settings.
@@ -12,7 +13,9 @@ export function RestorePurchases() {
   const [isRestoring, setIsRestoring] = useState(false)
   const [result, setResult] = useState<string | null>(null)
 
-  if (!isIapAvailable()) return null
+  const iapAvailable = useEntitlementStore((s) => s.iapAvailable)
+
+  if (!iapAvailable) return null
 
   const handleRestore = async () => {
     setIsRestoring(true)
