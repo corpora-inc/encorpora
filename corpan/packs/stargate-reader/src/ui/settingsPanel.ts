@@ -1,6 +1,6 @@
 // Stargate-specific display config types (kept local, not in shared)
 export type OscilloscopeConfig = { amplitude: number; width: number; alpha: number }
-export type WaveformConfig = { maxRadius: number; alpha: number; minRadius: number }
+export type WaveformConfig = { maxRadius: number; alpha: number; minRadius: number; reversed: boolean }
 export type PulseRingConfig = { maxRadius: number; fadeMs: number }
 export type WordHoldConfig = { holdY: number; zPull: number }
 
@@ -187,12 +187,28 @@ export function renderStargateDisplaySettings(
     waveBtn.textContent = waveVisible ? "ON" : "OFF"
     cbs.onToggleWaveform(waveVisible)
   })
+  const waveConfig = options.initialWaveformConfig ?? { maxRadius: 1, alpha: 0.005, minRadius: 0, reversed: false }
+  let waveReversed = waveConfig.reversed ?? false
+
+  // Direction toggle
+  const waveDirBtn = document.createElement("button")
+  waveDirBtn.className = "stargate-settings-toggle" + (waveReversed ? " stargate-settings-toggle--active" : "")
+  waveDirBtn.textContent = waveReversed ? "\u2190" : "\u2192"
+  waveDirBtn.title = waveReversed ? "Reversed" : "Forward"
+  waveDirBtn.addEventListener("click", () => {
+    waveReversed = !waveReversed
+    waveDirBtn.classList.toggle("stargate-settings-toggle--active", waveReversed)
+    waveDirBtn.textContent = waveReversed ? "\u2190" : "\u2192"
+    waveDirBtn.title = waveReversed ? "Reversed" : "Forward"
+    cbs.onWaveformConfig("reversed", waveReversed ? 1 : 0)
+  })
+
   waveRow.appendChild(waveLabel)
+  waveRow.appendChild(waveDirBtn)
   waveRow.appendChild(waveBtn)
   container.appendChild(waveRow)
 
   // Waveform advanced sliders
-  const waveConfig = options.initialWaveformConfig ?? { maxRadius: 1, alpha: 0.005, minRadius: 0 }
   createAdvancedSection(
     container,
     [

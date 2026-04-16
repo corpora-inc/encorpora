@@ -243,7 +243,6 @@ export function createAudioEngine(
           lastOutputLatencyS = latency
           if (!outputLatencyLoggedOnce) {
             outputLatencyLoggedOnce = true
-            console.log(`[audio] output latency: ${(latency * 1000).toFixed(1)}ms (getOutputTimestamp)`)
           }
           return latency
         }
@@ -258,7 +257,6 @@ export function createAudioEngine(
       lastOutputLatencyS = fallback
       if (!outputLatencyLoggedOnce) {
         outputLatencyLoggedOnce = true
-        console.log(`[audio] output latency: ${(fallback * 1000).toFixed(1)}ms (baseLatency+outputLatency)`)
       }
       return fallback
     }
@@ -313,7 +311,6 @@ export function createAudioEngine(
 
   async function playSegment(index: number, offset: number = 0) {
     const gen = ++playbackGeneration
-    console.log(`[audio] playSegment(${index}, offset=${offset.toFixed(1)}) ctx.state=${ctx?.state ?? "null"}`)
 
     if (disposed || index >= segments.length) {
       playing = false
@@ -412,7 +409,6 @@ export function createAudioEngine(
     waitingOwnerGeneration = null
     pendingNextSegmentStartMs = null
     pendingNextSegmentFromCtxTime = null
-    console.log(`[audio] source.start() ok — seg=${index}, ctx.state=${context.state}`)
 
     preloadAhead()
   }
@@ -437,7 +433,6 @@ export function createAudioEngine(
     },
 
     play: () => {
-      console.log(`[audio] play() — playing=${playing}, ctx.state=${ctx?.state ?? "null"}`)
       if (playing) return
 
       const context = ensureContext()
@@ -594,14 +589,12 @@ export function createAudioEngine(
     },
 
     recoverContext: async (): Promise<boolean> => {
-      console.log(`[audio] recoverContext() — ctx.state=${ctx?.state ?? "null"}`)
       if (!AudioCtx) return false
       const context = ensureContext()
       if (!context) return false
 
       // Already running — no recovery needed
       if (context.state === "running") {
-        console.log("[audio] recoverContext: already running")
         return true
       }
 
@@ -616,12 +609,10 @@ export function createAudioEngine(
       }
 
       if ((context.state as string) === "running") {
-        console.log("[audio] recoverContext: resumed successfully")
         return true
       }
 
       // Context is dead — close it and create a fresh one
-      console.log("[audio] recoverContext: context dead, recreating")
       try { await context.close() } catch (e) { console.warn("[audio] context.close():", e) }
       ctx = null
       analyser = null
@@ -657,7 +648,6 @@ export function createAudioEngine(
         try { await newCtx.resume() } catch (e) { console.warn("[audio] new context resume:", e) }
       }
 
-      console.log(`[audio] recoverContext: new ctx.state=${newCtx.state}`)
       return newCtx.state === "running"
     },
 

@@ -13,7 +13,6 @@ import {
   ENVELOPE_BINS,
   FADE_IN_Z,
   FADE_OUT_Z,
-  CAMERA_Z,
   LOOK_AHEAD_Z,
   LOOK_BEHIND_Z,
   MS_PER_Z_UNIT,
@@ -35,7 +34,7 @@ export type WaveformStream = {
     waveformCache: WaveformCache,
     currentWordHint: number
   ) => void
-  configure: (config: { maxRadius?: number; alpha?: number; minRadius?: number }) => void
+  configure: (config: { maxRadius?: number; alpha?: number; minRadius?: number; reversed?: boolean }) => void
   dispose: () => void
 }
 
@@ -68,8 +67,9 @@ export function createWaveformStream(scene: Scene): WaveformStream {
   let maxRadius = WAVEFORM_STREAM_MAX_RADIUS
   const TESSELLATION = WAVEFORM_STREAM_TESSELLATION
   const zStep = (LOOK_AHEAD_Z + LOOK_BEHIND_Z) / (SAMPLES - 1)
-  // "Now" plane sits just in front of the camera — peak hits right before the screen
-  const NOW_Z = CAMERA_Z + 1
+  // "Now" plane at z=0 — where words converge, center of the view
+  const NOW_Z = 0
+  let reversed = false
 
   // Pre-allocate reusable arrays — two buffers for ping-pong smoothing
   const rawAmplitudes = new Float32Array(SAMPLES)
@@ -192,27 +192,44 @@ export function createWaveformStream(scene: Scene): WaveformStream {
       currentWordHint: number
     ) {
       // --- Sample raw amplitudes along Z ---
-      let wordCursor = Math.max(0, currentWordHint - 30)
+      const sign = reversed ? -1 : 1
+      let wordCursor: number
 
-      // Walk back to cover the full look-behind range (shifted by CAMERA_Z)
-      const lookBehindMs = (LOOK_BEHIND_Z + NOW_Z) * MS_PER_Z_UNIT
-      while (
-        wordCursor > 0 &&
-        words[wordCursor].absoluteEndMs > currentMs - lookBehindMs
-      ) {
-        wordCursor--
+      if (reversed) {
+        // Reversed: low Z = future, high Z = past. Start ahead.
+        wordCursor = Math.min(words.length - 1, currentWordHint + 40)
+        while (
+          wordCursor < words.length - 1 &&
+          words[wordCursor].absoluteStartMs < currentMs + LOOK_BEHIND_Z * MS_PER_Z_UNIT
+        ) {
+          wordCursor++
+        }
+      } else {
+        // Forward: low Z = past, high Z = future. Start behind.
+        wordCursor = Math.max(0, currentWordHint - 30)
+        const lookBehindMs = (LOOK_BEHIND_Z + NOW_Z) * MS_PER_Z_UNIT
+        while (
+          wordCursor > 0 &&
+          words[wordCursor].absoluteEndMs > currentMs - lookBehindMs
+        ) {
+          wordCursor--
+        }
       }
 
       for (let i = 0; i < SAMPLES; i++) {
         const z = zPositions[i]
-        const timeMs = currentMs + (z - NOW_Z) * MS_PER_Z_UNIT
+        const timeMs = currentMs + sign * (z - NOW_Z) * MS_PER_Z_UNIT
 
-        // Advance cursor to find word at this time
-        while (
-          wordCursor < words.length - 1 &&
-          words[wordCursor].absoluteEndMs < timeMs
-        ) {
-          wordCursor++
+        if (reversed) {
+          // Walk cursor backward — timeMs decreases as i increases
+          while (wordCursor > 0 && words[wordCursor].absoluteStartMs > timeMs) {
+            wordCursor--
+          }
+        } else {
+          // Walk cursor forward — timeMs increases as i increases
+          while (wordCursor < words.length - 1 && words[wordCursor].absoluteEndMs < timeMs) {
+            wordCursor++
+          }
         }
 
         const w = words[wordCursor]
@@ -272,10 +289,11 @@ export function createWaveformStream(scene: Scene): WaveformStream {
       tubeMesh.updateVerticesData(VertexBuffer.PositionKind, positions)
     },
 
-    configure(config: { maxRadius?: number; alpha?: number; minRadius?: number }) {
+    configure(config: { maxRadius?: number; alpha?: number; minRadius?: number; reversed?: boolean }) {
       if (config.maxRadius !== undefined) maxRadius = config.maxRadius
       if (config.alpha !== undefined) mat.alpha = config.alpha
       if (config.minRadius !== undefined) minRadius = config.minRadius
+      if (config.reversed !== undefined) reversed = config.reversed
     },
 
     dispose() {

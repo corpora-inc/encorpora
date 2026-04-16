@@ -36,7 +36,6 @@ export async function startNativeKeepAlive(
   const internals = getTauriInternals()
   if (!internals) return
   try {
-    console.log("[native] startNativeKeepAlive")
     await internals.invoke("plugin:audio-keepalive|start_audio_keepalive", {
       args: { title, artist, bookTitle, positionMs, durationMs },
     })
@@ -49,7 +48,6 @@ export async function stopNativeKeepAlive(): Promise<void> {
   const internals = getTauriInternals()
   if (!internals) return
   try {
-    console.log("[native] stopNativeKeepAlive")
     await internals.invoke("plugin:audio-keepalive|stop_audio_keepalive")
   } catch (e) {
     console.error("[native] stopNativeKeepAlive failed:", e)
@@ -60,7 +58,6 @@ export async function pauseNativeKeepAlive(source: string = "unknown"): Promise<
   const internals = getTauriInternals()
   if (!internals) return
   try {
-    console.log(`[native] pauseNativeKeepAlive(source=${source})`)
     await internals.invoke("plugin:audio-keepalive|pause_audio_keepalive")
   } catch (e) {
     console.error(`[native] pauseNativeKeepAlive(source=${source}) failed:`, e)
@@ -71,7 +68,6 @@ export async function resumeNativeKeepAlive(source: string = "unknown"): Promise
   const internals = getTauriInternals()
   if (!internals) return
   try {
-    console.log(`[native] resumeNativeKeepAlive(source=${source})`)
     await internals.invoke("plugin:audio-keepalive|resume_audio_keepalive")
   } catch (e) {
     console.error(`[native] resumeNativeKeepAlive(source=${source}) failed:`, e)

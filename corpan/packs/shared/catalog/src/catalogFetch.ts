@@ -121,7 +121,6 @@ export async function fetchCatalog(
       ? cdnUrl + (cdnUrl.includes("?") ? "&" : "?") + "_t=" + Date.now()
       : cdnUrl
     const fetchOpts: RequestInit = force ? { cache: "no-store" } : {}
-    console.log("[reader-catalog] Fetching catalog:", url, force ? "(force)" : "(cached ok)")
     const res = await fetch(url, fetchOpts)
     if (!res.ok) {
       console.warn("[reader-catalog] Fetch failed:", res.status, res.statusText)
@@ -133,7 +132,6 @@ export async function fetchCatalog(
       console.warn("[reader-catalog] Failed to parse catalog data")
       return readCache() ?? empty
     }
-    console.log("[reader-catalog] Fetched catalog:", catalog.narrations.length, "narrations")
     writeCache(catalog)
     return catalog
   } catch (err) {
@@ -141,7 +139,6 @@ export async function fetchCatalog(
     // Offline or network error — fall back to last known good catalog
     const cached = readCache()
     if (cached) {
-      console.log("[reader-catalog] Using offline cache:", cached.narrations.length, "narrations")
       return cached
     }
     return empty

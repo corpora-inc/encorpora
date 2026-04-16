@@ -9,6 +9,9 @@ on:
       - "corpan/packs/**"
       - "web/pages/**"
       - "web/scripts/**"
+      - "books/**/pack/manifest.json"
+      - "books/**/pack/segments.json"
+      - "books/**/pack/narration.yaml"
       - ".github/workflows/hover-runner-pages.yml"
   workflow_dispatch: {}
 
