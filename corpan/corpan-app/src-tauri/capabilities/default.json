@@ -11,6 +11,7 @@
     "tts:allow-speak",
     "tts:default",
     "audio-keepalive:default",
-    "iap:default"
+    "iap:default",
+    "os:default"
   ]
 }

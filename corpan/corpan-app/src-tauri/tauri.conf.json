@@ -32,7 +32,7 @@
     "iOS": {
       "minimumSystemVersion": "14.0",
       "developmentTeam": "F9AV5HKF6N",
-      "template": "ios/project.yml"
+      "template": "src-tauri/ios/project.yml"
     },
     "macOS": {
       "signingIdentity": "3rd Party Mac Developer Application: Corpora Inc (F9AV5HKF6N)"

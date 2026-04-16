@@ -1,4 +1,5 @@
 import { invoke } from "@tauri-apps/api/core"
+import { type as osType } from "@tauri-apps/plugin-os"
 import { useEntitlementStore } from "@/store/entitlements"
 import type { SubscriptionPlan } from "@/store/entitlements"
 
@@ -61,11 +62,11 @@ export async function getPlatform(): Promise<PurchasePlatform> {
   }
 
   try {
-    const osType = await invoke<string>("plugin:os|os_type")
-    if (osType === "ios") detectedPlatform = "ios"
-    else if (osType === "android") detectedPlatform = "android"
-    else if (osType === "macos") detectedPlatform = "macos"
-    else if (osType === "windows") detectedPlatform = "windows"
+    const os = osType()
+    if (os === "ios") detectedPlatform = "ios"
+    else if (os === "android") detectedPlatform = "android"
+    else if (os === "macos") detectedPlatform = "macos"
+    else if (os === "windows") detectedPlatform = "windows"
     else detectedPlatform = "desktop"
   } catch {
     detectedPlatform = "desktop"
