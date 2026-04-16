@@ -1,7 +1,7 @@
 series:
   title: "Pirate Biographies: Lives That Changed the Sea"
-  tagline: "Twelve true stories from every ocean on Earth."
-  planned_volumes: 12
+  tagline: "Thirteen true stories from every ocean on Earth."
+  planned_volumes: 13
 
   philosophy: |
     Each volume tells the true story of one pirate — their world, their rise,
@@ -132,3 +132,11 @@ series:
       region: "Pacific and Atlantic Oceans"
       era: "1540–1596"
       leading_theme: "Hero to England and pirate to Spain — the man who circumnavigated the globe"
+
+    - number: 13
+      title: "Ólafur Egilsson"
+      subtitle: "The Pastor Who Survived the Pirates"
+      directory: "13-olafur-egilsson"
+      region: "Westman Islands, Iceland to Algiers, North Africa"
+      era: "1564–1651"
+      leading_theme: "The other side of piracy — a captive's own account of the Barbary slave raids on Iceland"
