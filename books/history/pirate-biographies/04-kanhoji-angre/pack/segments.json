@@ -1,0 +1,4396 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_kanhoji_angre",
+  "total_segments": 294,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note to the Reader",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "A Note to the Reader",
+      "text_markdown": "A Note to the Reader"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note to the Reader",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "This is the true story of Kanhoji Angre, the undefeated admiral of the Konkan coast of India.",
+      "text_markdown": "This is the true story of Kanhoji Angre, the undefeated admiral of the Konkan coast of India.",
+      "tts": {
+        "text": "This is the true story of Kanhoji Angre, the undefeated admiral of the Konkan coast of India.",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note to the Reader",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He served the Maratha Empire and controlled the western Indian coastline for nearly three decades.",
+      "text_markdown": "He served the Maratha Empire and controlled the western Indian coastline for nearly three decades.",
+      "tts": {
+        "text": "He served the Maratha Empire and controlled the western Indian coastline for nearly three decades.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note to the Reader",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The British East India Company, the Portuguese Empire, and the Dutch Republic all failed to defeat him.",
+      "text_markdown": "The British East India Company, the Portuguese Empire, and the Dutch Republic all failed to defeat him.",
+      "tts": {
+        "text": "The British East India Company, the Portuguese Empire, and the Dutch Republic all failed to defeat him.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note to the Reader",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kanhoji Angre is not well known outside of India.",
+      "text_markdown": "Kanhoji Angre is not well known outside of India.",
+      "tts": {
+        "text": "Kanhoji Angre is not well known outside of India.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note to the Reader",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "In European histories, he is often dismissed as a pirate.",
+      "text_markdown": "In European histories, he is often dismissed as a pirate.",
+      "tts": {
+        "text": "In European histories, he is often dismissed as a pirate.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note to the Reader",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "In Indian histories, he is celebrated as a patriot who defended his homeland against foreign colonizers.",
+      "text_markdown": "In Indian histories, he is celebrated as a patriot who defended his homeland against foreign colonizers.",
+      "tts": {
+        "text": "In Indian histories, he is celebrated as a patriot who defended his homeland against foreign colonizers.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note to the Reader",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The truth, as always, is more complicated than either version suggests.",
+      "text_markdown": "The truth, as always, is more complicated than either version suggests.",
+      "tts": {
+        "text": "The truth, as always, is more complicated than either version suggests.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note to the Reader",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kanhoji Angre operated in a world where the lines between piracy, naval warfare, and legitimate governance were blurred beyond recognition.",
+      "text_markdown": "Kanhoji Angre operated in a world where the lines between piracy, naval warfare, and legitimate governance were blurred beyond recognition.",
+      "tts": {
+        "text": "Kanhoji Angre operated in a world where the lines between piracy, naval warfare, and legitimate governance were blurred beyond recognition.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note to the Reader",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "This book tells his story with as much accuracy and nuance as the historical record allows.",
+      "text_markdown": "This book tells his story with as much accuracy and nuance as the historical record allows.",
+      "tts": {
+        "text": "This book tells his story with as much accuracy and nuance as the historical record allows.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note to the Reader",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Every claim in this book is grounded in evidence from Maratha, British, Portuguese, and Dutch sources.",
+      "text_markdown": "Every claim in this book is grounded in evidence from Maratha, British, Portuguese, and Dutch sources.",
+      "tts": {
+        "text": "Every claim in this book is grounded in evidence from Maratha, British, Portuguese, and Dutch sources.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note to the Reader",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Where these sources contradict each other, we note the disagreement.",
+      "text_markdown": "Where these sources contradict each other, we note the disagreement.",
+      "tts": {
+        "text": "Where these sources contradict each other, we note the disagreement.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-013",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note to the Reader",
+      "paragraph_id": "p5",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Where the record is silent, we do not speculate.",
+      "text_markdown": "Where the record is silent, we do not speculate.",
+      "tts": {
+        "text": "Where the record is silent, we do not speculate.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World of the Konkan Coast",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "The World of the Konkan Coast",
+      "text_markdown": "The World of the Konkan Coast"
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World of the Konkan Coast",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The Konkan coast is a narrow strip of land along the western edge of India.",
+      "text_markdown": "The Konkan coast is a narrow strip of land along the western edge of India.",
+      "tts": {
+        "text": "The Konkan coast is a narrow strip of land along the western edge of India.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World of the Konkan Coast",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "It stretches from modern Mumbai in the north to Goa in the south.",
+      "text_markdown": "It stretches from modern Mumbai in the north to Goa in the south.",
+      "tts": {
+        "text": "It stretches from modern Mumbai in the north to Goa in the south.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World of the Konkan Coast",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "To the west lies the Arabian Sea, and to the east rise the Western Ghats, a mountain range that separates the coast from the Deccan Plateau.",
+      "text_markdown": "To the west lies the Arabian Sea, and to the east rise the Western Ghats, a mountain range that separates the coast from the Deccan Plateau.",
+      "tts": {
+        "text": "To the west lies the Arabian Sea, and to the east rise the Western Ghats, a mountain range that separates the coast from the Deccan Plateau.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World of the Konkan Coast",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The coastline is rugged and deeply indented.",
+      "text_markdown": "The coastline is rugged and deeply indented.",
+      "tts": {
+        "text": "The coastline is rugged and deeply indented.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World of the Konkan Coast",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Rocky headlands, sheltered coves, and tidal creeks create a landscape perfectly suited to maritime warfare.",
+      "text_markdown": "Rocky headlands, sheltered coves, and tidal creeks create a landscape perfectly suited to maritime warfare.",
+      "tts": {
+        "text": "Rocky headlands, sheltered coves, and tidal creeks create a landscape perfectly suited to maritime warfare.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World of the Konkan Coast",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The monsoon winds that blow across the Arabian Sea dictate the rhythm of life on this coast.",
+      "text_markdown": "The monsoon winds that blow across the Arabian Sea dictate the rhythm of life on this coast.",
+      "tts": {
+        "text": "The monsoon winds that blow across the Arabian Sea dictate the rhythm of life on this coast.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World of the Konkan Coast",
+      "paragraph_id": "p8",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ships can sail only during certain months, and the timing of the monsoon determines when trade and war are possible.",
+      "text_markdown": "Ships can sail only during certain months, and the timing of the monsoon determines when trade and war are possible.",
+      "tts": {
+        "text": "Ships can sail only during certain months, and the timing of the monsoon determines when trade and war are possible.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World of the Konkan Coast",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "For centuries, the Konkan coast has been one of the busiest maritime corridors in the world.",
+      "text_markdown": "For centuries, the Konkan coast has been one of the busiest maritime corridors in the world.",
+      "tts": {
+        "text": "For centuries, the Konkan coast has been one of the busiest maritime corridors in the world.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World of the Konkan Coast",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Arab dhows carried spices, textiles, and precious stones between India and the ports of the Persian Gulf and East Africa.",
+      "text_markdown": "Arab dhows carried spices, textiles, and precious stones between India and the ports of the Persian Gulf and East Africa.",
+      "tts": {
+        "text": "Arab dhows carried spices, textiles, and precious stones between India and the ports of the Persian Gulf and East Africa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World of the Konkan Coast",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Indian merchants traded pepper, cardamom, cinnamon, and cotton with buyers from across Asia.",
+      "text_markdown": "Indian merchants traded pepper, cardamom, cinnamon, and cotton with buyers from across Asia.",
+      "tts": {
+        "text": "Indian merchants traded pepper, cardamom, cinnamon, and cotton with buyers from across Asia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World of the Konkan Coast",
+      "paragraph_id": "p9",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "The wealth generated by this trade attracted the attention of distant empires.",
+      "text_markdown": "The wealth generated by this trade attracted the attention of distant empires.",
+      "tts": {
+        "text": "The wealth generated by this trade attracted the attention of distant empires.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World of the Konkan Coast",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The Portuguese arrived on the Indian coast in 1498, when Vasco da Gama sailed into the port of Calicut.",
+      "text_markdown": "The Portuguese arrived on the Indian coast in 1498, when Vasco da Gama sailed into the port of Calicut.",
+      "tts": {
+        "text": "The Portuguese arrived on the Indian coast in fourteen ninety-eight, when Vasco da Gama sailed into the port of Calicut.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World of the Konkan Coast",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Within a few years, the Portuguese had established fortified trading posts along the entire western coast of India.",
+      "text_markdown": "Within a few years, the Portuguese had established fortified trading posts along the entire western coast of India.",
+      "tts": {
+        "text": "Within a few years, the Portuguese had established fortified trading posts along the entire western coast of India.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World of the Konkan Coast",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Goa became the capital of the Portuguese Estado da India, a colonial empire that stretched from Mozambique to Macau.",
+      "text_markdown": "Goa became the capital of the Portuguese Estado da India, a colonial empire that stretched from Mozambique to Macau.",
+      "tts": {
+        "text": "Goa became the capital of the Portuguese Estado da India, a colonial empire that stretched from Mozambique to Macau.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World of the Konkan Coast",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "The Portuguese used superior naval firepower to dominate the Indian Ocean trade.",
+      "text_markdown": "The Portuguese used superior naval firepower to dominate the Indian Ocean trade.",
+      "tts": {
+        "text": "The Portuguese used superior naval firepower to dominate the Indian Ocean trade.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World of the Konkan Coast",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The Portuguese introduced a system of passes called cartazes.",
+      "text_markdown": "The Portuguese introduced a system of passes called cartazes.",
+      "tts": {
+        "text": "The Portuguese introduced a system of passes called cartazes.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World of the Konkan Coast",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Any Indian ship that wished to trade in the Arabian Sea was required to purchase a cartaz from the Portuguese.",
+      "text_markdown": "Any Indian ship that wished to trade in the Arabian Sea was required to purchase a cartaz from the Portuguese.",
+      "tts": {
+        "text": "Any Indian ship that wished to trade in the Arabian Sea was required to purchase a cartaz from the Portuguese.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World of the Konkan Coast",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ships without a cartaz were liable to be seized, and their crews imprisoned or killed.",
+      "text_markdown": "Ships without a cartaz were liable to be seized, and their crews imprisoned or killed.",
+      "tts": {
+        "text": "Ships without a cartaz were liable to be seized, and their crews imprisoned or killed.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World of the Konkan Coast",
+      "paragraph_id": "p11",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "This system gave the Portuguese effective control over Indian Ocean commerce.",
+      "text_markdown": "This system gave the Portuguese effective control over Indian Ocean commerce.",
+      "tts": {
+        "text": "This system gave the Portuguese effective control over Indian Ocean commerce.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World of the Konkan Coast",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The Dutch arrived in the early seventeenth century.",
+      "text_markdown": "The Dutch arrived in the early seventeenth century.",
+      "tts": {
+        "text": "The Dutch arrived in the early seventeenth century.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World of the Konkan Coast",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The Dutch East India Company established trading posts on the Indian coast and competed aggressively with the Portuguese.",
+      "text_markdown": "The Dutch East India Company established trading posts on the Indian coast and competed aggressively with the Portuguese.",
+      "tts": {
+        "text": "The Dutch East India Company established trading posts on the Indian coast and competed aggressively with the Portuguese.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World of the Konkan Coast",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The British East India Company followed shortly after.",
+      "text_markdown": "The British East India Company followed shortly after.",
+      "tts": {
+        "text": "The British East India Company followed shortly after.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World of the Konkan Coast",
+      "paragraph_id": "p12",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "By the late seventeenth century, three European powers were competing for control of India's maritime trade.",
+      "text_markdown": "By the late seventeenth century, three European powers were competing for control of India's maritime trade.",
+      "tts": {
+        "text": "By the late seventeenth century, three European powers were competing for control of India's maritime trade.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World of the Konkan Coast",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Meanwhile, on the Deccan Plateau above the Konkan coast, a new Indian power was rising.",
+      "text_markdown": "Meanwhile, on the Deccan Plateau above the Konkan coast, a new Indian power was rising.",
+      "tts": {
+        "text": "Meanwhile, on the Deccan Plateau above the Konkan coast, a new Indian power was rising.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World of the Konkan Coast",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The Maratha Empire was founded by Shivaji Bhonsale in the sixteen sixties.",
+      "text_markdown": "The Maratha Empire was founded by Shivaji Bhonsale in the sixteen sixties.",
+      "tts": {
+        "text": "The Maratha Empire was founded by Shivaji Bhonsale in the sixteen sixties.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World of the Konkan Coast",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Shivaji was a military genius who carved out an independent kingdom from the crumbling Mughal Empire.",
+      "text_markdown": "Shivaji was a military genius who carved out an independent kingdom from the crumbling Mughal Empire.",
+      "tts": {
+        "text": "Shivaji was a military genius who carved out an independent kingdom from the crumbling Mughal Empire.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World of the Konkan Coast",
+      "paragraph_id": "p13",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "He recognized that controlling the coast was essential to his empire's survival.",
+      "text_markdown": "He recognized that controlling the coast was essential to his empire's survival.",
+      "tts": {
+        "text": "He recognized that controlling the coast was essential to his empire's survival.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World of the Konkan Coast",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Shivaji built a navy from scratch.",
+      "text_markdown": "Shivaji built a navy from scratch.",
+      "tts": {
+        "text": "Shivaji built a navy from scratch.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World of the Konkan Coast",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He constructed forts along the Konkan coast and commissioned warships to patrol his waters.",
+      "text_markdown": "He constructed forts along the Konkan coast and commissioned warships to patrol his waters.",
+      "tts": {
+        "text": "He constructed forts along the Konkan coast and commissioned warships to patrol his waters.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World of the Konkan Coast",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "He appointed naval commanders and established the position of Sarkhel, or Grand Admiral.",
+      "text_markdown": "He appointed naval commanders and established the position of Sarkhel, or Grand Admiral.",
+      "tts": {
+        "text": "He appointed naval commanders and established the position of Sarkhel, or Grand Admiral.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World of the Konkan Coast",
+      "paragraph_id": "p14",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "The Maratha navy was intended to protect Maratha trade and resist European encroachment.",
+      "text_markdown": "The Maratha navy was intended to protect Maratha trade and resist European encroachment.",
+      "tts": {
+        "text": "The Maratha navy was intended to protect Maratha trade and resist European encroachment.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World of the Konkan Coast",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "After Shivaji's death in 1680, the Maratha Empire went through a period of turmoil.",
+      "text_markdown": "After Shivaji's death in 1680, the Maratha Empire went through a period of turmoil.",
+      "tts": {
+        "text": "After Shivaji's death in sixteen eighty, the Maratha Empire went through a period of turmoil.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World of the Konkan Coast",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "His successors struggled with internal rivalries and external threats.",
+      "text_markdown": "His successors struggled with internal rivalries and external threats.",
+      "tts": {
+        "text": "His successors struggled with internal rivalries and external threats.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World of the Konkan Coast",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The Mughal Emperor Aurangzeb launched a massive invasion of the Deccan that lasted for decades.",
+      "text_markdown": "The Mughal Emperor Aurangzeb launched a massive invasion of the Deccan that lasted for decades.",
+      "tts": {
+        "text": "The Mughal Emperor Aurangzeb launched a massive invasion of the Deccan that lasted for decades.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World of the Konkan Coast",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "During this period of chaos, the Maratha navy continued to operate along the coast under a series of appointed admirals.",
+      "text_markdown": "During this period of chaos, the Maratha navy continued to operate along the coast under a series of appointed admirals.",
+      "tts": {
+        "text": "During this period of chaos, the Maratha navy continued to operate along the coast under a series of appointed admirals.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World of the Konkan Coast",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The European trading companies used this instability to expand their influence.",
+      "text_markdown": "The European trading companies used this instability to expand their influence.",
+      "tts": {
+        "text": "The European trading companies used this instability to expand their influence.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World of the Konkan Coast",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The British East India Company established its headquarters at Bombay, a cluster of islands on the northern Konkan coast.",
+      "text_markdown": "The British East India Company established its headquarters at Bombay, a cluster of islands on the northern Konkan coast.",
+      "tts": {
+        "text": "The British East India Company established its headquarters at Bombay, a cluster of islands on the northern Konkan coast.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World of the Konkan Coast",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The Portuguese held Goa and several smaller enclaves.",
+      "text_markdown": "The Portuguese held Goa and several smaller enclaves.",
+      "tts": {
+        "text": "The Portuguese held Goa and several smaller enclaves.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World of the Konkan Coast",
+      "paragraph_id": "p16",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "The Dutch maintained trading posts at various points along the coast.",
+      "text_markdown": "The Dutch maintained trading posts at various points along the coast.",
+      "tts": {
+        "text": "The Dutch maintained trading posts at various points along the coast.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World of the Konkan Coast",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The Mughal Empire had been the dominant power in India for over a century.",
+      "text_markdown": "The Mughal Empire had been the dominant power in India for over a century.",
+      "tts": {
+        "text": "The Mughal Empire had been the dominant power in India for over a century.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World of the Konkan Coast",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "At its peak under Emperor Akbar, the Mughal Empire controlled most of the Indian subcontinent.",
+      "text_markdown": "At its peak under Emperor Akbar, the Mughal Empire controlled most of the Indian subcontinent.",
+      "tts": {
+        "text": "At its peak under Emperor Akbar, the Mughal Empire controlled most of the Indian subcontinent.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World of the Konkan Coast",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "But by the late seventeenth century, the empire was crumbling under the weight of Aurangzeb's endless wars in the Deccan.",
+      "text_markdown": "But by the late seventeenth century, the empire was crumbling under the weight of Aurangzeb's endless wars in the Deccan.",
+      "tts": {
+        "text": "But by the late seventeenth century, the empire was crumbling under the weight of Aurangzeb's endless wars in the Deccan.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World of the Konkan Coast",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "This decline created opportunities for regional powers like the Marathas to assert their independence.",
+      "text_markdown": "This decline created opportunities for regional powers like the Marathas to assert their independence.",
+      "tts": {
+        "text": "This decline created opportunities for regional powers like the Marathas to assert their independence.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-058",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World of the Konkan Coast",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The spice trade made the Indian coast enormously valuable to European merchants.",
+      "text_markdown": "The spice trade made the Indian coast enormously valuable to European merchants.",
+      "tts": {
+        "text": "The spice trade made the Indian coast enormously valuable to European merchants.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-059",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World of the Konkan Coast",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Pepper, cardamom, and cinnamon from the Malabar coast were worth their weight in silver in European markets.",
+      "text_markdown": "Pepper, cardamom, and cinnamon from the Malabar coast were worth their weight in silver in European markets.",
+      "tts": {
+        "text": "Pepper, cardamom, and cinnamon from the Malabar coast were worth their weight in silver in European markets.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-060",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World of the Konkan Coast",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Control of these spices drove the entire European expansion into the Indian Ocean.",
+      "text_markdown": "Control of these spices drove the entire European expansion into the Indian Ocean.",
+      "tts": {
+        "text": "Control of these spices drove the entire European expansion into the Indian Ocean.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-061",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World of the Konkan Coast",
+      "paragraph_id": "p18",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Every fort, every trading post, and every naval battle on the Konkan coast was ultimately about who would profit from this trade.",
+      "text_markdown": "Every fort, every trading post, and every naval battle on the Konkan coast was ultimately about who would profit from this trade.",
+      "tts": {
+        "text": "Every fort, every trading post, and every naval battle on the Konkan coast was ultimately about who would profit from this trade.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-062",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World of the Konkan Coast",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Into this world of competing empires, colonial ambition, and maritime warfare, Kanhoji Angre was born.",
+      "text_markdown": "Into this world of competing empires, colonial ambition, and maritime warfare, Kanhoji Angre was born.",
+      "tts": {
+        "text": "Into this world of competing empires, colonial ambition, and maritime warfare, Kanhoji Angre was born.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-063",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World of the Konkan Coast",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He would spend his entire career defending the Konkan coast against powers that were determined to control it.",
+      "text_markdown": "He would spend his entire career defending the Konkan coast against powers that were determined to control it.",
+      "tts": {
+        "text": "He would spend his entire career defending the Konkan coast against powers that were determined to control it.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-064",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World of the Konkan Coast",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "He would become the most effective naval commander India had ever produced.",
+      "text_markdown": "He would become the most effective naval commander India had ever produced.",
+      "tts": {
+        "text": "He would become the most effective naval commander India had ever produced.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-065",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origins",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Origins",
+      "text_markdown": "Origins"
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origins",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kanhoji Angre was born in 1669 in the town of Alibag, on the Konkan coast south of Bombay.",
+      "text_markdown": "Kanhoji Angre was born in 1669 in the town of Alibag, on the Konkan coast south of Bombay.",
+      "tts": {
+        "text": "Kanhoji Angre was born in sixteen sixty-nine in the town of Alibag, on the Konkan coast south of Bombay.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origins",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "His family belonged to the Maratha warrior caste.",
+      "text_markdown": "His family belonged to the Maratha warrior caste.",
+      "tts": {
+        "text": "His family belonged to the Maratha warrior caste.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origins",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "They had a long tradition of military service and loyalty to the Maratha rulers.",
+      "text_markdown": "They had a long tradition of military service and loyalty to the Maratha rulers.",
+      "tts": {
+        "text": "They had a long tradition of military service and loyalty to the Maratha rulers.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origins",
+      "paragraph_id": "p21",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kanhoji grew up in a world shaped by warfare, maritime trade, and resistance to foreign powers.",
+      "text_markdown": "Kanhoji grew up in a world shaped by warfare, maritime trade, and resistance to foreign powers.",
+      "tts": {
+        "text": "Kanhoji grew up in a world shaped by warfare, maritime trade, and resistance to foreign powers.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origins",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "His father, Tukoji Angre, served in the Maratha military.",
+      "text_markdown": "His father, Tukoji Angre, served in the Maratha military.",
+      "tts": {
+        "text": "His father, Tukoji Angre, served in the Maratha military.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origins",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The Angre family had connections to the Maratha court and to the network of coastal forts that Shivaji had built.",
+      "text_markdown": "The Angre family had connections to the Maratha court and to the network of coastal forts that Shivaji had built.",
+      "tts": {
+        "text": "The Angre family had connections to the Maratha court and to the network of coastal forts that Shivaji had built.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origins",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Young Kanhoji was raised with the expectation that he too would serve the Maratha cause.",
+      "text_markdown": "Young Kanhoji was raised with the expectation that he too would serve the Maratha cause.",
+      "tts": {
+        "text": "Young Kanhoji was raised with the expectation that he too would serve the Maratha cause.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origins",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "He received training in both land and naval warfare from an early age.",
+      "text_markdown": "He received training in both land and naval warfare from an early age.",
+      "tts": {
+        "text": "He received training in both land and naval warfare from an early age.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origins",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The Konkan coast was a harsh training ground.",
+      "text_markdown": "The Konkan coast was a harsh training ground.",
+      "tts": {
+        "text": "The Konkan coast was a harsh training ground.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origins",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The waters were treacherous, with strong currents, hidden reefs, and unpredictable monsoon storms.",
+      "text_markdown": "The waters were treacherous, with strong currents, hidden reefs, and unpredictable monsoon storms.",
+      "tts": {
+        "text": "The waters were treacherous, with strong currents, hidden reefs, and unpredictable monsoon storms.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origins",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Navigating these waters required intimate knowledge of every inlet, every headland, and every tidal pattern.",
+      "text_markdown": "Navigating these waters required intimate knowledge of every inlet, every headland, and every tidal pattern.",
+      "tts": {
+        "text": "Navigating these waters required intimate knowledge of every inlet, every headland, and every tidal pattern.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origins",
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kanhoji learned this knowledge as a young man, sailing the coast in small boats.",
+      "text_markdown": "Kanhoji learned this knowledge as a young man, sailing the coast in small boats.",
+      "tts": {
+        "text": "Kanhoji learned this knowledge as a young man, sailing the coast in small boats.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origins",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "He entered Maratha naval service as a young officer.",
+      "text_markdown": "He entered Maratha naval service as a young officer.",
+      "tts": {
+        "text": "He entered Maratha naval service as a young officer.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origins",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The Maratha navy at this time was based at a series of coastal forts, including Vijaydurg, Sindhudurg, and Kolaba.",
+      "text_markdown": "The Maratha navy at this time was based at a series of coastal forts, including Vijaydurg, Sindhudurg, and Kolaba.",
+      "tts": {
+        "text": "The Maratha navy at this time was based at a series of coastal forts, including Vijaydurg, Sindhudurg, and Kolaba.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origins",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "These forts were built on rocky islands and headlands, making them nearly impossible to attack from the sea.",
+      "text_markdown": "These forts were built on rocky islands and headlands, making them nearly impossible to attack from the sea.",
+      "tts": {
+        "text": "These forts were built on rocky islands and headlands, making them nearly impossible to attack from the sea.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origins",
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Shivaji had designed them specifically to withstand naval bombardment.",
+      "text_markdown": "Shivaji had designed them specifically to withstand naval bombardment.",
+      "tts": {
+        "text": "Shivaji had designed them specifically to withstand naval bombardment.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origins",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kanhoji rose quickly through the ranks of the Maratha navy.",
+      "text_markdown": "Kanhoji rose quickly through the ranks of the Maratha navy.",
+      "tts": {
+        "text": "Kanhoji rose quickly through the ranks of the Maratha navy.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origins",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He distinguished himself in skirmishes against both Mughal and Sidi naval forces.",
+      "text_markdown": "He distinguished himself in skirmishes against both Mughal and Sidi naval forces.",
+      "tts": {
+        "text": "He distinguished himself in skirmishes against both Mughal and Sidi naval forces.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origins",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The Sidis were an Abyssinian community based at the fortress of Janjira, south of Bombay.",
+      "text_markdown": "The Sidis were an Abyssinian community based at the fortress of Janjira, south of Bombay.",
+      "tts": {
+        "text": "The Sidis were an Abyssinian community based at the fortress of Janjira, south of Bombay.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origins",
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "They had been rivals of the Marathas for control of the coast for decades.",
+      "text_markdown": "They had been rivals of the Marathas for control of the coast for decades.",
+      "tts": {
+        "text": "They had been rivals of the Marathas for control of the coast for decades.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origins",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In 1698, Kanhoji was appointed Sarkhel, the Grand Admiral of the Maratha navy.",
+      "text_markdown": "In 1698, Kanhoji was appointed Sarkhel, the Grand Admiral of the Maratha navy.",
+      "tts": {
+        "text": "In sixteen ninety-eight, Kanhoji was appointed Sarkhel, the Grand Admiral of the Maratha navy.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origins",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He was approximately twenty-nine years old.",
+      "text_markdown": "He was approximately twenty-nine years old.",
+      "tts": {
+        "text": "He was approximately twenty-nine years old.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origins",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The appointment came from Rajaram, the Maratha king, who recognized Kanhoji's exceptional naval abilities.",
+      "text_markdown": "The appointment came from Rajaram, the Maratha king, who recognized Kanhoji's exceptional naval abilities.",
+      "tts": {
+        "text": "The appointment came from Rajaram, the Maratha king, who recognized Kanhoji's exceptional naval abilities.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origins",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "It was a position that Kanhoji would hold for the rest of his life.",
+      "text_markdown": "It was a position that Kanhoji would hold for the rest of his life.",
+      "tts": {
+        "text": "It was a position that Kanhoji would hold for the rest of his life.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origins",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "As Sarkhel, Kanhoji commanded all Maratha naval forces along the Konkan coast.",
+      "text_markdown": "As Sarkhel, Kanhoji commanded all Maratha naval forces along the Konkan coast.",
+      "tts": {
+        "text": "As Sarkhel, Kanhoji commanded all Maratha naval forces along the Konkan coast.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origins",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He controlled a fleet of warships and a network of fortified bases.",
+      "text_markdown": "He controlled a fleet of warships and a network of fortified bases.",
+      "tts": {
+        "text": "He controlled a fleet of warships and a network of fortified bases.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origins",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "He was responsible for defending the coast, protecting Maratha trade, and resisting European encroachment.",
+      "text_markdown": "He was responsible for defending the coast, protecting Maratha trade, and resisting European encroachment.",
+      "tts": {
+        "text": "He was responsible for defending the coast, protecting Maratha trade, and resisting European encroachment.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origins",
+      "paragraph_id": "p27",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "It was an enormous responsibility, and he embraced it with total commitment.",
+      "text_markdown": "It was an enormous responsibility, and he embraced it with total commitment.",
+      "tts": {
+        "text": "It was an enormous responsibility, and he embraced it with total commitment.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origins",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The appointment came at a critical time.",
+      "text_markdown": "The appointment came at a critical time.",
+      "tts": {
+        "text": "The appointment came at a critical time.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origins",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The Mughal invasion of the Deccan was at its peak.",
+      "text_markdown": "The Mughal invasion of the Deccan was at its peak.",
+      "tts": {
+        "text": "The Mughal invasion of the Deccan was at its peak.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origins",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The Maratha kingdom was fighting for its survival on land.",
+      "text_markdown": "The Maratha kingdom was fighting for its survival on land.",
+      "tts": {
+        "text": "The Maratha kingdom was fighting for its survival on land.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origins",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "The sea was the one area where the Marathas could still project power, and Kanhoji was determined to make the most of it.",
+      "text_markdown": "The sea was the one area where the Marathas could still project power, and Kanhoji was determined to make the most of it.",
+      "tts": {
+        "text": "The sea was the one area where the Marathas could still project power, and Kanhoji was determined to make the most of it.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origins",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kanhoji established his primary base at the island fortress of Kolaba, near Alibag.",
+      "text_markdown": "Kanhoji established his primary base at the island fortress of Kolaba, near Alibag.",
+      "tts": {
+        "text": "Kanhoji established his primary base at the island fortress of Kolaba, near Alibag.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origins",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "From Kolaba, he could control the sea approaches to Bombay and the major trade routes along the coast.",
+      "text_markdown": "From Kolaba, he could control the sea approaches to Bombay and the major trade routes along the coast.",
+      "tts": {
+        "text": "From Kolaba, he could control the sea approaches to Bombay and the major trade routes along the coast.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origins",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "He fortified the island with additional cannon emplacements and expanded the harbor to accommodate his growing fleet.",
+      "text_markdown": "He fortified the island with additional cannon emplacements and expanded the harbor to accommodate his growing fleet.",
+      "tts": {
+        "text": "He fortified the island with additional cannon emplacements and expanded the harbor to accommodate his growing fleet.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origins",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kolaba would remain his headquarters for the next three decades.",
+      "text_markdown": "Kolaba would remain his headquarters for the next three decades.",
+      "tts": {
+        "text": "Kolaba would remain his headquarters for the next three decades.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origins",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "He also strengthened the fortress of Vijaydurg, the most powerful Maratha naval base on the coast.",
+      "text_markdown": "He also strengthened the fortress of Vijaydurg, the most powerful Maratha naval base on the coast.",
+      "tts": {
+        "text": "He also strengthened the fortress of Vijaydurg, the most powerful Maratha naval base on the coast.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origins",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Vijaydurg was built on a rocky promontory jutting into the Arabian Sea.",
+      "text_markdown": "Vijaydurg was built on a rocky promontory jutting into the Arabian Sea.",
+      "tts": {
+        "text": "Vijaydurg was built on a rocky promontory jutting into the Arabian Sea.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origins",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "It had triple walls, underground tunnels, and a protected harbor that could shelter an entire fleet.",
+      "text_markdown": "It had triple walls, underground tunnels, and a protected harbor that could shelter an entire fleet.",
+      "tts": {
+        "text": "It had triple walls, underground tunnels, and a protected harbor that could shelter an entire fleet.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origins",
+      "paragraph_id": "p30",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Under Kanhoji's command, Vijaydurg became nearly impregnable.",
+      "text_markdown": "Under Kanhoji's command, Vijaydurg became nearly impregnable.",
+      "tts": {
+        "text": "Under Kanhoji's command, Vijaydurg became nearly impregnable.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origins",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The coastal communities of the Konkan were a mix of fishermen, traders, and warriors.",
+      "text_markdown": "The coastal communities of the Konkan were a mix of fishermen, traders, and warriors.",
+      "tts": {
+        "text": "The coastal communities of the Konkan were a mix of fishermen, traders, and warriors.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origins",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Many families served multiple roles, fishing during peacetime and fighting when called upon.",
+      "text_markdown": "Many families served multiple roles, fishing during peacetime and fighting when called upon.",
+      "tts": {
+        "text": "Many families served multiple roles, fishing during peacetime and fighting when called upon.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-108",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origins",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "This blend of maritime skill and military readiness made them ideal recruits for a naval force.",
+      "text_markdown": "This blend of maritime skill and military readiness made them ideal recruits for a naval force.",
+      "tts": {
+        "text": "This blend of maritime skill and military readiness made them ideal recruits for a naval force.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-109",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origins",
+      "paragraph_id": "p31",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kanhoji drew his most loyal and capable sailors from these communities.",
+      "text_markdown": "Kanhoji drew his most loyal and capable sailors from these communities.",
+      "tts": {
+        "text": "Kanhoji drew his most loyal and capable sailors from these communities.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-110",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origins",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "From these bases, Kanhoji began to build the most effective naval force in the Indian Ocean.",
+      "text_markdown": "From these bases, Kanhoji began to build the most effective naval force in the Indian Ocean.",
+      "tts": {
+        "text": "From these bases, Kanhoji began to build the most effective naval force in the Indian Ocean.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-111",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origins",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He recruited skilled sailors from the coastal communities of the Konkan.",
+      "text_markdown": "He recruited skilled sailors from the coastal communities of the Konkan.",
+      "tts": {
+        "text": "He recruited skilled sailors from the coastal communities of the Konkan.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-112",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origins",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "He commissioned new warships designed for the specific conditions of the Indian coast.",
+      "text_markdown": "He commissioned new warships designed for the specific conditions of the Indian coast.",
+      "tts": {
+        "text": "He commissioned new warships designed for the specific conditions of the Indian coast.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-113",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origins",
+      "paragraph_id": "p32",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "And he developed tactics that would frustrate European naval commanders for years to come.",
+      "text_markdown": "And he developed tactics that would frustrate European naval commanders for years to come.",
+      "tts": {
+        "text": "And he developed tactics that would frustrate European naval commanders for years to come.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-114",
+      "part": 0,
+      "chapter": 3,
+      "title": "Rise to Power",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Rise to Power",
+      "text_markdown": "Rise to Power"
+    },
+    {
+      "id": "ch03-115",
+      "part": 0,
+      "chapter": 3,
+      "title": "Rise to Power",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kanhoji Angre's rise to dominance of the Konkan coast was systematic and relentless.",
+      "text_markdown": "Kanhoji Angre's rise to dominance of the Konkan coast was systematic and relentless.",
+      "tts": {
+        "text": "Kanhoji Angre's rise to dominance of the Konkan coast was systematic and relentless.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-116",
+      "part": 0,
+      "chapter": 3,
+      "title": "Rise to Power",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He did not seek a single dramatic victory.",
+      "text_markdown": "He did not seek a single dramatic victory.",
+      "tts": {
+        "text": "He did not seek a single dramatic victory.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "title": "Rise to Power",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Instead, he built his power gradually, through a combination of naval skill, strategic fortification, and shrewd diplomacy.",
+      "text_markdown": "Instead, he built his power gradually, through a combination of naval skill, strategic fortification, and shrewd diplomacy.",
+      "tts": {
+        "text": "Instead, he built his power gradually, through a combination of naval skill, strategic fortification, and shrewd diplomacy.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "Rise to Power",
+      "paragraph_id": "p34",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Within a decade of his appointment as Sarkhel, he was the undisputed master of the western Indian coast.",
+      "text_markdown": "Within a decade of his appointment as Sarkhel, he was the undisputed master of the western Indian coast.",
+      "tts": {
+        "text": "Within a decade of his appointment as Sarkhel, he was the undisputed master of the western Indian coast.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "Rise to Power",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "His primary adversary in the early years was the Sidi fleet based at Janjira.",
+      "text_markdown": "His primary adversary in the early years was the Sidi fleet based at Janjira.",
+      "tts": {
+        "text": "His primary adversary in the early years was the Sidi fleet based at Janjira.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "Rise to Power",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The Sidis had allied with the Mughal Empire and posed a constant threat to Maratha coastal settlements.",
+      "text_markdown": "The Sidis had allied with the Mughal Empire and posed a constant threat to Maratha coastal settlements.",
+      "tts": {
+        "text": "The Sidis had allied with the Mughal Empire and posed a constant threat to Maratha coastal settlements.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "Rise to Power",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kanhoji fought a long campaign against the Sidis, gradually reducing their power and pushing them back to their island fortress.",
+      "text_markdown": "Kanhoji fought a long campaign against the Sidis, gradually reducing their power and pushing them back to their island fortress.",
+      "tts": {
+        "text": "Kanhoji fought a long campaign against the Sidis, gradually reducing their power and pushing them back to their island fortress.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "Rise to Power",
+      "paragraph_id": "p35",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "He could never capture Janjira itself, but he neutralized the Sidi fleet as a significant threat.",
+      "text_markdown": "He could never capture Janjira itself, but he neutralized the Sidi fleet as a significant threat.",
+      "tts": {
+        "text": "He could never capture Janjira itself, but he neutralized the Sidi fleet as a significant threat.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "Rise to Power",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "His relationship with the European trading companies was more complex.",
+      "text_markdown": "His relationship with the European trading companies was more complex.",
+      "tts": {
+        "text": "His relationship with the European trading companies was more complex.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "Rise to Power",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The British East India Company was based at Bombay, just north of Kanhoji's headquarters at Kolaba.",
+      "text_markdown": "The British East India Company was based at Bombay, just north of Kanhoji's headquarters at Kolaba.",
+      "tts": {
+        "text": "The British East India Company was based at Bombay, just north of Kanhoji's headquarters at Kolaba.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "Rise to Power",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The Company wanted unrestricted access to the Indian coastal trade.",
+      "text_markdown": "The Company wanted unrestricted access to the Indian coastal trade.",
+      "tts": {
+        "text": "The Company wanted unrestricted access to the Indian coastal trade.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "Rise to Power",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kanhoji insisted that all ships in Maratha waters must carry a Maratha pass or face seizure.",
+      "text_markdown": "Kanhoji insisted that all ships in Maratha waters must carry a Maratha pass or face seizure.",
+      "tts": {
+        "text": "Kanhoji insisted that all ships in Maratha waters must carry a Maratha pass or face seizure.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "Rise to Power",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "This demand was the mirror image of the Portuguese cartaz system.",
+      "text_markdown": "This demand was the mirror image of the Portuguese cartaz system.",
+      "tts": {
+        "text": "This demand was the mirror image of the Portuguese cartaz system.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "Rise to Power",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The Europeans had imposed passes on Indian shipping for two centuries.",
+      "text_markdown": "The Europeans had imposed passes on Indian shipping for two centuries.",
+      "tts": {
+        "text": "The Europeans had imposed passes on Indian shipping for two centuries.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "Rise to Power",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Now an Indian commander was imposing the same requirement on European ships.",
+      "text_markdown": "Now an Indian commander was imposing the same requirement on European ships.",
+      "tts": {
+        "text": "Now an Indian commander was imposing the same requirement on European ships.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "Rise to Power",
+      "paragraph_id": "p37",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "The British found this intolerable, but they could not stop it.",
+      "text_markdown": "The British found this intolerable, but they could not stop it.",
+      "tts": {
+        "text": "The British found this intolerable, but they could not stop it.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "Rise to Power",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The first major confrontation with the British came in 1702.",
+      "text_markdown": "The first major confrontation with the British came in 1702.",
+      "tts": {
+        "text": "The first major confrontation with the British came in seventeen oh two.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "Rise to Power",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kanhoji's fleet seized a British merchant ship that was sailing without a Maratha pass.",
+      "text_markdown": "Kanhoji's fleet seized a British merchant ship that was sailing without a Maratha pass.",
+      "tts": {
+        "text": "Kanhoji's fleet seized a British merchant ship that was sailing without a Maratha pass.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "Rise to Power",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The British governor of Bombay demanded the ship's return.",
+      "text_markdown": "The British governor of Bombay demanded the ship's return.",
+      "tts": {
+        "text": "The British governor of Bombay demanded the ship's return.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "Rise to Power",
+      "paragraph_id": "p38",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kanhoji refused, arguing that any ship in Maratha waters was subject to Maratha authority.",
+      "text_markdown": "Kanhoji refused, arguing that any ship in Maratha waters was subject to Maratha authority.",
+      "tts": {
+        "text": "Kanhoji refused, arguing that any ship in Maratha waters was subject to Maratha authority.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "Rise to Power",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The British sent a naval expedition to punish Kanhoji.",
+      "text_markdown": "The British sent a naval expedition to punish Kanhoji.",
+      "tts": {
+        "text": "The British sent a naval expedition to punish Kanhoji.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "Rise to Power",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The attack on his base at Kolaba was a complete failure.",
+      "text_markdown": "The attack on his base at Kolaba was a complete failure.",
+      "tts": {
+        "text": "The attack on his base at Kolaba was a complete failure.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "Rise to Power",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kanhoji's shore batteries drove the British ships back with heavy damage.",
+      "text_markdown": "Kanhoji's shore batteries drove the British ships back with heavy damage.",
+      "tts": {
+        "text": "Kanhoji's shore batteries drove the British ships back with heavy damage.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "Rise to Power",
+      "paragraph_id": "p39",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "The British lost men, ships, and pride in the engagement.",
+      "text_markdown": "The British lost men, ships, and pride in the engagement.",
+      "tts": {
+        "text": "The British lost men, ships, and pride in the engagement.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "Rise to Power",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "This pattern repeated itself many times over the following decades.",
+      "text_markdown": "This pattern repeated itself many times over the following decades.",
+      "tts": {
+        "text": "This pattern repeated itself many times over the following decades.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "Rise to Power",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The British would send a fleet to attack one of Kanhoji's bases.",
+      "text_markdown": "The British would send a fleet to attack one of Kanhoji's bases.",
+      "tts": {
+        "text": "The British would send a fleet to attack one of Kanhoji's bases.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "Rise to Power",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kanhoji would use his knowledge of the coast, his fortifications, and his faster ships to outmaneuver them.",
+      "text_markdown": "Kanhoji would use his knowledge of the coast, his fortifications, and his faster ships to outmaneuver them.",
+      "tts": {
+        "text": "Kanhoji would use his knowledge of the coast, his fortifications, and his faster ships to outmaneuver them.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "Rise to Power",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "The British would withdraw, having accomplished nothing.",
+      "text_markdown": "The British would withdraw, having accomplished nothing.",
+      "tts": {
+        "text": "The British would withdraw, having accomplished nothing.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "Rise to Power",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The Portuguese fared no better.",
+      "text_markdown": "The Portuguese fared no better.",
+      "tts": {
+        "text": "The Portuguese fared no better.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "Rise to Power",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "They had been the dominant European power on the Indian coast for two centuries.",
+      "text_markdown": "They had been the dominant European power on the Indian coast for two centuries.",
+      "tts": {
+        "text": "They had been the dominant European power on the Indian coast for two centuries.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "Rise to Power",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "But their naval strength was declining, and their garrisons were undermanned.",
+      "text_markdown": "But their naval strength was declining, and their garrisons were undermanned.",
+      "tts": {
+        "text": "But their naval strength was declining, and their garrisons were undermanned.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "Rise to Power",
+      "paragraph_id": "p41",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kanhoji raided Portuguese shipping and captured several of their smaller outposts along the coast.",
+      "text_markdown": "Kanhoji raided Portuguese shipping and captured several of their smaller outposts along the coast.",
+      "tts": {
+        "text": "Kanhoji raided Portuguese shipping and captured several of their smaller outposts along the coast.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "Rise to Power",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The Dutch East India Company also clashed with Kanhoji.",
+      "text_markdown": "The Dutch East India Company also clashed with Kanhoji.",
+      "tts": {
+        "text": "The Dutch East India Company also clashed with Kanhoji.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "Rise to Power",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Dutch ships were seized when they entered Maratha waters without passes.",
+      "text_markdown": "Dutch ships were seized when they entered Maratha waters without passes.",
+      "tts": {
+        "text": "Dutch ships were seized when they entered Maratha waters without passes.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "Rise to Power",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The Dutch attempted to negotiate, then threatened, then attacked.",
+      "text_markdown": "The Dutch attempted to negotiate, then threatened, then attacked.",
+      "tts": {
+        "text": "The Dutch attempted to negotiate, then threatened, then attacked.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "Rise to Power",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Like the British and Portuguese, they failed to dislodge Kanhoji from his coastal strongholds.",
+      "text_markdown": "Like the British and Portuguese, they failed to dislodge Kanhoji from his coastal strongholds.",
+      "tts": {
+        "text": "Like the British and Portuguese, they failed to dislodge Kanhoji from his coastal strongholds.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "Rise to Power",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In 1712, the British and Portuguese formed a joint fleet to attack Kanhoji's base at Kolaba.",
+      "text_markdown": "In 1712, the British and Portuguese formed a joint fleet to attack Kanhoji's base at Kolaba.",
+      "tts": {
+        "text": "In seventeen twelve, the British and Portuguese formed a joint fleet to attack Kanhoji's base at Kolaba.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "Rise to Power",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "This was one of the rare occasions when the European powers cooperated against a common enemy.",
+      "text_markdown": "This was one of the rare occasions when the European powers cooperated against a common enemy.",
+      "tts": {
+        "text": "This was one of the rare occasions when the European powers cooperated against a common enemy.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "Rise to Power",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The combined fleet bombarded Kolaba for several days.",
+      "text_markdown": "The combined fleet bombarded Kolaba for several days.",
+      "tts": {
+        "text": "The combined fleet bombarded Kolaba for several days.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "Rise to Power",
+      "paragraph_id": "p43",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kanhoji's defenses held, and the allies withdrew with significant losses.",
+      "text_markdown": "Kanhoji's defenses held, and the allies withdrew with significant losses.",
+      "tts": {
+        "text": "Kanhoji's defenses held, and the allies withdrew with significant losses.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "Rise to Power",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A second joint attack in 1718 met the same fate.",
+      "text_markdown": "A second joint attack in 1718 met the same fate.",
+      "tts": {
+        "text": "A second joint attack in seventeen eighteen met the same fate.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "Rise to Power",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The British and Portuguese again combined their forces against Kolaba.",
+      "text_markdown": "The British and Portuguese again combined their forces against Kolaba.",
+      "tts": {
+        "text": "The British and Portuguese again combined their forces against Kolaba.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "Rise to Power",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Again, Kanhoji's shore batteries and naval tactics defeated them.",
+      "text_markdown": "Again, Kanhoji's shore batteries and naval tactics defeated them.",
+      "tts": {
+        "text": "Again, Kanhoji's shore batteries and naval tactics defeated them.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "Rise to Power",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "The European powers were forced to accept that Kanhoji could not be removed by force.",
+      "text_markdown": "The European powers were forced to accept that Kanhoji could not be removed by force.",
+      "tts": {
+        "text": "The European powers were forced to accept that Kanhoji could not be removed by force.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "Rise to Power",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kanhoji's success was not based solely on defensive warfare.",
+      "text_markdown": "Kanhoji's success was not based solely on defensive warfare.",
+      "tts": {
+        "text": "Kanhoji's success was not based solely on defensive warfare.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "Rise to Power",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He actively raided European shipping throughout his career.",
+      "text_markdown": "He actively raided European shipping throughout his career.",
+      "tts": {
+        "text": "He actively raided European shipping throughout his career.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "Rise to Power",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "His fast, nimble ships would intercept merchant vessels, seize their cargo, and disappear into the maze of creeks and inlets along the coast.",
+      "text_markdown": "His fast, nimble ships would intercept merchant vessels, seize their cargo, and disappear into the maze of creeks and inlets along the coast.",
+      "tts": {
+        "text": "His fast, nimble ships would intercept merchant vessels, seize their cargo, and disappear into the maze of creeks and inlets along the coast.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "Rise to Power",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "The European companies lost enormous sums to his raids every year.",
+      "text_markdown": "The European companies lost enormous sums to his raids every year.",
+      "tts": {
+        "text": "The European companies lost enormous sums to his raids every year.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "Rise to Power",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The British East India Company's records from this period are filled with complaints about Kanhoji Angre.",
+      "text_markdown": "The British East India Company's records from this period are filled with complaints about Kanhoji Angre.",
+      "tts": {
+        "text": "The British East India Company's records from this period are filled with complaints about Kanhoji Angre.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "Rise to Power",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "They called him a pirate, a menace, and a threat to lawful trade.",
+      "text_markdown": "They called him a pirate, a menace, and a threat to lawful trade.",
+      "tts": {
+        "text": "They called him a pirate, a menace, and a threat to lawful trade.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-165",
+      "part": 0,
+      "chapter": 3,
+      "title": "Rise to Power",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "But from the Maratha perspective, Kanhoji was doing exactly what the Europeans had done for centuries.",
+      "text_markdown": "But from the Maratha perspective, Kanhoji was doing exactly what the Europeans had done for centuries.",
+      "tts": {
+        "text": "But from the Maratha perspective, Kanhoji was doing exactly what the Europeans had done for centuries.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-166",
+      "part": 0,
+      "chapter": 3,
+      "title": "Rise to Power",
+      "paragraph_id": "p46",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "He was controlling the seas, taxing trade, and using naval power to protect his sovereign's interests.",
+      "text_markdown": "He was controlling the seas, taxing trade, and using naval power to protect his sovereign's interests.",
+      "tts": {
+        "text": "He was controlling the seas, taxing trade, and using naval power to protect his sovereign's interests.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-167",
+      "part": 0,
+      "chapter": 3,
+      "title": "Rise to Power",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "By the seventeen twenties, Kanhoji controlled the entire Konkan coast from Bombay to south of Ratnagiri.",
+      "text_markdown": "By the seventeen twenties, Kanhoji controlled the entire Konkan coast from Bombay to south of Ratnagiri.",
+      "tts": {
+        "text": "By the seventeen twenties, Kanhoji controlled the entire Konkan coast from Bombay to south of Ratnagiri.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-168",
+      "part": 0,
+      "chapter": 3,
+      "title": "Rise to Power",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "His fleet numbered dozens of warships and hundreds of smaller vessels.",
+      "text_markdown": "His fleet numbered dozens of warships and hundreds of smaller vessels.",
+      "tts": {
+        "text": "His fleet numbered dozens of warships and hundreds of smaller vessels.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-169",
+      "part": 0,
+      "chapter": 3,
+      "title": "Rise to Power",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "His chain of fortified bases made the coast a gauntlet that no ship could pass without his permission.",
+      "text_markdown": "His chain of fortified bases made the coast a gauntlet that no ship could pass without his permission.",
+      "tts": {
+        "text": "His chain of fortified bases made the coast a gauntlet that no ship could pass without his permission.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-170",
+      "part": 0,
+      "chapter": 3,
+      "title": "Rise to Power",
+      "paragraph_id": "p47",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "He was, in effect, the sovereign of the western Indian sea.",
+      "text_markdown": "He was, in effect, the sovereign of the western Indian sea.",
+      "tts": {
+        "text": "He was, in effect, the sovereign of the western Indian sea.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-171",
+      "part": 0,
+      "chapter": 4,
+      "title": "At the Height",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "At the Height",
+      "text_markdown": "At the Height"
+    },
+    {
+      "id": "ch04-172",
+      "part": 0,
+      "chapter": 4,
+      "title": "At the Height",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "At the height of his power, Kanhoji Angre was the most important naval commander in the Indian Ocean.",
+      "text_markdown": "At the height of his power, Kanhoji Angre was the most important naval commander in the Indian Ocean.",
+      "tts": {
+        "text": "At the height of his power, Kanhoji Angre was the most important naval commander in the Indian Ocean.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-173",
+      "part": 0,
+      "chapter": 4,
+      "title": "At the Height",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "His fleet controlled the sea lanes between Bombay and Goa, one of the busiest trade routes in Asia.",
+      "text_markdown": "His fleet controlled the sea lanes between Bombay and Goa, one of the busiest trade routes in Asia.",
+      "tts": {
+        "text": "His fleet controlled the sea lanes between Bombay and Goa, one of the busiest trade routes in Asia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-174",
+      "part": 0,
+      "chapter": 4,
+      "title": "At the Height",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Every European trading company operating on the west coast of India had to reckon with his power.",
+      "text_markdown": "Every European trading company operating on the west coast of India had to reckon with his power.",
+      "tts": {
+        "text": "Every European trading company operating on the west coast of India had to reckon with his power.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-175",
+      "part": 0,
+      "chapter": 4,
+      "title": "At the Height",
+      "paragraph_id": "p49",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "No cargo was safe without his consent.",
+      "text_markdown": "No cargo was safe without his consent.",
+      "tts": {
+        "text": "No cargo was safe without his consent.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "title": "At the Height",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kanhoji's fleet was designed for the specific conditions of the Konkan coast.",
+      "text_markdown": "Kanhoji's fleet was designed for the specific conditions of the Konkan coast.",
+      "tts": {
+        "text": "Kanhoji's fleet was designed for the specific conditions of the Konkan coast.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "title": "At the Height",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "His largest vessels were grabs, two-masted warships with shallow drafts that could navigate close to shore.",
+      "text_markdown": "His largest vessels were grabs, two-masted warships with shallow drafts that could navigate close to shore.",
+      "tts": {
+        "text": "His largest vessels were grabs, two-masted warships with shallow drafts that could navigate close to shore.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "At the Height",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "He also employed gallivats, smaller oar-powered boats that were fast and highly maneuverable.",
+      "text_markdown": "He also employed gallivats, smaller oar-powered boats that were fast and highly maneuverable.",
+      "tts": {
+        "text": "He also employed gallivats, smaller oar-powered boats that were fast and highly maneuverable.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "At the Height",
+      "paragraph_id": "p50",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "These gallivats could operate in the tidal creeks and shallow waters where European ships could not follow.",
+      "text_markdown": "These gallivats could operate in the tidal creeks and shallow waters where European ships could not follow.",
+      "tts": {
+        "text": "These gallivats could operate in the tidal creeks and shallow waters where European ships could not follow.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "At the Height",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The combination of grabs and gallivats was devastatingly effective.",
+      "text_markdown": "The combination of grabs and gallivats was devastatingly effective.",
+      "tts": {
+        "text": "The combination of grabs and gallivats was devastatingly effective.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "At the Height",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The grabs would engage an enemy vessel at cannon range, weakening it with sustained fire.",
+      "text_markdown": "The grabs would engage an enemy vessel at cannon range, weakening it with sustained fire.",
+      "tts": {
+        "text": "The grabs would engage an enemy vessel at cannon range, weakening it with sustained fire.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "At the Height",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Then the gallivats would swarm in, their crews boarding the enemy ship from multiple directions at once.",
+      "text_markdown": "Then the gallivats would swarm in, their crews boarding the enemy ship from multiple directions at once.",
+      "tts": {
+        "text": "Then the gallivats would swarm in, their crews boarding the enemy ship from multiple directions at once.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "At the Height",
+      "paragraph_id": "p51",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "European captains, trained for broadside exchanges between large ships, had no answer to these swarming tactics.",
+      "text_markdown": "European captains, trained for broadside exchanges between large ships, had no answer to these swarming tactics.",
+      "tts": {
+        "text": "European captains, trained for broadside exchanges between large ships, had no answer to these swarming tactics.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "At the Height",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kanhoji's shore fortifications were equally formidable.",
+      "text_markdown": "Kanhoji's shore fortifications were equally formidable.",
+      "tts": {
+        "text": "Kanhoji's shore fortifications were equally formidable.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "At the Height",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "His forts were built on rocky islands and headlands that were almost impossible to assault from the sea.",
+      "text_markdown": "His forts were built on rocky islands and headlands that were almost impossible to assault from the sea.",
+      "tts": {
+        "text": "His forts were built on rocky islands and headlands that were almost impossible to assault from the sea.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "At the Height",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The walls were thick enough to withstand cannon fire from European warships.",
+      "text_markdown": "The walls were thick enough to withstand cannon fire from European warships.",
+      "tts": {
+        "text": "The walls were thick enough to withstand cannon fire from European warships.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "At the Height",
+      "paragraph_id": "p52",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Underground passages connected different parts of the fortifications, allowing defenders to move unseen.",
+      "text_markdown": "Underground passages connected different parts of the fortifications, allowing defenders to move unseen.",
+      "tts": {
+        "text": "Underground passages connected different parts of the fortifications, allowing defenders to move unseen.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "At the Height",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vijaydurg was the crown jewel of his defensive network.",
+      "text_markdown": "Vijaydurg was the crown jewel of his defensive network.",
+      "tts": {
+        "text": "Vijaydurg was the crown jewel of his defensive network.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "At the Height",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The fortress stood on a rocky promontory surrounded by the sea on three sides.",
+      "text_markdown": "The fortress stood on a rocky promontory surrounded by the sea on three sides.",
+      "tts": {
+        "text": "The fortress stood on a rocky promontory surrounded by the sea on three sides.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "At the Height",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Its triple walls enclosed an area large enough to shelter his entire fleet during the monsoon season.",
+      "text_markdown": "Its triple walls enclosed an area large enough to shelter his entire fleet during the monsoon season.",
+      "tts": {
+        "text": "Its triple walls enclosed an area large enough to shelter his entire fleet during the monsoon season.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "At the Height",
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "European naval officers who saw it described it as one of the strongest fortifications they had ever encountered.",
+      "text_markdown": "European naval officers who saw it described it as one of the strongest fortifications they had ever encountered.",
+      "tts": {
+        "text": "European naval officers who saw it described it as one of the strongest fortifications they had ever encountered.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "At the Height",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kanhoji maintained his fleet through a combination of taxation, trade, and prizes.",
+      "text_markdown": "Kanhoji maintained his fleet through a combination of taxation, trade, and prizes.",
+      "tts": {
+        "text": "Kanhoji maintained his fleet through a combination of taxation, trade, and prizes.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "At the Height",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ships that carried Maratha passes paid a fee that went to fund the navy.",
+      "text_markdown": "Ships that carried Maratha passes paid a fee that went to fund the navy.",
+      "tts": {
+        "text": "Ships that carried Maratha passes paid a fee that went to fund the navy.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "At the Height",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ships that did not carry passes were seized, and their cargo sold.",
+      "text_markdown": "Ships that did not carry passes were seized, and their cargo sold.",
+      "tts": {
+        "text": "Ships that did not carry passes were seized, and their cargo sold.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "At the Height",
+      "paragraph_id": "p54",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "This revenue system was efficient and self-sustaining.",
+      "text_markdown": "This revenue system was efficient and self-sustaining.",
+      "tts": {
+        "text": "This revenue system was efficient and self-sustaining.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "At the Height",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The Maratha government in Satara recognized Kanhoji's value.",
+      "text_markdown": "The Maratha government in Satara recognized Kanhoji's value.",
+      "tts": {
+        "text": "The Maratha government in Satara recognized Kanhoji's value.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "At the Height",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He was the empire's shield against European naval power.",
+      "text_markdown": "He was the empire's shield against European naval power.",
+      "tts": {
+        "text": "He was the empire's shield against European naval power.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "At the Height",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Without his fleet, the Maratha coast would have been vulnerable to blockade and invasion.",
+      "text_markdown": "Without his fleet, the Maratha coast would have been vulnerable to blockade and invasion.",
+      "tts": {
+        "text": "Without his fleet, the Maratha coast would have been vulnerable to blockade and invasion.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "At the Height",
+      "paragraph_id": "p55",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "The Peshwa, the chief minister of the Maratha Empire, maintained a close relationship with Kanhoji throughout his career.",
+      "text_markdown": "The Peshwa, the chief minister of the Maratha Empire, maintained a close relationship with Kanhoji throughout his career.",
+      "tts": {
+        "text": "The Peshwa, the chief minister of the Maratha Empire, maintained a close relationship with Kanhoji throughout his career.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "At the Height",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kanhoji also maintained a sophisticated intelligence network.",
+      "text_markdown": "Kanhoji also maintained a sophisticated intelligence network.",
+      "tts": {
+        "text": "Kanhoji also maintained a sophisticated intelligence network.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "At the Height",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He had agents in Bombay, Goa, and the major trading ports of the coast.",
+      "text_markdown": "He had agents in Bombay, Goa, and the major trading ports of the coast.",
+      "tts": {
+        "text": "He had agents in Bombay, Goa, and the major trading ports of the coast.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "At the Height",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "He knew when valuable cargo ships were departing and what routes they planned to take.",
+      "text_markdown": "He knew when valuable cargo ships were departing and what routes they planned to take.",
+      "tts": {
+        "text": "He knew when valuable cargo ships were departing and what routes they planned to take.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "At the Height",
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "This information gave him a decisive advantage over his European opponents.",
+      "text_markdown": "This information gave him a decisive advantage over his European opponents.",
+      "tts": {
+        "text": "This information gave him a decisive advantage over his European opponents.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "At the Height",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The British East India Company made multiple attempts to negotiate with Kanhoji.",
+      "text_markdown": "The British East India Company made multiple attempts to negotiate with Kanhoji.",
+      "tts": {
+        "text": "The British East India Company made multiple attempts to negotiate with Kanhoji.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "At the Height",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "They offered trade concessions, monetary payments, and diplomatic recognition.",
+      "text_markdown": "They offered trade concessions, monetary payments, and diplomatic recognition.",
+      "tts": {
+        "text": "They offered trade concessions, monetary payments, and diplomatic recognition.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "At the Height",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kanhoji listened to every proposal but never conceded his fundamental position.",
+      "text_markdown": "Kanhoji listened to every proposal but never conceded his fundamental position.",
+      "tts": {
+        "text": "Kanhoji listened to every proposal but never conceded his fundamental position.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "At the Height",
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "The Konkan coast was Maratha territory, and all ships in Maratha waters were subject to Maratha law.",
+      "text_markdown": "The Konkan coast was Maratha territory, and all ships in Maratha waters were subject to Maratha law.",
+      "tts": {
+        "text": "The Konkan coast was Maratha territory, and all ships in Maratha waters were subject to Maratha law.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "At the Height",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "His personal life was centered on his family and his faith.",
+      "text_markdown": "His personal life was centered on his family and his faith.",
+      "tts": {
+        "text": "His personal life was centered on his family and his faith.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "At the Height",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He was a devout Hindu who patronized temples and religious institutions along the coast.",
+      "text_markdown": "He was a devout Hindu who patronized temples and religious institutions along the coast.",
+      "tts": {
+        "text": "He was a devout Hindu who patronized temples and religious institutions along the coast.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "At the Height",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "He had several sons whom he trained in naval warfare and administration.",
+      "text_markdown": "He had several sons whom he trained in naval warfare and administration.",
+      "tts": {
+        "text": "He had several sons whom he trained in naval warfare and administration.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "At the Height",
+      "paragraph_id": "p58",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "He intended his family to continue his work after his death.",
+      "text_markdown": "He intended his family to continue his work after his death.",
+      "tts": {
+        "text": "He intended his family to continue his work after his death.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "At the Height",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kanhoji governed the coastal communities under his control with a combination of firmness and fairness.",
+      "text_markdown": "Kanhoji governed the coastal communities under his control with a combination of firmness and fairness.",
+      "tts": {
+        "text": "Kanhoji governed the coastal communities under his control with a combination of firmness and fairness.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "At the Height",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He protected fishing communities from European encroachment.",
+      "text_markdown": "He protected fishing communities from European encroachment.",
+      "tts": {
+        "text": "He protected fishing communities from European encroachment.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "At the Height",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "He maintained order in the ports and markets along the coast.",
+      "text_markdown": "He maintained order in the ports and markets along the coast.",
+      "tts": {
+        "text": "He maintained order in the ports and markets along the coast.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "At the Height",
+      "paragraph_id": "p59",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Many coastal communities viewed him as their protector rather than their ruler.",
+      "text_markdown": "Many coastal communities viewed him as their protector rather than their ruler.",
+      "tts": {
+        "text": "Many coastal communities viewed him as their protector rather than their ruler.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "At the Height",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "At the peak of his career, Kanhoji Angre had achieved something remarkable.",
+      "text_markdown": "At the peak of his career, Kanhoji Angre had achieved something remarkable.",
+      "tts": {
+        "text": "At the peak of his career, Kanhoji Angre had achieved something remarkable.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-217",
+      "part": 0,
+      "chapter": 4,
+      "title": "At the Height",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He had built a naval force capable of resisting the three most powerful European navies in Asia.",
+      "text_markdown": "He had built a naval force capable of resisting the three most powerful European navies in Asia.",
+      "tts": {
+        "text": "He had built a naval force capable of resisting the three most powerful European navies in Asia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-218",
+      "part": 0,
+      "chapter": 4,
+      "title": "At the Height",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "He had done so with local resources, local knowledge, and local tactics.",
+      "text_markdown": "He had done so with local resources, local knowledge, and local tactics.",
+      "tts": {
+        "text": "He had done so with local resources, local knowledge, and local tactics.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-219",
+      "part": 0,
+      "chapter": 4,
+      "title": "At the Height",
+      "paragraph_id": "p60",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "He proved that Indian naval power could challenge European dominance on its own terms.",
+      "text_markdown": "He proved that Indian naval power could challenge European dominance on its own terms.",
+      "tts": {
+        "text": "He proved that Indian naval power could challenge European dominance on its own terms.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-220",
+      "part": 0,
+      "chapter": 5,
+      "title": "The End",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "The End",
+      "text_markdown": "The End"
+    },
+    {
+      "id": "ch05-221",
+      "part": 0,
+      "chapter": 5,
+      "title": "The End",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In his final years, Kanhoji Angre remained active and in command.",
+      "text_markdown": "In his final years, Kanhoji Angre remained active and in command.",
+      "tts": {
+        "text": "In his final years, Kanhoji Angre remained active and in command.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-222",
+      "part": 0,
+      "chapter": 5,
+      "title": "The End",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Unlike many historical figures whose power waned before their death, Kanhoji held his position until the very end.",
+      "text_markdown": "Unlike many historical figures whose power waned before their death, Kanhoji held his position until the very end.",
+      "tts": {
+        "text": "Unlike many historical figures whose power waned before their death, Kanhoji held his position until the very end.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-223",
+      "part": 0,
+      "chapter": 5,
+      "title": "The End",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "His fleet continued to patrol the coast, his forts remained fully garrisoned, and his authority was unchallenged.",
+      "text_markdown": "His fleet continued to patrol the coast, his forts remained fully garrisoned, and his authority was unchallenged.",
+      "tts": {
+        "text": "His fleet continued to patrol the coast, his forts remained fully garrisoned, and his authority was unchallenged.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-224",
+      "part": 0,
+      "chapter": 5,
+      "title": "The End",
+      "paragraph_id": "p62",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "He was never defeated in battle during his entire career.",
+      "text_markdown": "He was never defeated in battle during his entire career.",
+      "tts": {
+        "text": "He was never defeated in battle during his entire career.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-225",
+      "part": 0,
+      "chapter": 5,
+      "title": "The End",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The political situation within the Maratha Empire grew more complex in the seventeen twenties.",
+      "text_markdown": "The political situation within the Maratha Empire grew more complex in the seventeen twenties.",
+      "tts": {
+        "text": "The political situation within the Maratha Empire grew more complex in the seventeen twenties.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-226",
+      "part": 0,
+      "chapter": 5,
+      "title": "The End",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The Peshwa, Balaji Vishwanath, had centralized power and reduced the authority of the Maratha king.",
+      "text_markdown": "The Peshwa, Balaji Vishwanath, had centralized power and reduced the authority of the Maratha king.",
+      "tts": {
+        "text": "The Peshwa, Balaji Vishwanath, had centralized power and reduced the authority of the Maratha king.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-227",
+      "part": 0,
+      "chapter": 5,
+      "title": "The End",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "After Balaji's death, his son Baji Rao became Peshwa.",
+      "text_markdown": "After Balaji's death, his son Baji Rao became Peshwa.",
+      "tts": {
+        "text": "After Balaji's death, his son Baji Rao became Peshwa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-228",
+      "part": 0,
+      "chapter": 5,
+      "title": "The End",
+      "paragraph_id": "p63",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Baji Rao was a brilliant military commander on land, but he relied heavily on Kanhoji for naval defense.",
+      "text_markdown": "Baji Rao was a brilliant military commander on land, but he relied heavily on Kanhoji for naval defense.",
+      "tts": {
+        "text": "Baji Rao was a brilliant military commander on land, but he relied heavily on Kanhoji for naval defense.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-229",
+      "part": 0,
+      "chapter": 5,
+      "title": "The End",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kanhoji maintained a careful balance between loyalty to the Maratha state and operational independence.",
+      "text_markdown": "Kanhoji maintained a careful balance between loyalty to the Maratha state and operational independence.",
+      "tts": {
+        "text": "Kanhoji maintained a careful balance between loyalty to the Maratha state and operational independence.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-230",
+      "part": 0,
+      "chapter": 5,
+      "title": "The End",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He accepted the authority of the king and the Peshwa in principle.",
+      "text_markdown": "He accepted the authority of the king and the Peshwa in principle.",
+      "tts": {
+        "text": "He accepted the authority of the king and the Peshwa in principle.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-231",
+      "part": 0,
+      "chapter": 5,
+      "title": "The End",
+      "paragraph_id": "p64",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "But in practice, he ran the navy as an autonomous operation.",
+      "text_markdown": "But in practice, he ran the navy as an autonomous operation.",
+      "tts": {
+        "text": "But in practice, he ran the navy as an autonomous operation.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "title": "The End",
+      "paragraph_id": "p64",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "The Maratha government tolerated this arrangement because Kanhoji was indispensable.",
+      "text_markdown": "The Maratha government tolerated this arrangement because Kanhoji was indispensable.",
+      "tts": {
+        "text": "The Maratha government tolerated this arrangement because Kanhoji was indispensable.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "title": "The End",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The European powers continued to try different strategies against him.",
+      "text_markdown": "The European powers continued to try different strategies against him.",
+      "tts": {
+        "text": "The European powers continued to try different strategies against him.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "title": "The End",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The British attempted economic pressure, restricting Indian merchants who traded with Kanhoji.",
+      "text_markdown": "The British attempted economic pressure, restricting Indian merchants who traded with Kanhoji.",
+      "tts": {
+        "text": "The British attempted economic pressure, restricting Indian merchants who traded with Kanhoji.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "title": "The End",
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The Portuguese tried to build alliances with the Sidis and other local powers.",
+      "text_markdown": "The Portuguese tried to build alliances with the Sidis and other local powers.",
+      "tts": {
+        "text": "The Portuguese tried to build alliances with the Sidis and other local powers.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "title": "The End",
+      "paragraph_id": "p65",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "None of these strategies succeeded in reducing Kanhoji's control of the coast.",
+      "text_markdown": "None of these strategies succeeded in reducing Kanhoji's control of the coast.",
+      "tts": {
+        "text": "None of these strategies succeeded in reducing Kanhoji's control of the coast.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "The End",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In 1720, the British launched yet another naval expedition against Kanhoji's bases.",
+      "text_markdown": "In 1720, the British launched yet another naval expedition against Kanhoji's bases.",
+      "tts": {
+        "text": "In seventeen twenty, the British launched yet another naval expedition against Kanhoji's bases.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "The End",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The expedition included several warships and a large force of soldiers.",
+      "text_markdown": "The expedition included several warships and a large force of soldiers.",
+      "tts": {
+        "text": "The expedition included several warships and a large force of soldiers.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "The End",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Once again, Kanhoji's defenses held, and the British were forced to retreat.",
+      "text_markdown": "Once again, Kanhoji's defenses held, and the British were forced to retreat.",
+      "tts": {
+        "text": "Once again, Kanhoji's defenses held, and the British were forced to retreat.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "The End",
+      "paragraph_id": "p66",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "It was one of the last major British attempts to defeat him during his lifetime.",
+      "text_markdown": "It was one of the last major British attempts to defeat him during his lifetime.",
+      "tts": {
+        "text": "It was one of the last major British attempts to defeat him during his lifetime.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "The End",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kanhoji Angre died on July 4, 1729, at his base in Alibag.",
+      "text_markdown": "Kanhoji Angre died on July 4, 1729, at his base in Alibag.",
+      "tts": {
+        "text": "Kanhoji Angre died on July fourth, seventeen twenty-nine, at his base in Alibag.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "The End",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He was approximately sixty years old.",
+      "text_markdown": "He was approximately sixty years old.",
+      "tts": {
+        "text": "He was approximately sixty years old.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "The End",
+      "paragraph_id": "p67",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "He died of natural causes, not in battle.",
+      "text_markdown": "He died of natural causes, not in battle.",
+      "tts": {
+        "text": "He died of natural causes, not in battle.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "The End",
+      "paragraph_id": "p67",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "He had served as Sarkhel of the Maratha navy for thirty-one years.",
+      "text_markdown": "He had served as Sarkhel of the Maratha navy for thirty-one years.",
+      "tts": {
+        "text": "He had served as Sarkhel of the Maratha navy for thirty-one years.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "The End",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "His death created an immediate power vacuum.",
+      "text_markdown": "His death created an immediate power vacuum.",
+      "tts": {
+        "text": "His death created an immediate power vacuum.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "The End",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "His sons divided his territories and fleet among themselves.",
+      "text_markdown": "His sons divided his territories and fleet among themselves.",
+      "tts": {
+        "text": "His sons divided his territories and fleet among themselves.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "The End",
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The unity that Kanhoji had maintained through personal authority began to fracture.",
+      "text_markdown": "The unity that Kanhoji had maintained through personal authority began to fracture.",
+      "tts": {
+        "text": "The unity that Kanhoji had maintained through personal authority began to fracture.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "The End",
+      "paragraph_id": "p68",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Without his leadership, the Maratha naval command was weakened by internal rivalry.",
+      "text_markdown": "Without his leadership, the Maratha naval command was weakened by internal rivalry.",
+      "tts": {
+        "text": "Without his leadership, the Maratha naval command was weakened by internal rivalry.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "The End",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "His son Sambhaji Angre initially took control of the fleet.",
+      "text_markdown": "His son Sambhaji Angre initially took control of the fleet.",
+      "tts": {
+        "text": "His son Sambhaji Angre initially took control of the fleet.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "The End",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "But rivalries between the brothers led to conflict.",
+      "text_markdown": "But rivalries between the brothers led to conflict.",
+      "tts": {
+        "text": "But rivalries between the brothers led to conflict.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "The End",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The Maratha government became involved, and the Angre family's power was gradually diminished.",
+      "text_markdown": "The Maratha government became involved, and the Angre family's power was gradually diminished.",
+      "tts": {
+        "text": "The Maratha government became involved, and the Angre family's power was gradually diminished.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "The End",
+      "paragraph_id": "p69",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "The European companies watched these developments with keen interest.",
+      "text_markdown": "The European companies watched these developments with keen interest.",
+      "tts": {
+        "text": "The European companies watched these developments with keen interest.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "The End",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In 1756, nearly three decades after Kanhoji's death, the British and Marathas jointly attacked the Angre stronghold at Vijaydurg.",
+      "text_markdown": "In 1756, nearly three decades after Kanhoji's death, the British and Marathas jointly attacked the Angre stronghold at Vijaydurg.",
+      "tts": {
+        "text": "In seventeen fifty-six, nearly three decades after Kanhoji's death, the British and Marathas jointly attacked the Angre stronghold at Vijaydurg.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "The End",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The fortress that had been impregnable under Kanhoji finally fell.",
+      "text_markdown": "The fortress that had been impregnable under Kanhoji finally fell.",
+      "tts": {
+        "text": "The fortress that had been impregnable under Kanhoji finally fell.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "The End",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "With its capture, the last major obstacle to British naval dominance on the Indian coast was removed.",
+      "text_markdown": "With its capture, the last major obstacle to British naval dominance on the Indian coast was removed.",
+      "tts": {
+        "text": "With its capture, the last major obstacle to British naval dominance on the Indian coast was removed.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "The End",
+      "paragraph_id": "p70",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "The era that Kanhoji had defined was over.",
+      "text_markdown": "The era that Kanhoji had defined was over.",
+      "tts": {
+        "text": "The era that Kanhoji had defined was over.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-257",
+      "part": 0,
+      "chapter": 5,
+      "title": "The End",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The Maratha Empire continued to grow on land even as its naval leadership was in transition.",
+      "text_markdown": "The Maratha Empire continued to grow on land even as its naval leadership was in transition.",
+      "tts": {
+        "text": "The Maratha Empire continued to grow on land even as its naval leadership was in transition.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-258",
+      "part": 0,
+      "chapter": 5,
+      "title": "The End",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Peshwa Baji Rao expanded Maratha territory across central and northern India.",
+      "text_markdown": "Peshwa Baji Rao expanded Maratha territory across central and northern India.",
+      "tts": {
+        "text": "Peshwa Baji Rao expanded Maratha territory across central and northern India.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-259",
+      "part": 0,
+      "chapter": 5,
+      "title": "The End",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "But without Kanhoji's unified naval command, the coast was increasingly vulnerable.",
+      "text_markdown": "But without Kanhoji's unified naval command, the coast was increasingly vulnerable.",
+      "tts": {
+        "text": "But without Kanhoji's unified naval command, the coast was increasingly vulnerable.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-260",
+      "part": 0,
+      "chapter": 5,
+      "title": "The End",
+      "paragraph_id": "p71",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "The British East India Company recognized this vulnerability and began planning accordingly.",
+      "text_markdown": "The British East India Company recognized this vulnerability and began planning accordingly.",
+      "tts": {
+        "text": "The British East India Company recognized this vulnerability and began planning accordingly.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-261",
+      "part": 0,
+      "chapter": 5,
+      "title": "The End",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kanhoji Angre's undefeated record stands as one of the most remarkable achievements in Indian military history.",
+      "text_markdown": "Kanhoji Angre's undefeated record stands as one of the most remarkable achievements in Indian military history.",
+      "tts": {
+        "text": "Kanhoji Angre's undefeated record stands as one of the most remarkable achievements in Indian military history.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-262",
+      "part": 0,
+      "chapter": 5,
+      "title": "The End",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "For three decades, he held the coast against the most powerful naval forces in the world.",
+      "text_markdown": "For three decades, he held the coast against the most powerful naval forces in the world.",
+      "tts": {
+        "text": "For three decades, he held the coast against the most powerful naval forces in the world.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-263",
+      "part": 0,
+      "chapter": 5,
+      "title": "The End",
+      "paragraph_id": "p72",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "He did so with local ships, local crews, and local tactics.",
+      "text_markdown": "He did so with local ships, local crews, and local tactics.",
+      "tts": {
+        "text": "He did so with local ships, local crews, and local tactics.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-264",
+      "part": 0,
+      "chapter": 5,
+      "title": "The End",
+      "paragraph_id": "p72",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "No European commander ever found a way to beat him.",
+      "text_markdown": "No European commander ever found a way to beat him.",
+      "tts": {
+        "text": "No European commander ever found a way to beat him.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-265",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legacy",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Legacy",
+      "text_markdown": "Legacy"
+    },
+    {
+      "id": "ch06-266",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legacy",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kanhoji Angre's legacy is deeply intertwined with the question of who gets to define piracy.",
+      "text_markdown": "Kanhoji Angre's legacy is deeply intertwined with the question of who gets to define piracy.",
+      "tts": {
+        "text": "Kanhoji Angre's legacy is deeply intertwined with the question of who gets to define piracy.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-267",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legacy",
+      "paragraph_id": "p74",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The British East India Company called him a pirate because he disrupted their trade.",
+      "text_markdown": "The British East India Company called him a pirate because he disrupted their trade.",
+      "tts": {
+        "text": "The British East India Company called him a pirate because he disrupted their trade.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-268",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legacy",
+      "paragraph_id": "p74",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The Maratha Empire called him an admiral because he defended their coast.",
+      "text_markdown": "The Maratha Empire called him an admiral because he defended their coast.",
+      "tts": {
+        "text": "The Maratha Empire called him an admiral because he defended their coast.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-269",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legacy",
+      "paragraph_id": "p74",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Both descriptions contain a portion of the truth.",
+      "text_markdown": "Both descriptions contain a portion of the truth.",
+      "tts": {
+        "text": "Both descriptions contain a portion of the truth.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-270",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legacy",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The label of pirate was a political weapon, not a neutral description.",
+      "text_markdown": "The label of pirate was a political weapon, not a neutral description.",
+      "tts": {
+        "text": "The label of pirate was a political weapon, not a neutral description.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-271",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legacy",
+      "paragraph_id": "p75",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The European trading companies imposed their own rules on the Indian Ocean and called anyone who resisted those rules a criminal.",
+      "text_markdown": "The European trading companies imposed their own rules on the Indian Ocean and called anyone who resisted those rules a criminal.",
+      "tts": {
+        "text": "The European trading companies imposed their own rules on the Indian Ocean and called anyone who resisted those rules a criminal.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-272",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legacy",
+      "paragraph_id": "p75",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "By this definition, any Indian ruler who asserted sovereignty over Indian waters was a pirate.",
+      "text_markdown": "By this definition, any Indian ruler who asserted sovereignty over Indian waters was a pirate.",
+      "tts": {
+        "text": "By this definition, any Indian ruler who asserted sovereignty over Indian waters was a pirate.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-273",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legacy",
+      "paragraph_id": "p75",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kanhoji rejected this logic entirely, and history has largely vindicated him.",
+      "text_markdown": "Kanhoji rejected this logic entirely, and history has largely vindicated him.",
+      "tts": {
+        "text": "Kanhoji rejected this logic entirely, and history has largely vindicated him.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-274",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legacy",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In modern India, Kanhoji Angre is recognized as a national hero.",
+      "text_markdown": "In modern India, Kanhoji Angre is recognized as a national hero.",
+      "tts": {
+        "text": "In modern India, Kanhoji Angre is recognized as a national hero.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-275",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legacy",
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The Indian Navy named a shore establishment in Mumbai after him.",
+      "text_markdown": "The Indian Navy named a shore establishment in Mumbai after him.",
+      "tts": {
+        "text": "The Indian Navy named a shore establishment in Mumbai after him.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-276",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legacy",
+      "paragraph_id": "p76",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "His statue stands in prominent locations along the Konkan coast.",
+      "text_markdown": "His statue stands in prominent locations along the Konkan coast.",
+      "tts": {
+        "text": "His statue stands in prominent locations along the Konkan coast.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-277",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legacy",
+      "paragraph_id": "p76",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "He is remembered as a pioneer of Indian naval power and a defender of Indian sovereignty.",
+      "text_markdown": "He is remembered as a pioneer of Indian naval power and a defender of Indian sovereignty.",
+      "tts": {
+        "text": "He is remembered as a pioneer of Indian naval power and a defender of Indian sovereignty.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-278",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legacy",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "His military innovations influenced Indian naval thinking for generations.",
+      "text_markdown": "His military innovations influenced Indian naval thinking for generations.",
+      "tts": {
+        "text": "His military innovations influenced Indian naval thinking for generations.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-279",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legacy",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The combination of fast small boats and fortified coastal bases was a doctrine that later Indian naval commanders studied and adapted.",
+      "text_markdown": "The combination of fast small boats and fortified coastal bases was a doctrine that later Indian naval commanders studied and adapted.",
+      "tts": {
+        "text": "The combination of fast small boats and fortified coastal bases was a doctrine that later Indian naval commanders studied and adapted.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legacy",
+      "paragraph_id": "p77",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "His emphasis on local knowledge of tides, currents, and coastal geography over brute firepower remains relevant to naval strategy today.",
+      "text_markdown": "His emphasis on local knowledge of tides, currents, and coastal geography over brute firepower remains relevant to naval strategy today.",
+      "tts": {
+        "text": "His emphasis on local knowledge of tides, currents, and coastal geography over brute firepower remains relevant to naval strategy today.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legacy",
+      "paragraph_id": "p77",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "He demonstrated that a smaller force with local advantages could resist a technologically superior enemy.",
+      "text_markdown": "He demonstrated that a smaller force with local advantages could resist a technologically superior enemy.",
+      "tts": {
+        "text": "He demonstrated that a smaller force with local advantages could resist a technologically superior enemy.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legacy",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The fortress of Vijaydurg still stands on the Konkan coast.",
+      "text_markdown": "The fortress of Vijaydurg still stands on the Konkan coast.",
+      "tts": {
+        "text": "The fortress of Vijaydurg still stands on the Konkan coast.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legacy",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Its massive walls and protected harbor are a monument to the naval power that Kanhoji built.",
+      "text_markdown": "Its massive walls and protected harbor are a monument to the naval power that Kanhoji built.",
+      "tts": {
+        "text": "Its massive walls and protected harbor are a monument to the naval power that Kanhoji built.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legacy",
+      "paragraph_id": "p78",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Visitors can still see the cannon emplacements, the underground passages, and the harbor where his fleet once sheltered.",
+      "text_markdown": "Visitors can still see the cannon emplacements, the underground passages, and the harbor where his fleet once sheltered.",
+      "tts": {
+        "text": "Visitors can still see the cannon emplacements, the underground passages, and the harbor where his fleet once sheltered.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legacy",
+      "paragraph_id": "p78",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "It is one of the finest surviving examples of Maratha military architecture.",
+      "text_markdown": "It is one of the finest surviving examples of Maratha military architecture.",
+      "tts": {
+        "text": "It is one of the finest surviving examples of Maratha military architecture.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legacy",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kanhoji Angre's career raises important questions about the history of colonialism in Asia.",
+      "text_markdown": "Kanhoji Angre's career raises important questions about the history of colonialism in Asia.",
+      "tts": {
+        "text": "Kanhoji Angre's career raises important questions about the history of colonialism in Asia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legacy",
+      "paragraph_id": "p79",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The European trading companies presented their expansion as the advance of civilization and lawful trade.",
+      "text_markdown": "The European trading companies presented their expansion as the advance of civilization and lawful trade.",
+      "tts": {
+        "text": "The European trading companies presented their expansion as the advance of civilization and lawful trade.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legacy",
+      "paragraph_id": "p79",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "But from the perspective of Indian rulers like Kanhoji, the Europeans were the intruders.",
+      "text_markdown": "But from the perspective of Indian rulers like Kanhoji, the Europeans were the intruders.",
+      "tts": {
+        "text": "But from the perspective of Indian rulers like Kanhoji, the Europeans were the intruders.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legacy",
+      "paragraph_id": "p79",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "They had imposed their rules by force and called resistance to those rules criminal.",
+      "text_markdown": "They had imposed their rules by force and called resistance to those rules criminal.",
+      "tts": {
+        "text": "They had imposed their rules by force and called resistance to those rules criminal.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legacy",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "What Kanhoji achieved was not piracy but sovereignty.",
+      "text_markdown": "What Kanhoji achieved was not piracy but sovereignty.",
+      "tts": {
+        "text": "What Kanhoji achieved was not piracy but sovereignty.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-291",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legacy",
+      "paragraph_id": "p80",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He controlled his waters, taxed the trade that passed through them, and defended his people against foreign aggression.",
+      "text_markdown": "He controlled his waters, taxed the trade that passed through them, and defended his people against foreign aggression.",
+      "tts": {
+        "text": "He controlled his waters, taxed the trade that passed through them, and defended his people against foreign aggression.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-292",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legacy",
+      "paragraph_id": "p80",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "He did this for thirty-one years without ever losing a battle.",
+      "text_markdown": "He did this for thirty-one years without ever losing a battle.",
+      "tts": {
+        "text": "He did this for thirty-one years without ever losing a battle.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-293",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legacy",
+      "paragraph_id": "p80",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "In the long history of the Indian Ocean, no one else has matched that record.",
+      "text_markdown": "In the long history of the Indian Ocean, no one else has matched that record.",
+      "tts": {
+        "text": "In the long history of the Indian Ocean, no one else has matched that record.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-294",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legacy",
+      "paragraph_id": "p80",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "His life is proof that the history of the sea belongs to every nation that has sailed it.",
+      "text_markdown": "His life is proof that the history of the sea belongs to every nation that has sailed it.",
+      "tts": {
+        "text": "His life is proof that the history of the sea belongs to every nation that has sailed it.",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

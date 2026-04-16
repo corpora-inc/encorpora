@@ -1,0 +1,107 @@
+{
+  "identifier" : "D1A2B3C4-5678-9ABC-DEF0-123456789ABC",
+  "nonRenewingSubscriptions" : [
+
+  ],
+  "products" : [
+    {
+      "displayPrice" : "4.99",
+      "familyShareable" : false,
+      "internalID" : "IAP001",
+      "localizations" : [
+        {
+          "description" : "A complete narrated audiobook pack with word-level synchronized text.",
+          "displayName" : "Premium Narration Pack",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "corpan.narration.sample_premium",
+      "referenceName" : "Sample Premium Narration",
+      "type" : "NonConsumable"
+    }
+  ],
+  "settings" : {
+    "_applicationInternalID" : "PLACEHOLDER",
+    "_developerTeamID" : "F9AV5HKF6N",
+    "_failTransactionsEnabled" : false,
+    "_lastSynchronizedDate" : null,
+    "_storeKitErrors" : [
+
+    ]
+  },
+  "subscriptionGroups" : [
+    {
+      "id" : "SUBGRP001",
+      "localizations" : [
+        {
+          "description" : "Premium access to all narrated books",
+          "displayName" : "Corpan Premium",
+          "locale" : "en_US"
+        }
+      ],
+      "name" : "Corpan Premium",
+      "subscriptions" : [
+        {
+          "adHocOffers" : [
+
+          ],
+          "codeOffers" : [
+
+          ],
+          "displayPrice" : "15.99",
+          "familyShareable" : false,
+          "groupNumber" : 1,
+          "internalID" : "SUB001",
+          "introductoryOffer" : null,
+          "localizations" : [
+            {
+              "description" : "Unlimited access to all narrated books. Listen to the world's stories.",
+              "displayName" : "Corpan Premium",
+              "locale" : "en_US"
+            }
+          ],
+          "productID" : "corpan.sub.monthly",
+          "recurringSubscriptionPeriod" : "P1M",
+          "referenceName" : "Premium Monthly",
+          "subscriptionGroupID" : "SUBGRP001",
+          "type" : "RecurringSubscription",
+          "winbackOffers" : [
+
+          ]
+        },
+        {
+          "adHocOffers" : [
+
+          ],
+          "codeOffers" : [
+
+          ],
+          "displayPrice" : "99.99",
+          "familyShareable" : false,
+          "groupNumber" : 2,
+          "internalID" : "SUB002",
+          "introductoryOffer" : null,
+          "localizations" : [
+            {
+              "description" : "Unlimited access to all narrated books. Save over 45% vs monthly.",
+              "displayName" : "Corpan Premium (Annual)",
+              "locale" : "en_US"
+            }
+          ],
+          "productID" : "corpan.sub.annual",
+          "recurringSubscriptionPeriod" : "P1Y",
+          "referenceName" : "Premium Annual",
+          "subscriptionGroupID" : "SUBGRP001",
+          "type" : "RecurringSubscription",
+          "winbackOffers" : [
+
+          ]
+        }
+      ]
+    }
+  ],
+  "version" : {
+    "major" : 4,
+    "minor" : 0
+  }
+}

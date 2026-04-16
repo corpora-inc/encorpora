@@ -1,0 +1,15 @@
+{
+  "name": "corpan-verify-purchase",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Receipt verification and signed URL generation for Corpan premium content",
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "dependencies": {
+    "@apple/app-store-server-library": "^3.0.0",
+    "googleapis": "^144.0.0",
+    "@aws-sdk/client-secrets-manager": "^3.0.0",
+    "@aws-sdk/cloudfront-signer": "^3.0.0"
+  }
+}

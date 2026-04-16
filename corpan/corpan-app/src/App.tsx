@@ -17,6 +17,7 @@ import { useGamesStore, type InstalledGame } from "@/store/games";
 import { useCatalogStore } from "@/store/catalog";
 import { usePackUpdates } from "@/hooks/usePackUpdates";
 import { useThemeEffect } from "@/hooks/useThemeEffect";
+import { refreshEntitlements, getPlatform } from "@/contentPacks/purchase";
 
 // In a module that always loads (e.g. App.tsx)
 if (import.meta.env.DEV) {
@@ -50,9 +51,11 @@ export default function App() {
   const installedGames = Object.values(gamesMap);
   const updates = usePackUpdates(installedGames, catalog);
 
-  // Fetch catalog on mount
+  // Fetch catalog and refresh entitlements on mount
   useEffect(() => {
     fetchCatalog();
+    // Detect platform then refresh IAP entitlements (local, no network)
+    getPlatform().then(() => refreshEntitlements()).catch(() => {});
   }, [fetchCatalog]);
 
   useEffect(() => {

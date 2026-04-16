@@ -1,6 +1,29 @@
 version: 1
 voices:
   en: ian-new-narration-try-more-chill-clear.wav
+  es: ian-new-narration-try-more-chill-clear.wav
+  fr: ian-new-narration-try-more-chill-clear.wav
+  de: ian-new-narration-try-more-chill-clear.wav
+  pt: ian-new-narration-try-more-chill-clear.wav
+  it: ian-new-narration-try-more-chill-clear.wav
+  nl: ian-new-narration-try-more-chill-clear.wav
+  sv: ian-new-narration-try-more-chill-clear.wav
+  da: ian-new-narration-try-more-chill-clear.wav
+  "no": ian-new-narration-try-more-chill-clear.wav
+  fi: ian-new-narration-try-more-chill-clear.wav
+  pl: ian-new-narration-try-more-chill-clear.wav
+  tr: ian-new-narration-try-more-chill-clear.wav
+  ar: ian-new-narration-try-more-chill-clear.wav
+  he: ian-new-narration-try-more-chill-clear.wav
+  hi: ian-new-narration-try-more-chill-clear.wav
+  ru: ian-new-narration-try-more-chill-clear.wav
+  uk: ian-new-narration-try-more-chill-clear.wav
+  zh: ian-new-narration-try-more-chill-clear.wav
+  ja: ian-new-narration-try-more-chill-clear.wav
+  ko: ian-new-narration-try-more-chill-clear.wav
+  ms: ian-new-narration-try-more-chill-clear.wav
+  el: ian-new-narration-try-more-chill-clear.wav
+  sw: ian-new-narration-try-more-chill-clear.wav
 tts:
   cfg_weight: 0.85
   exaggeration: 0.3
@@ -74,8 +97,54 @@ trimming:
   fade_sec: 0.05
   max_sec_per_char:
     en: 0.12
+    es: 0.12
+    fr: 0.12
+    de: 0.12
+    pt: 0.12
+    it: 0.12
+    nl: 0.12
+    sv: 0.12
+    da: 0.12
+    "no": 0.12
+    fi: 0.12
+    pl: 0.12
+    tr: 0.12
+    ru: 0.12
+    uk: 0.12
+    el: 0.12
+    ms: 0.12
+    sw: 0.12
+    ar: 0.15
+    he: 0.15
+    hi: 0.15
+    zh: 0.25
+    ja: 0.25
+    ko: 0.20
   base_buffer_sec:
     en: 5.0
+    es: 5.0
+    fr: 5.0
+    de: 5.0
+    pt: 5.0
+    it: 5.0
+    nl: 5.0
+    sv: 5.0
+    da: 5.0
+    "no": 5.0
+    fi: 5.0
+    pl: 5.0
+    tr: 5.0
+    ru: 5.0
+    uk: 5.0
+    el: 5.0
+    ms: 5.0
+    sw: 5.0
+    ar: 5.0
+    he: 5.0
+    hi: 5.0
+    zh: 5.0
+    ja: 5.0
+    ko: 5.0
 validation:
   min_word_ratio: 0.8
   max_trailing_silence_ratio: 0.25
@@ -84,8 +153,89 @@ validation:
   max_inter_word_gap_ms: 3000
   max_sec_per_char:
     en: 0.12
+    es: 0.12
+    fr: 0.12
+    de: 0.12
+    pt: 0.12
+    it: 0.12
+    nl: 0.12
+    sv: 0.12
+    da: 0.12
+    "no": 0.12
+    fi: 0.12
+    pl: 0.12
+    tr: 0.12
+    ru: 0.12
+    uk: 0.12
+    el: 0.12
+    ms: 0.12
+    sw: 0.12
+    ar: 0.15
+    he: 0.15
+    hi: 0.15
+    zh: 0.25
+    ja: 0.25
+    ko: 0.20
   min_sec_per_char:
     en: 0.02
+    es: 0.02
+    fr: 0.02
+    de: 0.02
+    pt: 0.02
+    it: 0.02
+    nl: 0.02
+    sv: 0.02
+    da: 0.02
+    "no": 0.02
+    fi: 0.02
+    pl: 0.02
+    tr: 0.02
+    ru: 0.02
+    uk: 0.02
+    el: 0.02
+    ms: 0.02
+    sw: 0.02
+    ar: 0.02
+    he: 0.02
+    hi: 0.02
+    zh: 0.03
+    ja: 0.03
+    ko: 0.03
   base_buffer_sec:
     en: 5.0
-overrides: {}
+    es: 5.0
+    fr: 5.0
+    de: 5.0
+    pt: 5.0
+    it: 5.0
+    nl: 5.0
+    sv: 5.0
+    da: 5.0
+    "no": 5.0
+    fi: 5.0
+    pl: 5.0
+    tr: 5.0
+    ru: 5.0
+    uk: 5.0
+    el: 5.0
+    ms: 5.0
+    sw: 5.0
+    ar: 5.0
+    he: 5.0
+    hi: 5.0
+    zh: 5.0
+    ja: 5.0
+    ko: 5.0
+overrides:
+  "ch03-088":
+    min_word_ratio: 0.3
+  "ch03-089":
+    min_word_ratio: 0.3
+  "ch03-091":
+    min_word_ratio: 0.3
+  "ch03-092":
+    min_word_ratio: 0.3
+  "ch05-182":
+    min_word_ratio: 0.3
+  "ch05-183":
+    min_word_ratio: 0.3

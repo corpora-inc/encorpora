@@ -1394,7 +1394,7 @@
       "text": "Hydrogen is H. Oxygen is O. Carbon is C. Iron is Fe.",
       "text_markdown": "Hydrogen is H. Oxygen is O. Carbon is C. Iron is Fe.",
       "tts": {
-        "text": "Hydrogen is H. Oxygen is O. Carbon is C. Iron is Fe.",
+        "text": "Hydrogen is aitch. Oxygen is oh. Carbon is see. Iron is eff ee.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.8
       }
@@ -1410,7 +1410,7 @@
       "text": "Gold is Au.",
       "text_markdown": "Gold is Au.",
       "tts": {
-        "text": "Gold is Au.",
+        "text": "Gold is ay you.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -1442,7 +1442,7 @@
       "text": "Fe comes from the Latin word ferrum.",
       "text_markdown": "Fe comes from the Latin word ferrum.",
       "tts": {
-        "text": "Fe comes from the Latin word ferrum.",
+        "text": "Eff ee comes from the Latin word ferrum.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -1458,7 +1458,7 @@
       "text": "Au comes from the Latin word aurum.",
       "text_markdown": "Au comes from the Latin word aurum.",
       "tts": {
-        "text": "Au comes from the Latin word aurum.",
+        "text": "Ay you comes from the Latin word aurum.",
         "pause_after_ms": 800,
         "repetition_penalty": 2.0
       }
@@ -2890,7 +2890,7 @@
       "text": "The H stands for hydrogen.",
       "text_markdown": "The H stands for hydrogen.",
       "tts": {
-        "text": "The H stands for hydrogen.",
+        "text": "The aitch stands for hydrogen.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -2906,7 +2906,7 @@
       "text": "The O stands for oxygen.",
       "text_markdown": "The O stands for oxygen.",
       "tts": {
-        "text": "The O stands for oxygen.",
+        "text": "The oh stands for oxygen.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }

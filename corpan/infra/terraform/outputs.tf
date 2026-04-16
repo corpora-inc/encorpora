@@ -34,3 +34,13 @@ output "cdn_certificate_validation" {
   value = var.enable_cdn && var.cdn_domain_name != "" ? aws_acm_certificate.cdn[0].domain_validation_options : []
   description = "DNS validation records for CDN ACM certificate."
 }
+
+output "premium_key_group_id" {
+  value       = var.enable_cdn && var.enable_premium_content ? aws_cloudfront_key_group.premium[0].id : ""
+  description = "CloudFront key group ID for premium content signed URLs."
+}
+
+output "premium_public_key_id" {
+  value       = var.enable_cdn && var.enable_premium_content ? aws_cloudfront_public_key.premium[0].id : ""
+  description = "CloudFront public key ID used in signed URL generation."
+}

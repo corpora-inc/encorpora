@@ -1,0 +1,134 @@
+series:
+  title: "Pirate Biographies: Lives That Changed the Sea"
+  tagline: "Twelve true stories from every ocean on Earth."
+  planned_volumes: 12
+
+  philosophy: |
+    Each volume tells the true story of one pirate — their world, their rise,
+    their reign, and their end. Every biography opens a window onto a different
+    ocean, a different century, and a different culture. Rich geographic and
+    historical context surrounds each life. Every sentence earns its place.
+    Honest about uncertainty. Zero romanticization. Maximum fascination.
+    Every sentence works as a standalone TTS language learning utterance.
+
+  audience: |
+    Universal. Fascinating for adults. Fully accessible and enjoyable for
+    a curious child as young as ten. Think: the kind of book a parent
+    and child can both be riveted by for completely different reasons.
+    Designed for language learners across fourteen languages.
+
+  output:
+    trim: "6x9"
+    formats: [pdf, epub, corpan-pack]
+    tts: true
+    target_time: "~30 minutes"
+    target_segments: 300
+    languages: [en, ar, de, es, fr, hi, it, ja, ko, pl, pt, ru, tr, zh]
+
+  editorial_rules:
+    - Every sentence must work as a standalone TTS utterance for language learning.
+    - Short, clear sentences. Target ten to twenty-five words per segment.
+    - No parenthetical pronunciation guides.
+    - Historical accuracy. Real events, real dates, real places.
+    - Honest about uncertainty. "Historians believe" not "It was."
+    - Rich geographic and cultural context around each pirate's life.
+    - All numbers spelled out in words. No digits.
+    - No fluff. No padding. Every sentence earns its place.
+    - Define terms. Explain frameworks. Ontological clarity.
+
+  volumes:
+    - number: 1
+      title: "Zheng Yi Sao"
+      subtitle: "The Pirate Queen of the South China Sea"
+      directory: "01-zheng-yi-sao"
+      region: "South China Sea, China"
+      era: "1775–1844"
+      leading_theme: "The most successful pirate in history commanded eighteen hundred vessels"
+
+    - number: 2
+      title: "Hayreddin Barbarossa"
+      subtitle: "The King of the Mediterranean"
+      directory: "02-hayreddin-barbarossa"
+      region: "Mediterranean, Ottoman Empire"
+      era: "1478–1546"
+      leading_theme: "A corsair who became the sultan's admiral and master of the sea"
+
+    - number: 3
+      title: "Grace O'Malley"
+      subtitle: "The Pirate Queen of Connacht"
+      directory: "03-grace-omalley"
+      region: "Atlantic Coast, Ireland"
+      era: "1530–1603"
+      leading_theme: "An Irish chieftain who met Elizabeth the First as an equal"
+
+    - number: 4
+      title: "Kanhoji Angre"
+      subtitle: "The Undefeated Admiral of the Konkan Coast"
+      directory: "04-kanhoji-angre"
+      region: "Arabian Sea, India"
+      era: "1669–1729"
+      leading_theme: "The Maratha naval commander who humbled the European empires"
+
+    - number: 5
+      title: "Blackbeard"
+      subtitle: "The Terror of the Atlantic"
+      directory: "05-blackbeard"
+      region: "Caribbean and American Coast"
+      era: "1680–1718"
+      leading_theme: "The pirate who weaponized fear itself"
+
+    - number: 6
+      title: "Henry Every"
+      subtitle: "The King of Pirates"
+      directory: "06-henry-every"
+      region: "Indian Ocean and Red Sea"
+      era: "1659–unknown"
+      leading_theme: "The most wanted man on Earth who vanished without a trace"
+
+    - number: 7
+      title: "Sayyida al-Hurra"
+      subtitle: "The Free Queen of the Western Sea"
+      directory: "07-sayyida-al-hurra"
+      region: "Strait of Gibraltar, Morocco"
+      era: "1485–1561"
+      leading_theme: "The last female ruler of the Islamic world who controlled the western Mediterranean"
+
+    - number: 8
+      title: "Bartholomew Roberts"
+      subtitle: "Black Bart and the Golden Age"
+      directory: "08-bartholomew-roberts"
+      region: "West African Coast and Caribbean"
+      era: "1682–1722"
+      leading_theme: "The most successful pirate of the Golden Age captured over four hundred ships"
+
+    - number: 9
+      title: "Anne Bonny"
+      subtitle: "The Woman Who Would Not Be Tamed"
+      directory: "09-anne-bonny"
+      region: "Caribbean"
+      era: "1697–1782"
+      leading_theme: "An Irish woman who became one of the most feared pirates in the Caribbean"
+
+    - number: 10
+      title: "Klaus Störtebeker"
+      subtitle: "The Robin Hood of the Northern Seas"
+      directory: "10-klaus-stortebeker"
+      region: "Baltic Sea and North Sea, Germany"
+      era: "~1360–1401"
+      leading_theme: "The legendary pirate whose headless body walked past eleven of his men"
+
+    - number: 11
+      title: "Jean Lafitte"
+      subtitle: "The Gentleman Pirate of New Orleans"
+      directory: "11-jean-lafitte"
+      region: "Gulf of Mexico, Louisiana"
+      era: "~1780–1823"
+      leading_theme: "The smuggler who helped win the Battle of New Orleans"
+
+    - number: 12
+      title: "Sir Francis Drake"
+      subtitle: "The Dragon Who Circled the World"
+      directory: "12-sir-francis-drake"
+      region: "Pacific and Atlantic Oceans"
+      era: "1540–1596"
+      leading_theme: "Hero to England and pirate to Spain — the man who circumnavigated the globe"
