@@ -73,7 +73,11 @@
     "showRomanization": "إظهار الكتابة اللاتينية",
     "scrollNavigation": "التنقل بالتمرير",
     "packs": "Packs",
-    "stacks": "Stacks"
+    "stacks": "Stacks",
+    "theme": "المظهر",
+    "themeLight": "فاتح",
+    "themeDark": "داكن",
+    "themeSystem": "النظام"
   },
   "onboarding": {
     "welcome": "مرحبًا",
@@ -108,7 +112,10 @@
     "socialsStepTitle": "وسائل التواصل",
     "noVoices": "لا توجد أصوات",
     "noVoicesHint": "ثبّت أصواتًا لتمكين هذه اللغة.",
-    "sendAppleFeedback": "إرسال ملاحظات إلى Apple"
+    "sendAppleFeedback": "إرسال ملاحظات إلى Apple",
+    "ttsGoogleInstalled": "Google TTS مثبت",
+    "ttsGoogleMissing": "Google TTS غير مثبت",
+    "ttsSetDefault": "تعيين كافتراضي"
   },
   "socials": {
     "youtube": {
@@ -296,6 +303,28 @@
     "devLink": "اعرف المزيد على Free2z",
     "new": "جديد",
     "updates": "تحديثات",
-    "offline": "غير متصل"
+    "offline": "غير متصل",
+    "purchasing": "جارٍ الشراء...",
+    "buy": "شراء {{price}}",
+    "premium": "مميز",
+    "availableOnMobile": "متوفر على iOS و Android"
+  },
+  "subscription": {
+    "title": "فتح كل شيء",
+    "description": "وصول غير محدود لجميع الكتب الصوتية والحزم المميزة مع الاشتراك.",
+    "annual": "سنوي",
+    "monthly": "شهري",
+    "subscribe": "اشترك",
+    "subscribing": "جارٍ الاشتراك...",
+    "subscribed": "أنت مشترك",
+    "subscribedDescription": "خطة {{plan}} نشطة. شكرًا لدعم Corpán.",
+    "manage": "إدارة الاشتراك"
+  },
+  "restore": {
+    "button": "استعادة المشتريات",
+    "restoring": "جارٍ الاستعادة...",
+    "noPurchases": "لم يتم العثور على مشتريات سابقة.",
+    "success": "تمت استعادة {{count}} عملية شراء.",
+    "error": "فشل في استعادة المشتريات."
   }
 }

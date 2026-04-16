@@ -73,7 +73,11 @@
     "showRomanization": "Rómaizáció megjelenítése",
     "scrollNavigation": "Görgetés navigáció",
     "packs": "Packs",
-    "stacks": "Stacks"
+    "stacks": "Stacks",
+    "theme": "Téma",
+    "themeLight": "Világos",
+    "themeDark": "Sötét",
+    "themeSystem": "Rendszer"
   },
   "onboarding": {
     "welcome": "Üdvözöljük",
@@ -108,7 +112,10 @@
     "socialsStepTitle": "Közösségi média",
     "noVoices": "Nincs hang",
     "noVoicesHint": "A nyelv engedélyezéséhez telepíts hangokat.",
-    "sendAppleFeedback": "Apple-visszajelzés küldése"
+    "sendAppleFeedback": "Apple-visszajelzés küldése",
+    "ttsGoogleInstalled": "Google TTS telepítve",
+    "ttsGoogleMissing": "Google TTS nincs telepítve",
+    "ttsSetDefault": "Beállítás alapértelmezettként"
   },
   "socials": {
     "youtube": {
@@ -296,6 +303,28 @@
     "devLink": "Tudjon meg többet a Free2z oldalán",
     "new": "Új",
     "updates": "Frissítések",
-    "offline": "Offline"
+    "offline": "Offline",
+    "purchasing": "Vásárlás...",
+    "buy": "Megvásárlás {{price}}",
+    "premium": "Prémium",
+    "availableOnMobile": "Elérhető iOS-en és Androidon"
+  },
+  "subscription": {
+    "title": "Mindent feloldás",
+    "description": "Korlátlan hozzáférés minden hangoskönyvhöz és prémium csomaghoz előfizetéssel.",
+    "annual": "Éves",
+    "monthly": "Havi",
+    "subscribe": "Feliratkozás",
+    "subscribing": "Feliratkozás...",
+    "subscribed": "Előfizetőnk vagy",
+    "subscribedDescription": "{{plan}} csomag aktív. Köszönjük, hogy támogatod a Corpánt.",
+    "manage": "Előfizetés kezelése"
+  },
+  "restore": {
+    "button": "Vásárlások visszaállítása",
+    "restoring": "Visszaállítás...",
+    "noPurchases": "Nem található korábbi vásárlás.",
+    "success": "{{count}} vásárlás visszaállítva.",
+    "error": "Nem sikerült visszaállítani a vásárlásokat."
   }
 }

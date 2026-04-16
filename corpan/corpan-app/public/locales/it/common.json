@@ -73,7 +73,11 @@
     "showRomanization": "Mostra romanizzazione",
     "scrollNavigation": "Navigazione a scorrimento",
     "packs": "Packs",
-    "stacks": "Stacks"
+    "stacks": "Stacks",
+    "theme": "Tema",
+    "themeLight": "Chiaro",
+    "themeDark": "Scuro",
+    "themeSystem": "Sistema"
   },
   "onboarding": {
     "welcome": "Benvenuto",
@@ -108,7 +112,10 @@
     "socialsStepTitle": "Social",
     "noVoices": "Nessuna voce",
     "noVoicesHint": "Installa le voci per abilitare questa lingua.",
-    "sendAppleFeedback": "Invia feedback ad Apple"
+    "sendAppleFeedback": "Invia feedback ad Apple",
+    "ttsGoogleInstalled": "Google TTS installato",
+    "ttsGoogleMissing": "Google TTS non installato",
+    "ttsSetDefault": "Imposta come predefinito"
   },
   "socials": {
     "youtube": {
@@ -296,6 +303,28 @@
     "devLink": "Scopri di più su Free2z",
     "new": "Nuovo",
     "updates": "Aggiornamenti",
-    "offline": "Offline"
+    "offline": "Offline",
+    "purchasing": "Acquisto in corso...",
+    "buy": "Acquista {{price}}",
+    "premium": "Premium",
+    "availableOnMobile": "Disponibile su iOS e Android"
+  },
+  "subscription": {
+    "title": "Sblocca tutto",
+    "description": "Accesso illimitato a tutti gli audiolibri e pack premium con un abbonamento.",
+    "annual": "Annuale",
+    "monthly": "Mensile",
+    "subscribe": "Abbonati",
+    "subscribing": "Abbonamento in corso...",
+    "subscribed": "Sei abbonato",
+    "subscribedDescription": "Piano {{plan}} attivo. Grazie per supportare Corpán.",
+    "manage": "Gestisci abbonamento"
+  },
+  "restore": {
+    "button": "Ripristina acquisti",
+    "restoring": "Ripristino...",
+    "noPurchases": "Nessun acquisto precedente trovato.",
+    "success": "{{count}} acquisto/i ripristinato/i.",
+    "error": "Ripristino acquisti non riuscito."
   }
 }

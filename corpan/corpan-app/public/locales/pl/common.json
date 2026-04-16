@@ -73,7 +73,11 @@
     "showRomanization": "Pokaż romanizację",
     "scrollNavigation": "Nawigacja przewijaniem",
     "packs": "Packs",
-    "stacks": "Stacks"
+    "stacks": "Stacks",
+    "theme": "Motyw",
+    "themeLight": "Jasny",
+    "themeDark": "Ciemny",
+    "themeSystem": "Systemowy"
   },
   "onboarding": {
     "welcome": "Witamy",
@@ -108,7 +112,10 @@
     "socialsStepTitle": "Media społecznościowe",
     "noVoices": "Brak głosów",
     "noVoicesHint": "Zainstaluj głosy, aby włączyć ten język.",
-    "sendAppleFeedback": "Wyślij opinię do Apple"
+    "sendAppleFeedback": "Wyślij opinię do Apple",
+    "ttsGoogleInstalled": "Google TTS zainstalowany",
+    "ttsGoogleMissing": "Google TTS niezainstalowany",
+    "ttsSetDefault": "Ustaw jako domyślny"
   },
   "socials": {
     "youtube": {
@@ -296,6 +303,28 @@
     "devLink": "Dowiedz się więcej na Free2z",
     "new": "Nowe",
     "updates": "Aktualizacje",
-    "offline": "Offline"
+    "offline": "Offline",
+    "purchasing": "Kupowanie...",
+    "buy": "Kup {{price}}",
+    "premium": "Premium",
+    "availableOnMobile": "Dostępne na iOS i Android"
+  },
+  "subscription": {
+    "title": "Odblokuj wszystko",
+    "description": "Nieograniczony dostęp do wszystkich audiobooków i pakietów premium z subskrypcją.",
+    "annual": "Roczna",
+    "monthly": "Miesięczna",
+    "subscribe": "Subskrybuj",
+    "subscribing": "Subskrybowanie...",
+    "subscribed": "Jesteś subskrybentem",
+    "subscribedDescription": "Plan {{plan}} aktywny. Dziękujemy za wsparcie Corpán.",
+    "manage": "Zarządzaj subskrypcją"
+  },
+  "restore": {
+    "button": "Przywróć zakupy",
+    "restoring": "Przywracanie...",
+    "noPurchases": "Nie znaleziono wcześniejszych zakupów.",
+    "success": "Przywrócono {{count}} zakup(ów).",
+    "error": "Nie udało się przywrócić zakupów."
   }
 }

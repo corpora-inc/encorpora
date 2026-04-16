@@ -73,7 +73,11 @@
     "showRomanization": "ਰੋਮਨ ਲਿਪੀ ਦਿਖਾਓ",
     "scrollNavigation": "ਸਕ੍ਰੋਲ ਨੈਵੀਗੇਸ਼ਨ",
     "packs": "Packs",
-    "stacks": "Stacks"
+    "stacks": "Stacks",
+    "theme": "ਥੀਮ",
+    "themeLight": "ਹਲਕਾ",
+    "themeDark": "ਗੂੜ੍ਹਾ",
+    "themeSystem": "ਸਿਸਟਮ"
   },
   "onboarding": {
     "welcome": "ਸਵਾਗਤ",
@@ -108,7 +112,10 @@
     "socialsStepTitle": "ਸੋਸ਼ਲ ਮੀਡੀਆ",
     "noVoices": "ਆਵਾਜ਼ਾਂ ਨਹੀਂ",
     "noVoicesHint": "ਇਸ ਭਾਸ਼ਾ ਨੂੰ ਚਾਲੂ ਕਰਨ ਲਈ ਆਵਾਜ਼ਾਂ ਇੰਸਟਾਲ ਕਰੋ।",
-    "sendAppleFeedback": "Apple ਫੀਡਬੈਕ ਭੇਜੋ"
+    "sendAppleFeedback": "Apple ਫੀਡਬੈਕ ਭੇਜੋ",
+    "ttsGoogleInstalled": "Google TTS ਇੰਸਟਾਲ ਹੈ",
+    "ttsGoogleMissing": "Google TTS ਇੰਸਟਾਲ ਨਹੀਂ",
+    "ttsSetDefault": "ਡਿਫਾਲਟ ਵਜੋਂ ਸੈੱਟ ਕਰੋ"
   },
   "socials": {
     "youtube": {
@@ -296,6 +303,28 @@
     "devLink": "Free2z ਉੱਤੇ ਹੋਰ ਜਾਣੋ",
     "new": "ਨਵਾਂ",
     "updates": "ਅਪਡੇਟਸ",
-    "offline": "ਆਫਲਾਈਨ"
+    "offline": "ਆਫਲਾਈਨ",
+    "purchasing": "ਖਰੀਦ ਹੋ ਰਹੀ ਹੈ...",
+    "buy": "{{price}} ਖਰੀਦੋ",
+    "premium": "ਪ੍ਰੀਮੀਅਮ",
+    "availableOnMobile": "iOS ਅਤੇ Android ਤੇ ਉਪਲਬਧ"
+  },
+  "subscription": {
+    "title": "ਸਭ ਅਨਲੌਕ ਕਰੋ",
+    "description": "ਸਬਸਕ੍ਰਿਪਸ਼ਨ ਨਾਲ ਸਾਰੀਆਂ ਆਡੀਓਬੁੱਕਾਂ ਅਤੇ ਪ੍ਰੀਮੀਅਮ ਪੈਕਾਂ ਤੱਕ ਅਸੀਮਤ ਪਹੁੰਚ।",
+    "annual": "ਸਾਲਾਨਾ",
+    "monthly": "ਮਹੀਨਾਵਾਰ",
+    "subscribe": "ਸਬਸਕ੍ਰਾਈਬ",
+    "subscribing": "ਸਬਸਕ੍ਰਾਈਬ ਹੋ ਰਿਹਾ ਹੈ...",
+    "subscribed": "ਤੁਸੀਂ ਸਬਸਕ੍ਰਾਈਬ ਹੋ",
+    "subscribedDescription": "{{plan}} ਯੋਜਨਾ ਸਰਗਰਮ ਹੈ। Corpán ਦੀ ਹਮਾਇਤ ਲਈ ਧੰਨਵਾਦ।",
+    "manage": "ਸਬਸਕ੍ਰਿਪਸ਼ਨ ਪ੍ਰਬੰਧਿਤ ਕਰੋ"
+  },
+  "restore": {
+    "button": "ਖਰੀਦਾਂ ਬਹਾਲ ਕਰੋ",
+    "restoring": "ਬਹਾਲ ਹੋ ਰਿਹਾ ਹੈ...",
+    "noPurchases": "ਪਿਛਲੀਆਂ ਖਰੀਦਾਂ ਨਹੀਂ ਮਿਲੀਆਂ।",
+    "success": "{{count}} ਖਰੀਦ(ਾਂ) ਬਹਾਲ ਕੀਤੀਆਂ।",
+    "error": "ਖਰੀਦਾਂ ਬਹਾਲ ਕਰਨ ਵਿੱਚ ਅਸਫਲ।"
   }
 }

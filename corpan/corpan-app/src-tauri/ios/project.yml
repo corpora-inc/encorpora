@@ -55,8 +55,9 @@ targets:
           - UIInterfaceOrientationLandscapeRight
         UIBackgroundModes:
           - audio
-        CFBundleShortVersionString: 0.1.0
-        CFBundleVersion: 0.1.0
+        # CFBundleShortVersionString + CFBundleVersion are auto-injected by
+        # Tauri from tauri.conf.json's `version` field. Don't hardcode them
+        # here or they'll drift.
     entitlements:
       path: corpan_iOS/corpan_iOS.entitlements
     scheme:
@@ -81,9 +82,7 @@ targets:
           - /usr/lib/swift
         EXCLUDED_ARCHS[sdk=iphonesimulator*]: arm64
         EXCLUDED_ARCHS[sdk=iphoneos*]: arm64-sim x86_64
-        CODE_SIGN_STYLE: Manual
-        CODE_SIGN_IDENTITY: "iPhone Distribution: Corpora Inc (F9AV5HKF6N)"
-        PROVISIONING_PROFILE: 4d5c5e29-f71e-4053-a7b6-fc1d5874d97a
+        CODE_SIGN_STYLE: Automatic
         DEVELOPMENT_TEAM: F9AV5HKF6N
       groups: [app]
     dependencies:

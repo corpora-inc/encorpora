@@ -73,7 +73,11 @@
     "showRomanization": "ローマ字表記を表示",
     "scrollNavigation": "スクロールナビゲーション",
     "packs": "Packs",
-    "stacks": "Stacks"
+    "stacks": "Stacks",
+    "theme": "テーマ",
+    "themeLight": "ライト",
+    "themeDark": "ダーク",
+    "themeSystem": "システム"
   },
   "onboarding": {
     "welcome": "ようこそ",
@@ -108,7 +112,10 @@
     "socialsStepTitle": "ソーシャル",
     "noVoices": "音声なし",
     "noVoicesHint": "この言語を有効にするには音声をインストールしてください。",
-    "sendAppleFeedback": "Appleにフィードバックを送る"
+    "sendAppleFeedback": "Appleにフィードバックを送る",
+    "ttsGoogleInstalled": "Google TTSインストール済み",
+    "ttsGoogleMissing": "Google TTS未インストール",
+    "ttsSetDefault": "デフォルトに設定"
   },
   "socials": {
     "youtube": {
@@ -296,6 +303,28 @@
     "devLink": "Free2zで詳しく見る",
     "new": "新規",
     "updates": "アップデート",
-    "offline": "オフライン"
+    "offline": "オフライン",
+    "purchasing": "購入中...",
+    "buy": "{{price}}で購入",
+    "premium": "プレミアム",
+    "availableOnMobile": "iOSとAndroidで利用可能"
+  },
+  "subscription": {
+    "title": "すべてを解除",
+    "description": "サブスクリプションですべてのオーディオブックとプレミアムパックに無制限アクセス。",
+    "annual": "年額",
+    "monthly": "月額",
+    "subscribe": "購読する",
+    "subscribing": "購読中...",
+    "subscribed": "購読中です",
+    "subscribedDescription": "{{plan}}プランが有効です。Corpánのサポートをありがとうございます。",
+    "manage": "サブスクリプションを管理"
+  },
+  "restore": {
+    "button": "購入を復元",
+    "restoring": "復元中...",
+    "noPurchases": "以前の購入が見つかりませんでした。",
+    "success": "{{count}}件の購入を復元しました。",
+    "error": "購入の復元に失敗しました。"
   }
 }

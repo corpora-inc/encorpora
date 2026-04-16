@@ -73,7 +73,11 @@
     "showRomanization": "Romanisierung anzeigen",
     "scrollNavigation": "Scrollnavigation",
     "packs": "Packs",
-    "stacks": "Stacks"
+    "stacks": "Stacks",
+    "theme": "Design",
+    "themeLight": "Hell",
+    "themeDark": "Dunkel",
+    "themeSystem": "System"
   },
   "onboarding": {
     "welcome": "Willkommen",
@@ -108,7 +112,10 @@
     "socialsStepTitle": "Soziale Medien",
     "noVoices": "Keine Stimmen",
     "noVoicesHint": "Installiere Stimmen, um diese Sprache zu aktivieren.",
-    "sendAppleFeedback": "Apple Feedback senden"
+    "sendAppleFeedback": "Apple Feedback senden",
+    "ttsGoogleInstalled": "Google TTS installiert",
+    "ttsGoogleMissing": "Google TTS nicht installiert",
+    "ttsSetDefault": "Als Standard festlegen"
   },
   "socials": {
     "youtube": {
@@ -296,6 +303,28 @@
     "devLink": "Mehr auf Free2z",
     "new": "Neu",
     "updates": "Updates",
-    "offline": "Offline"
+    "offline": "Offline",
+    "purchasing": "Wird gekauft...",
+    "buy": "Kaufen {{price}}",
+    "premium": "Premium",
+    "availableOnMobile": "Verfügbar auf iOS und Android"
+  },
+  "subscription": {
+    "title": "Alles freischalten",
+    "description": "Unbegrenzter Zugriff auf alle Hörbücher und Premium-Pakete mit einem Abo.",
+    "annual": "Jährlich",
+    "monthly": "Monatlich",
+    "subscribe": "Abonnieren",
+    "subscribing": "Wird abonniert...",
+    "subscribed": "Du bist abonniert",
+    "subscribedDescription": "{{plan}} Plan aktiv. Danke für deine Unterstützung von Corpán.",
+    "manage": "Abonnement verwalten"
+  },
+  "restore": {
+    "button": "Käufe wiederherstellen",
+    "restoring": "Wird wiederhergestellt...",
+    "noPurchases": "Keine früheren Käufe gefunden.",
+    "success": "{{count}} Kauf/Käufe wiederhergestellt.",
+    "error": "Käufe konnten nicht wiederhergestellt werden."
   }
 }

@@ -1,29 +1,34 @@
 import { useState, useEffect } from "react"
 import { useTranslation } from "react-i18next"
+import { CheckCircle2 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useEntitlementStore } from "@/store/entitlements"
 import {
   fetchProducts,
   purchaseAndVerify,
+  manageSubscription,
   SUBSCRIPTION_MONTHLY,
   SUBSCRIPTION_ANNUAL,
   type StoreProduct,
 } from "@/contentPacks/purchase"
 
 /**
- * Subscription offer banner shown in the catalog browser.
- * Only visible to non-subscribers on platforms with IAP support.
+ * Subscription offer banner in the packs browser.
+ * - Non-subscriber with IAP: shows monthly/annual selector + Subscribe button.
+ * - Active subscriber: shows subscribed status + Manage Subscription button.
+ * - Non-IAP platforms: hidden entirely.
  */
 export function SubscriptionOffer() {
   const { t } = useTranslation()
-  const subscriptionActive = useEntitlementStore((s) => s.subscription.active)
+  const subscription = useEntitlementStore((s) => s.subscription)
   const iapAvailable = useEntitlementStore((s) => s.iapAvailable)
   const [products, setProducts] = useState<StoreProduct[]>([])
   const [selectedPlan, setSelectedPlan] = useState<"monthly" | "annual">("annual")
   const [isPurchasing, setIsPurchasing] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
-  // Fetch subscription product prices from the store
+  const subscriptionActive = subscription.active
+
   useEffect(() => {
     if (!iapAvailable || subscriptionActive) return
     fetchProducts(
@@ -32,8 +37,40 @@ export function SubscriptionOffer() {
     ).then(setProducts)
   }, [iapAvailable, subscriptionActive])
 
-  // Don't render if already subscribed or IAP not available
-  if (subscriptionActive || !iapAvailable) return null
+  if (!iapAvailable) return null
+
+  // Active subscriber — confirmation + manage button.
+  if (subscriptionActive) {
+    const planLabel =
+      subscription.plan === "annual"
+        ? t("subscription.annual", "Annual")
+        : t("subscription.monthly", "Monthly")
+
+    return (
+      <div className="rounded-xl border border-emerald-200 bg-emerald-50 dark:bg-emerald-950/30 dark:border-emerald-900 p-4 space-y-3">
+        <div className="flex items-start gap-3">
+          <CheckCircle2 className="h-5 w-5 text-emerald-600 dark:text-emerald-400 mt-0.5 flex-shrink-0" />
+          <div>
+            <h3 className="font-semibold text-sm text-emerald-900 dark:text-emerald-100">
+              {t("subscription.subscribed", "You're subscribed")}
+            </h3>
+            <p className="text-xs text-emerald-800/80 dark:text-emerald-200/80 mt-1">
+              {t("subscription.subscribedDescription", "{{plan}} plan active. Thanks for supporting Corpán.", { plan: planLabel })}
+            </p>
+          </div>
+        </div>
+
+        <Button
+          onClick={() => void manageSubscription()}
+          variant="outline"
+          className="w-full"
+          size="sm"
+        >
+          {t("subscription.manage", "Manage subscription")}
+        </Button>
+      </div>
+    )
+  }
 
   const monthlyProduct = products.find((p) => p.productId === SUBSCRIPTION_MONTHLY)
   const annualProduct = products.find((p) => p.productId === SUBSCRIPTION_ANNUAL)
@@ -52,6 +89,8 @@ export function SubscriptionOffer() {
       if (result.error) {
         setError(result.error)
       }
+      // cancelled / alreadyOwned / verifyFailed all result in the subscribed
+      // card re-rendering via the entitlement store (no error shown).
     } finally {
       setIsPurchasing(false)
     }
@@ -61,12 +100,12 @@ export function SubscriptionOffer() {
     <div className="rounded-xl border bg-gradient-to-br from-primary/5 to-primary/10 p-4 space-y-3">
       <div>
         <h3 className="font-semibold text-sm">
-          {t("subscription.title", "Unlock all books")}
+          {t("subscription.title", "Unlock everything")}
         </h3>
         <p className="text-xs text-muted-foreground mt-1">
           {t(
             "subscription.description",
-            "Get unlimited access to every narrated book with a subscription."
+            "Unlimited access to every narrated book and premium pack with a subscription."
           )}
         </p>
       </div>

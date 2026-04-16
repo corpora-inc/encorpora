@@ -73,7 +73,11 @@
     "showRomanization": "แสดงถอดเสียง",
     "scrollNavigation": "การนำทางด้วยการเลื่อน",
     "packs": "Packs",
-    "stacks": "Stacks"
+    "stacks": "Stacks",
+    "theme": "ธีม",
+    "themeLight": "สว่าง",
+    "themeDark": "มืด",
+    "themeSystem": "ระบบ"
   },
   "onboarding": {
     "welcome": "ยินดีต้อนรับ",
@@ -108,7 +112,10 @@
     "socialsStepTitle": "โซเชียลมีเดีย",
     "noVoices": "ไม่มีเสียง",
     "noVoicesHint": "ติดตั้งเสียงเพื่อเปิดใช้งานภาษานี้",
-    "sendAppleFeedback": "ส่งความคิดเห็นให้ Apple"
+    "sendAppleFeedback": "ส่งความคิดเห็นให้ Apple",
+    "ttsGoogleInstalled": "ติดตั้ง Google TTS แล้ว",
+    "ttsGoogleMissing": "ยังไม่ได้ติดตั้ง Google TTS",
+    "ttsSetDefault": "ตั้งเป็นค่าเริ่มต้น"
   },
   "socials": {
     "youtube": {
@@ -296,6 +303,28 @@
     "devLink": "ดูเพิ่มที่ Free2z",
     "new": "ใหม่",
     "updates": "อัปเดต",
-    "offline": "ออฟไลน์"
+    "offline": "ออฟไลน์",
+    "purchasing": "กำลังซื้อ...",
+    "buy": "ซื้อ {{price}}",
+    "premium": "พรีเมียม",
+    "availableOnMobile": "มีบน iOS และ Android"
+  },
+  "subscription": {
+    "title": "ปลดล็อกทั้งหมด",
+    "description": "เข้าถึงหนังสือเสียงและแพ็กพรีเมียมทั้งหมดไม่จำกัดด้วยการสมัครสมาชิก",
+    "annual": "รายปี",
+    "monthly": "รายเดือน",
+    "subscribe": "สมัครสมาชิก",
+    "subscribing": "กำลังสมัคร...",
+    "subscribed": "คุณสมัครสมาชิกแล้ว",
+    "subscribedDescription": "แพ็ก {{plan}} ใช้งานอยู่ ขอบคุณที่สนับสนุน Corpán",
+    "manage": "จัดการการสมัครสมาชิก"
+  },
+  "restore": {
+    "button": "กู้คืนการซื้อ",
+    "restoring": "กำลังกู้คืน...",
+    "noPurchases": "ไม่พบการซื้อก่อนหน้า",
+    "success": "กู้คืน {{count}} รายการ",
+    "error": "กู้คืนการซื้อล้มเหลว"
   }
 }

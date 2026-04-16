@@ -73,7 +73,11 @@
     "showRomanization": "رومنائزیشن دکھائیں",
     "scrollNavigation": "اسکرول نیویگیشن",
     "packs": "Packs",
-    "stacks": "Stacks"
+    "stacks": "Stacks",
+    "theme": "تھیم",
+    "themeLight": "ہلکا",
+    "themeDark": "گہرا",
+    "themeSystem": "سسٹم"
   },
   "onboarding": {
     "welcome": "خوش آمدید",
@@ -108,7 +112,10 @@
     "socialsStepTitle": "سوشل میڈیا",
     "noVoices": "کوئی آواز نہیں",
     "noVoicesHint": "اس زبان کو فعال کرنے کے لیے آوازیں انسٹال کریں۔",
-    "sendAppleFeedback": "Apple فیڈبیک بھیجیں"
+    "sendAppleFeedback": "Apple فیڈبیک بھیجیں",
+    "ttsGoogleInstalled": "Google TTS انسٹال ہے",
+    "ttsGoogleMissing": "Google TTS انسٹال نہیں",
+    "ttsSetDefault": "ڈیفالٹ مقرر کریں"
   },
   "socials": {
     "youtube": {
@@ -296,6 +303,28 @@
     "devLink": "Free2z پر مزید جانیں",
     "new": "نیا",
     "updates": "اپڈیٹس",
-    "offline": "آف لائن"
+    "offline": "آف لائن",
+    "purchasing": "خریداری ہو رہی ہے...",
+    "buy": "{{price}} خریدیں",
+    "premium": "پریمیم",
+    "availableOnMobile": "iOS اور Android پر دستیاب"
+  },
+  "subscription": {
+    "title": "سب کچھ ان لاک کریں",
+    "description": "سبسکرپشن کے ساتھ تمام آڈیو کتابوں اور پریمیم پیکس تک لامحدود رسائی۔",
+    "annual": "سالانہ",
+    "monthly": "ماہانہ",
+    "subscribe": "سبسکرائب کریں",
+    "subscribing": "سبسکرائب ہو رہا ہے...",
+    "subscribed": "آپ نے سبسکرائب کیا ہے",
+    "subscribedDescription": "{{plan}} پلان فعال ہے۔ Corpán کو سپورٹ کرنے کا شکریہ۔",
+    "manage": "سبسکرپشن کا انتظام کریں"
+  },
+  "restore": {
+    "button": "خریداریاں بحال کریں",
+    "restoring": "بحال ہو رہا ہے...",
+    "noPurchases": "کوئی پچھلی خریداری نہیں ملی۔",
+    "success": "{{count}} خریداری بحال ہوئی۔",
+    "error": "خریداریاں بحال کرنے میں ناکامی۔"
   }
 }

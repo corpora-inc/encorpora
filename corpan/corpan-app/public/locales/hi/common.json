@@ -73,7 +73,11 @@
     "showRomanization": "रोमन लिप्यंतरण दिखाएँ",
     "scrollNavigation": "स्क्रॉल नेविगेशन",
     "packs": "Packs",
-    "stacks": "Stacks"
+    "stacks": "Stacks",
+    "theme": "थीम",
+    "themeLight": "लाइट",
+    "themeDark": "डार्क",
+    "themeSystem": "सिस्टम"
   },
   "onboarding": {
     "welcome": "स्वागत है",
@@ -108,7 +112,10 @@
     "socialsStepTitle": "सोशल मीडिया",
     "noVoices": "कोई आवाज़ नहीं",
     "noVoicesHint": "इस भाषा को सक्षम करने के लिए आवाज़ें इंस्टॉल करें।",
-    "sendAppleFeedback": "Apple फ़ीडबैक भेजें"
+    "sendAppleFeedback": "Apple फ़ीडबैक भेजें",
+    "ttsGoogleInstalled": "Google TTS स्थापित",
+    "ttsGoogleMissing": "Google TTS स्थापित नहीं",
+    "ttsSetDefault": "डिफ़ॉल्ट के रूप में सेट करें"
   },
   "socials": {
     "youtube": {
@@ -296,6 +303,28 @@
     "devLink": "Free2z पर और जानें",
     "new": "नया",
     "updates": "अपडेट",
-    "offline": "ऑफ़लाइन"
+    "offline": "ऑफ़लाइन",
+    "purchasing": "खरीदा जा रहा है...",
+    "buy": "{{price}} में खरीदें",
+    "premium": "प्रीमियम",
+    "availableOnMobile": "iOS और Android पर उपलब्ध"
+  },
+  "subscription": {
+    "title": "सब कुछ अनलॉक करें",
+    "description": "सदस्यता के साथ सभी ऑडियोबुक और प्रीमियम पैक तक असीमित पहुँच।",
+    "annual": "वार्षिक",
+    "monthly": "मासिक",
+    "subscribe": "सदस्यता लें",
+    "subscribing": "सदस्यता ली जा रही है...",
+    "subscribed": "आप सदस्य हैं",
+    "subscribedDescription": "{{plan}} योजना सक्रिय। Corpán का समर्थन करने के लिए धन्यवाद।",
+    "manage": "सदस्यता प्रबंधित करें"
+  },
+  "restore": {
+    "button": "खरीदारी पुनर्स्थापित करें",
+    "restoring": "पुनर्स्थापित हो रहा है...",
+    "noPurchases": "कोई पिछली खरीदारी नहीं मिली।",
+    "success": "{{count}} खरीदारी पुनर्स्थापित की गई।",
+    "error": "खरीदारी पुनर्स्थापित करने में विफल।"
   }
 }

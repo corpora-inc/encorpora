@@ -73,7 +73,11 @@
     "showRomanization": "로마자 표기 보기",
     "scrollNavigation": "스크롤 탐색",
     "packs": "Packs",
-    "stacks": "Stacks"
+    "stacks": "Stacks",
+    "theme": "테마",
+    "themeLight": "라이트",
+    "themeDark": "다크",
+    "themeSystem": "시스템"
   },
   "onboarding": {
     "welcome": "환영합니다",
@@ -108,7 +112,10 @@
     "socialsStepTitle": "소셜 미디어",
     "noVoices": "음성 없음",
     "noVoicesHint": "이 언어를 사용하려면 음성을 설치하세요.",
-    "sendAppleFeedback": "Apple 피드백 보내기"
+    "sendAppleFeedback": "Apple 피드백 보내기",
+    "ttsGoogleInstalled": "Google TTS 설치됨",
+    "ttsGoogleMissing": "Google TTS 미설치",
+    "ttsSetDefault": "기본값으로 설정"
   },
   "socials": {
     "youtube": {
@@ -296,6 +303,28 @@
     "devLink": "Free2z에서 더 알아보기",
     "new": "신규",
     "updates": "업데이트",
-    "offline": "오프라인"
+    "offline": "오프라인",
+    "purchasing": "구매 중...",
+    "buy": "{{price}} 구매",
+    "premium": "프리미엄",
+    "availableOnMobile": "iOS 및 Android에서 이용 가능"
+  },
+  "subscription": {
+    "title": "전체 잠금 해제",
+    "description": "구독으로 모든 오디오북과 프리미엄 팩에 무제한 접근하세요.",
+    "annual": "연간",
+    "monthly": "월간",
+    "subscribe": "구독하기",
+    "subscribing": "구독 중...",
+    "subscribed": "구독 중입니다",
+    "subscribedDescription": "{{plan}} 플랜이 활성 상태입니다. Corpán을 지원해 주셔서 감사합니다.",
+    "manage": "구독 관리"
+  },
+  "restore": {
+    "button": "구매 복원",
+    "restoring": "복원 중...",
+    "noPurchases": "이전 구매를 찾을 수 없습니다.",
+    "success": "{{count}}건의 구매가 복원되었습니다.",
+    "error": "구매 복원에 실패했습니다."
   }
 }

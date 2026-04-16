@@ -73,7 +73,11 @@
     "showRomanization": "نمایش رومن‌نویسی",
     "scrollNavigation": "ناوبری با لغزش",
     "packs": "Packs",
-    "stacks": "Stacks"
+    "stacks": "Stacks",
+    "theme": "پوسته",
+    "themeLight": "روشن",
+    "themeDark": "تیره",
+    "themeSystem": "سیستم"
   },
   "onboarding": {
     "welcome": "خوش آمدید",
@@ -108,7 +112,10 @@
     "socialsStepTitle": "شبکه‌های اجتماعی",
     "noVoices": "صدایی موجود نیست",
     "noVoicesHint": "برای فعال‌سازی این زبان صداها را نصب کنید.",
-    "sendAppleFeedback": "ارسال بازخورد به Apple"
+    "sendAppleFeedback": "ارسال بازخورد به Apple",
+    "ttsGoogleInstalled": "Google TTS نصب شده",
+    "ttsGoogleMissing": "Google TTS نصب نشده",
+    "ttsSetDefault": "تنظیم به‌عنوان پیش‌فرض"
   },
   "socials": {
     "youtube": {
@@ -296,6 +303,28 @@
     "devLink": "بیشتر در Free2z",
     "new": "جدید",
     "updates": "به‌روزرسانی‌ها",
-    "offline": "آفلاین"
+    "offline": "آفلاین",
+    "purchasing": "در حال خرید...",
+    "buy": "خرید {{price}}",
+    "premium": "ویژه",
+    "availableOnMobile": "در iOS و Android موجود است"
+  },
+  "subscription": {
+    "title": "باز کردن همه",
+    "description": "دسترسی نامحدود به تمام کتاب‌های صوتی و بسته‌های ویژه با اشتراک.",
+    "annual": "سالانه",
+    "monthly": "ماهانه",
+    "subscribe": "اشتراک",
+    "subscribing": "در حال اشتراک...",
+    "subscribed": "شما مشترک هستید",
+    "subscribedDescription": "طرح {{plan}} فعال است. ممنون از حمایت شما از Corpán.",
+    "manage": "مدیریت اشتراک"
+  },
+  "restore": {
+    "button": "بازیابی خریدها",
+    "restoring": "در حال بازیابی...",
+    "noPurchases": "خرید قبلی یافت نشد.",
+    "success": "{{count}} خرید بازیابی شد.",
+    "error": "بازیابی خریدها ناموفق بود."
   }
 }

@@ -98,7 +98,7 @@ export async function fetchProducts(
   try {
     const result = await invoke<{ products: StoreProduct[] }>(
       "plugin:iap|get_products",
-      { productIds, productType }
+      { payload: { productIds, productType } }
     )
     return result.products ?? []
   } catch (err) {
@@ -107,28 +107,89 @@ export async function fetchProducts(
   }
 }
 
+/** Wrap a promise with a timeout that rejects with TimeoutError after ms. */
+class TimeoutError extends Error {
+  constructor(ms: number) {
+    super(`Operation timed out after ${ms}ms`)
+    this.name = "TimeoutError"
+  }
+}
+
+function withTimeout<T>(p: Promise<T>, ms: number): Promise<T> {
+  return new Promise((resolve, reject) => {
+    const timer = setTimeout(() => reject(new TimeoutError(ms)), ms)
+    p.then(
+      (v) => {
+        clearTimeout(timer)
+        resolve(v)
+      },
+      (e) => {
+        clearTimeout(timer)
+        reject(e)
+      }
+    )
+  })
+}
+
+/** Heuristic: does this error look like the user cancelled the purchase? */
+function isCancellationError(err: unknown): boolean {
+  const msg = (err instanceof Error ? err.message : String(err)).toLowerCase()
+  return (
+    msg.includes("cancel") ||
+    msg.includes("userdenied") ||
+    msg.includes("user_denied")
+  )
+}
+
+/** Heuristic: user already owns / is already subscribed to this product. */
+function isAlreadyOwnedError(err: unknown): boolean {
+  const msg = (err instanceof Error ? err.message : String(err)).toLowerCase()
+  return (
+    msg.includes("already") ||
+    msg.includes("already_owned") ||
+    msg.includes("alreadypurchased") ||
+    msg.includes("already_subscribed")
+  )
+}
+
+/** Purchase flow outcome — distinguishes cancel vs timeout vs error. */
+export type PurchaseOutcome =
+  | { kind: "ok"; result: PurchaseResult }
+  | { kind: "cancelled" }
+  | { kind: "timeout" }
+  | { kind: "alreadyOwned" }
+  | { kind: "error"; message: string }
+
+/** 60s timeout for platform store response — plenty for legitimate flows. */
+const PURCHASE_TIMEOUT_MS = 60_000
+
 /**
  * Initiate a purchase via the platform store (triggers Face ID / biometric).
+ * Times out after 60s so the UI doesn't hang if StoreKit never responds.
  */
 export async function purchaseProduct(
   productId: string,
   productType: "subs" | "inapp" = "inapp"
-): Promise<PurchaseResult | null> {
-  if (!isTauriRuntime()) return null
+): Promise<PurchaseOutcome> {
+  if (!isTauriRuntime()) {
+    return { kind: "error", message: "IAP unavailable in this environment" }
+  }
 
   try {
-    const purchase = await invoke<{
-      id: string
-      productId: string
-      originalJson?: string
-      signature?: string
-      jwsRepresentation?: string
-      purchaseToken?: string
-    }>("plugin:iap|purchase", { productId, productType })
+    const purchase = await withTimeout(
+      invoke<{
+        id: string
+        productId: string
+        originalJson?: string
+        signature?: string
+        jwsRepresentation?: string
+        purchaseToken?: string
+      }>("plugin:iap|purchase", { payload: { productId, productType } }),
+      PURCHASE_TIMEOUT_MS
+    )
 
     const platform = await getPlatform()
 
-    // Build receipt from platform-specific fields
     const receipt =
       purchase.jwsRepresentation ?? // iOS: JWS signed transaction
       purchase.purchaseToken ?? // Android: purchase token
@@ -136,14 +197,32 @@ export async function purchaseProduct(
       ""
 
     return {
-      transactionId: purchase.id,
-      productId: purchase.productId,
-      receipt,
-      platform,
+      kind: "ok",
+      result: {
+        transactionId: purchase.id,
+        productId: purchase.productId,
+        receipt,
+        platform,
+      },
     }
   } catch (err) {
+    if (err instanceof TimeoutError) {
+      console.warn("[purchase] purchaseProduct timed out:", err.message)
+      return { kind: "timeout" }
+    }
+    if (isCancellationError(err)) {
+      console.warn("[purchase] purchaseProduct cancelled by user")
+      return { kind: "cancelled" }
+    }
+    if (isAlreadyOwnedError(err)) {
+      console.warn("[purchase] purchaseProduct reported already owned — treating as success")
+      return { kind: "alreadyOwned" }
+    }
     console.error("[purchase] purchaseProduct error:", err)
-    return null
+    return {
+      kind: "error",
+      message: err instanceof Error ? err.message : String(err),
+    }
   }
 }
 
@@ -160,7 +239,7 @@ export async function restorePurchases(): Promise<PurchaseResult[]> {
   try {
     const inappResult = await invoke<{ purchases: any[] }>(
       "plugin:iap|restore_purchases",
-      { productType: "inapp" }
+      { payload: { productType: "inapp" } }
     )
     for (const p of inappResult.purchases ?? []) {
       results.push({
@@ -178,7 +257,7 @@ export async function restorePurchases(): Promise<PurchaseResult[]> {
   try {
     const subsResult = await invoke<{ purchases: any[] }>(
       "plugin:iap|restore_purchases",
-      { productType: "subs" }
+      { payload: { productType: "subs" } }
     )
     for (const p of subsResult.purchases ?? []) {
       results.push({
@@ -202,7 +281,7 @@ export async function acknowledgePurchase(purchaseToken: string): Promise<void> 
   if (!isTauriRuntime()) return
 
   try {
-    await invoke("plugin:iap|acknowledge_purchase", { purchaseToken })
+    await invoke("plugin:iap|acknowledge_purchase", { payload: { purchaseToken } })
   } catch (err) {
     console.warn("[purchase] acknowledgePurchase error:", err)
   }
@@ -218,15 +297,24 @@ export async function getProductStatus(
   if (!isTauriRuntime()) return { owned: false }
 
   try {
-    const status = await invoke<{ owned: boolean; expiryDate?: string }>(
-      "plugin:iap|get_product_status",
-      { productId, productType }
+    // 10s timeout — at app startup we shouldn't block the UI waiting for StoreKit
+    const status = await withTimeout(
+      invoke<{ isOwned: boolean; expirationTime?: number }>(
+        "plugin:iap|get_product_status",
+        { payload: { productId, productType } }
+      ),
+      10_000
     )
     return {
-      owned: status.owned ?? false,
-      expiresAt: status.expiryDate,
+      owned: status.isOwned ?? false,
+      expiresAt: status.expirationTime
+        ? new Date(status.expirationTime).toISOString()
+        : undefined,
     }
-  } catch {
+  } catch (err) {
+    if (err instanceof TimeoutError) {
+      console.warn("[purchase] getProductStatus timed out for", productId)
+    }
     return { owned: false }
   }
 }
@@ -302,47 +390,82 @@ export const SUBSCRIPTION_MONTHLY = "corpan.sub.monthly"
 export const SUBSCRIPTION_ANNUAL = "corpan.sub.annual"
 
 /**
- * Full purchase flow: purchase → verify → update entitlements → return signed URL.
+ * Full purchase flow.
+ *
+ * Platform (StoreKit/PlayBilling) is the source of truth for entitlement.
+ * We set local entitlement as soon as the platform confirms the purchase.
+ * Backend verification runs to get a signed URL for premium content — a
+ * backend failure does NOT roll back the entitlement.
  */
 export async function purchaseAndVerify(
   productId: string,
   packId?: string,
   productType: "subs" | "inapp" = "inapp"
-): Promise<{ signedUrl?: string; error?: string }> {
-  // Step 1: Platform purchase
-  const purchase = await purchaseProduct(productId, productType)
-  if (!purchase) {
-    return { error: "Purchase cancelled or failed" }
-  }
+): Promise<{
+  signedUrl?: string
+  error?: string
+  cancelled?: boolean
+  alreadyOwned?: boolean
+  verifyFailed?: boolean
+}> {
+  const outcome = await purchaseProduct(productId, productType)
 
-  // Step 2: Verify with backend
-  const verification = await verifyPurchase(purchase, packId)
-  if (verification.status !== "verified") {
-    return { error: verification.error ?? "Verification failed" }
+  if (outcome.kind === "cancelled") return { cancelled: true }
+  if (outcome.kind === "timeout") {
+    return { error: "Purchase timed out. Please try again." }
   }
-
-  // Step 3: Acknowledge on Android
-  if (purchase.platform === "android" && purchase.receipt) {
-    await acknowledgePurchase(purchase.receipt)
+  if (outcome.kind === "alreadyOwned") {
+    // Platform says the user already has this. Trust it, refresh state.
+    await refreshEntitlements()
+    return { alreadyOwned: true }
   }
+  if (outcome.kind === "error") {
+    return { error: outcome.message || "Purchase failed" }
+  }
+  const purchase = outcome.result
 
-  // Step 4: Update local entitlements
+  // Platform confirmed purchase — update local entitlement immediately.
+  // (Don't gate on backend verification.)
   const store = useEntitlementStore.getState()
-
-  if (verification.subscriptionActive) {
+  if (productType === "subs") {
     const plan: SubscriptionPlan =
       productId === SUBSCRIPTION_ANNUAL ? "annual" : "monthly"
     store.setSubscription({
       active: true,
       plan,
-      expiresAt: verification.expiresAt ?? null,
+      expiresAt: null, // updated on next refreshEntitlements
       autoRenew: true,
     })
   } else {
     store.addPurchasedProduct(productId)
   }
-
   store.setLastRefreshed(Date.now())
+
+  // Acknowledge on Android (required within 3 days).
+  if (purchase.platform === "android" && purchase.receipt) {
+    await acknowledgePurchase(purchase.receipt)
+  }
+
+  // Backend verification — for signed URL (premium content) + server-side
+  // subscription tracking. Non-blocking for the entitlement itself.
+  const verification = await verifyPurchase(purchase, packId)
+  if (verification.status !== "verified") {
+    console.warn(
+      "[purchase] backend verification failed (entitlement still set locally):",
+      verification.error
+    )
+    return { verifyFailed: true }
+  }
+
+  // Prefer backend's expiry info if available.
+  if (productType === "subs" && verification.expiresAt) {
+    store.setSubscription({
+      active: true,
+      plan: productId === SUBSCRIPTION_ANNUAL ? "annual" : "monthly",
+      expiresAt: verification.expiresAt,
+      autoRenew: true,
+    })
+  }
 
   return { signedUrl: verification.signedUrl }
 }
@@ -373,6 +496,33 @@ export async function refreshEntitlements(): Promise<void> {
   }
 
   store.setLastRefreshed(Date.now())
+}
+
+/**
+ * Open the platform's native subscription management UI.
+ * iOS: Apple's subscription settings. Android: Play Store subscriptions.
+ */
+export async function manageSubscription(): Promise<void> {
+  const platform = await getPlatform()
+  let url: string
+  if (platform === "ios" || platform === "macos") {
+    url = "https://apps.apple.com/account/subscriptions"
+  } else if (platform === "android") {
+    url = "https://play.google.com/store/account/subscriptions"
+  } else {
+    return
+  }
+  try {
+    // Tauri's opener plugin opens URLs in the system's default handler,
+    // which on iOS redirects `apps.apple.com/account/subscriptions` into
+    // the App Store's native Manage Subscriptions screen.
+    const { openUrl } = await import("@tauri-apps/plugin-opener")
+    await openUrl(url)
+  } catch (err) {
+    console.error("[purchase] manageSubscription openUrl failed:", err)
+    // Fallback: regular browser open
+    if (typeof window !== "undefined") window.open(url, "_blank")
+  }
 }
 
 /**
