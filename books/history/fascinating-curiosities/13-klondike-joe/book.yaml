@@ -1,0 +1,23 @@
+book:
+  volume: 13
+  title: "Klondike Joe: The Canadian Who Saved a Queen"
+  subtitle: "The Gold Prospector Who Became a Freelance Spy"
+  target_pages: 80-90
+
+  core_mysteries:
+    primary:
+      - Joseph Whiteside Boyle left small-town Ontario for the Klondike Gold Rush, became one of the richest men in the Yukon, then abandoned his fortune to fight in World War I as a middle-aged volunteer
+      - In 1917-1918, Boyle conducted an unauthorized one-man diplomatic mission across revolutionary Russia and Romania, recovering the Romanian crown jewels and national archives from Bolshevik-held Odessa through direct negotiation
+      - Queen Marie of Romania credited Boyle with saving her country -- he received Romania's highest military honors and the nature of their relationship remains debated by historians
+    secondary:
+      - The Klondike Gold Rush as a crucible for unconventional operatives -- adventurers with extraordinary personal networks but no institutional loyalty
+      - Boyle's machine-gun section in the Canadian Expeditionary Force and his unauthorized transition from military officer to freelance diplomat
+      - The recovery of the Romanian treasury from Odessa -- improvised intelligence work with no institutional backing
+      - The blurred line between personal adventure, patriotic service, and romantic attachment in early twentieth-century intelligence work
+
+  key_scholarly_sources:
+    - "Leonard W. Taylor -- The Sourdough and the Queen: The Many Lives of Klondike Joe Boyle (1983); the most thorough biography"
+    - "William Rodney -- Joe Boyle: King of the Klondike (1974); earlier biographical treatment"
+    - "Diana Mandache -- Later Chapters of My Life: The Lost Memoir of Queen Marie of Romania (2004); Marie's own account"
+    - "Keith Jeffery -- MI6: The History of the Secret Intelligence Service 1909-1949 (2010); institutional context"
+    - "Christopher Andrew -- The Defence of the Realm: The Authorized History of MI5 (2009)"

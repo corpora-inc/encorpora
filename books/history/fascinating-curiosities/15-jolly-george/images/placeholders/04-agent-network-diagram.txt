@@ -1,0 +1,11 @@
+Style: Crosshatch pen illustration, diagram style, sepia tones
+Subject: Schematic diagram of the British intelligence networks in Russia, 1918
+Details: A network diagram showing the relationships between key British
+intelligence officers and their operations. Central nodes for Hill, Reilly,
+and Lockhart, with lines connecting to sub-networks of agents. Hill's node
+connected to military/transportation intelligence sources. Reilly's node
+connected to commercial cover operations. Lockhart's node connected to
+diplomatic channels. Dotted lines show communication paths. The Cheka shown
+as an opposing force with penetration arrows. Moscow and Petrograd labeled
+as geographic anchors. Clean, readable layout with period-appropriate typography.
+Aspect: Landscape, suitable for full-width 6x9 page

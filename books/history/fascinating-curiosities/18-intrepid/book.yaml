@@ -1,0 +1,24 @@
+book:
+  volume: 18
+  title: "Intrepid: William Stephenson"
+  subtitle: "The Quiet Canadian Who Built a Secret Empire"
+  target_pages: 80-90
+
+  core_mysteries:
+    primary:
+      - Winnipeg-born businessman appointed in 1940 to run British Security Coordination in New York -- the largest covert British intelligence operation ever conducted on American soil
+      - BSC operations (propaganda, espionage, sabotage, political manipulation) were illegal under American neutrality laws; Stephenson ran them from Rockefeller Center with no diplomatic immunity for the work he was actually doing
+      - BSC trained operatives at Camp X near Oshawa, Ontario, and helped establish the OSS, but the precise boundaries of Stephenson's contribution to American intelligence remain contested
+    secondary:
+      - The Stephenson myth -- A Man Called Intrepid (1976) by William Stevenson mixed documented fact with invention, and Naftali's "Intrepid's Last Deception" (1993) exposed fabrications that had entered the historical record
+      - BSC propaganda operations -- placing stories in American media, surveilling isolationists, manufacturing pro-intervention sentiment
+      - The Stephenson-Donovan relationship and the question of how much BSC shaped the founding of the OSS
+      - Camp X -- the secret training facility on the north shore of Lake Ontario
+
+  key_scholarly_sources:
+    - "H. Montgomery Hyde -- The Quiet Canadian (1962); the first account, written by a BSC insider, authorized but selective"
+    - "Thomas Troy -- Wild Bill and Intrepid (1996); CIA historian's careful reconstruction of the Stephenson-Donovan relationship"
+    - "Timothy Naftali -- Intrepid's Last Deception (1993); the revisionist article that exposed fabrications in the popular Stephenson legend"
+    - "Nicholas John Cull -- Selling War: The British Propaganda Campaign Against American Neutrality in World War II (1995); definitive study of BSC's propaganda operations"
+    - "David Stafford -- Camp X (1986); the most thorough account of the training facility"
+    - "Gill Bennett -- Churchill's Man of Mystery (2007); Desmond Morton biography that contextualizes Stephenson's role in Churchill's intelligence network"

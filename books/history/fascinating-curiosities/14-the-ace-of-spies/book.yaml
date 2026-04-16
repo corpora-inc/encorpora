@@ -1,0 +1,25 @@
+book:
+  volume: 14
+  title: "The Ace of Spies: Sidney Reilly"
+  subtitle: "The Man Who Invented Modern Espionage"
+  target_pages: 80-90
+
+  core_mysteries:
+    primary:
+      - Reilly's disputed identity -- born Sigmund Georgievich Rosenblum in the Russian Empire (Odessa or near Kherson, sources disagree), he used at least seven documented identities across four countries before his death
+      - In 1918, Reilly orchestrated a plot to overthrow the Bolshevik government in Moscow, working with Bruce Lockhart and George Hill -- the scope, seriousness, and proximity to success of this conspiracy remain debated
+      - The Trust -- the Soviet deception operation that lured Reilly back into Russia in 1925, leading to his capture, interrogation, and execution by the OGPU
+    secondary:
+      - Reilly's designation as Agent ST1 -- the first agent registered by the Secret Intelligence Service's station in New York
+      - The Reilly-Hill-Lockhart triangle in revolutionary Moscow and the contradictions in their separate accounts
+      - Multiple marriages conducted simultaneously across countries, combined with systematic financial fraud
+      - The Ian Fleming connection -- Fleming knew people who knew Reilly, and James Bond carries echoes of the legend
+      - The gap between the Robin Bruce Lockhart biography (1967), which built the legend, and Andrew Cook's revisionist account (2004), which dismantled parts of it
+
+  key_scholarly_sources:
+    - "Andrew Cook -- Ace of Spies: The True Story of Sidney Reilly (2004); the revisionist biography based on declassified files"
+    - "Robin Bruce Lockhart -- Reilly: Ace of Spies (1967); the biography that created the legend, son of Bruce Lockhart"
+    - "Keith Jeffery -- MI6: The History of the Secret Intelligence Service 1909-1949 (2010); authorized institutional history"
+    - "Christopher Andrew -- The Defence of the Realm: The Authorized History of MI5 (2009); domestic intelligence perspective"
+    - "Robert Service -- Spies and Commissars: Bolshevik Russia and the West (2011); the revolutionary context"
+    - "Richard Spence -- Trust No One: The Secret World of Sidney Reilly (2002); the most detailed treatment of Reilly's early life"

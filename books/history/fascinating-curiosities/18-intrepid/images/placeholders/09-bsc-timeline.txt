@@ -1,0 +1,4 @@
+Style: Crosshatch pen illustration, timeline diagram, warm sepia/earth tones
+Subject: Timeline of BSC operations 1940-1945, distinguishing documented events from disputed claims
+Details: Horizontal timeline from 1940 to 1945. Above the line: documented events (BSC established June 1940, Donovan visits UK summer 1940, COI July 1941, Camp X December 1941, OSS June 1942, BSC dissolved 1945). Below the line in lighter rendering: events claimed in A Man Called Intrepid but disputed or debunked by subsequent scholarship. Key world events (Fall of France, Pearl Harbor, D-Day) marked as reference points. The visual distinction between documented and disputed should be clear.
+Aspect: Full-page horizontal, suitable for 6x9

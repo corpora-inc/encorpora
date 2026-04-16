@@ -1,0 +1,4 @@
+Style: Crosshatch pen illustration, diagram style, warm sepia/earth tones
+Subject: The organizational relationship between BSC, OSS, and their parent structures
+Details: Two parallel columns -- British (left) and American (right). British side: Churchill at top, then SIS/SOE/Security Executive, then BSC in New York. American side: Roosevelt at top, then COI (1941) becoming OSS (1942). Arrows between BSC and OSS showing flows of intelligence, training, organizational models, and personnel exchanges. A timeline along the bottom: 1940 (BSC established), 1941 (COI/Camp X), 1942 (OSS), 1945 (both dissolved), 1947 (CIA). Clean and readable.
+Aspect: Full-page, suitable for 6x9
