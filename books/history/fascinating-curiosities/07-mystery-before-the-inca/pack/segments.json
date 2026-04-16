@@ -26,7 +26,7 @@
       "text": "At an altitude of 3,850 meters -- nearly thirteen thousand feet -- on a vast, treeless plain between the Andes and the shore of Lake Titicaca (tee-tee-KAH-kah), stand the ruins of one of the most extraordinary cities ever built.",
       "text_markdown": "At an altitude of 3,850 meters -- nearly thirteen thousand feet -- on a vast, treeless plain between the Andes and the shore of Lake Titicaca (tee-tee-KAH-kah), stand the ruins of one of the most extraordinary cities ever built.",
       "tts": {
-        "text": "At an altitude of 3,850 meters -- nearly thirteen thousand feet -- on a vast, treeless plain between the Andes and the shore of Lake Titicaca (tee-tee-KAH-kah), stand the ruins of one of the most extraordinary cities ever built.",
+        "text": "At an altitude of three thousand eight hundred fifty meters -- nearly thirteen thousand feet -- on a vast, treeless plain between the Andes and the shore of Lake Titicaca (tee-tee-KAH-kah), stand the ruins of one of the most extraordinary cities ever built.",
         "pause_after_ms": 2000,
         "repetition_penalty": 1.9
       }
@@ -106,7 +106,7 @@
       "text": "And yet, for over seven centuries -- from roughly 300 to 1000 CE -- a civilization flourished here.",
       "text_markdown": "And yet, for over seven centuries -- from roughly 300 to 1000 CE -- a civilization flourished here.",
       "tts": {
-        "text": "And yet, for over seven centuries -- from roughly 300 to 1000 CE -- a civilization flourished here.",
+        "text": "And yet, for over seven centuries -- from roughly three hundred to one thousand CE -- a civilization flourished here.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -138,7 +138,7 @@
       "text": "They carved monoliths and gateways from blocks of andesite and sandstone weighing up to 130 tons.",
       "text_markdown": "They carved monoliths and gateways from blocks of andesite and sandstone weighing up to 130 tons.",
       "tts": {
-        "text": "They carved monoliths and gateways from blocks of andesite and sandstone weighing up to 130 tons.",
+        "text": "They carved monoliths and gateways from blocks of andesite and sandstone weighing up to one hundred thirty tons.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -274,7 +274,7 @@
       "text": "It lies between the Eastern and Western Cordilleras of the Andes, at an average altitude of 3,700 meters, stretching across southern Peru, western Bolivia, northern Chile, and northwestern Argentina.",
       "text_markdown": "It lies between the Eastern and Western Cordilleras of the Andes, at an average altitude of 3,700 meters, stretching across southern Peru, western Bolivia, northern Chile, and northwestern Argentina.",
       "tts": {
-        "text": "It lies between the Eastern and Western Cordilleras of the Andes, at an average altitude of 3,700 meters, stretching across southern Peru, western Bolivia, northern Chile, and northwestern Argentina.",
+        "text": "It lies between the Eastern and Western Cordilleras of the Andes, at an average altitude of three thousand seven hundred meters, stretching across southern Peru, western Bolivia, northern Chile, and northwestern Argentina.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -290,7 +290,7 @@
       "text": "The air holds roughly 40 percent less oxygen than at sea level.",
       "text_markdown": "The air holds roughly 40 percent less oxygen than at sea level.",
       "tts": {
-        "text": "The air holds roughly 40 percent less oxygen than at sea level.",
+        "text": "The air holds roughly forty percent less oxygen than at sea level.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -306,7 +306,7 @@
       "text": "Temperatures swing wildly: a summer afternoon can reach 20 degrees Celsius, while the same night drops below freezing.",
       "text_markdown": "Temperatures swing wildly: a summer afternoon can reach 20 degrees Celsius, while the same night drops below freezing.",
       "tts": {
-        "text": "Temperatures swing wildly: a summer afternoon can reach 20 degrees Celsius, while the same night drops below freezing.",
+        "text": "Temperatures swing wildly: a summer afternoon can reach twenty degrees Celsius, while the same night drops below freezing.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -418,7 +418,7 @@
       "text": "It is the largest lake in South America by surface area -- over 8,300 square kilometers, roughly the size of Corsica -- and the highest navigable lake in the world, sitting at 3,812 meters above sea level.",
       "text_markdown": "It is the largest lake in South America by surface area -- over 8,300 square kilometers, roughly the size of Corsica -- and the highest navigable lake in the world, sitting at 3,812 meters above sea level.",
       "tts": {
-        "text": "It is the largest lake in South America by surface area -- over 8,300 square kilometers, roughly the size of Corsica -- and the highest navigable lake in the world, sitting at 3,812 meters above sea level.",
+        "text": "It is the largest lake in South America by surface area -- over eight thousand three hundred square kilometers, roughly the size of Corsica -- and the highest navigable lake in the world, sitting at three thousand eight hundred twelve meters above sea level.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -498,7 +498,7 @@
       "text": "Tiwanaku's population at its peak -- roughly 500-800 CE -- is debated.",
       "text_markdown": "Tiwanaku's population at its peak -- roughly 500-800 CE -- is debated.",
       "tts": {
-        "text": "Tiwanaku's population at its peak -- roughly 500-800 CE -- is debated.",
+        "text": "Tiwanaku's population at its peak -- roughly five hundred to eight hundred CE -- is debated.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -514,7 +514,7 @@
       "text": "Estimates for the urban core range from 10,000 to 40,000 people.",
       "text_markdown": "Estimates for the urban core range from 10,000 to 40,000 people.",
       "tts": {
-        "text": "Estimates for the urban core range from 10,000 to 40,000 people.",
+        "text": "Estimates for the urban core range from ten thousand to forty thousand people.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -530,7 +530,7 @@
       "text": "The surrounding Tiwanaku Valley supported a much larger population -- Alan Kolata has estimated up to 365,000 people in the greater Tiwanaku region, sustained by the intensive agricultural system that will be discussed in Part Two.",
       "text_markdown": "The surrounding Tiwanaku Valley supported a much larger population -- Alan Kolata has estimated up to 365,000 people in the greater Tiwanaku region, sustained by the intensive agricultural system that will be discussed in Part Two.",
       "tts": {
-        "text": "The surrounding Tiwanaku Valley supported a much larger population -- Alan Kolata has estimated up to 365,000 people in the greater Tiwanaku region, sustained by the intensive agricultural system that will be discussed in Part Two.",
+        "text": "The surrounding Tiwanaku Valley supported a much larger population -- Alan Kolata has estimated up to three hundred sixty five thousand people in the greater Tiwanaku region, sustained by the intensive agricultural system that will be discussed in Part Two.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -578,7 +578,7 @@
       "text": "The principal structures include the Akapana (ah-kah-PAH-nah), a massive stepped pyramid roughly 17 meters high and 200 meters on a side, originally faced with sandstone blocks and surmounted by a sunken court at its summit; the Kalasasaya (kah-lah-sah-SAH-yah), a large rectangular platform enclosure with walls of upright sandstone pillars interspersed with smaller blocks, measuring roughly 120 by 130 meters; the Semi-Subterranean Temple, a sunken court whose walls are decorated with carved stone heads protruding from the masonry; and Puma Punku (POO-mah POON-koo), a separate temple complex roughly one kilometer southwest of the main ceremonial center, whose precision-cut stonework is among the most remarkable in the ancient world.",
       "text_markdown": "The principal structures include the Akapana (ah-kah-PAH-nah), a massive stepped pyramid roughly 17 meters high and 200 meters on a side, originally faced with sandstone blocks and surmounted by a sunken court at its summit; the Kalasasaya (kah-lah-sah-SAH-yah), a large rectangular platform enclosure with walls of upright sandstone pillars interspersed with smaller blocks, measuring roughly 120 by 130 meters; the Semi-Subterranean Temple, a sunken court whose walls are decorated with carved stone heads protruding from the masonry; and Puma Punku (POO-mah POON-koo), a separate temple complex roughly one kilometer southwest of the main ceremonial center, whose precision-cut stonework is among the most remarkable in the ancient world.",
       "tts": {
-        "text": "The principal structures include the Akapana (ah-kah-PAH-nah), a massive stepped pyramid roughly 17 meters high and 200 meters on a side, originally faced with sandstone blocks and surmounted by a sunken court at its summit; the Kalasasaya (kah-lah-sah-SAH-yah), a large rectangular platform enclosure with walls of upright sandstone pillars interspersed with smaller blocks, measuring roughly 120 by 130 meters; the Semi-Subterranean Temple, a sunken court whose walls are decorated with carved stone heads protruding from the masonry; and Puma Punku (POO-mah POON-koo), a separate temple complex roughly one kilometer southwest of the main ceremonial center, whose precision-cut stonework is among the most remarkable in the ancient world.",
+        "text": "The principal structures include the Akapana (ah-kah-PAH-nah), a massive stepped pyramid roughly seventeen meters high and two hundred meters on a side, originally faced with sandstone blocks and surmounted by a sunken court at its summit; the Kalasasaya (kah-lah-sah-SAH-yah), a large rectangular platform enclosure with walls of upright sandstone pillars interspersed with smaller blocks, measuring roughly one hundred twenty by one hundred thirty meters; the Semi-Subterranean Temple, a sunken court whose walls are decorated with carved stone heads protruding from the masonry; and Puma Punku (POO-mah POON-koo), a separate temple complex roughly one kilometer southwest of the main ceremonial center, whose precision-cut stonework is among the most remarkable in the ancient world.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.8
       }
@@ -676,7 +676,7 @@
       "text": "Totora reed boats, still used on the lake today, can be built large enough to carry substantial loads -- the Norwegian explorer Thor Heyerdahl (HAY-er-dahl) demonstrated this in the 1970s with his reed boat experiments.",
       "text_markdown": "Totora reed boats, still used on the lake today, can be built large enough to carry substantial loads -- the Norwegian explorer Thor Heyerdahl (HAY-er-dahl) demonstrated this in the 1970s with his reed boat experiments.",
       "tts": {
-        "text": "Totora reed boats, still used on the lake today, can be built large enough to carry substantial loads -- the Norwegian explorer Thor Heyerdahl (HAY-er-dahl) demonstrated this in the 1970s with his reed boat experiments.",
+        "text": "Totora reed boats, still used on the lake today, can be built large enough to carry substantial loads -- the Norwegian explorer Thor Heyerdahl (HAY-er-dahl) demonstrated this in the nineteen seventies with his reed boat experiments.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -820,7 +820,7 @@
       "text": "It is a rectangular court sunk into the ground, roughly 28 by 26 meters, whose walls are inset with over 170 carved stone heads -- human faces in a variety of styles, some realistic, some stylized, some apparently depicting individuals from different ethnic groups.",
       "text_markdown": "It is a rectangular court sunk into the ground, roughly 28 by 26 meters, whose walls are inset with over 170 carved stone heads -- human faces in a variety of styles, some realistic, some stylized, some apparently depicting individuals from different ethnic groups.",
       "tts": {
-        "text": "It is a rectangular court sunk into the ground, roughly 28 by 26 meters, whose walls are inset with over 170 carved stone heads -- human faces in a variety of styles, some realistic, some stylized, some apparently depicting individuals from different ethnic groups.",
+        "text": "It is a rectangular court sunk into the ground, roughly twenty eight by twenty six meters, whose walls are inset with over one hundred seventy carved stone heads -- human faces in a variety of styles, some realistic, some stylized, some apparently depicting individuals from different ethnic groups.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -868,7 +868,7 @@
       "text": "At the court's center stands the Bennett Monolith, a massive carved figure over seven meters tall, discovered in 1932 by the American archaeologist Wendell Bennett.",
       "text_markdown": "At the court's center stands the Bennett Monolith, a massive carved figure over seven meters tall, discovered in 1932 by the American archaeologist Wendell Bennett.",
       "tts": {
-        "text": "At the court's center stands the Bennett Monolith, a massive carved figure over seven meters tall, discovered in 1932 by the American archaeologist Wendell Bennett.",
+        "text": "At the court's center stands the Bennett Monolith, a massive carved figure over seven meters tall, discovered in nineteen thirty two by the American archaeologist Wendell Bennett.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -964,7 +964,7 @@
       "text": "John Janusek, in his 2004 study Identity and Power in the Ancient Andes, argued that Tiwanaku was not a single unified culture but a complex assemblage of different social groups -- ethnic communities, occupational specialists, religious orders -- brought together in a shared urban space but maintaining distinct identities.",
       "text_markdown": "John Janusek, in his 2004 study *Identity and Power in the Ancient Andes*, argued that Tiwanaku was not a single unified culture but a complex assemblage of different social groups -- ethnic communities, occupational specialists, religious orders -- brought together in a shared urban space but maintaining distinct identities.",
       "tts": {
-        "text": "John Janusek, in his 2004 study Identity and Power in the Ancient Andes, argued that Tiwanaku was not a single unified culture but a complex assemblage of different social groups -- ethnic communities, occupational specialists, religious orders -- brought together in a shared urban space but maintaining distinct identities.",
+        "text": "John Janusek, in his two thousand four study Identity and Power in the Ancient Andes, argued that Tiwanaku was not a single unified culture but a complex assemblage of different social groups -- ethnic communities, occupational specialists, religious orders -- brought together in a shared urban space but maintaining distinct identities.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -1460,7 +1460,7 @@
       "text": "The problem echoes Teotihuacan, discussed in Volume 5: a major urban center whose political structure remains invisible because the rulers left no personal marks.",
       "text_markdown": "The problem echoes Teotihuacan, discussed in Volume 5: a major urban center whose political structure remains invisible because the rulers left no personal marks.",
       "tts": {
-        "text": "The problem echoes Teotihuacan, discussed in Volume 5: a major urban center whose political structure remains invisible because the rulers left no personal marks.",
+        "text": "The problem echoes Teotihuacan, discussed in Volume five: a major urban center whose political structure remains invisible because the rulers left no personal marks.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -2002,7 +2002,7 @@
       "text": "Similar frontal figures holding staffs appear in Andean art as early as the Chavin (chah-VEEN) culture, roughly 900-200 BCE -- over a thousand years before Tiwanaku's peak.",
       "text_markdown": "Similar frontal figures holding staffs appear in Andean art as early as the Chavin (chah-VEEN) culture, roughly 900-200 BCE -- over a thousand years before Tiwanaku's peak.",
       "tts": {
-        "text": "Similar frontal figures holding staffs appear in Andean art as early as the Chavin (chah-VEEN) culture, roughly 900-200 BCE -- over a thousand years before Tiwanaku's peak.",
+        "text": "Similar frontal figures holding staffs appear in Andean art as early as the Chavin (chah-VEEN) culture, roughly nine hundred to two hundred BCE -- over a thousand years before Tiwanaku's peak.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -2146,7 +2146,7 @@
       "text": "Several scholars have noted that 48 is a significant number in calendrical terms: it is the product of 12 and 4, and it can also be divided into groups that correspond to agricultural seasons and solar positions.",
       "text_markdown": "Several scholars have noted that 48 is a significant number in calendrical terms: it is the product of 12 and 4, and it can also be divided into groups that correspond to agricultural seasons and solar positions.",
       "tts": {
-        "text": "Several scholars have noted that 48 is a significant number in calendrical terms: it is the product of 12 and 4, and it can also be divided into groups that correspond to agricultural seasons and solar positions.",
+        "text": "Several scholars have noted that forty eight is a significant number in calendrical terms: it is the product of twelve and four, and it can also be divided into groups that correspond to agricultural seasons and solar positions.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -2334,7 +2334,7 @@
       "text": "The site consists of a massive terraced platform, originally measuring roughly 167 by 117 meters, constructed from enormous blocks of red sandstone and gray andesite.",
       "text_markdown": "The site consists of a massive terraced platform, originally measuring roughly 167 by 117 meters, constructed from enormous blocks of red sandstone and gray andesite.",
       "tts": {
-        "text": "The site consists of a massive terraced platform, originally measuring roughly 167 by 117 meters, constructed from enormous blocks of red sandstone and gray andesite.",
+        "text": "The site consists of a massive terraced platform, originally measuring roughly one hundred sixty seven by one hundred seventeen meters, constructed from enormous blocks of red sandstone and gray andesite.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -2350,7 +2350,7 @@
       "text": "The largest single block at the site weighs an estimated 130 tons.",
       "text_markdown": "The largest single block at the site weighs an estimated 130 tons.",
       "tts": {
-        "text": "The largest single block at the site weighs an estimated 130 tons.",
+        "text": "The largest single block at the site weighs an estimated one hundred thirty tons.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -2720,7 +2720,7 @@
       "text": "Alexei Vranich's excavations at Puma Punku in the early 2000s revised scholarly understanding of the site.",
       "text_markdown": "Alexei Vranich's excavations at Puma Punku in the early 2000s revised scholarly understanding of the site.",
       "tts": {
-        "text": "Alexei Vranich's excavations at Puma Punku in the early 2000s revised scholarly understanding of the site.",
+        "text": "Alexei Vranich's excavations at Puma Punku in the early twenty hundreds revised scholarly understanding of the site.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -2864,7 +2864,7 @@
       "text": "The movement of a single 130-ton block would have required hundreds of workers, working in shifts, over a period of weeks or months.",
       "text_markdown": "The movement of a single 130-ton block would have required hundreds of workers, working in shifts, over a period of weeks or months.",
       "tts": {
-        "text": "The movement of a single 130-ton block would have required hundreds of workers, working in shifts, over a period of weeks or months.",
+        "text": "The movement of a single one hundred thirty-ton block would have required hundreds of workers, working in shifts, over a period of weeks or months.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -3216,7 +3216,7 @@
       "text": "Vranich's radiocarbon dates suggested that the construction began earlier than previously thought, possibly as early as 600 CE, and continued over several centuries.",
       "text_markdown": "Vranich's radiocarbon dates suggested that the construction began earlier than previously thought, possibly as early as 600 CE, and continued over several centuries.",
       "tts": {
-        "text": "Vranich's radiocarbon dates suggested that the construction began earlier than previously thought, possibly as early as 600 CE, and continued over several centuries.",
+        "text": "Vranich's radiocarbon dates suggested that the construction began earlier than previously thought, possibly as early as six hundred CE, and continued over several centuries.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -3706,7 +3706,7 @@
       "text": "In the 1980s, the archaeologist Clark Erickson, working with Alan Kolata and local Aymara (ay-MAH-rah) farmers near the village of Lakaya, reconstructed a section of ancient raised fields using traditional techniques.",
       "text_markdown": "In the 1980s, the archaeologist Clark Erickson, working with Alan Kolata and local Aymara (ay-MAH-rah) farmers near the village of Lakaya, reconstructed a section of ancient raised fields using traditional techniques.",
       "tts": {
-        "text": "In the 1980s, the archaeologist Clark Erickson, working with Alan Kolata and local Aymara (ay-MAH-rah) farmers near the village of Lakaya, reconstructed a section of ancient raised fields using traditional techniques.",
+        "text": "In the nineteen eighties, the archaeologist Clark Erickson, working with Alan Kolata and local Aymara (ay-MAH-rah) farmers near the village of Lakaya, reconstructed a section of ancient raised fields using traditional techniques.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -3818,7 +3818,7 @@
       "text": "Erickson and Kolata promoted the idea of reviving the raised field system as a development strategy for Altiplano communities, and several projects were initiated in the 1980s and 1990s to reconstruct raised fields and return them to production.",
       "text_markdown": "Erickson and Kolata promoted the idea of reviving the raised field system as a development strategy for Altiplano communities, and several projects were initiated in the 1980s and 1990s to reconstruct raised fields and return them to production.",
       "tts": {
-        "text": "Erickson and Kolata promoted the idea of reviving the raised field system as a development strategy for Altiplano communities, and several projects were initiated in the 1980s and 1990s to reconstruct raised fields and return them to production.",
+        "text": "Erickson and Kolata promoted the idea of reviving the raised field system as a development strategy for Altiplano communities, and several projects were initiated in the nineteen eighties and nineteen nineties to reconstruct raised fields and return them to production.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -3962,7 +3962,7 @@
       "text": "Satellite imagery and archaeological survey have identified remnants of raised fields covering approximately 120 square kilometers in the Tiwanaku Valley alone -- a landscape of organized agricultural infrastructure that, at its peak, would have supported the entire urban population of Tiwanaku and its surrounding settlements.",
       "text_markdown": "Satellite imagery and archaeological survey have identified remnants of raised fields covering approximately 120 square kilometers in the Tiwanaku Valley alone -- a landscape of organized agricultural infrastructure that, at its peak, would have supported the entire urban population of Tiwanaku and its surrounding settlements.",
       "tts": {
-        "text": "Satellite imagery and archaeological survey have identified remnants of raised fields covering approximately 120 square kilometers in the Tiwanaku Valley alone -- a landscape of organized agricultural infrastructure that, at its peak, would have supported the entire urban population of Tiwanaku and its surrounding settlements.",
+        "text": "Satellite imagery and archaeological survey have identified remnants of raised fields covering approximately one hundred twenty square kilometers in the Tiwanaku Valley alone -- a landscape of organized agricultural infrastructure that, at its peak, would have supported the entire urban population of Tiwanaku and its surrounding settlements.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -4042,7 +4042,7 @@
       "text": "Modern yields from conventional farming average roughly 1.4 tons of potatoes per hectare.",
       "text_markdown": "Modern yields from conventional farming average roughly 1.4 tons of potatoes per hectare.",
       "tts": {
-        "text": "Modern yields from conventional farming average roughly 1.4 tons of potatoes per hectare.",
+        "text": "Modern yields from conventional farming average roughly one.four tons of potatoes per hectare.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -4170,7 +4170,7 @@
       "text": "Measurements taken during the Lakaya experiments showed that temperatures on the raised field surfaces were 2 to 4 degrees Celsius higher than on adjacent flat ground.",
       "text_markdown": "Measurements taken during the Lakaya experiments showed that temperatures on the raised field surfaces were 2 to 4 degrees Celsius higher than on adjacent flat ground.",
       "tts": {
-        "text": "Measurements taken during the Lakaya experiments showed that temperatures on the raised field surfaces were 2 to 4 degrees Celsius higher than on adjacent flat ground.",
+        "text": "Measurements taken during the Lakaya experiments showed that temperatures on the raised field surfaces were two to four degrees Celsius higher than on adjacent flat ground.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -4282,7 +4282,7 @@
       "text": "The raised field system was abandoned after Tiwanaku's collapse around 1000 CE.",
       "text_markdown": "The raised field system was abandoned after Tiwanaku's collapse around 1000 CE.",
       "tts": {
-        "text": "The raised field system was abandoned after Tiwanaku's collapse around 1000 CE.",
+        "text": "The raised field system was abandoned after Tiwanaku's collapse around one thousand CE.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -4362,7 +4362,7 @@
       "text": "The potato, domesticated in the Lake Titicaca region around 8000 BCE, is one of the world's most important crops -- today it feeds over a billion people.",
       "text_markdown": "The potato, domesticated in the Lake Titicaca region around 8000 BCE, is one of the world's most important crops -- today it feeds over a billion people.",
       "tts": {
-        "text": "The potato, domesticated in the Lake Titicaca region around 8000 BCE, is one of the world's most important crops -- today it feeds over a billion people.",
+        "text": "The potato, domesticated in the Lake Titicaca region around eighty hundred BCE, is one of the world's most important crops -- today it feeds over a billion people.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -4538,7 +4538,7 @@
       "text": "The llama, domesticated from the wild guanaco (gwah-NAH-koh) around 4500 BCE, served as a pack animal, a source of meat, and a source of coarse wool.",
       "text_markdown": "The llama, domesticated from the wild guanaco (gwah-NAH-koh) around 4500 BCE, served as a pack animal, a source of meat, and a source of coarse wool.",
       "tts": {
-        "text": "The llama, domesticated from the wild guanaco (gwah-NAH-koh) around 4500 BCE, served as a pack animal, a source of meat, and a source of coarse wool.",
+        "text": "The llama, domesticated from the wild guanaco (gwah-NAH-koh) around forty five hundred BCE, served as a pack animal, a source of meat, and a source of coarse wool.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.8
       }
@@ -4570,7 +4570,7 @@
       "text": "Llama and alpaca herding was practiced at the highest altitudes, above the agricultural zone, where the animals grazed on the sparse grasses of the puna (POO-nah) -- the highest habitable zone of the Andes, between roughly 4,000 and 5,000 meters.",
       "text_markdown": "Llama and alpaca herding was practiced at the highest altitudes, above the agricultural zone, where the animals grazed on the sparse grasses of the *puna* (POO-nah) -- the highest habitable zone of the Andes, between roughly 4,000 and 5,000 meters.",
       "tts": {
-        "text": "Llama and alpaca herding was practiced at the highest altitudes, above the agricultural zone, where the animals grazed on the sparse grasses of the puna (POO-nah) -- the highest habitable zone of the Andes, between roughly 4,000 and 5,000 meters.",
+        "text": "Llama and alpaca herding was practiced at the highest altitudes, above the agricultural zone, where the animals grazed on the sparse grasses of the puna (POO-nah) -- the highest habitable zone of the Andes, between roughly four thousand and five thousand meters.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.8
       }
@@ -4602,7 +4602,7 @@
       "text": "Quinoa, domesticated in the Andes around 3000 BCE, is another Andean crop that has recently gained global recognition.",
       "text_markdown": "Quinoa, domesticated in the Andes around 3000 BCE, is another Andean crop that has recently gained global recognition.",
       "tts": {
-        "text": "Quinoa, domesticated in the Andes around 3000 BCE, is another Andean crop that has recently gained global recognition.",
+        "text": "Quinoa, domesticated in the Andes around thirty hundred BCE, is another Andean crop that has recently gained global recognition.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -4886,7 +4886,7 @@
       "text": "A community based at four thousand meters on the Altiplano might maintain colonies at lower altitudes to grow maize (which does not mature above about 3,400 meters), cotton, and coca (the source of cocaine, but in pre-Columbian times a mild stimulant chewed as a leaf, essential for life at altitude because it reduces the effects of altitude sickness).",
       "text_markdown": "A community based at four thousand meters on the Altiplano might maintain colonies at lower altitudes to grow maize (which does not mature above about 3,400 meters), cotton, and coca (the source of cocaine, but in pre-Columbian times a mild stimulant chewed as a leaf, essential for life at altitude because it reduces the effects of altitude sickness).",
       "tts": {
-        "text": "A community based at four thousand meters on the Altiplano might maintain colonies at lower altitudes to grow maize (which does not mature above about 3,400 meters), cotton, and coca (the source of cocaine, but in pre-Columbian times a mild stimulant chewed as a leaf, essential for life at altitude because it reduces the effects of altitude sickness).",
+        "text": "A community based at four thousand meters on the Altiplano might maintain colonies at lower altitudes to grow maize (which does not mature above about three thousand four hundred meters), cotton, and coca (the source of cocaine, but in pre-Columbian times a mild stimulant chewed as a leaf, essential for life at altitude because it reduces the effects of altitude sickness).",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -4968,7 +4968,7 @@
       "text": "The Omo site in the Moquegua (moh-KEH-gwah) Valley of southern Peru, roughly three hundred kilometers southwest of Tiwanaku and at an altitude of only 1,100 meters, contains Tiwanaku-style architecture, pottery, and burial practices that indicate a permanent Tiwanaku community -- not merely a trade post but a colony, with families living, working, and burying their dead in a landscape far removed from the Altiplano.",
       "text_markdown": "The Omo site in the Moquegua (moh-KEH-gwah) Valley of southern Peru, roughly three hundred kilometers southwest of Tiwanaku and at an altitude of only 1,100 meters, contains Tiwanaku-style architecture, pottery, and burial practices that indicate a permanent Tiwanaku community -- not merely a trade post but a colony, with families living, working, and burying their dead in a landscape far removed from the Altiplano.",
       "tts": {
-        "text": "The Omo site in the Moquegua (moh-KEH-gwah) Valley of southern Peru, roughly three hundred kilometers southwest of Tiwanaku and at an altitude of only 1,100 meters, contains Tiwanaku-style architecture, pottery, and burial practices that indicate a permanent Tiwanaku community -- not merely a trade post but a colony, with families living, working, and burying their dead in a landscape far removed from the Altiplano.",
+        "text": "The Omo site in the Moquegua (moh-KEH-gwah) Valley of southern Peru, roughly three hundred kilometers southwest of Tiwanaku and at an altitude of only one thousand one hundred meters, contains Tiwanaku-style architecture, pottery, and burial practices that indicate a permanent Tiwanaku community -- not merely a trade post but a colony, with families living, working, and burying their dead in a landscape far removed from the Altiplano.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -5840,7 +5840,7 @@
       "text": "Wari emerged around 600 CE and reached its peak between 700 and 1000 CE -- a timeline that overlaps almost exactly with Tiwanaku's floruit.",
       "text_markdown": "Wari emerged around 600 CE and reached its peak between 700 and 1000 CE -- a timeline that overlaps almost exactly with Tiwanaku's floruit.",
       "tts": {
-        "text": "Wari emerged around 600 CE and reached its peak between 700 and 1000 CE -- a timeline that overlaps almost exactly with Tiwanaku's floruit.",
+        "text": "Wari emerged around six hundred CE and reached its peak between seven hundred and one thousand CE -- a timeline that overlaps almost exactly with Tiwanaku's floruit.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -5856,7 +5856,7 @@
       "text": "The Wari capital, located near Ayacucho at an altitude of roughly 2,800 meters, covered over fifteen square kilometers and may have housed 20,000 to 40,000 people.",
       "text_markdown": "The Wari capital, located near Ayacucho at an altitude of roughly 2,800 meters, covered over fifteen square kilometers and may have housed 20,000 to 40,000 people.",
       "tts": {
-        "text": "The Wari capital, located near Ayacucho at an altitude of roughly 2,800 meters, covered over fifteen square kilometers and may have housed 20,000 to 40,000 people.",
+        "text": "The Wari capital, located near Ayacucho at an altitude of roughly two thousand eight hundred meters, covered over fifteen square kilometers and may have housed twenty thousand to forty thousand people.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -5904,7 +5904,7 @@
       "text": "Its core area covers roughly 15 square kilometers of terraced hillside, with massive stone walls enclosing complexes of rooms, plazas, and corridors.",
       "text_markdown": "Its core area covers roughly 15 square kilometers of terraced hillside, with massive stone walls enclosing complexes of rooms, plazas, and corridors.",
       "tts": {
-        "text": "Its core area covers roughly 15 square kilometers of terraced hillside, with massive stone walls enclosing complexes of rooms, plazas, and corridors.",
+        "text": "Its core area covers roughly fifteen square kilometers of terraced hillside, with massive stone walls enclosing complexes of rooms, plazas, and corridors.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -6080,7 +6080,7 @@
       "text": "Both employed a distinctive, angular artistic style that scholars call the \"Middle Horizon\" style (the Middle Horizon being the archaeological period from roughly 600 to 1000 CE, corresponding to the period of Wari and Tiwanaku expansion).",
       "text_markdown": "Both employed a distinctive, angular artistic style that scholars call the \"Middle Horizon\" style (the Middle Horizon being the archaeological period from roughly 600 to 1000 CE, corresponding to the period of Wari and Tiwanaku expansion).",
       "tts": {
-        "text": "Both employed a distinctive, angular artistic style that scholars call the \"Middle Horizon\" style (the Middle Horizon being the archaeological period from roughly 600 to 1000 CE, corresponding to the period of Wari and Tiwanaku expansion).",
+        "text": "Both employed a distinctive, angular artistic style that scholars call the \"Middle Horizon\" style (the Middle Horizon being the archaeological period from roughly six hundred to one thousand CE, corresponding to the period of Wari and Tiwanaku expansion).",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -6322,7 +6322,7 @@
       "text": "Cerro Baul is a flat-topped mountain, rising 600 meters above the valley floor, on which the Wari established an administrative center -- a planned settlement with D-shaped structures, storage facilities, and a brewery capable of producing large quantities of chicha for ritual feasting.",
       "text_markdown": "Cerro Baul is a flat-topped mountain, rising 600 meters above the valley floor, on which the Wari established an administrative center -- a planned settlement with D-shaped structures, storage facilities, and a brewery capable of producing large quantities of chicha for ritual feasting.",
       "tts": {
-        "text": "Cerro Baul is a flat-topped mountain, rising 600 meters above the valley floor, on which the Wari established an administrative center -- a planned settlement with D-shaped structures, storage facilities, and a brewery capable of producing large quantities of chicha for ritual feasting.",
+        "text": "Cerro Baul is a flat-topped mountain, rising six hundred meters above the valley floor, on which the Wari established an administrative center -- a planned settlement with D-shaped structures, storage facilities, and a brewery capable of producing large quantities of chicha for ritual feasting.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -6562,7 +6562,7 @@
       "text": "The finest examples -- tapestries woven from alpaca wool and cotton, dyed in vivid reds, blues, yellows, and greens -- achieve over 200 threads per centimeter, a density that exceeds most medieval European weaving.",
       "text_markdown": "The finest examples -- tapestries woven from alpaca wool and cotton, dyed in vivid reds, blues, yellows, and greens -- achieve over 200 threads per centimeter, a density that exceeds most medieval European weaving.",
       "tts": {
-        "text": "The finest examples -- tapestries woven from alpaca wool and cotton, dyed in vivid reds, blues, yellows, and greens -- achieve over 200 threads per centimeter, a density that exceeds most medieval European weaving.",
+        "text": "The finest examples -- tapestries woven from alpaca wool and cotton, dyed in vivid reds, blues, yellows, and greens -- achieve over two hundred threads per centimeter, a density that exceeds most medieval European weaving.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -6690,7 +6690,7 @@
       "text": "The Inca would later build their famous qollqa (KOHL-kah) storehouses on a much larger scale -- over 2,500 storerooms at the site of Huanuco Pampa alone -- but the concept of state-managed storage originated with the Wari (and possibly with Tiwanaku, though the evidence is less clear).",
       "text_markdown": "The Inca would later build their famous *qollqa* (KOHL-kah) storehouses on a much larger scale -- over 2,500 storerooms at the site of Huanuco Pampa alone -- but the concept of state-managed storage originated with the Wari (and possibly with Tiwanaku, though the evidence is less clear).",
       "tts": {
-        "text": "The Inca would later build their famous qollqa (KOHL-kah) storehouses on a much larger scale -- over 2,500 storerooms at the site of Huanuco Pampa alone -- but the concept of state-managed storage originated with the Wari (and possibly with Tiwanaku, though the evidence is less clear).",
+        "text": "The Inca would later build their famous qollqa (KOHL-kah) storehouses on a much larger scale -- over two thousand five hundred storerooms at the site of Huanuco Pampa alone -- but the concept of state-managed storage originated with the Wari (and possibly with Tiwanaku, though the evidence is less clear).",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -6798,7 +6798,7 @@
       "text": "Around 1000 CE, Tiwanaku collapsed.",
       "text_markdown": "Around 1000 CE, Tiwanaku collapsed.",
       "tts": {
-        "text": "Around 1000 CE, Tiwanaku collapsed.",
+        "text": "Around one thousand CE, Tiwanaku collapsed.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -6910,7 +6910,7 @@
       "text": "Ice cores extracted from the Quelccaya (kehl-KAH-yah) glacier in the Peruvian Andes -- one of the most important paleoclimate records in the Southern Hemisphere -- show a dramatic reduction in precipitation beginning around 1000 CE.",
       "text_markdown": "Ice cores extracted from the Quelccaya (kehl-KAH-yah) glacier in the Peruvian Andes -- one of the most important paleoclimate records in the Southern Hemisphere -- show a dramatic reduction in precipitation beginning around 1000 CE.",
       "tts": {
-        "text": "Ice cores extracted from the Quelccaya (kehl-KAH-yah) glacier in the Peruvian Andes -- one of the most important paleoclimate records in the Southern Hemisphere -- show a dramatic reduction in precipitation beginning around 1000 CE.",
+        "text": "Ice cores extracted from the Quelccaya (kehl-KAH-yah) glacier in the Peruvian Andes -- one of the most important paleoclimate records in the Southern Hemisphere -- show a dramatic reduction in precipitation beginning around one thousand CE.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -7200,7 +7200,7 @@
       "text": "After approximately 1000 CE, the maintenance stopped.",
       "text_markdown": "After approximately 1000 CE, the maintenance stopped.",
       "tts": {
-        "text": "After approximately 1000 CE, the maintenance stopped.",
+        "text": "After approximately one thousand CE, the maintenance stopped.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -7504,7 +7504,7 @@
       "text": "The period from approximately 1000 to 1400 CE is known in Andean archaeology as the Late Intermediate Period -- a time of political fragmentation, regional autonomy, and, in some areas, conflict.",
       "text_markdown": "The period from approximately 1000 to 1400 CE is known in Andean archaeology as the Late Intermediate Period -- a time of political fragmentation, regional autonomy, and, in some areas, conflict.",
       "tts": {
-        "text": "The period from approximately 1000 to 1400 CE is known in Andean archaeology as the Late Intermediate Period -- a time of political fragmentation, regional autonomy, and, in some areas, conflict.",
+        "text": "The period from approximately one thousand to fourteen hundred CE is known in Andean archaeology as the Late Intermediate Period -- a time of political fragmentation, regional autonomy, and, in some areas, conflict.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -8016,7 +8016,7 @@
       "text": "The Spanish, arriving in the 1530s, found Tiwanaku already in ruins.",
       "text_markdown": "The Spanish, arriving in the 1530s, found Tiwanaku already in ruins.",
       "tts": {
-        "text": "The Spanish, arriving in the 1530s, found Tiwanaku already in ruins.",
+        "text": "The Spanish, arriving in the fifteen thirties, found Tiwanaku already in ruins.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -8032,7 +8032,7 @@
       "text": "The chronicler Pedro Cieza de Leon (see-EH-sah deh leh-OHN), writing in the 1550s, described the site as \"the oldest antiquity in all of Peru\" and marveled at its stonework.",
       "text_markdown": "The chronicler Pedro Cieza de Leon (see-EH-sah deh leh-OHN), writing in the 1550s, described the site as \"the oldest antiquity in all of Peru\" and marveled at its stonework.",
       "tts": {
-        "text": "The chronicler Pedro Cieza de Leon (see-EH-sah deh leh-OHN), writing in the 1550s, described the site as \"the oldest antiquity in all of Peru\" and marveled at its stonework.",
+        "text": "The chronicler Pedro Cieza de Leon (see-EH-sah deh leh-OHN), writing in the fifteen fifties, described the site as \"the oldest antiquity in all of Peru\" and marveled at its stonework.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -8232,7 +8232,7 @@
       "text": "The earliest complex societies in the Titicaca basin belong to the Chiripa (chee-REE-pah) culture, which flourished from roughly 1400 to 100 BCE on the southern shore of Lake Titicaca, near the site that would later become Tiwanaku.",
       "text_markdown": "The earliest complex societies in the Titicaca basin belong to the Chiripa (chee-REE-pah) culture, which flourished from roughly 1400 to 100 BCE on the southern shore of Lake Titicaca, near the site that would later become Tiwanaku.",
       "tts": {
-        "text": "The earliest complex societies in the Titicaca basin belong to the Chiripa (chee-REE-pah) culture, which flourished from roughly 1400 to 100 BCE on the southern shore of Lake Titicaca, near the site that would later become Tiwanaku.",
+        "text": "The earliest complex societies in the Titicaca basin belong to the Chiripa (chee-REE-pah) culture, which flourished from roughly fourteen hundred to one hundred BCE on the southern shore of Lake Titicaca, near the site that would later become Tiwanaku.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -8312,7 +8312,7 @@
       "text": "Charles Stanish, in his 2003 study Ancient Titicaca, traced the development of political complexity in the basin over several millennia.",
       "text_markdown": "Charles Stanish, in his 2003 study *Ancient Titicaca*, traced the development of political complexity in the basin over several millennia.",
       "tts": {
-        "text": "Charles Stanish, in his 2003 study Ancient Titicaca, traced the development of political complexity in the basin over several millennia.",
+        "text": "Charles Stanish, in his two thousand three study Ancient Titicaca, traced the development of political complexity in the basin over several millennia.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -8392,7 +8392,7 @@
       "text": "The site of Pukara (poo-KAH-rah), located on the northern shore of Lake Titicaca in present-day Peru, was the first major ceremonial center in the region, flourishing from roughly 500 BCE to 200 CE.",
       "text_markdown": "The site of Pukara (poo-KAH-rah), located on the northern shore of Lake Titicaca in present-day Peru, was the first major ceremonial center in the region, flourishing from roughly 500 BCE to 200 CE.",
       "tts": {
-        "text": "The site of Pukara (poo-KAH-rah), located on the northern shore of Lake Titicaca in present-day Peru, was the first major ceremonial center in the region, flourishing from roughly 500 BCE to 200 CE.",
+        "text": "The site of Pukara (poo-KAH-rah), located on the northern shore of Lake Titicaca in present-day Peru, was the first major ceremonial center in the region, flourishing from roughly five hundred BCE to two hundred CE.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -8490,7 +8490,7 @@
       "text": "The earliest phases of settlement at the site date to roughly 200 BCE, when it was a modest village.",
       "text_markdown": "The earliest phases of settlement at the site date to roughly 200 BCE, when it was a modest village.",
       "tts": {
-        "text": "The earliest phases of settlement at the site date to roughly 200 BCE, when it was a modest village.",
+        "text": "The earliest phases of settlement at the site date to roughly two hundred BCE, when it was a modest village.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -8538,7 +8538,7 @@
       "text": "The monumental construction that defines Tiwanaku today began in earnest around 300-400 CE and continued for over five centuries.",
       "text_markdown": "The monumental construction that defines Tiwanaku today began in earnest around 300-400 CE and continued for over five centuries.",
       "tts": {
-        "text": "The monumental construction that defines Tiwanaku today began in earnest around 300-400 CE and continued for over five centuries.",
+        "text": "The monumental construction that defines Tiwanaku today began in earnest around three hundred to four hundred CE and continued for over five centuries.",
         "pause_after_ms": 800,
         "repetition_penalty": 2.0
       }
@@ -8634,7 +8634,7 @@
       "text": "Radiocarbon dates place Caral's monumental construction at approximately 3000-1800 BCE -- making it roughly contemporary with the great pyramids of Egypt.",
       "text_markdown": "Radiocarbon dates place Caral's monumental construction at approximately 3000-1800 BCE -- making it roughly contemporary with the great pyramids of Egypt.",
       "tts": {
-        "text": "Radiocarbon dates place Caral's monumental construction at approximately 3000-1800 BCE -- making it roughly contemporary with the great pyramids of Egypt.",
+        "text": "Radiocarbon dates place Caral's monumental construction at approximately thirty hundred to eighteen hundred BCE -- making it roughly contemporary with the great pyramids of Egypt.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -8698,7 +8698,7 @@
       "text": "The discovery of Caral's antiquity, established by the Peruvian archaeologist Ruth Shady (SHAH-dee) through radiocarbon dating in the late 1990s, was a watershed moment in American archaeology.",
       "text_markdown": "The discovery of Caral's antiquity, established by the Peruvian archaeologist Ruth Shady (SHAH-dee) through radiocarbon dating in the late 1990s, was a watershed moment in American archaeology.",
       "tts": {
-        "text": "The discovery of Caral's antiquity, established by the Peruvian archaeologist Ruth Shady (SHAH-dee) through radiocarbon dating in the late 1990s, was a watershed moment in American archaeology.",
+        "text": "The discovery of Caral's antiquity, established by the Peruvian archaeologist Ruth Shady (SHAH-dee) through radiocarbon dating in the late nineteen nineties, was a watershed moment in American archaeology.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -8874,7 +8874,7 @@
       "text": "The Nazca Lines cover an area of roughly 450 square kilometers -- a vast canvas in the desert.",
       "text_markdown": "The Nazca Lines cover an area of roughly 450 square kilometers -- a vast canvas in the desert.",
       "tts": {
-        "text": "The Nazca Lines cover an area of roughly 450 square kilometers -- a vast canvas in the desert.",
+        "text": "The Nazca Lines cover an area of roughly four hundred fifty square kilometers -- a vast canvas in the desert.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -8890,7 +8890,7 @@
       "text": "They were created between roughly 500 BCE and 500 CE by the Nazca culture, which was contemporary with the early phases of Tiwanaku but culturally distinct.",
       "text_markdown": "They were created between roughly 500 BCE and 500 CE by the Nazca culture, which was contemporary with the early phases of Tiwanaku but culturally distinct.",
       "tts": {
-        "text": "They were created between roughly 500 BCE and 500 CE by the Nazca culture, which was contemporary with the early phases of Tiwanaku but culturally distinct.",
+        "text": "They were created between roughly five hundred BCE and five hundred CE by the Nazca culture, which was contemporary with the early phases of Tiwanaku but culturally distinct.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -9158,7 +9158,7 @@
       "text": "Tiwanaku's peak -- roughly 500 to 900 CE -- coincided with a period of extraordinary dynamism across the world.",
       "text_markdown": "Tiwanaku's peak -- roughly 500 to 900 CE -- coincided with a period of extraordinary dynamism across the world.",
       "tts": {
-        "text": "Tiwanaku's peak -- roughly 500 to 900 CE -- coincided with a period of extraordinary dynamism across the world.",
+        "text": "Tiwanaku's peak -- roughly five hundred to nine hundred CE -- coincided with a period of extraordinary dynamism across the world.",
         "pause_after_ms": 800,
         "repetition_penalty": 2.0
       }
@@ -9174,7 +9174,7 @@
       "text": "In East Asia, the Tang Dynasty (618-907 CE) presided over what is often called the golden age of Chinese civilization.",
       "text_markdown": "In East Asia, the Tang Dynasty (618-907 CE) presided over what is often called the golden age of Chinese civilization.",
       "tts": {
-        "text": "In East Asia, the Tang Dynasty (618-907 CE) presided over what is often called the golden age of Chinese civilization.",
+        "text": "In East Asia, the Tang Dynasty (six hundred eighteen to nine hundred seven CE) presided over what is often called the golden age of Chinese civilization.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -9350,7 +9350,7 @@
       "text": "Charlemagne was crowned Emperor of the Romans by Pope Leo III in 800 CE -- a date that falls squarely within Tiwanaku's peak period.",
       "text_markdown": "Charlemagne was crowned Emperor of the Romans by Pope Leo III in 800 CE -- a date that falls squarely within Tiwanaku's peak period.",
       "tts": {
-        "text": "Charlemagne was crowned Emperor of the Romans by Pope Leo III in 800 CE -- a date that falls squarely within Tiwanaku's peak period.",
+        "text": "Charlemagne was crowned Emperor of the Romans by Pope Leo III in eight hundred CE -- a date that falls squarely within Tiwanaku's peak period.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -9382,7 +9382,7 @@
       "text": "After Charlemagne's death in 814, his empire fragmented, leading to the political divisions that would eventually produce the nation-states of modern Europe.",
       "text_markdown": "After Charlemagne's death in 814, his empire fragmented, leading to the political divisions that would eventually produce the nation-states of modern Europe.",
       "tts": {
-        "text": "After Charlemagne's death in 814, his empire fragmented, leading to the political divisions that would eventually produce the nation-states of modern Europe.",
+        "text": "After Charlemagne's death in eight hundred fourteen, his empire fragmented, leading to the political divisions that would eventually produce the nation-states of modern Europe.",
         "pause_after_ms": 800,
         "repetition_penalty": 2.0
       }
@@ -9448,7 +9448,7 @@
       "text": "Teotihuacan, discussed in Volume 5, had already fallen, and the Maya city-states were flourishing in the power vacuum.",
       "text_markdown": "Teotihuacan, discussed in Volume 5, had already fallen, and the Maya city-states were flourishing in the power vacuum.",
       "tts": {
-        "text": "Teotihuacan, discussed in Volume 5, had already fallen, and the Maya city-states were flourishing in the power vacuum.",
+        "text": "Teotihuacan, discussed in Volume five, had already fallen, and the Maya city-states were flourishing in the power vacuum.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -9512,7 +9512,7 @@
       "text": "The construction of the great Buddhist temples at Nara, the development of Japanese writing systems, and the literary achievements of the Heian court -- including The Tale of Genji, written around 1000 CE by Murasaki Shikibu (moo-rah-SAH-kee shee-KEE-boo), considered the world's first novel -- all coincided with Tiwanaku's peak.",
       "text_markdown": "The construction of the great Buddhist temples at Nara, the development of Japanese writing systems, and the literary achievements of the Heian court -- including *The Tale of Genji*, written around 1000 CE by Murasaki Shikibu (moo-rah-SAH-kee shee-KEE-boo), considered the world's first novel -- all coincided with Tiwanaku's peak.",
       "tts": {
-        "text": "The construction of the great Buddhist temples at Nara, the development of Japanese writing systems, and the literary achievements of the Heian court -- including The Tale of Genji, written around 1000 CE by Murasaki Shikibu (moo-rah-SAH-kee shee-KEE-boo), considered the world's first novel -- all coincided with Tiwanaku's peak.",
+        "text": "The construction of the great Buddhist temples at Nara, the development of Japanese writing systems, and the literary achievements of the Heian court -- including The Tale of Genji, written around one thousand CE by Murasaki Shikibu (moo-rah-SAH-kee shee-KEE-boo), considered the world's first novel -- all coincided with Tiwanaku's peak.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.8
       }
@@ -9704,7 +9704,7 @@
       "text": "The drought that devastated Tiwanaku around 1000 CE was a regional event, but the late first millennium CE saw environmental stress in many parts of the world.",
       "text_markdown": "The drought that devastated Tiwanaku around 1000 CE was a regional event, but the late first millennium CE saw environmental stress in many parts of the world.",
       "tts": {
-        "text": "The drought that devastated Tiwanaku around 1000 CE was a regional event, but the late first millennium CE saw environmental stress in many parts of the world.",
+        "text": "The drought that devastated Tiwanaku around one thousand CE was a regional event, but the late first millennium CE saw environmental stress in many parts of the world.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -9720,7 +9720,7 @@
       "text": "The Classic Maya collapse -- the abandonment of the great Maya cities between roughly 800 and 1000 CE -- was driven in part by drought, as paleoclimate evidence has increasingly confirmed.",
       "text_markdown": "The Classic Maya collapse -- the abandonment of the great Maya cities between roughly 800 and 1000 CE -- was driven in part by drought, as paleoclimate evidence has increasingly confirmed.",
       "tts": {
-        "text": "The Classic Maya collapse -- the abandonment of the great Maya cities between roughly 800 and 1000 CE -- was driven in part by drought, as paleoclimate evidence has increasingly confirmed.",
+        "text": "The Classic Maya collapse -- the abandonment of the great Maya cities between roughly eight hundred and one thousand CE -- was driven in part by drought, as paleoclimate evidence has increasingly confirmed.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -9784,7 +9784,7 @@
       "text": "Cahokia, discussed in Volume 4, was a near-exact contemporary of Tiwanaku -- both peaked between roughly 500 and 1000 CE -- and both collapsed under environmental stress.",
       "text_markdown": "Cahokia, discussed in Volume 4, was a near-exact contemporary of Tiwanaku -- both peaked between roughly 500 and 1000 CE -- and both collapsed under environmental stress.",
       "tts": {
-        "text": "Cahokia, discussed in Volume 4, was a near-exact contemporary of Tiwanaku -- both peaked between roughly 500 and 1000 CE -- and both collapsed under environmental stress.",
+        "text": "Cahokia, discussed in Volume four, was a near-exact contemporary of Tiwanaku -- both peaked between roughly five hundred and one thousand CE -- and both collapsed under environmental stress.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -9800,7 +9800,7 @@
       "text": "Teotihuacan, discussed in Volume 5, preceded Tiwanaku and operated a different kind of urban system (apartment compounds in a valley rather than colonies across altitudes), but both cities projected influence over enormous distances through a combination of trade, religion, and political authority.",
       "text_markdown": "Teotihuacan, discussed in Volume 5, preceded Tiwanaku and operated a different kind of urban system (apartment compounds in a valley rather than colonies across altitudes), but both cities projected influence over enormous distances through a combination of trade, religion, and political authority.",
       "tts": {
-        "text": "Teotihuacan, discussed in Volume 5, preceded Tiwanaku and operated a different kind of urban system (apartment compounds in a valley rather than colonies across altitudes), but both cities projected influence over enormous distances through a combination of trade, religion, and political authority.",
+        "text": "Teotihuacan, discussed in Volume five, preceded Tiwanaku and operated a different kind of urban system (apartment compounds in a valley rather than colonies across altitudes), but both cities projected influence over enormous distances through a combination of trade, religion, and political authority.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -9816,7 +9816,7 @@
       "text": "The Toltecs, discussed in Volume 6, filled the post-Teotihuacan vacuum in Mesoamerica at the same time that the post-Tiwanaku vacuum was being filled by the Aymara kingdoms in the Andes.",
       "text_markdown": "The Toltecs, discussed in Volume 6, filled the post-Teotihuacan vacuum in Mesoamerica at the same time that the post-Tiwanaku vacuum was being filled by the Aymara kingdoms in the Andes.",
       "tts": {
-        "text": "The Toltecs, discussed in Volume 6, filled the post-Teotihuacan vacuum in Mesoamerica at the same time that the post-Tiwanaku vacuum was being filled by the Aymara kingdoms in the Andes.",
+        "text": "The Toltecs, discussed in Volume six, filled the post-Teotihuacan vacuum in Mesoamerica at the same time that the post-Tiwanaku vacuum was being filled by the Aymara kingdoms in the Andes.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.8
       }
@@ -9912,7 +9912,7 @@
       "text": "The site was designated a UNESCO World Heritage Site in 2000 -- a recognition of its importance to world cultural heritage.",
       "text_markdown": "The site was designated a UNESCO World Heritage Site in 2000 -- a recognition of its importance to world cultural heritage.",
       "tts": {
-        "text": "The site was designated a UNESCO World Heritage Site in 2000 -- a recognition of its importance to world cultural heritage.",
+        "text": "The site was designated a UNESCO World Heritage Site in twenty hundred -- a recognition of its importance to world cultural heritage.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -9992,7 +9992,7 @@
       "text": "That the experiment ultimately failed -- that the drought of 1000 CE destroyed the agricultural system that sustained the city -- does not diminish the achievement.",
       "text_markdown": "That the experiment ultimately failed -- that the drought of 1000 CE destroyed the agricultural system that sustained the city -- does not diminish the achievement.",
       "tts": {
-        "text": "That the experiment ultimately failed -- that the drought of 1000 CE destroyed the agricultural system that sustained the city -- does not diminish the achievement.",
+        "text": "That the experiment ultimately failed -- that the drought of one thousand CE destroyed the agricultural system that sustained the city -- does not diminish the achievement.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.8
       }
@@ -10180,7 +10180,7 @@
       "text": "Could the raised field system be revived? Experimental reconstructions in the 1980s showed that ancient raised fields outperformed modern Altiplano agriculture.",
       "text_markdown": "**Could the raised field system be revived?** Experimental reconstructions in the 1980s showed that ancient raised fields outperformed modern Altiplano agriculture.",
       "tts": {
-        "text": "Could the raised field system be revived? Experimental reconstructions in the 1980s showed that ancient raised fields outperformed modern Altiplano agriculture.",
+        "text": "Could the raised field system be revived? Experimental reconstructions in the nineteen eighties showed that ancient raised fields outperformed modern Altiplano agriculture.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -10228,7 +10228,7 @@
       "text": "What triggered Tiwanaku's expansion? The city existed for centuries before its period of maximum expansion (~500-900 CE).",
       "text_markdown": "**What triggered Tiwanaku's expansion?** The city existed for centuries before its period of maximum expansion (~500-900 CE).",
       "tts": {
-        "text": "What triggered Tiwanaku's expansion? The city existed for centuries before its period of maximum expansion (~500-900 CE).",
+        "text": "What triggered Tiwanaku's expansion? The city existed for centuries before its period of maximum expansion (approximately five hundred to nine hundred CE).",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -10448,7 +10448,7 @@
       "text": "Akapana (ah-kah-PAH-nah) -- The largest structure at Tiwanaku; a stepped pyramid roughly 17 meters high with an internal drainage system.",
       "text_markdown": "**Akapana** (ah-kah-PAH-nah) -- The largest structure at Tiwanaku; a stepped pyramid roughly 17 meters high with an internal drainage system.",
       "tts": {
-        "text": "Akapana (ah-kah-PAH-nah) -- The largest structure at Tiwanaku; a stepped pyramid roughly 17 meters high with an internal drainage system.",
+        "text": "Akapana (ah-kah-PAH-nah) -- The largest structure at Tiwanaku; a stepped pyramid roughly seventeen meters high with an internal drainage system.",
         "pause_after_ms": 800,
         "repetition_penalty": 2.0
       }
@@ -10464,7 +10464,7 @@
       "text": "Altiplano (ahl-tee-PLAH-noh) -- The high plateau of the central Andes, at approximately 3,700 meters altitude.",
       "text_markdown": "**Altiplano** (ahl-tee-PLAH-noh) -- The high plateau of the central Andes, at approximately 3,700 meters altitude.",
       "tts": {
-        "text": "Altiplano (ahl-tee-PLAH-noh) -- The high plateau of the central Andes, at approximately 3,700 meters altitude.",
+        "text": "Altiplano (ahl-tee-PLAH-noh) -- The high plateau of the central Andes, at approximately three thousand seven hundred meters altitude.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -10496,7 +10496,7 @@
       "text": "Bennett Monolith -- A carved stone figure over seven meters tall, found in Tiwanaku's Semi-Subterranean Temple in 1932 by Wendell Bennett.",
       "text_markdown": "**Bennett Monolith** -- A carved stone figure over seven meters tall, found in Tiwanaku's Semi-Subterranean Temple in 1932 by Wendell Bennett.",
       "tts": {
-        "text": "Bennett Monolith -- A carved stone figure over seven meters tall, found in Tiwanaku's Semi-Subterranean Temple in 1932 by Wendell Bennett.",
+        "text": "Bennett Monolith -- A carved stone figure over seven meters tall, found in Tiwanaku's Semi-Subterranean Temple in nineteen thirty two by Wendell Bennett.",
         "pause_after_ms": 800,
         "repetition_penalty": 2.0
       }
@@ -10512,7 +10512,7 @@
       "text": "Caral (kah-RAHL) -- The oldest known urban center in the Americas (~3000-1800 BCE), located in the Supe Valley of coastal Peru.",
       "text_markdown": "**Caral** (kah-RAHL) -- The oldest known urban center in the Americas (~3000-1800 BCE), located in the Supe Valley of coastal Peru.",
       "tts": {
-        "text": "Caral (kah-RAHL) -- The oldest known urban center in the Americas (~3000-1800 BCE), located in the Supe Valley of coastal Peru.",
+        "text": "Caral (kah-RAHL) -- The oldest known urban center in the Americas (approximately three thousand to one thousand eight hundred BCE), located in the Supe Valley of coastal Peru.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -10528,7 +10528,7 @@
       "text": "Chavin (chah-VEEN) -- An early Andean civilization (~900-200 BCE) that established many of the religious traditions, including the Staff God motif, that Tiwanaku later adopted.",
       "text_markdown": "**Chavin** (chah-VEEN) -- An early Andean civilization (~900-200 BCE) that established many of the religious traditions, including the Staff God motif, that Tiwanaku later adopted.",
       "tts": {
-        "text": "Chavin (chah-VEEN) -- An early Andean civilization (~900-200 BCE) that established many of the religious traditions, including the Staff God motif, that Tiwanaku later adopted.",
+        "text": "Chavin (chah-VEEN) -- An early Andean civilization (approximately nine hundred to two hundred BCE) that established many of the religious traditions, including the Staff God motif, that Tiwanaku later adopted.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -10544,7 +10544,7 @@
       "text": "Chiripa (chee-REE-pah) -- An early culture (~1400-100 BCE) on the southern shore of Lake Titicaca; precursor to Tiwanaku.",
       "text_markdown": "**Chiripa** (chee-REE-pah) -- An early culture (~1400-100 BCE) on the southern shore of Lake Titicaca; precursor to Tiwanaku.",
       "tts": {
-        "text": "Chiripa (chee-REE-pah) -- An early culture (~1400-100 BCE) on the southern shore of Lake Titicaca; precursor to Tiwanaku.",
+        "text": "Chiripa (chee-REE-pah) -- An early culture (approximately one thousand four hundred to one hundred BCE) on the southern shore of Lake Titicaca; precursor to Tiwanaku.",
         "pause_after_ms": 800,
         "repetition_penalty": 2.0
       }
@@ -10656,7 +10656,7 @@
       "text": "Janusek, John -- American archaeologist; author of Identity and Power in the Ancient Andes (2004).",
       "text_markdown": "**Janusek, John** -- American archaeologist; author of *Identity and Power in the Ancient Andes* (2004).",
       "tts": {
-        "text": "Janusek, John -- American archaeologist; author of Identity and Power in the Ancient Andes (2004).",
+        "text": "Janusek, John -- American archaeologist; author of Identity and Power in the Ancient Andes (two thousand four).",
         "pause_after_ms": 800,
         "repetition_penalty": 2.0
       }
@@ -10720,7 +10720,7 @@
       "text": "Kolata, Alan -- American archaeologist; author of The Tiwanaku (1993) and Tiwanaku and Its Hinterland (1996, 2003).",
       "text_markdown": "**Kolata, Alan** -- American archaeologist; author of *The Tiwanaku* (1993) and *Tiwanaku and Its Hinterland* (1996, 2003).",
       "tts": {
-        "text": "Kolata, Alan -- American archaeologist; author of The Tiwanaku (1993) and Tiwanaku and Its Hinterland (1996, 2003).",
+        "text": "Kolata, Alan -- American archaeologist; author of The Tiwanaku (nineteen ninety three) and Tiwanaku and Its Hinterland (nineteen ninety six, two thousand three).",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -10736,7 +10736,7 @@
       "text": "Late Intermediate Period -- The archaeological period (~1000-1400 CE) between Tiwanaku/Wari's collapse and the Inca expansion.",
       "text_markdown": "**Late Intermediate Period** -- The archaeological period (~1000-1400 CE) between Tiwanaku/Wari's collapse and the Inca expansion.",
       "tts": {
-        "text": "Late Intermediate Period -- The archaeological period (~1000-1400 CE) between Tiwanaku/Wari's collapse and the Inca expansion.",
+        "text": "Late Intermediate Period -- The archaeological period (approximately one thousand to one thousand four hundred CE) between Tiwanaku/Wari's collapse and the Inca expansion.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -10752,7 +10752,7 @@
       "text": "Middle Horizon -- The archaeological period (~600-1000 CE) corresponding to the expansion of Tiwanaku and Wari.",
       "text_markdown": "**Middle Horizon** -- The archaeological period (~600-1000 CE) corresponding to the expansion of Tiwanaku and Wari.",
       "tts": {
-        "text": "Middle Horizon -- The archaeological period (~600-1000 CE) corresponding to the expansion of Tiwanaku and Wari.",
+        "text": "Middle Horizon -- The archaeological period (approximately six hundred to one thousand CE) corresponding to the expansion of Tiwanaku and Wari.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -10784,7 +10784,7 @@
       "text": "Nazca Lines (NAHS-kah) -- Enormous geoglyphs on the coastal desert of southern Peru, created 500 BCE-500 CE.",
       "text_markdown": "**Nazca Lines** (NAHS-kah) -- Enormous geoglyphs on the coastal desert of southern Peru, created 500 BCE-500 CE.",
       "tts": {
-        "text": "Nazca Lines (NAHS-kah) -- Enormous geoglyphs on the coastal desert of southern Peru, created 500 BCE-500 CE.",
+        "text": "Nazca Lines (NAHS-kah) -- Enormous geoglyphs on the coastal desert of southern Peru, created five hundred BCE to five hundred CE.",
         "pause_after_ms": 800,
         "repetition_penalty": 2.0
       }
@@ -10864,7 +10864,7 @@
       "text": "Quinoa (KEEN-wah) -- An Andean grain domesticated ~3000 BCE; provides complete protein and grows at high altitude.",
       "text_markdown": "**Quinoa** (KEEN-wah) -- An Andean grain domesticated ~3000 BCE; provides complete protein and grows at high altitude.",
       "tts": {
-        "text": "Quinoa (KEEN-wah) -- An Andean grain domesticated ~3000 BCE; provides complete protein and grows at high altitude.",
+        "text": "Quinoa (KEEN-wah) -- An Andean grain domesticated approximately three thousand BCE; provides complete protein and grows at high altitude.",
         "pause_after_ms": 800,
         "repetition_penalty": 2.0
       }
@@ -10880,7 +10880,7 @@
       "text": "Semi-Subterranean Temple -- A sunken court at Tiwanaku whose walls are inset with over 170 carved stone heads.",
       "text_markdown": "**Semi-Subterranean Temple** -- A sunken court at Tiwanaku whose walls are inset with over 170 carved stone heads.",
       "tts": {
-        "text": "Semi-Subterranean Temple -- A sunken court at Tiwanaku whose walls are inset with over 170 carved stone heads.",
+        "text": "Semi-Subterranean Temple -- A sunken court at Tiwanaku whose walls are inset with over one hundred seventy carved stone heads.",
         "pause_after_ms": 800,
         "repetition_penalty": 2.0
       }
@@ -10928,7 +10928,7 @@
       "text": "Stanish, Charles -- American archaeologist; author of Ancient Titicaca (2003).",
       "text_markdown": "**Stanish, Charles** -- American archaeologist; author of *Ancient Titicaca* (2003).",
       "tts": {
-        "text": "Stanish, Charles -- American archaeologist; author of Ancient Titicaca (2003).",
+        "text": "Stanish, Charles -- American archaeologist; author of Ancient Titicaca (two thousand three).",
         "pause_after_ms": 800,
         "repetition_penalty": 2.0
       }
@@ -10960,7 +10960,7 @@
       "text": "Tiwanaku (tee-wah-NAH-koo) -- A major Andean civilization and its capital city, located at 3,850 meters near Lake Titicaca; flourished ~300-1000 CE.",
       "text_markdown": "**Tiwanaku** (tee-wah-NAH-koo) -- A major Andean civilization and its capital city, located at 3,850 meters near Lake Titicaca; flourished ~300-1000 CE.",
       "tts": {
-        "text": "Tiwanaku (tee-wah-NAH-koo) -- A major Andean civilization and its capital city, located at 3,850 meters near Lake Titicaca; flourished ~300-1000 CE.",
+        "text": "Tiwanaku (tee-wah-NAH-koo) -- A major Andean civilization and its capital city, located at three thousand eight hundred fifty meters near Lake Titicaca; flourished approximately three hundred to one thousand CE.",
         "pause_after_ms": 800,
         "repetition_penalty": 2.0
       }
@@ -11040,7 +11040,7 @@
       "text": "Wari (WAH-ree) -- A contemporary empire to Tiwanaku, centered near Ayacucho in central Peru; flourished ~600-1000 CE.",
       "text_markdown": "**Wari** (WAH-ree) -- A contemporary empire to Tiwanaku, centered near Ayacucho in central Peru; flourished ~600-1000 CE.",
       "tts": {
-        "text": "Wari (WAH-ree) -- A contemporary empire to Tiwanaku, centered near Ayacucho in central Peru; flourished ~600-1000 CE.",
+        "text": "Wari (WAH-ree) -- A contemporary empire to Tiwanaku, centered near Ayacucho in central Peru; flourished approximately six hundred to one thousand CE.",
         "pause_after_ms": 800,
         "repetition_penalty": 2.0
       }
@@ -11102,7 +11102,7 @@
       "text": "Kolata, Alan L. The Tiwanaku: Portrait of an Andean Civilization. Blackwell, 1993. -- The best single-volume introduction to Tiwanaku.",
       "text_markdown": "Kolata, Alan L. *The Tiwanaku: Portrait of an Andean Civilization*. Blackwell, 1993. -- The best single-volume introduction to Tiwanaku.",
       "tts": {
-        "text": "Kolata, Alan L. The Tiwanaku: Portrait of an Andean Civilization. Blackwell, 1993. -- The best single-volume introduction to Tiwanaku.",
+        "text": "Kolata, Alan L. The Tiwanaku: Portrait of an Andean Civilization. Blackwell, nineteen ninety three. -- The best single-volume introduction to Tiwanaku.",
         "pause_after_ms": 800,
         "repetition_penalty": 2.0
       }
@@ -11120,7 +11120,7 @@
       "text": "Stanish, Charles. Ancient Titicaca: The Evolution of Complex Society in Southern Peru and Northern Bolivia. University of California Press, 2003. -- Comprehensive regional history from the earliest cultures to the Inca.",
       "text_markdown": "Stanish, Charles. *Ancient Titicaca: The Evolution of Complex Society in Southern Peru and Northern Bolivia*. University of California Press, 2003. -- Comprehensive regional history from the earliest cultures to the Inca.",
       "tts": {
-        "text": "Stanish, Charles. Ancient Titicaca: The Evolution of Complex Society in Southern Peru and Northern Bolivia. University of California Press, 2003. -- Comprehensive regional history from the earliest cultures to the Inca.",
+        "text": "Stanish, Charles. Ancient Titicaca: The Evolution of Complex Society in Southern Peru and Northern Bolivia. University of California Press, two thousand three. -- Comprehensive regional history from the earliest cultures to the Inca.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -11138,7 +11138,7 @@
       "text": "Mann, Charles C. 1491: New Revelations of the Americas Before Columbus. Vintage, 2006. -- Excellent survey with strong sections on Andean civilizations and the raised field system.",
       "text_markdown": "Mann, Charles C. *1491: New Revelations of the Americas Before Columbus*. Vintage, 2006. -- Excellent survey with strong sections on Andean civilizations and the raised field system.",
       "tts": {
-        "text": "Mann, Charles C. 1491: New Revelations of the Americas Before Columbus. Vintage, 2006. -- Excellent survey with strong sections on Andean civilizations and the raised field system.",
+        "text": "Mann, Charles C. fourteen ninety one: New Revelations of the Americas Before Columbus. Vintage, two thousand six. -- Excellent survey with strong sections on Andean civilizations and the raised field system.",
         "pause_after_ms": 800,
         "repetition_penalty": 2.0
       }
@@ -11172,7 +11172,7 @@
       "text": "Kolata, Alan L., ed. Tiwanaku and Its Hinterland: Archaeology and Paleoecology of an Andean Civilization. 2 vols. Smithsonian Institution Press, 1996 and 2003. -- The definitive multi-volume study.",
       "text_markdown": "Kolata, Alan L., ed. *Tiwanaku and Its Hinterland: Archaeology and Paleoecology of an Andean Civilization*. 2 vols. Smithsonian Institution Press, 1996 and 2003. -- The definitive multi-volume study.",
       "tts": {
-        "text": "Kolata, Alan L., ed. Tiwanaku and Its Hinterland: Archaeology and Paleoecology of an Andean Civilization. 2 vols. Smithsonian Institution Press, 1996 and 2003. -- The definitive multi-volume study.",
+        "text": "Kolata, Alan L., ed. Tiwanaku and Its Hinterland: Archaeology and Paleoecology of an Andean Civilization. two vols. Smithsonian Institution Press, nineteen ninety six and two thousand three. -- The definitive multi-volume study.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -11190,7 +11190,7 @@
       "text": "Janusek, John Wayne. Identity and Power in the Ancient Andes: Tiwanaku Cities through Time. Routledge, 2004. -- Social organization and identity at Tiwanaku.",
       "text_markdown": "Janusek, John Wayne. *Identity and Power in the Ancient Andes: Tiwanaku Cities through Time*. Routledge, 2004. -- Social organization and identity at Tiwanaku.",
       "tts": {
-        "text": "Janusek, John Wayne. Identity and Power in the Ancient Andes: Tiwanaku Cities through Time. Routledge, 2004. -- Social organization and identity at Tiwanaku.",
+        "text": "Janusek, John Wayne. Identity and Power in the Ancient Andes: Tiwanaku Cities through Time. Routledge, two thousand four. -- Social organization and identity at Tiwanaku.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -11208,7 +11208,7 @@
       "text": "Isbell, William H., and Helaine Silverman, eds. Andean Archaeology. 3 vols. Springer, 2002-2008. -- Comprehensive reference for Andean archaeology including Tiwanaku and Wari.",
       "text_markdown": "Isbell, William H., and Helaine Silverman, eds. *Andean Archaeology*. 3 vols. Springer, 2002-2008. -- Comprehensive reference for Andean archaeology including Tiwanaku and Wari.",
       "tts": {
-        "text": "Isbell, William H., and Helaine Silverman, eds. Andean Archaeology. 3 vols. Springer, 2002-2008. -- Comprehensive reference for Andean archaeology including Tiwanaku and Wari.",
+        "text": "Isbell, William H., and Helaine Silverman, eds. Andean Archaeology. three vols. Springer, two thousand two to two thousand eight. -- Comprehensive reference for Andean archaeology including Tiwanaku and Wari.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -11242,7 +11242,7 @@
       "text": "Murra, John V. The Economic Organization of the Inka State. JAI Press, 1980. -- Essential for understanding the vertical archipelago model that Tiwanaku pioneered and the Inca formalized.",
       "text_markdown": "Murra, John V. *The Economic Organization of the Inka State*. JAI Press, 1980. -- Essential for understanding the vertical archipelago model that Tiwanaku pioneered and the Inca formalized.",
       "tts": {
-        "text": "Murra, John V. The Economic Organization of the Inka State. JAI Press, 1980. -- Essential for understanding the vertical archipelago model that Tiwanaku pioneered and the Inca formalized.",
+        "text": "Murra, John V. The Economic Organization of the Inka State. JAI Press, nineteen eighty. -- Essential for understanding the vertical archipelago model that Tiwanaku pioneered and the Inca formalized.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -11260,7 +11260,7 @@
       "text": "Moseley, Michael E. The Incas and Their Ancestors. Thames & Hudson, 2001. -- Accessible survey of Andean civilizations from Caral to the Inca.",
       "text_markdown": "Moseley, Michael E. *The Incas and Their Ancestors*. Thames & Hudson, 2001. -- Accessible survey of Andean civilizations from Caral to the Inca.",
       "tts": {
-        "text": "Moseley, Michael E. The Incas and Their Ancestors. Thames & Hudson, 2001. -- Accessible survey of Andean civilizations from Caral to the Inca.",
+        "text": "Moseley, Michael E. The Incas and Their Ancestors. Thames & Hudson, two thousand one. -- Accessible survey of Andean civilizations from Caral to the Inca.",
         "pause_after_ms": 800,
         "repetition_penalty": 2.0
       }
@@ -11368,7 +11368,7 @@
       "text": "Volume 1: The Mystery of Monte Alban -- Sacred Mountain, Lost Script, Vanished City",
       "text_markdown": "Volume 1: *The Mystery of Monte Alban* -- Sacred Mountain, Lost Script, Vanished City",
       "tts": {
-        "text": "Volume 1: The Mystery of Monte Alban -- Sacred Mountain, Lost Script, Vanished City",
+        "text": "Volume one: The Mystery of Monte Alban -- Sacred Mountain, Lost Script, Vanished City",
         "pause_after_ms": 800,
         "repetition_penalty": 2.0
       }
@@ -11384,7 +11384,7 @@
       "text": "Volume 2: The Unconquered People -- Unconquered Nation, Unwritten Tongue, Invisible State",
       "text_markdown": "Volume 2: *The Unconquered People* -- Unconquered Nation, Unwritten Tongue, Invisible State",
       "tts": {
-        "text": "Volume 2: The Unconquered People -- Unconquered Nation, Unwritten Tongue, Invisible State",
+        "text": "Volume two: The Unconquered People -- Unconquered Nation, Unwritten Tongue, Invisible State",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -11400,7 +11400,7 @@
       "text": "Volume 3: The Mystery of the Olmec -- The Mother Culture and the Stone That Speaks Once",
       "text_markdown": "Volume 3: *The Mystery of the Olmec* -- The Mother Culture and the Stone That Speaks Once",
       "tts": {
-        "text": "Volume 3: The Mystery of the Olmec -- The Mother Culture and the Stone That Speaks Once",
+        "text": "Volume three: The Mystery of the Olmec -- The Mother Culture and the Stone That Speaks Once",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -11416,7 +11416,7 @@
       "text": "Volume 4: The Mystery of Cahokia -- America's Forgotten Metropolis",
       "text_markdown": "Volume 4: *The Mystery of Cahokia* -- America's Forgotten Metropolis",
       "tts": {
-        "text": "Volume 4: The Mystery of Cahokia -- America's Forgotten Metropolis",
+        "text": "Volume four: The Mystery of Cahokia -- America's Forgotten Metropolis",
         "pause_after_ms": 800,
         "repetition_penalty": 2.0
       }
@@ -11432,7 +11432,7 @@
       "text": "Volume 5: The Mystery of Teotihuacan -- The City Where Even the Gods Were Strangers",
       "text_markdown": "Volume 5: *The Mystery of Teotihuacan* -- The City Where Even the Gods Were Strangers",
       "tts": {
-        "text": "Volume 5: The Mystery of Teotihuacan -- The City Where Even the Gods Were Strangers",
+        "text": "Volume five: The Mystery of Teotihuacan -- The City Where Even the Gods Were Strangers",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -11448,7 +11448,7 @@
       "text": "Volume 6: The Mystery of the Toltecs -- The Phantom Empire",
       "text_markdown": "Volume 6: *The Mystery of the Toltecs* -- The Phantom Empire",
       "tts": {
-        "text": "Volume 6: The Mystery of the Toltecs -- The Phantom Empire",
+        "text": "Volume six: The Mystery of the Toltecs -- The Phantom Empire",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -11464,7 +11464,7 @@
       "text": "Volume 7: The Mystery Before the Inca -- Tiwanaku, the Gate of the Sun, and the Engineers of the Sky",
       "text_markdown": "Volume 7: *The Mystery Before the Inca* -- Tiwanaku, the Gate of the Sun, and the Engineers of the Sky",
       "tts": {
-        "text": "Volume 7: The Mystery Before the Inca -- Tiwanaku, the Gate of the Sun, and the Engineers of the Sky",
+        "text": "Volume seven: The Mystery Before the Inca -- Tiwanaku, the Gate of the Sun, and the Engineers of the Sky",
         "pause_after_ms": 800,
         "repetition_penalty": 1.8
       }

@@ -26,7 +26,7 @@
       "text": "In 1994, a German archaeologist named Klaus Schmidt visited a hilltop in southeastern Turkey and recognized something extraordinary.",
       "text_markdown": "In 1994, a German archaeologist named Klaus Schmidt visited a hilltop in southeastern Turkey and recognized something extraordinary.",
       "tts": {
-        "text": "In 1994, a German archaeologist named Klaus Schmidt visited a hilltop in southeastern Turkey and recognized something extraordinary.",
+        "text": "In nineteen ninety four, a German archaeologist named Klaus Schmidt visited a hilltop in southeastern Turkey and recognized something extraordinary.",
         "pause_after_ms": 2000,
         "repetition_penalty": 1.9
       }
@@ -418,7 +418,7 @@
       "text": "In 1963, a joint survey by the University of Istanbul and the University of Chicago noted the hill and identified it as a possible archaeological site.",
       "text_markdown": "In 1963, a joint survey by the University of Istanbul and the University of Chicago noted the hill and identified it as a possible archaeological site.",
       "tts": {
-        "text": "In 1963, a joint survey by the University of Istanbul and the University of Chicago noted the hill and identified it as a possible archaeological site.",
+        "text": "In nineteen sixty three, a joint survey by the University of Istanbul and the University of Chicago noted the hill and identified it as a possible archaeological site.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.8
       }
@@ -514,7 +514,7 @@
       "text": "In 1994, Klaus Schmidt (KLOWS SHMIT), a German archaeologist working at the German Archaeological Institute's research station in Heidelberg, was looking for a new excavation site in southeastern Turkey.",
       "text_markdown": "In 1994, Klaus Schmidt (KLOWS SHMIT), a German archaeologist working at the German Archaeological Institute's research station in Heidelberg, was looking for a new excavation site in southeastern Turkey.",
       "tts": {
-        "text": "In 1994, Klaus Schmidt (KLOWS SHMIT), a German archaeologist working at the German Archaeological Institute's research station in Heidelberg, was looking for a new excavation site in southeastern Turkey.",
+        "text": "In nineteen ninety four, Klaus Schmidt (KLOWS SHMIT), a German archaeologist working at the German Archaeological Institute's research station in Heidelberg, was looking for a new excavation site in southeastern Turkey.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -594,7 +594,7 @@
       "text": "When Nevalı Çori was flooded by the Atatürk Dam reservoir in 1992, Schmidt began searching for related sites in the region.",
       "text_markdown": "When Nevalı Çori was flooded by the Atatürk Dam reservoir in 1992, Schmidt began searching for related sites in the region.",
       "tts": {
-        "text": "When Nevalı Çori was flooded by the Atatürk Dam reservoir in 1992, Schmidt began searching for related sites in the region.",
+        "text": "When Nevalı Çori was flooded by the Atatürk Dam reservoir in nineteen ninety two, Schmidt began searching for related sites in the region.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -610,7 +610,7 @@
       "text": "He consulted the 1963 survey records, noted the unvisited mound at Göbekli Tepe, and made the trip.",
       "text_markdown": "He consulted the 1963 survey records, noted the unvisited mound at Göbekli Tepe, and made the trip.",
       "tts": {
-        "text": "He consulted the 1963 survey records, noted the unvisited mound at Göbekli Tepe, and made the trip.",
+        "text": "He consulted the nineteen sixty three survey records, noted the unvisited mound at Göbekli Tepe, and made the trip.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -626,7 +626,7 @@
       "text": "He visited Göbekli Tepe and immediately recognized that the 1963 survey had been wrong.",
       "text_markdown": "He visited Göbekli Tepe and immediately recognized that the 1963 survey had been wrong.",
       "tts": {
-        "text": "He visited Göbekli Tepe and immediately recognized that the 1963 survey had been wrong.",
+        "text": "He visited Göbekli Tepe and immediately recognized that the nineteen sixty three survey had been wrong.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -690,7 +690,7 @@
       "text": "He began excavating in 1995.",
       "text_markdown": "He began excavating in 1995.",
       "tts": {
-        "text": "He began excavating in 1995.",
+        "text": "He began excavating in nineteen ninety five.",
         "pause_after_ms": 800,
         "repetition_penalty": 2.0
       }
@@ -820,7 +820,7 @@
       "text": "The earliest layers of construction dated to approximately 9500 BCE -- the tenth millennium before the Common Era.",
       "text_markdown": "The earliest layers of construction dated to approximately 9500 BCE -- the tenth millennium before the Common Era.",
       "tts": {
-        "text": "The earliest layers of construction dated to approximately 9500 BCE -- the tenth millennium before the Common Era.",
+        "text": "The earliest layers of construction dated to approximately ninety five hundred BCE -- the tenth millennium before the Common Era.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -852,7 +852,7 @@
       "text": "To put this in context: Stonehenge was built around 3000-2000 BCE.",
       "text_markdown": "To put this in context: Stonehenge was built around 3000-2000 BCE.",
       "tts": {
-        "text": "To put this in context: Stonehenge was built around 3000-2000 BCE.",
+        "text": "To put this in context: Stonehenge was built around thirty hundred to twenty hundred BCE.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -868,7 +868,7 @@
       "text": "The Egyptian pyramids were built around 2500 BCE.",
       "text_markdown": "The Egyptian pyramids were built around 2500 BCE.",
       "tts": {
-        "text": "The Egyptian pyramids were built around 2500 BCE.",
+        "text": "The Egyptian pyramids were built around twenty five hundred BCE.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -884,7 +884,7 @@
       "text": "The earliest cities in Mesopotamia -- Ur, Uruk, Eridu -- date to roughly 4000-3000 BCE.",
       "text_markdown": "The earliest cities in Mesopotamia -- Ur, Uruk, Eridu -- date to roughly 4000-3000 BCE.",
       "tts": {
-        "text": "The earliest cities in Mesopotamia -- Ur, Uruk, Eridu -- date to roughly 4000-3000 BCE.",
+        "text": "The earliest cities in Mesopotamia -- Ur, Uruk, Eridu -- date to roughly forty hundred to thirty hundred BCE.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -900,7 +900,7 @@
       "text": "The invention of writing occurred around 3200 BCE.",
       "text_markdown": "The invention of writing occurred around 3200 BCE.",
       "tts": {
-        "text": "The invention of writing occurred around 3200 BCE.",
+        "text": "The invention of writing occurred around thirty two hundred BCE.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -916,7 +916,7 @@
       "text": "The first pottery in the Near East appeared around 7000-6000 BCE.",
       "text_markdown": "The first pottery in the Near East appeared around 7000-6000 BCE.",
       "tts": {
-        "text": "The first pottery in the Near East appeared around 7000-6000 BCE.",
+        "text": "The first pottery in the Near East appeared around seventy hundred to sixty hundred BCE.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -932,7 +932,7 @@
       "text": "Agriculture in the Fertile Crescent began around 9500-8500 BCE -- the same period as Göbekli Tepe's earliest construction.",
       "text_markdown": "Agriculture in the Fertile Crescent began around 9500-8500 BCE -- the same period as Göbekli Tepe's earliest construction.",
       "tts": {
-        "text": "Agriculture in the Fertile Crescent began around 9500-8500 BCE -- the same period as Göbekli Tepe's earliest construction.",
+        "text": "Agriculture in the Fertile Crescent began around ninety five hundred to eighty five hundred BCE -- the same period as Göbekli Tepe's earliest construction.",
         "pause_after_ms": 800,
         "repetition_penalty": 2.0
       }
@@ -1476,7 +1476,7 @@
       "text": "The site was designated a UNESCO World Heritage Site in 2018 -- a recognition of its extraordinary importance to the understanding of human history.",
       "text_markdown": "The site was designated a UNESCO World Heritage Site in 2018 -- a recognition of its extraordinary importance to the understanding of human history.",
       "tts": {
-        "text": "The site was designated a UNESCO World Heritage Site in 2018 -- a recognition of its extraordinary importance to the understanding of human history.",
+        "text": "The site was designated a UNESCO World Heritage Site in twenty eighteen -- a recognition of its extraordinary importance to the understanding of human history.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -1584,7 +1584,7 @@
       "text": "Around 10,000 years ago, in several independent centers around the world, human beings began to domesticate plants and animals -- to cultivate wild grains, to herd wild sheep and goats, to settle in permanent villages near their fields and flocks.",
       "text_markdown": "Around 10,000 years ago, in several independent centers around the world, human beings began to domesticate plants and animals -- to cultivate wild grains, to herd wild sheep and goats, to settle in permanent villages near their fields and flocks.",
       "tts": {
-        "text": "Around 10,000 years ago, in several independent centers around the world, human beings began to domesticate plants and animals -- to cultivate wild grains, to herd wild sheep and goats, to settle in permanent villages near their fields and flocks.",
+        "text": "Around ten thousand years ago, in several independent centers around the world, human beings began to domesticate plants and animals -- to cultivate wild grains, to herd wild sheep and goats, to settle in permanent villages near their fields and flocks.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.8
       }
@@ -1712,7 +1712,7 @@
       "text": "V. Gordon Childe (1892-1957), the Australian-British archaeologist who coined the term \"Neolithic Revolution,\" built his entire framework around the primacy of agriculture.",
       "text_markdown": "V. Gordon Childe (1892-1957), the Australian-British archaeologist who coined the term \"Neolithic Revolution,\" built his entire framework around the primacy of agriculture.",
       "tts": {
-        "text": "V. Gordon Childe (1892-1957), the Australian-British archaeologist who coined the term \"Neolithic Revolution,\" built his entire framework around the primacy of agriculture.",
+        "text": "V. Gordon Childe (eighteen ninety two to nineteen fifty seven), the Australian-British archaeologist who coined the term \"Neolithic Revolution,\" built his entire framework around the primacy of agriculture.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -2642,7 +2642,7 @@
       "text": "Nevalı Çori, located on the Euphrates River, had been excavated by Hauptmann from 1983 to 1991.",
       "text_markdown": "Nevalı Çori, located on the Euphrates River, had been excavated by Hauptmann from 1983 to 1991.",
       "tts": {
-        "text": "Nevalı Çori, located on the Euphrates River, had been excavated by Hauptmann from 1983 to 1991.",
+        "text": "Nevalı Çori, located on the Euphrates River, had been excavated by Hauptmann from nineteen eighty three to nineteen ninety one.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -2690,7 +2690,7 @@
       "text": "When the site was flooded in 1992, the original context was permanently lost.",
       "text_markdown": "When the site was flooded in 1992, the original context was permanently lost.",
       "tts": {
-        "text": "When the site was flooded in 1992, the original context was permanently lost.",
+        "text": "When the site was flooded in nineteen ninety two, the original context was permanently lost.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -2738,7 +2738,7 @@
       "text": "Sites like Çayönü (chay-UH-noo), located roughly 150 kilometers to the northeast, represent some of the earliest permanent settlements in the region -- villages with stone architecture, storage facilities, and evidence of early plant and animal management, dating to roughly 8500-7000 BCE.",
       "text_markdown": "Sites like Çayönü (chay-UH-noo), located roughly 150 kilometers to the northeast, represent some of the earliest permanent settlements in the region -- villages with stone architecture, storage facilities, and evidence of early plant and animal management, dating to roughly 8500-7000 BCE.",
       "tts": {
-        "text": "Sites like Çayönü (chay-UH-noo), located roughly 150 kilometers to the northeast, represent some of the earliest permanent settlements in the region -- villages with stone architecture, storage facilities, and evidence of early plant and animal management, dating to roughly 8500-7000 BCE.",
+        "text": "Sites like Çayönü (chay-UH-noo), located roughly one hundred fifty kilometers to the northeast, represent some of the earliest permanent settlements in the region -- villages with stone architecture, storage facilities, and evidence of early plant and animal management, dating to roughly eighty five hundred to seventy hundred BCE.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -2786,7 +2786,7 @@
       "text": "Klaus Schmidt died in 2014, while swimming near Şanlıurfa during the excavation season.",
       "text_markdown": "Klaus Schmidt died in 2014, while swimming near Şanlıurfa during the excavation season.",
       "tts": {
-        "text": "Klaus Schmidt died in 2014, while swimming near Şanlıurfa during the excavation season.",
+        "text": "Klaus Schmidt died in twenty fourteen, while swimming near Şanlıurfa during the excavation season.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -2938,7 +2938,7 @@
       "text": "The pillars range in height from roughly 1.5 meters for the smaller examples to 5.5 meters for the largest.",
       "text_markdown": "The pillars range in height from roughly 1.5 meters for the smaller examples to 5.5 meters for the largest.",
       "tts": {
-        "text": "The pillars range in height from roughly 1.5 meters for the smaller examples to 5.5 meters for the largest.",
+        "text": "The pillars range in height from roughly one.five meters for the smaller examples to five.five meters for the largest.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.8
       }
@@ -3676,7 +3676,7 @@
       "text": "Radiocarbon dating provides a broad framework: the earliest enclosures date to roughly 9500-9000 BCE, and the latest to roughly 8000 BCE.",
       "text_markdown": "Radiocarbon dating provides a broad framework: the earliest enclosures date to roughly 9500-9000 BCE, and the latest to roughly 8000 BCE.",
       "tts": {
-        "text": "Radiocarbon dating provides a broad framework: the earliest enclosures date to roughly 9500-9000 BCE, and the latest to roughly 8000 BCE.",
+        "text": "Radiocarbon dating provides a broad framework: the earliest enclosures date to roughly ninety five hundred to ninety hundred BCE, and the latest to roughly eighty hundred BCE.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -4524,7 +4524,7 @@
       "text": "One pillar in Enclosure D -- known informally as \"the vulture stone\" or \"Pillar 43\" -- has received particular attention.",
       "text_markdown": "One pillar in Enclosure D -- known informally as \"the vulture stone\" or \"Pillar 43\" -- has received particular attention.",
       "tts": {
-        "text": "One pillar in Enclosure D -- known informally as \"the vulture stone\" or \"Pillar 43\" -- has received particular attention.",
+        "text": "One pillar in Enclosure D -- known informally as \"the vulture stone\" or \"Pillar forty three\" -- has received particular attention.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -5304,7 +5304,7 @@
       "text": "Around 8000 BCE -- roughly fifteen hundred years after the earliest enclosures were built -- Göbekli Tepe was deliberately buried.",
       "text_markdown": "Around 8000 BCE -- roughly fifteen hundred years after the earliest enclosures were built -- Göbekli Tepe was deliberately buried.",
       "tts": {
-        "text": "Around 8000 BCE -- roughly fifteen hundred years after the earliest enclosures were built -- Göbekli Tepe was deliberately buried.",
+        "text": "Around eighty hundred BCE -- roughly fifteen hundred years after the earliest enclosures were built -- Göbekli Tepe was deliberately buried.",
         "pause_after_ms": 800,
         "repetition_penalty": 2.0
       }
@@ -5528,7 +5528,7 @@
       "text": "When Schmidt began excavating in 1995, the pillars were found in excellent condition -- their carvings sharp and clear, their surfaces intact, their positions undisturbed.",
       "text_markdown": "When Schmidt began excavating in 1995, the pillars were found in excellent condition -- their carvings sharp and clear, their surfaces intact, their positions undisturbed.",
       "tts": {
-        "text": "When Schmidt began excavating in 1995, the pillars were found in excellent condition -- their carvings sharp and clear, their surfaces intact, their positions undisturbed.",
+        "text": "When Schmidt began excavating in nineteen ninety five, the pillars were found in excellent condition -- their carvings sharp and clear, their surfaces intact, their positions undisturbed.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -5706,7 +5706,7 @@
       "text": "The period of Göbekli Tepe's burial (~8000 BCE) coincides with a broader transition in the region: the shift from pre-agricultural to agricultural life, from hunter-gatherer communities to settled farming villages.",
       "text_markdown": "The period of Göbekli Tepe's burial (~8000 BCE) coincides with a broader transition in the region: the shift from pre-agricultural to agricultural life, from hunter-gatherer communities to settled farming villages.",
       "tts": {
-        "text": "The period of Göbekli Tepe's burial (~8000 BCE) coincides with a broader transition in the region: the shift from pre-agricultural to agricultural life, from hunter-gatherer communities to settled farming villages.",
+        "text": "The period of Göbekli Tepe's burial (approximately eight thousand BCE) coincides with a broader transition in the region: the shift from pre-agricultural to agricultural life, from hunter-gatherer communities to settled farming villages.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -5930,7 +5930,7 @@
       "text": "The earliest enclosures (the deepest layers, dated to roughly 9500-9000 BCE) are the most elaborate: the largest pillars, the most detailed carvings, the most carefully finished floors.",
       "text_markdown": "The earliest enclosures (the deepest layers, dated to roughly 9500-9000 BCE) are the most elaborate: the largest pillars, the most detailed carvings, the most carefully finished floors.",
       "tts": {
-        "text": "The earliest enclosures (the deepest layers, dated to roughly 9500-9000 BCE) are the most elaborate: the largest pillars, the most detailed carvings, the most carefully finished floors.",
+        "text": "The earliest enclosures (the deepest layers, dated to roughly ninety five hundred to ninety hundred BCE) are the most elaborate: the largest pillars, the most detailed carvings, the most carefully finished floors.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.8
       }
@@ -6724,7 +6724,7 @@
       "text": "Stone vessels found at Göbekli Tepe -- large troughs carved from limestone, with capacities of up to 160 liters -- may have been used for preparing and serving beverages at feasts.",
       "text_markdown": "Stone vessels found at Göbekli Tepe -- large troughs carved from limestone, with capacities of up to 160 liters -- may have been used for preparing and serving beverages at feasts.",
       "tts": {
-        "text": "Stone vessels found at Göbekli Tepe -- large troughs carved from limestone, with capacities of up to 160 liters -- may have been used for preparing and serving beverages at feasts.",
+        "text": "Stone vessels found at Göbekli Tepe -- large troughs carved from limestone, with capacities of up to one hundred sixty liters -- may have been used for preparing and serving beverages at feasts.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -6980,7 +6980,7 @@
       "text": "For comparison, estimates for the construction of the bluestone circle at Stonehenge range from 4,000 to 10,000 person-days.",
       "text_markdown": "For comparison, estimates for the construction of the bluestone circle at Stonehenge range from 4,000 to 10,000 person-days.",
       "tts": {
-        "text": "For comparison, estimates for the construction of the bluestone circle at Stonehenge range from 4,000 to 10,000 person-days.",
+        "text": "For comparison, estimates for the construction of the bluestone circle at Stonehenge range from four thousand to ten thousand person-days.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -7172,7 +7172,7 @@
       "text": "The concept of \"affluent foragers\" -- hunter-gatherer populations living in environments productive enough to support large, semi-sedentary communities with social complexity approaching that of agricultural societies -- was proposed by the anthropologist Marshall Sahlins in the 1960s, based on ethnographic studies of modern hunter-gatherers in resource-rich environments (the Pacific Northwest coast of North America, for example, where salmon-based economies supported large villages, hereditary chiefs, and elaborate art traditions).",
       "text_markdown": "The concept of \"affluent foragers\" -- hunter-gatherer populations living in environments productive enough to support large, semi-sedentary communities with social complexity approaching that of agricultural societies -- was proposed by the anthropologist Marshall Sahlins in the 1960s, based on ethnographic studies of modern hunter-gatherers in resource-rich environments (the Pacific Northwest coast of North America, for example, where salmon-based economies supported large villages, hereditary chiefs, and elaborate art traditions).",
       "tts": {
-        "text": "The concept of \"affluent foragers\" -- hunter-gatherer populations living in environments productive enough to support large, semi-sedentary communities with social complexity approaching that of agricultural societies -- was proposed by the anthropologist Marshall Sahlins in the 1960s, based on ethnographic studies of modern hunter-gatherers in resource-rich environments (the Pacific Northwest coast of North America, for example, where salmon-based economies supported large villages, hereditary chiefs, and elaborate art traditions).",
+        "text": "The concept of \"affluent foragers\" -- hunter-gatherer populations living in environments productive enough to support large, semi-sedentary communities with social complexity approaching that of agricultural societies -- was proposed by the anthropologist Marshall Sahlins in the nineteen sixties, based on ethnographic studies of modern hunter-gatherers in resource-rich environments (the Pacific Northwest coast of North America, for example, where salmon-based economies supported large villages, hereditary chiefs, and elaborate art traditions).",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -7408,7 +7408,7 @@
       "text": "Excavations beginning in 2019, led by Necmi Karul (NEJ-mee kah-ROOL) of Istanbul University, have revealed a complex of carved stone pillars, enclosed spaces, and sculptural art that is contemporary with Göbekli Tepe and, in some respects, even more remarkable.",
       "text_markdown": "Excavations beginning in 2019, led by Necmi Karul (NEJ-mee kah-ROOL) of Istanbul University, have revealed a complex of carved stone pillars, enclosed spaces, and sculptural art that is contemporary with Göbekli Tepe and, in some respects, even more remarkable.",
       "tts": {
-        "text": "Excavations beginning in 2019, led by Necmi Karul (NEJ-mee kah-ROOL) of Istanbul University, have revealed a complex of carved stone pillars, enclosed spaces, and sculptural art that is contemporary with Göbekli Tepe and, in some respects, even more remarkable.",
+        "text": "Excavations beginning in twenty nineteen, led by Necmi Karul (NEJ-mee kah-ROOL) of Istanbul University, have revealed a complex of carved stone pillars, enclosed spaces, and sculptural art that is contemporary with Göbekli Tepe and, in some respects, even more remarkable.",
         "pause_after_ms": 800,
         "repetition_penalty": 2.0
       }
@@ -8034,7 +8034,7 @@
       "text": "Sayburç (say-BURCH), discovered in 2021, features carved wall reliefs depicting scenes with human and animal figures -- including what appears to be a narrative scene showing a human figure interacting with leopards and a bull.",
       "text_markdown": "Sayburç (say-BURCH), discovered in 2021, features carved wall reliefs depicting scenes with human and animal figures -- including what appears to be a narrative scene showing a human figure interacting with leopards and a bull.",
       "tts": {
-        "text": "Sayburç (say-BURCH), discovered in 2021, features carved wall reliefs depicting scenes with human and animal figures -- including what appears to be a narrative scene showing a human figure interacting with leopards and a bull.",
+        "text": "Sayburç (say-BURCH), discovered in twenty twenty one, features carved wall reliefs depicting scenes with human and animal figures -- including what appears to be a narrative scene showing a human figure interacting with leopards and a bull.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -8162,7 +8162,7 @@
       "text": "Some sites have been damaged by road construction or reservoir projects (Nevalı Çori, the site that first alerted Schmidt to the T-shaped pillar tradition, was permanently flooded by the Atatürk Dam in 1992).",
       "text_markdown": "Some sites have been damaged by road construction or reservoir projects (Nevalı Çori, the site that first alerted Schmidt to the T-shaped pillar tradition, was permanently flooded by the Atatürk Dam in 1992).",
       "tts": {
-        "text": "Some sites have been damaged by road construction or reservoir projects (Nevalı Çori, the site that first alerted Schmidt to the T-shaped pillar tradition, was permanently flooded by the Atatürk Dam in 1992).",
+        "text": "Some sites have been damaged by road construction or reservoir projects (Nevalı Çori, the site that first alerted Schmidt to the T-shaped pillar tradition, was permanently flooded by the Atatürk Dam in nineteen ninety two).",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -8250,7 +8250,7 @@
       "text": "The Pleistocene (PLY-stoh-seen) Ice Age, which dominated the Earth's climate for roughly 2.6 million years, reached its most recent peak around 20,000 years ago, when massive ice sheets covered much of North America, Europe, and northern Asia.",
       "text_markdown": "The Pleistocene (PLY-stoh-seen) Ice Age, which dominated the Earth's climate for roughly 2.6 million years, reached its most recent peak around 20,000 years ago, when massive ice sheets covered much of North America, Europe, and northern Asia.",
       "tts": {
-        "text": "The Pleistocene (PLY-stoh-seen) Ice Age, which dominated the Earth's climate for roughly 2.6 million years, reached its most recent peak around 20,000 years ago, when massive ice sheets covered much of North America, Europe, and northern Asia.",
+        "text": "The Pleistocene (PLY-stoh-seen) Ice Age, which dominated the Earth's climate for roughly two.six million years, reached its most recent peak around twenty thousand years ago, when massive ice sheets covered much of North America, Europe, and northern Asia.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -8266,7 +8266,7 @@
       "text": "Sea levels were roughly 120 meters lower than today -- enough to expose the Bering land bridge between Siberia and Alaska, the land connection that allowed the first humans to enter the Americas.",
       "text_markdown": "Sea levels were roughly 120 meters lower than today -- enough to expose the Bering land bridge between Siberia and Alaska, the land connection that allowed the first humans to enter the Americas.",
       "tts": {
-        "text": "Sea levels were roughly 120 meters lower than today -- enough to expose the Bering land bridge between Siberia and Alaska, the land connection that allowed the first humans to enter the Americas.",
+        "text": "Sea levels were roughly one hundred twenty meters lower than today -- enough to expose the Bering land bridge between Siberia and Alaska, the land connection that allowed the first humans to enter the Americas.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -8298,7 +8298,7 @@
       "text": "Around 14,700 years ago, the climate began to warm rapidly -- a period known as the Bølling-Allerød (BUHL-ing AL-er-uhd) interstadial (warm phase).",
       "text_markdown": "Around 14,700 years ago, the climate began to warm rapidly -- a period known as the Bølling-Allerød (BUHL-ing AL-er-uhd) interstadial (warm phase).",
       "tts": {
-        "text": "Around 14,700 years ago, the climate began to warm rapidly -- a period known as the Bølling-Allerød (BUHL-ing AL-er-uhd) interstadial (warm phase).",
+        "text": "Around fourteen thousand seven hundred years ago, the climate began to warm rapidly -- a period known as the Bølling-Allerød (BUHL-ing AL-er-uhd) interstadial (warm phase).",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -8346,7 +8346,7 @@
       "text": "Then, around 12,900 years ago, the climate reversed.",
       "text_markdown": "Then, around 12,900 years ago, the climate reversed.",
       "tts": {
-        "text": "Then, around 12,900 years ago, the climate reversed.",
+        "text": "Then, around twelve thousand nine hundred years ago, the climate reversed.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -8410,7 +8410,7 @@
       "text": "The warming trend halted for roughly 1,200 years, and the world was cold again.",
       "text_markdown": "The warming trend halted for roughly 1,200 years, and the world was cold again.",
       "tts": {
-        "text": "The warming trend halted for roughly 1,200 years, and the world was cold again.",
+        "text": "The warming trend halted for roughly one thousand two hundred years, and the world was cold again.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -8442,7 +8442,7 @@
       "text": "Around 9700 BCE, temperatures rose sharply -- ice core records from Greenland show warming of as much as 10 degrees Celsius within a few decades.",
       "text_markdown": "Around 9700 BCE, temperatures rose sharply -- ice core records from Greenland show warming of as much as 10 degrees Celsius within a few decades.",
       "tts": {
-        "text": "Around 9700 BCE, temperatures rose sharply -- ice core records from Greenland show warming of as much as 10 degrees Celsius within a few decades.",
+        "text": "Around ninety seven hundred BCE, temperatures rose sharply -- ice core records from Greenland show warming of as much as ten degrees Celsius within a few decades.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -8538,7 +8538,7 @@
       "text": "The earliest construction dates to approximately 9500 BCE -- within two centuries of the Younger Dryas ending.",
       "text_markdown": "The earliest construction dates to approximately 9500 BCE -- within two centuries of the Younger Dryas ending.",
       "tts": {
-        "text": "The earliest construction dates to approximately 9500 BCE -- within two centuries of the Younger Dryas ending.",
+        "text": "The earliest construction dates to approximately ninety five hundred BCE -- within two centuries of the Younger Dryas ending.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -8892,7 +8892,7 @@
       "text": "When the warming returned after 9700 BCE, the grain stands expanded rapidly, providing a more abundant and reliable food source.",
       "text_markdown": "When the warming returned after 9700 BCE, the grain stands expanded rapidly, providing a more abundant and reliable food source.",
       "tts": {
-        "text": "When the warming returned after 9700 BCE, the grain stands expanded rapidly, providing a more abundant and reliable food source.",
+        "text": "When the warming returned after ninety seven hundred BCE, the grain stands expanded rapidly, providing a more abundant and reliable food source.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -8956,7 +8956,7 @@
       "text": "Tiwanaku (Volume 7) collapsed during a prolonged drought.",
       "text_markdown": "Tiwanaku (Volume 7) collapsed during a prolonged drought.",
       "tts": {
-        "text": "Tiwanaku (Volume 7) collapsed during a prolonged drought.",
+        "text": "Tiwanaku (Volume seven) collapsed during a prolonged drought.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -8972,7 +8972,7 @@
       "text": "The Dorset (Volume 8) were vulnerable to changes in sea ice extent.",
       "text_markdown": "The Dorset (Volume 8) were vulnerable to changes in sea ice extent.",
       "tts": {
-        "text": "The Dorset (Volume 8) were vulnerable to changes in sea ice extent.",
+        "text": "The Dorset (Volume eight) were vulnerable to changes in sea ice extent.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -8988,7 +8988,7 @@
       "text": "The Bronze Age collapse (Volume 12) may have been triggered in part by drought and climate disruption.",
       "text_markdown": "The Bronze Age collapse (Volume 12) may have been triggered in part by drought and climate disruption.",
       "tts": {
-        "text": "The Bronze Age collapse (Volume 12) may have been triggered in part by drought and climate disruption.",
+        "text": "The Bronze Age collapse (Volume twelve) may have been triggered in part by drought and climate disruption.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -9032,7 +9032,7 @@
       "text": "The world in which Göbekli Tepe was built -- roughly 9500-8000 BCE -- was a world of hunter-gatherers.",
       "text_markdown": "The world in which Göbekli Tepe was built -- roughly 9500-8000 BCE -- was a world of hunter-gatherers.",
       "tts": {
-        "text": "The world in which Göbekli Tepe was built -- roughly 9500-8000 BCE -- was a world of hunter-gatherers.",
+        "text": "The world in which Göbekli Tepe was built -- roughly ninety five hundred to eighty hundred BCE -- was a world of hunter-gatherers.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -9160,7 +9160,7 @@
       "text": "By 9500 BCE, human beings had reached every continent except Antarctica.",
       "text_markdown": "By 9500 BCE, human beings had reached every continent except Antarctica.",
       "tts": {
-        "text": "By 9500 BCE, human beings had reached every continent except Antarctica.",
+        "text": "By ninety five hundred BCE, human beings had reached every continent except Antarctica.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -9304,7 +9304,7 @@
       "text": "The Natufian (nah-TOO-fee-ahn) culture of the Levant (present-day Israel, Palestine, Jordan, and Lebanon), dating to roughly 12,500-9500 BCE, had already developed semi-permanent settlements, storage facilities, and the intensive harvesting of wild grains -- all precursors to agriculture.",
       "text_markdown": "The Natufian (nah-TOO-fee-ahn) culture of the Levant (present-day Israel, Palestine, Jordan, and Lebanon), dating to roughly 12,500-9500 BCE, had already developed semi-permanent settlements, storage facilities, and the intensive harvesting of wild grains -- all precursors to agriculture.",
       "tts": {
-        "text": "The Natufian (nah-TOO-fee-ahn) culture of the Levant (present-day Israel, Palestine, Jordan, and Lebanon), dating to roughly 12,500-9500 BCE, had already developed semi-permanent settlements, storage facilities, and the intensive harvesting of wild grains -- all precursors to agriculture.",
+        "text": "The Natufian (nah-TOO-fee-ahn) culture of the Levant (present-day Israel, Palestine, Jordan, and Lebanon), dating to roughly one hundred twenty five hundred to ninety five hundred BCE, had already developed semi-permanent settlements, storage facilities, and the intensive harvesting of wild grains -- all precursors to agriculture.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -9368,7 +9368,7 @@
       "text": "The earliest layers of occupation at Jericho date to roughly 9000 BCE -- contemporary with Göbekli Tepe.",
       "text_markdown": "The earliest layers of occupation at Jericho date to roughly 9000 BCE -- contemporary with Göbekli Tepe.",
       "tts": {
-        "text": "The earliest layers of occupation at Jericho date to roughly 9000 BCE -- contemporary with Göbekli Tepe.",
+        "text": "The earliest layers of occupation at Jericho date to roughly ninety hundred BCE -- contemporary with Göbekli Tepe.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -9466,7 +9466,7 @@
       "text": "At Abu Hureyra (AH-boo hoo-RAY-rah) in northern Syria, excavators found evidence of the earliest known cultivation of rye -- wild rye seeds in quantities suggesting deliberate planting, dating to roughly 10,000 BCE.",
       "text_markdown": "At Abu Hureyra (AH-boo hoo-RAY-rah) in northern Syria, excavators found evidence of the earliest known cultivation of rye -- wild rye seeds in quantities suggesting deliberate planting, dating to roughly 10,000 BCE.",
       "tts": {
-        "text": "At Abu Hureyra (AH-boo hoo-RAY-rah) in northern Syria, excavators found evidence of the earliest known cultivation of rye -- wild rye seeds in quantities suggesting deliberate planting, dating to roughly 10,000 BCE.",
+        "text": "At Abu Hureyra (AH-boo hoo-RAY-rah) in northern Syria, excavators found evidence of the earliest known cultivation of rye -- wild rye seeds in quantities suggesting deliberate planting, dating to roughly one hundred hundred BCE.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -9498,7 +9498,7 @@
       "text": "At Aşıklı Höyük (ah-shuh-KLUH huh-YOOK) in central Turkey, one of the earliest known farming villages dates to roughly 8500 BCE, with evidence of sheep and goat management alongside plant cultivation.",
       "text_markdown": "At Aşıklı Höyük (ah-shuh-KLUH huh-YOOK) in central Turkey, one of the earliest known farming villages dates to roughly 8500 BCE, with evidence of sheep and goat management alongside plant cultivation.",
       "tts": {
-        "text": "At Aşıklı Höyük (ah-shuh-KLUH huh-YOOK) in central Turkey, one of the earliest known farming villages dates to roughly 8500 BCE, with evidence of sheep and goat management alongside plant cultivation.",
+        "text": "At Aşıklı Höyük (ah-shuh-KLUH huh-YOOK) in central Turkey, one of the earliest known farming villages dates to roughly eighty five hundred BCE, with evidence of sheep and goat management alongside plant cultivation.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -9610,7 +9610,7 @@
       "text": "The Clovis (KLOH-vis) culture -- named after a site in New Mexico where distinctive fluted stone points were first identified -- dates to roughly 11,000-10,000 BCE.",
       "text_markdown": "The Clovis (KLOH-vis) culture -- named after a site in New Mexico where distinctive fluted stone points were first identified -- dates to roughly 11,000-10,000 BCE.",
       "tts": {
-        "text": "The Clovis (KLOH-vis) culture -- named after a site in New Mexico where distinctive fluted stone points were first identified -- dates to roughly 11,000-10,000 BCE.",
+        "text": "The Clovis (KLOH-vis) culture -- named after a site in New Mexico where distinctive fluted stone points were first identified -- dates to roughly one hundred ten hundred to one hundred hundred BCE.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -9674,7 +9674,7 @@
       "text": "In Mesoamerica, discussed in Volumes 1 through 6 of this series, the transition to agriculture would not occur for thousands of years after Göbekli Tepe.",
       "text_markdown": "In Mesoamerica, discussed in Volumes 1 through 6 of this series, the transition to agriculture would not occur for thousands of years after Göbekli Tepe.",
       "tts": {
-        "text": "In Mesoamerica, discussed in Volumes 1 through 6 of this series, the transition to agriculture would not occur for thousands of years after Göbekli Tepe.",
+        "text": "In Mesoamerica, discussed in Volumes one through six of this series, the transition to agriculture would not occur for thousands of years after Göbekli Tepe.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -9690,7 +9690,7 @@
       "text": "The Olmec civilization, the earliest complex society in the Americas, would not emerge until roughly 1500 BCE -- eight thousand years after Göbekli Tepe's construction.",
       "text_markdown": "The Olmec civilization, the earliest complex society in the Americas, would not emerge until roughly 1500 BCE -- eight thousand years after Göbekli Tepe's construction.",
       "tts": {
-        "text": "The Olmec civilization, the earliest complex society in the Americas, would not emerge until roughly 1500 BCE -- eight thousand years after Göbekli Tepe's construction.",
+        "text": "The Olmec civilization, the earliest complex society in the Americas, would not emerge until roughly fifteen hundred BCE -- eight thousand years after Göbekli Tepe's construction.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -9834,7 +9834,7 @@
       "text": "In Japan, the Jomon (JOH-mohn) culture was producing some of the world's earliest pottery -- fired clay vessels dating to roughly 14,000 BCE, predating the pottery of the Near East by thousands of years.",
       "text_markdown": "In Japan, the Jomon (JOH-mohn) culture was producing some of the world's earliest pottery -- fired clay vessels dating to roughly 14,000 BCE, predating the pottery of the Near East by thousands of years.",
       "tts": {
-        "text": "In Japan, the Jomon (JOH-mohn) culture was producing some of the world's earliest pottery -- fired clay vessels dating to roughly 14,000 BCE, predating the pottery of the Near East by thousands of years.",
+        "text": "In Japan, the Jomon (JOH-mohn) culture was producing some of the world's earliest pottery -- fired clay vessels dating to roughly one hundred forty hundred BCE, predating the pottery of the Near East by thousands of years.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -10074,7 +10074,7 @@
       "text": "The most important parallel is with Göbekli Tepe's sister sites in the Taş Tepeler network, described in Chapter 7.",
       "text_markdown": "The most important parallel is with Göbekli Tepe's sister sites in the Taş Tepeler network, described in Chapter 7.",
       "tts": {
-        "text": "The most important parallel is with Göbekli Tepe's sister sites in the Taş Tepeler network, described in Chapter 7.",
+        "text": "The most important parallel is with Göbekli Tepe's sister sites in the Taş Tepeler network, described in Chapter seven.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -10486,7 +10486,7 @@
       "text": "Why was the site deliberately buried? The burial around 8000 BCE was careful and intentional.",
       "text_markdown": "**Why was the site deliberately buried?** The burial around 8000 BCE was careful and intentional.",
       "tts": {
-        "text": "Why was the site deliberately buried? The burial around 8000 BCE was careful and intentional.",
+        "text": "Why was the site deliberately buried? The burial around eighty hundred BCE was careful and intentional.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -10678,7 +10678,7 @@
       "text": "How large is Göbekli Tepe? Only an estimated 5-10 percent of the site has been excavated.",
       "text_markdown": "**How large is Göbekli Tepe?** Only an estimated 5-10 percent of the site has been excavated.",
       "tts": {
-        "text": "How large is Göbekli Tepe? Only an estimated 5-10 percent of the site has been excavated.",
+        "text": "How large is Göbekli Tepe? Only an estimated five to tenpercent of the site has been excavated.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -10882,7 +10882,7 @@
       "text": "Extinct since 1627 CE.",
       "text_markdown": "Extinct since 1627 CE.",
       "tts": {
-        "text": "Extinct since 1627 CE.",
+        "text": "Extinct since sixteen twenty seven CE.",
         "pause_after_ms": 800,
         "repetition_penalty": 2.0
       }
@@ -10898,7 +10898,7 @@
       "text": "Bølling-Allerød (BUHL-ing AL-er-uhd) -- A warm interstadial period (~14,700-12,900 years ago) between the last glacial maximum and the Younger Dryas.",
       "text_markdown": "**Bølling-Allerød** (BUHL-ing AL-er-uhd) -- A warm interstadial period (~14,700-12,900 years ago) between the last glacial maximum and the Younger Dryas.",
       "tts": {
-        "text": "Bølling-Allerød (BUHL-ing AL-er-uhd) -- A warm interstadial period (~14,700-12,900 years ago) between the last glacial maximum and the Younger Dryas.",
+        "text": "Bølling-Allerød (BUHL-ing AL-er-uhd) -- A warm interstadial period (approximately fourteen thousand seven hundred to twelve thousand nine hundred years ago) between the last glacial maximum and the Younger Dryas.",
         "pause_after_ms": 800,
         "repetition_penalty": 2.0
       }
@@ -10914,7 +10914,7 @@
       "text": "Çatalhöyük (chah-TAHL-huh-yook) -- A large Neolithic settlement in central Turkey (~7500-5700 BCE); famous for its densely packed houses, wall paintings, and evidence of excarnation.",
       "text_markdown": "**Çatalhöyük** (chah-TAHL-huh-yook) -- A large Neolithic settlement in central Turkey (~7500-5700 BCE); famous for its densely packed houses, wall paintings, and evidence of excarnation.",
       "tts": {
-        "text": "Çatalhöyük (chah-TAHL-huh-yook) -- A large Neolithic settlement in central Turkey (~7500-5700 BCE); famous for its densely packed houses, wall paintings, and evidence of excarnation.",
+        "text": "Çatalhöyük (chah-TAHL-huh-yook) -- A large Neolithic settlement in central Turkey (approximately seven thousand five hundred to five thousand seven hundred BCE); famous for its densely packed houses, wall paintings, and evidence of excarnation.",
         "pause_after_ms": 800,
         "repetition_penalty": 2.0
       }
@@ -11026,7 +11026,7 @@
       "text": "Göbekli Tepe (guh-BEK-lee TEH-peh) -- \"Potbelly Hill\" in Turkish; a pre-Neolithic monumental site in southeastern Turkey dating to ~9500-8000 BCE.",
       "text_markdown": "**Göbekli Tepe** (guh-BEK-lee TEH-peh) -- \"Potbelly Hill\" in Turkish; a pre-Neolithic monumental site in southeastern Turkey dating to ~9500-8000 BCE.",
       "tts": {
-        "text": "Göbekli Tepe (guh-BEK-lee TEH-peh) -- \"Potbelly Hill\" in Turkish; a pre-Neolithic monumental site in southeastern Turkey dating to ~9500-8000 BCE.",
+        "text": "Göbekli Tepe (guh-BEK-lee TEH-peh) -- \"Potbelly Hill\" in Turkish; a pre-Neolithic monumental site in southeastern Turkey dating to approximately nine thousand five hundred to eight thousand BCE.",
         "pause_after_ms": 800,
         "repetition_penalty": 2.0
       }
@@ -11042,7 +11042,7 @@
       "text": "Holocene (HOL-oh-seen) -- The current geological epoch, beginning ~9700 BCE; the warm, stable climate period in which all of recorded human civilization has occurred.",
       "text_markdown": "**Holocene** (HOL-oh-seen) -- The current geological epoch, beginning ~9700 BCE; the warm, stable climate period in which all of recorded human civilization has occurred.",
       "tts": {
-        "text": "Holocene (HOL-oh-seen) -- The current geological epoch, beginning ~9700 BCE; the warm, stable climate period in which all of recorded human civilization has occurred.",
+        "text": "Holocene (HOL-oh-seen) -- The current geological epoch, beginning approximately nine thousand seven hundred BCE; the warm, stable climate period in which all of recorded human civilization has occurred.",
         "pause_after_ms": 800,
         "repetition_penalty": 2.0
       }
@@ -11058,7 +11058,7 @@
       "text": "Jericho (JEHR-ih-koh) -- An ancient settlement in the Jordan Valley; one of the oldest continuously inhabited places on Earth, with monumental architecture dating to ~9000 BCE.",
       "text_markdown": "**Jericho** (JEHR-ih-koh) -- An ancient settlement in the Jordan Valley; one of the oldest continuously inhabited places on Earth, with monumental architecture dating to ~9000 BCE.",
       "tts": {
-        "text": "Jericho (JEHR-ih-koh) -- An ancient settlement in the Jordan Valley; one of the oldest continuously inhabited places on Earth, with monumental architecture dating to ~9000 BCE.",
+        "text": "Jericho (JEHR-ih-koh) -- An ancient settlement in the Jordan Valley; one of the oldest continuously inhabited places on Earth, with monumental architecture dating to approximately nine thousand BCE.",
         "pause_after_ms": 800,
         "repetition_penalty": 2.0
       }
@@ -11090,7 +11090,7 @@
       "text": "Karahan Tepe (kah-RAH-hahn TEH-peh) -- A sister site to Göbekli Tepe, ~35 km southeast; features carved chambers and naturalistic human sculpture.",
       "text_markdown": "**Karahan Tepe** (kah-RAH-hahn TEH-peh) -- A sister site to Göbekli Tepe, ~35 km southeast; features carved chambers and naturalistic human sculpture.",
       "tts": {
-        "text": "Karahan Tepe (kah-RAH-hahn TEH-peh) -- A sister site to Göbekli Tepe, ~35 km southeast; features carved chambers and naturalistic human sculpture.",
+        "text": "Karahan Tepe (kah-RAH-hahn TEH-peh) -- A sister site to Göbekli Tepe, approximately thirty five km southeast; features carved chambers and naturalistic human sculpture.",
         "pause_after_ms": 800,
         "repetition_penalty": 2.0
       }
@@ -11122,7 +11122,7 @@
       "text": "Natufian (nah-TOO-fee-ahn) -- A Late Epipaleolithic culture of the Levant (~12,500-9500 BCE); precursors to the first farming communities.",
       "text_markdown": "**Natufian** (nah-TOO-fee-ahn) -- A Late Epipaleolithic culture of the Levant (~12,500-9500 BCE); precursors to the first farming communities.",
       "tts": {
-        "text": "Natufian (nah-TOO-fee-ahn) -- A Late Epipaleolithic culture of the Levant (~12,500-9500 BCE); precursors to the first farming communities.",
+        "text": "Natufian (nah-TOO-fee-ahn) -- A Late Epipaleolithic culture of the Levant (approximately twelve thousand five hundred to nine thousand five hundred BCE); precursors to the first farming communities.",
         "pause_after_ms": 800,
         "repetition_penalty": 2.0
       }
@@ -11138,7 +11138,7 @@
       "text": "Neolithic Revolution -- The transition from hunting and gathering to agriculture; occurred independently in several world regions beginning ~10,000 years ago.",
       "text_markdown": "**Neolithic Revolution** -- The transition from hunting and gathering to agriculture; occurred independently in several world regions beginning ~10,000 years ago.",
       "tts": {
-        "text": "Neolithic Revolution -- The transition from hunting and gathering to agriculture; occurred independently in several world regions beginning ~10,000 years ago.",
+        "text": "Neolithic Revolution -- The transition from hunting and gathering to agriculture; occurred independently in several world regions beginning approximately ten thousand years ago.",
         "pause_after_ms": 800,
         "repetition_penalty": 2.0
       }
@@ -11186,7 +11186,7 @@
       "text": "Pillar 43 -- Also called \"the vulture stone\"; a pillar in Enclosure D with a complex carved scene including a vulture, a headless human figure, and a scorpion.",
       "text_markdown": "**Pillar 43** -- Also called \"the vulture stone\"; a pillar in Enclosure D with a complex carved scene including a vulture, a headless human figure, and a scorpion.",
       "tts": {
-        "text": "Pillar 43 -- Also called \"the vulture stone\"; a pillar in Enclosure D with a complex carved scene including a vulture, a headless human figure, and a scorpion.",
+        "text": "Pillar forty three -- Also called \"the vulture stone\"; a pillar in Enclosure D with a complex carved scene including a vulture, a headless human figure, and a scorpion.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -11202,7 +11202,7 @@
       "text": "Pleistocene (PLY-stoh-seen) -- The geological epoch of the Ice Ages (~2.6 million to ~11,700 years ago).",
       "text_markdown": "**Pleistocene** (PLY-stoh-seen) -- The geological epoch of the Ice Ages (~2.6 million to ~11,700 years ago).",
       "tts": {
-        "text": "Pleistocene (PLY-stoh-seen) -- The geological epoch of the Ice Ages (~2.6 million to ~11,700 years ago).",
+        "text": "Pleistocene (PLY-stoh-seen) -- The geological epoch of the Ice Ages (approximately two.six million to approximately eleven thousand seven hundred years ago).",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -11218,7 +11218,7 @@
       "text": "Schmidt, Klaus (KLOWS SHMIT) -- German archaeologist (1953-2014); discoverer and primary excavator of Göbekli Tepe.",
       "text_markdown": "**Schmidt, Klaus** (KLOWS SHMIT) -- German archaeologist (1953-2014); discoverer and primary excavator of Göbekli Tepe.",
       "tts": {
-        "text": "Schmidt, Klaus (KLOWS SHMIT) -- German archaeologist (1953-2014); discoverer and primary excavator of Göbekli Tepe.",
+        "text": "Schmidt, Klaus (KLOWS SHMIT) -- German archaeologist (nineteen fifty three to twenty fourteen); discoverer and primary excavator of Göbekli Tepe.",
         "pause_after_ms": 800,
         "repetition_penalty": 2.0
       }
@@ -11282,7 +11282,7 @@
       "text": "Younger Dryas (DRY-us) -- A sudden return to near-glacial conditions (~12,900-9700 BCE); the last cold period before the current warm epoch.",
       "text_markdown": "**Younger Dryas** (DRY-us) -- A sudden return to near-glacial conditions (~12,900-9700 BCE); the last cold period before the current warm epoch.",
       "tts": {
-        "text": "Younger Dryas (DRY-us) -- A sudden return to near-glacial conditions (~12,900-9700 BCE); the last cold period before the current warm epoch.",
+        "text": "Younger Dryas (DRY-us) -- A sudden return to near-glacial conditions (approximately twelve thousand nine hundred to nine thousand seven hundred BCE); the last cold period before the current warm epoch.",
         "pause_after_ms": 800,
         "repetition_penalty": 2.0
       }
@@ -11328,7 +11328,7 @@
       "text": "Schmidt, Klaus. \"Göbekli Tepe: A Stone Age Sanctuary in South-Eastern Anatolia.\" ex oriente, 2012. -- Schmidt's own accessible account of the discovery and its significance.",
       "text_markdown": "Schmidt, Klaus. \"Göbekli Tepe: A Stone Age Sanctuary in South-Eastern Anatolia.\" *ex oriente*, 2012. -- Schmidt's own accessible account of the discovery and its significance.",
       "tts": {
-        "text": "Schmidt, Klaus. \"Göbekli Tepe: A Stone Age Sanctuary in South-Eastern Anatolia.\" ex oriente, 2012. -- Schmidt's own accessible account of the discovery and its significance.",
+        "text": "Schmidt, Klaus. \"Göbekli Tepe: A Stone Age Sanctuary in South-Eastern Anatolia.\" ex oriente, twenty twelve. -- Schmidt's own accessible account of the discovery and its significance.",
         "pause_after_ms": 800,
         "repetition_penalty": 2.0
       }
@@ -11346,7 +11346,7 @@
       "text": "Mann, Charles C. \"The Birth of Religion.\" National Geographic, June 2011. -- An excellent popular introduction to the site and its implications.",
       "text_markdown": "Mann, Charles C. \"The Birth of Religion.\" *National Geographic*, June 2011. -- An excellent popular introduction to the site and its implications.",
       "tts": {
-        "text": "Mann, Charles C. \"The Birth of Religion.\" National Geographic, June 2011. -- An excellent popular introduction to the site and its implications.",
+        "text": "Mann, Charles C. \"The Birth of Religion.\" National Geographic, June twenty eleven. -- An excellent popular introduction to the site and its implications.",
         "pause_after_ms": 800,
         "repetition_penalty": 2.0
       }
@@ -11364,7 +11364,7 @@
       "text": "Curry, Andrew. \"Göbekli Tepe: The World's First Temple?\" Smithsonian Magazine, November 2008. -- Clear, well-illustrated overview.",
       "text_markdown": "Curry, Andrew. \"Göbekli Tepe: The World's First Temple?\" *Smithsonian Magazine*, November 2008. -- Clear, well-illustrated overview.",
       "tts": {
-        "text": "Curry, Andrew. \"Göbekli Tepe: The World's First Temple?\" Smithsonian Magazine, November 2008. -- Clear, well-illustrated overview.",
+        "text": "Curry, Andrew. \"Göbekli Tepe: The World's First Temple?\" Smithsonian Magazine, November two thousand eight. -- Clear, well-illustrated overview.",
         "pause_after_ms": 800,
         "repetition_penalty": 2.0
       }
@@ -11398,7 +11398,7 @@
       "text": "Dietrich, Oliver, et al. \"The Role of Cult and Feasting in the Emergence of Neolithic Communities.\" Antiquity 86 (2012): 674-695. -- Key paper on the feasting hypothesis and the social organization of construction.",
       "text_markdown": "Dietrich, Oliver, et al. \"The Role of Cult and Feasting in the Emergence of Neolithic Communities.\" *Antiquity* 86 (2012): 674-695. -- Key paper on the feasting hypothesis and the social organization of construction.",
       "tts": {
-        "text": "Dietrich, Oliver, et al. \"The Role of Cult and Feasting in the Emergence of Neolithic Communities.\" Antiquity 86 (2012): 674-695. -- Key paper on the feasting hypothesis and the social organization of construction.",
+        "text": "Dietrich, Oliver, et al. \"The Role of Cult and Feasting in the Emergence of Neolithic Communities.\" Antiquity eighty six (twenty twelve): six hundred seventy four to six hundred ninety five. -- Key paper on the feasting hypothesis and the social organization of construction.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -11416,7 +11416,7 @@
       "text": "Clare, Lee, et al. \"Göbekli Tepe and the Cultural Developments in the 10th and 9th Millennia cal BC in Upper Mesopotamia and Beyond.\" Neo-Lithics 2/19 (2019). -- Update from the current excavation director.",
       "text_markdown": "Clare, Lee, et al. \"Göbekli Tepe and the Cultural Developments in the 10th and 9th Millennia cal BC in Upper Mesopotamia and Beyond.\" *Neo-Lithics* 2/19 (2019). -- Update from the current excavation director.",
       "tts": {
-        "text": "Clare, Lee, et al. \"Göbekli Tepe and the Cultural Developments in the 10th and 9th Millennia cal BC in Upper Mesopotamia and Beyond.\" Neo-Lithics 2/19 (2019). -- Update from the current excavation director.",
+        "text": "Clare, Lee, et al. \"Göbekli Tepe and the Cultural Developments in the tenth and ninth Millennia cal BC in Upper Mesopotamia and Beyond.\" Neo-Lithics two/nineteen (twenty nineteen). -- Update from the current excavation director.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -11434,7 +11434,7 @@
       "text": "Peters, Joris, and Klaus Schmidt. \"Animals in the Symbolic World of Pre-Pottery Neolithic Göbekli Tepe.\" Anthropozoologica 39 (2004): 179-218. -- The authoritative analysis of the animal carvings and faunal remains.",
       "text_markdown": "Peters, Joris, and Klaus Schmidt. \"Animals in the Symbolic World of Pre-Pottery Neolithic Göbekli Tepe.\" *Anthropozoologica* 39 (2004): 179-218. -- The authoritative analysis of the animal carvings and faunal remains.",
       "tts": {
-        "text": "Peters, Joris, and Klaus Schmidt. \"Animals in the Symbolic World of Pre-Pottery Neolithic Göbekli Tepe.\" Anthropozoologica 39 (2004): 179-218. -- The authoritative analysis of the animal carvings and faunal remains.",
+        "text": "Peters, Joris, and Klaus Schmidt. \"Animals in the Symbolic World of Pre-Pottery Neolithic Göbekli Tepe.\" Anthropozoologica thirty nine (two thousand four): one hundred seventy nine to two hundred eighteen. -- The authoritative analysis of the animal carvings and faunal remains.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -11468,7 +11468,7 @@
       "text": "Bellwood, Peter. First Farmers: The Origins of Agricultural Societies. Blackwell, 2005. -- Comprehensive global survey of the transition to agriculture.",
       "text_markdown": "Bellwood, Peter. *First Farmers: The Origins of Agricultural Societies*. Blackwell, 2005. -- Comprehensive global survey of the transition to agriculture.",
       "tts": {
-        "text": "Bellwood, Peter. First Farmers: The Origins of Agricultural Societies. Blackwell, 2005. -- Comprehensive global survey of the transition to agriculture.",
+        "text": "Bellwood, Peter. First Farmers: The Origins of Agricultural Societies. Blackwell, two thousand five. -- Comprehensive global survey of the transition to agriculture.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -11486,7 +11486,7 @@
       "text": "Hodder, Ian. The Leopard's Tale: Revealing the Mysteries of Çatalhöyük. Thames & Hudson, 2006. -- Accessible account of the other great Neolithic site in Turkey.",
       "text_markdown": "Hodder, Ian. *The Leopard's Tale: Revealing the Mysteries of Çatalhöyük*. Thames & Hudson, 2006. -- Accessible account of the other great Neolithic site in Turkey.",
       "tts": {
-        "text": "Hodder, Ian. The Leopard's Tale: Revealing the Mysteries of Çatalhöyük. Thames & Hudson, 2006. -- Accessible account of the other great Neolithic site in Turkey.",
+        "text": "Hodder, Ian. The Leopard's Tale: Revealing the Mysteries of Çatalhöyük. Thames & Hudson, two thousand six. -- Accessible account of the other great Neolithic site in Turkey.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -11594,7 +11594,7 @@
       "text": "Volume 1: The Mystery of Monte Alban -- Sacred Mountain, Lost Script, Vanished City",
       "text_markdown": "Volume 1: *The Mystery of Monte Alban* -- Sacred Mountain, Lost Script, Vanished City",
       "tts": {
-        "text": "Volume 1: The Mystery of Monte Alban -- Sacred Mountain, Lost Script, Vanished City",
+        "text": "Volume one: The Mystery of Monte Alban -- Sacred Mountain, Lost Script, Vanished City",
         "pause_after_ms": 800,
         "repetition_penalty": 2.0
       }
@@ -11610,7 +11610,7 @@
       "text": "Volume 2: The Unconquered People -- Unconquered Nation, Unwritten Tongue, Invisible State",
       "text_markdown": "Volume 2: *The Unconquered People* -- Unconquered Nation, Unwritten Tongue, Invisible State",
       "tts": {
-        "text": "Volume 2: The Unconquered People -- Unconquered Nation, Unwritten Tongue, Invisible State",
+        "text": "Volume two: The Unconquered People -- Unconquered Nation, Unwritten Tongue, Invisible State",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -11626,7 +11626,7 @@
       "text": "Volume 3: The Mystery of the Olmec -- The Mother Culture and the Stone That Speaks Once",
       "text_markdown": "Volume 3: *The Mystery of the Olmec* -- The Mother Culture and the Stone That Speaks Once",
       "tts": {
-        "text": "Volume 3: The Mystery of the Olmec -- The Mother Culture and the Stone That Speaks Once",
+        "text": "Volume three: The Mystery of the Olmec -- The Mother Culture and the Stone That Speaks Once",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -11642,7 +11642,7 @@
       "text": "Volume 4: The Mystery of Cahokia -- America's Forgotten Metropolis",
       "text_markdown": "Volume 4: *The Mystery of Cahokia* -- America's Forgotten Metropolis",
       "tts": {
-        "text": "Volume 4: The Mystery of Cahokia -- America's Forgotten Metropolis",
+        "text": "Volume four: The Mystery of Cahokia -- America's Forgotten Metropolis",
         "pause_after_ms": 800,
         "repetition_penalty": 2.0
       }
@@ -11658,7 +11658,7 @@
       "text": "Volume 5: The Mystery of Teotihuacan -- The City Where Even the Gods Were Strangers",
       "text_markdown": "Volume 5: *The Mystery of Teotihuacan* -- The City Where Even the Gods Were Strangers",
       "tts": {
-        "text": "Volume 5: The Mystery of Teotihuacan -- The City Where Even the Gods Were Strangers",
+        "text": "Volume five: The Mystery of Teotihuacan -- The City Where Even the Gods Were Strangers",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -11674,7 +11674,7 @@
       "text": "Volume 6: The Mystery of the Toltecs -- The Phantom Empire",
       "text_markdown": "Volume 6: *The Mystery of the Toltecs* -- The Phantom Empire",
       "tts": {
-        "text": "Volume 6: The Mystery of the Toltecs -- The Phantom Empire",
+        "text": "Volume six: The Mystery of the Toltecs -- The Phantom Empire",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -11690,7 +11690,7 @@
       "text": "Volume 7: The Mystery Before the Inca -- Tiwanaku, the Gate of the Sun, and the Engineers of the Sky",
       "text_markdown": "Volume 7: *The Mystery Before the Inca* -- Tiwanaku, the Gate of the Sun, and the Engineers of the Sky",
       "tts": {
-        "text": "Volume 7: The Mystery Before the Inca -- Tiwanaku, the Gate of the Sun, and the Engineers of the Sky",
+        "text": "Volume seven: The Mystery Before the Inca -- Tiwanaku, the Gate of the Sun, and the Engineers of the Sky",
         "pause_after_ms": 800,
         "repetition_penalty": 1.8
       }
@@ -11706,7 +11706,7 @@
       "text": "Volume 8: The Mysteries of the Arctic Peoples -- The Sivullirmiut, the Vanished Dorset, and the City on the Ice",
       "text_markdown": "Volume 8: *The Mysteries of the Arctic Peoples* -- The Sivullirmiut, the Vanished Dorset, and the City on the Ice",
       "tts": {
-        "text": "Volume 8: The Mysteries of the Arctic Peoples -- The Sivullirmiut, the Vanished Dorset, and the City on the Ice",
+        "text": "Volume eight: The Mysteries of the Arctic Peoples -- The Sivullirmiut, the Vanished Dorset, and the City on the Ice",
         "pause_after_ms": 800,
         "repetition_penalty": 1.8
       }
@@ -11722,7 +11722,7 @@
       "text": "Volume 9: The Mystery of Göbekli Tepe -- The Temple That Rewrote Human History",
       "text_markdown": "Volume 9: *The Mystery of Göbekli Tepe* -- The Temple That Rewrote Human History",
       "tts": {
-        "text": "Volume 9: The Mystery of Göbekli Tepe -- The Temple That Rewrote Human History",
+        "text": "Volume nine: The Mystery of Göbekli Tepe -- The Temple That Rewrote Human History",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }

@@ -170,7 +170,7 @@
       "text": "At its peak, around 1300 CE, it was home to perhaps 20,000 people.",
       "text_markdown": "At its peak, around 1300 CE, it was home to perhaps 20,000 people.",
       "tts": {
-        "text": "At its peak, around 1300 CE, it was home to perhaps 20,000 people.",
+        "text": "At its peak, around thirteen hundred CE, it was home to perhaps twenty thousand people.",
         "pause_after_ms": 800,
         "repetition_penalty": 2.0
       }
@@ -370,7 +370,7 @@
       "text": "The ruins of Great Zimbabwe sit in a shallow valley at an elevation of roughly 1,100 meters, about 30 kilometers southeast of the modern city of Masvingo (mah-SVEEN-goh) in the Republic of Zimbabwe.",
       "text_markdown": "The ruins of Great Zimbabwe sit in a shallow valley at an elevation of roughly 1,100 meters, about 30 kilometers southeast of the modern city of Masvingo (mah-SVEEN-goh) in the Republic of Zimbabwe.",
       "tts": {
-        "text": "The ruins of Great Zimbabwe sit in a shallow valley at an elevation of roughly 1,100 meters, about 30 kilometers southeast of the modern city of Masvingo (mah-SVEEN-goh) in the Republic of Zimbabwe.",
+        "text": "The ruins of Great Zimbabwe sit in a shallow valley at an elevation of roughly one thousand one hundred meters, about thirty kilometers southeast of the modern city of Masvingo (mah-SVEEN-goh) in the Republic of Zimbabwe.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.8
       }
@@ -386,7 +386,7 @@
       "text": "The site occupies roughly 720 hectares -- a vast area, though the stone structures themselves cover a smaller portion.",
       "text_markdown": "The site occupies roughly 720 hectares -- a vast area, though the stone structures themselves cover a smaller portion.",
       "tts": {
-        "text": "The site occupies roughly 720 hectares -- a vast area, though the stone structures themselves cover a smaller portion.",
+        "text": "The site occupies roughly seven hundred twenty hectares -- a vast area, though the stone structures themselves cover a smaller portion.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -450,7 +450,7 @@
       "text": "It is an oval enclosure, roughly 250 meters in circumference, bounded by a wall that reaches a maximum height of 11 meters and a maximum thickness of 5 meters at its base.",
       "text_markdown": "It is an oval enclosure, roughly 250 meters in circumference, bounded by a wall that reaches a maximum height of 11 meters and a maximum thickness of 5 meters at its base.",
       "tts": {
-        "text": "It is an oval enclosure, roughly 250 meters in circumference, bounded by a wall that reaches a maximum height of 11 meters and a maximum thickness of 5 meters at its base.",
+        "text": "It is an oval enclosure, roughly two hundred fifty meters in circumference, bounded by a wall that reaches a maximum height of eleven meters and a maximum thickness of five meters at its base.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -644,7 +644,7 @@
       "text": "It is a solid structure -- not hollow, not a tower in the functional sense -- roughly 9 meters tall and 5 meters in diameter at the base.",
       "text_markdown": "It is a solid structure -- not hollow, not a tower in the functional sense -- roughly 9 meters tall and 5 meters in diameter at the base.",
       "tts": {
-        "text": "It is a solid structure -- not hollow, not a tower in the functional sense -- roughly 9 meters tall and 5 meters in diameter at the base.",
+        "text": "It is a solid structure -- not hollow, not a tower in the functional sense -- roughly nine meters tall and five meters in diameter at the base.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.8
       }
@@ -1140,7 +1140,7 @@
       "text": "Estimates suggest that the outer wall contains roughly 15,000 cubic meters of granite -- thousands of tons of stone, quarried, shaped, transported, and assembled by hand.",
       "text_markdown": "Estimates suggest that the outer wall contains roughly 15,000 cubic meters of granite -- thousands of tons of stone, quarried, shaped, transported, and assembled by hand.",
       "tts": {
-        "text": "Estimates suggest that the outer wall contains roughly 15,000 cubic meters of granite -- thousands of tons of stone, quarried, shaped, transported, and assembled by hand.",
+        "text": "Estimates suggest that the outer wall contains roughly fifteen thousand cubic meters of granite -- thousands of tons of stone, quarried, shaped, transported, and assembled by hand.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -1264,7 +1264,7 @@
       "text": "Above the valley floor, roughly 80 meters higher than the Great Enclosure, a steep-sided granite hill rises from the landscape.",
       "text_markdown": "Above the valley floor, roughly 80 meters higher than the Great Enclosure, a steep-sided granite hill rises from the landscape.",
       "tts": {
-        "text": "Above the valley floor, roughly 80 meters higher than the Great Enclosure, a steep-sided granite hill rises from the landscape.",
+        "text": "Above the valley floor, roughly eighty meters higher than the Great Enclosure, a steep-sided granite hill rises from the landscape.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -1506,7 +1506,7 @@
       "text": "They are carved from a greenish soapstone (steatite) and depict stylized birds perched on tall pedestals -- each pedestal roughly one meter tall, with the bird figure on top adding another 30-40 centimeters.",
       "text_markdown": "They are carved from a greenish soapstone (steatite) and depict stylized birds perched on tall pedestals -- each pedestal roughly one meter tall, with the bird figure on top adding another 30-40 centimeters.",
       "tts": {
-        "text": "They are carved from a greenish soapstone (steatite) and depict stylized birds perched on tall pedestals -- each pedestal roughly one meter tall, with the bird figure on top adding another 30-40 centimeters.",
+        "text": "They are carved from a greenish soapstone (steatite) and depict stylized birds perched on tall pedestals -- each pedestal roughly one meter tall, with the bird figure on top adding another thirty to fortycentimeters.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -1938,7 +1938,7 @@
       "text": "Over 300 individual structures have been identified in the Valley Ruins, ranging from simple daga houses to stone-walled compounds of considerable size.",
       "text_markdown": "Over 300 individual structures have been identified in the Valley Ruins, ranging from simple *daga* houses to stone-walled compounds of considerable size.",
       "tts": {
-        "text": "Over 300 individual structures have been identified in the Valley Ruins, ranging from simple daga houses to stone-walled compounds of considerable size.",
+        "text": "Over three hundred individual structures have been identified in the Valley Ruins, ranging from simple daga houses to stone-walled compounds of considerable size.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -1998,7 +1998,7 @@
       "text": "Over 300 similar stone enclosures have been identified across the plateau -- a region stretching from the Limpopo River in the south to the Zambezi River in the north, and from the eastern highlands to the edge of the Kalahari in the west.",
       "text_markdown": "Over 300 similar stone enclosures have been identified across the plateau -- a region stretching from the Limpopo River in the south to the Zambezi River in the north, and from the eastern highlands to the edge of the Kalahari in the west.",
       "tts": {
-        "text": "Over 300 similar stone enclosures have been identified across the plateau -- a region stretching from the Limpopo River in the south to the Zambezi River in the north, and from the eastern highlands to the edge of the Kalahari in the west.",
+        "text": "Over three hundred similar stone enclosures have been identified across the plateau -- a region stretching from the Limpopo River in the south to the Zambezi River in the north, and from the eastern highlands to the edge of the Kalahari in the west.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.8
       }
@@ -2192,7 +2192,7 @@
       "text": "Great Zimbabwe itself was occupied from approximately 1100 to 1450 CE, with the most intensive construction occurring during the thirteenth and fourteenth centuries.",
       "text_markdown": "Great Zimbabwe itself was occupied from approximately 1100 to 1450 CE, with the most intensive construction occurring during the thirteenth and fourteenth centuries.",
       "tts": {
-        "text": "Great Zimbabwe itself was occupied from approximately 1100 to 1450 CE, with the most intensive construction occurring during the thirteenth and fourteenth centuries.",
+        "text": "Great Zimbabwe itself was occupied from approximately eleven hundred to fourteen fifty CE, with the most intensive construction occurring during the thirteenth and fourteenth centuries.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -2224,7 +2224,7 @@
       "text": "The population of Great Zimbabwe at its peak, roughly 1300 CE, has been estimated at between 10,000 and 20,000 people.",
       "text_markdown": "The population of Great Zimbabwe at its peak, roughly 1300 CE, has been estimated at between 10,000 and 20,000 people.",
       "tts": {
-        "text": "The population of Great Zimbabwe at its peak, roughly 1300 CE, has been estimated at between 10,000 and 20,000 people.",
+        "text": "The population of Great Zimbabwe at its peak, roughly thirteen hundred CE, has been estimated at between ten thousand and twenty thousand people.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -2368,7 +2368,7 @@
       "text": "The Zimbabwe Plateau receives adequate rainfall for farming (roughly 600-1000 millimeters per year), and the soils are generally fertile.",
       "text_markdown": "The Zimbabwe Plateau receives adequate rainfall for farming (roughly 600-1000 millimeters per year), and the soils are generally fertile.",
       "tts": {
-        "text": "The Zimbabwe Plateau receives adequate rainfall for farming (roughly 600-1000 millimeters per year), and the soils are generally fertile.",
+        "text": "The Zimbabwe Plateau receives adequate rainfall for farming (roughly six hundred to one thousandmillimeters per year), and the soils are generally fertile.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -2904,7 +2904,7 @@
       "text": "In 1871, Karl Mauch (MOWKH, rhymes with \"ouch\"), a German geologist and explorer, arrived at the ruins of Great Zimbabwe.",
       "text_markdown": "In 1871, Karl Mauch (MOWKH, rhymes with \"ouch\"), a German geologist and explorer, arrived at the ruins of Great Zimbabwe.",
       "tts": {
-        "text": "In 1871, Karl Mauch (MOWKH, rhymes with \"ouch\"), a German geologist and explorer, arrived at the ruins of Great Zimbabwe.",
+        "text": "In eighteen seventy one, Karl Mauch (MOWKH, rhymes with \"ouch\"), a German geologist and explorer, arrived at the ruins of Great Zimbabwe.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -3192,7 +3192,7 @@
       "text": "H. Rider Haggard's novel King Solomon's Mines (1885), one of the most popular adventure novels of the nineteenth century, was inspired in part by the reports from Great Zimbabwe and the legends of ancient gold mines in the African interior.",
       "text_markdown": "H. Rider Haggard's novel *King Solomon's Mines* (1885), one of the most popular adventure novels of the nineteenth century, was inspired in part by the reports from Great Zimbabwe and the legends of ancient gold mines in the African interior.",
       "tts": {
-        "text": "H. Rider Haggard's novel King Solomon's Mines (1885), one of the most popular adventure novels of the nineteenth century, was inspired in part by the reports from Great Zimbabwe and the legends of ancient gold mines in the African interior.",
+        "text": "H. Rider Haggard's novel King Solomon's Mines (eighteen eighty five), one of the most popular adventure novels of the nineteenth century, was inspired in part by the reports from Great Zimbabwe and the legends of ancient gold mines in the African interior.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.8
       }
@@ -3226,7 +3226,7 @@
       "image": "../images/placeholders/04-mauch-sketch.png",
       "image_alt": "Portrait of Karl Mauch and his sketch of the Great Enclosure ruins from 1871",
       "tts": {
-        "text": "Portrait of Karl Mauch and his sketch of the Great Enclosure ruins from 1871",
+        "text": "Portrait of Karl Mauch and his sketch of the Great Enclosure ruins from eighteen seventy one",
         "pause_after_ms": 1200,
         "repetition_penalty": 2.0
       }
@@ -3338,7 +3338,7 @@
       "text": "The most destructive of these early excavators was Richard Nicklin Hall, who was appointed curator of the site by the British South Africa Company in 1902.",
       "text_markdown": "The most destructive of these early excavators was Richard Nicklin Hall, who was appointed curator of the site by the British South Africa Company in 1902.",
       "tts": {
-        "text": "The most destructive of these early excavators was Richard Nicklin Hall, who was appointed curator of the site by the British South Africa Company in 1902.",
+        "text": "The most destructive of these early excavators was Richard Nicklin Hall, who was appointed curator of the site by the British South Africa Company in nineteen oh two.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -3402,7 +3402,7 @@
       "text": "The first professional archaeological excavation of Great Zimbabwe was conducted by David Randall-MacIver in 1905, sponsored by the British Association for the Advancement of Science.",
       "text_markdown": "The first professional archaeological excavation of Great Zimbabwe was conducted by David Randall-MacIver in 1905, sponsored by the British Association for the Advancement of Science.",
       "tts": {
-        "text": "The first professional archaeological excavation of Great Zimbabwe was conducted by David Randall-MacIver in 1905, sponsored by the British Association for the Advancement of Science.",
+        "text": "The first professional archaeological excavation of Great Zimbabwe was conducted by David Randall-MacIver in nineteen oh five, sponsored by the British Association for the Advancement of Science.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -3466,7 +3466,7 @@
       "text": "Randall-MacIver's findings were published in 1906 in his book Medieval Rhodesia.",
       "text_markdown": "Randall-MacIver's findings were published in 1906 in his book *Medieval Rhodesia*.",
       "tts": {
-        "text": "Randall-MacIver's findings were published in 1906 in his book Medieval Rhodesia.",
+        "text": "Randall-MacIver's findings were published in nineteen oh six in his book Medieval Rhodesia.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -3562,7 +3562,7 @@
       "text": "In 1929, Gertrude Caton-Thompson, a distinguished British archaeologist, conducted the most thorough excavation of Great Zimbabwe to that date.",
       "text_markdown": "In 1929, Gertrude Caton-Thompson, a distinguished British archaeologist, conducted the most thorough excavation of Great Zimbabwe to that date.",
       "tts": {
-        "text": "In 1929, Gertrude Caton-Thompson, a distinguished British archaeologist, conducted the most thorough excavation of Great Zimbabwe to that date.",
+        "text": "In nineteen twenty nine, Gertrude Caton-Thompson, a distinguished British archaeologist, conducted the most thorough excavation of Great Zimbabwe to that date.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -3610,7 +3610,7 @@
       "text": "She presented her findings to the British Association for the Advancement of Science in 1931 and published them as The Zimbabwe Culture -- still one of the fundamental works on the site.",
       "text_markdown": "She presented her findings to the British Association for the Advancement of Science in 1931 and published them as *The Zimbabwe Culture* -- still one of the fundamental works on the site.",
       "tts": {
-        "text": "She presented her findings to the British Association for the Advancement of Science in 1931 and published them as The Zimbabwe Culture -- still one of the fundamental works on the site.",
+        "text": "She presented her findings to the British Association for the Advancement of Science in nineteen thirty one and published them as The Zimbabwe Culture -- still one of the fundamental works on the site.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -3786,7 +3786,7 @@
       "text": "Caton-Thompson's presentation to the British Association for the Advancement of Science in 1931 was met with outrage from the Rhodesian delegates at the conference.",
       "text_markdown": "Caton-Thompson's presentation to the British Association for the Advancement of Science in 1931 was met with outrage from the Rhodesian delegates at the conference.",
       "tts": {
-        "text": "Caton-Thompson's presentation to the British Association for the Advancement of Science in 1931 was met with outrage from the Rhodesian delegates at the conference.",
+        "text": "Caton-Thompson's presentation to the British Association for the Advancement of Science in nineteen thirty one was met with outrage from the Rhodesian delegates at the conference.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -4022,7 +4022,7 @@
       "text": "The earliest occupation dates to the eleventh century CE (roughly 1000-1100 CE), with the most intensive construction occurring during the thirteenth and fourteenth centuries.",
       "text_markdown": "The earliest occupation dates to the eleventh century CE (roughly 1000-1100 CE), with the most intensive construction occurring during the thirteenth and fourteenth centuries.",
       "tts": {
-        "text": "The earliest occupation dates to the eleventh century CE (roughly 1000-1100 CE), with the most intensive construction occurring during the thirteenth and fourteenth centuries.",
+        "text": "The earliest occupation dates to the eleventh century CE (roughly one thousand to eleven hundred CE), with the most intensive construction occurring during the thirteenth and fourteenth centuries.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -4328,7 +4328,7 @@
       "text": "The gold trade was the economic foundation of Great Zimbabwe's wealth (as we will discuss in Chapter 6), but the gold-working techniques were indigenous, not imported.",
       "text_markdown": "The gold trade was the economic foundation of Great Zimbabwe's wealth (as we will discuss in Chapter 6), but the gold-working techniques were indigenous, not imported.",
       "tts": {
-        "text": "The gold trade was the economic foundation of Great Zimbabwe's wealth (as we will discuss in Chapter 6), but the gold-working techniques were indigenous, not imported.",
+        "text": "The gold trade was the economic foundation of Great Zimbabwe's wealth (as we will discuss in Chapter six), but the gold-working techniques were indigenous, not imported.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -4536,7 +4536,7 @@
       "text": "Peter Garlake (1934-2011), a British-born archaeologist who worked in Rhodesia in the 1960s and 1970s, was the most important twentieth-century scholar of Great Zimbabwe.",
       "text_markdown": "Peter Garlake (1934-2011), a British-born archaeologist who worked in Rhodesia in the 1960s and 1970s, was the most important twentieth-century scholar of Great Zimbabwe.",
       "tts": {
-        "text": "Peter Garlake (1934-2011), a British-born archaeologist who worked in Rhodesia in the 1960s and 1970s, was the most important twentieth-century scholar of Great Zimbabwe.",
+        "text": "Peter Garlake (nineteen thirty four to twenty eleven), a British-born archaeologist who worked in Rhodesia in the nineteen sixties and nineteen seventies, was the most important twentieth-century scholar of Great Zimbabwe.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -4552,7 +4552,7 @@
       "text": "Garlake's book Great Zimbabwe (1973) was a comprehensive archaeological and architectural analysis that demolished the remaining vestiges of the \"foreign builders\" theory.",
       "text_markdown": "Garlake's book *Great Zimbabwe* (1973) was a comprehensive archaeological and architectural analysis that demolished the remaining vestiges of the \"foreign builders\" theory.",
       "tts": {
-        "text": "Garlake's book Great Zimbabwe (1973) was a comprehensive archaeological and architectural analysis that demolished the remaining vestiges of the \"foreign builders\" theory.",
+        "text": "Garlake's book Great Zimbabwe (nineteen seventy three) was a comprehensive archaeological and architectural analysis that demolished the remaining vestiges of the \"foreign builders\" theory.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -4840,7 +4840,7 @@
       "text": "The last white-minority government of Rhodesia fell in 1980, following a liberation war that lasted over a decade.",
       "text_markdown": "The last white-minority government of Rhodesia fell in 1980, following a liberation war that lasted over a decade.",
       "tts": {
-        "text": "The last white-minority government of Rhodesia fell in 1980, following a liberation war that lasted over a decade.",
+        "text": "The last white-minority government of Rhodesia fell in nineteen eighty, following a liberation war that lasted over a decade.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -4920,7 +4920,7 @@
       "text": "Shadreck Chirikure (shad-RECK chee-ree-KOO-reh), a Zimbabwean archaeologist at the University of Cape Town, has argued in his 2020 book Great Zimbabwe: Reclaiming a 'Confiscated' Past that the study of Great Zimbabwe remains distorted by colonial-era frameworks.",
       "text_markdown": "Shadreck Chirikure (shad-RECK chee-ree-KOO-reh), a Zimbabwean archaeologist at the University of Cape Town, has argued in his 2020 book *Great Zimbabwe: Reclaiming a 'Confiscated' Past* that the study of Great Zimbabwe remains distorted by colonial-era frameworks.",
       "tts": {
-        "text": "Shadreck Chirikure (shad-RECK chee-ree-KOO-reh), a Zimbabwean archaeologist at the University of Cape Town, has argued in his 2020 book Great Zimbabwe: Reclaiming a 'Confiscated' Past that the study of Great Zimbabwe remains distorted by colonial-era frameworks.",
+        "text": "Shadreck Chirikure (shad-RECK chee-ree-KOO-reh), a Zimbabwean archaeologist at the University of Cape Town, has argued in his twenty twenty book Great Zimbabwe: Reclaiming a 'Confiscated' Past that the study of Great Zimbabwe remains distorted by colonial-era frameworks.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -5812,7 +5812,7 @@
       "text": "At Great Zimbabwe, over 2,000 glass beads have been recovered -- beads made in India, in the Islamic world, and in Southeast Asia, traded across the Indian Ocean to the East African coast and then inland to the Zimbabwe Plateau.",
       "text_markdown": "At Great Zimbabwe, over 2,000 glass beads have been recovered -- beads made in India, in the Islamic world, and in Southeast Asia, traded across the Indian Ocean to the East African coast and then inland to the Zimbabwe Plateau.",
       "tts": {
-        "text": "At Great Zimbabwe, over 2,000 glass beads have been recovered -- beads made in India, in the Islamic world, and in Southeast Asia, traded across the Indian Ocean to the East African coast and then inland to the Zimbabwe Plateau.",
+        "text": "At Great Zimbabwe, over two thousand glass beads have been recovered -- beads made in India, in the Islamic world, and in Southeast Asia, traded across the Indian Ocean to the East African coast and then inland to the Zimbabwe Plateau.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.8
       }
@@ -5908,7 +5908,7 @@
       "text": "Vasco da Gama's expedition reached the East African coast in 1498, and within a few years, the Portuguese had established trading posts at Sofala and Kilwa, attempting to redirect the gold trade through their own commercial networks.",
       "text_markdown": "Vasco da Gama's expedition reached the East African coast in 1498, and within a few years, the Portuguese had established trading posts at Sofala and Kilwa, attempting to redirect the gold trade through their own commercial networks.",
       "tts": {
-        "text": "Vasco da Gama's expedition reached the East African coast in 1498, and within a few years, the Portuguese had established trading posts at Sofala and Kilwa, attempting to redirect the gold trade through their own commercial networks.",
+        "text": "Vasco da Gama's expedition reached the East African coast in fourteen ninety eight, and within a few years, the Portuguese had established trading posts at Sofala and Kilwa, attempting to redirect the gold trade through their own commercial networks.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -5940,7 +5940,7 @@
       "text": "De Barros, writing in the 1550s, described a stone city in the interior called \"Symbaoe\" -- clearly Great Zimbabwe -- though he repeated the already-established European error of attributing it to non-African builders.",
       "text_markdown": "De Barros, writing in the 1550s, described a stone city in the interior called \"Symbaoe\" -- clearly Great Zimbabwe -- though he repeated the already-established European error of attributing it to non-African builders.",
       "tts": {
-        "text": "De Barros, writing in the 1550s, described a stone city in the interior called \"Symbaoe\" -- clearly Great Zimbabwe -- though he repeated the already-established European error of attributing it to non-African builders.",
+        "text": "De Barros, writing in the fifteen fifties, described a stone city in the interior called \"Symbaoe\" -- clearly Great Zimbabwe -- though he repeated the already-established European error of attributing it to non-African builders.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -5984,7 +5984,7 @@
       "text": "The immediate predecessor of Great Zimbabwe was Mapungubwe (mah-poon-GOOB-weh), a site located roughly 300 kilometers to the south, at the confluence of the Shashe and Limpopo rivers in what is now the Limpopo Province of South Africa.",
       "text_markdown": "The immediate predecessor of Great Zimbabwe was Mapungubwe (mah-poon-GOOB-weh), a site located roughly 300 kilometers to the south, at the confluence of the Shashe and Limpopo rivers in what is now the Limpopo Province of South Africa.",
       "tts": {
-        "text": "The immediate predecessor of Great Zimbabwe was Mapungubwe (mah-poon-GOOB-weh), a site located roughly 300 kilometers to the south, at the confluence of the Shashe and Limpopo rivers in what is now the Limpopo Province of South Africa.",
+        "text": "The immediate predecessor of Great Zimbabwe was Mapungubwe (mah-poon-GOOB-weh), a site located roughly three hundred kilometers to the south, at the confluence of the Shashe and Limpopo rivers in what is now the Limpopo Province of South Africa.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.8
       }
@@ -6016,7 +6016,7 @@
       "text": "Mapungubwe flourished from roughly 1075 to 1220 CE, and at its peak, the ruling elite lived on top of a flat-topped sandstone hill, physically elevated above the commoners who lived on the plain below.",
       "text_markdown": "Mapungubwe flourished from roughly 1075 to 1220 CE, and at its peak, the ruling elite lived on top of a flat-topped sandstone hill, physically elevated above the commoners who lived on the plain below.",
       "tts": {
-        "text": "Mapungubwe flourished from roughly 1075 to 1220 CE, and at its peak, the ruling elite lived on top of a flat-topped sandstone hill, physically elevated above the commoners who lived on the plain below.",
+        "text": "Mapungubwe flourished from roughly one thousand seventy five to twelve twenty CE, and at its peak, the ruling elite lived on top of a flat-topped sandstone hill, physically elevated above the commoners who lived on the plain below.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -6064,7 +6064,7 @@
       "text": "The gold rhinoceros -- a small figurine, roughly 15 centimeters long, constructed by wrapping thin gold foil around a carved wooden core and securing it with tiny gold tacks -- is one of the masterpieces of African metalwork.",
       "text_markdown": "The gold rhinoceros -- a small figurine, roughly 15 centimeters long, constructed by wrapping thin gold foil around a carved wooden core and securing it with tiny gold tacks -- is one of the masterpieces of African metalwork.",
       "tts": {
-        "text": "The gold rhinoceros -- a small figurine, roughly 15 centimeters long, constructed by wrapping thin gold foil around a carved wooden core and securing it with tiny gold tacks -- is one of the masterpieces of African metalwork.",
+        "text": "The gold rhinoceros -- a small figurine, roughly fifteen centimeters long, constructed by wrapping thin gold foil around a carved wooden core and securing it with tiny gold tacks -- is one of the masterpieces of African metalwork.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -6340,7 +6340,7 @@
       "text": "By roughly 1450 CE, Great Zimbabwe had been largely abandoned.",
       "text_markdown": "By roughly 1450 CE, Great Zimbabwe had been largely abandoned.",
       "tts": {
-        "text": "By roughly 1450 CE, Great Zimbabwe had been largely abandoned.",
+        "text": "By roughly fourteen fifty CE, Great Zimbabwe had been largely abandoned.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -6420,7 +6420,7 @@
       "text": "A population of 10,000-20,000 people, concentrated in a single location for over two centuries, would have placed enormous pressure on the surrounding landscape.",
       "text_markdown": "A population of 10,000-20,000 people, concentrated in a single location for over two centuries, would have placed enormous pressure on the surrounding landscape.",
       "tts": {
-        "text": "A population of 10,000-20,000 people, concentrated in a single location for over two centuries, would have placed enormous pressure on the surrounding landscape.",
+        "text": "A population of one hundred hundred to two hundred hundredpeople, concentrated in a single location for over two centuries, would have placed enormous pressure on the surrounding landscape.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -6564,7 +6564,7 @@
       "text": "The pattern is familiar from other civilizations in this series: Tiwanaku (Volume 7) was vulnerable to drought on the altiplano, and the Indus Valley civilization (Volume 10) faced river diversion and climate aridification.",
       "text_markdown": "The pattern is familiar from other civilizations in this series: Tiwanaku (Volume 7) was vulnerable to drought on the altiplano, and the Indus Valley civilization (Volume 10) faced river diversion and climate aridification.",
       "tts": {
-        "text": "The pattern is familiar from other civilizations in this series: Tiwanaku (Volume 7) was vulnerable to drought on the altiplano, and the Indus Valley civilization (Volume 10) faced river diversion and climate aridification.",
+        "text": "The pattern is familiar from other civilizations in this series: Tiwanaku (Volume seven) was vulnerable to drought on the altiplano, and the Indus Valley civilization (Volume ten) faced river diversion and climate aridification.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -7344,7 +7344,7 @@
       "text": "The Mali Empire, which succeeded Ghana in the thirteenth century, was one of the largest empires on Earth during the reign of Mansa Musa (MAHN-sah MOO-sah), who ruled from approximately 1312 to 1337.",
       "text_markdown": "The Mali Empire, which succeeded Ghana in the thirteenth century, was one of the largest empires on Earth during the reign of Mansa Musa (MAHN-sah MOO-sah), who ruled from approximately 1312 to 1337.",
       "tts": {
-        "text": "The Mali Empire, which succeeded Ghana in the thirteenth century, was one of the largest empires on Earth during the reign of Mansa Musa (MAHN-sah MOO-sah), who ruled from approximately 1312 to 1337.",
+        "text": "The Mali Empire, which succeeded Ghana in the thirteenth century, was one of the largest empires on Earth during the reign of Mansa Musa (MAHN-sah MOO-sah), who ruled from approximately thirteen twelve to thirteen thirty seven.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -7360,7 +7360,7 @@
       "text": "Mansa Musa's pilgrimage to Mecca in 1324 -- during which he distributed so much gold in Cairo that he reportedly depressed the gold market for a decade -- is one of the most famous displays of wealth in world history.",
       "text_markdown": "Mansa Musa's pilgrimage to Mecca in 1324 -- during which he distributed so much gold in Cairo that he reportedly depressed the gold market for a decade -- is one of the most famous displays of wealth in world history.",
       "tts": {
-        "text": "Mansa Musa's pilgrimage to Mecca in 1324 -- during which he distributed so much gold in Cairo that he reportedly depressed the gold market for a decade -- is one of the most famous displays of wealth in world history.",
+        "text": "Mansa Musa's pilgrimage to Mecca in thirteen twenty four -- during which he distributed so much gold in Cairo that he reportedly depressed the gold market for a decade -- is one of the most famous displays of wealth in world history.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -7536,7 +7536,7 @@
       "text": "Mapungubwe was designated a UNESCO World Heritage Site in 2003 and a South African National Heritage Site.",
       "text_markdown": "Mapungubwe was designated a UNESCO World Heritage Site in 2003 and a South African National Heritage Site.",
       "tts": {
-        "text": "Mapungubwe was designated a UNESCO World Heritage Site in 2003 and a South African National Heritage Site.",
+        "text": "Mapungubwe was designated a UNESCO World Heritage Site in two thousand three and a South African National Heritage Site.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -7552,7 +7552,7 @@
       "text": "The discovery of Mapungubwe in 1932 was itself suppressed for decades by the South African government, which feared that evidence of a sophisticated pre-colonial African state would undermine the ideological foundations of apartheid.",
       "text_markdown": "The discovery of Mapungubwe in 1932 was itself suppressed for decades by the South African government, which feared that evidence of a sophisticated pre-colonial African state would undermine the ideological foundations of apartheid.",
       "tts": {
-        "text": "The discovery of Mapungubwe in 1932 was itself suppressed for decades by the South African government, which feared that evidence of a sophisticated pre-colonial African state would undermine the ideological foundations of apartheid.",
+        "text": "The discovery of Mapungubwe in nineteen thirty two was itself suppressed for decades by the South African government, which feared that evidence of a sophisticated pre-colonial African state would undermine the ideological foundations of apartheid.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -7584,7 +7584,7 @@
       "text": "Kano, one of the oldest cities in West Africa, had massive earthen walls (portions of which still stand) encircling an area of over 20 square kilometers.",
       "text_markdown": "Kano, one of the oldest cities in West Africa, had massive earthen walls (portions of which still stand) encircling an area of over 20 square kilometers.",
       "tts": {
-        "text": "Kano, one of the oldest cities in West Africa, had massive earthen walls (portions of which still stand) encircling an area of over 20 square kilometers.",
+        "text": "Kano, one of the oldest cities in West Africa, had massive earthen walls (portions of which still stand) encircling an area of over twenty square kilometers.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -7632,7 +7632,7 @@
       "text": "In the Ethiopian Highlands, the kingdom of Aksum (AHK-soom) had been one of the great powers of the ancient world -- a state that controlled trade between the Red Sea and the African interior, minted its own coins, erected massive stone stelae (carved stone pillars, some over 20 meters tall), and adopted Christianity in the fourth century CE, making it one of the oldest Christian states in the world.",
       "text_markdown": "In the Ethiopian Highlands, the kingdom of Aksum (AHK-soom) had been one of the great powers of the ancient world -- a state that controlled trade between the Red Sea and the African interior, minted its own coins, erected massive stone stelae (carved stone pillars, some over 20 meters tall), and adopted Christianity in the fourth century CE, making it one of the oldest Christian states in the world.",
       "tts": {
-        "text": "In the Ethiopian Highlands, the kingdom of Aksum (AHK-soom) had been one of the great powers of the ancient world -- a state that controlled trade between the Red Sea and the African interior, minted its own coins, erected massive stone stelae (carved stone pillars, some over 20 meters tall), and adopted Christianity in the fourth century CE, making it one of the oldest Christian states in the world.",
+        "text": "In the Ethiopian Highlands, the kingdom of Aksum (AHK-soom) had been one of the great powers of the ancient world -- a state that controlled trade between the Red Sea and the African interior, minted its own coins, erected massive stone stelae (carved stone pillars, some over twenty meters tall), and adopted Christianity in the fourth century CE, making it one of the oldest Christian states in the world.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.8
       }
@@ -7680,7 +7680,7 @@
       "text": "When the Portuguese made contact with Kongo in 1483, they found a kingdom with a capital city (Mbanza Kongo), a system of provincial governance, a royal court with elaborate protocol, and a population of perhaps half a million.",
       "text_markdown": "When the Portuguese made contact with Kongo in 1483, they found a kingdom with a capital city (Mbanza Kongo), a system of provincial governance, a royal court with elaborate protocol, and a population of perhaps half a million.",
       "tts": {
-        "text": "When the Portuguese made contact with Kongo in 1483, they found a kingdom with a capital city (Mbanza Kongo), a system of provincial governance, a royal court with elaborate protocol, and a population of perhaps half a million.",
+        "text": "When the Portuguese made contact with Kongo in fourteen eighty three, they found a kingdom with a capital city (Mbanza Kongo), a system of provincial governance, a royal court with elaborate protocol, and a population of perhaps half a million.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.8
       }
@@ -7744,7 +7744,7 @@
       "text": "The Ajuran (ah-JOO-rahn) Sultanate, which controlled much of southern Somalia and parts of eastern Ethiopia from the thirteenth to the seventeenth century, built an extensive system of limestone wells and aqueducts to support agriculture in the arid landscape -- a feat of hydraulic engineering comparable in ambition, if not in scale, to the water management systems of the Indus Valley civilization (Volume 10).",
       "text_markdown": "The Ajuran (ah-JOO-rahn) Sultanate, which controlled much of southern Somalia and parts of eastern Ethiopia from the thirteenth to the seventeenth century, built an extensive system of limestone wells and aqueducts to support agriculture in the arid landscape -- a feat of hydraulic engineering comparable in ambition, if not in scale, to the water management systems of the Indus Valley civilization (Volume 10).",
       "tts": {
-        "text": "The Ajuran (ah-JOO-rahn) Sultanate, which controlled much of southern Somalia and parts of eastern Ethiopia from the thirteenth to the seventeenth century, built an extensive system of limestone wells and aqueducts to support agriculture in the arid landscape -- a feat of hydraulic engineering comparable in ambition, if not in scale, to the water management systems of the Indus Valley civilization (Volume 10).",
+        "text": "The Ajuran (ah-JOO-rahn) Sultanate, which controlled much of southern Somalia and parts of eastern Ethiopia from the thirteenth to the seventeenth century, built an extensive system of limestone wells and aqueducts to support agriculture in the arid landscape -- a feat of hydraulic engineering comparable in ambition, if not in scale, to the water management systems of the Indus Valley civilization (Volume ten).",
         "pause_after_ms": 800,
         "repetition_penalty": 1.8
       }
@@ -7884,7 +7884,7 @@
       "text": "The peak of Great Zimbabwe, roughly 1200-1400 CE, was a period of extraordinary dynamism across the world.",
       "text_markdown": "The peak of Great Zimbabwe, roughly 1200-1400 CE, was a period of extraordinary dynamism across the world.",
       "tts": {
-        "text": "The peak of Great Zimbabwe, roughly 1200-1400 CE, was a period of extraordinary dynamism across the world.",
+        "text": "The peak of Great Zimbabwe, roughly twelve hundred to fourteen hundred CE, was a period of extraordinary dynamism across the world.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -7980,7 +7980,7 @@
       "text": "The European Crusades, launched in 1095 and continuing through the thirteenth century, had opened trade routes between Europe and the Islamic world, bringing new goods, ideas, and technologies into European commerce.",
       "text_markdown": "The European Crusades, launched in 1095 and continuing through the thirteenth century, had opened trade routes between Europe and the Islamic world, bringing new goods, ideas, and technologies into European commerce.",
       "tts": {
-        "text": "The European Crusades, launched in 1095 and continuing through the thirteenth century, had opened trade routes between Europe and the Islamic world, bringing new goods, ideas, and technologies into European commerce.",
+        "text": "The European Crusades, launched in one thousand ninety five and continuing through the thirteenth century, had opened trade routes between Europe and the Islamic world, bringing new goods, ideas, and technologies into European commerce.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -8028,7 +8028,7 @@
       "text": "The Mamluk (MAM-look) Sultanate of Egypt and Syria (1250-1517) was one of the most powerful states in the world, controlling the trade routes between the Indian Ocean and the Mediterranean.",
       "text_markdown": "The Mamluk (MAM-look) Sultanate of Egypt and Syria (1250-1517) was one of the most powerful states in the world, controlling the trade routes between the Indian Ocean and the Mediterranean.",
       "tts": {
-        "text": "The Mamluk (MAM-look) Sultanate of Egypt and Syria (1250-1517) was one of the most powerful states in the world, controlling the trade routes between the Indian Ocean and the Mediterranean.",
+        "text": "The Mamluk (MAM-look) Sultanate of Egypt and Syria (twelve fifty to fifteen seventeen) was one of the most powerful states in the world, controlling the trade routes between the Indian Ocean and the Mediterranean.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.8
       }
@@ -8044,7 +8044,7 @@
       "text": "The Il-Khanate (ill-KAH-nayt) of Persia, founded by Hulagu Khan after the Mongol conquest of Baghdad in 1258, became a center of Persian cultural and intellectual life.",
       "text_markdown": "The Il-Khanate (ill-KAH-nayt) of Persia, founded by Hulagu Khan after the Mongol conquest of Baghdad in 1258, became a center of Persian cultural and intellectual life.",
       "tts": {
-        "text": "The Il-Khanate (ill-KAH-nayt) of Persia, founded by Hulagu Khan after the Mongol conquest of Baghdad in 1258, became a center of Persian cultural and intellectual life.",
+        "text": "The Il-Khanate (ill-KAH-nayt) of Persia, founded by Hulagu Khan after the Mongol conquest of Baghdad in twelve fifty eight, became a center of Persian cultural and intellectual life.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -8094,7 +8094,7 @@
       "text": "In East Asia, China under the Yuan (yoo-AHN) Dynasty (1271-1368) -- the Mongol dynasty founded by Kublai Khan -- was the largest and most prosperous state on Earth.",
       "text_markdown": "In East Asia, China under the Yuan (yoo-AHN) Dynasty (1271-1368) -- the Mongol dynasty founded by Kublai Khan -- was the largest and most prosperous state on Earth.",
       "tts": {
-        "text": "In East Asia, China under the Yuan (yoo-AHN) Dynasty (1271-1368) -- the Mongol dynasty founded by Kublai Khan -- was the largest and most prosperous state on Earth.",
+        "text": "In East Asia, China under the Yuan (yoo-AHN) Dynasty (twelve seventy one to thirteen sixty eight) -- the Mongol dynasty founded by Kublai Khan -- was the largest and most prosperous state on Earth.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -8142,7 +8142,7 @@
       "text": "The celadon shards found at the site traveled over 10,000 kilometers from their kilns in China to the stone enclosures of the Zimbabwe Plateau -- one of the longest trade routes in the medieval world.",
       "text_markdown": "The celadon shards found at the site traveled over 10,000 kilometers from their kilns in China to the stone enclosures of the Zimbabwe Plateau -- one of the longest trade routes in the medieval world.",
       "tts": {
-        "text": "The celadon shards found at the site traveled over 10,000 kilometers from their kilns in China to the stone enclosures of the Zimbabwe Plateau -- one of the longest trade routes in the medieval world.",
+        "text": "The celadon shards found at the site traveled over ten thousand kilometers from their kilns in China to the stone enclosures of the Zimbabwe Plateau -- one of the longest trade routes in the medieval world.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.8
       }
@@ -8158,7 +8158,7 @@
       "text": "In South Asia, the Delhi Sultanate (1206-1526) ruled much of the Indian subcontinent, while the Chola (CHOH-lah) dynasty of southern India had built a maritime empire that controlled trade across the Indian Ocean from Indonesia to East Africa.",
       "text_markdown": "In South Asia, the Delhi Sultanate (1206-1526) ruled much of the Indian subcontinent, while the Chola (CHOH-lah) dynasty of southern India had built a maritime empire that controlled trade across the Indian Ocean from Indonesia to East Africa.",
       "tts": {
-        "text": "In South Asia, the Delhi Sultanate (1206-1526) ruled much of the Indian subcontinent, while the Chola (CHOH-lah) dynasty of southern India had built a maritime empire that controlled trade across the Indian Ocean from Indonesia to East Africa.",
+        "text": "In South Asia, the Delhi Sultanate (twelve oh six to fifteen twenty six) ruled much of the Indian subcontinent, while the Chola (CHOH-lah) dynasty of southern India had built a maritime empire that controlled trade across the Indian Ocean from Indonesia to East Africa.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -8206,7 +8206,7 @@
       "text": "The temple of Angkor Wat, completed in the early twelfth century, is the largest religious monument in the world -- a massive stone complex covering over 160 hectares.",
       "text_markdown": "The temple of Angkor Wat, completed in the early twelfth century, is the largest religious monument in the world -- a massive stone complex covering over 160 hectares.",
       "tts": {
-        "text": "The temple of Angkor Wat, completed in the early twelfth century, is the largest religious monument in the world -- a massive stone complex covering over 160 hectares.",
+        "text": "The temple of Angkor Wat, completed in the early twelfth century, is the largest religious monument in the world -- a massive stone complex covering over one hundred sixty hectares.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -8286,7 +8286,7 @@
       "text": "Cahokia (Volume 4 of this series) had already declined by the time Great Zimbabwe reached its peak -- the great Mississippi Valley city was in decline by 1200 CE.",
       "text_markdown": "Cahokia (Volume 4 of this series) had already declined by the time Great Zimbabwe reached its peak -- the great Mississippi Valley city was in decline by 1200 CE.",
       "tts": {
-        "text": "Cahokia (Volume 4 of this series) had already declined by the time Great Zimbabwe reached its peak -- the great Mississippi Valley city was in decline by 1200 CE.",
+        "text": "Cahokia (Volume four of this series) had already declined by the time Great Zimbabwe reached its peak -- the great Mississippi Valley city was in decline by twelve hundred CE.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -8414,7 +8414,7 @@
       "text": "The period also facilitated the spread of the Black Death -- the bubonic plague that killed perhaps one-third of Europe's population in the 1340s and 1350s.",
       "text_markdown": "The period also facilitated the spread of the Black Death -- the bubonic plague that killed perhaps one-third of Europe's population in the 1340s and 1350s.",
       "tts": {
-        "text": "The period also facilitated the spread of the Black Death -- the bubonic plague that killed perhaps one-third of Europe's population in the 1340s and 1350s.",
+        "text": "The period also facilitated the spread of the Black Death -- the bubonic plague that killed perhaps one-third of Europe's population in the thirteen forties and thirteen fifties.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.8
       }
@@ -8778,7 +8778,7 @@
       "text": "What was the Conical Tower for? The solid stone tower inside the Great Enclosure -- 9 meters tall, with no doors, windows, or internal chambers -- remains unexplained.",
       "text_markdown": "**What was the Conical Tower for?** The solid stone tower inside the Great Enclosure -- 9 meters tall, with no doors, windows, or internal chambers -- remains unexplained.",
       "tts": {
-        "text": "What was the Conical Tower for? The solid stone tower inside the Great Enclosure -- 9 meters tall, with no doors, windows, or internal chambers -- remains unexplained.",
+        "text": "What was the Conical Tower for? The solid stone tower inside the Great Enclosure -- nine meters tall, with no doors, windows, or internal chambers -- remains unexplained.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -9018,7 +9018,7 @@
       "text": "How extensive was Great Zimbabwe's political authority? Over 300 stone-walled sites are known on the Zimbabwe Plateau.",
       "text_markdown": "**How extensive was Great Zimbabwe's political authority?** Over 300 stone-walled sites are known on the Zimbabwe Plateau.",
       "tts": {
-        "text": "How extensive was Great Zimbabwe's political authority? Over 300 stone-walled sites are known on the Zimbabwe Plateau.",
+        "text": "How extensive was Great Zimbabwe's political authority? Over three hundred stone-walled sites are known on the Zimbabwe Plateau.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -9206,7 +9206,7 @@
       "text": "Caton-Thompson, Gertrude -- British archaeologist who conducted the most thorough early excavation of Great Zimbabwe (1929); confirmed African origin of the site; published The Zimbabwe Culture (1931).",
       "text_markdown": "**Caton-Thompson, Gertrude** -- British archaeologist who conducted the most thorough early excavation of Great Zimbabwe (1929); confirmed African origin of the site; published *The Zimbabwe Culture* (1931).",
       "tts": {
-        "text": "Caton-Thompson, Gertrude -- British archaeologist who conducted the most thorough early excavation of Great Zimbabwe (1929); confirmed African origin of the site; published The Zimbabwe Culture (1931).",
+        "text": "Caton-Thompson, Gertrude -- British archaeologist who conducted the most thorough early excavation of Great Zimbabwe (nineteen twenty nine); confirmed African origin of the site; published The Zimbabwe Culture (nineteen thirty one).",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -9222,7 +9222,7 @@
       "text": "Chirikure, Shadreck (shad-RECK chee-ree-KOO-reh) -- Zimbabwean archaeologist at the University of Cape Town; author of Great Zimbabwe: Reclaiming a 'Confiscated' Past (2020).",
       "text_markdown": "**Chirikure, Shadreck** (shad-RECK chee-ree-KOO-reh) -- Zimbabwean archaeologist at the University of Cape Town; author of *Great Zimbabwe: Reclaiming a 'Confiscated' Past* (2020).",
       "tts": {
-        "text": "Chirikure, Shadreck (shad-RECK chee-ree-KOO-reh) -- Zimbabwean archaeologist at the University of Cape Town; author of Great Zimbabwe: Reclaiming a 'Confiscated' Past (2020).",
+        "text": "Chirikure, Shadreck (shad-RECK chee-ree-KOO-reh) -- Zimbabwean archaeologist at the University of Cape Town; author of Great Zimbabwe: Reclaiming a 'Confiscated' Past (twenty twenty).",
         "pause_after_ms": 800,
         "repetition_penalty": 2.0
       }
@@ -9238,7 +9238,7 @@
       "text": "Conical Tower -- A solid dry-stone tower inside the Great Enclosure at Great Zimbabwe, approximately 9 meters tall, with no doors, windows, or internal chambers.",
       "text_markdown": "**Conical Tower** -- A solid dry-stone tower inside the Great Enclosure at Great Zimbabwe, approximately 9 meters tall, with no doors, windows, or internal chambers.",
       "tts": {
-        "text": "Conical Tower -- A solid dry-stone tower inside the Great Enclosure at Great Zimbabwe, approximately 9 meters tall, with no doors, windows, or internal chambers.",
+        "text": "Conical Tower -- A solid dry-stone tower inside the Great Enclosure at Great Zimbabwe, approximately nine meters tall, with no doors, windows, or internal chambers.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -9302,7 +9302,7 @@
       "text": "Garlake, Peter (1934-2011) -- British-born archaeologist; author of Great Zimbabwe (1973); driven from Rhodesia for publishing evidence of African construction.",
       "text_markdown": "**Garlake, Peter** (1934-2011) -- British-born archaeologist; author of *Great Zimbabwe* (1973); driven from Rhodesia for publishing evidence of African construction.",
       "tts": {
-        "text": "Garlake, Peter (1934-2011) -- British-born archaeologist; author of Great Zimbabwe (1973); driven from Rhodesia for publishing evidence of African construction.",
+        "text": "Garlake, Peter (nineteen thirty four to twenty eleven) -- British-born archaeologist; author of Great Zimbabwe (nineteen seventy three); driven from Rhodesia for publishing evidence of African construction.",
         "pause_after_ms": 800,
         "repetition_penalty": 2.0
       }
@@ -9318,7 +9318,7 @@
       "text": "Great Enclosure -- The largest structure at Great Zimbabwe and the largest single ancient building in sub-Saharan Africa; an oval enclosure bounded by walls up to 11 meters high.",
       "text_markdown": "**Great Enclosure** -- The largest structure at Great Zimbabwe and the largest single ancient building in sub-Saharan Africa; an oval enclosure bounded by walls up to 11 meters high.",
       "tts": {
-        "text": "Great Enclosure -- The largest structure at Great Zimbabwe and the largest single ancient building in sub-Saharan Africa; an oval enclosure bounded by walls up to 11 meters high.",
+        "text": "Great Enclosure -- The largest structure at Great Zimbabwe and the largest single ancient building in sub-Saharan Africa; an oval enclosure bounded by walls up to eleven meters high.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -9446,7 +9446,7 @@
       "text": "Mapungubwe (mah-poon-GOOB-weh) -- A site in the Limpopo valley of South Africa; the predecessor of Great Zimbabwe and the first known state in southern Africa (flourished ~1075-1220 CE).",
       "text_markdown": "**Mapungubwe** (mah-poon-GOOB-weh) -- A site in the Limpopo valley of South Africa; the predecessor of Great Zimbabwe and the first known state in southern Africa (flourished ~1075-1220 CE).",
       "tts": {
-        "text": "Mapungubwe (mah-poon-GOOB-weh) -- A site in the Limpopo valley of South Africa; the predecessor of Great Zimbabwe and the first known state in southern Africa (flourished ~1075-1220 CE).",
+        "text": "Mapungubwe (mah-poon-GOOB-weh) -- A site in the Limpopo valley of South Africa; the predecessor of Great Zimbabwe and the first known state in southern Africa (flourished approximately one thousand seventy five to one thousand two hundred twenty CE).",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -9462,7 +9462,7 @@
       "text": "Mauch, Karl (MOWKH) -- German geologist and explorer who visited Great Zimbabwe in 1871; falsely attributed the ruins to non-African builders.",
       "text_markdown": "**Mauch, Karl** (MOWKH) -- German geologist and explorer who visited Great Zimbabwe in 1871; falsely attributed the ruins to non-African builders.",
       "tts": {
-        "text": "Mauch, Karl (MOWKH) -- German geologist and explorer who visited Great Zimbabwe in 1871; falsely attributed the ruins to non-African builders.",
+        "text": "Mauch, Karl (MOWKH) -- German geologist and explorer who visited Great Zimbabwe in eighteen seventy one; falsely attributed the ruins to non-African builders.",
         "pause_after_ms": 800,
         "repetition_penalty": 2.0
       }
@@ -9526,7 +9526,7 @@
       "text": "Pikirayi, Innocent -- Zimbabwean archaeologist; author of The Zimbabwe Culture (2001); specialist in the archaeology of the Zimbabwe Plateau.",
       "text_markdown": "**Pikirayi, Innocent** -- Zimbabwean archaeologist; author of *The Zimbabwe Culture* (2001); specialist in the archaeology of the Zimbabwe Plateau.",
       "tts": {
-        "text": "Pikirayi, Innocent -- Zimbabwean archaeologist; author of The Zimbabwe Culture (2001); specialist in the archaeology of the Zimbabwe Plateau.",
+        "text": "Pikirayi, Innocent -- Zimbabwean archaeologist; author of The Zimbabwe Culture (two thousand one); specialist in the archaeology of the Zimbabwe Plateau.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.8
       }
@@ -9542,7 +9542,7 @@
       "text": "Randall-MacIver, David -- British Egyptologist who conducted the first professional excavation of Great Zimbabwe (1905); confirmed African origin.",
       "text_markdown": "**Randall-MacIver, David** -- British Egyptologist who conducted the first professional excavation of Great Zimbabwe (1905); confirmed African origin.",
       "tts": {
-        "text": "Randall-MacIver, David -- British Egyptologist who conducted the first professional excavation of Great Zimbabwe (1905); confirmed African origin.",
+        "text": "Randall-MacIver, David -- British Egyptologist who conducted the first professional excavation of Great Zimbabwe (nineteen oh five); confirmed African origin.",
         "pause_after_ms": 800,
         "repetition_penalty": 2.0
       }
@@ -9558,7 +9558,7 @@
       "text": "Rhodes, Cecil (1853-1902) -- British mining magnate and colonizer; founder of Rhodesia; promoted the \"foreign builders\" theory to justify colonial occupation.",
       "text_markdown": "**Rhodes, Cecil** (1853-1902) -- British mining magnate and colonizer; founder of Rhodesia; promoted the \"foreign builders\" theory to justify colonial occupation.",
       "tts": {
-        "text": "Rhodes, Cecil (1853-1902) -- British mining magnate and colonizer; founder of Rhodesia; promoted the \"foreign builders\" theory to justify colonial occupation.",
+        "text": "Rhodes, Cecil (eighteen fifty three to nineteen oh two) -- British mining magnate and colonizer; founder of Rhodesia; promoted the \"foreign builders\" theory to justify colonial occupation.",
         "pause_after_ms": 800,
         "repetition_penalty": 2.0
       }
@@ -9714,7 +9714,7 @@
       "text": "Gertrude Caton-Thompson, The Zimbabwe Culture: Ruins and Reactions (1931) -- The foundational archaeological study that definitively established the African origin of Great Zimbabwe.",
       "text_markdown": "**Gertrude Caton-Thompson, *The Zimbabwe Culture: Ruins and Reactions* (1931)** -- The foundational archaeological study that definitively established the African origin of Great Zimbabwe.",
       "tts": {
-        "text": "Gertrude Caton-Thompson, The Zimbabwe Culture: Ruins and Reactions (1931) -- The foundational archaeological study that definitively established the African origin of Great Zimbabwe.",
+        "text": "Gertrude Caton-Thompson, The Zimbabwe Culture: Ruins and Reactions (nineteen thirty one) -- The foundational archaeological study that definitively established the African origin of Great Zimbabwe.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -9746,7 +9746,7 @@
       "text": "Peter Garlake, Great Zimbabwe (1973) -- The most comprehensive archaeological analysis of the site, by a scholar who paid a personal price for his commitment to the evidence.",
       "text_markdown": "**Peter Garlake, *Great Zimbabwe* (1973)** -- The most comprehensive archaeological analysis of the site, by a scholar who paid a personal price for his commitment to the evidence.",
       "tts": {
-        "text": "Peter Garlake, Great Zimbabwe (1973) -- The most comprehensive archaeological analysis of the site, by a scholar who paid a personal price for his commitment to the evidence.",
+        "text": "Peter Garlake, Great Zimbabwe (nineteen seventy three) -- The most comprehensive archaeological analysis of the site, by a scholar who paid a personal price for his commitment to the evidence.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -9778,7 +9778,7 @@
       "text": "Peter Garlake, Great Zimbabwe Described and Explained (1982) -- A more accessible version of Garlake's analysis, intended for a general audience.",
       "text_markdown": "**Peter Garlake, *Great Zimbabwe Described and Explained* (1982)** -- A more accessible version of Garlake's analysis, intended for a general audience.",
       "tts": {
-        "text": "Peter Garlake, Great Zimbabwe Described and Explained (1982) -- A more accessible version of Garlake's analysis, intended for a general audience.",
+        "text": "Peter Garlake, Great Zimbabwe Described and Explained (nineteen eighty two) -- A more accessible version of Garlake's analysis, intended for a general audience.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -9810,7 +9810,7 @@
       "text": "Thomas Huffman, Snakes and Crocodiles: Power and Symbolism in Ancient Zimbabwe (1996) -- Huffman's interpretive framework for the symbolism and political organization of Great Zimbabwe.",
       "text_markdown": "**Thomas Huffman, *Snakes and Crocodiles: Power and Symbolism in Ancient Zimbabwe* (1996)** -- Huffman's interpretive framework for the symbolism and political organization of Great Zimbabwe.",
       "tts": {
-        "text": "Thomas Huffman, Snakes and Crocodiles: Power and Symbolism in Ancient Zimbabwe (1996) -- Huffman's interpretive framework for the symbolism and political organization of Great Zimbabwe.",
+        "text": "Thomas Huffman, Snakes and Crocodiles: Power and Symbolism in Ancient Zimbabwe (nineteen ninety six) -- Huffman's interpretive framework for the symbolism and political organization of Great Zimbabwe.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -9842,7 +9842,7 @@
       "text": "Shadreck Chirikure, Great Zimbabwe: Reclaiming a 'Confiscated' Past (2020) -- A contemporary African perspective on the archaeology of Great Zimbabwe, challenging colonial-era frameworks and advocating for new approaches.",
       "text_markdown": "**Shadreck Chirikure, *Great Zimbabwe: Reclaiming a 'Confiscated' Past* (2020)** -- A contemporary African perspective on the archaeology of Great Zimbabwe, challenging colonial-era frameworks and advocating for new approaches.",
       "tts": {
-        "text": "Shadreck Chirikure, Great Zimbabwe: Reclaiming a 'Confiscated' Past (2020) -- A contemporary African perspective on the archaeology of Great Zimbabwe, challenging colonial-era frameworks and advocating for new approaches.",
+        "text": "Shadreck Chirikure, Great Zimbabwe: Reclaiming a 'Confiscated' Past (twenty twenty) -- A contemporary African perspective on the archaeology of Great Zimbabwe, challenging colonial-era frameworks and advocating for new approaches.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -9858,7 +9858,7 @@
       "text": "Innocent Pikirayi, The Zimbabwe Culture: Origins and Decline of Southern Zambezian States (2001) -- A comprehensive synthesis of Zimbabwe Plateau archaeology by a leading Zimbabwean scholar.",
       "text_markdown": "**Innocent Pikirayi, *The Zimbabwe Culture: Origins and Decline of Southern Zambezian States* (2001)** -- A comprehensive synthesis of Zimbabwe Plateau archaeology by a leading Zimbabwean scholar.",
       "tts": {
-        "text": "Innocent Pikirayi, The Zimbabwe Culture: Origins and Decline of Southern Zambezian States (2001) -- A comprehensive synthesis of Zimbabwe Plateau archaeology by a leading Zimbabwean scholar.",
+        "text": "Innocent Pikirayi, The Zimbabwe Culture: Origins and Decline of Southern Zambezian States (two thousand one) -- A comprehensive synthesis of Zimbabwe Plateau archaeology by a leading Zimbabwean scholar.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -9874,7 +9874,7 @@
       "text": "Webber Ndoro, \"Great Zimbabwe\" (Scientific American, 1997) -- A concise and accessible overview of the site and its significance, by a Zimbabwean heritage management specialist.",
       "text_markdown": "**Webber Ndoro, \"Great Zimbabwe\" (*Scientific American*, 1997)** -- A concise and accessible overview of the site and its significance, by a Zimbabwean heritage management specialist.",
       "tts": {
-        "text": "Webber Ndoro, \"Great Zimbabwe\" (Scientific American, 1997) -- A concise and accessible overview of the site and its significance, by a Zimbabwean heritage management specialist.",
+        "text": "Webber Ndoro, \"Great Zimbabwe\" (Scientific American, nineteen ninety seven) -- A concise and accessible overview of the site and its significance, by a Zimbabwean heritage management specialist.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -9890,7 +9890,7 @@
       "text": "Joost Fontein, The Silence of Great Zimbabwe: Contested Landscapes and the Power of Heritage (2006) -- An anthropological study of how Great Zimbabwe's heritage is understood, contested, and used in contemporary Zimbabwe.",
       "text_markdown": "**Joost Fontein, *The Silence of Great Zimbabwe: Contested Landscapes and the Power of Heritage* (2006)** -- An anthropological study of how Great Zimbabwe's heritage is understood, contested, and used in contemporary Zimbabwe.",
       "tts": {
-        "text": "Joost Fontein, The Silence of Great Zimbabwe: Contested Landscapes and the Power of Heritage (2006) -- An anthropological study of how Great Zimbabwe's heritage is understood, contested, and used in contemporary Zimbabwe.",
+        "text": "Joost Fontein, The Silence of Great Zimbabwe: Contested Landscapes and the Power of Heritage (two thousand six) -- An anthropological study of how Great Zimbabwe's heritage is understood, contested, and used in contemporary Zimbabwe.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -9906,7 +9906,7 @@
       "text": "Paul Sinclair, \"The Archaeology of the African Iron Age\" in The Oxford Handbook of African Archaeology (2013) -- Places Great Zimbabwe in the broader context of Iron Age African civilization.",
       "text_markdown": "**Paul Sinclair, \"The Archaeology of the African Iron Age\" in *The Oxford Handbook of African Archaeology* (2013)** -- Places Great Zimbabwe in the broader context of Iron Age African civilization.",
       "tts": {
-        "text": "Paul Sinclair, \"The Archaeology of the African Iron Age\" in The Oxford Handbook of African Archaeology (2013) -- Places Great Zimbabwe in the broader context of Iron Age African civilization.",
+        "text": "Paul Sinclair, \"The Archaeology of the African Iron Age\" in The Oxford Handbook of African Archaeology (twenty thirteen) -- Places Great Zimbabwe in the broader context of Iron Age African civilization.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.8
       }
@@ -9922,7 +9922,7 @@
       "text": "Edward Matenga, The Soapstone Birds of Great Zimbabwe: Archaeological Heritage, Religion and Politics in Postcolonial Zimbabwe (2011) -- A detailed study of the soapstone birds and their role in national identity.",
       "text_markdown": "**Edward Matenga, *The Soapstone Birds of Great Zimbabwe: Archaeological Heritage, Religion and Politics in Postcolonial Zimbabwe* (2011)** -- A detailed study of the soapstone birds and their role in national identity.",
       "tts": {
-        "text": "Edward Matenga, The Soapstone Birds of Great Zimbabwe: Archaeological Heritage, Religion and Politics in Postcolonial Zimbabwe (2011) -- A detailed study of the soapstone birds and their role in national identity.",
+        "text": "Edward Matenga, The Soapstone Birds of Great Zimbabwe: Archaeological Heritage, Religion and Politics in Postcolonial Zimbabwe (twenty eleven) -- A detailed study of the soapstone birds and their role in national identity.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.8
       }
@@ -10030,7 +10030,7 @@
       "text": "Volume 1: The Mystery of Monte Albán -- The Zapotec capital in the mountains of Oaxaca, its undeciphered script, and the Building of the Dancers.",
       "text_markdown": "**Volume 1: The Mystery of Monte Albán** -- The Zapotec capital in the mountains of Oaxaca, its undeciphered script, and the Building of the Dancers.",
       "tts": {
-        "text": "Volume 1: The Mystery of Monte Albán -- The Zapotec capital in the mountains of Oaxaca, its undeciphered script, and the Building of the Dancers.",
+        "text": "Volume one: The Mystery of Monte Albán -- The Zapotec capital in the mountains of Oaxaca, its undeciphered script, and the Building of the Dancers.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.8
       }
@@ -10046,7 +10046,7 @@
       "text": "Volume 2: The Mystery of the Mapuche -- The language isolate of southern Chile, the people who defeated the Inca and fought the Spanish to a standstill for three centuries.",
       "text_markdown": "**Volume 2: The Mystery of the Mapuche** -- The language isolate of southern Chile, the people who defeated the Inca and fought the Spanish to a standstill for three centuries.",
       "tts": {
-        "text": "Volume 2: The Mystery of the Mapuche -- The language isolate of southern Chile, the people who defeated the Inca and fought the Spanish to a standstill for three centuries.",
+        "text": "Volume two: The Mystery of the Mapuche -- The language isolate of southern Chile, the people who defeated the Inca and fought the Spanish to a standstill for three centuries.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.8
       }
@@ -10062,7 +10062,7 @@
       "text": "Volume 3: The Mystery of the Olmec -- The \"mother culture\" of Mesoamerica, the colossal stone heads, and the Cascajal Block -- sixty-two glyphs in a writing system used once and never seen again.",
       "text_markdown": "**Volume 3: The Mystery of the Olmec** -- The \"mother culture\" of Mesoamerica, the colossal stone heads, and the Cascajal Block -- sixty-two glyphs in a writing system used once and never seen again.",
       "tts": {
-        "text": "Volume 3: The Mystery of the Olmec -- The \"mother culture\" of Mesoamerica, the colossal stone heads, and the Cascajal Block -- sixty-two glyphs in a writing system used once and never seen again.",
+        "text": "Volume three: The Mystery of the Olmec -- The \"mother culture\" of Mesoamerica, the colossal stone heads, and the Cascajal Block -- sixty-two glyphs in a writing system used once and never seen again.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.8
       }
@@ -10078,7 +10078,7 @@
       "text": "Volume 4: The Mystery of Cahokia -- America's forgotten metropolis, the largest earthen mound in the Americas, and the mass sacrifice of Mound 72.",
       "text_markdown": "**Volume 4: The Mystery of Cahokia** -- America's forgotten metropolis, the largest earthen mound in the Americas, and the mass sacrifice of Mound 72.",
       "tts": {
-        "text": "Volume 4: The Mystery of Cahokia -- America's forgotten metropolis, the largest earthen mound in the Americas, and the mass sacrifice of Mound 72.",
+        "text": "Volume four: The Mystery of Cahokia -- America's forgotten metropolis, the largest earthen mound in the Americas, and the mass sacrifice of Mound seventy two.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.8
       }
@@ -10094,7 +10094,7 @@
       "text": "Volume 5: The Mystery of Teotihuacan -- The city of 200,000 people with no known name, no known language, and no known rulers.",
       "text_markdown": "**Volume 5: The Mystery of Teotihuacan** -- The city of 200,000 people with no known name, no known language, and no known rulers.",
       "tts": {
-        "text": "Volume 5: The Mystery of Teotihuacan -- The city of 200,000 people with no known name, no known language, and no known rulers.",
+        "text": "Volume five: The Mystery of Teotihuacan -- The city of two hundred thousand people with no known name, no known language, and no known rulers.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.8
       }
@@ -10110,7 +10110,7 @@
       "text": "Volume 6: The Mystery of the Toltecs -- The phantom empire that the Aztecs claimed as their ancestors -- history, legend, or political invention?",
       "text_markdown": "**Volume 6: The Mystery of the Toltecs** -- The phantom empire that the Aztecs claimed as their ancestors -- history, legend, or political invention?",
       "tts": {
-        "text": "Volume 6: The Mystery of the Toltecs -- The phantom empire that the Aztecs claimed as their ancestors -- history, legend, or political invention?",
+        "text": "Volume six: The Mystery of the Toltecs -- The phantom empire that the Aztecs claimed as their ancestors -- history, legend, or political invention?",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -10126,7 +10126,7 @@
       "text": "Volume 7: The Mystery Before the Inca -- Tiwanaku, Puma Punku, and the Gate of the Sun: the engineers of the altiplano who built in stone at 3,800 meters and vanished before the Inca arrived.",
       "text_markdown": "**Volume 7: The Mystery Before the Inca** -- Tiwanaku, Puma Punku, and the Gate of the Sun: the engineers of the altiplano who built in stone at 3,800 meters and vanished before the Inca arrived.",
       "tts": {
-        "text": "Volume 7: The Mystery Before the Inca -- Tiwanaku, Puma Punku, and the Gate of the Sun: the engineers of the altiplano who built in stone at 3,800 meters and vanished before the Inca arrived.",
+        "text": "Volume seven: The Mystery Before the Inca -- Tiwanaku, Puma Punku, and the Gate of the Sun: the engineers of the altiplano who built in stone at three thousand eight hundred meters and vanished before the Inca arrived.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.8
       }
@@ -10142,7 +10142,7 @@
       "text": "Volume 8: The Mysteries of the Arctic Peoples -- The Sivullirmiut, the vanished Dorset, and the ivory death masks of Ipiutak: three mysteries from the top of the world.",
       "text_markdown": "**Volume 8: The Mysteries of the Arctic Peoples** -- The Sivullirmiut, the vanished Dorset, and the ivory death masks of Ipiutak: three mysteries from the top of the world.",
       "tts": {
-        "text": "Volume 8: The Mysteries of the Arctic Peoples -- The Sivullirmiut, the vanished Dorset, and the ivory death masks of Ipiutak: three mysteries from the top of the world.",
+        "text": "Volume eight: The Mysteries of the Arctic Peoples -- The Sivullirmiut, the vanished Dorset, and the ivory death masks of Ipiutak: three mysteries from the top of the world.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.8
       }
@@ -10158,7 +10158,7 @@
       "text": "Volume 9: The Mystery of Göbekli Tepe -- The twelve-thousand-year-old temple that was built before agriculture, before pottery, before cities -- and then deliberately buried.",
       "text_markdown": "**Volume 9: The Mystery of Göbekli Tepe** -- The twelve-thousand-year-old temple that was built before agriculture, before pottery, before cities -- and then deliberately buried.",
       "tts": {
-        "text": "Volume 9: The Mystery of Göbekli Tepe -- The twelve-thousand-year-old temple that was built before agriculture, before pottery, before cities -- and then deliberately buried.",
+        "text": "Volume nine: The Mystery of Göbekli Tepe -- The twelve-thousand-year-old temple that was built before agriculture, before pottery, before cities -- and then deliberately buried.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -10174,7 +10174,7 @@
       "text": "Volume 10: The Mystery of the Indus Valley Script -- The only undeciphered writing system of a major Bronze Age civilization, locked behind inscriptions averaging four to five signs long.",
       "text_markdown": "**Volume 10: The Mystery of the Indus Valley Script** -- The only undeciphered writing system of a major Bronze Age civilization, locked behind inscriptions averaging four to five signs long.",
       "tts": {
-        "text": "Volume 10: The Mystery of the Indus Valley Script -- The only undeciphered writing system of a major Bronze Age civilization, locked behind inscriptions averaging four to five signs long.",
+        "text": "Volume ten: The Mystery of the Indus Valley Script -- The only undeciphered writing system of a major Bronze Age civilization, locked behind inscriptions averaging four to five signs long.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -10190,7 +10190,7 @@
       "text": "Volume 11: The Mystery of Great Zimbabwe -- The stone city they said couldn't exist: medieval Africa's greatest architectural achievement and the colonial lie that denied it for a century.",
       "text_markdown": "**Volume 11: The Mystery of Great Zimbabwe** -- The stone city they said couldn't exist: medieval Africa's greatest architectural achievement and the colonial lie that denied it for a century.",
       "tts": {
-        "text": "Volume 11: The Mystery of Great Zimbabwe -- The stone city they said couldn't exist: medieval Africa's greatest architectural achievement and the colonial lie that denied it for a century.",
+        "text": "Volume eleven: The Mystery of Great Zimbabwe -- The stone city they said couldn't exist: medieval Africa's greatest architectural achievement and the colonial lie that denied it for a century.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -10322,7 +10322,7 @@
       "text": "Karl Mauch's 1871 sketch of the Great Enclosure ruins",
       "text_markdown": "Karl Mauch's 1871 sketch of the Great Enclosure ruins",
       "tts": {
-        "text": "Karl Mauch's 1871 sketch of the Great Enclosure ruins",
+        "text": "Karl Mauch's eighteen seventy one sketch of the Great Enclosure ruins",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }

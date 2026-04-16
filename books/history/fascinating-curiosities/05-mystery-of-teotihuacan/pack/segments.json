@@ -26,7 +26,7 @@
       "text": "Fifty kilometers northeast of present-day Mexico City, in a broad valley at an altitude of 2,300 meters, lie the ruins of one of the largest cities in the ancient world.",
       "text_markdown": "Fifty kilometers northeast of present-day Mexico City, in a broad valley at an altitude of 2,300 meters, lie the ruins of one of the largest cities in the ancient world.",
       "tts": {
-        "text": "Fifty kilometers northeast of present-day Mexico City, in a broad valley at an altitude of 2,300 meters, lie the ruins of one of the largest cities in the ancient world.",
+        "text": "Fifty kilometers northeast of present-day Mexico City, in a broad valley at an altitude of two thousand three hundred meters, lie the ruins of one of the largest cities in the ancient world.",
         "pause_after_ms": 2000,
         "repetition_penalty": 1.8
       }
@@ -42,7 +42,7 @@
       "text": "At its peak, around 450 CE, it held between 125,000 and 200,000 people -- larger than any contemporary city in Europe, comparable in size to Alexandria or Constantinople, rivaling the great cities of Han Dynasty China.",
       "text_markdown": "At its peak, around 450 CE, it held between 125,000 and 200,000 people -- larger than any contemporary city in Europe, comparable in size to Alexandria or Constantinople, rivaling the great cities of Han Dynasty China.",
       "tts": {
-        "text": "At its peak, around 450 CE, it held between 125,000 and 200,000 people -- larger than any contemporary city in Europe, comparable in size to Alexandria or Constantinople, rivaling the great cities of Han Dynasty China.",
+        "text": "At its peak, around four hundred fifty CE, it held between one hundred twenty five thousand and two hundred thousand people -- larger than any contemporary city in Europe, comparable in size to Alexandria or Constantinople, rivaling the great cities of Han Dynasty China.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -498,7 +498,7 @@
       "text": "We are dealing with a city that, at its peak around 450 CE, was among the six or seven largest on the planet.",
       "text_markdown": "We are dealing with a city that, at its peak around 450 CE, was among the six or seven largest on the planet.",
       "tts": {
-        "text": "We are dealing with a city that, at its peak around 450 CE, was among the six or seven largest on the planet.",
+        "text": "We are dealing with a city that, at its peak around four hundred fifty CE, was among the six or seven largest on the planet.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -644,7 +644,7 @@
       "text": "Teotihuacan's population of 125,000 to 200,000 people certainly spoke a language -- probably more than one, given the multi-ethnic character of the city.",
       "text_markdown": "Teotihuacan's population of 125,000 to 200,000 people certainly spoke a language -- probably more than one, given the multi-ethnic character of the city.",
       "tts": {
-        "text": "Teotihuacan's population of 125,000 to 200,000 people certainly spoke a language -- probably more than one, given the multi-ethnic character of the city.",
+        "text": "Teotihuacan's population of one hundred twenty five thousand to two hundred thousand people certainly spoke a language -- probably more than one, given the multi-ethnic character of the city.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -916,7 +916,7 @@
       "text": "Even the Olmec may have had an early writing system (the Cascajal Block, discussed in Volume 3).",
       "text_markdown": "Even the Olmec may have had an early writing system (the Cascajal Block, discussed in Volume 3).",
       "tts": {
-        "text": "Even the Olmec may have had an early writing system (the Cascajal Block, discussed in Volume 3).",
+        "text": "Even the Olmec may have had an early writing system (the Cascajal Block, discussed in Volume three).",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -1076,7 +1076,7 @@
       "text": "The city's buildings were plastered and painted -- ideal surfaces for writing -- but plaster deteriorates over 1,500 years.",
       "text_markdown": "The city's buildings were plastered and painted -- ideal surfaces for writing -- but plaster deteriorates over 1,500 years.",
       "tts": {
-        "text": "The city's buildings were plastered and painted -- ideal surfaces for writing -- but plaster deteriorates over 1,500 years.",
+        "text": "The city's buildings were plastered and painted -- ideal surfaces for writing -- but plaster deteriorates over one thousand five hundred years.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -1140,7 +1140,7 @@
       "text": "The estimates range from 125,000 to 200,000 at the city's peak, around 450 CE.",
       "text_markdown": "The estimates range from 125,000 to 200,000 at the city's peak, around 450 CE.",
       "tts": {
-        "text": "The estimates range from 125,000 to 200,000 at the city's peak, around 450 CE.",
+        "text": "The estimates range from one hundred twenty five thousand to two hundred thousand at the city's peak, around four hundred fifty CE.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -1172,7 +1172,7 @@
       "text": "Constantinople, the capital of the Eastern Roman Empire, had perhaps 400,000 to 500,000.",
       "text_markdown": "Constantinople, the capital of the Eastern Roman Empire, had perhaps 400,000 to 500,000.",
       "tts": {
-        "text": "Constantinople, the capital of the Eastern Roman Empire, had perhaps 400,000 to 500,000.",
+        "text": "Constantinople, the capital of the Eastern Roman Empire, had perhaps four hundred thousand to five hundred thousand.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -1284,7 +1284,7 @@
       "text": "The city sits in a high, semi-arid valley -- the northeast arm of the Basin of Mexico, at an altitude of 2,300 meters.",
       "text_markdown": "The city sits in a high, semi-arid valley -- the northeast arm of the Basin of Mexico, at an altitude of 2,300 meters.",
       "tts": {
-        "text": "The city sits in a high, semi-arid valley -- the northeast arm of the Basin of Mexico, at an altitude of 2,300 meters.",
+        "text": "The city sits in a high, semi-arid valley -- the northeast arm of the Basin of Mexico, at an altitude of two thousand three hundred meters.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -1536,7 +1536,7 @@
       "text": "The central axis of the grid is the Avenue of the Dead -- a monumental boulevard running roughly north-south for 2.5 kilometers, and possibly as long as five kilometers if unexcavated extensions are included.",
       "text_markdown": "The central axis of the grid is the Avenue of the Dead -- a monumental boulevard running roughly north-south for 2.5 kilometers, and possibly as long as five kilometers if unexcavated extensions are included.",
       "tts": {
-        "text": "The central axis of the grid is the Avenue of the Dead -- a monumental boulevard running roughly north-south for 2.5 kilometers, and possibly as long as five kilometers if unexcavated extensions are included.",
+        "text": "The central axis of the grid is the Avenue of the Dead -- a monumental boulevard running roughly north-south for two.five kilometers, and possibly as long as five kilometers if unexcavated extensions are included.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -2034,7 +2034,7 @@
       "text": "René Millon (mee-YOHN), the American archaeologist who spent decades mapping the entire city in a project completed in 1973, produced the definitive plan of Teotihuacan.",
       "text_markdown": "René Millon (mee-YOHN), the American archaeologist who spent decades mapping the entire city in a project completed in 1973, produced the definitive plan of Teotihuacan.",
       "tts": {
-        "text": "René Millon (mee-YOHN), the American archaeologist who spent decades mapping the entire city in a project completed in 1973, produced the definitive plan of Teotihuacan.",
+        "text": "René Millon (mee-YOHN), the American archaeologist who spent decades mapping the entire city in a project completed in nineteen seventy three, produced the definitive plan of Teotihuacan.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -2354,7 +2354,7 @@
       "text": "This kind of ethnic diversity, in a city of over 100,000 people, implies sophisticated mechanisms of social organization -- systems for managing cultural difference, resolving disputes between communities, and integrating diverse populations into a functioning urban whole.",
       "text_markdown": "This kind of ethnic diversity, in a city of over 100,000 people, implies sophisticated mechanisms of social organization -- systems for managing cultural difference, resolving disputes between communities, and integrating diverse populations into a functioning urban whole.",
       "tts": {
-        "text": "This kind of ethnic diversity, in a city of over 100,000 people, implies sophisticated mechanisms of social organization -- systems for managing cultural difference, resolving disputes between communities, and integrating diverse populations into a functioning urban whole.",
+        "text": "This kind of ethnic diversity, in a city of over one hundred thousand people, implies sophisticated mechanisms of social organization -- systems for managing cultural difference, resolving disputes between communities, and integrating diverse populations into a functioning urban whole.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -2548,7 +2548,7 @@
       "text": "It was a city where 125,000 people lived together, worked together, worshipped together, and -- as the murals suggest -- imagined together.",
       "text_markdown": "It was a city where 125,000 people lived together, worked together, worshipped together, and -- as the murals suggest -- imagined together.",
       "tts": {
-        "text": "It was a city where 125,000 people lived together, worked together, worshipped together, and -- as the murals suggest -- imagined together.",
+        "text": "It was a city where one hundred twenty five thousand people lived together, worked together, worshipped together, and -- as the murals suggest -- imagined together.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -2656,7 +2656,7 @@
       "text": "Standing roughly sixty-five meters tall with a base measuring approximately 225 meters on each side, it is the third-largest pyramid in the world by volume -- smaller than the Great Pyramid of Giza and the Great Pyramid of Cholula (also in Mexico), but larger than any other pyramid in Egypt or the Americas.",
       "text_markdown": "Standing roughly sixty-five meters tall with a base measuring approximately 225 meters on each side, it is the third-largest pyramid in the world by volume -- smaller than the Great Pyramid of Giza and the Great Pyramid of Cholula (also in Mexico), but larger than any other pyramid in Egypt or the Americas.",
       "tts": {
-        "text": "Standing roughly sixty-five meters tall with a base measuring approximately 225 meters on each side, it is the third-largest pyramid in the world by volume -- smaller than the Great Pyramid of Giza and the Great Pyramid of Cholula (also in Mexico), but larger than any other pyramid in Egypt or the Americas.",
+        "text": "Standing roughly sixty-five meters tall with a base measuring approximately two hundred twenty five meters on each side, it is the third-largest pyramid in the world by volume -- smaller than the Great Pyramid of Giza and the Great Pyramid of Cholula (also in Mexico), but larger than any other pyramid in Egypt or the Americas.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.8
       }
@@ -2738,7 +2738,7 @@
       "text": "The pyramid's most extraordinary feature was discovered in 1971, when an archaeologist named Jorge Acosta noticed water seeping from the base of the pyramid's western staircase.",
       "text_markdown": "The pyramid's most extraordinary feature was discovered in 1971, when an archaeologist named Jorge Acosta noticed water seeping from the base of the pyramid's western staircase.",
       "tts": {
-        "text": "The pyramid's most extraordinary feature was discovered in 1971, when an archaeologist named Jorge Acosta noticed water seeping from the base of the pyramid's western staircase.",
+        "text": "The pyramid's most extraordinary feature was discovered in nineteen seventy one, when an archaeologist named Jorge Acosta noticed water seeping from the base of the pyramid's western staircase.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -2994,7 +2994,7 @@
       "text": "The entire twenty-square-kilometer metropolis, with its 2,000 apartment compounds and its 125,000 residents, was oriented by the position of a natural lava tube beneath a valley floor.",
       "text_markdown": "The entire twenty-square-kilometer metropolis, with its 2,000 apartment compounds and its 125,000 residents, was oriented by the position of a natural lava tube beneath a valley floor.",
       "tts": {
-        "text": "The entire twenty-square-kilometer metropolis, with its 2,000 apartment compounds and its 125,000 residents, was oriented by the position of a natural lava tube beneath a valley floor.",
+        "text": "The entire twenty-square-kilometer metropolis, with its two thousand apartment compounds and its one hundred twenty five thousand residents, was oriented by the position of a natural lava tube beneath a valley floor.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -3058,7 +3058,7 @@
       "text": "It is offset from true north by approximately 15.5 degrees east.",
       "text_markdown": "It is offset from true north by approximately 15.5 degrees east.",
       "tts": {
-        "text": "It is offset from true north by approximately 15.5 degrees east.",
+        "text": "It is offset from true north by approximately fifteen.five degrees east.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -3250,7 +3250,7 @@
       "text": "A painted pyramid, rising sixty-five meters above a valley floor, visible from kilometers away, marking the sacred center of a city of 125,000 people: the visual impact would have been overwhelming.",
       "text_markdown": "A painted pyramid, rising sixty-five meters above a valley floor, visible from kilometers away, marking the sacred center of a city of 125,000 people: the visual impact would have been overwhelming.",
       "tts": {
-        "text": "A painted pyramid, rising sixty-five meters above a valley floor, visible from kilometers away, marking the sacred center of a city of 125,000 people: the visual impact would have been overwhelming.",
+        "text": "A painted pyramid, rising sixty-five meters above a valley floor, visible from kilometers away, marking the sacred center of a city of one hundred twenty five thousand people: the visual impact would have been overwhelming.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -3442,7 +3442,7 @@
       "text": "The earliest phase dates to approximately 100 CE; the latest to perhaps 350 CE.",
       "text_markdown": "The earliest phase dates to approximately 100 CE; the latest to perhaps 350 CE.",
       "tts": {
-        "text": "The earliest phase dates to approximately 100 CE; the latest to perhaps 350 CE.",
+        "text": "The earliest phase dates to approximately one hundred CE; the latest to perhaps three hundred fifty CE.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -3538,7 +3538,7 @@
       "text": "Excavations inside the Pyramid of the Moon, led by Saburo Sugiyama and Rubén Cabrera Castro beginning in 1998, revealed a sequence of increasingly elaborate dedicatory burials in the earlier construction phases.",
       "text_markdown": "Excavations inside the Pyramid of the Moon, led by Saburo Sugiyama and Rubén Cabrera Castro beginning in 1998, revealed a sequence of increasingly elaborate dedicatory burials in the earlier construction phases.",
       "tts": {
-        "text": "Excavations inside the Pyramid of the Moon, led by Saburo Sugiyama and Rubén Cabrera Castro beginning in 1998, revealed a sequence of increasingly elaborate dedicatory burials in the earlier construction phases.",
+        "text": "Excavations inside the Pyramid of the Moon, led by Saburo Sugiyama and Rubén Cabrera Castro beginning in nineteen ninety eight, revealed a sequence of increasingly elaborate dedicatory burials in the earlier construction phases.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -3748,7 +3748,7 @@
       "text": "The enclosed space -- roughly 400 meters on a side, surrounded by raised platforms -- could have held tens of thousands of people.",
       "text_markdown": "The enclosed space -- roughly 400 meters on a side, surrounded by raised platforms -- could have held tens of thousands of people.",
       "tts": {
-        "text": "The enclosed space -- roughly 400 meters on a side, surrounded by raised platforms -- could have held tens of thousands of people.",
+        "text": "The enclosed space -- roughly four hundred meters on a side, surrounded by raised platforms -- could have held tens of thousands of people.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -3964,7 +3964,7 @@
       "text": "In the late 1980s and early 1990s, archaeologists led by Saburo Sugiyama and Rubén Cabrera Castro conducted systematic excavations of the Temple of the Feathered Serpent.",
       "text_markdown": "In the late 1980s and early 1990s, archaeologists led by Saburo Sugiyama and Rubén Cabrera Castro conducted systematic excavations of the Temple of the Feathered Serpent.",
       "tts": {
-        "text": "In the late 1980s and early 1990s, archaeologists led by Saburo Sugiyama and Rubén Cabrera Castro conducted systematic excavations of the Temple of the Feathered Serpent.",
+        "text": "In the late nineteen eighties and early nineteen nineties, archaeologists led by Saburo Sugiyama and Rubén Cabrera Castro conducted systematic excavations of the Temple of the Feathered Serpent.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -4446,7 +4446,7 @@
       "text": "The groups of victims are arranged in multiples of specific numbers -- particularly 4, 9, 13, and 20, all of which are significant in the Mesoamerican calendrical system.",
       "text_markdown": "The groups of victims are arranged in multiples of specific numbers -- particularly 4, 9, 13, and 20, all of which are significant in the Mesoamerican calendrical system.",
       "tts": {
-        "text": "The groups of victims are arranged in multiples of specific numbers -- particularly 4, 9, 13, and 20, all of which are significant in the Mesoamerican calendrical system.",
+        "text": "The groups of victims are arranged in multiples of specific numbers -- particularly four, nine, thirteen, and twenty, all of which are significant in the Mesoamerican calendrical system.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -4462,7 +4462,7 @@
       "text": "The 260-day ritual calendar, used across Mesoamerica, is composed of cycles of 13 and 20.",
       "text_markdown": "The 260-day ritual calendar, used across Mesoamerica, is composed of cycles of 13 and 20.",
       "tts": {
-        "text": "The 260-day ritual calendar, used across Mesoamerica, is composed of cycles of 13 and 20.",
+        "text": "The two hundred sixty day ritual calendar, used across Mesoamerica, is composed of cycles of thirteen and twenty.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -4890,7 +4890,7 @@
       "text": "In 2003, a heavy rainstorm at Teotihuacan caused a section of earth near the base of the Temple of the Feathered Serpent to collapse, revealing a previously unknown opening.",
       "text_markdown": "In 2003, a heavy rainstorm at Teotihuacan caused a section of earth near the base of the Temple of the Feathered Serpent to collapse, revealing a previously unknown opening.",
       "tts": {
-        "text": "In 2003, a heavy rainstorm at Teotihuacan caused a section of earth near the base of the Temple of the Feathered Serpent to collapse, revealing a previously unknown opening.",
+        "text": "In two thousand three, a heavy rainstorm at Teotihuacan caused a section of earth near the base of the Temple of the Feathered Serpent to collapse, revealing a previously unknown opening.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.8
       }
@@ -4970,7 +4970,7 @@
       "text": "When Gómez's team began the painstaking process of clearing the tunnel -- a project that would take over a decade -- they entered a space that no human being had seen since roughly 250 CE.",
       "text_markdown": "When Gómez's team began the painstaking process of clearing the tunnel -- a project that would take over a decade -- they entered a space that no human being had seen since roughly 250 CE.",
       "tts": {
-        "text": "When Gómez's team began the painstaking process of clearing the tunnel -- a project that would take over a decade -- they entered a space that no human being had seen since roughly 250 CE.",
+        "text": "When Gómez's team began the painstaking process of clearing the tunnel -- a project that would take over a decade -- they entered a space that no human being had seen since roughly two hundred fifty CE.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -5164,7 +5164,7 @@
       "text": "Gómez's team recovered over 75,000 objects from the tunnel.",
       "text_markdown": "Gómez's team recovered over 75,000 objects from the tunnel.",
       "tts": {
-        "text": "Gómez's team recovered over 75,000 objects from the tunnel.",
+        "text": "Gómez's team recovered over seventy five thousand objects from the tunnel.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -6394,7 +6394,7 @@
       "text": "Pasztory coined it in the 1970s, and it has been debated ever since.",
       "text_markdown": "Pasztory coined it in the 1970s, and it has been debated ever since.",
       "tts": {
-        "text": "Pasztory coined it in the 1970s, and it has been debated ever since.",
+        "text": "Pasztory coined it in the nineteen seventies, and it has been debated ever since.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -6698,7 +6698,7 @@
       "text": "Until then, the city keeps its rulers as anonymous as its name -- a metropolis of 125,000 people whose leaders are invisible, their power expressed through architecture and ritual rather than name and portrait.",
       "text_markdown": "Until then, the city keeps its rulers as anonymous as its name -- a metropolis of 125,000 people whose leaders are invisible, their power expressed through architecture and ritual rather than name and portrait.",
       "tts": {
-        "text": "Until then, the city keeps its rulers as anonymous as its name -- a metropolis of 125,000 people whose leaders are invisible, their power expressed through architecture and ritual rather than name and portrait.",
+        "text": "Until then, the city keeps its rulers as anonymous as its name -- a metropolis of one hundred twenty five thousand people whose leaders are invisible, their power expressed through architecture and ritual rather than name and portrait.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -6770,7 +6770,7 @@
       "text": "Sometime around 550 CE -- give or take a few decades -- the ceremonial center of Teotihuacan was deliberately and systematically burned.",
       "text_markdown": "Sometime around 550 CE -- give or take a few decades -- the ceremonial center of Teotihuacan was deliberately and systematically burned.",
       "tts": {
-        "text": "Sometime around 550 CE -- give or take a few decades -- the ceremonial center of Teotihuacan was deliberately and systematically burned.",
+        "text": "Sometime around five hundred fifty CE -- give or take a few decades -- the ceremonial center of Teotihuacan was deliberately and systematically burned.",
         "pause_after_ms": 800,
         "repetition_penalty": 2.0
       }
@@ -6914,7 +6914,7 @@
       "text": "The 550 CE fire burned almost exclusively the ceremonial core: the temples, the palaces, the public ritual spaces.",
       "text_markdown": "The 550 CE fire burned almost exclusively the ceremonial core: the temples, the palaces, the public ritual spaces.",
       "tts": {
-        "text": "The 550 CE fire burned almost exclusively the ceremonial core: the temples, the palaces, the public ritual spaces.",
+        "text": "The five hundred fifty CE fire burned almost exclusively the ceremonial core: the temples, the palaces, the public ritual spaces.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.8
       }
@@ -7092,7 +7092,7 @@
       "text": "The parallel with San Lorenzo in Volume 3 is striking.",
       "text_markdown": "The parallel with San Lorenzo in Volume 3 is striking.",
       "tts": {
-        "text": "The parallel with San Lorenzo in Volume 3 is striking.",
+        "text": "The parallel with San Lorenzo in Volume three is striking.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -7108,7 +7108,7 @@
       "text": "Around 900 BCE, the Olmec ceremonial center at San Lorenzo was systematically dismantled: its monuments were defaced, buried, and destroyed, apparently by the site's own inhabitants.",
       "text_markdown": "Around 900 BCE, the Olmec ceremonial center at San Lorenzo was systematically dismantled: its monuments were defaced, buried, and destroyed, apparently by the site's own inhabitants.",
       "tts": {
-        "text": "Around 900 BCE, the Olmec ceremonial center at San Lorenzo was systematically dismantled: its monuments were defaced, buried, and destroyed, apparently by the site's own inhabitants.",
+        "text": "Around nine hundred BCE, the Olmec ceremonial center at San Lorenzo was systematically dismantled: its monuments were defaced, buried, and destroyed, apparently by the site's own inhabitants.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -7124,7 +7124,7 @@
       "text": "At Monte Albán, discussed in Volume 1, the ceremonial center was abandoned around 700 CE under circumstances that suggest a similar loss of political authority.",
       "text_markdown": "At Monte Albán, discussed in Volume 1, the ceremonial center was abandoned around 700 CE under circumstances that suggest a similar loss of political authority.",
       "tts": {
-        "text": "At Monte Albán, discussed in Volume 1, the ceremonial center was abandoned around 700 CE under circumstances that suggest a similar loss of political authority.",
+        "text": "At Monte Albán, discussed in Volume one, the ceremonial center was abandoned around seven hundred CE under circumstances that suggest a similar loss of political authority.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -7140,7 +7140,7 @@
       "text": "At Tula, discussed in Volume 6, the ceremonial center would be burned around 1150 CE in circumstances that echo Teotihuacan's destruction almost exactly.",
       "text_markdown": "At Tula, discussed in Volume 6, the ceremonial center would be burned around 1150 CE in circumstances that echo Teotihuacan's destruction almost exactly.",
       "tts": {
-        "text": "At Tula, discussed in Volume 6, the ceremonial center would be burned around 1150 CE in circumstances that echo Teotihuacan's destruction almost exactly.",
+        "text": "At Tula, discussed in Volume six, the ceremonial center would be burned around eleven fifty CE in circumstances that echo Teotihuacan's destruction almost exactly.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -7236,7 +7236,7 @@
       "text": "The environmental evidence provides one possible answer: around 535-536 CE, a massive volcanic eruption (possibly Ilopango in El Salvador, or an eruption in the northern hemisphere) ejected enormous quantities of ash into the atmosphere, causing a \"volcanic winter\" that reduced temperatures, disrupted agriculture, and caused crop failures across the Northern Hemisphere.",
       "text_markdown": "The environmental evidence provides one possible answer: around 535-536 CE, a massive volcanic eruption (possibly Ilopango in El Salvador, or an eruption in the northern hemisphere) ejected enormous quantities of ash into the atmosphere, causing a \"volcanic winter\" that reduced temperatures, disrupted agriculture, and caused crop failures across the Northern Hemisphere.",
       "tts": {
-        "text": "The environmental evidence provides one possible answer: around 535-536 CE, a massive volcanic eruption (possibly Ilopango in El Salvador, or an eruption in the northern hemisphere) ejected enormous quantities of ash into the atmosphere, causing a \"volcanic winter\" that reduced temperatures, disrupted agriculture, and caused crop failures across the Northern Hemisphere.",
+        "text": "The environmental evidence provides one possible answer: around five hundred thirty five to five hundred thirty six CE, a massive volcanic eruption (possibly Ilopango in El Salvador, or an eruption in the northern hemisphere) ejected enormous quantities of ash into the atmosphere, causing a \"volcanic winter\" that reduced temperatures, disrupted agriculture, and caused crop failures across the Northern Hemisphere.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -7524,7 +7524,7 @@
       "text": "In this reading, the 550 CE fire was not a catastrophe but a ceremony: the old order was burned so that a new order could be born.",
       "text_markdown": "In this reading, the 550 CE fire was not a catastrophe but a ceremony: the old order was burned so that a new order could be born.",
       "tts": {
-        "text": "In this reading, the 550 CE fire was not a catastrophe but a ceremony: the old order was burned so that a new order could be born.",
+        "text": "In this reading, the five hundred fifty CE fire was not a catastrophe but a ceremony: the old order was burned so that a new order could be born.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -7604,7 +7604,7 @@
       "text": "The 550 CE fire led instead to a long decline.",
       "text_markdown": "The 550 CE fire led instead to a long decline.",
       "tts": {
-        "text": "The 550 CE fire led instead to a long decline.",
+        "text": "The five hundred fifty CE fire led instead to a long decline.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -7748,7 +7748,7 @@
       "text": "Internal tensions -- exacerbated by environmental stress, possibly triggered by the volcanic winter of the 530s -- led to a political crisis.",
       "text_markdown": "Internal tensions -- exacerbated by environmental stress, possibly triggered by the volcanic winter of the 530s -- led to a political crisis.",
       "tts": {
-        "text": "Internal tensions -- exacerbated by environmental stress, possibly triggered by the volcanic winter of the 530s -- led to a political crisis.",
+        "text": "Internal tensions -- exacerbated by environmental stress, possibly triggered by the volcanic winter of the five thirties -- led to a political crisis.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -7796,7 +7796,7 @@
       "text": "The archaeological evidence for the 535-536 CE volcanic event is growing.",
       "text_markdown": "The archaeological evidence for the 535-536 CE volcanic event is growing.",
       "tts": {
-        "text": "The archaeological evidence for the 535-536 CE volcanic event is growing.",
+        "text": "The archaeological evidence for the five hundred thirty five to five hundred thirty six CE volcanic event is growing.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -7828,7 +7828,7 @@
       "text": "Tree rings from across the Northern Hemisphere show dramatically reduced growth in 536-540 CE.",
       "text_markdown": "Tree rings from across the Northern Hemisphere show dramatically reduced growth in 536-540 CE.",
       "tts": {
-        "text": "Tree rings from across the Northern Hemisphere show dramatically reduced growth in 536-540 CE.",
+        "text": "Tree rings from across the Northern Hemisphere show dramatically reduced growth in five hundred thirty six to five hundred forty CE.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -7876,7 +7876,7 @@
       "text": "The timing is suggestive: a global climate shock in the late 530s, followed by the burning of Teotihuacan's ceremonial center around 550.",
       "text_markdown": "The timing is suggestive: a global climate shock in the late 530s, followed by the burning of Teotihuacan's ceremonial center around 550.",
       "tts": {
-        "text": "The timing is suggestive: a global climate shock in the late 530s, followed by the burning of Teotihuacan's ceremonial center around 550.",
+        "text": "The timing is suggestive: a global climate shock in the late five thirties, followed by the burning of Teotihuacan's ceremonial center around five hundred fifty.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -7924,7 +7924,7 @@
       "text": "What is clear is that the fire of 550 CE was a turning point.",
       "text_markdown": "What is clear is that the fire of 550 CE was a turning point.",
       "tts": {
-        "text": "What is clear is that the fire of 550 CE was a turning point.",
+        "text": "What is clear is that the fire of five hundred fifty CE was a turning point.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -7940,7 +7940,7 @@
       "text": "The Teotihuacan that existed before the fire -- the cosmopolitan metropolis of 125,000 people, the center of a Mesoamerican-wide network of influence -- did not exist afterward.",
       "text_markdown": "The Teotihuacan that existed before the fire -- the cosmopolitan metropolis of 125,000 people, the center of a Mesoamerican-wide network of influence -- did not exist afterward.",
       "tts": {
-        "text": "The Teotihuacan that existed before the fire -- the cosmopolitan metropolis of 125,000 people, the center of a Mesoamerican-wide network of influence -- did not exist afterward.",
+        "text": "The Teotihuacan that existed before the fire -- the cosmopolitan metropolis of one hundred twenty five thousand people, the center of a Mesoamerican-wide network of influence -- did not exist afterward.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.8
       }
@@ -8000,7 +8000,7 @@
       "text": "The fire of 550 CE destroyed the ceremonial core, but people continued to live at the site for centuries afterward.",
       "text_markdown": "The fire of 550 CE destroyed the ceremonial core, but people continued to live at the site for centuries afterward.",
       "tts": {
-        "text": "The fire of 550 CE destroyed the ceremonial core, but people continued to live at the site for centuries afterward.",
+        "text": "The fire of five hundred fifty CE destroyed the ceremonial core, but people continued to live at the site for centuries afterward.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -8016,7 +8016,7 @@
       "text": "The population declined -- from 125,000 or more at its peak to perhaps 30,000 in the centuries after the fire, and eventually to a few thousand in the terminal phase.",
       "text_markdown": "The population declined -- from 125,000 or more at its peak to perhaps 30,000 in the centuries after the fire, and eventually to a few thousand in the terminal phase.",
       "tts": {
-        "text": "The population declined -- from 125,000 or more at its peak to perhaps 30,000 in the centuries after the fire, and eventually to a few thousand in the terminal phase.",
+        "text": "The population declined -- from one hundred twenty five thousand or more at its peak to perhaps thirty thousand in the centuries after the fire, and eventually to a few thousand in the terminal phase.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -8192,7 +8192,7 @@
       "text": "The period from roughly 550 to 700 CE is sometimes called the \"Epiclassic\" -- a transitional era characterized by political fragmentation, population movement, and the rise of new regional powers that filled the vacuum Teotihuacan's collapse had created.",
       "text_markdown": "The period from roughly 550 to 700 CE is sometimes called the \"Epiclassic\" -- a transitional era characterized by political fragmentation, population movement, and the rise of new regional powers that filled the vacuum Teotihuacan's collapse had created.",
       "tts": {
-        "text": "The period from roughly 550 to 700 CE is sometimes called the \"Epiclassic\" -- a transitional era characterized by political fragmentation, population movement, and the rise of new regional powers that filled the vacuum Teotihuacan's collapse had created.",
+        "text": "The period from roughly five hundred fifty to seven hundred CE is sometimes called the \"Epiclassic\" -- a transitional era characterized by political fragmentation, population movement, and the rise of new regional powers that filled the vacuum Teotihuacan's collapse had created.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -8384,7 +8384,7 @@
       "text": "The Classic Maya period (roughly 250-900 CE) is often described as a time of city-state competition -- dozens of independent kingdoms, each with its own ruling dynasty, competing for territory and prestige.",
       "text_markdown": "The Classic Maya period (roughly 250-900 CE) is often described as a time of city-state competition -- dozens of independent kingdoms, each with its own ruling dynasty, competing for territory and prestige.",
       "tts": {
-        "text": "The Classic Maya period (roughly 250-900 CE) is often described as a time of city-state competition -- dozens of independent kingdoms, each with its own ruling dynasty, competing for territory and prestige.",
+        "text": "The Classic Maya period (roughly two hundred fifty to nine hundred CE) is often described as a time of city-state competition -- dozens of independent kingdoms, each with its own ruling dynasty, competing for territory and prestige.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -8800,7 +8800,7 @@
       "text": "At Monte Albán, discussed in Volume 1, Tomb 7 -- the famous grave looted by Alfonso Caso in 1932 -- contained objects that reflect Teotihuacan influence, evidence that the connections between the two cities outlasted Teotihuacan itself.",
       "text_markdown": "At Monte Albán, discussed in Volume 1, Tomb 7 -- the famous grave looted by Alfonso Caso in 1932 -- contained objects that reflect Teotihuacan influence, evidence that the connections between the two cities outlasted Teotihuacan itself.",
       "tts": {
-        "text": "At Monte Albán, discussed in Volume 1, Tomb 7 -- the famous grave looted by Alfonso Caso in 1932 -- contained objects that reflect Teotihuacan influence, evidence that the connections between the two cities outlasted Teotihuacan itself.",
+        "text": "At Monte Albán, discussed in Volume one, Tomb seven -- the famous grave looted by Alfonso Caso in nineteen thirty two -- contained objects that reflect Teotihuacan influence, evidence that the connections between the two cities outlasted Teotihuacan itself.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -8816,7 +8816,7 @@
       "text": "At Cahokia, discussed in Volume 4, the Mississippian tradition's mound-and-plaza complexes developed independently but arrived at strikingly similar solutions: platform pyramids, ceremonial avenues, planned urban layouts.",
       "text_markdown": "At Cahokia, discussed in Volume 4, the Mississippian tradition's mound-and-plaza complexes developed independently but arrived at strikingly similar solutions: platform pyramids, ceremonial avenues, planned urban layouts.",
       "tts": {
-        "text": "At Cahokia, discussed in Volume 4, the Mississippian tradition's mound-and-plaza complexes developed independently but arrived at strikingly similar solutions: platform pyramids, ceremonial avenues, planned urban layouts.",
+        "text": "At Cahokia, discussed in Volume four, the Mississippian tradition's mound-and-plaza complexes developed independently but arrived at strikingly similar solutions: platform pyramids, ceremonial avenues, planned urban layouts.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -8832,7 +8832,7 @@
       "text": "The Olmec, discussed in Volume 3, developed feathered serpent imagery centuries before Teotihuacan, suggesting that the theological tradition Teotihuacan monumentalized had deep roots in Mesoamerican thought.",
       "text_markdown": "The Olmec, discussed in Volume 3, developed feathered serpent imagery centuries before Teotihuacan, suggesting that the theological tradition Teotihuacan monumentalized had deep roots in Mesoamerican thought.",
       "tts": {
-        "text": "The Olmec, discussed in Volume 3, developed feathered serpent imagery centuries before Teotihuacan, suggesting that the theological tradition Teotihuacan monumentalized had deep roots in Mesoamerican thought.",
+        "text": "The Olmec, discussed in Volume three, developed feathered serpent imagery centuries before Teotihuacan, suggesting that the theological tradition Teotihuacan monumentalized had deep roots in Mesoamerican thought.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -8848,7 +8848,7 @@
       "text": "The Toltecs, discussed in Volume 6, would explicitly claim to be the heirs of Teotihuacan's legacy.",
       "text_markdown": "The Toltecs, discussed in Volume 6, would explicitly claim to be the heirs of Teotihuacan's legacy.",
       "tts": {
-        "text": "The Toltecs, discussed in Volume 6, would explicitly claim to be the heirs of Teotihuacan's legacy.",
+        "text": "The Toltecs, discussed in Volume six, would explicitly claim to be the heirs of Teotihuacan's legacy.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -9104,7 +9104,7 @@
       "text": "The fire of 550 CE destroyed the ceremonial center, and whatever records may have existed were likely consumed with it.",
       "text_markdown": "The fire of 550 CE destroyed the ceremonial center, and whatever records may have existed were likely consumed with it.",
       "tts": {
-        "text": "The fire of 550 CE destroyed the ceremonial center, and whatever records may have existed were likely consumed with it.",
+        "text": "The fire of five hundred fifty CE destroyed the ceremonial center, and whatever records may have existed were likely consumed with it.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -9304,7 +9304,7 @@
       "text": "During its centuries of dominance (roughly 100-550 CE), Teotihuacan-style architecture, art, and ritual objects appeared at sites across Mesoamerica -- from the deserts of northern Mexico to the tropical forests of Guatemala and Honduras, from the Pacific coast to the Gulf.",
       "text_markdown": "During its centuries of dominance (roughly 100-550 CE), Teotihuacan-style architecture, art, and ritual objects appeared at sites across Mesoamerica -- from the deserts of northern Mexico to the tropical forests of Guatemala and Honduras, from the Pacific coast to the Gulf.",
       "tts": {
-        "text": "During its centuries of dominance (roughly 100-550 CE), Teotihuacan-style architecture, art, and ritual objects appeared at sites across Mesoamerica -- from the deserts of northern Mexico to the tropical forests of Guatemala and Honduras, from the Pacific coast to the Gulf.",
+        "text": "During its centuries of dominance (roughly one hundred to five hundred fifty CE), Teotihuacan-style architecture, art, and ritual objects appeared at sites across Mesoamerica -- from the deserts of northern Mexico to the tropical forests of Guatemala and Honduras, from the Pacific coast to the Gulf.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.8
       }
@@ -9448,7 +9448,7 @@
       "text": "The connection to Monte Albán, discussed in Volume 1, is the most clearly documented diplomatic relationship.",
       "text_markdown": "The connection to Monte Albán, discussed in Volume 1, is the most clearly documented diplomatic relationship.",
       "tts": {
-        "text": "The connection to Monte Albán, discussed in Volume 1, is the most clearly documented diplomatic relationship.",
+        "text": "The connection to Monte Albán, discussed in Volume one, is the most clearly documented diplomatic relationship.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -9546,7 +9546,7 @@
       "text": "On January 16, 378 CE -- one of the few precise dates we have in Teotihuacan's history, preserved in Maya inscriptions at Tikal -- a figure called Siyaj K'ahk' (see-YAHJ kah-AHK, \"Born of Fire\") arrived at the great Maya city of Tikal in what is now Guatemala.",
       "text_markdown": "On January 16, 378 CE -- one of the few precise dates we have in Teotihuacan's history, preserved in Maya inscriptions at Tikal -- a figure called Siyaj K'ahk' (see-YAHJ kah-AHK, \"Born of Fire\") arrived at the great Maya city of Tikal in what is now Guatemala.",
       "tts": {
-        "text": "On January 16, 378 CE -- one of the few precise dates we have in Teotihuacan's history, preserved in Maya inscriptions at Tikal -- a figure called Siyaj K'ahk' (see-YAHJ kah-AHK, \"Born of Fire\") arrived at the great Maya city of Tikal in what is now Guatemala.",
+        "text": "On January sixteen, three hundred seventy eight CE -- one of the few precise dates we have in Teotihuacan's history, preserved in Maya inscriptions at Tikal -- a figure called Siyaj K'ahk' (see-YAHJ kah-AHK, \"Born of Fire\") arrived at the great Maya city of Tikal in what is now Guatemala.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.8
       }
@@ -9818,7 +9818,7 @@
       "text": "After 378 CE, Tikal's art and architecture incorporated Teotihuacan elements: talud-tablero (tah-LOOD tah-BLEH-roh) architecture (a distinctive sloping-panel-and-frame style that is Teotihuacan's architectural signature), Teotihuacan-style pottery, and iconographic motifs drawn from the Valley of Mexico tradition.",
       "text_markdown": "After 378 CE, Tikal's art and architecture incorporated Teotihuacan elements: talud-tablero (tah-LOOD tah-BLEH-roh) architecture (a distinctive sloping-panel-and-frame style that is Teotihuacan's architectural signature), Teotihuacan-style pottery, and iconographic motifs drawn from the Valley of Mexico tradition.",
       "tts": {
-        "text": "After 378 CE, Tikal's art and architecture incorporated Teotihuacan elements: talud-tablero (tah-LOOD tah-BLEH-roh) architecture (a distinctive sloping-panel-and-frame style that is Teotihuacan's architectural signature), Teotihuacan-style pottery, and iconographic motifs drawn from the Valley of Mexico tradition.",
+        "text": "After three hundred seventy eight CE, Tikal's art and architecture incorporated Teotihuacan elements: talud-tablero (tah-LOOD tah-BLEH-roh) architecture (a distinctive sloping-panel-and-frame style that is Teotihuacan's architectural signature), Teotihuacan-style pottery, and iconographic motifs drawn from the Valley of Mexico tradition.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -10042,7 +10042,7 @@
       "text": "Matacapan's location, near the Tuxtla Mountains (the same region that supplied basalt for the Olmec colossal heads discussed in Volume 3), gave it access to both Gulf Coast marine resources and highland volcanic materials.",
       "text_markdown": "Matacapan's location, near the Tuxtla Mountains (the same region that supplied basalt for the Olmec colossal heads discussed in Volume 3), gave it access to both Gulf Coast marine resources and highland volcanic materials.",
       "tts": {
-        "text": "Matacapan's location, near the Tuxtla Mountains (the same region that supplied basalt for the Olmec colossal heads discussed in Volume 3), gave it access to both Gulf Coast marine resources and highland volcanic materials.",
+        "text": "Matacapan's location, near the Tuxtla Mountains (the same region that supplied basalt for the Olmec colossal heads discussed in Volume three), gave it access to both Gulf Coast marine resources and highland volcanic materials.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -10472,7 +10472,7 @@
       "text": "Teotihuacan's peak -- roughly 200 to 550 CE -- spans one of the most transformative periods in world history.",
       "text_markdown": "Teotihuacan's peak -- roughly 200 to 550 CE -- spans one of the most transformative periods in world history.",
       "tts": {
-        "text": "Teotihuacan's peak -- roughly 200 to 550 CE -- spans one of the most transformative periods in world history.",
+        "text": "Teotihuacan's peak -- roughly two hundred to five hundred fifty CE -- spans one of the most transformative periods in world history.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -10696,7 +10696,7 @@
       "text": "When Teotihuacan reached its maximum size around 450 CE, the city's population of 125,000-200,000 made it one of the half-dozen largest cities on Earth.",
       "text_markdown": "When Teotihuacan reached its maximum size around 450 CE, the city's population of 125,000-200,000 made it one of the half-dozen largest cities on Earth.",
       "tts": {
-        "text": "When Teotihuacan reached its maximum size around 450 CE, the city's population of 125,000-200,000 made it one of the half-dozen largest cities on Earth.",
+        "text": "When Teotihuacan reached its maximum size around four hundred fifty CE, the city's population of one thousand two hundred fifty hundred to two thousand hundredmade it one of the half-dozen largest cities on Earth.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -10728,7 +10728,7 @@
       "text": "The last Roman emperor in the West, Romulus Augustulus, would be deposed in 476 CE.",
       "text_markdown": "The last Roman emperor in the West, Romulus Augustulus, would be deposed in 476 CE.",
       "tts": {
-        "text": "The last Roman emperor in the West, Romulus Augustulus, would be deposed in 476 CE.",
+        "text": "The last Roman emperor in the West, Romulus Augustulus, would be deposed in four hundred seventy six CE.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -10760,7 +10760,7 @@
       "text": "In India, the Gupta Empire (roughly 320-550 CE) presided over a golden age of art, literature, mathematics, and science -- the period that produced the concept of zero, the decimal system, and some of the masterpieces of Sanskrit literature.",
       "text_markdown": "In India, the Gupta Empire (roughly 320-550 CE) presided over a golden age of art, literature, mathematics, and science -- the period that produced the concept of zero, the decimal system, and some of the masterpieces of Sanskrit literature.",
       "tts": {
-        "text": "In India, the Gupta Empire (roughly 320-550 CE) presided over a golden age of art, literature, mathematics, and science -- the period that produced the concept of zero, the decimal system, and some of the masterpieces of Sanskrit literature.",
+        "text": "In India, the Gupta Empire (roughly three hundred twenty to five hundred fifty CE) presided over a golden age of art, literature, mathematics, and science -- the period that produced the concept of zero, the decimal system, and some of the masterpieces of Sanskrit literature.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.8
       }
@@ -10776,7 +10776,7 @@
       "text": "In China, the collapse of the Han Dynasty (220 CE) had led to a period of fragmentation known as the Six Dynasties, a time of political turmoil but also of remarkable cultural creativity, including the flowering of Buddhist art and the development of landscape painting.",
       "text_markdown": "In China, the collapse of the Han Dynasty (220 CE) had led to a period of fragmentation known as the Six Dynasties, a time of political turmoil but also of remarkable cultural creativity, including the flowering of Buddhist art and the development of landscape painting.",
       "tts": {
-        "text": "In China, the collapse of the Han Dynasty (220 CE) had led to a period of fragmentation known as the Six Dynasties, a time of political turmoil but also of remarkable cultural creativity, including the flowering of Buddhist art and the development of landscape painting.",
+        "text": "In China, the collapse of the Han Dynasty (two hundred twenty CE) had led to a period of fragmentation known as the Six Dynasties, a time of political turmoil but also of remarkable cultural creativity, including the flowering of Buddhist art and the development of landscape painting.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.8
       }
@@ -10792,7 +10792,7 @@
       "text": "In India, the Gupta golden age (roughly 320-550 CE) produced some of the most celebrated achievements of Indian civilization: the concept of zero and the decimal number system in mathematics, the plays of Kalidasa in literature, the cave paintings of Ajanta and the stone carvings of Sarnath in art.",
       "text_markdown": "In India, the Gupta golden age (roughly 320-550 CE) produced some of the most celebrated achievements of Indian civilization: the concept of zero and the decimal number system in mathematics, the plays of Kalidasa in literature, the cave paintings of Ajanta and the stone carvings of Sarnath in art.",
       "tts": {
-        "text": "In India, the Gupta golden age (roughly 320-550 CE) produced some of the most celebrated achievements of Indian civilization: the concept of zero and the decimal number system in mathematics, the plays of Kalidasa in literature, the cave paintings of Ajanta and the stone carvings of Sarnath in art.",
+        "text": "In India, the Gupta golden age (roughly three hundred twenty to five hundred fifty CE) produced some of the most celebrated achievements of Indian civilization: the concept of zero and the decimal number system in mathematics, the plays of Kalidasa in literature, the cave paintings of Ajanta and the stone carvings of Sarnath in art.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.8
       }
@@ -10986,7 +10986,7 @@
       "text": "The last Roman emperor in the West was deposed in 476 CE.",
       "text_markdown": "The last Roman emperor in the West was deposed in 476 CE.",
       "tts": {
-        "text": "The last Roman emperor in the West was deposed in 476 CE.",
+        "text": "The last Roman emperor in the West was deposed in four hundred seventy six CE.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -11002,7 +11002,7 @@
       "text": "Teotihuacan burned around 550 CE.",
       "text_markdown": "Teotihuacan burned around 550 CE.",
       "tts": {
-        "text": "Teotihuacan burned around 550 CE.",
+        "text": "Teotihuacan burned around five hundred fifty CE.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -11162,7 +11162,7 @@
       "text": "Rome's fall is one of the most analyzed events in world history, debated by historians for 1,500 years.",
       "text_markdown": "Rome's fall is one of the most analyzed events in world history, debated by historians for 1,500 years.",
       "tts": {
-        "text": "Rome's fall is one of the most analyzed events in world history, debated by historians for 1,500 years.",
+        "text": "Rome's fall is one of the most analyzed events in world history, debated by historians for one thousand five hundred years.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -11322,7 +11322,7 @@
       "text": "When Teotihuacan burned around 550 CE, the world was in the grip of upheaval.",
       "text_markdown": "When Teotihuacan burned around 550 CE, the world was in the grip of upheaval.",
       "tts": {
-        "text": "When Teotihuacan burned around 550 CE, the world was in the grip of upheaval.",
+        "text": "When Teotihuacan burned around five hundred fifty CE, the world was in the grip of upheaval.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -11338,7 +11338,7 @@
       "text": "The Plague of Justinian (541-542 CE) was devastating the Byzantine Empire -- the first pandemic of bubonic plague, which killed an estimated 25 to 50 million people across Europe, North Africa, and the Middle East.",
       "text_markdown": "The Plague of Justinian (541-542 CE) was devastating the Byzantine Empire -- the first pandemic of bubonic plague, which killed an estimated 25 to 50 million people across Europe, North Africa, and the Middle East.",
       "tts": {
-        "text": "The Plague of Justinian (541-542 CE) was devastating the Byzantine Empire -- the first pandemic of bubonic plague, which killed an estimated 25 to 50 million people across Europe, North Africa, and the Middle East.",
+        "text": "The Plague of Justinian (five hundred forty one to five hundred forty two CE) was devastating the Byzantine Empire -- the first pandemic of bubonic plague, which killed an estimated twenty five to fifty million people across Europe, North Africa, and the Middle East.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -11354,7 +11354,7 @@
       "text": "In China, the Sui Dynasty (581-618 CE) was about to reunify the country after centuries of division, setting the stage for the Tang Dynasty's golden age.",
       "text_markdown": "In China, the Sui Dynasty (581-618 CE) was about to reunify the country after centuries of division, setting the stage for the Tang Dynasty's golden age.",
       "tts": {
-        "text": "In China, the Sui Dynasty (581-618 CE) was about to reunify the country after centuries of division, setting the stage for the Tang Dynasty's golden age.",
+        "text": "In China, the Sui Dynasty (five hundred eighty one to six hundred eighteen CE) was about to reunify the country after centuries of division, setting the stage for the Tang Dynasty's golden age.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -11370,7 +11370,7 @@
       "text": "In Arabia, the Prophet Muhammad would be born around 570 CE, and the religion he founded would reshape the world within a century of his death.",
       "text_markdown": "In Arabia, the Prophet Muhammad would be born around 570 CE, and the religion he founded would reshape the world within a century of his death.",
       "tts": {
-        "text": "In Arabia, the Prophet Muhammad would be born around 570 CE, and the religion he founded would reshape the world within a century of his death.",
+        "text": "In Arabia, the Prophet Muhammad would be born around five hundred seventy CE, and the religion he founded would reshape the world within a century of his death.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -11498,7 +11498,7 @@
       "text": "A city of 125,000 to 200,000 people, sustained for over five centuries, projecting influence across thousands of kilometers, is one of the most remarkable achievements of urban civilization anywhere on Earth.",
       "text_markdown": "A city of 125,000 to 200,000 people, sustained for over five centuries, projecting influence across thousands of kilometers, is one of the most remarkable achievements of urban civilization anywhere on Earth.",
       "tts": {
-        "text": "A city of 125,000 to 200,000 people, sustained for over five centuries, projecting influence across thousands of kilometers, is one of the most remarkable achievements of urban civilization anywhere on Earth.",
+        "text": "A city of one hundred twenty five thousand to two hundred thousand people, sustained for over five centuries, projecting influence across thousands of kilometers, is one of the most remarkable achievements of urban civilization anywhere on Earth.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -11594,7 +11594,7 @@
       "text": "The apartment compounds that housed 125,000 people are still visible, their walls outlining the grid of a city that was, for centuries, one of the most extraordinary places on Earth.",
       "text_markdown": "The apartment compounds that housed 125,000 people are still visible, their walls outlining the grid of a city that was, for centuries, one of the most extraordinary places on Earth.",
       "tts": {
-        "text": "The apartment compounds that housed 125,000 people are still visible, their walls outlining the grid of a city that was, for centuries, one of the most extraordinary places on Earth.",
+        "text": "The apartment compounds that housed one hundred twenty five thousand people are still visible, their walls outlining the grid of a city that was, for centuries, one of the most extraordinary places on Earth.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -11642,7 +11642,7 @@
       "text": "In 2015, researchers using muon tomography -- a technique that uses cosmic ray particles to create images of the interior of large structures, the same technology used to discover a hidden chamber in the Great Pyramid of Giza -- began surveying the Pyramid of the Sun, searching for previously unknown internal chambers.",
       "text_markdown": "In 2015, researchers using muon tomography -- a technique that uses cosmic ray particles to create images of the interior of large structures, the same technology used to discover a hidden chamber in the Great Pyramid of Giza -- began surveying the Pyramid of the Sun, searching for previously unknown internal chambers.",
       "tts": {
-        "text": "In 2015, researchers using muon tomography -- a technique that uses cosmic ray particles to create images of the interior of large structures, the same technology used to discover a hidden chamber in the Great Pyramid of Giza -- began surveying the Pyramid of the Sun, searching for previously unknown internal chambers.",
+        "text": "In twenty fifteen, researchers using muon tomography -- a technique that uses cosmic ray particles to create images of the interior of large structures, the same technology used to discover a hidden chamber in the Great Pyramid of Giza -- began surveying the Pyramid of the Sun, searching for previously unknown internal chambers.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.8
       }
@@ -11798,7 +11798,7 @@
       "text": "The absence of long texts may reflect a cultural choice (collective rule discouraging personal inscriptions), preservation failure (plaster and bark paper do not survive 1,500 years), or a genuinely limited notation system.",
       "text_markdown": "The absence of long texts may reflect a cultural choice (collective rule discouraging personal inscriptions), preservation failure (plaster and bark paper do not survive 1,500 years), or a genuinely limited notation system.",
       "tts": {
-        "text": "The absence of long texts may reflect a cultural choice (collective rule discouraging personal inscriptions), preservation failure (plaster and bark paper do not survive 1,500 years), or a genuinely limited notation system.",
+        "text": "The absence of long texts may reflect a cultural choice (collective rule discouraging personal inscriptions), preservation failure (plaster and bark paper do not survive one thousand five hundred years), or a genuinely limited notation system.",
         "pause_after_ms": 800,
         "repetition_penalty": 2.0
       }
@@ -11878,7 +11878,7 @@
       "text": "What triggered the burning of ~550 CE? Internal revolution, foreign invasion, and ritual destruction have all been proposed.",
       "text_markdown": "**What triggered the burning of ~550 CE?** Internal revolution, foreign invasion, and ritual destruction have all been proposed.",
       "tts": {
-        "text": "What triggered the burning of ~550 CE? Internal revolution, foreign invasion, and ritual destruction have all been proposed.",
+        "text": "What triggered the burning of approximately five hundred fifty CE? Internal revolution, foreign invasion, and ritual destruction have all been proposed.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -11894,7 +11894,7 @@
       "text": "The selectivity of the fire (targeting the ceremonial core while sparing residential areas) suggests an internal uprising, possibly triggered by environmental stress from the volcanic winter of 535-536 CE.",
       "text_markdown": "The selectivity of the fire (targeting the ceremonial core while sparing residential areas) suggests an internal uprising, possibly triggered by environmental stress from the volcanic winter of 535-536 CE.",
       "tts": {
-        "text": "The selectivity of the fire (targeting the ceremonial core while sparing residential areas) suggests an internal uprising, possibly triggered by environmental stress from the volcanic winter of 535-536 CE.",
+        "text": "The selectivity of the fire (targeting the ceremonial core while sparing residential areas) suggests an internal uprising, possibly triggered by environmental stress from the volcanic winter of five hundred thirty five to five hundred thirty six CE.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -11926,7 +11926,7 @@
       "text": "What was the Entrada at Tikal? The arrival of Siyaj K'ahk' at Tikal on January 16, 378 CE, and the coincident death of Tikal's king, is documented in Maya inscriptions.",
       "text_markdown": "**What was the Entrada at Tikal?** The arrival of Siyaj K'ahk' at Tikal on January 16, 378 CE, and the coincident death of Tikal's king, is documented in Maya inscriptions.",
       "tts": {
-        "text": "What was the Entrada at Tikal? The arrival of Siyaj K'ahk' at Tikal on January 16, 378 CE, and the coincident death of Tikal's king, is documented in Maya inscriptions.",
+        "text": "What was the Entrada at Tikal? The arrival of Siyaj K'ahk' at Tikal on January sixteen, three hundred seventy eight CE, and the coincident death of Tikal's king, is documented in Maya inscriptions.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -11974,7 +11974,7 @@
       "text": "What is in the tunnel's deepest chambers? Sergio Gómez's excavation of the tunnel beneath the Temple of the Feathered Serpent has recovered over 75,000 objects, but excavation continues.",
       "text_markdown": "**What is in the tunnel's deepest chambers?** Sergio Gómez's excavation of the tunnel beneath the Temple of the Feathered Serpent has recovered over 75,000 objects, but excavation continues.",
       "tts": {
-        "text": "What is in the tunnel's deepest chambers? Sergio Gómez's excavation of the tunnel beneath the Temple of the Feathered Serpent has recovered over 75,000 objects, but excavation continues.",
+        "text": "What is in the tunnel's deepest chambers? Sergio Gómez's excavation of the tunnel beneath the Temple of the Feathered Serpent has recovered over seventy five thousand objects, but excavation continues.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -12054,7 +12054,7 @@
       "text": "The city's own name for itself -- the word its 125,000 residents used in daily life -- is lost.",
       "text_markdown": "The city's own name for itself -- the word its 125,000 residents used in daily life -- is lost.",
       "tts": {
-        "text": "The city's own name for itself -- the word its 125,000 residents used in daily life -- is lost.",
+        "text": "The city's own name for itself -- the word its one hundred twenty five thousand residents used in daily life -- is lost.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -12114,7 +12114,7 @@
       "text": "Apartment compound -- The standard residential unit at Teotihuacan: a walled enclosure containing multiple rooms around interior courtyards, housing 20-100 people.",
       "text_markdown": "**Apartment compound** -- The standard residential unit at Teotihuacan: a walled enclosure containing multiple rooms around interior courtyards, housing 20-100 people.",
       "tts": {
-        "text": "Apartment compound -- The standard residential unit at Teotihuacan: a walled enclosure containing multiple rooms around interior courtyards, housing 20-100 people.",
+        "text": "Apartment compound -- The standard residential unit at Teotihuacan: a walled enclosure containing multiple rooms around interior courtyards, housing twenty to one hundredpeople.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -12130,7 +12130,7 @@
       "text": "Over 2,000 compounds have been identified.",
       "text_markdown": "Over 2,000 compounds have been identified.",
       "tts": {
-        "text": "Over 2,000 compounds have been identified.",
+        "text": "Over two thousand compounds have been identified.",
         "pause_after_ms": 800,
         "repetition_penalty": 2.0
       }
@@ -12146,7 +12146,7 @@
       "text": "Avenue of the Dead -- The central ceremonial axis of Teotihuacan, running roughly north-south for 2.5-5 kilometers.",
       "text_markdown": "**Avenue of the Dead** -- The central ceremonial axis of Teotihuacan, running roughly north-south for 2.5-5 kilometers.",
       "tts": {
-        "text": "Avenue of the Dead -- The central ceremonial axis of Teotihuacan, running roughly north-south for 2.5-5 kilometers.",
+        "text": "Avenue of the Dead -- The central ceremonial axis of Teotihuacan, running roughly north-south for two.five to fivekilometers.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -12242,7 +12242,7 @@
       "text": "May have absorbed some of Teotihuacan's population after 550 CE.",
       "text_markdown": "May have absorbed some of Teotihuacan's population after 550 CE.",
       "tts": {
-        "text": "May have absorbed some of Teotihuacan's population after 550 CE.",
+        "text": "May have absorbed some of Teotihuacan's population after five hundred fifty CE.",
         "pause_after_ms": 800,
         "repetition_penalty": 2.0
       }
@@ -12274,7 +12274,7 @@
       "text": "Cowgill, George -- American archaeologist; author of Ancient Teotihuacan (Cambridge, 2015), the leading modern synthesis.",
       "text_markdown": "**Cowgill, George** -- American archaeologist; author of *Ancient Teotihuacan* (Cambridge, 2015), the leading modern synthesis.",
       "tts": {
-        "text": "Cowgill, George -- American archaeologist; author of Ancient Teotihuacan (Cambridge, 2015), the leading modern synthesis.",
+        "text": "Cowgill, George -- American archaeologist; author of Ancient Teotihuacan (Cambridge, twenty fifteen), the leading modern synthesis.",
         "pause_after_ms": 800,
         "repetition_penalty": 2.0
       }
@@ -12290,7 +12290,7 @@
       "text": "Entrada -- \"The Entrance\"; the arrival of the Teotihuacan-affiliated figure Siyaj K'ahk' at Tikal on January 16, 378 CE, coinciding with the death of Tikal's king and the installation of a new dynasty.",
       "text_markdown": "**Entrada** -- \"The Entrance\"; the arrival of the Teotihuacan-affiliated figure Siyaj K'ahk' at Tikal on January 16, 378 CE, coinciding with the death of Tikal's king and the installation of a new dynasty.",
       "tts": {
-        "text": "Entrada -- \"The Entrance\"; the arrival of the Teotihuacan-affiliated figure Siyaj K'ahk' at Tikal on January 16, 378 CE, coinciding with the death of Tikal's king and the installation of a new dynasty.",
+        "text": "Entrada -- \"The Entrance\"; the arrival of the Teotihuacan-affiliated figure Siyaj K'ahk' at Tikal on January sixteen, three hundred seventy eight CE, coinciding with the death of Tikal's king and the installation of a new dynasty.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -12306,7 +12306,7 @@
       "text": "Epiclassic -- The transitional period (~550-900 CE) following Teotihuacan's decline, characterized by political fragmentation and the rise of new regional powers.",
       "text_markdown": "**Epiclassic** -- The transitional period (~550-900 CE) following Teotihuacan's decline, characterized by political fragmentation and the rise of new regional powers.",
       "tts": {
-        "text": "Epiclassic -- The transitional period (~550-900 CE) following Teotihuacan's decline, characterized by political fragmentation and the rise of new regional powers.",
+        "text": "Epiclassic -- The transitional period (approximately five hundred fifty to nine hundred CE) following Teotihuacan's decline, characterized by political fragmentation and the rise of new regional powers.",
         "pause_after_ms": 800,
         "repetition_penalty": 2.0
       }
@@ -12322,7 +12322,7 @@
       "text": "Gómez, Sergio -- Mexican archaeologist who discovered and excavated the tunnel beneath the Temple of the Feathered Serpent beginning in 2003.",
       "text_markdown": "**Gómez, Sergio** -- Mexican archaeologist who discovered and excavated the tunnel beneath the Temple of the Feathered Serpent beginning in 2003.",
       "tts": {
-        "text": "Gómez, Sergio -- Mexican archaeologist who discovered and excavated the tunnel beneath the Temple of the Feathered Serpent beginning in 2003.",
+        "text": "Gómez, Sergio -- Mexican archaeologist who discovered and excavated the tunnel beneath the Temple of the Feathered Serpent beginning in two thousand three.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -12402,7 +12402,7 @@
       "text": "Millon, René (mee-YOHN) -- American archaeologist who produced the definitive map of Teotihuacan, completed in 1973.",
       "text_markdown": "**Millon, René** (mee-YOHN) -- American archaeologist who produced the definitive map of Teotihuacan, completed in 1973.",
       "tts": {
-        "text": "Millon, René (mee-YOHN) -- American archaeologist who produced the definitive map of Teotihuacan, completed in 1973.",
+        "text": "Millon, René (mee-YOHN) -- American archaeologist who produced the definitive map of Teotihuacan, completed in nineteen seventy three.",
         "pause_after_ms": 800,
         "repetition_penalty": 2.0
       }
@@ -12450,7 +12450,7 @@
       "text": "Pasztory, Esther -- Art historian; author of Teotihuacan: An Experiment in Living (1997), influential analysis of the city's art and ideology.",
       "text_markdown": "**Pasztory, Esther** -- Art historian; author of *Teotihuacan: An Experiment in Living* (1997), influential analysis of the city's art and ideology.",
       "tts": {
-        "text": "Pasztory, Esther -- Art historian; author of Teotihuacan: An Experiment in Living (1997), influential analysis of the city's art and ideology.",
+        "text": "Pasztory, Esther -- Art historian; author of Teotihuacan: An Experiment in Living (nineteen ninety seven), influential analysis of the city's art and ideology.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -12562,7 +12562,7 @@
       "text": "Siyaj K'ahk' (see-YAHJ kah-AHK) -- \"Born of Fire\"; the Teotihuacan-affiliated figure who arrived at Tikal in 378 CE.",
       "text_markdown": "**Siyaj K'ahk'** (see-YAHJ kah-AHK) -- \"Born of Fire\"; the Teotihuacan-affiliated figure who arrived at Tikal in 378 CE.",
       "tts": {
-        "text": "Siyaj K'ahk' (see-YAHJ kah-AHK) -- \"Born of Fire\"; the Teotihuacan-affiliated figure who arrived at Tikal in 378 CE.",
+        "text": "Siyaj K'ahk' (see-YAHJ kah-AHK) -- \"Born of Fire\"; the Teotihuacan-affiliated figure who arrived at Tikal in three hundred seventy eight CE.",
         "pause_after_ms": 800,
         "repetition_penalty": 2.0
       }
@@ -12658,7 +12658,7 @@
       "text": "Contains over 200 sacrificial victims in its foundations and a sealed tunnel beneath.",
       "text_markdown": "Contains over 200 sacrificial victims in its foundations and a sealed tunnel beneath.",
       "tts": {
-        "text": "Contains over 200 sacrificial victims in its foundations and a sealed tunnel beneath.",
+        "text": "Contains over two hundred sacrificial victims in its foundations and a sealed tunnel beneath.",
         "pause_after_ms": 800,
         "repetition_penalty": 2.0
       }
@@ -12706,7 +12706,7 @@
       "text": "Flourished ~100-550 CE.",
       "text_markdown": "Flourished ~100-550 CE.",
       "tts": {
-        "text": "Flourished ~100-550 CE.",
+        "text": "Flourished approximately one hundred to five hundred fifty CE.",
         "pause_after_ms": 800,
         "repetition_penalty": 2.0
       }
@@ -12784,7 +12784,7 @@
       "text": "Cowgill, George L. Ancient Teotihuacan: Early Urbanism in Central Mexico. Cambridge University Press, 2015. -- The best modern synthesis, comprehensive and authoritative.",
       "text_markdown": "Cowgill, George L. *Ancient Teotihuacan: Early Urbanism in Central Mexico*. Cambridge University Press, 2015. -- The best modern synthesis, comprehensive and authoritative.",
       "tts": {
-        "text": "Cowgill, George L. Ancient Teotihuacan: Early Urbanism in Central Mexico. Cambridge University Press, 2015. -- The best modern synthesis, comprehensive and authoritative.",
+        "text": "Cowgill, George L. Ancient Teotihuacan: Early Urbanism in Central Mexico. Cambridge University Press, twenty fifteen. -- The best modern synthesis, comprehensive and authoritative.",
         "pause_after_ms": 800,
         "repetition_penalty": 2.0
       }
@@ -12802,7 +12802,7 @@
       "text": "Pasztory, Esther. Teotihuacan: An Experiment in Living. University of Oklahoma Press, 1997. -- A stimulating interpretation of the city's art, architecture, and political ideology.",
       "text_markdown": "Pasztory, Esther. *Teotihuacan: An Experiment in Living*. University of Oklahoma Press, 1997. -- A stimulating interpretation of the city's art, architecture, and political ideology.",
       "tts": {
-        "text": "Pasztory, Esther. Teotihuacan: An Experiment in Living. University of Oklahoma Press, 1997. -- A stimulating interpretation of the city's art, architecture, and political ideology.",
+        "text": "Pasztory, Esther. Teotihuacan: An Experiment in Living. University of Oklahoma Press, nineteen ninety seven. -- A stimulating interpretation of the city's art, architecture, and political ideology.",
         "pause_after_ms": 800,
         "repetition_penalty": 2.0
       }
@@ -12820,7 +12820,7 @@
       "text": "Mann, Charles C. 1491: New Revelations of the Americas Before Columbus. Vintage, 2006. -- An outstanding survey of pre-Columbian civilizations with excellent sections on Teotihuacan.",
       "text_markdown": "Mann, Charles C. *1491: New Revelations of the Americas Before Columbus*. Vintage, 2006. -- An outstanding survey of pre-Columbian civilizations with excellent sections on Teotihuacan.",
       "tts": {
-        "text": "Mann, Charles C. 1491: New Revelations of the Americas Before Columbus. Vintage, 2006. -- An outstanding survey of pre-Columbian civilizations with excellent sections on Teotihuacan.",
+        "text": "Mann, Charles C. fourteen ninety one: New Revelations of the Americas Before Columbus. Vintage, two thousand six. -- An outstanding survey of pre-Columbian civilizations with excellent sections on Teotihuacan.",
         "pause_after_ms": 800,
         "repetition_penalty": 2.0
       }
@@ -12854,7 +12854,7 @@
       "text": "Sugiyama, Saburo. Human Sacrifice, Militarism, and Rulership: Materialization of State Ideology at the Feathered Serpent Pyramid, Teotihuacan. Cambridge University Press, 2005. -- The definitive account of the mass sacrifice discovery.",
       "text_markdown": "Sugiyama, Saburo. *Human Sacrifice, Militarism, and Rulership: Materialization of State Ideology at the Feathered Serpent Pyramid, Teotihuacan*. Cambridge University Press, 2005. -- The definitive account of the mass sacrifice discovery.",
       "tts": {
-        "text": "Sugiyama, Saburo. Human Sacrifice, Militarism, and Rulership: Materialization of State Ideology at the Feathered Serpent Pyramid, Teotihuacan. Cambridge University Press, 2005. -- The definitive account of the mass sacrifice discovery.",
+        "text": "Sugiyama, Saburo. Human Sacrifice, Militarism, and Rulership: Materialization of State Ideology at the Feathered Serpent Pyramid, Teotihuacan. Cambridge University Press, two thousand five. -- The definitive account of the mass sacrifice discovery.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -12872,7 +12872,7 @@
       "text": "Millon, René. Urbanization at Teotihuacan, Mexico. Vol. 1: The Teotihuacan Map. University of Texas Press, 1973. -- The foundational spatial study of the city.",
       "text_markdown": "Millon, René. *Urbanization at Teotihuacan, Mexico. Vol. 1: The Teotihuacan Map*. University of Texas Press, 1973. -- The foundational spatial study of the city.",
       "tts": {
-        "text": "Millon, René. Urbanization at Teotihuacan, Mexico. Vol. 1: The Teotihuacan Map. University of Texas Press, 1973. -- The foundational spatial study of the city.",
+        "text": "Millon, René. Urbanization at Teotihuacan, Mexico. Vol. one: The Teotihuacan Map. University of Texas Press, nineteen seventy three. -- The foundational spatial study of the city.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -12890,7 +12890,7 @@
       "text": "Carballo, David M. Urbanization and Religion in Ancient Central Mexico. Oxford University Press, 2016. -- A recent analysis of the relationship between urban form and religious practice.",
       "text_markdown": "Carballo, David M. *Urbanization and Religion in Ancient Central Mexico*. Oxford University Press, 2016. -- A recent analysis of the relationship between urban form and religious practice.",
       "tts": {
-        "text": "Carballo, David M. Urbanization and Religion in Ancient Central Mexico. Oxford University Press, 2016. -- A recent analysis of the relationship between urban form and religious practice.",
+        "text": "Carballo, David M. Urbanization and Religion in Ancient Central Mexico. Oxford University Press, twenty sixteen. -- A recent analysis of the relationship between urban form and religious practice.",
         "pause_after_ms": 800,
         "repetition_penalty": 2.0
       }
@@ -12924,7 +12924,7 @@
       "text": "Marcus, Joyce, and Kent V. Flannery. Zapotec Civilization. Thames & Hudson, 1996. -- Essential background for understanding Monte Albán's relationship with Teotihuacan.",
       "text_markdown": "Marcus, Joyce, and Kent V. Flannery. *Zapotec Civilization*. Thames & Hudson, 1996. -- Essential background for understanding Monte Albán's relationship with Teotihuacan.",
       "tts": {
-        "text": "Marcus, Joyce, and Kent V. Flannery. Zapotec Civilization. Thames & Hudson, 1996. -- Essential background for understanding Monte Albán's relationship with Teotihuacan.",
+        "text": "Marcus, Joyce, and Kent V. Flannery. Zapotec Civilization. Thames & Hudson, nineteen ninety six. -- Essential background for understanding Monte Albán's relationship with Teotihuacan.",
         "pause_after_ms": 800,
         "repetition_penalty": 2.0
       }
@@ -12942,7 +12942,7 @@
       "text": "Stuart, David. \"The Arrival of Strangers: Teotihuacan and Tollan in Classic Maya History.\" In Mesoamerica's Classic Heritage, edited by David Carrasco et al. University Press of Colorado, 2000. -- The leading analysis of the Entrada and its consequences.",
       "text_markdown": "Stuart, David. *\"The Arrival of Strangers: Teotihuacan and Tollan in Classic Maya History.\"* In *Mesoamerica's Classic Heritage*, edited by David Carrasco et al. University Press of Colorado, 2000. -- The leading analysis of the Entrada and its consequences.",
       "tts": {
-        "text": "Stuart, David. \"The Arrival of Strangers: Teotihuacan and Tollan in Classic Maya History.\" In Mesoamerica's Classic Heritage, edited by David Carrasco et al. University Press of Colorado, 2000. -- The leading analysis of the Entrada and its consequences.",
+        "text": "Stuart, David. \"The Arrival of Strangers: Teotihuacan and Tollan in Classic Maya History.\" In Mesoamerica's Classic Heritage, edited by David Carrasco et al. University Press of Colorado, twenty hundred. -- The leading analysis of the Entrada and its consequences.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -13050,7 +13050,7 @@
       "text": "Volume 1: The Mystery of Monte Albán -- Sacred Mountain, Lost Script, Vanished City",
       "text_markdown": "Volume 1: *The Mystery of Monte Albán* -- Sacred Mountain, Lost Script, Vanished City",
       "tts": {
-        "text": "Volume 1: The Mystery of Monte Albán -- Sacred Mountain, Lost Script, Vanished City",
+        "text": "Volume one: The Mystery of Monte Albán -- Sacred Mountain, Lost Script, Vanished City",
         "pause_after_ms": 800,
         "repetition_penalty": 2.0
       }
@@ -13066,7 +13066,7 @@
       "text": "Volume 2: The Unconquered People -- Unconquered Nation, Unwritten Tongue, Invisible State",
       "text_markdown": "Volume 2: *The Unconquered People* -- Unconquered Nation, Unwritten Tongue, Invisible State",
       "tts": {
-        "text": "Volume 2: The Unconquered People -- Unconquered Nation, Unwritten Tongue, Invisible State",
+        "text": "Volume two: The Unconquered People -- Unconquered Nation, Unwritten Tongue, Invisible State",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -13082,7 +13082,7 @@
       "text": "Volume 3: The Mystery of the Olmec -- The Mother Culture and the Stone That Speaks Once",
       "text_markdown": "Volume 3: *The Mystery of the Olmec* -- The Mother Culture and the Stone That Speaks Once",
       "tts": {
-        "text": "Volume 3: The Mystery of the Olmec -- The Mother Culture and the Stone That Speaks Once",
+        "text": "Volume three: The Mystery of the Olmec -- The Mother Culture and the Stone That Speaks Once",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -13098,7 +13098,7 @@
       "text": "Volume 4: The Mystery of Cahokia -- America's Forgotten Metropolis",
       "text_markdown": "Volume 4: *The Mystery of Cahokia* -- America's Forgotten Metropolis",
       "tts": {
-        "text": "Volume 4: The Mystery of Cahokia -- America's Forgotten Metropolis",
+        "text": "Volume four: The Mystery of Cahokia -- America's Forgotten Metropolis",
         "pause_after_ms": 800,
         "repetition_penalty": 2.0
       }
@@ -13114,7 +13114,7 @@
       "text": "Volume 5: The Mystery of Teotihuacan -- The City Where Even the Gods Were Strangers",
       "text_markdown": "Volume 5: *The Mystery of Teotihuacan* -- The City Where Even the Gods Were Strangers",
       "tts": {
-        "text": "Volume 5: The Mystery of Teotihuacan -- The City Where Even the Gods Were Strangers",
+        "text": "Volume five: The Mystery of Teotihuacan -- The City Where Even the Gods Were Strangers",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }

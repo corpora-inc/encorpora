@@ -26,7 +26,7 @@
       "text": "Around 1200 BCE, the world ended.",
       "text_markdown": "Around 1200 BCE, the world ended.",
       "tts": {
-        "text": "Around 1200 BCE, the world ended.",
+        "text": "Around twelve hundred BCE, the world ended.",
         "pause_after_ms": 2000,
         "repetition_penalty": 2.0
       }
@@ -122,7 +122,7 @@
       "text": "Within roughly fifty years, starting around 1200 BCE, this world collapsed.",
       "text_markdown": "Within roughly fifty years, starting around 1200 BCE, this world collapsed.",
       "tts": {
-        "text": "Within roughly fifty years, starting around 1200 BCE, this world collapsed.",
+        "text": "Within roughly fifty years, starting around twelve hundred BCE, this world collapsed.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -234,7 +234,7 @@
       "text": "On the walls of his mortuary temple at Medinet Habu, the pharaoh Ramesses III (RAM-eh-seez) carved images of a massive naval and land battle fought around 1177 BCE.",
       "text_markdown": "On the walls of his mortuary temple at Medinet Habu, the pharaoh Ramesses III (RAM-eh-seez) carved images of a massive naval and land battle fought around 1177 BCE.",
       "tts": {
-        "text": "On the walls of his mortuary temple at Medinet Habu, the pharaoh Ramesses III (RAM-eh-seez) carved images of a massive naval and land battle fought around 1177 BCE.",
+        "text": "On the walls of his mortuary temple at Medinet Habu, the pharaoh Ramesses III (RAM-eh-seez) carved images of a massive naval and land battle fought around eleven seventy seven BCE.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -386,7 +386,7 @@
       "text": "The Egyptian New Kingdom (approximately 1550-1070 BCE) was at its height under the Eighteenth and Nineteenth Dynasties -- the age of Hatshepsut (hat-SHEP-soot), Thutmose III (thoot-MOH-seh), Akhenaten (ahk-eh-NAH-ten), Tutankhamun (too-tahn-KAH-moon), and Ramesses II (RAM-eh-seez).",
       "text_markdown": "The Egyptian New Kingdom (approximately 1550-1070 BCE) was at its height under the Eighteenth and Nineteenth Dynasties -- the age of Hatshepsut (hat-SHEP-soot), Thutmose III (thoot-MOH-seh), Akhenaten (ahk-eh-NAH-ten), Tutankhamun (too-tahn-KAH-moon), and Ramesses II (RAM-eh-seez).",
       "tts": {
-        "text": "The Egyptian New Kingdom (approximately 1550-1070 BCE) was at its height under the Eighteenth and Nineteenth Dynasties -- the age of Hatshepsut (hat-SHEP-soot), Thutmose III (thoot-MOH-seh), Akhenaten (ahk-eh-NAH-ten), Tutankhamun (too-tahn-KAH-moon), and Ramesses II (RAM-eh-seez).",
+        "text": "The Egyptian New Kingdom (approximately fifteen fifty to one thousand seventy BCE) was at its height under the Eighteenth and Nineteenth Dynasties -- the age of Hatshepsut (hat-SHEP-soot), Thutmose III (thoot-MOH-seh), Akhenaten (ahk-eh-NAH-ten), Tutankhamun (too-tahn-KAH-moon), and Ramesses II (RAM-eh-seez).",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -530,7 +530,7 @@
       "text": "The rivalry between Egypt and the Hittites culminated in the Battle of Kadesh (KAH-desh) in 1274 BCE -- one of the largest chariot battles in history, fought between the armies of Ramesses II and the Hittite king Muwatalli II (moo-wah-TAHL-ee) near the Orontes River in modern Syria.",
       "text_markdown": "The rivalry between Egypt and the Hittites culminated in the Battle of Kadesh (KAH-desh) in 1274 BCE -- one of the largest chariot battles in history, fought between the armies of Ramesses II and the Hittite king Muwatalli II (moo-wah-TAHL-ee) near the Orontes River in modern Syria.",
       "tts": {
-        "text": "The rivalry between Egypt and the Hittites culminated in the Battle of Kadesh (KAH-desh) in 1274 BCE -- one of the largest chariot battles in history, fought between the armies of Ramesses II and the Hittite king Muwatalli II (moo-wah-TAHL-ee) near the Orontes River in modern Syria.",
+        "text": "The rivalry between Egypt and the Hittites culminated in the Battle of Kadesh (KAH-desh) in twelve seventy four BCE -- one of the largest chariot battles in history, fought between the armies of Ramesses II and the Hittite king Muwatalli II (moo-wah-TAHL-ee) near the Orontes River in modern Syria.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.8
       }
@@ -692,7 +692,7 @@
       "text": "The diplomatic correspondence of the Late Bronze Age is best preserved in the Amarna Letters -- a cache of roughly 380 cuneiform tablets found at Tell el-Amarna in Egypt, the site of Akhenaten's capital city.",
       "text_markdown": "The diplomatic correspondence of the Late Bronze Age is best preserved in the Amarna Letters -- a cache of roughly 380 cuneiform tablets found at Tell el-Amarna in Egypt, the site of Akhenaten's capital city.",
       "tts": {
-        "text": "The diplomatic correspondence of the Late Bronze Age is best preserved in the Amarna Letters -- a cache of roughly 380 cuneiform tablets found at Tell el-Amarna in Egypt, the site of Akhenaten's capital city.",
+        "text": "The diplomatic correspondence of the Late Bronze Age is best preserved in the Amarna Letters -- a cache of roughly three hundred eighty cuneiform tablets found at Tell el-Amarna in Egypt, the site of Akhenaten's capital city.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -758,7 +758,7 @@
       "text": "The Amarna Letters were discovered in 1887 by a local Egyptian woman digging in the ruins of Tell el-Amarna for sebakh (decomposed mudbrick used as fertilizer).",
       "text_markdown": "The Amarna Letters were discovered in 1887 by a local Egyptian woman digging in the ruins of Tell el-Amarna for sebakh (decomposed mudbrick used as fertilizer).",
       "tts": {
-        "text": "The Amarna Letters were discovered in 1887 by a local Egyptian woman digging in the ruins of Tell el-Amarna for sebakh (decomposed mudbrick used as fertilizer).",
+        "text": "The Amarna Letters were discovered in eighteen eighty seven by a local Egyptian woman digging in the ruins of Tell el-Amarna for sebakh (decomposed mudbrick used as fertilizer).",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -1062,7 +1062,7 @@
       "text": "The Uluburun (oo-loo-boo-ROON) shipwreck, discovered off the coast of southwestern Turkey in 1982, provides a vivid snapshot of Late Bronze Age trade.",
       "text_markdown": "The Uluburun (oo-loo-boo-ROON) shipwreck, discovered off the coast of southwestern Turkey in 1982, provides a vivid snapshot of Late Bronze Age trade.",
       "tts": {
-        "text": "The Uluburun (oo-loo-boo-ROON) shipwreck, discovered off the coast of southwestern Turkey in 1982, provides a vivid snapshot of Late Bronze Age trade.",
+        "text": "The Uluburun (oo-loo-boo-ROON) shipwreck, discovered off the coast of southwestern Turkey in nineteen eighty two, provides a vivid snapshot of Late Bronze Age trade.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -1142,7 +1142,7 @@
       "text": "The Mycenaean civilization (roughly 1600-1100 BCE), centered on palace complexes at Mycenae (my-SEE-nee), Tiryns (TEER-ins), Pylos (PY-loss), and other sites in the Peloponnese and central Greece, was a military and commercial power that traded across the eastern Mediterranean.",
       "text_markdown": "The Mycenaean civilization (roughly 1600-1100 BCE), centered on palace complexes at Mycenae (my-SEE-nee), Tiryns (TEER-ins), Pylos (PY-loss), and other sites in the Peloponnese and central Greece, was a military and commercial power that traded across the eastern Mediterranean.",
       "tts": {
-        "text": "The Mycenaean civilization (roughly 1600-1100 BCE), centered on palace complexes at Mycenae (my-SEE-nee), Tiryns (TEER-ins), Pylos (PY-loss), and other sites in the Peloponnese and central Greece, was a military and commercial power that traded across the eastern Mediterranean.",
+        "text": "The Mycenaean civilization (roughly sixteen hundred to eleven hundred BCE), centered on palace complexes at Mycenae (my-SEE-nee), Tiryns (TEER-ins), Pylos (PY-loss), and other sites in the Peloponnese and central Greece, was a military and commercial power that traded across the eastern Mediterranean.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -1366,7 +1366,7 @@
       "text": "It was a cosmopolitan port city with a population of perhaps 10,000-15,000, maintaining diplomatic relations with Egypt, the Hittites, Cyprus, and Mycenaean Greece.",
       "text_markdown": "It was a cosmopolitan port city with a population of perhaps 10,000-15,000, maintaining diplomatic relations with Egypt, the Hittites, Cyprus, and Mycenaean Greece.",
       "tts": {
-        "text": "It was a cosmopolitan port city with a population of perhaps 10,000-15,000, maintaining diplomatic relations with Egypt, the Hittites, Cyprus, and Mycenaean Greece.",
+        "text": "It was a cosmopolitan port city with a population of perhaps one hundred hundred to one hundred fifty hundredmaintaining diplomatic relations with Egypt, the Hittites, Cyprus, and Mycenaean Greece.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -1398,7 +1398,7 @@
       "text": "The city's archives, discovered in 1929, contain thousands of tablets recording trade transactions, diplomatic correspondence, legal documents, and literary texts -- including versions of myths that would later appear in the Hebrew Bible.",
       "text_markdown": "The city's archives, discovered in 1929, contain thousands of tablets recording trade transactions, diplomatic correspondence, legal documents, and literary texts -- including versions of myths that would later appear in the Hebrew Bible.",
       "tts": {
-        "text": "The city's archives, discovered in 1929, contain thousands of tablets recording trade transactions, diplomatic correspondence, legal documents, and literary texts -- including versions of myths that would later appear in the Hebrew Bible.",
+        "text": "The city's archives, discovered in nineteen twenty nine, contain thousands of tablets recording trade transactions, diplomatic correspondence, legal documents, and literary texts -- including versions of myths that would later appear in the Hebrew Bible.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -1446,7 +1446,7 @@
       "text": "Bronze is an alloy of roughly 90 percent copper and 10 percent tin.",
       "text_markdown": "Bronze is an alloy of roughly 90 percent copper and 10 percent tin.",
       "tts": {
-        "text": "Bronze is an alloy of roughly 90 percent copper and 10 percent tin.",
+        "text": "Bronze is an alloy of roughly ninety percent copper and ten percent tin.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -1494,7 +1494,7 @@
       "text": "The major tin sources were in Afghanistan (the mines of Badakhshan, the same region that supplied lapis lazuli to the Indus Valley civilization, as discussed in Volume 10) and possibly in the western Mediterranean (Spain or Cornwall).",
       "text_markdown": "The major tin sources were in Afghanistan (the mines of Badakhshan, the same region that supplied lapis lazuli to the Indus Valley civilization, as discussed in Volume 10) and possibly in the western Mediterranean (Spain or Cornwall).",
       "tts": {
-        "text": "The major tin sources were in Afghanistan (the mines of Badakhshan, the same region that supplied lapis lazuli to the Indus Valley civilization, as discussed in Volume 10) and possibly in the western Mediterranean (Spain or Cornwall).",
+        "text": "The major tin sources were in Afghanistan (the mines of Badakhshan, the same region that supplied lapis lazuli to the Indus Valley civilization, as discussed in Volume ten) and possibly in the western Mediterranean (Spain or Cornwall).",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -1682,7 +1682,7 @@
       "text": "The collapse of the Bronze Age world was not a single event but a cascade -- a series of destructions, abandonments, and disruptions that unfolded over roughly fifty years, from approximately 1200 to 1150 BCE.",
       "text_markdown": "The collapse of the Bronze Age world was not a single event but a cascade -- a series of destructions, abandonments, and disruptions that unfolded over roughly fifty years, from approximately 1200 to 1150 BCE.",
       "tts": {
-        "text": "The collapse of the Bronze Age world was not a single event but a cascade -- a series of destructions, abandonments, and disruptions that unfolded over roughly fifty years, from approximately 1200 to 1150 BCE.",
+        "text": "The collapse of the Bronze Age world was not a single event but a cascade -- a series of destructions, abandonments, and disruptions that unfolded over roughly fifty years, from approximately twelve hundred to eleven fifty BCE.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -1762,7 +1762,7 @@
       "text": "The Hittite capital of Hattusa was destroyed and burned around 1180 BCE.",
       "text_markdown": "The Hittite capital of Hattusa was destroyed and burned around 1180 BCE.",
       "tts": {
-        "text": "The Hittite capital of Hattusa was destroyed and burned around 1180 BCE.",
+        "text": "The Hittite capital of Hattusa was destroyed and burned around eleven eighty BCE.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -1794,7 +1794,7 @@
       "text": "The archives that have been excavated -- over 30,000 cuneiform tablets recording treaties, diplomatic correspondence, legal codes, religious texts, and administrative records -- were preserved only because the fire that destroyed the buildings baked the clay tablets, hardening them for posterity.",
       "text_markdown": "The archives that have been excavated -- over 30,000 cuneiform tablets recording treaties, diplomatic correspondence, legal codes, religious texts, and administrative records -- were preserved only because the fire that destroyed the buildings baked the clay tablets, hardening them for posterity.",
       "tts": {
-        "text": "The archives that have been excavated -- over 30,000 cuneiform tablets recording treaties, diplomatic correspondence, legal codes, religious texts, and administrative records -- were preserved only because the fire that destroyed the buildings baked the clay tablets, hardening them for posterity.",
+        "text": "The archives that have been excavated -- over thirty thousand cuneiform tablets recording treaties, diplomatic correspondence, legal codes, religious texts, and administrative records -- were preserved only because the fire that destroyed the buildings baked the clay tablets, hardening them for posterity.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -1892,7 +1892,7 @@
       "image": "../images/placeholders/02-collapse-timeline.png",
       "image_alt": "Timeline showing the cascade of destructions across the Eastern Mediterranean from approximately 1200-1150 BCE",
       "tts": {
-        "text": "Timeline showing the cascade of destructions across the Eastern Mediterranean from approximately 1200-1150 BCE",
+        "text": "Timeline showing the cascade of destructions across the Eastern Mediterranean from approximately twelve hundred to eleven fifty BCE",
         "pause_after_ms": 1200,
         "repetition_penalty": 2.0
       }
@@ -1924,7 +1924,7 @@
       "text": "The palace at Pylos was destroyed around 1180 BCE -- the last Linear B tablets found at the site include records of emergency military preparations, including the redeployment of rowers (probably from naval vessels) to guard the coastline, suggesting that the palace administration knew an attack was coming and was attempting to organize a defense.",
       "text_markdown": "The palace at Pylos was destroyed around 1180 BCE -- the last Linear B tablets found at the site include records of emergency military preparations, including the redeployment of rowers (probably from naval vessels) to guard the coastline, suggesting that the palace administration knew an attack was coming and was attempting to organize a defense.",
       "tts": {
-        "text": "The palace at Pylos was destroyed around 1180 BCE -- the last Linear B tablets found at the site include records of emergency military preparations, including the redeployment of rowers (probably from naval vessels) to guard the coastline, suggesting that the palace administration knew an attack was coming and was attempting to organize a defense.",
+        "text": "The palace at Pylos was destroyed around eleven eighty BCE -- the last Linear B tablets found at the site include records of emergency military preparations, including the redeployment of rowers (probably from naval vessels) to guard the coastline, suggesting that the palace administration knew an attack was coming and was attempting to organize a defense.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.8
       }
@@ -2004,7 +2004,7 @@
       "text": "By roughly 1100 BCE, the Mycenaean palace system was completely gone.",
       "text_markdown": "By roughly 1100 BCE, the Mycenaean palace system was completely gone.",
       "tts": {
-        "text": "By roughly 1100 BCE, the Mycenaean palace system was completely gone.",
+        "text": "By roughly eleven hundred BCE, the Mycenaean palace system was completely gone.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -2020,7 +2020,7 @@
       "text": "The population of Greece declined dramatically -- some estimates suggest a drop of 75 percent or more.",
       "text_markdown": "The population of Greece declined dramatically -- some estimates suggest a drop of 75 percent or more.",
       "tts": {
-        "text": "The population of Greece declined dramatically -- some estimates suggest a drop of 75 percent or more.",
+        "text": "The population of Greece declined dramatically -- some estimates suggest a drop of seventy five percent or more.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -2084,7 +2084,7 @@
       "text": "Greece entered a \"Dark Age\" that would last roughly 300 years, until the emergence of the Greek city-states and the adoption of the Phoenician alphabet in the eighth century BCE.",
       "text_markdown": "Greece entered a \"Dark Age\" that would last roughly 300 years, until the emergence of the Greek city-states and the adoption of the Phoenician alphabet in the eighth century BCE.",
       "tts": {
-        "text": "Greece entered a \"Dark Age\" that would last roughly 300 years, until the emergence of the Greek city-states and the adoption of the Phoenician alphabet in the eighth century BCE.",
+        "text": "Greece entered a \"Dark Age\" that would last roughly three hundred years, until the emergence of the Greek city-states and the adoption of the Phoenician alphabet in the eighth century BCE.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -2100,7 +2100,7 @@
       "text": "Ugarit was destroyed around 1185 BCE.",
       "text_markdown": "Ugarit was destroyed around 1185 BCE.",
       "tts": {
-        "text": "Ugarit was destroyed around 1185 BCE.",
+        "text": "Ugarit was destroyed around eleven eighty five BCE.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -2292,7 +2292,7 @@
       "text": "Hazor (hah-ZOR), one of the largest Canaanite cities, with an area of roughly 80 hectares and a population of perhaps 20,000, was burned so thoroughly that the destruction layer is still visible in the archaeological section.",
       "text_markdown": "Hazor (hah-ZOR), one of the largest Canaanite cities, with an area of roughly 80 hectares and a population of perhaps 20,000, was burned so thoroughly that the destruction layer is still visible in the archaeological section.",
       "tts": {
-        "text": "Hazor (hah-ZOR), one of the largest Canaanite cities, with an area of roughly 80 hectares and a population of perhaps 20,000, was burned so thoroughly that the destruction layer is still visible in the archaeological section.",
+        "text": "Hazor (hah-ZOR), one of the largest Canaanite cities, with an area of roughly eighty hectares and a population of perhaps twenty thousand, was burned so thoroughly that the destruction layer is still visible in the archaeological section.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -2356,7 +2356,7 @@
       "text": "The archaeological layer known as Troy VIIa (the seventh major occupation layer, sub-phase a) shows evidence of destruction by fire, dating to approximately 1180 BCE.",
       "text_markdown": "The archaeological layer known as Troy VIIa (the seventh major occupation layer, sub-phase a) shows evidence of destruction by fire, dating to approximately 1180 BCE.",
       "tts": {
-        "text": "The archaeological layer known as Troy VIIa (the seventh major occupation layer, sub-phase a) shows evidence of destruction by fire, dating to approximately 1180 BCE.",
+        "text": "The archaeological layer known as Troy VIIa (the seventh major occupation layer, sub-phase a) shows evidence of destruction by fire, dating to approximately eleven eighty BCE.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -2372,7 +2372,7 @@
       "text": "Whether this destruction has any connection to the story told by Homer -- a ten-year war fought by a Greek coalition against Troy -- is one of the most debated questions in classical archaeology, and we will return to it in Chapter 8.",
       "text_markdown": "Whether this destruction has any connection to the story told by Homer -- a ten-year war fought by a Greek coalition against Troy -- is one of the most debated questions in classical archaeology, and we will return to it in Chapter 8.",
       "tts": {
-        "text": "Whether this destruction has any connection to the story told by Homer -- a ten-year war fought by a Greek coalition against Troy -- is one of the most debated questions in classical archaeology, and we will return to it in Chapter 8.",
+        "text": "Whether this destruction has any connection to the story told by Homer -- a ten-year war fought by a Greek coalition against Troy -- is one of the most debated questions in classical archaeology, and we will return to it in Chapter eight.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -2564,7 +2564,7 @@
       "text": "The inscriptions of Merneptah (mer-NEP-tah, pharaoh from approximately 1213-1203 BCE) record an invasion by Libyans allied with \"peoples of the sea\" around 1208 BCE.",
       "text_markdown": "The inscriptions of Merneptah (mer-NEP-tah, pharaoh from approximately 1213-1203 BCE) record an invasion by Libyans allied with \"peoples of the sea\" around 1208 BCE.",
       "tts": {
-        "text": "The inscriptions of Merneptah (mer-NEP-tah, pharaoh from approximately 1213-1203 BCE) record an invasion by Libyans allied with \"peoples of the sea\" around 1208 BCE.",
+        "text": "The inscriptions of Merneptah (mer-NEP-tah, pharaoh from approximately twelve thirteen to twelve oh three BCE) record an invasion by Libyans allied with \"peoples of the sea\" around twelve oh eight BCE.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -2596,7 +2596,7 @@
       "text": "A generation later, his grandson Ramesses III faced a far more serious assault -- the attack described and depicted on the walls of Medinet Habu, around 1177 BCE.",
       "text_markdown": "A generation later, his grandson Ramesses III faced a far more serious assault -- the attack described and depicted on the walls of Medinet Habu, around 1177 BCE.",
       "tts": {
-        "text": "A generation later, his grandson Ramesses III faced a far more serious assault -- the attack described and depicted on the walls of Medinet Habu, around 1177 BCE.",
+        "text": "A generation later, his grandson Ramesses III faced a far more serious assault -- the attack described and depicted on the walls of Medinet Habu, around eleven seventy seven BCE.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -2796,7 +2796,7 @@
       "text": "The Egyptians fought the Sea Peoples twice -- once under Merneptah around 1208 BCE and once under Ramesses III around 1177 BCE -- and both pharaohs commemorated their victories in monumental inscriptions that have survived.",
       "text_markdown": "The Egyptians fought the Sea Peoples twice -- once under Merneptah around 1208 BCE and once under Ramesses III around 1177 BCE -- and both pharaohs commemorated their victories in monumental inscriptions that have survived.",
       "tts": {
-        "text": "The Egyptians fought the Sea Peoples twice -- once under Merneptah around 1208 BCE and once under Ramesses III around 1177 BCE -- and both pharaohs commemorated their victories in monumental inscriptions that have survived.",
+        "text": "The Egyptians fought the Sea Peoples twice -- once under Merneptah around twelve oh eight BCE and once under Ramesses III around eleven seventy seven BCE -- and both pharaohs commemorated their victories in monumental inscriptions that have survived.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.8
       }
@@ -3690,7 +3690,7 @@
       "text": "A 2019 study led by Michal Feldman analyzed genomes from a Philistine cemetery at Ashkelon dating to the twelfth and eleventh centuries BCE.",
       "text_markdown": "A 2019 study led by Michal Feldman analyzed genomes from a Philistine cemetery at Ashkelon dating to the twelfth and eleventh centuries BCE.",
       "tts": {
-        "text": "A 2019 study led by Michal Feldman analyzed genomes from a Philistine cemetery at Ashkelon dating to the twelfth and eleventh centuries BCE.",
+        "text": "A twenty nineteen study led by Michal Feldman analyzed genomes from a Philistine cemetery at Ashkelon dating to the twelfth and eleventh centuries BCE.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -4124,7 +4124,7 @@
       "text": "The Tjeker settled on the coast of the Levant, like the Peleset, and are mentioned in the Egyptian story of Wenamun (WEN-ah-moon) -- an account of an Egyptian official's journey to Byblos around 1075 BCE, in which the Tjeker are described as controlling the port of Dor on the coast of modern Israel.",
       "text_markdown": "The Tjeker settled on the coast of the Levant, like the Peleset, and are mentioned in the Egyptian story of Wenamun (WEN-ah-moon) -- an account of an Egyptian official's journey to Byblos around 1075 BCE, in which the Tjeker are described as controlling the port of Dor on the coast of modern Israel.",
       "tts": {
-        "text": "The Tjeker settled on the coast of the Levant, like the Peleset, and are mentioned in the Egyptian story of Wenamun (WEN-ah-moon) -- an account of an Egyptian official's journey to Byblos around 1075 BCE, in which the Tjeker are described as controlling the port of Dor on the coast of modern Israel.",
+        "text": "The Tjeker settled on the coast of the Levant, like the Peleset, and are mentioned in the Egyptian story of Wenamun (WEN-ah-moon) -- an account of an Egyptian official's journey to Byblos around one thousand seventy five BCE, in which the Tjeker are described as controlling the port of Dor on the coast of modern Israel.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.7
       }
@@ -4348,7 +4348,7 @@
       "text": "Assaf Yasur-Landau (AH-sahf yah-SOOR lahn-DOW), in his 2010 study The Philistines and Aegean Migration at the End of the Late Bronze Age, has argued that the Philistine migration was a genuine population movement -- families traveling with their possessions, seeking new land to settle -- comparable to later historical migrations like the Anglo-Saxon migration to Britain or the Volkerwanderung (migration of peoples) that contributed to the fall of the Roman Empire.",
       "text_markdown": "Assaf Yasur-Landau (AH-sahf yah-SOOR lahn-DOW), in his 2010 study *The Philistines and Aegean Migration at the End of the Late Bronze Age*, has argued that the Philistine migration was a genuine population movement -- families traveling with their possessions, seeking new land to settle -- comparable to later historical migrations like the Anglo-Saxon migration to Britain or the Volkerwanderung (migration of peoples) that contributed to the fall of the Roman Empire.",
       "tts": {
-        "text": "Assaf Yasur-Landau (AH-sahf yah-SOOR lahn-DOW), in his 2010 study The Philistines and Aegean Migration at the End of the Late Bronze Age, has argued that the Philistine migration was a genuine population movement -- families traveling with their possessions, seeking new land to settle -- comparable to later historical migrations like the Anglo-Saxon migration to Britain or the Volkerwanderung (migration of peoples) that contributed to the fall of the Roman Empire.",
+        "text": "Assaf Yasur-Landau (AH-sahf yah-SOOR lahn-DOW), in his twenty ten study The Philistines and Aegean Migration at the End of the Late Bronze Age, has argued that the Philistine migration was a genuine population movement -- families traveling with their possessions, seeking new land to settle -- comparable to later historical migrations like the Anglo-Saxon migration to Britain or the Volkerwanderung (migration of peoples) that contributed to the fall of the Roman Empire.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.8
       }
@@ -4520,7 +4520,7 @@
       "text": "Robert Drews, in his 1993 book The End of the Bronze Age, argued that the collapse was caused by a revolution in military tactics -- the replacement of chariot-based warfare (which the Bronze Age powers had perfected) with infantry-based warfare using new weapons and tactics that the established powers could not counter.",
       "text_markdown": "Robert Drews, in his 1993 book *The End of the Bronze Age*, argued that the collapse was caused by a revolution in military tactics -- the replacement of chariot-based warfare (which the Bronze Age powers had perfected) with infantry-based warfare using new weapons and tactics that the established powers could not counter.",
       "tts": {
-        "text": "Robert Drews, in his 1993 book The End of the Bronze Age, argued that the collapse was caused by a revolution in military tactics -- the replacement of chariot-based warfare (which the Bronze Age powers had perfected) with infantry-based warfare using new weapons and tactics that the established powers could not counter.",
+        "text": "Robert Drews, in his nineteen ninety three book The End of the Bronze Age, argued that the collapse was caused by a revolution in military tactics -- the replacement of chariot-based warfare (which the Bronze Age powers had perfected) with infantry-based warfare using new weapons and tactics that the established powers could not counter.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.8
       }
@@ -4680,7 +4680,7 @@
       "text": "The Anatolian, Aegean, and Dead Sea fault systems are capable of producing devastating earthquakes, and geological evidence suggests that the period around 1200 BCE was a period of heightened seismic activity.",
       "text_markdown": "The Anatolian, Aegean, and Dead Sea fault systems are capable of producing devastating earthquakes, and geological evidence suggests that the period around 1200 BCE was a period of heightened seismic activity.",
       "tts": {
-        "text": "The Anatolian, Aegean, and Dead Sea fault systems are capable of producing devastating earthquakes, and geological evidence suggests that the period around 1200 BCE was a period of heightened seismic activity.",
+        "text": "The Anatolian, Aegean, and Dead Sea fault systems are capable of producing devastating earthquakes, and geological evidence suggests that the period around twelve hundred BCE was a period of heightened seismic activity.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -4696,7 +4696,7 @@
       "text": "Amos Nur, a Stanford geophysicist, proposed in 2008 that an \"earthquake storm\" -- a sequence of large earthquakes occurring over a period of decades along connected fault systems -- could explain the pattern of destruction.",
       "text_markdown": "Amos Nur, a Stanford geophysicist, proposed in 2008 that an \"earthquake storm\" -- a sequence of large earthquakes occurring over a period of decades along connected fault systems -- could explain the pattern of destruction.",
       "tts": {
-        "text": "Amos Nur, a Stanford geophysicist, proposed in 2008 that an \"earthquake storm\" -- a sequence of large earthquakes occurring over a period of decades along connected fault systems -- could explain the pattern of destruction.",
+        "text": "Amos Nur, a Stanford geophysicist, proposed in two thousand eight that an \"earthquake storm\" -- a sequence of large earthquakes occurring over a period of decades along connected fault systems -- could explain the pattern of destruction.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -4728,7 +4728,7 @@
       "text": "Modern examples exist: the North Anatolian Fault in Turkey experienced a series of major earthquakes between 1939 and 1999, progressively migrating westward along the fault toward Istanbul.",
       "text_markdown": "Modern examples exist: the North Anatolian Fault in Turkey experienced a series of major earthquakes between 1939 and 1999, progressively migrating westward along the fault toward Istanbul.",
       "tts": {
-        "text": "Modern examples exist: the North Anatolian Fault in Turkey experienced a series of major earthquakes between 1939 and 1999, progressively migrating westward along the fault toward Istanbul.",
+        "text": "Modern examples exist: the North Anatolian Fault in Turkey experienced a series of major earthquakes between nineteen thirty nine and nineteen ninety nine, progressively migrating westward along the fault toward Istanbul.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -4906,7 +4906,7 @@
       "text": "The evidence is compelling: a study by Dafna Langgut and colleagues published in 2013, analyzing pollen from a core drilled in the Sea of Galilee, found a sharp decline in olive and oak pollen beginning around 1250 BCE -- indicating reduced precipitation and agricultural stress across the region.",
       "text_markdown": "The evidence is compelling: a study by Dafna Langgut and colleagues published in 2013, analyzing pollen from a core drilled in the Sea of Galilee, found a sharp decline in olive and oak pollen beginning around 1250 BCE -- indicating reduced precipitation and agricultural stress across the region.",
       "tts": {
-        "text": "The evidence is compelling: a study by Dafna Langgut and colleagues published in 2013, analyzing pollen from a core drilled in the Sea of Galilee, found a sharp decline in olive and oak pollen beginning around 1250 BCE -- indicating reduced precipitation and agricultural stress across the region.",
+        "text": "The evidence is compelling: a study by Dafna Langgut and colleagues published in twenty thirteen, analyzing pollen from a core drilled in the Sea of Galilee, found a sharp decline in olive and oak pollen beginning around twelve fifty BCE -- indicating reduced precipitation and agricultural stress across the region.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -4922,7 +4922,7 @@
       "text": "The decline persisted for roughly 150 years, overlapping precisely with the period of the collapse.",
       "text_markdown": "The decline persisted for roughly 150 years, overlapping precisely with the period of the collapse.",
       "tts": {
-        "text": "The decline persisted for roughly 150 years, overlapping precisely with the period of the collapse.",
+        "text": "The decline persisted for roughly one hundred fifty years, overlapping precisely with the period of the collapse.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -5034,7 +5034,7 @@
       "text": "The systems collapse theory, most fully articulated by Eric Cline in his 2014 book 1177 B.C.: The Year Civilization Collapsed, argues that no single factor caused the collapse.",
       "text_markdown": "The systems collapse theory, most fully articulated by Eric Cline in his 2014 book *1177 B.C.: The Year Civilization Collapsed*, argues that no single factor caused the collapse.",
       "tts": {
-        "text": "The systems collapse theory, most fully articulated by Eric Cline in his 2014 book 1177 B.C.: The Year Civilization Collapsed, argues that no single factor caused the collapse.",
+        "text": "The systems collapse theory, most fully articulated by Eric Cline in his twenty fourteen book eleven seventy seven B.C.: The Year Civilization Collapsed, argues that no single factor caused the collapse.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -5338,7 +5338,7 @@
       "text": "The world that existed in 1250 BCE -- interconnected, prosperous, literate, and diplomatically sophisticated -- was gone by 1150 BCE.",
       "text_markdown": "The world that existed in 1250 BCE -- interconnected, prosperous, literate, and diplomatically sophisticated -- was gone by 1150 BCE.",
       "tts": {
-        "text": "The world that existed in 1250 BCE -- interconnected, prosperous, literate, and diplomatically sophisticated -- was gone by 1150 BCE.",
+        "text": "The world that existed in twelve fifty BCE -- interconnected, prosperous, literate, and diplomatically sophisticated -- was gone by eleven fifty BCE.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -5426,7 +5426,7 @@
       "text": "The centuries that followed the Bronze Age collapse -- roughly 1100 to 800 BCE -- are often called the \"Dark Age\" of the Eastern Mediterranean.",
       "text_markdown": "The centuries that followed the Bronze Age collapse -- roughly 1100 to 800 BCE -- are often called the \"Dark Age\" of the Eastern Mediterranean.",
       "tts": {
-        "text": "The centuries that followed the Bronze Age collapse -- roughly 1100 to 800 BCE -- are often called the \"Dark Age\" of the Eastern Mediterranean.",
+        "text": "The centuries that followed the Bronze Age collapse -- roughly eleven hundred to eight hundred BCE -- are often called the \"Dark Age\" of the Eastern Mediterranean.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -5764,7 +5764,7 @@
       "text": "In Greece, the population dropped dramatically -- archaeological surveys of settlement patterns suggest a decline of 75 percent or more between the thirteenth and eleventh centuries BCE.",
       "text_markdown": "In Greece, the population dropped dramatically -- archaeological surveys of settlement patterns suggest a decline of 75 percent or more between the thirteenth and eleventh centuries BCE.",
       "tts": {
-        "text": "In Greece, the population dropped dramatically -- archaeological surveys of settlement patterns suggest a decline of 75 percent or more between the thirteenth and eleventh centuries BCE.",
+        "text": "In Greece, the population dropped dramatically -- archaeological surveys of settlement patterns suggest a decline of seventy five percent or more between the thirteenth and eleventh centuries BCE.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -6656,7 +6656,7 @@
       "text": "Lefkandi (lef-KAHN-dee), a site on the island of Euboea in Greece, produced a remarkable building from around 1000 BCE -- a large apsidal structure (roughly 50 meters long) containing rich burials with gold jewelry, bronze vessels, and imported Egyptian and Near Eastern objects.",
       "text_markdown": "Lefkandi (lef-KAHN-dee), a site on the island of Euboea in Greece, produced a remarkable building from around 1000 BCE -- a large apsidal structure (roughly 50 meters long) containing rich burials with gold jewelry, bronze vessels, and imported Egyptian and Near Eastern objects.",
       "tts": {
-        "text": "Lefkandi (lef-KAHN-dee), a site on the island of Euboea in Greece, produced a remarkable building from around 1000 BCE -- a large apsidal structure (roughly 50 meters long) containing rich burials with gold jewelry, bronze vessels, and imported Egyptian and Near Eastern objects.",
+        "text": "Lefkandi (lef-KAHN-dee), a site on the island of Euboea in Greece, produced a remarkable building from around one thousand BCE -- a large apsidal structure (roughly fifty meters long) containing rich burials with gold jewelry, bronze vessels, and imported Egyptian and Near Eastern objects.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -7514,7 +7514,7 @@
       "text": "The traditional date of the Trojan War -- the legendary ten-year siege of Troy by a coalition of Greek armies -- is approximately 1184 BCE, according to the ancient Greek chronographer Eratosthenes (ehr-ah-TOSS-theh-neez).",
       "text_markdown": "The traditional date of the Trojan War -- the legendary ten-year siege of Troy by a coalition of Greek armies -- is approximately 1184 BCE, according to the ancient Greek chronographer Eratosthenes (ehr-ah-TOSS-theh-neez).",
       "tts": {
-        "text": "The traditional date of the Trojan War -- the legendary ten-year siege of Troy by a coalition of Greek armies -- is approximately 1184 BCE, according to the ancient Greek chronographer Eratosthenes (ehr-ah-TOSS-theh-neez).",
+        "text": "The traditional date of the Trojan War -- the legendary ten-year siege of Troy by a coalition of Greek armies -- is approximately eleven eighty four BCE, according to the ancient Greek chronographer Eratosthenes (ehr-ah-TOSS-theh-neez).",
         "pause_after_ms": 500,
         "repetition_penalty": 1.8
       }
@@ -7546,7 +7546,7 @@
       "text": "The archaeological destruction layer at Troy (Troy VIIa) dates to approximately 1180 BCE.",
       "text_markdown": "The archaeological destruction layer at Troy (Troy VIIa) dates to approximately 1180 BCE.",
       "tts": {
-        "text": "The archaeological destruction layer at Troy (Troy VIIa) dates to approximately 1180 BCE.",
+        "text": "The archaeological destruction layer at Troy (Troy VIIa) dates to approximately eleven eighty BCE.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -7658,7 +7658,7 @@
       "text": "The catalog of ships in Book 2, which lists the Greek contingents and their places of origin, corresponds remarkably well to the distribution of Mycenaean palace centers known from archaeology.",
       "text_markdown": "The catalog of ships in Book 2, which lists the Greek contingents and their places of origin, corresponds remarkably well to the distribution of Mycenaean palace centers known from archaeology.",
       "tts": {
-        "text": "The catalog of ships in Book 2, which lists the Greek contingents and their places of origin, corresponds remarkably well to the distribution of Mycenaean palace centers known from archaeology.",
+        "text": "The catalog of ships in Book two, which lists the Greek contingents and their places of origin, corresponds remarkably well to the distribution of Mycenaean palace centers known from archaeology.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -8044,7 +8044,7 @@
       "text": "But the convergence of archaeological evidence (destruction of Troy VIIa around 1180 BCE), literary tradition (Homer's Iliad), and Hittite diplomatic records (Ahhiyawa and Wilusa) creates a web of evidence that, while not conclusive, points toward a historical kernel at the center of the Trojan War legend.",
       "text_markdown": "But the convergence of archaeological evidence (destruction of Troy VIIa around 1180 BCE), literary tradition (Homer's *Iliad*), and Hittite diplomatic records (Ahhiyawa and Wilusa) creates a web of evidence that, while not conclusive, points toward a historical kernel at the center of the Trojan War legend.",
       "tts": {
-        "text": "But the convergence of archaeological evidence (destruction of Troy VIIa around 1180 BCE), literary tradition (Homer's Iliad), and Hittite diplomatic records (Ahhiyawa and Wilusa) creates a web of evidence that, while not conclusive, points toward a historical kernel at the center of the Trojan War legend.",
+        "text": "But the convergence of archaeological evidence (destruction of Troy VIIa around eleven eighty BCE), literary tradition (Homer's Iliad), and Hittite diplomatic records (Ahhiyawa and Wilusa) creates a web of evidence that, while not conclusive, points toward a historical kernel at the center of the Trojan War legend.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -8076,7 +8076,7 @@
       "text": "Unlike Troy VI -- the preceding layer, which was destroyed by earthquake around 1300 BCE -- Troy VIIa shows signs of a city under stress before its final destruction.",
       "text_markdown": "Unlike Troy VI -- the preceding layer, which was destroyed by earthquake around 1300 BCE -- Troy VIIa shows signs of a city under stress before its final destruction.",
       "tts": {
-        "text": "Unlike Troy VI -- the preceding layer, which was destroyed by earthquake around 1300 BCE -- Troy VIIa shows signs of a city under stress before its final destruction.",
+        "text": "Unlike Troy VI -- the preceding layer, which was destroyed by earthquake around thirteen hundred BCE -- Troy VIIa shows signs of a city under stress before its final destruction.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -8264,7 +8264,7 @@
       "text": "In China, the period of the Bronze Age collapse corresponded to the late Shang dynasty (approximately 1600-1046 BCE).",
       "text_markdown": "In China, the period of the Bronze Age collapse corresponded to the late Shang dynasty (approximately 1600-1046 BCE).",
       "tts": {
-        "text": "In China, the period of the Bronze Age collapse corresponded to the late Shang dynasty (approximately 1600-1046 BCE).",
+        "text": "In China, the period of the Bronze Age collapse corresponded to the late Shang dynasty (approximately sixteen hundred to one thousand forty six BCE).",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -8328,7 +8328,7 @@
       "text": "The Shang would be overthrown by the Zhou (JOH) dynasty around 1046 BCE -- a transition roughly contemporary with the later phases of the Eastern Mediterranean Dark Age -- but the Shang collapse was caused by internal Chinese political dynamics, not by any connection to the Mediterranean events.",
       "text_markdown": "The Shang would be overthrown by the Zhou (JOH) dynasty around 1046 BCE -- a transition roughly contemporary with the later phases of the Eastern Mediterranean Dark Age -- but the Shang collapse was caused by internal Chinese political dynamics, not by any connection to the Mediterranean events.",
       "tts": {
-        "text": "The Shang would be overthrown by the Zhou (JOH) dynasty around 1046 BCE -- a transition roughly contemporary with the later phases of the Eastern Mediterranean Dark Age -- but the Shang collapse was caused by internal Chinese political dynamics, not by any connection to the Mediterranean events.",
+        "text": "The Shang would be overthrown by the Zhou (JOH) dynasty around one thousand forty six BCE -- a transition roughly contemporary with the later phases of the Eastern Mediterranean Dark Age -- but the Shang collapse was caused by internal Chinese political dynamics, not by any connection to the Mediterranean events.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.8
       }
@@ -8376,7 +8376,7 @@
       "text": "In the Indian subcontinent, the period around 1200 BCE fell within the transition between the late Indus Valley tradition (Volume 10 of this series) and the Vedic period.",
       "text_markdown": "In the Indian subcontinent, the period around 1200 BCE fell within the transition between the late Indus Valley tradition (Volume 10 of this series) and the Vedic period.",
       "tts": {
-        "text": "In the Indian subcontinent, the period around 1200 BCE fell within the transition between the late Indus Valley tradition (Volume 10 of this series) and the Vedic period.",
+        "text": "In the Indian subcontinent, the period around twelve hundred BCE fell within the transition between the late Indus Valley tradition (Volume ten of this series) and the Vedic period.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -8408,7 +8408,7 @@
       "text": "The Rigveda, the oldest of the Hindu sacred texts, is generally dated to roughly 1500-1200 BCE -- contemporary with the Late Bronze Age world of the Eastern Mediterranean but entirely independent of it.",
       "text_markdown": "The Rigveda, the oldest of the Hindu sacred texts, is generally dated to roughly 1500-1200 BCE -- contemporary with the Late Bronze Age world of the Eastern Mediterranean but entirely independent of it.",
       "tts": {
-        "text": "The Rigveda, the oldest of the Hindu sacred texts, is generally dated to roughly 1500-1200 BCE -- contemporary with the Late Bronze Age world of the Eastern Mediterranean but entirely independent of it.",
+        "text": "The Rigveda, the oldest of the Hindu sacred texts, is generally dated to roughly fifteen hundred to twelve hundred BCE -- contemporary with the Late Bronze Age world of the Eastern Mediterranean but entirely independent of it.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -8440,7 +8440,7 @@
       "text": "The Indus Valley civilization had been part of the Bronze Age trade network -- Mesopotamian texts refer to a land called \"Meluhha\" that is almost certainly the Indus region, and Indus seals have been found at sites in Mesopotamia and the Persian Gulf -- but the Indus urban system had collapsed by roughly 1700 BCE, centuries before the Eastern Mediterranean crisis.",
       "text_markdown": "The Indus Valley civilization had been part of the Bronze Age trade network -- Mesopotamian texts refer to a land called \"Meluhha\" that is almost certainly the Indus region, and Indus seals have been found at sites in Mesopotamia and the Persian Gulf -- but the Indus urban system had collapsed by roughly 1700 BCE, centuries before the Eastern Mediterranean crisis.",
       "tts": {
-        "text": "The Indus Valley civilization had been part of the Bronze Age trade network -- Mesopotamian texts refer to a land called \"Meluhha\" that is almost certainly the Indus region, and Indus seals have been found at sites in Mesopotamia and the Persian Gulf -- but the Indus urban system had collapsed by roughly 1700 BCE, centuries before the Eastern Mediterranean crisis.",
+        "text": "The Indus Valley civilization had been part of the Bronze Age trade network -- Mesopotamian texts refer to a land called \"Meluhha\" that is almost certainly the Indus region, and Indus seals have been found at sites in Mesopotamia and the Persian Gulf -- but the Indus urban system had collapsed by roughly seventeen hundred BCE, centuries before the Eastern Mediterranean crisis.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.8
       }
@@ -8472,7 +8472,7 @@
       "text": "In Mesoamerica, the Olmec civilization -- the earliest complex society in the Americas (Volume 3 of this series) -- was beginning to emerge during the period of the Bronze Age collapse.",
       "text_markdown": "In Mesoamerica, the Olmec civilization -- the earliest complex society in the Americas (Volume 3 of this series) -- was beginning to emerge during the period of the Bronze Age collapse.",
       "tts": {
-        "text": "In Mesoamerica, the Olmec civilization -- the earliest complex society in the Americas (Volume 3 of this series) -- was beginning to emerge during the period of the Bronze Age collapse.",
+        "text": "In Mesoamerica, the Olmec civilization -- the earliest complex society in the Americas (Volume three of this series) -- was beginning to emerge during the period of the Bronze Age collapse.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.8
       }
@@ -8522,7 +8522,7 @@
       "image": "../images/placeholders/09-world-map-1200bce.png",
       "image_alt": "Map showing the world around 1200 BCE with the Bronze Age collapse highlighted in the Eastern Mediterranean",
       "tts": {
-        "text": "Map showing the world around 1200 BCE with the Bronze Age collapse highlighted in the Eastern Mediterranean",
+        "text": "Map showing the world around twelve hundred BCE with the Bronze Age collapse highlighted in the Eastern Mediterranean",
         "pause_after_ms": 1200,
         "repetition_penalty": 2.0
       }
@@ -8554,7 +8554,7 @@
       "text": "In Peru, the Norte Chico civilization (also called Caral-Supe) -- one of the earliest complex societies in the Western Hemisphere -- had flourished along the Pacific coast between roughly 3000 and 1800 BCE.",
       "text_markdown": "In Peru, the Norte Chico civilization (also called Caral-Supe) -- one of the earliest complex societies in the Western Hemisphere -- had flourished along the Pacific coast between roughly 3000 and 1800 BCE.",
       "tts": {
-        "text": "In Peru, the Norte Chico civilization (also called Caral-Supe) -- one of the earliest complex societies in the Western Hemisphere -- had flourished along the Pacific coast between roughly 3000 and 1800 BCE.",
+        "text": "In Peru, the Norte Chico civilization (also called Caral-Supe) -- one of the earliest complex societies in the Western Hemisphere -- had flourished along the Pacific coast between roughly thirty hundred and eighteen hundred BCE.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -8570,7 +8570,7 @@
       "text": "By 1200 BCE, Norte Chico was in decline, but new ceramic traditions and settlement patterns were emerging in the Andean highlands and along the coast that would eventually lead to the Chavín culture and, much later, to Tiwanaku (Volume 7) and the Inca Empire.",
       "text_markdown": "By 1200 BCE, Norte Chico was in decline, but new ceramic traditions and settlement patterns were emerging in the Andean highlands and along the coast that would eventually lead to the Chavín culture and, much later, to Tiwanaku (Volume 7) and the Inca Empire.",
       "tts": {
-        "text": "By 1200 BCE, Norte Chico was in decline, but new ceramic traditions and settlement patterns were emerging in the Andean highlands and along the coast that would eventually lead to the Chavín culture and, much later, to Tiwanaku (Volume 7) and the Inca Empire.",
+        "text": "By twelve hundred BCE, Norte Chico was in decline, but new ceramic traditions and settlement patterns were emerging in the Andean highlands and along the coast that would eventually lead to the Chavín culture and, much later, to Tiwanaku (Volume seven) and the Inca Empire.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -8602,7 +8602,7 @@
       "text": "In sub-Saharan Africa, the Bantu expansion -- the gradual dispersal of Bantu-speaking peoples from their homeland in West Africa across the continent -- was underway, though Great Zimbabwe (Volume 11) would not emerge for another two thousand years.",
       "text_markdown": "In sub-Saharan Africa, the Bantu expansion -- the gradual dispersal of Bantu-speaking peoples from their homeland in West Africa across the continent -- was underway, though Great Zimbabwe (Volume 11) would not emerge for another two thousand years.",
       "tts": {
-        "text": "In sub-Saharan Africa, the Bantu expansion -- the gradual dispersal of Bantu-speaking peoples from their homeland in West Africa across the continent -- was underway, though Great Zimbabwe (Volume 11) would not emerge for another two thousand years.",
+        "text": "In sub-Saharan Africa, the Bantu expansion -- the gradual dispersal of Bantu-speaking peoples from their homeland in West Africa across the continent -- was underway, though Great Zimbabwe (Volume eleven) would not emerge for another two thousand years.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -8618,7 +8618,7 @@
       "text": "The Iron Age of sub-Saharan Africa, which would produce the kingdoms and cities discussed in Volume 11, was still in its early stages.",
       "text_markdown": "The Iron Age of sub-Saharan Africa, which would produce the kingdoms and cities discussed in Volume 11, was still in its early stages.",
       "tts": {
-        "text": "The Iron Age of sub-Saharan Africa, which would produce the kingdoms and cities discussed in Volume 11, was still in its early stages.",
+        "text": "The Iron Age of sub-Saharan Africa, which would produce the kingdoms and cities discussed in Volume eleven, was still in its early stages.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -8650,7 +8650,7 @@
       "text": "Kush would eventually conquer Egypt itself during the Twenty-fifth Dynasty (the \"Nubian Dynasty,\" approximately 747-656 BCE), ruling as pharaohs -- a remarkable reversal that came roughly four centuries after the Bronze Age collapse had weakened Egypt's hold on Nubia.",
       "text_markdown": "Kush would eventually conquer Egypt itself during the Twenty-fifth Dynasty (the \"Nubian Dynasty,\" approximately 747-656 BCE), ruling as pharaohs -- a remarkable reversal that came roughly four centuries after the Bronze Age collapse had weakened Egypt's hold on Nubia.",
       "tts": {
-        "text": "Kush would eventually conquer Egypt itself during the Twenty-fifth Dynasty (the \"Nubian Dynasty,\" approximately 747-656 BCE), ruling as pharaohs -- a remarkable reversal that came roughly four centuries after the Bronze Age collapse had weakened Egypt's hold on Nubia.",
+        "text": "Kush would eventually conquer Egypt itself during the Twenty-fifth Dynasty (the \"Nubian Dynasty,\" approximately seven hundred forty seven to six hundred fifty six BCE), ruling as pharaohs -- a remarkable reversal that came roughly four centuries after the Bronze Age collapse had weakened Egypt's hold on Nubia.",
         "pause_after_ms": 800,
         "repetition_penalty": 2.0
       }
@@ -8890,7 +8890,7 @@
       "text": "The system functioned smoothly for centuries -- the period of the Amarna Letters, roughly 1400-1300 BCE, was a golden age of international cooperation and trade.",
       "text_markdown": "The system functioned smoothly for centuries -- the period of the Amarna Letters, roughly 1400-1300 BCE, was a golden age of international cooperation and trade.",
       "tts": {
-        "text": "The system functioned smoothly for centuries -- the period of the Amarna Letters, roughly 1400-1300 BCE, was a golden age of international cooperation and trade.",
+        "text": "The system functioned smoothly for centuries -- the period of the Amarna Letters, roughly fourteen hundred to thirteen hundred BCE, was a golden age of international cooperation and trade.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -8938,7 +8938,7 @@
       "text": "The Indus Valley civilization (Volume 10) was embedded in trade networks that connected it to Mesopotamia; when those networks were disrupted, the urban system declined.",
       "text_markdown": "The Indus Valley civilization (Volume 10) was embedded in trade networks that connected it to Mesopotamia; when those networks were disrupted, the urban system declined.",
       "tts": {
-        "text": "The Indus Valley civilization (Volume 10) was embedded in trade networks that connected it to Mesopotamia; when those networks were disrupted, the urban system declined.",
+        "text": "The Indus Valley civilization (Volume ten) was embedded in trade networks that connected it to Mesopotamia; when those networks were disrupted, the urban system declined.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -8954,7 +8954,7 @@
       "text": "Great Zimbabwe (Volume 11) depended on the Indian Ocean gold trade; when trade routes shifted, the city's economic base was undermined.",
       "text_markdown": "Great Zimbabwe (Volume 11) depended on the Indian Ocean gold trade; when trade routes shifted, the city's economic base was undermined.",
       "tts": {
-        "text": "Great Zimbabwe (Volume 11) depended on the Indian Ocean gold trade; when trade routes shifted, the city's economic base was undermined.",
+        "text": "Great Zimbabwe (Volume eleven) depended on the Indian Ocean gold trade; when trade routes shifted, the city's economic base was undermined.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -8970,7 +8970,7 @@
       "text": "Tiwanaku (Volume 7) was sustained by an agricultural system that depended on specific environmental conditions; when those conditions changed, the system collapsed.",
       "text_markdown": "Tiwanaku (Volume 7) was sustained by an agricultural system that depended on specific environmental conditions; when those conditions changed, the system collapsed.",
       "tts": {
-        "text": "Tiwanaku (Volume 7) was sustained by an agricultural system that depended on specific environmental conditions; when those conditions changed, the system collapsed.",
+        "text": "Tiwanaku (Volume seven) was sustained by an agricultural system that depended on specific environmental conditions; when those conditions changed, the system collapsed.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -9238,7 +9238,7 @@
       "text": "What happened to the populations that disappeared? The population of Greece declined by 75 percent or more after the Mycenaean collapse.",
       "text_markdown": "**What happened to the populations that disappeared?** The population of Greece declined by 75 percent or more after the Mycenaean collapse.",
       "tts": {
-        "text": "What happened to the populations that disappeared? The population of Greece declined by 75 percent or more after the Mycenaean collapse.",
+        "text": "What happened to the populations that disappeared? The population of Greece declined by seventy five percent or more after the Mycenaean collapse.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -9334,7 +9334,7 @@
       "text": "What destroyed the Hittite Empire? The fall of Hattusa around 1180 BCE was the end of one of the two great superpowers of the Late Bronze Age.",
       "text_markdown": "**What destroyed the Hittite Empire?** The fall of Hattusa around 1180 BCE was the end of one of the two great superpowers of the Late Bronze Age.",
       "tts": {
-        "text": "What destroyed the Hittite Empire? The fall of Hattusa around 1180 BCE was the end of one of the two great superpowers of the Late Bronze Age.",
+        "text": "What destroyed the Hittite Empire? The fall of Hattusa around eleven eighty BCE was the end of one of the two great superpowers of the Late Bronze Age.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.8
       }
@@ -9382,7 +9382,7 @@
       "text": "Was the Trojan War real? The destruction of Troy VIIa around 1180 BCE is real.",
       "text_markdown": "**Was the Trojan War real?** The destruction of Troy VIIa around 1180 BCE is real.",
       "tts": {
-        "text": "Was the Trojan War real? The destruction of Troy VIIa around 1180 BCE is real.",
+        "text": "Was the Trojan War real? The destruction of Troy VIIa around eleven eighty BCE is real.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -9538,7 +9538,7 @@
       "text": "Amarna Letters -- A cache of roughly 380 cuneiform tablets found at Tell el-Amarna in Egypt, containing diplomatic correspondence between the Egyptian pharaoh and other Bronze Age rulers (~14th century BCE).",
       "text_markdown": "**Amarna Letters** -- A cache of roughly 380 cuneiform tablets found at Tell el-Amarna in Egypt, containing diplomatic correspondence between the Egyptian pharaoh and other Bronze Age rulers (~14th century BCE).",
       "tts": {
-        "text": "Amarna Letters -- A cache of roughly 380 cuneiform tablets found at Tell el-Amarna in Egypt, containing diplomatic correspondence between the Egyptian pharaoh and other Bronze Age rulers (~14th century BCE).",
+        "text": "Amarna Letters -- A cache of roughly three hundred eighty cuneiform tablets found at Tell el-Amarna in Egypt, containing diplomatic correspondence between the Egyptian pharaoh and other Bronze Age rulers (approximately fourteenth century BCE).",
         "pause_after_ms": 800,
         "repetition_penalty": 2.0
       }
@@ -9554,7 +9554,7 @@
       "text": "Cline, Eric -- American archaeologist; author of 1177 B.C.: The Year Civilization Collapsed (2014); the leading proponent of the systems collapse model.",
       "text_markdown": "**Cline, Eric** -- American archaeologist; author of *1177 B.C.: The Year Civilization Collapsed* (2014); the leading proponent of the systems collapse model.",
       "tts": {
-        "text": "Cline, Eric -- American archaeologist; author of 1177 B.C.: The Year Civilization Collapsed (2014); the leading proponent of the systems collapse model.",
+        "text": "Cline, Eric -- American archaeologist; author of eleven seventy seven B.C.: The Year Civilization Collapsed (twenty fourteen); the leading proponent of the systems collapse model.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -9586,7 +9586,7 @@
       "text": "Drews, Robert -- American historian; author of The End of the Bronze Age (1993); proposed that a revolution in warfare tactics caused the collapse.",
       "text_markdown": "**Drews, Robert** -- American historian; author of *The End of the Bronze Age* (1993); proposed that a revolution in warfare tactics caused the collapse.",
       "tts": {
-        "text": "Drews, Robert -- American historian; author of The End of the Bronze Age (1993); proposed that a revolution in warfare tactics caused the collapse.",
+        "text": "Drews, Robert -- American historian; author of The End of the Bronze Age (nineteen ninety three); proposed that a revolution in warfare tactics caused the collapse.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -9602,7 +9602,7 @@
       "text": "Hattusa (hah-TOO-sah) -- The capital of the Hittite Empire, located in central Anatolia (modern Turkey); destroyed around 1180 BCE.",
       "text_markdown": "**Hattusa** (hah-TOO-sah) -- The capital of the Hittite Empire, located in central Anatolia (modern Turkey); destroyed around 1180 BCE.",
       "tts": {
-        "text": "Hattusa (hah-TOO-sah) -- The capital of the Hittite Empire, located in central Anatolia (modern Turkey); destroyed around 1180 BCE.",
+        "text": "Hattusa (hah-TOO-sah) -- The capital of the Hittite Empire, located in central Anatolia (modern Turkey); destroyed around eleven eighty BCE.",
         "pause_after_ms": 800,
         "repetition_penalty": 2.0
       }
@@ -9634,7 +9634,7 @@
       "text": "Linear B -- A syllabic script used by the Mycenaean civilization of Bronze Age Greece; deciphered as an early form of Greek by Michael Ventris in 1952; lost after the Mycenaean collapse.",
       "text_markdown": "**Linear B** -- A syllabic script used by the Mycenaean civilization of Bronze Age Greece; deciphered as an early form of Greek by Michael Ventris in 1952; lost after the Mycenaean collapse.",
       "tts": {
-        "text": "Linear B -- A syllabic script used by the Mycenaean civilization of Bronze Age Greece; deciphered as an early form of Greek by Michael Ventris in 1952; lost after the Mycenaean collapse.",
+        "text": "Linear B -- A syllabic script used by the Mycenaean civilization of Bronze Age Greece; deciphered as an early form of Greek by Michael Ventris in nineteen fifty two; lost after the Mycenaean collapse.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -9666,7 +9666,7 @@
       "text": "Merneptah (mer-NEP-tah) -- Egyptian pharaoh (~1213-1203 BCE); recorded an earlier encounter with the Sea Peoples around 1208 BCE.",
       "text_markdown": "**Merneptah** (mer-NEP-tah) -- Egyptian pharaoh (~1213-1203 BCE); recorded an earlier encounter with the Sea Peoples around 1208 BCE.",
       "tts": {
-        "text": "Merneptah (mer-NEP-tah) -- Egyptian pharaoh (~1213-1203 BCE); recorded an earlier encounter with the Sea Peoples around 1208 BCE.",
+        "text": "Merneptah (mer-NEP-tah) -- Egyptian pharaoh (approximately one thousand two hundred thirteen to one thousand two hundred three BCE); recorded an earlier encounter with the Sea Peoples around twelve oh eight BCE.",
         "pause_after_ms": 800,
         "repetition_penalty": 2.0
       }
@@ -9682,7 +9682,7 @@
       "text": "Mycenaean (my-suh-NEE-uhn) -- The Bronze Age civilization of mainland Greece (~1600-1100 BCE); centered on palace complexes at Mycenae, Tiryns, Pylos, and other sites.",
       "text_markdown": "**Mycenaean** (my-suh-NEE-uhn) -- The Bronze Age civilization of mainland Greece (~1600-1100 BCE); centered on palace complexes at Mycenae, Tiryns, Pylos, and other sites.",
       "tts": {
-        "text": "Mycenaean (my-suh-NEE-uhn) -- The Bronze Age civilization of mainland Greece (~1600-1100 BCE); centered on palace complexes at Mycenae, Tiryns, Pylos, and other sites.",
+        "text": "Mycenaean (my-suh-NEE-uhn) -- The Bronze Age civilization of mainland Greece (approximately one thousand six hundred to one thousand one hundred BCE); centered on palace complexes at Mycenae, Tiryns, Pylos, and other sites.",
         "pause_after_ms": 800,
         "repetition_penalty": 2.0
       }
@@ -9730,7 +9730,7 @@
       "text": "Ramesses III (RAM-eh-seez) -- Egyptian pharaoh (~1186-1155 BCE); fought and defeated the Sea Peoples around 1177 BCE; recorded the event at Medinet Habu.",
       "text_markdown": "**Ramesses III** (RAM-eh-seez) -- Egyptian pharaoh (~1186-1155 BCE); fought and defeated the Sea Peoples around 1177 BCE; recorded the event at Medinet Habu.",
       "tts": {
-        "text": "Ramesses III (RAM-eh-seez) -- Egyptian pharaoh (~1186-1155 BCE); fought and defeated the Sea Peoples around 1177 BCE; recorded the event at Medinet Habu.",
+        "text": "Ramesses III (RAM-eh-seez) -- Egyptian pharaoh (approximately one thousand one hundred eighty six to one thousand one hundred fifty five BCE); fought and defeated the Sea Peoples around eleven seventy seven BCE; recorded the event at Medinet Habu.",
         "pause_after_ms": 800,
         "repetition_penalty": 2.0
       }
@@ -9746,7 +9746,7 @@
       "text": "Sandars, Nancy -- British archaeologist; author of The Sea Peoples: Warriors of the Ancient Mediterranean (1978); foundational study.",
       "text_markdown": "**Sandars, Nancy** -- British archaeologist; author of *The Sea Peoples: Warriors of the Ancient Mediterranean* (1978); foundational study.",
       "tts": {
-        "text": "Sandars, Nancy -- British archaeologist; author of The Sea Peoples: Warriors of the Ancient Mediterranean (1978); foundational study.",
+        "text": "Sandars, Nancy -- British archaeologist; author of The Sea Peoples: Warriors of the Ancient Mediterranean (nineteen seventy eight); foundational study.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -9762,7 +9762,7 @@
       "text": "Sea Peoples -- The conventional term for the diverse groups of maritime raiders and migrants who attacked the Eastern Mediterranean civilizations around 1200-1150 BCE.",
       "text_markdown": "**Sea Peoples** -- The conventional term for the diverse groups of maritime raiders and migrants who attacked the Eastern Mediterranean civilizations around 1200-1150 BCE.",
       "tts": {
-        "text": "Sea Peoples -- The conventional term for the diverse groups of maritime raiders and migrants who attacked the Eastern Mediterranean civilizations around 1200-1150 BCE.",
+        "text": "Sea Peoples -- The conventional term for the diverse groups of maritime raiders and migrants who attacked the Eastern Mediterranean civilizations around twelve hundred to eleven fifty BCE.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -9842,7 +9842,7 @@
       "text": "Treaty of Kadesh -- A peace treaty between Egypt (Ramesses II) and the Hittite Empire (Hattusili III) following the Battle of Kadesh (~1259 BCE); one of the earliest known international peace agreements.",
       "text_markdown": "**Treaty of Kadesh** -- A peace treaty between Egypt (Ramesses II) and the Hittite Empire (Hattusili III) following the Battle of Kadesh (~1259 BCE); one of the earliest known international peace agreements.",
       "tts": {
-        "text": "Treaty of Kadesh -- A peace treaty between Egypt (Ramesses II) and the Hittite Empire (Hattusili III) following the Battle of Kadesh (~1259 BCE); one of the earliest known international peace agreements.",
+        "text": "Treaty of Kadesh -- A peace treaty between Egypt (Ramesses II) and the Hittite Empire (Hattusili III) following the Battle of Kadesh (approximately one thousand two hundred fifty nine BCE); one of the earliest known international peace agreements.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.8
       }
@@ -9858,7 +9858,7 @@
       "text": "Troy -- An ancient city in northwestern Anatolia (modern Turkey); the archaeological site of Hisarlik; Troy VIIa was destroyed around 1180 BCE.",
       "text_markdown": "**Troy** -- An ancient city in northwestern Anatolia (modern Turkey); the archaeological site of Hisarlik; Troy VIIa was destroyed around 1180 BCE.",
       "tts": {
-        "text": "Troy -- An ancient city in northwestern Anatolia (modern Turkey); the archaeological site of Hisarlik; Troy VIIa was destroyed around 1180 BCE.",
+        "text": "Troy -- An ancient city in northwestern Anatolia (modern Turkey); the archaeological site of Hisarlik; Troy VIIa was destroyed around eleven eighty BCE.",
         "pause_after_ms": 800,
         "repetition_penalty": 2.0
       }
@@ -9874,7 +9874,7 @@
       "text": "Ugarit (OO-gah-rit) -- A major Bronze Age trading city on the coast of modern Syria; destroyed around 1185 BCE; its archives provide crucial evidence for the period.",
       "text_markdown": "**Ugarit** (OO-gah-rit) -- A major Bronze Age trading city on the coast of modern Syria; destroyed around 1185 BCE; its archives provide crucial evidence for the period.",
       "tts": {
-        "text": "Ugarit (OO-gah-rit) -- A major Bronze Age trading city on the coast of modern Syria; destroyed around 1185 BCE; its archives provide crucial evidence for the period.",
+        "text": "Ugarit (OO-gah-rit) -- A major Bronze Age trading city on the coast of modern Syria; destroyed around eleven eighty five BCE; its archives provide crucial evidence for the period.",
         "pause_after_ms": 800,
         "repetition_penalty": 2.0
       }
@@ -9906,7 +9906,7 @@
       "text": "Yasur-Landau, Assaf (AH-sahf yah-SOOR lahn-DOW) -- Israeli archaeologist; author of The Philistines and Aegean Migration at the End of the Late Bronze Age (2010).",
       "text_markdown": "**Yasur-Landau, Assaf** (AH-sahf yah-SOOR lahn-DOW) -- Israeli archaeologist; author of *The Philistines and Aegean Migration at the End of the Late Bronze Age* (2010).",
       "tts": {
-        "text": "Yasur-Landau, Assaf (AH-sahf yah-SOOR lahn-DOW) -- Israeli archaeologist; author of The Philistines and Aegean Migration at the End of the Late Bronze Age (2010).",
+        "text": "Yasur-Landau, Assaf (AH-sahf yah-SOOR lahn-DOW) -- Israeli archaeologist; author of The Philistines and Aegean Migration at the End of the Late Bronze Age (twenty ten).",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -9934,7 +9934,7 @@
       "text": "Eric Cline, 1177 B.C.: The Year Civilization Collapsed (2014; revised edition 2021) -- The essential modern synthesis, written for a general audience.",
       "text_markdown": "**Eric Cline, *1177 B.C.: The Year Civilization Collapsed* (2014; revised edition 2021)** -- The essential modern synthesis, written for a general audience.",
       "tts": {
-        "text": "Eric Cline, 1177 B.C.: The Year Civilization Collapsed (2014; revised edition 2021) -- The essential modern synthesis, written for a general audience.",
+        "text": "Eric Cline, eleven seventy seven B.C.: The Year Civilization Collapsed (twenty fourteen; revised edition twenty twenty one) -- The essential modern synthesis, written for a general audience.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -9982,7 +9982,7 @@
       "text": "Robert Drews, The End of the Bronze Age: Changes in Warfare and the Catastrophe ca. 1200 B.C. (1993) -- A detailed argument that the collapse was caused by a revolution in military tactics.",
       "text_markdown": "**Robert Drews, *The End of the Bronze Age: Changes in Warfare and the Catastrophe ca. 1200 B.C.* (1993)** -- A detailed argument that the collapse was caused by a revolution in military tactics.",
       "tts": {
-        "text": "Robert Drews, The End of the Bronze Age: Changes in Warfare and the Catastrophe ca. 1200 B.C. (1993) -- A detailed argument that the collapse was caused by a revolution in military tactics.",
+        "text": "Robert Drews, The End of the Bronze Age: Changes in Warfare and the Catastrophe ca. twelve hundred B.C. (nineteen ninety three) -- A detailed argument that the collapse was caused by a revolution in military tactics.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -10014,7 +10014,7 @@
       "text": "Nancy Sandars, The Sea Peoples: Warriors of the Ancient Mediterranean (1978) -- The classic study that defined the field.",
       "text_markdown": "**Nancy Sandars, *The Sea Peoples: Warriors of the Ancient Mediterranean* (1978)** -- The classic study that defined the field.",
       "tts": {
-        "text": "Nancy Sandars, The Sea Peoples: Warriors of the Ancient Mediterranean (1978) -- The classic study that defined the field.",
+        "text": "Nancy Sandars, The Sea Peoples: Warriors of the Ancient Mediterranean (nineteen seventy eight) -- The classic study that defined the field.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -10046,7 +10046,7 @@
       "text": "Assaf Yasur-Landau, The Philistines and Aegean Migration at the End of the Late Bronze Age (2010) -- The most thorough study of Philistine origins, combining archaeological evidence with migration theory.",
       "text_markdown": "**Assaf Yasur-Landau, *The Philistines and Aegean Migration at the End of the Late Bronze Age* (2010)** -- The most thorough study of Philistine origins, combining archaeological evidence with migration theory.",
       "tts": {
-        "text": "Assaf Yasur-Landau, The Philistines and Aegean Migration at the End of the Late Bronze Age (2010) -- The most thorough study of Philistine origins, combining archaeological evidence with migration theory.",
+        "text": "Assaf Yasur-Landau, The Philistines and Aegean Migration at the End of the Late Bronze Age (twenty ten) -- The most thorough study of Philistine origins, combining archaeological evidence with migration theory.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -10078,7 +10078,7 @@
       "text": "Trevor Bryce, The Kingdom of the Hittites (2005) -- A comprehensive history of the Hittite Empire, providing essential context for understanding one of the major powers that was destroyed in the collapse.",
       "text_markdown": "**Trevor Bryce, *The Kingdom of the Hittites* (2005)** -- A comprehensive history of the Hittite Empire, providing essential context for understanding one of the major powers that was destroyed in the collapse.",
       "tts": {
-        "text": "Trevor Bryce, The Kingdom of the Hittites (2005) -- A comprehensive history of the Hittite Empire, providing essential context for understanding one of the major powers that was destroyed in the collapse.",
+        "text": "Trevor Bryce, The Kingdom of the Hittites (two thousand five) -- A comprehensive history of the Hittite Empire, providing essential context for understanding one of the major powers that was destroyed in the collapse.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -10094,7 +10094,7 @@
       "text": "Amanda Podany, Brotherhood of Kings: How International Relations Shaped the Ancient Near East (2010) -- An accessible and engaging account of the diplomatic world of the Late Bronze Age, based on the Amarna Letters and other correspondence.",
       "text_markdown": "**Amanda Podany, *Brotherhood of Kings: How International Relations Shaped the Ancient Near East* (2010)** -- An accessible and engaging account of the diplomatic world of the Late Bronze Age, based on the Amarna Letters and other correspondence.",
       "tts": {
-        "text": "Amanda Podany, Brotherhood of Kings: How International Relations Shaped the Ancient Near East (2010) -- An accessible and engaging account of the diplomatic world of the Late Bronze Age, based on the Amarna Letters and other correspondence.",
+        "text": "Amanda Podany, Brotherhood of Kings: How International Relations Shaped the Ancient Near East (twenty ten) -- An accessible and engaging account of the diplomatic world of the Late Bronze Age, based on the Amarna Letters and other correspondence.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -10110,7 +10110,7 @@
       "text": "Barry Strauss, The Trojan War: A New History (2006) -- A readable account of the archaeological and literary evidence for the Trojan War, placing it in the context of Late Bronze Age warfare and diplomacy.",
       "text_markdown": "**Barry Strauss, *The Trojan War: A New History* (2006)** -- A readable account of the archaeological and literary evidence for the Trojan War, placing it in the context of Late Bronze Age warfare and diplomacy.",
       "tts": {
-        "text": "Barry Strauss, The Trojan War: A New History (2006) -- A readable account of the archaeological and literary evidence for the Trojan War, placing it in the context of Late Bronze Age warfare and diplomacy.",
+        "text": "Barry Strauss, The Trojan War: A New History (two thousand six) -- A readable account of the archaeological and literary evidence for the Trojan War, placing it in the context of Late Bronze Age warfare and diplomacy.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.8
       }
@@ -10126,7 +10126,7 @@
       "text": "Israel Finkelstein and Neil Asher Silberman, The Bible Unearthed (2001) -- While focused on biblical archaeology, includes important discussions of the Philistine settlement and the Iron Age transition in the Levant.",
       "text_markdown": "**Israel Finkelstein and Neil Asher Silberman, *The Bible Unearthed* (2001)** -- While focused on biblical archaeology, includes important discussions of the Philistine settlement and the Iron Age transition in the Levant.",
       "tts": {
-        "text": "Israel Finkelstein and Neil Asher Silberman, The Bible Unearthed (2001) -- While focused on biblical archaeology, includes important discussions of the Philistine settlement and the Iron Age transition in the Levant.",
+        "text": "Israel Finkelstein and Neil Asher Silberman, The Bible Unearthed (two thousand one) -- While focused on biblical archaeology, includes important discussions of the Philistine settlement and the Iron Age transition in the Levant.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -10142,7 +10142,7 @@
       "text": "Oliver Dickinson, The Aegean from Bronze Age to Iron Age (2006) -- A detailed archaeological study of the transition from the Mycenaean period to the Greek Dark Age.",
       "text_markdown": "**Oliver Dickinson, *The Aegean from Bronze Age to Iron Age* (2006)** -- A detailed archaeological study of the transition from the Mycenaean period to the Greek Dark Age.",
       "tts": {
-        "text": "Oliver Dickinson, The Aegean from Bronze Age to Iron Age (2006) -- A detailed archaeological study of the transition from the Mycenaean period to the Greek Dark Age.",
+        "text": "Oliver Dickinson, The Aegean from Bronze Age to Iron Age (two thousand six) -- A detailed archaeological study of the transition from the Mycenaean period to the Greek Dark Age.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.8
       }
@@ -10250,7 +10250,7 @@
       "text": "Volume 1: The Mystery of Monte Albán -- The Zapotec capital in the mountains of Oaxaca, its undeciphered script, and the Building of the Dancers.",
       "text_markdown": "**Volume 1: The Mystery of Monte Albán** -- The Zapotec capital in the mountains of Oaxaca, its undeciphered script, and the Building of the Dancers.",
       "tts": {
-        "text": "Volume 1: The Mystery of Monte Albán -- The Zapotec capital in the mountains of Oaxaca, its undeciphered script, and the Building of the Dancers.",
+        "text": "Volume one: The Mystery of Monte Albán -- The Zapotec capital in the mountains of Oaxaca, its undeciphered script, and the Building of the Dancers.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.8
       }
@@ -10266,7 +10266,7 @@
       "text": "Volume 2: The Mystery of the Mapuche -- The language isolate of southern Chile, the people who defeated the Inca and fought the Spanish to a standstill for three centuries.",
       "text_markdown": "**Volume 2: The Mystery of the Mapuche** -- The language isolate of southern Chile, the people who defeated the Inca and fought the Spanish to a standstill for three centuries.",
       "tts": {
-        "text": "Volume 2: The Mystery of the Mapuche -- The language isolate of southern Chile, the people who defeated the Inca and fought the Spanish to a standstill for three centuries.",
+        "text": "Volume two: The Mystery of the Mapuche -- The language isolate of southern Chile, the people who defeated the Inca and fought the Spanish to a standstill for three centuries.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.8
       }
@@ -10282,7 +10282,7 @@
       "text": "Volume 3: The Mystery of the Olmec -- The \"mother culture\" of Mesoamerica, the colossal stone heads, and the Cascajal Block -- sixty-two glyphs in a writing system used once and never seen again.",
       "text_markdown": "**Volume 3: The Mystery of the Olmec** -- The \"mother culture\" of Mesoamerica, the colossal stone heads, and the Cascajal Block -- sixty-two glyphs in a writing system used once and never seen again.",
       "tts": {
-        "text": "Volume 3: The Mystery of the Olmec -- The \"mother culture\" of Mesoamerica, the colossal stone heads, and the Cascajal Block -- sixty-two glyphs in a writing system used once and never seen again.",
+        "text": "Volume three: The Mystery of the Olmec -- The \"mother culture\" of Mesoamerica, the colossal stone heads, and the Cascajal Block -- sixty-two glyphs in a writing system used once and never seen again.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.8
       }
@@ -10298,7 +10298,7 @@
       "text": "Volume 4: The Mystery of Cahokia -- America's forgotten metropolis, the largest earthen mound in the Americas, and the mass sacrifice of Mound 72.",
       "text_markdown": "**Volume 4: The Mystery of Cahokia** -- America's forgotten metropolis, the largest earthen mound in the Americas, and the mass sacrifice of Mound 72.",
       "tts": {
-        "text": "Volume 4: The Mystery of Cahokia -- America's forgotten metropolis, the largest earthen mound in the Americas, and the mass sacrifice of Mound 72.",
+        "text": "Volume four: The Mystery of Cahokia -- America's forgotten metropolis, the largest earthen mound in the Americas, and the mass sacrifice of Mound seventy two.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.8
       }
@@ -10314,7 +10314,7 @@
       "text": "Volume 5: The Mystery of Teotihuacan -- The city of 200,000 people with no known name, no known language, and no known rulers.",
       "text_markdown": "**Volume 5: The Mystery of Teotihuacan** -- The city of 200,000 people with no known name, no known language, and no known rulers.",
       "tts": {
-        "text": "Volume 5: The Mystery of Teotihuacan -- The city of 200,000 people with no known name, no known language, and no known rulers.",
+        "text": "Volume five: The Mystery of Teotihuacan -- The city of two hundred thousand people with no known name, no known language, and no known rulers.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.8
       }
@@ -10330,7 +10330,7 @@
       "text": "Volume 6: The Mystery of the Toltecs -- The phantom empire that the Aztecs claimed as their ancestors -- history, legend, or political invention?",
       "text_markdown": "**Volume 6: The Mystery of the Toltecs** -- The phantom empire that the Aztecs claimed as their ancestors -- history, legend, or political invention?",
       "tts": {
-        "text": "Volume 6: The Mystery of the Toltecs -- The phantom empire that the Aztecs claimed as their ancestors -- history, legend, or political invention?",
+        "text": "Volume six: The Mystery of the Toltecs -- The phantom empire that the Aztecs claimed as their ancestors -- history, legend, or political invention?",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -10346,7 +10346,7 @@
       "text": "Volume 7: The Mystery Before the Inca -- Tiwanaku, Puma Punku, and the Gate of the Sun: the engineers of the altiplano who built in stone at 3,800 meters and vanished before the Inca arrived.",
       "text_markdown": "**Volume 7: The Mystery Before the Inca** -- Tiwanaku, Puma Punku, and the Gate of the Sun: the engineers of the altiplano who built in stone at 3,800 meters and vanished before the Inca arrived.",
       "tts": {
-        "text": "Volume 7: The Mystery Before the Inca -- Tiwanaku, Puma Punku, and the Gate of the Sun: the engineers of the altiplano who built in stone at 3,800 meters and vanished before the Inca arrived.",
+        "text": "Volume seven: The Mystery Before the Inca -- Tiwanaku, Puma Punku, and the Gate of the Sun: the engineers of the altiplano who built in stone at three thousand eight hundred meters and vanished before the Inca arrived.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.8
       }
@@ -10362,7 +10362,7 @@
       "text": "Volume 8: The Mysteries of the Arctic Peoples -- The Sivullirmiut, the vanished Dorset, and the ivory death masks of Ipiutak: three mysteries from the top of the world.",
       "text_markdown": "**Volume 8: The Mysteries of the Arctic Peoples** -- The Sivullirmiut, the vanished Dorset, and the ivory death masks of Ipiutak: three mysteries from the top of the world.",
       "tts": {
-        "text": "Volume 8: The Mysteries of the Arctic Peoples -- The Sivullirmiut, the vanished Dorset, and the ivory death masks of Ipiutak: three mysteries from the top of the world.",
+        "text": "Volume eight: The Mysteries of the Arctic Peoples -- The Sivullirmiut, the vanished Dorset, and the ivory death masks of Ipiutak: three mysteries from the top of the world.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.8
       }
@@ -10378,7 +10378,7 @@
       "text": "Volume 9: The Mystery of Göbekli Tepe -- The twelve-thousand-year-old temple that was built before agriculture, before pottery, before cities -- and then deliberately buried.",
       "text_markdown": "**Volume 9: The Mystery of Göbekli Tepe** -- The twelve-thousand-year-old temple that was built before agriculture, before pottery, before cities -- and then deliberately buried.",
       "tts": {
-        "text": "Volume 9: The Mystery of Göbekli Tepe -- The twelve-thousand-year-old temple that was built before agriculture, before pottery, before cities -- and then deliberately buried.",
+        "text": "Volume nine: The Mystery of Göbekli Tepe -- The twelve-thousand-year-old temple that was built before agriculture, before pottery, before cities -- and then deliberately buried.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -10394,7 +10394,7 @@
       "text": "Volume 10: The Mystery of the Indus Valley Script -- The only undeciphered writing system of a major Bronze Age civilization, locked behind inscriptions averaging four to five signs long.",
       "text_markdown": "**Volume 10: The Mystery of the Indus Valley Script** -- The only undeciphered writing system of a major Bronze Age civilization, locked behind inscriptions averaging four to five signs long.",
       "tts": {
-        "text": "Volume 10: The Mystery of the Indus Valley Script -- The only undeciphered writing system of a major Bronze Age civilization, locked behind inscriptions averaging four to five signs long.",
+        "text": "Volume ten: The Mystery of the Indus Valley Script -- The only undeciphered writing system of a major Bronze Age civilization, locked behind inscriptions averaging four to five signs long.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -10410,7 +10410,7 @@
       "text": "Volume 11: The Mystery of Great Zimbabwe -- The stone city they said couldn't exist: medieval Africa's greatest architectural achievement and the colonial lie that denied it for a century.",
       "text_markdown": "**Volume 11: The Mystery of Great Zimbabwe** -- The stone city they said couldn't exist: medieval Africa's greatest architectural achievement and the colonial lie that denied it for a century.",
       "tts": {
-        "text": "Volume 11: The Mystery of Great Zimbabwe -- The stone city they said couldn't exist: medieval Africa's greatest architectural achievement and the colonial lie that denied it for a century.",
+        "text": "Volume eleven: The Mystery of Great Zimbabwe -- The stone city they said couldn't exist: medieval Africa's greatest architectural achievement and the colonial lie that denied it for a century.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -10426,7 +10426,7 @@
       "text": "Volume 12: The Mystery of the Sea Peoples -- The nameless invaders who ended the Bronze Age: the interconnected world of the Eastern Mediterranean, its catastrophic collapse, and the Dark Age that seeded Classical civilization.",
       "text_markdown": "**Volume 12: The Mystery of the Sea Peoples** -- The nameless invaders who ended the Bronze Age: the interconnected world of the Eastern Mediterranean, its catastrophic collapse, and the Dark Age that seeded Classical civilization.",
       "tts": {
-        "text": "Volume 12: The Mystery of the Sea Peoples -- The nameless invaders who ended the Bronze Age: the interconnected world of the Eastern Mediterranean, its catastrophic collapse, and the Dark Age that seeded Classical civilization.",
+        "text": "Volume twelve: The Mystery of the Sea Peoples -- The nameless invaders who ended the Bronze Age: the interconnected world of the Eastern Mediterranean, its catastrophic collapse, and the Dark Age that seeded Classical civilization.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.8
       }
@@ -10522,7 +10522,7 @@
       "text": "Timeline showing the cascade of destructions across the Eastern Mediterranean (~1200-1150 BCE)",
       "text_markdown": "Timeline showing the cascade of destructions across the Eastern Mediterranean (~1200-1150 BCE)",
       "tts": {
-        "text": "Timeline showing the cascade of destructions across the Eastern Mediterranean (~1200-1150 BCE)",
+        "text": "Timeline showing the cascade of destructions across the Eastern Mediterranean (approximately one thousand two hundred to one thousand one hundred fifty BCE)",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -10648,7 +10648,7 @@
       "text": "Map showing the world around 1200 BCE with the Bronze Age collapse highlighted",
       "text_markdown": "Map showing the world around 1200 BCE with the Bronze Age collapse highlighted",
       "tts": {
-        "text": "Map showing the world around 1200 BCE with the Bronze Age collapse highlighted",
+        "text": "Map showing the world around twelve hundred BCE with the Bronze Age collapse highlighted",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }

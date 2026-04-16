@@ -74,7 +74,7 @@
       "text": "The mound is called Monks Mound, after a community of Trappist monks who briefly gardened on its upper terraces in the early 1800s.",
       "text_markdown": "The mound is called Monks Mound, after a community of Trappist monks who briefly gardened on its upper terraces in the early 1800s.",
       "tts": {
-        "text": "The mound is called Monks Mound, after a community of Trappist monks who briefly gardened on its upper terraces in the early 1800s.",
+        "text": "The mound is called Monks Mound, after a community of Trappist monks who briefly gardened on its upper terraces in the early eighteen hundreds.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -106,7 +106,7 @@
       "text": "It was the centerpiece of a city that, at its peak around 1100 CE, held between ten thousand and forty thousand people — larger than London at the same date, larger than any other settlement on the continent north of Mexico.",
       "text_markdown": "It was the centerpiece of a city that, at its peak around 1100 CE, held between ten thousand and forty thousand people — larger than London at the same date, larger than any other settlement on the continent north of Mexico.",
       "tts": {
-        "text": "It was the centerpiece of a city that, at its peak around 1100 CE, held between ten thousand and forty thousand people — larger than London at the same date, larger than any other settlement on the continent north of Mexico.",
+        "text": "It was the centerpiece of a city that, at its peak around eleven hundred CE, held between ten thousand and forty thousand people — larger than London at the same date, larger than any other settlement on the continent north of Mexico.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -290,7 +290,7 @@
       "text": "Interstate 55/70 cuts through it.",
       "text_markdown": "Interstate 55/70 cuts through it.",
       "tts": {
-        "text": "Interstate 55/70 cuts through it.",
+        "text": "Interstate fifty five/seventy cuts through it.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -354,7 +354,7 @@
       "text": "Roughly 291 meters long and 236 meters wide at its base -- dimensions that would fit comfortably around four modern football fields.",
       "text_markdown": "Roughly 291 meters long and 236 meters wide at its base -- dimensions that would fit comfortably around four modern football fields.",
       "tts": {
-        "text": "Roughly 291 meters long and 236 meters wide at its base -- dimensions that would fit comfortably around four modern football fields.",
+        "text": "Roughly two hundred ninety one meters long and two hundred thirty six meters wide at its base -- dimensions that would fit comfortably around four modern football fields.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -402,7 +402,7 @@
       "text": "An estimated 681,000 cubic meters of soil went into its construction.",
       "text_markdown": "An estimated 681,000 cubic meters of soil went into its construction.",
       "tts": {
-        "text": "An estimated 681,000 cubic meters of soil went into its construction.",
+        "text": "An estimated six hundred eighty one thousand cubic meters of soil went into its construction.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -418,7 +418,7 @@
       "text": "That is enough earth to fill over 270 Olympic swimming pools.",
       "text_markdown": "That is enough earth to fill over 270 Olympic swimming pools.",
       "tts": {
-        "text": "That is enough earth to fill over 270 Olympic swimming pools.",
+        "text": "That is enough earth to fill over two hundred seventy Olympic swimming pools.",
         "pause_after_ms": 800,
         "repetition_penalty": 2.0
       }
@@ -564,7 +564,7 @@
       "text": "Multiply that by 681,000 cubic meters, estimate twenty to forty liters per basket, and the number of individual trips reaches into the tens of millions.",
       "text_markdown": "Multiply that by 681,000 cubic meters, estimate twenty to forty liters per basket, and the number of individual trips reaches into the tens of millions.",
       "tts": {
-        "text": "Multiply that by 681,000 cubic meters, estimate twenty to forty liters per basket, and the number of individual trips reaches into the tens of millions.",
+        "text": "Multiply that by six hundred eighty one thousand cubic meters, estimate twenty to forty liters per basket, and the number of individual trips reaches into the tens of millions.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -1060,7 +1060,7 @@
       "text": "Cahokia contained more than 120 mounds of various sizes.",
       "text_markdown": "Cahokia contained more than 120 mounds of various sizes.",
       "tts": {
-        "text": "Cahokia contained more than 120 mounds of various sizes.",
+        "text": "Cahokia contained more than one hundred twenty mounds of various sizes.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -1172,7 +1172,7 @@
       "text": "The consistency of the orientation across more than 120 mounds, regardless, implies a master plan.",
       "text_markdown": "The consistency of the orientation across more than 120 mounds, regardless, implies a master plan.",
       "tts": {
-        "text": "The consistency of the orientation across more than 120 mounds, regardless, implies a master plan.",
+        "text": "The consistency of the orientation across more than one hundred twenty mounds, regardless, implies a master plan.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -1332,7 +1332,7 @@
       "text": "The Trappist monks who gave Monks Mound its name arrived in the early 1800s and gardened on the mound's upper terraces for a few years before moving on.",
       "text_markdown": "The Trappist monks who gave Monks Mound its name arrived in the early 1800s and gardened on the mound's upper terraces for a few years before moving on.",
       "tts": {
-        "text": "The Trappist monks who gave Monks Mound its name arrived in the early 1800s and gardened on the mound's upper terraces for a few years before moving on.",
+        "text": "The Trappist monks who gave Monks Mound its name arrived in the early eighteen hundreds and gardened on the mound's upper terraces for a few years before moving on.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -1348,7 +1348,7 @@
       "text": "Every name we use for Cahokia's features -- Monks Mound, the Grand Plaza, Mound 72, Woodhenge -- is a modern label applied to a place whose original names have been lost.",
       "text_markdown": "Every name we use for Cahokia's features -- Monks Mound, the Grand Plaza, Mound 72, Woodhenge -- is a modern label applied to a place whose original names have been lost.",
       "tts": {
-        "text": "Every name we use for Cahokia's features -- Monks Mound, the Grand Plaza, Mound 72, Woodhenge -- is a modern label applied to a place whose original names have been lost.",
+        "text": "Every name we use for Cahokia's features -- Monks Mound, the Grand Plaza, Mound seventy two, Woodhenge -- is a modern label applied to a place whose original names have been lost.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -1476,7 +1476,7 @@
       "text": "Many of the original 120 mounds were leveled by plowing or bulldozed for construction.",
       "text_markdown": "Many of the original 120 mounds were leveled by plowing or bulldozed for construction.",
       "tts": {
-        "text": "Many of the original 120 mounds were leveled by plowing or bulldozed for construction.",
+        "text": "Many of the original one hundred twenty mounds were leveled by plowing or bulldozed for construction.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -1540,7 +1540,7 @@
       "text": "Of the original complex, only the central precinct -- centered on Monks Mound and the Grand Plaza -- survived intact, protected by the State of Illinois starting in 1925.",
       "text_markdown": "Of the original complex, only the central precinct -- centered on Monks Mound and the Grand Plaza -- survived intact, protected by the State of Illinois starting in 1925.",
       "tts": {
-        "text": "Of the original complex, only the central precinct -- centered on Monks Mound and the Grand Plaza -- survived intact, protected by the State of Illinois starting in 1925.",
+        "text": "Of the original complex, only the central precinct -- centered on Monks Mound and the Grand Plaza -- survived intact, protected by the State of Illinois starting in nineteen twenty five.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -1556,7 +1556,7 @@
       "text": "In 1982, the Cahokia Mounds State Historic Site was designated a UNESCO World Heritage Site, one of only twenty-four in the United States.",
       "text_markdown": "In 1982, the Cahokia Mounds State Historic Site was designated a UNESCO World Heritage Site, one of only twenty-four in the United States.",
       "tts": {
-        "text": "In 1982, the Cahokia Mounds State Historic Site was designated a UNESCO World Heritage Site, one of only twenty-four in the United States.",
+        "text": "In nineteen eighty two, the Cahokia Mounds State Historic Site was designated a UNESCO World Heritage Site, one of only twenty-four in the United States.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -1696,7 +1696,7 @@
       "text": "Before approximately 1050 CE, the site that would become Cahokia was a modest settlement -- one of many farming villages scattered across the American Bottom.",
       "text_markdown": "Before approximately 1050 CE, the site that would become Cahokia was a modest settlement -- one of many farming villages scattered across the American Bottom.",
       "tts": {
-        "text": "Before approximately 1050 CE, the site that would become Cahokia was a modest settlement -- one of many farming villages scattered across the American Bottom.",
+        "text": "Before approximately one thousand fifty CE, the site that would become Cahokia was a modest settlement -- one of many farming villages scattered across the American Bottom.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -1760,7 +1760,7 @@
       "text": "There was nothing about the settlement at Cahokia in 1000 CE that predicted what would happen next.",
       "text_markdown": "There was nothing about the settlement at Cahokia in 1000 CE that predicted what would happen next.",
       "tts": {
-        "text": "There was nothing about the settlement at Cahokia in 1000 CE that predicted what would happen next.",
+        "text": "There was nothing about the settlement at Cahokia in one thousand CE that predicted what would happen next.",
         "pause_after_ms": 800,
         "repetition_penalty": 2.0
       }
@@ -1776,7 +1776,7 @@
       "text": "Then, around 1050 CE, everything changed.",
       "text_markdown": "Then, around 1050 CE, everything changed.",
       "tts": {
-        "text": "Then, around 1050 CE, everything changed.",
+        "text": "Then, around one thousand fifty CE, everything changed.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -2002,7 +2002,7 @@
       "text": "Before 1050 CE, the pottery of the American Bottom is in what archaeologists call the Lohmann phase -- utilitarian cooking and storage vessels in local styles that vary from household to household.",
       "text_markdown": "Before 1050 CE, the pottery of the American Bottom is in what archaeologists call the Lohmann phase -- utilitarian cooking and storage vessels in local styles that vary from household to household.",
       "tts": {
-        "text": "Before 1050 CE, the pottery of the American Bottom is in what archaeologists call the Lohmann phase -- utilitarian cooking and storage vessels in local styles that vary from household to household.",
+        "text": "Before one thousand fifty CE, the pottery of the American Bottom is in what archaeologists call the Lohmann phase -- utilitarian cooking and storage vessels in local styles that vary from household to household.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -2018,7 +2018,7 @@
       "text": "After 1050 CE, in the Stirling phase, the pottery changes dramatically: new forms, new decorative styles, and a striking standardization that suggests centralized production or at least centralized aesthetic control.",
       "text_markdown": "After 1050 CE, in the Stirling phase, the pottery changes dramatically: new forms, new decorative styles, and a striking standardization that suggests centralized production or at least centralized aesthetic control.",
       "tts": {
-        "text": "After 1050 CE, in the Stirling phase, the pottery changes dramatically: new forms, new decorative styles, and a striking standardization that suggests centralized production or at least centralized aesthetic control.",
+        "text": "After one thousand fifty CE, in the Stirling phase, the pottery changes dramatically: new forms, new decorative styles, and a striking standardization that suggests centralized production or at least centralized aesthetic control.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -2066,7 +2066,7 @@
       "text": "The population estimates for Cahokia at its peak (roughly 1050-1200 CE) are debated.",
       "text_markdown": "The population estimates for Cahokia at its peak (roughly 1050-1200 CE) are debated.",
       "tts": {
-        "text": "The population estimates for Cahokia at its peak (roughly 1050-1200 CE) are debated.",
+        "text": "The population estimates for Cahokia at its peak (roughly one thousand fifty to twelve hundred CE) are debated.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -2162,7 +2162,7 @@
       "text": "To put these numbers in context: in 1100 CE, London had a population of roughly ten to fifteen thousand.",
       "text_markdown": "To put these numbers in context: in 1100 CE, London had a population of roughly ten to fifteen thousand.",
       "tts": {
-        "text": "To put these numbers in context: in 1100 CE, London had a population of roughly ten to fifteen thousand.",
+        "text": "To put these numbers in context: in eleven hundred CE, London had a population of roughly ten to fifteen thousand.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -2434,7 +2434,7 @@
       "text": "Around 1000 CE, a new variety of maize -- Northern Flint, an eight-row variety adapted to shorter growing seasons -- spread through the Eastern Woodlands.",
       "text_markdown": "Around 1000 CE, a new variety of maize -- Northern Flint, an eight-row variety adapted to shorter growing seasons -- spread through the Eastern Woodlands.",
       "tts": {
-        "text": "Around 1000 CE, a new variety of maize -- Northern Flint, an eight-row variety adapted to shorter growing seasons -- spread through the Eastern Woodlands.",
+        "text": "Around one thousand CE, a new variety of maize -- Northern Flint, an eight-row variety adapted to shorter growing seasons -- spread through the Eastern Woodlands.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -2722,7 +2722,7 @@
       "text": "In July 1054 CE, a supernova appeared in the constellation Taurus.",
       "text_markdown": "In July 1054 CE, a supernova appeared in the constellation Taurus.",
       "tts": {
-        "text": "In July 1054 CE, a supernova appeared in the constellation Taurus.",
+        "text": "In July one thousand fifty four CE, a supernova appeared in the constellation Taurus.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -2926,7 +2926,7 @@
       "text": "In the early 1960s, archaeologist Warren Wittry was excavating in an area west of Monks Mound, not looking for anything in particular, when he noticed a pattern of large post pits -- deep, evenly spaced holes in the ground, arranged in an arc.",
       "text_markdown": "In the early 1960s, archaeologist Warren Wittry was excavating in an area west of Monks Mound, not looking for anything in particular, when he noticed a pattern of large post pits -- deep, evenly spaced holes in the ground, arranged in an arc.",
       "tts": {
-        "text": "In the early 1960s, archaeologist Warren Wittry was excavating in an area west of Monks Mound, not looking for anything in particular, when he noticed a pattern of large post pits -- deep, evenly spaced holes in the ground, arranged in an arc.",
+        "text": "In the early nineteen sixties, archaeologist Warren Wittry was excavating in an area west of Monks Mound, not looking for anything in particular, when he noticed a pattern of large post pits -- deep, evenly spaced holes in the ground, arranged in an arc.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -2974,7 +2974,7 @@
       "text": "The largest of these circles, called Woodhenge III (several successive circles were built on approximately the same spot), consisted of forty-eight red cedar posts arranged in a circle approximately 125 meters in diameter.",
       "text_markdown": "The largest of these circles, called Woodhenge III (several successive circles were built on approximately the same spot), consisted of forty-eight red cedar posts arranged in a circle approximately 125 meters in diameter.",
       "tts": {
-        "text": "The largest of these circles, called Woodhenge III (several successive circles were built on approximately the same spot), consisted of forty-eight red cedar posts arranged in a circle approximately 125 meters in diameter.",
+        "text": "The largest of these circles, called Woodhenge III (several successive circles were built on approximately the same spot), consisted of forty-eight red cedar posts arranged in a circle approximately one hundred twenty five meters in diameter.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -3656,7 +3656,7 @@
       "text": "In the 1960s and 1970s, the archaeologist Melvin Fowler excavated a relatively small mound at the southern edge of Cahokia's central precinct.",
       "text_markdown": "In the 1960s and 1970s, the archaeologist Melvin Fowler excavated a relatively small mound at the southern edge of Cahokia's central precinct.",
       "tts": {
-        "text": "In the 1960s and 1970s, the archaeologist Melvin Fowler excavated a relatively small mound at the southern edge of Cahokia's central precinct.",
+        "text": "In the nineteen sixties and nineteen seventies, the archaeologist Melvin Fowler excavated a relatively small mound at the southern edge of Cahokia's central precinct.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -3672,7 +3672,7 @@
       "text": "Designated Mound 72, it was a ridgetop mound -- long, low, and oriented along a roughly northwest-to-southeast axis that aligned with the summer and winter solstice sunrise and sunset positions.",
       "text_markdown": "Designated Mound 72, it was a ridgetop mound -- long, low, and oriented along a roughly northwest-to-southeast axis that aligned with the summer and winter solstice sunrise and sunset positions.",
       "tts": {
-        "text": "Designated Mound 72, it was a ridgetop mound -- long, low, and oriented along a roughly northwest-to-southeast axis that aligned with the summer and winter solstice sunrise and sunset positions.",
+        "text": "Designated Mound seventy two, it was a ridgetop mound -- long, low, and oriented along a roughly northwest-to-southeast axis that aligned with the summer and winter solstice sunrise and sunset positions.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -3866,7 +3866,7 @@
       "image": "../images/placeholders/04-mound-72-burial.png",
       "image_alt": "The Mound 72 bird-shaped bead burial, showing the shell bead platform",
       "tts": {
-        "text": "The Mound 72 bird-shaped bead burial, showing the shell bead platform",
+        "text": "The Mound seventy two bird-shaped bead burial, showing the shell bead platform",
         "pause_after_ms": 1200,
         "repetition_penalty": 2.0
       }
@@ -3994,7 +3994,7 @@
       "text": "Surrounding the central burial, Fowler's team found what made Mound 72 famous -- and troubling.",
       "text_markdown": "Surrounding the central burial, Fowler's team found what made Mound 72 famous -- and troubling.",
       "tts": {
-        "text": "Surrounding the central burial, Fowler's team found what made Mound 72 famous -- and troubling.",
+        "text": "Surrounding the central burial, Fowler's team found what made Mound seventy two famous -- and troubling.",
         "pause_after_ms": 800,
         "repetition_penalty": 2.0
       }
@@ -4010,7 +4010,7 @@
       "text": "Over 270 individuals were interred in the mound, in a series of distinct burial events that took place over decades.",
       "text_markdown": "Over 270 individuals were interred in the mound, in a series of distinct burial events that took place over decades.",
       "tts": {
-        "text": "Over 270 individuals were interred in the mound, in a series of distinct burial events that took place over decades.",
+        "text": "Over two hundred seventy individuals were interred in the mound, in a series of distinct burial events that took place over decades.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -4362,7 +4362,7 @@
       "text": "The presence of chunkey stones in Mound 72 links the burial to the elite social world of competition, gambling, and public performance.",
       "text_markdown": "The presence of chunkey stones in Mound 72 links the burial to the elite social world of competition, gambling, and public performance.",
       "tts": {
-        "text": "The presence of chunkey stones in Mound 72 links the burial to the elite social world of competition, gambling, and public performance.",
+        "text": "The presence of chunkey stones in Mound seventy two links the burial to the elite social world of competition, gambling, and public performance.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -4378,7 +4378,7 @@
       "text": "The range of burial treatments within Mound 72 -- from the lavish bird-bead burial at the center to the mass graves of sacrificed individuals at the margins -- presents a picture of extreme social hierarchy.",
       "text_markdown": "The range of burial treatments within Mound 72 -- from the lavish bird-bead burial at the center to the mass graves of sacrificed individuals at the margins -- presents a picture of extreme social hierarchy.",
       "tts": {
-        "text": "The range of burial treatments within Mound 72 -- from the lavish bird-bead burial at the center to the mass graves of sacrificed individuals at the margins -- presents a picture of extreme social hierarchy.",
+        "text": "The range of burial treatments within Mound seventy two -- from the lavish bird-bead burial at the center to the mass graves of sacrificed individuals at the margins -- presents a picture of extreme social hierarchy.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.8
       }
@@ -4586,7 +4586,7 @@
       "text": "Mound 72 stands almost alone, and its discovery forced scholars to reconsider their assumptions about the nature of Mississippian society.",
       "text_markdown": "Mound 72 stands almost alone, and its discovery forced scholars to reconsider their assumptions about the nature of Mississippian society.",
       "tts": {
-        "text": "Mound 72 stands almost alone, and its discovery forced scholars to reconsider their assumptions about the nature of Mississippian society.",
+        "text": "Mound seventy two stands almost alone, and its discovery forced scholars to reconsider their assumptions about the nature of Mississippian society.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -4602,7 +4602,7 @@
       "text": "Before Mound 72, the dominant model of Mississippian leadership described \"redistributive chiefdoms\" -- societies where leaders gained prestige by collecting surplus and distributing it to followers.",
       "text_markdown": "Before Mound 72, the dominant model of Mississippian leadership described \"redistributive chiefdoms\" -- societies where leaders gained prestige by collecting surplus and distributing it to followers.",
       "tts": {
-        "text": "Before Mound 72, the dominant model of Mississippian leadership described \"redistributive chiefdoms\" -- societies where leaders gained prestige by collecting surplus and distributing it to followers.",
+        "text": "Before Mound seventy two, the dominant model of Mississippian leadership described \"redistributive chiefdoms\" -- societies where leaders gained prestige by collecting surplus and distributing it to followers.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -4618,7 +4618,7 @@
       "text": "After Mound 72, the model had to accommodate something darker: a form of leadership that could command, or at least obtain, the deaths of hundreds of people as part of a funeral program.",
       "text_markdown": "After Mound 72, the model had to accommodate something darker: a form of leadership that could command, or at least obtain, the deaths of hundreds of people as part of a funeral program.",
       "tts": {
-        "text": "After Mound 72, the model had to accommodate something darker: a form of leadership that could command, or at least obtain, the deaths of hundreds of people as part of a funeral program.",
+        "text": "After Mound seventy two, the model had to accommodate something darker: a form of leadership that could command, or at least obtain, the deaths of hundreds of people as part of a funeral program.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -4778,7 +4778,7 @@
       "text": "Analysis of the Mound 72 remains has shown that some of the individuals spent their early years outside the Cahokia region.",
       "text_markdown": "Analysis of the Mound 72 remains has shown that some of the individuals spent their early years outside the Cahokia region.",
       "tts": {
-        "text": "Analysis of the Mound 72 remains has shown that some of the individuals spent their early years outside the Cahokia region.",
+        "text": "Analysis of the Mound seventy two remains has shown that some of the individuals spent their early years outside the Cahokia region.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -4858,7 +4858,7 @@
       "text": "Mound 72 forces uncomfortable questions.",
       "text_markdown": "Mound 72 forces uncomfortable questions.",
       "tts": {
-        "text": "Mound 72 forces uncomfortable questions.",
+        "text": "Mound seventy two forces uncomfortable questions.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -5174,7 +5174,7 @@
       "text": "Copper came from the mines of the Lake Superior region, roughly 1,200 kilometers to the north.",
       "text_markdown": "Copper came from the mines of the Lake Superior region, roughly 1,200 kilometers to the north.",
       "tts": {
-        "text": "Copper came from the mines of the Lake Superior region, roughly 1,200 kilometers to the north.",
+        "text": "Copper came from the mines of the Lake Superior region, roughly one thousand two hundred kilometers to the north.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -5402,7 +5402,7 @@
       "text": "The twenty thousand beads in the Mound 72 burial represent just one deposit; marine shell was used throughout Cahokia for beads, gorgets (carved pendants), and engraved cups.",
       "text_markdown": "The twenty thousand beads in the Mound 72 burial represent just one deposit; marine shell was used throughout Cahokia for beads, gorgets (carved pendants), and engraved cups.",
       "tts": {
-        "text": "The twenty thousand beads in the Mound 72 burial represent just one deposit; marine shell was used throughout Cahokia for beads, gorgets (carved pendants), and engraved cups.",
+        "text": "The twenty thousand beads in the Mound seventy two burial represent just one deposit; marine shell was used throughout Cahokia for beads, gorgets (carved pendants), and engraved cups.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -6120,7 +6120,7 @@
       "text": "After approximately 1200 CE, Cahokia began to contract.",
       "text_markdown": "After approximately 1200 CE, Cahokia began to contract.",
       "tts": {
-        "text": "After approximately 1200 CE, Cahokia began to contract.",
+        "text": "After approximately twelve hundred CE, Cahokia began to contract.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -6216,7 +6216,7 @@
       "text": "The Moorehead phase (roughly 1200-1350 CE) is characterized by declining population, reduced construction, and a retreat of the city's footprint.",
       "text_markdown": "The Moorehead phase (roughly 1200-1350 CE) is characterized by declining population, reduced construction, and a retreat of the city's footprint.",
       "tts": {
-        "text": "The Moorehead phase (roughly 1200-1350 CE) is characterized by declining population, reduced construction, and a retreat of the city's footprint.",
+        "text": "The Moorehead phase (roughly twelve hundred to thirteen fifty CE) is characterized by declining population, reduced construction, and a retreat of the city's footprint.",
         "pause_after_ms": 800,
         "repetition_penalty": 2.0
       }
@@ -6248,7 +6248,7 @@
       "text": "Sometime around 1200 to 1275 CE, a large wooden palisade wall was constructed around the central precinct -- a defensive fortification that enclosed Monks Mound, the Grand Plaza, and the principal elite mounds behind a wall of logs.",
       "text_markdown": "Sometime around 1200 to 1275 CE, a large wooden palisade wall was constructed around the central precinct -- a defensive fortification that enclosed Monks Mound, the Grand Plaza, and the principal elite mounds behind a wall of logs.",
       "tts": {
-        "text": "Sometime around 1200 to 1275 CE, a large wooden palisade wall was constructed around the central precinct -- a defensive fortification that enclosed Monks Mound, the Grand Plaza, and the principal elite mounds behind a wall of logs.",
+        "text": "Sometime around twelve hundred to twelve seventy five CE, a large wooden palisade wall was constructed around the central precinct -- a defensive fortification that enclosed Monks Mound, the Grand Plaza, and the principal elite mounds behind a wall of logs.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -6538,7 +6538,7 @@
       "text": "Around 1200 CE, the American Bottom experienced a significant flood event -- one of the largest in the region's Holocene record.",
       "text_markdown": "Around 1200 CE, the American Bottom experienced a significant flood event -- one of the largest in the region's Holocene record.",
       "tts": {
-        "text": "Around 1200 CE, the American Bottom experienced a significant flood event -- one of the largest in the region's Holocene record.",
+        "text": "Around twelve hundred CE, the American Bottom experienced a significant flood event -- one of the largest in the region's Holocene record.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -6602,7 +6602,7 @@
       "text": "By approximately 1300 CE, Cahokia was a shadow of its former self.",
       "text_markdown": "By approximately 1300 CE, Cahokia was a shadow of its former self.",
       "tts": {
-        "text": "By approximately 1300 CE, Cahokia was a shadow of its former self.",
+        "text": "By approximately thirteen hundred CE, Cahokia was a shadow of its former self.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -6826,7 +6826,7 @@
       "text": "The Medieval Warm Period, which provided favorable growing conditions during Cahokia's rise, gave way to the cooler, more variable conditions of the Little Ice Age beginning around 1250-1300 CE.",
       "text_markdown": "The Medieval Warm Period, which provided favorable growing conditions during Cahokia's rise, gave way to the cooler, more variable conditions of the Little Ice Age beginning around 1250-1300 CE.",
       "tts": {
-        "text": "The Medieval Warm Period, which provided favorable growing conditions during Cahokia's rise, gave way to the cooler, more variable conditions of the Little Ice Age beginning around 1250-1300 CE.",
+        "text": "The Medieval Warm Period, which provided favorable growing conditions during Cahokia's rise, gave way to the cooler, more variable conditions of the Little Ice Age beginning around twelve fifty to thirteen hundred CE.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -7242,7 +7242,7 @@
       "text": "By 1400 CE, Cahokia was empty.",
       "text_markdown": "By 1400 CE, Cahokia was empty.",
       "tts": {
-        "text": "By 1400 CE, Cahokia was empty.",
+        "text": "By fourteen hundred CE, Cahokia was empty.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -7322,7 +7322,7 @@
       "text": "When French explorers reached the region in the late 1600s, the mounds were there, but the Illini, Osage, and other peoples living in the area did not claim to have built them.",
       "text_markdown": "When French explorers reached the region in the late 1600s, the mounds were there, but the Illini, Osage, and other peoples living in the area did not claim to have built them.",
       "tts": {
-        "text": "When French explorers reached the region in the late 1600s, the mounds were there, but the Illini, Osage, and other peoples living in the area did not claim to have built them.",
+        "text": "When French explorers reached the region in the late sixteen hundreds, the mounds were there, but the Illini, Osage, and other peoples living in the area did not claim to have built them.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -7844,7 +7844,7 @@
       "text": "Thomas Jefferson explored mounds in Virginia -- he excavated one near Monticello in 1784, making him one of the earliest archaeological excavators in America -- and while Jefferson was more careful than most, noting the resemblance between mound artifacts and known Indian crafts, his excavation did not settle the question in the public mind.",
       "text_markdown": "Thomas Jefferson explored mounds in Virginia -- he excavated one near Monticello in 1784, making him one of the earliest archaeological excavators in America -- and while Jefferson was more careful than most, noting the resemblance between mound artifacts and known Indian crafts, his excavation did not settle the question in the public mind.",
       "tts": {
-        "text": "Thomas Jefferson explored mounds in Virginia -- he excavated one near Monticello in 1784, making him one of the earliest archaeological excavators in America -- and while Jefferson was more careful than most, noting the resemblance between mound artifacts and known Indian crafts, his excavation did not settle the question in the public mind.",
+        "text": "Thomas Jefferson explored mounds in Virginia -- he excavated one near Monticello in seventeen eighty four, making him one of the earliest archaeological excavators in America -- and while Jefferson was more careful than most, noting the resemblance between mound artifacts and known Indian crafts, his excavation did not settle the question in the public mind.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -7892,7 +7892,7 @@
       "text": "Josiah Priest, in his enormously popular 1833 book American Antiquities and Discoveries in the West, catalogued dozens of mound sites and argued that they proved the existence of an ancient white civilization that had been exterminated by savage Indians.",
       "text_markdown": "Josiah Priest, in his enormously popular 1833 book *American Antiquities and Discoveries in the West*, catalogued dozens of mound sites and argued that they proved the existence of an ancient white civilization that had been exterminated by savage Indians.",
       "tts": {
-        "text": "Josiah Priest, in his enormously popular 1833 book American Antiquities and Discoveries in the West, catalogued dozens of mound sites and argued that they proved the existence of an ancient white civilization that had been exterminated by savage Indians.",
+        "text": "Josiah Priest, in his enormously popular eighteen thirty three book American Antiquities and Discoveries in the West, catalogued dozens of mound sites and argued that they proved the existence of an ancient white civilization that had been exterminated by savage Indians.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -7956,7 +7956,7 @@
       "text": "Joseph Smith, founder of the Church of Jesus Christ of Latter-day Saints, published the Book of Mormon in 1830, telling the story of an ancient Israelite people who migrated to the Americas, built a civilization, and were eventually destroyed in a great war.",
       "text_markdown": "Joseph Smith, founder of the Church of Jesus Christ of Latter-day Saints, published the Book of Mormon in 1830, telling the story of an ancient Israelite people who migrated to the Americas, built a civilization, and were eventually destroyed in a great war.",
       "tts": {
-        "text": "Joseph Smith, founder of the Church of Jesus Christ of Latter-day Saints, published the Book of Mormon in 1830, telling the story of an ancient Israelite people who migrated to the Americas, built a civilization, and were eventually destroyed in a great war.",
+        "text": "Joseph Smith, founder of the Church of Jesus Christ of Latter-day Saints, published the Book of Mormon in eighteen thirty, telling the story of an ancient Israelite people who migrated to the Americas, built a civilization, and were eventually destroyed in a great war.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.8
       }
@@ -8068,7 +8068,7 @@
       "text": "The Smithsonian Institution was not founded until 1846.",
       "text_markdown": "The Smithsonian Institution was not founded until 1846.",
       "tts": {
-        "text": "The Smithsonian Institution was not founded until 1846.",
+        "text": "The Smithsonian Institution was not founded until eighteen forty six.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -8132,7 +8132,7 @@
       "text": "The ethnologist Henry Rowe Schoolcraft, who lived among the Ojibwe people of the Great Lakes and married an Ojibwe woman, pointed out as early as the 1830s that living Indigenous peoples maintained traditions of mound building and that the mounds were consistent with known Indigenous cultural practices.",
       "text_markdown": "The ethnologist Henry Rowe Schoolcraft, who lived among the Ojibwe people of the Great Lakes and married an Ojibwe woman, pointed out as early as the 1830s that living Indigenous peoples maintained traditions of mound building and that the mounds were consistent with known Indigenous cultural practices.",
       "tts": {
-        "text": "The ethnologist Henry Rowe Schoolcraft, who lived among the Ojibwe people of the Great Lakes and married an Ojibwe woman, pointed out as early as the 1830s that living Indigenous peoples maintained traditions of mound building and that the mounds were consistent with known Indigenous cultural practices.",
+        "text": "The ethnologist Henry Rowe Schoolcraft, who lived among the Ojibwe people of the Great Lakes and married an Ojibwe woman, pointed out as early as the eighteen thirties that living Indigenous peoples maintained traditions of mound building and that the mounds were consistent with known Indigenous cultural practices.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.8
       }
@@ -8148,7 +8148,7 @@
       "text": "Albert Gallatin, the former Secretary of the Treasury who became one of America's first serious ethnologists, argued in the 1840s that the mound builders were the ancestors of living Native Americans.",
       "text_markdown": "Albert Gallatin, the former Secretary of the Treasury who became one of America's first serious ethnologists, argued in the 1840s that the mound builders were the ancestors of living Native Americans.",
       "tts": {
-        "text": "Albert Gallatin, the former Secretary of the Treasury who became one of America's first serious ethnologists, argued in the 1840s that the mound builders were the ancestors of living Native Americans.",
+        "text": "Albert Gallatin, the former Secretary of the Treasury who became one of America's first serious ethnologists, argued in the eighteen forties that the mound builders were the ancestors of living Native Americans.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.8
       }
@@ -8196,7 +8196,7 @@
       "text": "The Mound Builder myth was directly invoked in support of the Indian Removal Act of 1830, the law that authorized the forced relocation of tens of thousands of Indigenous people from their homelands east of the Mississippi to Indian Territory (present-day Oklahoma).",
       "text_markdown": "The Mound Builder myth was directly invoked in support of the Indian Removal Act of 1830, the law that authorized the forced relocation of tens of thousands of Indigenous people from their homelands east of the Mississippi to Indian Territory (present-day Oklahoma).",
       "tts": {
-        "text": "The Mound Builder myth was directly invoked in support of the Indian Removal Act of 1830, the law that authorized the forced relocation of tens of thousands of Indigenous people from their homelands east of the Mississippi to Indian Territory (present-day Oklahoma).",
+        "text": "The Mound Builder myth was directly invoked in support of the Indian Removal Act of eighteen thirty, the law that authorized the forced relocation of tens of thousands of Indigenous people from their homelands east of the Mississippi to Indian Territory (present-day Oklahoma).",
         "pause_after_ms": 500,
         "repetition_penalty": 1.8
       }
@@ -8244,7 +8244,7 @@
       "text": "Roughly 60,000 people were forcibly removed from their homes during the 1830s.",
       "text_markdown": "Roughly 60,000 people were forcibly removed from their homes during the 1830s.",
       "tts": {
-        "text": "Roughly 60,000 people were forcibly removed from their homes during the 1830s.",
+        "text": "Roughly sixty thousand people were forcibly removed from their homes during the eighteen thirties.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -8404,7 +8404,7 @@
       "text": "In 1838, a small inscribed stone was allegedly found during the excavation of the Grave Creek Mound, a large Adena-culture burial mound in present-day West Virginia.",
       "text_markdown": "In 1838, a small inscribed stone was allegedly found during the excavation of the Grave Creek Mound, a large Adena-culture burial mound in present-day West Virginia.",
       "tts": {
-        "text": "In 1838, a small inscribed stone was allegedly found during the excavation of the Grave Creek Mound, a large Adena-culture burial mound in present-day West Virginia.",
+        "text": "In eighteen thirty eight, a small inscribed stone was allegedly found during the excavation of the Grave Creek Mound, a large Adena-culture burial mound in present-day West Virginia.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -8516,7 +8516,7 @@
       "text": "In 1882, the Smithsonian Institution's Bureau of Ethnology assigned a team led by Cyrus Thomas to settle the question once and for all.",
       "text_markdown": "In 1882, the Smithsonian Institution's Bureau of Ethnology assigned a team led by Cyrus Thomas to settle the question once and for all.",
       "tts": {
-        "text": "In 1882, the Smithsonian Institution's Bureau of Ethnology assigned a team led by Cyrus Thomas to settle the question once and for all.",
+        "text": "In eighteen eighty two, the Smithsonian Institution's Bureau of Ethnology assigned a team led by Cyrus Thomas to settle the question once and for all.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -8580,7 +8580,7 @@
       "text": "Thomas's report, published in 1894 as the Report on the Mound Explorations of the Bureau of Ethnology, ran to 730 pages and was devastating to the lost-race theory.",
       "text_markdown": "Thomas's report, published in 1894 as the *Report on the Mound Explorations of the Bureau of Ethnology*, ran to 730 pages and was devastating to the lost-race theory.",
       "tts": {
-        "text": "Thomas's report, published in 1894 as the Report on the Mound Explorations of the Bureau of Ethnology, ran to 730 pages and was devastating to the lost-race theory.",
+        "text": "Thomas's report, published in eighteen ninety four as the Report on the Mound Explorations of the Bureau of Ethnology, ran to seven hundred thirty pages and was devastating to the lost-race theory.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -8852,7 +8852,7 @@
       "text": "The intellectual honesty required to publish a 730-page report demolishing your own starting hypothesis is considerable.",
       "text_markdown": "The intellectual honesty required to publish a 730-page report demolishing your own starting hypothesis is considerable.",
       "tts": {
-        "text": "The intellectual honesty required to publish a 730-page report demolishing your own starting hypothesis is considerable.",
+        "text": "The intellectual honesty required to publish a seven hundred thirty-page report demolishing your own starting hypothesis is considerable.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -8932,7 +8932,7 @@
       "text": "Thomas's report was published in 1894 -- sixty-four years after the Indian Removal Act, thirty years after the forced removal was complete, and two decades after the last major military campaigns against Plains Indians.",
       "text_markdown": "Thomas's report was published in 1894 -- sixty-four years after the Indian Removal Act, thirty years after the forced removal was complete, and two decades after the last major military campaigns against Plains Indians.",
       "tts": {
-        "text": "Thomas's report was published in 1894 -- sixty-four years after the Indian Removal Act, thirty years after the forced removal was complete, and two decades after the last major military campaigns against Plains Indians.",
+        "text": "Thomas's report was published in eighteen ninety four -- sixty-four years after the Indian Removal Act, thirty years after the forced removal was complete, and two decades after the last major military campaigns against Plains Indians.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.8
       }
@@ -9264,7 +9264,7 @@
       "text": "The Mound 72 burial -- with its mass sacrifices, its twenty-thousand-bead platform, and its clear hierarchy of interments -- suggests concentrated power of an extreme kind.",
       "text_markdown": "The Mound 72 burial -- with its mass sacrifices, its twenty-thousand-bead platform, and its clear hierarchy of interments -- suggests concentrated power of an extreme kind.",
       "tts": {
-        "text": "The Mound 72 burial -- with its mass sacrifices, its twenty-thousand-bead platform, and its clear hierarchy of interments -- suggests concentrated power of an extreme kind.",
+        "text": "The Mound seventy two burial -- with its mass sacrifices, its twenty-thousand-bead platform, and its clear hierarchy of interments -- suggests concentrated power of an extreme kind.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -9424,7 +9424,7 @@
       "text": "The environmental, climatic, social, and political factors described in Chapter 6 are all plausible, and most scholars favor a multi-causal explanation.",
       "text_markdown": "The environmental, climatic, social, and political factors described in Chapter 6 are all plausible, and most scholars favor a multi-causal explanation.",
       "tts": {
-        "text": "The environmental, climatic, social, and political factors described in Chapter 6 are all plausible, and most scholars favor a multi-causal explanation.",
+        "text": "The environmental, climatic, social, and political factors described in Chapter six are all plausible, and most scholars favor a multi-causal explanation.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -9536,7 +9536,7 @@
       "text": "The first Europeans to visit the site -- French missionaries and explorers in the late 1600s -- found only mounds and no clear oral traditions among local peoples explaining them.",
       "text_markdown": "The first Europeans to visit the site -- French missionaries and explorers in the late 1600s -- found only mounds and no clear oral traditions among local peoples explaining them.",
       "tts": {
-        "text": "The first Europeans to visit the site -- French missionaries and explorers in the late 1600s -- found only mounds and no clear oral traditions among local peoples explaining them.",
+        "text": "The first Europeans to visit the site -- French missionaries and explorers in the late sixteen hundreds -- found only mounds and no clear oral traditions among local peoples explaining them.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -9552,7 +9552,7 @@
       "text": "This is a gap of perhaps 150 to 250 years between Cahokia's abandonment and the first European contact in the region.",
       "text_markdown": "This is a gap of perhaps 150 to 250 years between Cahokia's abandonment and the first European contact in the region.",
       "tts": {
-        "text": "This is a gap of perhaps 150 to 250 years between Cahokia's abandonment and the first European contact in the region.",
+        "text": "This is a gap of perhaps one hundred fifty to two hundred fifty years between Cahokia's abandonment and the first European contact in the region.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -10264,7 +10264,7 @@
       "text": "The Mississippian world -- the network of societies that shared certain cultural features from roughly 800 to 1600 CE -- stretched from the Great Lakes to the Gulf Coast, from the Great Plains to the Atlantic seaboard.",
       "text_markdown": "The Mississippian world -- the network of societies that shared certain cultural features from roughly 800 to 1600 CE -- stretched from the Great Lakes to the Gulf Coast, from the Great Plains to the Atlantic seaboard.",
       "tts": {
-        "text": "The Mississippian world -- the network of societies that shared certain cultural features from roughly 800 to 1600 CE -- stretched from the Great Lakes to the Gulf Coast, from the Great Plains to the Atlantic seaboard.",
+        "text": "The Mississippian world -- the network of societies that shared certain cultural features from roughly eight hundred to sixteen hundred CE -- stretched from the Great Lakes to the Gulf Coast, from the Great Plains to the Atlantic seaboard.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.8
       }
@@ -10394,7 +10394,7 @@
       "text": "At its peak (roughly 1200-1350 CE), Moundville housed several thousand people.",
       "text_markdown": "At its peak (roughly 1200-1350 CE), Moundville housed several thousand people.",
       "tts": {
-        "text": "At its peak (roughly 1200-1350 CE), Moundville housed several thousand people.",
+        "text": "At its peak (roughly twelve hundred to thirteen fifty CE), Moundville housed several thousand people.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -10652,7 +10652,7 @@
       "text": "The Craig Mound was looted in the 1930s by commercial treasure hunters who leased the site from the landowner and dynamited it open.",
       "text_markdown": "The Craig Mound was looted in the 1930s by commercial treasure hunters who leased the site from the landowner and dynamited it open.",
       "tts": {
-        "text": "The Craig Mound was looted in the 1930s by commercial treasure hunters who leased the site from the landowner and dynamited it open.",
+        "text": "The Craig Mound was looted in the nineteen thirties by commercial treasure hunters who leased the site from the landowner and dynamited it open.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -11132,7 +11132,7 @@
       "text": "The timing of Cahokia's Big Bang (~1050 CE) coincides with the rapid spread of Mississippian cultural features across the Southeast.",
       "text_markdown": "The timing of Cahokia's Big Bang (~1050 CE) coincides with the rapid spread of Mississippian cultural features across the Southeast.",
       "tts": {
-        "text": "The timing of Cahokia's Big Bang (~1050 CE) coincides with the rapid spread of Mississippian cultural features across the Southeast.",
+        "text": "The timing of Cahokia's Big Bang (approximately one thousand fifty CE) coincides with the rapid spread of Mississippian cultural features across the Southeast.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -11196,7 +11196,7 @@
       "text": "The debate parallels the Olmec \"mother culture\" question discussed in Volume 3, and the answer may be similar: Cahokia was both an innovator and a participant in a larger process, both a source and a product of the cultural currents that shaped the Mississippian world.",
       "text_markdown": "The debate parallels the Olmec \"mother culture\" question discussed in Volume 3, and the answer may be similar: Cahokia was both an innovator and a participant in a larger process, both a source and a product of the cultural currents that shaped the Mississippian world.",
       "tts": {
-        "text": "The debate parallels the Olmec \"mother culture\" question discussed in Volume 3, and the answer may be similar: Cahokia was both an innovator and a participant in a larger process, both a source and a product of the cultural currents that shaped the Mississippian world.",
+        "text": "The debate parallels the Olmec \"mother culture\" question discussed in Volume three, and the answer may be similar: Cahokia was both an innovator and a participant in a larger process, both a source and a product of the cultural currents that shaped the Mississippian world.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.8
       }
@@ -11224,7 +11224,7 @@
       "text": "Cahokia's peak -- roughly 1050 to 1200 CE -- places it squarely in the medieval world.",
       "text_markdown": "Cahokia's peak -- roughly 1050 to 1200 CE -- places it squarely in the medieval world.",
       "tts": {
-        "text": "Cahokia's peak -- roughly 1050 to 1200 CE -- places it squarely in the medieval world.",
+        "text": "Cahokia's peak -- roughly one thousand fifty to twelve hundred CE -- places it squarely in the medieval world.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -11256,7 +11256,7 @@
       "text": "When Cahokia's Big Bang transformed a farming village into a planned city around 1050 CE, the Norman Conquest had just delivered England to William the Conqueror.",
       "text_markdown": "When Cahokia's Big Bang transformed a farming village into a planned city around 1050 CE, the Norman Conquest had just delivered England to William the Conqueror.",
       "tts": {
-        "text": "When Cahokia's Big Bang transformed a farming village into a planned city around 1050 CE, the Norman Conquest had just delivered England to William the Conqueror.",
+        "text": "When Cahokia's Big Bang transformed a farming village into a planned city around one thousand fifty CE, the Norman Conquest had just delivered England to William the Conqueror.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -11288,7 +11288,7 @@
       "text": "The population of the Song Empire approached 100 million.",
       "text_markdown": "The population of the Song Empire approached 100 million.",
       "tts": {
-        "text": "The population of the Song Empire approached 100 million.",
+        "text": "The population of the Song Empire approached one hundred million.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -11320,7 +11320,7 @@
       "text": "The First Crusade was about to be launched (1096), sending European armies east in a collision of civilizations whose consequences would echo for centuries.",
       "text_markdown": "The First Crusade was about to be launched (1096), sending European armies east in a collision of civilizations whose consequences would echo for centuries.",
       "tts": {
-        "text": "The First Crusade was about to be launched (1096), sending European armies east in a collision of civilizations whose consequences would echo for centuries.",
+        "text": "The First Crusade was about to be launched (one thousand ninety six), sending European armies east in a collision of civilizations whose consequences would echo for centuries.",
         "pause_after_ms": 800,
         "repetition_penalty": 2.0
       }
@@ -11416,7 +11416,7 @@
       "text": "Chaco and Cahokia were roughly contemporary (Chaco's peak was roughly 900-1150 CE), roughly similar in ambition, and completely unknown to each other.",
       "text_markdown": "Chaco and Cahokia were roughly contemporary (Chaco's peak was roughly 900-1150 CE), roughly similar in ambition, and completely unknown to each other.",
       "tts": {
-        "text": "Chaco and Cahokia were roughly contemporary (Chaco's peak was roughly 900-1150 CE), roughly similar in ambition, and completely unknown to each other.",
+        "text": "Chaco and Cahokia were roughly contemporary (Chaco's peak was roughly nine hundred to eleven fifty CE), roughly similar in ambition, and completely unknown to each other.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -11480,7 +11480,7 @@
       "text": "When Cahokia reached its maximum population around 1100 CE, the great cathedral-building era was underway in Europe.",
       "text_markdown": "When Cahokia reached its maximum population around 1100 CE, the great cathedral-building era was underway in Europe.",
       "tts": {
-        "text": "When Cahokia reached its maximum population around 1100 CE, the great cathedral-building era was underway in Europe.",
+        "text": "When Cahokia reached its maximum population around eleven hundred CE, the great cathedral-building era was underway in Europe.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -11496,7 +11496,7 @@
       "text": "Construction began on the Cathedral of Santiago de Compostela (1075), Durham Cathedral (1093), and the rebuilt Canterbury Cathedral (1070s).",
       "text_markdown": "Construction began on the Cathedral of Santiago de Compostela (1075), Durham Cathedral (1093), and the rebuilt Canterbury Cathedral (1070s).",
       "tts": {
-        "text": "Construction began on the Cathedral of Santiago de Compostela (1075), Durham Cathedral (1093), and the rebuilt Canterbury Cathedral (1070s).",
+        "text": "Construction began on the Cathedral of Santiago de Compostela (one thousand seventy five), Durham Cathedral (one thousand ninety three), and the rebuilt Canterbury Cathedral (one thousand seventies).",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -11818,7 +11818,7 @@
       "text": "The Angkor temples were attributed to Roman or Greek builders by early European visitors -- the French naturalist Henri Mouhot, who publicized Angkor to the Western world in the 1860s, wrote that the temples were \"grander than anything left to us by Greece or Rome.\" The implication was clear: something this impressive must have been built by a Western civilization.",
       "text_markdown": "The Angkor temples were attributed to Roman or Greek builders by early European visitors -- the French naturalist Henri Mouhot, who publicized Angkor to the Western world in the 1860s, wrote that the temples were \"grander than anything left to us by Greece or Rome.\" The implication was clear: something this impressive must have been built by a Western civilization.",
       "tts": {
-        "text": "The Angkor temples were attributed to Roman or Greek builders by early European visitors -- the French naturalist Henri Mouhot, who publicized Angkor to the Western world in the 1860s, wrote that the temples were \"grander than anything left to us by Greece or Rome.\" The implication was clear: something this impressive must have been built by a Western civilization.",
+        "text": "The Angkor temples were attributed to Roman or Greek builders by early European visitors -- the French naturalist Henri Mouhot, who publicized Angkor to the Western world in the eighteen sixties, wrote that the temples were \"grander than anything left to us by Greece or Rome.\" The implication was clear: something this impressive must have been built by a Western civilization.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.8
       }
@@ -11882,7 +11882,7 @@
       "text": "When Cahokia's population began to decline around 1200 CE, the Mongol Empire was being assembled by Genghis Khan -- the largest contiguous land empire in history, stretching from China to Eastern Europe.",
       "text_markdown": "When Cahokia's population began to decline around 1200 CE, the Mongol Empire was being assembled by Genghis Khan -- the largest contiguous land empire in history, stretching from China to Eastern Europe.",
       "tts": {
-        "text": "When Cahokia's population began to decline around 1200 CE, the Mongol Empire was being assembled by Genghis Khan -- the largest contiguous land empire in history, stretching from China to Eastern Europe.",
+        "text": "When Cahokia's population began to decline around twelve hundred CE, the Mongol Empire was being assembled by Genghis Khan -- the largest contiguous land empire in history, stretching from China to Eastern Europe.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -11898,7 +11898,7 @@
       "text": "In West Africa, the Mali Empire was rising under Sundiata Keita, soon to produce Mansa Musa (MAHN-sah MOO-sah), whose pilgrimage to Mecca in 1324 distributed so much gold in Cairo that he crashed the Egyptian economy for a decade -- an act so extravagant that some historians call him the richest person in recorded history.",
       "text_markdown": "In West Africa, the Mali Empire was rising under Sundiata Keita, soon to produce Mansa Musa (MAHN-sah MOO-sah), whose pilgrimage to Mecca in 1324 distributed so much gold in Cairo that he crashed the Egyptian economy for a decade -- an act so extravagant that some historians call him the richest person in recorded history.",
       "tts": {
-        "text": "In West Africa, the Mali Empire was rising under Sundiata Keita, soon to produce Mansa Musa (MAHN-sah MOO-sah), whose pilgrimage to Mecca in 1324 distributed so much gold in Cairo that he crashed the Egyptian economy for a decade -- an act so extravagant that some historians call him the richest person in recorded history.",
+        "text": "In West Africa, the Mali Empire was rising under Sundiata Keita, soon to produce Mansa Musa (MAHN-sah MOO-sah), whose pilgrimage to Mecca in thirteen twenty four distributed so much gold in Cairo that he crashed the Egyptian economy for a decade -- an act so extravagant that some historians call him the richest person in recorded history.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -11914,7 +11914,7 @@
       "text": "In Europe, the Magna Carta (1215) and the founding of the great universities (Paris, Oxford, Bologna) were reshaping law and education.",
       "text_markdown": "In Europe, the Magna Carta (1215) and the founding of the great universities (Paris, Oxford, Bologna) were reshaping law and education.",
       "tts": {
-        "text": "In Europe, the Magna Carta (1215) and the founding of the great universities (Paris, Oxford, Bologna) were reshaping law and education.",
+        "text": "In Europe, the Magna Carta (twelve fifteen) and the founding of the great universities (Paris, Oxford, Bologna) were reshaping law and education.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -11946,7 +11946,7 @@
       "text": "By the time Cahokia was abandoned around 1400 CE, the Renaissance was beginning in Italy.",
       "text_markdown": "By the time Cahokia was abandoned around 1400 CE, the Renaissance was beginning in Italy.",
       "tts": {
-        "text": "By the time Cahokia was abandoned around 1400 CE, the Renaissance was beginning in Italy.",
+        "text": "By the time Cahokia was abandoned around fourteen hundred CE, the Renaissance was beginning in Italy.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -12074,7 +12074,7 @@
       "text": "When European explorers finally reached the Mississippi Valley in the late 1600s, Cahokia had been dead for two centuries.",
       "text_markdown": "When European explorers finally reached the Mississippi Valley in the late 1600s, Cahokia had been dead for two centuries.",
       "tts": {
-        "text": "When European explorers finally reached the Mississippi Valley in the late 1600s, Cahokia had been dead for two centuries.",
+        "text": "When European explorers finally reached the Mississippi Valley in the late sixteen hundreds, Cahokia had been dead for two centuries.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -12326,7 +12326,7 @@
       "text": "What triggered the Big Bang? The rapid transformation of Cahokia around 1050 CE -- from farming village to planned city -- remains the central mystery.",
       "text_markdown": "**What triggered the Big Bang?** The rapid transformation of Cahokia around 1050 CE -- from farming village to planned city -- remains the central mystery.",
       "tts": {
-        "text": "What triggered the Big Bang? The rapid transformation of Cahokia around 1050 CE -- from farming village to planned city -- remains the central mystery.",
+        "text": "What triggered the Big Bang? The rapid transformation of Cahokia around one thousand fifty CE -- from farming village to planned city -- remains the central mystery.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -12342,7 +12342,7 @@
       "text": "Agricultural surplus (new corn varieties), a religious revolution, a charismatic leader, large-scale migration, and even the supernova of 1054 CE have all been proposed.",
       "text_markdown": "Agricultural surplus (new corn varieties), a religious revolution, a charismatic leader, large-scale migration, and even the supernova of 1054 CE have all been proposed.",
       "tts": {
-        "text": "Agricultural surplus (new corn varieties), a religious revolution, a charismatic leader, large-scale migration, and even the supernova of 1054 CE have all been proposed.",
+        "text": "Agricultural surplus (new corn varieties), a religious revolution, a charismatic leader, large-scale migration, and even the supernova of one thousand fifty four CE have all been proposed.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -12406,7 +12406,7 @@
       "text": "Who were the Mound 72 sacrifices? The identity and origin of the approximately 270 individuals buried in Mound 72 -- including the rows of apparently sacrificed young women -- remain partially unclear.",
       "text_markdown": "**Who were the Mound 72 sacrifices?** The identity and origin of the approximately 270 individuals buried in Mound 72 -- including the rows of apparently sacrificed young women -- remain partially unclear.",
       "tts": {
-        "text": "Who were the Mound 72 sacrifices? The identity and origin of the approximately 270 individuals buried in Mound 72 -- including the rows of apparently sacrificed young women -- remain partially unclear.",
+        "text": "Who were the Mound seventy two sacrifices? The identity and origin of the approximately two hundred seventy individuals buried in Mound seventy two -- including the rows of apparently sacrificed young women -- remain partially unclear.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.8
       }
@@ -12454,7 +12454,7 @@
       "text": "Why was Cahokia abandoned? Environmental degradation, climate change (the transition from the Medieval Warm Period to the Little Ice Age), internal conflict, external warfare, and a catastrophic flood around 1200 CE have all been proposed.",
       "text_markdown": "**Why was Cahokia abandoned?** Environmental degradation, climate change (the transition from the Medieval Warm Period to the Little Ice Age), internal conflict, external warfare, and a catastrophic flood around 1200 CE have all been proposed.",
       "tts": {
-        "text": "Why was Cahokia abandoned? Environmental degradation, climate change (the transition from the Medieval Warm Period to the Little Ice Age), internal conflict, external warfare, and a catastrophic flood around 1200 CE have all been proposed.",
+        "text": "Why was Cahokia abandoned? Environmental degradation, climate change (the transition from the Medieval Warm Period to the Little Ice Age), internal conflict, external warfare, and a catastrophic flood around twelve hundred CE have all been proposed.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -12770,7 +12770,7 @@
       "text": "Big Bang -- Timothy Pauketat's term for the rapid transformation of Cahokia around 1050 CE from a modest village to a planned urban center.",
       "text_markdown": "**Big Bang** -- Timothy Pauketat's term for the rapid transformation of Cahokia around 1050 CE from a modest village to a planned urban center.",
       "tts": {
-        "text": "Big Bang -- Timothy Pauketat's term for the rapid transformation of Cahokia around 1050 CE from a modest village to a planned urban center.",
+        "text": "Big Bang -- Timothy Pauketat's term for the rapid transformation of Cahokia around one thousand fifty CE from a modest village to a planned urban center.",
         "pause_after_ms": 800,
         "repetition_penalty": 2.0
       }
@@ -12850,7 +12850,7 @@
       "text": "Flourished ~1050-1350 CE.",
       "text_markdown": "Flourished ~1050-1350 CE.",
       "tts": {
-        "text": "Flourished ~1050-1350 CE.",
+        "text": "Flourished approximately one thousand fifty to one thousand three hundred fifty CE.",
         "pause_after_ms": 800,
         "repetition_penalty": 2.0
       }
@@ -12866,7 +12866,7 @@
       "text": "Cahokia Mounds State Historic Site -- The modern protected site encompassing the remains of the ancient city, designated a UNESCO World Heritage Site in 1982.",
       "text_markdown": "**Cahokia Mounds State Historic Site** -- The modern protected site encompassing the remains of the ancient city, designated a UNESCO World Heritage Site in 1982.",
       "tts": {
-        "text": "Cahokia Mounds State Historic Site -- The modern protected site encompassing the remains of the ancient city, designated a UNESCO World Heritage Site in 1982.",
+        "text": "Cahokia Mounds State Historic Site -- The modern protected site encompassing the remains of the ancient city, designated a UNESCO World Heritage Site in nineteen eighty two.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -12978,7 +12978,7 @@
       "text": "Fowler, Melvin -- American archaeologist (1924-2008) who excavated Mound 72 and discovered the paramount burial and mass sacrifice evidence.",
       "text_markdown": "**Fowler, Melvin** -- American archaeologist (1924-2008) who excavated Mound 72 and discovered the paramount burial and mass sacrifice evidence.",
       "tts": {
-        "text": "Fowler, Melvin -- American archaeologist (1924-2008) who excavated Mound 72 and discovered the paramount burial and mass sacrifice evidence.",
+        "text": "Fowler, Melvin -- American archaeologist (nineteen twenty four to two thousand eight) who excavated Mound seventy two and discovered the paramount burial and mass sacrifice evidence.",
         "pause_after_ms": 800,
         "repetition_penalty": 2.0
       }
@@ -13010,7 +13010,7 @@
       "text": "Grave Creek Tablet -- A small inscribed stone allegedly found in a West Virginia mound in 1838, widely cited as proof of Old World contact but now recognized as a probable forgery.",
       "text_markdown": "**Grave Creek Tablet** -- A small inscribed stone allegedly found in a West Virginia mound in 1838, widely cited as proof of Old World contact but now recognized as a probable forgery.",
       "tts": {
-        "text": "Grave Creek Tablet -- A small inscribed stone allegedly found in a West Virginia mound in 1838, widely cited as proof of Old World contact but now recognized as a probable forgery.",
+        "text": "Grave Creek Tablet -- A small inscribed stone allegedly found in a West Virginia mound in eighteen thirty eight, widely cited as proof of Old World contact but now recognized as a probable forgery.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -13026,7 +13026,7 @@
       "text": "Indian Removal Act (1830) -- US federal law authorizing the forced relocation of Indigenous peoples from east of the Mississippi.",
       "text_markdown": "**Indian Removal Act** (1830) -- US federal law authorizing the forced relocation of Indigenous peoples from east of the Mississippi.",
       "tts": {
-        "text": "Indian Removal Act (1830) -- US federal law authorizing the forced relocation of Indigenous peoples from east of the Mississippi.",
+        "text": "Indian Removal Act (eighteen thirty) -- US federal law authorizing the forced relocation of Indigenous peoples from east of the Mississippi.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -13058,7 +13058,7 @@
       "text": "Little Ice Age -- A period of cooler, more variable climate beginning around 1250-1300 CE, which may have reduced maize yields and contributed to Cahokia's decline.",
       "text_markdown": "**Little Ice Age** -- A period of cooler, more variable climate beginning around 1250-1300 CE, which may have reduced maize yields and contributed to Cahokia's decline.",
       "tts": {
-        "text": "Little Ice Age -- A period of cooler, more variable climate beginning around 1250-1300 CE, which may have reduced maize yields and contributed to Cahokia's decline.",
+        "text": "Little Ice Age -- A period of cooler, more variable climate beginning around twelve fifty to thirteen hundred CE, which may have reduced maize yields and contributed to Cahokia's decline.",
         "pause_after_ms": 800,
         "repetition_penalty": 2.0
       }
@@ -13090,7 +13090,7 @@
       "text": "Medieval Warm Period -- A period of relatively warm climate (roughly 900-1250 CE) that provided favorable growing conditions during Cahokia's rise.",
       "text_markdown": "**Medieval Warm Period** -- A period of relatively warm climate (roughly 900-1250 CE) that provided favorable growing conditions during Cahokia's rise.",
       "tts": {
-        "text": "Medieval Warm Period -- A period of relatively warm climate (roughly 900-1250 CE) that provided favorable growing conditions during Cahokia's rise.",
+        "text": "Medieval Warm Period -- A period of relatively warm climate (roughly nine hundred to twelve fifty CE) that provided favorable growing conditions during Cahokia's rise.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -13122,7 +13122,7 @@
       "text": "Mississippian -- The broad cultural tradition of mound-building, maize-farming societies in eastern North America, roughly 800-1600 CE.",
       "text_markdown": "**Mississippian** -- The broad cultural tradition of mound-building, maize-farming societies in eastern North America, roughly 800-1600 CE.",
       "tts": {
-        "text": "Mississippian -- The broad cultural tradition of mound-building, maize-farming societies in eastern North America, roughly 800-1600 CE.",
+        "text": "Mississippian -- The broad cultural tradition of mound-building, maize-farming societies in eastern North America, roughly eight hundred to sixteen hundred CE.",
         "pause_after_ms": 800,
         "repetition_penalty": 2.0
       }
@@ -13138,7 +13138,7 @@
       "text": "Monks Mound -- The largest earthen structure in the Americas, approximately 100 feet tall with a base larger than the Great Pyramid of Giza.",
       "text_markdown": "**Monks Mound** -- The largest earthen structure in the Americas, approximately 100 feet tall with a base larger than the Great Pyramid of Giza.",
       "tts": {
-        "text": "Monks Mound -- The largest earthen structure in the Americas, approximately 100 feet tall with a base larger than the Great Pyramid of Giza.",
+        "text": "Monks Mound -- The largest earthen structure in the Americas, approximately one hundred feet tall with a base larger than the Great Pyramid of Giza.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.9
       }
@@ -13170,7 +13170,7 @@
       "text": "Moorehead phase -- The archaeological phase of Cahokia's decline (roughly 1200-1350 CE), characterized by reduced population, palisade construction, and declining long-distance trade.",
       "text_markdown": "**Moorehead phase** -- The archaeological phase of Cahokia's decline (roughly 1200-1350 CE), characterized by reduced population, palisade construction, and declining long-distance trade.",
       "tts": {
-        "text": "Moorehead phase -- The archaeological phase of Cahokia's decline (roughly 1200-1350 CE), characterized by reduced population, palisade construction, and declining long-distance trade.",
+        "text": "Moorehead phase -- The archaeological phase of Cahokia's decline (roughly twelve hundred to thirteen fifty CE), characterized by reduced population, palisade construction, and declining long-distance trade.",
         "pause_after_ms": 800,
         "repetition_penalty": 2.0
       }
@@ -13186,7 +13186,7 @@
       "text": "Mound 72 -- A ridgetop mound at Cahokia containing the burial of two paramount figures on a bird-shaped platform of 20,000 shell beads, surrounded by over 270 additional interments including evidence of mass sacrifice.",
       "text_markdown": "**Mound 72** -- A ridgetop mound at Cahokia containing the burial of two paramount figures on a bird-shaped platform of 20,000 shell beads, surrounded by over 270 additional interments including evidence of mass sacrifice.",
       "tts": {
-        "text": "Mound 72 -- A ridgetop mound at Cahokia containing the burial of two paramount figures on a bird-shaped platform of 20,000 shell beads, surrounded by over 270 additional interments including evidence of mass sacrifice.",
+        "text": "Mound seventy two -- A ridgetop mound at Cahokia containing the burial of two paramount figures on a bird-shaped platform of twenty thousand shell beads, surrounded by over two hundred seventy additional interments including evidence of mass sacrifice.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -13218,7 +13218,7 @@
       "text": "Featured 29 mounds and a population of several thousand.",
       "text_markdown": "Featured 29 mounds and a population of several thousand.",
       "tts": {
-        "text": "Featured 29 mounds and a population of several thousand.",
+        "text": "Featured twenty nine mounds and a population of several thousand.",
         "pause_after_ms": 800,
         "repetition_penalty": 2.0
       }
@@ -13234,7 +13234,7 @@
       "text": "Northern Flint corn -- An eight-row maize variety adapted to shorter growing seasons, whose spread through the Eastern Woodlands around 1000 CE may have contributed to Cahokia's rise.",
       "text_markdown": "**Northern Flint corn** -- An eight-row maize variety adapted to shorter growing seasons, whose spread through the Eastern Woodlands around 1000 CE may have contributed to Cahokia's rise.",
       "tts": {
-        "text": "Northern Flint corn -- An eight-row maize variety adapted to shorter growing seasons, whose spread through the Eastern Woodlands around 1000 CE may have contributed to Cahokia's rise.",
+        "text": "Northern Flint corn -- An eight-row maize variety adapted to shorter growing seasons, whose spread through the Eastern Woodlands around one thousand CE may have contributed to Cahokia's rise.",
         "pause_after_ms": 800,
         "repetition_penalty": 2.0
       }
@@ -13266,7 +13266,7 @@
       "text": "Author of Cahokia: Ancient America's Great City on the Mississippi (2009).",
       "text_markdown": "Author of *Cahokia: Ancient America's Great City on the Mississippi* (2009).",
       "tts": {
-        "text": "Author of Cahokia: Ancient America's Great City on the Mississippi (2009).",
+        "text": "Author of Cahokia: Ancient America's Great City on the Mississippi (two thousand nine).",
         "pause_after_ms": 800,
         "repetition_penalty": 2.0
       }
@@ -13346,7 +13346,7 @@
       "text": "Severely damaged by looting in the 1930s.",
       "text_markdown": "Severely damaged by looting in the 1930s.",
       "tts": {
-        "text": "Severely damaged by looting in the 1930s.",
+        "text": "Severely damaged by looting in the nineteen thirties.",
         "pause_after_ms": 800,
         "repetition_penalty": 2.0
       }
@@ -13362,7 +13362,7 @@
       "text": "Stirling phase -- The archaeological phase of Cahokia's peak (roughly 1050-1200 CE), characterized by rapid growth, monumental construction, and the spread of standardized ceramic styles.",
       "text_markdown": "**Stirling phase** -- The archaeological phase of Cahokia's peak (roughly 1050-1200 CE), characterized by rapid growth, monumental construction, and the spread of standardized ceramic styles.",
       "tts": {
-        "text": "Stirling phase -- The archaeological phase of Cahokia's peak (roughly 1050-1200 CE), characterized by rapid growth, monumental construction, and the spread of standardized ceramic styles.",
+        "text": "Stirling phase -- The archaeological phase of Cahokia's peak (roughly one thousand fifty to twelve hundred CE), characterized by rapid growth, monumental construction, and the spread of standardized ceramic styles.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -13378,7 +13378,7 @@
       "text": "Thomas, Cyrus -- American entomologist and archaeologist (1825-1910).",
       "text_markdown": "**Thomas, Cyrus** -- American entomologist and archaeologist (1825-1910).",
       "tts": {
-        "text": "Thomas, Cyrus -- American entomologist and archaeologist (1825-1910).",
+        "text": "Thomas, Cyrus -- American entomologist and archaeologist (eighteen twenty five to nineteen ten).",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -13394,7 +13394,7 @@
       "text": "His 1894 report for the Smithsonian's Bureau of Ethnology proved that the mounds were built by the ancestors of living Native Americans.",
       "text_markdown": "His 1894 report for the Smithsonian's Bureau of Ethnology proved that the mounds were built by the ancestors of living Native Americans.",
       "tts": {
-        "text": "His 1894 report for the Smithsonian's Bureau of Ethnology proved that the mounds were built by the ancestors of living Native Americans.",
+        "text": "His eighteen ninety four report for the Smithsonian's Bureau of Ethnology proved that the mounds were built by the ancestors of living Native Americans.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -13426,7 +13426,7 @@
       "text": "Wittry, Warren -- American archaeologist who identified the Woodhenge timber circles at Cahokia in the 1960s.",
       "text_markdown": "**Wittry, Warren** -- American archaeologist who identified the Woodhenge timber circles at Cahokia in the 1960s.",
       "tts": {
-        "text": "Wittry, Warren -- American archaeologist who identified the Woodhenge timber circles at Cahokia in the 1960s.",
+        "text": "Wittry, Warren -- American archaeologist who identified the Woodhenge timber circles at Cahokia in the nineteen sixties.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -13504,7 +13504,7 @@
       "text": "Pauketat, Timothy R. Cahokia: Ancient America's Great City on the Mississippi. Penguin, 2009. -- The best modern introduction, by the leading Cahokian scholar. Accessible, well-argued, and vivid.",
       "text_markdown": "Pauketat, Timothy R. *Cahokia: Ancient America's Great City on the Mississippi*. Penguin, 2009. -- The best modern introduction, by the leading Cahokian scholar. Accessible, well-argued, and vivid.",
       "tts": {
-        "text": "Pauketat, Timothy R. Cahokia: Ancient America's Great City on the Mississippi. Penguin, 2009. -- The best modern introduction, by the leading Cahokian scholar. Accessible, well-argued, and vivid.",
+        "text": "Pauketat, Timothy R. Cahokia: Ancient America's Great City on the Mississippi. Penguin, two thousand nine. -- The best modern introduction, by the leading Cahokian scholar. Accessible, well-argued, and vivid.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -13522,7 +13522,7 @@
       "text": "Young, Biloine Whiting, and Melvin L. Fowler. Cahokia: The Great Native American Metropolis. University of Illinois Press, 2000. -- A comprehensive overview with excellent illustrations.",
       "text_markdown": "Young, Biloine Whiting, and Melvin L. Fowler. *Cahokia: The Great Native American Metropolis*. University of Illinois Press, 2000. -- A comprehensive overview with excellent illustrations.",
       "tts": {
-        "text": "Young, Biloine Whiting, and Melvin L. Fowler. Cahokia: The Great Native American Metropolis. University of Illinois Press, 2000. -- A comprehensive overview with excellent illustrations.",
+        "text": "Young, Biloine Whiting, and Melvin L. Fowler. Cahokia: The Great Native American Metropolis. University of Illinois Press, twenty hundred. -- A comprehensive overview with excellent illustrations.",
         "pause_after_ms": 800,
         "repetition_penalty": 2.0
       }
@@ -13540,7 +13540,7 @@
       "text": "Mann, Charles C. 1491: New Revelations of the Americas Before Columbus. Vintage, 2006. -- An outstanding survey of pre-Columbian civilizations, with a strong chapter on Cahokia and the Mississippian world.",
       "text_markdown": "Mann, Charles C. *1491: New Revelations of the Americas Before Columbus*. Vintage, 2006. -- An outstanding survey of pre-Columbian civilizations, with a strong chapter on Cahokia and the Mississippian world.",
       "tts": {
-        "text": "Mann, Charles C. 1491: New Revelations of the Americas Before Columbus. Vintage, 2006. -- An outstanding survey of pre-Columbian civilizations, with a strong chapter on Cahokia and the Mississippian world.",
+        "text": "Mann, Charles C. fourteen ninety one: New Revelations of the Americas Before Columbus. Vintage, two thousand six. -- An outstanding survey of pre-Columbian civilizations, with a strong chapter on Cahokia and the Mississippian world.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -13574,7 +13574,7 @@
       "text": "Pauketat, Timothy R., and Thomas E. Emerson, eds. Cahokia: Domination and Ideology in the Mississippian World. University of Nebraska Press, 1997. -- Scholarly essays on power, ritual, and politics at Cahokia.",
       "text_markdown": "Pauketat, Timothy R., and Thomas E. Emerson, eds. *Cahokia: Domination and Ideology in the Mississippian World*. University of Nebraska Press, 1997. -- Scholarly essays on power, ritual, and politics at Cahokia.",
       "tts": {
-        "text": "Pauketat, Timothy R., and Thomas E. Emerson, eds. Cahokia: Domination and Ideology in the Mississippian World. University of Nebraska Press, 1997. -- Scholarly essays on power, ritual, and politics at Cahokia.",
+        "text": "Pauketat, Timothy R., and Thomas E. Emerson, eds. Cahokia: Domination and Ideology in the Mississippian World. University of Nebraska Press, nineteen ninety seven. -- Scholarly essays on power, ritual, and politics at Cahokia.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -13592,7 +13592,7 @@
       "text": "Chappell, Sally A. Kitt. Cahokia: Mirror of the Cosmos. University of Chicago Press, 2002. -- Explores Cahokia's cosmological symbolism and astronomical alignments.",
       "text_markdown": "Chappell, Sally A. Kitt. *Cahokia: Mirror of the Cosmos*. University of Chicago Press, 2002. -- Explores Cahokia's cosmological symbolism and astronomical alignments.",
       "tts": {
-        "text": "Chappell, Sally A. Kitt. Cahokia: Mirror of the Cosmos. University of Chicago Press, 2002. -- Explores Cahokia's cosmological symbolism and astronomical alignments.",
+        "text": "Chappell, Sally A. Kitt. Cahokia: Mirror of the Cosmos. University of Chicago Press, two thousand two. -- Explores Cahokia's cosmological symbolism and astronomical alignments.",
         "pause_after_ms": 800,
         "repetition_penalty": 2.0
       }
@@ -13610,7 +13610,7 @@
       "text": "Emerson, Thomas E. Cahokia and the Archaeology of Power. University of Alabama Press, 1997. -- A detailed study of Cahokian material culture and its political implications.",
       "text_markdown": "Emerson, Thomas E. *Cahokia and the Archaeology of Power*. University of Alabama Press, 1997. -- A detailed study of Cahokian material culture and its political implications.",
       "tts": {
-        "text": "Emerson, Thomas E. Cahokia and the Archaeology of Power. University of Alabama Press, 1997. -- A detailed study of Cahokian material culture and its political implications.",
+        "text": "Emerson, Thomas E. Cahokia and the Archaeology of Power. University of Alabama Press, nineteen ninety seven. -- A detailed study of Cahokian material culture and its political implications.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -13644,7 +13644,7 @@
       "text": "Silverberg, Robert. Mound Builders of Ancient America: The Archaeology of a Myth. New York Graphic Society, 1968. -- The definitive history of the lost-race theory and its debunking.",
       "text_markdown": "Silverberg, Robert. *Mound Builders of Ancient America: The Archaeology of a Myth*. New York Graphic Society, 1968. -- The definitive history of the lost-race theory and its debunking.",
       "tts": {
-        "text": "Silverberg, Robert. Mound Builders of Ancient America: The Archaeology of a Myth. New York Graphic Society, 1968. -- The definitive history of the lost-race theory and its debunking.",
+        "text": "Silverberg, Robert. Mound Builders of Ancient America: The Archaeology of a Myth. New York Graphic Society, nineteen sixty eight. -- The definitive history of the lost-race theory and its debunking.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -13662,7 +13662,7 @@
       "text": "Thomas, Cyrus. Report on the Mound Explorations of the Bureau of Ethnology. Smithsonian Institution, 1894. -- The 730-page report that settled the question. Available digitally through the Smithsonian.",
       "text_markdown": "Thomas, Cyrus. *Report on the Mound Explorations of the Bureau of Ethnology*. Smithsonian Institution, 1894. -- The 730-page report that settled the question. Available digitally through the Smithsonian.",
       "tts": {
-        "text": "Thomas, Cyrus. Report on the Mound Explorations of the Bureau of Ethnology. Smithsonian Institution, 1894. -- The 730-page report that settled the question. Available digitally through the Smithsonian.",
+        "text": "Thomas, Cyrus. Report on the Mound Explorations of the Bureau of Ethnology. Smithsonian Institution, eighteen ninety four. -- The seven hundred thirty-page report that settled the question. Available digitally through the Smithsonian.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.8
       }
@@ -13696,7 +13696,7 @@
       "text": "Milner, George R. The Moundbuilders: Ancient Peoples of Eastern North America. Thames & Hudson, 2004. -- An excellent overview of mound-building cultures from the Archaic period through the Mississippian.",
       "text_markdown": "Milner, George R. *The Moundbuilders: Ancient Peoples of Eastern North America*. Thames & Hudson, 2004. -- An excellent overview of mound-building cultures from the Archaic period through the Mississippian.",
       "tts": {
-        "text": "Milner, George R. The Moundbuilders: Ancient Peoples of Eastern North America. Thames & Hudson, 2004. -- An excellent overview of mound-building cultures from the Archaic period through the Mississippian.",
+        "text": "Milner, George R. The Moundbuilders: Ancient Peoples of Eastern North America. Thames & Hudson, two thousand four. -- An excellent overview of mound-building cultures from the Archaic period through the Mississippian.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -13714,7 +13714,7 @@
       "text": "King, Adam, ed. Southeastern Ceremonial Complex: Chronology, Content, Context. University of Alabama Press, 2007. -- The most current scholarly treatment of the shared Mississippian symbolic system.",
       "text_markdown": "King, Adam, ed. *Southeastern Ceremonial Complex: Chronology, Content, Context*. University of Alabama Press, 2007. -- The most current scholarly treatment of the shared Mississippian symbolic system.",
       "tts": {
-        "text": "King, Adam, ed. Southeastern Ceremonial Complex: Chronology, Content, Context. University of Alabama Press, 2007. -- The most current scholarly treatment of the shared Mississippian symbolic system.",
+        "text": "King, Adam, ed. Southeastern Ceremonial Complex: Chronology, Content, Context. University of Alabama Press, two thousand seven. -- The most current scholarly treatment of the shared Mississippian symbolic system.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -13822,7 +13822,7 @@
       "text": "Volume 1: The Mystery of Monte Albán -- Sacred Mountain, Lost Script, Vanished City",
       "text_markdown": "Volume 1: *The Mystery of Monte Albán* -- Sacred Mountain, Lost Script, Vanished City",
       "tts": {
-        "text": "Volume 1: The Mystery of Monte Albán -- Sacred Mountain, Lost Script, Vanished City",
+        "text": "Volume one: The Mystery of Monte Albán -- Sacred Mountain, Lost Script, Vanished City",
         "pause_after_ms": 800,
         "repetition_penalty": 2.0
       }
@@ -13838,7 +13838,7 @@
       "text": "Volume 2: The Unconquered People -- Unconquered Nation, Unwritten Tongue, Invisible State",
       "text_markdown": "Volume 2: *The Unconquered People* -- Unconquered Nation, Unwritten Tongue, Invisible State",
       "tts": {
-        "text": "Volume 2: The Unconquered People -- Unconquered Nation, Unwritten Tongue, Invisible State",
+        "text": "Volume two: The Unconquered People -- Unconquered Nation, Unwritten Tongue, Invisible State",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -13854,7 +13854,7 @@
       "text": "Volume 3: The Mystery of the Olmec -- The Mother Culture and the Stone That Speaks Once",
       "text_markdown": "Volume 3: *The Mystery of the Olmec* -- The Mother Culture and the Stone That Speaks Once",
       "tts": {
-        "text": "Volume 3: The Mystery of the Olmec -- The Mother Culture and the Stone That Speaks Once",
+        "text": "Volume three: The Mystery of the Olmec -- The Mother Culture and the Stone That Speaks Once",
         "pause_after_ms": 800,
         "repetition_penalty": 1.9
       }
@@ -13870,7 +13870,7 @@
       "text": "Volume 4: The Mystery of Cahokia -- America's Forgotten Metropolis",
       "text_markdown": "Volume 4: *The Mystery of Cahokia* -- America's Forgotten Metropolis",
       "tts": {
-        "text": "Volume 4: The Mystery of Cahokia -- America's Forgotten Metropolis",
+        "text": "Volume four: The Mystery of Cahokia -- America's Forgotten Metropolis",
         "pause_after_ms": 800,
         "repetition_penalty": 2.0
       }
