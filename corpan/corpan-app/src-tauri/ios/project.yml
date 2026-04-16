@@ -37,6 +37,7 @@ targets:
         buildPhase: resources
         type: folder
       - path: LaunchScreen.storyboard
+      - path: Corpan.storekit
     info:
       path: corpan_iOS/Info.plist
       properties:
@@ -59,6 +60,9 @@ targets:
     entitlements:
       path: corpan_iOS/corpan_iOS.entitlements
     scheme:
+      run:
+        config: debug
+        storeKitConfiguration: Corpan.storekit
       environmentVariables:
         RUST_BACKTRACE: full
         RUST_LOG: info
