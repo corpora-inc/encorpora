@@ -1,7 +1,7 @@
 series:
   title: "Pirate Biographies: Lives That Changed the Sea"
-  tagline: "Thirteen true stories from every ocean on Earth."
-  planned_volumes: 13
+  tagline: "Twenty-one true stories from every ocean on Earth."
+  planned_volumes: 21
 
   philosophy: |
     Each volume tells the true story of one pirate — their world, their rise,
@@ -140,3 +140,67 @@ series:
       region: "Westman Islands, Iceland to Algiers, North Africa"
       era: "1564–1651"
       leading_theme: "The other side of piracy — a captive's own account of the Barbary slave raids on Iceland"
+
+    - number: 14
+      title: "Henry Morgan"
+      subtitle: "The Buccaneer Who Became Governor"
+      directory: "14-henry-morgan"
+      region: "Caribbean, Jamaica, and Panama"
+      era: "1635–1688"
+      leading_theme: "The privateer who sacked Panama City and was knighted for it"
+
+    - number: 15
+      title: "Samuel Bellamy"
+      subtitle: "The Robin Hood of the Sea"
+      directory: "15-samuel-bellamy"
+      region: "Caribbean and Cape Cod"
+      era: "1689–1717"
+      leading_theme: "The class warrior pirate whose shipwreck was found three centuries later"
+
+    - number: 16
+      title: "Jeanne de Clisson"
+      subtitle: "The Lioness of Brittany"
+      directory: "16-jeanne-de-clisson"
+      region: "English Channel, France"
+      era: "1300–1359"
+      leading_theme: "A noblewoman who painted her ships black and hunted the French crown for thirteen years"
+
+    - number: 17
+      title: "Miguel de Cervantes"
+      subtitle: "The Captive Who Wrote Don Quixote"
+      directory: "17-miguel-de-cervantes"
+      region: "Mediterranean, Algiers"
+      era: "1547–1616"
+      leading_theme: "The greatest author in Spanish literature spent five years as a slave of Barbary pirates"
+
+    - number: 18
+      title: "Wang Zhi"
+      subtitle: "The King of the Wokou"
+      directory: "18-wang-zhi"
+      region: "East China Sea, Japan"
+      era: "died 1559"
+      leading_theme: "The Chinese merchant who became king of the Japanese pirates"
+
+    - number: 19
+      title: "Rahmah ibn Jabir al-Jalahimah"
+      subtitle: "The Lion of the Persian Gulf"
+      directory: "19-rahmah-ibn-jabir"
+      region: "Persian Gulf, Arabia"
+      era: "1760–1826"
+      leading_theme: "The one-eyed pirate who blew up his own ship rather than surrender"
+
+    - number: 20
+      title: "Thomas Pellow"
+      subtitle: "The Boy Who Survived Morocco"
+      directory: "20-thomas-pellow"
+      region: "Cornwall to Morocco"
+      era: "1704–1747"
+      leading_theme: "Captured at eleven and enslaved for twenty-three years — a child's account of Barbary captivity"
+
+    - number: 21
+      title: "Stede Bonnet"
+      subtitle: "The Gentleman Pirate"
+      directory: "21-stede-bonnet"
+      region: "Caribbean, Barbados"
+      era: "1688–1718"
+      leading_theme: "The wealthy plantation owner who bought a ship and became the worst pirate in history"

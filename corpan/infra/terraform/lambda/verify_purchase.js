@@ -377,12 +377,26 @@ exports.handler = async (event) => {
   const bypassToken = process.env.DEV_BYPASS_TOKEN;
   const headerToken = getHeader(event, "x-dev-bypass");
   if (bypassToken && headerToken === bypassToken) {
-    return json(200, {
+    const response = {
       status: "verified",
       transactionId: "dev-bypass",
       subscriptionActive: true,
       devBypass: true,
-    });
+    };
+    // If packId provided, generate a real signed URL for download testing
+    if (body.packId) {
+      try {
+        const secrets = await getSecrets();
+        const downloadPath = `narrations/premium/${body.packId}.zip`;
+        response.signedUrl = generateSignedDownloadUrl(
+          downloadPath,
+          secrets.cloudfront.signingPrivateKey
+        );
+      } catch (e) {
+        response.signedUrlError = e.message;
+      }
+    }
+    return json(200, response);
   }
 
   const route = getRoute(event);

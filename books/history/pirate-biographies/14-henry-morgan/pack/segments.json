@@ -1,0 +1,4606 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_henry_morgan",
+  "total_segments": 308,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note to the Reader",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "A Note to the Reader",
+      "text_markdown": "A Note to the Reader"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note to the Reader",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "This is the story of Henry Morgan, the most successful buccaneer in Caribbean history.",
+      "text_markdown": "This is the story of Henry Morgan, the most successful buccaneer in Caribbean history.",
+      "tts": {
+        "text": "This is the story of Henry Morgan, the most successful buccaneer in Caribbean history.",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note to the Reader",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He plundered the richest cities in the Spanish empire and was never punished for it.",
+      "text_markdown": "He plundered the richest cities in the Spanish empire and was never punished for it.",
+      "tts": {
+        "text": "He plundered the richest cities in the Spanish empire and was never punished for it.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note to the Reader",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Morgan lived during a time when the line between piracy and patriotism was deliberately blurred.",
+      "text_markdown": "Morgan lived during a time when the line between piracy and patriotism was deliberately blurred.",
+      "tts": {
+        "text": "Morgan lived during a time when the line between piracy and patriotism was deliberately blurred.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note to the Reader",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "England used men like him to weaken Spain without declaring open war.",
+      "text_markdown": "England used men like him to weaken Spain without declaring open war.",
+      "tts": {
+        "text": "England used men like him to weaken Spain without declaring open war.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note to the Reader",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "He raided towns, burned cities, and tortured prisoners for information about hidden gold.",
+      "text_markdown": "He raided towns, burned cities, and tortured prisoners for information about hidden gold.",
+      "tts": {
+        "text": "He raided towns, burned cities, and tortured prisoners for information about hidden gold.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note to the Reader",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Yet he died as Sir Henry Morgan, Knight of the Realm and Lieutenant Governor of Jamaica.",
+      "text_markdown": "Yet he died as Sir Henry Morgan, Knight of the Realm and Lieutenant Governor of Jamaica.",
+      "tts": {
+        "text": "Yet he died as Sir Henry Morgan, Knight of the Realm and Lieutenant Governor of Jamaica.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note to the Reader",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "His story raises difficult questions about violence, empire, and the rewards given to those who serve powerful nations.",
+      "text_markdown": "His story raises difficult questions about violence, empire, and the rewards given to those who serve powerful nations.",
+      "tts": {
+        "text": "His story raises difficult questions about violence, empire, and the rewards given to those who serve powerful nations.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note to the Reader",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The events described here are based on historical records, including trial transcripts and firsthand accounts.",
+      "text_markdown": "The events described here are based on historical records, including trial transcripts and firsthand accounts.",
+      "tts": {
+        "text": "The events described here are based on historical records, including trial transcripts and firsthand accounts.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note to the Reader",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Where details are uncertain, the text says so.",
+      "text_markdown": "Where details are uncertain, the text says so.",
+      "tts": {
+        "text": "Where details are uncertain, the text says so.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-011",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World That Made Him",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "The World That Made Him",
+      "text_markdown": "The World That Made Him"
+    },
+    {
+      "id": "ch01-012",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World That Made Him",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The Caribbean Sea in the 1600s was the most contested body of water on Earth.",
+      "text_markdown": "The Caribbean Sea in the 1600s was the most contested body of water on Earth.",
+      "tts": {
+        "text": "The Caribbean Sea in the sixteen hundreds was the most contested body of water on Earth.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World That Made Him",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Spain, England, France, and the Netherlands all claimed islands and coastlines there.",
+      "text_markdown": "Spain, England, France, and the Netherlands all claimed islands and coastlines there.",
+      "tts": {
+        "text": "Spain, England, France, and the Netherlands all claimed islands and coastlines there.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World That Made Him",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Each nation built fortresses, planted colonies, and sent warships to defend its territory.",
+      "text_markdown": "Each nation built fortresses, planted colonies, and sent warships to defend its territory.",
+      "tts": {
+        "text": "Each nation built fortresses, planted colonies, and sent warships to defend its territory.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World That Made Him",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Spain had arrived first and claimed the largest share.",
+      "text_markdown": "Spain had arrived first and claimed the largest share.",
+      "tts": {
+        "text": "Spain had arrived first and claimed the largest share.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World That Made Him",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Its empire stretched from Mexico to Peru, from Cuba to the Philippines.",
+      "text_markdown": "Its empire stretched from Mexico to Peru, from Cuba to the Philippines.",
+      "tts": {
+        "text": "Its empire stretched from Mexico to Peru, from Cuba to the Philippines.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World That Made Him",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Every year, treasure fleets carried silver and gold from the Americas back to Seville.",
+      "text_markdown": "Every year, treasure fleets carried silver and gold from the Americas back to Seville.",
+      "tts": {
+        "text": "Every year, treasure fleets carried silver and gold from the Americas back to Seville.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World That Made Him",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "This wealth made Spain the richest nation in Europe for over a century.",
+      "text_markdown": "This wealth made Spain the richest nation in Europe for over a century.",
+      "tts": {
+        "text": "This wealth made Spain the richest nation in Europe for over a century.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World That Made Him",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "But it also made Spain a target.",
+      "text_markdown": "But it also made Spain a target.",
+      "tts": {
+        "text": "But it also made Spain a target.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World That Made Him",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The Spanish claimed the entire Caribbean as their exclusive domain.",
+      "text_markdown": "The Spanish claimed the entire Caribbean as their exclusive domain.",
+      "tts": {
+        "text": "The Spanish claimed the entire Caribbean as their exclusive domain.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World That Made Him",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "They insisted that no other nation had any right to trade, settle, or sail in those waters.",
+      "text_markdown": "They insisted that no other nation had any right to trade, settle, or sail in those waters.",
+      "tts": {
+        "text": "They insisted that no other nation had any right to trade, settle, or sail in those waters.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World That Made Him",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "This claim was based on a papal decree from 1493 that divided the New World between Spain and Portugal.",
+      "text_markdown": "This claim was based on a papal decree from 1493 that divided the New World between Spain and Portugal.",
+      "tts": {
+        "text": "This claim was based on a papal decree from fourteen ninety-three that divided the New World between Spain and Portugal.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World That Made Him",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "England, France, and the Netherlands did not recognize this decree.",
+      "text_markdown": "England, France, and the Netherlands did not recognize this decree.",
+      "tts": {
+        "text": "England, France, and the Netherlands did not recognize this decree.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World That Made Him",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "They argued that no pope had the authority to give away continents.",
+      "text_markdown": "They argued that no pope had the authority to give away continents.",
+      "tts": {
+        "text": "They argued that no pope had the authority to give away continents.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World That Made Him",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "This disagreement lay at the root of a century of warfare in the Caribbean.",
+      "text_markdown": "This disagreement lay at the root of a century of warfare in the Caribbean.",
+      "tts": {
+        "text": "This disagreement lay at the root of a century of warfare in the Caribbean.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World That Made Him",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "England's economy was far smaller than Spain's in the early 1600s.",
+      "text_markdown": "England's economy was far smaller than Spain's in the early 1600s.",
+      "tts": {
+        "text": "England's economy was far smaller than Spain's in the early sixteen hundreds.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World That Made Him",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "English colonies in the Caribbean were poor and vulnerable.",
+      "text_markdown": "English colonies in the Caribbean were poor and vulnerable.",
+      "tts": {
+        "text": "English colonies in the Caribbean were poor and vulnerable.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World That Made Him",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "They survived on sugar, tobacco, and whatever they could take from the Spanish.",
+      "text_markdown": "They survived on sugar, tobacco, and whatever they could take from the Spanish.",
+      "tts": {
+        "text": "They survived on sugar, tobacco, and whatever they could take from the Spanish.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World That Made Him",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The English government quietly encouraged attacks on Spanish shipping and settlements.",
+      "text_markdown": "The English government quietly encouraged attacks on Spanish shipping and settlements.",
+      "tts": {
+        "text": "The English government quietly encouraged attacks on Spanish shipping and settlements.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World That Made Him",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "A privateer was a private citizen given a legal document called a letter of marque.",
+      "text_markdown": "A privateer was a private citizen given a legal document called a letter of marque.",
+      "tts": {
+        "text": "A privateer was a private citizen given a legal document called a letter of marque.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World That Made Him",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "This letter authorized him to attack enemy ships on behalf of his country.",
+      "text_markdown": "This letter authorized him to attack enemy ships on behalf of his country.",
+      "tts": {
+        "text": "This letter authorized him to attack enemy ships on behalf of his country.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World That Made Him",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The difference between a privateer and a pirate was simply a piece of paper.",
+      "text_markdown": "The difference between a privateer and a pirate was simply a piece of paper.",
+      "tts": {
+        "text": "The difference between a privateer and a pirate was simply a piece of paper.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World That Made Him",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Without the letter, you were a criminal.",
+      "text_markdown": "Without the letter, you were a criminal.",
+      "tts": {
+        "text": "Without the letter, you were a criminal.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World That Made Him",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "With it, you were a patriot.",
+      "text_markdown": "With it, you were a patriot.",
+      "tts": {
+        "text": "With it, you were a patriot.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World That Made Him",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jamaica was England's most important Caribbean possession.",
+      "text_markdown": "Jamaica was England's most important Caribbean possession.",
+      "tts": {
+        "text": "Jamaica was England's most important Caribbean possession.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World That Made Him",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "England had seized it from Spain in 1655, just ten years before Morgan arrived.",
+      "text_markdown": "England had seized it from Spain in 1655, just ten years before Morgan arrived.",
+      "tts": {
+        "text": "England had seized it from Spain in sixteen fifty-five, just ten years before Morgan arrived.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World That Made Him",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The island was still poorly defended and underdeveloped.",
+      "text_markdown": "The island was still poorly defended and underdeveloped.",
+      "tts": {
+        "text": "The island was still poorly defended and underdeveloped.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World That Made Him",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Its capital, Port Royal, sat on a narrow sand spit at the entrance to Kingston Harbour.",
+      "text_markdown": "Its capital, Port Royal, sat on a narrow sand spit at the entrance to Kingston Harbour.",
+      "tts": {
+        "text": "Its capital, Port Royal, sat on a narrow sand spit at the entrance to Kingston Harbour.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World That Made Him",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The town was crowded, loud, and full of taverns and gambling houses.",
+      "text_markdown": "The town was crowded, loud, and full of taverns and gambling houses.",
+      "tts": {
+        "text": "The town was crowded, loud, and full of taverns and gambling houses.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World That Made Him",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Port Royal became known as the wickedest city on Earth.",
+      "text_markdown": "Port Royal became known as the wickedest city on Earth.",
+      "tts": {
+        "text": "Port Royal became known as the wickedest city on Earth.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World That Made Him",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Buccaneers spent their plunder there on rum, women, and dice.",
+      "text_markdown": "Buccaneers spent their plunder there on rum, women, and dice.",
+      "tts": {
+        "text": "Buccaneers spent their plunder there on rum, women, and dice.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World That Made Him",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "A man could blow a fortune in a single night and be back at sea within a week.",
+      "text_markdown": "A man could blow a fortune in a single night and be back at sea within a week.",
+      "tts": {
+        "text": "A man could blow a fortune in a single night and be back at sea within a week.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World That Made Him",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The governors of Jamaica depended on buccaneers for defense.",
+      "text_markdown": "The governors of Jamaica depended on buccaneers for defense.",
+      "tts": {
+        "text": "The governors of Jamaica depended on buccaneers for defense.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World That Made Him",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The island had no standing navy strong enough to repel a Spanish attack.",
+      "text_markdown": "The island had no standing navy strong enough to repel a Spanish attack.",
+      "tts": {
+        "text": "The island had no standing navy strong enough to repel a Spanish attack.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World That Made Him",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "So the governors issued letters of marque and let the buccaneers do the fighting.",
+      "text_markdown": "So the governors issued letters of marque and let the buccaneers do the fighting.",
+      "tts": {
+        "text": "So the governors issued letters of marque and let the buccaneers do the fighting.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World That Made Him",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The buccaneers were a mixed group of English, French, Dutch, and African sailors.",
+      "text_markdown": "The buccaneers were a mixed group of English, French, Dutch, and African sailors.",
+      "tts": {
+        "text": "The buccaneers were a mixed group of English, French, Dutch, and African sailors.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World That Made Him",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Many were former indentured servants or escaped bondsmen.",
+      "text_markdown": "Many were former indentured servants or escaped bondsmen.",
+      "tts": {
+        "text": "Many were former indentured servants or escaped bondsmen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World That Made Him",
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "They lived rough lives and had little to lose.",
+      "text_markdown": "They lived rough lives and had little to lose.",
+      "tts": {
+        "text": "They lived rough lives and had little to lose.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World That Made Him",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The word buccaneer comes from the French word boucanier, meaning one who smokes meat.",
+      "text_markdown": "The word buccaneer comes from the French word boucanier, meaning one who smokes meat.",
+      "tts": {
+        "text": "The word buccaneer comes from the French word boucanier, meaning one who smokes meat.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World That Made Him",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The first buccaneers were hunters on the island of Hispaniola who smoked wild cattle and pig.",
+      "text_markdown": "The first buccaneers were hunters on the island of Hispaniola who smoked wild cattle and pig.",
+      "tts": {
+        "text": "The first buccaneers were hunters on the island of Hispaniola who smoked wild cattle and pig.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World That Made Him",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "When the Spanish drove them off, they turned to the sea for survival.",
+      "text_markdown": "When the Spanish drove them off, they turned to the sea for survival.",
+      "tts": {
+        "text": "When the Spanish drove them off, they turned to the sea for survival.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World That Made Him",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "By the 1660s, the buccaneers had become a formidable fighting force.",
+      "text_markdown": "By the 1660s, the buccaneers had become a formidable fighting force.",
+      "tts": {
+        "text": "By the sixteen sixties, the buccaneers had become a formidable fighting force.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World That Made Him",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "They fought with muskets, cutlasses, and raw courage.",
+      "text_markdown": "They fought with muskets, cutlasses, and raw courage.",
+      "tts": {
+        "text": "They fought with muskets, cutlasses, and raw courage.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World That Made Him",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "They were skilled at boarding ships and storming fortified positions.",
+      "text_markdown": "They were skilled at boarding ships and storming fortified positions.",
+      "tts": {
+        "text": "They were skilled at boarding ships and storming fortified positions.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World That Made Him",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Spain considered all foreign presence in the Caribbean to be illegal.",
+      "text_markdown": "Spain considered all foreign presence in the Caribbean to be illegal.",
+      "tts": {
+        "text": "Spain considered all foreign presence in the Caribbean to be illegal.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World That Made Him",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "In Spanish eyes, every English settler was a trespasser and every English ship was fair game.",
+      "text_markdown": "In Spanish eyes, every English settler was a trespasser and every English ship was fair game.",
+      "tts": {
+        "text": "In Spanish eyes, every English settler was a trespasser and every English ship was fair game.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World That Made Him",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "This mutual hostility created an endless cycle of raids and reprisals.",
+      "text_markdown": "This mutual hostility created an endless cycle of raids and reprisals.",
+      "tts": {
+        "text": "This mutual hostility created an endless cycle of raids and reprisals.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-058",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World That Made Him",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The Spanish attacked English settlements, and the English attacked Spanish ones.",
+      "text_markdown": "The Spanish attacked English settlements, and the English attacked Spanish ones.",
+      "tts": {
+        "text": "The Spanish attacked English settlements, and the English attacked Spanish ones.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-059",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World That Made Him",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Into this violent world, Henry Morgan arrived as a young man looking for opportunity.",
+      "text_markdown": "Into this violent world, Henry Morgan arrived as a young man looking for opportunity.",
+      "tts": {
+        "text": "Into this violent world, Henry Morgan arrived as a young man looking for opportunity.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-060",
+      "part": 0,
+      "chapter": 2,
+      "title": "A Welshman in the Caribbean",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "A Welshman in the Caribbean",
+      "text_markdown": "A Welshman in the Caribbean"
+    },
+    {
+      "id": "ch02-061",
+      "part": 0,
+      "chapter": 2,
+      "title": "A Welshman in the Caribbean",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Henry Morgan was born around 1635 in Llanrumney, a village in southeastern Wales.",
+      "text_markdown": "Henry Morgan was born around 1635 in Llanrumney, a village in southeastern Wales.",
+      "tts": {
+        "text": "Henry Morgan was born around sixteen thirty-five in Llanrumney, a village in southeastern Wales.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-062",
+      "part": 0,
+      "chapter": 2,
+      "title": "A Welshman in the Caribbean",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "His family was part of the Welsh gentry, meaning they held land and local influence.",
+      "text_markdown": "His family was part of the Welsh gentry, meaning they held land and local influence.",
+      "tts": {
+        "text": "His family was part of the Welsh gentry, meaning they held land and local influence.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-063",
+      "part": 0,
+      "chapter": 2,
+      "title": "A Welshman in the Caribbean",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Two of his uncles served as military officers during the English Civil War.",
+      "text_markdown": "Two of his uncles served as military officers during the English Civil War.",
+      "tts": {
+        "text": "Two of his uncles served as military officers during the English Civil War.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-064",
+      "part": 0,
+      "chapter": 2,
+      "title": "A Welshman in the Caribbean",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wales in the 1630s was a rural and relatively poor part of Britain.",
+      "text_markdown": "Wales in the 1630s was a rural and relatively poor part of Britain.",
+      "tts": {
+        "text": "Wales in the sixteen thirties was a rural and relatively poor part of Britain.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-065",
+      "part": 0,
+      "chapter": 2,
+      "title": "A Welshman in the Caribbean",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The Welsh gentry held modest estates compared to the great English landowners.",
+      "text_markdown": "The Welsh gentry held modest estates compared to the great English landowners.",
+      "tts": {
+        "text": "The Welsh gentry held modest estates compared to the great English landowners.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "A Welshman in the Caribbean",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "But they valued military service and family honor above all else.",
+      "text_markdown": "But they valued military service and family honor above all else.",
+      "tts": {
+        "text": "But they valued military service and family honor above all else.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "A Welshman in the Caribbean",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Very little is known about Morgan's childhood.",
+      "text_markdown": "Very little is known about Morgan's childhood.",
+      "tts": {
+        "text": "Very little is known about Morgan's childhood.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "A Welshman in the Caribbean",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He never wrote about his early years, and no school records survive.",
+      "text_markdown": "He never wrote about his early years, and no school records survive.",
+      "tts": {
+        "text": "He never wrote about his early years, and no school records survive.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "A Welshman in the Caribbean",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Historians believe he received some basic education but was not university-trained.",
+      "text_markdown": "Historians believe he received some basic education but was not university-trained.",
+      "tts": {
+        "text": "Historians believe he received some basic education but was not university-trained.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "A Welshman in the Caribbean",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "At some point in the late 1650s, Morgan sailed to the Caribbean.",
+      "text_markdown": "At some point in the late 1650s, Morgan sailed to the Caribbean.",
+      "tts": {
+        "text": "At some point in the late sixteen fifties, Morgan sailed to the Caribbean.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "A Welshman in the Caribbean",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "How he got there is debated.",
+      "text_markdown": "How he got there is debated.",
+      "tts": {
+        "text": "How he got there is debated.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "A Welshman in the Caribbean",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "One story claims he was kidnapped as a boy in Bristol and sold as an indentured servant in Barbados.",
+      "text_markdown": "One story claims he was kidnapped as a boy in Bristol and sold as an indentured servant in Barbados.",
+      "tts": {
+        "text": "One story claims he was kidnapped as a boy in Bristol and sold as an indentured servant in Barbados.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "A Welshman in the Caribbean",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Morgan himself later denied this, calling it slander.",
+      "text_markdown": "Morgan himself later denied this, calling it slander.",
+      "tts": {
+        "text": "Morgan himself later denied this, calling it slander.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "A Welshman in the Caribbean",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "He sued a publisher who printed the claim and won damages.",
+      "text_markdown": "He sued a publisher who printed the claim and won damages.",
+      "tts": {
+        "text": "He sued a publisher who printed the claim and won damages.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "A Welshman in the Caribbean",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A more likely explanation is that Morgan came to the Caribbean as a soldier.",
+      "text_markdown": "A more likely explanation is that Morgan came to the Caribbean as a soldier.",
+      "tts": {
+        "text": "A more likely explanation is that Morgan came to the Caribbean as a soldier.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "A Welshman in the Caribbean",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "In 1655, England sent a large military expedition to seize Spanish territory.",
+      "text_markdown": "In 1655, England sent a large military expedition to seize Spanish territory.",
+      "tts": {
+        "text": "In sixteen fifty-five, England sent a large military expedition to seize Spanish territory.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "A Welshman in the Caribbean",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The fleet failed to capture Hispaniola but successfully took Jamaica.",
+      "text_markdown": "The fleet failed to capture Hispaniola but successfully took Jamaica.",
+      "tts": {
+        "text": "The fleet failed to capture Hispaniola but successfully took Jamaica.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "A Welshman in the Caribbean",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "This expedition was known as the Western Design.",
+      "text_markdown": "This expedition was known as the Western Design.",
+      "tts": {
+        "text": "This expedition was known as the Western Design.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "A Welshman in the Caribbean",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "It was ordered by Oliver Cromwell, the Lord Protector of England.",
+      "text_markdown": "It was ordered by Oliver Cromwell, the Lord Protector of England.",
+      "tts": {
+        "text": "It was ordered by Oliver Cromwell, the Lord Protector of England.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "A Welshman in the Caribbean",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Cromwell wanted to break Spain's hold on the Caribbean and expand English power.",
+      "text_markdown": "Cromwell wanted to break Spain's hold on the Caribbean and expand English power.",
+      "tts": {
+        "text": "Cromwell wanted to break Spain's hold on the Caribbean and expand English power.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "A Welshman in the Caribbean",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Morgan may have been part of this expedition or arrived shortly after.",
+      "text_markdown": "Morgan may have been part of this expedition or arrived shortly after.",
+      "tts": {
+        "text": "Morgan may have been part of this expedition or arrived shortly after.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "A Welshman in the Caribbean",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Either way, by the early 1660s he was established in Jamaica.",
+      "text_markdown": "Either way, by the early 1660s he was established in Jamaica.",
+      "tts": {
+        "text": "Either way, by the early sixteen sixties he was established in Jamaica.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "A Welshman in the Caribbean",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "He quickly proved himself a capable and ambitious fighter.",
+      "text_markdown": "He quickly proved himself a capable and ambitious fighter.",
+      "tts": {
+        "text": "He quickly proved himself a capable and ambitious fighter.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "A Welshman in the Caribbean",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "In 1663, he joined a buccaneer expedition against Spanish settlements in Central America.",
+      "text_markdown": "In 1663, he joined a buccaneer expedition against Spanish settlements in Central America.",
+      "tts": {
+        "text": "In sixteen sixty-three, he joined a buccaneer expedition against Spanish settlements in Central America.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "A Welshman in the Caribbean",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The raiders attacked towns along the coast of present-day Nicaragua and Honduras.",
+      "text_markdown": "The raiders attacked towns along the coast of present-day Nicaragua and Honduras.",
+      "tts": {
+        "text": "The raiders attacked towns along the coast of present-day Nicaragua and Honduras.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "A Welshman in the Caribbean",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "This early expedition was led by a veteran buccaneer named Christopher Myngs.",
+      "text_markdown": "This early expedition was led by a veteran buccaneer named Christopher Myngs.",
+      "tts": {
+        "text": "This early expedition was led by a veteran buccaneer named Christopher Myngs.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "A Welshman in the Caribbean",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Myngs was a bold and experienced raider who taught the younger buccaneers their trade.",
+      "text_markdown": "Myngs was a bold and experienced raider who taught the younger buccaneers their trade.",
+      "tts": {
+        "text": "Myngs was a bold and experienced raider who taught the younger buccaneers their trade.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "A Welshman in the Caribbean",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Morgan watched and learned from him carefully.",
+      "text_markdown": "Morgan watched and learned from him carefully.",
+      "tts": {
+        "text": "Morgan watched and learned from him carefully.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "A Welshman in the Caribbean",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Morgan learned the tactics that would define his career during these early raids.",
+      "text_markdown": "Morgan learned the tactics that would define his career during these early raids.",
+      "tts": {
+        "text": "Morgan learned the tactics that would define his career during these early raids.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "A Welshman in the Caribbean",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He studied how to move large groups of men through jungle terrain.",
+      "text_markdown": "He studied how to move large groups of men through jungle terrain.",
+      "tts": {
+        "text": "He studied how to move large groups of men through jungle terrain.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "A Welshman in the Caribbean",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "He learned to strike fast and withdraw before Spanish reinforcements could arrive.",
+      "text_markdown": "He learned to strike fast and withdraw before Spanish reinforcements could arrive.",
+      "tts": {
+        "text": "He learned to strike fast and withdraw before Spanish reinforcements could arrive.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "A Welshman in the Caribbean",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In 1665, Morgan sailed with the famous buccaneer Edward Mansfield on a raid against the island of Providence.",
+      "text_markdown": "In 1665, Morgan sailed with the famous buccaneer Edward Mansfield on a raid against the island of Providence.",
+      "tts": {
+        "text": "In sixteen sixty-five, Morgan sailed with the famous buccaneer Edward Mansfield on a raid against the island of Providence.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "A Welshman in the Caribbean",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Providence was a small island off the coast of Nicaragua that Spain had recaptured from England years earlier.",
+      "text_markdown": "Providence was a small island off the coast of Nicaragua that Spain had recaptured from England years earlier.",
+      "tts": {
+        "text": "Providence was a small island off the coast of Nicaragua that Spain had recaptured from England years earlier.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "A Welshman in the Caribbean",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mansfield's fleet took the island easily.",
+      "text_markdown": "Mansfield's fleet took the island easily.",
+      "tts": {
+        "text": "Mansfield's fleet took the island easily.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "A Welshman in the Caribbean",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "But the expedition revealed problems with buccaneer leadership.",
+      "text_markdown": "But the expedition revealed problems with buccaneer leadership.",
+      "tts": {
+        "text": "But the expedition revealed problems with buccaneer leadership.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "A Welshman in the Caribbean",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The men argued about how to divide the plunder, and many deserted.",
+      "text_markdown": "The men argued about how to divide the plunder, and many deserted.",
+      "tts": {
+        "text": "The men argued about how to divide the plunder, and many deserted.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "A Welshman in the Caribbean",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "When Mansfield died in 1667, the buccaneers needed a new leader.",
+      "text_markdown": "When Mansfield died in 1667, the buccaneers needed a new leader.",
+      "tts": {
+        "text": "When Mansfield died in sixteen sixty-seven, the buccaneers needed a new leader.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "A Welshman in the Caribbean",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Morgan was chosen to replace him.",
+      "text_markdown": "Morgan was chosen to replace him.",
+      "tts": {
+        "text": "Morgan was chosen to replace him.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "A Welshman in the Caribbean",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "He was barely thirty years old, but he had already earned a reputation for boldness and tactical skill.",
+      "text_markdown": "He was barely thirty years old, but he had already earned a reputation for boldness and tactical skill.",
+      "tts": {
+        "text": "He was barely thirty years old, but he had already earned a reputation for boldness and tactical skill.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "A Welshman in the Caribbean",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Around this same time, Morgan married his wife, Mary Elizabeth.",
+      "text_markdown": "Around this same time, Morgan married his wife, Mary Elizabeth.",
+      "tts": {
+        "text": "Around this same time, Morgan married his wife, Mary Elizabeth.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "A Welshman in the Caribbean",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "She was the daughter of his uncle Edward Morgan, who had served as Deputy Governor of Jamaica.",
+      "text_markdown": "She was the daughter of his uncle Edward Morgan, who had served as Deputy Governor of Jamaica.",
+      "tts": {
+        "text": "She was the daughter of his uncle Edward Morgan, who had served as Deputy Governor of Jamaica.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "A Welshman in the Caribbean",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The marriage connected him to the colonial elite of the island.",
+      "text_markdown": "The marriage connected him to the colonial elite of the island.",
+      "tts": {
+        "text": "The marriage connected him to the colonial elite of the island.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "A Welshman in the Caribbean",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Morgan was now both a buccaneer captain and a member of Jamaica's planter class.",
+      "text_markdown": "Morgan was now both a buccaneer captain and a member of Jamaica's planter class.",
+      "tts": {
+        "text": "Morgan was now both a buccaneer captain and a member of Jamaica's planter class.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "A Welshman in the Caribbean",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He owned land and slaves, and he understood politics as well as warfare.",
+      "text_markdown": "He owned land and slaves, and he understood politics as well as warfare.",
+      "tts": {
+        "text": "He owned land and slaves, and he understood politics as well as warfare.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "A Welshman in the Caribbean",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "He cultivated a close relationship with Sir Thomas Modyford, the Governor of Jamaica.",
+      "text_markdown": "He cultivated a close relationship with Sir Thomas Modyford, the Governor of Jamaica.",
+      "tts": {
+        "text": "He cultivated a close relationship with Sir Thomas Modyford, the Governor of Jamaica.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "A Welshman in the Caribbean",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Modyford relied on Morgan to lead the island's defense against Spanish aggression.",
+      "text_markdown": "Modyford relied on Morgan to lead the island's defense against Spanish aggression.",
+      "tts": {
+        "text": "Modyford relied on Morgan to lead the island's defense against Spanish aggression.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "A Welshman in the Caribbean",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "In return, Modyford gave Morgan the legal cover he needed to attack Spanish targets.",
+      "text_markdown": "In return, Modyford gave Morgan the legal cover he needed to attack Spanish targets.",
+      "tts": {
+        "text": "In return, Modyford gave Morgan the legal cover he needed to attack Spanish targets.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-108",
+      "part": 0,
+      "chapter": 2,
+      "title": "A Welshman in the Caribbean",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "This partnership between governor and buccaneer would reshape the balance of power in the Caribbean.",
+      "text_markdown": "This partnership between governor and buccaneer would reshape the balance of power in the Caribbean.",
+      "tts": {
+        "text": "This partnership between governor and buccaneer would reshape the balance of power in the Caribbean.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-109",
+      "part": 0,
+      "chapter": 2,
+      "title": "A Welshman in the Caribbean",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Morgan was about to embark on a series of raids that would make him the most feared man in the Spanish Main.",
+      "text_markdown": "Morgan was about to embark on a series of raids that would make him the most feared man in the Spanish Main.",
+      "tts": {
+        "text": "Morgan was about to embark on a series of raids that would make him the most feared man in the Spanish Main.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-110",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Raids That Shook an Empire",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "The Raids That Shook an Empire",
+      "text_markdown": "The Raids That Shook an Empire"
+    },
+    {
+      "id": "ch03-111",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Raids That Shook an Empire",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Morgan's first major independent command came in 1668.",
+      "text_markdown": "Morgan's first major independent command came in 1668.",
+      "tts": {
+        "text": "Morgan's first major independent command came in sixteen sixty-eight.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-112",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Raids That Shook an Empire",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Governor Modyford issued him a commission to gather intelligence on Spanish plans to attack Jamaica.",
+      "text_markdown": "Governor Modyford issued him a commission to gather intelligence on Spanish plans to attack Jamaica.",
+      "tts": {
+        "text": "Governor Modyford issued him a commission to gather intelligence on Spanish plans to attack Jamaica.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-113",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Raids That Shook an Empire",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Morgan interpreted this commission very broadly.",
+      "text_markdown": "Morgan interpreted this commission very broadly.",
+      "tts": {
+        "text": "Morgan interpreted this commission very broadly.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-114",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Raids That Shook an Empire",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "He assembled a fleet of twelve ships and over seven hundred men.",
+      "text_markdown": "He assembled a fleet of twelve ships and over seven hundred men.",
+      "tts": {
+        "text": "He assembled a fleet of twelve ships and over seven hundred men.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-115",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Raids That Shook an Empire",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "His target was Portobelo, one of the most heavily fortified cities in the Americas.",
+      "text_markdown": "His target was Portobelo, one of the most heavily fortified cities in the Americas.",
+      "tts": {
+        "text": "His target was Portobelo, one of the most heavily fortified cities in the Americas.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-116",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Raids That Shook an Empire",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Portobelo sat on the Caribbean coast of present-day Panama.",
+      "text_markdown": "Portobelo sat on the Caribbean coast of present-day Panama.",
+      "tts": {
+        "text": "Portobelo sat on the Caribbean coast of present-day Panama.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Raids That Shook an Empire",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "It was the point where South American silver was loaded onto ships bound for Spain.",
+      "text_markdown": "It was the point where South American silver was loaded onto ships bound for Spain.",
+      "tts": {
+        "text": "It was the point where South American silver was loaded onto ships bound for Spain.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Raids That Shook an Empire",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The city was defended by three stone forts and a garrison of professional soldiers.",
+      "text_markdown": "The city was defended by three stone forts and a garrison of professional soldiers.",
+      "tts": {
+        "text": "The city was defended by three stone forts and a garrison of professional soldiers.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Raids That Shook an Empire",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "No one expected an attack on Portobelo.",
+      "text_markdown": "No one expected an attack on Portobelo.",
+      "tts": {
+        "text": "No one expected an attack on Portobelo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Raids That Shook an Empire",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The Spanish considered it impregnable.",
+      "text_markdown": "The Spanish considered it impregnable.",
+      "tts": {
+        "text": "The Spanish considered it impregnable.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Raids That Shook an Empire",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "That was precisely why Morgan chose it.",
+      "text_markdown": "That was precisely why Morgan chose it.",
+      "tts": {
+        "text": "That was precisely why Morgan chose it.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Raids That Shook an Empire",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Morgan's men landed at night several miles from the city.",
+      "text_markdown": "Morgan's men landed at night several miles from the city.",
+      "tts": {
+        "text": "Morgan's men landed at night several miles from the city.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Raids That Shook an Empire",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "They paddled ashore in canoes and crept through the jungle in darkness.",
+      "text_markdown": "They paddled ashore in canoes and crept through the jungle in darkness.",
+      "tts": {
+        "text": "They paddled ashore in canoes and crept through the jungle in darkness.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Raids That Shook an Empire",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "They attacked the first fort at dawn, catching the defenders completely off guard.",
+      "text_markdown": "They attacked the first fort at dawn, catching the defenders completely off guard.",
+      "tts": {
+        "text": "They attacked the first fort at dawn, catching the defenders completely off guard.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Raids That Shook an Empire",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The Spanish fought back bravely, but they were overwhelmed by the speed of the assault.",
+      "text_markdown": "The Spanish fought back bravely, but they were overwhelmed by the speed of the assault.",
+      "tts": {
+        "text": "The Spanish fought back bravely, but they were overwhelmed by the speed of the assault.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Raids That Shook an Empire",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Morgan's buccaneers were experienced street fighters who excelled at close combat.",
+      "text_markdown": "Morgan's buccaneers were experienced street fighters who excelled at close combat.",
+      "tts": {
+        "text": "Morgan's buccaneers were experienced street fighters who excelled at close combat.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Raids That Shook an Empire",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Morgan used a tactic that horrified his enemies.",
+      "text_markdown": "Morgan used a tactic that horrified his enemies.",
+      "tts": {
+        "text": "Morgan used a tactic that horrified his enemies.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Raids That Shook an Empire",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He forced captured monks and nuns to carry ladders to the walls of the second fort.",
+      "text_markdown": "He forced captured monks and nuns to carry ladders to the walls of the second fort.",
+      "tts": {
+        "text": "He forced captured monks and nuns to carry ladders to the walls of the second fort.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Raids That Shook an Empire",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The Spanish defenders could not fire on their own religious brethren.",
+      "text_markdown": "The Spanish defenders could not fire on their own religious brethren.",
+      "tts": {
+        "text": "The Spanish defenders could not fire on their own religious brethren.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Raids That Shook an Empire",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Within two days, all three forts had fallen.",
+      "text_markdown": "Within two days, all three forts had fallen.",
+      "tts": {
+        "text": "Within two days, all three forts had fallen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Raids That Shook an Empire",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Morgan's buccaneers looted the city for two weeks.",
+      "text_markdown": "Morgan's buccaneers looted the city for two weeks.",
+      "tts": {
+        "text": "Morgan's buccaneers looted the city for two weeks.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Raids That Shook an Empire",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "They tortured prisoners to reveal where gold and valuables were hidden.",
+      "text_markdown": "They tortured prisoners to reveal where gold and valuables were hidden.",
+      "tts": {
+        "text": "They tortured prisoners to reveal where gold and valuables were hidden.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Raids That Shook an Empire",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The total plunder from Portobelo was enormous.",
+      "text_markdown": "The total plunder from Portobelo was enormous.",
+      "tts": {
+        "text": "The total plunder from Portobelo was enormous.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Raids That Shook an Empire",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Historians estimate the haul was worth over 250,000 pieces of eight.",
+      "text_markdown": "Historians estimate the haul was worth over 250,000 pieces of eight.",
+      "tts": {
+        "text": "Historians estimate the haul was worth over two hundred and fifty thousand pieces of eight.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Raids That Shook an Empire",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Each common sailor received a share worth several years of honest wages.",
+      "text_markdown": "Each common sailor received a share worth several years of honest wages.",
+      "tts": {
+        "text": "Each common sailor received a share worth several years of honest wages.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Raids That Shook an Empire",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Morgan returned to Port Royal as a hero.",
+      "text_markdown": "Morgan returned to Port Royal as a hero.",
+      "tts": {
+        "text": "Morgan returned to Port Royal as a hero.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Raids That Shook an Empire",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The success of the Portobelo raid drew hundreds more men to Morgan's flag.",
+      "text_markdown": "The success of the Portobelo raid drew hundreds more men to Morgan's flag.",
+      "tts": {
+        "text": "The success of the Portobelo raid drew hundreds more men to Morgan's flag.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Raids That Shook an Empire",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Buccaneers from all over the Caribbean wanted to sail with the man who had taken an impregnable city.",
+      "text_markdown": "Buccaneers from all over the Caribbean wanted to sail with the man who had taken an impregnable city.",
+      "tts": {
+        "text": "Buccaneers from all over the Caribbean wanted to sail with the man who had taken an impregnable city.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Raids That Shook an Empire",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In early 1669, Morgan set out again, this time targeting Maracaibo.",
+      "text_markdown": "In early 1669, Morgan set out again, this time targeting Maracaibo.",
+      "tts": {
+        "text": "In early sixteen sixty-nine, Morgan set out again, this time targeting Maracaibo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Raids That Shook an Empire",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Maracaibo was a wealthy trading town on the shores of Lake Maracaibo in present-day Venezuela.",
+      "text_markdown": "Maracaibo was a wealthy trading town on the shores of Lake Maracaibo in present-day Venezuela.",
+      "tts": {
+        "text": "Maracaibo was a wealthy trading town on the shores of Lake Maracaibo in present-day Venezuela.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Raids That Shook an Empire",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "To reach the town, Morgan's fleet had to pass through a narrow channel guarded by a fort.",
+      "text_markdown": "To reach the town, Morgan's fleet had to pass through a narrow channel guarded by a fort.",
+      "tts": {
+        "text": "To reach the town, Morgan's fleet had to pass through a narrow channel guarded by a fort.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Raids That Shook an Empire",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The buccaneers stormed the fort and found it abandoned.",
+      "text_markdown": "The buccaneers stormed the fort and found it abandoned.",
+      "tts": {
+        "text": "The buccaneers stormed the fort and found it abandoned.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Raids That Shook an Empire",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The Spanish garrison had fled, leaving behind loaded cannons.",
+      "text_markdown": "The Spanish garrison had fled, leaving behind loaded cannons.",
+      "tts": {
+        "text": "The Spanish garrison had fled, leaving behind loaded cannons.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Raids That Shook an Empire",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Morgan's men entered Maracaibo and found it nearly deserted.",
+      "text_markdown": "Morgan's men entered Maracaibo and found it nearly deserted.",
+      "tts": {
+        "text": "Morgan's men entered Maracaibo and found it nearly deserted.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Raids That Shook an Empire",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The inhabitants had fled into the surrounding countryside with their valuables.",
+      "text_markdown": "The inhabitants had fled into the surrounding countryside with their valuables.",
+      "tts": {
+        "text": "The inhabitants had fled into the surrounding countryside with their valuables.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Raids That Shook an Empire",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Morgan sent raiding parties to track them down.",
+      "text_markdown": "Morgan sent raiding parties to track them down.",
+      "tts": {
+        "text": "Morgan sent raiding parties to track them down.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Raids That Shook an Empire",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The buccaneers spent weeks hunting for hidden treasure.",
+      "text_markdown": "The buccaneers spent weeks hunting for hidden treasure.",
+      "tts": {
+        "text": "The buccaneers spent weeks hunting for hidden treasure.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Raids That Shook an Empire",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "They used torture to extract information from captured civilians.",
+      "text_markdown": "They used torture to extract information from captured civilians.",
+      "tts": {
+        "text": "They used torture to extract information from captured civilians.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Raids That Shook an Empire",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "These methods were brutal, even by the harsh standards of the era.",
+      "text_markdown": "These methods were brutal, even by the harsh standards of the era.",
+      "tts": {
+        "text": "These methods were brutal, even by the harsh standards of the era.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Raids That Shook an Empire",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "When Morgan tried to leave Maracaibo, he found the channel blocked.",
+      "text_markdown": "When Morgan tried to leave Maracaibo, he found the channel blocked.",
+      "tts": {
+        "text": "When Morgan tried to leave Maracaibo, he found the channel blocked.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Raids That Shook an Empire",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Three Spanish warships had arrived and retaken the fort.",
+      "text_markdown": "Three Spanish warships had arrived and retaken the fort.",
+      "tts": {
+        "text": "Three Spanish warships had arrived and retaken the fort.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Raids That Shook an Empire",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Morgan was trapped inside the lake with his entire fleet.",
+      "text_markdown": "Morgan was trapped inside the lake with his entire fleet.",
+      "tts": {
+        "text": "Morgan was trapped inside the lake with his entire fleet.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Raids That Shook an Empire",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The Spanish admiral sent Morgan a message demanding surrender.",
+      "text_markdown": "The Spanish admiral sent Morgan a message demanding surrender.",
+      "tts": {
+        "text": "The Spanish admiral sent Morgan a message demanding surrender.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Raids That Shook an Empire",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He promised safe passage if the buccaneers returned all their plunder.",
+      "text_markdown": "He promised safe passage if the buccaneers returned all their plunder.",
+      "tts": {
+        "text": "He promised safe passage if the buccaneers returned all their plunder.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Raids That Shook an Empire",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Morgan refused.",
+      "text_markdown": "Morgan refused.",
+      "tts": {
+        "text": "Morgan refused.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Raids That Shook an Empire",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Instead, Morgan devised a brilliant escape plan.",
+      "text_markdown": "Instead, Morgan devised a brilliant escape plan.",
+      "tts": {
+        "text": "Instead, Morgan devised a brilliant escape plan.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Raids That Shook an Empire",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He sent a fire ship loaded with explosives directly at the Spanish flagship.",
+      "text_markdown": "He sent a fire ship loaded with explosives directly at the Spanish flagship.",
+      "tts": {
+        "text": "He sent a fire ship loaded with explosives directly at the Spanish flagship.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Raids That Shook an Empire",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The flagship exploded and sank.",
+      "text_markdown": "The flagship exploded and sank.",
+      "tts": {
+        "text": "The flagship exploded and sank.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Raids That Shook an Empire",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The second Spanish ship ran aground and was captured.",
+      "text_markdown": "The second Spanish ship ran aground and was captured.",
+      "tts": {
+        "text": "The second Spanish ship ran aground and was captured.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Raids That Shook an Empire",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The third retreated to the safety of the fort's guns.",
+      "text_markdown": "The third retreated to the safety of the fort's guns.",
+      "tts": {
+        "text": "The third retreated to the safety of the fort's guns.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Raids That Shook an Empire",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Morgan then tricked the fort's commander with a simple deception.",
+      "text_markdown": "Morgan then tricked the fort's commander with a simple deception.",
+      "tts": {
+        "text": "Morgan then tricked the fort's commander with a simple deception.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Raids That Shook an Empire",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He sent boats full of men toward shore as if preparing a land attack.",
+      "text_markdown": "He sent boats full of men toward shore as if preparing a land attack.",
+      "tts": {
+        "text": "He sent boats full of men toward shore as if preparing a land attack.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Raids That Shook an Empire",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The men hid in the bottom of the boats and were rowed back unseen.",
+      "text_markdown": "The men hid in the bottom of the boats and were rowed back unseen.",
+      "tts": {
+        "text": "The men hid in the bottom of the boats and were rowed back unseen.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Raids That Shook an Empire",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The Spanish commander moved his cannons to face the land side of the fort.",
+      "text_markdown": "The Spanish commander moved his cannons to face the land side of the fort.",
+      "tts": {
+        "text": "The Spanish commander moved his cannons to face the land side of the fort.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-165",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Raids That Shook an Empire",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "That night, Morgan sailed his fleet past the undefended seaward walls.",
+      "text_markdown": "That night, Morgan sailed his fleet past the undefended seaward walls.",
+      "tts": {
+        "text": "That night, Morgan sailed his fleet past the undefended seaward walls.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-166",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Raids That Shook an Empire",
+      "paragraph_id": "p64",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "By morning, the buccaneers were safely out to sea.",
+      "text_markdown": "By morning, the buccaneers were safely out to sea.",
+      "tts": {
+        "text": "By morning, the buccaneers were safely out to sea.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-167",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Raids That Shook an Empire",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The Maracaibo raid confirmed Morgan's reputation as the greatest buccaneer commander alive.",
+      "text_markdown": "The Maracaibo raid confirmed Morgan's reputation as the greatest buccaneer commander alive.",
+      "tts": {
+        "text": "The Maracaibo raid confirmed Morgan's reputation as the greatest buccaneer commander alive.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-168",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Raids That Shook an Empire",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He was cunning, ruthless, and seemingly unstoppable.",
+      "text_markdown": "He was cunning, ruthless, and seemingly unstoppable.",
+      "tts": {
+        "text": "He was cunning, ruthless, and seemingly unstoppable.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-169",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Raids That Shook an Empire",
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "His next target would be the most audacious of all.",
+      "text_markdown": "His next target would be the most audacious of all.",
+      "tts": {
+        "text": "His next target would be the most audacious of all.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-170",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Sack of Panama",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "The Sack of Panama",
+      "text_markdown": "The Sack of Panama"
+    },
+    {
+      "id": "ch04-171",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Sack of Panama",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In 1670, Morgan began planning the most ambitious raid of his career.",
+      "text_markdown": "In 1670, Morgan began planning the most ambitious raid of his career.",
+      "tts": {
+        "text": "In sixteen seventy, Morgan began planning the most ambitious raid of his career.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-172",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Sack of Panama",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "His target was Panama City, the richest city in all of the Americas.",
+      "text_markdown": "His target was Panama City, the richest city in all of the Americas.",
+      "tts": {
+        "text": "His target was Panama City, the richest city in all of the Americas.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-173",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Sack of Panama",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Panama City sat on the Pacific coast of the isthmus of Panama.",
+      "text_markdown": "Panama City sat on the Pacific coast of the isthmus of Panama.",
+      "tts": {
+        "text": "Panama City sat on the Pacific coast of the isthmus of Panama.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-174",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Sack of Panama",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "All the silver and gold from Peru passed through it on its way to Spain.",
+      "text_markdown": "All the silver and gold from Peru passed through it on its way to Spain.",
+      "tts": {
+        "text": "All the silver and gold from Peru passed through it on its way to Spain.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-175",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Sack of Panama",
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The city was home to thousands of people and some of the finest buildings in the New World.",
+      "text_markdown": "The city was home to thousands of people and some of the finest buildings in the New World.",
+      "tts": {
+        "text": "The city was home to thousands of people and some of the finest buildings in the New World.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Sack of Panama",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Panama City had grand churches, stone warehouses, and a cathedral with a tall bell tower.",
+      "text_markdown": "Panama City had grand churches, stone warehouses, and a cathedral with a tall bell tower.",
+      "tts": {
+        "text": "Panama City had grand churches, stone warehouses, and a cathedral with a tall bell tower.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Sack of Panama",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Wealthy merchants lived in houses with tiled roofs and iron balconies.",
+      "text_markdown": "Wealthy merchants lived in houses with tiled roofs and iron balconies.",
+      "tts": {
+        "text": "Wealthy merchants lived in houses with tiled roofs and iron balconies.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Sack of Panama",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "It was the jewel of Spain's Pacific empire.",
+      "text_markdown": "It was the jewel of Spain's Pacific empire.",
+      "tts": {
+        "text": "It was the jewel of Spain's Pacific empire.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Sack of Panama",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "To reach Panama City, Morgan would have to cross the entire isthmus on foot.",
+      "text_markdown": "To reach Panama City, Morgan would have to cross the entire isthmus on foot.",
+      "tts": {
+        "text": "To reach Panama City, Morgan would have to cross the entire isthmus on foot.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Sack of Panama",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The journey meant hacking through dense tropical jungle for days.",
+      "text_markdown": "The journey meant hacking through dense tropical jungle for days.",
+      "tts": {
+        "text": "The journey meant hacking through dense tropical jungle for days.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Sack of Panama",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "No buccaneer force had ever attempted anything so dangerous.",
+      "text_markdown": "No buccaneer force had ever attempted anything so dangerous.",
+      "tts": {
+        "text": "No buccaneer force had ever attempted anything so dangerous.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Sack of Panama",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Morgan assembled the largest buccaneer army ever gathered.",
+      "text_markdown": "Morgan assembled the largest buccaneer army ever gathered.",
+      "tts": {
+        "text": "Morgan assembled the largest buccaneer army ever gathered.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Sack of Panama",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Over 1,800 men joined him, sailing in a fleet of 36 ships.",
+      "text_markdown": "Over 1,800 men joined him, sailing in a fleet of 36 ships.",
+      "tts": {
+        "text": "Over eighteen hundred men joined him, sailing in a fleet of thirty-six ships.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Sack of Panama",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "They gathered at the island of Providence in December 1670.",
+      "text_markdown": "They gathered at the island of Providence in December 1670.",
+      "tts": {
+        "text": "They gathered at the island of Providence in December of sixteen seventy.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Sack of Panama",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The first step was to capture the fortress of San Lorenzo at the mouth of the Chagres River.",
+      "text_markdown": "The first step was to capture the fortress of San Lorenzo at the mouth of the Chagres River.",
+      "tts": {
+        "text": "The first step was to capture the fortress of San Lorenzo at the mouth of the Chagres River.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Sack of Panama",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "This fort guarded the river route into the interior of Panama.",
+      "text_markdown": "This fort guarded the river route into the interior of Panama.",
+      "tts": {
+        "text": "This fort guarded the river route into the interior of Panama.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Sack of Panama",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Morgan sent a vanguard of 400 men to take the fort.",
+      "text_markdown": "Morgan sent a vanguard of 400 men to take the fort.",
+      "tts": {
+        "text": "Morgan sent a vanguard of four hundred men to take the fort.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Sack of Panama",
+      "paragraph_id": "p73",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The assault was ferocious.",
+      "text_markdown": "The assault was ferocious.",
+      "tts": {
+        "text": "The assault was ferocious.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Sack of Panama",
+      "paragraph_id": "p73",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The buccaneers attacked the walls with grenades and scaling ladders.",
+      "text_markdown": "The buccaneers attacked the walls with grenades and scaling ladders.",
+      "tts": {
+        "text": "The buccaneers attacked the walls with grenades and scaling ladders.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Sack of Panama",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "During the battle, one of the buccaneers was struck by an arrow.",
+      "text_markdown": "During the battle, one of the buccaneers was struck by an arrow.",
+      "tts": {
+        "text": "During the battle, one of the buccaneers was struck by an arrow.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Sack of Panama",
+      "paragraph_id": "p74",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He pulled it from his body, wrapped it in cotton, and shot it back from his musket.",
+      "text_markdown": "He pulled it from his body, wrapped it in cotton, and shot it back from his musket.",
+      "tts": {
+        "text": "He pulled it from his body, wrapped it in cotton, and shot it back from his musket.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Sack of Panama",
+      "paragraph_id": "p74",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The flaming arrow set fire to the fort's thatched roof.",
+      "text_markdown": "The flaming arrow set fire to the fort's thatched roof.",
+      "tts": {
+        "text": "The flaming arrow set fire to the fort's thatched roof.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Sack of Panama",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The fire spread quickly through the wooden structures inside the fort.",
+      "text_markdown": "The fire spread quickly through the wooden structures inside the fort.",
+      "tts": {
+        "text": "The fire spread quickly through the wooden structures inside the fort.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Sack of Panama",
+      "paragraph_id": "p75",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The powder magazine exploded, killing dozens of Spanish defenders.",
+      "text_markdown": "The powder magazine exploded, killing dozens of Spanish defenders.",
+      "tts": {
+        "text": "The powder magazine exploded, killing dozens of Spanish defenders.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Sack of Panama",
+      "paragraph_id": "p75",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "By morning, the fort was in buccaneer hands.",
+      "text_markdown": "By morning, the fort was in buccaneer hands.",
+      "tts": {
+        "text": "By morning, the fort was in buccaneer hands.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Sack of Panama",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Morgan then led his main force up the Chagres River in canoes.",
+      "text_markdown": "Morgan then led his main force up the Chagres River in canoes.",
+      "tts": {
+        "text": "Morgan then led his main force up the Chagres River in canoes.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Sack of Panama",
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The journey took nine days through some of the most difficult terrain on Earth.",
+      "text_markdown": "The journey took nine days through some of the most difficult terrain on Earth.",
+      "tts": {
+        "text": "The journey took nine days through some of the most difficult terrain on Earth.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Sack of Panama",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The men ran out of food on the third day.",
+      "text_markdown": "The men ran out of food on the third day.",
+      "tts": {
+        "text": "The men ran out of food on the third day.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Sack of Panama",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "They ate leather satchels, boiled their shoes, and chewed on leaves.",
+      "text_markdown": "They ate leather satchels, boiled their shoes, and chewed on leaves.",
+      "tts": {
+        "text": "They ate leather satchels, boiled their shoes, and chewed on leaves.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Sack of Panama",
+      "paragraph_id": "p77",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Some men collapsed from hunger and had to be carried by their companions.",
+      "text_markdown": "Some men collapsed from hunger and had to be carried by their companions.",
+      "tts": {
+        "text": "Some men collapsed from hunger and had to be carried by their companions.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Sack of Panama",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "When they finally reached the Pacific side of the isthmus, the men cheered.",
+      "text_markdown": "When they finally reached the Pacific side of the isthmus, the men cheered.",
+      "tts": {
+        "text": "When they finally reached the Pacific side of the isthmus, the men cheered.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Sack of Panama",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "They could see the towers of Panama City in the distance.",
+      "text_markdown": "They could see the towers of Panama City in the distance.",
+      "tts": {
+        "text": "They could see the towers of Panama City in the distance.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Sack of Panama",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The Spanish governor had assembled a force of about 2,600 men to defend the city.",
+      "text_markdown": "The Spanish governor had assembled a force of about 2,600 men to defend the city.",
+      "tts": {
+        "text": "The Spanish governor had assembled a force of about twenty-six hundred men to defend the city.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Sack of Panama",
+      "paragraph_id": "p79",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He also brought two herds of wild bulls, which he planned to stampede into the buccaneer ranks.",
+      "text_markdown": "He also brought two herds of wild bulls, which he planned to stampede into the buccaneer ranks.",
+      "tts": {
+        "text": "He also brought two herds of wild bulls, which he planned to stampede into the buccaneer ranks.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Sack of Panama",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The Battle of Panama took place on January 28, 1671.",
+      "text_markdown": "The Battle of Panama took place on January 28, 1671.",
+      "tts": {
+        "text": "The Battle of Panama took place on January twenty-eighth, sixteen seventy-one.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Sack of Panama",
+      "paragraph_id": "p80",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Morgan arranged his men on open ground outside the city walls.",
+      "text_markdown": "Morgan arranged his men on open ground outside the city walls.",
+      "tts": {
+        "text": "Morgan arranged his men on open ground outside the city walls.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Sack of Panama",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The Spanish cavalry charged first, but the buccaneers held firm.",
+      "text_markdown": "The Spanish cavalry charged first, but the buccaneers held firm.",
+      "tts": {
+        "text": "The Spanish cavalry charged first, but the buccaneers held firm.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Sack of Panama",
+      "paragraph_id": "p81",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Their musket fire was devastating at close range.",
+      "text_markdown": "Their musket fire was devastating at close range.",
+      "tts": {
+        "text": "Their musket fire was devastating at close range.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Sack of Panama",
+      "paragraph_id": "p81",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The cavalry was cut to pieces within minutes.",
+      "text_markdown": "The cavalry was cut to pieces within minutes.",
+      "tts": {
+        "text": "The cavalry was cut to pieces within minutes.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Sack of Panama",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The bulls were released, but they stampeded in the wrong direction.",
+      "text_markdown": "The bulls were released, but they stampeded in the wrong direction.",
+      "tts": {
+        "text": "The bulls were released, but they stampeded in the wrong direction.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Sack of Panama",
+      "paragraph_id": "p82",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Some ran back through the Spanish lines, adding to the confusion.",
+      "text_markdown": "Some ran back through the Spanish lines, adding to the confusion.",
+      "tts": {
+        "text": "Some ran back through the Spanish lines, adding to the confusion.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Sack of Panama",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The Spanish infantry broke and fled toward the city.",
+      "text_markdown": "The Spanish infantry broke and fled toward the city.",
+      "tts": {
+        "text": "The Spanish infantry broke and fled toward the city.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Sack of Panama",
+      "paragraph_id": "p83",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Morgan's buccaneers pursued them through the streets.",
+      "text_markdown": "Morgan's buccaneers pursued them through the streets.",
+      "tts": {
+        "text": "Morgan's buccaneers pursued them through the streets.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Sack of Panama",
+      "paragraph_id": "p83",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The fighting was savage and hand-to-hand in many places.",
+      "text_markdown": "The fighting was savage and hand-to-hand in many places.",
+      "tts": {
+        "text": "The fighting was savage and hand-to-hand in many places.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Sack of Panama",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "During the battle or shortly after, a great fire broke out in Panama City.",
+      "text_markdown": "During the battle or shortly after, a great fire broke out in Panama City.",
+      "tts": {
+        "text": "During the battle or shortly after, a great fire broke out in Panama City.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Sack of Panama",
+      "paragraph_id": "p84",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Whether Morgan's men or the Spanish defenders started it remains disputed.",
+      "text_markdown": "Whether Morgan's men or the Spanish defenders started it remains disputed.",
+      "tts": {
+        "text": "Whether Morgan's men or the Spanish defenders started it remains disputed.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-217",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Sack of Panama",
+      "paragraph_id": "p84",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The fire destroyed most of the city within hours.",
+      "text_markdown": "The fire destroyed most of the city within hours.",
+      "tts": {
+        "text": "The fire destroyed most of the city within hours.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-218",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Sack of Panama",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The buccaneers spent four weeks searching the ruins for treasure.",
+      "text_markdown": "The buccaneers spent four weeks searching the ruins for treasure.",
+      "tts": {
+        "text": "The buccaneers spent four weeks searching the ruins for treasure.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-219",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Sack of Panama",
+      "paragraph_id": "p85",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "They interrogated prisoners and dug through rubble.",
+      "text_markdown": "They interrogated prisoners and dug through rubble.",
+      "tts": {
+        "text": "They interrogated prisoners and dug through rubble.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-220",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Sack of Panama",
+      "paragraph_id": "p85",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Much of the city's wealth had been loaded onto ships and sent south before the battle.",
+      "text_markdown": "Much of the city's wealth had been loaded onto ships and sent south before the battle.",
+      "tts": {
+        "text": "Much of the city's wealth had been loaded onto ships and sent south before the battle.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-221",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Sack of Panama",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The plunder was less than the men had expected.",
+      "text_markdown": "The plunder was less than the men had expected.",
+      "tts": {
+        "text": "The plunder was less than the men had expected.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-222",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Sack of Panama",
+      "paragraph_id": "p86",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "When the shares were divided, each man received far less than he had earned at Portobelo.",
+      "text_markdown": "When the shares were divided, each man received far less than he had earned at Portobelo.",
+      "tts": {
+        "text": "When the shares were divided, each man received far less than he had earned at Portobelo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-223",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Sack of Panama",
+      "paragraph_id": "p86",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Many accused Morgan of hiding treasure for himself.",
+      "text_markdown": "Many accused Morgan of hiding treasure for himself.",
+      "tts": {
+        "text": "Many accused Morgan of hiding treasure for himself.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-224",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Sack of Panama",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Morgan denied these accusations, but the grumbling never stopped.",
+      "text_markdown": "Morgan denied these accusations, but the grumbling never stopped.",
+      "tts": {
+        "text": "Morgan denied these accusations, but the grumbling never stopped.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-225",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Sack of Panama",
+      "paragraph_id": "p87",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He led his army back across the isthmus to the Caribbean coast.",
+      "text_markdown": "He led his army back across the isthmus to the Caribbean coast.",
+      "tts": {
+        "text": "He led his army back across the isthmus to the Caribbean coast.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-226",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Sack of Panama",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Unknown to Morgan, a peace treaty had already been signed between England and Spain.",
+      "text_markdown": "Unknown to Morgan, a peace treaty had already been signed between England and Spain.",
+      "tts": {
+        "text": "Unknown to Morgan, a peace treaty had already been signed between England and Spain.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-227",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Sack of Panama",
+      "paragraph_id": "p88",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The Treaty of Madrid was agreed upon in July 1670, months before the Panama raid.",
+      "text_markdown": "The Treaty of Madrid was agreed upon in July 1670, months before the Panama raid.",
+      "tts": {
+        "text": "The Treaty of Madrid was agreed upon in July of sixteen seventy, months before the Panama raid.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-228",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Sack of Panama",
+      "paragraph_id": "p88",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Under its terms, both nations agreed to stop attacking each other's colonies.",
+      "text_markdown": "Under its terms, both nations agreed to stop attacking each other's colonies.",
+      "tts": {
+        "text": "Under its terms, both nations agreed to stop attacking each other's colonies.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-229",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Sack of Panama",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The destruction of Panama City caused a diplomatic crisis.",
+      "text_markdown": "The destruction of Panama City caused a diplomatic crisis.",
+      "tts": {
+        "text": "The destruction of Panama City caused a diplomatic crisis.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-230",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Sack of Panama",
+      "paragraph_id": "p89",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Spain was furious and demanded that England punish those responsible.",
+      "text_markdown": "Spain was furious and demanded that England punish those responsible.",
+      "tts": {
+        "text": "Spain was furious and demanded that England punish those responsible.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-231",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Sack of Panama",
+      "paragraph_id": "p89",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The sack of Panama was the most dramatic violation of the new treaty imaginable.",
+      "text_markdown": "The sack of Panama was the most dramatic violation of the new treaty imaginable.",
+      "tts": {
+        "text": "The sack of Panama was the most dramatic violation of the new treaty imaginable.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "title": "From Pirate to Governor",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "From Pirate to Governor",
+      "text_markdown": "From Pirate to Governor"
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "title": "From Pirate to Governor",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The English government needed to calm Spain's anger.",
+      "text_markdown": "The English government needed to calm Spain's anger.",
+      "tts": {
+        "text": "The English government needed to calm Spain's anger.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "title": "From Pirate to Governor",
+      "paragraph_id": "p91",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "In 1672, both Governor Modyford and Henry Morgan were recalled to London.",
+      "text_markdown": "In 1672, both Governor Modyford and Henry Morgan were recalled to London.",
+      "tts": {
+        "text": "In sixteen seventy-two, both Governor Modyford and Henry Morgan were recalled to London.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "title": "From Pirate to Governor",
+      "paragraph_id": "p91",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Modyford was imprisoned in the Tower of London as a symbolic punishment.",
+      "text_markdown": "Modyford was imprisoned in the Tower of London as a symbolic punishment.",
+      "tts": {
+        "text": "Modyford was imprisoned in the Tower of London as a symbolic punishment.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "title": "From Pirate to Governor",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Morgan arrived in England expecting to be put on trial.",
+      "text_markdown": "Morgan arrived in England expecting to be put on trial.",
+      "tts": {
+        "text": "Morgan arrived in England expecting to be put on trial.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "From Pirate to Governor",
+      "paragraph_id": "p92",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Instead, he found himself treated more as a celebrity than a criminal.",
+      "text_markdown": "Instead, he found himself treated more as a celebrity than a criminal.",
+      "tts": {
+        "text": "Instead, he found himself treated more as a celebrity than a criminal.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "From Pirate to Governor",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "King Charles II was privately delighted by Morgan's exploits.",
+      "text_markdown": "King Charles II was privately delighted by Morgan's exploits.",
+      "tts": {
+        "text": "King Charles the Second was privately delighted by Morgan's exploits.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "From Pirate to Governor",
+      "paragraph_id": "p93",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The sack of Panama had embarrassed Spain and demonstrated English power in the Caribbean.",
+      "text_markdown": "The sack of Panama had embarrassed Spain and demonstrated English power in the Caribbean.",
+      "tts": {
+        "text": "The sack of Panama had embarrassed Spain and demonstrated English power in the Caribbean.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "From Pirate to Governor",
+      "paragraph_id": "p93",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "These were outcomes the king welcomed, even if he could not say so publicly.",
+      "text_markdown": "These were outcomes the king welcomed, even if he could not say so publicly.",
+      "tts": {
+        "text": "These were outcomes the king welcomed, even if he could not say so publicly.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "From Pirate to Governor",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Morgan spent nearly three years in London.",
+      "text_markdown": "Morgan spent nearly three years in London.",
+      "tts": {
+        "text": "Morgan spent nearly three years in London.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "From Pirate to Governor",
+      "paragraph_id": "p94",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He dined with aristocrats, advised the government on Caribbean affairs, and lived comfortably.",
+      "text_markdown": "He dined with aristocrats, advised the government on Caribbean affairs, and lived comfortably.",
+      "tts": {
+        "text": "He dined with aristocrats, advised the government on Caribbean affairs, and lived comfortably.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "From Pirate to Governor",
+      "paragraph_id": "p94",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "He became a familiar figure in the coffeehouses and drawing rooms of the capital.",
+      "text_markdown": "He became a familiar figure in the coffeehouses and drawing rooms of the capital.",
+      "tts": {
+        "text": "He became a familiar figure in the coffeehouses and drawing rooms of the capital.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "From Pirate to Governor",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In 1674, King Charles made a stunning decision.",
+      "text_markdown": "In 1674, King Charles made a stunning decision.",
+      "tts": {
+        "text": "In sixteen seventy-four, King Charles made a stunning decision.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "From Pirate to Governor",
+      "paragraph_id": "p95",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He knighted Henry Morgan, making him Sir Henry Morgan.",
+      "text_markdown": "He knighted Henry Morgan, making him Sir Henry Morgan.",
+      "tts": {
+        "text": "He knighted Henry Morgan, making him Sir Henry Morgan.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "From Pirate to Governor",
+      "paragraph_id": "p95",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "He then appointed Morgan as Lieutenant Governor of Jamaica.",
+      "text_markdown": "He then appointed Morgan as Lieutenant Governor of Jamaica.",
+      "tts": {
+        "text": "He then appointed Morgan as Lieutenant Governor of Jamaica.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "From Pirate to Governor",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The man who had sacked Panama City in violation of a peace treaty was now being sent back to govern Jamaica.",
+      "text_markdown": "The man who had sacked Panama City in violation of a peace treaty was now being sent back to govern Jamaica.",
+      "tts": {
+        "text": "The man who had sacked Panama City in violation of a peace treaty was now being sent back to govern Jamaica.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "From Pirate to Governor",
+      "paragraph_id": "p96",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "It was one of the most remarkable reversals of fortune in colonial history.",
+      "text_markdown": "It was one of the most remarkable reversals of fortune in colonial history.",
+      "tts": {
+        "text": "It was one of the most remarkable reversals of fortune in colonial history.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "From Pirate to Governor",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Morgan returned to Jamaica in 1676 and took up his new duties.",
+      "text_markdown": "Morgan returned to Jamaica in 1676 and took up his new duties.",
+      "tts": {
+        "text": "Morgan returned to Jamaica in sixteen seventy-six and took up his new duties.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "From Pirate to Governor",
+      "paragraph_id": "p97",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "His role was to serve under the new governor, Lord Vaughan.",
+      "text_markdown": "His role was to serve under the new governor, Lord Vaughan.",
+      "tts": {
+        "text": "His role was to serve under the new governor, Lord Vaughan.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "From Pirate to Governor",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ironically, one of Morgan's tasks was to suppress piracy.",
+      "text_markdown": "Ironically, one of Morgan's tasks was to suppress piracy.",
+      "tts": {
+        "text": "Ironically, one of Morgan's tasks was to suppress piracy.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "From Pirate to Governor",
+      "paragraph_id": "p98",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "England now wanted peace with Spain, and buccaneers were no longer useful.",
+      "text_markdown": "England now wanted peace with Spain, and buccaneers were no longer useful.",
+      "tts": {
+        "text": "England now wanted peace with Spain, and buccaneers were no longer useful.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "From Pirate to Governor",
+      "paragraph_id": "p98",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Morgan was expected to bring his former comrades to heel.",
+      "text_markdown": "Morgan was expected to bring his former comrades to heel.",
+      "tts": {
+        "text": "Morgan was expected to bring his former comrades to heel.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "From Pirate to Governor",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "He carried out this task with mixed enthusiasm.",
+      "text_markdown": "He carried out this task with mixed enthusiasm.",
+      "tts": {
+        "text": "He carried out this task with mixed enthusiasm.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "From Pirate to Governor",
+      "paragraph_id": "p99",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He arrested some pirates and hanged a few, but he was also accused of secretly helping others.",
+      "text_markdown": "He arrested some pirates and hanged a few, but he was also accused of secretly helping others.",
+      "tts": {
+        "text": "He arrested some pirates and hanged a few, but he was also accused of secretly helping others.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "From Pirate to Governor",
+      "paragraph_id": "p99",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "His loyalties were always complicated.",
+      "text_markdown": "His loyalties were always complicated.",
+      "tts": {
+        "text": "His loyalties were always complicated.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-257",
+      "part": 0,
+      "chapter": 5,
+      "title": "From Pirate to Governor",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lord Vaughan and Morgan clashed frequently.",
+      "text_markdown": "Lord Vaughan and Morgan clashed frequently.",
+      "tts": {
+        "text": "Lord Vaughan and Morgan clashed frequently.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-258",
+      "part": 0,
+      "chapter": 5,
+      "title": "From Pirate to Governor",
+      "paragraph_id": "p100",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Vaughan considered Morgan uncouth and untrustworthy.",
+      "text_markdown": "Vaughan considered Morgan uncouth and untrustworthy.",
+      "tts": {
+        "text": "Vaughan considered Morgan uncouth and untrustworthy.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-259",
+      "part": 0,
+      "chapter": 5,
+      "title": "From Pirate to Governor",
+      "paragraph_id": "p100",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Morgan considered Vaughan a weak leader who did not understand the realities of the Caribbean.",
+      "text_markdown": "Morgan considered Vaughan a weak leader who did not understand the realities of the Caribbean.",
+      "tts": {
+        "text": "Morgan considered Vaughan a weak leader who did not understand the realities of the Caribbean.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-260",
+      "part": 0,
+      "chapter": 5,
+      "title": "From Pirate to Governor",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "As the years passed, Morgan settled into the life of a wealthy Jamaican planter.",
+      "text_markdown": "As the years passed, Morgan settled into the life of a wealthy Jamaican planter.",
+      "tts": {
+        "text": "As the years passed, Morgan settled into the life of a wealthy Jamaican planter.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-261",
+      "part": 0,
+      "chapter": 5,
+      "title": "From Pirate to Governor",
+      "paragraph_id": "p101",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He owned several large estates and hundreds of enslaved workers.",
+      "text_markdown": "He owned several large estates and hundreds of enslaved workers.",
+      "tts": {
+        "text": "He owned several large estates and hundreds of enslaved workers.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-262",
+      "part": 0,
+      "chapter": 5,
+      "title": "From Pirate to Governor",
+      "paragraph_id": "p102",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "He also drank heavily.",
+      "text_markdown": "He also drank heavily.",
+      "tts": {
+        "text": "He also drank heavily.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-263",
+      "part": 0,
+      "chapter": 5,
+      "title": "From Pirate to Governor",
+      "paragraph_id": "p102",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Visitors described him as red-faced, overweight, and often ill.",
+      "text_markdown": "Visitors described him as red-faced, overweight, and often ill.",
+      "tts": {
+        "text": "Visitors described him as red-faced, overweight, and often ill.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-264",
+      "part": 0,
+      "chapter": 5,
+      "title": "From Pirate to Governor",
+      "paragraph_id": "p102",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "His health declined steadily throughout the 1680s.",
+      "text_markdown": "His health declined steadily throughout the 1680s.",
+      "tts": {
+        "text": "His health declined steadily throughout the sixteen eighties.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-265",
+      "part": 0,
+      "chapter": 5,
+      "title": "From Pirate to Governor",
+      "paragraph_id": "p103",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In 1683, he was removed from the Council of Jamaica by the new governor.",
+      "text_markdown": "In 1683, he was removed from the Council of Jamaica by the new governor.",
+      "tts": {
+        "text": "In sixteen eighty-three, he was removed from the Council of Jamaica by the new governor.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-266",
+      "part": 0,
+      "chapter": 5,
+      "title": "From Pirate to Governor",
+      "paragraph_id": "p103",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Morgan was accused of being too sympathetic to pirates and too often drunk to govern.",
+      "text_markdown": "Morgan was accused of being too sympathetic to pirates and too often drunk to govern.",
+      "tts": {
+        "text": "Morgan was accused of being too sympathetic to pirates and too often drunk to govern.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-267",
+      "part": 0,
+      "chapter": 5,
+      "title": "From Pirate to Governor",
+      "paragraph_id": "p104",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "He spent his final years on his plantation, largely out of public life.",
+      "text_markdown": "He spent his final years on his plantation, largely out of public life.",
+      "tts": {
+        "text": "He spent his final years on his plantation, largely out of public life.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-268",
+      "part": 0,
+      "chapter": 5,
+      "title": "From Pirate to Governor",
+      "paragraph_id": "p104",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "A physician named Hans Sloane visited Morgan in his last months.",
+      "text_markdown": "A physician named Hans Sloane visited Morgan in his last months.",
+      "tts": {
+        "text": "A physician named Hans Sloane visited Morgan in his last months.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-269",
+      "part": 0,
+      "chapter": 5,
+      "title": "From Pirate to Governor",
+      "paragraph_id": "p104",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sloane described Morgan as wasted and yellow-skinned, a clear sign of liver failure.",
+      "text_markdown": "Sloane described Morgan as wasted and yellow-skinned, a clear sign of liver failure.",
+      "tts": {
+        "text": "Sloane described Morgan as wasted and yellow-skinned, a clear sign of liver failure.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-270",
+      "part": 0,
+      "chapter": 5,
+      "title": "From Pirate to Governor",
+      "paragraph_id": "p105",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Henry Morgan died on August 25, 1688, at the age of 53.",
+      "text_markdown": "Henry Morgan died on August 25, 1688, at the age of 53.",
+      "tts": {
+        "text": "Henry Morgan died on August twenty-fifth, sixteen eighty-eight, at the age of fifty-three.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-271",
+      "part": 0,
+      "chapter": 5,
+      "title": "From Pirate to Governor",
+      "paragraph_id": "p105",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The cause of death was almost certainly liver disease caused by years of heavy drinking.",
+      "text_markdown": "The cause of death was almost certainly liver disease caused by years of heavy drinking.",
+      "tts": {
+        "text": "The cause of death was almost certainly liver disease caused by years of heavy drinking.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-272",
+      "part": 0,
+      "chapter": 5,
+      "title": "From Pirate to Governor",
+      "paragraph_id": "p106",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "He was given a state funeral in Port Royal.",
+      "text_markdown": "He was given a state funeral in Port Royal.",
+      "tts": {
+        "text": "He was given a state funeral in Port Royal.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-273",
+      "part": 0,
+      "chapter": 5,
+      "title": "From Pirate to Governor",
+      "paragraph_id": "p106",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ships in the harbor fired their cannons in salute.",
+      "text_markdown": "Ships in the harbor fired their cannons in salute.",
+      "tts": {
+        "text": "Ships in the harbor fired their cannons in salute.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-274",
+      "part": 0,
+      "chapter": 5,
+      "title": "From Pirate to Governor",
+      "paragraph_id": "p106",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "He was buried at the Palisadoes cemetery overlooking the sea.",
+      "text_markdown": "He was buried at the Palisadoes cemetery overlooking the sea.",
+      "tts": {
+        "text": "He was buried at the Palisadoes cemetery overlooking the sea.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-275",
+      "part": 0,
+      "chapter": 5,
+      "title": "From Pirate to Governor",
+      "paragraph_id": "p107",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Four years later, in 1692, a massive earthquake destroyed Port Royal.",
+      "text_markdown": "Four years later, in 1692, a massive earthquake destroyed Port Royal.",
+      "tts": {
+        "text": "Four years later, in sixteen ninety-two, a massive earthquake destroyed Port Royal.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-276",
+      "part": 0,
+      "chapter": 5,
+      "title": "From Pirate to Governor",
+      "paragraph_id": "p107",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Two-thirds of the city slid into the sea.",
+      "text_markdown": "Two-thirds of the city slid into the sea.",
+      "tts": {
+        "text": "Two-thirds of the city slid into the sea.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-277",
+      "part": 0,
+      "chapter": 5,
+      "title": "From Pirate to Governor",
+      "paragraph_id": "p107",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Morgan's grave was among the parts of the cemetery swallowed by the ocean.",
+      "text_markdown": "Morgan's grave was among the parts of the cemetery swallowed by the ocean.",
+      "tts": {
+        "text": "Morgan's grave was among the parts of the cemetery swallowed by the ocean.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-278",
+      "part": 0,
+      "chapter": 5,
+      "title": "From Pirate to Governor",
+      "paragraph_id": "p108",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "His body has never been recovered.",
+      "text_markdown": "His body has never been recovered.",
+      "tts": {
+        "text": "His body has never been recovered.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-279",
+      "part": 0,
+      "chapter": 5,
+      "title": "From Pirate to Governor",
+      "paragraph_id": "p108",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The wickedest city on Earth, and the most famous buccaneer who called it home, both vanished beneath the waves.",
+      "text_markdown": "The wickedest city on Earth, and the most famous buccaneer who called it home, both vanished beneath the waves.",
+      "tts": {
+        "text": "The wickedest city on Earth, and the most famous buccaneer who called it home, both vanished beneath the waves.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Legend of Captain Morgan",
+      "paragraph_id": "p109",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "The Legend of Captain Morgan",
+      "text_markdown": "The Legend of Captain Morgan"
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Legend of Captain Morgan",
+      "paragraph_id": "p110",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Henry Morgan's story has been told and retold for more than three hundred years.",
+      "text_markdown": "Henry Morgan's story has been told and retold for more than three hundred years.",
+      "tts": {
+        "text": "Henry Morgan's story has been told and retold for more than three hundred years.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Legend of Captain Morgan",
+      "paragraph_id": "p110",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He is one of the most famous pirates in history, even though he always insisted he was not a pirate at all.",
+      "text_markdown": "He is one of the most famous pirates in history, even though he always insisted he was not a pirate at all.",
+      "tts": {
+        "text": "He is one of the most famous pirates in history, even though he always insisted he was not a pirate at all.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Legend of Captain Morgan",
+      "paragraph_id": "p111",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In his own lifetime, Morgan was already becoming a legend.",
+      "text_markdown": "In his own lifetime, Morgan was already becoming a legend.",
+      "tts": {
+        "text": "In his own lifetime, Morgan was already becoming a legend.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Legend of Captain Morgan",
+      "paragraph_id": "p111",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "A Dutch writer named Alexandre Exquemelin published an account of Morgan's raids in 1678.",
+      "text_markdown": "A Dutch writer named Alexandre Exquemelin published an account of Morgan's raids in 1678.",
+      "tts": {
+        "text": "A Dutch writer named Alexandre Exquemelin published an account of Morgan's raids in sixteen seventy-eight.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Legend of Captain Morgan",
+      "paragraph_id": "p111",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The book was called The Buccaneers of America.",
+      "text_markdown": "The book was called The Buccaneers of America.",
+      "tts": {
+        "text": "The book was called The Buccaneers of America.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Legend of Captain Morgan",
+      "paragraph_id": "p112",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Exquemelin had served under Morgan and witnessed many of the events he described.",
+      "text_markdown": "Exquemelin had served under Morgan and witnessed many of the events he described.",
+      "tts": {
+        "text": "Exquemelin had served under Morgan and witnessed many of the events he described.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Legend of Captain Morgan",
+      "paragraph_id": "p112",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "His book became a bestseller across Europe.",
+      "text_markdown": "His book became a bestseller across Europe.",
+      "tts": {
+        "text": "His book became a bestseller across Europe.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Legend of Captain Morgan",
+      "paragraph_id": "p112",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "It shaped the popular image of Caribbean buccaneers for centuries.",
+      "text_markdown": "It shaped the popular image of Caribbean buccaneers for centuries.",
+      "tts": {
+        "text": "It shaped the popular image of Caribbean buccaneers for centuries.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Legend of Captain Morgan",
+      "paragraph_id": "p113",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Morgan sued the English publisher for claiming he had been an indentured servant.",
+      "text_markdown": "Morgan sued the English publisher for claiming he had been an indentured servant.",
+      "tts": {
+        "text": "Morgan sued the English publisher for claiming he had been an indentured servant.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Legend of Captain Morgan",
+      "paragraph_id": "p113",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He won the case and received damages, but the book continued to sell.",
+      "text_markdown": "He won the case and received damages, but the book continued to sell.",
+      "tts": {
+        "text": "He won the case and received damages, but the book continued to sell.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-291",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Legend of Captain Morgan",
+      "paragraph_id": "p114",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Morgan's legacy is complicated.",
+      "text_markdown": "Morgan's legacy is complicated.",
+      "tts": {
+        "text": "Morgan's legacy is complicated.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-292",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Legend of Captain Morgan",
+      "paragraph_id": "p114",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "To the English, he was a national hero who protected Jamaica and humiliated Spain.",
+      "text_markdown": "To the English, he was a national hero who protected Jamaica and humiliated Spain.",
+      "tts": {
+        "text": "To the English, he was a national hero who protected Jamaica and humiliated Spain.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-293",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Legend of Captain Morgan",
+      "paragraph_id": "p114",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "To the Spanish, he was a war criminal who burned cities and tortured innocents.",
+      "text_markdown": "To the Spanish, he was a war criminal who burned cities and tortured innocents.",
+      "tts": {
+        "text": "To the Spanish, he was a war criminal who burned cities and tortured innocents.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-294",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Legend of Captain Morgan",
+      "paragraph_id": "p115",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Modern historians see him as a product of his time.",
+      "text_markdown": "Modern historians see him as a product of his time.",
+      "tts": {
+        "text": "Modern historians see him as a product of his time.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-295",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Legend of Captain Morgan",
+      "paragraph_id": "p115",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The violence he committed was extreme, but it was carried out with the full support of his government.",
+      "text_markdown": "The violence he committed was extreme, but it was carried out with the full support of his government.",
+      "tts": {
+        "text": "The violence he committed was extreme, but it was carried out with the full support of his government.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-296",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Legend of Captain Morgan",
+      "paragraph_id": "p116",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Morgan was not unique in his brutality.",
+      "text_markdown": "Morgan was not unique in his brutality.",
+      "tts": {
+        "text": "Morgan was not unique in his brutality.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-297",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Legend of Captain Morgan",
+      "paragraph_id": "p116",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Spanish soldiers committed similar atrocities against English settlers.",
+      "text_markdown": "Spanish soldiers committed similar atrocities against English settlers.",
+      "tts": {
+        "text": "Spanish soldiers committed similar atrocities against English settlers.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-298",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Legend of Captain Morgan",
+      "paragraph_id": "p116",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The difference is that Morgan succeeded on such a spectacular scale.",
+      "text_markdown": "The difference is that Morgan succeeded on such a spectacular scale.",
+      "tts": {
+        "text": "The difference is that Morgan succeeded on such a spectacular scale.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-299",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Legend of Captain Morgan",
+      "paragraph_id": "p117",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Today, Morgan's name is most widely known through a brand of rum.",
+      "text_markdown": "Today, Morgan's name is most widely known through a brand of rum.",
+      "tts": {
+        "text": "Today, Morgan's name is most widely known through a brand of rum.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-300",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Legend of Captain Morgan",
+      "paragraph_id": "p117",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The irony is hard to miss, given that alcohol likely killed him.",
+      "text_markdown": "The irony is hard to miss, given that alcohol likely killed him.",
+      "tts": {
+        "text": "The irony is hard to miss, given that alcohol likely killed him.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-301",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Legend of Captain Morgan",
+      "paragraph_id": "p118",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Underwater archaeologists have explored the sunken ruins of Port Royal.",
+      "text_markdown": "Underwater archaeologists have explored the sunken ruins of Port Royal.",
+      "tts": {
+        "text": "Underwater archaeologists have explored the sunken ruins of Port Royal.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-302",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Legend of Captain Morgan",
+      "paragraph_id": "p118",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "They have found buildings, taverns, and artifacts from Morgan's era preserved beneath the sea.",
+      "text_markdown": "They have found buildings, taverns, and artifacts from Morgan's era preserved beneath the sea.",
+      "tts": {
+        "text": "They have found buildings, taverns, and artifacts from Morgan's era preserved beneath the sea.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-303",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Legend of Captain Morgan",
+      "paragraph_id": "p118",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "But Morgan's own grave remains lost.",
+      "text_markdown": "But Morgan's own grave remains lost.",
+      "tts": {
+        "text": "But Morgan's own grave remains lost.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-304",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Legend of Captain Morgan",
+      "paragraph_id": "p119",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Henry Morgan lived in a world where the line between law and crime was drawn by powerful men for their own benefit.",
+      "text_markdown": "Henry Morgan lived in a world where the line between law and crime was drawn by powerful men for their own benefit.",
+      "tts": {
+        "text": "Henry Morgan lived in a world where the line between law and crime was drawn by powerful men for their own benefit.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-305",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Legend of Captain Morgan",
+      "paragraph_id": "p119",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He exploited that line better than anyone.",
+      "text_markdown": "He exploited that line better than anyone.",
+      "tts": {
+        "text": "He exploited that line better than anyone.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-306",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Legend of Captain Morgan",
+      "paragraph_id": "p120",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "He was a pirate who became a knight.",
+      "text_markdown": "He was a pirate who became a knight.",
+      "tts": {
+        "text": "He was a pirate who became a knight.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-307",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Legend of Captain Morgan",
+      "paragraph_id": "p120",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He was a criminal who became a governor.",
+      "text_markdown": "He was a criminal who became a governor.",
+      "tts": {
+        "text": "He was a criminal who became a governor.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-308",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Legend of Captain Morgan",
+      "paragraph_id": "p120",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "His story is a reminder that history's heroes and villains are often the same people, viewed from different shores.",
+      "text_markdown": "His story is a reminder that history's heroes and villains are often the same people, viewed from different shores.",
+      "tts": {
+        "text": "His story is a reminder that history's heroes and villains are often the same people, viewed from different shores.",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

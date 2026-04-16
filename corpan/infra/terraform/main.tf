@@ -118,8 +118,9 @@ resource "aws_lambda_function" "verify" {
   role          = aws_iam_role.verify_lambda.arn
   handler       = "verify_purchase.handler"
   runtime       = "nodejs20.x"
-  filename      = data.archive_file.verify_zip.output_path
-  timeout       = 10
+  filename         = data.archive_file.verify_zip.output_path
+  source_code_hash = data.archive_file.verify_zip.output_base64sha256
+  timeout          = 10
   memory_size   = 256
   environment {
     variables = {
