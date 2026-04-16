@@ -31,7 +31,7 @@ import { createWordStream, type WordStream } from "./rendering/wordStream"
 import { createOscilloscope, type Oscilloscope } from "./rendering/oscilloscope"
 import { createWaveformStream, type WaveformStream } from "./rendering/waveformStream"
 import { createPulseRing, type PulseRing } from "./rendering/pulseRing"
-import { createStarfield, type Starfield } from "./rendering/starfield"
+import type { Starfield } from "./rendering/starfield"
 import { renderStargateDisplaySettings, type OscilloscopeConfig, type WaveformConfig, type PulseRingConfig, type WordHoldConfig } from "./ui/settingsPanel"
 import type { DrawerSectionDef } from "@shared/ui"
 import { srTrace, type TraceFields } from "./diagnostics/trace"
@@ -54,7 +54,7 @@ const STARGATE_PREFS_DEFAULTS: DisplayPrefs = {
   pulseRing: true,
   wordHold: true,
   oscilloscopeConfig: { amplitude: 5, width: 2, alpha: 0.35 },
-  waveformConfig: { maxRadius: 1, alpha: 0.005, minRadius: 0 },
+  waveformConfig: { maxRadius: 1, alpha: 0.005, minRadius: 0, reversed: false },
   pulseRingConfig: { maxRadius: 0.2, fadeMs: 200 },
   wordHoldConfig: { holdY: 0, zPull: 0.4 },
 }
@@ -199,7 +199,6 @@ export function createStargateReader(
     if (!("mediaSession" in navigator)) return
     try {
       navigator.mediaSession.playbackState = state
-      console.log(`[MS] playbackState → ${state}`)
     } catch (err) {
       console.error("[MS] playbackState set failed:", err)
     }
@@ -233,7 +232,6 @@ export function createStargateReader(
             : undefined,
         })
         lastMediaMetadataKey = metadataKey
-        console.log(`[MS] metadata: "${metadata.title}" - "${metadata.artist}"`)
       }
 
       const durationS = audioEngine.getTotalDurationMs() / 1000
@@ -244,7 +242,6 @@ export function createStargateReader(
           playbackRate: 1,
           position: positionS,
         })
-        console.log(`[MS] setPositionState dur=${durationS.toFixed(1)}s pos=${positionS.toFixed(1)}s rate=1`)
       }
     } catch (err) {
       console.error("[MS] syncMediaSessionNowPlaying failed:", err)
@@ -544,15 +541,18 @@ export function createStargateReader(
   ui.className = "stargate-ui"
   wrapper.appendChild(ui)
 
-  // Babylon.js engine
+  // Babylon.js engine — cap pixel ratio at 2 to avoid 3x rendering on high-DPI phones
+  const dpr = Math.min(window.devicePixelRatio || 1, 2)
   const engine = new Engine(canvas, true, {
-    antialias: true,
+    antialias: dpr >= 2,   // skip AA on low-DPI (already sharp enough)
     preserveDrawingBuffer: false,
     powerPreference: "high-performance",
   })
+  engine.setHardwareScalingLevel(1 / dpr)
 
   const scene = new Scene(engine)
   scene.clearColor = new Color4(0.02, 0.03, 0.06, 1)
+  scene.skipPointerMovePicking = true
 
   // Camera — looking down the z-axis
   const camera = new ArcRotateCamera(
@@ -565,7 +565,7 @@ export function createStargateReader(
   )
   camera.fov = CAMERA_FOV
   camera.minZ = 0.1
-  camera.maxZ = 200
+  camera.maxZ = 50  // text is never far — tighter frustum saves GPU fill
   // Position camera behind the now-plane, looking forward
   camera.position = new Vector3(0, 0, CAMERA_Z)
   camera.setTarget(new Vector3(0, 0, 20))
@@ -578,8 +578,8 @@ export function createStargateReader(
   light.diffuse = new Color3(0.6, 0.7, 0.9)
   light.groundColor = new Color3(0.1, 0.1, 0.2)
 
-  // Glow layer for neon effects
-  const glow = new GlowLayer("glow", scene)
+  // Glow layer for neon effects — use smaller kernel for performance
+  const glow = new GlowLayer("glow", scene, { mainTextureSamples: 1, blurKernelSize: 16 })
   glow.intensity = GLOW_INTENSITY
 
   // Rendering systems (initialized after data loads)
@@ -718,8 +718,7 @@ export function createStargateReader(
   canvas.addEventListener("touchend", onSwipeTouchEnd, { passive: true })
   canvas.addEventListener("touchcancel", onSwipeTouchEnd, { passive: true })
 
-  // Create starfield immediately (doesn't need data)
-  starfield = createStarfield(scene)
+  // Starfield disabled for performance (STARFIELD_COUNT = 0)
 
   // Playback state
   let isPlaying = false
@@ -927,13 +926,29 @@ export function createStargateReader(
       prefsStore.save(bookId, prefs)
     },
     onWaveformConfig: (key: string, value: number) => {
-      waveformStream?.configure({ [key]: value })
-      ;(prefs.waveformConfig as Record<string, number>)[key] = value
+      if (key === "reversed") {
+        const rev = value === 1
+        waveformStream?.configure({ reversed: rev })
+        prefs.waveformConfig.reversed = rev
+      } else {
+        waveformStream?.configure({ [key]: value })
+        ;(prefs.waveformConfig as Record<string, number>)[key] = value
+        // Link maxRadius to pulse ring
+        if (key === "maxRadius") {
+          pulseRing?.configure({ maxRadius: value })
+          prefs.pulseRingConfig.maxRadius = value
+        }
+      }
       prefsStore.save(bookId, prefs)
     },
     onPulseRingConfig: (key: string, value: number) => {
       pulseRing?.configure({ [key]: value })
       ;(prefs.pulseRingConfig as Record<string, number>)[key] = value
+      // Link maxRadius to waveform
+      if (key === "maxRadius") {
+        waveformStream?.configure({ maxRadius: value })
+        prefs.waveformConfig.maxRadius = value
+      }
       prefsStore.save(bookId, prefs)
     },
   }
@@ -1005,31 +1020,25 @@ export function createStargateReader(
 
     const handlers: [MediaSessionAction, MediaSessionActionHandler][] = [
       ["play", () => {
-        console.log("[MS] actionHandler(play) fired")
         dispatchRemotePlayPause("play", "webms")
       }],
       ["pause", () => {
-        console.log("[MS] actionHandler(pause) fired")
         dispatchRemotePlayPause("pause", "webms")
       }],
       ["seekto", (details) => {
         if (!audioEngine || details?.seekTime == null) return
-        console.log(`[MS] actionHandler(seekto) seekTime=${details.seekTime}s fastSeek=${details.fastSeek}`)
         seekToMsAndSync(details.seekTime * 1000)
       }],
       ["seekforward", () => {
         if (!audioEngine) return
-        console.log("[MS] actionHandler(seekforward)")
         seekToMsAndSync(Math.min(audioEngine.getTotalDurationMs(), audioEngine.getCurrentTimeMs() + 30000))
       }],
       ["seekbackward", () => {
         if (!audioEngine) return
-        console.log("[MS] actionHandler(seekbackward)")
         seekToMsAndSync(Math.max(0, audioEngine.getCurrentTimeMs() - 30000))
       }],
       ["nexttrack", () => {
         if (!audioEngine || chapters.length === 0) return
-        console.log("[MS] actionHandler(nexttrack)")
         const currentIdx = audioEngine.getCurrentSegmentIndex()
         let chapterIdx = 0
         for (let i = chapters.length - 1; i >= 0; i--) {
@@ -1040,7 +1049,6 @@ export function createStargateReader(
       }],
       ["previoustrack", () => {
         if (!audioEngine || chapters.length === 0) return
-        console.log("[MS] actionHandler(previoustrack)")
         const currentIdx = audioEngine.getCurrentSegmentIndex()
         let chapterIdx = 0
         for (let i = chapters.length - 1; i >= 0; i--) {
@@ -1055,7 +1063,6 @@ export function createStargateReader(
     for (const [action, handler] of handlers) {
       try {
         navigator.mediaSession.setActionHandler(action, handler)
-        console.log(`[MS] setActionHandler(${action}) registered`)
       } catch (err) {
         console.error(`[MS] setActionHandler(${action}) failed:`, err)
       }

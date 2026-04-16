@@ -81,7 +81,6 @@ export function createMediaSessionAnchor(): MediaSessionAnchor {
     blobUrl = URL.createObjectURL(blob)
     el = new Audio(blobUrl)
     el.loop = true
-    console.log("[MS:anchor] created silent audio element")
     return el
   }
 
@@ -113,7 +112,6 @@ export function createMediaSessionAnchor(): MediaSessionAnchor {
         URL.revokeObjectURL(blobUrl)
         blobUrl = null
       }
-      console.log("[MS:anchor] disposed")
     },
   }
 }

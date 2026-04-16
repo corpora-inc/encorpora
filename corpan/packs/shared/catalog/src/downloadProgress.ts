@@ -120,3 +120,4 @@ export function subscribe(narrationId: string, cb: ProgressCallback): () => void
 export function getState(narrationId: string): DownloadState {
   return getTracker(narrationId).state
 }
+

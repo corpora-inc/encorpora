@@ -575,28 +575,14 @@
   pointer-events: none;
 }
 
-/* Indeterminate shimmer for connecting/verifying/installing */
-.catalog-btn-indeterminate {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-  border-radius: inherit;
+/* Spinner icon for starting/verifying/extracting states */
+.catalog-btn-spinner {
+  animation: catalog-spin 0.8s linear infinite;
 }
 
-.catalog-btn-indeterminate::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 60%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--catalog-accent) 12%, transparent), transparent);
-  animation: catalog-shimmer 1.5s ease infinite;
-}
-
-@keyframes catalog-shimmer {
-  0% { left: -60%; }
-  100% { left: 100%; }
+@keyframes catalog-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
 /* Error state — distinct from idle */

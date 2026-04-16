@@ -39,3 +39,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# generated at build time by web/scripts/generate-book-catalog.js
+/data/book-catalog.json
+/data/segments/

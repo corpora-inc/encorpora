@@ -9,8 +9,8 @@ export const CAMERA_Z = -5
 /** Glow layer intensity */
 export const GLOW_INTENSITY = 0.5
 
-/** Number of background starfield particles */
-export const STARFIELD_COUNT = 2000
+/** Number of background starfield particles (0 = disabled for performance) */
+export const STARFIELD_COUNT = 0
 
 /** Starfield bounding box size (world units) */
 export const STARFIELD_SIZE = 100

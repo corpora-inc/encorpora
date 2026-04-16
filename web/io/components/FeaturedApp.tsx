@@ -20,6 +20,7 @@ const PACKS = [
     avatar: "/logos/hover-runner-avatar.png",
     landingUrl: "/corpan/packs/hover-runner/",
     status: "live",
+    packType: "game",
   },
   {
     id: "hanzipan",
@@ -28,6 +29,7 @@ const PACKS = [
     avatar: "/logos/hanzipan-avatar.png",
     landingUrl: "/corpan/packs/hanzipan/",
     status: "live",
+    packType: "game",
   },
   {
     id: "juice-squeeze",
@@ -36,6 +38,25 @@ const PACKS = [
     avatar: "/logos/juice-squeeze-avatar.svg",
     landingUrl: "/corpan/packs/juice-squeeze/",
     status: "prototype",
+    packType: "game",
+  },
+  {
+    id: "stargate-reader",
+    name: "Stargate Reader",
+    description: "Immersive 3D audiobook: words stream through space in sync with narrated audio.",
+    avatar: "/logos/stargate-reader-avatar.png",
+    landingUrl: "/corpan/packs/stargate-reader/",
+    status: "live",
+    packType: "reader",
+  },
+  {
+    id: "earthgate-reader",
+    name: "Earthgate Reader",
+    description: "Calm, earth-toned audiobook reader with word-level highlighting synced to narrated audio.",
+    avatar: "/logos/earthgate-reader-avatar.png",
+    landingUrl: "/corpan/packs/earthgate-reader/",
+    status: "live",
+    packType: "reader",
   },
 ];
 
@@ -231,11 +252,19 @@ const FeaturedApps = () => {
                   </div>
                   <div>
                     <h4 className="text-lg font-bold">{pack.name}</h4>
-                    {pack.status === "prototype" && (
+                    <div className="flex items-center gap-2 mt-0.5">
                       <span className="text-xs text-gray-400 uppercase tracking-wider font-medium">
-                        Prototype
+                        {pack.packType === "reader" ? "Reader" : "Game"}
                       </span>
-                    )}
+                      {pack.status === "prototype" && (
+                        <>
+                          <span className="text-xs text-gray-300">·</span>
+                          <span className="text-xs text-gray-400 uppercase tracking-wider font-medium">
+                            Prototype
+                          </span>
+                        </>
+                      )}
+                    </div>
                   </div>
                 </div>
                 <p className="text-gray-600 mb-5 text-sm leading-relaxed">
