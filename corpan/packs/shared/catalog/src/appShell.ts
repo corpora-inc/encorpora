@@ -23,6 +23,12 @@ import {
 } from "./searchFilter"
 import { hasUpdate } from "./versionUtil"
 import {
+  isEntitledToNarration,
+  iapAvailableFromSnapshot,
+  isSubscriberFromSnapshot,
+  purchaseNarration,
+} from "./purchaseManager"
+import {
   createCommandDrawer,
   type CommandDrawer,
   type DrawerSectionDef,
@@ -172,69 +178,41 @@ export function createAppShell(
     for (const row of rows) {
       const el = row as HTMLElement
       const isActive = el.dataset.narrationId === activeId
-      el.classList.toggle("catalog-narration-row--active", isActive)
-      // Update checkmark indicator
-      const existing = el.querySelector(".catalog-narration-active-indicator")
-      if (isActive && !existing) {
-        const check = document.createElement("div")
-        check.className = "catalog-narration-active-indicator"
-        check.textContent = "\u2713"
-        // Insert before delete button
-        const delBtn = el.querySelector(".catalog-btn--danger")
-        if (delBtn) {
-          el.insertBefore(check, delBtn)
-        } else {
-          el.appendChild(check)
-        }
-      } else if (!isActive && existing) {
-        existing.remove()
-      }
+      el.classList.toggle("catalog-row--active", isActive)
+      const rail = el.querySelector(".catalog-row-rail") as HTMLElement | null
+      rail?.classList.toggle("catalog-row-rail--active", isActive)
     }
   }
 
   /** Surgical update of narration rows within a container — no teardown/rebuild.
-   *  Handles active indicator toggling and installed-state class updates.
-   *  Falls back to full rebuild if row count has changed (install/delete). */
+   *  Falls back to full rebuild if the installed row set has changed. */
   function updateNarrationRows(container: HTMLElement, activeId: string): void {
     const rows = container.querySelectorAll("[data-narration-id]")
     if (rows.length === 0) return
 
-    // Check if installed count changed (a narration was added or removed)
-    const installedRows = container.querySelectorAll(".catalog-narration-row--installed")
-    const currentInstalledCount = [...new Set(
-      Array.from(installedRows).map(r => (r as HTMLElement).dataset.narrationId)
-    )].filter(id => id && isInstalled(id)).length
+    const installedRows = container.querySelectorAll(".catalog-row--installed")
+    const stillInstalled = Array.from(installedRows).every((r) => {
+      const id = (r as HTMLElement).dataset.narrationId
+      return id ? isInstalled(id) : false
+    })
 
-    if (currentInstalledCount !== installedRows.length) {
-      // Installed state changed — need full rebuild to add/remove rows
+    if (!stillInstalled) {
       if (container === nowPlayingSectionEl) {
-        nowPlayingBookId = "" // force full rebuild
+        nowPlayingBookId = ""
         refreshNowPlayingSection()
       } else {
-        detailBookId = "" // force full rebuild
+        detailBookId = ""
         renderBookDetail()
       }
       return
     }
 
-    // Same rows — just update active state
     for (const row of rows) {
       const el = row as HTMLElement
       const isActive = el.dataset.narrationId === activeId
-      el.classList.toggle("catalog-narration-row--active", isActive)
-
-      // Toggle checkmark
-      const existing = el.querySelector(".catalog-narration-active-indicator")
-      if (isActive && !existing) {
-        const check = document.createElement("div")
-        check.className = "catalog-narration-active-indicator"
-        check.textContent = "\u2713"
-        const delBtn = el.querySelector(".catalog-btn--danger")
-        if (delBtn) el.insertBefore(check, delBtn)
-        else el.appendChild(check)
-      } else if (!isActive && existing) {
-        existing.remove()
-      }
+      el.classList.toggle("catalog-row--active", isActive)
+      const rail = el.querySelector(".catalog-row-rail") as HTMLElement | null
+      rail?.classList.toggle("catalog-row-rail--active", isActive)
     }
   }
 
@@ -432,102 +410,33 @@ export function createAppShell(
     const availableNarrs = bookNarrations.filter(n => !isInstalled(n.id))
     const active = getActive()
 
-    for (const narr of installedNarrs) {
-      const row = document.createElement("div")
-      row.className = "catalog-narration-row catalog-narration-row--installed"
-      row.dataset.narrationId = narr.id
-      if (narr.id === active) {
-        row.classList.add("catalog-narration-row--active")
-      }
-      row.style.cursor = "pointer"
-
-      const info = document.createElement("div")
-      info.className = "catalog-narration-info"
-
-      const lang = document.createElement("div")
-      lang.className = "catalog-narration-lang"
-      lang.textContent = getLanguageName(narr.language)
-
-      const voice = document.createElement("div")
-      voice.className = "catalog-narration-voice"
-      voice.textContent = narr.voiceName
-
-      const instInfo = getInstalled(narr.id)
-      const versionDiv = document.createElement("div")
-      if (instInfo && hasUpdate(narr.version, instInfo.version)) {
-        versionDiv.className = "catalog-narration-version catalog-narration-version--update"
-        versionDiv.textContent = `v${instInfo.version} \u2192 v${narr.version}`
-      } else if (instInfo) {
-        versionDiv.className = "catalog-narration-version"
-        versionDiv.textContent = `v${instInfo.version}`
-      }
-
-      info.append(lang, voice, versionDiv)
-      row.appendChild(info)
-
-      // Active indicator
-      if (narr.id === active) {
-        const check = document.createElement("div")
-        check.className = "catalog-narration-active-indicator"
-        check.textContent = "\u2713"
-        row.appendChild(check)
-      }
-
-      // Update button
-      if (instInfo && hasUpdate(narr.version, instInfo.version)) {
-        row.appendChild(createUpdateButton(narr))
-      }
-
-      // Delete button
-      const delBtn = document.createElement("button")
-      delBtn.className = "catalog-btn catalog-btn--danger"
-      delBtn.innerHTML = `<svg class="catalog-btn-icon" viewBox="0 0 24 24"><path d="M3 6h18"/><path d="M8 6V4a2 2 0 012-2h4a2 2 0 012 2v2"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/></svg>`
-      delBtn.title = "Delete"
-      delBtn.addEventListener("click", async (e) => {
-        e.stopPropagation()
-        const wasActive = narr.id === getActive()
-        await deleteNarration(narr.id)
-
-        if (wasActive) {
-          const remaining = listInstalled()
-          if (remaining.length > 0) {
-            switchToNarration(remaining[0].narrationId)
-          } else {
-            switching = true
-            drawerStore.setState({ currentNarrationId: "", currentLanguage: "", languages: [], nowPlaying: { bookTitle: "" } })
-            switching = false
-            if (readerInstance) {
-              readerInstance.dispose()
-              readerInstance = null
-            }
-          }
-        }
-
-        // Force full rebuild since a row was removed
+    const rowHandlers: RowHandlers = {
+      activeId: active,
+      onSwitch: (narr) => {
+        if (narr.id === getActive()) return
+        switchToNarration(narr.id)
+      },
+      onDeleted: () => {
         nowPlayingBookId = ""
         refreshNowPlayingSection()
         refreshLibrarySection()
-      })
-      row.appendChild(delBtn)
-
-      row.addEventListener("click", () => {
-        if (narr.id === getActive()) return
-        switchToNarration(narr.id)
-      })
-
-      detail.appendChild(row)
+      },
+      onInstalled: () => rebuildAll(),
     }
 
-    // Available (not downloaded) narrations
+    for (const narr of installedNarrs) {
+      detail.appendChild(createCompactRow(narr, rowHandlers))
+    }
+
     if (availableNarrs.length > 0) {
       const sTitle = document.createElement("div")
       sTitle.className = "catalog-detail-section-title"
-      sTitle.textContent = "Available"
+      sTitle.textContent = installedNarrs.length > 0 ? "More narrations" : "Narrations"
       sTitle.style.marginTop = "16px"
       detail.appendChild(sTitle)
 
       for (const narr of availableNarrs) {
-        detail.appendChild(renderNarrationRow(narr))
+        detail.appendChild(createCompactRow(narr, rowHandlers))
       }
     }
 
@@ -694,33 +603,33 @@ export function createAppShell(
     header.appendChild(searchInput)
     browseSectionEl.appendChild(header)
 
-    // Language filter pills
+    // Language filter — single chooser button; bottom-sheet for scale
     const availLangs = getAvailableLanguages(allNarrations)
     if (availLangs.length > 1) {
-      const filters = document.createElement("div")
-      filters.className = "command-drawer-browse-filters"
+      const chooser = document.createElement("button")
+      chooser.type = "button"
+      chooser.className = "catalog-lang-chooser"
 
-      const allPill = document.createElement("button")
-      allPill.className = "catalog-filter-pill" + (!browseActiveLang ? " catalog-filter-pill--active" : "")
-      allPill.textContent = "All"
-      allPill.addEventListener("click", () => {
-        browseActiveLang = ""
-        refreshBrowseSection()
-      })
-      filters.appendChild(allPill)
+      const renderChooserLabel = () => {
+        const label = browseActiveLang
+          ? getLanguageName(browseActiveLang)
+          : "All Languages"
+        chooser.innerHTML = `
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+          <span class="catalog-lang-chooser-label">${label}</span>
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="catalog-lang-chooser-caret"><polyline points="6 9 12 15 18 9"/></svg>
+        `
+      }
+      renderChooserLabel()
 
-      for (const lang of availLangs) {
-        const pill = document.createElement("button")
-        pill.className = "catalog-filter-pill" + (browseActiveLang === lang ? " catalog-filter-pill--active" : "")
-        pill.textContent = getLanguageName(lang)
-        pill.addEventListener("click", () => {
-          browseActiveLang = lang
+      chooser.addEventListener("click", () => {
+        openLanguageChooser(availLangs, browseActiveLang, (code) => {
+          browseActiveLang = code
           refreshBrowseSection()
         })
-        filters.appendChild(pill)
-      }
+      })
 
-      browseSectionEl.appendChild(filters)
+      browseSectionEl.appendChild(chooser)
     }
 
     // Results container
@@ -873,112 +782,43 @@ export function createAppShell(
     const availableNarrs = narrations.filter(n => !isInstalled(n.id))
     const active = getActive()
 
-    for (const narr of installedNarrs) {
-      const row = document.createElement("div")
-      row.className = "catalog-narration-row catalog-narration-row--installed"
-      row.dataset.narrationId = narr.id
-      if (narr.id === active) {
-        row.classList.add("catalog-narration-row--active")
-      }
-      row.style.cursor = "pointer"
-
-      const info = document.createElement("div")
-      info.className = "catalog-narration-info"
-
-      const lang = document.createElement("div")
-      lang.className = "catalog-narration-lang"
-      lang.textContent = getLanguageName(narr.language)
-
-      const voice = document.createElement("div")
-      voice.className = "catalog-narration-voice"
-      voice.textContent = narr.voiceName
-
-      const installedInfo = getInstalled(narr.id)
-      const versionDiv = document.createElement("div")
-      if (installedInfo && hasUpdate(narr.version, installedInfo.version)) {
-        versionDiv.className = "catalog-narration-version catalog-narration-version--update"
-        versionDiv.textContent = `v${installedInfo.version} → v${narr.version}`
-      } else if (installedInfo) {
-        versionDiv.className = "catalog-narration-version"
-        versionDiv.textContent = `v${installedInfo.version}`
-      }
-
-      info.append(lang, voice, versionDiv)
-      row.appendChild(info)
-
-      // Active indicator
-      if (narr.id === active) {
-        const check = document.createElement("div")
-        check.className = "catalog-narration-active-indicator"
-        check.textContent = "\u2713"
-        row.appendChild(check)
-      }
-
-      // Update button (when catalog has newer version)
-      if (installedInfo && hasUpdate(narr.version, installedInfo.version)) {
-        row.appendChild(createUpdateButton(narr))
-      }
-
-      // Delete button
-      const delBtn = document.createElement("button")
-      delBtn.className = "catalog-btn catalog-btn--danger"
-      delBtn.innerHTML = `<svg class="catalog-btn-icon" viewBox="0 0 24 24"><path d="M3 6h18"/><path d="M8 6V4a2 2 0 012-2h4a2 2 0 012 2v2"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/></svg>`
-      delBtn.title = "Delete"
-      delBtn.addEventListener("click", async (e) => {
-        e.stopPropagation()
-        const wasActive = narr.id === getActive()
-        await deleteNarration(narr.id)
-
-        if (wasActive) {
-          // Switch to another installed narration or clear
-          const remaining = listInstalled()
-          if (remaining.length > 0) {
-            switchToNarration(remaining[0].narrationId)
-          } else {
-            switching = true
-            drawerStore.setState({ currentNarrationId: "", currentLanguage: "", languages: [], nowPlaying: { bookTitle: "" } })
-            switching = false
-            if (readerInstance) {
-              readerInstance.dispose()
-              readerInstance = null
-            }
-          }
-        }
-
-        // Force full rebuild since a row was removed
+    const detailHandlers: RowHandlers = {
+      activeId: active,
+      onSwitch: (narr) => {
+        if (narr.id === getActive()) return
+        switchToNarration(narr.id)
+        drawerStore.setState({ activeScreen: "now-playing" })
+      },
+      onDeleted: () => {
         detailBookId = ""
         nowPlayingBookId = ""
         renderBookDetail()
         refreshLibrarySection()
         refreshNowPlayingSection()
-      })
-      row.appendChild(delBtn)
-
-      row.addEventListener("click", () => {
-        if (narr.id === getActive()) return
-        switchToNarration(narr.id)
-        drawerStore.setState({ activeScreen: "now-playing" })
-      })
-
-      detail.appendChild(row)
+      },
+      onInstalled: () => rebuildAll(),
     }
 
-    // Available (not downloaded) narrations — keep download button
+    for (const narr of installedNarrs) {
+      detail.appendChild(createCompactRow(narr, detailHandlers))
+    }
+
     if (availableNarrs.length > 0) {
       const sTitle = document.createElement("div")
       sTitle.className = "catalog-detail-section-title"
-      sTitle.textContent = "Available"
+      sTitle.textContent = installedNarrs.length > 0 ? "More narrations" : "Narrations"
       sTitle.style.marginTop = "16px"
       detail.appendChild(sTitle)
 
       for (const narr of availableNarrs) {
-        detail.appendChild(renderNarrationRow(narr))
+        detail.appendChild(createCompactRow(narr, detailHandlers))
       }
     }
 
     browseSectionEl.appendChild(detail)
   }
 
+  // SVG glyphs shared by compact row buttons
   const SVG_DOWNLOAD = `<svg class="catalog-btn-icon" viewBox="0 0 24 24"><path d="M12 4v12m0 0l-4-4m4 4l4-4"/><path d="M4 17v2a1 1 0 001 1h14a1 1 0 001-1v-2"/></svg>`
   const SVG_RETRY = `<svg class="catalog-btn-icon" viewBox="0 0 24 24"><path d="M1 4v6h6"/><path d="M3.51 15a9 9 0 105.64-11.36L3 10"/></svg>`
   const SVG_SPINNER = `<svg class="catalog-btn-icon catalog-btn-spinner" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2.5" stroke-dasharray="50 20" stroke-linecap="round"/></svg>`
@@ -992,80 +832,434 @@ export function createAppShell(
     refreshNowPlayingSection()
   }
 
-  /** Simple download button: click → spinner → await → rebuild. No subscriptions. */
-  function createDownloadButton(narration: CatalogNarrationEntry): HTMLButtonElement {
-    const btn = document.createElement("button")
-    btn.className = "catalog-btn"
+  // --- Unified compact narration row ------------------------------------
+  // One renderer for all row states: installed-active, installed-idle,
+  // available-free, available-paid-not-entitled, available-paid-entitled.
+  // Layout:
+  //   ┌─────────────────────────────────────────────────────────┐
+  //   │ [•] Language · voice · v1.2.3 · 20MB        [action][⋯] │
+  //   └─────────────────────────────────────────────────────────┘
+  // Second line only appears for price or update chip.
 
-    if (!isTauriAvailable()) {
-      btn.className = "catalog-btn catalog-btn--disabled"
-      btn.textContent = "Desktop only"
-      return btn
+  const SVG_DELETE = `<svg class="catalog-btn-icon" viewBox="0 0 24 24"><path d="M3 6h18"/><path d="M8 6V4a2 2 0 012-2h4a2 2 0 012 2v2"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/></svg>`
+  const SVG_MORE = `<svg class="catalog-btn-icon" viewBox="0 0 24 24"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></svg>`
+
+  type RowHandlers = {
+    /** Active narration id, to render the active-state accent. */
+    activeId: string
+    /** User tapped an installed row (switch to this narration). */
+    onSwitch: (narration: CatalogNarrationEntry) => void
+    /** User deleted an installed narration. */
+    onDeleted: () => void
+    /** User completed a fresh install (download or post-purchase). */
+    onInstalled: () => void
+  }
+
+  function formatMetaLine(
+    narration: CatalogNarrationEntry,
+    installedVersion: string | null
+  ): string {
+    const parts: string[] = [narration.voiceName]
+    if (installedVersion) {
+      if (hasUpdate(narration.version, installedVersion)) {
+        parts.push(`v${installedVersion} \u2192 v${narration.version}`)
+      } else {
+        parts.push(`v${installedVersion}`)
+      }
+    } else {
+      parts.push(`v${narration.version}`)
+    }
+    if (narration.sizeMb) parts.push(`${Math.round(narration.sizeMb)} MB`)
+    return parts.join(" \u00B7 ")
+  }
+
+  function createCompactRow(
+    narration: CatalogNarrationEntry,
+    handlers: RowHandlers
+  ): HTMLElement {
+    const installedInfo = getInstalled(narration.id)
+    const isActive = narration.id === handlers.activeId
+    const iap = narration.purchase.type === "iap"
+    const entitled = isEntitledToNarration(narration)
+    const iapAvailable = iapAvailableFromSnapshot()
+
+    const row = document.createElement("div")
+    row.className = "catalog-row"
+    row.dataset.narrationId = narration.id
+    if (installedInfo) row.classList.add("catalog-row--installed")
+    if (isActive) row.classList.add("catalog-row--active")
+    if (iap && !entitled) row.classList.add("catalog-row--paid")
+
+    // Leading rail: active dot or subscription "Included" hint
+    const rail = document.createElement("div")
+    rail.className = "catalog-row-rail"
+    if (isActive) rail.classList.add("catalog-row-rail--active")
+    row.appendChild(rail)
+
+    // Info column — single line for language, sub line for voice/version/size
+    const info = document.createElement("div")
+    info.className = "catalog-row-info"
+
+    const lang = document.createElement("div")
+    lang.className = "catalog-row-lang"
+    lang.textContent = getLanguageName(narration.language)
+    info.appendChild(lang)
+
+    const meta = document.createElement("div")
+    meta.className = "catalog-row-meta"
+    const hasUpdateAvailable = installedInfo
+      ? hasUpdate(narration.version, installedInfo.version)
+      : false
+    if (hasUpdateAvailable) meta.classList.add("catalog-row-meta--update")
+    meta.textContent = formatMetaLine(narration, installedInfo?.version ?? null)
+    info.appendChild(meta)
+
+    row.appendChild(info)
+
+    // Trailing action area
+    const actions = document.createElement("div")
+    actions.className = "catalog-row-actions"
+    row.appendChild(actions)
+
+    // Tag chip (subscriber "Included" or paid "$X.XX")
+    if (iap && !installedInfo) {
+      if (isSubscriberFromSnapshot()) {
+        const chip = document.createElement("span")
+        chip.className = "catalog-chip catalog-chip--included"
+        chip.textContent = "Included"
+        actions.appendChild(chip)
+      } else if (!entitled) {
+        const chip = document.createElement("span")
+        chip.className = "catalog-chip catalog-chip--price"
+        chip.textContent = narration.purchase.priceLabel ?? "Premium"
+        actions.appendChild(chip)
+      }
     }
 
-    btn.innerHTML = `${SVG_DOWNLOAD}${Math.round(narration.sizeMb)} MB`
+    // --- Installed row: clickable to switch, overflow menu with delete ---
+    if (installedInfo) {
+      row.style.cursor = "pointer"
+      row.addEventListener("click", () => handlers.onSwitch(narration))
+
+      if (hasUpdateAvailable) {
+        actions.appendChild(createCompactUpdateButton(narration, handlers))
+      }
+
+      const more = document.createElement("button")
+      more.className = "catalog-row-more"
+      more.type = "button"
+      more.title = "More"
+      more.setAttribute("aria-label", "More options")
+      more.innerHTML = SVG_MORE
+      more.addEventListener("click", (e) => {
+        e.stopPropagation()
+        openRowOverflow(more, narration, handlers)
+      })
+      actions.appendChild(more)
+      return row
+    }
+
+    // --- Available row: buy or download ---
+    if (!isTauriAvailable()) {
+      const disabled = document.createElement("span")
+      disabled.className = "catalog-chip catalog-chip--muted"
+      disabled.textContent = "Mobile only"
+      actions.appendChild(disabled)
+      return row
+    }
+
+    if (iap && !entitled) {
+      // Paid narration, not yet entitled — show primary Buy button
+      if (!iapAvailable) {
+        const disabled = document.createElement("span")
+        disabled.className = "catalog-chip catalog-chip--muted"
+        disabled.textContent = "Unavailable"
+        actions.appendChild(disabled)
+        return row
+      }
+      actions.appendChild(createBuyButton(narration, handlers))
+    } else {
+      // Free, or already entitled — download
+      actions.appendChild(createCompactDownloadButton(narration, handlers))
+    }
+
+    return row
+  }
+
+  function createCompactDownloadButton(
+    narration: CatalogNarrationEntry,
+    handlers: RowHandlers
+  ): HTMLButtonElement {
+    const btn = document.createElement("button")
+    btn.type = "button"
+    btn.className = "catalog-btn catalog-btn--compact"
+    btn.innerHTML = `${SVG_DOWNLOAD}<span class="catalog-btn-label">${Math.round(narration.sizeMb)} MB</span>`
     btn.addEventListener("click", async (e) => {
       e.stopPropagation()
-      btn.className = "catalog-btn catalog-btn--downloading"
-      btn.innerHTML = SVG_SPINNER
-      btn.style.pointerEvents = "none"
+      setButtonBusy(btn)
       const ok = await installNarration(narration)
       if (ok) {
-        rebuildAll()
+        handlers.onInstalled()
       } else {
-        btn.className = "catalog-btn catalog-btn--error"
-        btn.innerHTML = `${SVG_RETRY}${Math.round(narration.sizeMb)} MB`
-        btn.style.pointerEvents = ""
-        btn.onclick = async (e2) => {
-          e2.stopPropagation()
-          btn.className = "catalog-btn catalog-btn--downloading"
-          btn.innerHTML = SVG_SPINNER
-          btn.style.pointerEvents = "none"
+        setButtonError(btn, `${Math.round(narration.sizeMb)} MB`, async () => {
+          setButtonBusy(btn)
           const retry = await installNarration(narration)
-          if (retry) rebuildAll()
-        }
+          if (retry) handlers.onInstalled()
+          else setButtonError(btn, `${Math.round(narration.sizeMb)} MB`, () => {})
+        })
       }
     })
     return btn
   }
 
-  /** Simple update button: click → spinner → await → rebuild. No subscriptions. */
-  function createUpdateButton(narration: CatalogNarrationEntry): HTMLButtonElement {
+  function createCompactUpdateButton(
+    narration: CatalogNarrationEntry,
+    handlers: RowHandlers
+  ): HTMLButtonElement {
     const btn = document.createElement("button")
-    btn.className = "catalog-btn catalog-btn--update"
-    btn.innerHTML = `<svg class="catalog-btn-icon" viewBox="0 0 24 24"><path d="M12 4v12m0 0l-4-4m4 4l4-4"/><path d="M4 17v2a1 1 0 001 1h14a1 1 0 001-1v-2"/></svg>`
+    btn.type = "button"
+    btn.className = "catalog-btn catalog-btn--compact catalog-btn--update"
     btn.title = "Update"
+    btn.innerHTML = `${SVG_DOWNLOAD}<span class="catalog-btn-label">Update</span>`
     btn.addEventListener("click", async (e) => {
       e.stopPropagation()
-      btn.className = "catalog-btn catalog-btn--downloading"
-      btn.innerHTML = SVG_SPINNER
-      btn.style.pointerEvents = "none"
+      setButtonBusy(btn)
       const ok = await installNarration(narration)
-      if (ok) rebuildAll()
+      if (ok) handlers.onInstalled()
+      else setButtonError(btn, "Update", () => {})
     })
     return btn
   }
 
-  function renderNarrationRow(narration: CatalogNarrationEntry): HTMLElement {
-    const row = document.createElement("div")
-    row.className = "catalog-narration-row"
+  function createBuyButton(
+    narration: CatalogNarrationEntry,
+    handlers: RowHandlers
+  ): HTMLButtonElement {
+    const btn = document.createElement("button")
+    btn.type = "button"
+    btn.className = "catalog-btn catalog-btn--compact catalog-btn--primary"
+    const price = narration.purchase.priceLabel ?? "Buy"
+    btn.innerHTML = `<span class="catalog-btn-label">Buy ${price}</span>`
+    btn.addEventListener("click", async (e) => {
+      e.stopPropagation()
+      setButtonBusy(btn)
+      const outcome = await purchaseNarration(narration)
+      if (outcome.kind === "cancelled") {
+        btn.className = "catalog-btn catalog-btn--compact catalog-btn--primary"
+        btn.innerHTML = `<span class="catalog-btn-label">Buy ${price}</span>`
+        return
+      }
+      if (outcome.kind === "error") {
+        setButtonError(btn, `Buy ${price}`, () => {})
+        return
+      }
+      // On ok/alreadyOwned — immediately install. alreadyOwned won't give us
+      // fresh receipt data, so fall through without purchaseInfo — install will
+      // fail cleanly; user can tap Restore to recover in a follow-up.
+      const purchaseInfo =
+        outcome.kind === "ok"
+          ? {
+              transactionId: outcome.receipt.transactionId,
+              receipt: outcome.receipt.receipt,
+              platform: outcome.receipt.platform,
+            }
+          : undefined
+      const ok = await installNarration(narration, purchaseInfo)
+      if (ok) handlers.onInstalled()
+      else setButtonError(btn, `Buy ${price}`, () => {})
+    })
+    return btn
+  }
 
-    const info = document.createElement("div")
-    info.className = "catalog-narration-info"
+  function setButtonBusy(btn: HTMLButtonElement): void {
+    btn.classList.add("catalog-btn--downloading")
+    btn.classList.remove("catalog-btn--error")
+    btn.innerHTML = SVG_SPINNER
+    btn.style.pointerEvents = "none"
+  }
 
-    const lang = document.createElement("div")
-    lang.className = "catalog-narration-lang"
-    lang.textContent = getLanguageName(narration.language)
+  function setButtonError(
+    btn: HTMLButtonElement,
+    label: string,
+    onRetry: () => void | Promise<void>
+  ): void {
+    btn.classList.remove("catalog-btn--downloading")
+    btn.classList.add("catalog-btn--error")
+    btn.innerHTML = `${SVG_RETRY}<span class="catalog-btn-label">${label}</span>`
+    btn.style.pointerEvents = ""
+    btn.onclick = async (e) => {
+      e.stopPropagation()
+      await onRetry()
+    }
+  }
 
-    const voice = document.createElement("div")
-    voice.className = "catalog-narration-voice"
-    voice.textContent = narration.voiceName
+  /** Inline overflow menu for installed rows — currently just Delete. */
+  function openRowOverflow(
+    anchor: HTMLElement,
+    narration: CatalogNarrationEntry,
+    handlers: RowHandlers
+  ): void {
+    // Close any existing menu
+    document.querySelectorAll(".catalog-row-menu").forEach((el) => el.remove())
 
-    info.append(lang, voice)
-    row.appendChild(info)
+    const menu = document.createElement("div")
+    menu.className = "catalog-row-menu"
 
-    row.appendChild(createDownloadButton(narration))
-    return row
+    const del = document.createElement("button")
+    del.type = "button"
+    del.className = "catalog-row-menu-item catalog-row-menu-item--danger"
+    del.innerHTML = `${SVG_DELETE}<span>Delete</span>`
+    del.addEventListener("click", async (e) => {
+      e.stopPropagation()
+      menu.remove()
+      const wasActive = narration.id === getActive()
+      await deleteNarration(narration.id)
+      if (wasActive) {
+        const remaining = listInstalled()
+        if (remaining.length > 0) {
+          switchToNarration(remaining[0].narrationId)
+        } else {
+          switching = true
+          drawerStore.setState({
+            currentNarrationId: "",
+            currentLanguage: "",
+            languages: [],
+            nowPlaying: { bookTitle: "" },
+          })
+          switching = false
+          if (readerInstance) {
+            readerInstance.dispose()
+            readerInstance = null
+          }
+        }
+      }
+      handlers.onDeleted()
+    })
+    menu.appendChild(del)
+
+    const rect = anchor.getBoundingClientRect()
+    menu.style.position = "fixed"
+    menu.style.top = `${Math.round(rect.bottom + 6)}px`
+    menu.style.right = `${Math.round(window.innerWidth - rect.right)}px`
+    document.body.appendChild(menu)
+
+    const onDocClick = (evt: MouseEvent) => {
+      if (!menu.contains(evt.target as Node)) {
+        menu.remove()
+        document.removeEventListener("click", onDocClick, true)
+      }
+    }
+    // Defer a tick so the click that opened the menu doesn't immediately close it
+    setTimeout(() => document.addEventListener("click", onDocClick, true), 0)
+  }
+
+  // --- Language chooser (bottom-sheet modal, scales to many languages) ---
+  function openLanguageChooser(
+    availableLangs: string[],
+    selected: string,
+    onChoose: (lang: string) => void
+  ): void {
+    const scrim = document.createElement("div")
+    scrim.className = "catalog-sheet-scrim"
+
+    const sheet = document.createElement("div")
+    sheet.className = "catalog-sheet"
+
+    const header = document.createElement("div")
+    header.className = "catalog-sheet-header"
+    const title = document.createElement("div")
+    title.className = "catalog-sheet-title"
+    title.textContent = "Language"
+    header.appendChild(title)
+    const close = document.createElement("button")
+    close.type = "button"
+    close.className = "catalog-sheet-close"
+    close.setAttribute("aria-label", "Close")
+    close.innerHTML = `<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>`
+    close.addEventListener("click", () => dismiss())
+    header.appendChild(close)
+    sheet.appendChild(header)
+
+    const search = document.createElement("input")
+    search.type = "text"
+    search.placeholder = "Search languages"
+    search.className = "catalog-sheet-search"
+    sheet.appendChild(search)
+
+    const list = document.createElement("div")
+    list.className = "catalog-sheet-list"
+    sheet.appendChild(list)
+
+    function renderList(): void {
+      list.innerHTML = ""
+      const q = search.value.trim().toLowerCase()
+
+      const addItem = (code: string, label: string) => {
+        const item = document.createElement("button")
+        item.type = "button"
+        item.className = "catalog-sheet-item"
+        if (code === selected) item.classList.add("catalog-sheet-item--active")
+        const name = document.createElement("span")
+        name.textContent = label
+        item.appendChild(name)
+        if (code === selected) {
+          const check = document.createElement("span")
+          check.className = "catalog-sheet-item-check"
+          check.textContent = "\u2713"
+          item.appendChild(check)
+        }
+        item.addEventListener("click", () => {
+          onChoose(code)
+          dismiss()
+        })
+        list.appendChild(item)
+      }
+
+      if (!q || "all languages".includes(q)) {
+        addItem("", "All Languages")
+      }
+
+      for (const code of availableLangs) {
+        const name = getLanguageName(code)
+        if (!q || name.toLowerCase().includes(q) || code.toLowerCase().includes(q)) {
+          addItem(code, name)
+        }
+      }
+
+      if (list.childElementCount === 0) {
+        const empty = document.createElement("div")
+        empty.className = "catalog-sheet-empty"
+        empty.textContent = "No languages match"
+        list.appendChild(empty)
+      }
+    }
+
+    search.addEventListener("input", renderList)
+
+    const dismiss = () => {
+      scrim.classList.remove("catalog-sheet-scrim--open")
+      sheet.classList.remove("catalog-sheet--open")
+      setTimeout(() => {
+        scrim.remove()
+        sheet.remove()
+      }, 180)
+    }
+
+    scrim.addEventListener("click", (e) => {
+      if (e.target === scrim) dismiss()
+    })
+
+    document.body.appendChild(scrim)
+    document.body.appendChild(sheet)
+    renderList()
+    // Trigger enter animation on next frame
+    requestAnimationFrame(() => {
+      scrim.classList.add("catalog-sheet-scrim--open")
+      sheet.classList.add("catalog-sheet--open")
+    })
+    // Autofocus search for quick filtering on desktop; on mobile this
+    // opens the keyboard which is fine given 30+ languages.
+    setTimeout(() => search.focus(), 50)
   }
 
   // --- Dispose ---

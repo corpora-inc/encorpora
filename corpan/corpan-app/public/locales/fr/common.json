@@ -318,7 +318,12 @@
     "subscribing": "Abonnement en cours...",
     "subscribed": "Vous êtes abonné",
     "subscribedDescription": "Forfait {{plan}} actif. Merci de soutenir Corpán.",
-    "manage": "Gérer l'abonnement"
+    "manage": "Gérer l'abonnement",
+    "termsOfUse": "Conditions d'utilisation",
+    "privacyPolicy": "Politique de confidentialité",
+    "autoRenewNotice": "Les abonnements se renouvellent automatiquement. Annulez à tout moment dans votre compte {{store}}.",
+    "storeApple": "Apple ID",
+    "storeGoogle": "Google Play"
   },
   "restore": {
     "button": "Restaurer les achats",

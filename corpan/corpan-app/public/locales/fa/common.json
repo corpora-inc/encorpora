@@ -318,7 +318,12 @@
     "subscribing": "در حال اشتراک...",
     "subscribed": "شما مشترک هستید",
     "subscribedDescription": "طرح {{plan}} فعال است. ممنون از حمایت شما از Corpán.",
-    "manage": "مدیریت اشتراک"
+    "manage": "مدیریت اشتراک",
+    "termsOfUse": "شرایط استفاده",
+    "privacyPolicy": "سیاست حفظ حریم خصوصی",
+    "autoRenewNotice": "اشتراک‌ها به‌طور خودکار تمدید می‌شوند. هر زمان از حساب {{store}} خود لغو کنید.",
+    "storeApple": "Apple ID",
+    "storeGoogle": "Google Play"
   },
   "restore": {
     "button": "بازیابی خریدها",

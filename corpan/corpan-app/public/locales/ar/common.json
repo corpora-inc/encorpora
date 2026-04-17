@@ -318,7 +318,12 @@
     "subscribing": "جارٍ الاشتراك...",
     "subscribed": "أنت مشترك",
     "subscribedDescription": "خطة {{plan}} نشطة. شكرًا لدعم Corpán.",
-    "manage": "إدارة الاشتراك"
+    "manage": "إدارة الاشتراك",
+    "termsOfUse": "شروط الاستخدام",
+    "privacyPolicy": "سياسة الخصوصية",
+    "autoRenewNotice": "تتجدد الاشتراكات تلقائيًا. يمكنك الإلغاء في أي وقت من حساب {{store}}.",
+    "storeApple": "Apple ID",
+    "storeGoogle": "Google Play"
   },
   "restore": {
     "button": "استعادة المشتريات",

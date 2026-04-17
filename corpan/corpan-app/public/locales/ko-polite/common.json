@@ -318,7 +318,12 @@
     "subscribing": "구독 중...",
     "subscribed": "구독 중입니다",
     "subscribedDescription": "{{plan}} 플랜이 활성 상태입니다. Corpán을 지원해 주셔서 감사합니다.",
-    "manage": "구독 관리"
+    "manage": "구독 관리",
+    "termsOfUse": "이용약관",
+    "privacyPolicy": "개인정보 처리방침",
+    "autoRenewNotice": "구독은 자동으로 갱신됩니다. {{store}} 계정에서 언제든지 해지할 수 있습니다.",
+    "storeApple": "Apple ID",
+    "storeGoogle": "Google Play"
   },
   "restore": {
     "button": "구매 복원",

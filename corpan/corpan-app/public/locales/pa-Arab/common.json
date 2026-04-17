@@ -318,7 +318,12 @@
     "subscribing": "سبسکرائب ہو رہا اے...",
     "subscribed": "تسیں سبسکرائب ہو",
     "subscribedDescription": "{{plan}} پلان چل رہیا اے۔ Corpán دی حمایت لئی شکریہ۔",
-    "manage": "سبسکرپشن دا انتظام کرو"
+    "manage": "سبسکرپشن دا انتظام کرو",
+    "termsOfUse": "ورتن دیاں شرطاں",
+    "privacyPolicy": "پرائیویسی پالیسی",
+    "autoRenewNotice": "سبسکرپشناں آپے تجدید ہوندیاں نیں۔ اپنے {{store}} اکاؤنٹ توں کدی وی منسوخ کرو۔",
+    "storeApple": "Apple ID",
+    "storeGoogle": "Google Play"
   },
   "restore": {
     "button": "خریداریاں بحال کرو",

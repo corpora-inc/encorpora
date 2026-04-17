@@ -318,7 +318,12 @@
     "subscribing": "சந்தா செய்கிறது...",
     "subscribed": "நீங்கள் சந்தாதாரர்",
     "subscribedDescription": "{{plan}} திட்டம் செயலில் உள்ளது. Corpán ஐ ஆதரித்ததற்கு நன்றி.",
-    "manage": "சந்தாவை நிர்வகிக்கவும்"
+    "manage": "சந்தாவை நிர்வகிக்கவும்",
+    "termsOfUse": "பயன்பாட்டு விதிமுறைகள்",
+    "privacyPolicy": "தனியுரிமைக் கொள்கை",
+    "autoRenewNotice": "சந்தாக்கள் தானாக புதுப்பிக்கப்படும். உங்கள் {{store}} கணக்கில் எப்போது வேண்டுமானாலும் ரத்து செய்யுங்கள்.",
+    "storeApple": "Apple ID",
+    "storeGoogle": "Google Play"
   },
   "restore": {
     "button": "வாங்கல்களை மீட்டெடு",

@@ -318,7 +318,12 @@
     "subscribing": "सदस्यता घेत आहे...",
     "subscribed": "तुम्ही सदस्य आहात",
     "subscribedDescription": "{{plan}} योजना सक्रिय. Corpán ला समर्थन दिल्याबद्दल धन्यवाद.",
-    "manage": "सदस्यता व्यवस्थापित करा"
+    "manage": "सदस्यता व्यवस्थापित करा",
+    "termsOfUse": "वापराच्या अटी",
+    "privacyPolicy": "गोपनीयता धोरण",
+    "autoRenewNotice": "सदस्यता आपोआप नूतनीकरण होते. आपल्या {{store}} खात्यात कधीही रद्द करा.",
+    "storeApple": "Apple ID",
+    "storeGoogle": "Google Play"
   },
   "restore": {
     "button": "खरेदी पुनर्संचयित करा",

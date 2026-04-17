@@ -318,7 +318,12 @@
     "subscribing": "購読中...",
     "subscribed": "購読中です",
     "subscribedDescription": "{{plan}}プランが有効です。Corpánのサポートをありがとうございます。",
-    "manage": "サブスクリプションを管理"
+    "manage": "サブスクリプションを管理",
+    "termsOfUse": "利用規約",
+    "privacyPolicy": "プライバシーポリシー",
+    "autoRenewNotice": "サブスクリプションは自動更新されます。{{store}} アカウントからいつでもキャンセルできます。",
+    "storeApple": "Apple ID",
+    "storeGoogle": "Google Play"
   },
   "restore": {
     "button": "購入を復元",

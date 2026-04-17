@@ -318,7 +318,12 @@
     "subscribing": "سبسکرائب ہو رہا ہے...",
     "subscribed": "آپ نے سبسکرائب کیا ہے",
     "subscribedDescription": "{{plan}} پلان فعال ہے۔ Corpán کو سپورٹ کرنے کا شکریہ۔",
-    "manage": "سبسکرپشن کا انتظام کریں"
+    "manage": "سبسکرپشن کا انتظام کریں",
+    "termsOfUse": "شرائط استعمال",
+    "privacyPolicy": "رازداری کی پالیسی",
+    "autoRenewNotice": "سبسکرپشنز خودبخود تجدید ہوتی ہیں۔ اپنے {{store}} اکاؤنٹ سے کسی بھی وقت منسوخ کریں۔",
+    "storeApple": "Apple ID",
+    "storeGoogle": "Google Play"
   },
   "restore": {
     "button": "خریداریاں بحال کریں",

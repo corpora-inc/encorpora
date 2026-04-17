@@ -318,7 +318,12 @@
     "subscribing": "Оформление подписки...",
     "subscribed": "Вы подписаны",
     "subscribedDescription": "План {{plan}} активен. Спасибо, что поддерживаете Corpán.",
-    "manage": "Управление подпиской"
+    "manage": "Управление подпиской",
+    "termsOfUse": "Условия использования",
+    "privacyPolicy": "Политика конфиденциальности",
+    "autoRenewNotice": "Подписки продлеваются автоматически. Отменить можно в любой момент в аккаунте {{store}}.",
+    "storeApple": "Apple ID",
+    "storeGoogle": "Google Play"
   },
   "restore": {
     "button": "Восстановить покупки",

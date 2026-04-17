@@ -318,7 +318,12 @@
     "subscribing": "Feliratkozás...",
     "subscribed": "Előfizetőnk vagy",
     "subscribedDescription": "{{plan}} csomag aktív. Köszönjük, hogy támogatod a Corpánt.",
-    "manage": "Előfizetés kezelése"
+    "manage": "Előfizetés kezelése",
+    "termsOfUse": "Felhasználási feltételek",
+    "privacyPolicy": "Adatvédelmi szabályzat",
+    "autoRenewNotice": "Az előfizetések automatikusan megújulnak. Bármikor lemondható a {{store}} fiókban.",
+    "storeApple": "Apple ID",
+    "storeGoogle": "Google Play"
   },
   "restore": {
     "button": "Vásárlások visszaállítása",

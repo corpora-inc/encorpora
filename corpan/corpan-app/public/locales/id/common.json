@@ -318,7 +318,12 @@
     "subscribing": "Berlangganan...",
     "subscribed": "Kamu sudah berlangganan",
     "subscribedDescription": "Paket {{plan}} aktif. Terima kasih telah mendukung Corpán.",
-    "manage": "Kelola langganan"
+    "manage": "Kelola langganan",
+    "termsOfUse": "Ketentuan Penggunaan",
+    "privacyPolicy": "Kebijakan Privasi",
+    "autoRenewNotice": "Langganan diperpanjang otomatis. Batalkan kapan saja di akun {{store}} Anda.",
+    "storeApple": "Apple ID",
+    "storeGoogle": "Google Play"
   },
   "restore": {
     "button": "Pulihkan pembelian",

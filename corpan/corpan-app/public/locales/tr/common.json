@@ -318,7 +318,12 @@
     "subscribing": "Abone olunuyor...",
     "subscribed": "Abonesiniz",
     "subscribedDescription": "{{plan}} planı etkin. Corpán'ı desteklediğiniz için teşekkürler.",
-    "manage": "Aboneliği yönet"
+    "manage": "Aboneliği yönet",
+    "termsOfUse": "Kullanım Koşulları",
+    "privacyPolicy": "Gizlilik Politikası",
+    "autoRenewNotice": "Abonelikler otomatik olarak yenilenir. {{store}} hesabınızdan istediğiniz zaman iptal edebilirsiniz.",
+    "storeApple": "Apple ID",
+    "storeGoogle": "Google Play"
   },
   "restore": {
     "button": "Satın alımları geri yükle",

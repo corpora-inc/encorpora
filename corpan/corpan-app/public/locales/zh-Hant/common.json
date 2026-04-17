@@ -318,7 +318,12 @@
     "subscribing": "訂閱中...",
     "subscribed": "您已訂閱",
     "subscribedDescription": "{{plan}}方案已啟用。感謝支持Corpán。",
-    "manage": "管理訂閱"
+    "manage": "管理訂閱",
+    "termsOfUse": "使用條款",
+    "privacyPolicy": "隱私權政策",
+    "autoRenewNotice": "訂閱將自動續訂。可隨時於 {{store}} 帳戶中取消。",
+    "storeApple": "Apple ID",
+    "storeGoogle": "Google Play"
   },
   "restore": {
     "button": "恢復購買",

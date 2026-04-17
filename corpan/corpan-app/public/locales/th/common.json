@@ -318,7 +318,12 @@
     "subscribing": "กำลังสมัคร...",
     "subscribed": "คุณสมัครสมาชิกแล้ว",
     "subscribedDescription": "แพ็ก {{plan}} ใช้งานอยู่ ขอบคุณที่สนับสนุน Corpán",
-    "manage": "จัดการการสมัครสมาชิก"
+    "manage": "จัดการการสมัครสมาชิก",
+    "termsOfUse": "ข้อกำหนดการใช้งาน",
+    "privacyPolicy": "นโยบายความเป็นส่วนตัว",
+    "autoRenewNotice": "การสมัครสมาชิกจะต่ออายุโดยอัตโนมัติ ยกเลิกได้ตลอดเวลาในบัญชี {{store}} ของคุณ",
+    "storeApple": "Apple ID",
+    "storeGoogle": "Google Play"
   },
   "restore": {
     "button": "กู้คืนการซื้อ",

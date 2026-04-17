@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import { useTranslation } from "react-i18next"
 import { CheckCircle2 } from "lucide-react"
+import { openUrl } from "@tauri-apps/plugin-opener"
 import { Button } from "@/components/ui/button"
 import { useEntitlementStore } from "@/store/entitlements"
 import {
@@ -11,6 +12,9 @@ import {
   SUBSCRIPTION_ANNUAL,
   type StoreProduct,
 } from "@/contentPacks/purchase"
+
+const TERMS_URL = "https://encorpora.io/terms"
+const PRIVACY_URL = "https://encorpora.io/privacy"
 
 /**
  * Subscription offer banner in the packs browser.
@@ -28,6 +32,31 @@ export function SubscriptionOffer() {
   const [error, setError] = useState<string | null>(null)
 
   const subscriptionActive = subscription.active
+  const platform = useEntitlementStore((s) => s.platform)
+  const storeLabel =
+    platform === "android"
+      ? t("subscription.storeGoogle", "Google Play")
+      : t("subscription.storeApple", "Apple ID")
+
+  const legalLinks = (
+    <div className="flex items-center justify-center gap-4 pt-1 text-[11px]">
+      <button
+        type="button"
+        onClick={() => void openUrl(TERMS_URL)}
+        className="text-muted-foreground underline underline-offset-2 hover:text-foreground"
+      >
+        {t("subscription.termsOfUse", "Terms of Use")}
+      </button>
+      <span className="text-muted-foreground">·</span>
+      <button
+        type="button"
+        onClick={() => void openUrl(PRIVACY_URL)}
+        className="text-muted-foreground underline underline-offset-2 hover:text-foreground"
+      >
+        {t("subscription.privacyPolicy", "Privacy Policy")}
+      </button>
+    </div>
+  )
 
   useEffect(() => {
     if (!iapAvailable || subscriptionActive) return
@@ -68,6 +97,8 @@ export function SubscriptionOffer() {
         >
           {t("subscription.manage", "Manage subscription")}
         </Button>
+
+        {legalLinks}
       </div>
     )
   }
@@ -158,6 +189,16 @@ export function SubscriptionOffer() {
       {error ? (
         <p className="text-xs text-destructive">{error}</p>
       ) : null}
+
+      <p className="text-[11px] text-muted-foreground leading-relaxed text-center">
+        {t(
+          "subscription.autoRenewNotice",
+          "Subscriptions renew automatically. Cancel anytime in your {{store}} account.",
+          { store: storeLabel }
+        )}
+      </p>
+
+      {legalLinks}
     </div>
   )
 }

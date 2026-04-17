@@ -318,7 +318,12 @@
     "subscribing": "Đang đăng ký...",
     "subscribed": "Bạn đã đăng ký",
     "subscribedDescription": "Gói {{plan}} đang hoạt động. Cảm ơn bạn đã ủng hộ Corpán.",
-    "manage": "Quản lý đăng ký"
+    "manage": "Quản lý đăng ký",
+    "termsOfUse": "Điều khoản sử dụng",
+    "privacyPolicy": "Chính sách bảo mật",
+    "autoRenewNotice": "Gói đăng ký tự động gia hạn. Hủy bất kỳ lúc nào trong tài khoản {{store}} của bạn.",
+    "storeApple": "Apple ID",
+    "storeGoogle": "Google Play"
   },
   "restore": {
     "button": "Khôi phục mua hàng",

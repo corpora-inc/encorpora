@@ -318,7 +318,12 @@
     "subscribing": "સબ્સ્ક્રાઇબ થઈ રહ્યું છે...",
     "subscribed": "તમે સબ્સ્ક્રાઇબ કર્યું છે",
     "subscribedDescription": "{{plan}} પ્લાન સક્રિય. Corpán ને સપોર્ટ કરવા માટે આભાર.",
-    "manage": "સબ્સ્ક્રિપ્શન મેનેજ કરો"
+    "manage": "સબ્સ્ક્રિપ્શન મેનેજ કરો",
+    "termsOfUse": "ઉપયોગની શરતો",
+    "privacyPolicy": "ગોપનીયતા નીતિ",
+    "autoRenewNotice": "સબ્સ્ક્રિપ્શન્સ આપમેળે રિન્યૂ થાય છે. તમારા {{store}} એકાઉન્ટમાં ગમે ત્યારે રદ કરો.",
+    "storeApple": "Apple ID",
+    "storeGoogle": "Google Play"
   },
   "restore": {
     "button": "ખરીદીઓ પુનઃસ્થાપિત કરો",

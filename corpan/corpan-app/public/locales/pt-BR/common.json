@@ -318,7 +318,12 @@
     "subscribing": "Assinando...",
     "subscribed": "Você está inscrito",
     "subscribedDescription": "Plano {{plan}} ativo. Obrigado por apoiar o Corpán.",
-    "manage": "Gerenciar assinatura"
+    "manage": "Gerenciar assinatura",
+    "termsOfUse": "Termos de uso",
+    "privacyPolicy": "Política de privacidade",
+    "autoRenewNotice": "As assinaturas renovam automaticamente. Cancele quando quiser na sua conta {{store}}.",
+    "storeApple": "Apple ID",
+    "storeGoogle": "Google Play"
   },
   "restore": {
     "button": "Restaurar compras",
