@@ -1,5 +1,6 @@
 import { invoke } from "@tauri-apps/api/core"
 import { type as osType } from "@tauri-apps/plugin-os"
+import { openUrl } from "@tauri-apps/plugin-opener"
 import { useEntitlementStore } from "@/store/entitlements"
 import type { SubscriptionPlan } from "@/store/entitlements"
 
@@ -516,7 +517,6 @@ export async function manageSubscription(): Promise<void> {
     // Tauri's opener plugin opens URLs in the system's default handler,
     // which on iOS redirects `apps.apple.com/account/subscriptions` into
     // the App Store's native Manage Subscriptions screen.
-    const { openUrl } = await import("@tauri-apps/plugin-opener")
     await openUrl(url)
   } catch (err) {
     console.error("[purchase] manageSubscription openUrl failed:", err)

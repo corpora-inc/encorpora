@@ -75,8 +75,11 @@ export function SubscriptionOffer() {
   const monthlyProduct = products.find((p) => p.productId === SUBSCRIPTION_MONTHLY)
   const annualProduct = products.find((p) => p.productId === SUBSCRIPTION_ANNUAL)
 
-  const monthlyPrice = monthlyProduct?.price ?? "$15.99/mo"
-  const annualPrice = annualProduct?.price ?? "$100/yr"
+  // Leave blank during the initial fetch — store (Apple/Google) returns the
+  // localized price within a few hundred ms. Hardcoded fallbacks would show
+  // iOS-style prices briefly on Android (wrong).
+  const monthlyPrice = monthlyProduct?.price ?? ""
+  const annualPrice = annualProduct?.price ?? ""
 
   const handleSubscribe = async () => {
     const productId =
