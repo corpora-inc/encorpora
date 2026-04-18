@@ -151,6 +151,7 @@ export function createEarthgateReader(
 
   function seekToMsAndSync(targetMs: number) {
     if (!audioEngine) return
+    endPreview(false)
     suppressExternalReconcileUntil = performance.now() + SEEK_RECONCILE_SUPPRESSION_MS
     if (isPlaying) {
       audioEngine.seekToMs(targetMs)
@@ -163,6 +164,7 @@ export function createEarthgateReader(
 
   function seekToSegmentAndSync(index: number) {
     if (!audioEngine) return
+    endPreview(false)
     suppressExternalReconcileUntil = performance.now() + SEEK_RECONCILE_SUPPRESSION_MS
     audioEngine.seekToSegment(index)
     syncNativeNowPlaying()
@@ -321,6 +323,7 @@ export function createEarthgateReader(
   function doPause() {
     desiredPlaying = false
     playRequestSeq += 1
+    endPreview(false)
     if (!audioEngine) return
     const enginePlaying = audioEngine.isPlaying()
     if (!isPlaying && !enginePlaying) {
@@ -393,6 +396,31 @@ export function createEarthgateReader(
   let isPlaying = false
   let lastSegmentIndex = -1
 
+  // Tap-to-replay "preview": play one segment from start, then auto-pause
+  // and snap back. During a preview the external play state (isPlaying,
+  // transport button, wake lock, media session, native keep-alive) stays
+  // in the paused state so language switches, scroll, scrubs, etc. all see
+  // a paused reader. Any interruption ends the preview without side effects.
+  let previewActive = false
+  let oneShotTargetSegment: number | null = null
+  let oneShotSegmentEndMs: number | null = null
+  function endPreview(snapBack: boolean) {
+    if (!previewActive) {
+      oneShotTargetSegment = null
+      oneShotSegmentEndMs = null
+      return
+    }
+    const target = oneShotTargetSegment
+    previewActive = false
+    oneShotTargetSegment = null
+    oneShotSegmentEndMs = null
+    if (!audioEngine) return
+    audioEngine.pause()
+    if (snapBack && target !== null) {
+      audioEngine.seekToSegment(target)
+    }
+  }
+
   // Paragraph view
   const paragraphView: ParagraphView = createParagraphView(ui)
 
@@ -406,6 +434,7 @@ export function createEarthgateReader(
   // --- Swipe navigation ---
   paragraphView.onNext(() => {
     if (!audioEngine) return
+    endPreview(false)
     const nextSeg = audioEngine.getCurrentSegmentIndex() + 1
     if (nextSeg < segments.length) {
       audioEngine.seekToSegment(nextSeg)
@@ -415,13 +444,42 @@ export function createEarthgateReader(
 
   paragraphView.onPrev(() => {
     if (!audioEngine) return
+    endPreview(false)
     const prevSeg = Math.max(0, audioEngine.getCurrentSegmentIndex() - 1)
     audioEngine.seekToSegment(prevSeg)
     syncNativeNowPlaying()
   })
 
+  // --- Tap-to-replay segment ---
+  // When paused, tapping the visible paragraph replays that one segment from
+  // its start and snaps back so the listener can repeat it (or switch
+  // language/narration and replay in the new voice).
+  paragraphView.onTap(() => {
+    if (!audioEngine || !manifest) return
+    if (isPlaying) return
+    // Restart preview if one is already running
+    endPreview(false)
+    const segIdx = audioEngine.getCurrentSegmentIndex()
+    const seg = segments[segIdx]
+    if (!seg) return
+    const mseg = manifest.segments[seg.id]
+    if (!mseg) return
+    const starts = audioEngine.getSegmentAbsoluteStartMs()
+    const endMs = starts[segIdx] + mseg.duration_ms
+    // Position at segment start without touching external state.
+    audioEngine.seekToSegment(segIdx)
+    oneShotTargetSegment = segIdx
+    oneShotSegmentEndMs = endMs
+    previewActive = true
+    // Drive the audio engine directly — no transport/wake-lock/media-session
+    // side effects. Language switches, scrubs, etc. still see isPlaying=false.
+    audioEngine.unlock()
+    audioEngine.play()
+  })
+
   // --- Transport callbacks ---
   transport.onPlay(() => {
+    endPreview(false)
     void doPlay()
   })
 
@@ -873,8 +931,8 @@ export function createEarthgateReader(
     // Reconcile play state with engine (debounced to avoid transient mismatches)
     if (audioEngine) {
       const now = performance.now()
-      if (now < suppressExternalReconcileUntil) {
-        // Suppressed during seeks, scrubs, and visibility recovery
+      if (previewActive || now < suppressExternalReconcileUntil) {
+        // Suppressed during tap-to-replay preview, seeks, scrubs, and visibility recovery
         pendingEngineState = null
       } else {
         const enginePlaying = audioEngine.isPlaying()
@@ -923,6 +981,15 @@ export function createEarthgateReader(
 
     const currentMs = audioEngine?.getCurrentTimeMs() ?? 0
     const totalMs = audioEngine?.getTotalDurationMs() ?? 0
+
+    // Tap-to-replay auto-pause: segment's audio just ended → snap back to start.
+    if (
+      previewActive &&
+      oneShotSegmentEndMs !== null &&
+      currentMs >= oneShotSegmentEndMs
+    ) {
+      endPreview(true)
+    }
 
     transport.setTime(currentMs, totalMs)
     if (totalMs > 0) {
