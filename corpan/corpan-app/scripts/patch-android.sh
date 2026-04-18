@@ -2,7 +2,8 @@
 set -euo pipefail
 
 # Reproducible post-init patch for Tauri’s generated Android project.
-# - Forces compile/target SDK 35
+# - Pins compile/target SDK 36 (required by androidx.core 1.17.0 which
+#   tauri-plugin-iap transitively pulls in)
 # - Pins NDK r28.2.13676358 (16 KB page-size ready)
 # - Sets Java/Kotlin language level to 17
 # - Adds a clearly marked patch block; safe to re-run any time
@@ -35,10 +36,11 @@ if [ -f "$KTS_FILE" ]; then
   cat >> "$KTS_FILE" <<'KTS'
 /* BEGIN: corpan patch (idempotent) */
 android {
-    // Force modern SDK + NDK
-    compileSdk = 35
+    // Pin modern SDK + NDK. compileSdk must be 36+ for androidx.core 1.17.0
+    // (pulled in transitively by tauri-plugin-iap).
+    compileSdk = 36
     defaultConfig {
-        targetSdk = 35
+        targetSdk = 36
     }
     ndkVersion = "28.2.13676358"
 
@@ -60,10 +62,11 @@ elif [ -f "$GROOVY_FILE" ]; then
   cat >> "$GROOVY_FILE" <<'GROOVY'
 /* BEGIN: corpan patch (idempotent) */
 android {
-    // Force modern SDK + NDK
-    compileSdk 35
+    // Pin modern SDK + NDK. compileSdk must be 36+ for androidx.core 1.17.0
+    // (pulled in transitively by tauri-plugin-iap).
+    compileSdk 36
     defaultConfig {
-        targetSdk 35
+        targetSdk 36
     }
     ndkVersion "28.2.13676358"
 
@@ -99,5 +102,5 @@ mv "${PROPS}.tmp" "$PROPS"
 # Append a clean line
 echo 'android.javaCompile.suppressSourceTargetDeprecationWarning=true' >> "$PROPS"
 
-echo "✓ Patched: SDK=35, targetSdk=35, ndk=28.2.13676358, Java/Kotlin=17"
+echo "✓ Patched: SDK=36, targetSdk=36, ndk=28.2.13676358, Java/Kotlin=17"
 echo "You can now run: cargo tauri android dev"

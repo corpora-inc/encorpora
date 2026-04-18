@@ -73,7 +73,11 @@
     "showRomanization": "ರೋಮನೀಕರಣವನ್ನು ತೋರಿಸಿ",
     "scrollNavigation": "ಸ್ಕ್ರೋಲ್ ನ್ಯಾವಿಗೇಶನ್",
     "packs": "Packs",
-    "stacks": "Stacks"
+    "stacks": "Stacks",
+    "theme": "ಥೀಮ್",
+    "themeLight": "ಬೆಳಕು",
+    "themeDark": "ಕತ್ತಲೆ",
+    "themeSystem": "ಸಿಸ್ಟಮ್"
   },
   "onboarding": {
     "welcome": "ಸ್ವಾಗತ",
@@ -108,7 +112,10 @@
     "socialsStepTitle": "ಸಾಮಾಜಿಕ ಮಾಧ್ಯಮ",
     "noVoices": "ಧ್ವನಿಗಳು ಇಲ್ಲ",
     "noVoicesHint": "ಈ ಭಾಷೆಯನ್ನು ಸಕ್ರಿಯಗೊಳಿಸಲು ಧ್ವನಿಗಳನ್ನು ಸ್ಥಾಪಿಸಿ.",
-    "sendAppleFeedback": "Apple ಪ್ರತಿಕ್ರಿಯೆ ಕಳುಹಿಸಿ"
+    "sendAppleFeedback": "Apple ಪ್ರತಿಕ್ರಿಯೆ ಕಳುಹಿಸಿ",
+    "ttsGoogleInstalled": "Google TTS ಸ್ಥಾಪಿಸಲಾಗಿದೆ",
+    "ttsGoogleMissing": "Google TTS ಸ್ಥಾಪಿಸಲಾಗಿಲ್ಲ",
+    "ttsSetDefault": "ಡೀಫಾಲ್ಟ್ ಆಗಿ ಹೊಂದಿಸಿ"
   },
   "socials": {
     "youtube": {
@@ -296,6 +303,33 @@
     "devLink": "Free2z ನಲ್ಲಿ ಇನ್ನಷ್ಟು ತಿಳಿಯಿರಿ",
     "new": "ಹೊಸ",
     "updates": "ನವೀಕರಣಗಳು",
-    "offline": "ಆಫ್‌ಲೈನ್"
+    "offline": "ಆಫ್‌ಲೈನ್",
+    "purchasing": "ಖರೀದಿಸಲಾಗುತ್ತಿದೆ...",
+    "buy": "{{price}} ಖರೀದಿಸಿ",
+    "premium": "ಪ್ರೀಮಿಯಂ",
+    "availableOnMobile": "iOS ಮತ್ತು Android ನಲ್ಲಿ ಲಭ್ಯ"
+  },
+  "subscription": {
+    "title": "ಎಲ್ಲವನ್ನೂ ಅನ್‌ಲಾಕ್ ಮಾಡಿ",
+    "description": "ಚಂದಾದಾರಿಕೆಯೊಂದಿಗೆ ಎಲ್ಲಾ ಆಡಿಯೊಬುಕ್‌ಗಳು ಮತ್ತು ಪ್ರೀಮಿಯಂ ಪ್ಯಾಕ್‌ಗಳಿಗೆ ಅನಿಯಮಿತ ಪ್ರವೇಶ.",
+    "annual": "ವಾರ್ಷಿಕ",
+    "monthly": "ಮಾಸಿಕ",
+    "subscribe": "ಚಂದಾದಾರಿಕೆ",
+    "subscribing": "ಚಂದಾದಾರಿಕೆ ಮಾಡಲಾಗುತ್ತಿದೆ...",
+    "subscribed": "ನೀವು ಚಂದಾದಾರರಾಗಿದ್ದೀರಿ",
+    "subscribedDescription": "{{plan}} ಯೋಜನೆ ಸಕ್ರಿಯವಾಗಿದೆ. Corpán ಅನ್ನು ಬೆಂಬಲಿಸಿದ್ದಕ್ಕೆ ಧನ್ಯವಾದಗಳು.",
+    "manage": "ಚಂದಾದಾರಿಕೆ ನಿರ್ವಹಿಸಿ",
+    "termsOfUse": "ಬಳಕೆಯ ನಿಯಮಗಳು",
+    "privacyPolicy": "ಗೌಪ್ಯತೆ ನೀತಿ",
+    "autoRenewNotice": "ಚಂದಾದಾರಿಕೆಗಳು ಸ್ವಯಂಚಾಲಿತವಾಗಿ ನವೀಕರಿಸಲ್ಪಡುತ್ತವೆ. ನಿಮ್ಮ {{store}} ಖಾತೆಯಲ್ಲಿ ಯಾವುದೇ ಸಮಯದಲ್ಲಿ ರದ್ದುಗೊಳಿಸಿ.",
+    "storeApple": "Apple ID",
+    "storeGoogle": "Google Play"
+  },
+  "restore": {
+    "button": "ಖರೀದಿಗಳನ್ನು ಮರುಸ್ಥಾಪಿಸಿ",
+    "restoring": "ಮರುಸ್ಥಾಪಿಸಲಾಗುತ್ತಿದೆ...",
+    "noPurchases": "ಹಿಂದಿನ ಖರೀದಿಗಳು ಕಂಡುಬಂದಿಲ್ಲ.",
+    "success": "{{count}} ಖರೀದಿ(ಗಳು) ಮರುಸ್ಥಾಪಿಸಲಾಗಿದೆ.",
+    "error": "ಖರೀದಿಗಳನ್ನು ಮರುಸ್ಥಾಪಿಸಲು ವಿಫಲವಾಗಿದೆ."
   }
 }

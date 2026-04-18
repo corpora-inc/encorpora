@@ -1,4 +1,5 @@
 import type { CatalogV2, CatalogNarrationEntry, PurchaseInfo } from "./types"
+import { resolveVoiceName } from "../../core/constants"
 
 const CACHE_KEY = "reader-catalog-cache"
 
@@ -62,7 +63,7 @@ function parseNarration(item: unknown): CatalogNarrationEntry | null {
     language: toString(r.language) || "en",
     languageName: toOptString(r.languageName),
     voiceId: toString(r.voiceId) || "default",
-    voiceName: toString(r.voiceName) || "Default",
+    voiceName: toString(r.voiceName) || resolveVoiceName(toString(r.voiceId) || "default"),
     version,
     downloadUrl,
     sha256: toString(r.sha256),

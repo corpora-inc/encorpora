@@ -73,7 +73,11 @@
     "showRomanization": "Afficher la romanisation",
     "scrollNavigation": "Navigation par défilement",
     "packs": "Packs",
-    "stacks": "Stacks"
+    "stacks": "Stacks",
+    "theme": "Thème",
+    "themeLight": "Clair",
+    "themeDark": "Sombre",
+    "themeSystem": "Système"
   },
   "onboarding": {
     "welcome": "Bienvenue",
@@ -108,7 +112,10 @@
     "socialsStepTitle": "Réseaux sociaux",
     "noVoices": "Aucune voix",
     "noVoicesHint": "Installez des voix pour activer cette langue.",
-    "sendAppleFeedback": "Envoyer un avis à Apple"
+    "sendAppleFeedback": "Envoyer un avis à Apple",
+    "ttsGoogleInstalled": "Google TTS installé",
+    "ttsGoogleMissing": "Google TTS non installé",
+    "ttsSetDefault": "Définir par défaut"
   },
   "socials": {
     "youtube": {
@@ -296,6 +303,33 @@
     "devLink": "En savoir plus sur Free2z",
     "new": "Nouveau",
     "updates": "Mises à jour",
-    "offline": "Hors ligne"
+    "offline": "Hors ligne",
+    "purchasing": "Achat en cours...",
+    "buy": "Acheter {{price}}",
+    "premium": "Premium",
+    "availableOnMobile": "Disponible sur iOS et Android"
+  },
+  "subscription": {
+    "title": "Tout débloquer",
+    "description": "Accès illimité à tous les livres audio et packs premium avec un abonnement.",
+    "annual": "Annuel",
+    "monthly": "Mensuel",
+    "subscribe": "S'abonner",
+    "subscribing": "Abonnement en cours...",
+    "subscribed": "Vous êtes abonné",
+    "subscribedDescription": "Forfait {{plan}} actif. Merci de soutenir Corpán.",
+    "manage": "Gérer l'abonnement",
+    "termsOfUse": "Conditions d'utilisation",
+    "privacyPolicy": "Politique de confidentialité",
+    "autoRenewNotice": "Les abonnements se renouvellent automatiquement. Annulez à tout moment dans votre compte {{store}}.",
+    "storeApple": "Apple ID",
+    "storeGoogle": "Google Play"
+  },
+  "restore": {
+    "button": "Restaurer les achats",
+    "restoring": "Restauration...",
+    "noPurchases": "Aucun achat précédent trouvé.",
+    "success": "{{count}} achat(s) restauré(s).",
+    "error": "Échec de la restauration des achats."
   }
 }

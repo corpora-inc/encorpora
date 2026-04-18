@@ -1,0 +1,4411 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_miguel_de_cervantes",
+  "total_segments": 295,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note to the Reader",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "A Note to the Reader",
+      "text_markdown": "A Note to the Reader"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note to the Reader",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "This is not a story about a pirate.",
+      "text_markdown": "This is not a story about a pirate.",
+      "tts": {
+        "text": "This is not a story about a pirate.",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note to the Reader",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "It is a story about a man who was taken by pirates and held captive for five years.",
+      "text_markdown": "It is a story about a man who was taken by pirates and held captive for five years.",
+      "tts": {
+        "text": "It is a story about a man who was taken by pirates and held captive for five years.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note to the Reader",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Miguel de Cervantes is remembered as the greatest writer in the Spanish language.",
+      "text_markdown": "Miguel de Cervantes is remembered as the greatest writer in the Spanish language.",
+      "tts": {
+        "text": "Miguel de Cervantes is remembered as the greatest writer in the Spanish language.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note to the Reader",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He wrote Don Quixote, one of the most important novels ever published.",
+      "text_markdown": "He wrote Don Quixote, one of the most important novels ever published.",
+      "tts": {
+        "text": "He wrote Don Quixote, one of the most important novels ever published.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note to the Reader",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "But before he was a writer, Cervantes was a soldier.",
+      "text_markdown": "But before he was a writer, Cervantes was a soldier.",
+      "tts": {
+        "text": "But before he was a writer, Cervantes was a soldier.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note to the Reader",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "And before he was free to write, he spent five years as a slave in North Africa.",
+      "text_markdown": "And before he was free to write, he spent five years as a slave in North Africa.",
+      "tts": {
+        "text": "And before he was free to write, he spent five years as a slave in North Africa.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note to the Reader",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "His captivity shaped his writing in ways that scholars are still uncovering.",
+      "text_markdown": "His captivity shaped his writing in ways that scholars are still uncovering.",
+      "tts": {
+        "text": "His captivity shaped his writing in ways that scholars are still uncovering.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note to the Reader",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Scenes of imprisonment, escape, and human endurance appear throughout his work.",
+      "text_markdown": "Scenes of imprisonment, escape, and human endurance appear throughout his work.",
+      "tts": {
+        "text": "Scenes of imprisonment, escape, and human endurance appear throughout his work.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note to the Reader",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "This story is told with the understanding that Cervantes suffered greatly.",
+      "text_markdown": "This story is told with the understanding that Cervantes suffered greatly.",
+      "tts": {
+        "text": "This story is told with the understanding that Cervantes suffered greatly.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note to the Reader",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "It treats his experience with the seriousness and respect it deserves.",
+      "text_markdown": "It treats his experience with the seriousness and respect it deserves.",
+      "tts": {
+        "text": "It treats his experience with the seriousness and respect it deserves.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note to the Reader",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The events described here are based on historical records, including Cervantes' own testimony and contemporary accounts.",
+      "text_markdown": "The events described here are based on historical records, including Cervantes' own testimony and contemporary accounts.",
+      "tts": {
+        "text": "The events described here are based on historical records, including Cervantes' own testimony and contemporary accounts.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-013",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note to the Reader",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Where details are uncertain, the text says so.",
+      "text_markdown": "Where details are uncertain, the text says so.",
+      "tts": {
+        "text": "Where details are uncertain, the text says so.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Mediterranean World",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "The Mediterranean World",
+      "text_markdown": "The Mediterranean World"
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Mediterranean World",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The Mediterranean Sea in the 1500s was the center of the world.",
+      "text_markdown": "The Mediterranean Sea in the 1500s was the center of the world.",
+      "tts": {
+        "text": "The Mediterranean Sea in the fifteen hundreds was the center of the world.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Mediterranean World",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "It was bordered by three continents and dozens of kingdoms, empires, and city-states.",
+      "text_markdown": "It was bordered by three continents and dozens of kingdoms, empires, and city-states.",
+      "tts": {
+        "text": "It was bordered by three continents and dozens of kingdoms, empires, and city-states.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Mediterranean World",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Trade, war, and cultural exchange flowed across its waters constantly.",
+      "text_markdown": "Trade, war, and cultural exchange flowed across its waters constantly.",
+      "tts": {
+        "text": "Trade, war, and cultural exchange flowed across its waters constantly.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Mediterranean World",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Two great powers dominated the Mediterranean during this era.",
+      "text_markdown": "Two great powers dominated the Mediterranean during this era.",
+      "tts": {
+        "text": "Two great powers dominated the Mediterranean during this era.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Mediterranean World",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "In the west, the Spanish Empire was the richest and most powerful state in Europe.",
+      "text_markdown": "In the west, the Spanish Empire was the richest and most powerful state in Europe.",
+      "tts": {
+        "text": "In the west, the Spanish Empire was the richest and most powerful state in Europe.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Mediterranean World",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "In the east, the Ottoman Empire controlled a vast territory stretching from Hungary to North Africa.",
+      "text_markdown": "In the east, the Ottoman Empire controlled a vast territory stretching from Hungary to North Africa.",
+      "tts": {
+        "text": "In the east, the Ottoman Empire controlled a vast territory stretching from Hungary to North Africa.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Mediterranean World",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The conflict between these two empires was not just political.",
+      "text_markdown": "The conflict between these two empires was not just political.",
+      "tts": {
+        "text": "The conflict between these two empires was not just political.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Mediterranean World",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "It was also religious.",
+      "text_markdown": "It was also religious.",
+      "tts": {
+        "text": "It was also religious.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Mediterranean World",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Spain was the champion of Catholic Christendom, and the Ottomans led the Islamic world.",
+      "text_markdown": "Spain was the champion of Catholic Christendom, and the Ottomans led the Islamic world.",
+      "tts": {
+        "text": "Spain was the champion of Catholic Christendom, and the Ottomans led the Islamic world.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Mediterranean World",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "This religious dimension made the conflict especially bitter.",
+      "text_markdown": "This religious dimension made the conflict especially bitter.",
+      "tts": {
+        "text": "This religious dimension made the conflict especially bitter.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Mediterranean World",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Both sides saw themselves as fighting for God.",
+      "text_markdown": "Both sides saw themselves as fighting for God.",
+      "tts": {
+        "text": "Both sides saw themselves as fighting for God.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Mediterranean World",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Prisoners of war were often enslaved rather than exchanged or released.",
+      "text_markdown": "Prisoners of war were often enslaved rather than exchanged or released.",
+      "tts": {
+        "text": "Prisoners of war were often enslaved rather than exchanged or released.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Mediterranean World",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The Barbary Coast of North Africa was a major center of corsair activity.",
+      "text_markdown": "The Barbary Coast of North Africa was a major center of corsair activity.",
+      "tts": {
+        "text": "The Barbary Coast of North Africa was a major center of corsair activity.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Mediterranean World",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The cities of Algiers, Tunis, and Tripoli were home to thousands of corsairs who raided European shipping and coastal towns.",
+      "text_markdown": "The cities of Algiers, Tunis, and Tripoli were home to thousands of corsairs who raided European shipping and coastal towns.",
+      "tts": {
+        "text": "The cities of Algiers, Tunis, and Tripoli were home to thousands of corsairs who raided European shipping and coastal towns.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Mediterranean World",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "These Barbary corsairs were not simply pirates.",
+      "text_markdown": "These Barbary corsairs were not simply pirates.",
+      "tts": {
+        "text": "These Barbary corsairs were not simply pirates.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Mediterranean World",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Many operated with the official backing of the Ottoman Empire or local rulers.",
+      "text_markdown": "Many operated with the official backing of the Ottoman Empire or local rulers.",
+      "tts": {
+        "text": "Many operated with the official backing of the Ottoman Empire or local rulers.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Mediterranean World",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "They were part of a broader system of naval warfare, commerce, and slave trading.",
+      "text_markdown": "They were part of a broader system of naval warfare, commerce, and slave trading.",
+      "tts": {
+        "text": "They were part of a broader system of naval warfare, commerce, and slave trading.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Mediterranean World",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The slave trade was central to the economy of the Barbary states.",
+      "text_markdown": "The slave trade was central to the economy of the Barbary states.",
+      "tts": {
+        "text": "The slave trade was central to the economy of the Barbary states.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Mediterranean World",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Captured Europeans were sold in the slave markets of Algiers, Tunis, and other cities.",
+      "text_markdown": "Captured Europeans were sold in the slave markets of Algiers, Tunis, and other cities.",
+      "tts": {
+        "text": "Captured Europeans were sold in the slave markets of Algiers, Tunis, and other cities.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Mediterranean World",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Wealthy or important captives could be ransomed, but the process took years and cost enormous sums.",
+      "text_markdown": "Wealthy or important captives could be ransomed, but the process took years and cost enormous sums.",
+      "tts": {
+        "text": "Wealthy or important captives could be ransomed, but the process took years and cost enormous sums.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Mediterranean World",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Historians estimate that over a million Europeans were enslaved by Barbary corsairs between 1500 and 1800.",
+      "text_markdown": "Historians estimate that over a million Europeans were enslaved by Barbary corsairs between 1500 and 1800.",
+      "tts": {
+        "text": "Historians estimate that over a million Europeans were enslaved by Barbary corsairs between fifteen hundred and eighteen hundred.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Mediterranean World",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "These captives came from every country with a Mediterranean coastline.",
+      "text_markdown": "These captives came from every country with a Mediterranean coastline.",
+      "tts": {
+        "text": "These captives came from every country with a Mediterranean coastline.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Mediterranean World",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Spain itself was a frequent target of corsair raids.",
+      "text_markdown": "Spain itself was a frequent target of corsair raids.",
+      "tts": {
+        "text": "Spain itself was a frequent target of corsair raids.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Mediterranean World",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Coastal villages in Andalusia, Valencia, and the Balearic Islands were attacked regularly.",
+      "text_markdown": "Coastal villages in Andalusia, Valencia, and the Balearic Islands were attacked regularly.",
+      "tts": {
+        "text": "Coastal villages in Andalusia, Valencia, and the Balearic Islands were attacked regularly.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Mediterranean World",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Watchtowers lined the Spanish coast to warn of approaching raiders.",
+      "text_markdown": "Watchtowers lined the Spanish coast to warn of approaching raiders.",
+      "tts": {
+        "text": "Watchtowers lined the Spanish coast to warn of approaching raiders.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Mediterranean World",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Religious orders were established specifically to ransom Christian captives from Muslim lands.",
+      "text_markdown": "Religious orders were established specifically to ransom Christian captives from Muslim lands.",
+      "tts": {
+        "text": "Religious orders were established specifically to ransom Christian captives from Muslim lands.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Mediterranean World",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The most important of these was the Order of the Most Holy Trinity, known as the Trinitarians.",
+      "text_markdown": "The most important of these was the Order of the Most Holy Trinity, known as the Trinitarians.",
+      "tts": {
+        "text": "The most important of these was the Order of the Most Holy Trinity, known as the Trinitarians.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Mediterranean World",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Trinitarian friars traveled to North Africa to negotiate the release of enslaved Christians.",
+      "text_markdown": "Trinitarian friars traveled to North Africa to negotiate the release of enslaved Christians.",
+      "tts": {
+        "text": "Trinitarian friars traveled to North Africa to negotiate the release of enslaved Christians.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Mediterranean World",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The ransoming process was slow, expensive, and uncertain.",
+      "text_markdown": "The ransoming process was slow, expensive, and uncertain.",
+      "tts": {
+        "text": "The ransoming process was slow, expensive, and uncertain.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Mediterranean World",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Families often had to beg, borrow, and sell everything they owned to raise the ransom money.",
+      "text_markdown": "Families often had to beg, borrow, and sell everything they owned to raise the ransom money.",
+      "tts": {
+        "text": "Families often had to beg, borrow, and sell everything they owned to raise the ransom money.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Mediterranean World",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Many captives waited years before anyone came for them.",
+      "text_markdown": "Many captives waited years before anyone came for them.",
+      "tts": {
+        "text": "Many captives waited years before anyone came for them.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Mediterranean World",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Some were never ransomed at all.",
+      "text_markdown": "Some were never ransomed at all.",
+      "tts": {
+        "text": "Some were never ransomed at all.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Mediterranean World",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "They spent the rest of their lives in captivity, laboring in quarries, on farms, or as galley slaves chained to oars.",
+      "text_markdown": "They spent the rest of their lives in captivity, laboring in quarries, on farms, or as galley slaves chained to oars.",
+      "tts": {
+        "text": "They spent the rest of their lives in captivity, laboring in quarries, on farms, or as galley slaves chained to oars.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Mediterranean World",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "This was the world that shaped Miguel de Cervantes.",
+      "text_markdown": "This was the world that shaped Miguel de Cervantes.",
+      "tts": {
+        "text": "This was the world that shaped Miguel de Cervantes.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Mediterranean World",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He grew up in a Spain defined by its struggle with the Ottoman Empire and the Barbary corsairs.",
+      "text_markdown": "He grew up in a Spain defined by its struggle with the Ottoman Empire and the Barbary corsairs.",
+      "tts": {
+        "text": "He grew up in a Spain defined by its struggle with the Ottoman Empire and the Barbary corsairs.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Mediterranean World",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "He would experience that struggle firsthand, as both a soldier and a captive.",
+      "text_markdown": "He would experience that struggle firsthand, as both a soldier and a captive.",
+      "tts": {
+        "text": "He would experience that struggle firsthand, as both a soldier and a captive.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Mediterranean World",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The Ottoman Empire at its height was one of the largest empires the world had ever seen.",
+      "text_markdown": "The Ottoman Empire at its height was one of the largest empires the world had ever seen.",
+      "tts": {
+        "text": "The Ottoman Empire at its height was one of the largest empires the world had ever seen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Mediterranean World",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Its sultan ruled from Constantinople, the great city on the Bosporus.",
+      "text_markdown": "Its sultan ruled from Constantinople, the great city on the Bosporus.",
+      "tts": {
+        "text": "Its sultan ruled from Constantinople, the great city on the Bosporus.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Mediterranean World",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The empire controlled trade routes from the Indian Ocean to the gates of Vienna.",
+      "text_markdown": "The empire controlled trade routes from the Indian Ocean to the gates of Vienna.",
+      "tts": {
+        "text": "The empire controlled trade routes from the Indian Ocean to the gates of Vienna.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Mediterranean World",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Spain's power was funded by silver from the Americas and the religious zeal of the Counter-Reformation.",
+      "text_markdown": "Spain's power was funded by silver from the Americas and the religious zeal of the Counter-Reformation.",
+      "tts": {
+        "text": "Spain's power was funded by silver from the Americas and the religious zeal of the Counter-Reformation.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Mediterranean World",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "King Philip II ruled an empire on which the sun never set.",
+      "text_markdown": "King Philip II ruled an empire on which the sun never set.",
+      "tts": {
+        "text": "King Philip the Second ruled an empire on which the sun never set.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Mediterranean World",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "But Spain's wars in Europe and the Mediterranean drained its treasury faster than the silver could fill it.",
+      "text_markdown": "But Spain's wars in Europe and the Mediterranean drained its treasury faster than the silver could fill it.",
+      "tts": {
+        "text": "But Spain's wars in Europe and the Mediterranean drained its treasury faster than the silver could fill it.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Mediterranean World",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The city of Algiers was the corsair capital of the world.",
+      "text_markdown": "The city of Algiers was the corsair capital of the world.",
+      "tts": {
+        "text": "The city of Algiers was the corsair capital of the world.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-058",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Mediterranean World",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "It was technically an Ottoman province, but in practice the corsair captains ran the city.",
+      "text_markdown": "It was technically an Ottoman province, but in practice the corsair captains ran the city.",
+      "tts": {
+        "text": "It was technically an Ottoman province, but in practice the corsair captains ran the city.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-059",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Mediterranean World",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Wealth from raids and slave trading made Algiers one of the richest cities in the Mediterranean.",
+      "text_markdown": "Wealth from raids and slave trading made Algiers one of the richest cities in the Mediterranean.",
+      "tts": {
+        "text": "Wealth from raids and slave trading made Algiers one of the richest cities in the Mediterranean.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-060",
+      "part": 0,
+      "chapter": 2,
+      "title": "A Soldier of Spain",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "A Soldier of Spain",
+      "text_markdown": "A Soldier of Spain"
+    },
+    {
+      "id": "ch02-061",
+      "part": 0,
+      "chapter": 2,
+      "title": "A Soldier of Spain",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Miguel de Cervantes was born on September 29, 1547, in Alcala de Henares, a university town near Madrid.",
+      "text_markdown": "Miguel de Cervantes was born on September 29, 1547, in Alcala de Henares, a university town near Madrid.",
+      "tts": {
+        "text": "Miguel de Cervantes was born on September twenty-ninth, fifteen forty-seven, in Alcala de Henares, a university town near Madrid.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-062",
+      "part": 0,
+      "chapter": 2,
+      "title": "A Soldier of Spain",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "His father, Rodrigo de Cervantes, was a barber-surgeon who struggled to make a living.",
+      "text_markdown": "His father, Rodrigo de Cervantes, was a barber-surgeon who struggled to make a living.",
+      "tts": {
+        "text": "His father, Rodrigo de Cervantes, was a barber-surgeon who struggled to make a living.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-063",
+      "part": 0,
+      "chapter": 2,
+      "title": "A Soldier of Spain",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The family moved frequently during Miguel's childhood, chasing work from town to town.",
+      "text_markdown": "The family moved frequently during Miguel's childhood, chasing work from town to town.",
+      "tts": {
+        "text": "The family moved frequently during Miguel's childhood, chasing work from town to town.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-064",
+      "part": 0,
+      "chapter": 2,
+      "title": "A Soldier of Spain",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "They lived in Valladolid, Cordoba, Seville, and Madrid at various times.",
+      "text_markdown": "They lived in Valladolid, Cordoba, Seville, and Madrid at various times.",
+      "tts": {
+        "text": "They lived in Valladolid, Cordoba, Seville, and Madrid at various times.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-065",
+      "part": 0,
+      "chapter": 2,
+      "title": "A Soldier of Spain",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Poverty was a constant companion.",
+      "text_markdown": "Poverty was a constant companion.",
+      "tts": {
+        "text": "Poverty was a constant companion.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "A Soldier of Spain",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Despite the family's limited means, Cervantes received a decent education.",
+      "text_markdown": "Despite the family's limited means, Cervantes received a decent education.",
+      "tts": {
+        "text": "Despite the family's limited means, Cervantes received a decent education.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "A Soldier of Spain",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He studied under a schoolmaster in Madrid and developed a passion for literature and poetry.",
+      "text_markdown": "He studied under a schoolmaster in Madrid and developed a passion for literature and poetry.",
+      "tts": {
+        "text": "He studied under a schoolmaster in Madrid and developed a passion for literature and poetry.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "A Soldier of Spain",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Spain in the mid-1500s was experiencing its Golden Age.",
+      "text_markdown": "Spain in the mid-1500s was experiencing its Golden Age.",
+      "tts": {
+        "text": "Spain in the mid-fifteen hundreds was experiencing its Golden Age.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "A Soldier of Spain",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Art, literature, and religious fervor flourished alongside military expansion.",
+      "text_markdown": "Art, literature, and religious fervor flourished alongside military expansion.",
+      "tts": {
+        "text": "Art, literature, and religious fervor flourished alongside military expansion.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "A Soldier of Spain",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "It was a time of great ambition and even greater inequality.",
+      "text_markdown": "It was a time of great ambition and even greater inequality.",
+      "tts": {
+        "text": "It was a time of great ambition and even greater inequality.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "A Soldier of Spain",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In 1569, Cervantes left Spain for Italy.",
+      "text_markdown": "In 1569, Cervantes left Spain for Italy.",
+      "tts": {
+        "text": "In fifteen sixty-nine, Cervantes left Spain for Italy.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "A Soldier of Spain",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The reasons for his departure are debated.",
+      "text_markdown": "The reasons for his departure are debated.",
+      "tts": {
+        "text": "The reasons for his departure are debated.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "A Soldier of Spain",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "He may have been fleeing a legal dispute, or he may simply have been seeking adventure.",
+      "text_markdown": "He may have been fleeing a legal dispute, or he may simply have been seeking adventure.",
+      "tts": {
+        "text": "He may have been fleeing a legal dispute, or he may simply have been seeking adventure.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "A Soldier of Spain",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In Italy, Cervantes fell in love with Italian art and literature.",
+      "text_markdown": "In Italy, Cervantes fell in love with Italian art and literature.",
+      "tts": {
+        "text": "In Italy, Cervantes fell in love with Italian art and literature.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "A Soldier of Spain",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He read the great Italian poets and absorbed the culture of the Renaissance.",
+      "text_markdown": "He read the great Italian poets and absorbed the culture of the Renaissance.",
+      "tts": {
+        "text": "He read the great Italian poets and absorbed the culture of the Renaissance.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "A Soldier of Spain",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "These influences would shape his writing for the rest of his life.",
+      "text_markdown": "These influences would shape his writing for the rest of his life.",
+      "tts": {
+        "text": "These influences would shape his writing for the rest of his life.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "A Soldier of Spain",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "He also enlisted as a soldier in the Spanish military.",
+      "text_markdown": "He also enlisted as a soldier in the Spanish military.",
+      "tts": {
+        "text": "He also enlisted as a soldier in the Spanish military.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "A Soldier of Spain",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He joined a regiment stationed in Naples, which was then part of the Spanish Empire.",
+      "text_markdown": "He joined a regiment stationed in Naples, which was then part of the Spanish Empire.",
+      "tts": {
+        "text": "He joined a regiment stationed in Naples, which was then part of the Spanish Empire.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "A Soldier of Spain",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In 1571, the Ottoman Empire sent a massive fleet into the eastern Mediterranean.",
+      "text_markdown": "In 1571, the Ottoman Empire sent a massive fleet into the eastern Mediterranean.",
+      "tts": {
+        "text": "In fifteen seventy-one, the Ottoman Empire sent a massive fleet into the eastern Mediterranean.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "A Soldier of Spain",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The Ottomans had recently conquered the island of Cyprus from Venice.",
+      "text_markdown": "The Ottomans had recently conquered the island of Cyprus from Venice.",
+      "tts": {
+        "text": "The Ottomans had recently conquered the island of Cyprus from Venice.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "A Soldier of Spain",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Christian Europe was alarmed.",
+      "text_markdown": "Christian Europe was alarmed.",
+      "tts": {
+        "text": "Christian Europe was alarmed.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "A Soldier of Spain",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pope Pius V organized a Holy League of Christian states to confront the Ottoman threat.",
+      "text_markdown": "Pope Pius V organized a Holy League of Christian states to confront the Ottoman threat.",
+      "tts": {
+        "text": "Pope Pius the Fifth organized a Holy League of Christian states to confront the Ottoman threat.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "A Soldier of Spain",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Spain, Venice, and the Papal States contributed ships and soldiers.",
+      "text_markdown": "Spain, Venice, and the Papal States contributed ships and soldiers.",
+      "tts": {
+        "text": "Spain, Venice, and the Papal States contributed ships and soldiers.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "A Soldier of Spain",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The combined fleet assembled at the port of Messina in Sicily.",
+      "text_markdown": "The combined fleet assembled at the port of Messina in Sicily.",
+      "tts": {
+        "text": "The combined fleet assembled at the port of Messina in Sicily.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "A Soldier of Spain",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Miguel de Cervantes was aboard one of the Spanish galleys.",
+      "text_markdown": "Miguel de Cervantes was aboard one of the Spanish galleys.",
+      "tts": {
+        "text": "Miguel de Cervantes was aboard one of the Spanish galleys.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "A Soldier of Spain",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He was 24 years old, a common soldier with no rank or distinction.",
+      "text_markdown": "He was 24 years old, a common soldier with no rank or distinction.",
+      "tts": {
+        "text": "He was twenty-four years old, a common soldier with no rank or distinction.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "A Soldier of Spain",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "On October 7, 1571, the two fleets met at the Battle of Lepanto in the Gulf of Patras off the coast of Greece.",
+      "text_markdown": "On October 7, 1571, the two fleets met at the Battle of Lepanto in the Gulf of Patras off the coast of Greece.",
+      "tts": {
+        "text": "On October seventh, fifteen seventy-one, the two fleets met at the Battle of Lepanto in the Gulf of Patras off the coast of Greece.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "A Soldier of Spain",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "It was one of the largest naval battles in history.",
+      "text_markdown": "It was one of the largest naval battles in history.",
+      "tts": {
+        "text": "It was one of the largest naval battles in history.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "A Soldier of Spain",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Over 400 warships clashed in the narrow waters of the gulf.",
+      "text_markdown": "Over 400 warships clashed in the narrow waters of the gulf.",
+      "tts": {
+        "text": "Over four hundred warships clashed in the narrow waters of the gulf.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "A Soldier of Spain",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The battle was savage, fought ship to ship and hand to hand.",
+      "text_markdown": "The battle was savage, fought ship to ship and hand to hand.",
+      "tts": {
+        "text": "The battle was savage, fought ship to ship and hand to hand.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "A Soldier of Spain",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Tens of thousands of men died in a single day of fighting.",
+      "text_markdown": "Tens of thousands of men died in a single day of fighting.",
+      "tts": {
+        "text": "Tens of thousands of men died in a single day of fighting.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "A Soldier of Spain",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cervantes was ill with fever on the day of the battle.",
+      "text_markdown": "Cervantes was ill with fever on the day of the battle.",
+      "tts": {
+        "text": "Cervantes was ill with fever on the day of the battle.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "A Soldier of Spain",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "His officers offered to let him stay below deck.",
+      "text_markdown": "His officers offered to let him stay below deck.",
+      "tts": {
+        "text": "His officers offered to let him stay below deck.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "A Soldier of Spain",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "He refused, saying he would rather fight and die than hide while his comrades bled.",
+      "text_markdown": "He refused, saying he would rather fight and die than hide while his comrades bled.",
+      "tts": {
+        "text": "He refused, saying he would rather fight and die than hide while his comrades bled.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "A Soldier of Spain",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "During the battle, Cervantes was wounded three times.",
+      "text_markdown": "During the battle, Cervantes was wounded three times.",
+      "tts": {
+        "text": "During the battle, Cervantes was wounded three times.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "A Soldier of Spain",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Two of the wounds were in the chest.",
+      "text_markdown": "Two of the wounds were in the chest.",
+      "tts": {
+        "text": "Two of the wounds were in the chest.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "A Soldier of Spain",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The third shattered his left hand, leaving it permanently useless.",
+      "text_markdown": "The third shattered his left hand, leaving it permanently useless.",
+      "tts": {
+        "text": "The third shattered his left hand, leaving it permanently useless.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "A Soldier of Spain",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The Christian fleet won a decisive victory at Lepanto.",
+      "text_markdown": "The Christian fleet won a decisive victory at Lepanto.",
+      "tts": {
+        "text": "The Christian fleet won a decisive victory at Lepanto.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "A Soldier of Spain",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The Ottoman navy was virtually destroyed.",
+      "text_markdown": "The Ottoman navy was virtually destroyed.",
+      "tts": {
+        "text": "The Ottoman navy was virtually destroyed.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "A Soldier of Spain",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Across Christian Europe, the victory was celebrated as a miracle.",
+      "text_markdown": "Across Christian Europe, the victory was celebrated as a miracle.",
+      "tts": {
+        "text": "Across Christian Europe, the victory was celebrated as a miracle.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "A Soldier of Spain",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cervantes spent months recovering from his wounds in a hospital in Messina.",
+      "text_markdown": "Cervantes spent months recovering from his wounds in a hospital in Messina.",
+      "tts": {
+        "text": "Cervantes spent months recovering from his wounds in a hospital in Messina.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "A Soldier of Spain",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He would carry the scars for the rest of his life.",
+      "text_markdown": "He would carry the scars for the rest of his life.",
+      "tts": {
+        "text": "He would carry the scars for the rest of his life.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "A Soldier of Spain",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "He later referred to his maimed hand as a badge of honor, proof that he had fought at the greatest battle of his age.",
+      "text_markdown": "He later referred to his maimed hand as a badge of honor, proof that he had fought at the greatest battle of his age.",
+      "tts": {
+        "text": "He later referred to his maimed hand as a badge of honor, proof that he had fought at the greatest battle of his age.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "A Soldier of Spain",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "After his recovery, Cervantes continued to serve as a soldier in the Mediterranean.",
+      "text_markdown": "After his recovery, Cervantes continued to serve as a soldier in the Mediterranean.",
+      "tts": {
+        "text": "After his recovery, Cervantes continued to serve as a soldier in the Mediterranean.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "A Soldier of Spain",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He was stationed in various Italian garrisons and took part in several more military campaigns.",
+      "text_markdown": "He was stationed in various Italian garrisons and took part in several more military campaigns.",
+      "tts": {
+        "text": "He was stationed in various Italian garrisons and took part in several more military campaigns.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "A Soldier of Spain",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "By 1575, Cervantes was ready to go home.",
+      "text_markdown": "By 1575, Cervantes was ready to go home.",
+      "tts": {
+        "text": "By fifteen seventy-five, Cervantes was ready to go home.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "A Soldier of Spain",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He had served Spain for six years and carried letters of recommendation from his commanders.",
+      "text_markdown": "He had served Spain for six years and carried letters of recommendation from his commanders.",
+      "tts": {
+        "text": "He had served Spain for six years and carried letters of recommendation from his commanders.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-108",
+      "part": 0,
+      "chapter": 2,
+      "title": "A Soldier of Spain",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "He hoped these letters would help him secure a commission or a government position back in Spain.",
+      "text_markdown": "He hoped these letters would help him secure a commission or a government position back in Spain.",
+      "tts": {
+        "text": "He hoped these letters would help him secure a commission or a government position back in Spain.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-109",
+      "part": 0,
+      "chapter": 2,
+      "title": "A Soldier of Spain",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In September 1575, Cervantes and his younger brother Rodrigo boarded the galley Sol in Naples.",
+      "text_markdown": "In September 1575, Cervantes and his younger brother Rodrigo boarded the galley Sol in Naples.",
+      "tts": {
+        "text": "In September of fifteen seventy-five, Cervantes and his younger brother Rodrigo boarded the galley Sol in Naples.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-110",
+      "part": 0,
+      "chapter": 2,
+      "title": "A Soldier of Spain",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "They were sailing home to Spain.",
+      "text_markdown": "They were sailing home to Spain.",
+      "tts": {
+        "text": "They were sailing home to Spain.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-111",
+      "part": 0,
+      "chapter": 2,
+      "title": "A Soldier of Spain",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "They never arrived.",
+      "text_markdown": "They never arrived.",
+      "tts": {
+        "text": "They never arrived.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-112",
+      "part": 0,
+      "chapter": 3,
+      "title": "Taken by Corsairs",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Taken by Corsairs",
+      "text_markdown": "Taken by Corsairs"
+    },
+    {
+      "id": "ch03-113",
+      "part": 0,
+      "chapter": 3,
+      "title": "Taken by Corsairs",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "On September 26, 1575, the galley Sol was sailing off the coast of Catalonia when it was attacked.",
+      "text_markdown": "On September 26, 1575, the galley Sol was sailing off the coast of Catalonia when it was attacked.",
+      "tts": {
+        "text": "On September twenty-sixth, fifteen seventy-five, the galley Sol was sailing off the coast of Catalonia when it was attacked.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-114",
+      "part": 0,
+      "chapter": 3,
+      "title": "Taken by Corsairs",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "A squadron of Barbary corsairs from Algiers intercepted the ship.",
+      "text_markdown": "A squadron of Barbary corsairs from Algiers intercepted the ship.",
+      "tts": {
+        "text": "A squadron of Barbary corsairs from Algiers intercepted the ship.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-115",
+      "part": 0,
+      "chapter": 3,
+      "title": "Taken by Corsairs",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The corsair fleet was led by a captain named Arnaut Mami, an Albanian renegade who had converted to Islam.",
+      "text_markdown": "The corsair fleet was led by a captain named Arnaut Mami, an Albanian renegade who had converted to Islam.",
+      "tts": {
+        "text": "The corsair fleet was led by a captain named Arnaut Mami, an Albanian renegade who had converted to Islam.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-116",
+      "part": 0,
+      "chapter": 3,
+      "title": "Taken by Corsairs",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Renegades were common among the corsairs.",
+      "text_markdown": "Renegades were common among the corsairs.",
+      "tts": {
+        "text": "Renegades were common among the corsairs.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "title": "Taken by Corsairs",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Many were European-born men who had converted to Islam and now served the Barbary states.",
+      "text_markdown": "Many were European-born men who had converted to Islam and now served the Barbary states.",
+      "tts": {
+        "text": "Many were European-born men who had converted to Islam and now served the Barbary states.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "Taken by Corsairs",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The Sol was a small galley, poorly armed and carrying passengers rather than soldiers.",
+      "text_markdown": "The Sol was a small galley, poorly armed and carrying passengers rather than soldiers.",
+      "tts": {
+        "text": "The Sol was a small galley, poorly armed and carrying passengers rather than soldiers.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "Taken by Corsairs",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "She was no match for the corsair warships.",
+      "text_markdown": "She was no match for the corsair warships.",
+      "tts": {
+        "text": "She was no match for the corsair warships.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "Taken by Corsairs",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "After a brief resistance, the Sol was captured.",
+      "text_markdown": "After a brief resistance, the Sol was captured.",
+      "tts": {
+        "text": "After a brief resistance, the Sol was captured.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "Taken by Corsairs",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cervantes and his brother Rodrigo were among the captives.",
+      "text_markdown": "Cervantes and his brother Rodrigo were among the captives.",
+      "tts": {
+        "text": "Cervantes and his brother Rodrigo were among the captives.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "Taken by Corsairs",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The corsairs searched the prisoners for valuables and documents.",
+      "text_markdown": "The corsairs searched the prisoners for valuables and documents.",
+      "tts": {
+        "text": "The corsairs searched the prisoners for valuables and documents.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "Taken by Corsairs",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "When they found Cervantes' letters of recommendation from Spanish generals, they assumed he was a person of great importance.",
+      "text_markdown": "When they found Cervantes' letters of recommendation from Spanish generals, they assumed he was a person of great importance.",
+      "tts": {
+        "text": "When they found Cervantes' letters of recommendation from Spanish generals, they assumed he was a person of great importance.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "Taken by Corsairs",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "They set his ransom at 500 gold escudos, an enormous sum.",
+      "text_markdown": "They set his ransom at 500 gold escudos, an enormous sum.",
+      "tts": {
+        "text": "They set his ransom at five hundred gold escudos, an enormous sum.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "Taken by Corsairs",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In reality, Cervantes was from a modest family that could never afford such a ransom.",
+      "text_markdown": "In reality, Cervantes was from a modest family that could never afford such a ransom.",
+      "tts": {
+        "text": "In reality, Cervantes was from a modest family that could never afford such a ransom.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "Taken by Corsairs",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The letters that were meant to advance his career had instead made his captivity far more difficult to end.",
+      "text_markdown": "The letters that were meant to advance his career had instead made his captivity far more difficult to end.",
+      "tts": {
+        "text": "The letters that were meant to advance his career had instead made his captivity far more difficult to end.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "Taken by Corsairs",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The captives were taken to Algiers, the largest and most powerful corsair city in North Africa.",
+      "text_markdown": "The captives were taken to Algiers, the largest and most powerful corsair city in North Africa.",
+      "tts": {
+        "text": "The captives were taken to Algiers, the largest and most powerful corsair city in North Africa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "Taken by Corsairs",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Algiers was a city of over 100,000 people, a bustling port filled with mosques, markets, and slave pens.",
+      "text_markdown": "Algiers was a city of over 100,000 people, a bustling port filled with mosques, markets, and slave pens.",
+      "tts": {
+        "text": "Algiers was a city of over one hundred thousand people, a bustling port filled with mosques, markets, and slave pens.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "Taken by Corsairs",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "An estimated 25,000 Christian slaves lived in Algiers at any given time during this period.",
+      "text_markdown": "An estimated 25,000 Christian slaves lived in Algiers at any given time during this period.",
+      "tts": {
+        "text": "An estimated twenty-five thousand Christian slaves lived in Algiers at any given time during this period.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "Taken by Corsairs",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "They came from Spain, Italy, France, Portugal, and as far away as Iceland and Ireland.",
+      "text_markdown": "They came from Spain, Italy, France, Portugal, and as far away as Iceland and Ireland.",
+      "tts": {
+        "text": "They came from Spain, Italy, France, Portugal, and as far away as Iceland and Ireland.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "Taken by Corsairs",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cervantes was assigned to a master named Dali Mami, a Greek renegade who captained one of the corsair ships.",
+      "text_markdown": "Cervantes was assigned to a master named Dali Mami, a Greek renegade who captained one of the corsair ships.",
+      "tts": {
+        "text": "Cervantes was assigned to a master named Dali Mami, a Greek renegade who captained one of the corsair ships.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "Taken by Corsairs",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Dali Mami was known for his cruelty toward captives.",
+      "text_markdown": "Dali Mami was known for his cruelty toward captives.",
+      "tts": {
+        "text": "Dali Mami was known for his cruelty toward captives.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "Taken by Corsairs",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The conditions of captivity varied widely in Algiers.",
+      "text_markdown": "The conditions of captivity varied widely in Algiers.",
+      "tts": {
+        "text": "The conditions of captivity varied widely in Algiers.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "Taken by Corsairs",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Wealthy captives who were awaiting ransom might be held in relative comfort.",
+      "text_markdown": "Wealthy captives who were awaiting ransom might be held in relative comfort.",
+      "tts": {
+        "text": "Wealthy captives who were awaiting ransom might be held in relative comfort.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "Taken by Corsairs",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Poor captives with no hope of ransom were put to hard labor.",
+      "text_markdown": "Poor captives with no hope of ransom were put to hard labor.",
+      "tts": {
+        "text": "Poor captives with no hope of ransom were put to hard labor.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "Taken by Corsairs",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Some slaves worked in quarries or on construction projects.",
+      "text_markdown": "Some slaves worked in quarries or on construction projects.",
+      "tts": {
+        "text": "Some slaves worked in quarries or on construction projects.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "Taken by Corsairs",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Others were chained to the oars of galleys and rowed until they collapsed.",
+      "text_markdown": "Others were chained to the oars of galleys and rowed until they collapsed.",
+      "tts": {
+        "text": "Others were chained to the oars of galleys and rowed until they collapsed.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "Taken by Corsairs",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The worst fate was the bagno, a prison where slaves were held in overcrowded, filthy cells.",
+      "text_markdown": "The worst fate was the bagno, a prison where slaves were held in overcrowded, filthy cells.",
+      "tts": {
+        "text": "The worst fate was the bagno, a prison where slaves were held in overcrowded, filthy cells.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "Taken by Corsairs",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cervantes spent time in the bagnos of Algiers.",
+      "text_markdown": "Cervantes spent time in the bagnos of Algiers.",
+      "tts": {
+        "text": "Cervantes spent time in the bagnos of Algiers.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "Taken by Corsairs",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He witnessed suffering on a scale that few Europeans of his era would ever see.",
+      "text_markdown": "He witnessed suffering on a scale that few Europeans of his era would ever see.",
+      "tts": {
+        "text": "He witnessed suffering on a scale that few Europeans of his era would ever see.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "Taken by Corsairs",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The experience marked him deeply.",
+      "text_markdown": "The experience marked him deeply.",
+      "tts": {
+        "text": "The experience marked him deeply.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "Taken by Corsairs",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Almost immediately, Cervantes began planning to escape.",
+      "text_markdown": "Almost immediately, Cervantes began planning to escape.",
+      "tts": {
+        "text": "Almost immediately, Cervantes began planning to escape.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "Taken by Corsairs",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He was not the kind of man who could accept captivity passively.",
+      "text_markdown": "He was not the kind of man who could accept captivity passively.",
+      "tts": {
+        "text": "He was not the kind of man who could accept captivity passively.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "Taken by Corsairs",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Over the next five years, he would attempt to escape four times.",
+      "text_markdown": "Over the next five years, he would attempt to escape four times.",
+      "tts": {
+        "text": "Over the next five years, he would attempt to escape four times.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "Taken by Corsairs",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "His first escape attempt came in early 1576.",
+      "text_markdown": "His first escape attempt came in early 1576.",
+      "tts": {
+        "text": "His first escape attempt came in early fifteen seventy-six.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "Taken by Corsairs",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Cervantes hired a Moorish guide to lead him and several other captives overland to the Spanish fortress at Oran.",
+      "text_markdown": "Cervantes hired a Moorish guide to lead him and several other captives overland to the Spanish fortress at Oran.",
+      "tts": {
+        "text": "Cervantes hired a Moorish guide to lead him and several other captives overland to the Spanish fortress at Oran.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "Taken by Corsairs",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Oran was a Spanish outpost on the North African coast, several days' journey from Algiers.",
+      "text_markdown": "Oran was a Spanish outpost on the North African coast, several days' journey from Algiers.",
+      "tts": {
+        "text": "Oran was a Spanish outpost on the North African coast, several days' journey from Algiers.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "Taken by Corsairs",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The guide abandoned them after the first day.",
+      "text_markdown": "The guide abandoned them after the first day.",
+      "tts": {
+        "text": "The guide abandoned them after the first day.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "Taken by Corsairs",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Without a guide, the fugitives were lost in unfamiliar and hostile territory.",
+      "text_markdown": "Without a guide, the fugitives were lost in unfamiliar and hostile territory.",
+      "tts": {
+        "text": "Without a guide, the fugitives were lost in unfamiliar and hostile territory.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "Taken by Corsairs",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "They were forced to return to Algiers, where Cervantes was punished with heavier chains.",
+      "text_markdown": "They were forced to return to Algiers, where Cervantes was punished with heavier chains.",
+      "tts": {
+        "text": "They were forced to return to Algiers, where Cervantes was punished with heavier chains.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "Taken by Corsairs",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Despite the failure, Cervantes was not broken.",
+      "text_markdown": "Despite the failure, Cervantes was not broken.",
+      "tts": {
+        "text": "Despite the failure, Cervantes was not broken.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "Taken by Corsairs",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He immediately began planning his next escape.",
+      "text_markdown": "He immediately began planning his next escape.",
+      "tts": {
+        "text": "He immediately began planning his next escape.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "Taken by Corsairs",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Meanwhile, his family in Spain was desperately trying to raise his ransom.",
+      "text_markdown": "Meanwhile, his family in Spain was desperately trying to raise his ransom.",
+      "tts": {
+        "text": "Meanwhile, his family in Spain was desperately trying to raise his ransom.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "Taken by Corsairs",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "His mother and sisters sold their possessions and borrowed money from anyone who would lend it.",
+      "text_markdown": "His mother and sisters sold their possessions and borrowed money from anyone who would lend it.",
+      "tts": {
+        "text": "His mother and sisters sold their possessions and borrowed money from anyone who would lend it.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "Taken by Corsairs",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "But 500 escudos was far beyond their means.",
+      "text_markdown": "But 500 escudos was far beyond their means.",
+      "tts": {
+        "text": "But five hundred escudos was far beyond their means.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "Taken by Corsairs",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In 1577, the family scraped together enough money to ransom Rodrigo, Cervantes' younger brother.",
+      "text_markdown": "In 1577, the family scraped together enough money to ransom Rodrigo, Cervantes' younger brother.",
+      "tts": {
+        "text": "In fifteen seventy-seven, the family scraped together enough money to ransom Rodrigo, Cervantes' younger brother.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "Taken by Corsairs",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Rodrigo was freed and returned to Spain.",
+      "text_markdown": "Rodrigo was freed and returned to Spain.",
+      "tts": {
+        "text": "Rodrigo was freed and returned to Spain.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "Taken by Corsairs",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Miguel remained behind in Algiers, still waiting.",
+      "text_markdown": "Miguel remained behind in Algiers, still waiting.",
+      "tts": {
+        "text": "Miguel remained behind in Algiers, still waiting.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "Taken by Corsairs",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The corsairs who captured Cervantes were skilled and well-organized sailors.",
+      "text_markdown": "The corsairs who captured Cervantes were skilled and well-organized sailors.",
+      "tts": {
+        "text": "The corsairs who captured Cervantes were skilled and well-organized sailors.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "Taken by Corsairs",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "They operated fast galleys equipped with both sails and oars.",
+      "text_markdown": "They operated fast galleys equipped with both sails and oars.",
+      "tts": {
+        "text": "They operated fast galleys equipped with both sails and oars.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "Taken by Corsairs",
+      "paragraph_id": "p64",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "These vessels could outrun most merchant ships and chase down those that tried to flee.",
+      "text_markdown": "These vessels could outrun most merchant ships and chase down those that tried to flee.",
+      "tts": {
+        "text": "These vessels could outrun most merchant ships and chase down those that tried to flee.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "Taken by Corsairs",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The slave market of Algiers was one of the largest in the Mediterranean world.",
+      "text_markdown": "The slave market of Algiers was one of the largest in the Mediterranean world.",
+      "tts": {
+        "text": "The slave market of Algiers was one of the largest in the Mediterranean world.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "Taken by Corsairs",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Captives were inspected, valued, and sold to the highest bidder.",
+      "text_markdown": "Captives were inspected, valued, and sold to the highest bidder.",
+      "tts": {
+        "text": "Captives were inspected, valued, and sold to the highest bidder.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "Taken by Corsairs",
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The young, the skilled, and those believed to be wealthy commanded the highest prices.",
+      "text_markdown": "The young, the skilled, and those believed to be wealthy commanded the highest prices.",
+      "tts": {
+        "text": "The young, the skilled, and those believed to be wealthy commanded the highest prices.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-165",
+      "part": 0,
+      "chapter": 4,
+      "title": "Five Years in Algiers",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Five Years in Algiers",
+      "text_markdown": "Five Years in Algiers"
+    },
+    {
+      "id": "ch04-166",
+      "part": 0,
+      "chapter": 4,
+      "title": "Five Years in Algiers",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cervantes' second escape attempt was more ambitious than the first.",
+      "text_markdown": "Cervantes' second escape attempt was more ambitious than the first.",
+      "tts": {
+        "text": "Cervantes' second escape attempt was more ambitious than the first.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-167",
+      "part": 0,
+      "chapter": 4,
+      "title": "Five Years in Algiers",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "In 1577, he organized a group of about fifteen captives to hide in a cave outside Algiers.",
+      "text_markdown": "In 1577, he organized a group of about fifteen captives to hide in a cave outside Algiers.",
+      "tts": {
+        "text": "In fifteen seventy-seven, he organized a group of about fifteen captives to hide in a cave outside Algiers.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-168",
+      "part": 0,
+      "chapter": 4,
+      "title": "Five Years in Algiers",
+      "paragraph_id": "p67",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The plan was to wait for a Spanish ship to pick them up from the coast.",
+      "text_markdown": "The plan was to wait for a Spanish ship to pick them up from the coast.",
+      "tts": {
+        "text": "The plan was to wait for a Spanish ship to pick them up from the coast.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-169",
+      "part": 0,
+      "chapter": 4,
+      "title": "Five Years in Algiers",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The fugitives hid in the cave for months, supplied with food by a fellow captive who acted as a go-between.",
+      "text_markdown": "The fugitives hid in the cave for months, supplied with food by a fellow captive who acted as a go-between.",
+      "tts": {
+        "text": "The fugitives hid in the cave for months, supplied with food by a fellow captive who acted as a go-between.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-170",
+      "part": 0,
+      "chapter": 4,
+      "title": "Five Years in Algiers",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The conditions were cramped and terrifying.",
+      "text_markdown": "The conditions were cramped and terrifying.",
+      "tts": {
+        "text": "The conditions were cramped and terrifying.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-171",
+      "part": 0,
+      "chapter": 4,
+      "title": "Five Years in Algiers",
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Discovery meant death or worse.",
+      "text_markdown": "Discovery meant death or worse.",
+      "tts": {
+        "text": "Discovery meant death or worse.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-172",
+      "part": 0,
+      "chapter": 4,
+      "title": "Five Years in Algiers",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A Spanish rescue ship was sent, but it was spotted by corsairs before it could reach the cave.",
+      "text_markdown": "A Spanish rescue ship was sent, but it was spotted by corsairs before it could reach the cave.",
+      "tts": {
+        "text": "A Spanish rescue ship was sent, but it was spotted by corsairs before it could reach the cave.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-173",
+      "part": 0,
+      "chapter": 4,
+      "title": "Five Years in Algiers",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The ship fled, and the fugitives were stranded.",
+      "text_markdown": "The ship fled, and the fugitives were stranded.",
+      "tts": {
+        "text": "The ship fled, and the fugitives were stranded.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-174",
+      "part": 0,
+      "chapter": 4,
+      "title": "Five Years in Algiers",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Then the go-between betrayed them.",
+      "text_markdown": "Then the go-between betrayed them.",
+      "tts": {
+        "text": "Then the go-between betrayed them.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-175",
+      "part": 0,
+      "chapter": 4,
+      "title": "Five Years in Algiers",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He revealed the location of the cave to the ruler of Algiers, Hassan Pasha.",
+      "text_markdown": "He revealed the location of the cave to the ruler of Algiers, Hassan Pasha.",
+      "tts": {
+        "text": "He revealed the location of the cave to the ruler of Algiers, Hassan Pasha.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "title": "Five Years in Algiers",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Soldiers surrounded the cave and captured everyone inside.",
+      "text_markdown": "Soldiers surrounded the cave and captured everyone inside.",
+      "tts": {
+        "text": "Soldiers surrounded the cave and captured everyone inside.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "title": "Five Years in Algiers",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cervantes stepped forward and took full responsibility for the escape plot.",
+      "text_markdown": "Cervantes stepped forward and took full responsibility for the escape plot.",
+      "tts": {
+        "text": "Cervantes stepped forward and took full responsibility for the escape plot.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "Five Years in Algiers",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He told Hassan Pasha that he alone had planned and organized everything.",
+      "text_markdown": "He told Hassan Pasha that he alone had planned and organized everything.",
+      "tts": {
+        "text": "He told Hassan Pasha that he alone had planned and organized everything.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "Five Years in Algiers",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "He did this to protect his fellow captives from punishment.",
+      "text_markdown": "He did this to protect his fellow captives from punishment.",
+      "tts": {
+        "text": "He did this to protect his fellow captives from punishment.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "Five Years in Algiers",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hassan Pasha was reportedly impressed by Cervantes' courage.",
+      "text_markdown": "Hassan Pasha was reportedly impressed by Cervantes' courage.",
+      "tts": {
+        "text": "Hassan Pasha was reportedly impressed by Cervantes' courage.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "Five Years in Algiers",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Instead of executing him, the pasha bought Cervantes from Dali Mami and kept him as his personal slave.",
+      "text_markdown": "Instead of executing him, the pasha bought Cervantes from Dali Mami and kept him as his personal slave.",
+      "tts": {
+        "text": "Instead of executing him, the pasha bought Cervantes from Dali Mami and kept him as his personal slave.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "Five Years in Algiers",
+      "paragraph_id": "p72",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The high ransom value may also have stayed the pasha's hand.",
+      "text_markdown": "The high ransom value may also have stayed the pasha's hand.",
+      "tts": {
+        "text": "The high ransom value may also have stayed the pasha's hand.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "Five Years in Algiers",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Life as the pasha's slave was still captivity, but it came with somewhat better conditions.",
+      "text_markdown": "Life as the pasha's slave was still captivity, but it came with somewhat better conditions.",
+      "tts": {
+        "text": "Life as the pasha's slave was still captivity, but it came with somewhat better conditions.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "Five Years in Algiers",
+      "paragraph_id": "p73",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Cervantes was held in the pasha's household rather than in the bagnos.",
+      "text_markdown": "Cervantes was held in the pasha's household rather than in the bagnos.",
+      "tts": {
+        "text": "Cervantes was held in the pasha's household rather than in the bagnos.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "Five Years in Algiers",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "But Cervantes did not give up hope of freedom.",
+      "text_markdown": "But Cervantes did not give up hope of freedom.",
+      "tts": {
+        "text": "But Cervantes did not give up hope of freedom.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "Five Years in Algiers",
+      "paragraph_id": "p74",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "In 1578, he organized his third escape attempt.",
+      "text_markdown": "In 1578, he organized his third escape attempt.",
+      "tts": {
+        "text": "In fifteen seventy-eight, he organized his third escape attempt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "Five Years in Algiers",
+      "paragraph_id": "p74",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "He sent a messenger to the Spanish garrison at Oran, asking for help.",
+      "text_markdown": "He sent a messenger to the Spanish garrison at Oran, asking for help.",
+      "tts": {
+        "text": "He sent a messenger to the Spanish garrison at Oran, asking for help.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "Five Years in Algiers",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The messenger was captured by Moorish patrols before reaching Oran.",
+      "text_markdown": "The messenger was captured by Moorish patrols before reaching Oran.",
+      "tts": {
+        "text": "The messenger was captured by Moorish patrols before reaching Oran.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "Five Years in Algiers",
+      "paragraph_id": "p75",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Under interrogation, he revealed Cervantes' role in the plot.",
+      "text_markdown": "Under interrogation, he revealed Cervantes' role in the plot.",
+      "tts": {
+        "text": "Under interrogation, he revealed Cervantes' role in the plot.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "Five Years in Algiers",
+      "paragraph_id": "p75",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Cervantes was again punished, but again not killed.",
+      "text_markdown": "Cervantes was again punished, but again not killed.",
+      "tts": {
+        "text": "Cervantes was again punished, but again not killed.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "Five Years in Algiers",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "His fourth and final escape attempt came in 1579.",
+      "text_markdown": "His fourth and final escape attempt came in 1579.",
+      "tts": {
+        "text": "His fourth and final escape attempt came in fifteen seventy-nine.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "Five Years in Algiers",
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Cervantes secretly arranged for a ship to come to the coast of Algiers and pick up a group of sixty captives.",
+      "text_markdown": "Cervantes secretly arranged for a ship to come to the coast of Algiers and pick up a group of sixty captives.",
+      "tts": {
+        "text": "Cervantes secretly arranged for a ship to come to the coast of Algiers and pick up a group of sixty captives.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "Five Years in Algiers",
+      "paragraph_id": "p76",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "It was the most elaborate escape plan he had ever devised.",
+      "text_markdown": "It was the most elaborate escape plan he had ever devised.",
+      "tts": {
+        "text": "It was the most elaborate escape plan he had ever devised.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "Five Years in Algiers",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Once again, a traitor exposed the plan.",
+      "text_markdown": "Once again, a traitor exposed the plan.",
+      "tts": {
+        "text": "Once again, a traitor exposed the plan.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "Five Years in Algiers",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "A former Dominican friar named Juan Blanco de Paz informed on Cervantes to the authorities.",
+      "text_markdown": "A former Dominican friar named Juan Blanco de Paz informed on Cervantes to the authorities.",
+      "tts": {
+        "text": "A former Dominican friar named Juan Blanco de Paz informed on Cervantes to the authorities.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "Five Years in Algiers",
+      "paragraph_id": "p77",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Some historians believe Blanco de Paz acted out of jealousy.",
+      "text_markdown": "Some historians believe Blanco de Paz acted out of jealousy.",
+      "tts": {
+        "text": "Some historians believe Blanco de Paz acted out of jealousy.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "Five Years in Algiers",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cervantes was brought before Hassan Pasha in chains.",
+      "text_markdown": "Cervantes was brought before Hassan Pasha in chains.",
+      "tts": {
+        "text": "Cervantes was brought before Hassan Pasha in chains.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "Five Years in Algiers",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Again, he refused to name his co-conspirators.",
+      "text_markdown": "Again, he refused to name his co-conspirators.",
+      "tts": {
+        "text": "Again, he refused to name his co-conspirators.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "Five Years in Algiers",
+      "paragraph_id": "p78",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Again, he claimed sole responsibility.",
+      "text_markdown": "Again, he claimed sole responsibility.",
+      "tts": {
+        "text": "Again, he claimed sole responsibility.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "Five Years in Algiers",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The pasha threatened Cervantes with execution.",
+      "text_markdown": "The pasha threatened Cervantes with execution.",
+      "tts": {
+        "text": "The pasha threatened Cervantes with execution.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "Five Years in Algiers",
+      "paragraph_id": "p79",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He ordered the bastinado, a punishment in which the soles of the feet were beaten with rods.",
+      "text_markdown": "He ordered the bastinado, a punishment in which the soles of the feet were beaten with rods.",
+      "tts": {
+        "text": "He ordered the bastinado, a punishment in which the soles of the feet were beaten with rods.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "Five Years in Algiers",
+      "paragraph_id": "p79",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "But he did not carry out the death sentence.",
+      "text_markdown": "But he did not carry out the death sentence.",
+      "tts": {
+        "text": "But he did not carry out the death sentence.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "Five Years in Algiers",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Scholars have long debated why Hassan Pasha spared Cervantes.",
+      "text_markdown": "Scholars have long debated why Hassan Pasha spared Cervantes.",
+      "tts": {
+        "text": "Scholars have long debated why Hassan Pasha spared Cervantes.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "Five Years in Algiers",
+      "paragraph_id": "p80",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The most likely explanation is financial.",
+      "text_markdown": "The most likely explanation is financial.",
+      "tts": {
+        "text": "The most likely explanation is financial.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "Five Years in Algiers",
+      "paragraph_id": "p80",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Cervantes' ransom was set at 500 escudos, and killing him would mean losing that money.",
+      "text_markdown": "Cervantes' ransom was set at 500 escudos, and killing him would mean losing that money.",
+      "tts": {
+        "text": "Cervantes' ransom was set at five hundred escudos, and killing him would mean losing that money.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "Five Years in Algiers",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "It is also possible that the pasha genuinely admired Cervantes' courage.",
+      "text_markdown": "It is also possible that the pasha genuinely admired Cervantes' courage.",
+      "tts": {
+        "text": "It is also possible that the pasha genuinely admired Cervantes' courage.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "Five Years in Algiers",
+      "paragraph_id": "p81",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Four escape attempts, each met with defiance rather than submission, was extraordinary.",
+      "text_markdown": "Four escape attempts, each met with defiance rather than submission, was extraordinary.",
+      "tts": {
+        "text": "Four escape attempts, each met with defiance rather than submission, was extraordinary.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "Five Years in Algiers",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "During his years in Algiers, Cervantes observed everything around him.",
+      "text_markdown": "During his years in Algiers, Cervantes observed everything around him.",
+      "tts": {
+        "text": "During his years in Algiers, Cervantes observed everything around him.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "Five Years in Algiers",
+      "paragraph_id": "p82",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He watched how people of different religions and cultures lived side by side in the city.",
+      "text_markdown": "He watched how people of different religions and cultures lived side by side in the city.",
+      "tts": {
+        "text": "He watched how people of different religions and cultures lived side by side in the city.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "Five Years in Algiers",
+      "paragraph_id": "p82",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "He saw cruelty, but he also saw unexpected kindness.",
+      "text_markdown": "He saw cruelty, but he also saw unexpected kindness.",
+      "tts": {
+        "text": "He saw cruelty, but he also saw unexpected kindness.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "Five Years in Algiers",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "He met captives from every part of Europe, each with a story of loss and endurance.",
+      "text_markdown": "He met captives from every part of Europe, each with a story of loss and endurance.",
+      "tts": {
+        "text": "He met captives from every part of Europe, each with a story of loss and endurance.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "Five Years in Algiers",
+      "paragraph_id": "p83",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He heard stories of escape, betrayal, conversion, and survival.",
+      "text_markdown": "He heard stories of escape, betrayal, conversion, and survival.",
+      "tts": {
+        "text": "He heard stories of escape, betrayal, conversion, and survival.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "Five Years in Algiers",
+      "paragraph_id": "p83",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "These stories would fill his writing for the rest of his life.",
+      "text_markdown": "These stories would fill his writing for the rest of his life.",
+      "tts": {
+        "text": "These stories would fill his writing for the rest of his life.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "Five Years in Algiers",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "As the years passed, Cervantes' hope of ransom grew faint.",
+      "text_markdown": "As the years passed, Cervantes' hope of ransom grew faint.",
+      "tts": {
+        "text": "As the years passed, Cervantes' hope of ransom grew faint.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "Five Years in Algiers",
+      "paragraph_id": "p84",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "His family had exhausted their resources freeing Rodrigo.",
+      "text_markdown": "His family had exhausted their resources freeing Rodrigo.",
+      "tts": {
+        "text": "His family had exhausted their resources freeing Rodrigo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "Five Years in Algiers",
+      "paragraph_id": "p84",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The 500 escudos required for Miguel seemed impossibly far away.",
+      "text_markdown": "The 500 escudos required for Miguel seemed impossibly far away.",
+      "tts": {
+        "text": "The five hundred escudos required for Miguel seemed impossibly far away.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-217",
+      "part": 0,
+      "chapter": 4,
+      "title": "Five Years in Algiers",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cervantes became a leader among the Christian captives in Algiers.",
+      "text_markdown": "Cervantes became a leader among the Christian captives in Algiers.",
+      "tts": {
+        "text": "Cervantes became a leader among the Christian captives in Algiers.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-218",
+      "part": 0,
+      "chapter": 4,
+      "title": "Five Years in Algiers",
+      "paragraph_id": "p85",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "His fellow prisoners respected his courage and his willingness to risk punishment for their sake.",
+      "text_markdown": "His fellow prisoners respected his courage and his willingness to risk punishment for their sake.",
+      "tts": {
+        "text": "His fellow prisoners respected his courage and his willingness to risk punishment for their sake.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-219",
+      "part": 0,
+      "chapter": 4,
+      "title": "Five Years in Algiers",
+      "paragraph_id": "p85",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "He organized resistance, planned escapes, and kept morale alive among men who had every reason to despair.",
+      "text_markdown": "He organized resistance, planned escapes, and kept morale alive among men who had every reason to despair.",
+      "tts": {
+        "text": "He organized resistance, planned escapes, and kept morale alive among men who had every reason to despair.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-220",
+      "part": 0,
+      "chapter": 4,
+      "title": "Five Years in Algiers",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Some captives converted to Islam to improve their conditions.",
+      "text_markdown": "Some captives converted to Islam to improve their conditions.",
+      "tts": {
+        "text": "Some captives converted to Islam to improve their conditions.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-221",
+      "part": 0,
+      "chapter": 4,
+      "title": "Five Years in Algiers",
+      "paragraph_id": "p86",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "These renegades were despised by their fellow Christians but were treated better by their captors.",
+      "text_markdown": "These renegades were despised by their fellow Christians but were treated better by their captors.",
+      "tts": {
+        "text": "These renegades were despised by their fellow Christians but were treated better by their captors.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-222",
+      "part": 0,
+      "chapter": 4,
+      "title": "Five Years in Algiers",
+      "paragraph_id": "p86",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Cervantes understood the temptation but never converted himself.",
+      "text_markdown": "Cervantes understood the temptation but never converted himself.",
+      "tts": {
+        "text": "Cervantes understood the temptation but never converted himself.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-223",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Ransoming",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "The Ransoming",
+      "text_markdown": "The Ransoming"
+    },
+    {
+      "id": "ch05-224",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Ransoming",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In 1580, the Trinitarian friars came to Algiers on a ransoming mission.",
+      "text_markdown": "In 1580, the Trinitarian friars came to Algiers on a ransoming mission.",
+      "tts": {
+        "text": "In fifteen eighty, the Trinitarian friars came to Algiers on a ransoming mission.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-225",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Ransoming",
+      "paragraph_id": "p88",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The Order of the Most Holy Trinity had been conducting these missions for centuries.",
+      "text_markdown": "The Order of the Most Holy Trinity had been conducting these missions for centuries.",
+      "tts": {
+        "text": "The Order of the Most Holy Trinity had been conducting these missions for centuries.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-226",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Ransoming",
+      "paragraph_id": "p88",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "They collected donations across Spain and used the money to free Christian captives.",
+      "text_markdown": "They collected donations across Spain and used the money to free Christian captives.",
+      "tts": {
+        "text": "They collected donations across Spain and used the money to free Christian captives.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-227",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Ransoming",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The head of the ransoming mission was Fray Juan Gil, a Trinitarian friar.",
+      "text_markdown": "The head of the ransoming mission was Fray Juan Gil, a Trinitarian friar.",
+      "tts": {
+        "text": "The head of the ransoming mission was Fray Juan Gil, a Trinitarian friar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-228",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Ransoming",
+      "paragraph_id": "p89",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He had brought enough money to ransom several captives, but not enough for all.",
+      "text_markdown": "He had brought enough money to ransom several captives, but not enough for all.",
+      "tts": {
+        "text": "He had brought enough money to ransom several captives, but not enough for all.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-229",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Ransoming",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cervantes' mother, Leonor de Cortinas, had been pleading with the Trinitarians for years.",
+      "text_markdown": "Cervantes' mother, Leonor de Cortinas, had been pleading with the Trinitarians for years.",
+      "tts": {
+        "text": "Cervantes' mother, Leonor de Cortinas, had been pleading with the Trinitarians for years.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-230",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Ransoming",
+      "paragraph_id": "p90",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "She had sent every coin she could gather.",
+      "text_markdown": "She had sent every coin she could gather.",
+      "tts": {
+        "text": "She had sent every coin she could gather.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-231",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Ransoming",
+      "paragraph_id": "p90",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "But the total still fell short of 500 escudos.",
+      "text_markdown": "But the total still fell short of 500 escudos.",
+      "tts": {
+        "text": "But the total still fell short of five hundred escudos.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Ransoming",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Fray Juan Gil negotiated with Hassan Pasha personally.",
+      "text_markdown": "Fray Juan Gil negotiated with Hassan Pasha personally.",
+      "tts": {
+        "text": "Fray Juan Gil negotiated with Hassan Pasha personally.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Ransoming",
+      "paragraph_id": "p91",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The pasha was on the verge of leaving Algiers permanently and taking his slaves with him.",
+      "text_markdown": "The pasha was on the verge of leaving Algiers permanently and taking his slaves with him.",
+      "tts": {
+        "text": "The pasha was on the verge of leaving Algiers permanently and taking his slaves with him.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Ransoming",
+      "paragraph_id": "p91",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "If Cervantes was not ransomed now, he might never be freed.",
+      "text_markdown": "If Cervantes was not ransomed now, he might never be freed.",
+      "tts": {
+        "text": "If Cervantes was not ransomed now, he might never be freed.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Ransoming",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Through desperate negotiation and the addition of funds from local Christian merchants, Fray Juan Gil assembled the full ransom.",
+      "text_markdown": "Through desperate negotiation and the addition of funds from local Christian merchants, Fray Juan Gil assembled the full ransom.",
+      "tts": {
+        "text": "Through desperate negotiation and the addition of funds from local Christian merchants, Fray Juan Gil assembled the full ransom.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Ransoming",
+      "paragraph_id": "p92",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He paid 500 escudos to Hassan Pasha.",
+      "text_markdown": "He paid 500 escudos to Hassan Pasha.",
+      "tts": {
+        "text": "He paid five hundred escudos to Hassan Pasha.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Ransoming",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "On September 19, 1580, Miguel de Cervantes was freed.",
+      "text_markdown": "On September 19, 1580, Miguel de Cervantes was freed.",
+      "tts": {
+        "text": "On September nineteenth, fifteen eighty, Miguel de Cervantes was freed.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Ransoming",
+      "paragraph_id": "p93",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He had been a captive in Algiers for exactly five years.",
+      "text_markdown": "He had been a captive in Algiers for exactly five years.",
+      "tts": {
+        "text": "He had been a captive in Algiers for exactly five years.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Ransoming",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "He was 33 years old.",
+      "text_markdown": "He was 33 years old.",
+      "tts": {
+        "text": "He was thirty-three years old.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Ransoming",
+      "paragraph_id": "p94",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "His left hand was permanently crippled from Lepanto.",
+      "text_markdown": "His left hand was permanently crippled from Lepanto.",
+      "tts": {
+        "text": "His left hand was permanently crippled from Lepanto.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Ransoming",
+      "paragraph_id": "p94",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "His body bore the scars of five years of captivity and punishment.",
+      "text_markdown": "His body bore the scars of five years of captivity and punishment.",
+      "tts": {
+        "text": "His body bore the scars of five years of captivity and punishment.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Ransoming",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Before leaving Algiers, Cervantes gathered sworn testimony from fellow captives about his conduct during captivity.",
+      "text_markdown": "Before leaving Algiers, Cervantes gathered sworn testimony from fellow captives about his conduct during captivity.",
+      "tts": {
+        "text": "Before leaving Algiers, Cervantes gathered sworn testimony from fellow captives about his conduct during captivity.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Ransoming",
+      "paragraph_id": "p95",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "These witnesses confirmed his four escape attempts and his refusal to betray his companions.",
+      "text_markdown": "These witnesses confirmed his four escape attempts and his refusal to betray his companions.",
+      "tts": {
+        "text": "These witnesses confirmed his four escape attempts and his refusal to betray his companions.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Ransoming",
+      "paragraph_id": "p95",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "This document, called the Information of Algiers, survives to this day.",
+      "text_markdown": "This document, called the Information of Algiers, survives to this day.",
+      "tts": {
+        "text": "This document, called the Information of Algiers, survives to this day.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Ransoming",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cervantes returned to Spain in late 1580.",
+      "text_markdown": "Cervantes returned to Spain in late 1580.",
+      "tts": {
+        "text": "Cervantes returned to Spain in late fifteen eighty.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Ransoming",
+      "paragraph_id": "p96",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He was penniless, disabled, and traumatized.",
+      "text_markdown": "He was penniless, disabled, and traumatized.",
+      "tts": {
+        "text": "He was penniless, disabled, and traumatized.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Ransoming",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "He had hoped that his military service and his suffering would earn him a government appointment.",
+      "text_markdown": "He had hoped that his military service and his suffering would earn him a government appointment.",
+      "tts": {
+        "text": "He had hoped that his military service and his suffering would earn him a government appointment.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Ransoming",
+      "paragraph_id": "p97",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He applied for several positions but was turned down every time.",
+      "text_markdown": "He applied for several positions but was turned down every time.",
+      "tts": {
+        "text": "He applied for several positions but was turned down every time.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Ransoming",
+      "paragraph_id": "p97",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The Spanish bureaucracy had no place for a maimed veteran without connections.",
+      "text_markdown": "The Spanish bureaucracy had no place for a maimed veteran without connections.",
+      "tts": {
+        "text": "The Spanish bureaucracy had no place for a maimed veteran without connections.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Ransoming",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cervantes turned to writing.",
+      "text_markdown": "Cervantes turned to writing.",
+      "tts": {
+        "text": "Cervantes turned to writing.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Ransoming",
+      "paragraph_id": "p98",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "In 1585, he published his first novel, La Galatea, a pastoral romance.",
+      "text_markdown": "In 1585, he published his first novel, La Galatea, a pastoral romance.",
+      "tts": {
+        "text": "In fifteen eighty-five, he published his first novel, La Galatea, a pastoral romance.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Ransoming",
+      "paragraph_id": "p98",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "It received modest attention but earned him little money.",
+      "text_markdown": "It received modest attention but earned him little money.",
+      "tts": {
+        "text": "It received modest attention but earned him little money.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Ransoming",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "He spent the next two decades struggling financially.",
+      "text_markdown": "He spent the next two decades struggling financially.",
+      "tts": {
+        "text": "He spent the next two decades struggling financially.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Ransoming",
+      "paragraph_id": "p99",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He worked as a tax collector and a purchasing agent for the Spanish Armada.",
+      "text_markdown": "He worked as a tax collector and a purchasing agent for the Spanish Armada.",
+      "tts": {
+        "text": "He worked as a tax collector and a purchasing agent for the Spanish Armada.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Ransoming",
+      "paragraph_id": "p99",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "He was imprisoned at least twice for financial irregularities in his accounting.",
+      "text_markdown": "He was imprisoned at least twice for financial irregularities in his accounting.",
+      "tts": {
+        "text": "He was imprisoned at least twice for financial irregularities in his accounting.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Ransoming",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In 1605, at the age of 57, Cervantes published the first part of Don Quixote.",
+      "text_markdown": "In 1605, at the age of 57, Cervantes published the first part of Don Quixote.",
+      "tts": {
+        "text": "In sixteen oh five, at the age of fifty-seven, Cervantes published the first part of Don Quixote.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-257",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Ransoming",
+      "paragraph_id": "p100",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The book was an immediate sensation.",
+      "text_markdown": "The book was an immediate sensation.",
+      "tts": {
+        "text": "The book was an immediate sensation.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-258",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Ransoming",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Don Quixote told the story of an aging man who loses his mind reading tales of chivalry and rides out to become a knight-errant.",
+      "text_markdown": "Don Quixote told the story of an aging man who loses his mind reading tales of chivalry and rides out to become a knight-errant.",
+      "tts": {
+        "text": "Don Quixote told the story of an aging man who loses his mind reading tales of chivalry and rides out to become a knight-errant.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-259",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Ransoming",
+      "paragraph_id": "p101",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "It was funny, sad, and deeply human.",
+      "text_markdown": "It was funny, sad, and deeply human.",
+      "tts": {
+        "text": "It was funny, sad, and deeply human.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-260",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Ransoming",
+      "paragraph_id": "p101",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "It is often called the first modern novel.",
+      "text_markdown": "It is often called the first modern novel.",
+      "tts": {
+        "text": "It is often called the first modern novel.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-261",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Ransoming",
+      "paragraph_id": "p102",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cervantes published the second part of Don Quixote in 1615.",
+      "text_markdown": "Cervantes published the second part of Don Quixote in 1615.",
+      "tts": {
+        "text": "Cervantes published the second part of Don Quixote in sixteen fifteen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-262",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Ransoming",
+      "paragraph_id": "p102",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He continued writing until the very end of his life.",
+      "text_markdown": "He continued writing until the very end of his life.",
+      "tts": {
+        "text": "He continued writing until the very end of his life.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-263",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Ransoming",
+      "paragraph_id": "p103",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Miguel de Cervantes died on April 22, 1616, in Madrid.",
+      "text_markdown": "Miguel de Cervantes died on April 22, 1616, in Madrid.",
+      "tts": {
+        "text": "Miguel de Cervantes died on April twenty-second, sixteen sixteen, in Madrid.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-264",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Ransoming",
+      "paragraph_id": "p103",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He was 68 years old.",
+      "text_markdown": "He was 68 years old.",
+      "tts": {
+        "text": "He was sixty-eight years old.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-265",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Ransoming",
+      "paragraph_id": "p103",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "He died in poverty, never having received the recognition or reward he felt his service deserved.",
+      "text_markdown": "He died in poverty, never having received the recognition or reward he felt his service deserved.",
+      "tts": {
+        "text": "He died in poverty, never having received the recognition or reward he felt his service deserved.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-266",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Ransoming",
+      "paragraph_id": "p104",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The Trinitarian order had ransomed thousands of captives over the centuries.",
+      "text_markdown": "The Trinitarian order had ransomed thousands of captives over the centuries.",
+      "tts": {
+        "text": "The Trinitarian order had ransomed thousands of captives over the centuries.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-267",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Ransoming",
+      "paragraph_id": "p104",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Their missions to North Africa were dangerous and expensive.",
+      "text_markdown": "Their missions to North Africa were dangerous and expensive.",
+      "tts": {
+        "text": "Their missions to North Africa were dangerous and expensive.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-268",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Ransoming",
+      "paragraph_id": "p104",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The friars traveled into hostile territory carrying large sums of money, trusting in their faith and the conventions of ransom.",
+      "text_markdown": "The friars traveled into hostile territory carrying large sums of money, trusting in their faith and the conventions of ransom.",
+      "tts": {
+        "text": "The friars traveled into hostile territory carrying large sums of money, trusting in their faith and the conventions of ransom.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-269",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Captive's Legacy",
+      "paragraph_id": "p105",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "The Captive's Legacy",
+      "text_markdown": "The Captive's Legacy"
+    },
+    {
+      "id": "ch06-270",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Captive's Legacy",
+      "paragraph_id": "p106",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cervantes' captivity in Algiers left an indelible mark on his writing.",
+      "text_markdown": "Cervantes' captivity in Algiers left an indelible mark on his writing.",
+      "tts": {
+        "text": "Cervantes' captivity in Algiers left an indelible mark on his writing.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-271",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Captive's Legacy",
+      "paragraph_id": "p106",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Scenes of imprisonment, captivity, and escape appear throughout his work.",
+      "text_markdown": "Scenes of imprisonment, captivity, and escape appear throughout his work.",
+      "tts": {
+        "text": "Scenes of imprisonment, captivity, and escape appear throughout his work.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-272",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Captive's Legacy",
+      "paragraph_id": "p107",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In Don Quixote itself, there is a long episode known as the Captive's Tale.",
+      "text_markdown": "In Don Quixote itself, there is a long episode known as the Captive's Tale.",
+      "tts": {
+        "text": "In Don Quixote itself, there is a long episode known as the Captive's Tale.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-273",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Captive's Legacy",
+      "paragraph_id": "p107",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "It tells the story of a Spanish soldier captured by Barbary corsairs and held as a slave in Algiers.",
+      "text_markdown": "It tells the story of a Spanish soldier captured by Barbary corsairs and held as a slave in Algiers.",
+      "tts": {
+        "text": "It tells the story of a Spanish soldier captured by Barbary corsairs and held as a slave in Algiers.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-274",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Captive's Legacy",
+      "paragraph_id": "p107",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The parallels with Cervantes' own life are unmistakable.",
+      "text_markdown": "The parallels with Cervantes' own life are unmistakable.",
+      "tts": {
+        "text": "The parallels with Cervantes' own life are unmistakable.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-275",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Captive's Legacy",
+      "paragraph_id": "p108",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "His play about life in Algiers, The Bagnios of Algiers, drew directly on his experiences.",
+      "text_markdown": "His play about life in Algiers, The Bagnios of Algiers, drew directly on his experiences.",
+      "tts": {
+        "text": "His play about life in Algiers, The Bagnios of Algiers, drew directly on his experiences.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-276",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Captive's Legacy",
+      "paragraph_id": "p108",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "It depicted the cruelty of captivity, the longing for home, and the complex relationships between captors and captives.",
+      "text_markdown": "It depicted the cruelty of captivity, the longing for home, and the complex relationships between captors and captives.",
+      "tts": {
+        "text": "It depicted the cruelty of captivity, the longing for home, and the complex relationships between captors and captives.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-277",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Captive's Legacy",
+      "paragraph_id": "p109",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Scholars have noted that Cervantes' portrayal of Muslim characters was more nuanced than that of most European writers of his era.",
+      "text_markdown": "Scholars have noted that Cervantes' portrayal of Muslim characters was more nuanced than that of most European writers of his era.",
+      "tts": {
+        "text": "Scholars have noted that Cervantes' portrayal of Muslim characters was more nuanced than that of most European writers of his era.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-278",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Captive's Legacy",
+      "paragraph_id": "p109",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He had lived among Muslims for five years.",
+      "text_markdown": "He had lived among Muslims for five years.",
+      "tts": {
+        "text": "He had lived among Muslims for five years.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-279",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Captive's Legacy",
+      "paragraph_id": "p109",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "He saw them as individuals, not merely as enemies.",
+      "text_markdown": "He saw them as individuals, not merely as enemies.",
+      "tts": {
+        "text": "He saw them as individuals, not merely as enemies.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Captive's Legacy",
+      "paragraph_id": "p110",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Don Quixote became one of the most influential books ever written.",
+      "text_markdown": "Don Quixote became one of the most influential books ever written.",
+      "tts": {
+        "text": "Don Quixote became one of the most influential books ever written.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Captive's Legacy",
+      "paragraph_id": "p110",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "It has been translated into more languages than any other book except the Bible.",
+      "text_markdown": "It has been translated into more languages than any other book except the Bible.",
+      "tts": {
+        "text": "It has been translated into more languages than any other book except the Bible.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Captive's Legacy",
+      "paragraph_id": "p111",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The novel's themes of idealism, disillusionment, and the gap between how we imagine the world and how it really is resonated across cultures and centuries.",
+      "text_markdown": "The novel's themes of idealism, disillusionment, and the gap between how we imagine the world and how it really is resonated across cultures and centuries.",
+      "tts": {
+        "text": "The novel's themes of idealism, disillusionment, and the gap between how we imagine the world and how it really is resonated across cultures and centuries.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Captive's Legacy",
+      "paragraph_id": "p111",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Many of these themes were shaped by Cervantes' own bitter experiences.",
+      "text_markdown": "Many of these themes were shaped by Cervantes' own bitter experiences.",
+      "tts": {
+        "text": "Many of these themes were shaped by Cervantes' own bitter experiences.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Captive's Legacy",
+      "paragraph_id": "p112",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cervantes knew what it meant to fight bravely and be forgotten.",
+      "text_markdown": "Cervantes knew what it meant to fight bravely and be forgotten.",
+      "tts": {
+        "text": "Cervantes knew what it meant to fight bravely and be forgotten.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Captive's Legacy",
+      "paragraph_id": "p112",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He knew what it meant to suffer and receive no reward.",
+      "text_markdown": "He knew what it meant to suffer and receive no reward.",
+      "tts": {
+        "text": "He knew what it meant to suffer and receive no reward.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Captive's Legacy",
+      "paragraph_id": "p112",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "He poured that knowledge into his writing.",
+      "text_markdown": "He poured that knowledge into his writing.",
+      "tts": {
+        "text": "He poured that knowledge into his writing.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Captive's Legacy",
+      "paragraph_id": "p113",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Today, Cervantes is honored as the father of the modern novel.",
+      "text_markdown": "Today, Cervantes is honored as the father of the modern novel.",
+      "tts": {
+        "text": "Today, Cervantes is honored as the father of the modern novel.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Captive's Legacy",
+      "paragraph_id": "p113",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "His statue stands in the Plaza de Espana in Madrid.",
+      "text_markdown": "His statue stands in the Plaza de Espana in Madrid.",
+      "tts": {
+        "text": "His statue stands in the Plaza de Espana in Madrid.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Captive's Legacy",
+      "paragraph_id": "p113",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Universities, libraries, and cultural centers around the world bear his name.",
+      "text_markdown": "Universities, libraries, and cultural centers around the world bear his name.",
+      "tts": {
+        "text": "Universities, libraries, and cultural centers around the world bear his name.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Captive's Legacy",
+      "paragraph_id": "p114",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The anniversary of his death, April 23, is celebrated as World Book Day by UNESCO.",
+      "text_markdown": "The anniversary of his death, April 23, is celebrated as World Book Day by UNESCO.",
+      "tts": {
+        "text": "The anniversary of his death, April twenty-third, is celebrated as World Book Day by UNESCO.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-291",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Captive's Legacy",
+      "paragraph_id": "p114",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "It is one of the few literary holidays observed globally.",
+      "text_markdown": "It is one of the few literary holidays observed globally.",
+      "tts": {
+        "text": "It is one of the few literary holidays observed globally.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-292",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Captive's Legacy",
+      "paragraph_id": "p115",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Miguel de Cervantes was captured by corsairs, enslaved for five years, and nearly forgotten by his country.",
+      "text_markdown": "Miguel de Cervantes was captured by corsairs, enslaved for five years, and nearly forgotten by his country.",
+      "tts": {
+        "text": "Miguel de Cervantes was captured by corsairs, enslaved for five years, and nearly forgotten by his country.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-293",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Captive's Legacy",
+      "paragraph_id": "p115",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He responded by writing a book that the entire world would remember.",
+      "text_markdown": "He responded by writing a book that the entire world would remember.",
+      "tts": {
+        "text": "He responded by writing a book that the entire world would remember.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-294",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Captive's Legacy",
+      "paragraph_id": "p116",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "His captivity did not destroy him.",
+      "text_markdown": "His captivity did not destroy him.",
+      "tts": {
+        "text": "His captivity did not destroy him.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-295",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Captive's Legacy",
+      "paragraph_id": "p116",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "It became the furnace in which his genius was forged.",
+      "text_markdown": "It became the furnace in which his genius was forged.",
+      "tts": {
+        "text": "It became the furnace in which his genius was forged.",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

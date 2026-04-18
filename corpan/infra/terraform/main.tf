@@ -41,10 +41,15 @@ resource "aws_secretsmanager_secret_version" "verify" {
     apple = {
       key_id     = "",
       issuer_id  = "",
-      privateKey = ""
+      privateKey = "",
+      bundleId   = "com.corpora.corpan"
     },
     google = {
+      packageName        = "com.corpora.corpan",
       serviceAccountJson = ""
+    },
+    cloudfront = {
+      signingPrivateKey = ""
     }
   })
 }
@@ -87,6 +92,16 @@ resource "aws_iam_role_policy" "verify_lambda" {
         Effect = "Allow"
         Action = ["s3:GetObject"]
         Resource = "${aws_s3_bucket.packs.arn}/*"
+      },
+      {
+        Effect = "Allow"
+        Action = ["s3:ListBucket"]
+        Resource = aws_s3_bucket.packs.arn
+        Condition = {
+          StringLike = {
+            "s3:prefix" = ["artifacts/narrations/premium/*"]
+          }
+        }
       }
     ]
   })
@@ -103,17 +118,18 @@ resource "aws_lambda_function" "verify" {
   role          = aws_iam_role.verify_lambda.arn
   handler       = "verify_purchase.handler"
   runtime       = "nodejs20.x"
-  filename      = data.archive_file.verify_zip.output_path
-  timeout       = 10
+  filename         = data.archive_file.verify_zip.output_path
+  source_code_hash = data.archive_file.verify_zip.output_base64sha256
+  timeout          = 10
   memory_size   = 256
   environment {
     variables = {
-      PACK_BUCKET        = aws_s3_bucket.packs.bucket
-      SECRETS_ARN        = aws_secretsmanager_secret.verify.arn
-      PACK_MANIFEST_URL  = var.pack_manifest_url
-      PACK_MANIFEST_HASH = var.pack_manifest_hash
-      PACK_VERSION       = var.pack_version
-      DEV_BYPASS_TOKEN   = var.dev_bypass_token
+      PACK_BUCKET              = aws_s3_bucket.packs.bucket
+      SECRETS_ARN              = aws_secretsmanager_secret.verify.arn
+      DEV_BYPASS_TOKEN         = var.dev_bypass_token
+      CLOUDFRONT_DOMAIN        = var.enable_cdn ? (var.cdn_domain_name != "" ? var.cdn_domain_name : aws_cloudfront_distribution.packs[0].domain_name) : ""
+      CLOUDFRONT_KEY_PAIR_ID   = var.enable_cdn && var.enable_premium_content ? aws_cloudfront_public_key.premium[0].id : ""
+      CATALOG_URL              = var.enable_cdn ? "https://${var.cdn_domain_name != "" ? var.cdn_domain_name : aws_cloudfront_distribution.packs[0].domain_name}/catalog.json" : ""
     }
   }
 }
@@ -133,6 +149,24 @@ resource "aws_apigatewayv2_integration" "verify" {
 resource "aws_apigatewayv2_route" "verify" {
   api_id    = aws_apigatewayv2_api.verify.id
   route_key = "POST /verify-purchase"
+  target    = "integrations/${aws_apigatewayv2_integration.verify.id}"
+}
+
+resource "aws_apigatewayv2_route" "subscription_status" {
+  api_id    = aws_apigatewayv2_api.verify.id
+  route_key = "POST /subscription-status"
+  target    = "integrations/${aws_apigatewayv2_integration.verify.id}"
+}
+
+resource "aws_apigatewayv2_route" "apple_notifications" {
+  api_id    = aws_apigatewayv2_api.verify.id
+  route_key = "POST /apple-notifications"
+  target    = "integrations/${aws_apigatewayv2_integration.verify.id}"
+}
+
+resource "aws_apigatewayv2_route" "google_notifications" {
+  api_id    = aws_apigatewayv2_api.verify.id
+  route_key = "POST /google-notifications"
   target    = "integrations/${aws_apigatewayv2_integration.verify.id}"
 }
 
@@ -244,6 +278,23 @@ resource "aws_cloudfront_distribution" "packs" {
     response_headers_policy_id = aws_cloudfront_response_headers_policy.cors[0].id
   }
 
+  # Premium content requires CloudFront signed URLs
+  dynamic "ordered_cache_behavior" {
+    for_each = var.enable_premium_content ? [1] : []
+    content {
+      path_pattern           = "narrations/premium/*"
+      allowed_methods        = ["GET", "HEAD"]
+      cached_methods         = ["GET", "HEAD"]
+      target_origin_id       = "s3-packs"
+      viewer_protocol_policy = "redirect-to-https"
+      compress               = true
+      trusted_key_groups     = [aws_cloudfront_key_group.premium[0].id]
+
+      cache_policy_id            = "658327ea-f89d-4fab-a63d-7e88639e58f6" # CachingOptimized
+      response_headers_policy_id = aws_cloudfront_response_headers_policy.cors[0].id
+    }
+  }
+
   dynamic "viewer_certificate" {
     for_each = var.cdn_domain_name != "" ? [1] : []
     content {
@@ -287,6 +338,24 @@ resource "aws_s3_bucket_policy" "cloudfront_access" {
       }
     ]
   })
+}
+
+# ---------------------------------------------------------------------------
+# CloudFront signed URLs for premium/paid content
+# ---------------------------------------------------------------------------
+
+resource "aws_cloudfront_public_key" "premium" {
+  count       = var.enable_cdn && var.enable_premium_content ? 1 : 0
+  name        = "${var.project_name}-premium-signing-key"
+  encoded_key = var.cloudfront_signing_public_key_pem
+  comment     = "Public key for signing premium content download URLs"
+}
+
+resource "aws_cloudfront_key_group" "premium" {
+  count   = var.enable_cdn && var.enable_premium_content ? 1 : 0
+  name    = "${var.project_name}-premium-key-group"
+  items   = [aws_cloudfront_public_key.premium[0].id]
+  comment = "Key group for premium narration pack downloads"
 }
 
 # ---------------------------------------------------------------------------

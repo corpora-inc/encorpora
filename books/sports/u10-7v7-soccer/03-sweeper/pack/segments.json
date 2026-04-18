@@ -154,7 +154,7 @@
       "text": "That player is you.",
       "text_markdown": "That player is you.",
       "tts": {
-        "text": "That player is you.",
+        "text": "That player is you right now.",
         "pause_after_ms": 800,
         "repetition_penalty": 2.0
       }
@@ -422,7 +422,7 @@
       "text": "The whole game unfolds in front of your eyes.",
       "text_markdown": "The whole game unfolds in front of your eyes.",
       "tts": {
-        "text": "The whole game unfolds in front of your eyes.",
+        "text": "The whole game unfolds right in front of your eyes on the field.",
         "pause_after_ms": 800,
         "repetition_penalty": 2.0
       }
@@ -1174,7 +1174,7 @@
       "text": "Your team has you.",
       "text_markdown": "Your team has you.",
       "tts": {
-        "text": "Your team has you.",
+        "text": "Your team has you on the field.",
         "pause_after_ms": 800,
         "repetition_penalty": 2.0
       }
@@ -2190,7 +2190,7 @@
       "text": "You stay central and adjust.",
       "text_markdown": "You stay central and adjust.",
       "tts": {
-        "text": "You stay central and adjust.",
+        "text": "You stay central and you adjust your position.",
         "pause_after_ms": 800,
         "repetition_penalty": 2.0
       }
@@ -2238,7 +2238,7 @@
       "text": "Your defenders handle the wide areas.",
       "text_markdown": "Your defenders handle the wide areas.",
       "tts": {
-        "text": "Your defenders handle the wide areas.",
+        "text": "Your defenders handle all of the wide area on the field.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -3190,7 +3190,7 @@
       "text": "When you clear the ball, kick the ball with purpose.",
       "text_markdown": "When you clear the ball, kick the ball with purpose.",
       "tts": {
-        "text": "When you clear the ball, kick the ball with purpose.",
+        "text": "Every time you send the ball away on a clearance, drive your foot through it with total commitment and real force.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.84
       }
@@ -3330,7 +3330,7 @@
       "text": "Calm players time their tackles better.",
       "text_markdown": "Calm players time their tackles better.",
       "tts": {
-        "text": "Calm players time their tackles better.",
+        "text": "Calm and composed players time their tackles better in the game.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -4502,7 +4502,7 @@
       "text": "Your attackers have space to run into.",
       "text_markdown": "Your attackers have space to run into.",
       "tts": {
-        "text": "Your attackers have space to run into.",
+        "text": "Your attackers have open ground to run into ahead.",
         "pause_after_ms": 800,
         "repetition_penalty": 2.0
       }
@@ -5330,7 +5330,7 @@
       "text": "As you gain experience, you will learn to make overlapping runs.",
       "text_markdown": "As you gain experience, you will learn to make overlapping runs.",
       "tts": {
-        "text": "As you gain experience, you will learn to make overlapping runs.",
+        "text": "As you gain more experience, you will learn to make overlapping runs on the wing.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.93
       }
@@ -5550,7 +5550,7 @@
       "text": "When the play develops near the opposing goal, look for a chance to arrive late in the box.",
       "text_markdown": "When the play develops near the opposing goal, look for a chance to arrive late in the box.",
       "tts": {
-        "text": "When the play develops near the opposing goal, look for a chance to arrive late in the box.",
+        "text": "When the play develops near the opposing goal, look for a good moment to arrive late in the penalty area.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.91
       }
@@ -6114,7 +6114,7 @@
       "text": "Attack and defend in the same game, sometimes in the same minute.",
       "text_markdown": "Attack and defend in the same game, sometimes in the same minute.",
       "tts": {
-        "text": "Attack and defend in the same game, sometimes in the same minute.",
+        "text": "Attack and defend in the same game, and sometimes in the very same minute of play.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.8
       }
@@ -6738,7 +6738,7 @@
       "text": "Say \"runner left\" or \"runner right\" as soon as you spot the movement.",
       "text_markdown": "Say \"runner left\" or \"runner right\" as soon as you spot the movement.",
       "tts": {
-        "text": "Say \"runner left\" or \"runner right\" as soon as you spot the movement.",
+        "text": "Say runner left or runner right as soon as you spot the movement.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.88
       }
@@ -7442,7 +7442,7 @@
       "text": "As the sweeper, you have a role in every set piece, on defense and on attack.",
       "text_markdown": "As the sweeper, you have a role in every set piece, on defense and on attack.",
       "tts": {
-        "text": "As the sweeper, you have a role in every set piece, on defense and on attack.",
+        "text": "Whether your team is defending or attacking a set piece, the sweeper always has a specific responsibility to fulfill.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.95
       }
@@ -7550,7 +7550,7 @@
       "text": "Judge where the ball will land.",
       "text_markdown": "Judge where the ball will land.",
       "tts": {
-        "text": "Judge where the ball will land.",
+        "text": "Judge where the ball will come down and land.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -8750,7 +8750,7 @@
       "text": "Sometimes the right decision is to dribble forward into space.",
       "text_markdown": "Sometimes the right decision is to dribble forward into space.",
       "tts": {
-        "text": "Sometimes the right decision is to dribble forward into space.",
+        "text": "Sometimes the right call is to dribble forward into the open ground.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -8830,7 +8830,7 @@
       "text": "A late decision is worse than a wrong decision.",
       "text_markdown": "A late decision is worse than a wrong decision.",
       "tts": {
-        "text": "A late decision is worse than a wrong decision.",
+        "text": "A late decision is even worse than a wrong decision in the game.",
         "pause_after_ms": 500,
         "repetition_penalty": 1.82
       }
@@ -8878,7 +8878,7 @@
       "text": "If the choice does not work, recover immediately and defend the next play.",
       "text_markdown": "If the choice does not work, recover immediately and defend the next play.",
       "tts": {
-        "text": "If the choice does not work, recover immediately and defend the next play.",
+        "text": "If it does not work, get back and defend.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.94
       }
@@ -9270,7 +9270,7 @@
       "text": "You show your quality with every touch, every pass, and every decision.",
       "text_markdown": "You show your quality with every touch, every pass, and every decision.",
       "tts": {
-        "text": "You show your quality with every touch, every pass, and every decision.",
+        "text": "You show your quality with every touch, every single pass, and every key decision you make.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.87
       }

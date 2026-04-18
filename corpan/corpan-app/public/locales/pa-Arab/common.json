@@ -73,7 +73,11 @@
     "showRomanization": "رومنائزیشن دکھائیں",
     "scrollNavigation": "سکرول نیویگیشن",
     "packs": "Packs",
-    "stacks": "Stacks"
+    "stacks": "Stacks",
+    "theme": "تھیم",
+    "themeLight": "ہلکا",
+    "themeDark": "گوڑھا",
+    "themeSystem": "سسٹم"
   },
   "onboarding": {
     "welcome": "خوش آمدید",
@@ -108,7 +112,10 @@
     "ttsOsTipWindows": "Settings وچ speech voices شامل/انسٹال کرو، فیر اتھے واپس آؤ۔",
     "ttsOsTipOther": "اپنے ڈیوائس دی سیٹنگز وچ text-to-speech آوازاں شامل/انسٹال کرو، فیر اتھے واپس آؤ۔",
     "installVoicesAndroid": "آوازاں انسٹال کرو",
-    "sendAppleFeedback": "Apple فیڈبیک بھیجو"
+    "sendAppleFeedback": "Apple فیڈبیک بھیجو",
+    "ttsGoogleInstalled": "Google TTS انسٹال اے",
+    "ttsGoogleMissing": "Google TTS انسٹال نئیں",
+    "ttsSetDefault": "ڈیفالٹ مقرر کرو"
   },
   "socials": {
     "youtube": {
@@ -296,6 +303,33 @@
     "devLink": "Free2z تے ہور جانو",
     "new": "نواں",
     "updates": "اپڈیٹس",
-    "offline": "آف لائن"
+    "offline": "آف لائن",
+    "purchasing": "خریداری ہو رہی اے...",
+    "buy": "{{price}} خریدو",
+    "premium": "پریمیم",
+    "availableOnMobile": "iOS تے Android اتے دستیاب"
+  },
+  "subscription": {
+    "title": "سب کچھ ان لاک کرو",
+    "description": "سبسکرپشن نال ساریاں آڈیو کتاباں تے پریمیم پیکاں تک لامحدود رسائی۔",
+    "annual": "سالانہ",
+    "monthly": "ماہانہ",
+    "subscribe": "سبسکرائب کرو",
+    "subscribing": "سبسکرائب ہو رہا اے...",
+    "subscribed": "تسیں سبسکرائب ہو",
+    "subscribedDescription": "{{plan}} پلان چل رہیا اے۔ Corpán دی حمایت لئی شکریہ۔",
+    "manage": "سبسکرپشن دا انتظام کرو",
+    "termsOfUse": "ورتن دیاں شرطاں",
+    "privacyPolicy": "پرائیویسی پالیسی",
+    "autoRenewNotice": "سبسکرپشناں آپے تجدید ہوندیاں نیں۔ اپنے {{store}} اکاؤنٹ توں کدی وی منسوخ کرو۔",
+    "storeApple": "Apple ID",
+    "storeGoogle": "Google Play"
+  },
+  "restore": {
+    "button": "خریداریاں بحال کرو",
+    "restoring": "بحال ہو رہا اے...",
+    "noPurchases": "کوئی پچھلی خریداری نئیں ملی۔",
+    "success": "{{count}} خریداری بحال ہوئی۔",
+    "error": "خریداریاں بحال کرن وچ ناکامی۔"
   }
 }

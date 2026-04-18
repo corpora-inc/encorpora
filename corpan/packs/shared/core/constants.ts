@@ -150,6 +150,8 @@ export const LANGUAGE_NAMES: Record<string, string> = {
 
 export const VOICE_NAMES: Record<string, string> = {
   "ian-narration": "Ian",
+  "ian-fish-v1": "Ian Fish",
+  "ian-chatterbox-v1": "Ian CB",
 }
 
 /** Resolve a voice ID to a display name.

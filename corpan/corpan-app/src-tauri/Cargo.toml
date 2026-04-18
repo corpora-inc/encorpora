@@ -1,6 +1,6 @@
 [package]
 name = "corpan"
-version = "0.10.1"
+version = "0.11.2"
 description = "Language learning app"
 authors = ["you"]
 edition = "2021"
@@ -35,6 +35,7 @@ sha2 = "0.10"
 zip = "2.2.2"
 tauri-plugin-tts = { path = "../../plugins/tauri-plugin-tts" }
 tauri-plugin-audio-keepalive = { path = "../../plugins/tauri-plugin-audio-keepalive" }
+tauri-plugin-iap = "0.8"
 futures-util = "0.3"
 
 # Production optimizations for release builds

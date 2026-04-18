@@ -73,7 +73,11 @@
     "showRomanization": "Показать романизацию",
     "scrollNavigation": "Навигация прокруткой",
     "packs": "Packs",
-    "stacks": "Stacks"
+    "stacks": "Stacks",
+    "theme": "Тема",
+    "themeLight": "Светлая",
+    "themeDark": "Тёмная",
+    "themeSystem": "Системная"
   },
   "onboarding": {
     "welcome": "Добро пожаловать",
@@ -108,7 +112,10 @@
     "socialsStepTitle": "Соцсети",
     "noVoices": "Нет голосов",
     "noVoicesHint": "Установите голоса, чтобы включить этот язык.",
-    "sendAppleFeedback": "Отправить отзыв Apple"
+    "sendAppleFeedback": "Отправить отзыв Apple",
+    "ttsGoogleInstalled": "Google TTS установлен",
+    "ttsGoogleMissing": "Google TTS не установлен",
+    "ttsSetDefault": "Установить по умолчанию"
   },
   "socials": {
     "youtube": {
@@ -296,6 +303,33 @@
     "devLink": "Подробнее на Free2z",
     "new": "Новое",
     "updates": "Обновления",
-    "offline": "Оффлайн"
+    "offline": "Оффлайн",
+    "purchasing": "Покупка...",
+    "buy": "Купить {{price}}",
+    "premium": "Премиум",
+    "availableOnMobile": "Доступно на iOS и Android"
+  },
+  "subscription": {
+    "title": "Разблокировать всё",
+    "description": "Безлимитный доступ ко всем аудиокнигам и премиум-пакетам по подписке.",
+    "annual": "Годовая",
+    "monthly": "Месячная",
+    "subscribe": "Подписаться",
+    "subscribing": "Оформление подписки...",
+    "subscribed": "Вы подписаны",
+    "subscribedDescription": "План {{plan}} активен. Спасибо, что поддерживаете Corpán.",
+    "manage": "Управление подпиской",
+    "termsOfUse": "Условия использования",
+    "privacyPolicy": "Политика конфиденциальности",
+    "autoRenewNotice": "Подписки продлеваются автоматически. Отменить можно в любой момент в аккаунте {{store}}.",
+    "storeApple": "Apple ID",
+    "storeGoogle": "Google Play"
+  },
+  "restore": {
+    "button": "Восстановить покупки",
+    "restoring": "Восстановление...",
+    "noPurchases": "Предыдущие покупки не найдены.",
+    "success": "Восстановлено покупок: {{count}}.",
+    "error": "Не удалось восстановить покупки."
   }
 }

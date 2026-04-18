@@ -73,7 +73,11 @@
     "showRomanization": "显示罗马化",
     "scrollNavigation": "滚动导航",
     "packs": "Packs",
-    "stacks": "Stacks"
+    "stacks": "Stacks",
+    "theme": "主题",
+    "themeLight": "浅色",
+    "themeDark": "深色",
+    "themeSystem": "跟随系统"
   },
   "onboarding": {
     "welcome": "欢迎",
@@ -108,7 +112,10 @@
     "socialsStepTitle": "社交媒体",
     "noVoices": "无语音",
     "noVoicesHint": "安装语音以启用此语言。",
-    "sendAppleFeedback": "发送 Apple 反馈"
+    "sendAppleFeedback": "发送 Apple 反馈",
+    "ttsGoogleInstalled": "Google TTS已安装",
+    "ttsGoogleMissing": "Google TTS未安装",
+    "ttsSetDefault": "设为默认"
   },
   "socials": {
     "youtube": {
@@ -296,6 +303,33 @@
     "devLink": "在 Free2z 了解更多",
     "new": "新",
     "updates": "更新",
-    "offline": "离线"
+    "offline": "离线",
+    "purchasing": "购买中...",
+    "buy": "购买 {{price}}",
+    "premium": "高级",
+    "availableOnMobile": "可在iOS和Android上使用"
+  },
+  "subscription": {
+    "title": "解锁全部",
+    "description": "订阅即可无限访问所有有声书和高级包。",
+    "annual": "年付",
+    "monthly": "月付",
+    "subscribe": "订阅",
+    "subscribing": "订阅中...",
+    "subscribed": "您已订阅",
+    "subscribedDescription": "{{plan}}套餐已激活。感谢支持Corpán。",
+    "manage": "管理订阅",
+    "termsOfUse": "使用条款",
+    "privacyPolicy": "隐私政策",
+    "autoRenewNotice": "订阅将自动续订。可随时在 {{store}} 账户中取消。",
+    "storeApple": "Apple ID",
+    "storeGoogle": "Google Play"
+  },
+  "restore": {
+    "button": "恢复购买",
+    "restoring": "恢复中...",
+    "noPurchases": "未找到之前的购买记录。",
+    "success": "已恢复{{count}}项购买。",
+    "error": "恢复购买失败。"
   }
 }

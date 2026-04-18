@@ -6,6 +6,8 @@ import { useGamesStore, type InstalledGame } from "@/store/games"
 import { useCatalogStore } from "@/store/catalog"
 import { usePackUpdates } from "@/hooks/usePackUpdates"
 import { PackCard } from "./PackCard"
+import { SubscriptionOffer } from "./SubscriptionOffer"
+import { RestorePurchases } from "./RestorePurchases"
 import { useInstallContext } from "@/contentPacks/InstallContext"
 
 export function PacksListing({
@@ -63,6 +65,9 @@ export function PacksListing({
 
   return (
     <div className="space-y-6">
+
+      {/* Subscription Offer — top of screen. Self-hides when not applicable. */}
+      <SubscriptionOffer />
 
       {/* Section 1: Updates Available */}
       {updates.length > 0 && (
@@ -232,6 +237,9 @@ export function PacksListing({
           </div>
         </div>
       )}
+
+      {/* Restore Purchases (self-hides on non-IAP platforms) */}
+      <RestorePurchases />
     </div>
   )
 }

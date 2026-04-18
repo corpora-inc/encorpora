@@ -87,10 +87,10 @@
       "paragraph_id": "p3",
       "sentence_index": 0,
       "block_type": "text",
-      "text": "Your team plays a 1-2-3 formation.",
-      "text_markdown": "Your team plays a 1-2-3 formation.",
+      "text": "Your team plays a one-two-three formation.",
+      "text_markdown": "Your team plays a one-two-three formation.",
       "tts": {
-        "text": "Your team plays a 1-2-3 formation.",
+        "text": "Your team plays a one-two-three formation.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -2038,7 +2038,7 @@
       "text": "Those three things tell you where to stand.",
       "text_markdown": "Those three things tell you where to stand.",
       "tts": {
-        "text": "Those three things tell you where to stand.",
+        "text": "All three of those things tell you where to stand on the field.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -2134,7 +2134,7 @@
       "text": "When your partner moves, you adjust.",
       "text_markdown": "When your partner moves, you adjust.",
       "tts": {
-        "text": "When your partner moves, you adjust.",
+        "text": "When your partner moves, you adjust your own position.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }
@@ -6042,7 +6042,7 @@
       "text": "A short pass back to you relieves the pressure and keeps the ball safe.",
       "text_markdown": "A short pass back to you relieves the pressure and keeps the ball safe.",
       "tts": {
-        "text": "A short pass back to you relieves the pressure and keeps the ball safe.",
+        "text": "A short backward pass to you can relieve the pressure and keep the ball in a safe area.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.94
       }
@@ -7170,7 +7170,7 @@
       "text": "Kick the ball hard and kick the ball wide.",
       "text_markdown": "Kick the ball hard and kick the ball wide.",
       "tts": {
-        "text": "Kick the ball hard and kick the ball wide.",
+        "text": "Kick the ball hard, and kick the ball wide.",
         "pause_after_ms": 800,
         "repetition_penalty": 1.73
       }
@@ -8666,7 +8666,7 @@
       "text": "Without that tackle, the game would have been lost.",
       "text_markdown": "Without that tackle, the game would have been lost.",
       "tts": {
-        "text": "Without that tackle, the game would have been lost.",
+        "text": "Without that important tackle, the game would have been lost for your team.",
         "pause_after_ms": 500,
         "repetition_penalty": 2.0
       }

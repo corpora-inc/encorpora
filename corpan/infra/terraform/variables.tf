@@ -69,3 +69,16 @@ variable "enable_cdn" {
   description = "Whether to provision CloudFront CDN for narration artifacts."
   default     = false
 }
+
+variable "cloudfront_signing_public_key_pem" {
+  type        = string
+  description = "PEM-encoded public key for CloudFront signed URLs (premium content)."
+  default     = ""
+  sensitive   = true
+}
+
+variable "enable_premium_content" {
+  type        = bool
+  description = "Whether to provision CloudFront signed URL infrastructure for premium/paid content."
+  default     = false
+}

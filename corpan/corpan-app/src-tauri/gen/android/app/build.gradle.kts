@@ -91,3 +91,27 @@ dependencies {
 }
 
 apply(from = "tauri.build.gradle.kts")
+
+
+/* BEGIN: corpan patch (idempotent) */
+android {
+    // Pin modern SDK + NDK. compileSdk must be 36+ for androidx.core 1.17.0
+    // (pulled in transitively by tauri-plugin-iap).
+    compileSdk = 36
+    defaultConfig {
+        targetSdk = 36
+    }
+    ndkVersion = "28.2.13676358"
+
+    // Java 17 language level
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+}
+
+// Kotlin JVM target = 17 (no plugin block assumptions)
+tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
+    kotlinOptions.jvmTarget = "17"
+}
+/* END: corpan patch */

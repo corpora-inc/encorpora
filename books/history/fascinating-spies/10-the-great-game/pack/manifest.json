@@ -1,0 +1,20 @@
+{
+  "id": "book_the_great_game",
+  "name": "The Great Game: Synthesis",
+  "version": "0.1.0",
+  "type": "book",
+  "entry": "dist/reader.js",
+  "styles": [
+    "dist/reader.css"
+  ],
+  "entryType": "script",
+  "sdkVersion": "0.1.0",
+  "metadata": {
+    "series": "Fascinating Spies",
+    "volume": 10,
+    "author": "Corpora",
+    "tts": true,
+    "estimatedReadTime": "3-4 hours",
+    "estimatedListenTime": "2.5-3 hours"
+  }
+}

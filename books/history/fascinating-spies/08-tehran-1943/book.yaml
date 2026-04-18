@@ -1,0 +1,25 @@
+book:
+  volume: 8
+  title: "Tehran 1943"
+  subtitle: "The Secret Meeting That Shaped the World"
+  target_pages: 80-90
+
+  core_mysteries:
+    primary:
+      - The Tehran Conference of November-December 1943 was the first meeting of Roosevelt, Churchill, and Stalin -- held in occupied Iran because Stalin refused to fly far from Soviet territory; the choice of location placed the most important Allied summit of the war in a city under joint military occupation
+      - Operation Long Jump -- the alleged German assassination plot against the Big Three -- was reportedly foiled by Soviet intelligence, but whether the plot was real, exaggerated, or fabricated by the NKVD remains debated among historians; the German archives contain no operational order for the mission
+      - Roosevelt's decision to stay at the Soviet embassy compound rather than the American legation gave Soviet intelligence extraordinary access to the American delegation; whether this was a calculated risk by Roosevelt or a strategic coup by Stalin is a question the documentary record leaves open
+    secondary:
+      - The intelligence war in wartime Tehran -- British, Soviet, American, and German services operating simultaneously in a city that served as both supply hub and espionage crossroads
+      - Gevork Vartanian, the Soviet agent credited with uncovering Operation Long Jump, became a Hero of the Soviet Union in 1984 -- but his account has been challenged by Western historians who question the operation's existence
+      - The Cicero affair -- Elyesa Bazna, valet to the British ambassador in Ankara, sold photographs of classified documents to German intelligence during the same period as the Tehran Conference
+      - The Tehran decisions -- the commitment to Operation Overlord (D-Day), the promise of a Soviet offensive to coincide with it, and the preliminary discussions of postwar settlement that drew the lines of the Cold War
+
+  key_scholarly_sources:
+    - "Keith Eubank -- Summit at Teheran (1985); the standard English-language monograph on the conference itself"
+    - "Paul D. Mayle -- Eureka Summit: Agreement in Principle and the Big Three at Tehran, 1943 (1987); detailed diplomatic history focusing on what was actually agreed"
+    - "Laslo Havas -- Hitler's Plot to Kill the Big Three (1967); the earliest book-length account of Operation Long Jump, treat with caution as it relies heavily on Soviet sources"
+    - "David Reynolds -- Summits: Six Meetings That Shaped the Twentieth Century (2007); places Tehran in the broader history of summit diplomacy"
+    - "Nigel West -- Historical Dictionary of World War II Intelligence (2008); reference work covering the intelligence dimensions of the conference period"
+    - "Adrian O'Sullivan -- Nazi Secret Warfare in Occupied Persia (2014); essential for German intelligence operations in wartime Iran"
+    - "Bill Yenne -- Operation Long Jump: Stalin, Roosevelt, Churchill, and the Greatest Assassination Plot in History (2015); popular account, useful but relies on Soviet-origin narrative"

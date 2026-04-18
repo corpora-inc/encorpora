@@ -1,0 +1,18 @@
+{
+  "id": "book_science_sun",
+  "name": "The Sun",
+  "version": "0.1.0",
+  "type": "book",
+  "primary_language": "en",
+  "entry": "dist/reader.js",
+  "styles": [
+    "dist/reader.css"
+  ],
+  "entryType": "script",
+  "sdkVersion": "0.1.0",
+  "metadata": {
+    "series": "Fascinating Science",
+    "author": "Skylar Saveland",
+    "tts": true
+  }
+}

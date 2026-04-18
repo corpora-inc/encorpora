@@ -73,7 +73,11 @@
     "showRomanization": "રોમનાઇઝેશન બતાવો",
     "scrollNavigation": "સ્ક્રોલ નેવિગેશન",
     "packs": "Packs",
-    "stacks": "Stacks"
+    "stacks": "Stacks",
+    "theme": "થીમ",
+    "themeLight": "લાઇટ",
+    "themeDark": "ડાર્ક",
+    "themeSystem": "સિસ્ટમ"
   },
   "onboarding": {
     "welcome": "સ્વાગત",
@@ -108,7 +112,10 @@
     "socialsStepTitle": "સોશિયલ મીડિયા",
     "noVoices": "કોઈ અવાજો નથી",
     "noVoicesHint": "આ ભાષા સક્રિય કરવા અવાજો ઇન્સ્ટોલ કરો.",
-    "sendAppleFeedback": "Apple ફીડબેક મોકલો"
+    "sendAppleFeedback": "Apple ફીડબેક મોકલો",
+    "ttsGoogleInstalled": "Google TTS ઇન્સ્ટૉલ થયેલ",
+    "ttsGoogleMissing": "Google TTS ઇન્સ્ટૉલ નથી",
+    "ttsSetDefault": "ડિફૉલ્ટ તરીકે સેટ કરો"
   },
   "socials": {
     "youtube": {
@@ -296,6 +303,33 @@
     "devLink": "Free2z પર વધુ જાણો",
     "new": "નવું",
     "updates": "અપડેટ્સ",
-    "offline": "ઑફલાઇન"
+    "offline": "ઑફલાઇન",
+    "purchasing": "ખરીદી થઈ રહી છે...",
+    "buy": "{{price}} ખરીદો",
+    "premium": "પ્રીમિયમ",
+    "availableOnMobile": "iOS અને Android પર ઉપલબ્ધ"
+  },
+  "subscription": {
+    "title": "બધું અનલૉક કરો",
+    "description": "સબ્સ્ક્રિપ્શન સાથે બધા ઑડિયોબુક અને પ્રીમિયમ પૅકમાં અમર્યાદિત ઍક્સેસ.",
+    "annual": "વાર્ષિક",
+    "monthly": "માસિક",
+    "subscribe": "સબ્સ્ક્રાઇબ",
+    "subscribing": "સબ્સ્ક્રાઇબ થઈ રહ્યું છે...",
+    "subscribed": "તમે સબ્સ્ક્રાઇબ કર્યું છે",
+    "subscribedDescription": "{{plan}} પ્લાન સક્રિય. Corpán ને સપોર્ટ કરવા માટે આભાર.",
+    "manage": "સબ્સ્ક્રિપ્શન મેનેજ કરો",
+    "termsOfUse": "ઉપયોગની શરતો",
+    "privacyPolicy": "ગોપનીયતા નીતિ",
+    "autoRenewNotice": "સબ્સ્ક્રિપ્શન્સ આપમેળે રિન્યૂ થાય છે. તમારા {{store}} એકાઉન્ટમાં ગમે ત્યારે રદ કરો.",
+    "storeApple": "Apple ID",
+    "storeGoogle": "Google Play"
+  },
+  "restore": {
+    "button": "ખરીદીઓ પુનઃસ્થાપિત કરો",
+    "restoring": "પુનઃસ્થાપિત થઈ રહ્યું છે...",
+    "noPurchases": "અગાઉની ખરીદીઓ મળી નથી.",
+    "success": "{{count}} ખરીદી પુનઃસ્થાપિત.",
+    "error": "ખરીદીઓ પુનઃસ્થાપિત કરવામાં નિષ્ફળ."
   }
 }

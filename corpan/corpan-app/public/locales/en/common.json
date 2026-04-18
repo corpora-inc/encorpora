@@ -112,7 +112,10 @@
     "ttsOsTipWindows": "In Settings, add/install speech voices, then return here.",
     "ttsOsTipOther": "In your device settings, add/install text-to-speech voices, then return here.",
     "installVoicesAndroid": "Install voices",
-    "sendAppleFeedback": "Send Apple Feedback"
+    "sendAppleFeedback": "Send Apple Feedback",
+    "ttsGoogleInstalled": "Google TTS installed",
+    "ttsGoogleMissing": "Google TTS not installed",
+    "ttsSetDefault": "Set as default"
   },
   "socials": {
     "youtube": {
@@ -300,6 +303,33 @@
     "devLink": "Learn more on Free2z",
     "new": "New",
     "updates": "Updates",
-    "offline": "Offline"
+    "offline": "Offline",
+    "purchasing": "Purchasing...",
+    "buy": "Buy {{price}}",
+    "premium": "Premium",
+    "availableOnMobile": "Available on iOS & Android"
+  },
+  "subscription": {
+    "title": "Unlock everything",
+    "description": "Unlimited access to every narrated book and premium pack with a subscription.",
+    "annual": "Annual",
+    "monthly": "Monthly",
+    "subscribe": "Subscribe",
+    "subscribing": "Subscribing...",
+    "subscribed": "You're subscribed",
+    "subscribedDescription": "{{plan}} plan active. Thanks for supporting Corpán.",
+    "manage": "Manage subscription",
+    "termsOfUse": "Terms of Use",
+    "privacyPolicy": "Privacy Policy",
+    "autoRenewNotice": "Subscriptions renew automatically. Cancel anytime in your {{store}} account.",
+    "storeApple": "Apple ID",
+    "storeGoogle": "Google Play"
+  },
+  "restore": {
+    "button": "Restore Purchases",
+    "restoring": "Restoring...",
+    "noPurchases": "No previous purchases found.",
+    "success": "Restored {{count}} purchase(s).",
+    "error": "Failed to restore purchases."
   }
 }

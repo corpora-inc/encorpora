@@ -73,7 +73,11 @@
     "showRomanization": "ரோமானியமயமாக்கல் காட்டவும்",
     "scrollNavigation": "ஸ்க்ரோல் வழிசெலுத்தல்",
     "packs": "Packs",
-    "stacks": "Stacks"
+    "stacks": "Stacks",
+    "theme": "தீம்",
+    "themeLight": "ஒளி",
+    "themeDark": "இருள்",
+    "themeSystem": "கணினி"
   },
   "onboarding": {
     "welcome": "வரவேற்பு",
@@ -108,7 +112,10 @@
     "socialsStepTitle": "சமூக ஊடகங்கள்",
     "noVoices": "குரல்கள் இல்லை",
     "noVoicesHint": "இந்த மொழியை இயக்க குரல்களை நிறுவவும்.",
-    "sendAppleFeedback": "Apple கருத்தை அனுப்பவும்"
+    "sendAppleFeedback": "Apple கருத்தை அனுப்பவும்",
+    "ttsGoogleInstalled": "Google TTS நிறுவப்பட்டது",
+    "ttsGoogleMissing": "Google TTS நிறுவப்படவில்லை",
+    "ttsSetDefault": "இயல்புநிலையாக அமை"
   },
   "socials": {
     "youtube": {
@@ -296,6 +303,33 @@
     "devLink": "Free2z இல் மேலும் அறியவும்",
     "new": "புதிய",
     "updates": "புதுப்பிப்புகள்",
-    "offline": "ஆஃப்லைன்"
+    "offline": "ஆஃப்லைன்",
+    "purchasing": "வாங்குகிறது...",
+    "buy": "{{price}} வாங்கு",
+    "premium": "பிரீமியம்",
+    "availableOnMobile": "iOS மற்றும் Android இல் கிடைக்கும்"
+  },
+  "subscription": {
+    "title": "அனைத்தையும் திறக்கவும்",
+    "description": "சந்தாவுடன் அனைத்து ஒலிப்புத்தகங்கள் மற்றும் பிரீமியம் பேக்குகளுக்கு வரம்பற்ற அணுகல்.",
+    "annual": "ஆண்டு",
+    "monthly": "மாதம்",
+    "subscribe": "சந்தா செய்",
+    "subscribing": "சந்தா செய்கிறது...",
+    "subscribed": "நீங்கள் சந்தாதாரர்",
+    "subscribedDescription": "{{plan}} திட்டம் செயலில் உள்ளது. Corpán ஐ ஆதரித்ததற்கு நன்றி.",
+    "manage": "சந்தாவை நிர்வகிக்கவும்",
+    "termsOfUse": "பயன்பாட்டு விதிமுறைகள்",
+    "privacyPolicy": "தனியுரிமைக் கொள்கை",
+    "autoRenewNotice": "சந்தாக்கள் தானாக புதுப்பிக்கப்படும். உங்கள் {{store}} கணக்கில் எப்போது வேண்டுமானாலும் ரத்து செய்யுங்கள்.",
+    "storeApple": "Apple ID",
+    "storeGoogle": "Google Play"
+  },
+  "restore": {
+    "button": "வாங்கல்களை மீட்டெடு",
+    "restoring": "மீட்டெடுக்கிறது...",
+    "noPurchases": "முந்தைய வாங்கல்கள் எதுவும் கிடைக்கவில்லை.",
+    "success": "{{count}} வாங்கல்(கள்) மீட்டெடுக்கப்பட்டன.",
+    "error": "வாங்கல்களை மீட்டெடுக்க இயலவில்லை."
   }
 }

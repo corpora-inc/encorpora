@@ -69,14 +69,31 @@ body {
 
 .earthgate-paragraph {
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  padding: calc(72px + var(--safe-top)) calc(24px + var(--safe-right)) 40px calc(24px + var(--safe-left));
+  color: var(--eg-text);
+  overflow: hidden;
+  min-height: 0;
+}
+
+.earthgate-swipe-band {
+  flex: 1 1 0;
+  min-height: 48px;
+  align-self: stretch;
+}
+
+.earthgate-paragraph-scroll {
+  flex: 0 1 auto;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   touch-action: pan-y;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: calc(72px + var(--safe-top)) calc(24px + var(--safe-right)) 40px calc(24px + var(--safe-left));
-  color: var(--eg-text);
+  width: 100%;
+  min-height: 0;
 }
 
 .earthgate-paragraph-inner {
@@ -85,7 +102,7 @@ body {
   font-size: 32px;
   line-height: 1.7;
   text-align: center;
-  margin: auto 0;
+  cursor: pointer;
 }
 
 .earthgate-word {
@@ -93,7 +110,6 @@ body {
   padding: 2px 1px;
   border-radius: 3px;
   transition: background-color 0.05s ease;
-  cursor: default;
 }
 
 .earthgate-word--active {
