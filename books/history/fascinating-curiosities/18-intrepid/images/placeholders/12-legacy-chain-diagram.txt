@@ -1,0 +1,4 @@
+Style: Crosshatch pen illustration, diagram style, warm sepia/earth tones
+Subject: The intelligence legacy chain from BSC through OSS to CIA and beyond
+Details: A vertical flow diagram showing organizational descent. At top: BSC (1940-1945) and SOE (1940-1946). These feed into OSS (1942-1945). OSS feeds into CIA (1947-present). A parallel Canadian track: Camp X feeds into RCMP Intelligence, which feeds into CSIS (1984-present). Along the left margin, the subjects of this series placed on the timeline: Boyle (freelance), Reilly (early SIS), Stephenson (BSC executive), leading to institutional intelligence. The diagram should convey evolution from individual adventurers to permanent bureaucratic institutions.
+Aspect: Full-page vertical, suitable for 6x9

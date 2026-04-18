@@ -1,7 +1,7 @@
 series:
   title: "Fascinating Curiosities of Human History"
   tagline: "The most fascinating facts about everything there is to know about anything."
-  planned_volumes: 12+
+  planned_volumes: 22+
 
   philosophy: |
     Each volume starts with a genuine mystery or curiosity and uses it to
@@ -10,6 +10,12 @@ series:
     at the same time. Every sentence earns its place. Honest about the
     boundaries of knowledge. Present competing theories and let the reader
     think. Zero fluff. Maximum fascination. Ontologically clear.
+
+    Beginning with Volume 13, the series expands from archaeological mysteries
+    to the hidden histories of espionage — real spies, real operations, real
+    consequences. The same editorial standards apply: parametric knowledge only,
+    honest about gaps and uncertainties, competing scholarly accounts given
+    fair treatment.
 
   audience: |
     Universal. Fascinating for adults. Fully accessible and enjoyable for
@@ -127,3 +133,85 @@ series:
       region: "Eastern Mediterranean"
       era: "1250 – 1150 BCE"
       leading_mystery: "The unidentified invaders who collapsed the Bronze Age"
+
+    # The Spy Series (Volumes 13-22)
+
+    - number: 13
+      title: "Klondike Joe: The Canadian Who Saved a Queen"
+      subtitle: "The Gold Prospector Who Became a Freelance Spy"
+      directory: "13-klondike-joe"
+      region: "Canada/Romania/Russia"
+      era: "1890s – 1920s"
+      leading_mystery: "How a Klondike gold prospector became a freelance spy-diplomat in revolutionary Eastern Europe"
+
+    - number: 14
+      title: "The Ace of Spies: Sidney Reilly"
+      subtitle: "The Man Who Invented Modern Espionage"
+      directory: "14-the-ace-of-spies"
+      region: "Russia/United Kingdom"
+      era: "1890s – 1925"
+      leading_mystery: "The true identity and loyalties of the most famous spy of the twentieth century"
+
+    - number: 15
+      title: "Jolly George: Captain George Hill"
+      subtitle: "The Soldier Who Ran Agents Behind Every Line"
+      directory: "15-jolly-george"
+      region: "Russia/Central Asia"
+      era: "1914 – 1945"
+      leading_mystery: "The soldier-spy who operated across revolutionary Russia and whose memoirs mix fact with fabrication"
+
+    - number: 16
+      title: "The Ambassador's Plot: Bruce Lockhart"
+      subtitle: "Diplomacy, Conspiracy, and the Lockhart Plot"
+      directory: "16-the-ambassadors-plot"
+      region: "Russia/United Kingdom"
+      era: "1917 – 1918"
+      leading_mystery: "Whether the Lockhart Plot was a genuine coup attempt or a Cheka provocation"
+
+    - number: 17
+      title: "The Children's Author: Arthur Ransome"
+      subtitle: "The Writer Who Spied for Two Countries"
+      directory: "17-the-childrens-author"
+      region: "Russia/United Kingdom/Baltic"
+      era: "1913 – 1930s"
+      leading_mystery: "Whether Ransome was a British agent in Bolshevik Russia, a Bolshevik agent in Britain, or both"
+
+    - number: 18
+      title: "Intrepid: William Stephenson"
+      subtitle: "The Quiet Canadian Who Built a Secret Empire"
+      directory: "18-intrepid"
+      region: "North America/United Kingdom"
+      era: "1939 – 1945"
+      leading_mystery: "The full extent of British Security Coordination's operations on American soil"
+
+    - number: 19
+      title: "The Shadow War in Persia"
+      subtitle: "Oil, Empire, and the Struggle for Iran"
+      directory: "19-the-shadow-war-in-persia"
+      region: "Iran/Central Asia"
+      era: "1901 – 1946"
+      leading_mystery: "How the Anglo-Russian rivalry for Persian oil shaped the modern Middle East"
+
+    - number: 20
+      title: "Tehran 1943"
+      subtitle: "The Secret Meeting That Shaped the World"
+      directory: "20-tehran-1943"
+      region: "Iran"
+      era: "1943"
+      leading_mystery: "The German assassination plot against the Big Three and how Soviet intelligence stopped it — or claimed to"
+
+    - number: 21
+      title: "The Coup: Kermit Roosevelt and Operation Ajax"
+      subtitle: "How the CIA Overthrew a Democracy"
+      directory: "21-the-coup"
+      region: "Iran/United States"
+      era: "1951 – 1953"
+      leading_mystery: "The full mechanics of Operation Ajax and its still-unfolding consequences"
+
+    - number: 22
+      title: "The Great Game: Synthesis"
+      subtitle: "Spies, Empire, and the Invisible Architecture of the Twentieth Century"
+      directory: "22-the-great-game"
+      region: "Global"
+      era: "1890s – 1953"
+      leading_mystery: "How a network of interconnected spies and operations shaped the world we live in"

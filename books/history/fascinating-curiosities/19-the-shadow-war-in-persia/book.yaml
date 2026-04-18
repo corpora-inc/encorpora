@@ -1,0 +1,25 @@
+book:
+  volume: 19
+  title: "The Shadow War in Persia"
+  subtitle: "Oil, Empire, and the Struggle for Iran"
+  target_pages: 80-90
+
+  core_mysteries:
+    primary:
+      - Discovery of oil at Masjed Soleyman in 1908 transformed Persia from a buffer state between the British and Russian empires into the most strategically valuable territory on earth -- every intelligence operation in the region for the next century traced back to that single geological fact
+      - The British-engineered 1921 coup that brought Reza Khan to power -- the documentary record is partially classified, and the precise role of General Ironside and the British legation remains debated among historians
+      - The Allied invasion of Iran in August 1941 -- a joint Anglo-Soviet military occupation of a neutral country, driven by intelligence assessments of German influence and the strategic imperative of the oil fields and the supply corridor to the Soviet Union
+    secondary:
+      - The D'Arcy Concession of 1901 and the terms under which a retired Australian gold prospector acquired exclusive oil exploration rights across most of Persia
+      - German intelligence operations in Persia during both world wars -- tribal proxies, sabotage networks, and the effort to turn Persia against the Allies
+      - The Persian Corridor supply route to the USSR -- millions of tons of Lend-Lease material shipped through Iran between 1941 and 1945
+      - Competing intelligence networks in Reza Shah's Iran -- British, Soviet, German, and American services operating simultaneously in a country that served as crossroads between empires
+
+  key_scholarly_sources:
+    - "Daniel Yergin -- The Prize: The Epic Quest for Oil, Money, and Power (1991); the definitive history of petroleum and its role in shaping geopolitics"
+    - "Ervand Abrahamian -- Iran Between Two Revolutions (1982); the standard scholarly account of modern Iranian political history"
+    - "Michael Axworthy -- A History of Iran: Empire of the Mind (2008); accessible overview with strong treatment of the twentieth century"
+    - "Denis Wright -- The English Amongst the Persians (1977); diplomatic history from the British perspective"
+    - "Cyrus Ghani -- Iran and the Rise of Reza Shah (1998); detailed reconstruction of the 1921 coup and its aftermath"
+    - "T.H. Vail Motter -- The Persian Corridor and Aid to Russia (1952); official US Army history of the supply route"
+    - "Adrian O'Sullivan -- Nazi Secret Warfare in Occupied Persia (2014); German intelligence operations in wartime Iran"
