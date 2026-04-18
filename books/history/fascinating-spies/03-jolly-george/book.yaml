@@ -1,0 +1,23 @@
+book:
+  volume: 3
+  title: "Jolly George: Captain George Hill"
+  subtitle: "The Soldier Who Ran Agents Behind Every Line"
+  target_pages: 80-90
+
+  core_mysteries:
+    primary:
+      - Hill operated as a British intelligence officer in revolutionary Russia 1917-1919, running agent networks across Bolshevik and German lines
+      - His memoirs (Go Spy the Land 1932, Dreaded Hour 1936) contain demonstrable fabrications that scholars are still sorting out from fact
+      - Hill returned to Moscow 1941-1945 as SOE liaison with the NKVD — the same service that had hunted him two decades earlier
+    secondary:
+      - Operational overlap with Sidney Reilly and Robert Bruce Lockhart in the 1918 British intelligence networks
+      - Claims of organizing sabotage networks behind German lines in Ukraine — verifiable evidence is thin
+      - The SOE-NKVD liaison and its limits — what each side actually shared
+      - Hill's fluency in Russian and his pre-war knowledge of the country
+
+  key_scholarly_sources:
+    - "George Hill — Go Spy the Land (1932), The Dreaded Hour (1936): primary memoirs, vivid but unreliable"
+    - "Keith Jeffery — MI6: The History of the Secret Intelligence Service 1909-1949 (2010): authorized history with archival access"
+    - "Robert Service — Spies and Commissars: Bolshevik Russia and the West (2011): scholarly context for British intelligence in revolutionary Russia"
+    - "M.R.D. Foot — SOE: An Outline History of the Special Operations Executive 1940-46 (1984): authoritative SOE reference"
+    - "Jonathan Haslam — Near and Distant Neighbours: A New History of Soviet Intelligence (2015): Soviet-side perspective on Hill's networks"

@@ -1,0 +1,24 @@
+book:
+  volume: 5
+  title: "The Children's Author: Arthur Ransome"
+  subtitle: "The Writer Who Spied for Two Countries"
+  target_pages: 80-90
+
+  core_mysteries:
+    primary:
+      - Ransome spent 1913-1924 in Russia and the Baltic states, befriended Bolshevik leaders including Lenin and Trotsky, married Trotsky's former secretary Evgenia Shelepina, and played chess with Felix Dzerzhinsky -- head of the Cheka -- yet returned to England and became the beloved author of Swallows and Amazons
+      - MI5 files released in 2005 confirmed Ransome was simultaneously a source for SIS (MI6) and suspected by MI5 of being a Bolshevik agent; the two British intelligence services reached opposite conclusions about the same man
+      - Ransome carried Bolshevik diamonds to Stockholm on at least one documented occasion, acting as a courier for the Soviet government while also reporting to British intelligence -- the question of where his loyalties actually lay remains unresolved
+    secondary:
+      - The Ransome files -- what the 2005 MI5 declassification revealed and what it left unanswered
+      - Evgenia Shelepina's undocumented role -- secretary to Trotsky, wife to a British intelligence asset, her own agency in the story remains largely invisible in the archives
+      - Ransome as journalist, propagandist, intelligence asset -- the categories were fluid in revolutionary Russia, and Ransome occupied all of them at different times
+      - Whether the children's books encode or reflect anything from the espionage years -- the Lake District as refuge from a past that could never be discussed
+
+  key_scholarly_sources:
+    - "Roland Chambers -- The Last Englishman: The Double Life of Arthur Ransome (2009); the definitive dual biography, drawing on declassified intelligence files and Ransome's own papers"
+    - "Hugh Brogan -- The Life of Arthur Ransome (1984); the first major biography, written before the intelligence files were released"
+    - "Keith Jeffery -- MI6: The History of the Secret Intelligence Service 1909-1949 (2010); authorized institutional history with Ransome references"
+    - "Christopher Andrew -- The Defence of the Realm: The Authorized History of MI5 (2009); the MI5 perspective on Ransome's suspected Bolshevism"
+    - "Robert Service -- Spies and Commissars: Bolshevik Russia and the West (2011); the broader context of Western intelligence in revolutionary Russia"
+    - "Arthur Ransome -- The Autobiography of Arthur Ransome (1976, posthumous); edited by Rupert Hart-Davis, covers 1884-1932 with significant omissions"
