@@ -46,12 +46,16 @@ export function PackActions({
     setIsPurchasing(true)
     try {
       const result = await purchaseAndVerify(productId, pack.id)
+      if (result.cancelled) {
+        // User dismissed the purchase sheet — no-op, no error UI
+        return
+      }
       if (result.error) {
         console.error("[PackActions] purchase error:", result.error)
-      } else {
-        // Purchase succeeded — trigger install
-        installCatalogPack(pack)
+        return
       }
+      // Purchase succeeded — trigger install
+      installCatalogPack(pack)
     } finally {
       setIsPurchasing(false)
     }

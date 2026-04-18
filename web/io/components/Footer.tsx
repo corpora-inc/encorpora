@@ -164,6 +164,13 @@ const Footer: FC = () => {
             >
               Privacy Policy
             </Link>
+            <span className="w-1 h-1 bg-gray-300 rounded-full"></span>
+            <Link
+              href="/terms"
+              className="text-xs text-gray-500 hover:text-black transition-colors duration-300 mx-3"
+            >
+              Terms of Use
+            </Link>
           </div>
         </div>
       </div>

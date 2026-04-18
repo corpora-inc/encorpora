@@ -18,6 +18,7 @@ import { useCatalogStore } from "@/store/catalog";
 import { usePackUpdates } from "@/hooks/usePackUpdates";
 import { useThemeEffect } from "@/hooks/useThemeEffect";
 import { refreshEntitlements, getPlatform } from "@/contentPacks/purchase";
+import { useEntitlementStore } from "@/store/entitlements";
 
 // In a module that always loads (e.g. App.tsx)
 if (import.meta.env.DEV) {
@@ -57,6 +58,21 @@ export default function App() {
     // Detect platform then refresh IAP entitlements (local, no network)
     getPlatform().then(() => refreshEntitlements()).catch(() => {});
   }, [fetchCatalog]);
+
+  // Reader packs (running in this same WebView) dispatch this event after an
+  // in-reader narration purchase. Keep the zustand entitlement store in sync
+  // so subsequent UI in the main app reflects the new purchased product.
+  useEffect(() => {
+    const onPurchaseRecorded = (e: Event) => {
+      const detail = (e as CustomEvent<{ productId?: string }>).detail;
+      if (detail?.productId) {
+        useEntitlementStore.getState().addPurchasedProduct(detail.productId);
+      }
+    };
+    window.addEventListener("corpan:purchase-recorded", onPurchaseRecorded);
+    return () =>
+      window.removeEventListener("corpan:purchase-recorded", onPurchaseRecorded);
+  }, []);
 
   useEffect(() => {
     const onPop = () => {

@@ -73,7 +73,11 @@
     "showRomanization": "Okunuşu göster",
     "scrollNavigation": "Kaydırma navigasyonu",
     "packs": "Packs",
-    "stacks": "Stacks"
+    "stacks": "Stacks",
+    "theme": "Tema",
+    "themeLight": "Açık",
+    "themeDark": "Koyu",
+    "themeSystem": "Sistem"
   },
   "onboarding": {
     "welcome": "Hoş geldiniz",
@@ -108,7 +112,10 @@
     "socialsStepTitle": "Sosyal medya",
     "noVoices": "Ses yok",
     "noVoicesHint": "Bu dili etkinleştirmek için sesleri yükleyin.",
-    "sendAppleFeedback": "Apple geri bildirimi gönder"
+    "sendAppleFeedback": "Apple geri bildirimi gönder",
+    "ttsGoogleInstalled": "Google TTS yüklü",
+    "ttsGoogleMissing": "Google TTS yüklü değil",
+    "ttsSetDefault": "Varsayılan olarak ayarla"
   },
   "socials": {
     "youtube": {
@@ -296,6 +303,33 @@
     "devLink": "Free2z'de daha fazla bilgi",
     "new": "Yeni",
     "updates": "Güncellemeler",
-    "offline": "Çevrimdışı"
+    "offline": "Çevrimdışı",
+    "purchasing": "Satın alınıyor...",
+    "buy": "{{price}} satın al",
+    "premium": "Premium",
+    "availableOnMobile": "iOS ve Android'de mevcut"
+  },
+  "subscription": {
+    "title": "Hepsini aç",
+    "description": "Abonelikle tüm sesli kitaplara ve premium paketlere sınırsız erişim.",
+    "annual": "Yıllık",
+    "monthly": "Aylık",
+    "subscribe": "Abone ol",
+    "subscribing": "Abone olunuyor...",
+    "subscribed": "Abonesiniz",
+    "subscribedDescription": "{{plan}} planı etkin. Corpán'ı desteklediğiniz için teşekkürler.",
+    "manage": "Aboneliği yönet",
+    "termsOfUse": "Kullanım Koşulları",
+    "privacyPolicy": "Gizlilik Politikası",
+    "autoRenewNotice": "Abonelikler otomatik olarak yenilenir. {{store}} hesabınızdan istediğiniz zaman iptal edebilirsiniz.",
+    "storeApple": "Apple ID",
+    "storeGoogle": "Google Play"
+  },
+  "restore": {
+    "button": "Satın alımları geri yükle",
+    "restoring": "Geri yükleniyor...",
+    "noPurchases": "Önceki satın alım bulunamadı.",
+    "success": "{{count}} satın alım geri yüklendi.",
+    "error": "Satın alımlar geri yüklenemedi."
   }
 }

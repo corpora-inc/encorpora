@@ -1,29 +1,63 @@
 import { useState, useEffect } from "react"
 import { useTranslation } from "react-i18next"
+import { CheckCircle2 } from "lucide-react"
+import { openUrl } from "@tauri-apps/plugin-opener"
 import { Button } from "@/components/ui/button"
 import { useEntitlementStore } from "@/store/entitlements"
 import {
   fetchProducts,
   purchaseAndVerify,
+  manageSubscription,
   SUBSCRIPTION_MONTHLY,
   SUBSCRIPTION_ANNUAL,
   type StoreProduct,
 } from "@/contentPacks/purchase"
 
+const TERMS_URL = "https://encorpora.io/terms"
+const PRIVACY_URL = "https://encorpora.io/privacy"
+
 /**
- * Subscription offer banner shown in the catalog browser.
- * Only visible to non-subscribers on platforms with IAP support.
+ * Subscription offer banner in the packs browser.
+ * - Non-subscriber with IAP: shows monthly/annual selector + Subscribe button.
+ * - Active subscriber: shows subscribed status + Manage Subscription button.
+ * - Non-IAP platforms: hidden entirely.
  */
 export function SubscriptionOffer() {
   const { t } = useTranslation()
-  const subscriptionActive = useEntitlementStore((s) => s.subscription.active)
+  const subscription = useEntitlementStore((s) => s.subscription)
   const iapAvailable = useEntitlementStore((s) => s.iapAvailable)
   const [products, setProducts] = useState<StoreProduct[]>([])
   const [selectedPlan, setSelectedPlan] = useState<"monthly" | "annual">("annual")
   const [isPurchasing, setIsPurchasing] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
-  // Fetch subscription product prices from the store
+  const subscriptionActive = subscription.active
+  const platform = useEntitlementStore((s) => s.platform)
+  const storeLabel =
+    platform === "android"
+      ? t("subscription.storeGoogle", "Google Play")
+      : t("subscription.storeApple", "Apple ID")
+
+  const legalLinks = (
+    <div className="flex items-center justify-center gap-4 pt-1 text-[11px]">
+      <button
+        type="button"
+        onClick={() => void openUrl(TERMS_URL)}
+        className="text-muted-foreground underline underline-offset-2 hover:text-foreground"
+      >
+        {t("subscription.termsOfUse", "Terms of Use")}
+      </button>
+      <span className="text-muted-foreground">·</span>
+      <button
+        type="button"
+        onClick={() => void openUrl(PRIVACY_URL)}
+        className="text-muted-foreground underline underline-offset-2 hover:text-foreground"
+      >
+        {t("subscription.privacyPolicy", "Privacy Policy")}
+      </button>
+    </div>
+  )
+
   useEffect(() => {
     if (!iapAvailable || subscriptionActive) return
     fetchProducts(
@@ -32,14 +66,51 @@ export function SubscriptionOffer() {
     ).then(setProducts)
   }, [iapAvailable, subscriptionActive])
 
-  // Don't render if already subscribed or IAP not available
-  if (subscriptionActive || !iapAvailable) return null
+  if (!iapAvailable) return null
+
+  // Active subscriber — confirmation + manage button.
+  if (subscriptionActive) {
+    const planLabel =
+      subscription.plan === "annual"
+        ? t("subscription.annual", "Annual")
+        : t("subscription.monthly", "Monthly")
+
+    return (
+      <div className="rounded-xl border border-emerald-200 bg-emerald-50 dark:bg-emerald-950/30 dark:border-emerald-900 p-4 space-y-3">
+        <div className="flex items-start gap-3">
+          <CheckCircle2 className="h-5 w-5 text-emerald-600 dark:text-emerald-400 mt-0.5 flex-shrink-0" />
+          <div>
+            <h3 className="font-semibold text-sm text-emerald-900 dark:text-emerald-100">
+              {t("subscription.subscribed", "You're subscribed")}
+            </h3>
+            <p className="text-xs text-emerald-800/80 dark:text-emerald-200/80 mt-1">
+              {t("subscription.subscribedDescription", "{{plan}} plan active. Thanks for supporting Corpán.", { plan: planLabel })}
+            </p>
+          </div>
+        </div>
+
+        <Button
+          onClick={() => void manageSubscription()}
+          variant="outline"
+          className="w-full"
+          size="sm"
+        >
+          {t("subscription.manage", "Manage subscription")}
+        </Button>
+
+        {legalLinks}
+      </div>
+    )
+  }
 
   const monthlyProduct = products.find((p) => p.productId === SUBSCRIPTION_MONTHLY)
   const annualProduct = products.find((p) => p.productId === SUBSCRIPTION_ANNUAL)
 
-  const monthlyPrice = monthlyProduct?.price ?? "$15.99/mo"
-  const annualPrice = annualProduct?.price ?? "$100/yr"
+  // Leave blank during the initial fetch — store (Apple/Google) returns the
+  // localized price within a few hundred ms. Hardcoded fallbacks would show
+  // iOS-style prices briefly on Android (wrong).
+  const monthlyPrice = monthlyProduct?.price ?? ""
+  const annualPrice = annualProduct?.price ?? ""
 
   const handleSubscribe = async () => {
     const productId =
@@ -52,6 +123,8 @@ export function SubscriptionOffer() {
       if (result.error) {
         setError(result.error)
       }
+      // cancelled / alreadyOwned / verifyFailed all result in the subscribed
+      // card re-rendering via the entitlement store (no error shown).
     } finally {
       setIsPurchasing(false)
     }
@@ -61,12 +134,12 @@ export function SubscriptionOffer() {
     <div className="rounded-xl border bg-gradient-to-br from-primary/5 to-primary/10 p-4 space-y-3">
       <div>
         <h3 className="font-semibold text-sm">
-          {t("subscription.title", "Unlock all books")}
+          {t("subscription.title", "Unlock everything")}
         </h3>
         <p className="text-xs text-muted-foreground mt-1">
           {t(
             "subscription.description",
-            "Get unlimited access to every narrated book with a subscription."
+            "Unlimited access to every narrated book and premium pack with a subscription."
           )}
         </p>
       </div>
@@ -116,6 +189,16 @@ export function SubscriptionOffer() {
       {error ? (
         <p className="text-xs text-destructive">{error}</p>
       ) : null}
+
+      <p className="text-[11px] text-muted-foreground leading-relaxed text-center">
+        {t(
+          "subscription.autoRenewNotice",
+          "Subscriptions renew automatically. Cancel anytime in your {{store}} account.",
+          { store: storeLabel }
+        )}
+      </p>
+
+      {legalLinks}
     </div>
   )
 }

@@ -66,6 +66,9 @@ export function PacksListing({
   return (
     <div className="space-y-6">
 
+      {/* Subscription Offer — top of screen. Self-hides when not applicable. */}
+      <SubscriptionOffer />
+
       {/* Section 1: Updates Available */}
       {updates.length > 0 && (
         <div className="space-y-3">
@@ -147,9 +150,6 @@ export function PacksListing({
           </div>
         )}
       </div>
-
-      {/* Subscription Offer (self-hides when not applicable) */}
-      <SubscriptionOffer />
 
       {/* Section 3: Discover New */}
       <div className="space-y-3">

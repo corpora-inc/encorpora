@@ -73,7 +73,11 @@
     "showRomanization": "Hiển thị La-tinh hóa",
     "scrollNavigation": "Điều hướng cuộn",
     "packs": "Packs",
-    "stacks": "Stacks"
+    "stacks": "Stacks",
+    "theme": "Giao diện",
+    "themeLight": "Sáng",
+    "themeDark": "Tối",
+    "themeSystem": "Hệ thống"
   },
   "onboarding": {
     "welcome": "Chào mừng",
@@ -108,7 +112,10 @@
     "socialsStepTitle": "Mạng xã hội",
     "noVoices": "Không có giọng nói",
     "noVoicesHint": "Cài đặt giọng nói để bật ngôn ngữ này.",
-    "sendAppleFeedback": "Gửi phản hồi cho Apple"
+    "sendAppleFeedback": "Gửi phản hồi cho Apple",
+    "ttsGoogleInstalled": "Google TTS đã cài",
+    "ttsGoogleMissing": "Google TTS chưa cài",
+    "ttsSetDefault": "Đặt làm mặc định"
   },
   "socials": {
     "youtube": {
@@ -296,6 +303,33 @@
     "devLink": "Tìm hiểu thêm trên Free2z",
     "new": "Mới",
     "updates": "Cập nhật",
-    "offline": "Ngoại tuyến"
+    "offline": "Ngoại tuyến",
+    "purchasing": "Đang mua...",
+    "buy": "Mua {{price}}",
+    "premium": "Cao cấp",
+    "availableOnMobile": "Có trên iOS và Android"
+  },
+  "subscription": {
+    "title": "Mở khóa tất cả",
+    "description": "Truy cập không giới hạn mọi sách nói và gói cao cấp với đăng ký.",
+    "annual": "Hàng năm",
+    "monthly": "Hàng tháng",
+    "subscribe": "Đăng ký",
+    "subscribing": "Đang đăng ký...",
+    "subscribed": "Bạn đã đăng ký",
+    "subscribedDescription": "Gói {{plan}} đang hoạt động. Cảm ơn bạn đã ủng hộ Corpán.",
+    "manage": "Quản lý đăng ký",
+    "termsOfUse": "Điều khoản sử dụng",
+    "privacyPolicy": "Chính sách bảo mật",
+    "autoRenewNotice": "Gói đăng ký tự động gia hạn. Hủy bất kỳ lúc nào trong tài khoản {{store}} của bạn.",
+    "storeApple": "Apple ID",
+    "storeGoogle": "Google Play"
+  },
+  "restore": {
+    "button": "Khôi phục mua hàng",
+    "restoring": "Đang khôi phục...",
+    "noPurchases": "Không tìm thấy giao dịch trước đó.",
+    "success": "Đã khôi phục {{count}} giao dịch.",
+    "error": "Khôi phục mua hàng thất bại."
   }
 }

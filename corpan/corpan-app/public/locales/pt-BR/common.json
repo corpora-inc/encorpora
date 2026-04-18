@@ -73,7 +73,11 @@
     "showRomanization": "Mostrar romanização",
     "scrollNavigation": "Navegação por rolagem",
     "packs": "Packs",
-    "stacks": "Stacks"
+    "stacks": "Stacks",
+    "theme": "Tema",
+    "themeLight": "Claro",
+    "themeDark": "Escuro",
+    "themeSystem": "Sistema"
   },
   "onboarding": {
     "welcome": "Bem-vindo",
@@ -108,7 +112,10 @@
     "socialsStepTitle": "Redes sociais",
     "noVoices": "Sem vozes",
     "noVoicesHint": "Instale vozes para ativar este idioma.",
-    "sendAppleFeedback": "Enviar feedback à Apple"
+    "sendAppleFeedback": "Enviar feedback à Apple",
+    "ttsGoogleInstalled": "Google TTS instalado",
+    "ttsGoogleMissing": "Google TTS não instalado",
+    "ttsSetDefault": "Definir como padrão"
   },
   "socials": {
     "youtube": {
@@ -296,6 +303,33 @@
     "devLink": "Saiba mais no Free2z",
     "new": "Novo",
     "updates": "Atualizações",
-    "offline": "Sem conexão"
+    "offline": "Sem conexão",
+    "purchasing": "Comprando...",
+    "buy": "Comprar {{price}}",
+    "premium": "Premium",
+    "availableOnMobile": "Disponível no iOS e Android"
+  },
+  "subscription": {
+    "title": "Desbloquear tudo",
+    "description": "Acesso ilimitado a todos os audiolivros e pacotes premium com uma assinatura.",
+    "annual": "Anual",
+    "monthly": "Mensal",
+    "subscribe": "Assinar",
+    "subscribing": "Assinando...",
+    "subscribed": "Você está inscrito",
+    "subscribedDescription": "Plano {{plan}} ativo. Obrigado por apoiar o Corpán.",
+    "manage": "Gerenciar assinatura",
+    "termsOfUse": "Termos de uso",
+    "privacyPolicy": "Política de privacidade",
+    "autoRenewNotice": "As assinaturas renovam automaticamente. Cancele quando quiser na sua conta {{store}}.",
+    "storeApple": "Apple ID",
+    "storeGoogle": "Google Play"
+  },
+  "restore": {
+    "button": "Restaurar compras",
+    "restoring": "Restaurando...",
+    "noPurchases": "Nenhuma compra anterior encontrada.",
+    "success": "{{count}} compra(s) restaurada(s).",
+    "error": "Falha ao restaurar compras."
   }
 }

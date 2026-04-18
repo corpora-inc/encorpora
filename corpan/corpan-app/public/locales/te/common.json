@@ -73,7 +73,11 @@
     "showRomanization": "రోమనైజేషన్ చూపించు",
     "scrollNavigation": "స్క్రోల్ నావిగేషన్",
     "packs": "Packs",
-    "stacks": "Stacks"
+    "stacks": "Stacks",
+    "theme": "థీమ్",
+    "themeLight": "లైట్",
+    "themeDark": "డార్క్",
+    "themeSystem": "సిస్టమ్"
   },
   "onboarding": {
     "welcome": "స్వాగతం",
@@ -108,7 +112,10 @@
     "socialsStepTitle": "సోషల్ మీడియా",
     "noVoices": "వాయిస్‌లు లేవు",
     "noVoicesHint": "ఈ భాషను ప్రారంభించడానికి వాయిస్‌లను ఇన్‌స్టాల్ చేయండి.",
-    "sendAppleFeedback": "Apple ఫీడ్‌బ్యాక్ పంపండి"
+    "sendAppleFeedback": "Apple ఫీడ్‌బ్యాక్ పంపండి",
+    "ttsGoogleInstalled": "Google TTS ఇన్‌స్టాల్ చేయబడింది",
+    "ttsGoogleMissing": "Google TTS ఇన్‌స్టాల్ కాలేదు",
+    "ttsSetDefault": "డిఫాల్ట్‌గా సెట్ చేయి"
   },
   "socials": {
     "youtube": {
@@ -296,6 +303,33 @@
     "devLink": "Free2z లో మరింత తెలుసుకోండి",
     "new": "కొత్త",
     "updates": "అప్‌డేట్లు",
-    "offline": "ఆఫ్‌లైన్"
+    "offline": "ఆఫ్‌లైన్",
+    "purchasing": "కొనుగోలు చేస్తోంది...",
+    "buy": "{{price}} కొనుగోలు",
+    "premium": "ప్రీమియం",
+    "availableOnMobile": "iOS మరియు Android లో అందుబాటులో"
+  },
+  "subscription": {
+    "title": "అన్నీ అన్‌లాక్ చేయండి",
+    "description": "సబ్‌స్క్రిప్షన్‌తో అన్ని ఆడియోబుక్‌లు మరియు ప్రీమియం ప్యాక్‌లకు అపరిమిత యాక్సెస్.",
+    "annual": "వార్షిక",
+    "monthly": "నెలవారీ",
+    "subscribe": "సబ్‌స్క్రైబ్",
+    "subscribing": "సబ్‌స్క్రైబ్ అవుతోంది...",
+    "subscribed": "మీరు సబ్‌స్క్రయిబ్ చేసారు",
+    "subscribedDescription": "{{plan}} ప్లాన్ సక్రియంగా ఉంది. Corpán కి మద్దతిచ్చినందుకు ధన్యవాదాలు.",
+    "manage": "సబ్‌స్క్రిప్షన్ నిర్వహించండి",
+    "termsOfUse": "ఉపయోగ నిబంధనలు",
+    "privacyPolicy": "గోప్యతా విధానం",
+    "autoRenewNotice": "సబ్‌స్క్రిప్షన్‌లు ఆటోమేటిక్‌గా రెన్యూ అవుతాయి. మీ {{store}} ఖాతాలో ఎప్పుడైనా రద్దు చేయండి.",
+    "storeApple": "Apple ID",
+    "storeGoogle": "Google Play"
+  },
+  "restore": {
+    "button": "కొనుగోళ్లను పునరుద్ధరించు",
+    "restoring": "పునరుద్ధరిస్తోంది...",
+    "noPurchases": "మునుపటి కొనుగోళ్లు కనుగొనబడలేదు.",
+    "success": "{{count}} కొనుగోలు(లు) పునరుద్ధరించబడ్డాయి.",
+    "error": "కొనుగోళ్లను పునరుద్ధరించడం విఫలమైంది."
   }
 }

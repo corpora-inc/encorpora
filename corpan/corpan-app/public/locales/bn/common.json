@@ -73,7 +73,11 @@
     "showRomanization": "রোমানাইজেশন দেখান",
     "scrollNavigation": "স্ক্রল নেভিগেশন",
     "packs": "Packs",
-    "stacks": "Stacks"
+    "stacks": "Stacks",
+    "theme": "থিম",
+    "themeLight": "লাইট",
+    "themeDark": "ডার্ক",
+    "themeSystem": "সিস্টেম"
   },
   "onboarding": {
     "welcome": "স্বাগতম",
@@ -108,7 +112,10 @@
     "socialsStepTitle": "সোশ্যাল মিডিয়া",
     "noVoices": "কোনো ভয়েস নেই",
     "noVoicesHint": "এই ভাষা চালু করতে ভয়েস ইনস্টল করুন।",
-    "sendAppleFeedback": "Apple-কে ফিডব্যাক পাঠান"
+    "sendAppleFeedback": "Apple-কে ফিডব্যাক পাঠান",
+    "ttsGoogleInstalled": "Google TTS ইনস্টল করা আছে",
+    "ttsGoogleMissing": "Google TTS ইনস্টল নেই",
+    "ttsSetDefault": "ডিফল্ট হিসাবে সেট করুন"
   },
   "socials": {
     "youtube": {
@@ -296,6 +303,33 @@
     "devLink": "Free2z\u001fএ আরও জানুন",
     "new": "নতুন",
     "updates": "আপডেট",
-    "offline": "অফলাইন"
+    "offline": "অফলাইন",
+    "purchasing": "কেনা হচ্ছে...",
+    "buy": "{{price}} কিনুন",
+    "premium": "প্রিমিয়াম",
+    "availableOnMobile": "iOS এবং Android-এ উপলব্ধ"
+  },
+  "subscription": {
+    "title": "সব আনলক করুন",
+    "description": "সাবস্ক্রিপশনের মাধ্যমে সমস্ত অডিওবুক এবং প্রিমিয়াম প্যাকে সীমাহীন অ্যাক্সেস।",
+    "annual": "বার্ষিক",
+    "monthly": "মাসিক",
+    "subscribe": "সাবস্ক্রাইব",
+    "subscribing": "সাবস্ক্রাইব হচ্ছে...",
+    "subscribed": "আপনি সাবস্ক্রাইব করেছেন",
+    "subscribedDescription": "{{plan}} প্ল্যান সক্রিয়। Corpán-কে সমর্থন করার জন্য ধন্যবাদ।",
+    "manage": "সাবস্ক্রিপশন পরিচালনা করুন",
+    "termsOfUse": "ব্যবহারের শর্তাবলী",
+    "privacyPolicy": "গোপনীয়তা নীতি",
+    "autoRenewNotice": "সাবস্ক্রিপশন স্বয়ংক্রিয়ভাবে নবায়ন হয়। আপনার {{store}} অ্যাকাউন্টে যেকোনো সময় বাতিল করুন।",
+    "storeApple": "Apple ID",
+    "storeGoogle": "Google Play"
+  },
+  "restore": {
+    "button": "ক্রয় পুনরুদ্ধার",
+    "restoring": "পুনরুদ্ধার হচ্ছে...",
+    "noPurchases": "আগের কোনো ক্রয় পাওয়া যায়নি।",
+    "success": "{{count}}টি ক্রয় পুনরুদ্ধার হয়েছে।",
+    "error": "ক্রয় পুনরুদ্ধার ব্যর্থ হয়েছে।"
   }
 }

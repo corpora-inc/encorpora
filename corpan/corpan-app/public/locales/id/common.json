@@ -73,7 +73,11 @@
     "showRomanization": "Tampilkan romanisasi",
     "scrollNavigation": "Navigasi gulir",
     "packs": "Packs",
-    "stacks": "Stacks"
+    "stacks": "Stacks",
+    "theme": "Tema",
+    "themeLight": "Terang",
+    "themeDark": "Gelap",
+    "themeSystem": "Sistem"
   },
   "onboarding": {
     "welcome": "Selamat datang",
@@ -108,7 +112,10 @@
     "socialsStepTitle": "Sosial media",
     "noVoices": "Tidak ada suara",
     "noVoicesHint": "Pasang suara untuk mengaktifkan bahasa ini.",
-    "sendAppleFeedback": "Kirim masukan Apple"
+    "sendAppleFeedback": "Kirim masukan Apple",
+    "ttsGoogleInstalled": "Google TTS terpasang",
+    "ttsGoogleMissing": "Google TTS belum terpasang",
+    "ttsSetDefault": "Atur sebagai default"
   },
   "socials": {
     "youtube": {
@@ -296,6 +303,33 @@
     "devLink": "Pelajari di Free2z",
     "new": "Baru",
     "updates": "Pembaruan",
-    "offline": "Offline"
+    "offline": "Offline",
+    "purchasing": "Membeli...",
+    "buy": "Beli {{price}}",
+    "premium": "Premium",
+    "availableOnMobile": "Tersedia di iOS dan Android"
+  },
+  "subscription": {
+    "title": "Buka semua",
+    "description": "Akses tak terbatas ke semua buku audio dan paket premium dengan berlangganan.",
+    "annual": "Tahunan",
+    "monthly": "Bulanan",
+    "subscribe": "Berlangganan",
+    "subscribing": "Berlangganan...",
+    "subscribed": "Kamu sudah berlangganan",
+    "subscribedDescription": "Paket {{plan}} aktif. Terima kasih telah mendukung Corpán.",
+    "manage": "Kelola langganan",
+    "termsOfUse": "Ketentuan Penggunaan",
+    "privacyPolicy": "Kebijakan Privasi",
+    "autoRenewNotice": "Langganan diperpanjang otomatis. Batalkan kapan saja di akun {{store}} Anda.",
+    "storeApple": "Apple ID",
+    "storeGoogle": "Google Play"
+  },
+  "restore": {
+    "button": "Pulihkan pembelian",
+    "restoring": "Memulihkan...",
+    "noPurchases": "Tidak ditemukan pembelian sebelumnya.",
+    "success": "{{count}} pembelian dipulihkan.",
+    "error": "Gagal memulihkan pembelian."
   }
 }
