@@ -36,6 +36,16 @@ type SignedUrlResult =
   | { url: null; code: Exclude<InstallErrorCode, "NO_TAURI" | "NO_RECEIPT" | "DOWNLOAD_FAILED">; message: string; detail?: string }
 
 /**
+ * Production purchase-verify endpoint (AWS API Gateway → Lambda).
+ *
+ * Public URL — not a secret. The Lambda enforces auth via the platform
+ * receipt, not by URL obscurity. Hardcoded as default so CI/GH-Pages builds
+ * (which don't have access to per-machine .env files) ship a working bundle
+ * without ceremony. Override via `VITE_GAME_VERIFY_URL` for local staging.
+ */
+const DEFAULT_VERIFY_URL = "https://dzxrs4szm7.execute-api.us-east-2.amazonaws.com/prod"
+
+/**
  * Request a signed download URL for premium content from the backend.
  * On success returns the URL. On failure returns a structured reason so the
  * caller can surface it to the user.
@@ -46,18 +56,10 @@ async function getSignedDownloadUrl(
   receipt: string,
   platform: string
 ): Promise<SignedUrlResult> {
-  const verifyUrl = (typeof import.meta !== "undefined" &&
-    import.meta.env?.VITE_GAME_VERIFY_URL) as string | undefined
-
-  if (!verifyUrl) {
-    console.warn("[reader-catalog] No verify URL configured for premium content")
-    return {
-      url: null,
-      code: "NO_VERIFY_URL",
-      message: "Backend not configured for this build",
-      detail: "VITE_GAME_VERIFY_URL was not set at pack build time",
-    }
-  }
+  const verifyUrl =
+    ((typeof import.meta !== "undefined" &&
+      import.meta.env?.VITE_GAME_VERIFY_URL) as string | undefined) ||
+    DEFAULT_VERIFY_URL
 
   try {
     const res = await fetch(new URL("/verify-purchase", verifyUrl).toString(), {

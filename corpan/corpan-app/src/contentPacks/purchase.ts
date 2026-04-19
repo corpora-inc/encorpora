@@ -324,10 +324,17 @@ export async function getProductStatus(
 // Backend verification
 // ---------------------------------------------------------------------------
 
+/**
+ * Production purchase-verify endpoint. Public URL (auth is by platform receipt,
+ * not URL obscurity) — hardcoded so CI builds don't need a per-machine .env.
+ * Override with `VITE_GAME_VERIFY_URL` for staging.
+ */
+const DEFAULT_VERIFY_URL = "https://dzxrs4szm7.execute-api.us-east-2.amazonaws.com/prod"
+
 const getVerifyUrl = () => {
   const envUrl = import.meta.env.VITE_GAME_VERIFY_URL
   if (typeof envUrl === "string" && envUrl.length > 0) return envUrl
-  return null
+  return DEFAULT_VERIFY_URL
 }
 
 /**
