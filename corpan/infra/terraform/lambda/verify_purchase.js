@@ -92,18 +92,42 @@ async function verifyApple(body, secrets) {
     return { verified: false, error: "Apple credentials not configured" };
   }
 
-  // The receipt from StoreKit 2 is a JWS signed transaction
-  // We can verify it locally using Apple's root certificates
-  const environment = process.env.NODE_ENV === "production"
-    ? Environment.PRODUCTION
-    : Environment.SANDBOX;
+  // Try PRODUCTION first, fall back to SANDBOX. TestFlight receipts live in
+  // SANDBOX regardless of how the Lambda is deployed; App Store receipts live
+  // in PRODUCTION. The canonical Apple pattern is to try prod first, then
+  // retry in sandbox on environment-mismatch errors.
+  for (const environment of [Environment.PRODUCTION, Environment.SANDBOX]) {
+    const result = await tryVerifyAppleWith(body, appleSecrets, environment);
+    if (result.verified) {
+      console.log(`[apple] Verified in ${environment === Environment.PRODUCTION ? "PRODUCTION" : "SANDBOX"}: txn=${result.transactionId}`);
+      return result;
+    }
+    // Only fall through to sandbox if the error looks like an environment mismatch
+    const msg = (result.error || "").toLowerCase();
+    const looksEnvMismatch =
+      msg.includes("sandbox") ||
+      msg.includes("environment") ||
+      msg.includes("not found") ||
+      msg.includes("21007") ||
+      msg.includes("4040004");
+    if (!looksEnvMismatch) {
+      return result; // Real error, don't retry in sandbox
+    }
+    console.log(`[apple] ${environment === Environment.PRODUCTION ? "PRODUCTION" : "SANDBOX"} rejected (${result.error}), trying next environment...`);
+  }
+  return { verified: false, error: "Apple verification failed in both production and sandbox" };
+}
+
+async function tryVerifyAppleWith(body, appleSecrets, environment) {
+  const { transactionId } = body;
+  const bundleId = appleSecrets.bundleId || "com.corpora.corpan";
 
   try {
     const client = new AppStoreServerAPIClient(
       appleSecrets.privateKey,
       appleSecrets.key_id,
       appleSecrets.issuer_id,
-      appleSecrets.bundleId || "com.corpora.corpan",
+      bundleId,
       environment
     );
 
@@ -119,7 +143,7 @@ async function verifyApple(body, secrets) {
       [], // Apple root certs are bundled in the library
       true, // enableOnlineChecks
       environment,
-      appleSecrets.bundleId || "com.corpora.corpan",
+      bundleId,
       null // appAppleId (optional)
     );
 
@@ -142,9 +166,10 @@ async function verifyApple(body, secrets) {
       expiresAt: decoded.expiresDate
         ? new Date(decoded.expiresDate).toISOString()
         : null,
+      environment: environment === Environment.PRODUCTION ? "production" : "sandbox",
     };
   } catch (err) {
-    console.error("[apple] Verification error:", err);
+    console.error(`[apple] Verification error (${environment === Environment.PRODUCTION ? "PRODUCTION" : "SANDBOX"}):`, err.message);
     return { verified: false, error: `Apple verification failed: ${err.message}` };
   }
 }
