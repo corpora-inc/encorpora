@@ -1,0 +1,193 @@
+{
+  "book_id": "pack",
+  "language": "sv",
+  "timestamp": "2026-04-19T20:42:20.782535+00:00",
+  "segments_total": 629,
+  "segments_first_pass": 569,
+  "segments_converged_by_retry": 42,
+  "segments_plateau_stopped": 18,
+  "total_retries": 128,
+  "error_distribution": {},
+  "worst_segments": [
+    {
+      "id": "ch08-572",
+      "attempts": 8,
+      "best_quality_score": 5.36,
+      "best_attempt": 4,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Nollställ ditt fokus."
+    },
+    {
+      "id": "ch06-455",
+      "attempts": 7,
+      "best_quality_score": 0.0,
+      "best_attempt": 6,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "En bra målutspark når din libero eller dina försvarare i mittfältsområdet."
+    },
+    {
+      "id": "ch04-268",
+      "attempts": 5,
+      "best_quality_score": 3.0,
+      "best_attempt": 4,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Två steg framåt kan ta bort hälften av det skytten ser."
+    },
+    {
+      "id": "ch06-449",
+      "attempts": 5,
+      "best_quality_score": 0.0,
+      "best_attempt": 4,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Använd puntningen när ditt lag är under hårt tryck och behöver bollen så långt f"
+    },
+    {
+      "id": "ch01-005",
+      "attempts": 4,
+      "best_quality_score": 0.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Det förtroendet är något du förtjänar i varje match."
+    },
+    {
+      "id": "ch01-060",
+      "attempts": 4,
+      "best_quality_score": 15.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Du står på tå."
+    },
+    {
+      "id": "ch02-098",
+      "attempts": 4,
+      "best_quality_score": 1.6,
+      "best_attempt": 2,
+      "plateau_count": 1,
+      "final_errors": [],
+      "text_preview": "Gå vidare till svårare fångningar."
+    },
+    {
+      "id": "ch02-103",
+      "attempts": 4,
+      "best_quality_score": 15.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Nå varje del av målet med dina uppvärmningsfångningar."
+    },
+    {
+      "id": "ch02-129",
+      "attempts": 4,
+      "best_quality_score": 22.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Se dig själv stå stolt i en en-mot-en-situation."
+    },
+    {
+      "id": "ch03-185",
+      "attempts": 4,
+      "best_quality_score": 12.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Du är liberon bakom liberon."
+    },
+    {
+      "id": "ch03-231",
+      "attempts": 4,
+      "best_quality_score": 0.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Se var motståndarnas målvakt sparkar bollen."
+    },
+    {
+      "id": "ch04-261",
+      "attempts": 4,
+      "best_quality_score": 15.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Din vinkel är det viktigaste i målvaktsspel."
+    },
+    {
+      "id": "ch04-293",
+      "attempts": 4,
+      "best_quality_score": 22.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "En anfallare springer rakt mot dig i en en-mot-en-situation."
+    },
+    {
+      "id": "ch05-365",
+      "attempts": 4,
+      "best_quality_score": 12.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "En räddning behöver inte vara en fångst."
+    },
+    {
+      "id": "ch05-369",
+      "attempts": 4,
+      "best_quality_score": 15.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Följ igenom med din arm."
+    },
+    {
+      "id": "ch05-391",
+      "attempts": 4,
+      "best_quality_score": 0.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Efter att du har tryckt bort bollen, titta genast efter uppföljningsskottet."
+    },
+    {
+      "id": "ch06-424",
+      "attempts": 4,
+      "best_quality_score": 0.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Snabbhet spelar roll eftersom det andra laget fortfarande håller på att återhämt"
+    },
+    {
+      "id": "ch06-435",
+      "attempts": 4,
+      "best_quality_score": 10.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Kliv fram med den motsatta foten från din kasthand."
+    },
+    {
+      "id": "ch06-448",
+      "attempts": 4,
+      "best_quality_score": 12.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "En puntning går längst av alla utspelsmetoder."
+    },
+    {
+      "id": "ch06-471",
+      "attempts": 4,
+      "best_quality_score": 0.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Blanda in puntningar ner längs planen."
+    }
+  ]
+}

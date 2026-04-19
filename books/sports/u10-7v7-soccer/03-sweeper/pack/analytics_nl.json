@@ -1,0 +1,193 @@
+{
+  "book_id": "pack",
+  "language": "nl",
+  "timestamp": "2026-04-19T21:09:36.675559+00:00",
+  "segments_total": 565,
+  "segments_first_pass": 519,
+  "segments_converged_by_retry": 35,
+  "segments_plateau_stopped": 11,
+  "total_retries": 84,
+  "error_distribution": {},
+  "worst_segments": [
+    {
+      "id": "ch08-552",
+      "attempts": 7,
+      "best_quality_score": 3.0,
+      "best_attempt": 6,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Een aanvaller rent naar links."
+    },
+    {
+      "id": "ch02-130",
+      "attempts": 5,
+      "best_quality_score": 0.0,
+      "best_attempt": 4,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Wanneer je goed anticipeert, kom je bij de bal aan voordat de aanvaller er is."
+    },
+    {
+      "id": "ch03-181",
+      "attempts": 5,
+      "best_quality_score": 2.64,
+      "best_attempt": 1,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Passes onderscheppen is veiliger dan tacklen."
+    },
+    {
+      "id": "ch05-349",
+      "attempts": 5,
+      "best_quality_score": 0.0,
+      "best_attempt": 4,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Gebruik de overlappende loopactie spaarzaam."
+    },
+    {
+      "id": "ch01-010",
+      "attempts": 4,
+      "best_quality_score": 2.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Die speler ben jij."
+    },
+    {
+      "id": "ch03-171",
+      "attempts": 4,
+      "best_quality_score": 20.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Als jij de bal als eerste kunt bereiken, stap naar voren met vertrouwen en ga."
+    },
+    {
+      "id": "ch03-201",
+      "attempts": 4,
+      "best_quality_score": 2.64,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Trap de bal naar de zijlijn."
+    },
+    {
+      "id": "ch03-228",
+      "attempts": 4,
+      "best_quality_score": 0.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Daarom heet de positie sweeper."
+    },
+    {
+      "id": "ch04-241",
+      "attempts": 4,
+      "best_quality_score": 0.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Neem geen extra balcontacten."
+    },
+    {
+      "id": "ch04-263",
+      "attempts": 4,
+      "best_quality_score": 3.04,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "De steekbal splitst de verdediging van de tegenstander."
+    },
+    {
+      "id": "ch04-304",
+      "attempts": 4,
+      "best_quality_score": 1.6,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Jouw superkracht is de killpass."
+    },
+    {
+      "id": "ch05-348",
+      "attempts": 4,
+      "best_quality_score": 0.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "De verwarring creeert ruimte en tijd voor een voorzet of een schot."
+    },
+    {
+      "id": "ch08-613",
+      "attempts": 4,
+      "best_quality_score": 1.6,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Jij valt aan met visie."
+    },
+    {
+      "id": "ch04-268",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Te hard en de bal rolt naar de keeper."
+    },
+    {
+      "id": "ch04-281",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Gebruik de korte bal wanneer geen aanvaller vrij staat voor een lange pass."
+    },
+    {
+      "id": "ch04-311",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Deze passes komen van jou."
+    },
+    {
+      "id": "ch06-416",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Je twee verdedigers zijn je nauwste partners."
+    },
+    {
+      "id": "ch08-571",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Je zult een pass verkeerd lezen."
+    },
+    {
+      "id": "ch08-589",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Jij beheerst het tempo."
+    },
+    {
+      "id": "ch01-020",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Je kunt de ruimtes tussen spelers zien."
+    }
+  ]
+}

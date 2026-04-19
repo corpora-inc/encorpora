@@ -1,0 +1,193 @@
+{
+  "book_id": "pack",
+  "language": "it",
+  "timestamp": "2026-04-19T20:12:10.554257+00:00",
+  "segments_total": 630,
+  "segments_first_pass": 593,
+  "segments_converged_by_retry": 36,
+  "segments_plateau_stopped": 1,
+  "total_retries": 85,
+  "error_distribution": {},
+  "worst_segments": [
+    {
+      "id": "ch04-319",
+      "attempts": 20,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Un portiere piazzato e in equilibrio può tuffarsi in qualsiasi direzione."
+    },
+    {
+      "id": "ch06-429",
+      "attempts": 10,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Un passaggio preciso a un difensore mantiene il pallone al sicuro e permette all"
+    },
+    {
+      "id": "ch07-553",
+      "attempts": 5,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Sii sicuro di te."
+    },
+    {
+      "id": "ch01-057",
+      "attempts": 4,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "La tua squadra sara all'attacco."
+    },
+    {
+      "id": "ch02-163",
+      "attempts": 4,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Ora sei pronto."
+    },
+    {
+      "id": "ch04-284",
+      "attempts": 4,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Andare a terra troppo presto dà all'attaccante una soluzione facile."
+    },
+    {
+      "id": "ch06-459",
+      "attempts": 4,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Un rinvio dal fondo verso la fascia dà al tuo compagno più spazio per ricevere i"
+    },
+    {
+      "id": "ch08-591",
+      "attempts": 4,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Scruta il campo."
+    },
+    {
+      "id": "ch08-636",
+      "attempts": 4,
+      "best_quality_score": 10.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Hai fatto parate."
+    },
+    {
+      "id": "ch01-018",
+      "attempts": 3,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "La porta e casa tua."
+    },
+    {
+      "id": "ch01-056",
+      "attempts": 3,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Il pallone sara lontano."
+    },
+    {
+      "id": "ch01-075",
+      "attempts": 3,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "I migliori portieri festeggiano una grande parata come un attaccante festeggia u"
+    },
+    {
+      "id": "ch02-087",
+      "attempts": 3,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Metti i guanti presto."
+    },
+    {
+      "id": "ch04-301",
+      "attempts": 3,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Molti attaccanti vanno nel panico quando un portiere esce con decisione."
+    },
+    {
+      "id": "ch05-394",
+      "attempts": 3,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "La gioia di una grande parata è diversa da qualsiasi altra cosa nel calcio."
+    },
+    {
+      "id": "ch07-516",
+      "attempts": 3,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "La barriera blocca una parte della porta così tu devi coprire solo il resto."
+    },
+    {
+      "id": "ch01-010",
+      "attempts": 2,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Tu lanci il pallone."
+    },
+    {
+      "id": "ch01-032",
+      "attempts": 2,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Vedi quale compagno e libero."
+    },
+    {
+      "id": "ch02-089",
+      "attempts": 2,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Stringili."
+    },
+    {
+      "id": "ch02-127",
+      "attempts": 2,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Immagina di tuffarti alla tua sinistra e prendere il pallone."
+    }
+  ]
+}

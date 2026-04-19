@@ -1,0 +1,193 @@
+{
+  "book_id": "pack",
+  "language": "ms",
+  "timestamp": "2026-04-19T16:46:40.586974+00:00",
+  "segments_total": 629,
+  "segments_first_pass": 560,
+  "segments_converged_by_retry": 57,
+  "segments_plateau_stopped": 12,
+  "total_retries": 108,
+  "error_distribution": {},
+  "worst_segments": [
+    {
+      "id": "ch08-561",
+      "attempts": 6,
+      "best_quality_score": 1.6,
+      "best_attempt": 2,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Otot paling kuat ialah minda."
+    },
+    {
+      "id": "ch01-018",
+      "attempts": 4,
+      "best_quality_score": 0.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Gol adalah rumah kamu."
+    },
+    {
+      "id": "ch01-060",
+      "attempts": 4,
+      "best_quality_score": 15.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Kamu kekal berjinjit."
+    },
+    {
+      "id": "ch02-117",
+      "attempts": 4,
+      "best_quality_score": 15.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Cari jarak kamu."
+    },
+    {
+      "id": "ch02-129",
+      "attempts": 4,
+      "best_quality_score": 50.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Bayangkan diri kamu berdiri tegap dalam situasi satu lawan satu."
+    },
+    {
+      "id": "ch02-134",
+      "attempts": 4,
+      "best_quality_score": 1.6,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Setiap penjaga gol berasa gementar."
+    },
+    {
+      "id": "ch02-142",
+      "attempts": 4,
+      "best_quality_score": 0.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Tahu betapa besarnya gol kamu."
+    },
+    {
+      "id": "ch02-166",
+      "attempts": 4,
+      "best_quality_score": 10.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Kaki kamu pantas."
+    },
+    {
+      "id": "ch03-189",
+      "attempts": 4,
+      "best_quality_score": 3.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Bergerak mengikut permainan."
+    },
+    {
+      "id": "ch04-293",
+      "attempts": 4,
+      "best_quality_score": 0.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Penyerang berlari terus ke arah kamu dalam situasi satu lawan satu."
+    },
+    {
+      "id": "ch05-342",
+      "attempts": 4,
+      "best_quality_score": 2.64,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Genggam bola erat-erat."
+    },
+    {
+      "id": "ch05-369",
+      "attempts": 4,
+      "best_quality_score": 15.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Ikuti gerakan dengan tangan kamu."
+    },
+    {
+      "id": "ch05-374",
+      "attempts": 4,
+      "best_quality_score": 50.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Tangkapan melepasi tiang biasanya menghasilkan sepakan sudut."
+    },
+    {
+      "id": "ch08-603",
+      "attempts": 4,
+      "best_quality_score": 15.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Percaya persediaan kamu."
+    },
+    {
+      "id": "ch08-632",
+      "attempts": 4,
+      "best_quality_score": 8.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Wisel akhir ditiup."
+    },
+    {
+      "id": "ch05-388",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Penjaga gol terpantas menukarkan satu tangkapan menjadi dua tangkapan kerana pen"
+    },
+    {
+      "id": "ch06-464",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Agihan pantas mengejutkan pasukan lawan."
+    },
+    {
+      "id": "ch06-468",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Pelbagaikan agihan kamu sepanjang perlawanan."
+    },
+    {
+      "id": "ch07-541",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Jangkau dengan tangan kamu."
+    },
+    {
+      "id": "ch08-571",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Ambil nafas."
+    }
+  ]
+}

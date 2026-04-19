@@ -1,0 +1,193 @@
+{
+  "book_id": "pack",
+  "language": "el",
+  "timestamp": "2026-04-19T17:33:27.958310+00:00",
+  "segments_total": 629,
+  "segments_first_pass": 529,
+  "segments_converged_by_retry": 68,
+  "segments_plateau_stopped": 32,
+  "total_retries": 183,
+  "error_distribution": {},
+  "worst_segments": [
+    {
+      "id": "ch04-287",
+      "attempts": 6,
+      "best_quality_score": 0.0,
+      "best_attempt": 5,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Οι υπομονετικοί τερματοφύλακες αποκρούουν περισσότερα σουτ."
+    },
+    {
+      "id": "ch02-167",
+      "attempts": 5,
+      "best_quality_score": 15.0,
+      "best_attempt": 1,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Το μυαλό σου είναι συγκεντρωμένο."
+    },
+    {
+      "id": "ch06-417",
+      "attempts": 5,
+      "best_quality_score": 50.0,
+      "best_attempt": 1,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Η καλή διανομή μετατρέπει την άμυνα σε επίθεση σε μια στιγμή."
+    },
+    {
+      "id": "ch01-052",
+      "attempts": 4,
+      "best_quality_score": 3.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Θα πέσεις στη μπάλα στα πόδια του επιθετικού."
+    },
+    {
+      "id": "ch01-058",
+      "attempts": 4,
+      "best_quality_score": 3.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Σε αυτές τις στιγμές, μένεις σε ετοιμότητα."
+    },
+    {
+      "id": "ch02-095",
+      "attempts": 4,
+      "best_quality_score": 0.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Σφίξε τη μπάλα δυνατά όταν τη πιάνεις."
+    },
+    {
+      "id": "ch02-109",
+      "attempts": 4,
+      "best_quality_score": 1.6,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Δούλεψε τη δουλειά ποδιών σου."
+    },
+    {
+      "id": "ch02-112",
+      "attempts": 4,
+      "best_quality_score": 1.6,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Κράτα το βάρος σου μπροστά."
+    },
+    {
+      "id": "ch02-119",
+      "attempts": 4,
+      "best_quality_score": 3.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Ένα σίγουρο λάκτισμα εστίας ξεκινάει με ένα σίγουρο ζέσταμα."
+    },
+    {
+      "id": "ch02-120",
+      "attempts": 4,
+      "best_quality_score": 1.6,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Ζέστανε και τα ρίψιμάτα σου."
+    },
+    {
+      "id": "ch02-133",
+      "attempts": 4,
+      "best_quality_score": 12.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Το άγχος πριν τον αγώνα είναι φυσιολογικό."
+    },
+    {
+      "id": "ch02-149",
+      "attempts": 4,
+      "best_quality_score": 0.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Βεβαιώσου ότι οι αμυντικοί σου ξέρουν ότι είσαι εκεί."
+    },
+    {
+      "id": "ch03-201",
+      "attempts": 4,
+      "best_quality_score": 2.64,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Οι αμυντικοί σου παρακολουθούν τη μπάλα."
+    },
+    {
+      "id": "ch03-237",
+      "attempts": 4,
+      "best_quality_score": 30.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Κινείσαι."
+    },
+    {
+      "id": "ch03-238",
+      "attempts": 4,
+      "best_quality_score": 30.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Μιλάς."
+    },
+    {
+      "id": "ch05-336",
+      "attempts": 4,
+      "best_quality_score": 2.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Εμπιστέψου την προπόνησή σου."
+    },
+    {
+      "id": "ch05-339",
+      "attempts": 4,
+      "best_quality_score": 0.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Άνοιξε τα δάχτυλά σου πλατιά."
+    },
+    {
+      "id": "ch05-360",
+      "attempts": 4,
+      "best_quality_score": 0.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Οι ψηλές μπάλες χρειάζονται δυνατά χέρια και ατρόμητο άλμα."
+    },
+    {
+      "id": "ch05-399",
+      "attempts": 4,
+      "best_quality_score": 0.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Αυτό το συναίσθημα είναι ο λόγος που παίζεις τερματοφύλακας."
+    },
+    {
+      "id": "ch06-443",
+      "attempts": 4,
+      "best_quality_score": 1.6,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Κάνε μπαλιά όταν χρειάζεσαι απόσταση."
+    }
+  ]
+}

@@ -1,0 +1,193 @@
+{
+  "book_id": "pack",
+  "language": "es",
+  "timestamp": "2026-04-19T20:01:19.024405+00:00",
+  "segments_total": 630,
+  "segments_first_pass": 623,
+  "segments_converged_by_retry": 7,
+  "segments_plateau_stopped": 0,
+  "total_retries": 8,
+  "error_distribution": {},
+  "worst_segments": [
+    {
+      "id": "ch07-487",
+      "attempts": 3,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Tu área es tu territorio."
+    },
+    {
+      "id": "ch01-060",
+      "attempts": 2,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Te mantienes en puntitas."
+    },
+    {
+      "id": "ch03-185",
+      "attempts": 2,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Eres el líbero detrás del líbero."
+    },
+    {
+      "id": "ch07-506",
+      "attempts": 2,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Una atrapada limpia en un tiro de esquina es una de las mejores jugadas que pued"
+    },
+    {
+      "id": "ch08-562",
+      "attempts": 2,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Tu cuerpo hace la atajada, pero tu mente te pone en posición para hacerla."
+    },
+    {
+      "id": "ch08-639",
+      "attempts": 2,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Ganes o pierdas, hiciste tu trabajo."
+    },
+    {
+      "id": "ch06-410",
+      "attempts": 2,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Distribución"
+    },
+    {
+      "id": "ch01-002",
+      "attempts": 1,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Tú eres el portero."
+    },
+    {
+      "id": "ch01-003",
+      "attempts": 1,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Eres el último jugador entre el balón y el arco."
+    },
+    {
+      "id": "ch01-004",
+      "attempts": 1,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Cada compañero en la cancha confía en ti para proteger el arco."
+    },
+    {
+      "id": "ch01-005",
+      "attempts": 1,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Esa confianza es algo que te ganas en cada partido."
+    },
+    {
+      "id": "ch01-006",
+      "attempts": 1,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Eres el único jugador en la cancha que puede usar las manos."
+    },
+    {
+      "id": "ch01-007",
+      "attempts": 1,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Tus manos son tu mejor herramienta."
+    },
+    {
+      "id": "ch01-008",
+      "attempts": 1,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Atrapas el balón."
+    },
+    {
+      "id": "ch01-009",
+      "attempts": 1,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Golpeas el balón con los puños."
+    },
+    {
+      "id": "ch01-010",
+      "attempts": 1,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Lanzas el balón."
+    },
+    {
+      "id": "ch01-011",
+      "attempts": 1,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Desvías el balón por fuera del poste."
+    },
+    {
+      "id": "ch01-012",
+      "attempts": 1,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Ningún otro jugador de tu equipo puede hacer lo que tú haces."
+    },
+    {
+      "id": "ch01-013",
+      "attempts": 1,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Usas guantes diferentes."
+    },
+    {
+      "id": "ch01-014",
+      "attempts": 1,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Usas una camiseta de otro color."
+    }
+  ]
+}
