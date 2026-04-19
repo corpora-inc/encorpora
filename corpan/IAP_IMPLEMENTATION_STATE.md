@@ -172,9 +172,26 @@
 | `infra/IAP_SETUP_RUNBOOK.md` | Full manual setup runbook |
 | `projects/ttsctl/ttsctl/cli.py` | --price, --product-id publish flags |
 
-## Verify API Endpoint
-- Base: `https://dzxrs4szm7.execute-api.us-east-2.amazonaws.com/prod`
-- Routes: `/verify-purchase`, `/subscription-status`, `/apple-notifications`, `/google-notifications`
+## Production Endpoints (canonical — tfstate is gitignored, so these are the source of truth for all machines)
+
+| Resource | URL / ID |
+|----------|----------|
+| **Verify API (Lambda)** | `https://dzxrs4szm7.execute-api.us-east-2.amazonaws.com/prod` |
+| **CDN (CloudFront)** | `https://d38iwc9748jekz.cloudfront.net` |
+| **CloudFront Distribution ID** | `E1RDNUCVE70SCI` |
+| **CloudFront Key Pair ID** | `K2RX7CC6JLAZPW` |
+| **S3 Bucket** | `corpan-prod` (us-east-2) |
+| **Secrets Manager Secret** | `corpan/content-packs/verify` (us-east-2) |
+| **AWS Profile** | `corpan-publisher` (IAM user: `corpan-dgx-publisher`) |
+
+API routes: `/verify-purchase`, `/subscription-status`, `/apple-notifications`, `/google-notifications`
+
+**Reader pack build env var** (required at build time for premium downloads):
+```bash
+VITE_GAME_VERIFY_URL=https://dzxrs4szm7.execute-api.us-east-2.amazonaws.com/prod
+```
+
+> **WARNING**: A stale API Gateway URL `https://2rd7w09q7e...` exists from an earlier deployment. It returns "Internal Server Error" on all requests. Always use `dzxrs4szm7`. If in doubt, run the verification commands below.
 
 ## Infrastructure Verification Commands
 
