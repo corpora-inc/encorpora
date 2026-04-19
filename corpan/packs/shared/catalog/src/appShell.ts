@@ -35,7 +35,9 @@ import {
 } from "../../ui/commandDrawer"
 import { drawerStore } from "../../state/drawerStore"
 
-const DEFAULT_CDN_URL = "https://d38iwc9748jekz.cloudfront.net/catalog.json"
+// V2 catalog includes premium packs; old readers use catalog.json (free only)
+const DEFAULT_CDN_URL = "https://d38iwc9748jekz.cloudfront.net/catalog-v2.json"
+const FALLBACK_CDN_URL = "https://d38iwc9748jekz.cloudfront.net/catalog.json"
 
 export type ReaderFactory = (
   container: HTMLElement,
@@ -154,7 +156,7 @@ export function createAppShell(
     },
     onOpen: () => {
       // Bypass CDN cache on drawer open so user sees latest publishes
-      void fetchCatalog(cdnUrl, { forceRefresh: true }).then((catalog) => {
+      void fetchCatalog(cdnUrl, { forceRefresh: true, fallbackUrl: FALLBACK_CDN_URL }).then((catalog) => {
         allNarrations = catalog.narrations
         refreshNowPlayingSection()
         refreshBrowseSection()
@@ -255,7 +257,7 @@ export function createAppShell(
     // Nothing installed — onboard to browse screen
     drawerStore.setState({ activeScreen: "browse" })
     drawer.open()
-    void fetchCatalog(cdnUrl).then((catalog) => {
+    void fetchCatalog(cdnUrl, { fallbackUrl: FALLBACK_CDN_URL }).then((catalog) => {
       allNarrations = catalog.narrations
       refreshBrowseSection()
     })
@@ -555,7 +557,7 @@ export function createAppShell(
     browseSectionEl = container
 
     // Kick off catalog fetch
-    void fetchCatalog(cdnUrl).then((catalog) => {
+    void fetchCatalog(cdnUrl, { fallbackUrl: FALLBACK_CDN_URL }).then((catalog) => {
       allNarrations = catalog.narrations
       refreshBrowseSection()
       refreshLibrarySection()

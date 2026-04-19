@@ -72,6 +72,7 @@ function parseNarration(item: unknown): CatalogNarrationEntry | null {
     volume: toNumber(r.volume),
     tier: tierRaw === "premium" ? "premium" : "public",
     purchase: parsePurchase(r.purchase),
+    minAppVersion: toOptString(r.minAppVersion),
   }
 }
 
@@ -107,7 +108,7 @@ function parseCatalogV2(data: unknown): CatalogV2 | null {
  */
 export async function fetchCatalog(
   cdnUrl: string,
-  opts?: { forceRefresh?: boolean },
+  opts?: { forceRefresh?: boolean; fallbackUrl?: string },
 ): Promise<CatalogV2> {
   const empty: CatalogV2 = {
     version: 2,
@@ -116,33 +117,42 @@ export async function fetchCatalog(
     gamePacks: [],
   }
 
+  async function tryFetch(url: string, force: boolean): Promise<CatalogV2 | null> {
+    const fetchUrl = force
+      ? url + (url.includes("?") ? "&" : "?") + "_t=" + Date.now()
+      : url
+    const fetchOpts: RequestInit = force ? { cache: "no-store" } : {}
+    const res = await fetch(fetchUrl, fetchOpts)
+    if (!res.ok) return null
+    const data = await res.json()
+    return parseCatalogV2(data)
+  }
+
   try {
     const force = opts?.forceRefresh ?? false
-    const url = force
-      ? cdnUrl + (cdnUrl.includes("?") ? "&" : "?") + "_t=" + Date.now()
-      : cdnUrl
-    const fetchOpts: RequestInit = force ? { cache: "no-store" } : {}
-    const res = await fetch(url, fetchOpts)
-    if (!res.ok) {
-      console.warn("[reader-catalog] Fetch failed:", res.status, res.statusText)
-      return readCache() ?? empty
+
+    // Try primary URL (catalog-v2.json for new readers)
+    let catalog = await tryFetch(cdnUrl, force)
+    if (catalog) {
+      writeCache(catalog)
+      return catalog
     }
-    const data = await res.json()
-    const catalog = parseCatalogV2(data)
-    if (!catalog) {
-      console.warn("[reader-catalog] Failed to parse catalog data")
-      return readCache() ?? empty
+
+    // Fallback to legacy catalog.json if v2 not available
+    if (opts?.fallbackUrl) {
+      console.info("[reader-catalog] v2 unavailable, falling back to legacy catalog")
+      catalog = await tryFetch(opts.fallbackUrl, force)
+      if (catalog) {
+        writeCache(catalog)
+        return catalog
+      }
     }
-    writeCache(catalog)
-    return catalog
+
+    console.warn("[reader-catalog] All catalog URLs failed")
+    return readCache() ?? empty
   } catch (err) {
     console.error("[reader-catalog] Fetch error:", err)
-    // Offline or network error — fall back to last known good catalog
-    const cached = readCache()
-    if (cached) {
-      return cached
-    }
-    return empty
+    return readCache() ?? empty
   }
 }
 
