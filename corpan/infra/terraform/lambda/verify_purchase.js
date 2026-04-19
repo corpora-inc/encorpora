@@ -92,30 +92,23 @@ async function verifyApple(body, secrets) {
     return { verified: false, error: "Apple credentials not configured" };
   }
 
-  // Try PRODUCTION first, fall back to SANDBOX. TestFlight receipts live in
-  // SANDBOX regardless of how the Lambda is deployed; App Store receipts live
-  // in PRODUCTION. The canonical Apple pattern is to try prod first, then
-  // retry in sandbox on environment-mismatch errors.
+  // Always try both PRODUCTION and SANDBOX. TestFlight receipts live in
+  // SANDBOX regardless of how the Lambda is deployed; App Store receipts
+  // live in PRODUCTION. We try both because Apple's error messages are
+  // inconsistent (sometimes empty) and guessing from the error text is
+  // fragile. The cost is one extra API call for the wrong environment.
+  let lastError = null;
   for (const environment of [Environment.PRODUCTION, Environment.SANDBOX]) {
+    const envName = environment === Environment.PRODUCTION ? "PRODUCTION" : "SANDBOX";
     const result = await tryVerifyAppleWith(body, appleSecrets, environment);
     if (result.verified) {
-      console.log(`[apple] Verified in ${environment === Environment.PRODUCTION ? "PRODUCTION" : "SANDBOX"}: txn=${result.transactionId}`);
+      console.log(`[apple] Verified in ${envName}: txn=${result.transactionId}`);
       return result;
     }
-    // Only fall through to sandbox if the error looks like an environment mismatch
-    const msg = (result.error || "").toLowerCase();
-    const looksEnvMismatch =
-      msg.includes("sandbox") ||
-      msg.includes("environment") ||
-      msg.includes("not found") ||
-      msg.includes("21007") ||
-      msg.includes("4040004");
-    if (!looksEnvMismatch) {
-      return result; // Real error, don't retry in sandbox
-    }
-    console.log(`[apple] ${environment === Environment.PRODUCTION ? "PRODUCTION" : "SANDBOX"} rejected (${result.error}), trying next environment...`);
+    console.log(`[apple] ${envName} failed: ${result.error || "(empty error)"}`);
+    lastError = result.error;
   }
-  return { verified: false, error: "Apple verification failed in both production and sandbox" };
+  return { verified: false, error: lastError || "Apple verification failed in both production and sandbox" };
 }
 
 async function tryVerifyAppleWith(body, appleSecrets, environment) {
