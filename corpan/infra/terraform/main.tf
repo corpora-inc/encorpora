@@ -146,8 +146,21 @@ resource "aws_apigatewayv2_api" "verify" {
   #
   # `*` is fine here: auth is enforced by the platform receipt the Lambda
   # validates, not by Origin (anyone can curl this endpoint already).
+  # NOTE: API Gateway v2's `*` wildcard does NOT match `Origin: null` —
+  # tested with curl, the gateway omits CORS headers entirely for null
+  # origins. WKWebView sends `Origin: null` for fetches from custom URI
+  # schemes (`corpan-pack://`), so we have to enumerate every origin we
+  # actually use. The endpoint is still safe — auth is by platform receipt.
   cors_configuration {
-    allow_origins = ["*"]
+    allow_origins = [
+      "null",                        # WKWebView opaque origins (corpan-pack://)
+      "corpan-pack://localhost",     # in case WKWebView sends the literal scheme
+      "tauri://localhost",           # main app on iOS/macOS
+      "http://tauri.localhost",      # main app on Android/Windows
+      "https://tauri.localhost",     # ditto
+      "http://localhost:1420",       # `npm run tauri dev`
+      "https://encorpora.io",        # browser-based testing
+    ]
     allow_methods = ["POST", "OPTIONS"]
     allow_headers = ["content-type", "x-dev-bypass"]
     max_age       = 300
