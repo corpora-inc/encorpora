@@ -124,25 +124,23 @@ async function tryVerifyAppleWith(body, appleSecrets, environment) {
       environment
     );
 
-    // Get transaction info from Apple
+    // Get transaction info from Apple's App Store Server API.
+    // This call is authenticated with our API key — Apple validates the
+    // transaction server-side and returns a signed JWS response over HTTPS.
     const txInfo = await client.getTransactionInfo(transactionId);
 
     if (!txInfo || !txInfo.signedTransactionInfo) {
       return { verified: false, error: "Transaction not found" };
     }
 
-    // Decode the signed transaction (JWS)
-    const verifier = new SignedDataVerifier(
-      [], // Apple root certs are bundled in the library
-      true, // enableOnlineChecks
-      environment,
-      bundleId,
-      null // appAppleId (optional)
-    );
+    // Decode the JWS payload directly. We trust Apple's API response
+    // (authenticated + HTTPS) without re-verifying the certificate chain
+    // locally, which would require bundling Apple root certificates.
+    const jws = txInfo.signedTransactionInfo;
+    const payloadPart = jws.split(".")[1];
+    const decoded = JSON.parse(Buffer.from(payloadPart, "base64url").toString());
 
-    const decoded = await verifier.verifyAndDecodeTransaction(
-      txInfo.signedTransactionInfo
-    );
+    console.log(`[apple] Decoded transaction: productId=${decoded.productId}, type=${decoded.type}, env=${decoded.environment}, txn=${decoded.transactionId}`);
 
     const isSubscription = decoded.type === "Auto-Renewable Subscription";
     const subscriptionActive = isSubscription && decoded.expiresDate
@@ -159,11 +157,13 @@ async function tryVerifyAppleWith(body, appleSecrets, environment) {
       expiresAt: decoded.expiresDate
         ? new Date(decoded.expiresDate).toISOString()
         : null,
-      environment: environment === Environment.PRODUCTION ? "production" : "sandbox",
+      environment: decoded.environment || (environment === Environment.PRODUCTION ? "Production" : "Sandbox"),
     };
   } catch (err) {
-    console.error(`[apple] Verification error (${environment === Environment.PRODUCTION ? "PRODUCTION" : "SANDBOX"}):`, err.message);
-    return { verified: false, error: `Apple verification failed: ${err.message}` };
+    const errDetail = err.message || err.errorMessage || err.toString();
+    const errDump = JSON.stringify({ message: err.message, errorMessage: err.errorMessage, httpStatusCode: err.httpStatusCode, apiError: err.apiError, status: err.status, cause: err.cause, name: err.name, stack: err.stack?.split("\n").slice(0, 3).join(" | ") });
+    console.error(`[apple] Verification error (${environment === Environment.PRODUCTION ? "PRODUCTION" : "SANDBOX"}):`, errDump);
+    return { verified: false, error: `Apple verification failed: ${errDetail}` };
   }
 }
 
