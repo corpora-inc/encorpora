@@ -137,6 +137,21 @@ resource "aws_lambda_function" "verify" {
 resource "aws_apigatewayv2_api" "verify" {
   name          = "${var.project_name}-verify"
   protocol_type = "HTTP"
+
+  # CORS — needed because the reader pack runs in a corpan-pack:// origin
+  # WebView and the main app runs in a tauri:// (or http://localhost) origin.
+  # Without this, the browser sends an OPTIONS preflight, the gateway returns
+  # 404 (no matching route), and the actual POST never fires — failing with
+  # the unhelpful "Load failed" error in WKWebView.
+  #
+  # `*` is fine here: auth is enforced by the platform receipt the Lambda
+  # validates, not by Origin (anyone can curl this endpoint already).
+  cors_configuration {
+    allow_origins = ["*"]
+    allow_methods = ["POST", "OPTIONS"]
+    allow_headers = ["content-type", "x-dev-bypass"]
+    max_age       = 300
+  }
 }
 
 resource "aws_apigatewayv2_integration" "verify" {
