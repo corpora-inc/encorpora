@@ -39,6 +39,8 @@ import {
   type DrawerSectionDef,
 } from "../../ui/commandDrawer"
 import { createNarrationSwitcher, type NarrationSwitcher } from "../../ui/narrationSwitcher"
+import { showToast } from "../../ui/toast"
+import type { InstallResult } from "./installManager"
 import { drawerStore } from "../../state/drawerStore"
 import { recordNarrationUse } from "../../state/narrationHistoryStore"
 
@@ -166,9 +168,16 @@ export function createAppShell(
     drawerSwitcher.refresh()
   }
 
+  function reportInstallFailure(result: Extract<InstallResult, { ok: false }>): void {
+    showToast(result.message, { kind: "error", detail: result.detail })
+  }
+
   async function installAndSwitchNarration(entry: CatalogNarrationEntry): Promise<boolean> {
-    const ok = await installNarration(entry)
-    if (!ok) return false
+    const result = await installNarration(entry)
+    if (!result.ok) {
+      reportInstallFailure(result)
+      return false
+    }
     switchToNarration(entry.id, false)
     rebuildAll()
     return true
@@ -1073,15 +1082,19 @@ export function createAppShell(
     btn.addEventListener("click", async (e) => {
       e.stopPropagation()
       setButtonBusy(btn)
-      const ok = await installNarration(narration)
-      if (ok) {
+      const result = await installNarration(narration)
+      if (result.ok) {
         handlers.onInstalled()
       } else {
+        reportInstallFailure(result)
         setButtonError(btn, `${Math.round(narration.sizeMb)} MB`, async () => {
           setButtonBusy(btn)
           const retry = await installNarration(narration)
-          if (retry) handlers.onInstalled()
-          else setButtonError(btn, `${Math.round(narration.sizeMb)} MB`, () => {})
+          if (retry.ok) handlers.onInstalled()
+          else {
+            reportInstallFailure(retry)
+            setButtonError(btn, `${Math.round(narration.sizeMb)} MB`, () => {})
+          }
         })
       }
     })
@@ -1100,9 +1113,12 @@ export function createAppShell(
     btn.addEventListener("click", async (e) => {
       e.stopPropagation()
       setButtonBusy(btn)
-      const ok = await installNarration(narration)
-      if (ok) handlers.onInstalled()
-      else setButtonError(btn, "Update", () => {})
+      const result = await installNarration(narration)
+      if (result.ok) handlers.onInstalled()
+      else {
+        reportInstallFailure(result)
+        setButtonError(btn, "Update", () => {})
+      }
     })
     return btn
   }
