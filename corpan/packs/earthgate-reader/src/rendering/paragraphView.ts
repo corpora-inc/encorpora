@@ -10,18 +10,19 @@ export type ParagraphView = {
 }
 
 const SWIPE_THRESHOLD = 50
+const TAP_MOVEMENT_THRESHOLD = 8
 
 /**
- * Create a paragraph view that renders book segment text with
- * per-word highlighting synced to audio playback.
+ * Paragraph view with unified gesture handling:
  *
- * Two separate interaction regions:
- * - Text column (`.earthgate-paragraph-inner`) → click = tap-to-replay.
- * - Swipe bands above/below the text → pointer drag = prev/next segment.
+ * - Swipe anywhere in the paragraph area (including directly over the words)
+ *   navigates to prev/next segment.
+ * - Tap inside the text column triggers the tap callback (play-one preview).
  *
- * The bands are plain flex items, not inside any scroll container, so
- * pointer events fire predictably on them regardless of where the pointer
- * lands within the band's area.
+ * Both are detected from a single `pointerdown`/`pointerup` pair on the
+ * container. Tap is inferred from near-zero movement rather than relying on
+ * synthesized `click` — that avoids the "need two taps after a modal
+ * dismisses" bug where browsers sometimes swallow the first synthetic click.
  */
 export function createParagraphView(parent: HTMLElement): ParagraphView {
   let nextCb: (() => void) | null = null
@@ -35,11 +36,6 @@ export function createParagraphView(parent: HTMLElement): ParagraphView {
   container.className = "earthgate-paragraph"
   parent.appendChild(container)
 
-  const bandTop = document.createElement("div")
-  bandTop.className = "earthgate-swipe-band"
-  bandTop.dataset.band = "top"
-  container.appendChild(bandTop)
-
   const scrollArea = document.createElement("div")
   scrollArea.className = "earthgate-paragraph-scroll"
   container.appendChild(scrollArea)
@@ -49,48 +45,49 @@ export function createParagraphView(parent: HTMLElement): ParagraphView {
   inner.dir = "auto"
   scrollArea.appendChild(inner)
 
-  const bandBottom = document.createElement("div")
-  bandBottom.className = "earthgate-swipe-band"
-  bandBottom.dataset.band = "bottom"
-  container.appendChild(bandBottom)
+  let pointerId: number | null = null
+  let startX = 0
+  let startY = 0
+  let startTarget: Node | null = null
 
-  function attachSwipe(band: HTMLElement) {
-    let pointerId: number | null = null
-    let startX = 0
-    let startY = 0
+  container.addEventListener("pointerdown", (e) => {
+    pointerId = e.pointerId
+    startX = e.clientX
+    startY = e.clientY
+    startTarget = e.target as Node | null
+    try { container.setPointerCapture(e.pointerId) } catch { /* older browsers */ }
+  })
 
-    band.addEventListener("pointerdown", (e) => {
-      pointerId = e.pointerId
-      startX = e.clientX
-      startY = e.clientY
-      try { band.setPointerCapture(e.pointerId) } catch { /* older browsers */ }
-    })
+  container.addEventListener("pointerup", (e) => {
+    if (e.pointerId !== pointerId) return
+    const dx = e.clientX - startX
+    const dy = e.clientY - startY
+    const origin = startTarget
+    pointerId = null
+    startTarget = null
 
-    band.addEventListener("pointerup", (e) => {
-      if (e.pointerId !== pointerId) return
-      const dx = e.clientX - startX
-      const dy = e.clientY - startY
-      pointerId = null
+    // Swipe: horizontal-dominant past threshold, regardless of origin.
+    if (Math.abs(dx) >= SWIPE_THRESHOLD && Math.abs(dx) > Math.abs(dy) * 1.5) {
+      if (dx < 0) nextCb?.()
+      else prevCb?.()
+      return
+    }
 
-      if (Math.abs(dx) >= SWIPE_THRESHOLD && Math.abs(dx) > Math.abs(dy) * 1.5) {
-        if (dx < 0) nextCb?.()
-        else prevCb?.()
-      }
-    })
+    // Tap: minimal movement AND interaction began inside the text column.
+    if (
+      Math.abs(dx) <= TAP_MOVEMENT_THRESHOLD &&
+      Math.abs(dy) <= TAP_MOVEMENT_THRESHOLD &&
+      origin !== null &&
+      inner.contains(origin)
+    ) {
+      tapCb?.()
+    }
+  })
 
-    band.addEventListener("pointercancel", (e) => {
-      if (e.pointerId !== pointerId) return
-      pointerId = null
-    })
-  }
-
-  attachSwipe(bandTop)
-  attachSwipe(bandBottom)
-
-  // Tap on text column. `click` only fires when no scroll/drag happened,
-  // so no manual movement threshold is needed.
-  inner.addEventListener("click", () => {
-    tapCb?.()
+  container.addEventListener("pointercancel", (e) => {
+    if (e.pointerId !== pointerId) return
+    pointerId = null
+    startTarget = null
   })
 
   return {
