@@ -97,7 +97,12 @@ export const useEntitlementStore = create<EntitlementState>()(
         purchasedProducts: state.purchasedProducts,
         subscription: state.subscription,
         lastRefreshed: state.lastRefreshed,
-        // platform and iapAvailable are NOT persisted — detected fresh each launch
+        // Persisted so the reader pack (which only sees localStorage, not the
+        // React store's in-memory state) can resolve iapAvailable/platform on
+        // first paint. App.tsx still calls getPlatform() each launch and
+        // overwrites these with fresh values.
+        platform: state.platform,
+        iapAvailable: state.iapAvailable,
       }),
     }
   )

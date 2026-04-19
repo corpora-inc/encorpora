@@ -23,6 +23,8 @@ export type CatalogNarrationEntry = {
   volume?: number
   tier: "public" | "premium"
   purchase: PurchaseInfo
+  /** Minimum Corpan app version required to use this pack */
+  minAppVersion?: string
 }
 
 /** A game pack in the CDN catalog */

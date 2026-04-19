@@ -59,9 +59,9 @@ export default function App() {
     getPlatform().then(() => refreshEntitlements()).catch(() => {});
   }, [fetchCatalog]);
 
-  // Reader packs (running in this same WebView) dispatch this event after an
-  // in-reader narration purchase. Keep the zustand entitlement store in sync
-  // so subsequent UI in the main app reflects the new purchased product.
+  // Reader packs (running in this same WebView) dispatch these events after an
+  // in-reader purchase. Keep the zustand entitlement store in sync so
+  // subsequent UI in the main app reflects the new state.
   useEffect(() => {
     const onPurchaseRecorded = (e: Event) => {
       const detail = (e as CustomEvent<{ productId?: string }>).detail;
@@ -69,9 +69,29 @@ export default function App() {
         useEntitlementStore.getState().addPurchasedProduct(detail.productId);
       }
     };
+    const onSubscriptionRecorded = (e: Event) => {
+      const detail = (e as CustomEvent<{ plan?: "monthly" | "annual" }>).detail;
+      if (detail?.plan) {
+        useEntitlementStore.getState().setSubscription({
+          active: true,
+          plan: detail.plan,
+          expiresAt: null,
+          autoRenew: true,
+        });
+      }
+    };
     window.addEventListener("corpan:purchase-recorded", onPurchaseRecorded);
-    return () =>
+    window.addEventListener(
+      "corpan:subscription-recorded",
+      onSubscriptionRecorded
+    );
+    return () => {
       window.removeEventListener("corpan:purchase-recorded", onPurchaseRecorded);
+      window.removeEventListener(
+        "corpan:subscription-recorded",
+        onSubscriptionRecorded
+      );
+    };
   }, []);
 
   useEffect(() => {

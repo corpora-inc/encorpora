@@ -1094,3 +1094,196 @@
   stroke-linecap: round;
   stroke-linejoin: round;
 }
+
+/* --- Book-level paid CTA (one offer, not 23 buy buttons) --- */
+
+.catalog-cta {
+  margin: 14px 0 18px 0;
+  padding: 16px 16px 14px 16px;
+  border: 1px solid var(--catalog-border);
+  border-radius: calc(var(--catalog-radius) + 2px);
+  background: var(--catalog-surface);
+  position: relative;
+  overflow: hidden;
+}
+
+.catalog-cta::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    120% 90% at 0% 0%,
+    color-mix(in srgb, var(--catalog-accent) 10%, transparent) 0%,
+    transparent 60%
+  );
+}
+
+.catalog-cta-eyebrow {
+  position: relative;
+  font-family: var(--catalog-font);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--catalog-accent);
+  margin-bottom: 4px;
+}
+
+.catalog-cta-blurb {
+  position: relative;
+  font-family: var(--catalog-font);
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--catalog-text-dim);
+  margin-bottom: 12px;
+  max-width: 36ch;
+}
+
+.catalog-cta-primary {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 12px 16px;
+  border: 0;
+  border-radius: var(--catalog-radius);
+  background: var(--catalog-accent);
+  color: var(--catalog-bg);
+  font-family: var(--catalog-font);
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  transition: background 150ms ease, transform 80ms ease;
+}
+
+.catalog-cta-primary:hover {
+  background: var(--catalog-accent-hover, var(--catalog-accent));
+}
+
+.catalog-cta-primary:active {
+  transform: translateY(1px);
+}
+
+.catalog-cta-or {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 12px 0 10px 0;
+  font-family: var(--catalog-font);
+  font-size: 11px;
+  color: var(--catalog-text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.catalog-cta-or::before,
+.catalog-cta-or::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--catalog-border);
+}
+
+.catalog-cta-subs {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.catalog-cta-sub {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  padding: 10px 12px;
+  border: 1px solid var(--catalog-border);
+  border-radius: var(--catalog-radius);
+  background: var(--catalog-bg);
+  color: var(--catalog-text);
+  font-family: var(--catalog-font);
+  cursor: pointer;
+  text-align: left;
+  transition: border-color 150ms ease, background 150ms ease, transform 80ms ease;
+}
+
+.catalog-cta-sub:hover {
+  border-color: var(--catalog-accent);
+}
+
+.catalog-cta-sub:active {
+  transform: translateY(1px);
+}
+
+.catalog-cta-sub--highlight {
+  border-color: color-mix(in srgb, var(--catalog-accent) 60%, var(--catalog-border));
+  background: color-mix(in srgb, var(--catalog-accent) 6%, var(--catalog-bg));
+}
+
+.catalog-cta-sub-label {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--catalog-text-dim);
+  text-transform: uppercase;
+}
+
+.catalog-cta-sub-price {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--catalog-text);
+  line-height: 1.1;
+}
+
+.catalog-cta-sub-period {
+  font-size: 11px;
+  color: var(--catalog-text-dim);
+}
+
+/* No-price state — single centered word ("Monthly"/"Yearly"), normal case
+   and weight. Looks intentional rather than a fallback. */
+.catalog-cta-sub-solo {
+  display: block;
+  width: 100%;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--catalog-text);
+  letter-spacing: 0;
+  text-transform: none;
+  padding: 8px 0;
+}
+
+.catalog-cta--busy {
+  opacity: 0.65;
+  pointer-events: none;
+}
+
+.catalog-cta--errored {
+  border-color: color-mix(in srgb, #d6586b 60%, var(--catalog-border));
+}
+
+/* Locked rows — the book-level CTA owns the action; rows stay calm. */
+
+.catalog-row--locked {
+  opacity: 0.78;
+}
+
+.catalog-row--locked .catalog-row-lang {
+  font-weight: 500;
+}
+
+.catalog-row-lock {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  color: var(--catalog-text-dim);
+}
+
+.catalog-row-lock svg {
+  opacity: 0.7;
+}

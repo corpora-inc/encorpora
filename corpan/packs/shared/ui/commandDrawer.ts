@@ -26,6 +26,12 @@ export type CommandDrawerOptions = {
   onSelectBook?: (bookId: string) => void
   onExit?: () => void
   onOpen?: () => void
+  /**
+   * Optional element mounted in the drawer header where the legacy language-pill
+   * grid used to live. Pass the element from `createNarrationSwitcher({ mode:
+   * "drawer" })` to keep the language switcher in 1 row at any installed-count.
+   */
+  languageSwitcher?: HTMLElement
 }
 
 export type CommandDrawer = {
@@ -95,6 +101,9 @@ export function createCommandDrawer(
 
   const langContainer = document.createElement("div")
   langContainer.className = "command-drawer-languages"
+  if (opts.languageSwitcher) {
+    langContainer.appendChild(opts.languageSwitcher)
+  }
 
   // Close button (mobile only — hidden on desktop via CSS)
   const closeBtn = document.createElement("button")
@@ -275,45 +284,11 @@ export function createCommandDrawer(
   // Append to parent
   parent.append(trigger, backdrop, sheet)
 
-  // --- Render language pills ---
-  function renderLanguagePills() {
-    const { languages, currentLanguage, currentNarrationId } = drawerStore.getState()
-    langContainer.innerHTML = ""
-    for (const lang of languages) {
-      const pill = document.createElement("button")
-      pill.className = "command-drawer-lang-pill"
-      const isActive = lang.narrationId
-        ? lang.narrationId === currentNarrationId
-        : lang.code === currentLanguage
-      if (isActive) {
-        pill.classList.add("command-drawer-lang-pill--active")
-      }
-      pill.textContent = lang.displayName
-      if (languages.length === 1) {
-        pill.disabled = true
-      } else {
-        pill.addEventListener("click", () => {
-          const s = drawerStore.getState()
-          if (lang.narrationId) {
-            if (lang.narrationId === s.currentNarrationId) return
-            drawerStore.setState({ currentNarrationId: lang.narrationId, currentLanguage: lang.code })
-          } else {
-            if (lang.code === s.currentLanguage) return
-            drawerStore.setState({ currentLanguage: lang.code })
-          }
-        })
-      }
-      langContainer.appendChild(pill)
-    }
-  }
-
-  renderLanguagePills()
+  // Language pills now come from the narrationSwitcher component (passed in via
+  // opts.languageSwitcher). The drawer just hosts its element in `langContainer`.
 
   // Subscribe to store changes
   const storeUnsub = drawerStore.subscribe((state, prev) => {
-    if (state.languages !== prev.languages || state.currentLanguage !== prev.currentLanguage || state.currentNarrationId !== prev.currentNarrationId) {
-      renderLanguagePills()
-    }
     if (state.nowPlaying !== prev.nowPlaying) {
       updateNowPlayingVisibility()
     }
