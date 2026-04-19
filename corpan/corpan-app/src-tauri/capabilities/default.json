@@ -12,6 +12,7 @@
     "tts:default",
     "audio-keepalive:default",
     "iap:default",
+    "subscriptions:allow-show-manage-subscriptions",
     "os:default"
   ]
 }

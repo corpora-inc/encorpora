@@ -500,11 +500,34 @@ export async function refreshEntitlements(): Promise<void> {
 }
 
 /**
- * Open the platform's native subscription management UI.
- * iOS: Apple's subscription settings. Android: Play Store subscriptions.
+ * Open the platform's native subscription-management UI.
+ *
+ * Preferred path — the local `tauri-plugin-subscriptions` plugin:
+ *   - iOS: `StoreKit.AppStore.showManageSubscriptions(in:)` renders inline
+ *     over the app. Works identically in TestFlight and production (the
+ *     StoreKit environment tracks the running build). Apple-recommended
+ *     per App Review guideline 3.1.2.
+ *   - Android: deep-links to the Play Store subscriptions page for this
+ *     app so the user lands on Corpan's sub, not the generic account page.
+ *
+ * Fallback — `openUrl` to the web subscription page. Used on desktop, on
+ * iOS < 15, or if the plugin invoke fails for any reason.
  */
 export async function manageSubscription(): Promise<void> {
   const platform = await getPlatform()
+
+  if (isTauriRuntime() && (platform === "ios" || platform === "android")) {
+    try {
+      await invoke("plugin:subscriptions|show_manage_subscriptions")
+      return
+    } catch (err) {
+      console.warn(
+        "[purchase] show_manage_subscriptions failed, falling back to openUrl:",
+        err
+      )
+    }
+  }
+
   let url: string
   if (platform === "ios" || platform === "macos") {
     url = "https://apps.apple.com/account/subscriptions"
@@ -514,13 +537,9 @@ export async function manageSubscription(): Promise<void> {
     return
   }
   try {
-    // Tauri's opener plugin opens URLs in the system's default handler,
-    // which on iOS redirects `apps.apple.com/account/subscriptions` into
-    // the App Store's native Manage Subscriptions screen.
     await openUrl(url)
   } catch (err) {
     console.error("[purchase] manageSubscription openUrl failed:", err)
-    // Fallback: regular browser open
     if (typeof window !== "undefined") window.open(url, "_blank")
   }
 }

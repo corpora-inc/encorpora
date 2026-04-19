@@ -1,5 +1,6 @@
 import type { CatalogNarrationEntry } from "./types"
 import { addInstalled, removeInstalled } from "./libraryStore"
+import { resolveReceiptForEntry } from "./purchaseManager"
 
 type TauriInternals = {
   invoke: (cmd: string, args?: Record<string, unknown>) => Promise<unknown>
@@ -80,18 +81,30 @@ export async function installNarration(
 
   let downloadUrl = entry.downloadUrl
 
-  // Premium content requires a signed URL
+  // Premium content requires a signed URL.
+  // If the caller didn't supply purchaseInfo (the usual path for
+  // subscribers and returning book-owners — nobody persists raw receipts),
+  // fall back to restoring a receipt from StoreKit / Play Billing just in time.
   if (entry.tier === "premium" && entry.purchase.type === "iap") {
-    if (!purchaseInfo) {
-      console.error("[reader-catalog] Premium pack requires purchase info:", entry.id)
-      return false
+    let resolvedInfo = purchaseInfo
+    if (!resolvedInfo) {
+      const restored = await resolveReceiptForEntry(entry)
+      if (!restored) {
+        console.error("[reader-catalog] Premium pack requires purchase info:", entry.id)
+        return false
+      }
+      resolvedInfo = {
+        transactionId: restored.transactionId,
+        receipt: restored.receipt,
+        platform: restored.platform,
+      }
     }
 
     const signedUrl = await getSignedDownloadUrl(
       entry,
-      purchaseInfo.transactionId,
-      purchaseInfo.receipt,
-      purchaseInfo.platform
+      resolvedInfo.transactionId,
+      resolvedInfo.receipt,
+      resolvedInfo.platform
     )
 
     if (!signedUrl) {
