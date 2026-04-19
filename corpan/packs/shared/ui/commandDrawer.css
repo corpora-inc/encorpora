@@ -68,7 +68,10 @@
   right: 0;
   bottom: 0;
   z-index: 50;
-  max-height: 85vh;
+  /* Fixed height instead of max-height so the drawer doesn't jump around
+     when navigating between sections of different content lengths
+     (e.g. an empty Library vs a long Browse list). */
+  height: 85vh;
   background: var(--catalog-bg);
   font-family: var(--catalog-font);
   color: var(--catalog-text);
@@ -173,48 +176,239 @@
   margin-top: 2px;
 }
 
-/* --- Language pills --- */
+/* --- Language pills container (drawer mount point for narrationSwitcher) --- */
 
 .command-drawer-languages {
   display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
+  align-items: stretch;
+  min-width: 0;
 }
 
-.command-drawer-lang-pill {
-  padding: 8px 18px;
-  border: 1.5px solid var(--catalog-border);
-  border-radius: 20px;
+/* ============================================================
+   Narration Switcher — used in two placements via `--mode`:
+     `--compact` : on the reader surface, top-left, mirror of hamburger
+     `--drawer`  : inside the drawer header, replacing the wrapping pill grid
+   Shared layout: horizontal scroll strip + sticky overflow ⋯ button.
+   ============================================================ */
+
+.narration-switcher {
+  display: flex;
+  align-items: stretch;
+  min-width: 0;
+  font-family: var(--catalog-font);
+  direction: ltr;
+}
+
+.narration-switcher-strip {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  flex: 1 1 auto;
+  min-width: 0;
+  padding: 2px 0;
+}
+
+.narration-switcher-strip::-webkit-scrollbar {
+  display: none;
+}
+
+.narration-switcher-pill {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--catalog-border);
+  border-radius: 999px;
   background: transparent;
   color: var(--catalog-text-dim);
   font-family: var(--catalog-font);
-  font-size: 14px;
-  font-weight: 600;
   cursor: pointer;
-  transition: background 200ms ease, border-color 200ms ease, color 200ms ease;
+  transition: background 150ms ease, border-color 150ms ease, color 150ms ease;
   white-space: nowrap;
+  padding: 0;
 }
 
-.command-drawer-lang-pill:hover {
+.narration-switcher-pill-label {
+  display: inline-block;
+  max-width: 80px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  unicode-bidi: plaintext;
+}
+
+.narration-switcher-pill:hover {
   border-color: var(--catalog-accent);
   color: var(--catalog-accent);
 }
 
-.command-drawer-lang-pill--active {
+.narration-switcher-pill--active {
   background: var(--catalog-accent);
   border-color: var(--catalog-accent);
   color: var(--catalog-bg);
 }
 
-.command-drawer-lang-pill--active:hover {
+.narration-switcher-pill--active:hover {
   background: var(--catalog-accent);
-  border-color: var(--catalog-accent);
   color: var(--catalog-bg);
-  opacity: 0.85;
+  opacity: 0.9;
 }
 
-.command-drawer-lang-pill:disabled {
-  opacity: 0.5;
+.narration-switcher-more {
+  flex-shrink: 0;
+  margin-left: 6px;
+  border: 1px solid var(--catalog-border);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--catalog-text-dim);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 150ms ease, border-color 150ms ease, color 150ms ease;
+}
+
+.narration-switcher-more:hover {
+  border-color: var(--catalog-accent);
+  color: var(--catalog-accent);
+}
+
+.narration-switcher-more svg {
+  display: block;
+}
+
+/* --- Compact mode (reader surface, docked above the transport bar) ---
+   Full-bleed band that spans across the transport's horizontal padding so the
+   pill strip reads as a deliberate band, not a boxed widget.
+
+   Scrollability affordances (better-than-default):
+   - Edge mask-fades on the strip so partial pills dissolve instead of clipping.
+   - The ⋯ button is pinned outside the strip with its own solid background, so
+     it never gets covered by scrolling pills and always shows where to dive in.
+   - scroll-snap-align centers pills as you flick.
+   - scroll-behavior: smooth + JS auto-scroll-to-active on refresh keeps the
+     current narration in view without the user having to hunt for it. */
+
+.narration-switcher--compact {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  width: auto;
+  box-sizing: border-box;
+  margin: 0 -16px 8px -16px;       /* bleed across transport's 16px padding */
+  padding: 0;
+  border-bottom: 1px solid var(--catalog-border);
+  pointer-events: auto;
+  gap: 0;
+}
+
+.narration-switcher--compact .narration-switcher-strip {
+  gap: 6px;
+  padding: 6px 14px 8px 14px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: x proximity;
+  scroll-padding-inline: 14px;
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    black 14px,
+    black calc(100% - 14px),
+    transparent 100%
+  );
+          mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    black 14px,
+    black calc(100% - 14px),
+    transparent 100%
+  );
+}
+
+.narration-switcher--compact .narration-switcher-pill {
+  height: 28px;
+  padding: 0 12px;
+  font-size: 12px;
+  font-weight: 600;
+  scroll-snap-align: center;
+}
+
+.narration-switcher--compact .narration-switcher-pill-label {
+  max-width: 110px;
+}
+
+.narration-switcher--compact .narration-switcher-pill--active {
+  box-shadow: 0 1px 4px color-mix(in srgb, var(--catalog-accent) 35%, transparent);
+}
+
+.narration-switcher--compact .narration-switcher-more {
+  width: 32px;
+  height: 32px;
+  margin: 0 12px 0 0;
+  background: var(--catalog-surface);
+  position: relative;
+  z-index: 2;
+}
+
+/* --- Drawer mode (inside drawer header) --- */
+
+.narration-switcher--drawer {
+  width: 100%;
+}
+
+.narration-switcher--drawer .narration-switcher-pill {
+  height: 32px;
+  padding: 0 14px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.narration-switcher--drawer .narration-switcher-pill-label {
+  max-width: 140px;
+}
+
+.narration-switcher--drawer .narration-switcher-more {
+  width: 32px;
+  height: 32px;
+}
+
+/* --- Sheet sections (reuses .catalog-sheet-* base) --- */
+
+.narration-switcher-sheet-section {
+  padding: 14px 20px 6px 20px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--catalog-text-dim);
+}
+
+.narration-switcher-sheet-name {
+  flex: 1;
+  text-align: left;
+  unicode-bidi: plaintext;
+}
+
+.narration-switcher-sheet-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  color: var(--catalog-text-dim);
+}
+
+.narration-switcher-sheet-size {
+  font-size: 11px;
+}
+
+.narration-switcher-sheet-action--locked {
+  color: var(--catalog-text-dim);
+  opacity: 0.7;
+}
+
+.catalog-sheet-item--locked {
+  opacity: 0.6;
   cursor: default;
 }
 
@@ -538,7 +732,7 @@
 
 @media (max-width: 480px) {
   .command-drawer-sheet {
-    max-height: 92vh;
+    height: 92vh;
   }
 
   .command-drawer-handle {

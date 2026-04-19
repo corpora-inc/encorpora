@@ -12,7 +12,7 @@
 import "./catalog.css"
 import type { CatalogNarrationEntry } from "./types"
 import { fetchCatalog } from "./catalogFetch"
-import { libraryStore, isInstalled, getInstalled, listInstalled, listInstalledForBook } from "./libraryStore"
+import { libraryStore, isInstalled, getInstalled, listInstalled } from "./libraryStore"
 import { getPackUrl, isTauriAvailable, installNarration, deleteNarration } from "./installManager"
 import {
   groupBySeries,
@@ -26,14 +26,21 @@ import {
   isEntitledToNarration,
   iapAvailableFromSnapshot,
   isSubscriberFromSnapshot,
-  purchaseNarration,
+  hasPurchasedFromSnapshot,
+  purchaseBookProduct,
+  purchaseSubscriptionProduct,
+  fetchStoreProducts,
+  SUBSCRIPTION_MONTHLY_ID,
+  SUBSCRIPTION_ANNUAL_ID,
 } from "./purchaseManager"
 import {
   createCommandDrawer,
   type CommandDrawer,
   type DrawerSectionDef,
 } from "../../ui/commandDrawer"
+import { createNarrationSwitcher, type NarrationSwitcher } from "../../ui/narrationSwitcher"
 import { drawerStore } from "../../state/drawerStore"
+import { recordNarrationUse } from "../../state/narrationHistoryStore"
 
 // V2 catalog includes premium packs; old readers use catalog.json (free only)
 const DEFAULT_CDN_URL = "https://d38iwc9748jekz.cloudfront.net/catalog-v2.json"
@@ -145,10 +152,56 @@ export function createAppShell(
     ...(opts.customSections || []),
   ]
 
+  // --- Narration switcher (compact strip on reader; same component in drawer) ---
+  // Build BEFORE the drawer so we can hand the drawer-mode element to it.
+  // Both switchers read the same live state via callbacks, so they always agree.
+  function getActiveBookId(): string {
+    const id = getActive()
+    if (!id) return ""
+    return getInstalled(id)?.bookId ?? ""
+  }
+
+  function refreshSwitchers(): void {
+    compactSwitcher.refresh()
+    drawerSwitcher.refresh()
+  }
+
+  async function installAndSwitchNarration(entry: CatalogNarrationEntry): Promise<boolean> {
+    const ok = await installNarration(entry)
+    if (!ok) return false
+    switchToNarration(entry.id, false)
+    rebuildAll()
+    return true
+  }
+
+  const switcherCallbacks = {
+    getActiveId: () => getActive(),
+    getActiveBookId,
+    getInstalled: () => listInstalled(),
+    getCatalog: () => allNarrations,
+    isIapAvailable: () => iapAvailableFromSnapshot(),
+    isSubscriber: () => isSubscriberFromSnapshot(),
+    ownsBook: (productId: string) => hasPurchasedFromSnapshot(productId),
+    getLanguageName: (code: string) => getLanguageName(code),
+    onSwitch: (id: string) => switchToNarration(id, false),
+    onInstallAndSwitch: (entry: CatalogNarrationEntry) => installAndSwitchNarration(entry),
+  }
+
+  const compactSwitcher: NarrationSwitcher = createNarrationSwitcher({
+    mode: "compact",
+    ...switcherCallbacks,
+  })
+
+  const drawerSwitcher: NarrationSwitcher = createNarrationSwitcher({
+    mode: "drawer",
+    ...switcherCallbacks,
+  })
+
   // --- Command Drawer ---
   const drawer = createCommandDrawer(container, {
     cdnUrl,
     customSections: allSections,
+    languageSwitcher: drawerSwitcher.element,
     onExit: () => {
       opts.onBeforeExit?.()
       dispose()  // Stop audio NOW — don't rely on external handlers
@@ -161,9 +214,14 @@ export function createAppShell(
         refreshNowPlayingSection()
         refreshBrowseSection()
         refreshLibrarySection()
+        refreshSwitchers()
       })
     },
   })
+
+  // Refresh switchers when libraryStore changes (install/uninstall) so the strip
+  // stays in sync without each caller having to remember.
+  const librarySwitcherUnsub = libraryStore.subscribe(() => refreshSwitchers())
 
   // Subscribe to store for minimal active-row update (avoids full re-render FUOC)
   const storeUnsub = drawerStore.subscribe((state, prev) => {
@@ -171,6 +229,7 @@ export function createAppShell(
       if (browseShowingDetail) updateDetailActiveRow(state.currentNarrationId)
       refreshLibrarySection()
       refreshNowPlayingSection()
+      refreshSwitchers()
     }
   })
 
@@ -272,13 +331,26 @@ export function createAppShell(
 
     readerInstance = opts.createReader(container, opts.hostApi, state)
 
-    // Re-attach drawer trigger to the reader's UI overlay
+    // Re-attach drawer trigger + compact narration switcher.
+    // The trigger is a top-right absolute button on the UI overlay.
+    // The switcher sits full-width as the first child of the transport bar so
+    // it renders right above the playback controls — the natural "keep-my-eyes
+    // here" position for language toggling while reading.
     const uiOverlay = container.querySelector(
       ".stargate-ui, .earthgate-ui"
     ) as HTMLElement | null
     if (uiOverlay) {
       uiOverlay.append(drawer.getTrigger())
     }
+    const transportEl = container.querySelector(
+      ".earthgate-transport, .stargate-transport"
+    ) as HTMLElement | null
+    if (transportEl) {
+      transportEl.insertBefore(compactSwitcher.element, transportEl.firstChild)
+    } else if (uiOverlay) {
+      uiOverlay.append(compactSwitcher.element)
+    }
+    compactSwitcher.refresh()
   }
 
   /** THE one function for activating a narration. Sets the canonical store,
@@ -308,39 +380,12 @@ export function createAppShell(
       startAtSegmentStart: true,
     }
 
+    // Track recent-use so the switcher's most-recent ordering reflects reality.
+    recordNarrationUse(narrationId)
+
     if (closeDrawer) drawer.close()
     mountReader(newState)
-    updateDrawerNarrationPills(info.bookId)
-  }
-
-  /** Build language pills from installed narrations for a book.
-   *  Only sets `languages` in the store — currentNarrationId is already set by switchToNarration. */
-  function updateDrawerNarrationPills(bookId: string): void {
-    const installed = listInstalledForBook(bookId)
-    if (installed.length === 0) {
-      drawerStore.setState({ languages: [] })
-      return
-    }
-
-    // Count narrations per language to decide label format
-    const langCounts = new Map<string, number>()
-    for (const n of installed) {
-      langCounts.set(n.language, (langCounts.get(n.language) || 0) + 1)
-    }
-
-    const pills: import("../../ui/commandDrawer").LanguageInfo[] = installed.map(n => {
-      const multiVoice = (langCounts.get(n.language) || 0) > 1
-      return {
-        code: n.language,
-        displayName: multiVoice
-          ? `${getLanguageName(n.language)} \u00B7 ${n.voiceName}`
-          : getLanguageName(n.language),
-        narrator: n.voiceName,
-        narrationId: n.narrationId,
-      }
-    })
-
-    drawerStore.setState({ languages: pills })
+    refreshSwitchers()
   }
 
   // --- Now Playing section rendering ---
@@ -727,6 +772,15 @@ export function createAppShell(
     }
     renderBookDetail()
     drawerStore.setState({ activeScreen: "detail" })
+    // Scroll the parent screen-container back to top — the user expects to
+    // land at the start of the book detail, not at whatever offset they had
+    // in the Browse list. Two RAFs so it runs after the screen becomes visible.
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        const scroller = detailScreen?.parentElement
+        if (scroller) scroller.scrollTop = 0
+      })
+    })
   }
 
   function renderBookDetail(): void {
@@ -777,6 +831,26 @@ export function createAppShell(
       subtitle.className = "command-drawer-detail-subtitle"
       subtitle.textContent = first.series + (first.volume ? ` \u00B7 Vol. ${first.volume}` : "")
       detail.appendChild(subtitle)
+    }
+
+    // Paid-book CTA — one offer above the rows instead of a Buy button per language.
+    const bookProductId = getBookProductId(narrations)
+    const bookIsPaid = narrations.some(n => n.purchase.type === "iap")
+    const userOwnsBook = bookIsPaid && bookProductId
+      ? hasPurchasedFromSnapshot(bookProductId)
+      : !bookIsPaid
+    const isSubscriber = isSubscriberFromSnapshot()
+    const iapAvailable = iapAvailableFromSnapshot()
+    if (
+      bookIsPaid &&
+      bookProductId &&
+      !userOwnsBook &&
+      !isSubscriber &&
+      iapAvailable
+    ) {
+      detail.appendChild(
+        createBookCta(narrations, bookProductId, () => rebuildAll())
+      )
     }
 
     // Installed narrations as tappable language rows (language picker)
@@ -884,13 +958,15 @@ export function createAppShell(
     const iap = narration.purchase.type === "iap"
     const entitled = isEntitledToNarration(narration)
     const iapAvailable = iapAvailableFromSnapshot()
+    const isSubscriber = isSubscriberFromSnapshot()
+    const locked = iap && !entitled && !isSubscriber
 
     const row = document.createElement("div")
     row.className = "catalog-row"
     row.dataset.narrationId = narration.id
     if (installedInfo) row.classList.add("catalog-row--installed")
     if (isActive) row.classList.add("catalog-row--active")
-    if (iap && !entitled) row.classList.add("catalog-row--paid")
+    if (locked) row.classList.add("catalog-row--locked")
 
     // Leading rail: active dot or subscription "Included" hint
     const rail = document.createElement("div")
@@ -923,19 +999,12 @@ export function createAppShell(
     actions.className = "catalog-row-actions"
     row.appendChild(actions)
 
-    // Tag chip (subscriber "Included" or paid "$X.XX")
-    if (iap && !installedInfo) {
-      if (isSubscriberFromSnapshot()) {
-        const chip = document.createElement("span")
-        chip.className = "catalog-chip catalog-chip--included"
-        chip.textContent = "Included"
-        actions.appendChild(chip)
-      } else if (!entitled) {
-        const chip = document.createElement("span")
-        chip.className = "catalog-chip catalog-chip--price"
-        chip.textContent = narration.purchase.priceLabel ?? "Premium"
-        actions.appendChild(chip)
-      }
+    // Tag chip — only "Included" for subscribers; locked rows get the lock glyph below.
+    if (iap && !installedInfo && isSubscriber && entitled) {
+      const chip = document.createElement("span")
+      chip.className = "catalog-chip catalog-chip--included"
+      chip.textContent = "Included"
+      actions.appendChild(chip)
     }
 
     // --- Installed row: clickable to switch, overflow menu with delete ---
@@ -961,7 +1030,7 @@ export function createAppShell(
       return row
     }
 
-    // --- Available row: buy or download ---
+    // --- Available row: download, or locked glyph when the book is paid ---
     if (!isTauriAvailable()) {
       const disabled = document.createElement("span")
       disabled.className = "catalog-chip catalog-chip--muted"
@@ -970,8 +1039,9 @@ export function createAppShell(
       return row
     }
 
-    if (iap && !entitled) {
-      // Paid narration, not yet entitled — show primary Buy button
+    if (locked) {
+      // Book-level purchase is handled by the CTA at the top of the detail
+      // screen — individual rows stay calm and informational.
       if (!iapAvailable) {
         const disabled = document.createElement("span")
         disabled.className = "catalog-chip catalog-chip--muted"
@@ -979,12 +1049,16 @@ export function createAppShell(
         actions.appendChild(disabled)
         return row
       }
-      actions.appendChild(createBuyButton(narration, handlers))
-    } else {
-      // Free, or already entitled — download
-      actions.appendChild(createCompactDownloadButton(narration, handlers))
+      const lock = document.createElement("span")
+      lock.className = "catalog-row-lock"
+      lock.setAttribute("aria-label", "Locked — unlock via the offer above")
+      lock.innerHTML = `<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>`
+      actions.appendChild(lock)
+      return row
     }
 
+    // Free, or already entitled (purchased or subscribed) — download
+    actions.appendChild(createCompactDownloadButton(narration, handlers))
     return row
   }
 
@@ -1033,46 +1107,6 @@ export function createAppShell(
     return btn
   }
 
-  function createBuyButton(
-    narration: CatalogNarrationEntry,
-    handlers: RowHandlers
-  ): HTMLButtonElement {
-    const btn = document.createElement("button")
-    btn.type = "button"
-    btn.className = "catalog-btn catalog-btn--compact catalog-btn--primary"
-    const price = narration.purchase.priceLabel ?? "Buy"
-    btn.innerHTML = `<span class="catalog-btn-label">Buy ${price}</span>`
-    btn.addEventListener("click", async (e) => {
-      e.stopPropagation()
-      setButtonBusy(btn)
-      const outcome = await purchaseNarration(narration)
-      if (outcome.kind === "cancelled") {
-        btn.className = "catalog-btn catalog-btn--compact catalog-btn--primary"
-        btn.innerHTML = `<span class="catalog-btn-label">Buy ${price}</span>`
-        return
-      }
-      if (outcome.kind === "error") {
-        setButtonError(btn, `Buy ${price}`, () => {})
-        return
-      }
-      // On ok/alreadyOwned — immediately install. alreadyOwned won't give us
-      // fresh receipt data, so fall through without purchaseInfo — install will
-      // fail cleanly; user can tap Restore to recover in a follow-up.
-      const purchaseInfo =
-        outcome.kind === "ok"
-          ? {
-              transactionId: outcome.receipt.transactionId,
-              receipt: outcome.receipt.receipt,
-              platform: outcome.receipt.platform,
-            }
-          : undefined
-      const ok = await installNarration(narration, purchaseInfo)
-      if (ok) handlers.onInstalled()
-      else setButtonError(btn, `Buy ${price}`, () => {})
-    })
-    return btn
-  }
-
   function setButtonBusy(btn: HTMLButtonElement): void {
     btn.classList.add("catalog-btn--downloading")
     btn.classList.remove("catalog-btn--error")
@@ -1093,6 +1127,188 @@ export function createAppShell(
       e.stopPropagation()
       await onRetry()
     }
+  }
+
+  // --- Book-level paid CTA ------------------------------------------------
+  // When the user opens a paid book they don't own yet, we show ONE offer at
+  // the top: buy-the-book ($4.99, unlocks every language) or subscribe
+  // (monthly/annual, unlocks everything). The individual rows below stay
+  // informational with a lock glyph — no 23 Buy buttons.
+
+  function getBookProductId(narrs: CatalogNarrationEntry[]): string | null {
+    for (const n of narrs) {
+      if (n.purchase.type === "iap" && n.purchase.productId) return n.purchase.productId
+    }
+    return null
+  }
+
+  function createBookCta(
+    narrations: CatalogNarrationEntry[],
+    bookProductId: string,
+    onUnlocked: () => void
+  ): HTMLElement {
+    const priceLabel = narrations.find(n => n.purchase.priceLabel)?.purchase.priceLabel ?? ""
+    const langCount = new Set(narrations.map(n => n.language)).size
+
+    const cta = document.createElement("div")
+    cta.className = "catalog-cta"
+
+    const eyebrow = document.createElement("div")
+    eyebrow.className = "catalog-cta-eyebrow"
+    eyebrow.textContent =
+      langCount > 1 ? `${langCount} languages` : "Full book"
+    cta.appendChild(eyebrow)
+
+    // Primary: buy this book — price-led, minimal copy.
+    const buyBtn = document.createElement("button")
+    buyBtn.type = "button"
+    buyBtn.className = "catalog-cta-primary"
+    const buyLabel = priceLabel ? `Buy \u2014 ${priceLabel}` : "Buy"
+    buyBtn.innerHTML = `<span class="catalog-cta-primary-label">${buyLabel}</span>`
+    buyBtn.addEventListener("click", async (e) => {
+      e.stopPropagation()
+      markCtaBusy(buyBtn)
+      const outcome = await purchaseBookProduct(bookProductId)
+      finishCtaOutcome(buyBtn, buyLabel, outcome, onUnlocked)
+    })
+    cta.appendChild(buyBtn)
+
+    // Subscription pitch — always rendered when IAP is available (parity with
+    // the main app's SubscriptionOffer). Prices populate asynchronously when
+    // the platform store responds; tapping a button works either way.
+    const or = document.createElement("div")
+    or.className = "catalog-cta-or"
+    or.innerHTML = `<span>or subscribe</span>`
+    cta.appendChild(or)
+
+    const subsRow = document.createElement("div")
+    subsRow.className = "catalog-cta-subs"
+
+    const monthlyBtn = createSubscribeButton(
+      SUBSCRIPTION_MONTHLY_ID,
+      "Monthly",
+      "per month",
+      onUnlocked
+    )
+    const annualBtn = createSubscribeButton(
+      SUBSCRIPTION_ANNUAL_ID,
+      "Yearly",
+      "per year \u00B7 best value",
+      onUnlocked
+    )
+    annualBtn.classList.add("catalog-cta-sub--highlight")
+    subsRow.appendChild(monthlyBtn)
+    subsRow.appendChild(annualBtn)
+    cta.appendChild(subsRow)
+
+    void fetchStoreProducts(
+      [SUBSCRIPTION_MONTHLY_ID, SUBSCRIPTION_ANNUAL_ID],
+      "subs"
+    ).then((products) => {
+      const m = products.find(p => p.productId === SUBSCRIPTION_MONTHLY_ID)
+      const a = products.find(p => p.productId === SUBSCRIPTION_ANNUAL_ID)
+      if (m && m.price) setSubscribeButtonPrice(monthlyBtn, m.price)
+      if (a && a.price) setSubscribeButtonPrice(annualBtn, a.price)
+    })
+
+    return cta
+  }
+
+  function renderSubscribeButtonContent(
+    btn: HTMLButtonElement,
+    label: string,
+    price: string,
+    period: string
+  ) {
+    if (price) {
+      btn.innerHTML = `
+        <span class="catalog-cta-sub-label">${label}</span>
+        <span class="catalog-cta-sub-price" data-price>${price}</span>
+        <span class="catalog-cta-sub-period">${period}</span>
+      `
+    } else {
+      // No localized price yet — show just the period name, centered. The
+      // button still purchases on tap; StoreKit / Play Billing show their own
+      // pricing in the system sheet.
+      btn.innerHTML = `<span class="catalog-cta-sub-solo">${label}</span>`
+    }
+  }
+
+  function createSubscribeButton(
+    productId: string,
+    label: string,
+    period: string,
+    onUnlocked: () => void
+  ): HTMLButtonElement {
+    const btn = document.createElement("button")
+    btn.type = "button"
+    btn.className = "catalog-cta-sub"
+    btn.dataset.subProductId = productId
+    btn.dataset.label = label
+    btn.dataset.period = period
+    renderSubscribeButtonContent(btn, label, "", period)
+    btn.addEventListener("click", async (e) => {
+      e.stopPropagation()
+      const priceSpan = btn.querySelector("[data-price]") as HTMLElement | null
+      const cachedPrice = priceSpan?.textContent ?? ""
+      markCtaBusy(btn)
+      const outcome = await purchaseSubscriptionProduct(productId)
+      if (outcome.kind === "cancelled") {
+        restoreSubscribeButton(btn, label, cachedPrice, period)
+        return
+      }
+      if (outcome.kind === "error") {
+        restoreSubscribeButton(btn, label, cachedPrice, period, true)
+        return
+      }
+      onUnlocked()
+    })
+    return btn
+  }
+
+  function setSubscribeButtonPrice(btn: HTMLButtonElement, price: string) {
+    const label = btn.dataset.label ?? ""
+    const period = btn.dataset.period ?? ""
+    renderSubscribeButtonContent(btn, label, price, period)
+  }
+
+  function restoreSubscribeButton(
+    btn: HTMLButtonElement,
+    label: string,
+    price: string,
+    period: string,
+    errored = false
+  ) {
+    btn.classList.remove("catalog-cta--busy")
+    if (errored) btn.classList.add("catalog-cta--errored")
+    renderSubscribeButtonContent(btn, label, price, period)
+    btn.style.pointerEvents = ""
+  }
+
+  function markCtaBusy(btn: HTMLButtonElement) {
+    btn.classList.add("catalog-cta--busy")
+    btn.classList.remove("catalog-cta--errored")
+    btn.style.pointerEvents = "none"
+  }
+
+  function finishCtaOutcome(
+    btn: HTMLButtonElement,
+    label: string,
+    outcome: { kind: string },
+    onUnlocked: () => void
+  ) {
+    btn.classList.remove("catalog-cta--busy")
+    btn.style.pointerEvents = ""
+    if (outcome.kind === "cancelled") {
+      btn.innerHTML = `<span class="catalog-cta-primary-label">${label}</span>`
+      return
+    }
+    if (outcome.kind === "error") {
+      btn.classList.add("catalog-cta--errored")
+      btn.innerHTML = `<span class="catalog-cta-primary-label">${label} \u2014 try again</span>`
+      return
+    }
+    onUnlocked()
   }
 
   /** Inline overflow menu for installed rows — currently just Delete. */
@@ -1271,6 +1487,9 @@ export function createAppShell(
     storeUnsub()
     narrUnsub()
     persistUnsub()
+    librarySwitcherUnsub()
+    compactSwitcher.dispose()
+    drawerSwitcher.dispose()
     drawer.dispose()
     readerInstance?.dispose()
   }
