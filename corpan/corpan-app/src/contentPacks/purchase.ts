@@ -350,7 +350,10 @@ export async function verifyPurchase(
   }
 
   try {
-    const url = new URL("/verify-purchase", urlBase).toString()
+    // Concat instead of `new URL("/verify-purchase", urlBase)` — the latter
+    // STRIPS the stage path: `new URL("/verify-purchase", "https://x/prod")`
+    // resolves to "https://x/verify-purchase" (no /prod), which 404s.
+    const url = urlBase.replace(/\/+$/, "") + "/verify-purchase"
     const body: Record<string, unknown> = {
       platform: purchase.platform,
       productId: purchase.productId,

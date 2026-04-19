@@ -7,13 +7,23 @@ const { google } = require("googleapis");
 // Helpers
 // ---------------------------------------------------------------------------
 
+// Echo the request Origin so WKWebView accepts CORS for opaque/null origins.
+// WebKit rejects Access-Control-Allow-Origin: * when Origin is "null" (custom
+// URI schemes like corpan-pack://). Echoing the exact origin satisfies both
+// WKWebView and the Fetch spec. Vary: Origin ensures caches don't mix responses.
+let _requestOrigin = "*";
+const setRequestOrigin = (event) => {
+  _requestOrigin = event.headers?.origin ?? event.headers?.Origin ?? "*";
+};
+
 const json = (statusCode, payload) => ({
   statusCode,
   headers: {
     "content-type": "application/json",
-    "access-control-allow-origin": "*",
+    "access-control-allow-origin": _requestOrigin,
     "access-control-allow-methods": "POST, OPTIONS",
     "access-control-allow-headers": "content-type, x-dev-bypass",
+    "vary": "Origin",
   },
   body: JSON.stringify(payload),
 });
@@ -361,6 +371,8 @@ async function handleGoogleNotification(body) {
 // ---------------------------------------------------------------------------
 
 exports.handler = async (event) => {
+  setRequestOrigin(event);
+
   // Handle CORS preflight
   if (event.requestContext?.http?.method === "OPTIONS") {
     return json(204, null);

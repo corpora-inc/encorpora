@@ -1,0 +1,193 @@
+{
+  "book_id": "pack",
+  "language": "sv",
+  "timestamp": "2026-04-19T21:47:17.125994+00:00",
+  "segments_total": 565,
+  "segments_first_pass": 501,
+  "segments_converged_by_retry": 46,
+  "segments_plateau_stopped": 18,
+  "total_retries": 111,
+  "error_distribution": {},
+  "worst_segments": [
+    {
+      "id": "ch05-364",
+      "attempts": 7,
+      "best_quality_score": 40.0,
+      "best_attempt": 3,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Men kom ihåg att ditt primära värde är att kontrollera spelet från baksidan."
+    },
+    {
+      "id": "ch02-100",
+      "attempts": 5,
+      "best_quality_score": 1.6,
+      "best_attempt": 1,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Fantastiska liberon slutar aldrig skanna."
+    },
+    {
+      "id": "ch02-149",
+      "attempts": 5,
+      "best_quality_score": 50.0,
+      "best_attempt": 1,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "När en lagkamrat tar emot bollen under press vet du redan vem som är fri för näs"
+    },
+    {
+      "id": "ch04-235",
+      "attempts": 5,
+      "best_quality_score": 3.2,
+      "best_attempt": 1,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Du hittar den frie anfallaren."
+    },
+    {
+      "id": "ch07-497",
+      "attempts": 5,
+      "best_quality_score": 12.0,
+      "best_attempt": 1,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "När din målvakt tar en målspark, är du det närmaste säkra passningsalternativet."
+    },
+    {
+      "id": "ch03-175",
+      "attempts": 4,
+      "best_quality_score": 20.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Du läser passningslinjen, kliver in i bollens väg och tar emot bollen med en ren"
+    },
+    {
+      "id": "ch03-194",
+      "attempts": 4,
+      "best_quality_score": 0.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Vinn bollen med insidan av din fot."
+    },
+    {
+      "id": "ch04-274",
+      "attempts": 4,
+      "best_quality_score": 10.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "En chans."
+    },
+    {
+      "id": "ch04-308",
+      "attempts": 4,
+      "best_quality_score": 0.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Den långa diagonala bollen som hittar yttern i fritt läge."
+    },
+    {
+      "id": "ch06-397",
+      "attempts": 4,
+      "best_quality_score": 0.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Anfallarna vetter mot motståndarens mål."
+    },
+    {
+      "id": "ch06-429",
+      "attempts": 4,
+      "best_quality_score": 0.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Men du kan se löparen tydligt från din position."
+    },
+    {
+      "id": "ch06-449",
+      "attempts": 4,
+      "best_quality_score": 20.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Säg \"inget att oroa sig för, nästa gång\" och fokusera på nästa spelsituation."
+    },
+    {
+      "id": "ch06-467",
+      "attempts": 4,
+      "best_quality_score": 10.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Ge aldrig upp en spelsituation."
+    },
+    {
+      "id": "ch06-472",
+      "attempts": 4,
+      "best_quality_score": 10.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Ditt lag följer ditt ledarskap."
+    },
+    {
+      "id": "ch08-537",
+      "attempts": 4,
+      "best_quality_score": 10.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Bollen studsar omkring i din box."
+    },
+    {
+      "id": "ch08-539",
+      "attempts": 4,
+      "best_quality_score": 1.6,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Du saktar ner ditt sinne."
+    },
+    {
+      "id": "ch08-547",
+      "attempts": 4,
+      "best_quality_score": 0.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "När du tar emot bollen under press och spelar en ren passning, andas hela laget "
+    },
+    {
+      "id": "ch08-568",
+      "attempts": 4,
+      "best_quality_score": 20.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Om valet inte fungerar, återhämta dig omedelbart och försvara nästa spelsituatio"
+    },
+    {
+      "id": "ch04-269",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "För mjukt och försvararen skär av bollen."
+    },
+    {
+      "id": "ch04-301",
+      "attempts": 3,
+      "best_quality_score": 2.64,
+      "best_attempt": 0,
+      "plateau_count": 2,
+      "final_errors": [],
+      "text_preview": "Anfallaren avslutar mål."
+    }
+  ]
+}

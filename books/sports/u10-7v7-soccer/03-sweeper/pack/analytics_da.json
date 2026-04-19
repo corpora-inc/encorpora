@@ -1,0 +1,193 @@
+{
+  "book_id": "pack",
+  "language": "da",
+  "timestamp": "2026-04-19T23:04:29.071996+00:00",
+  "segments_total": 565,
+  "segments_first_pass": 446,
+  "segments_converged_by_retry": 79,
+  "segments_plateau_stopped": 40,
+  "total_retries": 249,
+  "error_distribution": {},
+  "worst_segments": [
+    {
+      "id": "ch04-287",
+      "attempts": 8,
+      "best_quality_score": 4.0,
+      "best_attempt": 4,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Modstandernes spillere er fanget højt oppe på banen."
+    },
+    {
+      "id": "ch01-055",
+      "attempts": 7,
+      "best_quality_score": 0.0,
+      "best_attempt": 6,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Dine holdkammerater stoler på dig."
+    },
+    {
+      "id": "ch03-178",
+      "attempts": 7,
+      "best_quality_score": 4.0,
+      "best_attempt": 3,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Du forudser afleveringens retning."
+    },
+    {
+      "id": "ch05-323",
+      "attempts": 6,
+      "best_quality_score": 1.6,
+      "best_attempt": 2,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Forsvarsspillerne rykker op i angrebshalvdelen."
+    },
+    {
+      "id": "ch06-404",
+      "attempts": 6,
+      "best_quality_score": 2.64,
+      "best_attempt": 2,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Du advarer dine holdkammerater om løbere."
+    },
+    {
+      "id": "ch07-526",
+      "attempts": 6,
+      "best_quality_score": 10.0,
+      "best_attempt": 2,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Mange mål i ungdomsfodbold kommer fra dødboldssituationer."
+    },
+    {
+      "id": "ch08-537",
+      "attempts": 6,
+      "best_quality_score": 2.64,
+      "best_attempt": 2,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Bolden hopper rundt i dit felt."
+    },
+    {
+      "id": "ch01-024",
+      "attempts": 5,
+      "best_quality_score": 3.2,
+      "best_attempt": 1,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Angriberne vender ryggen til dig."
+    },
+    {
+      "id": "ch01-045",
+      "attempts": 5,
+      "best_quality_score": 10.0,
+      "best_attempt": 1,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Forestil dig formationen."
+    },
+    {
+      "id": "ch03-225",
+      "attempts": 5,
+      "best_quality_score": 0.0,
+      "best_attempt": 4,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Når en ricochet springer løs, samler du bolden op."
+    },
+    {
+      "id": "ch04-282",
+      "attempts": 5,
+      "best_quality_score": 0.0,
+      "best_attempt": 4,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Brug den korte bold, når det andet hold presser højt og efterlader rum bag deres"
+    },
+    {
+      "id": "ch06-397",
+      "attempts": 5,
+      "best_quality_score": 1.6,
+      "best_attempt": 1,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Angriberne ser mod modstanderens mål."
+    },
+    {
+      "id": "ch06-435",
+      "attempts": 5,
+      "best_quality_score": 2.64,
+      "best_attempt": 1,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Sene råb efterlader forsvarsspillere i panik."
+    },
+    {
+      "id": "ch08-582",
+      "attempts": 5,
+      "best_quality_score": 3.44,
+      "best_attempt": 1,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Når en forsvarsspiller mister bolden, dæk rummet."
+    },
+    {
+      "id": "ch01-025",
+      "attempts": 4,
+      "best_quality_score": 1.6,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Forsvarsspillerne har øjnene på bolden."
+    },
+    {
+      "id": "ch01-031",
+      "attempts": 4,
+      "best_quality_score": 3.2,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Du opsnapper afleveringer gennem midten."
+    },
+    {
+      "id": "ch01-035",
+      "attempts": 4,
+      "best_quality_score": 3.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Din anden opgave er angreb."
+    },
+    {
+      "id": "ch02-127",
+      "attempts": 4,
+      "best_quality_score": 3.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Du læser modstanderens kropssprog."
+    },
+    {
+      "id": "ch02-130",
+      "attempts": 4,
+      "best_quality_score": 0.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Når du forudser korrekt, når du bolden før angriberen."
+    },
+    {
+      "id": "ch03-177",
+      "attempts": 4,
+      "best_quality_score": 2.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Du ser modstanderens kropsform."
+    }
+  ]
+}

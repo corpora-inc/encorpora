@@ -137,6 +137,33 @@ resource "aws_lambda_function" "verify" {
 resource "aws_apigatewayv2_api" "verify" {
   name          = "${var.project_name}-verify"
   protocol_type = "HTTP"
+
+  # CORS — needed because the reader pack runs in a corpan-pack:// origin
+  # WebView and the main app runs in a tauri:// (or http://localhost) origin.
+  # Without this, the browser sends an OPTIONS preflight, the gateway returns
+  # 404 (no matching route), and the actual POST never fires — failing with
+  # the unhelpful "Load failed" error in WKWebView.
+  #
+  # `*` is fine here: auth is enforced by the platform receipt the Lambda
+  # validates, not by Origin (anyone can curl this endpoint already).
+  # NOTE: API Gateway v2's `*` wildcard does NOT match `Origin: null` —
+  # tested with curl, the gateway omits CORS headers entirely for null
+  # origins. WKWebView sends `Origin: null` for fetches from custom URI
+  # schemes (`corpan-pack://`), so we have to enumerate every origin we
+  # actually use. The endpoint is still safe — auth is by platform receipt.
+  # CORS is handled entirely by the Lambda (verify_purchase.js lines 10-18).
+  # Every response includes access-control-allow-origin: * which browsers
+  # match against ALL origins including Origin: null.
+  #
+  # DO NOT use cors_configuration here. API Gateway v2's cors_configuration
+  # intercepts OPTIONS and applies its own origin matching, but its "*"
+  # does NOT match "null" (the origin WKWebView sends for custom URI
+  # schemes like corpan-pack://). The result: preflight 204 with no CORS
+  # headers → browser blocks the response. The Lambda's "*" works because
+  # browsers follow the Fetch spec where "*" means "any origin".
+  #
+  # Instead, a $default catch-all route forwards OPTIONS to the Lambda,
+  # which returns 204 with proper CORS headers. See aws_apigatewayv2_route.default.
 }
 
 resource "aws_apigatewayv2_integration" "verify" {
@@ -167,6 +194,16 @@ resource "aws_apigatewayv2_route" "apple_notifications" {
 resource "aws_apigatewayv2_route" "google_notifications" {
   api_id    = aws_apigatewayv2_api.verify.id
   route_key = "POST /google-notifications"
+  target    = "integrations/${aws_apigatewayv2_integration.verify.id}"
+}
+
+# Catch-all route: forwards OPTIONS (and any other unmatched method/path)
+# to the Lambda. Required because cors_configuration is NOT used — the
+# Lambda handles CORS itself with access-control-allow-origin: * which
+# correctly matches Origin: null from WKWebView custom URI schemes.
+resource "aws_apigatewayv2_route" "default" {
+  api_id    = aws_apigatewayv2_api.verify.id
+  route_key = "$default"
   target    = "integrations/${aws_apigatewayv2_integration.verify.id}"
 }
 
