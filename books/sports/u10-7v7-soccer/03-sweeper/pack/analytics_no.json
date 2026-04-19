@@ -1,0 +1,193 @@
+{
+  "book_id": "pack",
+  "language": "no",
+  "timestamp": "2026-04-19T23:47:45.191105+00:00",
+  "segments_total": 565,
+  "segments_first_pass": 482,
+  "segments_converged_by_retry": 46,
+  "segments_plateau_stopped": 37,
+  "total_retries": 165,
+  "error_distribution": {},
+  "worst_segments": [
+    {
+      "id": "ch01-031",
+      "attempts": 5,
+      "best_quality_score": 2.64,
+      "best_attempt": 1,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Du snapper opp pasninger gjennom midten."
+    },
+    {
+      "id": "ch03-166",
+      "attempts": 5,
+      "best_quality_score": 1.6,
+      "best_attempt": 1,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Å rykke frem krever mot."
+    },
+    {
+      "id": "ch03-178",
+      "attempts": 5,
+      "best_quality_score": 1.6,
+      "best_attempt": 1,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Du forutser retningen på pasningen."
+    },
+    {
+      "id": "ch04-286",
+      "attempts": 5,
+      "best_quality_score": 2.0,
+      "best_attempt": 1,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Forsvaret ditt vant ballen."
+    },
+    {
+      "id": "ch04-310",
+      "attempts": 5,
+      "best_quality_score": 2.0,
+      "best_attempt": 1,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Disse pasningene forandrer kamper."
+    },
+    {
+      "id": "ch05-323",
+      "attempts": 5,
+      "best_quality_score": 0.0,
+      "best_attempt": 4,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Forsvarsspillerne rykker inn i angrepssonen."
+    },
+    {
+      "id": "ch07-483",
+      "attempts": 5,
+      "best_quality_score": 1.6,
+      "best_attempt": 1,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Vurder hvor ballen vil lande."
+    },
+    {
+      "id": "ch01-018",
+      "attempts": 4,
+      "best_quality_score": 1.6,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Du kan se lagkameratene dine."
+    },
+    {
+      "id": "ch01-020",
+      "attempts": 4,
+      "best_quality_score": 2.64,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Du kan se rommene mellom spillerne."
+    },
+    {
+      "id": "ch01-055",
+      "attempts": 4,
+      "best_quality_score": 1.6,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Lagkameratene dine stoler på deg."
+    },
+    {
+      "id": "ch03-170",
+      "attempts": 4,
+      "best_quality_score": 3.04,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Vurder farten på ballen og farten på angriperen."
+    },
+    {
+      "id": "ch03-179",
+      "attempts": 4,
+      "best_quality_score": 10.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Du beveger deg før ballen sparkes."
+    },
+    {
+      "id": "ch04-232",
+      "attempts": 4,
+      "best_quality_score": 10.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Angrepet er over."
+    },
+    {
+      "id": "ch04-263",
+      "attempts": 4,
+      "best_quality_score": 2.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Gjennombruddspasningen splitter motstanderens forsvar."
+    },
+    {
+      "id": "ch04-295",
+      "attempts": 4,
+      "best_quality_score": 0.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Kan du treffe venstre kant?"
+    },
+    {
+      "id": "ch04-296",
+      "attempts": 4,
+      "best_quality_score": 10.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Kan du treffe høyre kant?"
+    },
+    {
+      "id": "ch04-304",
+      "attempts": 4,
+      "best_quality_score": 2.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Superkraften din er dreppassningen."
+    },
+    {
+      "id": "ch04-311",
+      "attempts": 4,
+      "best_quality_score": 1.6,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Disse pasningene kommer fra deg."
+    },
+    {
+      "id": "ch04-312",
+      "attempts": 4,
+      "best_quality_score": 3.2,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Tren pasningsrekkevidden din hver dag."
+    },
+    {
+      "id": "ch05-327",
+      "attempts": 4,
+      "best_quality_score": 40.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Et kompakt lag kan presse det andre laget og vinne ballen tilbake raskt hvis bal"
+    }
+  ]
+}

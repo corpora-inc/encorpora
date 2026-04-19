@@ -1,193 +1,193 @@
 {
-  "book_id": "pack",
+  "book_id": "book_zheng_yi_sao",
   "language": "ar",
-  "timestamp": "2026-04-19T22:56:02.025736+00:00",
+  "timestamp": "2026-04-19T23:33:58.311760+00:00",
   "segments_total": 303,
-  "segments_first_pass": 232,
-  "segments_converged_by_retry": 47,
-  "segments_plateau_stopped": 24,
-  "total_retries": 162,
+  "segments_first_pass": 294,
+  "segments_converged_by_retry": 9,
+  "segments_plateau_stopped": 0,
+  "total_retries": 11,
   "error_distribution": {},
   "worst_segments": [
     {
-      "id": "ch05-242",
-      "attempts": 7,
-      "best_quality_score": 4.0,
-      "best_attempt": 3,
-      "plateau_count": 3,
-      "final_errors": [],
-      "text_preview": "قيمت تشنغ يي ساو الوضع الجديد بوضوحها المعهود."
-    },
-    {
-      "id": "ch06-296",
-      "attempts": 7,
-      "best_quality_score": 3.52,
-      "best_attempt": 3,
-      "plateau_count": 3,
-      "final_errors": [],
-      "text_preview": "في العصر الحديث، أصبحت تشنغ يي ساو رمزاً ثقافياً."
-    },
-    {
-      "id": "ch02-094",
-      "attempts": 6,
-      "best_quality_score": 4.96,
-      "best_attempt": 2,
-      "plateau_count": 3,
-      "final_errors": [],
-      "text_preview": "بين عامي ألف وسبعمائة وثمانية وتسعين وألف وثمانمائة وخمسة، عمل تشنغ يي بلا كلل ل"
-    },
-    {
-      "id": "ch03-120",
-      "attempts": 6,
-      "best_quality_score": 2.64,
-      "best_attempt": 2,
-      "plateau_count": 3,
-      "final_errors": [],
-      "text_preview": "كان تشانغ باو ابن صياد أسره القراصنة وهو صبي."
-    },
-    {
-      "id": "ch03-166",
-      "attempts": 6,
-      "best_quality_score": 2.64,
-      "best_attempt": 2,
-      "plateau_count": 3,
-      "final_errors": [],
-      "text_preview": "لكن تشنغ يي ساو تكيفت بسرعة."
-    },
-    {
-      "id": "ch05-252",
-      "attempts": 6,
-      "best_quality_score": 3.52,
-      "best_attempt": 2,
-      "plateau_count": 3,
-      "final_errors": [],
-      "text_preview": "طالبت بأن يمنح تشانغ باو رتبة في البحرية الإمبراطورية."
-    },
-    {
-      "id": "ch05-266",
-      "attempts": 6,
-      "best_quality_score": 5.68,
-      "best_attempt": 2,
-      "plateau_count": 3,
-      "final_errors": [],
-      "text_preview": "اعتزلت تشنغ يي ساو البحر كامرأة ثرية."
-    },
-    {
-      "id": "ch03-132",
-      "attempts": 5,
-      "best_quality_score": 3.2,
-      "best_attempt": 1,
-      "plateau_count": 3,
-      "final_errors": [],
-      "text_preview": "أدركت تشنغ يي ساو أن أسطولاً بلا قوانين سيمزق نفسه."
-    },
-    {
-      "id": "ch03-146",
-      "attempts": 5,
-      "best_quality_score": 4.0,
-      "best_attempt": 1,
-      "plateau_count": 3,
-      "final_errors": [],
-      "text_preview": "بنت تشنغ يي ساو أيضاً نظاماً ضريبياً متطوراً."
-    },
-    {
-      "id": "ch05-245",
-      "attempts": 5,
-      "best_quality_score": 2.64,
-      "best_attempt": 1,
-      "plateau_count": 3,
-      "final_errors": [],
-      "text_preview": "لكن الزخم تغير، وكانت تعلم ذلك."
-    },
-    {
-      "id": "ch05-259",
-      "attempts": 5,
-      "best_quality_score": 0.0,
-      "best_attempt": 4,
-      "plateau_count": 0,
-      "final_errors": [],
-      "text_preview": "سلمت تشنغ يي ساو أسطولها للحكومة."
-    },
-    {
-      "id": "ch02-066",
-      "attempts": 4,
-      "best_quality_score": 3.2,
-      "best_attempt": 0,
-      "plateau_count": 3,
-      "final_errors": [],
-      "text_preview": "ولدت في مجتمع التانكا الذي يسكن القوارب في مقاطعة غوانغدونغ."
-    },
-    {
-      "id": "ch02-078",
-      "attempts": 4,
-      "best_quality_score": 4.0,
-      "best_attempt": 0,
-      "plateau_count": 3,
-      "final_errors": [],
-      "text_preview": "طلب تشنغ يي يد الشابة للزواج."
-    },
-    {
-      "id": "ch02-090",
-      "attempts": 4,
-      "best_quality_score": 2.64,
-      "best_attempt": 0,
-      "plateau_count": 3,
-      "final_errors": [],
-      "text_preview": "كان لدى تشنغ يي رؤية جريئة."
-    },
-    {
-      "id": "ch02-101",
-      "attempts": 4,
-      "best_quality_score": 4.56,
-      "best_attempt": 0,
-      "plateau_count": 3,
-      "final_errors": [],
-      "text_preview": "قاد تشنغ يي أسطول العلم الأحمر شخصياً."
-    },
-    {
-      "id": "ch02-103",
+      "id": "ch05-262",
       "attempts": 4,
       "best_quality_score": 0.0,
       "best_attempt": 3,
       "plateau_count": 0,
       "final_errors": [],
-      "text_preview": "هيمن على بحر الصين الجنوبي بأكمله."
+      "text_preview": "سمح للقراصنة بالاحتفاظ بجزء من سفنهم."
     },
     {
-      "id": "ch02-105",
-      "attempts": 4,
-      "best_quality_score": 4.8,
-      "best_attempt": 0,
-      "plateau_count": 3,
-      "final_errors": [],
-      "text_preview": "ثم، في نوفمبر عام ألف وثمانمائة وسبعة، توفي تشنغ يي."
-    },
-    {
-      "id": "ch03-129",
-      "attempts": 4,
+      "id": "ch01-033",
+      "attempts": 2,
       "best_quality_score": 0.0,
-      "best_attempt": 3,
+      "best_attempt": 1,
       "plateau_count": 0,
       "final_errors": [],
-      "text_preview": "واحداً تلو الآخر، وافق القباطنة على اتباع قيادتها."
+      "text_preview": "عاشت عائلات بأكملها على قوارب صغيرة تسمى السامبان."
     },
     {
-      "id": "ch03-152",
-      "attempts": 4,
-      "best_quality_score": 1.6,
-      "best_attempt": 0,
-      "plateau_count": 3,
+      "id": "ch01-035",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
       "final_errors": [],
-      "text_preview": "كانت المعركة كارثة على الحكومة."
+      "text_preview": "أطلقت عليهم الحكومة الإمبراطورية اسم شعب التانكا، وعاملتهم كمنبوذين."
     },
     {
-      "id": "ch03-155",
-      "attempts": 4,
-      "best_quality_score": 3.2,
-      "best_attempt": 0,
-      "plateau_count": 3,
+      "id": "ch01-046",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
       "final_errors": [],
-      "text_preview": "صدم البلاط الإمبراطوري بحجم الخسارة."
+      "text_preview": "جعل الضباب الكثيف والعواصف المفاجئة المطاردة صعبة."
+    },
+    {
+      "id": "ch02-107",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "تقول بعض الروايات إنه غرق في عاصفة."
+    },
+    {
+      "id": "ch03-137",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "كانت عقوبة السرقة من الخزينة المشتركة هي الإعدام."
+    },
+    {
+      "id": "ch04-199",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "كان لديها جواسيس في كانتون وماكاو وكل ميناء رئيسي على طول الساحل."
+    },
+    {
+      "id": "ch05-260",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "في المقابل، حصلت على كل ما طلبته."
+    },
+    {
+      "id": "ch06-291",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "ولولا موهبتها، لما أنتجت الظروف سوى الفوضى."
+    },
+    {
+      "id": "ch00-002",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "هذه قصة حقيقية عن أنجح قرصان في التاريخ المدوَّن بأكمله."
+    },
+    {
+      "id": "ch00-003",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "كان اسمها تشنغ يي ساو، وقد قادت أكبر أسطول قراصنة شهده العالم على الإطلاق."
+    },
+    {
+      "id": "ch00-004",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "في ذروة قوتها، كانت تسيطر على سفن أكثر مما تملكه معظم الدول."
+    },
+    {
+      "id": "ch00-005",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "لم تولد في ثراء أو امتياز."
+    },
+    {
+      "id": "ch00-006",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "وُلدت في فقر في جنوب الصين، في أواخر القرن الثامن عشر."
+    },
+    {
+      "id": "ch00-007",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "كل ما حققته بنته من خلال الذكاء والقسوة وقدرة استثنائية على تنظيم الناس."
+    },
+    {
+      "id": "ch00-008",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "يروي هذا الكتاب قصة كيف أصبحت امرأة لا تملك شيئاً الحاكمة المطلقة لبحر الصين الج"
+    },
+    {
+      "id": "ch00-009",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "إنها قصة عن الحرب والتجارة والقانون والبقاء."
+    },
+    {
+      "id": "ch00-010",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "وهي أيضاً قصة عن عالم كان يتغير بسرعة، مع توغل القوى الأوروبية أعمق في آسيا."
+    },
+    {
+      "id": "ch00-011",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "كل حقيقة في هذا الكتاب مأخوذة من السجل التاريخي."
+    },
+    {
+      "id": "ch00-012",
+      "attempts": 1,
+      "best_quality_score": 0.0,
+      "best_attempt": 0,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "حيث يكون السجل غير مؤكد، نقول ذلك."
     }
   ]
 }
