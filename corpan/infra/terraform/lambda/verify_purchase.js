@@ -281,14 +281,26 @@ async function handleVerifyPurchase(body, secrets) {
     expiresAt: result.expiresAt || null,
   };
 
-  // Generate signed URL if a specific pack was requested
-  if (packId) {
+  // Generate signed URL if a specific pack was requested.
+  // Accept downloadPath from the client (derived from catalog's downloadUrl)
+  // since filenames include the version (e.g. "pack-id-0.1.0.zip").
+  // Fall back to packId-only path for backwards compatibility.
+  if (packId || body.downloadPath) {
     try {
       const signingKey = secrets.cloudfront?.signingPrivateKey;
-      // Premium content lives at narrations/premium/{packId}.zip
-      // The exact filename comes from the catalog, but we construct a pattern
-      const downloadPath = `narrations/premium/${packId}.zip`;
+      let downloadPath;
+      if (typeof body.downloadPath === "string" && body.downloadPath.length > 0) {
+        // Client sends the path from the catalog's downloadUrl
+        downloadPath = body.downloadPath.replace(/^\/+/, "");
+      } else {
+        downloadPath = `narrations/premium/${packId}.zip`;
+      }
+      // Only sign paths under narrations/premium/ to prevent signing arbitrary URLs
+      if (!downloadPath.startsWith("narrations/premium/")) {
+        return json(400, { status: "failed", error: "Invalid downloadPath" });
+      }
       response.signedUrl = generateSignedDownloadUrl(downloadPath, signingKey);
+      console.log(`[signed-url] Signed: ${downloadPath}`);
     } catch (err) {
       console.warn("[signed-url] Could not generate signed URL:", err.message);
       // Non-fatal: verification succeeded, signed URL is a bonus
@@ -413,15 +425,22 @@ exports.handler = async (event) => {
       subscriptionActive: true,
       devBypass: true,
     };
-    // If packId provided, generate a real signed URL for download testing
-    if (body.packId) {
+    // If packId or downloadPath provided, generate a real signed URL for download testing
+    if (body.packId || body.downloadPath) {
       try {
         const secrets = await getSecrets();
-        const downloadPath = `narrations/premium/${body.packId}.zip`;
-        response.signedUrl = generateSignedDownloadUrl(
-          downloadPath,
-          secrets.cloudfront.signingPrivateKey
-        );
+        let downloadPath;
+        if (typeof body.downloadPath === "string" && body.downloadPath.length > 0) {
+          downloadPath = body.downloadPath.replace(/^\/+/, "");
+        } else {
+          downloadPath = `narrations/premium/${body.packId}.zip`;
+        }
+        if (downloadPath.startsWith("narrations/premium/")) {
+          response.signedUrl = generateSignedDownloadUrl(
+            downloadPath,
+            secrets.cloudfront.signingPrivateKey
+          );
+        }
       } catch (e) {
         response.signedUrlError = e.message;
       }
