@@ -70,15 +70,17 @@ Register the file in `project.yml` under `targets.corpan_iOS.sources` so xcodege
 
 ## C. Cloud backend for receipt verification
 
-Code-complete per `corpan/IAP_IMPLEMENTATION_STATE.md` and `corpan/infra/IAP_SETUP_RUNBOOK.md`; not fully provisioned.
+Code-complete per `corpan/IAP_IMPLEMENTATION_STATE.md` and `corpan/infra/IAP_SETUP_RUNBOOK.md`. **Fully provisioned and verified as of 2026-04-18.**
 
-- **App Store Connect**: create app record; register production IAP IDs matching `Corpan.storekit` (`corpan.sub.monthly`, `corpan.sub.annual`, `corpan.book.*`).
-- **Play Console**: register matching products; upload an AAB to internal testing.
-- **Apple App Store Server API credentials** (`.p8`, key ID, issuer ID) → AWS Secrets Manager, read by the Lambda at cold start.
-- **Play Developer API service-account JSON** → AWS Secrets Manager.
-- **CloudFront signed-URL private key** → AWS Secrets Manager. Still flagged pending in `IAP_IMPLEMENTATION_STATE.md`; **this blocks paid-book downloads** (URL signing fails without it).
-- **Sandbox testers** in both consoles for end-to-end review.
-- **Disable the Lambda dev-bypass in prod**: `corpan/infra/terraform/lambda/verify_purchase.js:377-382` honors an `x-dev-bypass` header that returns a synthetic entitlement; `main.tf:129` wires `DEV_BYPASS_TOKEN`. Either unset the env var on the prod stage or gate the branch on `stage !== "prod"`. Anyone with the token otherwise gets free entitlements.
+- [x] **Lambda deployed** with all routes: `/verify-purchase`, `/subscription-status`, `/apple-notifications`, `/google-notifications`
+- [x] **Apple App Store Server API credentials** (`.p8`, key ID, issuer ID) → AWS Secrets Manager — **verified**: Lambda reaches Apple API (not "credentials not configured")
+- [x] **Play Developer API service-account JSON** → AWS Secrets Manager — **verified**: Lambda reaches Google API (not "credentials not configured")
+- [x] **CloudFront signed-URL private key** → AWS Secrets Manager — **verified**: dev bypass returns real signed URL with valid signature
+- [x] **App Store Connect**: IAP products created (`corpan.sub.monthly`, `corpan.sub.annual`, `corpan.book.fascinating_science_volcanoes`)
+- [ ] **Attach IAP products to the 0.11.3 release version page** in App Store Connect (required before submission)
+- [ ] **Play Console**: verify products are activated and linked to the release track
+- [ ] **Sandbox testers** in both consoles for end-to-end review
+- **Dev bypass note**: `verify_purchase.js:377-382` honors `x-dev-bypass` header. `DEV_BYPASS_TOKEN` is set in Lambda env. Consider unsetting for production or gating on stage — anyone with the token gets free entitlements. Acceptable for testing but should be removed or rotated before public launch.
 
 ---
 

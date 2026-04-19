@@ -1,0 +1,193 @@
+{
+  "book_id": "pack",
+  "language": "de",
+  "timestamp": "2026-04-19T20:10:40.596355+00:00",
+  "segments_total": 632,
+  "segments_first_pass": 587,
+  "segments_converged_by_retry": 41,
+  "segments_plateau_stopped": 4,
+  "total_retries": 133,
+  "error_distribution": {},
+  "worst_segments": [
+    {
+      "id": "ch05-407",
+      "attempts": 25,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Nick kurz."
+    },
+    {
+      "id": "ch04-327",
+      "attempts": 17,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Du bist groß."
+    },
+    {
+      "id": "ch04-298",
+      "attempts": 7,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Bleib tief."
+    },
+    {
+      "id": "ch02-095",
+      "attempts": 5,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Drück den Ball fest zusammen, wenn du ihn fängst."
+    },
+    {
+      "id": "ch04-274",
+      "attempts": 5,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Beuge deine Knie."
+    },
+    {
+      "id": "ch04-318",
+      "attempts": 5,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Sei bereit."
+    },
+    {
+      "id": "ch07-532",
+      "attempts": 5,
+      "best_quality_score": 10.0,
+      "best_attempt": 1,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Breite deine Arme weit aus."
+    },
+    {
+      "id": "ch07-551",
+      "attempts": 5,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Sei laut."
+    },
+    {
+      "id": "ch08-596",
+      "attempts": 5,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Jedes Mal, wenn der Ball die Mittellinie überquert, setze deine Position zurück."
+    },
+    {
+      "id": "ch07-477",
+      "attempts": 5,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Standardsituationen"
+    },
+    {
+      "id": "ch02-087",
+      "attempts": 4,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Zieh deine Handschuhe früh an."
+    },
+    {
+      "id": "ch02-138",
+      "attempts": 4,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Mach das drei Mal."
+    },
+    {
+      "id": "ch04-258",
+      "attempts": 4,
+      "best_quality_score": 0.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Der Winkel ist die gedachte Linie vom Ball zur Mitte des Tors."
+    },
+    {
+      "id": "ch04-273",
+      "attempts": 4,
+      "best_quality_score": 10.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Breite deine Arme weit aus."
+    },
+    {
+      "id": "ch05-362",
+      "attempts": 4,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Lenke den Ball aus der Gefahrenzone."
+    },
+    {
+      "id": "ch06-411",
+      "attempts": 4,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Du hast die Parade gemacht."
+    },
+    {
+      "id": "ch07-487",
+      "attempts": 4,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Dein Strafraum ist dein Revier."
+    },
+    {
+      "id": "ch07-531",
+      "attempts": 4,
+      "best_quality_score": 10.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Bleib groß."
+    },
+    {
+      "id": "ch08-580",
+      "attempts": 4,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Die besten Torwarte haben während eines Spiels ein kurzes Gedächtnis."
+    },
+    {
+      "id": "ch08-626",
+      "attempts": 4,
+      "best_quality_score": 10.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Beide Arten von Spielen erfordern die gleiche Konzentration."
+    }
+  ]
+}

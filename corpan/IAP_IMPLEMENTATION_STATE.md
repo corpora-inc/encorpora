@@ -1,4 +1,4 @@
-# IAP Implementation State — 2026-04-15
+# IAP Implementation State — 2026-04-18
 
 ## What's Done (Code Complete)
 
@@ -92,41 +92,46 @@
 
 ---
 
-## What's NOT Done (Manual / Infrastructure)
+## What's NOT Done (Store Console Setup)
 
-### Apple App Store Connect (IN PROGRESS)
+> **Infrastructure is complete.** Lambda, CloudFront signing, Secrets Manager — all live and verified.
+> What remains is Apple/Google store console configuration and app submission.
+
+### Apple App Store Connect (NEEDS VERIFICATION)
 - [x] Subscription group created: "Corpan Premium"
 - [x] `corpan.sub.monthly` created ($15.99/month)
 - [x] `corpan.sub.annual` created ($99.99/year)
 - [x] `corpan.book.fascinating_science_volcanoes` created (non-consumable, $4.99)
-- [ ] All 3 products show "Missing Metadata" — need:
-  - Localization (display name + description) for each
-  - Pricing confirmation for each
-  - Review screenshot for each
-  - Review notes for each
-- [ ] Paid Apps agreement — may need banking + tax setup
+- [x] Product metadata believed complete (localization, pricing, descriptions) — **verify in ASC console**
+- [ ] Paid Apps agreement — may need banking + tax setup — **verify in ASC console**
 - [ ] App Store Server Notifications V2 webhook URL: `https://dzxrs4szm7.execute-api.us-east-2.amazonaws.com/prod/apple-notifications`
-- [ ] Build app v0.11.0 IPA and upload
-- [ ] Attach all 3 products to the version page
+- [ ] Build app v0.11.3 IPA and upload — **in progress on build machine**
+- [ ] **Attach all 3 IAP products to the 0.11.3 version page** — required before submission
 - [ ] Submit for review (Apple reviews app + IAP + subscriptions together)
 - [ ] Apply for Small Business Program (15% commission)
 
-### Google Play Console (NOT STARTED)
-- [ ] Create `corpan.sub.monthly` subscription + base plan + activate
-- [ ] Create `corpan.sub.annual` subscription + base plan + activate
-- [ ] Create `corpan.book.fascinating_science_volcanoes` in-app product + activate
-- [ ] Set up Real-Time Developer Notifications webhook
+### Google Play Console (NEEDS VERIFICATION)
+- [x] Service account JSON in Secrets Manager — verified (Lambda reaches API)
+- [ ] Verify products created and activated: `corpan.sub.monthly`, `corpan.sub.annual`, `corpan.book.*`
+- [ ] Set up Real-Time Developer Notifications webhook: `https://dzxrs4szm7.execute-api.us-east-2.amazonaws.com/prod/google-notifications`
 - [ ] Add license test accounts
 - [ ] Build AAB and upload
 
-### Infrastructure (NOT STARTED)
-- [ ] Generate CloudFront signing key pair (RSA 2048)
-- [ ] Run `terraform apply` with `enable_cdn=true` and `enable_premium_content=true`
-- [ ] Populate Secrets Manager with:
-  - Apple: App Store Connect API key (.p8), key_id, issuer_id
-  - Google: service account JSON
-  - CloudFront: signing private key PEM
-- [ ] Test Lambda with dev bypass token
+### Infrastructure (COMPLETE)
+- [x] Generate CloudFront signing key pair (RSA 2048) — public key ID: `K2RX7CC6JLAZPW`
+- [x] Run `terraform apply` with `enable_cdn=true` and `enable_premium_content=true` — all resources live
+- [x] Populate Secrets Manager (`corpan/content-packs/verify`) with:
+  - [x] Apple: App Store Connect API key (.p8), key_id, issuer_id — verified via Lambda (API responds, not "credentials not configured")
+  - [x] Google: service account JSON — verified via Lambda (API responds with "Invalid Value" for fake token, not "credentials not configured")
+  - [x] CloudFront: signing private key PEM — verified via Lambda dev bypass (returns valid signed URL with real signature)
+- [x] Test Lambda with dev bypass token — confirmed working (returns `status: "verified"` + `signedUrl`)
+
+**Verified 2026-04-18** by hitting the Lambda endpoint:
+- Dev bypass: `POST /verify-purchase` with `x-dev-bypass` header → returns signed CloudFront URL
+- Apple path: reaches Apple API (credentials loaded), fails on fake transaction (expected)
+- Google path: reaches Google API (credentials loaded), fails on fake token (expected)
+
+> **Note**: `terraform.tfstate` is stale (serial 56, 2026-04-16) — it shows empty secret values because the secrets were populated directly in AWS after the last `terraform apply`. Running `terraform plan` may show drift on the secret version resource. This is expected — Secrets Manager values are managed out-of-band from Terraform.
 
 ---
 
@@ -170,3 +175,38 @@
 ## Verify API Endpoint
 - Base: `https://dzxrs4szm7.execute-api.us-east-2.amazonaws.com/prod`
 - Routes: `/verify-purchase`, `/subscription-status`, `/apple-notifications`, `/google-notifications`
+
+## Infrastructure Verification Commands
+
+Test CloudFront signing (dev bypass — returns signed URL if private key is wired):
+```bash
+curl -s -X POST "https://dzxrs4szm7.execute-api.us-east-2.amazonaws.com/prod/verify-purchase" \
+  -H "Content-Type: application/json" \
+  -H "x-dev-bypass: $DEV_BYPASS_TOKEN" \
+  -d '{"platform":"ios","productId":"corpan.book.test","packId":"zheng-yi-sao-ian-en"}' | python3 -m json.tool
+```
+Expected: `"signedUrl": "https://d38iwc9748jekz.cloudfront.net/narrations/premium/..."` with `Key-Pair-Id` and `Signature` params.
+
+Test Apple credentials are loaded (will fail on fake transaction, but error should NOT be "Apple credentials not configured"):
+```bash
+curl -s -X POST "https://dzxrs4szm7.execute-api.us-east-2.amazonaws.com/prod/verify-purchase" \
+  -H "Content-Type: application/json" \
+  -d '{"platform":"ios","productId":"corpan.book.test","transactionId":"fake","receipt":"fake"}' | python3 -m json.tool
+```
+Expected: `"error": "Apple verification failed: ..."` (NOT "Apple credentials not configured").
+
+Test Google credentials are loaded:
+```bash
+curl -s -X POST "https://dzxrs4szm7.execute-api.us-east-2.amazonaws.com/prod/verify-purchase" \
+  -H "Content-Type: application/json" \
+  -d '{"platform":"android","productId":"corpan.book.test","purchaseToken":"fake"}' | python3 -m json.tool
+```
+Expected: `"error": "Google verification failed: Invalid Value"` (NOT "Google credentials not configured").
+
+## Versioning Convention
+
+**Book version** (`manifest.json` `"version"` field): Tracks book content (manuscript, segments). Rarely changes.
+
+**Narration version** (`ttsctl publish --version`): Tracks audio narration artifacts. Bumped on any audio republish (fixed segments, re-mastered audio, voice change). Each language can have its own narration version. Shows up in `catalog.json`.
+
+These are separate version spaces. Never conflate them.

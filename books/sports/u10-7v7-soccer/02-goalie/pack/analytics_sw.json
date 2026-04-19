@@ -1,0 +1,193 @@
+{
+  "book_id": "pack",
+  "language": "sw",
+  "timestamp": "2026-04-19T19:17:43.358186+00:00",
+  "segments_total": 629,
+  "segments_first_pass": 263,
+  "segments_converged_by_retry": 198,
+  "segments_plateau_stopped": 168,
+  "total_retries": 1005,
+  "error_distribution": {},
+  "worst_segments": [
+    {
+      "id": "ch01-012",
+      "attempts": 9,
+      "best_quality_score": 3.2,
+      "best_attempt": 5,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Hakuna mchezaji mwingine kwenye timu yako anayeweza kufanya unachofanya wewe."
+    },
+    {
+      "id": "ch07-494",
+      "attempts": 9,
+      "best_quality_score": 3.44,
+      "best_attempt": 5,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Panga wabeki wako kabla ya kona kiki."
+    },
+    {
+      "id": "ch08-601",
+      "attempts": 9,
+      "best_quality_score": 2.64,
+      "best_attempt": 5,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Ukishafanya mazoezi ya kudaivu, unahisi ujasiri kudaivu mchezo unapoendelea."
+    },
+    {
+      "id": "ch01-044",
+      "attempts": 8,
+      "best_quality_score": 3.04,
+      "best_attempt": 4,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Unapokuwa na mpangilio, wabeki wako wanabaki na mpangilio."
+    },
+    {
+      "id": "ch04-253",
+      "attempts": 8,
+      "best_quality_score": 2.64,
+      "best_attempt": 4,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Umbo la mwili ulio wazi kwa kawaida linamaanisha pasi."
+    },
+    {
+      "id": "ch05-392",
+      "attempts": 8,
+      "best_quality_score": 3.44,
+      "best_attempt": 4,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Mshambuliaji anaweza kuwa anasubiri mpira ulio huru."
+    },
+    {
+      "id": "ch07-511",
+      "attempts": 8,
+      "best_quality_score": 3.0,
+      "best_attempt": 7,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Piga kwa ngumi kuelekea pembeni za uwanja, si katikati tena."
+    },
+    {
+      "id": "ch08-597",
+      "attempts": 8,
+      "best_quality_score": 2.64,
+      "best_attempt": 4,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Kila kunapokuwa na kusimama kwa mchezo, angalia glavu zako."
+    },
+    {
+      "id": "ch08-602",
+      "attempts": 8,
+      "best_quality_score": 2.64,
+      "best_attempt": 4,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Ukishafanya mazoezi ya kushika, unahisi ujasiri kushika mchezo unapoendelea."
+    },
+    {
+      "id": "ch01-075",
+      "attempts": 7,
+      "best_quality_score": 2.64,
+      "best_attempt": 3,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Magolikipa bora wanasherehekea seivu kubwa kama mshambuliaji anavyosherehekea ba"
+    },
+    {
+      "id": "ch02-149",
+      "attempts": 7,
+      "best_quality_score": 3.44,
+      "best_attempt": 3,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Hakikisha wabeki wako wanajua uko nyuma yao."
+    },
+    {
+      "id": "ch02-156",
+      "attempts": 7,
+      "best_quality_score": 2.64,
+      "best_attempt": 3,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Sasa mwambie mchezaji mwenzako asogeze mpira upande wa kushoto."
+    },
+    {
+      "id": "ch04-247",
+      "attempts": 7,
+      "best_quality_score": 3.2,
+      "best_attempt": 3,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Sasa mazoezi yako yanachukua udhibiti."
+    },
+    {
+      "id": "ch04-268",
+      "attempts": 7,
+      "best_quality_score": 12.0,
+      "best_attempt": 3,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Hatua mbili mbele zinaweza kuondoa nusu ya anachokiona mpigaji."
+    },
+    {
+      "id": "ch06-452",
+      "attempts": 7,
+      "best_quality_score": 2.64,
+      "best_attempt": 3,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Chagua lengo lako kabla hujafikia mpira."
+    },
+    {
+      "id": "ch08-563",
+      "attempts": 7,
+      "best_quality_score": 3.44,
+      "best_attempt": 3,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Akili yako inakuweka makini mchezo unapokuwa polepole."
+    },
+    {
+      "id": "ch08-567",
+      "attempts": 7,
+      "best_quality_score": 2.64,
+      "best_attempt": 3,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Bao dhidi yako haimaanishi umefanya kosa."
+    },
+    {
+      "id": "ch08-624",
+      "attempts": 7,
+      "best_quality_score": 3.44,
+      "best_attempt": 3,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Utakuwa na michezo ambapo unafanya seivu kumi."
+    },
+    {
+      "id": "ch01-029",
+      "attempts": 6,
+      "best_quality_score": 2.64,
+      "best_attempt": 2,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Unaona uwanja wote kutoka nafasi yako."
+    },
+    {
+      "id": "ch01-034",
+      "attempts": 6,
+      "best_quality_score": 3.52,
+      "best_attempt": 2,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Mtazamo wako wa uwanja ndio bora zaidi kwenye timu."
+    }
+  ]
+}

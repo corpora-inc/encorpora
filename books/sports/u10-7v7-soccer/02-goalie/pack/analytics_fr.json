@@ -1,0 +1,193 @@
+{
+  "book_id": "pack",
+  "language": "fr",
+  "timestamp": "2026-04-19T20:08:19.150715+00:00",
+  "segments_total": 631,
+  "segments_first_pass": 512,
+  "segments_converged_by_retry": 101,
+  "segments_plateau_stopped": 18,
+  "total_retries": 809,
+  "error_distribution": {},
+  "worst_segments": [
+    {
+      "id": "ch08-604",
+      "attempts": 40,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Parle-toi de facon positive."
+    },
+    {
+      "id": "ch03-184",
+      "attempts": 37,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Considere-toi comme un defenseur supplementaire."
+    },
+    {
+      "id": "ch03-223",
+      "attempts": 37,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Lis le jeu depuis l'arriere."
+    },
+    {
+      "id": "ch08-605",
+      "attempts": 37,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Dis-toi que tu es pret."
+    },
+    {
+      "id": "ch03-188",
+      "attempts": 34,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Ta position avancee rend ca possible."
+    },
+    {
+      "id": "ch08-624",
+      "attempts": 33,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Tu auras des matchs ou tu feras dix arrets."
+    },
+    {
+      "id": "ch05-407",
+      "attempts": 29,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Fais un signe de tete."
+    },
+    {
+      "id": "ch02-149",
+      "attempts": 28,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Assure-toi que tes defenseurs savent que tu es la."
+    },
+    {
+      "id": "ch08-615",
+      "attempts": 27,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "C'est ta reaction a ces moments qui te definit."
+    },
+    {
+      "id": "ch04-300",
+      "attempts": 26,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Force l'attaquant a prendre une decision."
+    },
+    {
+      "id": "ch02-122",
+      "attempts": 24,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Lance un ballon par-dessus a un coequipier plus loin."
+    },
+    {
+      "id": "ch06-441",
+      "attempts": 24,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "L'autre equipe n'est peut-etre pas encore replacee defensivement."
+    },
+    {
+      "id": "ch04-246",
+      "attempts": 22,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Maintenant ta concentration s'aiguise."
+    },
+    {
+      "id": "ch05-347",
+      "attempts": 22,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Pense a amortir le ballon plutot qu'a taper dessus."
+    },
+    {
+      "id": "ch03-211",
+      "attempts": 21,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Dis \"monte\" pour dire a tes defenseurs d'avancer avec l'equipe."
+    },
+    {
+      "id": "ch07-548",
+      "attempts": 20,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Assure-toi que chacun connait son role."
+    },
+    {
+      "id": "ch08-591",
+      "attempts": 20,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Balaie le terrain du regard."
+    },
+    {
+      "id": "ch03-200",
+      "attempts": 19,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Parle a tes defenseurs en permanence."
+    },
+    {
+      "id": "ch05-354",
+      "attempts": 19,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Atterris sur le cote, pas sur le ventre."
+    },
+    {
+      "id": "ch08-592",
+      "attempts": 18,
+      "best_quality_score": null,
+      "best_attempt": null,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Compte les joueurs adverses."
+    }
+  ]
+}

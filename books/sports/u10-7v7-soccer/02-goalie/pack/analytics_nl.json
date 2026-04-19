@@ -1,0 +1,193 @@
+{
+  "book_id": "pack",
+  "language": "nl",
+  "timestamp": "2026-04-19T20:27:32.286503+00:00",
+  "segments_total": 629,
+  "segments_first_pass": 564,
+  "segments_converged_by_retry": 47,
+  "segments_plateau_stopped": 18,
+  "total_retries": 105,
+  "error_distribution": {},
+  "worst_segments": [
+    {
+      "id": "ch06-448",
+      "attempts": 7,
+      "best_quality_score": 12.0,
+      "best_attempt": 3,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Een punt gaat het verst van alle balverdelingsmethoden."
+    },
+    {
+      "id": "ch05-369",
+      "attempts": 6,
+      "best_quality_score": 12.0,
+      "best_attempt": 2,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Zwaai door met je arm."
+    },
+    {
+      "id": "ch02-120",
+      "attempts": 5,
+      "best_quality_score": 1.6,
+      "best_attempt": 1,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Warm ook je worpen op."
+    },
+    {
+      "id": "ch06-425",
+      "attempts": 5,
+      "best_quality_score": 0.0,
+      "best_attempt": 4,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Rol de bal naar een verdediger in de buurt."
+    },
+    {
+      "id": "ch01-018",
+      "attempts": 4,
+      "best_quality_score": 1.6,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Het doel is jouw thuis."
+    },
+    {
+      "id": "ch01-064",
+      "attempts": 4,
+      "best_quality_score": 1.6,
+      "best_attempt": 1,
+      "plateau_count": 2,
+      "final_errors": [],
+      "text_preview": "Jij koos voor het doel."
+    },
+    {
+      "id": "ch02-103",
+      "attempts": 4,
+      "best_quality_score": 12.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Raak elk deel van het doel aan met je opwarmvangballen."
+    },
+    {
+      "id": "ch03-185",
+      "attempts": 4,
+      "best_quality_score": 3.44,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Jij bent de uitkuiser achter de uitkuiser."
+    },
+    {
+      "id": "ch04-263",
+      "attempts": 4,
+      "best_quality_score": 15.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Stel je voor wat de schutter ziet."
+    },
+    {
+      "id": "ch04-268",
+      "attempts": 4,
+      "best_quality_score": 0.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Twee stappen naar voren kunnen de helft wegnemen van wat de schutter ziet."
+    },
+    {
+      "id": "ch04-308",
+      "attempts": 4,
+      "best_quality_score": 3.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Win de bal netjes."
+    },
+    {
+      "id": "ch08-570",
+      "attempts": 4,
+      "best_quality_score": 2.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Schud je handen uit."
+    },
+    {
+      "id": "ch08-619",
+      "attempts": 4,
+      "best_quality_score": 2.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "De stand is krap."
+    },
+    {
+      "id": "ch08-635",
+      "attempts": 4,
+      "best_quality_score": 3.2,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Je praatte met je verdedigers."
+    },
+    {
+      "id": "ch02-097",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Begin eenvoudig en bouw van daaruit op."
+    },
+    {
+      "id": "ch05-359",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Trek de bal naar je borst terwijl je landt."
+    },
+    {
+      "id": "ch05-383",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Sta snel weer op na elke redding."
+    },
+    {
+      "id": "ch07-494",
+      "attempts": 3,
+      "best_quality_score": 0.0,
+      "best_attempt": 2,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Organiseer je verdedigers voor de hoekschop."
+    },
+    {
+      "id": "ch08-564",
+      "attempts": 3,
+      "best_quality_score": 2.64,
+      "best_attempt": 1,
+      "plateau_count": 1,
+      "final_errors": [],
+      "text_preview": "Elke keeper in de geschiedenis heeft doelpunten tegen gekregen."
+    },
+    {
+      "id": "ch01-014",
+      "attempts": 2,
+      "best_quality_score": 0.0,
+      "best_attempt": 1,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Je draagt een shirt met een andere kleur."
+    }
+  ]
+}
