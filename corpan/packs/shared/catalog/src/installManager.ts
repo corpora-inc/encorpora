@@ -62,7 +62,13 @@ async function getSignedDownloadUrl(
     DEFAULT_VERIFY_URL
 
   try {
-    const res = await fetch(new URL("/verify-purchase", verifyUrl).toString(), {
+    // Concat instead of `new URL("/verify-purchase", base)` — the latter
+    // STRIPS the stage path because absolute "/..." replaces the base path.
+    // i.e. `new URL("/verify-purchase", "https://x.com/prod")` →
+    // "https://x.com/verify-purchase" (no /prod). That hits a 404 with no
+    // CORS headers, which WKWebView reports as "Load failed".
+    const fullUrl = verifyUrl.replace(/\/+$/, "") + "/verify-purchase"
+    const res = await fetch(fullUrl, {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify({
