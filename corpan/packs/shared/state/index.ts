@@ -6,3 +6,10 @@ export { createPrefsStore } from "./prefsStore"
 
 export type { DrawerState } from "./drawerStore"
 export { drawerStore } from "./drawerStore"
+
+export {
+  narrationHistoryStore,
+  recordNarrationUse,
+  getRecentNarrations,
+  pruneRecentNarrations,
+} from "./narrationHistoryStore"

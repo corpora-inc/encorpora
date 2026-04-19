@@ -20,6 +20,13 @@ import type { CatalogNarrationEntry } from "./types"
 
 const ENTITLEMENT_KEY = "corpan-entitlements-v1"
 const PURCHASE_RECORDED_EVENT = "corpan:purchase-recorded"
+const SUBSCRIPTION_RECORDED_EVENT = "corpan:subscription-recorded"
+
+/** Canonical subscription product IDs — must match Corpan.storekit. */
+export const SUBSCRIPTION_MONTHLY_ID = "corpan.sub.monthly"
+export const SUBSCRIPTION_ANNUAL_ID = "corpan.sub.annual"
+
+export type SubscriptionPlan = "monthly" | "annual"
 
 type EntitlementSnapshot = {
   subscription?: {
@@ -31,6 +38,15 @@ type EntitlementSnapshot = {
   purchasedProducts?: string[]
   platform?: string | null
   iapAvailable?: boolean
+}
+
+export type StoreProduct = {
+  productId: string
+  title: string
+  description: string
+  price: string
+  currencyCode: string
+  priceMicros?: number
 }
 
 type TauriInternals = {
@@ -97,6 +113,35 @@ function dispatchPurchaseRecorded(productId: string): void {
     )
   } catch (err) {
     console.warn("[purchaseManager] failed to dispatch purchase event", err)
+  }
+}
+
+/** Persist subscription state so the reader still shows "Included" after a reload. */
+function setSubscriptionActive(plan: SubscriptionPlan): void {
+  try {
+    const raw = localStorage.getItem(ENTITLEMENT_KEY)
+    const parsed = raw ? JSON.parse(raw) : { state: {}, version: 0 }
+    const state = (parsed.state ?? {}) as EntitlementSnapshot
+    state.subscription = {
+      active: true,
+      plan,
+      expiresAt: null,
+      autoRenew: true,
+    }
+    parsed.state = state
+    localStorage.setItem(ENTITLEMENT_KEY, JSON.stringify(parsed))
+  } catch (err) {
+    console.warn("[purchaseManager] failed to set subscription active", err)
+  }
+}
+
+function dispatchSubscriptionRecorded(plan: SubscriptionPlan): void {
+  try {
+    window.dispatchEvent(
+      new CustomEvent(SUBSCRIPTION_RECORDED_EVENT, { detail: { plan } })
+    )
+  } catch (err) {
+    console.warn("[purchaseManager] failed to dispatch subscription event", err)
   }
 }
 
@@ -205,5 +250,124 @@ export async function purchaseNarration(
       kind: "error",
       message: err instanceof Error ? err.message : String(err),
     }
+  }
+}
+
+/**
+ * Fetch localized store products (titles, prices, currency) from the platform IAP plugin.
+ * Returns [] if IAP isn't available. Used to render real prices in CTAs.
+ */
+export async function fetchStoreProducts(
+  productIds: string[],
+  productType: "subs" | "inapp" = "inapp"
+): Promise<StoreProduct[]> {
+  const invoke = getInvoke()
+  if (!invoke) return []
+  try {
+    const result = await invoke("plugin:iap|get_products", {
+      payload: { productIds, productType },
+    }) as { products?: StoreProduct[] }
+    return result.products ?? []
+  } catch (err) {
+    console.error("[purchaseManager] fetchStoreProducts failed:", err)
+    return []
+  }
+}
+
+async function runIapPurchase(
+  productId: string,
+  productType: "subs" | "inapp"
+): Promise<PurchaseOutcome | { kind: "raw"; purchase: { id?: string; jwsRepresentation?: string; purchaseToken?: string; originalJson?: string } }> {
+  const invoke = getInvoke()
+  if (!invoke) return { kind: "error", message: "IAP unavailable in this environment" }
+  try {
+    const purchase = await invoke("plugin:iap|purchase", {
+      payload: { productId, productType },
+    }) as {
+      id?: string
+      jwsRepresentation?: string
+      purchaseToken?: string
+      originalJson?: string
+    }
+    return { kind: "raw", purchase }
+  } catch (err) {
+    if (looksLikeCancel(err)) return { kind: "cancelled" }
+    if (looksLikeAlreadyOwned(err)) return { kind: "alreadyOwned" }
+    console.error("[purchaseManager] purchase failed for", productId, err)
+    return {
+      kind: "error",
+      message: err instanceof Error ? err.message : String(err),
+    }
+  }
+}
+
+/**
+ * Buy a book by its product ID (e.g. `corpan.book.fascinating_science_volcanoes`).
+ * A single purchase unlocks every narration of that book.
+ */
+export async function purchaseBookProduct(productId: string): Promise<PurchaseOutcome> {
+  if (!productId) return { kind: "error", message: "Missing product ID" }
+
+  const result = await runIapPurchase(productId, "inapp")
+  if (result.kind !== "raw") {
+    if (result.kind === "alreadyOwned") {
+      appendPurchasedProduct(productId)
+      dispatchPurchaseRecorded(productId)
+    }
+    return result as PurchaseOutcome
+  }
+
+  const platform = platformFromSnapshot()
+  const { purchase } = result
+  const receipt =
+    purchase.jwsRepresentation ?? purchase.purchaseToken ?? purchase.originalJson ?? ""
+  appendPurchasedProduct(productId)
+  dispatchPurchaseRecorded(productId)
+  return {
+    kind: "ok",
+    receipt: {
+      transactionId: purchase.id ?? "",
+      receipt,
+      platform,
+    },
+  }
+}
+
+/**
+ * Buy a subscription (`corpan.sub.monthly` or `corpan.sub.annual`). On success,
+ * marks the subscription active in localStorage and fires a corpan:subscription-recorded
+ * event so the main app's zustand store picks up the change.
+ */
+export async function purchaseSubscriptionProduct(
+  productId: string
+): Promise<PurchaseOutcome> {
+  if (productId !== SUBSCRIPTION_MONTHLY_ID && productId !== SUBSCRIPTION_ANNUAL_ID) {
+    return { kind: "error", message: "Unknown subscription product" }
+  }
+  const plan: SubscriptionPlan =
+    productId === SUBSCRIPTION_ANNUAL_ID ? "annual" : "monthly"
+
+  const result = await runIapPurchase(productId, "subs")
+  if (result.kind !== "raw") {
+    if (result.kind === "alreadyOwned") {
+      setSubscriptionActive(plan)
+      dispatchSubscriptionRecorded(plan)
+    }
+    return result as PurchaseOutcome
+  }
+
+  const platform = platformFromSnapshot()
+  const { purchase } = result
+  const receipt =
+    purchase.jwsRepresentation ?? purchase.purchaseToken ?? purchase.originalJson ?? ""
+  setSubscriptionActive(plan)
+  dispatchSubscriptionRecorded(plan)
+  return {
+    kind: "ok",
+    receipt: {
+      transactionId: purchase.id ?? "",
+      receipt,
+      platform,
+    },
   }
 }
