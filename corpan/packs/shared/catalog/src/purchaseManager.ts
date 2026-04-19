@@ -333,6 +333,107 @@ export async function purchaseBookProduct(productId: string): Promise<PurchaseOu
   }
 }
 
+// -----------------------------------------------------------------------------
+// Receipt restore — for subscribers/owners redeeming access without a fresh buy
+// -----------------------------------------------------------------------------
+
+type RawRestoredPurchase = {
+  id?: string
+  orderId?: string
+  productId?: string
+  jwsRepresentation?: string  // iOS
+  purchaseToken?: string       // Android
+  originalJson?: string        // Android fallback
+}
+
+type RestoreCacheEntry = {
+  purchases: RawRestoredPurchase[]
+  at: number
+}
+const RESTORE_CACHE_TTL_MS = 60_000
+const restoreCache = new Map<"inapp" | "subs", RestoreCacheEntry>()
+
+async function restorePurchasesOfType(
+  productType: "inapp" | "subs"
+): Promise<RawRestoredPurchase[]> {
+  const cached = restoreCache.get(productType)
+  if (cached && Date.now() - cached.at < RESTORE_CACHE_TTL_MS) {
+    return cached.purchases
+  }
+  const invoke = getInvoke()
+  if (!invoke) return []
+  try {
+    const res = await invoke("plugin:iap|restore_purchases", {
+      payload: { productType },
+    }) as { purchases?: RawRestoredPurchase[] }
+    const purchases = res.purchases ?? []
+    restoreCache.set(productType, { purchases, at: Date.now() })
+    return purchases
+  } catch (err) {
+    console.error("[purchaseManager] restore_purchases failed:", productType, err)
+    return []
+  }
+}
+
+function receiptFromRaw(p: RawRestoredPurchase): string {
+  return p.jwsRepresentation ?? p.purchaseToken ?? p.originalJson ?? ""
+}
+
+/**
+ * Find a receipt that authorises downloading this premium narration.
+ *
+ * Preference order:
+ *   1. The book's own non-consumable purchase (if the user bought this book).
+ *   2. Any active subscription (subscriber path).
+ *
+ * Returns null if neither is available — the caller should surface the error.
+ * Results are cached per productType for 60s so rapid-fire downloads don't
+ * hammer StoreKit / Play Billing.
+ */
+export async function resolveReceiptForEntry(
+  entry: CatalogNarrationEntry
+): Promise<NarrationPurchaseReceipt | null> {
+  if (entry.purchase.type !== "iap") return null
+  const platform = platformFromSnapshot()
+  const productId = entry.purchase.productId
+
+  // 1) Book-specific non-consumable
+  if (productId) {
+    const inapp = await restorePurchasesOfType("inapp")
+    const match = inapp.find((p) => p.productId === productId)
+    if (match) {
+      const receipt = receiptFromRaw(match)
+      if (receipt) {
+        return {
+          transactionId: match.id ?? match.orderId ?? "",
+          receipt,
+          platform,
+        }
+      }
+    }
+  }
+
+  // 2) Active subscription fallback
+  const subs = await restorePurchasesOfType("subs")
+  const sub = subs.find(
+    (p) =>
+      p.productId === SUBSCRIPTION_MONTHLY_ID ||
+      p.productId === SUBSCRIPTION_ANNUAL_ID
+  )
+  if (sub) {
+    const receipt = receiptFromRaw(sub)
+    if (receipt) {
+      return {
+        transactionId: sub.id ?? sub.orderId ?? "",
+        receipt,
+        platform,
+      }
+    }
+  }
+
+  return null
+}
+
 /**
  * Buy a subscription (`corpan.sub.monthly` or `corpan.sub.annual`). On success,
  * marks the subscription active in localStorage and fires a corpan:subscription-recorded

@@ -1156,8 +1156,16 @@ export function createAppShell(
     const eyebrow = document.createElement("div")
     eyebrow.className = "catalog-cta-eyebrow"
     eyebrow.textContent =
-      langCount > 1 ? `${langCount} languages` : "Full book"
+      langCount > 1 ? `All ${langCount} languages` : "This book"
     cta.appendChild(eyebrow)
+
+    const blurb = document.createElement("div")
+    blurb.className = "catalog-cta-blurb"
+    blurb.textContent =
+      langCount > 1
+        ? "Every narration, now and future. Yours forever."
+        : "Yours forever."
+    cta.appendChild(blurb)
 
     // Primary: buy this book — price-led, minimal copy.
     const buyBtn = document.createElement("button")
@@ -1178,7 +1186,7 @@ export function createAppShell(
     // the platform store responds; tapping a button works either way.
     const or = document.createElement("div")
     or.className = "catalog-cta-or"
-    or.innerHTML = `<span>or subscribe</span>`
+    or.innerHTML = `<span>or unlock everything</span>`
     cta.appendChild(or)
 
     const subsRow = document.createElement("div")
