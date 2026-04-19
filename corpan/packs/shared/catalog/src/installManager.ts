@@ -15,22 +15,48 @@ function getTauriInvoke(): TauriInternals["invoke"] | null {
   return w.__TAURI_INTERNALS__?.invoke ?? null
 }
 
+/** Outcome of an install attempt. Carries a human-readable error + technical
+ * detail for the failure toast; `ok` callers don't need either. */
+export type InstallResult =
+  | { ok: true }
+  | { ok: false; code: InstallErrorCode; message: string; detail?: string }
+
+export type InstallErrorCode =
+  | "NO_TAURI"
+  | "NO_VERIFY_URL"
+  | "NO_RECEIPT"
+  | "VERIFY_HTTP"
+  | "VERIFY_REJECTED"
+  | "SIGNED_URL_MISSING"
+  | "VERIFY_NETWORK"
+  | "DOWNLOAD_FAILED"
+
+type SignedUrlResult =
+  | { url: string }
+  | { url: null; code: Exclude<InstallErrorCode, "NO_TAURI" | "NO_RECEIPT" | "DOWNLOAD_FAILED">; message: string; detail?: string }
+
 /**
  * Request a signed download URL for premium content from the backend.
- * Returns the signed URL on success, or null if verification fails.
+ * On success returns the URL. On failure returns a structured reason so the
+ * caller can surface it to the user.
  */
 async function getSignedDownloadUrl(
   entry: CatalogNarrationEntry,
   transactionId: string,
   receipt: string,
   platform: string
-): Promise<string | null> {
+): Promise<SignedUrlResult> {
   const verifyUrl = (typeof import.meta !== "undefined" &&
     import.meta.env?.VITE_GAME_VERIFY_URL) as string | undefined
 
   if (!verifyUrl) {
     console.warn("[reader-catalog] No verify URL configured for premium content")
-    return null
+    return {
+      url: null,
+      code: "NO_VERIFY_URL",
+      message: "Backend not configured for this build",
+      detail: "VITE_GAME_VERIFY_URL was not set at pack build time",
+    }
   }
 
   try {
@@ -46,14 +72,64 @@ async function getSignedDownloadUrl(
       }),
     })
 
-    if (!res.ok) return null
+    const bodyText = await res.text()
+    if (!res.ok) {
+      console.error("[reader-catalog] verify-purchase HTTP", res.status, bodyText)
+      return {
+        url: null,
+        code: "VERIFY_HTTP",
+        message: "Backend couldn't verify your purchase",
+        detail: `HTTP ${res.status}: ${truncate(bodyText, 300)}`,
+      }
+    }
 
-    const data = (await res.json()) as { status: string; signedUrl?: string }
-    return data.status === "verified" ? (data.signedUrl ?? null) : null
+    let data: { status?: string; signedUrl?: string; error?: string } = {}
+    try {
+      data = JSON.parse(bodyText)
+    } catch {
+      return {
+        url: null,
+        code: "VERIFY_REJECTED",
+        message: "Backend returned an unreadable response",
+        detail: truncate(bodyText, 300),
+      }
+    }
+
+    if (data.status !== "verified") {
+      console.error("[reader-catalog] verify-purchase status", data.status, data.error)
+      return {
+        url: null,
+        code: "VERIFY_REJECTED",
+        message: "Backend rejected this receipt",
+        detail: data.error ?? `status: ${data.status ?? "(missing)"}`,
+      }
+    }
+
+    if (!data.signedUrl) {
+      console.error("[reader-catalog] verify-purchase verified but missing signedUrl")
+      return {
+        url: null,
+        code: "SIGNED_URL_MISSING",
+        message: "Backend verified you but can't issue a download URL",
+        detail: "signedUrl missing from verified response (likely CloudFront signing key not configured in Lambda)",
+      }
+    }
+
+    return { url: data.signedUrl }
   } catch (err) {
+    const msg = err instanceof Error ? err.message : String(err)
     console.error("[reader-catalog] Signed URL request failed:", err)
-    return null
+    return {
+      url: null,
+      code: "VERIFY_NETWORK",
+      message: "Couldn't reach the purchase-verify backend",
+      detail: msg,
+    }
   }
+}
+
+function truncate(s: string, n: number): string {
+  return s.length > n ? s.slice(0, n) + "…" : s
 }
 
 /**
@@ -63,7 +139,10 @@ async function getSignedDownloadUrl(
  * from the backend before downloading. The signed URL replaces the catalog's
  * downloadUrl for the actual download.
  *
- * In browser dev mode (no Tauri), logs a message and does nothing.
+ * In browser dev mode (no Tauri), logs a message and returns a NO_TAURI result.
+ *
+ * Returns a structured result so callers can surface the failure reason to
+ * the user. Old `boolean` callers can check `.ok`.
  */
 export async function installNarration(
   entry: CatalogNarrationEntry,
@@ -72,11 +151,15 @@ export async function installNarration(
     receipt: string
     platform: string
   }
-): Promise<boolean> {
+): Promise<InstallResult> {
   const invoke = getTauriInvoke()
   if (!invoke) {
     console.log("[reader-catalog] No Tauri runtime — skipping install for", entry.id)
-    return false
+    return {
+      ok: false,
+      code: "NO_TAURI",
+      message: "Downloads aren't available in this environment",
+    }
   }
 
   let downloadUrl = entry.downloadUrl
@@ -91,7 +174,12 @@ export async function installNarration(
       const restored = await resolveReceiptForEntry(entry)
       if (!restored) {
         console.error("[reader-catalog] Premium pack requires purchase info:", entry.id)
-        return false
+        return {
+          ok: false,
+          code: "NO_RECEIPT",
+          message: "We couldn't find your subscription or purchase receipt",
+          detail: "plugin:iap|restore_purchases returned nothing usable for inapp or subs. Try Restore Purchases in the main app.",
+        }
       }
       resolvedInfo = {
         transactionId: restored.transactionId,
@@ -100,19 +188,18 @@ export async function installNarration(
       }
     }
 
-    const signedUrl = await getSignedDownloadUrl(
+    const signed = await getSignedDownloadUrl(
       entry,
       resolvedInfo.transactionId,
       resolvedInfo.receipt,
       resolvedInfo.platform
     )
 
-    if (!signedUrl) {
-      console.error("[reader-catalog] Failed to get signed URL for premium pack:", entry.id)
-      return false
+    if (!signed.url) {
+      return { ok: false, code: signed.code, message: signed.message, detail: signed.detail }
     }
 
-    downloadUrl = signedUrl
+    downloadUrl = signed.url
   }
 
   try {
@@ -122,10 +209,16 @@ export async function installNarration(
       expectedSha256: entry.sha256 || null,
     })
     addInstalled(entry)
-    return true
+    return { ok: true }
   } catch (err) {
+    const msg = err instanceof Error ? err.message : String(err)
     console.error("[reader-catalog] Install failed:", entry.id, err)
-    return false
+    return {
+      ok: false,
+      code: "DOWNLOAD_FAILED",
+      message: "Download or install failed",
+      detail: msg,
+    }
   }
 }
 
