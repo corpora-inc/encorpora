@@ -215,6 +215,21 @@ async function verifyGoogle(body, secrets) {
         console.log(`[google] Subscription in grace period: orderId=${sub.orderId}, expired=${new Date(expiryMs).toISOString()}, paymentState=${sub.paymentState}`);
       }
 
+      // Acknowledge subscription if not yet acknowledged — Google auto-refunds
+      // unacknowledged purchases after 3 days.
+      if (sub.paymentState !== undefined && sub.acknowledgementState !== 1) {
+        try {
+          await androidPublisher.purchases.subscriptions.acknowledge({
+            packageName,
+            subscriptionId: productId,
+            token: purchaseToken,
+          });
+          console.log(`[google] Acknowledged subscription: ${productId}, order=${sub.orderId}`);
+        } catch (ackErr) {
+          console.warn(`[google] Acknowledge sub failed (non-fatal): ${ackErr.message}`);
+        }
+      }
+
       return {
         verified: sub.paymentState !== undefined,
         transactionId: sub.orderId,
@@ -224,6 +239,7 @@ async function verifyGoogle(body, secrets) {
         inGracePeriod: inGrace,
         expiresAt: expiryMs ? new Date(expiryMs).toISOString() : null,
         autoRenewing: sub.autoRenewing || false,
+        acknowledged: true,
       };
     } else {
       // One-time product verification
@@ -237,13 +253,29 @@ async function verifyGoogle(body, secrets) {
       // purchaseState: 0 = purchased, 1 = canceled, 2 = pending
       const verified = purchase.purchaseState === 0;
 
+      // Acknowledge if not yet acknowledged — Google auto-refunds
+      // unacknowledged purchases after 3 days. Client should also
+      // acknowledge, but server-side is the safety net.
+      if (verified && purchase.acknowledgementState !== 1) {
+        try {
+          await androidPublisher.purchases.products.acknowledge({
+            packageName,
+            productId,
+            token: purchaseToken,
+          });
+          console.log(`[google] Acknowledged product: ${productId}, order=${purchase.orderId}`);
+        } catch (ackErr) {
+          console.warn(`[google] Acknowledge failed (non-fatal): ${ackErr.message}`);
+        }
+      }
+
       return {
         verified,
         transactionId: purchase.orderId,
         productId,
         isSubscription: false,
         subscriptionActive: false,
-        acknowledged: purchase.acknowledgementState === 1,
+        acknowledged: true,
       };
     }
   } catch (err) {
