@@ -506,6 +506,24 @@ export async function refreshEntitlements(): Promise<void> {
     }
   }
 
+  // Restore one-time book purchases. Without this, a user who reinstalled
+  // (or restored their device) wouldn't see their owned books on first launch
+  // and would be shown a Buy button on a book they already paid for.
+  // Acknowledges any unacknowledged Android purchases as a side effect of
+  // restorePurchases() returning them — the reader pack flow does this
+  // explicitly post-purchase, but legacy purchases without ack are picked up
+  // here on launch.
+  try {
+    const restored = await restorePurchases()
+    for (const r of restored) {
+      if (r.productId.startsWith("corpan.book.")) {
+        store.addPurchasedProduct(r.productId)
+      }
+    }
+  } catch (err) {
+    console.warn("[purchase] restore inside refreshEntitlements failed:", err)
+  }
+
   store.setLastRefreshed(Date.now())
 }
 

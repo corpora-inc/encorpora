@@ -256,21 +256,62 @@ export async function purchaseNarration(
 /**
  * Fetch localized store products (titles, prices, currency) from the platform IAP plugin.
  * Returns [] if IAP isn't available. Used to render real prices in CTAs.
+ *
+ * Cached in-memory for 5 minutes per (productType + sortedIds) key so the
+ * book-CTA price + every catalog card don't each hit StoreKit / Play Billing
+ * on every render. Mirrors the existing `restoreCache` pattern below.
  */
+type ProductCacheEntry = { products: StoreProduct[]; at: number }
+const PRODUCT_CACHE_TTL_MS = 5 * 60_000
+const productCache = new Map<string, ProductCacheEntry>()
+
+function productCacheKey(productType: "subs" | "inapp", productIds: string[]): string {
+  return productType + ":" + [...productIds].sort().join(",")
+}
+
 export async function fetchStoreProducts(
   productIds: string[],
   productType: "subs" | "inapp" = "inapp"
 ): Promise<StoreProduct[]> {
   const invoke = getInvoke()
   if (!invoke) return []
+  if (productIds.length === 0) return []
+
+  const key = productCacheKey(productType, productIds)
+  const cached = productCache.get(key)
+  if (cached && Date.now() - cached.at < PRODUCT_CACHE_TTL_MS) {
+    return cached.products
+  }
+
   try {
     const result = await invoke("plugin:iap|get_products", {
       payload: { productIds, productType },
     }) as { products?: StoreProduct[] }
-    return result.products ?? []
+    const products = result.products ?? []
+    productCache.set(key, { products, at: Date.now() })
+    return products
   } catch (err) {
     console.error("[purchaseManager] fetchStoreProducts failed:", err)
     return []
+  }
+}
+
+/**
+ * Acknowledge an Android Play Billing purchase. No-op on iOS (StoreKit
+ * auto-finalizes on `purchase()` resolve). Failure is non-fatal — Google
+ * lets us retry on next restore. Without this call, Google auto-refunds
+ * in-app and subscription purchases after 3 days.
+ */
+async function acknowledgeAndroidPurchase(receipt: string): Promise<void> {
+  if (!receipt) return
+  const invoke = getInvoke()
+  if (!invoke) return
+  try {
+    await invoke("plugin:iap|acknowledge_purchase", {
+      payload: { purchaseToken: receipt },
+    })
+  } catch (err) {
+    console.warn("[purchaseManager] acknowledge_purchase failed:", err)
   }
 }
 
@@ -323,6 +364,9 @@ export async function purchaseBookProduct(productId: string): Promise<PurchaseOu
     purchase.jwsRepresentation ?? purchase.purchaseToken ?? purchase.originalJson ?? ""
   appendPurchasedProduct(productId)
   dispatchPurchaseRecorded(productId)
+  if (platform === "android") {
+    await acknowledgeAndroidPurchase(receipt)
+  }
   return {
     kind: "ok",
     receipt: {
@@ -463,6 +507,9 @@ export async function purchaseSubscriptionProduct(
     purchase.jwsRepresentation ?? purchase.purchaseToken ?? purchase.originalJson ?? ""
   setSubscriptionActive(plan)
   dispatchSubscriptionRecorded(plan)
+  if (platform === "android") {
+    await acknowledgeAndroidPurchase(receipt)
+  }
   return {
     kind: "ok",
     receipt: {

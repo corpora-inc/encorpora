@@ -1,0 +1,193 @@
+{
+  "book_id": "book_zheng_yi_sao",
+  "language": "da",
+  "timestamp": "2026-04-20T00:07:08.108350+00:00",
+  "segments_total": 303,
+  "segments_first_pass": 232,
+  "segments_converged_by_retry": 39,
+  "segments_plateau_stopped": 32,
+  "total_retries": 173,
+  "error_distribution": {},
+  "worst_segments": [
+    {
+      "id": "ch03-145",
+      "attempts": 7,
+      "best_quality_score": 12.0,
+      "best_attempt": 3,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Dette system forhindrede de interne stridigheder, der ødelagde de fleste pirator"
+    },
+    {
+      "id": "ch01-033",
+      "attempts": 6,
+      "best_quality_score": 3.04,
+      "best_attempt": 2,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Hele familier boede på små både kaldet sampaner."
+    },
+    {
+      "id": "ch02-065",
+      "attempts": 6,
+      "best_quality_score": 3.52,
+      "best_attempt": 2,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Navnet Zheng Yi Sao betyder simpelthen Zheng Yis hustru."
+    },
+    {
+      "id": "ch02-090",
+      "attempts": 5,
+      "best_quality_score": 5.36,
+      "best_attempt": 1,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Zheng Yi havde en dristig vision."
+    },
+    {
+      "id": "ch02-091",
+      "attempts": 5,
+      "best_quality_score": 10.0,
+      "best_attempt": 1,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Han ønskede at forene de spredte piratflåder i Det Sydkinesiske Hav til en enkel"
+    },
+    {
+      "id": "ch02-105",
+      "attempts": 5,
+      "best_quality_score": 5.6,
+      "best_attempt": 1,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Så, i november 1807, døde Zheng Yi."
+    },
+    {
+      "id": "ch03-129",
+      "attempts": 5,
+      "best_quality_score": 3.2,
+      "best_attempt": 1,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Én efter én indvilligede kaptajnerne i at følge hendes kommando."
+    },
+    {
+      "id": "ch03-158",
+      "attempts": 5,
+      "best_quality_score": 3.44,
+      "best_attempt": 1,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Zheng Yi Sao udnyttede sin fordel ubarmhjertigt."
+    },
+    {
+      "id": "ch03-167",
+      "attempts": 5,
+      "best_quality_score": 0.0,
+      "best_attempt": 4,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Hun undgik direkte konfrontation med de portugisiske krigsskibe."
+    },
+    {
+      "id": "ch04-212",
+      "attempts": 5,
+      "best_quality_score": 3.52,
+      "best_attempt": 1,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Kejserlige embedsmænd skrev ængstelige rapporter om piratdronningens voksende ma"
+    },
+    {
+      "id": "ch05-267",
+      "attempts": 5,
+      "best_quality_score": 4.0,
+      "best_attempt": 1,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Hun bosatte sig i Canton med Zhang Bao."
+    },
+    {
+      "id": "ch01-025",
+      "attempts": 4,
+      "best_quality_score": 4.8,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Qing-kejserne var manchuer, ikke Han-kinesere."
+    },
+    {
+      "id": "ch01-027",
+      "attempts": 4,
+      "best_quality_score": 0.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "I slutningen af 1700-tallet begyndte Qing-dynastiet dog at svækkes."
+    },
+    {
+      "id": "ch01-028",
+      "attempts": 4,
+      "best_quality_score": 0.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Korruption spredte sig gennem det kejserlige bureaukrati."
+    },
+    {
+      "id": "ch01-051",
+      "attempts": 4,
+      "best_quality_score": 2.64,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Smuglernetværk strakte sig langs hele sydkysten."
+    },
+    {
+      "id": "ch01-052",
+      "attempts": 4,
+      "best_quality_score": 2.64,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Dette var den verden, der frembragte Zheng Yi Sao."
+    },
+    {
+      "id": "ch02-063",
+      "attempts": 4,
+      "best_quality_score": 12.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Kvinden, der skulle blive Zheng Yi Sao, blev født omkring 1775."
+    },
+    {
+      "id": "ch02-073",
+      "attempts": 4,
+      "best_quality_score": 4.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Hun lærte handelens og forhandlingens sprog."
+    },
+    {
+      "id": "ch02-083",
+      "attempts": 4,
+      "best_quality_score": 0.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Kvinder i det sene Qing-Kina havde meget få juridiske rettigheder."
+    },
+    {
+      "id": "ch02-094",
+      "attempts": 4,
+      "best_quality_score": 0.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Mellem 1798 og 1805 arbejdede Zheng Yi utrætteligt på at skabe alliancer."
+    }
+  ]
+}
