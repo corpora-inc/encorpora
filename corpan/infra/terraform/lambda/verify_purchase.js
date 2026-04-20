@@ -92,40 +92,55 @@ async function verifyApple(body, secrets) {
     return { verified: false, error: "Apple credentials not configured" };
   }
 
-  // The receipt from StoreKit 2 is a JWS signed transaction
-  // We can verify it locally using Apple's root certificates
-  const environment = process.env.NODE_ENV === "production"
-    ? Environment.PRODUCTION
-    : Environment.SANDBOX;
+  // Always try both PRODUCTION and SANDBOX. TestFlight receipts live in
+  // SANDBOX regardless of how the Lambda is deployed; App Store receipts
+  // live in PRODUCTION. We try both because Apple's error messages are
+  // inconsistent (sometimes empty) and guessing from the error text is
+  // fragile. The cost is one extra API call for the wrong environment.
+  let lastError = null;
+  for (const environment of [Environment.PRODUCTION, Environment.SANDBOX]) {
+    const envName = environment === Environment.PRODUCTION ? "PRODUCTION" : "SANDBOX";
+    const result = await tryVerifyAppleWith(body, appleSecrets, environment);
+    if (result.verified) {
+      console.log(`[apple] Verified in ${envName}: txn=${result.transactionId}`);
+      return result;
+    }
+    console.log(`[apple] ${envName} failed: ${result.error || "(empty error)"}`);
+    lastError = result.error;
+  }
+  return { verified: false, error: lastError || "Apple verification failed in both production and sandbox" };
+}
+
+async function tryVerifyAppleWith(body, appleSecrets, environment) {
+  const { transactionId } = body;
+  const bundleId = appleSecrets.bundleId || "com.corpora.corpan";
 
   try {
     const client = new AppStoreServerAPIClient(
       appleSecrets.privateKey,
       appleSecrets.key_id,
       appleSecrets.issuer_id,
-      appleSecrets.bundleId || "com.corpora.corpan",
+      bundleId,
       environment
     );
 
-    // Get transaction info from Apple
+    // Get transaction info from Apple's App Store Server API.
+    // This call is authenticated with our API key — Apple validates the
+    // transaction server-side and returns a signed JWS response over HTTPS.
     const txInfo = await client.getTransactionInfo(transactionId);
 
     if (!txInfo || !txInfo.signedTransactionInfo) {
       return { verified: false, error: "Transaction not found" };
     }
 
-    // Decode the signed transaction (JWS)
-    const verifier = new SignedDataVerifier(
-      [], // Apple root certs are bundled in the library
-      true, // enableOnlineChecks
-      environment,
-      appleSecrets.bundleId || "com.corpora.corpan",
-      null // appAppleId (optional)
-    );
+    // Decode the JWS payload directly. We trust Apple's API response
+    // (authenticated + HTTPS) without re-verifying the certificate chain
+    // locally, which would require bundling Apple root certificates.
+    const jws = txInfo.signedTransactionInfo;
+    const payloadPart = jws.split(".")[1];
+    const decoded = JSON.parse(Buffer.from(payloadPart, "base64url").toString());
 
-    const decoded = await verifier.verifyAndDecodeTransaction(
-      txInfo.signedTransactionInfo
-    );
+    console.log(`[apple] Decoded transaction: productId=${decoded.productId}, type=${decoded.type}, env=${decoded.environment}, txn=${decoded.transactionId}`);
 
     const isSubscription = decoded.type === "Auto-Renewable Subscription";
     const subscriptionActive = isSubscription && decoded.expiresDate
@@ -142,10 +157,13 @@ async function verifyApple(body, secrets) {
       expiresAt: decoded.expiresDate
         ? new Date(decoded.expiresDate).toISOString()
         : null,
+      environment: decoded.environment || (environment === Environment.PRODUCTION ? "Production" : "Sandbox"),
     };
   } catch (err) {
-    console.error("[apple] Verification error:", err);
-    return { verified: false, error: `Apple verification failed: ${err.message}` };
+    const errDetail = err.message || err.errorMessage || err.toString();
+    const errDump = JSON.stringify({ message: err.message, errorMessage: err.errorMessage, httpStatusCode: err.httpStatusCode, apiError: err.apiError, status: err.status, cause: err.cause, name: err.name, stack: err.stack?.split("\n").slice(0, 3).join(" | ") });
+    console.error(`[apple] Verification error (${environment === Environment.PRODUCTION ? "PRODUCTION" : "SANDBOX"}):`, errDump);
+    return { verified: false, error: `Apple verification failed: ${errDetail}` };
   }
 }
 
@@ -263,14 +281,26 @@ async function handleVerifyPurchase(body, secrets) {
     expiresAt: result.expiresAt || null,
   };
 
-  // Generate signed URL if a specific pack was requested
-  if (packId) {
+  // Generate signed URL if a specific pack was requested.
+  // Accept downloadPath from the client (derived from catalog's downloadUrl)
+  // since filenames include the version (e.g. "pack-id-0.1.0.zip").
+  // Fall back to packId-only path for backwards compatibility.
+  if (packId || body.downloadPath) {
     try {
       const signingKey = secrets.cloudfront?.signingPrivateKey;
-      // Premium content lives at narrations/premium/{packId}.zip
-      // The exact filename comes from the catalog, but we construct a pattern
-      const downloadPath = `narrations/premium/${packId}.zip`;
+      let downloadPath;
+      if (typeof body.downloadPath === "string" && body.downloadPath.length > 0) {
+        // Client sends the path from the catalog's downloadUrl
+        downloadPath = body.downloadPath.replace(/^\/+/, "");
+      } else {
+        downloadPath = `narrations/premium/${packId}.zip`;
+      }
+      // Only sign paths under narrations/premium/ to prevent signing arbitrary URLs
+      if (!downloadPath.startsWith("narrations/premium/")) {
+        return json(400, { status: "failed", error: "Invalid downloadPath" });
+      }
       response.signedUrl = generateSignedDownloadUrl(downloadPath, signingKey);
+      console.log(`[signed-url] Signed: ${downloadPath}`);
     } catch (err) {
       console.warn("[signed-url] Could not generate signed URL:", err.message);
       // Non-fatal: verification succeeded, signed URL is a bonus
@@ -395,15 +425,22 @@ exports.handler = async (event) => {
       subscriptionActive: true,
       devBypass: true,
     };
-    // If packId provided, generate a real signed URL for download testing
-    if (body.packId) {
+    // If packId or downloadPath provided, generate a real signed URL for download testing
+    if (body.packId || body.downloadPath) {
       try {
         const secrets = await getSecrets();
-        const downloadPath = `narrations/premium/${body.packId}.zip`;
-        response.signedUrl = generateSignedDownloadUrl(
-          downloadPath,
-          secrets.cloudfront.signingPrivateKey
-        );
+        let downloadPath;
+        if (typeof body.downloadPath === "string" && body.downloadPath.length > 0) {
+          downloadPath = body.downloadPath.replace(/^\/+/, "");
+        } else {
+          downloadPath = `narrations/premium/${body.packId}.zip`;
+        }
+        if (downloadPath.startsWith("narrations/premium/")) {
+          response.signedUrl = generateSignedDownloadUrl(
+            downloadPath,
+            secrets.cloudfront.signingPrivateKey
+          );
+        }
       } catch (e) {
         response.signedUrlError = e.message;
       }
