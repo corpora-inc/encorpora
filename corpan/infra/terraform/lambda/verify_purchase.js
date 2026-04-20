@@ -202,8 +202,18 @@ async function verifyGoogle(body, secrets) {
       });
 
       const sub = res.data;
-      const expiryMs = parseInt(sub.expiryTimeMillis || "0", 10);
-      const subscriptionActive = expiryMs > Date.now();
+      const expiryMs = parseInt(sub.expiryTimeMillis ?? "0", 10);
+      const now = Date.now();
+      // paymentState===0 means "payment pending" — the grace-period state when
+      // expiryTime has passed but Google is still trying to renew the card.
+      // cancelReason undefined means user didn't actively cancel — just billing.
+      // Without this, Android subscribers in the 3-7 day grace window get denied.
+      const inGrace = expiryMs <= now && sub.paymentState === 0 && !sub.cancelReason;
+      const subscriptionActive = expiryMs > now || inGrace;
+
+      if (inGrace) {
+        console.log(`[google] Subscription in grace period: orderId=${sub.orderId}, expired=${new Date(expiryMs).toISOString()}, paymentState=${sub.paymentState}`);
+      }
 
       return {
         verified: sub.paymentState !== undefined,
@@ -211,6 +221,7 @@ async function verifyGoogle(body, secrets) {
         productId,
         isSubscription: true,
         subscriptionActive,
+        inGracePeriod: inGrace,
         expiresAt: expiryMs ? new Date(expiryMs).toISOString() : null,
         autoRenewing: sub.autoRenewing || false,
       };
