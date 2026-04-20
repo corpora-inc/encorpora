@@ -1,0 +1,193 @@
+{
+  "book_id": "pack",
+  "language": "fi",
+  "timestamp": "2026-04-20T00:44:10.051258+00:00",
+  "segments_total": 565,
+  "segments_first_pass": 396,
+  "segments_converged_by_retry": 102,
+  "segments_plateau_stopped": 67,
+  "total_retries": 350,
+  "error_distribution": {},
+  "worst_segments": [
+    {
+      "id": "ch07-528",
+      "attempts": 8,
+      "best_quality_score": 2.64,
+      "best_attempt": 4,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Tieda tarkalleen, minne asettua jokaisessa aloitustyypissa."
+    },
+    {
+      "id": "ch06-396",
+      "attempts": 6,
+      "best_quality_score": 5.36,
+      "best_attempt": 2,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Joukkuetoverisi eivat nae."
+    },
+    {
+      "id": "ch01-021",
+      "attempts": 5,
+      "best_quality_score": 1.6,
+      "best_attempt": 1,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Naet, minne vaara on rakentumassa."
+    },
+    {
+      "id": "ch04-308",
+      "attempts": 5,
+      "best_quality_score": 3.44,
+      "best_attempt": 1,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Pitka vinottainen syotto, joka loytaa laitapelaajan tilasta."
+    },
+    {
+      "id": "ch05-321",
+      "attempts": 5,
+      "best_quality_score": 0.0,
+      "best_attempt": 4,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Kun joukkueellasi on pallonhallinta, koko muodostelma siirtyy ylospain kentalla."
+    },
+    {
+      "id": "ch05-347",
+      "attempts": 5,
+      "best_quality_score": 2.64,
+      "best_attempt": 1,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Limittaisjuoksu yllattaa vastustajan."
+    },
+    {
+      "id": "ch05-392",
+      "attempts": 5,
+      "best_quality_score": 3.2,
+      "best_attempt": 1,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Luota vaistoihisi ja jatka oppimista."
+    },
+    {
+      "id": "ch06-437",
+      "attempts": 5,
+      "best_quality_score": 3.52,
+      "best_attempt": 1,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Mita aikaisemmin huudat, sita enemman aikaa joukkuetoverillasi on reagoida."
+    },
+    {
+      "id": "ch07-491",
+      "attempts": 5,
+      "best_quality_score": 3.04,
+      "best_attempt": 1,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Syvemmalta tulleissa vapaapotluissa kasittele vapaapotku kuin pitkaa syottoa."
+    },
+    {
+      "id": "ch01-003",
+      "attempts": 4,
+      "best_quality_score": 1.6,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Sina olet joukkueen tarkein kenttapelaaja."
+    },
+    {
+      "id": "ch01-009",
+      "attempts": 4,
+      "best_quality_score": 1.6,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Liberon paikka vaatii alykkaimman pelaajan."
+    },
+    {
+      "id": "ch01-018",
+      "attempts": 4,
+      "best_quality_score": 8.0,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Naet joukkuetoverisi."
+    },
+    {
+      "id": "ch01-022",
+      "attempts": 4,
+      "best_quality_score": 1.6,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Naet, minne mahdollisuus on avautumassa."
+    },
+    {
+      "id": "ch01-036",
+      "attempts": 4,
+      "best_quality_score": 3.2,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Aloitat vastahyokkauksen yhdella loistavalla syotolla."
+    },
+    {
+      "id": "ch01-038",
+      "attempts": 4,
+      "best_quality_score": 0.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Muutat puolustuksen hyokkaykseksi yhdessa hetkessa."
+    },
+    {
+      "id": "ch01-041",
+      "attempts": 4,
+      "best_quality_score": 3.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Puolustat."
+    },
+    {
+      "id": "ch01-042",
+      "attempts": 4,
+      "best_quality_score": 3.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Hyokkaat."
+    },
+    {
+      "id": "ch01-049",
+      "attempts": 4,
+      "best_quality_score": 3.0,
+      "best_attempt": 3,
+      "plateau_count": 0,
+      "final_errors": [],
+      "text_preview": "Kolme hyokkaajaa levittaytyy etulinjaan."
+    },
+    {
+      "id": "ch01-057",
+      "attempts": 4,
+      "best_quality_score": 3.04,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Puolustajasi luottavat siihen, etta kattelet tilan heiden takanaan."
+    },
+    {
+      "id": "ch01-059",
+      "attempts": 4,
+      "best_quality_score": 3.44,
+      "best_attempt": 0,
+      "plateau_count": 3,
+      "final_errors": [],
+      "text_preview": "Valmentajasi luottaa sinuun kentan vaikeimman tyon kanssa."
+    }
+  ]
+}
