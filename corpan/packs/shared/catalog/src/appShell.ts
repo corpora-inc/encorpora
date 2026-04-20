@@ -717,6 +717,11 @@ export function createAppShell(
     const active = getActive()
 
     const seriesGroups = groupBySeries(filtered)
+    // Collect every premium book product ID so we can batch one platform-store
+    // request for all card prices instead of N. Cached for 5 min by purchaseManager.
+    const premiumProductIds = new Set<string>()
+    const cardMetaByProductId = new Map<string, HTMLElement>()
+
     for (const sg of seriesGroups) {
       const sectionTitle = document.createElement("div")
       sectionTitle.className = "command-drawer-section-title"
@@ -750,7 +755,17 @@ export function createAppShell(
         const meta = document.createElement("div")
         meta.className = "catalog-card-meta"
         const firstNarr = book.narrations[0]
+        // Show fallback `priceLabel` (or "Premium"/"Free") immediately; if this
+        // is a paid IAP product, replace with the platform's localized price
+        // once it arrives from the batched fetch below.
         meta.textContent = firstNarr?.purchase?.priceLabel || (firstNarr?.tier === "premium" ? "Premium" : "Free")
+        if (
+          firstNarr?.purchase?.type === "iap" &&
+          firstNarr.purchase.productId
+        ) {
+          premiumProductIds.add(firstNarr.purchase.productId)
+          cardMetaByProductId.set(firstNarr.purchase.productId, meta)
+        }
 
         card.append(title, langs, meta)
 
@@ -763,6 +778,15 @@ export function createAppShell(
       }
 
       results.appendChild(grid)
+    }
+
+    if (premiumProductIds.size > 0) {
+      void fetchStoreProducts([...premiumProductIds], "inapp").then((products) => {
+        for (const p of products) {
+          const meta = cardMetaByProductId.get(p.productId)
+          if (meta && p.price) meta.textContent = p.price
+        }
+      })
     }
   }
 
@@ -1163,7 +1187,12 @@ export function createAppShell(
     bookProductId: string,
     onUnlocked: () => void
   ): HTMLElement {
-    const priceLabel = narrations.find(n => n.purchase.priceLabel)?.purchase.priceLabel ?? ""
+    // Catalog `priceLabel` is a fallback only — the source of truth is the
+    // platform store (StoreKit / Play Billing) which has the locale-correct,
+    // platform-specific price ($3.99 on Play vs $4.99 on App Store, EUR/JPY
+    // for non-US users, etc.). Fetch dynamically and patch the button when
+    // the real price arrives.
+    const fallbackPriceLabel = narrations.find(n => n.purchase.priceLabel)?.purchase.priceLabel ?? ""
     const langCount = new Set(narrations.map(n => n.language)).size
 
     const cta = document.createElement("div")
@@ -1187,8 +1216,12 @@ export function createAppShell(
     const buyBtn = document.createElement("button")
     buyBtn.type = "button"
     buyBtn.className = "catalog-cta-primary"
-    const buyLabel = priceLabel ? `Buy \u2014 ${priceLabel}` : "Buy"
-    buyBtn.innerHTML = `<span class="catalog-cta-primary-label">${buyLabel}</span>`
+    let buyLabel = fallbackPriceLabel ? `Buy \u2014 ${fallbackPriceLabel}` : "Buy"
+    const renderBuyLabel = (label: string) => {
+      buyLabel = label
+      buyBtn.innerHTML = `<span class="catalog-cta-primary-label">${label}</span>`
+    }
+    renderBuyLabel(buyLabel)
     buyBtn.addEventListener("click", async (e) => {
       e.stopPropagation()
       markCtaBusy(buyBtn)
@@ -1196,6 +1229,12 @@ export function createAppShell(
       finishCtaOutcome(buyBtn, buyLabel, outcome, onUnlocked)
     })
     cta.appendChild(buyBtn)
+
+    // Async — replace fallback price with the platform's localized price.
+    void fetchStoreProducts([bookProductId], "inapp").then((products) => {
+      const live = products.find(p => p.productId === bookProductId)
+      if (live?.price) renderBuyLabel(`Buy \u2014 ${live.price}`)
+    })
 
     // Subscription pitch — always rendered when IAP is available (parity with
     // the main app's SubscriptionOffer). Prices populate asynchronously when
