@@ -49,7 +49,6 @@ export type CommandDrawer = {
 }
 
 const SVG_MENU = `<svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>`
-const SVG_CLOSE = `<svg viewBox="0 0 24 24"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>`
 
 export function createCommandDrawer(
   parent: HTMLElement,
@@ -105,14 +104,9 @@ export function createCommandDrawer(
     langContainer.appendChild(opts.languageSwitcher)
   }
 
-  // Close button (mobile only — hidden on desktop via CSS)
-  const closeBtn = document.createElement("button")
-  closeBtn.className = "command-drawer-close"
-  closeBtn.title = "Close"
-  closeBtn.innerHTML = SVG_CLOSE
-  closeBtn.addEventListener("click", () => close())
-
-  sticky.append(closeBtn, nowPlayingEl, langContainer)
+  // No explicit close button — backdrop tap and swipe-down on the handle
+  // are sufficient (and the X never quite fit the top-right anyway).
+  sticky.append(nowPlayingEl, langContainer)
   sheet.appendChild(sticky)
 
   // --- Screen nav tabs ---
