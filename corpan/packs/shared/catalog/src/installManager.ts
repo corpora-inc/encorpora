@@ -68,6 +68,18 @@ async function getSignedDownloadUrl(
     // "https://x.com/verify-purchase" (no /prod). That hits a 404 with no
     // CORS headers, which WKWebView reports as "Load failed".
     const fullUrl = verifyUrl.replace(/\/+$/, "") + "/verify-purchase"
+
+    // Send the actual catalog download path so the Lambda signs the file
+    // that ACTUALLY exists in S3 — its packId-based fallback drops the
+    // `-{version}.zip` suffix and 403s on a missing file. Defensive parse
+    // in case downloadUrl is malformed for any reason.
+    let downloadPath: string | undefined
+    try {
+      downloadPath = new URL(entry.downloadUrl).pathname.replace(/^\/+/, "")
+    } catch {
+      downloadPath = undefined
+    }
+
     const res = await fetch(fullUrl, {
       method: "POST",
       headers: { "content-type": "application/json" },
@@ -76,6 +88,7 @@ async function getSignedDownloadUrl(
         productId: entry.purchase.productId,
         packId: entry.id,
         transactionId,
+        ...(downloadPath ? { downloadPath } : {}),
         ...(platform === "android" ? { purchaseToken: receipt } : { receipt }),
       }),
     })
