@@ -697,6 +697,9 @@
     top: 0;
     bottom: 0;
     width: min(560px, 45vw);
+    /* Override the base `height: 85vh` — on desktop the drawer is a side
+       panel that uses top+bottom for full viewport height. */
+    height: auto;
     max-height: none;
     border-radius: 0;
     transform: translateX(100%);

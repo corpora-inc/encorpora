@@ -48,6 +48,11 @@ export function createAudioEngine(
       ? window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext
       : undefined
 
+  // Short anti-click fade applied on pause / narration-switch / dispose, and
+  // a symmetric fade-in on play. Anything above ~20ms starts feeling like a
+  // fade; 15ms is imperceptible as such but kills the click.
+  const FADE_MS = 15
+
   let ctx: AudioContext | null = null
   let analyser: AnalyserNode | null = null
   let gainNode: GainNode | null = null
@@ -198,7 +203,14 @@ export function createAudioEngine(
     return { index: segIdx, offsetMs }
   }
 
-  function stopSource() {
+  /**
+   * Stop the current source. With `fadeMs > 0` schedules a tiny gain ramp to
+   * near-silence first, then stops the source at the ramp end — kills the
+   * click/pop you'd otherwise get from cutting mid-waveform. Scheduled on the
+   * live AudioContext so dispose() can still return synchronously; the fade
+   * plays out in the background.
+   */
+  function stopSource(fadeMs = 0) {
     if (nextSegmentTimer) {
       clearTimeout(nextSegmentTimer)
       nextSegmentTimer = null
@@ -208,11 +220,36 @@ export function createAudioEngine(
     pendingNextSegmentStartMs = null
     pendingNextSegmentFromCtxTime = null
 
-    if (currentSource) {
-      try { currentSource.stop() } catch (e) { console.warn("[audio] source.stop():", e) }
-      try { currentSource.disconnect() } catch (e) { console.warn("[audio] source.disconnect():", e) }
-      currentSource = null
+    if (!currentSource) return
+    const source = currentSource
+    currentSource = null  // release the reference immediately so callers see "not playing"
+
+    if (fadeMs > 0 && ctx && gainNode) {
+      const now = ctx.currentTime
+      const end = now + fadeMs / 1000
+      try {
+        gainNode.gain.cancelScheduledValues(now)
+        // Pin the current value so the ramp starts from wherever we actually are.
+        gainNode.gain.setValueAtTime(gainNode.gain.value, now)
+        // linearRampToValueAtTime requires a non-zero target.
+        gainNode.gain.linearRampToValueAtTime(0.0001, end)
+        source.stop(end)
+        // Don't disconnect yet — disconnect would cut the source off from the
+        // graph before the ramp finishes. Let the source play through to `end`,
+        // then detach it. setTimeout uses ms, Web Audio uses seconds.
+        setTimeout(() => {
+          try { source.disconnect() } catch { /* already gone */ }
+        }, fadeMs + 5)
+      } catch (e) {
+        console.warn("[audio] fade-stop failed, hard-stopping:", e)
+        try { source.stop() } catch { /* already stopped */ }
+        try { source.disconnect() } catch { /* already disconnected */ }
+      }
+      return
     }
+
+    try { source.stop() } catch (e) { console.warn("[audio] source.stop():", e) }
+    try { source.disconnect() } catch (e) { console.warn("[audio] source.disconnect():", e) }
   }
 
   /**
@@ -440,6 +477,18 @@ export function createAudioEngine(
         void context.resume()
       }
 
+      // Symmetric fade-in to match the out-fade in stopSource — avoids the
+      // click on resume/narration-switch that would otherwise pair with the
+      // fade-out click we just eliminated.
+      if (context && gainNode) {
+        const now = context.currentTime
+        try {
+          gainNode.gain.cancelScheduledValues(now)
+          gainNode.gain.setValueAtTime(0.0001, now)
+          gainNode.gain.linearRampToValueAtTime(1.0, now + FADE_MS / 1000)
+        } catch (e) { console.warn("[audio] fade-in failed:", e) }
+      }
+
       playing = true
       playSegment(currentSegmentIndex, segmentPlaybackOffset)
     },
@@ -456,8 +505,9 @@ export function createAudioEngine(
 
       // Stop source but keep context running — WebKit drops the
       // Now Playing widget if the context is suspended.
+      // 15ms fade kills the click pause used to make on some waveforms.
       playbackGeneration++
-      stopSource()
+      stopSource(FADE_MS)
     },
 
     stop: () => {
@@ -665,9 +715,17 @@ export function createAudioEngine(
         nextSegmentTimer = null
       }
       waitingForNextSegment = false
-      stopSource()
-      if (ctx) {
-        void ctx.close().catch((e) => { console.warn("[audio] dispose ctx.close():", e) })
+
+      // Fade before stop so switching narrations (which disposes the old
+      // engine) doesn't click. Context close is deferred until the ramp
+      // completes — closing too early kills the scheduled gain ramp and
+      // we're back to a hard stop.
+      const closingCtx = ctx
+      stopSource(FADE_MS)
+      if (closingCtx) {
+        setTimeout(() => {
+          closingCtx.close().catch((e) => { console.warn("[audio] dispose ctx.close():", e) })
+        }, FADE_MS + 20)
       }
       ctx = null
       analyser = null
