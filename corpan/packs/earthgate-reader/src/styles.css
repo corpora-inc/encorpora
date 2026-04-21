@@ -13,6 +13,11 @@
   --eg-accent: #8b6914;
   --eg-muted: #a89279;
 
+  /* Keeps the paragraph's centered short content and auto-scrolled current
+     word above the transport's SOLID controls zone. Less than the transport's
+     full height so text can flow behind the translucent top gradient. */
+  --eg-transport-clearance: 130px;
+
   /* Catalog browser theme — warm/serif */
   --catalog-bg: rgba(245, 240, 232, 0.97);
   --catalog-surface: rgba(235, 225, 210, 0.9);
@@ -51,29 +56,28 @@ body {
   -webkit-user-select: none;
   background: var(--eg-bg);
   overflow: hidden;
-  display: flex;
-  flex-direction: column;
 }
 
-/* --- UI overlay --- */
+/* --- UI overlay ---
+   Paragraph and transport are absolutely positioned siblings so the transport
+   can float above the paragraph. Text in the paragraph can scroll freely
+   through the transport's translucent fade zone — no dead padding band. */
 
 .earthgate-ui {
-  position: relative;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
+  position: absolute;
+  inset: 0;
 }
 
 /* --- Paragraph view --- */
 
 .earthgate-paragraph {
-  flex: 1;
+  position: absolute;
+  inset: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: stretch;
-  padding: calc(72px + var(--safe-top)) calc(24px + var(--safe-right)) 40px calc(24px + var(--safe-left));
+  padding: calc(72px + var(--safe-top)) calc(24px + var(--safe-right)) var(--eg-transport-clearance) calc(24px + var(--safe-left));
   color: var(--eg-text);
   overflow: hidden;
   min-height: 0;
@@ -91,6 +95,11 @@ body {
   align-items: center;
   width: 100%;
   min-height: 0;
+  /* scrollIntoView(block:"center") respects this: keeps auto-scrolled current
+     word above the transport's solid-controls zone while letting surrounding
+     text flow down through the gradient fade. */
+  scroll-padding-bottom: var(--eg-transport-clearance);
+  scroll-padding-top: 20px;
 }
 
 .earthgate-paragraph-inner {
@@ -118,27 +127,32 @@ body {
 /* --- Transport bar --- */
 
 .earthgate-transport {
-  position: relative;
+  position: absolute;
   left: 0;
   right: 0;
   bottom: 0;
-  flex-shrink: 0;
-  padding: 12px 16px calc(12px + var(--safe-bottom)) 16px;
+  padding: 10px 16px calc(12px + var(--safe-bottom)) 16px;
   background: linear-gradient(
     to top,
     rgba(245, 240, 232, 0.96) 0%,
     rgba(245, 240, 232, 0.85) 60%,
-    rgba(245, 240, 232, 0.7) 100%
+    rgba(245, 240, 232, 0) 100%
   );
-  border-top: 1px solid rgba(107, 76, 42, 0.15);
   z-index: 20;
+  /* Fade zone is pass-through so the user can swipe text flowing through it.
+     Interactive children (pills, scrub, buttons) get pointer-events:auto. */
+  pointer-events: none;
+}
+
+.earthgate-transport > * {
+  pointer-events: auto;
 }
 
 .earthgate-transport-top {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 8px;
+  margin-bottom: 0;
   padding: 0 4px;
 }
 
@@ -152,7 +166,7 @@ body {
   align-items: center;
   cursor: pointer;
   touch-action: none;
-  margin-bottom: 6px;
+  margin-bottom: 0;
 }
 
 .earthgate-scrub-track {
@@ -366,11 +380,118 @@ body {
   }
 
   .earthgate-paragraph {
-    padding: calc(64px + var(--safe-top)) calc(16px + var(--safe-right)) 16px calc(16px + var(--safe-left));
+    padding: calc(64px + var(--safe-top)) calc(16px + var(--safe-right)) var(--eg-transport-clearance) calc(16px + var(--safe-left));
   }
 
   .earthgate-paragraph-inner {
     font-size: 24px;
   }
 
+}
+
+/* --- Responsive: short / landscape viewport ---
+   Transport controls shrink for cramped heights; paragraph font stays the
+   same. Clearance is reduced to match the compacted transport. */
+
+@media (max-height: 520px) {
+  :root {
+    --eg-transport-clearance: 90px;
+  }
+
+  .earthgate-paragraph {
+    padding-top: calc(56px + var(--safe-top));
+  }
+
+  .earthgate-paragraph-inner {
+    font-size: 24px;
+    line-height: 1.55;
+  }
+
+  .earthgate-transport {
+    padding: 6px 14px calc(6px + var(--safe-bottom)) 14px;
+  }
+
+  .earthgate-transport-top {
+    margin-bottom: 2px;
+  }
+
+  .earthgate-scrub {
+    height: 32px;
+    margin-bottom: 0;
+  }
+
+  .earthgate-transport-controls {
+    gap: 10px;
+  }
+
+  .earthgate-transport-btn {
+    width: 34px;
+    height: 34px;
+    font-size: 13px;
+  }
+
+  .earthgate-play-btn {
+    width: 42px;
+    height: 42px;
+    font-size: 17px;
+  }
+
+  .earthgate-chapter {
+    font-size: 11px;
+    max-width: 50vw;
+  }
+
+  .earthgate-time {
+    font-size: 11px;
+  }
+
+  .earthgate-skip-btn {
+    font-size: 10px;
+  }
+
+  .earthgate-chapter-overlay {
+    font-size: 16px;
+    padding: 6px 14px;
+    top: calc(8px + var(--safe-top));
+  }
+}
+
+/* Very short viewports (tiny resized windows, small landscape phones). */
+@media (max-height: 380px) {
+  :root {
+    --eg-transport-clearance: 70px;
+  }
+
+  .earthgate-paragraph {
+    padding-top: calc(48px + var(--safe-top));
+  }
+
+  .earthgate-paragraph-inner {
+    font-size: 20px;
+    line-height: 1.4;
+  }
+
+  .earthgate-transport {
+    padding: 4px 10px calc(4px + var(--safe-bottom)) 10px;
+  }
+
+  .earthgate-scrub {
+    height: 26px;
+  }
+
+  .earthgate-transport-btn {
+    width: 30px;
+    height: 30px;
+    font-size: 12px;
+  }
+
+  .earthgate-play-btn {
+    width: 36px;
+    height: 36px;
+    font-size: 14px;
+  }
+
+  .earthgate-transport-controls {
+    gap: 8px;
+  }
 }
