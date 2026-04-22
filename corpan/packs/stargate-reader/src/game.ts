@@ -158,6 +158,12 @@ export function createStargateReader(
   let backgroundedAt = 0        // wall-clock ms when app went to background
   let backgroundedAudioMs = 0   // audio position ms when app went to background
 
+  // True if the app has been in the hidden+paused state since the last play.
+  // On iOS, AVAudioSession can silently deactivate in this state — next doPlay
+  // will do a pre-emptive session rebuild (recoverContext can't detect this
+  // because the JS AudioContext still reports "running").
+  let audioSessionMayBeStale = false
+
   // --- Background timer management ---
   function startBackgroundTimers() {
     if (!bgNowPlayingTimer) {
@@ -259,6 +265,23 @@ export function createStargateReader(
       const canceled = staleSuperseded || !desiredPlaying || disposed
       return { canceled, staleSuperseded }
     }
+
+    // Pre-emptive session rebuild: iOS may have silently killed AVAudioSession
+    // during a paused-hidden interval. recoverContext() can't detect this
+    // (JS context still reports "running"), so tear everything down and rebuild
+    // before the normal play path. See audioSessionMayBeStale declaration.
+    if (audioSessionMayBeStale) {
+      console.log("[SR:stale] pre-emptive audio session rebuild")
+      audioSessionMayBeStale = false
+      try { await stopNativeKeepAlive() } catch (e) { console.warn("[SR:stale] stopNativeKeepAlive:", e) }
+      nativeSessionActive = false
+      nativePlaybackStateHint = "unknown"
+      mediaAnchor?.dispose()
+      mediaAnchor = null
+      try { await audioEngine.recreateContext() } catch (e) { console.error("[SR:stale] recreateContext:", e) }
+      if (shouldCancelPlayRequest().canceled) return
+    }
+
     const engineAlreadyPlaying = audioEngine.isPlaying()
     if (engineAlreadyPlaying) {
       isPlaying = true
@@ -415,6 +438,12 @@ export function createStargateReader(
   function doPause() {
     desiredPlaying = false
     playRequestSeq += 1
+    // Pausing while the app is hidden (e.g. lock-screen pause routed through
+    // listenForRemoteCommands) means iOS may now quietly kill the audio
+    // session — flag for pre-emptive rebuild on the next play.
+    if (document.hidden) {
+      audioSessionMayBeStale = true
+    }
     if (!audioEngine) return
     const requestId = playRequestSeq
     tracePlayback("doPause:start", { requestId }, true)
@@ -1090,6 +1119,9 @@ export function createStargateReader(
       // Keep AudioContext alive and sync now-playing in background
       if (audioEngine && isPlaying) {
         startBackgroundTimers()
+      }
+      if (!desiredPlaying) {
+        audioSessionMayBeStale = true
       }
     } else {
       console.log(`[SR:vis] visible (isPlaying=${isPlaying})`)

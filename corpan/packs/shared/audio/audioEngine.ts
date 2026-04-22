@@ -23,6 +23,11 @@ export type AudioEngine = {
   getFrequencyData: () => Uint8Array
   /** Recover AudioContext after background suspension. Returns true if running. */
   recoverContext: () => Promise<boolean>
+  /** Force close the AudioContext and create a fresh one. Use when the engine
+   *  believes it's running but the OS audio session is dead (iOS deactivates
+   *  AVAudioSession after idle lock-screen with paused playback — `recoverContext`
+   *  can't detect this because the JS context still reports "running"). */
+  recreateContext: () => Promise<boolean>
   getContextState: () => string
   dispose: () => void
 }
@@ -122,6 +127,48 @@ export function createAudioEngine(
       analyser.connect(ctx.destination)
     }
     return ctx
+  }
+
+  // Close the given AudioContext, clear all context-bound state, then create a
+  // fresh one and unlock it with the silent-buffer trick. Shared between
+  // recoverContext() (on resume failure) and recreateContext() (always).
+  async function closeAndRecreateCtx(deadCtx: AudioContext): Promise<boolean> {
+    try { await deadCtx.close() } catch (e) { console.warn("[audio] context.close():", e) }
+    ctx = null
+    analyser = null
+    gainNode = null
+    // Invalidate stale source/state from dead context
+    outputLatencyLoggedOnce = false
+    currentSource = null
+
+    waitingForNextSegment = false
+    waitingOwnerGeneration = null
+    pendingNextSegmentStartMs = null
+    pendingNextSegmentFromCtxTime = null
+    if (nextSegmentTimer) {
+      clearTimeout(nextSegmentTimer)
+      nextSegmentTimer = null
+    }
+    bufferCache.clear()
+    loadingPromises.clear()
+    contextUnlocked = false
+
+    const newCtx = ensureContext()
+    if (!newCtx) return false
+
+    // Play silent buffer to unlock the new context on iOS
+    const buf = newCtx.createBuffer(1, 1, 22050)
+    const src = newCtx.createBufferSource()
+    src.buffer = buf
+    src.connect(newCtx.destination)
+    src.start(0)
+    contextUnlocked = true
+
+    if (newCtx.state === "suspended") {
+      try { await newCtx.resume() } catch (e) { console.warn("[audio] new context resume:", e) }
+    }
+
+    return newCtx.state === "running"
   }
 
   async function loadBuffer(segmentId: string): Promise<AudioBuffer | null> {
@@ -663,42 +710,14 @@ export function createAudioEngine(
       }
 
       // Context is dead — close it and create a fresh one
-      try { await context.close() } catch (e) { console.warn("[audio] context.close():", e) }
-      ctx = null
-      analyser = null
-      gainNode = null
-      // Invalidate stale source/state from dead context
-      outputLatencyLoggedOnce = false
-      currentSource = null
+      return closeAndRecreateCtx(context)
+    },
 
-      waitingForNextSegment = false
-      waitingOwnerGeneration = null
-      pendingNextSegmentStartMs = null
-      pendingNextSegmentFromCtxTime = null
-      if (nextSegmentTimer) {
-        clearTimeout(nextSegmentTimer)
-        nextSegmentTimer = null
-      }
-      bufferCache.clear()
-      loadingPromises.clear()
-      contextUnlocked = false
-
-      const newCtx = ensureContext()
-      if (!newCtx) return false
-
-      // Play silent buffer to unlock the new context on iOS
-      const buf = newCtx.createBuffer(1, 1, 22050)
-      const src = newCtx.createBufferSource()
-      src.buffer = buf
-      src.connect(newCtx.destination)
-      src.start(0)
-      contextUnlocked = true
-
-      if (newCtx.state === "suspended") {
-        try { await newCtx.resume() } catch (e) { console.warn("[audio] new context resume:", e) }
-      }
-
-      return newCtx.state === "running"
+    recreateContext: async (): Promise<boolean> => {
+      if (!AudioCtx) return false
+      const context = ensureContext()
+      if (!context) return false
+      return closeAndRecreateCtx(context)
     },
 
     getContextState: (): string => {

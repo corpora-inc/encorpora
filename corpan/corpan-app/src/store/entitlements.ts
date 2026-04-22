@@ -25,6 +25,7 @@ type EntitlementState = {
   // Actions
   addPurchasedProduct: (productId: string) => void
   setSubscription: (sub: SubscriptionState) => void
+  clearSubscription: () => void
   setLastRefreshed: (ts: number) => void
   setPlatform: (platform: string) => void
 
@@ -37,11 +38,34 @@ type EntitlementState = {
 
 const IAP_PLATFORMS = new Set(["ios", "android", "macos", "windows"])
 
-const EMPTY_SUBSCRIPTION: SubscriptionState = {
+export const EMPTY_SUBSCRIPTION: SubscriptionState = {
   active: false,
   plan: null,
   expiresAt: null,
   autoRenew: false,
+}
+
+/**
+ * 60s clock-skew tolerance when comparing `expiresAt` to local time — device
+ * clocks drift, and sandbox StoreKit sometimes returns expiries a few seconds
+ * in the past.
+ */
+const SUBSCRIPTION_CLOCK_SKEW_MS = 60_000
+
+/**
+ * Expiry-aware check — `active: true` alone is not enough; the `expiresAt`
+ * timestamp must be in the future (or null, for just-purchased state awaiting
+ * backend confirmation).
+ *
+ * Use this everywhere UI branches on "is the user currently subscribed" so we
+ * never leave the paywall hidden past a sandbox expiry.
+ */
+export function isSubscriptionCurrentlyActive(sub: SubscriptionState): boolean {
+  if (!sub.active) return false
+  if (!sub.expiresAt) return true
+  const expiryMs = Date.parse(sub.expiresAt)
+  if (Number.isNaN(expiryMs)) return true
+  return Date.now() < expiryMs + SUBSCRIPTION_CLOCK_SKEW_MS
 }
 
 export const useEntitlementStore = create<EntitlementState>()(
@@ -70,14 +94,19 @@ export const useEntitlementStore = create<EntitlementState>()(
         set({ subscription: sub })
       },
 
+      clearSubscription: () => {
+        set({ subscription: EMPTY_SUBSCRIPTION })
+      },
+
       setLastRefreshed: (ts) => {
         set({ lastRefreshed: ts })
       },
 
       isEntitled: (productId) => {
         const state = get()
-        // Subscribers have access to everything
-        if (state.subscription.active) return true
+        // Subscribers have access to everything — but the subscription must
+        // be genuinely current, not just flagged active in stale local state.
+        if (isSubscriptionCurrentlyActive(state.subscription)) return true
         // Check individual purchases
         return state.purchasedProducts.includes(productId)
       },

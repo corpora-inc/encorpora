@@ -289,13 +289,23 @@ export async function acknowledgePurchase(purchaseToken: string): Promise<void> 
 }
 
 /**
+ * Tri-state product status. `unknown` (plugin error / timeout) must be
+ * distinguished from `not_owned` so callers don't mistakenly clear local
+ * entitlement state when the store is merely unreachable.
+ */
+export type ProductStatus =
+  | { state: "owned"; expiresAt?: string }
+  | { state: "not_owned" }
+  | { state: "unknown"; reason: string }
+
+/**
  * Check product ownership / subscription status via the IAP plugin.
  */
 export async function getProductStatus(
   productId: string,
   productType: "subs" | "inapp" = "inapp"
-): Promise<{ owned: boolean; expiresAt?: string }> {
-  if (!isTauriRuntime()) return { owned: false }
+): Promise<ProductStatus> {
+  if (!isTauriRuntime()) return { state: "not_owned" }
 
   try {
     // 10s timeout — at app startup we shouldn't block the UI waiting for StoreKit
@@ -306,17 +316,23 @@ export async function getProductStatus(
       ),
       10_000
     )
-    return {
-      owned: status.isOwned ?? false,
-      expiresAt: status.expirationTime
-        ? new Date(status.expirationTime).toISOString()
-        : undefined,
+    if (status.isOwned) {
+      return {
+        state: "owned",
+        expiresAt: status.expirationTime
+          ? new Date(status.expirationTime).toISOString()
+          : undefined,
+      }
     }
+    return { state: "not_owned" }
   } catch (err) {
+    const reason = err instanceof Error ? err.message : String(err)
     if (err instanceof TimeoutError) {
       console.warn("[purchase] getProductStatus timed out for", productId)
+    } else {
+      console.warn("[purchase] getProductStatus error for", productId, err)
     }
-    return { owned: false }
+    return { state: "unknown", reason }
   }
 }
 
@@ -482,46 +498,100 @@ export async function purchaseAndVerify(
 }
 
 /**
- * Refresh entitlements from the IAP plugin (local, no network).
- * Call on app launch and periodically.
+ * Refresh entitlements from the IAP plugin (local, no network on iOS).
+ * Call on app launch, on foreground/resume, and near subscription expiry.
+ *
+ * Moves subscription state in BOTH directions via StoreKit 2's silent
+ * `Transaction.currentEntitlements` query: if the platform authoritatively
+ * says no subscription is owned, stale local state (e.g. `active: true` for
+ * a subscription that has since lapsed or been cancelled) is cleared so the
+ * paywall reappears. If the plugin is unreachable, existing state is kept.
+ *
+ * Does NOT call restorePurchases() on iOS — that can trigger an Apple ID
+ * sign-in prompt and per Apple HIG must be user-initiated. Book-purchase
+ * restoration after reinstall/device-switch is handled by the explicit
+ * "Restore Purchases" button. On Android restorePurchases() is silent and
+ * is required here to acknowledge unack'd purchases within Google's 3-day
+ * window.
  */
 export async function refreshEntitlements(): Promise<void> {
   if (!isTauriRuntime()) return
 
   const store = useEntitlementStore.getState()
 
-  // Check subscription status
+  // Check subscription status. We need to distinguish "platform says not
+  // subscribed" from "couldn't reach platform": clearing stale active-sub
+  // state on error would wrongly hide real subscribers' content whenever
+  // the IAP plugin hiccups.
+  let activeSub: { plan: SubscriptionPlan; expiresAt: string | null } | null =
+    null
+  let anyStatusUnknown = false
+
   for (const subId of [SUBSCRIPTION_MONTHLY, SUBSCRIPTION_ANNUAL]) {
     const status = await getProductStatus(subId, "subs")
-    if (status.owned) {
-      const plan: SubscriptionPlan =
-        subId === SUBSCRIPTION_ANNUAL ? "annual" : "monthly"
-      store.setSubscription({
-        active: true,
-        plan,
+    if (status.state === "owned") {
+      activeSub = {
+        plan: subId === SUBSCRIPTION_ANNUAL ? "annual" : "monthly",
         expiresAt: status.expiresAt ?? null,
-        autoRenew: true,
-      })
+      }
       break
     }
+    if (status.state === "unknown") anyStatusUnknown = true
   }
 
-  // Restore one-time book purchases. Without this, a user who reinstalled
-  // (or restored their device) wouldn't see their owned books on first launch
-  // and would be shown a Buy button on a book they already paid for.
-  // Acknowledges any unacknowledged Android purchases as a side effect of
-  // restorePurchases() returning them — the reader pack flow does this
-  // explicitly post-purchase, but legacy purchases without ack are picked up
-  // here on launch.
-  try {
-    const restored = await restorePurchases()
-    for (const r of restored) {
-      if (r.productId.startsWith("corpan.book.")) {
-        store.addPurchasedProduct(r.productId)
-      }
+  if (activeSub) {
+    store.setSubscription({
+      active: true,
+      plan: activeSub.plan,
+      expiresAt: activeSub.expiresAt,
+      autoRenew: true,
+    })
+  } else if (!anyStatusUnknown) {
+    // Platform confirms no subscription is active. Clear any stale local
+    // state so the Subscribe CTA reappears — this is the critical path for
+    // sandbox expiry (5 min monthly / 1 hr annual) and for real users whose
+    // subscription has lapsed or been cancelled.
+    if (store.subscription.active) {
+      console.info(
+        "[purchase] refreshEntitlements: platform reports no active subscription — clearing stale local state"
+      )
+      store.clearSubscription()
     }
-  } catch (err) {
-    console.warn("[purchase] restore inside refreshEntitlements failed:", err)
+  } else {
+    console.warn(
+      "[purchase] refreshEntitlements: subscription status unknown (plugin error) — keeping existing local state"
+    )
+  }
+
+  // One-time book purchase recovery is platform-specific:
+  //
+  // iOS/macOS: we deliberately do NOT call restorePurchases() here. Apple's
+  // HIG requires restore to be a user-initiated action (the explicit
+  // "Restore Purchases" button in Settings → Packs), because calling
+  // AppStore.sync() can prompt for Apple ID authentication when StoreKit's
+  // session has expired — hostile UX at launch, and App Review actively
+  // dings apps that auto-prompt. Users who reinstall or switch devices tap
+  // the button once; thereafter localStorage + in-session purchase events
+  // keep state consistent.
+  //
+  // Android: we DO call it. Play Billing's restorePurchases is silent (no
+  // user auth required) and is how we pick up any unacknowledged purchases
+  // so the plugin can ack them. Google auto-refunds purchases not
+  // acknowledged within 3 days, so we can't wait for the user to tap a
+  // button — the reader-pack flow acks post-purchase, but this is the
+  // recovery path for acks that failed at purchase time.
+  const platform = await getPlatform()
+  if (platform === "android") {
+    try {
+      const restored = await restorePurchases()
+      for (const r of restored) {
+        if (r.productId.startsWith("corpan.book.")) {
+          store.addPurchasedProduct(r.productId)
+        }
+      }
+    } catch (err) {
+      console.warn("[purchase] restore inside refreshEntitlements failed:", err)
+    }
   }
 
   store.setLastRefreshed(Date.now())

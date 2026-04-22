@@ -59,6 +59,52 @@ export default function App() {
     getPlatform().then(() => refreshEntitlements()).catch(() => {});
   }, [fetchCatalog]);
 
+  // Re-check entitlements when the app returns to the foreground. Without
+  // this, a subscription that lapsed while the app was backgrounded (sandbox
+  // monthly = 5 min, real cancellations, etc.) leaves stale "subscribed"
+  // state in localStorage and the Subscribe CTA never reappears — which is
+  // exactly what tripped Apple 3.1.2(c) / 2.1(b) review.
+  useEffect(() => {
+    let lastRefreshAt = 0;
+    const MIN_REFRESH_INTERVAL_MS = 30_000;
+    const onVisibilityChange = () => {
+      if (document.visibilityState !== "visible") return;
+      const now = Date.now();
+      if (now - lastRefreshAt < MIN_REFRESH_INTERVAL_MS) return;
+      lastRefreshAt = now;
+      refreshEntitlements().catch(() => {});
+    };
+    document.addEventListener("visibilitychange", onVisibilityChange);
+    return () =>
+      document.removeEventListener("visibilitychange", onVisibilityChange);
+  }, []);
+
+  // Schedule a refresh when the current subscription is about to expire so
+  // the paywall comes back live (no kill-and-relaunch required). Caps the
+  // timer at 24h — longer horizons are handled by the visibility listener
+  // on next foreground. Re-runs whenever expiresAt changes.
+  const subscriptionExpiresAt = useEntitlementStore(
+    (s) => s.subscription.expiresAt
+  );
+  const subscriptionActive = useEntitlementStore((s) => s.subscription.active);
+  useEffect(() => {
+    if (!subscriptionActive || !subscriptionExpiresAt) return;
+    const expiryMs = Date.parse(subscriptionExpiresAt);
+    if (Number.isNaN(expiryMs)) return;
+    const msUntilExpiry = expiryMs - Date.now();
+    if (msUntilExpiry <= 0) {
+      refreshEntitlements().catch(() => {});
+      return;
+    }
+    const MAX_TIMER_MS = 24 * 60 * 60 * 1000;
+    if (msUntilExpiry > MAX_TIMER_MS) return;
+    // Wake 5s past expiry to give StoreKit/Play a moment to flip state.
+    const timer = window.setTimeout(() => {
+      refreshEntitlements().catch(() => {});
+    }, msUntilExpiry + 5_000);
+    return () => window.clearTimeout(timer);
+  }, [subscriptionActive, subscriptionExpiresAt]);
+
   // Reader packs (running in this same WebView) dispatch these events after an
   // in-reader purchase. Keep the zustand entitlement store in sync so
   // subsequent UI in the main app reflects the new state.

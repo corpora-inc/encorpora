@@ -90,6 +90,12 @@ export function createEarthgateReader(
   let backgroundedAt = 0
   let backgroundedAudioMs = 0
 
+  // True if the app has been in the hidden+paused state since the last play.
+  // On iOS, AVAudioSession can silently deactivate in this state — next doPlay
+  // will do a pre-emptive session rebuild (recoverContext can't detect this
+  // because the JS AudioContext still reports "running").
+  let audioSessionMayBeStale = false
+
   function startBackgroundTimers() {
     if (!bgNowPlayingTimer) {
       bgNowPlayingTimer = setInterval(() => {
@@ -222,6 +228,22 @@ export function createEarthgateReader(
       return staleSuperseded || !desiredPlaying || disposed
     }
 
+    // Pre-emptive session rebuild: iOS may have silently killed AVAudioSession
+    // during a paused-hidden interval. recoverContext() can't detect this
+    // (JS context still reports "running"), so tear everything down and rebuild
+    // before the normal play path. See audioSessionMayBeStale declaration.
+    if (audioSessionMayBeStale) {
+      console.log("[ER:stale] pre-emptive audio session rebuild")
+      audioSessionMayBeStale = false
+      try { await stopNativeKeepAlive() } catch (e) { console.warn("[ER:stale] stopNativeKeepAlive:", e) }
+      nativeSessionActive = false
+      nativePlaybackStateHint = "unknown"
+      mediaAnchor?.dispose()
+      mediaAnchor = null
+      try { await audioEngine.recreateContext() } catch (e) { console.error("[ER:stale] recreateContext:", e) }
+      if (shouldCancelPlayRequest()) return
+    }
+
     const engineAlreadyPlaying = audioEngine.isPlaying()
     if (engineAlreadyPlaying) {
       isPlaying = true
@@ -324,6 +346,12 @@ export function createEarthgateReader(
     desiredPlaying = false
     playRequestSeq += 1
     endPreview(false)
+    // Pausing while the app is hidden (e.g. lock-screen pause routed through
+    // listenForRemoteCommands) means iOS may now quietly kill the audio
+    // session — flag for pre-emptive rebuild on the next play.
+    if (document.hidden) {
+      audioSessionMayBeStale = true
+    }
     if (!audioEngine) return
     const enginePlaying = audioEngine.isPlaying()
     if (!isPlaying && !enginePlaying) {
@@ -733,6 +761,9 @@ export function createEarthgateReader(
       persistBookmark()
       if (audioEngine && isPlaying) {
         startBackgroundTimers()
+      }
+      if (!desiredPlaying) {
+        audioSessionMayBeStale = true
       }
     } else {
       stopBackgroundTimers()

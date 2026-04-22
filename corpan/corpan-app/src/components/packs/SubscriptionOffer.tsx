@@ -3,7 +3,10 @@ import { useTranslation } from "react-i18next"
 import { CheckCircle2 } from "lucide-react"
 import { openUrl } from "@tauri-apps/plugin-opener"
 import { Button } from "@/components/ui/button"
-import { useEntitlementStore } from "@/store/entitlements"
+import {
+  useEntitlementStore,
+  isSubscriptionCurrentlyActive,
+} from "@/store/entitlements"
 import {
   fetchProducts,
   purchaseAndVerify,
@@ -31,7 +34,10 @@ export function SubscriptionOffer() {
   const [isPurchasing, setIsPurchasing] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
-  const subscriptionActive = subscription.active
+  // Expiry-aware — `active: true` alone is not enough; if `expiresAt` is past
+  // we must fall through to the Subscribe CTA until refreshEntitlements clears
+  // the stale flag. Belt-and-suspenders against any refresh-timing gap.
+  const subscriptionActive = isSubscriptionCurrentlyActive(subscription)
   const platform = useEntitlementStore((s) => s.platform)
   const storeLabel =
     platform === "android"
