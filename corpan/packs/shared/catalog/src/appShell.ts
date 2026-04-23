@@ -103,6 +103,13 @@ export function createAppShell(
   // switchToNarration while we're already inside it.
   let switching = false
 
+  // Narration IDs currently downloading. When a download finishes, `onInstalled`
+  // triggers a full rebuild of the detail/library/now-playing rows — which
+  // destroys any still-in-flight download buttons along with their spinner
+  // state. On row (re)creation, `createCompactDownloadButton` consults this
+  // set to restore the spinner for narrations whose download hasn't landed yet.
+  const activeDownloads = new Set<string>()
+
   // THE canonical read. Every piece of code that needs the current narration
   // reads from this ONE place: drawerStore.
   function getActive(): string {
@@ -1095,6 +1102,31 @@ export function createAppShell(
     return row
   }
 
+  // Run an install attempt with active-download tracking. On success, triggers
+  // handlers.onInstalled() (which rebuilds rows). On failure, wires up a retry
+  // on the same button. Either way, activeDownloads gets cleaned up in finally.
+  async function runCompactInstall(
+    narration: CatalogNarrationEntry,
+    btn: HTMLButtonElement,
+    handlers: RowHandlers,
+    label: string
+  ): Promise<void> {
+    if (activeDownloads.has(narration.id)) return
+    activeDownloads.add(narration.id)
+    setButtonBusy(btn)
+    try {
+      const result = await installNarration(narration)
+      if (result.ok) {
+        handlers.onInstalled()
+      } else {
+        reportInstallFailure(result)
+        setButtonError(btn, label, () => runCompactInstall(narration, btn, handlers, label))
+      }
+    } finally {
+      activeDownloads.delete(narration.id)
+    }
+  }
+
   function createCompactDownloadButton(
     narration: CatalogNarrationEntry,
     handlers: RowHandlers
@@ -1102,26 +1134,18 @@ export function createAppShell(
     const btn = document.createElement("button")
     btn.type = "button"
     btn.className = "catalog-btn catalog-btn--compact"
-    btn.innerHTML = `${SVG_DOWNLOAD}<span class="catalog-btn-label">${Math.round(narration.sizeMb)} MB</span>`
-    btn.addEventListener("click", async (e) => {
+    const label = `${Math.round(narration.sizeMb)} MB`
+    btn.innerHTML = `${SVG_DOWNLOAD}<span class="catalog-btn-label">${label}</span>`
+    btn.addEventListener("click", (e) => {
       e.stopPropagation()
-      setButtonBusy(btn)
-      const result = await installNarration(narration)
-      if (result.ok) {
-        handlers.onInstalled()
-      } else {
-        reportInstallFailure(result)
-        setButtonError(btn, `${Math.round(narration.sizeMb)} MB`, async () => {
-          setButtonBusy(btn)
-          const retry = await installNarration(narration)
-          if (retry.ok) handlers.onInstalled()
-          else {
-            reportInstallFailure(retry)
-            setButtonError(btn, `${Math.round(narration.sizeMb)} MB`, () => {})
-          }
-        })
-      }
+      void runCompactInstall(narration, btn, handlers, label)
     })
+    // Row was (re)created mid-download (e.g. a sibling download completed and
+    // triggered rebuildAll). Restore the spinner so the user sees this download
+    // is still in flight.
+    if (activeDownloads.has(narration.id)) {
+      setButtonBusy(btn)
+    }
     return btn
   }
 
@@ -1134,16 +1158,13 @@ export function createAppShell(
     btn.className = "catalog-btn catalog-btn--compact catalog-btn--update"
     btn.title = "Update"
     btn.innerHTML = `${SVG_DOWNLOAD}<span class="catalog-btn-label">Update</span>`
-    btn.addEventListener("click", async (e) => {
+    btn.addEventListener("click", (e) => {
       e.stopPropagation()
-      setButtonBusy(btn)
-      const result = await installNarration(narration)
-      if (result.ok) handlers.onInstalled()
-      else {
-        reportInstallFailure(result)
-        setButtonError(btn, "Update", () => {})
-      }
+      void runCompactInstall(narration, btn, handlers, "Update")
     })
+    if (activeDownloads.has(narration.id)) {
+      setButtonBusy(btn)
+    }
     return btn
   }
 
