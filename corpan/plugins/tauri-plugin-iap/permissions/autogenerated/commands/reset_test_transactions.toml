@@ -1,0 +1,13 @@
+# Automatically generated - DO NOT EDIT!
+
+"$schema" = "../../schemas/schema.json"
+
+[[permission]]
+identifier = "allow-reset-test-transactions"
+description = "Enables the reset_test_transactions command without any pre-configured scope."
+commands.allow = ["reset_test_transactions"]
+
+[[permission]]
+identifier = "deny-reset-test-transactions"
+description = "Denies the reset_test_transactions command without any pre-configured scope."
+commands.deny = ["reset_test_transactions"]

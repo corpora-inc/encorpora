@@ -79,16 +79,32 @@ export default function App() {
       document.removeEventListener("visibilitychange", onVisibilityChange);
   }, []);
 
-  // Schedule a refresh when the current subscription is about to expire so
-  // the paywall comes back live (no kill-and-relaunch required). Caps the
-  // timer at 24h — longer horizons are handled by the visibility listener
-  // on next foreground. Re-runs whenever expiresAt changes.
+  // Keep the in-app subscription state honest while the user is sitting on
+  // the screen. Two scenarios:
+  //
+  //   A) `active && expiresAt` known: schedule a one-shot refresh ~5s past
+  //      the expiry so the paywall comes back the moment the sub lapses.
+  //      Capped at 24h; longer horizons are handled by visibility change.
+  //   B) `active && !expiresAt`: the plugin didn't populate an expiry and
+  //      the backend verify either failed or didn't return one. Fall back
+  //      to a 60s safety-net poll so we eventually notice a lapse instead
+  //      of leaving the user stuck in the subscribed state forever. The
+  //      interval clears itself once `expiresAt` becomes known or `active`
+  //      flips to false (effect re-runs on dep change).
   const subscriptionExpiresAt = useEntitlementStore(
     (s) => s.subscription.expiresAt
   );
   const subscriptionActive = useEntitlementStore((s) => s.subscription.active);
   useEffect(() => {
-    if (!subscriptionActive || !subscriptionExpiresAt) return;
+    if (!subscriptionActive) return;
+
+    if (!subscriptionExpiresAt) {
+      const interval = window.setInterval(() => {
+        refreshEntitlements().catch(() => {});
+      }, 60_000);
+      return () => window.clearInterval(interval);
+    }
+
     const expiryMs = Date.parse(subscriptionExpiresAt);
     if (Number.isNaN(expiryMs)) return;
     const msUntilExpiry = expiryMs - Date.now();

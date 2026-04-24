@@ -269,6 +269,14 @@ function productCacheKey(productType: "subs" | "inapp", productIds: string[]): s
   return productType + ":" + [...productIds].sort().join(",")
 }
 
+/**
+ * Retry schedule for flaky StoreKit `Product.products(for:)` on iOS, which
+ * is documented to transiently return an empty Set during sandbox
+ * eventual-consistency lulls. Mirror of the main app's schedule in
+ * `corpan-app/src/contentPacks/purchase.ts`.
+ */
+const FETCH_RETRY_DELAYS_MS: readonly number[] = [0, 500, 1500, 3500]
+
 export async function fetchStoreProducts(
   productIds: string[],
   productType: "subs" | "inapp" = "inapp"
@@ -283,17 +291,40 @@ export async function fetchStoreProducts(
     return cached.products
   }
 
-  try {
-    const result = await invoke("plugin:iap|get_products", {
-      payload: { productIds, productType },
-    }) as { products?: StoreProduct[] }
-    const products = result.products ?? []
-    productCache.set(key, { products, at: Date.now() })
-    return products
-  } catch (err) {
-    console.error("[purchaseManager] fetchStoreProducts failed:", err)
-    return []
+  for (let attempt = 0; attempt < FETCH_RETRY_DELAYS_MS.length; attempt++) {
+    const delay = FETCH_RETRY_DELAYS_MS[attempt]
+    if (delay > 0) await new Promise((r) => setTimeout(r, delay))
+
+    try {
+      const result = await invoke("plugin:iap|get_products", {
+        payload: { productIds, productType },
+      }) as { products?: StoreProduct[] }
+      const products = result.products ?? []
+      if (products.length > 0) {
+        productCache.set(key, { products, at: Date.now() })
+        if (attempt > 0) {
+          console.warn(
+            `[purchaseManager] fetchStoreProducts succeeded on attempt ${attempt + 1}/${FETCH_RETRY_DELAYS_MS.length} for`,
+            productIds
+          )
+        }
+        return products
+      }
+      console.warn(
+        `[purchaseManager] fetchStoreProducts attempt ${attempt + 1}/${FETCH_RETRY_DELAYS_MS.length} returned empty for`,
+        productIds
+      )
+    } catch (err) {
+      console.error(
+        `[purchaseManager] fetchStoreProducts attempt ${attempt + 1}/${FETCH_RETRY_DELAYS_MS.length} failed:`,
+        err
+      )
+    }
   }
+
+  // All attempts returned empty or errored. Do NOT cache the empty result —
+  // that would mask a future successful fetch for the full TTL. Just return [].
+  return []
 }
 
 /**
@@ -321,6 +352,22 @@ async function runIapPurchase(
 ): Promise<PurchaseOutcome | { kind: "raw"; purchase: { id?: string; jwsRepresentation?: string; purchaseToken?: string; originalJson?: string } }> {
   const invoke = getInvoke()
   if (!invoke) return { kind: "error", message: "IAP unavailable in this environment" }
+
+  // Preflight: warm the StoreKit / Play Billing product cache before the
+  // native purchase. The plugin's `purchase()` does its own
+  // Product.products(for:) internally on iOS and rejects with "Product
+  // not found" if that returns an empty Set — a known transient sandbox
+  // behaviour. fetchStoreProducts has its own backoff retry, so this
+  // preflight significantly reduces the race window without changing
+  // purchase semantics. Happy path hits the 5-minute in-memory cache
+  // and is effectively free.
+  const preflight = await fetchStoreProducts([productId], productType)
+  if (preflight.length === 0) {
+    console.warn(
+      `[purchaseManager] runIapPurchase: preflight returned empty for ${productId} — proceeding with native purchase anyway`
+    )
+  }
+
   try {
     const purchase = await invoke("plugin:iap|purchase", {
       payload: { productId, productType },
@@ -334,6 +381,31 @@ async function runIapPurchase(
   } catch (err) {
     if (looksLikeCancel(err)) return { kind: "cancelled" }
     if (looksLikeAlreadyOwned(err)) return { kind: "alreadyOwned" }
+
+    // Defensive: StoreKit sometimes returns an error even when the
+    // transaction actually completed. Known path: "Already Purchased"
+    // sheet → user taps "Get again for free" → StoreKit prompts 2–3 more
+    // times, then throws — but the Transaction.updates listener has
+    // already finished the transaction behind our backs and the product
+    // is now owned. Without this check the UI shows "try again"; user
+    // taps, second purchase call returns success from the already-finished
+    // transaction, and the button finally unlocks. Checking the
+    // authoritative product status here collapses those two taps into one.
+    try {
+      const status = await invoke("plugin:iap|get_product_status", {
+        payload: { productId, productType },
+      }) as { isOwned?: boolean }
+      if (status?.isOwned) {
+        console.warn(
+          `[purchaseManager] purchase rejected but product is owned — treating as alreadyOwned:`,
+          err
+        )
+        return { kind: "alreadyOwned" }
+      }
+    } catch (statusErr) {
+      console.warn("[purchaseManager] post-error status check failed:", statusErr)
+    }
+
     console.error("[purchaseManager] purchase failed for", productId, err)
     return {
       kind: "error",

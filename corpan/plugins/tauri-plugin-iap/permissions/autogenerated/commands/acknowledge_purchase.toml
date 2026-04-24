@@ -1,0 +1,13 @@
+# Automatically generated - DO NOT EDIT!
+
+"$schema" = "../../schemas/schema.json"
+
+[[permission]]
+identifier = "allow-acknowledge-purchase"
+description = "Enables the acknowledge_purchase command without any pre-configured scope."
+commands.allow = ["acknowledge_purchase"]
+
+[[permission]]
+identifier = "deny-acknowledge-purchase"
+description = "Denies the acknowledge_purchase command without any pre-configured scope."
+commands.deny = ["acknowledge_purchase"]

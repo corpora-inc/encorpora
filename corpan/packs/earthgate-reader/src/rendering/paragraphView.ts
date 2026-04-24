@@ -30,7 +30,34 @@ export function createParagraphView(parent: HTMLElement): ParagraphView {
   let tapCb: (() => void) | null = null
   let activeIndex = -1
   let wordSpans: HTMLSpanElement[] = []
-  let lastScrollCheck = 0
+  let lastActiveLineOffset = -1
+  let targetScrollTop = 0
+  let scrollRafId: number | null = null
+
+  // Continuous scroll easing. Every frame we glide `scrollArea.scrollTop`
+  // a fraction of the way toward `targetScrollTop`, then re-request until
+  // we're within half a pixel. highlightWord() updates the target on every
+  // new line so reading naturally pulls the scroll along.
+  function easeScroll() {
+    const current = scrollArea.scrollTop
+    const delta = targetScrollTop - current
+    if (Math.abs(delta) < 0.5) {
+      scrollArea.scrollTop = targetScrollTop
+      scrollRafId = null
+      return
+    }
+    scrollArea.scrollTop = current + delta * 0.1
+    scrollRafId = requestAnimationFrame(easeScroll)
+  }
+  function startEasing() {
+    if (scrollRafId === null) scrollRafId = requestAnimationFrame(easeScroll)
+  }
+  function stopEasing() {
+    if (scrollRafId !== null) {
+      cancelAnimationFrame(scrollRafId)
+      scrollRafId = null
+    }
+  }
 
   const container = document.createElement("div")
   container.className = "earthgate-paragraph"
@@ -90,10 +117,32 @@ export function createParagraphView(parent: HTMLElement): ParagraphView {
     startTarget = null
   })
 
+  // Viewport-absolute clean zone: the reading area between the top fade
+  // (y=0 → safe-top+top-clearance) and the transport fade at the bottom.
+  // +20px buffer so words land clearly outside each fade, not grazing them.
+  function getCleanTop(): number {
+    const safeTop = parseFloat(getComputedStyle(container).paddingTop) || 0
+    const topClearance =
+      parseFloat(
+        getComputedStyle(document.documentElement).getPropertyValue("--eg-top-clearance"),
+      ) || 80
+    return safeTop + topClearance + 20
+  }
+  function getCleanBottom(): number {
+    const transportClearance =
+      parseFloat(
+        getComputedStyle(document.documentElement).getPropertyValue("--eg-transport-clearance"),
+      ) || 130
+    return window.innerHeight - transportClearance - 20
+  }
+
   return {
     setSegment(_seg: BookSegment, manifestSeg: ManifestSegment | undefined) {
       activeIndex = -1
       wordSpans = []
+      lastActiveLineOffset = -1
+      targetScrollTop = 0
+      stopEasing()
       inner.innerHTML = ""
 
       if (!manifestSeg || manifestSeg.words.length === 0) return
@@ -111,8 +160,34 @@ export function createParagraphView(parent: HTMLElement): ParagraphView {
         wordSpans.push(span)
       }
 
-      // Scroll to top for new segment
+      // Reset conditional classes from previous segment, scroll to top.
+      inner.classList.remove("earthgate-paragraph-inner--pad-top")
+      inner.classList.remove("earthgate-paragraph-inner--pad-bottom-extra")
       scrollArea.scrollTop = 0
+
+      // After layout:
+      //  1. If the first word would render inside the top fade band, pad
+      //     the inner so it starts below the fade.
+      //  2. If the last word would render near/past the bottom fade band,
+      //     add extra trailing space. This turns medium segments (which
+      //     would otherwise fit without overflow but bleed into the fade)
+      //     into smoothly-scrolling content, and gives long segments the
+      //     overshoot they need to keep the last line at the reading
+      //     target instead of drifting to the bottom.
+      requestAnimationFrame(() => {
+        if (wordSpans.length === 0) return
+        const fadeBottom = getCleanTop()
+        const firstRect = wordSpans[0].getBoundingClientRect()
+        if (firstRect.top < fadeBottom) {
+          inner.classList.add("earthgate-paragraph-inner--pad-top")
+          scrollArea.scrollTop = 0
+        }
+        const cleanBottom = getCleanBottom()
+        const lastRect = wordSpans[wordSpans.length - 1].getBoundingClientRect()
+        if (lastRect.bottom > cleanBottom - 20) {
+          inner.classList.add("earthgate-paragraph-inner--pad-bottom-extra")
+        }
+      })
     },
 
     highlightWord(index: number) {
@@ -127,18 +202,28 @@ export function createParagraphView(parent: HTMLElement): ParagraphView {
 
       // Add new highlight
       if (index >= 0 && index < wordSpans.length) {
-        wordSpans[index].classList.add("earthgate-word--active")
+        const span = wordSpans[index]
+        span.classList.add("earthgate-word--active")
 
-        // Throttled scroll check — avoid layout thrash on every word
-        const now = performance.now()
-        if (now - lastScrollCheck > 300) {
-          lastScrollCheck = now
-          const span = wordSpans[index]
-          const scrollRect = scrollArea.getBoundingClientRect()
+        // Continuous easing scroll. On every new line we recompute the
+        // target scrollTop that would place the active word at the reading
+        // anchor (~40% down the clean area); the rAF easing loop glides
+        // toward it over several frames. Word-by-word the target shifts
+        // by one line-height, so the scroll drifts smoothly under the text
+        // without ever snapping. Clamped to the scroll container's range
+        // so the word naturally sits higher before scroll catches up and
+        // lower at the end of a segment once the scroll maxes out.
+        if (span.offsetTop !== lastActiveLineOffset) {
+          lastActiveLineOffset = span.offsetTop
+          const cleanTop = getCleanTop()
+          const cleanBottom = getCleanBottom()
+          const anchor = cleanTop + (cleanBottom - cleanTop) * 0.4
           const spanRect = span.getBoundingClientRect()
-          if (spanRect.bottom > scrollRect.bottom - 40 || spanRect.top < scrollRect.top + 40) {
-            span.scrollIntoView({ behavior: "smooth", block: "center" })
-          }
+          const wordCenter = spanRect.top + spanRect.height / 2
+          const maxScroll = scrollArea.scrollHeight - scrollArea.clientHeight
+          const proposed = scrollArea.scrollTop + (wordCenter - anchor)
+          targetScrollTop = Math.max(0, Math.min(maxScroll, proposed))
+          startEasing()
         }
       }
     },
@@ -148,6 +233,7 @@ export function createParagraphView(parent: HTMLElement): ParagraphView {
     onTap(cb: () => void) { tapCb = cb },
 
     dispose() {
+      stopEasing()
       container.remove()
     },
   }

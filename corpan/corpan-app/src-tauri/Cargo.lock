@@ -651,7 +651,7 @@ dependencies = [
 
 [[package]]
 name = "corpan"
-version = "0.11.5"
+version = "0.11.6"
 dependencies = [
  "futures-util",
  "reqwest 0.12.28",
@@ -4365,8 +4365,6 @@ dependencies = [
 [[package]]
 name = "tauri-plugin-iap"
 version = "0.8.2"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "c65d34f8a5308c391bbacf4cc7ed338b62d755167b079887adb4cf2e0681f881"
 dependencies = [
  "log",
  "serde",

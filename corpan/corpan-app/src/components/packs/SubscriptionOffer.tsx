@@ -15,6 +15,8 @@ import {
   SUBSCRIPTION_ANNUAL,
   type StoreProduct,
 } from "@/contentPacks/purchase"
+import { DiagnosticsStrip } from "@/components/packs/DiagnosticsStrip"
+import { DevStoreKitReset } from "@/components/packs/DevStoreKitReset"
 
 const TERMS_URL = "https://encorpora.io/terms"
 const PRIVACY_URL = "https://encorpora.io/privacy"
@@ -104,6 +106,9 @@ export function SubscriptionOffer() {
           {t("subscription.manage", "Manage subscription")}
         </Button>
 
+        <DiagnosticsStrip onRetry={() => void refetchProducts()} />
+        <DevStoreKitReset />
+
         {legalLinks}
       </div>
     )
@@ -118,6 +123,15 @@ export function SubscriptionOffer() {
   const monthlyPrice = monthlyProduct?.price ?? ""
   const annualPrice = annualProduct?.price ?? ""
 
+  const refetchProducts = async () => {
+    const fresh = await fetchProducts(
+      [SUBSCRIPTION_MONTHLY, SUBSCRIPTION_ANNUAL],
+      "subs"
+    )
+    if (fresh.length > 0) setProducts(fresh)
+    return fresh
+  }
+
   const handleSubscribe = async () => {
     const productId =
       selectedPlan === "annual" ? SUBSCRIPTION_ANNUAL : SUBSCRIPTION_MONTHLY
@@ -125,6 +139,17 @@ export function SubscriptionOffer() {
     setError(null)
 
     try {
+      // If products weren't loaded on mount (transient StoreKit empty,
+      // reviewer's device in a funny state, etc.), try once more on tap
+      // before going to the native purchase. The native purchase call
+      // does its own Product.products(for:) internally, so we can proceed
+      // regardless of the preflight's outcome — but the fresh fetch
+      // often succeeds where the initial one failed, and either way
+      // it's logged in the diagnostics buffer.
+      if (products.length === 0) {
+        await refetchProducts()
+      }
+
       const result = await purchaseAndVerify(productId, undefined, "subs")
       if (result.error) {
         setError(result.error)
@@ -195,6 +220,9 @@ export function SubscriptionOffer() {
       {error ? (
         <p className="text-xs text-destructive">{error}</p>
       ) : null}
+
+      <DiagnosticsStrip onRetry={() => void refetchProducts()} />
+      <DevStoreKitReset />
 
       <p className="text-[11px] text-muted-foreground leading-relaxed text-center">
         {t(

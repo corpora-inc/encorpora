@@ -73,3 +73,30 @@ Required for Stargate Reader background audio playback via foreground service.
 Added to `release` build type:
 - `ndk { debugSymbolLevel = "FULL" }` — uploads native debug symbols in the AAB
   for symbolicated crash stacks in Play Console
+
+## iOS IAP testing
+
+Use `tauri ios dev` (or `tauri ios build`) for iOS builds on physical
+devices and simulators. IAP runs against Apple's real sandbox
+(`Transaction.environment == .sandbox`) — exactly what App Review
+uses.
+
+**What about Xcode's StoreKit Test (`.xcode` env)?** Don't chase it
+from CLI. StoreKit Test is activated by Xcode's private "Octane" IPC
+(Apple Dev Forums thread 650977 documents the internals), which no
+CLI path can replicate without running Xcode's scheme runner. And
+Xcode's scheme runner needs Tauri's IPC server (which only runs
+during `tauri ios dev`'s initial build, not once it enters watch
+mode). Two incompatible ephemeral state machines. Flutter, Detox,
+Fastlane have this same gap open. Not worth solving for us.
+
+**Iteration against sandbox:**
+- For subscriptions: cancel in Settings → [Apple ID] → Subscriptions.
+  Sandbox auto-renews up to 6 times then permanently expires.
+- For non-consumables (books): Apple won't let app code un-own them.
+  Use a throwaway Apple ID (make one at appleid.apple.com) for fresh
+  purchase testing.
+- Dev-only `DevStoreKitReset` button (paywall, dev builds only):
+  calls `Transaction.finish()` on all current entitlements, clears
+  local entitlement store + diagnostics buffer, re-queries StoreKit.
+  Doesn't delete ownership (can't) but drains stuck pending state.

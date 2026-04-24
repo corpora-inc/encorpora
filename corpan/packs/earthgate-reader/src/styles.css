@@ -18,6 +18,11 @@
      full height so text can flow behind the translucent top gradient. */
   --eg-transport-clearance: 130px;
 
+  /* Symmetric fade band at the top of the reading area: tall enough to mask
+     text behind the hamburger (48px at top:15+safe → bottom at safe+63) and
+     the chapter overlay, while letting text flow through without a dead band. */
+  --eg-top-clearance: 80px;
+
   /* Catalog browser theme — warm/serif */
   --catalog-bg: rgba(245, 240, 232, 0.97);
   --catalog-surface: rgba(235, 225, 210, 0.9);
@@ -68,6 +73,26 @@ body {
   inset: 0;
 }
 
+/* Top fade band — mirrors the transport's bottom gradient. Masks text that
+   would otherwise render behind the hamburger trigger and chapter overlay.
+   Pseudo-element so no DOM changes are required in game.ts. */
+.earthgate-ui::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: calc(var(--eg-top-clearance) + var(--safe-top));
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    var(--eg-bg) 0%,
+    rgba(245, 240, 232, 0.85) 50%,
+    rgba(245, 240, 232, 0) 100%
+  );
+  z-index: 10;
+}
+
 /* --- Paragraph view --- */
 
 .earthgate-paragraph {
@@ -77,7 +102,10 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: stretch;
-  padding: calc(72px + var(--safe-top)) calc(24px + var(--safe-right)) var(--eg-transport-clearance) calc(24px + var(--safe-left));
+  /* No decorative top padding — top fade handles clearance visually. This
+     centers short content between the physical screen top and the top of the
+     control bar, not within an offset padded box. */
+  padding: var(--safe-top) calc(24px + var(--safe-right)) var(--eg-transport-clearance) calc(24px + var(--safe-left));
   color: var(--eg-text);
   overflow: hidden;
   min-height: 0;
@@ -95,11 +123,19 @@ body {
   align-items: center;
   width: 100%;
   min-height: 0;
-  /* scrollIntoView(block:"center") respects this: keeps auto-scrolled current
-     word above the transport's solid-controls zone while letting surrounding
-     text flow down through the gradient fade. */
-  scroll-padding-bottom: var(--eg-transport-clearance);
-  scroll-padding-top: 20px;
+  /* scrollIntoView(block:"center") respects this: active word always lands
+     clear of both fade bands (+20px breathing room so it isn't grazing the
+     fade's edge). */
+  scroll-padding-bottom: calc(var(--eg-transport-clearance) + 20px);
+  scroll-padding-top: calc(var(--eg-top-clearance) + 20px);
+  /* Hide the scroll bar — the auto-follow scroll is the experience; a
+     visible track would just pull focus away from the words. */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.earthgate-paragraph-scroll::-webkit-scrollbar {
+  display: none;
 }
 
 .earthgate-paragraph-inner {
@@ -109,6 +145,37 @@ body {
   line-height: 1.7;
   text-align: center;
   cursor: pointer;
+  /* No baseline padding — short segments center mathematically inside the
+     flex container (which is itself bounded by safe-top above and
+     transport-clearance below, so the reading area is already biased
+     toward the upper half of the viewport). For long segments,
+     paragraphView.ts adds --pad-bottom-extra for smooth-scroll room. */
+}
+
+/* Applied by paragraphView.ts when the first word would otherwise render
+   inside the top fade band. Pushes the inner down so the first word lands
+   in the clean reading area. Short segments don't get this class, so their
+   centering is preserved. */
+.earthgate-paragraph-inner--pad-top {
+  padding-top: calc(var(--eg-top-clearance) + 40px);
+}
+
+/* Applied by paragraphView.ts when the content overflows the scroll
+   container. Extends scrollable range so per-line smooth scrolling can
+   keep the active word at the reading target through the final lines —
+   avoids a drift toward the bottom at end of segment. */
+.earthgate-paragraph-inner--pad-bottom-extra {
+  padding-bottom: 240px;
+}
+@media (max-height: 520px) {
+  .earthgate-paragraph-inner--pad-bottom-extra {
+    padding-bottom: 120px;
+  }
+}
+@media (max-height: 380px) {
+  .earthgate-paragraph-inner--pad-bottom-extra {
+    padding-bottom: 80px;
+  }
 }
 
 .earthgate-word {
@@ -380,7 +447,8 @@ body {
   }
 
   .earthgate-paragraph {
-    padding: calc(64px + var(--safe-top)) calc(16px + var(--safe-right)) var(--eg-transport-clearance) calc(16px + var(--safe-left));
+    padding-left: calc(16px + var(--safe-left));
+    padding-right: calc(16px + var(--safe-right));
   }
 
   .earthgate-paragraph-inner {
@@ -396,10 +464,7 @@ body {
 @media (max-height: 520px) {
   :root {
     --eg-transport-clearance: 90px;
-  }
-
-  .earthgate-paragraph {
-    padding-top: calc(56px + var(--safe-top));
+    --eg-top-clearance: 68px;
   }
 
   .earthgate-paragraph-inner {
@@ -460,10 +525,7 @@ body {
 @media (max-height: 380px) {
   :root {
     --eg-transport-clearance: 70px;
-  }
-
-  .earthgate-paragraph {
-    padding-top: calc(48px + var(--safe-top));
+    --eg-top-clearance: 58px;
   }
 
   .earthgate-paragraph-inner {

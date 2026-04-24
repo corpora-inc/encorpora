@@ -3,6 +3,7 @@ import { type as osType } from "@tauri-apps/plugin-os"
 import { openUrl } from "@tauri-apps/plugin-opener"
 import { useEntitlementStore } from "@/store/entitlements"
 import type { SubscriptionPlan } from "@/store/entitlements"
+import { useDiagnosticsStore } from "@/store/diagnostics"
 
 // ---------------------------------------------------------------------------
 // Types
@@ -88,7 +89,23 @@ export function isIapAvailable(): boolean {
 // ---------------------------------------------------------------------------
 
 /**
+ * Retry schedule for flaky StoreKit calls. `Product.products(for:)` on iOS
+ * is documented to return an empty set silently when Apple's sandbox is in
+ * an eventual-consistency lull; retrying with backoff tends to punch
+ * through it. Total worst-case: ~5.5s of waits plus per-attempt invoke
+ * time. Schedule is shared between `fetchProducts` and the tap-time
+ * re-fetch in SubscriptionOffer.
+ */
+const FETCH_RETRY_DELAYS_MS = [0, 500, 1500, 3500] as const
+
+/**
  * Fetch product info (localized prices) from the platform store.
+ *
+ * Retries up to FETCH_RETRY_DELAYS_MS.length attempts — treats both an
+ * empty result set and a thrown error as retry-worthy. Every attempt is
+ * recorded in the diagnostics ring buffer so the UI can surface what
+ * happened on a device we can't see. Returns the first non-empty result,
+ * or `[]` if every attempt fails/empties.
  */
 export async function fetchProducts(
   productIds: string[],
@@ -96,16 +113,60 @@ export async function fetchProducts(
 ): Promise<StoreProduct[]> {
   if (!isTauriRuntime()) return []
 
-  try {
-    const result = await invoke<{ products: StoreProduct[] }>(
-      "plugin:iap|get_products",
-      { payload: { productIds, productType } }
-    )
-    return result.products ?? []
-  } catch (err) {
-    console.error("[purchase] fetchProducts error:", err)
-    return []
+  const diag = useDiagnosticsStore.getState()
+  const platform = useEntitlementStore.getState().platform ?? "unknown"
+
+  for (let attempt = 0; attempt < FETCH_RETRY_DELAYS_MS.length; attempt++) {
+    const delay = FETCH_RETRY_DELAYS_MS[attempt]
+    if (delay > 0) await new Promise((r) => setTimeout(r, delay))
+
+    try {
+      const result = await invoke<{ products: StoreProduct[] }>(
+        "plugin:iap|get_products",
+        { payload: { productIds, productType } }
+      )
+      const products = result.products ?? []
+      if (products.length > 0) {
+        if (attempt > 0) {
+          diag.record({
+            category: "fetch",
+            productIds,
+            result: "ok",
+            detail: `succeeded on attempt ${attempt + 1}/${FETCH_RETRY_DELAYS_MS.length}`,
+            platform,
+          })
+        }
+        return products
+      }
+      // Empty result — log and continue retrying.
+      console.warn(
+        `[purchase] fetchProducts attempt ${attempt + 1}/${FETCH_RETRY_DELAYS_MS.length} returned empty for`,
+        productIds
+      )
+      diag.record({
+        category: "fetch",
+        productIds,
+        result: "empty",
+        detail: `attempt ${attempt + 1}/${FETCH_RETRY_DELAYS_MS.length} returned empty`,
+        platform,
+      })
+    } catch (err) {
+      const msg = err instanceof Error ? err.message : String(err)
+      console.error(
+        `[purchase] fetchProducts attempt ${attempt + 1}/${FETCH_RETRY_DELAYS_MS.length} failed:`,
+        err
+      )
+      diag.record({
+        category: "fetch",
+        productIds,
+        result: "error",
+        detail: `attempt ${attempt + 1}/${FETCH_RETRY_DELAYS_MS.length}: ${msg}`,
+        platform,
+      })
+    }
   }
+
+  return []
 }
 
 /** Wrap a promise with a timeout that rejects with TimeoutError after ms. */
@@ -219,11 +280,40 @@ export async function purchaseProduct(
       console.warn("[purchase] purchaseProduct reported already owned — treating as success")
       return { kind: "alreadyOwned" }
     }
-    console.error("[purchase] purchaseProduct error:", err)
-    return {
-      kind: "error",
-      message: err instanceof Error ? err.message : String(err),
+
+    // Defensive: StoreKit sometimes rejects even when the transaction
+    // actually completed — classic path is the "Already Purchased" sheet
+    // → "Get again for free" → StoreKit prompts a few more times then
+    // throws an error, while the Transaction.updates listener has
+    // already finished the transaction. Check authoritative product
+    // status here so we don't leave the user staring at a "try again"
+    // on a product they just acquired.
+    try {
+      const status = await getProductStatus(productId, productType)
+      if (status.state === "owned") {
+        console.warn(
+          "[purchase] purchaseProduct rejected but product is owned — treating as alreadyOwned:",
+          err
+        )
+        return { kind: "alreadyOwned" }
+      }
+    } catch (statusErr) {
+      console.warn("[purchase] post-error status check failed:", statusErr)
     }
+
+    const msg = err instanceof Error ? err.message : String(err)
+    console.error("[purchase] purchaseProduct error:", err)
+    // Record to the diagnostics buffer so the UI can show the reviewer
+    // what actually failed. Cancel/timeout/alreadyOwned above are not
+    // recorded — they're normal flow outcomes, not failures.
+    useDiagnosticsStore.getState().record({
+      category: "purchase",
+      productIds: [productId],
+      result: "error",
+      detail: msg,
+      platform: useEntitlementStore.getState().platform ?? "unknown",
+    })
+    return { kind: "error", message: msg }
   }
 }
 
@@ -529,6 +619,12 @@ export async function refreshEntitlements(): Promise<void> {
 
   for (const subId of [SUBSCRIPTION_MONTHLY, SUBSCRIPTION_ANNUAL]) {
     const status = await getProductStatus(subId, "subs")
+    console.info(
+      "[purchase] refreshEntitlements: getProductStatus",
+      subId,
+      "→",
+      status
+    )
     if (status.state === "owned") {
       activeSub = {
         plan: subId === SUBSCRIPTION_ANNUAL ? "annual" : "monthly",
