@@ -51,10 +51,3 @@ pub(crate) async fn get_product_status<R: Runtime>(
         .get_product_status(payload.product_id, payload.product_type)
         .await
 }
-
-#[command]
-pub(crate) async fn reset_test_transactions<R: Runtime>(
-    app: AppHandle<R>,
-) -> Result<ResetTestTransactionsResponse> {
-    app.iap().reset_test_transactions().await
-}

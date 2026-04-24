@@ -13,7 +13,6 @@ Default permissions for the plugin
 - `allow-get-purchase-history`
 - `allow-acknowledge-purchase`
 - `allow-get-product-status`
-- `allow-reset-test-transactions`
 
 ## Permission Table
 
@@ -228,32 +227,6 @@ Enables the remove_listener command without any pre-configured scope.
 <td>
 
 Denies the remove_listener command without any pre-configured scope.
-
-</td>
-</tr>
-
-<tr>
-<td>
-
-`iap:allow-reset-test-transactions`
-
-</td>
-<td>
-
-Enables the reset_test_transactions command without any pre-configured scope.
-
-</td>
-</tr>
-
-<tr>
-<td>
-
-`iap:deny-reset-test-transactions`
-
-</td>
-<td>
-
-Denies the reset_test_transactions command without any pre-configured scope.
 
 </td>
 </tr>

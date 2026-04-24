@@ -6,23 +6,6 @@ pub struct InitializeResponse {
     pub success: bool,
 }
 
-#[derive(Debug, Clone, Default, Deserialize, Serialize)]
-#[serde(rename_all = "camelCase")]
-pub struct ResetTestTransactionsResponse {
-    /// Number of transactions marked finished by this reset.
-    pub finished: u32,
-    /// StoreKit environment string per transaction seen — one of
-    /// `xcode` (local StoreKit Test), `sandbox` (Apple sandbox), or
-    /// `production`. Critical diagnostic: if these all say `sandbox`
-    /// the scheme's StoreKit Test config is NOT being applied at
-    /// runtime (the common `tauri ios dev` failure mode).
-    #[serde(default)]
-    pub environments: Vec<String>,
-    /// Product IDs of the transactions finished. Paired with
-    /// `environments` by index.
-    #[serde(default)]
-    pub product_ids: Vec<String>,
-}
 
 #[derive(Debug, Deserialize, Serialize)]
 #[serde(rename_all = "camelCase")]

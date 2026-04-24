@@ -63,10 +63,4 @@ impl<R: Runtime> Iap<R> {
             "IAP is not supported on this platform",
         )))
     }
-
-    pub async fn reset_test_transactions(&self) -> crate::Result<ResetTestTransactionsResponse> {
-        Err(crate::Error::from(std::io::Error::other(
-            "resetTestTransactions is iOS-only (StoreKitTest)",
-        )))
-    }
 }

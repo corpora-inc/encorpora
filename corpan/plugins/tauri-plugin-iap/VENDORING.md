@@ -47,33 +47,4 @@ cd tauri-plugin-iap && rm -rf .git .github .gitignore
 
 ## Local patches
 
-### 2026-04-23 — `resetTestTransactions` command
-
-Added a new command that iterates `Transaction.currentEntitlements` +
-`Transaction.unfinished` and calls `finish()` on each — clears pending
-transaction state that routinely tangles dev iteration. Returns the
-count of transactions finished.
-
-Earlier iteration tried to call `SKTestSession.clearTransactions()` for
-a harder "wipe the local test DB" reset, but that requires the
-`StoreKitTest` framework which lives in Xcode's
-`Developer/Library/Frameworks/` and is not available to regular app
-targets without hardcoded linker paths in `Package.swift`. Apple gates
-this API to XCTest targets by design. The weaker `Transaction.finish()`
-approach works without any framework linkage changes. Non-consumable
-ownership cannot be reset by any in-app code — Apple-side limitation;
-switch Apple IDs to get a truly fresh slate.
-
-Files wired (re-apply on upstream re-sync):
-
-- `ios/Sources/IapPlugin.swift` — `@objc func resetTestTransactions(_:)`.
-- `src/models.rs` — `ResetTestTransactionsResponse { finished: u32 }`.
-- `src/commands.rs` — `reset_test_transactions` command fn.
-- `src/mobile.rs` — `reset_test_transactions` on `Iap<R>`.
-- `src/desktop.rs`, `src/macos.rs`, `src/windows.rs` — stub impls that
-  return "iOS-only" error for trait consistency.
-- `src/lib.rs` — `commands::reset_test_transactions` in
-  `generate_handler!`.
-- `build.rs` — `"reset_test_transactions"` in COMMANDS.
-- `permissions/default.toml` — `allow-reset-test-transactions` in
-  default allow list.
+*(none)*

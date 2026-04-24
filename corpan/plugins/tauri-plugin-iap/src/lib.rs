@@ -52,7 +52,6 @@ pub fn init<R: Runtime>() -> TauriPlugin<R> {
             commands::restore_purchases,
             commands::acknowledge_purchase,
             commands::get_product_status,
-            commands::reset_test_transactions,
             #[cfg(desktop)]
             listeners::register_listener,
             #[cfg(desktop)]

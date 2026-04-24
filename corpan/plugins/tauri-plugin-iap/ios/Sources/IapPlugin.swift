@@ -262,61 +262,6 @@ class IapPlugin: Plugin {
         invoke.resolve(["success": true])
     }
 
-    /// "Reset" the local StoreKit state as much as we can from within a
-    /// regular app target. Iterates `Transaction.currentEntitlements` +
-    /// `Transaction.unfinished` and calls `finish()` on each.
-    ///
-    /// Also reports the StoreKit `environment` of every transaction seen —
-    /// critical diagnostic info. `.xcode` means the scheme's StoreKit
-    /// Test config is actually active (you can reset further via Xcode →
-    /// Debug → StoreKit → Manage Transactions, or via SKTestSession from
-    /// XCTest). `.sandbox` means we're hitting Apple's real sandbox —
-    /// the scheme's StoreKit Test config is NOT being applied at runtime.
-    /// `.production` means real App Store (should never happen on dev).
-    ///
-    /// Does NOT delete non-consumable ownership from the `.xcode`
-    /// environment (that requires `SKTestSession.clearTransactions()`,
-    /// whose framework `StoreKitTest.framework` is not linkable from a
-    /// regular app target without fragile Xcode-path hardcoding). Cannot
-    /// delete anything in `.sandbox` — those live on Apple's servers.
-    @objc public func resetTestTransactions(_ invoke: Invoke) async throws {
-        var finished = 0
-        var environments: [String] = []
-        var productIds: [String] = []
-
-        for await result in Transaction.currentEntitlements {
-            if case .verified(let transaction) = result {
-                environments.append(environmentString(for: transaction))
-                productIds.append(transaction.productID)
-                await transaction.finish()
-                finished += 1
-            }
-        }
-        for await result in Transaction.unfinished {
-            if case .verified(let transaction) = result {
-                environments.append(environmentString(for: transaction))
-                productIds.append(transaction.productID)
-                await transaction.finish()
-                finished += 1
-            }
-        }
-
-        invoke.resolve([
-            "finished": finished,
-            "environments": environments,
-            "productIds": productIds,
-        ])
-    }
-
-    /// String form of Transaction.environment (iOS 16+) with a fallback
-    /// for iOS 15.
-    private func environmentString(for transaction: Transaction) -> String {
-        if #available(iOS 16.0, *) {
-            return String(describing: transaction.environment)
-        }
-        // iOS 15 fallback — receipt URL path indicates sandbox
-        return "unknown-ios15"
-    }
     
     @objc public func getProductStatus(_ invoke: Invoke) async throws {
         let args = try invoke.parseArgs(GetProductStatusArgs.self)

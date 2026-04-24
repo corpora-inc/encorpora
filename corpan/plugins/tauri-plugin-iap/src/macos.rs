@@ -176,10 +176,4 @@ impl<R: Runtime> Iap<R> {
             .await
             .parse()
     }
-
-    pub async fn reset_test_transactions(&self) -> crate::Result<ResetTestTransactionsResponse> {
-        Err(crate::Error::from(std::io::Error::other(
-            "resetTestTransactions is iOS-only (StoreKitTest)",
-        )))
-    }
 }

@@ -157,9 +157,27 @@ export function platformFromSnapshot(): PurchasePlatform {
   return "desktop"
 }
 
+/**
+ * 60s tolerance for clock skew + sandbox expiry timestamps that can
+ * appear a few seconds in the past. Mirrors the main app's
+ * `SUBSCRIPTION_CLOCK_SKEW_MS` in `corpan-app/src/store/entitlements.ts`.
+ */
+const SUBSCRIPTION_CLOCK_SKEW_MS = 60_000
+
 export function isSubscriberFromSnapshot(): boolean {
   const s = readEntitlementSnapshot()
-  return s?.subscription?.active === true
+  const sub = s?.subscription
+  if (sub?.active !== true) return false
+  // Expiry-aware: `active: true` alone is not enough. If expiresAt is
+  // in the past, the sub has lapsed — the main app's refreshEntitlements
+  // will clear it eventually, but until then the reader must not grant
+  // entitlement against a stale flag. Otherwise: lock icons don't show,
+  // update prompts appear on installed narrations, backend rejects the
+  // receipt, user sees a confusing error on something they already had.
+  if (!sub.expiresAt) return true
+  const expiryMs = Date.parse(sub.expiresAt)
+  if (Number.isNaN(expiryMs)) return true
+  return Date.now() < expiryMs + SUBSCRIPTION_CLOCK_SKEW_MS
 }
 
 export function hasPurchasedFromSnapshot(productId: string): boolean {

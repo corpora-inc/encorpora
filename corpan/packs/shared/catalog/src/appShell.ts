@@ -468,6 +468,30 @@ export function createAppShell(
       detail.appendChild(subtitle)
     }
 
+    // Paid-book CTA — edge case but matters: user was listening with a
+    // subscription that since expired, still has the downloaded narration
+    // playing, but wants to keep access to this book. Same Buy offer
+    // block as the Browse detail screen. Hidden on the happy path
+    // (subscriber, already owns the book, or free book).
+    const npBookProductId = getBookProductId(bookNarrations)
+    const npBookIsPaid = bookNarrations.some(n => n.purchase.type === "iap")
+    const npUserOwnsBook = npBookIsPaid && npBookProductId
+      ? hasPurchasedFromSnapshot(npBookProductId)
+      : !npBookIsPaid
+    const npIsSubscriber = isSubscriberFromSnapshot()
+    const npIapAvailable = iapAvailableFromSnapshot()
+    if (
+      npBookIsPaid &&
+      npBookProductId &&
+      !npUserOwnsBook &&
+      !npIsSubscriber &&
+      npIapAvailable
+    ) {
+      detail.appendChild(
+        createBookCta(bookNarrations, npBookProductId, () => rebuildAll())
+      )
+    }
+
     // Installed narrations
     const installedNarrs = bookNarrations.filter(n => isInstalled(n.id))
     const availableNarrs = bookNarrations.filter(n => !isInstalled(n.id))
@@ -1052,8 +1076,24 @@ export function createAppShell(
       row.style.cursor = "pointer"
       row.addEventListener("click", () => handlers.onSwitch(narration))
 
-      if (hasUpdateAvailable) {
+      // Update button gated on entitlement. Without this gate, a user
+      // whose subscription expired sees an Update button on a narration
+      // they already have — taps it, backend rejects the receipt, they
+      // get a confusing "Backend rejected this receipt" error on
+      // content they already own. Locked + installed rows keep their
+      // existing download (still playable offline) but the update
+      // prompt turns into a lock glyph until the user re-entitles.
+      if (hasUpdateAvailable && entitled) {
         actions.appendChild(createCompactUpdateButton(narration, handlers))
+      } else if (hasUpdateAvailable && locked && iapAvailable) {
+        const lock = document.createElement("span")
+        lock.className = "catalog-row-lock"
+        lock.setAttribute(
+          "aria-label",
+          "Update locked — unlock via the offer above"
+        )
+        lock.innerHTML = `<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>`
+        actions.appendChild(lock)
       }
 
       const more = document.createElement("button")

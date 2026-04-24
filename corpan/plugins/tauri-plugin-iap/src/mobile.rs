@@ -98,15 +98,4 @@ impl<R: Runtime> Iap<R> {
             .await
             .map_err(Into::into)
     }
-
-    /// Clear the local StoreKit Test session's transactions. iOS-only; only
-    /// effective when the app is running with a StoreKit Configuration
-    /// attached (debug builds via Xcode / `tauri ios dev`). On sandbox /
-    /// TestFlight / production this returns an error from the native layer.
-    pub async fn reset_test_transactions(&self) -> crate::Result<ResetTestTransactionsResponse> {
-        self.0
-            .run_mobile_plugin_async("resetTestTransactions", ())
-            .await
-            .map_err(Into::into)
-    }
 }

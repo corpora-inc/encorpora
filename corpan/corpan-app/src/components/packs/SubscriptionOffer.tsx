@@ -16,7 +16,6 @@ import {
   type StoreProduct,
 } from "@/contentPacks/purchase"
 import { DiagnosticsStrip } from "@/components/packs/DiagnosticsStrip"
-import { DevStoreKitReset } from "@/components/packs/DevStoreKitReset"
 
 const TERMS_URL = "https://encorpora.io/terms"
 const PRIVACY_URL = "https://encorpora.io/privacy"
@@ -107,7 +106,6 @@ export function SubscriptionOffer() {
         </Button>
 
         <DiagnosticsStrip onRetry={() => void refetchProducts()} />
-        <DevStoreKitReset />
 
         {legalLinks}
       </div>
@@ -222,7 +220,6 @@ export function SubscriptionOffer() {
       ) : null}
 
       <DiagnosticsStrip onRetry={() => void refetchProducts()} />
-      <DevStoreKitReset />
 
       <p className="text-[11px] text-muted-foreground leading-relaxed text-center">
         {t(

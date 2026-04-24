@@ -391,18 +391,6 @@
           "markdownDescription": "Denies the remove_listener command without any pre-configured scope."
         },
         {
-          "description": "Enables the reset_test_transactions command without any pre-configured scope.",
-          "type": "string",
-          "const": "allow-reset-test-transactions",
-          "markdownDescription": "Enables the reset_test_transactions command without any pre-configured scope."
-        },
-        {
-          "description": "Denies the reset_test_transactions command without any pre-configured scope.",
-          "type": "string",
-          "const": "deny-reset-test-transactions",
-          "markdownDescription": "Denies the reset_test_transactions command without any pre-configured scope."
-        },
-        {
           "description": "Enables the restore_purchases command without any pre-configured scope.",
           "type": "string",
           "const": "allow-restore-purchases",
@@ -415,10 +403,10 @@
           "markdownDescription": "Denies the restore_purchases command without any pre-configured scope."
         },
         {
-          "description": "Default permissions for the plugin\n#### This default permission set includes:\n\n- `allow-register-listener`\n- `allow-remove-listener`\n- `allow-initialize`\n- `allow-get-products`\n- `allow-purchase`\n- `allow-restore-purchases`\n- `allow-get-purchase-history`\n- `allow-acknowledge-purchase`\n- `allow-get-product-status`\n- `allow-reset-test-transactions`",
+          "description": "Default permissions for the plugin\n#### This default permission set includes:\n\n- `allow-register-listener`\n- `allow-remove-listener`\n- `allow-initialize`\n- `allow-get-products`\n- `allow-purchase`\n- `allow-restore-purchases`\n- `allow-get-purchase-history`\n- `allow-acknowledge-purchase`\n- `allow-get-product-status`",
           "type": "string",
           "const": "default",
-          "markdownDescription": "Default permissions for the plugin\n#### This default permission set includes:\n\n- `allow-register-listener`\n- `allow-remove-listener`\n- `allow-initialize`\n- `allow-get-products`\n- `allow-purchase`\n- `allow-restore-purchases`\n- `allow-get-purchase-history`\n- `allow-acknowledge-purchase`\n- `allow-get-product-status`\n- `allow-reset-test-transactions`"
+          "markdownDescription": "Default permissions for the plugin\n#### This default permission set includes:\n\n- `allow-register-listener`\n- `allow-remove-listener`\n- `allow-initialize`\n- `allow-get-products`\n- `allow-purchase`\n- `allow-restore-purchases`\n- `allow-get-purchase-history`\n- `allow-acknowledge-purchase`\n- `allow-get-product-status`"
         }
       ]
     }
