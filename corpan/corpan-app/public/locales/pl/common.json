@@ -331,5 +331,22 @@
     "noPurchases": "Nie znaleziono wcześniejszych zakupów.",
     "success": "Przywrócono {{count}} zakup(ów).",
     "error": "Nie udało się przywrócić zakupów."
+  },
+  "catalogPaywall": {
+    "allLanguages": "Wszystkie {{count}} języków",
+    "thisBook": "Ta książka",
+    "blurbAll": "Każde nagranie, teraz i w przyszłości. Twoje na zawsze.",
+    "blurbOne": "Twoje na zawsze.",
+    "buyWithPrice": "Kup — {{price}}",
+    "orUnlockEverything": "lub odblokuj wszystko",
+    "subMonthly": "Miesięcznie",
+    "subMonthlyPeriod": "miesięcznie",
+    "subYearly": "Rocznie",
+    "subYearlyPeriod": "rocznie · najlepsza oferta",
+    "errorHeading": "Nie można teraz połączyć z App Store.",
+    "tryAgain": "Spróbuj ponownie",
+    "pendingHeading": "Oczekiwanie na zatwierdzenie",
+    "pendingDetail": "Twój zakup czeka na zatwierdzenie (Ask to Buy lub weryfikacja bankowa). Zostanie aktywowany automatycznie po zatwierdzeniu.",
+    "noProductsError": "App Store nie zwrócił żadnych produktów. Zwykle rozwiązuje się w kilka sekund — spróbuj ponownie."
   }
 }

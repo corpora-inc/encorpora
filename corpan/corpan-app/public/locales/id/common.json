@@ -331,5 +331,22 @@
     "noPurchases": "Tidak ditemukan pembelian sebelumnya.",
     "success": "{{count}} pembelian dipulihkan.",
     "error": "Gagal memulihkan pembelian."
+  },
+  "catalogPaywall": {
+    "allLanguages": "Semua {{count}} bahasa",
+    "thisBook": "Buku ini",
+    "blurbAll": "Setiap narasi, sekarang dan ke depan. Milikmu selamanya.",
+    "blurbOne": "Milikmu selamanya.",
+    "buyWithPrice": "Beli — {{price}}",
+    "orUnlockEverything": "atau buka semua",
+    "subMonthly": "Bulanan",
+    "subMonthlyPeriod": "per bulan",
+    "subYearly": "Tahunan",
+    "subYearlyPeriod": "per tahun · paling hemat",
+    "errorHeading": "Saat ini tidak dapat menghubungi App Store.",
+    "tryAgain": "Coba lagi",
+    "pendingHeading": "Menunggu persetujuan",
+    "pendingDetail": "Pembelianmu menunggu persetujuan (Ask to Buy atau verifikasi bank). Akan aktif otomatis setelah disetujui.",
+    "noProductsError": "App Store tidak mengembalikan produk apa pun. Biasanya teratasi dalam beberapa detik — coba lagi."
   }
 }

@@ -331,5 +331,22 @@
     "noPurchases": "Предыдущие покупки не найдены.",
     "success": "Восстановлено покупок: {{count}}.",
     "error": "Не удалось восстановить покупки."
+  },
+  "catalogPaywall": {
+    "allLanguages": "Все {{count}} языков",
+    "thisBook": "Эта книга",
+    "blurbAll": "Каждая озвучка, сейчас и в будущем. Ваше навсегда.",
+    "blurbOne": "Ваше навсегда.",
+    "buyWithPrice": "Купить — {{price}}",
+    "orUnlockEverything": "или разблокировать всё",
+    "subMonthly": "Ежемесячно",
+    "subMonthlyPeriod": "в месяц",
+    "subYearly": "Ежегодно",
+    "subYearlyPeriod": "в год · выгоднее",
+    "errorHeading": "Сейчас не удалось связаться с App Store.",
+    "tryAgain": "Повторить",
+    "pendingHeading": "Ожидание одобрения",
+    "pendingDetail": "Покупка ожидает одобрения (Ask to Buy или проверка банка). Активируется автоматически после одобрения.",
+    "noProductsError": "App Store не вернул товары. Обычно решается за несколько секунд — попробуйте снова."
   }
 }

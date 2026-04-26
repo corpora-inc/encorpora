@@ -331,5 +331,22 @@
     "noPurchases": "Không tìm thấy giao dịch trước đó.",
     "success": "Đã khôi phục {{count}} giao dịch.",
     "error": "Khôi phục mua hàng thất bại."
+  },
+  "catalogPaywall": {
+    "allLanguages": "Tất cả {{count}} ngôn ngữ",
+    "thisBook": "Cuốn sách này",
+    "blurbAll": "Mọi bản tường thuật, bây giờ và mai sau. Của bạn mãi mãi.",
+    "blurbOne": "Của bạn mãi mãi.",
+    "buyWithPrice": "Mua — {{price}}",
+    "orUnlockEverything": "hoặc mở khóa tất cả",
+    "subMonthly": "Hàng tháng",
+    "subMonthlyPeriod": "mỗi tháng",
+    "subYearly": "Hàng năm",
+    "subYearlyPeriod": "mỗi năm · giá trị tốt nhất",
+    "errorHeading": "Hiện không thể kết nối với App Store.",
+    "tryAgain": "Thử lại",
+    "pendingHeading": "Đang chờ phê duyệt",
+    "pendingDetail": "Giao dịch của bạn đang chờ phê duyệt (Ask to Buy hoặc xác minh ngân hàng). Sẽ tự động kích hoạt khi được phê duyệt.",
+    "noProductsError": "App Store không trả về sản phẩm nào. Thường giải quyết trong vài giây — vui lòng thử lại."
   }
 }

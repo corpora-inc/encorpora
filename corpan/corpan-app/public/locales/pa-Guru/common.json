@@ -331,5 +331,22 @@
     "noPurchases": "ਪਿਛਲੀਆਂ ਖਰੀਦਾਂ ਨਹੀਂ ਮਿਲੀਆਂ।",
     "success": "{{count}} ਖਰੀਦ(ਾਂ) ਬਹਾਲ ਕੀਤੀਆਂ।",
     "error": "ਖਰੀਦਾਂ ਬਹਾਲ ਕਰਨ ਵਿੱਚ ਅਸਫਲ।"
+  },
+  "catalogPaywall": {
+    "allLanguages": "ਸਾਰੀਆਂ {{count}} ਭਾਸ਼ਾਵਾਂ",
+    "thisBook": "ਇਹ ਕਿਤਾਬ",
+    "blurbAll": "ਹਰ ਕਥਨ, ਹੁਣ ਅਤੇ ਭਵਿੱਖ ਵਿੱਚ। ਹਮੇਸ਼ਾ ਤੁਹਾਡਾ।",
+    "blurbOne": "ਹਮੇਸ਼ਾ ਤੁਹਾਡਾ।",
+    "buyWithPrice": "ਖਰੀਦੋ — {{price}}",
+    "orUnlockEverything": "ਜਾਂ ਸਭ ਕੁਝ ਅਨਲੌਕ ਕਰੋ",
+    "subMonthly": "ਮਾਸਿਕ",
+    "subMonthlyPeriod": "ਪ੍ਰਤੀ ਮਹੀਨਾ",
+    "subYearly": "ਸਾਲਾਨਾ",
+    "subYearlyPeriod": "ਪ੍ਰਤੀ ਸਾਲ · ਸਭ ਤੋਂ ਵਧੀਆ",
+    "errorHeading": "ਹੁਣੇ App Store ਨਾਲ ਸੰਪਰਕ ਨਹੀਂ ਹੋ ਸਕਿਆ।",
+    "tryAgain": "ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼",
+    "pendingHeading": "ਮਨਜ਼ੂਰੀ ਦੀ ਉਡੀਕ",
+    "pendingDetail": "ਤੁਹਾਡੀ ਖਰੀਦ ਮਨਜ਼ੂਰੀ ਦੀ ਉਡੀਕ ਕਰ ਰਹੀ ਹੈ (Ask to Buy ਜਾਂ ਬੈਂਕ ਪੁਸ਼ਟੀ)। ਮਨਜ਼ੂਰੀ ਮਿਲਣ 'ਤੇ ਆਟੋਮੈਟਿਕ ਚਾਲੂ ਹੋ ਜਾਵੇਗੀ।",
+    "noProductsError": "App Store ਨੇ ਕੋਈ ਉਤਪਾਦ ਵਾਪਸ ਨਹੀਂ ਕੀਤੇ। ਆਮ ਤੌਰ 'ਤੇ ਕੁਝ ਸਕਿੰਟਾਂ ਵਿੱਚ ਹੱਲ — ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ।"
   }
 }

@@ -331,5 +331,22 @@
     "noPurchases": "未找到之前的购买记录。",
     "success": "已恢复{{count}}项购买。",
     "error": "恢复购买失败。"
+  },
+  "catalogPaywall": {
+    "allLanguages": "全部 {{count}} 种语言",
+    "thisBook": "这本书",
+    "blurbAll": "每种朗读,现在和未来。永远属于你。",
+    "blurbOne": "永远属于你。",
+    "buyWithPrice": "购买 — {{price}}",
+    "orUnlockEverything": "或解锁全部",
+    "subMonthly": "月度",
+    "subMonthlyPeriod": "每月",
+    "subYearly": "年度",
+    "subYearlyPeriod": "每年 · 最划算",
+    "errorHeading": "现在无法连接到 App Store。",
+    "tryAgain": "重试",
+    "pendingHeading": "等待批准",
+    "pendingDetail": "您的购买正在等待批准 (Ask to Buy 或银行验证)。批准后将自动激活。",
+    "noProductsError": "App Store 未返回任何商品。通常几秒后解决 — 请重试。"
   }
 }

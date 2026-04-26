@@ -331,5 +331,22 @@
     "noPurchases": "لم يتم العثور على مشتريات سابقة.",
     "success": "تمت استعادة {{count}} عملية شراء.",
     "error": "فشل في استعادة المشتريات."
+  },
+  "catalogPaywall": {
+    "allLanguages": "كل اللغات الـ{{count}}",
+    "thisBook": "هذا الكتاب",
+    "blurbAll": "كل سرد، الآن وفي المستقبل. لك إلى الأبد.",
+    "blurbOne": "لك إلى الأبد.",
+    "buyWithPrice": "شراء — {{price}}",
+    "orUnlockEverything": "أو افتح كل شيء",
+    "subMonthly": "شهري",
+    "subMonthlyPeriod": "شهريًا",
+    "subYearly": "سنوي",
+    "subYearlyPeriod": "سنويًا · أفضل قيمة",
+    "errorHeading": "لم نتمكن من الاتصال بـ App Store الآن.",
+    "tryAgain": "حاول مرة أخرى",
+    "pendingHeading": "في انتظار الموافقة",
+    "pendingDetail": "عملية الشراء في انتظار الموافقة (Ask to Buy أو تحقق بنكي). سيتم التفعيل تلقائيًا بعد الموافقة.",
+    "noProductsError": "لم يُرجع App Store أي منتجات. عادة ما يحل خلال ثوانٍ — حاول مرة أخرى."
   }
 }

@@ -331,5 +331,22 @@
     "noPurchases": "کوئی پچھلی خریداری نئیں ملی۔",
     "success": "{{count}} خریداری بحال ہوئی۔",
     "error": "خریداریاں بحال کرن وچ ناکامی۔"
+  },
+  "catalogPaywall": {
+    "allLanguages": "ساریاں {{count}} بولیاں",
+    "thisBook": "ایہ کتاب",
+    "blurbAll": "ہر بیان، ہنڑ تے اگانہہ۔ ہمیش لئی تہاڈا۔",
+    "blurbOne": "ہمیش لئی تہاڈا۔",
+    "buyWithPrice": "خریدو — {{price}}",
+    "orUnlockEverything": "یا سب کجھ کھولو",
+    "subMonthly": "ماہانہ",
+    "subMonthlyPeriod": "ہر ماہ",
+    "subYearly": "سالانہ",
+    "subYearlyPeriod": "ہر سال · بہترین",
+    "errorHeading": "ہنڑے App Store نال رابطہ نئیں ہو سکیا۔",
+    "tryAgain": "دوبارہ کوشش",
+    "pendingHeading": "منظوری دی اڈیک",
+    "pendingDetail": "تہاڈی خریداری منظوری دی اڈیک کر رہی اے (Ask to Buy یا بینک تصدیق)۔ منظور ہون تے خود کار چالو ہو جائے گی۔",
+    "noProductsError": "App Store کوئی پروڈکٹ نئیں موڑیا۔ عام طور تے کجھ سکنٹاں وچ حل — دوبارہ کوشش کرو۔"
   }
 }

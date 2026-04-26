@@ -40,319 +40,522 @@ enum PurchaseStateValue: Int {
 @available(iOS 15.0, *)
 class IapPlugin: Plugin {
     private var updateListenerTask: Task<Void, Error>?
-    
+
+    /// Backoff schedule for transient empty / network failures from
+    /// Product.products(for:). iPadOS 26.4.x can return empty on the first
+    /// call after install or Apple-ID change for tens of seconds; retrying
+    /// punches through.
+    private let productFetchDelaysNs: [UInt64] = [
+        0,
+        500_000_000,
+        1_500_000_000,
+        3_500_000_000,
+    ]
+
     public override func load(webview: WKWebView) {
         super.load(webview: webview)
 
-        // Start listening for transaction updates
+        // Drain unfinished transactions on launch — without this, a
+        // reviewer's "kill app, relaunch" path can replay an old
+        // confirmation. Then keep the listener running forever for live
+        // updates (renewals, refunds, Ask-to-Buy approvals, family-sharing
+        // changes, promoted/redeemed purchases).
         updateListenerTask = Task {
+            for await result in Transaction.unfinished {
+                if case .verified(let tx) = result {
+                    await tx.finish()
+                }
+            }
             for await update in Transaction.updates {
                 await self.handleTransactionUpdate(update)
             }
         }
     }
-    
+
     deinit {
         updateListenerTask?.cancel()
     }
 
+    // MARK: - Internal helpers
+
+    /// Retry `Product.products(for:)` with backoff while the result is empty
+    /// OR a transient StoreKitError fires. Returns `.success` with whatever
+    /// products StoreKit ultimately returned (which may be `[]` if the
+    /// catalog truly doesn't have these IDs in this storefront), or
+    /// `.failure` if every attempt threw.
+    private func fetchProductsWithRetry(ids: [String]) async -> Result<[Product], Error> {
+        var lastThrown: Error? = nil
+        for (i, delayNs) in productFetchDelaysNs.enumerated() {
+            if delayNs > 0 { try? await Task.sleep(nanoseconds: delayNs) }
+            do {
+                let products = try await Product.products(for: ids)
+                if !products.isEmpty {
+                    if i > 0 {
+                        NSLog("[IapPlugin] products resolved on attempt %d/%d for %@",
+                              i + 1, productFetchDelaysNs.count, ids.joined(separator: ","))
+                    }
+                    return .success(products)
+                }
+                NSLog("[IapPlugin] Product.products empty attempt %d/%d for %@",
+                      i + 1, productFetchDelaysNs.count, ids.joined(separator: ","))
+            } catch {
+                lastThrown = error
+                NSLog("[IapPlugin] Product.products threw on attempt %d/%d: %@",
+                      i + 1, productFetchDelaysNs.count, String(describing: error))
+            }
+        }
+        if let err = lastThrown { return .failure(err) }
+        return .success([])
+    }
+
+    /// True iff the product is currently in the user's entitlements
+    /// (verified, not revoked, not expired).
+    private func isProductCurrentlyOwned(productId: String) async -> Bool {
+        for await result in Transaction.currentEntitlements {
+            if case .verified(let tx) = result, tx.productID == productId,
+               tx.revocationDate == nil,
+               (tx.expirationDate ?? .distantFuture) > Date() {
+                return true
+            }
+        }
+        return false
+    }
+
+    /// Map a thrown error to a stable code + message understood by the JS
+    /// layer. Covers every case of `Product.PurchaseError` (8 cases on iOS
+    /// 26.4) and `StoreKitError` (7 cases). Anything else falls through to
+    /// `UNKNOWN`.
+    private func errorCodeAndMessage(_ error: Error) -> (String, String) {
+        if let purchaseErr = error as? Product.PurchaseError {
+            let code: String
+            switch purchaseErr {
+            case .invalidQuantity: code = "INVALID_QUANTITY"
+            case .productUnavailable: code = "PRODUCT_UNAVAILABLE"
+            case .purchaseNotAllowed: code = "PURCHASE_NOT_ALLOWED"
+            case .ineligibleForOffer: code = "INELIGIBLE_FOR_OFFER"
+            case .invalidOfferIdentifier: code = "INVALID_OFFER_ID"
+            case .invalidOfferPrice: code = "INVALID_OFFER_PRICE"
+            case .invalidOfferSignature: code = "INVALID_OFFER_SIG"
+            case .missingOfferParameters: code = "MISSING_OFFER_PARAMS"
+            @unknown default: code = "PURCHASE_ERROR_UNKNOWN"
+            }
+            return (code, purchaseErr.localizedDescription)
+        }
+        if let skErr = error as? StoreKitError {
+            switch skErr {
+            case .unknown:
+                return ("STOREKIT_UNKNOWN", skErr.localizedDescription)
+            case .userCancelled:
+                return ("USER_CANCELLED", skErr.localizedDescription)
+            case .networkError(let urlErr):
+                return ("NETWORK_ERROR:\(urlErr.code.rawValue)", urlErr.localizedDescription)
+            case .systemError(let inner):
+                return ("SYSTEM_ERROR", String(describing: inner))
+            case .notAvailableInStorefront:
+                return ("NOT_IN_STOREFRONT", skErr.localizedDescription)
+            case .notEntitled:
+                return ("NOT_ENTITLED", skErr.localizedDescription)
+            @unknown default:
+                return ("STOREKIT_UNKNOWN", skErr.localizedDescription)
+            }
+        }
+        return ("UNKNOWN", error.localizedDescription)
+    }
+
+    private func reject(_ invoke: Invoke, code: String, message: String) {
+        invoke.reject("\(code): \(message)")
+    }
+
+    // MARK: - getProducts
+
     @objc public func getProducts(_ invoke: Invoke) async throws {
         let args = try invoke.parseArgs(GetProductsArgs.self)
 
-        do {
-            let products = try await Product.products(for: args.productIds)
-            var productsArray: [JsonObject] = []
+        guard !args.productIds.isEmpty else {
+            invoke.resolve(["products": [] as [JsonObject]])
+            return
+        }
 
-            for product in products {
-                var productDict: JsonObject = [
-                    "productId": product.id,
-                    "title": product.displayName,
-                    "description": product.description,
-                    "productType": product.type.rawValue
-                ]
-                
-                // Add pricing information
-                productDict["formattedPrice"] = product.displayPrice
-                productDict["priceCurrencyCode"] = getCurrencyCode(for: product)
-                
-                // Handle subscription-specific information
-                if product.type == .autoRenewable || product.type == .nonRenewable {
-                    if let subscription = product.subscription {
-                        var subscriptionOffers: [JsonObject] = []
+        let result = await fetchProductsWithRetry(ids: args.productIds)
+        let products: [Product]
+        switch result {
+        case .success(let ps):
+            products = ps
+        case .failure(let err):
+            let (code, msg) = errorCodeAndMessage(err)
+            reject(invoke, code: code, message: "Failed to fetch products: \(msg)")
+            return
+        }
 
-                        // Add introductory offer if available
-                        if let introOffer = subscription.introductoryOffer {
-                            let offer: JsonObject = [
-                                "offerToken": "",  // iOS doesn't use offer tokens
-                                "basePlanId": "",
-                                "offerId": introOffer.id ?? "",
-                                "pricingPhases": [[
-                                    "formattedPrice": introOffer.displayPrice,
-                                    "priceCurrencyCode": getCurrencyCode(for: product),
-                                    "priceAmountMicros": 0,  // Not available in StoreKit 2
-                                    "billingPeriod": formatSubscriptionPeriod(introOffer.period),
-                                    "billingCycleCount": introOffer.periodCount,
-                                    "recurrenceMode": 0
-                                ]]
-                            ]
-                            subscriptionOffers.append(offer)
-                        }
+        var productsArray: [JsonObject] = []
 
-                        // Add regular subscription info
-                        let regularOffer: JsonObject = [
+        for product in products {
+            var productDict: JsonObject = [
+                "productId": product.id,
+                "title": product.displayName,
+                "description": product.description,
+                "productType": product.type.rawValue,
+            ]
+
+            // Pricing
+            productDict["formattedPrice"] = product.displayPrice
+            productDict["priceCurrencyCode"] = getCurrencyCode(for: product)
+
+            // Subscription metadata
+            if product.type == .autoRenewable || product.type == .nonRenewable {
+                if let subscription = product.subscription {
+                    var subscriptionOffers: [JsonObject] = []
+
+                    if let introOffer = subscription.introductoryOffer {
+                        let offer: JsonObject = [
                             "offerToken": "",
                             "basePlanId": "",
-                            "offerId": "",
+                            "offerId": introOffer.id ?? "",
                             "pricingPhases": [[
-                                "formattedPrice": product.displayPrice,
+                                "formattedPrice": introOffer.displayPrice,
                                 "priceCurrencyCode": getCurrencyCode(for: product),
                                 "priceAmountMicros": 0,
-                                "billingPeriod": formatSubscriptionPeriod(subscription.subscriptionPeriod),
-                                "billingCycleCount": 0,
-                                "recurrenceMode": 1
-                            ]]
+                                "billingPeriod": formatSubscriptionPeriod(introOffer.period),
+                                "billingCycleCount": introOffer.periodCount,
+                                "recurrenceMode": 0,
+                            ]],
                         ]
-                        subscriptionOffers.append(regularOffer)
-                        
-                        productDict["subscriptionOfferDetails"] = subscriptionOffers
+                        subscriptionOffers.append(offer)
                     }
-                } else {
-                    // One-time purchase
-                    productDict["priceAmountMicros"] = 0  // Not available in StoreKit 2
+
+                    let regularOffer: JsonObject = [
+                        "offerToken": "",
+                        "basePlanId": "",
+                        "offerId": "",
+                        "pricingPhases": [[
+                            "formattedPrice": product.displayPrice,
+                            "priceCurrencyCode": getCurrencyCode(for: product),
+                            "priceAmountMicros": 0,
+                            "billingPeriod": formatSubscriptionPeriod(subscription.subscriptionPeriod),
+                            "billingCycleCount": 0,
+                            "recurrenceMode": 1,
+                        ]],
+                    ]
+                    subscriptionOffers.append(regularOffer)
+
+                    productDict["subscriptionOfferDetails"] = subscriptionOffers
                 }
-                
-                productsArray.append(productDict)
+            } else {
+                productDict["priceAmountMicros"] = 0
             }
-            
-            invoke.resolve(["products": productsArray])
-        } catch {
-            invoke.reject("Failed to fetch products: \(error.localizedDescription)")
+
+            productsArray.append(productDict)
         }
+
+        invoke.resolve(["products": productsArray])
     }
-    
+
+    // MARK: - purchase
+
     @objc public func purchase(_ invoke: Invoke) async throws {
         let args = try invoke.parseArgs(PurchaseArgs.self)
-        
-        do {
-            let products = try await Product.products(for: [args.productId])
-            guard let product = products.first else {
-                invoke.reject("Product not found")
+
+        // Two-tier guard against device-level payment restrictions.
+        // (1) AppStore.canMakePayments is the SK2 equivalent of
+        // SKPaymentQueue.canMakePayments() and surfaces parental-control /
+        // MDM / Screen-Time restrictions before we even build a sheet.
+        // (2) Even when true, product.purchase() can still throw
+        // .purchaseNotAllowed in a race with the user toggling controls;
+        // we catch that below.
+        guard AppStore.canMakePayments else {
+            reject(invoke, code: "PURCHASE_NOT_ALLOWED",
+                   message: "Payments are disabled on this device. Check Settings → Screen Time → Content & Privacy Restrictions.")
+            return
+        }
+
+        let fetchResult = await fetchProductsWithRetry(ids: [args.productId])
+        let products: [Product]
+        switch fetchResult {
+        case .success(let ps):
+            products = ps
+        case .failure(let err):
+            let (code, msg) = errorCodeAndMessage(err)
+            reject(invoke, code: code, message: msg)
+            return
+        }
+
+        guard let product = products.first else {
+            // Last-chance: if Product.products(for:) is empty but the user
+            // already owns this product (e.g. a dropped network on a
+            // restored device), surface ALREADY_OWNED rather than misleading
+            // PRODUCT_UNAVAILABLE. JS recognises this via looksLikeAlreadyOwned
+            // and resolves the flow as success.
+            if await isProductCurrentlyOwned(productId: args.productId) {
+                reject(invoke, code: "ALREADY_OWNED",
+                       message: "Product is already in entitlements")
                 return
             }
-            
-            // Prepare purchase options
-            var purchaseOptions: Set<Product.PurchaseOption> = []
-            
-            // Add appAccountToken if provided (must be a valid UUID)
-            if let appAccountToken = args.appAccountToken {
-                guard let uuid = UUID(uuidString: appAccountToken) else {
-                    invoke.reject("Invalid appAccountToken: must be a valid UUID string")
-                    return
-                }
-                purchaseOptions.insert(.appAccountToken(uuid))
+            reject(invoke, code: "PRODUCT_UNAVAILABLE",
+                   message: "App Store did not return product \(args.productId) after \(productFetchDelaysNs.count) attempts")
+            return
+        }
+
+        // Build purchase options
+        var purchaseOptions: Set<Product.PurchaseOption> = []
+        if let appAccountToken = args.appAccountToken {
+            guard let uuid = UUID(uuidString: appAccountToken) else {
+                reject(invoke, code: "INVALID_APP_ACCOUNT_TOKEN",
+                       message: "appAccountToken must be a valid UUID string")
+                return
             }
-            
-            // Initiate purchase with options
-            let result = purchaseOptions.isEmpty 
+            purchaseOptions.insert(.appAccountToken(uuid))
+        }
+
+        do {
+            let result = purchaseOptions.isEmpty
                 ? try await product.purchase()
                 : try await product.purchase(options: purchaseOptions)
-            
+
             switch result {
             case .success(let verification):
                 switch verification {
                 case .verified(let transaction):
-                    // Finish the transaction
+                    if #available(iOS 16.0, *) {
+                        NSLog("[IapPlugin] verified purchase productId=%@ env=%@",
+                              transaction.productID,
+                              String(describing: transaction.environment))
+                    }
                     await transaction.finish()
-
                     let purchase = try await createPurchaseObject(from: verification, product: product)
                     invoke.resolve(purchase)
 
-                case .unverified(_, _):
-                    invoke.reject("Transaction verification failed")
+                case .unverified(_, let verifyError):
+                    reject(invoke, code: "VERIFICATION_FAILED",
+                           message: String(describing: verifyError))
                 }
-                
+
             case .userCancelled:
-                invoke.reject("Purchase cancelled by user")
-                
+                reject(invoke, code: "USER_CANCELLED", message: "Purchase cancelled by user")
+
             case .pending:
-                invoke.reject("Purchase is pending")
-                
+                // Ask-to-Buy / SCA / parental approval. Not an error —
+                // the transaction will arrive on Transaction.updates if/when
+                // approved. JS surfaces this as a "waiting for approval"
+                // state.
+                reject(invoke, code: "PURCHASE_PENDING",
+                       message: "Purchase is awaiting external approval")
+
             @unknown default:
-                invoke.reject("Unknown purchase result")
+                reject(invoke, code: "PURCHASE_UNKNOWN",
+                       message: "StoreKit returned an unrecognized PurchaseResult")
             }
         } catch {
-            invoke.reject("Purchase failed: \(error.localizedDescription)")
+            let (code, msg) = errorCodeAndMessage(error)
+            reject(invoke, code: code, message: msg)
         }
     }
-    
+
+    // MARK: - restorePurchases
+
     @objc public func restorePurchases(_ invoke: Invoke) async throws {
         let args = try? invoke.parseArgs(RestorePurchasesArgs.self)
         var purchases: [JsonObject] = []
-        
-        do {
-            // Get all current entitlements
-            for await result in Transaction.currentEntitlements {
-                switch result {
-                case .verified(let transaction):
-                    if let product = try? await Product.products(for: [transaction.productID]).first {
-                        // Filter by product type if specified
-                        if let requestedType = args?.productType {
-                            let productTypeMatches: Bool
-                            switch requestedType {
-                            case "subs":
-                                productTypeMatches = (product.type == .autoRenewable || product.type == .nonRenewable)
-                            case "inapp":
-                                productTypeMatches = (product.type == .consumable || product.type == .nonConsumable)
-                            default:
-                                productTypeMatches = true
-                            }
 
-                            if productTypeMatches {
-                                let purchase = try await createPurchaseObject(from: result, product: product)
-                                purchases.append(purchase)
-                            }
-                        } else {
-                            // No filter, include all
-                            let purchase = try await createPurchaseObject(from: result, product: product)
-                            purchases.append(purchase)
-                        }
-                    }
-                case .unverified(_, _):
-                    // Skip unverified transactions
+        for await result in Transaction.currentEntitlements {
+            switch result {
+            case .verified:
+                guard case .verified(let transaction) = result else { continue }
+
+                // Per-product details; if Product.products fails for ONE
+                // product we log and skip rather than aborting the whole
+                // restore. Restore is best-effort.
+                let product: Product?
+                do {
+                    let fetched = try await Product.products(for: [transaction.productID])
+                    product = fetched.first
+                } catch {
+                    NSLog("[IapPlugin] restore: failed to fetch product %@: %@",
+                          transaction.productID, String(describing: error))
                     continue
                 }
+                guard let product = product else { continue }
+
+                if let requestedType = args?.productType {
+                    let matches: Bool
+                    switch requestedType {
+                    case "subs":
+                        matches = (product.type == .autoRenewable || product.type == .nonRenewable)
+                    case "inapp":
+                        matches = (product.type == .consumable || product.type == .nonConsumable)
+                    default:
+                        matches = true
+                    }
+                    if !matches { continue }
+                }
+
+                do {
+                    let purchase = try await createPurchaseObject(from: result, product: product)
+                    purchases.append(purchase)
+                } catch {
+                    NSLog("[IapPlugin] restore: failed to build purchase object for %@: %@",
+                          transaction.productID, String(describing: error))
+                }
+
+            case .unverified:
+                continue
             }
-            
-            invoke.resolve(["purchases": purchases])
-        } catch {
-            invoke.reject("Failed to restore purchases: \(error.localizedDescription)")
         }
+
+        invoke.resolve(["purchases": purchases])
     }
+
+    // MARK: - getPurchaseHistory
 
     @objc public func getPurchaseHistory(_ invoke: Invoke) async throws {
         var history: [JsonObject] = []
-        
-        do {
-            // Get all transactions (including expired ones)
-            for await result in Transaction.all {
-                switch result {
-                case .verified(let transaction):
-                    let record: JsonObject = [
-                        "productId": transaction.productID,
-                        "purchaseTime": Int(transaction.purchaseDate.timeIntervalSince1970 * 1000),
-                        "purchaseToken": String(transaction.id),
-                        "quantity": transaction.purchasedQuantity,
-                        "originalJson": "",  // Not available in StoreKit 2
-                        "signature": ""      // Not available in StoreKit 2
-                    ]
-                    history.append(record)
-                case .unverified(_, _):
-                    continue
-                }
+
+        for await result in Transaction.all {
+            switch result {
+            case .verified(let transaction):
+                let record: JsonObject = [
+                    "productId": transaction.productID,
+                    "purchaseTime": Int(transaction.purchaseDate.timeIntervalSince1970 * 1000),
+                    "purchaseToken": String(transaction.id),
+                    "quantity": transaction.purchasedQuantity,
+                    "originalJson": "",
+                    "signature": "",
+                ]
+                history.append(record)
+            case .unverified:
+                continue
             }
-            
-            invoke.resolve(["history": history])
-        } catch {
-            invoke.reject("Failed to get purchase history: \(error.localizedDescription)")
         }
+
+        invoke.resolve(["history": history])
     }
-    
+
+    // MARK: - acknowledgePurchase
+
     @objc public func acknowledgePurchase(_ invoke: Invoke) throws {
-        // iOS automatically acknowledges purchases, so this is a no-op
+        // iOS auto-acknowledges via transaction.finish().
         invoke.resolve(["success": true])
     }
 
-    
+    // MARK: - getProductStatus
+
     @objc public func getProductStatus(_ invoke: Invoke) async throws {
         let args = try invoke.parseArgs(GetProductStatusArgs.self)
 
         var statusResult: JsonObject = [
             "productId": args.productId,
-            "isOwned": false
+            "isOwned": false,
         ]
-        
-        // Check current entitlements for the specific product
-        for await result in Transaction.currentEntitlements {
-            switch result {
-            case .verified(let transaction):
-                if transaction.productID == args.productId {
-                    statusResult["isOwned"] = true
-                    statusResult["purchaseTime"] = Int(transaction.purchaseDate.timeIntervalSince1970 * 1000)
-                    statusResult["purchaseToken"] = String(transaction.id)
-                    statusResult["isAcknowledged"] = true  // Always true on iOS
-                    
-                    // Check if expired/revoked
-                    if let revocationDate = transaction.revocationDate {
-                        statusResult["purchaseState"] = PurchaseStateValue.canceled.rawValue
-                        statusResult["isOwned"] = false
-                        statusResult["expirationTime"] = Int(revocationDate.timeIntervalSince1970 * 1000)
-                    } else if let expirationDate = transaction.expirationDate {
-                        if expirationDate < Date() {
+
+        // Transaction.latest(for:) is more efficient than iterating
+        // currentEntitlements when we only care about one product.
+        guard let latest = await Transaction.latest(for: args.productId) else {
+            invoke.resolve(statusResult)
+            return
+        }
+        guard case .verified(let transaction) = latest else {
+            // Unverified transaction — treat as not-owned but log so a
+            // verification failure isn't silent.
+            NSLog("[IapPlugin] getProductStatus: latest transaction for %@ is unverified",
+                  args.productId)
+            invoke.resolve(statusResult)
+            return
+        }
+
+        statusResult["isOwned"] = true
+        statusResult["purchaseTime"] = Int(transaction.purchaseDate.timeIntervalSince1970 * 1000)
+        statusResult["purchaseToken"] = String(transaction.id)
+        statusResult["isAcknowledged"] = true
+        if #available(iOS 16.0, *) {
+            statusResult["environment"] = String(describing: transaction.environment)
+        }
+
+        if let revocationDate = transaction.revocationDate {
+            statusResult["purchaseState"] = PurchaseStateValue.canceled.rawValue
+            statusResult["isOwned"] = false
+            statusResult["expirationTime"] = Int(revocationDate.timeIntervalSince1970 * 1000)
+        } else if let expirationDate = transaction.expirationDate {
+            if expirationDate < Date() {
+                statusResult["purchaseState"] = PurchaseStateValue.canceled.rawValue
+                statusResult["isOwned"] = false
+            } else {
+                statusResult["purchaseState"] = PurchaseStateValue.purchased.rawValue
+            }
+            statusResult["expirationTime"] = Int(expirationDate.timeIntervalSince1970 * 1000)
+        } else {
+            statusResult["purchaseState"] = PurchaseStateValue.purchased.rawValue
+        }
+
+        // Subscription renewal status — fetch product (with retry on transient
+        // empty), check status, exhaustively map RenewalState. RenewalState
+        // is a RawRepresentable struct, not an enum — we map known states
+        // and fall through `default` for any future cases.
+        let productFetch = await fetchProductsWithRetry(ids: [args.productId])
+        if case .success(let products) = productFetch,
+           let product = products.first,
+           product.type == .autoRenewable {
+            do {
+                if let statuses = try await product.subscription?.status {
+                    for status in statuses {
+                        switch status.state {
+                        case .subscribed, .inGracePeriod, .inBillingRetryPeriod:
+                            statusResult["isAutoRenewing"] = true
+                            statusResult["purchaseState"] = PurchaseStateValue.purchased.rawValue
+                            statusResult["isOwned"] = true
+                        case .expired, .revoked:
+                            statusResult["isAutoRenewing"] = false
                             statusResult["purchaseState"] = PurchaseStateValue.canceled.rawValue
                             statusResult["isOwned"] = false
-                        } else {
-                            statusResult["purchaseState"] = PurchaseStateValue.purchased.rawValue
+                        default:
+                            // Unknown future state — be conservative.
+                            statusResult["isAutoRenewing"] = false
+                            statusResult["isOwned"] = false
                         }
-                        statusResult["expirationTime"] = Int(expirationDate.timeIntervalSince1970 * 1000)
-                    } else {
-                        statusResult["purchaseState"] = PurchaseStateValue.purchased.rawValue
+                        break
                     }
-                    
-                    // Check subscription renewal status if it's a subscription
-                    if let product = try? await Product.products(for: [args.productId]).first {
-                        if product.type == .autoRenewable {
-                            // Check subscription status
-                            if let statuses = try? await product.subscription?.status {
-                                for status in statuses {
-                                    if status.state == .subscribed {
-                                        statusResult["isAutoRenewing"] = true
-                                    } else if status.state == .expired {
-                                        statusResult["isAutoRenewing"] = false
-                                        statusResult["purchaseState"] = PurchaseStateValue.canceled.rawValue
-                                        statusResult["isOwned"] = false
-                                    } else if status.state == .inGracePeriod {
-                                        statusResult["isAutoRenewing"] = true
-                                        statusResult["purchaseState"] = PurchaseStateValue.purchased.rawValue
-                                    } else {
-                                        statusResult["isAutoRenewing"] = false
-                                    }
-                                    break
-                                }
-                            }
-                        }
-                    }
-                    
-                    break
                 }
-            case .unverified(_, _):
-                // Skip unverified transactions
-                continue
+            } catch {
+                NSLog("[IapPlugin] getProductStatus: subscription.status threw for %@: %@",
+                      args.productId, String(describing: error))
             }
         }
-        
+
         invoke.resolve(statusResult)
     }
-    
+
+    // MARK: - Transaction.updates handler
+
     private func handleTransactionUpdate(_ result: VerificationResult<Transaction>) async {
         switch result {
         case .verified(let transaction):
-            // Get product details
-            if let product = try? await Product.products(for: [transaction.productID]).first {
-                if let purchase = try? await createPurchaseObject(from: result, product: product) {
-                    // Emit event - convert to JSObject-compatible format
-                    trigger("purchaseUpdated", data: purchase as! JSObject)
-                }
+            if #available(iOS 16.0, *) {
+                NSLog("[IapPlugin] Transaction.updates verified productId=%@ env=%@",
+                      transaction.productID,
+                      String(describing: transaction.environment))
             }
-
-            // Always finish transactions
+            // Best-effort emit to JS. fetchProducts may transiently return
+            // empty during a renewal storm — log but still finish the txn.
+            do {
+                let products = try await Product.products(for: [transaction.productID])
+                if let product = products.first {
+                    if let purchase = try? await createPurchaseObject(from: result, product: product) {
+                        trigger("purchaseUpdated", data: purchase as! JSObject)
+                    }
+                }
+            } catch {
+                NSLog("[IapPlugin] Transaction.updates: fetch product failed for %@: %@",
+                      transaction.productID, String(describing: error))
+            }
             await transaction.finish()
 
-        case .unverified(_, _):
-            // Handle unverified transaction
-            break
+        case .unverified(let transaction, let verifyError):
+            NSLog("[IapPlugin] Transaction.updates unverified for %@: %@",
+                  transaction.productID, String(describing: verifyError))
+            // Don't finish unverified transactions; Apple may retry.
         }
     }
-    
+
+    // MARK: - Helpers for createPurchaseObject
+
     private func createPurchaseObject(from verificationResult: VerificationResult<Transaction>, product: Product) async throws -> JsonObject {
         guard case .verified(let transaction) = verificationResult else {
             throw NSError(domain: "IapPlugin", code: -1, userInfo: [NSLocalizedDescriptionKey: "Transaction not verified"])
@@ -360,20 +563,25 @@ class IapPlugin: Plugin {
 
         var isAutoRenewing = false
 
-        // Check if it's an auto-renewable subscription
         if product.type == .autoRenewable {
-            // Check subscription status
-            if let statuses = try? await product.subscription?.status {
-                for status in statuses {
-                    if status.state == .subscribed {
-                        isAutoRenewing = true
+            do {
+                if let statuses = try await product.subscription?.status {
+                    for status in statuses {
+                        switch status.state {
+                        case .subscribed, .inGracePeriod, .inBillingRetryPeriod:
+                            isAutoRenewing = true
+                        default:
+                            isAutoRenewing = false
+                        }
                         break
                     }
                 }
+            } catch {
+                NSLog("[IapPlugin] subscription.status threw: %@", String(describing: error))
             }
         }
 
-        return [
+        var purchase: JsonObject = [
             "orderId": String(transaction.id),
             "originalId": String(transaction.originalID),
             "jwsRepresentation": verificationResult.jwsRepresentation,
@@ -383,12 +591,18 @@ class IapPlugin: Plugin {
             "purchaseToken": String(transaction.id),
             "purchaseState": transaction.revocationDate == nil ? PurchaseStateValue.purchased.rawValue : PurchaseStateValue.canceled.rawValue,
             "isAutoRenewing": isAutoRenewing,
-            "isAcknowledged": true,  // Always true on iOS
-            "originalJson": "",      // Not available in StoreKit 2
-            "signature": ""          // Not available in StoreKit 2
+            "isAcknowledged": true,
+            "originalJson": "",
+            "signature": "",
         ]
+
+        if #available(iOS 16.0, *) {
+            purchase["environment"] = String(describing: transaction.environment)
+        }
+
+        return purchase
     }
-    
+
     private func formatSubscriptionPeriod(_ period: Product.SubscriptionPeriod) -> String {
         switch period.unit {
         case .day:
@@ -403,12 +617,11 @@ class IapPlugin: Plugin {
             return "P1M"
         }
     }
-    
+
     private func getCurrencyCode(for product: Product) -> String {
         if #available(iOS 16.0, *) {
             return product.priceFormatStyle.locale.currency?.identifier ?? ""
         } else {
-            // Fallback for iOS 15: currency code not directly available
             return ""
         }
     }
@@ -419,25 +632,24 @@ func initPlugin() -> Plugin {
     if #available(iOS 15.0, *) {
         return IapPlugin()
     } else {
-        // Return a dummy plugin for older iOS versions
         class DummyPlugin: Plugin {
             @objc func getProducts(_ invoke: Invoke) {
-                invoke.reject("IAP requires iOS 15.0 or later")
+                invoke.reject("NOT_ENTITLED: IAP requires iOS 15.0 or later")
             }
             @objc func purchase(_ invoke: Invoke) {
-                invoke.reject("IAP requires iOS 15.0 or later")
+                invoke.reject("NOT_ENTITLED: IAP requires iOS 15.0 or later")
             }
             @objc func restorePurchases(_ invoke: Invoke) {
-                invoke.reject("IAP requires iOS 15.0 or later")
+                invoke.reject("NOT_ENTITLED: IAP requires iOS 15.0 or later")
             }
             @objc func getPurchaseHistory(_ invoke: Invoke) {
-                invoke.reject("IAP requires iOS 15.0 or later")
+                invoke.reject("NOT_ENTITLED: IAP requires iOS 15.0 or later")
             }
             @objc func acknowledgePurchase(_ invoke: Invoke) {
-                invoke.reject("IAP requires iOS 15.0 or later")
+                invoke.reject("NOT_ENTITLED: IAP requires iOS 15.0 or later")
             }
             @objc func getProductStatus(_ invoke: Invoke) {
-                invoke.reject("IAP requires iOS 15.0 or later")
+                invoke.reject("NOT_ENTITLED: IAP requires iOS 15.0 or later")
             }
         }
         return DummyPlugin()

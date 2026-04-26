@@ -11,15 +11,21 @@ export type SubscriptionState = {
 }
 
 type EntitlementState = {
-  /** Product IDs of individually purchased packs */
+  /**
+   * Product IDs of individually purchased packs — IN-MEMORY ONLY this
+   * session. NOT persisted. Refreshed every time the paywall queries the
+   * platform (no localStorage fallback).
+   */
   purchasedProducts: string[]
-  /** Active subscription info */
+  /**
+   * Active subscription info — IN-MEMORY ONLY. Same rationale.
+   */
   subscription: SubscriptionState
-  /** Timestamp of last entitlement refresh */
+  /** Timestamp of last entitlement refresh (in-memory hint) */
   lastRefreshed: number | null
-  /** Detected platform — null until getPlatform() resolves */
+  /** Detected platform — null until getPlatform() resolves. PERSISTED. */
   platform: string | null
-  /** Whether IAP is available on this platform */
+  /** Whether IAP is available on this platform. PERSISTED. */
   iapAvailable: boolean
 
   // Actions
@@ -28,9 +34,6 @@ type EntitlementState = {
   clearSubscription: () => void
   setLastRefreshed: (ts: number) => void
   setPlatform: (platform: string) => void
-
-  /** Check if user is entitled to a product (purchased or subscribed) */
-  isEntitled: (productId: string) => boolean
 
   /** Clear all entitlements (for testing/debug) */
   clearEntitlements: () => void
@@ -45,32 +48,9 @@ export const EMPTY_SUBSCRIPTION: SubscriptionState = {
   autoRenew: false,
 }
 
-/**
- * 60s clock-skew tolerance when comparing `expiresAt` to local time — device
- * clocks drift, and sandbox StoreKit sometimes returns expiries a few seconds
- * in the past.
- */
-const SUBSCRIPTION_CLOCK_SKEW_MS = 60_000
-
-/**
- * Expiry-aware check — `active: true` alone is not enough; the `expiresAt`
- * timestamp must be in the future (or null, for just-purchased state awaiting
- * backend confirmation).
- *
- * Use this everywhere UI branches on "is the user currently subscribed" so we
- * never leave the paywall hidden past a sandbox expiry.
- */
-export function isSubscriptionCurrentlyActive(sub: SubscriptionState): boolean {
-  if (!sub.active) return false
-  if (!sub.expiresAt) return true
-  const expiryMs = Date.parse(sub.expiresAt)
-  if (Number.isNaN(expiryMs)) return true
-  return Date.now() < expiryMs + SUBSCRIPTION_CLOCK_SKEW_MS
-}
-
 export const useEntitlementStore = create<EntitlementState>()(
   persist(
-    (set, get) => ({
+    (set) => ({
       purchasedProducts: [],
       subscription: EMPTY_SUBSCRIPTION,
       lastRefreshed: null,
@@ -102,15 +82,6 @@ export const useEntitlementStore = create<EntitlementState>()(
         set({ lastRefreshed: ts })
       },
 
-      isEntitled: (productId) => {
-        const state = get()
-        // Subscribers have access to everything — but the subscription must
-        // be genuinely current, not just flagged active in stale local state.
-        if (isSubscriptionCurrentlyActive(state.subscription)) return true
-        // Check individual purchases
-        return state.purchasedProducts.includes(productId)
-      },
-
       clearEntitlements: () => {
         set({
           purchasedProducts: [],
@@ -122,14 +93,10 @@ export const useEntitlementStore = create<EntitlementState>()(
     {
       name: "corpan-entitlements-v1",
       storage: createJSONStorage(() => localStorage),
+      // Only persist device-derived facts — NOT entitlement state. The
+      // entitlement state is in-memory only this session; every paywall
+      // render queries the platform fresh.
       partialize: (state) => ({
-        purchasedProducts: state.purchasedProducts,
-        subscription: state.subscription,
-        lastRefreshed: state.lastRefreshed,
-        // Persisted so the reader pack (which only sees localStorage, not the
-        // React store's in-memory state) can resolve iapAvailable/platform on
-        // first paint. App.tsx still calls getPlatform() each launch and
-        // overwrites these with fresh values.
         platform: state.platform,
         iapAvailable: state.iapAvailable,
       }),

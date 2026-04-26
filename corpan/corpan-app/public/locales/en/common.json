@@ -331,5 +331,22 @@
     "noPurchases": "No previous purchases found.",
     "success": "Restored {{count}} purchase(s).",
     "error": "Failed to restore purchases."
+  },
+  "catalogPaywall": {
+    "allLanguages": "All {{count}} languages",
+    "thisBook": "This book",
+    "blurbAll": "Every narration, now and future. Yours forever.",
+    "blurbOne": "Yours forever.",
+    "buyWithPrice": "Buy — {{price}}",
+    "orUnlockEverything": "or unlock everything",
+    "subMonthly": "Monthly",
+    "subMonthlyPeriod": "per month",
+    "subYearly": "Yearly",
+    "subYearlyPeriod": "per year · best value",
+    "errorHeading": "We couldn't load the App Store right now.",
+    "tryAgain": "Try again",
+    "pendingHeading": "Waiting for approval",
+    "pendingDetail": "Your purchase is awaiting approval (Ask to Buy or bank verification). It will activate automatically once approved.",
+    "noProductsError": "App Store didn't return any products. This usually clears in a few seconds — please try again."
   }
 }

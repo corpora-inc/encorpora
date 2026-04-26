@@ -331,5 +331,22 @@
     "noPurchases": "未找到先前的購買記錄。",
     "success": "已恢復{{count}}項購買。",
     "error": "恢復購買失敗。"
+  },
+  "catalogPaywall": {
+    "allLanguages": "全部 {{count}} 種語言",
+    "thisBook": "這本書",
+    "blurbAll": "每種朗讀,現在和未來。永遠屬於你。",
+    "blurbOne": "永遠屬於你。",
+    "buyWithPrice": "購買 — {{price}}",
+    "orUnlockEverything": "或解鎖全部",
+    "subMonthly": "月度",
+    "subMonthlyPeriod": "每月",
+    "subYearly": "年度",
+    "subYearlyPeriod": "每年 · 最划算",
+    "errorHeading": "現在無法連接到 App Store。",
+    "tryAgain": "重試",
+    "pendingHeading": "等待批准",
+    "pendingDetail": "您的購買正在等待批准 (Ask to Buy 或銀行驗證)。批准後將自動啟用。",
+    "noProductsError": "App Store 未返回任何商品。通常幾秒後解決 — 請重試。"
   }
 }

@@ -331,5 +331,22 @@
     "noPurchases": "کوئی پچھلی خریداری نہیں ملی۔",
     "success": "{{count}} خریداری بحال ہوئی۔",
     "error": "خریداریاں بحال کرنے میں ناکامی۔"
+  },
+  "catalogPaywall": {
+    "allLanguages": "تمام {{count}} زبانیں",
+    "thisBook": "یہ کتاب",
+    "blurbAll": "ہر بیان، اب اور مستقبل میں۔ ہمیشہ کے لیے آپ کا۔",
+    "blurbOne": "ہمیشہ کے لیے آپ کا۔",
+    "buyWithPrice": "خریدیں — {{price}}",
+    "orUnlockEverything": "یا سب کچھ کھولیں",
+    "subMonthly": "ماہانہ",
+    "subMonthlyPeriod": "ماہانہ",
+    "subYearly": "سالانہ",
+    "subYearlyPeriod": "سالانہ · بہترین قیمت",
+    "errorHeading": "اس وقت App Store تک رسائی ممکن نہیں ہے۔",
+    "tryAgain": "دوبارہ کوشش کریں",
+    "pendingHeading": "منظوری کا انتظار",
+    "pendingDetail": "آپ کی خریداری منظوری کے انتظار میں ہے (Ask to Buy یا بینک تصدیق)۔ منظور ہونے پر خودکار طور پر فعال ہو جائے گی۔",
+    "noProductsError": "App Store نے کوئی پروڈکٹ واپس نہیں کیا۔ عام طور پر چند سیکنڈ میں حل ہو جاتا ہے — دوبارہ کوشش کریں۔"
   }
 }

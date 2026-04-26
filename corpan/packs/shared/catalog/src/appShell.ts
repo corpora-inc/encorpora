@@ -23,15 +23,15 @@ import {
 } from "./searchFilter"
 import { hasUpdate } from "./versionUtil"
 import {
-  isEntitledToNarration,
-  iapAvailableFromSnapshot,
-  isSubscriberFromSnapshot,
-  hasPurchasedFromSnapshot,
   purchaseBookProduct,
   purchaseSubscriptionProduct,
   fetchStoreProducts,
+  getReaderPlatform,
+  requestRestorePurchases,
   SUBSCRIPTION_MONTHLY_ID,
   SUBSCRIPTION_ANNUAL_ID,
+  type PurchaseOutcome,
+  type StoreProduct,
 } from "./purchaseManager"
 import {
   createCommandDrawer,
@@ -43,6 +43,35 @@ import { showToast } from "../../ui/toast"
 import type { InstallResult } from "./installManager"
 import { drawerStore } from "../../state/drawerStore"
 import { recordNarrationUse } from "../../state/narrationHistoryStore"
+
+/**
+ * Translate via the main app's i18next instance, exposed as
+ * `window.__corpanI18n` from `corpan-app/src/i18n.ts`. Falls back to the
+ * default value if i18next isn't loaded (e.g. standalone reader dev mode).
+ *
+ * Every user-facing string in this file MUST go through this helper.
+ */
+type CorpanI18n = {
+  t: (key: string, options?: Record<string, unknown>) => string
+}
+
+function tt(key: string, defaultValue: string, params?: Record<string, unknown>): string {
+  const i = (window as unknown as { __corpanI18n?: CorpanI18n }).__corpanI18n
+  if (i && typeof i.t === "function") {
+    try {
+      const result = i.t(key, { defaultValue, ...params })
+      if (typeof result === "string" && result.length > 0) return result
+    } catch {
+      /* fall through to default */
+    }
+  }
+  // Apply param interpolation manually for fallback path so callers can rely
+  // on `{{count}}` etc. resolving even when i18next is absent.
+  if (params) {
+    return defaultValue.replace(/\{\{(\w+)\}\}/g, (_, k) => String(params[k] ?? ""))
+  }
+  return defaultValue
+}
 
 // V2 catalog includes premium packs; old readers use catalog.json (free only)
 const DEFAULT_CDN_URL = "https://d38iwc9748jekz.cloudfront.net/catalog-v2.json"
@@ -95,6 +124,197 @@ export function createAppShell(
 
   forceHydrate(libraryStore, "corpan-library")
   forceHydrate(drawerStore, drawerKey)
+
+  // ---------------------------------------------------------------------
+  // Live entitlement state — IN-MEMORY ONLY, never persisted.
+  //
+  // Refreshed on:
+  //   - mount (immediately after createAppShell returns)
+  //   - visibilitychange (foregrounding the app)
+  //   - corpan:purchase-recorded events (post-buy from reader)
+  //   - corpan:subscription-recorded events (post-subscribe from reader)
+  //   - corpan:restore-purchases-completed events (after main app finishes
+  //     a Restore Purchases flow it dispatches this back at the reader)
+  //
+  // Source of truth: `plugin:iap|restore_purchases` for both inapp and subs.
+  // That call iterates Transaction.currentEntitlements internally, which
+  // is a non-network local query — fast and authoritative.
+  //
+  // While `loaded === false` (initial load and during refresh), all UI that
+  // gates on entitlement renders skeletons. We never fall back to a
+  // persisted snapshot — if the platform query fails, the UI shows that
+  // it failed.
+  // ---------------------------------------------------------------------
+  type EntitlementSnapshot = {
+    loaded: boolean
+    iapAvailable: boolean
+    subscribed: boolean
+    ownedBooks: Set<string>
+    error: string | null
+  }
+
+  let entitlements: EntitlementSnapshot = {
+    loaded: false,
+    iapAvailable: false,
+    subscribed: false,
+    ownedBooks: new Set(),
+    error: null,
+  }
+
+  const entitlementListeners = new Set<() => void>()
+  function notifyEntitlementListeners(): void {
+    for (const fn of entitlementListeners) {
+      try { fn() } catch (err) { console.warn("[appShell] entitlement listener threw:", err) }
+    }
+  }
+
+  function entitlementsLoaded(): boolean { return entitlements.loaded }
+  function iapAvailableSync(): boolean { return entitlements.iapAvailable }
+  function isSubscriberSync(): boolean { return entitlements.subscribed }
+  function ownsBookSync(productId: string): boolean { return entitlements.ownedBooks.has(productId) }
+
+  function isEntitledToNarrationSync(n: { purchase: { type: string; productId?: string | null } }): boolean {
+    if (n.purchase.type === "free") return true
+    if (n.purchase.type !== "iap") return false
+    if (entitlements.subscribed) return true
+    return n.purchase.productId ? entitlements.ownedBooks.has(n.purchase.productId) : false
+  }
+
+  let entitlementsRefreshing = false
+  let entitlementRefreshSeq = 0
+  async function refreshEntitlements(reason: string = "unspecified"): Promise<void> {
+    if (entitlementsRefreshing) {
+      console.info(`[appShell.entitlements] refresh skipped (already in flight) — reason=${reason}`)
+      return
+    }
+    entitlementsRefreshing = true
+    const seq = ++entitlementRefreshSeq
+    const t0 = Date.now()
+    try {
+      const platform = getReaderPlatform()
+      const iapAvailable =
+        platform === "ios" ||
+        platform === "android" ||
+        platform === "macos" ||
+        platform === "windows"
+
+      console.info(
+        `[appShell.entitlements] refresh #${seq} START — reason=${reason} platform=${platform ?? "null"} iapAvailable=${iapAvailable}`
+      )
+
+      if (!iapAvailable) {
+        entitlements = {
+          loaded: true,
+          iapAvailable: false,
+          subscribed: false,
+          ownedBooks: new Set(),
+          error: null,
+        }
+        console.info(
+          `[appShell.entitlements] refresh #${seq} DONE (no IAP) — ${Date.now() - t0}ms`
+        )
+        notifyEntitlementListeners()
+        return
+      }
+
+      const w = window as Window & {
+        __TAURI_INTERNALS__?: {
+          invoke: (cmd: string, args?: Record<string, unknown>) => Promise<unknown>
+        }
+      }
+      const invoke = w.__TAURI_INTERNALS__?.invoke
+      if (!invoke) {
+        console.warn(
+          `[appShell.entitlements] refresh #${seq} ABORT — no Tauri invoke available`
+        )
+        entitlements = {
+          loaded: true,
+          iapAvailable: false,
+          subscribed: false,
+          ownedBooks: new Set(),
+          error: null,
+        }
+        notifyEntitlementListeners()
+        return
+      }
+
+      type RawPurchase = {
+        productId?: string
+        orderId?: string
+        id?: string
+        environment?: string
+      }
+      const fetchType = async (
+        productType: "inapp" | "subs"
+      ): Promise<RawPurchase[] | { error: string }> => {
+        try {
+          const r = (await invoke("plugin:iap|restore_purchases", {
+            payload: { productType },
+          })) as { purchases?: RawPurchase[] }
+          const arr = r?.purchases ?? []
+          console.info(
+            `[appShell.entitlements] refresh #${seq} restore_purchases(${productType}) →`,
+            arr.length,
+            "items:",
+            arr.map((p) => ({
+              productId: p.productId,
+              orderId: p.orderId ?? p.id,
+              env: p.environment,
+            }))
+          )
+          return arr
+        } catch (err) {
+          const msg = err instanceof Error ? err.message : String(err)
+          console.error(
+            `[appShell.entitlements] refresh #${seq} restore_purchases(${productType}) FAILED:`,
+            msg
+          )
+          return { error: msg }
+        }
+      }
+
+      const [inappRes, subsRes] = await Promise.all([fetchType("inapp"), fetchType("subs")])
+
+      // If BOTH calls errored, surface the error. If one succeeded, we
+      // trust its answer for that product type and treat the other as
+      // empty.
+      const inappArr = Array.isArray(inappRes) ? inappRes : []
+      const subsArr = Array.isArray(subsRes) ? subsRes : []
+      const bothErrored = !Array.isArray(inappRes) && !Array.isArray(subsRes)
+
+      const ownedBooks = new Set<string>()
+      for (const p of inappArr) {
+        if (p?.productId) ownedBooks.add(p.productId)
+      }
+
+      let subscribed = false
+      for (const p of subsArr) {
+        if (p?.productId === SUBSCRIPTION_MONTHLY_ID || p?.productId === SUBSCRIPTION_ANNUAL_ID) {
+          subscribed = true
+          break
+        }
+      }
+
+      const errorMsg = bothErrored
+        ? ((inappRes as { error: string }).error || (subsRes as { error: string }).error)
+        : null
+
+      console.info(
+        `[appShell.entitlements] refresh #${seq} RESULT — subscribed=${subscribed} ownedBooks=[${[...ownedBooks].join(", ")}] error=${errorMsg ?? "none"} ${Date.now() - t0}ms`
+      )
+
+      entitlements = {
+        loaded: true,
+        iapAvailable: true,
+        subscribed,
+        ownedBooks,
+        error: errorMsg,
+      }
+      notifyEntitlementListeners()
+    } finally {
+      entitlementsRefreshing = false
+    }
+  }
 
   let disposed = false
   let readerInstance: { dispose: () => void; isPlaying?: () => boolean } | null = null
@@ -195,9 +415,9 @@ export function createAppShell(
     getActiveBookId,
     getInstalled: () => listInstalled(),
     getCatalog: () => allNarrations,
-    isIapAvailable: () => iapAvailableFromSnapshot(),
-    isSubscriber: () => isSubscriberFromSnapshot(),
-    ownsBook: (productId: string) => hasPurchasedFromSnapshot(productId),
+    isIapAvailable: () => iapAvailableSync(),
+    isSubscriber: () => isSubscriberSync(),
+    ownsBook: (productId: string) => ownsBookSync(productId),
     getLanguageName: (code: string) => getLanguageName(code),
     onSwitch: (id: string) => switchToNarration(id, false),
     onInstallAndSwitch: (entry: CatalogNarrationEntry) => installAndSwitchNarration(entry),
@@ -306,6 +526,45 @@ export function createAppShell(
       switchToNarration(state.currentNarrationId, false)
     }
   })
+
+  // -----------------------------------------------------------------------
+  // Entitlement refresh wiring
+  // -----------------------------------------------------------------------
+  // Refresh entitlements on:
+  //   - mount (immediately, fire-and-forget)
+  //   - visibilitychange to "visible" (with 30s throttle)
+  //   - corpan:purchase-recorded (immediate)
+  //   - corpan:subscription-recorded (immediate)
+  //   - corpan:restore-purchases-completed (immediate)
+  //
+  // After every refresh, rebuild the visible UI so paywalls / lock icons
+  // / subscription badges reflect the new state.
+  let lastEntitlementRefreshAt = 0
+  const ENTITLEMENT_REFRESH_THROTTLE_MS = 30_000
+
+  function entitlementChanged(): void {
+    rebuildAll()
+  }
+  entitlementListeners.add(entitlementChanged)
+
+  void refreshEntitlements("mount")
+
+  const onVisibilityChange = (): void => {
+    if (document.visibilityState !== "visible") return
+    const now = Date.now()
+    if (now - lastEntitlementRefreshAt < ENTITLEMENT_REFRESH_THROTTLE_MS) return
+    lastEntitlementRefreshAt = now
+    void refreshEntitlements("visibilitychange")
+  }
+  document.addEventListener("visibilitychange", onVisibilityChange)
+
+  const onPurchaseEvent = (e: Event): void => {
+    lastEntitlementRefreshAt = Date.now()
+    void refreshEntitlements(`event:${e.type}`)
+  }
+  window.addEventListener("corpan:purchase-recorded", onPurchaseEvent)
+  window.addEventListener("corpan:subscription-recorded", onPurchaseEvent)
+  window.addEventListener("corpan:restore-purchases-completed", onPurchaseEvent)
 
   // Persist scoped drawer state on change
   const persistUnsub = drawerStore.subscribe(() => {
@@ -476,11 +735,16 @@ export function createAppShell(
     const npBookProductId = getBookProductId(bookNarrations)
     const npBookIsPaid = bookNarrations.some(n => n.purchase.type === "iap")
     const npUserOwnsBook = npBookIsPaid && npBookProductId
-      ? hasPurchasedFromSnapshot(npBookProductId)
+      ? ownsBookSync(npBookProductId)
       : !npBookIsPaid
-    const npIsSubscriber = isSubscriberFromSnapshot()
-    const npIapAvailable = iapAvailableFromSnapshot()
+    const npIsSubscriber = isSubscriberSync()
+    const npIapAvailable = iapAvailableSync()
+    // Don't show any paywall until entitlements have loaded — otherwise
+    // a subscriber sees the Buy CTA flash for a frame before the live
+    // state lands. With `entitlementsLoaded()` gate, the slot stays empty
+    // until we know the truth.
     if (
+      entitlementsLoaded() &&
       npBookIsPaid &&
       npBookProductId &&
       !npUserOwnsBook &&
@@ -812,8 +1076,9 @@ export function createAppShell(
     }
 
     if (premiumProductIds.size > 0) {
-      void fetchStoreProducts([...premiumProductIds], "inapp").then((products) => {
-        for (const p of products) {
+      void fetchStoreProducts([...premiumProductIds], "inapp").then((res) => {
+        if (!res.ok) return
+        for (const p of res.products) {
           const meta = cardMetaByProductId.get(p.productId)
           if (meta && p.price) meta.textContent = p.price
         }
@@ -901,11 +1166,12 @@ export function createAppShell(
     const bookProductId = getBookProductId(narrations)
     const bookIsPaid = narrations.some(n => n.purchase.type === "iap")
     const userOwnsBook = bookIsPaid && bookProductId
-      ? hasPurchasedFromSnapshot(bookProductId)
+      ? ownsBookSync(bookProductId)
       : !bookIsPaid
-    const isSubscriber = isSubscriberFromSnapshot()
-    const iapAvailable = iapAvailableFromSnapshot()
+    const isSubscriber = isSubscriberSync()
+    const iapAvailable = iapAvailableSync()
     if (
+      entitlementsLoaded() &&
       bookIsPaid &&
       bookProductId &&
       !userOwnsBook &&
@@ -1020,9 +1286,9 @@ export function createAppShell(
     const installedInfo = getInstalled(narration.id)
     const isActive = narration.id === handlers.activeId
     const iap = narration.purchase.type === "iap"
-    const entitled = isEntitledToNarration(narration)
-    const iapAvailable = iapAvailableFromSnapshot()
-    const isSubscriber = isSubscriberFromSnapshot()
+    const entitled = isEntitledToNarrationSync(narration)
+    const iapAvailable = iapAvailableSync()
+    const isSubscriber = isSubscriberSync()
     const locked = iap && !entitled && !isSubscriber
 
     const row = document.createElement("div")
@@ -1243,17 +1509,20 @@ export function createAppShell(
     return null
   }
 
+
+  /**
+   * Book paywall as a strict three-state component: loading skeleton →
+   * ready (real prices from the platform) → error block. No fallback
+   * prices, no "try again" button suffixes, no half-loaded buttons.
+   *
+   * Restore Purchases is always visible at the bottom of the card —
+   * Apple's 2025-2026 review guidance places it here, on the paywall.
+   */
   function createBookCta(
     narrations: CatalogNarrationEntry[],
     bookProductId: string,
     onUnlocked: () => void
   ): HTMLElement {
-    // Catalog `priceLabel` is a fallback only — the source of truth is the
-    // platform store (StoreKit / Play Billing) which has the locale-correct,
-    // platform-specific price ($3.99 on Play vs $4.99 on App Store, EUR/JPY
-    // for non-US users, etc.). Fetch dynamically and patch the button when
-    // the real price arrives.
-    const fallbackPriceLabel = narrations.find(n => n.purchase.priceLabel)?.purchase.priceLabel ?? ""
     const langCount = new Set(narrations.map(n => n.language)).size
 
     const cta = document.createElement("div")
@@ -1262,178 +1531,271 @@ export function createAppShell(
     const eyebrow = document.createElement("div")
     eyebrow.className = "catalog-cta-eyebrow"
     eyebrow.textContent =
-      langCount > 1 ? `All ${langCount} languages` : "This book"
+      langCount > 1
+        ? tt("catalogPaywall.allLanguages", "All {{count}} languages", { count: langCount })
+        : tt("catalogPaywall.thisBook", "This book")
     cta.appendChild(eyebrow)
 
     const blurb = document.createElement("div")
     blurb.className = "catalog-cta-blurb"
     blurb.textContent =
       langCount > 1
-        ? "Every narration, now and future. Yours forever."
-        : "Yours forever."
+        ? tt(
+            "catalogPaywall.blurbAll",
+            "Every narration, now and future. Yours forever."
+          )
+        : tt("catalogPaywall.blurbOne", "Yours forever.")
     cta.appendChild(blurb)
 
-    // Primary: buy this book — price-led, minimal copy.
-    const buyBtn = document.createElement("button")
-    buyBtn.type = "button"
-    buyBtn.className = "catalog-cta-primary"
-    let buyLabel = fallbackPriceLabel ? `Buy \u2014 ${fallbackPriceLabel}` : "Buy"
-    const renderBuyLabel = (label: string) => {
-      buyLabel = label
-      buyBtn.innerHTML = `<span class="catalog-cta-primary-label">${label}</span>`
-    }
-    renderBuyLabel(buyLabel)
-    buyBtn.addEventListener("click", async (e) => {
+    const body = document.createElement("div")
+    body.className = "catalog-cta-body"
+    cta.appendChild(body)
+
+    const restoreLink = document.createElement("button")
+    restoreLink.type = "button"
+    restoreLink.className = "catalog-cta-restore"
+    restoreLink.textContent = tt("restore.button", "Restore Purchases")
+    restoreLink.addEventListener("click", (e) => {
       e.stopPropagation()
-      markCtaBusy(buyBtn)
-      const outcome = await purchaseBookProduct(bookProductId)
-      finishCtaOutcome(buyBtn, buyLabel, outcome, onUnlocked)
+      requestRestorePurchases()
     })
-    cta.appendChild(buyBtn)
+    cta.appendChild(restoreLink)
 
-    // Async — replace fallback price with the platform's localized price.
-    void fetchStoreProducts([bookProductId], "inapp").then((products) => {
-      const live = products.find(p => p.productId === bookProductId)
-      if (live?.price) renderBuyLabel(`Buy \u2014 ${live.price}`)
-    })
+    type CtaState =
+      | { kind: "loading" }
+      | { kind: "ready"; bookProduct: StoreProduct | null; subProducts: StoreProduct[] }
+      | { kind: "error"; error: string }
+      | { kind: "pending" }
 
-    // Subscription pitch — always rendered when IAP is available (parity with
-    // the main app's SubscriptionOffer). Prices populate asynchronously when
-    // the platform store responds; tapping a button works either way.
-    const or = document.createElement("div")
-    or.className = "catalog-cta-or"
-    or.innerHTML = `<span>or unlock everything</span>`
-    cta.appendChild(or)
+    let state: CtaState = { kind: "loading" }
 
-    const subsRow = document.createElement("div")
-    subsRow.className = "catalog-cta-subs"
+    function renderBody(): void {
+      body.innerHTML = ""
 
-    const monthlyBtn = createSubscribeButton(
-      SUBSCRIPTION_MONTHLY_ID,
-      "Monthly",
-      "per month",
-      onUnlocked
-    )
-    const annualBtn = createSubscribeButton(
-      SUBSCRIPTION_ANNUAL_ID,
-      "Yearly",
-      "per year \u00B7 best value",
-      onUnlocked
-    )
-    annualBtn.classList.add("catalog-cta-sub--highlight")
-    subsRow.appendChild(monthlyBtn)
-    subsRow.appendChild(annualBtn)
-    cta.appendChild(subsRow)
+      if (state.kind === "loading") {
+        for (let i = 0; i < 3; i++) {
+          const sk = document.createElement("div")
+          sk.className = "catalog-cta-skeleton"
+          body.appendChild(sk)
+        }
+        return
+      }
 
-    void fetchStoreProducts(
-      [SUBSCRIPTION_MONTHLY_ID, SUBSCRIPTION_ANNUAL_ID],
-      "subs"
-    ).then((products) => {
-      const m = products.find(p => p.productId === SUBSCRIPTION_MONTHLY_ID)
-      const a = products.find(p => p.productId === SUBSCRIPTION_ANNUAL_ID)
-      if (m && m.price) setSubscribeButtonPrice(monthlyBtn, m.price)
-      if (a && a.price) setSubscribeButtonPrice(annualBtn, a.price)
-    })
+      if (state.kind === "error") {
+        const heading = document.createElement("div")
+        heading.className = "catalog-cta-error-heading"
+        heading.textContent = tt(
+          "catalogPaywall.errorHeading",
+          "We couldn't load the App Store right now."
+        )
+        body.appendChild(heading)
 
+        const detail = document.createElement("div")
+        detail.className = "catalog-cta-error-detail"
+        detail.textContent = state.error
+        body.appendChild(detail)
+
+        const retryBtn = document.createElement("button")
+        retryBtn.type = "button"
+        retryBtn.className = "catalog-cta-retry"
+        retryBtn.textContent = tt("catalogPaywall.tryAgain", "Try again")
+        retryBtn.addEventListener("click", (e) => {
+          e.stopPropagation()
+          void runFetch()
+        })
+        body.appendChild(retryBtn)
+        return
+      }
+
+      if (state.kind === "pending") {
+        const ph = document.createElement("div")
+        ph.className = "catalog-cta-pending-heading"
+        ph.textContent = tt("catalogPaywall.pendingHeading", "Waiting for approval")
+        body.appendChild(ph)
+
+        const pd = document.createElement("div")
+        pd.className = "catalog-cta-pending-detail"
+        pd.textContent = tt(
+          "catalogPaywall.pendingDetail",
+          "Your purchase is awaiting approval (Ask to Buy or bank verification). It will activate automatically once approved."
+        )
+        body.appendChild(pd)
+        return
+      }
+
+      // Ready
+      if (state.bookProduct) {
+        const buyBtn = document.createElement("button")
+        buyBtn.type = "button"
+        buyBtn.className = "catalog-cta-primary"
+        const buyLabel = tt("catalogPaywall.buyWithPrice", "Buy — {{price}}", {
+          price: state.bookProduct.price,
+        })
+        buyBtn.innerHTML = `<span class="catalog-cta-primary-label">${buyLabel}</span>`
+        buyBtn.addEventListener("click", async (e) => {
+          e.stopPropagation()
+          buyBtn.classList.add("catalog-cta--busy")
+          buyBtn.style.pointerEvents = "none"
+          const outcome = await purchaseBookProduct(bookProductId)
+          handleOutcome(outcome)
+        })
+        body.appendChild(buyBtn)
+      }
+
+      if (state.subProducts.length > 0) {
+        const or = document.createElement("div")
+        or.className = "catalog-cta-or"
+        const orLabel = tt("catalogPaywall.orUnlockEverything", "or unlock everything")
+        or.innerHTML = `<span>${orLabel}</span>`
+        body.appendChild(or)
+
+        const subsRow = document.createElement("div")
+        subsRow.className = "catalog-cta-subs"
+
+        const monthly = state.subProducts.find(p => p.productId === SUBSCRIPTION_MONTHLY_ID)
+        const annual = state.subProducts.find(p => p.productId === SUBSCRIPTION_ANNUAL_ID)
+
+        if (monthly) {
+          subsRow.appendChild(
+            buildSubscribeBtn(
+              SUBSCRIPTION_MONTHLY_ID,
+              tt("catalogPaywall.subMonthly", "Monthly"),
+              monthly.price,
+              tt("catalogPaywall.subMonthlyPeriod", "per month")
+            )
+          )
+        }
+        if (annual) {
+          const btn = buildSubscribeBtn(
+            SUBSCRIPTION_ANNUAL_ID,
+            tt("catalogPaywall.subYearly", "Yearly"),
+            annual.price,
+            tt("catalogPaywall.subYearlyPeriod", "per year · best value")
+          )
+          btn.classList.add("catalog-cta-sub--highlight")
+          subsRow.appendChild(btn)
+        }
+
+        body.appendChild(subsRow)
+
+        // Required by Apple when subscription buttons are shown:
+        // auto-renew disclosure + Terms of Use + Privacy Policy.
+        const autoRenew = document.createElement("div")
+        autoRenew.className = "catalog-cta-auto-renew"
+        autoRenew.textContent = tt(
+          "subscription.autoRenewNotice",
+          "Subscriptions renew automatically. Cancel anytime in your {{store}} account.",
+          { store: tt("subscription.storeApple", "Apple ID") }
+        )
+        body.appendChild(autoRenew)
+
+        const legal = document.createElement("div")
+        legal.className = "catalog-cta-legal"
+        const terms = document.createElement("a")
+        terms.textContent = tt("subscription.termsOfUse", "Terms of Use")
+        terms.href = "https://encorpora.io/terms"
+        terms.target = "_blank"
+        terms.rel = "noopener noreferrer"
+        const privacy = document.createElement("a")
+        privacy.textContent = tt("subscription.privacyPolicy", "Privacy Policy")
+        privacy.href = "https://encorpora.io/privacy"
+        privacy.target = "_blank"
+        privacy.rel = "noopener noreferrer"
+        const sep = document.createElement("span")
+        sep.textContent = " · "
+        sep.className = "catalog-cta-legal-sep"
+        legal.appendChild(terms)
+        legal.appendChild(sep)
+        legal.appendChild(privacy)
+        body.appendChild(legal)
+      }
+    }
+
+    function buildSubscribeBtn(
+      productId: string,
+      label: string,
+      price: string,
+      period: string
+    ): HTMLButtonElement {
+      const btn = document.createElement("button")
+      btn.type = "button"
+      btn.className = "catalog-cta-sub"
+      btn.innerHTML = `
+        <span class="catalog-cta-sub-label">${label}</span>
+        <span class="catalog-cta-sub-price">${price}</span>
+        <span class="catalog-cta-sub-period">${period}</span>
+      `
+      btn.addEventListener("click", async (e) => {
+        e.stopPropagation()
+        btn.classList.add("catalog-cta--busy")
+        btn.style.pointerEvents = "none"
+        const outcome = await purchaseSubscriptionProduct(productId)
+        handleOutcome(outcome)
+      })
+      return btn
+    }
+
+    function handleOutcome(outcome: PurchaseOutcome): void {
+      if (outcome.kind === "ok" || outcome.kind === "alreadyOwned") {
+        onUnlocked()
+        return
+      }
+      if (outcome.kind === "cancelled") {
+        renderBody()
+        return
+      }
+      if (outcome.kind === "pending") {
+        state = { kind: "pending" }
+        renderBody()
+        return
+      }
+      state = { kind: "error", error: `${outcome.code}: ${outcome.message}` }
+      renderBody()
+    }
+
+    async function runFetch(): Promise<void> {
+      state = { kind: "loading" }
+      renderBody()
+
+      const [bookFetch, subsFetch] = await Promise.all([
+        fetchStoreProducts([bookProductId], "inapp"),
+        fetchStoreProducts([SUBSCRIPTION_MONTHLY_ID, SUBSCRIPTION_ANNUAL_ID], "subs"),
+      ])
+
+      if (!bookFetch.ok && !subsFetch.ok) {
+        state = { kind: "error", error: bookFetch.error }
+        renderBody()
+        return
+      }
+      const bookProduct = bookFetch.ok
+        ? bookFetch.products.find(p => p.productId === bookProductId) ?? null
+        : null
+      const subProducts = subsFetch.ok ? subsFetch.products : []
+
+      // If both calls succeeded but the catalog returned nothing useful,
+      // we'd render a paywall body with just the eyebrow + Restore link
+      // and no purchase CTA. Treat that as a soft error instead so the
+      // user (and reviewer) sees a clear retry path.
+      if (!bookProduct && subProducts.length === 0) {
+        state = {
+          kind: "error",
+          error: tt(
+            "catalogPaywall.noProductsError",
+            "App Store didn't return any products. This usually clears in a few seconds — please try again."
+          ),
+        }
+        renderBody()
+        return
+      }
+
+      state = { kind: "ready", bookProduct, subProducts }
+      renderBody()
+    }
+
+    void runFetch()
     return cta
   }
 
-  function renderSubscribeButtonContent(
-    btn: HTMLButtonElement,
-    label: string,
-    price: string,
-    period: string
-  ) {
-    if (price) {
-      btn.innerHTML = `
-        <span class="catalog-cta-sub-label">${label}</span>
-        <span class="catalog-cta-sub-price" data-price>${price}</span>
-        <span class="catalog-cta-sub-period">${period}</span>
-      `
-    } else {
-      // No localized price yet — show just the period name, centered. The
-      // button still purchases on tap; StoreKit / Play Billing show their own
-      // pricing in the system sheet.
-      btn.innerHTML = `<span class="catalog-cta-sub-solo">${label}</span>`
-    }
-  }
-
-  function createSubscribeButton(
-    productId: string,
-    label: string,
-    period: string,
-    onUnlocked: () => void
-  ): HTMLButtonElement {
-    const btn = document.createElement("button")
-    btn.type = "button"
-    btn.className = "catalog-cta-sub"
-    btn.dataset.subProductId = productId
-    btn.dataset.label = label
-    btn.dataset.period = period
-    renderSubscribeButtonContent(btn, label, "", period)
-    btn.addEventListener("click", async (e) => {
-      e.stopPropagation()
-      const priceSpan = btn.querySelector("[data-price]") as HTMLElement | null
-      const cachedPrice = priceSpan?.textContent ?? ""
-      markCtaBusy(btn)
-      const outcome = await purchaseSubscriptionProduct(productId)
-      if (outcome.kind === "cancelled") {
-        restoreSubscribeButton(btn, label, cachedPrice, period)
-        return
-      }
-      if (outcome.kind === "error") {
-        restoreSubscribeButton(btn, label, cachedPrice, period, true)
-        return
-      }
-      onUnlocked()
-    })
-    return btn
-  }
-
-  function setSubscribeButtonPrice(btn: HTMLButtonElement, price: string) {
-    const label = btn.dataset.label ?? ""
-    const period = btn.dataset.period ?? ""
-    renderSubscribeButtonContent(btn, label, price, period)
-  }
-
-  function restoreSubscribeButton(
-    btn: HTMLButtonElement,
-    label: string,
-    price: string,
-    period: string,
-    errored = false
-  ) {
-    btn.classList.remove("catalog-cta--busy")
-    if (errored) btn.classList.add("catalog-cta--errored")
-    renderSubscribeButtonContent(btn, label, price, period)
-    btn.style.pointerEvents = ""
-  }
-
-  function markCtaBusy(btn: HTMLButtonElement) {
-    btn.classList.add("catalog-cta--busy")
-    btn.classList.remove("catalog-cta--errored")
-    btn.style.pointerEvents = "none"
-  }
-
-  function finishCtaOutcome(
-    btn: HTMLButtonElement,
-    label: string,
-    outcome: { kind: string },
-    onUnlocked: () => void
-  ) {
-    btn.classList.remove("catalog-cta--busy")
-    btn.style.pointerEvents = ""
-    if (outcome.kind === "cancelled") {
-      btn.innerHTML = `<span class="catalog-cta-primary-label">${label}</span>`
-      return
-    }
-    if (outcome.kind === "error") {
-      btn.classList.add("catalog-cta--errored")
-      btn.innerHTML = `<span class="catalog-cta-primary-label">${label} \u2014 try again</span>`
-      return
-    }
-    onUnlocked()
-  }
 
   /** Inline overflow menu for installed rows — currently just Delete. */
   function openRowOverflow(
@@ -1612,6 +1974,11 @@ export function createAppShell(
     narrUnsub()
     persistUnsub()
     librarySwitcherUnsub()
+    entitlementListeners.delete(entitlementChanged)
+    document.removeEventListener("visibilitychange", onVisibilityChange)
+    window.removeEventListener("corpan:purchase-recorded", onPurchaseEvent)
+    window.removeEventListener("corpan:subscription-recorded", onPurchaseEvent)
+    window.removeEventListener("corpan:restore-purchases-completed", onPurchaseEvent)
     compactSwitcher.dispose()
     drawerSwitcher.dispose()
     drawer.dispose()

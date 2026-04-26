@@ -331,5 +331,22 @@
     "noPurchases": "कोई पिछली खरीदारी नहीं मिली।",
     "success": "{{count}} खरीदारी पुनर्स्थापित की गई।",
     "error": "खरीदारी पुनर्स्थापित करने में विफल।"
+  },
+  "catalogPaywall": {
+    "allLanguages": "सभी {{count}} भाषाएँ",
+    "thisBook": "यह किताब",
+    "blurbAll": "हर वर्णन, अभी और भविष्य में। हमेशा के लिए आपका।",
+    "blurbOne": "हमेशा के लिए आपका।",
+    "buyWithPrice": "खरीदें — {{price}}",
+    "orUnlockEverything": "या सब कुछ अनलॉक करें",
+    "subMonthly": "मासिक",
+    "subMonthlyPeriod": "प्रति माह",
+    "subYearly": "वार्षिक",
+    "subYearlyPeriod": "प्रति वर्ष · सर्वोत्तम मूल्य",
+    "errorHeading": "हम अभी App Store से संपर्क नहीं कर सके।",
+    "tryAgain": "पुनः प्रयास करें",
+    "pendingHeading": "अनुमोदन की प्रतीक्षा",
+    "pendingDetail": "आपकी खरीद अनुमोदन की प्रतीक्षा कर रही है (Ask to Buy या बैंक सत्यापन)। अनुमोदित होने पर स्वचालित रूप से सक्रिय हो जाएगी।",
+    "noProductsError": "App Store ने कोई उत्पाद नहीं लौटाए। आमतौर पर कुछ सेकंड में हल हो जाता है — पुनः प्रयास करें।"
   }
 }

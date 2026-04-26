@@ -3,7 +3,6 @@ import { type as osType } from "@tauri-apps/plugin-os"
 import { openUrl } from "@tauri-apps/plugin-opener"
 import { useEntitlementStore } from "@/store/entitlements"
 import type { SubscriptionPlan } from "@/store/entitlements"
-import { useDiagnosticsStore } from "@/store/diagnostics"
 
 // ---------------------------------------------------------------------------
 // Types
@@ -27,6 +26,8 @@ export type PurchaseResult = {
   /** JWS receipt (iOS) or purchase token (Android) */
   receipt: string
   platform: PurchasePlatform
+  /** "Production" / "Sandbox" / "Xcode" — emitted by the iOS plugin (iOS 16+) */
+  environment?: string
 }
 
 export type PurchaseVerificationResponse = {
@@ -85,88 +86,132 @@ export function isIapAvailable(): boolean {
 }
 
 // ---------------------------------------------------------------------------
-// IAP Plugin wrappers
+// IAP plugin wrappers — every call hits the platform fresh, NO caching
 // ---------------------------------------------------------------------------
 
 /**
- * Retry schedule for flaky StoreKit calls. `Product.products(for:)` on iOS
- * is documented to return an empty set silently when Apple's sandbox is in
- * an eventual-consistency lull; retrying with backoff tends to punch
- * through it. Total worst-case: ~5.5s of waits plus per-attempt invoke
- * time. Schedule is shared between `fetchProducts` and the tap-time
- * re-fetch in SubscriptionOffer.
+ * Retry schedule for transient empty / network failures from the platform.
+ * Each attempt is a fresh plugin invoke; we never cache the result of any
+ * attempt. The Swift plugin retries internally too (belt-and-suspenders).
+ *
+ * `[0, 500, 1500, 3500, 6500]` = 5 attempts in ~12s worst-case. The
+ * skeleton stays on screen throughout.
  */
-const FETCH_RETRY_DELAYS_MS = [0, 500, 1500, 3500] as const
+const FETCH_RETRY_DELAYS_MS = [0, 500, 1500, 3500, 6500] as const
+
+export type FetchProductsResult =
+  | { ok: true; products: StoreProduct[] }
+  | { ok: false; error: string }
+
+/**
+ * Wire shape from the native plugin. iOS plugin emits top-level
+ * `formattedPrice` for every product. Android Play Billing only emits it
+ * top-level for one-time products — for auto-renewable subscriptions, the
+ * price lives inside `subscriptionOfferDetails[].pricingPhases[]` and the
+ * recurring price is the LAST phase (intro phases come first if any).
+ */
+type RawPricingPhase = {
+  formattedPrice?: string
+  priceCurrencyCode?: string
+  priceAmountMicros?: number
+  recurrenceMode?: number
+}
+
+type RawSubscriptionOffer = {
+  offerToken?: string
+  pricingPhases?: RawPricingPhase[]
+}
+
+type RawProduct = {
+  productId?: string
+  title?: string
+  description?: string
+  formattedPrice?: string
+  priceCurrencyCode?: string
+  priceAmountMicros?: number
+  subscriptionOfferDetails?: RawSubscriptionOffer[]
+}
+
+/**
+ * Pick the recurring (post-intro) pricing phase. iOS doesn't use this path
+ * (top-level fields are populated). On Android we walk the offer details
+ * and take the last pricing phase, which is the recurring one per Google's
+ * documented ordering.
+ */
+function recurringPhaseFromOffers(p: RawProduct): RawPricingPhase | undefined {
+  const offer = p.subscriptionOfferDetails?.[0]
+  const phases = offer?.pricingPhases
+  if (!phases || phases.length === 0) return undefined
+  return phases[phases.length - 1]
+}
+
+function normalizeProduct(p: RawProduct): StoreProduct {
+  const recurring = recurringPhaseFromOffers(p)
+  return {
+    productId: p.productId ?? "",
+    title: p.title ?? "",
+    description: p.description ?? "",
+    price: p.formattedPrice ?? recurring?.formattedPrice ?? "",
+    currencyCode: p.priceCurrencyCode ?? recurring?.priceCurrencyCode ?? "",
+    priceMicros: p.priceAmountMicros ?? recurring?.priceAmountMicros,
+  }
+}
 
 /**
  * Fetch product info (localized prices) from the platform store.
  *
- * Retries up to FETCH_RETRY_DELAYS_MS.length attempts — treats both an
- * empty result set and a thrown error as retry-worthy. Every attempt is
- * recorded in the diagnostics ring buffer so the UI can surface what
- * happened on a device we can't see. Returns the first non-empty result,
- * or `[]` if every attempt fails/empties.
+ * Retries up to FETCH_RETRY_DELAYS_MS.length attempts. Returns
+ * `{ ok: false, error }` only if every attempt failed or returned empty.
  */
 export async function fetchProducts(
   productIds: string[],
   productType: "subs" | "inapp" = "inapp"
-): Promise<StoreProduct[]> {
-  if (!isTauriRuntime()) return []
+): Promise<FetchProductsResult> {
+  if (!isTauriRuntime()) return { ok: false, error: "IAP unavailable in this environment" }
+  if (productIds.length === 0) return { ok: true, products: [] }
 
-  const diag = useDiagnosticsStore.getState()
-  const platform = useEntitlementStore.getState().platform ?? "unknown"
-
+  let lastError = ""
   for (let attempt = 0; attempt < FETCH_RETRY_DELAYS_MS.length; attempt++) {
     const delay = FETCH_RETRY_DELAYS_MS[attempt]
     if (delay > 0) await new Promise((r) => setTimeout(r, delay))
 
     try {
-      const result = await invoke<{ products: StoreProduct[] }>(
+      const result = await invoke<{ products: RawProduct[] }>(
         "plugin:iap|get_products",
         { payload: { productIds, productType } }
       )
-      const products = result.products ?? []
-      if (products.length > 0) {
+      const raw = result.products ?? []
+      if (raw.length > 0) {
+        const products = raw.map(normalizeProduct)
         if (attempt > 0) {
-          diag.record({
-            category: "fetch",
-            productIds,
-            result: "ok",
-            detail: `succeeded on attempt ${attempt + 1}/${FETCH_RETRY_DELAYS_MS.length}`,
-            platform,
-          })
+          console.warn(
+            `[purchase] fetchProducts succeeded on attempt ${attempt + 1}/${FETCH_RETRY_DELAYS_MS.length} for`,
+            productIds
+          )
         }
-        return products
+        console.info(
+          "[purchase] fetchProducts → ",
+          products.length,
+          "products:",
+          products.map((p) => ({ id: p.productId, price: p.price }))
+        )
+        return { ok: true, products }
       }
-      // Empty result — log and continue retrying.
+      lastError = "App Store returned no products"
       console.warn(
         `[purchase] fetchProducts attempt ${attempt + 1}/${FETCH_RETRY_DELAYS_MS.length} returned empty for`,
         productIds
       )
-      diag.record({
-        category: "fetch",
-        productIds,
-        result: "empty",
-        detail: `attempt ${attempt + 1}/${FETCH_RETRY_DELAYS_MS.length} returned empty`,
-        platform,
-      })
     } catch (err) {
-      const msg = err instanceof Error ? err.message : String(err)
+      lastError = err instanceof Error ? err.message : String(err)
       console.error(
         `[purchase] fetchProducts attempt ${attempt + 1}/${FETCH_RETRY_DELAYS_MS.length} failed:`,
         err
       )
-      diag.record({
-        category: "fetch",
-        productIds,
-        result: "error",
-        detail: `attempt ${attempt + 1}/${FETCH_RETRY_DELAYS_MS.length}: ${msg}`,
-        platform,
-      })
     }
   }
 
-  return []
+  return { ok: false, error: lastError || "App Store unreachable" }
 }
 
 /** Wrap a promise with a timeout that rejects with TimeoutError after ms. */
@@ -193,36 +238,72 @@ function withTimeout<T>(p: Promise<T>, ms: number): Promise<T> {
   })
 }
 
-/** Heuristic: does this error look like the user cancelled the purchase? */
-function isCancellationError(err: unknown): boolean {
-  const msg = (err instanceof Error ? err.message : String(err)).toLowerCase()
-  return (
-    msg.includes("cancel") ||
-    msg.includes("userdenied") ||
-    msg.includes("user_denied")
-  )
+// ---------------------------------------------------------------------------
+// Plugin error code mapping (matches IapPlugin.swift / Android plugin reject
+// strings — every reject starts with `<CODE>: <message>`).
+// ---------------------------------------------------------------------------
+
+export type PurchaseFailureKind =
+  | "USER_CANCELLED"
+  | "ALREADY_OWNED"
+  | "PURCHASE_PENDING"
+  | "PURCHASE_NOT_ALLOWED"
+  | "PRODUCT_UNAVAILABLE"
+  | "VERIFICATION_FAILED"
+  | "NETWORK_ERROR"
+  | "NOT_IN_STOREFRONT"
+  | "NOT_ENTITLED"
+  | "TIMEOUT"
+  | "UNKNOWN"
+
+function classifyError(err: unknown): { code: PurchaseFailureKind; message: string } {
+  if (err instanceof TimeoutError) {
+    return { code: "TIMEOUT", message: err.message }
+  }
+  const raw = err instanceof Error ? err.message : String(err)
+  const upper = raw.toUpperCase()
+  if (upper.startsWith("USER_CANCELLED") || upper.includes("CANCEL")) {
+    return { code: "USER_CANCELLED", message: raw }
+  }
+  if (upper.startsWith("ALREADY_OWNED") || upper.includes("ALREADYPURCHASED") || upper.includes("ALREADY_SUBSCRIBED")) {
+    return { code: "ALREADY_OWNED", message: raw }
+  }
+  if (upper.startsWith("PURCHASE_PENDING")) {
+    return { code: "PURCHASE_PENDING", message: raw }
+  }
+  if (upper.startsWith("PURCHASE_NOT_ALLOWED")) {
+    return { code: "PURCHASE_NOT_ALLOWED", message: raw }
+  }
+  if (upper.startsWith("PRODUCT_UNAVAILABLE")) {
+    return { code: "PRODUCT_UNAVAILABLE", message: raw }
+  }
+  if (upper.startsWith("VERIFICATION_FAILED")) {
+    return { code: "VERIFICATION_FAILED", message: raw }
+  }
+  if (upper.startsWith("NETWORK_ERROR")) {
+    return { code: "NETWORK_ERROR", message: raw }
+  }
+  if (upper.startsWith("NOT_IN_STOREFRONT")) {
+    return { code: "NOT_IN_STOREFRONT", message: raw }
+  }
+  if (upper.startsWith("NOT_ENTITLED")) {
+    return { code: "NOT_ENTITLED", message: raw }
+  }
+  return { code: "UNKNOWN", message: raw }
 }
 
-/** Heuristic: user already owns / is already subscribed to this product. */
-function isAlreadyOwnedError(err: unknown): boolean {
-  const msg = (err instanceof Error ? err.message : String(err)).toLowerCase()
-  return (
-    msg.includes("already") ||
-    msg.includes("already_owned") ||
-    msg.includes("alreadypurchased") ||
-    msg.includes("already_subscribed")
-  )
-}
+// ---------------------------------------------------------------------------
+// Purchase flow
+// ---------------------------------------------------------------------------
 
-/** Purchase flow outcome — distinguishes cancel vs timeout vs error. */
 export type PurchaseOutcome =
   | { kind: "ok"; result: PurchaseResult }
   | { kind: "cancelled" }
   | { kind: "timeout" }
   | { kind: "alreadyOwned" }
-  | { kind: "error"; message: string }
+  | { kind: "pending" }
+  | { kind: "error"; code: PurchaseFailureKind; message: string }
 
-/** 60s timeout for platform store response — plenty for legitimate flows. */
 const PURCHASE_TIMEOUT_MS = 60_000
 
 /**
@@ -234,7 +315,7 @@ export async function purchaseProduct(
   productType: "subs" | "inapp" = "inapp"
 ): Promise<PurchaseOutcome> {
   if (!isTauriRuntime()) {
-    return { kind: "error", message: "IAP unavailable in this environment" }
+    return { kind: "error", code: "UNKNOWN", message: "IAP unavailable in this environment" }
   }
 
   try {
@@ -246,16 +327,16 @@ export async function purchaseProduct(
         signature?: string
         jwsRepresentation?: string
         purchaseToken?: string
+        environment?: string
       }>("plugin:iap|purchase", { payload: { productId, productType } }),
       PURCHASE_TIMEOUT_MS
     )
 
     const platform = await getPlatform()
-
     const receipt =
-      purchase.jwsRepresentation ?? // iOS: JWS signed transaction
-      purchase.purchaseToken ?? // Android: purchase token
-      purchase.originalJson ?? // Android fallback
+      purchase.jwsRepresentation ??
+      purchase.purchaseToken ??
+      purchase.originalJson ??
       ""
 
     return {
@@ -265,29 +346,21 @@ export async function purchaseProduct(
         productId: purchase.productId,
         receipt,
         platform,
+        environment: purchase.environment,
       },
     }
   } catch (err) {
-    if (err instanceof TimeoutError) {
-      console.warn("[purchase] purchaseProduct timed out:", err.message)
-      return { kind: "timeout" }
-    }
-    if (isCancellationError(err)) {
-      console.warn("[purchase] purchaseProduct cancelled by user")
-      return { kind: "cancelled" }
-    }
-    if (isAlreadyOwnedError(err)) {
-      console.warn("[purchase] purchaseProduct reported already owned — treating as success")
-      return { kind: "alreadyOwned" }
-    }
+    const cls = classifyError(err)
+
+    if (cls.code === "USER_CANCELLED") return { kind: "cancelled" }
+    if (cls.code === "ALREADY_OWNED") return { kind: "alreadyOwned" }
+    if (cls.code === "PURCHASE_PENDING") return { kind: "pending" }
+    if (cls.code === "TIMEOUT") return { kind: "timeout" }
 
     // Defensive: StoreKit sometimes rejects even when the transaction
-    // actually completed — classic path is the "Already Purchased" sheet
-    // → "Get again for free" → StoreKit prompts a few more times then
-    // throws an error, while the Transaction.updates listener has
-    // already finished the transaction. Check authoritative product
-    // status here so we don't leave the user staring at a "try again"
-    // on a product they just acquired.
+    // actually completed (Already Purchased → Get again for free →
+    // Transaction.updates listener finishes the txn behind our backs).
+    // Re-check authoritative product status before reporting failure.
     try {
       const status = await getProductStatus(productId, productType)
       if (status.state === "owned") {
@@ -301,30 +374,22 @@ export async function purchaseProduct(
       console.warn("[purchase] post-error status check failed:", statusErr)
     }
 
-    const msg = err instanceof Error ? err.message : String(err)
     console.error("[purchase] purchaseProduct error:", err)
-    // Record to the diagnostics buffer so the UI can show the reviewer
-    // what actually failed. Cancel/timeout/alreadyOwned above are not
-    // recorded — they're normal flow outcomes, not failures.
-    useDiagnosticsStore.getState().record({
-      category: "purchase",
-      productIds: [productId],
-      result: "error",
-      detail: msg,
-      platform: useEntitlementStore.getState().platform ?? "unknown",
-    })
-    return { kind: "error", message: msg }
+    return { kind: "error", code: cls.code, message: cls.message }
   }
 }
 
 /**
- * Restore previous purchases from the platform (tied to Apple ID / Google account).
+ * Restore previous purchases from the platform (tied to Apple ID / Google
+ * account). Each call is a fresh plugin invoke — no cache.
  */
 export async function restorePurchases(): Promise<PurchaseResult[]> {
   if (!isTauriRuntime()) return []
 
   const results: PurchaseResult[] = []
   const platform = await getPlatform()
+  const t0 = Date.now()
+  console.info("[purchase] restorePurchases START platform=", platform)
 
   // Restore one-time purchases
   try {
@@ -332,12 +397,20 @@ export async function restorePurchases(): Promise<PurchaseResult[]> {
       "plugin:iap|restore_purchases",
       { payload: { productType: "inapp" } }
     )
-    for (const p of inappResult.purchases ?? []) {
+    const arr = inappResult.purchases ?? []
+    console.info(
+      "[purchase] restorePurchases(inapp) →",
+      arr.length,
+      "items:",
+      arr.map((p) => ({ productId: p.productId, env: p.environment }))
+    )
+    for (const p of arr) {
       results.push({
         transactionId: p.id ?? p.orderId ?? "",
         productId: p.productId ?? "",
         receipt: p.jwsRepresentation ?? p.purchaseToken ?? "",
         platform,
+        environment: p.environment,
       })
     }
   } catch (err) {
@@ -350,24 +423,37 @@ export async function restorePurchases(): Promise<PurchaseResult[]> {
       "plugin:iap|restore_purchases",
       { payload: { productType: "subs" } }
     )
-    for (const p of subsResult.purchases ?? []) {
+    const arr = subsResult.purchases ?? []
+    console.info(
+      "[purchase] restorePurchases(subs) →",
+      arr.length,
+      "items:",
+      arr.map((p) => ({ productId: p.productId, env: p.environment }))
+    )
+    for (const p of arr) {
       results.push({
         transactionId: p.id ?? p.orderId ?? "",
         productId: p.productId ?? "",
         receipt: p.jwsRepresentation ?? p.purchaseToken ?? "",
         platform,
+        environment: p.environment,
       })
     }
   } catch (err) {
     console.warn("[purchase] restore subs error:", err)
   }
 
+  console.info(
+    "[purchase] restorePurchases DONE — total=",
+    results.length,
+    `${Date.now() - t0}ms`,
+    "productIds=",
+    results.map((r) => r.productId)
+  )
   return results
 }
 
-/**
- * Acknowledge a purchase (required on Android within 3 days).
- */
+/** Acknowledge a purchase (required on Android within 3 days). */
 export async function acknowledgePurchase(purchaseToken: string): Promise<void> {
   if (!isTauriRuntime()) return
 
@@ -388,9 +474,7 @@ export type ProductStatus =
   | { state: "not_owned" }
   | { state: "unknown"; reason: string }
 
-/**
- * Check product ownership / subscription status via the IAP plugin.
- */
+/** Check product ownership via the IAP plugin. No cache. */
 export async function getProductStatus(
   productId: string,
   productType: "subs" | "inapp" = "inapp"
@@ -398,7 +482,6 @@ export async function getProductStatus(
   if (!isTauriRuntime()) return { state: "not_owned" }
 
   try {
-    // 10s timeout — at app startup we shouldn't block the UI waiting for StoreKit
     const status = await withTimeout(
       invoke<{ isOwned: boolean; expirationTime?: number }>(
         "plugin:iap|get_product_status",
@@ -430,11 +513,6 @@ export async function getProductStatus(
 // Backend verification
 // ---------------------------------------------------------------------------
 
-/**
- * Production purchase-verify endpoint. Public URL (auth is by platform receipt,
- * not URL obscurity) — hardcoded so CI builds don't need a per-machine .env.
- * Override with `VITE_GAME_VERIFY_URL` for staging.
- */
 const DEFAULT_VERIFY_URL = "https://dzxrs4szm7.execute-api.us-east-2.amazonaws.com/prod"
 
 const getVerifyUrl = () => {
@@ -443,9 +521,6 @@ const getVerifyUrl = () => {
   return DEFAULT_VERIFY_URL
 }
 
-/**
- * Verify a purchase receipt with the backend and get a signed download URL.
- */
 export async function verifyPurchase(
   purchase: PurchaseResult,
   packId?: string
@@ -456,9 +531,7 @@ export async function verifyPurchase(
   }
 
   try {
-    // Concat instead of `new URL("/verify-purchase", urlBase)` — the latter
-    // STRIPS the stage path: `new URL("/verify-purchase", "https://x/prod")`
-    // resolves to "https://x/verify-purchase" (no /prod), which 404s.
+    // Concat instead of `new URL(...)` — that strips the stage path.
     const url = urlBase.replace(/\/+$/, "") + "/verify-purchase"
     const body: Record<string, unknown> = {
       platform: purchase.platform,
@@ -466,7 +539,6 @@ export async function verifyPurchase(
       transactionId: purchase.transactionId,
     }
 
-    // Platform-specific receipt fields
     if (purchase.platform === "ios" || purchase.platform === "macos") {
       body.receipt = purchase.receipt
     } else if (purchase.platform === "android") {
@@ -520,29 +592,29 @@ export async function purchaseAndVerify(
   productType: "subs" | "inapp" = "inapp"
 ): Promise<{
   signedUrl?: string
-  error?: string
+  error?: { code: PurchaseFailureKind; message: string }
   cancelled?: boolean
   alreadyOwned?: boolean
+  pending?: boolean
+  timeout?: boolean
   verifyFailed?: boolean
 }> {
   const outcome = await purchaseProduct(productId, productType)
 
   if (outcome.kind === "cancelled") return { cancelled: true }
-  if (outcome.kind === "timeout") {
-    return { error: "Purchase timed out. Please try again." }
-  }
+  if (outcome.kind === "timeout") return { timeout: true }
+  if (outcome.kind === "pending") return { pending: true }
   if (outcome.kind === "alreadyOwned") {
-    // Platform says the user already has this. Trust it, refresh state.
     await refreshEntitlements()
     return { alreadyOwned: true }
   }
   if (outcome.kind === "error") {
-    return { error: outcome.message || "Purchase failed" }
+    return { error: { code: outcome.code, message: outcome.message } }
   }
   const purchase = outcome.result
 
   // Platform confirmed purchase — update local entitlement immediately.
-  // (Don't gate on backend verification.)
+  // (This is in-memory state for the session; not persisted.)
   const store = useEntitlementStore.getState()
   if (productType === "subs") {
     const plan: SubscriptionPlan =
@@ -550,7 +622,7 @@ export async function purchaseAndVerify(
     store.setSubscription({
       active: true,
       plan,
-      expiresAt: null, // updated on next refreshEntitlements
+      expiresAt: null,
       autoRenew: true,
     })
   } else {
@@ -558,13 +630,10 @@ export async function purchaseAndVerify(
   }
   store.setLastRefreshed(Date.now())
 
-  // Acknowledge on Android (required within 3 days).
   if (purchase.platform === "android" && purchase.receipt) {
     await acknowledgePurchase(purchase.receipt)
   }
 
-  // Backend verification — for signed URL (premium content) + server-side
-  // subscription tracking. Non-blocking for the entitlement itself.
   const verification = await verifyPurchase(purchase, packId)
   if (verification.status !== "verified") {
     console.warn(
@@ -574,7 +643,6 @@ export async function purchaseAndVerify(
     return { verifyFailed: true }
   }
 
-  // Prefer backend's expiry info if available.
   if (productType === "subs" && verification.expiresAt) {
     store.setSubscription({
       active: true,
@@ -588,43 +656,20 @@ export async function purchaseAndVerify(
 }
 
 /**
- * Refresh entitlements from the IAP plugin (local, no network on iOS).
- * Call on app launch, on foreground/resume, and near subscription expiry.
- *
- * Moves subscription state in BOTH directions via StoreKit 2's silent
- * `Transaction.currentEntitlements` query: if the platform authoritatively
- * says no subscription is owned, stale local state (e.g. `active: true` for
- * a subscription that has since lapsed or been cancelled) is cleared so the
- * paywall reappears. If the plugin is unreachable, existing state is kept.
- *
- * Does NOT call restorePurchases() on iOS — that can trigger an Apple ID
- * sign-in prompt and per Apple HIG must be user-initiated. Book-purchase
- * restoration after reinstall/device-switch is handled by the explicit
- * "Restore Purchases" button. On Android restorePurchases() is silent and
- * is required here to acknowledge unack'd purchases within Google's 3-day
- * window.
+ * Refresh entitlements from the IAP plugin (local query — no network on iOS
+ * via Transaction.currentEntitlements).
  */
 export async function refreshEntitlements(): Promise<void> {
   if (!isTauriRuntime()) return
 
   const store = useEntitlementStore.getState()
 
-  // Check subscription status. We need to distinguish "platform says not
-  // subscribed" from "couldn't reach platform": clearing stale active-sub
-  // state on error would wrongly hide real subscribers' content whenever
-  // the IAP plugin hiccups.
-  let activeSub: { plan: SubscriptionPlan; expiresAt: string | null } | null =
-    null
+  let activeSub: { plan: SubscriptionPlan; expiresAt: string | null } | null = null
   let anyStatusUnknown = false
 
   for (const subId of [SUBSCRIPTION_MONTHLY, SUBSCRIPTION_ANNUAL]) {
     const status = await getProductStatus(subId, "subs")
-    console.info(
-      "[purchase] refreshEntitlements: getProductStatus",
-      subId,
-      "→",
-      status
-    )
+    console.info("[purchase] refreshEntitlements:", subId, "→", status)
     if (status.state === "owned") {
       activeSub = {
         plan: subId === SUBSCRIPTION_ANNUAL ? "annual" : "monthly",
@@ -643,39 +688,18 @@ export async function refreshEntitlements(): Promise<void> {
       autoRenew: true,
     })
   } else if (!anyStatusUnknown) {
-    // Platform confirms no subscription is active. Clear any stale local
-    // state so the Subscribe CTA reappears — this is the critical path for
-    // sandbox expiry (5 min monthly / 1 hr annual) and for real users whose
-    // subscription has lapsed or been cancelled.
     if (store.subscription.active) {
-      console.info(
-        "[purchase] refreshEntitlements: platform reports no active subscription — clearing stale local state"
-      )
+      console.info("[purchase] refreshEntitlements: clearing stale local sub state")
       store.clearSubscription()
     }
   } else {
-    console.warn(
-      "[purchase] refreshEntitlements: subscription status unknown (plugin error) — keeping existing local state"
-    )
+    console.warn("[purchase] refreshEntitlements: subscription status unknown — keeping in-memory state")
   }
 
-  // One-time book purchase recovery is platform-specific:
-  //
-  // iOS/macOS: we deliberately do NOT call restorePurchases() here. Apple's
-  // HIG requires restore to be a user-initiated action (the explicit
-  // "Restore Purchases" button in Settings → Packs), because calling
-  // AppStore.sync() can prompt for Apple ID authentication when StoreKit's
-  // session has expired — hostile UX at launch, and App Review actively
-  // dings apps that auto-prompt. Users who reinstall or switch devices tap
-  // the button once; thereafter localStorage + in-session purchase events
-  // keep state consistent.
-  //
-  // Android: we DO call it. Play Billing's restorePurchases is silent (no
-  // user auth required) and is how we pick up any unacknowledged purchases
-  // so the plugin can ack them. Google auto-refunds purchases not
-  // acknowledged within 3 days, so we can't wait for the user to tap a
-  // button — the reader-pack flow acks post-purchase, but this is the
-  // recovery path for acks that failed at purchase time.
+  // Android: silent restore so we can ack any unack'd purchases (Google
+  // auto-refunds within 3 days). iOS: deliberately NOT calling restore here
+  // (HIG forbids auto-sync; reviewers ding apps that prompt for Apple ID
+  // at launch).
   const platform = await getPlatform()
   if (platform === "android") {
     try {
@@ -694,18 +718,8 @@ export async function refreshEntitlements(): Promise<void> {
 }
 
 /**
- * Open the platform's native subscription-management UI.
- *
- * Preferred path — the local `tauri-plugin-subscriptions` plugin:
- *   - iOS: `StoreKit.AppStore.showManageSubscriptions(in:)` renders inline
- *     over the app. Works identically in TestFlight and production (the
- *     StoreKit environment tracks the running build). Apple-recommended
- *     per App Review guideline 3.1.2.
- *   - Android: deep-links to the Play Store subscriptions page for this
- *     app so the user lands on Corpan's sub, not the generic account page.
- *
- * Fallback — `openUrl` to the web subscription page. Used on desktop, on
- * iOS < 15, or if the plugin invoke fails for any reason.
+ * Open the platform's native subscription-management UI. Falls back to the
+ * web subscription page if the plugin isn't available.
  */
 export async function manageSubscription(): Promise<void> {
   const platform = await getPlatform()
@@ -739,14 +753,17 @@ export async function manageSubscription(): Promise<void> {
 }
 
 /**
- * Restore purchases and sync entitlements with backend.
+ * Restore purchases and sync entitlements with backend. User-initiated;
+ * called by the Restore Purchases button.
  */
 export async function restoreAndSync(): Promise<{
   restoredCount: number
   error?: string
 }> {
+  console.info("[purchase] restoreAndSync START")
   const purchases = await restorePurchases()
   if (purchases.length === 0) {
+    console.info("[purchase] restoreAndSync — no purchases to restore")
     return { restoredCount: 0 }
   }
 
@@ -754,7 +771,25 @@ export async function restoreAndSync(): Promise<{
   let restoredCount = 0
 
   for (const purchase of purchases) {
+    console.info(
+      "[purchase] restoreAndSync verifying:",
+      purchase.productId,
+      "txn=",
+      purchase.transactionId
+    )
     const verification = await verifyPurchase(purchase)
+    console.info(
+      "[purchase] restoreAndSync verify result for",
+      purchase.productId,
+      "→",
+      {
+        status: verification.status,
+        subscriptionActive: verification.subscriptionActive,
+        expiresAt: verification.expiresAt,
+        productId: verification.productId,
+        error: verification.error,
+      }
+    )
     if (verification.status === "verified") {
       if (verification.subscriptionActive) {
         const plan: SubscriptionPlan =
@@ -773,5 +808,23 @@ export async function restoreAndSync(): Promise<{
   }
 
   store.setLastRefreshed(Date.now())
+
+  console.info(
+    "[purchase] restoreAndSync DONE — restoredCount=",
+    restoredCount,
+    "out of",
+    purchases.length,
+    "candidates"
+  )
+
+  // Notify reader paywalls so they re-query the plugin on the next
+  // entitlement refresh (the reader listens for this event).
+  try {
+    window.dispatchEvent(new CustomEvent("corpan:restore-purchases-completed"))
+    console.info("[purchase] dispatched corpan:restore-purchases-completed")
+  } catch (err) {
+    console.warn("[purchase] failed to dispatch restore-completed event:", err)
+  }
+
   return { restoredCount }
 }

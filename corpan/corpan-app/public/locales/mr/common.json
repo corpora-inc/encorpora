@@ -331,5 +331,22 @@
     "noPurchases": "मागील खरेदी आढळल्या नाहीत.",
     "success": "{{count}} खरेदी पुनर्संचयित.",
     "error": "खरेदी पुनर्संचयित करता आली नाही."
+  },
+  "catalogPaywall": {
+    "allLanguages": "सर्व {{count}} भाषा",
+    "thisBook": "हे पुस्तक",
+    "blurbAll": "प्रत्येक निवेदन, आता आणि भविष्यात. कायम तुमचे.",
+    "blurbOne": "कायम तुमचे.",
+    "buyWithPrice": "खरेदी करा — {{price}}",
+    "orUnlockEverything": "किंवा सर्व अनलॉक करा",
+    "subMonthly": "मासिक",
+    "subMonthlyPeriod": "दरमहा",
+    "subYearly": "वार्षिक",
+    "subYearlyPeriod": "दरवर्षी · सर्वोत्तम",
+    "errorHeading": "आत्ता App Store शी संपर्क साधता आला नाही.",
+    "tryAgain": "पुन्हा प्रयत्न",
+    "pendingHeading": "मंजुरीची प्रतीक्षा",
+    "pendingDetail": "तुमची खरेदी मंजुरीच्या प्रतीक्षेत आहे (Ask to Buy किंवा बँक पडताळणी). मंजूर झाल्यावर आपोआप सक्रिय होईल.",
+    "noProductsError": "App Store ने कोणतीही उत्पादने परत केली नाहीत. सहसा काही सेकंदात सुटते — पुन्हा प्रयत्न करा."
   }
 }

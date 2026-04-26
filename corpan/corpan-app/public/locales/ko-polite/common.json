@@ -331,5 +331,22 @@
     "noPurchases": "이전 구매를 찾을 수 없습니다.",
     "success": "{{count}}건의 구매가 복원되었습니다.",
     "error": "구매 복원에 실패했습니다."
+  },
+  "catalogPaywall": {
+    "allLanguages": "{{count}}개 언어 모두",
+    "thisBook": "이 책",
+    "blurbAll": "모든 내레이션, 지금과 앞으로. 영원히 당신의 것입니다.",
+    "blurbOne": "영원히 당신의 것입니다.",
+    "buyWithPrice": "구매 — {{price}}",
+    "orUnlockEverything": "또는 모두 잠금 해제",
+    "subMonthly": "월간",
+    "subMonthlyPeriod": "월",
+    "subYearly": "연간",
+    "subYearlyPeriod": "연 · 최고의 선택",
+    "errorHeading": "지금 App Store에 연결할 수 없습니다.",
+    "tryAgain": "다시 시도",
+    "pendingHeading": "승인 대기 중",
+    "pendingDetail": "구매가 승인 대기 중입니다 (Ask to Buy 또는 은행 확인). 승인되면 자동으로 활성화됩니다.",
+    "noProductsError": "App Store에서 상품을 반환하지 않았습니다. 보통 몇 초 안에 해결됩니다 — 다시 시도해 주세요."
   }
 }

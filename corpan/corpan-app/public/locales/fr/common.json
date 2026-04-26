@@ -331,5 +331,22 @@
     "noPurchases": "Aucun achat précédent trouvé.",
     "success": "{{count}} achat(s) restauré(s).",
     "error": "Échec de la restauration des achats."
+  },
+  "catalogPaywall": {
+    "allLanguages": "Les {{count}} langues",
+    "thisBook": "Ce livre",
+    "blurbAll": "Chaque narration, maintenant et à venir. Vôtres pour toujours.",
+    "blurbOne": "Vôtre pour toujours.",
+    "buyWithPrice": "Acheter — {{price}}",
+    "orUnlockEverything": "ou tout débloquer",
+    "subMonthly": "Mensuel",
+    "subMonthlyPeriod": "par mois",
+    "subYearly": "Annuel",
+    "subYearlyPeriod": "par an · meilleure offre",
+    "errorHeading": "Impossible de joindre l'App Store pour le moment.",
+    "tryAgain": "Réessayer",
+    "pendingHeading": "En attente d'approbation",
+    "pendingDetail": "Votre achat est en attente d'approbation (Ask to Buy ou vérification bancaire). Il sera activé automatiquement une fois approuvé.",
+    "noProductsError": "L'App Store n'a renvoyé aucun produit. Cela se résout généralement en quelques secondes — réessayez."
   }
 }

@@ -331,5 +331,22 @@
     "noPurchases": "ไม่พบการซื้อก่อนหน้า",
     "success": "กู้คืน {{count}} รายการ",
     "error": "กู้คืนการซื้อล้มเหลว"
+  },
+  "catalogPaywall": {
+    "allLanguages": "ทั้ง {{count}} ภาษา",
+    "thisBook": "หนังสือเล่มนี้",
+    "blurbAll": "ทุกการบรรยาย ทั้งตอนนี้และในอนาคต เป็นของคุณตลอดไป",
+    "blurbOne": "เป็นของคุณตลอดไป",
+    "buyWithPrice": "ซื้อ — {{price}}",
+    "orUnlockEverything": "หรือปลดล็อกทั้งหมด",
+    "subMonthly": "รายเดือน",
+    "subMonthlyPeriod": "ต่อเดือน",
+    "subYearly": "รายปี",
+    "subYearlyPeriod": "ต่อปี · คุ้มที่สุด",
+    "errorHeading": "ขณะนี้ไม่สามารถเชื่อมต่อ App Store ได้",
+    "tryAgain": "ลองอีกครั้ง",
+    "pendingHeading": "รออนุมัติ",
+    "pendingDetail": "การซื้อของคุณกำลังรออนุมัติ (Ask to Buy หรือตรวจสอบจากธนาคาร) จะเปิดใช้งานอัตโนมัติเมื่อได้รับอนุมัติ",
+    "noProductsError": "App Store ไม่ส่งสินค้ากลับมา โดยปกติจะแก้ไขได้ในไม่กี่วินาที — โปรดลองอีกครั้ง"
   }
 }

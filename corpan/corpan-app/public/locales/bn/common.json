@@ -331,5 +331,22 @@
     "noPurchases": "আগের কোনো ক্রয় পাওয়া যায়নি।",
     "success": "{{count}}টি ক্রয় পুনরুদ্ধার হয়েছে।",
     "error": "ক্রয় পুনরুদ্ধার ব্যর্থ হয়েছে।"
+  },
+  "catalogPaywall": {
+    "allLanguages": "সব {{count}}টি ভাষা",
+    "thisBook": "এই বইটি",
+    "blurbAll": "প্রতিটি বর্ণনা, এখন এবং ভবিষ্যতে। চিরকাল আপনার।",
+    "blurbOne": "চিরকাল আপনার।",
+    "buyWithPrice": "কিনুন — {{price}}",
+    "orUnlockEverything": "বা সবকিছু আনলক করুন",
+    "subMonthly": "মাসিক",
+    "subMonthlyPeriod": "প্রতি মাসে",
+    "subYearly": "বার্ষিক",
+    "subYearlyPeriod": "প্রতি বছরে · সেরা মূল্য",
+    "errorHeading": "আমরা এখন App Store-এ সংযোগ করতে পারিনি।",
+    "tryAgain": "আবার চেষ্টা করুন",
+    "pendingHeading": "অনুমোদনের অপেক্ষায়",
+    "pendingDetail": "আপনার ক্রয় অনুমোদনের অপেক্ষায় রয়েছে (Ask to Buy বা ব্যাংক যাচাই)। অনুমোদিত হলে স্বয়ংক্রিয়ভাবে সক্রিয় হবে।",
+    "noProductsError": "App Store কোনো পণ্য ফেরত দেয়নি। সাধারণত কয়েক সেকেন্ডে সমাধান হয় — আবার চেষ্টা করুন।"
   }
 }

@@ -331,5 +331,22 @@
     "noPurchases": "خرید قبلی یافت نشد.",
     "success": "{{count}} خرید بازیابی شد.",
     "error": "بازیابی خریدها ناموفق بود."
+  },
+  "catalogPaywall": {
+    "allLanguages": "همه {{count}} زبان",
+    "thisBook": "این کتاب",
+    "blurbAll": "هر روایت، اکنون و در آینده. برای همیشه از آن شما.",
+    "blurbOne": "برای همیشه از آن شما.",
+    "buyWithPrice": "خرید — {{price}}",
+    "orUnlockEverything": "یا همه چیز را باز کنید",
+    "subMonthly": "ماهانه",
+    "subMonthlyPeriod": "در ماه",
+    "subYearly": "سالانه",
+    "subYearlyPeriod": "در سال · بهترین انتخاب",
+    "errorHeading": "در حال حاضر امکان اتصال به App Store نبود.",
+    "tryAgain": "دوباره تلاش کنید",
+    "pendingHeading": "در انتظار تأیید",
+    "pendingDetail": "خرید شما در انتظار تأیید است (Ask to Buy یا تأیید بانکی). پس از تأیید، به‌طور خودکار فعال می‌شود.",
+    "noProductsError": "App Store هیچ محصولی برنگرداند. معمولاً ظرف چند ثانیه حل می‌شود — دوباره تلاش کنید."
   }
 }

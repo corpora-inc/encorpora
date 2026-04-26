@@ -331,5 +331,22 @@
     "noPurchases": "Önceki satın alım bulunamadı.",
     "success": "{{count}} satın alım geri yüklendi.",
     "error": "Satın alımlar geri yüklenemedi."
+  },
+  "catalogPaywall": {
+    "allLanguages": "Tüm {{count}} dil",
+    "thisBook": "Bu kitap",
+    "blurbAll": "Her anlatım, şimdi ve gelecekte. Sonsuza dek senin.",
+    "blurbOne": "Sonsuza dek senin.",
+    "buyWithPrice": "Satın Al — {{price}}",
+    "orUnlockEverything": "veya her şeyi aç",
+    "subMonthly": "Aylık",
+    "subMonthlyPeriod": "ayda",
+    "subYearly": "Yıllık",
+    "subYearlyPeriod": "yılda · en iyi seçim",
+    "errorHeading": "Şu anda App Store'a ulaşılamadı.",
+    "tryAgain": "Tekrar dene",
+    "pendingHeading": "Onay bekleniyor",
+    "pendingDetail": "Satın almanız onay bekliyor (Ask to Buy veya banka doğrulaması). Onaylandığında otomatik olarak etkinleşir.",
+    "noProductsError": "App Store hiçbir ürün döndürmedi. Genellikle birkaç saniye içinde çözülür — tekrar deneyin."
   }
 }

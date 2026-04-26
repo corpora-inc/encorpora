@@ -331,5 +331,22 @@
     "noPurchases": "અગાઉની ખરીદીઓ મળી નથી.",
     "success": "{{count}} ખરીદી પુનઃસ્થાપિત.",
     "error": "ખરીદીઓ પુનઃસ્થાપિત કરવામાં નિષ્ફળ."
+  },
+  "catalogPaywall": {
+    "allLanguages": "બધી {{count}} ભાષાઓ",
+    "thisBook": "આ પુસ્તક",
+    "blurbAll": "દરેક નિવેદન, હવે અને ભવિષ્યમાં. હંમેશા તમારું.",
+    "blurbOne": "હંમેશા તમારું.",
+    "buyWithPrice": "ખરીદો — {{price}}",
+    "orUnlockEverything": "અથવા બધું અનલૉક કરો",
+    "subMonthly": "માસિક",
+    "subMonthlyPeriod": "દર મહિને",
+    "subYearly": "વાર્ષિક",
+    "subYearlyPeriod": "દર વર્ષે · શ્રેષ્ઠ મૂલ્ય",
+    "errorHeading": "અત્યારે App Store સાથે જોડાઈ શક્યા નથી.",
+    "tryAgain": "ફરી પ્રયાસ",
+    "pendingHeading": "મંજૂરીની રાહ",
+    "pendingDetail": "તમારી ખરીદી મંજૂરીની રાહ જોઈ રહી છે (Ask to Buy અથવા બેંક ચકાસણી). મંજૂર થયા પછી આપમેળે સક્રિય થશે.",
+    "noProductsError": "App Store એ કોઈ ઉત્પાદનો પાછા આપ્યા નથી. સામાન્ય રીતે થોડી સેકંડમાં ઉકેલાય છે — ફરી પ્રયાસ કરો."
   }
 }

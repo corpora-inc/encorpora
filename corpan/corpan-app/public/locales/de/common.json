@@ -331,5 +331,22 @@
     "noPurchases": "Keine früheren Käufe gefunden.",
     "success": "{{count}} Kauf/Käufe wiederhergestellt.",
     "error": "Käufe konnten nicht wiederhergestellt werden."
+  },
+  "catalogPaywall": {
+    "allLanguages": "Alle {{count}} Sprachen",
+    "thisBook": "Dieses Buch",
+    "blurbAll": "Jede Vertonung, jetzt und in Zukunft. Für immer dein.",
+    "blurbOne": "Für immer dein.",
+    "buyWithPrice": "Kaufen — {{price}}",
+    "orUnlockEverything": "oder alles freischalten",
+    "subMonthly": "Monatlich",
+    "subMonthlyPeriod": "pro Monat",
+    "subYearly": "Jährlich",
+    "subYearlyPeriod": "pro Jahr · bestes Angebot",
+    "errorHeading": "Wir konnten den App Store gerade nicht erreichen.",
+    "tryAgain": "Erneut versuchen",
+    "pendingHeading": "Warten auf Genehmigung",
+    "pendingDetail": "Dein Kauf wartet auf Genehmigung (Ask to Buy oder Bankprüfung). Er wird automatisch aktiviert, sobald er genehmigt wurde.",
+    "noProductsError": "Der App Store hat keine Produkte zurückgegeben. Das löst sich meist nach wenigen Sekunden — bitte erneut versuchen."
   }
 }

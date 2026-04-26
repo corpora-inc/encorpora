@@ -331,5 +331,22 @@
     "noPurchases": "以前の購入が見つかりませんでした。",
     "success": "{{count}}件の購入を復元しました。",
     "error": "購入の復元に失敗しました。"
+  },
+  "catalogPaywall": {
+    "allLanguages": "{{count}} 言語すべて",
+    "thisBook": "この本",
+    "blurbAll": "すべてのナレーション、現在と今後も。永遠にあなたのもの。",
+    "blurbOne": "永遠にあなたのもの。",
+    "buyWithPrice": "購入 — {{price}}",
+    "orUnlockEverything": "またはすべてのロックを解除",
+    "subMonthly": "月額",
+    "subMonthlyPeriod": "月",
+    "subYearly": "年額",
+    "subYearlyPeriod": "年 · お得",
+    "errorHeading": "App Store に接続できませんでした。",
+    "tryAgain": "再試行",
+    "pendingHeading": "承認待ち",
+    "pendingDetail": "購入は承認待ちです (Ask to Buy または銀行確認)。承認されると自動的に有効になります。",
+    "noProductsError": "App Store から商品が返されませんでした。通常は数秒で解消します — 再試行してください。"
   }
 }

@@ -101,7 +101,7 @@ class IapPlugin(private val activity: Activity): Plugin(activity), PurchasesUpda
         val args = invoke.parseArgs(GetProductsArgs::class.java)
         
         if (!billingClient.isReady) {
-            invoke.reject("Billing client not ready")
+            invoke.reject("STOREKIT_UNKNOWN: Billing client not ready")
             return
         }
         
@@ -168,7 +168,7 @@ class IapPlugin(private val activity: Activity): Plugin(activity), PurchasesUpda
                 products.put("products", JSONArray(productsArray))
                 invoke.resolve(products)
             } else {
-                invoke.reject("Failed to fetch products: ${billingResult.debugMessage}")
+                invoke.reject("NETWORK_ERROR: Failed to fetch products: ${billingResult.debugMessage}")
             }
         }
     }
@@ -178,7 +178,7 @@ class IapPlugin(private val activity: Activity): Plugin(activity), PurchasesUpda
         val args = invoke.parseArgs(PurchaseArgs::class.java)
         
         if (!billingClient.isReady) {
-            invoke.reject("Billing client not ready")
+            invoke.reject("STOREKIT_UNKNOWN: Billing client not ready")
             return
         }
         
@@ -245,11 +245,11 @@ class IapPlugin(private val activity: Activity): Plugin(activity), PurchasesUpda
                 
                 if (billingResult.responseCode != BillingClient.BillingResponseCode.OK) {
                     pendingPurchaseInvoke = null
-                    invoke.reject("Failed to launch billing flow: ${billingResult.debugMessage}")
+                    invoke.reject("STOREKIT_UNKNOWN: Failed to launch billing flow: ${billingResult.debugMessage}")
                 }
             } else {
                 pendingPurchaseInvoke = null
-                invoke.reject("Product not found")
+                invoke.reject("PRODUCT_UNAVAILABLE: Product not found")
             }
         }
     }
@@ -259,7 +259,7 @@ class IapPlugin(private val activity: Activity): Plugin(activity), PurchasesUpda
         val args = invoke.parseArgs(RestorePurchasesArgs::class.java)
         
         if (!billingClient.isReady) {
-            invoke.reject("Billing client not ready")
+            invoke.reject("STOREKIT_UNKNOWN: Billing client not ready")
             return
         }
         
@@ -290,7 +290,7 @@ class IapPlugin(private val activity: Activity): Plugin(activity), PurchasesUpda
                 result.put("purchases", JSONArray(purchasesArray))
                 invoke.resolve(result)
             } else {
-                invoke.reject("Failed to restore purchases: ${billingResult.debugMessage}")
+                invoke.reject("NETWORK_ERROR: Failed to restore purchases: ${billingResult.debugMessage}")
             }
         }
     }
@@ -305,12 +305,12 @@ class IapPlugin(private val activity: Activity): Plugin(activity), PurchasesUpda
         val purchaseToken = invoke.parseArgs(AcknowledgePurchaseArgs::class.java).purchaseToken
         
         if (purchaseToken == null) {
-            invoke.reject("Purchase token is required")
+            invoke.reject("INVALID_QUANTITY: Purchase token is required")
             return
         }
         
         if (!billingClient.isReady) {
-            invoke.reject("Billing client not ready")
+            invoke.reject("STOREKIT_UNKNOWN: Billing client not ready")
             return
         }
         
@@ -322,7 +322,7 @@ class IapPlugin(private val activity: Activity): Plugin(activity), PurchasesUpda
             if (billingResult.responseCode == BillingClient.BillingResponseCode.OK) {
                 invoke.resolve(JSObject().put("success", true))
             } else {
-                invoke.reject("Failed to acknowledge purchase: ${billingResult.debugMessage}")
+                invoke.reject("NETWORK_ERROR: Failed to acknowledge purchase: ${billingResult.debugMessage}")
             }
         }
     }
@@ -332,7 +332,7 @@ class IapPlugin(private val activity: Activity): Plugin(activity), PurchasesUpda
         val args = invoke.parseArgs(GetProductStatusArgs::class.java)
         
         if (!billingClient.isReady) {
-            invoke.reject("Billing client not ready")
+            invoke.reject("STOREKIT_UNKNOWN: Billing client not ready")
             return
         }
         
@@ -368,7 +368,7 @@ class IapPlugin(private val activity: Activity): Plugin(activity), PurchasesUpda
                 
                 invoke.resolve(statusResult)
             } else {
-                invoke.reject("Failed to get product status: ${billingResult.debugMessage}")
+                invoke.reject("NETWORK_ERROR: Failed to get product status: ${billingResult.debugMessage}")
             }
         }
     }
@@ -376,43 +376,85 @@ class IapPlugin(private val activity: Activity): Plugin(activity), PurchasesUpda
     override fun onPurchasesUpdated(billingResult: BillingResult, purchases: List<Purchase>?) {
         when (billingResult.responseCode) {
             BillingClient.BillingResponseCode.OK -> {
-                purchases?.let { purchaseList ->
-                    for (purchase in purchaseList) {
+                if (purchases.isNullOrEmpty()) {
+                    // OK with no purchases — Google sometimes emits this when
+                    // the user dismisses the sheet. Treat as cancellation if
+                    // we still have a pending invoke.
+                    pendingPurchaseInvoke?.reject("USER_CANCELLED: Purchase cancelled by user")
+                    pendingPurchaseInvoke = null
+                } else {
+                    for (purchase in purchases) {
                         handlePurchase(purchase)
                     }
                 }
             }
             BillingClient.BillingResponseCode.USER_CANCELED -> {
-                pendingPurchaseInvoke?.reject("Purchase cancelled by user")
+                pendingPurchaseInvoke?.reject("USER_CANCELLED: Purchase cancelled by user")
+                pendingPurchaseInvoke = null
+            }
+            BillingClient.BillingResponseCode.ITEM_ALREADY_OWNED -> {
+                pendingPurchaseInvoke?.reject("ALREADY_OWNED: Item already owned")
+                pendingPurchaseInvoke = null
+            }
+            BillingClient.BillingResponseCode.ITEM_UNAVAILABLE -> {
+                pendingPurchaseInvoke?.reject("PRODUCT_UNAVAILABLE: ${billingResult.debugMessage}")
+                pendingPurchaseInvoke = null
+            }
+            BillingClient.BillingResponseCode.BILLING_UNAVAILABLE,
+            BillingClient.BillingResponseCode.FEATURE_NOT_SUPPORTED -> {
+                pendingPurchaseInvoke?.reject("PURCHASE_NOT_ALLOWED: ${billingResult.debugMessage}")
+                pendingPurchaseInvoke = null
+            }
+            BillingClient.BillingResponseCode.SERVICE_DISCONNECTED,
+            BillingClient.BillingResponseCode.SERVICE_UNAVAILABLE,
+            BillingClient.BillingResponseCode.NETWORK_ERROR -> {
+                pendingPurchaseInvoke?.reject("NETWORK_ERROR: ${billingResult.debugMessage}")
                 pendingPurchaseInvoke = null
             }
             else -> {
-                pendingPurchaseInvoke?.reject("Purchase failed: ${billingResult.debugMessage}")
+                pendingPurchaseInvoke?.reject("STOREKIT_UNKNOWN: ${billingResult.debugMessage}")
                 pendingPurchaseInvoke = null
             }
         }
     }
-    
-    private fun handlePurchase(purchase: Purchase) {
-        if (purchase.purchaseState == Purchase.PurchaseState.PURCHASED) {
-            val purchaseData = JSObject().apply {
-                put("orderId", purchase.orderId)
-                put("packageName", purchase.packageName)
-                put("productId", purchase.products.firstOrNull() ?: "")
-                put("purchaseTime", purchase.purchaseTime)
-                put("purchaseToken", purchase.purchaseToken)
-                put("purchaseState", translatePurchaseState(purchase.purchaseState))
-                put("isAutoRenewing", purchase.isAutoRenewing)
-                put("isAcknowledged", purchase.isAcknowledged)
-                put("originalJson", purchase.originalJson)
-                put("signature", purchase.signature)
-            }
 
-            pendingPurchaseInvoke?.resolve(purchaseData)
-            pendingPurchaseInvoke = null
-            
-            // Emit event for purchase state change
-            trigger("purchaseUpdated", purchaseData)
+    private fun handlePurchase(purchase: Purchase) {
+        when (purchase.purchaseState) {
+            Purchase.PurchaseState.PURCHASED -> {
+                val purchaseData = JSObject().apply {
+                    put("orderId", purchase.orderId)
+                    put("packageName", purchase.packageName)
+                    put("productId", purchase.products.firstOrNull() ?: "")
+                    put("purchaseTime", purchase.purchaseTime)
+                    put("purchaseToken", purchase.purchaseToken)
+                    put("purchaseState", translatePurchaseState(purchase.purchaseState))
+                    put("isAutoRenewing", purchase.isAutoRenewing)
+                    put("isAcknowledged", purchase.isAcknowledged)
+                    put("originalJson", purchase.originalJson)
+                    put("signature", purchase.signature)
+                }
+
+                pendingPurchaseInvoke?.resolve(purchaseData)
+                pendingPurchaseInvoke = null
+
+                // Emit event for purchase state change
+                trigger("purchaseUpdated", purchaseData)
+            }
+            Purchase.PurchaseState.PENDING -> {
+                // Slow payment methods (carrier billing, some banks) put the
+                // purchase in PENDING. Match iOS behavior — JS handles
+                // PURCHASE_PENDING as a "waiting for approval" state, not an
+                // error. Without this branch, pendingPurchaseInvoke stays set
+                // and JS hangs forever.
+                pendingPurchaseInvoke?.reject("PURCHASE_PENDING: Purchase is awaiting external approval")
+                pendingPurchaseInvoke = null
+            }
+            else -> {
+                // UNSPECIFIED_STATE or any future case — surface as error
+                // rather than hang.
+                pendingPurchaseInvoke?.reject("PURCHASE_UNKNOWN: Unexpected purchase state ${purchase.purchaseState}")
+                pendingPurchaseInvoke = null
+            }
         }
     }
     

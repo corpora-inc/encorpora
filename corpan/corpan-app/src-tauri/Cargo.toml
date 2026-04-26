@@ -1,6 +1,6 @@
 [package]
 name = "corpan"
-version = "0.11.6"
+version = "0.11.7"
 description = "Language learning app"
 authors = ["you"]
 edition = "2021"

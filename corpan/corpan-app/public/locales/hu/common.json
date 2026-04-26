@@ -331,5 +331,22 @@
     "noPurchases": "Nem található korábbi vásárlás.",
     "success": "{{count}} vásárlás visszaállítva.",
     "error": "Nem sikerült visszaállítani a vásárlásokat."
+  },
+  "catalogPaywall": {
+    "allLanguages": "Mind a {{count}} nyelv",
+    "thisBook": "Ez a könyv",
+    "blurbAll": "Minden felolvasás, most és a jövőben. Örökre a tiéd.",
+    "blurbOne": "Örökre a tiéd.",
+    "buyWithPrice": "Megveszem — {{price}}",
+    "orUnlockEverything": "vagy mindent feloldok",
+    "subMonthly": "Havi",
+    "subMonthlyPeriod": "havonta",
+    "subYearly": "Éves",
+    "subYearlyPeriod": "évente · legjobb ár",
+    "errorHeading": "Az App Store jelenleg nem érhető el.",
+    "tryAgain": "Próbáld újra",
+    "pendingHeading": "Jóváhagyásra vár",
+    "pendingDetail": "A vásárlás jóváhagyásra vár (Ask to Buy vagy banki ellenőrzés). Jóváhagyás után automatikusan aktiválódik.",
+    "noProductsError": "Az App Store nem adott vissza terméket. Általában néhány másodpercen belül megoldódik — próbáld újra."
   }
 }

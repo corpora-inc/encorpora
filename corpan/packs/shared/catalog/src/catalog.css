@@ -1265,6 +1265,137 @@
   border-color: color-mix(in srgb, #d6586b 60%, var(--catalog-border));
 }
 
+/* Body slot replaced atomically per state (loading / ready / error / pending). */
+.catalog-cta-body {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Loading skeleton — three pulsing blocks while products fetch. */
+.catalog-cta-skeleton {
+  height: 44px;
+  border-radius: var(--catalog-radius);
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--catalog-border) 50%, transparent) 0%,
+    color-mix(in srgb, var(--catalog-border) 80%, transparent) 50%,
+    color-mix(in srgb, var(--catalog-border) 50%, transparent) 100%
+  );
+  background-size: 200% 100%;
+  animation: catalog-cta-skel-pulse 1.4s ease-in-out infinite;
+}
+.catalog-cta-skeleton:nth-child(2) { height: 56px; }
+.catalog-cta-skeleton:nth-child(3) { height: 32px; }
+
+@keyframes catalog-cta-skel-pulse {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Error block — shown when products can't load. */
+.catalog-cta-error-heading {
+  font-family: var(--catalog-font);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--catalog-text);
+}
+
+.catalog-cta-error-detail {
+  font-family: var(--catalog-font);
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--catalog-text-dim);
+  word-break: break-word;
+}
+
+.catalog-cta-retry {
+  align-self: flex-start;
+  padding: 8px 14px;
+  border: 1px solid var(--catalog-border);
+  border-radius: var(--catalog-radius);
+  background: var(--catalog-bg);
+  color: var(--catalog-text);
+  font-family: var(--catalog-font);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.catalog-cta-retry:hover {
+  border-color: var(--catalog-accent);
+}
+
+/* Pending state — Ask-to-Buy / SCA approval. */
+.catalog-cta-pending-heading {
+  font-family: var(--catalog-font);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--catalog-text);
+}
+
+.catalog-cta-pending-detail {
+  font-family: var(--catalog-font);
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--catalog-text-dim);
+}
+
+/* Restore Purchases link — always visible at bottom of paywall. */
+.catalog-cta-restore {
+  align-self: center;
+  margin-top: 4px;
+  padding: 6px 8px;
+  border: 0;
+  background: transparent;
+  color: var(--catalog-text-dim);
+  font-family: var(--catalog-font);
+  font-size: 12px;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
+}
+
+.catalog-cta-restore:hover {
+  color: var(--catalog-text);
+}
+
+/* Auto-renew disclosure — required by Apple when subscription buttons shown. */
+.catalog-cta-auto-renew {
+  margin-top: 10px;
+  padding: 0 4px;
+  font-family: var(--catalog-font);
+  font-size: 11px;
+  line-height: 1.5;
+  color: var(--catalog-text-dim);
+  text-align: center;
+}
+
+/* Terms of Use + Privacy Policy links — required on the paywall. */
+.catalog-cta-legal {
+  margin-top: 4px;
+  padding: 0 4px;
+  font-family: var(--catalog-font);
+  font-size: 11px;
+  text-align: center;
+}
+
+.catalog-cta-legal a {
+  color: var(--catalog-text-dim);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.catalog-cta-legal a:hover {
+  color: var(--catalog-text);
+}
+
+.catalog-cta-legal-sep {
+  color: var(--catalog-text-dim);
+  margin: 0 6px;
+}
+
 /* Locked rows — the book-level CTA owns the action; rows stay calm. */
 
 .catalog-row--locked {

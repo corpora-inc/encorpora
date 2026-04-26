@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useTranslation } from "react-i18next"
 import { Button } from "@/components/ui/button"
 import { useGamesStore, type InstalledGame } from "@/store/games"
@@ -6,6 +6,7 @@ import { useEntitlementStore } from "@/store/entitlements"
 import type { CatalogGame } from "@/contentPacks/catalog"
 import { useInstallContext } from "@/contentPacks/InstallContext"
 import {
+  getProductStatus,
   purchaseAndVerify,
 } from "@/contentPacks/purchase"
 
@@ -28,14 +29,33 @@ export function PackActions({
 }) {
   const { t } = useTranslation()
   const removeGame = useGamesStore((s) => s.removeGame)
-  const isEntitled = useEntitlementStore((s) => s.isEntitled)
   const iapAvailable = useEntitlementStore((s) => s.iapAvailable)
   const { installCatalogPack, isInstalling } = useInstallContext()
   const [isPurchasing, setIsPurchasing] = useState(false)
 
   const isPremium = pack.purchase?.type === "iap"
   const productId = pack.purchase?.productId
-  const entitled = productId ? isEntitled(productId) : true
+
+  // Live entitlement check via the platform plugin — no persisted snapshot.
+  // `null` while pending; we treat that as "not yet entitled" for rendering
+  // purposes so we don't flash an Install button on a premium pack.
+  const [entitled, setEntitled] = useState<boolean | null>(
+    isPremium ? null : true
+  )
+  useEffect(() => {
+    if (!isPremium || !productId) {
+      setEntitled(true)
+      return
+    }
+    let cancelled = false
+    void getProductStatus(productId, "inapp").then((status) => {
+      if (cancelled) return
+      setEntitled(status.state === "owned")
+    })
+    return () => {
+      cancelled = true
+    }
+  }, [isPremium, productId])
 
   const handleInstall = () => {
     installCatalogPack(pack)
@@ -128,6 +148,19 @@ export function PackActions({
           size="sm"
         >
           {t("packs.remove")}
+        </Button>
+      </div>
+    )
+  }
+
+  // While entitlement is being checked for a premium pack, show a
+  // placeholder rather than flashing a Buy or Install button based on
+  // stale data.
+  if (isPremium && entitled === null) {
+    return (
+      <div className="space-y-2">
+        <Button disabled className="w-full" size="sm">
+          {t("packs.checking", "Checking…")}
         </Button>
       </div>
     )

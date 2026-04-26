@@ -17,7 +17,7 @@ import { useGamesStore, type InstalledGame } from "@/store/games";
 import { useCatalogStore } from "@/store/catalog";
 import { usePackUpdates } from "@/hooks/usePackUpdates";
 import { useThemeEffect } from "@/hooks/useThemeEffect";
-import { refreshEntitlements, getPlatform } from "@/contentPacks/purchase";
+import { refreshEntitlements, getPlatform, restoreAndSync } from "@/contentPacks/purchase";
 import { useEntitlementStore } from "@/store/entitlements";
 
 // In a module that always loads (e.g. App.tsx)
@@ -79,57 +79,18 @@ export default function App() {
       document.removeEventListener("visibilitychange", onVisibilityChange);
   }, []);
 
-  // Keep the in-app subscription state honest while the user is sitting on
-  // the screen. Two scenarios:
-  //
-  //   A) `active && expiresAt` known: schedule a one-shot refresh ~5s past
-  //      the expiry so the paywall comes back the moment the sub lapses.
-  //      Capped at 24h; longer horizons are handled by visibility change.
-  //   B) `active && !expiresAt`: the plugin didn't populate an expiry and
-  //      the backend verify either failed or didn't return one. Fall back
-  //      to a 60s safety-net poll so we eventually notice a lapse instead
-  //      of leaving the user stuck in the subscribed state forever. The
-  //      interval clears itself once `expiresAt` becomes known or `active`
-  //      flips to false (effect re-runs on dep change).
-  const subscriptionExpiresAt = useEntitlementStore(
-    (s) => s.subscription.expiresAt
-  );
-  const subscriptionActive = useEntitlementStore((s) => s.subscription.active);
-  useEffect(() => {
-    if (!subscriptionActive) return;
-
-    if (!subscriptionExpiresAt) {
-      const interval = window.setInterval(() => {
-        refreshEntitlements().catch(() => {});
-      }, 60_000);
-      return () => window.clearInterval(interval);
-    }
-
-    const expiryMs = Date.parse(subscriptionExpiresAt);
-    if (Number.isNaN(expiryMs)) return;
-    const msUntilExpiry = expiryMs - Date.now();
-    if (msUntilExpiry <= 0) {
-      refreshEntitlements().catch(() => {});
-      return;
-    }
-    const MAX_TIMER_MS = 24 * 60 * 60 * 1000;
-    if (msUntilExpiry > MAX_TIMER_MS) return;
-    // Wake 5s past expiry to give StoreKit/Play a moment to flip state.
-    const timer = window.setTimeout(() => {
-      refreshEntitlements().catch(() => {});
-    }, msUntilExpiry + 5_000);
-    return () => window.clearTimeout(timer);
-  }, [subscriptionActive, subscriptionExpiresAt]);
-
-  // Reader packs (running in this same WebView) dispatch these events after an
-  // in-reader purchase. Keep the zustand entitlement store in sync so
-  // subsequent UI in the main app reflects the new state.
+  // Reader packs (in the same WebView) dispatch these events after an
+  // in-reader purchase. Mirror them into the zustand entitlement store so
+  // any main-app UI that re-renders sees the new in-session state. We also
+  // refresh entitlements (live plugin query) so the next paywall render
+  // gets authoritative data.
   useEffect(() => {
     const onPurchaseRecorded = (e: Event) => {
       const detail = (e as CustomEvent<{ productId?: string }>).detail;
       if (detail?.productId) {
         useEntitlementStore.getState().addPurchasedProduct(detail.productId);
       }
+      void refreshEntitlements();
     };
     const onSubscriptionRecorded = (e: Event) => {
       const detail = (e as CustomEvent<{ plan?: "monthly" | "annual" }>).detail;
@@ -141,17 +102,37 @@ export default function App() {
           autoRenew: true,
         });
       }
+      void refreshEntitlements();
+    };
+    /**
+     * Reader paywalls dispatch this event when the user taps Restore
+     * Purchases. We run the main app's restoreAndSync (which also
+     * dispatches `corpan:restore-purchases-completed` on success), then
+     * the reader picks that up and re-queries the plugin.
+     */
+    const onRestoreRequested = () => {
+      void restoreAndSync().catch((err) => {
+        console.warn("[App] restore from reader failed:", err);
+      });
     };
     window.addEventListener("corpan:purchase-recorded", onPurchaseRecorded);
     window.addEventListener(
       "corpan:subscription-recorded",
       onSubscriptionRecorded
     );
+    window.addEventListener(
+      "corpan:restore-purchases-requested",
+      onRestoreRequested
+    );
     return () => {
       window.removeEventListener("corpan:purchase-recorded", onPurchaseRecorded);
       window.removeEventListener(
         "corpan:subscription-recorded",
         onSubscriptionRecorded
+      );
+      window.removeEventListener(
+        "corpan:restore-purchases-requested",
+        onRestoreRequested
       );
     };
   }, []);
